@@ -845,15 +845,16 @@
        make sense without their options; an MCQ part takes only MCQ items. */
     var _needsOptions=/which of the following|which (one|statement|expression|equation|graph|table|value|point|option)/i;
     function drawForPart(pool,part){
-      if(part.type==='frq'){
-        var got=drawQ(pool.filter(function(q){return q.type==='frq';}),part.q);
-        if(got.length<part.q) got=got.concat(drawQ(pool.filter(function(q){return q.type!=='frq'&&!_needsOptions.test(q.text||q.q||'');}),part.q-got.length));
+      var isPartFree = (part.type==='frq' || part.type==='spr');
+      if(isPartFree){
+        var got=drawQ(pool.filter(function(q){return q.type==='frq' || q.type==='spr';}),part.q);
+        if(got.length<part.q) got=got.concat(drawQ(pool.filter(function(q){return q.type!=='frq' && q.type!=='spr' && !_needsOptions.test(q.text||q.q||'');}),part.q-got.length));
         if(got.length<part.q) got=got.concat(drawQ(pool,part.q-got.length));
         return got;
       }
       if(part.type==='mcq'){
         /* prefer items with exactly the exam's option count (4-option exams skip old 5-option items) */
-        var nOpt=(part.letters||globalLetters).length, mcq=pool.filter(function(q){return q.type!=='frq';});
+        var nOpt=(part.letters||globalLetters).length, mcq=pool.filter(function(q){return q.type!=='frq' && q.type!=='spr';});
         var got2=drawQ(mcq.filter(function(q){return !q.choices||q.choices.length===nOpt;}),part.q);
         if(got2.length<part.q) got2=got2.concat(drawQ(mcq,part.q-got2.length));
         if(got2.length<part.q) got2=got2.concat(drawQ(pool,part.q-got2.length));
@@ -1064,20 +1065,21 @@
         if(part.q>1)h+='<div class="fep-q-count">Questions '+partStart+'–'+(partStart+part.q-1)+'</div>';
 
         qs.forEach(function(q){
-          var isMCQ=isMCQPart||(q.type==='mcq'||q.type==='data');
-          var isFRQ=isFRQPart||(q.type==='frq');
-          if(isMCQPart){isFRQ=false;isMCQ=true;}
-          if(isFRQPart){isMCQ=false;isFRQ=true;}
+          var isFree = isFRQPart || (q.type==='frq' || q.type==='spr');
+          var isMCQ = !isFree && (isMCQPart || (q.type==='mcq'||q.type==='data'));
+          if(isMCQPart){isFree=false;isMCQ=true;}
+          if(isFRQPart){isFree=true;isMCQ=false;}
 
-          answerKey.push({n:qNum,type:(isFRQ?'frq':'mcq'),domain:q.domain,
-            answer:(isMCQ?pL[q.answer]:(q.answer!=null?String(q.answer):'FRQ')),sol:q.sol||''});
+          var ansDisplay = isMCQ ? pL[q.answer] : (q.sprAnswer != null ? String(q.sprAnswer) : (q.answer != null ? String(q.answer) : (q.type==='spr'?'SPR':'FRQ')));
+          answerKey.push({n:qNum,type:(isFree?(q.type==='spr'?'spr':'frq'):'mcq'),domain:q.domain,
+            answer:ansDisplay,sol:q.sol||''});
           var _fHtml=renderQFig(q);
-          _csCaptureQ.push({text:q.text||q.q||'',choices:isMCQ?(q.choices||[]).slice():[],correctIndex:isMCQ?q.answer:null,type:isFRQ?'frq':'mcq',points:1,figure:q.figure||q.fig||null,figureHtml:_fHtml||null});
+          _csCaptureQ.push({text:q.text||q.q||'',choices:isMCQ?(q.choices||[]).slice():[],correctIndex:isMCQ?q.answer:null,type:isFree?(q.type==='spr'?'spr':'frq'):'mcq',points:1,figure:q.figure||q.fig||null,figureHtml:_fHtml||null});
 
-          h+='<div class="fep-item '+(isFRQ?'fep-frq fep-frq-full':'fep-mcq')+'">';
+          h+='<div class="fep-item '+(isFree?'fep-frq fep-frq-full':'fep-mcq')+'">';
           h+='<div class="fep-item-head"><span class="fep-inum">'+qNum+'</span>';
           h+='<span class="fep-domain-tag">'+esc(q.domain||'')+'</span>';
-          if(isFRQ)h+='<span class="fep-type-tag frq-tag">FRQ</span>';
+          if(isFree)h+='<span class="fep-type-tag frq-tag">'+(q.type==='spr'?'SPR':'FRQ')+'</span>';
           h+='</div>';
           if(_fHtml)h+='<div class="fep-figure">'+_fHtml+'</div>';
           h+='<div class="fep-qbody">'+_fmtBi(_maths(q.text||q.q||''))+'</div>';
@@ -1086,8 +1088,8 @@
             q.choices.forEach(function(ch,ci){var s=_autoMath(ch);h+='<div class="fep-choice"><span class="fep-cletter">'+pL[ci]+'.</span><span class="fep-ctext">'+_fmtBi(_maths(s))+'</span></div>';});
             h+='</div>';
           }
-          if(isFRQ){
-            h+='<div class="fep-work-space"><span class="fep-ws-label">Working Space:</span>';
+          if(isFree){
+            h+='<div class="fep-work-space"><span class="fep-ws-label">'+(q.type==='spr'?'Student-Produced Response (Grid-in):':'Working Space:')+'</span>';
             for(var ln=0;ln<8;ln++)h+='<div class="fep-ws-line"></div>';
             h+='<div class="fep-ws-ans"><span>Answer:</span><span class="fep-ws-ans-line"></span></div></div>';
           }

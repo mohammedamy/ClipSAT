@@ -122,22 +122,65 @@
   }
 
   function _isQuantComp(q){
+    if(!q) return false;
+    if(q.domain === 'Quantitative Comparisons') return true;
     var t = (q.text || q.q || '').trim();
-    return (t.indexOf('قارن بين') !== -1 || (t.indexOf('القيمة الأولى') !== -1 && t.indexOf('القيمة الثانية') !== -1) || (q.val1 && q.val2));
+    return (
+      t.indexOf('قارن') !== -1 ||
+      t.indexOf('Compare') !== -1 ||
+      (t.indexOf('العمود A') !== -1 && t.indexOf('العمود B') !== -1) ||
+      (t.indexOf('العمود أ') !== -1 && t.indexOf('العمود ب') !== -1) ||
+      (t.indexOf('Quantity A') !== -1 && t.indexOf('Quantity B') !== -1) ||
+      (t.indexOf('القيمة الأولى') !== -1 && t.indexOf('القيمة الثانية') !== -1) ||
+      (q.val1 && q.val2)
+    );
   }
 
   function _parseCompBoxes(q){
     var t = (q.text || q.q || '').trim();
-    var val1 = q.val1 || '', val2 = q.val2 || '';
+    var val1 = q.val1 || '', val2 = q.val2 || '', context = q.context || '';
+
     if(!val1 && !val2){
-      var m1 = t.match(/القيمة الأولى\s*[:：\-]?\s*([^\n\r]+)/);
-      var m2 = t.match(/القيمة الثانية\s*[:：\-]?\s*([^\n\r]+)/);
-      if(m1 && m2){
-        val1 = m1[1].replace(/قارن بين|المعطيات/g, '').trim();
-        val2 = m2[1].replace(/قارن بين|المعطيات/g, '').trim();
+      var clean = t.replace(/<strong>قارن\s*\/?\s*Compare:?<\/strong>/i, '').trim();
+      var emMatch = clean.match(/<em>([\s\S]*?)<\/em>/i);
+      var arPart = clean.replace(/<em>[\s\S]*?<\/em>/i, '').trim();
+      var enPart = emMatch ? emMatch[1].trim() : '';
+
+      var colAMatch = arPart.match(/(?:العمود\s*[Aأ]|القيمة\s*الأولى|Quantity\s*A)\s*[:：\-]?\s*([^\n\r<]+)/i);
+      var colBMatch = arPart.match(/(?:العمود\s*[Bب]|القيمة\s*الثانية|Quantity\s*B)\s*[:：\-]?\s*([^\n\r<]+)/i);
+
+      var splitColA = arPart.split(/(?:العمود\s*[Aأ]|القيمة\s*الأولى|Quantity\s*A)\s*[:：\-]?/i);
+      if(splitColA.length > 1){
+        var rawCtx = splitColA[0].replace(/<br\s*\/?>/gi, ' ').trim();
+        if(rawCtx){
+          context = rawCtx;
+        }
+      }
+
+      if(colAMatch) val1 = colAMatch[1].trim();
+      if(colBMatch) val2 = colBMatch[1].trim();
+
+      if(enPart){
+        var enColAMatch = enPart.match(/Quantity\s*A\s*[:：\-]?\s*([^\n\r<]+)/i);
+        var enColBMatch = enPart.match(/Quantity\s*B\s*[:：\-]?\s*([^\n\r<]+)/i);
+        var enSplit = enPart.split(/Quantity\s*A\s*[:：\-]?/i);
+        var enCtx = (enSplit.length > 1) ? enSplit[0].replace(/<br\s*\/?>/gi, ' ').trim() : '';
+
+        if(enCtx && context && context !== enCtx){
+          context = context + ' / ' + enCtx;
+        } else if(!context && enCtx){
+          context = enCtx;
+        }
+
+        if(enColAMatch && enColAMatch[1].trim() !== val1){
+          val1 = val1 + ' <span style="color:var(--muted,#64748b);font-size:.85em">(' + enColAMatch[1].trim() + ')</span>';
+        }
+        if(enColBMatch && enColBMatch[1].trim() !== val2){
+          val2 = val2 + ' <span style="color:var(--muted,#64748b);font-size:.85em">(' + enColBMatch[1].trim() + ')</span>';
+        }
       }
     }
-    return { val1: val1, val2: val2 };
+    return { context: context, val1: val1, val2: val2 };
   }
 
   function _isQuestionAnswered(idx){
@@ -413,15 +456,18 @@
 
       if(isComp){
         var comp = _parseCompBoxes(q);
-        h += '<div class="mq-text" dir="rtl" style="font-weight:700;margin-bottom:10px">قارن بين القيمتين التاليتين:</div>'
-          + '<div class="mock-qc-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">'
+        h += '<div class="mq-text" dir="rtl" style="font-weight:700;margin-bottom:10px">قارن بين القيمتين التاليتين / Compare the two quantities:</div>';
+        if(comp.context){
+          h += '<div class="mock-qc-context" style="background:var(--paper-2,#f8fafc);border-left:3px solid var(--indigo,#1e3e70);border-right:3px solid var(--indigo,#1e3e70);padding:8px 12px;margin-bottom:12px;border-radius:4px;font-size:1rem;font-weight:600">' + _fmtBi(comp.context) + '</div>';
+        }
+        h += '<div class="mock-qc-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">'
           + '<div class="mock-qc-box" style="background:var(--paper-2,#f8fafc);border:1.5px solid var(--border,#cbd5e1);border-radius:8px;padding:12px;text-align:center">'
-          + '<div style="font-size:.8rem;font-weight:700;color:var(--indigo,#1e3e70);margin-bottom:4px">القيمة الأولى (Column A)</div>'
-          + '<div style="font-size:1rem;font-weight:600">' + _fmtBi(comp.val1 || qText) + '</div>'
+          + '<div style="font-size:.82rem;font-weight:700;color:var(--indigo,#1e3e70);margin-bottom:4px">القيمة الأولى (Column A)</div>'
+          + '<div style="font-size:1.05rem;font-weight:600">' + _fmtBi(comp.val1 || qText) + '</div>'
           + '</div>'
           + '<div class="mock-qc-box" style="background:var(--paper-2,#f8fafc);border:1.5px solid var(--border,#cbd5e1);border-radius:8px;padding:12px;text-align:center">'
-          + '<div style="font-size:.8rem;font-weight:700;color:var(--amber,#9e6515);margin-bottom:4px">القيمة الثانية (Column B)</div>'
-          + '<div style="font-size:1rem;font-weight:600">' + _fmtBi(comp.val2 || '—') + '</div>'
+          + '<div style="font-size:.82rem;font-weight:700;color:var(--amber,#9e6515);margin-bottom:4px">القيمة الثانية (Column B)</div>'
+          + '<div style="font-size:1.05rem;font-weight:600">' + _fmtBi(comp.val2 || '—') + '</div>'
           + '</div>'
           + '</div>';
       } else {
@@ -810,27 +856,33 @@
       var qEl = document.getElementById('mock-q-' + i);
       if(!qEl) return;
 
-      var isSPR = (meta.type === 'spr');
+      var isSPR = (meta.type === 'spr' || meta.isSPR);
       var sprInput = qEl.querySelector('.mock-spr-input');
       var radios = qEl.querySelectorAll('input[type=radio]');
       var userAns = _answers[i];
       var isRight = false;
-      var targetAns = String(meta.ans != null ? meta.ans : meta.answer).trim().toLowerCase();
+      var targetAns = String(meta.sprAnswer != null ? meta.sprAnswer : (meta.ans != null ? meta.ans : (Array.isArray(meta.choices) && meta.answer != null ? meta.choices[meta.answer] : meta.answer))).trim().toLowerCase();
 
       if(isSPR){
         totalGraded++;
         var val = userAns != null ? String(userAns).trim().toLowerCase() : '';
         isRight = (val === targetAns);
 
-        if(!isRight && val.indexOf('/') !== -1){
-          var parts = val.split('/');
-          var num = parseFloat(parts[0]), den = parseFloat(parts[1]);
-          if(!isNaN(num) && !isNaN(den) && den !== 0){
-            var evalVal = num / den;
-            var targetNum = parseFloat(targetAns);
-            if(!isNaN(targetNum) && Math.abs(evalVal - targetNum) < 1e-4){
-              isRight = true;
+        if(!isRight){
+          var _toNum = function(s){
+            if(!s) return NaN;
+            s = String(s).trim();
+            if(s.indexOf('/') !== -1){
+              var p = s.split('/');
+              var n = parseFloat(p[0]), den = parseFloat(p[1]);
+              return (den !== 0 && !isNaN(n) && !isNaN(den)) ? (n / den) : NaN;
             }
+            return parseFloat(s);
+          };
+          var vNum = _toNum(val);
+          var tNum = _toNum(targetAns);
+          if(!isNaN(vNum) && !isNaN(tNum) && Math.abs(vNum - tNum) < 1e-4){
+            isRight = true;
           }
         }
 

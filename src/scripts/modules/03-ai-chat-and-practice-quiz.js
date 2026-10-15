@@ -261,6 +261,25 @@
       sendMsg();
     }, 150);
   };
+
+  window.askArabicIntuition=function(btn){
+    var card=btn?(btn.closest('.fcard')||btn.closest('.problem')||btn.closest('.quiz-q')||btn.closest('.mock-q')):null;
+    var prompt='';
+    if(card){
+      var probEl=card.querySelector('.problem-q, .mq-text, p')||card;
+      var probText=probEl.textContent.replace(/Show solution|💡 اشرح الفكرة بالعربية|Problem\./g,'').trim();
+      var solEl=card.querySelector('.solution, .fep-sol-block, .quiz-sol');
+      var solText=solEl?solEl.textContent.replace(/Answer:|Mathematical Explanation:/g,'').trim():'';
+      prompt='اشرح الفكرة والحدس الرياضي الكامن وراء هذه المسألة وطريقة حلها بالعربية بأسلوب مبسط وواضح مع الحفاظ على الرموز الرياضية بالإنجليزية:\n'
+        +'المسألة:\n'+probText.slice(0,350)
+        +(solText?'\nالحل:\n'+solText.slice(0,350):'');
+    } else {
+      prompt='اشرح لي الفكرة والحدس الرياضي الكامن وراء هذا المثال الرياضي بالعربية بأسلوب مبسط.';
+    }
+    if(typeof window.openChatWith==='function'){
+      window.openChatWith(prompt);
+    }
+  };
 /* ═══════════════════════════════════════════════════════════════
    PRACTICE QUIZ — AI-generated questions on the same trick, triggered by
    "Still unsure" in the mistakes review. The quiz itself lives in

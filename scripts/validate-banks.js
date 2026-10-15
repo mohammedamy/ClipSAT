@@ -62,7 +62,7 @@ function itemsOf(bank) {
 
 function checkItem(q, push) {
   const stem = q.text ?? q.q;
-  const isFrq = q.type === 'frq';
+  const isFrq = (q.type === 'frq' || q.type === 'spr');
   if (!stem || !String(stem).trim()) push('error', 'missing stem');
   if (!isFrq) {
     const ch = q.choices;
@@ -77,6 +77,9 @@ function checkItem(q, push) {
         else seen.set(k, i);
       });
     }
+  } else if (q.type === 'spr') {
+    const sprAns = q.sprAnswer ?? q.ans ?? (Array.isArray(q.choices) && q.answer != null ? q.choices[q.answer] : null);
+    if (sprAns == null || !String(sprAns).trim()) push('error', 'spr question missing sprAnswer or ans');
   }
   const sol = q.sol ?? q.solution ?? q.explanation;
   if (!sol || !String(sol).trim()) push('warn', 'no solution');
@@ -91,8 +94,8 @@ function checkItem(q, push) {
   }
   const fig = q.figure || q.fig;
   if (fig) {
-    const cleanAns = (!isFrq && Array.isArray(q.choices) && q.answer != null && q.choices[q.answer] != null)
-      ? String(q.choices[q.answer]).replace(/[^0-9a-zA-Z]/g, '').trim() : '';
+    const rawAns = q.sprAnswer ?? (Array.isArray(q.choices) && q.answer != null ? q.choices[q.answer] : q.ans);
+    const cleanAns = rawAns != null ? String(rawAns).replace(/[^0-9a-zA-Z]/g, '').trim() : '';
 
     if (cleanAns.length > 0 && !stem.includes(cleanAns)) {
       // Triangle/polygon sides leak

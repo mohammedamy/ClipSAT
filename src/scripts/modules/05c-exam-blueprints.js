@@ -154,7 +154,7 @@
     tahsili:{source:'Qiyas publishes no topic distribution for SAAT Tahsili mathematics. Weights follow the lessons per part of the "Excellence in SAAT" syllabus book supplied by the maintainer (algebra 24, geometry 14, trigonometry 4, limits/derivatives/integrals 3, statistics and probability 5 of 50 lessons).',
       provisional:true, difficulty:MIX, order:'mixed',
       topics:[
-        T('Algebra',48,'logic and sets, relations and functions, domain, even/odd functions, limits and continuity, increasing/decreasing and extreme values, rate of change, parent functions and transformations, exponential and logarithmic functions, polynomials, rational and radical expressions, variation, matrices and determinants, complex numbers, sequences and series, binomial theorem, vectors, polar coordinates and De Moivre',['Algebra & Equations','Functions','Sequences & Series','Exponentials & Logarithms']),
+        T('Algebra',48,'logic and sets, relations and functions, domain, even/odd functions, limits and continuity, increasing/decreasing and extreme values, rate of change, parent functions and transformations, exponential and logarithmic functions, polynomials, rational and radical expressions, variation, matrices and determinants, complex numbers, sequences and series, binomial theorem, vectors, polar coordinates and De Moivre',['Algebra & Equations','Functions','Sequences & Series','Exponentials & Logarithms','Vectors & Matrices']),
         T('Geometry',28,'angles and parallel lines, triangles, quadrilaterals, polygon angles, transformations (reflection, translation, rotation, dilation), circles, slope and linear equations, similarity, parabolas, ellipses, hyperbolas',['Geometry & Coordinate Geometry']),
         T('Trigonometry',8,'right-triangle trigonometry, laws of sines and cosines, area of a triangle, identities and equations',['Trigonometry']),
         T('Limits, derivatives and integrals',6,'limits, derivatives, integrals',['Limits & Derivatives','Integration & Applications']),
@@ -162,7 +162,7 @@
     qudrat:{source:'National Center for Assessment (Qiyas), General Aptitude Test — quantitative section content: arithmetic 40%, geometry 24%, algebra 23%, statistics and analysis 13%. Quantitative-comparison items appear across these areas.',
       difficulty:MIX, order:'mixed',
       topics:[
-        T('Arithmetic',40,'number sense, operations, fractions and decimals, ratio and proportion, percentages, rates, word problems; some items in quantitative-comparison format',['Arithmetic & Number Sense','Ratios, Proportion & Percentages','Word Problems & Reasoning','Quantitative Comparisons']),
+        T('Arithmetic',40,'number sense, operations, fractions and decimals, ratio and proportion, percentages, rates, word problems; some items in quantitative-comparison format',['Arithmetic & Number Sense','Ratios, Proportion & Percentages','Word Problems & Reasoning','Quantitative Comparisons','Motion, Speed & Work Rates']),
         T('Geometry',24,'angles, triangles, polygons, circles, perimeter, area and volume, coordinate basics',['Geometry & Measurement']),
         T('Algebra',23,'expressions, linear and quadratic equations, inequalities, sequences and patterns',['Algebra Essentials','Sequences & Patterns']),
         T('Statistics and analysis',13,'reading tables and charts, averages, simple probability, data interpretation',['Data Analysis & Probability'])]},
