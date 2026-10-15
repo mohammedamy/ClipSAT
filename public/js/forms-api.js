@@ -401,9 +401,12 @@
       }
       if (q.type !== 'frq' && q.choices) {
         q.choices.forEach(function (c, ci) {
-          var cText = autoMath(c);
-          var needsC = mathImg ? (typeof mathImg.needsChoiceImage === 'function' ? mathImg.needsChoiceImage(cText) : mathImg.needsImage(cText)) : false;
-          if (needsC) jobs.push({ qi: qi, ci: ci, text: cText, figure: null, figureHtml: null });
+          var cFig = (typeof c === 'object' && c !== null) ? (c.figure || c.fig || (c.type ? c : null)) : ((q.choiceFigures && q.choiceFigures[ci]) || null);
+          var cHtml = (typeof c === 'string' && c.indexOf('<svg') !== -1) ? c : ((typeof c === 'object' && c && c.figureHtml) ? c.figureHtml : null);
+          var cRaw = (typeof c === 'object' && c !== null) ? (c.text || c.label || '') : String(c != null ? c : '');
+          var cText = autoMath(cRaw);
+          var needsC = (cFig || cHtml) ? true : (mathImg ? (typeof mathImg.needsChoiceImage === 'function' ? mathImg.needsChoiceImage(cText) : mathImg.needsImage(cText)) : false);
+          if (needsC) jobs.push({ qi: qi, ci: ci, text: cText, figure: cFig, figureHtml: cHtml });
         });
       }
     });
@@ -452,7 +455,10 @@
           var qText = mathToPlainText(q.text);
           var question;
           if (q.type !== 'frq' && q.choices && q.choices.length) {
-            var options = q.choices.map(function (c) { return { value: mathToPlainText(c) }; });
+            var options = q.choices.map(function (c) {
+              var val = (typeof c === 'object' && c !== null) ? (c.text || c.label || '') : String(c != null ? c : '');
+              return { value: mathToPlainText(val) };
+            });
             dedupeOptionValues(options);
             var qChoiceImages = imgs.choiceImages[i] || {};
             options.forEach(function (opt, ci) {

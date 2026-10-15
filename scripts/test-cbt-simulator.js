@@ -102,6 +102,13 @@ it('Includes cbt-palette-modal in base.njk', () => {
   assert.ok(baseContent.includes('id="cbt-palette-modal"'), 'base.njk must contain #cbt-palette-modal');
 });
 
+it('CBT Simulator guarantees figure loading, error recovery, and diagram quota', () => {
+  assert.ok(cbtContent.includes('_ensureFigures'), 'Must ensure figures are loaded before exam begins');
+  assert.ok(cbtContent.includes('targetFigs = Math.min(withFig.length'), 'Must allocate diagram quota for questions');
+  assert.ok(cbtContent.includes('Question Bank Unavailable'), 'Must render retry UI if bank is missing');
+  assert.ok(cbtContent.includes('CBT Preparation Error'), 'Must render error UI on initialization exception');
+});
+
 console.log(`\n── CBT Simulator Tests Summary: ${passed} passed, ${failed} failed ──`);
 if (failed > 0) process.exit(1);
 console.log('✅ All CBT Simulator unit tests passed successfully!\n');

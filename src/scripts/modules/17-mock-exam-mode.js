@@ -500,6 +500,17 @@
 
   window.openMockExam = function(viewId, pidx){
     var trackId = String(viewId || '').toLowerCase().trim();
+    if(!trackId && typeof window !== 'undefined'){
+      if(window.location && window.location.pathname){
+        var match = window.location.pathname.match(/\/([a-z0-9_-]+)/);
+        if(match && match[1] && match[1] !== 'home') trackId = match[1];
+      }
+      if(!trackId && window.CLIPSAT_TRACK && window.CLIPSAT_TRACK !== 'home'){
+        trackId = window.CLIPSAT_TRACK;
+      }
+    }
+    if(!trackId) trackId = 'sat';
+
     pidx = parseInt(pidx, 10) || 0;
     _trackId = trackId;
     _pidx = pidx;
@@ -514,16 +525,32 @@
 
     var body = document.getElementById('mock-exam-body');
     if(body){
-      body.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--muted)"><div class="ai-spinner" style="margin:0 auto 16px"></div><p>Preparing Computer-Based Test (CBT) environment…</p></div>';
+      body.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--muted)">'
+        + '<div class="ai-spinner" style="margin:0 auto 16px"></div>'
+        + '<p style="font-size:1.05rem;font-weight:600;margin-bottom:6px">Preparing Computer-Based Test (CBT) environment…</p>'
+        + '<p style="font-size:.85rem;color:var(--muted,#64748b)">Loading question bank & rendering engine for ' + trackId.toUpperCase() + '</p>'
+        + '</div>';
     }
     overlay.classList.add('show');
     document.body.classList.add('cbt-open');
 
-    _ensureBank(trackId).then(function(bank){
+    var loadFigures = (typeof window._ensureFigures === 'function')
+      ? window._ensureFigures().catch(function(){})
+      : Promise.resolve();
+
+    Promise.all([_ensureBank(trackId), loadFigures]).then(function(res){
+      var bank = res[0];
       if(!bank){
-        alert('Question bank for "' + trackId.toUpperCase() + '" is not available.');
-        overlay.classList.remove('show');
-        document.body.classList.remove('cbt-open');
+        if(body){
+          body.innerHTML = '<div style="text-align:center;padding:60px 20px">'
+            + '<div style="font-size:2.4rem;margin-bottom:12px">⚠️</div>'
+            + '<h3 style="color:#dc2626;font-size:1.25rem;font-weight:700;margin-bottom:8px">Question Bank Unavailable</h3>'
+            + '<p style="color:var(--muted,#64748b);font-size:.92rem;max-width:480px;margin:0 auto 20px">The question bank for "<strong>' + trackId.toUpperCase() + '</strong>" could not be loaded. Please check your network connection and try again.</p>'
+            + '<div style="display:flex;gap:12px;justify-content:center">'
+            + '  <button type="button" class="cbt-nav-btn cbt-nav-primary" onclick="window.openMockExam(\'' + trackId + '\',' + pidx + ')">↻ Retry</button>'
+            + '  <button type="button" class="cbt-nav-btn" onclick="window.closeMockExam()">✕ Close</button>'
+            + '</div></div>';
+        }
         return;
       }
 
@@ -548,7 +575,8 @@
               text: q.text || q.q || '',
               choices: q.choices || [],
               answer: q.answer,
-              sol: q.sol || q.expl || ''
+              sol: q.sol || q.expl || '',
+              figure: q.figure || q.fig
             });
           });
         };
@@ -571,21 +599,44 @@
         if(filtered.length >= 8) pool = filtered;
       }
 
-      // Shuffle pool
-      for(var i = pool.length - 1; i > 0; i--){
-        var j = Math.floor(Math.random() * (i + 1));
-        var t = pool[i]; pool[i] = pool[j]; pool[j] = t;
+      var targetCount = Math.min(paper.qCount || 20, pool.length);
+
+      // Guarantee healthy presence of diagrams and graphs
+      var withFig = pool.filter(function(q){ return !!(q.figure || q.fig || q.table); });
+      var noFig = pool.filter(function(q){ return !(q.figure || q.fig || q.table); });
+
+      // Shuffle withFig and noFig
+      for(var wf = withFig.length - 1; wf > 0; wf--){
+        var rwf = Math.floor(Math.random() * (wf + 1));
+        var twf = withFig[wf]; withFig[wf] = withFig[rwf]; withFig[rwf] = twf;
+      }
+      for(var nf = noFig.length - 1; nf > 0; nf--){
+        var rnf = Math.floor(Math.random() * (nf + 1));
+        var tnf = noFig[nf]; noFig[nf] = noFig[rnf]; noFig[rnf] = tnf;
       }
 
-      var targetCount = Math.min(paper.qCount || 20, pool.length);
+      var targetFigs = Math.min(withFig.length, Math.max(1, Math.ceil(targetCount * 0.30)));
       var picked = [];
       var seenKeys = new Set();
-      for(var p = 0; p < pool.length && picked.length < targetCount; p++){
-        var qObj = pool[p];
-        var k = (qObj.text || qObj.q || '').trim();
-        if(!seenKeys.has(k)){
-          seenKeys.add(k);
-          picked.push(qObj);
+
+      // Pick diagrams first
+      for(var f = 0; f < withFig.length && picked.length < targetFigs; f++){
+        var qf = withFig[f];
+        var kf = (qf.text || qf.q || '').trim();
+        if(!seenKeys.has(kf)){
+          seenKeys.add(kf);
+          picked.push(qf);
+        }
+      }
+
+      // Fill remainder
+      var remainder = noFig.concat(withFig.filter(function(x){ return !seenKeys.has((x.text || x.q || '').trim()); }));
+      for(var r = 0; r < remainder.length && picked.length < targetCount; r++){
+        var qr = remainder[r];
+        var kr = (qr.text || qr.q || '').trim();
+        if(!seenKeys.has(kr)){
+          seenKeys.add(kr);
+          picked.push(qr);
         }
       }
 
@@ -600,10 +651,21 @@
         }
       }
 
+      // Distribute diagram questions naturally across the exam
+      for(var s = picked.length - 1; s > 0; s--){
+        var js = Math.floor(Math.random() * (s + 1));
+        var ts = picked[s]; picked[s] = picked[js]; picked[js] = ts;
+      }
+
       _pool = picked.map(function(q){ return window._shuffleQ ? window._shuffleQ(q) : q; });
       if(!_pool.length){
-        alert('No questions available for this paper.');
-        overlay.classList.remove('show');
+        if(body){
+          body.innerHTML = '<div style="text-align:center;padding:60px 20px">'
+            + '<h3 style="color:#b45309;font-size:1.2rem;margin-bottom:8px">No Questions Available</h3>'
+            + '<p style="color:var(--muted);font-size:.9rem;margin-bottom:16px">No questions could be matched for this paper.</p>'
+            + '<button type="button" class="cbt-nav-btn" onclick="window.closeMockExam()">✕ Close</button>'
+            + '</div>';
+        }
         return;
       }
 
@@ -667,6 +729,18 @@
           submitMockExam();
         }
       }, 1000);
+    }).catch(function(err){
+      console.error('CBT initialization error:', err);
+      if(body){
+        body.innerHTML = '<div style="text-align:center;padding:60px 20px">'
+          + '<div style="font-size:2.4rem;margin-bottom:12px">⚠️</div>'
+          + '<h3 style="color:#dc2626;font-size:1.25rem;font-weight:700;margin-bottom:8px">CBT Preparation Error</h3>'
+          + '<p style="color:var(--muted,#64748b);font-size:.92rem;max-width:480px;margin:0 auto 20px">' + String((err && err.message) || 'An unexpected error occurred while loading CBT.') + '</p>'
+          + '<div style="display:flex;gap:12px;justify-content:center">'
+          + '  <button type="button" class="cbt-nav-btn cbt-nav-primary" onclick="window.openMockExam(\'' + trackId + '\',' + pidx + ')">↻ Retry</button>'
+          + '  <button type="button" class="cbt-nav-btn" onclick="window.closeMockExam()">✕ Close</button>'
+          + '</div></div>';
+      }
     });
   };
 

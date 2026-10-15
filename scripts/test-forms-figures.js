@@ -59,10 +59,10 @@ assert.strictEqual(ptFrac, 'a/b', 'mathToPlainText converts fractions cleanly');
 
 console.log('  ✓ ClipSATForms.mathToPlainText handles LaTeX transformations accurately');
 
-// 3. Verify bank-exam, ai-test, and chapter-quiz codebases have figure capture
+// 3. Verify bank-exam, ai-test, chapter-quiz, and genTest codebases have figure capture
 const bankExamCode = fs.readFileSync('src/scripts/modules/02b-bank-exam.js', 'utf8');
-assert(bankExamCode.includes('figure:q.figure||null,figureHtml:_fHtml||null'),
-  '02b-bank-exam.js must include figure and figureHtml in _csCaptureQ');
+assert(bankExamCode.includes('figure:q.figure||q.fig||null,figureHtml:_fHtml||null'),
+  '02b-bank-exam.js must include figure: q.figure||q.fig||null and figureHtml in _csCaptureQ');
 
 const aiTestCode = fs.readFileSync('src/scripts/modules/05a-ai-test.js', 'utf8');
 assert(aiTestCode.includes('figure:_aiFig||null,figureHtml:_fHtml||null'),
@@ -71,6 +71,10 @@ assert(aiTestCode.includes('figure:_aiFig||null,figureHtml:_fHtml||null'),
 const chapterQuizCode = fs.readFileSync('src/scripts/modules/03-ai-chat-and-practice-quiz.js', 'utf8');
 assert(chapterQuizCode.includes('figure:_f||null,figureHtml:_fHtml||null'),
   '03-ai-chat-and-practice-quiz.js must include figure and figureHtml in _csCaptureQ');
+
+const genTestCode = fs.readFileSync('src/scripts/modules/05-test-generator-and-ai-settings.js', 'utf8');
+assert(genTestCode.includes('figure: q.figure || q.fig || null,') && genTestCode.includes('figureHtml: _fHtml || null'),
+  '05-test-generator-and-ai-settings.js must include figure and figureHtml in _csCaptureQ');
 
 const quizCaptureUiCode = fs.readFileSync('public/js/quiz-capture-ui.js', 'utf8');
 assert(quizCaptureUiCode.includes('mi.needsImage(q.text, fig, fHtml)'),

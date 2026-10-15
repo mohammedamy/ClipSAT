@@ -931,7 +931,7 @@
           var isMCQ=(q.type==='mcq'||q.type==='data');
           ak.push({n:qNum,type:q.type,domain:q.domain,answer:isMCQ?globalLetters[q.answer]:(q.answer!=null?String(q.answer):'FRQ'),sol:q.sol||''});
           var _fHtml=renderQFig(q);
-          _csCaptureQ.push({text:q.text||q.q||'',choices:isMCQ?(q.choices||[]).slice():[],correctIndex:isMCQ?q.answer:null,type:isMCQ?'mcq':'frq',points:1,figure:q.figure||null,figureHtml:_fHtml||null});
+          _csCaptureQ.push({text:q.text||q.q||'',choices:isMCQ?(q.choices||[]).slice():[],correctIndex:isMCQ?q.answer:null,type:isMCQ?'mcq':'frq',points:1,figure:q.figure||q.fig||null,figureHtml:_fHtml||null});
           h+='<div class="fep-item '+(q.type==='frq'?'fep-frq':'fep-mcq')+'">';
           h+='<div class="fep-item-head"><span class="fep-inum">'+qNum+'</span><span class="fep-domain-tag">'+esc(q.domain)+'</span></div>';
           if(_fHtml)h+='<div class="fep-figure">'+_fHtml+'</div>';
@@ -1072,7 +1072,7 @@
           answerKey.push({n:qNum,type:(isFRQ?'frq':'mcq'),domain:q.domain,
             answer:(isMCQ?pL[q.answer]:(q.answer!=null?String(q.answer):'FRQ')),sol:q.sol||''});
           var _fHtml=renderQFig(q);
-          _csCaptureQ.push({text:q.text||q.q||'',choices:isMCQ?(q.choices||[]).slice():[],correctIndex:isMCQ?q.answer:null,type:isFRQ?'frq':'mcq',points:1,figure:q.figure||null,figureHtml:_fHtml||null});
+          _csCaptureQ.push({text:q.text||q.q||'',choices:isMCQ?(q.choices||[]).slice():[],correctIndex:isMCQ?q.answer:null,type:isFRQ?'frq':'mcq',points:1,figure:q.figure||q.fig||null,figureHtml:_fHtml||null});
 
           h+='<div class="fep-item '+(isFRQ?'fep-frq fep-frq-full':'fep-mcq')+'">';
           h+='<div class="fep-item-head"><span class="fep-inum">'+qNum+'</span>';

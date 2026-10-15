@@ -7,8 +7,7 @@
 (function(){
 'use strict';
 
-function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function renderMathFigure(spec){ return window.renderMathFigure(spec); }
+function renderMathFigure(spec){ return (typeof window.renderMathFigure === 'function' ? window.renderMathFigure(spec) : (typeof window._renderFig === 'function' ? window._renderFig(spec) : '')); }
 
 /* ── callAI — uses the shared Groq provider (same key/models as
    the Ask Mr. Mohamed chatbot) ── */
@@ -719,7 +718,8 @@ function aiGenTest(btn){
   out.innerHTML='<div class="ai-gen-loading"><div class="ai-spinner"></div><p>AI is generating '+n+' fresh questions for <strong>'+viewId.toUpperCase()+'</strong>…</p><p style="font-size:.82rem;opacity:.7">This may take 10–30 seconds</p></div>';
   /* The blueprint decides topics and difficulty slot by slot; the AI only fills slots (05d). */
   var _bp=null, _assembly=null, _verifyRes=null;
-  window._ensureAIExam().then(function(){
+  var _loadFigs=(typeof window._ensureFigures==='function')?window._ensureFigures().catch(function(){}):Promise.resolve();
+  Promise.all([window._ensureAIExam(), _loadFigs]).then(function(){
   _bp=examBlueprint(viewId);
   var _slots=window.ClipSATAssembler.plan(_bp,[{q:n,type:'mcq'}],lvl);
   return window.ClipSATAssembler.fill({viewId:viewId,blueprint:_bp,slots:_slots,system:examSystemPrompt(viewId),syllabus:examSyllabus(viewId),
@@ -887,7 +887,8 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
   /* The blueprint decides every slot (part, topic, difficulty, type, calculator);
      the AI only fills slots, and each question is reviewed against its slot (05d). */
   var _bp=null, _assembly=null, _verifyRes=null;
-  window._ensureAIExam().then(function(){
+  var _loadFigs=(typeof window._ensureFigures==='function')?window._ensureFigures().catch(function(){}):Promise.resolve();
+  Promise.all([window._ensureAIExam(), _loadFigs]).then(function(){
   _bp=examBlueprint(viewId,examName);
   var _slots=window.ClipSATAssembler.plan(_bp,sections,'all');
   var _promptKey=examName||viewId;

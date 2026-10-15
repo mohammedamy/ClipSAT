@@ -183,7 +183,13 @@
         var fHtml = q.figureHtml || null;
         if (mi && mi.needsImage(q.text, fig, fHtml)) mathCount++;
         if (q.type !== 'frq' && q.choices) {
-          q.choices.forEach(function (c) { if (mi && (mi.needsChoiceImage ? mi.needsChoiceImage(c) : mi.needsImage(c))) mathCount++; });
+          q.choices.forEach(function (c, ci) {
+            var cFig = (typeof c === 'object' && c !== null) ? (c.figure || c.fig || (c.type ? c : null)) : ((q.choiceFigures && q.choiceFigures[ci]) || null);
+            var cHtml = (typeof c === 'string' && c.indexOf('<svg') !== -1) ? c : ((typeof c === 'object' && c && c.figureHtml) ? c.figureHtml : null);
+            var cRaw = (typeof c === 'object' && c !== null) ? (c.text || c.label || '') : String(c != null ? c : '');
+            if (cFig || cHtml) mathCount++;
+            else if (mi && (mi.needsChoiceImage ? mi.needsChoiceImage(cRaw) : mi.needsImage(cRaw))) mathCount++;
+          });
         }
       });
       openPanel('<h3>Creating your form…</h3><p class="cs-gform-note" id="cs-gform-progress">'
