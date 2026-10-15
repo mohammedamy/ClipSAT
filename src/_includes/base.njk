@@ -303,6 +303,7 @@
                  onblur="setTimeout(function(){window.CSSearch&&window.CSSearch.close()},200)">
           <div id="topic-search-results" role="listbox"></div>
         </span>
+        <button class="mistake-nav-btn" id="glossaryNavBtn" onclick="window.openGlossaryModal&&window.openGlossaryModal()" title="Bilingual Mathematics Glossary" aria-label="Bilingual Math Glossary">📖 <span data-i18n="nav.glossary">Glossary</span></button>
         <button class="mistake-nav-btn" id="mistakeBtn" onclick="openMistakes()" title="Review mistakes" aria-label="Review mistakes">📋 <span data-i18n="nav.mistakes">Mistakes</span></button>
         <button class="mistake-nav-btn" id="progressBtn" onclick="openProgress()" title="View your progress across tracks" aria-label="View your progress">📊 <span data-i18n="nav.progress">Progress</span></button>
         <button class="mistake-nav-btn" id="cloudSignInBtn" title="Sign in to sync your progress across devices" aria-label="Sign in to sync your progress" onclick="window.openCloudAuthModal&&window.openCloudAuthModal()">☁️ <span>Sign in</span></button>
@@ -388,6 +389,28 @@
       <button class="tbtn" onclick="timerStop()">✕ Stop</button>
     </div>
   </div>
+  <!-- ══ Bilingual Math Glossary Modal ══ -->
+  <div id="glossaryOverlay" class="glossary-overlay" role="dialog" aria-modal="true" aria-label="Bilingual Mathematics Glossary" onclick="if(event.target===this)window.closeGlossaryModal&&window.closeGlossaryModal()">
+    <div class="glossary-modal">
+      <div class="glossary-header">
+        <h3 class="glossary-title">📖 <span data-i18n="glossary.title">Bilingual Math Glossary</span> <span style="font-size:0.9rem;font-weight:normal;color:var(--muted)">/ القاموس الرياضي</span></h3>
+        <button type="button" class="glossary-close" onclick="window.closeGlossaryModal&&window.closeGlossaryModal()" aria-label="Close">✕</button>
+      </div>
+      <div class="glossary-search-wrap">
+        <input type="search" id="glossarySearchInput" class="glossary-search-input" placeholder="Search term in English or Arabic (e.g., slope, ميل, bearing, integral)..." oninput="window.CSGlossary&&window.CSGlossary.render(this.value)">
+        <div class="glossary-filters">
+          <button type="button" class="glossary-filter-pill active" data-domain="all" onclick="window.CSGlossary&&window.CSGlossary.filter('all')">All / الكل</button>
+          <button type="button" class="glossary-filter-pill" data-domain="algebra" onclick="window.CSGlossary&&window.CSGlossary.filter('algebra')">Algebra / الجبر</button>
+          <button type="button" class="glossary-filter-pill" data-domain="geometry" onclick="window.CSGlossary&&window.CSGlossary.filter('geometry')">Geometry / الهندسة</button>
+          <button type="button" class="glossary-filter-pill" data-domain="trig" onclick="window.CSGlossary&&window.CSGlossary.filter('trig')">Trigonometry / المثلثات</button>
+          <button type="button" class="glossary-filter-pill" data-domain="statistics" onclick="window.CSGlossary&&window.CSGlossary.filter('statistics')">Statistics / الإحصاء</button>
+          <button type="button" class="glossary-filter-pill" data-domain="calculus" onclick="window.CSGlossary&&window.CSGlossary.filter('calculus')">Calculus / التفاضل والتكامل</button>
+        </div>
+      </div>
+      <div id="glossaryBody" class="glossary-body"></div>
+    </div>
+  </div>
+
   <div id="mistake-overlay" role="dialog" aria-modal="true" aria-label="Mistake log" onclick="if(event.target===this)closeMistakes()">
     <div id="mistake-box">
       <button id="mistake-close" onclick="closeMistakes()" aria-label="Close">✕</button>

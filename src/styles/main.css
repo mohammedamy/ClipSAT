@@ -2411,9 +2411,38 @@ body.dark .ix-mt-item:hover,body.dark .ix-mt-item.sel{background:rgba(96,165,250
   animation:mv-in .12s ease;
 }
 @keyframes mv-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-.mv-popup-term{font-weight:800;color:var(--indigo,#4f46e5);display:block;margin-bottom:4px;font-size:.88rem;}
+.mv-popup-header{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:6px;padding-right:18px;}
+.mv-popup-term{font-weight:800;color:var(--indigo,#4f46e5);display:inline-block;font-size:.88rem;}
+.mv-popup-ar{font-weight:700;color:var(--amber,#d97706);font-size:.85rem;}
+.mv-popup-def-en{font-size:.82rem;color:var(--ink,#1e293b);margin-bottom:4px;line-height:1.45;}
+.mv-popup-def-ar{font-size:.80rem;color:var(--muted,#64748b);line-height:1.45;border-top:1px dashed var(--border,#e2e8f0);padding-top:4px;}
 .mv-popup-close{position:absolute;top:6px;right:8px;background:none;border:none;font-size:1rem;cursor:pointer;color:var(--muted,var(--text-3));line-height:1;padding:2px 4px;}
 .mv-popup-close:hover{color:var(--red,#dc2626);}
+
+/* ══ Bilingual Math Glossary Modal ══ */
+.glossary-overlay{position:fixed;inset:0;z-index:99998;background:rgba(15,23,42,.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .2s ease;}
+.glossary-overlay.open{opacity:1;pointer-events:auto;}
+.glossary-modal{background:var(--panel,#fff);border-radius:14px;width:100%;max-width:780px;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 20px 40px rgba(0,0,0,.25);border:1px solid var(--border,#e2e8f0);overflow:hidden;transform:scale(.96);transition:transform .2s ease;}
+.glossary-overlay.open .glossary-modal{transform:scale(1);}
+.glossary-header{padding:16px 20px;border-bottom:1px solid var(--border,#e2e8f0);display:flex;align-items:center;justify-content:space-between;background:var(--bg,#f8fafc);}
+.glossary-title{margin:0;font-size:1.15rem;font-weight:800;color:var(--ink,#1e293b);display:flex;align-items:center;gap:8px;}
+.glossary-close{background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--muted,#64748b);line-height:1;padding:4px 8px;border-radius:6px;}
+.glossary-close:hover{color:var(--red,#dc2626);background:rgba(0,0,0,.05);}
+.glossary-search-wrap{padding:12px 20px;border-bottom:1px solid var(--border,#e2e8f0);display:flex;flex-direction:column;gap:10px;}
+.glossary-search-input{width:100%;padding:10px 14px;border:1.5px solid var(--border,#cbd5e1);border-radius:8px;font-size:.95rem;background:var(--panel,#fff);color:var(--ink,#1e293b);outline:none;}
+.glossary-search-input:focus{border-color:var(--indigo,#4f46e5);box-shadow:0 0 0 3px rgba(79,70,229,.12);}
+.glossary-filters{display:flex;gap:6px;flex-wrap:wrap;}
+.glossary-filter-pill{background:var(--bg,#f1f5f9);border:1px solid var(--border,#cbd5e1);border-radius:20px;padding:4px 12px;font-size:.78rem;font-weight:600;cursor:pointer;color:var(--muted,#64748b);transition:all .15s ease;}
+.glossary-filter-pill:hover,.glossary-filter-pill.active{background:var(--indigo,#4f46e5);color:#fff;border-color:var(--indigo,#4f46e5);}
+.glossary-body{padding:16px 20px;overflow-y:auto;flex:1;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px;}
+.glossary-card{background:var(--card-bg,#f8fafc);border:1px solid var(--border,#e2e8f0);border-radius:10px;padding:12px 14px;transition:transform .15s ease,box-shadow .15s ease;}
+.glossary-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.06);border-color:var(--indigo,#4f46e5);}
+.glossary-card-top{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:6px;}
+.glossary-card-en{font-weight:750;font-size:.95rem;color:var(--indigo,#4f46e5);}
+.glossary-card-ar{font-weight:700;font-size:.95rem;color:var(--amber,#d97706);}
+.glossary-card-def-en{font-size:.83rem;line-height:1.5;color:var(--ink,#1e293b);margin-bottom:6px;}
+.glossary-card-def-ar{font-size:.81rem;line-height:1.5;color:var(--muted,#64748b);border-top:1px dashed var(--border,#e2e8f0);padding-top:6px;}
+.glossary-empty{grid-column:1 / -1;text-align:center;padding:32px 16px;color:var(--muted,#64748b);font-size:.9rem;}
 /* ══════════════════════════════════════════════════════
    LAYOUT v4 — Compact, readable, responsive
    ══════════════════════════════════════════════════════ */

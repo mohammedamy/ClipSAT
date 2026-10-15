@@ -1,7 +1,7 @@
 (function(){window.i18n = (function(){
     var _strings = {
       en: {
-        'nav.home':'Home','nav.mistakes':'Mistakes','nav.whats-new':"What's New?",
+        'nav.home':'Home','nav.glossary':'Glossary','glossary.title':'Bilingual Math Glossary','nav.mistakes':'Mistakes','nav.whats-new':"What's New?",
         'quiz.generate':'Generate Quiz','quiz.level':'Level','quiz.count':'Questions',
         'quiz.chapterQuiz':'Chapter Quiz',
         'quiz.mixed':'Mixed','quiz.easy':'Easy','quiz.medium':'Medium','quiz.hard':'Hard',
