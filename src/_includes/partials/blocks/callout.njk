@@ -60,6 +60,6 @@
 {% else %}
 <div class="callout {{ block.style }}">
   {% if block.label %}<span class="lab">{{ bl.text(block.label) }}{% if block.copyLatex %} <button class="copy-eq-btn" type="button" data-latex="{{ block.copyLatex }}">📋 Copy LaTeX</button>{% endif %}</span>{% endif %}
-  <p>{{ bl.text(block.body, 'span') }}</p>
+  {{ bl.text(block.body, 'div') }}
 </div>
 {% endif %}

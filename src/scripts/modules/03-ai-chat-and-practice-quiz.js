@@ -237,6 +237,10 @@ window.launchPracticeQuiz=function(mistake){
       if(!inMath && s[i]==='<' && i+1<L && (s[i+1]==='/'||/[a-zA-Z]/.test(s[i+1]))){
         var tj=s.indexOf('>',i);if(tj!==-1){out+=s.slice(i,tj+1);i=tj+1;continue;}
       }
+      /* ── outside math: unescape LaTeX-escaped percent and dollar so raw backslashes do not show ── */
+      if(!inMath && s[i]==='\\' && i+1<L && (s[i+1]==='%' || s[i+1]==='$')){
+        out+=s[i+1]; i+=2; continue;
+      }
       /* ── handle & (bare or as &amp; entity) ── */
       var c=s[i];
       if(c==='&'){
@@ -274,6 +278,27 @@ window.launchPracticeQuiz=function(mistake){
   }
   /* shared with the assignment view (assignment-view.js, ADR 0047) */
   window.CSQuizMath=_maths;
+
+  function _autoMath(s){
+    if(!s && s !== 0) return '';
+    s = String(s).trim();
+    if(s.indexOf('\\(')!==-1 || s.indexOf('\\[')!==-1 || s.indexOf('$$')!==-1 || (s.startsWith('$')&&s.endsWith('$'))){
+      return s;
+    }
+    if(/<[a-z/][\s\S]*>/i.test(s) || /[\u0600-\u06FF]/.test(s)){
+      return s;
+    }
+    if(s.indexOf('\\')!==-1) return '\\(' + s + '\\)';
+    if(/[\^_{}±≤≥≠≈√πθ∞×÷·]/.test(s) && !/[^\\]%|^%/.test(s)){
+      return '\\(' + s + '\\)';
+    }
+    if(/^[a-zA-Z](?:\([a-zA-Z0-9]+\))?\s*(=|<|>|<=|>=)\s*[-+]?[0-9a-zA-Z]/.test(s) && !/[^\\]%|^%/.test(s)){
+      var wrapped = s.replace(/\b(or|and)\b/g, '\\text{ $1 }');
+      return '\\(' + wrapped + '\\)';
+    }
+    return s;
+  }
+  window.CSAutoMath=_autoMath;
 
   window.genChapterQuiz=function(btn){
     var wrap=btn.closest('.ch-quiz-wrap');
@@ -520,10 +545,7 @@ window.launchPracticeQuiz=function(mistake){
       q=window._shuffleQ?window._shuffleQ(q):q; /* randomize which position holds the correct choice */
       var qtext=_maths(q.text||q.q||'');
       var choices=(q.choices||[]).map(function(c){
-        var s=String(c||'');
-        /* auto-wrap bare LaTeX (no delimiters) in \( \) so MathJax processes it */
-        if(s.indexOf('\\(')===-1&&s.indexOf('\\[')===-1&&/\\[a-zA-Z{([\\]/.test(s)){s='\\('+s+'\\)';}
-        return _maths(s);
+        return _maths(_autoMath(c));
       });
       var ans=typeof q.answer!=='undefined'?q.answer:(typeof q.ans!=='undefined'?q.ans:0);
       /* Google Forms/Classroom capture — see public/js/quiz-capture-ui.js */

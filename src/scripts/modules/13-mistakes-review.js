@@ -109,9 +109,10 @@ function reviewMistakes(){
     var progress = '<div style="font-size:.78rem;color:var(--muted);margin-bottom:14px">Mistake '+(idx+1)+' of '+stack.length+'</div>';
     /* auto-wrap raw LaTeX (no delimiters) so MathJax can typeset it */
     var _wm = function(s){
+      if(typeof window.CSAutoMath==='function') return window.CSAutoMath(s);
       if(!s) return '';
       s = String(s);
-      if(s.indexOf('\\(')===-1 && s.indexOf('\\[')===-1 && /\\[a-zA-Z{([\\]/.test(s)) s='\\('+s+'\\)';
+      if(s.indexOf('\\(')===-1 && s.indexOf('\\[')===-1 && s.indexOf('\\')!==-1) s='\\('+s+'\\)';
       return s;
     };
     var qText = _wm(m.q || '(Question text not saved)');

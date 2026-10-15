@@ -98,17 +98,42 @@
     return selected.slice(0, targetCount);
   }
 
+  function _autoMath(s){
+    if(window.CSAutoMath)return window.CSAutoMath(s);
+    if(!s&&s!==0)return '';
+    s=String(s).trim();
+    if(s.indexOf('\\(')!==-1||s.indexOf('\\[')!==-1||s.indexOf('$$')!==-1||(s.startsWith('$')&&s.endsWith('$'))){
+      return s;
+    }
+    if(/<[a-z/][\s\S]*>/i.test(s)||/[\u0600-\u06FF]/.test(s)){
+      return s;
+    }
+    if(s.indexOf('\\')!==-1)return '\\('+s+'\\)';
+    if(/[\^_{}±≤≥≠≈√πθ∞×÷·]/.test(s)&&!/[^\\]%|^%/.test(s)){
+      return '\\('+s+'\\)';
+    }
+    if(/^[a-zA-Z](?:\([a-zA-Z0-9]+\))?\s*(=|<|>|<=|>=)\s*[-+]?[0-9a-zA-Z]/.test(s)&&!/[^\\]%|^%/.test(s)){
+      var wrapped=s.replace(/\b(or|and)\b/g,'\\text{ $1 }');
+      return '\\('+wrapped+'\\)';
+    }
+    return s;
+  }
+
   function formatMath(s) {
     if (!s && s !== 0) return '';
-    s = String(s);
-    if (s.indexOf('\\(') === -1 && s.indexOf('\\[') === -1 && s.indexOf('$$') === -1 && s.indexOf('$') === -1 && /\\[a-zA-Z{([\\]/.test(s)) {
-      s = '\\(' + s + '\\)';
-    }
-    var out = '', i = 0, L = s.length;
+    s = _autoMath(s);
+    var out = '', inM = false, i = 0, L = s.length;
     while (i < L) {
+      if(!inM && s.slice(i,i+2)==='\\('){out+='\\(';i+=2;inM=true;continue;}
+      if(!inM && s.slice(i,i+2)==='\\['){out+='\\[';i+=2;inM=true;continue;}
+      if(inM && s.slice(i,i+2)==='\\)'){out+='\\)';i+=2;inM=false;continue;}
+      if(inM && s.slice(i,i+2)==='\\]'){out+='\\]';i+=2;inM=false;continue;}
       if (s[i] === '<' && i + 1 < L && (s[i + 1] === '/' || /[a-zA-Z]/.test(s[i + 1]))) {
         var tj = s.indexOf('>', i);
         if (tj !== -1) { out += s.slice(i, tj + 1); i = tj + 1; continue; }
+      }
+      if (!inM && s[i] === '\\' && i + 1 < L && (s[i + 1] === '%' || s[i + 1] === '$')) {
+        out += s[i + 1]; i += 2; continue;
       }
       var c = s[i];
       if (c === '&') {

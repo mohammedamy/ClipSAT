@@ -121,8 +121,7 @@ window.CSAssign = {
       var opts=q.choices||q.options||[];
       var ans=q.answer!=null?q.answer:q.correct;
       var optHtml=opts.map(function(o,j){
-        var s=String(o||'');
-        if(s.indexOf('\\(')===-1&&s.indexOf('\\[')===-1&&/\\[a-zA-Z{([\\]/.test(s)){s='\\('+s+'\\)';}
+        var s=typeof window.CSAutoMath==='function'?window.CSAutoMath(o):String(o||'');
         return '<div style="margin:3px 0 3px 12px">'+optLetter(j)+'. '+_mesc(s)+'</div>';
       }).join('');
       var figH = '';

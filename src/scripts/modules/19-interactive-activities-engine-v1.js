@@ -38,7 +38,8 @@ function _tex(s){
   if(out.indexOf('$') !== -1){
     out = out.replace(/\$([^\$\n]+)\$/g, '\\($1\\)');
   }
-  if(out.indexOf('\\(') === -1 && out.indexOf('\\[') === -1 && /\\[a-zA-Z]/.test(out)){
+  if(typeof window.CSAutoMath === 'function') return window.CSAutoMath(out);
+  if(out.indexOf('\\(') === -1 && out.indexOf('\\[') === -1 && out.indexOf('\\') !== -1){
     out = '\\(' + out + '\\)';
   }
   return out;

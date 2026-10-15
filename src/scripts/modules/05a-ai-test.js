@@ -298,6 +298,8 @@ function examRefSheet(viewId){
   return h;
 }
 
+function _autoMath(s){if(window.CSAutoMath)return window.CSAutoMath(s);if(!s&&s!==0)return '';s=String(s).trim();if(s.indexOf('\\(')!==-1||s.indexOf('\\[')!==-1||s.indexOf('$$')!==-1||(s.startsWith('$')&&s.endsWith('$'))){return s;}if(/<[a-z/][\s\S]*>/i.test(s)||/[\u0600-\u06FF]/.test(s)){return s;}if(s.indexOf('\\')!==-1)return '\\('+s+'\\)';if(/[\^_{}±≤≥≠≈√πθ∞×÷·]/.test(s)&&!/[^\\]%|^%/.test(s)){return '\\('+s+'\\)';}if(/^[a-zA-Z](?:\([a-zA-Z0-9]+\))?\s*(=|<|>|<=|>=)\s*[-+]?[0-9a-zA-Z]/.test(s)&&!/[^\\]%|^%/.test(s)){var wrapped=s.replace(/\b(or|and)\b/g,'\\text{ $1 }');return '\\('+wrapped+'\\)';}return s;}
+
 /* ── Render one AI question ─────────────────────────── */
 function renderAIQuestion(q,idx,totalLetters,viewId){
   function _maths(s){
@@ -312,6 +314,7 @@ function renderAIQuestion(q,idx,totalLetters,viewId){
       if(inM&&s.slice(i,i+6)==='\\begin'){var b1=s.indexOf('{',i+6),e1=s.indexOf('}',b1+1);if(b1!==-1&&e1!==-1&&ALIGN_ENVS.some(function(v){return s.slice(b1+1,e1).indexOf(v)!==-1;}))aD++;}
       if(inM&&s.slice(i,i+4)==='\\end'){var b2=s.indexOf('{',i+4),e2=s.indexOf('}',b2+1);if(b2!==-1&&e2!==-1&&ALIGN_ENVS.some(function(v){return s.slice(b2+1,e2).indexOf(v)!==-1;})&&aD>0)aD--;}
       if(!inM&&s[i]==='<'&&i+1<L&&(s[i+1]==='/'||/[a-zA-Z]/.test(s[i+1]))){var tj=s.indexOf('>',i);if(tj!==-1){o+=s.slice(i,tj+1);i=tj+1;continue;}}
+      if(!inM&&s[i]==='\\'&&i+1<L&&(s[i+1]==='%'||s[i+1]==='$')){o+=s[i+1];i+=2;continue;}
       var c=s[i];
       if(c==='&'){
         var sm=s.indexOf(';',i+1);
@@ -403,9 +406,7 @@ function renderAIQuestion(q,idx,totalLetters,viewId){
     html+='<div class="aiq-choices">';
     chs.forEach(function(ch,ci){
       var letter=letters[ci]||String.fromCharCode(65+ci);
-      var chStr=String(ch||'');
-      /* auto-wrap bare LaTeX in \( \) so MathJax processes it */
-      if(chStr.indexOf('\\(')===-1&&chStr.indexOf('\\[')===-1&&/\\[a-zA-Z{([\\]/.test(chStr)) chStr='\\('+chStr+'\\)';
+      var chStr=_autoMath(ch);
       html+='<div class="aiq-choice" data-idx="'+ci+'" onclick="aiqSelect(this,'+idx+','+ci+')">';
       html+='<span class="aiq-cletter">'+letter+'</span>';
       html+='<span>'+_maths(chStr)+'</span>';
@@ -770,6 +771,7 @@ function _maths(s){
     if(inM&&s.slice(i,i+6)==='\\begin'){var b1=s.indexOf('{',i+6),e1=s.indexOf('}',b1+1);if(b1!==-1&&e1!==-1&&ALIGN_ENVS.some(function(v){return s.slice(b1+1,e1).indexOf(v)!==-1;}))aD++;}
     if(inM&&s.slice(i,i+4)==='\\end'){var b2=s.indexOf('{',i+4),e2=s.indexOf('}',b2+1);if(b2!==-1&&e2!==-1&&ALIGN_ENVS.some(function(v){return s.slice(b2+1,e2).indexOf(v)!==-1;})&&aD>0)aD--;}
     if(!inM&&s[i]==='<'&&i+1<L&&(s[i+1]==='/'||/[a-zA-Z]/.test(s[i+1]))){var tj=s.indexOf('>',i);if(tj!==-1){o+=s.slice(i,tj+1);i=tj+1;continue;}}
+    if(!inM&&s[i]==='\\'&&i+1<L&&(s[i+1]==='%'||s[i+1]==='$')){o+=s[i+1];i+=2;continue;}
     var c=s[i];
     if(c==='&'){
       var sm=s.indexOf(';',i+1);
@@ -1025,8 +1027,7 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
           html+='<div class="fep-choices aiq-choices">';
           chs.forEach(function(ch,ci){
             var letter=letters[ci]||String.fromCharCode(65+ci);
-            var s=String(ch||'');
-            if(s.indexOf('\\(')===-1&&s.indexOf('\\[')===-1&&/\\[a-zA-Z{([\\]/.test(s)){s='\\('+s+'\\)';}
+            var s=_autoMath(ch);
             html+='<div class="fep-choice aiq-choice" data-idx="'+ci+'" onclick="aiqSelect(this,'+qi+','+ci+')">';
             html+='<span class="fep-cletter aiq-cletter">'+letter+'</span>';
             html+='<span class="fep-ctext">'+_maths(s)+'</span></div>';

@@ -204,21 +204,34 @@
       var cards = [];
       var seen = {};
 
+      function textOf(htmlOrStr) {
+        if (!htmlOrStr) return '';
+        var d = document.createElement('div');
+        d.innerHTML = htmlOrStr;
+        return (d.textContent || d.innerText || '').trim();
+      }
+
       function addCard(front, back, tag, chEl, isCustom, customId) {
         if (!front || !back) return;
-        front = front.trim();
-        back = back.trim();
-        if (!front || !back) return;
+        var fText = textOf(front);
+        var bText = textOf(back);
+        if (!fText || !bText) return;
+        if (fText.length < 2 || bText.length < 1) return;
 
         var chTitle = '';
         var chId = '';
         if (chEl) {
           chId = chEl.id || '';
           var h2 = chEl.querySelector('.chead h2, .subject-head h1');
-          if (h2) chTitle = h2.textContent.replace(/^[^a-zA-Z\u0600-\u06FF]+/,'').trim();
+          if (h2) {
+            var isAr = window.i18n && window.i18n.getLocale() === 'ar';
+            var trg = isAr ? h2.querySelector('.i18n-ar') : h2.querySelector('.i18n-en');
+            var rawTitle = trg ? trg.textContent : (h2.innerText || h2.textContent);
+            chTitle = (rawTitle || '').replace(/^[^a-zA-Z0-9\u0600-\u06FF]+/,'').trim();
+          }
         }
 
-        var slug = window.CSGamify._slugify(front);
+        var slug = window.CSGamify._slugify(fText.slice(0, 40));
         var id = customId || (track + ':' + (chId || 'global') + ':' + tag + ':' + slug);
         if (seen[id]) return;
         seen[id] = 1;
@@ -238,45 +251,73 @@
       document.querySelectorAll('.fcard').forEach(function(el) {
         if (el.closest('#flashcards-sidebar')) return;
         var frontEl = el.querySelector('.ft, .card-title, .lab');
-        var front = frontEl ? frontEl.textContent.replace(/^[●▲◆■\s]+/, '').replace(/📋\s*Copy\s*LaTeX/gi, '').trim() : '';
+        var front = '';
+        if (frontEl) {
+          var fClone = frontEl.cloneNode(true);
+          fClone.querySelectorAll('button, .copy-eq-btn, .copy-btn').forEach(function(b){ b.remove(); });
+          front = fClone.innerHTML.replace(/^[●▲◆■\s]+/, '').trim();
+        }
         var backClone = el.cloneNode(true);
         var innerFront = backClone.querySelector('.ft, .card-title, .lab');
         if (innerFront) innerFront.remove();
-        var back = backClone.innerHTML;
-        if (front && back) {
-          addCard(front, back, 'Formula', el.closest('.chapter'));
-        }
+        backClone.querySelectorAll('button, .copy-eq-btn, .copy-btn').forEach(function(b){ b.remove(); });
+        var back = backClone.innerHTML.trim();
+        addCard(front, back, 'Formula', el.closest('.chapter'));
       });
 
       // 2. Definitions (.callout.def)
       document.querySelectorAll('.callout.def').forEach(function(el) {
         var labEl = el.querySelector('.lab');
-        var front = labEl ? labEl.textContent.replace(/^[●▲◆■\s]+/, '').replace(/📋\s*Copy\s*LaTeX/gi, '').trim() : 'Definition';
-        var bodyEl = el.querySelector('p, .def-body, .body');
-        var back = bodyEl ? bodyEl.innerHTML : '';
-        if (front && back) {
-          addCard(front, back, 'Definition', el.closest('.chapter'));
+        var front = '';
+        if (labEl) {
+          var fClone = labEl.cloneNode(true);
+          fClone.querySelectorAll('button, .copy-eq-btn, .copy-btn').forEach(function(b){ b.remove(); });
+          front = fClone.innerHTML.replace(/^[●▲◆■\s]+/, '').trim();
+        } else {
+          front = 'Definition';
         }
+        var backClone = el.cloneNode(true);
+        var inLab = backClone.querySelector('.lab');
+        if (inLab) inLab.remove();
+        backClone.querySelectorAll('button, .copy-eq-btn, .copy-btn').forEach(function(b){ b.remove(); });
+        var back = backClone.innerHTML.trim();
+        addCard(front, back, 'Definition', el.closest('.chapter'));
       });
 
       // 3. Theorems, laws, rules, and formulas (.callout.thm, .callout.law, .callout.formula, .callout.rule)
       document.querySelectorAll('.callout.thm, .callout.law, .callout.formula, .callout.rule').forEach(function(el) {
         var labEl = el.querySelector('.lab');
-        var front = labEl ? labEl.textContent.replace(/^[●▲◆■\s]+/, '').replace(/📋\s*Copy\s*LaTeX/gi, '').trim() : 'Theorem';
-        var bodyEl = el.querySelector('p, .body');
-        var back = bodyEl ? bodyEl.innerHTML : '';
-        if (front && back) {
-          addCard(front, back, 'Theorem', el.closest('.chapter'));
+        var front = '';
+        if (labEl) {
+          var fClone = labEl.cloneNode(true);
+          fClone.querySelectorAll('button, .copy-eq-btn, .copy-btn').forEach(function(b){ b.remove(); });
+          front = fClone.innerHTML.replace(/^[●▲◆■\s]+/, '').trim();
+        } else {
+          front = 'Theorem';
         }
+        var backClone = el.cloneNode(true);
+        var inLab = backClone.querySelector('.lab');
+        if (inLab) inLab.remove();
+        backClone.querySelectorAll('button, .copy-eq-btn, .copy-btn').forEach(function(b){ b.remove(); });
+        var back = backClone.innerHTML.trim();
+        addCard(front, back, 'Theorem', el.closest('.chapter'));
       });
 
       // 4. Key Tips and Notes with labels (.callout.tip, .callout.warn)
       document.querySelectorAll('.callout.tip, .callout.warn').forEach(function(el) {
         var labEl = el.querySelector('.lab');
-        var front = labEl ? labEl.textContent.replace(/^[●▲◆■\s]+/, '').replace(/📋\s*Copy\s*LaTeX/gi, '').trim() : '';
-        var bodyEl = el.querySelector('p, .body, div');
-        var back = bodyEl ? bodyEl.innerHTML : '';
-        if (front && back && front.length > 3) {
+        var front = '';
+        if (labEl) {
+          var fClone = labEl.cloneNode(true);
+          fClone.querySelectorAll('button, .copy-eq-btn, .copy-btn').forEach(function(b){ b.remove(); });
+          front = fClone.innerHTML.replace(/^[●▲◆■\s]+/, '').trim();
+        }
+        var backClone = el.cloneNode(true);
+        var inLab = backClone.querySelector('.lab');
+        if (inLab) inLab.remove();
+        backClone.querySelectorAll('button, .copy-eq-btn, .copy-btn').forEach(function(b){ b.remove(); });
+        var back = backClone.innerHTML.trim();
+        if (front && textOf(front).length > 3) {
           addCard(front, back, 'Rule', el.closest('.chapter'));
         }
       });
@@ -285,26 +326,30 @@
       document.querySelectorAll('.example, .worked-example, .example-grid').forEach(function(el) {
         if (el.closest('#flashcards-sidebar')) return;
         var labelEl = el.querySelector('.xt, .card-title, p:first-child');
-        var front = labelEl ? labelEl.textContent.replace(/^[●▲◆■\s]+/, '').trim() : 'Worked Example';
+        var front = '';
+        if (labelEl) {
+          var fClone = labelEl.cloneNode(true);
+          fClone.querySelectorAll('button').forEach(function(b){ b.remove(); });
+          front = fClone.innerHTML.replace(/^[●▲◆■\s]+/, '').trim();
+        } else {
+          front = 'Worked Example';
+        }
         var clone = el.cloneNode(true);
         var inLab = clone.querySelector('.xt, .card-title');
         if (inLab) inLab.remove();
+        clone.querySelectorAll('button, .copy-eq-btn, .copy-btn').forEach(function(b){ b.remove(); });
         var back = clone.innerHTML.trim();
-        if (front && back) {
-          addCard(front, back, 'Example', el.closest('.chapter'));
-        }
+        addCard(front, back, 'Example', el.closest('.chapter'));
       });
 
       // 6. Practice Problems in lesson (.problem)
       document.querySelectorAll('.chapter .problem').forEach(function(el) {
         if (el.closest('#flashcards-sidebar') || el.closest('#mistake-box')) return;
-        var qEl = el.querySelector('.problem-q');
+        var qEl = el.querySelector('.problem-q, .pq, .qt');
         var solEl = el.querySelector('.solution');
         var front = qEl ? qEl.innerHTML.trim() : '';
         var back = solEl ? solEl.innerHTML.trim() : '';
-        if (front && back) {
-          addCard(front, back, 'Problem', el.closest('.chapter'));
-        }
+        addCard(front, back, 'Problem', el.closest('.chapter'));
       });
 
       // 7. Custom Flashcards (saved by user for this track)
@@ -649,25 +694,49 @@
         mastInt.textContent = isAr ? nextDays + '+ أيام' : nextDays + '+ days';
       }
 
-      // KaTeX rendering for math formulas
+      // Bilingual translation filtering
+      if (window.i18n && typeof window.i18n._applyToDOM === 'function' && card) {
+        try { window.i18n._applyToDOM(card); } catch(e) {}
+      }
+
+      // KaTeX and MathJax rendering for math formulas
+      var fcDelims = [
+        { left: "$$", right: "$$", display: true },
+        { left: "\\[", right: "\\]", display: true },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "$", right: "$", display: false }
+      ];
       if (window.renderMathInElement && card) {
         try {
           window.renderMathInElement(card, {
-            delimiters: [
-              { left: "$$", right: "$$", display: true },
-              { left: "\\[", right: "\\]", display: true },
-              { left: "\\(", right: "\\)", display: false },
-              { left: "$", right: "$", display: false }
-            ],
+            delimiters: fcDelims,
             throwOnError: false
           });
         } catch(e) {}
+      }
+      if (window.MathJax && typeof window.MathJax.typesetPromise === 'function' && card) {
+        try { window.MathJax.typesetPromise([card]).catch(function(){}); } catch(e) {}
       }
     },
 
     flipCard: function() {
       var card = document.getElementById('active-flashcard');
-      if (card) card.classList.toggle('flipped');
+      if (card) {
+        card.classList.toggle('flipped');
+        if (window.renderMathInElement && card.classList.contains('flipped')) {
+          try {
+            window.renderMathInElement(card, {
+              delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "\\[", right: "\\]", display: true },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "$", right: "$", display: false }
+              ],
+              throwOnError: false
+            });
+          } catch(e) {}
+        }
+      }
     },
 
     recordSRS: function(isCorrect) {

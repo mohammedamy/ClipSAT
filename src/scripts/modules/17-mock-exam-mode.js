@@ -75,8 +75,7 @@ window.openMockExam=function(viewId,pidx){
     h+='<div class="mq-text">'+(q.text||q.q||'')+'</div>';
     if(q.choices&&q.choices.length){
       q.choices.forEach(function(c,ci){
-        var s=String(c||'');
-        if(s.indexOf('\\(')===-1&&s.indexOf('\\[')===-1&&/\\[a-zA-Z{([\\]/.test(s)){s='\\('+s+'\\)';}
+        var s=typeof window.CSAutoMath==='function'?window.CSAutoMath(c):String(c||'');
         h+='<label style="display:block;padding:4px 0;cursor:pointer"><input type="radio" name="mq'+i+'" value="'+ci+'"> '+s+'</label>';
       });
     } else {

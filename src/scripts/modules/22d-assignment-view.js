@@ -83,8 +83,7 @@ function render(){
       h+='<div class="cq-row"><span class="cq-qn">'+(i+1)+'.</span><div class="cq-qt">'+M(q.text||q.q||'')+'</div></div>';
       if(mcq){
         h+='<ul class="cq-opts">'+choices.map(function(c,ci){
-          var s=String(c||'');
-          if(s.indexOf('\\(')===-1&&s.indexOf('\\[')===-1&&/\\[a-zA-Z{([\\]/.test(s)) s='\\('+s+'\\)';
+          var s=typeof window.CSAutoMath==='function'?window.CSAutoMath(c):String(c||'');
           return '<li class="cq-opt" onclick="cqPick(this)" data-raw="'+attr(c)+'"><span class="cq-lt">'+LTR[ci]+'.</span><span class="cq-ct">'+M(s)+'</span></li>';
         }).join('')+'</ul>';
       } else if(sol){
