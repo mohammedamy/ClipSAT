@@ -172,7 +172,40 @@ items_ar:[
   {s:'المسافة المقطوعة بسرعة ثابتة والزمن المنقضي',cat:0},
   {s:'كمية الدهان ومساحة الجدار المدهون',cat:0}
 ],
-sol:'Direct proportion: both increase together. Inverse proportion: one increases as the other decreases.',sol_ar:'التناسب الطردي تزيد فيه الكميتان معًا؛ والتناسب العكسي تزيد فيه كمية بنقصان الأخرى.'}
+sol:'Direct proportion: both increase together. Inverse proportion: one increases as the other decreases.',sol_ar:'التناسب الطردي تزيد فيه الكميتان معًا؛ والتناسب العكسي تزيد فيه كمية بنقصان الأخرى.'},
+{
+  t:'se',
+  ti:'Spot the Error: The 20% Increase Followed by 20% Decrease Trap',
+  ti_ar:'اكتشف الخطأ: فخ زيادة 20% ثم تخفيض 20%',
+  q:'A dress priced at 100 SAR was marked up by 20%, then during a seasonal sale was discounted by 20%. A student reasons:',
+  q_ar:'فستان سعره 100 ريال، زاد سعره بنسبة 20%، ثم خُفِّض السعر الجديد بنسبة 20%. استنتج أحد الطلاب التالي:',
+  steps:[
+    {s:'Original base price is 100 SAR'},
+    {s:'20% increase adds \\(0.20 \\times 100 = 20\\) SAR, so new price is 120 SAR'},
+    {s:'20% decrease subtracts the same 20 SAR: \\(120 - 20 = 100\\) SAR'},
+    {s:'Conclusion: The final price equals the original 100 SAR'}
+  ],
+  steps_ar:[
+    {s:'السعر الأصلي هو 100 ريال'},
+    {s:'الزيادة بنسبة 20% تضيف \\(0.20 \\times 100 = 20\\) ريال، فيصبح السعر 120 ريال'},
+    {s:'التخفيض بنسبة 20% يطرح نفس الـ 20 ريال: \\(120 - 20 = 100\\) ريال'},
+    {s:'الاستنتاج: السعر النهائي يعود إلى 100 ريال كما كان'}
+  ],
+  errorStep:3,
+  reasons:[
+    'The 20% discount applies to the NEW price of 120 SAR, which is 24 SAR (not 20 SAR)',
+    'The first price increase calculation was wrong',
+    'Percentage change can never be applied twice'
+  ],
+  reasons_ar:[
+    'نسبة التخفيض 20% تُحسب من السعر الجديد (120 ريال) أي 24 ريالاً وليس 20 ريالاً',
+    'حساب الزيادة في المرة الأولى كان خاطئاً',
+    'لا يجوز تطبيق النسبة المئوية مرتين'
+  ],
+  correctReason:0,
+  sol:'Step 3 is the classic Qudrat trap! A 20% decrease on 120 SAR is \\(0.20 \\times 120 = 24\\) SAR. The correct final price is \\(120 - 24 = 96\\) SAR. An increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) always leaves the final price LOWER than the starting price!',
+  sol_ar:'الخطوة 3 هي الفخ الأشهر في القدرات! خصم 20% من 120 ريال يعادل \\(0.20 \\times 120 = 24\\) ريالاً. السعر النهائي الصحيح هو \\(120 - 24 = 96\\) ريالاً. زيادة بنسبة \\(p\\%\\) يليها تخفيض بنسبة \\(p\\%\\) تجعل السعر النهائي دائماً أقل من السعر الأصلي!'
+}
 ];
 D['qud-algebra']=[{t:'tf',ti:'True or False: Algebra Basics',ti_ar:'صحيح أم خطأ: أساسيات الجبر',
 items:[{s:'\\(3(x+2)=3x+6\\)',a:true,ex:'Distributive property.'},{s:'\\(\\sqrt{a+b}=\\sqrt{a}+\\sqrt{b}\\)',a:false,ex:'Not true. E.g. \\(\\sqrt{25}=5\\neq3+4\\).'},{s:'\\(-(-x)=x\\)',a:true,ex:'Double negative cancels.'},{s:'\\(|x|=5\\) implies \\(x=5\\) only',a:false,ex:'\\(x=5\\) or \\(x=-5\\).'}],

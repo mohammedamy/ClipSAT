@@ -63,8 +63,28 @@ function createMockElement(tagName) {
       fns.forEach((fn) => fn.call(this, event));
     },
 
-    click: function() {
-      this.dispatchEvent({ type: 'click' });
+    click: function(evt) {
+      const e = evt || { type: 'click' };
+      if (!e.type) e.type = 'click';
+      this.dispatchEvent(e);
+    },
+
+    getContext: function() {
+      return {
+        setTransform: function(){},
+        clearRect: function(){},
+        beginPath: function(){},
+        moveTo: function(){},
+        lineTo: function(){},
+        stroke: function(){},
+        fill: function(){},
+        arc: function(){},
+        fillText: function(){}
+      };
+    },
+
+    getBoundingClientRect: function() {
+      return { left: 0, top: 0, width: 480, height: 320 };
     },
 
     focus: function() {},
@@ -113,6 +133,7 @@ function createMockElement(tagName) {
 
     set innerHTML(html) {
       this._html = String(html);
+      this._text = String(html).replace(/<[^>]*>/g, '');
       this.children = [];
       // Basic extraction of badge or text if present
       const m = /class="([^"]+)"[^>]*>([^<]*)/.exec(html);
@@ -198,6 +219,9 @@ check('ClipSATIX is exposed on window', typeof ClipSATIX === 'object');
 check('ClipSATIX._buildNUM exists', typeof ClipSATIX._buildNUM === 'function');
 check('ClipSATIX._buildORD exists', typeof ClipSATIX._buildORD === 'function');
 check('ClipSATIX._buildCAT exists', typeof ClipSATIX._buildCAT === 'function');
+check('ClipSATIX._buildGP exists', typeof ClipSATIX._buildGP === 'function');
+check('ClipSATIX._buildSE exists', typeof ClipSATIX._buildSE === 'function');
+check('ClipSATIX._buildMS exists', typeof ClipSATIX._buildMS === 'function');
 
 // ─── 3. Test Numeric Entry (_buildNUM) ─────────────────────────────────────────
 console.log('\nTesting Numeric Entry (_buildNUM)...');
@@ -394,7 +418,193 @@ console.log('\nTesting Categorize (_buildCAT)...');
   check('check button disabled upon completion', checkBtn.disabled === true);
 }
 
-// ─── 6. Summary ───────────────────────────────────────────────────────────────
+// ─── 6. Test Graph Plotter (_buildGP) ─────────────────────────────────────────
+console.log('\nTesting Graph Plotter (_buildGP)...');
+{
+  const box = createMockElement('div');
+  const cfg = {
+    t: 'gp',
+    ti: 'Plot Parabola Roots and Vertex',
+    q: 'Plot the vertex and roots for $y = x^2 - 4x + 3$.',
+    xrange: [-2, 6],
+    yrange: [-3, 6],
+    targets: [
+      { label: 'Vertex', target: [2, -1], tol: 0.5 },
+      { label: 'Root 1', target: [1, 0], tol: 0.5 },
+      { label: 'Root 2', target: [3, 0], tol: 0.5 }
+    ],
+    curve: 'x**2 - 4*x + 3',
+    sol: 'Vertex is at $(2, -1)$ and roots are at $x=1, x=3$.'
+  };
+
+  ClipSATIX._buildGP(cfg, box);
+  const badge = box.querySelector('.ix-badge.gp');
+  check('gp renders badge with Graph Plotter', badge && badge.textContent === 'Graph Plotter');
+
+  const targetsWrap = box.querySelector('.ix-gp-targets');
+  const targetPills = box.querySelectorAll('.ix-gp-target-pill');
+  check('gp renders 3 target pills', targetPills.length === 3);
+
+  const canvas = box.querySelector('.ix-gp-canvas');
+  const checkBtn = box.querySelector('.ix-sb-go');
+  const clearBtn = box.querySelector('.ix-gp-btn-clear');
+  const revealBtn = box.querySelector('.ix-sb-show-ans');
+  const res = box.querySelector('.ix-fb');
+
+  check('gp renders canvas and control buttons', canvas && checkBtn && clearBtn && revealBtn && res);
+
+  // Check before placing points
+  checkBtn.click();
+  check('checking with 0 points reports someCorrect', res.innerHTML.includes('0 of 3'));
+
+  // Place a point via canvas click
+  // x = 2 is at pixel cx = 38 + (2 - (-2))/(6 - (-2)) * (480 - 38 - 20) = 249
+  // y = -1 is at pixel cy = 320 - 26 - (-1 - (-3))/(6 - (-3)) * (320 - 20 - 26) ~ 233
+  canvas.click({ clientX: 249, clientY: 233 });
+  checkBtn.click();
+  check('placing vertex matches target 1', res.innerHTML.includes('1 of 3'));
+
+  // Reveal target solution
+  revealBtn.click();
+  check('reveal sets all target pills ok', targetPills.every((p) => p.classList.contains('ok')));
+  check('reveal shows full solution feedback', res.innerHTML.includes('accurately plotted'));
+  check('controls disabled after completion', checkBtn.disabled === true && clearBtn.disabled === true);
+}
+
+// ─── 7. Test Spot the Error (_buildSE) ─────────────────────────────────────────
+console.log('\nTesting Spot the Error (_buildSE)...');
+{
+  const box = createMockElement('div');
+  const cfg = {
+    t: 'se',
+    ti: 'Find the Flaw in the Solution',
+    q: 'Solve $2x^2 = 8x$. A student wrote:',
+    steps: [
+      { s: '$2x^2 - 8x = 0$' },
+      { s: '$2x(x - 4) = 0$' },
+      { s: 'Divide both sides by $2x$ to get $x - 4 = 0$' },
+      { s: '$x = 4$' }
+    ],
+    errorStep: 3,
+    reasons: [
+      'Dividing by variable loses $x = 0$',
+      'GCF factoring was incorrect'
+    ],
+    correctReason: 0,
+    sol: 'Step 3 is invalid: dividing by $2x$ assumes $x \\ne 0$, losing the root $x = 0$.'
+  };
+
+  ClipSATIX._buildSE(cfg, box);
+  const badge = box.querySelector('.ix-badge.se');
+  check('se renders badge with Spot the Error', badge && badge.textContent === 'Spot the Error');
+
+  const stepBtns = box.querySelectorAll('.ix-se-step');
+  check('se renders 4 steps plus 1 no-error option', stepBtns.length === 5);
+
+  const checkBtn = box.querySelector('.ix-sb-go');
+  const revealBtn = box.querySelector('.ix-sb-show-ans');
+  const res = box.querySelector('.ix-fb');
+
+  // Attempt without selecting step
+  checkBtn.click();
+  check('warns when no step selected', res.textContent.includes('select a step first'));
+
+  // Select Step 1 (valid step - incorrect answer)
+  stepBtns[0].click();
+  check('clicking step 1 sets .sel', stepBtns[0].classList.contains('sel'));
+
+  checkBtn.click();
+  check('selecting valid step reports incorrect', res.innerHTML.includes('valid') || res.innerHTML.includes('Not quite'));
+
+  // Select Step 3 (error step)
+  stepBtns[2].click();
+  check('step 3 is selected', stepBtns[2].classList.contains('sel'));
+
+  // Reason buttons should now be visible
+  const reasonBtns = box.querySelectorAll('.ix-se-reason-btn');
+  check('reasons list rendered with 2 reasons', reasonBtns.length === 2);
+
+  // Select correct reason (index 0)
+  reasonBtns[0].click();
+  checkBtn.click();
+  check('identifying flaw in step 3 triggers success', res.innerHTML.includes('Step 3') && res.classList.contains('ok'));
+  check('error step gains err class', stepBtns[2].classList.contains('err'));
+  check('check button disabled upon completion', checkBtn.disabled === true);
+}
+
+// ─── 8. Test Examiner Mode (_buildMS) ─────────────────────────────────────────
+console.log('\nTesting Examiner Mode (_buildMS)...');
+{
+  const box = createMockElement('div');
+  const cfg = {
+    t: 'ms',
+    ti: 'Calculus Differentiation Paper',
+    q: 'Find the derivative and stationary points of $y = 2x^3 - 9x^2 + 12x$.',
+    parts: [
+      {
+        label: 'Part (a)',
+        marks: 2,
+        rubric: [
+          { code: 'M1', text: 'Differentiate at least two terms' },
+          { code: 'A1', text: 'Fully correct derivative $6x^2 - 18x + 12$' }
+        ]
+      },
+      {
+        label: 'Part (b)',
+        marks: 2,
+        rubric: [
+          { code: 'M1', text: 'Set derivative to 0 and factor' },
+          { code: 'A1', text: 'Roots $x = 1$ and $x = 2$' }
+        ]
+      }
+    ],
+    boundaries: [
+      { min: 4, grade: 'Grade 9 / A*' },
+      { min: 3, grade: 'Grade 8 / A' },
+      { min: 2, grade: 'Grade 6 / B' },
+      { min: 0, grade: 'Needs Review' }
+    ],
+    examinerTip: 'Candidates often forget to state the y-coordinates.'
+  };
+
+  ClipSATIX._buildMS(cfg, box);
+  const badge = box.querySelector('.ix-badge.ms');
+  check('ms renders badge with Examiner Mode', badge && badge.textContent === 'Examiner Mode');
+
+  const totalChip = box.querySelector('.ix-ms-total-chip');
+  check('total marks chip shows 4 marks', totalChip && totalChip.textContent.includes('4 marks'));
+
+  const toggleBtn = box.querySelector('.ix-ms-btn-toggle');
+  const rubricWrap = box.querySelector('.ix-ms-rubric');
+  check('rubric is initially hidden', rubricWrap && rubricWrap.style.display === 'none');
+
+  toggleBtn.click();
+  check('clicking toggle opens rubric', rubricWrap && rubricWrap.style.display === 'block');
+
+  const markBtns = box.querySelectorAll('.ix-ms-mark-btn');
+  check('renders 4 mark toggle buttons', markBtns.length === 4);
+
+  const scoreNum = box.querySelector('.ix-ms-score-num');
+  const gradePill = box.querySelector('.ix-ms-grade-pill');
+  check('initial score is 0 / 4 (0%)', scoreNum && scoreNum.textContent.includes('0 / 4'));
+
+  // Earn mark 1
+  markBtns[0].click();
+  check('mark button gains .earned class', markBtns[0].classList.contains('earned'));
+  check('score updates to 1 / 4 (25%)', scoreNum.textContent.includes('1 / 4 (25%)'));
+
+  // Earn all 4 marks
+  markBtns[1].click();
+  markBtns[2].click();
+  markBtns[3].click();
+  check('score reaches 4 / 4 (100%)', scoreNum.textContent.includes('4 / 4 (100%)'));
+  check('projected grade matches Grade 9 / A*', gradePill.textContent.includes('Grade 9'));
+
+  const tipBox = box.querySelector('.ix-ms-tip-box');
+  check('examiner tip rendered', tipBox && tipBox.textContent.includes('y-coordinates'));
+}
+
+// ─── 9. Summary ───────────────────────────────────────────────────────────────
 console.log(`\nInteractive Activities test suite: ${passes} passed, ${failures} failed.`);
 if (failures > 0) {
   process.exit(1);

@@ -122,7 +122,64 @@ D['sat-quad']=[
     'حل \\(x^2-6x+8=0\\). ابحث عن عددين حاصل ضربهما 8 ومجموعهما −6: −2 و−4.',
     '\\(x^2-6x+8=(x-2)(x-4)\\).',
     'ساوِ كل عامل بالصفر: \\(x=2\\) أو \\(x=4\\).'
-  ]}
+  ]},
+  {
+    t:'gp',
+    ti:'Interactive Graph Plotter: Quadratic Roots & Vertex',
+    ti_ar:'مخطط الدوال التفاعلي: جذور ورأس القطع المكافئ',
+    q:'Plot the vertex and both x-intercepts of the parabola \\(f(x) = x^2 - 4x + 3\\) on the coordinate plane.',
+    q_ar:'حدد الرأس وكلا المقطعين السينيين للقطع المكافئ \\(f(x) = x^2 - 4x + 3\\) على المستوى الإحداثي.',
+    xrange:[-2,6],
+    yrange:[-3,6],
+    targets:[
+      {label:'Vertex (2, -1)',label_ar:'الرأس (2, -1)',target:[2,-1],tol:0.45},
+      {label:'Root (1, 0)',label_ar:'الجذر (1, 0)',target:[1,0],tol:0.45},
+      {label:'Root (3, 0)',label_ar:'الجذر (3, 0)',target:[3,0],tol:0.45}
+    ],
+    targets_ar:[
+      {label:'الرأس (2, -1)',target:[2,-1],tol:0.45},
+      {label:'الجذر (1, 0)',target:[1,0],tol:0.45},
+      {label:'الجذر (3, 0)',target:[3,0],tol:0.45}
+    ],
+    curve:'x**2 - 4*x + 3',
+    sol:'Vertex is at \\(h = -b/(2a) = 2\\), \\(k = f(2) = -1\\). The roots are at \\(x = 1\\) and \\(x = 3\\).',
+    sol_ar:'الرأس عند \\(h = -b/(2a) = 2\\) و \\(k = f(2) = -1\\). الجذور عند \\(x = 1\\) و \\(x = 3\\).'
+  },
+  {
+    t:'se',
+    ti:'Spot the Error: Extraneous Solutions in Radical Equations',
+    ti_ar:'اكتشف الخطأ: الحلول الدخيلة في المعادلات الجذرية',
+    q:'A student attempts to solve \\(\\sqrt{x + 7} = x - 5\\). Inspect their steps below:',
+    q_ar:'حاول طالب حل المعادلة \\(\\sqrt{x + 7} = x - 5\\). افحص خطوات الحل التالية:',
+    steps:[
+      {s:'Square both sides: \\(x + 7 = (x - 5)^2\\)'},
+      {s:'Expand the right side: \\(x + 7 = x^2 - 10x + 25\\)'},
+      {s:'Rearrange into standard quadratic: \\(x^2 - 11x + 18 = 0\\)'},
+      {s:'Factor: \\((x - 9)(x - 2) = 0 \\implies x = 9\\) or \\(x = 2\\)'},
+      {s:'Conclusion: The equation has two valid solutions, \\(x = 2\\) and \\(x = 9\\)'}
+    ],
+    steps_ar:[
+      {s:'تربيع الطرفين: \\(x + 7 = (x - 5)^2\\)'},
+      {s:'فك الطرف الأيمن: \\(x + 7 = x^2 - 10x + 25\\)'},
+      {s:'الترتيب بالصيغة القياسية: \\(x^2 - 11x + 18 = 0\\)'},
+      {s:'التحليل: \\((x - 9)(x - 2) = 0 \\implies x = 9\\) أو \\(x = 2\\)'},
+      {s:'الاستنتاج: المعادلة لها حلان صحيحان هما \\(x = 2\\) و \\(x = 9\\)'}
+    ],
+    errorStep:5,
+    reasons:[
+      'Squaring both sides can introduce extraneous solutions; x = 2 does not satisfy the original equation',
+      'Factoring x² - 11x + 18 was incorrect',
+      'Expanding (x - 5)² should give x² - 25'
+    ],
+    reasons_ar:[
+      'تربيع الطرفين قد يُدخل حلولاً دخيلة؛ والعدد x = 2 لا يحقق المعادلة الأصلية',
+      'تحليل المعادلة التربيعية كان خاطئاً',
+      'فك المربع الكامل كان غير صحيح'
+    ],
+    correctReason:0,
+    sol:'Step 5 is invalid! When checking \\(x = 2\\) in the original equation: LHS \\(= \\sqrt{2+7} = 3\\), but RHS \\(= 2 - 5 = -3\\). Since \\(3 \\ne -3\\), \\(x = 2\\) is an extraneous solution. The only true solution is \\(x = 9\\).',
+    sol_ar:'الخطوة 5 خاطئة! بالتعويض عن \\(x = 2\\) في المعادلة الأصلية: الطرف الأيمن يعطي \\(-3\\) بينما الطرف الأيسر موجب 3. لذا \\(x = 2\\) حل دخيل، والحل الوحيد هو \\(x = 9\\).'
+  }
 ];
 
 D['sat-expoly']=[

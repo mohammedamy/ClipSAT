@@ -48,7 +48,49 @@ D['ig-algebra']=[
     'Solve \\(x^2+5x+6=0\\). Find two numbers that multiply to 6 and add to 5.',
     'The numbers are 2 and 3, so \\(x^2+5x+6=(x+2)(x+3)\\).',
     'Set each factor to zero: \\(x=-2\\) or \\(x=-3\\).'
-  ]}
+  ]},
+  {
+    t:'ms',
+    ti:'Cambridge IGCSE 0580: Multi-Part Quadratic Paper',
+    ti_ar:'كامبريدج IGCSE 0580: مسألة تربيعية متعددة الأجزاء',
+    q:'The equation of a curve is \\(y = 2x^2 - 8x + 6\\).<br><b>(a)</b> Find the coordinates of the points where the curve crosses the x-axis. [3 marks]<br><b>(b)</b> Write \\(2x^2 - 8x + 6\\) in the form \\(a(x - h)^2 + k\\). [3 marks]<br><b>(c)</b> Hence state the coordinates of the turning point. [1 mark]',
+    parts:[
+      {
+        label:'Part (a)',
+        marks:3,
+        rubric:[
+          {code:'M1',text:'Set \\(y = 0\\) and factorise or use quadratic formula: \\(2(x^2 - 4x + 3) = 0\\)',text_ar:'مساواة المعادلة بالصفر والتحليل'},
+          {code:'M1',text:'Complete factorisation: \\(2(x - 1)(x - 3) = 0\\)',text_ar:'التحليل الكامل إلى أقواس'},
+          {code:'A1',text:'Correct coordinates: \\((1, 0)\\) and \\((3, 0)\\)',text_ar:'الإحداثيات الصحيحة: (1, 0) و (3, 0)'}
+        ]
+      },
+      {
+        label:'Part (b)',
+        marks:3,
+        rubric:[
+          {code:'B1',text:'Factor out leading 2: \\(2(x^2 - 4x) + 6\\)',text_ar:'إخراج العامل 2 خارج القوس'},
+          {code:'M1',text:'Complete square inside bracket: \\((x - 2)^2 - 4\\)',text_ar:'إكمال المربع داخل القوس'},
+          {code:'A1',text:'Correct vertex form: \\(2(x - 2)^2 - 2\\)',text_ar:'الصيغة الرأسية الصحيحة: 2(x - 2)² - 2'}
+        ]
+      },
+      {
+        label:'Part (c)',
+        marks:1,
+        rubric:[
+          {code:'B1',text:'State turning point \\((2, -2)\\)',text_ar:'كتابة نقطة التحول (2, -2)'}
+        ]
+      }
+    ],
+    boundaries:[
+      {min:6,grade:'Grade 9 / A* (Exceptional)',grade_ar:'الدرجة 9 / A* (استثنائي)'},
+      {min:5,grade:'Grade 8 / A (Excellent)',grade_ar:'الدرجة 8 / A (ممتاز)'},
+      {min:4,grade:'Grade 7 / B (Good)',grade_ar:'الدرجة 7 / B (جيد جداً)'},
+      {min:3,grade:'Grade 5 / C (Passing)',grade_ar:'الدرجة 5 / C (ناجح)'},
+      {min:0,grade:'Needs Practice',grade_ar:'يحتاج إلى تدريب'}
+    ],
+    examinerTip:'Common mistake: Candidates frequently write (2, 2) instead of (2, -2) for the turning point by ignoring the negative sign outside the squared term.',
+    examinerTip_ar:'خطأ شائع: يكتب الطلاب غالباً (2, 2) بدلاً من (2, -2) لنقطة التحول بسبب إغفال الإشارة السالبة للحد الثابت.'
+  }
 ];
 
 D['ig-geometry']=[

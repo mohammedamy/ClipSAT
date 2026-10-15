@@ -25,7 +25,7 @@ const DIR = path.join(__dirname, '..', 'src', 'scripts', 'ix-data');
 const args = process.argv.slice(2);
 const verbose = args.includes('--verbose');
 const only = args.filter((a) => !a.startsWith('--'));
-const TYPES = new Set(['qc', 'mt', 'tf', 'sb', 'sr', 'fn', 'num', 'ord', 'cat']);
+const TYPES = new Set(['qc', 'mt', 'tf', 'sb', 'sr', 'fn', 'num', 'ord', 'cat', 'gp', 'se', 'ms']);
 
 const cache = new Map();
 function katexErrors(str) {
@@ -65,7 +65,7 @@ const norm = (s) => String(s == null ? '' : s).replace(/\s+/g, ' ').trim();
 function checkEntry(c, push) {
   if (!c || !TYPES.has(c.t)) return push('error', `unknown type ${c && c.t}`);
   if (!norm(c.ti)) push('error', 'missing title');
-  for (const k of ['o', 'p', 'items', 'steps', 'categories']) {
+  for (const k of ['o', 'p', 'items', 'steps', 'categories', 'targets', 'reasons', 'parts']) {
     if (Array.isArray(c[k]) && Array.isArray(c[k + '_ar']) && c[k].length !== c[k + '_ar'].length) push('error', `${k} and ${k}_ar lengths differ`);
   }
   if (c.t === 'qc') {
@@ -129,6 +129,35 @@ function checkEntry(c, push) {
         if (!validCat) push('error', `cat item ${i} category "${it.cat}" is invalid for given categories`);
       });
     }
+  } else if (c.t === 'gp') {
+    if (!Array.isArray(c.targets) || !c.targets.length) push('error', 'gp has no targets');
+    else c.targets.forEach((tgt, i) => {
+      const pt = tgt.target;
+      if (!Array.isArray(pt) || pt.length !== 2 || typeof pt[0] !== 'number' || typeof pt[1] !== 'number') {
+        push('error', `gp target ${i} coordinate is invalid`);
+      }
+    });
+    if (c.xrange && (!Array.isArray(c.xrange) || !(c.xrange[1] > c.xrange[0]))) push('error', 'gp invalid xrange');
+    if (c.yrange && (!Array.isArray(c.yrange) || !(c.yrange[1] > c.yrange[0]))) push('error', 'gp invalid yrange');
+  } else if (c.t === 'se') {
+    if (!Array.isArray(c.steps) || c.steps.length < 2) push('error', 'se needs 2+ steps');
+    else if (typeof c.errorStep !== 'number' || c.errorStep < 0 || c.errorStep > c.steps.length) {
+      push('error', `se errorStep ${c.errorStep} out of range (0..${c.steps.length})`);
+    }
+    if (c.reasons) {
+      if (!Array.isArray(c.reasons) || !c.reasons.length) push('error', 'se reasons must be non-empty array');
+      if (typeof c.correctReason !== 'number' || c.correctReason < 0 || c.correctReason >= c.reasons.length) {
+        push('error', `se correctReason ${c.correctReason} out of range`);
+      }
+    }
+  } else if (c.t === 'ms') {
+    if (!Array.isArray(c.parts) || !c.parts.length) push('error', 'ms needs 1+ parts');
+    else c.parts.forEach((pt, i) => {
+      if (!Array.isArray(pt.rubric) || !pt.rubric.length) push('error', `ms part ${i} has no rubric`);
+      else pt.rubric.forEach((rb, j) => {
+        if (!norm(rb.text)) push('error', `ms part ${i} rubric ${j} has no text`);
+      });
+    });
   }
   /* KaTeX over every string in the entry, including _ar fields and nested items */
   (function walk(v) {
