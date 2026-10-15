@@ -233,14 +233,21 @@
 
       // Header tools buttons
       var hdr = document.getElementById('mock-exam-header');
-      if(hdr && !hdr.querySelector('.mock-tools-wrap')){
-        var toolsDiv = document.createElement('div');
-        toolsDiv.className = 'mock-tools-wrap';
-        toolsDiv.style.cssText = 'display:flex;align-items:center;gap:8px;margin-left:auto;margin-right:12px';
-        toolsDiv.innerHTML = '<button type="button" class="hdr-btn" onclick="window.openFormulaModal&&window.openFormulaModal()" style="padding:4px 10px;font-size:.78rem;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:6px;cursor:pointer">📐 Formulas</button>'
+      if(hdr){
+        var toolsDiv = hdr.querySelector('.mock-tools-wrap');
+        if(!toolsDiv){
+          toolsDiv = document.createElement('div');
+          toolsDiv.className = 'mock-tools-wrap';
+          toolsDiv.style.cssText = 'display:flex;align-items:center;gap:8px;margin-left:auto;margin-right:12px';
+          var timerEl = document.getElementById('mock-exam-timer');
+          if(timerEl) hdr.insertBefore(toolsDiv, timerEl);
+        }
+        var calcBtnHtml = (paper.calc !== false)
+          ? '<button type="button" class="hdr-btn" onclick="window.toggleFloatingCalc&&window.toggleFloatingCalc()" style="padding:4px 10px;font-size:.78rem;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:6px;cursor:pointer">🧮 Calculator</button>'
+          : '';
+        toolsDiv.innerHTML = calcBtnHtml
+          + '<button type="button" class="hdr-btn" onclick="window.openFormulaModal&&window.openFormulaModal()" style="padding:4px 10px;font-size:.78rem;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:6px;cursor:pointer">📐 Formulas</button>'
           + '<button type="button" class="hdr-btn" onclick="window.toggleWhiteboard&&window.toggleWhiteboard()" style="padding:4px 10px;font-size:.78rem;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:6px;cursor:pointer">✏️ Scratchpad</button>';
-        var timerEl = document.getElementById('mock-exam-timer');
-        if(timerEl) hdr.insertBefore(toolsDiv, timerEl);
       }
 
       _secs = (paper.minutes || 45) * 60;

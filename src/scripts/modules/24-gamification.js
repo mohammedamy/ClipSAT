@@ -990,6 +990,21 @@
     return _wbPromise;
   };
 
+  window.toggleWhiteboard = function() {
+    window._ensureWhiteboard().then(function() {
+      if (window.CSGamify) {
+        if (!document.getElementById('wbToolbar') && window.CSGamify.setupWhiteboard) {
+          window.CSGamify.setupWhiteboard();
+        }
+        if (window.CSGamify.toggleWhiteboard) {
+          window.CSGamify.toggleWhiteboard();
+        }
+      }
+    }).catch(function(err) {
+      console.warn('Whiteboard failed to initialize:', err);
+    });
+  };
+
   var observer = new MutationObserver(function() {
     var isTeacher = document.body.classList.contains('tm-on');
     var wbBtn = document.getElementById('teacherWhiteboardBtn');
