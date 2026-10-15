@@ -472,7 +472,7 @@
         h+='<div class="fep-section-head"><span class="fep-sec-label">Section '+(si+1)+'</span><span class="fep-sec-title">'+esc(secTitle)+'</span></div>';
         sq.forEach(function(q){
           var isMCQ=(q.type==='mcq'||q.type==='data');
-          ak.push({n:qNum,type:q.type,domain:q.domain,answer:isMCQ?globalLetters[q.answer]:null,sol:q.sol||''});
+          ak.push({n:qNum,type:q.type,domain:q.domain,answer:isMCQ?globalLetters[q.answer]:(q.answer!=null?String(q.answer):'FRQ'),sol:q.sol||''});
           _csCaptureQ.push({text:q.text||q.q||'',choices:isMCQ?(q.choices||[]).slice():[],correctIndex:isMCQ?q.answer:null,type:isMCQ?'mcq':'frq',points:1});
           h+='<div class="fep-item '+(q.type==='frq'?'fep-frq':'fep-mcq')+'">';
           h+='<div class="fep-item-head"><span class="fep-inum">'+qNum+'</span><span class="fep-domain-tag">'+esc(q.domain)+'</span></div>';
@@ -598,7 +598,7 @@
           if(isFRQPart){isMCQ=false;isFRQ=true;}
 
           answerKey.push({n:qNum,type:(isFRQ?'frq':'mcq'),domain:q.domain,
-            answer:(isMCQ?pL[q.answer]:null),sol:q.sol||''});
+            answer:(isMCQ?pL[q.answer]:(q.answer!=null?String(q.answer):'FRQ')),sol:q.sol||''});
           _csCaptureQ.push({text:q.text||q.q||'',choices:isMCQ?(q.choices||[]).slice():[],correctIndex:isMCQ?q.answer:null,type:isFRQ?'frq':'mcq',points:1});
 
           h+='<div class="fep-item '+(isFRQ?'fep-frq fep-frq-full':'fep-mcq')+'">';
