@@ -145,8 +145,7 @@ window.Mastery = (function(){
       q=window._shuffleQ?window._shuffleQ(q):q; /* randomize correct-answer position */
       var qId=q.id||('mq-'+qi);
       var opts=(q.choices||[]).map(function(c,ci){
-        var s=String(c||'');
-        if(s.indexOf('\\(')===-1&&s.indexOf('\\[')===-1&&/\\[a-zA-Z{([\\]/.test(s)){s='\\('+s+'\\)';}
+        var s=typeof window.CSAutoMath==='function'?window.CSAutoMath(c):String(c||'');
         return '<button class="cq-opt" onclick="cqPick(this)">'
           +'<span class="cq-lbl">'+letters[ci]+'</span>'
           +'<span class="cq-ct">'+(typeof _maths==='function'?_maths(s):s)+'</span>'

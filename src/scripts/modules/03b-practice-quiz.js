@@ -153,14 +153,16 @@ function showPracticeQuiz(ov, questions, origMistake){
       + '<div style="flex:1;height:4px;background:var(--line);border-radius:4px;overflow:hidden">'
       + '<div style="height:100%;width:'+pct+'%;background:var(--indigo)"></div></div>'
       + '</div>'
-      + '<p style="font-size:.95rem;line-height:1.7;color:var(--ink);margin:0 0 20px" id="pq-qtext">'+escHtml(qo.q)+'</p>'
+      + '<p style="font-size:.95rem;line-height:1.7;color:var(--ink);margin:0 0 20px" id="pq-qtext">'+(typeof window.CSQuizMath==='function'?window.CSQuizMath(qo.q):escHtml(qo.q))+'</p>'
       + '<div id="pq-choices">'
       + (qo.choices||[]).map(function(c,i){
           var letter = String.fromCharCode(65+i);
+          var s = typeof window.CSAutoMath==='function' ? window.CSAutoMath(c) : c;
+          var m = typeof window.CSQuizMath==='function' ? window.CSQuizMath(s) : escHtml(s);
           return '<button onclick="pqPick(\''+letter+'\')" id="pqbtn-'+letter+'" '
             + 'style="display:block;width:100%;text-align:left;padding:10px 14px;margin-bottom:8px;'
             + 'border:1.5px solid var(--line);border-radius:9px;background:var(--paper);'
-            + 'color:var(--ink);cursor:pointer;font-size:.9rem;transition:background .15s">'+escHtml(c)+'</button>';
+            + 'color:var(--ink);cursor:pointer;font-size:.9rem;transition:background .15s">'+m+'</button>';
         }).join('')
       + '</div>'
       + '<div id="pq-feedback" style="min-height:24px"></div>'

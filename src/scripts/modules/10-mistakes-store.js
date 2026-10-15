@@ -162,13 +162,20 @@ window.openMistakes = function(){
            _maths(). Mirrors _maths()'s tag-detection algorithm exactly. */
         var _wm = function(s){
           if(!s) return '';
-          s = String(s);
-          if(s.indexOf('\\(')===-1 && s.indexOf('\\[')===-1 && /\\[a-zA-Z{([\\]/.test(s)) s='\\('+s+'\\)';
-          var out='', i=0, L=s.length;
+          s = typeof window.CSAutoMath==='function' ? window.CSAutoMath(s) : String(s);
+          if(s.indexOf('\\(')===-1 && s.indexOf('\\[')===-1 && s.indexOf('\\')!==-1) s='\\('+s+'\\)';
+          var out='', inM=false, i=0, L=s.length;
           while(i<L){
+            if(!inM && s.slice(i,i+2)==='\\('){out+='\\(';i+=2;inM=true;continue;}
+            if(!inM && s.slice(i,i+2)==='\\['){out+='\\[';i+=2;inM=true;continue;}
+            if(inM && s.slice(i,i+2)==='\\)'){out+='\\)';i+=2;inM=false;continue;}
+            if(inM && s.slice(i,i+2)==='\\]'){out+='\\]';i+=2;inM=false;continue;}
             if(s[i]==='<' && i+1<L && (s[i+1]==='/' || /[a-zA-Z]/.test(s[i+1]))){
               var tj=s.indexOf('>', i);
               if(tj!==-1){ out+=s.slice(i, tj+1); i=tj+1; continue; }
+            }
+            if(!inM && s[i]==='\\' && i+1<L && (s[i+1]==='%' || s[i+1]==='$')){
+              out+=s[i+1]; i+=2; continue;
             }
             var c=s[i];
             if(c==='&') out+='&amp;';
