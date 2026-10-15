@@ -623,6 +623,7 @@ const baseNjk = `<!DOCTYPE html>
           <div id="topic-search-results" role="listbox"></div>
         </span>
         <button class="mistake-nav-btn" id="glossaryNavBtn" onclick="window.openGlossaryModal&&window.openGlossaryModal()" title="Bilingual Mathematics Glossary" aria-label="Bilingual Math Glossary">📖 <span data-i18n="nav.glossary">Glossary</span></button>
+        <button class="mistake-nav-btn" id="formulaNavBtn" onclick="window.openFormulaModal&&window.openFormulaModal()" title="Official Reference &amp; Formula Sheets" aria-label="Official Reference &amp; Formula Sheets">📐 <span data-i18n="nav.formulas">Formulas</span></button>
         <button class="mistake-nav-btn" id="mistakeBtn" onclick="openMistakes()" title="Review mistakes" aria-label="Review mistakes">📋 <span data-i18n="nav.mistakes">Mistakes</span></button>
         <button class="mistake-nav-btn" id="progressBtn" onclick="openProgress()" title="View your progress across tracks" aria-label="View your progress">📊 <span data-i18n="nav.progress">Progress</span></button>
         <button class="mistake-nav-btn" id="cloudSignInBtn" title="Sign in to sync your progress across devices" aria-label="Sign in to sync your progress" onclick="window.openCloudAuthModal&&window.openCloudAuthModal()">☁️ <span>Sign in</span></button>
@@ -724,9 +725,32 @@ const baseNjk = `<!DOCTYPE html>
           <button type="button" class="glossary-filter-pill" data-domain="trig" onclick="window.CSGlossary&&window.CSGlossary.filter('trig')">Trigonometry / المثلثات</button>
           <button type="button" class="glossary-filter-pill" data-domain="statistics" onclick="window.CSGlossary&&window.CSGlossary.filter('statistics')">Statistics / الإحصاء</button>
           <button type="button" class="glossary-filter-pill" data-domain="calculus" onclick="window.CSGlossary&&window.CSGlossary.filter('calculus')">Calculus / التفاضل والتكامل</button>
+          <button type="button" class="glossary-filter-pill" data-domain="vectors" onclick="window.CSGlossary&&window.CSGlossary.filter('vectors')">Vectors / المتجهات والمصفوفات</button>
+          <button type="button" class="glossary-filter-pill" data-domain="conics" onclick="window.CSGlossary&&window.CSGlossary.filter('conics')">Conics / القطوع والأعداد المركبة</button>
+          <button type="button" class="glossary-filter-pill" data-domain="combinatorics" onclick="window.CSGlossary&&window.CSGlossary.filter('combinatorics')">Combinatorics / التباديل والتوافيق</button>
         </div>
       </div>
       <div id="glossaryBody" class="glossary-body"></div>
+    </div>
+  </div>
+
+  <!-- ══ Universal Formula & Reference Sheets Modal ══ -->
+  <div id="formulaOverlay" class="formula-overlay" role="dialog" aria-modal="true" aria-label="Official Mathematics Reference Sheets" onclick="if(event.target===this)window.closeFormulaModal&&window.closeFormulaModal()">
+    <div class="formula-modal">
+      <div class="formula-header">
+        <h3 class="formula-title">📐 <span data-i18n="formula.title">Official Reference &amp; Formula Sheets</span> <span style="font-size:0.9rem;font-weight:normal;color:var(--muted)">/ أوراق القوانين والمفاهيم الرسمية</span></h3>
+        <button type="button" class="formula-close" onclick="window.closeFormulaModal&&window.closeFormulaModal()" aria-label="Close">✕</button>
+      </div>
+      <div class="formula-tabs-wrap">
+        <div class="formula-tabs" role="tablist">
+          <button type="button" class="formula-tab-pill active" data-curriculum="sat" onclick="window.CSFormula&&window.CSFormula.setTab('sat', this)">🇺🇸 Digital SAT &amp; ACT</button>
+          <button type="button" class="formula-tab-pill" data-curriculum="cambridge" onclick="window.CSFormula&&window.CSFormula.setTab('cambridge', this)">🇬🇧 Cambridge IGCSE 0580</button>
+          <button type="button" class="formula-tab-pill" data-curriculum="alevel" onclick="window.CSFormula&&window.CSFormula.setTab('alevel', this)">🇬🇧 Cambridge A-Level (MF19) &amp; IB</button>
+          <button type="button" class="formula-tab-pill" data-curriculum="qudrat" onclick="window.CSFormula&&window.CSFormula.setTab('qudrat', this)">🇸🇦 قدرات وتحصيلي (Qudrat &amp; Tahsili)</button>
+          <button type="button" class="formula-tab-pill" data-curriculum="ap" onclick="window.CSFormula&&window.CSFormula.setTab('ap', this)">📊 AP Calculus &amp; Statistics</button>
+        </div>
+      </div>
+      <div id="formulaBody" class="formula-body"></div>
     </div>
   </div>
 

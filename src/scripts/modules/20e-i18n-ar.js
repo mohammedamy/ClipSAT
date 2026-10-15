@@ -4,7 +4,7 @@
 (function(){
   if(!window.i18n||!window.i18n._addStrings) return;
   window.i18n._addStrings('ar', {
-        'nav.home':'الرئيسية','nav.glossary':'القاموس','glossary.title':'القاموس الرياضي الثنائي','nav.mistakes':'الأخطاء','nav.whats-new':'الجديد؟',
+        'nav.home':'الرئيسية','nav.glossary':'القاموس','glossary.title':'القاموس الرياضي الثنائي','nav.formulas':'القوانين','formula.title':'أوراق القوانين والمفاهيم الرسمية','nav.mistakes':'الأخطاء','nav.whats-new':'الجديد؟',
         'quiz.generate':'إنشاء اختبار','quiz.level':'المستوى','quiz.count':'عدد الأسئلة',
         'quiz.chapterQuiz':'اختبار الفصل',
         'quiz.mixed':'مختلط','quiz.easy':'سهل','quiz.medium':'متوسط','quiz.hard':'صعب',

@@ -379,6 +379,156 @@
       ar: 'حقل الاتجاهات / الميل',
       arDef: 'تمثيل بصري لحلول المعادلات التفاضلية عبر قطع مستقيمة صغيرة توضح الميل عند كل نقطة.',
       domain: 'calculus'
+    },
+    'integration by parts': {
+      en: 'A technique for integrating products of functions: ∫u dv = uv − ∫v du.',
+      ar: 'التكامل بالتجزئة',
+      arDef: 'طريقة لحساب تكامل حاصل ضرب دالتين تعتمد على القاعدة: تكامل (u dv) = uv - تكامل (v du).',
+      domain: 'calculus'
+    },
+    'L\'Hôpital\'s rule': {
+      en: 'A method for evaluating indeterminate limits (0/0 or ∞/∞) by differentiating numerator and denominator: lim f(x)/g(x) = lim f\'(x)/g\'(x).',
+      ar: 'قاعدة لوبيتال',
+      arDef: 'قاعدة لحساب النهايات غير المعينة (0/0 أو مالانهاية/مالانهاية) باشتقاق البسط والمقام على حدة.',
+      domain: 'calculus'
+    },
+    'differential equation': {
+      en: 'A mathematical equation that relates an unknown function to its derivatives.',
+      ar: 'معادلة تفاضلية',
+      arDef: 'معادلة رياضية تربط بين دالة مجهولة وواحدة أو أكثر من مشتقاتها.',
+      domain: 'calculus'
+    },
+    'Taylor series': {
+      en: 'A representation of a function as an infinite sum of terms calculated from the values of its derivatives at a single point.',
+      ar: 'متسلسلة تايلور',
+      arDef: 'تمثيل للدوال الرياضية القابلة للاشتقاق كمجموع لا نهائي من كثيرات الحدود المشتقة عند نقطة مركزية.',
+      domain: 'calculus'
+    },
+    'mean value theorem': {
+      en: 'If f is continuous on [a,b] and differentiable on (a,b), there exists c in (a,b) where f\'(c) = [f(b) − f(a)] / (b − a).',
+      ar: 'نظرية القيمة المتوسطة',
+      arDef: 'إذا كانت الدالة متصلة على فترة مغلقة وقابلة للاشتقاق على الفترة المفتوحة، فيوجد عدد جـ يكون عنده ميل المماس مساوياً لميل القاطع.',
+      domain: 'calculus'
+    },
+
+    /* ── Vectors & Matrices ── */
+    'vector': {
+      en: 'A mathematical quantity possessing both magnitude and direction, represented by an arrow or column matrix.',
+      ar: 'المتجه',
+      arDef: 'كمية فيزيائية أو رياضية تحدد بمقدار واتجاه، وتمثل بقطعة مستقيمة موجهة أو مصفوفة عمود.',
+      domain: 'vectors'
+    },
+    'dot product': {
+      en: 'The scalar product of two vectors: u · v = |u||v|cos θ = u₁v₁ + u₂v₂. Perpendicular vectors have dot product = 0.',
+      ar: 'الضرب الداخلي / القياسي',
+      arDef: 'حاصل الضرب القياسي لمتجهين: أ · ب = |أ||ب| جتا هـ؛ وإذا كان المتجهان متعامدين فإن ناتجه يساوي صفراً.',
+      domain: 'vectors'
+    },
+    'cross product': {
+      en: 'A vector perpendicular to both vectors u and v with magnitude |u||v|sin θ.',
+      ar: 'الضرب الاتجاهي',
+      arDef: 'حاصل ضرب اتجاهي ينتج متجهاً عمودياً على المستوي الذي يحوي المتجهين، مقداره |أ||ب| جا هـ.',
+      domain: 'vectors'
+    },
+    'unit vector': {
+      en: 'A vector with a magnitude of exactly 1 pointing in the same direction: u / |u|.',
+      ar: 'متجه الوحدة',
+      arDef: 'متجه طوله يساوي متراً أو وحدة واحدة وله نفس اتجاه المتجه الأصلي: u / |u|.',
+      domain: 'vectors'
+    },
+    'identity matrix': {
+      en: 'A square matrix with ones along the main diagonal and zeros elsewhere; AI = IA = A.',
+      ar: 'مصفوفة الوحدة',
+      arDef: 'مصفوفة مربعة جميع عناصر قطرها الرئيسي تساوي 1 وباقي العناصر أصفار، وهي العنصر المحايد في ضرب المصفوفات.',
+      domain: 'vectors'
+    },
+    'eigenvalue': {
+      en: 'A scalar λ such that multiplying a matrix A by a non-zero eigenvector v satisfies Av = λv.',
+      ar: 'القيمة الذاتية',
+      arDef: 'ثابت عددي λ يحقق المعادلة أ ع = λ ع لمتجه ذاتي غير صفري، وتستخدم في تحويلات الفضاءات الخطية.',
+      domain: 'vectors'
+    },
+
+    /* ── Conic Sections & Complex Numbers ── */
+    'conic section': {
+      en: 'A curve formed by intersecting a double right circular cone with a plane: circle, ellipse, parabola, or hyperbola.',
+      ar: 'القطوع المخروطية',
+      arDef: 'منحنيات ناتجة عن تقاطع مستوى مع مخروط دائري مزدوج قائم: الدائرة، والقطع المكافئ، والقطع الناقص، والقطع الزائد.',
+      domain: 'conics'
+    },
+    'ellipse': {
+      en: 'An oval-shaped curve where the sum of distances from any point on the curve to two fixed foci is constant.',
+      ar: 'القطع الناقص',
+      arDef: 'محل هندسي لمجموعة نقاط في المستوى يكون مجموع بعدي أي نقطة منها عن بؤرتين ثابتتين مقداراً ثابتاً.',
+      domain: 'conics'
+    },
+    'hyperbola': {
+      en: 'A smooth open curve with two separate branches where the absolute difference of distances from two foci is constant.',
+      ar: 'القطع الزائد',
+      arDef: 'محل هندسي لمجموعة نقاط يكون الفرق المطلق بين بعدي أي نقطة منها عن البؤرتين مقداراً ثابتاً، وله فرعان متقابلان.',
+      domain: 'conics'
+    },
+    'foci': {
+      en: 'Two fixed reference points used to define conics such as ellipses and hyperbolas.',
+      ar: 'البؤرتان',
+      arDef: 'نقطتان ثابتتان في المستوى تُستخدمان كمرجع أساسي لتعريف وبناء القطوع المخروطية كالقطع الناقص والزائد.',
+      domain: 'conics'
+    },
+    'complex number': {
+      en: 'A number of the form a + bi, where a is the real part, b is the imaginary part, and i = √(-1).',
+      ar: 'العدد المركب',
+      arDef: 'عدد يُكتب على الصورة أ + ب ت (أو a + bi)، حيث أ الجزء الحقيقي، وب الجزء التخيلي، وت = جذر(-1).',
+      domain: 'conics'
+    },
+    'conjugate': {
+      en: 'For a complex number z = a + bi, its complex conjugate is z̄ = a − bi; z · z̄ = a² + b².',
+      ar: 'المرافق (مرافق العدد المركب)',
+      arDef: 'العدد الناتج عن تغيير إشارة الجزء التخيلي للعدد المركب: مرافق (أ + ب ت) هو (أ - ب ت).',
+      domain: 'conics'
+    },
+    'polar coordinates': {
+      en: 'A two-dimensional coordinate system in which each point is determined by a distance r from a pole and an angle θ.',
+      ar: 'الإحداثيات القطبية',
+      arDef: 'نظام إحداثيات مستوٍ يُحدد موضع أي نقطة بمسافة متجهة (ر) من القطب وزاوية اتجاه (ثيتا).',
+      domain: 'conics'
+    },
+    'De Moivre\'s theorem': {
+      en: 'For any real θ and integer n: [r(cos θ + i sin θ)]ⁿ = rⁿ(cos nθ + i sin nθ).',
+      ar: 'نظرية ديموافر',
+      arDef: 'نظرية لحساب قوى وجذور الأعداد المركبة في الصورة القطبية: [ر (جتا هـ + ت جا هـ)]^ن = ر^ن [جتا(ن هـ) + ت جا(ن هـ)].',
+      domain: 'conics'
+    },
+
+    /* ── Sequences, Series & Combinatorics ── */
+    'permutation': {
+      en: 'An ordered arrangement of n distinct objects taken r at a time: nPr = n! / (n − r)! (order matters).',
+      ar: 'التباديل',
+      arDef: 'طرق ترتيب عناصر مع مراعاة الترتيب؛ يُرمز لها بـ (ن ل ر) = ن! / (ن - ر)!.',
+      domain: 'combinatorics'
+    },
+    'combination': {
+      en: 'A selection of r objects from a set of n objects where order does not matter: nCr = n! / [r!(n − r)!].',
+      ar: 'التوافيق',
+      arDef: 'طرق اختيار مجموعة عناصر دون مراعاة الترتيب؛ يُرمز لها بـ (ن ق ر) = ن! / [ر! × (ن - ر)!].',
+      domain: 'combinatorics'
+    },
+    'binomial theorem': {
+      en: 'A formula for expressing the algebraic expansion of powers of a binomial (a + b)ⁿ using combination coefficients.',
+      ar: 'نظرية ذات الحدين',
+      arDef: 'قاعدة جبرية لنشر المقدار (أ + ب)^ن باستخدام معاملات التوافيق ومثلث باسكال.',
+      domain: 'combinatorics'
+    },
+    'geometric series': {
+      en: 'The sum of the terms of a geometric sequence; converges to S = a / (1 − r) when |r| < 1.',
+      ar: 'متسلسلة هندسية',
+      arDef: 'مجموع حدود متتابعة هندسية؛ وتكون متقاربة ومجموعها اللانهائي = أ / (1 - ر) عندما تكون |ر| < 1.',
+      domain: 'combinatorics'
+    },
+    'mathematical induction': {
+      en: 'A mathematical proof method establishing a base case P(1) and an inductive step P(k) ⇒ P(k+1).',
+      ar: 'الاستقراء الرياضي',
+      arDef: 'أسلوب برهان رياضي يُثبت صحة خاصية لجميع الأعداد الطبيعية بإثبات خطوة الأساس والخطوة الاستقرائية.',
+      domain: 'combinatorics'
     }
   };
 

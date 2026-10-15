@@ -137,6 +137,38 @@
     </div>
   </section>
 
+  <section class="band" id="pathway-navigator">
+    <div class="wrap">
+      <div class="pathway-nav-box">
+        <div class="pathway-nav-header">
+          <span class="eyebrow amber">🎯 Personalized Pathway / مسارك التعليمي المخصص</span>
+          <h2 class="pathway-nav-title">Find Your Curriculum Track in Arab International Schools</h2>
+          <p class="pathway-nav-desc">Whether you are preparing for American Diploma (Digital SAT/AP), British Cambridge &amp; Edexcel IGCSE/A-Level, International Baccalaureate (IB), or Saudi Qiyas (Qudrat &amp; Tahsili), select your school system below to explore your tailored learning pathway.</p>
+        </div>
+
+        <div class="pathway-tabs" role="tablist" aria-label="Curriculum Systems">
+          <button type="button" class="pathway-tab-btn active" data-path="saudi" onclick="selectPathway('saudi', this)" role="tab" aria-selected="true">
+            <span>🇸🇦</span> <span>Saudi &amp; GCC / المسار الوطني والثنائي</span>
+          </button>
+          <button type="button" class="pathway-tab-btn" data-path="american" onclick="selectPathway('american', this)" role="tab" aria-selected="false">
+            <span>🇺🇸</span> <span>American Diploma / الدبلومة الأمريكية</span>
+          </button>
+          <button type="button" class="pathway-tab-btn" data-path="british" onclick="selectPathway('british', this)" role="tab" aria-selected="false">
+            <span>🇬🇧</span> <span>Cambridge &amp; Edexcel / البريطاني</span>
+          </button>
+          <button type="button" class="pathway-tab-btn" data-path="ib" onclick="selectPathway('ib', this)" role="tab" aria-selected="false">
+            <span>🌐</span> <span>IB World Schools / البكالوريا الدولية</span>
+          </button>
+          <button type="button" class="pathway-tab-btn" data-path="stem" onclick="selectPathway('stem', this)" role="tab" aria-selected="false">
+            <span>🚀</span> <span>STEM &amp; Olympiad / الأولمبياد والجامعة</span>
+          </button>
+        </div>
+
+        <div id="pathwayDetails" class="pathway-content-card"></div>
+      </div>
+    </div>
+  </section>
+
   <section class="band" id="catalog">
     <div class="wrap">
       <div class="sec-head">
@@ -904,6 +936,127 @@
         c.style.display = 'none';
       }
     }
+  }
+
+  /* ══ MENA School System Pathway Navigator ══ */
+  var PATHWAYS = {
+    saudi: {
+      name: 'Saudi Arabia & GCC National/Bilingual Pathway (المسار السعودي والخليجي)',
+      grade: 'Grades 10–12 / الأول إلى الثالث الثانوي',
+      desc: 'Designed for high school students in Saudi Arabia and the GCC taking Qiyas standardized admissions exams (GAT Qudrat & SAAT Tahsili) in either Arabic or English, alongside secondary school mathematics.',
+      tracks: [
+        { id: 'qudrat', code: 'GAT', name: 'GAT Qudrat Math', tag: 'قدرات عامة' },
+        { id: 'tahsili', code: 'SAAT', name: 'SAAT Tahsili Math', tag: 'تحصيلي ثانوي' },
+        { id: 'geo', code: 'GEOM', name: 'Geometry & Mensuration', tag: 'الهندسة والقياس' },
+        { id: 'algebra', code: 'ALG-1', name: 'Algebra Foundations', tag: 'الجبر التأسيسي' }
+      ],
+      features: 'Non-calculator mental arithmetic drills, Quantitative Comparison (قارن بين القيمة الأولى والثانية) practice, and integrated Bilingual Math Glossary tooltips.',
+      cat: 'national'
+    },
+    american: {
+      name: 'American High School Diploma (SAT · AP · ACT · EST)',
+      grade: 'Grades 9–12 / High School Diploma',
+      desc: 'Comprehensive US curriculum pathway mapping to College Board Digital SAT, Advanced Placement (AP) courses, ACT, and the Egyptian Scholastic Test (EST I & II).',
+      tracks: [
+        { id: 'sat', code: 'SAT', name: 'Digital SAT Math', tag: 'College Board' },
+        { id: 'apab', code: 'AP-AB', name: 'AP Calculus AB', tag: 'College Board' },
+        { id: 'apbc', code: 'AP-BC', name: 'AP Calculus BC', tag: 'College Board' },
+        { id: 'apstats', code: 'AP-STAT', name: 'AP Statistics', tag: 'College Board' },
+        { id: 'act', code: 'ACT', name: 'ACT Mathematics', tag: 'Enhanced 4-Choice' },
+        { id: 'est', code: 'EST-1', name: 'EST I Math', tag: 'Egypt Diploma' }
+      ],
+      features: 'Adaptive Digital SAT simulation, Desmos scientific/graphing calculator access, and authentic Student-Produced Response (SPR) grid-in problem sets.',
+      cat: 'tests'
+    },
+    british: {
+      name: 'British International (Cambridge & Pearson Edexcel IGCSE / A-Level)',
+      grade: 'Years 10–13 / Key Stages 4 & 5',
+      desc: 'Rigorous British syllabus alignment for Cambridge 0580 & 9709, and Pearson Edexcel 4MA1 International GCSE, widely taken in Egypt, Jordan, UAE, and Saudi Arabia.',
+      tracks: [
+        { id: 'igcse', code: '0580', name: 'Cambridge IGCSE Math', tag: 'Core & Extended' },
+        { id: 'aslevel', code: '9709-AS', name: 'Cambridge AS-Level', tag: 'Pure 1 & Stats' },
+        { id: 'a2level', code: '9709-A2', name: 'Cambridge A2-Level', tag: 'Pure 3 & Mech' },
+        { id: 'calculus', code: 'CALC', name: 'Calculus Concepts', tag: 'Differentiation' }
+      ],
+      features: 'Multi-part structured questions (a, b, c), official [M1/A1/B1] mark schemes, Paper 1 non-calculator vs. Paper 2 calculator guidance, and cumulative frequency ogives.',
+      cat: 'intl'
+    },
+    ib: {
+      name: 'International Baccalaureate (IB MYP & DP Mathematics)',
+      grade: 'IB Middle Years (MYP) & Diploma (DP Years 1–2)',
+      desc: 'Inquiry-led international mathematics covering both Analysis & Approaches (AA) and Applications & Interpretation (AI) at Standard and Higher Levels.',
+      tracks: [
+        { id: 'ibsl', code: 'IB-SL', name: 'IB Mathematics SL', tag: 'AA & AI SL' },
+        { id: 'ibhl', code: 'IB-HL', name: 'IB Mathematics HL', tag: 'AA & AI HL' },
+        { id: 'precalc', code: 'PRECALC', name: 'Precalculus & Functions', tag: 'Trigonometry' },
+        { id: 'calculus', code: 'CALC', name: 'Differential Calculus', tag: 'Calculus' }
+      ],
+      features: 'Paper 1 (non-calculator) and Paper 2/3 (GDC) practice, deep conceptual proofs, Voronoi/geometric explorers, and official IB grade boundary rubrics.',
+      cat: 'intl'
+    },
+    stem: {
+      name: 'Advanced STEM, Olympiad & University Foundations',
+      grade: 'Advanced High School & University Prep',
+      desc: 'Advanced mathematics for ambitious students competing in Kangaroo Math Arabia (الكانغارو), Saudi Mawhiba (موهبة), AMC 10/12, or preparing for University Engineering & Computer Science.',
+      tracks: [
+        { id: 'linalg', code: '[A]', name: 'Linear Algebra', tag: 'Vectors & Matrices' },
+        { id: 'mvc', code: '∇', name: 'Multivariable Calculus', tag: 'Vector Fields' },
+        { id: 'odes', code: 'dy/dx', name: 'Differential Equations', tag: 'Modeling' },
+        { id: 'ibhl', code: 'OLYMP', name: 'Olympiad & Contest Math', tag: 'Advanced Proofs' }
+      ],
+      features: 'Interactive 3D vector fields, matrix transformation visualizers, slope field analyzers, and advanced combinatorics / number theory challenges.',
+      cat: 'univ'
+    }
+  };
+
+  function selectPathway(pathId, btn) {
+    var tabs = document.querySelectorAll('.pathway-tab-btn');
+    for (var i = 0; i < tabs.length; i++) {
+      var t = tabs[i];
+      var active = (t === btn || t.getAttribute('data-path') === pathId);
+      t.classList.toggle('active', active);
+      t.setAttribute('aria-selected', active ? 'true' : 'false');
+    }
+
+    var data = PATHWAYS[pathId] || PATHWAYS.saudi;
+    var el = document.getElementById('pathwayDetails');
+    if (!el) return;
+
+    var h = '<div class="pathway-meta-row">'
+      + '<div><h3 style="margin:0 0 4px;font-size:1.15rem;font-weight:750;color:var(--ink)">' + data.name + '</h3>'
+      + '<span class="pathway-grade-badge">🎓 ' + data.grade + '</span></div>'
+      + '<button type="button" class="btn primary" onclick="filterCatalogToPathway(\'' + data.cat + '\')" style="padding:7px 14px;font-size:.82rem;border-radius:8px">⚡ Filter Catalog to This Track Bundle</button>'
+      + '</div>'
+      + '<p style="margin:8px 0;font-size:.88rem;color:var(--muted);line-height:1.5">' + data.desc + '</p>'
+      + '<div class="pathway-tracks-grid">';
+
+    data.tracks.forEach(function(tr){
+      h += '<div class="pathway-track-pill" onclick="showView(\'' + tr.id + '\')">'
+        + '<div><b style="color:var(--indigo,#1e3e70);margin-right:6px">[' + tr.code + ']</b> ' + tr.name + '</div>'
+        + '<span style="font-size:.75rem;color:var(--amber,#9e6515);font-weight:600">' + tr.tag + ' →</span>'
+        + '</div>';
+    });
+    h += '</div>'
+      + '<div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);font-size:.82rem;color:var(--faint)">'
+      + '<strong>Key Pedagogical Features:</strong> ' + data.features
+      + '</div>';
+
+    el.innerHTML = h;
+  }
+
+  function filterCatalogToPathway(cat) {
+    var catBtn = document.querySelector('.cat-pill[onclick*="\'' + cat + '\'"]');
+    if (window.filterCatalog) window.filterCatalog(cat, catBtn);
+    var catSec = document.getElementById('catalog');
+    if (catSec && catSec.scrollIntoView) {
+      catSec.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){ selectPathway('saudi'); });
+  } else {
+    selectPathway('saudi');
   }
   </script>
 </main>
