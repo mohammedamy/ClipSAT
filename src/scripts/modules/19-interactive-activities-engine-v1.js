@@ -613,9 +613,9 @@ function _buildNUM(cfg,box){
 function _buildORD(cfg,box){
   box.innerHTML='<span class="ix-badge ord">'+_t('ix.badge.ord')+'</span>';
   var h=document.createElement('h3');h.innerHTML=_loc(cfg,'ti');box.appendChild(h);
-  if(cfg.q){
+  if(cfg.q||cfg.prompt){
     var p=document.createElement('p');p.style.cssText='margin:.3rem 0 .65rem;font-size:.9rem';
-    p.innerHTML=_loc(cfg,'q');box.appendChild(p);
+    p.innerHTML=_loc(cfg,cfg.q?'q':'prompt');box.appendChild(p);
   }
   var rawSteps=_loc(cfg,'items')||_loc(cfg,'steps')||[];
   var items=rawSteps.map(function(s,i){return {text:s,origIdx:i};});
@@ -741,9 +741,9 @@ function _buildORD(cfg,box){
 function _buildCAT(cfg,box){
   box.innerHTML='<span class="ix-badge cat">'+_t('ix.badge.cat')+'</span>';
   var h=document.createElement('h3');h.innerHTML=_loc(cfg,'ti');box.appendChild(h);
-  if(cfg.q){
+  if(cfg.q||cfg.prompt){
     var p=document.createElement('p');p.style.cssText='margin:.3rem 0 .65rem;font-size:.9rem';
-    p.innerHTML=_loc(cfg,'q');box.appendChild(p);
+    p.innerHTML=_loc(cfg,cfg.q?'q':'prompt');box.appendChild(p);
   }
 
   var cats=_loc(cfg,'categories')||[];

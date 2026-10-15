@@ -314,6 +314,7 @@
         'ix.badge.num':'إدخال رقمي','ix.num.check':'تحقّق من الإجابة','ix.num.showSol':'إظهار الحل','ix.num.hintPrefix':'تلميح: ','ix.num.correct':'✓ إجابة صحيحة!','ix.num.incorrect':'✗ إجابة غير صحيحة. ','ix.num.close':'قريب جداً! تأكد من التقريب أو الدقة. ',
         'ix.badge.ord':'ترتيب الخطوات','ix.ord.check':'تحقّق من الترتيب','ix.ord.allCorrect':'✓ الخطوات مرتبة بالتسلسل الصحيح!','ix.ord.someCorrect':'{n} من أصل {total} خطوات في المكان الصحيح.','ix.ord.showCorrect':'إظهار الترتيب الصحيح','ix.ord.moveUp':'تحريك لأعلى','ix.ord.moveDown':'تحريك لأسفل',
         'ix.badge.cat':'تصنيف المفاهيم','ix.cat.check':'تحقّق من التصنيف','ix.cat.allCorrect':'✓ تم تصنيف جميع العناصر بنجاح!','ix.cat.someCorrect':'{n} من أصل {total} عناصر تم وضعها بشكل صحيح.','ix.cat.showCorrect':'إظهار التصنيف الصحيح',
+        'ix.mp.toggle':'لوحة الرموز الرياضية','ix.mp.hide':'إخفاء الرموز',
         'ix.badge.gp':'تحديد النقاط على الرسم','ix.gp.check':'تحقق من النقاط','ix.gp.clear':'مسح النقاط','ix.gp.showSol':'إظهار النقاط المستهدفة',
         'ix.gp.allCorrect':'✓ تم تحديد جميع النقاط والخصائص بدقة!','ix.gp.someCorrect':'{n} من أصل {total} نقاط محددة بشكل صحيح.',
         'ix.gp.hint':'اضغط على الشبكة لتحديد النقطة. اضغط على النقطة مجدداً لإزالتها.',
