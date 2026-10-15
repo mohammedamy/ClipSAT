@@ -248,4 +248,5 @@ if (failed > 0) {
   process.exit(1);
 } else {
   console.log('✅ All Pillar 5 modular exam specs tests passed successfully!\n');
+  process.exit(0);
 }

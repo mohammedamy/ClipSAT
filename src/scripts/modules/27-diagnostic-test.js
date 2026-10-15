@@ -1,16 +1,20 @@
 /**
- * ClipSAT Diagnostic Assessment Engine  v1.0
+ * ClipSAT Computerized Adaptive Diagnostic (CAT) Engine  v2.0
  * ════════════════════════════════════════════════════════════════════════
- * Generates an adaptive/domain-balanced 10–12 question diagnostic assessment
+ * Generates an authentic Computerized Adaptive Testing (CAT) assessment
  * drawn from bank-data/{track}.json.
  *
- * Features:
- *   - Balanced sampling across all syllabus domains
- *   - Real-time navigation, state saving in localStorage
- *   - Domain mastery breakdown & recommended study path
- *   - Non-forced 1:1 WhatsApp tutoring CTA (+966 59 768 8647) with prefilled summary
+ * Pillar 4.4 Enhancements:
+ *   - 3-tier dynamic difficulty routing (starts Medium, promotes to Hard
+ *     on correct, demotes to Easy on incorrect)
+ *   - Domain-balanced sampling (excludes meta-strategy domains)
+ *   - Real-time adaptive level badge (Foundation, Standard, Advanced)
+ *   - Scaled ability estimate (Theta/Proficiency) & projected exam score
+ *   - Actionable 7-Day & 30-Day Personalized Study Schedule with direct
+ *     deep-links to chapters & interactive explorers
+ *   - Dual-Language (AR & EN) diagnostic report toggle for students & parents
+ *   - "Export / Print Report (PDF)" & direct 1:1 WhatsApp tutoring share
  *   - Full worked solutions review
- *   - Cookieless analytics integration (diagnostic_complete, whatsapp_click)
  */
 (function() {
   'use strict';
@@ -20,14 +24,64 @@
 
   var TRACK_NAMES = {
     a2level: 'A2 Level Mathematics', act: 'ACT Math', act2: 'ACT Math 2',
-    alg2: 'Algebra 2', algebra: 'Algebra', apab: 'AP Calculus AB',
+    alg2: 'Algebra 2', algebra: 'Algebra 1', apab: 'AP Calculus AB',
     apbc: 'AP Calculus BC', appc: 'AP Precalculus', apstats: 'AP Statistics',
-    aslevel: 'AS Level Mathematics', calculus: 'Calculus', est: 'EST Math',
-    est2: 'EST 2 Math', geo: 'Geometry', ibhl: 'IB Math HL (AA/AI)',
-    ibsl: 'IB Math SL (AA/AI)', igcse: 'IGCSE 0580', linalg: 'Linear Algebra',
+    aslevel: 'AS Level Mathematics', calculus: 'Calculus', est: 'EST I Math',
+    est2: 'EST II Math', geo: 'Geometry', ibhl: 'IB Math HL (AA/AI)',
+    ibsl: 'IB Math SL (AA/AI)', igcse: 'IGCSE 0580 & 4MA1', linalg: 'Linear Algebra',
     mvc: 'Multivariable Calculus', odes: 'Differential Equations',
-    precalc: 'Pre-Calculus', qudrat: 'GAT Qudrat', sat: 'Digital SAT Math',
-    tahsili: 'SAAT Tahsili'
+    precalc: 'Pre-Calculus', qudrat: 'GAT Qudrat (قدرات)', sat: 'Digital SAT Math',
+    tahsili: 'SAAT Tahsili (تحصيلي)'
+  };
+
+  var TRACK_NAMES_AR = {
+    a2level: 'الرياضيات المستوى المتقدم A2', act: 'رياضيات ACT', act2: 'رياضيات ACT المستوى الثاني',
+    alg2: 'الجبر 2 (المستوى المتقدم)', algebra: 'الجبر 1 (التأسيسي)', apab: 'تفاضل وتكامل AP Calculus AB',
+    apbc: 'تفاضل وتكامل AP Calculus BC', appc: 'الرياضيات التمهيدية AP Precalculus', apstats: 'الإحصاء AP Statistics',
+    aslevel: 'الرياضيات المستوى المتقدم التكميلي AS', calculus: 'حساب التفاضل والتكامل', est: 'رياضيات EST I (مصر)',
+    est2: 'رياضيات EST II (مصر)', geo: 'الهندسة الإقليدية', ibhl: 'رياضيات البكالوريا الدولية المستوى العالي IB HL',
+    ibsl: 'رياضيات البكالوريا الدولية المستوى القياسي IB SL', igcse: 'كامبريدج وإدكسل IGCSE', linalg: 'الجبر الخطي والمصفوفات',
+    mvc: 'حساب التفاضل والتكامل متعدد المتغيرات', odes: 'المعادلات التفاضلية',
+    precalc: 'الرياضيات التمهيدية والتحليلية', qudrat: 'اختبار القدرات العامة (قياس)', sat: 'السات الرقمي Digital SAT Math',
+    tahsili: 'اختبار التحصيلي (قياس)'
+  };
+
+  var TRACK_CHAPTER_MAP = {
+    sat: [
+      { domain: /advanced|quad|poly|function|nonlinear/i, title: 'Quadratics & Nonlinear Functions', titleAr: 'الدوال غير الخطية والتربيعية', url: '/sat/sat-quad/', ix: 'Parabola Explorer' },
+      { domain: /\blinear\b|algebra/i, title: 'Linear Equations & Systems', titleAr: 'المعادلات الخطية وأنظمة المعادلات', url: '/sat/sat-linear/', ix: 'Interactive Line Explorer' },
+      { domain: /data|problem|stat|prob/i, title: 'Problem Solving & Statistics', titleAr: 'حل المشكلات والإحصاء والاحتمالات', url: '/sat/sat-data/', ix: 'Data & Probability Tools' },
+      { domain: /geo|trig/i, title: 'Geometry & Trigonometry', titleAr: 'الهندسة وحساب المثلثات', url: '/sat/sat-geo/', ix: 'Unit Circle Explorer' }
+    ],
+    qudrat: [
+      { domain: /جبر|algebra|arith/i, title: 'الجبر والعمليات الحسابية والأسس', titleAr: 'الجبر والعمليات الحسابية والأسس', url: '/qudrat/ch1/', ix: 'مستكشف الأسس والجذور' },
+      { domain: /هندسة|geo/i, title: 'الهندسة والزوايا والأشكال الرباعية', titleAr: 'الهندسة والزوايا والأشكال الرباعية', url: '/qudrat/ch2/', ix: 'مستكشف الدائرة والمثلث' },
+      { domain: /نسب|كسور|percent/i, title: 'النسب المئوية والتناسب والكسور', titleAr: 'النسب المئوية والتناسب والكسور', url: '/qudrat/ch3/', ix: 'حساب النسب السريع' },
+      { domain: /إحصاء|احتمال|مقارن|stat/i, title: 'الإحصاء والاحتمالات والمقارنات', titleAr: 'الإحصاء والاحتمالات والمقارنات', url: '/qudrat/ch4/', ix: 'استراتيجيات المقارنة السريعة' }
+    ],
+    tahsili: [
+      { domain: /جبر|دوال|مصفوف|alg/i, title: 'الجبر والدوال والمصفوفات', titleAr: 'الجبر والدوال والمصفوفات', url: '/tahsili/ch1/', ix: 'محددات ونظير المصفوفات' },
+      { domain: /هندسة|مثلث|geo|trig/i, title: 'الهندسة وحساب المثلثات', titleAr: 'الهندسة وحساب المثلثات', url: '/tahsili/ch2/', ix: 'دائرة الوحدة والمتطابقات' },
+      { domain: /متجه|قطوع|vector|conic/i, title: 'المتجهات والقطوع المخروطية', titleAr: 'المتجهات والقطوع المخروطية', url: '/tahsili/ch3/', ix: 'القطع المكافئ والناقص' },
+      { domain: /تفاضل|تكامل|احتمال|calc/i, title: 'التفاضل والتكامل والاحتمالات', titleAr: 'التفاضل والتكامل والاحتمالات', url: '/tahsili/ch4/', ix: 'قواعد الاشتقاق والتكامل' }
+    ],
+    igcse: [
+      { domain: /number/i, title: 'Number & Estimation', titleAr: 'الأعداد والحسابات', url: '/igcse/ch1/', ix: 'Fractions & Bounds' },
+      { domain: /algebra|graph/i, title: 'Algebra & Graphs', titleAr: 'الجبر والتمثيل البياني', url: '/igcse/ch2/', ix: 'Linear & Quadratic Graphs' },
+      { domain: /coordinate|trig/i, title: 'Coordinate Geometry & Trigonometry', titleAr: 'الهندسة الإحداثية والمثلثات', url: '/igcse/ch3/', ix: 'Sine/Cosine Rules' },
+      { domain: /geometry|mensuration/i, title: 'Geometry & Mensuration', titleAr: 'الهندسة والقياس والحجوم', url: '/igcse/ch4/', ix: 'Circle Theorems' },
+      { domain: /prob|stat/i, title: 'Probability & Statistics', titleAr: 'الاحتمالات والإحصاء', url: '/igcse/ch5/', ix: 'Ogives & Boxplots' }
+    ],
+    aslevel: [
+      { domain: /pure|algebra|quad|diff|integ|trig/i, title: 'Pure Mathematics (P1/P2)', titleAr: 'الرياضيات البحتة', url: '/aslevel/', ix: 'Calculus & Functions' },
+      { domain: /mech|force|kinemat/i, title: 'Mechanics (Paper 4 / M1)', titleAr: 'الميكانيكا وحركة الأجسام', url: '/aslevel/', ix: 'Forces & Newton Laws' },
+      { domain: /prob|stat/i, title: 'Probability & Statistics (Paper 5 / S1)', titleAr: 'الإحصاء والاحتمالات', url: '/aslevel/', ix: 'Normal Distribution' }
+    ],
+    calculus: [
+      { domain: /limit|cont/i, title: 'Limits & Continuity', titleAr: 'النهايات والاتصال', url: '/calculus/ch1/', ix: 'Limits & Tangent Visualizer' },
+      { domain: /deriv|diff/i, title: 'Derivatives & Applications', titleAr: 'الاشتقاق وتطبيقاته', url: '/calculus/ch2/', ix: 'Slope & Tangent Line' },
+      { domain: /integ/i, title: 'Integrals & Fundamental Theorem', titleAr: 'التكامل والنظرية الأساسية', url: '/calculus/ch4/', ix: 'Riemann Sums & Area' }
+    ]
   };
 
   function escT(s) {
@@ -63,67 +117,47 @@
   }
 
   var SKIP_DIAG_DOMAINS = /test format|strategy|overview|exam format/i;
-  function selectBalancedQuestions(pool, targetCount) {
-    if (!pool || !pool.length) return [];
-    var byDomain = {};
-    for (var i = 0; i < pool.length; i++) {
-      var d = pool[i].domain || 'General Mathematics';
-      if (SKIP_DIAG_DOMAINS.test(d)) continue;
-      if (!byDomain[d]) byDomain[d] = [];
-      byDomain[d].push(pool[i]);
-    }
 
-    var domains = Object.keys(byDomain);
-    for (var dIdx = 0; dIdx < domains.length; dIdx++) {
-      var arr = byDomain[domains[dIdx]];
-      for (var j = arr.length - 1; j > 0; j--) {
-        var k = Math.floor(Math.random() * (j + 1));
-        var temp = arr[j]; arr[j] = arr[k]; arr[k] = temp;
-      }
-    }
-
-    var selected = [];
-    var round = 0;
-    while (selected.length < targetCount && round < 10) {
-      var addedThisRound = false;
-      for (var di = 0; di < domains.length && selected.length < targetCount; di++) {
-        var dPool = byDomain[domains[di]];
-        if (dPool && dPool.length > round) {
-          selected.push(dPool[round]);
-          addedThisRound = true;
-        }
-      }
-      if (!addedThisRound) break;
-      round++;
-    }
-
-    return selected.slice(0, targetCount);
+  function normalizeDiff(q) {
+    var d = (q.difficulty || q.level || '').toLowerCase();
+    if (d === 'easy' || d === 'foundation' || d === 'basic' || d === '1') return 'easy';
+    if (d === 'hard' || d === 'advanced' || d === '3') return 'hard';
+    return 'medium';
   }
 
-  function _autoMath(s){
-    if(window.CSAutoMath) return window.CSAutoMath(s);
-    if(!s && s !== 0) return '';
+  function shuffle(arr) {
+    var a = arr.slice();
+    for (var j = a.length - 1; j > 0; j--) {
+      var k = Math.floor(Math.random() * (j + 1));
+      var temp = a[j]; a[j] = a[k]; a[k] = temp;
+    }
+    return a;
+  }
+
+  function _autoMath(s) {
+    if (window.CSAutoMath) return window.CSAutoMath(s);
+    if (!s && s !== 0) return '';
     s = String(s).trim();
-    if(s.indexOf('\\(')!==-1 || s.indexOf('\\[')!==-1 || s.indexOf('$$')!==-1) return s;
-    if(s.startsWith('$') && s.endsWith('$') && s.length > 2) return '\\(' + s.slice(1, -1).trim() + '\\)';
-    if(/<[a-z/][\s\S]*>/i.test(s) || /[\u0600-\u06FF]/.test(s)) return s;
-    if(s.indexOf('\\')!==-1) return '\\(' + s + '\\)';
-    if(/[\^_{}±≤≥≠≈√πθ∞×÷·°]/.test(s) && !/[^\\]%|^%/.test(s)) return '\\(' + s + '\\)';
-    if(/^[-+]?\d+(?:\.\d+)?%?$/.test(s)) return '\\(' + s + '\\)';
+    if (s.indexOf('\\(') !== -1 || s.indexOf('\\[') !== -1 || s.indexOf('$$') !== -1) return s;
+    if (s.startsWith('$') && s.endsWith('$') && s.length > 2) return '\\(' + s.slice(1, -1).trim() + '\\)';
+    if (/<[a-z/][\s\S]*>/i.test(s) || /[\u0600-\u06FF]/.test(s)) return s;
+    if (s.indexOf('\\') !== -1) return '\\(' + s + '\\)';
+    if (/[\^_{}±≤≥≠≈√πθ∞×÷·°]/.test(s) && !/[^\\]%|^%/.test(s)) return '\\(' + s + '\\)';
+    if (/^[-+]?\d+(?:\.\d+)?%?$/.test(s)) return '\\(' + s + '\\)';
     var fracMatch = /^([-+]?)\s*([0-9a-zA-Z]+)\s*\/\s*([0-9a-zA-Z]+)$/.exec(s);
-    if(fracMatch) return '\\(' + (fracMatch[1]||'') + '\\frac{' + fracMatch[2] + '}{' + fracMatch[3] + '}\\)';
-    if(/^\(\s*[-+]?[0-9a-zA-Z.]+\s*,\s*[-+]?[0-9a-zA-Z.]+\s*\)$/.test(s)) return '\\(' + s + '\\)';
-    if(/^[(\[]\s*[-+]?[0-9a-zA-Z.]+\s*,\s*[-+]?[0-9a-zA-Z.]+\s*[)\]]$/.test(s)) return '\\(' + s + '\\)';
-    if(/^[-+]?\d*[a-zA-Z]$/.test(s)) return '\\(' + s + '\\)';
+    if (fracMatch) return '\\(' + (fracMatch[1]||'') + '\\frac{' + fracMatch[2] + '}{' + fracMatch[3] + '}\\)';
+    if (/^\(\s*[-+]?[0-9a-zA-Z.]+\s*,\s*[-+]?[0-9a-zA-Z.]+\s*\)$/.test(s)) return '\\(' + s + '\\)';
+    if (/^[(\[]\s*[-+]?[0-9a-zA-Z.]+\s*,\s*[-+]?[0-9a-zA-Z.]+\s*[)\]]$/.test(s)) return '\\(' + s + '\\)';
+    if (/^[-+]?\d*[a-zA-Z]$/.test(s)) return '\\(' + s + '\\)';
     var mathFns = {sin:1, cos:1, tan:1, sec:1, csc:1, cot:1, log:1, ln:1, lim:1, exp:1, det:1, deg:1, rad:1};
     var words = s.match(/[a-zA-Z]{2,}/g) || [];
-    if(words.some(function(w){ return !mathFns[w.toLowerCase()]; })){
-      if(/^[a-zA-Z](?:\([a-zA-Z0-9]+\))?\s*(=|<|>|<=|>=)\s*[-+]?[0-9a-zA-Z]/.test(s) && !/[^\\]%|^%/.test(s)){
+    if (words.some(function(w){ return !mathFns[w.toLowerCase()]; })){
+      if (/^[a-zA-Z](?:\([a-zA-Z0-9]+\))?\s*(=|<|>|<=|>=)\s*[-+]?[0-9a-zA-Z]/.test(s) && !/[^\\]%|^%/.test(s)){
         return '\\(' + s.replace(/\b(or|and)\b/g, '\\text{ $1 }') + '\\)';
       }
       return s;
     }
-    if(/[-+*/=<>|()]/.test(s) && /^[-+*/=<>()0-9a-zA-Z.,\s|]+$/.test(s)) return '\\(' + s + '\\)';
+    if (/[-+*/=<>|()]/.test(s) && /^[-+*/=<>()0-9a-zA-Z.,\s|]+$/.test(s)) return '\\(' + s + '\\)';
     return s;
   }
 
@@ -132,16 +166,16 @@
     s = String(s);
     s = s.replace(/\$\$([\s\S]+?)\$\$/g, '\\[$1\\]');
     s = s.replace(/\$(?!\s)([^$\n]+?)(?<!\s)\$/g, function(m, inner){
-      if(/^\d{1,3}(?:,\d{3})*(?:\.\d+)?$/.test(inner)) return m;
+      if (/^\d{1,3}(?:,\d{3})*(?:\.\d+)?$/.test(inner)) return m;
       return '\\(' + inner + '\\)';
     });
     s = _autoMath(s);
     var out = '', inM = false, i = 0, L = s.length;
     while (i < L) {
-      if(!inM && s.slice(i,i+2)==='\\('){out+='\\(';i+=2;inM=true;continue;}
-      if(!inM && s.slice(i,i+2)==='\\['){out+='\\[';i+=2;inM=true;continue;}
-      if(inM && s.slice(i,i+2)==='\\)'){out+='\\)';i+=2;inM=false;continue;}
-      if(inM && s.slice(i,i+2)==='\\]'){out+='\\]';i+=2;inM=false;continue;}
+      if (!inM && s.slice(i, i + 2) === '\\(') { out += '\\('; i += 2; inM = true; continue; }
+      if (!inM && s.slice(i, i + 2) === '\\[') { out += '\\['; i += 2; inM = true; continue; }
+      if (inM && s.slice(i, i + 2) === '\\)') { out += '\\)'; i += 2; inM = false; continue; }
+      if (inM && s.slice(i, i + 2) === '\\]') { out += '\\]'; i += 2; inM = false; continue; }
       if (s[i] === '<' && i + 1 < L && (s[i + 1] === '/' || /[a-zA-Z]/.test(s[i + 1]))) {
         var tj = s.indexOf('>', i);
         if (tj !== -1) { out += s.slice(i, tj + 1); i = tj + 1; continue; }
@@ -153,20 +187,13 @@
       if (c === '&') {
         var sm = s.indexOf(';', i + 1);
         if (sm !== -1 && sm - i <= 8 && /^&[a-zA-Z#0-9]+;/.test(s.slice(i, sm + 1))) {
-          out += s.slice(i, sm + 1);
-          i = sm + 1;
-          continue;
+          out += s.slice(i, sm + 1); i = sm + 1; continue;
         }
         out += '&amp;';
-      } else if (c === '<') {
-        out += '&lt;';
-      } else if (c === '>') {
-        out += '&gt;';
-      } else if (c === '"') {
-        out += '&quot;';
-      } else {
-        out += c;
-      }
+      } else if (c === '<') { out += '&lt;'; }
+      else if (c === '>') { out += '&gt;'; }
+      else if (c === '"') { out += '&quot;'; }
+      else { out += c; }
       i++;
     }
     return out;
@@ -188,17 +215,114 @@
     return '';
   }
 
+  // ── Computerized Adaptive Testing (CAT) Routing ─────────────────────────────
+  function pickNextAdaptiveQuestion(state) {
+    var targetDiff = state.currentDifficulty || 'medium';
+
+    // Domain balance: count questions already picked per domain
+    var domainCounts = {};
+    state.domains.forEach(function(d) { domainCounts[d] = 0; });
+    state.questions.forEach(function(q) {
+      var d = q.domain || 'General Mathematics';
+      domainCounts[d] = (domainCounts[d] || 0) + 1;
+    });
+
+    // Sort domains by lowest frequency
+    var sortedDomains = state.domains.slice().sort(function(a, b) {
+      return (domainCounts[a] || 0) - (domainCounts[b] || 0);
+    });
+
+    var picked = null;
+    var pickedDomain = null;
+
+    // Try finding unused question in least represented domains at target difficulty
+    for (var di = 0; di < sortedDomains.length; di++) {
+      var d = sortedDomains[di];
+      var diffMap = state.byDomainAndDiff[d];
+      if (!diffMap) continue;
+
+      var diffPool = diffMap[targetDiff] || [];
+      for (var pi = 0; pi < diffPool.length; pi++) {
+        var candidate = diffPool[pi];
+        var qId = (candidate.text || candidate.q || '') + '|' + d;
+        if (!state.usedIndices[qId]) {
+          picked = candidate;
+          pickedDomain = d;
+          state.usedIndices[qId] = true;
+          break;
+        }
+      }
+      if (picked) break;
+    }
+
+    // Fallback: search adjacent difficulty levels in least represented domains
+    if (!picked) {
+      var fallbackOrder = targetDiff === 'medium' ? ['hard', 'easy'] : ['medium', targetDiff === 'easy' ? 'hard' : 'easy'];
+      for (var fi = 0; fi < fallbackOrder.length; fi++) {
+        var altDiff = fallbackOrder[fi];
+        for (var di2 = 0; di2 < sortedDomains.length; di2++) {
+          var d2 = sortedDomains[di2];
+          var diffMap2 = state.byDomainAndDiff[d2];
+          if (!diffMap2) continue;
+          var altPool = diffMap2[altDiff] || [];
+          for (var pj = 0; pj < altPool.length; pj++) {
+            var cand = altPool[pj];
+            var qId2 = (cand.text || cand.q || '') + '|' + d2;
+            if (!state.usedIndices[qId2]) {
+              picked = cand;
+              pickedDomain = d2;
+              state.usedIndices[qId2] = true;
+              break;
+            }
+          }
+          if (picked) break;
+        }
+        if (picked) break;
+      }
+    }
+
+    // Ultimate fallback: any unused question in pool
+    if (!picked && state.pool.length) {
+      for (var k = 0; k < state.pool.length; k++) {
+        var anyQ = state.pool[k];
+        var anyId = (anyQ.text || anyQ.q || '') + '|' + (anyQ.domain || '');
+        if (!state.usedIndices[anyId]) {
+          picked = anyQ;
+          state.usedIndices[anyId] = true;
+          break;
+        }
+      }
+    }
+
+    if (picked) {
+      picked._adaptiveDiff = targetDiff;
+      state.questions.push(picked);
+      state.difficultyHistory.push(targetDiff);
+    }
+    return picked;
+  }
+
   function renderQuestion() {
     var overlay = getOrCreateModal();
     var state = _diagState;
     if (!state) return;
 
     var q = state.questions[state.currentIdx];
-    var total = state.questions.length;
+    var total = state.targetCount;
     var progressPct = Math.round(((state.currentIdx + 1) / total) * 100);
     var trackLabel = TRACK_NAMES[state.trackId] || state.trackId.toUpperCase();
     var userAns = state.userAnswers[state.currentIdx];
     var figHtml = renderFig(q);
+
+    var curDiff = q._adaptiveDiff || state.currentDifficulty || 'medium';
+    var diffBadgeHtml = '';
+    if (curDiff === 'easy') {
+      diffBadgeHtml = '<span class="cs-diag-cat-badge easy">🌱 Foundation / Level 1</span>';
+    } else if (curDiff === 'hard') {
+      diffBadgeHtml = '<span class="cs-diag-cat-badge hard">🔥 Advanced / Level 3</span>';
+    } else {
+      diffBadgeHtml = '<span class="cs-diag-cat-badge medium">⚖️ Standard / Level 2</span>';
+    }
 
     var choicesHtml = (q.choices || []).map(function(choice, cIdx) {
       var letter = String.fromCharCode(65 + cIdx);
@@ -214,8 +338,9 @@
     overlay.innerHTML = '<div class="cs-diag-card">'
       + '<div class="cs-diag-head">'
       + '  <div class="cs-diag-meta">'
-      + '    <span class="cs-diag-track-badge">🎯 ' + escT(trackLabel) + ' Diagnostic</span>'
+      + '    <span class="cs-diag-track-badge">🎯 ' + escT(trackLabel) + ' CAT</span>'
       + '    <span class="cs-diag-counter">Question ' + (state.currentIdx + 1) + ' of ' + total + '</span>'
+      + '    ' + diffBadgeHtml
       + '  </div>'
       + '  <button type="button" class="cs-diag-close" onclick="window.closeDiagnosticTest()" aria-label="Close diagnostic">✕</button>'
       + '</div>'
@@ -238,6 +363,35 @@
     typesetMath(overlay);
   }
 
+  function getProjectedScore(trackId, pct) {
+    if (trackId === 'sat') {
+      var s = 420 + Math.round((pct / 100) * 380);
+      var low = Math.max(400, s - 30);
+      var high = Math.min(800, s + 30);
+      return low + '–' + high + ' (SAT Math)';
+    }
+    if (trackId === 'qudrat' || trackId === 'tahsili') {
+      var qScore = Math.round(55 + (pct / 100) * 44);
+      return qScore + '%+ (Percentile)';
+    }
+    if (trackId === 'igcse' || trackId === 'aslevel' || trackId === 'a2level') {
+      if (pct >= 85) return 'A* (Distinction)';
+      if (pct >= 72) return 'A (Merit)';
+      if (pct >= 58) return 'B (Proficient)';
+      if (pct >= 45) return 'C (Passing)';
+      return 'D / Developing';
+    }
+    if (trackId === 'ibsl' || trackId === 'ibhl') {
+      var g = Math.min(7, Math.max(2, Math.round(1 + (pct / 100) * 6)));
+      return 'Grade ' + g + ' of 7';
+    }
+    if (trackId === 'apab' || trackId === 'apbc' || trackId === 'appc' || trackId === 'apstats') {
+      var ap = pct >= 80 ? 5 : (pct >= 65 ? 4 : (pct >= 50 ? 3 : (pct >= 35 ? 2 : 1)));
+      return 'Score ' + ap + ' on AP';
+    }
+    return pct + '% Proficiency';
+  }
+
   function renderResults() {
     var overlay = getOrCreateModal();
     var state = _diagState;
@@ -245,6 +399,8 @@
 
     var total = state.questions.length;
     var correct = 0;
+    var weightedScore = 0;
+    var maxWeightedScore = 0;
     var domainStats = {};
 
     state.questions.forEach(function(q, i) {
@@ -252,16 +408,24 @@
       if (!domainStats[d]) domainStats[d] = { correct: 0, total: 0 };
       domainStats[d].total++;
 
+      var diff = q._adaptiveDiff || 'medium';
+      var weight = diff === 'hard' ? 3.2 : (diff === 'medium' ? 2.0 : 1.0);
+      maxWeightedScore += weight;
+
       var targetAns = parseAnswerIndex(q);
       var userAns = state.userAnswers[i];
       if (userAns !== undefined && userAns === targetAns) {
         correct++;
+        weightedScore += weight;
         domainStats[d].correct++;
       }
     });
 
-    var pct = Math.round((correct / total) * 100);
-    var trackLabel = TRACK_NAMES[state.trackId] || state.trackId.toUpperCase();
+    var rawPct = Math.round((correct / total) * 100);
+    var catPct = Math.min(99, Math.max(25, Math.round((weightedScore / maxWeightedScore) * 100)));
+    var isArabic = (state.lang === 'ar');
+    var trackLabel = isArabic ? (TRACK_NAMES_AR[state.trackId] || state.trackId) : (TRACK_NAMES[state.trackId] || state.trackId.toUpperCase());
+    var projScore = getProjectedScore(state.trackId, catPct);
 
     // Persist diagnostic result
     try {
@@ -269,7 +433,9 @@
         date: Date.now(),
         score: correct,
         total: total,
-        pct: pct,
+        rawPct: rawPct,
+        catPct: catPct,
+        projectedScore: projScore,
         domains: domainStats
       }));
     } catch(e) {}
@@ -280,25 +446,33 @@
         track: state.trackId,
         score: correct,
         total: total,
-        pct: pct
+        catPct: catPct
       });
     }
 
-    // Weakest domains for WhatsApp summary
+    // Identify weak domains
     var weakDomains = Object.keys(domainStats).map(function(k) {
       var ds = domainStats[k];
-      return { domain: k, correct: ds.correct, total: ds.total, pct: Math.round(ds.correct / ds.total * 100) };
+      return { domain: k, correct: ds.correct, total: ds.total, pct: Math.round((ds.correct / ds.total) * 100) };
     }).sort(function(a, b) { return a.pct - b.pct; });
 
     var topWeak = weakDomains.filter(function(d) { return d.pct < 75; }).slice(0, 3);
-    var weakSummaryStr = topWeak.length
-      ? topWeak.map(function(d) { return d.domain + ' (' + d.pct + '%)'; }).join(', ')
-      : 'All tested areas scored 75%+';
+    if (!topWeak.length && weakDomains.length) topWeak = [weakDomains[0]];
 
-    var waMsg = 'Hello Mr. Mohamed! I just finished the ClipSAT ' + trackLabel + ' Diagnostic.\n'
-      + 'My Score: ' + correct + '/' + total + ' (' + pct + '%)\n'
-      + 'Priority Areas: ' + weakSummaryStr + '\n'
-      + 'I would like your guidance on a study plan!';
+    // WhatsApp Message
+    var weakSummaryStr = topWeak.map(function(d) { return d.domain + ' (' + d.pct + '%)'; }).join(', ');
+    var waMsg = isArabic
+      ? ('مرحباً أستاذ محمد، أتممت تقييم ClipSAT التشخيصي لمادة ' + trackLabel + '.\n'
+        + 'النتيجة: ' + correct + '/' + total + ' (' + catPct + '%)\n'
+        + 'التقدير المتوقع: ' + projScore + '\n'
+        + 'المجالات ذات الأولوية: ' + (weakSummaryStr || 'جميع المجالات فوق 75%') + '\n'
+        + 'أرغب في خطة دراسية موجهة لرفع درجتي!')
+      : ('Hello Mr. Mohamed! I just finished the ClipSAT ' + trackLabel + ' Adaptive Diagnostic.\n'
+        + 'My Score: ' + correct + '/' + total + ' (' + catPct + '% proficiency)\n'
+        + 'Projected Target: ' + projScore + '\n'
+        + 'Priority Focus Areas: ' + (weakSummaryStr || 'All areas above 75%') + '\n'
+        + 'I would like your guidance on a study plan!');
+
     var waUrl = 'https://wa.me/966597688647?text=' + encodeURIComponent(waMsg);
 
     // Domain breakdown bars
@@ -315,77 +489,184 @@
         + '</div>';
     }).join('');
 
+    // Study Schedule Generator (Pillar 4.4)
+    var trackMapList = TRACK_CHAPTER_MAP[state.trackId] || [];
+    function findChapterForDomain(domName) {
+      for (var mi = 0; mi < trackMapList.length; mi++) {
+        if (trackMapList[mi].domain.test(domName)) {
+          return trackMapList[mi];
+        }
+      }
+      return null;
+    }
+
+    var planTab = state.planTab || '7day';
+    var planItemsHtml = '';
+
+    if (planTab === '7day') {
+      var d1 = topWeak[0] ? topWeak[0].domain : (state.domains[0] || 'Core Algebra');
+      var d2 = topWeak[1] ? topWeak[1].domain : (state.domains[1] || 'Functions & Geometry');
+      var d3 = topWeak[2] ? topWeak[2].domain : (state.domains[2] || 'Advanced Problem Solving');
+
+      var c1 = findChapterForDomain(d1);
+      var c2 = findChapterForDomain(d2);
+      var c3 = findChapterForDomain(d3);
+
+      var items = [
+        {
+          day: isArabic ? 'اليوم 1–2' : 'Days 1–2',
+          task: isArabic ? ('مراجعة التأسيس والمفاهيم لـ: ' + d1) : ('Foundational review & interactive explorer: ' + d1),
+          link: c1 ? '<a href="' + c1.url + '" class="cs-diag-schedule-link" target="_blank">' + (isArabic ? '📖 فتح الدرس' : '📖 View Notes') + ' →</a>' : '<a href="/' + state.trackId + '/" class="cs-diag-schedule-link">' + (isArabic ? 'المنهج' : 'Syllabus') + ' →</a>'
+        },
+        {
+          day: isArabic ? 'اليوم 3–4' : 'Days 3–4',
+          task: isArabic ? ('حل تدريبات مكثفة على: ' + d2) : ('Targeted practice problems & error spotting: ' + d2),
+          link: c2 ? '<a href="' + c2.url + '" class="cs-diag-schedule-link" target="_blank">' + (isArabic ? '🎛️ المستكشف' : '🎛️ Explorer') + ' →</a>' : '<a href="/' + state.trackId + '/" class="cs-diag-schedule-link">' + (isArabic ? 'التمارين' : 'Practice') + ' →</a>'
+        },
+        {
+          day: isArabic ? 'اليوم 5–6' : 'Days 5–6',
+          task: isArabic ? ('تمارين متقدمة على المسائل المركبة: ' + d3) : ('Timed section drills & question bank variations: ' + d3),
+          link: c3 ? '<a href="' + c3.url + '" class="cs-diag-schedule-link" target="_blank">' + (isArabic ? '📝 اختبار' : '📝 Quiz') + ' →</a>' : '<a href="/' + state.trackId + '/" class="cs-diag-schedule-link">' + (isArabic ? 'التمارين' : 'Practice') + ' →</a>'
+        },
+        {
+          day: isArabic ? 'اليوم 7' : 'Day 7',
+          task: isArabic ? 'خوض محاكاة اختبار كامل في بيئة CBT الرسمية' : 'Full-length authentic timed CBT exam simulation',
+          link: '<button type="button" class="cs-diag-schedule-link" onclick="window.closeDiagnosticTest(); window.openMockExam(\'' + state.trackId + '\', 0);">' + (isArabic ? '💻 محاكي CBT' : '💻 Launch CBT') + ' ↗</button>'
+        }
+      ];
+
+      planItemsHtml = items.map(function(it) {
+        return '<div class="cs-diag-schedule-item">'
+          + '<span class="cs-diag-schedule-day">' + it.day + '</span>'
+          + '<span class="cs-diag-schedule-task">' + it.task + '</span>'
+          + it.link
+          + '</div>';
+      }).join('');
+    } else {
+      var wItems = [
+        {
+          day: isArabic ? 'الأسبوع 1' : 'Week 1',
+          task: isArabic ? 'إتقان المجال الأضعف بالكامل من خلال الشروحات المرئية والمستكشفات' : 'Deep dive into weakest domain with interactive figures & notes',
+          link: '<a href="/' + state.trackId + '/" class="cs-diag-schedule-link" target="_blank">' + (isArabic ? 'ابدأ' : 'Begin') + ' →</a>'
+        },
+        {
+          day: isArabic ? 'الأسبوع 2' : 'Week 2',
+          task: isArabic ? 'التركيز على حل بنوك الأسئلة للمستوى المتوسط والمتقدم وسجل الأخطاء' : 'Solve intermediate/hard question banks & review mistake journal',
+          link: '<a href="/' + state.trackId + '/" class="cs-diag-schedule-link" target="_blank">' + (isArabic ? 'تمارين' : 'Drills') + ' →</a>'
+        },
+        {
+          day: isArabic ? 'الأسبوع 3' : 'Week 3',
+          task: isArabic ? 'إدارة الوقت والتكتيكات غير المعتمدة على الآلة الحاسبة وأساليب السرعة' : 'Pacing strategies, mental math shortcuts, and speed drills',
+          link: '<button type="button" class="cs-diag-schedule-link" onclick="window.closeDiagnosticTest(); window.openMockExam(\'' + state.trackId + '\', 0);">' + (isArabic ? 'محاكاة' : 'Simulate') + ' →</button>'
+        },
+        {
+          day: isArabic ? 'الأسبوع 4' : 'Week 4',
+          task: isArabic ? 'خوض 3 امتحانات تجريبية كاملة تحت الضغط الزمني الفعلي' : 'Take 3 full-length timed mock exams under realistic test conditions',
+          link: '<button type="button" class="cs-diag-schedule-link" onclick="window.closeDiagnosticTest(); window.openMockExam(\'' + state.trackId + '\', 0);">' + (isArabic ? '💻 محاكي CBT' : '💻 Launch CBT') + ' ↗</button>'
+        }
+      ];
+
+      planItemsHtml = wItems.map(function(it) {
+        return '<div class="cs-diag-schedule-item">'
+          + '<span class="cs-diag-schedule-day">' + it.day + '</span>'
+          + '<span class="cs-diag-schedule-task">' + it.task + '</span>'
+          + it.link
+          + '</div>';
+      }).join('');
+    }
+
     // Solutions review accordion
     var solutionsHtml = state.questions.map(function(q, i) {
       var targetAns = parseAnswerIndex(q);
       var userAns = state.userAnswers[i];
       var isCorrect = userAns !== undefined && userAns === targetAns;
-      var userLetter = userAns !== undefined ? String.fromCharCode(65 + userAns) : 'None';
+      var userLetter = userAns !== undefined ? String.fromCharCode(65 + userAns) : (isArabic ? 'بدون إجابة' : 'None');
       var targetLetter = String.fromCharCode(65 + targetAns);
-      var userChoiceText = userAns !== undefined && q.choices ? q.choices[userAns] : 'Not answered';
+      var userChoiceText = userAns !== undefined && q.choices ? q.choices[userAns] : (isArabic ? 'لم تتم الإجابة' : 'Not answered');
       var targetChoiceText = q.choices ? q.choices[targetAns] : '';
       var figHtml = renderFig(q);
+      var qDiff = q._adaptiveDiff || 'medium';
 
       return '<div class="cs-diag-sol-card ' + (isCorrect ? 'correct' : 'incorrect') + '">'
         + '<div class="cs-diag-sol-head">'
-        + '  <span class="cs-diag-sol-badge ' + (isCorrect ? 'correct' : 'incorrect') + '">' + (isCorrect ? '✓ Correct' : '✗ Incorrect') + '</span>'
-        + '  <span class="cs-diag-sol-num">Question ' + (i + 1) + ' · ' + escT(q.domain || '') + '</span>'
+        + '  <span class="cs-diag-sol-badge ' + (isCorrect ? 'correct' : 'incorrect') + '">' + (isCorrect ? (isArabic ? '✓ إجابة صحيحة' : '✓ Correct') : (isArabic ? '✗ إجابة غير صحيحة' : '✗ Incorrect')) + '</span>'
+        + '  <span class="cs-diag-sol-num">' + (isArabic ? 'سؤال ' : 'Question ') + (i + 1) + ' · ' + escT(q.domain || '') + ' (' + qDiff + ')</span>'
         + '</div>'
         + (figHtml ? '<div class="cs-diag-fig-wrap">' + figHtml + '</div>' : '')
         + '<div class="cs-diag-sol-q">' + formatMath(q.text || q.q || '') + '</div>'
         + '<div class="cs-diag-sol-answers">'
-        + '  <div>Your Answer: <b class="' + (isCorrect ? 'text-correct' : 'text-incorrect') + '">' + userLetter + ' (' + formatMath(userChoiceText) + ')</b></div>'
-        + (!isCorrect ? '<div>Correct Answer: <b class="text-correct">' + targetLetter + ' (' + formatMath(targetChoiceText) + ')</b></div>' : '')
+        + '  <div>' + (isArabic ? 'إجابتك: ' : 'Your Answer: ') + '<b class="' + (isCorrect ? 'text-correct' : 'text-incorrect') + '">' + userLetter + ' (' + formatMath(userChoiceText) + ')</b></div>'
+        + (!isCorrect ? '<div>' + (isArabic ? 'الإجابة الصحيحة: ' : 'Correct Answer: ') + '<b class="text-correct">' + targetLetter + ' (' + formatMath(targetChoiceText) + ')</b></div>' : '')
         + '</div>'
-        + (q.sol ? '<div class="cs-diag-sol-expl"><b>Explanation:</b> ' + formatMath(q.sol) + '</div>' : '')
+        + (q.sol ? '<div class="cs-diag-sol-expl"><b>' + (isArabic ? 'الشرح والتوضيح: ' : 'Explanation: ') + '</b>' + formatMath(q.sol) + '</div>' : '')
         + '</div>';
     }).join('');
 
     overlay.innerHTML = '<div class="cs-diag-card cs-diag-results-card">'
       + '<div class="cs-diag-head">'
       + '  <div class="cs-diag-meta">'
-      + '    <span class="cs-diag-track-badge">📊 Diagnostic Results</span>'
+      + '    <span class="cs-diag-track-badge">📊 ' + (isArabic ? 'نتائج التقييم التشخيصي' : 'Diagnostic Results') + '</span>'
       + '    <span class="cs-diag-counter">' + escT(trackLabel) + '</span>'
       + '  </div>'
-      + '  <button type="button" class="cs-diag-close" onclick="window.closeDiagnosticTest()" aria-label="Close diagnostic">✕</button>'
+      + '  <div style="display:flex;align-items:center;gap:10px">'
+      + '    <div class="cs-diag-lang-toggle">'
+      + '      <button type="button" class="cs-diag-lang-btn' + (!isArabic ? ' active' : '') + '" onclick="window.setDiagReportLang(\'en\')">EN</button>'
+      + '      <button type="button" class="cs-diag-lang-btn' + (isArabic ? ' active' : '') + '" onclick="window.setDiagReportLang(\'ar\')">عربي</button>'
+      + '    </div>'
+      + '    <button type="button" class="cs-diag-close" onclick="window.closeDiagnosticTest()" aria-label="Close diagnostic">✕</button>'
+      + '  </div>'
       + '</div>'
       + '<div class="cs-diag-results-body">'
       + '  <div class="cs-diag-score-banner">'
       + '    <div class="cs-diag-score-circle">'
-      + '      <span class="cs-diag-score-num">' + pct + '%</span>'
+      + '      <span class="cs-diag-score-num">' + catPct + '%</span>'
       + '      <span class="cs-diag-score-sub">' + correct + ' / ' + total + '</span>'
       + '    </div>'
       + '    <div class="cs-diag-score-text">'
-      + '      <h3>' + (pct >= 80 ? 'Excellent Command!' : (pct >= 60 ? 'Solid Foundation' : 'High Potential for Growth')) + '</h3>'
-      + '      <p>' + (pct >= 80
-                ? 'You demonstrated high accuracy across key syllabus domains. Target advanced question variations to solidify an elite score.'
-                : (pct >= 60
-                  ? 'You have a good grasp of the fundamentals. Focusing on your weakest domains below will yield the fastest score improvement.'
-                  : 'Core concepts require focused review before exam day. Follow the recommended study path below to build topic mastery.'))
+      + '      <h3>' + (isArabic
+                ? (catPct >= 80 ? 'إتقان ممتاز وتمكن أكاديمي!' : (catPct >= 60 ? 'أساس صلب مع فرص تميز' : 'فرصة تدريبية واعدة للتحسن'))
+                : (catPct >= 80 ? 'Exceptional Mastery!' : (catPct >= 60 ? 'Solid Foundation' : 'High Growth Potential'))) + '</h3>'
+      + '      <p>' + (isArabic
+                ? ('التقدير المتوقع: <strong>' + projScore + '</strong>. ركز على المجالات ذات الأولوية الموضحة أدناه لضمان تحقيق أعلى تصنيف.')
+                : ('Projected Target: <strong>' + projScore + '</strong>. Targeting the focus areas below will yield the fastest score elevation.'))
       + '      </p>'
       + '    </div>'
       + '  </div>'
-      + '  <div class="cs-diag-section-title">Domain Breakdown</div>'
+      + '  <div class="cs-diag-section-title">' + (isArabic ? 'تحليل المجالات الدراسية' : 'Domain Breakdown') + '</div>'
       + '  <div class="cs-diag-domains-grid">' + domainBarsHtml + '</div>'
-      + '  <div class="cs-diag-wa-card">'
+      + '  <div class="cs-diag-section-title">' + (isArabic ? '🗓️ الخطة الدراسية المخصصة المقترحة' : '🗓️ Actionable Study Roadmap') + '</div>'
+      + '  <div class="cs-diag-plan-tabs">'
+      + '    <button type="button" class="cs-diag-plan-tab' + (planTab === '7day' ? ' active' : '') + '" onclick="window.setDiagPlanTab(\'7day\')">' + (isArabic ? '⚡ خطة 7 أيام مكثفة' : '⚡ 7-Day Intensive Plan') + '</button>'
+      + '    <button type="button" class="cs-diag-plan-tab' + (planTab === '30day' ? ' active' : '') + '" onclick="window.setDiagPlanTab(\'30day\')">' + (isArabic ? '📅 خطة 30 يوم شاملة' : '📅 30-Day Mastery Plan') + '</button>'
+      + '  </div>'
+      + '  <div class="cs-diag-schedule-list">' + planItemsHtml + '</div>'
+      + '  <div class="cs-diag-wa-card" style="margin-top:20px">'
       + '    <div class="cs-diag-wa-info">'
-      + '      <div class="cs-diag-wa-badge">1:1 Mentorship</div>'
-      + '      <h4>Discuss Your Custom Prep Plan with Mr. Mohamed</h4>'
-      + '      <p>Have questions about your diagnostic breakdown? Chat with Mr. Mohamed directly on WhatsApp to get tailored study advice and recommendations.</p>'
+      + '      <div class="cs-diag-wa-badge">1:1 Mentorship · الأستاذ محمد عبد الله</div>'
+      + '      <h4>' + (isArabic ? 'مناقشة خطتك الدراسية مباشرة مع الأستاذ محمد' : 'Discuss Your Custom Prep Plan with Mr. Mohamed') + '</h4>'
+      + '      <p>' + (isArabic
+                ? 'هل ترغب في توجيه مخصص لرفع درجتك؟ تواصل عبر واتساب لمراجعة نقاط قوتك وخطة المذاكرة.'
+                : 'Have questions about your diagnostic breakdown? Chat with Mr. Mohamed directly on WhatsApp to get tailored study advice and recommendations.')
+      + '      </p>'
       + '    </div>'
-      + '    <a href="' + waUrl + '" target="_blank" rel="noopener noreferrer" class="btn cs-diag-wa-action" onclick="if(window.ClipSATAnalytics)window.ClipSATAnalytics.track(\'whatsapp_click\',{source:\'diagnostic\',track:\'' + state.trackId + '\'})">'
-      + '      <span>💬 Chat on WhatsApp (+966 59 768 8647)</span> ↗'
-      + '    </a>'
+      + '    <div style="display:flex;gap:10px;flex-wrap:wrap">'
+      + '      <a href="' + waUrl + '" target="_blank" rel="noopener noreferrer" class="btn cs-diag-wa-action" onclick="if(window.ClipSATAnalytics)window.ClipSATAnalytics.track(\'whatsapp_click\',{source:\'diagnostic\',track:\'' + state.trackId + '\'})">'
+      + '        <span>💬 ' + (isArabic ? 'مراسلة عبر واتساب (+966 59 768 8647)' : 'Chat on WhatsApp (+966 59 768 8647)') + '</span> ↗'
+      + '      </a>'
+      + '      <button type="button" class="btn cs-diag-nav-btn" onclick="window.printDiagReport()" style="display:inline-flex;align-items:center;gap:6px">'
+      + '        <span>📄 ' + (isArabic ? 'طباعة / حفظ التقرير (PDF)' : 'Print / Save PDF') + '</span>'
+      + '      </button>'
+      + '    </div>'
       + '  </div>'
       + '  <div class="cs-diag-solutions-wrap">'
-      + '    <button type="button" class="cs-diag-toggle-sol-btn" onclick="document.getElementById(\'cs-diag-sols\').classList.toggle(\'show\')">📖 Review All Questions &amp; Solutions ▾</button>'
+      + '    <button type="button" class="cs-diag-toggle-sol-btn" onclick="document.getElementById(\'cs-diag-sols\').classList.toggle(\'show\')">' + (isArabic ? '📖 مراجعة جميع الأسئلة والحلول بالتفصيل ▾' : '📖 Review All Questions &amp; Worked Solutions ▾') + '</button>'
       + '    <div id="cs-diag-sols" class="cs-diag-solutions-list">' + solutionsHtml + '</div>'
       + '  </div>'
       + '</div>'
       + '<div class="cs-diag-footer">'
-      + '  <button type="button" class="btn cs-diag-retake-btn" onclick="window.openDiagnosticTest(\'' + state.trackId + '\')">↺ Retake Diagnostic</button>'
+      + '  <button type="button" class="btn cs-diag-retake-btn" onclick="window.openDiagnosticTest(\'' + state.trackId + '\')">↺ ' + (isArabic ? 'إعادة التقييم' : 'Retake Diagnostic') + '</button>'
       + '  <div class="cs-diag-footer-spacer"></div>'
-      + '  <button type="button" class="cs-diag-nav-btn" onclick="window.closeDiagnosticTest()">Close</button>'
+      + '  <button type="button" class="cs-diag-nav-btn" onclick="window.closeDiagnosticTest()">' + (isArabic ? 'إغلاق' : 'Close') + '</button>'
       + '</div>'
       + '</div>';
 
@@ -404,10 +685,7 @@
     function _run() {
       try {
         if (window.renderMathInElement && typeof window.renderMathInElement === 'function') {
-          window.renderMathInElement(el, {
-            delimiters: delimiters,
-            throwOnError: false
-          });
+          window.renderMathInElement(el, { delimiters: delimiters, throwOnError: false });
         }
         if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
           window.MathJax.typesetPromise([el]).catch(function() {});
@@ -427,7 +705,7 @@
     overlay.classList.add('show');
     overlay.innerHTML = '<div class="cs-diag-card cs-diag-loading">'
       + '<div class="cs-diag-spinner"></div>'
-      + '<p>Preparing your ' + escT(TRACK_NAMES[trackId] || trackId) + ' diagnostic assessment…</p>'
+      + '<p>Preparing your Computerized Adaptive (CAT) ' + escT(TRACK_NAMES[trackId] || trackId) + ' diagnostic…</p>'
       + '</div>';
 
     var loadPromise = (window.CS_loadTrackBank && typeof window.CS_loadTrackBank === 'function')
@@ -436,8 +714,8 @@
 
     loadPromise.then(function() {
       var bank = window.fullExamBank && window.fullExamBank[trackId];
-      var pool = (bank && bank.pool) ? bank.pool : [];
-      if (!pool.length) {
+      var rawPool = (bank && bank.pool) ? bank.pool : [];
+      if (!rawPool.length) {
         overlay.innerHTML = '<div class="cs-diag-card">'
           + '<div class="cs-diag-head"><b>Diagnostic Assessment</b><button type="button" class="cs-diag-close" onclick="window.closeDiagnosticTest()">✕</button></div>'
           + '<div class="cs-diag-body"><p class="tv-empty">Questions for this track are being synchronized. Please check back shortly!</p></div>'
@@ -445,14 +723,47 @@
         return;
       }
 
-      var picked = selectBalancedQuestions(pool, 12);
+      // Filter and group by domain and difficulty
+      var byDomainAndDiff = {};
+      var validPool = [];
+      for (var i = 0; i < rawPool.length; i++) {
+        var item = rawPool[i];
+        var d = item.domain || 'Core Mathematics';
+        if (SKIP_DIAG_DOMAINS.test(d)) continue;
+        var diff = normalizeDiff(item);
+        if (!byDomainAndDiff[d]) {
+          byDomainAndDiff[d] = { easy: [], medium: [], hard: [] };
+        }
+        byDomainAndDiff[d][diff].push(item);
+        validPool.push(item);
+      }
+
+      var allDomains = Object.keys(byDomainAndDiff);
+      allDomains.forEach(function(d) {
+        byDomainAndDiff[d].easy = shuffle(byDomainAndDiff[d].easy);
+        byDomainAndDiff[d].medium = shuffle(byDomainAndDiff[d].medium);
+        byDomainAndDiff[d].hard = shuffle(byDomainAndDiff[d].hard);
+      });
+
       _diagState = {
         trackId: trackId,
-        questions: picked,
+        catMode: true,
+        targetCount: 12,
         currentIdx: 0,
-        userAnswers: {}
+        currentDifficulty: 'medium', // Start at Medium!
+        pool: validPool,
+        byDomainAndDiff: byDomainAndDiff,
+        domains: allDomains,
+        questions: [],
+        userAnswers: {},
+        answersCorrect: {},
+        difficultyHistory: [],
+        usedIndices: {},
+        lang: 'en',
+        planTab: '7day'
       };
 
+      pickNextAdaptiveQuestion(_diagState);
       renderQuestion();
     }).catch(function(err) {
       overlay.innerHTML = '<div class="cs-diag-card">'
@@ -487,9 +798,28 @@
 
   window.nextDiagQuestion = function() {
     if (!_diagState) return;
-    if (_diagState.currentIdx < _diagState.questions.length - 1) {
+    var currentQ = _diagState.questions[_diagState.currentIdx];
+    var userAns = _diagState.userAnswers[_diagState.currentIdx];
+    var targetAns = parseAnswerIndex(currentQ);
+    var isCorrect = (userAns !== undefined && userAns === targetAns);
+    _diagState.answersCorrect[_diagState.currentIdx] = isCorrect;
+
+    // CAT Step Routing: promote on correct, demote on mistake
+    var prevDiff = _diagState.currentDifficulty || 'medium';
+    if (isCorrect) {
+      _diagState.currentDifficulty = (prevDiff === 'easy' ? 'medium' : 'hard');
+    } else {
+      _diagState.currentDifficulty = (prevDiff === 'hard' ? 'medium' : 'easy');
+    }
+
+    if (_diagState.currentIdx < _diagState.targetCount - 1) {
       _diagState.currentIdx++;
+      if (_diagState.questions.length <= _diagState.currentIdx) {
+        pickNextAdaptiveQuestion(_diagState);
+      }
       renderQuestion();
+    } else {
+      renderResults();
     }
   };
 
@@ -503,7 +833,27 @@
 
   window.finishDiagnosticTest = function() {
     if (!_diagState) return;
+    var currentQ = _diagState.questions[_diagState.currentIdx];
+    var userAns = _diagState.userAnswers[_diagState.currentIdx];
+    var targetAns = parseAnswerIndex(currentQ);
+    _diagState.answersCorrect[_diagState.currentIdx] = (userAns !== undefined && userAns === targetAns);
     renderResults();
+  };
+
+  window.setDiagReportLang = function(lang) {
+    if (!_diagState) return;
+    _diagState.lang = lang;
+    renderResults();
+  };
+
+  window.setDiagPlanTab = function(tab) {
+    if (!_diagState) return;
+    _diagState.planTab = tab;
+    renderResults();
+  };
+
+  window.printDiagReport = function() {
+    window.print();
   };
 
   // Video facade global click handler
