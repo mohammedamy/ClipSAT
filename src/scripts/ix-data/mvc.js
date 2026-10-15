@@ -9,33 +9,49 @@ D['mvc-partials'] = [
   {
     t: 'sb',
     ti: 'Lab Step Builder: Computing First & Mixed Partial Derivatives',
+    ti_ar: 'بناء خطوات المعمل: حساب المشتقات الجزئية الأولى والمختلطة',
     steps: [
       { l: 'For \\(f(x,y) = x^3 y^2 - 4xy + 5y\\), find \\(f_x(x,y) = 3x^2 y^2 -\\)', a: '4y', h: 'd/dx(-4xy) with y treated as constant is -4y' },
-      { l: 'Find \\(f_{xy}(x,y) = \\dfrac{\\partial}{\\partial y}(3x^2 y^2 - 4y) = 6x^2 y -\\)', a: '4', h: 'd/dy(-4y) = -4' },
+      { l: 'Find \\(f_{xy}(x,y) = \\\dfrac{\\partial}{\\partial y}(3x^2 y^2 - 4y) = 6x^2 y -\\)', a: '4', h: 'd/dy(-4y) = -4' },
       { l: 'By Clairaut\'s theorem, does \\(f_{yx} = f_{xy}\\) for this smooth polynomial? (yes/no):', a: 'yes', h: 'Mixed partials are equal when second derivatives are continuous.' }
+    ],
+    steps_ar: [
+      { l: 'للدالة \\(f(x,y) = x^3 y^2 - 4xy + 5y\\)، أوجد \\(f_x(x,y) = 3x^2 y^2 -\\)', a: '4y', h: 'مشتقة -4xy بالنسبة إلى x مع معاملة y كثابت هي -4y' },
+      { l: 'أوجد \\(f_{xy}(x,y) = \\\dfrac{\\partial}{\\partial y}(3x^2 y^2 - 4y) = 6x^2 y -\\)', a: '4', h: 'd/dy(-4y) = -4' },
+      { l: 'وفقاً لمبرهنة كليرو، هل \\(f_{yx} = f_{xy}\\) لكثيرة الحدود الملساء هذه؟ (yes/no):', a: 'yes', h: 'المشتقات الجزئية المختلطة متساوية عندما تكون المشتقات من الرتبة الثانية مستمرة.' }
     ]
   },
   {
     t: 'qc',
     ti: 'Lab Check: Tangent Plane to a Surface',
+    ti_ar: 'فحص المعمل: المستوى المماس لسطح',
     q: 'Find the normal vector \\(\\mathbf{n}\\) to the tangent plane of \\(z = f(x,y)\\) at \\((x_0, y_0)\\):',
+    q_ar: 'أوجد المتجه العمودي \\(\\mathbf{n}\\) على المستوى المماس للسطح \\(z = f(x,y)\\) عند النقطة \\((x_0, y_0)\\):',
     o: ['\\(\\langle f_x, f_y, -1 \\rangle\\)', '\\(\\langle f_x, f_y, 1 \\rangle\\)', '\\(\\langle 1, 1, f_z \\rangle\\)', '\\(\\langle -f_y, f_x, 0 \\rangle\\)'],
+    o_ar: ['\\(\\langle f_x, f_y, -1 \\rangle\\)', '\\(\\langle f_x, f_y, 1 \\rangle\\)', '\\(\\langle 1, 1, f_z \\rangle\\)', '\\(\\langle -f_y, f_x, 0 \\rangle\\)'],
     a: 0,
-    ex: 'Rearranging \\(z = f(x,y)\\) into \\(F(x,y,z) = f(x,y) - z = 0\\), the gradient \\(\\nabla F = \\langle f_x, f_y, -1 \\rangle\\) gives the normal vector.'
+    ex: 'Rearranging \\(z = f(x,y)\\) into \\(F(x,y,z) = f(x,y) - z = 0\\), the gradient \\(\\nabla F = \\langle f_x, f_y, -1 \\rangle\\) gives the normal vector.',
+    ex_ar: 'بإعادة كتابة \\(z = f(x,y)\\) في الصورة \\(F(x,y,z) = f(x,y) - z = 0\\)، يعطي متجه التدرج \\(\\nabla F = \\langle f_x, f_y, -1 \\rangle\\) المتجه العمودي المطلوب.'
   },
   {
     t: 'num',
     ti: 'Evaluate Mixed Second Partial Derivative',
+    ti_ar: 'حساب المشتقة الجزئية المختلطة من الرتبة الثانية',
     q: 'Given \\(f(x, y) = 2x^2 y^3 - 5xy + 4x - 6y\\), evaluate the mixed second partial derivative \\(f_{xy}(1, 2)\\):',
+    q_ar: 'إذا كانت \\(f(x, y) = 2x^2 y^3 - 5xy + 4x - 6y\\)، فاحسب قيمة المشتقة الجزئية المختلطة \\(f_{xy}(1, 2)\\):',
     a: 43,
     tol: 0.001,
     h: 'f_x = 4x y³ - 5y + 4. Then differentiate with respect to y: f_xy = 12x y² - 5. Evaluate at (1, 2).',
-    sol: 'f_xy = 12x y² - 5. At (1, 2): 12(1)(4) - 5 = 48 - 5 = 43.'
+    h_ar: 'f_x = 4x y³ - 5y + 4. ثم اشتق بالنسبة إلى y: f_xy = 12x y² - 5. احسب القيمة عند (1, 2).',
+    sol: 'f_xy = 12x y² - 5. At (1, 2): 12(1)(4) - 5 = 48 - 5 = 43.',
+    sol_ar: 'f_xy = 12x y² - 5. عند (1, 2): 12(1)(4) - 5 = 48 - 5 = 43.'
   },
   {
     t: 'ord',
     ti: 'Order the Steps: Tangent Plane to z = f(x, y)',
+    ti_ar: 'ترتيب الخطوات: معادلة المستوى المماس لـ z = f(x, y)',
     q: 'Order the steps to construct the tangent plane equation to z = f(x, y) at the point (x₀, y₀, z₀):',
+    q_ar: 'رتّب خطوات إنشاء معادلة المستوى المماس للسطح z = f(x, y) عند النقطة (x₀, y₀, z₀):',
     items: [
       'Compute the first-order partial derivatives f_x(x, y) and f_y(x, y)',
       'Evaluate f_x(x₀, y₀) and f_y(x₀, y₀) at the point of tangency',
@@ -43,12 +59,22 @@ D['mvc-partials'] = [
       'Substitute into the formula: z - z₀ = f_x(x₀, y₀)(x - x₀) + f_y(x₀, y₀)(y - y₀)',
       'Expand and rearrange into the standard form Ax + By + Cz = D'
     ],
-    sol: 'The tangent plane utilizes evaluated partial derivatives as slopes along coordinate directions.'
+    items_ar: [
+      'حساب المشتقات الجزئية الأولى f_x(x, y) و f_y(x, y)',
+      'تعويض النقطة لحساب f_x(x₀, y₀) و f_y(x₀, y₀) عند نقطة التماس',
+      'التحقق من قيمة z₀ = f(x₀, y₀) أو حسابها إذا لم تكن معطاة صراحة',
+      'التعويض في الصيغة: z - z₀ = f_x(x₀, y₀)(x - x₀) + f_y(x₀, y₀)(y - y₀)',
+      'فك الأقواس وإعادة الترتيب إلى الصورة القياسية Ax + By + Cz = D'
+    ],
+    sol: 'The tangent plane utilizes evaluated partial derivatives as slopes along coordinate directions.',
+    sol_ar: 'يستخدم المستوى المماس المشتقات الجزئية المحسوبة كأميال على طول اتجاهات المحاور الإحداثية.'
   },
   {
     t: 'cat',
     ti: 'Classify Partial Derivatives: Holding x vs. Holding y Constant',
+    ti_ar: 'تصنيف المشتقات الجزئية: تثبيت x مقابل تثبيت y',
     categories: ['Computed Holding y Constant (∂/∂x)', 'Computed Holding x Constant (∂/∂y)'],
+    categories_ar: ['محسوبة مع تثبيت y كـثابت (∂/∂x)', 'محسوبة مع تثبيت x كـثابت (∂/∂y)'],
     items: [
       { s: 'f_x(x, y) measuring slope along coordinate slice y = constant', cat: 0 },
       { s: 'f_y(x, y) measuring slope along coordinate slice x = constant', cat: 1 },
@@ -56,7 +82,15 @@ D['mvc-partials'] = [
       { s: 'Differentiating x² y³ to obtain 3x² y²', cat: 1 },
       { s: 'Rate of change in the direction of unit vector i = ⟨1, 0⟩', cat: 0 }
     ],
-    sol: '∂/∂x treats y as a constant multiplier; ∂/∂y treats x as a constant multiplier.'
+    items_ar: [
+      { s: 'f_x(x, y) لقياس الميل على طول الشريحة الإحداثية y = ثابت', cat: 0 },
+      { s: 'f_y(x, y) لقياس الميل على طول الشريحة الإحداثية x = ثابت', cat: 1 },
+      { s: 'اشتقاق x² y³ للحصول على 2x y³', cat: 0 },
+      { s: 'اشتقاق x² y³ للحصول على 3x² y²', cat: 1 },
+      { s: 'معدل التغير في اتجاه متجه الوحدة i = ⟨1, 0⟩', cat: 0 }
+    ],
+    sol: '∂/∂x treats y as a constant multiplier; ∂/∂y treats x as a constant multiplier.',
+    sol_ar: 'يعامل التفاضل الجزئي ∂/∂x المتغير y كثابت؛ بينما يعامل التفاضل الجزئي ∂/∂y المتغير x كثابت.'
   }
 ];
 
@@ -64,42 +98,64 @@ D['mvc-chain-rule'] = [
   {
     t: 'sb',
     ti: 'Lab Step Builder: Directional Derivative & Gradient',
+    ti_ar: 'بناء خطوات المعمل: المشتقة الاتجاهية والتدرج',
     steps: [
       { l: 'For \\(f(x,y) = x^2 + 3y^2\\) at \\(P(1,2)\\), compute \\(f_x(1,2) = 2(1) =\\)', a: '2', h: '\\(2(1) = 2\\)' },
       { l: 'Compute \\(f_y(1,2) = 6(2) =\\)', a: '12', h: '\\(6(2) = 12\\)' },
-      { l: 'The gradient vector is \\(\\nabla f(1,2) = \\langle 2, 12 \\rangle\\). What is the maximum directional derivative value \\(\\|\\nabla f\\|\\)? \\(\\sqrt{2^2 + 12^2} = \\sqrt{148} = 2\\sqrt{\\text{?}}\\):', a: '37', h: '\\(148 = 4 \\times 37\\)' }
+      { l: 'The gradient vector is \\(\\nabla f(1,2) = \\langle 2, 12 \\rangle\\). What is the maximum directional derivative value \\(\\|\\nabla f\\|\\)? \\(\\sqrt{2^2 + 12^2} = \\sqrt{148} = 2\\sqrt{\\\text{?}}\\):', a: '37', h: '\\(148 = 4 \\\times 37\\)' }
+    ],
+    steps_ar: [
+      { l: 'للدالة \\(f(x,y) = x^2 + 3y^2\\) عند \\(P(1,2)\\)، احسب \\(f_x(1,2) = 2(1) =\\)', a: '2', h: '\\(2(1) = 2\\)' },
+      { l: 'احسب \\(f_y(1,2) = 6(2) =\\)', a: '12', h: '\\(6(2) = 12\\)' },
+      { l: 'متجه التدرج هو \\(\\nabla f(1,2) = \\langle 2, 12 \\rangle\\). ما هي أقصى قيمة للمشتقة الاتجاهية \\(\\|\\nabla f\\|\\)؟ \\(\\sqrt{2^2 + 12^2} = \\sqrt{148} = 2\\sqrt{\\\text{?}}\\):', a: '37', h: '\\(148 = 4 \\\times 37\\)' }
     ]
   },
   {
     t: 'tf',
     ti: 'Reasoning Lab: Directional Derivatives & Gradient Direction',
+    ti_ar: 'معمل الاستنتاج: المشتقات الاتجاهية واتجاه التدرج',
     items: [
       { s: 'The gradient vector \\(\\nabla f(x,y)\\) always points in the direction of steepest ascent.', a: true, ex: 'The maximum rate of change occurs when the unit direction vector \\(\\mathbf{u}\\) is parallel to \\(\\nabla f\\).' },
       { s: 'The directional derivative in a direction tangent to a level curve is zero.', a: true, ex: 'Along a level curve \\(f(x,y) = c\\), the value is constant, so \\(D_{\\mathbf{u}} f = \\nabla f \\cdot \\mathbf{u} = 0\\).' },
       { s: 'The gradient \\(\\nabla f(x_0, y_0)\\) is tangent to the level curve through \\((x_0, y_0)\\).', a: false, ex: 'The gradient is strictly ORTHOGONAL (perpendicular) to the level curve.' }
+    ],
+    items_ar: [
+      { s: 'يشير متجه التدرج \\(\\nabla f(x,y)\\) دائماً إلى اتجاه أقصى صعود.', ex: 'يحدث أقصى معدل للتغير عندما يكون متجه اتجاه الوحدة \\(\\mathbf{u}\\) موازياً لـ \\(\\nabla f\\).' },
+      { s: 'المشتقة الاتجاهية في اتجاه مماس لمنحنى المستوى تساوي صفراً.', ex: 'على طول منحنى المستوى \\(f(x,y) = c\\)، القيمة ثابتة، وبالتالي \\(D_{\\mathbf{u}} f = \\nabla f \\cdot \\mathbf{u} = 0\\).' },
+      { s: 'متجه التدرج \\(\\nabla f(x_0, y_0)\\) مماس لمنحنى المستوى المار بالنقطة \\((x_0, y_0)\\).', ex: 'متجه التدرج عمودي تماماً على منحنى المستوى.' }
     ]
   },
   {
     t: 'qc',
     ti: 'Quick Check: Gradient at a Stationary Point',
+    ti_ar: 'فحص سريع: التدرج عند نقطة ساكنة',
     q: 'If \\(f(x, y)\\) is differentiable and \\(\\nabla f(x_0, y_0) = \\langle 0, 0 \\rangle\\), what is the directional derivative \\(D_{\\mathbf{u}}f(x_0, y_0)\\) in any arbitrary unit direction \\(\\mathbf{u}\\)?',
+    q_ar: 'إذا كانت \\(f(x, y)\\) دالة قابلة للتفاضل وكان \\(\\nabla f(x_0, y_0) = \\langle 0, 0 \\rangle\\)، فما هي المشتقة الاتجاهية \\(D_{\\mathbf{u}}f(x_0, y_0)\\) في أي اتجاه وحدة اختياري \\(\\mathbf{u}\\)?',
     o: ['0', '1', '\\(\\|\\mathbf{u}\\|\\)', 'Undefined'],
+    o_ar: ['0', '1', '\\(\\|\\mathbf{u}\\|\\)', 'غير معرّف'],
     a: 0,
-    ex: 'Since \\(D_{\\mathbf{u}}f = \\nabla f \\cdot \\mathbf{u} = \\langle 0, 0 \\rangle \\cdot \\mathbf{u} = 0\\), the directional derivative is zero in all directions.'
+    ex: 'Since \\(D_{\\mathbf{u}}f = \\nabla f \\cdot \\mathbf{u} = \\langle 0, 0 \\rangle \\cdot \\mathbf{u} = 0\\), the directional derivative is zero in all directions.',
+    ex_ar: 'بما أن \\(D_{\\mathbf{u}}f = \\nabla f \\cdot \\mathbf{u} = \\langle 0, 0 \\rangle \\cdot \\mathbf{u} = 0\\)، فإن المشتقة الاتجاهية تساوي صفراً في جميع الاتجاهات.'
   },
   {
     t: 'num',
     ti: 'Maximum Rate of Change (Gradient Norm)',
+    ti_ar: 'أقصى معدل للتغير (معيار التدرج)',
     q: 'Compute the maximum rate of increase \\(\\|\\nabla f(3, 4)\\|\\) for the function \\(f(x, y) = x^2 + y^2\\):',
+    q_ar: 'احسب أقصى معدل للزيادة \\(\\|\\nabla f(3, 4)\\|\\) للدالة \\(f(x, y) = x^2 + y^2\\):',
     a: 10,
     tol: 0.001,
     h: '∇f = ⟨2x, 2y⟩. At (3, 4), ∇f = ⟨6, 8⟩. Compute √(6² + 8²).',
-    sol: '‖∇f(3, 4)‖ = √(6² + 8²) = √(36 + 64) = √100 = 10.'
+    h_ar: '∇f = ⟨2x, 2y⟩. عند (3, 4)، ∇f = ⟨6, 8⟩. احسب √(6² + 8²).',
+    sol: '‖∇f(3, 4)‖ = √(6² + 8²) = √(36 + 64) = √100 = 10.',
+    sol_ar: '‖∇f(3, 4)‖ = √(6² + 8²) = √(36 + 64) = √100 = 10.'
   },
   {
     t: 'ord',
     ti: 'Order the Steps: Calculate Directional Derivative D_u f',
+    ti_ar: 'ترتيب الخطوات: حساب المشتقة الاتجاهية D_u f',
     q: 'Order the steps to compute the directional derivative of f(x, y) at P(x₀, y₀) in the direction of vector v:',
+    q_ar: 'رتّب خطوات حساب المشتقة الاتجاهية للدالة f(x, y) عند النقطة P(x₀, y₀) في اتجاه المتجه v:',
     items: [
       'Compute partial derivatives f_x and f_y to construct gradient vector ∇f',
       'Evaluate gradient vector at the specified point: ∇f(x₀, y₀)',
@@ -107,12 +163,22 @@ D['mvc-chain-rule'] = [
       'Normalize v to obtain a unit vector: u = v / ‖v‖',
       'Take the dot product: D_u f = ∇f(x₀, y₀) · u'
     ],
-    sol: 'Directional derivative requires dotting the evaluated gradient with a normalized unit direction vector.'
+    items_ar: [
+      'حساب المشتقات الجزئية f_x و f_y لتكوين متجه التدرج ∇f',
+      'تعويض النقطة المحددة في متجه التدرج: ∇f(x₀, y₀)',
+      'حساب طول متجه الاتجاه: ‖v‖ = √(v₁² + v₂²)',
+      'تطبيع المتجه v للحصول على متجه وحدة: u = v / ‖v‖',
+      'حساب الضرب القياسي: D_u f = ∇f(x₀, y₀) · u'
+    ],
+    sol: 'Directional derivative requires dotting the evaluated gradient with a normalized unit direction vector.',
+    sol_ar: 'تتطلب المشتقة الاتجاهية إجراء ضرب قياسي بين متجه التدرج المحسوب ومتجه الوحدة المقابل.'
   },
   {
     t: 'cat',
     ti: 'Classify Directional Derivative Rates of Change',
+    ti_ar: 'تصنيف معدلات التغير للمشتقة الاتجاهية',
     categories: ['Maximum Rate of Increase (+‖∇f‖)', 'Maximum Rate of Decrease (-‖∇f‖)', 'Zero Rate of Change (0)'],
+    categories_ar: ['أقصى معدل زيادة (+‖∇f‖)', 'أقصى معدل تناقص (-‖∇f‖)', 'معدل تغير صفري (0)'],
     items: [
       { s: 'Direction parallel to ∇f(x₀, y₀)', cat: 0 },
       { s: 'Direction opposite to -∇f(x₀, y₀)', cat: 1 },
@@ -120,7 +186,15 @@ D['mvc-chain-rule'] = [
       { s: 'Direction orthogonal (perpendicular) to ∇f(x₀, y₀)', cat: 2 },
       { s: 'Unit direction u = ∇f / ‖∇f‖', cat: 0 }
     ],
-    sol: 'Directional derivative is maximized in direction of ∇f, minimized in direction of -∇f, and vanishes tangent to level curves.'
+    items_ar: [
+      { s: 'الاتجاه الموازي لمتجه التدرج ∇f(x₀, y₀)', cat: 0 },
+      { s: 'الاتجاه المعاكس لمتجه التدرج -∇f(x₀, y₀)', cat: 1 },
+      { s: 'الاتجاه المماس لمنحنى المستوى المار بالنقطة (x₀, y₀)', cat: 2 },
+      { s: 'الاتجاه العمودي على متجه التدرج ∇f(x₀, y₀)', cat: 2 },
+      { s: 'متجه اتجاه الوحدة u = ∇f / ‖∇f‖', cat: 0 }
+    ],
+    sol: 'Directional derivative is maximized in direction of ∇f, minimized in direction of -∇f, and vanishes tangent to level curves.',
+    sol_ar: 'تصل المشتقة الاتجاهية إلى أقصاها في اتجاه ∇f، وإلى أدناها في اتجاه -∇f، وتنعدم مماسياً لمنحنيات المستوى.'
   }
 ];
 
@@ -128,42 +202,64 @@ D['mvc-optimization'] = [
   {
     t: 'sb',
     ti: 'Lab Step Builder: Second Derivative Test for Critical Points',
+    ti_ar: 'بناء خطوات المعمل: اختبار المشتقة الثانية للنقاط الحرجة',
     steps: [
       { l: 'Discriminant \\(D = f_{xx} f_{yy} - (f_{xy})^2\\). If \\(f_{xx} = 4\\), \\(f_{yy} = 3\\), and \\(f_{xy} = 1\\), compute \\(D = 4(3) - 1^2 =\\)', a: '11', h: '\\(12 - 1 = 11\\)' },
       { l: 'Since \\(D > 0\\) and \\(f_{xx} > 0\\), the critical point is a local: (min/max/saddle)', a: 'min', h: 'Positive D and positive f_xx indicates a local minimum.' }
+    ],
+    steps_ar: [
+      { l: 'المميز \\(D = f_{xx} f_{yy} - (f_{xy})^2\\). إذا كانت \\(f_{xx} = 4\\)، و\\(f_{yy} = 3\\)، و\\(f_{xy} = 1\\)، فاحسب \\(D = 4(3) - 1^2 =\\)', a: '11', h: '\\(12 - 1 = 11\\)' },
+      { l: 'بما أن \\(D > 0\\) و \\(f_{xx} > 0\\)، فإن النقطة الحرجة هي نقطة: (min/max/saddle)', a: 'min', h: 'D موجب و f_xx موجب يشيران إلى قيمة صغرى محلية.' }
     ]
   },
   {
     t: 'mt',
     ti: 'Matching Lab: Second Derivative Test Outcomes',
+    ti_ar: 'معمل المطابقة: نتائج اختبار المشتقة الثانية',
     p: [
       { l: 'D > 0 and f_xx > 0', r: 'Local minimum' },
       { l: 'D > 0 and f_xx < 0', r: 'Local maximum' },
       { l: 'D < 0', r: 'Saddle point' },
       { l: 'D = 0', r: 'Inconclusive' }
+    ],
+    p_ar: [
+      { l: 'D > 0 و f_xx > 0', r: 'قيمة صغرى محلية' },
+      { l: 'D > 0 و f_xx < 0', r: 'قيمة عظمى محلية' },
+      { l: 'D < 0', r: 'نقطة سرج (Saddle point)' },
+      { l: 'D = 0', r: 'الاختبار غير حاسم' }
     ]
   },
   {
     t: 'qc',
     ti: 'Quick Check: Lagrange Multipliers Tangency',
+    ti_ar: 'فحص سريع: تماس مضاعفات لاغرانج',
     q: 'At an extremum of \\(f(x, y)\\) subject to constraint \\(g(x, y) = k\\), the gradient vectors satisfy:',
+    q_ar: 'عند النقطة القصوى للدالة \\(f(x, y)\\) الخاضعة للقيد \\(g(x, y) = k\\)، يحقق متجها التدرج العلاقة:',
     o: ['\\(\\nabla f = \\lambda \\nabla g\\)', '\\(\\nabla f \\cdot \\nabla g = 0\\)', '\\(\\nabla f = -\\nabla g\\) always', '\\(\\nabla f = \\mathbf{0}\\)'],
+    o_ar: ['\\(\\nabla f = \\lambda \\nabla g\\)', '\\(\\nabla f \\cdot \\nabla g = 0\\)', '\\(\\nabla f = -\\nabla g\\) دائماً', '\\(\\nabla f = \\mathbf{0}\\)'],
     a: 0,
-    ex: 'Extrema occur where the level curve of f is tangent to the constraint curve g=k, meaning their normal gradients are collinear: \\(\\nabla f = \\lambda \\nabla g\\).'
+    ex: 'Extrema occur where the level curve of f is tangent to the constraint curve g=k, meaning their normal gradients are collinear: \\(\\nabla f = \\lambda \\nabla g\\).',
+    ex_ar: 'تحدث القيم القصوى عندما يمس منحنى مستوى f منحنى القيد g=k، مما يعني أن متجهات التدرج العمودية تكون متوازية خطياً: \\(\\nabla f = \\lambda \\nabla g\\).'
   },
   {
     t: 'num',
     ti: 'Compute Hessian Discriminant D',
+    ti_ar: 'حساب مميز هيسيان D',
     q: 'At a critical point of \\(f(x, y)\\), the second partials are \\(f_{xx} = 6\\), \\(f_{yy} = 4\\), and \\(f_{xy} = 3\\). Compute the discriminant \\(D = f_{xx}f_{yy} - (f_{xy})^2\\):',
+    q_ar: 'عند نقطة حرجة للدالة \\(f(x, y)\\)، المشتقات الجزئية الثانية هي \\(f_{xx} = 6\\)، و\\(f_{yy} = 4\\)، و\\(f_{xy} = 3\\). احسب المميز \\(D = f_{xx}f_{yy} - (f_{xy})^2\\):',
     a: 15,
     tol: 0.001,
     h: 'D = 6(4) - 3² = 24 - 9.',
-    sol: 'D = 6(4) - 9 = 24 - 9 = 15.'
+    h_ar: 'D = 6(4) - 3² = 24 - 9.',
+    sol: 'D = 6(4) - 9 = 24 - 9 = 15.',
+    sol_ar: 'D = 6(4) - 9 = 24 - 9 = 15.'
   },
   {
     t: 'ord',
     ti: 'Order the Steps: Second Derivative Test Classification',
+    ti_ar: 'ترتيب الخطوات: تصنيف النقاط باختبار المشتقة الثانية',
     q: 'Order the steps to locate and classify the local extrema of a smooth function f(x, y):',
+    q_ar: 'رتّب خطوات تحديد وتصنيف القيم القصوى المحلية لدالة ملساء f(x, y):',
     items: [
       'Find first partial derivatives f_x and f_y and set both equal to 0',
       'Solve the system f_x = 0 and f_y = 0 simultaneously to find all critical points',
@@ -171,12 +267,22 @@ D['mvc-optimization'] = [
       'Form the discriminant D(x, y) = f_xx f_yy - (f_xy)²',
       'Evaluate D at each critical point: if D < 0 saddle; if D > 0 check sign of f_xx'
     ],
-    sol: 'Critical points are found via first derivatives, then classified via the sign of D and f_xx.'
+    items_ar: [
+      'إيجاد المشتقات الجزئية الأولى f_x و f_y ومساواة كلتيهما بالصفر',
+      'حل النظام f_x = 0 و f_y = 0 معاً لتحديد جميع النقاط الحرجة',
+      'حساب المشتقات الجزئية من الرتبة الثانية f_xx و f_yy و f_xy',
+      'تكوين دالة المميز D(x, y) = f_xx f_yy - (f_xy)²',
+      'حساب قيمة D عند كل نقطة حرجة: إذا كانت D < 0 فنقطة سرج؛ وإذا كانت D > 0 نحدد إشارة f_xx'
+    ],
+    sol: 'Critical points are found via first derivatives, then classified via the sign of D and f_xx.',
+    sol_ar: 'يتم تحديد النقاط الحرجة بواسطة المشتقات الأولى، ثم تصنيفها بناءً على إشارة D و f_xx.'
   },
   {
     t: 'cat',
     ti: 'Classify Optimization Conditions: Unconstrained vs. Constrained',
+    ti_ar: 'تصنيف شروط الأمثلية: غير المقيدة مقابل المقيدة',
     categories: ['Unconstrained Extrema Condition', 'Lagrange Multiplier Constrained Condition'],
+    categories_ar: ['شرط القيم القصوى غير المقيدة', 'شرط مضاعفات لاغرانج المقيدة'],
     items: [
       { s: '∇f(x, y) = ⟨0, 0⟩', cat: 0 },
       { s: '∇f(x, y) = λ ∇g(x, y) with constraint g(x, y) = k', cat: 1 },
@@ -184,7 +290,15 @@ D['mvc-optimization'] = [
       { s: 'Level curves of f are tangent to constraint boundary g = k', cat: 1 },
       { s: 'Curvature classified via discriminant D = f_xx f_yy - (f_xy)²', cat: 0 }
     ],
-    sol: 'Unconstrained optimization looks for flat tangent planes (∇f = 0); Lagrange multipliers looks for tangency with constraint curves.'
+    items_ar: [
+      { s: '∇f(x, y) = ⟨0, 0⟩', cat: 0 },
+      { s: '∇f(x, y) = λ ∇g(x, y) مع القيد g(x, y) = k', cat: 1 },
+      { s: 'f_x = 0 و f_y = 0 في وقت واحد', cat: 0 },
+      { s: 'منحنيات مستوى f مماسية لحدود القيد g = k', cat: 1 },
+      { s: 'تصنيف الانحناء عبر المميز D = f_xx f_yy - (f_xy)²', cat: 0 }
+    ],
+    sol: 'Unconstrained optimization looks for flat tangent planes (∇f = 0); Lagrange multipliers looks for tangency with constraint curves.',
+    sol_ar: 'تبحث الأمثلية غير المقيدة عن مستويات مماسية أفقية (∇f = 0)؛ بينما تبحث طريقة لاغرانج عن التماس مع منحنيات القيد.'
   }
 ];
 
@@ -192,42 +306,64 @@ D['mvc-double-integrals'] = [
   {
     t: 'sb',
     ti: 'Lab Step Builder: Iterated Double Integrals',
+    ti_ar: 'بناء خطوات المعمل: التكاملات الثنائية المتكررة',
     steps: [
-      { l: 'Evaluate \\(\\int_0^1 \\int_0^2 (2x + 3y)\\,dy\\,dx\\). Inner integral with respect to y: \\([2xy + \\frac{3}{2}y^2]_0^2 = 4x +\\)', a: '6', h: '\\(2x(2) + 3/2(4) = 4x + 6\\)' },
-      { l: 'Outer integral with respect to x: \\(\\int_0^1 (4x + 6)\\,dx = [2x^2 + 6x]_0^1 =\\)', a: '8', h: '\\(2(1) + 6(1) = 8\\)' }
+      { l: 'Evaluate \\(\int_0^1 \int_0^2 (2x + 3y)\,dy\,dx\\). Inner integral with respect to y: \\([2xy + \\frac{3}{2}y^2]_0^2 = 4x +\\)', a: '6', h: '\\(2x(2) + 3/2(4) = 4x + 6\\)' },
+      { l: 'Outer integral with respect to x: \\(\int_0^1 (4x + 6)\,dx = [2x^2 + 6x]_0^1 =\\)', a: '8', h: '\\(2(1) + 6(1) = 8\\)' }
+    ],
+    steps_ar: [
+      { l: 'احسب \\(\int_0^1 \int_0^2 (2x + 3y)\,dy\,dx\\). التكامل الداخلي بالنسبة إلى y هو: \\([2xy + \\frac{3}{2}y^2]_0^2 = 4x +\\)', a: '6', h: '\\(2x(2) + 3/2(4) = 4x + 6\\)' },
+      { l: 'التكامل الخارجي بالنسبة إلى x هو: \\(\int_0^1 (4x + 6)\,dx = [2x^2 + 6x]_0^1 =\\)', a: '8', h: '\\(2(1) + 6(1) = 8\\)' }
     ]
   },
   {
     t: 'qc',
     ti: 'Lab Check: Double Integrals in Polar Coordinates',
-    q: 'When converting a double integral \\(\\iint_R f(x,y)\\,dA\\) to polar coordinates, the area element \\(dA\\) becomes:',
-    o: ['\\(r\\,dr\\,d\\theta\\)', '\\(dr\\,d\\theta\\)', '\\(r^2\\,dr\\,d\\theta\\)', '\\(\\frac{1}{r}\\,dr\\,d\\theta\\)'],
+    ti_ar: 'فحص المعمل: التكاملات الثنائية بالإحداثيات القطبية',
+    q: 'When converting a double integral \\(\iint_R f(x,y)\,dA\\) to polar coordinates, the area element \\(dA\\) becomes:',
+    q_ar: 'عند تحويل التكامل الثنائي \\(\iint_R f(x,y)\,dA\\) إلى الإحداثيات القطبية، يصبح عنصر المساحة \\(dA\\):',
+    o: ['\\(r\,dr\,d\\theta\\)', '\\(dr\,d\\theta\\)', '\\(r^2\,dr\,d\\theta\\)', '\\(\\frac{1}{r}\,dr\,d\\theta\\)'],
+    o_ar: ['\\(r\,dr\,d\\theta\\)', '\\(dr\,d\\theta\\)', '\\(r^2\,dr\,d\\theta\\)', '\\(\\frac{1}{r}\,dr\,d\\theta\\)'],
     a: 0,
-    ex: 'The Jacobian determinant of the transformation \\(x=r\\cos\\theta, y=r\\sin\\theta\\) is \\(r\\), giving \\(dA = r\\,dr\\,d\\theta\\).'
+    ex: 'The Jacobian determinant of the transformation \\(x=r\cos\\theta, y=r\sin\\theta\\) is \\(r\\), giving \\(dA = r\,dr\,d\\theta\\).',
+    ex_ar: 'محدد مصفوفة جاكوبي لتحويل الإحداثيات \\(x=r\cos\\theta, y=r\sin\\theta\\) هو \\(r\\)، مما يعطي \\(dA = r\,dr\,d\\theta\\).'
   },
   {
     t: 'mt',
     ti: 'Matching: Double Integral Regions and Slices',
+    ti_ar: 'معمل المطابقة: مناطق وشرائح التكامل الثنائي',
     p: [
       { l: 'Type I region', r: 'Integrated dy first, between curves y = g₁(x) and y = g₂(x)' },
       { l: 'Type II region', r: 'Integrated dx first, between curves x = h₁(y) and x = h₂(y)' },
       { l: 'Fubini\'s Theorem', r: 'Allows swapping order of integration for continuous f' },
       { l: 'Area of region D', r: '∬_D 1 dA' }
+    ],
+    p_ar: [
+      { l: 'منطقة من النوع الأول (Type I)', r: 'التكامل بالنسبة إلى dy أولاً، بين المنحنيين y = g₁(x) و y = g₂(x)' },
+      { l: 'منطقة من النوع الثاني (Type II)', r: 'التكامل بالنسبة إلى dx أولاً، بين المنحنيين x = h₁(y) و x = h₂(y)' },
+      { l: 'مبرهنة فوبيني (Fubini)', r: 'تسمح بتبديل ترتيب التكامل للدوال المستمرة f' },
+      { l: 'مساحة المنطقة D', r: '∬_D 1 dA' }
     ]
   },
   {
     t: 'num',
     ti: 'Separable Double Integral Calculation',
-    q: 'Evaluate the separable double integral \\(\\int_0^2 \\int_0^3 xy \\, dy \\, dx\\):',
+    ti_ar: 'حساب التكامل الثنائي القابل للفصل',
+    q: 'Evaluate the separable double integral \\(\int_0^2 \int_0^3 xy \, dy \, dx\\):',
+    q_ar: 'احسب قيمة التكامل الثنائي القابل للفصل \\(\int_0^2 \int_0^3 xy \, dy \, dx\\):',
     a: 9,
     tol: 0.001,
     h: 'Factor into (∫₀² x dx)(∫₀³ y dy) = [x²/2]₀² · [y²/2]₀³ = 2 · (9/2).',
-    sol: '(2) · (9/2) = 9.'
+    h_ar: 'افصل التكامل إلى (∫₀² x dx)(∫₀³ y dy) = [x²/2]₀² · [y²/2]₀³ = 2 · (9/2).',
+    sol: '(2) · (9/2) = 9.',
+    sol_ar: '(2) · (9/2) = 9.'
   },
   {
     t: 'ord',
     ti: 'Order the Steps: Convert Double Integral to Polar Coordinates',
+    ti_ar: 'ترتيب الخطوات: تحويل التكامل الثنائي إلى الإحداثيات القطبية',
     q: 'Order the steps to convert and evaluate a double integral ∬_D f(x, y) dA using polar coordinates:',
+    q_ar: 'رتّب خطوات تحويل وحساب التكامل الثنائي ∬_D f(x, y) dA باستخدام الإحداثيات القطبية:',
     items: [
       'Sketch region D and determine radial limits r₁ ≤ r ≤ r₂ and angle limits θ₁ ≤ θ ≤ θ₂',
       'Substitute x = r cos θ and y = r sin θ into the integrand f(x, y)',
@@ -235,12 +371,22 @@ D['mvc-double-integrals'] = [
       'Integrate with respect to r from inner boundary to outer boundary',
       'Integrate the resulting expression with respect to θ over the angular interval'
     ],
-    sol: 'Polar conversion requires replacing coordinates, inserting Jacobian factor r, and evaluating iterated limits.'
+    items_ar: [
+      'رسم المنطقة D وتحديد حدود نصف القطر r₁ ≤ r ≤ r₂ وحدود الزاوية θ₁ ≤ θ ≤ θ₂',
+      'التعويض بـ x = r cos θ و y = r sin θ في دالة المكاملة f(x, y)',
+      'استبدال عنصر المساحة dA بعنصر المساحة القطبي r dr dθ',
+      'إجراء التكامل بالنسبة إلى r من الحد الداخلي إلى الحد الخارجي',
+      'حساب تكامل المقدار الناتج بالنسبة إلى θ على الفترة الزاوية'
+    ],
+    sol: 'Polar conversion requires replacing coordinates, inserting Jacobian factor r, and evaluating iterated limits.',
+    sol_ar: 'يتطلب التحويل القطبي استبدال الإحداثيات، وإدراج عامل جاكوبي r، وحساب حدود التكامل المتكرر.'
   },
   {
     t: 'cat',
     ti: 'Classify Integration Regions: Cartesian vs. Polar Preference',
+    ti_ar: 'تصنيف مناطق التكامل: تفضيل الديكارتي مقابل القطبي',
     categories: ['Best Solved in Cartesian Coordinates (dx dy)', 'Best Solved in Polar Coordinates (r dr dθ)'],
+    categories_ar: ['يُفضل حلها بالإحداثيات الديكارتية (dx dy)', 'يُفضل حلها بالإحداثيات القطبية (r dr dθ)'],
     items: [
       { s: 'Rectangular region [a, b] × [c, d]', cat: 0 },
       { s: 'Circular disk x² + y² ≤ 16', cat: 1 },
@@ -248,7 +394,15 @@ D['mvc-double-integrals'] = [
       { s: 'Triangular region bounded by y = 2x, y = 0, and x = 4', cat: 0 },
       { s: 'Annular sector between circles r = 1 and r = 3 for 0 ≤ θ ≤ π/2', cat: 1 }
     ],
-    sol: 'Polar coordinates excel for circular, radial, and rotational boundaries; Cartesian is natural for boxes and linear boundaries.'
+    items_ar: [
+      { s: 'منطقة مستطيلة [a, b] × [c, d]', cat: 0 },
+      { s: 'قرص دائري x² + y² ≤ 16', cat: 1 },
+      { s: 'دالة مكاملة تحتوي على (x² + y²)', cat: 1 },
+      { s: 'منطقة مثلثة محصورة بين y = 2x و y = 0 و x = 4', cat: 0 },
+      { s: 'قطاع حلقي بين الدائرتين r = 1 و r = 3 لـ 0 ≤ θ ≤ π/2', cat: 1 }
+    ],
+    sol: 'Polar coordinates excel for circular, radial, and rotational boundaries; Cartesian is natural for boxes and linear boundaries.',
+    sol_ar: 'تتميز الإحداثيات القطبية في المناطق الدائرية والقطرية؛ بينما تناسب الإحداثيات الديكارتية الصناديق والحدود الخطية.'
   }
 ];
 
@@ -256,43 +410,66 @@ D['mvc-triple-integrals'] = [
   {
     t: 'mt',
     ti: 'Matching Lab: Differential Volume Elements in Coordinates',
+    ti_ar: 'معمل المطابقة: عناصر الحجم التفاضلية في أنظمة الإحداثيات',
     p: [
       { l: 'Cartesian volume element dV', r: 'dx dy dz' },
       { l: 'Cylindrical volume element dV', r: 'r dz dr dθ' },
       { l: 'Spherical volume element dV', r: 'ρ² sin φ dρ dφ dθ' },
       { l: 'Spherical radius relation', r: 'x² + y² + z² = ρ²' }
+    ],
+    p_ar: [
+      { l: 'عنصر الحجم الديكارتي dV', r: 'dx dy dz' },
+      { l: 'عنصر الحجم الأسطواني dV', r: 'r dz dr dθ' },
+      { l: 'عنصر الحجم الكروي dV', r: 'ρ² sin φ dρ dφ dθ' },
+      { l: 'علاقة نصف القطر الكروي', r: 'x² + y² + z² = ρ²' }
     ]
   },
   {
     t: 'qc',
     ti: 'Lab Check: Spherical Angle Conventions',
-    q: 'In spherical coordinates \\((\\rho, \\theta, \\phi)\\), the polar/zenith angle \\(\\phi\\) measured from the positive z-axis ranges from:',
+    ti_ar: 'فحص المعمل: اصطلاحات الزوايا الكروية',
+    q: 'In spherical coordinates \\((\\rho, \\\theta, \\phi)\\), the polar/zenith angle \\(\phi\\) measured from the positive z-axis ranges from:',
+    q_ar: 'في الإحداثيات الكروية \\((\\rho, \\\theta, \\phi)\\)، يتراوح مدى زاوية السمت/القطب \\(\phi\\) المقاسة من الاتجاه الموجب لمحور z بين:',
     o: ['\\([0, \\pi]\\)', '\\([0, 2\\pi]\\)', '\\([-\\pi/2, \\pi/2]\\)', '\\([0, \\pi/2]\\)'],
+    o_ar: ['\\([0, \\pi]\\)', '\\([0, 2\\pi]\\)', '\\([-\\pi/2, \\pi/2]\\)', '\\([0, \\pi/2]\\)'],
     a: 0,
-    ex: '\\(\\phi = 0\\) represents the north pole (positive z-axis) and \\(\\phi = \\pi\\) represents the south pole (negative z-axis).'
+    ex: '\\(\phi = 0\\) represents the north pole (positive z-axis) and \\(\phi = \\pi\\) represents the south pole (negative z-axis).',
+    ex_ar: 'تمثل \\(\phi = 0\\) القطب الشمالي (محور z الموجب) بينما تمثل \\(\phi = \\pi\\) القطب الجنوبي (محور z السالب).'
   },
   {
     t: 'sb',
     ti: 'Lab Step Builder: Cylindrical Coordinates Volume Integral',
+    ti_ar: 'بناء خطوات المعمل: تكامل الحجم بالإحداثيات الأسطوانية',
     steps: [
       { l: 'In cylindrical coordinates, \\(x^2 + y^2 =\\)', a: 'r^2', h: 'x = r cos θ, y = r sin θ gives x² + y² = r²' },
-      { l: 'The Jacobian volume element \\(dV =\\) ? \\(dz\\,dr\\,d\\theta\\):', a: 'r', h: 'Jacobian factor is r' },
+      { l: 'The Jacobian volume element \\(dV =\\) ? \\(dz\\,dr\\,d\\\theta\\):', a: 'r', h: 'Jacobian factor is r' },
       { l: 'For a solid bounded below by \\(z=0\\) and above by \\(z=4-r^2\\), the inner z-integral evaluates to \\([z]_0^{4-r^2} = 4 -\\)', a: 'r^2', h: '4 - r² - 0 = 4 - r²' }
+    ],
+    steps_ar: [
+      { l: 'في الإحداثيات الأسطوانية، \\(x^2 + y^2 =\\)', a: 'r^2', h: 'x = r cos θ, y = r sin θ يعطي x² + y² = r²' },
+      { l: 'عنصر الحجم التفاضلي لجاكوبي \\(dV =\\) ؟ \\(dz\\,dr\\,d\\\theta\\):', a: 'r', h: 'عامل جاكوبي هو r' },
+      { l: 'لمجسم يحده من الأسفل \\(z=0\\) ومن الأعلى \\(z=4-r^2\\)، ناتج تكامل z الداخلي هو \\([z]_0^{4-r^2} = 4 -\\)', a: 'r^2', h: '4 - r² - 0 = 4 - r²' }
     ]
   },
   {
     t: 'num',
     ti: 'Cylinder Volume Calculation in Cylindrical Coordinates',
-    q: 'Using cylindrical coordinates, compute the volume of a cylinder of radius \\(R = 3\\) and height \\(h = 5\\) (formula \\(V = \\pi R^2 h\\); enter the integer coefficient of \\(\\pi\\), i.e., \\(R^2 h\\)):',
+    ti_ar: 'حساب حجم أسطوانة بالإحداثيات الأسطوانية',
+    q: 'Using cylindrical coordinates, compute the volume of a cylinder of radius \\(R = 3\\) and height \\(h = 5\\) (formula \\(V = \\pi R^2 h\\); enter the integer coefficient of \\(\pi\\), i.e., \\(R^2 h\\)):',
+    q_ar: 'باستخدام الإحداثيات الأسطوانية، احسب حجم أسطوانة نصف قطرها \\(R = 3\\) وارتفاعها \\(h = 5\\) (الصيغة \\(V = \\pi R^2 h\\)؛ أدخل المعامل الصحيح لـ \\(\pi\\)، أي \\(R^2 h\\)):',
     a: 45,
     tol: 0.001,
     h: 'R² h = 3² · 5 = 9 · 5.',
-    sol: 'R² h = 3² · 5 = 45.'
+    h_ar: 'R² h = 3² · 5 = 9 · 5.',
+    sol: 'R² h = 3² · 5 = 45.',
+    sol_ar: 'R² h = 3² · 5 = 45.'
   },
   {
     t: 'ord',
     ti: 'Order the Steps: Triple Integration in Spherical Coordinates',
+    ti_ar: 'ترتيب الخطوات: التكامل الثلاثي بالإحداثيات الكروية',
     q: 'Order the steps to evaluate a triple integral ∭_E f(x, y, z) dV in spherical coordinates:',
+    q_ar: 'رتّب خطوات حساب التكامل الثلاثي ∭_E f(x, y, z) dV بالإحداثيات الكروية:',
     items: [
       'Identify spherical boundaries such as spheres ρ = a or cones φ = α',
       'Determine angle limits: azimuthal θ ∈ [0, 2π] and colatitude φ ∈ [0, π]',
@@ -300,12 +477,22 @@ D['mvc-triple-integrals'] = [
       'Substitute x = ρ sin φ cos θ, y = ρ sin φ sin θ, z = ρ cos φ into f',
       'Insert the volume element dV = ρ² sin φ dρ dφ dθ and integrate iteratively'
     ],
-    sol: 'Spherical coordinates map space via radius ρ, colatitude φ, and azimuth θ with volume metric ρ² sin φ.'
+    items_ar: [
+      'تحديد الحدود الكروية مثل الكرات ρ = a أو المخاريط φ = α',
+      'تحديد حدود الزوايا: زاوية السمت θ ∈ [0, 2π] وزاوية القطب φ ∈ [0, π]',
+      'تحديد حدود نصف القطر: ρ من الحد الداخلي إلى الحد الخارجي',
+      'التعويض بـ x = ρ sin φ cos θ، و y = ρ sin φ sin θ، و z = ρ cos φ في دالة f',
+      'إدراج عنصر الحجم dV = ρ² sin φ dρ dφ dθ وإجراء التكامل التكراري'
+    ],
+    sol: 'Spherical coordinates map space via radius ρ, colatitude φ, and azimuth θ with volume metric ρ² sin φ.',
+    sol_ar: 'ترسم الإحداثيات الكروية الفضاء بنصف القطر ρ وزاوية القطب φ وزاوية السمت θ مع مقياس الحجم ρ² sin φ.'
   },
   {
     t: 'cat',
     ti: 'Classify 3D Regions: Cylindrical vs. Spherical Suitability',
+    ti_ar: 'تصنيف المناطق ثلاثية الأبعاد: ملاءمة الأسطواني مقابل الكروي',
     categories: ['Cylindrical Coordinates (r, θ, z)', 'Spherical Coordinates (ρ, φ, θ)'],
+    categories_ar: ['الإحداثيات الأسطوانية (r, θ, z)', 'الإحداثيات الكروية (ρ, φ, θ)'],
     items: [
       { s: 'Solid bounded by paraboloid z = x² + y² and plane z = 4', cat: 0 },
       { s: 'Solid sphere x² + y² + z² ≤ 25', cat: 1 },
@@ -313,7 +500,15 @@ D['mvc-triple-integrals'] = [
       { s: 'Vertical circular cylinder x² + y² ≤ 4 with 0 ≤ z ≤ 6', cat: 0 },
       { s: 'Integrand with spherical symmetry depending only on (x² + y² + z²)', cat: 1 }
     ],
-    sol: 'Cylindrical coordinates suit axial symmetry along z; spherical coordinates suit radial symmetry from origin.'
+    items_ar: [
+      { s: 'مجسم محصور بالسطح المكافئ z = x² + y² والمستوى z = 4', cat: 0 },
+      { s: 'كرة مصمتة x² + y² + z² ≤ 25', cat: 1 },
+      { s: 'مجسم قمع الآيس كريم بين الكرة ρ = 3 والمخروط φ = π/3', cat: 1 },
+      { s: 'أسطوانة دائرية رأسية x² + y² ≤ 4 مع 0 ≤ z ≤ 6', cat: 0 },
+      { s: 'دالة مكاملة ذات تماثل كروي تعتمد فقط على (x² + y² + z²)', cat: 1 }
+    ],
+    sol: 'Cylindrical coordinates suit axial symmetry along z; spherical coordinates suit radial symmetry from origin.',
+    sol_ar: 'تناسب الإحداثيات الأسطوانية التماثل المحوري حول محور z؛ بينما تناسب الإحداثيات الكروية التماثل الشعاعي حول نقطة الأصل.'
   }
 ];
 
@@ -321,43 +516,66 @@ D['mvc-vector-fields'] = [
   {
     t: 'sb',
     ti: 'Lab Step Builder: Line Integral of a Vector Field',
+    ti_ar: 'بناء خطوات المعمل: التكامل الخطي لمجال متجهي',
     steps: [
-      { l: 'Let \\(\\mathbf{F} = \\langle y, x \\rangle\\) along \\(\\mathbf{r}(t) = \\langle t, t^2 \\rangle\\) for \\(t \\in [0, 1]\\). Compute \\(\\mathbf{r}\'(t) = \\langle 1, ?\\rangle\\):', a: '2t', h: 'd/dt(t²) = 2t' },
-      { l: 'Substitute \\(\\mathbf{r}(t)\\) into \\(\\mathbf{F}\\): \\(\\mathbf{F}(\\mathbf{r}(t)) = \\langle t^2, t \\rangle\\). Compute dot product \\(\\mathbf{F}\\cdot\\mathbf{r}\' = t^2(1) + t(2t) =\\) ? \\(t^2\\):', a: '3', h: '\\(t^2 + 2t^2 = 3t^2\\)' },
-      { l: 'Integrate \\(\\int_0^1 3t^2\\,dt = [t^3]_0^1 =\\)', a: '1', h: '\\(1^3 - 0 = 1\\)' }
+      { l: 'Let \\(\mathbf{F} = \\langle y, x \\rangle\\) along \\(\mathbf{r}(t) = \\langle t, t^2 \\rangle\\) for \\(t \\in [0, 1]\\). Compute \\(\mathbf{r}\'(t) = \\langle 1, ?\\rangle\\):', a: '2t', h: 'd/dt(t²) = 2t' },
+      { l: 'Substitute \\(\mathbf{r}(t)\\) into \\(\mathbf{F}\\): \\(\mathbf{F}(\\mathbf{r}(t)) = \\langle t^2, t \\rangle\\). Compute dot product \\(\mathbf{F}\\cdot\\mathbf{r}\' = t^2(1) + t(2t) =\\) ? \\(t^2\\):', a: '3', h: '\\(t^2 + 2t^2 = 3t^2\\)' },
+      { l: 'Integrate \\(\int_0^1 3t^2\\,dt = [t^3]_0^1 =\\)', a: '1', h: '\\(1^3 - 0 = 1\\)' }
+    ],
+    steps_ar: [
+      { l: 'لتكن \\(\mathbf{F} = \\langle y, x \\rangle\\) على طول \\(\mathbf{r}(t) = \\langle t, t^2 \\rangle\\) لـ \\(t \\in [0, 1]\\). احسب \\(\mathbf{r}\'(t) = \\langle 1, ?\\rangle\\):', a: '2t', h: 'd/dt(t²) = 2t' },
+      { l: 'عوّض \\(\mathbf{r}(t)\\) في \\(\mathbf{F}\\): \\(\mathbf{F}(\\mathbf{r}(t)) = \\langle t^2, t \\rangle\\). احسب الضرب القياسي \\(\mathbf{F}\\cdot\\mathbf{r}\' = t^2(1) + t(2t) =\\) ؟ \\(t^2\\):', a: '3', h: '\\(t^2 + 2t^2 = 3t^2\\)' },
+      { l: 'احسب التكامل \\(\int_0^1 3t^2\\,dt = [t^3]_0^1 =\\)', a: '1', h: '\\(1^3 - 0 = 1\\)' }
     ]
   },
   {
     t: 'qc',
     ti: 'Lab Check: Fundamental Theorem for Line Integrals',
-    q: 'If \\(\\mathbf{F} = \\nabla f\\) is conservative, the work done along any curve \\(C\\) from \\(A\\) to \\(B\\) is:',
-    o: ['\\(f(B) - f(A)\\)', '\\(f(A) - f(B)\\)', '\\(\\oint_C \\nabla f\\)', '\\(0\\) always'],
+    ti_ar: 'فحص المعمل: النظرية الأساسية للتكاملات الخطية',
+    q: 'If \\(\mathbf{F} = \\nabla f\\) is conservative, the work done along any curve \\(C\\) from \\(A\\) to \\(B\\) is:',
+    q_ar: 'إذا كان \\(\mathbf{F} = \\nabla f\\) مجالاً محافظاً، فإن الشغل المبذول على طول أي منحنى \\(C\\) من \\(A\\) إلى \\(B\\) يساوي:',
+    o: ['\\(f(B) - f(A)\\)', '\\(f(A) - f(B)\\)', '\\(\oint_C \\nabla f\\)', '\\(0\\) always'],
+    o_ar: ['\\(f(B) - f(A)\\)', '\\(f(A) - f(B)\\)', '\\(\oint_C \\nabla f\\)', '\\(0\\) دائماً'],
     a: 0,
-    ex: 'Line integrals of conservative vector fields are path-independent and depend solely on potential values at endpoints: \\(\\int_C \\nabla f\\cdot d\\mathbf{r} = f(B) - f(A)\\).'
+    ex: 'Line integrals of conservative vector fields are path-independent and depend solely on potential values at endpoints: \\(\int_C \\nabla f\\cdot d\\mathbf{r} = f(B) - f(A)\\).',
+    ex_ar: 'التكاملات الخطية للمجالات المتجهية المحافظة تكون مستقلة عن المسار وتعتمد فقط على قيم دالة الجهد عند نقطتي البداية والنهاية: \\(\int_C \\nabla f\\cdot d\\mathbf{r} = f(B) - f(A)\\).'
   },
   {
     t: 'mt',
     ti: 'Matching: Vector Field Concepts',
+    ti_ar: 'معمل المطابقة: مفاهيم المجالات المتجهية',
     p: [
       { l: 'Conservative field F', r: 'F = ∇f for some scalar potential f' },
       { l: 'Path independence', r: '∫_C F·dr depends only on endpoints' },
       { l: 'Closed loop line integral ∮_C F·dr', r: '0 for any conservative field' },
       { l: '2D curl condition', r: '∂Q/∂x = ∂P/∂y on simply connected domain' }
+    ],
+    p_ar: [
+      { l: 'المجال المحافظ F', r: 'F = ∇f لدالة جهد قياسية f' },
+      { l: 'الاستقلال عن المسار', r: '∫_C F·dr يعتمد فقط على نقطتي البداية والنهاية' },
+      { l: 'تكامل مسار مغلق ∮_C F·dr', r: '0 لأي مجال محافظ' },
+      { l: 'شرط الالتفاف ثنائي الأبعاد', r: '∂Q/∂x = ∂P/∂y على نطاق مترابط بسيط' }
     ]
   },
   {
     t: 'num',
     ti: 'Work Done by Conservative Field',
-    q: 'A conservative force field \\(\\mathbf{F} = \\nabla f\\) has potential \\(f(x, y) = x^2 y + 3y^2\\). Find the work done \\(\\int_C \\mathbf{F}\\cdot d\\mathbf{r}\\) along any smooth curve from \\(A(1, 1)\\) to \\(B(2, 3)\\):',
+    ti_ar: 'الشغل المبذول بواسطة مجال محافظ',
+    q: 'A conservative force field \\(\mathbf{F} = \\nabla f\\) has potential \\(f(x, y) = x^2 y + 3y^2\\). Find the work done \\(\int_C \\mathbf{F}\\cdot d\\mathbf{r}\\) along any smooth curve from \\(A(1, 1)\\) to \\(B(2, 3)\\):',
+    q_ar: 'مجال قوة محافظ \\(\mathbf{F} = \\nabla f\\) له دالة جهد \\(f(x, y) = x^2 y + 3y^2\\). أوجد الشغل المبذول \\(\int_C \\mathbf{F}\\cdot d\\mathbf{r}\\) على طول أي منحنى أملس من \\(A(1, 1)\\) إلى \\(B(2, 3)\\):',
     a: 35,
     tol: 0.001,
     h: 'Work = f(B) - f(A). Compute f(2, 3) and f(1, 1).',
-    sol: 'f(2, 3) = 2²(3) + 3(3²) = 12 + 27 = 39. f(1, 1) = 1(1) + 3(1) = 4. Work = 39 - 4 = 35.'
+    h_ar: 'الشغل = f(B) - f(A). احسب f(2, 3) و f(1, 1).',
+    sol: 'f(2, 3) = 2²(3) + 3(3²) = 12 + 27 = 39. f(1, 1) = 1(1) + 3(1) = 4. Work = 39 - 4 = 35.',
+    sol_ar: 'f(2, 3) = 2²(3) + 3(3²) = 12 + 27 = 39. f(1, 1) = 1(1) + 3(1) = 4. الشغل = 39 - 4 = 35.'
   },
   {
     t: 'ord',
     ti: 'Order the Steps: Find Potential Function f(x, y)',
+    ti_ar: 'ترتيب الخطوات: إيجاد دالة الجهد f(x, y)',
     q: 'Order the steps to find a potential function f(x, y) for a conservative field F = ⟨P, Q⟩:',
+    q_ar: 'رتّب خطوات إيجاد دالة الجهد f(x, y) لمجال متجهي محافظ F = ⟨P, Q⟩:',
     items: [
       'Check that ∂P/∂y = ∂Q/∂x throughout an open simply connected domain',
       'Integrate f_x = P with respect to x, adding an unknown function of y: f(x, y) = ∫ P dx + g(y)',
@@ -365,12 +583,22 @@ D['mvc-vector-fields'] = [
       'Equate ∂f/∂y with Q(x, y) to isolate and solve for g\'(y)',
       'Integrate g\'(y) to find g(y) and write down the complete potential function f(x, y)'
     ],
-    sol: 'Potential functions are found by integrating one component and differentiating to solve for the remaining single-variable function.'
+    items_ar: [
+      'التحقق من أن ∂P/∂y = ∂Q/∂x في نطاق مفتوح ومترابط بسيط',
+      'مكاملة f_x = P بالنسبة إلى x مع إضافة دالة مجهولة لـ y: f(x, y) = ∫ P dx + g(y)',
+      'اشتقاق هذا التعبير لـ f(x, y) بالنسبة إلى y: ∂f/∂y = ∂/∂y[∫ P dx] + g\'(y)',
+      'مساواة ∂f/∂y مع Q(x, y) لعزل g\'(y) وحلها',
+      'مكاملة g\'(y) لإيجاد g(y) وكتابة دالة الجهد الكاملة f(x, y)'
+    ],
+    sol: 'Potential functions are found by integrating one component and differentiating to solve for the remaining single-variable function.',
+    sol_ar: 'يتم إيجاد دوال الجهد عبر مكاملة إحدى المركبات واشتقاقها لحل دالة المتغير المتبقي.'
   },
   {
     t: 'cat',
     ti: 'Classify Vector Fields: Conservative vs. Non-Conservative',
+    ti_ar: 'تصنيف المجالات المتجهية: محافظ مقابل غير محافظ',
     categories: ['Conservative Vector Field', 'Non-Conservative Vector Field'],
+    categories_ar: ['مجال متجهي محافظ', 'مجال متجهي غير محافظ'],
     items: [
       { s: 'F = ∇f for a smooth scalar potential f', cat: 0 },
       { s: 'Line integral around every simple closed curve is zero: ∮_C F · dr = 0', cat: 0 },
@@ -378,7 +606,15 @@ D['mvc-vector-fields'] = [
       { s: 'Curl of F is non-zero (∇ × F ≠ 0)', cat: 1 },
       { s: 'F(x, y) = ⟨2xy, x²⟩ on all of ℝ²', cat: 0 }
     ],
-    sol: 'Conservative vector fields have path-independent integrals, vanish around closed loops, and have zero curl.'
+    items_ar: [
+      { s: 'F = ∇f لدالة جهد قياسية ملساء f', cat: 0 },
+      { s: 'التكامل الخطي حول أي مسار مغلق بسيط يساوي صفراً: ∮_C F · dr = 0', cat: 0 },
+      { s: 'قيمة التكامل الخطي تعتمد على المسار المتبع بين نقطتي البداية والنهاية', cat: 1 },
+      { s: 'التفاف F لا يساوي صفراً (∇ × F ≠ 0)', cat: 1 },
+      { s: 'F(x, y) = ⟨2xy, x²⟩ على كامل ℝ²', cat: 0 }
+    ],
+    sol: 'Conservative vector fields have path-independent integrals, vanish around closed loops, and have zero curl.',
+    sol_ar: 'المجالات المتجهية المحافظة تتميز باستقلال تكاملاتها عن المسار، وانعدام دورانها، وانعدام تكاملها على المسارات المغلقة.'
   }
 ];
 
@@ -386,41 +622,62 @@ D['mvc-greens-theorem'] = [
   {
     t: 'sb',
     ti: 'Lab Step Builder: Green\'s Theorem Application',
+    ti_ar: 'بناء خطوات المعمل: تطبيق مبرهنة غرين',
     steps: [
-      { l: 'Green\'s theorem states \\(\\oint_C (P\\,dx + Q\\,dy) = \\iint_D \\left(\\dfrac{\\partial Q}{\\partial x} - \\dfrac{\\partial P}{\\partial y}\\right)dA\\). For \\(P = -y^3\\), \\(Q = x^3\\), \\(\\dfrac{\\partial Q}{\\partial x} =\\)', a: '3x^2', h: 'd/dx(x³) = 3x²' },
-      { l: '\\(\\dfrac{\\partial P}{\\partial y} =\\)', a: '-3y^2', h: 'd/dy(-y³) = -3y²' },
-      { l: 'The integrand \\(\\dfrac{\\partial Q}{\\partial x} - \\dfrac{\\partial P}{\\partial y} = 3(x^2 + y^2)\\). Across circle \\(x^2+y^2\\le 1\\), in polar this is \\(3r^2\\cdot r = 3r^3\\). Integrate \\(\\int_0^{2\\pi}\\int_0^1 3r^3\\,dr\\,d\\theta = 2\\pi \\times [\\frac{3}{4}r^4]_0^1 =\\) (enter fraction like 3/2pi as 1.5pi or 3pi/2):', a: '3pi/2', h: '\\(2\\pi \\times 3/4 = 3\\pi/2\\)' }
+      { l: 'Green\'s theorem states \\(\oint_C (P\,dx + Q\,dy) = \iint_D \left(\\dfrac{\partial Q}{\partial x} - \\dfrac{\partial P}{\partial y}\right)dA\\). For \\(P = -y^3\\), \\(Q = x^3\\), \\(\\dfrac{\partial Q}{\partial x} =\\)', a: '3x^2', h: 'd/dx(x³) = 3x²' },
+      { l: '\\(\\dfrac{\partial P}{\partial y} =\\)', a: '-3y^2', h: 'd/dy(-y³) = -3y²' },
+      { l: 'The integrand \\(\\dfrac{\partial Q}{\partial x} - \\dfrac{\partial P}{\partial y} = 3(x^2 + y^2)\\). Across circle \\(x^2+y^2\le 1\\), in polar this is \\(3r^2\cdot r = 3r^3\\). Integrate \\(\int_0^{2\pi}\int_0^1 3r^3\,dr\,d\\theta = 2\pi \\times [\\frac{3}{4}r^4]_0^1 =\\) (enter fraction like 3/2pi as 1.5pi or 3pi/2):', a: '3pi/2', h: '\\(2\pi \\times 3/4 = 3\pi/2\\)' }
+    ],
+    steps_ar: [
+      { l: 'تنص مبرهنة غرين على أن \\(\oint_C (P\,dx + Q\,dy) = \iint_D \left(\\dfrac{\partial Q}{\partial x} - \\dfrac{\partial P}{\partial y}\right)dA\\). إذا كانت \\(P = -y^3\\) و \\(Q = x^3\\)، فإن \\(\\dfrac{\partial Q}{\partial x} =\\)', a: '3x^2', h: 'd/dx(x³) = 3x²' },
+      { l: '\\(\\dfrac{\partial P}{\partial y} =\\)', a: '-3y^2', h: 'd/dy(-y³) = -3y²' },
+      { l: 'دالة المكاملة \\(\\dfrac{\partial Q}{\partial x} - \\dfrac{\partial P}{\partial y} = 3(x^2 + y^2)\\). عبر القرص \\(x^2+y^2\le 1\\)، بالصورة القطبية تصبح \\(3r^2\cdot r = 3r^3\\). احسب \\(\int_0^{2\pi}\int_0^1 3r^3\,dr\,d\\theta = 2\pi \\times [\\frac{3}{4}r^4]_0^1 =\\) (أدخل الكسر مثل 3/2pi بصورة 1.5pi أو 3pi/2):', a: '3pi/2', h: '\\(2\pi \\times 3/4 = 3\pi/2\\)' }
     ]
   },
   {
     t: 'tf',
     ti: 'Reasoning Lab: Green\'s Theorem Hypotheses',
+    ti_ar: 'معمل الاستنتاج: فرضيات مبرهنة غرين',
     items: [
       { s: 'Green\'s theorem requires the boundary curve C to be positively oriented (counterclockwise).', a: true, ex: 'Counterclockwise orientation ensures the interior domain D lies to the left of the curve.' },
-      { s: 'Green\'s theorem can be used to compute the area of a region using \\(\\text{Area} = \\frac{1}{2}\\oint_C (x\\,dy - y\\,dx)\\).', a: true, ex: 'Here \\(\\partial Q/\\partial x - \\partial P/\\partial y = 1/2(1 - (-1)) = 1\\), which integrates to Area.' }
+      { s: 'Green\'s theorem can be used to compute the area of a region using \\(\\text{Area} = \\frac{1}{2}\oint_C (x\,dy - y\,dx)\\).', a: true, ex: 'Here \\(\partial Q/\partial x - \partial P/\partial y = 1/2(1 - (-1)) = 1\\), which integrates to Area.' }
+    ],
+    items_ar: [
+      { s: 'تتطلب مبرهنة غرين أن يكون منحنى الحدود C موجّهًا في الاتجاه الموجب (عكس اتجاه عقارب الساعة).', ex: 'يضمن الاتجاه المعاكس لعقارب الساعة أن تكون المنطقة الداخلية D واقعة على يسار المنحنى أثناء السير عليه.' },
+      { s: 'يمكن استخدام مبرهنة غرين لحساب مساحة منطقة ما باستخدام الصيغة \\(\\text{Area} = \\frac{1}{2}\oint_C (x\,dy - y\,dx)\\).', ex: 'هنا \\(\partial Q/\partial x - \partial P/\partial y = 1/2(1 - (-1)) = 1\\)، والتي عند مكاملتها تعطي المساحة بالضبط.' }
     ]
   },
   {
     t: 'qc',
     ti: 'Quick Check: Green\'s Theorem Boundary Orientation',
-    q: 'If a closed curve \\(C\\) is traversed in the clockwise direction, how does the line integral \\(\\oint_C P\\,dx + Q\\,dy\\) relate to the double integral over the interior \\(D\\)?',
-    o: ['\\(-\\iint_D (Q_x - P_y)\\,dA\\)', '\\(\\iint_D (Q_x - P_y)\\,dA\\)', '\\(0\\)', '\\(\\iint_D (P_x + Q_y)\\,dA\\)'],
+    ti_ar: 'فحص سريع: اتجاه حدود مبرهنة غرين',
+    q: 'If a closed curve \\(C\\) is traversed in the clockwise direction, how does the line integral \\(\oint_C P\,dx + Q\,dy\\) relate to the double integral over the interior \\(D\\)?',
+    q_ar: 'إذا تم السير على منحنى مغلق \\(C\\) في اتجاه عقارب الساعة، فكيف يرتبط التكامل الخطي \\(\oint_C P\,dx + Q\,dy\\) بالتكامل الثنائي على المنطقة الداخلية \\(D\\)؟',
+    o: ['\\(-\iint_D (Q_x - P_y)\,dA\\)', '\\(\iint_D (Q_x - P_y)\,dA\\)', '\\(0\\)', '\\(\iint_D (P_x + Q_y)\,dA\\)'],
+    o_ar: ['\\(-\iint_D (Q_x - P_y)\,dA\\)', '\\(\iint_D (Q_x - P_y)\,dA\\)', '\\(0\\)', '\\(\iint_D (P_x + Q_y)\,dA\\)'],
     a: 0,
-    ex: 'Clockwise traversal is negative orientation (-C), reversing the sign of the line integral: \\(\\oint_{-C} = -\\oint_C = -\\iint_D (Q_x - P_y)\\,dA\\).'
+    ex: 'Clockwise traversal is negative orientation (-C), reversing the sign of the line integral: \\(\oint_{-C} = -\oint_C = -\iint_D (Q_x - P_y)\,dA\\).',
+    ex_ar: 'السير في اتجاه عقارب الساعة يمثل توجيهاً سالباً (-C)، مما يعكس إشارة التكامل الخطي: \\(\oint_{-C} = -\oint_C = -\iint_D (Q_x - P_y)\,dA\\).'
   },
   {
     t: 'num',
     ti: 'Evaluate Circulation via Green\'s Theorem',
-    q: 'Use Green\'s theorem to evaluate \\(\\oint_C (3y\\,dx + 7x\\,dy)\\) where \\(C\\) is the positively oriented boundary of a circle of radius 2. (Enter the integer coefficient of \\(\\pi\\) in the answer \\(k\\pi\\)):',
+    ti_ar: 'حساب الدوران باستخدام مبرهنة غرين',
+    q: 'Use Green\'s theorem to evaluate \\(\oint_C (3y\,dx + 7x\,dy)\\) where \\(C\\) is the positively oriented boundary of a circle of radius 2. (Enter the integer coefficient of \\(\pi\\) in the answer \\(k\pi\\)):',
+    q_ar: 'استخدم مبرهنة غرين لحساب \\(\oint_C (3y\,dx + 7x\,dy)\\) حيث \\(C\\) هو المسار الموجه موجباً لدائرة نصف قطرها 2. (أدخل المعامل الصحيح لـ \\(\pi\\) في الإجابة \\(k\pi\\)):',
     a: 16,
     tol: 0.001,
     h: 'Q_x - P_y = 7 - 3 = 4. Double integral = 4 · Area = 4 · (π · 2²) = 16π.',
-    sol: 'Q_x - P_y = 4. Line integral = 4 · Area(circle) = 4 · (4π) = 16π. The integer coefficient is 16.'
+    h_ar: 'Q_x - P_y = 7 - 3 = 4. التكامل الثنائي = 4 · المساحة = 4 · (π · 2²) = 16π.',
+    sol: 'Q_x - P_y = 4. Line integral = 4 · Area(circle) = 4 · (4π) = 16π. The integer coefficient is 16.',
+    sol_ar: 'Q_x - P_y = 4. التكامل الخطي = 4 · (4π) = 16π. المعامل الصحيح هو 16.'
   },
   {
     t: 'ord',
     ti: 'Order the Steps: Applying Green\'s Theorem',
+    ti_ar: 'ترتيب الخطوات: تطبيق مبرهنة غرين',
     q: 'Order the steps to transform and evaluate a closed planar line integral using Green\'s Theorem:',
+    q_ar: 'رتّب خطوات تحويل وحساب التكامل الخطي المستوي المغلق باستخدام مبرهنة غرين:',
     items: [
       'Verify that curve C is a closed, simple, positively oriented boundary curve',
       'Identify P(x, y) as the dx coefficient and Q(x, y) as the dy coefficient',
@@ -428,12 +685,22 @@ D['mvc-greens-theorem'] = [
       'Form the 2D curl difference: (∂Q/∂x - ∂P/∂y)',
       'Set up and evaluate the double integral ∬_D (∂Q/∂x - ∂P/∂y) dA over region D'
     ],
-    sol: 'Green\'s theorem converts a closed line integral into a double integral of 2D curl over the interior.'
+    items_ar: [
+      'التحقق من أن المنحنى C مغلق وبسيط وموجه إيجابياً كحدود لمنطقة',
+      'تحديد P(x, y) كمعامل لـ dx و Q(x, y) كمعامل لـ dy',
+      'حساب المشتقات الجزئية ∂Q/∂x و ∂P/∂y',
+      'تكوين فرق الالتفاف ثنائي الأبعاد: (∂Q/∂x - ∂P/∂y)',
+      'إعداد وحساب التكامل الثنائي ∬_D (∂Q/∂x - ∂P/∂y) dA على المنطقة D'
+    ],
+    sol: 'Green\'s theorem converts a closed line integral into a double integral of 2D curl over the interior.',
+    sol_ar: 'تحول مبرهنة غرين التكامل الخطي المغلق إلى تكامل ثنائي لالتفاف المجال في المستوى ثنائي الأبعاد.'
   },
   {
     t: 'cat',
     ti: 'Classify Boundary Orientations for Planar Regions',
+    ti_ar: 'تصنيف اتجاهات الحدود للمناطق المستوية',
     categories: ['Positive Orientation (Counter-Clockwise Outer Loop)', 'Negative Orientation (Clockwise Outer Loop)'],
+    categories_ar: ['توجيه موجب (عكس اتجاه عقارب الساعة للمسار الخارجي)', 'توجيه سالب (مع اتجاه عقارب الساعة للمسار الخارجي)'],
     items: [
       { s: 'Walking along curve keeping the interior domain to the left', cat: 0 },
       { s: 'Walking along curve keeping the interior domain to the right', cat: 1 },
@@ -441,7 +708,15 @@ D['mvc-greens-theorem'] = [
       { s: 'Clockwise traversal around the boundary of a triangle', cat: 1 },
       { s: 'Standard orientation yielding ∮_C F·dr = +∬_D (Q_x - P_y) dA', cat: 0 }
     ],
-    sol: 'Positive orientation keeps the interior on the left and corresponds to counter-clockwise outer loops.'
+    items_ar: [
+      { s: 'السير على المنحنى مع إبقاء المنطقة الداخلية على اليسار', cat: 0 },
+      { s: 'السير على المنحنى مع إبقاء المنطقة الداخلية على اليمين', cat: 1 },
+      { s: 'الدوران عكس اتجاه عقارب الساعة حول الدائرة x² + y² = 1', cat: 0 },
+      { s: 'الدوران مع اتجاه عقارب الساعة حول محيط مثلث', cat: 1 },
+      { s: 'التوجيه القياسي الذي يعطي ∮_C F·dr = +∬_D (Q_x - P_y) dA', cat: 0 }
+    ],
+    sol: 'Positive orientation keeps the interior on the left and corresponds to counter-clockwise outer loops.',
+    sol_ar: 'يبقي التوجيه الموجب المنطقة الداخلية على اليسار ويتطابق مع الدوران عكس عقارب الساعة للمسارات الخارجية.'
   }
 ];
 
@@ -449,43 +724,66 @@ D['mvc-surface-divergence-stokes'] = [
   {
     t: 'mt',
     ti: 'Matching Lab: Fundamental Theorems of Vector Calculus',
+    ti_ar: 'معمل المطابقة: النظريات الأساسية لحساب التفاضل والتكامل المتجهي',
     p: [
       { l: 'Green\'s Theorem', r: '∮_C F·dr = ∬_D (Q_x − P_y) dA' },
       { l: 'Stokes\' Theorem', r: '∮_C F·dr = ∬_S (∇ × F) · dS' },
       { l: 'Divergence Theorem', r: '∬_S F·dS = ∭_E (∇ · F) dV' },
       { l: 'Curl of gradient ∇ × (∇f)', r: '0 (always identically zero)' }
+    ],
+    p_ar: [
+      { l: 'مبرهنة غرين (Green)', r: '∮_C F·dr = ∬_D (Q_x − P_y) dA' },
+      { l: 'مبرهنة ستوكس (Stokes)', r: '∮_C F·dr = ∬_S (∇ × F) · dS' },
+      { l: 'مبرهنة التباعد (Divergence)', r: '∬_S F·dS = ∭_E (∇ · F) dV' },
+      { l: 'التفاف التدرج ∇ × (∇f)', r: '0 (دائماً يساوي صفراً)' }
     ]
   },
   {
     t: 'qc',
     ti: 'Lab Check: Divergence Theorem Physical Meaning',
-    q: 'If \\(\\iint_S \\mathbf{F}\\cdot d\\mathbf{S} > 0\\) across a closed outward-oriented boundary surface, the enclosed region contains:',
+    ti_ar: 'فحص المعمل: المعنى الفيزيائي لمبرهنة التباعد',
+    q: 'If \\(\iint_S \\mathbf{F}\\cdot d\\mathbf{S} > 0\\) across a closed outward-oriented boundary surface, the enclosed region contains:',
+    q_ar: 'إذا كان \\(\iint_S \\mathbf{F}\\cdot d\\mathbf{S} > 0\\) عبر سطح حدودي مغلق وموجه نحو الخارج، فإن المنطقة المحصورة تحتوي على:',
     o: ['A net source of flux (divergence > 0)', 'A net sink of flux (divergence < 0)', 'No fluid generation or absorption', 'A pure rotational vortex'],
+    o_ar: ['مصدر صافٍ للتدفق (التباعد > 0)', 'مصب صافٍ للتدفق (التباعد < 0)', 'انعدام توليد أو امتصاص المائع', 'دوامة دورانية نقية'],
     a: 0,
-    ex: 'By the Divergence Theorem, total outward flux equals the volume integral of divergence. A positive net flux indicates net generation of fluid (a source).'
+    ex: 'By the Divergence Theorem, total outward flux equals the volume integral of divergence. A positive net flux indicates net generation of fluid (a source).',
+    ex_ar: 'وفقاً لمبرهنة التباعد، يساوي إجمالي التدفق نحو الخارج تكامل التباعد على الحجم. ويشير التدفق الإيجابي الصافي إلى توليد مائع (مصدر صافٍ).'
   },
   {
     t: 'sb',
     ti: 'Lab Step Builder: Divergence of a 3D Vector Field',
+    ti_ar: 'بناء خطوات المعمل: تباعد مجال متجهي ثلاثي الأبعاد',
     steps: [
-      { l: 'For \\(\\mathbf{F} = \\langle x^2 y, \\; 2yz, \\; 3z^2 x \\rangle\\), compute \\(\\dfrac{\\partial P}{\\partial x} =\\) ? \\(xy\\):', a: '2', h: 'd/dx(x² y) = 2xy' },
+      { l: 'For \\(\mathbf{F} = \\langle x^2 y, \\; 2yz, \\; 3z^2 x \\rangle\\), compute \\(\\dfrac{\\partial P}{\\partial x} =\\) ? \\(xy\\):', a: '2', h: 'd/dx(x² y) = 2xy' },
       { l: 'Compute \\(\\dfrac{\\partial Q}{\\partial y} =\\) ? \\(z\\):', a: '2', h: 'd/dy(2yz) = 2z' },
       { l: 'Compute \\(\\dfrac{\\partial R}{\\partial z} =\\) ? \\(zx\\):', a: '6', h: 'd/dz(3z² x) = 6zx' }
+    ],
+    steps_ar: [
+      { l: 'للمجال \\(\mathbf{F} = \\langle x^2 y, \\; 2yz, \\; 3z^2 x \\rangle\\)، احسب \\(\\dfrac{\\partial P}{\\partial x} =\\) ؟ \\(xy\\):', a: '2', h: 'd/dx(x² y) = 2xy' },
+      { l: 'احسب \\(\\dfrac{\\partial Q}{\\partial y} =\\) ؟ \\(z\\):', a: '2', h: 'd/dy(2yz) = 2z' },
+      { l: 'احسب \\(\\dfrac{\\partial R}{\\partial z} =\\) ؟ \\(zx\\):', a: '6', h: 'd/dz(3z² x) = 6zx' }
     ]
   },
   {
     t: 'num',
     ti: 'Calculate Divergence at a Given Point',
-    q: 'Compute the divergence \\(\\nabla \\cdot \\mathbf{F}\\) at the point \\((1, 2, 3)\\) for the vector field \\(\\mathbf{F} = \\langle 2x^2 y, \\; 3y^2 z, \\; 4z^2 x \\rangle\\):',
+    ti_ar: 'حساب التباعد عند نقطة معينة',
+    q: 'Compute the divergence \\(\nabla \\cdot \\mathbf{F}\\) at the point \\((1, 2, 3)\\) for the vector field \\(\mathbf{F} = \\langle 2x^2 y, \\; 3y^2 z, \\; 4z^2 x \\rangle\\):',
+    q_ar: 'احسب قيمة التباعد \\(\nabla \\cdot \\mathbf{F}\\) عند النقطة \\((1, 2, 3)\\) للمجال المتجهي \\(\mathbf{F} = \\langle 2x^2 y, \\; 3y^2 z, \\; 4z^2 x \\rangle\\):',
     a: 68,
     tol: 0.001,
     h: 'div F = 4xy + 6yz + 8zx. Evaluate at (1, 2, 3): 4(1)(2) + 6(2)(3) + 8(3)(1) = 8 + 36 + 24.',
-    sol: 'div F = 4xy + 6yz + 8zx. At (1, 2, 3): 8 + 36 + 24 = 68.'
+    h_ar: 'div F = 4xy + 6yz + 8zx. احسب القيمة عند (1, 2, 3): 4(1)(2) + 6(2)(3) + 8(3)(1) = 8 + 36 + 24.',
+    sol: 'div F = 4xy + 6yz + 8zx. At (1, 2, 3): 8 + 36 + 24 = 68.',
+    sol_ar: 'div F = 4xy + 6yz + 8zx. عند (1, 2, 3): 8 + 36 + 24 = 68.'
   },
   {
     t: 'ord',
     ti: 'Order the Steps: Applying Stokes\' Theorem',
+    ti_ar: 'ترتيب الخطوات: تطبيق مبرهنة ستوكس',
     q: 'Order the steps to evaluate a line integral ∮_C F · dr around boundary loop C using Stokes\' Theorem:',
+    q_ar: 'رتّب خطوات حساب التكامل الخطي ∮_C F · dr حول مسار حدودي مغلق C باستخدام مبرهنة ستوكس:',
     items: [
       'Verify that curve C is a closed, oriented boundary curve of surface S',
       'Compute the curl vector field ∇ × F = ⟨R_y - Q_z, P_z - R_x, Q_x - P_y⟩',
@@ -493,12 +791,22 @@ D['mvc-surface-divergence-stokes'] = [
       'Determine the outward unit normal vector n conforming to C via the right-hand rule',
       'Compute the surface integral ∬_S (∇ × F) · dS = ∬_D (∇ × F) · n dA'
     ],
-    sol: 'Stokes\' theorem equates boundary circulation to the surface flux of curl.'
+    items_ar: [
+      'التحقق من أن المنحنى C مغلق وموجّه ويمثل حدوداً لسطح S',
+      'حساب مجال الالتفاف المتجهي ∇ × F = ⟨R_y - Q_z, P_z - R_x, Q_x - P_y⟩',
+      'اختيار سطح موجّه بسيط S يحده المنحنى C (مثل قرص مستوٍ أو سطح مكافئ)',
+      'تحديد متجه الوحدة العمودي الخارجي n المتوافق مع اتجاه C وفق قاعدة اليد اليمنى',
+      'حساب التكامل السطحي ∬_S (∇ × F) · dS = ∬_D (∇ × F) · n dA'
+    ],
+    sol: 'Stokes\' theorem equates boundary circulation to the surface flux of curl.',
+    sol_ar: 'تربط مبرهنة ستوكس الدوران حول الحدود بتدفق الالتفاف عبر السطح المحاط بتلك الحدود.'
   },
   {
     t: 'cat',
     ti: 'Classify Theorems by Integral Relationship Type',
+    ti_ar: 'تصنيف النظريات حسب نوع العلاقة التكاملية',
     categories: ['Boundary Line Integral to Surface/Region Integral', 'Closed Surface Integral to Volume Integral'],
+    categories_ar: ['من تكامل خطي على الحدود إلى تكامل سطحي/منطقة', 'من تكامل سطحي مغلق إلى تكامل حجمي'],
     items: [
       { s: 'Green\'s Theorem: ∮_C F·dr = ∬_D (Q_x - P_y) dA', cat: 0 },
       { s: 'Stokes\' Theorem: ∮_C F·dr = ∬_S (∇ × F) · dS', cat: 0 },
@@ -506,7 +814,15 @@ D['mvc-surface-divergence-stokes'] = [
       { s: 'Gauss\'s Law equating closed surface flux to enclosed charge volume', cat: 1 },
       { s: 'Circulation of curl over an open capped surface', cat: 0 }
     ],
-    sol: 'Green\'s and Stokes\' theorems connect boundary loops (1D) to surfaces (2D); Divergence theorem connects closed boundaries (2D) to volumes (3D).'
+    items_ar: [
+      { s: 'مبرهنة غرين: ∮_C F·dr = ∬_D (Q_x - P_y) dA', cat: 0 },
+      { s: 'مبرهنة ستوكس: ∮_C F·dr = ∬_S (∇ × F) · dS', cat: 0 },
+      { s: 'مبرهنة التباعد: ∬_S F·dS = ∭_E (∇ · F) dV', cat: 1 },
+      { s: 'قانون غاوس الذي يساوي تدفق السطح المغلق بحجم الشحنة المحصورة', cat: 1 },
+      { s: 'دوران الالتفاف عبر سطح مفتوح محدد بحدود', cat: 0 }
+    ],
+    sol: 'Green\'s and Stokes\' theorems connect boundary loops (1D) to surfaces (2D); Divergence theorem connects closed boundaries (2D) to volumes (3D).',
+    sol_ar: 'تربط مبرهنتا غرين وستوكس المسارات الحدودية (1D) بالسطوح (2D)؛ بينما تربط مبرهنة التباعد السطوح المغلقة (2D) بالأحجام (3D).'
   }
 ];
 
