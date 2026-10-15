@@ -57,7 +57,7 @@ function reviewMistakeAt(startIdx){
     var m=stack[idx];
     idx++;
     window._pqMistake=m;
-    launchPracticeQuiz(m);
+    if(typeof window.launchPracticeQuiz==='function') window.launchPracticeQuiz(m);
   };
   var existing=document.getElementById('mq-review-overlay');
   if(existing) existing.remove();
@@ -149,7 +149,7 @@ function reviewMistakes(){
     idx++;
     /* Launch AI practice quiz on this specific mistake */
     window._pqMistake = m;
-    launchPracticeQuiz(m);
+    if(typeof window.launchPracticeQuiz === 'function') window.launchPracticeQuiz(m);
   };
 
   // Create overlay

@@ -100,10 +100,11 @@
     });
   }
 
-  window.applyThemeAndClose=function(id){
+  function applyThemeAndClose(id){
     applyTheme(id);
     document.getElementById('themePicker').classList.remove('open');
-  };
+  }
+  window.applyThemeAndClose=applyThemeAndClose;
 
   // Close on outside click
   document.addEventListener('click',function(e){

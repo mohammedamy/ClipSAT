@@ -10,8 +10,10 @@ document.addEventListener('click',function(e){
   });
   window.navSelectChange = function(sel){
       var v = sel.value;
-      if(v === 'home') showView('home');
-      else showView(v);
+      if(window.showView){
+        if(v === 'home') window.showView('home');
+        else window.showView(v);
+      }
     };
 
 /* Splash screen removed (product decision, 2026-08-20 — also closed out the

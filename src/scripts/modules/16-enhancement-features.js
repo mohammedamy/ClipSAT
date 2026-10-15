@@ -16,8 +16,10 @@ function _renderCountdown(){
     +'<button onclick="openExamDateModal()">Edit</button>'
     +'<button onclick="clearExamDate()" style="opacity:.6">\xd7</button>';
 }
-window.openExamDateModal=function(){var m=document.getElementById('exam-date-modal');var inp=document.getElementById('exam-date-input');if(inp){var ex=localStorage.getItem(EXAM_KEY);if(ex)inp.value=ex;}if(m)m.classList.add('show');};
-window.closeExamDateModal=function(){var m=document.getElementById('exam-date-modal');if(m)m.classList.remove('show');};
+function openExamDateModal(){var m=document.getElementById('exam-date-modal');var inp=document.getElementById('exam-date-input');if(inp){var ex=localStorage.getItem(EXAM_KEY);if(ex)inp.value=ex;}if(m)m.classList.add('show');}
+function closeExamDateModal(){var m=document.getElementById('exam-date-modal');if(m)m.classList.remove('show');}
+window.openExamDateModal=openExamDateModal;
+window.closeExamDateModal=closeExamDateModal;
 window.saveExamDate=function(){var inp=document.getElementById('exam-date-input');if(inp&&inp.value){localStorage.setItem(EXAM_KEY,inp.value);_renderCountdown();}closeExamDateModal();};
 window.clearExamDate=function(){localStorage.removeItem(EXAM_KEY);_renderCountdown();};
 

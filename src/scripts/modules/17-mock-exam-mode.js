@@ -832,7 +832,7 @@
     return { label: 'Accuracy Rating', value: Math.round(p * 100) + '%', badge: 'Completed' };
   }
 
-  window.submitMockExam = function(){
+  function submitMockExam(){
     if(_tmr){ clearInterval(_tmr); _tmr = null; }
     _isSubmitted = true;
 
@@ -1009,7 +1009,8 @@
       window.CSGamify.toggleWhiteboard();
     }
     body.scrollTop = 0;
-  };
+  }
+  window.submitMockExam = submitMockExam;
 
   window.cbtFilterReview = function(filter, btn){
     var body = document.getElementById('mock-exam-body');
