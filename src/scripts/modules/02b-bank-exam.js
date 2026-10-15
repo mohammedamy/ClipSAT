@@ -451,6 +451,7 @@
     var spec=window.examSpecs&&(window.examSpecs[examName]||window.examSpecs[viewId]);
     var bank=window.fullExamBank&&window.fullExamBank[viewId];
     if(!bank){alert('Question bank not found for '+viewId);return;}
+    var _fmtBi=window.CSFormatBilingual||function(s){return s;};
 
     /* ── helpers ── */
     function _maths(s){
@@ -672,6 +673,17 @@
       var h='<div class="full-exam-paper">';
       h+='<div class="fep-header"><div class="fep-top-bar"><span class="fep-logo-tag">ClipSAT</span><span class="fep-badge">Practice Examination</span></div>';
       h+='<h1 class="fep-title">'+esc(examName)+'</h1>';
+      if(viewId === 'qudrat' || viewId === 'tahsili'){
+        var curLang = 'both';
+        try{ curLang = localStorage.getItem('clipsat_exam_lang') || 'both'; }catch(e){}
+        h+='<div class="fep-lang-bar" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:8px 0 12px">'
+          + '<span style="font-size:.82rem;font-weight:600">Language / لغة الطباعة:</span>'
+          + '<div class="cs-lang-toggle-group" role="group" aria-label="Exam Language">'
+          + '<button type="button" class="cs-lt-btn'+(curLang==='ar'?' active':'')+'" data-lang="ar" onclick="window.ClipSATSetExamLang&&window.ClipSATSetExamLang(\'ar\',this)">🇸🇦 عربي فقط</button>'
+          + '<button type="button" class="cs-lt-btn'+(curLang==='en'?' active':'')+'" data-lang="en" onclick="window.ClipSATSetExamLang&&window.ClipSATSetExamLang(\'en\',this)">🇬🇧 English</button>'
+          + '<button type="button" class="cs-lt-btn'+(curLang==='both'?' active':'')+'" data-lang="both" onclick="window.ClipSATSetExamLang&&window.ClipSATSetExamLang(\'both\',this)">🌐 ثنائي</button>'
+          + '</div></div>';
+      }
       h+='<div class="fep-meta-grid"><div class="fep-meta-cell"><span class="fep-mlabel">Student Name</span><span class="fep-mline"></span></div>';
       h+='<div class="fep-meta-cell"><span class="fep-mlabel">Date</span><span class="fep-mval">'+dateStr+'</span></div>';
       h+='<div class="fep-meta-cell"><span class="fep-mlabel">School / Centre</span><span class="fep-mline"></span></div>';
@@ -698,8 +710,8 @@
           h+='<div class="fep-item '+(q.type==='frq'?'fep-frq':'fep-mcq')+'">';
           h+='<div class="fep-item-head"><span class="fep-inum">'+qNum+'</span><span class="fep-domain-tag">'+esc(q.domain)+'</span></div>';
           if(_fHtml)h+='<div class="fep-figure">'+_fHtml+'</div>';
-          h+='<div class="fep-qbody">'+_maths(q.text||q.q||'')+'</div>';
-          if(isMCQ&&q.choices){h+='<div class="fep-choices">';q.choices.forEach(function(ch,ci){var s=_autoMath(ch);h+='<div class="fep-choice"><span class="fep-cletter">'+globalLetters[ci]+'.</span><span class="fep-ctext">'+_maths(s)+'</span></div>';});h+='</div>';}
+          h+='<div class="fep-qbody">'+_fmtBi(_maths(q.text||q.q||''))+'</div>';
+          if(isMCQ&&q.choices){h+='<div class="fep-choices">';q.choices.forEach(function(ch,ci){var s=_autoMath(ch);h+='<div class="fep-choice"><span class="fep-cletter">'+globalLetters[ci]+'.</span><span class="fep-ctext">'+_fmtBi(_maths(s))+'</span></div>';});h+='</div>';}
           if(q.type==='frq'){h+='<div class="fep-work-space"><span class="fep-ws-label">Working:</span>';for(var l=0;l<5;l++)h+='<div class="fep-ws-line"></div>';h+='<div class="fep-ws-ans"><span>Answer:</span><span class="fep-ws-ans-line"></span></div></div>';}
           h+='<div class="fep-sol-block" style="display:none"><strong>Answer'+(isMCQ?' ('+globalLetters[q.answer]+')':'')+': </strong>'+_maths(q.sol||'')+'</div></div>';
           qNum++;
@@ -734,6 +746,17 @@
     h+='<div class="fep-logo-wrap" style="text-align:center;padding:10px 0 4px">'+'<img src="'+(document.getElementById('site-logo-img')||{src:''}).src+'" class="fep-logo-img" alt="ClipSAT Logo"></div>';
     h+='<div class="fep-top-bar"><span class="fep-exam-logo">'+esc(spec.logo||spec.title)+'</span><span class="fep-badge">Practice Examination</span></div>';
     h+='<h1 class="fep-title">'+esc(spec.title)+'</h1>';
+    if(viewId === 'qudrat' || viewId === 'tahsili'){
+      var curLang = 'both';
+      try{ curLang = localStorage.getItem('clipsat_exam_lang') || 'both'; }catch(e){}
+      h+='<div class="fep-lang-bar" style="display:flex;align-items:center;justify-content:center;gap:8px;margin:8px 0 12px">'
+        + '<span style="font-size:.82rem;font-weight:600">Language / لغة الطباعة:</span>'
+        + '<div class="cs-lang-toggle-group" role="group" aria-label="Exam Language">'
+        + '<button type="button" class="cs-lt-btn'+(curLang==='ar'?' active':'')+'" data-lang="ar" onclick="window.ClipSATSetExamLang&&window.ClipSATSetExamLang(\'ar\',this)">🇸🇦 عربي فقط</button>'
+        + '<button type="button" class="cs-lt-btn'+(curLang==='en'?' active':'')+'" data-lang="en" onclick="window.ClipSATSetExamLang&&window.ClipSATSetExamLang(\'en\',this)">🇬🇧 English</button>'
+        + '<button type="button" class="cs-lt-btn'+(curLang==='both'?' active':'')+'" data-lang="both" onclick="window.ClipSATSetExamLang&&window.ClipSATSetExamLang(\'both\',this)">🌐 ثنائي</button>'
+        + '</div></div>';
+    }
     h+='<div class="fep-total-bar">';
     h+='<div class="fep-total-item"><span class="fep-total-val">'+totalQ+'</span><span class="fep-total-lbl">Total Questions</span></div>';
     h+='<div class="fep-total-item"><span class="fep-total-val">'+esc(spec.totalTime)+'</span><span class="fep-total-lbl">Total Time</span></div>';
@@ -832,10 +855,10 @@
           if(isFRQ)h+='<span class="fep-type-tag frq-tag">FRQ</span>';
           h+='</div>';
           if(_fHtml)h+='<div class="fep-figure">'+_fHtml+'</div>';
-          h+='<div class="fep-qbody">'+_maths(q.text||q.q||'')+'</div>';
+          h+='<div class="fep-qbody">'+_fmtBi(_maths(q.text||q.q||''))+'</div>';
           if(isMCQ&&q.choices){
             h+='<div class="fep-choices">';
-            q.choices.forEach(function(ch,ci){var s=_autoMath(ch);h+='<div class="fep-choice"><span class="fep-cletter">'+pL[ci]+'.</span><span class="fep-ctext">'+_maths(s)+'</span></div>';});
+            q.choices.forEach(function(ch,ci){var s=_autoMath(ch);h+='<div class="fep-choice"><span class="fep-cletter">'+pL[ci]+'.</span><span class="fep-ctext">'+_fmtBi(_maths(s))+'</span></div>';});
             h+='</div>';
           }
           if(isFRQ){

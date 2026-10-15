@@ -247,7 +247,17 @@
         var calcBtnHtml = (paper.calc !== false)
           ? '<button type="button" class="hdr-btn" onclick="window.toggleFloatingCalc&&window.toggleFloatingCalc()" style="padding:4px 10px;font-size:.78rem;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:6px;cursor:pointer">🧮 Calculator</button>'
           : '';
-        toolsDiv.innerHTML = calcBtnHtml
+        var langToggleHtml = '';
+        if(trackId === 'qudrat' || trackId === 'tahsili'){
+          var curLang = 'both';
+          try{ curLang = localStorage.getItem('clipsat_exam_lang') || 'both'; }catch(e){}
+          langToggleHtml = '<div class="cs-lang-toggle-group" style="margin-right:4px">'
+            + '<button type="button" class="cs-lt-btn'+(curLang==='ar'?' active':'')+'" data-lang="ar" onclick="window.ClipSATSetExamLang&&window.ClipSATSetExamLang(\'ar\',this)" title="Arabic Only">🇸🇦 عربي</button>'
+            + '<button type="button" class="cs-lt-btn'+(curLang==='en'?' active':'')+'" data-lang="en" onclick="window.ClipSATSetExamLang&&window.ClipSATSetExamLang(\'en\',this)" title="English Only">🇬🇧 English</button>'
+            + '<button type="button" class="cs-lt-btn'+(curLang==='both'?' active':'')+'" data-lang="both" onclick="window.ClipSATSetExamLang&&window.ClipSATSetExamLang(\'both\',this)" title="Bilingual">🌐 ثنائي</button>'
+            + '</div>';
+        }
+        toolsDiv.innerHTML = langToggleHtml + calcBtnHtml
           + '<button type="button" class="hdr-btn" onclick="window.openFormulaModal&&window.openFormulaModal()" style="padding:4px 10px;font-size:.78rem;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:6px;cursor:pointer">📐 Formulas</button>'
           + '<button type="button" class="hdr-btn" id="cbt-scratchpad-btn" onclick="window.toggleWhiteboard&&window.toggleWhiteboard()" style="padding:4px 10px;font-size:.78rem;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:6px;cursor:pointer">✏️ Scratchpad</button>';
       }
@@ -257,6 +267,7 @@
 
       var h = '';
       var letters = (bank.letters && bank.letters.length) ? bank.letters : ['A', 'B', 'C', 'D'];
+      var _fmtBi = window.CSFormatBilingual || function(s){ return s; };
 
       pool.forEach(function(q, i){
         var isComp = _isQuantComp(q);
@@ -279,15 +290,15 @@
             + '<div class="mock-qc-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">'
             + '<div class="mock-qc-box" style="background:var(--paper-2,#f8fafc);border:1.5px solid var(--border,#cbd5e1);border-radius:8px;padding:12px;text-align:center">'
             + '<div style="font-size:.8rem;font-weight:700;color:var(--indigo,#1e3e70);margin-bottom:4px">القيمة الأولى (Column A)</div>'
-            + '<div style="font-size:1rem;font-weight:600">' + (comp.val1 || qText) + '</div>'
+            + '<div style="font-size:1rem;font-weight:600">' + _fmtBi(comp.val1 || qText) + '</div>'
             + '</div>'
             + '<div class="mock-qc-box" style="background:var(--paper-2,#f8fafc);border:1.5px solid var(--border,#cbd5e1);border-radius:8px;padding:12px;text-align:center">'
             + '<div style="font-size:.8rem;font-weight:700;color:var(--amber,#9e6515);margin-bottom:4px">القيمة الثانية (Column B)</div>'
-            + '<div style="font-size:1rem;font-weight:600">' + (comp.val2 || '—') + '</div>'
+            + '<div style="font-size:1rem;font-weight:600">' + _fmtBi(comp.val2 || '—') + '</div>'
             + '</div>'
             + '</div>';
         } else {
-          h += '<div class="mq-text">' + qText + '</div>';
+          h += '<div class="mq-text">' + _fmtBi(qText) + '</div>';
         }
 
         var isSPR = (q.type === 'spr' || q.isSPR);
@@ -304,7 +315,7 @@
             h += '<label class="mock-choice-row" style="display:flex;align-items:flex-start;gap:8px;padding:8px 12px;border:1px solid var(--border,#e2e8f0);border-radius:8px;cursor:pointer;transition:background .15s ease">'
               + '<input type="radio" name="mq' + i + '" value="' + ci + '" style="margin-top:4px">'
               + '<span style="font-weight:700;color:var(--indigo,#1e3e70)">' + letLabel + '.</span>'
-              + '<span style="flex:1">' + chText + '</span>'
+              + '<span style="flex:1">' + _fmtBi(chText) + '</span>'
               + '</label>';
           });
           h += '</div>';

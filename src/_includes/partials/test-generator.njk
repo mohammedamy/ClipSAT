@@ -31,8 +31,17 @@
 {% set compact = testGenerator.variant == 'compact' %}
 {% set ib = testGenerator.variant == 'ib' %}
 <section class="chapter testgen" id="{{ sectionId }}">
-  <div class="chead"><span class="cn">✎</span><h2>{{ testGenerator.heading or 'Test generator' }}</h2></div>
   {% if testGenerator.introText %}<p>{{ bl.text(testGenerator.introText) }}</p>{% endif %}
+  {% if trackId == 'qudrat' or trackId == 'tahsili' %}
+  <div class="cs-exam-lang-ctrl" style="margin:12px 0 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+    <span style="font-size:.85rem;font-weight:600;color:var(--text-2,#475569)">Exam Language / لغة الاختبار:</span>
+    <div class="cs-lang-toggle-group" role="group" aria-label="Exam Language">
+      <button type="button" class="cs-lt-btn" data-lang="ar" onclick="window.ClipSATSetExamLang&&window.ClipSATSetExamLang('ar',this)">🇸🇦 عربي فقط</button>
+      <button type="button" class="cs-lt-btn" data-lang="en" onclick="window.ClipSATSetExamLang&&window.ClipSATSetExamLang('en',this)">🇬🇧 English (GAT/SAAT)</button>
+      <button type="button" class="cs-lt-btn active" data-lang="both" onclick="window.ClipSATSetExamLang&&window.ClipSATSetExamLang('both',this)">🌐 ثنائي اللغة</button>
+    </div>
+  </div>
+  {% endif %}
   {% if ib %}
   <div class="testgen">
     <div class="tg-controls">

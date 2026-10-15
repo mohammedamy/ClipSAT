@@ -80,7 +80,8 @@ var _IX_EN_FALLBACK={'ix.badge.qc':'Quick Check','ix.badge.sr':'Worked Example',
   'ix.sb.allCorrect':'✓ All {n} steps correct!','ix.sb.someCorrect':'{ok}/{total} correct. Hints: ','ix.sb.stepN':'Step {n}: ',
   'ix.badge.num':'Numeric Entry','ix.num.check':'Check Answer','ix.num.showSol':'Show Solution','ix.num.hintPrefix':'Hint: ','ix.num.correct':'✓ Correct!','ix.num.incorrect':'✗ Incorrect. ','ix.num.close':'Almost! Check precision or rounding. ',
   'ix.badge.ord':'Order the Steps','ix.ord.check':'Check Order','ix.ord.allCorrect':'✓ Steps are in the correct sequence!','ix.ord.someCorrect':'{n} of {total} steps in the correct position.','ix.ord.showCorrect':'Show Correct Order','ix.ord.moveUp':'Move Up','ix.ord.moveDown':'Move Down',
-  'ix.badge.cat':'Categorize','ix.cat.check':'Check Categories','ix.cat.allCorrect':'✓ All items correctly categorized!','ix.cat.someCorrect':'{n} of {total} items correctly placed.','ix.cat.showCorrect':'Show Correct Placement'};
+  'ix.badge.cat':'Categorize','ix.cat.check':'Check Categories','ix.cat.allCorrect':'✓ All items correctly categorized!','ix.cat.someCorrect':'{n} of {total} items correctly placed.','ix.cat.showCorrect':'Show Correct Placement',
+  'ix.mp.toggle':'Math Keys','ix.mp.hide':'Hide Keys'};
 function _t(key,vars){
   if(window.i18n)return window.i18n.t(key,vars);
   var s=_IX_EN_FALLBACK[key]||key;
@@ -240,10 +241,104 @@ function _buildTF(cfg,box){
   });
 }
 
+function _attachMathPalette(container, getTargetInp){
+  var pal=document.createElement('div');pal.className='ix-math-palette';
+  var toggleRow=document.createElement('div');toggleRow.className='ix-mp-toggle-row';
+  var toggleBtn=document.createElement('button');toggleBtn.type='button';toggleBtn.className='ix-mp-toggle-btn';
+  toggleBtn.innerHTML='<span class="ix-mp-icon">⌨️</span> <span>'+_t('ix.mp.toggle')+'</span>';
+  toggleBtn.setAttribute('aria-expanded','false');
+  toggleRow.appendChild(toggleBtn);
+  pal.appendChild(toggleRow);
+
+  var grid=document.createElement('div');grid.className='ix-mp-grid';grid.style.display='none';
+
+  var keys=[
+    {l:'x²', ins:'^2', t:'Square (x²)'},
+    {l:'xⁿ', ins:'^', t:'Power (xⁿ)'},
+    {l:'√x', ins:'sqrt()', off:-1, t:'Square root (√)'},
+    {l:'a/b', ins:'()/()', off:-4, t:'Fraction (a/b)'},
+    {l:'( )', ins:'()', off:-1, t:'Parentheses'},
+    {l:'|x|', ins:'||', off:-1, t:'Absolute value'},
+    {l:'π', ins:'π', t:'Pi (π)'},
+    {l:'θ', ins:'θ', t:'Theta (θ)'},
+    {l:'e', ins:'e', t:"Euler's number e"},
+    {l:'x', ins:'x', t:'Variable x'},
+    {l:'≤', ins:'<=', t:'Less than or equal (≤)'},
+    {l:'≥', ins:'>=', t:'Greater than or equal (≥)'},
+    {l:'≠', ins:'!=', t:'Not equal (≠)'},
+    {l:'±', ins:'±', t:'Plus or minus (±)'},
+    {l:'∞', ins:'inf', t:'Infinity (∞)'},
+    {l:'sin', ins:'sin()', off:-1, t:'Sine'},
+    {l:'cos', ins:'cos()', off:-1, t:'Cosine'},
+    {l:'tan', ins:'tan()', off:-1, t:'Tangent'},
+    {l:'ln', ins:'ln()', off:-1, t:'Natural log (ln)'},
+    {l:'log', ins:'log()', off:-1, t:'Log base 10'},
+    {l:'⌫', act:'backspace', t:'Backspace'},
+    {l:'C', act:'clear', t:'Clear field'}
+  ];
+
+  keys.forEach(function(k){
+    var btn=document.createElement('button');btn.type='button';btn.className='ix-mp-key'+(k.act?' ix-mp-act':'');
+    btn.textContent=k.l;btn.title=k.t;btn.setAttribute('aria-label',k.t);
+    btn.addEventListener('mousedown',function(e){
+      e.preventDefault();
+      var target=typeof getTargetInp==='function'?getTargetInp():getTargetInp;
+      if(!target)return;
+      if(k.act==='clear'){
+        target.value='';
+        target.dispatchEvent(new Event('input',{bubbles:true}));
+        target.dispatchEvent(new Event('change',{bubbles:true}));
+        target.focus();
+        return;
+      }
+      if(k.act==='backspace'){
+        var s=target.selectionStart!=null?target.selectionStart:target.value.length;
+        var ePos=target.selectionEnd!=null?target.selectionEnd:target.value.length;
+        if(s===ePos&&s>0){
+          target.value=target.value.substring(0,s-1)+target.value.substring(s);
+          target.setSelectionRange(s-1,s-1);
+        } else if(s!==ePos){
+          target.value=target.value.substring(0,s)+target.value.substring(ePos);
+          target.setSelectionRange(s,s);
+        }
+        target.dispatchEvent(new Event('input',{bubbles:true}));
+        target.dispatchEvent(new Event('change',{bubbles:true}));
+        target.focus();
+        return;
+      }
+      var start=target.selectionStart!=null?target.selectionStart:target.value.length;
+      var end=target.selectionEnd!=null?target.selectionEnd:target.value.length;
+      var val=target.value;
+      target.value=val.substring(0,start)+k.ins+val.substring(end);
+      var newPos=start+k.ins.length+(k.off||0);
+      if(target.setSelectionRange){
+        target.focus();
+        target.setSelectionRange(newPos,newPos);
+      }
+      target.dispatchEvent(new Event('input',{bubbles:true}));
+      target.dispatchEvent(new Event('change',{bubbles:true}));
+    });
+    grid.appendChild(btn);
+  });
+
+  toggleBtn.addEventListener('click',function(){
+    var open=grid.style.display!=='none';
+    grid.style.display=open?'none':'flex';
+    toggleBtn.setAttribute('aria-expanded',open?'false':'true');
+    var labelEl=toggleBtn.querySelector('span:last-child');
+    if(labelEl)labelEl.textContent=open?_t('ix.mp.toggle'):_t('ix.mp.hide');
+  });
+
+  container.appendChild(pal);
+  return pal;
+}
+window.ClipSATMathPalette=_attachMathPalette;
+
 function _buildSB(cfg,box){
   box.innerHTML='<span class="ix-badge sb">'+_t('ix.badge.sb')+'</span>';
   var h=document.createElement('h3');h.innerHTML=_loc(cfg,'ti');box.appendChild(h);
   var inps=[];
+  var activeInp=null;
   var attempts=0;
   var go=document.createElement('button');go.type='button';go.className='ix-sb-go';go.textContent=_t('ix.sb.checkAnswers');
   var revealBtn=document.createElement('button');revealBtn.type='button';revealBtn.className='ix-sb-show-ans';revealBtn.textContent=_t('ix.sb.showAnswers');
@@ -260,6 +355,7 @@ function _buildSB(cfg,box){
     inp.setAttribute('aria-label',plainLabel||('Step '+(i+1)));
     inp.title=_t('ix.sb.hintPrefix')+step.h;
     inp.addEventListener('keydown',function(e){if(e.key==='Enter')go.click();});
+    inp.addEventListener('focus',function(){activeInp=inp;});
 
     var statusIcon=document.createElement('span');statusIcon.className='ix-sb-status';
     statusIcon.setAttribute('aria-hidden','true');
@@ -328,6 +424,8 @@ function _buildSB(cfg,box){
     }
     _mjax(res);
   });
+
+  _attachMathPalette(box,function(){return activeInp||(inps[0]&&inps[0].inp);});
 
   var btnRow=document.createElement('div');btnRow.style.cssText='display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;';
   btnRow.appendChild(go);btnRow.appendChild(revealBtn);
@@ -417,6 +515,7 @@ function _buildNUM(cfg,box){
   var revealBtn=document.createElement('button');revealBtn.type='button';revealBtn.className='ix-sb-show-ans';
   revealBtn.textContent=_t('ix.num.showSol');revealBtn.style.display='none';
   row.appendChild(go);row.appendChild(revealBtn);wrap.appendChild(row);
+  _attachMathPalette(wrap,function(){return inp;});
 
   var res=document.createElement('div');res.className='ix-fb';res.style.display='none';
   res.setAttribute('role','status');res.setAttribute('aria-live','polite');

@@ -254,9 +254,55 @@
     s.addEventListener('input',function(){ k=parseFloat(s.value); document.getElementById('a2ExpKV').textContent=k.toFixed(1); redrawAll(); });
   })();
 
-  /* ===================== TEST GENERATOR =====================
-     genTest and tgReveal live in 05-test-generator-and-ai-settings.js (the question-bank
-     path there, the AI path in 05a); this section keeps the print helper. */
+  /* ===================== EXAM LANGUAGE MODE =====================
+     Supports dual-language exam mode (Arabic-only, English-only, Bilingual)
+     for Qudrat (GAT) and Tahsili (SAAT). */
+  function setExamLang(lang, btn){
+    var valid = ['ar', 'en', 'both'];
+    if(valid.indexOf(lang) === -1) lang = 'both';
+    try{ localStorage.setItem('clipsat_exam_lang', lang); }catch(e){}
+    document.body.classList.remove('cs-lang-ar', 'cs-lang-en', 'cs-lang-both');
+    document.body.classList.add('cs-lang-' + lang);
+
+    document.querySelectorAll('.cs-lt-btn').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+  }
+  window.ClipSATSetExamLang = setExamLang;
+
+  function _formatBilingualText(s){
+    if(!s && s !== 0) return '';
+    var str = String(s).trim();
+    var m = /^(.*?)\s*<br\s*\/?>\s*<em>(.*?)<\/em>$/is.exec(str);
+    if(m){
+      var ar = m[1].trim();
+      var en = m[2].trim();
+      return '<span class="q-lang-wrap">'
+           + '<span class="q-lang-ar" dir="rtl">' + ar + '</span>'
+           + '<span class="q-lang-en" dir="ltr">' + en + '</span>'
+           + '</span>';
+    }
+    return s;
+  }
+  window.CSFormatBilingual = _formatBilingualText;
+
+  (function(){
+    var saved = 'both';
+    try{ saved = localStorage.getItem('clipsat_exam_lang') || 'both'; }catch(e){}
+    document.body.classList.add('cs-lang-' + saved);
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', function(){
+        document.querySelectorAll('.cs-lt-btn').forEach(function(b){
+          b.classList.toggle('active', b.getAttribute('data-lang') === saved);
+        });
+      });
+    } else {
+      document.querySelectorAll('.cs-lt-btn').forEach(function(b){
+        b.classList.toggle('active', b.getAttribute('data-lang') === saved);
+      });
+    }
+  })();
+
   window.tgPrint=function(btn){
     /* Find the section wrapping this button */
     var sec=btn.closest('section.chapter')||btn.closest('section')||btn.closest('.testgen');

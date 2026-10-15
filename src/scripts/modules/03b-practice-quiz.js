@@ -145,15 +145,16 @@ function showPracticeQuiz(ov, questions, origMistake){
       return;
     }
     var qo = questions[current];
-    var pct = Math.round(current/total*100);
-    ov.innerHTML = '<div style="background:var(--panel);border-radius:16px;padding:24px 28px;max-width:580px;width:90%;margin:auto;position:relative">'
+      var _fmtBi = window.CSFormatBilingual || function(s){ return s; };
+      var qRendered = typeof window.CSQuizMath==='function'?window.CSQuizMath(qo.q):escHtml(qo.q);
+      ov.innerHTML = '<div style="background:var(--panel);border-radius:16px;padding:24px 28px;max-width:580px;width:90%;margin:auto;position:relative">'
       + '<button onclick="document.getElementById(\'pq-overlay\').remove()" style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:1.4rem;line-height:1;cursor:pointer;color:var(--muted);padding:2px 6px;border-radius:4px" title="Close">&times;</button>'
       + '<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">'
       + '<span style="font-size:.78rem;color:var(--muted)">Practice Quiz &mdash; Question '+(current+1)+' of '+total+'</span>'
       + '<div style="flex:1;height:4px;background:var(--line);border-radius:4px;overflow:hidden">'
       + '<div style="height:100%;width:'+pct+'%;background:var(--indigo)"></div></div>'
       + '</div>'
-      + '<p style="font-size:.95rem;line-height:1.7;color:var(--ink);margin:0 0 20px" id="pq-qtext">'+(typeof window.CSQuizMath==='function'?window.CSQuizMath(qo.q):escHtml(qo.q))+'</p>'
+      + '<p style="font-size:.95rem;line-height:1.7;color:var(--ink);margin:0 0 20px" id="pq-qtext">'+_fmtBi(qRendered)+'</p>'
       + '<div id="pq-choices">'
       + (qo.choices||[]).map(function(c,i){
           var letter = String.fromCharCode(65+i);
@@ -162,7 +163,7 @@ function showPracticeQuiz(ov, questions, origMistake){
           return '<button onclick="pqPick(\''+letter+'\')" id="pqbtn-'+letter+'" '
             + 'style="display:block;width:100%;text-align:left;padding:10px 14px;margin-bottom:8px;'
             + 'border:1.5px solid var(--line);border-radius:9px;background:var(--paper);'
-            + 'color:var(--ink);cursor:pointer;font-size:.9rem;transition:background .15s">'+m+'</button>';
+            + 'color:var(--ink);cursor:pointer;font-size:.9rem;transition:background .15s">'+_fmtBi(m)+'</button>';
         }).join('')
       + '</div>'
       + '<div id="pq-feedback" style="min-height:24px"></div>'
