@@ -96,8 +96,14 @@
   <div class="tg-divider" style="margin:18px 0;border-top:1px solid var(--line);"></div>
   <p style="font-weight:600;margin-bottom:10px;">Full official exam paper</p>
   <p style="font-size:.9rem;color:var(--muted);margin-bottom:14px;">{{ bl.text(testGenerator.examDescription) }}</p>
-  <div class="tg-controls">
-    <button class="btn amber" onclick="genFullExam(this,'{{ testGenerator.examTitle }}','{{ trackId }}',[{% for s in testGenerator.sections %}'{{ s }}'{% if not loop.last %},{% endif %}{% endfor %}],{{ testGenerator.examMinutesArg }})">{{ bl.text(testGenerator.examButtonLabel) }}</button>
+  <div class="tg-controls" style="display:flex;gap:10px;flex-wrap:wrap">
+    {% if testGenerator.exams %}
+      {% for e in testGenerator.exams %}
+      <button class="btn amber" onclick="genFullExam(this,'{{ e.examTitle }}','{{ trackId }}',[{% for s in testGenerator.sections %}'{{ s }}'{% if not loop.last %},{% endif %}{% endfor %}],{{ testGenerator.examMinutesArg }})">{{ bl.text(e.examButtonLabel) }}</button>
+      {% endfor %}
+    {% else %}
+      <button class="btn amber" onclick="genFullExam(this,'{{ testGenerator.examTitle }}','{{ trackId }}',[{% for s in testGenerator.sections %}'{{ s }}'{% if not loop.last %},{% endif %}{% endfor %}],{{ testGenerator.examMinutesArg }})">{{ bl.text(testGenerator.examButtonLabel) }}</button>
+    {% endif %}
     <button class="btn tg-cbt" type="button" onclick="openMockExam('{{ trackId }}',0)">💻 Launch CBT Simulator ↗</button>
     <button class="btn tg-print" onclick="tgPrint(this)">Print paper ↓</button>
   </div>

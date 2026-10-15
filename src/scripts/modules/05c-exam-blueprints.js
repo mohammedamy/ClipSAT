@@ -302,7 +302,131 @@
         T('Functions',25,'non-linear models, transforming data, sinusoidal functions',['Functions (HL Extensions)']),
         T('Geometry and trigonometry',45,'graph theory, algorithms, 3D vectors, matrices for transformations',['Vectors & 3D Geometry']),
         T('Statistics and probability',40,'hypothesis tests, transition matrices, Markov chains, confidence intervals',['Statistics & Probability (HL)']),
-        T('Calculus & Applications',45,'differential equations, phase portraits, Euler method, kinematic models',['Calculus (HL)'])]}
+        T('Calculus & Applications',45,'differential equations, phase portraits, Euler method, kinematic models',['Calculus (HL)'])]},
+    'Cambridge AS Level — Paper 2 (Pure 2)':{source:'Cambridge International AS Level Mathematics 9709, Paper 2 Pure Mathematics 2.',
+      difficulty:MIX, order:'mixed',
+      ao:{AO1:{weight:50,desc:'Knowledge and understanding'},AO2:{weight:50,desc:'Application and communication'}},
+      topics:[
+        T('Algebra',5,'modulus, polynomial division, factor theorem',['Algebra: Partial Fractions & Division','Functions: Modulus & Inverse']),
+        T('Logarithmic and exponential functions',4,'laws of logs, exponentials, linear law',['Exponentials & Logarithms']),
+        T('Trigonometry',4,'sec, cosec, cot, harmonic form R cos(theta +- alpha)',['Trigonometry','Advanced Trigonometry']),
+        T('Differentiation',4,'differentiation of e^x, ln x, trig functions, product/quotient rules',['Differentiation & Integration']),
+        T('Integration',4,'integration of e^x, 1/x, sin/cos, trapezium rule',['Differentiation & Integration']),
+        T('Numerical solution of equations',3,'locating roots, iterative formula x_{n+1} = F(x_n)',['Numerical Methods'])]},
+
+    'Cambridge A Level — Paper 4 (Mechanics)':{source:'Cambridge International AS & A Level Mathematics 9709, Paper 4 Mechanics.',
+      difficulty:MIX, order:'mixed',
+      ao:{AO1:{weight:50,desc:'Knowledge and understanding'},AO2:{weight:50,desc:'Application and communication'}},
+      topics:[
+        T('Forces and equilibrium',25,'forces, resolution, equilibrium of a particle, friction',['Forces & Equilibrium']),
+        T('Kinematics',25,'straight line motion, constant acceleration, calculus in kinematics',['Kinematics']),
+        T("Newton's laws of motion",25,"Newton's laws, gravity, connected particles",["Newton's Laws of Motion"]),
+        T('Energy, work and power',25,'work done, kinetic/potential energy, conservation of energy, power',['Energy, Work & Power'])]},
+
+    'Edexcel IGCSE (4MA1) — Paper 1H':{source:'Pearson Edexcel International GCSE (9–1) Mathematics A (4MA1) Higher Tier, Paper 1H.',
+      difficulty:MIX, order:'mixed',
+      ao:{AO1:{weight:50,desc:'Mathematical reasoning and technique'},AO2:{weight:50,desc:'Problem solving and application'}},
+      topics:[
+        T('Number',25,'fractions, percentages, standard form, indices, surds, set notation, recurring decimals',['Number']),
+        T('Algebra & Graphs',35,'linear and quadratic equations, inequalities, graphs, sequences, functions, calculus basics',['Algebra & Graphs']),
+        T('Geometry',25,'angles, polygons, circles, trigonometry, 3D mensuration, vectors, transformations',['Geometry']),
+        T('Statistics & Probability',15,'mean, cumulative frequency, histograms, probability trees, Venn diagrams',['Statistics & Probability'])]},
+
+    'Edexcel IGCSE (4MA1) — Paper 2H':{source:'Pearson Edexcel International GCSE (9–1) Mathematics A (4MA1) Higher Tier, Paper 2H.',
+      difficulty:MIX, order:'mixed',
+      ao:{AO1:{weight:50,desc:'Mathematical reasoning and technique'},AO2:{weight:50,desc:'Problem solving and application'}},
+      topics:[
+        T('Number',25,'fractions, percentages, standard form, indices, surds, set notation, recurring decimals',['Number']),
+        T('Algebra & Graphs',35,'linear and quadratic equations, inequalities, graphs, sequences, functions, calculus basics',['Algebra & Graphs']),
+        T('Geometry',25,'angles, polygons, circles, trigonometry, 3D mensuration, vectors, transformations',['Geometry']),
+        T('Statistics & Probability',15,'mean, cumulative frequency, histograms, probability trees, Venn diagrams',['Statistics & Probability'])]},
+
+    'Edexcel IAL — Pure Mathematics 1 (WMA11)':{source:'Pearson Edexcel International Advanced Level Pure Mathematics 1 (WMA11).',
+      difficulty:MIX, order:'mixed',
+      ao:{AO1:{weight:50,desc:'Knowledge and understanding'},AO2:{weight:50,desc:'Application and communication'}},
+      topics:[
+        T('Algebra and functions',35,'indices, surds, quadratics, discriminant, simultaneous equations, inequalities',['Indices, Surds & Quadratics','Simultaneous Equations & Inequalities']),
+        T('Coordinate geometry',25,'straight line equations, parallel and perpendicular lines, length, midpoint',['Coordinate Geometry']),
+        T('Calculus: Differentiation',20,'derivative of x^n, tangents and normals, rates of change',['Differentiation & Integration']),
+        T('Calculus: Integration',20,'indefinite integration of x^n, finding equations of curves',['Differentiation & Integration'])]},
+
+    'Edexcel IAL — Pure Mathematics 2 (WMA12)':{source:'Pearson Edexcel International Advanced Level Pure Mathematics 2 (WMA12).',
+      difficulty:MIX, order:'mixed',
+      ao:{AO1:{weight:50,desc:'Knowledge and understanding'},AO2:{weight:50,desc:'Application and communication'}},
+      topics:[
+        T('Proof & Algebra',20,'factor theorem, remainder theorem, algebraic division',['Algebra: Partial Fractions & Division']),
+        T('Coordinate geometry: Circles',20,'equation of circle, center, radius, tangents to circles',['Coordinate Geometry']),
+        T('Sequences and series',20,'binomial expansion, arithmetic and geometric progressions, sum to infinity',['Series & the Binomial Theorem']),
+        T('Trigonometry',20,'sine/cosine rules, radians, sector area, trig identities, trig equations',['Trigonometry','Circular Measure']),
+        T('Calculus',20,'definite integration, area under a curve, trapezoidal rule, stationary points',['Differentiation & Integration'])]},
+
+    'Edexcel IAL — Pure Mathematics 3 (WMA13)':{source:'Pearson Edexcel International Advanced Level Pure Mathematics 3 (WMA13).',
+      difficulty:MIX, order:'mixed',
+      ao:{AO1:{weight:50,desc:'Knowledge and understanding'},AO2:{weight:50,desc:'Application and communication'}},
+      topics:[
+        T('Algebra and functions',20,'modulus functions, composite and inverse functions, partial fractions',['Algebra: Partial Fractions & Division','Functions: Modulus & Inverse']),
+        T('Trigonometry',25,'sec, cosec, cot, compound angle identities, double angle identities, R cos(x +- alpha)',['Advanced Trigonometry']),
+        T('Exponentials and logarithms',15,'e^x, ln x, graphs, exponential growth and decay models',['Exponentials & Logarithms']),
+        T('Differentiation',25,'chain rule, product rule, quotient rule, exponential and logarithmic derivatives',['Differentiation','Further Calculus']),
+        T('Numerical methods',15,'sign change root finding, fixed-point iteration, convergence',['Numerical Methods'])]},
+
+    'Edexcel IAL — Pure Mathematics 4 (WMA14)':{source:'Pearson Edexcel International Advanced Level Pure Mathematics 4 (WMA14).',
+      difficulty:MIX, order:'mixed',
+      ao:{AO1:{weight:50,desc:'Knowledge and understanding'},AO2:{weight:50,desc:'Application and communication'}},
+      topics:[
+        T('Proof & Binomial',15,'proof by contradiction, binomial series for rational exponents',['Algebra: Partial Fractions & Division']),
+        T('Advanced Integration',35,'integration by parts, substitution, partial fractions, volume of revolution',['Advanced Integration','Integration']),
+        T('Differential equations',20,'first-order separable differential equations, initial value problems',['Differential Equations','Differential Equation']),
+        T('Vectors',30,'vectors in 3D, line equations, scalar product, angle between lines, intersecting and skew lines',['Vectors'])]},
+
+    'Edexcel IAL — Mechanics 1 (WME01)':{source:'Pearson Edexcel International Advanced Level Mechanics 1 (WME01).',
+      difficulty:MIX, order:'mixed',
+      ao:{AO1:{weight:50,desc:'Knowledge and understanding'},AO2:{weight:50,desc:'Application and communication'}},
+      topics:[
+        T('Kinematics',30,'constant acceleration, calculus in kinematics, velocity-time graphs',['Kinematics']),
+        T('Dynamics & Newton\'s Laws',35,'Newton\'s laws of motion, connected particles, gravity, friction',['Newton\'s Laws of Motion']),
+        T('Statics & Equilibrium',20,'equilibrium of concurrent forces, resolution of forces, inclined planes',['Forces & Equilibrium']),
+        T('Energy and Power',15,'work done by a force, kinetic energy, work-energy principle, power',['Energy, Work & Power'])]},
+
+    'Edexcel IAL — Statistics 1 (WST01)':{source:'Pearson Edexcel International Advanced Level Statistics 1 (WST01).',
+      difficulty:MIX, order:'mixed',
+      ao:{AO1:{weight:50,desc:'Knowledge and understanding'},AO2:{weight:50,desc:'Application and communication'}},
+      topics:[
+        T('Representation of data',25,'measures of location and spread, box plots, outliers, histograms, skewness',['Representation of Data']),
+        T('Probability',25,'Venn diagrams, tree diagrams, conditional probability, independent events',['Statistics & Probability']),
+        T('Discrete random variables',25,'probability distributions, expectation E(X), variance Var(X), linear transformations',['Discrete Random Variables']),
+        T('The Normal distribution',25,'standardization Z = (X - mu)/sigma, finding probabilities and parameters',['Normal Distribution'])]},
+
+    'GAT Quantitative (English Medium)':{source:'National Center for Assessment (Qiyas), GAT General Aptitude Test — Quantitative Section (English version).',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Arithmetic',40,'arithmetic operations, fractions, decimals, percentages, ratios, rates, word problems, quantitative comparison',['Arithmetic & Number Sense','Ratios, Proportion & Percentages','Word Problems & Reasoning','Quantitative Comparisons']),
+        T('Geometry',24,'angles, triangles, polygons, circles, perimeter, area, volume, coordinate geometry',['Geometry & Measurement']),
+        T('Algebra',23,'linear and quadratic equations, expressions, inequalities, sequences and patterns',['Algebra Essentials','Sequences & Patterns']),
+        T('Data Analysis & Probability',13,'tables, charts, averages, simple probability, statistical reasoning',['Data Analysis & Probability'])]},
+
+    'SAAT Mathematics (English Medium)':{source:'National Center for Assessment (Qiyas), SAAT Standardized Achievement Admission Test — Mathematics (English version).',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Algebra & Functions',35,'polynomials, rational expressions, exponential and logarithmic functions, sequences, matrices, complex numbers',['Algebra & Pre-Calculus','Sequences, Series & Matrices']),
+        T('Geometry',30,'angles, parallel lines, triangles, quadrilaterals, circles, coordinate geometry, transformations, conics',['Geometry & Coordinate Math']),
+        T('Trigonometry',20,'unit circle, trig identities, laws of sines and cosines, trig equations',['Trigonometry']),
+        T('Calculus & Statistics',15,'limits, derivatives, integrals, permutations, probability, normal distribution',['Limits & Derivatives','Integration & Applications','Statistics & Probability'])]},
+
+    'Mawhiba & Kangaroo Math Arabia (Senior)':{source:'Mawhiba / Association Kangourou sans Frontières (AKSF) Mathematics Competition — Student / Senior Level.',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Part A — 3-Point Questions',33,'fundamental logical reasoning, spatial awareness, arithmetic patterns',['Arithmetic & Number Sense','Algebra Essentials']),
+        T('Part B — 4-Point Questions',34,'intermediate problem solving, combinatorics, plane and solid geometry, functional equations',['Geometry & Measurement','Word Problems & Reasoning']),
+        T('Part C — 5-Point Questions',33,'advanced mathematical olympiad challenges, number theory, extremal combinatorics, invariants',['Sequences & Patterns','Advanced Topics'])]},
+
+    'AMC 10/12 Mathematics Competition':{source:'Mathematical Association of America (MAA), American Mathematics Competitions 10/12.',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Algebra & Polynomials',30,'complex numbers, Vieta\'s formulas, inequalities, sequences and series, functional equations',['Algebra & Pre-Calculus','Algebra Essentials']),
+        T('Geometry & Trigonometry',30,'Euclidean geometry, cyclic quadrilaterals, power of a point, trigonometry, coordinate geometry',['Geometry & Coordinate Math','Trigonometry']),
+        T('Number Theory',20,'divisibility, prime factorization, modular arithmetic, Diophantine equations',['Arithmetic & Number Sense']),
+        T('Combinatorics & Probability',20,'counting principles, pigeonhole principle, binomial coefficients, probability, expected value',['Statistics & Probability'])]}
   };
   /* Every other exam (precalc, …) has no
      published topic weighting: provisional even split over its bank domains. */
@@ -318,7 +442,16 @@
       topics:names.map(function(n){ return T(n,1,n,[n]); })};
   }
   window.ClipSATBlueprints={
-    get:function(viewId){ return B[viewId]||provisional(viewId); },
+    get:function(viewId){
+      var aliases={
+        'ibslaa':'IB Math SL (AA)',
+        'ibslai':'IB Math SL (AI)',
+        'ibhlaa':'IB Math HL (AA)',
+        'ibhlai':'IB Math HL (AI)'
+      };
+      var target=aliases[viewId]||viewId;
+      return B[target]||provisional(target);
+    },
     _data:B
   };
 })();

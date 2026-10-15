@@ -56,10 +56,11 @@ function callAISolver(system, user){
   );
 }
 /* The exam's blueprint (05c), or a single-topic stand-in for pages without one. */
-function examBlueprint(viewId){
-  var bp=window.ClipSATBlueprints&&window.ClipSATBlueprints.get(viewId);
+function examBlueprint(viewId, examName){
+  var key=examName||viewId;
+  var bp=window.ClipSATBlueprints&&window.ClipSATBlueprints.get(key);
   if(bp&&bp.topics&&bp.topics.length) return bp;
-  var syl=examSyllabus(viewId);
+  var syl=examSyllabus(key);
   return {source:'No blueprint for this page; questions follow the course syllabus.',provisional:true,
     difficulty:{easy:30,medium:40,hard:30},order:'mixed',topics:[{name:syl,weight:1,desc:syl,bank:[]}]};
 }
@@ -72,7 +73,7 @@ function assemblerProgress(out,label){
 /* Answer letters for an exam's MCQs: the paper spec's own letters, else the
    letters the generator is told to use (so a 4-option exam never shows "E"). */
 function examLetters(viewId){
-  var sp=window.examSpecs&&window.examSpecs[viewId];
+  var sp=window.examSpecs&&(window.examSpecs[viewId]);
   if(sp&&sp.letters) return sp.letters;
   var m=/must use letters \(([A-Z ]+)\)/.exec(examSystemPrompt(viewId));
   return m?m[1].split(' '):['A','B','C','D'];
@@ -89,7 +90,11 @@ function examSyllabus(examId){
 function examSystemPrompt(examId){
   var specs={
     ibsl:{name:'IB Mathematics: Analysis and Approaches SL',letters:'A B C D',desc:'IB Mathematics: Analysis and Approaches SL (guide for first assessment 2021): number and algebra, functions, geometry and trigonometry, statistics and probability, calculus. Papers 1 (no technology) and 2 (GDC) are written papers of short-response (Section A) and extended-response (Section B) questions with marks shown; there is NO multiple choice.'},
+    'IB Math SL (AA)':{name:'IB Mathematics: Analysis and Approaches SL',letters:'A B C D',desc:'IB Mathematics: Analysis and Approaches SL: analytic proof, trigonometry, calculus, functions. Paper 1 (no calculator) and Paper 2 (GDC required). Structured questions with marks shown.'},
+    'IB Math SL (AI)':{name:'IB Mathematics: Applications and Interpretation SL',letters:'A B C D',desc:'IB Mathematics: Applications and Interpretation SL: mathematical and statistical modeling, Voronoi diagrams, chi-square tests, bivariate data, exponential regression, financial mathematics. Calculator/GDC permitted throughout.'},
     ibhl:{name:'IB Mathematics: Analysis and Approaches HL',letters:'A B C D',desc:'IB Mathematics: Analysis and Approaches HL (guide for first assessment 2021): all SL topics plus proof by induction and contradiction, complex numbers, counting, partial fractions, 3D vectors, lines and planes, Bayes, continuous random variables, further calculus, differential equations and Maclaurin series. Papers 1 and 2 are written short- and extended-response questions; Paper 3 is two extended problem-solving questions; there is NO multiple choice.'},
+    'IB Math HL (AA)':{name:'IB Mathematics: Analysis and Approaches HL',letters:'A B C D',desc:'IB Mathematics: Analysis and Approaches HL: rigorous proofs, vector planes in 3D, complex numbers, Maclaurin series, coupled differential equations. Written papers with marks shown.'},
+    'IB Math HL (AI)':{name:'IB Mathematics: Applications and Interpretation HL',letters:'A B C D',desc:'IB Mathematics: Applications and Interpretation HL: graph theory and algorithms, matrices for transformations, Markov chains, Poisson and continuous distributions, nonlinear differential models.'},
     precalc:{name:'Pre-Calculus',letters:'A B C D',desc:'High school pre-calculus: trigonometry, unit circle, conic sections, vectors, polar coordinates, exponential/logarithmic functions, rational functions, sequences and series.'},
     appc:{name:'AP Precalculus',letters:'A B C D',desc:'College Board AP Precalculus: polynomial/rational functions, rates of change, exponential/logarithmic functions, sinusoidal functions, polar functions, parametric equations, vectors, matrices.'},
     apstats:{name:'AP Statistics',letters:'A B C D',desc:'College Board AP Statistics, revised five-unit course (May 2027 exam): exploring one-variable data and collecting data, probability, random variables and distributions, inference for proportions, inference for means, regression analysis. Four answer choices per MCQ. NOT assessed: transformations to achieve linearity, combining random variables, the geometric distribution, chi-square goodness of fit, inference for regression slopes.'},
@@ -110,7 +115,26 @@ function examSystemPrompt(examId){
     act2l2:{name:'ACT International Subject Test — Mathematics 2',letters:'A B C D',desc:'ACT International Subject Test Mathematics 2: about half Algebra II and half precalculus at the advanced level — complex numbers, matrices and vectors, sequences and series, advanced functions and equations, trigonometry and polar coordinates, limits. 50 multiple-choice questions in 60 minutes, calculator allowed.'},
     est2l2:{name:'EST II Mathematics Level 2',letters:'A B C D',desc:'EST II Mathematics Level 2 subject test (Academic Assessment Ltd.): numbers and operations (complex numbers, matrices and determinants, vectors, sequences and series), algebra and functions (polynomial, rational, exponential, logarithmic, trigonometric, parametric and piecewise functions, introductory calculus, differential equations), coordinate geometry, plane and solid shapes, trigonometry, data analysis, statistics and probability. 50 multiple-choice questions in 60 minutes, calculator allowed, formula sheet provided.'},
     aslevel:{name:'Cambridge AS Level Mathematics 9709 Paper 1',letters:'A B C D',desc:'Cambridge International AS Level 9709 (2026–2027 syllabus) Paper 1 Pure Mathematics 1: quadratics, functions, coordinate geometry, circular measure, trigonometry, series, differentiation, integration. Structured questions with marks shown; no vectors, mechanics or statistics on this paper.'},
+    'Cambridge AS Level — Paper 1 (Pure 1)':{name:'Cambridge AS Level 9709 Paper 1 (Pure 1)',letters:'A B C D',desc:'Cambridge International AS Level 9709 Paper 1 Pure Mathematics 1: quadratics, functions, coordinate geometry, circular measure, trigonometry, series, differentiation, integration. Structured questions with marks shown.'},
+    'Cambridge AS Level — Paper 2 (Pure 2)':{name:'Cambridge AS Level 9709 Paper 2 (Pure 2)',letters:'A B C D',desc:'Cambridge International AS Level 9709 Paper 2 Pure Mathematics 2: algebra, logarithmic and exponential functions, trigonometry, differentiation, integration, numerical solutions.'},
+    'Cambridge AS Level — Paper 4 (Mechanics)':{name:'Cambridge AS Level 9709 Paper 4 (Mechanics)',letters:'A B C D',desc:'Cambridge International AS Level 9709 Paper 4 Mechanics: forces and equilibrium, straight-line kinematics, Newton\'s laws of motion, energy, work and power. Take g = 9.8 m/s².'},
+    'Cambridge AS Level — Paper 5 (Statistics 1)':{name:'Cambridge AS Level 9709 Paper 5 (Probability & Statistics 1)',letters:'A B C D',desc:'Cambridge International AS Level 9709 Paper 5: representation of data, permutations and combinations, probability, discrete random variables, the normal distribution.'},
     a2level:{name:'Cambridge A Level Mathematics 9709 P3',letters:'A B C D',desc:'Cambridge International A Level 9709 (2026–2027 syllabus) Paper 3 Pure Mathematics 3: algebra (modulus, polynomials, partial fractions, binomial for rational n), logarithmic and exponential functions, trigonometry, differentiation, integration, numerical solution of equations, vectors, differential equations, complex numbers. Structured questions with marks shown; no mechanics or statistics on this paper.'},
+    'Cambridge A Level — Paper 3 (Pure 3)':{name:'Cambridge A Level 9709 Paper 3 (Pure 3)',letters:'A B C D',desc:'Cambridge International A Level 9709 Paper 3 Pure Mathematics 3: modulus, polynomials, partial fractions, exponentials and logarithms, advanced trigonometry, parametric/implicit differentiation, advanced integration, vectors in 3D, differential equations, complex numbers.'},
+    'Cambridge A Level — Paper 4 (Mechanics)':{name:'Cambridge A Level 9709 Paper 4 (Mechanics)',letters:'A B C D',desc:'Cambridge International A Level 9709 Paper 4 Mechanics: forces and equilibrium, kinematics, Newton\'s laws of motion, energy, work and power. Take g = 9.8 m/s².'},
+    'Cambridge A Level — Paper 6 (Statistics 2)':{name:'Cambridge A Level 9709 Paper 6 (Probability & Statistics 2)',letters:'A B C D',desc:'Cambridge International A Level 9709 Paper 6: Poisson distribution, continuous random variables, sampling and estimation, hypothesis testing.'},
+    'Edexcel IGCSE (4MA1) — Paper 1H':{name:'Pearson Edexcel International GCSE (4MA1) Higher Tier Paper 1H',letters:'A B C D',desc:'Pearson Edexcel IGCSE 4MA1 Higher Tier: numbers, algebra, geometry, trigonometry, statistics, probability. Structured multi-part questions.'},
+    'Edexcel IGCSE (4MA1) — Paper 2H':{name:'Pearson Edexcel International GCSE (4MA1) Higher Tier Paper 2H',letters:'A B C D',desc:'Pearson Edexcel IGCSE 4MA1 Higher Tier Paper 2H: numbers, algebra, coordinate geometry, mensuration, calculus basics, probability. Structured multi-part questions.'},
+    'Edexcel IAL — Pure Mathematics 1 (WMA11)':{name:'Pearson Edexcel International A Level Pure 1 (WMA11)',letters:'A B C D',desc:'Edexcel IAL WMA11: algebra, quadratics, simultaneous equations, coordinate geometry, differentiation, integration.'},
+    'Edexcel IAL — Pure Mathematics 2 (WMA12)':{name:'Pearson Edexcel International A Level Pure 2 (WMA12)',letters:'A B C D',desc:'Edexcel IAL WMA12: proof, circles, binomial expansion, arithmetic/geometric series, trigonometry, radians, integration.'},
+    'Edexcel IAL — Pure Mathematics 3 (WMA13)':{name:'Pearson Edexcel International A Level Pure 3 (WMA13)',letters:'A B C D',desc:'Edexcel IAL WMA13: modulus functions, partial fractions, composite/inverse functions, exponentials and logarithms, differentiation, numerical methods.'},
+    'Edexcel IAL — Pure Mathematics 4 (WMA14)':{name:'Pearson Edexcel International A Level Pure 4 (WMA14)',letters:'A B C D',desc:'Edexcel IAL WMA14: proof by contradiction, binomial with rational powers, integration by parts and substitution, differential equations, 3D vectors.'},
+    'Edexcel IAL — Mechanics 1 (WME01)':{name:'Pearson Edexcel International A Level Mechanics 1 (WME01)',letters:'A B C D',desc:'Edexcel IAL WME01: kinematics, statics and equilibrium, Newton\'s laws, momentum, work and energy. g = 9.8 m/s².'},
+    'Edexcel IAL — Statistics 1 (WST01)':{name:'Pearson Edexcel International A Level Statistics 1 (WST01)',letters:'A B C D',desc:'Edexcel IAL WST01: data representation, probability, discrete random variables, normal distribution, correlation and regression.'},
+    'GAT Quantitative (English Medium)':{name:'GAT Quantitative (English Medium)',letters:'A B C D',desc:'Saudi GAT Quantitative section in pure English: arithmetic, geometry, algebra, data analysis. Quantitative comparison questions (A>B, B>A, Equal, Undetermined). No calculator.'},
+    'SAAT Mathematics (English Medium)':{name:'SAAT Mathematics (English Medium)',letters:'A B C D',desc:'Saudi SAAT Mathematics section in pure English: secondary school algebra, geometry, trigonometry, calculus, and statistics. 4-choice MCQ. No calculator.'},
+    'Mawhiba & Kangaroo Math Arabia (Senior)':{name:'Mawhiba & Kangaroo Math Arabia Competition',letters:'A B C D',desc:'Kangaroo Math / Mawhiba competition: clever logic puzzles, spatial geometry, number theory, algebraic patterns. 3-point, 4-point, and 5-point tiers.'},
+    'AMC 10/12 Mathematics Competition':{name:'AMC 10/12 Mathematics Competition',letters:'A B C D',desc:'American Mathematics Competitions 10/12: challenging problem solving in algebra, geometry, number theory, and combinatorics. 5 options (A, B, C, D, E).'},
     linalg:{name:'Linear Algebra',letters:'A B C D',desc:'University Linear Algebra: systems of linear equations, matrices, determinants, vector spaces, subspaces, eigenvalues and eigenvectors, orthogonality, diagonalization.'},
     mvc:{name:'Multivariable Calculus',letters:'A B C D',desc:'University Multivariable Calculus: 3D coordinate systems, vectors and dot/cross product, vector functions and space curves, partial derivatives, directional derivatives, gradient vector, multiple integrals, vector calculus (Green, Stokes, Divergence).'}
   };
@@ -864,10 +888,11 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
      the AI only fills slots, and each question is reviewed against its slot (05d). */
   var _bp=null, _assembly=null, _verifyRes=null;
   window._ensureAIExam().then(function(){
-  _bp=examBlueprint(viewId);
+  _bp=examBlueprint(viewId,examName);
   var _slots=window.ClipSATAssembler.plan(_bp,sections,'all');
-  return window.ClipSATAssembler.fill({viewId:viewId,blueprint:_bp,slots:_slots,system:examSystemPrompt(viewId),syllabus:examSyllabus(viewId),
-    options:examLetters(viewId).length,generate:callAI,review:callAISolver,progress:assemblerProgress(out,'Building the '+esc(examName)+' paper ('+_slots.length+' questions)')
+  var _promptKey=examName||viewId;
+  return window.ClipSATAssembler.fill({viewId:viewId,blueprint:_bp,slots:_slots,system:examSystemPrompt(_promptKey),syllabus:examSyllabus(_promptKey),
+    options:examLetters(_promptKey).length,generate:callAI,review:callAISolver,progress:assemblerProgress(out,'Building the '+esc(examName)+' paper ('+_slots.length+' questions)')
   });
   }).then(function(res){
     _assembly=res; _verifyRes={total:res.slots.length};

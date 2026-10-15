@@ -442,15 +442,240 @@
          domains:['Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)','AI HL — Additional Topics'],
          parts:[{label:'',q:2,time:'60 min',calc:true,type:'frq',note:'Answer both questions.'}]}
       ]
-    }
+    },
+
+    'Cambridge AS Level — Paper 2 (Pure 2)':{
+      title:'Cambridge AS Level 9709 — Paper 2 Pure Mathematics 2',totalTime:'1 hr 15 min',
+      bankId:'aslevel',
+      logo:'Cambridge International AS & A Level',org:'Cambridge Assessment International Education',
+      instructions:['Answer ALL questions.','Show all necessary working clearly.',
+        'Electronic calculators should be used where appropriate.',
+        'Give non-exact answers correct to 3 significant figures, or 1 decimal place for angles in degrees, unless stated otherwise.',
+        'A list of formulae and statistical tables (MF19) is provided. Graphical calculators are not permitted.'],
+      sections:[
+        {title:'Paper 2 — Pure Mathematics 2 (9709/2)',time:'1 hr 15 min',
+         note:'50 marks. 6–8 structured questions. Electronic calculator required.',
+         domains:['Indices, Surds & Quadratics','Algebra: Partial Fractions & Division','Exponentials & Logarithms','Trigonometry','Differentiation & Integration','Numerical Methods'],
+         parts:[{label:'',q:7,time:'75 min',calc:true,type:'frq',note:'Show all working. Partial marks are awarded.'}]}]},
+
+    'Cambridge A Level — Paper 4 (Mechanics)':{
+      title:'Cambridge A Level 9709 — Paper 4 Mechanics',totalTime:'1 hr 15 min',
+      bankId:'aslevel',
+      logo:'Cambridge International AS & A Level',org:'Cambridge Assessment International Education',
+      instructions:['Answer ALL questions.','Show all necessary working clearly.',
+        'Electronic calculators should be used where appropriate. Graphical calculators are not permitted.',
+        'Take acceleration of free fall g = 9.8 m/s².',
+        'Give non-exact answers correct to 3 significant figures unless stated otherwise.'],
+      sections:[
+        {title:'Paper 4 — Mechanics (9709/4)',time:'1 hr 15 min',
+         note:'50 marks. 6–8 structured questions. Electronic calculator required.',
+         domains:['Forces & Equilibrium',"Newton's Laws of Motion",'Energy, Work & Power','Kinematics'],
+         parts:[{label:'',q:8,time:'75 min',calc:true,type:'frq',note:'Show all working.'}]}]},
+
+    'Edexcel IGCSE (4MA1) — Paper 1H':{
+      title:'Pearson Edexcel International GCSE Mathematics A (4MA1) — Paper 1H',totalTime:'2 hr',
+      bankId:'igcse',
+      logo:'Edexcel IGCSE',org:'Pearson Edexcel International Examinations',
+      instructions:['Answer ALL questions.','Write your answers in the spaces provided.',
+        'You must write down all stages in your working.',
+        'Calculators may be used.',
+        'Diagrams are NOT accurately drawn, unless otherwise indicated.'],
+      sections:[
+        {title:'Paper 1H — Higher Tier (4MA1/1H)',time:'2 hr',
+         note:'100 marks. Calculator permitted. Show all stages in your working.',
+         domains:['Number','Algebra & Graphs','Geometry','Statistics & Probability'],
+         parts:[{label:'',q:20,time:'120 min',calc:true,type:'frq',note:'Show all necessary working.'}]}]},
+
+    'Edexcel IGCSE (4MA1) — Paper 2H':{
+      title:'Pearson Edexcel International GCSE Mathematics A (4MA1) — Paper 2H',totalTime:'2 hr',
+      bankId:'igcse',
+      logo:'Edexcel IGCSE',org:'Pearson Edexcel International Examinations',
+      instructions:['Answer ALL questions.','Write your answers in the spaces provided.',
+        'You must write down all stages in your working.',
+        'Calculators may be used.',
+        'Diagrams are NOT accurately drawn, unless otherwise indicated.'],
+      sections:[
+        {title:'Paper 2H — Higher Tier (4MA1/2H)',time:'2 hr',
+         note:'100 marks. Calculator permitted. Show all stages in your working.',
+         domains:['Number','Algebra & Graphs','Geometry','Statistics & Probability'],
+         parts:[{label:'',q:20,time:'120 min',calc:true,type:'frq',note:'Show all necessary working.'}]}]},
+
+    'Edexcel IAL — Pure Mathematics 1 (WMA11)':{
+      title:'Pearson Edexcel International A Level — Pure Mathematics 1 (WMA11)',totalTime:'1 hr 30 min',
+      bankId:'aslevel',
+      logo:'Edexcel IAL',org:'Pearson Edexcel International Advanced Level',
+      instructions:['Answer ALL questions.','Show all necessary working clearly.',
+        'Electronic calculators may be used.',
+        'Give non-exact answers to 3 significant figures unless stated otherwise.'],
+      sections:[
+        {title:'Unit P1 — Pure Mathematics 1 (WMA11/01)',time:'1 hr 30 min',
+         note:'75 marks. Answer all questions. Electronic calculator required.',
+         domains:['Indices, Surds & Quadratics','Coordinate Geometry','Differentiation & Integration','Simultaneous Equations & Inequalities','Graphs & Transformations'],
+         parts:[{label:'',q:10,time:'90 min',calc:true,type:'frq',note:'Show all working.'}]}]},
+
+    'Edexcel IAL — Pure Mathematics 2 (WMA12)':{
+      title:'Pearson Edexcel International A Level — Pure Mathematics 2 (WMA12)',totalTime:'1 hr 30 min',
+      bankId:'aslevel',
+      logo:'Edexcel IAL',org:'Pearson Edexcel International Advanced Level',
+      instructions:['Answer ALL questions.','Show all necessary working clearly.',
+        'Electronic calculators may be used.',
+        'Give non-exact answers to 3 significant figures unless stated otherwise.'],
+      sections:[
+        {title:'Unit P2 — Pure Mathematics 2 (WMA12/01)',time:'1 hr 30 min',
+         note:'75 marks. Answer all questions. Electronic calculator required.',
+         domains:['Series & the Binomial Theorem','Circular Measure','Trigonometry','Differentiation & Integration','Coordinate Geometry'],
+         parts:[{label:'',q:10,time:'90 min',calc:true,type:'frq',note:'Show all working.'}]}]},
+
+    'Edexcel IAL — Pure Mathematics 3 (WMA13)':{
+      title:'Pearson Edexcel International A Level — Pure Mathematics 3 (WMA13)',totalTime:'1 hr 30 min',
+      bankId:'a2level',
+      logo:'Edexcel IAL',org:'Pearson Edexcel International Advanced Level',
+      instructions:['Answer ALL questions.','Show all necessary working clearly.',
+        'Electronic calculators may be used.',
+        'Give non-exact answers to 3 significant figures unless stated otherwise.'],
+      sections:[
+        {title:'Unit P3 — Pure Mathematics 3 (WMA13/01)',time:'1 hr 30 min',
+         note:'75 marks. Answer all questions. Electronic calculator required.',
+         domains:['Algebra: Partial Fractions & Division','Exponentials & Logarithms','Advanced Trigonometry','Differentiation','Integration','Numerical Methods','Functions: Modulus & Inverse'],
+         parts:[{label:'',q:10,time:'90 min',calc:true,type:'frq',note:'Show all working.'}]}]},
+
+    'Edexcel IAL — Pure Mathematics 4 (WMA14)':{
+      title:'Pearson Edexcel International A Level — Pure Mathematics 4 (WMA14)',totalTime:'1 hr 30 min',
+      bankId:'a2level',
+      logo:'Edexcel IAL',org:'Pearson Edexcel International Advanced Level',
+      instructions:['Answer ALL questions.','Show all necessary working clearly.',
+        'Electronic calculators may be used.',
+        'Give non-exact answers to 3 significant figures unless stated otherwise.'],
+      sections:[
+        {title:'Unit P4 — Pure Mathematics 4 (WMA14/01)',time:'1 hr 30 min',
+         note:'75 marks. Answer all questions. Electronic calculator required.',
+         domains:['Further Calculus','Vectors','Differential Equations','Advanced Integration','Complex Numbers'],
+         parts:[{label:'',q:9,time:'90 min',calc:true,type:'frq',note:'Show all working.'}]}]},
+
+    'Edexcel IAL — Mechanics 1 (WME01)':{
+      title:'Pearson Edexcel International A Level — Mechanics 1 (WME01)',totalTime:'1 hr 30 min',
+      bankId:'aslevel',
+      logo:'Edexcel IAL',org:'Pearson Edexcel International Advanced Level',
+      instructions:['Answer ALL questions.','Take g = 9.8 m/s² unless otherwise specified.',
+        'Show all necessary working clearly.',
+        'Electronic calculators may be used.'],
+      sections:[
+        {title:'Unit M1 — Mechanics 1 (WME01/01)',time:'1 hr 30 min',
+         note:'75 marks. Answer all questions. Electronic calculator required.',
+         domains:['Forces & Equilibrium',"Newton's Laws of Motion",'Kinematics','Energy, Work & Power'],
+         parts:[{label:'',q:8,time:'90 min',calc:true,type:'frq',note:'Show all working.'}]}]},
+
+    'Edexcel IAL — Statistics 1 (WST01)':{
+      title:'Pearson Edexcel International A Level — Statistics 1 (WST01)',totalTime:'1 hr 30 min',
+      bankId:'aslevel',
+      logo:'Edexcel IAL',org:'Pearson Edexcel International Advanced Level',
+      instructions:['Answer ALL questions.','Statistical formula sheet and tables are provided.',
+        'Show all necessary working clearly.',
+        'Electronic calculators may be used.'],
+      sections:[
+        {title:'Unit S1 — Statistics 1 (WST01/01)',time:'1 hr 30 min',
+         note:'75 marks. Answer all questions. Electronic calculator required.',
+         domains:['Representation of Data','Permutations & Combinations','Discrete Random Variables','Normal Distribution','Statistics & Probability'],
+         parts:[{label:'',q:7,time:'90 min',calc:true,type:'frq',note:'Show all working.'}]}]},
+
+    'GAT Quantitative (English Medium)':{
+      title:'GAT General Aptitude Test — Quantitative Section (English)',totalTime:'52 min',
+      bankId:'qudrat',
+      defaultLang:'en',
+      logo:'GAT English',org:'National Center for Assessment (Qiyas) · Saudi Arabia',
+      instructions:['52 questions — 52 minutes (one minute per question).',
+        'Choose the best answer for each question from the four options (A, B, C, D).',
+        'Calculators are strictly PROHIBITED.',
+        'Quantitative Comparison: (A) Column A is greater, (B) Column B is greater, (C) Values are equal, (D) Not enough information.',
+        'Work quickly and do not spend too much time on any single problem.'],
+      sections:[
+        {title:'Quantitative Reasoning (English Medium)',time:'52 min',
+         note:'52 questions · Arithmetic, Geometry, Algebra, Data Interpretation · No calculator',
+         domains:['Arithmetic & Number Sense','Ratios, Proportion & Percentages','Word Problems & Reasoning','Quantitative Comparisons','Geometry & Measurement','Algebra Essentials','Sequences & Patterns','Data Analysis & Probability'],
+         parts:[{label:'',q:52,time:'52 min',calc:false,type:'mcq',note:'No calculator allowed.'}]}]},
+
+    'SAAT Mathematics (English Medium)':{
+      title:'SAAT Achievement Test — Mathematics (English)',totalTime:'50 min',
+      bankId:'tahsili',
+      defaultLang:'en',
+      logo:'SAAT English',org:'National Center for Assessment (Qiyas) · Saudi Arabia',
+      instructions:['50 questions — 50 minutes.',
+        'Covers secondary mathematics: Algebra, Geometry, Trigonometry, Calculus, and Probability.',
+        'Choose the best answer for each question from choices A, B, C, D.',
+        'Calculators are strictly PROHIBITED.',
+        'No penalty for guessing.'],
+      sections:[
+        {title:'Mathematics Section (English Medium)',time:'50 min',
+         note:'50 questions · Saudi Secondary School Mathematics Curriculum · No calculator',
+         domains:['Algebra & Pre-Calculus','Sequences, Series & Matrices','Geometry & Coordinate Math','Trigonometry','Limits & Derivatives','Integration & Applications','Statistics & Probability'],
+         parts:[{label:'',q:50,time:'50 min',calc:false,type:'mcq',note:'No calculator allowed.'}]}]},
+
+    'Mawhiba & Kangaroo Math Arabia (Senior)':{
+      title:'Mawhiba & Kangaroo Math Arabia — Senior Level',totalTime:'75 min',
+      bankId:'sat',
+      logo:'Kangaroo Arabia',org:'Mawhiba Foundation & AKSF International',
+      instructions:['30 questions — 75 minutes.',
+        'Calculators are NOT permitted.',
+        'Questions 1–10: 3 points each. Questions 11–20: 4 points each. Questions 21–30: 5 points each.',
+        'Total score: 120 points. Unanswered questions: 0 points. Incorrect questions deduct 1/4 of their point value.'],
+      sections:[
+        {title:'Section 1: 3-Point Questions (Foundations)',time:'20 min',
+         note:'10 questions · 3 points each',
+         parts:[{label:'Problems 1–10',q:10,time:'20 min',calc:false,type:'mcq'}]},
+        {title:'Section 2: 4-Point Questions (Intermediate Logic)',time:'25 min',
+         note:'10 questions · 4 points each',
+         parts:[{label:'Problems 11–20',q:10,time:'25 min',calc:false,type:'mcq'}]},
+        {title:'Section 3: 5-Point Questions (Olympiad Challenge)',time:'30 min',
+         note:'10 questions · 5 points each',
+         parts:[{label:'Problems 21–30',q:10,time:'30 min',calc:false,type:'mcq'}]}
+      ]},
+
+    'AMC 10/12 Mathematics Competition':{
+      title:'AMC 10/12 Mathematics Competition',totalTime:'75 min',
+      bankId:'precalc',
+      logo:'MAA AMC',org:'Mathematical Association of America (MAA)',
+      instructions:['25 multiple-choice questions — 75 minutes.',
+        'Calculators are NOT permitted.',
+        'Scoring: 6 points for each correct answer, 1.5 points for each blank, 0 points for incorrect answers.',
+        'Total score: 150 points. A score of 100+ usually qualifies for the American Invitational Mathematics Examination (AIME).'],
+      sections:[
+        {title:'Part A: Questions 1–10 (Foundational)',time:'25 min',
+         note:'10 questions · 6 points each',
+         parts:[{label:'Problems 1–10',q:10,time:'25 min',calc:false,type:'mcq'}]},
+        {title:'Part B: Questions 11–20 (Intermediate)',time:'30 min',
+         note:'10 questions · 6 points each',
+         parts:[{label:'Problems 11–20',q:10,time:'30 min',calc:false,type:'mcq'}]},
+        {title:'Part C: Questions 21–25 (Advanced)',time:'20 min',
+         note:'5 questions · 6 points each',
+         parts:[{label:'Problems 21–25',q:5,time:'20 min',calc:false,type:'mcq'}]}
+      ]}
   };
 
 
   /* ===================== FULL EXAM GENERATOR ===================== */
   var bankGenFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
     var spec=window.examSpecs&&(window.examSpecs[examName]||window.examSpecs[viewId]);
-    var bank=window.fullExamBank&&window.fullExamBank[viewId];
-    if(!bank){alert('Question bank not found for '+viewId);return;}
+    var targetView=(spec&&spec.bankId)||viewId;
+    var bank=window.fullExamBank&&window.fullExamBank[targetView];
+    if(!bank && window.CS_loadTrackBank){
+      window.CS_loadTrackBank(targetView).then(function(loaded){
+        if(loaded){
+          bankGenFullExam(btn,examName,viewId,sectionTitles,qPerSection);
+        } else {
+          alert('Question bank not found for '+targetView);
+        }
+      });
+      return;
+    }
+    if(!bank){alert('Question bank not found for '+targetView);return;}
+    if(spec&&spec.defaultLang){
+      try{ localStorage.setItem('clipsat_exam_lang', spec.defaultLang); }catch(e){}
+      document.body.classList.remove('cs-lang-ar', 'cs-lang-en', 'cs-lang-both');
+      document.body.classList.add('cs-lang-' + spec.defaultLang);
+      document.querySelectorAll('.cs-lt-btn').forEach(function(b){
+        b.classList.toggle('active', b.getAttribute('data-lang') === spec.defaultLang);
+      });
+    }
     var _fmtBi=window.CSFormatBilingual||function(s){return s;};
 
     /* ── helpers ── */
@@ -713,7 +938,7 @@
           h+='<div class="fep-qbody">'+_fmtBi(_maths(q.text||q.q||''))+'</div>';
           if(isMCQ&&q.choices){h+='<div class="fep-choices">';q.choices.forEach(function(ch,ci){var s=_autoMath(ch);h+='<div class="fep-choice"><span class="fep-cletter">'+globalLetters[ci]+'.</span><span class="fep-ctext">'+_fmtBi(_maths(s))+'</span></div>';});h+='</div>';}
           if(q.type==='frq'){h+='<div class="fep-work-space"><span class="fep-ws-label">Working:</span>';for(var l=0;l<5;l++)h+='<div class="fep-ws-line"></div>';h+='<div class="fep-ws-ans"><span>Answer:</span><span class="fep-ws-ans-line"></span></div></div>';}
-          h+='<div class="fep-sol-block" style="display:none"><strong>Answer'+(isMCQ?' ('+globalLetters[q.answer]+')':'')+': </strong>'+_maths(q.sol||'')+'</div></div>';
+          h+='<div class="fep-sol-block" style="display:none"><strong>Answer'+(isMCQ?' ('+globalLetters[q.answer]+')':'')+': </strong>'+_fmtBi(_maths(q.sol||''))+'</div></div>';
           qNum++;
         });
         h+='</div>';
@@ -866,7 +1091,7 @@
             for(var ln=0;ln<8;ln++)h+='<div class="fep-ws-line"></div>';
             h+='<div class="fep-ws-ans"><span>Answer:</span><span class="fep-ws-ans-line"></span></div></div>';
           }
-          h+='<div class="fep-sol-block" style="display:none"><strong>Answer'+(isMCQ?' ('+pL[q.answer]+')':'')+': </strong>'+_maths(q.sol||'')+'</div>';
+          h+='<div class="fep-sol-block" style="display:none"><strong>Answer'+(isMCQ?' ('+pL[q.answer]+')':'')+': </strong>'+_fmtBi(_maths(q.sol||''))+'</div>';
           h+='</div>';
           qNum++;
         });
