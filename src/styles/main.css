@@ -2189,6 +2189,37 @@ body.dark .ch-note-area{background:rgba(96,165,250,.14)}
 [data-theme="dark"] .mock-choice-row:hover,[data-dark="1"] .mock-choice-row:hover,.dark .mock-choice-row:hover{background:#1e293b}
 [data-theme="dark"] #mock-exam-footer,[data-dark="1"] #mock-exam-footer,.dark #mock-exam-footer{background:#0f172a;border-color:#1e293b}
 
+/* ── CBT Simulator Enhanced Styles ── */
+.mock-q.cbt-hidden{display:none!important}
+.mock-cbt-nav{display:flex;align-items:center;justify-content:space-between;width:100%;gap:12px;flex-wrap:wrap}
+.cbt-nav-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:8px;font-weight:700;font-size:.88rem;cursor:pointer;border:1.5px solid var(--border,#cbd5e1);background:var(--panel,#fff);color:var(--ink,#1e293b);transition:all .15s ease}
+.cbt-nav-btn:hover:not(:disabled){background:var(--paper-2,#f1f5f9);border-color:#94a3b8;transform:translateY(-1px)}
+.cbt-nav-btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.cbt-nav-primary{background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff!important;border-color:#1d4ed8}
+.cbt-nav-primary:hover:not(:disabled){background:linear-gradient(135deg,#1d4ed8,#1e40af);color:#fff!important;border-color:#1e40af}
+.cbt-q-pill{display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:20px;background:var(--paper-2,#f1f5f9);border:1px solid var(--border,#cbd5e1);font-weight:700;font-size:.85rem;color:var(--ink,#1e293b);cursor:pointer;transition:all .15s ease}
+.cbt-q-pill:hover{background:#e2e8f0;border-color:#94a3b8}
+.cbt-palette-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:98500;display:none;align-items:center;justify-content:center;backdrop-filter:blur(2px)}
+.cbt-palette-overlay.show{display:flex}
+.cbt-palette-card{background:var(--panel,#fff);border-radius:14px;padding:22px;max-width:580px;width:92%;max-height:85vh;overflow-y:auto;box-shadow:0 20px 45px rgba(0,0,0,.25);border:1px solid var(--border,#cbd5e1)}
+.cbt-palette-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(46px,1fr));gap:10px;margin:16px 0}
+.cbt-pal-item{position:relative;height:44px;border-radius:8px;font-weight:700;font-size:.9rem;border:1.5px solid var(--border,#cbd5e1);background:var(--paper,#fff);color:var(--ink,#1e293b);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s ease}
+.cbt-pal-item:hover{transform:scale(1.06);border-color:#3b82f6}
+.cbt-pal-item.answered{background:#dbeafe;border-color:#3b82f6;color:#1e40af}
+.cbt-pal-item.active{outline:3px solid #2563eb;outline-offset:1px;font-weight:800}
+.cbt-pal-item.flagged::after{content:"🚩";position:absolute;top:-6px;right:-6px;font-size:.72rem}
+.cbt-flag-btn{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:6px;font-size:.78rem;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.15);color:#fff;transition:background .15s ease}
+.cbt-flag-btn:hover{background:rgba(255,255,255,.28)}
+.cbt-flag-btn.flagged{background:#f59e0b;border-color:#d97706;color:#fff;font-weight:700}
+
+[data-theme="dark"] .cbt-nav-btn,[data-dark="1"] .cbt-nav-btn,.dark .cbt-nav-btn{background:#1e293b;border-color:#334155;color:#f1f5f9}
+[data-theme="dark"] .cbt-nav-btn:hover:not(:disabled),[data-dark="1"] .cbt-nav-btn:hover:not(:disabled),.dark .cbt-nav-btn:hover:not(:disabled){background:#334155;border-color:#64748b}
+[data-theme="dark"] .cbt-q-pill,[data-dark="1"] .cbt-q-pill,.dark .cbt-q-pill{background:#1e293b;border-color:#334155;color:#f1f5f9}
+[data-theme="dark"] .cbt-palette-card,[data-dark="1"] .cbt-palette-card,.dark .cbt-palette-card{background:#0f172a;border-color:#334155;color:#f8fafc}
+[data-theme="dark"] .cbt-pal-item,[data-dark="1"] .cbt-pal-item,.dark .cbt-pal-item{background:#1e293b;border-color:#334155;color:#f1f5f9}
+[data-theme="dark"] .cbt-pal-item.answered,[data-dark="1"] .cbt-pal-item.answered,.dark .cbt-pal-item.answered{background:rgba(59,130,246,.25);border-color:#3b82f6;color:#93c5fd}
+
+
 .m-btns{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
 .m-explain-btn,.m-quiz-btn{padding:5px 12px;border-radius:7px;font-size:.78rem;font-weight:600;cursor:pointer;border:1.5px solid}
 .m-explain-btn{background:#eff6ff;color:#1d4ed8;border-color:#3b82f6}

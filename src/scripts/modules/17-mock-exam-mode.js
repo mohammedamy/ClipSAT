@@ -1,7 +1,24 @@
 (function(){
   "use strict";
 
+  /* ═══════════════════════════════════════════════════════════════════
+     CLIP-SAT COMPUTER-BASED TESTING (CBT) EXAM SIMULATOR
+     Authentic testing environment for Digital SAT, Qiyas (GAT/SAAT),
+     ACT, EST, Cambridge IGCSE / A-Level, AP, and IB Mathematics.
+     Features: Single-question flow, Question Navigator Palette,
+     Mark for Review, Pre-Submission Review Screen, Scaled Score Engine,
+     and Deep Domain Diagnostics.
+     ═══════════════════════════════════════════════════════════════════ */
+
   var _tmr = null, _secs = 0, _totalSecs = 0;
+  var _trackId = '', _pidx = 0;
+  var _paper = null;
+  var _pool = [];
+  var _curIdx = 0;
+  var _answers = {}; // qIndex -> string or choice index
+  var _flags = {}; // qIndex -> bool
+  var _viewMode = 'cbt'; // 'cbt' (single question) or 'all' (stacked review)
+  var _isSubmitted = false;
 
   var PAPERS = {
     qudrat: [
@@ -123,32 +140,398 @@
     return { val1: val1, val2: val2 };
   }
 
+  function _isQuestionAnswered(idx){
+    var ans = _answers[idx];
+    return ans !== undefined && ans !== null && String(ans).trim() !== '';
+  }
+
+  function _goToQuestion(idx){
+    if(idx < 0 || idx >= _pool.length) return;
+    _curIdx = idx;
+
+    var body = document.getElementById('mock-exam-body');
+    if(!body) return;
+
+    var qs = body.querySelectorAll('.mock-q');
+    qs.forEach(function(el, i){
+      if(_viewMode === 'all'){
+        el.classList.remove('cbt-hidden');
+      } else {
+        if(i === idx) el.classList.remove('cbt-hidden');
+        else el.classList.add('cbt-hidden');
+      }
+    });
+
+    _updateHeaderTools();
+    _updateFooterNav();
+    _typesetMath(body);
+
+    body.scrollTop = 0;
+  }
+
+  function _toggleFlag(){
+    _flags[_curIdx] = !_flags[_curIdx];
+    _updateHeaderTools();
+    _updateFooterNav();
+  }
+
+  function _toggleViewMode(){
+    _viewMode = (_viewMode === 'cbt' ? 'all' : 'cbt');
+    _goToQuestion(_curIdx);
+  }
+
+  function _toggleFullscreen(){
+    var overlay = document.getElementById('mock-exam-overlay');
+    if(!document.fullscreenElement){
+      if(overlay && overlay.requestFullscreen) overlay.requestFullscreen();
+    } else {
+      if(document.exitFullscreen) document.exitFullscreen();
+    }
+  }
+
+  function _updateHeaderTools(){
+    var flagBtn = document.getElementById('cbt-flag-btn');
+    if(flagBtn){
+      var isFlagged = !!_flags[_curIdx];
+      flagBtn.classList.toggle('flagged', isFlagged);
+      flagBtn.innerHTML = isFlagged ? '🚩 Flagged' : '🏳️ Flag for Review';
+      flagBtn.style.display = _isSubmitted ? 'none' : 'inline-flex';
+    }
+  }
+
+  function _updateFooterNav(){
+    var footer = document.getElementById('mock-exam-footer');
+    if(!footer || _isSubmitted) return;
+
+    var isLast = (_curIdx === _pool.length - 1);
+    var isFirst = (_curIdx === 0);
+
+    var answeredCount = 0;
+    for(var i = 0; i < _pool.length; i++){
+      if(_isQuestionAnswered(i)) answeredCount++;
+    }
+
+    var html = '<div class="mock-cbt-nav">'
+      + '<button type="button" class="cbt-nav-btn" onclick="window.cbtPrevQuestion()" ' + (isFirst ? 'disabled' : '') + '>← Previous</button>'
+      + '<div style="display:flex;align-items:center;gap:8px">'
+      + '  <button type="button" class="cbt-q-pill" onclick="window.toggleCBTPalette()">'
+      + '    <span>▤ Question ' + (_curIdx + 1) + ' of ' + _pool.length + '</span>'
+      + '    <span style="font-size:.72rem;background:rgba(0,0,0,.08);padding:2px 7px;border-radius:10px">' + answeredCount + '/' + _pool.length + '</span>'
+      + '  </button>'
+      + '  <button type="button" class="cbt-nav-btn" style="padding:7px 12px;font-size:.78rem" onclick="window.cbtToggleViewMode()">' + (_viewMode === 'cbt' ? '📄 View All' : '🎯 Single Q') + '</button>'
+      + '</div>';
+
+    if(isLast){
+      html += '<button type="button" class="cbt-nav-btn cbt-nav-primary" onclick="window.cbtShowReviewScreen()">Review & Finish →</button>';
+    } else {
+      html += '<button type="button" class="cbt-nav-btn cbt-nav-primary" onclick="window.cbtNextQuestion()">Next →</button>';
+    }
+    html += '</div>';
+
+    footer.innerHTML = html;
+  }
+
+  window.cbtPrevQuestion = function(){
+    if(_curIdx > 0) _goToQuestion(_curIdx - 1);
+  };
+
+  window.cbtNextQuestion = function(){
+    if(_curIdx < _pool.length - 1) _goToQuestion(_curIdx + 1);
+    else window.cbtShowReviewScreen();
+  };
+
+  window.cbtToggleViewMode = function(){
+    _toggleViewMode();
+  };
+
+  window.toggleCBTPalette = function(){
+    var modal = document.getElementById('cbt-palette-modal');
+    if(!modal) return;
+    if(modal.classList.contains('show')){
+      modal.classList.remove('show');
+    } else {
+      _renderPalette(modal);
+      modal.classList.add('show');
+    }
+  };
+
+  window.closeCBTPalette = function(){
+    var modal = document.getElementById('cbt-palette-modal');
+    if(modal) modal.classList.remove('show');
+  };
+
+  function _renderPalette(container){
+    var answeredCount = 0;
+    var flaggedCount = 0;
+    var gridHtml = '';
+
+    for(var i = 0; i < _pool.length; i++){
+      var ans = _isQuestionAnswered(i);
+      var flg = !!_flags[i];
+      var act = (i === _curIdx);
+      if(ans) answeredCount++;
+      if(flg) flaggedCount++;
+
+      var cls = 'cbt-pal-item' + (ans ? ' answered' : '') + (flg ? ' flagged' : '') + (act ? ' active' : '');
+      gridHtml += '<button type="button" class="' + cls + '" onclick="window.cbtJumpQuestion(' + i + ')">' + (i + 1) + '</button>';
+    }
+
+    container.innerHTML = [
+      '<div class="cbt-palette-card">',
+        '<div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border,#cbd5e1);padding-bottom:12px;margin-bottom:14px">',
+          '<h4 style="margin:0;font-size:1.1rem;font-weight:700">Question Navigator Palette</h4>',
+          '<button type="button" class="mock-exit-btn" onclick="window.closeCBTPalette()" style="padding:2px 8px;font-size:1.2rem">&times;</button>',
+        '</div>',
+        '<div style="display:flex;gap:12px;font-size:.78rem;color:var(--muted,#64748b);margin-bottom:14px;flex-wrap:wrap">',
+          '<span style="display:flex;align-items:center;gap:5px"><span style="width:12px;height:12px;border-radius:3px;background:#dbeafe;border:1.5px solid #3b82f6;display:inline-block"></span> Answered (' + answeredCount + ')</span>',
+          '<span style="display:flex;align-items:center;gap:5px"><span style="width:12px;height:12px;border-radius:3px;background:#fff;border:1.5px solid #cbd5e1;display:inline-block"></span> Unanswered (' + (_pool.length - answeredCount) + ')</span>',
+          '<span style="display:flex;align-items:center;gap:5px">🚩 Marked for Review (' + flaggedCount + ')</span>',
+        '</div>',
+        '<div class="cbt-palette-grid">' + gridHtml + '</div>',
+        '<div style="margin-top:16px;display:flex;justify-content:space-between;gap:10px">',
+          '<button type="button" class="cbt-nav-btn" onclick="window.cbtShowReviewScreen()">Review Summary Screen</button>',
+          '<button type="button" class="cbt-nav-btn cbt-nav-primary" onclick="window.closeCBTPalette()">Back to Current Question</button>',
+        '</div>',
+      '</div>'
+    ].join('');
+  }
+
+  window.cbtJumpQuestion = function(idx){
+    window.closeCBTPalette();
+    _goToQuestion(idx);
+  };
+
+  window.cbtShowReviewScreen = function(){
+    window.closeCBTPalette();
+    var body = document.getElementById('mock-exam-body');
+    if(!body) return;
+
+    var answeredCount = 0;
+    var flaggedCount = 0;
+    var rowsHtml = '';
+
+    for(var i = 0; i < _pool.length; i++){
+      var q = _pool[i];
+      var ans = _isQuestionAnswered(i);
+      var flg = !!_flags[i];
+      if(ans) answeredCount++;
+      if(flg) flaggedCount++;
+
+      var statusBadge = ans
+        ? '<span style="background:#dcfce7;color:#15803d;padding:3px 8px;border-radius:4px;font-size:.75rem;font-weight:700">✓ Answered</span>'
+        : '<span style="background:#fef3c7;color:#b45309;padding:3px 8px;border-radius:4px;font-size:.75rem;font-weight:700">⚠️ Unanswered</span>';
+
+      var flagBadge = flg
+        ? '<span style="background:#fef2f2;color:#b91c1c;padding:3px 8px;border-radius:4px;font-size:.75rem;font-weight:700">🚩 For Review</span>'
+        : '';
+
+      rowsHtml += '<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border,#e2e8f0);background:var(--paper,#fff);justify-content:space-between">'
+        + '<div style="display:flex;align-items:center;gap:12px">'
+        + '  <span style="font-weight:800;font-size:.9rem;color:var(--indigo,#1e3e70);width:32px">#' + (i + 1) + '</span>'
+        + '  <span style="font-size:.82rem;color:var(--muted,#64748b)">' + (q.domain || 'Mathematics') + '</span>'
+        + '</div>'
+        + '<div style="display:flex;align-items:center;gap:8px">'
+        + statusBadge + flagBadge
+        + '  <button type="button" class="cbt-nav-btn" style="padding:4px 10px;font-size:.76rem" onclick="window.cbtReturnToQuestion(' + i + ')">Go to Q →</button>'
+        + '</div>'
+        + '</div>';
+    }
+
+    var alertMsg = (answeredCount === _pool.length)
+      ? '<div style="background:#f0fdf4;border:1px solid #86efac;color:#166534;padding:12px;border-radius:8px;margin-bottom:16px;font-size:.88rem;font-weight:600">Great job! You have answered all ' + _pool.length + ' questions. Ready to submit?</div>'
+      : '<div style="background:#fffbeb;border:1px solid #fde68a;color:#92400e;padding:12px;border-radius:8px;margin-bottom:16px;font-size:.88rem;font-weight:600">⚠️ Notice: You still have <strong>' + (_pool.length - answeredCount) + ' unanswered question(s)</strong>. Are you sure you want to finish now?</div>';
+
+    body.innerHTML = [
+      '<div style="max-width:760px;margin:0 auto">',
+        '<div style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:12px;padding:24px;box-shadow:0 8px 24px rgba(0,0,0,.06)">',
+          '<h3 style="margin-top:0;font-size:1.3rem;font-weight:800;color:var(--indigo,#132746)">Examination Section Review</h3>',
+          '<p style="color:var(--muted,#64748b);font-size:.88rem;margin-bottom:16px">Check your answers and flagged items before submitting your paper.</p>',
+          alertMsg,
+          '<div style="border:1px solid var(--border,#cbd5e1);border-radius:8px;overflow:hidden;margin-bottom:20px;max-height:55vh;overflow-y:auto">' + rowsHtml + '</div>',
+          '<div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">',
+            '<button type="button" class="cbt-nav-btn" onclick="window.cbtReturnToQuestion(' + _curIdx + ')">← Return to Questions</button>',
+            '<button type="button" class="mock-submit-btn" style="padding:10px 24px;font-size:.95rem" onclick="submitMockExam()">Submit Final Examination ✓</button>',
+          '</div>',
+        '</div>',
+      '</div>'
+    ].join('');
+
+    var footer = document.getElementById('mock-exam-footer');
+    if(footer) footer.innerHTML = '';
+  };
+
+  window.cbtReturnToQuestion = function(idx){
+    // Re-render questions into body and jump
+    _renderQuestionsDOM();
+    _goToQuestion(idx || 0);
+  };
+
+  function _typesetMath(el){
+    if(window.renderMathInElement){
+      try {
+        window.renderMathInElement(el, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '\\[', right: '\\]', display: true},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false
+        });
+      } catch(e){}
+    } else if(window.MathJax && MathJax.typesetPromise){
+      MathJax.typesetPromise([el]).catch(function(){});
+    }
+  }
+
+  function _renderQuestionsDOM(){
+    var body = document.getElementById('mock-exam-body');
+    if(!body) return;
+
+    var h = '';
+    var letters = ['A', 'B', 'C', 'D', 'E'];
+    var _fmtBi = window.CSFormatBilingual || function(s){ return s; };
+
+    _pool.forEach(function(q, i){
+      var isComp = _isQuantComp(q);
+      var figHtml = _renderQFig(q);
+      var qText = (q.text || q.q || '').trim();
+      var isFlagged = !!_flags[i];
+
+      h += '<div class="mock-q' + (i === _curIdx ? '' : ' cbt-hidden') + '" id="mock-q-' + i + '">'
+        + '<div class="mq-num" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">'
+        + '  <div>'
+        + '    <span style="font-weight:800;font-size:.9rem;color:var(--indigo,#1e3e70)">Question ' + (i + 1) + ' of ' + _pool.length + '</span>'
+        + '    <span style="font-size:.76rem;background:var(--paper-2,#f1f5f9);padding:2px 8px;border-radius:4px;color:var(--muted,#64748b);margin-left:8px">' + (q.domain || 'Math') + '</span>'
+        + '  </div>'
+        + '  <button type="button" class="cbt-flag-btn' + (isFlagged ? ' flagged' : '') + '" onclick="window.cbtToggleFlagCurrent(' + i + ')">' + (isFlagged ? '🚩 Flagged' : '🏳️ Flag') + '</button>'
+        + '</div>';
+
+      if(figHtml){
+        h += '<div class="mock-q-figure" style="margin-bottom:14px">' + figHtml + '</div>';
+      }
+
+      if(isComp){
+        var comp = _parseCompBoxes(q);
+        h += '<div class="mq-text" dir="rtl" style="font-weight:700;margin-bottom:10px">قارن بين القيمتين التاليتين:</div>'
+          + '<div class="mock-qc-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">'
+          + '<div class="mock-qc-box" style="background:var(--paper-2,#f8fafc);border:1.5px solid var(--border,#cbd5e1);border-radius:8px;padding:12px;text-align:center">'
+          + '<div style="font-size:.8rem;font-weight:700;color:var(--indigo,#1e3e70);margin-bottom:4px">القيمة الأولى (Column A)</div>'
+          + '<div style="font-size:1rem;font-weight:600">' + _fmtBi(comp.val1 || qText) + '</div>'
+          + '</div>'
+          + '<div class="mock-qc-box" style="background:var(--paper-2,#f8fafc);border:1.5px solid var(--border,#cbd5e1);border-radius:8px;padding:12px;text-align:center">'
+          + '<div style="font-size:.8rem;font-weight:700;color:var(--amber,#9e6515);margin-bottom:4px">القيمة الثانية (Column B)</div>'
+          + '<div style="font-size:1rem;font-weight:600">' + _fmtBi(comp.val2 || '—') + '</div>'
+          + '</div>'
+          + '</div>';
+      } else {
+        h += '<div class="mq-text" style="font-size:1.02rem;line-height:1.65;margin-bottom:16px">' + _fmtBi(qText) + '</div>';
+      }
+
+      var isSPR = (q.type === 'spr' || q.isSPR);
+      var currentAns = _answers[i];
+
+      if(isSPR){
+        h += '<div class="mock-spr-wrap" style="margin:14px 0">'
+          + '<label style="display:block;font-size:.84rem;color:var(--muted,#64748b);margin-bottom:6px;font-weight:600">Student-Produced Response (Grid-in):</label>'
+          + '<input type="text" class="mock-spr-input" name="mq' + i + '" value="' + (currentAns != null ? String(currentAns).replace(/"/g, '&quot;') : '') + '" placeholder="e.g. 7/4 or 1.75" oninput="window.cbtRecordAnswer(' + i + ', this.value)" style="width:180px;padding:10px 14px;border:1.5px solid var(--border,#cbd5e1);border-radius:8px;font-family:var(--mono,monospace);font-size:1.05rem">'
+          + '</div>';
+      } else if(q.choices && q.choices.length){
+        h += '<div class="mock-choices-list" style="display:flex;flex-direction:column;gap:8px">';
+        q.choices.forEach(function(c, ci){
+          var letLabel = letters[ci] || String.fromCharCode(65 + ci);
+          var chText = (typeof window.CSAutoMath === 'function' ? window.CSAutoMath(c) : String(c || ''));
+          var isChecked = (currentAns === ci);
+          h += '<label class="mock-choice-row" style="display:flex;align-items:flex-start;gap:10px;padding:11px 14px;border:1.5px solid ' + (isChecked ? '#3b82f6' : 'var(--border,#e2e8f0)') + ';border-radius:8px;cursor:pointer;background:' + (isChecked ? '#eff6ff' : 'var(--paper,#fff)') + ';transition:all .15s ease">'
+            + '<input type="radio" name="mq' + i + '" value="' + ci + '" ' + (isChecked ? 'checked' : '') + ' onchange="window.cbtRecordAnswer(' + i + ', ' + ci + ')" style="margin-top:4px">'
+            + '<span style="font-weight:800;color:var(--indigo,#1e3e70)">' + letLabel + '.</span>'
+            + '<span style="flex:1">' + _fmtBi(chText) + '</span>'
+            + '</label>';
+        });
+        h += '</div>';
+      } else {
+        h += '<div style="margin:14px 0"><textarea class="mock-frq-area" name="mq' + i + '" oninput="window.cbtRecordAnswer(' + i + ', this.value)" placeholder="Type your algebraic derivation, proof, or numerical answer here..." style="width:100%;min-height:100px;padding:10px 14px;border:1.5px solid var(--border,#cbd5e1);border-radius:8px;font-family:var(--sans);font-size:.92rem">' + (currentAns || '') + '</textarea></div>';
+      }
+
+      h += '</div>';
+    });
+
+    body.innerHTML = h;
+    body.setAttribute('data-pool', JSON.stringify(_pool.map(function(q){
+      return {
+        answer: q.answer,
+        ans: q.ans || q.answer,
+        type: q.type || 'mcq',
+        domain: q.domain || 'Math',
+        sol: q.sol || q.expl || ''
+      };
+    })));
+  }
+
+  window.cbtRecordAnswer = function(qIdx, val){
+    _answers[qIdx] = val;
+    // Highlight choice row if radio
+    var qEl = document.getElementById('mock-q-' + qIdx);
+    if(qEl){
+      var rows = qEl.querySelectorAll('.mock-choice-row');
+      rows.forEach(function(r, ci){
+        var checked = (val === ci);
+        r.style.borderColor = checked ? '#3b82f6' : 'var(--border,#e2e8f0)';
+        r.style.background = checked ? '#eff6ff' : 'var(--paper,#fff)';
+      });
+    }
+    _updateFooterNav();
+  };
+
+  window.cbtToggleFlagCurrent = function(idx){
+    _flags[idx] = !_flags[idx];
+    var qEl = document.getElementById('mock-q-' + idx);
+    if(qEl){
+      var btn = qEl.querySelector('.cbt-flag-btn');
+      if(btn){
+        var flg = !!_flags[idx];
+        btn.classList.toggle('flagged', flg);
+        btn.innerHTML = flg ? '🚩 Flagged' : '🏳️ Flag';
+      }
+    }
+    _updateHeaderTools();
+    _updateFooterNav();
+  };
+
   window.openMockExam = function(viewId, pidx){
-    viewId = String(viewId || '').toLowerCase().trim();
+    var trackId = String(viewId || '').toLowerCase().trim();
     pidx = parseInt(pidx, 10) || 0;
+    _trackId = trackId;
+    _pidx = pidx;
+    _curIdx = 0;
+    _answers = {};
+    _flags = {};
+    _viewMode = 'cbt';
+    _isSubmitted = false;
 
     var overlay = document.getElementById('mock-exam-overlay');
     if(!overlay) return;
 
     var body = document.getElementById('mock-exam-body');
     if(body){
-      body.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--muted)"><div class="ai-spinner" style="margin:0 auto 16px"></div><p>Loading examination question bank…</p></div>';
+      body.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--muted)"><div class="ai-spinner" style="margin:0 auto 16px"></div><p>Preparing Computer-Based Test (CBT) environment…</p></div>';
     }
     overlay.classList.add('show');
     document.body.classList.add('cbt-open');
 
-    _ensureBank(viewId).then(function(bank){
+    _ensureBank(trackId).then(function(bank){
       if(!bank){
-        alert('Question bank for "' + viewId.toUpperCase() + '" is not available.');
+        alert('Question bank for "' + trackId.toUpperCase() + '" is not available.');
         overlay.classList.remove('show');
         document.body.classList.remove('cbt-open');
         return;
       }
 
-      var papers = PAPERS[viewId] || [
-        { name: viewId.toUpperCase() + ' Comprehensive CBT Practice', minutes: 45, qCount: 15, calc: true }
+      var papers = PAPERS[trackId] || [
+        { name: trackId.toUpperCase() + ' Comprehensive CBT Practice', minutes: 45, qCount: 15, calc: true }
       ];
       var paper = papers[pidx] || papers[0];
+      _paper = paper;
       var domainFilter = paper.domains || null;
 
       // Extract pool
@@ -217,8 +600,8 @@
         }
       }
 
-      pool = picked.map(function(q){ return window._shuffleQ ? window._shuffleQ(q) : q; });
-      if(!pool.length){
+      _pool = picked.map(function(q){ return window._shuffleQ ? window._shuffleQ(q) : q; });
+      if(!_pool.length){
         alert('No questions available for this paper.');
         overlay.classList.remove('show');
         return;
@@ -233,7 +616,6 @@
         titleEl.innerHTML = '<span>' + paper.name + '</span> ' + calcBadge;
       }
 
-      // Header tools buttons
       var hdr = document.getElementById('mock-exam-header');
       if(hdr){
         var toolsDiv = hdr.querySelector('.mock-tools-wrap');
@@ -244,9 +626,11 @@
           var timerEl = document.getElementById('mock-exam-timer');
           if(timerEl) hdr.insertBefore(toolsDiv, timerEl);
         }
+
         var calcBtnHtml = (paper.calc !== false)
-          ? '<button type="button" class="hdr-btn" onclick="window.toggleFloatingCalc&&window.toggleFloatingCalc()" style="padding:4px 10px;font-size:.78rem;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:6px;cursor:pointer">🧮 Calculator</button>'
+          ? '<button type="button" class="hdr-btn" onclick="window.toggleFloatingCalc&&window.toggleFloatingCalc()" title="Open Desmos Graphing Calculator (Alt+C)">🧮 Calculator</button>'
           : '';
+
         var langToggleHtml = '';
         if(trackId === 'qudrat' || trackId === 'tahsili'){
           var curLang = 'both';
@@ -257,101 +641,20 @@
             + '<button type="button" class="cs-lt-btn'+(curLang==='both'?' active':'')+'" data-lang="both" onclick="window.ClipSATSetExamLang&&window.ClipSATSetExamLang(\'both\',this)" title="Bilingual">🌐 ثنائي</button>'
             + '</div>';
         }
+
         toolsDiv.innerHTML = langToggleHtml + calcBtnHtml
-          + '<button type="button" class="hdr-btn" onclick="window.openFormulaModal&&window.openFormulaModal()" style="padding:4px 10px;font-size:.78rem;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:6px;cursor:pointer">📐 Formulas</button>'
-          + '<button type="button" class="hdr-btn" id="cbt-scratchpad-btn" onclick="window.toggleWhiteboard&&window.toggleWhiteboard()" style="padding:4px 10px;font-size:.78rem;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:6px;cursor:pointer">✏️ Scratchpad</button>';
+          + '<button type="button" class="hdr-btn" onclick="window.openFormulaModal&&window.openFormulaModal()" title="Reference Formulas">📐 Formulas</button>'
+          + '<button type="button" class="hdr-btn" id="cbt-scratchpad-btn" onclick="window.toggleWhiteboard&&window.toggleWhiteboard()" title="Open Scratchpad (Alt+S)">✏️ Scratchpad</button>'
+          + '<button type="button" class="cbt-flag-btn" id="cbt-flag-btn" onclick="window.cbtToggleFlagCurrent(' + _curIdx + ')">🏳️ Flag for Review</button>'
+          + '<button type="button" class="hdr-btn" onclick="window.cbtToggleFullscreen()" title="Toggle Fullscreen">⛶</button>';
       }
 
       _secs = (paper.minutes || 45) * 60;
       _totalSecs = _secs;
 
-      var h = '';
-      var letters = (bank.letters && bank.letters.length) ? bank.letters : ['A', 'B', 'C', 'D'];
-      var _fmtBi = window.CSFormatBilingual || function(s){ return s; };
-
-      pool.forEach(function(q, i){
-        var isComp = _isQuantComp(q);
-        var figHtml = _renderQFig(q);
-        var qText = (q.text || q.q || '').trim();
-
-        h += '<div class="mock-q" id="mock-q-' + i + '">'
-          + '<div class="mq-num">'
-          + '<span>Question ' + (i + 1) + ' of ' + pool.length + '</span>'
-          + '<span style="font-size:.75rem;color:var(--faint);margin-left:8px">' + (q.domain || '') + '</span>'
-          + '</div>';
-
-        if(figHtml){
-          h += '<div class="mock-q-figure" style="margin-bottom:12px">' + figHtml + '</div>';
-        }
-
-        if(isComp){
-          var comp = _parseCompBoxes(q);
-          h += '<div class="mq-text" dir="rtl" style="font-weight:700;margin-bottom:10px">قارن بين القيمتين التاليتين:</div>'
-            + '<div class="mock-qc-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">'
-            + '<div class="mock-qc-box" style="background:var(--paper-2,#f8fafc);border:1.5px solid var(--border,#cbd5e1);border-radius:8px;padding:12px;text-align:center">'
-            + '<div style="font-size:.8rem;font-weight:700;color:var(--indigo,#1e3e70);margin-bottom:4px">القيمة الأولى (Column A)</div>'
-            + '<div style="font-size:1rem;font-weight:600">' + _fmtBi(comp.val1 || qText) + '</div>'
-            + '</div>'
-            + '<div class="mock-qc-box" style="background:var(--paper-2,#f8fafc);border:1.5px solid var(--border,#cbd5e1);border-radius:8px;padding:12px;text-align:center">'
-            + '<div style="font-size:.8rem;font-weight:700;color:var(--amber,#9e6515);margin-bottom:4px">القيمة الثانية (Column B)</div>'
-            + '<div style="font-size:1rem;font-weight:600">' + _fmtBi(comp.val2 || '—') + '</div>'
-            + '</div>'
-            + '</div>';
-        } else {
-          h += '<div class="mq-text">' + _fmtBi(qText) + '</div>';
-        }
-
-        var isSPR = (q.type === 'spr' || q.isSPR);
-        if(isSPR){
-          h += '<div class="mock-spr-wrap" style="margin:12px 0">'
-            + '<label style="display:block;font-size:.82rem;color:var(--muted);margin-bottom:4px">Student-Produced Response (Grid-in):</label>'
-            + '<input type="text" class="mock-spr-input" name="mq' + i + '" placeholder="e.g. 7/4 or 1.75" style="width:160px;padding:8px 12px;border:1.5px solid var(--border,#cbd5e1);border-radius:6px;font-family:var(--mono,monospace);font-size:1rem">'
-            + '</div>';
-        } else if(q.choices && q.choices.length){
-          h += '<div class="mock-choices-list" style="display:flex;flex-direction:column;gap:6px">';
-          q.choices.forEach(function(c, ci){
-            var letLabel = letters[ci] || String.fromCharCode(65 + ci);
-            var chText = (typeof window.CSAutoMath === 'function' ? window.CSAutoMath(c) : String(c || ''));
-            h += '<label class="mock-choice-row" style="display:flex;align-items:flex-start;gap:8px;padding:8px 12px;border:1px solid var(--border,#e2e8f0);border-radius:8px;cursor:pointer;transition:background .15s ease">'
-              + '<input type="radio" name="mq' + i + '" value="' + ci + '" style="margin-top:4px">'
-              + '<span style="font-weight:700;color:var(--indigo,#1e3e70)">' + letLabel + '.</span>'
-              + '<span style="flex:1">' + _fmtBi(chText) + '</span>'
-              + '</label>';
-          });
-          h += '</div>';
-        } else {
-          h += '<div style="margin:12px 0"><textarea class="mock-frq-area" name="mq' + i + '" placeholder="Type your algebraic derivation, proof, or numerical answer here..." style="width:100%;min-height:90px;padding:8px 12px;border:1px solid var(--border,#cbd5e1);border-radius:8px;font-family:var(--sans);font-size:.9rem"></textarea></div>';
-        }
-
-        h += '</div>';
-      });
-
-      body.innerHTML = h;
-      body.setAttribute('data-pool', JSON.stringify(pool.map(function(q){
-        return {
-          answer: q.answer,
-          ans: q.ans || q.answer,
-          type: q.type || 'mcq',
-          sol: q.sol || q.expl || ''
-        };
-      })));
-
-      // Render math
-      if(window.renderMathInElement){
-        try {
-          window.renderMathInElement(body, {
-            delimiters: [
-              {left: '$$', right: '$$', display: true},
-              {left: '\\[', right: '\\]', display: true},
-              {left: '\\(', right: '\\)', display: false},
-              {left: '$', right: '$', display: false}
-            ],
-            throwOnError: false
-          });
-        } catch(e){}
-      } else if(window.MathJax && MathJax.typesetPromise){
-        MathJax.typesetPromise([body]).catch(function(){});
-      }
+      // Render questions DOM and navigate to question 0
+      _renderQuestionsDOM();
+      _goToQuestion(0);
 
       if(_tmr) clearInterval(_tmr);
       _renderTimer();
@@ -367,6 +670,10 @@
     });
   };
 
+  window.cbtToggleFullscreen = function(){
+    _toggleFullscreen();
+  };
+
   function _renderTimer(){
     var el = document.getElementById('mock-exam-timer');
     if(!el) return;
@@ -376,28 +683,71 @@
     el.style.color = _secs < 300 ? '#fca5a5' : '#ffffff';
   }
 
+  function _getScaledScoreEstimate(trackId, correct, total){
+    var p = total > 0 ? (correct / total) : 0;
+    if(trackId === 'sat'){
+      var satScore = 200 + Math.round(p * 600);
+      if(p >= 0.95) satScore = 800;
+      else if(p >= 0.88) satScore = 740 + Math.round((p - 0.88) * 800);
+      else if(p >= 0.75) satScore = 650 + Math.round((p - 0.75) * 690);
+      else if(p >= 0.50) satScore = 500 + Math.round((p - 0.50) * 600);
+      return { label: 'Projected SAT Math Score', value: satScore + ' / 800', badge: satScore >= 700 ? '95th+ Percentile' : 'Competitive' };
+    }
+    if(trackId === 'qudrat' || trackId === 'tahsili'){
+      var qScore = Math.round(50 + p * 50);
+      return { label: 'Estimated Qiyas Scale Score', value: qScore + ' / 100', badge: qScore >= 90 ? 'ممتاز (Top 5%)' : 'جيد جداً' };
+    }
+    if(trackId === 'act'){
+      var actScore = Math.max(1, Math.min(36, Math.round(p * 36)));
+      return { label: 'Projected ACT Math Score', value: actScore + ' / 36', badge: actScore >= 30 ? 'Elite' : 'Standard' };
+    }
+    if(trackId === 'igcse' || trackId === 'aslevel' || trackId === 'a2level'){
+      var g = p >= 0.85 ? 'Grade 9 (A*)' : p >= 0.72 ? 'Grade 8 (A)' : p >= 0.60 ? 'Grade 7 (A)' : p >= 0.50 ? 'Grade 6 (B)' : 'Grade 5 (C)';
+      return { label: 'Projected Cambridge Grade', value: g, badge: p >= 0.72 ? 'Distinction' : 'Passing' };
+    }
+    if(trackId === 'ibsl' || trackId === 'ibhl'){
+      var ibG = p >= 0.80 ? 'Grade 7' : p >= 0.68 ? 'Grade 6' : p >= 0.55 ? 'Grade 5' : p >= 0.40 ? 'Grade 4' : 'Grade 3';
+      return { label: 'Projected IB Boundary', value: ibG, badge: p >= 0.68 ? 'Top Band' : 'Standard' };
+    }
+    return { label: 'Accuracy Rating', value: Math.round(p * 100) + '%', badge: 'Completed' };
+  }
+
   window.submitMockExam = function(){
     if(_tmr){ clearInterval(_tmr); _tmr = null; }
+    _isSubmitted = true;
+
     var body = document.getElementById('mock-exam-body');
     if(!body) return;
 
+    // Ensure all question cards are visible in review mode
+    var allQEls = body.querySelectorAll('.mock-q');
+    allQEls.forEach(function(el){ el.classList.remove('cbt-hidden'); });
+
     var pool = JSON.parse(body.getAttribute('data-pool') || '[]');
-    var qs = body.querySelectorAll('.mock-q');
     var correct = 0, totalGraded = 0;
+    var domainStats = {};
 
-    qs.forEach(function(qEl, i){
+    _pool.forEach(function(q, i){
       var meta = pool[i] || {};
+      var d = q.domain || meta.domain || 'Math';
+      if(!domainStats[d]) domainStats[d] = { total: 0, correct: 0 };
+      domainStats[d].total++;
+
+      var qEl = document.getElementById('mock-q-' + i);
+      if(!qEl) return;
+
       var isSPR = (meta.type === 'spr');
-      var radios = qEl.querySelectorAll('input[type=radio]');
       var sprInput = qEl.querySelector('.mock-spr-input');
+      var radios = qEl.querySelectorAll('input[type=radio]');
+      var userAns = _answers[i];
+      var isRight = false;
+      var targetAns = String(meta.ans != null ? meta.ans : meta.answer).trim().toLowerCase();
 
-      if(isSPR && sprInput){
+      if(isSPR){
         totalGraded++;
-        var val = sprInput.value.trim().toLowerCase();
-        var targetAns = String(meta.ans != null ? meta.ans : meta.answer).trim().toLowerCase();
-        var isRight = (val === targetAns);
+        var val = userAns != null ? String(userAns).trim().toLowerCase() : '';
+        isRight = (val === targetAns);
 
-        // evaluate fraction equivalence (e.g. 7/4 vs 1.75)
         if(!isRight && val.indexOf('/') !== -1){
           var parts = val.split('/');
           var num = parseFloat(parts[0]), den = parseFloat(parts[1]);
@@ -412,25 +762,36 @@
 
         if(isRight){
           correct++;
-          sprInput.style.borderColor = '#16a34a';
-          sprInput.style.background = '#f0fdf4';
-        } else {
+          domainStats[d].correct++;
+          if(sprInput){
+            sprInput.style.borderColor = '#16a34a';
+            sprInput.style.background = '#f0fdf4';
+          }
+        } else if(sprInput){
           sprInput.style.borderColor = '#dc2626';
           sprInput.style.background = '#fef2f2';
         }
 
+        qEl.setAttribute('data-correct', isRight ? '1' : '0');
+
         var resBox = document.createElement('div');
-        resBox.style.cssText = 'margin-top:10px;padding:10px 14px;border-radius:8px;font-size:.85rem;line-height:1.6;' + (isRight ? 'background:#f0fdf4;border:1px solid #86efac;color:#166534' : 'background:#fef2f2;border:1px solid #fca5a5;color:#991b1b');
-        resBox.innerHTML = '<strong>' + (isRight ? '✓ Correct Answer' : '✗ Incorrect') + '</strong> · Correct answer: <code>' + targetAns + '</code>'
-          + (meta.sol ? '<div style="margin-top:6px;border-top:1px dashed rgba(0,0,0,.15);padding-top:6px"><strong>Explanation:</strong> ' + meta.sol + '</div>' : '');
+        resBox.className = 'mock-res-feedback';
+        resBox.style.cssText = 'margin-top:12px;padding:12px 16px;border-radius:8px;font-size:.88rem;line-height:1.6;' + (isRight ? 'background:#f0fdf4;border:1px solid #86efac;color:#166534' : 'background:#fef2f2;border:1px solid #fca5a5;color:#991b1b');
+        resBox.innerHTML = '<div style="font-weight:700;font-size:.95rem;margin-bottom:4px">' + (isRight ? '✓ Correct Answer' : '✗ Incorrect') + '</div>'
+          + '<div>Your Answer: <code>' + (val || '(Blank)') + '</code> · Correct: <code>' + targetAns + '</code></div>'
+          + (meta.sol ? '<div style="margin-top:8px;border-top:1px dashed rgba(0,0,0,.15);padding-top:8px;color:var(--ink,#1e293b)"><strong>Mathematical Explanation:</strong><br>' + meta.sol + '</div>' : '');
         qEl.appendChild(resBox);
 
       } else if(radios.length){
         totalGraded++;
-        var chosen = -1;
-        radios.forEach(function(r){ if(r.checked) chosen = parseInt(r.value, 10); });
-        var isRight = (chosen === meta.answer);
-        if(isRight) correct++;
+        var chosen = (userAns !== undefined && userAns !== null) ? parseInt(userAns, 10) : -1;
+        isRight = (chosen === meta.answer);
+        if(isRight){
+          correct++;
+          domainStats[d].correct++;
+        }
+
+        qEl.setAttribute('data-correct', isRight ? '1' : '0');
 
         radios.forEach(function(r, ci){
           var row = r.closest('.mock-choice-row');
@@ -446,29 +807,77 @@
         });
 
         var resBox = document.createElement('div');
-        resBox.style.cssText = 'margin-top:10px;padding:10px 14px;border-radius:8px;font-size:.85rem;line-height:1.6;' + (isRight ? 'background:#f0fdf4;border:1px solid #86efac;color:#166534' : 'background:#fef2f2;border:1px solid #fca5a5;color:#991b1b');
-        resBox.innerHTML = '<strong>' + (isRight ? '✓ Correct' : '✗ Incorrect') + '</strong>'
-          + (meta.sol ? '<div style="margin-top:6px;border-top:1px dashed rgba(0,0,0,.15);padding-top:6px"><strong>Explanation:</strong> ' + meta.sol + '</div>' : '');
+        resBox.className = 'mock-res-feedback';
+        resBox.style.cssText = 'margin-top:12px;padding:12px 16px;border-radius:8px;font-size:.88rem;line-height:1.6;' + (isRight ? 'background:#f0fdf4;border:1px solid #86efac;color:#166534' : 'background:#fef2f2;border:1px solid #fca5a5;color:#991b1b');
+        resBox.innerHTML = '<div style="font-weight:700;font-size:.95rem;margin-bottom:4px">' + (isRight ? '✓ Correct Answer' : '✗ Incorrect') + '</div>'
+          + (meta.sol ? '<div style="margin-top:8px;border-top:1px dashed rgba(0,0,0,.15);padding-top:8px;color:var(--ink,#1e293b)"><strong>Mathematical Explanation:</strong><br>' + meta.sol + '</div>' : '');
         qEl.appendChild(resBox);
       }
     });
 
     var pct = totalGraded ? Math.round((correct / totalGraded) * 100) : 0;
+    var scaled = _getScaledScoreEstimate(_trackId, correct, totalGraded);
+
     var title = document.getElementById('mock-exam-title');
     if(title){
-      title.innerHTML = 'Exam Completed — <strong>Score: ' + correct + '/' + totalGraded + ' (' + pct + '%)</strong>';
+      title.innerHTML = 'Examination Completed — <strong>Score: ' + correct + '/' + totalGraded + ' (' + pct + '%)</strong>';
     }
+
+    // Build Domain Breakdown HTML
+    var domainBarsHtml = '';
+    Object.keys(domainStats).forEach(function(dName){
+      var st = domainStats[dName];
+      var dPct = st.total > 0 ? Math.round((st.correct / st.total) * 100) : 0;
+      var barColor = dPct >= 80 ? '#16a34a' : dPct >= 50 ? '#d97706' : '#dc2626';
+      domainBarsHtml += '<div style="margin-bottom:8px">'
+        + '<div style="display:flex;justify-content:space-between;font-size:.78rem;font-weight:700;margin-bottom:3px">'
+        + '  <span>' + dName + '</span>'
+        + '  <span>' + st.correct + '/' + st.total + ' (' + dPct + '%)</span>'
+        + '</div>'
+        + '<div style="height:6px;background:var(--border,#e2e8f0);border-radius:4px;overflow:hidden">'
+        + '  <div style="width:' + dPct + '%;height:100%;background:' + barColor + ';border-radius:4px"></div>'
+        + '</div>'
+        + '</div>';
+    });
+
+    var heroHtml = [
+      '<div id="cbt-results-hero" style="background:var(--panel,#fff);border:1.5px solid var(--border,#cbd5e1);border-radius:14px;padding:24px;margin-bottom:24px;box-shadow:0 10px 30px rgba(0,0,0,.08)">',
+        '<div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border,#e2e8f0);padding-bottom:16px;margin-bottom:16px;flex-wrap:wrap;gap:12px">',
+          '<div>',
+            '<div style="font-size:.82rem;font-weight:700;color:var(--muted,#64748b);text-transform:uppercase;letter-spacing:.5px">Official CBT Performance Report</div>',
+            '<h2 style="margin:4px 0 0;font-size:1.6rem;font-weight:800;color:var(--indigo,#132746)">' + (_paper ? _paper.name : 'Mathematics CBT') + '</h2>',
+          '</div>',
+          '<div style="text-align:right">',
+            '<div style="font-size:1.8rem;font-weight:900;color:' + (pct >= 70 ? '#16a34a' : '#d97706') + '">' + correct + ' <span style="font-size:1.1rem;color:var(--muted)">/ ' + totalGraded + ' (' + pct + '%)</span></div>',
+            '<div style="font-size:.8rem;font-weight:700;color:#2563eb">' + scaled.label + ': ' + scaled.value + '</div>',
+          '</div>',
+        '</div>',
+        '<div style="margin-bottom:18px">' + domainBarsHtml + '</div>',
+        '<div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border,#e2e8f0);padding-top:14px;flex-wrap:wrap;gap:10px">',
+          '<div style="display:flex;gap:6px" id="cbt-filter-group">',
+            '<button type="button" class="cbt-nav-btn cbt-nav-primary" onclick="window.cbtFilterReview(\'all\', this)">All Questions (' + totalGraded + ')</button>',
+            '<button type="button" class="cbt-nav-btn" onclick="window.cbtFilterReview(\'mistakes\', this)">Mistakes Only (' + (totalGraded - correct) + ')</button>',
+            '<button type="button" class="cbt-nav-btn" onclick="window.cbtFilterReview(\'flagged\', this)">Flagged</button>',
+          '</div>',
+          '<div style="display:flex;gap:8px">',
+            '<button type="button" class="cbt-nav-btn" onclick="window.print()">📄 Save PDF</button>',
+            '<button type="button" class="cbt-nav-btn" onclick="window.openMockExam(\'' + _trackId + '\',' + _pidx + ')">🔄 Retake</button>',
+          '</div>',
+        '</div>',
+      '</div>'
+    ].join('');
+
+    body.insertAdjacentHTML('afterbegin', heroHtml);
 
     var footer = document.getElementById('mock-exam-footer');
     if(footer){
-      footer.innerHTML = '<button class="mock-exit-btn" onclick="exitMockExam()" style="background:var(--indigo,#132746);color:#fff;border:none;padding:10px 24px;font-weight:700">Close CBT Simulator</button>';
+      footer.innerHTML = '<div style="display:flex;justify-content:space-between;width:100%">'
+        + '<button class="mock-exit-btn" onclick="exitMockExam()" style="background:var(--indigo,#132746);color:#fff;border:none;padding:10px 24px;font-weight:700">Close CBT Simulator</button>'
+        + '<button class="cbt-nav-btn cbt-nav-primary" onclick="window.openMockExam(\'' + _trackId + '\',' + _pidx + ')">🔄 Practice Again</button>'
+        + '</div>';
     }
 
-    if(window.renderMathInElement){
-      try { window.renderMathInElement(body, { delimiters: [{left:'$$',right:'$$',display:true},{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}], throwOnError:false }); } catch(e){}
-    } else if(window.MathJax && MathJax.typesetPromise){
-      MathJax.typesetPromise([body]).catch(function(){});
-    }
+    _typesetMath(body);
 
     if(window.CSGamify && window.CSGamify.wbActive && window.CSGamify.toggleWhiteboard){
       window.CSGamify.toggleWhiteboard();
@@ -476,11 +885,43 @@
     body.scrollTop = 0;
   };
 
+  window.cbtFilterReview = function(filter, btn){
+    var body = document.getElementById('mock-exam-body');
+    if(!body) return;
+
+    if(btn){
+      var group = btn.parentElement.querySelectorAll('button');
+      group.forEach(function(b){ b.classList.remove('cbt-nav-primary'); });
+      btn.classList.add('cbt-nav-primary');
+    }
+
+    var qs = body.querySelectorAll('.mock-q');
+    qs.forEach(function(qEl, i){
+      var isRight = (qEl.getAttribute('data-correct') === '1');
+      var isFlagged = !!_flags[i];
+      if(filter === 'mistakes'){
+        qEl.style.display = isRight ? 'none' : 'block';
+      } else if(filter === 'flagged'){
+        qEl.style.display = isFlagged ? 'block' : 'none';
+      } else {
+        qEl.style.display = 'block';
+      }
+    });
+  };
+
   window.exitMockExam = function(){
+    if(!_isSubmitted && _totalSecs > 0 && _secs > 0){
+      var answered = 0;
+      for(var i = 0; i < _pool.length; i++){ if(_isQuestionAnswered(i)) answered++; }
+      var confirmMsg = 'You have completed ' + answered + ' of ' + _pool.length + ' questions.\nAre you sure you want to exit the CBT Simulator without saving?';
+      if(!confirm(confirmMsg)) return;
+    }
+
     if(_tmr){ clearInterval(_tmr); _tmr = null; }
     var overlay = document.getElementById('mock-exam-overlay');
     if(overlay) overlay.classList.remove('show');
     document.body.classList.remove('cbt-open');
+
     if(window.CSGamify && window.CSGamify.wbActive && window.CSGamify.toggleWhiteboard){
       window.CSGamify.toggleWhiteboard();
     }

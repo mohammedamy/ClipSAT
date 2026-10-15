@@ -1158,6 +1158,7 @@ const baseNjk = `<!DOCTYPE html>
       <button class="mock-exit-btn" onclick="exitMockExam()">Exit Without Submitting</button>
       <button class="mock-submit-btn" onclick="submitMockExam()">Submit Paper &#x2713;</button>
     </div>
+    <div id="cbt-palette-modal" class="cbt-palette-overlay" onclick="if(event.target===this)window.closeCBTPalette&&window.closeCBTPalette()"></div>
   </div>
 
   <!-- ============================== MATH HELPER CHAT ============================== -->
