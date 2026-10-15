@@ -1005,18 +1005,24 @@
     });
   };
 
+  var wasTeacher = false;
   var observer = new MutationObserver(function() {
     var isTeacher = document.body.classList.contains('tm-on');
+    var isCbt = document.body.classList.contains('cbt-open');
     var wbBtn = document.getElementById('teacherWhiteboardBtn');
     if (wbBtn) wbBtn.style.display = isTeacher ? 'inline-flex' : 'none';
     if (isTeacher) {
+      wasTeacher = true;
       window._ensureWhiteboard().then(function() {
         // Teacher Mode may have been switched off again while the file loaded.
         if (document.body.classList.contains('tm-on')) window.CSGamify.setupWhiteboard();
       }).catch(function() {});
-    } else if (window.CSGamify.exitWhiteboard) {
-      // Never loaded means there is no board to tear down.
-      window.CSGamify.exitWhiteboard();
+    } else if (wasTeacher) {
+      wasTeacher = false;
+      if (!isCbt && window.CSGamify.exitWhiteboard) {
+        // Never loaded or still in CBT means no tear down
+        window.CSGamify.exitWhiteboard();
+      }
     }
   });
   observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });

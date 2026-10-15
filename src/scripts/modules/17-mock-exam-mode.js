@@ -135,11 +135,13 @@
       body.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--muted)"><div class="ai-spinner" style="margin:0 auto 16px"></div><p>Loading examination question bank…</p></div>';
     }
     overlay.classList.add('show');
+    document.body.classList.add('cbt-open');
 
     _ensureBank(viewId).then(function(bank){
       if(!bank){
         alert('Question bank for "' + viewId.toUpperCase() + '" is not available.');
         overlay.classList.remove('show');
+        document.body.classList.remove('cbt-open');
         return;
       }
 
@@ -247,7 +249,7 @@
           : '';
         toolsDiv.innerHTML = calcBtnHtml
           + '<button type="button" class="hdr-btn" onclick="window.openFormulaModal&&window.openFormulaModal()" style="padding:4px 10px;font-size:.78rem;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:6px;cursor:pointer">📐 Formulas</button>'
-          + '<button type="button" class="hdr-btn" onclick="window.toggleWhiteboard&&window.toggleWhiteboard()" style="padding:4px 10px;font-size:.78rem;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:6px;cursor:pointer">✏️ Scratchpad</button>';
+          + '<button type="button" class="hdr-btn" id="cbt-scratchpad-btn" onclick="window.toggleWhiteboard&&window.toggleWhiteboard()" style="padding:4px 10px;font-size:.78rem;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:6px;cursor:pointer">✏️ Scratchpad</button>';
       }
 
       _secs = (paper.minutes || 45) * 60;
@@ -457,6 +459,9 @@
       MathJax.typesetPromise([body]).catch(function(){});
     }
 
+    if(window.CSGamify && window.CSGamify.wbActive && window.CSGamify.toggleWhiteboard){
+      window.CSGamify.toggleWhiteboard();
+    }
     body.scrollTop = 0;
   };
 
@@ -464,6 +469,10 @@
     if(_tmr){ clearInterval(_tmr); _tmr = null; }
     var overlay = document.getElementById('mock-exam-overlay');
     if(overlay) overlay.classList.remove('show');
+    document.body.classList.remove('cbt-open');
+    if(window.CSGamify && window.CSGamify.wbActive && window.CSGamify.toggleWhiteboard){
+      window.CSGamify.toggleWhiteboard();
+    }
   };
 
 })();

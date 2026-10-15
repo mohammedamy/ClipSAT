@@ -5339,6 +5339,14 @@ body.dark .fc-btn.success { border-color: var(--ok); color: var(--ok); }
 .wb-overlay.active {
   display: block;
 }
+
+/* In CBT (Mock Exam) mode, elevate overlay and toolbar above mock exam (z-index: 97000) */
+body.cbt-open .wb-overlay,
+#mock-exam-overlay.show ~ .wb-overlay,
+.wb-overlay.cbt-mode {
+  z-index: 97500;
+}
+
 .wb-toolbar {
   position: fixed;
   left: 50%;
@@ -5354,10 +5362,32 @@ body.dark .fc-btn.success { border-color: var(--ok); color: var(--ok); }
   background: var(--surface-1);
   border: 1px solid var(--border);
   border-radius: 999px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.1);
   font-family: var(--sans, system-ui, sans-serif);
+  user-select: none;
 }
 .wb-toolbar.active { display: flex; }
+
+body.cbt-open .wb-toolbar,
+#mock-exam-overlay.show ~ .wb-toolbar,
+.wb-toolbar.cbt-mode {
+  z-index: 97600;
+}
+
+.wb-drag-handle {
+  cursor: grab;
+  color: var(--muted, #64748b);
+  padding: 0 4px;
+  font-size: 0.95rem;
+  letter-spacing: -2px;
+  user-select: none;
+  opacity: 0.6;
+}
+.wb-drag-handle:active {
+  cursor: grabbing;
+  opacity: 1;
+}
+
 .wb-group { display: flex; align-items: center; gap: 6px; }
 .wb-sep { width: 1px; height: 22px; background: var(--border); flex-shrink: 0; }
 .wb-tool {
@@ -5386,7 +5416,7 @@ body.dark .fc-btn.success { border-color: var(--ok); color: var(--ok); }
   line-height: 1;
 }
 .wb-mode-btn.on { background: var(--indigo-500); border-color: var(--indigo-500); color: #fff; }
-.wb-mode-btn:hover, .wb-clear-btn:hover, .wb-undo-btn:hover { filter: brightness(1.08); }
+.wb-mode-btn:hover, .wb-clear-btn:hover, .wb-undo-btn:hover, .wb-close-btn:hover { filter: brightness(1.08); }
 .wb-size-input { width: 76px; accent-color: var(--indigo-500); cursor: pointer; }
 .wb-size-dot { border-radius: 50%; background: var(--text-1); flex-shrink: 0; transition: width .1s, height .1s; }
 .wb-clear-btn, .wb-undo-btn {
@@ -5400,6 +5430,22 @@ body.dark .fc-btn.success { border-color: var(--ok); color: var(--ok); }
   white-space: nowrap;
 }
 .wb-clear-btn:disabled, .wb-undo-btn:disabled { opacity: .4; cursor: not-allowed; filter: none; }
+.wb-close-btn {
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-size: .78rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all .15s ease;
+}
+.wb-close-btn:hover {
+  background: #ef4444;
+  color: #fff;
+}
 
 /* ── Cookie & Advertising Consent Banner ─────────────────────────────────── */
 .cookie-consent-bar {

@@ -94,6 +94,10 @@
         var pt = _wbLocalXY(e);
         ctx.beginPath();
         ctx.moveTo(pt.x, pt.y);
+        ctx.lineTo(pt.x + 0.1, pt.y + 0.1);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(pt.x, pt.y);
       });
       overlay.addEventListener('pointermove', function(e) {
         if (!drawing) return;
@@ -135,6 +139,23 @@
       overlay.addEventListener('pointerup', stopStroke);
       overlay.addEventListener('pointercancel', stopStroke);
       overlay.addEventListener('pointerleave', stopStroke);
+
+      // Forward wheel scrolling to mock exam overlay when open so students can scroll exam questions
+      overlay.addEventListener('wheel', function(e) {
+        var mockOverlay = document.getElementById('mock-exam-overlay');
+        if (mockOverlay && mockOverlay.classList.contains('show')) {
+          mockOverlay.scrollTop += e.deltaY;
+          e.preventDefault();
+        }
+      }, { passive: false });
+
+      // Esc key closes the scratchpad
+      window.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && self.wbActive) {
+          self.toggleWhiteboard();
+          e.stopPropagation();
+        }
+      });
 
       // Keep the buffer matched to the viewport across a real window
       // resize/orientation change. Skipped mid-stroke so an in-flight
@@ -189,7 +210,8 @@
       // still display:none, before Teacher Mode's first toggle turns it
       // on, where that would read back 0×0.)
       var dpr = window.devicePixelRatio || 1;
-      var w = document.documentElement.clientWidth, h = document.documentElement.clientHeight;
+      var topOffset = parseInt(overlay.style.top, 10) || 0;
+      var w = document.documentElement.clientWidth, h = Math.max(100, document.documentElement.clientHeight - topOffset);
       if (entry._cssW === w && entry._cssH === h && entry._dpr === dpr) return;
       var prev = (overlay.width && overlay.height) ? ctx.getImageData(0, 0, overlay.width, overlay.height) : null;
       overlay.width = Math.round(w * dpr);
@@ -301,8 +323,15 @@
       if (!colorGroup) return;
       var self = this;
       var isHighlighter = this.wbMode === 'highlighter';
-      var colors = isHighlighter ? this._wbHighlighterColors : this._wbColors;
+      var isDark = document.body.classList.contains('dark') || document.documentElement.getAttribute('data-theme') === 'dark';
+      var colors = isHighlighter
+        ? this._wbHighlighterColors
+        : (isDark ? ['#ef4444', '#38bdf8', '#fbbf24', '#4ade80', '#ffffff'] : this._wbColors);
       var active = this._activeColor();
+      if (isDark && active === '#111827') {
+        this.wbPenColor = '#ffffff';
+        active = '#ffffff';
+      }
       colorGroup.innerHTML = '';
       colors.forEach(function(c) {
         var sw = document.createElement('button');
@@ -349,6 +378,44 @@
       bar.className = 'wb-toolbar';
       bar.setAttribute('role', 'toolbar');
       bar.setAttribute('aria-label', 'Whiteboard tools');
+
+      // Drag handle
+      var dragHandle = document.createElement('div');
+      dragHandle.className = 'wb-drag-handle';
+      dragHandle.title = 'Drag toolbar';
+      dragHandle.textContent = '⋮⋮';
+      bar.appendChild(dragHandle);
+
+      var isDragging = false, dragStart = { x: 0, y: 0 }, barStart = { x: 0, y: 0 };
+      dragHandle.addEventListener('pointerdown', function(e) {
+        isDragging = true;
+        try { dragHandle.setPointerCapture(e.pointerId); } catch(err) {}
+        dragStart = { x: e.clientX, y: e.clientY };
+        var rect = bar.getBoundingClientRect();
+        barStart = { x: rect.left, y: rect.top };
+        bar.style.transform = 'none';
+        bar.style.left = barStart.x + 'px';
+        bar.style.top = barStart.y + 'px';
+        bar.style.bottom = 'auto';
+        e.preventDefault();
+      });
+      dragHandle.addEventListener('pointermove', function(e) {
+        if (!isDragging) return;
+        var dx = e.clientX - dragStart.x;
+        var dy = e.clientY - dragStart.y;
+        var maxW = window.innerWidth - bar.offsetWidth - 8;
+        var maxH = window.innerHeight - bar.offsetHeight - 8;
+        bar.style.left = Math.max(8, Math.min(maxW, barStart.x + dx)) + 'px';
+        bar.style.top = Math.max(8, Math.min(maxH, barStart.y + dy)) + 'px';
+      });
+      function stopDrag(e) {
+        if (isDragging) {
+          isDragging = false;
+          try { dragHandle.releasePointerCapture(e.pointerId); } catch(err) {}
+        }
+      }
+      dragHandle.addEventListener('pointerup', stopDrag);
+      dragHandle.addEventListener('pointercancel', stopDrag);
 
       var sep = function() { var s = document.createElement('div'); s.className = 'wb-sep'; return s; };
 
@@ -403,8 +470,16 @@
       clearBtn.textContent = '🧹 Clear';
       clearBtn.title = 'Sweep the board clean';
       clearBtn.onclick = function() { self.clearAll(); };
+      var closeBtn = document.createElement('button');
+      closeBtn.type = 'button';
+      closeBtn.className = 'wb-close-btn';
+      closeBtn.id = 'wbCloseBtn';
+      closeBtn.textContent = '✕ Close';
+      closeBtn.title = 'Close scratchpad';
+      closeBtn.onclick = function() { self.toggleWhiteboard(); };
       actionGroup.appendChild(undoBtn);
       actionGroup.appendChild(clearBtn);
+      actionGroup.appendChild(closeBtn);
       bar.appendChild(actionGroup);
 
       document.body.appendChild(bar);
@@ -418,10 +493,43 @@
     },
 
     _applyWBVisibility: function() {
-      if (this._wbOverlay) this._wbOverlay.canvas.classList.toggle('active', this.wbActive);
+      var mockOverlay = document.getElementById('mock-exam-overlay');
+      var isCbt = document.body.classList.contains('cbt-open') || !!(mockOverlay && mockOverlay.classList.contains('show'));
+      var mockHdr = document.getElementById('mock-exam-header');
+      var cbtScratchBtn = document.getElementById('cbt-scratchpad-btn');
+
+      if (this._wbOverlay) {
+        var canvas = this._wbOverlay.canvas;
+        canvas.classList.toggle('active', this.wbActive);
+        canvas.classList.toggle('cbt-mode', isCbt);
+        if (isCbt && mockHdr) {
+          canvas.style.top = (mockHdr.offsetHeight || 54) + 'px';
+        } else {
+          canvas.style.top = '0px';
+        }
+      }
       var bar = document.getElementById('wbToolbar');
-      if (bar) bar.classList.toggle('active', this.wbActive);
-      if (this.wbActive) this._sizeOverlay();
+      if (bar) {
+        bar.classList.toggle('active', this.wbActive);
+        bar.classList.toggle('cbt-mode', isCbt);
+      }
+      if (cbtScratchBtn) {
+        if (this.wbActive) {
+          cbtScratchBtn.innerHTML = '✕ Close Scratchpad';
+          cbtScratchBtn.style.background = '#d97706';
+          cbtScratchBtn.style.borderColor = '#b45309';
+          cbtScratchBtn.style.color = '#ffffff';
+        } else {
+          cbtScratchBtn.innerHTML = '✏️ Scratchpad';
+          cbtScratchBtn.style.background = 'rgba(255,255,255,.15)';
+          cbtScratchBtn.style.borderColor = 'rgba(255,255,255,.3)';
+          cbtScratchBtn.style.color = '#ffffff';
+        }
+      }
+      if (this.wbActive) {
+        this._sizeOverlay();
+        this._rebuildColorSwatches();
+      }
     },
 
     // Called the instant Teacher Mode itself turns off (see the
