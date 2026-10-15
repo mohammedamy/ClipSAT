@@ -294,8 +294,69 @@
     if(!bank){alert('Question bank not found for '+viewId);return;}
 
     /* ── helpers ── */
-    function _maths(s){var AENV=['align','aligned','matrix','pmatrix','bmatrix','vmatrix','array','cases','eqnarray','split','gather','gathered','smallmatrix'];var out='',inM=false,aD=0,i=0,L=s.length;while(i<L){if(!inM&&s.slice(i,i+2)==='\\('){out+='\\(';i+=2;inM=true;aD=0;continue;}if(!inM&&s.slice(i,i+2)==='\\['){out+='\\[';i+=2;inM=true;aD=0;continue;}if(inM&&s.slice(i,i+2)==='\\)'){out+='\\)';i+=2;inM=false;aD=0;continue;}if(inM&&s.slice(i,i+2)==='\\]'){out+='\\]';i+=2;inM=false;aD=0;continue;}if(inM&&s.slice(i,i+6)==='\\begin'){var b1=s.indexOf('{',i+6),e1=s.indexOf('}',b1+1);if(b1!==-1&&e1!==-1&&AENV.some(function(v){return s.slice(b1+1,e1).indexOf(v)!==-1;}))aD++;}if(inM&&s.slice(i,i+4)==='\\end'){var b2=s.indexOf('{',i+4),e2=s.indexOf('}',b2+1);if(b2!==-1&&e2!==-1&&AENV.some(function(v){return s.slice(b2+1,e2).indexOf(v)!==-1;})&&aD>0)aD--;}if(!inM&&s[i]==='<'&&i+1<L&&(s[i+1]==='/'||/[a-zA-Z]/.test(s[i+1]))){var tj=s.indexOf('>',i);if(tj!==-1){out+=s.slice(i,tj+1);i=tj+1;continue;}}if(!inM&&s[i]==='\\'&&i+1<L&&(s[i+1]==='%'||s[i+1]==='$')){out+=s[i+1];i+=2;continue;}var c=s[i];if(c==='&'){var sm=s.indexOf(';',i+1);if(sm!==-1&&sm-i<=8&&/^&[a-zA-Z#0-9]+;/.test(s.slice(i,sm+1))){var ent=s.slice(i,sm+1);if(ent==='&amp;'){if(inM&&aD>0)out+='&';else if(inM)out+='\\&';else out+='&amp;';}else out+=ent;i=sm+1;continue;}if(inM&&aD>0)out+='&';else if(inM)out+='\\&';else out+='&amp;';}else if(c==='<')out+='&lt;';else if(c==='>')out+='&gt;';else out+=c;i++;}return out;}
-    function _autoMath(s){if(window.CSAutoMath)return window.CSAutoMath(s);if(!s&&s!==0)return '';s=String(s).trim();if(s.indexOf('\\(')!==-1||s.indexOf('\\[')!==-1||s.indexOf('$$')!==-1||(s.startsWith('$')&&s.endsWith('$'))){return s;}if(/<[a-z/][\s\S]*>/i.test(s)||/[\u0600-\u06FF]/.test(s)){return s;}if(s.indexOf('\\')!==-1)return '\\('+s+'\\)';if(/[\^_{}±≤≥≠≈√πθ∞×÷·]/.test(s)&&!/[^\\]%|^%/.test(s)){return '\\('+s+'\\)';}if(/^[a-zA-Z](?:\([a-zA-Z0-9]+\))?\s*(=|<|>|<=|>=)\s*[-+]?[0-9a-zA-Z]/.test(s)&&!/[^\\]%|^%/.test(s)){var wrapped=s.replace(/\b(or|and)\b/g,'\\text{ $1 }');return '\\('+wrapped+'\\)';}return s;}
+    function _maths(s){
+      if(!s && s !== 0) return '';
+      s = String(s);
+      s = s.replace(/\$\$([\s\S]+?)\$\$/g, '\\[$1\\]');
+      s = s.replace(/\$(?!\s)([^$\n]+?)(?<!\s)\$/g, function(m, inner){
+        if(/^\d{1,3}(?:,\d{3})*(?:\.\d+)?$/.test(inner)) return m;
+        return '\\(' + inner + '\\)';
+      });
+      var AENV=['align','aligned','matrix','pmatrix','bmatrix','vmatrix','array','cases','eqnarray','split','gather','gathered','smallmatrix'];
+      var out='',inM=false,aD=0,i=0,L=s.length;
+      while(i<L){
+        if(!inM&&s.slice(i,i+2)==='\\('){out+='\\(';i+=2;inM=true;aD=0;continue;}
+        if(!inM&&s.slice(i,i+2)==='\\['){out+='\\[';i+=2;inM=true;aD=0;continue;}
+        if(inM&&s.slice(i,i+2)==='\\)'){out+='\\)';i+=2;inM=false;aD=0;continue;}
+        if(inM&&s.slice(i,i+2)==='\\]'){out+='\\]';i+=2;inM=false;aD=0;continue;}
+        if(inM&&s.slice(i,i+6)==='\\begin'){var b1=s.indexOf('{',i+6),e1=s.indexOf('}',b1+1);if(b1!==-1&&e1!==-1&&AENV.some(function(v){return s.slice(b1+1,e1).indexOf(v)!==-1;}))aD++;}
+        if(inM&&s.slice(i,i+4)==='\\end'){var b2=s.indexOf('{',i+4),e2=s.indexOf('}',b2+1);if(b2!==-1&&e2!==-1&&AENV.some(function(v){return s.slice(b2+1,e2).indexOf(v)!==-1;})&&aD>0)aD--;}
+        if(!inM&&s[i]==='<'&&i+1<L&&(s[i+1]==='/'||/[a-zA-Z]/.test(s[i+1]))){var tj=s.indexOf('>',i);if(tj!==-1){out+=s.slice(i,tj+1);i=tj+1;continue;}
+        }
+        if(!inM&&s[i]==='\\'&&i+1<L&&(s[i+1]==='%'||s[i+1]==='$')){out+=s[i+1];i+=2;continue;}
+        var c=s[i];
+        if(c==='&'){
+          var sm=s.indexOf(';',i+1);
+          if(sm!==-1&&sm-i<=8&&/^&[a-zA-Z#0-9]+;/.test(s.slice(i,sm+1))){
+            var ent=s.slice(i,sm+1);
+            if(ent==='&amp;'){if(inM&&aD>0)out+='&';else if(inM)out+='\\&';else out+='&amp;';}
+            else out+=ent;
+            i=sm+1;continue;
+          }
+          if(inM&&aD>0)out+='&';else if(inM)out+='\\&';else out+='&amp;';
+        }
+        else if(c==='<')out+='&lt;';
+        else if(c==='>')out+='&gt;';
+        else out+=c;
+        i++;
+      }
+      return out;
+    }
+    function _autoMath(s){
+      if(window.CSAutoMath) return window.CSAutoMath(s);
+      if(!s && s !== 0) return '';
+      s = String(s).trim();
+      if(s.indexOf('\\(')!==-1 || s.indexOf('\\[')!==-1 || s.indexOf('$$')!==-1) return s;
+      if(s.startsWith('$') && s.endsWith('$') && s.length > 2) return '\\(' + s.slice(1, -1).trim() + '\\)';
+      if(/<[a-z/][\s\S]*>/i.test(s) || /[\u0600-\u06FF]/.test(s)) return s;
+      if(s.indexOf('\\')!==-1) return '\\(' + s + '\\)';
+      if(/[\^_{}±≤≥≠≈√πθ∞×÷·°]/.test(s) && !/[^\\]%|^%/.test(s)) return '\\(' + s + '\\)';
+      if(/^[-+]?\d+(?:\.\d+)?%?$/.test(s)) return '\\(' + s + '\\)';
+      var fracMatch = /^([-+]?)\s*([0-9a-zA-Z]+)\s*\/\s*([0-9a-zA-Z]+)$/.exec(s);
+      if(fracMatch) return '\\(' + (fracMatch[1]||'') + '\\frac{' + fracMatch[2] + '}{' + fracMatch[3] + '}\\)';
+      if(/^\(\s*[-+]?[0-9a-zA-Z.]+\s*,\s*[-+]?[0-9a-zA-Z.]+\s*\)$/.test(s)) return '\\(' + s + '\\)';
+      if(/^[-+]?\d*[a-zA-Z]$/.test(s)) return '\\(' + s + '\\)';
+      var mathFns = {sin:1, cos:1, tan:1, log:1, ln:1, lim:1};
+      var words = s.match(/[a-zA-Z]{2,}/g) || [];
+      if(words.some(function(w){ return !mathFns[w.toLowerCase()]; })){
+        if(/^[a-zA-Z](?:\([a-zA-Z0-9]+\))?\s*(=|<|>|<=|>=)\s*[-+]?[0-9a-zA-Z]/.test(s) && !/[^\\]%|^%/.test(s)){
+          return '\\(' + s.replace(/\b(or|and)\b/g, '\\text{ $1 }') + '\\)';
+        }
+        return s;
+      }
+      if(/[-+*/=<>|()]/.test(s) && /^[-+*/=<>()0-9a-zA-Z.,\s|]+$/.test(s)) return '\\(' + s + '\\)';
+      return s;
+    }
     function _mjRun(el){if(!el)return;function _t(){try{if(window.MathJax){if(typeof MathJax.typesetPromise==='function')MathJax.typesetPromise([el]).catch(function(){});else if(typeof MathJax.typeset==='function')MathJax.typeset([el]);else setTimeout(_t,400);}else{setTimeout(_t,400);}}catch(e){}}setTimeout(_t,80);setTimeout(_t,800);}
     var shuffle=window._shuffle;
     /* Track questions already drawn by an earlier section/part of THIS exam

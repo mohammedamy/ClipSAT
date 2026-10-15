@@ -390,16 +390,20 @@
     // checked with needsImage() (only truly complex math gets an image;
     // "x²" or "2x+3" is left as the already-good plain text). One flat job
     // list keeps this one bounded-concurrency pass instead of two.
+    var autoMath = window.CSAutoMath || function (s) { return s; };
     var jobs = [];
     questions.forEach(function (q, qi) {
       var fig = q.figure || q.fig || null;
       var fHtml = q.figureHtml || null;
-      if (mathImg && mathImg.needsImage(q.text, fig, fHtml)) {
-        jobs.push({ qi: qi, ci: null, text: q.text, figure: fig, figureHtml: fHtml });
+      var qText = autoMath(q.text);
+      if (mathImg && mathImg.needsImage(qText, fig, fHtml)) {
+        jobs.push({ qi: qi, ci: null, text: qText, figure: fig, figureHtml: fHtml });
       }
       if (q.type !== 'frq' && q.choices) {
         q.choices.forEach(function (c, ci) {
-          if (mathImg && mathImg.needsImage(c)) jobs.push({ qi: qi, ci: ci, text: c, figure: null, figureHtml: null });
+          var cText = autoMath(c);
+          var needsC = mathImg ? (typeof mathImg.needsChoiceImage === 'function' ? mathImg.needsChoiceImage(cText) : mathImg.needsImage(cText)) : false;
+          if (needsC) jobs.push({ qi: qi, ci: ci, text: cText, figure: null, figureHtml: null });
         });
       }
     });

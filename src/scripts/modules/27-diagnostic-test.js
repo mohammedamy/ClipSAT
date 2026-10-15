@@ -101,28 +101,40 @@
   }
 
   function _autoMath(s){
-    if(window.CSAutoMath)return window.CSAutoMath(s);
-    if(!s&&s!==0)return '';
-    s=String(s).trim();
-    if(s.indexOf('\\(')!==-1||s.indexOf('\\[')!==-1||s.indexOf('$$')!==-1||(s.startsWith('$')&&s.endsWith('$'))){
+    if(window.CSAutoMath) return window.CSAutoMath(s);
+    if(!s && s !== 0) return '';
+    s = String(s).trim();
+    if(s.indexOf('\\(')!==-1 || s.indexOf('\\[')!==-1 || s.indexOf('$$')!==-1) return s;
+    if(s.startsWith('$') && s.endsWith('$') && s.length > 2) return '\\(' + s.slice(1, -1).trim() + '\\)';
+    if(/<[a-z/][\s\S]*>/i.test(s) || /[\u0600-\u06FF]/.test(s)) return s;
+    if(s.indexOf('\\')!==-1) return '\\(' + s + '\\)';
+    if(/[\^_{}±≤≥≠≈√πθ∞×÷·°]/.test(s) && !/[^\\]%|^%/.test(s)) return '\\(' + s + '\\)';
+    if(/^[-+]?\d+(?:\.\d+)?%?$/.test(s)) return '\\(' + s + '\\)';
+    var fracMatch = /^([-+]?)\s*([0-9a-zA-Z]+)\s*\/\s*([0-9a-zA-Z]+)$/.exec(s);
+    if(fracMatch) return '\\(' + (fracMatch[1]||'') + '\\frac{' + fracMatch[2] + '}{' + fracMatch[3] + '}\\)';
+    if(/^\(\s*[-+]?[0-9a-zA-Z.]+\s*,\s*[-+]?[0-9a-zA-Z.]+\s*\)$/.test(s)) return '\\(' + s + '\\)';
+    if(/^[(\[]\s*[-+]?[0-9a-zA-Z.]+\s*,\s*[-+]?[0-9a-zA-Z.]+\s*[)\]]$/.test(s)) return '\\(' + s + '\\)';
+    if(/^[-+]?\d*[a-zA-Z]$/.test(s)) return '\\(' + s + '\\)';
+    var mathFns = {sin:1, cos:1, tan:1, sec:1, csc:1, cot:1, log:1, ln:1, lim:1, exp:1, det:1, deg:1, rad:1};
+    var words = s.match(/[a-zA-Z]{2,}/g) || [];
+    if(words.some(function(w){ return !mathFns[w.toLowerCase()]; })){
+      if(/^[a-zA-Z](?:\([a-zA-Z0-9]+\))?\s*(=|<|>|<=|>=)\s*[-+]?[0-9a-zA-Z]/.test(s) && !/[^\\]%|^%/.test(s)){
+        return '\\(' + s.replace(/\b(or|and)\b/g, '\\text{ $1 }') + '\\)';
+      }
       return s;
     }
-    if(/<[a-z/][\s\S]*>/i.test(s)||/[\u0600-\u06FF]/.test(s)){
-      return s;
-    }
-    if(s.indexOf('\\')!==-1)return '\\('+s+'\\)';
-    if(/[\^_{}±≤≥≠≈√πθ∞×÷·]/.test(s)&&!/[^\\]%|^%/.test(s)){
-      return '\\('+s+'\\)';
-    }
-    if(/^[a-zA-Z](?:\([a-zA-Z0-9]+\))?\s*(=|<|>|<=|>=)\s*[-+]?[0-9a-zA-Z]/.test(s)&&!/[^\\]%|^%/.test(s)){
-      var wrapped=s.replace(/\b(or|and)\b/g,'\\text{ $1 }');
-      return '\\('+wrapped+'\\)';
-    }
+    if(/[-+*/=<>|()]/.test(s) && /^[-+*/=<>()0-9a-zA-Z.,\s|]+$/.test(s)) return '\\(' + s + '\\)';
     return s;
   }
 
   function formatMath(s) {
     if (!s && s !== 0) return '';
+    s = String(s);
+    s = s.replace(/\$\$([\s\S]+?)\$\$/g, '\\[$1\\]');
+    s = s.replace(/\$(?!\s)([^$\n]+?)(?<!\s)\$/g, function(m, inner){
+      if(/^\d{1,3}(?:,\d{3})*(?:\.\d+)?$/.test(inner)) return m;
+      return '\\(' + inner + '\\)';
+    });
     s = _autoMath(s);
     var out = '', inM = false, i = 0, L = s.length;
     while (i < L) {

@@ -202,6 +202,14 @@ window.launchPracticeQuiz=function(mistake){
   }
 
   function _maths(s){
+    if(!s && s !== 0) return '';
+    s = String(s);
+    // Normalize $$ ... $$ and $ ... $ to \[ ... \] and \( ... \)
+    s = s.replace(/\$\$([\s\S]+?)\$\$/g, '\\[$1\\]');
+    s = s.replace(/\$(?!\s)([^$\n]+?)(?<!\s)\$/g, function(m, inner){
+      if(/^\d{1,3}(?:,\d{3})*(?:\.\d+)?$/.test(inner)) return m; // protect literal currency
+      return '\\(' + inner + '\\)';
+    });
     /* Smart math renderer:
        - Outside math  → HTML-escape &, <, >
        - Inside math, inside align/matrix/cases env → & is valid column sep, leave it
@@ -282,23 +290,58 @@ window.launchPracticeQuiz=function(mistake){
   function _autoMath(s){
     if(!s && s !== 0) return '';
     s = String(s).trim();
-    if(s.indexOf('\\(')!==-1 || s.indexOf('\\[')!==-1 || s.indexOf('$$')!==-1 || (s.startsWith('$')&&s.endsWith('$'))){
-      return s;
+    if(s.indexOf('\\(')!==-1 || s.indexOf('\\[')!==-1 || s.indexOf('$$')!==-1) return s;
+    if(s.startsWith('$') && s.endsWith('$') && s.length > 2){
+      return '\\(' + s.slice(1, -1).trim() + '\\)';
     }
     if(/<[a-z/][\s\S]*>/i.test(s) || /[\u0600-\u06FF]/.test(s)){
       return s;
     }
     if(s.indexOf('\\')!==-1) return '\\(' + s + '\\)';
-    if(/[\^_{}±≤≥≠≈√πθ∞×÷·]/.test(s) && !/[^\\]%|^%/.test(s)){
+    if(/[\^_{}±≤≥≠≈√πθ∞×÷·°]/.test(s) && !/[^\\]%|^%/.test(s)){
       return '\\(' + s + '\\)';
     }
-    if(/^[a-zA-Z](?:\([a-zA-Z0-9]+\))?\s*(=|<|>|<=|>=)\s*[-+]?[0-9a-zA-Z]/.test(s) && !/[^\\]%|^%/.test(s)){
-      var wrapped = s.replace(/\b(or|and)\b/g, '\\text{ $1 }');
-      return '\\(' + wrapped + '\\)';
+    // Pure numbers, decimals, negatives, percents: "4", "-2", "0", "3.14", "25%"
+    if(/^[-+]?\d+(?:\.\d+)?%?$/.test(s)){
+      return '\\(' + s + '\\)';
+    }
+    // Simple fractions: "1/2", "-3/4", "x/2", "3/x" -> convert to \frac
+    var fracMatch = /^([-+]?)\s*([0-9a-zA-Z]+)\s*\/\s*([0-9a-zA-Z]+)$/.exec(s);
+    if(fracMatch){
+      var sign = fracMatch[1] ? fracMatch[1] : '';
+      return '\\(' + sign + '\\frac{' + fracMatch[2] + '}{' + fracMatch[3] + '}\\)';
+    }
+    // Ordered pairs / coordinates: "(0, 3)", "(-1, 4)", "(x, y)"
+    if(/^\(\s*[-+]?[0-9a-zA-Z.]+\s*,\s*[-+]?[0-9a-zA-Z.]+\s*\)$/.test(s)){
+      return '\\(' + s + '\\)';
+    }
+    // Intervals / sets: "[0, 5]", "(1, 4]"
+    if(/^[(\[]\s*[-+]?[0-9a-zA-Z.]+\s*,\s*[-+]?[0-9a-zA-Z.]+\s*[)\]]$/.test(s)){
+      return '\\(' + s + '\\)';
+    }
+    // Monomials: "x", "-y", "3x", "-4a", "2k"
+    if(/^[-+]?\d*[a-zA-Z]$/.test(s)){
+      return '\\(' + s + '\\)';
+    }
+    // Check for English words (2+ characters) that are not math functions
+    var mathFunctions = {sin:1, cos:1, tan:1, sec:1, csc:1, cot:1, log:1, ln:1, lim:1, exp:1, det:1, deg:1, rad:1};
+    var words = s.match(/[a-zA-Z]{2,}/g) || [];
+    var hasEnglishWord = words.some(function(w){ return !mathFunctions[w.toLowerCase()]; });
+    if(hasEnglishWord){
+      if(/^[a-zA-Z](?:\([a-zA-Z0-9]+\))?\s*(=|<|>|<=|>=)\s*[-+]?[0-9a-zA-Z]/.test(s) && !/[^\\]%|^%/.test(s)){
+        var wrapped = s.replace(/\b(or|and)\b/g, '\\text{ $1 }');
+        return '\\(' + wrapped + '\\)';
+      }
+      return s;
+    }
+    // Algebraic expressions with operators: "x + 1", "2x - 3", "3x + y = 10", "x < 5", "a = 2"
+    if(/[-+*/=<>|()]/.test(s) && /^[-+*/=<>()0-9a-zA-Z.,\s|]+$/.test(s)){
+      return '\\(' + s + '\\)';
     }
     return s;
   }
   window.CSAutoMath=_autoMath;
+  window._autoMath=_autoMath;
 
   window.genChapterQuiz=function(btn){
     var wrap=btn.closest('.ch-quiz-wrap');

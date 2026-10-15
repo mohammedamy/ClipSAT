@@ -391,9 +391,9 @@
         return [1,2,5,10,20,25,50,100].find(function(n){return n>=raw;})||Math.ceil(raw/10)*10;
       };
       var stepX=_step(xl[1]-xl[0],gw), stepY=_step(yl[1]-yl[0],gh);
-      s+='<g font-size="8.5" font-weight="500" fill="'+FIG_MUTED+'" text-anchor="middle">';
+      s+='<g font-size="8.5" font-weight="500" fill="'+FIG_MUTED+'" text-anchor="middle" font-family="KaTeX_Main, \'Times New Roman\', serif">';
       for(var tx=Math.ceil(xl[0]);tx<=Math.floor(xl[1]);tx++){if(tx===0||tx%stepX!==0)continue;var tpx=pad+(tx-xl[0])*sx;if(tpx<pad+4||tpx>W-pad-4)continue;s+='<text x="'+tpx+'" y="'+(oy+13)+'" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2.5" stroke-linejoin="round">'+tx+'</text><line x1="'+tpx+'" y1="'+(oy-3)+'" x2="'+tpx+'" y2="'+(oy+3)+'" stroke="'+FIG_MUTED+'" stroke-width="0.75"/>';}
-      s+='</g><g font-size="8.5" font-weight="500" fill="'+FIG_MUTED+'" text-anchor="end">';
+      s+='</g><g font-size="8.5" font-weight="500" fill="'+FIG_MUTED+'" text-anchor="end" font-family="KaTeX_Main, \'Times New Roman\', serif">';
       for(var ty=Math.ceil(yl[0]);ty<=Math.floor(yl[1]);ty++){if(ty===0||ty%stepY!==0)continue;var tpy=pad+(yl[1]-ty)*sy;if(tpy<pad+4||tpy>H-pad-4)continue;s+='<text x="'+(ox-5)+'" y="'+(tpy+3)+'" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="2.5" stroke-linejoin="round">'+ty+'</text><line x1="'+(ox-3)+'" y1="'+tpy+'" x2="'+(ox+3)+'" y2="'+tpy+'" stroke="'+FIG_MUTED+'" stroke-width="0.75"/>';}
       s+='</g>';
       /* axis labels — elegant mathematical styling */
@@ -448,7 +448,7 @@
               _anc = 'end';
             }
           }
-          s+='<text x="'+_lblX.toFixed(1)+'" y="'+_lblY.toFixed(1)+'" font-size="9.5" font-weight="600" fill="'+col+'" text-anchor="'+_anc+'" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">'+fmtFnLabel+'</text>';
+          s+='<text x="'+_lblX.toFixed(1)+'" y="'+_lblY.toFixed(1)+'" font-size="9.5" font-weight="600" fill="'+col+'" text-anchor="'+_anc+'" font-family="KaTeX_Math, KaTeX_Main, \'Times New Roman\', serif" font-style="italic" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">'+fmtFnLabel+'</text>';
         }
       });
       /* points with smart collision-free label placement */
@@ -458,7 +458,7 @@
         s+='<circle cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="'+(p.r||4.2)+'" fill="'+(p.open?FIG_BG:(p.color||FIG_INDIGO2))+'" stroke="'+(p.open?(p.color||FIG_INDIGO2):FIG_BG)+'" stroke-width="'+(p.open?1.8:2)+'"/>';
         var sl = solvedLabels[pIdx];
         if(sl && sl.label){
-          s+='<text x="'+sl.x.toFixed(1)+'" y="'+sl.y.toFixed(1)+'" font-size="9.5" font-weight="600" fill="'+FIG_INK+'" text-anchor="'+sl.anchor+'" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">'+sl.label+'</text>';
+          s+='<text x="'+sl.x.toFixed(1)+'" y="'+sl.y.toFixed(1)+'" font-size="9.5" font-weight="600" fill="'+FIG_INK+'" text-anchor="'+sl.anchor+'" font-family="KaTeX_Math, KaTeX_Main, \'Times New Roman\', serif" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">'+sl.label+'</text>';
         }
       });
       /* shaded regions */

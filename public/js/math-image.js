@@ -85,7 +85,13 @@
   // actually was — this also looks for an actual LaTeX command (\foo) or a
   // braced script (^{...}/_{...}), which catches undelimited math too.
   function hasMath(text) {
-    return /\\\(|\\\[|\\[a-zA-Z]|[\^_]\{/.test(String(text || ''));
+    var s = String(text || '');
+    if (!s) return false;
+    if (/\\\(|\\\[|\$\$|\$(?!\s*\d+(?:\.\d+)?(?:\s|$))/.test(s)) return true;
+    if (/\\[a-zA-Z]|[\^_]\{?[\w+-]+/.test(s)) return true;
+    if (/[\^_{}±≤≥≠≈√πθ∞×÷·°]/.test(s)) return true;
+    if (/\b(sin|cos|tan|sec|csc|cot|log|ln|lim)\b/.test(s)) return true;
+    return false;
   }
 
   // "Contains math delimiters" is NOT the same question as "actually needs
@@ -105,8 +111,26 @@
   function needsImage(text, figure, figureHtml) {
     if (figure || figureHtml) return true;
     text = String(text || '');
-    if (!hasMath(text)) return false;
-    return HARD_COMMANDS.test(text) || COMPLEX_SCRIPT.test(text);
+    return hasMath(text);
+  }
+
+  function needsChoiceImage(text) {
+    var s = String(text || '').trim();
+    if (!s) return false;
+    if ((s.startsWith('\\(') && s.endsWith('\\)')) || (s.startsWith('\\[') && s.endsWith('\\]'))) {
+      s = s.slice(2, -2).trim();
+    } else if (s.startsWith('$') && s.endsWith('$') && s.length > 2) {
+      s = s.slice(1, -1).trim();
+    }
+    if (/^[-+]?\d+(?:\.\d+)?%?$/.test(s)) return false;
+    if (/^[-+]?[a-zA-Z]$/.test(s)) return false;
+    if (/^\(\s*[-+]?[0-9.]+\s*,\s*[-+]?[0-9.]+\s*\)$/.test(s)) return false;
+    var words = s.match(/[a-zA-Z]{2,}/g) || [];
+    var mathFns = {sin:1, cos:1, tan:1, sec:1, csc:1, cot:1, log:1, ln:1, lim:1, exp:1, frac:1, sqrt:1};
+    if (words.length >= 2 && words.every(function(w){ return !mathFns[w.toLowerCase()]; }) && !/[\\^_{}√±≤≥≠≈πθ∞×÷]/.test(s)) {
+      return false;
+    }
+    return /\\(frac|sqrt|int|sum|prod|lim|begin|vec|overline)|[\^_]|\\[a-zA-Z]|[\^_{}±≤≥≠≈√πθ∞×÷·°]/.test(s);
   }
 
   // Always-on (not gated behind CLIPSAT_GOOGLE_DEBUG) — every failure here
@@ -193,7 +217,6 @@
           }
         }
 
-        var textNeedsKaTeX = text && hasMath(text) && (HARD_COMMANDS.test(text) || COMPLEX_SCRIPT.test(text));
         var isArabic = /[\u0600-\u06FF]/.test(String(text || ''));
 
         var styles = '<style>'
@@ -204,8 +227,15 @@
           + '</style>';
 
         var inner = '';
-        if (textNeedsKaTeX || (!figHtml && text)) {
-          var wrapped = hasMath(text) && !/\\\(|\\\[|\$/.test(text) ? '\\(' + text + '\\)' : text;
+        if (text) {
+          var autoMath = window.CSAutoMath || function (s) { return s; };
+          var processedText = autoMath(text);
+          var wrapped = hasMath(processedText) && !/\\\(|\\\[|\$/.test(processedText) ? '\\(' + processedText + '\\)' : processedText;
+          wrapped = wrapped.replace(/\$\$([\s\S]+?)\$\$/g, '\\[$1\\]');
+          wrapped = wrapped.replace(/\$(?!\s)([^$\n]+?)(?<!\s)\$/g, function(m, innerM){
+            if(/^\d{1,3}(?:,\d{3})*(?:\.\d+)?$/.test(innerM)) return m;
+            return '\\(' + innerM + '\\)';
+          });
           var textStyle = 'margin-bottom:' + (figHtml ? '12px;' : '0;')
             + (isArabic ? 'direction:rtl;text-align:right;font-family:"Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;' : 'text-align:left;');
           inner += '<div class="clipsat-math-stem" style="' + textStyle + '">' + escHtml(wrapped) + '</div>';
@@ -334,6 +364,7 @@
     SCOPES: ['https://www.googleapis.com/auth/drive.file'],
     hasMath: hasMath,
     needsImage: needsImage,
+    needsChoiceImage: needsChoiceImage,
     renderQuestionImage: renderQuestionImage
   };
 })();

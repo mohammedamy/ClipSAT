@@ -183,7 +183,7 @@
         var fHtml = q.figureHtml || null;
         if (mi && mi.needsImage(q.text, fig, fHtml)) mathCount++;
         if (q.type !== 'frq' && q.choices) {
-          q.choices.forEach(function (c) { if (mi && mi.needsImage(c)) mathCount++; });
+          q.choices.forEach(function (c) { if (mi && (mi.needsChoiceImage ? mi.needsChoiceImage(c) : mi.needsImage(c))) mathCount++; });
         }
       });
       openPanel('<h3>Creating your form…</h3><p class="cs-gform-note" id="cs-gform-progress">'
