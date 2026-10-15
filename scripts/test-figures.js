@@ -654,6 +654,27 @@ it('AI question verifier detects and patches/rejects figure answer leaks and mis
   assert.ok(prob2 && prob2.includes('figure graph does not fit the question topic'), 'Should detect mismatched function graph on trig evaluation');
 });
 
+it('Figure renderer handles camelCase and synonym aliases correctly', () => {
+  const aliases = [
+    { type: 'boxplot', min: 10, q1: 20, med: 30, q3: 40, max: 50 },
+    { type: 'cumulativeFrequency', points: [[0, 0], [50, 20], [100, 60]] },
+    { type: 'treeDiagram', branches: [{ label: 'A', prob: '0.6' }, { label: 'B', prob: '0.4' }] },
+    { type: 'bearing', pointA: { name: 'P', x: 50, y: 100 }, pointB: { name: 'Q', x: 150, y: 50 }, bearing: '045°' },
+    { type: 'signChart', points: [1], rows: [{ label: "f'(x)", signs: ['+', '0', '-'] }] },
+    { type: 'transformationGrid', object: [[0, 0], [2, 0], [0, 2]], image: [[0, 0], [0, 2], [-2, 0]] }
+  ];
+
+  aliases.forEach(spec => {
+    const svg = window.renderMathFigure(spec);
+    assert.ok(svg && svg.length > 50, `renderMathFigure must produce SVG for alias ${spec.type}`);
+    assert.ok(svg.includes('<svg') && svg.includes('</svg>'), `Output for ${spec.type} must contain <svg> tags`);
+    
+    // Also test window._renderFig
+    const rendered = window._renderFig(spec);
+    assert.ok(rendered && rendered.includes('<svg'), `_renderFig must route alias ${spec.type} cleanly`);
+  });
+});
+
 console.log(`\n── Figure Tests Summary: ${passed} passed, ${failed} failed ──`);
 if (failed > 0) {
   process.exit(1);

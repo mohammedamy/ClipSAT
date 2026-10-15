@@ -358,16 +358,31 @@
        are routed to the same renderers used by the AI test generator and lesson figures,
        so every figure — regardless of which schema authored it — renders through one call surface. */
     if(typeof window.renderMathFigure==='function' &&
-       (fig.type==='function_graph'||fig.type==='geometry_2d'||fig.type==='geometry_3d'||
-        fig.type==='bar_chart'||fig.type==='scatter'||fig.type==='pie'||fig.type==='number_line'||fig.type==='table'||
-        fig.type==='box_plot'||fig.type==='histogram'||fig.type==='dot_plot'||
-        fig.type==='unit_circle'||fig.type==='sinusoid'||fig.type==='normal_curve'||
-        fig.type==='normal_dist'||fig.type==='slope_field'||fig.type==='two_way_table'||
-        fig.type==='cumulative_frequency'||fig.type==='tree_diagram'||fig.type==='bearings'||
-        fig.type==='sign_chart'||fig.type==='transformation_grid'||fig.type==='voronoi')){
+       (fig.type==='function_graph'||fig.type==='functionGraph'||fig.type==='plot'||fig.type==='fn_graph'||
+        fig.type==='geometry_2d'||fig.type==='geometry2d'||fig.type==='geom2d'||
+        fig.type==='geometry_3d'||fig.type==='geometry3d'||fig.type==='geom3d'||
+        fig.type==='bar_chart'||fig.type==='barChart'||fig.type==='barchart'||
+        fig.type==='scatter'||fig.type==='scatter_plot'||fig.type==='scatterPlot'||fig.type==='scatterplot'||
+        fig.type==='pie'||fig.type==='pie_chart'||fig.type==='pieChart'||
+        fig.type==='number_line'||fig.type==='numberLine'||
+        fig.type==='table'||
+        fig.type==='box_plot'||fig.type==='boxPlot'||fig.type==='boxplot'||fig.type==='box'||
+        fig.type==='histogram'||
+        fig.type==='dot_plot'||fig.type==='dotPlot'||fig.type==='dotplot'||
+        fig.type==='unit_circle'||fig.type==='unitCircle'||fig.type==='unitcircle'||
+        fig.type==='sinusoid'||
+        fig.type==='normal_curve'||fig.type==='normalCurve'||fig.type==='normal_dist'||fig.type==='normalDist'||fig.type==='normal'||
+        fig.type==='slope_field'||fig.type==='slopeField'||fig.type==='slopefield'||
+        fig.type==='two_way_table'||fig.type==='twoWayTable'||fig.type==='twowaytable'||
+        fig.type==='cumulative_frequency'||fig.type==='cumulativeFrequency'||fig.type==='cumulative_freq'||fig.type==='cumulativeFreq'||fig.type==='ogive'||
+        fig.type==='tree_diagram'||fig.type==='treeDiagram'||fig.type==='tree'||
+        fig.type==='bearings'||fig.type==='bearing'||fig.type==='bearingDiagram'||fig.type==='bearing_diagram'||
+        fig.type==='sign_chart'||fig.type==='signChart'||
+        fig.type==='transformation_grid'||fig.type==='transformationGrid'||fig.type==='transformation'||
+        fig.type==='voronoi')){
       var inner=window.renderMathFigure(fig);
       if(!inner) return '';
-      if(fig.type==='table'||fig.type==='two_way_table') return inner;
+      if(fig.type==='table'||fig.type==='two_way_table'||fig.type==='twoWayTable'||fig.type==='twowaytable') return inner;
       var capW=fig.width||fig.w||320;
       return '<span style="display:inline-block;width:100%;max-width:'+capW+'px">'+inner+'</span>';
     }
@@ -1198,29 +1213,93 @@ function renderMathFigure(spec){
   if(typeof spec==='string') return spec;
   if(!spec.type) return '';
   switch(spec.type){
-    case 'function_graph': return renderFnGraph(spec);
-    case 'geometry_2d':    return renderGeom2D(spec);
-    case 'geometry_3d':    return renderGeom3D(spec);
-    case 'bar_chart':      return renderBarChart(spec);
-    case 'scatter':        return renderScatter(spec);
-    case 'pie':            return renderPie(spec);
-    case 'number_line':    return renderNumberLine(spec);
-    case 'table':          return renderTableFigure(spec);
-    case 'box_plot':       return renderBoxPlot(spec);
-    case 'histogram':      return renderHistogram(spec);
-    case 'dot_plot':       return renderDotPlot(spec);
-    case 'unit_circle':    return renderUnitCircle(spec);
-    case 'sinusoid':       return renderSinusoid(spec);
+    case 'function_graph':
+    case 'functionGraph':
+    case 'plot':
+    case 'fn_graph':
+      return renderFnGraph(spec);
+    case 'geometry_2d':
+    case 'geometry2d':
+    case 'geom2d':
+      return renderGeom2D(spec);
+    case 'geometry_3d':
+    case 'geometry3d':
+    case 'geom3d':
+      return renderGeom3D(spec);
+    case 'bar_chart':
+    case 'barChart':
+    case 'barchart':
+      return renderBarChart(spec);
+    case 'scatter':
+    case 'scatter_plot':
+    case 'scatterPlot':
+    case 'scatterplot':
+      return renderScatter(spec);
+    case 'pie':
+    case 'pie_chart':
+    case 'pieChart':
+      return renderPie(spec);
+    case 'number_line':
+    case 'numberLine':
+    case 'numberline':
+      return renderNumberLine(spec);
+    case 'table':
+      return renderTableFigure(spec);
+    case 'box_plot':
+    case 'boxPlot':
+    case 'boxplot':
+    case 'box':
+      return renderBoxPlot(spec);
+    case 'histogram':
+      return renderHistogram(spec);
+    case 'dot_plot':
+    case 'dotPlot':
+    case 'dotplot':
+      return renderDotPlot(spec);
+    case 'unit_circle':
+    case 'unitCircle':
+    case 'unitcircle':
+      return renderUnitCircle(spec);
+    case 'sinusoid':
+      return renderSinusoid(spec);
     case 'normal_curve':
-    case 'normal_dist':    return renderNormalCurve(spec);
-    case 'slope_field':    return renderSlopeField(spec);
-    case 'two_way_table':  return renderTwoWayTable(spec);
-    case 'cumulative_frequency': return renderCumulativeFrequency(spec);
-    case 'tree_diagram':          return renderTreeDiagram(spec);
-    case 'bearings':              return renderBearings(spec);
-    case 'sign_chart':            return renderSignChart(spec);
-    case 'transformation_grid':  return renderTransformationGrid(spec);
-    case 'voronoi':              return renderVoronoi(spec);
+    case 'normalCurve':
+    case 'normal_dist':
+    case 'normalDist':
+    case 'normal':
+      return renderNormalCurve(spec);
+    case 'slope_field':
+    case 'slopeField':
+    case 'slopefield':
+      return renderSlopeField(spec);
+    case 'two_way_table':
+    case 'twoWayTable':
+    case 'twowaytable':
+      return renderTwoWayTable(spec);
+    case 'cumulative_frequency':
+    case 'cumulativeFrequency':
+    case 'cumulative_freq':
+    case 'cumulativeFreq':
+    case 'ogive':
+      return renderCumulativeFrequency(spec);
+    case 'tree_diagram':
+    case 'treeDiagram':
+    case 'tree':
+      return renderTreeDiagram(spec);
+    case 'bearings':
+    case 'bearing':
+    case 'bearingDiagram':
+    case 'bearing_diagram':
+      return renderBearings(spec);
+    case 'sign_chart':
+    case 'signChart':
+      return renderSignChart(spec);
+    case 'transformation_grid':
+    case 'transformationGrid':
+    case 'transformation':
+      return renderTransformationGrid(spec);
+    case 'voronoi':
+      return renderVoronoi(spec);
     default: return '';
   }
 }
