@@ -69,7 +69,7 @@ isRtl: false
   #calc-external-link[hidden]{display:none}
 
   .calc-body{display:flex;gap:14px;align-items:flex-start}
-  #calc-container{flex:1;min-width:0;width:100%;height:min(72vh,640px);min-height:420px;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--panel)}
+  #calc-container{flex:1;min-width:0;width:100%;height:min(78vh,720px);min-height:480px;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--panel);position:relative}
   #calc-container iframe{width:100%;height:100%;border:0;display:block}
   .calc-loading{display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted,#667085);font-size:14px}
 
@@ -125,10 +125,20 @@ isRtl: false
 (function () {
   'use strict';
 
-  // Exam Mode: Desmos's own documented restriction options, matching the
-  // feature set real testing platforms configure — no images/notes/folders
-  // to paste in outside content, no author tools, and a locked-down function
-  // set (restrictedFunctions) that mirrors what a real exam calculator allows.
+  // Full Graphing Calculator configuration: enables on-screen keypad, expressions drawer,
+  // settings menu (radiant/degree, grid controls, projector mode), zoom buttons, and dark mode.
+  var GRAPHING_OPTS = {
+    keypad: true,
+    expressions: true,
+    settingsMenu: true,
+    zoomButtons: true,
+    expressionsTopbar: true,
+    pointsOfInterest: true,
+    trace: true,
+    border: false
+  };
+
+  // Exam Mode: Desmos's documented restricted-function configuration matching Digital SAT / AP
   var EXAM_OPTS = {
     authorFeatures: false,
     images: false,
@@ -137,75 +147,130 @@ isRtl: false
     restrictedFunctions: true,
     pasteGraphLink: false,
     pasteTableData: false,
-    settingsMenu: false
+    settingsMenu: false,
+    keypad: true,
+    expressions: true,
+    zoomButtons: true,
+    border: false
   };
 
-  var IFRAME_MODES = {
-    graphing:   { embed: 'https://www.desmos.com/calculator?embed',  external: 'https://www.desmos.com/calculator' },
-    threeD:     { embed: 'https://www.desmos.com/3d?embed',          external: 'https://www.desmos.com/3d' },
-    scientific: { embed: 'https://www.desmos.com/scientific?embed',  external: 'https://www.desmos.com/scientific' },
-    geometry:   { embed: 'https://www.desmos.com/geometry?embed',    external: 'https://www.desmos.com/geometry' }
+  var EXTERNAL_LINKS = {
+    graphing:   'https://www.desmos.com/calculator',
+    threeD:     'https://www.desmos.com/3d',
+    scientific: 'https://www.desmos.com/scientific',
+    geometry:   'https://www.desmos.com/geometry',
+    exam:       null
+  };
+
+  var IFRAME_FALLBACKS = {
+    threeD:     'https://www.desmos.com/3d?embed',
+    geometry:   'https://www.desmos.com/geometry?embed',
+    graphing:   'https://www.desmos.com/calculator?embed',
+    scientific: 'https://www.desmos.com/scientific?embed'
   };
 
   var container = document.getElementById('calc-container');
   var externalLink = document.getElementById('calc-external-link');
   var buttons = Array.prototype.slice.call(document.querySelectorAll('.calc-mode-btn'));
-  var apiInstance = null; // the live Desmos.GraphingCalculator instance, when Exam Mode is mounted
-  var mountToken = 0;     // guards against a delayed Exam Mode API-ready callback mounting after the user has switched away
+  var apiInstance = null; // live Desmos instance
+  var activeMode = 'graphing';
+  var mountToken = 0;
 
   function isDark() {
-    return document.documentElement.getAttribute('data-theme') === 'dark';
+    return document.documentElement.getAttribute('data-theme') === 'dark' || document.body.classList.contains('dark');
   }
 
   function destroyApiInstance() {
-    if (apiInstance && typeof apiInstance.destroy === 'function') apiInstance.destroy();
+    if (apiInstance && typeof apiInstance.destroy === 'function') {
+      try { apiInstance.destroy(); } catch (e) {}
+    }
     apiInstance = null;
   }
 
   function mountIframe(modeKey) {
     destroyApiInstance();
     container.innerHTML = '';
-    var cfg = IFRAME_MODES[modeKey];
+    var src = IFRAME_FALLBACKS[modeKey] || IFRAME_FALLBACKS.graphing;
     var frame = document.createElement('iframe');
-    frame.src = cfg.embed;
+    frame.src = src;
     frame.title = 'Desmos ' + modeKey + ' calculator';
     frame.setAttribute('allow', 'clipboard-read; clipboard-write; fullscreen');
     container.appendChild(frame);
     if (externalLink) {
-      externalLink.href = cfg.external;
-      externalLink.hidden = false;
+      if (EXTERNAL_LINKS[modeKey]) {
+        externalLink.href = EXTERNAL_LINKS[modeKey];
+        externalLink.hidden = false;
+      } else {
+        externalLink.hidden = true;
+      }
     }
   }
 
-  function mountExam(token) {
+  function mountApiCalculator(modeKey, token, savedState) {
     if (!window.Desmos || typeof window.Desmos.GraphingCalculator !== 'function') {
-      // Only visible if calculator.js hasn't finished loading yet (rare —
-      // it's a deferred script fetched from page load) — without this the
-      // container would otherwise keep silently showing whichever mode was
-      // selected before Exam Mode while this polls in the background.
       destroyApiInstance();
       container.innerHTML = '<div class="calc-loading">' +
-        ((window.i18n && window.i18n.t) ? window.i18n.t('calc.loadingExam') : 'Loading Exam Mode…') +
+        ((window.i18n && window.i18n.t) ? window.i18n.t('calc.loading') : 'Loading Desmos calculator…') +
         '</div>';
       if (externalLink) externalLink.hidden = true;
-      setTimeout(function () { if (token === mountToken) mountExam(token); }, 50);
+      setTimeout(function () {
+        if (token === mountToken) mount(modeKey, savedState);
+      }, 50);
       return;
     }
-    if (token !== mountToken) return; // user switched to a different mode while we were waiting
+
+    if (token !== mountToken) return;
     destroyApiInstance();
     container.innerHTML = '';
-    apiInstance = window.Desmos.GraphingCalculator(container, Object.assign({ invertedColors: isDark() }, EXAM_OPTS));
-    if (externalLink) externalLink.hidden = true; // no public URL for this restricted config
-  }
 
-  function mount(modeKey) {
-    if (!container) return;
-    mountToken += 1;
-    if (modeKey === 'exam') {
-      mountExam(mountToken);
-    } else if (IFRAME_MODES[modeKey]) {
+    var dark = isDark();
+    try {
+      if (modeKey === 'graphing') {
+        apiInstance = window.Desmos.GraphingCalculator(container, Object.assign({ invertedColors: dark }, GRAPHING_OPTS));
+      } else if (modeKey === 'exam') {
+        apiInstance = window.Desmos.GraphingCalculator(container, Object.assign({ invertedColors: dark }, EXAM_OPTS));
+      } else if (modeKey === 'scientific' && typeof window.Desmos.ScientificCalculator === 'function') {
+        apiInstance = window.Desmos.ScientificCalculator(container, { invertedColors: dark });
+      } else if (modeKey === 'geometry' && typeof window.Desmos.GeometryCalculator === 'function') {
+        apiInstance = window.Desmos.GeometryCalculator(container, { invertedColors: dark });
+      } else {
+        mountIframe(modeKey);
+        return;
+      }
+
+      if (apiInstance) {
+        apiInstance._mode = modeKey;
+        apiInstance._dark = dark;
+        if (savedState && typeof apiInstance.setState === 'function') {
+          try { apiInstance.setState(savedState); } catch (e) {}
+        }
+      }
+
+      if (externalLink) {
+        if (EXTERNAL_LINKS[modeKey]) {
+          externalLink.href = EXTERNAL_LINKS[modeKey];
+          externalLink.hidden = false;
+        } else {
+          externalLink.hidden = true;
+        }
+      }
+    } catch (err) {
+      console.warn('Native Desmos init error, falling back to iframe:', err);
       mountIframe(modeKey);
     }
+  }
+
+  function mount(modeKey, savedState) {
+    if (!container) return;
+    activeMode = modeKey;
+    mountToken += 1;
+
+    if (modeKey === 'threeD') {
+      mountIframe('threeD');
+      return;
+    }
+
+    mountApiCalculator(modeKey, mountToken, savedState);
   }
 
   function selectMode(modeKey) {
@@ -218,6 +283,20 @@ isRtl: false
   buttons.forEach(function (b) {
     b.addEventListener('click', function () { selectMode(b.dataset.mode); });
   });
+
+  // Watch for site theme changes to keep invertedColors matched seamlessly
+  var themeObserver = new MutationObserver(function () {
+    if (apiInstance && typeof apiInstance.getState === 'function') {
+      var dark = isDark();
+      if (apiInstance._dark !== dark) {
+        try {
+          var state = apiInstance.getState();
+          mount(activeMode, state);
+        } catch (e) {}
+      }
+    }
+  });
+  themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'class'] });
 
   selectMode('graphing');
 
@@ -383,6 +462,22 @@ isRtl: false
 
   function applyPreset(preset) {
     selectMode(preset.mode);
+    function inject() {
+      if (apiInstance && typeof apiInstance.setExpression === 'function') {
+        try {
+          apiInstance.setBlank();
+          preset.expressions.forEach(function (expr, idx) {
+            apiInstance.setExpression({ id: 'p_' + idx, latex: expr });
+          });
+          showToast((isAr() ? 'تم تطبيق النموذج على الآلة الحاسبة!' : 'Preset applied directly to calculator!') + ' (' + preset.expressions.length + ' ' + (isAr() ? 'معادلات' : 'equations') + ')');
+          return;
+        } catch (err) {
+          console.warn('Failed to set expressions on Desmos instance:', err);
+        }
+      }
+      copyPreset(preset);
+    }
+    setTimeout(inject, 80);
     copyPreset(preset);
   }
 

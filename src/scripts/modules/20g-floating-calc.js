@@ -4,13 +4,65 @@
   /* ═══════════════════════════════════════════════════════════════════
      CLIP-SAT FLOATING EXAM CALCULATOR (Desmos Graphing + Scientific + Quick)
      Authentic floating tool for CBT practice & coursework.
+     Powered by official Desmos API with on-screen math keypad, presets,
+     responsive drag/resize, expand/restore, and dark-mode sync.
      ═══════════════════════════════════════════════════════════════════ */
+
+  var DESMOS_API_URL = 'https://www.desmos.com/api/v1.11/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6';
+  var _desmosLoadPromise = null;
+
+  function _ensureDesmosAPI(){
+    if(window.Desmos && typeof window.Desmos.GraphingCalculator === 'function'){
+      return Promise.resolve(window.Desmos);
+    }
+    if(_desmosLoadPromise) return _desmosLoadPromise;
+    _desmosLoadPromise = new Promise(function(resolve, reject){
+      var existing = document.querySelector('script[src*="desmos.com/api"]');
+      if(existing){
+        var waitCount = 0;
+        var checkInterval = setInterval(function(){
+          waitCount++;
+          if(window.Desmos && typeof window.Desmos.GraphingCalculator === 'function'){
+            clearInterval(checkInterval);
+            resolve(window.Desmos);
+          } else if(waitCount > 100){
+            clearInterval(checkInterval);
+            reject(new Error('Desmos API load timeout'));
+          }
+        }, 50);
+        return;
+      }
+      var s = document.createElement('script');
+      s.src = DESMOS_API_URL;
+      s.async = true;
+      s.onload = function(){
+        if(window.Desmos && typeof window.Desmos.GraphingCalculator === 'function'){
+          resolve(window.Desmos);
+        } else {
+          reject(new Error('Desmos API object missing'));
+        }
+      };
+      s.onerror = function(err){ reject(err); };
+      document.head.appendChild(s);
+    });
+    return _desmosLoadPromise;
+  }
+
+  function _isDarkMode(){
+    return document.documentElement.getAttribute('data-theme') === 'dark' ||
+           document.documentElement.classList.contains('dark') ||
+           (document.body && document.body.classList.contains('dark'));
+  }
 
   var _calcEl = null;
   var _activeMode = 'graphing';
   var _isMinimized = false;
-  var _pos = { x: 0, y: 0 };
+  var _isMaximized = false;
+  var _savedBounds = null;
   var _hasMoved = false;
+  var _apiCalc = null;
+  var _apiMode = null;
+  var _themeObserver = null;
 
   var MODES = {
     graphing: {
@@ -83,18 +135,18 @@
     _calcEl.setAttribute('aria-label', 'Floating Exam Calculator');
     _calcEl.style.cssText = [
       'position:fixed',
-      'top:80px',
+      'top:72px',
       'right:24px',
-      'width:450px',
-      'height:550px',
-      'min-width:320px',
-      'min-height:260px',
-      'max-width:95vw',
-      'max-height:85vh',
+      'width:560px',
+      'height:600px',
+      'min-width:340px',
+      'min-height:300px',
+      'max-width:96vw',
+      'max-height:90vh',
       'background:var(--panel,#ffffff)',
       'border:1.5px solid var(--border,#cbd5e1)',
       'border-radius:12px',
-      'box-shadow:0 12px 36px rgba(0,0,0,.22), 0 2px 8px rgba(0,0,0,.1)',
+      'box-shadow:0 14px 40px rgba(0,0,0,.26), 0 3px 10px rgba(0,0,0,.12)',
       'z-index:98000',
       'display:none',
       'flex-direction:column',
@@ -112,24 +164,40 @@
           '<button type="button" class="cs-fcalc-tab" data-mode="fourFunction" style="background:transparent;color:rgba(255,255,255,.8);border:none;border-radius:4px;padding:3px 7px;font-size:.72rem;font-weight:600;cursor:pointer">Quick</button>',
           '<button type="button" class="cs-fcalc-tab" data-mode="distributions" style="background:transparent;color:rgba(255,255,255,.8);border:none;border-radius:4px;padding:3px 7px;font-size:.72rem;font-weight:600;cursor:pointer">📊 Stats</button>',
         '</div>',
-        '<button type="button" id="cs-fcalc-min-btn" aria-label="Minimize" style="background:transparent;border:none;color:#fff;font-size:.95rem;padding:2px 6px;cursor:pointer;opacity:.85;margin-left:4px">_</button>',
-        '<button type="button" id="cs-fcalc-close-btn" aria-label="Close" style="background:transparent;border:none;color:#fff;font-size:1.1rem;padding:2px 6px;cursor:pointer;opacity:.85">&times;</button>',
+        '<button type="button" id="cs-fcalc-max-btn" title="Expand / Restore" aria-label="Expand" style="background:transparent;border:none;color:#fff;font-size:.9rem;padding:2px 6px;cursor:pointer;opacity:.85;margin-left:4px">⛶</button>',
+        '<button type="button" id="cs-fcalc-min-btn" title="Minimize" aria-label="Minimize" style="background:transparent;border:none;color:#fff;font-size:.95rem;padding:2px 6px;cursor:pointer;opacity:.85;margin-left:2px">_</button>',
+        '<button type="button" id="cs-fcalc-close-btn" title="Close" aria-label="Close" style="background:transparent;border:none;color:#fff;font-size:1.15rem;padding:2px 6px;cursor:pointer;opacity:.85">&times;</button>',
+      '</div>',
+      '<div id="cs-fcalc-presets-bar" style="background:var(--subtle,#f1f5f9);border-bottom:1px solid var(--border,#e2e8f0);padding:4px 10px;display:flex;align-items:center;gap:6px;font-size:.72rem;flex-shrink:0;overflow-x:auto">',
+        '<span style="font-weight:700;color:var(--text-muted,#64748b);display:flex;align-items:center;gap:3px">⚡ Presets:</span>',
+        '<button type="button" class="cs-fcalc-preset-btn" data-preset="linear" style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:.72rem;font-weight:600;color:#1e40af">y=mx+b</button>',
+        '<button type="button" class="cs-fcalc-preset-btn" data-preset="quadratic" style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:.72rem;font-weight:600;color:#6b21a8">y=ax²+bx+c</button>',
+        '<button type="button" class="cs-fcalc-preset-btn" data-preset="system" style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:.72rem;font-weight:600;color:#047857">System</button>',
+        '<button type="button" class="cs-fcalc-preset-btn" data-preset="trig" style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:.72rem;font-weight:600;color:#c026d3">sin(x)</button>',
+        '<button type="button" class="cs-fcalc-preset-btn" data-preset="circle" style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:.72rem;font-weight:600;color:#b45309">Circle</button>',
+        '<button type="button" class="cs-fcalc-preset-btn" data-preset="clear" style="margin-left:auto;background:transparent;border:1px solid #fca5a5;border-radius:4px;padding:2px 6px;cursor:pointer;font-size:.7rem;color:#b91c1c;font-weight:600">Clear</button>',
       '</div>',
       '<div id="cs-fcalc-body" style="flex:1;position:relative;background:#f8fafc;width:100%;height:100%;overflow:hidden">',
-        '<iframe id="cs-fcalc-frame" title="Desmos Calculator" style="width:100%;height:100%;border:none;display:block" src="about:blank"></iframe>',
+        '<div id="cs-fcalc-api-box" style="position:relative;width:100%;height:100%;display:none"></div>',
+        '<iframe id="cs-fcalc-frame" title="Desmos Calculator" style="position:relative;width:100%;height:100%;border:none;display:none" src="about:blank"></iframe>',
         '<div id="cs-fcalc-stats" style="display:none;width:100%;height:100%;overflow-y:auto;padding:12px;box-sizing:border-box;background:#f8fafc;font-size:.85rem;color:#1e293b"></div>',
+        '<div id="cs-fcalc-shield" style="position:absolute;inset:0;z-index:9999;display:none;background:transparent;cursor:move"></div>',
       '</div>'
     ].join('');
 
     document.body.appendChild(_calcEl);
 
-    // Wire buttons
+    // Wire close, minimize, maximize
     var closeBtn = _calcEl.querySelector('#cs-fcalc-close-btn');
     if(closeBtn) closeBtn.onclick = function(){ window.closeFloatingCalc(); };
 
     var minBtn = _calcEl.querySelector('#cs-fcalc-min-btn');
     if(minBtn) minBtn.onclick = function(){ _toggleMinimize(); };
 
+    var maxBtn = _calcEl.querySelector('#cs-fcalc-max-btn');
+    if(maxBtn) maxBtn.onclick = function(){ _toggleMaximize(); };
+
+    // Wire tabs
     var tabs = _calcEl.querySelectorAll('.cs-fcalc-tab');
     tabs.forEach(function(btn){
       btn.onclick = function(){
@@ -138,9 +206,58 @@
       };
     });
 
+    // Wire presets
+    var presetBtns = _calcEl.querySelectorAll('.cs-fcalc-preset-btn');
+    presetBtns.forEach(function(btn){
+      btn.onclick = function(){
+        var preset = this.getAttribute('data-preset');
+        _applyFloatingPreset(preset);
+      };
+    });
+
     _makeHeaderDraggable(_calcEl, _calcEl.querySelector('#cs-fcalc-header'));
 
+    // ResizeObserver to ensure Desmos refits canvas when resized by user
+    if(window.ResizeObserver){
+      try{
+        var ro = new ResizeObserver(function(){
+          if(_apiCalc && typeof _apiCalc.resize === 'function'){
+            _apiCalc.resize();
+          }
+        });
+        ro.observe(_calcEl);
+      }catch(e){}
+    }
+
     return _calcEl;
+  }
+
+  function _applyFloatingPreset(preset){
+    if(_activeMode !== 'graphing'){
+      _switchMode('graphing');
+    }
+    if(!_apiCalc || typeof _apiCalc.setExpression !== 'function') return;
+    if(preset === 'clear'){
+      _apiCalc.setBlank();
+      return;
+    }
+    _apiCalc.setBlank();
+    if(preset === 'linear'){
+      _apiCalc.setExpression({ id: 'l1', latex: 'y = 2x + 1', color: '#2563eb' });
+    } else if(preset === 'quadratic'){
+      _apiCalc.setExpression({ id: 'q1', latex: 'y = x^2 - 4x + 3', color: '#7c3aed' });
+      _apiCalc.setExpression({ id: 'v1', latex: '(2, -1)', color: '#dc2626', showLabel: true, label: 'Vertex (2, -1)' });
+    } else if(preset === 'system'){
+      _apiCalc.setExpression({ id: 's1', latex: 'y = 2x - 1', color: '#2563eb' });
+      _apiCalc.setExpression({ id: 's2', latex: 'y = -x + 5', color: '#dc2626' });
+      _apiCalc.setExpression({ id: 'p1', latex: '(2, 3)', color: '#059669', showLabel: true, label: 'Intersection (2, 3)' });
+    } else if(preset === 'trig'){
+      _apiCalc.setExpression({ id: 't1', latex: 'y = \\sin(x)', color: '#c026d3' });
+      _apiCalc.setExpression({ id: 't2', latex: 'y = \\cos(x)', color: '#0284c7' });
+    } else if(preset === 'circle'){
+      _apiCalc.setExpression({ id: 'c1', latex: '(x - 2)^2 + (y + 1)^2 = 16', color: '#b45309' });
+      _apiCalc.setExpression({ id: 'ctr', latex: '(2, -1)', color: '#b45309', showLabel: true, label: 'Center (2, -1), r=4' });
+    }
   }
 
   function _renderStatsUI(container){
@@ -212,7 +329,6 @@
 
       resEl.innerHTML = 'P(' + (a===-Infinity?'-∞':a) + ' ≤ X ≤ ' + (b===Infinity?'+∞':b) + ') = <span style="color:#4f46e5">' + prob.toFixed(5) + '</span><br><span style="font-size:.75rem;font-weight:normal;color:#475569">z-scores: z_a = ' + za + ', z_b = ' + zb + '</span>';
 
-      // Draw SVG bell curve
       var W = 380, H = 140, pad = 24;
       var minX = mu - 3.5 * sigma, maxX = mu + 3.5 * sigma;
       function sx(x){ return pad + (x - minX) / (maxX - minX) * (W - 2 * pad); }
@@ -382,6 +498,21 @@
     calc();
   }
 
+  function _setupThemeObserver(){
+    if(_themeObserver) return;
+    try {
+      _themeObserver = new MutationObserver(function(){
+        if(_apiCalc && typeof _apiCalc.updateSettings === 'function'){
+          _apiCalc.updateSettings({ invertedColors: _isDarkMode() });
+        }
+      });
+      _themeObserver.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['data-theme', 'class']
+      });
+    } catch(e){}
+  }
+
   function _switchMode(mode){
     if(!MODES[mode]) mode = 'graphing';
     _activeMode = mode;
@@ -393,52 +524,165 @@
       b.style.color = isActive ? '#fff' : 'rgba(255,255,255,.75)';
     });
 
+    var presetsBar = _calcEl.querySelector('#cs-fcalc-presets-bar');
+    if(presetsBar){
+      presetsBar.style.display = (mode === 'graphing' && !_isMinimized) ? 'flex' : 'none';
+    }
+
+    var apiBox = _calcEl.querySelector('#cs-fcalc-api-box');
     var frame = _calcEl.querySelector('#cs-fcalc-frame');
     var statsEl = _calcEl.querySelector('#cs-fcalc-stats');
+
     if(mode === 'distributions'){
+      if(apiBox) apiBox.style.display = 'none';
       if(frame) frame.style.display = 'none';
       if(statsEl){
         statsEl.style.display = 'block';
         _renderStatsUI(statsEl);
       }
-    } else {
-      if(statsEl) statsEl.style.display = 'none';
+      return;
+    }
+
+    if(statsEl) statsEl.style.display = 'none';
+
+    _ensureDesmosAPI().then(function(Desmos){
+      if(!apiBox) return;
+      apiBox.style.display = 'block';
+      if(frame) frame.style.display = 'none';
+
+      if(_apiCalc && _apiMode === mode){
+        if(typeof _apiCalc.resize === 'function') _apiCalc.resize();
+        return;
+      }
+
+      if(_apiCalc && typeof _apiCalc.destroy === 'function'){
+        try { _apiCalc.destroy(); } catch(e){}
+      }
+      _apiCalc = null;
+      apiBox.innerHTML = '';
+
+      var dark = _isDarkMode();
+      if(mode === 'graphing'){
+        _apiCalc = Desmos.GraphingCalculator(apiBox, {
+          keypad: true,
+          expressions: true,
+          settingsMenu: true,
+          zoomButtons: true,
+          expressionsTopbar: true,
+          pointsOfInterest: true,
+          trace: true,
+          border: false,
+          invertedColors: dark
+        });
+      } else if(mode === 'scientific' && typeof Desmos.ScientificCalculator === 'function'){
+        _apiCalc = Desmos.ScientificCalculator(apiBox, {
+          keypad: true,
+          border: false,
+          invertedColors: dark
+        });
+      } else if(mode === 'fourFunction' && typeof Desmos.FourFunctionCalculator === 'function'){
+        _apiCalc = Desmos.FourFunctionCalculator(apiBox, {
+          keypad: true,
+          border: false,
+          invertedColors: dark
+        });
+      } else {
+        _apiCalc = Desmos.GraphingCalculator(apiBox, {
+          keypad: true,
+          expressions: true,
+          invertedColors: dark
+        });
+      }
+      _apiMode = mode;
+      _setupThemeObserver();
+      setTimeout(function(){
+        if(_apiCalc && typeof _apiCalc.resize === 'function') _apiCalc.resize();
+      }, 50);
+    }).catch(function(){
+      // Fallback to iframe if API CDN failed or offline
+      if(apiBox) apiBox.style.display = 'none';
       if(frame){
         frame.style.display = 'block';
         var targetSrc = MODES[mode].url;
-        if(frame.src !== targetSrc){
-          frame.src = targetSrc;
-        }
+        if(frame.src !== targetSrc) frame.src = targetSrc;
       }
+    });
+  }
+
+  function _toggleMaximize(){
+    if(_isMinimized) _toggleMinimize();
+    var maxBtn = _calcEl.querySelector('#cs-fcalc-max-btn');
+    if(_isMaximized){
+      // Restore
+      if(_savedBounds){
+        _calcEl.style.width = _savedBounds.width;
+        _calcEl.style.height = _savedBounds.height;
+        _calcEl.style.left = _savedBounds.left;
+        _calcEl.style.top = _savedBounds.top;
+        _calcEl.style.right = _savedBounds.right;
+      }
+      if(maxBtn) { maxBtn.textContent = '⛶'; maxBtn.title = 'Expand'; }
+      _isMaximized = false;
+    } else {
+      // Maximize / Expand
+      _savedBounds = {
+        width: _calcEl.style.width || '560px',
+        height: _calcEl.style.height || '600px',
+        left: _calcEl.style.left || '',
+        top: _calcEl.style.top || '',
+        right: _calcEl.style.right || '24px'
+      };
+      var maxW = Math.min(880, Math.floor(window.innerWidth * 0.94));
+      var maxH = Math.min(720, Math.floor(window.innerHeight * 0.88));
+      var left = Math.max(12, Math.floor((window.innerWidth - maxW) / 2));
+      var top = Math.max(20, Math.floor((window.innerHeight - maxH) / 2));
+      _calcEl.style.right = 'auto';
+      _calcEl.style.left = left + 'px';
+      _calcEl.style.top = top + 'px';
+      _calcEl.style.width = maxW + 'px';
+      _calcEl.style.height = maxH + 'px';
+      if(maxBtn) { maxBtn.textContent = '❐'; maxBtn.title = 'Restore'; }
+      _isMaximized = true;
     }
+    setTimeout(function(){
+      if(_apiCalc && typeof _apiCalc.resize === 'function') _apiCalc.resize();
+    }, 60);
   }
 
   function _toggleMinimize(){
     var body = _calcEl.querySelector('#cs-fcalc-body');
+    var presetsBar = _calcEl.querySelector('#cs-fcalc-presets-bar');
     var minBtn = _calcEl.querySelector('#cs-fcalc-min-btn');
     _isMinimized = !_isMinimized;
     if(_isMinimized){
       if(body) body.style.display = 'none';
+      if(presetsBar) presetsBar.style.display = 'none';
       _calcEl.style.height = 'auto';
       _calcEl.style.minHeight = '0';
       _calcEl.style.resize = 'none';
-      if(minBtn) minBtn.textContent = '▢';
+      if(minBtn) { minBtn.textContent = '▢'; minBtn.title = 'Restore'; }
     } else {
       if(body) body.style.display = 'block';
-      _calcEl.style.height = '540px';
-      _calcEl.style.minHeight = '260px';
+      if(presetsBar && _activeMode === 'graphing') presetsBar.style.display = 'flex';
+      _calcEl.style.height = _isMaximized ? Math.min(720, Math.floor(window.innerHeight * 0.88)) + 'px' : '600px';
+      _calcEl.style.minHeight = '300px';
       _calcEl.style.resize = 'both';
-      if(minBtn) minBtn.textContent = '_';
+      if(minBtn) { minBtn.textContent = '_'; minBtn.title = 'Minimize'; }
+      setTimeout(function(){
+        if(_apiCalc && typeof _apiCalc.resize === 'function') _apiCalc.resize();
+      }, 60);
     }
   }
 
   function _makeHeaderDraggable(container, handle){
     var startX = 0, startY = 0, initLeft = 0, initTop = 0;
     var dragging = false;
+    var shield = container.querySelector('#cs-fcalc-shield');
 
     function onPointerDown(e){
       if(e.target.tagName === 'BUTTON' || e.target.closest('button')) return;
       dragging = true;
+      if(shield) shield.style.display = 'block';
       var clientX = e.touches ? e.touches[0].clientX : e.clientX;
       var clientY = e.touches ? e.touches[0].clientY : e.clientY;
       startX = clientX;
@@ -478,6 +722,7 @@
 
     function onPointerUp(){
       dragging = false;
+      if(shield) shield.style.display = 'none';
       document.removeEventListener('mousemove', onPointerMove);
       document.removeEventListener('mouseup', onPointerUp);
       document.removeEventListener('touchmove', onPointerMove);
@@ -493,12 +738,12 @@
     if(mode && MODES[mode]){
       _switchMode(mode);
     } else {
-      var frame = el.querySelector('#cs-fcalc-frame');
-      if(!frame.src || frame.src === 'about:blank'){
-        _switchMode(_activeMode);
-      }
+      _switchMode(_activeMode);
     }
     el.style.display = 'flex';
+    setTimeout(function(){
+      if(_apiCalc && typeof _apiCalc.resize === 'function') _apiCalc.resize();
+    }, 50);
   };
 
   window.closeFloatingCalc = function(){
@@ -514,6 +759,27 @@
     } else {
       window.openFloatingCalc(mode);
     }
+  };
+
+  window.setFloatingCalcExpression = function(latex, id, color){
+    window.openFloatingCalc('graphing');
+    if(_apiCalc && typeof _apiCalc.setExpression === 'function'){
+      _apiCalc.setExpression({
+        id: id || ('expr_' + Date.now()),
+        latex: latex,
+        color: color || '#2563eb'
+      });
+    }
+  };
+
+  window.clearFloatingCalc = function(){
+    if(_apiCalc && typeof _apiCalc.setBlank === 'function'){
+      _apiCalc.setBlank();
+    }
+  };
+
+  window.getFloatingCalcInstance = function(){
+    return _apiCalc;
   };
 
   // Keyboard shortcut: Alt + C toggles the floating calculator
