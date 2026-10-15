@@ -3,6 +3,7 @@
 
 /* ── helpers ───────────────────────────────────────────────────── */
 function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+window.esc = window.esc || esc;
 
 /* ── AI Settings ────────────────────────────────────────────────────
    All AI features route through the server-side Supabase AI proxy, which

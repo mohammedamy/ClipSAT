@@ -7,6 +7,9 @@
 (function(){
 'use strict';
 
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+window.esc = window.esc || esc;
+
 function renderMathFigure(spec){ return (typeof window.renderMathFigure === 'function' ? window.renderMathFigure(spec) : (typeof window._renderFig === 'function' ? window._renderFig(spec) : '')); }
 
 /* ── callAI — uses the shared Groq provider (same key/models as
@@ -859,7 +862,20 @@ function _maths(s){
   return o;
 }
 function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
-  var out=btn.closest('.testgen').querySelector('.tg-out');
+  var _tg=btn&&btn.closest&&btn.closest('.testgen');
+  var out=_tg?_tg.querySelector('.tg-out'):null;
+  if(!out){
+    var _p=btn&&btn.parentElement;
+    var _sib=_p?_p.nextElementSibling:null;
+    if(_sib&&(_sib.classList.contains('tg-out')||_sib.querySelector('.tg-out')))
+      out=_sib.classList.contains('tg-out')?_sib:_sib.querySelector('.tg-out');
+    if(!out&&btn&&btn.closest){
+      var _sec=btn.closest('section');
+      if(_sec){var _outs=_sec.querySelectorAll('.tg-out');out=_outs[_outs.length-1];}
+    }
+  }
+  if(!out&&btn&&btn.insertAdjacentElement){out=document.createElement('div');out.className='tg-out';btn.insertAdjacentElement('afterend',out);}
+  if(!out){console.warn('aiGenFullExam: no .tg-out found for',viewId);return;}
   var bank=window.fullExamBank&&window.fullExamBank[viewId];
   var spec=window.examSpecs&&(window.examSpecs[examName]||window.examSpecs[viewId]);
   var letters=examLetters(viewId);

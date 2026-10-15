@@ -6,6 +6,9 @@
 (function(){
   "use strict";
 
+  function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  window.esc = window.esc || esc;
+
 
   /* ===================== EXAM SPECS (real exam configurations) ===================== */
   window.examSpecs={
@@ -862,7 +865,6 @@
       }
       return drawQ(pool,part.q);
     }
-    function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
     function renderQFig(q){
       var f = q.figure || q.fig || q.table;
       if(!f) return '';

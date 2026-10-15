@@ -4,6 +4,8 @@
    Teacher Mode is opened (20b-teacher-mode-loader.js). */
 (function(){
 'use strict';
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+window.esc = window.esc || esc;
 var VIEW_META = window.CSViewMeta || {};
 Object.assign(_TT_STR.en,{
   caSendClassroom:'Send to Google Classroom', caOpenClassroom:'Open Google Classroom',
