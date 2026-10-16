@@ -1,99 +1,158 @@
 {
   "track": "addmath",
   "num": "6.01",
-  "title": "Permutations & Combinations",
-  "sub": null,
+  "slug": "permutations-and-combinations",
+  "title": "Permutations and Combinations",
   "sections": [
     {
-      "heading": "Permutations & Combinations Practice Exercises",
+      "heading": "Section 1: Fundamental Counting and Linear Permutations",
       "questions": [
         {
-          "q": "Evaluate the number of permutations \\( {}^{5}P_{2} \\).",
+          "q": "In how many ways can $5$ different books be arranged on a shelf?",
           "choices": [
-            "25",
-            "21",
-            "10",
-            "20"
-          ],
-          "correct": 3,
-          "answer": "\\( {}^{n}P_{r} = \\frac{n!}{(n-r)!} \\implies {}^{5}P_{2} = 5 \\times 4 = 20 \\)."
-        },
-        {
-          "q": "Evaluate the number of permutations \\( {}^{6}P_{2} \\).",
-          "choices": [
-            "12",
-            "15",
-            "36",
-            "30"
-          ],
-          "correct": 3,
-          "answer": "\\( {}^{n}P_{r} = \\frac{n!}{(n-r)!} \\implies {}^{6}P_{2} = 6 \\times 5 = 30 \\)."
-        },
-        {
-          "q": "Evaluate the number of permutations \\( {}^{7}P_{2} \\).",
-          "choices": [
-            "21",
-            "42",
-            "49",
-            "14"
-          ],
-          "correct": 1,
-          "answer": "\\( {}^{n}P_{r} = \\frac{n!}{(n-r)!} \\implies {}^{7}P_{2} = 7 \\times 6 = 42 \\)."
-        },
-        {
-          "q": "Evaluate the number of permutations \\( {}^{8}P_{2} \\).",
-          "choices": [
-            "64",
-            "56",
-            "16",
-            "28"
-          ],
-          "correct": 1,
-          "answer": "\\( {}^{n}P_{r} = \\frac{n!}{(n-r)!} \\implies {}^{8}P_{2} = 8 \\times 7 = 56 \\)."
-        },
-        {
-          "q": "Evaluate the number of permutations \\( {}^{9}P_{2} \\).",
-          "choices": [
-            "72",
-            "81",
-            "18",
-            "36"
+            "$120$",
+            "$24$",
+            "$60$",
+            "$720$"
           ],
           "correct": 0,
-          "answer": "\\( {}^{n}P_{r} = \\frac{n!}{(n-r)!} \\implies {}^{9}P_{2} = 9 \\times 8 = 72 \\)."
+          "answer": "$5! = 5 \\times 4 \\times 3 \\times 2 \\times 1 = 120$."
         },
         {
-          "q": "Evaluate the number of permutations \\( {}^{10}P_{2} \\).",
+          "q": "Evaluate the number of permutations of $7$ distinct items taken $3$ at a time, ${}^7 P_3$.",
           "choices": [
-            "90",
-            "100",
-            "20",
-            "45"
+            "$210$",
+            "$35$",
+            "$42$",
+            "$840$"
           ],
           "correct": 0,
-          "answer": "\\( {}^{n}P_{r} = \\frac{n!}{(n-r)!} \\implies {}^{10}P_{2} = 10 \\times 9 = 90 \\)."
+          "answer": "${}^7 P_3 = \\frac{7!}{(7-3)!} = 7 \\times 6 \\times 5 = 210$."
         },
         {
-          "q": "A committee of 4 people is to be chosen from \\( 5 \\) men and \\( 4 \\) women. How many committees consist of exactly 2 men and 2 women?",
+          "q": "How many $4$-digit even numbers can be formed using digits $\\{1, 2, 3, 5, 7, 8\\}$ without repetition?",
           "choices": [
-            "60",
-            "120",
-            "55",
-            "36"
+            "$120$",
+            "$60$",
+            "$240$",
+            "$180$"
           ],
           "correct": 0,
-          "answer": "\\( \\binom{5}{2} \\times \\binom{4}{2} = \\frac{5\\times4}{2} \\times \\frac{4\\times3}{2} = 60 \\)."
+          "answer": "Last digit must be 2 or 8 ($2$ choices). First three digits from remaining 5 digits: ${}^5 P_3 = 60$. Total $= 60 \\times 2 = 120$."
+        }
+      ]
+    },
+    {
+      "heading": "Section 2: Permutations with Repetitions and Identical Items",
+      "questions": [
+        {
+          "q": "Find the number of distinct permutations of all the letters in the word $\\text{PARALLEL}$.",
+          "choices": [
+            "$3360$",
+            "$6720$",
+            "$1680$",
+            "$40320$"
+          ],
+          "correct": 0,
+          "answer": "8 letters total: 3 L's, 2 A's, 1 P, 1 R, 1 E. Total $= \\frac{8!}{3! 2!} = \\frac{40320}{12} = 3360$."
         },
         {
-          "q": "A committee of 4 people is to be chosen from \\( 6 \\) men and \\( 5 \\) women. How many committees consist of exactly 2 men and 2 women?",
+          "q": "How many 6-letter arrangements of $\\text{PEPPER}$ begin with the letter $\\text{P}$?",
           "choices": [
-            "44",
-            "145",
-            "300",
-            "150"
+            "$30$",
+            "$60$",
+            "$20$",
+            "$120$"
           ],
-          "correct": 3,
-          "answer": "\\( \\binom{6}{2} \\times \\binom{5}{2} = \\frac{6\\times5}{2} \\times \\frac{5\\times4}{2} = 150 \\)."
+          "correct": 0,
+          "answer": "Fix one P first. Remaining 5 letters: 2 P's, 2 E's, 1 R. Arrangements $= \\frac{5!}{2! 2!} = \\frac{120}{4} = 30$."
+        },
+        {
+          "q": "How many 5-digit codes can be formed from digits $\\{3, 3, 3, 7, 7\\}$?",
+          "choices": [
+            "$10$",
+            "$20$",
+            "$5$",
+            "$120$"
+          ],
+          "correct": 0,
+          "answer": "$\\frac{5!}{3! 2!} = \\frac{120}{6 \\times 2} = 10$."
+        }
+      ]
+    },
+    {
+      "heading": "Section 3: Combinations and Committee Selections",
+      "questions": [
+        {
+          "q": "A committee of $4$ is to be chosen from $9$ people. How many distinct committees can be formed?",
+          "choices": [
+            "$126$",
+            "$3024$",
+            "$84$",
+            "$252$"
+          ],
+          "correct": 0,
+          "answer": "${}^9 C_4 = \\frac{9 \\times 8 \\times 7 \\times 6}{4 \\times 3 \\times 2 \\times 1} = 126$."
+        },
+        {
+          "q": "A team of $5$ is selected from $6$ boys and $4$ girls. How many teams contain exactly $3$ boys and $2$ girls?",
+          "choices": [
+            "$120$",
+            "$60$",
+            "$210$",
+            "$100$"
+          ],
+          "correct": 0,
+          "answer": "Choose boys: $\\binom{6}{3} = 20$. Choose girls: $\\binom{4}{2} = 6$. Total $= 20 \\times 6 = 120$."
+        },
+        {
+          "q": "From $10$ points on a plane where no three are collinear, how many distinct triangles can be drawn?",
+          "choices": [
+            "$120$",
+            "$720$",
+            "$90$",
+            "$45$"
+          ],
+          "correct": 0,
+          "answer": "${}^{10} C_3 = \\frac{10 \\times 9 \\times 8}{3 \\times 2 \\times 1} = 120$."
+        }
+      ]
+    },
+    {
+      "heading": "Section 4: Restricted Arrangements and Separations",
+      "questions": [
+        {
+          "q": "In how many ways can $4$ boys and $3$ girls sit in a row if all $3$ girls must sit together?",
+          "choices": [
+            "$720$",
+            "$5040$",
+            "$144$",
+            "$288$"
+          ],
+          "correct": 0,
+          "answer": "Treat 3 girls as 1 block. Total units: 4 boys + 1 block = 5 units ($5! = 120$). Girls within block: $3! = 6$. Total $= 120 \\times 6 = 720$."
+        },
+        {
+          "q": "In how many ways can $5$ people sit around a circular dinner table?",
+          "choices": [
+            "$24$",
+            "$120$",
+            "$60$",
+            "$12$"
+          ],
+          "correct": 0,
+          "answer": "Circular permutations: $(n-1)! = (5-1)! = 4! = 24$."
+        },
+        {
+          "q": "A committee of $4$ is selected from $5$ men and $5$ women. How many committees contain at least one woman?",
+          "choices": [
+            "$205$",
+            "$210$",
+            "$195$",
+            "$150$"
+          ],
+          "correct": 0,
+          "answer": "Total selections $= \\binom{10}{4} = 210$. All-men selections $= \\binom{5}{4} = 5$. At least one woman $= 210 - 5 = 205$."
         }
       ]
     }

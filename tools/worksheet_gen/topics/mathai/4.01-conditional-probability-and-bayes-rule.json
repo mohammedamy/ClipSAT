@@ -1,99 +1,158 @@
 {
   "track": "mathai",
   "num": "4.01",
-  "title": "Conditional Probability & Bayes' Rule",
-  "sub": null,
+  "slug": "conditional-probability-and-bayes-rule",
+  "title": "Conditional Probability and Bayes Rule",
   "sections": [
     {
-      "heading": "Conditional Probability & Bayes' Rule Practice Exercises",
+      "heading": "Section 1: Joint Probability and Independence",
       "questions": [
         {
-          "q": "In a dataset, the prior probability of class \\( C_1 \\) is \\( P(C_1) = 0.10 \\). What is the probability of the complement class \\( P(\\neg C_1) \\)?",
+          "q": "If two events $A$ and $B$ are statistically independent with $P(A) = 0.4$ and $P(B) = 0.3$, find the joint probability $P(A \\cap B)$.",
           "choices": [
-            "\\( 0.90 \\)",
-            "\\( 0.95 \\)",
-            "\\( 0.05 \\)",
-            "\\( 1.10 \\)"
+            "$0.12$",
+            "$0.70$",
+            "$0.10$",
+            "$0.30$"
           ],
           "correct": 0,
-          "answer": "By the complement rule of probability: \\( P(\\neg C_1) = 1 - P(C_1) = 1 - 0.10 = 0.90 \\)."
+          "answer": "By independence: $P(A \\cap B) = P(A) \\times P(B) = 0.4 \\times 0.3 = 0.12$."
         },
         {
-          "q": "In a dataset, the prior probability of class \\( C_1 \\) is \\( P(C_1) = 0.20 \\). What is the probability of the complement class \\( P(\\neg C_1) \\)?",
+          "q": "Given $P(A) = 0.5$, $P(B) = 0.4$, and $P(A \\cup B) = 0.7$, find $P(A \\cap B)$.",
           "choices": [
-            "\\( 0.80 \\)",
-            "\\( 0.90 \\)",
-            "\\( 0.10 \\)",
-            "\\( 1.20 \\)"
+            "$0.20$",
+            "$0.10$",
+            "$0.30$",
+            "$0.15$"
           ],
           "correct": 0,
-          "answer": "By the complement rule of probability: \\( P(\\neg C_1) = 1 - P(C_1) = 1 - 0.20 = 0.80 \\)."
+          "answer": "$P(A \\cap B) = P(A) + P(B) - P(A \\cup B) = 0.5 + 0.4 - 0.7 = 0.20$."
         },
         {
-          "q": "In a dataset, the prior probability of class \\( C_1 \\) is \\( P(C_1) = 0.30 \\). What is the probability of the complement class \\( P(\\neg C_1) \\)?",
+          "q": "Are the events in question 2 statistically independent?",
           "choices": [
-            "\\( 0.70 \\)",
-            "\\( 0.85 \\)",
-            "\\( 0.15 \\)",
-            "\\( 1.30 \\)"
+            "Yes, because $P(A)P(B) = 0.5 \\times 0.4 = 0.20 = P(A \\cap B)$",
+            "No, because $P(A) \\neq P(B)$",
+            "No, because $P(A \\cup B) \\neq 1$",
+            "Cannot be determined without conditional probabilities"
           ],
           "correct": 0,
-          "answer": "By the complement rule of probability: \\( P(\\neg C_1) = 1 - P(C_1) = 1 - 0.30 = 0.70 \\)."
+          "answer": "Since $P(A \\cap B) = 0.20 = P(A)P(B)$, the definition of independence is satisfied exactly."
+        }
+      ]
+    },
+    {
+      "heading": "Section 2: Conditional Probability and the Chain Rule",
+      "questions": [
+        {
+          "q": "Given $P(A) = 0.6$ and $P(A \\cap B) = 0.18$, calculate the conditional probability $P(B|A)$.",
+          "choices": [
+            "$0.30$",
+            "$0.108$",
+            "$0.42$",
+            "$0.25$"
+          ],
+          "correct": 0,
+          "answer": "$P(B|A) = \\frac{P(A \\cap B)}{P(A)} = \\frac{0.18}{0.60} = 0.30$."
         },
         {
-          "q": "In a dataset, the prior probability of class \\( C_1 \\) is \\( P(C_1) = 0.40 \\). What is the probability of the complement class \\( P(\\neg C_1) \\)?",
+          "q": "In an autoregressive language model, write the joint probability of a sequence of three tokens $P(w_1, w_2, w_3)$ using the probability Chain Rule.",
           "choices": [
-            "\\( 0.60 \\)",
-            "\\( 0.80 \\)",
-            "\\( 0.20 \\)",
-            "\\( 1.40 \\)"
+            "$P(w_1) P(w_2|w_1) P(w_3|w_1, w_2)$",
+            "$P(w_1) + P(w_2) + P(w_3)$",
+            "$P(w_1) P(w_2) P(w_3)$",
+            "$P(w_3|w_2) P(w_2|w_1)$"
           ],
           "correct": 0,
-          "answer": "By the complement rule of probability: \\( P(\\neg C_1) = 1 - P(C_1) = 1 - 0.40 = 0.60 \\)."
+          "answer": "By exact probability decomposition: $P(w_1, w_2, w_3) = P(w_1) P(w_2|w_1) P(w_3|w_1, w_2)$."
         },
         {
-          "q": "In a dataset, the prior probability of class \\( C_1 \\) is \\( P(C_1) = 0.50 \\). What is the probability of the complement class \\( P(\\neg C_1) \\)?",
+          "q": "If $P(A|B) = 0.8$ and $P(B) = 0.25$, find $P(A \\cap B)$.",
           "choices": [
-            "\\( 0.50 \\)",
-            "\\( 0.75 \\)",
-            "\\( 0.25 \\)",
-            "\\( 1.50 \\)"
+            "$0.20$",
+            "$0.55$",
+            "$0.3125$",
+            "$0.10$"
           ],
           "correct": 0,
-          "answer": "By the complement rule of probability: \\( P(\\neg C_1) = 1 - P(C_1) = 1 - 0.50 = 0.50 \\)."
+          "answer": "$P(A \\cap B) = P(A|B) P(B) = 0.8 \\times 0.25 = 0.20$."
+        }
+      ]
+    },
+    {
+      "heading": "Section 3: Law of Total Probability",
+      "questions": [
+        {
+          "q": "Factory line 1 produces $60\\%$ of microchips with defect rate $2\\%$. Line 2 produces $40\\%$ with defect rate $5\\%$. What is the total probability that a random chip is defective?",
+          "choices": [
+            "$0.032$",
+            "$0.070$",
+            "$0.035$",
+            "$0.025$"
+          ],
+          "correct": 0,
+          "answer": "$P(D) = P(D|L_1)P(L_1) + P(D|L_2)P(L_2) = (0.02)(0.60) + (0.05)(0.40) = 0.012 + 0.020 = 0.032$."
         },
         {
-          "q": "In a dataset, the prior probability of class \\( C_1 \\) is \\( P(C_1) = 0.60 \\). What is the probability of the complement class \\( P(\\neg C_1) \\)?",
+          "q": "In question 7, if a selected chip is defective, what is the probability it came from Line 2?",
           "choices": [
-            "\\( 0.40 \\)",
-            "\\( 0.70 \\)",
-            "\\( 0.30 \\)",
-            "\\( 1.60 \\)"
+            "$\\frac{0.020}{0.032} = 0.625$",
+            "$0.400$",
+            "$0.375$",
+            "$0.500$"
           ],
           "correct": 0,
-          "answer": "By the complement rule of probability: \\( P(\\neg C_1) = 1 - P(C_1) = 1 - 0.60 = 0.40 \\)."
+          "answer": "Bayes: $P(L_2|D) = \\frac{P(D|L_2)P(L_2)}{P(D)} = \\frac{0.020}{0.032} = 0.625$."
         },
         {
-          "q": "A machine learning diagnostic test has sensitivity \\( P(\\text{Positive} | \\text{Defect}) = 0.90 \\). If the defect rate in production is \\( P(\\text{Defect}) = 0.05 \\), find the joint probability of a defect and a positive test result \\( P(\\text{Defect} \\cap \\text{Positive}) \\).",
+          "q": "State the Law of Total Probability for an exhaustive partition $\\{A_1, A_2, \\dots, A_k\\}$ of the sample space.",
           "choices": [
-            "\\( 0.0450 \\)",
-            "\\( 0.9500 \\)",
-            "\\( 0.8500 \\)",
-            "\\( 0.0050 \\)"
+            "$P(B) = \\sum_{i=1}^k P(B|A_i) P(A_i)$",
+            "$P(B) = \\prod_{i=1}^k P(B|A_i)$",
+            "$P(B) = \\max_i P(B|A_i)$",
+            "$P(B) = \\sum_{i=1}^k P(A_i|B)$"
           ],
           "correct": 0,
-          "answer": "By the multiplication rule of conditional probability: \\( P(\\text{Defect} \\cap \\text{Positive}) = P(\\text{Defect}) \\times P(\\text{Positive} | \\text{Defect}) = 0.05 \\times 0.90 = 0.0450 \\)."
+          "answer": "Every element in $B$ belongs to exactly one partition $A_i$, giving $P(B) = \\sum P(B \\cap A_i) = \\sum P(B|A_i)P(A_i)$."
+        }
+      ]
+    },
+    {
+      "heading": "Section 4: Bayes Theorem in Machine Learning and Screening",
+      "questions": [
+        {
+          "q": "In medical screening, a disease has prevalence $P(D) = 0.01$. The test has sensitivity $P(+|D) = 0.99$ and false positive rate $P(+|\\neg D) = 0.02$. What is the posterior probability $P(D|+)$ that a positive patient has the disease?",
+          "choices": [
+            "$\\approx 33.3\\%$",
+            "$99.0\\%$",
+            "$50.0\\%$",
+            "$5.0\\%$"
+          ],
+          "correct": 0,
+          "answer": "$P(+) = (0.99)(0.01) + (0.02)(0.99) = 0.0099 + 0.0198 = 0.0297$. $P(D|+) = \\frac{0.0099}{0.0297} = \\frac{1}{3} \\approx 33.3\\%$."
         },
         {
-          "q": "A machine learning diagnostic test has sensitivity \\( P(\\text{Positive} | \\text{Defect}) = 0.90 \\). If the defect rate in production is \\( P(\\text{Defect}) = 0.10 \\), find the joint probability of a defect and a positive test result \\( P(\\text{Defect} \\cap \\text{Positive}) \\).",
+          "q": "What is the foundational simplifying assumption of the Naive Bayes text classifier?",
           "choices": [
-            "\\( 0.0900 \\)",
-            "\\( 1.0000 \\)",
-            "\\( 0.8000 \\)",
-            "\\( 0.0100 \\)"
+            "Features (words) are conditionally independent given the class label",
+            "All prior probabilities are equal",
+            "The vocabulary size is infinite",
+            "Features follow a uniform distribution"
           ],
           "correct": 0,
-          "answer": "By the multiplication rule of conditional probability: \\( P(\\text{Defect} \\cap \\text{Positive}) = P(\\text{Defect}) \\times P(\\text{Positive} | \\text{Defect}) = 0.10 \\times 0.90 = 0.0900 \\)."
+          "answer": "Naive Bayes assumes $P(x_1, \\dots, x_n | C) = \\prod_{i=1}^n P(x_i | C)$, dramatically reducing parameter count."
+        },
+        {
+          "q": "In Maximum A Posteriori (MAP) estimation, how does the optimization objective differ from standard Maximum Likelihood Estimation (MLE)?",
+          "choices": [
+            "MAP incorporates a prior distribution: $\\theta_{MAP} = \\arg\\max [\\ln P(D|\\theta) + \\ln P(\\theta)]$",
+            "MAP ignores all observed training data",
+            "MAP only applies to linear models",
+            "MAP minimizes variance instead of error"
+          ],
+          "correct": 0,
+          "answer": "MAP maximizes posterior $\\propto$ likelihood $\\times$ prior, functioning mathematically like regularized MLE."
         }
       ]
     }
