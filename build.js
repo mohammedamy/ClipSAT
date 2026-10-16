@@ -622,12 +622,7 @@ const baseNjk = `<!DOCTYPE html>
                  onblur="setTimeout(function(){window.CSSearch&&window.CSSearch.close()},200)">
           <div id="topic-search-results" role="listbox"></div>
         </span>
-        <button class="mistake-nav-btn nav-extra-item" id="glossaryNavBtn" onclick="window.openGlossaryModal&&window.openGlossaryModal()" title="Bilingual Mathematics Glossary" aria-label="Bilingual Math Glossary">📖 <span data-i18n="nav.glossary">Glossary</span></button>
-        <button class="mistake-nav-btn nav-extra-item" id="formulaNavBtn" onclick="window.openFormulaModal&&window.openFormulaModal()" title="Official Reference &amp; Formula Sheets" aria-label="Official Reference &amp; Formula Sheets">📐 <span data-i18n="nav.formulas">Formulas</span></button>
-        <button class="mistake-nav-btn" id="mistakeBtn" onclick="openMistakes()" title="Review mistakes" aria-label="Review mistakes">📋 <span data-i18n="nav.mistakes">Mistakes</span></button>
-        <button class="mistake-nav-btn nav-extra-item" id="progressBtn" onclick="openProgress()" title="View your progress across tracks" aria-label="View your progress">📊 <span data-i18n="nav.progress">Progress</span></button>
         <button class="mistake-nav-btn" id="cloudSignInBtn" title="Sign in to sync your progress across devices" aria-label="Sign in to sync your progress" onclick="window.openCloudAuthModal&&window.openCloudAuthModal()">☁️ <span>Sign in</span></button>
-        <button id="teacherWhiteboardBtn" class="theme-btn nav-extra-item" onclick="window._ensureWhiteboard().then(function(){window.CSGamify.toggleWhiteboard()})" style="display:none;" title="Interactive Whiteboard">✏️ Whiteboard</button>
         <!-- "More" overflow menu — absorbs extra tools and secondary links so the header bar fits any page width -->
         <div class="nav-more-wrap">
           <button type="button" class="mistake-nav-btn nav-more-btn" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" aria-controls="navMorePanel" title="More options" aria-label="More options">⋯ <span data-i18n="nav.more">More</span></button>
@@ -641,6 +636,10 @@ const baseNjk = `<!DOCTYPE html>
               <button type="button" class="nav-more-item" id="moreFormulaBtn" onclick="window.openFormulaModal&&window.openFormulaModal();window.closeNavMorePanel&&window.closeNavMorePanel()" title="Official Reference &amp; Formula Sheets">
                 <span class="nav-more-item-icon">📐</span>
                 <span class="nav-more-item-text" data-i18n="nav.formulas">Formulas</span>
+              </button>
+              <button type="button" class="nav-more-item" id="moreMistakesBtn" onclick="openMistakes();window.closeNavMorePanel&&window.closeNavMorePanel()" title="Review mistakes" aria-label="Review mistakes">
+                <span class="nav-more-item-icon">📋</span>
+                <span class="nav-more-item-text"><span data-i18n="nav.mistakes">Mistakes</span><span id="mistakeBadge" style="margin-inline-start:4px;font-weight:600;color:var(--brand, #4f46e5)"></span></span>
               </button>
               <button type="button" class="nav-more-item" id="moreProgressBtn" onclick="openProgress();window.closeNavMorePanel&&window.closeNavMorePanel()" title="View your progress across tracks">
                 <span class="nav-more-item-icon">📊</span>

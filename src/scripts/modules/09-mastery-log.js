@@ -32,8 +32,10 @@ window.ML = (function(){
     try{ localStorage.setItem('clipsat_mistakes', JSON.stringify(
       _log.map(function(m){ return {q:m.q,wrong:m.wrong,right:m.right,src:m.src,domain:m.domain}; })
     )); }catch(e){}
+    var badge=document.getElementById('mistakeBadge');
+    if(badge) badge.textContent = _log.length > 0 ? ' ('+_log.length+')' : '';
     var btn=document.getElementById('mistakeBtn');
-    if(btn) btn.textContent='📋 Mistakes ('+_log.length+')';
+    if(btn) btn.textContent=_log.length > 0 ? '📋 Mistakes ('+_log.length+')' : '📋 Mistakes';
   }
 
   function add(entry){

@@ -1,6 +1,8 @@
 function clearMistakes(){
   if(!confirm('Clear all '+_mistakes.length+' recorded mistakes?')) return;
   _mistakes = []; _saveMistakes();
+  var badge = document.getElementById('mistakeBadge');
+  if(badge) badge.textContent = '';
   var btn = document.getElementById('mistakeBtn');
   if(btn) btn.textContent = '📋 Mistakes';
   openMistakes();
@@ -18,6 +20,10 @@ function reviewMistakeAt(startIdx){
       if(removed.length>0){
         _mistakes=_mistakes.filter(function(m){return removed.indexOf(m)===-1;});
         _saveMistakes();
+        var badge = document.getElementById('mistakeBadge');
+        if(badge) badge.textContent = _mistakes.length > 0 ? ' ('+_mistakes.length+')' : '';
+        var btn = document.getElementById('mistakeBtn');
+        if(btn) btn.textContent = _mistakes.length > 0 ? '📋 Mistakes ('+_mistakes.length+')' : '📋 Mistakes';
       }
       var ov=document.getElementById('mq-review-overlay');
       if(ov) ov.innerHTML='<div style="background:var(--panel);border-radius:14px;padding:32px;text-align:center;max-width:480px;margin:auto">'
@@ -89,6 +95,10 @@ function reviewMistakes(){
           return removed.indexOf(m) === -1;
         });
         _saveMistakes();
+        var badge = document.getElementById('mistakeBadge');
+        if(badge) badge.textContent = _mistakes.length > 0 ? ' ('+_mistakes.length+')' : '';
+        var btn = document.getElementById('mistakeBtn');
+        if(btn) btn.textContent = _mistakes.length > 0 ? '📋 Mistakes ('+_mistakes.length+')' : '📋 Mistakes';
       }
       var overlay = document.getElementById('mq-review-overlay');
       if(overlay){
@@ -192,6 +202,8 @@ function escHtml(s){
 
 // Update button count on load
 (function(){
+  var badge = document.getElementById('mistakeBadge');
+  if(badge && _mistakes.length > 0) badge.textContent = ' ('+_mistakes.length+')';
   var btn = document.getElementById('mistakeBtn');
   if(btn && _mistakes.length > 0) btn.textContent = '📋 Mistakes ('+_mistakes.length+')';
 })();
