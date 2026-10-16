@@ -92,7 +92,7 @@ it('genTest sampling logic guarantees at least 25-35% diagrams from pool', () =>
 });
 
 // 3. Test CBT Simulator pool partitioning & figure resolution in 17-mock-exam-mode.js
-it('17-mock-exam-mode.js ensures figure loading, diagrams quota, and error recovery', () => {
+it('17-mock-exam-mode.js ensures figure loading, diagrams quota, error recovery, and zero repetition', () => {
   const cbtSrc = fs.readFileSync(path.join(__dirname, '..', 'src', 'scripts', 'modules', '17-mock-exam-mode.js'), 'utf8');
   assert.ok(cbtSrc.includes('var loadFigures = (typeof window._ensureFigures === \'function\')'),
     'openMockExam must check and load _ensureFigures()');
@@ -102,16 +102,20 @@ it('17-mock-exam-mode.js ensures figure loading, diagrams quota, and error recov
     'openMockExam must allocate diagram quota for questions');
   assert.ok(cbtSrc.includes('cbt-nav-btn cbt-nav-primary" onclick="window.openMockExam'),
     'openMockExam must provide a retry button if bank or CBT fails');
+  assert.ok(cbtSrc.includes('tracker = window.ClipSATRedundancy ? window.ClipSATRedundancy.tracker() : null'),
+    'openMockExam must wire ClipSATRedundancy tracker to guarantee zero repetition');
 });
 
 // 4. Test 05-test-generator-and-ai-settings.js bank mode & figure capture
-it('05-test-generator-and-ai-settings.js loads bank questions with diagrams and populates _csCaptureQ', () => {
+it('05-test-generator-and-ai-settings.js loads bank questions with diagrams, redundancy tracker, and populates _csCaptureQ', () => {
   const tgSrc = fs.readFileSync(path.join(__dirname, '..', 'src', 'scripts', 'modules', '05-test-generator-and-ai-settings.js'), 'utf8');
   assert.ok(tgSrc.includes('function _renderQFig(q)'), 'Must include _renderQFig function');
   assert.ok(tgSrc.includes('window.CS_loadTrackBank'), 'Must load bank via CS_loadTrackBank in _genTestOriginal');
   assert.ok(tgSrc.includes('window._ensureFigures'), 'Must ensure figures in _genTestOriginal');
   assert.ok(tgSrc.includes('targetFigs=Math.min(withFig.length, Math.max(1, Math.ceil(n * 0.30)))'),
     'Must enforce diagram quota in genTest bank mode');
+  assert.ok(tgSrc.includes('tracker=window.ClipSATRedundancy ? window.ClipSATRedundancy.tracker() : null'),
+    'Must wire ClipSATRedundancy tracker in genTest bank mode');
   assert.ok(tgSrc.includes('figure: q.figure || q.fig || null'),
     'Must preserve figure in _csCaptureQ');
   assert.ok(tgSrc.includes('figureHtml: _fHtml || null'),

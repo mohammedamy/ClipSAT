@@ -663,24 +663,25 @@
 
       var targetFigs = Math.min(withFig.length, Math.max(1, Math.ceil(targetCount * 0.30)));
       var picked = [];
+      var tracker = window.ClipSATRedundancy ? window.ClipSATRedundancy.tracker() : null;
       var seenKeys = new Set();
 
       // Pick diagrams first
       for(var f = 0; f < withFig.length && picked.length < targetFigs; f++){
         var qf = withFig[f];
         var kf = (qf.text || qf.q || '').trim();
-        if(!seenKeys.has(kf)){
+        if(!seenKeys.has(kf) && (!tracker || tracker.add(qf))){
           seenKeys.add(kf);
           picked.push(qf);
         }
       }
 
       // Fill remainder
-      var remainder = noFig.concat(withFig.filter(function(x){ return !seenKeys.has((x.text || x.q || '').trim()); }));
+      var remainder = noFig.concat(withFig.filter(function(x){ return picked.indexOf(x) === -1; }));
       for(var r = 0; r < remainder.length && picked.length < targetCount; r++){
         var qr = remainder[r];
         var kr = (qr.text || qr.q || '').trim();
-        if(!seenKeys.has(kr)){
+        if(!seenKeys.has(kr) && (!tracker || tracker.add(qr))){
           seenKeys.add(kr);
           picked.push(qr);
         }
@@ -690,9 +691,21 @@
         for(var a = 0; a < allPool.length && picked.length < targetCount; a++){
           var qA = allPool[a];
           var kA = (qA.text || qA.q || '').trim();
-          if(!seenKeys.has(kA)){
+          if(!seenKeys.has(kA) && (!tracker || tracker.add(qA))){
             seenKeys.add(kA);
             picked.push(qA);
+          }
+        }
+      }
+
+      // If still under targetCount due to strict idea template filtering, backfill from non-duplicate items
+      if(picked.length < targetCount && pool.length > picked.length){
+        for(var b = 0; b < pool.length && picked.length < targetCount; b++){
+          var qB = pool[b];
+          var kB = (qB.text || qB.q || '').trim();
+          if(!seenKeys.has(kB)){
+            seenKeys.add(kB);
+            picked.push(qB);
           }
         }
       }

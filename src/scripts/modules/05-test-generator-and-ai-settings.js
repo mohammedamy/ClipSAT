@@ -163,23 +163,44 @@ function _genTestOriginal(btn, optTrackId){
 
       var targetFigs=Math.min(withFig.length, Math.max(1, Math.ceil(n * 0.30)));
       var pick=[];
+      var tracker=window.ClipSATRedundancy ? window.ClipSATRedundancy.tracker() : null;
       var seenStems=new Set();
 
       for(var f=0;f<withFig.length && pick.length<targetFigs;f++){
         var qf=withFig[f], kf=(qf.text||qf.q||'').trim();
-        if(!seenStems.has(kf)){ seenStems.add(kf); pick.push(qf); }
+        if(!seenStems.has(kf) && (!tracker || tracker.add(qf))){
+          seenStems.add(kf);
+          pick.push(qf);
+        }
       }
 
-      var remainder=noFig.concat(withFig.filter(function(x){ return !seenStems.has((x.text||x.q||'').trim()); }));
+      var remainder=noFig.concat(withFig.filter(function(x){ return pick.indexOf(x)===-1; }));
       for(var r=0;r<remainder.length && pick.length<n;r++){
         var qr=remainder[r], kr=(qr.text||qr.q||'').trim();
-        if(!seenStems.has(kr)){ seenStems.add(kr); pick.push(qr); }
+        if(!seenStems.has(kr) && (!tracker || tracker.add(qr))){
+          seenStems.add(kr);
+          pick.push(qr);
+        }
       }
 
       if(pick.length<n && allPool.length>pick.length){
         for(var a=0;a<allPool.length && pick.length<n;a++){
           var qa=allPool[a], ka=(qa.text||qa.q||'').trim();
-          if(!seenStems.has(ka)){ seenStems.add(ka); pick.push(qa); }
+          if(!seenStems.has(ka) && (!tracker || tracker.add(qa))){
+            seenStems.add(ka);
+            pick.push(qa);
+          }
+        }
+      }
+
+      /* If still under n due to strict idea template filtering, backfill from non-duplicate items */
+      if(pick.length<n && pool.length>pick.length){
+        for(var b=0;b<pool.length && pick.length<n;b++){
+          var qb=pool[b], kb=(qb.text||qb.q||'').trim();
+          if(!seenStems.has(kb)){
+            seenStems.add(kb);
+            pick.push(qb);
+          }
         }
       }
 
