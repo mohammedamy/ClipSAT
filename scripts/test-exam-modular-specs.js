@@ -178,6 +178,9 @@ it('window.examSpecs defines complete metadata, timing, and sections for all new
   allSpecs.forEach(name => {
     const sp = window.examSpecs[name];
     assert.ok(sp, `examSpecs should have definition for "${name}"`);
+    assert.ok(sp.bankId, `"${name}" must specify an explicit bankId to guarantee bank retrieval`);
+    const bankFilePath = path.join(__dirname, '..', 'bank-data', `${sp.bankId}.json`);
+    assert.ok(fs.existsSync(bankFilePath), `bank file for "${name}" (${sp.bankId}.json) must exist on disk`);
     assert.ok(sp.title, `"${name}" must have a title`);
     assert.ok(sp.totalTime, `"${name}" must have totalTime`);
     assert.ok(sp.instructions && sp.instructions.length >= 2, `"${name}" must have instructions`);

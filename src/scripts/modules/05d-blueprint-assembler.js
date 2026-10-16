@@ -127,7 +127,29 @@
     var tracks={}; tracks[viewId]=1;
     bp.topics.forEach(function(t){ t.bank.forEach(function(b){ var m=/^([a-z0-9]+):/.exec(b); if(m) tracks[m[1]]=1; }); });
     return Promise.all(Object.keys(tracks).map(function(tr){ return window.CS_loadTrackBank?window.CS_loadTrackBank(tr):null; }))
-      .then(function(){ return window.fullExamBank||{}; });
+      .then(function(){
+        var bks=window.fullExamBank||{};
+        Object.keys(bks).forEach(function(k){
+          var d=bks[k];
+          if(d && !d.pool && (d.easy||d.medium||d.hard)){
+            var _cvt=function(a,diff){
+              return(a||[]).map(function(q){
+                return Object.assign({}, q, {
+                  type: q.type || 'mcq',
+                  difficulty: diff,
+                  domain: q.domain || 'Mathematics',
+                  text: q.text || q.q || '',
+                  choices: q.choices || [],
+                  answer: q.answer,
+                  sol: q.sol || q.expl || ''
+                });
+              });
+            };
+            d.pool=_cvt(d.easy,'easy').concat(_cvt(d.medium,'medium')).concat(_cvt(d.hard,'hard'));
+          }
+        });
+        return bks;
+      });
   }
   function bankPick(viewId,topic,slot,used,banks,options,accept){
     var cands=[];

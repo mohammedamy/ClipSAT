@@ -195,6 +195,7 @@
     aslevel:{
       /* 9709 syllabus 2026–2027 and 2028–2030: Paper 1 is 1 h 50 min, 75 marks, 10–12 structured questions. */
       title:'Cambridge AS Level Mathematics 9709',totalTime:'1 hr 50 min',
+      bankId:'aslevel',
       logo:'Cambridge International AS & A Level',org:'Cambridge Assessment International Education',
       instructions:['Answer ALL questions.',
         'If working is needed, show it below the question.',
@@ -210,6 +211,7 @@
 
     'Cambridge AS Level — Paper 1 (Pure 1)':{
       title:'Cambridge AS Level 9709 — Paper 1 Pure Mathematics 1',totalTime:'1 hr 50 min',
+      bankId:'aslevel',
       logo:'Cambridge International AS & A Level',org:'Cambridge Assessment International Education',
       instructions:['Answer ALL questions.','Show all necessary working. Omission of working results in loss of marks.',
         'Electronic calculators should be used where appropriate.',
@@ -223,6 +225,7 @@
 
     'Cambridge AS Level — Paper 4 (Mechanics)':{
       title:'Cambridge AS Level 9709 — Paper 4 Mechanics',totalTime:'1 hr 15 min',
+      bankId:'aslevel',
       logo:'Cambridge International AS & A Level',org:'Cambridge Assessment International Education',
       instructions:['Answer ALL questions.','Show all necessary working clearly.',
         'Electronic calculators should be used where appropriate. Graphical calculators are not permitted.',
@@ -236,6 +239,7 @@
 
     'Cambridge AS Level — Paper 5 (Statistics 1)':{
       title:'Cambridge AS Level 9709 — Paper 5 Probability & Statistics 1',totalTime:'1 hr 15 min',
+      bankId:'aslevel',
       logo:'Cambridge International AS & A Level',org:'Cambridge Assessment International Education',
       instructions:['Answer ALL questions.','Show all necessary working clearly.',
         'Electronic calculators should be used where appropriate.',
@@ -250,6 +254,7 @@
     a2level:{
       /* 9709 syllabus 2026–2027 and 2028–2030: Paper 3 is 1 h 50 min, 75 marks, 9–11 structured questions. */
       title:'Cambridge A Level Mathematics 9709',totalTime:'1 hr 50 min',
+      bankId:'a2level',
       logo:'Cambridge International AS & A Level',org:'Cambridge Assessment International Education',
       instructions:['Answer ALL questions.',
         'Show all necessary working. Omission of working results in loss of marks.',
@@ -264,6 +269,7 @@
 
     'Cambridge A Level — Paper 3 (Pure 3)':{
       title:'Cambridge A Level 9709 — Paper 3 Pure Mathematics 3',totalTime:'1 hr 50 min',
+      bankId:'a2level',
       logo:'Cambridge International AS & A Level',org:'Cambridge Assessment International Education',
       instructions:['Answer ALL questions.','Show all necessary working. Omission of working results in loss of marks.',
         'Electronic calculators should be used where appropriate.',
@@ -277,6 +283,7 @@
 
     'Cambridge A Level — Paper 6 (Statistics 2)':{
       title:'Cambridge A Level 9709 — Paper 6 Probability & Statistics 2',totalTime:'1 hr 15 min',
+      bankId:'a2level',
       logo:'Cambridge International AS & A Level',org:'Cambridge Assessment International Education',
       instructions:['Answer ALL questions.','Show all necessary working clearly.',
         'Electronic calculators should be used where appropriate.',
@@ -317,6 +324,7 @@
        extended-response questions. There is no multiple choice. */
     ibsl:{
       title:'IB Mathematics: Analysis and Approaches SL',totalTime:'3 hr',
+      bankId:'ibsl',
       logo:'IB Mathematics SL',org:'International Baccalaureate Organization',
       instructions:['Answer ALL questions in both papers.',
         'Paper 1 (no technology): 80 marks, 90 minutes.',
@@ -335,6 +343,7 @@
     },
     ibhl:{
       title:'IB Mathematics: Analysis and Approaches HL',totalTime:'5 hr',
+      bankId:'ibhl',
       logo:'IB Mathematics HL',org:'International Baccalaureate Organization',
       instructions:['Answer ALL questions in all papers.',
         'Paper 1 (no technology): 110 marks, 120 minutes.',
@@ -357,6 +366,7 @@
 
     'IB Math SL (AA)':{
       title:'IB Mathematics: Analysis and Approaches SL',totalTime:'3 hr',
+      bankId:'ibsl',
       logo:'IB Math SL (AA)',org:'International Baccalaureate Organization',
       instructions:['Answer ALL questions in both papers.',
         'Paper 1 (no technology): 80 marks, 90 minutes.',
@@ -378,6 +388,7 @@
 
     'IB Math SL (AI)':{
       title:'IB Mathematics: Applications and Interpretation SL',totalTime:'3 hr',
+      bankId:'ibsl',
       logo:'IB Math SL (AI)',org:'International Baccalaureate Organization',
       instructions:['Answer ALL questions in both papers.',
         'Paper 1 (graphic display calculator required): 80 marks, 90 minutes.',
@@ -399,6 +410,7 @@
 
     'IB Math HL (AA)':{
       title:'IB Mathematics: Analysis and Approaches HL',totalTime:'5 hr',
+      bankId:'ibhl',
       logo:'IB Math HL (AA)',org:'International Baccalaureate Organization',
       instructions:['Answer ALL questions in all papers.',
         'Paper 1 (no technology): 110 marks, 120 minutes.',
@@ -424,6 +436,7 @@
 
     'IB Math HL (AI)':{
       title:'IB Mathematics: Applications and Interpretation HL',totalTime:'5 hr',
+      bankId:'ibhl',
       logo:'IB Math HL (AI)',org:'International Baccalaureate Organization',
       instructions:['Answer ALL questions in all papers.',
         'Paper 1 (graphic display calculator required): 110 marks, 120 minutes.',
