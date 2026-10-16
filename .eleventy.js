@@ -36,6 +36,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("rigor-standard.html");
   eleventyConfig.addPassthroughCopy("free-tier-promise.html");
   eleventyConfig.addPassthroughCopy("clipsat-logo.jpg");
+  eleventyConfig.addPassthroughCopy("teacher-avatar.jpg");
   eleventyConfig.addPassthroughCopy("clipsat-mark.png");
   // Lighthouse "Improve image delivery": header/footer both render this at
   // 22-44px CSS height (main.css .site-logo-img), yet were loading the full

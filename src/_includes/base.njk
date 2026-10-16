@@ -872,17 +872,21 @@
     <div id="cbt-palette-modal" class="cbt-palette-overlay" onclick="if(event.target===this)window.closeCBTPalette&&window.closeCBTPalette()"></div>
   </div>
 
-  <!-- ============================== MATH HELPER CHAT ============================== -->
-  <button id="chatFab" class="chat-fab" aria-label="Open Ask Mr. Mohamed math chat">
-    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H10l-4 3v-3H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" fill="#ffffff"/><path d="M8 9h8M8 12h5" stroke="#1E3A6E" stroke-width="1.5" stroke-linecap="round"/></svg>
-    Ask Mr. Mohamed
+  <!-- ============================== MATH HELPER CHAT (TEACHER HEAD FLOATING BOT) ============================== -->
+  <button id="chatFab" class="chat-fab teacher-head-fab" aria-label="Open Ask Mr. Mohamed math chat (Drag to move)" title="Ask Mr. Mohamed (Drag to reposition)">
+    <div class="chat-fab-avatar-ring">
+      <img src="/teacher-avatar.jpg" alt="Mr. Mohamed Abdallah" class="chat-fab-avatar" width="56" height="56" draggable="false" loading="lazy">
+      <span class="chat-fab-status-dot" aria-hidden="true" title="Online tutor"></span>
+      <span class="chat-fab-badge" aria-hidden="true">AI</span>
+    </div>
+    <span class="chat-fab-tooltip" aria-hidden="true">Ask Mr. Mohamed</span>
   </button>
 
   <div id="chatPanel" class="chat-panel" role="dialog" aria-label="Ask Mr. Mohamed math chat" aria-hidden="true">
     <div class="chat-head" style="flex-direction:column; align-items:stretch; gap:0">
       <div style="display:flex; align-items:center; justify-content:space-between">
         <div class="chat-title">
-          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H10l-4 3v-3H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" fill="#ffffff"/><path d="M8 9h8M8 12h5" stroke="#1E3A6E" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <img src="/teacher-avatar.jpg" alt="" class="chat-head-avatar" width="34" height="34" aria-hidden="true">
           <span>Ask Mr. Mohamed<span class="chat-sub">ClipSAT math tutor</span></span>
         </div>
         <button id="chatClose" class="chat-close" aria-label="Close chat">&times;</button>

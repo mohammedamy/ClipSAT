@@ -990,7 +990,7 @@
     .fep-q-count{padding:4px 0 6px; font-size:.78rem}
 
     /* AI chat FAB */
-    .chat-fab{right:14px; bottom:14px; padding:12px 16px; font-size:.85rem}
+    .chat-fab{right:14px; bottom:14px; width:52px; height:52px; padding:0}
     .chat-panel{right:10px; left:10px; bottom:10px; width:auto; height:74vh}
   }
 
@@ -1133,20 +1133,183 @@
   .wa-cta{text-align:center}
   .wa-cta .btn{background:#25D366; color:#fff; border-color:#25D366}
   .wa-cta .btn:hover{transform:translateY(-1px); box-shadow:var(--shadow)}
-  /* ===================== MATH HELPER CHAT ===================== */
-  .chat-fab{position:fixed; right:22px; bottom:22px; z-index:9998; display:inline-flex; align-items:center; gap:9px;
-    background:var(--indigo); color:#fff; border:none; border-radius:999px; padding:13px 19px; cursor:pointer;
-    font-family:var(--sans); font-size:.92rem; font-weight:600; box-shadow:0 10px 30px rgba(14,23,38,.28); transition:transform .15s ease, box-shadow .15s ease}
-  .chat-fab:hover{transform:translateY(-2px); box-shadow:0 14px 38px rgba(14,23,38,.34)}
-  .chat-fab svg{display:block}
-  .chat-panel{position:fixed; right:22px; bottom:22px; z-index:9999; width:384px; max-width:calc(100vw - 32px);
-    height:564px; max-height:calc(100vh - 40px); background:var(--paper); border:1px solid var(--line);
-    border-radius:18px; box-shadow:0 26px 64px rgba(14,23,38,.34); display:none; flex-direction:column; overflow:hidden}
+  /* ===================== MATH HELPER CHAT (DRAGGABLE TEACHER HEAD) ===================== */
+  .chat-fab {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 9998;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+    border: 3px solid #ffffff;
+    background: var(--indigo, #1E3A6E);
+    box-shadow: 0 8px 26px rgba(14, 23, 38, 0.35), 0 2px 8px rgba(0, 0, 0, 0.2);
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+    transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    outline-offset: 3px;
+    flex-shrink: 0;
+  }
+  .chat-fab:active {
+    cursor: grabbing;
+  }
+  .chat-fab.is-dragging {
+    cursor: grabbing !important;
+    transition: none !important;
+    box-shadow: 0 16px 40px rgba(14, 23, 38, 0.48), 0 4px 12px rgba(0, 0, 0, 0.3);
+    transform: scale(1.08) !important;
+  }
+  .chat-fab:hover:not(.is-dragging) {
+    transform: scale(1.08);
+    box-shadow: 0 12px 32px rgba(14, 23, 38, 0.42), 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  body.dark .chat-fab {
+    border-color: #334155;
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.65);
+  }
+  body.dark .chat-fab:hover:not(.is-dragging) {
+    border-color: var(--indigo-light, #60a5fa);
+    box-shadow: 0 12px 32px rgba(96, 165, 250, 0.3);
+  }
+
+  .chat-fab-avatar-ring {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .chat-fab-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+  }
+  .chat-fab-status-dot {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #22c55e;
+    border: 2px solid #ffffff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+  }
+  body.dark .chat-fab-status-dot {
+    border-color: #1e293b;
+  }
+  .chat-fab-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
+    color: #ffffff;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    padding: 1px 5px;
+    border-radius: 999px;
+    border: 1.5px solid #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    pointer-events: none;
+    line-height: 1.2;
+  }
+  body.dark .chat-fab-badge {
+    border-color: #0f172a;
+  }
+
+  /* Tooltip on hover */
+  .chat-fab-tooltip {
+    position: absolute;
+    right: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(15, 23, 42, 0.92);
+    color: #ffffff;
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  }
+  .chat-fab-tooltip::after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgba(15, 23, 42, 0.92);
+  }
+  .chat-fab:hover:not(.is-dragging) .chat-fab-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(-2px);
+  }
+  .chat-fab.tooltip-right .chat-fab-tooltip {
+    right: auto;
+    left: calc(100% + 12px);
+  }
+  .chat-fab.tooltip-right .chat-fab-tooltip::after {
+    left: auto;
+    right: 100%;
+    border-color: transparent rgba(15, 23, 42, 0.92) transparent transparent;
+  }
+  .chat-fab.is-dragging .chat-fab-tooltip {
+    display: none !important;
+  }
+
+  .chat-panel {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 9999;
+    width: 384px;
+    max-width: calc(100vw - 32px);
+    height: 564px;
+    max-height: calc(100vh - 40px);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    box-shadow: 0 26px 64px rgba(14, 23, 38, 0.34);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+  }
   .chat-panel.open{display:flex}
   .chat-head{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 16px 10px; background:var(--indigo); color:#fff}
 
-  .chat-title{display:flex; align-items:center; gap:9px; font-family:var(--serif-display); font-size:1.05rem; letter-spacing:.01em}
-  .chat-title svg{display:block; opacity:.95}
+  .chat-title{display:flex; align-items:center; gap:10px; font-family:var(--serif-display); font-size:1.05rem; letter-spacing:.01em}
+  .chat-head-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    object-fit: cover;
+    flex-shrink: 0;
+  }
   .chat-sub{font-family:var(--sans); font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; opacity:.7; margin-top:1px}
   .chat-close{background:transparent; border:none; color:#fff; font-size:1.5rem; line-height:1; cursor:pointer; opacity:.85; padding:0 2px}
   .chat-close:hover{opacity:1}
@@ -4036,18 +4199,9 @@ body.dark .whats-new-btn[href*="paypal"] { border-color: #003087; color: #fff; }
   .seg button.on { background:var(--panel); color:var(--indigo); }
   body.dark .seg button.on { background:var(--surface-2); color:var(--text-1); }
 
-  /* ── 25. Chat FAB — more premium ────────────────────────────── */
+  /* ── 25. Chat FAB — Teacher Head Floating Avatar ────────────── */
   .chat-fab {
-    background:var(--indigo-700);
-    box-shadow:0 6px 20px rgba(30,58,110,.35);
-    border-radius:var(--r-pill);
-    font-size:.88rem;
-    transition:transform var(--ease-out), box-shadow var(--ease-std), background var(--ease-std);
-  }
-  .chat-fab:hover {
-    background:var(--indigo-500);
-    transform:translateY(-3px);
-    box-shadow:0 10px 30px rgba(30,58,110,.42);
+    border-radius: 50% !important;
   }
   .chat-panel { border-radius:var(--r-xl); border-color:var(--border); }
   .chat-head { background:var(--indigo-700); }

@@ -179,8 +179,46 @@
     });
     body.appendChild(chips); body.scrollTop=body.scrollHeight;
   }
-  function openPanel(){ panel.classList.add('open'); panel.setAttribute('aria-hidden','false'); fab.style.display='none'; greet(); setTimeout(function(){ input.focus(); },60); }
-  function closePanel(){ panel.classList.remove('open'); panel.setAttribute('aria-hidden','true'); fab.style.display=''; }
+  function positionPanelNearFab() {
+    if (!fab || !panel || typeof window === 'undefined') return;
+    var fRect = fab.getBoundingClientRect();
+    var pWidth = Math.min(384, window.innerWidth - 32);
+    var pHeight = Math.min(564, window.innerHeight - 40);
+
+    if (fRect.left < window.innerWidth / 2) {
+      var left = Math.max(16, Math.min(fRect.left, window.innerWidth - pWidth - 16));
+      panel.style.left = left + 'px';
+      panel.style.right = 'auto';
+    } else {
+      var right = Math.max(16, Math.min(window.innerWidth - fRect.right, window.innerWidth - pWidth - 16));
+      panel.style.right = right + 'px';
+      panel.style.left = 'auto';
+    }
+
+    if (fRect.top < window.innerHeight / 2) {
+      var top = Math.max(16, Math.min(fRect.bottom + 8, window.innerHeight - pHeight - 16));
+      panel.style.top = top + 'px';
+      panel.style.bottom = 'auto';
+    } else {
+      var bottom = Math.max(16, Math.min(window.innerHeight - fRect.top + 8, window.innerHeight - pHeight - 16));
+      panel.style.bottom = bottom + 'px';
+      panel.style.top = 'auto';
+    }
+  }
+
+  function openPanel(){
+    positionPanelNearFab();
+    panel.classList.add('open');
+    panel.setAttribute('aria-hidden','false');
+    fab.style.display='none';
+    greet();
+    setTimeout(function(){ input.focus(); },60);
+  }
+  function closePanel(){
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden','true');
+    fab.style.display='';
+  }
 
   /* ═══════════════════════════════════════════════════════════════
      SHARED AI PROVIDER
@@ -890,11 +928,110 @@ window.launchPracticeQuiz=function(mistake){
 
 
   if(_chatUIReady){
-    fab.addEventListener('click',openPanel);
-    closeBtn.addEventListener('click',closePanel);
-    send.addEventListener('click',sendMsg);
-    input.addEventListener('keydown',function(e){ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); sendMsg(); } });
-    input.addEventListener('input',function(){ input.style.height='auto'; input.style.height=Math.min(120,input.scrollHeight)+'px'; });
+    var isDragging = false;
+    var hasMoved = false;
+    var startX = 0, startY = 0;
+    var initialLeft = 0, initialTop = 0;
+    var pointerId = null;
+    var suppressClick = false;
+
+    function clampAndApply(targetLeft, targetTop) {
+      if (typeof window === 'undefined') return;
+      var margin = 10;
+      var w = fab.offsetWidth || 60;
+      var h = fab.offsetHeight || 60;
+      var maxLeft = window.innerWidth - w - margin;
+      var maxTop = window.innerHeight - h - margin;
+      var clampedLeft = Math.max(margin, Math.min(targetLeft, maxLeft));
+      var clampedTop = Math.max(margin, Math.min(targetTop, maxTop));
+
+      fab.style.left = clampedLeft + 'px';
+      fab.style.top = clampedTop + 'px';
+      fab.style.right = 'auto';
+      fab.style.bottom = 'auto';
+
+      if (clampedLeft < 140) {
+        fab.classList.add('tooltip-right');
+      } else {
+        fab.classList.remove('tooltip-right');
+      }
+      return { left: clampedLeft, top: clampedTop };
+    }
+
+    try {
+      var saved = localStorage.getItem('clipsat_fab_pos');
+      if (saved) {
+        var pos = JSON.parse(saved);
+        if (typeof pos.left === 'number' && typeof pos.top === 'number') {
+          clampAndApply(pos.left, pos.top);
+        }
+      }
+    } catch(e) {}
+
+    window.addEventListener('resize', function() {
+      if (fab.style.left && fab.style.top) {
+        var r = fab.getBoundingClientRect();
+        clampAndApply(r.left, r.top);
+      }
+    });
+
+    fab.addEventListener('pointerdown', function(e) {
+      if (e.button !== 0 && e.pointerType === 'mouse') return;
+      isDragging = true;
+      hasMoved = false;
+      pointerId = e.pointerId;
+      startX = e.clientX;
+      startY = e.clientY;
+      var rect = fab.getBoundingClientRect();
+      initialLeft = rect.left;
+      initialTop = rect.top;
+      try { fab.setPointerCapture(e.pointerId); } catch(err){}
+    });
+
+    fab.addEventListener('pointermove', function(e) {
+      if (!isDragging || e.pointerId !== pointerId) return;
+      var dx = e.clientX - startX;
+      var dy = e.clientY - startY;
+      if (!hasMoved && Math.hypot(dx, dy) > 5) {
+        hasMoved = true;
+        fab.classList.add('is-dragging');
+      }
+      if (hasMoved) {
+        e.preventDefault();
+        clampAndApply(initialLeft + dx, initialTop + dy);
+      }
+    });
+
+    function finishDrag(e) {
+      if (!isDragging || (e && e.pointerId !== pointerId)) return;
+      isDragging = false;
+      try { fab.releasePointerCapture(pointerId); } catch(err){}
+      if (hasMoved) {
+        fab.classList.remove('is-dragging');
+        suppressClick = true;
+        setTimeout(function() { suppressClick = false; }, 80);
+        var r = fab.getBoundingClientRect();
+        try {
+          localStorage.setItem('clipsat_fab_pos', JSON.stringify({ left: r.left, top: r.top }));
+        } catch(err){}
+      }
+    }
+
+    fab.addEventListener('pointerup', finishDrag);
+    fab.addEventListener('pointercancel', finishDrag);
+
+    fab.addEventListener('click', function(e) {
+      if (suppressClick) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+      openPanel();
+    });
+    closeBtn.addEventListener('click', closePanel);
+    send.addEventListener('click', sendMsg);
+    input.addEventListener('keydown', function(e){ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); sendMsg(); } });
+    input.addEventListener('input', function(){ input.style.height='auto'; input.style.height=Math.min(120,input.scrollHeight)+'px'; });
   }
 
   if(typeof window !== 'undefined'){
