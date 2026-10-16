@@ -303,33 +303,69 @@
                  onblur="setTimeout(function(){window.CSSearch&&window.CSSearch.close()},200)">
           <div id="topic-search-results" role="listbox"></div>
         </span>
-        <button class="mistake-nav-btn" id="glossaryNavBtn" onclick="window.openGlossaryModal&&window.openGlossaryModal()" title="Bilingual Mathematics Glossary" aria-label="Bilingual Math Glossary">📖 <span data-i18n="nav.glossary">Glossary</span></button>
-        <button class="mistake-nav-btn" id="formulaNavBtn" onclick="window.openFormulaModal&&window.openFormulaModal()" title="Official Reference &amp; Formula Sheets" aria-label="Official Reference &amp; Formula Sheets">📐 <span data-i18n="nav.formulas">Formulas</span></button>
+        <button class="mistake-nav-btn nav-extra-item" id="glossaryNavBtn" onclick="window.openGlossaryModal&&window.openGlossaryModal()" title="Bilingual Mathematics Glossary" aria-label="Bilingual Math Glossary">📖 <span data-i18n="nav.glossary">Glossary</span></button>
+        <button class="mistake-nav-btn nav-extra-item" id="formulaNavBtn" onclick="window.openFormulaModal&&window.openFormulaModal()" title="Official Reference &amp; Formula Sheets" aria-label="Official Reference &amp; Formula Sheets">📐 <span data-i18n="nav.formulas">Formulas</span></button>
         <button class="mistake-nav-btn" id="mistakeBtn" onclick="openMistakes()" title="Review mistakes" aria-label="Review mistakes">📋 <span data-i18n="nav.mistakes">Mistakes</span></button>
-        <button class="mistake-nav-btn" id="progressBtn" onclick="openProgress()" title="View your progress across tracks" aria-label="View your progress">📊 <span data-i18n="nav.progress">Progress</span></button>
+        <button class="mistake-nav-btn nav-extra-item" id="progressBtn" onclick="openProgress()" title="View your progress across tracks" aria-label="View your progress">📊 <span data-i18n="nav.progress">Progress</span></button>
         <button class="mistake-nav-btn" id="cloudSignInBtn" title="Sign in to sync your progress across devices" aria-label="Sign in to sync your progress" onclick="window.openCloudAuthModal&&window.openCloudAuthModal()">☁️ <span>Sign in</span></button>
-        <!-- "More" overflow menu — everything below is secondary (teacher tools, site
-             links, gamification badges, social icons). Keeping these in a single
-             fixed-width disclosure instead of inline flex children is what actually
-             fixes the 900–1470px header-overflow bug: those items' combined width used
-             to exceed the available header width with nowhere to wrap to (see the old
-             per-item @media hides this replaced), and a fixed-width button can never
-             overflow regardless of viewport. -->
+        <button id="teacherWhiteboardBtn" class="theme-btn nav-extra-item" onclick="window._ensureWhiteboard().then(function(){window.CSGamify.toggleWhiteboard()})" style="display:none;" title="Interactive Whiteboard">✏️ Whiteboard</button>
+        <!-- "More" overflow menu — absorbs extra tools and secondary links so the header bar fits any page width -->
         <div class="nav-more-wrap">
-          <button type="button" class="mistake-nav-btn nav-more-btn" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" aria-controls="navMorePanel" title="More" aria-label="More">⋯ <span data-i18n="nav.more">More</span></button>
+          <button type="button" class="mistake-nav-btn nav-more-btn" id="navMoreBtn" aria-haspopup="true" aria-expanded="false" aria-controls="navMorePanel" title="More options" aria-label="More options">⋯ <span data-i18n="nav.more">More</span></button>
           <div class="nav-more-panel" id="navMorePanel" role="region" aria-label="More options" hidden>
-            <button class="mistake-nav-btn" id="teacherModeBtn" onclick="window._ensureTeacherMode?window._ensureTeacherMode().then(function(){window.TeacherMode.toggle()}):null" title="Teacher Mode" style="background:var(--panel);color:var(--text);border:1px solid var(--border)">📐 <span data-i18n="nav.teacher">Teacher</span></button>
-            <button class="mistake-nav-btn" id="teacherViewBtn" title="Manage your classes and see student progress" onclick="window.openTeacherView&&window.openTeacherView()" style="display:none">🏫 Class</button>
-            <a class="whats-new-btn" href="/calculator/" title="Graphing, 3D, scientific &amp; exam-mode calculator (powered by Desmos)">🖩 <span data-i18n="nav.calculator">Calculator</span></a>
-            <a class="whats-new-btn" href="/changelog.html" title="See all updates">🆕 <span data-i18n="nav.whats-new-label">What's New</span></a>
-            <a class="whats-new-btn" href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" style="background:#003087;color:#fff;border-color:#003087">☕ <span data-i18n="nav.support">Support</span></a>
-            <span class="g-sharetoclassroom-wrap" title="Share this page to Google Classroom">
-              <script src="https://apis.google.com/js/platform.js" async defer></script>
-              <div class="g-sharetoclassroom" data-size="32" data-theme="classic"
-                   data-url="https://clipsat.org{{ '/' + trackId + '/' if trackId !== 'home' else '/' }}"
-                   data-title="{{ title }}"
-                   data-itemtype="material"></div>
-            </span>
+            <div class="nav-more-section">
+              <div class="nav-more-heading">Study Tools</div>
+              <button type="button" class="nav-more-item" id="moreGlossaryBtn" onclick="window.openGlossaryModal&&window.openGlossaryModal();window.closeNavMorePanel&&window.closeNavMorePanel()" title="Bilingual Mathematics Glossary">
+                <span class="nav-more-item-icon">📖</span>
+                <span class="nav-more-item-text" data-i18n="nav.glossary">Glossary</span>
+              </button>
+              <button type="button" class="nav-more-item" id="moreFormulaBtn" onclick="window.openFormulaModal&&window.openFormulaModal();window.closeNavMorePanel&&window.closeNavMorePanel()" title="Official Reference &amp; Formula Sheets">
+                <span class="nav-more-item-icon">📐</span>
+                <span class="nav-more-item-text" data-i18n="nav.formulas">Formulas</span>
+              </button>
+              <button type="button" class="nav-more-item" id="moreProgressBtn" onclick="openProgress();window.closeNavMorePanel&&window.closeNavMorePanel()" title="View your progress across tracks">
+                <span class="nav-more-item-icon">📊</span>
+                <span class="nav-more-item-text" data-i18n="nav.progress">Progress</span>
+              </button>
+              <button type="button" class="nav-more-item" id="moreWhiteboardBtn" onclick="window._ensureWhiteboard().then(function(){window.CSGamify.toggleWhiteboard();window.closeNavMorePanel&&window.closeNavMorePanel()})" title="Interactive Whiteboard">
+                <span class="nav-more-item-icon">✏️</span>
+                <span class="nav-more-item-text" data-i18n="nav.whiteboard">Whiteboard</span>
+              </button>
+              <a class="nav-more-item" href="/calculator/" title="Graphing, 3D, scientific &amp; exam-mode calculator">
+                <span class="nav-more-item-icon">🖩</span>
+                <span class="nav-more-item-text" data-i18n="nav.calculator">Calculator</span>
+              </a>
+            </div>
+            <div class="nav-more-divider"></div>
+            <div class="nav-more-section">
+              <div class="nav-more-heading">Teacher &amp; Classroom</div>
+              <button type="button" class="nav-more-item" id="teacherModeBtn" onclick="window._ensureTeacherMode?window._ensureTeacherMode().then(function(){window.TeacherMode.toggle();window.closeNavMorePanel&&window.closeNavMorePanel()}):null" title="Teacher Mode">
+                <span class="nav-more-item-icon">📐</span>
+                <span class="nav-more-item-text" data-i18n="nav.teacher">Teacher Mode</span>
+              </button>
+              <button type="button" class="nav-more-item" id="teacherViewBtn" title="Manage your classes and see student progress" onclick="window.openTeacherView&&window.openTeacherView();window.closeNavMorePanel&&window.closeNavMorePanel()" style="display:none">
+                <span class="nav-more-item-icon">🏫</span>
+                <span class="nav-more-item-text">Classroom View</span>
+              </button>
+              <span class="g-sharetoclassroom-wrap" title="Share this page to Google Classroom">
+                <script src="https://apis.google.com/js/platform.js" async defer></script>
+                <div class="g-sharetoclassroom" data-size="32" data-theme="classic"
+                     data-url="https://clipsat.org{{ '/' + trackId + '/' if trackId !== 'home' else '/' }}"
+                     data-title="{{ title }}"
+                     data-itemtype="material"></div>
+              </span>
+            </div>
+            <div class="nav-more-divider"></div>
+            <div class="nav-more-section">
+              <a class="nav-more-item" href="/changelog.html" title="See all updates">
+                <span class="nav-more-item-icon">🆕</span>
+                <span class="nav-more-item-text" data-i18n="nav.whats-new-label">What's New</span>
+              </a>
+              <a class="nav-more-item nav-more-item-support" href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" title="Support ClipSAT">
+                <span class="nav-more-item-icon">☕</span>
+                <span class="nav-more-item-text" data-i18n="nav.support">Support ClipSAT</span>
+              </a>
+            </div>
             <div class="nav-gamification">
               <span class="streak-badge" title="Daily streak">🔥 <span id="nav-streak">0</span></span>
               <span class="xp-badge" title="Total XP">⭐ <span id="nav-xp">0</span> XP</span>
@@ -345,7 +381,6 @@
           </div>
         </div>
       </nav>
-      <button id="teacherWhiteboardBtn" class="theme-btn" onclick="window._ensureWhiteboard().then(function(){window.CSGamify.toggleWhiteboard()})" style="display:none; margin-right: 6px;">✏️ Whiteboard</button>
       <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false" onclick="(function(btn){var n=document.getElementById('navlinks');var open=n.classList.toggle('open');btn.setAttribute('aria-expanded',open);btn.innerHTML=open?'&#10005; Close':'&#9776; Menu';})(this)">&#9776; Menu</button>
     </div>
   </header>

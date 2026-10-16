@@ -206,6 +206,8 @@
       // head start before the user could possibly reach that button.
       if (window._ensureTeacherMode) window._ensureTeacherMode();
     }
+    window.closeNavMorePanel = closePanel;
+    window.openNavMorePanel = openPanel;
     btn.addEventListener('click',function(e){
       e.stopPropagation();
       if(panel.hidden) openPanel(); else closePanel();

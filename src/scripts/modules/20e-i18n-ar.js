@@ -47,7 +47,7 @@
         'foot.tagline':'منصة رياضيات شاملة ومطابقة لمعايير الاختبارات الوطنية السعودية (القدرات، التحصيلي) والمسارات الدولية (AP، كامبريدج، IB، SAT، ACT) — إعداد أ. محمد عبد الله.',
         'search.placeholder':'ابحث عن موضوع…',
         'nav.progress':'التقدم','nav.teacher':'المعلم','nav.support':'ادعم الموقع',
-        'nav.calculator':'الآلة الحاسبة','nav.more':'المزيد',
+        'nav.calculator':'الآلة الحاسبة','nav.more':'المزيد','nav.whiteboard':'السبورة',
         'nav.whats-new-label':'الجديد',
         'syllabus.reviewed':'تم التحقق من المنهج الرسمي',
         'syllabus.lastReview':'آخر مراجعة وفق المنهج الرسمي:',

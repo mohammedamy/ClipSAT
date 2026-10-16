@@ -1011,6 +1011,8 @@
     var isCbt = document.body.classList.contains('cbt-open');
     var wbBtn = document.getElementById('teacherWhiteboardBtn');
     if (wbBtn) wbBtn.style.display = isTeacher ? 'inline-flex' : 'none';
+    var wbMoreBtn = document.getElementById('moreWhiteboardBtn');
+    if (wbMoreBtn) wbMoreBtn.style.display = isTeacher ? 'flex' : 'none';
     if (isTeacher) {
       wasTeacher = true;
       window._ensureWhiteboard().then(function() {

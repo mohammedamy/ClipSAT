@@ -53,6 +53,7 @@
           +' <button onclick="window.TeacherMode.exportWord()">'+_tt('tmQuizWordExport')+'</button>'
           +' <button onclick="window.CSExport&&window.CSExport.downloadChapterDocx(null)">'+_tt('tmChapterDocx')+'</button>'
           +' <button onclick="window.CSAssign&&window.CSAssign.open()">'+_tt('tmAssignment')+'</button>'
+          +' <button onclick="window._ensureWhiteboard().then(function(){window.CSGamify.toggleWhiteboard()})">✏️ '+(_ttAr()?'السبورة':'Whiteboard')+'</button>'
           +' <button onclick="window.CSReport&&window.CSReport.generate()">'+_tt('tmProgressReport')+'</button>'
           +' <button onclick="window.TeacherMode.toggle()" style="background:#7f1d1d">'+_tt('tmOff')+'</button>';
         document.body.appendChild(bar);
