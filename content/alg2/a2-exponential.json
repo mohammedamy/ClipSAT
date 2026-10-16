@@ -40,6 +40,50 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Exponential &amp; Logarithmic Functions — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
         "kind": "explorer",
         "title": {
           "en": "⊙ Explorer · Exponential growth &amp; decay",
@@ -60,32 +104,50 @@
             "ar": null
           },
           "columns": [
-            { "en": "x", "ar": null },
-            { "en": "y", "ar": null }
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "y",
+              "ar": null
+            }
           ]
         },
         "controls": [
           {
             "id": "a2ExpK",
-            "label": { "en": "rate <b>k</b>:", "ar": null },
+            "label": {
+              "en": "rate <b>k</b>:",
+              "ar": null
+            },
             "min": -1,
             "max": 1,
             "value": 0.5,
             "step": 0.1,
             "valueDisplayId": "a2ExpKV",
-            "ariaLabel": { "en": "Growth/decay rate k", "ar": null }
+            "ariaLabel": {
+              "en": "Growth/decay rate k",
+              "ar": null
+            }
           }
         ],
         "readouts": [
           {
             "id": "a2ExpType",
-            "label": { "en": "behavior", "ar": null },
+            "label": {
+              "en": "behavior",
+              "ar": null
+            },
             "colorClass": "indigo",
             "value": "growth"
           },
           {
             "id": "a2ExpVal",
-            "label": { "en": "y at x = 1", "ar": null },
+            "label": {
+              "en": "y at x = 1",
+              "ar": null
+            },
             "colorClass": "amber",
             "value": "1.649"
           }
@@ -169,14 +231,32 @@
         "figure": {
           "type": "fn",
           "title": "Exponential Growth vs. Decay: y = 2^x and y = (1/2)^x",
-          "xrange": [-3, 3],
-          "yrange": [-1, 8],
+          "xrange": [
+            -3,
+            3
+          ],
+          "yrange": [
+            -1,
+            8
+          ],
           "fns": [
-            { "expr": "2^x", "color": "var(--fig-blue)", "label": "growth y = 2^x" },
-            { "expr": "(0.5)^x", "color": "var(--fig-amber)", "label": "decay y = (1/2)^x" }
+            {
+              "expr": "2^x",
+              "color": "var(--fig-blue)",
+              "label": "growth y = 2^x"
+            },
+            {
+              "expr": "(0.5)^x",
+              "color": "var(--fig-amber)",
+              "label": "decay y = (1/2)^x"
+            }
           ],
           "points": [
-            { "x": 0, "y": 1, "label": "Common y-intercept (0, 1)" }
+            {
+              "x": 0,
+              "y": 1,
+              "label": "Common y-intercept (0, 1)"
+            }
           ]
         },
         "caption": {
@@ -193,6 +273,30 @@
         },
         "body": {
           "en": "<ul><li><strong>Logarithmic Domain Restriction:</strong> The argument of any logarithm must be strictly positive (\\(x > 0\\)). When solving logarithmic equations by condensing (e.g. \\(\\log_2(x) + \\log_2(x - 3) = 2\\)), always verify candidate roots in the original uncombined equation to detect extraneous negative or zero arguments.</li><li><strong>Common False Logarithmic Laws:</strong> Remember that \\(\\log(A + B) \\neq \\log A + \\log B\\) and \\(\\frac{\\log A}{\\log B} \\neq \\log(A - B)\\). The product property is \\(\\log(AB) = \\log A + \\log B\\), and the quotient property is \\(\\log(A/B) = \\log A - \\log B\\).</li><li><strong>Quadratic Forms with Exponentials:</strong> Equations like \\(4^x - 5(2^x) + 4 = 0\\) are quadratic in disguise. Substitute \\(u = 2^x\\) (so \\(4^x = (2^x)^2 = u^2\\)) to solve \\(u^2 - 5u + 4 = 0\\), then solve \\(2^x = u\\). Reject any \\(u \\le 0\\).</li><li><strong>Change of Base Formula:</strong> \\(\\log_b a = \\frac{\\ln a}{\\ln b} = \\frac{\\log a}{\\log b}\\). The old base goes in the denominator, and the argument goes in the numerator.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
           "ar": null
         }
       },
@@ -217,10 +321,34 @@
           "en": "<p>Rewrite the first term in terms of base 2: \\[4^{x+1} = 4^1 \\cdot (2^2)^x = 4 \\cdot (2^x)^2.\\]</p><p>Substitute \\(u = 2^x\\) (with constraint \\(u > 0\\)):</p>\\[4u^2 - 5u + 1 = 0.\\]<p>Factor the quadratic:</p>\\[(4u - 1)(u - 1) = 0 \\implies u = \\frac{1}{4} \\quad \\text{or} \\quad u = 1.\\]<p>Back-substitute \\(2^x = u\\):</p><ul><li>\\(2^x = \\frac{1}{4} = 2^{-2} \\implies x = -2\\)</li><li>\\(2^x = 1 = 2^0 \\implies x = 0\\)</li></ul><p>Both solutions are real and valid: \\[x = -2 \\quad \\text{and} \\quad x = 0.\\]</p>",
           "ar": null
         }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Exponential &amp; Logarithmic Functions · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Exponential &amp; Logarithmic Functions · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Exponential & Logarithmic Functions"]
+    "domains": [
+      "Exponential & Logarithmic Functions"
+    ]
   }
 }

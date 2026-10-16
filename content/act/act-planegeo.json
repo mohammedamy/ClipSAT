@@ -43,6 +43,39 @@
       {
         "kind": "figure",
         "figure": {
+          "type": "triangle",
+          "A": [
+            0,
+            0
+          ],
+          "B": [
+            12,
+            0
+          ],
+          "C": [
+            12,
+            5
+          ],
+          "labels": {
+            "A": "A",
+            "B": "C",
+            "C": "B"
+          },
+          "sides": {
+            "c": "12",
+            "a": "5",
+            "b": "13"
+          },
+          "rightAt": "B"
+        },
+        "caption": {
+          "en": "A 5-12-13 Pythagorean right triangle with right angle at C.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
           "type": "transversal",
           "labels": {
             "1": "120°",
@@ -55,6 +88,127 @@
           "en": "Parallel lines cut by a transversal. Alternate interior angles and corresponding angles are equal (\\( 120^\\circ \\)), while consecutive interior angles are supplementary (\\( 120^\\circ + 60^\\circ = 180^\\circ \\)).",
           "ar": null
         }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · 2D Circle Sectors, Chords &amp; 3D Cylinder/Cone Volumes",
+          "ar": null
+        },
+        "canvasId": "actGeoCanvas",
+        "ariaLabel": {
+          "en": "ACT Circle Sector and Chord Explorer with 3D Cylinder and Cone volume comparison",
+          "ar": null
+        },
+        "canvas3d": {
+          "btnId": "actGeo3dBtn",
+          "wrapId": "actGeo3dWrap",
+          "hintId": "actGeo3dHint",
+          "btnLabel": "🧊 View Cylinder & Cone in 3D",
+          "ariaLabel": {
+            "en": "Interactive 3D comparison of a cylinder and a cone of radius r and height h. Drag to rotate.",
+            "ar": null
+          }
+        },
+        "dataPanel": {
+          "btnId": "actGeoDataBtn",
+          "panelId": "actGeoDataPanel",
+          "descId": "actGeoDataDesc",
+          "rowsId": "actGeoDataRows",
+          "caption": {
+            "en": "Circle sector and 3D solid measurements",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "Measurement",
+              "ar": null
+            },
+            {
+              "en": "Value",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "actGeoR",
+            "label": {
+              "en": "Radius <b>r =</b>",
+              "ar": null
+            },
+            "min": 1,
+            "max": 5,
+            "value": 4,
+            "step": 0.5,
+            "valueDisplayId": "actGeoRV",
+            "ariaLabel": {
+              "en": "Radius r",
+              "ar": null
+            }
+          },
+          {
+            "id": "actGeoDeg",
+            "label": {
+              "en": "Angle <b>θ =</b>",
+              "ar": null
+            },
+            "min": 30,
+            "max": 180,
+            "value": 90,
+            "step": 15,
+            "valueDisplayId": "actGeoDegV",
+            "ariaLabel": {
+              "en": "Angle theta",
+              "ar": null
+            }
+          },
+          {
+            "id": "actGeoH",
+            "label": {
+              "en": "3D Height <b>h =</b>",
+              "ar": null
+            },
+            "min": 2,
+            "max": 8,
+            "value": 5,
+            "step": 0.5,
+            "valueDisplayId": "actGeoHV",
+            "ariaLabel": {
+              "en": "Height h",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "actGeoArc",
+            "label": {
+              "en": "Arc Length s",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "6.28"
+          },
+          {
+            "id": "actGeoArea",
+            "label": {
+              "en": "Sector Area A",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "12.57"
+          },
+          {
+            "id": "actGeoChord",
+            "label": {
+              "en": "Chord | 3D Vol",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "5.66 | V: 251/84"
+          }
+        ]
       },
       {
         "kind": "callout",
@@ -146,6 +300,30 @@
         },
         "body": {
           "en": "Solid Cylinder \\(A\\) has height \\(6\\) inches and radius \\(4\\) inches. Solid Cylinder \\(B\\) is geometrically similar to Cylinder \\(A\\) with a height of \\(15\\) inches. By what factor is the volume of Cylinder \\(B\\) larger than the volume of Cylinder \\(A\\)?<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Find the linear scale factor \\(k\\):<br>\\[ k = \\frac{h_B}{h_A} = \\frac{15}{6} = \\frac{5}{2} = 2.5 \\]</li><li>Apply the volumetric scaling law for similar solids:<br>\\[ \\frac{V_B}{V_A} = k^3 = \\left(\\frac{5}{2}\\right)^3 = \\frac{125}{8} = 15.625 \\]</li><li>Verification via direct volume calculation:<br>Radius of \\(B\\): \\(r_B = 4 \\cdot \\frac{5}{2} = 10\\).<br>\\(V_A = \\pi(4^2)(6) = 96\\pi\\).<br>\\(V_B = \\pi(10^2)(15) = 1500\\pi\\).<br>Ratio: \\(\\frac{1500\\pi}{96\\pi} = \\frac{125}{8} = 15.625\\).</li></ol>The volume of Cylinder \\(B\\) is \\(\\mathbf{\\frac{125}{8}}\\) (or \\(\\mathbf{15.625}\\)) times that of Cylinder \\(A\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 5.C — Inscribed vs Central Angles in a Circle",
+          "ar": null
+        },
+        "body": {
+          "en": "Points \\(A, B, C\\) lie on a circle centered at \\(O\\). If central angle \\(\\angle AOB = 114^\\circ\\), what is the measure of inscribed angle \\(\\angle ACB\\) subtending the same minor arc \\(\\widehat{AB}\\)?<br><br><strong>Solution:</strong> By the Inscribed Angle Theorem, an inscribed angle equals half the central angle subtending the same arc:<br>\\[ \\angle ACB = \\frac{1}{2}(114^\\circ) = \\mathbf{57^\\circ} \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 5.D — Space Diagonal of a 3D Rectangular Prism",
+          "ar": null
+        },
+        "body": {
+          "en": "Find the length of the longest rod that can fit completely inside a rectangular box of dimensions \\(3\\text{ ft} \\times 4\\text{ ft} \\times 12\\text{ ft}\\).<br><br><strong>Solution:</strong> Apply the 3D Pythagorean theorem:<br>\\[ d = \\sqrt{\\ell^2 + w^2 + h^2} = \\sqrt{3^2 + 4^2 + 12^2} = \\sqrt{9 + 16 + 144} = \\sqrt{169} = \\mathbf{13\\text{ ft}} \\]",
           "ar": null
         }
       },

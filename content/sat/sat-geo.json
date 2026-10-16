@@ -76,6 +76,127 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · 2D Circle Sectors &amp; 3D Cylinder vs. Cone Volume",
+          "ar": null
+        },
+        "canvasId": "satGeoCanvas",
+        "ariaLabel": {
+          "en": "Square-lattice circle sector explorer with interactive 3D cylinder and inscribed cone visualization",
+          "ar": null
+        },
+        "canvas3d": {
+          "btnId": "satGeo3dBtn",
+          "wrapId": "satGeo3dWrap",
+          "hintId": "satGeo3dHint",
+          "btnLabel": "🧊 View Cylinder & Cone in 3D",
+          "ariaLabel": {
+            "en": "Interactive 3D visualization of a right circular cylinder and an inscribed cone of radius r and height h. Drag to rotate.",
+            "ar": null
+          }
+        },
+        "dataPanel": {
+          "btnId": "satGeoDataBtn",
+          "panelId": "satGeoDataPanel",
+          "descId": "satGeoDataDesc",
+          "rowsId": "satGeoDataRows",
+          "caption": {
+            "en": "2D sector measurements and 3D solid volume comparison",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "Geometric Quantity",
+              "ar": null
+            },
+            {
+              "en": "Value",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "satGeoR",
+            "label": {
+              "en": "Radius <b>r =</b>",
+              "ar": null
+            },
+            "min": 1,
+            "max": 4.5,
+            "value": 3,
+            "step": 0.5,
+            "valueDisplayId": "satGeoRV",
+            "ariaLabel": {
+              "en": "Radius r",
+              "ar": null
+            }
+          },
+          {
+            "id": "satGeoDeg",
+            "label": {
+              "en": "Central Angle <b>θ =</b>",
+              "ar": null
+            },
+            "min": 30,
+            "max": 330,
+            "value": 120,
+            "step": 15,
+            "valueDisplayId": "satGeoDegV",
+            "ariaLabel": {
+              "en": "Angle theta",
+              "ar": null
+            }
+          },
+          {
+            "id": "satGeoH",
+            "label": {
+              "en": "3D Solid Height <b>h =</b>",
+              "ar": null
+            },
+            "min": 1,
+            "max": 6,
+            "value": 4,
+            "step": 0.5,
+            "valueDisplayId": "satGeoHV",
+            "ariaLabel": {
+              "en": "Height h",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "satGeoArc",
+            "label": {
+              "en": "Arc Length s = rθ",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "6.28"
+          },
+          {
+            "id": "satGeoArea",
+            "label": {
+              "en": "Sector Area ½r²θ",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "9.42"
+          },
+          {
+            "id": "satGeoVol",
+            "label": {
+              "en": "Vol (Cyl / Cone)",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "113.1 / 37.7"
+          }
+        ]
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -250,6 +371,30 @@
         },
         "solution": {
           "en": "<p>Complete the square for both \\( x \\) and \\( y \\):</p>\\[ (x^2 - 8x + 16) + (y^2 + 6y + 9) = 24 + 16 + 9 \\]\\[ (x - 4)^2 + (y + 3)^2 = 49. \\]<p>In standard form \\( (x - h)^2 + (y - k)^2 = r^2 \\), the center is \\( (h, k) = (4, -3) \\) and the radius is \\( r = \\sqrt{49} = 7 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "circle",
+          "title": "Circle Equation, Central Angle & Tangent Perpendicularity",
+          "radius": 5,
+          "label": "r = 5, (x - h)² + (y - k)² = 25"
+        },
+        "caption": {
+          "en": "Completing the square on x² + y² + Dx + Ey + F = 0 reveals the center (h, k) and radius r; any tangent line is perpendicular to the radius at the point of tangency.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 4 · Synthesis</span><p>The equation of a circle in the \\( xy \\)-plane is \\( x^2 + y^2 - 10x + 6y - 15 = 0 \\). What is the length of the diameter of the circle?</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Complete the square for both \\( x \\) and \\( y \\):</p>\\[ (x^2 - 10x + 25) + (y^2 + 6y + 9) = 15 + 25 + 9 = 49. \\]\\[ (x - 5)^2 + (y + 3)^2 = 7^2. \\]<p>The radius is \\( r = 7 \\), so the diameter is \\( 2r = 14 \\).</p>",
           "ar": null
         }
       }

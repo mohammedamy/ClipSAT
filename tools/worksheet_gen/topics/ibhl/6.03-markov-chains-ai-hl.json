@@ -16,7 +16,25 @@
             "$\\frac{1}{n}$"
           ],
           "correct": 0,
-          "answer": "Because each row corresponds to the probability distribution of transitioning from a given state to all possible next states, the sum of probabilities across each row is strictly $1$."
+          "answer": "Because each row corresponds to the probability distribution of transitioning from a given state to all possible next states, the sum of probabilities across each row is strictly $1$.",
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "G1",
+              "G2",
+              "G3",
+              "G4"
+            ],
+            "values": [
+              18,
+              26,
+              22,
+              34
+            ],
+            "highlight_index": 3,
+            "ylabel": "Frequency",
+            "width": 145
+          }
         },
         {
           "q": "Given initial state probability vector $\\mathbf{s}_0 = [0.6, 0.4]$ and transition matrix $T = [[0.8, 0.2], [0.3, 0.7]]$, what is the state distribution after one step $\\mathbf{s}_1 = \\mathbf{s}_0 T$?",
@@ -65,7 +83,33 @@
             "$[[0.5, 0], [0, 0.5]]$"
           ],
           "correct": 0,
-          "answer": "Each entry is $0.5(0.5) + 0.5(0.5) = 0.25 + 0.25 = 0.5$. Thus $T^2 = T$."
+          "answer": "Each entry is $0.5(0.5) + 0.5(0.5) = 0.25 + 0.25 = 0.5$. Thus $T^2 = T$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-(x - 2)**2 + 5",
+              "x - 1"
+            ],
+            "xmin": -1,
+            "xmax": 5,
+            "ymin": -2,
+            "ymax": 6,
+            "points": [
+              [
+                2,
+                5
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                3,
+                4
+              ]
+            ],
+            "width": 145
+          }
         },
         {
           "q": "What does entry $(T^3)_{2,1}$ represent?",
@@ -114,7 +158,34 @@
             "Only if there are 2 states"
           ],
           "correct": 0,
-          "answer": "By the Perron-Frobenius theorem, a regular Markov chain has a unique stationary distribution, and $\\lim_{n \\to \\infty} \\mathbf{s}_0 T^n = \\mathbf{\\pi}$ for any initial distribution $\\mathbf{s}_0$."
+          "answer": "By the Perron-Frobenius theorem, a regular Markov chain has a unique stationary distribution, and $\\lim_{n \\to \\infty} \\mathbf{s}_0 T^n = \\mathbf{\\pi}$ for any initial distribution $\\mathbf{s}_0$.",
+          "figure": {
+            "type": "numberline",
+            "min": 40,
+            "max": 60,
+            "shade": [
+              46,
+              54
+            ],
+            "marks": [
+              {
+                "x": 46,
+                "open": false,
+                "label": "46"
+              },
+              {
+                "x": 50,
+                "open": false,
+                "label": "50"
+              },
+              {
+                "x": 54,
+                "open": false,
+                "label": "54"
+              }
+            ],
+            "width": 145
+          }
         }
       ]
     },
@@ -130,7 +201,32 @@
             "A state where the steady-state probability is 0"
           ],
           "correct": 0,
-          "answer": "An absorbing state has a loop transition probability of 1 to itself, trapping the process indefinitely once entered."
+          "answer": "An absorbing state has a loop transition probability of 1 to itself, trapping the process indefinitely once entered.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.25*x**3 - 0.75*x**2 + 2"
+            ],
+            "xmin": -2,
+            "xmax": 4,
+            "ymin": -2,
+            "ymax": 5,
+            "points": [
+              [
+                0,
+                2
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                3,
+                2
+              ]
+            ],
+            "width": 145
+          }
         },
         {
           "q": "In an absorbing Markov chain in canonical form $P = [[I, 0], [R, Q]]$, what does the fundamental matrix $N = (I - Q)^{-1}$ calculate?",

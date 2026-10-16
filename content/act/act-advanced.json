@@ -44,6 +44,154 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
+          "title": "2D Vector Addition & Orthogonal Dot Product Check",
+          "xrange": [
+            -3,
+            6
+          ],
+          "yrange": [
+            -2,
+            6
+          ],
+          "fns": [
+            {
+              "fn": "(4/3)*x",
+              "color": "var(--fig-indigo)",
+              "label": "u = <3, 4>"
+            },
+            {
+              "fn": "(-3/4)*x",
+              "color": "var(--fig-amber)",
+              "label": "v = <-4, 3> (u·v = 0)"
+            }
+          ],
+          "points": [
+            {
+              "x": 3,
+              "y": 4,
+              "label": "u(3,4)"
+            },
+            {
+              "x": -2,
+              "y": 1.5,
+              "label": "v(-4,3) dir"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Vectors u = <3, 4> and v = <-4, 3> are perpendicular because their dot product 3(-4) + 4(3) = 0.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Complex Plane &amp; Multiplication by i (90° Rotation)",
+          "ar": null
+        },
+        "canvasId": "actAdvCanvas",
+        "ariaLabel": {
+          "en": "Complex Plane Rotation Explorer",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "actAdvDataBtn",
+          "panelId": "actAdvDataPanel",
+          "descId": "actAdvDataDesc",
+          "rowsId": "actAdvDataRows",
+          "caption": {
+            "en": "Complex number modulus, conjugate, and 90° rotation",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "Operation",
+              "ar": null
+            },
+            {
+              "en": "Result",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "actAdvA",
+            "label": {
+              "en": "Real part <b>a =</b>",
+              "ar": null
+            },
+            "min": -5,
+            "max": 5,
+            "value": 3,
+            "step": 1,
+            "valueDisplayId": "actAdvAV",
+            "ariaLabel": {
+              "en": "Real part a",
+              "ar": null
+            }
+          },
+          {
+            "id": "actAdvB",
+            "label": {
+              "en": "Imag part <b>b =</b>",
+              "ar": null
+            },
+            "min": -5,
+            "max": 5,
+            "value": 2,
+            "step": 1,
+            "valueDisplayId": "actAdvBV",
+            "ariaLabel": {
+              "en": "Imaginary part b",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "actAdvMod",
+            "label": {
+              "en": "Modulus |z|",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "3.61"
+          },
+          {
+            "id": "actAdvConj",
+            "label": {
+              "en": "Conjugate z̄",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "3 − 2i"
+          },
+          {
+            "id": "actAdvRot",
+            "label": {
+              "en": "Rotated i·z",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "-2 + 3i"
+          }
+        ],
+        "canvas3d": {
+          "btnId": "exAuto3dBtn_vec3_actadvanced",
+          "wrapId": "exAuto3dWrap_actadvanced",
+          "hintId": "exAuto3dHint_actadvanced",
+          "btnLabel": "🧊 View Interactive 3D Model",
+          "ariaLabel": {
+            "en": "Interactive 3D visualization for Matrices, Vectors & Complex Numbers. Drag to rotate.",
+            "ar": null
+          }
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
           "title": "Complex Plane (Argand Diagram): z = 3 + 4i",
           "xrange": [
             -1,
@@ -184,6 +332,30 @@
         },
         "body": {
           "en": "Solve for \\(x\\): \\(\\log_2(x) + \\log_2(x - 6) = 4\\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Combine logarithms using the product property \\(\\log_b A + \\log_b B = \\log_b(AB)\\):<br>\\[ \\log_2(x(x - 6)) = 4 \\]</li><li>Rewrite in exponential form \\(b^y = \\text{argument}\\):<br>\\[ x(x - 6) = 2^4 = 16 \\]</li><li>Expand into a standard quadratic equation:<br>\\[ x^2 - 6x - 16 = 0 \\]</li><li>Factor the quadratic:<br>\\[ (x - 8)(x + 2) = 0 \\implies x = 8 \\quad \\text{or} \\quad x = -2 \\]</li><li>Check for extraneous solutions against domain restrictions \\(x > 0\\) and \\(x - 6 > 0 \\implies x > 6\\):<br>For \\(x = -2\\): \\(\\log_2(-2)\\) is undefined.<br>For \\(x = 8\\): \\(\\log_2(8) + \\log_2(2) = 3 + 1 = 4\\) (valid).</li></ol>The unique valid solution is \\(\\mathbf{x = 8}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 8.C — 2x2 Matrix Determinant & Singular Matrix Condition",
+          "ar": null
+        },
+        "body": {
+          "en": "For what value of \\(k\\) does the matrix \\(A = \\begin{pmatrix} 6 & k \\\\ 4 & 8 \\end{pmatrix}\\) fail to have an inverse?<br><br><strong>Solution:</strong> A \\(2 \\times 2\\) matrix is singular (non-invertible) when \\(\\det(A) = ad - bc = 0\\):<br>\\[ 6(8) - 4k = 0 \\implies 48 = 4k \\implies \\mathbf{k = 12} \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 8.D — Infinite Geometric Series Convergence",
+          "ar": null
+        },
+        "body": {
+          "en": "Find the sum of the infinite geometric series \\(18 + 6 + 2 + \\frac{2}{3} + \\cdots\\).<br><br><strong>Solution:</strong> Here \\(a_1 = 18\\) and common ratio \\(r = \\frac{6}{18} = \\frac{1}{3}\\). Since \\(|r| < 1\\):<br>\\[ S_\\infty = \\frac{a_1}{1 - r} = \\frac{18}{1 - 1/3} = \\frac{18}{2/3} = \\mathbf{27} \\]",
           "ar": null
         }
       },

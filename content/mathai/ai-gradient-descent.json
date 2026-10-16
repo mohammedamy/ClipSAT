@@ -46,6 +46,180 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Loss Functions, Gradients & Optimization — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": "التمثيل البياني للدالة f(x) = x² − 2 ومماسها عند x = 1."
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Interactive Loss Functions, Gradients & Optimization Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر Loss Functions, Gradients & Optimization"
+        },
+        "canvasId": "exAuto_quad_aigradientdescent",
+        "ariaLabel": {
+          "en": "Interactive square-lattice mathematical explorer for Loss Functions, Gradients & Optimization",
+          "ar": "مستكشف رياضي تفاعلي لدرس Loss Functions, Gradients & Optimization"
+        },
+        "dataPanel": {
+          "btnId": "exAuto_quad_aigradientdescent_dataBtn",
+          "panelId": "exAuto_quad_aigradientdescent_dataPanel",
+          "descId": "exAuto_quad_aigradientdescent_dataDesc",
+          "rowsId": "exAuto_quad_aigradientdescent_dataRows",
+          "caption": {
+            "en": "Numerical table for Loss Functions, Gradients & Optimization",
+            "ar": "جدول القيم العددية لدرس Loss Functions, Gradients & Optimization"
+          },
+          "columns": [
+            {
+              "en": "Input / Metric",
+              "ar": "المدخل / المعيار"
+            },
+            {
+              "en": "Value",
+              "ar": "القيمة"
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "exAuto_quad_aigradientdescent_s0",
+            "label": {
+              "en": "Parameter <b>a =</b>",
+              "ar": "المعامل <b>a =</b>"
+            },
+            "min": -4,
+            "max": 4,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_quad_aigradientdescent_v0",
+            "ariaLabel": {
+              "en": "Primary parameter a",
+              "ar": "المعامل الأول a"
+            }
+          },
+          {
+            "id": "exAuto_quad_aigradientdescent_s1",
+            "label": {
+              "en": "Parameter <b>b =</b>",
+              "ar": "المعامل <b>b =</b>"
+            },
+            "min": -4,
+            "max": 4,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_quad_aigradientdescent_v1",
+            "ariaLabel": {
+              "en": "Secondary parameter b",
+              "ar": "المعامل الثاني b"
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "exAuto_quad_aigradientdescent_r0",
+            "label": {
+              "en": "Primary Metric",
+              "ar": "المقدار الأساسي"
+            },
+            "colorClass": "indigo",
+            "value": "2.00"
+          },
+          {
+            "id": "exAuto_quad_aigradientdescent_r1",
+            "label": {
+              "en": "Secondary Metric",
+              "ar": "المقدار الثانوي"
+            },
+            "colorClass": "amber",
+            "value": "1.00"
+          }
+        ]
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Loss Functions, Gradients & Optimization — Coordinate Curve & Tangent Analysis (1)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 1",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 1"
+            },
+            {
+              "fn": "2*x - 2",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 0,
+              "label": "(1, 0)"
+            },
+            {
+              "x": 0,
+              "y": -1,
+              "label": "(0, -1)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 1 and its instantaneous tangent line at x = 1.",
+          "ar": "التمثيل البياني للدالة f(x) = x² − 1 ومماسها عند x = 1."
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -100,6 +274,86 @@
         "body": {
           "en": "<p>Consider a simple linear model \\( \\hat{y} = wx \\) with squared loss for a single data point \\( (x, y) = (2, 8) \\):<br>\\[ L(w) = (y - wx)^2 = (8 - 2w)^2 \\]<br>If the current weight is \\( w_0 = 1.0 \\) and the learning rate is \\( \\eta = 0.05 \\), compute the gradient \\( \\frac{dL}{dw} \\) and the updated weight \\( w_1 \\).</p><p><strong>Solution:</strong><br>Apply the chain rule to differentiate \\( L(w) \\):<br>\\[ \\frac{dL}{dw} = 2(8 - 2w) \\cdot (-2) = -4(8 - 2w) = -32 + 8w \\]<br>Evaluate at \\( w_0 = 1.0 \\):<br>\\[ \\left.\\frac{dL}{dw}\\right|_{w=1.0} = -32 + 8(1) = -24 \\]<br>Apply gradient descent update:<br>\\[ w_1 = w_0 - \\eta \\left(\\frac{dL}{dw}\\right) = 1.0 - (0.05)(-24) = 1.0 + 1.2 = 2.2 \\].<br>Notice that with \\( w_0 = 1.0 \\), prediction \\( \\hat{y} = 2 \\) was too low (target was 8). The gradient step increased \\( w \\) to 2.2, giving \\( \\hat{y} = 4.4 \\), moving closer to 8.<br><strong>Answer:</strong> Gradient = \\( -24 \\); updated weight \\( w_1 = 2.2 \\).</p>",
           "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example B — Algebraic Structure & Vieta's Root Relations",
+          "ar": "مثال محلول B — البنية الجبرية وعلاقات الجذور"
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 9x + 18 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 3)(x - 6) = 0 \\implies x = 3 \\text{ or } x = 6 \\).</li><li>Check Vieta's formulas: sum \\( = 3 + 6 = \\mathbf{9} \\) and product \\( = (3)(6) = \\mathbf{18} \\).</li></ol>",
+          "ar": "حل المعادلة التربيعية \\( x^2 - 9x + 18 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 3)(x - 6) = 0 \\implies x = 3 \\text{ أو } x = 6 \\).</li><li>المجموع \\( = \\mathbf{9} \\) وحاصل الضرب \\( = \\mathbf{18} \\).</li></ol>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "ar": "مثال محلول C — البنية الجبرية وعلاقات الجذور"
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "ar": "حل المعادلة التربيعية \\( x^2 - 13x + 36 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ أو } x = 9 \\).</li><li>المجموع \\( = \\mathbf{13} \\) وحاصل الضرب \\( = \\mathbf{36} \\).</li></ol>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "ar": "مثال محلول D — البنية الجبرية وعلاقات الجذور"
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "ar": "حل المعادلة التربيعية \\( x^2 - 10x + 25 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ أو } x = 5 \\).</li><li>المجموع \\( = \\mathbf{10} \\) وحاصل الضرب \\( = \\mathbf{25} \\).</li></ol>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Loss Functions, Gradients & Optimization · Practice 1] If the governing relation for this system is \\( g(t) = 3t + 3 \\), evaluate \\( g(4) \\) and find the inverse input \\( t \\) when \\( g(t) = 18 \\).",
+          "ar": "[Loss Functions, Gradients & Optimization · تدريب 1] إذا كانت العلاقة الحاكمة هي \\( g(t) = 3t + 3 \\)، فأوجد \\( g(4) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 18 \\)."
+        },
+        "solution": {
+          "en": "Substitute \\( t = 4 \\): \\( g(4) = 3(4) + 3 = \\mathbf{15} \\). Setting \\( 3t + 3 = 18 \\) gives \\( 3t = 15 \\implies t = \\mathbf{5} \\).",
+          "ar": "بالتعويض عن \\( t = 4 \\): \\( g(4) = 3(4) + 3 = \\mathbf{15} \\). وعندما \\( 3t + 3 = 18 \\) فإن \\( t = \\mathbf{5} \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Loss Functions, Gradients & Optimization · Practice 2] If the governing relation for this system is \\( g(t) = 4t + 4 \\), evaluate \\( g(6) \\) and find the inverse input \\( t \\) when \\( g(t) = 32 \\).",
+          "ar": "[Loss Functions, Gradients & Optimization · تدريب 2] إذا كانت العلاقة الحاكمة هي \\( g(t) = 4t + 4 \\)، فأوجد \\( g(6) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 32 \\)."
+        },
+        "solution": {
+          "en": "Substitute \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). Setting \\( 4t + 4 = 32 \\) gives \\( 4t = 28 \\implies t = \\mathbf{7} \\).",
+          "ar": "بالتعويض عن \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). وعندما \\( 4t + 4 = 32 \\) فإن \\( t = \\mathbf{7} \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Loss Functions, Gradients & Optimization · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "ar": "[Loss Functions, Gradients & Optimization · تدريب 3] إذا كانت العلاقة الحاكمة هي \\( g(t) = 5t + 5 \\)، فأوجد \\( g(8) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 50 \\)."
+        },
+        "solution": {
+          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "ar": "بالتعويض عن \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). وعندما \\( 5t + 5 = 50 \\) فإن \\( t = \\mathbf{9} \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Loss Functions, Gradients & Optimization · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": "[Loss Functions, Gradients & Optimization · تدريب 4] إذا كانت العلاقة الحاكمة هي \\( g(t) = 6t + 6 \\)، فأوجد \\( g(10) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 72 \\)."
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "ar": "بالتعويض عن \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). وعندما \\( 6t + 6 = 72 \\) فإن \\( t = \\mathbf{11} \\)."
         }
       }
     ]

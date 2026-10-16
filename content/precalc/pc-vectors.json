@@ -23,6 +23,50 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Vectors, Lines & Parametric Kinematics — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "def",
         "label": {
@@ -221,6 +265,16 @@
         "note": {
           "en": "Defaults to Worked Example 4.2: u = ⟨6, 2⟩, v = ⟨3, 4⟩, u · v = 26, |v|² = 25, so proj_v u = (26/25)⟨3, 4⟩ = ⟨78/25, 104/25⟩. The dashed segment from u to its projection is always perpendicular to v. Make u · v = 0 and the projection collapses to the zero vector; make it negative and the projection points against v (θ > 90°).",
           "ar": null
+        },
+        "canvas3d": {
+          "btnId": "exAuto3dBtn_vec3_pcvectors",
+          "wrapId": "exAuto3dWrap_pcvectors",
+          "hintId": "exAuto3dHint_pcvectors",
+          "btnLabel": "🧊 View Interactive 3D Model",
+          "ariaLabel": {
+            "en": "Interactive 3D visualization for Vectors, Lines & Parametric Kinematics. Drag to rotate.",
+            "ar": null
+          }
         }
       },
       {
@@ -290,11 +344,25 @@
         "figure": {
           "type": "fn",
           "title": "Parametric Curve: Ellipse x = 3 cos(t), y = 5 sin(t)",
-          "xrange": [-4, 4],
-          "yrange": [-6, 6],
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -6,
+            6
+          ],
           "fns": [
-            { "expr": "5*sqrt(1 - x^2/9)", "color": "var(--fig-blue)", "label": "upper half (0 <= t <= pi)" },
-            { "expr": "-5*sqrt(1 - x^2/9)", "color": "var(--fig-amber)", "label": "lower half (pi <= t <= 2pi)" }
+            {
+              "expr": "5*sqrt(1 - x^2/9)",
+              "color": "var(--fig-blue)",
+              "label": "upper half (0 <= t <= pi)"
+            },
+            {
+              "expr": "-5*sqrt(1 - x^2/9)",
+              "color": "var(--fig-amber)",
+              "label": "lower half (pi <= t <= 2pi)"
+            }
           ]
         },
         "caption": {
@@ -311,6 +379,18 @@
         },
         "body": {
           "en": "<ul><li><strong>Scalar vs. Vector Output Distinction:</strong> The dot product \\(\\mathbf{u}\\cdot\\mathbf{v}\\) outputs a pure scalar number, whereas the cross product \\(\\mathbf{u}\\times\\mathbf{v}\\) outputs a 3D vector. Never write vector brackets around a dot product!</li><li><strong>Projection Denominator Mistake:</strong> In the vector projection \\(\\text{proj}_{\\mathbf{v}}\\mathbf{u} = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2}\\mathbf{v}\\), the denominator is the squared norm \\(\\|\\mathbf{v}\\|^2\\), because one factor of \\(\\|\\mathbf{v}\\|\\) normalizes \\(\\mathbf{v}\\) into a unit vector and the other provides the scalar component. Do not forget the exponent!</li><li><strong>Cross Product Order (Anti-Commutativity):</strong> \\(\\mathbf{u} \\times \\mathbf{v} \\ne \\mathbf{v} \\times \\mathbf{u}\\). Reversing the factors reverses the spatial direction: \\(\\mathbf{u} \\times \\mathbf{v} = -(\\mathbf{v} \\times \\mathbf{u})\\).</li><li><strong>Parametric Domain Loss in Elimination:</strong> When eliminating \\(t\\) in \\(x = e^t, y = e^{2t}\\), writing simply \\(y = x^2\\) is mathematically incorrect without specifying the restricted domain \\(x > 0\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "ar": null
+        },
+        "body": {
+          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
           "ar": null
         }
       },
@@ -333,6 +413,28 @@
         },
         "solution": {
           "en": "<p>Isolate the trigonometric terms:</p>\\[\\sec t = \\frac{x - 1}{2}, \\qquad \\tan t = \\frac{y + 2}{3}.\\]<p>Apply the fundamental Pythagorean identity \\(\\sec^2 t - \\tan^2 t = 1\\):</p>\\[\\left(\\frac{x - 1}{2}\\right)^2 - \\left(\\frac{y + 2}{3}\\right)^2 = 1 \\implies \\frac{(x - 1)^2}{4} - \\frac{(y + 2)^2}{9} = 1.\\]<p>This is a <strong>horizontal hyperbola</strong> with:</p><ul><li>Center: \\((h, k) = (1, -2)\\)</li><li>Transverse semi-axis: \\(a = 2\\)</li><li>Vertices: \\((h \\pm a, k) = (1 \\pm 2, -2) = (-1, -2)\\) and \\((3, -2)\\)</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Vectors, Lines & Parametric Kinematics · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Vectors, Lines & Parametric Kinematics · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
           "ar": null
         }
       }

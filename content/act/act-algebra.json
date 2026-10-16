@@ -44,6 +44,141 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
+          "title": "Absolute Value Inequality |x - 3| <= 4 on the Real Line",
+          "xrange": [
+            -3,
+            9
+          ],
+          "yrange": [
+            -2,
+            6
+          ],
+          "fns": [
+            {
+              "fn": "Math.abs(x - 3)",
+              "color": "var(--fig-indigo)",
+              "label": "y = |x - 3|"
+            },
+            {
+              "fn": "4",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "y = 4"
+            }
+          ],
+          "points": [
+            {
+              "x": -1,
+              "y": 4,
+              "label": "(-1, 4)"
+            },
+            {
+              "x": 3,
+              "y": 0,
+              "label": "Vertex (3, 0)"
+            },
+            {
+              "x": 7,
+              "y": 4,
+              "label": "(7, 4)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "The inequality |x - 3| <= 4 corresponds to all x where the V-shaped graph y = |x - 3| lies on or below y = 4, yielding [-1, 7].",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Linear-Quadratic System Intersections",
+          "ar": null
+        },
+        "canvasId": "actAlgCanvas",
+        "ariaLabel": {
+          "en": "ACT Linear Quadratic System Explorer",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "actAlgDataBtn",
+          "panelId": "actAlgDataPanel",
+          "descId": "actAlgDataDesc",
+          "rowsId": "actAlgDataRows",
+          "caption": {
+            "en": "Linear-quadratic intersection analysis",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "Quantity",
+              "ar": null
+            },
+            {
+              "en": "Value",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "actAlgM",
+            "label": {
+              "en": "Slope <b>m =</b>",
+              "ar": null
+            },
+            "min": -3,
+            "max": 3,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "actAlgMV",
+            "ariaLabel": {
+              "en": "Line slope m",
+              "ar": null
+            }
+          },
+          {
+            "id": "actAlgC",
+            "label": {
+              "en": "Intercept <b>c =</b>",
+              "ar": null
+            },
+            "min": -5,
+            "max": 5,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "actAlgCV",
+            "ariaLabel": {
+              "en": "Line y-intercept c",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "actAlgDisc",
+            "label": {
+              "en": "Discriminant Δ",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "21.0"
+          },
+          {
+            "id": "actAlgSolCount",
+            "label": {
+              "en": "Intersections",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "2 real intersections"
+          }
+        ]
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
           "title": "Quadratic Parabola: Vertex, Roots & Axis of Symmetry",
           "xrange": [
             -1,
@@ -181,6 +316,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 2.D — Rational Equation Domain & Extraneous Root Check",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve \\(\\frac{x}{x - 2} + \\frac{2}{x + 3} = \\frac{10}{(x - 2)(x + 3)}\\).<br><br><strong>Solution:</strong> Multiply through by \\((x-2)(x+3)\\) (noting \\(x \\neq 2, -3\\)):<br>\\[ x(x + 3) + 2(x - 2) = 10 \\implies x^2 + 5x - 14 = 0 \\implies (x + 7)(x - 2) = 0 \\]<br>Since \\(x = 2\\) makes the denominator zero, it is extraneous. Thus \\(\\mathbf{x = -7}\\).",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>Practice 2.1:</strong> For what values of \\(x\\) is \\(|2x - 3| < 7\\)?",
@@ -199,6 +346,28 @@
         },
         "solution": {
           "en": "By Vieta's formulas, for any quadratic equation \\(ax^2 + bx + c = 0\\), the sum of the roots is \\(-\\frac{b}{a}\\).<br>Here \\(a = 3\\) and \\(b = -12\\), so the sum of the solutions is:<br>\\[ -\\frac{-12}{3} = \\frac{12}{3} = 4. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "What is the sum and product of the roots of \\(3x^2 - 15x + 7 = 0\\)?",
+          "ar": null
+        },
+        "solution": {
+          "en": "By Vieta's formulas, sum \\(= -b/a = 15/3 = \\mathbf{5}\\) and product \\(= c/a = \\mathbf{7/3}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "For what values of \\(x\\) does \\(|2x - 5| > 9\\) hold?",
+          "ar": null
+        },
+        "solution": {
+          "en": "Split into two rays: \\(2x - 5 > 9 \\implies x > 7\\) or \\(2x - 5 < -9 \\implies x < -2\\). Thus \\(\\mathbf{x < -2 \\text{ or } x > 7}\\).",
           "ar": null
         }
       }

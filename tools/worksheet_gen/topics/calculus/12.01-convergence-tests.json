@@ -16,7 +16,32 @@
             "$p > 0$"
           ],
           "correct": 0,
-          "answer": "By the Integral Test, $\\int_1^\\infty x^{-p}\\,dx$ converges if and only if $p > 1$. When $p \\leq 1$, the $p$-series diverges."
+          "answer": "By the Integral Test, $\\int_1^\\infty x^{-p}\\,dx$ converges if and only if $p > 1$. When $p \\leq 1$, the $p$-series diverges.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.25*x**3 - 0.75*x**2 + 2"
+            ],
+            "xmin": -2,
+            "xmax": 4,
+            "ymin": -2,
+            "ymax": 5,
+            "points": [
+              [
+                0,
+                2
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                3,
+                2
+              ]
+            ],
+            "width": 145
+          }
         },
         {
           "q": "Use the Integral Test to determine the convergence of $\\sum_{n=2}^\\infty \\frac{1}{n\\ln n}$.",
@@ -65,7 +90,33 @@
             "Inconclusive"
           ],
           "correct": 0,
-          "answer": "$L = \\lim_{n \\to \\infty} \\frac{(2n+1)/(n^2-3)}{1/n} = \\lim_{n \\to \\infty} \\frac{2n^2 + n}{n^2 - 3} = 2$. Since $0 < L < \\infty$, both series share the same behavior. Thus it diverges."
+          "answer": "$L = \\lim_{n \\to \\infty} \\frac{(2n+1)/(n^2-3)}{1/n} = \\lim_{n \\to \\infty} \\frac{2n^2 + n}{n^2 - 3} = 2$. Since $0 < L < \\infty$, both series share the same behavior. Thus it diverges.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*x**2 - 2*x + 1",
+              "0.5*x + 1"
+            ],
+            "xmin": -2,
+            "xmax": 6,
+            "ymin": -2,
+            "ymax": 7,
+            "points": [
+              [
+                0,
+                1
+              ],
+              [
+                2,
+                -1
+              ],
+              [
+                5,
+                3.5
+              ]
+            ],
+            "width": 145
+          }
         },
         {
           "q": "Which comparison series $b_n$ is best suited for testing $\\sum_{n=1}^\\infty \\frac{\\sqrt{n}}{n^2 + 4n}$ via LCT?",
@@ -114,7 +165,29 @@
             "$|R_3| \\leq \\frac{1}{16}$"
           ],
           "correct": 0,
-          "answer": "By the Alternating Series Estimation Theorem, $|R_n| \\leq b_{n+1}$. For $n = 3$, $|R_3| \\leq b_4 = \\frac{1}{4^4} = \\frac{1}{256}$."
+          "answer": "By the Alternating Series Estimation Theorem, $|R_n| \\leq b_{n+1}$. For $n = 3$, $|R_3| \\leq b_4 = \\frac{1}{4^4} = \\frac{1}{256}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "abs(x - 1) - 1",
+              "0.5*x + 0.5"
+            ],
+            "xmin": -3,
+            "xmax": 5,
+            "ymin": -2,
+            "ymax": 4,
+            "points": [
+              [
+                1,
+                -1
+              ],
+              [
+                3,
+                1
+              ]
+            ],
+            "width": 145
+          }
         }
       ]
     },
@@ -130,7 +203,25 @@
             "The test is inconclusive"
           ],
           "correct": 0,
-          "answer": "If $L < 1$, the series converges absolutely. If $L > 1$, it diverges. If $L = 1$, the Ratio Test is inconclusive."
+          "answer": "If $L < 1$, the series converges absolutely. If $L > 1$, it diverges. If $L = 1$, the Ratio Test is inconclusive.",
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "T1",
+              "T2",
+              "T3",
+              "T4"
+            ],
+            "values": [
+              12,
+              28,
+              35,
+              25
+            ],
+            "highlight_index": 2,
+            "ylabel": "Score",
+            "width": 145
+          }
         },
         {
           "q": "Apply the Ratio Test to $\\sum_{n=1}^\\infty \\frac{3^n}{n!}$.",

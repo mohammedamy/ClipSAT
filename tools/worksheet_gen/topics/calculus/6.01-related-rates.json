@@ -16,7 +16,23 @@
             "$20\\pi\\text{ cm}^2\\text{/s}$"
           ],
           "correct": 0,
-          "answer": "$A = \\pi r^2 \\Rightarrow \\frac{dA}{dt} = 2\\pi r \\frac{dr}{dt} = 2\\pi(10)(3) = 60\\pi\\text{ cm}^2\\text{/s}$."
+          "answer": "$A = \\pi r^2 \\Rightarrow \\frac{dA}{dt} = 2\\pi r \\frac{dr}{dt} = 2\\pi(10)(3) = 60\\pi\\text{ cm}^2\\text{/s}$.",
+          "figure": {
+            "type": "circle",
+            "radius": 8,
+            "center": [
+              0,
+              0
+            ],
+            "center_label": "C",
+            "radius_label": "r=8",
+            "sector": {
+              "start_deg": 0,
+              "end_deg": 120,
+              "label": "120°"
+            },
+            "width": 140
+          }
         },
         {
           "q": "Air is pumped into a spherical balloon so that its volume increases at $100\\text{ cm}^3\\text{/s}$. How fast is the radius increasing when $r = 5\\text{ cm}$?",
@@ -65,7 +81,32 @@
             "$60\\text{ mph}$"
           ],
           "correct": 0,
-          "answer": "After 2 h: $y = 80\\text{ miles}, x = 60\\text{ miles}, z = \\sqrt{60^2 + 80^2} = 100\\text{ miles}$. $2z\\frac{dz}{dt} = 2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} \\Rightarrow 100\\frac{dz}{dt} = 60(30) + 80(40) = 1800 + 3200 = 5000 \\Rightarrow \\frac{dz}{dt} = 50\\text{ mph}$."
+          "answer": "After 2 h: $y = 80\\text{ miles}, x = 60\\text{ miles}, z = \\sqrt{60^2 + 80^2} = 100\\text{ miles}$. $2z\\frac{dz}{dt} = 2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} \\Rightarrow 100\\frac{dz}{dt} = 60(30) + 80(40) = 1800 + 3200 = 5000 \\Rightarrow \\frac{dz}{dt} = 50\\text{ mph}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.25*x**3 - 0.75*x**2 + 2"
+            ],
+            "xmin": -2,
+            "xmax": 4,
+            "ymin": -2,
+            "ymax": 5,
+            "points": [
+              [
+                0,
+                2
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                3,
+                2
+              ]
+            ],
+            "width": 145
+          }
         },
         {
           "q": "In the 13-ft ladder problem ($x = 5, y = 12, dx/dt = 2$), at what rate is the area of the triangle formed by the ladder changing?",
@@ -114,7 +155,33 @@
             "$-1/4\\text{ m/min}$"
           ],
           "correct": 0,
-          "answer": "Cross section base $b = h$. $V = \\frac{1}{2}b h \\times 6 = 3h^2$. $\\frac{dV}{dt} = 6h \\frac{dh}{dt}$. $-0.5 = 6(1)\\frac{dh}{dt} \\Rightarrow \\frac{dh}{dt} = -\\frac{0.5}{6} = -\\frac{1}{12}\\text{ m/min}$."
+          "answer": "Cross section base $b = h$. $V = \\frac{1}{2}b h \\times 6 = 3h^2$. $\\frac{dV}{dt} = 6h \\frac{dh}{dt}$. $-0.5 = 6(1)\\frac{dh}{dt} \\Rightarrow \\frac{dh}{dt} = -\\frac{0.5}{6} = -\\frac{1}{12}\\text{ m/min}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*x**2 - 2*x + 1",
+              "0.5*x + 1"
+            ],
+            "xmin": -2,
+            "xmax": 6,
+            "ymin": -2,
+            "ymax": 7,
+            "points": [
+              [
+                0,
+                1
+              ],
+              [
+                2,
+                -1
+              ],
+              [
+                5,
+                3.5
+              ]
+            ],
+            "width": 145
+          }
         }
       ]
     },
@@ -130,7 +197,29 @@
             "$10/3\\text{ ft/s}$"
           ],
           "correct": 0,
-          "answer": "Similar triangles: $\\frac{s}{6} = \\frac{x + s}{15} \\Rightarrow 15s = 6x + 6s \\Rightarrow 9s = 6x \\Rightarrow s = \\frac{2}{3}x$. $\\frac{ds}{dt} = \\frac{2}{3}\\frac{dx}{dt} = \\frac{2}{3}(4) = \\frac{8}{3}\\text{ ft/s}$."
+          "answer": "Similar triangles: $\\frac{s}{6} = \\frac{x + s}{15} \\Rightarrow 15s = 6x + 6s \\Rightarrow 9s = 6x \\Rightarrow s = \\frac{2}{3}x$. $\\frac{ds}{dt} = \\frac{2}{3}\\frac{dx}{dt} = \\frac{2}{3}(4) = \\frac{8}{3}\\text{ ft/s}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "abs(x - 1) - 1",
+              "0.5*x + 0.5"
+            ],
+            "xmin": -3,
+            "xmax": 5,
+            "ymin": -2,
+            "ymax": 4,
+            "points": [
+              [
+                1,
+                -1
+              ],
+              [
+                3,
+                1
+              ]
+            ],
+            "width": 145
+          }
         },
         {
           "q": "In the same streetlight scenario, at what rate is the tip of the shadow moving?",

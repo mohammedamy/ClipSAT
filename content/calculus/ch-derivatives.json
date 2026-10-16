@@ -23,6 +23,50 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Derivatives — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "def",
         "label": {
@@ -101,6 +145,18 @@
         },
         "body": {
           "en": "<p><strong>Problem:</strong></p><ol><li>Evaluate the limit without L'Hôpital's Rule: \\( \\displaystyle \\lim_{h\\to 0}\\frac{(2+h)^5 - 32}{h} \\).</li><li>Compute the derivative of \\( f(x) = \\dfrac{x^3 e^{2x}}{x^2 + 1} \\).</li></ol><p><strong>Solution:</strong></p><ol><li>Identify this as the definition \\( \\lim_{h\\to 0}\\frac{g(c+h) - g(c)}{h} = g'(c) \\) where \\( g(x) = x^5 \\) and \\( c = 2 \\) (since \\( 2^5 = 32 \\)). Since \\( g'(x) = 5x^4 \\), we have: \\[ g'(2) = 5(2^4) = 5(16) = \\mathbf{80}. \\]</li><li>Let numerator \\( u(x) = x^3 e^{2x} \\) and denominator \\( v(x) = x^2 + 1 \\).<br>By Product & Chain rules: \\( u'(x) = 3x^2 e^{2x} + x^3(2e^{2x}) = x^2 e^{2x}(3 + 2x) \\).<br>Denominator derivative: \\( v'(x) = 2x \\).<br>By Quotient Rule: \\[ f'(x) = \\frac{u'v - uv'}{v^2} = \\frac{x^2 e^{2x}(3 + 2x)(x^2 + 1) - x^3 e^{2x}(2x)}{(x^2 + 1)^2} = \\mathbf{\\frac{x^2 e^{2x}\\big[(2x + 3)(x^2 + 1) - 2x^2\\big]}{(x^2 + 1)^2}}. \\]</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "ar": null
+        },
+        "body": {
+          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
           "ar": null
         }
       },
@@ -309,14 +365,30 @@
         "figure": {
           "type": "fn",
           "fns": [
-            { "fn": "x^3 / 3 - x", "label": "y = x^3/3 - x" },
-            { "fn": "-2/3", "label": "Horizontal Tangent y = -2/3" }
+            {
+              "fn": "x^3 / 3 - x",
+              "label": "y = x^3/3 - x"
+            },
+            {
+              "fn": "-2/3",
+              "label": "Horizontal Tangent y = -2/3"
+            }
           ],
           "points": [
-            { "x": 1, "y": -0.667, "label": "Tangent Point (1, -2/3)" }
+            {
+              "x": 1,
+              "y": -0.667,
+              "label": "Tangent Point (1, -2/3)"
+            }
           ],
-          "xrange": [-3, 3],
-          "yrange": [-3, 3]
+          "xrange": [
+            -3,
+            3
+          ],
+          "yrange": [
+            -3,
+            3
+          ]
         }
       },
       {
@@ -339,6 +411,17 @@
         },
         "body": {
           "en": "<strong>Product Rule Amnesia:</strong> The derivative of a product is NEVER simply \\(f'(x)g'(x)\\). Forgetting the cross-terms is the single most common error in calculus. Always use \\(f'g + fg'\\).<br><br><strong>Chain Rule Inner Term:</strong> When differentiating \\(f(g(x))\\), never forget to multiply by the derivative of the inner function \\(g'(x)\\). For example, \\(\\frac{d}{dx}\\cos(5x) = -5\\sin(5x)\\), not \\(-\\sin(5x)\\).<br><br><strong>Continuous Does NOT Mean Differentiable:</strong> The existence of sharp corners, cusps, or vertical tangent lines causes the derivative limit to fail to exist despite the function being perfectly continuous (e.g. \\(f(x) = |x|\\) or \\(g(x) = x^{1/3}\\) at \\(x = 0\\)).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Derivatives · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
           "ar": null
         }
       }

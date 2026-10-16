@@ -36,6 +36,94 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Unit 7BC · Logistic Models & Euler's Method — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Unit 7BC · Logistic Models & Euler's Method — Coordinate Curve & Tangent Analysis (1)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 1",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 1"
+            },
+            {
+              "fn": "2*x - 2",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 0,
+              "label": "(1, 0)"
+            },
+            {
+              "x": 0,
+              "y": -1,
+              "label": "(0, -1)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 1 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "thm",
         "label": {
@@ -56,6 +144,18 @@
         },
         "body": {
           "en": "<p><strong>Problem:</strong> A bird population on a wildlife reserve satisfies \\(\\frac{dP}{dt} = 0.0004 P(1200 - P)\\), where \\(t\\) is measured in years. Find the carrying capacity \\(L\\), the population size when the birds are reproducing fastest, and the maximum rate of change.</p><p><strong>Step 1 · Identify Carrying Capacity:</strong> Rewrite in standard form: \\(\\frac{dP}{dt} = 0.0004(1200)P\\left(1 - \\frac{P}{1200}\\right) = 0.48 P\\left(1 - \\frac{P}{1200}\\right)\\). The carrying capacity is \\(\\mathbf{L = 1200}\\).</p><p><strong>Step 2 · Population at Maximum Growth Rate:</strong> By the inflection point theorem, the growth rate is maximized at half the carrying capacity: \\[ P = \\frac{L}{2} = \\frac{1200}{2} = \\mathbf{600}. \\]</p><p><strong>Step 3 · Calculate Maximum Growth Rate:</strong> Substitute \\(P = 600\\) into the differential equation: \\[ \\left. \\frac{dP}{dt} \\right|_{P=600} = 0.0004(600)(1200 - 600) = 0.0004(600)(600) = 0.0004(360000) = \\mathbf{144 \\text{ birds/year}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "ar": null
+        },
+        "body": {
+          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
           "ar": null
         }
       },
@@ -154,11 +254,26 @@
             "ar": null
           },
           "columns": [
-            { "en": "Step n", "ar": null },
-            { "en": "x_n", "ar": null },
-            { "en": "Euler y_n", "ar": null },
-            { "en": "Exact y(x_n)", "ar": null },
-            { "en": "Absolute Error", "ar": null }
+            {
+              "en": "Step n",
+              "ar": null
+            },
+            {
+              "en": "x_n",
+              "ar": null
+            },
+            {
+              "en": "Euler y_n",
+              "ar": null
+            },
+            {
+              "en": "Exact y(x_n)",
+              "ar": null
+            },
+            {
+              "en": "Absolute Error",
+              "ar": null
+            }
           ]
         },
         "controls": [
@@ -198,24 +313,36 @@
         "readouts": [
           {
             "id": "apbcEulerApproxOut",
-            "label": { "en": "Euler y(x_N)", "ar": null },
+            "label": {
+              "en": "Euler y(x_N)",
+              "ar": null
+            },
             "colorClass": "amber",
             "value": "1.0000"
           },
           {
             "id": "apbcEulerExactOut",
-            "label": { "en": "Exact y(x_N)", "ar": null },
+            "label": {
+              "en": "Exact y(x_N)",
+              "ar": null
+            },
             "colorClass": "indigo",
             "value": "1.0000"
           },
           {
             "id": "apbcEulerErrOut",
-            "label": { "en": "Error |y - y_true|", "ar": null },
+            "label": {
+              "en": "Error |y - y_true|",
+              "ar": null
+            },
             "value": "0.0000"
           },
           {
             "id": "apbcEulerConcavity",
-            "label": { "en": "Concavity & Error", "ar": null },
+            "label": {
+              "en": "Concavity & Error",
+              "ar": null
+            },
             "value": "Concave Up (Underestimate)"
           }
         ],
@@ -244,6 +371,17 @@
         },
         "solution": {
           "en": "<p><strong>Step 1 · Euler Iteration:</strong><br>• \\((x_0, y_0) = (1, -1)\\). Slope \\(m_0 = (1)(-1)^2 = 1\\).<br>\\(y_1 = -1 + (1)(0.5) = -0.5\\). Point \\((1.5, -0.5)\\).<br>• \\((x_1, y_1) = (1.5, -0.5)\\). Slope \\(m_1 = (1.5)(-0.5)^2 = 1.5(0.25) = 0.375\\).<br>\\(y_2 = -0.5 + (0.375)(0.5) = -0.5 + 0.1875 = \\mathbf{-0.3125}\\).</p><p><strong>Step 2 · Second Derivative Evaluation:</strong> \\[ \\frac{d^2y}{dx^2} = \\frac{d}{dx}[x y^2] = (1)y^2 + x(2y y') = y^2 + 2xy(x y^2) = y^2 + 2x^2 y^3. \\] At \\((1, -1)\\): \\[ \\left. \\frac{d^2y}{dx^2} \\right|_{(1, -1)} = (-1)^2 + 2(1)^2(-1)^3 = 1 + 2(-1) = 1 - 2 = -1 < 0. \\] Since \\(\\frac{d^2y}{dx^2} < 0\\), the curve is locally <strong>concave down</strong>, so the approximation is an <strong>overestimate</strong>.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Unit 7BC · Logistic Models & Euler's Method · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
           "ar": null
         }
       }

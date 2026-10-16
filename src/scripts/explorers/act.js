@@ -16,7 +16,7 @@
   (function(){
     var canvas=document.getElementById('actFuncCanvas'); if(!canvas) return;
     var h=0,k=0, sh=document.getElementById('actFuncH'), sk=document.getElementById('actFuncK');
-    var view={xmin:-6,xmax:6,ymin:-4,ymax:8};
+    var view={xmin:-6,xmax:6,ymin:-4,ymax:8,square:true,step:1};
     var dataBtn=document.getElementById('actFuncDataBtn'), dataPanel=document.getElementById('actFuncDataPanel'),
         dataDesc=document.getElementById('actFuncDataDesc'), dataRows=document.getElementById('actFuncDataRows');
     wireDataToggle(dataBtn,dataPanel);
@@ -93,4 +93,215 @@
     register(canvas,draw);
     s.addEventListener('input',function(){ deg=parseFloat(s.value); document.getElementById('actAngleV').textContent=deg+'\u00B0'; redrawAll(); });
   })();
+
+  /* ===================== ACT · 20-20-20 PACING EXPLORER (act-about) ===================== */
+  (function(){
+    var canvas=document.getElementById('actAboutCanvas'); if(!canvas) return;
+    var q=30, sq=document.getElementById('actAboutQ');
+    var view={xmin:0,xmax:60,ymin:0,ymax:65};
+    function cumMin(x){
+      if(x<=20) return 0.75*x;
+      if(x<=40) return 15 + 1.0*(x-20);
+      return 35 + 1.25*(x-40);
+    }
+    function draw(ctx,w,ht){
+      var P=new Plot(ctx,w,ht,view,{l:32,r:14,t:12,b:22}); P.clear(); P.grid();
+      P.curve(function(x){return x;}, '#94A3B8', 1.8);
+      P.curve(cumMin, INDIGO, 2.6);
+      var t=cumMin(q);
+      P.vline(q, AMBER2, [4,4]); P.dot(q, t, AMBER2, 5.5);
+      var tier = q<=20 ? 'Tier 1 (Easy · 45s/Q)' : (q<=40 ? 'Tier 2 (Medium · 60s/Q)' : 'Tier 3 (Hard · 75s/Q)');
+      _set('actAboutTier', tier);
+      _set('actAboutTime', t.toFixed(1)+' min elapsed');
+      _set('actAboutRem', (60-t).toFixed(1)+' min left');
+    }
+    register(canvas,draw);
+    if(sq) sq.addEventListener('input',function(){ q=parseFloat(sq.value); _set('actAboutQV','Q'+q); redrawAll(); });
+  })();
+
+  /* ===================== ACT · SUCCESSIVE PERCENT & RATIO EXPLORER (act-numbers) ===================== */
+  (function(){
+    var canvas=document.getElementById('actNumbersCanvas'); if(!canvas) return;
+    var p1=20, p2=-20, s1=document.getElementById('actNumP1'), s2=document.getElementById('actNumP2');
+    var view={xmin:0,xmax:3,ymin:0,ymax:160};
+    function draw(ctx,w,ht){
+      var P=new Plot(ctx,w,ht,view,{l:32,r:14,t:12,b:22}); P.clear(); P.grid();
+      var v0=100, v1=100*(1+p1/100), v2=v1*(1+p2/100);
+      P.segment(0.5,0,0.5,v0,INDIGO,18);
+      P.segment(1.5,0,1.5,v1,INDIGO2,18);
+      P.segment(2.5,0,2.5,v2,AMBER2,18);
+      P.label(0.5,v0+6,'Start: 100',INK,'center');
+      P.label(1.5,v1+6,'Step 1: '+v1.toFixed(1),INDIGO2,'center');
+      P.label(2.5,v2+6,'Final: '+v2.toFixed(1),AMBER2,'center');
+      var net=((v2-100)).toFixed(1);
+      _set('actNumStep1', v1.toFixed(1));
+      _set('actNumFinal', v2.toFixed(1));
+      _set('actNumNet', (net>=0?'+':'')+net+'%');
+    }
+    function upd(){ p1=parseFloat(s1.value); p2=parseFloat(s2.value); _set('actNumP1V',(p1>=0?'+':'')+p1+'%'); _set('actNumP2V',(p2>=0?'+':'')+p2+'%'); redrawAll(); }
+    register(canvas,draw);
+    if(s1) s1.addEventListener('input',upd);
+    if(s2) s2.addEventListener('input',upd);
+  })();
+
+  /* ===================== ACT · LINEAR-QUADRATIC SYSTEM EXPLORER (act-algebra) ===================== */
+  (function(){
+    var canvas=document.getElementById('actAlgCanvas'); if(!canvas) return;
+    var m=1, c=2, sm=document.getElementById('actAlgM'), sc=document.getElementById('actAlgC');
+    var view={xmin:-5,xmax:5,ymin:-5,ymax:7,square:true,step:1};
+    function draw(ctx,w,ht){
+      var P=new Plot(ctx,w,ht,view,{l:26,r:12,t:12,b:20}); P.clear(); P.grid();
+      P.curve(function(x){return x*x-3;}, INDIGO, 2.5);
+      P.curve(function(x){return m*x+c;}, AMBER2, 2.2);
+      // x^2 - m*x - (3+c) = 0 -> disc = m^2 + 4(3+c)
+      var disc = m*m + 4*(3+c);
+      var count = disc>1e-6 ? 2 : (Math.abs(disc)<=1e-6 ? 1 : 0);
+      if(disc>=0){
+        var r1=(m-Math.sqrt(Math.max(0,disc)))/2, r2=(m+Math.sqrt(Math.max(0,disc)))/2;
+        P.dot(r1,m*r1+c,AMBER2,5);
+        if(count===2) P.dot(r2,m*r2+c,AMBER2,5);
+      }
+      _set('actAlgDisc', disc.toFixed(1));
+      _set('actAlgSolCount', count+' real intersection'+(count===1?'':'s'));
+    }
+    function upd(){ m=parseFloat(sm.value); c=parseFloat(sc.value); _set('actAlgMV',m); _set('actAlgCV',c); redrawAll(); }
+    register(canvas,draw);
+    if(sm) sm.addEventListener('input',upd);
+    if(sc) sc.addEventListener('input',upd);
+  })();
+
+  /* ===================== ACT · CIRCLE SECTOR & CHORD EXPLORER + 3D SOLID (act-planegeo) ===================== */
+  (function(){
+    var canvas=document.getElementById('actGeoCanvas'); if(!canvas) return;
+    var r=4, deg=90, h=5, sr=document.getElementById('actGeoR'), sd=document.getElementById('actGeoDeg'), sh=document.getElementById('actGeoH');
+    var view={xmin:-6,xmax:6,ymin:-6,ymax:6,square:true,step:1};
+    function draw(ctx,w,ht){
+      var P=new Plot(ctx,w,ht,view,{l:26,r:12,t:12,b:20}); P.clear(); P.grid();
+      var rad=deg*Math.PI/180;
+      P.parametric(function(t){return r*Math.cos(t);}, function(t){return r*Math.sin(t);}, 0, 2*Math.PI, INDIGO, 2.2);
+      P.segment(0,0,r,0,AMBER2,2.2);
+      P.segment(0,0,r*Math.cos(rad),r*Math.sin(rad),AMBER2,2.2);
+      P.segment(r,0,r*Math.cos(rad),r*Math.sin(rad),'#0E9F8F',2.2);
+      P.dot(0,0,INK,4); P.dot(r,0,AMBER2,4.5); P.dot(r*Math.cos(rad),r*Math.sin(rad),AMBER2,4.5);
+      var arc=(deg/360)*2*Math.PI*r;
+      var area=(deg/360)*Math.PI*r*r;
+      var chord=2*r*Math.sin(rad/2);
+      var vCyl=Math.PI*r*r*h, vCone=vCyl/3;
+      _set('actGeoArc', arc.toFixed(2));
+      _set('actGeoArea', area.toFixed(2));
+      _set('actGeoChord', chord.toFixed(2)+' | V: '+vCyl.toFixed(0)+'/'+vCone.toFixed(0));
+    }
+    function upd(){
+      if(sr){ r=parseFloat(sr.value); _set('actGeoRV',r); }
+      if(sd){ deg=parseFloat(sd.value); _set('actGeoDegV',deg+'°'); }
+      if(sh){ h=parseFloat(sh.value); _set('actGeoHV',h); }
+      redrawAll();
+    }
+    register(canvas,draw);
+    if(sr) sr.addEventListener('input',upd);
+    if(sd) sd.addEventListener('input',upd);
+    if(sh) sh.addEventListener('input',upd);
+  })();
+
+  /* 3D Prism & Pyramid Volume Scaling Explorer for act-planegeo */
+  (function(){
+    var btn=document.getElementById('actGeo3dBtn'); if(!btn) return;
+    var wrap=document.getElementById('actGeo3dWrap');
+    var hint=document.getElementById('actGeo3dHint');
+    var sR=document.getElementById('actGeoR'), sH=document.getElementById('actGeoH');
+    var built=false, H=null, cylMesh, coneMesh, wireCone;
+    function build(mods){
+      var T=mods.THREE, COLOR=window.ClipSAT3D.COLOR;
+      H=window.ClipSAT3D.setup(wrap, mods, {az:0.8, el:0.45, dist:11, target:new T.Vector3(0,2,0),
+        axisSegs:[[[-5,0,0],[5,0,0]],[[0,0,0],[0,6,0]],[[0,0,-5],[0,0,5]]]});
+      var cylGeo=new T.CylinderGeometry(1,1,1,36,1,true);
+      var cylMat=new T.MeshLambertMaterial({color:COLOR.INDIGO, transparent:true, opacity:0.28, side:T.DoubleSide});
+      cylMesh=new T.Mesh(cylGeo,cylMat);
+      H.scene.add(cylMesh);
+      var coneGeo=new T.ConeGeometry(1,1,36);
+      var coneMat=new T.MeshLambertMaterial({color:COLOR.AMBER, transparent:true, opacity:0.65, side:T.DoubleSide});
+      coneMesh=new T.Mesh(coneGeo,coneMat);
+      H.scene.add(coneMesh);
+      wireCone=new T.Mesh(coneGeo, new T.MeshBasicMaterial({color:COLOR.INK, wireframe:true, transparent:true, opacity:0.22}));
+      H.scene.add(wireCone);
+      update();
+      H.render();
+    }
+    function update(){
+      if(!H) return;
+      var r=sR?parseFloat(sR.value):4, h=sH?parseFloat(sH.value):5;
+      cylMesh.scale.set(r,h,r); cylMesh.position.set(0,h/2,0);
+      coneMesh.scale.set(r,h,r); coneMesh.position.set(0,h/2,0);
+      wireCone.scale.set(r,h,r); wireCone.position.set(0,h/2,0);
+      H.render();
+    }
+    btn.addEventListener('click',function(){
+      if(!wrap.hidden){
+        wrap.hidden=true; if(hint) hint.hidden=true;
+        btn.setAttribute('aria-expanded','false');
+        btn.textContent='🧊 View Cylinder & Cone in 3D';
+        return;
+      }
+      wrap.hidden=false; if(hint) hint.hidden=false;
+      btn.setAttribute('aria-expanded','true');
+      if(built){ update(); return; }
+      built=true; btn.disabled=true; btn.textContent='Loading 3D…';
+      window.ClipSAT3D.load().then(function(mods){
+        btn.disabled=false; btn.textContent='🧊 Hide 3D Solid View';
+        build(mods);
+      });
+    });
+    if(sR) sR.addEventListener('input',update);
+    if(sH) sH.addEventListener('input',update);
+  })();
+
+  /* ===================== ACT · OUTLIER & MEAN VS MEDIAN EXPLORER (act-stats) ===================== */
+  (function(){
+    var canvas=document.getElementById('actStatsCanvas'); if(!canvas) return;
+    var out=18, so=document.getElementById('actStatsOut');
+    var view={xmin:0,xmax:8,ymin:0,ymax:35};
+    function draw(ctx,w,ht){
+      var P=new Plot(ctx,w,ht,view,{l:32,r:14,t:12,b:22}); P.clear(); P.grid();
+      var vals=[8, 10, 12, 12, 14, 16, out].sort(function(a,b){return a-b;});
+      var sum=0;
+      for(var i=0;i<vals.length;i++){
+        sum+=vals[i];
+        P.segment(i+1, 0, i+1, vals[i], i===6?AMBER2:INDIGO, 14);
+      }
+      var mean=sum/vals.length, med=vals[3];
+      P.hline(mean, AMBER2, [4,4]);
+      P.hline(med, '#0E9F8F', [2,2]);
+      _set('actStatsMean', mean.toFixed(2));
+      _set('actStatsMed', med.toFixed(1));
+      _set('actStatsRange', (vals[6]-vals[0]).toFixed(0));
+    }
+    register(canvas,draw);
+    if(so) so.addEventListener('input',function(){ out=parseFloat(so.value); _set('actStatsOutV',out); redrawAll(); });
+  })();
+
+  /* ===================== ACT · COMPLEX PLANE & ROTATION EXPLORER (act-advanced) ===================== */
+  (function(){
+    var canvas=document.getElementById('actAdvCanvas'); if(!canvas) return;
+    var a=3, b=2, sa=document.getElementById('actAdvA'), sb=document.getElementById('actAdvB');
+    var view={xmin:-6,xmax:6,ymin:-6,ymax:6,square:true,step:1};
+    function draw(ctx,w,ht){
+      var P=new Plot(ctx,w,ht,view,{l:26,r:12,t:12,b:20}); P.clear(); P.grid();
+      // z = a + bi and i*z = -b + ai
+      P.segment(0,0,a,b,INDIGO,2.6);
+      P.dot(a,b,INDIGO,5.5);
+      P.label(a+0.25,b+0.25,'z = '+a+(b>=0?'+'+b:b)+'i',INDIGO,'left');
+      P.segment(0,0,-b,a,AMBER2,2.4);
+      P.dot(-b,a,AMBER2,5.5);
+      P.label(-b-0.25,a+0.25,'i·z = '+(-b)+(a>=0?'+'+a:a)+'i',AMBER2,'right');
+      var mod=Math.sqrt(a*a+b*b);
+      _set('actAdvMod', mod.toFixed(2));
+      _set('actAdvConj', a+(b>=0?' − '+b:' + '+(-b))+'i');
+      _set('actAdvRot', (-b)+(a>=0?' + '+a:' − '+(-a))+'i');
+    }
+    function upd(){ a=parseFloat(sa.value); b=parseFloat(sb.value); _set('actAdvAV',a); _set('actAdvBV',b); redrawAll(); }
+    register(canvas,draw);
+    if(sa) sa.addEventListener('input',upd);
+    if(sb) sb.addEventListener('input',upd);
+  })();
+
 })(window.CSExplorerKit);

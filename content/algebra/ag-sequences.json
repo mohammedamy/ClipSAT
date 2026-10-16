@@ -27,6 +27,136 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Sequences &amp; Series — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Interactive Sequences &amp; Series Lab",
+          "ar": null
+        },
+        "canvasId": "exAuto_calc_agsequences",
+        "ariaLabel": {
+          "en": "Interactive square-lattice mathematical explorer for Sequences &amp; Series",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "exAuto_calc_agsequences_dataBtn",
+          "panelId": "exAuto_calc_agsequences_dataPanel",
+          "descId": "exAuto_calc_agsequences_dataDesc",
+          "rowsId": "exAuto_calc_agsequences_dataRows",
+          "caption": {
+            "en": "Numerical table for Sequences &amp; Series",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "Input / Metric",
+              "ar": null
+            },
+            {
+              "en": "Value",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "exAuto_calc_agsequences_s0",
+            "label": {
+              "en": "Parameter <b>a =</b>",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_calc_agsequences_v0",
+            "ariaLabel": {
+              "en": "Primary parameter a",
+              "ar": null
+            }
+          },
+          {
+            "id": "exAuto_calc_agsequences_s1",
+            "label": {
+              "en": "Parameter <b>b =</b>",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_calc_agsequences_v1",
+            "ariaLabel": {
+              "en": "Secondary parameter b",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "exAuto_calc_agsequences_r0",
+            "label": {
+              "en": "Primary Metric",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "2.00"
+          },
+          {
+            "id": "exAuto_calc_agsequences_r1",
+            "label": {
+              "en": "Secondary Metric",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "1.00"
+          }
+        ]
+      },
+      {
         "kind": "callout",
         "style": "def",
         "label": {
@@ -179,6 +309,30 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example C — Instantaneous Rate of Change & Tangent Line",
+          "ar": null
+        },
+        "body": {
+          "en": "Let \\( f(x) = 4x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(9) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 12x^2 - 2x \\).</li><li>Substitute \\( x = 9 \\): \\( f'(9) = 12(9)^2 - 2(9) = 972 - 18 = \\mathbf{954} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "ar": null
+        },
+        "body": {
+          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Find the sum of all integers between \\( 10 \\) and \\( 100 \\) (inclusive) that are divisible by \\( 4 \\).",
@@ -197,6 +351,28 @@
         },
         "solution": {
           "en": "<p>Use the general formula \\(a_n = a_1 r^{n-1}\\):</p>\\[a_3 = a_1 r^2 = 18, \\quad a_6 = a_1 r^5 = 486.\\]<p>Divide \\(a_6\\) by \\(a_3\\):</p>\\[\\frac{a_1 r^5}{a_1 r^2} = r^3 = \\frac{486}{18} = 27 \\implies r = 3.\\]<p>Solve for \\(a_1\\):</p>\\[a_1 (3^2) = 18 \\implies 9a_1 = 18 \\implies a_1 = 2.\\]<p>Compute \\(S_5\\) using the geometric series sum formula:</p>\\[S_5 = \\frac{a_1(r^5 - 1)}{r - 1} = \\frac{2(3^5 - 1)}{3 - 1} = \\frac{2(243 - 1)}{2} = 242.\\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Sequences &amp; Series · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Sequences &amp; Series · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
           "ar": null
         }
       }

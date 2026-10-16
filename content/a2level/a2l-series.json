@@ -40,6 +40,136 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Sequences &amp; Series — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Interactive Sequences &amp; Series Lab",
+          "ar": null
+        },
+        "canvasId": "exAuto_calc_a2lseries",
+        "ariaLabel": {
+          "en": "Interactive square-lattice mathematical explorer for Sequences &amp; Series",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "exAuto_calc_a2lseries_dataBtn",
+          "panelId": "exAuto_calc_a2lseries_dataPanel",
+          "descId": "exAuto_calc_a2lseries_dataDesc",
+          "rowsId": "exAuto_calc_a2lseries_dataRows",
+          "caption": {
+            "en": "Numerical table for Sequences &amp; Series",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "Input / Metric",
+              "ar": null
+            },
+            {
+              "en": "Value",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "exAuto_calc_a2lseries_s0",
+            "label": {
+              "en": "Parameter <b>a =</b>",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_calc_a2lseries_v0",
+            "ariaLabel": {
+              "en": "Primary parameter a",
+              "ar": null
+            }
+          },
+          {
+            "id": "exAuto_calc_a2lseries_s1",
+            "label": {
+              "en": "Parameter <b>b =</b>",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_calc_a2lseries_v1",
+            "ariaLabel": {
+              "en": "Secondary parameter b",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "exAuto_calc_a2lseries_r0",
+            "label": {
+              "en": "Primary Metric",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "2.00"
+          },
+          {
+            "id": "exAuto_calc_a2lseries_r1",
+            "label": {
+              "en": "Secondary Metric",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "1.00"
+          }
+        ]
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -109,6 +239,30 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example C — Instantaneous Rate of Change & Tangent Line",
+          "ar": null
+        },
+        "body": {
+          "en": "Let \\( f(x) = 4x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(9) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 12x^2 - 2x \\).</li><li>Substitute \\( x = 9 \\): \\( f'(9) = 12(9)^2 - 2(9) = 972 - 18 = \\mathbf{954} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "ar": null
+        },
+        "body": {
+          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Find the first three non-zero terms of the Maclaurin series for \\(e^{2x}\\). State the range of validity.",
@@ -123,12 +277,28 @@
         "kind": "figure",
         "figure": {
           "type": "numberline",
-          "range": [-2, 2],
-          "points": [
-            { "x": -0.5, "open": true, "label": "-1/2" },
-            { "x": 0.5, "open": true, "label": "1/2" }
+          "range": [
+            -2,
+            2
           ],
-          "shade": [[-0.5, 0.5]]
+          "points": [
+            {
+              "x": -0.5,
+              "open": true,
+              "label": "-1/2"
+            },
+            {
+              "x": 0.5,
+              "open": true,
+              "label": "1/2"
+            }
+          ],
+          "shade": [
+            [
+              -0.5,
+              0.5
+            ]
+          ]
         },
         "caption": {
           "en": "Validity interval |x| < 1/2 for the infinite binomial expansion of (1 + 2x)^n, with open endpoints indicating strict convergence bounds.",
@@ -157,11 +327,35 @@
           "en": "<p>Rewrite with negative fractional index and factor out 4:</p>\\[(4 - x)^{-1/2} = 4^{-1/2}\\left(1 - \\frac{x}{4}\\right)^{-1/2} = \\frac{1}{2}\\left(1 - \\frac{x}{4}\\right)^{-1/2}\\]<p>Apply \\((1 + y)^n = 1 + ny + \\frac{n(n-1)}{2}y^2 + \\cdots\\) with \\(n = -\\frac{1}{2}\\) and \\(y = -\\frac{x}{4}\\):</p>\\[\\left(1 - \\frac{x}{4}\\right)^{-1/2} = 1 + \\left(-\\frac{1}{2}\\right)\\left(-\\frac{x}{4}\\right) + \\frac{\\left(-\\frac{1}{2}\\right)\\left(-\\frac{3}{2}\\right)}{2}\\left(-\\frac{x}{4}\\right)^2 + \\cdots\\]\\[= 1 + \\frac{x}{8} + \\frac{3}{8}\\left(\\frac{x^2}{16}\\right) = 1 + \\frac{x}{8} + \\frac{3x^2}{128}\\]<p>Multiply by \\(\\frac{1}{2}\\):</p>\\[\\frac{1}{\\sqrt{4 - x}} = \\frac{1}{2} + \\frac{x}{16} + \\frac{3x^2}{256}\\]<p>Validity condition: \\(\\left|-\\frac{x}{4}\\right| < 1 \\implies |x| < 4\\).</p>",
           "ar": null
         }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Sequences &amp; Series · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Sequences &amp; Series · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Sequences & Series"],
+    "domains": [
+      "Sequences & Series"
+    ],
     "enabled": true
   }
 }

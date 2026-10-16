@@ -40,6 +40,136 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Exponentials & Logarithms — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": "التمثيل البياني للدالة f(x) = x² − 2 ومماسها عند x = 1."
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Interactive Exponentials & Logarithms Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر Exponentials & Logarithms"
+        },
+        "canvasId": "exAuto_exp_tahexplog",
+        "ariaLabel": {
+          "en": "Interactive square-lattice mathematical explorer for Exponentials & Logarithms",
+          "ar": "مستكشف رياضي تفاعلي لدرس Exponentials & Logarithms"
+        },
+        "dataPanel": {
+          "btnId": "exAuto_exp_tahexplog_dataBtn",
+          "panelId": "exAuto_exp_tahexplog_dataPanel",
+          "descId": "exAuto_exp_tahexplog_dataDesc",
+          "rowsId": "exAuto_exp_tahexplog_dataRows",
+          "caption": {
+            "en": "Numerical table for Exponentials & Logarithms",
+            "ar": "جدول القيم العددية لدرس Exponentials & Logarithms"
+          },
+          "columns": [
+            {
+              "en": "Input / Metric",
+              "ar": "المدخل / المعيار"
+            },
+            {
+              "en": "Value",
+              "ar": "القيمة"
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "exAuto_exp_tahexplog_s0",
+            "label": {
+              "en": "Parameter <b>a =</b>",
+              "ar": "المعامل <b>a =</b>"
+            },
+            "min": -4,
+            "max": 4,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_exp_tahexplog_v0",
+            "ariaLabel": {
+              "en": "Primary parameter a",
+              "ar": "المعامل الأول a"
+            }
+          },
+          {
+            "id": "exAuto_exp_tahexplog_s1",
+            "label": {
+              "en": "Parameter <b>b =</b>",
+              "ar": "المعامل <b>b =</b>"
+            },
+            "min": -4,
+            "max": 4,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_exp_tahexplog_v1",
+            "ariaLabel": {
+              "en": "Secondary parameter b",
+              "ar": "المعامل الثاني b"
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "exAuto_exp_tahexplog_r0",
+            "label": {
+              "en": "Primary Metric",
+              "ar": "المقدار الأساسي"
+            },
+            "colorClass": "indigo",
+            "value": "2.00"
+          },
+          {
+            "id": "exAuto_exp_tahexplog_r1",
+            "label": {
+              "en": "Secondary Metric",
+              "ar": "المقدار الثانوي"
+            },
+            "colorClass": "amber",
+            "value": "1.00"
+          }
+        ]
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -168,6 +298,18 @@
         "body": {
           "en": "Solve the logarithmic equation: \\[ \\log_2(x) + \\log_2(x - 2) = 3 \\]<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>Combine logarithms using the product law:</strong><br>\\[ \\log_2\\big(x(x - 2)\\big) = 3 \\]</li><li><strong>Convert to exponential form:</strong><br>\\[ x(x - 2) = 2^3 = 8 \\implies x^2 - 2x - 8 = 0 \\]</li><li><strong>Factor and solve for \\(x\\):</strong><br>\\[ (x - 4)(x + 2) = 0 \\implies x = 4 \\quad\\text{or}\\quad x = -2 \\]</li><li><strong>Check for extraneous roots in original arguments:</strong><br><ul><li>For \\(x = 4\\): \\(x > 0\\) and \\(x - 2 = 2 > 0\\). Valid solution.</li><li>For \\(x = -2\\): \\(\\log_2(-2)\\) is undefined. Discard as extraneous root.</li></ul>Conclusion: \\[ \\mathbf{x = 4} \\]</li></ol>",
           "ar": "حُل المعادلة اللوغاريتمية: \\[ \\log_2(x) + \\log_2(x - 2) = 3 \\]<br><br><strong>الحل بالتفصيل:</strong><br><ol><li><strong>دمج اللوغاريتمين باستخدام خاصية الضرب:</strong><br>\\[ \\log_2\\big(x(x - 2)\\big) = 3 \\]</li><li><strong>التحويل إلى الصورة الأسية:</strong><br>\\[ x(x - 2) = 2^3 = 8 \\implies x^2 - 2x - 8 = 0 \\]</li><li><strong>التحليل وإيجاد الحلول الممكنة:</strong><br>\\[ (x - 4)(x + 2) = 0 \\implies x = 4 \\quad\\text{أو}\\quad x = -2 \\]</li><li><strong>فحص الحلول واستبعاد الجذور الدخيلة:</strong><br><ul><li>عند \\(x = 4\\): ما بداخل اللوغاريتم موجب تماماً (\\(4 > 0\\) و \\(2 > 0\\)). حل صحيح ومقبول.</li><li>عند \\(x = -2\\): \\(\\log_2(-2)\\) غير معرّف. حل دخيل مرفوض.</li></ul>إذن الحل هو: \\[ \\mathbf{x = 4} \\]</li></ol>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "ar": "مثال محلول D — البنية الجبرية وعلاقات الجذور"
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "ar": "حل المعادلة التربيعية \\( x^2 - 10x + 25 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ أو } x = 5 \\).</li><li>المجموع \\( = \\mathbf{10} \\) وحاصل الضرب \\( = \\mathbf{25} \\).</li></ol>"
         }
       },
       {

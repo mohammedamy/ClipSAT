@@ -331,4 +331,238 @@
       });
     }
   })();
+
+  /* ===================== SAT CH 1 — LINEAR SYSTEM & PARAMETER k EXPLORER ===================== */
+  (function(){
+    var canvas=document.getElementById('satSysCanvas'); if(!canvas) return;
+    var m1=1.5, b1=1, m2=-0.5, b2=5;
+    var view={xmin:-6,xmax:6,ymin:-6,ymax:6,square:true,step:1};
+    var dataBtn=document.getElementById('satSysDataBtn'), dataPanel=document.getElementById('satSysDataPanel'),
+        dataDesc=document.getElementById('satSysDataDesc'), dataRows=document.getElementById('satSysDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:14,t:14,b:24}); P.clear(); P.grid();
+      P.curve(function(x){return m1*x+b1;}, INDIGO, 2.6);
+      P.curve(function(x){return m2*x+b2;}, AMBER2, 2.4);
+      var status='Unique Solution', solText='—';
+      if(Math.abs(m1-m2)<1e-6){
+        if(Math.abs(b1-b2)<1e-6){ status='Infinite Solutions'; solText='All (x, '+fmt(m1,1)+'x+'+fmt(b1,1)+')'; }
+        else { status='No Solution (Parallel)'; solText='None'; }
+      } else {
+        var ix=(b2-b1)/(m1-m2), iy=m1*ix+b1;
+        P.dot(ix,iy,INK,5.5);
+        solText='('+fmt(ix,2)+', '+fmt(iy,2)+')';
+      }
+      _set('satSysState', status);
+      _set('satSysSol', solText);
+      if(dataDesc){
+        dataDesc.textContent='L₁: y = '+fmt(m1,1)+'x + '+fmt(b1,1)+', L₂: y = '+fmt(m2,1)+'x + '+fmt(b2,1)+' → '+status+' ('+solText+').';
+        renderDataRows(dataRows,[['L₁ slope m₁',fmt(m1,1)],['L₂ slope m₂',fmt(m2,1)],['Intersection',solText]]);
+      }
+    }
+    register(canvas,draw);
+    _slider('satSysM2',function(v){ m2=v; _set('satSysM2V',fmt(v,1)); });
+    _slider('satSysB2',function(v){ b2=v; _set('satSysB2V',fmt(v,1)); });
+  })();
+
+  /* ===================== SAT CH 5 — DESMOS SLIDER & NONLINEAR SYSTEM EXPLORER ===================== */
+  (function(){
+    var canvas=document.getElementById('satDesmosCanvas'); if(!canvas) return;
+    var a=0.5, c=-2, m=1;
+    var view={xmin:-5,xmax:5,ymin:-5,ymax:7,square:true,step:1};
+    var dataBtn=document.getElementById('satDesmosDataBtn'), dataPanel=document.getElementById('satDesmosDataPanel'),
+        dataDesc=document.getElementById('satDesmosDataDesc'), dataRows=document.getElementById('satDesmosDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:14,t:14,b:24}); P.clear(); P.grid();
+      var f1=function(x){ return a*x*x+c; };
+      var f2=function(x){ return m*x+1; };
+      P.curve(f1, INDIGO, 2.6);
+      P.curve(f2, AMBER2, 2.4);
+      var A=a, B=-m, C=c-1;
+      var D=B*B-4*A*C, count=0, pts=[];
+      if(Math.abs(A)<1e-6){
+        if(Math.abs(B)>1e-6){ var x0=-C/B; pts.push([x0,f2(x0)]); count=1; }
+      } else if(D>=0){
+        var x1=(-B-Math.sqrt(D))/(2*A), x2=(-B+Math.sqrt(D))/(2*A);
+        pts.push([x1,f1(x1)]);
+        if(D>1e-6) pts.push([x2,f1(x2)]);
+        count=pts.length;
+      }
+      pts.forEach(function(pt){ P.dot(pt[0],pt[1],INK,5.5); });
+      _set('satDesmosCount', String(count));
+      _set('satDesmosDisc', fmt(D,2));
+      if(dataDesc){
+        dataDesc.textContent='Desmos Intersection: y = '+fmt(a,2)+'x² + ('+fmt(c,1)+') and y = '+fmt(m,1)+'x + 1. Discriminant Δ = '+fmt(D,2)+'.';
+        renderDataRows(dataRows, pts.length ? pts.map(function(p,i){return ['Point '+(i+1),'('+fmt(p[0],2)+', '+fmt(p[1],2)+')'];}) : [['Intersections','None']]);
+      }
+    }
+    register(canvas,draw);
+    _slider('satDesmosC',function(v){ c=v; _set('satDesmosCV',fmt(v,1)); });
+    _slider('satDesmosM',function(v){ m=v; _set('satDesmosMV',fmt(v,1)); });
+  })();
+
+  /* ===================== SAT CH 7 — GEOMETRY: 2D CIRCLE SECTOR + 3D CYLINDER/CONE EXPLORER ===================== */
+  (function(){
+    var canvas=document.getElementById('satGeoCanvas'); if(!canvas) return;
+    var r=3, deg=120, hCyl=4;
+    var view={xmin:-5,xmax:5,ymin:-5,ymax:5,square:true,step:1};
+    var dataBtn=document.getElementById('satGeoDataBtn'), dataPanel=document.getElementById('satGeoDataPanel'),
+        dataDesc=document.getElementById('satGeoDataDesc'), dataRows=document.getElementById('satGeoDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:14,t:14,b:24}); P.clear(); P.grid();
+      var c=P.ctx, cx=P.X(0), cy=P.Y(0), rx=Math.abs(P.X(r)-P.X(0));
+      var rad=deg*Math.PI/180;
+      c.save();
+      c.fillStyle='rgba(43,91,168,0.16)';
+      c.beginPath(); c.moveTo(cx,cy); c.arc(cx,cy,rx,-rad,0,false); c.closePath(); c.fill();
+      c.strokeStyle=INDIGO; c.lineWidth=2.4;
+      c.beginPath(); c.arc(cx,cy,rx,0,Math.PI*2); c.stroke();
+      c.strokeStyle=AMBER2; c.lineWidth=2.8;
+      c.beginPath(); c.arc(cx,cy,rx,-rad,0,false); c.stroke();
+      c.restore();
+      P.segment(0,0,r,0,INDIGO,2.2);
+      P.segment(0,0,r*Math.cos(rad),r*Math.sin(rad),AMBER2,2.2);
+      P.dot(0,0,INK,4.5);
+      var arcLen=r*rad, secArea=0.5*r*r*rad, vCyl=Math.PI*r*r*hCyl, vCone=vCyl/3;
+      _set('satGeoArc', fmt(arcLen,2));
+      _set('satGeoArea', fmt(secArea,2));
+      _set('satGeoVol', fmt(vCyl,1)+' / '+fmt(vCone,1));
+      if(dataDesc){
+        dataDesc.textContent='Circle radius r = '+fmt(r,1)+', central angle θ = '+deg+'° ('+fmt(rad,2)+' rad). Arc s = rθ = '+fmt(arcLen,2)+', Sector Area = ½r²θ = '+fmt(secArea,2)+'. 3D Cylinder Vol = πr²h = '+fmt(vCyl,1)+', Cone Vol = ⅓πr²h = '+fmt(vCone,1)+'.';
+        renderDataRows(dataRows,[['Arc length s',fmt(arcLen,2)],['Sector area A',fmt(secArea,2)],['Cylinder volume πr²h',fmt(vCyl,2)],['Cone volume ⅓πr²h',fmt(vCone,2)]]);
+      }
+    }
+    register(canvas,draw);
+    _slider('satGeoR',function(v){ r=v; _set('satGeoRV',fmt(v,1)); });
+    _slider('satGeoDeg',function(v){ deg=v; _set('satGeoDegV',fmt(v,0)+'°'); });
+    _slider('satGeoH',function(v){ hCyl=v; _set('satGeoHV',fmt(v,1)); });
+  })();
+
+  /* SAT CH 7 — 3D Companion: Cylinder vs. Inscribed Cone Volume & Cross-Sections */
+  (function(){
+    var btn=document.getElementById('satGeo3dBtn'); if(!btn) return;
+    var wrap=document.getElementById('satGeo3dWrap');
+    var hint=document.getElementById('satGeo3dHint');
+    var sR=document.getElementById('satGeoR'), sH=document.getElementById('satGeoH');
+    var built=false, H=null, cylMesh, coneMesh, wireCone;
+    function build(mods){
+      var T=mods.THREE, COLOR=ClipSAT3D.COLOR;
+      H=ClipSAT3D.setup(wrap, mods, {az:0.8, el:0.45, dist:11, target:new T.Vector3(0,2,0),
+        axisSegs:[[[-5,0,0],[5,0,0]],[[0,0,0],[0,6,0]],[[0,0,-5],[0,0,5]]]});
+      var cylGeo=new T.CylinderGeometry(1,1,1,36,1,true);
+      var cylMat=new T.MeshLambertMaterial({color:COLOR.INDIGO, transparent:true, opacity:0.28, side:T.DoubleSide});
+      cylMesh=new T.Mesh(cylGeo,cylMat);
+      H.scene.add(cylMesh);
+      var coneGeo=new T.ConeGeometry(1,1,36);
+      var coneMat=new T.MeshLambertMaterial({color:COLOR.AMBER, transparent:true, opacity:0.65, side:T.DoubleSide});
+      coneMesh=new T.Mesh(coneGeo,coneMat);
+      H.scene.add(coneMesh);
+      wireCone=new T.Mesh(coneGeo, new T.MeshBasicMaterial({color:COLOR.INK, wireframe:true, transparent:true, opacity:0.22}));
+      H.scene.add(wireCone);
+      update();
+      H.render();
+    }
+    function update(){
+      if(!H) return;
+      var r=sR?parseFloat(sR.value):3, h=sH?parseFloat(sH.value):4;
+      cylMesh.scale.set(r,h,r); cylMesh.position.set(0,h/2,0);
+      coneMesh.scale.set(r,h,r); coneMesh.position.set(0,h/2,0);
+      wireCone.scale.set(r,h,r); wireCone.position.set(0,h/2,0);
+      H.render();
+    }
+    btn.addEventListener('click',function(){
+      if(!wrap.hidden){
+        wrap.hidden=true; if(hint) hint.hidden=true;
+        btn.setAttribute('aria-expanded','false');
+        btn.textContent='🧊 View Cylinder & Cone in 3D';
+        return;
+      }
+      wrap.hidden=false; if(hint) hint.hidden=false;
+      btn.setAttribute('aria-expanded','true');
+      if(built){ update(); return; }
+      built=true; btn.disabled=true; btn.textContent='Loading 3D…';
+      ClipSAT3D.load().then(function(mods){
+        btn.disabled=false; btn.textContent='🧊 Hide 3D Solid View';
+        build(mods);
+      });
+    });
+    if(sR) sR.addEventListener('input',update);
+    if(sH) sH.addEventListener('input',update);
+  })();
+
+  /* ===================== SAT CH 10 — CONDITIONAL PROBABILITY & TWO-WAY PROPORTION EXPLORER ===================== */
+  (function(){
+    var canvas=document.getElementById('satProbCanvas'); if(!canvas) return;
+    var aAndB=30, aOnly=20, bOnly=25, neither=25;
+    var view={xmin:0,xmax:10,ymin:0,ymax:10,square:true,step:1};
+    var dataBtn=document.getElementById('satProbDataBtn'), dataPanel=document.getElementById('satProbDataPanel'),
+        dataDesc=document.getElementById('satProbDataDesc'), dataRows=document.getElementById('satProbDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:28,r:14,t:16,b:24}); P.clear();
+      var c=P.ctx, tot=aAndB+aOnly+bOnly+neither;
+      var pA=(aAndB+aOnly)/tot, pB=(aAndB+bOnly)/tot;
+      var pBgA=(aAndB+aOnly)>0 ? aAndB/(aAndB+aOnly) : 0;
+      var pAgB=(aAndB+bOnly)>0 ? aAndB/(aAndB+bOnly) : 0;
+      var splitX=P.X(10*pA), splitY1=P.Y(10*pBgA), splitY2=P.Y(10*(bOnly/Math.max(1,bOnly+neither)));
+      var x0=P.X(0), x10=P.X(10), y0=P.Y(0), y10=P.Y(10);
+      c.fillStyle='rgba(30,58,110,0.78)'; c.fillRect(x0,splitY1,splitX-x0,y0-splitY1);
+      c.fillStyle='rgba(43,91,168,0.25)'; c.fillRect(x0,y10,splitX-x0,splitY1-y10);
+      c.fillStyle='rgba(200,144,42,0.70)'; c.fillRect(splitX,splitY2,x10-splitX,y0-splitY2);
+      c.fillStyle='rgba(180,190,205,0.28)'; c.fillRect(splitX,y10,x10-splitX,splitY2-y10);
+      c.strokeStyle=INK; c.lineWidth=1.8; c.strokeRect(x0,y10,x10-x0,y0-y10);
+      c.beginPath(); c.moveTo(splitX,y10); c.lineTo(splitX,y0); c.stroke();
+      c.fillStyle=INK; c.font=FONT; c.textAlign='center';
+      c.fillText('A ∩ B ('+aAndB+')', (x0+splitX)/2, (splitY1+y0)/2);
+      c.fillText('A ∩ B\x27 ('+aOnly+')', (x0+splitX)/2, (y10+splitY1)/2);
+      c.fillText('A\x27 ∩ B ('+bOnly+')', (splitX+x10)/2, (splitY2+y0)/2);
+      _set('satProbBgA', fmt(pBgA*100,1)+'%');
+      _set('satProbAgB', fmt(pAgB*100,1)+'%');
+      _set('satProbTot', String(tot));
+      if(dataDesc){
+        dataDesc.textContent='Total N = '+tot+'. P(B | A) = '+aAndB+' / '+(aAndB+aOnly)+' = '+fmt(pBgA,3)+', whereas P(A | B) = '+aAndB+' / '+(aAndB+bOnly)+' = '+fmt(pAgB,3)+'.';
+        renderDataRows(dataRows,[['P(B | A)',aAndB+'/'+(aAndB+aOnly)+' = '+fmt(pBgA,3)],['P(A | B)',aAndB+'/'+(aAndB+bOnly)+' = '+fmt(pAgB,3)],['P(A ∩ B)',aAndB+'/'+tot+' = '+fmt(aAndB/tot,3)]]);
+      }
+    }
+    register(canvas,draw);
+    _slider('satProbAB',function(v){ aAndB=v; _set('satProbABV',fmt(v,0)); });
+    _slider('satProbA',function(v){ aOnly=v; _set('satProbAV',fmt(v,0)); });
+  })();
+
+  /* ===================== SAT CH 0 — ADAPTIVE MODULE ROUTING & SCORE SIMULATOR ===================== */
+  (function(){
+    var canvas=document.getElementById('satAdaptCanvas'); if(!canvas) return;
+    var m1=18, m2=17;
+    var view={xmin:0,xmax:22,ymin:200,ymax:800};
+    var dataBtn=document.getElementById('satAdaptDataBtn'), dataPanel=document.getElementById('satAdaptDataPanel'),
+        dataDesc=document.getElementById('satAdaptDataDesc'), dataRows=document.getElementById('satAdaptDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function score(r1,r2){
+      var hardRoute = r1 >= 14;
+      if(hardRoute){
+        return Math.min(800, Math.round(460 + r1*7.5 + r2*8.0));
+      } else {
+        return Math.min(610, Math.max(200, Math.round(200 + r1*13 + r2*10.5)));
+      }
+    }
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:36,r:14,t:14,b:26}); P.clear(); P.grid();
+      P.curve(function(x){ return Math.min(800, 460 + m1*7.5 + x*8.0); }, INDIGO, 2.5);
+      P.curve(function(x){ return Math.min(610, 200 + Math.min(m1,13)*13 + x*10.5); }, AMBER2, 2.2);
+      var sc=score(m1,m2), route=m1>=14?'Hard Module 2 (Upper Band)':'Standard Module 2 (Capped ~610)';
+      P.dot(m2, sc, INK, 6);
+      _set('satAdaptRoute', route);
+      _set('satAdaptScore', String(sc));
+      if(dataDesc){
+        dataDesc.textContent='Module 1 raw = '+m1+'/22 ('+route+'), Module 2 raw = '+m2+'/22 → Estimated Scaled Score: '+sc+'.';
+        renderDataRows(dataRows,[['Module 1 Raw',m1+' / 22'],['Module 2 Track',route],['Module 2 Raw',m2+' / 22'],['Scaled Score',String(sc)]]);
+      }
+    }
+    register(canvas,draw);
+    _slider('satAdaptM1',function(v){ m1=v; _set('satAdaptM1V',fmt(v,0)); });
+    _slider('satAdaptM2',function(v){ m2=v; _set('satAdaptM2V',fmt(v,0)); });
+  })();
 })(window.CSExplorerKit);
+

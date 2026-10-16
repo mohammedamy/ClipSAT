@@ -52,6 +52,50 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Transformations &amp; Vectors — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
         "kind": "syllabusMap",
         "title": "📊 Cambridge IGCSE Mathematics 0580 — Topic Weighting",
         "rows": [
@@ -198,6 +242,16 @@
         "note": {
           "en": "Mapping: <b id=\"igTransRule\" class=\"mono\">(x, y) → (x, −y)</b>",
           "ar": null
+        },
+        "canvas3d": {
+          "btnId": "exAuto3dBtn_vec3_igtransform",
+          "wrapId": "exAuto3dWrap_igtransform",
+          "hintId": "exAuto3dHint_igtransform",
+          "btnLabel": "🧊 View Interactive 3D Model",
+          "ariaLabel": {
+            "en": "Interactive 3D visualization for Transformations &amp; Vectors. Drag to rotate.",
+            "ar": null
+          }
         }
       },
       {
@@ -329,6 +383,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "ar": null
+        },
+        "body": {
+          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Find the magnitude of \\(\\mathbf{v}=\\binom{-5}{12}\\) and hence find a unit vector in the direction of \\(\\mathbf{v}\\).",
@@ -343,10 +409,27 @@
         "kind": "figure",
         "figure": {
           "type": "similar",
-          "vertices": [[0, 0], [6, 0], [3, 4]],
+          "vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              6,
+              0
+            ],
+            [
+              3,
+              4
+            ]
+          ],
           "ratio": 0.5,
-          "left": { "caption": "Original Triangle T" },
-          "right": { "caption": "Enlarged Triangle T' (scale factor k = 0.5)" }
+          "left": {
+            "caption": "Original Triangle T"
+          },
+          "right": {
+            "caption": "Enlarged Triangle T' (scale factor k = 0.5)"
+          }
         },
         "caption": {
           "en": "Enlargement with fractional scale factor \\(k = 0.5\\): all linear dimensions are halved, and the area is scaled by \\(k^2 = 0.25\\).",
@@ -375,11 +458,35 @@
           "en": "<p><strong>Step 1: Express \\(\\overrightarrow{AB}\\):</strong></p>\\[\\overrightarrow{AB} = \\overrightarrow{AO} + \\overrightarrow{OB} = -3\\mathbf{a} + 6\\mathbf{b}\\]<p><strong>Step 2: Find \\(\\overrightarrow{AP}\\):</strong></p>\\[\\overrightarrow{AP} = \\frac{1}{3}\\overrightarrow{AB} = \\frac{1}{3}(-3\\mathbf{a} + 6\\mathbf{b}) = -\\mathbf{a} + 2\\mathbf{b}\\]<p><strong>Step 3: Find \\(\\overrightarrow{OP}\\):</strong></p>\\[\\overrightarrow{OP} = \\overrightarrow{OA} + \\overrightarrow{AP} = 3\\mathbf{a} + (-\\mathbf{a} + 2\\mathbf{b}) = 2\\mathbf{a} + 2\\mathbf{b}\\]",
           "ar": null
         }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Transformations &amp; Vectors · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Transformations &amp; Vectors · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Transformations & Vectors"],
+    "domains": [
+      "Transformations & Vectors"
+    ],
     "enabled": true
   }
 }

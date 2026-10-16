@@ -46,6 +46,50 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "AI HL — Additional Topics — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "thm",
         "label": {
@@ -78,52 +122,82 @@
             "ar": null
           },
           "columns": [
-            { "en": "step n", "ar": null },
-            { "en": "P(A)", "ar": null }
+            {
+              "en": "step n",
+              "ar": null
+            },
+            {
+              "en": "P(A)",
+              "ar": null
+            }
           ]
         },
         "controls": [
           {
             "id": "ibhlMarkovP",
-            "label": { "en": "P(A→A):", "ar": null },
+            "label": {
+              "en": "P(A→A):",
+              "ar": null
+            },
             "min": 0,
             "max": 1,
             "value": 0.7,
             "step": 0.05,
             "valueDisplayId": "ibhlMarkovPVal",
-            "ariaLabel": { "en": "Probability of staying in state A", "ar": null }
+            "ariaLabel": {
+              "en": "Probability of staying in state A",
+              "ar": null
+            }
           },
           {
             "id": "ibhlMarkovQ",
-            "label": { "en": "P(B→B):", "ar": null },
+            "label": {
+              "en": "P(B→B):",
+              "ar": null
+            },
             "min": 0,
             "max": 1,
             "value": 0.6,
             "step": 0.05,
             "valueDisplayId": "ibhlMarkovQVal",
-            "ariaLabel": { "en": "Probability of staying in state B", "ar": null }
+            "ariaLabel": {
+              "en": "Probability of staying in state B",
+              "ar": null
+            }
           },
           {
             "id": "ibhlMarkovX0",
-            "label": { "en": "starting P(A):", "ar": null },
+            "label": {
+              "en": "starting P(A):",
+              "ar": null
+            },
             "min": 0,
             "max": 1,
             "value": 1,
             "step": 0.05,
             "valueDisplayId": "ibhlMarkovX0Val",
-            "ariaLabel": { "en": "Initial probability of being in state A", "ar": null }
+            "ariaLabel": {
+              "en": "Initial probability of being in state A",
+              "ar": null
+            }
           }
         ],
         "readouts": [
           {
             "id": "ibhlMarkovSteady",
-            "label": { "en": "steady state πA", "ar": null },
+            "label": {
+              "en": "steady state πA",
+              "ar": null
+            },
             "colorClass": "indigo",
             "value": "0.571"
           },
           {
             "id": "ibhlMarkovX15",
-            "label": { "en": "P(A) after 15 steps", "ar": null },
+            "label": {
+              "en": "P(A) after 15 steps",
+              "ar": null
+            },
             "colorClass": "amber",
             "value": "0.571"
           }
@@ -154,30 +228,54 @@
             "ar": null
           },
           "columns": [
-            { "en": "edge", "ar": null },
-            { "en": "weight", "ar": null },
-            { "en": "decision", "ar": null }
+            {
+              "en": "edge",
+              "ar": null
+            },
+            {
+              "en": "weight",
+              "ar": null
+            },
+            {
+              "en": "decision",
+              "ar": null
+            }
           ]
         },
         "controls": [
           {
             "id": "ibhlKruskalStep",
-            "label": { "en": "edges considered so far:", "ar": null },
-            "min": 0, "max": 8, "value": 4, "step": 1,
+            "label": {
+              "en": "edges considered so far:",
+              "ar": null
+            },
+            "min": 0,
+            "max": 8,
+            "value": 4,
+            "step": 1,
             "valueDisplayId": "ibhlKruskalStepVal",
-            "ariaLabel": { "en": "Number of sorted edges considered so far", "ar": null }
+            "ariaLabel": {
+              "en": "Number of sorted edges considered so far",
+              "ar": null
+            }
           }
         ],
         "readouts": [
           {
             "id": "ibhlKruskalWeight",
-            "label": { "en": "MST weight so far", "ar": null },
+            "label": {
+              "en": "MST weight so far",
+              "ar": null
+            },
             "colorClass": "indigo",
             "value": "10"
           },
           {
             "id": "ibhlKruskalCount",
-            "label": { "en": "edges in tree", "ar": null },
+            "label": {
+              "en": "edges in tree",
+              "ar": null
+            },
             "colorClass": "amber",
             "value": "4 of 4 needed"
           }
@@ -299,8 +397,14 @@
           "type": "bar",
           "title": "Markov Steady State Distribution (%)",
           "data": [
-            { "label": "State A", "val": 57 },
-            { "label": "State B", "val": 43 }
+            {
+              "label": "State A",
+              "val": 57
+            },
+            {
+              "label": "State B",
+              "val": 43
+            }
           ],
           "ylabel": "Probability (%)"
         }
@@ -314,6 +418,18 @@
         },
         "body": {
           "en": "<strong>Column-Stochastic vs Row-Stochastic:</strong> The IB AI HL syllabus uses column-stochastic transition matrices where each column sums to 1: entry \\(T_{ij}\\) represents the probability of moving from state \\(j\\) to state \\(i\\). Multiplying \\(T \\mathbf{p}_n = \\mathbf{p}_{n+1}\\) requires a column vector. If you set up rows summing to 1 by mistake, standard matrix multiplications produce wrong states.<br><br><strong>Cycle Detection in Kruskal's:</strong> In Kruskal's algorithm, check for cycles across the <em>entire connected subgraph</em>, not just whether both vertices have been visited. If two visited vertices already belong to the same component, connecting them creates a cycle and the edge must be rejected.<br><br><strong>Eulerian Graph Conditions:</strong> An Eulerian trail (open path visiting every edge once) requires <em>exactly two</em> vertices of odd degree. An Eulerian circuit (closed loop returning to the start) requires <em>all</em> vertices to have even degree.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
           "ar": null
         }
       },
@@ -336,6 +452,28 @@
         },
         "solution": {
           "en": "Kruskal's algorithm finds a global minimum spanning tree that connects all vertices in the graph with minimum total edge weight, without reference to any single starting vertex. Dijkstra's algorithm finds the shortest path routes from a designated single source vertex to all other individual vertices. A minimum spanning tree does not necessarily contain the shortest paths between arbitrary pairs of vertices.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[AI HL — Additional Topics · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[AI HL — Additional Topics · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
           "ar": null
         }
       }

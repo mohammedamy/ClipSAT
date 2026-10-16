@@ -23,6 +23,50 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "The Fundamental Theorem — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "def",
         "label": {
@@ -192,6 +236,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "ar": null
+        },
+        "body": {
+          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Find \\( h'(2) \\) given the accumulation function \\( h(x) = \\displaystyle\\int_0^{x^2} \\frac{t}{t + 1}\\,dt \\).</p>",
@@ -298,15 +354,35 @@
         "figure": {
           "type": "fn",
           "fns": [
-            { "fn": "cos(x)", "label": "f(t) = cos(t)" },
-            { "fn": "sin(x)", "label": "g(x) = sin(x)" }
+            {
+              "fn": "cos(x)",
+              "label": "f(t) = cos(t)"
+            },
+            {
+              "fn": "sin(x)",
+              "label": "g(x) = sin(x)"
+            }
           ],
           "points": [
-            { "x": 0, "y": 0, "label": "g(0) = 0" },
-            { "x": 1.57, "y": 1, "label": "Peak: g(π/2) = 1" }
+            {
+              "x": 0,
+              "y": 0,
+              "label": "g(0) = 0"
+            },
+            {
+              "x": 1.57,
+              "y": 1,
+              "label": "Peak: g(π/2) = 1"
+            }
           ],
-          "xrange": [-0.5, 3.5],
-          "yrange": [-1.5, 1.5]
+          "xrange": [
+            -0.5,
+            3.5
+          ],
+          "yrange": [
+            -1.5,
+            1.5
+          ]
         }
       },
       {
@@ -329,6 +405,17 @@
         },
         "body": {
           "en": "<strong>FTC Part 1 Chain Rule Missing:</strong> When differentiating an integral with a variable upper limit \\(u(x)\\):<br>\\[ \\frac{d}{dx}\\int_a^{u(x)} f(t)\\,dt = f(u(x)) \\cdot u'(x) \\]<br>Forgetting to multiply by the inner derivative \\(u'(x)\\) is the single most penalized error in AP and university calculus exams!<br><br><strong>Lower Limit is Variable:</strong> If the variable is in the lower limit, reverse limits and negate first:<br>\\[ \\frac{d}{dx}\\int_{u(x)}^b f(t)\\,dt = -\\frac{d}{dx}\\int_b^{u(x)} f(t)\\,dt = -f(u(x))u'(x) \\]<br><strong>Both Limits Variable:</strong> Split at a constant \\(c\\): \\(\\int_{v(x)}^{u(x)} = \\int_c^{u(x)} - \\int_c^{v(x)}\\), yielding \\(f(u(x))u'(x) - f(v(x))v'(x)\\).<br><br><strong>Net Change vs Final Value:</strong> Remember that \\(\\int_{t_1}^{t_2} v(t)\\,dt\\) gives only the <em>change</em> in position \\(s(t_2) - s(t_1)\\). To find the actual position \\(s(t_2)\\), you must add the initial position \\(s(t_1)\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[The Fundamental Theorem · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
           "ar": null
         }
       }

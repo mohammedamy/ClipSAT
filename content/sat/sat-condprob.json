@@ -80,6 +80,101 @@
         ]
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Two-Way Frequency Mosaic &amp; Conditional Probability",
+          "ar": null
+        },
+        "canvasId": "satProbCanvas",
+        "ariaLabel": {
+          "en": "Interactive two-way conditional probability mosaic chart comparing P(B|A) and P(A|B)",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "satProbDataBtn",
+          "panelId": "satProbDataPanel",
+          "descId": "satProbDataDesc",
+          "rowsId": "satProbDataRows",
+          "caption": {
+            "en": "Conditional probability direction comparison",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "Probability",
+              "ar": null
+            },
+            {
+              "en": "Calculation",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "satProbAB",
+            "label": {
+              "en": "Both A &amp; B <b>n(A∩B) =</b>",
+              "ar": null
+            },
+            "min": 5,
+            "max": 60,
+            "value": 30,
+            "step": 5,
+            "valueDisplayId": "satProbABV",
+            "ariaLabel": {
+              "en": "Count of A and B",
+              "ar": null
+            }
+          },
+          {
+            "id": "satProbA",
+            "label": {
+              "en": "A Only <b>n(A∩B') =</b>",
+              "ar": null
+            },
+            "min": 5,
+            "max": 60,
+            "value": 20,
+            "step": 5,
+            "valueDisplayId": "satProbAV",
+            "ariaLabel": {
+              "en": "Count of A only",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "satProbBgA",
+            "label": {
+              "en": "P(B | A)",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "60.0%"
+          },
+          {
+            "id": "satProbAgB",
+            "label": {
+              "en": "P(A | B)",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "54.5%"
+          },
+          {
+            "id": "satProbTot",
+            "label": {
+              "en": "Total Sample N",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "100"
+          }
+        ]
+      },
+      {
         "kind": "figure",
         "figure": {
           "type": "two_way_table",
@@ -206,6 +301,52 @@
         },
         "solution": {
           "en": "<p><strong>Step 1:</strong> Calculate marginal probability: \\[ P(\\text{Passed}) = \\frac{72}{100} = 0.72. \\]</p><p><strong>Step 2:</strong> Compare with conditional probability: \\[ P(\\text{Passed} \\mid \\text{Studied}) = \\frac{54}{60} = 0.90. \\]</p><p>Since \\( P(\\text{Passed} \\mid \\text{Studied}) = 0.90 \\neq 0.72 = P(\\text{Passed}) \\), the events are <strong>not independent</strong> (studying is positively associated with passing).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "bar",
+          "title": "Two-Way Table Breakdown: Grade Level vs. Foreign Language Choice",
+          "labels": [
+            "10th Spanish",
+            "10th French",
+            "11th Spanish",
+            "11th French"
+          ],
+          "values": [
+            48,
+            32,
+            54,
+            66
+          ]
+        },
+        "caption": {
+          "en": "Conditional probability restricts the denominator strictly to the specified subgroup (e.g., only 11th graders: 54 + 66 = 120).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 4 (Synthesis) — Testing Independence in Two-Way Tables",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> In a clinic study, 60 patients received Treatment A and 40 received Treatment B. If 45 of Treatment A recovered and \\( k \\) of Treatment B recovered, for what value of \\( k \\) is recovery independent of treatment?</p><p><strong>Solution:</strong> Independence requires the conditional recovery rate in both groups to match: \\[ \\frac{45}{60} = \\frac{k}{40} \\implies 0.75 = \\frac{k}{40} \\implies k = 30. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 4 · Synthesis</span><p>A quality-control inspector tests 300 microchips from Factory X and 200 microchips from Factory Y. Exactly 4% of the chips from Factory X and 9% of the chips from Factory Y are defective. If one defective chip is selected at random from all the defective chips found, what is the probability that it came from Factory Y?</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Calculate the exact number of defective chips from each factory:</p>\\[ \\text{Defective X} = 0.04 \\times 300 = 12, \\quad \\text{Defective Y} = 0.09 \\times 200 = 18. \\]<p>Total defective chips \\( = 12 + 18 = 30 \\). Therefore:</p>\\[ P(\\text{Factory Y} \\mid \\text{Defective}) = \\frac{18}{30} = \\frac{3}{5} = 0.60. \\]",
           "ar": null
         }
       }

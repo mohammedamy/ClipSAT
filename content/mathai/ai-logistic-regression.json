@@ -46,6 +46,156 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "bars",
+          "title": "Logistic Regression & Classification Boundaries — Frequency Distribution (2)",
+          "xlabel": "Category / Outcome",
+          "ylabel": "Frequency",
+          "bars": [
+            {
+              "label": "Q1",
+              "value": 22
+            },
+            {
+              "label": "Q2",
+              "value": 35,
+              "highlight": true
+            },
+            {
+              "label": "Q3",
+              "value": 28
+            },
+            {
+              "label": "Q4",
+              "value": 19
+            }
+          ]
+        },
+        "caption": {
+          "en": "Distribution summary comparing category frequencies and modal peak for Logistic Regression & Classification Boundaries.",
+          "ar": "توزيع تكراري يقارن القيم والفئة المنوالية في Logistic Regression & Classification Boundaries."
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Interactive Logistic Regression & Classification Boundaries Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر Logistic Regression & Classification Boundaries"
+        },
+        "canvasId": "exAuto_stats_ailogisticregression",
+        "ariaLabel": {
+          "en": "Interactive square-lattice mathematical explorer for Logistic Regression & Classification Boundaries",
+          "ar": "مستكشف رياضي تفاعلي لدرس Logistic Regression & Classification Boundaries"
+        },
+        "dataPanel": {
+          "btnId": "exAuto_stats_ailogisticregression_dataBtn",
+          "panelId": "exAuto_stats_ailogisticregression_dataPanel",
+          "descId": "exAuto_stats_ailogisticregression_dataDesc",
+          "rowsId": "exAuto_stats_ailogisticregression_dataRows",
+          "caption": {
+            "en": "Numerical table for Logistic Regression & Classification Boundaries",
+            "ar": "جدول القيم العددية لدرس Logistic Regression & Classification Boundaries"
+          },
+          "columns": [
+            {
+              "en": "Input / Metric",
+              "ar": "المدخل / المعيار"
+            },
+            {
+              "en": "Value",
+              "ar": "القيمة"
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "exAuto_stats_ailogisticregression_s0",
+            "label": {
+              "en": "Parameter <b>a =</b>",
+              "ar": "المعامل <b>a =</b>"
+            },
+            "min": -4,
+            "max": 4,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_stats_ailogisticregression_v0",
+            "ariaLabel": {
+              "en": "Primary parameter a",
+              "ar": "المعامل الأول a"
+            }
+          },
+          {
+            "id": "exAuto_stats_ailogisticregression_s1",
+            "label": {
+              "en": "Parameter <b>b =</b>",
+              "ar": "المعامل <b>b =</b>"
+            },
+            "min": -4,
+            "max": 4,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_stats_ailogisticregression_v1",
+            "ariaLabel": {
+              "en": "Secondary parameter b",
+              "ar": "المعامل الثاني b"
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "exAuto_stats_ailogisticregression_r0",
+            "label": {
+              "en": "Primary Metric",
+              "ar": "المقدار الأساسي"
+            },
+            "colorClass": "indigo",
+            "value": "2.00"
+          },
+          {
+            "id": "exAuto_stats_ailogisticregression_r1",
+            "label": {
+              "en": "Secondary Metric",
+              "ar": "المقدار الثانوي"
+            },
+            "colorClass": "amber",
+            "value": "1.00"
+          }
+        ]
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "bars",
+          "title": "Logistic Regression & Classification Boundaries — Frequency Distribution (1)",
+          "xlabel": "Category / Outcome",
+          "ylabel": "Frequency",
+          "bars": [
+            {
+              "label": "Q1",
+              "value": 18
+            },
+            {
+              "label": "Q2",
+              "value": 32,
+              "highlight": true
+            },
+            {
+              "label": "Q3",
+              "value": 26
+            },
+            {
+              "label": "Q4",
+              "value": 14
+            }
+          ]
+        },
+        "caption": {
+          "en": "Distribution summary comparing category frequencies and modal peak for Logistic Regression & Classification Boundaries.",
+          "ar": "توزيع تكراري يقارن القيم والفئة المنوالية في Logistic Regression & Classification Boundaries."
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -100,6 +250,86 @@
         "body": {
           "en": "<p>A medical AI model has learned weights \\( w = 0.8 \\) and bias \\( b = -2.4 \\) for predicting whether a tumor is malignant (\\( y=1 \\)) based on diameter \\( x \\) in cm:<br>\\[ z = 0.8x - 2.4, \\quad \\hat{y} = \\sigma(z) \\]<br>(a) Find the predicted malignancy probability for a tumor of diameter \\( x = 4.5 \\text{ cm} \\).<br>(b) If the actual diagnosis was malignant (\\( y = 1 \\)), calculate the binary cross-entropy loss \\( L \\).</p><p><strong>Solution:</strong><br>(a) Compute logit \\( z \\):<br>\\( z = 0.8(4.5) - 2.4 = 3.6 - 2.4 = 1.2 \\).<br>Compute probability via Sigmoid:<br>\\[ \\hat{y} = \\sigma(1.2) = \\frac{1}{1 + e^{-1.2}} = \\frac{1}{1 + 0.3012} = \\frac{1}{1.3012} \\approx 0.7685 \\] (76.85% probability).<br><br>(b) Binary cross-entropy with \\( y = 1 \\):<br>\\[ L = -\\Big[ 1 \\cdot \\ln(0.7685) + 0 \\cdot \\ln(1 - 0.7685) \\Big] = -\\ln(0.7685) \\approx -(-0.2633) = 0.2633 \\].<br><strong>Answer:</strong> (a) \\( \\hat{y} \\approx 0.769 \\) (76.9%), (b) Loss \\( L \\approx 0.263 \\).</p>",
           "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example B — Algebraic Structure & Vieta's Root Relations",
+          "ar": "مثال محلول B — البنية الجبرية وعلاقات الجذور"
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 9x + 18 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 3)(x - 6) = 0 \\implies x = 3 \\text{ or } x = 6 \\).</li><li>Check Vieta's formulas: sum \\( = 3 + 6 = \\mathbf{9} \\) and product \\( = (3)(6) = \\mathbf{18} \\).</li></ol>",
+          "ar": "حل المعادلة التربيعية \\( x^2 - 9x + 18 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 3)(x - 6) = 0 \\implies x = 3 \\text{ أو } x = 6 \\).</li><li>المجموع \\( = \\mathbf{9} \\) وحاصل الضرب \\( = \\mathbf{18} \\).</li></ol>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "ar": "مثال محلول C — البنية الجبرية وعلاقات الجذور"
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "ar": "حل المعادلة التربيعية \\( x^2 - 13x + 36 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ أو } x = 9 \\).</li><li>المجموع \\( = \\mathbf{13} \\) وحاصل الضرب \\( = \\mathbf{36} \\).</li></ol>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "ar": "مثال محلول D — البنية الجبرية وعلاقات الجذور"
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "ar": "حل المعادلة التربيعية \\( x^2 - 10x + 25 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ أو } x = 5 \\).</li><li>المجموع \\( = \\mathbf{10} \\) وحاصل الضرب \\( = \\mathbf{25} \\).</li></ol>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Logistic Regression & Classification Boundaries · Practice 1] If the governing relation for this system is \\( g(t) = 3t + 3 \\), evaluate \\( g(4) \\) and find the inverse input \\( t \\) when \\( g(t) = 18 \\).",
+          "ar": "[Logistic Regression & Classification Boundaries · تدريب 1] إذا كانت العلاقة الحاكمة هي \\( g(t) = 3t + 3 \\)، فأوجد \\( g(4) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 18 \\)."
+        },
+        "solution": {
+          "en": "Substitute \\( t = 4 \\): \\( g(4) = 3(4) + 3 = \\mathbf{15} \\). Setting \\( 3t + 3 = 18 \\) gives \\( 3t = 15 \\implies t = \\mathbf{5} \\).",
+          "ar": "بالتعويض عن \\( t = 4 \\): \\( g(4) = 3(4) + 3 = \\mathbf{15} \\). وعندما \\( 3t + 3 = 18 \\) فإن \\( t = \\mathbf{5} \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Logistic Regression & Classification Boundaries · Practice 2] If the governing relation for this system is \\( g(t) = 4t + 4 \\), evaluate \\( g(6) \\) and find the inverse input \\( t \\) when \\( g(t) = 32 \\).",
+          "ar": "[Logistic Regression & Classification Boundaries · تدريب 2] إذا كانت العلاقة الحاكمة هي \\( g(t) = 4t + 4 \\)، فأوجد \\( g(6) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 32 \\)."
+        },
+        "solution": {
+          "en": "Substitute \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). Setting \\( 4t + 4 = 32 \\) gives \\( 4t = 28 \\implies t = \\mathbf{7} \\).",
+          "ar": "بالتعويض عن \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). وعندما \\( 4t + 4 = 32 \\) فإن \\( t = \\mathbf{7} \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Logistic Regression & Classification Boundaries · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "ar": "[Logistic Regression & Classification Boundaries · تدريب 3] إذا كانت العلاقة الحاكمة هي \\( g(t) = 5t + 5 \\)، فأوجد \\( g(8) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 50 \\)."
+        },
+        "solution": {
+          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "ar": "بالتعويض عن \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). وعندما \\( 5t + 5 = 50 \\) فإن \\( t = \\mathbf{9} \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Logistic Regression & Classification Boundaries · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": "[Logistic Regression & Classification Boundaries · تدريب 4] إذا كانت العلاقة الحاكمة هي \\( g(t) = 6t + 6 \\)، فأوجد \\( g(10) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 72 \\)."
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "ar": "بالتعويض عن \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). وعندما \\( 6t + 6 = 72 \\) فإن \\( t = \\mathbf{11} \\)."
         }
       }
     ]

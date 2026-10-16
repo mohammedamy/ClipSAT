@@ -41,6 +41,19 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "circle",
+          "radius": 6,
+          "labelR": "r = 6",
+          "chordAngle": 120
+        },
+        "caption": {
+          "en": "Circle sector and chord geometry with radius r = 6 and central angle 120°.",
+          "ar": null
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -176,7 +189,17 @@
             "colorClass": "indigo",
             "value": "(x-3)² + (y+2)² = 25"
           }
-        ]
+        ],
+        "canvas3d": {
+          "btnId": "exAuto3dBtn_solid_est2circles",
+          "wrapId": "exAuto3dWrap_est2circles",
+          "hintId": "exAuto3dHint_est2circles",
+          "btnLabel": "🧊 View Interactive 3D Model",
+          "ariaLabel": {
+            "en": "Interactive 3D visualization for Circles & Conic Sections. Drag to rotate.",
+            "ar": null
+          }
+        }
       },
       {
         "kind": "callout",
@@ -195,11 +218,25 @@
         "figure": {
           "type": "fn",
           "title": "Conic Section: Ellipse (x - 1)²/16 + (y + 2)²/9 = 1",
-          "xrange": [-5, 7],
-          "yrange": [-7, 3],
+          "xrange": [
+            -5,
+            7
+          ],
+          "yrange": [
+            -7,
+            3
+          ],
           "fns": [
-            { "expr": "-2 + 3*sqrt(1 - (x-1)^2/16)", "color": "var(--fig-blue)", "label": "upper half" },
-            { "expr": "-2 - 3*sqrt(1 - (x-1)^2/16)", "color": "var(--fig-blue)", "label": "lower half" }
+            {
+              "expr": "-2 + 3*sqrt(1 - (x-1)^2/16)",
+              "color": "var(--fig-blue)",
+              "label": "upper half"
+            },
+            {
+              "expr": "-2 - 3*sqrt(1 - (x-1)^2/16)",
+              "color": "var(--fig-blue)",
+              "label": "lower half"
+            }
           ]
         },
         "caption": {
@@ -256,6 +293,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "ar": null
+        },
+        "body": {
+          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Find the equation of the circle in standard form that passes through the three points \\((0, 0)\\), \\((6, 0)\\), and \\((0, 8)\\).",
@@ -302,7 +351,9 @@
     ]
   },
   "quizWidget": {
-    "domains": ["Circles & Coordinate Geometry"],
+    "domains": [
+      "Circles & Coordinate Geometry"
+    ],
     "enabled": true
   }
 }

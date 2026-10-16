@@ -36,6 +36,94 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Unit 9 · Parametric Equations & Vector-Valued Functions — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Unit 9 · Parametric Equations & Vector-Valued Functions — Coordinate Curve & Tangent Analysis (1)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 1",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 1"
+            },
+            {
+              "fn": "2*x - 2",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 0,
+              "label": "(1, 0)"
+            },
+            {
+              "x": 0,
+              "y": -1,
+              "label": "(0, -1)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 1 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "thm",
         "label": {
@@ -56,6 +144,18 @@
         },
         "body": {
           "en": "<p><strong>Problem:</strong> A curve is parameterized by \\(x(t) = t^3 - 3t\\) and \\(y(t) = t^2 + 1\\). Find the equation of the tangent line at \\(t = 2\\), and determine whether the curve is concave up or concave down at this point.</p><p><strong>Step 1 · Coordinates at \\(t = 2\\):</strong> \\[ x(2) = 2^3 - 3(2) = 8 - 6 = 2, \\qquad y(2) = 2^2 + 1 = 5. \\] Point of tangency is \\((2, 5)\\).</p><p><strong>Step 2 · First Derivative (Slope \\(dy/dx\\)):</strong> \\[ x'(t) = 3t^2 - 3, \\qquad y'(t) = 2t. \\] At \\(t = 2\\): \\(x'(2) = 3(4) - 3 = 9\\), \\(y'(2) = 2(2) = 4\\). \\[ \\frac{dy}{dx} = \\frac{4}{9}. \\] Equation of tangent line: \\[ y - 5 = \\frac{4}{9}(x - 2) \\implies \\mathbf{y = \\frac{4}{9}x + \\frac{37}{9}}. \\]</p><p><strong>Step 3 · Second Derivative (Concavity \\(d^2y/dx^2\\)):</strong> \\[ \\frac{dy}{dx} = \\frac{2t}{3t^2 - 3}. \\] Differentiate with respect to \\(t\\) using the Quotient Rule: \\[ \\frac{d}{dt}\\left( \\frac{2t}{3t^2 - 3} \\right) = \\frac{2(3t^2 - 3) - 2t(6t)}{(3t^2 - 3)^2} = \\frac{6t^2 - 6 - 12t^2}{(3t^2 - 3)^2} = \\frac{-6t^2 - 6}{(3t^2 - 3)^2}. \\] Now divide by \\(x'(t) = 3t^2 - 3\\): \\[ \\frac{d^2y}{dx^2} = \\frac{-6t^2 - 6}{(3t^2 - 3)^3}. \\] At \\(t = 2\\): numerator is \\(-6(4) - 6 = -30\\); denominator is \\(9^3 = 729\\). \\[ \\left. \\frac{d^2y}{dx^2} \\right|_{t=2} = \\frac{-30}{729} = -\\frac{10}{243} < 0. \\] Since \\(\\frac{d^2y}{dx^2} < 0\\), the curve is <strong>concave down</strong> at \\(t = 2\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "ar": null
+        },
+        "body": {
+          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
           "ar": null
         }
       },
@@ -111,11 +211,26 @@
             "ar": null
           },
           "columns": [
-            { "en": "t (s)", "ar": null },
-            { "en": "Position (x, y)", "ar": null },
-            { "en": "Velocity <vx, vy>", "ar": null },
-            { "en": "Speed |v|", "ar": null },
-            { "en": "Slope dy/dx", "ar": null }
+            {
+              "en": "t (s)",
+              "ar": null
+            },
+            {
+              "en": "Position (x, y)",
+              "ar": null
+            },
+            {
+              "en": "Velocity <vx, vy>",
+              "ar": null
+            },
+            {
+              "en": "Speed |v|",
+              "ar": null
+            },
+            {
+              "en": "Slope dy/dx",
+              "ar": null
+            }
           ]
         },
         "controls": [
@@ -139,30 +254,52 @@
         "readouts": [
           {
             "id": "apbcParamPosOut",
-            "label": { "en": "Position (x, y)", "ar": null },
+            "label": {
+              "en": "Position (x, y)",
+              "ar": null
+            },
             "value": "(1.30, 1.64)"
           },
           {
             "id": "apbcParamVelOut",
-            "label": { "en": "Velocity <vx, vy>", "ar": null },
+            "label": {
+              "en": "Velocity <vx, vy>",
+              "ar": null
+            },
             "colorClass": "amber",
             "value": "<-2.02, -1.49>"
           },
           {
             "id": "apbcParamSpeedOut",
-            "label": { "en": "Speed |v|", "ar": null },
+            "label": {
+              "en": "Speed |v|",
+              "ar": null
+            },
             "colorClass": "indigo",
             "value": "2.510"
           },
           {
             "id": "apbcParamSlopeOut",
-            "label": { "en": "Slope dy/dx", "ar": null },
+            "label": {
+              "en": "Slope dy/dx",
+              "ar": null
+            },
             "value": "0.738"
           }
         ],
         "note": {
           "en": "Adjust parameter t to observe the instantaneous particle position, the velocity vector tangent to the trajectory, the acceleration vector guiding curvature, and instantaneous speed.",
           "ar": null
+        },
+        "canvas3d": {
+          "btnId": "exAuto3dBtn_vec3_apbcc3",
+          "wrapId": "exAuto3dWrap_apbcc3",
+          "hintId": "exAuto3dHint_apbcc3",
+          "btnLabel": "🧊 View Interactive 3D Model",
+          "ariaLabel": {
+            "en": "Interactive 3D visualization for Unit 9 · Parametric Equations & Vector-Valued Functions. Drag to rotate.",
+            "ar": null
+          }
         }
       },
       {
@@ -228,6 +365,17 @@
         },
         "solution": {
           "en": "<p><strong>Written Setup:</strong> \\[ \\text{Total Distance} = \\mathbf{\\int_0^3 \\sqrt{\\sin^2(t^2) + \\cos^2(t^3)}\\,dt}. \\]</p><p><strong>Numerical Evaluation:</strong> Entering this into a graphing calculator yields: \\[ \\text{Total Distance} \\approx \\mathbf{2.874} \\quad (\\text{or } 2.873). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Unit 9 · Parametric Equations & Vector-Valued Functions · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
           "ar": null
         }
       }

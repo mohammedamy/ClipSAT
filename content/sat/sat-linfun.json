@@ -312,6 +312,67 @@
           "en": "<p>Test the candidate point \\( (1, 2) \\):</p><ol><li>First inequality: \\( 2 > 2(1) - 3 \\implies 2 > -1 \\) (True).</li><li>Second inequality: \\( 2 \\le -(1) + 4 \\implies 2 \\le 3 \\) (True).</li></ol><p>Since \\( (1, 2) \\) satisfies both inequalities simultaneously, it lies within the feasible solution region.</p>",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Perpendicular Lines & Feasible Half-Plane Shading",
+          "xrange": [
+            -4,
+            6
+          ],
+          "yrange": [
+            -4,
+            6
+          ],
+          "fns": [
+            {
+              "fn": "2*x - 1",
+              "color": "var(--fig-indigo-2)",
+              "label": "L₁: y = 2x - 1"
+            },
+            {
+              "fn": "-0.5*x + 4",
+              "color": "var(--fig-amber)",
+              "label": "L₂ ⊥ L₁: y = -0.5x + 4"
+            }
+          ],
+          "points": [
+            {
+              "x": 2,
+              "y": 3,
+              "label": "Orthogonal Intersection (2, 3)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Perpendicular lines have negative reciprocal slopes: m₁ · m₂ = (2)(-0.5) = -1.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 4 (Synthesis) — Quadrant Constraint for Linear Inequality Systems",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> The system of inequalities \\( y \\le -2x + 6 \\) and \\( y \\ge \\frac{1}{2}x - 4 \\) is graphed in the \\( xy \\)-plane. Which quadrant contains NO solutions to the system?</p><p><strong>Solution:</strong> Check test points or intercepts: \\( y \\le -2x + 6 \\) has positive intercepts \\( (0,6) \\) and \\( (3,0) \\), while \\( y \\ge \\frac{1}{2}x - 4 \\) has \\( y \\)-intercept \\( (0,-4) \\). For any \\( (x,y) \\) in Quadrant I, II, III, or IV, test if both hold. Actually, for \\( x > 4 \\), \\( -2x + 6 < -2 \\) while \\( \\frac{1}{2}x - 4 > -2 \\), so they cross at \\( (4, -2) \\) in Quadrant IV, and cover parts of QI, QII, QIII, and QIV! By contrast, if \\( y > 2x + 3 \\) and \\( y > -x + 2 \\), Quadrant IV (\\( x>0, y<0 \\)) contains zero solutions because \\( 2x+3 > 3 > 0 \\) for all \\( x>0 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 4 · Synthesis</span><p>Line \\( \\ell \\) passes through \\( (2, -1) \\) and is perpendicular to the line \\( 3x + 6y = 18 \\). If line \\( \\ell \\) also passes through \\( (k, 9) \\), what is the value of \\( k \\)?</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Rewrite \\( 3x + 6y = 18 \\) in slope-intercept form: \\( 6y = -3x + 18 \\implies y = -\\frac{1}{2}x + 3 \\), so its slope is \\( -\\frac{1}{2} \\).</p><p>The perpendicular line \\( \\ell \\) has slope \\( m_\\ell = 2 \\). Using \\( (2, -1) \\) and \\( (k, 9) \\):</p>\\[ \\frac{9 - (-1)}{k - 2} = 2 \\implies \\frac{10}{k - 2} = 2 \\implies k - 2 = 5 \\implies k = 7. \\]",
+          "ar": null
+        }
       }
     ]
   },

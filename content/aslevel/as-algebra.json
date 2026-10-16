@@ -41,6 +41,136 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Indices, Surds &amp; Quadratics — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Interactive Indices, Surds &amp; Quadratics Lab",
+          "ar": null
+        },
+        "canvasId": "exAuto_exp_asalgebra",
+        "ariaLabel": {
+          "en": "Interactive square-lattice mathematical explorer for Indices, Surds &amp; Quadratics",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "exAuto_exp_asalgebra_dataBtn",
+          "panelId": "exAuto_exp_asalgebra_dataPanel",
+          "descId": "exAuto_exp_asalgebra_dataDesc",
+          "rowsId": "exAuto_exp_asalgebra_dataRows",
+          "caption": {
+            "en": "Numerical table for Indices, Surds &amp; Quadratics",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "Input / Metric",
+              "ar": null
+            },
+            {
+              "en": "Value",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "exAuto_exp_asalgebra_s0",
+            "label": {
+              "en": "Parameter <b>a =</b>",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_exp_asalgebra_v0",
+            "ariaLabel": {
+              "en": "Primary parameter a",
+              "ar": null
+            }
+          },
+          {
+            "id": "exAuto_exp_asalgebra_s1",
+            "label": {
+              "en": "Parameter <b>b =</b>",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_exp_asalgebra_v1",
+            "ariaLabel": {
+              "en": "Secondary parameter b",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "exAuto_exp_asalgebra_r0",
+            "label": {
+              "en": "Primary Metric",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "2.00"
+          },
+          {
+            "id": "exAuto_exp_asalgebra_r1",
+            "label": {
+              "en": "Secondary Metric",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "1.00"
+          }
+        ]
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -158,6 +288,30 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Solve the quadratic equation \\(2x^2 - 5x - 3 = 0\\) by completing the square. State the vertex of the corresponding parabola \\(y = 2x^2 - 5x - 3\\).",
@@ -187,6 +341,17 @@
         },
         "solution": {
           "en": "For real roots, the discriminant \\(\\Delta = b^2 - 4ac \\ge 0\\). Here \\(a = k\\), \\(b = 4\\), \\(c = k-3\\): \\[\\Delta = 4^2 - 4(k)(k-3) = 16 - 4k^2 + 12k \\ge 0\\] Divide the entire inequality by \\(-4\\), reversing the inequality sign: \\[k^2 - 3k - 4 \\le 0\\] Factor the quadratic: \\((k - 4)(k + 1) \\le 0\\). The critical values are \\(k = -1\\) and \\(k = 4\\). Since the parabola opens upward, the product is \\(\\le 0\\) between the roots: \\(-1 \\le k \\le 4\\). Note that if \\(k = 0\\), the equation becomes the linear equation \\(4x - 3 = 0\\), which has one real root \\(x = \\tfrac{3}{4}\\), so \\(k = 0\\) is included. Thus, the solution set is \\(-1 \\le k \\le 4\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Indices, Surds &amp; Quadratics · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
           "ar": null
         }
       }

@@ -46,6 +46,156 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "bars",
+          "title": "Linear Regression & Ordinary Least Squares — Frequency Distribution (2)",
+          "xlabel": "Category / Outcome",
+          "ylabel": "Frequency",
+          "bars": [
+            {
+              "label": "Q1",
+              "value": 22
+            },
+            {
+              "label": "Q2",
+              "value": 35,
+              "highlight": true
+            },
+            {
+              "label": "Q3",
+              "value": 28
+            },
+            {
+              "label": "Q4",
+              "value": 19
+            }
+          ]
+        },
+        "caption": {
+          "en": "Distribution summary comparing category frequencies and modal peak for Linear Regression & Ordinary Least Squares.",
+          "ar": "توزيع تكراري يقارن القيم والفئة المنوالية في Linear Regression & Ordinary Least Squares."
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Interactive Linear Regression & Ordinary Least Squares Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر Linear Regression & Ordinary Least Squares"
+        },
+        "canvasId": "exAuto_stats_ailinearregression",
+        "ariaLabel": {
+          "en": "Interactive square-lattice mathematical explorer for Linear Regression & Ordinary Least Squares",
+          "ar": "مستكشف رياضي تفاعلي لدرس Linear Regression & Ordinary Least Squares"
+        },
+        "dataPanel": {
+          "btnId": "exAuto_stats_ailinearregression_dataBtn",
+          "panelId": "exAuto_stats_ailinearregression_dataPanel",
+          "descId": "exAuto_stats_ailinearregression_dataDesc",
+          "rowsId": "exAuto_stats_ailinearregression_dataRows",
+          "caption": {
+            "en": "Numerical table for Linear Regression & Ordinary Least Squares",
+            "ar": "جدول القيم العددية لدرس Linear Regression & Ordinary Least Squares"
+          },
+          "columns": [
+            {
+              "en": "Input / Metric",
+              "ar": "المدخل / المعيار"
+            },
+            {
+              "en": "Value",
+              "ar": "القيمة"
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "exAuto_stats_ailinearregression_s0",
+            "label": {
+              "en": "Parameter <b>a =</b>",
+              "ar": "المعامل <b>a =</b>"
+            },
+            "min": -4,
+            "max": 4,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_stats_ailinearregression_v0",
+            "ariaLabel": {
+              "en": "Primary parameter a",
+              "ar": "المعامل الأول a"
+            }
+          },
+          {
+            "id": "exAuto_stats_ailinearregression_s1",
+            "label": {
+              "en": "Parameter <b>b =</b>",
+              "ar": "المعامل <b>b =</b>"
+            },
+            "min": -4,
+            "max": 4,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_stats_ailinearregression_v1",
+            "ariaLabel": {
+              "en": "Secondary parameter b",
+              "ar": "المعامل الثاني b"
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "exAuto_stats_ailinearregression_r0",
+            "label": {
+              "en": "Primary Metric",
+              "ar": "المقدار الأساسي"
+            },
+            "colorClass": "indigo",
+            "value": "2.00"
+          },
+          {
+            "id": "exAuto_stats_ailinearregression_r1",
+            "label": {
+              "en": "Secondary Metric",
+              "ar": "المقدار الثانوي"
+            },
+            "colorClass": "amber",
+            "value": "1.00"
+          }
+        ]
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "bars",
+          "title": "Linear Regression & Ordinary Least Squares — Frequency Distribution (1)",
+          "xlabel": "Category / Outcome",
+          "ylabel": "Frequency",
+          "bars": [
+            {
+              "label": "Q1",
+              "value": 18
+            },
+            {
+              "label": "Q2",
+              "value": 32,
+              "highlight": true
+            },
+            {
+              "label": "Q3",
+              "value": 26
+            },
+            {
+              "label": "Q4",
+              "value": 14
+            }
+          ]
+        },
+        "caption": {
+          "en": "Distribution summary comparing category frequencies and modal peak for Linear Regression & Ordinary Least Squares.",
+          "ar": "توزيع تكراري يقارن القيم والفئة المنوالية في Linear Regression & Ordinary Least Squares."
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -100,6 +250,86 @@
         "body": {
           "en": "<p>Fit a line \\( y = w_1 x + w_0 \\) to three points: \\( (1, 2) \\), \\( (2, 3) \\), and \\( (3, 5) \\) using the Normal Equation.</p><p><strong>Solution:</strong><br>1. Set up design matrix \\( \\mathbf{X} \\) (with bias column) and target \\( \\mathbf{y} \\):<br>\\[ \\mathbf{X} = \\begin{pmatrix} 1 & 1 \\\\ 2 & 1 \\\\ 3 & 1 \\end{pmatrix}, \\quad \\mathbf{y} = \\begin{pmatrix} 2 \\\\ 3 \\\\ 5 \\end{pmatrix} \\]<br>2. Compute \\( \\mathbf{X}^T \\mathbf{X} \\):<br>\\[ \\mathbf{X}^T \\mathbf{X} = \\begin{pmatrix} 1 & 2 & 3 \\\\ 1 & 1 & 1 \\end{pmatrix} \\begin{pmatrix} 1 & 1 \\\\ 2 & 1 \\\\ 3 & 1 \\end{pmatrix} = \\begin{pmatrix} 1+4+9 & 1+2+3 \\\\ 1+2+3 & 1+1+1 \\end{pmatrix} = \\begin{pmatrix} 14 & 6 \\\\ 6 & 3 \\end{pmatrix} \\]<br>3. Invert \\( \\mathbf{X}^T \\mathbf{X} \\):<br>\\( \\det = (14)(3) - (6)(6) = 42 - 36 = 6 \\).<br>\\[ (\\mathbf{X}^T \\mathbf{X})^{-1} = \\frac{1}{6} \\begin{pmatrix} 3 & -6 \\\\ -6 & 14 \\end{pmatrix} \\]<br>4. Compute \\( \\mathbf{X}^T \\mathbf{y} \\):<br>\\[ \\mathbf{X}^T \\mathbf{y} = \\begin{pmatrix} 1 & 2 & 3 \\\\ 1 & 1 & 1 \\end{pmatrix} \\begin{pmatrix} 2 \\\\ 3 \\\\ 5 \\end{pmatrix} = \\begin{pmatrix} 2 + 6 + 15 \\\\ 2 + 3 + 5 \\end{pmatrix} = \\begin{pmatrix} 23 \\\\ 10 \\end{pmatrix} \\]<br>5. Compute \\( \\mathbf{w} = (\\mathbf{X}^T \\mathbf{X})^{-1} (\\mathbf{X}^T \\mathbf{y}) \\):<br>\\[ \\mathbf{w} = \\frac{1}{6} \\begin{pmatrix} 3(23) - 6(10) \\\\ -6(23) + 14(10) \\end{pmatrix} = \\frac{1}{6} \\begin{pmatrix} 69 - 60 \\\\ -138 + 140 \\end{pmatrix} = \\frac{1}{6} \\begin{pmatrix} 9 \\\\ 2 \\end{pmatrix} = \\begin{pmatrix} 1.5 \\\\ 0.333 \\end{pmatrix} \\]<br>Line equation: \\( \\hat{y} = 1.5x + \\frac{1}{3} \\).<br><strong>Answer:</strong> Slope \\( w_1 = 1.5 \\), Intercept \\( w_0 = \\frac{1}{3} \\).</p>",
           "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example B — Algebraic Structure & Vieta's Root Relations",
+          "ar": "مثال محلول B — البنية الجبرية وعلاقات الجذور"
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 9x + 18 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 3)(x - 6) = 0 \\implies x = 3 \\text{ or } x = 6 \\).</li><li>Check Vieta's formulas: sum \\( = 3 + 6 = \\mathbf{9} \\) and product \\( = (3)(6) = \\mathbf{18} \\).</li></ol>",
+          "ar": "حل المعادلة التربيعية \\( x^2 - 9x + 18 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 3)(x - 6) = 0 \\implies x = 3 \\text{ أو } x = 6 \\).</li><li>المجموع \\( = \\mathbf{9} \\) وحاصل الضرب \\( = \\mathbf{18} \\).</li></ol>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "ar": "مثال محلول C — البنية الجبرية وعلاقات الجذور"
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "ar": "حل المعادلة التربيعية \\( x^2 - 13x + 36 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ أو } x = 9 \\).</li><li>المجموع \\( = \\mathbf{13} \\) وحاصل الضرب \\( = \\mathbf{36} \\).</li></ol>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "ar": "مثال محلول D — البنية الجبرية وعلاقات الجذور"
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "ar": "حل المعادلة التربيعية \\( x^2 - 10x + 25 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ أو } x = 5 \\).</li><li>المجموع \\( = \\mathbf{10} \\) وحاصل الضرب \\( = \\mathbf{25} \\).</li></ol>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Linear Regression & Ordinary Least Squares · Practice 1] If the governing relation for this system is \\( g(t) = 3t + 3 \\), evaluate \\( g(4) \\) and find the inverse input \\( t \\) when \\( g(t) = 18 \\).",
+          "ar": "[Linear Regression & Ordinary Least Squares · تدريب 1] إذا كانت العلاقة الحاكمة هي \\( g(t) = 3t + 3 \\)، فأوجد \\( g(4) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 18 \\)."
+        },
+        "solution": {
+          "en": "Substitute \\( t = 4 \\): \\( g(4) = 3(4) + 3 = \\mathbf{15} \\). Setting \\( 3t + 3 = 18 \\) gives \\( 3t = 15 \\implies t = \\mathbf{5} \\).",
+          "ar": "بالتعويض عن \\( t = 4 \\): \\( g(4) = 3(4) + 3 = \\mathbf{15} \\). وعندما \\( 3t + 3 = 18 \\) فإن \\( t = \\mathbf{5} \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Linear Regression & Ordinary Least Squares · Practice 2] If the governing relation for this system is \\( g(t) = 4t + 4 \\), evaluate \\( g(6) \\) and find the inverse input \\( t \\) when \\( g(t) = 32 \\).",
+          "ar": "[Linear Regression & Ordinary Least Squares · تدريب 2] إذا كانت العلاقة الحاكمة هي \\( g(t) = 4t + 4 \\)، فأوجد \\( g(6) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 32 \\)."
+        },
+        "solution": {
+          "en": "Substitute \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). Setting \\( 4t + 4 = 32 \\) gives \\( 4t = 28 \\implies t = \\mathbf{7} \\).",
+          "ar": "بالتعويض عن \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). وعندما \\( 4t + 4 = 32 \\) فإن \\( t = \\mathbf{7} \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Linear Regression & Ordinary Least Squares · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "ar": "[Linear Regression & Ordinary Least Squares · تدريب 3] إذا كانت العلاقة الحاكمة هي \\( g(t) = 5t + 5 \\)، فأوجد \\( g(8) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 50 \\)."
+        },
+        "solution": {
+          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "ar": "بالتعويض عن \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). وعندما \\( 5t + 5 = 50 \\) فإن \\( t = \\mathbf{9} \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Linear Regression & Ordinary Least Squares · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": "[Linear Regression & Ordinary Least Squares · تدريب 4] إذا كانت العلاقة الحاكمة هي \\( g(t) = 6t + 6 \\)، فأوجد \\( g(10) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 72 \\)."
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "ar": "بالتعويض عن \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). وعندما \\( 6t + 6 = 72 \\) فإن \\( t = \\mathbf{11} \\)."
         }
       }
     ]

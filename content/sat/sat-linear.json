@@ -81,6 +81,92 @@
         ]
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Linear System Intersections & Parameter k",
+          "ar": null
+        },
+        "canvasId": "satSysCanvas",
+        "ariaLabel": {
+          "en": "Two linear equations on a square coordinate lattice showing unique, parallel, or infinite solutions",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "satSysDataBtn",
+          "panelId": "satSysDataPanel",
+          "descId": "satSysDataDesc",
+          "rowsId": "satSysDataRows",
+          "caption": {
+            "en": "System slope comparison and intersection coordinates",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "Property",
+              "ar": null
+            },
+            {
+              "en": "Value",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "satSysM2",
+            "label": {
+              "en": "Line 2 Slope <b>m₂ =</b>",
+              "ar": null
+            },
+            "min": -3,
+            "max": 3,
+            "value": -0.5,
+            "step": 0.5,
+            "valueDisplayId": "satSysM2V",
+            "ariaLabel": {
+              "en": "Line 2 slope",
+              "ar": null
+            }
+          },
+          {
+            "id": "satSysB2",
+            "label": {
+              "en": "Line 2 Intercept <b>b₂ =</b>",
+              "ar": null
+            },
+            "min": -4,
+            "max": 6,
+            "value": 5,
+            "step": 1,
+            "valueDisplayId": "satSysB2V",
+            "ariaLabel": {
+              "en": "Line 2 intercept",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "satSysState",
+            "label": {
+              "en": "System Classification",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "Unique Solution"
+          },
+          {
+            "id": "satSysSol",
+            "label": {
+              "en": "Intersection (x, y)",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "(2.00, 4.00)"
+          }
+        ]
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {
@@ -212,6 +298,72 @@
         },
         "solution": {
           "en": "<p>For a system of two linear equations in standard form \\( Ax + By = C \\) to have no solution, the lines must be parallel (equal ratios of \\( x \\)- and \\( y \\)-coefficients, but unequal ratio of constants):</p>\\[ \\frac{k}{4} = \\frac{-6}{-3} \\neq \\frac{15}{9} \\]\\[ \\frac{k}{4} = 2 \\implies k = 8. \\]<p>Check constant ratio: \\( \\frac{15}{9} = \\frac{5}{3} \\neq 2 \\), confirming the lines never intersect. Thus, \\( k = 8 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Parallel Lines: No Solution System (m₁ = m₂, b₁ ≠ b₂)",
+          "xrange": [
+            -3,
+            5
+          ],
+          "yrange": [
+            -4,
+            8
+          ],
+          "fns": [
+            {
+              "fn": "1.5*x + 2",
+              "color": "var(--fig-indigo-2)",
+              "label": "3x - 2y = -4"
+            },
+            {
+              "fn": "1.5*x - 2",
+              "color": "var(--fig-amber)",
+              "label": "6x - 4y = 8"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 2,
+              "label": "(0, 2)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Parallel lines share the identical slope m = 1.5 but have distinct y-intercepts, producing zero points of intersection.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 4 (Synthesis) — Symmetry & Block Elimination Shortcut",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> If \\( 7x + 4y = 29 \\) and \\( 3x + 6y = 21 \\), what is the value of \\( x + y \\)?</p><p><strong>Solution:</strong> Instead of solving for \\( x \\) and \\( y \\) individually, add the two equations directly:</p>\\[ (7x + 4y) + (3x + 6y) = 29 + 21 \\implies 10x + 10y = 50. \\]<p>Divide the entire equation by 10: \\[ x + y = 5. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 4 · Synthesis</span><p>In the system of equations \\( ax + 8y = 24 \\) and \\( 6x + by = 8 \\), \\( a \\) and \\( b \\) are constants. If the system has infinitely many solutions, what is the value of \\( a + b \\)?</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>The constant ratio from the first equation to the second is \\( \\frac{24}{8} = 3 \\). For infinitely many solutions, every coefficient in the first equation must be 3 times the corresponding coefficient in the second:</p>\\[ a = 3 \\times 6 = 18, \\quad 8 = 3b \\implies b = \\frac{8}{3}. \\]\\[ a + b = 18 + \\frac{8}{3} = \\frac{62}{3}. \\]",
           "ar": null
         }
       }

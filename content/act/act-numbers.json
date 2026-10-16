@@ -43,6 +43,129 @@
       {
         "kind": "figure",
         "figure": {
+          "type": "bars",
+          "title": "Successive Percentage Multipliers: $100 Base After +25% then -20%",
+          "xlabel": "Pricing Stage",
+          "ylabel": "Value ($)",
+          "bars": [
+            {
+              "label": "Initial",
+              "value": 100
+            },
+            {
+              "label": "+25% Markup",
+              "value": 125
+            },
+            {
+              "label": "-20% Discount",
+              "value": 100,
+              "highlight": true
+            }
+          ]
+        },
+        "caption": {
+          "en": "A 25% increase followed by a 20% discount returns exactly to 100 because 1.25 × 0.80 = 1.00.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Successive Percent Multipliers",
+          "ar": null
+        },
+        "canvasId": "actNumbersCanvas",
+        "ariaLabel": {
+          "en": "Successive Percent Multiplier Explorer",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "actNumDataBtn",
+          "panelId": "actNumDataPanel",
+          "descId": "actNumDataDesc",
+          "rowsId": "actNumDataRows",
+          "caption": {
+            "en": "Successive percentage change breakdown",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "Stage",
+              "ar": null
+            },
+            {
+              "en": "Value",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "actNumP1",
+            "label": {
+              "en": "Change 1 <b>p₁ =</b>",
+              "ar": null
+            },
+            "min": -50,
+            "max": 50,
+            "value": 20,
+            "step": 5,
+            "valueDisplayId": "actNumP1V",
+            "ariaLabel": {
+              "en": "First percentage change",
+              "ar": null
+            }
+          },
+          {
+            "id": "actNumP2",
+            "label": {
+              "en": "Change 2 <b>p₂ =</b>",
+              "ar": null
+            },
+            "min": -50,
+            "max": 50,
+            "value": -20,
+            "step": 5,
+            "valueDisplayId": "actNumP2V",
+            "ariaLabel": {
+              "en": "Second percentage change",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "actNumStep1",
+            "label": {
+              "en": "After Step 1",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "120.0"
+          },
+          {
+            "id": "actNumFinal",
+            "label": {
+              "en": "Final Value",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "96.0"
+          },
+          {
+            "id": "actNumNet",
+            "label": {
+              "en": "Net Change",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "-4.0%"
+          }
+        ]
+      },
+      {
+        "kind": "figure",
+        "figure": {
           "type": "numberline",
           "min": -4,
           "max": 6,
@@ -152,6 +275,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 1.D — LCM Periodic Cycle Synchronization",
+          "ar": null
+        },
+        "body": {
+          "en": "Three beacons flash every \\(12\\), \\(18\\), and \\(30\\) seconds respectively. If they flash simultaneously at 12:00:00 PM, how many minutes pass before they next flash together?<br><br><strong>Solution:</strong> Prime factorize: \\(12 = 2^2 \\cdot 3\\), \\(18 = 2 \\cdot 3^2\\), \\(30 = 2 \\cdot 3 \\cdot 5\\).<br>\\[ \\text{LCM} = 2^2 \\cdot 3^2 \\cdot 5 = 180\\text{ seconds} = \\mathbf{3\\text{ minutes}} \\]",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>Practice 1.1:</strong> A jacket costs $120 after a 25% discount. What was the original price before the discount?",
@@ -170,6 +305,28 @@
         },
         "solution": {
           "en": "By the fundamental identity connecting greatest common factor and least common multiple:<br>\\[ \\text{GCF}(a, b) \\times \\text{LCM}(a, b) = a \\times b. \\]<br>Substitute the given values:<br>\\[ a \\times b = 6 \\times 72 = 432. \\]<br>The product is <strong>432</strong>.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "What is the greatest common factor (GCF) and least common multiple (LCM) of 24 and 36?",
+          "ar": null
+        },
+        "solution": {
+          "en": "\\(24 = 2^3 \\cdot 3\\) and \\(36 = 2^2 \\cdot 3^2\\). Thus \\(\\text{GCF} = 2^2 \\cdot 3 = \\mathbf{12}\\) and \\(\\text{LCM} = 2^3 \\cdot 3^2 = \\mathbf{72}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "A shirt is marked up by 40% and then placed on sale for 25% off. What is the net percentage increase over the original cost?",
+          "ar": null
+        },
+        "solution": {
+          "en": "Multiply scale factors: \\(1.40 \\times 0.75 = 1.05\\), which corresponds to a \\(\\mathbf{5\\%}\\) net increase.",
           "ar": null
         }
       }

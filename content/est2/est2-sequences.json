@@ -41,6 +41,146 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Sequences, Series & Complex Numbers — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Interactive Sequences, Series & Complex Numbers Lab",
+          "ar": null
+        },
+        "canvasId": "exAuto_vec_est2sequences",
+        "ariaLabel": {
+          "en": "Interactive square-lattice mathematical explorer for Sequences, Series & Complex Numbers",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "exAuto_vec_est2sequences_dataBtn",
+          "panelId": "exAuto_vec_est2sequences_dataPanel",
+          "descId": "exAuto_vec_est2sequences_dataDesc",
+          "rowsId": "exAuto_vec_est2sequences_dataRows",
+          "caption": {
+            "en": "Numerical table for Sequences, Series & Complex Numbers",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "Input / Metric",
+              "ar": null
+            },
+            {
+              "en": "Value",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "exAuto_vec_est2sequences_s0",
+            "label": {
+              "en": "Parameter <b>a =</b>",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_vec_est2sequences_v0",
+            "ariaLabel": {
+              "en": "Primary parameter a",
+              "ar": null
+            }
+          },
+          {
+            "id": "exAuto_vec_est2sequences_s1",
+            "label": {
+              "en": "Parameter <b>b =</b>",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_vec_est2sequences_v1",
+            "ariaLabel": {
+              "en": "Secondary parameter b",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "exAuto_vec_est2sequences_r0",
+            "label": {
+              "en": "Primary Metric",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "2.00"
+          },
+          {
+            "id": "exAuto_vec_est2sequences_r1",
+            "label": {
+              "en": "Secondary Metric",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "1.00"
+          }
+        ],
+        "canvas3d": {
+          "btnId": "exAuto3dBtn_vec3_est2sequences",
+          "wrapId": "exAuto3dWrap_est2sequences",
+          "hintId": "exAuto3dHint_est2sequences",
+          "btnLabel": "🧊 View Interactive 3D Model",
+          "ariaLabel": {
+            "en": "Interactive 3D visualization for Sequences, Series & Complex Numbers. Drag to rotate.",
+            "ar": null
+          }
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -101,12 +241,28 @@
         "kind": "figure",
         "figure": {
           "type": "numberline",
-          "range": [-2, 2],
-          "points": [
-            { "x": -1, "open": true, "label": "-1" },
-            { "x": 1, "open": true, "label": "1" }
+          "range": [
+            -2,
+            2
           ],
-          "shade": [[-1, 1]]
+          "points": [
+            {
+              "x": -1,
+              "open": true,
+              "label": "-1"
+            },
+            {
+              "x": 1,
+              "open": true,
+              "label": "1"
+            }
+          ],
+          "shade": [
+            [
+              -1,
+              1
+            ]
+          ]
         },
         "caption": {
           "en": "Convergence interval \\(|r| < 1\\) for an infinite geometric series. The sum to infinity \\(S_\\infty = \\frac{a_1}{1 - r}\\) converges strictly inside \\((-1, 1)\\) with open endpoints; the series diverges for \\(|r| \\ge 1\\).",
@@ -162,6 +318,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "ar": null
+        },
+        "body": {
+          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "The sum of the first \\(n\\) terms of an arithmetic sequence is given by \\(S_n = 2n^2 + 3n\\). Find the 10th term \\(a_{10}\\).",
@@ -208,7 +376,9 @@
     ]
   },
   "quizWidget": {
-    "domains": ["Sequences, Series & Complex Numbers"],
+    "domains": [
+      "Sequences, Series & Complex Numbers"
+    ],
     "enabled": true
   }
 }

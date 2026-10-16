@@ -27,6 +27,124 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "bars",
+          "title": "Probability — Frequency Distribution (2)",
+          "xlabel": "Category / Outcome",
+          "ylabel": "Frequency",
+          "bars": [
+            {
+              "label": "Q1",
+              "value": 22
+            },
+            {
+              "label": "Q2",
+              "value": 35,
+              "highlight": true
+            },
+            {
+              "label": "Q3",
+              "value": 28
+            },
+            {
+              "label": "Q4",
+              "value": 19
+            }
+          ]
+        },
+        "caption": {
+          "en": "Distribution summary comparing category frequencies and modal peak for Probability.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Interactive Probability Lab",
+          "ar": null
+        },
+        "canvasId": "exAuto_stats_est2l2probability",
+        "ariaLabel": {
+          "en": "Interactive square-lattice mathematical explorer for Probability",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "exAuto_stats_est2l2probability_dataBtn",
+          "panelId": "exAuto_stats_est2l2probability_dataPanel",
+          "descId": "exAuto_stats_est2l2probability_dataDesc",
+          "rowsId": "exAuto_stats_est2l2probability_dataRows",
+          "caption": {
+            "en": "Numerical table for Probability",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "Input / Metric",
+              "ar": null
+            },
+            {
+              "en": "Value",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "exAuto_stats_est2l2probability_s0",
+            "label": {
+              "en": "Parameter <b>a =</b>",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_stats_est2l2probability_v0",
+            "ariaLabel": {
+              "en": "Primary parameter a",
+              "ar": null
+            }
+          },
+          {
+            "id": "exAuto_stats_est2l2probability_s1",
+            "label": {
+              "en": "Parameter <b>b =</b>",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_stats_est2l2probability_v1",
+            "ariaLabel": {
+              "en": "Secondary parameter b",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "exAuto_stats_est2l2probability_r0",
+            "label": {
+              "en": "Primary Metric",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "2.00"
+          },
+          {
+            "id": "exAuto_stats_est2l2probability_r1",
+            "label": {
+              "en": "Secondary Metric",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "1.00"
+          }
+        ]
+      },
+      {
         "kind": "callout",
         "style": "example",
         "label": {
@@ -138,9 +256,36 @@
         "kind": "cards",
         "heading": "Quick reference",
         "items": [
-          {"label": {"en": "Order matters?", "ar": null}, "value": {"en": "Yes → permutation \\(P(n,r)\\); No → combination \\(\\binom{n}{r}\\)", "ar": null}},
-          {"label": {"en": "Independent events", "ar": null}, "value": {"en": "\\( P(A\\text{ and }B)=P(A)P(B) \\)", "ar": null}},
-          {"label": {"en": "Mutually exclusive", "ar": null}, "value": {"en": "\\( P(A\\text{ and }B)=0,\\ \\ P(A\\text{ or }B)=P(A)+P(B) \\)", "ar": null}}
+          {
+            "label": {
+              "en": "Order matters?",
+              "ar": null
+            },
+            "value": {
+              "en": "Yes → permutation \\(P(n,r)\\); No → combination \\(\\binom{n}{r}\\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Independent events",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( P(A\\text{ and }B)=P(A)P(B) \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Mutually exclusive",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( P(A\\text{ and }B)=0,\\ \\ P(A\\text{ or }B)=P(A)+P(B) \\)",
+              "ar": null
+            }
+          }
         ]
       },
       {
@@ -169,6 +314,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "A committee of 4 people is to be selected from a group of 6 men and 5 women. What is the probability that the committee consists of exactly 2 men and 2 women?",
@@ -178,11 +335,46 @@
           "en": "1. Find the total number of ways to choose 4 people from 11: \\[ \\binom{11}{4} = \\frac{11 \\times 10 \\times 9 \\times 8}{4 \\times 3 \\times 2 \\times 1} = 330. \\]<br>2. Find the number of ways to choose 2 men from 6 and 2 women from 5: \\[ \\binom{6}{2} \\times \\binom{5}{2} = 15 \\times 10 = 150. \\]<br>3. Compute the probability: \\[ P = \\frac{150}{330} = \\frac{15}{33} = \\frac{5}{11} \\approx 0.4545. \\]",
           "ar": null
         }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Probability · Practice 2] If the governing relation for this system is \\( g(t) = 4t + 4 \\), evaluate \\( g(6) \\) and find the inverse input \\( t \\) when \\( g(t) = 32 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). Setting \\( 4t + 4 = 32 \\) gives \\( 4t = 28 \\implies t = \\mathbf{7} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Probability · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Probability · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Probability"],
+    "domains": [
+      "Probability"
+    ],
     "enabled": true
   }
 }

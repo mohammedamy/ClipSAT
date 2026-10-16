@@ -41,6 +41,54 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Circle (x - 1)² + (y - 1)² = 9 & Tangent Line y = 4",
+          "xrange": [
+            -4,
+            6
+          ],
+          "yrange": [
+            -3,
+            6
+          ],
+          "fns": [
+            {
+              "fn": "1 + Math.sqrt(Math.max(0, 9 - (x - 1)*(x - 1)))",
+              "color": "var(--fig-indigo)",
+              "label": "Circle r = 3"
+            },
+            {
+              "fn": "1 - Math.sqrt(Math.max(0, 9 - (x - 1)*(x - 1)))",
+              "color": "var(--fig-indigo)"
+            },
+            {
+              "fn": "4",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent y = 4"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 1,
+              "label": "Center (1,1)"
+            },
+            {
+              "x": 1,
+              "y": 4,
+              "label": "Tangency (1,4)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "A circle centered at (1, 1) with radius 3 reaches its maximum y-value at (1, 1 + 3) = (1, 4).",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "thm",
         "label": {
@@ -156,6 +204,16 @@
         "note": {
           "en": "Parallel lines share a slope; perpendicular slopes multiply to \\( -1 \\).",
           "ar": null
+        },
+        "canvas3d": {
+          "btnId": "exAuto3dBtn_solid_actcoordgeo",
+          "wrapId": "exAuto3dWrap_actcoordgeo",
+          "hintId": "exAuto3dHint_actcoordgeo",
+          "btnLabel": "🧊 View Interactive 3D Model",
+          "ariaLabel": {
+            "en": "Interactive 3D visualization for Coordinate Geometry. Drag to rotate.",
+            "ar": null
+          }
         }
       },
       {
@@ -294,6 +352,30 @@
         },
         "body": {
           "en": "A circle in the standard \\(xy\\)-coordinate plane has equation \\(x^2 + y^2 - 6x + 8y - 11 = 0\\). What are the coordinates of its center and its area in terms of \\(\\pi\\)?<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Rearrange and group the \\(x\\) and \\(y\\) terms, moving the constant to the right side:<br>\\[ (x^2 - 6x) + (y^2 + 8y) = 11 \\]</li><li>Complete the square for each variable:<br>For \\(x\\): \\(\\left(\\frac{-6}{2}\\right)^2 = (-3)^2 = 9\\).<br>For \\(y\\): \\(\\left(\\frac{8}{2}\\right)^2 = 4^2 = 16\\).<br>Add \\(9 + 16 = 25\\) to both sides of the equation:<br>\\[ (x^2 - 6x + 9) + (y^2 + 8y + 16) = 11 + 9 + 16 \\]</li><li>Factor the perfect square trinomials:<br>\\[ (x - 3)^2 + (y + 4)^2 = 36 \\]</li><li>Identify parameters: Center \\((h, k) = (3, -4)\\) and radius \\(r = \\sqrt{36} = 6\\).</li><li>Compute the circle's area:<br>\\[ \\text{Area} = \\pi r^2 = \\pi (6^2) = 36\\pi \\]</li></ol>The center is \\(\\mathbf{(3, -4)}\\) and the area is \\(\\mathbf{36\\pi}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 3.C — Completing the Square for a Circle Equation",
+          "ar": null
+        },
+        "body": {
+          "en": "Find the center and radius of \\(x^2 + y^2 + 8x - 6y = 24\\).<br><br><strong>Solution:</strong> Group and add half-coefficients squared:<br>\\[ (x^2 + 8x + 16) + (y^2 - 6y + 9) = 24 + 16 + 9 = 49 \\]<br>\\[ (x + 4)^2 + (y - 3)^2 = 7^2 \\implies \\text{Center } \\mathbf{(-4, 3)}, \\text{ Radius } \\mathbf{7} \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 3.D — Reflecting Points Across y = x and y = -x",
+          "ar": null
+        },
+        "body": {
+          "en": "Point \\(P(-3, 7)\\) is reflected across the line \\(y = x\\) to form \\(P'\\), and then reflected across the \\(x\\)-axis to form \\(P''\\). Find \\(P''\\).<br><br><strong>Solution:</strong> Reflection across \\(y = x\\) swaps coordinates: \\(P' = (7, -3)\\). Reflection across the \\(x\\)-axis negates \\(y\\): \\(P'' = \\mathbf{(7, 3)}\\).",
           "ar": null
         }
       },

@@ -46,6 +46,50 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Functions — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
         "kind": "explorer",
         "canvasId": "ibslTransCanvas",
         "title": {
@@ -222,14 +266,31 @@
         "figure": {
           "type": "fn",
           "fns": [
-            { "fn": "(x - 2)^2 - 3", "label": "f(x) = (x-2)^2 - 3" }
+            {
+              "fn": "(x - 2)^2 - 3",
+              "label": "f(x) = (x-2)^2 - 3"
+            }
           ],
           "points": [
-            { "x": 2, "y": -3, "label": "Vertex (2, -3)" },
-            { "x": 0, "y": 1, "label": "y-int (0, 1)" }
+            {
+              "x": 2,
+              "y": -3,
+              "label": "Vertex (2, -3)"
+            },
+            {
+              "x": 0,
+              "y": 1,
+              "label": "y-int (0, 1)"
+            }
           ],
-          "xrange": [-2, 6],
-          "yrange": [-4, 6]
+          "xrange": [
+            -2,
+            6
+          ],
+          "yrange": [
+            -4,
+            6
+          ]
         }
       },
       {
@@ -241,6 +302,30 @@
         },
         "body": {
           "en": "<strong>Horizontal Transformation Factoring:</strong> For \\(y = f(2x - 6)\\), always factor the argument as \\(f(2(x - 3))\\). This represents a horizontal compression by factor \\(\\frac{1}{2}\\) followed by a translation right by 3 units (NOT 6).<br><br><strong>Composite Evaluation Order:</strong> \\((f \\circ g)(x) = f(g(x))\\) evaluates \\(g\\) first, then substitutes into \\(f\\). Never confuse \\((f \\circ g)(x)\\) with the algebraic product \\(f(x) \\cdot g(x)\\).<br><br><strong>Domain Restriction for Inverses:</strong> A quadratic \\(f(x) = (x-2)^2 + 1\\) has no inverse on \\(\\mathbb{R}\\) because it fails the horizontal line test. You must restrict the domain to \\(x \\ge 2\\) (or \\(x \\le 2\\)) before writing \\(f^{-1}(x) = 2 + \\sqrt{x - 1}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
           "ar": null
         }
       },
@@ -263,6 +348,28 @@
         },
         "solution": {
           "en": "1. Horizontal stretch by factor 3: \\(x \\mapsto \\frac{x}{3}\\), giving \\(y = f\\left(\\frac{x}{3}\\right)\\).<br>2. Reflection in \\(y\\)-axis: \\(x \\mapsto -x\\), giving \\(y = f\\left(-\\frac{x}{3}\\right)\\).<br>3. Translation by \\(\\begin{pmatrix} 4 \\\\ -5 \\end{pmatrix}\\): replace \\(x\\) by \\(x - 4\\) and subtract 5: \\[ g(x) = f\\left( -\\frac{x - 4}{3} \\right) - 5 = f\\left( \\frac{4 - x}{3} \\right) - 5. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Functions · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Functions · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
           "ar": null
         }
       }

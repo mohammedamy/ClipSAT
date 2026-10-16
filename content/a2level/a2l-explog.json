@@ -41,6 +41,50 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Exponentials &amp; Logarithms — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
         "kind": "text",
         "body": {
           "en": "The curve is \\( y=e^{kx} \\): a positive \\( k \\) grows, a negative \\( k \\) decays. Slide \\( k \\) through zero to see it flip.",
@@ -191,6 +235,30 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Given \\(\\ln y = 2\\ln x + \\ln 3\\), express \\(y\\) in terms of \\(x\\). Hence sketch the graph.",
@@ -206,7 +274,28 @@
         "figure": {
           "type": "scatter",
           "title": "Log-Linear Reduction: ln(y) vs ln(x)",
-          "pts": [[0, 1.2], [1, 2.6], [2, 4.0], [3, 5.4], [4, 6.8]],
+          "pts": [
+            [
+              0,
+              1.2
+            ],
+            [
+              1,
+              2.6
+            ],
+            [
+              2,
+              4
+            ],
+            [
+              3,
+              5.4
+            ],
+            [
+              4,
+              6.8
+            ]
+          ],
           "xlabel": "ln(x)",
           "ylabel": "ln(y)"
         },
@@ -237,11 +326,35 @@
           "en": "<p>Take natural logarithms of \\(y = a x^b\\):</p>\\[\\ln y = \\ln a + b\\ln x\\]<p>This is a linear equation \\(Y = mX + c\\) with \\(Y = \\ln y\\), \\(X = \\ln x\\), gradient \\(m = b\\), and intercept \\(c = \\ln a\\).</p><p>Gradient:</p>\\[b = \\frac{6.80 - 1.20}{4 - 0} = \\frac{5.60}{4} = 1.40\\]<p>Vertical intercept gives \\(\\ln a = 1.20\\):</p>\\[a = e^{1.20} \\approx 3.32\\]<p>Therefore, \\(a = 3.32\\) and \\(b = 1.40\\).</p>",
           "ar": null
         }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Exponentials &amp; Logarithms · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Exponentials &amp; Logarithms · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Exponentials & Logarithms"],
+    "domains": [
+      "Exponentials & Logarithms"
+    ],
     "enabled": true
   }
 }

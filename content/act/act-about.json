@@ -27,6 +27,134 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "ACT 20-20-20 Pacing Curve: Cumulative Minutes vs Question Number",
+          "xrange": [
+            0,
+            60
+          ],
+          "yrange": [
+            0,
+            65
+          ],
+          "fns": [
+            {
+              "fn": "x",
+              "color": "var(--fig-indigo-2)",
+              "dash": "4,4",
+              "label": "1 min/Q uniform"
+            },
+            {
+              "fn": "0.85*x + 0.0025*x*x",
+              "color": "var(--fig-amber)",
+              "label": "20-20-20 Optimal Pacing"
+            }
+          ],
+          "points": [
+            {
+              "x": 20,
+              "y": 15,
+              "label": "Q20 (15 min)"
+            },
+            {
+              "x": 40,
+              "y": 35,
+              "label": "Q40 (35 min)"
+            },
+            {
+              "x": 60,
+              "y": 60,
+              "label": "Q60 (60 min)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "The 20-20-20 ACT pacing rule banks 5 minutes on the first 20 questions to spend on the hardest final 20 questions.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · ACT 20-20-20 Pacing Simulator",
+          "ar": null
+        },
+        "canvasId": "actAboutCanvas",
+        "ariaLabel": {
+          "en": "ACT Pacing Curve Explorer across 60 questions",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "actAboutDataBtn",
+          "panelId": "actAboutDataPanel",
+          "descId": "actAboutDataDesc",
+          "rowsId": "actAboutDataRows",
+          "caption": {
+            "en": "ACT 20-20-20 time budget checkpoints",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "Question",
+              "ar": null
+            },
+            {
+              "en": "Target Elapsed",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "actAboutQ",
+            "label": {
+              "en": "Question <b># =</b>",
+              "ar": null
+            },
+            "min": 1,
+            "max": 60,
+            "value": 30,
+            "step": 1,
+            "valueDisplayId": "actAboutQV",
+            "ariaLabel": {
+              "en": "Question number",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "actAboutTier",
+            "label": {
+              "en": "Difficulty Tier",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "Tier 2 (Medium · 60s/Q)"
+          },
+          {
+            "id": "actAboutTime",
+            "label": {
+              "en": "Target Elapsed",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "25.0 min elapsed"
+          },
+          {
+            "id": "actAboutRem",
+            "label": {
+              "en": "Target Remaining",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "35.0 min left"
+          }
+        ]
+      },
+      {
         "kind": "callout",
         "style": "note",
         "label": {
@@ -129,14 +257,80 @@
           "type": "bar",
           "title": "ACT Math Reporting Category Weighting (%)",
           "data": [
-            { "label": "Algebra", "val": 19 },
-            { "label": "Geometry", "val": 19 },
-            { "label": "Functions", "val": 19 },
-            { "label": "Statistics", "val": 13 },
-            { "label": "Number & Quantity", "val": 10 },
-            { "label": "Essential Skills", "val": 20 }
+            {
+              "label": "Algebra",
+              "val": 19
+            },
+            {
+              "label": "Geometry",
+              "val": 19
+            },
+            {
+              "label": "Functions",
+              "val": 19
+            },
+            {
+              "label": "Statistics",
+              "val": 13
+            },
+            {
+              "label": "Number & Quantity",
+              "val": 10
+            },
+            {
+              "label": "Essential Skills",
+              "val": 20
+            }
           ],
           "ylabel": "Approximate Percentage of Test (%)"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 0.A — Back-Solving from the Middle Choice (C / H)",
+          "ar": null
+        },
+        "body": {
+          "en": "When an ACT algebra word problem offers five numerical choices in ascending order \\((A\\text{ to }E)\\), testing choice \\(C\\) first eliminates half the remaining choices immediately if \\(C\\) is too small or too large.<br><br><strong>Example:</strong> If \\(\\sqrt{2x + 7} = x - 4\\), choices are \\(A)\\;1, B)\\;5, C)\\;9, D)\\;11, E)\\;15\\).<br>Test \\(C (x=9)\\): \\(\\sqrt{2(9)+7} = \\sqrt{25} = 5\\), and \\(9 - 4 = 5\\). Matches immediately!",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 0.B — Plugging In Convenient Numbers for Variables",
+          "ar": null
+        },
+        "body": {
+          "en": "If \\(x\\) is an odd integer, which expression must be an even integer? Choose \\(x = 3\\) and evaluate each choice in seconds rather than expanding algebraic identities.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 0.C — Allocating Time Across Multi-Question Data Sets",
+          "ar": null
+        },
+        "body": {
+          "en": "Every ACT Math section contains a 3-question stem sharing a table or diagram (usually around Q32–Q34). Spend 20 seconds reading the stem headings once, then solve all 3 questions in 2.5 minutes total.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 0.D — Eliminating Scale-Trap Distractors in Late Geometry",
+          "ar": null
+        },
+        "body": {
+          "en": "On Q50–Q60, when a diagram asks for a length in a composite figure with legs \\(6\\) and \\(8\\), eliminate any choice equal to \\(6+8=14\\) and check the Pythagorean hypotenuse \\(\\sqrt{6^2+8^2}=10\\).",
+          "ar": null
         }
       },
       {
@@ -149,11 +343,53 @@
           "en": "\\(\\text{Time spent so far} = 10 + 16 = 26\\text{ minutes}\\). Leaving 3 minutes for review leaves \\(50 - 26 - 3 = 21\\text{ minutes}\\) for the final 15 questions. \\(\\text{Time per question} = \\frac{21 \\times 60\\text{ seconds}}{15\\text{ questions}} = \\frac{1260}{15} = 84\\text{ seconds per question}\\).",
           "ar": null
         }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Under the 20-20-20 pacing strategy, how many minutes should remain on the 60-minute clock when you finish Question 20?",
+          "ar": null
+        },
+        "solution": {
+          "en": "You spend 15 minutes on Questions 1–20, leaving \\(60 - 15 = \\mathbf{45\\text{ minutes}}\\) remaining.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Does the ACT Math test penalize wrong guesses, or should every single question be answered before time expires?",
+          "ar": null
+        },
+        "solution": {
+          "en": "There is <strong>no guessing penalty</strong> on the ACT; raw score equals the count of correct answers out of 60. Never leave a bubble blank.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Why should you test Choice C (or H) first when back-solving numerical answer choices on the ACT?",
+          "ar": null
+        },
+        "solution": {
+          "en": "ACT numerical choices are ordered from least to greatest (or greatest to least). Testing the middle choice tells you whether to move higher or lower, requiring at most 2 tests.",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Coordinate Geometry", "Elementary & Intermediate Algebra", "Functions & Graphs", "Matrices, Vectors & Complex Numbers", "Numbers, Percents & Ratios", "Plane Geometry", "Statistics & Probability", "Trigonometry"],
+    "domains": [
+      "Coordinate Geometry",
+      "Elementary & Intermediate Algebra",
+      "Functions & Graphs",
+      "Matrices, Vectors & Complex Numbers",
+      "Numbers, Percents & Ratios",
+      "Plane Geometry",
+      "Statistics & Probability",
+      "Trigonometry"
+    ],
     "enabled": true
   }
 }

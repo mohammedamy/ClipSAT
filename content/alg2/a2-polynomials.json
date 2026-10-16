@@ -41,6 +41,50 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Polynomial Functions — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
         "kind": "text",
         "body": {
           "en": "Change the degree and the leading coefficient below. Watch how the arms of the graph flip with the sign of \\( a \\), and how an even degree sends both arms the same way while an odd degree sends them opposite ways.",
@@ -217,14 +261,32 @@
         "figure": {
           "type": "fn",
           "title": "Cubic Polynomial: p(x) = (x - 2)²(x + 1) with Double Root",
-          "xrange": [-3, 4],
-          "yrange": [-5, 8],
+          "xrange": [
+            -3,
+            4
+          ],
+          "yrange": [
+            -5,
+            8
+          ],
           "fns": [
-            { "expr": "(x-2)^2 * (x+1)", "color": "var(--fig-blue)", "label": "p(x) = (x - 2)²(x + 1)" }
+            {
+              "expr": "(x-2)^2 * (x+1)",
+              "color": "var(--fig-blue)",
+              "label": "p(x) = (x - 2)²(x + 1)"
+            }
           ],
           "points": [
-            { "x": -1, "y": 0, "label": "Crosses at x = -1" },
-            { "x": 2, "y": 0, "label": "Tangent at x = 2 (multiplicity 2)" }
+            {
+              "x": -1,
+              "y": 0,
+              "label": "Crosses at x = -1"
+            },
+            {
+              "x": 2,
+              "y": 0,
+              "label": "Tangent at x = 2 (multiplicity 2)"
+            }
           ]
         },
         "caption": {
@@ -241,6 +303,30 @@
         },
         "body": {
           "en": "<ul><li><strong>Remainder Theorem Evaluation Sign:</strong> When dividing by \\((x - c)\\), the remainder is \\(f(c)\\). Notice the sign flip: dividing by \\((x + 3)\\) requires evaluating \\(f(-3)\\), not \\(f(3)\\).</li><li><strong>Root Multiplicity and Axis Crossing:</strong> A root with <em>odd multiplicity</em> (e.g. 1, 3) crosses the \\(x\\)-axis; a root with <em>even multiplicity</em> (e.g. 2, 4) is tangent to the axis (touches and rebounds without crossing).</li><li><strong>Missing Degree Terms in Long/Synthetic Division:</strong> Always check that exponents decrease consecutively: \\(x^4, x^3, x^2, x^1, x^0\\). If a term is missing (e.g. \\(x^3 - 7x + 6\\)), you must insert a \\(0x^2\\) placeholder in the division tableau.</li><li><strong>Rational Root Theorem List:</strong> All possible rational zeros must have the form \\(\\pm p/q\\), where \\(p\\) divides the constant term \\(a_0\\) and \\(q\\) divides the leading coefficient \\(a_n\\). Never invert this ratio!</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
           "ar": null
         }
       },
@@ -265,10 +351,34 @@
           "en": "<p>By the Rational Root Theorem, possible rational roots are \\(\\pm\\{1, 3\\}/\\{1, 2\\} = \\pm\\{1, 3, 1/2, 3/2\\}\\).</p><p>Test \\(x = 1\\): \\[P(1) = 2(1)^3 + 3(1)^2 - 8(1) + 3 = 2 + 3 - 8 + 3 = 0. \\quad \\checkmark\\]</p><p>So \\((x - 1)\\) is a factor. Divide \\(P(x)\\) by \\((x - 1)\\) using synthetic division:</p>\\[2x^3 + 3x^2 - 8x + 3 = (x - 1)(2x^2 + 5x - 3).\\]<p>Factor the remaining quadratic:</p>\\[2x^2 + 5x - 3 = (2x - 1)(x + 3).\\]<p>Setting each factor to zero yields the complete set of roots: \\[x = 1, \\quad x = \\frac{1}{2}, \\quad x = -3.\\]</p>",
           "ar": null
         }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Polynomial Functions · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Polynomial Functions · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Polynomial Functions"]
+    "domains": [
+      "Polynomial Functions"
+    ]
   }
 }

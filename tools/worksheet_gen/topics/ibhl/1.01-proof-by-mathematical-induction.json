@@ -16,7 +16,33 @@
             "Prove $P(k+1) \\Rightarrow P(k)$ starting from an arbitrary large integer"
           ],
           "correct": 0,
-          "answer": "The Principle of Mathematical Induction requires establishing the base step (verify $P(1)$), stating the induction hypothesis (assume $P(k)$ is true), showing that $P(k) \\Rightarrow P(k+1)$, and stating the formal conclusion."
+          "answer": "The Principle of Mathematical Induction requires establishing the base step (verify $P(1)$), stating the induction hypothesis (assume $P(k)$ is true), showing that $P(k) \\Rightarrow P(k+1)$, and stating the formal conclusion.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*x**2 - 2*x + 1",
+              "0.5*x + 1"
+            ],
+            "xmin": -2,
+            "xmax": 6,
+            "ymin": -2,
+            "ymax": 7,
+            "points": [
+              [
+                0,
+                1
+              ],
+              [
+                2,
+                -1
+              ],
+              [
+                5,
+                3.5
+              ]
+            ],
+            "width": 145
+          }
         },
         {
           "q": "If the base case of an induction proof is verified at $n = 4$, for which set of integers is $P(n)$ established (assuming the inductive step holds for all $k \\geq 4$)?",
@@ -65,7 +91,29 @@
             "$(k + 2)^2$"
           ],
           "correct": 0,
-          "answer": "$k^2 + (2k + 2 - 1) = k^2 + 2k + 1 = (k + 1)^2$, completing the induction step."
+          "answer": "$k^2 + (2k + 2 - 1) = k^2 + 2k + 1 = (k + 1)^2$, completing the induction step.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "abs(x - 1) - 1",
+              "0.5*x + 0.5"
+            ],
+            "xmin": -3,
+            "xmax": 5,
+            "ymin": -2,
+            "ymax": 4,
+            "points": [
+              [
+                1,
+                -1
+              ],
+              [
+                3,
+                1
+              ]
+            ],
+            "width": 145
+          }
         },
         {
           "q": "Consider the geometric series $\\sum_{r=1}^n 2^{r-1} = 2^n - 1$. What is the base case check for $n = 1$?",
@@ -114,7 +162,33 @@
             "$3^2 - 1 = 9$"
           ],
           "correct": 0,
-          "answer": "At $n = 1$: $3^{2(1)} - 1 = 9 - 1 = 8$, which is divisible by 8 with quotient 1."
+          "answer": "At $n = 1$: $3^{2(1)} - 1 = 9 - 1 = 8$, which is divisible by 8 with quotient 1.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-(x - 2)**2 + 5",
+              "x - 1"
+            ],
+            "xmin": -1,
+            "xmax": 5,
+            "ymin": -2,
+            "ymax": 6,
+            "points": [
+              [
+                2,
+                5
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                3,
+                4
+              ]
+            ],
+            "width": 145
+          }
         }
       ]
     },
@@ -130,7 +204,29 @@
             "$(x + k + 1)x e^x$"
           ],
           "correct": 0,
-          "answer": "By the product rule: $\\frac{d}{dx}[(x + k)e^x] = \\frac{d}{dx}(x + k) \\cdot e^x + (x + k) \\cdot e^x = 1 \\cdot e^x + (x + k)e^x = (x + k + 1)e^x$."
+          "answer": "By the product rule: $\\frac{d}{dx}[(x + k)e^x] = \\frac{d}{dx}(x + k) \\cdot e^x + (x + k) \\cdot e^x = 1 \\cdot e^x + (x + k)e^x = (x + k + 1)e^x$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "1.5*x - 1",
+              "-0.75*x + 3.5"
+            ],
+            "xmin": -2,
+            "xmax": 5,
+            "ymin": -3,
+            "ymax": 6,
+            "points": [
+              [
+                2,
+                2
+              ],
+              [
+                0,
+                -1
+              ]
+            ],
+            "width": 145
+          }
         },
         {
           "q": "If $A = [[1, 1], [0, 1]]$, prove by induction that $A^n = [[1, n], [0, 1]]$. What is the matrix product $A^k \\cdot A$?",

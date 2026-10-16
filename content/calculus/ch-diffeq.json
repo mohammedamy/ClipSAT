@@ -27,6 +27,50 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Differential Equations — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "thm",
         "label": {
@@ -59,6 +103,18 @@
         },
         "body": {
           "en": "<p>Solve the initial value problem \\(\\displaystyle \\frac{dy}{dx} = 2x(y^2 + 1)\\) with initial condition \\(y(0) = 1\\).</p><p><strong>Step 1: Separate variables.</strong></p>\\[ \\frac{1}{y^2 + 1}\\,dy = 2x\\,dx \\]<p><strong>Step 2: Integrate both sides.</strong></p>\\[ \\int \\frac{1}{y^2 + 1}\\,dy = \\int 2x\\,dx \\implies \\arctan(y) = x^2 + C \\]<p><strong>Step 3: Apply the initial condition to find \\(C\\).</strong><br>Substitute \\(x = 0, y = 1\\):</p>\\[ \\arctan(1) = 0^2 + C \\implies C = \\frac{\\pi}{4} \\]<p><strong>Step 4: Solve explicitly for \\(y\\).</strong></p>\\[ \\arctan(y) = x^2 + \\frac{\\pi}{4} \\implies y(x) = \\tan\\left( x^2 + \\frac{\\pi}{4} \\right) \\]<p><em>Domain of validity:</em> The tangent argument must satisfy \\(-\\frac{\\pi}{2} < x^2 + \\frac{\\pi}{4} < \\frac{\\pi}{2}\\), which requires \\(x^2 < \\frac{\\pi}{4} \\implies |x| < \\frac{\\sqrt{\\pi}}{2}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "ar": null
+        },
+        "body": {
+          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
           "ar": null
         }
       },
@@ -208,9 +264,18 @@
           "type": "slope_field",
           "title": "dy/dx = x - y",
           "fn": "x - y",
-          "xrange": [-3, 3],
-          "yrange": [-3, 3],
-          "solution": { "x0": 0, "y0": 1 }
+          "xrange": [
+            -3,
+            3
+          ],
+          "yrange": [
+            -3,
+            3
+          ],
+          "solution": {
+            "x0": 0,
+            "y0": 1
+          }
         }
       },
       {
@@ -327,6 +392,17 @@
         },
         "solution": {
           "en": "Rate of change of salt: \\(\\frac{dS}{dt} = \\text{Rate In} - \\text{Rate Out}\\).<br>\\(\\text{Rate In} = (0.5\\text{ kg/L}) \\times (4\\text{ L/min}) = 2\\text{ kg/min}\\).<br>Since volume remains constant at 100 L, salt concentration is \\(S(t)/100\\).<br>\\(\\text{Rate Out} = \\left(\\frac{S(t)}{100}\\text{ kg/L}\\right) \\times (4\\text{ L/min}) = \\frac{4S}{100} = 0.04S\\text{ kg/min}\\).<br>Set up the linear ODE:<br>\\[ \\frac{dS}{dt} = 2 - 0.04S = -0.04(S - 50) \\]<br>Separate variables:<br>\\[ \\frac{dS}{S - 50} = -0.04\\,dt \\implies \\ln|S - 50| = -0.04t + C \\implies S - 50 = A e^{-0.04t} \\]<br>Initial condition: initially pure water, so \\(S(0) = 0\\):<br>\\[ 0 - 50 = A e^0 \\implies A = -50 \\]<br>Thus, \\(S(t) = 50(1 - e^{-0.04t})\\) kg.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Differential Equations · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
           "ar": null
         }
       }

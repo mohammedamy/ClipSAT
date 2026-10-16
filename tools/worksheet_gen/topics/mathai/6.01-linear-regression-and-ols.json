@@ -16,7 +16,33 @@
             "$-2$"
           ],
           "correct": 0,
-          "answer": "$\\hat{y} = 3.5(4) + 12 = 14 + 12 = 26$. Residual $e = 30 - 26 = +4$."
+          "answer": "$\\hat{y} = 3.5(4) + 12 = 14 + 12 = 26$. Residual $e = 30 - 26 = +4$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*x**2 - 2*x + 1",
+              "0.5*x + 1"
+            ],
+            "xmin": -2,
+            "xmax": 6,
+            "ymin": -2,
+            "ymax": 7,
+            "points": [
+              [
+                0,
+                1
+              ],
+              [
+                2,
+                -1
+              ],
+              [
+                5,
+                3.5
+              ]
+            ],
+            "width": 145
+          }
         },
         {
           "q": "What is the mathematical condition guaranteed by the OLS fit regarding the sum of all residuals $\\sum_{i=1}^n e_i$?",
@@ -65,7 +91,29 @@
             "$4.0$"
           ],
           "correct": 0,
-          "answer": "$\\hat{\\beta}_1 = r \\frac{\\sigma_y}{\\sigma_x} = 0.8 \\left(\\frac{5}{2}\\right) = 0.8(2.5) = 2.0$."
+          "answer": "$\\hat{\\beta}_1 = r \\frac{\\sigma_y}{\\sigma_x} = 0.8 \\left(\\frac{5}{2}\\right) = 0.8(2.5) = 2.0$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "abs(x - 1) - 1",
+              "0.5*x + 0.5"
+            ],
+            "xmin": -3,
+            "xmax": 5,
+            "ymin": -2,
+            "ymax": 4,
+            "points": [
+              [
+                1,
+                -1
+              ],
+              [
+                3,
+                1
+              ]
+            ],
+            "width": 145
+          }
         },
         {
           "q": "If all $x$ values in a dataset are scaled by a factor of $10$, how does the OLS regression slope change?",
@@ -114,7 +162,33 @@
             "It normalizes features to zero mean"
           ],
           "correct": 0,
-          "answer": "$\\mathbf{H}$ satisfies $\\mathbf{H}^2 = \\mathbf{H}$ (idempotent) and $\\mathbf{H}^T = \\mathbf{H}$ (symmetric), the definition of orthogonal projection."
+          "answer": "$\\mathbf{H}$ satisfies $\\mathbf{H}^2 = \\mathbf{H}$ (idempotent) and $\\mathbf{H}^T = \\mathbf{H}$ (symmetric), the definition of orthogonal projection.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-(x - 2)**2 + 5",
+              "x - 1"
+            ],
+            "xmin": -1,
+            "xmax": 5,
+            "ymin": -2,
+            "ymax": 6,
+            "points": [
+              [
+                2,
+                5
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                3,
+                4
+              ]
+            ],
+            "width": 145
+          }
         }
       ]
     },
@@ -130,7 +204,29 @@
             "$0.80$"
           ],
           "correct": 0,
-          "answer": "$R^2 = 1 - \\frac{\\text{SSE}}{\\text{SST}} = 1 - \\frac{25}{100} = 0.75$."
+          "answer": "$R^2 = 1 - \\frac{\\text{SSE}}{\\text{SST}} = 1 - \\frac{25}{100} = 0.75$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "1.5*x - 1",
+              "-0.75*x + 3.5"
+            ],
+            "xmin": -2,
+            "xmax": 5,
+            "ymin": -3,
+            "ymax": 6,
+            "points": [
+              [
+                2,
+                2
+              ],
+              [
+                0,
+                -1
+              ]
+            ],
+            "width": 145
+          }
         },
         {
           "q": "How does Ridge regression ($L_2$ penalty) resolve multicollinearity when $\\mathbf{X}^T\\mathbf{X}$ is ill-conditioned?",

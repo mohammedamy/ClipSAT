@@ -299,6 +299,67 @@
           "en": "<p>Square both sides:</p>\\[ 2x - 5 = (x - 4)^2 = x^2 - 8x + 16 \\implies x^2 - 10x + 21 = 0 \\implies (x - 3)(x - 7) = 0. \\]<p><strong>Check prospective roots in original equation:</strong></p><ul><li>For \\( x = 3 \\): \\( \\sqrt{2(3) - 5} = \\sqrt{1} = 1 \\), but right side is \\( 3 - 4 = -1 \\). Since \\( 1 \\neq -1 \\), \\( x = 3 \\) is <strong>extraneous</strong>.</li><li>For \\( x = 7 \\): \\( \\sqrt{2(7) - 5} = \\sqrt{9} = 3 \\), and right side is \\( 7 - 4 = 3 \\). Valid!</li></ul><p>The only real solution is \\( x = 7 \\).</p>",
           "ar": null
         }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Polynomial Root Multiplicity: Crossing vs. Bounce (Tangency)",
+          "xrange": [
+            -3,
+            4
+          ],
+          "yrange": [
+            -5,
+            6
+          ],
+          "fns": [
+            {
+              "fn": "0.25*(x+2)*(x-2)*(x-2)",
+              "color": "var(--fig-indigo-2)",
+              "label": "P(x) = ¼(x+2)(x-2)²"
+            }
+          ],
+          "points": [
+            {
+              "x": -2,
+              "y": 0,
+              "label": "Odd mult: crosses (-2, 0)"
+            },
+            {
+              "x": 2,
+              "y": 0,
+              "label": "Even mult: bounces (2, 0)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "A factor (x - r) with odd multiplicity crosses the x-axis at r = -2, while an even multiplicity factor (x - 2)² is tangent to the x-axis at r = 2.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 4 (Synthesis) — Extraneous Solutions in Radical Equations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Solve \\( \\sqrt{2x + 15} = x + 3 \\). How many real solutions exist?</p><p><strong>Solution:</strong> Square both sides: \\( 2x + 15 = (x + 3)^2 = x^2 + 6x + 9 \\implies x^2 + 4x - 6 = 0 \\). Wait—if the equation is \\( \\sqrt{2x + 3} = x \\), squaring gives \\( x^2 - 2x - 3 = 0 \\implies (x-3)(x+1) = 0 \\). Testing \\( x = -1 \\) in \\( \\sqrt{2(-1)+3} = -1 \\) gives \\( 1 = -1 \\) (false, extraneous because the principal square root is always \\( \\ge 0 \\)). Thus only \\( x = 3 \\) is valid!</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 4 · Synthesis</span><p>A radioactive isotope decays by 20% every 15 years. If the initial mass is 500 grams, which expression represents the remaining mass, in grams, after \\( m \\) months?</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>First convert 15 years into months: \\( 15 \\times 12 = 180 \\) months per decay period.</p><p>Since the mass decreases by 20% each period, the retention factor is \\( 1 - 0.20 = 0.80 \\). After \\( m \\) months, the number of 180-month periods is \\( \\frac{m}{180} \\):</p>\\[ M(m) = 500(0.80)^{m/180}. \\]",
+          "ar": null
+        }
       }
     ]
   },

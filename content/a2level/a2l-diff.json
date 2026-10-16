@@ -41,6 +41,50 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Differentiation — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
         "kind": "text",
         "body": {
           "en": "Slide the point along \\( y=x^{3}-3x \\). The amber line is the tangent; its gradient is \\( 3x^{2}-3 \\).",
@@ -186,6 +230,30 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example C — Instantaneous Rate of Change & Tangent Line",
+          "ar": null
+        },
+        "body": {
+          "en": "Let \\( f(x) = 4x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(9) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 12x^2 - 2x \\).</li><li>Substitute \\( x = 9 \\): \\( f'(9) = 12(9)^2 - 2(9) = 972 - 18 = \\mathbf{954} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "ar": null
+        },
+        "body": {
+          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "A curve is defined parametrically by \\(x=t^2+1\\), \\(y=2t^3-3t\\). Find \\(\\dfrac{dy}{dx}\\) in terms of \\(t\\) and the value at \\(t=1\\).",
@@ -201,15 +269,36 @@
         "figure": {
           "type": "fn",
           "fns": [
-            { "fn": "x^3 - 3*x", "label": "y = x^3 - 3x" }
+            {
+              "fn": "x^3 - 3*x",
+              "label": "y = x^3 - 3x"
+            }
           ],
           "points": [
-            { "x": -1, "y": 2, "label": "Max (-1, 2)" },
-            { "x": 1, "y": -2, "label": "Min (1, -2)" },
-            { "x": 0, "y": 0, "label": "Inflection (0, 0)" }
+            {
+              "x": -1,
+              "y": 2,
+              "label": "Max (-1, 2)"
+            },
+            {
+              "x": 1,
+              "y": -2,
+              "label": "Min (1, -2)"
+            },
+            {
+              "x": 0,
+              "y": 0,
+              "label": "Inflection (0, 0)"
+            }
           ],
-          "xrange": [-3, 3],
-          "yrange": [-4, 4]
+          "xrange": [
+            -3,
+            3
+          ],
+          "yrange": [
+            -4,
+            4
+          ]
         },
         "caption": {
           "en": "Cubic curve y = x^3 - 3x illustrating local turning points where dy/dx = 3x^2 - 3 = 0.",
@@ -238,11 +327,35 @@
           "en": "<p>Differentiate implicitly with respect to \\(x\\):</p>\\[3x^2 - 2\\left(y + x\\frac{dy}{dx}\\right) + 2y\\frac{dy}{dx} = 0\\]\\[3x^2 - 2y + (2y - 2x)\\frac{dy}{dx} = 0 \\implies \\frac{dy}{dx} = \\frac{2y - 3x^2}{2y - 2x}\\]<p>A vertical tangent occurs when the denominator is zero (and numerator non-zero):</p>\\[2y - 2x = 0 \\implies y = x\\]<p>Substitute \\(y = x\\) into the original curve equation:</p>\\[x^3 - 2x(x) + x^2 = 4 \\implies x^3 - x^2 - 4 = 0\\]<p>Test integer factors: \\(x = 2\\) gives \\(8 - 4 - 4 = 0\\). Factoring gives \\((x - 2)(x^2 + x + 2) = 0\\). Since \\(x^2 + x + 2 = 0\\) has no real roots (\\(1 - 8 < 0\\)), \\(x = 2\\) is the only real root.</p><p>Since \\(y = x\\), the point with vertical tangent is \\((2, 2)\\).</p>",
           "ar": null
         }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Differentiation · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Differentiation · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Differentiation"],
+    "domains": [
+      "Differentiation"
+    ],
     "enabled": true
   }
 }

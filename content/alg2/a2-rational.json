@@ -41,6 +41,50 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Rational Expressions — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
         "kind": "text",
         "body": {
           "en": "Slide the asymptotes around. The two amber dashed lines are \\( x=h \\) and \\( y=k \\); the curve hugs them in every corner.",
@@ -233,11 +277,26 @@
         "figure": {
           "type": "fn",
           "title": "Rational Function: y = (2x + 1)/(x - 3)",
-          "xrange": [-4, 10],
-          "yrange": [-8, 10],
+          "xrange": [
+            -4,
+            10
+          ],
+          "yrange": [
+            -8,
+            10
+          ],
           "fns": [
-            { "expr": "(2*x + 1)/(x - 3)", "color": "var(--fig-blue)", "label": "y = (2x+1)/(x-3)" },
-            { "expr": "2", "color": "var(--fig-amber)", "dashed": true, "label": "horizontal asymptote y = 2" }
+            {
+              "expr": "(2*x + 1)/(x - 3)",
+              "color": "var(--fig-blue)",
+              "label": "y = (2x+1)/(x-3)"
+            },
+            {
+              "expr": "2",
+              "color": "var(--fig-amber)",
+              "dashed": true,
+              "label": "horizontal asymptote y = 2"
+            }
           ]
         },
         "caption": {
@@ -254,6 +313,18 @@
         },
         "body": {
           "en": "<ul><li><strong>Extraneous Solutions from Clearing Denominators:</strong> Multiplying an equation by the LCD clears fractions but may produce solutions that make an original denominator zero. Any solution making a denominator zero is extraneous and must be discarded.</li><li><strong>Illegal Term Cancellation:</strong> Never cancel individual addends (e.g. canceling \\(x\\) in \\(\\frac{x + 2}{x + 5}\\)). You may only cancel complete factors after factoring the entire numerator and denominator into products.</li><li><strong>Removable Discontinuity (Hole) vs. Vertical Asymptote:</strong> If a factor \\((x - c)\\) cancels completely from both numerator and denominator, \\(x = c\\) is a hole at \\((c, g(c))\\), not a vertical asymptote. Only uncanceled denominator zeros form vertical asymptotes.</li><li><strong>Dividing Compound Fractions:</strong> To divide fractions, multiply by the reciprocal of the divisor: \\(\\frac{A/B}{C/D} = \\frac{A}{B} \\cdot \\frac{D}{C}\\). Factor all four polynomials before multiplying to simplify cancellations.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
           "ar": null
         }
       },
@@ -278,10 +349,34 @@
           "en": "<p>Factor the quadratic denominator: \\(x^2 + x - 6 = (x - 2)(x + 3)\\). The LCD is \\((x - 2)(x + 3)\\), with restricted domain \\(x \\neq 2, -3\\).</p><p>Multiply both sides by \\((x - 2)(x + 3)\\):</p>\\[x(x + 3) + 1(x - 2) = 5.\\]\\[x^2 + 3x + x - 2 = 5 \\implies x^2 + 4x - 7 = 0.\\]<p>Apply the quadratic formula:</p>\\[x = \\frac{-4 \\pm \\sqrt{16 - 4(1)(-7)}}{2} = \\frac{-4 \\pm \\sqrt{16 + 28}}{2} = \\frac{-4 \\pm \\sqrt{44}}{2} = \\frac{-4 \\pm 2\\sqrt{11}}{2} = -2 \\pm \\sqrt{11}.\\]<p>Check restrictions: \\(-2 \\pm \\sqrt{11} \\approx 1.317\\) and \\(-5.317\\). Neither equals 2 or -3, so both solutions are valid: \\[x = -2 + \\sqrt{11} \\quad \\text{and} \\quad x = -2 - \\sqrt{11}.\\]</p>",
           "ar": null
         }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Rational Expressions · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Rational Expressions · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Rational Expressions & Functions"]
+    "domains": [
+      "Rational Expressions & Functions"
+    ]
   }
 }

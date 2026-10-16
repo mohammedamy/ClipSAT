@@ -16,7 +16,29 @@
             "$f_x = 3x^2 - 15xy^2$, $f_y = 6xy - 5y^3$"
           ],
           "correct": 0,
-          "answer": "Treat $y$ as constant: $f_x = 6xy - 5y^3 + 4$. Treat $x$ as constant: $f_y = 3x^2 - 15xy^2 - 2$."
+          "answer": "Treat $y$ as constant: $f_x = 6xy - 5y^3 + 4$. Treat $x$ as constant: $f_y = 3x^2 - 15xy^2 - 2$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "1.5*x - 1",
+              "-0.75*x + 3.5"
+            ],
+            "xmin": -2,
+            "xmax": 5,
+            "ymin": -3,
+            "ymax": 6,
+            "points": [
+              [
+                2,
+                2
+              ],
+              [
+                0,
+                -1
+              ]
+            ],
+            "width": 145
+          }
         },
         {
           "q": "Find $\\frac{\\partial z}{\\partial x}$ for $z = e^{x^2 y}$.",
@@ -65,7 +87,32 @@
             "$12x^2 - 4$"
           ],
           "correct": 0,
-          "answer": "$f_x = 4x^3 y^2 - 4xy$. Differentiating with respect to $x$ again: $f_{xx} = 12x^2 y^2 - 4y$."
+          "answer": "$f_x = 4x^3 y^2 - 4xy$. Differentiating with respect to $x$ again: $f_{xx} = 12x^2 y^2 - 4y$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.25*x**3 - 0.75*x**2 + 2"
+            ],
+            "xmin": -2,
+            "xmax": 4,
+            "ymin": -2,
+            "ymax": 5,
+            "points": [
+              [
+                0,
+                2
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                3,
+                2
+              ]
+            ],
+            "width": 145
+          }
         },
         {
           "q": "Verify whether $u(x, y) = e^x \\sin y$ satisfies Laplace's equation $u_{xx} + u_{yy} = 0$.",
@@ -114,7 +161,37 @@
             "$0$"
           ],
           "correct": 0,
-          "answer": "$\\nabla f = \\langle 4x, -6y \\rangle \\Rightarrow \\nabla f(1, 1) = \\langle 4, -6 \\rangle$. Unit vector $\\mathbf{u} = \\langle 3/5, 4/5 \\rangle$. $D_{\\mathbf{u}} f = \\langle 4, -6 \\rangle \\cdot \\langle 3/5, 4/5 \\rangle = 12/5 - 24/5 = -12/5$."
+          "answer": "$\\nabla f = \\langle 4x, -6y \\rangle \\Rightarrow \\nabla f(1, 1) = \\langle 4, -6 \\rangle$. Unit vector $\\mathbf{u} = \\langle 3/5, 4/5 \\rangle$. $D_{\\mathbf{u}} f = \\langle 4, -6 \\rangle \\cdot \\langle 3/5, 4/5 \\rangle = 12/5 - 24/5 = -12/5$.",
+          "figure": {
+            "type": "triangle",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                4.5
+              ]
+            ],
+            "labels": [
+              "A",
+              "C",
+              "B"
+            ],
+            "side_labels": [
+              "6",
+              "4.5",
+              "7.5"
+            ],
+            "right_angle_at": 1,
+            "fill": true,
+            "width": 145
+          }
         }
       ]
     },
@@ -130,7 +207,29 @@
             "$z = 2x + 4y + 5$"
           ],
           "correct": 0,
-          "answer": "$z_x = 2x \\Rightarrow z_x(1, 2) = 2$. $z_y = 2y \\Rightarrow z_y(1, 2) = 4$. Plane: $z - 5 = 2(x - 1) + 4(y - 2) \\Rightarrow 2x + 4y - z = 5$."
+          "answer": "$z_x = 2x \\Rightarrow z_x(1, 2) = 2$. $z_y = 2y \\Rightarrow z_y(1, 2) = 4$. Plane: $z - 5 = 2(x - 1) + 4(y - 2) \\Rightarrow 2x + 4y - z = 5$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "abs(x - 1) - 1",
+              "0.5*x + 0.5"
+            ],
+            "xmin": -3,
+            "xmax": 5,
+            "ymin": -2,
+            "ymax": 4,
+            "points": [
+              [
+                1,
+                -1
+              ],
+              [
+                3,
+                1
+              ]
+            ],
+            "width": 145
+          }
         },
         {
           "q": "Use the linear approximation $L(x, y)$ of $f(x, y) = \\sqrt{x^2 + y^2}$ at $(3, 4)$ to estimate $f(3.02, 3.97)$.",

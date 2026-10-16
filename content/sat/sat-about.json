@@ -80,6 +80,92 @@
         ]
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Multistage Adaptive Routing & Scaled Score Simulator",
+          "ar": null
+        },
+        "canvasId": "satAdaptCanvas",
+        "ariaLabel": {
+          "en": "Digital SAT adaptive routing and score curve simulator based on Module 1 and Module 2 raw scores",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "satAdaptDataBtn",
+          "panelId": "satAdaptDataPanel",
+          "descId": "satAdaptDataDesc",
+          "rowsId": "satAdaptDataRows",
+          "caption": {
+            "en": "Module 1 routing threshold and Module 2 scaled score projection",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "Metric",
+              "ar": null
+            },
+            {
+              "en": "Value",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "satAdaptM1",
+            "label": {
+              "en": "Module 1 Correct <b>R₁ =</b>",
+              "ar": null
+            },
+            "min": 0,
+            "max": 22,
+            "value": 18,
+            "step": 1,
+            "valueDisplayId": "satAdaptM1V",
+            "ariaLabel": {
+              "en": "Module 1 raw score",
+              "ar": null
+            }
+          },
+          {
+            "id": "satAdaptM2",
+            "label": {
+              "en": "Module 2 Correct <b>R₂ =</b>",
+              "ar": null
+            },
+            "min": 0,
+            "max": 22,
+            "value": 17,
+            "step": 1,
+            "valueDisplayId": "satAdaptM2V",
+            "ariaLabel": {
+              "en": "Module 2 raw score",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "satAdaptRoute",
+            "label": {
+              "en": "Module 2 Track",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "Hard Module 2 (Upper Band)"
+          },
+          {
+            "id": "satAdaptScore",
+            "label": {
+              "en": "Estimated Score",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "731"
+          }
+        ]
+      },
+      {
         "kind": "syllabusMap",
         "title": "📊 Digital SAT Math — Exam Blueprint",
         "rows": [
@@ -264,6 +350,90 @@
         },
         "solution": {
           "en": "<p><strong>Optimal Strategy:</strong> On the Digital SAT's Item Response Theory (IRT) scoring model, fully correct answers yield substantially higher raw theta weights than rushed guesses. Allocating 3.5 minutes each to 2 questions using Desmos graphing/regression guarantees 2 correct hard items (+40–60 scaled points), while placing a rapid educated guess on the 3rd question preserves time with zero guessing penalty.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Digital SAT Score Scaling: Hard Route vs. Standard Route",
+          "xrange": [
+            0,
+            22
+          ],
+          "yrange": [
+            200,
+            800
+          ],
+          "fns": [
+            {
+              "fn": "460 + 15.5*x",
+              "color": "var(--fig-indigo-2)",
+              "label": "Hard Module 2 Route"
+            },
+            {
+              "fn": "260 + 15.5*x",
+              "color": "var(--fig-amber)",
+              "label": "Standard Module 2 Route"
+            }
+          ],
+          "points": [
+            {
+              "x": 14,
+              "y": 677,
+              "label": "Routing Threshold (14/22)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Performing above the Module 1 routing threshold (~14–15 correct) unlocks the upper-band Module 2 curve reaching 800.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "bar",
+          "title": "Digital SAT Math Domain Weighting (44 Questions Total)",
+          "labels": [
+            "Algebra (35%)",
+            "Advanced Math (35%)",
+            "Data Analysis (15%)",
+            "Geometry & Trig (15%)"
+          ],
+          "values": [
+            15,
+            15,
+            7,
+            7
+          ]
+        },
+        "caption": {
+          "en": "Algebra and Advanced Math together account for 70% (30 of 44 questions) of your Digital SAT Math score.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Level 4 (Synthesis) — SPR Grid-In Formatting Precision",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> A Student-Produced Response (SPR) question yields the exact fraction \\( \\frac{15}{42} \\). How should this be entered in the 5-character Bluebook grid?</p><p><strong>Solution:</strong> Reduce by dividing numerator and denominator by 3 to obtain \\( \\frac{5}{14} \\) (4 characters: <code>5/14</code>), or enter the 4-decimal-place truncation/rounding <code>.3571</code> or <code>0.357</code>. Reducing the fraction is always safest and fastest.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 4 · Strategy</span><p>A student finishes the first 18 questions of Module 1 with 9 minutes remaining. Questions 19 and 20 are lengthy geometry proofs, while Questions 21 and 22 are quick Desmos system intersection problems. In what order should the student attack the remaining 4 questions, and why?</p>",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p>Every Digital SAT question carries equal raw weight within a module. The student should immediately flag Questions 19–20, solve Questions 21–22 in under 90 seconds using Desmos, and spend the remaining 7.5 minutes on Questions 19–20 without time pressure.</p>",
           "ar": null
         }
       }

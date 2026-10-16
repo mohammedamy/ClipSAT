@@ -23,6 +23,50 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Sequences, Series, Induction & the Binomial Theorem — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "def",
         "label": {
@@ -258,10 +302,22 @@
             "ar": null
           },
           "columns": [
-            { "en": "n", "ar": null },
-            { "en": "a_n", "ar": null },
-            { "en": "|a_n − L|", "ar": null },
-            { "en": "Classification", "ar": null }
+            {
+              "en": "n",
+              "ar": null
+            },
+            {
+              "en": "a_n",
+              "ar": null
+            },
+            {
+              "en": "|a_n − L|",
+              "ar": null
+            },
+            {
+              "en": "Classification",
+              "ar": null
+            }
           ]
         },
         "controls": [
@@ -301,12 +357,18 @@
         "readouts": [
           {
             "id": "pcSeqMinN",
-            "label": { "en": "Required min N*", "ar": null },
+            "label": {
+              "en": "Required min N*",
+              "ar": null
+            },
             "value": "19"
           },
           {
             "id": "pcSeqStatus",
-            "label": { "en": "Convergence check", "ar": null },
+            "label": {
+              "en": "Convergence check",
+              "ar": null
+            },
             "colorClass": "amber",
             "value": "All terms past N inside corridor ✔"
           }
@@ -348,11 +410,26 @@
         "figure": {
           "type": "fn",
           "title": "Geometric Partial Sums Convergence: S_n = 2(1 - 0.5^n)",
-          "xrange": [0, 8],
-          "yrange": [0, 2.5],
+          "xrange": [
+            0,
+            8
+          ],
+          "yrange": [
+            0,
+            2.5
+          ],
           "fns": [
-            { "expr": "2*(1 - 0.5^x)", "color": "var(--fig-blue)", "label": "S(x) = 2(1 - 0.5^x)" },
-            { "expr": "2", "color": "var(--fig-amber)", "dashed": true, "label": "asymptote S_infinity = 2" }
+            {
+              "expr": "2*(1 - 0.5^x)",
+              "color": "var(--fig-blue)",
+              "label": "S(x) = 2(1 - 0.5^x)"
+            },
+            {
+              "expr": "2",
+              "color": "var(--fig-amber)",
+              "dashed": true,
+              "label": "asymptote S_infinity = 2"
+            }
           ]
         },
         "caption": {
@@ -369,6 +446,18 @@
         },
         "body": {
           "en": "<ul><li><strong>Lower Index Pitfalls in Geometric Series:</strong> In \\(\\sum_{n=1}^\\infty a r^{n-1}\\), the first term is \\(a r^0 = a\\). But in \\(\\sum_{n=1}^\\infty a r^n\\), the first term is \\(a_1 = ar\\)! Always evaluate the true first term by substituting the initial index value rather than blindly copying the leading coefficient.</li><li><strong>Infinite Series Convergence Condition:</strong> The formula \\(S_\\infty = \\frac{a_1}{1 - r}\\) is valid strictly when \\(|r| < 1\\). If \\(|r| \\ge 1\\), the terms do not approach 0 and the series diverges. Plugging \\(r = 2\\) into the formula produces an invalid result.</li><li><strong>Binomial Expansion Negative Signs:</strong> When expanding \\((A - B)^n\\), the negative sign belongs to the second term: \\(\\binom{n}{k} A^{n-k} (-B)^k = (-1)^k \\binom{n}{k} A^{n-k} B^k\\). Terms alternate signs, with odd powers of \\(k\\) being negative.</li><li><strong>Strict Induction Logic:</strong> A proof by mathematical induction requires two distinct parts: (1) verifying the base case (usually \\(n = 1\\)), and (2) explicitly using the inductive hypothesis \\(P(k)\\) to prove \\(P(k+1)\\). You must show where the assumed formula for the first \\(k\\) terms is substituted.</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "ar": null
+        },
+        "body": {
+          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
           "ar": null
         }
       },
@@ -391,6 +480,28 @@
         },
         "solution": {
           "en": "<p>Use the infinite sum formula \\(S_\\infty = \\frac{a_1}{1 - r}\\):</p>\\[25 = \\frac{a_1}{1 - (-0.4)} = \\frac{a_1}{1.4} \\implies a_1 = 25 \\times 1.4 = 35.\\]<p>Compute the 4th partial sum \\(S_4 = \\frac{a_1(1 - r^4)}{1 - r}\\):</p>\\[(-0.4)^4 = 0.0256.\\]\\[S_4 = \\frac{35(1 - 0.0256)}{1.4} = \\frac{35(0.9744)}{1.4} = 25 \\times 0.9744 = 24.36.\\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Sequences, Series, Induction & the Binomial Theorem · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Sequences, Series, Induction & the Binomial Theorem · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
           "ar": null
         }
       }

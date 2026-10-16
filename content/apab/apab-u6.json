@@ -38,6 +38,94 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Unit 6 · Integration and Accumulation of Change — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Unit 6 · Integration and Accumulation of Change — Coordinate Curve & Tangent Analysis (1)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 1",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 1"
+            },
+            {
+              "fn": "2*x - 2",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 0,
+              "label": "(1, 0)"
+            },
+            {
+              "x": 0,
+              "y": -1,
+              "label": "(0, -1)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 1 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "def",
         "label": {
@@ -70,6 +158,18 @@
         },
         "body": {
           "en": "<p><strong>Part A:</strong> Water flows out of a reservoir at rate \\(R(t)\\) gal/hr given by the table below. Use a Trapezoidal Sum with the 3 subintervals indicated to approximate \\(\\int_0^{10} R(t)\\,dt\\). If \\(R''(t) > 0\\), is your approximation an overestimate or underestimate?</p><table style=\"width:80%;margin:10px auto;border-collapse:collapse;text-align:center;\"><tr style=\"border-bottom:1px solid var(--line);\"><th>\\(t\\) (hours)</th><td>0</td><td>3</td><td>7</td><td>10</td></tr><tr><th>\\(R(t)\\) (gal/hr)</th><td>120</td><td>90</td><td>65</td><td>50</td></tr></table><p><strong>Part B:</strong> Express the limit as a definite integral and evaluate: \\[ \\lim_{n\\to\\infty} \\sum_{i=1}^n \\left( 1 + \\frac{3i}{n} \\right)^2 \\frac{3}{n} \\]</p><p><strong>Solution:</strong></p><p><strong>Part A:</strong> Notice subintervals have unequal widths: \\(\\Delta t_1 = 3 - 0 = 3\\), \\(\\Delta t_2 = 7 - 3 = 4\\), \\(\\Delta t_3 = 10 - 7 = 3\\). Calculate trapezoidal areas individually: \\[ T_1 = \\frac{3}{2}(120 + 90) = \\frac{3}{2}(210) = 315 \\] \\[ T_2 = \\frac{4}{2}(90 + 65) = 2(155) = 310 \\] \\[ T_3 = \\frac{3}{2}(65 + 50) = \\frac{3}{2}(115) = 172.5 \\] \\[ \\int_0^{10} R(t)\\,dt \\approx 315 + 310 + 172.5 = \\mathbf{797.5\\text{ gallons}}. \\] Since \\(R''(t) > 0\\), the rate function is strictly concave up on \\([0, 10]\\). The secant line chords lie above the curve on each subinterval, so \\(797.5\\text{ gal}\\) is an <strong>overestimate</strong>.</p><p><strong>Part B:</strong> Match with \\(\\lim_{n\\to\\infty} \\sum_{i=1}^n f(a + i\\Delta x)\\Delta x\\). Here \\(\\Delta x = \\frac{3}{n} = \\frac{b - a}{n}\\). Choose \\(a = 1\\), so \\(b - a = 3 \\implies b = 4\\). The sample points are \\(x_i = 1 + \\frac{3i}{n}\\), and \\(f(x) = x^2\\). Thus: \\[ \\lim_{n\\to\\infty} \\sum_{i=1}^n \\left(1 + \\frac{3i}{n}\\right)^2 \\frac{3}{n} = \\int_1^4 x^2\\,dx = \\left[ \\frac{x^3}{3} \\right]_1^4 = \\frac{64}{3} - \\frac{1}{3} = \\mathbf{21}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "ar": null
+        },
+        "body": {
+          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
           "ar": null
         }
       },
@@ -202,6 +302,16 @@
         "note": {
           "en": "As n increases, the Riemann sum converges toward the exact definite integral. For an increasing function, Left sums underestimate while Right sums overestimate.",
           "ar": null
+        },
+        "canvas3d": {
+          "btnId": "exAuto3dBtn_surf_apabu6",
+          "wrapId": "exAuto3dWrap_apabu6",
+          "hintId": "exAuto3dHint_apabu6",
+          "btnLabel": "🧊 View Interactive 3D Model",
+          "ariaLabel": {
+            "en": "Interactive 3D visualization for Unit 6 · Integration and Accumulation of Change. Drag to rotate.",
+            "ar": null
+          }
         }
       },
       {
@@ -279,6 +389,17 @@
         },
         "solution": {
           "en": "<p>Let \\(u = \\sin(x^2)\\). Differentiating gives \\(du = \\cos(x^2) \\cdot 2x\\,dx = 2x\\cos(x^2)\\,dx \\implies x\\cos(x^2)\\,dx = \\frac{1}{2}du\\).<br>Transform the integration limits:<ul><li>Lower limit \\(x = 0 \\implies u = \\sin(0) = 0\\).</li><li>Upper limit \\(x = \\sqrt{\\pi/2} \\implies u = \\sin((\\sqrt{\\pi/2})^2) = \\sin(\\pi/2) = 1\\).</li></ul>Substitute into the integral: \\[ \\int_0^{\\sqrt{\\pi/2}} x\\cos(x^2) e^{\\sin(x^2)}\\,dx = \\frac{1}{2} \\int_0^1 e^u\\,du = \\frac{1}{2} \\left[ e^u \\right]_0^1 = \\frac{1}{2}(e^1 - e^0) = \\mathbf{\\frac{e - 1}{2}} \\approx 0.8591. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Unit 6 · Integration and Accumulation of Change · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
           "ar": null
         }
       }

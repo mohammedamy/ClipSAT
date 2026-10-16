@@ -40,6 +40,136 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Sequences & Series — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": "التمثيل البياني للدالة f(x) = x² − 2 ومماسها عند x = 1."
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Interactive Sequences & Series Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر Sequences & Series"
+        },
+        "canvasId": "exAuto_calc_tahsequences",
+        "ariaLabel": {
+          "en": "Interactive square-lattice mathematical explorer for Sequences & Series",
+          "ar": "مستكشف رياضي تفاعلي لدرس Sequences & Series"
+        },
+        "dataPanel": {
+          "btnId": "exAuto_calc_tahsequences_dataBtn",
+          "panelId": "exAuto_calc_tahsequences_dataPanel",
+          "descId": "exAuto_calc_tahsequences_dataDesc",
+          "rowsId": "exAuto_calc_tahsequences_dataRows",
+          "caption": {
+            "en": "Numerical table for Sequences & Series",
+            "ar": "جدول القيم العددية لدرس Sequences & Series"
+          },
+          "columns": [
+            {
+              "en": "Input / Metric",
+              "ar": "المدخل / المعيار"
+            },
+            {
+              "en": "Value",
+              "ar": "القيمة"
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "exAuto_calc_tahsequences_s0",
+            "label": {
+              "en": "Parameter <b>a =</b>",
+              "ar": "المعامل <b>a =</b>"
+            },
+            "min": -4,
+            "max": 4,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_calc_tahsequences_v0",
+            "ariaLabel": {
+              "en": "Primary parameter a",
+              "ar": "المعامل الأول a"
+            }
+          },
+          {
+            "id": "exAuto_calc_tahsequences_s1",
+            "label": {
+              "en": "Parameter <b>b =</b>",
+              "ar": "المعامل <b>b =</b>"
+            },
+            "min": -4,
+            "max": 4,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_calc_tahsequences_v1",
+            "ariaLabel": {
+              "en": "Secondary parameter b",
+              "ar": "المعامل الثاني b"
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "exAuto_calc_tahsequences_r0",
+            "label": {
+              "en": "Primary Metric",
+              "ar": "المقدار الأساسي"
+            },
+            "colorClass": "indigo",
+            "value": "2.00"
+          },
+          {
+            "id": "exAuto_calc_tahsequences_r1",
+            "label": {
+              "en": "Secondary Metric",
+              "ar": "المقدار الثانوي"
+            },
+            "colorClass": "amber",
+            "value": "1.00"
+          }
+        ]
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -170,6 +300,18 @@
         "body": {
           "en": "Express the repeating decimal \\(0.\\overline{45} = 0.454545\\dots\\) as an irreducible fraction using an infinite geometric series.<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>Express as an infinite geometric series:</strong><br>\\[ 0.\\overline{45} = \\frac{45}{100} + \\frac{45}{10000} + \\frac{45}{1000000} + \\dots \\]</li><li><strong>Identify parameters:</strong><br>First term \\(a_1 = \\frac{45}{100}\\), common ratio \\(r = \\frac{1}{100}\\).<br>Since \\(|r| = \\frac{1}{100} < 1\\), the series converges.</li><li><strong>Calculate the sum:</strong><br>\\[ S_\\infty = \\frac{a_1}{1 - r} = \\frac{45/100}{1 - 1/100} = \\frac{45/100}{99/100} = \\frac{45}{99} \\]</li><li><strong>Reduce fraction:</strong><br>Divide numerator and denominator by 9:<br>\\[ \\mathbf{\\frac{5}{11}} \\]</li></ol>",
           "ar": "اكتب الكسر العشري الدوري \\(0.\\overline{45} = 0.454545\\dots\\) في صورة كسر اعتيادي في أبسط صورة باستخدام متسلسلة هندسية لانهائية.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li><strong>كتابة العدد الدوري كمتسلسلة لانهائية:</strong><br>\\[ 0.\\overline{45} = \\frac{45}{100} + \\frac{45}{10000} + \\frac{45}{1000000} + \\dots \\]</li><li><strong>تحديد عناصر المتسلسلة:</strong><br>الحد الأول \\(a_1 = \\frac{45}{100}\\)، والأساس \\(r = \\frac{1}{100}\\).<br>بما أن \\(|r| < 1\\)، فالمتسلسلة متقاربة.</li><li><strong>حساب المجموع اللانهائي:</strong><br>\\[ S_\\infty = \\frac{a_1}{1 - r} = \\frac{45/100}{1 - 1/100} = \\frac{45/100}{99/100} = \\frac{45}{99} \\]</li><li><strong>التبسيط:</strong><br>بالقسمة على 9:<br>\\[ \\mathbf{\\frac{5}{11}} \\]</li></ol>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "ar": "مثال محلول D — معدل التغير اللحظي ومعادلة المماس"
+        },
+        "body": {
+          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "ar": "لتكن \\( f(x) = 5x^3 - x^2 + 4 \\). أوجد معدل التغير اللحظي \\( f'(5) \\).<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>نشتق حداً بحداّ: \\( f'(x) = 15x^2 - 2x \\).</li><li>نعوض \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = \\mathbf{365} \\).</li></ol>"
         }
       },
       {

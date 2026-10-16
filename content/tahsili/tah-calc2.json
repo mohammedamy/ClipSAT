@@ -40,6 +40,146 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Integration & Applications — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": "التمثيل البياني للدالة f(x) = x² − 2 ومماسها عند x = 1."
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Interactive Integration & Applications Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر Integration & Applications"
+        },
+        "canvasId": "exAuto_calc_tahcalc2",
+        "ariaLabel": {
+          "en": "Interactive square-lattice mathematical explorer for Integration & Applications",
+          "ar": "مستكشف رياضي تفاعلي لدرس Integration & Applications"
+        },
+        "dataPanel": {
+          "btnId": "exAuto_calc_tahcalc2_dataBtn",
+          "panelId": "exAuto_calc_tahcalc2_dataPanel",
+          "descId": "exAuto_calc_tahcalc2_dataDesc",
+          "rowsId": "exAuto_calc_tahcalc2_dataRows",
+          "caption": {
+            "en": "Numerical table for Integration & Applications",
+            "ar": "جدول القيم العددية لدرس Integration & Applications"
+          },
+          "columns": [
+            {
+              "en": "Input / Metric",
+              "ar": "المدخل / المعيار"
+            },
+            {
+              "en": "Value",
+              "ar": "القيمة"
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "exAuto_calc_tahcalc2_s0",
+            "label": {
+              "en": "Parameter <b>a =</b>",
+              "ar": "المعامل <b>a =</b>"
+            },
+            "min": -4,
+            "max": 4,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_calc_tahcalc2_v0",
+            "ariaLabel": {
+              "en": "Primary parameter a",
+              "ar": "المعامل الأول a"
+            }
+          },
+          {
+            "id": "exAuto_calc_tahcalc2_s1",
+            "label": {
+              "en": "Parameter <b>b =</b>",
+              "ar": "المعامل <b>b =</b>"
+            },
+            "min": -4,
+            "max": 4,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_calc_tahcalc2_v1",
+            "ariaLabel": {
+              "en": "Secondary parameter b",
+              "ar": "المعامل الثاني b"
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "exAuto_calc_tahcalc2_r0",
+            "label": {
+              "en": "Primary Metric",
+              "ar": "المقدار الأساسي"
+            },
+            "colorClass": "indigo",
+            "value": "2.00"
+          },
+          {
+            "id": "exAuto_calc_tahcalc2_r1",
+            "label": {
+              "en": "Secondary Metric",
+              "ar": "المقدار الثانوي"
+            },
+            "colorClass": "amber",
+            "value": "1.00"
+          }
+        ],
+        "canvas3d": {
+          "btnId": "exAuto3dBtn_surf_tahcalc2",
+          "wrapId": "exAuto3dWrap_tahcalc2",
+          "hintId": "exAuto3dHint_tahcalc2",
+          "btnLabel": "🧊 View Interactive 3D Model",
+          "ariaLabel": {
+            "en": "Interactive 3D visualization for Integration & Applications. Drag to rotate.",
+            "ar": "عرض ثلاثي الأبعاد تفاعلي لدرس Integration & Applications. اسحب للتدوير."
+          }
+        }
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -168,6 +308,18 @@
         "body": {
           "en": "Calculate the area of the region bounded by the parabola \\(y = 4 - x^2\\) and the \\(x\\)-axis.<br><br><strong>Step-by-step Solution:</strong><br><ol><li><strong>Find the \\(x\\)-intercepts (bounds of integration):</strong><br>\\[ 4 - x^2 = 0 \\implies x^2 = 4 \\implies x = -2 \\quad\\text{and}\\quad x = 2 \\]</li><li><strong>Set up the definite integral:</strong><br>Since \\(4 - x^2 \\ge 0\\) on \\([-2, 2]\\):<br>\\[ \\text{Area} = \\int_{-2}^2 (4 - x^2)\\,dx \\]</li><li><strong>Evaluate using symmetry or direct integration:</strong><br>\\[ \\int_{-2}^2 (4 - x^2)\\,dx = 2 \\int_0^2 (4 - x^2)\\,dx = 2 \\left[ 4x - \\frac{x^3}{3} \\right]_0^2 \\]<br>\\[ = 2 \\left( 4(2) - \\frac{8}{3} \\right) = 2 \\left( 8 - \\frac{8}{3} \\right) = 2 \\left( \\frac{16}{3} \\right) = \\mathbf{\\frac{32}{3}} \\approx 10.67 \\]</li></ol>",
           "ar": "احسب مساحة المنطقة المحصورة بين منحنى الدالة \\(y = 4 - x^2\\) ومحور السينات.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li><strong>إيجاد نقاط التقاطع مع محور السينات (حدود التكامل):</strong><br>\\[ 4 - x^2 = 0 \\implies x^2 = 4 \\implies x = -2 \\quad\\text{و}\\quad x = 2 \\]</li><li><strong>كتابة تكامل المساحة:</strong><br>بما أن المنحنى يقع فوق محور السينات على الفترة \\([-2, 2]\\):<br>\\[ \\text{المساحة} = \\int_{-2}^2 (4 - x^2)\\,dx \\]</li><li><strong>حساب التكامل:</strong><br>\\[ = 2 \\int_0^2 (4 - x^2)\\,dx = 2 \\left[ 4x - \\frac{x^3}{3} \\right]_0^2 \\]<br>\\[ = 2 \\left( 8 - \\frac{8}{3} \\right) = 2 \\left( \\frac{16}{3} \\right) = \\mathbf{\\frac{32}{3}} \\approx 10.67 \\]</li></ol>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "ar": "مثال محلول D — معدل التغير اللحظي ومعادلة المماس"
+        },
+        "body": {
+          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "ar": "لتكن \\( f(x) = 5x^3 - x^2 + 4 \\). أوجد معدل التغير اللحظي \\( f'(5) \\).<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>نشتق حداً بحداّ: \\( f'(x) = 15x^2 - 2x \\).</li><li>نعوض \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = \\mathbf{365} \\).</li></ol>"
         }
       },
       {

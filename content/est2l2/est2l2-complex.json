@@ -27,6 +27,146 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Complex Numbers — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Interactive Complex Numbers Lab",
+          "ar": null
+        },
+        "canvasId": "exAuto_vec_est2l2complex",
+        "ariaLabel": {
+          "en": "Interactive square-lattice mathematical explorer for Complex Numbers",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "exAuto_vec_est2l2complex_dataBtn",
+          "panelId": "exAuto_vec_est2l2complex_dataPanel",
+          "descId": "exAuto_vec_est2l2complex_dataDesc",
+          "rowsId": "exAuto_vec_est2l2complex_dataRows",
+          "caption": {
+            "en": "Numerical table for Complex Numbers",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "Input / Metric",
+              "ar": null
+            },
+            {
+              "en": "Value",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "exAuto_vec_est2l2complex_s0",
+            "label": {
+              "en": "Parameter <b>a =</b>",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_vec_est2l2complex_v0",
+            "ariaLabel": {
+              "en": "Primary parameter a",
+              "ar": null
+            }
+          },
+          {
+            "id": "exAuto_vec_est2l2complex_s1",
+            "label": {
+              "en": "Parameter <b>b =</b>",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_vec_est2l2complex_v1",
+            "ariaLabel": {
+              "en": "Secondary parameter b",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "exAuto_vec_est2l2complex_r0",
+            "label": {
+              "en": "Primary Metric",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "2.00"
+          },
+          {
+            "id": "exAuto_vec_est2l2complex_r1",
+            "label": {
+              "en": "Secondary Metric",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "1.00"
+          }
+        ],
+        "canvas3d": {
+          "btnId": "exAuto3dBtn_vec3_est2l2complex",
+          "wrapId": "exAuto3dWrap_est2l2complex",
+          "hintId": "exAuto3dHint_est2l2complex",
+          "btnLabel": "🧊 View Interactive 3D Model",
+          "ariaLabel": {
+            "en": "Interactive 3D visualization for Complex Numbers. Drag to rotate.",
+            "ar": null
+          }
+        }
+      },
+      {
         "kind": "callout",
         "style": "def",
         "label": {
@@ -97,9 +237,36 @@
         "kind": "cards",
         "heading": "Modulus — distance from the origin",
         "items": [
-          {"label": {"en": "Definition", "ar": null}, "value": {"en": "\\( |a+bi|=\\sqrt{a^2+b^2} \\)", "ar": null}},
-          {"label": {"en": "Example", "ar": null}, "value": {"en": "For \\( z=-2+3i \\) (Example 1.B's root), \\( |z|=\\sqrt{(-2)^2+3^2}=\\sqrt{13} \\)", "ar": null}},
-          {"label": {"en": "Conjugate pairs", "ar": null}, "value": {"en": "A conjugate pair \\( a\\pm bi \\) always has equal modulus for both roots", "ar": null}}
+          {
+            "label": {
+              "en": "Definition",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( |a+bi|=\\sqrt{a^2+b^2} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Example",
+              "ar": null
+            },
+            "value": {
+              "en": "For \\( z=-2+3i \\) (Example 1.B's root), \\( |z|=\\sqrt{(-2)^2+3^2}=\\sqrt{13} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Conjugate pairs",
+              "ar": null
+            },
+            "value": {
+              "en": "A conjugate pair \\( a\\pm bi \\) always has equal modulus for both roots",
+              "ar": null
+            }
+          }
         ]
       },
       {
@@ -110,10 +277,35 @@
         },
         "figure": {
           "type": "triangle",
-          "vertices": [[0, 0], [-2, 0], [-2, 3]],
-          "labels": ["Origin (0,0)", "Re(z) = -2", "z = -2 + 3i"],
-          "sides": ["2", "3", "|z| = √13"],
-          "angles": ["", "", ""],
+          "vertices": [
+            [
+              0,
+              0
+            ],
+            [
+              -2,
+              0
+            ],
+            [
+              -2,
+              3
+            ]
+          ],
+          "labels": [
+            "Origin (0,0)",
+            "Re(z) = -2",
+            "z = -2 + 3i"
+          ],
+          "sides": [
+            "2",
+            "3",
+            "|z| = √13"
+          ],
+          "angles": [
+            "",
+            "",
+            ""
+          ],
           "right": 1
         }
       },
@@ -130,6 +322,30 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example C — Euclidean Distance & Orthogonal Projection",
+          "ar": null
+        },
+        "body": {
+          "en": "A displacement has horizontal component \\( \\Delta x = 4 \\) and vertical component \\( \\Delta y = 9 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (4)^2 + (9)^2 = 16 + 81 = \\mathbf{97} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(4)(9) = \\mathbf{18} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "ar": null
+        },
+        "body": {
+          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Evaluate the expression \\(\\dfrac{(3 + 2i)^2}{i}\\) and write the result in standard form \\(a + bi\\).",
@@ -139,11 +355,46 @@
           "en": "1. Expand the numerator: \\((3+2i)^2 = 3^2 + 2(3)(2i) + (2i)^2 = 9 + 12i - 4 = 5 + 12i\\).<br>2. Divide by \\(i\\) by multiplying numerator and denominator by \\(-i\\) (or using \\(1/i = -i\\)):<br>\\[ \\frac{5 + 12i}{i} = (5 + 12i)(-i) = -5i - 12i^2 = -5i + 12 = 12 - 5i. \\]<br>In standard form \\(a + bi\\), the answer is \\(12 - 5i\\).",
           "ar": null
         }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Complex Numbers · Practice 2] If the governing relation for this system is \\( g(t) = 4t + 4 \\), evaluate \\( g(6) \\) and find the inverse input \\( t \\) when \\( g(t) = 32 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). Setting \\( 4t + 4 = 32 \\) gives \\( 4t = 28 \\implies t = \\mathbf{7} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Complex Numbers · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Complex Numbers · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "ar": null
+        }
       }
     ]
   },
   "quizWidget": {
-    "domains": ["Complex Numbers"],
+    "domains": [
+      "Complex Numbers"
+    ],
     "enabled": true
   }
 }

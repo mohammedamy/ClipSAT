@@ -36,6 +36,50 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Eigenvalues, Eigenvectors & Diagonalization — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "def",
         "label": {
@@ -56,6 +100,18 @@
         },
         "body": {
           "en": "<p><strong>Problem:</strong> Find the eigenvalues and corresponding eigenspace bases for \\( A = \\begin{pmatrix} 4 & 1 \\\\ 2 & 3 \\end{pmatrix} \\), and verify the trace and determinant relations.</p><p><strong>Step 1 · Solve Characteristic Equation:</strong> \\[ \\det(A - \\lambda I) = \\begin{vmatrix} 4 - \\lambda & 1 \\\\ 2 & 3 - \\lambda \\end{vmatrix} = (4 - \\lambda)(3 - \\lambda) - (1)(2) = \\lambda^2 - 7\\lambda + 12 - 2 = \\lambda^2 - 7\\lambda + 10 = 0. \\] Factoring: \\[ (\\lambda - 5)(\\lambda - 2) = 0 \\implies \\mathbf{\\lambda_1 = 5, \\quad \\lambda_2 = 2}. \\]</p><p><strong>Step 2 · Verify Invariants:</strong><br>• \\( \\operatorname{tr}(A) = 4 + 3 = 7 \\), and \\( \\lambda_1 + \\lambda_2 = 5 + 2 = 7 \\). ✓<br>• \\( \\det(A) = (4)(3) - (1)(2) = 10 \\), and \\( \\lambda_1 \\lambda_2 = (5)(2) = 10 \\). ✓</p><p><strong>Step 3 · Eigenspace \\( E_5 \\) (\\( \\lambda = 5 \\)):</strong> \\[ A - 5I = \\begin{pmatrix} -1 & 1 \\\\ 2 & -2 \\end{pmatrix} \\xrightarrow{R_2 \\leftarrow R_2 + 2R_1} \\begin{pmatrix} -1 & 1 \\\\ 0 & 0 \\end{pmatrix} \\implies -v_1 + v_2 = 0 \\implies \\mathbf{v}_1 = \\mathbf{\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}}. \\]</p><p><strong>Step 4 · Eigenspace \\( E_2 \\) (\\( \\lambda = 2 \\)):</strong> \\[ A - 2I = \\begin{pmatrix} 2 & 1 \\\\ 2 & 1 \\end{pmatrix} \\xrightarrow{R_2 \\leftarrow R_2 - R_1} \\begin{pmatrix} 2 & 1 \\\\ 0 & 0 \\end{pmatrix} \\implies 2v_1 + v_2 = 0 \\implies \\mathbf{v}_2 = \\mathbf{\\begin{pmatrix} 1 \\\\ -2 \\end{pmatrix}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "ar": null
+        },
+        "body": {
+          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
           "ar": null
         }
       },
@@ -222,6 +278,16 @@
         "note": {
           "en": "The grey curve is the unit circle; indigo is its image ellipse under A. The amber and teal lines represent the real eigenvector directions along which the transformation purely dilates vectors without rotation. When the discriminant tr(A)² - 4 det(A) < 0, eigenvalues become complex and no real invariant line exists.",
           "ar": null
+        },
+        "canvas3d": {
+          "btnId": "exAuto3dBtn_vec3_laeigen",
+          "wrapId": "exAuto3dWrap_laeigen",
+          "hintId": "exAuto3dHint_laeigen",
+          "btnLabel": "🧊 View Interactive 3D Model",
+          "ariaLabel": {
+            "en": "Interactive 3D visualization for Eigenvalues, Eigenvectors & Diagonalization. Drag to rotate.",
+            "ar": null
+          }
         }
       },
       {
@@ -342,6 +408,17 @@
         },
         "solution": {
           "en": "<p><strong>Step 1 · Find Characteristic Polynomial:</strong> \\[ p(\\lambda) = (2 - \\lambda)(3 - \\lambda) - 0 = \\lambda^2 - 5\\lambda + 6. \\]</p><p><strong>Step 2 · Apply Cayley–Hamilton: \\( A^2 - 5A + 6I = 0 \\):</strong><br>From this: \\( A^2 = 5A - 6I \\). Multiply by \\( A \\): \\[ A^3 = 5A^2 - 6A = 5(5A - 6I) - 6A = 25A - 30I - 6A = 19A - 30I. \\] Multiply by \\( A \\) again: \\[ A^4 = 19A^2 - 30A = 19(5A - 6I) - 30A = 95A - 114I - 30A = \\mathbf{65A - 114I}. \\]</p><p><strong>Step 3 · Express \\( A^{-1} \\):</strong> Multiply \\( A^2 - 5A + 6I = 0 \\) by \\( A^{-1} \\): \\[ A - 5I + 6A^{-1} = 0 \\implies 6A^{-1} = 5I - A \\implies \\mathbf{A^{-1} = -\\frac{1}{6}A + \\frac{5}{6}I}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Eigenvalues, Eigenvectors & Diagonalization · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
           "ar": null
         }
       }

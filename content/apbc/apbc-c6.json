@@ -36,6 +36,94 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Unit 10 · Power Series, Taylor & Maclaurin Series — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Unit 10 · Power Series, Taylor & Maclaurin Series — Coordinate Curve & Tangent Analysis (1)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 1",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 1"
+            },
+            {
+              "fn": "2*x - 2",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 0,
+              "label": "(1, 0)"
+            },
+            {
+              "x": 0,
+              "y": -1,
+              "label": "(0, -1)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 1 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
         "kind": "callout",
         "style": "thm",
         "label": {
@@ -56,6 +144,18 @@
         },
         "body": {
           "en": "<p><strong>Problem:</strong> Find the radius of convergence and interval of convergence of \\(\\sum_{n=1}^\\infty \\frac{(x - 2)^n}{n \\cdot 3^n}\\).</p><p><strong>Step 1 · Ratio Test:</strong> \\[ L = \\lim_{n\\to\\infty} \\left| \\frac{(x - 2)^{n+1}}{(n+1)3^{n+1}} \\cdot \\frac{n \\cdot 3^n}{(x - 2)^n} \\right| = \\lim_{n\\to\\infty} \\left( \\frac{n}{n+1} \\cdot \\frac{|x - 2|}{3} \\right) = \\frac{|x - 2|}{3}. \\] Set \\(L < 1\\): \\[ \\frac{|x - 2|}{3} < 1 \\implies |x - 2| < 3 \\implies \\mathbf{R = 3}. \\] The open interior interval is \\(-3 < x - 2 < 3 \\implies -1 < x < 5\\).</p><p><strong>Step 2 · Test Left Endpoint \\(x = -1\\):</strong> \\[ \\sum_{n=1}^\\infty \\frac{(-1 - 2)^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{(-3)^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{(-1)^n}{n}. \\] This is the alternating harmonic series, which <strong>converges</strong> by the AST. Thus, \\(x = -1\\) is <strong>included: \\([-1\\)</strong>.</p><p><strong>Step 3 · Test Right Endpoint \\(x = 5\\):</strong> \\[ \\sum_{n=1}^\\infty \\frac{(5 - 2)^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{3^n}{n \\cdot 3^n} = \\sum_{n=1}^\\infty \\frac{1}{n}. \\] This is the harmonic series (\\(p\\)-series with \\(p = 1\\)), which <strong>diverges</strong>. Thus, \\(x = 5\\) is <strong>excluded: \\(5)\\)</strong>.</p><p><strong>Conclusion:</strong> \\(\\mathbf{R = 3}\\), and the interval of convergence is \\(\\mathbf{[-1, 5)}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "ar": null
+        },
+        "body": {
+          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
           "ar": null
         }
       },
@@ -111,9 +211,18 @@
             "ar": null
           },
           "columns": [
-            { "en": "x", "ar": null },
-            { "en": "sin(x)", "ar": null },
-            { "en": "Taylor T(x)", "ar": null }
+            {
+              "en": "x",
+              "ar": null
+            },
+            {
+              "en": "sin(x)",
+              "ar": null
+            },
+            {
+              "en": "Taylor T(x)",
+              "ar": null
+            }
           ]
         },
         "controls": [
@@ -213,6 +322,17 @@
         },
         "solution": {
           "en": "<p>For \\(f(x) = \\cos(x)\\), \\(f^{(5)}(x) = -\\sin(x)\\). Since \\(|-\\sin(t)| \\le 1\\) for all \\(t\\), we take \\(M = 1\\). Apply the Lagrange Error Bound formula with \\(n = 4, c = 0, x = 0.5\\): \\[ |R_4(0.5)| \\le \\frac{M}{(4+1)!}|0.5 - 0|^{4+1} = \\frac{1}{5!} (0.5)^5 = \\frac{1}{120} \\left(\\frac{1}{32}\\right) = \\frac{1}{3840}. \\] Because \\(3840 > 3000\\), it follows that: \\[ \\frac{1}{3840} < \\frac{1}{3000} \\implies \\mathbf{|\\cos(0.5) - P_4(0.5)| < \\frac{1}{3000}}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "[Unit 10 · Power Series, Taylor & Maclaurin Series · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
           "ar": null
         }
       }

@@ -41,6 +41,136 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Exponentials & Logarithms — Coordinate Curve & Tangent Analysis (2)",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            9
+          ],
+          "fns": [
+            {
+              "fn": "x*x - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x² - 2"
+            },
+            {
+              "fn": "2*x - 3",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "Tangent at x = 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -1,
+              "label": "(1, -1)"
+            },
+            {
+              "x": 0,
+              "y": -2,
+              "label": "(0, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Interactive Exponentials & Logarithms Lab",
+          "ar": null
+        },
+        "canvasId": "exAuto_exp_estexplog",
+        "ariaLabel": {
+          "en": "Interactive square-lattice mathematical explorer for Exponentials & Logarithms",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "exAuto_exp_estexplog_dataBtn",
+          "panelId": "exAuto_exp_estexplog_dataPanel",
+          "descId": "exAuto_exp_estexplog_dataDesc",
+          "rowsId": "exAuto_exp_estexplog_dataRows",
+          "caption": {
+            "en": "Numerical table for Exponentials & Logarithms",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "Input / Metric",
+              "ar": null
+            },
+            {
+              "en": "Value",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "exAuto_exp_estexplog_s0",
+            "label": {
+              "en": "Parameter <b>a =</b>",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_exp_estexplog_v0",
+            "ariaLabel": {
+              "en": "Primary parameter a",
+              "ar": null
+            }
+          },
+          {
+            "id": "exAuto_exp_estexplog_s1",
+            "label": {
+              "en": "Parameter <b>b =</b>",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "exAuto_exp_estexplog_v1",
+            "ariaLabel": {
+              "en": "Secondary parameter b",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "exAuto_exp_estexplog_r0",
+            "label": {
+              "en": "Primary Metric",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "2.00"
+          },
+          {
+            "id": "exAuto_exp_estexplog_r1",
+            "label": {
+              "en": "Secondary Metric",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "1.00"
+          }
+        ]
+      },
+      {
         "kind": "cards",
         "items": [
           {
@@ -102,11 +232,25 @@
         "figure": {
           "type": "fn",
           "title": "Exponential Growth y = 2ˣ and Decay y = (1/2)ˣ",
-          "xrange": [-3, 3],
-          "yrange": [-1, 8],
+          "xrange": [
+            -3,
+            3
+          ],
+          "yrange": [
+            -1,
+            8
+          ],
           "fns": [
-            { "expr": "2^x", "color": "var(--fig-blue)", "label": "y = 2ˣ" },
-            { "expr": "0.5^x", "color": "var(--fig-coral)", "label": "y = (1/2)ˣ" }
+            {
+              "expr": "2^x",
+              "color": "var(--fig-blue)",
+              "label": "y = 2ˣ"
+            },
+            {
+              "expr": "0.5^x",
+              "color": "var(--fig-coral)",
+              "label": "y = (1/2)ˣ"
+            }
           ]
         },
         "caption": {
@@ -163,6 +307,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "ar": null
+        },
+        "body": {
+          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Simplify the expression \\(\\left(\\dfrac{16 x^8 y^{-4}}{81 z^{12}}\\right)^{-3/4}\\) and write your answer using only positive exponents.",
@@ -209,7 +365,9 @@
     ]
   },
   "quizWidget": {
-    "domains": ["Exponentials & Logarithms"],
+    "domains": [
+      "Exponentials & Logarithms"
+    ],
     "enabled": true
   }
 }
