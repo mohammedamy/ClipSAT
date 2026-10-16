@@ -1082,11 +1082,10 @@ const baseNjk = `<!DOCTYPE html>
     </div>
   </aside>
 
-  <!-- Modern Floating Launcher Pill -->
-  <button id="fc-toggle-btn" class="fc-floating-trigger" type="button" onclick="window.CSGamify&&window.CSGamify.toggleFlashcards()" aria-label="Open Flashcards" title="Active recall flashcards">
-    <span class="fc-trigger-icon" aria-hidden="true">🃏</span>
-    <span class="fc-trigger-text" data-i18n="fc.btnText">Cards</span>
-    <span id="fc-due-badge" class="fc-due-badge" title="Cards due for review">0</span>
+  <!-- Flashcards Side Slide Launcher Tab (matches Formula Sidebar Toggle) -->
+  <button id="fc-toggle-btn" class="fc-side-trigger" type="button" onclick="window.CSGamify&&window.CSGamify.toggleFlashcards()" aria-label="Open Flashcards" title="Active recall flashcards">
+    <span class="fc-trigger-text" data-i18n="fc.btnText">CARDS</span>
+    <span id="fc-due-badge" class="fc-due-badge empty" title="Cards due for review">0</span>
     <span id="fc-due-count" style="display:none">0</span>
   </button>
   </div><!-- /role="region" aria-label="Study tools" -->

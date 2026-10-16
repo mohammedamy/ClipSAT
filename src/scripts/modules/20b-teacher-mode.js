@@ -19,7 +19,6 @@
       '.tm-toolbar button{background:#4f46e5;color:#fff;border:none;border-radius:7px;padding:5px 10px;cursor:pointer;font-size:11.5px;font-weight:600;display:inline-flex;align-items:center;gap:4px;white-space:nowrap;flex-shrink:0;transition:background .15s,transform .15s}',
       '.tm-toolbar button:hover{background:#4338ca;transform:translateY(-1px)}',
       '@media (max-width: 1060px){.tm-toolbar{top:66px;border-radius:16px;flex-wrap:wrap;justify-content:center;white-space:normal;padding:8px 12px;max-width:calc(100vw - 16px)}}',
-      'body.teacher-mode #fc-toggle-btn,body.tm-on #fc-toggle-btn{bottom:124px!important}',
       '@media print{.cq-sol{display:block!important}.tm-meta{display:flex!important}',
       'nav,.sidebar,#tm-toolbar,#chatFab,#daily-goal-bar,#exam-countdown-bar,#weak-recs{display:none!important}}'
     ].join('');

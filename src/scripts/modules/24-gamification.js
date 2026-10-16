@@ -845,6 +845,9 @@
     },
 
     openFlashcards: function() {
+      if (window.toggleSidebar && document.getElementById('formula-sidebar') && document.getElementById('formula-sidebar').classList.contains('open')) {
+        window.toggleSidebar();
+      }
       this.buildDeckFromPage();
       this.populateLessonSelect();
       this.loadFlashcard();

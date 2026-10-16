@@ -62,8 +62,22 @@ function toggleSidebar(){
   _sidebarOpen = !_sidebarOpen;
   sb.classList.toggle('open', _sidebarOpen);
   var tog = document.getElementById('fsb-toggle');
-  if(tog) tog.style.right = _sidebarOpen ? '270px' : '0';
-  if(_sidebarOpen) _renderSidebar();
+  var isRtl = document.documentElement.dir === 'rtl' || document.body.dir === 'rtl' || (document.body && document.body.getAttribute('dir') === 'rtl');
+  if(tog) {
+    if(isRtl) {
+      tog.style.left = _sidebarOpen ? '270px' : '0';
+      tog.style.right = 'auto';
+    } else {
+      tog.style.right = _sidebarOpen ? '270px' : '0';
+      tog.style.left = 'auto';
+    }
+  }
+  if(_sidebarOpen) {
+    if(window.CSGamify && window.CSGamify.closeFlashcards) {
+      window.CSGamify.closeFlashcards();
+    }
+    _renderSidebar();
+  }
 }
 function loadSidebarForView(name){
   _currentViewName = name;
