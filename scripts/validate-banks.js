@@ -9,9 +9,10 @@
    ERRORS (fail the build): the item cannot be answered or rendered correctly.
      - mcq without 2+ choices, answer index out of range, missing stem
      - two identical choices (after whitespace/LaTeX-delimiter normalisation)
+     - exact duplicate items (identical stem and choices across the bank)
      - math that KaTeX cannot parse (it renders as red error text on the page)
    WARNINGS (printed, counted, never fail): quality signals for Plan 10.2.
-     - exact duplicate items, missing or very short solutions
+     - missing or very short solutions
 
    Usage: node scripts/validate-banks.js [--verbose] [track ...] */
 'use strict';
@@ -187,7 +188,7 @@ function main() {
       };
       checkItem(q, push);
       const key = norm(q.text ?? q.q) + '||' + (q.choices || []).map(norm).join('|');
-      if (dup.has(key)) push('warn', `exact duplicate of ${dup.get(key)}`); else dup.set(key, where);
+      if (dup.has(key)) push('error', `exact duplicate of ${dup.get(key)}`); else dup.set(key, where);
     }
     if (fe > 15 && !verbose) console.log(`  … ${fe - 15} more errors in ${f} (use --verbose)`);
   }
