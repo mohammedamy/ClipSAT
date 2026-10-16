@@ -81,7 +81,11 @@ var _IX_EN_FALLBACK={'ix.badge.qc':'Quick Check','ix.badge.sr':'Worked Example',
   'ix.badge.num':'Numeric Entry','ix.num.check':'Check Answer','ix.num.showSol':'Show Solution','ix.num.hintPrefix':'Hint: ','ix.num.correct':'✓ Correct!','ix.num.incorrect':'✗ Incorrect. ','ix.num.close':'Almost! Check precision or rounding. ',
   'ix.badge.ord':'Order the Steps','ix.ord.check':'Check Order','ix.ord.allCorrect':'✓ Steps are in the correct sequence!','ix.ord.someCorrect':'{n} of {total} steps in the correct position.','ix.ord.showCorrect':'Show Correct Order','ix.ord.moveUp':'Move Up','ix.ord.moveDown':'Move Down',
   'ix.badge.cat':'Categorize','ix.cat.check':'Check Categories','ix.cat.allCorrect':'✓ All items correctly categorized!','ix.cat.someCorrect':'{n} of {total} items correctly placed.','ix.cat.showCorrect':'Show Correct Placement',
-  'ix.mp.toggle':'Math Keys','ix.mp.hide':'Hide Keys',
+  'ix.mp.toggle':'Math Keyboard','ix.mp.hide':'Hide Keyboard',
+  'ix.mp.tab123':'123 & Algebra','ix.mp.tabFunc':'Functions & Trig','ix.mp.tabSym':'Symbols & Calculus',
+  'ix.mp.preview':'Math Preview:','ix.mp.previewEmpty':'Type or tap keys below',
+  'ix.mp.check':'Check','ix.mp.clear':'Clear','ix.mp.backspace':'Backspace',
+  'ix.mp.left':'Move left','ix.mp.right':'Move right','ix.mp.close':'Close keyboard',
   'ix.badge.gp':'Graph Plotter','ix.gp.check':'Check Points','ix.gp.clear':'Clear Points','ix.gp.showSol':'Show Target Points',
   'ix.gp.allCorrect':'✓ All key features accurately plotted!','ix.gp.someCorrect':'{n} of {total} features placed correctly.',
   'ix.gp.hint':'Tap or click on the grid to plot points. Click an existing point to remove it.',
@@ -252,8 +256,48 @@ function _buildTF(cfg,box){
   });
 }
 
-function _attachMathPalette(container, getTargetInp){
+function _toLatexPreview(s){
+  if(!s)return '';
+  var str=String(s).trim();
+  for(var k=0;k<4;k++){
+    var prev=str;
+    str=str.replace(/\(([^()]+)\)\s*\/\s*\(([^()]+)\)/g,'\\frac{$1}{$2}');
+    str=str.replace(/\(([^()]+)\)\s*\/\s*([a-zA-Z0-9.]+)/g,'\\frac{$1}{$2}');
+    str=str.replace(/([a-zA-Z0-9.]+)\s*\/\s*\(([^()]+)\)/g,'\\frac{$1}{$2}');
+    str=str.replace(/\b([a-zA-Z0-9.]+)\s*\/\s*([a-zA-Z0-9.]+)\b/g,'\\frac{$1}{$2}');
+    if(str===prev)break;
+  }
+  str=str.replace(/\bsqrt\(([^()]+)\)/g,'\\sqrt{$1}')
+         .replace(/\bcbrt\(([^()]+)\)/g,'\\sqrt[3]{$1}')
+         .replace(/\babs\(([^()]+)\)/g,'|$1|')
+         .replace(/\bpi\b/g,'\\pi')
+         .replace(/\btheta\b/g,'\\theta')
+         .replace(/\balpha\b/g,'\\alpha')
+         .replace(/\bbeta\b/g,'\\beta')
+         .replace(/\blambda\b/g,'\\lambda')
+         .replace(/\bmu\b/g,'\\mu')
+         .replace(/\bsigma\b/g,'\\sigma')
+         .replace(/<=/g,'\\le ')
+         .replace(/>=/g,'\\ge ')
+         .replace(/!=/g,'\\ne ')
+         .replace(/(\+-|±)/g,'\\pm ')
+         .replace(/\binf(ty)?\b/g,'\\infty')
+         .replace(/\bin\b/g,'\\in ')
+         .replace(/\bnotin\b/g,'\\notin ')
+         .replace(/\bintersect\b/g,'\\cap ')
+         .replace(/\bempty\b/g,'\\emptyset')
+         .replace(/\*/g,' \\cdot ')
+         .replace(/\b(sin|cos|tan|sec|csc|cot|ln|log|arcsin|arccos|arctan)\b/g,'\\$1 ')
+         .replace(/\^([0-9a-zA-Z]+)/g,'^{$1}')
+         .replace(/\^\(([^()]+)\)/g,'^{$1}');
+  return str;
+}
+
+function _attachMathPalette(container, getTargetInp, opts){
+  opts=opts||{};
   var pal=document.createElement('div');pal.className='ix-math-palette';
+  pal.setAttribute('role','region');pal.setAttribute('aria-label',_t('ix.mp.toggle'));
+
   var toggleRow=document.createElement('div');toggleRow.className='ix-mp-toggle-row';
   var toggleBtn=document.createElement('button');toggleBtn.type='button';toggleBtn.className='ix-mp-toggle-btn';
   toggleBtn.innerHTML='<span class="ix-mp-icon">⌨️</span> <span>'+_t('ix.mp.toggle')+'</span>';
@@ -261,89 +305,353 @@ function _attachMathPalette(container, getTargetInp){
   toggleRow.appendChild(toggleBtn);
   pal.appendChild(toggleRow);
 
-  var grid=document.createElement('div');grid.className='ix-mp-grid';grid.style.display='none';
+  var body=document.createElement('div');body.className='ix-mp-body';body.style.display='none';
 
-  var keys=[
-    {l:'x²', ins:'^2', t:'Square (x²)'},
-    {l:'xⁿ', ins:'^', t:'Power (xⁿ)'},
-    {l:'√x', ins:'sqrt()', off:-1, t:'Square root (√)'},
-    {l:'a/b', ins:'()/()', off:-4, t:'Fraction (a/b)'},
-    {l:'( )', ins:'()', off:-1, t:'Parentheses'},
-    {l:'|x|', ins:'||', off:-1, t:'Absolute value'},
-    {l:'π', ins:'π', t:'Pi (π)'},
-    {l:'θ', ins:'θ', t:'Theta (θ)'},
-    {l:'e', ins:'e', t:"Euler's number e"},
-    {l:'x', ins:'x', t:'Variable x'},
-    {l:'≤', ins:'<=', t:'Less than or equal (≤)'},
-    {l:'≥', ins:'>=', t:'Greater than or equal (≥)'},
-    {l:'≠', ins:'!=', t:'Not equal (≠)'},
-    {l:'±', ins:'±', t:'Plus or minus (±)'},
-    {l:'∞', ins:'inf', t:'Infinity (∞)'},
-    {l:'sin', ins:'sin()', off:-1, t:'Sine'},
-    {l:'cos', ins:'cos()', off:-1, t:'Cosine'},
-    {l:'tan', ins:'tan()', off:-1, t:'Tangent'},
-    {l:'ln', ins:'ln()', off:-1, t:'Natural log (ln)'},
-    {l:'log', ins:'log()', off:-1, t:'Log base 10'},
-    {l:'⌫', act:'backspace', t:'Backspace'},
-    {l:'C', act:'clear', t:'Clear field'}
+  // 1. Header with Tab Switcher & Close button
+  var header=document.createElement('div');header.className='ix-mp-header';
+  var tabsWrap=document.createElement('div');tabsWrap.className='ix-mp-tabs';
+
+  var tabDefs=[
+    {id:'123',label:_t('ix.mp.tab123')},
+    {id:'func',label:_t('ix.mp.tabFunc')},
+    {id:'sym',label:_t('ix.mp.tabSym')}
   ];
+  var tabBtns={};
+  var tabGrids={};
+  var curTab='123';
 
-  keys.forEach(function(k){
-    var btn=document.createElement('button');btn.type='button';btn.className='ix-mp-key'+(k.act?' ix-mp-act':'');
-    btn.textContent=k.l;btn.title=k.t;btn.setAttribute('aria-label',k.t);
-    btn.addEventListener('mousedown',function(e){
+  tabDefs.forEach(function(td,idx){
+    var tb=document.createElement('button');tb.type='button';
+    tb.className='ix-mp-tab-btn'+(idx===0?' active':'');
+    tb.textContent=td.label;
+    tb.setAttribute('aria-selected',idx===0?'true':'false');
+    tb.addEventListener('click',function(e){
       e.preventDefault();
-      var target=typeof getTargetInp==='function'?getTargetInp():getTargetInp;
-      if(!target)return;
-      if(k.act==='clear'){
-        target.value='';
-        target.dispatchEvent(new Event('input',{bubbles:true}));
-        target.dispatchEvent(new Event('change',{bubbles:true}));
-        target.focus();
+      switchTab(td.id);
+    });
+    tabBtns[td.id]=tb;
+    tabsWrap.appendChild(tb);
+  });
+
+  var closeBtn=document.createElement('button');closeBtn.type='button';closeBtn.className='ix-mp-close-btn';
+  closeBtn.textContent='✕';closeBtn.title=_t('ix.mp.close');closeBtn.setAttribute('aria-label',_t('ix.mp.close'));
+  closeBtn.addEventListener('click',function(e){
+    e.preventDefault();
+    closeKeypad();
+  });
+
+  header.appendChild(tabsWrap);header.appendChild(closeBtn);
+  body.appendChild(header);
+
+  // 2. Real-time Math Preview Bar
+  var prevBar=document.createElement('div');prevBar.className='ix-mp-preview-bar';
+  var prevLbl=document.createElement('span');prevLbl.className='ix-mp-preview-lbl';prevLbl.textContent=_t('ix.mp.preview');
+  var prevCnt=document.createElement('span');prevCnt.className='ix-mp-preview-cnt';
+  prevCnt.innerHTML='<span class="ix-mp-ph">'+_t('ix.mp.previewEmpty')+'</span>';
+  prevBar.appendChild(prevLbl);prevBar.appendChild(prevCnt);
+  body.appendChild(prevBar);
+
+  function updatePreview(val){
+    if(!prevCnt)return;
+    var raw=String(val==null?'':val).trim();
+    if(!raw){
+      prevCnt.innerHTML='<span class="ix-mp-ph">'+_t('ix.mp.previewEmpty')+'</span>';
+      return;
+    }
+    var tex=_toLatexPreview(raw);
+    if(window.katex&&typeof window.katex.renderToString==='function'){
+      try{
+        prevCnt.innerHTML=window.katex.renderToString(tex,{throwOnError:false,displayMode:false});
         return;
-      }
-      if(k.act==='backspace'){
-        var s=target.selectionStart!=null?target.selectionStart:target.value.length;
-        var ePos=target.selectionEnd!=null?target.selectionEnd:target.value.length;
-        if(s===ePos&&s>0){
-          target.value=target.value.substring(0,s-1)+target.value.substring(s);
-          target.setSelectionRange(s-1,s-1);
-        } else if(s!==ePos){
-          target.value=target.value.substring(0,s)+target.value.substring(ePos);
-          target.setSelectionRange(s,s);
-        }
-        target.dispatchEvent(new Event('input',{bubbles:true}));
-        target.dispatchEvent(new Event('change',{bubbles:true}));
-        target.focus();
-        return;
-      }
-      var start=target.selectionStart!=null?target.selectionStart:target.value.length;
-      var end=target.selectionEnd!=null?target.selectionEnd:target.value.length;
-      var val=target.value;
-      target.value=val.substring(0,start)+k.ins+val.substring(end);
-      var newPos=start+k.ins.length+(k.off||0);
-      if(target.setSelectionRange){
-        target.focus();
-        target.setSelectionRange(newPos,newPos);
+      }catch(e){}
+    }
+    prevCnt.textContent=raw;
+  }
+
+  // 3. Tab Panels with Keypad Grids
+  var panels=document.createElement('div');panels.className='ix-mp-panels';
+
+  var tabKeys={
+    '123':[
+      {l:'x²',ins:'^2',wrap:'^2',t:'Square (x²)'},
+      {l:'xⁿ',ins:'^',t:'Power (xⁿ)'},
+      {l:'√x',ins:'sqrt()',wrap:'sqrt',off:-1,t:'Square root (√)'},
+      {l:'a/b',ins:'()/()',wrap:'frac',off:-4,t:'Fraction (a/b)'},
+      {l:'( )',ins:'()',wrap:'paren',off:-1,t:'Parentheses'},
+      {l:'|x|',ins:'abs()',wrap:'abs',off:-1,t:'Absolute value'},
+      {l:'π',ins:'π',t:'Pi (π)'},
+
+      {l:'7',ins:'7',t:'7'},
+      {l:'8',ins:'8',t:'8'},
+      {l:'9',ins:'9',t:'9'},
+      {l:'÷',ins:'/',t:'Divide (÷)'},
+      {l:'x',ins:'x',t:'Variable x'},
+      {l:'y',ins:'y',t:'Variable y'},
+      {l:'e',ins:'e',t:"Euler's number e"},
+
+      {l:'4',ins:'4',t:'4'},
+      {l:'5',ins:'5',t:'5'},
+      {l:'6',ins:'6',t:'6'},
+      {l:'×',ins:'*',t:'Multiply (×)'},
+      {l:'n',ins:'n',t:'Variable n'},
+      {l:'t',ins:'t',t:'Variable t'},
+      {l:'θ',ins:'θ',t:'Theta (θ)'},
+
+      {l:'1',ins:'1',t:'1'},
+      {l:'2',ins:'2',t:'2'},
+      {l:'3',ins:'3',t:'3'},
+      {l:'−',ins:'-',t:'Minus (−)'},
+      {l:'+',ins:'+',t:'Plus (+)'},
+      {l:'=',ins:'=',t:'Equals (=)'},
+      {l:'±',ins:'±',t:'Plus or minus (±)'},
+
+      {l:'0',ins:'0',t:'0'},
+      {l:'.',ins:'.',t:'Decimal point (.)'},
+      {l:'◄',act:'left',t:_t('ix.mp.left')},
+      {l:'►',act:'right',t:_t('ix.mp.right')},
+      {l:'⌫',act:'backspace',t:_t('ix.mp.backspace')},
+      {l:'C',act:'clear',t:_t('ix.mp.clear')}
+    ],
+    'func':[
+      {l:'sin',ins:'sin()',wrap:'func',off:-1,t:'Sine'},
+      {l:'cos',ins:'cos()',wrap:'func',off:-1,t:'Cosine'},
+      {l:'tan',ins:'tan()',wrap:'func',off:-1,t:'Tangent'},
+      {l:'sin⁻¹',ins:'arcsin()',wrap:'func',off:-1,t:'Arcsine (sin⁻¹)'},
+      {l:'cos⁻¹',ins:'arccos()',wrap:'func',off:-1,t:'Arccosine (cos⁻¹)'},
+      {l:'tan⁻¹',ins:'arctan()',wrap:'func',off:-1,t:'Arctangent (tan⁻¹)'},
+      {l:'sec',ins:'sec()',wrap:'func',off:-1,t:'Secant (sec)'},
+
+      {l:'csc',ins:'csc()',wrap:'func',off:-1,t:'Cosecant (csc)'},
+      {l:'cot',ins:'cot()',wrap:'func',off:-1,t:'Cotangent (cot)'},
+      {l:'ln',ins:'ln()',wrap:'func',off:-1,t:'Natural log (ln)'},
+      {l:'log',ins:'log()',wrap:'func',off:-1,t:'Log base 10'},
+      {l:'eˣ',ins:'e^',t:'Exponential (eˣ)'},
+      {l:'10ˣ',ins:'10^',t:'Power of 10 (10ˣ)'},
+      {l:'∛x',ins:'cbrt()',wrap:'func',off:-1,t:'Cube root (∛)'},
+
+      {l:'θ',ins:'θ',t:'Theta (θ)'},
+      {l:'α',ins:'α',t:'Alpha (α)'},
+      {l:'β',ins:'β',t:'Beta (β)'},
+      {l:'λ',ins:'λ',t:'Lambda (λ)'},
+      {l:'μ',ins:'μ',t:'Mu (μ)'},
+      {l:'σ',ins:'σ',t:'Sigma (σ)'},
+      {l:'n!',ins:'!',t:'Factorial (n!)'},
+
+      {l:'◄',act:'left',t:_t('ix.mp.left')},
+      {l:'►',act:'right',t:_t('ix.mp.right')},
+      {l:'⌫',act:'backspace',t:_t('ix.mp.backspace')},
+      {l:'C',act:'clear',t:_t('ix.mp.clear')}
+    ],
+    'sym':[
+      {l:'<',ins:'<',t:'Less than (<)'},
+      {l:'>',ins:'>',t:'Greater than (>)'},
+      {l:'≤',ins:'<=',t:'Less than or equal (≤)'},
+      {l:'≥',ins:'>=',t:'Greater than or equal (≥)'},
+      {l:'≠',ins:'!=',t:'Not equal (≠)'},
+      {l:'≈',ins:'≈',t:'Approximately equal (≈)'},
+      {l:'±',ins:'±',t:'Plus or minus (±)'},
+
+      {l:'∞',ins:'inf',t:'Infinity (∞)'},
+      {l:'∈',ins:' in ',t:'Element of (∈)'},
+      {l:'∉',ins:' notin ',t:'Not element of (∉)'},
+      {l:'∪',ins:' U ',t:'Union (∪)'},
+      {l:'∩',ins:' intersect ',t:'Intersection (∩)'},
+      {l:'∅',ins:'empty',t:'Empty set (∅)'},
+      {l:'%',ins:'%',t:'Percent (%)'},
+
+      {l:'d/dx',ins:'d/dx ',t:'Derivative (d/dx)'},
+      {l:'∫',ins:'int ',t:'Integral (∫)'},
+      {l:'lim',ins:'lim ',t:'Limit (lim)'},
+      {l:'∑',ins:'sum ',t:'Summation (∑)'},
+      {l:'[',ins:'[',t:'Left bracket ['},
+      {l:']',ins:']',t:'Right bracket ]'},
+      {l:',',ins:', ',t:'Comma (,)'},
+
+      {l:'◄',act:'left',t:_t('ix.mp.left')},
+      {l:'►',act:'right',t:_t('ix.mp.right')},
+      {l:'⌫',act:'backspace',t:_t('ix.mp.backspace')},
+      {l:'C',act:'clear',t:_t('ix.mp.clear')}
+    ]
+  };
+
+  Object.keys(tabKeys).forEach(function(tId){
+    var g=document.createElement('div');g.className='ix-mp-grid';
+    if(tId!=='123')g.style.display='none';
+    tabKeys[tId].forEach(function(k){
+      var btn=document.createElement('button');btn.type='button';
+      var isAct=(k.act==='backspace'||k.act==='clear');
+      var isNav=(k.act==='left'||k.act==='right');
+      btn.className='ix-mp-key'+(isAct?' ix-mp-act':(isNav?' ix-mp-nav':''));
+      btn.textContent=k.l;btn.title=k.t;btn.setAttribute('aria-label',k.t);
+      btn.addEventListener('mousedown',function(e){
+        e.preventDefault();
+        handleKey(k);
+      });
+      g.appendChild(btn);
+    });
+    tabGrids[tId]=g;
+    panels.appendChild(g);
+  });
+  body.appendChild(panels);
+
+  // 4. Footer with Check button
+  var footer=document.createElement('div');footer.className='ix-mp-footer';
+  if(typeof opts.onCheck==='function'){
+    var checkBtn=document.createElement('button');checkBtn.type='button';
+    checkBtn.className='ix-mp-check-btn';
+    checkBtn.innerHTML='✓ '+_t('ix.mp.check');
+    checkBtn.addEventListener('click',function(e){
+      e.preventDefault();
+      opts.onCheck();
+    });
+    footer.appendChild(checkBtn);
+  }
+  body.appendChild(footer);
+  pal.appendChild(body);
+
+  function switchTab(newTab){
+    curTab=newTab;
+    Object.keys(tabBtns).forEach(function(id){
+      var isActive=(id===curTab);
+      tabBtns[id].classList.toggle('active',isActive);
+      tabBtns[id].setAttribute('aria-selected',isActive?'true':'false');
+      if(tabGrids[id])tabGrids[id].style.display=isActive?'grid':'none';
+    });
+  }
+
+  function handleKey(k){
+    var target=typeof getTargetInp==='function'?getTargetInp():getTargetInp;
+    if(!target)return;
+
+    var val=target.value||'';
+    var start=Math.min(val.length,Math.max(0,(target.selectionStart!=null)?target.selectionStart:val.length));
+    var end=Math.min(val.length,Math.max(0,(target.selectionEnd!=null)?target.selectionEnd:val.length));
+    var selected=val.substring(start,end);
+
+    if(k.act==='clear'){
+      target.value='';
+      if(target.setSelectionRange)target.setSelectionRange(0,0);
+      target.dispatchEvent(new Event('input',{bubbles:true}));
+      target.dispatchEvent(new Event('change',{bubbles:true}));
+      target.focus();
+      updatePreview('');
+      return;
+    }
+
+    if(k.act==='backspace'){
+      if(start===end&&start>0){
+        target.value=val.substring(0,start-1)+val.substring(start);
+        target.setSelectionRange(start-1,start-1);
+      }else if(start!==end){
+        target.value=val.substring(0,start)+val.substring(end);
+        target.setSelectionRange(start,start);
       }
       target.dispatchEvent(new Event('input',{bubbles:true}));
       target.dispatchEvent(new Event('change',{bubbles:true}));
-    });
-    grid.appendChild(btn);
+      target.focus();
+      updatePreview(target.value);
+      return;
+    }
+
+    if(k.act==='left'){
+      var newPos=Math.max(0,start-1);
+      target.focus();
+      target.setSelectionRange(newPos,newPos);
+      return;
+    }
+
+    if(k.act==='right'){
+      var newPos=Math.min(val.length,end+1);
+      target.focus();
+      target.setSelectionRange(newPos,newPos);
+      return;
+    }
+
+    if(selected.length>0&&k.wrap){
+      var repl='';
+      var newCursor=start;
+      if(k.wrap==='frac'){
+        repl='('+selected+')/()';
+        newCursor=start+repl.length-1;
+      }else if(k.wrap==='sqrt'){
+        repl='sqrt('+selected+')';
+        newCursor=start+repl.length;
+      }else if(k.wrap==='paren'){
+        repl='('+selected+')';
+        newCursor=start+repl.length;
+      }else if(k.wrap==='abs'){
+        repl='abs('+selected+')';
+        newCursor=start+repl.length;
+      }else if(k.wrap==='^2'){
+        repl='('+selected+')^2';
+        newCursor=start+repl.length;
+      }else if(k.wrap==='func'){
+        repl=k.ins.replace('()','('+selected+')');
+        newCursor=start+repl.length;
+      }else{
+        repl=k.ins;
+        newCursor=start+repl.length+(k.off||0);
+      }
+      target.value=val.substring(0,start)+repl+val.substring(end);
+      if(target.setSelectionRange){
+        target.focus();
+        target.setSelectionRange(newCursor,newCursor);
+      }
+    }else{
+      target.value=val.substring(0,start)+k.ins+val.substring(end);
+      var newCursor=start+k.ins.length+(k.off||0);
+      if(target.setSelectionRange){
+        target.focus();
+        target.setSelectionRange(newCursor,newCursor);
+      }
+    }
+
+    target.dispatchEvent(new Event('input',{bubbles:true}));
+    target.dispatchEvent(new Event('change',{bubbles:true}));
+    updatePreview(target.value);
+  }
+
+  function openKeypad(){
+    body.style.display='block';
+    pal.classList.add('open');
+    toggleBtn.setAttribute('aria-expanded','true');
+    var labelEl=toggleBtn.querySelector('span:last-child');
+    if(labelEl)labelEl.textContent=_t('ix.mp.hide');
+    var target=typeof getTargetInp==='function'?getTargetInp():getTargetInp;
+    if(target)updatePreview(target.value);
+  }
+
+  function closeKeypad(){
+    body.style.display='none';
+    pal.classList.remove('open');
+    toggleBtn.setAttribute('aria-expanded','false');
+    var labelEl=toggleBtn.querySelector('span:last-child');
+    if(labelEl)labelEl.textContent=_t('ix.mp.toggle');
+  }
+
+  toggleBtn.addEventListener('click',function(e){
+    e.preventDefault();
+    if(body.style.display==='none')openKeypad();
+    else closeKeypad();
   });
 
-  toggleBtn.addEventListener('click',function(){
-    var open=grid.style.display!=='none';
-    grid.style.display=open?'none':'flex';
-    toggleBtn.setAttribute('aria-expanded',open?'false':'true');
-    var labelEl=toggleBtn.querySelector('span:last-child');
-    if(labelEl)labelEl.textContent=open?_t('ix.mp.toggle'):_t('ix.mp.hide');
+  // Sync preview when student types manually into input
+  container.addEventListener('input',function(e){
+    if(e.target&&(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')){
+      updatePreview(e.target.value);
+    }
   });
+
+  pal.updatePreview=updatePreview;
+  pal.open=openKeypad;
+  pal.close=closeKeypad;
+  pal.switchTab=switchTab;
 
   container.appendChild(pal);
   return pal;
 }
 window.ClipSATMathPalette=_attachMathPalette;
+window.ClipSATVirtualKeypad=_attachMathPalette;
 
 function _buildSB(cfg,box){
   box.innerHTML='<span class="ix-badge sb">'+_t('ix.badge.sb')+'</span>';
@@ -436,7 +744,9 @@ function _buildSB(cfg,box){
     _mjax(res);
   });
 
-  _attachMathPalette(box,function(){return activeInp||(inps[0]&&inps[0].inp);});
+  _attachMathPalette(box,function(){return activeInp||(inps[0]&&inps[0].inp);},{
+    onCheck:function(){go.click();}
+  });
 
   var btnRow=document.createElement('div');btnRow.style.cssText='display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;';
   btnRow.appendChild(go);btnRow.appendChild(revealBtn);
@@ -526,7 +836,9 @@ function _buildNUM(cfg,box){
   var revealBtn=document.createElement('button');revealBtn.type='button';revealBtn.className='ix-sb-show-ans';
   revealBtn.textContent=_t('ix.num.showSol');revealBtn.style.display='none';
   row.appendChild(go);row.appendChild(revealBtn);wrap.appendChild(row);
-  _attachMathPalette(wrap,function(){return inp;});
+  _attachMathPalette(wrap,function(){return inp;},{
+    onCheck:function(){go.click();}
+  });
 
   var res=document.createElement('div');res.className='ix-fb';res.style.display='none';
   res.setAttribute('role','status');res.setAttribute('aria-live','polite');

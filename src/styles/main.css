@@ -2639,24 +2639,354 @@ body.dark .m-quiz-btn:hover{background:rgba(34,197,94,.26)}
 .ix-num-hint{display:block;margin-top:.35rem;font-size:.82rem}
 .ix-num-sol{margin-top:.45rem;padding-top:.45rem;border-top:1px dashed var(--line,#ddd);font-size:.84rem}
 /* Math Virtual Keyboard Palette */
-.ix-math-palette{margin:.5rem 0;border-radius:8px;background:var(--paper-2,#f8fafc);border:1px solid var(--line,#e2e8f0);padding:.35rem .5rem}
-.ix-mp-toggle-row{display:flex;align-items:center;justify-content:flex-start}
-.ix-mp-toggle-btn{background:transparent;border:none;color:var(--accent,#2f6fc4);font-size:.8rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:.3rem;padding:.2rem .4rem;border-radius:4px;transition:background .15s ease}
-.ix-mp-toggle-btn:hover{background:rgba(47,111,196,.08)}
-.ix-mp-grid{display:flex;flex-wrap:wrap;gap:.35rem;padding-top:.4rem;border-top:1px solid var(--line,#e2e8f0);margin-top:.35rem}
-.ix-mp-key{padding:.28rem .55rem;font-size:.86rem;font-weight:600;font-family:inherit;border:1px solid var(--line,#cbd5e1);background:var(--paper,#fff);color:var(--ink,#1e293b);border-radius:6px;cursor:pointer;transition:all .1s ease;user-select:none;min-width:32px;text-align:center}
-.ix-mp-key:hover{background:var(--accent,#2f6fc4);color:#fff;border-color:var(--accent,#2f6fc4);transform:translateY(-1px)}
-.ix-mp-key:active{transform:translateY(1px)}
-.ix-mp-key.ix-mp-act{background:rgba(239,68,68,.08);color:#dc2626;border-color:rgba(239,68,68,.3)}
-.ix-mp-key.ix-mp-act:hover{background:#dc2626;color:#fff}
-body.dark .ix-math-palette{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08)}
-body.dark .ix-mp-toggle-btn{color:#60a5fa}
-body.dark .ix-mp-toggle-btn:hover{background:rgba(96,165,250,.12)}
-body.dark .ix-mp-grid{border-top-color:rgba(255,255,255,.08)}
-body.dark .ix-mp-key{background:var(--panel,#1e293b);border-color:var(--border,#334155);color:var(--text-1,#e2e8f0)}
-body.dark .ix-mp-key:hover{background:#3b82f6;color:#fff;border-color:#3b82f6}
-body.dark .ix-mp-key.ix-mp-act{background:rgba(239,68,68,.15);color:#fca5a5;border-color:rgba(239,68,68,.3)}
-body.dark .ix-mp-key.ix-mp-act:hover{background:#ef4444;color:#fff}
+.ix-math-palette {
+  margin: 0.65rem 0;
+  border-radius: 12px;
+  background: var(--paper-2, #f8fafc);
+  border: 1px solid var(--line, #e2e8f0);
+  padding: 0.45rem 0.65rem;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+.ix-math-palette.open {
+  background: var(--panel, #ffffff);
+  border-color: var(--accent, #2f6fc4);
+  box-shadow: 0 4px 16px rgba(47, 111, 196, 0.1);
+}
+.ix-mp-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.ix-mp-toggle-btn {
+  background: rgba(47, 111, 196, 0.08);
+  border: 1px solid rgba(47, 111, 196, 0.2);
+  color: var(--accent, #2f6fc4);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  transition: all 0.15s ease;
+}
+.ix-mp-toggle-btn:hover {
+  background: var(--accent, #2f6fc4);
+  color: #ffffff;
+  border-color: var(--accent, #2f6fc4);
+}
+.ix-mp-body {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--line, #e2e8f0);
+}
+/* Keypad Header & Tabs */
+.ix-mp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+}
+.ix-mp-tabs {
+  display: inline-flex;
+  gap: 0.3rem;
+  background: var(--paper-2, #f1f5f9);
+  padding: 2px 4px;
+  border-radius: 8px;
+  border: 1px solid var(--line, #e2e8f0);
+}
+.ix-mp-tab-btn {
+  background: transparent;
+  border: none;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  color: var(--muted, #64748b);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+.ix-mp-tab-btn:hover {
+  color: var(--ink, #1e293b);
+}
+.ix-mp-tab-btn.active {
+  background: var(--paper, #ffffff);
+  color: var(--accent, #2f6fc4);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.ix-mp-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--muted, #94a3b8);
+  font-size: 0.85rem;
+  font-weight: 700;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+.ix-mp-close-btn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+/* KaTeX Live Math Preview Strip */
+.ix-mp-preview-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.6rem;
+  background: var(--paper-2, #f8fafc);
+  border: 1px dashed var(--line, #cbd5e1);
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  min-height: 34px;
+  overflow-x: auto;
+}
+.ix-mp-preview-lbl {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--muted, #64748b);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.ix-mp-preview-cnt {
+  font-size: 0.95rem;
+  color: var(--ink, #0f172a);
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+}
+.ix-mp-ph {
+  color: var(--muted, #94a3b8);
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+/* Keypad Grid & Button Tiles */
+.ix-mp-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 0.4rem;
+}
+.ix-mp-key {
+  padding: 0.38rem 0.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  border: 1px solid var(--line, #cbd5e1);
+  background: var(--paper, #ffffff);
+  color: var(--ink, #1e293b);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  user-select: none;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+.ix-mp-key:hover {
+  background: var(--accent, #2f6fc4);
+  color: #ffffff;
+  border-color: var(--accent, #2f6fc4);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(47, 111, 196, 0.2);
+}
+.ix-mp-key:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+.ix-mp-key.ix-mp-act {
+  background: rgba(239, 68, 68, 0.08);
+  color: #dc2626;
+  border-color: rgba(239, 68, 68, 0.25);
+}
+.ix-mp-key.ix-mp-act:hover {
+  background: #dc2626;
+  color: #ffffff;
+  border-color: #dc2626;
+}
+.ix-mp-key.ix-mp-nav {
+  background: var(--paper-2, #f1f5f9);
+  color: var(--ink, #334155);
+}
+.ix-mp-key.ix-mp-nav:hover {
+  background: var(--accent, #2f6fc4);
+  color: #ffffff;
+}
+
+/* Keypad Footer & Direct Check Button */
+.ix-mp-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+}
+.ix-mp-check-btn {
+  background: var(--ok, #16a34a);
+  color: #ffffff;
+  border: none;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.35rem 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 3px rgba(22, 163, 74, 0.3);
+}
+.ix-mp-check-btn:hover {
+  background: #15803d;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(22, 163, 74, 0.4);
+}
+.ix-mp-check-btn:active {
+  transform: translateY(0);
+}
+
+/* Dark Mode */
+body.dark .ix-math-palette {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+body.dark .ix-math-palette.open {
+  background: var(--panel, #1e293b);
+  border-color: #3b82f6;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+body.dark .ix-mp-toggle-btn {
+  color: #60a5fa;
+  background: rgba(96, 165, 250, 0.12);
+  border-color: rgba(96, 165, 250, 0.25);
+}
+body.dark .ix-mp-toggle-btn:hover {
+  background: #3b82f6;
+  color: #ffffff;
+}
+body.dark .ix-mp-body {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+body.dark .ix-mp-tabs {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+body.dark .ix-mp-tab-btn {
+  color: #94a3b8;
+}
+body.dark .ix-mp-tab-btn:hover {
+  color: #e2e8f0;
+}
+body.dark .ix-mp-tab-btn.active {
+  background: #334155;
+  color: #60a5fa;
+}
+body.dark .ix-mp-close-btn {
+  color: #64748b;
+}
+body.dark .ix-mp-close-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+body.dark .ix-mp-preview-bar {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+body.dark .ix-mp-preview-lbl {
+  color: #94a3b8;
+}
+body.dark .ix-mp-preview-cnt {
+  color: #f1f5f9;
+}
+body.dark .ix-mp-key {
+  background: var(--panel, #1e293b);
+  border-color: var(--border, #334155);
+  color: var(--text-1, #e2e8f0);
+}
+body.dark .ix-mp-key:hover {
+  background: #3b82f6;
+  color: #ffffff;
+  border-color: #3b82f6;
+}
+body.dark .ix-mp-key.ix-mp-act {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+body.dark .ix-mp-key.ix-mp-act:hover {
+  background: #ef4444;
+  color: #ffffff;
+}
+body.dark .ix-mp-key.ix-mp-nav {
+  background: #334155;
+  color: #cbd5e1;
+}
+body.dark .ix-mp-key.ix-mp-nav:hover {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+/* Mobile Bottom Sheet Docking */
+@media (max-width: 768px) {
+  .ix-math-palette.open {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99990;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25);
+    background: var(--paper, #ffffff);
+    border: 1px solid var(--line, #e2e8f0);
+    border-bottom: none;
+    max-height: 52vh;
+    overflow-y: auto;
+    padding: 8px 12px calc(10px + env(safe-area-inset-bottom, 12px)) 12px;
+    animation: ixMpSlideUp 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes ixMpSlideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  .ix-mp-key {
+    min-height: 40px;
+    font-size: 0.95rem;
+  }
+  body.dark .ix-math-palette.open {
+    background: #0f172a;
+    border-color: #334155;
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* RTL Support */
+[dir="rtl"] .ix-mp-header,
+body[dir="rtl"] .ix-mp-header {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .ix-mp-footer,
+body[dir="rtl"] .ix-mp-footer {
+  justify-content: flex-start;
+}
+[dir="rtl"] .ix-mp-preview-bar,
+body[dir="rtl"] .ix-mp-preview-bar {
+  flex-direction: row-reverse;
+}
 /* Dual Language Exam Modes (Qudrat / Tahsili) */
 .q-lang-wrap{display:block}
 .cs-lang-ar .q-lang-en{display:none!important}
