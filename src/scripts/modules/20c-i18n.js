@@ -68,7 +68,7 @@
         'search.placeholder':'Search topics…',
         'nav.progress':'Progress','nav.teacher':'Teacher','nav.support':'Support',
         'nav.calculator':'Calculator','nav.more':'More','nav.whiteboard':'Whiteboard',
-        'nav.whats-new-label':"What's New",
+        'nav.whats-new-label':"What's New",'nav.share-classroom':'Share to Classroom',
         'syllabus.reviewed':'Official Syllabus Verified',
         'syllabus.lastReview':'Last reviewed against official syllabus:',
         'syllabus.standardLink':'Standards & Rigor ↗',

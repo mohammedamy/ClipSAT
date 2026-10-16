@@ -665,13 +665,10 @@ const baseNjk = `<!DOCTYPE html>
                 <span class="nav-more-item-icon">🏫</span>
                 <span class="nav-more-item-text">Classroom View</span>
               </button>
-              <span class="g-sharetoclassroom-wrap" title="Share this page to Google Classroom">
-                <script src="https://apis.google.com/js/platform.js" async defer></script>
-                <div class="g-sharetoclassroom" data-size="32" data-theme="classic"
-                     data-url="https://clipsat.org{{ '/' + trackId + '/' if trackId !== 'home' else '/' }}"
-                     data-title="{{ title }}"
-                     data-itemtype="material"></div>
-              </span>
+              <button type="button" class="nav-more-item" id="shareClassroomBtn" title="Share this page to Google Classroom" onclick="window.shareToClassroom&&window.shareToClassroom();window.closeNavMorePanel&&window.closeNavMorePanel()">
+                <span class="nav-more-item-icon">🏫</span>
+                <span class="nav-more-item-text" data-i18n="nav.share-classroom">Share to Classroom</span>
+              </button>
             </div>
             <div class="nav-more-divider"></div>
             <div class="nav-more-section">

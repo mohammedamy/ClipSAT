@@ -15,6 +15,13 @@ document.addEventListener('click',function(e){
         else window.showView(v);
       }
     };
+  window.shareToClassroom = function(){
+    var track = window.CLIPSAT_TRACK || 'home';
+    var url = 'https://clipsat.org' + (track === 'home' ? '/' : '/' + track + '/');
+    var title = document.title || 'ClipSAT';
+    var shareUrl = 'https://classroom.google.com/share?url=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(title);
+    window.open(shareUrl, '_blank', 'noopener,noreferrer,width=650,height=550');
+  };
 
 /* Splash screen removed (product decision, 2026-08-20 — also closed out the
    CLS 0.535 finding in docs/DECISIONS/0024, since the splash settling was

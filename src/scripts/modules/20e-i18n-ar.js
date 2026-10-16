@@ -48,7 +48,7 @@
         'search.placeholder':'ابحث عن موضوع…',
         'nav.progress':'التقدم','nav.teacher':'المعلم','nav.support':'ادعم الموقع',
         'nav.calculator':'الآلة الحاسبة','nav.more':'المزيد','nav.whiteboard':'السبورة',
-        'nav.whats-new-label':'الجديد',
+        'nav.whats-new-label':'الجديد','nav.share-classroom':'مشاركة في Classroom',
         'syllabus.reviewed':'تم التحقق من المنهج الرسمي',
         'syllabus.lastReview':'آخر مراجعة وفق المنهج الرسمي:',
         'syllabus.standardLink':'معايير الجودة والصرامة ↗',

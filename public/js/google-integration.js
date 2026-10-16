@@ -110,7 +110,6 @@
       if (!data || !data.access_token) return null;
       _token = data.access_token;
       _tokenScopes = SUPABASE_GOOGLE_SCOPES.slice();
-      try { sessionStorage.setItem(SESSION_FLAG, '1'); } catch (e) {}
       log('using Google token from ClipSAT sign-in');
       return _token;
     }).catch(function (err) { log('Supabase-Google token fetch failed: ' + (err && err.message)); return null; });
@@ -159,9 +158,11 @@
   }
 
   // scopes: array of full scope URLs. Returns a Promise<string> (the access token).
-  // silent: if true, requests with prompt:'' (no popup) — used for same-tab reload
-  // reacquire; a failure here should be swallowed by the caller, not surfaced as an error.
+  // silent: if true, returns null immediately without opening a popup. GIS token client
+  // is fundamentally a user-gesture popup flow and cannot silently fetch tokens without
+  // user interaction.
   function requestToken(scopes, silent) {
+    if (silent) return Promise.resolve(null);
     return loadGIS().then(function () {
       return new Promise(function (resolve, reject) {
         var scopeStr = scopes.join(' ');
@@ -175,14 +176,13 @@
           }
           _token = resp.access_token;
           _tokenScopes = scopeStr.split(' ');
-          try { sessionStorage.setItem(SESSION_FLAG, '1'); } catch (e) {}
           log('token acquired for scopes: ' + scopeStr);
           resolve(_token);
         };
         client.error_callback = function (err) {
           reject(new Error('Google sign-in failed: ' + (err && err.type ? err.type : 'unknown error')));
         };
-        client.requestAccessToken(silent ? { prompt: '' } : {});
+        client.requestAccessToken({});
       });
     });
   }
@@ -216,16 +216,9 @@
       });
     },
 
-    // Called once at page load by quiz-capture-ui.js to silently restore a
-    // connection within the same tab session, without a popup.
+    // Background restore: only checks the Supabase session, never triggers a GIS popup.
     trySilentRestore: function (scopes) {
-      return trySupabaseGoogleToken().then(function (t) {
-        if (t) return t;
-        var had;
-        try { had = sessionStorage.getItem(SESSION_FLAG) === '1'; } catch (e) { had = false; }
-        if (!had) return null;
-        return requestToken(scopes, true).catch(function () { return null; });
-      });
+      return trySupabaseGoogleToken();
     },
 
     signOut: function () {

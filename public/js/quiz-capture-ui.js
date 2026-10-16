@@ -317,13 +317,8 @@
     });
   };
 
-  // ══════════════════════════ Silent same-tab restore ══════════════════════════
-
-  if (configured()) {
-    var restore = function () {
-      window.ClipSATGoogle.trySilentRestore(window.ClipSATForms.SCOPES);
-    };
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', restore);
-    else restore();
-  }
+  // Google Forms auth is strictly on-demand: when a teacher clicks "Create Google Form",
+  // beginCreateFlow() checks window.ClipSATGoogle.isSignedIn(), and if not, opens the
+  // explanation modal where the user explicitly clicks "Continue with Google".
+  // Never trigger any automatic auth or silent restore on page load or track navigation.
 })();
