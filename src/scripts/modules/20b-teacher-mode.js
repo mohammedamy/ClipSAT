@@ -9,10 +9,16 @@
       '.tm-diff-hard{background:#fee2e2;color:#991b1b;padding:1px 6px;border-radius:4px}',
       '.tm-diff-review{background:#ede9fe;color:#5b21b6;padding:1px 6px;border-radius:4px}',
       '.tm-src{background:#f1f5f9;color:#475569;padding:1px 6px;border-radius:4px}',
-      '.tm-toolbar{position:fixed;bottom:90px;right:16px;z-index:9000;background:#1e1b4b;color:#fff;',
-      'border-radius:12px;padding:10px 18px;font-size:13px;display:flex;gap:10px;align-items:center;',
-      'box-shadow:0 4px 20px rgba(0,0,0,.3)}',
-      '.tm-toolbar button{background:#4f46e5;color:#fff;border:none;border-radius:7px;padding:5px 12px;cursor:pointer;font-size:12px}',
+      '.tm-toolbar{position:fixed;top:74px;left:50%;transform:translateX(-50%);z-index:9995;background:#1e1b4b;color:#fff;',
+      'border-radius:999px;padding:8px 18px;font-size:13px;display:flex;gap:8px;align-items:center;',
+      'box-shadow:0 8px 30px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.15);max-width:min(calc(100vw - 24px),980px);overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}',
+      '.tm-toolbar::-webkit-scrollbar{height:4px}',
+      '.tm-toolbar::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:4px}',
+      '.tm-drag-handle{cursor:grab;color:rgba(255,255,255,.6);font-size:14px;padding:0 4px;user-select:none;touch-action:none;letter-spacing:-1px}',
+      '.tm-drag-handle:active{cursor:grabbing}',
+      '.tm-toolbar button{background:#4f46e5;color:#fff;border:none;border-radius:7px;padding:6px 12px;cursor:pointer;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:4px;white-space:nowrap;transition:background .15s,transform .15s}',
+      '.tm-toolbar button:hover{background:#4338ca;transform:translateY(-1px)}',
+      '@media (max-width: 640px){.tm-toolbar{top:66px;padding:6px 12px;gap:6px;font-size:12px}}',
       '@media print{.cq-sol{display:block!important}.tm-meta{display:flex!important}',
       'nav,.sidebar,#tm-toolbar,#chatFab,#daily-goal-bar,#exam-countdown-bar,#weak-recs{display:none!important}}'
     ].join('');
@@ -40,7 +46,8 @@
         var bar=document.createElement('div');
         bar.id='tm-toolbar'; bar.className='tm-toolbar';
         if(_ttAr()) bar.dir='rtl';
-        bar.innerHTML=_tt('tmTeacherMode')
+        bar.innerHTML='<span class="tm-drag-handle" title="Drag toolbar">⋮⋮</span> '
+          +_tt('tmTeacherMode')
           +' <button onclick="window.TeacherMode.printLessonPlan()">'+_tt('tmLessonPlan')+'</button>'
           +' <button onclick="window.TeacherMode.exportPDF()">'+_tt('tmPrintChapterPdf')+'</button>'
           +' <button onclick="window.TeacherMode.exportWord()">'+_tt('tmQuizWordExport')+'</button>'
@@ -49,6 +56,41 @@
           +' <button onclick="window.CSReport&&window.CSReport.generate()">'+_tt('tmProgressReport')+'</button>'
           +' <button onclick="window.TeacherMode.toggle()" style="background:#7f1d1d">'+_tt('tmOff')+'</button>';
         document.body.appendChild(bar);
+
+        /* Enable dragging by the handle */
+        var handle = bar.querySelector('.tm-drag-handle');
+        if(handle){
+          var isDragging = false, dragStart = { x: 0, y: 0 }, barStart = { x: 0, y: 0 };
+          handle.addEventListener('pointerdown', function(e){
+            isDragging = true;
+            try { handle.setPointerCapture(e.pointerId); } catch(err) {}
+            dragStart = { x: e.clientX, y: e.clientY };
+            var rect = bar.getBoundingClientRect();
+            barStart = { x: rect.left, y: rect.top };
+            bar.style.transform = 'none';
+            bar.style.left = barStart.x + 'px';
+            bar.style.top = barStart.y + 'px';
+            bar.style.bottom = 'auto';
+            bar.style.right = 'auto';
+            e.preventDefault();
+          });
+          handle.addEventListener('pointermove', function(e){
+            if(!isDragging) return;
+            var dx = e.clientX - dragStart.x;
+            var dy = e.clientY - dragStart.y;
+            var newX = Math.max(8, Math.min(window.innerWidth - bar.offsetWidth - 8, barStart.x + dx));
+            var newY = Math.max(8, Math.min(window.innerHeight - bar.offsetHeight - 8, barStart.y + dy));
+            bar.style.left = newX + 'px';
+            bar.style.top = newY + 'px';
+          });
+          function onPointerUp(e){
+            if(!isDragging) return;
+            isDragging = false;
+            try { handle.releasePointerCapture(e.pointerId); } catch(err) {}
+          }
+          handle.addEventListener('pointerup', onPointerUp);
+          handle.addEventListener('pointercancel', onPointerUp);
+        }
       }
     }
 
