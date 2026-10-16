@@ -335,6 +335,370 @@
       ],
       "answer": 0,
       "sol": "Variance along direction \\( \\mathbf{v} \\) is \\( \\mathbf{v}^T \\mathbf{\\Sigma} \\mathbf{v} \\). Since \\( \\mathbf{\\Sigma}\\mathbf{v} = \\lambda \\mathbf{v} \\), we have \\( \\mathbf{v}^T(\\lambda \\mathbf{v}) = \\lambda (\\mathbf{v}^T\\mathbf{v}) = \\lambda(1) = \\lambda \\). Each eigenvalue directly equals the variance along its principal axis."
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors, Norms & High-Dimensional Cosine Similarity",
+      "difficulty": "easy",
+      "text": "Compute the Manhattan (\\( L_1 \\)) norm of the vector \\( \\mathbf{v} = [-3, 5, -2, 4]^T \\).",
+      "choices": [
+        "14",
+        "\\( \\sqrt{54} \\)",
+        "4",
+        "10"
+      ],
+      "answer": 0,
+      "sol": "The Manhattan norm is the sum of absolute values of the components: \\( \\|\\mathbf{v}\\|_1 = |-3| + |5| + |-2| + |4| = 3 + 5 + 2 + 4 = 14 \\)."
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors, Norms & High-Dimensional Cosine Similarity",
+      "difficulty": "medium",
+      "text": "Given two word embeddings \\( \\mathbf{u} = [1, 2, 2]^T \\) and \\( \\mathbf{v} = [2, 1, -2]^T \\), find their cosine similarity \\( \\cos(\\theta) \\).",
+      "choices": [
+        "0",
+        "1",
+        "\\( \\frac{4}{9} \\)",
+        "\\( -\\frac{2}{9} \\)"
+      ],
+      "answer": 0,
+      "sol": "Cosine similarity is \\( \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{u}\\|_2 \\|\\mathbf{v}\\|_2} \\). Dot product: \\( \\mathbf{u} \\cdot \\mathbf{v} = (1)(2) + (2)(1) + (2)(-2) = 2 + 2 - 4 = 0 \\). Since the dot product is zero, \\( \\cos(\\theta) = 0 \\), indicating orthogonal representations."
+    },
+    {
+      "type": "mcq",
+      "domain": "Vectors, Norms & High-Dimensional Cosine Similarity",
+      "difficulty": "hard",
+      "text": "If a vector \\( \\mathbf{x} \\in \\mathbb{R}^{100} \\) has Euclidean norm \\( \\|\\mathbf{x}\\|_2 = 10 \\), what is the theoretical maximum possible value of its Chebyshev norm \\( \\|\\mathbf{x}\\|_\\infty \\)?",
+      "choices": [
+        "10",
+        "1",
+        "100",
+        "\\( \\sqrt{10} \\)"
+      ],
+      "answer": 0,
+      "sol": "By norm bounds, \\( \\|\\mathbf{x}\\|_\\infty = \\max_i |x_i| \\le \\sqrt{\\sum_{i=1}^d x_i^2} = \\|\\mathbf{x}\\|_2 = 10 \\). Equality is achieved when one component has magnitude 10 and all other 99 components are 0."
+    },
+    {
+      "type": "mcq",
+      "domain": "Matrices, Linear Transformations & Neural Layers",
+      "difficulty": "easy",
+      "text": "A dense linear layer in a neural network maps an input vector \\( \\mathbf{x} \\in \\mathbb{R}^{512} \\) to an output \\( \\mathbf{y} \\in \\mathbb{R}^{64} \\) via \\( \\mathbf{y} = \\mathbf{W}\\mathbf{x} + \\mathbf{b} \\). What are the dimensions of weight matrix \\( \\mathbf{W} \\)?",
+      "choices": [
+        "\\( 64 \\times 512 \\)",
+        "\\( 512 \\times 64 \\)",
+        "\\( 64 \\times 64 \\)",
+        "\\( 512 \\times 512 \\)"
+      ],
+      "answer": 0,
+      "sol": "In matrix-vector multiplication \\( \\mathbf{W}\\mathbf{x} \\), if \\( \\mathbf{x} \\) is a \\( 512 \\times 1 \\) column vector and \\( \\mathbf{y} \\) is a \\( 64 \\times 1 \\) column vector, \\( \\mathbf{W} \\) must have 64 rows and 512 columns (\\( 64 \\times 512 \\))."
+    },
+    {
+      "type": "mcq",
+      "domain": "Matrices, Linear Transformations & Neural Layers",
+      "difficulty": "medium",
+      "text": "Find the eigenvalues of the symmetric matrix \\( \\mathbf{A} = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix} \\).",
+      "choices": [
+        "\\( \\lambda = 3 \\) and \\( \\lambda = 1 \\)",
+        "\\( \\lambda = 2 \\) and \\( \\lambda = 1 \\)",
+        "\\( \\lambda = 4 \\) and \\( \\lambda = 0 \\)",
+        "\\( \\lambda = 3 \\) and \\( \\lambda = -1 \\)"
+      ],
+      "answer": 0,
+      "sol": "Solve the characteristic equation: \\( \\det(\\mathbf{A} - \\lambda\\mathbf{I}) = (2 - \\lambda)^2 - 1 = 0 \\implies \\lambda^2 - 4\\lambda + 4 - 1 = 0 \\implies \\lambda^2 - 4\\lambda + 3 = 0 \\implies (\\lambda - 3)(\\lambda - 1) = 0 \\implies \\lambda = 3, 1 \\)."
+    },
+    {
+      "type": "mcq",
+      "domain": "Matrices, Linear Transformations & Neural Layers",
+      "difficulty": "hard",
+      "text": "If a square weight matrix \\( \\mathbf{W} \\) is orthogonal (\\( \\mathbf{W}^T\\mathbf{W} = \\mathbf{I} \\)), what effect does the transformation \\( \\mathbf{z} = \\mathbf{W}\\mathbf{x} \\) have on the Euclidean norm of \\( \\mathbf{x} \\)?",
+      "choices": [
+        "It preserves the norm exactly: \\( \\|\\mathbf{z}\\|_2 = \\|\\mathbf{x}\\|_2 \\)",
+        "It scales the norm by \\( \\det(\\mathbf{W}) \\)",
+        "It contracts the norm by \\( 1/\\sqrt{d} \\)",
+        "It doubles the norm"
+      ],
+      "answer": 0,
+      "sol": "Compute squared Euclidean norm: \\( \\|\\mathbf{z}\\|_2^2 = \\mathbf{z}^T\\mathbf{z} = (\\mathbf{W}\\mathbf{x})^T(\\mathbf{W}\\mathbf{x}) = \\mathbf{x}^T(\\mathbf{W}^T\\mathbf{W})\\mathbf{x} = \\mathbf{x}^T\\mathbf{I}\\mathbf{x} = \\mathbf{x}^T\\mathbf{x} = \\|\\mathbf{x}\\|_2^2 \\). Taking the square root confirms isometric norm preservation."
+    },
+    {
+      "type": "mcq",
+      "domain": "Gradient Descent & Multivariable Optimization",
+      "difficulty": "easy",
+      "text": "For the univariate loss function \\( L(w) = (w - 4)^2 + 3 \\), what is the gradient \\( \\frac{dL}{dw} \\) at \\( w = 1 \\)?",
+      "choices": [
+        "-6",
+        "6",
+        "-3",
+        "0"
+      ],
+      "answer": 0,
+      "sol": "Derivative \\( \\frac{dL}{dw} = 2(w - 4) \\). At \\( w = 1 \\), \\( \\frac{dL}{dw} = 2(1 - 4) = 2(-3) = -6 \\)."
+    },
+    {
+      "type": "mcq",
+      "domain": "Gradient Descent & Multivariable Optimization",
+      "difficulty": "medium",
+      "text": "A model has loss \\( L(w_1, w_2) = w_1^2 + 2w_2^2 \\). With learning rate \\( \\eta = 0.1 \\) and starting weights \\( (4, 3) \\), what are the updated weights after one gradient descent step?",
+      "choices": [
+        "\\( (3.2, 1.8) \\)",
+        "\\( (3.6, 2.4) \\)",
+        "\\( (4.8, 4.2) \\)",
+        "\\( (2.0, 1.0) \\)"
+      ],
+      "answer": 0,
+      "sol": "Compute gradient: \\( \\nabla L = \\begin{pmatrix} 2w_1 \\\\ 4w_2 \\end{pmatrix} \\). At \\( (4, 3) \\), \\( \\nabla L = \\begin{pmatrix} 8 \\\\ 12 \\end{pmatrix} \\). Update rule: \\( \\mathbf{w}^{(1)} = \\mathbf{w}^{(0)} - \\eta\\nabla L = \\begin{pmatrix} 4 \\\\ 3 \\end{pmatrix} - 0.1\\begin{pmatrix} 8 \\\\ 12 \\end{pmatrix} = \\begin{pmatrix} 3.2 \\\\ 1.8 \\end{pmatrix} \\)."
+    },
+    {
+      "type": "mcq",
+      "domain": "Gradient Descent & Multivariable Optimization",
+      "difficulty": "hard",
+      "text": "For the objective function \\( f(\\mathbf{x}) = \\frac{1}{2}\\mathbf{x}^T\\mathbf{A}\\mathbf{x} - \\mathbf{b}^T\\mathbf{x} \\) with symmetric matrix \\( \\mathbf{A} \\), what is the Hessian matrix \\( \\mathbf{H} = \\nabla^2 f(\\mathbf{x}) \\)?",
+      "choices": [
+        "\\( \\mathbf{A} \\)",
+        "\\( \\mathbf{A} - \\mathbf{b} \\)",
+        "\\( \\frac{1}{2}\\mathbf{A} \\)",
+        "\\( \\mathbf{A}^T\\mathbf{A} \\)"
+      ],
+      "answer": 0,
+      "sol": "The first gradient is \\( \\nabla f(\\mathbf{x}) = \\mathbf{A}\\mathbf{x} - \\mathbf{b} \\). The second derivative (Jacobian of the gradient) with respect to \\( \\mathbf{x} \\) is \\( \\nabla^2 f(\\mathbf{x}) = \\mathbf{A} \\). If \\( \\mathbf{A} \\) is positive definite, the unique minimum is at \\( \\mathbf{x}^* = \\mathbf{A}^{-1}\\mathbf{b} \\)."
+    },
+    {
+      "type": "mcq",
+      "domain": "Gradient Descent & Multivariable Optimization",
+      "difficulty": "hard",
+      "text": "Why does gradient descent with Momentum accelerate training when optimizing functions with narrow ravines?",
+      "choices": [
+        "It dampens high-frequency oscillations across steep walls while accumulating velocity along the consistent gentle slope",
+        "It guarantees finding the global minimum for non-convex loss surfaces",
+        "It dynamically calculates second-order Hessian inverses",
+        "It sets learning rates to zero at saddle points"
+      ],
+      "answer": 0,
+      "sol": "In ill-conditioned ravines, gradients alternate directions violently across the narrow canyon walls. Momentum averages past gradients, canceling out opposing cross-ravine oscillations while reinforcing consistent momentum along the ravine floor toward the minimum."
+    },
+    {
+      "type": "mcq",
+      "domain": "Probability, Bayes' Rule & Classification Priors",
+      "difficulty": "easy",
+      "text": "In an email corpus, 20% of messages are spam (\\( P(S) = 0.2 \\)). The word Bonus appears in 70% of spam emails and 10% of legitimate emails. What is the total probability that a randomly chosen email contains Bonus?",
+      "choices": [
+        "0.22",
+        "0.14",
+        "0.08",
+        "0.30"
+      ],
+      "answer": 0,
+      "sol": "By the law of total probability: \\( P(B) = P(B|S)P(S) + P(B|H)P(H) = (0.7)(0.2) + (0.1)(0.8) = 0.14 + 0.08 = 0.22 \\)."
+    },
+    {
+      "type": "mcq",
+      "domain": "Probability, Bayes' Rule & Classification Priors",
+      "difficulty": "medium",
+      "text": "Using the spam filter parameters from the previous question, what is the posterior probability \\( P(S|B) \\) that an email containing Bonus is actually spam?",
+      "choices": [
+        "\\( \\frac{7}{11} \\approx 0.636 \\)",
+        "\\( \\frac{7}{10} = 0.700 \\)",
+        "\\( \\frac{1}{2} = 0.500 \\)",
+        "\\( \\frac{9}{11} \\approx 0.818 \\)"
+      ],
+      "answer": 0,
+      "sol": "By Bayes' theorem: \\( P(S|B) = \\frac{P(B|S)P(S)}{P(B)} = \\frac{(0.7)(0.2)}{0.22} = \\frac{0.14}{0.22} = \\frac{14}{22} = \\frac{7}{11} \\approx 0.636 \\)."
+    },
+    {
+      "type": "mcq",
+      "domain": "Probability, Bayes' Rule & Classification Priors",
+      "difficulty": "hard",
+      "text": "What core independence assumption allows a Naive Bayes classifier to scale linearly with the number of input features \\( d \\)?",
+      "choices": [
+        "Features are conditionally independent given the class label: \\( P(\\mathbf{x}|y) = \\prod_{i=1}^d P(x_i|y) \\)",
+        "Features are mutually orthogonal in Euclidean space",
+        "The features follow an identical Gaussian distribution across all classes",
+        "The covariance matrix between features is non-zero"
+      ],
+      "answer": 0,
+      "sol": "The naive conditional independence assumption posits that knowing the class \\( y \\) renders all features \\( x_i \\) and \\( x_j \\) conditionally independent. This collapses the joint likelihood from exponential complexity to a simple product of \\( d \\) one-dimensional distributions."
+    },
+    {
+      "type": "mcq",
+      "domain": "Probability Distributions, Variance & Maximum Likelihood",
+      "difficulty": "easy",
+      "text": "A Bernoulli random variable has parameter \\( p = 0.3 \\). What is its variance \\( \\text{Var}(X) \\)?",
+      "choices": [
+        "0.21",
+        "0.30",
+        "0.70",
+        "0.49"
+      ],
+      "answer": 0,
+      "sol": "The variance of a Bernoulli trial is \\( \\text{Var}(X) = p(1 - p) = (0.3)(1 - 0.3) = (0.3)(0.7) = 0.21 \\)."
+    },
+    {
+      "type": "mcq",
+      "domain": "Probability Distributions, Variance & Maximum Likelihood",
+      "difficulty": "medium",
+      "text": "We observe \\( k \\) successful classifications in \\( n \\) independent inference trials. What is the Maximum Likelihood Estimate (MLE) for the success rate \\( p \\)?",
+      "choices": [
+        "\\( \\hat{p} = \\frac{k}{n} \\)",
+        "\\( \\hat{p} = \\frac{k+1}{n+2} \\)",
+        "\\( \\hat{p} = \\frac{k}{n-1} \\)",
+        "\\( \\hat{p} = \\sqrt{\\frac{k}{n}} \\)"
+      ],
+      "answer": 0,
+      "sol": "The log-likelihood is \\( \\ln L(p) = k\\ln p + (n-k)\\ln(1-p) \\). Setting derivative to zero: \\( \\frac{d\\ln L}{dp} = \\frac{k}{p} - \\frac{n-k}{1-p} = 0 \\implies k(1-p) = p(n-k) \\implies k = np \\implies \\hat{p}_{\\text{MLE}} = \\frac{k}{n} \\)."
+    },
+    {
+      "type": "mcq",
+      "domain": "Probability Distributions, Variance & Maximum Likelihood",
+      "difficulty": "hard",
+      "text": "For \\( n \\) i.i.d. observations \\( x_1, \\dots, x_n \\) drawn from \\( \\mathcal{N}(\\mu, \\sigma^2) \\), what is the maximum likelihood estimator for the mean \\( \\mu \\)?",
+      "choices": [
+        "The sample mean \\( \\bar{x} = \\frac{1}{n}\\sum_{i=1}^n x_i \\)",
+        "The sample median",
+        "The midpoint \\( (x_{\\min} + x_{\\max})/2 \\)",
+        "The sample mode"
+      ],
+      "answer": 0,
+      "sol": "Log-likelihood: \\( \\ln L(\\mu) = -\\frac{n}{2}\\ln(2\\pi\\sigma^2) - \\frac{1}{2\\sigma^2}\\sum_{i=1}^n (x_i - \\mu)^2 \\). Differentiating with respect to \\( \\mu \\): \\( \\frac{\\partial \\ln L}{\\partial \\mu} = \\frac{1}{\\sigma^2}\\sum_{i=1}^n (x_i - \\mu) = 0 \\implies \\sum x_i - n\\mu = 0 \\implies \\hat{\\mu} = \\frac{1}{n}\\sum_{i=1}^n x_i \\)."
+    },
+    {
+      "type": "mcq",
+      "domain": "Linear Regression, Mean Squared Error & Normal Equations",
+      "difficulty": "easy",
+      "text": "In linear regression, if a data point has ground truth \\( y = 10 \\) and predicted value \\( \\hat{y} = 7 \\), what is the squared error contribution \\( (y - \\hat{y})^2 \\)?",
+      "choices": [
+        "9",
+        "3",
+        "6",
+        "49"
+      ],
+      "answer": 0,
+      "sol": "Residual \\( e = y - \\hat{y} = 10 - 7 = 3 \\). The squared error is \\( e^2 = 3^2 = 9 \\)."
+    },
+    {
+      "type": "mcq",
+      "domain": "Linear Regression, Mean Squared Error & Normal Equations",
+      "difficulty": "medium",
+      "text": "Under what condition is the OLS normal equations matrix \\( \\mathbf{X}^T\\mathbf{X} \\) strictly invertible?",
+      "choices": [
+        "When the design matrix \\( \\mathbf{X} \\) has full column rank (no linearly dependent features)",
+        "When the number of features exceeds the number of observations",
+        "When all target values \\( y_i \\) are positive",
+        "When the mean squared error is zero"
+      ],
+      "answer": 0,
+      "sol": "The Gram matrix \\( \\mathbf{X}^T\\mathbf{X} \\) has size \\( d \\times d \\). It is non-singular and invertible if and only if \\( \\text{rank}(\\mathbf{X}) = d \\), meaning no feature column is a linear combination of other features."
+    },
+    {
+      "type": "mcq",
+      "domain": "Linear Regression, Mean Squared Error & Normal Equations",
+      "difficulty": "hard",
+      "text": "What is the closed-form analytical solution for Ridge regression weights with regularization parameter \\( \\lambda > 0 \\)?",
+      "choices": [
+        "\\( \\mathbf{w}^* = (\\mathbf{X}^T\\mathbf{X} + \\lambda\\mathbf{I})^{-1}\\mathbf{X}^T\\mathbf{y} \\)",
+        "\\( \\mathbf{w}^* = (\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y} - \\lambda\\mathbf{I} \\)",
+        "\\( \\mathbf{w}^* = (\\mathbf{X}^T\\mathbf{X} + \\lambda\\mathbf{y})^{-1}\\mathbf{X}^T \\)",
+        "\\( \\mathbf{w}^* = \\lambda(\\mathbf{X}^T\\mathbf{X})^{-1}\\mathbf{X}^T\\mathbf{y} \\)"
+      ],
+      "answer": 0,
+      "sol": "Objective: \\( J(\\mathbf{w}) = \\|\\mathbf{X}\\mathbf{w} - \\mathbf{y}\\|_2^2 + \\lambda\\|\\mathbf{w}\\|_2^2 \\). Gradient: \\( \\nabla J = 2\\mathbf{X}^T(\\mathbf{X}\\mathbf{w} - \\mathbf{y}) + 2\\lambda\\mathbf{w} = 0 \\implies (\\mathbf{X}^T\\mathbf{X} + \\lambda\\mathbf{I})\\mathbf{w} = \\mathbf{X}^T\\mathbf{y} \\implies \\mathbf{w} = (\\mathbf{X}^T\\mathbf{X} + \\lambda\\mathbf{I})^{-1}\\mathbf{X}^T\\mathbf{y} \\)."
+    },
+    {
+      "type": "mcq",
+      "domain": "Logistic Regression, Sigmoid & Cross-Entropy Loss",
+      "difficulty": "easy",
+      "text": "What is the value of the standard logistic sigmoid activation \\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\) at \\( z = 0 \\)?",
+      "choices": [
+        "0.5",
+        "0.0",
+        "1.0",
+        "-0.5"
+      ],
+      "answer": 0,
+      "sol": "Substitute \\( z = 0 \\): \\( \\sigma(0) = \\frac{1}{1 + e^0} = \\frac{1}{1 + 1} = \\frac{1}{2} = 0.5 \\)."
+    },
+    {
+      "type": "mcq",
+      "domain": "Logistic Regression, Sigmoid & Cross-Entropy Loss",
+      "difficulty": "medium",
+      "text": "Which algebraic identity represents the derivative of the sigmoid function \\( \\sigma(z) \\)?",
+      "choices": [
+        "\\( \\sigma(z)(1 - \\sigma(z)) \\)",
+        "\\( \\sigma(z)^2 \\)",
+        "\\( 1 - \\sigma(z)^2 \\)",
+        "\\( \\sigma(z) + e^{-z} \\)"
+      ],
+      "answer": 0,
+      "sol": "Differentiating: \\( \\frac{d\\sigma}{dz} = \\frac{d}{dz}(1 + e^{-z})^{-1} = -(1 + e^{-z})^{-2}(-e^{-z}) = \\frac{e^{-z}}{(1 + e^{-z})^2} = \\frac{1}{1 + e^{-z}} \\left(1 - \\frac{1}{1 + e^{-z}}\\right) = \\sigma(z)(1 - \\sigma(z)) \\)."
+    },
+    {
+      "type": "mcq",
+      "domain": "Logistic Regression, Sigmoid & Cross-Entropy Loss",
+      "difficulty": "hard",
+      "text": "In binary classification with ground truth \\( y = 1 \\) and predicted probability \\( \\hat{y} = 0.01 \\), what is the binary cross-entropy loss?",
+      "choices": [
+        "\\( -\\ln(0.01) \\approx 4.605 \\)",
+        "0.01",
+        "0.99",
+        "\\( -\\ln(0.99) \\approx 0.010 \\)"
+      ],
+      "answer": 0,
+      "sol": "Binary cross-entropy is \\( L = -[y\\ln(\\hat{y}) + (1-y)\\ln(1-\\hat{y})] \\). When \\( y = 1 \\), \\( L = -\\ln(\\hat{y}) = -\\ln(0.01) = 2\\ln(10) \\approx 4.605 \\)."
+    },
+    {
+      "type": "mcq",
+      "domain": "Logistic Regression, Sigmoid & Cross-Entropy Loss",
+      "difficulty": "hard",
+      "text": "In 3-class classification with logits \\( \\mathbf{z} = [1, 2, 3]^T \\), what is the Softmax probability \\( P(y=3) \\)?",
+      "choices": [
+        "\\( \\frac{e^3}{e^1 + e^2 + e^3} \\approx 0.665 \\)",
+        "\\( 3/6 = 0.500 \\)",
+        "\\( \\frac{e^3}{1 + e^3} \\)",
+        "\\( \\frac{e^1}{e^1 + e^2 + e^3} \\)"
+      ],
+      "answer": 0,
+      "sol": "Softmax: \\( P(y=3) = \\frac{e^3}{e^1 + e^2 + e^3} = \\frac{20.086}{2.718 + 7.389 + 20.086} = \\frac{20.086}{30.193} \\approx 0.665 \\)."
+    },
+    {
+      "type": "mcq",
+      "domain": "Principal Component Analysis, Eigenvalues & Covariance",
+      "difficulty": "easy",
+      "text": "For a centered data matrix \\( \\mathbf{X} \\in \\mathbb{R}^{n \\times d} \\) with zero sample mean, how is the sample covariance matrix \\( \\mathbf{\\Sigma} \\) calculated?",
+      "choices": [
+        "\\( \\mathbf{\\Sigma} = \\frac{1}{n-1}\\mathbf{X}^T\\mathbf{X} \\)",
+        "\\( \\mathbf{\\Sigma} = \\mathbf{X}\\mathbf{X}^T \\)",
+        "\\( \\mathbf{\\Sigma} = \\frac{1}{n}\\mathbf{X} \\)",
+        "\\( \\mathbf{\\Sigma} = (\\mathbf{X}^T\\mathbf{X})^{-1} \\)"
+      ],
+      "answer": 0,
+      "sol": "For zero-mean data, the unbiased sample covariance matrix has dimension \\( d \\times d \\) and is given by \\( \\mathbf{\\Sigma} = \\frac{1}{n-1}\\mathbf{X}^T\\mathbf{X} \\)."
+    },
+    {
+      "type": "mcq",
+      "domain": "Principal Component Analysis, Eigenvalues & Covariance",
+      "difficulty": "medium",
+      "text": "A 2D dataset has covariance eigenvalues \\( \\lambda_1 = 80 \\) and \\( \\lambda_2 = 20 \\). What percentage of total variance is explained by the first principal component?",
+      "choices": [
+        "80%",
+        "60%",
+        "75%",
+        "20%"
+      ],
+      "answer": 0,
+      "sol": "Total variance is \\( \\lambda_1 + \\lambda_2 = 80 + 20 = 100 \\). The explained variance ratio for component 1 is \\( \\frac{\\lambda_1}{\\lambda_1 + \\lambda_2} = \\frac{80}{100} = 80\\% \\)."
+    },
+    {
+      "type": "mcq",
+      "domain": "Principal Component Analysis, Eigenvalues & Covariance",
+      "difficulty": "hard",
+      "text": "What fundamental mathematical property defines the first principal component unit vector \\( \\mathbf{v}_1 \\)?",
+      "choices": [
+        "It maximizes the variance \\( \\mathbf{v}^T\\mathbf{\\Sigma}\\mathbf{v} \\) of projected data subject to \\( \\|\\mathbf{v}\\|_2 = 1 \\)",
+        "It minimizes the Euclidean distance between cluster centroids",
+        "It is the eigenvector corresponding to the smallest eigenvalue of \\( \\mathbf{\\Sigma} \\)",
+        "It is identical to the mean vector of the raw data"
+      ],
+      "answer": 0,
+      "sol": "PCA optimizes \\( \\max_{\\|\\mathbf{v}\\|_2 = 1} \\mathbf{v}^T\\mathbf{\\Sigma}\\mathbf{v} \\). By Rayleigh quotient theory, the solution is the eigenvector of \\( \\mathbf{\\Sigma} \\) corresponding to the largest eigenvalue \\( \\lambda_1 \\)."
     }
   ]
 }
