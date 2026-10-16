@@ -1816,7 +1816,8 @@ function renderScatter(s){
   }
   // Points
   pts.forEach(function(p){
-    svg+='<circle cx="'+sx2(p[0]).toFixed(1)+'" cy="'+sy2(p[1]).toFixed(1)+'" r="4.5" fill="'+FIG_INDIGO2+'" fill-opacity="0.85" stroke="'+FIG_BG+'" stroke-width="1.2"/>';
+    var ptInfo = '(' + p[0] + ', ' + p[1] + ')';
+    svg+='<circle cx="'+sx2(p[0]).toFixed(1)+'" cy="'+sy2(p[1]).toFixed(1)+'" r="4.5" fill="'+FIG_INDIGO2+'" fill-opacity="0.85" stroke="'+FIG_BG+'" stroke-width="1.2" class="mfig-inspect-pt" data-inspect="'+esc(ptInfo)+'" data-x="'+p[0]+'" data-y="'+p[1]+'"><title>'+esc(ptInfo)+'</title></circle>';
   });
   svg+='</svg>';
   return svg;
@@ -1925,20 +1926,21 @@ function renderBoxPlot(s){
 
   // Whiskers
   svg+='<line x1="'+sx(min).toFixed(1)+'" y1="'+cy.toFixed(1)+'" x2="'+sx(q1).toFixed(1)+'" y2="'+cy.toFixed(1)+'" stroke="'+FIG_INDIGO2+'" stroke-width="1.8" stroke-dasharray="3,2"/>';
-  svg+='<line x1="'+sx(min).toFixed(1)+'" y1="'+(cy-10).toFixed(1)+'" x2="'+sx(min).toFixed(1)+'" y2="'+(cy+10).toFixed(1)+'" stroke="'+FIG_INDIGO2+'" stroke-width="2"/>';
+  svg+='<line x1="'+sx(min).toFixed(1)+'" y1="'+(cy-10).toFixed(1)+'" x2="'+sx(min).toFixed(1)+'" y2="'+(cy+10).toFixed(1)+'" stroke="'+FIG_INDIGO2+'" stroke-width="2" class="mfig-inspect-pt" data-inspect="Minimum: '+min+'"><title>Minimum: '+min+'</title></line>';
   svg+='<line x1="'+sx(q3).toFixed(1)+'" y1="'+cy.toFixed(1)+'" x2="'+sx(max).toFixed(1)+'" y2="'+cy.toFixed(1)+'" stroke="'+FIG_INDIGO2+'" stroke-width="1.8" stroke-dasharray="3,2"/>';
-  svg+='<line x1="'+sx(max).toFixed(1)+'" y1="'+(cy-10).toFixed(1)+'" x2="'+sx(max).toFixed(1)+'" y2="'+(cy+10).toFixed(1)+'" stroke="'+FIG_INDIGO2+'" stroke-width="2"/>';
+  svg+='<line x1="'+sx(max).toFixed(1)+'" y1="'+(cy-10).toFixed(1)+'" x2="'+sx(max).toFixed(1)+'" y2="'+(cy+10).toFixed(1)+'" stroke="'+FIG_INDIGO2+'" stroke-width="2" class="mfig-inspect-pt" data-inspect="Maximum: '+max+'"><title>Maximum: '+max+'</title></line>';
 
   // IQR Box
   var boxW=Math.max(1, sx(q3)-sx(q1));
-  svg+='<rect x="'+sx(q1).toFixed(1)+'" y="'+bTop.toFixed(1)+'" width="'+boxW.toFixed(1)+'" height="'+bH+'" fill="'+FIG_INDIGO_FILL+'" stroke="'+FIG_INDIGO2+'" stroke-width="2" rx="3"/>';
+  var iqrInfo = 'Q₁ = ' + q1 + ', Q₃ = ' + q3 + ' (IQR = ' + (q3 - q1) + ')';
+  svg+='<rect x="'+sx(q1).toFixed(1)+'" y="'+bTop.toFixed(1)+'" width="'+boxW.toFixed(1)+'" height="'+bH+'" fill="'+FIG_INDIGO_FILL+'" stroke="'+FIG_INDIGO2+'" stroke-width="2" rx="3" class="mfig-inspect-bar" data-inspect="'+esc(iqrInfo)+'"><title>'+esc(iqrInfo)+'</title></rect>';
 
   // Median line
-  svg+='<line x1="'+sx(med).toFixed(1)+'" y1="'+bTop.toFixed(1)+'" x2="'+sx(med).toFixed(1)+'" y2="'+(bTop+bH).toFixed(1)+'" stroke="'+FIG_AMBER+'" stroke-width="2.6"/>';
+  svg+='<line x1="'+sx(med).toFixed(1)+'" y1="'+bTop.toFixed(1)+'" x2="'+sx(med).toFixed(1)+'" y2="'+(bTop+bH).toFixed(1)+'" stroke="'+FIG_AMBER+'" stroke-width="2.6" class="mfig-inspect-pt" data-inspect="Median (Q₂): '+med+'"><title>Median (Q₂): '+med+'</title></line>';
 
   // Outliers
   outliers.forEach(function(ot){
-    svg+='<circle cx="'+sx(ot).toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="4" fill="'+FIG_BG+'" stroke="'+FIG_AMBER+'" stroke-width="2"/>';
+    svg+='<circle cx="'+sx(ot).toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="4" fill="'+FIG_BG+'" stroke="'+FIG_AMBER+'" stroke-width="2" class="mfig-inspect-pt" data-inspect="Outlier: '+ot+'"><title>Outlier: '+ot+'</title></circle>';
   });
 
   // Number line axis
@@ -1995,11 +1997,12 @@ function renderHistogram(s){
     var bh=(f/yMax)*ph;
     var bx=ml+i*bw;
     var by=mt+ph-bh;
-    svg+='<rect x="'+bx.toFixed(1)+'" y="'+by.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+bh.toFixed(1)+'" fill="'+FIG_INDIGO_FILL2+'" stroke="'+FIG_INDIGO2+'" stroke-width="1.4"/>';
+    var bLabel=bins[i]||(''+(i+1));
+    var info='Bin: '+bLabel+' | Frequency: '+f;
+    svg+='<rect x="'+bx.toFixed(1)+'" y="'+by.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+bh.toFixed(1)+'" fill="'+FIG_INDIGO_FILL2+'" stroke="'+FIG_INDIGO2+'" stroke-width="1.4" class="mfig-inspect-bar" data-inspect="'+esc(info)+'"><title>'+esc(info)+'</title></rect>';
     if(f>0){
       svg+='<text x="'+(bx+bw/2).toFixed(1)+'" y="'+(by-4).toFixed(1)+'" font-size="8.5" font-weight="bold" fill="'+FIG_INK+'" text-anchor="middle">'+f+'</text>';
     }
-    var bLabel=bins[i]||(''+(i+1));
     svg+='<text x="'+(bx+bw/2).toFixed(1)+'" y="'+(mt+ph+13).toFixed(1)+'" font-size="8" fill="'+FIG_MUTED+'" text-anchor="middle">'+esc(bLabel)+'</text>';
   });
 
@@ -2454,7 +2457,8 @@ function renderCumulativeFrequency(s){
 
     // Points markers
     pts.forEach(function(pt){
-      svg += '<circle cx="'+sx(pt[0]).toFixed(1)+'" cy="'+sy(pt[1]).toFixed(1)+'" r="3.5" fill="'+FIG_BG+'" stroke="'+FIG_INDIGO2+'" stroke-width="1.8"/>';
+      var ptLabel = '(' + pt[0] + ', ' + pt[1] + ')';
+      svg += '<circle cx="'+sx(pt[0]).toFixed(1)+'" cy="'+sy(pt[1]).toFixed(1)+'" r="3.5" fill="'+FIG_BG+'" stroke="'+FIG_INDIGO2+'" stroke-width="1.8" class="mfig-inspect-pt" data-inspect="'+esc(ptLabel)+'" data-x="'+pt[0]+'" data-y="'+pt[1]+'"><title>'+esc(ptLabel)+'</title></circle>';
     });
   }
 
@@ -2471,9 +2475,10 @@ function renderCumulativeFrequency(s){
 
   quartiles.forEach(function(q){
     var qx = sx(q.x), qy = sy(q.y);
+    var qInfo = q.label + ': x = ' + q.x + ', Cumulative F = ' + q.y;
     svg += '<line x1="'+ml+'" y1="'+qy.toFixed(1)+'" x2="'+qx.toFixed(1)+'" y2="'+qy.toFixed(1)+'" stroke="'+q.color+'" stroke-width="1.4" stroke-dasharray="4,3"/>';
     svg += '<line x1="'+qx.toFixed(1)+'" y1="'+qy.toFixed(1)+'" x2="'+qx.toFixed(1)+'" y2="'+(mt+ph)+'" stroke="'+q.color+'" stroke-width="1.4" stroke-dasharray="4,3"/>';
-    svg += '<circle cx="'+qx.toFixed(1)+'" cy="'+qy.toFixed(1)+'" r="4" fill="'+q.color+'"/>';
+    svg += '<circle cx="'+qx.toFixed(1)+'" cy="'+qy.toFixed(1)+'" r="4" fill="'+q.color+'" class="mfig-inspect-pt" data-inspect="'+esc(qInfo)+'"><title>'+esc(qInfo)+'</title></circle>';
     svg += '<text x="'+qx.toFixed(1)+'" y="'+(mt+ph-4)+'" font-size="9" font-weight="bold" fill="'+q.color+'" text-anchor="middle">'+q.label+'</text>';
   });
 
@@ -2948,5 +2953,76 @@ window.renderBearings = renderBearings;
 window.renderSignChart = renderSignChart;
 window.renderTransformationGrid = renderTransformationGrid;
 window.renderVoronoi = renderVoronoi;
+
+/* ── Figure Data Inspection Engine (Pillar 2.2) ────────── */
+function _initFigureInspection(){
+  if(typeof document === 'undefined') return;
+
+  function showBadge(target){
+    if(document.body.classList.contains('exam-mode')) return;
+    var cbtShell = document.querySelector('.cbt-shell');
+    if(cbtShell && cbtShell.getAttribute('data-lock-inspect') === 'true') return;
+
+    var text = target.getAttribute('data-inspect');
+    if(!text) return;
+
+    var container = target.closest('.mfig') || target.closest('.cq-figure') || target.closest('.fep-figure') || target.closest('.exam-fig') || target.closest('svg');
+    if(!container) return;
+
+    var badge = container.querySelector('.mfig-inspect-badge');
+    if(!badge){
+      badge = document.createElement('div');
+      badge.className = 'mfig-inspect-badge';
+      if(container.tagName && container.tagName.toLowerCase() === 'svg'){
+        if(container.parentElement){
+          container.parentElement.style.position = 'relative';
+          container.parentElement.appendChild(badge);
+        }
+      } else {
+        container.style.position = 'relative';
+        container.appendChild(badge);
+      }
+    }
+    badge.textContent = text;
+    badge.classList.add('active');
+  }
+
+  function hideBadge(target){
+    var container = target.closest('.mfig') || target.closest('.cq-figure') || target.closest('.fep-figure') || target.closest('.exam-fig') || (target.closest('svg') && target.closest('svg').parentElement);
+    if(!container) return;
+    var badge = container.querySelector('.mfig-inspect-badge');
+    if(badge){
+      badge.classList.remove('active');
+    }
+  }
+
+  document.addEventListener('mouseover', function(e){
+    var el = e.target && e.target.closest && e.target.closest('[data-inspect]');
+    if(el) showBadge(el);
+  });
+
+  document.addEventListener('mouseout', function(e){
+    var el = e.target && e.target.closest && e.target.closest('[data-inspect]');
+    if(el) hideBadge(el);
+  });
+
+  document.addEventListener('touchstart', function(e){
+    var el = e.target && e.target.closest && e.target.closest('[data-inspect]');
+    if(el){
+      showBadge(el);
+      setTimeout(function(){ hideBadge(el); }, 2500);
+    }
+  }, { passive: true });
+}
+
+if(typeof document !== 'undefined'){
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', _initFigureInspection);
+  } else {
+    _initFigureInspection();
+  }
+}
+
+window.initFigureInspection = _initFigureInspection;
 })();
 

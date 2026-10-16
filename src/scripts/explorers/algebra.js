@@ -20,6 +20,15 @@
     var dataBtn=document.getElementById('lineDataBtn'), dataPanel=document.getElementById('lineDataPanel'),
         dataDesc=document.getElementById('lineDataDesc'), dataRows=document.getElementById('lineDataRows');
     wireDataToggle(dataBtn,dataPanel);
+
+    var chLine = K.attachChallenge ? K.attachChallenge('lineCanvas', {
+      prompt: {
+        en: 'Adjust slope m = 1.5 and y-intercept b = -2 so the line passes through (0, -2) and (2, 1).',
+        ar: 'اضبط الميل m = 1.5 والمقطع الصادي b = -2 ليمر الخط بالنقطتين (0, -2) و (2, 1).'
+      },
+      check: function(st){ return Math.abs(st.m - 1.5) < 0.1 && Math.abs(st.b - (-2)) < 0.1; }
+    }) : null;
+
     function f(x){ return m*x+b; }
     function updateDataView(){
       if(!dataDesc) return;
@@ -41,6 +50,7 @@
       document.getElementById('lineSlope').textContent=fmt(m,2);
       document.getElementById('lineYint').textContent='(0, '+fmt(b,2)+')';
       document.getElementById('lineXint').textContent=(Math.abs(m)>1e-6)?('('+fmt(-b/m,2)+', 0)'):'none (horizontal)';
+      if(chLine) chLine.check({m: m, b: b});
       updateDataView();
     }
     register(canvas,draw);
@@ -165,6 +175,14 @@
       }
       renderDataRows(dataRows,rows);
     }
+    var chTf = K.attachChallenge ? K.attachChallenge('tfCanvas', {
+      prompt: {
+        en: 'Drag the vertex/keypoint to (h, k) = (2, 3) and set vertical scale a = -1 (reflected over x-axis).',
+        ar: 'اسحب نقطة الرأس إلى (h, k) = (2, 3) واضبط معامل التمدد الرأسي a = -1 (انعكاس حول محور السينات).'
+      },
+      check: function(st){ return Math.abs(st.h - 2) < 0.25 && Math.abs(st.k - 3) < 0.25 && Math.abs(st.a - (-1)) < 0.2; }
+    }) : null;
+
     function draw(ctx,w,ht){
       var P=new Plot(ctx,w,ht,view,{l:30,r:12,t:14,b:26}); P.clear(); P.grid();
       P.curve(base,'#B7C0CE',2,[5,4]);
@@ -175,6 +193,7 @@
       document.getElementById('tfAv').textContent=fmt(a,1);
       document.getElementById('tfHv').textContent=fmt(h,1);
       document.getElementById('tfKv').textContent=fmt(k,1);
+      if(chTf) chTf.check({h: h, k: k, a: a});
       updateDataView();
     }
     register(canvas,draw);
@@ -202,6 +221,7 @@
           document.getElementById('tfHv').textContent = fmt(h, 1);
           document.getElementById('tfKv').textContent = fmt(k, 1);
           document.getElementById('tfKey').textContent = '(' + fmt(h, 1) + ', ' + fmt(k, 1) + ')';
+          if(chTf) chTf.check({h: h, k: k, a: a});
         }
       });
     }

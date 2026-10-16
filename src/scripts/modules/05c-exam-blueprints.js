@@ -428,6 +428,14 @@
         T('Number Theory',20,'divisibility, prime factorization, modular arithmetic, Diophantine equations',['Arithmetic & Number Sense']),
         T('Combinatorics & Probability',20,'counting principles, pigeonhole principle, binomial coefficients, probability, expected value',['Statistics & Probability'])]}
   };
+
+  // Modular Cambridge IGCSE 0580 and IB AA Paper 1 / Paper 2 mappings
+  B['Cambridge IGCSE 0580 — Paper 2 (Extended Non-Calculator)'] = B['igcse'];
+  B['Cambridge IGCSE 0580 — Paper 4 (Extended Calculator)'] = B['igcse'];
+  B['IB Math SL (AA) — Paper 1 (Non-Calculator)'] = B['IB Math SL (AA)'];
+  B['IB Math SL (AA) — Paper 2 (GDC Required)'] = B['IB Math SL (AA)'];
+  B['IB Math HL (AA) — Paper 1 (Non-Calculator)'] = B['IB Math HL (AA)'];
+  B['IB Math HL (AA) — Paper 2 (GDC Required)'] = B['IB Math HL (AA)'];
   /* Every other exam (precalc, …) has no
      published topic weighting: provisional even split over its bank domains. */
   var SKIP=/test format|strategy|mixed review|overview|exam format/i;
@@ -527,7 +535,13 @@
     'gat general aptitude test — quantitative section (english)':'GAT Quantitative (English Medium)',
     'saat achievement test — mathematics (english)':'SAAT Mathematics (English Medium)',
     'mawhiba & kangaroo math arabia — senior level':'Mawhiba & Kangaroo Math Arabia (Senior)',
-    'amc 10/12 mathematics competition':'AMC 10/12 Mathematics Competition'
+    'amc 10/12 mathematics competition':'AMC 10/12 Mathematics Competition',
+    'cambridge igcse 0580 — paper 2 (extended non-calculator)':'Cambridge IGCSE 0580 — Paper 2 (Extended Non-Calculator)',
+    'cambridge igcse 0580 — paper 4 (extended calculator)':'Cambridge IGCSE 0580 — Paper 4 (Extended Calculator)',
+    'ib math sl (aa) — paper 1 (non-calculator)':'IB Math SL (AA) — Paper 1 (Non-Calculator)',
+    'ib math sl (aa) — paper 2 (gdc required)':'IB Math SL (AA) — Paper 2 (GDC Required)',
+    'ib math hl (aa) — paper 1 (non-calculator)':'IB Math HL (AA) — Paper 1 (Non-Calculator)',
+    'ib math hl (aa) — paper 2 (gdc required)':'IB Math HL (AA) — Paper 2 (GDC Required)'
   };
 
   var N_ALIASES={};
@@ -552,6 +566,12 @@
       if(normalizeKey(k)===norm) return k;
     }
     // Substring matches
+    if(/0580.*(?:paper\s*2|non\s*calc)|igcse.*(?:paper\s*2|non\s*calc)/.test(norm)) return 'Cambridge IGCSE 0580 — Paper 2 (Extended Non-Calculator)';
+    if(/0580.*(?:paper\s*4|calc)|igcse.*(?:paper\s*4|calc)/.test(norm)) return 'Cambridge IGCSE 0580 — Paper 4 (Extended Calculator)';
+    if(/ib.*(?:analysis|aa).*sl.*paper\s*1/.test(norm)) return 'IB Math SL (AA) — Paper 1 (Non-Calculator)';
+    if(/ib.*(?:analysis|aa).*sl.*paper\s*2/.test(norm)) return 'IB Math SL (AA) — Paper 2 (GDC Required)';
+    if(/ib.*(?:analysis|aa).*hl.*paper\s*1/.test(norm)) return 'IB Math HL (AA) — Paper 1 (Non-Calculator)';
+    if(/ib.*(?:analysis|aa).*hl.*paper\s*2/.test(norm)) return 'IB Math HL (AA) — Paper 2 (GDC Required)';
     if(/0580|igcse/.test(norm)) return 'igcse';
     if(/sat/.test(norm)) return 'sat';
     if(/act\s*2\s*l(?:evel)?\s*2/.test(norm)) return 'act2l2';

@@ -40,10 +40,31 @@ assert(fcContent.includes('cs-fcalc-shield'), 'Floating calc must include drag s
 assert(fcContent.includes('_applyFloatingPreset'), 'Floating calc must handle equation presets');
 assert(fcContent.includes('setFloatingCalcExpression'), 'Floating calc must expose setFloatingCalcExpression API');
 assert(fcContent.includes('_toggleMaximize'), 'Floating calc must implement _toggleMaximize');
-assert(fcContent.includes('ResizeObserver'), 'Floating calc must observe resize to auto-fit Desmos canvas');
-console.log('  ✓ 20g-floating-calc.js includes Desmos API, maximize, drag shield, presets, and ResizeObserver');
+assert(fcContent.includes('setFloatingCalcLocked'), 'Floating calc must export setFloatingCalcLocked');
+assert(fcContent.includes('isFloatingCalcLocked'), 'Floating calc must export isFloatingCalcLocked');
+assert(fcContent.includes('_showCalcLockedToast'), 'Floating calc must display non-calculator toast notification');
+console.log('  ✓ 20g-floating-calc.js includes Desmos API, maximize, drag shield, presets, and strict exam lock API');
 
-// 4. Verify public/js/engine.js bundle
+// 4. Test Calculator Lock Execution in Simulated Environment
+const simulatedWindow = {};
+const mockDoc = {
+  getElementById: () => null,
+  addEventListener: () => {},
+  documentElement: { lang: 'en' },
+  createElement: () => ({ style: {}, appendChild: () => {}, addEventListener: () => {} }),
+  body: { appendChild: () => {} }
+};
+const fnCalc = new Function('window', 'document', fcContent);
+fnCalc(simulatedWindow, mockDoc);
+
+assert.strictEqual(simulatedWindow.isFloatingCalcLocked(), false, 'Calculator should be unlocked by default');
+simulatedWindow.setFloatingCalcLocked(true, 'Paper 2 (Non-Calculator)');
+assert.strictEqual(simulatedWindow.isFloatingCalcLocked(), true, 'Calculator must be locked when setFloatingCalcLocked(true)');
+simulatedWindow.setFloatingCalcLocked(false);
+assert.strictEqual(simulatedWindow.isFloatingCalcLocked(), false, 'Calculator must be unlocked when setFloatingCalcLocked(false)');
+console.log('  ✓ Functional test: setFloatingCalcLocked accurately toggles exam lock state');
+
+// 5. Verify public/js/engine.js bundle
 const enginePath = path.join(__dirname, '..', 'public', 'js', 'engine.js');
 const engineContent = fs.readFileSync(enginePath, 'utf8');
 assert(engineContent.includes('cs-fcalc-max-btn'), 'engine.js must contain floating calculator maximize button');

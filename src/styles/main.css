@@ -696,6 +696,67 @@
   .chk{display:flex; align-items:center; gap:8px; font-family:var(--sans); font-size:.84rem; color:var(--muted); cursor:pointer}
   .chk input{width:16px; height:16px; accent-color:var(--amber)}
 
+  /* Discovery Challenge Card (Pillar 2.3) */
+  .ex-challenge-card {
+    margin: 10px 0 4px;
+    padding: 10px 13px;
+    border-radius: 9px;
+    background: var(--paper-2, #f3f6fc);
+    border: 1px solid var(--line, #e2e8f0);
+    border-inline-start: 4px solid var(--indigo, #3b82f6);
+    font-size: 0.84rem;
+    transition: all 0.25s ease;
+  }
+  .ex-challenge-card.is-solved {
+    background: rgba(16, 185, 129, 0.08);
+    border-color: rgba(16, 185, 129, 0.35);
+    border-inline-start-color: #10b981;
+  }
+  .ex-ch-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 5px;
+  }
+  .ex-ch-tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.83rem;
+  }
+  .ex-ch-icon { font-size: 0.95rem; }
+  .ex-ch-title { font-weight: 700; color: var(--ink, #1e293b); }
+  .ex-ch-status {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 6px;
+    background: var(--panel, #fff);
+    color: var(--muted, #64748b);
+    border: 1px solid var(--line, #cbd5e1);
+  }
+  .ex-ch-status.solved {
+    background: #10b981;
+    color: #fff;
+    border-color: #10b981;
+    box-shadow: 0 1px 3px rgba(16, 185, 129, 0.28);
+  }
+  .ex-ch-prompt {
+    margin: 0;
+    color: var(--ink, #334155);
+    line-height: 1.45;
+    font-size: 0.82rem;
+  }
+  body.dark .ex-challenge-card {
+    background: rgba(30, 41, 59, 0.6);
+    border-color: #334155;
+  }
+  body.dark .ex-challenge-card.is-solved {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: rgba(16, 185, 129, 0.4);
+  }
+
   /* examples & practice */
   .example{border:1px solid var(--line); border-left:4px solid var(--indigo-2); border-radius:10px; overflow:hidden; word-break:break-word; overflow-wrap:break-word; padding:18px 20px 18px 24px; margin:1.4rem 0}
   .example .xt{font-family:var(--sans); font-size:.74rem; letter-spacing:.1em; text-transform:uppercase;
@@ -1488,10 +1549,54 @@
   /* Figure container — background matches the figure SVG's own baked-in
      FIG_BG (#fbfcfe) so the wrapper reads as one seamless card in both
      themes, instead of the old generic #fafafa gray. */
-  .mfig{margin:14px auto;width:fit-content;max-width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--fig-bg, var(--paper, #fbfcfe));box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  .mfig{margin:14px auto;width:fit-content;position:relative;max-width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--fig-bg, var(--paper, #fbfcfe));box-shadow:0 1px 3px rgba(0,0,0,.04)}
   .mfig:has(table),.mfig:has(.mfig-table),.mfig:has(.exam-table){width:100%}
   .mfig-svg{display:block;width:100%;max-width:320px;max-height:230px;height:auto;margin:0 auto}
   .mfig-wide .mfig-svg{max-width:440px}
+
+  /* Figure Data Inspection Tooltip (Pillar 2.2) */
+  .mfig-inspect-pt, .mfig-inspect-bar {
+    cursor: pointer;
+    transition: transform 0.12s ease, opacity 0.12s ease;
+  }
+  .mfig-inspect-pt:hover {
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.35));
+  }
+  .mfig-inspect-bar:hover {
+    fill-opacity: 0.95;
+    filter: brightness(1.08);
+  }
+  .mfig-inspect-badge {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: #1e293b;
+    color: #ffffff;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.76rem;
+    font-weight: 600;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(-3px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+  [dir="rtl"] .mfig-inspect-badge {
+    right: auto;
+    left: 12px;
+  }
+  .mfig-inspect-badge.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  body.dark .mfig-inspect-badge {
+    background: #0f172a;
+    color: #38bdf8;
+    border: 1px solid #334155;
+  }
   /* MCQ choices */
   .aiq-choices{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
   @media(max-width:520px){.aiq-choices{grid-template-columns:1fr}}

@@ -39,6 +39,14 @@
         ['P',fmt(Pp.x),fmt(Pp.y)]
       ]);
     }
+    var chCircle = K.attachChallenge ? K.attachChallenge('circleCanvas', {
+      prompt: {
+        en: 'Drag point P around the circumference and confirm the inscribed angle stays constant at 70° (half of central angle 140°). Move P near the apex (frac between 0.45 and 0.65).',
+        ar: 'اسحب النقطة P حول المحيط وتأكد من أن الزاوية المحيطية تبقى ثابتة عند 70° (نصف الزاوية المركزية 140°). حرك P قرب القمة (frac بين 0.45 و 0.65).'
+      },
+      check: function(st){ return st.frac >= 0.45 && st.frac <= 0.65; }
+    }) : null;
+
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:22,r:12,t:12,b:20}); P.clear(); P.grid();
       ctx.save(); ctx.beginPath();
@@ -54,6 +62,7 @@
       var central=angleAt(0,0,A,B), inscribed=angleAt(Pp.x,Pp.y,A,B);
       document.getElementById('circleCentral').textContent=central.toFixed(0)+'°';
       document.getElementById('circleInscribed').textContent=inscribed.toFixed(0)+'°';
+      if(chCircle) chCircle.check({frac: frac, inscribed: inscribed});
       updateDataView({x:0,y:0},A,B,Pp,central,inscribed);
     }
     register(canvas,draw);
@@ -75,6 +84,7 @@
           if(diff >= 5 && diff <= 220){
             frac = Math.max(0, Math.min(1, (diff / 220 - 0.05) / 0.90));
             if(s) s.value = Math.round(frac * 100);
+            if(chCircle) chCircle.check({frac: frac});
             redrawAll();
           }
         }
@@ -90,6 +100,15 @@
     var dataBtn=document.getElementById('trigDataBtn'), dataPanel=document.getElementById('trigDataPanel'),
         dataDesc=document.getElementById('trigDataDesc'), dataRows=document.getElementById('trigDataRows');
     wireDataToggle(dataBtn,dataPanel);
+
+    var chTrig = K.attachChallenge ? K.attachChallenge('trigCanvas', {
+      prompt: {
+        en: 'Set angle θ = 30° to demonstrate the exact trigonometric value sin 30° = 0.5 (opposite = half of hypotenuse).',
+        ar: 'اضبط الزاوية θ = 30° لتوضيح القيمة الدقيقة sin 30° = 0.5 (الضلع المقابل يساوي نصف الوتر).'
+      },
+      check: function(st){ return Math.abs(st.deg - 30) < 1; }
+    }) : null;
+
     function updateDataView(adj,opp,r){
       if(!dataDesc) return;
       dataDesc.textContent='Right triangle with angle θ = '+deg+'° and hypotenuse '+fmt(H,1)+'. Opposite = '+fmt(opp,3)+', adjacent = '+fmt(adj,3)+'.';
@@ -121,6 +140,7 @@
       document.getElementById('trigSin').textContent=Math.sin(r).toFixed(3);
       document.getElementById('trigCos').textContent=Math.cos(r).toFixed(3);
       document.getElementById('trigTan').textContent=Math.tan(r).toFixed(3);
+      if(chTrig) chTrig.check({deg: deg, opp: opp, H: H});
       updateDataView(adj,opp,r);
     }
     register(canvas,draw);

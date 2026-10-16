@@ -27,6 +27,14 @@
       for(var i=0;i<N;i++){ var x=view.xmin+(view.xmax-view.xmin)*i/(N-1); rows.push([fmt(x),fmt(f(x))]); }
       renderDataRows(dataRows,rows);
     }
+    var chLine = K.attachChallenge ? K.attachChallenge('satLineCanvas', {
+      prompt: {
+        en: 'Adjust slope m = -2 and y-intercept b = 3 so the line models y = -2x + 3.',
+        ar: 'اضبط الميل m = -2 والمقطع الصادي b = 3 ليمثل الخط المعادلة y = -2x + 3.'
+      },
+      check: function(st){ return st.m === -2 && st.b === 3; }
+    }) : null;
+
     function draw(ctx,w,h){
       var P=new Plot(ctx,w,h,view,{l:24,r:12,t:12,b:20}); P.clear(); P.grid();
       var f=function(x){return m*x+b;};
@@ -36,10 +44,13 @@
       document.getElementById('satLineSlope').textContent=m;
       document.getElementById('satLineYint').textContent='(0, '+b+')';
       document.getElementById('satLineXint').textContent=(Math.abs(m)<1e-9?'none':'('+(-b/m).toFixed(2)+', 0)');
+      if(chLine) chLine.check({m: m, b: b});
       updateDataView(f);
     }
     function upd(){ m=parseFloat(sm.value); b=parseFloat(sb.value);
-      document.getElementById('satMV').textContent=m; document.getElementById('satBV').textContent=b; redrawAll(); }
+      document.getElementById('satMV').textContent=m; document.getElementById('satBV').textContent=b;
+      if(chLine) chLine.check({m: m, b: b});
+      redrawAll(); }
     register(canvas,draw); sm.addEventListener('input',upd); sb.addEventListener('input',upd);
     if(K.makeDraggable){
       K.makeDraggable(canvas, {
@@ -65,6 +76,7 @@
             m = newM; sm.value = m;
             document.getElementById('satMV').textContent = m;
           }
+          if(chLine) chLine.check({m: m, b: b});
         }
       });
     }
@@ -80,6 +92,15 @@
     var dataBtn=document.getElementById('satFitDataBtn'), dataPanel=document.getElementById('satFitDataPanel'),
         dataDesc=document.getElementById('satFitDataDesc'), dataRows=document.getElementById('satFitDataRows');
     wireDataToggle(dataBtn,dataPanel);
+
+    var chFit = K.attachChallenge ? K.attachChallenge('satFitCanvas', {
+      prompt: {
+        en: 'Rotate the line of best fit through the centroid until SSR is minimized (< 5.8).',
+        ar: 'قم بتدوير خط الملاءمة الأفضل عبر النقطة المركزية حتى يصبح مجموع مربعات البواقي أقل ما يمكن (SSR < 5.8).'
+      },
+      check: function(st){ return st.ssr > 0 && st.ssr < 5.8; }
+    }) : null;
+
     function updateDataView(ssr){
       if(!dataDesc) return;
       dataDesc.textContent='Trend line through the centroid ('+mx+', '+my+') with slope '+fmt(s,2)+': y = '+fmt(my,2)+' + '+fmt(s,2)+'(x − '+mx+'). Sum of squared residuals (SSR) = '+fmt(ssr,1)+' — drag the slope to try to minimize it.';
@@ -97,6 +118,7 @@
         P.dot(pts[i][0],pts[i][1],AMBER2,4.5);
       }
       document.getElementById('satFitSSR').textContent=ssr.toFixed(1);
+      if(chFit) chFit.check({ssr: ssr});
       updateDataView(ssr);
     }
     register(canvas,draw);
@@ -167,6 +189,15 @@
     var dataBtn=document.getElementById('satQuadLineDataBtn'), dataPanel=document.getElementById('satQuadLineDataPanel'),
         dataDesc=document.getElementById('satQuadLineDataDesc'), dataRows=document.getElementById('satQuadLineDataRows');
     wireDataToggle(dataBtn,dataPanel);
+
+    var chQuadLine = K.attachChallenge ? K.attachChallenge('satQuadLineCanvas', {
+      prompt: {
+        en: 'Adjust m and k so the line is tangent to the parabola y = x² (exactly 1 solution, D = 0).',
+        ar: 'اضبط m و k بحيث يكون الخط مماساً للقطع المكافئ y = x² (حل حقيقي واحد تماماً، المميز D = 0).'
+      },
+      check: function(st){ return Math.abs(st.D) < 0.05; }
+    }) : null;
+
     function updateDataView(D,pts){
       if(!dataDesc) return;
       var desc='y = x² and y = '+fmt(m,1)+'x + '+fmt(k,1)+'. Substituting: x² − '+fmt(m,1)+'x − '+fmt(k,1)+' = 0, discriminant D = '+fmt(D,2)+'. ';
@@ -189,6 +220,7 @@
       pts.forEach(function(p){ P.dot(p[0],p[1],INK,5.5); });
       document.getElementById('satQuadLineD').textContent=fmt(D,2);
       document.getElementById('satQuadLineN').textContent = D>1e-9?'2':(D>-1e-9?'1':'0');
+      if(chQuadLine) chQuadLine.check({D: D, m: m, k: k});
       updateDataView(D,pts);
     }
     register(canvas,draw);

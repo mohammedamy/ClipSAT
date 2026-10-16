@@ -737,6 +737,10 @@
         titleEl.innerHTML = '<span>' + paper.name + '</span> ' + calcBadge;
       }
 
+      if(typeof window.setFloatingCalcLocked === 'function'){
+        window.setFloatingCalcLocked(paper.calc === false, paper.name);
+      }
+
       var hdr = document.getElementById('mock-exam-header');
       if(hdr){
         var toolsDiv = hdr.querySelector('.mock-tools-wrap');
@@ -848,6 +852,10 @@
   function submitMockExam(){
     if(_tmr){ clearInterval(_tmr); _tmr = null; }
     _isSubmitted = true;
+
+    if(typeof window.setFloatingCalcLocked === 'function'){
+      window.setFloatingCalcLocked(false);
+    }
 
     var body = document.getElementById('mock-exam-body');
     if(!body) return;
@@ -1058,6 +1066,9 @@
     }
 
     if(_tmr){ clearInterval(_tmr); _tmr = null; }
+    if(typeof window.setFloatingCalcLocked === 'function'){
+      window.setFloatingCalcLocked(false);
+    }
     var overlay = document.getElementById('mock-exam-overlay');
     if(overlay) overlay.classList.remove('show');
     document.body.classList.remove('cbt-open');

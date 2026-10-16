@@ -1156,11 +1156,82 @@
     canvas.addEventListener('pointercancel', end);
   }
 
+  /* ---------- Discovery Challenge Controller (Pillar 2.3) ---------- */
+  function attachChallenge(canvasId, spec){
+    if(!spec || !canvasId) return null;
+    var canvas = typeof canvasId === 'string' ? document.getElementById(canvasId) : canvasId;
+    if(!canvas) return null;
+    var container = canvas.closest('.explorer') || canvas.parentElement;
+    if(!container) return null;
+    var id = 'cs-ch-' + (canvas.id || canvasId);
+    var existing = document.getElementById(id);
+    if(existing && existing._challengeApi) return existing._challengeApi;
+
+    var controls = container.querySelector('.ex-controls') || container;
+    var card = document.createElement('div');
+    card.id = id;
+    card.className = 'ex-challenge-card';
+
+    var storageKey = 'clipsat_ch_' + (canvas.id || canvasId);
+    var wasSolved = false;
+    try { wasSolved = localStorage.getItem(storageKey) === '1'; } catch(_) {}
+
+    var isAr = document.documentElement.lang === 'ar';
+    var promptText = (spec.prompt && typeof spec.prompt === 'object')
+      ? (isAr && spec.prompt.ar ? spec.prompt.ar : spec.prompt.en)
+      : String(spec.prompt || '');
+
+    var titleText = isAr ? 'تحدي استكشافي' : 'Discovery Challenge';
+    var statusWaiting = isAr ? '⏳ جاري الاستكشاف...' : '⏳ In Progress...';
+    var statusSuccess = isAr ? '🎉 أحسنت! تم تحقيق الهدف' : '🎉 Goal Achieved!';
+
+    card.innerHTML =
+      '<div class="ex-ch-header">' +
+        '<div class="ex-ch-tag"><span class="ex-ch-icon">🎯</span> <strong class="ex-ch-title">' + titleText + '</strong></div>' +
+        '<span class="ex-ch-status' + (wasSolved ? ' solved' : '') + '">' + (wasSolved ? statusSuccess : statusWaiting) + '</span>' +
+      '</div>' +
+      '<p class="ex-ch-prompt">' + promptText + '</p>';
+
+    if(wasSolved) card.classList.add('is-solved');
+    controls.appendChild(card);
+
+    var api = {
+      card: card,
+      check: function(state){
+        if(card.classList.contains('is-solved')) return true;
+        try {
+          if(spec.check && spec.check(state)){
+            card.classList.add('is-solved');
+            var statusEl = card.querySelector('.ex-ch-status');
+            if(statusEl){
+              statusEl.className = 'ex-ch-status solved';
+              statusEl.textContent = statusSuccess;
+            }
+            try { localStorage.setItem(storageKey, '1'); } catch(_) {}
+            return true;
+          }
+        } catch(_) {}
+        return false;
+      },
+      reset: function(){
+        card.classList.remove('is-solved');
+        var statusEl = card.querySelector('.ex-ch-status');
+        if(statusEl){
+          statusEl.className = 'ex-ch-status';
+          statusEl.textContent = statusWaiting;
+        }
+        try { localStorage.removeItem(storageKey); } catch(_) {}
+      }
+    };
+    card._challengeApi = api;
+    return api;
+  }
+
   /* ---------- shared helpers for the per-track explorer files ----------
      Each track's canvas explorers live in src/scripts/explorers/{track}.js
      (public/js/ex/{track}.js), loaded only on that track's page (ADR 0039). */
   window.CSExplorerKit={
-    register:register, reduceMotion:reduceMotion, drawExplorerOf:drawExplorerOf, fmt:fmt, Plot:Plot, redrawAll:redrawAll, wireDataToggle:wireDataToggle, renderDataRows:renderDataRows, dfdx:dfdx, integrate:integrate, arrow:arrow, _deg:_deg, _fitView:_fitView, _clip:_clip, _set:_set, _slider:_slider, _num:_num, makeDraggable:makeDraggable,
+    register:register, reduceMotion:reduceMotion, drawExplorerOf:drawExplorerOf, fmt:fmt, Plot:Plot, redrawAll:redrawAll, wireDataToggle:wireDataToggle, renderDataRows:renderDataRows, dfdx:dfdx, integrate:integrate, arrow:arrow, _deg:_deg, _fitView:_fitView, _clip:_clip, _set:_set, _slider:_slider, _num:_num, makeDraggable:makeDraggable, attachChallenge:attachChallenge,
     colors:function(){ return {INK:INK, INDIGO:INDIGO, INDIGO2:INDIGO2, AMBER:AMBER, AMBER2:AMBER2, LINE:LINE, GRID:GRID, MUTED:MUTED, PAPER:PAPER, WHITE:WHITE, AXIS:AXIS, FONT:FONT}; }
   };
 

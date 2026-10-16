@@ -675,6 +675,45 @@ it('Figure renderer handles camelCase and synonym aliases correctly', () => {
   });
 });
 
+it('Statistical and plot SVGs include coordinate inspection attributes and accessible tooltips (Pillar 2.2)', () => {
+  // Scatter Plot
+  const scatterSvg = window.renderMathFigure({
+    type: 'scatter',
+    pts: [[1, 2], [3, 4], [5, 6]]
+  });
+  assert.ok(scatterSvg.includes('mfig-inspect-pt'), 'Scatter plot must attach mfig-inspect-pt class to points');
+  assert.ok(scatterSvg.includes('data-inspect="(1, 2)"'), 'Scatter plot must attach data-inspect coordinate tag');
+  assert.ok(scatterSvg.includes('<title>(1, 2)</title>'), 'Scatter plot points must include native <title> tooltip');
+
+  // Box Plot
+  const boxSvg = window.renderMathFigure({
+    type: 'box_plot',
+    min: 10, q1: 25, med: 50, q3: 75, max: 100, outliers: [120]
+  });
+  assert.ok(boxSvg.includes('mfig-inspect-pt'), 'Box plot must attach mfig-inspect-pt to whiskers/median/outliers');
+  assert.ok(boxSvg.includes('mfig-inspect-bar'), 'Box plot must attach mfig-inspect-bar to IQR box');
+  assert.ok(boxSvg.includes('data-inspect="Median (Q₂): 50"'), 'Box plot must tag median');
+
+  // Histogram
+  const histSvg = window.renderMathFigure({
+    type: 'histogram',
+    freqs: [10, 20, 15],
+    bins: ['0-10', '10-20', '20-30']
+  });
+  assert.ok(histSvg.includes('mfig-inspect-bar'), 'Histogram must attach mfig-inspect-bar to bars');
+  assert.ok(histSvg.includes('Bin: 0-10 | Frequency: 10'), 'Histogram must tag bin and frequency');
+
+  // Cumulative Frequency
+  const cfSvg = window.renderMathFigure({
+    type: 'cumulative_frequency',
+    points: [[10, 5], [20, 15], [30, 45], [40, 60]],
+    q1: 22, median: 26, q3: 32
+  });
+  assert.ok(cfSvg.includes('mfig-inspect-pt'), 'Cumulative frequency must attach mfig-inspect-pt');
+  assert.ok(cfSvg.includes('data-inspect="(10, 5)"'), 'Cumulative frequency must tag points');
+  assert.ok(cfSvg.includes('Cumulative F ='), 'Cumulative frequency quartiles must tag cumulative projection');
+});
+
 console.log(`\n── Figure Tests Summary: ${passed} passed, ${failed} failed ──`);
 if (failed > 0) {
   process.exit(1);

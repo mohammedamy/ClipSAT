@@ -516,6 +516,92 @@
          domains:['Number','Algebra & Graphs','Geometry','Statistics & Probability'],
          parts:[{label:'',q:20,time:'120 min',calc:true,type:'frq',note:'Show all necessary working.'}]}]},
 
+    'Cambridge IGCSE 0580 — Paper 2 (Extended Non-Calculator)':{
+      title:'Cambridge IGCSE 0580 — Paper 2 Extended (Non-Calculator)',totalTime:'2 hr',
+      bankId:'igcse',
+      logo:'Cambridge IGCSE™',org:'Cambridge Assessment International Education',
+      instructions:['Answer ALL questions.',
+        'Show all necessary working clearly. Answers without working may not gain full marks.',
+        'Calculators must NOT be used in this paper.',
+        'A List of formulas is provided on page 2.',
+        'Give non-exact numerical answers correct to 3 significant figures unless stated otherwise.'],
+      sections:[
+        {title:'Paper 2 — Non-Calculator (Extended 0580/2)',time:'2 hr',
+         note:'100 marks. Calculators must NOT be used. Structured and short-answer questions.',
+         domains:['Number','Algebra & Graphs','Coordinate Geometry','Functions','Geometry','Mensuration','Probability & Statistics','Sets & Venn Diagrams','Transformations & Vectors','Trigonometry'],
+         parts:[{label:'',q:20,time:'120 min',calc:false,type:'frq',note:'Non-calculator paper. Show all working.'}]}]},
+
+    'Cambridge IGCSE 0580 — Paper 4 (Extended Calculator)':{
+      title:'Cambridge IGCSE 0580 — Paper 4 Extended (Calculator Allowed)',totalTime:'2 hr',
+      bankId:'igcse',
+      logo:'Cambridge IGCSE™',org:'Cambridge Assessment International Education',
+      instructions:['Answer ALL questions.',
+        'Show all necessary working clearly. Answers without working may not gain full marks.',
+        'A scientific calculator should be used.',
+        'A List of formulas is provided on page 2.',
+        'Give non-exact numerical answers correct to 3 significant figures unless stated otherwise.'],
+      sections:[
+        {title:'Paper 4 — Calculator Allowed (Extended 0580/4)',time:'2 hr',
+         note:'100 marks. Scientific calculator required. Multi-step structured questions.',
+         domains:['Number','Algebra & Graphs','Coordinate Geometry','Functions','Geometry','Mensuration','Probability & Statistics','Sets & Venn Diagrams','Transformations & Vectors','Trigonometry'],
+         parts:[{label:'',q:20,time:'120 min',calc:true,type:'frq',note:'Calculator paper. Show all necessary working.'}]}]},
+
+    'IB Math SL (AA) — Paper 1 (Non-Calculator)':{
+      title:'IB Mathematics: Analysis and Approaches SL — Paper 1',totalTime:'1 hr 30 min',
+      bankId:'ibsl',
+      logo:'IB Math SL (AA)',org:'International Baccalaureate Organization',
+      instructions:['Answer ALL questions in Section A and Section B.',
+        'Calculators are NOT permitted for this paper.',
+        'Answers should be given exactly or correct to 3 significant figures unless stated otherwise.',
+        'Full marks are not necessarily awarded for a correct answer with no working.'],
+      sections:[
+        {title:'Paper 1 — No Technology (SL)',time:'90 min',
+         note:'80 marks. Section A (short-response) & Section B (extended-response). No calculator allowed.',
+         domains:['Number & Algebra','Functions','Geometry & Trigonometry','Statistics & Probability','Calculus'],
+         parts:[{label:'Sections A and B',q:9,time:'90 min',calc:false,type:'frq',note:'Short-response then extended-response questions. Non-calculator paper.'}]}]},
+
+    'IB Math SL (AA) — Paper 2 (GDC Required)':{
+      title:'IB Mathematics: Analysis and Approaches SL — Paper 2',totalTime:'1 hr 30 min',
+      bankId:'ibsl',
+      logo:'IB Math SL (AA)',org:'International Baccalaureate Organization',
+      instructions:['Answer ALL questions in Section A and Section B.',
+        'A graphic display calculator (GDC) is required for this paper.',
+        'Answers should be given exactly or correct to 3 significant figures unless stated otherwise.',
+        'Full marks are not necessarily awarded for a correct answer with no working.'],
+      sections:[
+        {title:'Paper 2 — Technology Required (SL)',time:'90 min',
+         note:'80 marks. Section A (short-response) & Section B (extended-response). GDC required.',
+         domains:['Number & Algebra','Functions','Geometry & Trigonometry','Statistics & Probability','Calculus'],
+         parts:[{label:'Sections A and B',q:9,time:'90 min',calc:true,type:'frq',note:'Short-response then extended-response questions. Graphic display calculator required.'}]}]},
+
+    'IB Math HL (AA) — Paper 1 (Non-Calculator)':{
+      title:'IB Mathematics: Analysis and Approaches HL — Paper 1',totalTime:'2 hr',
+      bankId:'ibhl',
+      logo:'IB Math HL (AA)',org:'International Baccalaureate Organization',
+      instructions:['Answer ALL questions in Section A and Section B.',
+        'Calculators are NOT permitted for this paper.',
+        'Answers should be given exactly or correct to 3 significant figures unless stated otherwise.',
+        'Full marks are not necessarily awarded for a correct answer with no working.'],
+      sections:[
+        {title:'Paper 1 — No Technology (HL)',time:'120 min',
+         note:'110 marks. Section A & Section B. No calculator allowed.',
+         domains:['Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)','AA HL — Additional Topics'],
+         parts:[{label:'Sections A and B',q:10,time:'120 min',calc:false,type:'frq',note:'Short-response then extended-response questions. Non-calculator paper.'}]}]},
+
+    'IB Math HL (AA) — Paper 2 (GDC Required)':{
+      title:'IB Mathematics: Analysis and Approaches HL — Paper 2',totalTime:'2 hr',
+      bankId:'ibhl',
+      logo:'IB Math HL (AA)',org:'International Baccalaureate Organization',
+      instructions:['Answer ALL questions in Section A and Section B.',
+        'A graphic display calculator (GDC) is required for this paper.',
+        'Answers should be given exactly or correct to 3 significant figures unless stated otherwise.',
+        'Full marks are not necessarily awarded for a correct answer with no working.'],
+      sections:[
+        {title:'Paper 2 — Technology Required (HL)',time:'120 min',
+         note:'110 marks. Section A & Section B. GDC required.',
+         domains:['Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)','AA HL — Additional Topics'],
+         parts:[{label:'Sections A and B',q:10,time:'120 min',calc:true,type:'frq',note:'Short-response then extended-response questions. Graphic display calculator required.'}]}]},
+
     'Edexcel IAL — Pure Mathematics 1 (WMA11)':{
       title:'Pearson Edexcel International A Level — Pure Mathematics 1 (WMA11)',totalTime:'1 hr 30 min',
       bankId:'aslevel',

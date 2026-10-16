@@ -733,7 +733,49 @@
     handle.addEventListener('touchstart', onPointerDown, { passive: false });
   }
 
+  var _calcLocked = false;
+  var _calcLockReason = '';
+
+  function _showCalcLockedToast(reason){
+    var isAr = document.documentElement.lang === 'ar';
+    var msg = isAr
+      ? '🚫 الآلة الحاسبة مقفلة: غير مسموح بالآلة الحاسبة في هذا الاختبار.'
+      : '🚫 Calculator Locked: No calculator permitted for this examination.';
+    if(reason){
+      msg += ' (' + reason + ')';
+    }
+    var existingToast = document.getElementById('calc-locked-toast');
+    if(existingToast) existingToast.remove();
+    var toast = document.createElement('div');
+    toast.id = 'calc-locked-toast';
+    toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1e293b;color:#f8fafc;padding:10px 18px;border-radius:10px;font-size:0.88rem;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,0.3);z-index:99999;border:1px solid #475569;display:flex;align-items:center;gap:8px;transition:opacity 0.3s ease;';
+    toast.textContent = msg;
+    document.body.appendChild(toast);
+    setTimeout(function(){
+      if(toast && toast.parentElement){
+        toast.style.opacity = '0';
+        setTimeout(function(){ if(toast.parentElement) toast.remove(); }, 300);
+      }
+    }, 3000);
+  }
+
+  window.setFloatingCalcLocked = function(locked, reason){
+    _calcLocked = !!locked;
+    _calcLockReason = reason || '';
+    if(_calcLocked && _calcEl && _calcEl.style.display !== 'none'){
+      window.closeFloatingCalc();
+    }
+  };
+
+  window.isFloatingCalcLocked = function(){
+    return _calcLocked;
+  };
+
   window.openFloatingCalc = function(mode){
+    if(_calcLocked){
+      _showCalcLockedToast(_calcLockReason);
+      return;
+    }
     var el = _buildCalcDOM();
     if(mode && MODES[mode]){
       _switchMode(mode);
@@ -753,6 +795,10 @@
   };
 
   window.toggleFloatingCalc = function(mode){
+    if(_calcLocked){
+      _showCalcLockedToast(_calcLockReason);
+      return;
+    }
     var el = _buildCalcDOM();
     if(el.style.display === 'flex'){
       window.closeFloatingCalc();
@@ -762,6 +808,10 @@
   };
 
   window.setFloatingCalcExpression = function(latex, id, color){
+    if(_calcLocked){
+      _showCalcLockedToast(_calcLockReason);
+      return;
+    }
     window.openFloatingCalc('graphing');
     if(_apiCalc && typeof _apiCalc.setExpression === 'function'){
       _apiCalc.setExpression({
@@ -785,6 +835,11 @@
   // Keyboard shortcut: Alt + C toggles the floating calculator
   document.addEventListener('keydown', function(e){
     if(e.altKey && (e.key === 'c' || e.key === 'C')){
+      if(_calcLocked){
+        _showCalcLockedToast(_calcLockReason);
+        e.preventDefault();
+        return;
+      }
       window.toggleFloatingCalc();
       e.preventDefault();
     }
