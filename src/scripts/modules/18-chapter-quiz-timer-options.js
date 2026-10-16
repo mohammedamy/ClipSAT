@@ -119,8 +119,20 @@
     }
   };
 
-  /* Run on load + after every showView (navigation) */
+  /* Ensure Chapter Quiz is always positioned at the very end of each lesson */
+  function ensureQuizAtEndOfLessons(){
+    document.querySelectorAll('section.chapter').forEach(function(sec){
+      var qWrap = sec.querySelector('.ch-quiz-wrap');
+      if(qWrap && sec.lastElementChild !== qWrap){
+        sec.appendChild(qWrap);
+      }
+    });
+  }
+  window.ensureQuizAtEndOfLessons = ensureQuizAtEndOfLessons;
+
+  /* Run on load + after every showView and goChapter (navigation) */
   function init(){
+    ensureQuizAtEndOfLessons();
     injectTimerSelectors();
   }
   if(document.readyState==='loading'){
@@ -128,11 +140,22 @@
   } else {
     setTimeout(init, 300);
   }
-  /* Re-inject after view changes */
+  /* Re-inject after view and chapter changes */
   var _origSV = window.showView;
   window.showView = function(name){
     if(_origSV) _origSV(name);
-    setTimeout(injectTimerSelectors, 300);
+    setTimeout(function(){
+      ensureQuizAtEndOfLessons();
+      injectTimerSelectors();
+    }, 300);
+  };
+  var _origGC = window.goChapter;
+  window.goChapter = function(chId, view){
+    if(_origGC) _origGC.apply(this, arguments);
+    setTimeout(function(){
+      ensureQuizAtEndOfLessons();
+      injectTimerSelectors();
+    }, 400);
   };
 })();
 

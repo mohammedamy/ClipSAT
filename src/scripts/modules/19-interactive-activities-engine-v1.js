@@ -1673,7 +1673,9 @@ function _inject(chId){
     else if(c.t==='ms')_buildMS(c,box);
     wrap.appendChild(box);
   });
-  sec.appendChild(wrap);
+  var qWrap = sec.querySelector('.ch-quiz-wrap');
+  if (qWrap) sec.insertBefore(wrap, qWrap);
+  else sec.appendChild(wrap);
   _mjax(wrap);setTimeout(function(){_mjax(wrap);},900);
 }
 
