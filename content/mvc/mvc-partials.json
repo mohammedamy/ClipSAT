@@ -347,6 +347,133 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · 3D Tangent Plane & Surface Normal",
+          "ar": "⊙ مستكشف · المستوى المماس ثلاثي الأبعاد والمتجه العمودي على السطح"
+        },
+        "canvasId": "mvcTangentCanvas",
+        "ariaLabel": {
+          "en": "Interactive 3D model of curved surface with dynamic tangent plane and normal vector",
+          "ar": "نموذج ثلاثي الأبعاد تفاعلي لسطح منحني مع مستوى مماس ومتجه عمود"
+        },
+        "canvas3d": {
+          "btnId": "mvcTangent3dBtn",
+          "wrapId": "mvcTangent3dWrap",
+          "hintId": "mvcTangent3dHint",
+          "btnLabel": "🧊 View Tangent Plane & Normal in 3D",
+          "ariaLabel": {
+            "en": "Interactive 3D model of curved surface with dynamic tangent plane and normal vector",
+            "ar": "نموذج ثلاثي الأبعاد تفاعلي لسطح منحني مع مستوى مماس ومتجه عمود"
+          }
+        },
+        "dataPanel": {
+          "btnId": "mvcTangentDataBtn",
+          "panelId": "mvcTangentDataPanel",
+          "descId": "mvcTangentDataDesc",
+          "rowsId": "mvcTangentDataRows",
+          "caption": {
+            "en": "Tangent point, partial derivatives, tangent plane equation, and normal vector",
+            "ar": "نقطة التماس، المشتقات الجزئية، معادلة المستوى المماس، ومتجه العمود"
+          },
+          "columns": [
+            {
+              "en": "Property",
+              "ar": "الخاصية"
+            },
+            {
+              "en": "Value",
+              "ar": "القيمة"
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "mvcTanX0",
+            "label": {
+              "en": "Point x₀ =",
+              "ar": "الإحداثي x₀ ="
+            },
+            "min": -3,
+            "max": 3,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "mvcTanX0V",
+            "ariaLabel": {
+              "en": "Tangent point x-coordinate",
+              "ar": "إحداثي x لنقطة التماس"
+            }
+          },
+          {
+            "id": "mvcTanY0",
+            "label": {
+              "en": "Point y₀ =",
+              "ar": "الإحداثي y₀ ="
+            },
+            "min": -3,
+            "max": 3,
+            "value": 1.5,
+            "step": 0.5,
+            "valueDisplayId": "mvcTanY0V",
+            "ariaLabel": {
+              "en": "Tangent point y-coordinate",
+              "ar": "إحداثي y لنقطة التماس"
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "mvcTanPt",
+            "label": {
+              "en": "Tangent Point P(x₀, y₀, z₀)",
+              "ar": "نقطة التماس P(x₀, y₀, z₀)"
+            },
+            "colorClass": "indigo",
+            "value": "(1.0, 1.5, 3.25)"
+          },
+          {
+            "id": "mvcTanFx",
+            "label": {
+              "en": "Slope in x-direction f_x",
+              "ar": "الميل باتجاه x (f_x)"
+            },
+            "colorClass": "amber",
+            "value": "-0.60"
+          },
+          {
+            "id": "mvcTanFy",
+            "label": {
+              "en": "Slope in y-direction f_y",
+              "ar": "الميل باتجاه y (f_y)"
+            },
+            "colorClass": "amber",
+            "value": "-0.60"
+          },
+          {
+            "id": "mvcTanPlaneEq",
+            "label": {
+              "en": "Tangent Plane Equation",
+              "ar": "معادلة المستوى المماس"
+            },
+            "colorClass": "indigo",
+            "value": "z - 3.25 = -0.6(x - 1) - 0.6(y - 1.5)"
+          },
+          {
+            "id": "mvcTanNormal",
+            "label": {
+              "en": "Upward Normal Vector n",
+              "ar": "متجه العمود العلوي n"
+            },
+            "colorClass": "amber",
+            "value": "⟨0.60, 0.60, 1.00⟩"
+          }
+        ],
+        "note": {
+          "en": "University Multivariable Rigor: The tangent plane is the best linear approximation to the surface near $(x_0, y_0)$. The upward surface normal \\( \\mathbf{n} = \\langle -f_x, -f_y, 1 \\rangle \\) is orthogonal to every tangent vector on the surface!",
+          "ar": "العمق الجامعي في حساب التفاضل متعدد المتغيرات: المستوى المماس هو أفضل تقريب خطي للسطح بالقرب من $(x_0, y_0)$. المتجه العمودي العلوي على السطح \\( \\mathbf{n} = \\langle -f_x, -f_y, 1 \\rangle \\) متعامد مع كل متجه مماس على السطح!"
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Find an equation of the tangent plane to the surface \\( z = x^2 + 3y^2 - 2x + 4y \\) at the point \\( P(2, 1, 9) \\).",

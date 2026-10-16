@@ -124,6 +124,279 @@
     refreshReadout();
   })();
 
+  /* ===================== IB HL TOPIC 3 · TWO PLANES & INTERSECTION LINE ===================== */
+  (function(){
+    var canvas=document.getElementById('ibhlPlanesCanvas'); if(!canvas) return;
+    var btn=document.getElementById('ibhlPlanes3dBtn'), wrap=document.getElementById('ibhlPlanes3dWrap'), hint=document.getElementById('ibhlPlanes3dHint');
+    var sA=document.getElementById('ibhlP2A'), sB=document.getElementById('ibhlP2B'), sC=document.getElementById('ibhlP2C'), sD=document.getElementById('ibhlP2D');
+    var dataBtn=document.getElementById('ibhlPlanesDataBtn'), dataPanel=document.getElementById('ibhlPlanesDataPanel'),
+        dataDesc=document.getElementById('ibhlPlanesDataDesc'), dataRows=document.getElementById('ibhlPlanesDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+
+    var n1=[1,2,-1], d1=3;
+    var n2a=2, n2b=-1, n2c=3, d2=1;
+    var built=false, H=null, p1Mesh=null, p2Mesh=null, arr1=null, arr2=null, lineMesh=null;
+
+    function mathState(){
+      var len1=Math.sqrt(n1[0]*n1[0]+n1[1]*n1[1]+n1[2]*n1[2]);
+      var n2=[n2a,n2b,n2c];
+      var len2=Math.sqrt(n2[0]*n2[0]+n2[1]*n2[1]+n2[2]*n2[2]); if(len2<1e-6){ len2=1; n2=[0,1,0]; }
+
+      // Cross product d = n1 x n2
+      var dx=n1[1]*n2[2] - n1[2]*n2[1];
+      var dy=n1[2]*n2[0] - n1[0]*n2[2];
+      var dz=n1[0]*n2[1] - n1[1]*n2[0];
+      var lenD=Math.sqrt(dx*dx+dy*dy+dz*dz);
+
+      // Dot product and dihedral angle
+      var dot12=n1[0]*n2[0]+n1[1]*n2[1]+n1[2]*n2[2];
+      var cosPhi=Math.min(1, Math.max(0, Math.abs(dot12)/(len1*len2)));
+      var phiDeg=Math.acos(cosPhi)*180/Math.PI;
+
+      // Find a point on intersection line
+      var isParallel=lenD<1e-4;
+      var p0=[0,0,0];
+      if(!isParallel){
+        if(Math.abs(dz)>1e-4){
+          p0[0]=(d1*n2[1] - d2*n1[1])/dz;
+          p0[1]=(d2*n1[0] - d1*n2[0])/dz;
+          p0[2]=0;
+        } else if(Math.abs(dy)>1e-4){
+          p0[0]=(d1*n2[2] - d2*n1[2])/dy;
+          p0[1]=0;
+          p0[2]=(d2*n1[0] - d1*n2[0])/dy;
+        } else {
+          p0[0]=0;
+          p0[1]=(d1*n2[2] - d2*n1[2])/dx;
+          p0[2]=(d2*n1[1] - d1*n2[1])/dx;
+        }
+      }
+
+      return {
+        n1:n1, len1:len1, d1:d1,
+        n2:n2, len2:len2, d2:d2,
+        dVec:[dx,dy,dz], lenD:lenD, isParallel:isParallel,
+        p0:p0, dot12:dot12, cosPhi:cosPhi, phiDeg:phiDeg
+      };
+    }
+
+    function updateReadouts(st){
+      var p1El=document.getElementById('ibhlPlane1Eq'); if(p1El) p1El.textContent='x + 2y - z = 3';
+      var p2El=document.getElementById('ibhlPlane2Eq'); if(p2El){
+        var parts=[];
+        if(st.n2[0]!==0) parts.push((st.n2[0]===1?'':st.n2[0]===-1?'-':st.n2[0])+'x');
+        if(st.n2[1]!==0) parts.push((parts.length?(st.n2[1]>0?'+ ':'- '):st.n2[1]<0?'-':'')+(Math.abs(st.n2[1])===1?'':Math.abs(st.n2[1]))+'y');
+        if(st.n2[2]!==0) parts.push((parts.length?(st.n2[2]>0?'+ ':'- '):st.n2[2]<0?'-':'')+(Math.abs(st.n2[2])===1?'':Math.abs(st.n2[2]))+'z');
+        p2El.textContent=(parts.join(' ')||'0')+' = '+st.d2;
+      }
+      var lineEl=document.getElementById('ibhlInterLine'); if(lineEl){
+        lineEl.textContent=st.isParallel?'Planes are parallel':'⟨'+st.dVec[0]+', '+st.dVec[1]+', '+st.dVec[2]+'⟩';
+      }
+      var angEl=document.getElementById('ibhlDihedralAngle'); if(angEl){
+        angEl.textContent=st.isParallel?'0.0° (Parallel)':fmt(st.phiDeg,1)+'°';
+      }
+
+      if(dataDesc){
+        dataDesc.textContent='Plane Π₁: x + 2y - z = 3 (Normal n₁ = ⟨1,2,-1⟩). Plane Π₂: '+st.n2[0]+'x + '+st.n2[1]+'y + '+st.n2[2]+'z = '+st.d2+' (Normal n₂ = ⟨'+st.n2[0]+','+st.n2[1]+','+st.n2[2]+'⟩). '+(st.isParallel?'Planes are parallel.':'Line of intersection direction d = n₁ × n₂ = ⟨'+st.dVec[0]+','+st.dVec[1]+','+st.dVec[2]+'⟩, dihedral angle φ = '+fmt(st.phiDeg,1)+'°.');
+      }
+      renderDataRows(dataRows,[
+        ['Plane Π₁ Normal', '⟨1, 2, -1⟩'],
+        ['Plane Π₂ Normal', '⟨'+st.n2[0]+', '+st.n2[1]+', '+st.n2[2]+'⟩'],
+        ['Direction Vector d = n₁ × n₂', st.isParallel?'Parallel (zero cross product)':'⟨'+st.dVec[0]+', '+st.dVec[1]+', '+st.dVec[2]+'⟩'],
+        ['Dihedral Angle φ', fmt(st.phiDeg,1)+'°'],
+        ['Point on Line P', st.isParallel?'—':'('+fmt(st.p0[0],2)+', '+fmt(st.p0[1],2)+', '+fmt(st.p0[2],2)+')']
+      ]);
+    }
+
+    function projectIso(x,y,z,cx,cy,sc){
+      var cos30=0.866, sin30=0.5;
+      var px=cx + sc*(y*cos30 - x*cos30);
+      var py=cy - sc*(z - (x+y)*sin30*0.55);
+      return [px,py];
+    }
+
+    function getPlaneQuad(n, dVal, S){
+      var len=Math.sqrt(n[0]*n[0]+n[1]*n[1]+n[2]*n[2])||1;
+      var nu=[n[0]/len, n[1]/len, n[2]/len];
+      var k=Math.abs(nu[2])<0.9?[0,0,1]:[0,1,0];
+      var u=[nu[1]*k[2]-nu[2]*k[1], nu[2]*k[0]-nu[0]*k[2], nu[0]*k[1]-nu[1]*k[0]];
+      var uL=Math.sqrt(u[0]*u[0]+u[1]*u[1]+u[2]*u[2])||1; u=[u[0]/uL,u[1]/uL,u[2]/uL];
+      var v=[nu[1]*u[2]-nu[2]*u[1], nu[2]*u[0]-nu[0]*u[2], nu[0]*u[1]-nu[1]*u[0]];
+      var cDist=dVal/len;
+      var c=[nu[0]*cDist, nu[1]*cDist, nu[2]*cDist];
+      return {
+        c:c, nu:nu,
+        corners:[
+          [c[0]-S*u[0]-S*v[0], c[1]-S*u[1]-S*v[1], c[2]-S*u[2]-S*v[2]],
+          [c[0]+S*u[0]-S*v[0], c[1]+S*u[1]-S*v[1], c[2]+S*u[2]-S*v[2]],
+          [c[0]+S*u[0]+S*v[0], c[1]+S*u[1]+S*v[1], c[2]+S*u[2]+S*v[2]],
+          [c[0]-S*u[0]+S*v[0], c[1]-S*u[1]+S*v[1], c[2]-S*u[2]+S*v[2]]
+        ]
+      };
+    }
+
+    function draw(ctx,w,ht){
+      ctx.clearRect(0,0,w,ht);
+      var cx=w*0.5, cy=ht*0.55, sc=Math.min(w,ht)*0.11;
+      var st=mathState();
+      updateReadouts(st);
+
+      // Axes
+      ctx.lineWidth=1; ctx.strokeStyle=GRID||'#8C97A8'; ctx.fillStyle=MUTED||'#6B7280';
+      ctx.font='11px sans-serif';
+      var o=projectIso(0,0,0,cx,cy,sc);
+      var axX=projectIso(3.8,0,0,cx,cy,sc), axY=projectIso(0,3.8,0,cx,cy,sc), axZ=projectIso(0,0,3.8,cx,cy,sc);
+      ctx.beginPath(); ctx.moveTo(o[0],o[1]); ctx.lineTo(axX[0],axX[1]); ctx.stroke(); ctx.fillText('+x',axX[0]+3,axX[1]);
+      ctx.beginPath(); ctx.moveTo(o[0],o[1]); ctx.lineTo(axY[0],axY[1]); ctx.stroke(); ctx.fillText('+y',axY[0]+3,axY[1]);
+      ctx.beginPath(); ctx.moveTo(o[0],o[1]); ctx.lineTo(axZ[0],axZ[1]); ctx.stroke(); ctx.fillText('+z',axZ[0]-4,axZ[1]-4);
+
+      // Plane 1 (fixed, indigo)
+      var q1=getPlaneQuad(st.n1, st.d1, 2.5);
+      var cp1=q1.corners.map(function(p){ return projectIso(p[0],p[1],p[2],cx,cy,sc); });
+      ctx.beginPath(); ctx.moveTo(cp1[0][0],cp1[0][1]);
+      for(var i=1;i<4;i++) ctx.lineTo(cp1[i][0],cp1[i][1]);
+      ctx.closePath();
+      ctx.fillStyle='rgba(30, 58, 110, 0.28)'; ctx.fill();
+      ctx.strokeStyle=INDIGO||'#1E3A6E'; ctx.lineWidth=1.8; ctx.stroke();
+
+      // Normal 1
+      var c1=projectIso(q1.c[0],q1.c[1],q1.c[2],cx,cy,sc);
+      var n1Tip=projectIso(q1.c[0]+1.8*q1.nu[0], q1.c[1]+1.8*q1.nu[1], q1.c[2]+1.8*q1.nu[2], cx,cy,sc);
+      ctx.beginPath(); ctx.moveTo(c1[0],c1[1]); ctx.lineTo(n1Tip[0],n1Tip[1]);
+      ctx.strokeStyle=INDIGO||'#1E3A6E'; ctx.lineWidth=2.2; ctx.stroke();
+      arrow(ctx, c1[0], c1[1], n1Tip[0], n1Tip[1], 7, INDIGO||'#1E3A6E');
+
+      // Plane 2 (user, amber)
+      var q2=getPlaneQuad(st.n2, st.d2, 2.5);
+      var cp2=q2.corners.map(function(p){ return projectIso(p[0],p[1],p[2],cx,cy,sc); });
+      ctx.beginPath(); ctx.moveTo(cp2[0][0],cp2[0][1]);
+      for(var j=1;j<4;j++) ctx.lineTo(cp2[j][0],cp2[j][1]);
+      ctx.closePath();
+      ctx.fillStyle='rgba(200, 144, 42, 0.28)'; ctx.fill();
+      ctx.strokeStyle=AMBER2||'#C8902A'; ctx.lineWidth=1.8; ctx.stroke();
+
+      // Normal 2
+      var c2=projectIso(q2.c[0],q2.c[1],q2.c[2],cx,cy,sc);
+      var n2Tip=projectIso(q2.c[0]+1.8*q2.nu[0], q2.c[1]+1.8*q2.nu[1], q2.c[2]+1.8*q2.nu[2], cx,cy,sc);
+      ctx.beginPath(); ctx.moveTo(c2[0],c2[1]); ctx.lineTo(n2Tip[0],n2Tip[1]);
+      ctx.strokeStyle=AMBER2||'#C8902A'; ctx.lineWidth=2.2; ctx.stroke();
+      arrow(ctx, c2[0], c2[1], n2Tip[0], n2Tip[1], 7, AMBER2||'#C8902A');
+
+      // Intersection Line (green)
+      if(!st.isParallel){
+        var dirUnit=[st.dVec[0]/st.lenD, st.dVec[1]/st.lenD, st.dVec[2]/st.lenD];
+        var lA=projectIso(st.p0[0]-3.2*dirUnit[0], st.p0[1]-3.2*dirUnit[1], st.p0[2]-3.2*dirUnit[2], cx,cy,sc);
+        var lB=projectIso(st.p0[0]+3.2*dirUnit[0], st.p0[1]+3.2*dirUnit[1], st.p0[2]+3.2*dirUnit[2], cx,cy,sc);
+        ctx.beginPath(); ctx.moveTo(lA[0],lA[1]); ctx.lineTo(lB[0],lB[1]);
+        ctx.strokeStyle='#10B981'; ctx.lineWidth=3; ctx.stroke();
+        ctx.fillStyle='#10B981'; ctx.font='bold 12px sans-serif';
+        ctx.fillText('Line d', lB[0]+6, lB[1]);
+      }
+    }
+
+    function update3dScene(){
+      if(!H) return;
+      var T=H.THREE, st=mathState();
+
+      if(p1Mesh){
+        var nu1=new T.Vector3(st.n1[0]/st.len1, st.n1[1]/st.len1, st.n1[2]/st.len1);
+        var c1=new T.Vector3().copy(nu1).multiplyScalar(st.d1/st.len1);
+        p1Mesh.position.copy(c1);
+        p1Mesh.quaternion.setFromUnitVectors(new T.Vector3(0,0,1), nu1);
+        if(arr1){
+          H.scene.remove(arr1);
+          arr1=new T.ArrowHelper(nu1, c1, 2.5, 0x1E3A6E, 0.45, 0.25);
+          H.scene.add(arr1);
+        }
+      }
+      if(p2Mesh){
+        var nu2=new T.Vector3(st.n2[0]/st.len2, st.n2[1]/st.len2, st.n2[2]/st.len2);
+        var c2=new T.Vector3().copy(nu2).multiplyScalar(st.d2/st.len2);
+        p2Mesh.position.copy(c2);
+        p2Mesh.quaternion.setFromUnitVectors(new T.Vector3(0,0,1), nu2);
+        if(arr2){
+          H.scene.remove(arr2);
+          arr2=new T.ArrowHelper(nu2, c2, 2.5, 0xC8902A, 0.45, 0.25);
+          H.scene.add(arr2);
+        }
+      }
+      if(lineMesh){
+        if(st.isParallel){
+          lineMesh.visible=false;
+        } else {
+          lineMesh.visible=true;
+          var du=new T.Vector3(st.dVec[0]/st.lenD, st.dVec[1]/st.lenD, st.dVec[2]/st.lenD);
+          var pStart=new T.Vector3(st.p0[0]-5*du.x, st.p0[1]-5*du.y, st.p0[2]-5*du.z);
+          var pEnd=new T.Vector3(st.p0[0]+5*du.x, st.p0[1]+5*du.y, st.p0[2]+5*du.z);
+          lineMesh.geometry.setFromPoints([pStart, pEnd]);
+        }
+      }
+      H.render();
+    }
+
+    function build3d(mods){
+      var T=mods.THREE, COLOR=ClipSAT3D.COLOR;
+      H=ClipSAT3D.setup(wrap, mods, {
+        az:0.9, el:0.45, dist:14, target:new T.Vector3(0,0,0),
+        axisSegs:[[[-6,0,0],[6,0,0]],[[0,-6,0],[0,6,0]],[[0,0,-6],[0,0,6]]]
+      });
+
+      var pGeo1=new T.PlaneGeometry(8,8);
+      var pMat1=new T.MeshLambertMaterial({color:COLOR.INDIGO, transparent:true, opacity:0.45, side:T.DoubleSide});
+      p1Mesh=new T.Mesh(pGeo1,pMat1); H.scene.add(p1Mesh);
+      arr1=new T.ArrowHelper(new T.Vector3(0,1,0), new T.Vector3(0,0,0), 2.5, 0x1E3A6E); H.scene.add(arr1);
+
+      var pGeo2=new T.PlaneGeometry(8,8);
+      var pMat2=new T.MeshLambertMaterial({color:COLOR.AMBER, transparent:true, opacity:0.45, side:T.DoubleSide});
+      p2Mesh=new T.Mesh(pGeo2,pMat2); H.scene.add(p2Mesh);
+      arr2=new T.ArrowHelper(new T.Vector3(0,1,0), new T.Vector3(0,0,0), 2.5, 0xC8902A); H.scene.add(arr2);
+
+      var lGeo=new T.BufferGeometry();
+      var lMat=new T.LineBasicMaterial({color:0x10B981, linewidth:3.5});
+      lineMesh=new T.Line(lGeo,lMat); H.scene.add(lineMesh);
+
+      update3dScene();
+    }
+
+    function open3d(){
+      wrap.hidden=false; hint.hidden=false;
+      btn.setAttribute('aria-expanded','true');
+      btn.textContent='🧊 Hide 3D view';
+      if(built){ update3dScene(); return; }
+      built=true; btn.disabled=true; btn.textContent='Loading 3D…';
+      ClipSAT3D.load().then(function(mods){
+        btn.disabled=false; btn.textContent='🧊 Hide 3D view';
+        build3d(mods);
+      }).catch(function(){
+        built=false; btn.disabled=false; btn.textContent='🧊 View 2 Planes & Line in 3D';
+        wrap.hidden=true; hint.hidden=true;
+        btn.setAttribute('aria-expanded','false');
+        wrap.textContent='3D view failed to load — check your connection and try again.';
+        wrap.hidden=false;
+      });
+    }
+    function close3d(){
+      wrap.hidden=true; hint.hidden=true;
+      btn.setAttribute('aria-expanded','false');
+      btn.textContent='🧊 View 2 Planes & Line in 3D';
+    }
+
+    if(btn) btn.addEventListener('click', function(){ if(wrap.hidden) open3d(); else close3d(); });
+
+    function onCtrl(){
+      n2a=parseFloat(sA.value); document.getElementById('ibhlP2AV').textContent=n2a;
+      n2b=parseFloat(sB.value); document.getElementById('ibhlP2BV').textContent=n2b;
+      n2c=parseFloat(sC.value); document.getElementById('ibhlP2CV').textContent=n2c;
+      d2=parseFloat(sD.value); document.getElementById('ibhlP2DV').textContent=d2;
+      redrawAll();
+      if(built) update3dScene();
+    }
+
+    [sA,sB,sC,sD].forEach(function(s){ if(s) s.addEventListener('input',onCtrl); });
+    register(canvas,draw);
+  })();
+
+
   /* IB HL TOPIC 4 — confidence interval for the mean, z-based sampling
      distribution shaded between the bounds */
   (function(){

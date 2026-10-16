@@ -150,9 +150,244 @@
     slider.addEventListener('input',function(){ if(built){ update(); H.render(); } });
   })();
 
+  /* ===================== MVC CH 1 · 3D TANGENT PLANE & SURFACE NORMAL ===================== */
+  (function(){
+    var canvas=document.getElementById('mvcTangentCanvas'); if(!canvas) return;
+    var btn=document.getElementById('mvcTangent3dBtn'), wrap=document.getElementById('mvcTangent3dWrap'), hint=document.getElementById('mvcTangent3dHint');
+    var sX=document.getElementById('mvcTanX0'), sY=document.getElementById('mvcTanY0');
+    var dataBtn=document.getElementById('mvcTangentDataBtn'), dataPanel=document.getElementById('mvcTangentDataPanel'),
+        dataDesc=document.getElementById('mvcTangentDataDesc'), dataRows=document.getElementById('mvcTangentDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+
+    var x0=1.0, y0=1.5;
+    var built=false, H=null, tanPlaneMesh=null, tanWireMesh=null, normArrow=null, ptMesh=null;
+
+    function f(x,y){ return 4 - 0.3*x*x - 0.2*y*y; }
+    function fx(x,y){ return -0.6*x; }
+    function fy(x,y){ return -0.4*y; }
+
+    function mathState(){
+      var z0=f(x0,y0);
+      var dfx=fx(x0,y0), dfy=fy(x0,y0);
+      // Upward normal n = <-fx, -fy, 1>
+      var nx=-dfx, ny=-dfy, nz=1;
+      var lenN=Math.sqrt(nx*nx+ny*ny+nz*nz);
+      var gradMag=Math.sqrt(dfx*dfx+dfy*dfy);
+      return {
+        x0:x0, y0:y0, z0:z0,
+        fx:dfx, fy:dfy,
+        nx:nx, ny:ny, nz:nz, lenN:lenN,
+        gradMag:gradMag
+      };
+    }
+
+    function updateReadouts(st){
+      var ptEl=document.getElementById('mvcTanPt'); if(ptEl) ptEl.textContent='('+fmt(st.x0,1)+', '+fmt(st.y0,1)+', '+fmt(st.z0,2)+')';
+      var fxEl=document.getElementById('mvcTanFx'); if(fxEl) fxEl.textContent=fmt(st.fx,2);
+      var fyEl=document.getElementById('mvcTanFy'); if(fyEl) fyEl.textContent=fmt(st.fy,2);
+      var eqEl=document.getElementById('mvcTanPlaneEq'); if(eqEl){
+        var sx=st.fx>=0?'+ '+fmt(st.fx,2):'- '+fmt(Math.abs(st.fx),2);
+        var sy=st.fy>=0?'+ '+fmt(st.fy,2):'- '+fmt(Math.abs(st.fy),2);
+        eqEl.textContent='z - '+fmt(st.z0,2)+' = '+sx+'(x - '+fmt(st.x0,1)+') '+sy+'(y - '+fmt(st.y0,1)+')';
+      }
+      var normEl=document.getElementById('mvcTanNormal'); if(normEl){
+        normEl.textContent='⟨'+fmt(st.nx,2)+', '+fmt(st.ny,2)+', 1.00⟩';
+      }
+
+      if(dataDesc){
+        dataDesc.textContent='Surface z = 4 - 0.3x² - 0.2y². Tangent point P = ('+fmt(st.x0,1)+', '+fmt(st.y0,1)+', '+fmt(st.z0,2)+'). Partial derivatives fx = '+fmt(st.fx,2)+', fy = '+fmt(st.fy,2)+'. Upward normal n = ⟨'+fmt(st.nx,2)+', '+fmt(st.ny,2)+', 1.00⟩ (length '+fmt(st.lenN,2)+').';
+      }
+      renderDataRows(dataRows,[
+        ['Point P(x₀, y₀, z₀)', '('+fmt(st.x0,1)+', '+fmt(st.y0,1)+', '+fmt(st.z0,2)+')'],
+        ['Slope fx (hold y fixed)', fmt(st.fx,2)],
+        ['Slope fy (hold x fixed)', fmt(st.fy,2)],
+        ['Upward Normal n', '⟨'+fmt(st.nx,2)+', '+fmt(st.ny,2)+', 1.00⟩'],
+        ['Gradient |∇f| (max slope)', fmt(st.gradMag,2)]
+      ]);
+    }
+
+    function projectIso(x,y,z,cx,cy,sc){
+      var cos30=0.866, sin30=0.5;
+      var px=cx + sc*(y*cos30 - x*cos30);
+      var py=cy - sc*(z - (x+y)*sin30*0.55);
+      return [px,py];
+    }
+
+    function draw(ctx,w,ht){
+      ctx.clearRect(0,0,w,ht);
+      var cx=w*0.5, cy=ht*0.62, sc=Math.min(w,ht)*0.11;
+      var st=mathState();
+      updateReadouts(st);
+
+      // Coordinate axes
+      ctx.lineWidth=1; ctx.strokeStyle=GRID||'#8C97A8'; ctx.fillStyle=MUTED||'#6B7280';
+      ctx.font='11px sans-serif';
+      var o=projectIso(0,0,0,cx,cy,sc);
+      var axX=projectIso(3.6,0,0,cx,cy,sc), axY=projectIso(0,3.6,0,cx,cy,sc), axZ=projectIso(0,0,4.8,cx,cy,sc);
+      ctx.beginPath(); ctx.moveTo(o[0],o[1]); ctx.lineTo(axX[0],axX[1]); ctx.stroke(); ctx.fillText('+x',axX[0]+4,axX[1]);
+      ctx.beginPath(); ctx.moveTo(o[0],o[1]); ctx.lineTo(axY[0],axY[1]); ctx.stroke(); ctx.fillText('+y',axY[0]+4,axY[1]);
+      ctx.beginPath(); ctx.moveTo(o[0],o[1]); ctx.lineTo(axZ[0],axZ[1]); ctx.stroke(); ctx.fillText('+z',axZ[0]-4,axZ[1]-6);
+
+      // Draw surface traces (parabolas in x and y)
+      ctx.strokeStyle='rgba(30, 58, 110, 0.35)'; ctx.lineWidth=1.2;
+      for(var yGrid=-2.5; yGrid<=2.5; yGrid+=1.25){
+        ctx.beginPath();
+        for(var xStep=-2.8; xStep<=2.8; xStep+=0.35){
+          var pIso=projectIso(xStep, yGrid, f(xStep,yGrid), cx,cy,sc);
+          if(xStep===-2.8) ctx.moveTo(pIso[0],pIso[1]); else ctx.lineTo(pIso[0],pIso[1]);
+        }
+        ctx.stroke();
+      }
+      for(var xGrid=-2.5; xGrid<=2.5; xGrid+=1.25){
+        ctx.beginPath();
+        for(var yStep=-2.8; yStep<=2.8; yStep+=0.35){
+          var pIso2=projectIso(xGrid, yStep, f(xGrid,yStep), cx,cy,sc);
+          if(yStep===-2.8) ctx.moveTo(pIso2[0],pIso2[1]); else ctx.lineTo(pIso2[0],pIso2[1]);
+        }
+        ctx.stroke();
+      }
+
+      // Local tangent plane patch around (x0, y0)
+      var S=1.2;
+      var c1=projectIso(st.x0-S, st.y0-S, st.z0 + st.fx*(-S) + st.fy*(-S), cx,cy,sc);
+      var c2=projectIso(st.x0+S, st.y0-S, st.z0 + st.fx*(S) + st.fy*(-S), cx,cy,sc);
+      var c3=projectIso(st.x0+S, st.y0+S, st.z0 + st.fx*(S) + st.fy*(S), cx,cy,sc);
+      var c4=projectIso(st.x0-S, st.y0+S, st.z0 + st.fx*(-S) + st.fy*(S), cx,cy,sc);
+
+      ctx.beginPath();
+      ctx.moveTo(c1[0],c1[1]); ctx.lineTo(c2[0],c2[1]); ctx.lineTo(c3[0],c3[1]); ctx.lineTo(c4[0],c4[1]);
+      ctx.closePath();
+      ctx.fillStyle='rgba(200, 144, 42, 0.32)'; ctx.fill();
+      ctx.strokeStyle=AMBER2||'#C8902A'; ctx.lineWidth=2; ctx.stroke();
+
+      // Normal vector arrow n from (x0, y0, z0)
+      var ptIso=projectIso(st.x0, st.y0, st.z0, cx,cy,sc);
+      var nScale=1.8/st.lenN;
+      var tipIso=projectIso(st.x0+st.nx*nScale, st.y0+st.ny*nScale, st.z0+st.nz*nScale, cx,cy,sc);
+      ctx.beginPath(); ctx.moveTo(ptIso[0],ptIso[1]); ctx.lineTo(tipIso[0],tipIso[1]);
+      ctx.strokeStyle=AMBER2||'#C8902A'; ctx.lineWidth=2.8; ctx.stroke();
+      arrow(ctx, ptIso[0], ptIso[1], tipIso[0], tipIso[1], 8, AMBER2||'#C8902A');
+      ctx.fillStyle=AMBER2||'#C8902A'; ctx.font='bold 12px sans-serif';
+      ctx.fillText('n', tipIso[0]+5, tipIso[1]-3);
+
+      // Tangent point P
+      ctx.beginPath(); ctx.arc(ptIso[0],ptIso[1],5.5,0,2*Math.PI);
+      ctx.fillStyle='#E11D48'; ctx.fill(); ctx.strokeStyle='#FFF'; ctx.lineWidth=1.5; ctx.stroke();
+      ctx.fillStyle=INK||'#0E1726'; ctx.font='bold 11px sans-serif';
+      ctx.fillText('P(x₀,y₀,z₀)', ptIso[0]+7, ptIso[1]-4);
+    }
+
+    function update3dScene(){
+      if(!H) return;
+      var T=H.THREE, st=mathState();
+      // In Three.js: X is x, Y is height z, Z is y
+      var ptWorld=new T.Vector3(st.x0, st.z0, st.y0);
+      var normWorld=new T.Vector3(st.nx/st.lenN, st.nz/st.lenN, st.ny/st.lenN);
+
+      if(tanPlaneMesh){
+        tanPlaneMesh.position.copy(ptWorld);
+        tanPlaneMesh.quaternion.setFromUnitVectors(new T.Vector3(0,1,0), normWorld);
+        if(tanWireMesh){ tanWireMesh.position.copy(ptWorld); tanWireMesh.quaternion.copy(tanPlaneMesh.quaternion); }
+      }
+      if(normArrow){
+        H.scene.remove(normArrow);
+        normArrow=new T.ArrowHelper(normWorld, ptWorld, 2.5, 0xC8902A, 0.45, 0.25);
+        H.scene.add(normArrow);
+      }
+      if(ptMesh){
+        ptMesh.position.copy(ptWorld);
+      }
+      H.render();
+    }
+
+    function buildSurfaceGeo(T){
+      var N=36, xmin=-3.2, xmax=3.2, ymin=-3.2, ymax=3.2;
+      var geo=new T.PlaneGeometry(xmax-xmin, ymax-ymin, N, N);
+      geo.rotateX(-Math.PI/2);
+      var pos=geo.attributes.position;
+      for(var i=0;i<pos.count;i++){
+        var x=pos.getX(i), y=pos.getZ(i);
+        pos.setY(i, f(x,y));
+      }
+      pos.needsUpdate=true; geo.computeVertexNormals();
+      return geo;
+    }
+
+    function build3d(mods){
+      var T=mods.THREE, COLOR=ClipSAT3D.COLOR;
+      H=ClipSAT3D.setup(wrap, mods, {
+        az:0.85, el:0.5, dist:11, target:new T.Vector3(0,1.5,0),
+        axisSegs:[[[-4,0,0],[4,0,0]],[[0,-1,0],[0,5,0]],[[0,0,-4],[0,0,4]]]
+      });
+
+      // Curved surface mesh
+      var sGeo=buildSurfaceGeo(T);
+      var sMat=new T.MeshLambertMaterial({color:COLOR.INDIGO, transparent:true, opacity:0.52, side:T.DoubleSide});
+      H.scene.add(new T.Mesh(sGeo, sMat));
+      var wMat=new T.MeshBasicMaterial({color:COLOR.INDIGO, wireframe:true, transparent:true, opacity:0.22});
+      H.scene.add(new T.Mesh(sGeo, wMat));
+
+      // Local tangent plane patch
+      var tGeo=new T.PlaneGeometry(3.6, 3.6);
+      tGeo.rotateX(-Math.PI/2);
+      var tMat=new T.MeshLambertMaterial({color:COLOR.AMBER, transparent:true, opacity:0.48, side:T.DoubleSide});
+      tanPlaneMesh=new T.Mesh(tGeo, tMat); H.scene.add(tanPlaneMesh);
+      var twMat=new T.MeshBasicMaterial({color:COLOR.AMBER, wireframe:true, transparent:true, opacity:0.35});
+      tanWireMesh=new T.Mesh(tGeo, twMat); H.scene.add(tanWireMesh);
+
+      // Normal arrow
+      normArrow=new T.ArrowHelper(new T.Vector3(0,1,0), new T.Vector3(0,0,0), 2.5, 0xC8902A);
+      H.scene.add(normArrow);
+
+      // Point mesh
+      var pGeo=new T.SphereGeometry(0.12,16,16);
+      var pMat=new T.MeshBasicMaterial({color:0xE11D48});
+      ptMesh=new T.Mesh(pGeo, pMat); H.scene.add(ptMesh);
+
+      update3dScene();
+    }
+
+    function open3d(){
+      wrap.hidden=false; hint.hidden=false;
+      btn.setAttribute('aria-expanded','true');
+      btn.textContent='🧊 Hide 3D view';
+      if(built){ update3dScene(); return; }
+      built=true; btn.disabled=true; btn.textContent='Loading 3D…';
+      ClipSAT3D.load().then(function(mods){
+        btn.disabled=false; btn.textContent='🧊 Hide 3D view';
+        build3d(mods);
+      }).catch(function(){
+        built=false; btn.disabled=false; btn.textContent='🧊 View Tangent Plane in 3D';
+        wrap.hidden=true; hint.hidden=true;
+        btn.setAttribute('aria-expanded','false');
+        wrap.textContent='3D view failed to load — check your connection and try again.';
+        wrap.hidden=false;
+      });
+    }
+    function close3d(){
+      wrap.hidden=true; hint.hidden=true;
+      btn.setAttribute('aria-expanded','false');
+      btn.textContent='🧊 View Tangent Plane in 3D';
+    }
+
+    if(btn) btn.addEventListener('click', function(){ if(wrap.hidden) open3d(); else close3d(); });
+
+    function onCtrl(){
+      x0=parseFloat(sX.value); document.getElementById('mvcTanX0V').textContent=fmt(x0,1);
+      y0=parseFloat(sY.value); document.getElementById('mvcTanY0V').textContent=fmt(y0,1);
+      redrawAll();
+      if(built) update3dScene();
+    }
+
+    if(sX) sX.addEventListener('input',onCtrl);
+    if(sY) sY.addEventListener('input',onCtrl);
+    register(canvas,draw);
+  })();
+
   /* MVC CH 2 — gradient & steepest ascent: heatmap of f, a fixed gradient
      arrow, and a rotating unit-direction arrow. Reuses Worked example 2.B's
      exact numbers (f = x²+xy at (1,2), ∇f = ⟨4,1⟩, max rate √17). */
+
   (function(){
     var canvas=document.getElementById('mvcGradCanvas'); if(!canvas) return;
     var ax=1, ay=2;

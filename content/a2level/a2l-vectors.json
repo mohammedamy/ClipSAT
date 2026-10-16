@@ -248,6 +248,181 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · 3D Line & Plane Intersection",
+          "ar": "⊙ مستكشف · تقاطع المستقيم والمستوى في الفضاء ثلاثي الأبعاد"
+        },
+        "canvasId": "a2LinePlaneCanvas",
+        "ariaLabel": {
+          "en": "Interactive 3D model of a plane and intersecting vector line",
+          "ar": "نموذج ثلاثي الأبعاد تفاعلي لمستوى ومستقيم متقاطع"
+        },
+        "canvas3d": {
+          "btnId": "a2LinePlane3dBtn",
+          "wrapId": "a2LinePlane3dWrap",
+          "hintId": "a2LinePlane3dHint",
+          "btnLabel": "🧊 View Line & Plane in 3D",
+          "ariaLabel": {
+            "en": "Interactive 3D model of a plane, its normal vector, and an intersecting line",
+            "ar": "نموذج ثلاثي الأبعاد تفاعلي لمستوى ومتجه عمود عليه ومستقيم متقاطع"
+          }
+        },
+        "dataPanel": {
+          "btnId": "a2LinePlaneDataBtn",
+          "panelId": "a2LinePlaneDataPanel",
+          "descId": "a2LinePlaneDataDesc",
+          "rowsId": "a2LinePlaneDataRows",
+          "caption": {
+            "en": "Line and plane equations, normal vector, intersection, and angle",
+            "ar": "معادلات المستقيم والمستوى ومتجه العمود ونقطة التقاطع والزاوية"
+          },
+          "columns": [
+            {
+              "en": "Property",
+              "ar": "الخاصية"
+            },
+            {
+              "en": "Mathematical Value",
+              "ar": "القيمة الرياضية"
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "a2PlaneA",
+            "label": {
+              "en": "Plane Normal n_x (a) =",
+              "ar": "عمود المستوى n_x (a) ="
+            },
+            "min": -3,
+            "max": 3,
+            "value": 1,
+            "step": 1,
+            "valueDisplayId": "a2PlaneAV",
+            "ariaLabel": {
+              "en": "Plane normal x-component a",
+              "ar": "مركبة x لعمود المستوى"
+            }
+          },
+          {
+            "id": "a2PlaneB",
+            "label": {
+              "en": "Plane Normal n_y (b) =",
+              "ar": "عمود المستوى n_y (b) ="
+            },
+            "min": -3,
+            "max": 3,
+            "value": 2,
+            "step": 1,
+            "valueDisplayId": "a2PlaneBV",
+            "ariaLabel": {
+              "en": "Plane normal y-component b",
+              "ar": "مركبة y لعمود المستوى"
+            }
+          },
+          {
+            "id": "a2PlaneC",
+            "label": {
+              "en": "Plane Normal n_z (c) =",
+              "ar": "عمود المستوى n_z (c) ="
+            },
+            "min": -3,
+            "max": 3,
+            "value": 2,
+            "step": 1,
+            "valueDisplayId": "a2PlaneCV",
+            "ariaLabel": {
+              "en": "Plane normal z-component c",
+              "ar": "مركبة z لعمود المستوى"
+            }
+          },
+          {
+            "id": "a2PlaneD",
+            "label": {
+              "en": "Plane Constant d =",
+              "ar": "ثابت المستوى d ="
+            },
+            "min": -6,
+            "max": 6,
+            "value": 4,
+            "step": 1,
+            "valueDisplayId": "a2PlaneDV",
+            "ariaLabel": {
+              "en": "Plane constant d",
+              "ar": "ثابت معادلة المستوى"
+            }
+          },
+          {
+            "id": "a2LineTilt",
+            "label": {
+              "en": "Line Tilt d_x =",
+              "ar": "ميل المستقيم d_x ="
+            },
+            "min": -3,
+            "max": 3,
+            "value": 2,
+            "step": 1,
+            "valueDisplayId": "a2LineTiltV",
+            "ariaLabel": {
+              "en": "Line direction tilt component",
+              "ar": "مركبة اتجاه المستقيم"
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "a2PlaneEq",
+            "label": {
+              "en": "Plane Equation Π",
+              "ar": "معادلة المستوى Π"
+            },
+            "colorClass": "indigo",
+            "value": "x + 2y + 2z = 4"
+          },
+          {
+            "id": "a2PlaneNormal",
+            "label": {
+              "en": "Normal Vector n",
+              "ar": "متجه العمود n"
+            },
+            "colorClass": "amber",
+            "value": "⟨1, 2, 2⟩"
+          },
+          {
+            "id": "a2LineEq",
+            "label": {
+              "en": "Line Equation r",
+              "ar": "معادلة المستقيم r"
+            },
+            "colorClass": "indigo",
+            "value": "⟨0, 1, 0⟩ + λ⟨2, 1, 1⟩"
+          },
+          {
+            "id": "a2LineIntersect",
+            "label": {
+              "en": "Intersection Point I",
+              "ar": "نقطة التقاطع I"
+            },
+            "colorClass": "amber",
+            "value": "I(0.67, 1.33, 0.33)"
+          },
+          {
+            "id": "a2LineAngleOut",
+            "label": {
+              "en": "Line–Plane Angle θ",
+              "ar": "الزاوية بين المستقيم والمستوى θ"
+            },
+            "colorClass": "indigo",
+            "value": "35.3°"
+          }
+        ],
+        "note": {
+          "en": "Cambridge 9709 P3 Key Insight: The acute angle between the line and the plane is found using \\( \\sin\\theta = \\frac{|\\mathbf{d} \\cdot \\mathbf{n}|}{|\\mathbf{d}||\\mathbf{n}|} \\) (sine, not cosine, because the normal \\( \\mathbf{n} \\) is perpendicular to the plane).",
+          "ar": "فائدة كامبريدج 9709: الزاوية الحادة بين المستقيم والمستوى تُحسب باستخدام \\( \\sin\\theta = \\frac{|\\mathbf{d} \\cdot \\mathbf{n}|}{|\\mathbf{d}||\\mathbf{n}|} \\) (باستخدام الجيب وليس جيب التمام، لأن المتجه \\( \\mathbf{n} \\) عمودي على المستوى)."
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Determine whether the lines \\(\\mathbf{r}_1 = \\begin{pmatrix}1\\\\2\\\\-1\\end{pmatrix} + \\lambda\\begin{pmatrix}2\\\\1\\\\3\\end{pmatrix}\\) and \\(\\mathbf{r}_2 = \\begin{pmatrix}0\\\\5\\\\4\\end{pmatrix} + \\mu\\begin{pmatrix}-1\\\\2\\\\1\\end{pmatrix}\\) intersect or are skew.",

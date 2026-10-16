@@ -193,6 +193,156 @@
         }
       },
       {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Two Intersecting Planes & Direction Line",
+          "ar": "⊙ مستكشف · تقاطع مستويين وخط التقاطع في الفضاء"
+        },
+        "canvasId": "ibhlPlanesCanvas",
+        "ariaLabel": {
+          "en": "Interactive 3D model of two intersecting planes and their line of intersection",
+          "ar": "نموذج ثلاثي الأبعاد تفاعلي لمستويين متقاطعين وخط تقاطعهما"
+        },
+        "canvas3d": {
+          "btnId": "ibhlPlanes3dBtn",
+          "wrapId": "ibhlPlanes3dWrap",
+          "hintId": "ibhlPlanes3dHint",
+          "btnLabel": "🧊 View 2 Planes & Line in 3D",
+          "ariaLabel": {
+            "en": "Interactive 3D model of two intersecting planes, their normal vectors, and intersection line",
+            "ar": "نموذج ثلاثي الأبعاد تفاعلي لمستويين متقاطعين ومتجهي العمود وخط التقاطع"
+          }
+        },
+        "dataPanel": {
+          "btnId": "ibhlPlanesDataBtn",
+          "panelId": "ibhlPlanesDataPanel",
+          "descId": "ibhlPlanesDataDesc",
+          "rowsId": "ibhlPlanesDataRows",
+          "caption": {
+            "en": "Plane normals, intersection line direction vector, and dihedral angle",
+            "ar": "متجهات عمود المستويات ومتجه اتجاه خط التقاطع والزاوية الزوجية"
+          },
+          "columns": [
+            {
+              "en": "Vector / Plane",
+              "ar": "المتجه / المستوى"
+            },
+            {
+              "en": "Equation / Coordinates",
+              "ar": "المعادلة / الإحداثيات"
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "ibhlP2A",
+            "label": {
+              "en": "Plane 2 Normal n_2x =",
+              "ar": "عمود المستوى الثاني n_2x ="
+            },
+            "min": -3,
+            "max": 3,
+            "value": 2,
+            "step": 1,
+            "valueDisplayId": "ibhlP2AV",
+            "ariaLabel": {
+              "en": "Plane 2 normal x-component",
+              "ar": "مركبة x لعمود المستوى الثاني"
+            }
+          },
+          {
+            "id": "ibhlP2B",
+            "label": {
+              "en": "Plane 2 Normal n_2y =",
+              "ar": "عمود المستوى الثاني n_2y ="
+            },
+            "min": -3,
+            "max": 3,
+            "value": -1,
+            "step": 1,
+            "valueDisplayId": "ibhlP2BV",
+            "ariaLabel": {
+              "en": "Plane 2 normal y-component",
+              "ar": "مركبة y لعمود المستوى الثاني"
+            }
+          },
+          {
+            "id": "ibhlP2C",
+            "label": {
+              "en": "Plane 2 Normal n_2z =",
+              "ar": "عمود المستوى الثاني n_2z ="
+            },
+            "min": -3,
+            "max": 3,
+            "value": 3,
+            "step": 1,
+            "valueDisplayId": "ibhlP2CV",
+            "ariaLabel": {
+              "en": "Plane 2 normal z-component",
+              "ar": "مركبة z لعمود المستوى الثاني"
+            }
+          },
+          {
+            "id": "ibhlP2D",
+            "label": {
+              "en": "Plane 2 Constant d_2 =",
+              "ar": "ثابت المستوى الثاني d_2 ="
+            },
+            "min": -6,
+            "max": 6,
+            "value": 1,
+            "step": 1,
+            "valueDisplayId": "ibhlP2DV",
+            "ariaLabel": {
+              "en": "Plane 2 constant d_2",
+              "ar": "ثابت المستوى الثاني"
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "ibhlPlane1Eq",
+            "label": {
+              "en": "Plane Π₁ Equation",
+              "ar": "معادلة المستوى Π₁"
+            },
+            "colorClass": "indigo",
+            "value": "x + 2y - z = 3"
+          },
+          {
+            "id": "ibhlPlane2Eq",
+            "label": {
+              "en": "Plane Π₂ Equation",
+              "ar": "معادلة المستوى Π₂"
+            },
+            "colorClass": "amber",
+            "value": "2x - y + 3z = 1"
+          },
+          {
+            "id": "ibhlInterLine",
+            "label": {
+              "en": "Intersection Line d = n₁ × n₂",
+              "ar": "خط التقاطع d = n₁ × n₂"
+            },
+            "colorClass": "indigo",
+            "value": "⟨5, -5, -5⟩ ∥ ⟨1, -1, -1⟩"
+          },
+          {
+            "id": "ibhlDihedralAngle",
+            "label": {
+              "en": "Dihedral Angle φ",
+              "ar": "الزاوية بين المستويين φ"
+            },
+            "colorClass": "amber",
+            "value": "78.5°"
+          }
+        ],
+        "note": {
+          "en": "IB HL Topic 3 Concept: The direction vector of the line of intersection is given by the cross product of the two normal vectors: \\( \\mathbf{d} = \\mathbf{n}_1 \\times \\mathbf{n}_2 \\). Because the line lies in both planes, it is perpendicular to both normal vectors!",
+          "ar": "مفهوم رياضيات IB HL: متجه اتجاه خط التقاطع يُعطى بحاصل الضرب الاتجاهي لمتجهي العمود: \\( \\mathbf{d} = \\mathbf{n}_1 \\times \\mathbf{n}_2 \\). ولأن الخط يقع في كلا المستويين، فهو عمودي على كلا متجهي العمود!"
+        }
+      },
+      {
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 3.3 — Shortest Distance Between Skew Lines",
