@@ -17,6 +17,7 @@ isRtl: false
         <button type="button" class="calc-mode-btn" data-mode="scientific" role="tab" aria-selected="false">🔢 <span data-i18n="calc.mode.scientific">Scientific</span></button>
         <button type="button" class="calc-mode-btn" data-mode="geometry" role="tab" aria-selected="false">🧭 <span data-i18n="calc.mode.geometry">Geometry</span></button>
         <button type="button" class="calc-mode-btn" data-mode="exam" role="tab" aria-selected="false">🎓 <span data-i18n="calc.mode.exam">Exam Mode</span></button>
+        <button type="button" class="calc-mode-btn" data-mode="distributions" role="tab" aria-selected="false">📊 <span data-i18n="calc.mode.distributions">Distributions</span></button>
       </div>
       <div class="calc-bar-actions">
         <button type="button" id="calc-presets-toggle" aria-expanded="false" aria-controls="calc-presets-panel">✨ <span data-i18n="calc.presets.toggle">Presets</span> <span class="calc-presets-count"></span></button>
@@ -105,6 +106,26 @@ isRtl: false
     .calc-body{flex-direction:column}
     #calc-presets-panel{width:100%}
   }
+
+  /* Statistical Distributions Suite (Pillar 4.4) */
+  .calc-dist-suite{width:100%;height:100%;display:flex;flex-direction:column;background:var(--panel);color:var(--text);overflow:hidden}
+  .calc-dist-nav{display:flex;gap:6px;padding:10px 14px;border-bottom:1px solid var(--border);background:var(--paper-2,#f8fafc);overflow-x:auto;flex-shrink:0}
+  .calc-dist-tab{font:inherit;font-size:12px;font-weight:700;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--panel);color:var(--text);cursor:pointer;white-space:nowrap;transition:all .15s}
+  .calc-dist-tab:hover{border-color:var(--indigo,#4F46E5)}
+  .calc-dist-tab.active{background:var(--indigo,#4F46E5);border-color:var(--indigo,#4F46E5);color:#fff}
+  .calc-dist-body{flex:1;overflow-y:auto;display:grid;grid-template-columns:320px 1fr;gap:16px;padding:16px}
+  @media(max-width:760px){.calc-dist-body{grid-template-columns:1fr}}
+  .calc-dist-controls{display:flex;flex-direction:column;gap:12px}
+  .calc-dist-panel{background:var(--paper-2,#f8fafc);border:1px solid var(--border);border-radius:10px;padding:14px}
+  .calc-dist-panel h4{margin:0 0 10px;font-size:13px;font-weight:800;color:var(--indigo,#4F46E5)}
+  .calc-dist-field{margin-bottom:10px;display:flex;flex-direction:column;gap:4px}
+  .calc-dist-field label{font-size:11.5px;font-weight:600;color:var(--muted,#667085)}
+  .calc-dist-field input, .calc-dist-field select{font:inherit;font-size:13px;padding:7px 10px;border:1px solid var(--border);border-radius:6px;background:var(--panel);color:var(--text)}
+  .calc-dist-display{display:flex;flex-direction:column;gap:14px}
+  .calc-dist-result{background:var(--indigo-soft,rgba(79,70,229,0.08));border:1px solid var(--border);border-radius:10px;padding:14px}
+  .calc-dist-result-prob{font-size:1.6rem;font-weight:800;color:var(--indigo,#4F46E5);margin:4px 0}
+  .calc-dist-result-meta{font-size:12px;color:var(--muted,#667085);line-height:1.5}
+  .calc-dist-graph-card{flex:1;background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px;display:flex;align-items:center;justify-content:center;min-height:220px}
 </style>
 
 <!-- Desmos setup, matching the ClipSAT for Egypt sister site
@@ -155,11 +176,12 @@ isRtl: false
   };
 
   var EXTERNAL_LINKS = {
-    graphing:   'https://www.desmos.com/calculator',
-    threeD:     'https://www.desmos.com/3d',
-    scientific: 'https://www.desmos.com/scientific',
-    geometry:   'https://www.desmos.com/geometry',
-    exam:       null
+    graphing:      'https://www.desmos.com/calculator',
+    threeD:        'https://www.desmos.com/3d',
+    scientific:    'https://www.desmos.com/scientific',
+    geometry:      'https://www.desmos.com/geometry',
+    exam:          null,
+    distributions: null
   };
 
   var IFRAME_FALLBACKS = {
@@ -260,6 +282,644 @@ isRtl: false
     }
   }
 
+  // ── Statistical Distributions Suite (Pillar 4.4) ──
+  var activeDist = 'normCdf';
+
+  function _erf(x) {
+    var sign = (x >= 0) ? 1 : -1;
+    x = Math.abs(x);
+    var a1 = 0.254829592, a2 = -0.284496736, a3 = 1.421413741, a4 = -0.145315202, a5 = 1.061405429, p = 0.3275911;
+    var t = 1.0 / (1.0 + p * x);
+    var y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
+    return sign * y;
+  }
+
+  function _normCdf(x, mu, sigma) {
+    if (sigma <= 0) sigma = 1;
+    var z = (x - mu) / (sigma * Math.SQRT2);
+    return 0.5 * (1 + _erf(z));
+  }
+
+  function _invNorm(p, mu, sigma) {
+    if (sigma <= 0) sigma = 1;
+    if (p <= 0) return -Infinity;
+    if (p >= 1) return Infinity;
+    var a = [-3.969683028665376e+01, 2.209460984245205e+02, -2.759285104469687e+02, 1.383577518672690e+02, -3.066479806614716e+01, 2.506628277459239e+00];
+    var b = [-5.447609879822406e+01, 1.615858368580409e+02, -1.556989798598866e+02, 6.680131188771972e+01, -1.328068155288572e+01];
+    var c = [-7.784894002430293e-03, -3.223964580411365e-01, -2.400758277161838e+00, -2.549732539343734e+00, 4.374664141464968e+00, 2.938163982698783e+00];
+    var d = [7.784695709041462e-03, 3.224671290700398e-01, 2.445134137142996e+00, 3.754408661907416e+00];
+    var q, r, z;
+    if (p < 0.02425) {
+      q = Math.sqrt(-2 * Math.log(p));
+      z = (((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5]) / ((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);
+    } else if (p <= 0.97575) {
+      q = p - 0.5;
+      r = q * q;
+      z = (((((a[0]*r+a[1])*r+a[2])*r+a[3])*r+a[4])*r+a[5])*q / (((((b[0]*r+b[1])*r+b[2])*r+b[3])*r+b[4])*r+1);
+    } else {
+      q = Math.sqrt(-2 * Math.log(1 - p));
+      z = -(((((c[0]*q+c[1])*q+c[2])*q+c[3])*q+c[4])*q+c[5]) / ((((d[0]*q+d[1])*q+d[2])*q+d[3])*q+1);
+    }
+    return mu + z * sigma;
+  }
+
+  function _logGamma(x) {
+    var coef = [76.18009172947146, -86.50532032941677, 24.01409824083091, -1.231739572450155, 0.001208650973866179, -0.000005395239384953];
+    var y = x, tmp = x + 5.5;
+    tmp -= (x + 0.5) * Math.log(tmp);
+    var ser = 1.000000000190015;
+    for (var j = 0; j < 6; j++) ser += coef[j] / ++y;
+    return -tmp + Math.log(2.5066282746310005 * ser / x);
+  }
+
+  function _binomPdf(n, p, k) {
+    if (k < 0 || k > n || p < 0 || p > 1) return 0;
+    if (k === 0 && p === 0) return 1;
+    if (k === n && p === 1) return 1;
+    var logComb = _logGamma(n + 1) - _logGamma(k + 1) - _logGamma(n - k + 1);
+    return Math.exp(logComb + k * Math.log(p) + (n - k) * Math.log(1 - p));
+  }
+
+  function _poissonPdf(lambda, k) {
+    if (k < 0 || lambda <= 0) return 0;
+    var logP = k * Math.log(lambda) - lambda - _logGamma(k + 1);
+    return Math.exp(logP);
+  }
+
+  function _tPdf(t, df) {
+    if (df <= 0) return 0;
+    var c = Math.exp(_logGamma((df + 1) / 2) - _logGamma(df / 2)) / Math.sqrt(Math.PI * df);
+    return c * Math.pow(1 + (t * t) / df, -(df + 1) / 2);
+  }
+
+  function _tCdf(t, df) {
+    if (t === 0) return 0.5;
+    var a = -8, b = Math.min(8, Math.max(-8, t));
+    if (t < -8) return 0.00001;
+    if (t > 8) return 0.99999;
+    var n = 120, h = (b - a) / n;
+    var sum = _tPdf(a, df) + _tPdf(b, df);
+    for (var i = 1; i < n; i++) {
+      var x = a + i * h;
+      sum += (i % 2 === 0 ? 2 : 4) * _tPdf(x, df);
+    }
+    return Math.min(1, Math.max(0, sum * h / 3));
+  }
+
+  function _chi2Pdf(x, df) {
+    if (x <= 0 || df <= 0) return 0;
+    var halfDf = df / 2;
+    var logY = (halfDf - 1) * Math.log(x) - x / 2 - halfDf * Math.LN2 - _logGamma(halfDf);
+    return Math.exp(logY);
+  }
+
+  function _chi2Cdf(k, df) {
+    if (k <= 0) return 0;
+    var n = 160, b = Math.min(k, 100), h = b / n;
+    var sum = _chi2Pdf(0.0001, df) + _chi2Pdf(b, df);
+    for (var i = 1; i < n; i++) {
+      var x = i * h;
+      sum += (i % 2 === 0 ? 2 : 4) * _chi2Pdf(x, df);
+    }
+    return Math.min(1, Math.max(0, sum * h / 3));
+  }
+
+  function mountDistributions() {
+    container.innerHTML = [
+      '<div class="calc-dist-suite">',
+      '  <div class="calc-dist-nav">',
+      '    <button type="button" class="calc-dist-tab' + (activeDist === 'normCdf' ? ' active' : '') + '" data-dist="normCdf">Normal CDF</button>',
+      '    <button type="button" class="calc-dist-tab' + (activeDist === 'invNorm' ? ' active' : '') + '" data-dist="invNorm">invNorm</button>',
+      '    <button type="button" class="calc-dist-tab' + (activeDist === 'binom' ? ' active' : '') + '" data-dist="binom">Binomial B(n, p)</button>',
+      '    <button type="button" class="calc-dist-tab' + (activeDist === 'poisson' ? ' active' : '') + '" data-dist="poisson">Poisson Po(λ)</button>',
+      '    <button type="button" class="calc-dist-tab' + (activeDist === 'studentT' ? ' active' : '') + '" data-dist="studentT">Student\'s t</button>',
+      '    <button type="button" class="calc-dist-tab' + (activeDist === 'chiSquare' ? ' active' : '') + '" data-dist="chiSquare">Chi-Square χ²</button>',
+      '  </div>',
+      '  <div class="calc-dist-body" id="calc-dist-content"></div>',
+      '</div>'
+    ].join('');
+
+    if (externalLink) externalLink.hidden = true;
+
+    container.querySelectorAll('.calc-dist-tab').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        activeDist = tab.getAttribute('data-dist');
+        container.querySelectorAll('.calc-dist-tab').forEach(function (t) {
+          t.classList.toggle('active', t.getAttribute('data-dist') === activeDist);
+        });
+        renderDistSubView();
+      });
+    });
+
+    renderDistSubView();
+  }
+
+  function renderDistSubView() {
+    var contentEl = container.querySelector('#calc-dist-content');
+    if (!contentEl) return;
+
+    if (activeDist === 'normCdf') renderNormCdfView(contentEl);
+    else if (activeDist === 'invNorm') renderInvNormView(contentEl);
+    else if (activeDist === 'binom') renderBinomView(contentEl);
+    else if (activeDist === 'poisson') renderPoissonView(contentEl);
+    else if (activeDist === 'studentT') renderStudentTView(contentEl);
+    else if (activeDist === 'chiSquare') renderChiSquareView(contentEl);
+  }
+
+  function renderNormCdfView(el) {
+    el.innerHTML = [
+      '<div class="calc-dist-controls">',
+      '  <div class="calc-dist-panel">',
+      '    <h4>Normal Distribution: X ~ N(μ, σ²)</h4>',
+      '    <div class="calc-dist-field"><label>Mean (μ):</label><input type="number" id="sc-norm-mu" value="0" step="any"></div>',
+      '    <div class="calc-dist-field"><label>Standard Deviation (σ):</label><input type="number" id="sc-norm-sigma" value="1" min="0.0001" step="any"></div>',
+      '    <div class="calc-dist-field"><label>Lower Bound (a):</label><input type="number" id="sc-norm-lower" value="-1.96" step="any"></div>',
+      '    <div class="calc-dist-field"><label>Upper Bound (b):</label><input type="number" id="sc-norm-upper" value="1.96" step="any"></div>',
+      '  </div>',
+      '  <div class="calc-dist-panel">',
+      '    <h4>Quick Presets</h4>',
+      '    <div style="display:flex;flex-wrap:wrap;gap:6px">',
+      '      <button type="button" class="calc-cat-pill" id="ps-norm-68">Empirical 68% (±1σ)</button>',
+      '      <button type="button" class="calc-cat-pill on" id="ps-norm-95">95% CI (±1.96σ)</button>',
+      '      <button type="button" class="calc-cat-pill" id="ps-norm-99">99% CI (±2.576σ)</button>',
+      '      <button type="button" class="calc-cat-pill" id="ps-norm-rt">Right Tail (z ≥ 2)</button>',
+      '    </div>',
+      '  </div>',
+      '</div>',
+      '<div class="calc-dist-display">',
+      '  <div class="calc-dist-result" id="sc-norm-res"></div>',
+      '  <div class="calc-dist-graph-card" id="sc-norm-graph"></div>',
+      '</div>'
+    ].join('');
+
+    var muIn = el.querySelector('#sc-norm-mu');
+    var sigIn = el.querySelector('#sc-norm-sigma');
+    var lowIn = el.querySelector('#sc-norm-lower');
+    var upIn = el.querySelector('#sc-norm-upper');
+    var resEl = el.querySelector('#sc-norm-res');
+    var graphEl = el.querySelector('#sc-norm-graph');
+
+    function update() {
+      var mu = parseFloat(muIn.value) || 0;
+      var sigma = parseFloat(sigIn.value) || 1;
+      var a = parseFloat(lowIn.value);
+      var b = parseFloat(upIn.value);
+      if (isNaN(a)) a = -Infinity;
+      if (isNaN(b)) b = Infinity;
+
+      var pA = (a === -Infinity) ? 0 : _normCdf(a, mu, sigma);
+      var pB = (b === Infinity) ? 1 : _normCdf(b, mu, sigma);
+      var prob = Math.max(0, pB - pA);
+
+      var za = (a === -Infinity) ? '−∞' : ((a - mu) / sigma).toFixed(3);
+      var zb = (b === Infinity) ? '+∞' : ((b - mu) / sigma).toFixed(3);
+
+      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">PROBABILITY MASS</div>' +
+        '<div class="calc-dist-result-prob">P(' + (a === -Infinity ? '−∞' : a) + ' ≤ X ≤ ' + (b === Infinity ? '+∞' : b) + ') = ' + prob.toFixed(5) + ' (' + (prob * 100).toFixed(3) + '%)</div>' +
+        '<div class="calc-dist-result-meta">Standardized: z_a = ' + za + ', z_b = ' + zb + ' · Exam: AP Stats Unit 4, Cambridge 9709 P5, IB Math SL/HL</div>';
+
+      var W = 520, H = 220, pad = 36;
+      var minX = mu - 3.8 * sigma, maxX = mu + 3.8 * sigma;
+      function sx(x) { return pad + (x - minX) / (maxX - minX) * (W - 2 * pad); }
+      function sy(y) { return H - pad - y * (H - 2 * pad) / 0.42; }
+
+      var d = 'M', dShade = 'M', inShade = false, steps = 100;
+      for (var i = 0; i <= steps; i++) {
+        var curX = minX + i * (maxX - minX) / steps;
+        var z = (curX - mu) / sigma;
+        var curY = Math.exp(-0.5 * z * z) / Math.sqrt(2 * Math.PI);
+        var px = sx(curX), py = sy(curY);
+        d += (i === 0 ? '' : 'L') + px.toFixed(1) + ',' + py.toFixed(1);
+
+        if (curX >= Math.max(minX, a) && curX <= Math.min(maxX, b)) {
+          if (!inShade) {
+            dShade += px.toFixed(1) + ',' + (H - pad) + ' L' + px.toFixed(1) + ',' + py.toFixed(1);
+            inShade = true;
+          } else {
+            dShade += ' L' + px.toFixed(1) + ',' + py.toFixed(1);
+          }
+        } else if (inShade) {
+          dShade += ' L' + px.toFixed(1) + ',' + (H - pad);
+          inShade = false;
+        }
+      }
+      if (inShade) dShade += ' L' + sx(Math.min(maxX, b)).toFixed(1) + ',' + (H - pad);
+
+      var svg = '<svg width="100%" height="200" viewBox="0 0 ' + W + ' ' + H + '" style="display:block">';
+      svg += '<line x1="' + pad + '" y1="' + (H - pad) + '" x2="' + (W - pad) + '" y2="' + (H - pad) + '" stroke="var(--border,#cbd5e1)" stroke-width="1.5"/>';
+      if (dShade.length > 5) svg += '<path d="' + dShade + ' Z" fill="rgba(79,70,229,0.28)"/>';
+      svg += '<path d="' + d + '" fill="none" stroke="var(--indigo,#4F46E5)" stroke-width="2.5"/>';
+      if (a > minX && a < maxX) {
+        svg += '<line x1="' + sx(a).toFixed(1) + '" y1="' + (H - pad) + '" x2="' + sx(a).toFixed(1) + '" y2="' + pad + '" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3,3"/>';
+        svg += '<text x="' + sx(a).toFixed(1) + '" y="' + (H - pad + 14) + '" font-size="10" font-weight="700" fill="#d97706" text-anchor="middle">a=' + a + '</text>';
+      }
+      if (b > minX && b < maxX) {
+        svg += '<line x1="' + sx(b).toFixed(1) + '" y1="' + (H - pad) + '" x2="' + sx(b).toFixed(1) + '" y2="' + pad + '" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3,3"/>';
+        svg += '<text x="' + sx(b).toFixed(1) + '" y="' + (H - pad + 14) + '" font-size="10" font-weight="700" fill="#d97706" text-anchor="middle">b=' + b + '</text>';
+      }
+      svg += '<text x="' + sx(mu).toFixed(1) + '" y="' + (H - pad + 14) + '" font-size="10" fill="var(--muted,#64748b)" text-anchor="middle">μ=' + mu + '</text>';
+      svg += '</svg>';
+      graphEl.innerHTML = svg;
+    }
+
+    [muIn, sigIn, lowIn, upIn].forEach(function (inp) { inp.addEventListener('input', update); });
+    el.querySelector('#ps-norm-68').onclick = function () { lowIn.value = -1; upIn.value = 1; muIn.value = 0; sigIn.value = 1; update(); };
+    el.querySelector('#ps-norm-95').onclick = function () { lowIn.value = -1.96; upIn.value = 1.96; muIn.value = 0; sigIn.value = 1; update(); };
+    el.querySelector('#ps-norm-99').onclick = function () { lowIn.value = -2.576; upIn.value = 2.576; muIn.value = 0; sigIn.value = 1; update(); };
+    el.querySelector('#ps-norm-rt').onclick = function () { lowIn.value = 2; upIn.value = 5; muIn.value = 0; sigIn.value = 1; update(); };
+    update();
+  }
+
+  function renderInvNormView(el) {
+    el.innerHTML = [
+      '<div class="calc-dist-controls">',
+      '  <div class="calc-dist-panel">',
+      '    <h4>Inverse Normal: invNorm(p, μ, σ)</h4>',
+      '    <div class="calc-dist-field"><label>Cumulative Probability (Area p):</label><input type="number" id="sc-inv-p" value="0.95" min="0.0001" max="0.9999" step="0.01"></div>',
+      '    <div class="calc-dist-field"><label>Tail Direction:</label><select id="sc-inv-tail"><option value="left">Left Tail: P(X ≤ k) = p</option><option value="right">Right Tail: P(X ≥ k) = p</option></select></div>',
+      '    <div class="calc-dist-field"><label>Mean (μ):</label><input type="number" id="sc-inv-mu" value="0" step="any"></div>',
+      '    <div class="calc-dist-field"><label>Standard Deviation (σ):</label><input type="number" id="sc-inv-sigma" value="1" min="0.0001" step="any"></div>',
+      '  </div>',
+      '</div>',
+      '<div class="calc-dist-display">',
+      '  <div class="calc-dist-result" id="sc-inv-res"></div>',
+      '  <div class="calc-dist-graph-card" id="sc-inv-graph"></div>',
+      '</div>'
+    ].join('');
+
+    var pIn = el.querySelector('#sc-inv-p');
+    var tailIn = el.querySelector('#sc-inv-tail');
+    var muIn = el.querySelector('#sc-inv-mu');
+    var sigIn = el.querySelector('#sc-inv-sigma');
+    var resEl = el.querySelector('#sc-inv-res');
+    var graphEl = el.querySelector('#sc-inv-graph');
+
+    function update() {
+      var p = parseFloat(pIn.value) || 0.5;
+      var tail = tailIn.value;
+      var mu = parseFloat(muIn.value) || 0;
+      var sigma = parseFloat(sigIn.value) || 1;
+
+      var effP = (tail === 'right') ? (1 - p) : p;
+      var k = _invNorm(effP, mu, sigma);
+      var z = (k - mu) / sigma;
+
+      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">CRITICAL VALUE RESULT</div>' +
+        '<div class="calc-dist-result-prob">Cutoff Value k = ' + k.toFixed(4) + '</div>' +
+        '<div class="calc-dist-result-meta">Corresponding z-score: z = ' + z.toFixed(3) + ' · Tail: ' + (tail === 'right' ? 'P(X ≥ ' + k.toFixed(4) + ') = ' + p : 'P(X ≤ ' + k.toFixed(4) + ') = ' + p) + '</div>';
+
+      var W = 520, H = 220, pad = 36;
+      var minX = mu - 3.8 * sigma, maxX = mu + 3.8 * sigma;
+      function sx(x) { return pad + (x - minX) / (maxX - minX) * (W - 2 * pad); }
+      function sy(y) { return H - pad - y * (H - 2 * pad) / 0.42; }
+
+      var d = 'M', dShade = 'M', inShade = false, steps = 100;
+      for (var i = 0; i <= steps; i++) {
+        var curX = minX + i * (maxX - minX) / steps;
+        var zCur = (curX - mu) / sigma;
+        var curY = Math.exp(-0.5 * zCur * zCur) / Math.sqrt(2 * Math.PI);
+        var px = sx(curX), py = sy(curY);
+        d += (i === 0 ? '' : 'L') + px.toFixed(1) + ',' + py.toFixed(1);
+
+        var isInside = (tail === 'left') ? (curX <= k) : (curX >= k);
+        if (isInside) {
+          if (!inShade) {
+            dShade += px.toFixed(1) + ',' + (H - pad) + ' L' + px.toFixed(1) + ',' + py.toFixed(1);
+            inShade = true;
+          } else {
+            dShade += ' L' + px.toFixed(1) + ',' + py.toFixed(1);
+          }
+        } else if (inShade) {
+          dShade += ' L' + px.toFixed(1) + ',' + (H - pad);
+          inShade = false;
+        }
+      }
+      if (inShade) dShade += ' L' + sx(tail === 'left' ? k : maxX).toFixed(1) + ',' + (H - pad);
+
+      var svg = '<svg width="100%" height="200" viewBox="0 0 ' + W + ' ' + H + '" style="display:block">';
+      svg += '<line x1="' + pad + '" y1="' + (H - pad) + '" x2="' + (W - pad) + '" y2="' + (H - pad) + '" stroke="var(--border,#cbd5e1)" stroke-width="1.5"/>';
+      if (dShade.length > 5) svg += '<path d="' + dShade + ' Z" fill="rgba(79,70,229,0.28)"/>';
+      svg += '<path d="' + d + '" fill="none" stroke="var(--indigo,#4F46E5)" stroke-width="2.5"/>';
+      if (k > minX && k < maxX) {
+        svg += '<line x1="' + sx(k).toFixed(1) + '" y1="' + (H - pad) + '" x2="' + sx(k).toFixed(1) + '" y2="' + pad + '" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3,3"/>';
+        svg += '<text x="' + sx(k).toFixed(1) + '" y="' + (H - pad + 14) + '" font-size="10" font-weight="700" fill="#d97706" text-anchor="middle">k=' + k.toFixed(2) + '</text>';
+      }
+      svg += '</svg>';
+      graphEl.innerHTML = svg;
+    }
+
+    [pIn, tailIn, muIn, sigIn].forEach(function (inp) { inp.addEventListener('input', update); inp.addEventListener('change', update); });
+    update();
+  }
+
+  function renderBinomView(el) {
+    el.innerHTML = [
+      '<div class="calc-dist-controls">',
+      '  <div class="calc-dist-panel">',
+      '    <h4>Binomial Distribution: X ~ B(n, p)</h4>',
+      '    <div class="calc-dist-field"><label>Number of Trials (n):</label><input type="number" id="sc-bn-n" value="10" min="1" max="200"></div>',
+      '    <div class="calc-dist-field"><label>Probability of Success (p):</label><input type="number" id="sc-bn-p" value="0.5" min="0" max="1" step="0.05"></div>',
+      '    <div class="calc-dist-field"><label>Number of Successes (k):</label><input type="number" id="sc-bn-k" value="5" min="0"></div>',
+      '  </div>',
+      '</div>',
+      '<div class="calc-dist-display">',
+      '  <div class="calc-dist-result" id="sc-bn-res"></div>',
+      '  <div class="calc-dist-graph-card" id="sc-bn-graph"></div>',
+      '</div>'
+    ].join('');
+
+    var nIn = el.querySelector('#sc-bn-n');
+    var pIn = el.querySelector('#sc-bn-p');
+    var kIn = el.querySelector('#sc-bn-k');
+    var resEl = el.querySelector('#sc-bn-res');
+    var graphEl = el.querySelector('#sc-bn-graph');
+
+    function update() {
+      var n = parseInt(nIn.value, 10) || 10;
+      var p = parseFloat(pIn.value);
+      if (isNaN(p)) p = 0.5;
+      var k = parseInt(kIn.value, 10);
+      if (isNaN(k)) k = 0;
+
+      var pdf = _binomPdf(n, p, k);
+      var cdfLe = 0;
+      for (var i = 0; i <= k; i++) cdfLe += _binomPdf(n, p, i);
+      var cdfGe = 1 - cdfLe + pdf;
+      var mu = n * p;
+      var variance = n * p * (1 - p);
+
+      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">BINOMIAL PROBABILITIES</div>' +
+        '<div class="calc-dist-result-prob">P(X = ' + k + ') = ' + pdf.toFixed(5) + '</div>' +
+        '<div class="calc-dist-result-meta">' +
+        'P(X ≤ ' + k + ') = ' + Math.min(1, cdfLe).toFixed(5) + ' · P(X ≥ ' + k + ') = ' + Math.max(0, cdfGe).toFixed(5) + '<br>' +
+        'Expected Value: E[X] = μ = ' + mu.toFixed(2) + ' · Var(X) = σ² = ' + variance.toFixed(2) + ' · SD = σ = ' + Math.sqrt(variance).toFixed(2) +
+        '</div>';
+
+      var W = 520, H = 220, pad = 36;
+      var maxVal = Math.min(n, 25);
+      var probs = [];
+      var maxP = 0;
+      for (var x = 0; x <= maxVal; x++) {
+        var px = _binomPdf(n, p, x);
+        probs.push(px);
+        if (px > maxP) maxP = px;
+      }
+      if (maxP === 0) maxP = 1;
+
+      var barW = (W - 2 * pad) / (maxVal + 1);
+      var svg = '<svg width="100%" height="200" viewBox="0 0 ' + W + ' ' + H + '" style="display:block">';
+      svg += '<line x1="' + pad + '" y1="' + (H - pad) + '" x2="' + (W - pad) + '" y2="' + (H - pad) + '" stroke="var(--border,#cbd5e1)" stroke-width="1.5"/>';
+      probs.forEach(function (pr, idx) {
+        var bh = (pr / maxP) * (H - 2 * pad);
+        var bx = pad + idx * barW + 2;
+        var by = (H - pad) - bh;
+        var isK = (idx === k);
+        svg += '<rect x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + Math.max(2, barW - 4).toFixed(1) + '" height="' + bh.toFixed(1) + '" fill="' + (isK ? 'var(--indigo,#4F46E5)' : 'rgba(79,70,229,0.22)') + '" rx="2"/>';
+        if (maxVal <= 15 || idx % 2 === 0) {
+          svg += '<text x="' + (bx + barW / 2).toFixed(1) + '" y="' + (H - pad + 14) + '" font-size="9" fill="var(--muted,#64748b)" text-anchor="middle">' + idx + '</text>';
+        }
+      });
+      svg += '</svg>';
+      graphEl.innerHTML = svg;
+    }
+
+    [nIn, pIn, kIn].forEach(function (inp) { inp.addEventListener('input', update); });
+    update();
+  }
+
+  function renderPoissonView(el) {
+    el.innerHTML = [
+      '<div class="calc-dist-controls">',
+      '  <div class="calc-dist-panel">',
+      '    <h4>Poisson Distribution: X ~ Po(λ)</h4>',
+      '    <div class="calc-dist-field"><label>Average Rate (λ):</label><input type="number" id="sc-ps-lam" value="3.5" min="0.0001" step="0.5"></div>',
+      '    <div class="calc-dist-field"><label>Occurrences (k):</label><input type="number" id="sc-ps-k" value="3" min="0"></div>',
+      '  </div>',
+      '</div>',
+      '<div class="calc-dist-display">',
+      '  <div class="calc-dist-result" id="sc-ps-res"></div>',
+      '  <div class="calc-dist-graph-card" id="sc-ps-graph"></div>',
+      '</div>'
+    ].join('');
+
+    var lamIn = el.querySelector('#sc-ps-lam');
+    var kIn = el.querySelector('#sc-ps-k');
+    var resEl = el.querySelector('#sc-ps-res');
+    var graphEl = el.querySelector('#sc-ps-graph');
+
+    function update() {
+      var lam = parseFloat(lamIn.value) || 1;
+      var k = parseInt(kIn.value, 10);
+      if (isNaN(k)) k = 0;
+
+      var pdf = _poissonPdf(lam, k);
+      var cdfLe = 0;
+      for (var i = 0; i <= k; i++) cdfLe += _poissonPdf(lam, i);
+      var cdfGe = 1 - cdfLe + pdf;
+
+      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">POISSON PROBABILITIES</div>' +
+        '<div class="calc-dist-result-prob">P(X = ' + k + ') = ' + pdf.toFixed(5) + '</div>' +
+        '<div class="calc-dist-result-meta">' +
+        'P(X ≤ ' + k + ') = ' + Math.min(1, cdfLe).toFixed(5) + ' · P(X ≥ ' + k + ') = ' + Math.max(0, cdfGe).toFixed(5) + '<br>' +
+        'Expected Value: E[X] = μ = ' + lam + ' · Var(X) = σ² = ' + lam + ' · SD = σ = ' + Math.sqrt(lam).toFixed(3) +
+        '</div>';
+
+      var W = 520, H = 220, pad = 36;
+      var maxVal = Math.max(12, Math.ceil(lam * 2.8));
+      var probs = [];
+      var maxP = 0;
+      for (var x = 0; x <= maxVal; x++) {
+        var px = _poissonPdf(lam, x);
+        probs.push(px);
+        if (px > maxP) maxP = px;
+      }
+      if (maxP === 0) maxP = 1;
+
+      var barW = (W - 2 * pad) / (maxVal + 1);
+      var svg = '<svg width="100%" height="200" viewBox="0 0 ' + W + ' ' + H + '" style="display:block">';
+      svg += '<line x1="' + pad + '" y1="' + (H - pad) + '" x2="' + (W - pad) + '" y2="' + (H - pad) + '" stroke="var(--border,#cbd5e1)" stroke-width="1.5"/>';
+      probs.forEach(function (pr, idx) {
+        var bh = (pr / maxP) * (H - 2 * pad);
+        var bx = pad + idx * barW + 2;
+        var by = (H - pad) - bh;
+        var isK = (idx === k);
+        svg += '<rect x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" width="' + Math.max(2, barW - 4).toFixed(1) + '" height="' + bh.toFixed(1) + '" fill="' + (isK ? 'var(--indigo,#4F46E5)' : 'rgba(79,70,229,0.22)') + '" rx="2"/>';
+        if (idx % 2 === 0 || maxVal <= 12) {
+          svg += '<text x="' + (bx + barW / 2).toFixed(1) + '" y="' + (H - pad + 14) + '" font-size="9" fill="var(--muted,#64748b)" text-anchor="middle">' + idx + '</text>';
+        }
+      });
+      svg += '</svg>';
+      graphEl.innerHTML = svg;
+    }
+
+    [lamIn, kIn].forEach(function (inp) { inp.addEventListener('input', update); });
+    update();
+  }
+
+  function renderStudentTView(el) {
+    el.innerHTML = [
+      '<div class="calc-dist-controls">',
+      '  <div class="calc-dist-panel">',
+      '    <h4>Student\'s t-Distribution: T ~ t(df)</h4>',
+      '    <div class="calc-dist-field"><label>Degrees of Freedom (df):</label><input type="number" id="sc-t-df" value="10" min="1" max="500"></div>',
+      '    <div class="calc-dist-field"><label>Lower Bound (a):</label><input type="number" id="sc-t-lower" value="-2.228" step="any"></div>',
+      '    <div class="calc-dist-field"><label>Upper Bound (b):</label><input type="number" id="sc-t-upper" value="2.228" step="any"></div>',
+      '  </div>',
+      '</div>',
+      '<div class="calc-dist-display">',
+      '  <div class="calc-dist-result" id="sc-t-res"></div>',
+      '  <div class="calc-dist-graph-card" id="sc-t-graph"></div>',
+      '</div>'
+    ].join('');
+
+    var dfIn = el.querySelector('#sc-t-df');
+    var lowIn = el.querySelector('#sc-t-lower');
+    var upIn = el.querySelector('#sc-t-upper');
+    var resEl = el.querySelector('#sc-t-res');
+    var graphEl = el.querySelector('#sc-t-graph');
+
+    function update() {
+      var df = parseInt(dfIn.value, 10) || 1;
+      var a = parseFloat(lowIn.value);
+      var b = parseFloat(upIn.value);
+      if (isNaN(a)) a = -Infinity;
+      if (isNaN(b)) b = Infinity;
+
+      var pA = (a === -Infinity) ? 0 : _tCdf(a, df);
+      var pB = (b === Infinity) ? 1 : _tCdf(b, df);
+      var prob = Math.max(0, pB - pA);
+
+      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">STUDENT\'S T PROBABILITY</div>' +
+        '<div class="calc-dist-result-prob">P(' + (a === -Infinity ? '−∞' : a) + ' ≤ T ≤ ' + (b === Infinity ? '+∞' : b) + ') = ' + prob.toFixed(5) + '</div>' +
+        '<div class="calc-dist-result-meta">Degrees of freedom df = ' + df + ' · Heavy tails model uncertainty in small sample sizes (AP Stats / Cambridge 9709 P6)</div>';
+
+      var W = 520, H = 220, pad = 36;
+      var minX = -4.5, maxX = 4.5;
+      function sx(x) { return pad + (x - minX) / (maxX - minX) * (W - 2 * pad); }
+      function sy(y) { return H - pad - y * (H - 2 * pad) / 0.42; }
+
+      var d = 'M', dShade = 'M', inShade = false, steps = 100;
+      for (var i = 0; i <= steps; i++) {
+        var curX = minX + i * (maxX - minX) / steps;
+        var curY = _tPdf(curX, df);
+        var px = sx(curX), py = sy(curY);
+        d += (i === 0 ? '' : 'L') + px.toFixed(1) + ',' + py.toFixed(1);
+
+        if (curX >= Math.max(minX, a) && curX <= Math.min(maxX, b)) {
+          if (!inShade) {
+            dShade += px.toFixed(1) + ',' + (H - pad) + ' L' + px.toFixed(1) + ',' + py.toFixed(1);
+            inShade = true;
+          } else {
+            dShade += ' L' + px.toFixed(1) + ',' + py.toFixed(1);
+          }
+        } else if (inShade) {
+          dShade += ' L' + px.toFixed(1) + ',' + (H - pad);
+          inShade = false;
+        }
+      }
+      if (inShade) dShade += ' L' + sx(Math.min(maxX, b)).toFixed(1) + ',' + (H - pad);
+
+      var svg = '<svg width="100%" height="200" viewBox="0 0 ' + W + ' ' + H + '" style="display:block">';
+      svg += '<line x1="' + pad + '" y1="' + (H - pad) + '" x2="' + (W - pad) + '" y2="' + (H - pad) + '" stroke="var(--border,#cbd5e1)" stroke-width="1.5"/>';
+      if (dShade.length > 5) svg += '<path d="' + dShade + ' Z" fill="rgba(79,70,229,0.28)"/>';
+      svg += '<path d="' + d + '" fill="none" stroke="var(--indigo,#4F46E5)" stroke-width="2.5"/>';
+      if (a > minX && a < maxX) {
+        svg += '<line x1="' + sx(a).toFixed(1) + '" y1="' + (H - pad) + '" x2="' + sx(a).toFixed(1) + '" y2="' + pad + '" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3,3"/>';
+        svg += '<text x="' + sx(a).toFixed(1) + '" y="' + (H - pad + 14) + '" font-size="10" font-weight="700" fill="#d97706" text-anchor="middle">t=' + a + '</text>';
+      }
+      if (b > minX && b < maxX) {
+        svg += '<line x1="' + sx(b).toFixed(1) + '" y1="' + (H - pad) + '" x2="' + sx(b).toFixed(1) + '" y2="' + pad + '" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3,3"/>';
+        svg += '<text x="' + sx(b).toFixed(1) + '" y="' + (H - pad + 14) + '" font-size="10" font-weight="700" fill="#d97706" text-anchor="middle">t=' + b + '</text>';
+      }
+      svg += '</svg>';
+      graphEl.innerHTML = svg;
+    }
+
+    [dfIn, lowIn, upIn].forEach(function (inp) { inp.addEventListener('input', update); });
+    update();
+  }
+
+  function renderChiSquareView(el) {
+    el.innerHTML = [
+      '<div class="calc-dist-controls">',
+      '  <div class="calc-dist-panel">',
+      '    <h4>Chi-Square Distribution: χ² ~ χ²(df)</h4>',
+      '    <div class="calc-dist-field"><label>Degrees of Freedom (df):</label><input type="number" id="sc-chi-df" value="4" min="1" max="100"></div>',
+      '    <div class="calc-dist-field"><label>Critical Value (k):</label><input type="number" id="sc-chi-k" value="9.488" min="0" step="any"></div>',
+      '  </div>',
+      '</div>',
+      '<div class="calc-dist-display">',
+      '  <div class="calc-dist-result" id="sc-chi-res"></div>',
+      '  <div class="calc-dist-graph-card" id="sc-chi-graph"></div>',
+      '</div>'
+    ].join('');
+
+    var dfIn = el.querySelector('#sc-chi-df');
+    var kIn = el.querySelector('#sc-chi-k');
+    var resEl = el.querySelector('#sc-chi-res');
+    var graphEl = el.querySelector('#sc-chi-graph');
+
+    function update() {
+      var df = parseInt(dfIn.value, 10) || 1;
+      var k = parseFloat(kIn.value);
+      if (isNaN(k) || k < 0) k = 0;
+
+      var cdfLe = _chi2Cdf(k, df);
+      var pValue = Math.max(0, 1 - cdfLe);
+
+      resEl.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--muted)">CHI-SQUARE P-VALUE</div>' +
+        '<div class="calc-dist-result-prob">P(χ² ≥ ' + k.toFixed(3) + ') = ' + pValue.toFixed(5) + ' (p-value)</div>' +
+        '<div class="calc-dist-result-meta">' +
+        'Cumulative: P(χ² ≤ ' + k.toFixed(3) + ') = ' + cdfLe.toFixed(5) + '<br>' +
+        'Expected Value: E[χ²] = df = ' + df + ' · Variance: Var(χ²) = 2df = ' + (2 * df) + ' · Goodness-of-Fit & Independence' +
+        '</div>';
+
+      var W = 520, H = 220, pad = 36;
+      var maxX = Math.max(16, df + 4 * Math.sqrt(2 * df));
+      function sx(x) { return pad + (x / maxX) * (W - 2 * pad); }
+
+      var maxDens = 0;
+      for (var t = 0.1; t <= maxX; t += 0.2) {
+        var yVal = _chi2Pdf(t, df);
+        if (yVal > maxDens) maxDens = yVal;
+      }
+      if (maxDens === 0) maxDens = 0.5;
+      function sy(y) { return H - pad - (y / maxDens) * (H - 2 * pad); }
+
+      var d = 'M', dShade = 'M', inShade = false, steps = 100;
+      for (var i = 1; i <= steps; i++) {
+        var curX = (i / steps) * maxX;
+        var curY = _chi2Pdf(curX, df);
+        var px = sx(curX), py = sy(curY);
+        d += (i === 1 ? '' : 'L') + px.toFixed(1) + ',' + py.toFixed(1);
+
+        if (curX >= k) {
+          if (!inShade) {
+            dShade += px.toFixed(1) + ',' + (H - pad) + ' L' + px.toFixed(1) + ',' + py.toFixed(1);
+            inShade = true;
+          } else {
+            dShade += ' L' + px.toFixed(1) + ',' + py.toFixed(1);
+          }
+        }
+      }
+      if (inShade) dShade += ' L' + sx(maxX).toFixed(1) + ',' + (H - pad);
+
+      var svg = '<svg width="100%" height="200" viewBox="0 0 ' + W + ' ' + H + '" style="display:block">';
+      svg += '<line x1="' + pad + '" y1="' + (H - pad) + '" x2="' + (W - pad) + '" y2="' + (H - pad) + '" stroke="var(--border,#cbd5e1)" stroke-width="1.5"/>';
+      if (dShade.length > 5) svg += '<path d="' + dShade + ' Z" fill="rgba(79,70,229,0.28)"/>';
+      svg += '<path d="' + d + '" fill="none" stroke="var(--indigo,#4F46E5)" stroke-width="2.5"/>';
+      if (k > 0 && k < maxX) {
+        svg += '<line x1="' + sx(k).toFixed(1) + '" y1="' + (H - pad) + '" x2="' + sx(k).toFixed(1) + '" y2="' + pad + '" stroke="#d97706" stroke-width="1.5" stroke-dasharray="3,3"/>';
+        svg += '<text x="' + sx(k).toFixed(1) + '" y="' + (H - pad + 14) + '" font-size="10" font-weight="700" fill="#d97706" text-anchor="middle">k=' + k.toFixed(2) + '</text>';
+      }
+      svg += '</svg>';
+      graphEl.innerHTML = svg;
+    }
+
+    [dfIn, kIn].forEach(function (inp) { inp.addEventListener('input', update); });
+    update();
+  }
+
   function mount(modeKey, savedState) {
     if (!container) return;
     activeMode = modeKey;
@@ -267,6 +927,11 @@ isRtl: false
 
     if (modeKey === 'threeD') {
       mountIframe('threeD');
+      return;
+    }
+    if (modeKey === 'distributions') {
+      destroyApiInstance();
+      mountDistributions();
       return;
     }
 

@@ -16,7 +16,11 @@ assert(njkContent.includes('keypad: true'), 'index.njk must enable on-screen key
 assert(njkContent.includes('expressions: true'), 'index.njk must enable expressions list');
 assert(njkContent.includes('invertedColors: dark'), 'index.njk must support dark mode');
 assert(njkContent.includes('apiInstance.setExpression'), 'index.njk must directly apply presets to live calculator');
-console.log('  ✓ /calculator/ page uses native Desmos API with keypad, expressions, and direct preset plotting');
+assert(njkContent.includes('data-mode="distributions"'), 'index.njk must include Distributions mode button');
+assert(njkContent.includes('_normCdf') && njkContent.includes('_invNorm'), 'index.njk must implement Normal CDF and invNorm');
+assert(njkContent.includes('_binomPdf') && njkContent.includes('_poissonPdf'), 'index.njk must implement Binomial and Poisson');
+assert(njkContent.includes('_tCdf') && njkContent.includes('_chi2Cdf'), 'index.njk must implement Student t and Chi-Square');
+console.log('  ✓ /calculator/ page uses native Desmos API with keypad, expressions, presets, and statistical distributions suite');
 
 // 2. Verify _site/calculator/index.html compiled output
 const siteCalcPath = path.join(__dirname, '..', '_site', 'calculator', 'index.html');

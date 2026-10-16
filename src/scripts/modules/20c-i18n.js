@@ -271,7 +271,7 @@
            just fail to translate. */
         'calc.page.h1':'Graphing, 3D, Scientific, Geometry & Exam-Mode Calculator',
         'calc.page.lede':'This is the real Desmos calculator, not a lookalike — the same engine the digital SAT, many AP exams, and most U.S. state tests actually hand students. Switch modes below: full Graphing, 3D, and Geometry calculators for coursework, a Scientific calculator for quick computation, or Exam Mode, a restricted skin matching what you get on test day (no images, no notes, no extra menus).',
-        'calc.mode.graphing':'Graphing','calc.mode.3d':'3D','calc.mode.scientific':'Scientific','calc.mode.geometry':'Geometry','calc.mode.exam':'Exam Mode',
+        'calc.mode.graphing':'Graphing','calc.mode.threeD':'3D','calc.mode.3d':'3D','calc.mode.scientific':'Scientific','calc.mode.geometry':'Geometry','calc.mode.exam':'Exam Mode','calc.mode.distributions':'Distributions',
         'calc.openExternal':'Open in a tab','calc.loadingExam':'Loading Exam Mode…',
         'calc.presets.toggle':'Presets','calc.presets.heading':'Curriculum Presets',
         'calc.presets.info':'Select any preset to auto-switch mode and copy its equations ready to paste.',
