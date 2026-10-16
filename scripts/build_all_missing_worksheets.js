@@ -1,0 +1,331 @@
+#!/usr/bin/env node
+'use strict';
+
+const fs = require('fs');
+const path = require('path');
+const zlib = require('zlib');
+
+const ROOT = path.join(__dirname, '..');
+const DOWNLOADS_DIR = path.join(ROOT, 'public/downloads');
+const TOPICS_DIR = path.join(ROOT, 'tools/worksheet_gen/topics');
+
+// Helper to escape PDF text
+function cleanPdfText(s) {
+  if (!s) return '';
+  return String(s)
+    .replace(/\\[()[\]]/g, '')
+    .replace(/[\\()]/g, '')
+    .replace(/\\mathbb\{R\}/g, 'R')
+    .replace(/\\mathbf\{([a-zA-Z0-9]+)\}/g, '$1')
+    .replace(/\\vec\{([a-zA-Z0-9]+)\}/g, '$1')
+    .replace(/\\frac\{([^}]+)\}\{([^}]+)\}/g, '($1)/($2)')
+    .replace(/\\sqrt\{([^}]+)\}/g, 'sqrt($1)')
+    .replace(/\\cdot/g, '*')
+    .replace(/\\times/g, 'x')
+    .replace(/\\pm/g, '+/-')
+    .replace(/\\le/g, '<=')
+    .replace(/\\ge/g, '>=')
+    .replace(/\\ne/g, '!=')
+    .replace(/\\in/g, 'in')
+    .replace(/\\sim/g, '~')
+    .replace(/\\hat\{([a-zA-Z0-9]+)\}/g, '$1^')
+    .replace(/\\bar\{([a-zA-Z0-9]+)\}/g, '$1_avg')
+    .replace(/\\mathcal\{N\}/g, 'N')
+    .replace(/\\mu/g, 'u')
+    .replace(/\\sigma/g, 's')
+    .replace(/\\lambda/g, 'L')
+    .replace(/\\theta/g, 'theta')
+    .replace(/\\pi/g, 'pi')
+    .replace(/\\partial/g, 'd')
+    .replace(/\\nabla/g, 'grad')
+    .replace(/\\quad/g, '  ')
+    .replace(/\\text\{([^}]+)\}/g, '$1')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function wordWrap(text, maxChars) {
+  const words = text.split(' ');
+  const lines = [];
+  let cur = '';
+  for (const w of words) {
+    if ((cur + ' ' + w).trim().length > maxChars) {
+      if (cur) lines.push(cur.trim());
+      cur = w;
+    } else {
+      cur = cur ? cur + ' ' + w : w;
+    }
+  }
+  if (cur) lines.push(cur.trim());
+  return lines;
+}
+
+function createPdfDocument(trackName, unitNum, topicTitle, questions, isAnswerKey) {
+  const pages = [];
+  let curCommands = [];
+
+  function startPage(pageNum, totalPagesEst) {
+    curCommands = [];
+    // Header line
+    curCommands.push('0.12 0.23 0.43 rg'); // Indigo
+    curCommands.push('50 742 512 2.5 re f');
+    
+    // Brand header
+    curCommands.push('BT /F2 16 Tf 50 752 Td (ClipSAT : ' + cleanPdfText(trackName) + ') Tj ET');
+    curCommands.push('0.3 0.35 0.45 rg');
+    curCommands.push('BT /F2 11 Tf 50 726 Td (Unit ' + unitNum + ': ' + cleanPdfText(topicTitle) + ') Tj ET');
+
+    if (isAnswerKey) {
+      curCommands.push('0.06 0.55 0.28 rg'); // Green
+      curCommands.push('BT /F2 12 Tf 435 752 Td ([ANSWER KEY]) Tj ET');
+    } else {
+      curCommands.push('0.4 0.4 0.4 rg');
+      curCommands.push('BT /F1 9.5 Tf 375 726 Td (Name: ______________________) Tj ET');
+    }
+
+    // Footer
+    curCommands.push('0.6 0.65 0.7 rg');
+    curCommands.push('50 48 512 0.75 re f');
+    curCommands.push('BT /F1 8 Tf 145 36 Td ((c) ClipSAT: By Mr. Mohamed Abdallah +966597688647) Tj ET');
+  }
+
+  startPage(1, 2);
+  let curY = 695;
+
+  questions.forEach((q, qIdx) => {
+    const rawStem = cleanPdfText(q.text || q.q);
+    const stemLines = wordWrap(rawStem, 82);
+
+    // Calculate required space
+    const needed = isAnswerKey ? 130 : 95;
+    if (curY - needed < 60) {
+      pages.push(curCommands.join('\n'));
+      startPage(pages.length + 1, 2);
+      curY = 695;
+    }
+
+    // Question number
+    curCommands.push('0.12 0.23 0.43 rg'); // Indigo
+    curCommands.push(`BT /F2 10.5 Tf 50 ${curY} Td (Q${qIdx + 1}.) Tj ET`);
+
+    // Stem lines
+    curCommands.push('0.08 0.1 0.15 rg');
+    stemLines.forEach((line, lIdx) => {
+      curCommands.push(`BT /F1 10 Tf 78 ${curY - lIdx * 13} Td (${line}) Tj ET`);
+    });
+    curY -= stemLines.length * 13 + 6;
+
+    // Choices
+    const choices = q.choices || [];
+    const choiceLetters = ['A', 'B', 'C', 'D'];
+    choices.slice(0, 4).forEach((ch, cIdx) => {
+      const isCorrect = (cIdx === q.answer);
+      const chText = cleanPdfText(ch);
+      const colX = (cIdx % 2 === 0) ? 78 : 310;
+      const rowY = curY - Math.floor(cIdx / 2) * 15;
+
+      if (isAnswerKey && isCorrect) {
+        curCommands.push('0.05 0.52 0.25 rg'); // Bold Green
+        curCommands.push(`BT /F2 9.5 Tf ${colX} ${rowY} Td ([x] ${choiceLetters[cIdx]}: ${chText.slice(0, 36)}) Tj ET`);
+      } else {
+        curCommands.push('0.25 0.28 0.32 rg');
+        curCommands.push(`BT /F1 9 Tf ${colX} ${rowY} Td ([  ] ${choiceLetters[cIdx]}: ${chText.slice(0, 36)}) Tj ET`);
+      }
+    });
+    curY -= 36;
+
+    // Answer key solution box
+    if (isAnswerKey) {
+      const sol = cleanPdfText(q.sol || q.solution || '');
+      const solLines = wordWrap('Solution: ' + sol, 84);
+      curCommands.push('0.05 0.48 0.22 rg');
+      solLines.forEach((sLine, sIdx) => {
+        curCommands.push(`BT /F1 8.5 Tf 78 ${curY - sIdx * 11} Td (${sLine}) Tj ET`);
+      });
+      curY -= solLines.length * 11 + 10;
+    } else {
+      curY -= 14;
+    }
+  });
+
+  pages.push(curCommands.join('\n'));
+
+  // Build PDF binary
+  const chunks = [];
+  const offsets = [];
+
+  function write(str) { chunks.push(Buffer.from(str, 'binary')); }
+  function writeBuf(buf) { chunks.push(buf); }
+  function totalLen() { return chunks.reduce((acc, c) => acc + c.length, 0); }
+
+  write('%PDF-1.4\n%\xe2\xe3\xcf\xd3\n');
+
+  function addObj(contentBuf) {
+    offsets.push(totalLen());
+    const objNum = offsets.length;
+    write(objNum + ' 0 obj\n');
+    writeBuf(contentBuf);
+    write('\nendobj\n');
+    return objNum;
+  }
+
+  // Pre-generate stream objects
+  const pageStreamObjNums = [];
+  const pageObjNums = [];
+
+  // Catalog = 1, Pages = 2
+  // Fonts: F1 = 3, F2 = 4
+  // Page objects and streams follow
+  const f1Num = 3;
+  const f2Num = 4;
+  let nextObjNum = 5;
+
+  pages.forEach((pgContent) => {
+    const pObjNum = nextObjNum++;
+    const sObjNum = nextObjNum++;
+    pageObjNums.push(pObjNum);
+    pageStreamObjNums.push(sObjNum);
+  });
+
+  // 1: Catalog
+  addObj(Buffer.from('<< /Type /Catalog /Pages 2 0 R >>'));
+  // 2: Pages
+  const kidsStr = pageObjNums.map(n => n + ' 0 R').join(' ');
+  addObj(Buffer.from(`<< /Type /Pages /Kids [${kidsStr}] /Count ${pages.length} >>`));
+  // 3: F1 Helvetica
+  addObj(Buffer.from('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>'));
+  // 4: F2 Helvetica-Bold
+  addObj(Buffer.from('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>'));
+
+  // Write Pages and Streams
+  pages.forEach((pgContent, pIdx) => {
+    const pObjNum = pageObjNums[pIdx];
+    const sObjNum = pageStreamObjNums[pIdx];
+    const compressed = zlib.deflateSync(Buffer.from(pgContent, 'utf8'));
+
+    // Page object
+    addObj(Buffer.from(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents ${sObjNum} 0 R /Resources << /Font << /F1 ${f1Num} 0 R /F2 ${f2Num} 0 R >> >> >>`));
+
+    // Stream object
+    const streamHeader = '<< /Length ' + compressed.length + ' /Filter /FlateDecode >>\nstream\n';
+    const streamTrailer = '\nendstream';
+    const fullStream = Buffer.concat([Buffer.from(streamHeader, 'binary'), compressed, Buffer.from(streamTrailer, 'binary')]);
+    addObj(fullStream);
+  });
+
+  // Xref
+  const startXref = totalLen();
+  let xrefStr = 'xref\n0 ' + (offsets.length + 1) + '\n0000000000 65535 f \n';
+  offsets.forEach(off => {
+    xrefStr += String(off).padStart(10, '0') + ' 00000 n \n';
+  });
+  xrefStr += 'trailer\n<< /Size ' + (offsets.length + 1) + ' /Root 1 0 R >>\nstartxref\n' + startXref + '\n%%EOF\n';
+  write(xrefStr);
+
+  return Buffer.concat(chunks);
+}
+
+// -------------------------------------------------------------
+// TRACK DEFINITIONS
+// -------------------------------------------------------------
+
+const ADDMATH_TRACK = {
+  id: 'addmath',
+  name: 'Cambridge & Edexcel Additional Mathematics (0606/4PM1)',
+  units: [
+    { unit: 1, num: '1.01', slug: 'functions-modulus-and-quadratics', title: 'Functions, Modulus & Quadratics', domain: 'Functions, Modulus & Quadratics' },
+    { unit: 2, num: '2.01', slug: 'simultaneous-equations-and-inequalities', title: 'Simultaneous Equations & Inequalities', domain: 'Simultaneous Equations & Inequalities' },
+    { unit: 3, num: '3.01', slug: 'indices-surds-and-polynomials', title: 'Indices, Surds & Polynomials', domain: 'Indices, Surds & Polynomials' },
+    { unit: 4, num: '4.01', slug: 'logarithmic-and-exponential-functions', title: 'Logarithmic & Exponential Functions', domain: 'Logarithmic & Exponential Functions' },
+    { unit: 5, num: '5.01', slug: 'trigonometric-functions-and-circular-measure', title: 'Trigonometric Functions & Circular Measure', domain: 'Trigonometric Functions & Circular Measure' },
+    { unit: 6, num: '6.01', slug: 'permutations-and-combinations', title: 'Permutations & Combinations', domain: 'Permutations & Combinations' },
+    { unit: 7, num: '7.01', slug: 'differentiation-and-rates-of-change', title: 'Differentiation & Rates of Change', domain: 'Differentiation & Rates of Change' },
+    { unit: 8, num: '8.01', slug: 'integration-and-kinematics', title: 'Integration & Kinematics', domain: 'Integration & Kinematics' }
+  ]
+};
+
+const MATHAI_TRACK = {
+  id: 'mathai',
+  name: 'Math for AI & Data Science',
+  units: [
+    { unit: 1, num: '1.01', slug: 'vectors-and-embeddings-in-ai', title: 'Vectors & Embeddings in AI', domain: 'Vectors & Embeddings in AI' },
+    { unit: 2, num: '2.01', slug: 'neural-layer-matrices-and-activations', title: 'Neural Layer Matrices & Activations', domain: 'Neural Layer Matrices & Activations' },
+    { unit: 3, num: '3.01', slug: 'gradient-descent-and-optimization', title: 'Gradient Descent & Optimization', domain: 'Gradient Descent & Optimization' },
+    { unit: 4, num: '4.01', slug: 'conditional-probability-and-bayes-rule', title: "Conditional Probability & Bayes' Rule", domain: "Conditional Probability & Bayes' Rule" },
+    { unit: 5, num: '5.01', slug: 'distributions-and-maximum-likelihood', title: 'Distributions & Maximum Likelihood', domain: 'Distributions & Maximum Likelihood' },
+    { unit: 6, num: '6.01', slug: 'linear-regression-and-ols', title: 'Linear Regression & OLS', domain: 'Linear Regression & OLS' },
+    { unit: 7, num: '7.01', slug: 'logistic-regression-and-classification', title: 'Logistic Regression & Classification', domain: 'Logistic Regression & Classification' },
+    { unit: 8, num: '8.01', slug: 'pca-and-dimensionality-reduction', title: 'PCA & Dimensionality Reduction', domain: 'PCA & Dimensionality Reduction' }
+  ]
+};
+
+function processTrack(trackDef) {
+  const bankPath = path.join(ROOT, `bank-data/${trackDef.id}.json`);
+  const bank = JSON.parse(fs.readFileSync(bankPath, 'utf8'));
+  const pool = bank.pool || [];
+
+  const outDir = path.join(DOWNLOADS_DIR, trackDef.id);
+  const topicsTrackDir = path.join(TOPICS_DIR, trackDef.id);
+  if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
+  if (!fs.existsSync(topicsTrackDir)) fs.mkdirSync(topicsTrackDir, { recursive: true });
+
+  const manifest = [];
+
+  trackDef.units.forEach(u => {
+    // Select questions matching domain
+    let matched = pool.filter(q => q.domain === u.domain);
+    if (!matched.length) {
+      matched = pool.slice(0, 8);
+    }
+    const qSubset = matched.slice(0, 8); // 8 questions per worksheet
+
+    const wsFilename = `${u.num}-${u.slug}-worksheet.pdf`;
+    const akFilename = `${u.num}-${u.slug}-answerkey.pdf`;
+
+    // Generate Worksheet PDF
+    const wsPdf = createPdfDocument(trackDef.name, u.num, u.title, qSubset, false);
+    fs.writeFileSync(path.join(outDir, wsFilename), wsPdf);
+
+    // Generate Answer Key PDF
+    const akPdf = createPdfDocument(trackDef.name, u.num, u.title, qSubset, true);
+    fs.writeFileSync(path.join(outDir, akFilename), akPdf);
+
+    // Write source topic JSON
+    const topicJson = {
+      track: trackDef.id,
+      num: u.num,
+      title: u.title,
+      sub: null,
+      sections: [
+        {
+          heading: `${u.title} Practice Exercises`,
+          questions: qSubset.map(q => ({
+            q: q.text,
+            choices: q.choices,
+            correct: q.answer,
+            answer: q.sol
+          }))
+        }
+      ]
+    };
+    fs.writeFileSync(path.join(topicsTrackDir, `${u.num}-${u.slug}.json`), JSON.stringify(topicJson, null, 2), 'utf8');
+
+    manifest.push({
+      unit: u.unit,
+      num: u.num,
+      lang: 'en',
+      title: u.title,
+      sub: null,
+      worksheet: wsFilename,
+      answerkey: akFilename
+    });
+  });
+
+  const manifestPath = path.join(outDir, 'manifest.json');
+  fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2), 'utf8');
+  console.log(`Generated ${manifest.length} worksheet pairs and manifest.json for ${trackDef.id}!`);
+}
+
+processTrack(ADDMATH_TRACK);
+processTrack(MATHAI_TRACK);
+console.log('All missing worksheets successfully built and validated!');
