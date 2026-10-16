@@ -180,6 +180,9 @@
           <button type="button" class="pathway-tab-btn" data-path="stem" onclick="selectPathway('stem', this)" role="tab" aria-selected="false">
             <span>🚀</span> <span>STEM &amp; Olympiad / الأولمبياد والجامعة</span>
           </button>
+          <button type="button" class="pathway-tab-btn" data-path="foundation" onclick="selectPathway('foundation', this)" role="tab" aria-selected="false">
+            <span>🌱</span> <span>Middle School &amp; Foundations / التأسيس الإعدادي</span>
+          </button>
         </div>
 
         <div id="pathwayDetails" class="pathway-content-card"></div>
@@ -1022,9 +1025,9 @@
       desc: 'Rigorous British syllabus alignment for Cambridge 0580 & 9709, and Pearson Edexcel 4MA1 International GCSE, widely taken in Egypt, Jordan, UAE, and Saudi Arabia.',
       tracks: [
         { id: 'igcse', code: '0580', name: 'Cambridge IGCSE Math', tag: 'Core & Extended' },
+        { id: 'addmath', code: '0606', name: 'Additional Maths', tag: '0606 / 4PM1' },
         { id: 'aslevel', code: '9709-AS', name: 'Cambridge AS-Level', tag: 'Pure 1 & Stats' },
-        { id: 'a2level', code: '9709-A2', name: 'Cambridge A2-Level', tag: 'Pure 3 & Mech' },
-        { id: 'calculus', code: 'CALC', name: 'Calculus Concepts', tag: 'Differentiation' }
+        { id: 'a2level', code: '9709-A2', name: 'Cambridge A2-Level', tag: 'Pure 3 & Mech' }
       ],
       features: 'Multi-part structured questions (a, b, c), official [M1/A1/B1] mark schemes, Paper 1 non-calculator vs. Paper 2 calculator guidance, and cumulative frequency ogives.',
       cat: 'intl'
@@ -1043,17 +1046,31 @@
       cat: 'intl'
     },
     stem: {
-      name: 'Advanced STEM, Olympiad & University Foundations',
+      name: 'Advanced STEM, Olympiad & AI / Data Science Foundations',
       grade: 'Advanced High School & University Prep',
-      desc: 'Advanced mathematics for ambitious students competing in Kangaroo Math Arabia (الكانغارو), Saudi Mawhiba (موهبة), AMC 10/12, or preparing for University Engineering & Computer Science.',
+      desc: 'Advanced mathematics for ambitious students competing in Kangaroo Math Arabia (الكانغارو), Saudi Mawhiba (موهبة), AMC 10/12, or mastering Linear Algebra and AI foundations.',
       tracks: [
         { id: 'linalg', code: '[A]', name: 'Linear Algebra', tag: 'Vectors & Matrices' },
+        { id: 'mathai', code: 'AI', name: 'Math for AI', tag: 'Machine Learning' },
         { id: 'mvc', code: '∇', name: 'Multivariable Calculus', tag: 'Vector Fields' },
         { id: 'odes', code: 'dy/dx', name: 'Differential Equations', tag: 'Modeling' },
         { id: 'ibhl', code: 'OLYMP', name: 'Olympiad & Contest Math', tag: 'Advanced Proofs' }
       ],
-      features: 'Interactive 3D vector fields, matrix transformation visualizers, slope field analyzers, and advanced combinatorics / number theory challenges.',
+      features: 'Interactive 3D vector fields, matrix transformation visualizers, loss landscape and cosine similarity explorers, and advanced combinatorics challenges.',
       cat: 'univ'
+    },
+    foundation: {
+      name: 'Middle School & Foundation Bridge (Pre-Algebra & Checkpoint)',
+      grade: 'Grades 7–9 / Years 8–10 (Pre-IGCSE & Checkpoint)',
+      desc: 'Master the core algebraic manipulation, Euclidean geometry, and arithmetic foundations before high-stakes exams. Directly addresses early gaps that hold students back in SAT and Calculus.',
+      tracks: [
+        { id: 'algebra', code: 'ALG-1', name: 'Algebra 1', tag: 'Equations & Quadratics' },
+        { id: 'geo', code: 'GEOM', name: 'Euclidean Geometry', tag: 'Triangles & Proofs' },
+        { id: 'alg2', code: 'ALG-2', name: 'Algebra 2 Foundations', tag: 'Functions & Radicals' },
+        { id: 'igcse', code: '0580', name: 'Cambridge Checkpoint / IGCSE', tag: 'Core Foundation' }
+      ],
+      features: 'Interactive linear and parabolic graph manipulatives, tactile geometric angle discovery, and step-by-step algebraic derivation drills.',
+      cat: 'core'
     }
   };
 
@@ -1142,7 +1159,9 @@
     est2: { code: 'EST-2', icon: 'EST²', name: 'EST II Math (Level 1 & 2)', desc: 'Advanced subject tests in Math 1 & Math 2' },
     linalg: { code: '[A]', icon: ' матрицы', name: 'Linear Algebra', desc: 'Vectors, matrices, eigenvalues & linear maps' },
     mvc: { code: '∇', icon: '∂/∂x', name: 'Multivariable Calculus', desc: 'Partial derivatives, multiple integrals & vector fields' },
-    odes: { code: 'dy/dx', icon: 'eˣ', name: 'Differential Equations', desc: 'First & second order ODEs, Laplace transforms & modeling' }
+    odes: { code: 'dy/dx', icon: 'eˣ', name: 'Differential Equations', desc: 'First & second order ODEs, Laplace transforms & modeling' },
+    addmath: { code: '0606', icon: '📐', name: 'Additional Maths (0606/4PM1)', desc: 'Advanced pure math bridging IGCSE to A-Level & IB HL' },
+    mathai: { code: 'AI', icon: '🤖', name: 'Math for AI & Data Science', desc: 'Vectors, embeddings, gradient descent, Bayes & PCA' }
   };
 
   function getRecommendedPathway(country, curriculum, grade) {
@@ -1174,15 +1193,15 @@
     } else if (curriculum === 'british') {
       if (grade === '9-10') {
         rec.title = 'British Curriculum · IGCSE (Years 10–11)';
-        rec.tracks = (country === 'saudi') ? ['igcse', 'qudrat', 'algebra', 'precalc'] : ['igcse', 'algebra', 'geo', 'precalc'];
-        rec.note = 'Complete preparation for Cambridge 0580 & Pearson Edexcel 4MA1.';
+        rec.tracks = (country === 'saudi') ? ['igcse', 'addmath', 'qudrat', 'algebra'] : ['igcse', 'addmath', 'algebra', 'geo'];
+        rec.note = 'Complete preparation for Cambridge 0580/0606 & Pearson Edexcel 4MA1/4PM1.';
       } else if (grade === 'advanced') {
         rec.title = 'A-Level Further Math & University STEM';
-        rec.tracks = ['a2level', 'linalg', 'mvc', 'odes'];
-        rec.note = 'Advanced pure mathematics, mechanics, and university foundations.';
+        rec.tracks = ['a2level', 'addmath', 'linalg', 'mathai'];
+        rec.note = 'Advanced pure mathematics, mechanics, and university AI foundations.';
       } else {
         rec.title = 'British Curriculum · A-Level (Years 12–13)';
-        rec.tracks = (country === 'saudi') ? ['aslevel', 'a2level', 'qudrat', 'tahsili'] : ['aslevel', 'a2level', 'calculus', 'precalc'];
+        rec.tracks = (country === 'saudi') ? ['aslevel', 'a2level', 'qudrat', 'tahsili'] : ['aslevel', 'a2level', 'calculus', 'addmath'];
         rec.note = 'Target A* grades across Cambridge 9709 & Pearson Edexcel IAL units.';
       }
     } else if (curriculum === 'ib') {
