@@ -46,6 +46,31 @@
     register(canvas,draw);
     ms.addEventListener('input',function(){ m=parseFloat(ms.value); redrawAll(); });
     bs.addEventListener('input',function(){ b=parseFloat(bs.value); redrawAll(); });
+    if(K.makeDraggable){
+      K.makeDraggable(canvas, {
+        hitTest: function(px, py){
+          var P = new Plot(null, canvas.width, canvas.height, view, {l:30,r:12,t:14,b:26});
+          var py0 = P.Y(b), px0 = P.X(0);
+          if(Math.hypot(px - px0, py - py0) < 22) return 'intercept';
+          var px1 = P.X(2), py1 = P.Y(2*m + b);
+          if(Math.hypot(px - px1, py - py1) < 22) return 'slope';
+          return null;
+        },
+        onDrag: function(target, px, py){
+          var P = new Plot(null, canvas.width, canvas.height, view, {l:30,r:12,t:14,b:26});
+          if(target === 'intercept'){
+            var newB = Math.round(P.invY(py) * 2) / 2;
+            newB = Math.max(-5, Math.min(5, newB));
+            b = newB; if(bs) bs.value = b;
+          } else if(target === 'slope'){
+            var curY = P.invY(py);
+            var newM = Math.round(((curY - b) / 2) * 2) / 2;
+            newM = Math.max(-4, Math.min(4, newM));
+            m = newM; if(ms) ms.value = m;
+          }
+        }
+      });
+    }
   })();
 
   /* ===================== QUADRATIC EXPLORER (Algebra) ===================== */
@@ -157,6 +182,29 @@
     as.addEventListener('input',function(){ a=parseFloat(as.value); redrawAll(); });
     hs.addEventListener('input',function(){ h=parseFloat(hs.value); redrawAll(); });
     ks.addEventListener('input',function(){ k=parseFloat(ks.value); redrawAll(); });
+    if(K.makeDraggable){
+      K.makeDraggable(canvas, {
+        hitTest: function(px, py){
+          var P = new Plot(null, canvas.width, canvas.height, view, {l:30,r:12,t:14,b:26});
+          var pxH = P.X(h), pyK = P.Y(k);
+          if(Math.hypot(px - pxH, py - pyK) < 22) return 'keypoint';
+          return null;
+        },
+        onDrag: function(target, px, py){
+          var P = new Plot(null, canvas.width, canvas.height, view, {l:30,r:12,t:14,b:26});
+          var newH = Math.round(P.invX(px) * 2) / 2;
+          var newK = Math.round(P.invY(py) * 2) / 2;
+          newH = Math.max(-5, Math.min(5, newH));
+          newK = Math.max(-5, Math.min(5, newK));
+          h = newH; k = newK;
+          if(hs) hs.value = h;
+          if(ks) ks.value = k;
+          document.getElementById('tfHv').textContent = fmt(h, 1);
+          document.getElementById('tfKv').textContent = fmt(k, 1);
+          document.getElementById('tfKey').textContent = '(' + fmt(h, 1) + ', ' + fmt(k, 1) + ')';
+        }
+      });
+    }
   })();
 
   /* ===================== EXPONENTIAL & LOG (Algebra) ===================== */

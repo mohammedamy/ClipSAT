@@ -101,6 +101,31 @@
     }
     register(canvas,draw);
     sl.addEventListener('input',function(){ s=parseFloat(sl.value); document.getElementById('satFitSlopeV').textContent=s.toFixed(2); redrawAll(); });
+    if(K.makeDraggable){
+      K.makeDraggable(canvas, {
+        hitTest: function(px, py){
+          var P = new Plot(null, canvas.width, canvas.height, view, {l:24,r:12,t:12,b:20});
+          var pxProbe = P.X(8), pyProbe = P.Y(my + s * (8 - mx));
+          if(Math.hypot(px - pxProbe, py - pyProbe) < 22) return 'handle';
+          var lineY = P.Y(my + s * (P.invX(px) - mx));
+          if(Math.abs(py - lineY) < 18) return 'handle';
+          return null;
+        },
+        onDrag: function(target, px, py){
+          var P = new Plot(null, canvas.width, canvas.height, view, {l:24,r:12,t:12,b:20});
+          var curX = P.invX(px);
+          var curY = P.invY(py);
+          var dx = curX - mx;
+          if(Math.abs(dx) > 0.5){
+            var newS = (curY - my) / dx;
+            newS = Math.max(-0.5, Math.min(2.5, Math.round(newS * 20) / 20));
+            s = newS;
+            if(sl) sl.value = s;
+            document.getElementById('satFitSlopeV').textContent = s.toFixed(2);
+          }
+        }
+      });
+    }
   })();
 
   /* ===================== SAT · EXPONENTIAL MODEL ===================== */
@@ -255,5 +280,23 @@
     var s=document.getElementById('satOutlierV');
     function upd(){ outlier=parseFloat(s.value); document.getElementById('satOutlierVval').textContent=fmt(outlier,0); redrawAll(); }
     s.addEventListener('input',upd); upd();
+    if(K.makeDraggable){
+      K.makeDraggable(canvas, {
+        hitTest: function(px, py){
+          var P = new Plot(null, canvas.width, canvas.height, view, {l:20,r:12,t:12,b:26});
+          var dotX = P.X(outlier), dotY = P.Y(0.35);
+          if(Math.hypot(px - dotX, py - dotY) < 22) return 'outlier';
+          return null;
+        },
+        onDrag: function(target, px, py){
+          var P = new Plot(null, canvas.width, canvas.height, view, {l:20,r:12,t:12,b:26});
+          var newOutlier = Math.round(P.invX(px));
+          newOutlier = Math.max(30, Math.min(130, newOutlier));
+          outlier = newOutlier;
+          if(s) s.value = outlier;
+          document.getElementById('satOutlierVval').textContent = fmt(outlier, 0);
+        }
+      });
+    }
   })();
 })(window.CSExplorerKit);
