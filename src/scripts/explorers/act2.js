@@ -58,7 +58,7 @@
   /* ACT2 CH 4 — Law of Cosines */
   (function(){
     var canvas=document.getElementById('act2LawCanvas'); if(!canvas) return;
-    var view={xmin:-11,xmax:12,ymin:-2,ymax:11};
+    var view={xmin:-11,xmax:12,ymin:-2,ymax:11,square:true};
     var a=7, b=10, Cdeg=60;
     var dataBtn=document.getElementById('act2LawDataBtn'), dataPanel=document.getElementById('act2LawDataPanel'),
         dataDesc=document.getElementById('act2LawDataDesc'), dataRows=document.getElementById('act2LawDataRows');
@@ -98,7 +98,7 @@
   /* ACT2 CH 7 — inscribed angle theorem: angle at centre = 2 x angle at circumference */
   (function(){
     var canvas=document.getElementById('act2IncCanvas'); if(!canvas) return;
-    var view={xmin:-6.4,xmax:6.4,ymin:-4.4,ymax:4.4};
+    var view={xmin:-5.5,xmax:5.5,ymin:-5.5,ymax:5.5,square:true};
     var R=4, thetaDeg=140;
     var dataBtn=document.getElementById('act2IncDataBtn'), dataPanel=document.getElementById('act2IncDataPanel'),
         dataDesc=document.getElementById('act2IncDataDesc'), dataRows=document.getElementById('act2IncDataRows');

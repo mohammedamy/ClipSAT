@@ -123,8 +123,85 @@ const fixtures = [
       type: 'similar',
       vertices: [[0, 0], [6, 0], [3, 4]],
       ratio: 0.6,
-      left: { caption: 'Triangle 1' },
-      right: { caption: 'Triangle 2' }
+      left: { labels: ['A','B','C'], sides: ['6','5','5'], caption: 'Triangle 1' },
+      right: { labels: ['D','E','F'], sides: ['10','x','y'], caption: 'Triangle 2' }
+    }
+  },
+  {
+    type: 'nested_triangles',
+    name: 'Nested Triangles (Thales)',
+    fig: {
+      type: 'nested_triangles',
+      labels: ['A', 'B', 'C', 'D', 'E'],
+      sides: { ad: '8', db: '12', ae: '10', ec: 'x', de: '6', bc: '15' }
+    }
+  },
+  {
+    type: 'bowtie',
+    name: 'Bowtie / Hourglass Triangles',
+    fig: {
+      type: 'bowtie',
+      labels: ['A', 'B', 'C', 'D', 'E'],
+      sides: { ab: '12', cd: '20', ae: '9', ec: '15', be: 'x', ed: '10' }
+    }
+  },
+  {
+    type: 'right_triangle_altitude',
+    name: 'Right Triangle Altitude (Geometric Mean)',
+    fig: {
+      type: 'right_triangle_altitude',
+      labels: ['A', 'B', 'C', 'D'],
+      altitude: 'h',
+      p: '9',
+      q: '16',
+      a: '20',
+      b: '15'
+    }
+  },
+  {
+    type: 'shadow_similarity',
+    name: 'Shadow Similarity (Indirect Measurement)',
+    fig: {
+      type: 'shadow_similarity',
+      obj1: { label: 'Surveyor', height: '6 ft', shadow: '8 ft' },
+      obj2: { label: 'Tower', height: 'h', shadow: '60 ft' },
+      angle_label: 'θ'
+    }
+  },
+  {
+    type: 'angle_bisector',
+    name: 'Angle Bisector Triangle',
+    fig: {
+      type: 'angle_bisector',
+      labels: ['A', 'B', 'C', 'D'],
+      sides: { ab: '12', ac: '18', bd: '6', dc: 'x' }
+    }
+  },
+  {
+    type: 'overlapping_triangles',
+    name: 'Overlapping Inverted Similar Triangles',
+    fig: {
+      type: 'overlapping_triangles',
+      labels: ['A', 'B', 'C', 'D', 'E'],
+      sides: { ad: '6', db: '10', ae: '8', ec: '4', de: '7', bc: 'x' }
+    }
+  },
+  {
+    type: 'circle_chords_similarity',
+    name: 'Circle Intersecting Chords Similarity',
+    fig: {
+      type: 'circle_chords_similarity',
+      labels: ['A', 'B', 'C', 'D', 'P'],
+      sides: { pa: '4', pb: '9', pc: '6', pd: 'x' }
+    }
+  },
+  {
+    type: 'trapezoid_diagonals',
+    name: 'Trapezoid Diagonals Similarity',
+    fig: {
+      type: 'trapezoid_diagonals',
+      labels: ['A', 'B', 'C', 'D', 'P'],
+      sides: { ab: '8', cd: '14' }
     }
   },
   {

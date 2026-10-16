@@ -1,140 +1,158 @@
 {
   "track": "a2level",
   "num": "9.01",
+  "slug": "complex-numbers",
   "title": "Complex Numbers",
   "sections": [
     {
-      "heading": "Basic arithmetic with complex numbers",
+      "heading": "Section 1: Cartesian Form & Complex Arithmetic",
       "questions": [
         {
-          "q": "Given $z_1=4+3i$ and $z_2=2-5i$, find $z_1+z_2$ and $z_1-z_2$.",
-          "answer": "$z_1+z_2=(4+2)+(3-5)i=6-2i$. $z_1-z_2=(4-2)+(3-(-5))i=2+8i$."
-        },
-        {
-          "q": "Find $z_1z_2$ for $z_1=2+3i$ and $z_2=4-i$.",
-          "answer": "$z_1z_2=(2+3i)(4-i)=8-2i+12i-3i^2=8+10i+3=11+10i$."
-        }
-      ]
-    },
-    {
-      "heading": "The complex conjugate and division",
-      "questions": [
-        {
-          "q": "Find the conjugate of $z=7-2i$, and compute $z\\bar{z}$.",
-          "answer": "$\\bar{z}=7+2i$. $z\\bar{z}=(7-2i)(7+2i)=49-4i^2=49+4=53$."
-        },
-        {
-          "q": "Simplify $\\dfrac{3+i}{2-3i}$ by multiplying by the conjugate of the denominator.",
-          "answer": "$\\dfrac{3+i}{2-3i}\\cdot\\dfrac{2+3i}{2+3i}=\\dfrac{(3+i)(2+3i)}{4+9}=\\dfrac{6+9i+2i+3i^2}{13}=\\dfrac{3+11i}{13}=\\dfrac{3}{13}+\\dfrac{11}{13}i$."
-        }
-      ]
-    },
-    {
-      "heading": "Modulus and the Argand diagram",
-      "questions": [
-        {
-          "q": "Find the modulus $|z|$ of $z=5-12i$.",
-          "answer": "$|z|=\\sqrt{5^2+(-12)^2}=\\sqrt{25+144}=\\sqrt{169}=13$."
-        },
-        {
-          "q": "The graph shows several complex numbers plotted on the Argand diagram (real part horizontal, imaginary part vertical).",
-          "figure": {
-            "type": "plot",
-            "points": [[4,1],[-3,2],[-2,-3],[1,-4]],
-            "xmin": -5, "xmax": 5, "ymin": -5, "ymax": 5,
-            "width": 220
-          },
-          "parts": [
-            "Read off the complex number plotted at $(4,1)$ in Cartesian form.",
-            "Find the modulus of the complex number plotted at $(-2,-3)$."
+          "q": "Given $z = 3 - 4i$, compute $z \\cdot z^*$ where $z^*$ is the complex conjugate of $z$.",
+          "choices": [
+            "25",
+            "7",
+            "$-7$",
+            "$25 - 24i$"
           ],
-          "cols": 1,
-          "answers": [
-            "The point $(4,1)$ corresponds to $4+i$.",
-            "The point $(-2,-3)$ corresponds to $-2-3i$, with modulus $\\sqrt{(-2)^2+(-3)^2}=\\sqrt{13}$."
-          ]
+          "correct": 0,
+          "answer": "$z^* = 3 + 4i$. Then $z \\cdot z^* = 3^2 - (4i)^2 = 9 - (-16) = 25$."
+        },
+        {
+          "q": "Express $\\dfrac{5 + 2i}{2 - i}$ in the form $a + bi$.",
+          "choices": [
+            "$\\dfrac{8}{5} + \\dfrac{9}{5}i$",
+            "$\\dfrac{12}{5} + \\dfrac{9}{5}i$",
+            "$8 + 9i$",
+            "$\\dfrac{8}{3} + \\dfrac{9}{3}i$"
+          ],
+          "correct": 0,
+          "answer": "Multiply numerator and denominator by $(2 + i)$: $\\dfrac{(5 + 2i)(2 + i)}{4 + 1} = \\dfrac{10 + 5i + 4i + 2i^2}{5} = \\dfrac{8 + 9i}{5} = \\frac{8}{5} + \\frac{9}{5}i$."
+        },
+        {
+          "q": "Find the two square roots of $-5 + 12i$.",
+          "choices": [
+            "$\\pm(2 + 3i)$",
+            "$\\pm(3 + 2i)$",
+            "$\\pm(2 - 3i)$",
+            "$\\pm(3 - 2i)$"
+          ],
+          "correct": 0,
+          "answer": "Let $(x + iy)^2 = -5 + 12i \\Rightarrow x^2 - y^2 = -5$ and $2xy = 12 \\Rightarrow xy = 6$. Also $x^2 + y^2 = \\sqrt{25 + 144} = 13$. Adding: $2x^2 = 8 \\Rightarrow x = \\pm 2$. Then $y = 6/x = \\pm 3$. Roots: $\\pm(2 + 3i)$."
         }
       ]
     },
     {
-      "heading": "Solving equations with complex roots",
+      "heading": "Section 2: Modulus-Argument Form",
       "questions": [
         {
-          "q": "Solve $x^2+2x+5=0$, giving your answer in the form $a+bi$.",
-          "answer": "By the quadratic formula: $x=\\dfrac{-2\\pm\\sqrt{4-20}}{2}=\\dfrac{-2\\pm\\sqrt{-16}}{2}=\\dfrac{-2\\pm4i}{2}=-1\\pm2i$."
+          "q": "Find the modulus and principal argument of $z = -1 + i\\sqrt{3}$.",
+          "choices": [
+            "$r = 2, \\theta = \\dfrac{2\\pi}{3}$",
+            "$r = 2, \\theta = \\dfrac{\\pi}{3}$",
+            "$r = 4, \\theta = \\dfrac{2\\pi}{3}$",
+            "$r = 2, \\theta = -\\dfrac{2\\pi}{3}$"
+          ],
+          "correct": 0,
+          "answer": "Modulus $r = \\sqrt{(-1)^2 + (\\sqrt{3})^2} = \\sqrt{4} = 2$. Point $(-1, \\sqrt{3})$ is in QII: $\\theta = \\pi - \\arctan(\\sqrt{3}) = \\pi - \\pi/3 = 2\\pi/3$."
         },
         {
-          "q": "One root of a quadratic equation with real coefficients is $3-4i$. State the other root, and find the quadratic equation.",
-          "answer": "Since the coefficients are real, complex roots occur in conjugate pairs, so the other root is $3+4i$. Sum of roots $=6$; product $=(3-4i)(3+4i)=9+16=25$. Equation: $x^2-6x+25=0$."
+          "q": "Given $z_1 = 3(\\cos(\\pi/4) + i\\sin(\\pi/4))$ and $z_2 = 2(\\cos(\\pi/6) + i\\sin(\\pi/6))$, find $\\text{arg}(z_1 z_2)$.",
+          "choices": [
+            "$\\dfrac{5\\pi}{12}$",
+            "$\\dfrac{\\pi}{12}$",
+            "$\\dfrac{\\pi}{24}$",
+            "$\\dfrac{7\\pi}{12}$"
+          ],
+          "correct": 0,
+          "answer": "When multiplying complex numbers, arguments add: $\\text{arg}(z_1 z_2) = \\text{arg}(z_1) + \\text{arg}(z_2) = \\frac{\\pi}{4} + \\frac{\\pi}{6} = \\frac{5\\pi}{12}$."
         },
         {
-          "q": "Given that $z=1+2i$ is a root of $z^3-4z^2+9z-10=0$ (with real coefficients), find the other two roots.",
-          "answer": "Since the coefficients are real, $z=1-2i$ is also a root. These two roots multiply to $(1+2i)(1-2i)=1+4=5$ and sum to $2$, giving the quadratic factor $z^2-2z+5$. Dividing the cubic by this factor: $z^3-4z^2+9z-10\\div(z^2-2z+5)=z-2$, so the third root is $z=2$. The other two roots are $1-2i$ and $2$."
+          "q": "Express $z = 4e^{i\\pi/3}$ in Cartesian form $x + iy$.",
+          "choices": [
+            "$2 + 2i\\sqrt{3}$",
+            "$2\\sqrt{3} + 2i$",
+            "$2 - 2i\\sqrt{3}$",
+            "$4 + 4i\\sqrt{3}$"
+          ],
+          "correct": 0,
+          "answer": "$4(\\cos(\\pi/3) + i\\sin(\\pi/3)) = 4(1/2 + i\\sqrt{3}/2) = 2 + 2i\\sqrt{3}$."
         }
       ]
     },
     {
-      "heading": "Converting to polar (modulus-argument) form",
+      "heading": "Section 3: Loci in the Argand Plane",
       "questions": [
         {
-          "q": "Write $z=\\sqrt{3}+i$ in polar form $r(\\cos\\theta+i\\sin\\theta)$, giving the argument in radians.",
-          "answer": "$r=\\sqrt{(\\sqrt{3})^2+1^2}=\\sqrt{4}=2$. $\\theta=\\arctan\\left(\\dfrac{1}{\\sqrt{3}}\\right)=\\dfrac{\\pi}{6}$. Polar form: $z=2\\left(\\cos\\dfrac{\\pi}{6}+i\\sin\\dfrac{\\pi}{6}\\right)$."
+          "q": "Describe the locus of points represented by $|z - 3 - 4i| = 5$ in the complex plane.",
+          "choices": [
+            "A circle with center $(3, 4)$ and radius 5",
+            "A circle with center $(-3, -4)$ and radius 5",
+            "A circle with center $(3, 4)$ and radius 25",
+            "A straight line perpendicular to $3 + 4i$"
+          ],
+          "correct": 0,
+          "answer": "$|z - (3 + 4i)| = 5$ represents all points at distance 5 from $3 + 4i$, which is a circle centered at $(3, 4)$ with radius 5."
         },
         {
-          "q": "Convert $z=6\\left(\\cos\\dfrac{2\\pi}{3}+i\\sin\\dfrac{2\\pi}{3}\\right)$ to Cartesian form.",
-          "answer": "$a=6\\cos\\left(\\dfrac{2\\pi}{3}\\right)=6\\left(-\\dfrac{1}{2}\\right)=-3$. $b=6\\sin\\left(\\dfrac{2\\pi}{3}\\right)=6\\left(\\dfrac{\\sqrt{3}}{2}\\right)=3\\sqrt{3}$. So $z=-3+3\\sqrt{3}i$."
+          "q": "Describe the locus of points satisfying $|z - 2| = |z - 6i|$.",
+          "choices": [
+            "Perpendicular bisector of the segment joining $(2, 0)$ and $(0, 6)$",
+            "Circle passing through $(2, 0)$ and $(0, 6)$",
+            "Ellipse with foci at $(2, 0)$ and $(0, 6)$",
+            "Line segment joining $(2, 0)$ and $(0, 6)$"
+          ],
+          "correct": 0,
+          "answer": "The equation $|z - z_1| = |z - z_2|$ represents the perpendicular bisector of the line segment joining $z_1$ and $z_2$."
+        },
+        {
+          "q": "Describe the geometric locus defined by $\\text{arg}(z - 2) = \\dfrac{\\pi}{4}$.",
+          "choices": [
+            "A half-line starting from $(2, 0)$ making an angle of $\\pi/4$ with the positive real axis",
+            "A full line through $(2, 0)$ with gradient 1",
+            "A circle of radius 2",
+            "A ray towards the origin"
+          ],
+          "correct": 0,
+          "answer": "$\\text{arg}(z - z_0) = \\alpha$ represents a ray (half-line) emanating from $z_0$ at angle $\\alpha$, excluding the endpoint $z_0$."
         }
       ]
     },
     {
-      "heading": "Multiplying and dividing in polar form",
+      "heading": "Section 4: Roots of Polynomials & Conjugate Pairs",
       "questions": [
         {
-          "q": "Given $z_1=4\\left(\\cos\\dfrac{\\pi}{3}+i\\sin\\dfrac{\\pi}{3}\\right)$ and $z_2=2\\left(\\cos\\dfrac{\\pi}{12}+i\\sin\\dfrac{\\pi}{12}\\right)$, find $z_1z_2$ and $\\dfrac{z_1}{z_2}$ in polar form.",
-          "answer": "Multiply moduli, add arguments: $z_1z_2=8\\left(\\cos\\dfrac{5\\pi}{12}+i\\sin\\dfrac{5\\pi}{12}\\right)$. Divide moduli, subtract arguments: $\\dfrac{z_1}{z_2}=2\\left(\\cos\\dfrac{\\pi}{4}+i\\sin\\dfrac{\\pi}{4}\\right)$."
+          "q": "Given that $z = 1 + 2i$ is a root of $z^3 - 3z^2 + 7z - 5 = 0$, what are the other two roots?",
+          "choices": [
+            "$z = 1 - 2i$ and $z = 1$",
+            "$z = -1 - 2i$ and $z = 1$",
+            "$z = 1 - 2i$ and $z = 5$",
+            "$z = -1 + 2i$ and $z = -1$"
+          ],
+          "correct": 0,
+          "answer": "Since coefficients are real, the conjugate $1 - 2i$ must also be a root. Product of roots: $(1 + 2i)(1 - 2i) = 5$. Since constant term is $-5$, the third root is $5/5 = 1$."
         },
         {
-          "q": "Given $z_1=5\\left(\\cos\\dfrac{2\\pi}{5}+i\\sin\\dfrac{2\\pi}{5}\\right)$ and $z_2=\\cos\\dfrac{\\pi}{5}+i\\sin\\dfrac{\\pi}{5}$, find $z_1z_2$ and $\\dfrac{z_1}{z_2}$ in polar form.",
-          "answer": "$z_1z_2=5\\left(\\cos\\dfrac{3\\pi}{5}+i\\sin\\dfrac{3\\pi}{5}\\right)$. $\\dfrac{z_1}{z_2}=5\\left(\\cos\\dfrac{\\pi}{5}+i\\sin\\dfrac{\\pi}{5}\\right)$."
+          "q": "Find a quadratic equation with real coefficients having root $z = 4 - 3i$.",
+          "choices": [
+            "$z^2 - 8z + 25 = 0$",
+            "$z^2 + 8z + 25 = 0$",
+            "$z^2 - 8z + 7 = 0$",
+            "$z^2 - 6z + 25 = 0$"
+          ],
+          "correct": 0,
+          "answer": "Roots are $4 \\pm 3i$. Sum $= 8$. Product $= 4^2 + 3^2 = 25$. Equation is $z^2 - 8z + 25 = 0$."
         },
         {
-          "q": "Find the modulus and argument of $z=\\dfrac{(1+i)^3}{1-i}$, using De Moivre's theorem for the numerator and polar division.",
-          "answer": "$1+i$ has modulus $\\sqrt{2}$ and argument $\\dfrac{\\pi}{4}$, so $(1+i)^3$ has modulus $2\\sqrt{2}$ and argument $\\dfrac{3\\pi}{4}$. $1-i$ has modulus $\\sqrt{2}$ and argument $-\\dfrac{\\pi}{4}$. Dividing: modulus $=\\dfrac{2\\sqrt{2}}{\\sqrt{2}}=2$; argument $=\\dfrac{3\\pi}{4}-\\left(-\\dfrac{\\pi}{4}\\right)=\\pi$. (This means $z=-2$, purely real.)"
-        }
-      ]
-    },
-    {
-      "heading": "De Moivre's theorem",
-      "questions": [
-        {
-          "q": "Use De Moivre's theorem to find $\\left[3\\left(\\cos\\dfrac{\\pi}{6}+i\\sin\\dfrac{\\pi}{6}\\right)\\right]^4$, giving your answer in Cartesian form.",
-          "answer": "$3^4\\left(\\cos\\dfrac{4\\pi}{6}+i\\sin\\dfrac{4\\pi}{6}\\right)=81\\left(\\cos\\dfrac{2\\pi}{3}+i\\sin\\dfrac{2\\pi}{3}\\right)=81\\left(-\\dfrac{1}{2}+\\dfrac{\\sqrt{3}}{2}i\\right)=-\\dfrac{81}{2}+\\dfrac{81\\sqrt{3}}{2}i$."
-        },
-        {
-          "q": "Use De Moivre's theorem to find $(1-i)^5$, giving your answer in Cartesian form.",
-          "answer": "$|1-i|=\\sqrt{2}$, $\\arg(1-i)=-\\dfrac{\\pi}{4}$. $(1-i)^5=(\\sqrt{2})^5\\left(\\cos\\left(-\\dfrac{5\\pi}{4}\\right)+i\\sin\\left(-\\dfrac{5\\pi}{4}\\right)\\right)$. Since $-\\dfrac{5\\pi}{4}$ is equivalent to $\\dfrac{3\\pi}{4}$: $=4\\sqrt{2}\\left(-\\dfrac{\\sqrt{2}}{2}+\\dfrac{\\sqrt{2}}{2}i\\right)=-4+4i$."
-        }
-      ]
-    },
-    {
-      "heading": "Finding roots using De Moivre's theorem",
-      "questions": [
-        {
-          "q": "Find the three cube roots of $z=27\\left(\\cos\\dfrac{\\pi}{2}+i\\sin\\dfrac{\\pi}{2}\\right)$, giving arguments in $[0,2\\pi)$.",
-          "answer": "Cube roots have modulus $27^{1/3}=3$ and arguments $\\dfrac{\\pi/2+2\\pi k}{3}$ for $k=0,1,2$: $\\dfrac{\\pi}{6}$, $\\dfrac{5\\pi}{6}$, $\\dfrac{3\\pi}{2}$. Roots: $3\\left(\\cos\\dfrac{\\pi}{6}+i\\sin\\dfrac{\\pi}{6}\\right)$, $3\\left(\\cos\\dfrac{5\\pi}{6}+i\\sin\\dfrac{5\\pi}{6}\\right)$, $3\\left(\\cos\\dfrac{3\\pi}{2}+i\\sin\\dfrac{3\\pi}{2}\\right)$."
-        },
-        {
-          "q": "Find all four fourth roots of $-16$ (i.e. solve $z^4=-16$), giving arguments in $[0,2\\pi)$.",
-          "answer": "Write $-16=16(\\cos\\pi+i\\sin\\pi)$. Fourth roots have modulus $16^{1/4}=2$ and arguments $\\dfrac{\\pi+2\\pi k}{4}$ for $k=0,1,2,3$: $\\dfrac{\\pi}{4},\\dfrac{3\\pi}{4},\\dfrac{5\\pi}{4},\\dfrac{7\\pi}{4}$. Roots: $2\\left(\\cos\\dfrac{\\pi}{4}+i\\sin\\dfrac{\\pi}{4}\\right)$, $2\\left(\\cos\\dfrac{3\\pi}{4}+i\\sin\\dfrac{3\\pi}{4}\\right)$, $2\\left(\\cos\\dfrac{5\\pi}{4}+i\\sin\\dfrac{5\\pi}{4}\\right)$, $2\\left(\\cos\\dfrac{7\\pi}{4}+i\\sin\\dfrac{7\\pi}{4}\\right)$."
-        }
-      ]
-    },
-    {
-      "heading": "A well-designed word problem: AC circuit impedance",
-      "questions": [
-        {
-          "q": "This question has three parts. An AC circuit has impedance $Z=R+iX_L$, where $R=8\\,\\Omega$ (resistance) and $X_L=6\\,\\Omega$ (inductive reactance). (a) Write $Z$ in Cartesian form, find $|Z|$, and find $\\arg Z$ to the nearest degree. (b) The current is $I=\\dfrac{V}{Z}$, where $V=100$ volts (real). Find $I$ in the form $a+bi$, by rationalizing the denominator. (c) Find $|I|$, to two decimal places.",
-          "answer": "(a) $Z=8+6i$. $|Z|=\\sqrt{64+36}=\\sqrt{100}=10\\,\\Omega$. $\\arg Z=\\arctan\\left(\\dfrac{6}{8}\\right)\\approx37^\\circ$. (b) $I=\\dfrac{100}{8+6i}\\cdot\\dfrac{8-6i}{8-6i}=\\dfrac{100(8-6i)}{64+36}=\\dfrac{100(8-6i)}{100}=8-6i$ amps. (c) $|I|=\\sqrt{8^2+(-6)^2}=\\sqrt{64+36}=\\sqrt{100}=10.00$ amps, consistent with $|I|=\\dfrac{|V|}{|Z|}=\\dfrac{100}{10}=10$."
+          "q": "Find the least value of $|z|$ for points $z$ satisfying $|z - 5 - 12i| \\leq 3$.",
+          "choices": [
+            "10",
+            "13",
+            "16",
+            "7"
+          ],
+          "correct": 0,
+          "answer": "Center of circle is $5 + 12i$, distance from origin is $\\sqrt{25 + 144} = 13$. The minimum distance from origin to circle is $13 - r = 13 - 3 = 10$."
         }
       ]
     }

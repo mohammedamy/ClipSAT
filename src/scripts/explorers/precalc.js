@@ -23,7 +23,7 @@
   /* PRECALC CH 2 — the unit circle: P = (cos θ, sin θ) traced live */
   (function(){
     var canvas=document.getElementById('ucCanvas'); if(!canvas) return;
-    var view={xmin:-1.6,xmax:1.6,ymin:-1.1,ymax:1.1};
+    var view={xmin:-1.6,xmax:1.6,ymin:-1.1,ymax:1.1,square:true};
     var thetaDeg=40;
     var dataBtn=document.getElementById('ucDataBtn'), dataPanel=document.getElementById('ucDataPanel'),
         dataDesc=document.getElementById('ucDataDesc'), dataRows=document.getElementById('ucDataRows');
@@ -72,7 +72,7 @@
      circle → ellipse → parabola → hyperbola, same a=3 throughout. */
   (function(){
     var canvas=document.getElementById('pcConicCanvas'); if(!canvas) return;
-    var view={xmin:-8.7,xmax:8.7,ymin:-6,ymax:6};
+    var view={xmin:-8.7,xmax:8.7,ymin:-6,ymax:6,square:true};
     var A=3, e=0;
     var dataBtn=document.getElementById('pcConicDataBtn'), dataPanel=document.getElementById('pcConicDataPanel'),
         dataDesc=document.getElementById('pcConicDataDesc'), dataRows=document.getElementById('pcConicDataRows');

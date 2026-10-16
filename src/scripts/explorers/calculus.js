@@ -500,7 +500,7 @@
   (function(){
     var canvas=document.getElementById('vecCanvas'); if(!canvas) return;
     var ux=3, uy=1, vmag=2.6, ang=50*Math.PI/180;
-    var view={xmin:-3,xmax:6,ymin:-3,ymax:6};
+    var view={xmin:-3,xmax:6,ymin:-3,ymax:6,square:true,step:1};
     var dataBtn=document.getElementById('vecDataBtn'), dataPanel=document.getElementById('vecDataPanel'),
         dataDesc=document.getElementById('vecDataDesc'), dataRows=document.getElementById('vecDataRows');
     wireDataToggle(dataBtn,dataPanel);
@@ -956,7 +956,7 @@
     var canvas=document.getElementById('fieldCanvas'); if(!canvas) return;
     var t=1;
     function F(x,y){ return { x:-t*y+(1-t)*x, y:t*x+(1-t)*y }; }
-    var view={xmin:-2.2,xmax:2.2,ymin:-2.2,ymax:2.2};
+    var view={xmin:-2.2,xmax:2.2,ymin:-2.2,ymax:2.2,square:true};
     var dataBtn=document.getElementById('fieldDataBtn'), dataPanel=document.getElementById('fieldDataPanel'),
         dataDesc=document.getElementById('fieldDataDesc'), dataRows=document.getElementById('fieldDataRows');
     wireDataToggle(dataBtn,dataPanel);

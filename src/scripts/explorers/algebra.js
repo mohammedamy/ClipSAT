@@ -15,7 +15,7 @@
   /* ===================== LINE EXPLORER (Algebra) ===================== */
   (function(){
     var canvas=document.getElementById('lineCanvas'); if(!canvas) return;
-    var m=1, b=1, view={xmin:-6,xmax:6,ymin:-6,ymax:6};
+    var m=1, b=1, view={xmin:-6,xmax:6,ymin:-6,ymax:6,square:true,step:1};
     var ms=document.getElementById('lineM'), bs=document.getElementById('lineB');
     var dataBtn=document.getElementById('lineDataBtn'), dataPanel=document.getElementById('lineDataPanel'),
         dataDesc=document.getElementById('lineDataDesc'), dataRows=document.getElementById('lineDataRows');
@@ -274,7 +274,7 @@
   /* ===================== SYSTEM OF LINES (Algebra) ===================== */
   (function(){
     var canvas=document.getElementById('sysCanvas'); if(!canvas) return;
-    var m1=1,b1=-1,m2=-1,b2=2, view={xmin:-6,xmax:6,ymin:-6,ymax:6};
+    var m1=1,b1=-1,m2=-1,b2=2, view={xmin:-6,xmax:6,ymin:-6,ymax:6,square:true,step:1};
     var dataBtn=document.getElementById('sysDataBtn'), dataPanel=document.getElementById('sysDataPanel'),
         dataDesc=document.getElementById('sysDataDesc'), dataRows=document.getElementById('sysDataRows');
     wireDataToggle(dataBtn,dataPanel);

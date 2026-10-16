@@ -25,7 +25,7 @@
   (function(){
     var canvas=document.getElementById('laVecCanvas'); if(!canvas) return;
     var ux=1, uy=2, vmag=Math.sqrt(5), theta=27*Math.PI/180;
-    var view={xmin:-3,xmax:3,ymin:-3,ymax:3};
+    var view={xmin:-3,xmax:3,ymin:-3,ymax:3,square:true};
     var dataBtn=document.getElementById('laVecDataBtn'), dataPanel=document.getElementById('laVecDataPanel'),
         dataDesc=document.getElementById('laVecDataDesc'), dataRows=document.getElementById('laVecDataRows');
     wireDataToggle(dataBtn,dataPanel);
@@ -123,7 +123,7 @@
   (function(){
     var canvas=document.getElementById('laMatCanvas'); if(!canvas) return;
     var a=1,b=0,c=0,d=1;
-    var view={xmin:-6,xmax:6,ymin:-6,ymax:6};
+    var view={xmin:-6,xmax:6,ymin:-6,ymax:6,square:true};
     var GRID_EXT=2, GRID_STEP=0.5;
     var dataBtn=document.getElementById('laMatDataBtn'), dataPanel=document.getElementById('laMatDataPanel'),
         dataDesc=document.getElementById('laMatDataDesc'), dataRows=document.getElementById('laMatDataRows');
@@ -201,7 +201,7 @@
   (function(){
     var canvas=document.getElementById('laDetCanvas'); if(!canvas) return;
     var ux=3, uy=1, vx=1, vy=2;
-    var view={xmin:-3,xmax:8,ymin:-3,ymax:8};
+    var view={xmin:-3,xmax:8,ymin:-3,ymax:8,square:true};
     var dataBtn=document.getElementById('laDetDataBtn'), dataPanel=document.getElementById('laDetDataPanel'),
         dataDesc=document.getElementById('laDetDataDesc'), dataRows=document.getElementById('laDetDataRows');
     wireDataToggle(dataBtn,dataPanel);
@@ -254,7 +254,7 @@
   /* LA CH 5 — span of two vectors in R^2, u fixed, v's angle adjustable */
   (function(){
     var canvas=document.getElementById('laSpanCanvas'); if(!canvas) return;
-    var view={xmin:-6,xmax:6,ymin:-6,ymax:6};
+    var view={xmin:-6,xmax:6,ymin:-6,ymax:6,square:true};
     var u=[2,0];
     var angleDeg=60, c1=1, c2=1;
     var dataBtn=document.getElementById('laSpanDataBtn'), dataPanel=document.getElementById('laSpanDataPanel'),
@@ -334,7 +334,7 @@
       ]);
     }
     function draw(ctx,w,h){
-      var view={xmin:-3,xmax:3,ymin:-3,ymax:3};
+      var view={xmin:-3,xmax:3,ymin:-3,ymax:3,square:true};
       var P=new Plot(ctx,w,h,view,{l:26,r:10,t:10,b:20}); P.clear();
       var c=P.ctx, N=120, i, ang, px, py;
       c.beginPath();

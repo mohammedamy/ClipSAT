@@ -44,7 +44,7 @@
     var canvas = document.getElementById('amCircularCanvas'); if(!canvas) return;
     var r = 5, theta = 1.2;
     var sr = document.getElementById('amCircR'), st = document.getElementById('amCircTheta');
-    var view = { xmin: -1, xmax: 8, ymin: -1, ymax: 7 };
+    var view = { xmin: -1, xmax: 8, ymin: -1, ymax: 7, square: true, step: 1 };
 
     function draw(ctx, w, h){
       var P = new Plot(ctx, w, h, view, { l: 20, r: 16, t: 16, b: 20 });

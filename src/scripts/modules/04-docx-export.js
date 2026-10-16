@@ -567,7 +567,7 @@ window.CSExport=(function(){
       +'body[dir="rtl"] .cs-meta{text-align:left}'
       +'body[dir="rtl"] .cs-footer{direction:rtl}'
       +'body[dir="rtl"] th{text-align:right}'
-      +'body[dir="rtl"] mjx-container,body[dir="rtl"] .MathJax{direction:ltr}';
+      +'body[dir="rtl"] mjx-container,body[dir="rtl"] .MathJax,body[dir="rtl"] .katex{direction:ltr;unicode-bidi:isolate}';
   }
 
   /* \u2500\u2500 Build branded header block (HTML string) \u2500\u2500 */
@@ -619,8 +619,9 @@ window.CSExport=(function(){
     var _dir=_ttDir();
     var html='<!DOCTYPE html><html lang="'+(_dir==='rtl'?'ar':'en')+'" dir="'+_dir+'"><head>'
       +'<meta charset="utf-8"><title>'+_esc(opts.title||'ClipSAT')+'</title>'
+      +'<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous">'
       +'<style>'+_popupCSS()+'</style>'
-      +'<script>MathJax={tex:{inlineMath:[["\\\\(","\\\\)"]],displayMath:[["\\\\[","\\\\]"]],tags:"none"},svg:{fontCache:"global",scale:1},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};<\/script>'
+      +'<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"],["$","$"]],displayMath:[["\\\\[","\\\\]"],["$$","$$"]],tags:"none"},svg:{fontCache:"global",scale:1},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};<\/script>'
       +'<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"><\/script>'
       +'</head><body dir="'+_dir+'">'
       +_brandHeader(opts)
@@ -628,10 +629,7 @@ window.CSExport=(function(){
       +'<div class="cs-footer"><span>ClipSAT &middot; Mr. Mohamed Abdallah</span>'
         +'<span>'+_esc(opts.title||'')+(opts.chapter?' \u2014 '+_esc(opts.chapter):'')+'</span>'
         +'<span>'+_today()+'</span></div>'
-      /* MathJax script is synchronous (no async attr), so window.MathJax and
-         MathJax.startup.promise are available immediately when this script runs.
-         startup.promise resolves when MathJax has finished the initial typeset. */
-      +'<script>MathJax.startup.promise.then(function(){ setTimeout(window.print,400); });<\/script>'
+      +'<script>if(window.MathJax&&MathJax.startup&&MathJax.startup.promise){MathJax.startup.promise.then(function(){setTimeout(window.print,400);}).catch(function(){setTimeout(window.print,400);});}else{setTimeout(window.print,800);}<\/script>'
       +'</body></html>';
     _openBlob(html);
   }

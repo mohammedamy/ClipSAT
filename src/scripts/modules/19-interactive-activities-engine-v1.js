@@ -1214,8 +1214,28 @@ function _drawFnPlot(canvas,cfg,params){
 
   var xSpan=xmax-xmin;
   var ySpan=ymax-ymin;
-  var xStep=_niceStep(xSpan,7);
-  var yStep=_niceStep(ySpan,5);
+  var isSquare=Boolean(cfg.square||cfg.isometric);
+  if(isSquare){
+    var pw=w-pad.l-pad.r, ph=h-pad.t-pad.b;
+    if(pw>0&&ph>0){
+      var baseSpanX=cfg.xrange[1]-cfg.xrange[0], baseSpanY=cfg.yrange[1]-cfg.yrange[0];
+      var s=Math.max(baseSpanX/pw, baseSpanY/ph);
+      var cx=(cfg.xrange[0]+cfg.xrange[1])/2, cy=(cfg.yrange[0]+cfg.yrange[1])/2;
+      xmin=cx-s*pw/2; xmax=cx+s*pw/2;
+      ymin=cy-s*ph/2; ymax=cy+s*ph/2;
+      xSpan=xmax-xmin; ySpan=ymax-ymin;
+    }
+  }
+
+  var xStep, yStep;
+  if(isSquare||Math.abs(xSpan-ySpan)<1e-6){
+    var commonStep=cfg.step||_niceStep(Math.min(xSpan,ySpan),6);
+    xStep=commonStep;
+    yStep=commonStep;
+  } else {
+    xStep=_niceStep(xSpan,7);
+    yStep=_niceStep(ySpan,5);
+  }
 
   /* Subtle background grid */
   ctx.strokeStyle=isDark?'rgba(255,255,255,0.07)':'rgba(0,0,0,0.06)';
@@ -1418,6 +1438,22 @@ function _buildGP(cfg,box){
   var isFinished=false;
   var showTargetSolution=false;
 
+  function _viewBounds(w,h,pad){
+    var xmin=xrange[0],xmax=xrange[1],ymin=yrange[0],ymax=yrange[1];
+    var isSquare=Boolean(cfg.square||cfg.isometric||(Math.abs((xrange[1]-xrange[0])-(yrange[1]-yrange[0]))<1e-6));
+    if(isSquare){
+      var pw=w-pad.l-pad.r, ph=h-pad.t-pad.b;
+      if(pw>0&&ph>0){
+        var baseSpanX=xrange[1]-xrange[0], baseSpanY=yrange[1]-yrange[0];
+        var s=Math.max(baseSpanX/pw, baseSpanY/ph);
+        var cx=(xrange[0]+xrange[1])/2, cy=(yrange[0]+yrange[1])/2;
+        xmin=cx-s*pw/2; xmax=cx+s*pw/2;
+        ymin=cy-s*ph/2; ymax=cy+s*ph/2;
+      }
+    }
+    return {xmin:xmin,xmax:xmax,ymin:ymin,ymax:ymax,isSquare:isSquare};
+  }
+
   function redraw(){
     var dpr=window.devicePixelRatio||1;
     var rect=(canvas.getBoundingClientRect&&canvas.getBoundingClientRect())||{width:480,height:320};
@@ -1428,7 +1464,8 @@ function _buildGP(cfg,box){
     if(!ctx)return;
     ctx.setTransform(dpr,0,0,dpr,0,0);
     var w=rect.width,h=rect.height,pad={l:38,r:20,t:20,b:26};
-    var xmin=xrange[0],xmax=xrange[1],ymin=yrange[0],ymax=yrange[1];
+    var vb=_viewBounds(w,h,pad);
+    var xmin=vb.xmin,xmax=vb.xmax,ymin=vb.ymin,ymax=vb.ymax;
     function X(x){return pad.l+(x-xmin)/(xmax-xmin)*(w-pad.l-pad.r);}
     function Y(y){return h-pad.b-(y-ymin)/(ymax-ymin)*(h-pad.t-pad.b);}
 
@@ -1436,7 +1473,15 @@ function _buildGP(cfg,box){
     ctx.clearRect(0,0,w,h);
 
     var xSpan=xmax-xmin;var ySpan=ymax-ymin;
-    var xStep=_niceStep(xSpan,8);var yStep=_niceStep(ySpan,6);
+    var xStep, yStep;
+    if(vb.isSquare||Math.abs(xSpan-ySpan)<1e-6){
+      var commonStep=cfg.step||_niceStep(Math.min(xSpan,ySpan),6);
+      xStep=commonStep;
+      yStep=commonStep;
+    } else {
+      xStep=_niceStep(xSpan,8);
+      yStep=_niceStep(ySpan,6);
+    }
 
     // Grid lines
     ctx.strokeStyle=isDark?'rgba(255,255,255,0.08)':'rgba(0,0,0,0.06)';
@@ -1530,7 +1575,8 @@ function _buildGP(cfg,box){
     var dpr=window.devicePixelRatio||1;
     var mx=e.clientX-rect.left,my=e.clientY-rect.top;
     var w=rect.width,h=rect.height,pad={l:38,r:20,t:20,b:26};
-    var xmin=xrange[0],xmax=xrange[1],ymin=yrange[0],ymax=yrange[1];
+    var vb=_viewBounds(w,h,pad);
+    var xmin=vb.xmin,xmax=vb.xmax,ymin=vb.ymin,ymax=vb.ymax;
     var rawX=xmin+((mx-pad.l)/(w-pad.l-pad.r))*(xmax-xmin);
     var rawY=ymin+((h-pad.b-my)/(h-pad.t-pad.b))*(ymax-ymin);
 
@@ -1568,7 +1614,8 @@ function _buildGP(cfg,box){
     var rect=canvas.getBoundingClientRect();
     var mx=e.clientX-rect.left,my=e.clientY-rect.top;
     var w=rect.width,h=rect.height,pad={l:38,r:20,t:20,b:26};
-    var xmin=xrange[0],xmax=xrange[1],ymin=yrange[0],ymax=yrange[1];
+    var vb=_viewBounds(w,h,pad);
+    var xmin=vb.xmin,xmax=vb.xmax,ymin=vb.ymin,ymax=vb.ymax;
     var rawX=xmin+((mx-pad.l)/(w-pad.l-pad.r))*(xmax-xmin);
     var rawY=ymin+((h-pad.b-my)/(h-pad.t-pad.b))*(ymax-ymin);
     hud.textContent='(x: '+rawX.toFixed(1)+', y: '+rawY.toFixed(1)+')';

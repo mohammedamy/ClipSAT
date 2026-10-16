@@ -16,7 +16,7 @@
      Definition 3.1 (shift/stretch/reflect order). */
   (function(){
     var canvas=document.getElementById('est2l2TransCanvas'); if(!canvas) return;
-    var view={xmin:-8,xmax:8,ymin:-8,ymax:8};
+    var view={xmin:-8,xmax:8,ymin:-8,ymax:8,square:true};
     var a=1, h=0, k=0;
     function base(x){ return x*x; }
     var dataBtn=document.getElementById('est2l2TransDataBtn'), dataPanel=document.getElementById('est2l2TransDataPanel'),
@@ -55,7 +55,7 @@
      tied to Theorem 4.2. */
   (function(){
     var canvas=document.getElementById('est2l2VecAngCanvas'); if(!canvas) return;
-    var view={xmin:-6,xmax:6,ymin:-6,ymax:6};
+    var view={xmin:-6,xmax:6,ymin:-6,ymax:6,square:true};
     var uAng=37, uLen=5, vAng=127, vLen=5.5;
     var dataBtn=document.getElementById('est2l2VecAngDataBtn'), dataPanel=document.getElementById('est2l2VecAngDataPanel'),
         dataDesc=document.getElementById('est2l2VecAngDataDesc'), dataRows=document.getElementById('est2l2VecAngDataRows');

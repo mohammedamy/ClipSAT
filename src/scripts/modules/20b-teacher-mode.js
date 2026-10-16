@@ -425,7 +425,7 @@
         +'body[dir="rtl"] .lp-obj-list{padding-left:0;padding-right:14pt}'
         +'body[dir="rtl"] .lp-vocab th{text-align:right}'
         +'body[dir="rtl"] .lp-footer{direction:rtl}'
-        +'body[dir="rtl"] mjx-container,body[dir="rtl"] .MathJax{direction:ltr}';
+        +'body[dir="rtl"] mjx-container,body[dir="rtl"] .MathJax,body[dir="rtl"] .katex{direction:ltr;unicode-bidi:isolate}';
 
       var objHTML='<ul class="lp-obj-list">';
       objectives.slice(0,6).forEach(function(o){objHTML+='<li>'+_tt('studentsWillUnderstand')+esc(o)+'<\/li>';});
@@ -491,8 +491,9 @@
 
       var lpHTML='<!DOCTYPE html><html lang="'+(_dir==='rtl'?'ar':'en')+'" dir="'+_dir+'"><head>'
         +'<meta charset="utf-8"><title>'+_tt('lessonPlanDocTitlePrefix')+esc(subject)+'<\/title>'
+        +'<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous">'
         +'<style>'+css+'<\/style>'
-        +'<script>MathJax={tex:{inlineMath:[["\\\\(","\\\\)"]],displayMath:[["\\\\[","\\\\]"]],tags:"none"},svg:{fontCache:"global",scale:1},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};<\/script>'
+        +'<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"],["$","$"]],displayMath:[["\\\\[","\\\\]"],["$$","$$"]],tags:"none"},svg:{fontCache:"global",scale:1},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};<\/script>'
         +'<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"><\/script>'
         +'<\/head><body dir="'+_dir+'">'
         +'<div class="lp-header">'

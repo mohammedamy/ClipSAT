@@ -1,169 +1,158 @@
 {
   "track": "calculus",
   "num": "4.01",
+  "slug": "antiderivatives-and-indefinite-integrals",
   "title": "Antiderivatives and Indefinite Integrals",
   "sections": [
     {
-      "heading": "Basic antiderivatives",
+      "heading": "Section 1: The Power Rule for Integration",
       "questions": [
         {
-          "q": "Find each indefinite integral:",
-          "parts": ["$\\int (3x^2 - 4x + 5)\\,dx$", "$\\int \\frac{1}{x^2}\\,dx$", "$\\int \\sqrt{x}\\,dx$", "$\\int \\sec^2 x\\,dx$"],
-          "cols": 2,
-          "answers": [
-            "$= x^3 - 2x^2 + 5x + C$",
-            "$= -\\frac{1}{x} + C$",
-            "$= \\frac{2}{3}x^{3/2} + C$",
-            "$= \\tan x + C$"
-          ]
-        },
-        {
-          "q": "Find $\\int (4\\sin x + e^x)\\,dx$.",
-          "answer": "$= -4\\cos x + e^x + C$."
-        }
-      ]
-    },
-    {
-      "heading": "Using initial conditions",
-      "questions": [
-        {
-          "q": "Find $f(x)$ given that $f'(x) = 6x^2 - 2$ and $f(1) = 5$.",
-          "answer": "$f(x) = 2x^3 - 2x + C$. Using $f(1) = 5$: $2 - 2 + C = 5$, so $C = 5$: $f(x) = 2x^3 - 2x + 5$."
-        },
-        {
-          "q": "A particle moves along a line with velocity $v(t) = 3t^2 - 6t$ m/s. If its position at $t = 0$ is $s(0) = 4$ m, find its position function $s(t)$.",
-          "answer": "$s(t) = \\int v(t)\\,dt = t^3 - 3t^2 + C$. Using $s(0) = 4$: $C = 4$: $s(t) = t^3 - 3t^2 + 4$."
-        },
-        {
-          "q": "An object is dropped from rest, so its acceleration is $a(t) = -9.8$ m/s$^2$.",
-          "parts": [
-            "Find the velocity function $v(t)$.",
-            "If the object starts at height $s(0) = 45$ m, find its position function $s(t)$.",
-            "Find how long it takes to hit the ground ($s = 0$), to two decimal places."
+          "q": "Evaluate $\\int (6x^3 - 4x + 5)\\,dx$.",
+          "choices": [
+            "$\\frac{3}{2}x^4 - 2x^2 + 5x + C$",
+            "$2x^4 - 2x^2 + 5x + C$",
+            "$18x^2 - 4 + C$",
+            "$\\frac{3}{2}x^4 - 4x^2 + 5x + C$"
           ],
-          "cols": 1,
-          "answers": [
-            "$v(t) = -9.8t$ m/s (using $v(0) = 0$).",
-            "$s(t) = -4.9t^2 + 45$.",
-            "$-4.9t^2 + 45 = 0$ gives $t = \\sqrt{45/4.9} \\approx 3.03$ s."
-          ]
-        }
-      ]
-    },
-    {
-      "heading": "More antiderivatives",
-      "questions": [
-        {
-          "q": "Find each indefinite integral:",
-          "parts": ["$\\int \\left(\\frac{1}{x} - 3x^{-4}\\right)dx$", "$\\int (2\\sec x\\tan x)\\,dx$", "$\\int \\frac{4}{\\sqrt{1-x^2}}\\,dx$"],
-          "cols": 1,
-          "answers": [
-            "$= \\ln|x| + x^{-3} + C$",
-            "$= 2\\sec x + C$",
-            "$= 4\\sin^{-1}x + C$"
-          ]
+          "correct": 0,
+          "answer": "$\\int 6x^3\\,dx = 6(x^4/4) = \\frac{3}{2}x^4$. $\\int -4x\\,dx = -2x^2$. $\\int 5\\,dx = 5x$. Result: $\\frac{3}{2}x^4 - 2x^2 + 5x + C$."
         },
         {
-          "q": "Find the general antiderivative of $f(x) = (x+1)^3$ (expand first, or use the power rule on the whole expression, and state which method you used).",
-          "answer": "Treating $(x+1)$ as a single unit (power rule for a linear inner function): $\\int(x+1)^3\\,dx = \\frac{(x+1)^4}{4}+C$."
-        }
-      ]
-    },
-    {
-      "heading": "Motion applications",
-      "questions": [
-        {
-          "q": "A rocket's acceleration is $a(t) = 6t$ m/s$^2$, with $v(0)=0$ and $s(0)=0$.",
-          "parts": [
-            "Find $v(t)$.",
-            "Find $s(t)$.",
-            "Find the distance traveled in the first 4 seconds."
+          "q": "Find $\\int \\left(x^{2/3} + \\frac{1}{x^3}\\right)\\,dx$.",
+          "choices": [
+            "$\\frac{3}{5}x^{5/3} - \\frac{1}{2x^2} + C$",
+            "$\\frac{5}{3}x^{5/3} - \\frac{1}{4x^4} + C$",
+            "$\\frac{3}{5}x^{5/3} + \\frac{1}{2x^2} + C$",
+            "$\\frac{2}{5}x^{5/3} - \\frac{2}{x^2} + C$"
           ],
-          "cols": 1,
-          "answers": [
-            "$v(t)=3t^2$.",
-            "$s(t)=t^3$.",
-            "$s(4)=64$ m."
-          ]
-        }
-      ]
-    },
-    {
-      "heading": "Antiderivatives of composite expressions",
-      "questions": [
-        {
-          "q": "Find $\\int(2x-1)^5\\,dx$, treating $(2x-1)$ as a linear inner function.",
-          "answer": "$\\int(2x-1)^5\\,dx=\\frac{(2x-1)^6}{6\\cdot2}+C=\\frac{(2x-1)^6}{12}+C$ (dividing by the derivative of the inner function, $2$)."
+          "correct": 0,
+          "answer": "$\\int x^{2/3}\\,dx = \\frac{x^{5/3}}{5/3} = \\frac{3}{5}x^{5/3}$. $\\int x^{-3}\\,dx = \\frac{x^{-2}}{-2} = -\\frac{1}{2x^2}$. Result: $\\frac{3}{5}x^{5/3} - \\frac{1}{2x^2} + C$."
         },
         {
-          "q": "Find $\\int\\sin(3x)\\,dx$ and $\\int e^{5x}\\,dx$.",
-          "answer": "$\\int\\sin(3x)\\,dx=-\\frac{1}{3}\\cos(3x)+C$. $\\int e^{5x}\\,dx=\\frac{1}{5}e^{5x}+C$."
-        }
-      ]
-    },
-    {
-      "heading": "Verifying antiderivatives by differentiation",
-      "questions": [
-        {
-          "q": "Verify that $F(x)=x\\ln x-x$ is an antiderivative of $f(x)=\\ln x$ by differentiating $F(x)$.",
-          "answer": "$F'(x)=\\ln x+x\\cdot\\frac{1}{x}-1=\\ln x+1-1=\\ln x=f(x)$ ✓.",
-          "figure": {"type": "plot", "fns": ["log(x)", "x*log(x) - x"], "xmin": 0.1, "xmax": 5, "ymin": -3, "ymax": 3, "width": 220}
-        }
-      ]
-    },
-    {
-      "heading": "Antiderivatives of reciprocal and rational-power functions",
-      "questions": [
-        {
-          "q": "Find each indefinite integral:",
-          "parts": ["$\\int\\frac{3}{x}\\,dx$", "$\\int x^{-2/3}\\,dx$", "$\\int\\frac{1}{2\\sqrt{x}}\\,dx$"],
-          "cols": 1,
-          "answers": ["$=3\\ln|x|+C$", "$=3x^{1/3}+C$", "$=\\sqrt{x}+C$"]
-        }
-      ]
-    },
-    {
-      "heading": "A projectile motion application",
-      "questions": [
-        {
-          "q": "A ball is thrown upward with initial velocity 15 m/s from a height of 2 m, so its acceleration is $a(t)=-9.8$ m/s$^2$. Find its velocity function $v(t)$ and position function $s(t)$.",
-          "answer": "$v(t)=\\int a(t)\\,dt=-9.8t+C_1$. Using $v(0)=15$: $v(t)=-9.8t+15$. $s(t)=\\int v(t)\\,dt=-4.9t^2+15t+C_2$. Using $s(0)=2$: $s(t)=-4.9t^2+15t+2$."
-        }
-      ]
-    },
-    {
-      "heading": "Visualizing an antiderivative family",
-      "questions": [
-        {
-          "q": "The graph shows $f(x)=2x$ and one member of its antiderivative family, $F(x)=x^2$. Every other antiderivative of $f$ is a vertical shift of $F$.",
-          "figure": {
-            "type": "plot",
-            "fns": ["2*x", "x**2"],
-            "xmin": -3, "xmax": 3, "ymin": -4, "ymax": 9,
-            "width": 220
-          },
-          "parts": [
-            "Write the general antiderivative of $f(x)=2x$.",
-            "If a specific antiderivative passes through $(1, 4)$, find its constant $C$."
+          "q": "Evaluate $\\int \\frac{3x^4 - 2x}{x^2}\\,dx$.",
+          "choices": [
+            "$\\frac{3}{3}x^3 - 2\\ln|x| + C = x^3 - 2\\ln|x| + C$",
+            "$x^3 - \\frac{2}{x} + C$",
+            "$3x^3 - 2x + C$",
+            "$x^3 - 2x^{-1} + C$"
           ],
-          "cols": 1,
-          "answers": [
-            "$F(x)=x^2+C$.",
-            "$1^2+C=4$, so $C=3$: $F(x)=x^2+3$."
-          ]
+          "correct": 0,
+          "answer": "Simplify integrand: $\\frac{3x^4}{x^2} - \\frac{2x}{x^2} = 3x^2 - \\frac{2}{x}$. Integrating: $x^3 - 2\\ln|x| + C$."
         }
       ]
     },
     {
-      "heading": "Antiderivatives requiring algebraic rewriting first",
+      "heading": "Section 2: Trigonometric and Exponential Antiderivatives",
       "questions": [
         {
-          "q": "Find $\\int\\frac{x^3+2x}{x}\\,dx$ by simplifying the integrand before integrating.",
-          "answer": "$\\frac{x^3+2x}{x}=x^2+2$, so $\\int(x^2+2)\\,dx=\\frac{x^3}{3}+2x+C$."
+          "q": "Evaluate $\\int (3\\sin x + 4\\cos x)\\,dx$.",
+          "choices": [
+            "$-3\\cos x + 4\\sin x + C$",
+            "$3\\cos x - 4\\sin x + C$",
+            "$3\\cos x + 4\\sin x + C$",
+            "$-3\\cos x - 4\\sin x + C$"
+          ],
+          "correct": 0,
+          "answer": "$\\int \\sin x\\,dx = -\\cos x$ and $\\int \\cos x\\,dx = \\sin x$. Thus $\\int (3\\sin x + 4\\cos x)\\,dx = -3\\cos x + 4\\sin x + C$."
         },
         {
-          "q": "Find $\\int(x+1)(x-3)\\,dx$ by expanding the product first.",
-          "answer": "$(x+1)(x-3)=x^2-2x-3$, so $\\int(x^2-2x-3)\\,dx=\\frac{x^3}{3}-x^2-3x+C$."
+          "q": "Evaluate $\\int (5e^x + \\sec^2 x)\\,dx$.",
+          "choices": [
+            "$5e^x + \\tan x + C$",
+            "$5e^x - \\tan x + C$",
+            "$5e^x + \\sec x\\tan x + C$",
+            "$e^x + \\tan x + C$"
+          ],
+          "correct": 0,
+          "answer": "$\\int e^x\\,dx = e^x$ and $\\int \\sec^2 x\\,dx = \\tan x$. Result is $5e^x + \\tan x + C$."
+        },
+        {
+          "q": "Find $\\int (2^x + \\csc x\\cot x)\\,dx$.",
+          "choices": [
+            "$\\frac{2^x}{\\ln 2} - \\csc x + C$",
+            "$2^x\\ln 2 - \\csc x + C$",
+            "$\\frac{2^x}{\\ln 2} + \\csc x + C$",
+            "$2^x - \\cot x + C$"
+          ],
+          "correct": 0,
+          "answer": "$\\int a^x\\,dx = \\frac{a^x}{\\ln a}$ and $\\int \\csc x\\cot x\\,dx = -\\csc x$. Result is $\\frac{2^x}{\\ln 2} - \\csc x + C$."
+        }
+      ]
+    },
+    {
+      "heading": "Section 3: Initial Value Problems",
+      "questions": [
+        {
+          "q": "Find $f(x)$ given $f'(x) = 4x - 3$ and $f(1) = 6$.",
+          "choices": [
+            "$f(x) = 2x^2 - 3x + 7$",
+            "$f(x) = 2x^2 - 3x + 5$",
+            "$f(x) = 4x^2 - 3x + 5$",
+            "$f(x) = 2x^2 - 3x$"
+          ],
+          "correct": 0,
+          "answer": "$f(x) = \\int (4x - 3)\\,dx = 2x^2 - 3x + C$. $f(1) = 2(1)^2 - 3(1) + C = 6 \\Rightarrow -1 + C = 6 \\Rightarrow C = 7$."
+        },
+        {
+          "q": "A curve satisfies $\\frac{dy}{dx} = 3x^2 + 2x$ and passes through $(2, 10)$. Find its equation.",
+          "choices": [
+            "$y = x^3 + x^2 - 2$",
+            "$y = x^3 + x^2 + 2$",
+            "$y = 3x^3 + 2x^2 - 22$",
+            "$y = x^3 + x^2$"
+          ],
+          "correct": 0,
+          "answer": "$y = x^3 + x^2 + C$. $y(2) = 8 + 4 + C = 10 \\Rightarrow 12 + C = 10 \\Rightarrow C = -2$. Equation: $y = x^3 + x^2 - 2$."
+        },
+        {
+          "q": "Given $f''(x) = 6x, f'(0) = 4$, and $f(0) = 1$, find $f(x)$.",
+          "choices": [
+            "$f(x) = x^3 + 4x + 1$",
+            "$f(x) = 3x^3 + 4x + 1$",
+            "$f(x) = x^3 + 2x + 1$",
+            "$f(x) = x^3 + 4$"
+          ],
+          "correct": 0,
+          "answer": "$f'(x) = 3x^2 + C_1$. $f'(0) = 4 \\Rightarrow C_1 = 4$. $f(x) = x^3 + 4x + C_2$. $f(0) = 1 \\Rightarrow C_2 = 1$."
+        }
+      ]
+    },
+    {
+      "heading": "Section 4: Rectilinear Motion and Acceleration",
+      "questions": [
+        {
+          "q": "A particle moves with acceleration $a(t) = 6t - 4$. If its initial velocity $v(0) = 5$, find $v(t)$.",
+          "choices": [
+            "$v(t) = 3t^2 - 4t + 5$",
+            "$v(t) = 6t^2 - 4t + 5$",
+            "$v(t) = 3t^2 - 4t$",
+            "$v(t) = 3t^2 + 4t + 5$"
+          ],
+          "correct": 0,
+          "answer": "$v(t) = \\int (6t - 4)\\,dx = 3t^2 - 4t + C$. $v(0) = 5 \\Rightarrow C = 5$. Thus $v(t) = 3t^2 - 4t + 5$."
+        },
+        {
+          "q": "If a ball is thrown upward with $v(0) = 48\\text{ ft/s}$ and $a(t) = -32\\text{ ft/s}^2$ from ground level $s(0) = 0$, find its maximum height.",
+          "choices": [
+            "$36\\text{ ft}$",
+            "$48\\text{ ft}$",
+            "$64\\text{ ft}$",
+            "$32\\text{ ft}$"
+          ],
+          "correct": 0,
+          "answer": "$v(t) = -32t + 48 = 0 \\Rightarrow t = 1.5\\text{ s}$. $s(t) = -16t^2 + 48t$. At $t = 1.5$: $s(1.5) = -16(2.25) + 48(1.5) = -36 + 72 = 36\\text{ ft}$."
+        },
+        {
+          "q": "A car decelerates at a constant $a = -4\\text{ m/s}^2$ from $v_0 = 24\\text{ m/s}$. How far does it travel before coming to a stop?",
+          "choices": [
+            "$72\\text{ m}$",
+            "$48\\text{ m}$",
+            "$96\\text{ m}$",
+            "$36\\text{ m}$"
+          ],
+          "correct": 0,
+          "answer": "$v(t) = 24 - 4t = 0 \\Rightarrow t = 6\\text{ s}$. Distance $s(t) = 24t - 2t^2$. At $t = 6$: $s(6) = 24(6) - 2(36) = 144 - 72 = 72\\text{ m}$."
         }
       ]
     }

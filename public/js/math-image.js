@@ -153,32 +153,106 @@
     return COMPLEX_MATH.test(s) || COMPLEX_SCRIPT.test(s);
   }
 
+  var colorMap = {
+    '--fig-indigo': '#1E3A6E',
+    '--fig-indigo-2': '#2B5BA8',
+    '--fig-indigo-soft': 'rgba(30, 58, 110, 0.08)',
+    '--fig-indigo-fill2': 'rgba(30, 58, 110, 0.04)',
+    '--indigo': '#1E3A6E',
+    '--indigo-2': '#2B5BA8',
+    '--indigo-soft': 'rgba(30, 58, 110, 0.08)',
+    '--fig-amber': '#C8902A',
+    '--fig-amber-2': '#B37D20',
+    '--fig-amber-text': '#8A6017',
+    '--fig-amber-soft': 'rgba(200, 144, 42, 0.16)',
+    '--amber': '#C8902A',
+    '--amber-2': '#B37D20',
+    '--amber-text': '#8A6017',
+    '--amber-soft': 'rgba(200, 144, 42, 0.16)',
+    '--fig-teal': '#0E9F8F',
+    '--teal': '#0E9F8F',
+    '--fig-purple': '#7C3AED',
+    '--purple': '#7C3AED',
+    '--fig-rose': '#E11D48',
+    '--rose': '#E11D48',
+    '--fig-ink': '#0E1726',
+    '--ink': '#0E1726',
+    '--text': '#0E1726',
+    '--fig-muted': '#5A6577',
+    '--muted': '#5A6577',
+    '--fig-grid': '#C9D4E8',
+    '--grid': '#C9D4E8',
+    '--fig-border': '#DDE4F0',
+    '--border': '#DDE4F0',
+    '--line': '#DDE4F0',
+    '--fig-bg': '#FFFFFF',
+    '--paper': '#FFFFFF',
+    '--paper-2': '#F8FAFC',
+    '--bg': '#FFFFFF',
+    '--panel': '#FFFFFF',
+    '--font-sans': "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+  };
+
+  function resolveCssVars(str) {
+    var re = /var\(\s*(--[a-zA-Z0-9_-]+)/;
+    var count = 0;
+    while (re.test(str) && count++ < 300) {
+      var m = re.exec(str);
+      var startIdx = m.index;
+      var varName = m[1];
+      var openParen = startIdx + 3;
+      var depth = 1;
+      var closeParen = -1;
+      var commaIdx = -1;
+      for (var i = openParen + 1; i < str.length; i++) {
+        if (str[i] === '(') depth++;
+        else if (str[i] === ')') {
+          depth--;
+          if (depth === 0) { closeParen = i; break; }
+        } else if (str[i] === ',' && depth === 1 && commaIdx === -1) {
+          commaIdx = i;
+        }
+      }
+      if (closeParen === -1) break;
+      var fallback = commaIdx !== -1 ? str.slice(commaIdx + 1, closeParen).trim() : '';
+      var replacement = colorMap[varName];
+      if (!replacement && fallback) {
+        replacement = fallback;
+      }
+      if (!replacement) replacement = '#000000';
+      str = str.slice(0, startIdx) + replacement + str.slice(closeParen + 1);
+    }
+    return str;
+  }
+
+  function getSvgDimensions(svgStr) {
+    var wMatch = svgStr.match(/\bwidth=["']?(\d+(?:\.\d+)?)/i);
+    var hMatch = svgStr.match(/\bheight=["']?(\d+(?:\.\d+)?)/i);
+    var vbMatch = svgStr.match(/\bviewBox=["']?[-\d.]+[,\s]+[-\d.]+[,\s]+(\d+(?:\.\d+)?)[,\s]+(\d+(?:\.\d+)?)/i);
+    var w = wMatch ? Math.round(parseFloat(wMatch[1])) : (vbMatch ? Math.round(parseFloat(vbMatch[1])) : 320);
+    var h = hMatch ? Math.round(parseFloat(hMatch[1])) : (vbMatch ? Math.round(parseFloat(vbMatch[2])) : 220);
+    return { w: Math.max(40, w), h: Math.max(40, h) };
+  }
+
   function sanitizeSvg(svgStr) {
     if (!svgStr || typeof svgStr !== 'string') return '';
-    var s = svgStr;
-    var colorMap = {
-      '--fig-indigo': '#1E3A6E',
-      '--fig-indigo-2': '#2B5BA8',
-      '--fig-indigo-soft': 'rgba(30,58,110,0.08)',
-      '--fig-amber': '#C8902A',
-      '--fig-amber-text': '#8A6017',
-      '--fig-amber-soft': 'rgba(200,144,42,0.16)',
-      '--fig-teal': '#0e9f8f',
-      '--fig-ink': '#0E1726',
-      '--fig-muted': '#5a6577',
-      '--fig-grid': '#c9d4e8',
-      '--fig-border': '#dde4f0',
-      '--fig-bg': '#ffffff',
-      '--paper': '#ffffff',
-      '--paper-2': '#f8fafc',
-      '--font-sans': '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-    };
-    Object.keys(colorMap).forEach(function (varName) {
-      var re = new RegExp('var\\(' + varName + '(?:,\\s*[^)]+)?\\)', 'g');
-      s = s.replace(re, colorMap[varName]);
-    });
+    var s = resolveCssVars(svgStr);
+    s = s.replace(/\bfont-family:\s*([^;"]*)"([^;"]*)"([^;"]*)/g, "font-family:$1'$2'$3");
     if (!/xmlns="http:\/\/www\.w3\.org\/2000\/svg"/i.test(s)) {
       s = s.replace(/<svg\b/i, '<svg xmlns="http://www.w3.org/2000/svg"');
+    }
+    var dims = getSvgDimensions(s);
+    // Explicit pixel width/height for standalone Image() and Canvas rasterization
+    s = s.replace(/<svg\b([^>]*)>/i, function (match, attrs) {
+      attrs = attrs.replace(/\bwidth=["'][^"']*["']/i, '');
+      attrs = attrs.replace(/\bheight=["'][^"']*["']/i, '');
+      return '<svg width="' + dims.w + '" height="' + dims.h + '"' + attrs + '>';
+    });
+    // Ensure opaque white background so transparent fills don't display black in canvas/Forms
+    if (!/<rect[^>]*fill=["']#(?:fff|ffffff)["']/i.test(s)) {
+      s = s.replace(/<svg\b[^>]*>/i, function (m) {
+        return m + '<rect width="' + dims.w + '" height="' + dims.h + '" fill="#ffffff"/>';
+      });
     }
     return s;
   }
@@ -189,19 +263,10 @@
     return m ? m[0] : null;
   }
 
-  function getSvgDimensions(svgStr) {
-    var wMatch = svgStr.match(/\bwidth=["']?(\d+(?:\.\d+)?)/i);
-    var hMatch = svgStr.match(/\bheight=["']?(\d+(?:\.\d+)?)/i);
-    var vbMatch = svgStr.match(/\bviewBox=["']?[-\d.]+\s+[-\d.]+\s+(\d+(?:\.\d+)?)\s+(\d+(?:\.\d+)?)/i);
-    var w = wMatch ? Math.round(parseFloat(wMatch[1])) : (vbMatch ? Math.round(parseFloat(vbMatch[1])) : 320);
-    var h = hMatch ? Math.round(parseFloat(hMatch[1])) : (vbMatch ? Math.round(parseFloat(vbMatch[2])) : 220);
-    return { w: Math.max(40, w), h: Math.max(40, h) };
-  }
-
   function renderSvgDirect(svgStr, scale) {
     scale = scale || SCALE;
     return new Promise(function (resolve) {
-      if (typeof window === 'undefined' || typeof document === 'undefined' || typeof Blob === 'undefined' || typeof URL === 'undefined' || !URL.createObjectURL) {
+      if (typeof window === 'undefined' || typeof document === 'undefined') {
         resolve(null);
         return;
       }
@@ -210,16 +275,46 @@
         var dims = getSvgDimensions(cleanSvg);
         var w = dims.w, h = dims.h;
 
-        if (!/\bwidth=/i.test(cleanSvg)) cleanSvg = cleanSvg.replace(/<svg\b/i, '<svg width="' + w + '"');
-        if (!/\bheight=/i.test(cleanSvg)) cleanSvg = cleanSvg.replace(/<svg\b/i, '<svg height="' + h + '"');
+        var dataUri = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(cleanSvg);
+        var blobUrl = null;
+        if (typeof Blob !== 'undefined' && typeof URL !== 'undefined' && URL.createObjectURL) {
+          try {
+            var blob = new Blob([cleanSvg], { type: 'image/svg+xml;charset=utf-8' });
+            blobUrl = URL.createObjectURL(blob);
+          } catch (e) {}
+        }
 
-        var blob = new Blob([cleanSvg], { type: 'image/svg+xml;charset=utf-8' });
-        var url = URL.createObjectURL(blob);
         var img = new Image();
+
+        function dataUrlToBlob(canvas) {
+          try {
+            var dataUrl = canvas.toDataURL('image/png');
+            var byteString = atob(dataUrl.split(',')[1]);
+            var ab = new ArrayBuffer(byteString.length);
+            var ia = new Uint8Array(ab);
+            for (var i = 0; i < byteString.length; i++) ia[i] = byteString.charCodeAt(i);
+            return new Blob([ab], { type: 'image/png' });
+          } catch (e) {
+            return null;
+          }
+        }
+
+        function tryExtractBlob(canvas) {
+          return new Promise(function (done) {
+            if (canvas.toBlob) {
+              canvas.toBlob(function (pngBlob) {
+                if (pngBlob) { done(pngBlob); return; }
+                done(dataUrlToBlob(canvas));
+              }, 'image/png');
+            } else {
+              done(dataUrlToBlob(canvas));
+            }
+          });
+        }
 
         img.onload = function () {
           try {
-            URL.revokeObjectURL(url);
+            if (blobUrl) { try { URL.revokeObjectURL(blobUrl); } catch (e) {} }
             var canvas = document.createElement('canvas');
             canvas.width = Math.round(w * scale);
             canvas.height = Math.round(h * scale);
@@ -227,41 +322,48 @@
             ctx.fillStyle = '#ffffff';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-            canvas.toBlob(function (pngBlob) {
+            tryExtractBlob(canvas).then(function (pngBlob) {
               if (!pngBlob) { resolve(null); return; }
               resolve({ blob: pngBlob, width: w });
-            }, 'image/png');
+            }).catch(function () { resolve(null); });
           } catch (e) {
-            URL.revokeObjectURL(url);
+            if (blobUrl) { try { URL.revokeObjectURL(blobUrl); } catch (e) {} }
             resolve(null);
           }
         };
+
+        var triedFallback = false;
         img.onerror = function () {
-          URL.revokeObjectURL(url);
+          if (!triedFallback && blobUrl && img.src !== blobUrl) {
+            triedFallback = true;
+            img.src = blobUrl;
+            return;
+          }
+          if (blobUrl) { try { URL.revokeObjectURL(blobUrl); } catch (e) {} }
           resolve(null);
         };
-        img.src = url;
+
+        // Prefer data URI with charset=utf-8 for cross-platform image canvas rasterization
+        img.src = dataUri;
       } catch (err) {
         resolve(null);
       }
     });
   }
 
-  function svgToDataImgTag(svgStr) {
-    var cleanSvg = sanitizeSvg(svgStr);
-    var dims = getSvgDimensions(cleanSvg);
-    var b64 = '';
-    try {
-      if (typeof btoa !== 'undefined') b64 = btoa(unescape(encodeURIComponent(cleanSvg)));
-    } catch (e) {}
-    var src = b64 ? 'data:image/svg+xml;base64,' + b64 : 'data:image/svg+xml;utf8,' + encodeURIComponent(cleanSvg);
-    return '<img src="' + src + '" width="' + dims.w + '" height="' + dims.h + '" style="display:block;margin:0 auto;width:' + dims.w + 'px;height:' + dims.h + 'px;max-width:100%;box-sizing:border-box;" alt="Diagram">';
-  }
-
   function ensureFiguresReady() {
     if (window._renderFig && window.renderMathFigure) return Promise.resolve();
     if (typeof window._ensureFigures === 'function') {
       return window._ensureFigures().catch(function () {});
+    }
+    if (typeof document !== 'undefined') {
+      return new Promise(function (resolve) {
+        var s = document.createElement('script');
+        s.src = '/js/figures.js';
+        s.onload = function () { resolve(); };
+        s.onerror = function () { resolve(); };
+        document.head.appendChild(s);
+      });
     }
     return Promise.resolve();
   }
@@ -293,9 +395,9 @@
 
       var extractedSvg = extractSvg(figHtml);
 
-      // Fast, pristine path: If figure is purely an SVG and text has no complex math (e.g. coordinates or simple question stem),
-      // render the SVG directly using native canvas image rasterization with zero html2canvas distortion.
-      if (extractedSvg && !hasComplexMath(text)) {
+      // When an SVG diagram is present, prioritize direct native SVG canvas rasterization.
+      // Produces 100% crisp, publication-grade PNG diagrams without html2canvas distortions.
+      if (extractedSvg) {
         return renderSvgDirect(extractedSvg, SCALE).then(function (res) {
           if (res) return res;
           return renderWithHtml2Canvas(text, figHtml);
@@ -358,8 +460,7 @@
           var cleanFigHtml = figHtml;
           var extracted = extractSvg(figHtml);
           if (extracted) {
-            // Convert inline SVG to data URI image so html2canvas uses native rasterization rather than flawed SVG path parsing
-            cleanFigHtml = svgToDataImgTag(extracted);
+            cleanFigHtml = sanitizeSvg(extracted);
           }
           inner += '<div class="clipsat-fig-wrap">' + cleanFigHtml + '</div>';
         }
@@ -398,8 +499,22 @@
           }).catch(function (err) { warn('html2canvas failed: ' + (err && err.message), text); cleanup(); resolve(null); });
         };
 
-        if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { setTimeout(go, 80); });
-        else setTimeout(go, 300);
+        function waitImgs() {
+          var imgs = Array.prototype.slice.call(container.querySelectorAll('img'));
+          if (!imgs.length) return Promise.resolve();
+          return Promise.all(imgs.map(function (im) {
+            if (im.complete && im.naturalWidth > 0) return Promise.resolve();
+            return new Promise(function (res) {
+              im.onload = im.onerror = res;
+              setTimeout(res, 500);
+            });
+          }));
+        }
+
+        var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+        Promise.all([fontsReady, waitImgs()]).then(function () {
+          setTimeout(go, 100);
+        });
       });
     }).catch(function (err) { warn('Failed to load the image-rendering library: ' + (err && err.message), text); return null; });
   }
@@ -474,8 +589,8 @@
   // Falls back to the old URL shape in the rare case Drive omits
   // thumbnailLink, rather than failing the image outright.
   function imageFetchUrl(upload) {
-    if (upload.thumbnailLink) return upload.thumbnailLink.replace(/=s\d+$/, '=s1000');
-    return 'https://drive.google.com/uc?export=view&id=' + upload.fileId;
+    if (upload.thumbnailLink) return upload.thumbnailLink.replace(/=s\d+$/, '=s1200');
+    return 'https://lh3.googleusercontent.com/d/' + upload.fileId;
   }
 
   // Full pipeline for one question/choice. Never rejects — resolves null on
@@ -486,7 +601,15 @@
     return renderToPngBlob(text, figure, figureHtml).then(function (rendered) {
       if (!rendered) return null; // renderToPngBlob already warned about the specific cause
       return uploadToDrive(rendered.blob, 'clipsat-question-' + Date.now() + '-' + Math.random().toString(36).slice(2) + '.png')
-        .then(makePublic)
+        .then(function (upload) {
+          // Privacy compliance: default sharing is restricted.
+          // Google Forms backend requires images to be link-viewable to render them in student forms.
+          // Only make the image link-viewable if the teacher has explicitly granted consent via window.ClipSATGoogleFormsConsent === true.
+          if (window.ClipSATGoogleFormsConsent === true) {
+            return makePublic(upload);
+          }
+          return upload;
+        })
         .then(function (upload) { return { sourceUri: imageFetchUrl(upload), width: rendered.width }; })
         .catch(function (err) { warn(err && err.message, text); return null; });
     }).catch(function (err) { warn('Unexpected error: ' + (err && err.message), text); return null; });

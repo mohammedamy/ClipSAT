@@ -2229,37 +2229,6 @@
       "difficulty": "easy",
       "domain": "Limits",
       "text": "\\( \\lim_{x\\to 2}\\dfrac{x^2-4}{x-2} \\) equals:",
-      "fig": {
-        "type": "fn",
-        "xrange": [
-          0,
-          4
-        ],
-        "yrange": [
-          0,
-          6
-        ],
-        "fns": [
-          {
-            "fn": "x+2",
-            "label": "x+2",
-            "color": "#3b5bdb",
-            "lx": 2.5,
-            "ly": 4.5
-          }
-        ],
-        "points": [
-          {
-            "x": 2,
-            "y": 4,
-            "label": "hole",
-            "color": "#e03131",
-            "dx": 6,
-            "dy": -10,
-            "open": true
-          }
-        ]
-      },
       "choices": [
         "0",
         "2",
@@ -6543,35 +6512,7 @@
         "1"
       ],
       "answer": 1,
-      "sol": "\\(\\left[\\frac{x^3}{3}\\right]_0^1=\\frac{1}{3}\\).",
-      "figure": {
-        "type": "fn",
-        "xrange": [
-          -1,
-          3
-        ],
-        "yrange": [
-          -1,
-          4
-        ],
-        "fns": [
-          {
-            "fn": "x**2",
-            "label": "y = x^2",
-            "color": "#1E3A6E"
-          }
-        ],
-        "shade": [
-          {
-            "fn": "x**2",
-            "x1": 0,
-            "x2": 1,
-            "color": "rgba(30,58,110,0.18)"
-          }
-        ],
-        "w": 260,
-        "h": 200
-      }
+      "sol": "\\(\\left[\\frac{x^3}{3}\\right]_0^1=\\frac{1}{3}\\)."
     },
     {
       "type": "mcq",
@@ -8871,45 +8812,45 @@
     },
     {
       "type": "mcq",
-      "difficulty": "easy",
       "domain": "Transcendental Functions",
-      "text": "\\(\\int\\frac{1}{1+x^2}\\,dx=\\)",
-      "choices": [
-        "\\(\\ln(1+x^2)+C\\)",
-        "\\(-\\arctan x+C\\)",
-        "\\(\\arctan x+C\\)",
-        "\\(x/(1+x^2)+C\\)"
-      ],
-      "answer": 2,
-      "sol": "\\(\\int1/(1+x^2)dx=\\arctan x+C\\)."
-    },
-    {
-      "type": "mcq",
       "difficulty": "easy",
-      "domain": "Transcendental Functions",
-      "text": "\\(e^0=\\)",
+      "text": "(int\frac{1}{xln x},dx=)",
       "choices": [
-        "\\(0\\)",
-        "undefined",
-        "\\(e\\)",
-        "\\(1\\)"
-      ],
-      "answer": 3,
-      "sol": "\\(e^0=1\\) by definition."
-    },
-    {
-      "type": "mcq",
-      "difficulty": "easy",
-      "domain": "Transcendental Functions",
-      "text": "\\(\\ln(e^5)=\\)",
-      "choices": [
-        "\\(5\\)",
-        "\\(5e\\)",
-        "\\(e^5\\)",
-        "\\(1/5\\)"
+        "(ln|ln x|+C)",
+        "(\frac{1}{(ln x)^2}+C)",
+        "(ln(x^2)+C)",
+        "(\frac{1}{x}+C)"
       ],
       "answer": 0,
-      "sol": "\\(\\ln(e^5)=5\\)."
+      "sol": "Let (u = ln x), so (du = \frac{1}{x}dx). The integral becomes (int \frac{1}{u}du = ln|u|+C = ln|ln x|+C)."
+    },
+    {
+      "type": "mcq",
+      "domain": "Transcendental Functions",
+      "difficulty": "easy",
+      "text": "Evaluate (lnleft(\frac{1}{sqrt{e}}\right)).",
+      "choices": [
+        "(-\frac{1}{2})",
+        "(\frac{1}{2})",
+        "(-1)",
+        "(-2)"
+      ],
+      "answer": 0,
+      "sol": "(ln(e^{-1/2}) = -\frac{1}{2})."
+    },
+    {
+      "type": "mcq",
+      "domain": "Transcendental Functions",
+      "difficulty": "easy",
+      "text": "Evaluate (e^{3ln 2}).",
+      "choices": [
+        "(8)",
+        "(6)",
+        "(9)",
+        "(2)"
+      ],
+      "answer": 0,
+      "sol": "(e^{3ln 2} = e^{ln(2^3)} = 2^3 = 8)."
     },
     {
       "type": "mcq",
@@ -10089,17 +10030,17 @@
     },
     {
       "type": "mcq",
-      "difficulty": "hard",
       "domain": "Transcendental Functions",
-      "text": "\\(\\cosh^2x-\\sinh^2x=\\)",
+      "difficulty": "hard",
+      "text": "Find the derivative of (f(x) = operatorname{arsinh}(x)) with respect to (x).",
       "choices": [
-        "\\(0\\)",
-        "\\(1\\)",
-        "\\(-1\\)",
-        "\\(2\\)"
+        "(\frac{1}{sqrt{x^2+1}})",
+        "(\frac{1}{sqrt{1-x^2}})",
+        "(\frac{1}{x^2+1})",
+        "(\frac{1}{sqrt{x^2-1}})"
       ],
-      "answer": 1,
-      "sol": "Hyperbolic identity: \\(\\cosh^2x-\\sinh^2x=1\\)."
+      "answer": 0,
+      "sol": "(\frac{d}{dx}[operatorname{arsinh}(x)] = \frac{1}{sqrt{x^2+1}})."
     },
     {
       "type": "mcq",
@@ -10901,17 +10842,17 @@
     },
     {
       "type": "mcq",
-      "difficulty": "easy",
       "domain": "Fundamental Theorem",
-      "text": "\\(\\int_0^\\pi\\sin x\\,dx=\\)",
+      "difficulty": "easy",
+      "text": "Evaluate (int_0^{pi/2}cos(2x),dx).",
       "choices": [
-        "\\(0\\)",
-        "\\(1\\)",
-        "\\(2\\)",
-        "\\(\\pi\\)"
+        "(0)",
+        "(1)",
+        "(\frac{1}{2})",
+        "(-1)"
       ],
-      "answer": 2,
-      "sol": "\\([-\\cos x]_0^\\pi=-\\cos\\pi+\\cos0=2\\)."
+      "answer": 0,
+      "sol": "(left[\frac{1}{2}sin(2x)\right]_0^{pi/2} = \frac{1}{2}(sinpi - sin 0) = 0)."
     },
     {
       "type": "mcq",
@@ -10971,17 +10912,17 @@
     },
     {
       "type": "mcq",
-      "difficulty": "easy",
       "domain": "Fundamental Theorem",
-      "text": "\\(\\int_0^1 e^x\\,dx=\\)",
+      "difficulty": "easy",
+      "text": "Evaluate (int_0^1 e^{2x},dx).",
       "choices": [
-        "\\(e\\)",
-        "\\(e-1\\)",
-        "\\(e+1\\)",
-        "\\(1\\)"
+        "(\frac{e^2-1}{2})",
+        "(e^2-1)",
+        "(\frac{e^2}{2})",
+        "(e^2)"
       ],
-      "answer": 1,
-      "sol": "\\([e^x]_0^1=e-1\\)."
+      "answer": 0,
+      "sol": "(left[\frac{1}{2}e^{2x}\right]_0^1 = \frac{e^2-1}{2})."
     },
     {
       "type": "mcq",
@@ -11093,35 +11034,7 @@
         "\\(39\\)"
       ],
       "answer": 1,
-      "sol": "\\([x^3]_2^5=125-8=117\\).",
-      "figure": {
-        "type": "fn",
-        "xrange": [
-          1,
-          7
-        ],
-        "yrange": [
-          -1,
-          26
-        ],
-        "fns": [
-          {
-            "fn": "3*x**2",
-            "label": "y = 3x^2",
-            "color": "#1E3A6E"
-          }
-        ],
-        "shade": [
-          {
-            "fn": "3*x**2",
-            "x1": 2,
-            "x2": 5,
-            "color": "rgba(30,58,110,0.18)"
-          }
-        ],
-        "w": 260,
-        "h": 200
-      }
+      "sol": "\\([x^3]_2^5=125-8=117\\)."
     },
     {
       "type": "mcq",
@@ -12007,17 +11920,17 @@
     },
     {
       "type": "mcq",
-      "difficulty": "medium",
       "domain": "Fundamental Theorem",
-      "text": "\\(\\int_0^{\\pi/4}\\sec^2x\\,dx=\\)",
+      "difficulty": "medium",
+      "text": "Evaluate (int_0^{pi/3}\tan x,dx).",
       "choices": [
-        "\\(0\\)",
-        "\\(\\frac{1}{2}\\)",
-        "\\(1\\)",
-        "\\(\\sqrt{2}\\)"
+        "(ln 2)",
+        "(\frac{1}{2}ln 2)",
+        "(sqrt{3})",
+        "(2ln 2)"
       ],
-      "answer": 2,
-      "sol": "\\([\\tan x]_0^{\\pi/4}=1-0=1\\)."
+      "answer": 0,
+      "sol": "([-ln|cos x|]_0^{pi/3} = -ln(1/2) + ln(1) = ln 2)."
     },
     {
       "type": "mcq",
@@ -13715,17 +13628,17 @@
     },
     {
       "type": "mcq",
-      "difficulty": "medium",
       "domain": "Applications of Derivatives",
-      "text": "\\(\\lim_{x\\to0^+}x\\ln x=\\)",
+      "difficulty": "medium",
+      "text": "Evaluate (lim_{x\toinfty} xsinleft(\frac{1}{x}\right)).",
       "choices": [
-        "\\(0\\)",
-        "\\(-\\infty\\)",
-        "\\(\\infty\\)",
-        "\\(-1\\)"
+        "(1)",
+        "(0)",
+        "(infty)",
+        "(pi)"
       ],
       "answer": 0,
-      "sol": "Write \\(\\ln x/(1/x)\\), L'Hôpital: \\((1/x)/(-1/x^2)=-x\\to0\\)."
+      "sol": "Let (t = 1/x). As (x\toinfty), (t\to 0^+). The limit is (lim_{t\to 0^+}\frac{sin t}{t} = 1)."
     },
     {
       "type": "mcq",
@@ -13757,17 +13670,17 @@
     },
     {
       "type": "mcq",
-      "difficulty": "medium",
       "domain": "Applications of Derivatives",
-      "text": "\\(\\lim_{x\\to0}\\frac{e^x-1-x}{x^2}=\\)",
+      "difficulty": "medium",
+      "text": "Evaluate (lim_{x\to 0}\frac{cos x - 1 + \frac{x^2}{2}}{x^4}).",
       "choices": [
-        "\\(0\\)",
-        "\\(1/2\\)",
-        "\\(1\\)",
-        "\\(\\infty\\)"
+        "(\frac{1}{24})",
+        "(\frac{1}{12})",
+        "(0)",
+        "(\frac{1}{4})"
       ],
-      "answer": 1,
-      "sol": "L'Hôpital twice: \\(e^x/2\\to1/2\\)."
+      "answer": 0,
+      "sol": "Using Taylor expansion (cos x = 1 - \frac{x^2}{2} + \frac{x^4}{24} - dots), the numerator is (\frac{x^4}{24} + O(x^6)), giving limit (\frac{1}{24})."
     },
     {
       "type": "mcq",
@@ -13993,17 +13906,17 @@
     },
     {
       "type": "mcq",
-      "difficulty": "medium",
       "domain": "Applications of Derivatives",
-      "text": "\\(\\lim_{x\\to\\infty}\\frac{\\ln x}{x}=\\)",
+      "difficulty": "medium",
+      "text": "Evaluate (lim_{x\toinfty}\frac{x^2}{e^x}).",
       "choices": [
-        "\\(\\infty\\)",
-        "\\(1\\)",
-        "\\(1/e\\)",
-        "\\(0\\)"
+        "(0)",
+        "(1)",
+        "(infty)",
+        "(2)"
       ],
-      "answer": 3,
-      "sol": "L'Hôpital: \\((1/x)/1=1/x\\to0\\)."
+      "answer": 0,
+      "sol": "Applying L’Hôpital’s Rule twice gives (lim_{x\toinfty}\frac{2x}{e^x} = lim_{x\toinfty}\frac{2}{e^x} = 0)."
     },
     {
       "type": "mcq",
@@ -14077,17 +13990,17 @@
     },
     {
       "type": "mcq",
-      "difficulty": "medium",
       "domain": "Applications of Derivatives",
-      "text": "\\(\\lim_{x\\to0}(1+x)^{1/x}=\\)",
+      "difficulty": "medium",
+      "text": "Evaluate (lim_{x\toinfty}left(1+\frac{2}{x}\right)^x).",
       "choices": [
-        "\\(0\\)",
-        "\\(1\\)",
-        "\\(e\\)",
-        "\\(\\infty\\)"
+        "(e^2)",
+        "(e)",
+        "(2e)",
+        "(1)"
       ],
-      "answer": 2,
-      "sol": "Standard limit: \\(e\\)."
+      "answer": 0,
+      "sol": "(lim_{x\toinfty}(1+k/x)^x = e^k). For (k=2), the limit is (e^2)."
     },
     {
       "type": "mcq",
@@ -14259,17 +14172,17 @@
     },
     {
       "type": "mcq",
-      "difficulty": "hard",
       "domain": "Applications of Derivatives",
-      "text": "\\(\\lim_{x\\to0^+}x^x=\\)",
+      "difficulty": "hard",
+      "text": "Evaluate (lim_{x\to 0^+}(sin x)^x).",
       "choices": [
-        "\\(0\\)",
-        "\\(1\\)",
-        "\\(e\\)",
-        "\\(\\infty\\)"
+        "(1)",
+        "(0)",
+        "(e)",
+        "(infty)"
       ],
-      "answer": 1,
-      "sol": "\\(x^x=e^{x\\ln x}\\to e^0=1\\)."
+      "answer": 0,
+      "sol": "Let (y = (sin x)^x). Then (ln y = xln(sin x) = \frac{ln(sin x)}{1/x}). Applying L’Hôpital gives (lim_{x\to 0^+}\frac{cot x}{-1/x^2} = -lim_{x\to 0^+}\frac{x^2cos x}{sin x} = 0). Thus (y \to e^0 = 1)."
     },
     {
       "type": "mcq",
@@ -15053,17 +14966,17 @@
     },
     {
       "type": "mcq",
-      "difficulty": "easy",
       "domain": "Techniques of Integration",
-      "text": "\\(\\int\\tan x\\,dx=\\)",
+      "difficulty": "easy",
+      "text": "(intcot x,dx=)",
       "choices": [
-        "\\(-\\ln|\\cos x|+C\\)",
-        "\\(\\ln|\\cos x|+C\\)",
-        "\\(\\sec^2x+C\\)",
-        "\\(\\ln|\\sec x|+C\\)"
+        "(ln|sin x|+C)",
+        "(-ln|sin x|+C)",
+        "(-csc^2 x+C)",
+        "(ln|cos x|+C)"
       ],
       "answer": 0,
-      "sol": "\\(-\\ln|\\cos x|=\\ln|\\sec x|\\); answer is \\(-\\ln|\\cos x|+C\\)."
+      "sol": "(int \frac{cos x}{sin x}dx = ln|sin x|+C)."
     },
     {
       "type": "mcq",
@@ -15081,17 +14994,17 @@
     },
     {
       "type": "mcq",
-      "difficulty": "easy",
       "domain": "Techniques of Integration",
-      "text": "\\(\\int\\frac{1}{\\sqrt{1-x^2}}\\,dx=\\)",
+      "difficulty": "easy",
+      "text": "(int\frac{1}{|x|sqrt{x^2-1}},dx=) (for (|x|>1))",
       "choices": [
-        "\\(\\arctan x+C\\)",
-        "\\(\\arccos x+C\\)",
-        "\\(\\arcsin x+C\\)",
-        "\\(\\sec^{-1}x+C\\)"
+        "(operatorname{arcsec}|x|+C)",
+        "(arcsin x+C)",
+        "(operatorname{arccsc}|x|+C)",
+        "(\frac{1}{2}ln|x^2-1|+C)"
       ],
-      "answer": 2,
-      "sol": "Standard arcsin formula."
+      "answer": 0,
+      "sol": "Standard derivative: (\frac{d}{dx}[operatorname{arcsec}|x|] = \frac{1}{|x|sqrt{x^2-1}})."
     },
     {
       "type": "mcq",
@@ -15179,17 +15092,17 @@
     },
     {
       "type": "mcq",
-      "difficulty": "easy",
       "domain": "Techniques of Integration",
-      "text": "\\(\\int\\sec^2x\\,dx=\\)",
+      "difficulty": "easy",
+      "text": "(intcsc^2 x,dx=)",
       "choices": [
-        "\\(\\sec x\\tan x+C\\)",
-        "\\(\\tan x+C\\)",
-        "\\(\\sec^2x/2+C\\)",
-        "\\(2\\sec x\\tan x+C\\)"
+        "(-cot x+C)",
+        "(cot x+C)",
+        "(-csc xcot x+C)",
+        "(\tan x+C)"
       ],
-      "answer": 1,
-      "sol": "Derivative of \\(\\tan x\\) is \\(\\sec^2x\\)."
+      "answer": 0,
+      "sol": "(\frac{d}{dx}[-cot x] = csc^2 x)."
     },
     {
       "type": "mcq",
@@ -15305,17 +15218,17 @@
     },
     {
       "type": "mcq",
-      "difficulty": "easy",
       "domain": "Techniques of Integration",
-      "text": "\\(\\int_0^1 xe^{-x^2}\\,dx=\\)",
+      "difficulty": "easy",
+      "text": "Evaluate (int_0^1 x^2 e^{-x^3},dx).",
       "choices": [
-        "\\(1/2\\)",
-        "\\(1-e^{-1}\\)",
-        "\\(\\frac{1-e^{-1}}{2}\\)",
-        "\\(e^{-1}\\)"
+        "(\frac{1-e^{-1}}{3})",
+        "(\frac{1-e^{-1}}{2})",
+        "(\frac{1}{3})",
+        "(e^{-1})"
       ],
-      "answer": 2,
-      "sol": "\\(u=-x^2\\): \\([-e^{-x^2}/2]_0^1=(1-e^{-1})/2\\)."
+      "answer": 0,
+      "sol": "Let (u = x^3), (du = 3x^2 dx). (int_0^1 \frac{1}{3}e^{-u}du = left[-\frac{1}{3}e^{-u}\right]_0^1 = \frac{1-e^{-1}}{3})."
     },
     {
       "type": "mcq",
@@ -15347,17 +15260,17 @@
     },
     {
       "type": "mcq",
-      "difficulty": "easy",
       "domain": "Techniques of Integration",
-      "text": "\\(\\int\\sec x\\,dx=\\)",
+      "difficulty": "easy",
+      "text": "(intcsc x,dx=)",
       "choices": [
-        "\\(\\tan x+C\\)",
-        "\\(\\ln|\\sec x+\\tan x|+C\\)",
-        "\\(\\sec x\\tan x+C\\)",
-        "\\(\\ln|\\cos x|+C\\)"
+        "(ln|csc x - cot x|+C)",
+        "(ln|sec x + \tan x|+C)",
+        "(-cot x+C)",
+        "(ln|sin x|+C)"
       ],
-      "answer": 1,
-      "sol": "Standard result."
+      "answer": 0,
+      "sol": "(intcsc x,dx = ln|csc x - cot x|+C)."
     },
     {
       "type": "mcq",
@@ -15697,17 +15610,17 @@
     },
     {
       "type": "mcq",
-      "difficulty": "medium",
       "domain": "Techniques of Integration",
-      "text": "Evaluate \\( \\displaystyle \\int\\limits_{1}^{e} \\frac{\\ln{\\left(x \\right)}^{2}}{x}\\, dx \\).",
+      "difficulty": "medium",
+      "text": "Evaluate ( displaystyle intlimits_{1}^{e} \frac{ln{left(x \right)}^{3}}{x}, dx ).",
       "choices": [
-        "\\( \\frac{1}{3} \\)",
-        "\\( \\frac{2}{3} \\)",
-        "\\( \\frac{4}{3} \\)",
-        "\\( \\frac{1}{6} \\)"
+        "( \frac{1}{4} )",
+        "( \frac{1}{3} )",
+        "( \frac{1}{2} )",
+        "( 1 )"
       ],
       "answer": 0,
-      "sol": "Substitute \\( u=\\ln{\\left(x \\right)} \\), change the limits, and integrate: \\( \\frac{1}{3} \\)."
+      "sol": "Let (u = ln x), (du = dx/x). (int_0^1 u^3 du = [u^4/4]_0^1 = 1/4)."
     },
     {
       "type": "mcq",
@@ -16579,17 +16492,17 @@
     },
     {
       "type": "mcq",
-      "difficulty": "hard",
       "domain": "Techniques of Integration",
-      "text": "Evaluate \\( \\displaystyle \\int\\limits_{0}^{2} x^{3} e^{3 x}\\, dx \\).",
+      "difficulty": "hard",
+      "text": "Evaluate ( displaystyle intlimits_{0}^{1} x^{2} e^{2 x}, dx ).",
       "choices": [
-        "\\( \\frac{2}{27} + \\frac{46 e^{6}}{27} \\)",
-        "\\( \\frac{8 e^{6}}{3} \\)",
-        "\\( \\frac{2}{27} + \\frac{73 e^{6}}{27} \\)",
-        "\\( - \\frac{25}{27} + \\frac{46 e^{6}}{27} \\)"
+        "( \frac{e^{2}-1}{4} )",
+        "( \frac{e^{2}+1}{4} )",
+        "( \frac{e^{2}-1}{2} )",
+        "( e^2 - 1 )"
       ],
       "answer": 0,
-      "sol": "Integrate by parts 3 time(s) (or use the tabular method) with \\( u=x^{3} \\) and \\( dv=e^{3 x}\\,dx \\). Evaluating from 0 to 2 gives \\( \\frac{2}{27} + \\frac{46 e^{6}}{27} \\)."
+      "sol": "By integration by parts twice: (left[left(\frac{x^2}{2} - \frac{x}{2} + \frac{1}{4}\right)e^{2x}\right]_0^1 = \frac{1}{4}e^2 - \frac{1}{4} = \frac{e^2-1}{4})."
     },
     {
       "type": "mcq",
@@ -16649,17 +16562,17 @@
     },
     {
       "type": "mcq",
-      "difficulty": "hard",
       "domain": "Techniques of Integration",
-      "text": "Evaluate \\( \\displaystyle \\int\\limits_{0}^{5} \\frac{1}{x^{2} + 25}\\, dx \\).",
+      "difficulty": "hard",
+      "text": "Evaluate ( displaystyle intlimits_{0}^{3} \frac{1}{x^{2} + 9}, dx ).",
       "choices": [
-        "\\( \\frac{\\pi}{20} \\)",
-        "\\( \\frac{\\pi}{10} \\)",
-        "\\( \\frac{\\pi}{100} \\)",
-        "\\( \\frac{\\pi}{4} \\)"
+        "( \frac{pi}{12} )",
+        "( \frac{pi}{6} )",
+        "( \frac{pi}{36} )",
+        "( \frac{pi}{4} )"
       ],
       "answer": 0,
-      "sol": "Use a trigonometric substitution (\\( x=5\\tan\\theta \\)). Converting the limits and integrating gives \\( \\frac{\\pi}{20} \\)."
+      "sol": "(left[\frac{1}{3}arctan(x/3)\right]_0^3 = \frac{1}{3}arctan(1) = \frac{1}{3}left(\frac{pi}{4}\right) = \frac{pi}{12})."
     },
     {
       "type": "mcq",
@@ -16943,17 +16856,17 @@
     },
     {
       "type": "mcq",
-      "difficulty": "hard",
       "domain": "Techniques of Integration",
-      "text": "Evaluate \\( \\displaystyle \\int\\limits_{0}^{1} x e^{x}\\, dx \\).",
+      "difficulty": "hard",
+      "text": "Evaluate ( displaystyle intlimits_{0}^{1} x^{2} e^{x}, dx ).",
       "choices": [
-        "\\( e \\)",
-        "\\( 1 \\)",
-        "\\( 1 + e \\)",
-        "\\( 0 \\)"
+        "( e - 2 )",
+        "( e - 1 )",
+        "( 2e - 1 )",
+        "( 1 )"
       ],
-      "answer": 1,
-      "sol": "Integrate by parts 1 time(s) (or use the tabular method) with \\( u=x \\) and \\( dv=e^{x}\\,dx \\). Evaluating from 0 to 1 gives \\( 1 \\)."
+      "answer": 0,
+      "sol": "(left[(x^2 - 2x + 2)e^x\right]_0^1 = e - 2)."
     },
     {
       "type": "mcq",
@@ -17923,17 +17836,17 @@
     },
     {
       "type": "mcq",
-      "difficulty": "medium",
       "domain": "Applications of Integration",
-      "text": "Area enclosed by cardioid \\(r=1+\\cos\\theta\\):",
+      "difficulty": "medium",
+      "text": "Find the total area enclosed by the cardioid (r = 2(1 - cos\theta)).",
       "choices": [
-        "\\(\\pi/2\\)",
-        "\\(\\pi\\)",
-        "\\(2\\pi\\)",
-        "\\(3\\pi/2\\)"
+        "(6pi)",
+        "(3pi)",
+        "(4pi)",
+        "(8pi)"
       ],
-      "answer": 3,
-      "sol": "\\(A=\\frac{1}{2}\\int_0^{2\\pi}(1+\\cos\\theta)^2d\\theta=3\\pi/2\\)."
+      "answer": 0,
+      "sol": "(A = \frac{1}{2}int_0^{2pi} 4(1 - 2cos\theta + cos^2\theta)d\theta = 2(2pi + pi) = 6pi)."
     },
     {
       "type": "mcq",
@@ -23711,17 +23624,17 @@
     },
     {
       "type": "mcq",
-      "difficulty": "easy",
       "domain": "Sequences and Series",
-      "text": "The series \\(\\sum_{n=1}^\\infty(-1)^n/n\\) converges by:",
+      "difficulty": "easy",
+      "text": "The series (sum_{n=1}^infty \frac{1}{n^2+1}) converges by:",
       "choices": [
-        "comparison test",
-        "geometric series",
+        "direct comparison with (sum 1/n^2)",
         "alternating series test",
-        "ratio test"
+        "ratio test with limit > 1",
+        "divergence test"
       ],
-      "answer": 2,
-      "sol": "Alternating series (Leibniz) test."
+      "answer": 0,
+      "sol": "Since (\frac{1}{n^2+1} < \frac{1}{n^2}) for all (n ge 1) and (sum \frac{1}{n^2}) is a convergent p-series ((p=2>1)), the series converges by direct comparison."
     },
     {
       "type": "mcq",
@@ -26735,17 +26648,17 @@
     },
     {
       "type": "mcq",
-      "difficulty": "hard",
       "domain": "Convergence Tests and Power Series",
-      "text": "Find the coefficient of \\( x^{4} \\) in the Maclaurin series of \\( f{\\left(x \\right)} = x \\arctan{\\left(x \\right)} \\).",
+      "difficulty": "hard",
+      "text": "Find the coefficient of ( x^{3} ) in the Maclaurin series of ( f(x) = \frac{x}{1+x^2} ).",
       "choices": [
-        "\\( -8 \\)",
-        "\\( - \\frac{1}{3} \\)",
-        "\\( 0 \\)",
-        "\\( \\frac{1}{3} \\)"
+        "( -1 )",
+        "( 1 )",
+        "( 0 )",
+        "( -\frac{1}{3} )"
       ],
-      "answer": 1,
-      "sol": "Multiply/compose known series and collect terms up to \\( x^{4} \\): \\( f(x)=x^{2} - \\frac{1}{3} x^{4}+\\cdots \\). The coefficient is \\( - \\frac{1}{3} \\)."
+      "answer": 0,
+      "sol": "Since (\frac{1}{1+u} = 1 - u + u^2 - dots), for (u = x^2) we have (\frac{x}{1+x^2} = x(1 - x^2 + x^4 - dots) = x - x^3 + x^5 - dots). The coefficient of (x^3) is (-1)."
     },
     {
       "type": "mcq",
@@ -29295,41 +29208,7 @@
         "\\(1\\)"
       ],
       "answer": 3,
-      "sol": "\\(d(xy)=y\\,dx+x\\,dy\\Rightarrow\\int_C=xy|_{(0,0)}^{(1,1)}=1\\).",
-      "figure": {
-        "type": "fn",
-        "xrange": [
-          -2,
-          3
-        ],
-        "yrange": [
-          -2,
-          3
-        ],
-        "fns": [
-          {
-            "fn": "x + 0",
-            "label": "y = x + 0",
-            "color": "#1E3A6E"
-          }
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": 0,
-            "label": "(0,0)",
-            "color": "#C8902A"
-          },
-          {
-            "x": 1,
-            "y": 1,
-            "label": "(1,1)",
-            "color": "#C8902A"
-          }
-        ],
-        "w": 260,
-        "h": 200
-      }
+      "sol": "\\(d(xy)=y\\,dx+x\\,dy\\Rightarrow\\int_C=xy|_{(0,0)}^{(1,1)}=1\\)."
     },
     {
       "type": "mcq",
@@ -39210,35 +39089,7 @@
         "-12"
       ],
       "answer": 1,
-      "sol": "Antiderivative \\(x^{2}+x\\). By FTC: \\(x^{2}+x\\big|_{0}^{3}=12\\).",
-      "figure": {
-        "type": "fn",
-        "xrange": [
-          -1,
-          5
-        ],
-        "yrange": [
-          -1,
-          10
-        ],
-        "fns": [
-          {
-            "fn": "2*x",
-            "label": "y = 2x",
-            "color": "#1E3A6E"
-          }
-        ],
-        "shade": [
-          {
-            "fn": "2*x",
-            "x1": 0,
-            "x2": 3,
-            "color": "rgba(30,58,110,0.18)"
-          }
-        ],
-        "w": 260,
-        "h": 200
-      }
+      "sol": "Antiderivative \\(x^{2}+x\\). By FTC: \\(x^{2}+x\\big|_{0}^{3}=12\\)."
     },
     {
       "type": "mcq",
@@ -39378,35 +39229,7 @@
         "6"
       ],
       "answer": 2,
-      "sol": "Antiderivative \\(x^{2}\\). By FTC: \\(x^{2}\\big|_{1}^{3}=8\\).",
-      "figure": {
-        "type": "fn",
-        "xrange": [
-          0,
-          5
-        ],
-        "yrange": [
-          -1,
-          10
-        ],
-        "fns": [
-          {
-            "fn": "2*x",
-            "label": "y = 2x",
-            "color": "#1E3A6E"
-          }
-        ],
-        "shade": [
-          {
-            "fn": "2*x",
-            "x1": 1,
-            "x2": 3,
-            "color": "rgba(30,58,110,0.18)"
-          }
-        ],
-        "w": 260,
-        "h": 200
-      }
+      "sol": "Antiderivative \\(x^{2}\\). By FTC: \\(x^{2}\\big|_{1}^{3}=8\\)."
     },
     {
       "type": "mcq",
@@ -39700,35 +39523,7 @@
         "18"
       ],
       "answer": 1,
-      "sol": "Antiderivative \\(x^{2}-x\\). By FTC: \\(x^{2}-x\\big|_{0}^{5}=20\\).",
-      "figure": {
-        "type": "fn",
-        "xrange": [
-          -1,
-          7
-        ],
-        "yrange": [
-          -1,
-          26
-        ],
-        "fns": [
-          {
-            "fn": "2*x",
-            "label": "y = 2x",
-            "color": "#1E3A6E"
-          }
-        ],
-        "shade": [
-          {
-            "fn": "2*x",
-            "x1": 0,
-            "x2": 5,
-            "color": "rgba(30,58,110,0.18)"
-          }
-        ],
-        "w": 260,
-        "h": 200
-      }
+      "sol": "Antiderivative \\(x^{2}-x\\). By FTC: \\(x^{2}-x\\big|_{0}^{5}=20\\)."
     },
     {
       "type": "mcq",
@@ -41198,35 +40993,7 @@
         "(-\\infty,1]"
       ],
       "answer": 1,
-      "sol": "Need \\(x-1\\ge0\\Rightarrow x\\ge1\\).",
-      "figure": {
-        "type": "fn",
-        "xrange": [
-          0,
-          10
-        ],
-        "yrange": [
-          -1,
-          5
-        ],
-        "fns": [
-          {
-            "fn": "sqrt(x - 1)",
-            "label": "f(x)",
-            "color": "#1E3A6E"
-          }
-        ],
-        "points": [
-          {
-            "x": 1,
-            "y": 0,
-            "label": "(1,0)",
-            "color": "#C8902A"
-          }
-        ],
-        "w": 260,
-        "h": 200
-      }
+      "sol": "Need \\(x-1\\ge0\\Rightarrow x\\ge1\\)."
     },
     {
       "type": "mcq",
@@ -41240,35 +41007,7 @@
         "(-\\infty,2]"
       ],
       "answer": 1,
-      "sol": "Need \\(x-2\\ge0\\Rightarrow x\\ge2\\).",
-      "figure": {
-        "type": "fn",
-        "xrange": [
-          1,
-          11
-        ],
-        "yrange": [
-          -1,
-          5
-        ],
-        "fns": [
-          {
-            "fn": "sqrt(x - 2)",
-            "label": "f(x)",
-            "color": "#1E3A6E"
-          }
-        ],
-        "points": [
-          {
-            "x": 2,
-            "y": 0,
-            "label": "(2,0)",
-            "color": "#C8902A"
-          }
-        ],
-        "w": 260,
-        "h": 200
-      }
+      "sol": "Need \\(x-2\\ge0\\Rightarrow x\\ge2\\)."
     },
     {
       "type": "mcq",
@@ -41282,35 +41021,7 @@
         "(-\\infty,\\infty)"
       ],
       "answer": 0,
-      "sol": "Need \\(x-3\\ge0\\Rightarrow x\\ge3\\).",
-      "figure": {
-        "type": "fn",
-        "xrange": [
-          2,
-          12
-        ],
-        "yrange": [
-          -1,
-          5
-        ],
-        "fns": [
-          {
-            "fn": "sqrt(x - 3)",
-            "label": "f(x)",
-            "color": "#1E3A6E"
-          }
-        ],
-        "points": [
-          {
-            "x": 3,
-            "y": 0,
-            "label": "(3,0)",
-            "color": "#C8902A"
-          }
-        ],
-        "w": 260,
-        "h": 200
-      }
+      "sol": "Need \\(x-3\\ge0\\Rightarrow x\\ge3\\)."
     },
     {
       "type": "mcq",
@@ -41338,35 +41049,7 @@
         "(-\\infty,5]"
       ],
       "answer": 2,
-      "sol": "Need \\(x-5\\ge0\\Rightarrow x\\ge5\\).",
-      "figure": {
-        "type": "fn",
-        "xrange": [
-          4,
-          14
-        ],
-        "yrange": [
-          -1,
-          5
-        ],
-        "fns": [
-          {
-            "fn": "sqrt(x - 5)",
-            "label": "f(x)",
-            "color": "#1E3A6E"
-          }
-        ],
-        "points": [
-          {
-            "x": 5,
-            "y": 0,
-            "label": "(5,0)",
-            "color": "#C8902A"
-          }
-        ],
-        "w": 260,
-        "h": 200
-      }
+      "sol": "Need \\(x-5\\ge0\\Rightarrow x\\ge5\\)."
     },
     {
       "type": "mcq",
@@ -41380,35 +41063,7 @@
         "(6,\\infty)"
       ],
       "answer": 1,
-      "sol": "Need \\(x-6\\ge0\\Rightarrow x\\ge6\\).",
-      "figure": {
-        "type": "fn",
-        "xrange": [
-          5,
-          15
-        ],
-        "yrange": [
-          -1,
-          5
-        ],
-        "fns": [
-          {
-            "fn": "sqrt(x - 6)",
-            "label": "f(x)",
-            "color": "#1E3A6E"
-          }
-        ],
-        "points": [
-          {
-            "x": 6,
-            "y": 0,
-            "label": "(6,0)",
-            "color": "#C8902A"
-          }
-        ],
-        "w": 260,
-        "h": 200
-      }
+      "sol": "Need \\(x-6\\ge0\\Rightarrow x\\ge6\\)."
     },
     {
       "type": "mcq",
@@ -41422,35 +41077,7 @@
         "(-\\infty,\\infty)"
       ],
       "answer": 2,
-      "sol": "Need \\(x-7\\ge0\\Rightarrow x\\ge7\\).",
-      "figure": {
-        "type": "fn",
-        "xrange": [
-          6,
-          16
-        ],
-        "yrange": [
-          -1,
-          5
-        ],
-        "fns": [
-          {
-            "fn": "sqrt(x - 7)",
-            "label": "f(x)",
-            "color": "#1E3A6E"
-          }
-        ],
-        "points": [
-          {
-            "x": 7,
-            "y": 0,
-            "label": "(7,0)",
-            "color": "#C8902A"
-          }
-        ],
-        "w": 260,
-        "h": 200
-      }
+      "sol": "Need \\(x-7\\ge0\\Rightarrow x\\ge7\\)."
     },
     {
       "type": "mcq",

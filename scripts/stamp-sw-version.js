@@ -13,7 +13,7 @@ const path = require('path');
 
 /* Must cover everything sw.js's isShellAsset() matches: the home page, the listed root files,
    and every file under css/ and js/. */
-const ROOT_FILES = ['index.html', 'manifest.json', 'clipsat-logo.jpg', 'favicon.png', 'icon-192.png'];
+const ROOT_FILES = ['index.html', 'manifest.json', 'clipsat-logo.jpg', 'favicon.png', 'icon-192.png', 'icon-512.png', 'og-image.png', 'clipsat-mark.png', 'clipsat-mark-header.png'];
 const ASSET_DIRS = ['css', 'js'];
 const VERSION_RE = /const SW_VERSION = '([^'-]+)(?:-[0-9a-f]+)?';/;
 

@@ -40,19 +40,146 @@
     var s = n<1.5?1 : n<3?2 : n<7?5 : 10; return s*mag;
   }
 
+  /* expand a view so one x-unit and one y-unit cover the same pixels
+     (circles stay round, right angles stay square, y = x stays at 45°) */
+  function _fitView(xmin,xmax,ymin,ymax,w,h,pad){
+    pad=pad||{l:38,r:14,t:14,b:30};
+    var pw=w-pad.l-pad.r, ph=h-pad.t-pad.b;
+    if(pw<=0||ph<=0) return {xmin:xmin,xmax:xmax,ymin:ymin,ymax:ymax,square:true};
+    var sx=(xmax-xmin)/pw, sy=(ymax-ymin)/ph, s=Math.max(sx,sy);
+    var cx=(xmin+xmax)/2, cy=(ymin+ymax)/2;
+    return {xmin:cx-s*pw/2, xmax:cx+s*pw/2, ymin:cy-s*ph/2, ymax:cy+s*ph/2, square:true};
+  }
+
+  var SQUARE_CANVAS_IDS = {
+    'geoParCanvas': true,
+    'geoTriCanvas': true,
+    'geoPythCanvas': true,
+    'geoSectorCanvas': true,
+    'geoDistCanvas': true,
+    'geoDilateCanvas': true,
+    'estPythCanvas': true,
+    'estTrigCanvas': true,
+    'est2UcCanvas': true,
+    'est2CircCanvas': true,
+    'est2l2TransCanvas': true,
+    'est2l2VecAngCanvas': true,
+    'ucCanvas': true,
+    'pcConicCanvas': true,
+    'pcSsaCanvas': true,
+    'pcLimaconCanvas': true,
+    'pcProjCanvas': true,
+    'circleCanvas': true,
+    'trigCanvas': true,
+    'igTransCanvas': true,
+    'a2TrigCanvas': true,
+    'conicCanvas': true,
+    'laVecCanvas': true,
+    'laMatCanvas': true,
+    'laDetCanvas': true,
+    'laSpanCanvas': true,
+    'laEigCanvas': true,
+    'ibslTriCanvas': true,
+    'ibslVecAngCanvas': true,
+    'ibslVorCanvas': true,
+    'ibhlArgandCanvas': true,
+    'ibhlDeMoivreCanvas': true,
+    'act2LawCanvas': true,
+    'act2IncCanvas': true,
+    'act2l2DetCanvas': true,
+    'act2l2TrigCanvas': true,
+    'act2l2ComplexCanvas': true,
+    'a2VecCanvas': true,
+    'amCircularCanvas': true,
+    'aiCosineCanvas': true,
+    'mvcVFCanvas': true,
+    'mvcGradCanvas': true,
+    'mvcCritCanvas': true,
+    'odeSysCanvas': true,
+    'vecCanvas': true,
+    'fieldCanvas': true,
+    'bcPolarCanvas': true,
+    'lineCanvas': true,
+    'sysCanvas': true,
+    'satLineCanvas': true,
+    'actLineCanvas': true,
+    'asLineCanvas': true,
+    'tahTransCanvas': true
+  };
+
   /* ---------- Plot helper (works in CSS pixels) ---------- */
   function Plot(ctx,w,h,view,pad){
-    this.ctx=ctx; this.w=w; this.h=h; this.v=view;
+    this.ctx=ctx; this.w=w; this.h=h;
     this.pad=pad||{l:38,r:14,t:14,b:30};
+    this.origView=view;
+    var canvasId = (ctx && ctx.canvas && ctx.canvas.id) || '';
+    var isSquareReq = (view && (view.square || view.isometric)) ||
+                      (this.pad && (this.pad.square || this.pad.isometric)) ||
+                      (canvasId && SQUARE_CANVAS_IDS[canvasId]);
+    if(view && isSquareReq){
+      this.square = true;
+      var pw = this.w - this.pad.l - this.pad.r;
+      var ph = this.h - this.pad.t - this.pad.b;
+      if(pw > 0 && ph > 0){
+        var xmin = (view.baseXmin != null) ? view.baseXmin : view.xmin;
+        var xmax = (view.baseXmax != null) ? view.baseXmax : view.xmax;
+        var ymin = (view.baseYmin != null) ? view.baseYmin : view.ymin;
+        var ymax = (view.baseYmax != null) ? view.baseYmax : view.ymax;
+        var sx = (xmax - xmin) / pw;
+        var sy = (ymax - ymin) / ph;
+        var s = Math.max(sx, sy);
+        var cx = (xmin + xmax) / 2;
+        var cy = (ymin + ymax) / 2;
+        this.v = {
+          xmin: cx - s * pw / 2,
+          xmax: cx + s * pw / 2,
+          ymin: cy - s * ph / 2,
+          ymax: cy + s * ph / 2,
+          square: true,
+          step: view.step,
+          baseXmin: xmin,
+          baseXmax: xmax,
+          baseYmin: ymin,
+          baseYmax: ymax
+        };
+      } else {
+        this.v = Object.assign({}, view, {square: true});
+      }
+    } else {
+      this.v = view;
+    }
   }
   Plot.prototype.X=function(x){ var p=this.pad; return p.l+(x-this.v.xmin)/(this.v.xmax-this.v.xmin)*(this.w-p.l-p.r); };
   Plot.prototype.Y=function(y){ var p=this.pad; return this.h-p.b-(y-this.v.ymin)/(this.v.ymax-this.v.ymin)*(this.h-p.t-p.b); };
   Plot.prototype.invX=function(px){ var p=this.pad, span=this.w-p.l-p.r; return this.v.xmin + ((px - p.l)/span) * (this.v.xmax - this.v.xmin); };
   Plot.prototype.invY=function(py){ var p=this.pad, span=this.h-p.t-p.b; return this.v.ymin + ((this.h - p.b - py)/span) * (this.v.ymax - this.v.ymin); };
+  Plot.prototype.x=Plot.prototype.X;
+  Plot.prototype.y=Plot.prototype.Y;
+  Plot.prototype.arrow=function(x1,y1,x2,y2,color,w){ arrow(this.ctx, this.X(x1), this.Y(y1), this.X(x2), this.Y(y2), color, w); };
+  Plot.prototype.text=function(str,x,y,opts){
+    opts = opts || {};
+    var c = this.ctx; c.save();
+    c.font = (opts.bold?'bold ':'') + (opts.size||12) + 'px ui-sans-serif, system-ui, sans-serif';
+    c.fillStyle = opts.color || INK;
+    c.textAlign = opts.align || 'left';
+    c.textBaseline = opts.baseline || 'middle';
+    c.fillText(str, this.X(x), this.Y(y));
+    c.restore();
+  };
   Plot.prototype.clear=function(){ this.ctx.clearRect(0,0,this.w,this.h); };
   Plot.prototype.grid=function(){
     var c=this.ctx,v=this.v,p=this.pad;
-    var sx=niceStep(v.xmax-v.xmin,7), sy=niceStep(v.ymax-v.ymin,5);
+    var sx, sy;
+    if(this.square || (v && v.square)){
+      // Square lattice: step must be identical in x and y so grid cells are perfect squares
+      var spanMin = Math.min(v.xmax - v.xmin, v.ymax - v.ymin);
+      var s = (v && v.step) ? v.step : niceStep(spanMin, 6);
+      sx = s;
+      sy = s;
+    } else {
+      sx = niceStep(v.xmax-v.xmin,7);
+      sy = niceStep(v.ymax-v.ymin,5);
+    }
     c.lineWidth=1; c.font=FONT; c.strokeStyle=GRID; c.fillStyle=MUTED; c.textBaseline='middle';
     var x0=Math.ceil(v.xmin/sx)*sx;
     for(var x=x0;x<=v.xmax+1e-9;x+=sx){ var px=this.X(x);
@@ -479,7 +606,7 @@
          it and prints as a second, plain-text copy of every formula right
          next to the properly-styled one. See printCQ() for the same fix. */
       '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous">'+
-      '<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"]],displayMath:[["\\\\[","\\\\]"]]},startup:{typeset:true}};<\/script>'+
+      '<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"],["$","$"]],displayMath:[["\\\\[","\\\\]"],["$$","$$"]]},startup:{typeset:true}};<\/script>'+
       '<script async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js"><\/script>'+
       '<style>'+CSS+'<\/style>'+
       '<\/head><body dir="'+dir+'">'+

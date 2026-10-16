@@ -197,7 +197,7 @@ function _genTestOriginal(btn, optTrackId){
       if(pick.length<n && pool.length>pick.length){
         for(var b=0;b<pool.length && pick.length<n;b++){
           var qb=pool[b], kb=(qb.text||qb.q||'').trim();
-          if(!seenStems.has(kb)){
+          if(!seenStems.has(kb) && (!tracker || tracker.add(qb))){
             seenStems.add(kb);
             pick.push(qb);
           }

@@ -16,7 +16,7 @@
   (function(){
     var canvas=document.getElementById('satLineCanvas'); if(!canvas) return;
     var m=1, b=1, sm=document.getElementById('satM'), sb=document.getElementById('satB');
-    var view={xmin:-6,xmax:6,ymin:-7,ymax:7};
+    var view={xmin:-6,xmax:6,ymin:-7,ymax:7,square:true,step:1};
     var dataBtn=document.getElementById('satLineDataBtn'), dataPanel=document.getElementById('satLineDataPanel'),
         dataDesc=document.getElementById('satLineDataDesc'), dataRows=document.getElementById('satLineDataRows');
     wireDataToggle(dataBtn,dataPanel);

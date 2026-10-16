@@ -204,7 +204,7 @@
      classification (node/saddle/spiral/center). */
   (function(){
     var canvas=document.getElementById('odeSysCanvas'); if(!canvas) return;
-    var view={xmin:-3,xmax:3,ymin:-3,ymax:3};
+    var view={xmin:-3,xmax:3,ymin:-3,ymax:3,square:true};
     var a=1, b=1, cM=4, d=-2;
     var dataBtn=document.getElementById('odeSysDataBtn'), dataPanel=document.getElementById('odeSysDataPanel'),
         dataDesc=document.getElementById('odeSysDataDesc'), dataRows=document.getElementById('odeSysDataRows');

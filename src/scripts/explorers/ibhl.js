@@ -553,7 +553,7 @@
      (drawn as an arc from the positive real axis). */
   (function(){
     var canvas=document.getElementById('ibhlArgandCanvas'); if(!canvas) return;
-    var view={xmin:-6,xmax:6,ymin:-6,ymax:6};
+    var view={xmin:-6,xmax:6,ymin:-6,ymax:6,square:true};
     var a=3, b=4;
     var dataBtn=document.getElementById('ibhlArgandDataBtn'), dataPanel=document.getElementById('ibhlArgandDataPanel'),
         dataDesc=document.getElementById('ibhlArgandDataDesc'), dataRows=document.getElementById('ibhlArgandDataRows');
@@ -571,6 +571,7 @@
     function draw(ctx,w,h){
       var extent=Math.max(6, Math.abs(a)*1.3, Math.abs(b)*1.3);
       view.xmin=-extent; view.xmax=extent; view.ymin=-extent; view.ymax=extent;
+      view.square=true;
       var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
       var c=P.ctx;
       var mod=Math.sqrt(a*a+b*b);
@@ -613,7 +614,7 @@
      since large r^n would blow the view up for n>2 or 3). */
   (function(){
     var canvas=document.getElementById('ibhlDeMoivreCanvas'); if(!canvas) return;
-    var view={xmin:-1.6,xmax:1.6,ymin:-1.15,ymax:1.15};
+    var view={xmin:-1.6,xmax:1.6,ymin:-1.6,ymax:1.6,square:true};
     var thetaDeg=30, n=3, rMod=1;
     var dataBtn=document.getElementById('ibhlDMDataBtn'), dataPanel=document.getElementById('ibhlDMDataPanel'),
         dataDesc=document.getElementById('ibhlDMDataDesc'), dataRows=document.getElementById('ibhlDMDataRows');
@@ -633,7 +634,8 @@
     function draw(ctx,w,h){
       var rn=Math.pow(rMod,n);
       var extent=Math.max(1.6, Math.abs(rn)*1.3, rMod*1.3);
-      view.xmin=-extent; view.xmax=extent; view.ymin=-extent*0.72; view.ymax=extent*0.72;
+      view.xmin=-extent; view.xmax=extent; view.ymin=-extent; view.ymax=extent;
+      view.square=true;
       var P=new Plot(ctx,w,h,view,{l:26,r:10,t:10,b:20}); P.clear();
       var c=P.ctx, N=120, i, a, px, py;
       c.beginPath();

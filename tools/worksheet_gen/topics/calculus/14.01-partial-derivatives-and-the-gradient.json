@@ -1,154 +1,158 @@
 {
   "track": "calculus",
   "num": "14.01",
+  "slug": "partial-derivatives-and-the-gradient",
   "title": "Partial Derivatives and the Gradient",
   "sections": [
     {
-      "heading": "First and second partial derivatives",
+      "heading": "Section 1: First-Order Partial Derivatives",
       "questions": [
         {
-          "q": "For $f(x,y) = x^3y^2 - 4xy + y$, find:",
-          "parts": ["$f_x$", "$f_y$", "$f_{xx}$", "$f_{xy}$"],
-          "cols": 2,
-          "answers": ["$= 3x^2y^2 - 4y$", "$= 2x^3y - 4x + 1$", "$= 6xy^2$", "$= 6x^2y - 4$"]
-        },
-        {
-          "q": "For $f(x,y) = e^{xy}\\sin(x+y)$, find $f_x$ using the product rule.",
-          "answer": "$f_x = ye^{xy}\\sin(x+y) + e^{xy}\\cos(x+y)$."
-        }
-      ]
-    },
-    {
-      "heading": "The gradient and directional derivatives",
-      "questions": [
-        {
-          "q": "Find the gradient $\\nabla f$ of $f(x,y) = x^2y + 3y^3$ at the point $(1, 2)$.",
-          "answer": "$\\nabla f = \\langle 2xy, x^2 + 9y^2 \\rangle$. At $(1,2)$: $\\nabla f(1,2) = \\langle 4, 37 \\rangle$."
-        },
-        {
-          "q": "Find the directional derivative of $f(x,y) = x^2 + y^2$ at $(1, 1)$ in the direction of $\\mathbf{v} = \\langle 3, 4 \\rangle$.",
-          "answer": "$\\nabla f = \\langle 2x, 2y \\rangle$, so $\\nabla f(1,1) = \\langle 2, 2 \\rangle$. Unit vector: $\\hat{\\mathbf{v}} = \\langle \\frac{3}{5}, \\frac{4}{5} \\rangle$. $D_{\\mathbf{v}}f = \\langle 2,2\\rangle\\cdot\\langle\\frac{3}{5},\\frac{4}{5}\\rangle = \\frac{6}{5}+\\frac{8}{5} = \\frac{14}{5}$."
-        }
-      ]
-    },
-    {
-      "heading": "Tangent planes",
-      "questions": [
-        {
-          "q": "Find the equation of the tangent plane to $z=f(x,y)=x^2+y^2$ at the point $(1,2,5)$, using $z-z_0=f_x(x_0,y_0)(x-x_0)+f_y(x_0,y_0)(y-y_0)$.",
-          "answer": "$f_x=2x$, $f_y=2y$: at $(1,2)$, $f_x=2$, $f_y=4$. Tangent plane: $z-5=2(x-1)+4(y-2)$, i.e. $z=2x+4y-5$."
-        },
-        {
-          "q": "Find the equation of the tangent plane to $z=xy$ at the point $(2,3,6)$.",
-          "answer": "$f_x=y$, $f_y=x$: at $(2,3)$, $f_x=3$, $f_y=2$. Tangent plane: $z-6=3(x-2)+2(y-3)$, i.e. $z=3x+2y-6$."
-        }
-      ]
-    },
-    {
-      "heading": "Critical points of multivariable functions",
-      "questions": [
-        {
-          "q": "Find the critical point(s) of $f(x,y)=x^2+y^2-4x+2y+5$ by setting $f_x=0$ and $f_y=0$.",
-          "answer": "$f_x=2x-4=0$ gives $x=2$; $f_y=2y+2=0$ gives $y=-1$. Critical point: $(2,-1)$."
-        },
-        {
-          "q": "Verify that the critical point found above is a minimum, using the second derivative test with $D=f_{xx}f_{yy}-(f_{xy})^2$.",
-          "answer": "$f_{xx}=2$, $f_{yy}=2$, $f_{xy}=0$: $D=2(2)-0=4>0$ and $f_{xx}=2>0$, so $(2,-1)$ is a local minimum."
-        }
-      ]
-    },
-    {
-      "heading": "The chain rule for multivariable functions",
-      "questions": [
-        {
-          "q": "Let $z=x^2y$, where $x=t^2$ and $y=t^3$. Use the multivariable chain rule $\\frac{dz}{dt}=\\frac{\\partial z}{\\partial x}\\frac{dx}{dt}+\\frac{\\partial z}{\\partial y}\\frac{dy}{dt}$ to find $\\frac{dz}{dt}$ at $t=1$.",
-          "answer": "$\\frac{\\partial z}{\\partial x}=2xy$, $\\frac{\\partial z}{\\partial y}=x^2$; $\\frac{dx}{dt}=2t$, $\\frac{dy}{dt}=3t^2$. At $t=1$: $x=1,y=1$. $\\frac{dz}{dt}=2(1)(1)(2)+1(3)=4+3=7$."
-        },
-        {
-          "q": "Let $w=x^2+y^2+z^2$, where $x=\\cos t$, $y=\\sin t$, $z=t$. Find $\\frac{dw}{dt}$ using the chain rule.",
-          "answer": "$\\frac{\\partial w}{\\partial x}=2x$, $\\frac{\\partial w}{\\partial y}=2y$, $\\frac{\\partial w}{\\partial z}=2z$; $\\frac{dx}{dt}=-\\sin t$, $\\frac{dy}{dt}=\\cos t$, $\\frac{dz}{dt}=1$. $\\frac{dw}{dt}=2x(-\\sin t)+2y\\cos t+2z = -2\\cos t\\sin t+2\\sin t\\cos t+2t = 2t$ (the first two terms cancel)."
-        }
-      ]
-    },
-    {
-      "heading": "Maximum rate of increase",
-      "questions": [
-        {
-          "q": "Find the direction in which $f(x,y)=x^2+xy$ increases most rapidly at the point $(1,2)$, and state the maximum rate of increase.",
-          "answer": "$\\nabla f = \\langle 2x+y, x \\rangle$; at $(1,2)$: $\\nabla f=\\langle4,1\\rangle$. Direction of steepest increase: $\\langle4,1\\rangle$ (or its unit vector). Maximum rate of increase: $|\\nabla f|=\\sqrt{16+1}=\\sqrt{17}$."
-        },
-        {
-          "q": "Find the direction of steepest descent for $f(x,y)=x^2+y^2$ at the point $(3,4)$.",
-          "answer": "$\\nabla f=\\langle2x,2y\\rangle$; at $(3,4)$: $\\langle6,8\\rangle$. Steepest descent is the opposite direction: $\\langle-6,-8\\rangle$ (pointing toward the origin, the minimum)."
-        }
-      ]
-    },
-    {
-      "heading": "Implicit partial differentiation",
-      "questions": [
-        {
-          "q": "For the surface $x^2+y^2+z^2=9$, find $\\frac{\\partial z}{\\partial x}$ by implicit differentiation (treating $y$ as constant).",
-          "answer": "$2x+2z\\frac{\\partial z}{\\partial x}=0$, so $\\frac{\\partial z}{\\partial x}=-\\frac{x}{z}$."
-        }
-      ]
-    },
-    {
-      "heading": "Classifying critical points with saddle points",
-      "questions": [
-        {
-          "q": "Find and classify the critical point(s) of $f(x,y)=x^2-y^2$, using the second derivative test.",
-          "answer": "$f_x=2x=0$, $f_y=-2y=0$ gives $(0,0)$. $f_{xx}=2$, $f_{yy}=-2$, $f_{xy}=0$: $D=(2)(-2)-0=-4<0$, so $(0,0)$ is a saddle point (neither a local max nor min)."
-        },
-        {
-          "q": "Find and classify the critical point(s) of $f(x,y)=x^3-3xy+y^3$.",
-          "answer": "$f_x=3x^2-3y=0$ gives $y=x^2$. $f_y=-3x+3y^2=0$ gives $x=y^2=x^4$, so $x^4-x=0$, $x(x^3-1)=0$: $x=0$ or $x=1$. Critical points $(0,0)$ and $(1,1)$. $f_{xx}=6x$, $f_{yy}=6y$, $f_{xy}=-3$. At $(0,0)$: $D=0-9=-9<0$: saddle point. At $(1,1)$: $D=(6)(6)-9=27>0$ and $f_{xx}=6>0$: local minimum."
-        }
-      ]
-    },
-    {
-      "heading": "An applied optimization problem",
-      "questions": [
-        {
-          "q": "A company's profit is modeled by $P(x,y)=100x+120y-x^2-2y^2-xy$, where $x$ and $y$ are units of two products. Find the production levels that maximize profit by setting $P_x=0$ and $P_y=0$.",
-          "answer": "$P_x=100-2x-y=0$; $P_y=120-4y-x=0$. From the first: $y=100-2x$. Substituting: $120-4(100-2x)-x=0$: $120-400+8x-x=0$: $7x=280$, $x=40$. Then $y=100-80=20$. Maximum profit at $(x,y)=(40,20)$."
-        }
-      ]
-    },
-    {
-      "heading": "Higher-order mixed partial derivatives",
-      "questions": [
-        {
-          "q": "For $f(x,y)=x^3y^2+\\sin(xy)$, find $f_{yx}$ and $f_{xy}$, and verify they are equal (as guaranteed by Clairaut's theorem for continuous mixed partials).",
-          "answer": "$f_x=3x^2y^2+y\\cos(xy)$: $f_{xy}=6x^2y+\\cos(xy)-xy\\sin(xy)$. $f_y=2x^3y+x\\cos(xy)$: $f_{yx}=6x^2y+\\cos(xy)-xy\\sin(xy)$. Both equal, confirming Clairaut's theorem."
-        }
-      ]
-    },
-    {
-      "heading": "Linear approximation in two variables",
-      "questions": [
-        {
-          "q": "Use the linear approximation $f(x,y)\\approx f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)$ to estimate $f(2.1,2.9)$ for $f(x,y)=x^2y$, using the point $(2,3)$.",
-          "answer": "$f(2,3)=12$. $f_x=2xy$: $f_x(2,3)=12$. $f_y=x^2$: $f_y(2,3)=4$. Estimate: $12+12(0.1)+4(-0.1)=12+1.2-0.4=12.8$."
-        },
-        {
-          "q": "The volume of a cylinder is $V(r,h)=\\pi r^2h$. A cylindrical can is manufactured with radius $r=3$ cm and height $h=10$ cm, but due to manufacturing tolerances, the radius might be off by as much as $0.05$ cm and the height by as much as $0.1$ cm. Use the total differential $dV=V_r\\,dr+V_h\\,dh$ to estimate the maximum possible error in the computed volume.",
-          "answer": "$V_r=2\\pi rh$: at $(3,10)$, $V_r=60\\pi$. $V_h=\\pi r^2$: at $(3,10)$, $V_h=9\\pi$. Maximum error estimate: $|dV|\\leq|V_r||dr|+|V_h||dh|=60\\pi(0.05)+9\\pi(0.1)=3\\pi+0.9\\pi=3.9\\pi\\approx12.25$ cm$^3$."
-        },
-        {
-          "q": "For $f(x,y)=x^2y-3xy^2+y^3$, find each of the following at the point $(1,-1)$:",
-          "parts": [
-            "$f_x(1,-1)$",
-            "$f_y(1,-1)$",
-            "The gradient vector $\\nabla f(1,-1)$",
-            "The directional derivative in the direction of $\\langle1,0\\rangle$"
+          "q": "Find $f_x$ and $f_y$ for $f(x, y) = 3x^2 y - 5x y^3 + 4x - 2y$.",
+          "choices": [
+            "$f_x = 6xy - 5y^3 + 4$, $f_y = 3x^2 - 15xy^2 - 2$",
+            "$f_x = 6xy - 5y^3$, $f_y = 3x^2 - 15xy^2$",
+            "$f_x = 6x - 5y^3 + 4$, $f_y = 3x^2 - 15y^2 - 2$",
+            "$f_x = 3x^2 - 15xy^2$, $f_y = 6xy - 5y^3$"
           ],
-          "cols": 1,
-          "answers": [
-            "$f_x=2xy-3y^2$: $f_x(1,-1)=2(1)(-1)-3(1)=-2-3=-5$.",
-            "$f_y=x^2-6xy+3y^2$: $f_y(1,-1)=1-6(1)(-1)+3(1)=1+6+3=10$.",
-            "$\\nabla f(1,-1)=\\langle-5,10\\rangle$.",
-            "$D_{\\langle1,0\\rangle}f=\\nabla f\\cdot\\langle1,0\\rangle=-5$ (since $\\langle1,0\\rangle$ is already a unit vector)."
-          ]
+          "correct": 0,
+          "answer": "Treat $y$ as constant: $f_x = 6xy - 5y^3 + 4$. Treat $x$ as constant: $f_y = 3x^2 - 15xy^2 - 2$."
+        },
+        {
+          "q": "Find $\\frac{\\partial z}{\\partial x}$ for $z = e^{x^2 y}$.",
+          "choices": [
+            "$2xy e^{x^2 y}$",
+            "$x^2 e^{x^2 y}$",
+            "$2x e^{x^2 y}$",
+            "$2xy e^{2xy}$"
+          ],
+          "correct": 0,
+          "answer": "By the chain rule: $\\frac{\\partial z}{\\partial x} = e^{x^2 y} \\frac{\\partial}{\\partial x}(x^2 y) = 2xy e^{x^2 y}$."
+        },
+        {
+          "q": "Find $f_y(1, 0)$ for $f(x, y) = \\ln(x^2 + y^2 + 1)$.",
+          "choices": [
+            "$0$",
+            "$1$",
+            "$2$",
+            "$1/2$"
+          ],
+          "correct": 0,
+          "answer": "$f_y = \\frac{2y}{x^2 + y^2 + 1}$. Evaluating at $(1, 0)$: $f_y(1, 0) = \\frac{0}{1 + 0 + 1} = 0$."
+        }
+      ]
+    },
+    {
+      "heading": "Section 2: Second-Order Partials and Clairaut's Theorem",
+      "questions": [
+        {
+          "q": "What does Clairaut's Theorem (equality of mixed partials) state for continuous second partial derivatives?",
+          "choices": [
+            "$f_{xy} = f_{yx}$",
+            "$f_{xx} = f_{yy}$",
+            "$f_{xy} = -f_{yx}$",
+            "$f_{xx} + f_{yy} = 0$"
+          ],
+          "correct": 0,
+          "answer": "If the mixed partial derivatives $f_{xy}$ and $f_{yx}$ are both continuous on an open set, they are equal: $f_{xy} = f_{yx}$."
+        },
+        {
+          "q": "Find $f_{xx}$ for $f(x, y) = x^4 y^2 - 2x^2 y$.",
+          "choices": [
+            "$12x^2 y^2 - 4y$",
+            "$4x^3 y^2 - 4xy$",
+            "$2x^4 - 0$",
+            "$12x^2 - 4$"
+          ],
+          "correct": 0,
+          "answer": "$f_x = 4x^3 y^2 - 4xy$. Differentiating with respect to $x$ again: $f_{xx} = 12x^2 y^2 - 4y$."
+        },
+        {
+          "q": "Verify whether $u(x, y) = e^x \\sin y$ satisfies Laplace's equation $u_{xx} + u_{yy} = 0$.",
+          "choices": [
+            "Yes, $u_{xx} + u_{yy} = e^x\\sin y - e^x\\sin y = 0$",
+            "No, $u_{xx} + u_{yy} = 2e^x\\sin y$",
+            "No, it equals $e^x\\cos y$",
+            "Only when $x = 0$"
+          ],
+          "correct": 0,
+          "answer": "$u_x = e^x\\sin y \\Rightarrow u_{xx} = e^x\\sin y$. $u_y = e^x\\cos y \\Rightarrow u_{yy} = -e^x\\sin y$. $u_{xx} + u_{yy} = 0$."
+        }
+      ]
+    },
+    {
+      "heading": "Section 3: The Gradient Vector and Directional Derivatives",
+      "questions": [
+        {
+          "q": "Find the gradient $\\nabla f(x, y)$ for $f(x, y) = x^2 y + 3y^2$ at the point $(2, 1)$.",
+          "choices": [
+            "$\\langle 4, 10 \\rangle$",
+            "$\\langle 4, 7 \\rangle$",
+            "$\\langle 2, 6 \\rangle$",
+            "$\\langle 10, 4 \\rangle$"
+          ],
+          "correct": 0,
+          "answer": "$\\nabla f = \\langle 2xy, x^2 + 6y \\rangle$. At $(2, 1)$: $\\nabla f(2, 1) = \\langle 2(2)(1), 4 + 6(1) \\rangle = \\langle 4, 10 \\rangle$."
+        },
+        {
+          "q": "In which direction does a differentiable function $f$ increase most rapidly at a point $P$?",
+          "choices": [
+            "In the direction of the gradient vector $\\nabla f(P)$",
+            "Opposite to $\\nabla f(P)$",
+            "Orthogonal to $\\nabla f(P)$",
+            "Along the level curve"
+          ],
+          "correct": 0,
+          "answer": "The directional derivative $D_{\\mathbf{u}} f = \\nabla f \\cdot \\mathbf{u} = \\|\\nabla f\\|\\cos\\theta$ is maximized when $\\cos\\theta = 1$, which is the direction of $\\nabla f$."
+        },
+        {
+          "q": "Find the directional derivative of $f(x, y) = 2x^2 - 3y^2$ at $(1, 1)$ in the direction of $\\mathbf{v} = \\langle 3, 4 \\rangle$.",
+          "choices": [
+            "$-12/5$",
+            "$12/5$",
+            "$-24$",
+            "$0$"
+          ],
+          "correct": 0,
+          "answer": "$\\nabla f = \\langle 4x, -6y \\rangle \\Rightarrow \\nabla f(1, 1) = \\langle 4, -6 \\rangle$. Unit vector $\\mathbf{u} = \\langle 3/5, 4/5 \\rangle$. $D_{\\mathbf{u}} f = \\langle 4, -6 \\rangle \\cdot \\langle 3/5, 4/5 \\rangle = 12/5 - 24/5 = -12/5$."
+        }
+      ]
+    },
+    {
+      "heading": "Section 4: Tangent Planes and Linear Approximations",
+      "questions": [
+        {
+          "q": "Find the equation of the tangent plane to $z = x^2 + y^2$ at the point $(1, 2, 5)$.",
+          "choices": [
+            "$z - 5 = 2(x - 1) + 4(y - 2)$",
+            "$z - 5 = (x - 1) + 2(y - 2)$",
+            "$2x + 4y - z = 0$",
+            "$z = 2x + 4y + 5$"
+          ],
+          "correct": 0,
+          "answer": "$z_x = 2x \\Rightarrow z_x(1, 2) = 2$. $z_y = 2y \\Rightarrow z_y(1, 2) = 4$. Plane: $z - 5 = 2(x - 1) + 4(y - 2) \\Rightarrow 2x + 4y - z = 5$."
+        },
+        {
+          "q": "Use the linear approximation $L(x, y)$ of $f(x, y) = \\sqrt{x^2 + y^2}$ at $(3, 4)$ to estimate $f(3.02, 3.97)$.",
+          "choices": [
+            "$4.988$",
+            "$5.012$",
+            "$5.000$",
+            "$4.950$"
+          ],
+          "correct": 0,
+          "answer": "$f(3, 4) = 5$. $f_x = x/\\sqrt{x^2+y^2} = 3/5 = 0.6$; $f_y = 4/5 = 0.8$. $L = 5 + 0.6(0.02) + 0.8(-0.03) = 5 + 0.012 - 0.024 = 4.988$."
+        },
+        {
+          "q": "Find the normal vector to the level surface $x^2 + y^2 + z^2 = 9$ at $(1, 2, 2)$.",
+          "choices": [
+            "$\\langle 2, 4, 4 \\rangle$",
+            "$\\langle 1, 2, 2 \\rangle$",
+            "Both $\\langle 1, 2, 2 \\rangle$ and $\\langle 2, 4, 4 \\rangle$ are valid normal vectors",
+            "$\\langle 2, 2, 1 \\rangle$"
+          ],
+          "correct": 2,
+          "answer": "The gradient of $F(x, y, z) = x^2 + y^2 + z^2$ is $\\nabla F = \\langle 2x, 2y, 2z \\rangle = \\langle 2, 4, 4 \\rangle = 2\\langle 1, 2, 2 \\rangle$, which is normal to the tangent plane."
         }
       ]
     }

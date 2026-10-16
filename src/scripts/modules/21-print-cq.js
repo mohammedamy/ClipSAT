@@ -102,7 +102,7 @@ window.printCQ = function(btn) {
        only because other print windows in this file share this build and do
        need it; it finds no "\(…\)"-delimited raw text left to typeset here.) */
     '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous">' +
-    '<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"]],displayMath:[["\\\\[","\\\\]"]],tags:"none"},svg:{fontCache:"global",scale:1},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};<\/script>' +
+    '<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"],["$","$"]],displayMath:[["\\\\[","\\\\]"],["$$","$$"]],tags:"none"},svg:{fontCache:"global",scale:1},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};<\/script>' +
     '<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"><\/script>' +
     '<style>' +
     '@page{margin:18mm 18mm 22mm 18mm}' +
@@ -192,7 +192,7 @@ window.printCQ = function(btn) {
       '<span>' + courseLabel + ' · ' + today + '</span>' +
     '</div>' +
     '</body>' +
-    '<script>MathJax.startup.promise.then(function(){setTimeout(window.print,400);});<\/script>' +
+    '<script>if(window.MathJax&&MathJax.startup&&MathJax.startup.promise){MathJax.startup.promise.then(function(){setTimeout(window.print,400);}).catch(function(){setTimeout(window.print,400);});}else{setTimeout(window.print,800);}<\/script>' +
     '</html>';
   var _cqBlob=new Blob([_cqHtml],{type:'text/html;charset=utf-8'});
   var _cqUrl=URL.createObjectURL(_cqBlob);

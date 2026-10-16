@@ -30,6 +30,7 @@ module.exports = function (eleventyConfig) {
   // the same belt-and-suspenders approach classic branch-based Pages deploys
   // get for free via their auto-managed CNAME file.
   eleventyConfig.addPassthroughCopy("CNAME");
+  eleventyConfig.addPassthroughCopy("_headers");
   eleventyConfig.addPassthroughCopy("sw.js");
   eleventyConfig.addPassthroughCopy("manifest.json");
   eleventyConfig.addPassthroughCopy("changelog.html");
@@ -48,6 +49,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("clipsat-mark-header.png");
   eleventyConfig.addPassthroughCopy("favicon.png");
   eleventyConfig.addPassthroughCopy("icon-192.png");
+  eleventyConfig.addPassthroughCopy("icon-512.png");
+  eleventyConfig.addPassthroughCopy("og-image.png");
   eleventyConfig.addPassthroughCopy("robots.txt");
   eleventyConfig.addPassthroughCopy("sitemap.xml");
   eleventyConfig.addPassthroughCopy({ "bank-data": "bank-data" });

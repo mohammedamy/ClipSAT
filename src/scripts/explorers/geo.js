@@ -15,7 +15,7 @@
   /* ===================== GEOMETRY · PARALLEL LINES & TRANSVERSAL ===================== */
   (function(){
     var canvas=document.getElementById('geoParCanvas'); if(!canvas) return;
-    var deg=55, view={xmin:-6,xmax:6,ymin:-4,ymax:4};
+    var deg=55, view={xmin:-6,xmax:6,ymin:-4,ymax:4,square:true};
     var s=document.getElementById('geoParA');
     var dataBtn=document.getElementById('geoParDataBtn'), dataPanel=document.getElementById('geoParDataPanel'),
         dataDesc=document.getElementById('geoParDataDesc'), dataRows=document.getElementById('geoParDataRows');
@@ -52,7 +52,7 @@
   /* ===================== GEOMETRY · TRIANGLE ANGLE SUM ===================== */
   (function(){
     var canvas=document.getElementById('geoTriCanvas'); if(!canvas) return;
-    var cx=0, view={xmin:-4,xmax:4,ymin:-2.4,ymax:2.8};
+    var cx=0, view={xmin:-4,xmax:4,ymin:-2.4,ymax:2.8,square:true};
     var s=document.getElementById('geoTriX');
     var dataBtn=document.getElementById('geoTriDataBtn'), dataPanel=document.getElementById('geoTriDataPanel'),
         dataDesc=document.getElementById('geoTriDataDesc'), dataRows=document.getElementById('geoTriDataRows');
@@ -96,7 +96,7 @@
   /* ===================== GEOMETRY · PYTHAGORAS (SQUARES) ===================== */
   (function(){
     var canvas=document.getElementById('geoPythCanvas'); if(!canvas) return;
-    var a=3, b=4, view={xmin:-4.5,xmax:8.5,ymin:-4.5,ymax:8.5};
+    var a=3, b=4, view={xmin:-4.5,xmax:8.5,ymin:-4.5,ymax:8.5,square:true,step:1};
     var sa=document.getElementById('geoPa'), sb=document.getElementById('geoPb');
     var dataBtn=document.getElementById('geoPythDataBtn'), dataPanel=document.getElementById('geoPythDataPanel'),
         dataDesc=document.getElementById('geoPythDataDesc'), dataRows=document.getElementById('geoPythDataRows');
@@ -144,7 +144,7 @@
   (function(){
     var canvas=document.getElementById('geoSectorCanvas'); if(!canvas) return;
     var r=4, theta=90;
-    var view={xmin:-9,xmax:9,ymin:-9,ymax:9};
+    var view={xmin:-9,xmax:9,ymin:-9,ymax:9,square:true};
     var dataBtn=document.getElementById('geoSectorDataBtn'), dataPanel=document.getElementById('geoSectorDataPanel'),
         dataDesc=document.getElementById('geoSectorDataDesc'), dataRows=document.getElementById('geoSectorDataRows');
     wireDataToggle(dataBtn,dataPanel);
@@ -188,7 +188,7 @@
   (function(){
     var canvas=document.getElementById('geoDistCanvas'); if(!canvas) return;
     var x1=0,y1=0,x2=6,y2=8;
-    var view={xmin:-10,xmax:10,ymin:-10,ymax:10};
+    var view={xmin:-10,xmax:10,ymin:-10,ymax:10,square:true};
     var dataBtn=document.getElementById('geoDistDataBtn'), dataPanel=document.getElementById('geoDistDataPanel'),
         dataDesc=document.getElementById('geoDistDataDesc'), dataRows=document.getElementById('geoDistDataRows');
     wireDataToggle(dataBtn,dataPanel);
@@ -235,7 +235,7 @@
     var canvas=document.getElementById('geoDilateCanvas'); if(!canvas) return;
     var k=3;
     var A=[0,0], B=[4,0], C=[0,3]; // 3-4-5 triangle; AB has length 4 (Worked example 9.A's side)
-    var view={xmin:-2,xmax:16,ymin:-2,ymax:14};
+    var view={xmin:-2,xmax:16,ymin:-2,ymax:14,square:true};
     var dataBtn=document.getElementById('geoDilateDataBtn'), dataPanel=document.getElementById('geoDilateDataPanel'),
         dataDesc=document.getElementById('geoDilateDataDesc'), dataRows=document.getElementById('geoDilateDataRows');
     wireDataToggle(dataBtn,dataPanel);

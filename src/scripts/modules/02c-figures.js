@@ -104,6 +104,24 @@
       if(fig.chord_segs) res += ' with intersecting chords';
       if(fig.secant_lines) res += ' with secant lines';
       if(fig.rings && fig.rings.length) res += ' with concentric circles';
+    } else if(t === 'nested_triangles' || t === 'thales' || t === 'triangle_transversal'){
+      res = 'Triangle with parallel transversal line segment';
+      if(fig.labels && fig.labels.length) res += ' ' + fig.labels.join('');
+    } else if(t === 'bowtie' || t === 'hourglass'){
+      res = 'Hourglass or bowtie similar triangles with vertical angles';
+      if(fig.labels && fig.labels.length) res += ' ' + fig.labels.join('');
+    } else if(t === 'right_triangle_altitude' || t === 'altitude_hypotenuse' || t === 'geometric_mean'){
+      res = 'Right triangle with altitude drawn to hypotenuse';
+    } else if(t === 'shadow_similarity' || t === 'indirect_measurement'){
+      res = 'Indirect measurement diagram with parallel sunlight rays and shadows';
+    } else if(t === 'angle_bisector'){
+      res = 'Triangle with an angle bisector';
+    } else if(t === 'circle_chords_similarity'){
+      res = 'Circle with intersecting chords forming similar triangles';
+    } else if(t === 'overlapping_triangles' || t === 'inverted_similar'){
+      res = 'Overlapping similar triangles with shared angle';
+    } else if(t === 'trapezoid_diagonals'){
+      res = 'Trapezoid with diagonals intersecting to form similar triangles';
     } else if(t === 'similar'){
       res = 'Two similar figures side by side';
       if(fig.left && fig.left.caption) res += ' (' + fig.left.caption + ' and ' + (fig.right ? fig.right.caption : '') + ')';
@@ -640,6 +658,406 @@
        are guaranteed genuinely similar rather than two drawings that merely look
        alike — that similarity IS the mathematical content of these questions.
        Each side carries its own side-labels and caption. */
+    /* ── Shared helpers for authentic geometry diagrams ── */
+    var _drawChevrons=function(p1, p2, count, strokeCol){
+      var dx = p2[0] - p1[0], dy = p2[1] - p1[1];
+      var len = Math.hypot(dx, dy) || 1;
+      var ux = dx / len, uy = dy / len;
+      var nx = -uy, ny = ux;
+      var mx = (p1[0] + p2[0]) / 2, my = (p1[1] + p2[1]) / 2;
+      var s = 5, gap = 5;
+      var col = strokeCol || FIG_INDIGO;
+      var offsets = count === 2 ? [-gap / 2, gap / 2] : [0];
+      var out = '';
+      offsets.forEach(function(off){
+        var cx = mx + ux * off, cy = my + uy * off;
+        var tip = [cx + ux * 2, cy + uy * 2];
+        var w1 = [cx - ux * s + nx * s, cy - uy * s + ny * s];
+        var w2 = [cx - ux * s - nx * s, cy - uy * s - ny * s];
+        out += '<polyline points="' + w1[0].toFixed(1) + ',' + w1[1].toFixed(1) + ' ' + tip[0].toFixed(1) + ',' + tip[1].toFixed(1) + ' ' + w2[0].toFixed(1) + ',' + w2[1].toFixed(1) + '" fill="none" stroke="' + col + '" stroke-width="1.6" stroke-linejoin="round"/>';
+      });
+      return out;
+    };
+    var _drawRtBox=function(v0, v1, v2, size, strokeCol){
+      var d1 = [v1[0] - v0[0], v1[1] - v0[1]], d2 = [v2[0] - v0[0], v2[1] - v0[1]];
+      var l1 = Math.hypot(d1[0], d1[1]) || 1, l2 = Math.hypot(d2[0], d2[1]) || 1;
+      var q = size || 9;
+      var u1 = [d1[0] / l1 * q, d1[1] / l1 * q], u2 = [d2[0] / l2 * q, d2[1] / l2 * q];
+      var col = strokeCol || FIG_INDIGO;
+      return '<polyline points="' + (v0[0] + u1[0]).toFixed(1) + ',' + (v0[1] + u1[1]).toFixed(1) + ' ' +
+        (v0[0] + u1[0] + u2[0]).toFixed(1) + ',' + (v0[1] + u1[1] + u2[1]).toFixed(1) + ' ' +
+        (v0[0] + u2[0]).toFixed(1) + ',' + (v0[1] + u2[1]).toFixed(1) + '" fill="none" stroke="' + col + '" stroke-width="1.4"/>';
+    };
+    var _drawAngleArc=function(v0, v1, v2, rad, label, strokeCol, isDouble){
+      var d1 = [v1[0] - v0[0], v1[1] - v0[1]], d2 = [v2[0] - v0[0], v2[1] - v0[1]];
+      var l1 = Math.hypot(d1[0], d1[1]) || 1, l2 = Math.hypot(d2[0], d2[1]) || 1;
+      var a1 = Math.atan2(d1[1], d1[0]), a2 = Math.atan2(d2[1], d2[0]);
+      var cross = d1[0]/l1 * d2[1]/l2 - d1[1]/l1 * d2[0]/l2;
+      var sweep = cross > 0 ? 1 : 0;
+      var r = rad || 13;
+      var col = strokeCol || FIG_AMBER;
+      var out = '';
+      var sx = (v0[0] + r * Math.cos(a1)).toFixed(1), sy = (v0[1] + r * Math.sin(a1)).toFixed(1);
+      var ex = (v0[0] + r * Math.cos(a2)).toFixed(1), ey = (v0[1] + r * Math.sin(a2)).toFixed(1);
+      out += '<path d="M' + sx + ',' + sy + ' A' + r + ',' + r + ' 0 0,' + sweep + ' ' + ex + ',' + ey + '" fill="none" stroke="' + col + '" stroke-width="1.3"/>';
+      if(isDouble){
+        var r2 = r + 4;
+        var sx2 = (v0[0] + r2 * Math.cos(a1)).toFixed(1), sy2 = (v0[1] + r2 * Math.sin(a1)).toFixed(1);
+        var ex2 = (v0[0] + r2 * Math.cos(a2)).toFixed(1), ey2 = (v0[1] + r2 * Math.sin(a2)).toFixed(1);
+        out += '<path d="M' + sx2 + ',' + sy2 + ' A' + r2 + ',' + r2 + ' 0 0,' + sweep + ' ' + ex2 + ',' + ey2 + '" fill="none" stroke="' + col + '" stroke-width="1.3"/>';
+      }
+      if(label){
+        var diff = a2 - a1; while(diff > Math.PI) diff -= 2 * Math.PI; while(diff < -Math.PI) diff += 2 * Math.PI;
+        var midA = a1 + (cross > 0 ? 1 : -1) * Math.abs(diff) / 2;
+        var lr = (isDouble ? r + 14 : r + 10);
+        var lx = (v0[0] + lr * Math.cos(midA)).toFixed(1), ly = (v0[1] + lr * Math.sin(midA) + 3).toFixed(1);
+        out += '<text x="' + lx + '" y="' + ly + '" font-size="9.5" font-weight="700" fill="' + FIG_AMBER_TEXT + '" text-anchor="middle" paint-order="stroke fill" stroke="' + FIG_BG + '" stroke-width="2.5">' + _formatMathLabel(label) + '</text>';
+      }
+      return out;
+    };
+
+    /* ── 1. NESTED TRIANGLES / THALES' THEOREM (Parallel Transversal) ── */
+    if(fig.type==='nested_triangles'||fig.type==='thales'||fig.type==='triangle_transversal'){
+      var lblsN=fig.labels||['A','B','C','D','E'];
+      var AN=[W*0.44, 26];
+      var BN=[36, H-34];
+      var CN=[W-36, H-34];
+      var tN=fig.t!=null?fig.t:0.52;
+      var DN=[AN[0]+tN*(BN[0]-AN[0]), AN[1]+tN*(BN[1]-AN[1])];
+      var EN=[AN[0]+tN*(CN[0]-AN[0]), AN[1]+tN*(CN[1]-AN[1])];
+      if(fig.shade==='top'){
+        s+='<polygon points="'+AN[0].toFixed(1)+','+AN[1].toFixed(1)+' '+DN[0].toFixed(1)+','+DN[1].toFixed(1)+' '+EN[0].toFixed(1)+','+EN[1].toFixed(1)+'" fill="'+FIG_INDIGO_FILL2+'"/>';
+      } else if(fig.shade==='bottom'||fig.shade==='trap'){
+        s+='<polygon points="'+DN[0].toFixed(1)+','+DN[1].toFixed(1)+' '+BN[0].toFixed(1)+','+BN[1].toFixed(1)+' '+CN[0].toFixed(1)+','+CN[1].toFixed(1)+' '+EN[0].toFixed(1)+','+EN[1].toFixed(1)+'" fill="'+FIG_INDIGO_FILL2+'"/>';
+      }
+      s+='<polygon points="'+AN[0].toFixed(1)+','+AN[1].toFixed(1)+' '+BN[0].toFixed(1)+','+BN[1].toFixed(1)+' '+CN[0].toFixed(1)+','+CN[1].toFixed(1)+'" fill="'+(fig.shade?FIG_BG:FIG_INDIGO_FILL)+'" stroke="'+FIG_INDIGO+'" stroke-width="2" stroke-linejoin="round"/>';
+      s+='<line x1="'+DN[0].toFixed(1)+'" y1="'+DN[1].toFixed(1)+'" x2="'+EN[0].toFixed(1)+'" y2="'+EN[1].toFixed(1)+'" stroke="'+FIG_TEAL+'" stroke-width="2"/>';
+      /* parallel chevrons */
+      s+=_drawChevrons(DN, EN, 2, FIG_TEAL);
+      s+=_drawChevrons(BN, CN, 2, FIG_INDIGO);
+      /* points */
+      [AN,BN,CN,DN,EN].forEach(function(pt){
+        s+='<circle cx="'+pt[0].toFixed(1)+'" cy="'+pt[1].toFixed(1)+'" r="2.8" fill="'+FIG_INK+'"/>';
+      });
+      /* vertex letter labels */
+      if(lblsN[0]) s+='<text x="'+AN[0].toFixed(1)+'" y="'+(AN[1]-11).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsN[0]+'</text>';
+      if(lblsN[1]) s+='<text x="'+(BN[0]-12).toFixed(1)+'" y="'+(BN[1]+12).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsN[1]+'</text>';
+      if(lblsN[2]) s+='<text x="'+(CN[0]+12).toFixed(1)+'" y="'+(CN[1]+12).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsN[2]+'</text>';
+      if(lblsN[3]) s+='<text x="'+(DN[0]-14).toFixed(1)+'" y="'+(DN[1]+3).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsN[3]+'</text>';
+      if(lblsN[4]) s+='<text x="'+(EN[0]+14).toFixed(1)+'" y="'+(EN[1]+3).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsN[4]+'</text>';
+      /* side segment labels */
+      var sdsN=fig.sides||{};
+      var drawSideN=function(p1,p2,lbl,off,sideFlip){
+        if(!lbl) return;
+        var mx=(p1[0]+p2[0])/2, my=(p1[1]+p2[1])/2;
+        var ex=p2[0]-p1[0], ey=p2[1]-p1[1], el=Math.hypot(ex,ey)||1;
+        var nx=-ey/el*(sideFlip?-1:1), ny=ex/el*(sideFlip?-1:1);
+        s+='<text x="'+(mx+nx*off).toFixed(1)+'" y="'+(my+ny*off+3).toFixed(1)+'" font-size="11" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(lbl)+'</text>';
+      };
+      drawSideN(AN, DN, sdsN.ad, 14, false);
+      drawSideN(DN, BN, sdsN.db, 14, false);
+      drawSideN(AN, EN, sdsN.ae, 14, true);
+      drawSideN(EN, CN, sdsN.ec, 14, true);
+      if(sdsN.de) s+='<text x="'+((DN[0]+EN[0])/2).toFixed(1)+'" y="'+((DN[1]+EN[1])/2-10).toFixed(1)+'" font-size="11" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(sdsN.de)+'</text>';
+      if(sdsN.bc) s+='<text x="'+((BN[0]+CN[0])/2).toFixed(1)+'" y="'+(BN[1]+18).toFixed(1)+'" font-size="11" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(sdsN.bc)+'</text>';
+      if(fig.angles){
+        if(fig.angles.a) s+=_drawAngleArc(AN, BN, CN, 14, fig.angles.a);
+        if(fig.angles.d) s+=_drawAngleArc(DN, EN, AN, 13, fig.angles.d);
+        if(fig.angles.b) s+=_drawAngleArc(BN, CN, AN, 14, fig.angles.b);
+      }
+      s+='</svg>';
+      return s;
+    }
+
+    /* ── 2. BOWTIE / HOURGLASS SIMILAR TRIANGLES ── */
+    else if(fig.type==='bowtie'||fig.type==='hourglass'){
+      var lblsB=fig.labels||['A','B','C','D','E'];
+      var rtB=fig.ratio!=null?fig.ratio:0.65;
+      var yT=28, yB=H-32;
+      var spanT=Math.min(W*0.38*rtB, W*0.35);
+      var spanB=Math.min(spanT/rtB, W*0.42);
+      var cxB=W/2;
+      var AB=[cxB-spanT, yT], BB=[cxB+spanT, yT];
+      var DB=[cxB-spanB, yB], CB=[cxB+spanB, yB];
+      var tB=rtB/(1+rtB);
+      var EB=[cxB, yT+tB*(yB-yT)];
+      s+='<polygon points="'+AB[0].toFixed(1)+','+AB[1].toFixed(1)+' '+BB[0].toFixed(1)+','+BB[1].toFixed(1)+' '+EB[0].toFixed(1)+','+EB[1].toFixed(1)+'" fill="'+FIG_INDIGO_FILL+'" stroke="'+FIG_INDIGO+'" stroke-width="2" stroke-linejoin="round"/>';
+      s+='<polygon points="'+CB[0].toFixed(1)+','+CB[1].toFixed(1)+' '+DB[0].toFixed(1)+','+DB[1].toFixed(1)+' '+EB[0].toFixed(1)+','+EB[1].toFixed(1)+'" fill="'+FIG_INDIGO_FILL+'" stroke="'+FIG_INDIGO+'" stroke-width="2" stroke-linejoin="round"/>';
+      s+=_drawChevrons(AB, BB, 2, FIG_INDIGO);
+      s+=_drawChevrons(DB, CB, 2, FIG_INDIGO);
+      s+=_drawAngleArc(EB, AB, BB, 12, null, FIG_AMBER);
+      s+=_drawAngleArc(EB, CB, DB, 12, null, FIG_AMBER);
+      [AB,BB,CB,DB,EB].forEach(function(pt){
+        s+='<circle cx="'+pt[0].toFixed(1)+'" cy="'+pt[1].toFixed(1)+'" r="2.8" fill="'+FIG_INK+'"/>';
+      });
+      if(lblsB[0]) s+='<text x="'+(AB[0]-11).toFixed(1)+'" y="'+(AB[1]-4).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsB[0]+'</text>';
+      if(lblsB[1]) s+='<text x="'+(BB[0]+11).toFixed(1)+'" y="'+(BB[1]-4).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsB[1]+'</text>';
+      if(lblsB[2]) s+='<text x="'+(CB[0]+12).toFixed(1)+'" y="'+(CB[1]+10).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsB[2]+'</text>';
+      if(lblsB[3]) s+='<text x="'+(DB[0]-12).toFixed(1)+'" y="'+(DB[1]+10).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsB[3]+'</text>';
+      if(lblsB[4]) s+='<text x="'+(EB[0]+14).toFixed(1)+'" y="'+(EB[1]+3).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsB[4]+'</text>';
+      var sdsB=fig.sides||{};
+      var drawSideB=function(p1,p2,lbl,off,sideFlip){
+        if(!lbl) return;
+        var mx=(p1[0]+p2[0])/2, my=(p1[1]+p2[1])/2;
+        var ex=p2[0]-p1[0], ey=p2[1]-p1[1], el=Math.hypot(ex,ey)||1;
+        var nx=-ey/el*(sideFlip?-1:1), ny=ex/el*(sideFlip?-1:1);
+        s+='<text x="'+(mx+nx*off).toFixed(1)+'" y="'+(my+ny*off+3).toFixed(1)+'" font-size="11" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(lbl)+'</text>';
+      };
+      if(sdsB.ab) s+='<text x="'+cxB+'" y="'+(yT-10)+'" font-size="11" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(sdsB.ab)+'</text>';
+      if(sdsB.cd) s+='<text x="'+cxB+'" y="'+(yB+16)+'" font-size="11" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(sdsB.cd)+'</text>';
+      drawSideB(AB, EB, sdsB.ae, 12, false);
+      drawSideB(EB, CB, sdsB.ec, 12, false);
+      drawSideB(BB, EB, sdsB.be, 12, true);
+      drawSideB(EB, DB, sdsB.ed, 12, true);
+      s+='</svg>';
+      return s;
+    }
+
+    /* ── 3. RIGHT TRIANGLE ALTITUDE (Geometric Mean Theorem) ── */
+    else if(fig.type==='right_triangle_altitude'||fig.type==='altitude_hypotenuse'||fig.type==='geometric_mean'){
+      var lblsR=fig.labels||['A','B','C','D'];
+      var AR=[32, H-36], BR=[W-32, H-36];
+      var LR=BR[0]-AR[0];
+      var tR=fig.t!=null?fig.t:0.36;
+      var DR=[AR[0]+tR*LR, H-36];
+      var hR=LR*Math.sqrt(tR*(1-tR));
+      var CR=[DR[0], (H-36)-hR];
+      s+='<polygon points="'+AR[0].toFixed(1)+','+AR[1].toFixed(1)+' '+BR[0].toFixed(1)+','+BR[1].toFixed(1)+' '+CR[0].toFixed(1)+','+CR[1].toFixed(1)+'" fill="'+FIG_INDIGO_FILL+'" stroke="'+FIG_INDIGO+'" stroke-width="2" stroke-linejoin="round"/>';
+      s+='<line x1="'+DR[0].toFixed(1)+'" y1="'+DR[1].toFixed(1)+'" x2="'+CR[0].toFixed(1)+'" y2="'+CR[1].toFixed(1)+'" stroke="'+FIG_TEAL+'" stroke-width="2"/>';
+      s+=_drawRtBox(DR, CR, AR, 10, FIG_INDIGO);
+      s+=_drawRtBox(CR, AR, BR, 10, FIG_INDIGO);
+      [AR,BR,CR,DR].forEach(function(pt){
+        s+='<circle cx="'+pt[0].toFixed(1)+'" cy="'+pt[1].toFixed(1)+'" r="2.8" fill="'+FIG_INK+'"/>';
+      });
+      if(lblsR[0]) s+='<text x="'+(AR[0]-12).toFixed(1)+'" y="'+(AR[1]+12).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsR[0]+'</text>';
+      if(lblsR[1]) s+='<text x="'+(BR[0]+12).toFixed(1)+'" y="'+(BR[1]+12).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsR[1]+'</text>';
+      if(lblsR[2]) s+='<text x="'+CR[0].toFixed(1)+'" y="'+(CR[1]-11).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsR[2]+'</text>';
+      if(lblsR[3]) s+='<text x="'+DR[0].toFixed(1)+'" y="'+(DR[1]+14).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsR[3]+'</text>';
+      if(fig.p) s+='<text x="'+((AR[0]+DR[0])/2).toFixed(1)+'" y="'+(DR[1]+14).toFixed(1)+'" font-size="11" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(fig.p)+'</text>';
+      if(fig.q) s+='<text x="'+((DR[0]+BR[0])/2).toFixed(1)+'" y="'+(DR[1]+14).toFixed(1)+'" font-size="11" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(fig.q)+'</text>';
+      if(fig.altitude||fig.h) s+='<text x="'+(DR[0]+12).toFixed(1)+'" y="'+((CR[1]+DR[1])/2).toFixed(1)+'" font-size="11" font-weight="700" fill="'+FIG_TEAL+'" text-anchor="start" dominant-baseline="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(fig.altitude||fig.h)+'</text>';
+      if(fig.b||fig.ac){
+        var acMx=(AR[0]+CR[0])/2-12, acMy=(AR[1]+CR[1])/2-6;
+        s+='<text x="'+acMx.toFixed(1)+'" y="'+acMy.toFixed(1)+'" font-size="11" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(fig.b||fig.ac)+'</text>';
+      }
+      if(fig.a||fig.bc){
+        var bcMx=(BR[0]+CR[0])/2+12, bcMy=(BR[1]+CR[1])/2-6;
+        s+='<text x="'+bcMx.toFixed(1)+'" y="'+bcMy.toFixed(1)+'" font-size="11" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(fig.a||fig.bc)+'</text>';
+      }
+      if(fig.c||fig.hyp){
+        s+='<text x="'+((AR[0]+BR[0])/2).toFixed(1)+'" y="'+(DR[1]+28).toFixed(1)+'" font-size="11" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(fig.c||fig.hyp)+'</text>';
+      }
+      s+='</svg>';
+      return s;
+    }
+
+    /* ── 4. SHADOW SIMILARITY / REALISTIC INDIRECT MEASUREMENT ── */
+    else if(fig.type==='shadow_similarity'||fig.type==='indirect_measurement'){
+      var yG=H-34;
+      var obj1=fig.obj1||{label:'Person',height:'6 ft',shadow:'4 ft'};
+      var obj2=fig.obj2||{label:'Flagpole',height:'30 ft',shadow:'20 ft'};
+      s+='<line x1="16" y1="'+yG+'" x2="'+(W-16)+'" y2="'+yG+'" stroke="'+FIG_INK+'" stroke-width="2"/>';
+      for(var gx=22; gx<W-20; gx+=14){
+        s+='<line x1="'+gx+'" y1="'+yG+'" x2="'+(gx-4)+'" y2="'+(yG+6)+'" stroke="'+FIG_BORDER+'" stroke-width="1.2"/>';
+      }
+      /* Sun icon at top-left */
+      s+='<circle cx="28" cy="24" r="8" fill="'+FIG_AMBER+'" opacity="0.9"/>';
+      var sunRays=[[0,-11],[11,0],[0,11],[-11,0],[8,-8],[8,8],[-8,8],[-8,-8]];
+      sunRays.forEach(function(sr){
+        s+='<line x1="'+(28+sr[0]*0.9).toFixed(1)+'" y1="'+(24+sr[1]*0.9).toFixed(1)+'" x2="'+(28+sr[0]*1.4).toFixed(1)+'" y2="'+(24+sr[1]*1.4).toFixed(1)+'" stroke="'+FIG_AMBER+'" stroke-width="1.3"/>';
+      });
+      /* Object 1 */
+      var h1=40, s1=56;
+      var b1x=60, t1x=60, t1y=yG-h1, s1x=b1x+s1;
+      s+='<polygon points="'+b1x+','+yG+' '+t1x+','+t1y+' '+s1x+','+yG+'" fill="'+FIG_INDIGO_FILL+'"/>';
+      s+='<line x1="'+b1x+'" y1="'+yG+'" x2="'+t1x+'" y2="'+t1y+'" stroke="'+FIG_INDIGO+'" stroke-width="2.5" stroke-linecap="round"/>';
+      s+='<line x1="'+(t1x-14).toFixed(1)+'" y1="'+(t1y-10).toFixed(1)+'" x2="'+s1x+'" y2="'+yG+'" stroke="'+FIG_AMBER+'" stroke-width="1.6" stroke-dasharray="5,3"/>';
+      s+=_drawRtBox([b1x,yG], [b1x,t1y], [s1x,yG], 8, FIG_INDIGO);
+      s+='<line x1="'+b1x+'" y1="'+yG+'" x2="'+s1x+'" y2="'+yG+'" stroke="'+FIG_INDIGO+'" stroke-width="3"/>';
+      if(obj1.height) s+='<text x="'+(b1x-14)+'" y="'+(yG-h1/2+3)+'" font-size="10.5" font-weight="700" fill="'+FIG_INK+'" text-anchor="end" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(obj1.height)+'</text>';
+      if(obj1.shadow) s+='<text x="'+((b1x+s1x)/2)+'" y="'+(yG+15)+'" font-size="10.5" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(obj1.shadow)+'</text>';
+      if(obj1.label) s+='<text x="'+b1x+'" y="'+(t1y-8)+'" font-size="10" font-weight="700" fill="'+FIG_MUTED+'" text-anchor="middle">'+obj1.label+'</text>';
+      s+=_drawAngleArc([s1x,yG], [t1x,t1y], [b1x,yG], 14, fig.angle_label||null, FIG_AMBER);
+      /* Object 2 */
+      var h2=95, s2=133;
+      var b2x=W-24-s2, t2x=b2x, t2y=yG-h2, s2x=b2x+s2;
+      s+='<polygon points="'+b2x+','+yG+' '+t2x+','+t2y+' '+s2x+','+yG+'" fill="'+FIG_INDIGO_FILL+'"/>';
+      s+='<line x1="'+b2x+'" y1="'+yG+'" x2="'+t2x+'" y2="'+t2y+'" stroke="'+FIG_INDIGO+'" stroke-width="3" stroke-linecap="round"/>';
+      s+='<line x1="'+(t2x-14).toFixed(1)+'" y1="'+(t2y-10).toFixed(1)+'" x2="'+s2x+'" y2="'+yG+'" stroke="'+FIG_AMBER+'" stroke-width="1.6" stroke-dasharray="5,3"/>';
+      s+=_drawRtBox([b2x,yG], [b2x,t2y], [s2x,yG], 9, FIG_INDIGO);
+      s+='<line x1="'+b2x+'" y1="'+yG+'" x2="'+s2x+'" y2="'+yG+'" stroke="'+FIG_INDIGO+'" stroke-width="3"/>';
+      if(obj2.height) s+='<text x="'+(b2x-14)+'" y="'+(yG-h2/2+3)+'" font-size="10.5" font-weight="700" fill="'+FIG_INK+'" text-anchor="end" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(obj2.height)+'</text>';
+      if(obj2.shadow) s+='<text x="'+((b2x+s2x)/2)+'" y="'+(yG+15)+'" font-size="10.5" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(obj2.shadow)+'</text>';
+      if(obj2.label) s+='<text x="'+b2x+'" y="'+(t2y-8)+'" font-size="10" font-weight="700" fill="'+FIG_MUTED+'" text-anchor="middle">'+obj2.label+'</text>';
+      s+=_drawAngleArc([s2x,yG], [t2x,t2y], [b2x,yG], 16, fig.angle_label||null, FIG_AMBER);
+      s+='</svg>';
+      return s;
+    }
+
+    /* ── 5. ANGLE BISECTOR THEOREM ── */
+    else if(fig.type==='angle_bisector'){
+      var lblsAB=fig.labels||['A','B','C','D'];
+      var AAB=[W*0.42, 28];
+      var BAB=[36, H-34];
+      var CAB=[W-36, H-34];
+      var cAB=Math.hypot(BAB[0]-AAB[0], BAB[1]-AAB[1]);
+      var bAC=Math.hypot(CAB[0]-AAB[0], CAB[1]-AAB[1]);
+      var tAB=cAB/(cAB+bAC);
+      var DAB=[BAB[0]+tAB*(CAB[0]-BAB[0]), BAB[1]+tAB*(CAB[1]-BAB[1])];
+      s+='<polygon points="'+AAB[0].toFixed(1)+','+AAB[1].toFixed(1)+' '+BAB[0].toFixed(1)+','+BAB[1].toFixed(1)+' '+CAB[0].toFixed(1)+','+CAB[1].toFixed(1)+'" fill="'+FIG_INDIGO_FILL+'" stroke="'+FIG_INDIGO+'" stroke-width="2" stroke-linejoin="round"/>';
+      s+='<line x1="'+AAB[0].toFixed(1)+'" y1="'+AAB[1].toFixed(1)+'" x2="'+DAB[0].toFixed(1)+'" y2="'+DAB[1].toFixed(1)+'" stroke="'+FIG_TEAL+'" stroke-width="2"/>';
+      s+=_drawAngleArc(AAB, BAB, DAB, 16, null, FIG_AMBER);
+      s+=_drawAngleArc(AAB, DAB, CAB, 16, null, FIG_AMBER);
+      var midA1=(Math.atan2(BAB[1]-AAB[1],BAB[0]-AAB[0])+Math.atan2(DAB[1]-AAB[1],DAB[0]-AAB[0]))/2;
+      var midA2=(Math.atan2(DAB[1]-AAB[1],DAB[0]-AAB[0])+Math.atan2(CAB[1]-AAB[1],CAB[0]-AAB[0]))/2;
+      [midA1, midA2].forEach(function(ang){
+        var tx=AAB[0]+16*Math.cos(ang), ty=AAB[1]+16*Math.sin(ang);
+        var nx=-Math.sin(ang)*4, ny=Math.cos(ang)*4;
+        s+='<line x1="'+(tx-nx).toFixed(1)+'" y1="'+(ty-ny).toFixed(1)+'" x2="'+(tx+nx).toFixed(1)+'" y2="'+(ty+ny).toFixed(1)+'" stroke="'+FIG_AMBER+'" stroke-width="1.3"/>';
+      });
+      [AAB,BAB,CAB,DAB].forEach(function(pt){
+        s+='<circle cx="'+pt[0].toFixed(1)+'" cy="'+pt[1].toFixed(1)+'" r="2.8" fill="'+FIG_INK+'"/>';
+      });
+      if(lblsAB[0]) s+='<text x="'+AAB[0].toFixed(1)+'" y="'+(AAB[1]-11).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsAB[0]+'</text>';
+      if(lblsAB[1]) s+='<text x="'+(BAB[0]-12).toFixed(1)+'" y="'+(BAB[1]+12).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsAB[1]+'</text>';
+      if(lblsAB[2]) s+='<text x="'+(CAB[0]+12).toFixed(1)+'" y="'+(CAB[1]+12).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsAB[2]+'</text>';
+      if(lblsAB[3]) s+='<text x="'+DAB[0].toFixed(1)+'" y="'+(DAB[1]+15).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsAB[3]+'</text>';
+      var sdsAB=fig.sides||{};
+      var drawSideAB=function(p1,p2,lbl,off,sideFlip){
+        if(!lbl) return;
+        var mx=(p1[0]+p2[0])/2, my=(p1[1]+p2[1])/2;
+        var ex=p2[0]-p1[0], ey=p2[1]-p1[1], el=Math.hypot(ex,ey)||1;
+        var nx=-ey/el*(sideFlip?-1:1), ny=ex/el*(sideFlip?-1:1);
+        s+='<text x="'+(mx+nx*off).toFixed(1)+'" y="'+(my+ny*off+3).toFixed(1)+'" font-size="11" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(lbl)+'</text>';
+      };
+      drawSideAB(AAB, BAB, sdsAB.ab, 14, false);
+      drawSideAB(AAB, CAB, sdsAB.ac, 14, true);
+      if(sdsAB.bd) s+='<text x="'+((BAB[0]+DAB[0])/2).toFixed(1)+'" y="'+(BAB[1]+16).toFixed(1)+'" font-size="11" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(sdsAB.bd)+'</text>';
+      if(sdsAB.dc) s+='<text x="'+((DAB[0]+CAB[0])/2).toFixed(1)+'" y="'+(CAB[1]+16).toFixed(1)+'" font-size="11" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(sdsAB.dc)+'</text>';
+      s+='</svg>';
+      return s;
+    }
+
+    /* ── 6. OVERLAPPING / INVERTED SIMILAR TRIANGLES ── */
+    else if(fig.type==='overlapping_triangles'||fig.type==='inverted_similar'){
+      var lblsO=fig.labels||['A','B','C','D','E'];
+      var AO=[W*0.44, 26];
+      var BO=[36, H-34];
+      var CO=[W-36, H-34];
+      var tD=0.62, tE=0.38;
+      var DO=[AO[0]+tD*(BO[0]-AO[0]), AO[1]+tD*(BO[1]-AO[1])];
+      var EO=[AO[0]+tE*(CO[0]-AO[0]), AO[1]+tE*(CO[1]-AO[1])];
+      s+='<polygon points="'+AO[0].toFixed(1)+','+AO[1].toFixed(1)+' '+BO[0].toFixed(1)+','+BO[1].toFixed(1)+' '+CO[0].toFixed(1)+','+CO[1].toFixed(1)+'" fill="'+FIG_INDIGO_FILL+'" stroke="'+FIG_INDIGO+'" stroke-width="2" stroke-linejoin="round"/>';
+      s+='<polygon points="'+AO[0].toFixed(1)+','+AO[1].toFixed(1)+' '+DO[0].toFixed(1)+','+DO[1].toFixed(1)+' '+EO[0].toFixed(1)+','+EO[1].toFixed(1)+'" fill="'+FIG_INDIGO_FILL2+'" stroke="'+FIG_TEAL+'" stroke-width="2" stroke-linejoin="round"/>';
+      s+=_drawAngleArc(DO, EO, AO, 14, null, FIG_AMBER, true);
+      s+=_drawAngleArc(CO, BO, AO, 14, null, FIG_AMBER, true);
+      s+=_drawAngleArc(AO, BO, CO, 15, null, FIG_AMBER, false);
+      [AO,BO,CO,DO,EO].forEach(function(pt){
+        s+='<circle cx="'+pt[0].toFixed(1)+'" cy="'+pt[1].toFixed(1)+'" r="2.8" fill="'+FIG_INK+'"/>';
+      });
+      if(lblsO[0]) s+='<text x="'+AO[0].toFixed(1)+'" y="'+(AO[1]-11).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsO[0]+'</text>';
+      if(lblsO[1]) s+='<text x="'+(BO[0]-12).toFixed(1)+'" y="'+(BO[1]+12).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsO[1]+'</text>';
+      if(lblsO[2]) s+='<text x="'+(CO[0]+12).toFixed(1)+'" y="'+(CO[1]+12).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsO[2]+'</text>';
+      if(lblsO[3]) s+='<text x="'+(DO[0]-14).toFixed(1)+'" y="'+(DO[1]+3).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsO[3]+'</text>';
+      if(lblsO[4]) s+='<text x="'+(EO[0]+14).toFixed(1)+'" y="'+(EO[1]+3).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsO[4]+'</text>';
+      var sdsO=fig.sides||{};
+      var drawSideO=function(p1,p2,lbl,off,sideFlip){
+        if(!lbl) return;
+        var mx=(p1[0]+p2[0])/2, my=(p1[1]+p2[1])/2;
+        var ex=p2[0]-p1[0], ey=p2[1]-p1[1], el=Math.hypot(ex,ey)||1;
+        var nx=-ey/el*(sideFlip?-1:1), ny=ex/el*(sideFlip?-1:1);
+        s+='<text x="'+(mx+nx*off).toFixed(1)+'" y="'+(my+ny*off+3).toFixed(1)+'" font-size="11" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(lbl)+'</text>';
+      };
+      drawSideO(AO, DO, sdsO.ad, 14, false);
+      drawSideO(DO, BO, sdsO.db, 14, false);
+      drawSideO(AO, EO, sdsO.ae, 14, true);
+      drawSideO(EO, CO, sdsO.ec, 14, true);
+      if(sdsO.de) s+='<text x="'+((DO[0]+EO[0])/2).toFixed(1)+'" y="'+((DO[1]+EO[1])/2-10).toFixed(1)+'" font-size="11" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(sdsO.de)+'</text>';
+      if(sdsO.bc) s+='<text x="'+((BO[0]+CO[0])/2).toFixed(1)+'" y="'+(BO[1]+18).toFixed(1)+'" font-size="11" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(sdsO.bc)+'</text>';
+      s+='</svg>';
+      return s;
+    }
+
+    /* ── 7. CIRCLE INTERSECTING CHORDS SIMILARITY ── */
+    else if(fig.type==='circle_chords_similarity'){
+      var lblsC=fig.labels||['A','B','C','D','P'];
+      var cxC=W/2, cyC=H/2-4, radC=Math.min(W,H)*0.36;
+      s+='<circle cx="'+cxC+'" cy="'+cyC+'" r="'+radC.toFixed(1)+'" fill="'+FIG_INDIGO_FILL+'" stroke="'+FIG_INDIGO+'" stroke-width="2"/>';
+      var aA=2.6, aB=-0.4, aC=1.1, aD=-2.0;
+      var AC=[cxC+radC*Math.cos(aA), cyC+radC*Math.sin(aA)];
+      var BC=[cxC+radC*Math.cos(aB), cyC+radC*Math.sin(aB)];
+      var CC=[cxC+radC*Math.cos(aC), cyC+radC*Math.sin(aC)];
+      var DC=[cxC+radC*Math.cos(aD), cyC+radC*Math.sin(aD)];
+      var x1C=AC[0], y1C=AC[1], x2C=BC[0], y2C=BC[1], x3C=CC[0], y3C=CC[1], x4C=DC[0], y4C=DC[1];
+      var denomC=(x1C-x2C)*(y3C-y4C)-(y1C-y2C)*(x3C-x4C)||1;
+      var pxC=((x1C*y2C-y1C*x2C)*(x3C-x4C)-(x1C-x2C)*(x3C*y4C-y3C*x4C))/denomC;
+      var pyC=((x1C*y2C-y1C*x2C)*(y3C-y4C)-(y1C-y2C)*(x3C*y4C-y3C*x4C))/denomC;
+      var PC=[pxC, pyC];
+      s+='<line x1="'+AC[0].toFixed(1)+'" y1="'+AC[1].toFixed(1)+'" x2="'+CC[0].toFixed(1)+'" y2="'+CC[1].toFixed(1)+'" stroke="'+FIG_TEAL+'" stroke-width="1.6" stroke-dasharray="4,3"/>';
+      s+='<line x1="'+DC[0].toFixed(1)+'" y1="'+DC[1].toFixed(1)+'" x2="'+BC[0].toFixed(1)+'" y2="'+BC[1].toFixed(1)+'" stroke="'+FIG_TEAL+'" stroke-width="1.6" stroke-dasharray="4,3"/>';
+      s+='<line x1="'+AC[0].toFixed(1)+'" y1="'+AC[1].toFixed(1)+'" x2="'+BC[0].toFixed(1)+'" y2="'+BC[1].toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="2"/>';
+      s+='<line x1="'+CC[0].toFixed(1)+'" y1="'+CC[1].toFixed(1)+'" x2="'+DC[0].toFixed(1)+'" y2="'+DC[1].toFixed(1)+'" stroke="'+FIG_INDIGO+'" stroke-width="2"/>';
+      s+=_drawAngleArc(AC, CC, BC, 14, null, FIG_AMBER);
+      s+=_drawAngleArc(DC, BC, CC, 14, null, FIG_AMBER);
+      [AC,BC,CC,DC,PC].forEach(function(pt){
+        s+='<circle cx="'+pt[0].toFixed(1)+'" cy="'+pt[1].toFixed(1)+'" r="2.8" fill="'+FIG_INK+'"/>';
+      });
+      var outLabelC=function(pt,lbl,ang){
+        if(!lbl) return;
+        var lx=pt[0]+14*Math.cos(ang), ly=pt[1]+14*Math.sin(ang)+4;
+        s+='<text x="'+lx.toFixed(1)+'" y="'+ly.toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lbl+'</text>';
+      };
+      outLabelC(AC, lblsC[0], aA);
+      outLabelC(BC, lblsC[1], aB);
+      outLabelC(CC, lblsC[2], aC);
+      outLabelC(DC, lblsC[3], aD);
+      if(lblsC[4]) s+='<text x="'+(PC[0]+12).toFixed(1)+'" y="'+(PC[1]-6).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsC[4]+'</text>';
+      var sdsC=fig.sides||{};
+      var drawSideC=function(p1,p2,lbl){
+        if(!lbl) return;
+        var mx=(p1[0]+p2[0])/2, my=(p1[1]+p2[1])/2;
+        s+='<text x="'+mx.toFixed(1)+'" y="'+(my+3).toFixed(1)+'" font-size="10.5" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(lbl)+'</text>';
+      };
+      drawSideC(PC, AC, sdsC.pa);
+      drawSideC(PC, BC, sdsC.pb);
+      drawSideC(PC, CC, sdsC.pc);
+      drawSideC(PC, DC, sdsC.pd);
+      s+='</svg>';
+      return s;
+    }
+
+    /* ── 8. TRAPEZOID DIAGONALS SIMILARITY ── */
+    else if(fig.type==='trapezoid_diagonals'){
+      var lblsT=fig.labels||['A','B','C','D','P'];
+      var yTop=30, yBot=H-34;
+      var spanTop=W*0.26, spanBot=W*0.42;
+      var cxT=W/2;
+      var AT=[cxT-spanTop, yTop], BT=[cxT+spanTop, yTop];
+      var DT=[cxT-spanBot, yBot], CT=[cxT+spanBot, yBot];
+      var rT=(2*spanTop)/(2*spanBot);
+      var tT=rT/(1+rT);
+      var PT=[cxT, yTop+tT*(yBot-yTop)];
+      s+='<polygon points="'+AT[0].toFixed(1)+','+AT[1].toFixed(1)+' '+BT[0].toFixed(1)+','+BT[1].toFixed(1)+' '+CT[0].toFixed(1)+','+CT[1].toFixed(1)+' '+DT[0].toFixed(1)+','+DT[1].toFixed(1)+'" fill="'+FIG_INDIGO_FILL+'" stroke="'+FIG_INDIGO+'" stroke-width="2" stroke-linejoin="round"/>';
+      s+='<line x1="'+AT[0].toFixed(1)+'" y1="'+AT[1].toFixed(1)+'" x2="'+CT[0].toFixed(1)+'" y2="'+CT[1].toFixed(1)+'" stroke="'+FIG_TEAL+'" stroke-width="1.8"/>';
+      s+='<line x1="'+BT[0].toFixed(1)+'" y1="'+BT[1].toFixed(1)+'" x2="'+DT[0].toFixed(1)+'" y2="'+DT[1].toFixed(1)+'" stroke="'+FIG_TEAL+'" stroke-width="1.8"/>';
+      s+=_drawChevrons(AT, BT, 2, FIG_INDIGO);
+      s+=_drawChevrons(DT, CT, 2, FIG_INDIGO);
+      [AT,BT,CT,DT,PT].forEach(function(pt){
+        s+='<circle cx="'+pt[0].toFixed(1)+'" cy="'+pt[1].toFixed(1)+'" r="2.8" fill="'+FIG_INK+'"/>';
+      });
+      if(lblsT[0]) s+='<text x="'+(AT[0]-10).toFixed(1)+'" y="'+(AT[1]-6).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsT[0]+'</text>';
+      if(lblsT[1]) s+='<text x="'+(BT[0]+10).toFixed(1)+'" y="'+(BT[1]-6).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsT[1]+'</text>';
+      if(lblsT[2]) s+='<text x="'+(CT[0]+12).toFixed(1)+'" y="'+(CT[1]+12).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsT[2]+'</text>';
+      if(lblsT[3]) s+='<text x="'+(DT[0]-12).toFixed(1)+'" y="'+(DT[1]+12).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsT[3]+'</text>';
+      if(lblsT[4]) s+='<text x="'+(PT[0]+14).toFixed(1)+'" y="'+(PT[1]+3).toFixed(1)+'" font-size="12" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lblsT[4]+'</text>';
+      var sdsT=fig.sides||{};
+      if(sdsT.ab) s+='<text x="'+cxT+'" y="'+(yTop-10)+'" font-size="11" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(sdsT.ab)+'</text>';
+      if(sdsT.dc||sdsT.cd) s+='<text x="'+cxT+'" y="'+(yBot+16)+'" font-size="11" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(sdsT.dc||sdsT.cd)+'</text>';
+      s+='</svg>';
+      return s;
+    }
+
+    /* ── 9. POLISHED SIDE-BY-SIDE SIMILAR SHAPES ── */
     else if(fig.type==='similar'){
       var vsim=fig.vertices||[[0,0],[10,0],[0,10]];
       var rt=fig.ratio||0.55, capH=15, padS=16;
@@ -654,13 +1072,10 @@
         var out='', pts=vsim.map(function(v){
           return [cxc+(v[0]-(mnx+mxx)/2)*scale, baseY-(v[1]-mny)*scale];
         });
-        out+='<polygon points="'+pts.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1);}).join(' ')+'" fill="'+FIG_INDIGO_FILL+'" stroke="'+FIG_INDIGO+'" stroke-width="2"/>';
+        out+='<polygon points="'+pts.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1);}).join(' ')+'" fill="'+FIG_INDIGO_FILL+'" stroke="'+FIG_INDIGO+'" stroke-width="2" stroke-linejoin="round"/>';
         if(fig.right_angle!==undefined&&fig.right_angle!==null){
           var ri=fig.right_angle, v0=pts[ri], vp=pts[(ri+2)%pts.length], vn=pts[(ri+1)%pts.length];
-          var n1=[vp[0]-v0[0],vp[1]-v0[1]], n2=[vn[0]-v0[0],vn[1]-v0[1]];
-          var l1=Math.hypot(n1[0],n1[1])||1, l2=Math.hypot(n2[0],n2[1])||1, q=8;
-          n1=[n1[0]/l1*q,n1[1]/l1*q]; n2=[n2[0]/l2*q,n2[1]/l2*q];
-          out+='<polyline points="'+(v0[0]+n1[0]).toFixed(1)+','+(v0[1]+n1[1]).toFixed(1)+' '+(v0[0]+n1[0]+n2[0]).toFixed(1)+','+(v0[1]+n1[1]+n2[1]).toFixed(1)+' '+(v0[0]+n2[0]).toFixed(1)+','+(v0[1]+n2[1]).toFixed(1)+'" fill="none" stroke="'+FIG_INK+'" stroke-width="1.1"/>';
+          out+=_drawRtBox(v0, vp, vn, 9, FIG_INDIGO);
         }
         var cen=[pts.reduce(function(a,p){return a+p[0];},0)/pts.length, pts.reduce(function(a,p){return a+p[1];},0)/pts.length];
         (cfg.sides||[]).forEach(function(sd,i){
@@ -670,37 +1085,19 @@
           var ex=b[0]-a[0], ey=b[1]-a[1], el=Math.hypot(ex,ey)||1;
           var nx=-ey/el, ny=ex/el;
           if((mx+nx-cen[0])*nx+(my+ny-cen[1])*ny<0){nx=-nx;ny=-ny;}
-          out+='<text x="'+(mx+nx*12).toFixed(1)+'" y="'+(my+ny*12+3).toFixed(1)+'" font-size="10" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle">'+sd+'</text>';
+          out+='<text x="'+(mx+nx*13).toFixed(1)+'" y="'+(my+ny*13+3).toFixed(1)+'" font-size="10.5" font-weight="700" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+_formatMathLabel(sd)+'</text>';
         });
-        /* vertex letter labels (e.g. A,B,C on one shape, D,E,F on the other) */
         (cfg.labels||[]).forEach(function(lbl,i){
           if(!lbl) return;
           var pt=pts[i], dx=pt[0]-cen[0], dy=pt[1]-cen[1], len=Math.hypot(dx,dy)||1;
-          out+='<text x="'+(pt[0]+dx/len*14).toFixed(1)+'" y="'+(pt[1]+dy/len*14+4).toFixed(1)+'" font-size="10" font-weight="bold" fill="'+FIG_INK+'" text-anchor="middle">'+lbl+'</text>';
+          out+='<circle cx="'+pt[0].toFixed(1)+'" cy="'+pt[1].toFixed(1)+'" r="2.5" fill="'+FIG_INK+'"/>';
+          out+='<text x="'+(pt[0]+dx/len*14).toFixed(1)+'" y="'+(pt[1]+dy/len*14+4).toFixed(1)+'" font-size="11" font-weight="700" fill="'+FIG_INK+'" text-anchor="middle" paint-order="stroke fill" stroke="'+FIG_BG+'" stroke-width="3">'+lbl+'</text>';
         });
-        /* vertex angle arcs with a value/expression label (mirrors the `triangle` type's `angles`) */
         (cfg.angles||[]).forEach(function(ang,i){
           if(!ang) return;
           var v0=pts[i], oth1=pts[(i+1)%pts.length], oth2=pts[(i+2)%pts.length];
-          var v1=[oth1[0]-v0[0],oth1[1]-v0[1]], v2=[oth2[0]-v0[0],oth2[1]-v0[1]];
-          var l1=Math.hypot(v1[0],v1[1])||1, l2=Math.hypot(v2[0],v2[1])||1;
-          var a1=Math.atan2(v1[1],v1[0]), a2=Math.atan2(v2[1],v2[0]);
-          var ar=11;
-          var sx=(v0[0]+ar*Math.cos(a1)).toFixed(1), sy=(v0[1]+ar*Math.sin(a1)).toFixed(1);
-          var ex2=(v0[0]+ar*Math.cos(a2)).toFixed(1), ey2=(v0[1]+ar*Math.sin(a2)).toFixed(1);
-          var cross=v1[0]/l1*v2[1]/l2-v1[1]/l1*v2[0]/l2, sweep=cross>0?1:0;
-          out+='<path d="M'+sx+','+sy+' A'+ar+','+ar+' 0 0,'+sweep+' '+ex2+','+ey2+'" fill="none" stroke="'+FIG_AMBER+'" stroke-width="1.2"/>';
-          var diff=a2-a1; while(diff>Math.PI)diff-=2*Math.PI; while(diff<-Math.PI)diff+=2*Math.PI;
-          var midA=a1+(cross>0?1:-1)*Math.abs(diff)/2;
-          var lx=(v0[0]+(ar+10)*Math.cos(midA)).toFixed(1), ly=(v0[1]+(ar+10)*Math.sin(midA)+3).toFixed(1);
-          out+='<text x="'+lx+'" y="'+ly+'" font-size="9" fill="'+FIG_AMBER_TEXT+'" text-anchor="middle">'+ang+'</text>';
+          out+=_drawAngleArc(v0, oth1, oth2, 12, ang, FIG_AMBER);
         });
-        /* congruence tick marks — a side/angle carries n perpendicular ticks (or
-           n stacked arcs) so a matching count on BOTH shapes shows which parts
-           were given congruent; since both shapes share the same `vertices`
-           list, index i means the same side/vertex on each, so one fig-level
-           list applied identically to both draws is exactly the correspondence
-           marking a congruence-postulate figure needs. */
         (fig.tick_sides||[]).forEach(function(ts){
           var i=ts.i, n=ts.n||1;
           var a=pts[i%pts.length], b=pts[(i+1)%pts.length];
@@ -715,23 +1112,16 @@
         (fig.tick_angles||[]).forEach(function(ta){
           var i=ta.i, n=ta.n||1;
           var v0=pts[i%pts.length], oth1=pts[(i+1)%pts.length], oth2=pts[(i+2)%pts.length];
-          var v1=[oth1[0]-v0[0],oth1[1]-v0[1]], v2=[oth2[0]-v0[0],oth2[1]-v0[1]];
-          var l1=Math.hypot(v1[0],v1[1])||1, l2=Math.hypot(v2[0],v2[1])||1;
-          var a1=Math.atan2(v1[1],v1[0]), a2=Math.atan2(v2[1],v2[0]);
-          var cross=v1[0]/l1*v2[1]/l2-v1[1]/l1*v2[0]/l2, sweep=cross>0?1:0;
           for(var k2=0;k2<n;k2++){
-            var ar2=8+k2*4;
-            var sx2=(v0[0]+ar2*Math.cos(a1)).toFixed(1), sy2=(v0[1]+ar2*Math.sin(a1)).toFixed(1);
-            var ex3=(v0[0]+ar2*Math.cos(a2)).toFixed(1), ey3=(v0[1]+ar2*Math.sin(a2)).toFixed(1);
-            out+='<path d="M'+sx2+','+sy2+' A'+ar2+','+ar2+' 0 0,'+sweep+' '+ex3+','+ey3+'" fill="none" stroke="'+FIG_AMBER+'" stroke-width="1.3"/>';
+            out+=_drawAngleArc(v0, oth1, oth2, 9+k2*4, null, FIG_AMBER);
           }
         });
-        if(cfg.caption) out+='<text x="'+cxc.toFixed(1)+'" y="'+(H-3)+'" font-size="10" fill="'+FIG_MUTED+'" text-anchor="middle">'+cfg.caption+'</text>';
+        if(cfg.caption) out+='<text x="'+cxc.toFixed(1)+'" y="'+(H-3)+'" font-size="10.5" font-weight="600" fill="'+FIG_MUTED+'" text-anchor="middle">'+cfg.caption+'</text>';
         return out;
       };
       s+=drawOne(fig.left, W*0.26, scS*rt);
       s+=drawOne(fig.right, W*0.74, scS);
-      if(fig.tilde) s+='<text x="'+(W/2)+'" y="'+(baseY-8)+'" font-size="13" fill="'+FIG_MUTED+'" text-anchor="middle">~</text>';
+      if(fig.tilde) s+='<text x="'+(W/2)+'" y="'+(baseY-8)+'" font-size="14" font-weight="700" fill="'+FIG_MUTED+'" text-anchor="middle">~</text>';
       s+='</svg>';
       return s;
     }
@@ -1301,6 +1691,23 @@ function renderMathFigure(spec){
       return renderTransformationGrid(spec);
     case 'voronoi':
       return renderVoronoi(spec);
+    case 'nested_triangles':
+    case 'thales':
+    case 'triangle_transversal':
+    case 'bowtie':
+    case 'hourglass':
+    case 'right_triangle_altitude':
+    case 'altitude_hypotenuse':
+    case 'geometric_mean':
+    case 'shadow_similarity':
+    case 'indirect_measurement':
+    case 'angle_bisector':
+    case 'circle_chords_similarity':
+    case 'overlapping_triangles':
+    case 'inverted_similar':
+    case 'trapezoid_diagonals':
+    case 'similar':
+      return typeof window._renderFig === 'function' ? window._renderFig(spec) : '';
     default: return '';
   }
 }

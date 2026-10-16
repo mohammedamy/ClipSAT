@@ -108,7 +108,10 @@
     ['approx', '≈'], ['equiv', '≡'], ['infty', '∞'], ['rightarrow', '→'], ['to', '→'],
     ['leftarrow', '←'], ['leftrightarrow', '↔'], ['cup', '∪'], ['cap', '∩'],
     ['in', '∈'], ['notin', '∉'], ['subset', '⊂'], ['subseteq', '⊆'], ['emptyset', '∅'],
-    ['angle', '∠'], ['perp', '⊥'], ['parallel', '∥'], ['sum', 'Σ'], ['prod', 'Π'],
+    ['triangle', '△'], ['bigtriangleup', '△'], ['vartriangle', '△'],
+    ['angle', '∠'], ['measuredangle', '∡'], ['perp', '⊥'], ['parallel', '∥'],
+    ['cong', '≅'], ['sim', '~'], ['odot', '⊙'],
+    ['sum', 'Σ'], ['prod', 'Π'],
     // Longer names first so e.g. \oiint isn't cut short by \oint matching its prefix.
     ['oiiint', '∰'], ['oiint', '∯'], ['iiint', '∭'], ['iint', '∬'], ['oint', '∮'], ['int', '∫'],
     ['partial', '∂'], ['nabla', '∇'], ['degree', '°'], ['circ', '°'],
@@ -209,6 +212,9 @@
     s = s.replace(/\^\{?\\circ\}?/g, '°').replace(/\^\{?\\degree\}?/g, '°').replace(/\^°/g, '°');
     // Sizing commands (\left( \right] …) — drop the command, keep the delimiter.
     s = s.replace(/\\left/g, '').replace(/\\right/g, '');
+    // Geometry symbols with optional trailing space: \triangle ABC -> △ABC, \angle C -> ∠C
+    s = s.replace(/\\(triangle|bigtriangleup|vartriangle)\s*/g, '△');
+    s = s.replace(/\\(angle|measuredangle)\s*/g, '∠');
     // LaTeX itself adds visual spacing around commands like \frac and \oint
     // even with no literal space in the source — plain text needs that
     // spacing made explicit, or two converted tokens run together unreadably
@@ -352,7 +358,7 @@
   // render that came back oddly tiny from being unreadably small anyway.
   function imageObj(img, altText) {
     var width = Math.max(80, Math.min(740, img.width || 400));
-    return { sourceUri: img.sourceUri, altText: altText, properties: { width: width } };
+    return { sourceUri: img.sourceUri, altText: altText, properties: { width: width, alignment: 'CENTER' } };
   }
 
   // quizData: { title, questions: [{text, choices:[], correctIndex, type:'mcq'|'frq', points}] }

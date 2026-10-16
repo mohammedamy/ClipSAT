@@ -1,139 +1,158 @@
 {
   "track": "precalc",
   "num": "8.03",
+  "slug": "introduction-to-limits",
   "title": "Introduction to Limits",
   "sections": [
     {
-      "heading": "Evaluating limits",
+      "heading": "Section 1: Intuitive Concept and Numerical Estimates",
       "questions": [
         {
-          "q": "Evaluate $\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2}$ by first simplifying the expression.",
-          "answer": "$\\frac{(x-2)(x+2)}{x-2} = x + 2$ for $x \\neq 2$, so the limit is $4$."
-        },
-        {
-          "q": "Evaluate by direct substitution where possible:",
-          "parts": [
-            "$\\lim_{x \\to 3} (x^2 + 2x - 1)$",
-            "$\\lim_{x \\to 1} \\frac{x + 5}{x + 1}$"
+          "q": "What does $\\lim_{x \\to c} f(x) = L$ mean intuitively?",
+          "choices": [
+            "As $x$ gets arbitrarily close to $c$ (from either side, $x \\neq c$), $f(x)$ gets arbitrarily close to $L$",
+            "$f(c) = L$ always",
+            "The slope of $f$ at $c$ is $L$",
+            "$f(x)$ is continuous at $c$"
           ],
-          "cols": 2,
-          "answers": ["$= 14$", "$= 3$"]
+          "correct": 0,
+          "answer": "A limit describes the value that $f(x)$ approaches as $x$ nears $c$, completely independent of what happens at $x = c$ itself."
         },
         {
-          "q": "Using a table of values near $x = 0$ (in radians), estimate $\\lim_{x \\to 0} \\frac{\\sin x}{x}$.",
-          "answer": "Values approach $1$ from both sides; the limit is $1$.",
-          "figure": {"type": "plot", "fns": ["sin(x)/x"], "points": [[0, 1]], "xmin": -3, "xmax": 3, "ymin": -0.5, "ymax": 1.2, "width": 210}
-        }
-      ]
-    },
-    {
-      "heading": "One-sided limits and limits at infinity",
-      "questions": [
-        {
-          "q": "Let $f(x) = \\frac{|x|}{x}$. Find:",
-          "parts": [
-            "$\\lim_{x \\to 0^+} f(x)$",
-            "$\\lim_{x \\to 0^-} f(x)$",
-            "$\\lim_{x \\to 0} f(x)$"
+          "q": "Use numerical estimation with $x = 1.9, 1.99, 2.01, 2.1$ to estimate $\\lim_{x \\to 2} (3x - 1)$.",
+          "choices": [
+            "$5$",
+            "$6$",
+            "$4$",
+            "$3$"
           ],
-          "cols": 3,
-          "answers": ["$= 1$", "$= -1$", "does not exist"]
+          "correct": 0,
+          "answer": "$3(1.99) - 1 = 4.97$; $3(2.01) - 1 = 5.03$. Values converge toward 5 as $x \\to 2$."
         },
         {
-          "q": "Evaluate each limit at infinity:",
-          "parts": [
-            "$\\lim_{x \\to \\infty} \\frac{3x^2 + 5}{x^2 - 2}$",
-            "$\\lim_{x \\to \\infty} \\frac{2x + 1}{x^2 + 4}$"
+          "q": "If $f(3)$ is undefined, can $\\lim_{x \\to 3} f(x)$ still exist?",
+          "choices": [
+            "Yes, because limits describe behavior near $x = 3$, not at $x = 3$",
+            "No, limits require $f(c)$ to be defined",
+            "Only if $f(x) = 0$",
+            "Only for polynomials"
           ],
-          "cols": 2,
-          "answers": ["$= 3$", "$= 0$"]
+          "correct": 0,
+          "answer": "The existence of a limit at $c$ depends entirely on values in a punctured neighborhood around $c$, regardless of whether $f(c)$ is defined."
+        }
+      ]
+    },
+    {
+      "heading": "Section 2: Graphical Limits and One-Sided Limits",
+      "questions": [
+        {
+          "q": "When does the two-sided limit $\\lim_{x \\to c} f(x)$ exist?",
+          "choices": [
+            "If and only if both one-sided limits exist and are equal ($\\lim_{x \\to c^-} f(x) = \\lim_{x \\to c^+} f(x) = L$)",
+            "Whenever $f(c)$ exists",
+            "Whenever $\\lim_{x \\to c^+} f(x)$ exists",
+            "If $f$ is defined on $[c, \\infty)$"
+          ],
+          "correct": 0,
+          "answer": "The two-sided limit exists if and only if both the left-hand limit and the right-hand limit exist and agree on a common value $L$."
         },
         {
-          "q": "The graph of $f(x) = \\frac{1}{x - 2} + 3$ has asymptotes $x = 2$ and $y = 3$. Express each asymptote as a limit statement.",
-          "answer": "$\\lim_{x \\to 2^+} f(x) = +\\infty$ (and $\\lim_{x \\to 2^-} f(x) = -\\infty$); $\\lim_{x \\to \\pm\\infty} f(x) = 3$."
-        }
-      ]
-    },
-    {
-      "heading": "More limit computations",
-      "questions": [
-        {
-          "q": "Evaluate $\\lim_{x\\to4} \\frac{\\sqrt{x}-2}{x-4}$ by rationalizing the numerator.",
-          "answer": "Multiply by $\\frac{\\sqrt{x}+2}{\\sqrt{x}+2}$: $\\frac{x-4}{(x-4)(\\sqrt{x}+2)} = \\frac{1}{\\sqrt{x}+2} \\to \\frac{1}{4}$."
+          "q": "For the step function $f(x)$ defined as $2$ for $x < 1$ and $5$ for $x \\geq 1$, find $\\lim_{x \\to 1^-} f(x)$ and $\\lim_{x \\to 1^+} f(x)$.",
+          "choices": [
+            "Left limit $= 2$, Right limit $= 5$",
+            "Left limit $= 5$, Right limit $= 2$",
+            "Both equal 2",
+            "Both equal 5"
+          ],
+          "correct": 0,
+          "answer": "As $x \\to 1^-$ (from the left), $f(x) = 2$. As $x \\to 1^+$ (from the right), $f(x) = 5$."
         },
         {
-          "q": "Evaluate $\\lim_{x\\to-1} \\frac{x^3+1}{x+1}$ by factoring (using the sum-of-cubes formula).",
-          "answer": "$x^3+1=(x+1)(x^2-x+1)$, so the limit equals $\\lim_{x\\to-1}(x^2-x+1) = 1+1+1=3$."
+          "q": "Does the two-sided limit $\\lim_{x \\to 1} f(x)$ exist for the step function in the previous question?",
+          "choices": [
+            "No, because the left limit ($2$) does not equal the right limit ($5$)",
+            "Yes, it equals 5",
+            "Yes, it equals 3.5",
+            "Yes, it equals 2"
+          ],
+          "correct": 0,
+          "answer": "Because $\\lim_{x \\to 1^-} f(x) = 2 \\neq 5 = \\lim_{x \\to 1^+} f(x)$, the two-sided limit does not exist (DNE)."
+        }
+      ]
+    },
+    {
+      "heading": "Section 3: Algebraic Evaluation of Limits",
+      "questions": [
+        {
+          "q": "Evaluate $\\lim_{x \\to 4} \\frac{x^2 - 16}{x - 4}$.",
+          "choices": [
+            "$8$",
+            "$0$",
+            "$4$",
+            "Does not exist"
+          ],
+          "correct": 0,
+          "answer": "Indeterminate form $0/0$. Factor: $\\frac{(x-4)(x+4)}{x-4} = x + 4$. As $x \\to 4$, $4 + 4 = 8$."
         },
         {
-          "q": "Evaluate $\\lim_{x\\to0} \\frac{\\tan x}{x}$, using $\\lim_{x\\to0}\\frac{\\sin x}{x}=1$ and $\\tan x = \\frac{\\sin x}{\\cos x}$.",
-          "answer": "$\\frac{\\tan x}{x} = \\frac{\\sin x}{x}\\cdot\\frac{1}{\\cos x} \\to 1 \\cdot \\frac{1}{1} = 1$.",
-          "figure": {"type": "plot", "fns": ["tan(x)/x"], "points": [[0, 1]], "xmin": -1.5, "xmax": 1.5, "ymin": -1, "ymax": 3, "width": 210}
-        }
-      ]
-    },
-    {
-      "heading": "Continuity and limits together",
-      "questions": [
-        {
-          "q": "A function $f$ is defined by $f(x) = x+3$ for $x \\neq 2$, and $f(2) = 10$. Find $\\lim_{x\\to2} f(x)$ and state whether $f$ is continuous at $x=2$.",
-          "answer": "$\\lim_{x\\to2} f(x) = 2+3=5$. Since $f(2)=10 \\neq 5$, $f$ is not continuous at $x=2$ — it has a removable discontinuity."
+          "q": "Evaluate $\\lim_{x \\to 0} \\frac{\\sqrt{x + 9} - 3}{x}$.",
+          "choices": [
+            "$1/6$",
+            "$1/3$",
+            "$0$",
+            "$1/9$"
+          ],
+          "correct": 0,
+          "answer": "Multiply numerator and denominator by conjugate $(\\sqrt{x+9} + 3)$: $\\frac{(x+9) - 9}{x(\\sqrt{x+9} + 3)} = \\frac{1}{\\sqrt{x+9} + 3} \\to \\frac{1}{3 + 3} = \\frac{1}{6}$."
         },
         {
-          "q": "Estimate $\\lim_{x\\to\\infty} \\left(\\sqrt{x^2+1}-x\\right)$ by rationalizing.",
-          "answer": "Multiply by $\\frac{\\sqrt{x^2+1}+x}{\\sqrt{x^2+1}+x}$: $\\frac{1}{\\sqrt{x^2+1}+x} \\to 0$ as $x\\to\\infty$."
+          "q": "Evaluate $\\lim_{x \\to -2} \\frac{x^3 + 8}{x + 2}$.",
+          "choices": [
+            "$12$",
+            "$0$",
+            "$4$",
+            "$8$"
+          ],
+          "correct": 0,
+          "answer": "Sum of cubes: $\\frac{(x + 2)(x^2 - 2x + 4)}{x + 2} = x^2 - 2x + 4$. At $x = -2$: $(-2)^2 - 2(-2) + 4 = 4 + 4 + 4 = 12$."
         }
       ]
     },
     {
-      "heading": "Limits from graphs and tables",
+      "heading": "Section 4: Limits Involving Infinity",
       "questions": [
         {
-          "q": "A function $g$ satisfies $g(1.9)=5.8$, $g(1.99)=5.98$, $g(1.999)=5.998$, $g(2.1)=6.2$, $g(2.01)=6.02$, $g(2.001)=6.002$. Based on this table, estimate $\\lim_{x\\to2} g(x)$.",
-          "answer": "Both sides approach $6$: $\\lim_{x\\to2}g(x)=6$."
+          "q": "Evaluate $\\lim_{x \\to \\infty} \\frac{5x^2 - 2x}{2x^2 + 7x - 1}$.",
+          "choices": [
+            "$5/2$",
+            "$\\infty$",
+            "$0$",
+            "$-2$"
+          ],
+          "correct": 0,
+          "answer": "Divide by $x^2$: $\\lim_{x \\to \\infty} \\frac{5 - 2/x}{2 + 7/x - 1/x^2} = \\frac{5}{2}$."
         },
         {
-          "q": "Explain, using one-sided limits, why $\\lim_{x\\to0} \\frac{1}{x^2}$ exists as an infinite limit (both one-sided limits agree), while $\\lim_{x\\to0}\\frac{1}{x}$ does not exist even as an infinite limit.",
-          "answer": "For $\\frac{1}{x^2}$: as $x\\to0^+$ or $x\\to0^-$, $x^2>0$ always, so both one-sided limits are $+\\infty$ — they agree, so we say $\\lim_{x\\to0}\\frac{1}{x^2}=+\\infty$. For $\\frac{1}{x}$: as $x\\to0^+$, $\\frac{1}{x}\\to+\\infty$, but as $x\\to0^-$, $\\frac{1}{x}\\to-\\infty$ — the one-sided limits disagree (not even both infinite in the same direction), so the limit does not exist in any sense."
-        }
-      ]
-    },
-    {
-      "heading": "Visualizing a limit graphically",
-      "questions": [
+          "q": "Evaluate $\\lim_{x \\to \\infty} \\frac{3x + 1}{x^2 + 5}$.",
+          "choices": [
+            "$0$",
+            "$3$",
+            "$\\infty$",
+            "$1/5$"
+          ],
+          "correct": 0,
+          "answer": "The degree of the denominator is higher than that of the numerator, so the limit as $x \\to \\infty$ is 0."
+        },
         {
-          "q": "The graph of $f(x)=\\frac{x^2-4}{x-2}$ (which simplifies to $x+2$ with a hole at $x=2$) is shown. Use the graph to estimate $\\lim_{x\\to2}f(x)$, and explain why the hole doesn't affect the limit's value.",
-          "answer": "The graph approaches the height $4$ from both sides as $x\\to2$, even though the function is undefined exactly at $x=2$ (the hole). A limit only depends on the function's behavior NEAR the point, not its value (or lack of one) AT the point, so $\\lim_{x\\to2}f(x)=4$ regardless of the hole.",
-          "figure": {"type": "plot", "fns": ["x + 2"], "xmin": -2, "xmax": 6, "ymin": -2, "ymax": 8, "width": 230}
-        }
-      ]
-    },
-    {
-      "heading": "The formal idea of a limit (intuitive)",
-      "questions": [
-        {
-          "q": "Explain, in your own words, what it means for $\\lim_{x\\to a}f(x)=L$, without using formal epsilon-delta language.",
-          "answer": "It means that as $x$ gets arbitrarily close to $a$ (from either side, without necessarily equaling $a$), the function's output values $f(x)$ get arbitrarily close to the single number $L$."
-        }
-      ]
-    },
-    {
-      "heading": "Limit laws",
-      "questions": [
-        {
-          "q": "Given $\\lim_{x\\to3}f(x)=5$ and $\\lim_{x\\to3}g(x)=-2$, use the limit laws to evaluate:",
-          "parts": ["$\\lim_{x\\to3}[f(x)+g(x)]$", "$\\lim_{x\\to3}[f(x)\\cdot g(x)]$", "$\\lim_{x\\to3}\\frac{f(x)}{g(x)}$"],
-          "cols": 3,
-          "answers": ["$=5+(-2)=3$", "$=5(-2)=-10$", "$=\\frac{5}{-2}=-\\frac{5}{2}$"]
-        }
-      ]
-    },
-    {
-      "heading": "Limits involving piecewise functions",
-      "questions": [
-        {
-          "q": "A function is defined by $f(x)=x^2$ for $x<1$ and $f(x)=3x-1$ for $x\\geq1$. Find $\\lim_{x\\to1^-}f(x)$, $\\lim_{x\\to1^+}f(x)$, and state whether $\\lim_{x\\to1}f(x)$ exists.",
-          "answer": "$\\lim_{x\\to1^-}f(x)=1^2=1$. $\\lim_{x\\to1^+}f(x)=3(1)-1=2$. Since the one-sided limits disagree ($1\\neq2$), $\\lim_{x\\to1}f(x)$ does NOT exist."
+          "q": "Evaluate $\\lim_{x \\to 3^+} \\frac{1}{x - 3}$ and $\\lim_{x \\to 3^-} \\frac{1}{x - 3}$.",
+          "choices": [
+            "$+\\infty$ and $-\\infty$",
+            "$+\\infty$ and $+\\infty$",
+            "$-\\infty$ and $+\\infty$",
+            "$0$ and $0$"
+          ],
+          "correct": 0,
+          "answer": "As $x \\to 3^+$, $x - 3 > 0$, so $1/(x-3) \\to +\\infty$. As $x \\to 3^-$, $x - 3 < 0$, so $1/(x-3) \\to -\\infty$."
         }
       ]
     }

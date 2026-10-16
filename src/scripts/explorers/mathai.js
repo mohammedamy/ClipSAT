@@ -14,7 +14,7 @@
     var canvas = document.getElementById('aiCosineCanvas'); if(!canvas) return;
     var uAngle = 0.4, vAngle = 1.2;
     var su = document.getElementById('aiVecU'), sv = document.getElementById('aiVecV');
-    var view = { xmin: -1.5, xmax: 1.5, ymin: -1.5, ymax: 1.5 };
+    var view = { xmin: -1.5, xmax: 1.5, ymin: -1.5, ymax: 1.5, square: true, step: 0.5 };
 
     function draw(ctx, w, h){
       var P = new Plot(ctx, w, h, view, { l: 20, r: 20, t: 20, b: 20 });

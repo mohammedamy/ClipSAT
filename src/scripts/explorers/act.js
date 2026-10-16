@@ -43,7 +43,7 @@
   (function(){
     var canvas=document.getElementById('actLineCanvas'); if(!canvas) return;
     var m=1,b=0, sm=document.getElementById('actM'), sb=document.getElementById('actB');
-    var view={xmin:-6,xmax:6,ymin:-7,ymax:7};
+    var view={xmin:-6,xmax:6,ymin:-7,ymax:7,square:true,step:1};
     var dataBtn=document.getElementById('actLineDataBtn'), dataPanel=document.getElementById('actLineDataPanel'),
         dataDesc=document.getElementById('actLineDataDesc'), dataRows=document.getElementById('actLineDataRows');
     wireDataToggle(dataBtn,dataPanel);

@@ -2,7 +2,7 @@
   "id": "geo-similarity",
   "chapterNumber": "4",
   "title": {
-    "en": "Similarity",
+    "en": "Similarity & Proportional Reasoning",
     "ar": null
   },
   "content": {
@@ -10,7 +10,7 @@
       {
         "kind": "text",
         "body": {
-          "en": "Similar figures have the same shape but not necessarily the same size: equal angles and sides in a constant ratio. The ratio — the <strong>scale factor</strong> — governs lengths, areas and volumes differently.",
+          "en": "<p>Two geometric figures are <strong>similar</strong> (denoted by the symbol \\( \\sim \\)) if they have the exact same shape, even if their sizes differ. Specifically, two polygons are similar if and only if:</p><ol><li>All corresponding angles are <strong>congruent</strong> (equal in measure).</li><li>All corresponding side lengths are <strong>proportional</strong>, related by a constant ratio \\( k \\) known as the <strong>scale factor</strong>.</li></ol>",
           "ar": null
         }
       },
@@ -18,11 +18,11 @@
         "kind": "callout",
         "style": "def",
         "label": {
-          "en": "● Definition 4.1 — Similar polygons",
+          "en": "● Definition 4.1 — Scale Factor & Similarity Transformations",
           "ar": null
         },
         "body": {
-          "en": "<p>Two polygons are <strong>similar</strong> when corresponding angles are equal and corresponding sides are in proportion. Triangles need only two equal angles (<strong>AA</strong>) to be similar.</p>",
+          "en": "<p>If \\( \\triangle ABC \\sim \\triangle DEF \\), the vertices are named in corresponding order: vertex \\( A \\) corresponds to \\( D \\), \\( B \\) to \\( E \\), and \\( C \\) to \\( F \\). The linear <strong>scale factor</strong> from \\( \\triangle ABC \\) to \\( \\triangle DEF \\) is:</p>\\[ k = \\frac{DE}{AB} = \\frac{EF}{BC} = \\frac{DF}{AC} \\]<p>Every linear dimension (sides, altitudes, medians, perimeters) scales by \\( k \\). Areas scale by \\( k^2 \\), and volumes of similar 3D solids scale by \\( k^3 \\).</p>",
           "ar": null
         }
       },
@@ -30,35 +30,31 @@
         "kind": "figure",
         "id": "fig-similar-triangles",
         "title": {
-          "en": "Similar Triangles &amp; Scale Factor",
+          "en": "Corresponding Parts of Similar Triangles",
           "ar": null
         },
         "figure": {
           "type": "similar",
           "vertices": [
-            [
-              0,
-              0
-            ],
-            [
-              6,
-              0
-            ],
-            [
-              2,
-              4
-            ]
+            [0, 0],
+            [10, 0],
+            [3, 6]
           ],
           "ratio": 0.6,
           "left": {
-            "caption": "Original (k = 1)"
+            "labels": ["A", "B", "C"],
+            "sides": ["10", "8", "6"],
+            "caption": "Original: △ABC"
           },
           "right": {
-            "caption": "Scaled (k = 0.6)"
-          }
+            "labels": ["D", "E", "F"],
+            "sides": ["6", "4.8", "3.6"],
+            "caption": "Scaled (k = 0.6): △DEF"
+          },
+          "tilde": true
         },
         "caption": {
-          "en": "When linear side lengths scale by k = 0.6, all corresponding angles remain identical, perimeters scale by 0.6, and areas scale by k² = 0.36.",
+          "en": "When linear side lengths scale by k = 0.6, corresponding angles remain congruent (∠A ≅ ∠D, ∠B ≅ ∠E, ∠C ≅ ∠F), perimeters scale by k = 0.6, and areas scale by k² = 0.36.",
           "ar": null
         }
       },
@@ -67,41 +63,41 @@
         "items": [
           {
             "label": {
-              "en": "Side ratio",
+              "en": "Linear Ratio",
               "ar": null
             },
             "value": {
-              "en": "\\( \\dfrac{a'}{a}=k \\)",
+              "en": "\\( \\dfrac{s_2}{s_1} = k \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Perimeter ratio",
+              "en": "Perimeter Ratio",
               "ar": null
             },
             "value": {
-              "en": "k",
+              "en": "\\( \\dfrac{P_2}{P_1} = k \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Area ratio",
+              "en": "Area Ratio",
               "ar": null
             },
             "value": {
-              "en": "\\( k^{2} \\)",
+              "en": "\\( \\dfrac{A_2}{A_1} = k^2 \\)",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Triangle test",
+              "en": "Volume Ratio",
               "ar": null
             },
             "value": {
-              "en": "AA similarity",
+              "en": "\\( \\dfrac{V_2}{V_1} = k^3 \\)",
               "ar": null
             }
           }
@@ -109,25 +105,13 @@
       },
       {
         "kind": "callout",
-        "style": "example",
+        "style": "thm",
         "label": {
-          "en": "Worked example 4.A",
+          "en": "● Theorem 4.1 — Triangle Similarity Criteria (AA, SAS, SSS)",
           "ar": null
         },
         "body": {
-          "en": "<p>A \\( 6 \\)-ft person casts a \\( 4 \\)-ft shadow while a tree casts a \\( 20 \\)-ft shadow. Find the tree's height.</p><p>Similar triangles give \\( \\dfrac{6}{4}=\\dfrac{h}{20} \\):</p>\\[ h=\\frac{6\\times 20}{4}=30\\ \\text{ft}. \\]",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked example 4.B",
-          "ar": null
-        },
-        "body": {
-          "en": "<p>Two similar figures have side ratio \\( 1:3 \\). What is the ratio of their areas?</p>\\[ 1^{2}:3^{2}=1:9. \\]",
+          "en": "<p>While general polygons require checking both all angles and all side ratios, triangles need only one of three minimal criteria:</p><ul><li><strong>AA (Angle-Angle):</strong> If two angles of one triangle are congruent to two angles of another, the third angles are automatically congruent (since angles sum to \\(180^\\circ\\)), and the triangles are similar.</li><li><strong>SAS (Side-Angle-Side):</strong> If two pairs of corresponding sides are proportional and their <em>included</em> angle is congruent: \\( \\frac{A'B'}{AB} = \\frac{A'C'}{AC} \\) and \\( \\angle A \\cong \\angle A' \\).</li><li><strong>SSS (Side-Side-Side):</strong> If all three pairs of corresponding sides are in the same constant ratio: \\( \\frac{A'B'}{AB} = \\frac{B'C'}{BC} = \\frac{C'A'}{CA} = k \\).</li></ul>",
           "ar": null
         }
       },
@@ -135,33 +119,308 @@
         "kind": "callout",
         "style": "warn",
         "label": {
-          "en": "Common Pitfall — Scaling Areas vs. Lengths",
+          "en": "Common Pitfall — The SSA Non-Similarity Trap",
           "ar": null
         },
         "body": {
-          "en": "<p>When figures are similar with linear scale factor \\( k \\), lengths and perimeters scale by \\( k \\), but areas scale by \\( k^2 \\) and volumes scale by \\( k^3 \\). If an exam question states: 'If a triangle's side lengths are tripled, by what factor does its area increase?', the answer is \\( 3^2 = 9 \\), NOT \\( 3 \\).",
+          "en": "<p>Two proportional sides and a <strong>non-included</strong> angle (SSA) do <strong>NOT</strong> prove triangle similarity. Just as in congruence, the non-included angle allows the third side to swing into two distinct orientations (acute or obtuse), producing non-similar triangles. Similarity requires the congruent angle to be strictly sandwiched between the proportional sides (SAS).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 4.2 — Triangle Proportionality Theorem (Thales' Theorem)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>If a line is parallel to one side of a triangle intersecting the other two sides, it divides the two sides proportionally:</p>\\[ \\text{In } \\triangle ABC, \\text{ if } DE \\parallel BC \\implies \\frac{AD}{DB} = \\frac{AE}{EC} \\quad (\\text{Part-to-Part Proportionality}) \\]<p>Furthermore, because \\( \\angle ADE \\cong \\angle B \\) and \\( \\angle AED \\cong \\angle C \\) (corresponding angles formed by parallel lines), \\( \\triangle ADE \\sim \\triangle ABC \\) by AA similarity. Therefore, the transversal base satisfies the <strong>Whole-to-Part</strong> ratio:</p>\\[ \\frac{AD}{AB} = \\frac{AE}{AC} = \\frac{DE}{BC} \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "figure",
+        "id": "fig-nested-transversal",
+        "title": {
+          "en": "Parallel Transversal & Nested Similar Triangles",
+          "ar": null
+        },
+        "figure": {
+          "type": "nested_triangles",
+          "labels": ["A", "B", "C", "D", "E"],
+          "t": 0.52,
+          "sides": {
+            "ad": "12",
+            "db": "8",
+            "ae": "15",
+            "ec": "10",
+            "de": "18",
+            "bc": "30"
+          },
+          "shade": "top"
+        },
+        "caption": {
+          "en": "Segment DE is parallel to base BC (marked with >> chevrons). Part-to-part ratio: AD/DB = 12/8 = 1.5, matching AE/EC = 15/10 = 1.5. Whole-to-part ratio: AD/AB = 12/20 = 0.6, which equals DE/BC = 18/30 = 0.6.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 4.1 — Parallel Transversal with Unknown Length",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>In \\( \\triangle ABC \\), segment \\( DE \\parallel BC \\) with \\( D \\) on \\( AB \\) and \\( E \\) on \\( AC \\). If \\( AD = 8 \\), \\( DB = 12 \\), and \\( DE = 6 \\), find the length of base \\( BC \\).</p><p><strong>Step 1: Identify the correct ratio.</strong> The parallel segments \\( DE \\) and \\( BC \\) are sides of \\( \\triangle ADE \\) and \\( \\triangle ABC \\). Side ratios must use whole sides from vertex \\( A \\), not part-to-part segments:</p>\\[ AB = AD + DB = 8 + 12 = 20 \\]<p><strong>Step 2: Set up the whole-to-part proportion:</strong></p>\\[ \\frac{DE}{BC} = \\frac{AD}{AB} \\implies \\frac{6}{BC} = \\frac{8}{20} \\]<p><strong>Step 3: Solve for \\( BC \\):</strong></p>\\[ BC = \\frac{6 \\times 20}{8} = \\frac{120}{8} = 15 \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 4.3 — Hourglass / Bowtie Similarity",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>When segments \\( AC \\) and \\( BD \\) intersect at point \\( E \\) and their bases are parallel (\\( AB \\parallel CD \\)), the resulting figure forms an hourglass / bowtie shape. Because:</p><ol><li>\\( \\angle AEB \\cong \\angle CED \\) (vertical angles are equal), and</li><li>\\( \\angle A \\cong \\angle C \\) and \\( \\angle B \\cong \\angle D \\) (alternate interior angles formed by parallel lines),</li></ol><p>the two triangles are similar by AA similarity: \\( \\triangle ABE \\sim \\triangle CDE \\). Corresponding sides yield:</p>\\[ \\frac{AB}{CD} = \\frac{AE}{CE} = \\frac{BE}{DE} \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "figure",
+        "id": "fig-bowtie-similarity",
+        "title": {
+          "en": "Hourglass / Bowtie Similar Triangles",
+          "ar": null
+        },
+        "figure": {
+          "type": "bowtie",
+          "labels": ["A", "B", "C", "D", "E"],
+          "ratio": 0.65,
+          "sides": {
+            "ab": "13",
+            "cd": "20",
+            "ae": "9.1",
+            "ec": "14",
+            "be": "x",
+            "ed": "16"
+          }
+        },
+        "caption": {
+          "en": "Parallel bases AB and CD (marked with >> chevrons) guarantee △ABE ~ △CDE. Vertical angles at E are congruent. Cross-proportions: AE/EC = BE/ED = AB/CD = 0.65.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 4.4 — Right Triangle Altitude Theorem (Geometric Mean)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>In a right triangle \\( \\triangle ABC \\) with right angle at \\( C \\), the altitude \\( CD = h \\) drawn perpendicular to the hypotenuse \\( AB = c \\) divides the hypotenuse into two segments \\( p = AD \\) and \\( q = DB \\). This altitude splits the original triangle into two smaller right triangles that are both similar to the original and to each other: \\( \\triangle ACD \\sim \\triangle CBD \\sim \\triangle ABC \\).</p><p>This yields three fundamental geometric mean relationships:</p><ol><li><strong>Altitude Rule:</strong> The altitude is the geometric mean of the two hypotenuse segments:<br>\\[ h^2 = p \\cdot q \\iff h = \\sqrt{p \\cdot q} \\]</li><li><strong>Leg Rules:</strong> Each leg is the geometric mean of the hypotenuse and the adjacent segment:<br>\\[ b^2 = c \\cdot p \\quad \\text{and} \\quad a^2 = c \\cdot q \\]</li><li><strong>Area / Product Rule:</strong> Comparing area computed using legs versus hypotenuse and altitude:<br>\\[ \\text{Area} = \\frac{1}{2}ab = \\frac{1}{2}ch \\implies a \\cdot b = c \\cdot h \\]</li></ol>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "figure",
+        "id": "fig-right-triangle-altitude",
+        "title": {
+          "en": "Altitude to the Hypotenuse & Geometric Mean",
+          "ar": null
+        },
+        "figure": {
+          "type": "right_triangle_altitude",
+          "labels": ["A", "B", "C", "D"],
+          "t": 0.36,
+          "p": "9",
+          "q": "16",
+          "altitude": "12",
+          "b": "15",
+          "a": "20",
+          "c": "25"
+        },
+        "caption": {
+          "en": "In right △ABC (hypotenuse c = 25), altitude CD = 12 divides AB into p = 9 and q = 16. Altitude rule: h² = 9 × 16 = 144 = 12². Leg rules: b² = 25 × 9 = 225 = 15² and a² = 25 × 16 = 400 = 20².",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 4.5 — Angle Bisector Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>In any triangle \\( \\triangle ABC \\), the ray bisecting an interior angle divides the opposite side into two segments proportional to the other two adjacent sides:</p>\\[ \\text{If ray } AD \\text{ bisects } \\angle A \\text{ with } D \\text{ on } BC \\implies \\frac{BD}{DC} = \\frac{AB}{AC} \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "figure",
+        "id": "fig-angle-bisector",
+        "title": {
+          "en": "The Angle Bisector Theorem",
+          "ar": null
+        },
+        "figure": {
+          "type": "angle_bisector",
+          "labels": ["A", "B", "C", "D"],
+          "sides": {
+            "ab": "12",
+            "ac": "18",
+            "bd": "6",
+            "dc": "9"
+          }
+        },
+        "caption": {
+          "en": "Ray AD bisects ∠BAC (marked with ticked angle arcs). The base segments BD and DC are in the exact same proportion as the adjacent sides: BD/DC = 6/9 = 2/3, matching AB/AC = 12/18 = 2/3.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Exam Trap — Overlapping Inverted Triangles (Shared Angle)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A notorious standardized exam trap involves an interior transversal \\( DE \\) that is <strong>NOT parallel</strong> to base \\( BC \\), but is drawn such that \\( \\angle ADE \\cong \\angle C \\). Because \\( \\angle A \\) is shared, \\( \\triangle ADE \\sim \\triangle ACB \\) by AA similarity — but in <strong>inverted orientation</strong>!</p>\\[ \\frac{AD}{AC} = \\frac{AE}{AB} = \\frac{DE}{BC} \\]<p>Students who reflexively assume \\( DE \\parallel BC \\) and write \\( \\frac{AD}{DB} = \\frac{AE}{EC} \\) will get the question wrong. Always check angle markings carefully before setting up proportions.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "figure",
+        "id": "fig-inverted-similar",
+        "title": {
+          "en": "Overlapping Inverted Similar Triangles",
+          "ar": null
+        },
+        "figure": {
+          "type": "overlapping_triangles",
+          "labels": ["A", "B", "C", "D", "E"],
+          "sides": {
+            "ad": "6",
+            "db": "10",
+            "ae": "8",
+            "ec": "4",
+            "de": "7",
+            "bc": "14"
+          }
+        },
+        "caption": {
+          "en": "Notice that DE is NOT parallel to BC. Angle ADE ≅ ∠C (double arc) and ∠A is shared. Therefore △ADE ~ △ACB in inverted order: AD/AC = 6/12 = 0.5, AE/AB = 8/16 = 0.5, and DE/BC = 7/14 = 0.5.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 4.2 — Realistic Indirect Measurement via Shadows",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>A 6-foot surveyor stands on level ground and casts an 8-foot shadow. At the exact same moment, a nearby radio communications tower casts a 60-foot shadow. How tall is the radio tower?</p><p><strong>Step 1: Verify similarity.</strong> Sunlight rays strike level ground at the exact same angle \\( \\theta \\) across the immediate vicinity. Both the surveyor and the tower stand perpendicular to the ground (\\( 90^\\circ \\)). By AA similarity, the right triangles formed by the object height and shadow length are similar.</p><p><strong>Step 2: Set up the proportion:</strong></p>\\[ \\frac{\\text{Height of Tower}}{\\text{Shadow of Tower}} = \\frac{\\text{Height of Surveyor}}{\\text{Shadow of Surveyor}} \\implies \\frac{H}{60} = \\frac{6}{8} \\]<p><strong>Step 3: Solve for \\( H \\):</strong></p>\\[ H = 60 \\times \\frac{3}{4} = 45\\text{ feet}. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "figure",
+        "id": "fig-shadow-similarity",
+        "title": {
+          "en": "Indirect Measurement with Parallel Sunlight Rays",
+          "ar": null
+        },
+        "figure": {
+          "type": "shadow_similarity",
+          "obj1": {
+            "label": "Surveyor",
+            "height": "6 ft",
+            "shadow": "8 ft"
+          },
+          "obj2": {
+            "label": "Tower",
+            "height": "45 ft",
+            "shadow": "60 ft"
+          },
+          "angle_label": "θ"
+        },
+        "caption": {
+          "en": "Because sunlight rays arrive in parallel (dashed amber lines), both right triangles have the identical elevation angle θ = arctan(6/8) ≈ 36.9°. Proportions: H/60 = 6/8 ⇒ H = 45 ft.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● Theorem 4.6 — Intersecting Chords & Circle Similarity",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>When two chords \\( AB \\) and \\( CD \\) intersect inside a circle at point \\( P \\), triangles \\( \\triangle PAC \\) and \\( \\triangle PDB \\) are similar by AA similarity:</p><ol><li>\\( \\angle APC \\cong \\angle DPB \\) (vertical angles).</li><li>\\( \\angle CAP \\cong \\angle BDP \\) (inscribed angles intercepting the same arc \\( BC \\)).</li></ol><p>Corresponding sides yield \\( \\frac{PA}{PD} = \\frac{PC}{PB} \\), establishing the <strong>Intersecting Chords Theorem</strong>:</p>\\[ PA \\cdot PB = PC \\cdot PD \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "figure",
+        "id": "fig-circle-chords",
+        "title": {
+          "en": "Circle Chords Similarity",
+          "ar": null
+        },
+        "figure": {
+          "type": "circle_chords_similarity",
+          "labels": ["A", "B", "C", "D", "P"],
+          "sides": {
+            "pa": "4",
+            "pb": "9",
+            "pc": "6",
+            "pd": "6"
+          }
+        },
+        "caption": {
+          "en": "Inscribed angles intercepting the same arc prove △PAC ~ △PDB. The product of chord segments is constant: PA × PB = 4 × 9 = 36, matching PC × PD = 6 × 6 = 36.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "Two similar triangles \\( \\triangle T_1 \\) and \\( \\triangle T_2 \\) have areas of \\( 45\\ \\text{cm}^2 \\) and \\( 80\\ \\text{cm}^2 \\) respectively. If the perimeter of \\( \\triangle T_1 \\) is \\( 27\\ \\text{cm} \\), find the perimeter of \\( \\triangle T_2 \\).",
+          "en": "In right \\( \\triangle ABC \\) with right angle at \\( C \\), altitude \\( CD \\) is drawn to hypotenuse \\( AB \\). If \\( AD = 4 \\) and \\( DB = 9 \\), find the length of leg \\( BC \\).",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Solution:</strong> The ratio of areas is the square of the linear scale factor:</p>\\[ \\frac{\\text{Area}(T_2)}{\\text{Area}(T_1)} = \\frac{80}{45} = \\frac{16}{9} = k^2. \\]<p>Taking the positive square root gives the linear ratio \\( k \\):</p>\\[ k = \\sqrt{\\frac{16}{9}} = \\frac{4}{3}. \\]<p>Perimeters scale linearly by \\( k \\):</p>\\[ \\text{Perimeter}(T_2) = \\frac{4}{3} \\times 27 = 36\\ \\text{cm}. \\]",
+          "en": "<p><strong>Step 1: Compute total hypotenuse \\( AB \\):</strong></p>\\[ AB = AD + DB = 4 + 9 = 13 \\]<p><strong>Step 2: Apply the Geometric Mean Leg Rule:</strong> The leg \\( BC \\) is the geometric mean of the hypotenuse \\( AB \\) and the adjacent segment \\( DB \\):</p>\\[ BC^2 = AB \\cdot DB = 13 \\cdot 9 = 117 \\]<p><strong>Step 3: Simplify the radical:</strong></p>\\[ BC = \\sqrt{117} = \\sqrt{9 \\times 13} = 3\\sqrt{13} \\approx 10.82 \\]",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "A 6-foot-tall surveyor casts an 8-foot shadow on level ground. At the exact same time, a nearby telecommunications tower casts a 60-foot shadow. How tall is the telecommunications tower?",
+          "en": "Two similar cylinders have surface areas of \\( 64\\pi\\ \\text{cm}^2 \\) and \\( 144\\pi\\ \\text{cm}^2 \\). If the volume of the smaller cylinder is \\( 96\\pi\\ \\text{cm}^3 \\), find the volume of the larger cylinder.",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1: Set up the proportion of similar triangles:</strong> The sun's rays strike level ground at the same angle, creating similar right triangles between each object's height and shadow length:</p>\\[ \\frac{\\text{Height of Tower}}{\\text{Shadow of Tower}} = \\frac{\\text{Height of Surveyor}}{\\text{Shadow of Surveyor}} \\implies \\frac{H}{60} = \\frac{6}{8}. \\]<p><strong>Step 2: Solve for the tower's height \\(H\\):</strong></p>\\[ H = 60 \\times \\frac{6}{8} = 60 \\times \\frac{3}{4} = 45\\text{ feet}. \\]<p>The telecommunications tower is \\(45\\) feet tall.</p>",
+          "en": "<p><strong>Step 1: Find the area ratio and linear scale factor \\( k \\):</strong></p>\\[ \\frac{\\text{Area}_2}{\\text{Area}_1} = \\frac{144\\pi}{64\\pi} = \\frac{9}{4} = k^2 \\implies k = \\sqrt{\\frac{9}{4}} = \\frac{3}{2} \\]<p><strong>Step 2: Compute the volume ratio \\( k^3 \\):</strong></p>\\[ \\frac{\\text{Volume}_2}{\\text{Volume}_1} = k^3 = \\left(\\frac{3}{2}\\right)^3 = \\frac{27}{8} \\]<p><strong>Step 3: Calculate the volume of the larger cylinder:</strong></p>\\[ \\text{Volume}_2 = 96\\pi \\times \\frac{27}{8} = 12\\pi \\times 27 = 324\\pi\\ \\text{cm}^3 \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "In \\( \\triangle PQR \\), ray \\( QS \\) bisects \\( \\angle Q \\) with \\( S \\) lying on side \\( PR \\). If \\( PQ = 14 \\), \\( QR = 21 \\), and \\( PR = 25 \\), find the length of segment \\( PS \\).",
+          "ar": null
+        },
+        "solution": {
+          "en": "<p><strong>Step 1: Apply the Angle Bisector Theorem:</strong> The bisector divides side \\( PR \\) into segments proportional to the adjacent sides:</p>\\[ \\frac{PS}{SR} = \\frac{PQ}{QR} = \\frac{14}{21} = \\frac{2}{3} \\]<p><strong>Step 2: Express \\( SR \\) in terms of \\( PS \\):</strong> Since \\( PS + SR = 25 \\), we have \\( SR = 25 - PS \\):</p>\\[ \\frac{PS}{25 - PS} = \\frac{2}{3} \\implies 3PS = 2(25 - PS) = 50 - 2PS \\]<p><strong>Step 3: Solve for \\( PS \\):</strong></p>\\[ 5PS = 50 \\implies PS = 10 \\quad (\\text{and } SR = 15). \\]",
           "ar": null
         }
       }

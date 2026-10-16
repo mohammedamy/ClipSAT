@@ -25,7 +25,7 @@
   (function(){
     var canvas=document.getElementById('act2l2DetCanvas'); if(!canvas) return;
     var a=2, b=3, c=1, d=-1;
-    var view={xmin:-4,xmax:6,ymin:-4,ymax:6};
+    var view={xmin:-4,xmax:6,ymin:-4,ymax:6,square:true,step:1};
     var dataBtn=document.getElementById('act2l2DetDataBtn'), dataPanel=document.getElementById('act2l2DetDataPanel'),
         dataDesc=document.getElementById('act2l2DetDataDesc'), dataRows=document.getElementById('act2l2DetDataRows');
     wireDataToggle(dataBtn,dataPanel);
@@ -81,7 +81,7 @@
   (function(){
     var canvas=document.getElementById('act2l2TrigCanvas'); if(!canvas) return;
     var theta=30*Math.PI/180;
-    var view={xmin:-1.5,xmax:1.5,ymin:-1.5,ymax:1.5};
+    var view={xmin:-1.5,xmax:1.5,ymin:-1.5,ymax:1.5,square:true,step:0.5};
     var dataBtn=document.getElementById('act2l2TrigDataBtn'), dataPanel=document.getElementById('act2l2TrigDataPanel'),
         dataDesc=document.getElementById('act2l2TrigDataDesc'), dataRows=document.getElementById('act2l2TrigDataRows');
     wireDataToggle(dataBtn,dataPanel);
@@ -123,7 +123,7 @@
      1.B's division problem's numerator-conjugate arithmetic. */
   (function(){
     var canvas=document.getElementById('act2l2ComplexCanvas'); if(!canvas) return;
-    var view={xmin:-6,xmax:6,ymin:-6,ymax:6};
+    var view={xmin:-6,xmax:6,ymin:-6,ymax:6,square:true};
     var a=3, b=4;
     var dataBtn=document.getElementById('act2l2ComplexDataBtn'), dataPanel=document.getElementById('act2l2ComplexDataPanel'),
         dataDesc=document.getElementById('act2l2ComplexDataDesc'), dataRows=document.getElementById('act2l2ComplexDataRows');
@@ -141,6 +141,7 @@
     function draw(ctx,w,h){
       var extent=Math.max(6, Math.abs(a)*1.3, Math.abs(b)*1.3);
       view.xmin=-extent; view.xmax=extent; view.ymin=-extent; view.ymax=extent;
+      view.square=true;
       var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
       var mod=Math.sqrt(a*a+b*b);
       arrow(P.ctx,P.X(0),P.Y(0),P.X(a),P.Y(b),INDIGO,2.4);

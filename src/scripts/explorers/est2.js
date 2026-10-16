@@ -56,7 +56,7 @@
   /* EST II CH 5 — the unit circle, angle in radians */
   (function(){
     var canvas=document.getElementById('est2UcCanvas'); if(!canvas) return;
-    var view={xmin:-1.6,xmax:1.6,ymin:-1.1,ymax:1.1};
+    var view={xmin:-1.6,xmax:1.6,ymin:-1.1,ymax:1.1,square:true};
     var theta=0.79;
     var dataBtn=document.getElementById('est2UcDataBtn'), dataPanel=document.getElementById('est2UcDataPanel'),
         dataDesc=document.getElementById('est2UcDataDesc'), dataRows=document.getElementById('est2UcDataRows');
@@ -100,7 +100,7 @@
   /* EST II CH 6 — circle equation, centre-radius */
   (function(){
     var canvas=document.getElementById('est2CircCanvas'); if(!canvas) return;
-    var view={xmin:-10,xmax:10,ymin:-7,ymax:7};
+    var view={xmin:-10,xmax:10,ymin:-7,ymax:7,square:true};
     var h=3, k=-2, r=5;
     var dataBtn=document.getElementById('est2CircDataBtn'), dataPanel=document.getElementById('est2CircDataPanel'),
         dataDesc=document.getElementById('est2CircDataDesc'), dataRows=document.getElementById('est2CircDataRows');

@@ -1,0 +1,160 @@
+{
+  "track": "apab",
+  "num": "1.02",
+  "slug": "continuity-and-the-intermediate-value-theorem",
+  "title": "Continuity and the Intermediate Value Theorem",
+  "sections": [
+    {
+      "heading": "Section 1: Three-Part Definition of Continuity",
+      "questions": [
+        {
+          "q": "Which three conditions must be satisfied for a function $f$ to be continuous at $x = c$?",
+          "choices": [
+            "$f(c)$ is defined, $\\lim_{x \\to c} f(x)$ exists, and $\\lim_{x \\to c} f(x) = f(c)$",
+            "$f'(c)$ exists, $f(c) > 0$, and $\\lim_{x \\to c} f(x) = 0$",
+            "$f(c)$ is continuous on $(a, b)$, $f(c) = 0$, and $f'(c) \\neq 0$",
+            "$\\lim_{x \\to c^-} f(x) = \\lim_{x \\to c^+} f(x)$ only"
+          ],
+          "correct": 0,
+          "answer": "By the formal definition of continuity at a point, $f(c)$ must be defined, the two-sided limit must exist, and the limit must equal the function value."
+        },
+        {
+          "q": "Let $f(x) = \\frac{x^2 - 9}{x - 3}$ for $x \\neq 3$. What value must be assigned to $f(3)$ to make $f$ continuous at $x = 3$?",
+          "choices": [
+            "$3$",
+            "$6$",
+            "$0$",
+            "No value can make it continuous"
+          ],
+          "correct": 1,
+          "answer": "The limit is $\\lim_{x \\to 3} \\frac{(x - 3)(x + 3)}{x - 3} = 3 + 3 = 6$. Therefore, $f(3)$ must equal $6$."
+        },
+        {
+          "q": "The function $g(x) = \\frac{1}{x - 2}$ has what type of discontinuity at $x = 2$?",
+          "choices": [
+            "Infinite (essential) discontinuity",
+            "Removable discontinuity",
+            "Jump discontinuity",
+            "Oscillating discontinuity"
+          ],
+          "correct": 0,
+          "answer": "Because $\\lim_{x \\to 2^+} g(x) = \\infty$ and $\\lim_{x \\to 2^-} g(x) = -\\infty$, there is an infinite discontinuity (vertical asymptote) at $x = 2$."
+        }
+      ]
+    },
+    {
+      "heading": "Section 2: Piecewise Functions & Continuity",
+      "questions": [
+        {
+          "q": "For what value of $k$ is $f(x) = kx^2 + 1$ for $x \\leq 2$, and $f(x) = 3x - 1$ for $x > 2$ continuous at $x = 2$?",
+          "choices": [
+            "$1$",
+            "$2$",
+            "$3$",
+            "$0$"
+          ],
+          "correct": 0,
+          "answer": "Equate left and right limits at $x = 2$: $k(2^2) + 1 = 3(2) - 1 \\Rightarrow 4k + 1 = 5 \\Rightarrow 4k = 4 \\Rightarrow k = 1$."
+        },
+        {
+          "q": "If $g(x) = \\frac{\\sin(ax)}{x}$ for $x \\neq 0$, and $g(0) = 4$, what value of $a$ ensures continuity at $x = 0$?",
+          "choices": [
+            "$1$",
+            "$2$",
+            "$4$",
+            "$\\frac{1}{4}$"
+          ],
+          "correct": 2,
+          "answer": "$\\lim_{x \\to 0} \\frac{\\sin(ax)}{x} = a$. For continuity, $a = g(0) = 4$."
+        },
+        {
+          "q": "The function $h(x) = x + 2$ for $x < 1$, and $h(x) = 2x + 1$ for $x \\geq 1$ has what property at $x = 1$?",
+          "choices": [
+            "Continuous because both one-sided limits equal $3$",
+            "Jump discontinuity of size $1$",
+            "Infinite discontinuity",
+            "Undefined at $x = 1$"
+          ],
+          "correct": 0,
+          "answer": "$\\lim_{x \\to 1^-} (x + 2) = 3$ and $\\lim_{x \\to 1^+} (2x + 1) = 3 = h(1)$. Therefore, $h$ is continuous at $x = 1$."
+        }
+      ]
+    },
+    {
+      "heading": "Section 3: Intermediate Value Theorem (IVT)",
+      "questions": [
+        {
+          "q": "What are the hypotheses of the Intermediate Value Theorem for a function $f$ on interval $[a, b]$?",
+          "choices": [
+            "$f$ must be continuous on the closed interval $[a, b]$",
+            "$f$ must be differentiable on $(a, b)$",
+            "$f(a)$ and $f(b)$ must have opposite signs",
+            "$f$ must be strictly increasing on $[a, b]$"
+          ],
+          "correct": 0,
+          "answer": "The Intermediate Value Theorem requires only that $f$ is continuous on the closed interval $[a, b]$."
+        },
+        {
+          "q": "Let $f$ be continuous on $[1, 5]$ with $f(1) = -3$ and $f(5) = 7$. Does the IVT guarantee a solution to $f(c) = 0$ for some $c \\in (1, 5)$?",
+          "choices": [
+            "Yes, because $0$ lies between $-3$ and $7$",
+            "No, $f$ must also be differentiable",
+            "No, $f$ must be a polynomial",
+            "Only if $f'(x) > 0$ for all $x$"
+          ],
+          "correct": 0,
+          "answer": "Because $f$ is continuous on $[1, 5]$ and $f(1) < 0 < f(5)$, the IVT guarantees at least one $c \\in (1, 5)$ such that $f(c) = 0$."
+        },
+        {
+          "q": "On which interval is the polynomial $P(x) = x^3 - 3x - 1$ guaranteed to have a real zero by the IVT?",
+          "choices": [
+            "$[1, 2]$",
+            "$[0, 1]$",
+            "$[-1, 0]$",
+            "$[2, 3]$"
+          ],
+          "correct": 0,
+          "answer": "$P(1) = 1 - 3 - 1 = -3 < 0$, and $P(2) = 8 - 6 - 1 = 1 > 0$. By IVT, a zero exists in $(1, 2)$."
+        }
+      ]
+    },
+    {
+      "heading": "Section 4: Extreme Value Theorem (EVT)",
+      "questions": [
+        {
+          "q": "What does the Extreme Value Theorem guarantee for a function $f$ continuous on a closed interval $[a, b]$?",
+          "choices": [
+            "$f$ attains both an absolute maximum and an absolute minimum on $[a, b]$",
+            "$f$ has a horizontal tangent on $(a, b)$",
+            "$f'(c) = 0$ for some $c \\in (a, b)$",
+            "$f$ is invertible on $[a, b]$"
+          ],
+          "correct": 0,
+          "answer": "The EVT states that any continuous function on a closed bounded interval $[a, b]$ must attain an absolute maximum and an absolute minimum."
+        },
+        {
+          "q": "Why does the function $f(x) = \\frac{1}{x}$ NOT attain an absolute maximum on $(0, 2]$?",
+          "choices": [
+            "The interval is open at $0$ and $f$ increases without bound as $x \\to 0^+$",
+            "$f$ is not differentiable on $(0, 2]$",
+            "$f$ is bounded on $(0, 2]$",
+            "$f(2) = 0.5$ is the maximum"
+          ],
+          "correct": 0,
+          "answer": "The interval $(0, 2]$ is not closed, so the EVT does not apply. As $x \\to 0^+$, $f(x) \\to \\infty$, so no absolute maximum exists."
+        },
+        {
+          "q": "Find the absolute maximum value of $f(x) = -x^2 + 4x + 1$ on the closed interval $[0, 3]$.",
+          "choices": [
+            "$5$",
+            "$4$",
+            "$1$",
+            "$6$"
+          ],
+          "correct": 0,
+          "answer": "Critical point: $f'(x) = -2x + 4 = 0 \\Rightarrow x = 2$. Evaluate: $f(0) = 1, f(2) = -(4) + 8 + 1 = 5, f(3) = -(9) + 12 + 1 = 4$. Absolute maximum is $5$."
+        }
+      ]
+    }
+  ]
+}

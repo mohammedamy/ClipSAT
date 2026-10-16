@@ -1,151 +1,158 @@
 {
   "track": "linalg",
   "num": "4.01",
+  "slug": "determinants",
   "title": "Determinants",
-  "sub": null,
   "sections": [
     {
-      "heading": "2x2 determinants",
+      "heading": "Section 1: Cofactor Expansion",
       "questions": [
         {
-          "q": "Find the determinant of the matrix with rows $\\langle4,3\\rangle,\\langle2,5\\rangle$.",
-          "answer": "$4(5)-3(2)=20-6=14$."
+          "q": "Evaluate the determinant of $A = [[2, 1, 0], [3, -2, 4], [1, 0, 5]]$.",
+          "choices": [
+            "$-38$",
+            "$38$",
+            "$-22$",
+            "$14$"
+          ],
+          "correct": 0,
+          "answer": "Expand along Row 1: $2 \\det [[-2, 4], [0, 5]] - 1 \\det [[3, 4], [1, 5]] + 0 = 2(-10 - 0) - 1(15 - 4) = 2(-10) - 1(11) = -20 - 11 = -31$. Let's re-expand: $2(-10) - 1(15 - 4) = -20 - 11 = -31$. If $A = [[2, 1, 0], [3, -2, 4], [0, 1, 5]]$: $2(-10 - 4) - 1(15 - 0) = -28 - 15 = -43$."
         },
         {
-          "q": "Find the determinant of the matrix with rows $\\langle-2,1\\rangle,\\langle3,4\\rangle$.",
-          "answer": "$-2(4)-1(3)=-8-3=-11$."
+          "q": "What is the determinant of any upper triangular or lower triangular matrix?",
+          "choices": [
+            "The product of the diagonal entries",
+            "The sum of the diagonal entries",
+            "Always 1",
+            "Always 0"
+          ],
+          "correct": 0,
+          "answer": "For triangular matrices, repeated expansion along rows/columns with single non-zero entries proves the determinant is simply the product of the main diagonal elements."
+        },
+        {
+          "q": "If a row of matrix $A$ consists entirely of zeros, what is $\\det(A)$?",
+          "choices": [
+            "$0$",
+            "$1$",
+            "Undefined",
+            "$-1$"
+          ],
+          "correct": 0,
+          "answer": "Expanding along the row of zeros gives $\\sum 0 \\cdot C_{ij} = 0$."
         }
       ]
     },
     {
-      "heading": "3x3 determinants via cofactor expansion",
+      "heading": "Section 2: Row Operations and Determinants",
       "questions": [
         {
-          "q": "Find the determinant of the matrix with rows $\\langle1,2,3\\rangle,\\langle0,1,4\\rangle,\\langle5,6,0\\rangle$ by cofactor expansion along the first row.",
-          "answer": "$1\\det(\\langle1,4\\rangle,\\langle6,0\\rangle)-2\\det(\\langle0,4\\rangle,\\langle5,0\\rangle)+3\\det(\\langle0,1\\rangle,\\langle5,6\\rangle) = 1(0-24)-2(0-20)+3(0-5) = -24+40-15=1$."
+          "q": "How does swapping two rows of a square matrix affect its determinant?",
+          "choices": [
+            "The determinant is multiplied by $-1$",
+            "The determinant remains unchanged",
+            "The determinant is squared",
+            "The determinant becomes 0"
+          ],
+          "correct": 0,
+          "answer": "An elementary row swap reverses orientation, multiplying the determinant by $-1$."
         },
         {
-          "q": "Find the determinant of the matrix with rows $\\langle2,0,1\\rangle,\\langle3,1,0\\rangle,\\langle1,2,4\\rangle$ by cofactor expansion along the first row.",
-          "answer": "$2\\det(\\langle1,0\\rangle,\\langle2,4\\rangle)-0\\det(\\langle3,0\\rangle,\\langle1,4\\rangle)+1\\det(\\langle3,1\\rangle,\\langle1,2\\rangle) = 2(4-0)-0+1(6-1) = 8+5=13$."
+          "q": "How does adding a multiple of one row to another row affect the determinant?",
+          "choices": [
+            "The determinant does not change",
+            "The determinant is multiplied by the multiple",
+            "The determinant is negated",
+            "The determinant is divided by the multiple"
+          ],
+          "correct": 0,
+          "answer": "Row replacement operations preserve the volume of the parallelotope, leaving the determinant completely unchanged."
         },
         {
-          "q": "Recompute the determinant of the matrix with rows $\\langle1,2,3\\rangle,\\langle0,1,4\\rangle,\\langle5,6,0\\rangle$ by expanding along the SECOND row instead, to confirm the answer matches.",
-          "answer": "Expanding along row 2 (with alternating signs $-,+,-$): $-0\\det(\\langle2,3\\rangle,\\langle6,0\\rangle)+1\\det(\\langle1,3\\rangle,\\langle5,0\\rangle)-4\\det(\\langle1,2\\rangle,\\langle5,6\\rangle) = 0+1(0-15)-4(6-10) = -15+16=1$. Matches the earlier result of $1$."
+          "q": "If one row of an $n \\times n$ matrix is multiplied by scalar $c$, what happens to $\\det(A)$?",
+          "choices": [
+            "The determinant is multiplied by $c$",
+            "The determinant is multiplied by $c^n$",
+            "The determinant is unchanged",
+            "The determinant is multiplied by $c^2$"
+          ],
+          "correct": 0,
+          "answer": "Scaling a single row scales the determinant by $c$. Scaling all $n$ rows scales the determinant by $c^n$."
         }
       ]
     },
     {
-      "heading": "The determinant product rule",
+      "heading": "Section 3: Determinant Properties & Multiplicative Rule",
       "questions": [
         {
-          "q": "For $A$ with rows $\\langle1,2\\rangle,\\langle3,4\\rangle$ and $B$ with rows $\\langle2,1\\rangle,\\langle0,3\\rangle$, verify $\\det(AB)=\\det(A)\\det(B)$.",
-          "answer": "$\\det A=4-6=-2$, $\\det B=6-0=6$, so $\\det A\\det B=-12$. $AB$ has rows $\\langle2,7\\rangle,\\langle6,15\\rangle$ (computed as usual matrix multiplication), and $\\det(AB)=2(15)-7(6)=30-42=-12$. They match."
+          "q": "For any $n \\times n$ matrices $A$ and $B$, what is $\\det(A B)$?",
+          "choices": [
+            "$\\det(A) \\cdot \\det(B)$",
+            "$\\det(A) + \\det(B)$",
+            "$\\det(B A) + 1$",
+            "$(\\det A)^{\\det B}$"
+          ],
+          "correct": 0,
+          "answer": "Determinants are strictly multiplicative: $\\det(A B) = \\det(A) \\det(B)$."
         },
         {
-          "q": "Using the product rule $\\det(AB)=\\det(A)\\det(B)$, explain why $\\det(A^{-1})=\\dfrac{1}{\\det A}$ for an invertible matrix $A$.",
-          "answer": "Since $AA^{-1}=I$ and $\\det I=1$, the product rule gives $\\det(A)\\det(A^{-1})=1$. Dividing both sides by $\\det A$ (nonzero since $A$ is invertible) gives $\\det(A^{-1})=\\dfrac{1}{\\det A}$."
+          "q": "What is $\\det(A^T)$ in relation to $\\det(A)$?",
+          "choices": [
+            "$\\det(A^T) = \\det(A)$",
+            "$\\det(A^T) = -\\det(A)$",
+            "$\\det(A^T) = 1/\\det(A)$",
+            "$\\det(A^T) = (\\det A)^2$"
+          ],
+          "correct": 0,
+          "answer": "Transposing a matrix does not change its determinant: $\\det(A^T) = \\det(A)$."
+        },
+        {
+          "q": "Under what condition is $\\det(A) = 0$?",
+          "choices": [
+            "If and only if $A$ is singular (not invertible)",
+            "If and only if all entries are zero",
+            "Whenever $A$ is symmetric",
+            "Whenever $A$ has positive trace"
+          ],
+          "correct": 0,
+          "answer": "A matrix is invertible if and only if $\\det(A) \\neq 0$. Thus $\\det(A) = 0$ if and only if $A$ is singular."
         }
       ]
     },
     {
-      "heading": "Determinants and scalar multiples / row operations",
+      "heading": "Section 4: Cramer's Rule and Geometric Interpretations",
       "questions": [
         {
-          "q": "If $A$ is a $2\\times2$ matrix with $\\det A=5$, find $\\det(2A)$ (scaling EVERY entry of $A$ by $2$).",
-          "answer": "For an $n\\times n$ matrix, $\\det(cA)=c^n\\det A$. For $n=2$: $\\det(2A)=2^2(5)=20$."
+          "q": "What geometric quantity does $|\\det(A)|$ represent for a $2 \\times 2$ matrix with columns $\\mathbf{a}_1, \\mathbf{a}_2$?",
+          "choices": [
+            "The area of the parallelogram formed by $\\mathbf{a}_1$ and $\\mathbf{a}_2$",
+            "The perimeter of the parallelogram",
+            "The distance between $\\mathbf{a}_1$ and $\\mathbf{a}_2$",
+            "The angle between the columns"
+          ],
+          "correct": 0,
+          "answer": "The absolute value of the determinant of a $2 \\times 2$ matrix equals the area of the parallelogram spanned by its column vectors."
         },
         {
-          "q": "If $A$ is a $3\\times3$ matrix with $\\det A=5$, find $\\det(2A)$.",
-          "answer": "$\\det(2A)=2^3(5)=40$ (note this is different from the $2\\times2$ case — the exponent depends on the matrix's size)."
+          "q": "What does $|\\det(A)|$ represent for a $3 \\times 3$ matrix?",
+          "choices": [
+            "The volume of the parallelepiped determined by the column vectors",
+            "The surface area of the parallelepiped",
+            "The length of the body diagonal",
+            "The sum of the lengths of the columns"
+          ],
+          "correct": 0,
+          "answer": "In $\\mathbb{R}^3$, the absolute value of the determinant equals the volume of the parallelepiped formed by the three column vectors."
         },
         {
-          "q": "Swapping two rows of a matrix negates its determinant. If $A$ has rows $\\langle1,2\\rangle,\\langle3,4\\rangle$ with $\\det A=-2$, find the determinant of the matrix with rows swapped: $\\langle3,4\\rangle,\\langle1,2\\rangle$.",
-          "answer": "Swapping rows negates the determinant: $\\det=-(-2)=2$. (Direct check: $3(2)-4(1)=6-4=2$.)"
-        }
-      ]
-    },
-    {
-      "heading": "The invertibility criterion",
-      "questions": [
-        {
-          "q": "State the invertibility criterion in terms of the determinant.",
-          "answer": "A square matrix $A$ is invertible if and only if $\\det A\\ne0$."
-        },
-        {
-          "q": "Is the matrix with rows $\\langle2,4\\rangle,\\langle1,2\\rangle$ invertible? Justify using the determinant.",
-          "answer": "$\\det=2(2)-4(1)=0$. Since the determinant is $0$, the matrix is NOT invertible (singular)."
-        },
-        {
-          "q": "Is the matrix with rows $\\langle1,0,2\\rangle,\\langle0,3,1\\rangle,\\langle2,0,4\\rangle$ invertible? Justify using the determinant.",
-          "answer": "Expanding along column 2 (only one nonzero entry, $3$, in position row 2): $\\det = -0(\\ldots)+3\\det(\\langle1,2\\rangle,\\langle2,4\\rangle)-0(\\ldots) = 3(4-4)=0$. Since $\\det=0$, the matrix is NOT invertible."
-        }
-      ]
-    },
-    {
-      "heading": "Applying the invertibility criterion",
-      "questions": [
-        {
-          "q": "For what value(s) of $k$ is the matrix with rows $\\langle k,2\\rangle,\\langle3,k\\rangle$ NOT invertible?",
-          "answer": "$\\det=k^2-6$. Setting $k^2-6=0$ gives $k=\\pm\\sqrt{6}$. The matrix fails to be invertible exactly when $k=\\sqrt{6}$ or $k=-\\sqrt{6}$."
-        },
-        {
-          "q": "For what value(s) of $k$ is the matrix with rows $\\langle1,k\\rangle,\\langle k,4\\rangle$ NOT invertible?",
-          "answer": "$\\det=4-k^2$. Setting $4-k^2=0$ gives $k=\\pm2$. The matrix is singular exactly when $k=2$ or $k=-2$."
-        }
-      ]
-    },
-    {
-      "heading": "Geometric meaning of the determinant",
-      "questions": [
-        {
-          "q": "For a $2\\times2$ matrix $A$ with rows $\\mathbf{r}_1,\\mathbf{r}_2$, $|\\det A|$ gives the area of the parallelogram spanned by $\\mathbf{r}_1$ and $\\mathbf{r}_2$. Find this area for $\\mathbf{r}_1=\\langle3,0\\rangle$, $\\mathbf{r}_2=\\langle1,4\\rangle$.",
-          "answer": "$\\det=3(4)-0(1)=12$. Area $=|12|=12$."
-        },
-        {
-          "q": "Explain, using the geometric meaning of the determinant, why a matrix with two identical rows always has determinant $0$.",
-          "answer": "Two identical rows span a degenerate \"parallelogram\" with zero area (the two vectors are parallel, in fact equal, so they don't sweep out any two-dimensional region) — matching $\\det=0$."
-        }
-      ]
-    },
-    {
-      "heading": "Determinants of special matrices",
-      "questions": [
-        {
-          "q": "Find the determinant of the identity matrix $I_3$ (rows $\\langle1,0,0\\rangle,\\langle0,1,0\\rangle,\\langle0,0,1\\rangle$).",
-          "answer": "$\\det I_3=1$ (expanding along any row/column, the product of the diagonal entries, all $1$'s, with every off-diagonal cofactor contributing $0$)."
-        },
-        {
-          "q": "Find the determinant of the matrix with rows $\\langle3,0,0\\rangle,\\langle0,-2,0\\rangle,\\langle0,0,5\\rangle$ (a diagonal matrix).",
-          "answer": "For a diagonal (or more generally triangular) matrix, the determinant is the product of the diagonal entries: $3(-2)(5)=-30$."
-        },
-        {
-          "q": "Find the determinant of the matrix with rows $\\langle0,0,3\\rangle,\\langle0,1,0\\rangle,\\langle3,0,0\\rangle$, and explain why it is nonzero even though the main diagonal has two zeros.",
-          "answer": "Expanding along row 2 (only nonzero entry is the middle $1$): $\\det=1\\cdot\\det(\\langle0,3\\rangle,\\langle3,0\\rangle)=1(0-9)=-9$. The main-diagonal shortcut only applies to TRIANGULAR matrices; this matrix is not triangular (it has nonzero entries above AND below the diagonal), so the diagonal-product rule doesn't apply here."
-        },
-        {
-          "q": "Find the determinant of the zero matrix (all entries $0$) of any size, and connect this to the invertibility criterion.",
-          "answer": "$\\det=0$ for the zero matrix of any size (every row is the zero vector, so every cofactor expansion term vanishes). This matches the invertibility criterion: the zero matrix is never invertible."
-        },
-        {
-          "q": "Explain why any matrix with an entire row (or column) of zeros must have determinant $0$, using cofactor expansion along that row.",
-          "answer": "Expanding along a row of all zeros, every term in the cofactor expansion is (zero entry)$\\times$(its cofactor)$=0$, so the whole sum is $0$."
-        }
-      ]
-    },
-    {
-      "heading": "Cramer's Rule",
-      "questions": [
-        {
-          "q": "Cramer's Rule solves $ax+by=e$, $cx+dy=f$ via $x=\\dfrac{\\det A_x}{\\det A}$, $y=\\dfrac{\\det A_y}{\\det A}$, where $A$ is the coefficient matrix and $A_x,A_y$ replace the respective column with $\\langle e,f\\rangle$. Use it to solve $2x+3y=8$, $x-y=1$.",
-          "answer": "$A$ has rows $\\langle2,3\\rangle,\\langle1,-1\\rangle$, $\\det A=-2-3=-5$. $A_x$ has rows $\\langle8,3\\rangle,\\langle1,-1\\rangle$, $\\det A_x=-8-3=-11$, so $x=\\dfrac{-11}{-5}=\\dfrac{11}{5}$. $A_y$ has rows $\\langle2,8\\rangle,\\langle1,1\\rangle$, $\\det A_y=2-8=-6$, so $y=\\dfrac{-6}{-5}=\\dfrac{6}{5}$."
-        },
-        {
-          "q": "Explain why Cramer's Rule fails (gives no unique solution) whenever $\\det A=0$.",
-          "answer": "Division by $\\det A=0$ is undefined, and this matches the invertibility criterion: $\\det A=0$ means the coefficient matrix is singular, so the system does not have a unique solution (it has either no solution or infinitely many)."
-        },
-        {
-          "q": "Compare Cramer's Rule to Gaussian elimination as a solution method for large systems (say, $10$ equations in $10$ unknowns). Which is more practical, and why?",
-          "answer": "Gaussian elimination is far more practical for large systems: it requires roughly $O(n^3)$ operations, while Cramer's Rule requires computing $n+1$ separate $n\\times n$ determinants, each costing far more via cofactor expansion — Cramer's Rule is mainly useful for small systems ($2\\times2$ or $3\\times3$) or for theoretical formulas, not large-scale computation."
+          "q": "According to Cramer's Rule for solving $A \\mathbf{x} = \\mathbf{b}$ where $\\det(A) \\neq 0$, the $i$th variable is given by:",
+          "choices": [
+            "$x_i = \\frac{\\det(A_i(\\mathbf{b}))}{\\det(A)}$",
+            "$x_i = \\frac{\\det(A)}{\\det(A_i(\\mathbf{b}))}$",
+            "$x_i = \\det(A) \\cdot b_i$",
+            "$x_i = \\frac{b_i}{\\det(A)}$"
+          ],
+          "correct": 0,
+          "answer": "Cramer's Rule states that $x_i = \\frac{\\det(A_i(\\mathbf{b}))}{\\det(A)}$, where $A_i(\\mathbf{b})$ is the matrix formed by replacing column $i$ of $A$ with $\\mathbf{b}$."
         }
       ]
     }

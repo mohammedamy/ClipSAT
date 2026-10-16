@@ -7,6 +7,57 @@
 function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 window.esc = window.esc || esc;
 var VIEW_META = window.CSViewMeta || {};
+
+function _wm(s){
+  if(s == null) return '';
+  var str = String(s);
+  if(typeof window.CSAutoMath === 'function') str = window.CSAutoMath(str);
+  else if(typeof window._autoMath === 'function') str = window._autoMath(str);
+  if(str.indexOf('\\(') === -1 && str.indexOf('\\[') === -1 && str.indexOf('$$') === -1 && str.indexOf('\\') !== -1){
+    str = '\\(' + str + '\\)';
+  }
+  if(typeof window.CSQuizMath === 'function') return window.CSQuizMath(str);
+  var out='', inM=false, i=0, L=str.length;
+  while(i<L){
+    if(!inM && str.slice(i,i+2)==='\\('){out+='\\(';i+=2;inM=true;continue;}
+    if(!inM && str.slice(i,i+2)==='\\['){out+='\\[';i+=2;inM=true;continue;}
+    if(inM && str.slice(i,i+2)==='\\)'){out+='\\)';i+=2;inM=false;continue;}
+    if(inM && str.slice(i,i+2)==='\\]'){out+='\\]';i+=2;inM=false;continue;}
+    if(str[i]==='<' && i+1<L && (str[i+1]==='/' || /[a-zA-Z]/.test(str[i+1]))){
+      var tj=str.indexOf('>', i);
+      if(tj!==-1){ out+=str.slice(i, tj+1); i=tj+1; continue; }
+    }
+    if(!inM && str[i]==='\\' && i+1<L && (str[i+1]==='%' || str[i+1]==='$')){
+      out+=str[i+1]; i+=2; continue;
+    }
+    var c=str[i];
+    if(c==='&') out+='&amp;';
+    else if(c==='<') out+='&lt;';
+    else if(c==='>') out+='&gt;';
+    else out+=c;
+    i++;
+  }
+  return out;
+}
+
+function _safeExcerpt(s, maxLen){
+  if(!s) return '';
+  maxLen = maxLen || 100;
+  if(s.length <= maxLen) return _wm(s);
+  var inM = false, cutIdx = maxLen;
+  for(var i = 0; i < s.length; i++){
+    if(!inM && s.slice(i, i+2) === '\\('){ inM = true; i++; continue; }
+    if(inM && s.slice(i, i+2) === '\\)'){ inM = false; i++; continue; }
+    if(i >= maxLen && !inM && (s[i] === ' ' || s[i] === '.' || s[i] === ',' || s[i] === ';' || s[i] === '?')){
+      cutIdx = i;
+      break;
+    }
+  }
+  var sub = s.slice(0, cutIdx).trim();
+  if(cutIdx < s.length) sub += '…';
+  return _wm(sub);
+}
+
 Object.assign(_TT_STR.en,{
   caSendClassroom:'Send to Google Classroom', caOpenClassroom:'Open Google Classroom',
   caClassroomHelp:'Choose your class in Google\'s window, then pick Assignment. Students open the link and answer on ClipSAT; each answer is marked on the spot.',
@@ -119,12 +170,12 @@ window.CSAssign = {
     function _mesc(s){return String(s||'').replace(/&(?![a-zA-Z#])/g,'&amp;');}
     var qHtml='', keyHtml='';
     selected.forEach(function(q,i){
-      var stem=_mesc(q.text||q.q||q.stem||q.question||'');
+      var stem=_wm(q.text||q.q||q.stem||q.question||'');
       var opts=q.choices||q.options||[];
       var ans=q.answer!=null?q.answer:q.correct;
       var optHtml=opts.map(function(o,j){
-        var s=typeof window.CSAutoMath==='function'?window.CSAutoMath(o):String(o||'');
-        return '<div style="margin:3px 0 3px 12px">'+optLetter(j)+'. '+_mesc(s)+'</div>';
+        var s=_wm(o);
+        return '<div style="margin:3px 0 3px 12px">'+optLetter(j)+'. '+s+'</div>';
       }).join('');
       var figH = '';
       var _f = q.figure || q.fig || q.table;
@@ -148,12 +199,12 @@ window.CSAssign = {
         +figH
         +optHtml
         +'</div>';
-      var ansLabel=typeof ans==='number'?optLetter(ans):_mesc(String(ans||''));
-      var cleanExcerpt=stem.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+      var ansLabel=typeof ans==='number'?optLetter(ans):_wm(ans);
+      var rawStem=String(q.text||q.q||q.stem||q.question||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
       keyHtml+='<tr>'
         +'<td style="padding:5px 9px;border:1px solid #e2e8f0;text-align:center;font-weight:700">'+(i+1)+'</td>'
         +'<td style="padding:5px 9px;border:1px solid #e2e8f0;text-align:center;color:#166534;font-weight:700">'+ansLabel+'</td>'
-        +'<td style="padding:5px 9px;border:1px solid #e2e8f0">'+cleanExcerpt.slice(0,60)+'…</td></tr>';
+        +'<td style="padding:5px 9px;border:1px solid #e2e8f0">'+_safeExcerpt(rawStem,80)+'</td></tr>';
     });
     var _logoUrl=(document.getElementById('site-logo-img')||{src:''}).src;
     var logoTag=_logoUrl?'<img class="hdr-logo-img" src="'+_logoUrl+'" alt="ClipSAT">':'';
@@ -177,9 +228,10 @@ window.CSAssign = {
       +'body[dir="rtl"]{direction:rtl;text-align:right;padding-left:0;padding-right:24pt}'
       +'body[dir="rtl"] .hdr{direction:rtl}'
       +'body[dir="rtl"] th{text-align:right}'
-      +'body[dir="rtl"] mjx-container,body[dir="rtl"] .MathJax{direction:ltr}';
+      +'body[dir="rtl"] mjx-container,body[dir="rtl"] .MathJax,body[dir="rtl"] .katex{direction:ltr;unicode-bidi:isolate}';
     var html='<!DOCTYPE html><html lang="'+(_dir==='rtl'?'ar':'en')+'" dir="'+_dir+'"><head><meta charset="UTF-8"><title>'+_tt('assignmentDocTitle',viewId)+'</title><style>'+css+'</style>'
-      +'<script>MathJax={tex:{inlineMath:[["\\\\(","\\\\)"]],displayMath:[["\\\\[","\\\\]"]],tags:"none"},svg:{fontCache:"global",scale:1},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};<\/script>'
+      +'<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous">'
+      +'<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"],["$","$"]],displayMath:[["\\\\[","\\\\]"],["$$","$$"]],tags:"none"},svg:{fontCache:"global",scale:1},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};<\/script>'
       +'<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"><\/script>'
       +'</head><body dir="'+_dir+'">'
       +'<div class="hdr"><div class="hdr-brand">'+logoTag+'<div class="brand">ClipSAT<span>'+_tt('assignmentWord',viewId)+' — '+viewId.toUpperCase()+'</span></div></div>'
@@ -197,7 +249,7 @@ window.CSAssign = {
         +'<table><tr><th style="width:40px">'+_tt('colNum',viewId)+'</th><th style="width:60px">'+_tt('colAnswer',viewId)+'</th><th>'+_tt('colQuestionExcerpt',viewId)+'</th></tr>'+keyHtml+'</table>';
     }
     html+='<div class="no-print" style="margin-top:20pt;text-align:center"><button onclick="window.print()" style="background:#1a1a2e;color:#fff;border:none;border-radius:7pt;padding:8pt 22pt;cursor:pointer;font-size:11pt">'+_tt('printPdf',viewId)+'</button></div>'
-      +'<script>MathJax.startup.promise.then(function(){setTimeout(function(){try{window.print();}catch(e){}},400);});<\/script>'
+      +'<script>if(window.MathJax&&MathJax.startup&&MathJax.startup.promise){MathJax.startup.promise.then(function(){setTimeout(function(){try{window.print();}catch(e){}},400);}).catch(function(){setTimeout(function(){try{window.print();}catch(e){}},400);});}else{setTimeout(function(){try{window.print();}catch(e){}},800);}<\/script>'
       +'</body></html>';
     document.getElementById('cs-assign-modal').remove();
     var blob=new Blob([html],{type:'text/html'}); var url=URL.createObjectURL(blob);
@@ -303,9 +355,12 @@ window.CSReport = {
     /* Build mistake rows */
     var mistakeRows='';
     mistakes.forEach(function(m){
-      mistakeRows+='<tr><td style="padding:5px 8px;border:1px solid #e2e8f0">'+String(m.q||m.question||'').slice(0,80)+'</td>'
-        +'<td style="padding:5px 8px;border:1px solid #e2e8f0">'+String(m.wrong||m.chosen||'')+'</td>'
-        +'<td style="padding:5px 8px;border:1px solid #e2e8f0;color:#166534;font-weight:700">'+String(m.right||m.correct||m.answer||'')+'</td></tr>';
+      var qTxt = _wm(m.q || m.question || '');
+      var wTxt = _wm(m.wrong || m.chosen || '');
+      var rTxt = _wm(m.right || m.correct || m.answer || '');
+      mistakeRows+='<tr><td style="padding:6px 8px;border:1px solid #e2e8f0;word-break:break-word">'+qTxt+'</td>'
+        +'<td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:center">'+wTxt+'</td>'
+        +'<td style="padding:6px 8px;border:1px solid #e2e8f0;text-align:center;color:#166534;font-weight:700">'+rTxt+'</td></tr>';
     });
     if(!mistakeRows) mistakeRows='<tr><td colspan="3" style="padding:12px;text-align:center;color:#888">'+_tt('noMistakesYet')+'</td></tr>';
     /* Build score history */
@@ -323,6 +378,9 @@ window.CSReport = {
     var logoTag=_logoUrl?'<img class="hdr-logo-img" src="'+_logoUrl+'" alt="ClipSAT">':'';
     var _dir=_ttDir();
     var html='<!DOCTYPE html><html lang="'+(_dir==='rtl'?'ar':'en')+'" dir="'+_dir+'"><head><meta charset="UTF-8"><title>'+_tt('progressReportDocTitle')+'</title>'
+      +'<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous">'
+      +'<script>window.MathJax={tex:{inlineMath:[["\\\\(","\\\\)"],["$","$"]],displayMath:[["\\\\[","\\\\]"],["$$","$$"]],tags:"none"},svg:{fontCache:"global",scale:1},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};<\/script>'
+      +'<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.js"><\/script>'
       +'<style>@page{margin:20mm 18mm 24mm}body{font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#111;margin:0}'
       +'.hdr{border-bottom:2.5pt solid #1a1a2e;display:flex;align-items:center;justify-content:space-between;padding:8pt 0 10pt;margin-bottom:18pt}'
       +'.hdr-brand{display:flex;align-items:center;gap:9pt}'
@@ -342,6 +400,7 @@ window.CSReport = {
       +'body[dir="rtl"]{direction:rtl;text-align:right}'
       +'body[dir="rtl"] .hdr{direction:rtl}'
       +'body[dir="rtl"] th{text-align:right}'
+      +'body[dir="rtl"] mjx-container,body[dir="rtl"] .MathJax,body[dir="rtl"] .katex{direction:ltr;unicode-bidi:isolate}'
       +'</style></head><body dir="'+_dir+'">'
       +'<div class="hdr">'
       +'<div class="hdr-brand">'+logoTag+'<div class="brand">ClipSAT<span>'+_tt('progressReportSubtitle')+'</span></div></div>'
@@ -360,9 +419,10 @@ window.CSReport = {
       +'<h3>'+_tt('recentScoreHistory')+'</h3>'
       +'<table><tr><th>'+_tt('colDate')+'</th><th>'+_tt('colTopic')+'</th><th>'+_tt('colScore')+'</th><th>'+_tt('colPercent')+'</th></tr>'+histRows+'</table>'
       +'<h3>'+_tt('recentMistakes')+'</h3>'
-      +'<table><tr><th>'+_tt('colQuestion')+'</th><th>'+_tt('colYourAnswer')+'</th><th>'+_tt('colCorrectAnswer')+'</th></tr>'+mistakeRows+'</table>'
+      +'<table><tr><th style="width:56%">'+_tt('colQuestion')+'</th><th style="width:22%;text-align:center">'+_tt('colYourAnswer')+'</th><th style="width:22%;text-align:center">'+_tt('colCorrectAnswer')+'</th></tr>'+mistakeRows+'</table>'
       +'<div class="footer">'+_tt('reportFooter')+today+'</div>'
       +'<div class="no-print" style="margin-top:20pt;text-align:center"><button onclick="window.print()" style="background:#1a1a2e;color:#fff;border:none;border-radius:7pt;padding:8pt 22pt;cursor:pointer;font-size:11pt">'+_tt('printPdf')+'</button></div>'
+      +'<script>if(window.MathJax&&MathJax.startup&&MathJax.startup.promise){MathJax.startup.promise.then(function(){setTimeout(function(){try{window.print();}catch(e){}},400);}).catch(function(){setTimeout(function(){try{window.print();}catch(e){}},400);});}else{setTimeout(function(){try{window.print();}catch(e){}},800);}<\/script>'
       +'</body></html>';
     html=_ie(html);
     var blob=new Blob([html],{type:'text/html'}); var url=URL.createObjectURL(blob);

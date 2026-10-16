@@ -1,159 +1,158 @@
 {
   "track": "calculus",
   "num": "2.01",
+  "slug": "evaluating-limits",
   "title": "Evaluating Limits",
   "sections": [
     {
-      "heading": "Direct substitution and algebraic techniques",
+      "heading": "Section 1: Direct Substitution and Algebraic Techniques",
       "questions": [
         {
-          "q": "Evaluate each limit:",
-          "parts": [
-            "$\\lim_{x \\to 1} (3x^2 - 2x + 5)$",
-            "$\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2}$",
-            "$\\lim_{x \\to 0} \\frac{\\sqrt{x + 4} - 2}{x}$"
+          "q": "Evaluate $\\lim_{x \\to 3} \\frac{x^2 - 9}{x^2 - 2x - 3}$.",
+          "choices": [
+            "$3/2$",
+            "$0$",
+            "$1$",
+            "Does not exist"
           ],
-          "cols": 1,
-          "answers": [
-            "$= 6$.",
-            "$= \\lim_{x\\to 2}(x+2) = 4$.",
-            "Rationalize: $\\frac{(x+4) - 4}{x(\\sqrt{x+4}+2)} = \\frac{1}{\\sqrt{x+4}+2} \\to \\frac{1}{4}$."
-          ]
+          "correct": 0,
+          "answer": "Indeterminate $0/0$. Factor: $\\frac{(x-3)(x+3)}{(x-3)(x+1)} = \\frac{x+3}{x+1}$. Substitute $x = 3$: $\\frac{3+3}{3+1} = \\frac{6}{4} = \\frac{3}{2}$."
         },
         {
-          "q": "Evaluate $\\lim_{x \\to 3} \\frac{x^2 - x - 6}{x^2 - 9}$.",
-          "answer": "Factor: $\\frac{(x-3)(x+2)}{(x-3)(x+3)} = \\frac{x+2}{x+3} \\to \\frac{5}{6}$."
-        }
-      ]
-    },
-    {
-      "heading": "Trigonometric and special limits",
-      "questions": [
-        {
-          "q": "Using $\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1$, evaluate:",
-          "parts": [
-            "$\\lim_{x \\to 0} \\frac{\\sin 5x}{x}$",
-            "$\\lim_{x \\to 0} \\frac{1 - \\cos x}{x}$",
-            "$\\lim_{x \\to 0} \\frac{\\sin 3x}{\\sin 5x}$"
+          "q": "Evaluate $\\lim_{x \\to 0} \\frac{\\sqrt{x + 4} - 2}{x}$.",
+          "choices": [
+            "$1/4$",
+            "$1/2$",
+            "$0$",
+            "$1/8$"
           ],
-          "cols": 1,
-          "answers": [
-            "$= 5\\lim_{x\\to 0}\\frac{\\sin 5x}{5x} = 5$.",
-            "$= 0$ (known result: this limit is $0$, not $\\infty$).",
-            "$= \\frac{3}{5}\\cdot\\lim\\frac{\\sin 3x}{3x}\\cdot\\frac{5x}{\\sin 5x} = \\frac{3}{5}$."
-          ]
+          "correct": 0,
+          "answer": "Multiply numerator and denominator by conjugate $(\\sqrt{x+4}+2)$: $\\frac{(x+4)-4}{x(\\sqrt{x+4}+2)} = \\frac{1}{\\sqrt{x+4}+2}$. At $x=0$, $\\frac{1}{2+2} = \\frac{1}{4}$."
         },
         {
-          "q": "Evaluate $\\lim_{x \\to \\infty} \\frac{5x^3 - 2x + 1}{2x^3 + 7}$.",
-          "answer": "Equal degrees: the limit is the ratio of leading coefficients, $\\frac{5}{2}$."
-        }
-      ]
-    },
-    {
-      "heading": "Limits that fail to exist and the squeeze theorem",
-      "questions": [
-        {
-          "q": "Explain why $\\lim_{x \\to 0} \\sin\\left(\\frac{1}{x}\\right)$ does not exist.",
-          "answer": "As $x \\to 0$, $\\frac{1}{x} \\to \\pm\\infty$, so $\\sin(1/x)$ oscillates between $-1$ and $1$ infinitely often near $x = 0$ rather than approaching a single value."
-        },
-        {
-          "q": "Use the squeeze theorem to evaluate $\\lim_{x \\to 0} x^2\\cos\\left(\\frac{1}{x}\\right)$.",
-          "answer": "Since $-x^2 \\leq x^2\\cos(1/x) \\leq x^2$ and $\\lim_{x\\to 0}(\\pm x^2) = 0$, the squeeze theorem gives a limit of $0$.",
-          "figure": {"type": "plot", "fns": ["x**2", "-x**2", "x**2*cos(1/x)"], "xmin": -1, "xmax": 1, "ymin": -1, "ymax": 1, "width": 220}
-        }
-      ]
-    },
-    {
-      "heading": "Limits with absolute value and piecewise functions",
-      "questions": [
-        {
-          "q": "Evaluate $\\lim_{x\\to3} |x-3|\\cdot\\frac{1}{x}$.",
-          "answer": "As $x\\to3$, $|x-3|\\to0$ and $\\frac{1}{x}\\to\\frac{1}{3}$ (a finite value), so the product limit is $0\\cdot\\frac{1}{3}=0$."
-        },
-        {
-          "q": "For $f(x)=2x+1$ if $x<3$, and $f(x)=x^2-2$ if $x\\geq3$, evaluate $\\lim_{x\\to3^-}f(x)$ and $\\lim_{x\\to3^+}f(x)$, and state whether $\\lim_{x\\to3}f(x)$ exists.",
-          "answer": "$\\lim_{x\\to3^-}f(x)=2(3)+1=7$. $\\lim_{x\\to3^+}f(x)=3^2-2=7$. Since both one-sided limits equal $7$, $\\lim_{x\\to3}f(x)=7$ exists.",
-          "figure": {"type": "plot", "fns": ["np.where(x < 3, 2*x + 1, x**2 - 2)"], "xmin": 0, "xmax": 6, "ymin": -2, "ymax": 10, "width": 220}
-        }
-      ]
-    },
-    {
-      "heading": "More algebraic limit techniques",
-      "questions": [
-        {
-          "q": "Evaluate $\\lim_{x\\to2} \\frac{x^3-8}{x-2}$ by factoring with the difference-of-cubes formula.",
-          "answer": "$x^3-8=(x-2)(x^2+2x+4)$, so the limit is $\\lim_{x\\to2}(x^2+2x+4) = 4+4+4=12$."
-        },
-        {
-          "q": "Evaluate $\\lim_{h\\to0} \\frac{(2+h)^2-4}{h}$.",
-          "answer": "$(2+h)^2-4 = 4+4h+h^2-4=4h+h^2=h(4+h)$, so the limit is $\\lim_{h\\to0}(4+h)=4$."
-        }
-      ]
-    },
-    {
-      "heading": "Visualizing a limit numerically and graphically",
-      "questions": [
-        {
-          "q": "The function $f(x)=\\frac{\\sin x}{x}$ (undefined at $x=0$) is graphed below. Use the graph to estimate $\\lim_{x\\to0}f(x)$.",
-          "answer": "The graph approaches height $1$ from both sides as $x\\to0$, even though the function has a hole exactly at $x=0$: $\\lim_{x\\to0}\\frac{\\sin x}{x}=1$.",
-          "figure": {"type": "plot", "fns": ["sin(x)/x"], "xmin": -10, "xmax": 10, "ymin": -0.5, "ymax": 1.3, "width": 250}
-        }
-      ]
-    },
-    {
-      "heading": "Limits at infinity with different degree relationships",
-      "questions": [
-        {
-          "q": "Evaluate each limit at infinity, based on the relative degrees of numerator and denominator:",
-          "parts": [
-            "$\\lim_{x\\to\\infty}\\frac{4x+3}{x^2-1}$ (lower degree numerator)",
-            "$\\lim_{x\\to\\infty}\\frac{x^3-1}{2x^2+5}$ (higher degree numerator)"
+          "q": "Evaluate $\\lim_{x \\to 1} \\frac{\\frac{1}{x+1} - \\frac{1}{2}}{x - 1}$.",
+          "choices": [
+            "$-1/4$",
+            "$1/4$",
+            "$-1/2$",
+            "$0$"
           ],
-          "cols": 1,
-          "answers": [
-            "$=0$ (denominator grows faster).",
-            "$=\\infty$ (numerator grows faster; the limit does not exist as a finite number)."
+          "correct": 0,
+          "answer": "Combine fractions: $\\frac{2 - (x+1)}{2(x+1)(x-1)} = \\frac{1-x}{2(x+1)(x-1)} = \\frac{-1}{2(x+1)}$. At $x = 1$, $\\frac{-1}{2(2)} = -\\frac{1}{4}$."
+        }
+      ]
+    },
+    {
+      "heading": "Section 2: Trigonometric Limits and the Squeeze Theorem",
+      "questions": [
+        {
+          "q": "Evaluate $\\lim_{x \\to 0} \\frac{\\sin(5x)}{3x}$.",
+          "choices": [
+            "$5/3$",
+            "$3/5$",
+            "$1$",
+            "$0$"
           ],
-          "figure": {"type": "plot", "fns": ["(4*x + 3)/(x**2 - 1)"], "xmin": 2, "xmax": 60, "ymin": -0.2, "ymax": 1.5, "width": 220}
+          "correct": 0,
+          "answer": "Rewrite as $\\frac{5}{3} \\cdot \\frac{\\sin(5x)}{5x}$. Since $\\lim_{u \\to 0} \\frac{\\sin u}{u} = 1$, the limit is $5/3$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x \\to 0} \\frac{1 - \\cos(x)}{x^2}$.",
+          "choices": [
+            "$1/2$",
+            "$0$",
+            "$1$",
+            "Does not exist"
+          ],
+          "correct": 0,
+          "answer": "Multiply by $(1+\\cos x)/(1+\\cos x)$: $\\frac{\\sin^2 x}{x^2(1+\\cos x)} = \\left(\\frac{\\sin x}{x}\\right)^2 \\frac{1}{1+\\cos x} \\to 1^2 \\cdot \\frac{1}{2} = \\frac{1}{2}$."
+        },
+        {
+          "q": "If $1 - \\frac{x^2}{6} \\leq g(x) \\leq 1$ for all $x$ near 0, find $\\lim_{x \\to 0} g(x)$.",
+          "choices": [
+            "$1$",
+            "$0$",
+            "$5/6$",
+            "Cannot be determined"
+          ],
+          "correct": 0,
+          "answer": "Since $\\lim_{x \\to 0} (1 - x^2/6) = 1$ and $\\lim_{x \\to 0} 1 = 1$, by the Squeeze Theorem, $\\lim_{x \\to 0} g(x) = 1$."
         }
       ]
     },
     {
-      "heading": "Limits requiring conjugate multiplication",
+      "heading": "Section 3: Infinite Limits and Limits at Infinity",
       "questions": [
         {
-          "q": "Evaluate $\\lim_{x\\to9}\\frac{x-9}{\\sqrt{x}-3}$ by rationalizing the denominator.",
-          "answer": "Multiply by $\\frac{\\sqrt{x}+3}{\\sqrt{x}+3}$: $\\frac{(x-9)(\\sqrt{x}+3)}{x-9}=\\sqrt{x}+3 \\to \\sqrt{9}+3=6$."
+          "q": "Evaluate $\\lim_{x \\to \\infty} \\frac{4x^3 - 2x + 7}{5x^3 + 3x^2 - 1}$.",
+          "choices": [
+            "$4/5$",
+            "$0$",
+            "$\\infty$",
+            "$7/(-1)$"
+          ],
+          "correct": 0,
+          "answer": "Divide numerator and denominator by $x^3$: $\\frac{4 - 2/x^2 + 7/x^3}{5 + 3/x - 1/x^3} \\to \\frac{4}{5}$ as $x \\to \\infty$."
         },
         {
-          "q": "Evaluate $\\lim_{x\\to\\infty}\\left(\\sqrt{x^2+3x}-x\\right)$ by rationalizing.",
-          "answer": "Multiply by $\\frac{\\sqrt{x^2+3x}+x}{\\sqrt{x^2+3x}+x}$: $\\frac{3x}{\\sqrt{x^2+3x}+x}$. Dividing top and bottom by $x$: $\\frac{3}{\\sqrt{1+3/x}+1}\\to\\frac{3}{1+1}=\\frac{3}{2}$."
+          "q": "Evaluate $\\lim_{x \\to -\\infty} \\frac{\\sqrt{9x^2 + 4}}{2x - 1}$.",
+          "choices": [
+            "$-3/2$",
+            "$3/2$",
+            "$9/2$",
+            "$-9/2$"
+          ],
+          "correct": 0,
+          "answer": "For $x < 0$, $\\sqrt{x^2} = |x| = -x$. Thus $\\sqrt{9x^2+4} = -x\\sqrt{9 + 4/x^2}$. Ratio becomes $\\frac{-x\\sqrt{9}}{2x} = -\\frac{3}{2}$."
+        },
+        {
+          "q": "Find $\\lim_{x \\to 2^+} \\frac{3x - 1}{x - 2}$ and $\\lim_{x \\to 2^-} \\frac{3x - 1}{x - 2}$.",
+          "choices": [
+            "$+\\infty$ and $-\\infty$",
+            "$+\\infty$ and $+\\infty$",
+            "$-\\infty$ and $+\\infty$",
+            "$5$ and $5$"
+          ],
+          "correct": 0,
+          "answer": "Numerator approaches $3(2)-1 = 5 > 0$. As $x \\to 2^+$, $x - 2 \\to 0^+$, so ratio $\\to +\\infty$. As $x \\to 2^-$, $x - 2 \\to 0^-$, so ratio $\\to -\\infty$."
         }
       ]
     },
     {
-      "heading": "Piecewise limits requiring a parameter",
+      "heading": "Section 4: Piecewise and One-Sided Limits",
       "questions": [
         {
-          "q": "For $f(x)=kx+1$ if $x\\leq2$, and $f(x)=x^2-3$ if $x>2$, find $k$ so that $\\lim_{x\\to2}f(x)$ exists.",
-          "answer": "Need $\\lim_{x\\to2^-}f(x)=\\lim_{x\\to2^+}f(x)$: $2k+1=4-3=1$, so $k=0$."
-        }
-      ]
-    },
-    {
-      "heading": "Limits involving factorable higher-degree polynomials",
-      "questions": [
-        {
-          "q": "Evaluate $\\lim_{x\\to1}\\frac{x^4-1}{x-1}$ by factoring the numerator as a difference of squares twice.",
-          "answer": "$x^4-1=(x^2-1)(x^2+1)=(x-1)(x+1)(x^2+1)$, so the limit is $\\lim_{x\\to1}(x+1)(x^2+1)=(2)(2)=4$."
+          "q": "Let $f(x)$ be defined as $x^2 + 2$ for $x < 1$ and $4 - x$ for $x \\geq 1$. Evaluate $\\lim_{x \\to 1} f(x)$.",
+          "choices": [
+            "$3$",
+            "$1$",
+            "$2$",
+            "Does not exist"
+          ],
+          "correct": 0,
+          "answer": "Left limit: $\\lim_{x \\to 1^-} (x^2 + 2) = 3$. Right limit: $\\lim_{x \\to 1^+} (4 - x) = 3$. Since both equal 3, the two-sided limit is 3."
         },
         {
-          "q": "Evaluate $\\lim_{x\\to-2}\\frac{x^3+8}{x+2}$ using the sum-of-cubes factoring pattern.",
-          "answer": "$x^3+8=(x+2)(x^2-2x+4)$, so the limit is $\\lim_{x\\to-2}(x^2-2x+4)=4+4+4=12$."
+          "q": "Evaluate $\\lim_{x \\to 0^+} \\frac{|x|}{x}$ and $\\lim_{x \\to 0^-} \\frac{|x|}{x}$.",
+          "choices": [
+            "$1$ and $-1$",
+            "$1$ and $1$",
+            "$-1$ and $-1$",
+            "$0$ and $0$"
+          ],
+          "correct": 0,
+          "answer": "For $x > 0$, $|x| = x$, so $x/x = 1$. For $x < 0$, $|x| = -x$, so $-x/x = -1$."
         },
         {
-          "q": "Evaluate $\\lim_{x\\to0}\\frac{(3+x)^2-9}{x}$.",
-          "answer": "$(3+x)^2-9=9+6x+x^2-9=6x+x^2=x(6+x)$, so the limit is $\\lim_{x\\to0}(6+x)=6$."
+          "q": "Find the value of $k$ such that $\\lim_{x \\to 2} g(x)$ exists, where $g(x)$ is $kx - 3$ for $x \\leq 2$ and $x^2 + 1$ for $x > 2$.",
+          "choices": [
+            "$4$",
+            "$2$",
+            "$5$",
+            "$3$"
+          ],
+          "correct": 0,
+          "answer": "Require $\\lim_{x \\to 2^-} g(x) = \\lim_{x \\to 2^+} g(x) \\Rightarrow 2k - 3 = 2^2 + 1 = 5 \\Rightarrow 2k = 8 \\Rightarrow k = 4$."
         }
       ]
     }

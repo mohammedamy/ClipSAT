@@ -47,7 +47,7 @@
   (function(){
     var canvas=document.getElementById('tahTransCanvas'); if(!canvas) return;
     var hh=0, kk=0, sh=document.getElementById('tahH'), sk=document.getElementById('tahK');
-    var view={xmin:-8,xmax:8,ymin:-5,ymax:7};
+    var view={xmin:-8,xmax:8,ymin:-6,ymax:8,square:true,step:1};
     var dataBtn=document.getElementById('tahTransDataBtn'), dataPanel=document.getElementById('tahTransDataPanel'),
         dataDesc=document.getElementById('tahTransDataDesc'), dataRows=document.getElementById('tahTransDataRows');
     wireDataToggle(dataBtn,dataPanel);

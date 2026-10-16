@@ -44,7 +44,7 @@
   (function(){
     var canvas=document.getElementById('a2VecCanvas'); if(!canvas) return;
     var ax=3, ay=1, bx=1, by=3, sX=document.getElementById('a2VecX'), sY=document.getElementById('a2VecY');
-    var view={xmin:-6,xmax:6,ymin:-6,ymax:6};
+    var view={xmin:-6,xmax:6,ymin:-6,ymax:6,square:true,step:1};
     var dataBtn=document.getElementById('a2VecDataBtn'), dataPanel=document.getElementById('a2VecDataPanel'),
         dataDesc=document.getElementById('a2VecDataDesc'), dataRows=document.getElementById('a2VecDataRows');
     wireDataToggle(dataBtn,dataPanel);

@@ -92,6 +92,7 @@
       var xs=[Ax,Px,Qx], ys=[Ay,Py,Qy], pad=1.5;
       view.xmin=Math.min.apply(null,xs)-pad; view.xmax=Math.max.apply(null,xs)+pad;
       view.ymin=Math.min.apply(null,ys)-pad; view.ymax=Math.max.apply(null,ys)+pad;
+      view.square=true;
       var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
       P.segment(Ax,Ay,Px,Py,INDIGO,2.4);
       P.segment(Ax,Ay,Qx,Qy,INDIGO,2.4);
@@ -120,7 +121,7 @@
      including the perpendicular default, can be checked visually. */
   (function(){
     var canvas=document.getElementById('ibslVecAngCanvas'); if(!canvas) return;
-    var view={xmin:-6,xmax:6,ymin:-6,ymax:6};
+    var view={xmin:-6,xmax:6,ymin:-6,ymax:6,square:true};
     var uAng=20, uLen=4, vAng=110, vLen=3;
     var dataBtn=document.getElementById('ibslVecAngDataBtn'), dataPanel=document.getElementById('ibslVecAngDataPanel'),
         dataDesc=document.getElementById('ibslVecAngDataDesc'), dataRows=document.getElementById('ibslVecAngDataRows');
@@ -428,7 +429,7 @@
   /* IB SL AI — Voronoi diagram, three fixed sites, movable query point */
   (function(){
     var canvas=document.getElementById('ibslVorCanvas'); if(!canvas) return;
-    var view={xmin:0,xmax:10,ymin:0,ymax:10};
+    var view={xmin:0,xmax:10,ymin:0,ymax:10,square:true};
     var TEAL='#0e9f8f';
     var sites=[[2,2],[8,3],[5,8]];
     var cols=[INDIGO,AMBER2,TEAL];

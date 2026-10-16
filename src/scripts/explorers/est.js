@@ -72,7 +72,7 @@
   /* EST CH 6 — the Pythagorean theorem, visual proof via squares on each side */
   (function(){
     var canvas=document.getElementById('estPythCanvas'); if(!canvas) return;
-    var view={xmin:-9,xmax:15,ymin:-9,ymax:15};
+    var view={xmin:-9,xmax:15,ymin:-9,ymax:15,square:true,step:2};
     var a=6, b=8;
     var dataBtn=document.getElementById('estPythDataBtn'), dataPanel=document.getElementById('estPythDataPanel'),
         dataDesc=document.getElementById('estPythDataDesc'), dataRows=document.getElementById('estPythDataRows');
@@ -85,7 +85,7 @@
       ]);
     }
     function draw(ctx,w,h){
-      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear();
+      var P=new Plot(ctx,w,h,view,{l:28,r:12,t:12,b:24}); P.clear(); P.grid();
       var c=P.ctx;
       c.beginPath(); c.moveTo(P.X(0),P.Y(0)); c.lineTo(P.X(a),P.Y(0)); c.lineTo(P.X(0),P.Y(b)); c.closePath();
       c.fillStyle='rgba(14,23,38,0.06)'; c.fill(); c.lineWidth=2; c.strokeStyle=INK; c.stroke();
@@ -120,7 +120,7 @@
   /* EST CH 7 — SOH-CAH-TOA, hypotenuse fixed at 10 */
   (function(){
     var canvas=document.getElementById('estTrigCanvas'); if(!canvas) return;
-    var view={xmin:-1,xmax:11,ymin:-1,ymax:11};
+    var view={xmin:-1,xmax:11,ymin:-1,ymax:11,square:true};
     var thetaDeg=30, HYP=10;
     var dataBtn=document.getElementById('estTrigDataBtn'), dataPanel=document.getElementById('estTrigDataPanel'),
         dataDesc=document.getElementById('estTrigDataDesc'), dataRows=document.getElementById('estTrigDataRows');

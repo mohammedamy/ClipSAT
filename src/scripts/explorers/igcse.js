@@ -16,7 +16,7 @@
   (function(){
     var canvas=document.getElementById('circleCanvas'); if(!canvas) return;
     var R=3, Adeg=200, Bdeg=340, frac=0.5;
-    var view={xmin:-4,xmax:4,ymin:-4,ymax:4};
+    var view={xmin:-4,xmax:4,ymin:-4,ymax:4,square:true};
     var s=document.getElementById('circleP');
     var dataBtn=document.getElementById('circleDataBtn'), dataPanel=document.getElementById('circleDataPanel'),
         dataDesc=document.getElementById('circleDataDesc'), dataRows=document.getElementById('circleDataRows');
@@ -95,7 +95,7 @@
   /* ===================== IGCSE · RIGHT-TRIANGLE TRIG ===================== */
   (function(){
     var canvas=document.getElementById('trigCanvas'); if(!canvas) return;
-    var H=4, deg=35, view={xmin:-0.6,xmax:4.6,ymin:-0.6,ymax:4.6};
+    var H=4, deg=35, view={xmin:-0.6,xmax:4.6,ymin:-0.6,ymax:4.6,square:true};
     var s=document.getElementById('trigAngle');
     var dataBtn=document.getElementById('trigDataBtn'), dataPanel=document.getElementById('trigDataPanel'),
         dataDesc=document.getElementById('trigDataDesc'), dataRows=document.getElementById('trigDataRows');
@@ -179,7 +179,7 @@
       r180:{f:function(p){return [-p[0],-p[1]];}, rule:'(x, y) → (−x, −y)   ·   rotation 180° about O'},
       e2:{f:function(p){return [2*p[0],2*p[1]];}, rule:'(x, y) → (2x, 2y)   ·   enlargement scale factor 2, centre O'}
     };
-    var key='rx', view={xmin:-6.5,xmax:6.5,ymin:-6.5,ymax:6.5};
+    var key='rx', view={xmin:-6.5,xmax:6.5,ymin:-6.5,ymax:6.5,square:true,step:1};
     var sel=document.getElementById('igTransSel');
     var dataBtn=document.getElementById('igTransDataBtn'), dataPanel=document.getElementById('igTransDataPanel'),
         dataDesc=document.getElementById('igTransDataDesc'), dataRows=document.getElementById('igTransDataRows');

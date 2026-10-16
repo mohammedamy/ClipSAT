@@ -1,159 +1,158 @@
 {
   "track": "precalc",
   "num": "6.02",
+  "slug": "polar-equations-and-graphs",
   "title": "Polar Equations and Graphs",
   "sections": [
     {
-      "heading": "Recognizing polar graphs",
+      "heading": "Section 1: Circles and Lines in Polar Form",
       "questions": [
         {
-          "q": "Identify the graph of each polar equation:",
-          "parts": [
-            "$r = 3$",
-            "$\\theta = \\frac{\\pi}{6}$",
-            "$r = 2 + 2\\cos\\theta$",
-            "$r = 4\\sin 3\\theta$"
+          "q": "What is the graph of $r = a$ where $a$ is a constant?",
+          "choices": [
+            "A circle centered at the origin with radius $|a|$",
+            "A line through the origin",
+            "A parabola",
+            "An ellipse"
           ],
-          "cols": 2,
-          "answers": [
-            "Circle of radius 3 centered at the pole.",
-            "Line through the pole at angle $\\frac{\\pi}{6}$.",
-            "Cardioid (heart-shaped, symmetric about the polar axis).",
-            "Rose curve with 3 petals."
-          ]
+          "correct": 0,
+          "answer": "$r = a \\Rightarrow \\sqrt{x^2 + y^2} = a \\Rightarrow x^2 + y^2 = a^2$, a circle centered at $(0, 0)$."
         },
         {
-          "q": "For the limaçon $r = 1 + 2\\cos\\theta$:",
-          "parts": [
-            "Explain how you know it has an inner loop.",
-            "Find the values of $\\theta$ in $[0, 2\\pi)$ at which the curve passes through the pole."
+          "q": "What is the graph of $\\theta = \\alpha$ where $\\alpha$ is a constant angle?",
+          "choices": [
+            "A straight line passing through the origin with slope $\\tan\\alpha$",
+            "A circle",
+            "A ray only",
+            "A spiral"
           ],
-          "cols": 1,
-          "answers": [
-            "In $r = a + b\\cos\\theta$, $|a| < |b|$ (here $1 < 2$) produces an inner loop.",
-            "$1 + 2\\cos\\theta = 0$ gives $\\cos\\theta = -\\frac{1}{2}$: $\\theta = \\frac{2\\pi}{3}, \\frac{4\\pi}{3}$."
-          ]
+          "correct": 0,
+          "answer": "Allowing all positive and negative values of $r$ along the angle $\\alpha$ produces a complete straight line through the origin."
         },
         {
-          "q": "For the rose $r = 5\\sin 2\\theta$:",
-          "parts": [
-            "State the number of petals.",
-            "State the maximum value of $|r|$ and the smallest positive $\\theta$ at which it occurs."
+          "q": "Describe the circle given by $r = -6\\sin\\theta$.",
+          "choices": [
+            "Centered at $(0, -3)$ with radius $3$",
+            "Centered at $(0, 3)$ with radius $3$",
+            "Centered at $(0, 0)$ with radius $6$",
+            "Centered at $(-3, 0)$ with radius $3$"
           ],
-          "cols": 1,
-          "answers": [
-            "$n = 2$ is even, so $2n = 4$ petals.",
-            "Maximum $|r| = 5$, first at $2\\theta = \\frac{\\pi}{2}$, i.e. $\\theta = \\frac{\\pi}{4}$."
-          ]
+          "correct": 0,
+          "answer": "Multiply by $r$: $r^2 = -6r\\sin\\theta \\Rightarrow x^2 + y^2 = -6y \\Rightarrow x^2 + (y + 3)^2 = 9$. Center is $(0, -3)$, radius 3."
+        }
+      ]
+    },
+    {
+      "heading": "Section 2: Limaçons and Cardiods",
+      "questions": [
+        {
+          "q": "Under what condition does the limaçon $r = a + b\\cos\\theta$ ($a, b > 0$) form a cardioid (heart-shaped curve)?",
+          "choices": [
+            "$a/b = 1$ (i.e. $a = b$)",
+            "$a/b < 1$",
+            "$1 < a/b < 2$",
+            "$a/b \\geq 2$"
+          ],
+          "correct": 0,
+          "answer": "When $a = b$, the curve passes through the origin at a cusp, creating a cardioid."
         },
         {
-          "q": "Determine whether the graph of $r = 2 + \\sin\\theta$ passes through the pole, and state the type of limaçon.",
-          "answer": "$2 + \\sin\\theta \\geq 1 > 0$ for all $\\theta$, so it never passes through the pole. Since $|a| > |b|$ ($2 > 1$), it is a dimpled limaçon with no inner loop."
-        }
-      ]
-    },
-    {
-      "heading": "Symmetry tests",
-      "questions": [
-        {
-          "q": "Test $r = 3\\cos 2\\theta$ for symmetry about the polar axis (replace $\\theta$ with $-\\theta$) and about the pole (replace $r$ with $-r$).",
-          "answer": "Polar-axis: $\\cos(2(-\\theta))=\\cos(2\\theta)$, unchanged — symmetric about the polar axis. Pole: replacing $r\\to-r$ gives $-r=3\\cos2\\theta$, not equivalent to the original in general — the standard test is inconclusive for pole symmetry, though the curve (a 4-petal rose) is in fact symmetric about the pole by direct graphing."
+          "q": "Which equation produces a limaçon with an inner loop?",
+          "choices": [
+            "$r = 2 + 3\\cos\\theta$",
+            "$r = 3 + 3\\cos\\theta$",
+            "$r = 4 + 2\\cos\\theta$",
+            "$r = 3 + 2\\cos\\theta$"
+          ],
+          "correct": 0,
+          "answer": "An inner loop occurs when $a < b$ (ratio $a/b < 1$). For $r = 2 + 3\\cos\\theta$, $a/b = 2/3 < 1$."
         },
         {
-          "q": "Test $r = 2 + 2\\sin\\theta$ for symmetry about the line $\\theta = \\frac{\\pi}{2}$ (replace $\\theta$ with $\\pi - \\theta$).",
-          "answer": "$\\sin(\\pi-\\theta) = \\sin\\theta$, so the equation is unchanged: symmetric about $\\theta=\\frac{\\pi}{2}$ (the vertical axis)."
+          "q": "What type of curve is $r = 5 + 2\\sin\\theta$?",
+          "choices": [
+            "A convex (dimple-free) limaçon",
+            "A cardioid",
+            "A limaçon with an inner loop",
+            "A dimpled limaçon"
+          ],
+          "correct": 0,
+          "answer": "Here $a/b = 5/2 = 2.5 \\geq 2$. When $a/b \\geq 2$, the limaçon has no dimple and is convex."
         }
       ]
     },
     {
-      "heading": "Graphing from a table of values",
+      "heading": "Section 3: Rose Curves",
       "questions": [
         {
-          "q": "For the cardioid $r = 1 + \\cos\\theta$, complete the table of $r$-values: $\\theta = 0, \\frac{\\pi}{2}, \\pi, \\frac{3\\pi}{2}$.",
-          "parts": ["$r(0)$", "$r\\left(\\frac{\\pi}{2}\\right)$", "$r(\\pi)$", "$r\\left(\\frac{3\\pi}{2}\\right)$"],
-          "cols": 4,
-          "answers": ["$=2$", "$=1$", "$=0$", "$=1$"],
-          "figure": {"type": "plot", "fns": ["1+cos(x)"], "xmin": 0, "xmax": 6.3, "ymin": 0, "ymax": 2.2, "width": 220}
+          "q": "How many petals does the rose curve $r = 4\\cos(3\\theta)$ have?",
+          "choices": [
+            "$3$ petals",
+            "$6$ petals",
+            "$4$ petals",
+            "$12$ petals"
+          ],
+          "correct": 0,
+          "answer": "For $r = a\\cos(n\\theta)$, if $n$ is odd, the curve has exactly $n$ petals. Here $n = 3$, so it has 3 petals."
         },
         {
-          "q": "For the circle $r = 4\\sin\\theta$, find the value(s) of $\\theta$ in $[0,\\pi)$ where $r$ reaches its maximum, and state that maximum value.",
-          "answer": "Maximum of $\\sin\\theta$ is $1$ at $\\theta=\\frac{\\pi}{2}$, giving $r=4$.",
-          "figure": {"type": "plot", "fns": ["4*sin(x)"], "xmin": 0, "xmax": 3.2, "ymin": 0, "ymax": 4.5, "width": 220}
-        }
-      ]
-    },
-    {
-      "heading": "Rose curves in depth",
-      "questions": [
-        {
-          "q": "For the rose $r = 3\\cos5\\theta$, state the number of petals and the length of each petal (maximum $|r|$).",
-          "answer": "$n=5$ is odd, so there are $n=5$ petals, each of length $|r|_{\\max}=3$.",
-          "figure": {"type": "plot", "fns": ["3*cos(5*x)"], "xmin": 0, "xmax": 6.3, "ymin": -3.5, "ymax": 3.5, "width": 220}
+          "q": "How many petals does the rose curve $r = 2\\sin(4\\theta)$ have?",
+          "choices": [
+            "$8$ petals",
+            "$4$ petals",
+            "$16$ petals",
+            "$2$ petals"
+          ],
+          "correct": 0,
+          "answer": "If $n$ is even, the curve has $2n$ petals. Here $n = 4$ (even), so it has $2(4) = 8$ petals."
         },
         {
-          "q": "Explain, using the general rule for rose curves $r=a\\cos(n\\theta)$ or $r=a\\sin(n\\theta)$, why $n$ odd gives $n$ petals but $n$ even gives $2n$ petals.",
-          "answer": "When $n$ is odd, tracing $\\theta$ from $0$ to $2\\pi$ retraces each petal a second time (due to negative $r$ values overlapping earlier petals), so only $n$ distinct petals appear. When $n$ is even, no such overlap occurs, and all $2n$ petals from the full $[0,2\\pi)$ sweep are distinct."
+          "q": "What is the maximum length of each petal in $r = 5\\cos(2\\theta)$?",
+          "choices": [
+            "$5$",
+            "$10$",
+            "$2.5$",
+            "$2$"
+          ],
+          "correct": 0,
+          "answer": "The maximum value of $|r| = |5\\cos(2\\theta)|$ is 5, which determines the tip length of each petal."
         }
       ]
     },
     {
-      "heading": "Identifying limaçon subtypes",
+      "heading": "Section 4: Lemniscates and Spirals",
       "questions": [
         {
-          "q": "Classify each limaçon $r=a+b\\cos\\theta$ as having an inner loop, being dimpled, or being convex (roughly oval, no dimple), based on the ratio $\\frac{a}{b}$:",
-          "parts": ["$r=1+3\\cos\\theta$", "$r=3+2\\cos\\theta$", "$r=4+\\cos\\theta$"],
-          "cols": 1,
-          "answers": [
-            "$\\frac{a}{b}=\\frac{1}{3}<1$: inner loop.",
-            "$1<\\frac{a}{b}=\\frac{3}{2}<2$: dimpled.",
-            "$\\frac{a}{b}=4>2$: convex (no dimple)."
-          ]
-        }
-      ]
-    },
-    {
-      "heading": "Finding maximum and minimum r-values",
-      "questions": [
+          "q": "What figure-eight-shaped curve is given by $r^2 = 9\\cos(2\\theta)$?",
+          "choices": [
+            "A lemniscate",
+            "A cardioid",
+            "A rose curve",
+            "A spiral of Archimedes"
+          ],
+          "correct": 0,
+          "answer": "Equations of the form $r^2 = a^2\\cos(2\\theta)$ or $r^2 = a^2\\sin(2\\theta)$ represent lemniscates (infinity-symbol / figure-eight curves)."
+        },
         {
-          "q": "For the limaçon $r=3+2\\sin\\theta$, find the maximum and minimum values of $r$, and the angles at which they occur.",
-          "answer": "Maximum $r=5$ at $\\sin\\theta=1$ ($\\theta=\\frac{\\pi}{2}$). Minimum $r=1$ at $\\sin\\theta=-1$ ($\\theta=\\frac{3\\pi}{2}$).",
-          "figure": {"type": "plot", "fns": ["3+2*sin(x)"], "xmin": 0, "xmax": 6.3, "ymin": 0, "ymax": 5.5, "width": 220}
-        }
-      ]
-    },
-    {
-      "heading": "Comparing sine- and cosine-based polar curves",
-      "questions": [
+          "q": "What type of curve is represented by the polar equation $r = 2\\theta$ for $\\theta \\geq 0$?",
+          "choices": [
+            "Spiral of Archimedes",
+            "Logarithmic spiral",
+            "Lemniscate",
+            "Circle"
+          ],
+          "correct": 0,
+          "answer": "Equations where radius is directly proportional to angle ($r = a\\theta$) are Archimedean spirals."
+        },
         {
-          "q": "Explain how the graph of $r=3+3\\sin\\theta$ compares to $r=3+3\\cos\\theta$ (same cardioid shape, different orientation).",
-          "answer": "Both are cardioids of the same size and shape. The cosine version $r=3+3\\cos\\theta$ is symmetric about the polar axis (horizontal), pointing right, while the sine version $r=3+3\\sin\\theta$ is symmetric about $\\theta=\\frac{\\pi}{2}$ (vertical), pointing up — a $90°$ rotation of one relative to the other."
-        }
-      ]
-    },
-    {
-      "heading": "Sketching from key features",
-      "questions": [
-        {
-          "q": "Without fully graphing, list the key features you would compute first to sketch $r=2-4\\cos\\theta$ (max/min $r$, pole crossings, symmetry).",
-          "answer": "Type: limaçon with inner loop ($|a|=2<|b|=4$). Symmetry: about the polar axis (cosine-based). Max $|r|=6$ at $\\theta=\\pi$; min value $r=-2$ at $\\theta=0$. Pole crossings: $2-4\\cos\\theta=0 \\Rightarrow \\cos\\theta=\\frac{1}{2} \\Rightarrow \\theta=\\frac{\\pi}{3},\\frac{5\\pi}{3}$ (marking where the inner loop begins/ends)."
-        }
-      ]
-    },
-    {
-      "heading": "A capstone graphing problem",
-      "questions": [
-        {
-          "q": "For the rose $r=4\\cos(3\\theta)$, find: (a) the number of petals, (b) the maximum value of $r$, (c) the value(s) of $\\theta\\in[0,\\pi)$ where the first petal reaches its maximum length, and (d) the angles where the curve passes through the pole in $[0,\\pi)$.",
-          "answer": "(a) $n=3$ is odd: $3$ petals. (b) Maximum $|r|=4$. (c) $\\cos(3\\theta)=1 \\Rightarrow 3\\theta=0 \\Rightarrow \\theta=0$ (first petal's tip). (d) $\\cos(3\\theta)=0 \\Rightarrow 3\\theta=\\frac{\\pi}{2},\\frac{3\\pi}{2},\\frac{5\\pi}{2} \\Rightarrow \\theta=\\frac{\\pi}{6},\\frac{\\pi}{2},\\frac{5\\pi}{6}$."
-        }
-      ]
-    },
-    {
-      "heading": "Distinguishing curve families by equation form alone",
-      "questions": [
-        {
-          "q": "Without graphing, state whether each polar equation is a circle, a line, a rose, or a limaçon, based purely on its algebraic form: $r=7$, $r=5\\sin(4\\theta)$, $\\theta=\\frac{2\\pi}{5}$, $r=2-2\\cos\\theta$.",
-          "answer": "$r=7$: circle (constant $r$). $r=5\\sin(4\\theta)$: rose ($n=4$ even, $8$ petals). $\\theta=\\frac{2\\pi}{5}$: line through the pole (constant $\\theta$). $r=2-2\\cos\\theta$: cardioid (a special limaçon, coefficient equals constant)."
+          "q": "Which symmetry test verifies that a polar graph is symmetric with respect to the polar axis (the horizontal axis)?",
+          "choices": [
+            "Replacing $(r, \\theta)$ with $(r, -\\theta)$ yields an equivalent equation",
+            "Replacing $(r, \\theta)$ with $(-r, \\theta)$",
+            "Replacing $\\theta$ with $\\theta + \\pi$",
+            "Replacing $r$ with $1/r$"
+          ],
+          "correct": 0,
+          "answer": "Symmetry across the polar axis corresponds to reflection across $\\theta = 0$, so replacing $\\theta$ with $-\\theta$ must leave the equation unchanged."
         }
       ]
     }

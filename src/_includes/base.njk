@@ -21,6 +21,8 @@
   <meta name="description" content="{{ description }}">
   <meta name="theme-color" content="#1E3A6E">
   <meta name="application-name" content="ClipSAT">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=2">
@@ -39,15 +41,15 @@
   <meta property="og:title" content="{{ title }}">
   <meta property="og:description" content="{{ description }}">
   <meta property="og:url" content="https://clipsat.org{{ '/' + trackId + '/' if trackId !== 'home' else '/' }}">
-  <meta property="og:image" content="https://clipsat.org/clipsat-logo.jpg">
+  <meta property="og:image" content="https://clipsat.org/og-image.png">
   <meta property="og:locale" content="{{ 'ar_SA' if isRtl else 'en_US' }}">
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ title }}">
   <meta name="twitter:description" content="{{ description }}">
-  <meta name="twitter:image" content="https://clipsat.org/clipsat-logo.jpg">
+  <meta name="twitter:image" content="https://clipsat.org/og-image.png">
 
   <!-- Structured data: Course per subject track, Person + Organization sitewide -->
-  {% if trackId != 'home' and trackId != 'privacy' and trackId != 'terms' and trackId != 'contact' and trackId != 'cookies' and trackId != 'calculator' %}
+  {% if trackId != 'home' and trackId != 'privacy' and trackId != 'terms' and trackId != 'contact' and trackId != 'cookies' and trackId != 'calculator' and trackId != 'about' and trackId != 'trust' and trackId != 'pricing' %}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -96,9 +98,9 @@
        round-trip from the critical path with no visual change: raw
        "( ... )" source text (present either way until the deferred JS
        runs) doesn't need this stylesheet to display. -->
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" crossorigin="anonymous"></noscript>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js" crossorigin="anonymous"></script>
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" integrity="sha384-5bRuRJz0ZoqKq2KVCixePzyQqDx62ARzcK0IDTaoaPSGFVInFLwFgJh9EkM+gkvc" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" integrity="sha384-5bRuRJz0ZoqKq2KVCixePzyQqDx62ARzcK0IDTaoaPSGFVInFLwFgJh9EkM+gkvc" crossorigin="anonymous"></noscript>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js" integrity="sha384-XxErEt5JC4iP+lcDWdGKaHhvDDXTn7cb4wucJWzWlz2SzWs+IXGRD/MzzEUl/xBM" crossorigin="anonymous"></script>
   <!-- No onload="renderMathInElement(document.body,...)" here (removed —
        see LCP fix below). Every chapter/practice-set/test-gen/downloads
        section starts as .chapter{display:none} (main.css) until JS adds
@@ -113,7 +115,7 @@
        one active chapter, not the whole view — so this script only needs
        to load and define window.renderMathInElement; nothing here calls
        it directly. -->
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js" integrity="sha384-oSjIum2X1YeR08BjcmR3JNLHMzeIyonv0dw4ooZzsmhYHa4nS9BvK/hV8YclQx3y" crossorigin="anonymous"></script>
 
   <!-- MathJax-compatible shim, backed by KaTeX.
        engine.js (src/scripts/engine.js) was written against the MathJax
@@ -201,7 +203,7 @@
   </script>
 
   <!-- JSZip (needed for export) -->
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" integrity="sha384-v23j4pMVDeH7xAvXGXZ13fnyvkzWhtSRfRqyck9XxhTVPaoqJhCUA1Fzm/BAGbeq" crossorigin="anonymous"></script>
 
   <!-- Import map only — resolves the bare "three" specifier so Three.js addons
        (OrbitControls) can `import ... from "three"` when a 3D explorer
@@ -355,6 +357,14 @@
             </div>
             <div class="nav-more-divider"></div>
             <div class="nav-more-section">
+              <a class="nav-more-item" href="/about/" title="About ClipSAT">
+                <span class="nav-more-item-icon">ℹ️</span>
+                <span class="nav-more-item-text" data-i18n="nav.about">About</span>
+              </a>
+              <a class="nav-more-item" href="/trust/" title="Trust &amp; Safety">
+                <span class="nav-more-item-icon">🛡️</span>
+                <span class="nav-more-item-text" data-i18n="nav.trust">Trust &amp; Safety</span>
+              </a>
               <a class="nav-more-item" href="/changelog.html" title="See all updates">
                 <span class="nav-more-item-icon">🆕</span>
                 <span class="nav-more-item-text" data-i18n="nav.whats-new-label">What's New</span>
@@ -373,7 +383,6 @@
               <a href="https://www.youtube.com/@ClipSAT22" class="nsoc nsoc-yt" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.58 7.19a2.5 2.5 0 0 0-1.76-1.77C18.25 5 12 5 12 5s-6.25 0-7.82.42A2.5 2.5 0 0 0 2.42 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .42 4.81 2.5 2.5 0 0 0 1.76 1.77C5.75 19 12 19 12 19s6.25 0 7.82-.42a2.5 2.5 0 0 0 1.76-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.42-4.81ZM10 15V9l5.2 3-5.2 3Z"/></svg></a>
               <a href="https://www.tiktok.com/@clipsat22" class="nsoc nsoc-tk" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 3c.3 2.1 1.5 3.6 3.5 3.9v2.6c-1.3 0-2.5-.4-3.5-1.1v5.9c0 3-2.2 5.2-5.1 5.2A5.1 5.1 0 0 1 6.3 14c0-2.9 2.3-5.1 5.1-5.1.3 0 .6 0 .9.1v2.7a2.4 2.4 0 0 0-.9-.2 2.4 2.4 0 1 0 2.4 2.4V3h1.7Z"/></svg></a>
               <a href="https://www.instagram.com/mohammedamy/" class="nsoc nsoc-ig" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12 2c-2.72 0-3.06.01-4.12.06-1.07.05-1.8.22-2.43.46-.66.26-1.22.6-1.77 1.16-.56.55-.9 1.11-1.16 1.77-.24.63-.41 1.36-.46 2.43C2.01 8.94 2 9.28 2 12s.01 3.06.06 4.12c.05 1.07.22 1.8.46 2.43.26.66.6 1.22 1.16 1.77.55.56 1.11.9 1.77 1.16.63.24 1.36.41 2.43.46C8.94 21.99 9.28 22 12 22s3.06-.01 4.12-.06c1.07-.05 1.8-.22 2.43-.46.66-.26 1.22-.6 1.77-1.16.56-.55.9-1.11 1.16-1.77.24-.63.41-1.36.46-2.43.05-1.06.06-1.4.06-4.12s-.01-3.06-.06-4.12c-.05-1.07-.22-1.8-.46-2.43a4.9 4.9 0 0 0-1.16-1.77 4.9 4.9 0 0 0-1.77-1.16c-.63-.24-1.36-.41-2.43-.46C15.06 2.01 14.72 2 12 2Zm0 1.8c2.67 0 2.99.01 4.04.06.97.04 1.5.21 1.85.35.47.18.8.4 1.15.74.34.35.56.68.74 1.15.14.35.31.88.35 1.85.05 1.05.06 1.37.06 4.04s-.01 2.99-.06 4.04c-.04.97-.21 1.5-.35 1.85-.18.47-.4.8-.74 1.15-.35.34-.68.56-1.15.74-.35.14-.88.31-1.85.35-1.05.05-1.37.06-4.04.06s-2.99-.01-4.04-.06c-.97-.04-1.5-.21-1.85-.35a3.1 3.1 0 0 1-1.15-.74 3.1 3.1 0 0 1-.74-1.15c-.14-.35-.31-.88-.35-1.85-.05-1.05-.06-1.37-.06-4.04s.01-2.99.06-4.04c.04-.97.21-1.5.35-1.85.18-.47.4-.8.74-1.15.35-.34.68-.56 1.15-.74.35-.14.88-.31 1.85-.35C9.01 3.81 9.33 3.8 12 3.8Z"/><path fill-rule="evenodd" d="M12 7.13A4.87 4.87 0 1 0 12 16.87 4.87 4.87 0 0 0 12 7.13Zm0 8.03A3.16 3.16 0 1 1 12 8.84a3.16 3.16 0 0 1 0 6.32Z"/><path d="M17.07 5.79a1.14 1.14 0 1 0 0 2.28 1.14 1.14 0 0 0 0-2.28Z"/></svg></a>
-              <a href="https://www.facebook.com/profile.php?id=61590724705267" class="nsoc nsoc-fb" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.9 3.78-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.44 2.9h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94Z"/></svg></a>
               <a href="https://t.me/ClipSAT22" class="nsoc nsoc-tg" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
             </div>
           </div>
@@ -399,7 +408,7 @@
      above for the Course structured-data block. #cs-breadcrumb's own CSS
      has a fixed height regardless of content, so the text itself still
      safely populates a moment later via JS with no further shift. #}
-  <nav id="cs-breadcrumb" class="{% if trackId == 'home' or trackId == 'privacy' or trackId == 'terms' or trackId == 'contact' or trackId == 'cookies' or trackId == 'calculator' %}bc-hidden{% endif %}" aria-label="You are here">
+  <nav id="cs-breadcrumb" class="{% if trackId == 'home' or trackId == 'privacy' or trackId == 'terms' or trackId == 'contact' or trackId == 'cookies' or trackId == 'calculator' or trackId == 'about' or trackId == 'trust' or trackId == 'pricing' %}bc-hidden{% endif %}" aria-label="You are here">
     <span class="bc-course" id="bc-course" onclick="showView(window._csCurrentView||'home')">Home</span>
     <span class="bc-sep" aria-hidden="true">›</span>
     <span class="bc-chapter" id="bc-chapter"></span>
@@ -817,7 +826,9 @@
         <a href="https://paypal.me/mohammedamy" target="_blank" rel="noopener" class="foot-paypal">☕ Support via PayPal</a>
       </div>
       <div style="font-family:var(--sans); font-size:.86rem; color:var(--muted)">
-        <div style="font-weight:650; color:var(--ink); margin-bottom:8px" data-i18n="foot.legal">Legal</div>
+        <div style="font-weight:650; color:var(--ink); margin-bottom:8px" data-i18n="foot.legal">About &amp; Legal</div>
+        <a href="/about/" data-i18n="foot.about">About</a> ·
+        <a href="/trust/" data-i18n="foot.trust">Trust &amp; Safety</a> ·
         <a href="/contact/" data-i18n="foot.contact">Contact</a> ·
         <a href="/pricing/" data-i18n="foot.pricing">Plans &amp; Pricing</a> ·
         <a href="/privacy/" data-i18n="foot.privacy">Privacy Policy</a> ·
@@ -836,7 +847,7 @@
     <div class="wrap cookie-consent-inner">
       <div class="cookie-consent-text">
         <span class="cookie-consent-icon" aria-hidden="true">🍪</span>
-        <span data-i18n-html="cookie.banner.text">We use essential browser storage for your math progress and settings. With your consent, we also load cookies for advertising and analytics to keep ClipSAT 100% free.</span>
+        <span data-i18n-html="cookie.banner.text">We use essential browser storage for your math progress and settings. With your consent, we also load cookies for advertising and analytics to support free access to ClipSAT.</span>
         <a href="/privacy/" class="cookie-consent-link" data-i18n="cookie.banner.privacyLink">Privacy Policy</a>
       </div>
       <div class="cookie-consent-actions">
@@ -876,22 +887,22 @@
     <div id="cbt-palette-modal" class="cbt-palette-overlay" onclick="if(event.target===this)window.closeCBTPalette&&window.closeCBTPalette()"></div>
   </div>
 
-  <!-- ============================== MATH HELPER CHAT (TEACHER HEAD FLOATING BOT) ============================== -->
-  <button id="chatFab" class="chat-fab teacher-head-fab" aria-label="Open Ask Mr. Mohamed math chat (Drag to move)" title="Ask Mr. Mohamed (Drag to reposition)">
+  <!-- ============================== MATH HELPER CHAT (CLIPSAT AI TUTOR) ============================== -->
+  <button id="chatFab" class="chat-fab teacher-head-fab" aria-label="Open ClipSAT AI Tutor chat (Drag to move)" title="ClipSAT AI Tutor (Drag to reposition)">
     <div class="chat-fab-avatar-ring">
-      <img src="/teacher-avatar.jpg" alt="Mr. Mohamed Abdallah" class="chat-fab-avatar" width="56" height="56" draggable="false" loading="lazy">
-      <span class="chat-fab-status-dot" aria-hidden="true" title="Online tutor"></span>
+      <img src="/teacher-avatar.jpg" alt="ClipSAT AI Tutor" class="chat-fab-avatar" width="56" height="56" draggable="false" loading="lazy">
+      <span class="chat-fab-status-dot" aria-hidden="true" title="Online AI tutor"></span>
       <span class="chat-fab-badge" aria-hidden="true">AI</span>
     </div>
-    <span class="chat-fab-tooltip" aria-hidden="true">Ask Mr. Mohamed</span>
+    <span class="chat-fab-tooltip" aria-hidden="true">ClipSAT AI Tutor</span>
   </button>
 
-  <div id="chatPanel" class="chat-panel" role="dialog" aria-label="Ask Mr. Mohamed math chat" aria-hidden="true">
+  <div id="chatPanel" class="chat-panel" role="dialog" aria-label="ClipSAT AI Tutor chat" aria-hidden="true">
     <div class="chat-head" style="flex-direction:column; align-items:stretch; gap:0">
       <div style="display:flex; align-items:center; justify-content:space-between">
         <div class="chat-title">
           <img src="/teacher-avatar.jpg" alt="" class="chat-head-avatar" width="34" height="34" aria-hidden="true">
-          <span>Ask Mr. Mohamed<span class="chat-sub">ClipSAT math tutor</span></span>
+          <span>ClipSAT AI Tutor<span class="chat-sub">AI math assistant</span></span>
         </div>
         <button id="chatClose" class="chat-close" aria-label="Close chat">&times;</button>
       </div>
@@ -902,7 +913,7 @@
       <textarea id="chatInput" rows="1" placeholder="Ask about a math problem…" aria-label="Type your math question"></textarea>
       <button id="chatSend" class="chat-send" aria-label="Send message">&rarr;</button>
     </div>
-    <div class="chat-foot">AI tutor · double-check key steps yourself &nbsp;·&nbsp; Free with ClipSAT Account</div>
+    <div class="chat-foot" style="line-height:1.4">AI-generated; may contain errors; not a substitute for teacher guidance. Free with ClipSAT Account.</div>
   </div>
 
   <!-- Cloud sync (optional accounts on top of the existing localStorage progress

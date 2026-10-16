@@ -16,7 +16,7 @@
   (function(){
     var canvas=document.getElementById('asLineCanvas'); if(!canvas) return;
     var m=1,b=0, sm=document.getElementById('asM'), sb=document.getElementById('asB');
-    var view={xmin:-6,xmax:6,ymin:-7,ymax:7};
+    var view={xmin:-6,xmax:6,ymin:-7,ymax:7,square:true,step:1};
     var dataBtn=document.getElementById('asLineDataBtn'), dataPanel=document.getElementById('asLineDataPanel'),
         dataDesc=document.getElementById('asLineDataDesc'), dataRows=document.getElementById('asLineDataRows');
     wireDataToggle(dataBtn,dataPanel);

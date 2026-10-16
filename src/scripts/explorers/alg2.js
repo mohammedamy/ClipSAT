@@ -89,7 +89,7 @@
   /* ===================== ALGEBRA 2 · CONIC SECTIONS ===================== */
   (function(){
     var canvas=document.getElementById('conicCanvas'); if(!canvas) return;
-    var kind='ellipse', p=3, view={xmin:-6,xmax:6,ymin:-6,ymax:6};
+    var kind='ellipse', p=3, view={xmin:-6,xmax:6,ymin:-6,ymax:6,square:true};
     var sel=document.getElementById('conicSel'), sP=document.getElementById('conicP');
     var dataBtn=document.getElementById('conicDataBtn'), dataPanel=document.getElementById('conicDataPanel'),
         dataDesc=document.getElementById('conicDataDesc'), dataRows=document.getElementById('conicDataRows');
@@ -136,7 +136,7 @@
   (function(){
     var canvas=document.getElementById('a2TrigCanvas'); if(!canvas) return;
     var theta=60*Math.PI/180;
-    var view={xmin:-1.5,xmax:1.5,ymin:-1.5,ymax:1.5};
+    var view={xmin:-1.5,xmax:1.5,ymin:-1.5,ymax:1.5,square:true};
     var dataBtn=document.getElementById('a2TrigDataBtn'), dataPanel=document.getElementById('a2TrigDataPanel'),
         dataDesc=document.getElementById('a2TrigDataDesc'), dataRows=document.getElementById('a2TrigDataRows');
     wireDataToggle(dataBtn,dataPanel);

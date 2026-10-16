@@ -1,0 +1,160 @@
+{
+  "track": "mvc",
+  "num": "1.01",
+  "slug": "functions-of-several-variables-partial-derivatives",
+  "title": "Functions of Several Variables & Partial Derivatives",
+  "sections": [
+    {
+      "heading": "Section 1: Domain, Range, and Level Curves",
+      "questions": [
+        {
+          "q": "Find the domain of the function $f(x, y) = \\ln(9 - x^2 - y^2)$.",
+          "choices": [
+            "The interior of the circle $x^2 + y^2 < 9$",
+            "The exterior of the circle $x^2 + y^2 > 9$",
+            "The closed disk $x^2 + y^2 \\leq 9$",
+            "All of $\\mathbb{R}^2$"
+          ],
+          "correct": 0,
+          "answer": "The argument of the natural logarithm must be strictly positive: $9 - x^2 - y^2 > 0 \\Leftrightarrow x^2 + y^2 < 9$, which is the open interior of a circle of radius 3 centered at the origin."
+        },
+        {
+          "q": "What geometric curves are the level curves of $z = x^2 + y^2$ for $c > 0$?",
+          "choices": [
+            "Concentric circles centered at $(0, 0)$",
+            "Lines of slope 1",
+            "Parabolas opening upward",
+            "Hyperbolas"
+          ],
+          "correct": 0,
+          "answer": "Setting $z = c \\Rightarrow x^2 + y^2 = c$. For $c > 0$, this is a family of concentric circles of radius $\\sqrt{c}$."
+        },
+        {
+          "q": "What is the range of $g(x, y) = \\sqrt{16 - x^2 - y^2}$?",
+          "choices": [
+            "$[0, 4]$",
+            "$[0, 16]$",
+            "$[-4, 4]$",
+            "$[0, \\infty)$"
+          ],
+          "correct": 0,
+          "answer": "When $x^2 + y^2 = 0$, $g(0, 0) = \\sqrt{16} = 4$. On the boundary $x^2 + y^2 = 16$, $g = 0$. Since square roots are non-negative, the range is $[0, 4]$."
+        }
+      ]
+    },
+    {
+      "heading": "Section 2: First-Order Partial Derivatives",
+      "questions": [
+        {
+          "q": "Find the partial derivative $f_x(x, y)$ for $f(x, y) = 3x^3 y^2 - 5x^2 + 4y^3$.",
+          "choices": [
+            "$9x^2 y^2 - 10x$",
+            "$6x^3 y + 12y^2$",
+            "$9x^2 y^2 - 10x + 12y^2$",
+            "$3x^2 y^2 - 10x$"
+          ],
+          "correct": 0,
+          "answer": "Treat $y$ as a constant: $\\frac{\\partial}{\\partial x}[3x^3 y^2] = 3(3x^2)y^2 = 9x^2 y^2$; $\\frac{\\partial}{\\partial x}[-5x^2] = -10x$; $\\frac{\\partial}{\\partial x}[4y^3] = 0$. Result: $9x^2 y^2 - 10x$."
+        },
+        {
+          "q": "Find $f_y(x, y)$ for $f(x, y) = e^{2x} \\sin(3y)$.",
+          "choices": [
+            "$3e^{2x} \\cos(3y)$",
+            "$2e^{2x} \\sin(3y)$",
+            "$6e^{2x} \\cos(3y)$",
+            "$-3e^{2x} \\cos(3y)$"
+          ],
+          "correct": 0,
+          "answer": "Treat $x$ as constant: $\\frac{\\partial}{\\partial y}[e^{2x} \\sin(3y)] = e^{2x} \\cdot 3\\cos(3y) = 3e^{2x}\\cos(3y)$."
+        },
+        {
+          "q": "Evaluate $f_x(1, 2)$ for $f(x, y) = x^2 y + 3xy^2$.",
+          "choices": [
+            "$16$",
+            "$28$",
+            "$12$",
+            "$8$"
+          ],
+          "correct": 0,
+          "answer": "$f_x(x, y) = 2xy + 3y^2$. At $(1, 2)$: $f_x(1, 2) = 2(1)(2) + 3(2^2) = 4 + 3(4) = 4 + 12 = 16$."
+        }
+      ]
+    },
+    {
+      "heading": "Section 3: Higher-Order Partials and Clairaut's Theorem",
+      "questions": [
+        {
+          "q": "What does Clairaut's Theorem state about mixed second-order partial derivatives $f_{xy}$ and $f_{yx}$?",
+          "choices": [
+            "If both $f_{xy}$ and $f_{yx}$ are continuous on an open region, then $f_{xy} = f_{yx}$",
+            "Mixed partials are always equal to 0",
+            "The sum $f_{xy} + f_{yx} = 0$",
+            "Equality holds only for polynomials"
+          ],
+          "correct": 0,
+          "answer": "Clairaut's Theorem guarantees that mixed partial derivatives are equal ($f_{xy} = f_{yx}$) provided they are continuous on an open disk."
+        },
+        {
+          "q": "For $f(x, y) = x^3 y^4$, verify Clairaut's Theorem by finding $f_{xy}$.",
+          "choices": [
+            "$12x^2 y^3$",
+            "$3x^2 y^4$",
+            "$4x^3 y^3$",
+            "$6x y^2$"
+          ],
+          "correct": 0,
+          "answer": "$f_x = 3x^2 y^4$. Then $f_{xy} = \\frac{\\partial}{\\partial y}[3x^2 y^4] = 3x^2 (4y^3) = 12x^2 y^3$."
+        },
+        {
+          "q": "Find $f_{xx}$ for $f(x, y) = x^4 - 2x^2 y^3 + y^5$.",
+          "choices": [
+            "$12x^2 - 4y^3$",
+            "$4x^3 - 4x y^3$",
+            "$12x^2$",
+            "$-12x^2 y^2$"
+          ],
+          "correct": 0,
+          "answer": "$f_x = 4x^3 - 4xy^3$. Differentiating again with respect to $x$: $f_{xx} = 12x^2 - 4y^3$."
+        }
+      ]
+    },
+    {
+      "heading": "Section 4: Tangent Planes and Linear Approximations",
+      "questions": [
+        {
+          "q": "What is the equation of the tangent plane to the surface $z = f(x, y)$ at the point $(x_0, y_0, z_0)$?",
+          "choices": [
+            "$z - z_0 = f_x(x_0, y_0)(x - x_0) + f_y(x_0, y_0)(y - y_0)$",
+            "$z - z_0 = f_x(x - x_0) - f_y(y - y_0)$",
+            "$z = f_x x_0 + f_y y_0$",
+            "$(x - x_0) + (y - y_0) + (z - z_0) = 0$"
+          ],
+          "correct": 0,
+          "answer": "The linear approximation (tangent plane) formula is $z - z_0 = f_x(x_0, y_0)(x - x_0) + f_y(x_0, y_0)(y - y_0)$."
+        },
+        {
+          "q": "Find the equation of the tangent plane to $z = x^2 + y^2$ at $(1, 2, 5)$.",
+          "choices": [
+            "$z - 5 = 2(x - 1) + 4(y - 2) \\Leftrightarrow 2x + 4y - z = 5$",
+            "$2x + 4y + z = 15$",
+            "$x + 2y - z = 0$",
+            "$4x + 2y - z = 5$"
+          ],
+          "correct": 0,
+          "answer": "$f_x = 2x \\Rightarrow f_x(1, 2) = 2$. $f_y = 2y \\Rightarrow f_y(1, 2) = 4$. Plane: $z - 5 = 2(x - 1) + 4(y - 2) \\Rightarrow z - 5 = 2x - 2 + 4y - 8 \\Rightarrow 2x + 4y - z = 5$."
+        },
+        {
+          "q": "What is a normal vector to the surface $z = f(x, y)$ at $(x_0, y_0)$?",
+          "choices": [
+            "$\\mathbf{n} = [f_x(x_0, y_0), f_y(x_0, y_0), -1]$",
+            "$\\mathbf{n} = [f_x, f_y, 1]$",
+            "$\\mathbf{n} = [1, 1, 1]$",
+            "$\\mathbf{n} = [-f_y, f_x, 0]$"
+          ],
+          "correct": 0,
+          "answer": "Rewriting as $F(x, y, z) = f(x, y) - z = 0$, the gradient $\\nabla F = [f_x, f_y, -1]$ forms an outward normal vector."
+        }
+      ]
+    }
+  ]
+}

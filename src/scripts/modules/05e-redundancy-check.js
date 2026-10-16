@@ -47,6 +47,15 @@
       if(t === 'bar' || t === 'bar_chart') return 'bar:' + (f.data||[]).map(function(d){return d.label+':'+d.val;}).join(',');
       if(t === 'scatter') return 'scat:' + (f.pts||[]).slice(0,4).join(';');
       if(t === 'numberline') return 'nl:' + (f.range||[]).join(',') + ':' + (f.points||[]).map(function(p){return p.x;}).join(',');
+      if(t === 'nested_triangles' || t === 'thales' || t === 'triangle_transversal') return 'nthales:' + (f.t||'') + ':' + JSON.stringify(f.sides||{});
+      if(t === 'bowtie' || t === 'hourglass') return 'bowtie:' + (f.ratio||'') + ':' + JSON.stringify(f.sides||{});
+      if(t === 'right_triangle_altitude' || t === 'altitude_hypotenuse' || t === 'geometric_mean') return 'rtalt:' + (f.t||'') + ':' + (f.altitude||'') + ':' + (f.p||'') + ':' + (f.q||'') + ':' + JSON.stringify(f.sides||{}) + ':' + JSON.stringify(f.labels||{});
+      if(t === 'trapezoid_diagonals') return 'trapdiag:' + JSON.stringify(f.sides||{}) + ':' + JSON.stringify(f.labels||{});
+      if(t === 'shadow_similarity' || t === 'indirect_measurement') return 'shadow:' + ((f.obj1&&f.obj1.height)||'') + ':' + ((f.obj2&&f.obj2.height)||'');
+      if(t === 'angle_bisector') return 'angbis:' + JSON.stringify(f.sides||{}) + ':' + JSON.stringify(f.labels||{});
+      if(t === 'circle_chords_similarity') return 'circchord:' + JSON.stringify(f.sides||{}) + ':' + JSON.stringify(f.labels||{});
+      if(t === 'overlapping_triangles' || t === 'inverted_similar') return 'ovltri:' + JSON.stringify(f.sides||{}) + ':' + JSON.stringify(f.labels||{});
+      if(t === 'similar') return 'sim:' + (f.ratio||'') + ':' + JSON.stringify(f.left||{}) + ':' + JSON.stringify(f.right||{});
       return JSON.stringify(f).slice(0, 100);
     } catch(e){ return null; }
   }
@@ -107,6 +116,7 @@
       }).map(function(r){ return {index:Math.max(r.i,r.same_as),same_as:Math.min(r.i,r.same_as)}; });
     }).catch(function(){ return []; });
   }
-
-  window.ClipSATRedundancy={findRepeats:findRepeats,tracker:tracker,examinerReview:examinerReview,_sig:sig,_compare:compare};
+  var exp = {findRepeats:findRepeats,tracker:tracker,examinerReview:examinerReview,_sig:sig,_compare:compare};
+  if (typeof window !== 'undefined') window.ClipSATRedundancy = exp;
+  if (typeof module !== 'undefined' && module.exports) module.exports = exp;
 })();

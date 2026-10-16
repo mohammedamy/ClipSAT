@@ -394,7 +394,7 @@
     function f(x,y){ return x*x+x*y; }
     var gx=2*ax+ay, gy=ax; // ∇f(1,2) = ⟨2x+y, x⟩ = ⟨4,1⟩
     var theta=0;
-    var view={xmin:-1,xmax:6,ymin:-1,ymax:6};
+    var view={xmin:-1,xmax:6,ymin:-1,ymax:6,square:true};
     var dataBtn=document.getElementById('mvcGradDataBtn'), dataPanel=document.getElementById('mvcGradDataPanel'),
         dataDesc=document.getElementById('mvcGradDataDesc'), dataRows=document.getElementById('mvcGradDataRows');
     wireDataToggle(dataBtn,dataPanel);
@@ -447,7 +447,7 @@
     function fx(x,y){ return 3*x*x-3; }
     function fy(x,y){ return 2*y; }
     function Dval(x){ return 12*x; } // f_xx f_yy − f_xy² = (6x)(2) − 0² = 12x
-    var view={xmin:-2.2,xmax:2.2,ymin:-2.2,ymax:2.2};
+    var view={xmin:-2.2,xmax:2.2,ymin:-2.2,ymax:2.2,square:true};
     var dataBtn=document.getElementById('mvcCritDataBtn'), dataPanel=document.getElementById('mvcCritDataPanel'),
         dataDesc=document.getElementById('mvcCritDataDesc'), dataRows=document.getElementById('mvcCritDataRows');
     wireDataToggle(dataBtn,dataPanel);
@@ -725,7 +725,7 @@
      grid, plus the conservative-field test (b === c). */
   (function(){
     var canvas=document.getElementById('mvcVFCanvas'); if(!canvas) return;
-    var view={xmin:-3.3,xmax:3.3,ymin:-3.3,ymax:3.3};
+    var view={xmin:-3.3,xmax:3.3,ymin:-3.3,ymax:3.3,square:true};
     var a=0, b=1, cQ=-1, d=0;
     var dataBtn=document.getElementById('mvcVFDataBtn'), dataPanel=document.getElementById('mvcVFDataPanel'),
         dataDesc=document.getElementById('mvcVFDataDesc'), dataRows=document.getElementById('mvcVFDataRows');
