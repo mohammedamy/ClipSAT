@@ -20,7 +20,8 @@ assert(njkContent.includes('data-mode="distributions"'), 'index.njk must include
 assert(njkContent.includes('_normCdf') && njkContent.includes('_invNorm'), 'index.njk must implement Normal CDF and invNorm');
 assert(njkContent.includes('_binomPdf') && njkContent.includes('_poissonPdf'), 'index.njk must implement Binomial and Poisson');
 assert(njkContent.includes('_tCdf') && njkContent.includes('_chi2Cdf'), 'index.njk must implement Student t and Chi-Square');
-console.log('  ✓ /calculator/ page uses native Desmos API with keypad, expressions, presets, and statistical distributions suite');
+assert(njkContent.includes('stat_linear_regression') && njkContent.includes('stats_regression'), 'index.njk must include stats_regression presets');
+console.log('  ✓ /calculator/ page uses native Desmos API with keypad, expressions, presets, regression modeling, and statistical distributions suite');
 
 // 2. Verify _site/calculator/index.html compiled output
 const siteCalcPath = path.join(__dirname, '..', '_site', 'calculator', 'index.html');
@@ -36,6 +37,7 @@ const fcContent = fs.readFileSync(fcPath, 'utf8');
 assert(fcContent.includes('_ensureDesmosAPI'), 'Floating calc must have dynamic Desmos API loader');
 assert(fcContent.includes('cs-fcalc-max-btn'), 'Floating calc must include maximize/expand button');
 assert(fcContent.includes('cs-fcalc-presets-bar'), 'Floating calc must include quick presets bar');
+assert(fcContent.includes('data-preset="regression"'), 'Floating calc presets must include regression preset');
 assert(fcContent.includes('cs-fcalc-shield'), 'Floating calc must include drag shield against pointer trapping');
 assert(fcContent.includes('_applyFloatingPreset'), 'Floating calc must handle equation presets');
 assert(fcContent.includes('setFloatingCalcExpression'), 'Floating calc must expose setFloatingCalcExpression API');
@@ -43,7 +45,7 @@ assert(fcContent.includes('_toggleMaximize'), 'Floating calc must implement _tog
 assert(fcContent.includes('setFloatingCalcLocked'), 'Floating calc must export setFloatingCalcLocked');
 assert(fcContent.includes('isFloatingCalcLocked'), 'Floating calc must export isFloatingCalcLocked');
 assert(fcContent.includes('_showCalcLockedToast'), 'Floating calc must display non-calculator toast notification');
-console.log('  ✓ 20g-floating-calc.js includes Desmos API, maximize, drag shield, presets, and strict exam lock API');
+console.log('  ✓ 20g-floating-calc.js includes Desmos API, maximize, drag shield, regression presets, and strict exam lock API');
 
 // 4. Test Calculator Lock Execution in Simulated Environment
 const simulatedWindow = {};

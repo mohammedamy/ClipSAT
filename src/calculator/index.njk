@@ -1064,10 +1064,34 @@ isRtl: false
       descEn: 'Official high-frequency Thanaweya combinatorics operations.',
       descAr: 'حساب التباديل والتوافيق والمضاريب لمنهج الجبر المصري.',
       latex: 'nCr(10, 3) = 120,\\quad nPr(10, 3) = 720,\\quad 7! = 5040',
-      expressions: ['nCr(10, 3)', 'nPr(10, 3)', '7!'] }
+      expressions: ['nCr(10, 3)', 'nPr(10, 3)', '7!'] },
+    { id: 'stat_linear_regression', category: 'stats_regression', mode: 'graphing',
+      titleEn: 'Linear Regression & Correlation (y ~ mx + b)', titleAr: 'الانحدار الخطي ومعامل الارتباط (ص ~ م س + ب)',
+      descEn: 'Bivariate data table with line of best fit, slope, correlation coefficient r, and residual plotting.',
+      descAr: 'جدول بيانات ثنائي المتغير مع خط أفضل مطابقة، ومعامل الارتباط، والميل، وتمثيل البواقي.',
+      latex: 'y_1 \\sim m x_1 + b,\\quad r^2,\\quad e_1 = y_1 - (m x_1 + b)',
+      expressions: ['y_1 \\sim m x_1 + b', 'e_1 = y_1 - (m x_1 + b)'] },
+    { id: 'stat_quadratic_regression', category: 'stats_regression', mode: 'graphing',
+      titleEn: 'Quadratic Parabolic Modeling (y ~ ax² + bx + c)', titleAr: 'الانحدار التربيعي ونمذجة المنحنيات (ص ~ أ س² + ب س + جـ)',
+      descEn: 'Model projectile trajectory, revenue maximization, and non-linear bivariate trends.',
+      descAr: 'نمذجة مسار المقذوفات وتعظيم الأرباح والعلاقات غير الخطية بنموذج تربيعي.',
+      latex: 'y_1 \\sim a x_1^2 + b x_1 + c',
+      expressions: ['y_1 \\sim a x_1^2 + b x_1 + c'] },
+    { id: 'stat_exponential_regression', category: 'stats_regression', mode: 'graphing',
+      titleEn: 'Exponential Growth & Decay (y ~ a · b^x)', titleAr: 'الانحدار الأسي للنمو والاضمحلال (ص ~ أ · ب^س)',
+      descEn: 'Fit exponential model for compound interest, population biology, and radioactive half-life.',
+      descAr: 'ملاءمة نموذج أسي لحساب الفائدة المركبة والنمو السكاني ونصف العمر الإشعاعي.',
+      latex: 'y_1 \\sim a \\cdot b^{x_1}',
+      expressions: ['y_1 \\sim a \\cdot b^{x_1}'] },
+    { id: 'stat_list_summary_boxplot', category: 'stats_regression', mode: 'graphing',
+      titleEn: '1-Variable Summary Statistics & Boxplot', titleAr: 'الإحصاء الوصفي لمتغير واحد والرسم الصندوقي',
+      descEn: 'Calculate mean, median, standard deviation, quartiles, and render five-number summary boxplot.',
+      descAr: 'حساب المتوسط الحسابي والوسيط والانحراف المعياري والأرباع مع رسم المخطط الصندوقي للقيم الخمس.',
+      latex: 'L = [12, 15, 18, 22, 25, 28, 35],\\quad \\operatorname{mean}(L),\\quad \\operatorname{boxplot}(L)',
+      expressions: ['L = [12, 15, 18, 22, 25, 28, 35]', '\\operatorname{mean}(L)', '\\operatorname{median}(L)', '\\operatorname{stdev}(L)', '\\operatorname{boxplot}(L)'] }
   ];
 
-  var CATS = ['all', 'calculus', 'solid_3d', 'statics_dynamics', 'scientific'];
+  var CATS = ['all', 'stats_regression', 'calculus', 'solid_3d', 'statics_dynamics', 'scientific'];
 
   var presetsToggle = document.getElementById('calc-presets-toggle');
   var presetsPanel = document.getElementById('calc-presets-panel');

@@ -458,6 +458,105 @@ D['ibsl-t5'] = [
       { s: 'Chain rule, product rule, and quotient rule', s_ar: 'قواعد السلسلة والضرب والقسمة للمشتقات', cat: 0 },
       { s: 'Definite integrals and anti-derivatives', s_ar: 'التكاملات المحددة والدوال الأصلية (عكس المشتقة)', cat: 1 }
     ]
+  },
+  {
+    t: 'gp',
+    ti: 'Interactive Graph Plotter: Cubic Extrema & Inflection Point',
+    ti_ar: 'مخطط الدوال التفاعلي: القيم القصوى ونقطة الانقلاب للدالة التكعيبية',
+    q: 'Plot the local maximum, local minimum, and inflection point of \\(f(x) = x^3 - 3x^2\\) on the grid.',
+    q_ar: 'حدد القيمة العظمى المحلية، والقيمة الصغرى المحلية، ونقطة الانقلاب للدالة \\(f(x) = x^3 - 3x^2\\) على الشبكة الإحداثية.',
+    xrange: [-2, 4],
+    yrange: [-6, 3],
+    targets: [
+      { label: 'Local Maximum (0, 0)', label_ar: 'عظمى محلية (0, 0)', target: [0, 0], tol: 0.45 },
+      { label: 'Local Minimum (2, -4)', label_ar: 'صغرى محلية (2, -4)', target: [2, -4], tol: 0.45 },
+      { label: 'Inflection Point (1, -2)', label_ar: 'نقطة انقلاب (1, -2)', target: [1, -2], tol: 0.45 }
+    ],
+    targets_ar: [
+      { label: 'عظمى محلية (0, 0)', target: [0, 0], tol: 0.45 },
+      { label: 'صغرى محلية (2, -4)', target: [2, -4], tol: 0.45 },
+      { label: 'نقطة انقلاب (1, -2)', target: [1, -2], tol: 0.45 }
+    ],
+    curve: 'x**3 - 3*x**2',
+    sol: 'Differentiating: \\(f\'(x) = 3x^2 - 6x = 3x(x - 2) = 0 \\implies x = 0, 2\\). At \\(x = 0\\), \\(f(0) = 0\\) (local max); at \\(x = 2\\), \\(f(2) = -4\\) (local min). Inflection occurs at \\(f\'\'(x) = 6x - 6 = 0 \\implies x = 1, y = -2\\).',
+    sol_ar: 'باشتقاق الدالة: \\(f\'(x) = 3x(x - 2) = 0 \\implies x = 0, 2\\). عند \\(x = 0\\) عظمى محلية عند \\((0, 0)\\)، وعند \\(x = 2\\) صغرى محلية عند \\((2, -4)\\). نقطة الانقلاب عند \\(f\'\'(x) = 6x - 6 = 0 \\implies (1, -2)\\).'
+  },
+  {
+    t: 'se',
+    ti: 'Spot the Error: Extraneous Solutions in Logarithmic Equations',
+    ti_ar: 'اكتشف الخطأ: الحلول الدخيلة في المعادلات اللوغاريتمية',
+    q: 'A student solves \\(\\log_2(x) + \\log_2(x - 2) = 3\\). Review their steps below:',
+    q_ar: 'قام طالب بحل المعادلة \\(\\log_2(x) + \\log_2(x - 2) = 3\\). افحص خطوات الحل التالية:',
+    steps: [
+      { s: 'Combine logs using product property: \\(\\log_2[x(x - 2)] = 3\\)' },
+      { s: 'Convert to exponential form: \\(x(x - 2) = 2^3 = 8\\)' },
+      { s: 'Expand and rearrange into standard quadratic: \\(x^2 - 2x - 8 = 0\\)' },
+      { s: 'Factor: \\((x - 4)(x + 2) = 0 \\implies x = 4\\) or \\(x = -2\\)' },
+      { s: 'Conclude both \\(x = 4\\) and \\(x = -2\\) are valid solutions' }
+    ],
+    steps_ar: [
+      { s: 'دمج اللوغاريتمات باستخدام خاصية الضرب: \\(\\log_2[x(x - 2)] = 3\\)' },
+      { s: 'التحويل للصيغة الأسية: \\(x(x - 2) = 2^3 = 8\\)' },
+      { s: 'الترتيب بالصيغة القياسية: \\(x^2 - 2x - 8 = 0\\)' },
+      { s: 'التحليل: \\((x - 4)(x + 2) = 0 \\implies x = 4\\) أو \\(x = -2\\)' },
+      { s: 'الاستنتاج أن كلاً من \\(x = 4\\) و \\(x = -2\\) حلان صحيحان' }
+    ],
+    errorStep: 5,
+    reasons: [
+      'Logarithms require strictly positive arguments; x = -2 is an extraneous solution because log₂(-2) is undefined',
+      'The exponential form should have been 3² = 9',
+      'Factoring x² - 2x - 8 was incorrect'
+    ],
+    reasons_ar: [
+      'اللوغاريتم يشترط أعداداً موجبة تماماً؛ والعدد x = -2 حل دخيل لأن log₂(-2) غير معرّف',
+      'التحويل للصيغة الأسية كان يجب أن يكون 3² = 9',
+      'تحليل المقدار كان غير صحيح'
+    ],
+    correctReason: 0,
+    sol: 'Step 5 is erroneous! The domain of \\(\\log_2(x)\\) and \\(\\log_2(x - 2)\\) requires \\(x > 2\\). Since \\(-2 \\le 2\\), \\(x = -2\\) is an extraneous solution. The sole valid solution is \\(x = 4\\).',
+    sol_ar: 'الخطوة 5 خاطئة! مجال المعادلة يشترط \\(x > 2\\). العدد \\(x = -2\\) حل دخيل، والحل الوحيد المقبول هو \\(x = 4\\).'
+  },
+  {
+    t: 'ms',
+    ti: 'IB Math AA SL Paper 1: Kinematics Multi-Part Exam Question',
+    ti_ar: 'ورقة اختبار IB Math AA SL 1: مسألة الحركيات متعددة الأجزاء',
+    q: 'A particle moves along a horizontal straight line such that its velocity at time \\(t\\) seconds is given by \\(v(t) = 6t - 3t^2\\) for \\(t \\ge 0\\).<br><b>(a)</b> Find the acceleration of the particle at \\(t = 2\\). [2 marks]<br><b>(b)</b> Find the values of \\(t\\) when the particle is instantaneously at rest. [2 marks]<br><b>(c)</b> Given that the particle starts at displacement \\(s(0) = 4\\text{ m}\\), find its displacement at \\(t = 3\\). [3 marks]',
+    parts: [
+      {
+        label: 'Part (a)',
+        marks: 2,
+        rubric: [
+          { code: 'M1', text: 'Recognise \\(a(t) = v\'(t)\\) and differentiate: \\(a(t) = 6 - 6t\\)', text_ar: 'إدراك أن التسارع هو مشتقة السرعة والاشتقاق: 6 - 6t' },
+          { code: 'A1', text: 'Substitute \\(t = 2\\): \\(a(2) = 6 - 12 = -6\\text{ m s}^{-2}\\)', text_ar: 'التعويض عن t = 2 للحصول على -6 م/ث²' }
+        ]
+      },
+      {
+        label: 'Part (b)',
+        marks: 2,
+        rubric: [
+          { code: 'M1', text: 'Set velocity to zero: \\(6t - 3t^2 = 0 \\implies 3t(2 - t) = 0\\)', text_ar: 'مساواة السرعة بالصفر والتحليل' },
+          { code: 'A1', text: 'State both non-negative solutions: \\(t = 0\\) and \\(t = 2\\text{ s}\\)', text_ar: 'كتابة قيمتي الزمن: t = 0 و t = 2 ثانية' }
+        ]
+      },
+      {
+        label: 'Part (c)',
+        marks: 3,
+        rubric: [
+          { code: 'M1', text: 'Integrate velocity with respect to time: \\(s(t) = \\int (6t - 3t^2)\\,dt = 3t^2 - t^3 + C\\)', text_ar: 'تكامل السرعة بالنسبة للزمن' },
+          { code: 'A1', text: 'Use initial condition \\(s(0) = 4\\implies C = 4\\), so \\(s(t) = 3t^2 - t^3 + 4\\)', text_ar: 'إيجاد ثابت التكامل C = 4' },
+          { code: 'A1', text: 'Evaluate at \\(t = 3\\): \\(s(3) = 3(9) - 27 + 4 = 4\\text{ m}\\)', text_ar: 'حساب الإزاحة عند t = 3 وتساوي 4 أمتار' }
+        ]
+      }
+    ],
+    boundaries: [
+      { min: 7, grade: 'IB Grade 7 (Maximum Mastery)', grade_ar: 'درجة البكالوريا الدولية 7 (إتقان تام)' },
+      { min: 5, grade: 'IB Grade 6 (Excellent)', grade_ar: 'درجة البكالوريا الدولية 6 (ممتاز)' },
+      { min: 4, grade: 'IB Grade 5 (Good)', grade_ar: 'درجة البكالوريا الدولية 5 (جيد جداً)' },
+      { min: 3, grade: 'IB Grade 4 (Satisfactory Pass)', grade_ar: 'درجة البكالوريا الدولية 4 (ناجح)' },
+      { min: 0, grade: 'Needs Practice', grade_ar: 'يحتاج تدريب' }
+    ],
+    examinerTip: 'Examiner Advice: Full method marks require showing the integration constant +C explicitly before solving for s(0) = 4.',
+    examinerTip_ar: 'نصيحة المصحح: تتطلب علامة الطريقة إظهار ثابت التكامل +C صراحة قبل التعويض بالشرط الابتدائي.'
   }
 ];
 

@@ -237,7 +237,7 @@
         'calc.presets.apply':'تطبيق النموذج','calc.presets.copy':'نسخ المعادلات',
         'calc.presets.copiedToast':'تم نسخ {n} معادلة إلى الحافظة! الصقها (Ctrl+V) في ديسموس.',
         'calc.presets.close':'إغلاق النماذج',
-        'calc.presets.cat.all':'الكل','calc.presets.cat.calculus':'التفاضل',
+        'calc.presets.cat.all':'الكل','calc.presets.cat.stats_regression':'الإحصاء والانحدار','calc.presets.cat.calculus':'التفاضل',
         'calc.presets.cat.solid_3d':'الفراغية','calc.presets.cat.statics_dynamics':'التطبيقية',
         'calc.presets.cat.scientific':'العلمية',
         'contact.h1':'اتصل بنا',

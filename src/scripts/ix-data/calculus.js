@@ -981,6 +981,104 @@ D['ch-applications'] = [
     "\\(x=3\\)"
   ],
   "ex_ar": "\\(f'(x)=3x^2-3=0\\Rightarrow x=\\pm1\\). \\(f''(x)=6x\\)؛ عند \\(x=-1\\)، نجد \\(f''<0\\)، مما يؤكد وجود قيمة عظمى محلية."
+},
+{
+  t: 'gp',
+  ti: 'Interactive Graph Plotter: Extrema & Inflection Points',
+  ti_ar: 'مخطط الدوال التفاعلي: القيم القصوى ونقطة الانقلاب',
+  q: 'Plot the local maximum, local minimum, and inflection point of \\(f(x) = x^3 - 6x^2 + 9x\\) on the coordinate plane.',
+  q_ar: 'حدد القيمة العظمى المحلية، والقيمة الصغرى المحلية، ونقطة الانقلاب للدالة \\(f(x) = x^3 - 6x^2 + 9x\\) على المستوى الإحداثي.',
+  xrange: [-1, 5],
+  yrange: [-2, 6],
+  targets: [
+    { label: 'Local Maximum (1, 4)', label_ar: 'عظمى محلية (1, 4)', target: [1, 4], tol: 0.45 },
+    { label: 'Local Minimum (3, 0)', label_ar: 'صغرى محلية (3, 0)', target: [3, 0], tol: 0.45 },
+    { label: 'Inflection Point (2, 2)', label_ar: 'نقطة انقلاب (2, 2)', target: [2, 2], tol: 0.45 }
+  ],
+  targets_ar: [
+    { label: 'عظمى محلية (1, 4)', target: [1, 4], tol: 0.45 },
+    { label: 'صغرى محلية (3, 0)', target: [3, 0], tol: 0.45 },
+    { label: 'نقطة انقلاب (2, 2)', target: [2, 2], tol: 0.45 }
+  ],
+  curve: 'x**3 - 6*x**2 + 9*x',
+  sol: 'Critical points from \\(f\'(x) = 3(x - 1)(x - 3) = 0 \\implies x = 1, 3\\). Local max is at \\((1, 4)\\) and local min at \\((3, 0)\\). Concavity changes at \\(f\'\'(x) = 6x - 12 = 0 \\implies (2, 2)\\).',
+  sol_ar: 'النقاط الحرجة من \\(f\'(x) = 3(x - 1)(x - 3) = 0 \\implies x = 1, 3\\). القيمة العظمى المحلية عند \\((1, 4)\\) والصغرى المحلية عند \\((3, 0)\\). نقطة الانقلاب عند \\(f\'\'(x) = 6x - 12 = 0 \\implies (2, 2)\\).'
+},
+{
+  t: 'se',
+  ti: 'Spot the Error: Misapplication of L\'Hôpital\'s Rule',
+  ti_ar: 'اكتشف الخطأ: التطبيق الخاطئ لقاعدة لوبيتال',
+  q: 'A student evaluates \\(\\lim_{x \\to 0} \\frac{x^2 + 2x}{\\cos x}\\). Review their working below:',
+  q_ar: 'حاول طالب حساب النهاية \\(\\lim_{x \\to 0} \\frac{x^2 + 2x}{\\cos x}\\). افحص خطوات الحل التالية:',
+  steps: [
+    { s: 'Observe limit is a quotient as x approaches 0' },
+    { s: 'Differentiate numerator and denominator via L\'Hôpital: \\(\\lim_{x \\to 0} \\frac{2x + 2}{-\\sin x}\\)' },
+    { s: 'Substitute x = 0: \\(\\frac{2(0) + 2}{-\\sin(0)} = \\frac{2}{0}\\)' },
+    { s: 'Conclude the limit does not exist (undefined)' }
+  ],
+  steps_ar: [
+    { s: 'ملاحظة أن النهاية عبارة عن كسر عندما يقترب x من 0' },
+    { s: 'اشتقاق البسط والمقام بقاعدة لوبيتال: \\(\\lim_{x \\to 0} \\frac{2x + 2}{-\\sin x}\\)' },
+    { s: 'التعويض عن x = 0: \\(\\frac{2(0) + 2}{-\\sin(0)} = \\frac{2}{0}\\)' },
+    { s: 'الاستنتاج أن النهاية غير موجودة' }
+  ],
+  errorStep: 2,
+  reasons: [
+    'L\'Hôpital\'s Rule requires an indeterminate form (0/0 or ∞/∞); direct substitution gives 0/1 = 0',
+    'The derivative of cos(x) should be +sin(x)',
+    'The derivative of x² + 2x should be 2x + 1'
+  ],
+  reasons_ar: [
+    'قاعدة لوبيتال تشترط صيغة غير معينة (0/0 أو ∞/∞)؛ بينما التعويض المباشر يعطي 0/1 = 0 فوراً',
+    'مشتقة جيب التمام كان يجب أن تكون +جا(س)',
+    'مشتقة البسط كان يجب أن تكون 2س + 1'
+  ],
+  correctReason: 0,
+  sol: 'Step 2 is invalid! L\'Hôpital\'s rule can only be applied when direct substitution yields \\(\\frac{0}{0}\\) or \\(\\frac{\\pm\\infty}{\\pm\\infty}\\). Here, the denominator evaluates to \\(\\cos(0) = 1 \\ne 0\\). Direct evaluation yields \\(\\frac{0^2 + 2(0)}{\\cos(0)} = \\frac{0}{1} = 0\\).',
+  sol_ar: 'الخطوة 2 باطلة! قاعدة لوبيتال لا تُطبق إلا على الصيغ غير المعينة \\(\\frac{0}{0}\\) أو \\(\\frac{\\infty}{\\infty}\\). هنا المقام يساوي \\(\\cos(0) = 1 \\ne 0\\)، وبالتالي فإن التعويض المباشر يعطي \\(\\frac{0}{1} = 0\\) مباشرة.'
+},
+{
+  t: 'ms',
+  ti: 'AP Calculus AB Free Response Question (FRQ): Extrema & Accumulation',
+  ti_ar: 'سؤال الاستجابة الحرة (FRQ) في AP Calculus AB: القيم القصوى والتراكم',
+  q: 'Let \\(f\\) be a continuous function defined on \\([-2, 4]\\) with derivative \\(f\'(x) = 2x - 4\\) and initial condition \\(f(0) = 5\\).<br><b>(a)</b> Find the critical point of \\(f\\) on \\([-2, 4]\\) and justify whether it is a relative minimum, relative maximum, or neither. [3 marks]<br><b>(b)</b> Find the absolute maximum and absolute minimum values of \\(f\\) on the closed interval \\([-2, 4]\\). [3 marks]<br><b>(c)</b> Find the average value of \\(f\'(x)\\) on \\([0, 4]\\). [3 marks]',
+  parts: [
+    {
+      label: 'Part (a)',
+      marks: 3,
+      rubric: [
+        { code: 'M1', text: 'Set \\(f\'(x) = 0 \\implies 2x - 4 = 0 \\implies x = 2\\)', text_ar: 'مساواة المشتقة بالصفر وإيجاد x = 2' },
+        { code: 'A1', text: 'Integrate to find \\(f(x) = x^2 - 4x + 5\\) and evaluate \\(f(2) = 1\\)', text_ar: 'إيجاد الدالة الأصلية وحساب f(2) = 1' },
+        { code: 'R1', text: 'Justification: \\(f\'(x) < 0\\) for \\(x < 2\\) and \\(f\'(x) > 0\\) for \\(x > 2\\), so \\(x = 2\\) is a relative minimum', text_ar: 'التبرير: تغير إشارة المشتقة من سالب إلى موجب يدل على قيمة صغرى نسبية' }
+      ]
+    },
+    {
+      label: 'Part (b)',
+      marks: 3,
+      rubric: [
+        { code: 'M1', text: 'Identify candidates: interior critical point \\(x = 2\\) and endpoints \\(x = -2, 4\\)', text_ar: 'تحديد المرشحين: النقطة الحرجة وطرفا الفترة' },
+        { code: 'A1', text: 'Evaluate endpoints: \\(f(-2) = (-2)^2 - 4(-2) + 5 = 17\\) and \\(f(4) = 4^2 - 4(4) + 5 = 5\\)', text_ar: 'حساب قيم الدالة عند طرفي الفترة: f(-2) = 17 و f(4) = 5' },
+        { code: 'A1', text: 'State conclusions: Absolute maximum is 17 at \\(x = -2\\); Absolute minimum is 1 at \\(x = 2\\)', text_ar: 'تحديد القيمة العظمى المطلقة (17) والصغرى المطلقة (1)' }
+      ]
+    },
+    {
+      label: 'Part (c)',
+      marks: 3,
+      rubric: [
+        { code: 'M1', text: 'Apply average value formula: \\(\\frac{1}{4 - 0} \\int_0^4 f\'(x)\\,dx\\)', text_ar: 'تطبيق صيغة القيمة المتوسطة للتكامل' },
+        { code: 'M1', text: 'Use FTC: \\(\\frac{f(4) - f(0)}{4} = \\frac{5 - 5}{4}\\)', text_ar: 'تطبيق النظرية الأساسية للتفاضل والتكامل' },
+        { code: 'A1', text: 'State correct average value: \\(0\\)', text_ar: 'كتابة القيمة المتوسطة الصحيحة: 0' }
+      ]
+    }
+  ],
+  boundaries: [
+    { min: 8, grade: 'AP Score 5 (Extremely Well Qualified)', grade_ar: 'درجة AP 5 (مؤهل بجدارة فائقة)' },
+    { min: 6, grade: 'AP Score 4 (Well Qualified)', grade_ar: 'درجة AP 4 (مؤهل بجدارة)' },
+    { min: 4, grade: 'AP Score 3 (Qualified Pass)', grade_ar: 'درجة AP 3 (ناجح مؤهل)' },
+    { min: 0, grade: 'Needs Review', grade_ar: 'يحتاج مراجعة' }
+  ],
+  examinerTip: 'College Board Tip: When asked for the "absolute maximum value", provide the y-value (17), not just the x-location.',
+  examinerTip_ar: 'إرشاد كوليدج بورد: عندما يُطلب "القيمة العظمى المطلقة"، اذكر قيمة y (وهي 17)، وليس فقط موضع x.'
 }
 ];
 

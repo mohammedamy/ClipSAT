@@ -1152,6 +1152,102 @@ D['as-calculus'] = [
     "0"
   ],
   "ex_ar": "\\(\\dfrac{dy}{dx}=2x-6=0\\Rightarrow x=3\\)."
+},
+{
+  t: 'gp',
+  ti: 'Interactive Graph Plotter: Cubic Stationary Points',
+  ti_ar: 'مخطط الدوال التفاعلي: النقاط الحرجة للدالة التكعيبية',
+  q: 'Plot the local maximum, local minimum, and y-intercept of \\(f(x) = x^3 - 3x\\) on the coordinate plane.',
+  q_ar: 'حدد القيمة العظمى المحلية، والقيمة الصغرى المحلية، والمقطع الصادي للدالة \\(f(x) = x^3 - 3x\\) على المستوى الإحداثي.',
+  xrange: [-3, 3],
+  yrange: [-4, 4],
+  targets: [
+    { label: 'Local Maximum (-1, 2)', label_ar: 'قيمة عظمى محلية (-1, 2)', target: [-1, 2], tol: 0.45 },
+    { label: 'Local Minimum (1, -2)', label_ar: 'قيمة صغرى محلية (1, -2)', target: [1, -2], tol: 0.45 },
+    { label: 'Y-Intercept (0, 0)', label_ar: 'المقطع الصادي (0, 0)', target: [0, 0], tol: 0.45 }
+  ],
+  targets_ar: [
+    { label: 'قيمة عظمى محلية (-1, 2)', target: [-1, 2], tol: 0.45 },
+    { label: 'قيمة صغرى محلية (1, -2)', target: [1, -2], tol: 0.45 },
+    { label: 'المقطع الصادي (0, 0)', target: [0, 0], tol: 0.45 }
+  ],
+  curve: 'x**3 - 3*x',
+  sol: 'Differentiating: \\(f\'(x) = 3x^2 - 3 = 0 \\implies x = \\pm 1\\). At \\(x = -1\\), \\(f(-1) = 2\\) (local maximum). At \\(x = 1\\), \\(f(1) = -2\\) (local minimum). The curve passes through the origin \\((0, 0)\\).',
+  sol_ar: 'باشتقاق الدالة: \\(f\'(x) = 3x^2 - 3 = 0 \\implies x = \\pm 1\\). عند \\(x = -1\\)، تكون \\(f(-1) = 2\\) (عظمى محلية). وعند \\(x = 1\\)، تكون \\(f(1) = -2\\) (صغرى محلية)، وتمر بالنقطة \\((0, 0)\\).'
+},
+{
+  t: 'se',
+  ti: 'Spot the Error: Composite Power Rule Differentiation',
+  ti_ar: 'اكتشف الخطأ: اشتقاق دالة القوة المركبة',
+  q: 'A student differentiates \\(y = (3x - 2)^5\\). Review their working below:',
+  q_ar: 'قام طالب باشتقاق الدالة \\(y = (3x - 2)^5\\). افحص خطوات الحل التالية:',
+  steps: [
+    { s: 'Identify the outer power function: \\(u^5\\) where \\(u = 3x - 2\\)' },
+    { s: 'Differentiate the outer power: \\(5(3x - 2)^4\\)' },
+    { s: 'State final answer: \\(\\frac{dy}{dx} = 5(3x - 2)^4\\)' }
+  ],
+  steps_ar: [
+    { s: 'تحديد دالة القوة الخارجية: \\(u^5\\) حيث \\(u = 3x - 2\\)' },
+    { s: 'اشتقاق القوة الخارجية: \\(5(3x - 2)^4\\)' },
+    { s: 'كتابة الإجابة النهائية: \\(\\frac{dy}{dx} = 5(3x - 2)^4\\)' }
+  ],
+  errorStep: 3,
+  reasons: [
+    'Forgot to multiply by the derivative of the inner function (3) according to the chain rule',
+    'The exponent should have decreased to 3 instead of 4',
+    'The coefficient 5 should have been squared'
+  ],
+  reasons_ar: [
+    'نسي الضرب في مشتقة ما بداخل القوس (3) وفقاً لقاعدة السلسلة',
+    'كان يجب أن ينقص الأس إلى 3 بدلاً من 4',
+    'كان يجب تربيع المعامل 5'
+  ],
+  correctReason: 0,
+  sol: 'Step 3 fails to apply the chain rule! \\(\\frac{dy}{dx} = 5(3x - 2)^4 \\cdot \\frac{d}{dx}(3x - 2) = 5(3x - 2)^4 \\cdot 3 = 15(3x - 2)^4\\).',
+  sol_ar: 'الخطوة 3 أهملت تطبيق قاعدة السلسلة! \\(\\frac{dy}{dx} = 5(3x - 2)^4 \\cdot 3 = 15(3x - 2)^4\\).'
+},
+{
+  t: 'ms',
+  ti: 'Cambridge AS Level 9709: Stationary Points & Tangent Paper',
+  ti_ar: 'كامبريدج AS Level 9709: مسألة النقاط الحرجة والمماس',
+  q: 'The equation of a curve is \\(y = 2x + \\frac{8}{x}\\) for \\(x > 0\\).<br><b>(a)</b> Find \\(\\frac{dy}{dx}\\) and \\(\\frac{d^2y}{dx^2}\\). [3 marks]<br><b>(b)</b> Find the coordinates of the stationary point and determine its nature. [3 marks]<br><b>(c)</b> Find the equation of the normal to the curve at the point where \\(x = 4\\). [3 marks]',
+  parts: [
+    {
+      label: 'Part (a)',
+      marks: 3,
+      rubric: [
+        { code: 'B1', text: 'Express in index form: \\(y = 2x + 8x^{-1}\\)', text_ar: 'كتابة الحد بصيغة الأسس السالبة' },
+        { code: 'M1', text: 'Differentiate at least one term correctly: \\(\\frac{dy}{dx} = 2 - 8x^{-2}\\)', text_ar: 'اشتقاق حد واحد على الأقل بصورة صحيحة' },
+        { code: 'A1', text: 'Obtain second derivative: \\(\\frac{d^2y}{dx^2} = 16x^{-3} = \\frac{16}{x^3}\\)', text_ar: 'المشتقة الثانية الصحيحة' }
+      ]
+    },
+    {
+      label: 'Part (b)',
+      marks: 3,
+      rubric: [
+        { code: 'M1', text: 'Set \\(\\frac{dy}{dx} = 0 \\implies 2 - \\frac{8}{x^2} = 0 \\implies x^2 = 4\\)', text_ar: 'مساواة المشتقة بالصفر وحل المعادلة' },
+        { code: 'A1', text: 'Obtain stationary point \\((2, 8)\\) since \\(x > 0\\)', text_ar: 'إحداثيات النقطة الحرجة (2, 8)' },
+        { code: 'B1', text: 'Evaluate \\(\\frac{d^2y}{dx^2}\\Big|_{x=2} = \\frac{16}{8} = 2 > 0 \\implies\\) Local Minimum', text_ar: 'التحقق من المشتقة الثانية وتحديد أنها قيمة صغرى محلية' }
+      ]
+    },
+    {
+      label: 'Part (c)',
+      marks: 3,
+      rubric: [
+        { code: 'M1', text: 'At \\(x = 4\\), \\(y = 2(4) + \\frac{8}{4} = 10\\) and gradient of tangent \\(m = 2 - \\frac{8}{16} = \\frac{3}{2}\\)', text_ar: 'حساب النقطة وميل المماس عند س = 4' },
+        { code: 'M1', text: 'Gradient of normal \\(m_{\\text{normal}} = -\\frac{2}{3}\\)', text_ar: 'حساب ميل العمودي بمعكوس المقلوب' },
+        { code: 'A1', text: 'Equation of normal: \\(y - 10 = -\\frac{2}{3}(x - 4) \\implies 2x + 3y = 38\\)', text_ar: 'معادلة خط العمودي الصحيحة' }
+      ]
+    }
+  ],
+  boundaries: [
+    { min: 8, grade: 'Grade A / 90% (Outstanding)', grade_ar: 'الدرجة A / 90% (متميز)' },
+    { min: 6, grade: 'Grade B / 75% (Merit)', grade_ar: 'الدرجة B / 75% (جيد جداً)' },
+    { min: 4, grade: 'Grade C / 60% (Pass)', grade_ar: 'الدرجة C / 60% (ناجح)' },
+    { min: 0, grade: 'Needs Practice', grade_ar: 'يحتاج تدريب' }
+  ],
+  examinerTip: 'Examiner Advice: Candidates often forget to check that x > 0 and incorrectly list x = -2. Always read the domain restrictions in the stem.',
+  examinerTip_ar: 'نصيحة المصحح: ينسى الطلاب غالباً التحقق من شرط x > 0 ويكتبون حلاً إضافياً x = -2. تأكد دائماً من مجال المسألة.'
 }
 ];
 

@@ -278,7 +278,7 @@
         'calc.presets.apply':'Apply Preset','calc.presets.copy':'Copy equations',
         'calc.presets.copiedToast':'Copied {n} expressions! Paste (Ctrl+V) into Desmos.',
         'calc.presets.close':'Close presets',
-        'calc.presets.cat.all':'All','calc.presets.cat.calculus':'Calculus',
+        'calc.presets.cat.all':'All','calc.presets.cat.stats_regression':'Stats & Regression','calc.presets.cat.calculus':'Calculus',
         'calc.presets.cat.solid_3d':'3D Solid','calc.presets.cat.statics_dynamics':'Applied',
         'calc.presets.cat.scientific':'Scientific',
         'contact.h1':'Contact',

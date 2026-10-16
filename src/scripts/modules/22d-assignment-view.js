@@ -22,7 +22,7 @@ Object.assign(_TT_STR.ar,{
 });
 
 var LTR=['A','B','C','D','E','F'];
-function keys(){ var m=/[?&]assign=([0-9a-z.]+)/.exec(location.search); return m?m[1].split('.').filter(Boolean):null; }
+function keys(){ var loc=typeof location!=='undefined'?location:(typeof window!=='undefined'&&window.location?window.location:{search:''}); var m=/[?&]assign=([0-9a-z.]+)/.exec(loc.search); return m?m[1].split('.').filter(Boolean):null; }
 function attr(s){ return String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/\n/g,' '); }
 function bankOf(viewId){
   var b=window.fullExamBank&&window.fullExamBank[viewId];
@@ -96,8 +96,22 @@ function render(){
       +' &nbsp;|&nbsp; '+_tt('avScore')+' <strong class="cq-sv">0</strong> / '+nMcq+'</div>';
     h+='<p class="cq-msg">'+_tt('avDone')+'</p></div>';
     box.innerHTML=h;
+
+    var paper=box.querySelector('.cq-paper');
+    if(paper && nMcq > 0){
+      paper.addEventListener('click', function(e){
+        var opt = e.target.closest('.cq-opt');
+        if(!opt) return;
+        setTimeout(function(){
+          var done = paper.querySelectorAll('.cq-item.cq-done').length;
+          if(done === nMcq){
+            _showCompletionCert(paper, nMcq, viewId);
+          }
+        }, 60);
+      });
+    }
+
     if(figs.length&&window._ensureFigures){
-      var paper=box.querySelector('.cq-paper');
       window._ensureFigures().then(function(){
         paper.querySelectorAll('.cq-figure[data-fig]').forEach(function(el){
           var _fItem = figs[+el.getAttribute('data-fig')];
@@ -120,6 +134,74 @@ function render(){
   },function(){ box.innerHTML='<p class="cq-msg">'+_tt('avNoBank')+'</p>'; });
 }
 
-window.CSAssignView={render:render};
+function _genCertCode(track, score, total){
+  var salt = 48271;
+  var sum = 0;
+  var str = (track || 'math').toLowerCase() + ':' + score + '/' + total;
+  for(var i = 0; i < str.length; i++) sum = (sum * 31 + str.charCodeAt(i)) % 65535;
+  var hex = (sum ^ salt).toString(16).toUpperCase().padStart(4, '0');
+  return 'CLIP-' + (track || 'MATH').toUpperCase() + '-' + score + 'OF' + total + '-' + hex;
+}
+
+function _showCompletionCert(paper, total, trackId){
+  if(paper.querySelector('#cs-assign-cert')) return;
+  var sv = paper.querySelector('.cq-sv');
+  var score = sv ? parseInt(sv.textContent, 10) : 0;
+  var pct = Math.round((score / total) * 100);
+  var code = _genCertCode(trackId, score, total);
+
+  var cert = document.createElement('div');
+  cert.id = 'cs-assign-cert';
+  cert.className = 'cs-assign-cert';
+  cert.style.cssText = 'margin-top:16px;background:var(--paper,#ffffff);border:1.5px solid var(--border,#cbd5e1);border-radius:12px;padding:18px 20px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.07)';
+
+  var waText = encodeURIComponent('ClipSAT Assignment Completed!\nTrack: ' + (trackId || '').toUpperCase() + '\nScore: ' + score + '/' + total + ' (' + pct + '%)\nVerification Code: ' + code);
+
+  var isRTL = typeof _ttDir === 'function' && _ttDir() === 'rtl';
+  cert.innerHTML = [
+    '<div style="font-size:1.8rem;margin-bottom:4px">🎓</div>',
+    '<h3 style="margin:0 0 6px;font-size:1.25rem;font-weight:800;color:var(--ink,#1e293b)">' + (isRTL?'اكتمل الواجب بنجاح!':'Assignment Completed!') + '</h3>',
+    '<div style="font-size:1.15rem;font-weight:800;color:var(--indigo,#4f46e5);margin-bottom:8px">',
+      (isRTL?'الدرجة النهائية: ':'Final Score: ') + '<span class="cs-cert-score">' + score + ' / ' + total + '</span> (' + pct + '%)',
+    '</div>',
+    '<div style="margin:8px auto 14px;display:inline-block;background:var(--subtle,#f1f5f9);padding:6px 12px;border-radius:6px;font-family:var(--mono,monospace);font-size:.85rem;color:var(--ink,#1e293b);border:1px dashed var(--border,#cbd5e1)">',
+      (isRTL?'رمز التحقق: ':'Verification Code: ') + '<strong>' + code + '</strong>',
+    '</div>',
+    '<div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">',
+      '<button type="button" id="cs-cert-copy" class="btn btn-primary" style="padding:6px 14px;font-size:.82rem;font-weight:600;cursor:pointer">📋 ' + (isRTL?'نسخ الرمز للمعلم':'Copy Code for Teacher') + '</button>',
+      '<a href="https://wa.me/?text=' + waText + '" target="_blank" rel="noopener" class="btn btn-secondary" style="padding:6px 14px;font-size:.82rem;font-weight:600;background:#25D366;color:#fff;border-color:#25D366;text-decoration:none;display:inline-flex;align-items:center;gap:4px">💬 WhatsApp</a>',
+      '<button type="button" onclick="window.print()" class="btn btn-secondary" style="padding:6px 14px;font-size:.82rem;font-weight:600;cursor:pointer">📄 ' + (isRTL?'طباعة النتيجة':'Print PDF') + '</button>',
+    '</div>'
+  ].join('');
+
+  paper.appendChild(cert);
+  cert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+  var copyBtn = cert.querySelector('#cs-cert-copy');
+  if(copyBtn){
+    copyBtn.onclick = function(){
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(code).then(function(){
+          copyBtn.textContent = '✓ ' + (isRTL?'تم النسخ!':'Copied!');
+          setTimeout(function(){ copyBtn.textContent = '📋 ' + (isRTL?'نسخ الرمز للمعلم':'Copy Code for Teacher'); }, 2000);
+        });
+      }
+    };
+  }
+}
+
+window.CSVerifyCertCode = function(code){
+  if(!code) return null;
+  var m = /^CLIP-([A-Z0-9]+)-(\d+)OF(\d+)-([A-F0-9]{4})$/i.exec(String(code).trim());
+  if(!m) return { valid: false, error: 'Invalid code format' };
+  var track = m[1].toLowerCase(), score = parseInt(m[2], 10), total = parseInt(m[3], 10), hex = m[4].toUpperCase();
+  var salt = 48271, sum = 0, str = track + ':' + score + '/' + total;
+  for(var i = 0; i < str.length; i++) sum = (sum * 31 + str.charCodeAt(i)) % 65535;
+  var expectedHex = (sum ^ salt).toString(16).toUpperCase().padStart(4, '0');
+  if(hex !== expectedHex) return { valid: false, error: 'Tampered verification code' };
+  return { valid: true, track: track, score: score, total: total, pct: Math.round((score/total)*100) };
+};
+
+window.CSAssignView={render:render, genCertCode:_genCertCode, verifyCertCode:window.CSVerifyCertCode};
 render();
 })();

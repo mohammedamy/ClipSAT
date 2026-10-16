@@ -175,6 +175,7 @@
         '<button type="button" class="cs-fcalc-preset-btn" data-preset="system" style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:.72rem;font-weight:600;color:#047857">System</button>',
         '<button type="button" class="cs-fcalc-preset-btn" data-preset="trig" style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:.72rem;font-weight:600;color:#c026d3">sin(x)</button>',
         '<button type="button" class="cs-fcalc-preset-btn" data-preset="circle" style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:.72rem;font-weight:600;color:#b45309">Circle</button>',
+        '<button type="button" class="cs-fcalc-preset-btn" data-preset="regression" style="background:var(--panel,#fff);border:1px solid var(--border,#cbd5e1);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:.72rem;font-weight:600;color:#0d9488">Regression</button>',
         '<button type="button" class="cs-fcalc-preset-btn" data-preset="clear" style="margin-left:auto;background:transparent;border:1px solid #fca5a5;border-radius:4px;padding:2px 6px;cursor:pointer;font-size:.7rem;color:#b91c1c;font-weight:600">Clear</button>',
       '</div>',
       '<div id="cs-fcalc-body" style="flex:1;position:relative;background:#f8fafc;width:100%;height:100%;overflow:hidden">',
@@ -257,6 +258,17 @@
     } else if(preset === 'circle'){
       _apiCalc.setExpression({ id: 'c1', latex: '(x - 2)^2 + (y + 1)^2 = 16', color: '#b45309' });
       _apiCalc.setExpression({ id: 'ctr', latex: '(2, -1)', color: '#b45309', showLabel: true, label: 'Center (2, -1), r=4' });
+    } else if(preset === 'regression'){
+      _apiCalc.setExpression({
+        id: 't1',
+        type: 'table',
+        columns: [
+          { latex: 'x_1', values: [1, 2, 3, 4, 5, 6] },
+          { latex: 'y_1', values: [2.3, 3.8, 5.1, 7.2, 8.9, 10.4] }
+        ]
+      });
+      _apiCalc.setExpression({ id: 'r1', latex: 'y_1 \\sim m x_1 + b', color: '#0d9488' });
+      _apiCalc.setExpression({ id: 'res', latex: 'e_1 = y_1 - (m x_1 + b)', color: '#dc2626' });
     }
   }
 
