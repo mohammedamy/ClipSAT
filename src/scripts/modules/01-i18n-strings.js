@@ -93,9 +93,9 @@ var _TT_STR = {
     learningObjectivesCaps:'LEARNING OBJECTIVES', workedExamplesCaps:'WORKED EXAMPLES', practiceProblemsCaps:'PRACTICE PROBLEMS',
     solutionColon:'Solution:', solutionInline:'Solution:  ', solutionBlank:'Solution: ___________________________________',
     pageWord:'Page ', ofWord:' of ',
-    tmTeacherMode:'📐 Teacher Mode', tmLessonPlan:'📋 Lesson Plan', tmPrintChapterPdf:'🖨 Print Chapter (PDF)',
-    tmQuizWordExport:'📝 Quiz Word Export', tmChapterDocx:'📄 Chapter .docx', tmAssignment:'📝 Assignment',
-    tmProgressReport:'📊 Progress Report', tmOff:'✕ Off'
+    tmTeacherMode:'📐 Teacher', tmLessonPlan:'📋 Lesson Plan', tmPrintChapterPdf:'🖨 Print PDF',
+    tmQuizWordExport:'📝 Quiz Word', tmChapterDocx:'📄 Chapter .docx', tmAssignment:'📝 Assignment',
+    tmProgressReport:'📊 Progress', tmOff:'✕ Off'
   },
   ar: {
     printPdf:'🖨 طباعة / حفظ PDF', dateLabel:'التاريخ:', teacherCopy:'نسخة المعلم', studyNotes:'ملاحظات دراسية',
@@ -138,9 +138,9 @@ var _TT_STR = {
     learningObjectivesCaps:'أهداف التعلّم', workedExamplesCaps:'أمثلة محلولة', practiceProblemsCaps:'مسائل تدريبية',
     solutionColon:'الحل:', solutionInline:'الحل: ', solutionBlank:'الحل: ___________________________________',
     pageWord:'صفحة ', ofWord:' من ',
-    tmTeacherMode:'📐 وضع المعلم', tmLessonPlan:'📋 خطة الدرس', tmPrintChapterPdf:'🖨 طباعة الفصل (PDF)',
-    tmQuizWordExport:'📝 تصدير الاختبار Word', tmChapterDocx:'📄 الفصل .docx', tmAssignment:'📝 واجب',
-    tmProgressReport:'📊 تقرير التقدم', tmOff:'✕ إيقاف'
+    tmTeacherMode:'📐 المعلم', tmLessonPlan:'📋 خطة الدرس', tmPrintChapterPdf:'🖨 طباعة PDF',
+    tmQuizWordExport:'📝 اختبار Word', tmChapterDocx:'📄 الفصل .docx', tmAssignment:'📝 واجب',
+    tmProgressReport:'📊 التقدم', tmOff:'✕ إيقاف'
   }
 };
 function _tt(key,track){

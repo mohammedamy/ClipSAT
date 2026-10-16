@@ -10,15 +10,15 @@
       '.tm-diff-review{background:#ede9fe;color:#5b21b6;padding:1px 6px;border-radius:4px}',
       '.tm-src{background:#f1f5f9;color:#475569;padding:1px 6px;border-radius:4px}',
       '.tm-toolbar{position:fixed;top:74px;left:50%;transform:translateX(-50%);z-index:9995;background:#1e1b4b;color:#fff;',
-      'border-radius:999px;padding:8px 18px;font-size:13px;display:flex;gap:8px;align-items:center;',
-      'box-shadow:0 8px 30px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.15);max-width:min(calc(100vw - 24px),980px);overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}',
+      'border-radius:999px;padding:6px 14px;font-size:12px;display:flex;gap:6px;align-items:center;',
+      'box-shadow:0 8px 30px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.15);width:max-content;max-width:calc(100vw - 20px);box-sizing:border-box;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}',
       '.tm-toolbar::-webkit-scrollbar{height:4px}',
       '.tm-toolbar::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:4px}',
       '.tm-drag-handle{cursor:grab;color:rgba(255,255,255,.6);font-size:14px;padding:0 4px;user-select:none;touch-action:none;letter-spacing:-1px}',
       '.tm-drag-handle:active{cursor:grabbing}',
-      '.tm-toolbar button{background:#4f46e5;color:#fff;border:none;border-radius:7px;padding:6px 12px;cursor:pointer;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:4px;white-space:nowrap;transition:background .15s,transform .15s}',
+      '.tm-toolbar button{background:#4f46e5;color:#fff;border:none;border-radius:7px;padding:5px 10px;cursor:pointer;font-size:11.5px;font-weight:600;display:inline-flex;align-items:center;gap:4px;white-space:nowrap;flex-shrink:0;transition:background .15s,transform .15s}',
       '.tm-toolbar button:hover{background:#4338ca;transform:translateY(-1px)}',
-      '@media (max-width: 640px){.tm-toolbar{top:66px;padding:6px 12px;gap:6px;font-size:12px}}',
+      '@media (max-width: 820px){.tm-toolbar{top:66px;border-radius:16px;flex-wrap:wrap;justify-content:center;white-space:normal;padding:8px 12px;max-width:calc(100vw - 16px)}}',
       '@media print{.cq-sol{display:block!important}.tm-meta{display:flex!important}',
       'nav,.sidebar,#tm-toolbar,#chatFab,#daily-goal-bar,#exam-countdown-bar,#weak-recs{display:none!important}}'
     ].join('');
@@ -51,10 +51,10 @@
           +' <button onclick="window.TeacherMode.printLessonPlan()">'+_tt('tmLessonPlan')+'</button>'
           +' <button onclick="window.TeacherMode.exportPDF()">'+_tt('tmPrintChapterPdf')+'</button>'
           +' <button onclick="window.TeacherMode.exportWord()">'+_tt('tmQuizWordExport')+'</button>'
-          +' <button onclick="window.CSExport&&window.CSExport.downloadChapterDocx(null)">'+_tt('tmChapterDocx')+'</button>'
-          +' <button onclick="window.CSAssign&&window.CSAssign.open()">'+_tt('tmAssignment')+'</button>'
-          +' <button onclick="window._ensureWhiteboard().then(function(){window.CSGamify.toggleWhiteboard()})">✏️ '+(_ttAr()?'السبورة':'Whiteboard')+'</button>'
-          +' <button onclick="window.CSReport&&window.CSReport.generate()">'+_tt('tmProgressReport')+'</button>'
+          +' <button onclick="window.TeacherMode.downloadChapterDocx()">'+_tt('tmChapterDocx')+'</button>'
+          +' <button onclick="window.TeacherMode.openAssignment()">'+_tt('tmAssignment')+'</button>'
+          +' <button onclick="window.TeacherMode.openWhiteboard()">✏️ '+(_ttAr()?'السبورة':'Whiteboard')+'</button>'
+          +' <button onclick="window.TeacherMode.generateProgressReport()">'+_tt('tmProgressReport')+'</button>'
           +' <button onclick="window.TeacherMode.toggle()" style="background:#7f1d1d">'+_tt('tmOff')+'</button>';
         document.body.appendChild(bar);
 
@@ -96,17 +96,31 @@
     }
 
     function exportPDF(){
-      if(window.CSExport){
-        window.CSExport.printActiveChapter({teacherMode:true});
-      } else {
+      var ensure = (window._ensureCSExport ? window._ensureCSExport() : Promise.resolve());
+      ensure.then(function(){
+        if(window.CSExport && window.CSExport.printActiveChapter){
+          window.CSExport.printActiveChapter({teacherMode:true});
+        } else {
+          window.print();
+        }
+      }).catch(function(){
         window.print();
-      }
+      });
     }
 
     function exportWord(){
       var items=Array.from(document.querySelectorAll('.cq-item'));
       if(!items.length){ alert(_tt('generateQuizFirst')); return; }
-      if(typeof JSZip==='undefined'){ alert(_tt('docxLoading')); return; }
+      var ensure = (window._ensureCSExport ? window._ensureCSExport() : Promise.resolve());
+      ensure.then(function(){
+        if(typeof JSZip==='undefined'){ alert(_tt('docxLoading')); return; }
+        _generateQuizWordDocx(items);
+      }).catch(function(){
+        alert('Docx export module could not be loaded.');
+      });
+    }
+
+    function _generateQuizWordDocx(items){
       var _ar=_ttAr();
 
       var _view=document.querySelector('.view.active');
@@ -515,8 +529,8 @@
         +'<div class="lp-section"><div class="lp-section-head">'+_tt('studentNotes')+'<\/div>'+noteLines+'<\/div>'
         +'<div class="lp-section"><div class="lp-amber-head">'+_tt('practiceAssess')+'<\/div>'+assessHTML+'<\/div>'
         +'<div class="lp-footer"><span>ClipSAT &middot; Mr. Mohamed Abdallah<\/span><span>'+_tt('lessonPlanDocTitlePrefix')+esc(subject)+'<\/span><span>'+today+'<\/span><\/div>'
-        /* MathJax script is sync (no async); startup.promise resolves after full typeset */
-        +'<script>MathJax.startup.promise.then(function(){setTimeout(window.print,400);});<\/script>'
+        /* MathJax script with startup.promise and safe fallback timer if CDN or promise times out */
+        +'<script>if(window.MathJax&&MathJax.startup&&MathJax.startup.promise){MathJax.startup.promise.then(function(){setTimeout(window.print,400);}).catch(function(){setTimeout(window.print,400);});}else{setTimeout(window.print,800);}<\/script>'
         +'<\/body><\/html>';
 
       var _lpBlob=new Blob([lpHTML],{type:'text/html;charset=utf-8'});
@@ -526,8 +540,69 @@
       setTimeout(function(){URL.revokeObjectURL(_lpUrl);},120000);
     }
 
+    function downloadChapterDocx(subj){
+      var ensure = (window._ensureCSExport ? window._ensureCSExport() : Promise.resolve());
+      ensure.then(function(){
+        if(window.CSExport && window.CSExport.downloadChapterDocx){
+          window.CSExport.downloadChapterDocx(subj || null);
+        } else {
+          alert(_tt('docxLoading') || 'Docx export module is not ready yet.');
+        }
+      }).catch(function(){
+        alert('Docx export module could not be loaded.');
+      });
+    }
+
+    function openAssignment(){
+      var ensure = (window._ensureTeacherMode ? window._ensureTeacherMode() : Promise.resolve());
+      ensure.then(function(){
+        if(window.CSAssign && window.CSAssign.open){
+          window.CSAssign.open();
+        }
+      });
+    }
+
+    function openWhiteboard(){
+      if(window.toggleWhiteboard){
+        window.toggleWhiteboard();
+        return;
+      }
+      var ensure = (window._ensureWhiteboard ? window._ensureWhiteboard() : Promise.resolve());
+      ensure.then(function(){
+        if(window.CSGamify){
+          if(!document.getElementById('wbToolbar') && window.CSGamify.setupWhiteboard){
+            window.CSGamify.setupWhiteboard();
+          }
+          if(window.CSGamify.toggleWhiteboard){
+            window.CSGamify.toggleWhiteboard();
+          }
+        }
+      }).catch(function(err){
+        console.error('Failed to open whiteboard:', err);
+      });
+    }
+
+    function generateProgressReport(){
+      var ensure = (window._ensureTeacherMode ? window._ensureTeacherMode() : Promise.resolve());
+      ensure.then(function(){
+        if(window.CSReport && window.CSReport.generate){
+          window.CSReport.generate();
+        }
+      });
+    }
+
     _injectCSS();
-    return {toggle:toggle, exportPDF:exportPDF, exportWord:exportWord, printLessonPlan:printLessonPlan, isActive:function(){ return _active; }};
+    return {
+      toggle: toggle,
+      exportPDF: exportPDF,
+      exportWord: exportWord,
+      printLessonPlan: printLessonPlan,
+      downloadChapterDocx: downloadChapterDocx,
+      openAssignment: openAssignment,
+      openWhiteboard: openWhiteboard,
+      generateProgressReport: generateProgressReport,
+      isActive: function(){ return _active; }
+    };
   }());
 
 
