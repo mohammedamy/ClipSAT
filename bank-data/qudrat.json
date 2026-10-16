@@ -6728,11 +6728,6 @@
       "type": "mcq",
       "domain": "Geometry & Measurement",
       "text": "الزاوية المرسومة على القطر في نصف دائرة تساوي:",
-      "fig": {
-        "type": "circle",
-        "center": "O",
-        "radius": "r"
-      },
       "choices": [
         "45°",
         "60°",
@@ -7085,13 +7080,7 @@
         "49\\pi"
       ],
       "answer": 1,
-      "sol": "\\( C=2\\pi r=2\\pi(7)=14\\pi \\) cm",
-      "figure": {
-        "type": "circle",
-        "radius": "r = 7",
-        "w": 200,
-        "h": 180
-      }
+      "sol": "\\( C=2\\pi r=2\\pi(7)=14\\pi \\) cm"
     },
     {
       "type": "mcq",
@@ -7341,13 +7330,7 @@
       ],
       "answer": 1,
       "sol": "\\( C = 2\\pi r = 2 \\times \\dfrac{22}{7} \\times 7 = 44 \\) سم.",
-      "difficulty": "easy",
-      "figure": {
-        "type": "circle",
-        "radius": "r = 7",
-        "w": 200,
-        "h": 180
-      }
+      "difficulty": "easy"
     },
     {
       "type": "mcq",
@@ -7988,44 +7971,45 @@
     {
       "type": "mcq",
       "difficulty": "medium",
-      "domain": "Geometry & Measurement",
-      "text": "في مثلث قائم الزاوية، طول ضلعيه القائمين 6 و8 سم. ما طول الوتر؟<br><em>In a right triangle, the two legs measure 6 and 8 cm. What is the length of the hypotenuse?</em>",
+      "domain": "الهندسة / Geometry",
+      "text": "مثلث قائم الزاوية طول وتره 25 سم، وطول أحد ضلعي القائمة 24 سم. ما طول الضلع القائم الآخر؟<br><em>A right triangle has hypotenuse 25 cm and one leg 24 cm. Find the other leg.</em>",
       "choices": [
-        "9",
-        "10",
-        "4",
-        "2"
+        "7 سم / cm",
+        "8 سم / cm",
+        "9 سم / cm",
+        "10 سم / cm"
       ],
-      "answer": 1,
-      "sol": "\\( \\sqrt{6^2+8^2}=\\sqrt{100}=10 \\) cm",
+      "answer": 0,
+      "sol": "من ثلاثيات فيثاغورس الشهيرة (7، 24، 25) أو بتطبيق مبرهنة فيثاغورس:\n\\[ b = \\sqrt{25^2 - 24^2} = \\sqrt{625 - 576} = \\sqrt{49} = 7 \\text{ سم}. \\]",
       "figure": {
         "type": "triangle",
+        "title": "مثلث قائم / Right Triangle",
         "vertices": [
           [
             0,
             0
           ],
           [
-            8,
+            24,
             0
           ],
           [
-            0,
-            6
+            24,
+            7
           ]
-        ],
-        "right": 0,
-        "sides": [
-          "8",
-          "?",
-          "6"
         ],
         "labels": [
           "A",
           "B",
           "C"
         ],
-        "w": 220,
+        "sides": [
+          "24",
+          "7 = ?",
+          "25"
+        ],
+        "right": 1,
+        "w": 240,
         "h": 180
       }
     },
@@ -8069,13 +8053,7 @@
         "12\\pi"
       ],
       "answer": 0,
-      "sol": "\\( A=\\pi r^2=\\pi(6)^2=36\\pi \\) cm\\(^2\\)",
-      "figure": {
-        "type": "circle",
-        "radius": "r = 6",
-        "w": 200,
-        "h": 180
-      }
+      "sol": "\\( A=\\pi r^2=\\pi(6)^2=36\\pi \\) cm\\(^2\\)"
     },
     {
       "type": "mcq",
@@ -8511,10 +8489,12 @@
       "sol": "\\( \\dfrac{60}{360} \\times \\pi (6^2) = \\dfrac{1}{6} \\times 36\\pi = 6\\pi \\) سم².",
       "difficulty": "medium",
       "figure": {
-        "type": "circle",
-        "radius": "r = 6",
-        "w": 200,
-        "h": 180
+        "type": "circle_sector",
+        "title": "قطاع دائري (60°)",
+        "radius": 6,
+        "centralAngle": "60°",
+        "w": 220,
+        "h": 200
       }
     },
     {
@@ -8691,10 +8671,12 @@
       "sol": "\\( \\dfrac{90}{360} \\times 2\\pi (8) = \\dfrac{1}{4} \\times 16\\pi = 4\\pi \\) سم.",
       "difficulty": "medium",
       "figure": {
-        "type": "circle",
-        "radius": "r = 8",
-        "w": 200,
-        "h": 180
+        "type": "circle_sector",
+        "title": "قوس مقابل لزاوية 90°",
+        "radius": 8,
+        "centralAngle": "90°",
+        "w": 220,
+        "h": 200
       }
     },
     {
@@ -8872,10 +8854,12 @@
       "sol": "طول ضلع المربع يساوي قطر الدائرة: \\( s = 2r = 8 \\) سم. المساحة \\( = 8^2 = 64 \\) سم².",
       "difficulty": "medium",
       "figure": {
-        "type": "circle",
-        "radius": "r = 4",
-        "w": 200,
-        "h": 180
+        "type": "square_circumscribed_circle",
+        "title": "مربع يحيط بدائرة (نق = 4)",
+        "radius": 4,
+        "side": "s = 2r = 8",
+        "w": 220,
+        "h": 200
       }
     },
     {
@@ -9920,6 +9904,15 @@
         "radius": "r = 5",
         "w": 200,
         "h": 180
+      },
+      "figure": {
+        "type": "circle_tangent_segment",
+        "title": "مماس للدائرة من نقطة خارجية",
+        "radius": 5,
+        "hypotenuse": 13,
+        "tangentLabel": "L = ?",
+        "w": 240,
+        "h": 180
       }
     },
     {
@@ -10285,13 +10278,7 @@
       ],
       "answer": 0,
       "sol": "العمود A: \\( \\pi (4^2) \\approx 3.14 \\times 16 = 50.24 \\)، العمود B: \\( 7^2 = 49 \\). العمود A أكبر? \\( 50.24 > 49 \\). إذن العمود A أكبر.",
-      "difficulty": "easy",
-      "figure": {
-        "type": "circle",
-        "radius": "r = 4",
-        "w": 200,
-        "h": 180
-      }
+      "difficulty": "easy"
     },
     {
       "type": "mcq",
@@ -10614,36 +10601,7 @@
       ],
       "answer": 2,
       "sol": "مجموع زوايا أي مثلث = 180°. متساويان.",
-      "difficulty": "easy",
-      "figure": {
-        "type": "triangle",
-        "vertices": [
-          [
-            0,
-            0
-          ],
-          [
-            10,
-            0
-          ],
-          [
-            5,
-            28.36
-          ]
-        ],
-        "angles": [
-          "80°",
-          "80°",
-          "20°"
-        ],
-        "labels": [
-          "A",
-          "B",
-          "C"
-        ],
-        "w": 220,
-        "h": 180
-      }
+      "difficulty": "easy"
     },
     {
       "type": "mcq",
@@ -10803,11 +10761,6 @@
       "type": "mcq",
       "domain": "Quantitative Comparisons",
       "text": "<strong>قارن / Compare:</strong><br>العمود A: مساحة دائرة نصف قطرها 3<br>العمود B: مساحة مربع ضلعه 5",
-      "fig": {
-        "type": "circle",
-        "center": "O",
-        "radius": "r"
-      },
       "choices": [
         "لا يمكن تحديده / Cannot determine",
         "العمود B أكبر / B is greater",
@@ -10858,13 +10811,7 @@
         "لا يمكن تحديد ذلك / Cannot be determined"
       ],
       "answer": 0,
-      "sol": "A \\( =64\\pi\\approx201.1 \\). B \\( =64 \\).",
-      "figure": {
-        "type": "circle",
-        "radius": "r = 8",
-        "w": 200,
-        "h": 180
-      }
+      "sol": "A \\( =64\\pi\\approx201.1 \\). B \\( =64 \\)."
     },
     {
       "type": "mcq",
@@ -10990,13 +10937,7 @@
         "لا يمكن تحديد ذلك / Cannot be determined"
       ],
       "answer": 2,
-      "sol": "A \\( =36\\pi\\approx113.1 \\). B \\( =4 \\).",
-      "figure": {
-        "type": "circle",
-        "radius": "r = 6",
-        "w": 200,
-        "h": 180
-      }
+      "sol": "A \\( =36\\pi\\approx113.1 \\). B \\( =4 \\)."
     },
     {
       "type": "mcq",
@@ -12400,14 +12341,7 @@
         "المعطيات غير كافية<br><em>Information is insufficient</em>"
       ],
       "answer": 1,
-      "sol": "محيط الدائرة = 2 × ط × 5 = 10ط ≈ 31.42 سم. محيط المربع = 4 × 8 = 32 سم. بما أن 32 > 31.42، فإن القيمة الثانية أكبر. / Circle circumference = 2 * pi * 5 = 10pi approx 31.42 cm. Square perimeter = 4 * 8 = 32 cm. Since 32 > 31.42, Value B is greater.",
-      "fig": {
-        "type": "circle",
-        "center": "O",
-        "radius": "r = 5",
-        "w": 200,
-        "h": 180
-      }
+      "sol": "محيط الدائرة = 2 × ط × 5 = 10ط ≈ 31.42 سم. محيط المربع = 4 × 8 = 32 سم. بما أن 32 > 31.42، فإن القيمة الثانية أكبر. / Circle circumference = 2 * pi * 5 = 10pi approx 31.42 cm. Square perimeter = 4 * 8 = 32 cm. Since 32 > 31.42, Value B is greater."
     },
     {
       "type": "mcq",
