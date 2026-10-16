@@ -111,7 +111,7 @@
     ['angle', '∠'], ['perp', '⊥'], ['parallel', '∥'], ['sum', 'Σ'], ['prod', 'Π'],
     // Longer names first so e.g. \oiint isn't cut short by \oint matching its prefix.
     ['oiiint', '∰'], ['oiint', '∯'], ['iiint', '∭'], ['iint', '∬'], ['oint', '∮'], ['int', '∫'],
-    ['partial', '∂'], ['nabla', '∇'], ['degree', '°'],
+    ['partial', '∂'], ['nabla', '∇'], ['degree', '°'], ['circ', '°'],
     ['pi', 'π'], ['theta', 'θ'], ['alpha', 'α'], ['beta', 'β'], ['gamma', 'γ'],
     ['Gamma', 'Γ'], ['delta', 'δ'], ['Delta', 'Δ'], ['lambda', 'λ'], ['mu', 'μ'],
     ['sigma', 'σ'], ['Sigma', 'Σ'], ['phi', 'φ'], ['varphi', 'φ'], ['omega', 'ω'],
@@ -145,7 +145,8 @@
     // no visual change to the symbol (this is why \sum_{n=0}^\infty, one of
     // the most common upper bounds in this content, is worth special-casing
     // rather than leaving as the only exponent that still shows a bare ^).
-    '∞': cp(0x221E)
+    '∞': cp(0x221E),
+    '°': '°'
   };
   var SUB = {
     '0': cp(0x2080), '1': cp(0x2081), '2': cp(0x2082), '3': cp(0x2083), '4': cp(0x2084),
@@ -204,6 +205,8 @@
     s = s.replace(/\\\[/g, '').replace(/\\\]/g, '')
       .replace(/\\\(/g, '').replace(/\\\)/g, '')
       .replace(/\$\$?/g, '');
+    // Degree notation: 30^\circ, 30^{\circ}, 30^\degree, 30^° -> 30°
+    s = s.replace(/\^\{?\\circ\}?/g, '°').replace(/\^\{?\\degree\}?/g, '°').replace(/\^°/g, '°');
     // Sizing commands (\left( \right] …) — drop the command, keep the delimiter.
     s = s.replace(/\\left/g, '').replace(/\\right/g, '');
     // LaTeX itself adds visual spacing around commands like \frac and \oint
@@ -306,7 +309,7 @@
     // displayed-text field, so this is a deliberate safety net, not just
     // cosmetic tidying: a stray real newline slipping through here fails
     // the entire form's creation, not just the one field that had it.
-    return s.replace(/\s+/g, ' ').trim();
+    return s.replace(/\s+([.,;:!?])/g, '$1').replace(/\s+/g, ' ').trim();
   }
 
   // Wrap a fraction's numerator/denominator in parens only when it actually

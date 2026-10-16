@@ -145,17 +145,119 @@
 
   var SCALE = 3; // extra resolution headroom in case Forms downscales further
 
-  // Renders `text` (raw \( \)/\[ \] source, same as bank-data) into a PNG
-  // Blob + its logical (non-retina) pixel width. Resolves null (never
-  // rejects) so callers can fall back cleanly.
-  //
-  // Container is shrink-to-fit (inline-block, no fixed width) rather than a
-  // constant 600px box — a short answer choice like "e^{-zt}t^{b-1}dt" in a
-  // fixed-width box left most of the canvas blank, so whatever size Forms
-  // ultimately displayed it at, the actual glyphs occupied a tiny fraction
-  // of it. Shrink-wrapping means every pixel of the image is real content,
-  // so the same final display width reads far larger. max-width only kicks
-  // in for genuinely long question stems that need to wrap.
+  var COMPLEX_MATH = /\\(d?frac|tfrac|cfrac|sqrt|int|iint|iiint|oint|sum|prod|lim|binom|vec|hat|bar|overline|underline|overrightarrow|overleftarrow|begin|matrix|pmatrix|bmatrix|cases)(?![a-zA-Z])/;
+
+  function hasComplexMath(text) {
+    if (!text) return false;
+    var s = String(text);
+    return COMPLEX_MATH.test(s) || COMPLEX_SCRIPT.test(s);
+  }
+
+  function sanitizeSvg(svgStr) {
+    if (!svgStr || typeof svgStr !== 'string') return '';
+    var s = svgStr;
+    var colorMap = {
+      '--fig-indigo': '#1E3A6E',
+      '--fig-indigo-2': '#2B5BA8',
+      '--fig-indigo-soft': 'rgba(30,58,110,0.08)',
+      '--fig-amber': '#C8902A',
+      '--fig-amber-text': '#8A6017',
+      '--fig-amber-soft': 'rgba(200,144,42,0.16)',
+      '--fig-teal': '#0e9f8f',
+      '--fig-ink': '#0E1726',
+      '--fig-muted': '#5a6577',
+      '--fig-grid': '#c9d4e8',
+      '--fig-border': '#dde4f0',
+      '--fig-bg': '#ffffff',
+      '--paper': '#ffffff',
+      '--paper-2': '#f8fafc',
+      '--font-sans': '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+    };
+    Object.keys(colorMap).forEach(function (varName) {
+      var re = new RegExp('var\\(' + varName + '(?:,\\s*[^)]+)?\\)', 'g');
+      s = s.replace(re, colorMap[varName]);
+    });
+    if (!/xmlns="http:\/\/www\.w3\.org\/2000\/svg"/i.test(s)) {
+      s = s.replace(/<svg\b/i, '<svg xmlns="http://www.w3.org/2000/svg"');
+    }
+    return s;
+  }
+
+  function extractSvg(str) {
+    if (!str || typeof str !== 'string') return null;
+    var m = str.match(/<svg[\s\S]*?<\/svg>/i);
+    return m ? m[0] : null;
+  }
+
+  function getSvgDimensions(svgStr) {
+    var wMatch = svgStr.match(/\bwidth=["']?(\d+(?:\.\d+)?)/i);
+    var hMatch = svgStr.match(/\bheight=["']?(\d+(?:\.\d+)?)/i);
+    var vbMatch = svgStr.match(/\bviewBox=["']?[-\d.]+\s+[-\d.]+\s+(\d+(?:\.\d+)?)\s+(\d+(?:\.\d+)?)/i);
+    var w = wMatch ? Math.round(parseFloat(wMatch[1])) : (vbMatch ? Math.round(parseFloat(vbMatch[1])) : 320);
+    var h = hMatch ? Math.round(parseFloat(hMatch[1])) : (vbMatch ? Math.round(parseFloat(vbMatch[2])) : 220);
+    return { w: Math.max(40, w), h: Math.max(40, h) };
+  }
+
+  function renderSvgDirect(svgStr, scale) {
+    scale = scale || SCALE;
+    return new Promise(function (resolve) {
+      if (typeof window === 'undefined' || typeof document === 'undefined' || typeof Blob === 'undefined' || typeof URL === 'undefined' || !URL.createObjectURL) {
+        resolve(null);
+        return;
+      }
+      try {
+        var cleanSvg = sanitizeSvg(svgStr);
+        var dims = getSvgDimensions(cleanSvg);
+        var w = dims.w, h = dims.h;
+
+        if (!/\bwidth=/i.test(cleanSvg)) cleanSvg = cleanSvg.replace(/<svg\b/i, '<svg width="' + w + '"');
+        if (!/\bheight=/i.test(cleanSvg)) cleanSvg = cleanSvg.replace(/<svg\b/i, '<svg height="' + h + '"');
+
+        var blob = new Blob([cleanSvg], { type: 'image/svg+xml;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var img = new Image();
+
+        img.onload = function () {
+          try {
+            URL.revokeObjectURL(url);
+            var canvas = document.createElement('canvas');
+            canvas.width = Math.round(w * scale);
+            canvas.height = Math.round(h * scale);
+            var ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            canvas.toBlob(function (pngBlob) {
+              if (!pngBlob) { resolve(null); return; }
+              resolve({ blob: pngBlob, width: w });
+            }, 'image/png');
+          } catch (e) {
+            URL.revokeObjectURL(url);
+            resolve(null);
+          }
+        };
+        img.onerror = function () {
+          URL.revokeObjectURL(url);
+          resolve(null);
+        };
+        img.src = url;
+      } catch (err) {
+        resolve(null);
+      }
+    });
+  }
+
+  function svgToDataImgTag(svgStr) {
+    var cleanSvg = sanitizeSvg(svgStr);
+    var dims = getSvgDimensions(cleanSvg);
+    var b64 = '';
+    try {
+      if (typeof btoa !== 'undefined') b64 = btoa(unescape(encodeURIComponent(cleanSvg)));
+    } catch (e) {}
+    var src = b64 ? 'data:image/svg+xml;base64,' + b64 : 'data:image/svg+xml;utf8,' + encodeURIComponent(cleanSvg);
+    return '<img src="' + src + '" width="' + dims.w + '" height="' + dims.h + '" style="display:block;margin:0 auto;width:' + dims.w + 'px;height:' + dims.h + 'px;max-width:100%;box-sizing:border-box;" alt="Diagram">';
+  }
+
   function ensureFiguresReady() {
     if (window._renderFig && window.renderMathFigure) return Promise.resolve();
     if (typeof window._ensureFigures === 'function') {
@@ -164,22 +266,55 @@
     return Promise.resolve();
   }
 
-  // Renders `text` (raw \( \)/\[ \] source) and/or `figure`/`figureHtml` into a PNG
-  // Blob + its logical (non-retina) pixel width. Resolves null (never
-  // rejects) so callers can fall back cleanly.
-  //
-  // Container is shrink-to-fit (inline-block, no fixed width) rather than a
-  // constant 600px box. For questions with figures, SVG and table elements are
-  // centered and styled with explicit dimensions and brand palette variables.
   function renderToPngBlob(text, figure, figureHtml) {
-    return loadHtml2Canvas().then(ensureFiguresReady).then(function () {
+    return ensureFiguresReady().then(function () {
+      var figHtml = '';
+      if (figureHtml && typeof figureHtml === 'string' && figureHtml.trim()) {
+        figHtml = figureHtml;
+      } else if (figure) {
+        if (typeof figure === 'string') {
+          figHtml = figure;
+        } else if (figure.type === 'table' || figure.headers || figure.rows || figure.data) {
+          var hdrs = (figure.headers || []).map(function (h) {
+            return '<th>' + escHtml(String(h != null ? h : '')) + '</th>';
+          }).join('');
+          var rws = (figure.rows || figure.data || []).map(function (r) {
+            return '<tr>' + (Array.isArray(r) ? r.map(function (c) {
+              return '<td>' + escHtml(String(c != null ? c : '')) + '</td>';
+            }).join('') : '<td>' + escHtml(String(r != null ? r : '')) + '</td>') + '</tr>';
+          }).join('');
+          figHtml = '<table class="exam-table">' + (hdrs ? '<thead><tr>' + hdrs + '</tr></thead>' : '') + '<tbody>' + rws + '</tbody></table>';
+        } else if (window._renderFig) {
+          figHtml = window._renderFig(figure);
+        } else if (window.renderMathFigure) {
+          figHtml = window.renderMathFigure(figure);
+        }
+      }
+
+      var extractedSvg = extractSvg(figHtml);
+
+      // Fast, pristine path: If figure is purely an SVG and text has no complex math (e.g. coordinates or simple question stem),
+      // render the SVG directly using native canvas image rasterization with zero html2canvas distortion.
+      if (extractedSvg && !hasComplexMath(text)) {
+        return renderSvgDirect(extractedSvg, SCALE).then(function (res) {
+          if (res) return res;
+          return renderWithHtml2Canvas(text, figHtml);
+        });
+      }
+
+      return renderWithHtml2Canvas(text, figHtml);
+    });
+  }
+
+  function renderWithHtml2Canvas(text, figHtml) {
+    return loadHtml2Canvas().then(function () {
       return new Promise(function (resolve) {
         var container = document.createElement('div');
-        container.style.cssText = 'position:fixed;left:-99999px;top:0;background:#ffffff;'
-          + 'display:inline-block;padding:14px 18px;max-width:640px;box-sizing:border-box;'
+        // Place in off-screen viewport with valid 0,0 origins so html2canvas computes perfect matrices
+        container.style.cssText = 'position:fixed;left:0;top:0;z-index:-99999;pointer-events:none;background:#ffffff;'
+          + 'display:inline-block;padding:16px 20px;max-width:640px;box-sizing:border-box;'
           + 'font-family:Georgia,"Times New Roman",serif;font-size:24px;line-height:1.5;color:#111;';
 
-        // Provide CSS custom properties on container to ensure SVG diagrams render with accurate colors
         container.style.setProperty('--fig-indigo', '#1E3A6E');
         container.style.setProperty('--fig-indigo-2', '#2B5BA8');
         container.style.setProperty('--fig-indigo-soft', 'rgba(30,58,110,0.08)');
@@ -191,31 +326,8 @@
         container.style.setProperty('--fig-muted', '#5a6577');
         container.style.setProperty('--fig-grid', '#c9d4e8');
         container.style.setProperty('--fig-border', '#dde4f0');
-        container.style.setProperty('--fig-bg', '#fbfcfe');
-        container.style.setProperty('--paper', '#fbfcfe');
-
-        var figHtml = '';
-        if (figureHtml && typeof figureHtml === 'string' && figureHtml.trim()) {
-          figHtml = figureHtml;
-        } else if (figure) {
-          if (typeof figure === 'string') {
-            figHtml = figure;
-          } else if (figure.type === 'table' || figure.headers || figure.rows || figure.data) {
-            var hdrs = (figure.headers || []).map(function (h) {
-              return '<th>' + escHtml(String(h != null ? h : '')) + '</th>';
-            }).join('');
-            var rws = (figure.rows || figure.data || []).map(function (r) {
-              return '<tr>' + (Array.isArray(r) ? r.map(function (c) {
-                return '<td>' + escHtml(String(c != null ? c : '')) + '</td>';
-              }).join('') : '<td>' + escHtml(String(r != null ? r : '')) + '</td>') + '</tr>';
-            }).join('');
-            figHtml = '<table class="exam-table">' + (hdrs ? '<thead><tr>' + hdrs + '</tr></thead>' : '') + '<tbody>' + rws + '</tbody></table>';
-          } else if (window._renderFig) {
-            figHtml = window._renderFig(figure);
-          } else if (window.renderMathFigure) {
-            figHtml = window.renderMathFigure(figure);
-          }
-        }
+        container.style.setProperty('--fig-bg', '#ffffff');
+        container.style.setProperty('--paper', '#ffffff');
 
         var isArabic = /[\u0600-\u06FF]/.test(String(text || ''));
 
@@ -223,7 +335,8 @@
           + '.exam-table { border-collapse: collapse; margin: 8px auto; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px; border: 1px solid #999; }'
           + '.exam-table th, .exam-table td { border: 1px solid #999; padding: 6px 12px; text-align: center; }'
           + '.exam-table th { background: #e8edf8; color: #1a1a2e; font-weight: bold; }'
-          + '.clipsat-fig-wrap svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }'
+          + '.clipsat-fig-wrap { display: block; margin: 10px auto 0; text-align: center; width: 100%; }'
+          + '.clipsat-fig-wrap img, .clipsat-fig-wrap svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }'
           + '</style>';
 
         var inner = '';
@@ -236,13 +349,19 @@
             if(/^\d{1,3}(?:,\d{3})*(?:\.\d+)?$/.test(innerM)) return m;
             return '\\(' + innerM + '\\)';
           });
-          var textStyle = 'margin-bottom:' + (figHtml ? '12px;' : '0;')
+          var textStyle = 'margin-bottom:' + (figHtml ? '14px;' : '0;')
             + (isArabic ? 'direction:rtl;text-align:right;font-family:"Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;' : 'text-align:left;');
           inner += '<div class="clipsat-math-stem" style="' + textStyle + '">' + escHtml(wrapped) + '</div>';
         }
 
         if (figHtml) {
-          inner += '<div class="clipsat-fig-wrap" style="display:flex;justify-content:center;align-items:center;margin:0 auto;text-align:center;">' + figHtml + '</div>';
+          var cleanFigHtml = figHtml;
+          var extracted = extractSvg(figHtml);
+          if (extracted) {
+            // Convert inline SVG to data URI image so html2canvas uses native rasterization rather than flawed SVG path parsing
+            cleanFigHtml = svgToDataImgTag(extracted);
+          }
+          inner += '<div class="clipsat-fig-wrap">' + cleanFigHtml + '</div>';
         }
 
         container.innerHTML = styles + inner;
@@ -257,7 +376,20 @@
         }
 
         var go = function () {
-          window.html2canvas(container, { backgroundColor: '#ffffff', scale: SCALE }).then(function (canvas) {
+          window.html2canvas(container, {
+            backgroundColor: '#ffffff',
+            scale: SCALE,
+            scrollX: 0,
+            scrollY: 0,
+            windowWidth: 1024,
+            windowHeight: 768,
+            onclone: function (clonedDoc, clonedElement) {
+              clonedElement.style.position = 'static';
+              clonedElement.style.left = '0';
+              clonedElement.style.top = '0';
+              clonedElement.style.margin = '0';
+            }
+          }).then(function (canvas) {
             canvas.toBlob(function (blob) {
               cleanup();
               if (!blob) { warn('canvas.toBlob produced no image (possibly a tainted/zero-size canvas)', text); resolve(null); return; }
@@ -265,7 +397,7 @@
             }, 'image/png');
           }).catch(function (err) { warn('html2canvas failed: ' + (err && err.message), text); cleanup(); resolve(null); });
         };
-        // Wait for fonts and SVGs to layout cleanly before rasterizing
+
         if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { setTimeout(go, 80); });
         else setTimeout(go, 300);
       });
@@ -363,8 +495,11 @@
   window.ClipSATMathImage = {
     SCOPES: ['https://www.googleapis.com/auth/drive.file'],
     hasMath: hasMath,
+    hasComplexMath: hasComplexMath,
     needsImage: needsImage,
     needsChoiceImage: needsChoiceImage,
-    renderQuestionImage: renderQuestionImage
+    renderQuestionImage: renderQuestionImage,
+    sanitizeSvg: sanitizeSvg,
+    getSvgDimensions: getSvgDimensions
   };
 })();

@@ -57,7 +57,31 @@ assert.strictEqual(pt1, 'The value of x² + 2x + 1 is:', 'mathToPlainText conver
 const ptFrac = formsApi.mathToPlainText('\\dfrac{a}{b}');
 assert.strictEqual(ptFrac, 'a/b', 'mathToPlainText converts fractions cleanly');
 
+const ptDeg = formsApi.mathToPlainText('Two parallel lines are cut by a transversal. One angle is \\( 30^\\circ \\). Find its co-interior (allied) angle.');
+assert.strictEqual(ptDeg, 'Two parallel lines are cut by a transversal. One angle is 30°. Find its co-interior (allied) angle.', 'mathToPlainText accurately converts 30^\\circ to 30°');
+
 console.log('  ✓ ClipSATForms.mathToPlainText handles LaTeX transformations accurately');
+
+// 2b. Test hasComplexMath and SVG sanitization
+assert.strictEqual(mi.hasComplexMath('Find the gradient of the line joining \\( (0, -2) \\) and \\( (3, 1) \\).'), false,
+  'Coordinate line question does not have complex math');
+assert.strictEqual(mi.hasComplexMath('Two parallel lines are cut by a transversal. One angle is \\( 30^\\circ \\).'), false,
+  'Transversal angle question does not have complex math');
+assert.strictEqual(mi.hasComplexMath('Solve for x: \\( \\frac{x+1}{x-1} = 2 \\)'), true,
+  'Fraction question has complex math');
+assert.strictEqual(mi.hasComplexMath('Evaluate \\( \\int_0^1 x^2 dx \\)'), true,
+  'Integral question has complex math');
+
+const rawSvg = '<svg width="220" height="160" viewBox="0 0 220 160" style="stroke:var(--fig-indigo);fill:var(--fig-ink);background:var(--fig-bg);">';
+const cleanSvg = mi.sanitizeSvg(rawSvg);
+assert(!cleanSvg.includes('var('), 'sanitizeSvg must replace all CSS custom properties with concrete colors');
+assert(cleanSvg.includes('xmlns="http://www.w3.org/2000/svg"'), 'sanitizeSvg must ensure xmlns is present');
+
+const dims = mi.getSvgDimensions(cleanSvg);
+assert.strictEqual(dims.w, 220, 'getSvgDimensions correctly parses width');
+assert.strictEqual(dims.h, 160, 'getSvgDimensions correctly parses height');
+
+console.log('  ✓ ClipSATMathImage handles complex math detection, SVG sanitization, and dimensions accurately');
 
 // 3. Verify bank-exam, ai-test, chapter-quiz, and genTest codebases have figure capture
 const bankExamCode = fs.readFileSync('src/scripts/modules/02b-bank-exam.js', 'utf8');
