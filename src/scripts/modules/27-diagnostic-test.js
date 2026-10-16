@@ -374,12 +374,18 @@
       var qScore = Math.round(55 + (pct / 100) * 44);
       return qScore + '%+ (Percentile)';
     }
-    if (trackId === 'igcse' || trackId === 'aslevel' || trackId === 'a2level') {
+    if (trackId === 'igcse' || trackId === 'aslevel' || trackId === 'a2level' || trackId === 'addmath') {
       if (pct >= 85) return 'A* (Distinction)';
       if (pct >= 72) return 'A (Merit)';
       if (pct >= 58) return 'B (Proficient)';
       if (pct >= 45) return 'C (Passing)';
       return 'D / Developing';
+    }
+    if (trackId === 'mathai') {
+      if (pct >= 80) return 'Mastery (Level 4)';
+      if (pct >= 65) return 'Proficient (Level 3)';
+      if (pct >= 50) return 'Basic (Level 2)';
+      return 'Emerging (Level 1)';
     }
     if (trackId === 'ibsl' || trackId === 'ibhl') {
       var g = Math.min(7, Math.max(2, Math.round(1 + (pct / 100) * 6)));

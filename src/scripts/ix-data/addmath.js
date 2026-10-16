@@ -1,0 +1,575 @@
+/* Interactive Practice data for /addmath/ - one entry per chapter section id.
+   Shipped as public/js/ix/addmath.js and loaded only on that track's page by the
+   engine in src/scripts/modules/19-interactive-activities-engine-v1.js
+   (Plan 5 Phase 5.015, ADR 0033). */
+(window.__ixData = window.__ixData || []).push(function (D) {
+D['am-functions-quadratics'] = [
+  {
+    "t": "qc",
+    "ti": "Quick Check: One-to-One Condition for Inverse Functions",
+    "q": "Why must a function \\( f(x) \\) be strictly one-to-one across its domain in order to possess an inverse function \\( f^{-1}(x) \\)?",
+    "o": [
+      "Because each output value y must map uniquely back to exactly one input value x",
+      "Because the function must always be increasing and never cross the x-axis",
+      "Because quadratic functions cannot have inverses under any circumstances",
+      "Because the discriminant must be strictly equal to zero"
+    ],
+    "a": 0,
+    "ex": "An inverse function reverses the mapping: f⁻¹(y) = x. If f were many-to-one (e.g. f(2)=4 and f(-2)=4), f⁻¹(4) would have two outputs, violating the definition of a mathematical function.",
+    "ti_ar": "فحص سريع: شرط الدالة المتباينة لوجود دالة عكسية",
+    "q_ar": "لماذا يجب أن تكون الدالة \\( f(x) \\) متباينة (one-to-one) تماماً على مجالها لكي تمتلك دالة عكسية \\( f^{-1}(x) \\)؟",
+    "o_ar": [
+      "لأن كل قيمة ناتجة y يجب أن ترتبط بشكل فريد بقيمة مدخلة واحدة فقط x",
+      "لأن الدالة يجب أن تكون متزايدة دائماً ولا تقطع محور السينات",
+      "لأن الدوال التربيعية لا يمكن أن تمتلك دوالاً عكسية تحت أي ظرف",
+      "لأن المميز يجب أن يكون مساوياً للصفر تماماً"
+    ],
+    "ex_ar": "الدالة العكسية تعكس اتجاه المخطط السهمي: f⁻¹(y) = x. فإذا كانت الدالة متعددة إلى واحد (many-to-one)، فإن الدالة العكسية ستنتج أكثر من مخرج لنفس المدخل، مما ينقض تعريف الدالة الرياضية."
+  },
+  {
+    "t": "tf",
+    "ti": "True / False: Quadratic Discriminant Criteria",
+    "items": [
+      {
+        "s": "If the line y = mx + c is a tangent to a parabola, the resulting quadratic has b² - 4ac = 0.",
+        "a": true
+      },
+      {
+        "s": "The graph of y = |f(x)| reflects any portions of y = f(x) below the x-axis upward into the positive y-region.",
+        "a": true
+      },
+      {
+        "s": "A quadratic function f(x) = ax² + bx + c with domain x ∈ ℝ always possesses an inverse function f⁻¹(x).",
+        "a": false
+      }
+    ],
+    "ti_ar": "صح / خطأ: معايير مميز المعادلة التربيعية",
+    "items_ar": [
+      {
+        "s": "إذا كان المستقيم y = mx + c مماساً للقطع المكافئ، فإن المعادلة التربيعية الناتجة يكون مميزها b² - 4ac = 0.",
+        "a": true
+      },
+      {
+        "s": "منحنى دالة المقياس y = |f(x)| يعكس أي أجزاء تقع أسفل محور السينات إلى المنطقة الموجبة أعلى المحور.",
+        "a": true
+      },
+      {
+        "s": "الدالة التربيعية f(x) = ax² + bx + c بمجالها الكامل x ∈ ℝ تمتلك دائمًا دالة عكسية f⁻¹(x).",
+        "a": false
+      }
+    ]
+  },
+  {
+    "t": "mt",
+    "ti": "Matching: Function Concepts & Notation",
+    "p": [
+      {
+        "l": "f(g(x))",
+        "r": "Composite function: apply g first, then f"
+      },
+      {
+        "l": "y = x",
+        "r": "Line of reflection between f(x) and f⁻¹(x)"
+      },
+      {
+        "l": "b² - 4ac > 0",
+        "r": "Curve and line intersect at two distinct points"
+      },
+      {
+        "l": "b² - 4ac < 0",
+        "r": "Curve and line do not meet (strictly separated)"
+      }
+    ],
+    "ti_ar": "مطابقة: مفاهيم الدوال والرموز الرياضية",
+    "p_ar": [
+      {
+        "l": "f(g(x))",
+        "r": "دالة مركبة: يتم تطبيق g أولاً ثم الدالة f"
+      },
+      {
+        "l": "y = x",
+        "r": "خط الانعكاس التناظري بين منحنى f(x) والدالة العكسية f⁻¹(x)"
+      },
+      {
+        "l": "b² - 4ac > 0",
+        "r": "المستقيم يقطع المنحنى في نقطتين حقيقيتين متمايزتين"
+      },
+      {
+        "l": "b² - 4ac < 0",
+        "r": "المستقيم والمنحنى لا يتقاطعان مطلقاً (متباعدان)"
+      }
+    ]
+  }
+];
+
+D['am-polynomials-binomial'] = [
+  {
+    "t": "qc",
+    "ti": "Quick Check: Remainder Theorem",
+    "q": "If a polynomial \\( P(x) \\) is divided by \\( (2x - 3) \\), which calculation yields the exact remainder?",
+    "o": [
+      "P(3/2)",
+      "P(-3/2)",
+      "P(3)",
+      "P(-3)"
+    ],
+    "a": 0,
+    "ex": "By the Remainder Theorem, dividing P(x) by (ax - b) leaves a remainder of R = P(b/a). Setting 2x - 3 = 0 gives x = 3/2, so R = P(1.5).",
+    "ti_ar": "فحص سريع: نظرية الباقي في كثيرات الحدود",
+    "q_ar": "إذا قُسمت كثيرة الحدود \\( P(x) \\) على \\( (2x - 3) \\)، فأي مقدار يعطي الباقي بدقة؟",
+    "o_ar": [
+      "P(3/2)",
+      "P(-3/2)",
+      "P(3)",
+      "P(-3)"
+    ],
+    "ex_ar": "وفقاً لنظرية الباقي، فإن قسمة P(x) على (ax - b) تعطي باقياً يساوي R = P(b/a). وبمساواة 2x - 3 = 0 نجد أن x = 3/2، وبالتالي الباقي هو P(1.5)."
+  },
+  {
+    "t": "sb",
+    "ti": "Step Builder: Binomial Term Evaluation",
+    "steps": [
+      {
+        "l": "Write the general term formula T_{r+1} for (a + b)ⁿ",
+        "a": "binom(n, r) * a^(n-r) * b^r"
+      },
+      {
+        "l": "For (2x - 3)⁵, identify the power n",
+        "a": "5"
+      },
+      {
+        "l": "Find the value of r for the term containing x³",
+        "a": "2"
+      }
+    ],
+    "ti_ar": "بناء الخطوات: حساب حد مفكوك ذات الحدين",
+    "steps_ar": [
+      {
+        "l": "اكتب صيغة الحد العام T_{r+1} لمفكوك ذات الحدين (a + b)ⁿ",
+        "a": "binom(n, r) * a^(n-r) * b^r"
+      },
+      {
+        "l": "في مفكوك (2x - 3)⁵، حدد قيمة الأس n",
+        "a": "5"
+      },
+      {
+        "l": "أوجد قيمة r للحد المشتمل على x³",
+        "a": "2"
+      }
+    ]
+  },
+  {
+    "t": "tf",
+    "ti": "True / False: Factor Theorem & Cubics",
+    "items": [
+      {
+        "s": "If P(4) = 0, then (x - 4) is guaranteed to be an exact factor of polynomial P(x).",
+        "a": true
+      },
+      {
+        "s": "Every cubic polynomial with real coefficients must have at least one real root.",
+        "a": true
+      },
+      {
+        "s": "In the expansion of (x + 1/x)⁶, there is no constant term independent of x.",
+        "a": false
+      }
+    ],
+    "ti_ar": "صح / خطأ: نظرية العوامل والدوال التكعيبية",
+    "items_ar": [
+      {
+        "s": "إذا كان P(4) = 0، فإن المقدار (x - 4) عامل مؤكد من عوامل كثيرة الحدود P(x).",
+        "a": true
+      },
+      {
+        "s": "كل كثيرة حدود تكعيبية ذات معاملات حقيقية يجب أن تمتلك جذراً حقيقياً واحداً على الأقل.",
+        "a": true
+      },
+      {
+        "s": "في مفكوك (x + 1/x)⁶، لا يوجد حد ثابت خالٍ من المتغير x.",
+        "a": false
+      }
+    ]
+  }
+];
+
+D['am-logs-exponentials'] = [
+  {
+    "t": "qc",
+    "ti": "Quick Check: Reducing Non-Linear Laws to Straight Lines",
+    "q": "To convert the exponential relationship \\( y = ab^x \\) into linear form \\( Y = mX + c \\), which variables must be plotted on the axes?",
+    "o": [
+      "Plot ln(y) against x; gradient m = ln(b), intercept c = ln(a)",
+      "Plot ln(y) against ln(x); gradient m = b, intercept c = a",
+      "Plot y against ln(x); gradient m = ln(b), intercept c = a",
+      "Plot 1/y against x; gradient m = b, intercept c = a"
+    ],
+    "a": 0,
+    "ex": "Taking natural logarithms: ln(y) = ln(a · b^x) = ln(a) + x ln(b). Comparing with Y = mX + c gives Y = ln(y), X = x, m = ln(b), and c = ln(a).",
+    "ti_ar": "فحص سريع: تحويل العلاقات غير الخطية إلى خط مستقيم",
+    "q_ar": "لتحويل العلاقة الأسية \\( y = ab^x \\) إلى معادلة خط مستقيم \\( Y = mX + c \\)، أي متغيرين يتم رسمهما على المحاور؟",
+    "o_ar": [
+      "رسم ln(y) مقابل x؛ حيث الميل m = ln(b) والمقطع c = ln(a)",
+      "رسم ln(y) مقابل ln(x)؛ حيث الميل m = b والمقطع c = a",
+      "رسم y مقابل ln(x)؛ حيث الميل m = ln(b) والمقطع c = a",
+      "رسم 1/y مقابل x؛ حيث الميل m = b والمقطع c = a"
+    ],
+    "ex_ar": "بأخذ اللوغاريتم الطبيعي للطرفين: ln(y) = ln(a · b^x) = ln(a) + x ln(b). وبالمقارنة مع Y = mX + c نجد Y = ln(y) و X = x والميل m = ln(b) والمقطع c = ln(a)."
+  },
+  {
+    "t": "mt",
+    "ti": "Matching: Logarithmic Identities & Laws",
+    "p": [
+      {
+        "l": "log_a(x) + log_a(y)",
+        "r": "log_a(xy)"
+      },
+      {
+        "l": "log_a(x) - log_a(y)",
+        "r": "log_a(x / y)"
+      },
+      {
+        "l": "log_a(x^k)",
+        "r": "k · log_a(x)"
+      },
+      {
+        "l": "log_a(b)",
+        "r": "ln(b) / ln(a)"
+      }
+    ],
+    "ti_ar": "مطابقة: متطابقات وقوانين اللوغاريتمات",
+    "p_ar": [
+      {
+        "l": "log_a(x) + log_a(y)",
+        "r": "log_a(xy)"
+      },
+      {
+        "l": "log_a(x) - log_a(y)",
+        "r": "log_a(x / y)"
+      },
+      {
+        "l": "log_a(x^k)",
+        "r": "k · log_a(x)"
+      },
+      {
+        "l": "log_a(b)",
+        "r": "ln(b) / ln(a)"
+      }
+    ]
+  }
+];
+
+D['am-trigonometry-circular'] = [
+  {
+    "t": "qc",
+    "ti": "Quick Check: Circular Measure Formulas",
+    "q": "In a circle of radius r with central angle θ in radians, what is the formula for the area of the minor sector?",
+    "o": [
+      "A = ½ r² θ",
+      "A = r θ",
+      "A = ½ r θ²",
+      "A = π r² θ"
+    ],
+    "a": 0,
+    "ex": "In radian measure, arc length is s = rθ and sector area is A = ½ r² θ. Degrees formulas require multiplying by π/180 or θ/360.",
+    "ti_ar": "فحص سريع: صيغ القياس الدائري للراديان",
+    "q_ar": "في دائرة نصف قطرها r وزاويتها المركزية θ بالراديان، ما الصيغة الرياضية لمساحة القطاع الدائري الأصغر؟",
+    "o_ar": [
+      "A = ½ r² θ",
+      "A = r θ",
+      "A = ½ r θ²",
+      "A = π r² θ"
+    ],
+    "ex_ar": "بالقياس الدائري (الراديان)، طول القوس هو s = rθ ومساحة القطاع هي A = ½ r² θ."
+  },
+  {
+    "t": "mt",
+    "ti": "Matching: Reciprocal Trigonometric Functions",
+    "p": [
+      {
+        "l": "sec(θ)",
+        "r": "1 / cos(θ)"
+      },
+      {
+        "l": "csc(θ)",
+        "r": "1 / sin(θ)"
+      },
+      {
+        "l": "cot(θ)",
+        "r": "cos(θ) / sin(θ) = 1 / tan(θ)"
+      },
+      {
+        "l": "1 + tan²(θ)",
+        "r": "sec²(θ)"
+      }
+    ],
+    "ti_ar": "مطابقة: مقلوبات الدوال المثلثية ومتطابقاتها",
+    "p_ar": [
+      {
+        "l": "sec(θ) (القاطع)",
+        "r": "1 / cos(θ)"
+      },
+      {
+        "l": "csc(θ) (قاطع التمام)",
+        "r": "1 / sin(θ)"
+      },
+      {
+        "l": "cot(θ) (ظل التمام)",
+        "r": "cos(θ) / sin(θ) = 1 / tan(θ)"
+      },
+      {
+        "l": "1 + tan²(θ)",
+        "r": "sec²(θ)"
+      }
+    ]
+  }
+];
+
+D['am-permutations-combinations'] = [
+  {
+    "t": "qc",
+    "ti": "Quick Check: Distinguishing Permutations and Combinations",
+    "q": "A committee of 4 students is to be chosen from a class of 10. Does this calculation require a permutation or a combination?",
+    "o": [
+      "Combination, because the order of members within the committee does not matter: ¹⁰C₄",
+      "Permutation, because the students are distinct individuals: ¹⁰P₄",
+      "Permutation, because 10! must be multiplied by 4!",
+      "Factorial division without combinations: 10! / 4!"
+    ],
+    "a": 0,
+    "ex": "When selecting a committee or group where positions are identical (no distinct titles like president/treasurer), order does not matter: use combinations ¹⁰C₄ = 210.",
+    "ti_ar": "فحص سريع: التمييز بين التباديل والتوافيق",
+    "q_ar": "اختيار لجنة مكونة من 4 طلاب من فصل به 10 طلاب. هل تتطلب هذه المسألة تباديل أم توافيق؟",
+    "o_ar": [
+      "توافيق، لأن ترتيب أعضاء اللجنة داخلها لا أهمية له: ¹⁰C₄",
+      "تباديل، لأن الطلاب أفراد متميزون: ¹⁰P₄",
+      "تباديل، لأن 10! يجب ضربها في 4!",
+      "قسمة مضاريب بدون توافيق: 10! / 4!"
+    ],
+    "ex_ar": "عند اختيار لجنة أو مجموعة متكافئة المهام حيث الترتيب غير مهم، نستخدم التوافيق: ¹⁰C₄ = 210."
+  },
+  {
+    "t": "tf",
+    "ti": "True / False: Combinatorial Logic",
+    "items": [
+      {
+        "s": "The number of ways to arrange n distinct objects in a straight line is n!.",
+        "a": true
+      },
+      {
+        "s": "ⁿCᵣ is always equal to ⁿCₙ₋ᵣ for any 0 ≤ r ≤ n.",
+        "a": true
+      },
+      {
+        "s": "Permutations always yield a smaller number of outcomes than combinations for r > 1.",
+        "a": false
+      }
+    ],
+    "ti_ar": "صح / خطأ: المنطق التوافقي والعد",
+    "items_ar": [
+      {
+        "s": "عدد طرق ترتيب n من الأشياء المتمايزة في صف مستقيم يساوي n!.",
+        "a": true
+      },
+      {
+        "s": "قيمة ⁿCᵣ تساوي دائماً ⁿCₙ₋ᵣ لأي 0 ≤ r ≤ n.",
+        "a": true
+      },
+      {
+        "s": "التباديل تعطي دائمًا عدد احتمالات أقل من التوافيق عندما تكون r > 1.",
+        "a": false
+      }
+    ]
+  }
+];
+
+D['am-differentiation-rates'] = [
+  {
+    "t": "qc",
+    "ti": "Quick Check: Product Rule Differentiation",
+    "q": "What is the derivative of \\( y = x^3 e^{2x} \\) with respect to x?",
+    "o": [
+      "dy/dx = 3x² e^(2x) + 2x³ e^(2x) = x² e^(2x) (3 + 2x)",
+      "dy/dx = 6x² e^(2x)",
+      "dy/dx = 3x² + 2e^(2x)",
+      "dy/dx = x³ e^(2x) + 3x² e^(2x)"
+    ],
+    "a": 0,
+    "ex": "Apply product rule d/dx[uv] = u v' + v u'. Here u = x³, u' = 3x²; v = e^(2x), v' = 2e^(2x). Thus dy/dx = x³(2e^(2x)) + e^(2x)(3x²) = x²e^(2x)(2x + 3).",
+    "ti_ar": "فحص سريع: قاعدة تفاضل حاصل ضرب دالتين",
+    "q_ar": "ما المشتقة الأولى للدالة \\( y = x^3 e^{2x} \\) بالنسبة إلى x؟",
+    "o_ar": [
+      "dy/dx = 3x² e^(2x) + 2x³ e^(2x) = x² e^(2x) (3 + 2x)",
+      "dy/dx = 6x² e^(2x)",
+      "dy/dx = 3x² + 2e^(2x)",
+      "dy/dx = x³ e^(2x) + 3x² e^(2x)"
+    ],
+    "ex_ar": "بتطبيق قاعدة ضرب دالتين d/dx[uv] = u v' + v u'. هنا u = x³ و u' = 3x²؛ و v = e^(2x) و v' = 2e^(2x). فيكون dy/dx = 2x³ e^(2x) + 3x² e^(2x) = x² e^(2x) (2x + 3)."
+  },
+  {
+    "t": "mt",
+    "ti": "Matching: Differentiation Rules & Derivatives",
+    "p": [
+      {
+        "l": "d/dx [sin(ax)]",
+        "r": "a · cos(ax)"
+      },
+      {
+        "l": "d/dx [cos(ax)]",
+        "r": "-a · sin(ax)"
+      },
+      {
+        "l": "d/dx [tan(ax)]",
+        "r": "a · sec²(ax)"
+      },
+      {
+        "l": "d/dx [ln(ax + b)]",
+        "r": "a / (ax + b)"
+      }
+    ],
+    "ti_ar": "مطابقة: قواعد ومشتقات الدوال المثلثية واللوغاريتمية",
+    "p_ar": [
+      {
+        "l": "d/dx [sin(ax)]",
+        "r": "a · cos(ax)"
+      },
+      {
+        "l": "d/dx [cos(ax)]",
+        "r": "-a · sin(ax)"
+      },
+      {
+        "l": "d/dx [tan(ax)]",
+        "r": "a · sec²(ax)"
+      },
+      {
+        "l": "d/dx [ln(ax + b)]",
+        "r": "a / (ax + b)"
+      }
+    ]
+  }
+];
+
+D['am-integration-kinematics'] = [
+  {
+    "t": "qc",
+    "ti": "Quick Check: Straight-Line Kinematics Relationships",
+    "q": "If the velocity of a particle is given by \\( v(t) = 4t - t^2 \\), how is its displacement \\( s(t) \\) found from \\( t = 0 \\) to \\( t = 3 \\)?",
+    "o": [
+      "s(3) - s(0) = ∫₀³ (4t - t²) dt",
+      "s(3) = d/dt [4t - t²] evaluated at t = 3",
+      "s(3) = 4(3) - 3² = 3",
+      "s(3) = ∫₀³ (4 - 2t) dt"
+    ],
+    "a": 0,
+    "ex": "Displacement is the integral of velocity over time: s = ∫ v(t) dt. Since v = ds/dt, integrating v gives s. Acceleration would be the derivative dv/dt.",
+    "ti_ar": "فحص سريع: علاقات علم الحركة في خط مستقيم",
+    "q_ar": "إذا كانت سرعة جسيم تُعطى بالدالة \\( v(t) = 4t - t^2 \\)، فكيف نحسب إزاحته \\( s(t) \\) من \\( t = 0 \\) إلى \\( t = 3 \\)؟",
+    "o_ar": [
+      "s(3) - s(0) = ∫₀³ (4t - t²) dt",
+      "s(3) = d/dt [4t - t²] عند t = 3",
+      "s(3) = 4(3) - 3² = 3",
+      "s(3) = ∫₀³ (4 - 2t) dt"
+    ],
+    "ex_ar": "الإزاحة هي التكامل المحدد للسرعة بالنسبة للزمن: s = ∫ v(t) dt. وبما أن v = ds/dt فإن تكامل v يعطي s، بينما اشتقاقها يعطي التسارع."
+  },
+  {
+    "t": "mt",
+    "ti": "Matching: Standard Indefinite Integrals",
+    "p": [
+      {
+        "l": "∫ e^(ax+b) dx",
+        "r": "(1/a) e^(ax+b) + C"
+      },
+      {
+        "l": "∫ cos(ax+b) dx",
+        "r": "(1/a) sin(ax+b) + C"
+      },
+      {
+        "l": "∫ sin(ax+b) dx",
+        "r": "-(1/a) cos(ax+b) + C"
+      },
+      {
+        "l": "∫ 1/(ax+b) dx",
+        "r": "(1/a) ln|ax+b| + C"
+      }
+    ],
+    "ti_ar": "مطابقة: التكاملات غير المحددة القياسية",
+    "p_ar": [
+      {
+        "l": "∫ e^(ax+b) dx",
+        "r": "(1/a) e^(ax+b) + C"
+      },
+      {
+        "l": "∫ cos(ax+b) dx",
+        "r": "(1/a) sin(ax+b) + C"
+      },
+      {
+        "l": "∫ sin(ax+b) dx",
+        "r": "-(1/a) cos(ax+b) + C"
+      },
+      {
+        "l": "∫ 1/(ax+b) dx",
+        "r": "(1/a) ln|ax+b| + C"
+      }
+    ]
+  }
+];
+
+D['am-vectors-2d'] = [
+  {
+    "t": "qc",
+    "ti": "Quick Check: Scalar (Dot) Product Condition for Perpendicularity",
+    "q": "Two non-zero 2D vectors \\( \\mathbf{a} = x_1\\mathbf{i} + y_1\\mathbf{j} \\) and \\( \\mathbf{b} = x_2\\mathbf{i} + y_2\\mathbf{j} \\) are perpendicular if and only if:",
+    "o": [
+      "a · b = x₁x₂ + y₁y₂ = 0",
+      "|a| = |b|",
+      "x₁/x₂ = y₁/y₂",
+      "a · b = |a||b|"
+    ],
+    "a": 0,
+    "ex": "Since a · b = |a||b| cos(θ), when θ = 90°, cos(90°) = 0, so the dot product must be 0: x₁x₂ + y₁y₂ = 0.",
+    "ti_ar": "فحص سريع: شرط تعامد متجهين عبر الضرب القياسي",
+    "q_ar": "يكون المتجهان غير الصفريين \\( \\mathbf{a} = x_1\\mathbf{i} + y_1\\mathbf{j} \\) و \\( \\mathbf{b} = x_2\\mathbf{i} + y_2\\mathbf{j} \\) متعامدين إذا وفقط إذا كان:",
+    "o_ar": [
+      "a · b = x₁x₂ + y₁y₂ = 0",
+      "|a| = |b|",
+      "x₁/x₂ = y₁/y₂",
+      "a · b = |a||b|"
+    ],
+    "ex_ar": "بما أن الضرب القياسي a · b = |a||b| cos(θ)، وعندما تكون الزاوية 90° فإن cos(90°) = 0، لذا يجب أن يكون ناتج الضرب القياسي صفراً."
+  },
+  {
+    "t": "tf",
+    "ti": "True / False: Vector Properties",
+    "items": [
+      {
+        "s": "A unit vector has a magnitude strictly equal to 1.",
+        "a": true
+      },
+      {
+        "s": "If vector b is a scalar multiple of vector a (b = k a), then a and b are parallel.",
+        "a": true
+      },
+      {
+        "s": "The magnitude of vector r = 3i - 4j is equal to -1.",
+        "a": false
+      }
+    ],
+    "ti_ar": "صح / خطأ: خواص المتجهات",
+    "items_ar": [
+      {
+        "s": "متجه الوحدة يمتلك مقداراً (طولاً) يساوي 1 تماماً.",
+        "a": true
+      },
+      {
+        "s": "إذا كان المتجه b مضاعفاً قياسياً للمتجه a (أي b = k a)، فإن المتجهين متوازيان.",
+        "a": true
+      },
+      {
+        "s": "مقدار (معيار) المتجه r = 3i - 4j يساوي -1.",
+        "a": false
+      }
+    ]
+  }
+];
+});

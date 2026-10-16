@@ -750,7 +750,107 @@
         {title:'Part C: Questions 21–25 (Advanced)',time:'20 min',
          note:'5 questions · 6 points each',
          parts:[{label:'Problems 21–25',q:5,time:'20 min',calc:false,type:'mcq'}]}
-      ]}
+      ]},
+
+    addmath:{
+      title:'Cambridge IGCSE 0606 & Edexcel 4PM1 Additional Mathematics',totalTime:'2 hr',
+      bankId:'addmath',
+      logo:'Additional Maths',org:'Cambridge Assessment & Pearson Edexcel',
+      instructions:['Answer ALL questions.','Show all necessary working clearly.',
+        'Electronic calculators may be used.',
+        'Give non-exact answers correct to 3 significant figures unless stated otherwise.'],
+      sections:[
+        {title:'Paper 1 — Pure Mathematics & Calculus',time:'2 hr',
+         note:'80 marks. 10–12 structured questions. Calculator permitted.',
+         domains:['Functions, Modulus & Quadratics','Polynomials & Binomial Theorem','Logarithmic & Exponential Functions','Differentiation & Rates of Change','Integration & Kinematics'],
+         parts:[{label:'',q:11,time:'120 min',calc:true,type:'frq',note:'Show all working.'}]}]},
+
+    'Cambridge IGCSE 0606 — Paper 1':{
+      title:'Cambridge IGCSE Additional Mathematics (0606) — Paper 1',totalTime:'2 hr',
+      bankId:'addmath',
+      logo:'Cambridge 0606',org:'Cambridge Assessment International Education',
+      instructions:['Answer ALL questions.','Show all necessary working clearly.',
+        'Electronic calculators may be used.',
+        'Give non-exact numerical answers correct to 3 significant figures.'],
+      sections:[
+        {title:'Paper 1 (0606/1)',time:'2 hr',
+         note:'80 marks. Answer all questions. Calculator permitted.',
+         domains:['Functions, Modulus & Quadratics','Polynomials & Binomial Theorem','Logarithmic & Exponential Functions','Differentiation & Rates of Change','Integration & Kinematics'],
+         parts:[{label:'',q:11,time:'120 min',calc:true,type:'frq',note:'Show all working.'}]}]},
+
+    'Cambridge IGCSE 0606 — Paper 2':{
+      title:'Cambridge IGCSE Additional Mathematics (0606) — Paper 2',totalTime:'2 hr',
+      bankId:'addmath',
+      logo:'Cambridge 0606',org:'Cambridge Assessment International Education',
+      instructions:['Answer ALL questions.','Show all necessary working clearly.',
+        'Electronic calculators may be used.',
+        'Give non-exact numerical answers correct to 3 significant figures.'],
+      sections:[
+        {title:'Paper 2 (0606/2)',time:'2 hr',
+         note:'80 marks. Answer all questions. Calculator permitted.',
+         domains:['Trigonometry & Circular Measure','Permutations & Combinations','Vectors in Two Dimensions','Integration & Kinematics','Differentiation & Rates of Change'],
+         parts:[{label:'',q:11,time:'120 min',calc:true,type:'frq',note:'Show all working.'}]}]},
+
+    'Edexcel Further Pure 4PM1 — Paper 1':{
+      title:'Pearson Edexcel International GCSE Further Pure Mathematics (4PM1) — Paper 1',totalTime:'2 hr',
+      bankId:'addmath',
+      logo:'Edexcel 4PM1',org:'Pearson Edexcel International Examinations',
+      instructions:['Answer ALL questions.','Show all necessary working clearly.',
+        'Electronic calculators may be used.',
+        'Give non-exact answers correct to 3 significant figures.'],
+      sections:[
+        {title:'Paper 1 (4PM1/01)',time:'2 hr',
+         note:'100 marks. Answer all questions. Calculator permitted.',
+         domains:['Functions, Modulus & Quadratics','Polynomials & Binomial Theorem','Logarithmic & Exponential Functions','Trigonometry & Circular Measure','Differentiation & Rates of Change'],
+         parts:[{label:'',q:10,time:'120 min',calc:true,type:'frq',note:'Show all working.'}]}]},
+
+    'Edexcel Further Pure 4PM1 — Paper 2':{
+      title:'Pearson Edexcel International GCSE Further Pure Mathematics (4PM1) — Paper 2',totalTime:'2 hr',
+      bankId:'addmath',
+      logo:'Edexcel 4PM1',org:'Pearson Edexcel International Examinations',
+      instructions:['Answer ALL questions.','Show all necessary working clearly.',
+        'Electronic calculators may be used.',
+        'Give non-exact answers correct to 3 significant figures.'],
+      sections:[
+        {title:'Paper 2 (4PM1/02)',time:'2 hr',
+         note:'100 marks. Answer all questions. Calculator permitted.',
+         domains:['Permutations & Combinations','Vectors in Two Dimensions','Integration & Kinematics','Differentiation & Rates of Change','Functions, Modulus & Quadratics'],
+         parts:[{label:'',q:10,time:'120 min',calc:true,type:'frq',note:'Show all working.'}]}]},
+
+    mathai:{
+      title:'Math for AI & Data Science Proficiency Assessment',totalTime:'2 hr',
+      bankId:'mathai',
+      logo:'ClipSAT AI Math',org:'ClipSAT STEM & Applied AI Curriculum',
+      instructions:['Answer ALL questions.',
+        'Calculators and computational scratchpads may be used.',
+        'Covers Linear Algebra, Optimization, Probability, and Dimensionality Reduction for AI.'],
+      sections:[
+        {title:'Applied Mathematics for Machine Learning & Data Science',time:'2 hr',
+         note:'20 questions · Vectors, Neural Layers, Gradient Descent, Bayes, OLS, Logistic, PCA',
+         domains:['Vectors & Embeddings in AI','Neural Layer Matrices & Activations','Gradient Descent & Optimization','Conditional Probability & Bayes\' Rule','Distributions & Maximum Likelihood','Linear Regression & OLS','Logistic Regression & Classification','PCA & Dimensionality Reduction'],
+         parts:[{label:'',q:20,time:'120 min',calc:true,type:'mcq',note:'Full AI Math foundations.'}]}]},
+
+    'AI Math Foundations — Part A (Linear Algebra & Geometry)':{
+      title:'Math for AI — Part A (Linear Algebra, Vectors & Matrices)',totalTime:'45 min',
+      bankId:'mathai',
+      logo:'ClipSAT AI Math',org:'ClipSAT STEM & Applied AI Curriculum',
+      instructions:['Answer ALL questions.','Calculators may be used.'],
+      sections:[
+        {title:'Part A: Linear Algebra & Matrix Layers',time:'45 min',
+         note:'10 questions · Vector Embeddings, Norms, Cosine Similarity, Dense Layers',
+         domains:['Vectors & Embeddings in AI','Neural Layer Matrices & Activations','PCA & Dimensionality Reduction'],
+         parts:[{label:'',q:10,time:'45 min',calc:true,type:'mcq'}]}]},
+
+    'AI Math Foundations — Part B (Calculus, Probability & PCA)':{
+      title:'Math for AI — Part B (Optimization, Probability & Models)',totalTime:'1 hr 15 min',
+      bankId:'mathai',
+      logo:'ClipSAT AI Math',org:'ClipSAT STEM & Applied AI Curriculum',
+      instructions:['Answer ALL questions.','Calculators may be used.'],
+      sections:[
+        {title:'Part B: Calculus, Probability, Regression & PCA',time:'75 min',
+         note:'14 questions · Gradient Descent, Bayes Rule, MLE, Regression & Logistic Loss',
+         domains:['Gradient Descent & Optimization','Conditional Probability & Bayes\' Rule','Distributions & Maximum Likelihood','Linear Regression & OLS','Logistic Regression & Classification','PCA & Dimensionality Reduction'],
+         parts:[{label:'',q:14,time:'75 min',calc:true,type:'mcq'}]}]}
   };
 
 

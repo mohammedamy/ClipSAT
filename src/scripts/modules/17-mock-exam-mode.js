@@ -838,9 +838,13 @@
       var actScore = Math.max(1, Math.min(36, Math.round(p * 36)));
       return { label: 'Projected ACT Math Score', value: actScore + ' / 36', badge: actScore >= 30 ? 'Elite' : 'Standard' };
     }
-    if(trackId === 'igcse' || trackId === 'aslevel' || trackId === 'a2level'){
+    if(trackId === 'igcse' || trackId === 'aslevel' || trackId === 'a2level' || trackId === 'addmath'){
       var g = p >= 0.85 ? 'Grade 9 (A*)' : p >= 0.72 ? 'Grade 8 (A)' : p >= 0.60 ? 'Grade 7 (A)' : p >= 0.50 ? 'Grade 6 (B)' : 'Grade 5 (C)';
-      return { label: 'Projected Cambridge Grade', value: g, badge: p >= 0.72 ? 'Distinction' : 'Passing' };
+      return { label: (trackId === 'addmath' ? 'Projected Cambridge Grade (0606 / 4PM1)' : 'Projected Cambridge Grade'), value: g, badge: p >= 0.72 ? 'Distinction' : 'Passing' };
+    }
+    if(trackId === 'mathai'){
+      var aiPct = Math.round(p * 100);
+      return { label: 'AI Math Mastery Score', value: aiPct + '%', badge: aiPct >= 80 ? 'Mastery (Level 4)' : aiPct >= 65 ? 'Proficient' : 'Developing' };
     }
     if(trackId === 'ibsl' || trackId === 'ibhl'){
       var ibG = p >= 0.80 ? 'Grade 7' : p >= 0.68 ? 'Grade 6' : p >= 0.55 ? 'Grade 5' : p >= 0.40 ? 'Grade 4' : 'Grade 3';

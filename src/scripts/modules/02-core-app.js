@@ -722,6 +722,20 @@
       {id:'pc-trig',       label:'Trigonometry',               tags:['trig','unit-circle','identities'],                    examWeight:30, chapterId:'pc-ch-trig'},
       {id:'pc-advanced',   label:'Advanced Topics',            tags:['complex','polar','conics','vectors'],                  examWeight:45, chapterId:'pc-ch-advanced'}
     ]});
+
+    R({viewId:'addmath', name:'Additional Mathematics', topics:[
+      {id:'am-functions', label:'Functions & Quadratics', tags:['function','modulus','inverse','quadratic'], examWeight:25, chapterId:'am-functions-quadratics'},
+      {id:'am-calc', label:'Calculus & Rates', tags:['differentiation','integration','rates','chain-rule'], examWeight:35, chapterId:'am-differentiation-rates'},
+      {id:'am-trig', label:'Trigonometry & Circular Measure', tags:['radian','sector','trig','identity'], examWeight:20, chapterId:'am-trigonometry-circular'},
+      {id:'am-vectors', label:'Vectors & Kinematics', tags:['vector','dot-product','kinematics','velocity'], examWeight:20, chapterId:'am-vectors-2d'}
+    ]});
+
+    R({viewId:'mathai', name:'Math for AI & Data Science', topics:[
+      {id:'ai-vectors', label:'Vectors & Embeddings', tags:['vector','norm','embedding','cosine'], examWeight:25, chapterId:'ai-vectors-embeddings'},
+      {id:'ai-matrices', label:'Matrices & Neural Layers', tags:['matrix','activation','relu','dense'], examWeight:25, chapterId:'ai-matrices-linear-layers'},
+      {id:'ai-optimization', label:'Gradient Descent & Loss', tags:['gradient','loss','optimization','descent'], examWeight:25, chapterId:'ai-gradient-descent'},
+      {id:'ai-probability', label:'Probability, Bayes & PCA', tags:['bayes','mle','regression','pca'], examWeight:25, chapterId:'ai-probability-bayes'}
+    ]});
   }());
   /* EXAM SPECS: window.examSpecs now lives in 02b-bank-exam.js (see FULL EXAM GENERATOR below). */
 
@@ -1238,7 +1252,7 @@
   /* ---------- init ---------- */
   function init(){
     var _rawHash=(location.hash||'').replace(/^#/,'');
-    var _VIEWS=['home','calculus','algebra','alg2','apab','apbc','igcse','geo','qudrat','tahsili','sat','act','aslevel','a2level','est','est2','appc','apstats','precalc','linalg','mvc','ibslaa','ibhlaa','ibslai','ibhlai'];
+    var _VIEWS=['home','calculus','algebra','alg2','apab','apbc','igcse','geo','qudrat','tahsili','sat','act','aslevel','a2level','est','est2','act2','act2l2','est2l2','appc','apstats','precalc','linalg','mvc','odes','ibsl','ibhl','addmath','mathai','ibslaa','ibhlaa','ibslai','ibhlai'];
     (function(){
       /* Support both #view/viewId/chapterId and legacy #viewId */
       var parts=_rawHash.split('/');

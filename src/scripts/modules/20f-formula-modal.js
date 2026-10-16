@@ -60,6 +60,33 @@
         }
       ]
     },
+    'addmath': {
+      title: 'Cambridge IGCSE® 0606 & Edexcel Further Pure 4PM1 Additional Mathematics',
+      titleAr: 'قوانين الرياضيات الإضافية (كامبريدج 0606 وإدكسل 4PM1)',
+      desc: 'Authorized reference sheet for Additional Mathematics, bridging IGCSE to AS/A2 and IB Higher Level.',
+      cards: [
+        {
+          title: 'Circular Measure & Trigonometry',
+          titleAr: 'القياس الدائري وحساب المثلثات',
+          body: 'Arc length: \\(s = r\\theta\\) (\\(\\theta\\) in radians)<br>Sector area: \\(A = \\frac{1}{2}r^2\\theta\\)<br>Segment area: \\(A = \\frac{1}{2}r^2(\\theta - \\sin\\theta)\\)<br>Identities: \\(\\sin^2\\theta + \\cos^2\\theta = 1\\), \\(\\sec^2\\theta = 1 + \\tan^2\\theta\\), \\(\\csc^2\\theta = 1 + \\cot^2\\theta\\)<br>Trig equations: solve in radians or degrees over specified ranges.'
+        },
+        {
+          title: 'Algebra, Quadratics & Binomial Theorem',
+          titleAr: 'الجبر والمعادلات التربيعية وذات الحدين',
+          body: 'Discriminant \\(\\Delta = b^2 - 4ac\\) (\\(>0\\) two real roots, \\(=0\\) repeated, \\(<0\\) no real roots)<br>Quadratic forms: \\(y = a(x-h)^2 + k\\) vertex at \\((h, k)\\)<br>Remainder & Factor Theorems: \\(P(c) = \\text{remainder}\\) when divided by \\((x-c)\\); if \\(P(c)=0\\), \\((x-c)\\) is a factor.<br>Binomial theorem: \\((a+b)^n = \\sum_{r=0}^n \\binom{n}{r} a^{n-r}b^r\\) where \\(\\binom{n}{r} = \\frac{n!}{r!(n-r)!}\\)'
+        },
+        {
+          title: 'Differentiation & Rates of Change',
+          titleAr: 'التفاضل وقواعد الاشتقاق ومعدلات التغير',
+          body: 'Product rule: \\((uv)\' = u\'v + uv\'\\) · Quotient rule: \\(\\left(\\frac{u}{v}\\right)\' = \\frac{u\'v - uv\'}{v^2}\\)<br>Chain rule: \\(\\frac{dy}{dx} = \\frac{dy}{du} \\cdot \\frac{du}{dx}\\) · Connected rates: \\(\\frac{dy}{dt} = \\frac{dy}{dx} \\cdot \\frac{dx}{dt}\\)<br>Special derivatives: \\(\\frac{d}{dx}[e^{ax+b}] = a e^{ax+b}\\), \\(\\frac{d}{dx}[\\ln(ax+b)] = \\frac{a}{ax+b}\\)<br>\\(\\frac{d}{dx}[\\sin(ax+b)] = a\\cos(ax+b)\\), \\(\\frac{d}{dx}[\\cos(ax+b)] = -a\\sin(ax+b)\\), \\(\\frac{d}{dx}[\\tan(ax+b)] = a\\sec^2(ax+b)\\)'
+        },
+        {
+          title: 'Integration, Kinematics & 2D Vectors',
+          titleAr: 'التكامل وعلم الحركة والمتجهات المستوية',
+          body: 'Standard integrals: \\(\\int (ax+b)^n dx = \\frac{(ax+b)^{n+1}}{a(n+1)} + c\\) (\\(n \\neq -1\\)), \\(\\int e^{ax+b} dx = \\frac{1}{a}e^{ax+b} + c\\)<br>\\(\\int \\frac{1}{ax+b} dx = \\frac{1}{a}\\ln|ax+b| + c\\), \\(\\int \\cos(ax+b) dx = \\frac{1}{a}\\sin(ax+b) + c\\)<br>Kinematics: \\(v = \\frac{ds}{dt}\\), \\(a = \\frac{dv}{dt} = v\\frac{dv}{ds}\\), \\(s = \\int v dt\\), \\(v = \\int a dt\\)<br>Vectors in 2D: \\(\\vec{r} = x\\mathbf{i} + y\\mathbf{j}\\), \\(|\\vec{r}| = \\sqrt{x^2 + y^2}\\), unit vector \\(\\hat{r} = \\frac{\\vec{r}}{|\\vec{r}|}\\)'
+        }
+      ]
+    },
     'alevel': {
       title: 'Cambridge International AS & A Level 9709 (MF19) & IB Math',
       titleAr: 'قوانين كامبريدج A-Level (MF19) والبكالوريا الدولية IB',
@@ -143,6 +170,33 @@
           title: 'AP Statistics Formulas',
           titleAr: 'قوانين الإحصاء المتقدم',
           body: 'Mean: \\(\\bar{x} = \\frac{1}{n}\\sum x_i\\) · Standard deviation: \\(s = \\sqrt{\\frac{1}{n-1}\\sum (x_i - \\bar{x})^2}\\)<br>Binomial: \\(P(X=k) = \\binom{n}{k}p^k(1-p)^{n-k}\\), \\(\\mu = np\\), \\(\\sigma = \\sqrt{np(1-p)}\\)<br>Standardized test statistic: \\(z = \\frac{\\text{statistic} - \\text{parameter}}{\\text{standard error}}\\)<br>Empirical rule: 68% within \\(1\\sigma\\), 95% within \\(2\\sigma\\), 99.7% within \\(3\\sigma\\)'
+        }
+      ]
+    },
+    'mathai': {
+      title: 'Mathematics for Artificial Intelligence & Data Science Reference',
+      titleAr: 'مرجع الرياضيات للذكاء الاصطناعي وعلوم البيانات',
+      desc: 'Essential vector, matrix, calculus, and probability formulas used in Machine Learning, Neural Networks, and Data Science.',
+      cards: [
+        {
+          title: 'Vectors, Norms & Cosine Similarity',
+          titleAr: 'المتجهات والمعايير والتشابه الجيبي',
+          body: 'Dot product: \\(\\vec{u} \\cdot \\vec{v} = \\sum_{i=1}^n u_i v_i = \\|\\vec{u}\\|\\|\\vec{v}\\|\\cos\\theta\\)<br>Euclidean ($L_2$) norm: \\(\\|\\vec{v}\\|_2 = \\sqrt{\\sum v_i^2}\\) · Manhattan ($L_1$) norm: \\(\\|\\vec{v}\\|_1 = \\sum |v_i|\\)<br>Cosine Similarity: \\(S_C(\\vec{u}, \\vec{v}) = \\frac{\\vec{u} \\cdot \\vec{v}}{\\|\\vec{u}\\|\\|\\vec{v}\\|} \\in [-1, 1]\\)<br>Word embeddings: Semantically similar concepts have cosine similarity close to 1.'
+        },
+        {
+          title: 'Matrices & Linear Neural Layers',
+          titleAr: 'المصفوفات والطبقات الخطية في الشبكات العصبية',
+          body: 'Linear feed-forward layer: \\(\\vec{y} = W\\vec{x} + \\vec{b}\\) (where \\(W \\in \\mathbb{R}^{m \\times n}\\), \\(\\vec{x} \\in \\mathbb{R}^n\\))<br>Matrix multiplication: \\((AB)_{ij} = \\sum_k A_{ik} B_{kj}\\) · Transpose property: \\((AB)^T = B^T A^T\\)<br>Determinant: \\(\\det \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} = ad - bc\\)<br>Eigenvalues & Eigenvectors: \\(A\\vec{v} = \\lambda\\vec{v} \\iff \\det(A - \\lambda I) = 0\\)'
+        },
+        {
+          title: 'Optimization & Gradient Descent',
+          titleAr: 'التحسين والنزول الاشتقاقي',
+          body: 'Gradient vector: \\(\\nabla_\\theta L(\\theta) = \\left[ \\frac{\\partial L}{\\partial \\theta_1}, \\dots, \\frac{\\partial L}{\\partial \\theta_d} \\right]^T\\)<br>Gradient Descent update: \\(\\theta \\leftarrow \\theta - \\eta \\nabla_\\theta L(\\theta)\\) (learning rate \\(\\eta > 0\\))<br>Mean Squared Error (MSE): \\(L_{\\text{MSE}} = \\frac{1}{2n}\\sum_{i=1}^n (y_i - \\hat{y}_i)^2\\)<br>Sigmoid activation: \\(\\sigma(z) = \\frac{1}{1 + e^{-z}}\\) with derivative \\(\\sigma\'(z) = \\sigma(z)(1 - \\sigma(z))\\)<br>Binary Cross-Entropy Loss: \\(L_{\\text{BCE}} = -\\frac{1}{n}\\sum [y_i \\ln \\hat{y}_i + (1 - y_i)\\ln(1 - \\hat{y}_i)]\\)'
+        },
+        {
+          title: 'Probability, Bayes & PCA',
+          titleAr: 'الاحتمالات، مبرهنة بيز، وتحليل المكونات الرئيسية',
+          body: 'Bayes\' Theorem: \\(P(A|B) = \\frac{P(B|A)P(A)}{P(B)} = \\frac{P(B|A)P(A)}{\\sum_k P(B|A_k)P(A_k)}\\)<br>Softmax: \\(\\operatorname{softmax}(z)_i = \\frac{e^{z_i}}{\\sum_{j=1}^K e^{z_j}}\\)<br>Covariance matrix: \\(\\Sigma = \\frac{1}{n-1} X^T X\\) (for centered data \\(X\\))<br>PCA Dimensionality Reduction: Project onto top \\(k\\) eigenvectors of \\(\\Sigma\\) maximizing variance: \\(Z = X V_k\\).'
         }
       ]
     }

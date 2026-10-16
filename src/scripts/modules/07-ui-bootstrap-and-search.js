@@ -130,7 +130,8 @@ document.addEventListener('click',function(e){
     'tahsili':'SAAT Tahsili','sat':'Digital SAT','act':'ACT Math','aslevel':'AS Level',
     'a2level':'A2 Level','est':'EST Math','est2':'EST 2 Math Level 1','est2l2':'EST 2 Math Level 2','act2':'ACT 2 Math Level 1','act2l2':'ACT 2 Math Level 2',
     'precalc':'Pre-Calculus','appc':'AP Precalculus','apstats':'AP Statistics',
-    'ibsl':'IB SL Math','ibhl':'IB HL Math'
+    'ibsl':'IB SL Math','ibhl':'IB HL Math','linalg':'Linear Algebra','mvc':'Multivariable Calculus','odes':'Differential Equations',
+    'addmath':'Additional Mathematics (0606/4PM1)','mathai':'Math for AI & Data Science'
   };
   window.VIEW_NAMES = VIEW_NAMES;
   function _buildSearchIndex(){

@@ -1,0 +1,113 @@
+{
+  "id": "ai-gradient-descent",
+  "chapterNumber": "3",
+  "title": {
+    "en": "Loss Functions, Gradients & Optimization",
+    "ar": "دوال الخسارة والانحدار التدريجي والتحسين الرياضي"
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "igcse-tag",
+    "emoji": "🤖",
+    "category": "AI Math Unit 3 — Gradient Descent Optimization",
+    "badges": [
+      {
+        "text": "Applied STEM",
+        "className": "tier-e"
+      }
+    ],
+    "topics": [
+      "Loss functions: Mean Squared Error (MSE)",
+      "Partial derivatives &amp; the gradient vector ∇L",
+      "Learning rate η and convergence",
+      "Gradient descent update rule w ← w - η ∇L",
+      "Convex vs non-convex loss landscapes"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Machine learning models learn by minimizing a loss function via gradient descent. Calculus provides the directional derivative pointing toward the steepest descent in parameter space.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 3.1 — Gradient Descent Update Equation",
+          "ar": null
+        },
+        "body": {
+          "en": "Let \\( L(\\mathbf{w}) \\) be a differentiable loss function over weight parameters \\( \\mathbf{w} \\). The gradient \\( \\nabla L(\\mathbf{w}) = \\left[ \\frac{\\partial L}{\\partial w_1}, \\dots, \\frac{\\partial L}{\\partial w_d} \\right]^T \\) points in the direction of greatest rate of increase.<br>To minimize loss, parameter updates step in the <strong>opposite</strong> direction scaled by learning rate \\( \\eta > 0 \\):<br>\\[ \\mathbf{w}_{t+1} = \\mathbf{w}_t - \\eta \\nabla L(\\mathbf{w}_t) \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "MSE Loss",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\text{MSE} = \\frac{1}{N}\\sum_{i=1}^N (y_i - \\hat{y}_i)^2 \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Gradient Vector",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\nabla L = \\left[ \\frac{\\partial L}{\\partial w}, \\frac{\\partial L}{\\partial b} \\right]^T \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Learning Rate",
+              "ar": null
+            },
+            "value": {
+              "en": "Too high: divergence/oscillation. Too low: slow convergence.",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Stochastic GD",
+              "ar": null
+            },
+            "value": {
+              "en": "Updates weights on mini-batches of size \\( B \\ll N \\).",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 3.A — Single Step of Gradient Descent",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Consider a simple linear model \\( \\hat{y} = wx \\) with squared loss for a single data point \\( (x, y) = (2, 8) \\):<br>\\[ L(w) = (y - wx)^2 = (8 - 2w)^2 \\]<br>If the current weight is \\( w_0 = 1.0 \\) and the learning rate is \\( \\eta = 0.05 \\), compute the gradient \\( \\frac{dL}{dw} \\) and the updated weight \\( w_1 \\).</p><p><strong>Solution:</strong><br>Apply the chain rule to differentiate \\( L(w) \\):<br>\\[ \\frac{dL}{dw} = 2(8 - 2w) \\cdot (-2) = -4(8 - 2w) = -32 + 8w \\]<br>Evaluate at \\( w_0 = 1.0 \\):<br>\\[ \\left.\\frac{dL}{dw}\\right|_{w=1.0} = -32 + 8(1) = -24 \\]<br>Apply gradient descent update:<br>\\[ w_1 = w_0 - \\eta \\left(\\frac{dL}{dw}\\right) = 1.0 - (0.05)(-24) = 1.0 + 1.2 = 2.2 \\].<br>Notice that with \\( w_0 = 1.0 \\), prediction \\( \\hat{y} = 2 \\) was too low (target was 8). The gradient step increased \\( w \\) to 2.2, giving \\( \\hat{y} = 4.4 \\), moving closer to 8.<br><strong>Answer:</strong> Gradient = \\( -24 \\); updated weight \\( w_1 = 2.2 \\).</p>",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true,
+    "domains": [
+      "Gradient Descent & Optimization"
+    ]
+  }
+}

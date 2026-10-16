@@ -426,7 +426,45 @@
         T('Algebra & Polynomials',30,'complex numbers, Vieta\'s formulas, inequalities, sequences and series, functional equations',['Algebra & Pre-Calculus','Algebra Essentials']),
         T('Geometry & Trigonometry',30,'Euclidean geometry, cyclic quadrilaterals, power of a point, trigonometry, coordinate geometry',['Geometry & Coordinate Math','Trigonometry']),
         T('Number Theory',20,'divisibility, prime factorization, modular arithmetic, Diophantine equations',['Arithmetic & Number Sense']),
-        T('Combinatorics & Probability',20,'counting principles, pigeonhole principle, binomial coefficients, probability, expected value',['Statistics & Probability'])]}
+        T('Combinatorics & Probability',20,'counting principles, pigeonhole principle, binomial coefficients, probability, expected value',['Statistics & Probability'])],},
+
+    'addmath':{source:'Cambridge Assessment International Education IGCSE Additional Mathematics (0606) & Pearson Edexcel Further Pure Mathematics (4PM1).',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Functions & Quadratic Theory',12.5,'domain, range, composite and inverse functions, discriminant, quadratic inequalities',['Functions & Quadratic Theory']),
+        T('Polynomials & Binomial Expansions',12.5,'remainder and factor theorems, cubic equations, binomial expansion for positive integers',['Polynomials & Binomial Expansions']),
+        T('Logarithmic & Exponential Functions',12.5,'laws of logarithms, solving exponential equations, reduction to linear form',['Logarithmic & Exponential Functions']),
+        T('Trigonometry & Circular Measure',15,'radian measure, arc length s = r*theta, sector area, trig identities, equations in radians',['Trigonometry & Circular Measure']),
+        T('Permutations & Combinations',12.5,'arrangements, selections, cases with restrictions, binomial coefficients',['Permutations & Combinations']),
+        T('Differentiation & Rates of Change',12.5,'product, quotient, chain rule, connected rates of change, tangents, normals, stationary points',['Differentiation & Rates of Change']),
+        T('Integration & Kinematics',12.5,'standard integrals, area under curves, kinematics with variable acceleration v = ds/dt, a = dv/dt',['Integration & Kinematics']),
+        T('2D Vectors & Relative Velocity',10,'magnitude, direction, unit vectors, position vectors, displacement, velocity',['2D Vectors & Relative Velocity'])]},
+
+    'mathai':{source:'Mathematics for Artificial Intelligence, Machine Learning & Data Science foundations curriculum.',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Vectors, Norms & Embeddings',15,'vector spaces, dot product, L1/L2 norms, cosine similarity, word embeddings representation',['Vectors, Norms & Embeddings']),
+        T('Matrices & Linear Transformations',15,'matrix multiplication, determinants, rank, inverse, linear neural network layers y = Wx + b',['Matrices & Linear Transformations']),
+        T('Gradient Descent & Optimization',15,'partial derivatives, gradient vectors, learning rate, loss landscapes, backpropagation',['Gradient Descent & Optimization']),
+        T('Probability & Bayes\' Theorem',15,'conditional probability, Bayes\' rule, prior, likelihood, posterior, Naive Bayes classifier',['Probability & Bayes\' Theorem']),
+        T('Distributions & Maximum Likelihood',15,'Gaussian, Bernoulli, Binomial distributions, likelihood functions, MLE parameter estimation',['Distributions & Maximum Likelihood']),
+        T('Linear & Logistic Regression',15,'least squares regression, sigmoid activation, log-odds, binary cross-entropy loss',['Linear & Logistic Regression']),
+        T('Principal Component Analysis (PCA)',10,'covariance matrix, eigenvalues, eigenvectors, dimensionality reduction, variance retention',['Principal Component Analysis (PCA)'])]},
+
+    'AI Math Foundations — Part A (Linear Algebra & Geometry)':{source:'Mathematics for AI Foundations — Part A (Vectors, Matrices & Transformations).',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Vectors, Norms & Embeddings',35,'vector spaces, dot product, L1/L2 norms, cosine similarity, word embeddings representation',['Vectors, Norms & Embeddings']),
+        T('Matrices & Linear Transformations',35,'matrix multiplication, determinants, rank, inverse, linear neural network layers y = Wx + b',['Matrices & Linear Transformations']),
+        T('Gradient Descent & Optimization',30,'partial derivatives, gradient vectors, learning rate, loss landscapes, backpropagation',['Gradient Descent & Optimization'])]},
+
+    'AI Math Foundations — Part B (Calculus, Probability & PCA)':{source:'Mathematics for AI Foundations — Part B (Probability, Modeling & Dimensionality Reduction).',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Probability & Bayes\' Theorem',25,'conditional probability, Bayes\' rule, prior, likelihood, posterior, Naive Bayes classifier',['Probability & Bayes\' Theorem']),
+        T('Distributions & Maximum Likelihood',25,'Gaussian, Bernoulli, Binomial distributions, likelihood functions, MLE parameter estimation',['Distributions & Maximum Likelihood']),
+        T('Linear & Logistic Regression',25,'least squares regression, sigmoid activation, log-odds, binary cross-entropy loss',['Linear & Logistic Regression']),
+        T('Principal Component Analysis (PCA)',25,'covariance matrix, eigenvalues, eigenvectors, dimensionality reduction, variance retention',['Principal Component Analysis (PCA)'])]}
   };
 
   // Modular Cambridge IGCSE 0580 and IB AA Paper 1 / Paper 2 mappings
@@ -436,6 +474,10 @@
   B['IB Math SL (AA) — Paper 2 (GDC Required)'] = B['IB Math SL (AA)'];
   B['IB Math HL (AA) — Paper 1 (Non-Calculator)'] = B['IB Math HL (AA)'];
   B['IB Math HL (AA) — Paper 2 (GDC Required)'] = B['IB Math HL (AA)'];
+  B['Cambridge IGCSE 0606 — Paper 1'] = B['addmath'];
+  B['Cambridge IGCSE 0606 — Paper 2'] = B['addmath'];
+  B['Edexcel Further Pure 4PM1 — Paper 1'] = B['addmath'];
+  B['Edexcel Further Pure 4PM1 — Paper 2'] = B['addmath'];
   /* Every other exam (precalc, …) has no
      published topic weighting: provisional even split over its bank domains. */
   var SKIP=/test format|strategy|mixed review|overview|exam format/i;
@@ -604,6 +646,12 @@
     if(/wma14|ial.*pure\s*4/.test(norm)) return 'Edexcel IAL — Pure Mathematics 4 (WMA14)';
     if(/wme01|ial.*mechanics/.test(norm)) return 'Edexcel IAL — Mechanics 1 (WME01)';
     if(/wst01|ial.*statistics/.test(norm)) return 'Edexcel IAL — Statistics 1 (WST01)';
+    if(/0606.*(?:paper\s*1|p1)/.test(norm)) return 'Cambridge IGCSE 0606 — Paper 1';
+    if(/0606.*(?:paper\s*2|p2)/.test(norm)) return 'Cambridge IGCSE 0606 — Paper 2';
+    if(/4pm1.*(?:paper\s*1|p1)/.test(norm)) return 'Edexcel Further Pure 4PM1 — Paper 1';
+    if(/4pm1.*(?:paper\s*2|p2)/.test(norm)) return 'Edexcel Further Pure 4PM1 — Paper 2';
+    if(/0606|4pm1|addmath|additional\s*math/.test(norm)) return 'addmath';
+    if(/mathai|ai\s*math|math\s*for\s*ai/.test(norm)) return 'mathai';
     // Check window.examSpecs if available
     if(window.examSpecs){
       var sp=window.examSpecs[idOrTitle]||window.examSpecs[norm];

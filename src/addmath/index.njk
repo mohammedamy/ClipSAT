@@ -1,0 +1,34 @@
+---
+layout: base.njk
+trackId: addmath
+title: "Additional Mathematics (0606 & 4PM1) · ClipSAT"
+description: "Cambridge IGCSE 0606 & Pearson Edexcel Further Pure 4PM1 Additional Mathematics"
+isRtl: false
+---
+{% set addmath = migratedContent.addmath %}
+{% set pageHeader = addmath.meta.meta.pageHeader %}
+<main id="view-addmath" class="view active">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = addmath.chapters %}
+    {% set practiceSetId = 'am-practice' %}
+    {% set testGeneratorId = 'am-testgen' %}
+    {% set downloadsId = 'am-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in addmath.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'am-testgen' %}
+      {% set testGenerator = addmath.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'am-downloads' %}
+      {% set courseMeta = addmath.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

@@ -147,6 +147,24 @@ it('Blueprints exist for English GAT, SAAT, and Competition Math', () => {
   });
 });
 
+it('Blueprints exist for Additional Mathematics (0606/4PM1) and Math for AI', () => {
+  const specialtyExams = [
+    'addmath',
+    'Cambridge IGCSE 0606 — Paper 1',
+    'Cambridge IGCSE 0606 — Paper 2',
+    'Edexcel Further Pure 4PM1 — Paper 1',
+    'Edexcel Further Pure 4PM1 — Paper 2',
+    'mathai',
+    'AI Math Foundations — Part A (Linear Algebra & Geometry)',
+    'AI Math Foundations — Part B (Calculus, Probability & PCA)'
+  ];
+  specialtyExams.forEach(e => {
+    const bp = window.ClipSATBlueprints.get(e);
+    assert.ok(bp, `Blueprint should exist for ${e}`);
+    assert.ok(bp.topics && bp.topics.length >= 3, `${e} should have at least 3 topics`);
+  });
+});
+
 // 2. Verify window.examSpecs Definitions
 it('window.examSpecs defines complete metadata, timing, and sections for all new papers', () => {
   const allSpecs = [
@@ -172,7 +190,15 @@ it('window.examSpecs defines complete metadata, timing, and sections for all new
     'GAT Quantitative (English Medium)',
     'SAAT Mathematics (English Medium)',
     'Mawhiba & Kangaroo Math Arabia (Senior)',
-    'AMC 10/12 Mathematics Competition'
+    'AMC 10/12 Mathematics Competition',
+    'addmath',
+    'Cambridge IGCSE 0606 — Paper 1',
+    'Cambridge IGCSE 0606 — Paper 2',
+    'Edexcel Further Pure 4PM1 — Paper 1',
+    'Edexcel Further Pure 4PM1 — Paper 2',
+    'mathai',
+    'AI Math Foundations — Part A (Linear Algebra & Geometry)',
+    'AI Math Foundations — Part B (Calculus, Probability & PCA)'
   ];
 
   allSpecs.forEach(name => {

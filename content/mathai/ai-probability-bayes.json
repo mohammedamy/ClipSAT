@@ -1,0 +1,113 @@
+{
+  "id": "ai-probability-bayes",
+  "chapterNumber": "4",
+  "title": {
+    "en": "Conditional Probability, Bayes' Rule & Classifiers",
+    "ar": "الاحتمال الشرطي وقاعدة بايز ومصنفات الذكاء الاصطناعي"
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "igcse-tag",
+    "emoji": "🤖",
+    "category": "AI Math Unit 4 — Probabilistic Machine Learning",
+    "badges": [
+      {
+        "text": "Applied STEM",
+        "className": "tier-e"
+      }
+    ],
+    "topics": [
+      "Joint and conditional probability P(A|B)",
+      "Bayes' Theorem: Prior, Likelihood, Posterior",
+      "Total probability theorem",
+      "Naive Bayes independence assumption",
+      "Text spam filtering &amp; medical diagnostics"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Uncertainty is omnipresent in real-world data. Bayes' Theorem provides the mathematical framework for updating beliefs when observing new evidence, forming the core of Bayesian machine learning and Naive Bayes classifiers.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "▲ Theorem 4.1 — Bayes' Theorem in Machine Learning",
+          "ar": null
+        },
+        "body": {
+          "en": "For hypothesis (class) \\( C \\) and observed evidence (features) \\( \\mathbf{x} \\):<br>\\[ P(C | \\mathbf{x}) = \\frac{P(\\mathbf{x} | C) P(C)}{P(\\mathbf{x})} \\]<br>Where:<br>• \\( P(C) \\) is the <strong>Prior probability</strong> of class \\( C \\).<br>• \\( P(\\mathbf{x} | C) \\) is the <strong>Likelihood</strong> of observing features \\( \\mathbf{x} \\) given class \\( C \\).<br>• \\( P(\\mathbf{x}) = \\sum_k P(\\mathbf{x}|C_k)P(C_k) \\) is the <strong>Marginal probability (Evidence)</strong>.<br>• \\( P(C | \\mathbf{x}) \\) is the <strong>Posterior probability</strong>.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Conditional Probability",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( P(A|B) = \\frac{P(A \\cap B)}{P(B)} \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Naive Bayes Assumption",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( P(\\mathbf{x}|C) = \\prod_{j=1}^d P(x_j|C) \\) (conditional independence)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Decision Rule",
+              "ar": null
+            },
+            "value": {
+              "en": "\\( \\hat{C} = \\arg\\max_C P(C) \\prod_{j=1}^d P(x_j|C) \\)",
+              "ar": null
+            }
+          },
+          {
+            "label": {
+              "en": "Laplace Smoothing",
+              "ar": null
+            },
+            "value": {
+              "en": "Prevents zero probability: \\( \\frac{\\text{count} + 1}{\\text{total} + |V|} \\)",
+              "ar": null
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 4.A — Bayesian Spam Classification",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>An email filter processes emails where \\( 20\\% \\) are spam (\\( P(S) = 0.20 \\)) and \\( 80\\% \\) are legitimate (\\( P(L) = 0.80 \\)). The word <em>'lottery'</em> appears in \\( 60\\% \\) of spam emails (\\( P(W|S) = 0.60 \\)) and in \\( 1\\% \\) of legitimate emails (\\( P(W|L) = 0.01 \\)). If an incoming email contains the word 'lottery', what is the probability that it is spam?</p><p><strong>Solution:</strong><br>By Bayes' Theorem:<br>\\[ P(S|W) = \\frac{P(W|S)P(S)}{P(W)} \\]<br>Calculate total probability \\( P(W) \\):<br>\\[ P(W) = P(W|S)P(S) + P(W|L)P(L) = (0.60)(0.20) + (0.01)(0.80) = 0.12 + 0.008 = 0.128 \\]<br>Compute posterior:<br>\\[ P(S|W) = \\frac{0.12}{0.128} = \\frac{120}{128} = \\frac{15}{16} = 0.9375 \\].<br>Despite only 20% of all emails being spam initially, observing the word 'lottery' raises the probability to \\( 93.75\\% \\).<br><strong>Answer:</strong> \\( 93.75\\% \\) (or \\( 0.938 \\)).</p>",
+          "ar": null
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true,
+    "domains": [
+      "Conditional Probability & Bayes' Rule"
+    ]
+  }
+}
