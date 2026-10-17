@@ -787,57 +787,19 @@ def question_block(qnum, q, answer_mode, rtl=False):
     inner = []
     if q.get("q"):
         inner.append(Paragraph(rich(q["q"], rtl=rtl), body_style))
-    has_fig = bool(q.get("figure")) and not answer_mode
-    fig_img = None
-    fig_w = 0
-    if has_fig:
+    if q.get("figure") and not answer_mode:
         path, w, h = render_figure(q["figure"])
-        fig_w = min(w, 160)
-        fig_h = h * (fig_w / max(w, 1e-6))
-        fig_img = Image(path, width=fig_w, height=fig_h)
-        fig_img.hAlign = "LEFT" if rtl else "RIGHT"
-
+        inner.append(Spacer(1, 6))
+        img = Image(path, width=w, height=h)
+        img.hAlign = "RIGHT" if rtl else "LEFT"
+        inner.append(img)
     if q.get("parts"):
         inner.append(Spacer(1, 4))
         answers = q.get("answers") if answer_mode else None
-        if has_fig and fig_img is not None:
-            left_w = content_w - fig_w - 12
-            pt = parts_table(q["parts"], min(q.get("cols", 1), 2), left_w, answers, rtl=rtl)
-            side_row = [[fig_img, pt]] if rtl else [[pt, fig_img]]
-            side_widths = [fig_w + 12, left_w] if rtl else [left_w, fig_w + 12]
-            st = Table(side_row, colWidths=side_widths)
-            st.setStyle(TableStyle([
-                ("VALIGN", (0, 0), (-1, -1), "TOP"),
-                ("LEFTPADDING", (0, 0), (-1, -1), 0),
-                ("RIGHTPADDING", (0, 0), (-1, -1), 0),
-                ("TOPPADDING", (0, 0), (-1, -1), 0),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
-            ]))
-            inner.append(st)
-        else:
-            inner.append(parts_table(q["parts"], q.get("cols", 1), content_w, answers, rtl=rtl))
-    elif q.get("choices"):
+        inner.append(parts_table(q["parts"], q.get("cols", 1), content_w, answers, rtl=rtl))
+    if q.get("choices"):
         inner.append(Spacer(1, 5))
-        if has_fig and fig_img is not None:
-            left_w = content_w - fig_w - 12
-            cb = choices_block(q["choices"], q.get("correct"), left_w, answer_mode, rtl=rtl)
-            side_row = [[fig_img, cb]] if rtl else [[cb, fig_img]]
-            side_widths = [fig_w + 12, left_w] if rtl else [left_w, fig_w + 12]
-            st = Table(side_row, colWidths=side_widths)
-            st.setStyle(TableStyle([
-                ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
-                ("LEFTPADDING", (0, 0), (-1, -1), 0),
-                ("RIGHTPADDING", (0, 0), (-1, -1), 0),
-                ("TOPPADDING", (0, 0), (-1, -1), 0),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
-            ]))
-            inner.append(st)
-        else:
-            inner.append(choices_block(q["choices"], q.get("correct"), content_w, answer_mode, rtl=rtl))
-    elif has_fig and fig_img is not None:
-        inner.append(Spacer(1, 6))
-        fig_img.hAlign = "RIGHT" if rtl else "LEFT"
-        inner.append(fig_img)
+        inner.append(choices_block(q["choices"], q.get("correct"), content_w, answer_mode, rtl=rtl))
     if answer_mode and q.get("answer"):
         # 10pt, not a tight 2pt: a stacked \dfrac/\frac inline image in the
         # "q" paragraph can render taller than body_style's fixed `leading`,

@@ -16,25 +16,7 @@
             "$5.0$"
           ],
           "correct": 0,
-          "answer": "$\\text{Odds} = \\frac{p}{1 - p} = \\frac{0.80}{0.20} = 4.0$ (or $4\\text{ to }1$).",
-          "figure": {
-            "type": "bars",
-            "categories": [
-              "A",
-              "B",
-              "C",
-              "D"
-            ],
-            "values": [
-              24,
-              36,
-              30,
-              15
-            ],
-            "highlight_index": 1,
-            "ylabel": "Count",
-            "width": 145
-          }
+          "answer": "$\\text{Odds} = \\frac{p}{1 - p} = \\frac{0.80}{0.20} = 4.0$ (or $4\\text{ to }1$)."
         },
         {
           "q": "Compute the log-odds (logit) value when probability $p = 0.50$.",
@@ -83,25 +65,7 @@
             "$\\frac{\\hat{y} - y}{\\hat{y}(1 - \\hat{y})}$"
           ],
           "correct": 0,
-          "answer": "Remarkably clean: $\\frac{\\partial L}{\\partial z} = \\frac{\\partial L}{\\partial \\hat{y}} \\frac{\\partial \\hat{y}}{\\partial z} = -\\left(\\frac{y}{\\hat{y}} - \\frac{1-y}{1-\\hat{y}}\\right) \\hat{y}(1-\\hat{y}) = \\hat{y} - y$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "log(x + 2)",
-              "0.5*x"
-            ],
-            "xmin": -1.5,
-            "xmax": 6,
-            "ymin": -1,
-            "ymax": 3,
-            "points": [
-              [
-                0,
-                0.693
-              ]
-            ],
-            "width": 145
-          }
+          "answer": "Remarkably clean: $\\frac{\\partial L}{\\partial z} = \\frac{\\partial L}{\\partial \\hat{y}} \\frac{\\partial \\hat{y}}{\\partial z} = -\\left(\\frac{y}{\\hat{y}} - \\frac{1-y}{1-\\hat{y}}\\right) \\hat{y}(1-\\hat{y}) = \\hat{y} - y$."
         },
         {
           "q": "What happens to the cross-entropy loss as $\\hat{y} \\to 0$ when true label is $y = 1$?",
@@ -150,25 +114,7 @@
             "$85\\%$"
           ],
           "correct": 0,
-          "answer": "$\\text{Recall} = \\frac{TP}{TP + FN} = \\frac{70}{70 + 5} = \\frac{70}{75} \\approx 93.3\\%$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "log(x + 2)",
-              "0.5*x"
-            ],
-            "xmin": -1.5,
-            "xmax": 6,
-            "ymin": -1,
-            "ymax": 3,
-            "points": [
-              [
-                0,
-                0.693
-              ]
-            ],
-            "width": 145
-          }
+          "answer": "$\\text{Recall} = \\frac{TP}{TP + FN} = \\frac{70}{70 + 5} = \\frac{70}{75} \\approx 93.3\\%$."
         }
       ]
     },
@@ -184,25 +130,7 @@
             "$0.750$"
           ],
           "correct": 0,
-          "answer": "$F_1$ is the harmonic mean: $2 \\frac{P \\cdot R}{P + R} = \\frac{2(0.48)}{1.40} = \\frac{0.96}{1.40} \\approx 0.686$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "2*exp(0.4*x)",
-              "2*exp(-0.4*x)"
-            ],
-            "xmin": -3,
-            "xmax": 4,
-            "ymin": 0,
-            "ymax": 10,
-            "points": [
-              [
-                0,
-                2
-              ]
-            ],
-            "width": 145
-          }
+          "answer": "$F_1$ is the harmonic mean: $2 \\frac{P \\cdot R}{P + R} = \\frac{2(0.48)}{1.40} = \\frac{0.96}{1.40} \\approx 0.686$."
         },
         {
           "q": "If you lower the classification probability threshold from $0.5$ to $0.2$, what is the typical effect on Precision and Recall?",
