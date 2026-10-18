@@ -1,1010 +1,702 @@
 {
   "pool": [
     {
-      "type": "mcq",
-      "domain": "Lines & Angles",
-      "text": "Two angles are supplementary. One is \\(65^\\circ\\). The other is:",
+      "id": "geo-0001",
+      "domain": "Circles",
+      "topic_id": "geo-circles",
+      "subskill_id": "geo-circles-1",
+      "educational_aim": "Compute arc lengths, sector areas, central angles, and inscribed angles, including inscribed right triangles in a semicircle and opposite supplementary angles of cyclic quadrilaterals.",
+      "exam_archetype": "Central Angles, Inscribed Angles, Thales Semicircle 90° & Arc Length / Sector Area",
+      "difficulty": "easy",
+      "text": "A circle has a radius of \\(6\\). A sector of the circle is formed by a central angle of \\(60^\\circ\\). What is the area of the sector?",
       "choices": [
-        "25°",
-        "115°",
-        "125°",
-        "295°"
+        "\\(2\\pi\\)",
+        "\\(6\\pi\\)",
+        "\\(12\\pi\\)",
+        "\\(36\\pi\\)"
       ],
-      "answer": 1,
-      "sol": "Supplementary angles sum to \\(180^\\circ\\). \\(180-65=115^\\circ\\).",
+      "correct": 1,
+      "solution": "The area of a sector with radius \\(r\\) and central angle \\(\\theta\\) (in degrees) is given by the formula:\n\\[\n\\text{Area} = \\frac{\\theta}{360^\\circ} \\pi r^2\n\\]\nGiven \\(r = 6\\) and \\(\\theta = 60^\\circ\\):\n\\[\n\\text{Area} = \\frac{60^\\circ}{360^\\circ} \\pi (6^2) = \\frac{1}{6} \\pi (36) = 6\\pi\n\\]\n\n- \\(2\\pi\\) is incorrect because it is the arc length of the sector, \\(\\frac{60^\\circ}{360^\\circ}(2\\pi r) = \\frac{1}{6}(12\\pi) = 2\\pi\\), rather than the sector area.\n- \\(12\\pi\\) is incorrect because it is the full circumference of the circle, \\(2\\pi r\\).\n- \\(36\\pi\\) is incorrect because it is the total area of the entire circle, \\(\\pi r^2\\), without scaling by the sector fraction.",
+      "sympy_verified": true,
       "fig": {
-        "type": "vertex_angles",
-        "mode": "linear",
-        "labels": {
-          "1": "65°",
-          "2": "?"
-        },
-        "w": 190
-      },
-      "difficulty": "easy"
+        "type": "circle",
+        "r": 6,
+        "chord": false,
+        "sector": 60
+      }
     },
     {
-      "type": "mcq",
-      "domain": "Lines & Angles",
-      "text": "Vertical angles are always:",
+      "id": "geo-0002",
+      "domain": "Coordinate Geometry",
+      "topic_id": "geo-coord",
+      "subskill_id": "geo-coord-1",
+      "educational_aim": "Write equations of lines parallel or perpendicular to a given line through a specified point, including the perpendicular bisector of a segment.",
+      "exam_archetype": "Parallel & Perpendicular Line Equations and Perpendicular Bisectors",
+      "difficulty": "easy",
+      "text": "Which of the following is an equation of the line that passes through the point \\((4, -1)\\) and is perpendicular to the line \\(y = 2x + 3\\)?",
       "choices": [
-        "supplementary",
-        "complementary",
-        "equal",
-        "adjacent"
+        "\\(y = -\\frac{1}{2}x + 1\\)",
+        "\\(y = -\\frac{1}{2}x - 3\\)",
+        "\\(y = 2x - 9\\)",
+        "\\(y = \\frac{1}{2}x - 3\\)"
       ],
-      "answer": 2,
-      "sol": "Vertical angles are congruent (equal) by the Vertical Angle Theorem.",
-      "fig": {
-        "type": "vertex_angles",
-        "mode": "vertical",
-        "labels": {
-          "1": "1",
-          "2": "2"
-        },
-        "w": 190
-      },
-      "difficulty": "easy"
+      "correct": 0,
+      "solution": "To find the equation of the line perpendicular to \\(y = 2x + 3\\), first determine the required slope.\n\nThe given line has a slope of \\(m_1 = 2\\). Two non-vertical lines are perpendicular if and only if the product of their slopes is \\(-1\\) (i.e., their slopes are negative reciprocals):\n\\[m_2 = -\\frac{1}{m_1} = -\\frac{1}{2}\\]\n\nNext, use the point-slope form \\(y - y_1 = m(x - x_1)\\) with the point \\((x_1, y_1) = (4, -1)\\) and slope \\(m = -\\frac{1}{2}\\):\n\\[y - (-1) = -\\frac{1}{2}(x - 4)\\]\n\\[y + 1 = -\\frac{1}{2}x + 2\\]\n\\[y = -\\frac{1}{2}x + 1\\]\n\nCommon misconceptions:\n- Choosing \\(y = 2x - 9\\) incorrectly uses the parallel slope (\\(m = 2\\)) instead of the perpendicular slope.\n- Choosing \\(y = \\frac{1}{2}x - 3\\) takes the reciprocal of the slope but forgets to negate it.\n- Choosing \\(y = -\\frac{1}{2}x - 3\\) makes an algebraic sign error when solving \\(-1 = -\\frac{1}{2}(4) + b\\).",
+      "sympy_verified": true
     },
     {
-      "type": "mcq",
-      "domain": "Triangles & Congruence",
-      "text": "The interior angles of a triangle sum to:",
+      "id": "geo-0003",
+      "domain": "Foundations & Reasoning",
+      "topic_id": "geo-foundations",
+      "subskill_id": "geo-foundations-1",
+      "educational_aim": "Apply the Segment Addition Postulate, distance formula, and midpoint coordinates on the number line and coordinate plane.",
+      "exam_archetype": "Segment Addition Postulate & Midpoint Formula",
+      "difficulty": "easy",
+      "text": "Point \\(M\\) is the midpoint of segment \\(\\overline{AB}\\). If \\(AM = 3x + 1\\) and \\(MB = 5x - 9\\), what is the length of segment \\(\\overline{AB}\\)?",
       "choices": [
-        "90°",
-        "180°",
-        "270°",
-        "360°"
-      ],
-      "answer": 1,
-      "sol": "The Triangle Angle Sum Theorem states the three interior angles sum to \\(180^\\circ\\).",
-      "difficulty": "easy"
-    },
-    {
-      "type": "mcq",
-      "domain": "Triangles & Congruence",
-      "text": "In a right triangle, if the two legs are 3 and 4, the hypotenuse is:",
-      "choices": [
-        "\\(\\sqrt{5}\\)",
-        "7",
         "5",
-        "6"
+        "16",
+        "26",
+        "32"
       ],
-      "answer": 2,
-      "sol": "Pythagorean theorem: \\(c^2=3^2+4^2=9+16=25\\Rightarrow c=5\\).",
+      "correct": 3,
+      "solution": "1. **Apply the definition of a midpoint:**\n   Since \\(M\\) is the midpoint of segment \\(\\overline{AB}\\), the two sub-segments have equal lengths:\n   \\[\n   AM = MB\n   \\]\n   Substitute the given algebraic expressions:\n   \\[\n   3x + 1 = 5x - 9\n   \\]\n\n2. **Solve for \\(x\\):**\n   Subtract \\(3x\\) from both sides:\n   \\[\n   1 = 2x - 9\n   \\]\n   Add \\(9\\) to both sides:\n   \\[\n   10 = 2x \\implies x = 5\n   \\]\n\n3. **Calculate the lengths of the sub-segments:**\n   \\[\n   AM = 3(5) + 1 = 16\n   \\]\n   \\[\n   MB = 5(5) - 9 = 16\n   \\]\n\n4. **Apply the Segment Addition Postulate:**\n   The total length of \\(\\overline{AB}\\) is the sum of the parts:\n   \\[\n   AB = AM + MB = 16 + 16 = 32\n   \\]\n\n**Common Misconceptions:**\n- **Choice A (5):** Found the value of \\(x\\) but forgot to substitute it back to find the segment length.\n- **Choice B (16):** Calculated the length of half the segment (\\(AM\\) or \\(MB\\)) but forgot to double it to find the full length of \\(\\overline{AB}\\).\n- **Choice C (26):** Made a sign error when solving for \\(x\\) by computing \\(2x = 9 - 1 = 8 \\implies x = 4\\), leading to \\(AB = 2(3(4) + 1) = 26\\).",
+      "sympy_verified": true
+    },
+    {
+      "id": "geo-lines-1-linear-pair",
+      "domain": "Lines & Angles",
+      "topic_id": "geo-lines",
+      "subskill_id": "geo-lines-1",
+      "educational_aim": "Solve algebraic equations formed by vertical angles, linear pairs, complementary angles, and angle bisectors.",
+      "exam_archetype": "Complementary, Supplementary, Vertical & Linear Pair Angles",
+      "difficulty": "easy",
+      "text": "Two angles form a linear pair. The measures of the angles are \\((3x + 10)^\\circ\\) and \\((2x + 20)^\\circ\\). What is the value of \\(x\\)?",
+      "choices": [
+        "10",
+        "12",
+        "30",
+        "100"
+      ],
+      "correct": 2,
+      "solution": "By definition, two angles that form a linear pair are adjacent and supplementary, meaning the sum of their measures is equal to \\(180^\\circ\\).\n\nSet up the algebraic equation:\n\\( (3x + 10) + (2x + 20) = 180 \\)\n\nCombine like terms:\n\\( 5x + 30 = 180 \\)\n\nSubtract 30 from both sides:\n\\( 5x = 150 \\)\n\nDivide both sides by 5:\n\\( x = 30 \\)\n\nAnalysis of incorrect choices:\n- Choice A (10): Results from setting the two expressions equal to each other (\\(3x + 10 = 2x + 20\\)), confusing a linear pair with vertical angles.\n- Choice B (12): Results from setting the sum equal to \\(90^\\circ\\) instead of \\(180^\\circ\\) (\\(5x + 30 = 90\\)), confusing supplementary angles with complementary angles.\n- Choice D (100): Results from solving for the measure of the larger angle, \\(3(30) + 10 = 100^\\circ\\), rather than the value of \\(x\\).",
+      "sympy_verified": true
+    },
+    {
+      "id": "geo-prob-1-easy-01",
+      "domain": "Probability",
+      "topic_id": "geo-prob",
+      "subskill_id": "geo-prob-1",
+      "educational_aim": "Compute geometric probabilities using ratios of segment lengths or shaded areas, and apply the Addition Rule P(A or B) = P(A) + P(B) - P(A and B).",
+      "exam_archetype": "Geometric Probability (Length/Area Ratios) & Addition Rule P(A U B)",
+      "difficulty": "easy",
+      "text": "A point is chosen uniformly at random on the line segment from \\(x = 0\\) to \\(x = 20\\). Let event \\(A\\) be the event that the point lands on the interval \\([2, 10]\\), and let event \\(B\\) be the event that the point lands on the interval \\([6, 16]\\). What is the probability that the point lands in \\(A\\) or \\(B\\), \\(P(A \\cup B)\\)?",
+      "choices": [
+        "\\(\\frac{7}{10}\\)",
+        "\\(\\frac{9}{10}\\)",
+        "\\(\\frac{1}{5}\\)",
+        "\\(\\frac{1}{2}\\)"
+      ],
+      "correct": 0,
+      "solution": "The entire sample space is the segment \\([0, 20]\\), which has length \\(20 - 0 = 20\\).\n\n1. Calculate \\(P(A)\\): Event \\(A\\) corresponds to \\([2, 10]\\), with length \\(10 - 2 = 8\\). So, \\(P(A) = \\frac{8}{20}\\).\n2. Calculate \\(P(B)\\): Event \\(B\\) corresponds to \\([6, 16]\\), with length \\(16 - 6 = 10\\). So, \\(P(B) = \\frac{10}{20}\\).\n3. Calculate \\(P(A \\cap B)\\): The intersection \\(A \\cap B\\) is the interval \\([6, 10]\\), with length \\(10 - 6 = 4\\). So, \\(P(A \\cap B) = \\frac{4}{20}\\).\n\nUsing the Addition Rule of Probability:\n\\[ P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = \\frac{8}{20} + \\frac{10}{20} - \\frac{4}{20} = \\frac{14}{20} = \\frac{7}{10}. \\]\n\nA common error is to calculate \\(P(A) + P(B) = \\frac{18}{20} = \\frac{9}{10}\\), forgetting to subtract the probability of the overlap \\([6, 10]\\).",
+      "sympy_verified": true
+    },
+    {
+      "id": "geo-quads-easy-01",
+      "domain": "Polygons & Quadrilaterals",
+      "topic_id": "geo-quads",
+      "subskill_id": "geo-quads-1",
+      "educational_aim": "Calculate interior and exterior angle sums and individual angle measures in regular and irregular convex n-gons.",
+      "exam_archetype": "Convex Polygon Interior (n-2)*180° & Exterior 360° Angle Sums",
+      "difficulty": "easy",
+      "text": "Four interior angles of a convex pentagon have measures of \\(110^\\circ\\), \\(120^\\circ\\), \\(95^\\circ\\), and \\(130^\\circ\\). What is the measure of the fifth interior angle?",
+      "choices": [
+        "\\(75^\\circ\\)",
+        "\\(85^\\circ\\)",
+        "\\(95^\\circ\\)",
+        "\\(105^\\circ\\)"
+      ],
+      "correct": 1,
+      "solution": "The sum of the interior angle measures of an \\(n\\)-sided convex polygon is given by \\((n - 2) \\times 180^\\circ\\).\n\nFor a pentagon (\\(n = 5\\)):\n\\[\n(5 - 2) \\times 180^\\circ = 3 \\times 180^\\circ = 540^\\circ\n\\]\n\nSum the measures of the four given interior angles:\n\\[\n110^\\circ + 120^\\circ + 95^\\circ + 130^\\circ = 455^\\circ\n\\]\n\nSubtract this sum from the total interior angle sum to find the measure of the fifth angle:\n\\[\n540^\\circ - 455^\\circ = 85^\\circ\n\\]\n\nCommon misconceptions:\n- Using the formula for a quadrilateral (\\(360^\\circ\\)) or miscalculating the interior sum leads to values such as \\(75^\\circ\\) or \\(105^\\circ\\).\n- Assuming the missing angle must duplicate an existing value leads to choosing \\(95^\\circ\\).",
+      "sympy_verified": true
+    },
+    {
+      "id": "geo-0007",
+      "domain": "Right Triangles & Trigonometry",
+      "topic_id": "geo-right",
+      "subskill_id": "geo-right-1",
+      "educational_aim": "Solve for exact radical side lengths using the Pythagorean Theorem and special right triangles (45°-45°-90° and 30°-60°-90°), and classify triangles as acute, right, or obtuse using a^2 + b^2 vs. c^2.",
+      "exam_archetype": "Pythagorean Theorem, Converse Classification & 45-45-90 / 30-60-90 Triangles",
+      "difficulty": "easy",
+      "text": "In right triangle \\(ABC\\), \\(\\angle B = 90^\\circ\\), \\(\\angle A = 60^\\circ\\), and the length of side \\(AB\\) is \\(5\\). What is the length of side \\(BC\\)?",
+      "choices": [
+        "\\(5\\sqrt{2}\\)",
+        "\\(5\\sqrt{3}\\)",
+        "\\(10\\)",
+        "\\(10\\sqrt{3}\\)"
+      ],
+      "correct": 1,
+      "solution": "In right triangle \\(ABC\\), the sum of the angles is \\(180^\\circ\\), so:\n\\[\n\\angle C = 180^\\circ - 90^\\circ - 60^\\circ = 30^\\circ\n\\]\nThis is a \\(30^\\circ\\text{-}60^\\circ\\text{-}90^\\circ\\) special right triangle. The lengths of the sides opposite the angles \\(30^\\circ\\), \\(60^\\circ\\), and \\(90^\\circ\\) are in the ratio \\(1 : \\sqrt{3} : 2\\).\n\nSide \\(AB\\) is opposite the \\(30^\\circ\\) angle, making it the shorter leg with length \\(5\\). Side \\(BC\\) is opposite the \\(60^\\circ\\) angle, which is the longer leg. Therefore:\n\\[\nBC = AB \\cdot \\sqrt{3} = 5\\sqrt{3}\n\\]\n\n- Choice A (\\(5\\sqrt{2}\\)) incorrectly applies the ratio of an isosceles right (\\(45^\\circ\\text{-}45^\\circ\\text{-}90^\\circ\\)) triangle.\n- Choice C (\\(10\\)) is the length of the hypotenuse \\(AC = 2 \\times 5 = 10\\).\n- Choice D (\\(10\\sqrt{3}\\)) erroneously multiplies the hypotenuse by \\(\\sqrt{3}\\).",
+      "sympy_verified": true,
       "fig": {
         "type": "triangle",
         "vertices": [
           [
-            0,
-            0
+            50,
+            150
           ],
           [
-            4,
-            0
+            200,
+            150
           ],
           [
-            4,
-            3
+            50,
+            63
           ]
         ],
-        "right": 1,
-        "sides": [
-          "4",
-          "3",
-          "?"
+        "labels": [
+          "B",
+          "C",
+          "A"
         ],
-        "w": 190
-      },
-      "difficulty": "easy"
+        "sides": [
+          "",
+          "",
+          "5"
+        ],
+        "angles": [
+          "",
+          "30°",
+          "60°"
+        ]
+      }
     },
     {
-      "type": "mcq",
-      "domain": "Similarity",
-      "difficulty": "medium",
-      "text": "Two similar triangles have corresponding sides in the ratio \\(2:3\\). If the smaller triangle has an area of \\(12\\), what is the area of the larger triangle?",
+      "id": "geo-0008",
+      "domain": "Similarity & Proportional Reasoning",
+      "topic_id": "geo-similarity",
+      "subskill_id": "geo-similarity-1",
+      "educational_aim": "Perform coordinate dilations centered at (x0, y0) with scale factor k, and solve for unknown segment lengths in nested triangles with a line parallel to the base.",
+      "exam_archetype": "Side-Splitter (Thales) Parallel Transversal & Off-Origin Dilations",
+      "difficulty": "easy",
+      "text": "In \\(\\triangle ABC\\), line segment \\(DE\\) is parallel to \\(BC\\), with point \\(D\\) lying on \\(\\overline{AB}\\) and point \\(E\\) lying on \\(\\overline{AC}\\). If \\(AD = 3\\), \\(DB = 6\\), and \\(AE = 5\\), what is the length of segment \\(\\overline{EC}\\)?",
       "choices": [
-        "18",
-        "27",
-        "24",
-        "8"
+        "\\(8\\)",
+        "\\(10\\)",
+        "\\(12\\)",
+        "\\(15\\)"
       ],
-      "answer": 1,
-      "sol": "The ratio of the areas of similar figures equals the square of the ratio of their side lengths: \\(k^2 = (3/2)^2 = 9/4\\). Therefore, the area of the larger triangle is \\(12 \\times \\frac{9}{4} = 27\\).",
+      "correct": 1,
+      "solution": "By the Triangle Proportionality Theorem (Side-Splitter Theorem), if a line is parallel to one side of a triangle intersecting the other two sides, it divides the two sides proportionally:\n\n\\[\n\\frac{AD}{DB} = \\frac{AE}{EC}\n\\]\n\nSubstitute the given lengths:\n\n\\[\n\\frac{3}{6} = \\frac{5}{EC}\n\\]\n\nSimplify the ratio on the left:\n\n\\[\n\\frac{1}{2} = \\frac{5}{EC}\n\\]\n\nCross-multiplying gives:\n\n\\[\nEC = 5 \\times 2 = 10\n\\]\n\nCommon misconceptions:\n- Additive reasoning: finding \\(DB - AD = 6 - 3 = 3\\) and computing \\(AE + 3 = 8\\) (Choice A).\n- Full side length confusion: solving for \\(AC = AE + EC = 5 + 10 = 15\\) instead of \\(EC\\) (Choice D).",
+      "sympy_verified": true,
       "fig": {
-        "type": "similar",
-        "vertices": [
-          [
-            0,
-            0
-          ],
-          [
-            10,
-            0
-          ],
-          [
-            3.2,
-            6.6
-          ]
+        "type": "nested_triangles",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
         ],
-        "tilde": true,
-        "ratio": 0.667,
-        "left": {
-          "caption": "Area = 12"
-        },
-        "right": {
-          "caption": "Area = ?"
+        "t": 0.33,
+        "sides": {
+          "ad": "3",
+          "db": "6",
+          "ae": "5",
+          "ec": "x"
         }
       }
     },
     {
-      "type": "mcq",
-      "domain": "Right Triangles & Trigonometry",
-      "text": "In a right triangle, \\( \\sin\\theta = \\dfrac{\\text{opposite}}{\\text{hypotenuse}} \\). If opposite = 5 and hypotenuse = 13, find \\(\\cos\\theta\\).",
+      "id": "geo-0009",
+      "domain": "Area, Surface Area & Volume",
+      "topic_id": "geo-solids",
+      "subskill_id": "geo-solids-1",
+      "educational_aim": "Calculate lateral area, total surface area, and volume of right prisms, cylinders, regular pyramids, cones (relating radius, height, and slant height l), and spheres.",
+      "exam_archetype": "Surface Area & Volume of Prisms, Cylinders, Pyramids, Cones & Spheres",
+      "difficulty": "easy",
+      "text": "A right circular cone has a base radius of \\(5\\) and a height of \\(12\\). What is the lateral area of the cone?",
       "choices": [
-        "\\(\\frac{5}{12}\\)",
-        "\\(\\frac{12}{13}\\)",
-        "\\(\\frac{5}{13}\\)",
-        "\\(\\frac{13}{12}\\)"
+        "\\(60\\pi\\)",
+        "\\(65\\pi\\)",
+        "\\(90\\pi\\)",
+        "\\(130\\pi\\)"
       ],
-      "answer": 1,
-      "sol": "Adjacent: \\(\\sqrt{13^2-5^2}=\\sqrt{144}=12\\). \\(\\cos\\theta=\\frac{12}{13}\\).",
+      "correct": 1,
+      "solution": "To find the lateral area of a right circular cone, use the formula:\n\\[\n\\text{Lateral Area} = \\pi r l\n\\]\nwhere \\(r\\) is the base radius and \\(l\\) is the slant height.\n\nFirst, find the slant height \\(l\\) using the Pythagorean relationship between radius \\(r\\), height \\(h\\), and slant height \\(l\\):\n\\[\nl = \\sqrt{r^2 + h^2} = \\sqrt{5^2 + 12^2} = \\sqrt{25 + 144} = \\sqrt{169} = 13\n\\]\n\nNow, substitute \\(r = 5\\) and \\(l = 13\\) into the lateral area formula:\n\\[\n\\text{Lateral Area} = \\pi (5)(13) = 65\\pi\n\\]\n\nCommon misconceptions:\n- Using the vertical height instead of the slant height gives \\(\\pi r h = \\pi (5)(12) = 60\\pi\\).\n- Calculating the total surface area \\(\\pi r l + \\pi r^2\\) gives \\(65\\pi + 25\\pi = 90\\pi\\).\n- Confusing the lateral area formula of a cone with that of a cylinder \\(2\\pi r h\\) yields \\(2\\pi (5)(13) = 130\\pi\\).",
+      "sympy_verified": true
+    },
+    {
+      "id": "geo-transform-easy-01",
+      "domain": "Transformations & Symmetry",
+      "topic_id": "geo-transform",
+      "subskill_id": "geo-transform-1",
+      "educational_aim": "Translate points and polygons on the coordinate plane using vector notation <a, b> or coordinate rule (x, y) -> (x + a, y + b), and recover pre-image vertices from an image.",
+      "exam_archetype": "Coordinate Translation by Vector <a, b> & Pre-Image Recovery",
+      "difficulty": "easy",
+      "text": "Under a translation by the vector \\(\\langle 5, -3 \\rangle\\), the image of point \\(P\\) is \\(P'(2, 1)\\). What are the coordinates of the pre-image point \\(P\\)?",
+      "choices": [
+        "\\((-3, 4)\\)",
+        "\\((7, -2)\\)",
+        "\\((-3, -2)\\)",
+        "\\((7, 4)\\)"
+      ],
+      "correct": 0,
+      "solution": "A translation by the vector \\(\\langle a, b \\rangle = \\langle 5, -3 \\rangle\\) maps a pre-image point \\(P(x, y)\\) to its image \\(P'(x', y')\\) according to the rule:\n\\[\n(x', y') = (x + a, y + b) = (x + 5, y - 3)\n\\]\nWe are given the coordinates of the image \\(P'(2, 1)\\), so we set up equations to recover the pre-image coordinates \\(x\\) and \\(y\\):\n\\[\nx + 5 = 2 \\implies x = 2 - 5 = -3\n\\]\n\\[\ny - 3 = 1 \\implies y = 1 + 3 = 4\n\\]\nTherefore, the pre-image point is \\(P(-3, 4)\\).\n\nCommon error analysis:\n- Choice \\((7, -2)\\) results from incorrectly applying the forward translation vector to the image point \\(P'\\) by computing \\((2 + 5, 1 - 3)\\).\n- Choice \\((-3, -2)\\) results from incorrectly subtracting both vector components: \\(2 - 5 = -3\\) and \\(1 - 3 = -2\\).\n- Choice \\((7, 4)\\) results from adding the absolute values to both coordinates.",
+      "sympy_verified": true
+    },
+    {
+      "id": "geo-0011",
+      "domain": "Triangles & Congruence",
+      "topic_id": "geo-triangles",
+      "subskill_id": "geo-triangles-1",
+      "educational_aim": "Apply the Triangle Angle-Sum Theorem, Exterior Angle Theorem, and Isosceles/Equilateral Triangle Theorems to find unknown interior and exterior angle measures.",
+      "exam_archetype": "Triangle Angle-Sum, Exterior Angle & Isosceles Base Angles",
+      "difficulty": "easy",
+      "text": "In \\(\\triangle ABC\\), side \\(AB\\) is congruent to side \\(AC\\), and the measure of \\(\\angle A\\) is \\(50^\\circ\\). What is the measure of \\(\\angle B\\)?",
+      "choices": [
+        "\\(50^\\circ\\)",
+        "\\(65^\\circ\\)",
+        "\\(80^\\circ\\)",
+        "\\(130^\\circ\\)"
+      ],
+      "correct": 1,
+      "solution": "According to the Isosceles Triangle Theorem, if two sides of a triangle are congruent, the angles opposite those sides are congruent. Since side \\(AB\\) is congruent to side \\(AC\\), the angles opposite these sides are congruent: \\(m\\angle B = m\\angle C\\).\n\nBy the Triangle Angle-Sum Theorem, the sum of the interior angles in any triangle is \\(180^\\circ\\):\n\\[ m\\angle A + m\\angle B + m\\angle C = 180^\\circ \\]\n\nSubstitute the given angle measure \\(m\\angle A = 50^\\circ\\) and \\(m\\angle C = m\\angle B\\):\n\\[ 50^\\circ + 2(m\\angle B) = 180^\\circ \\]\n\\[ 2(m\\angle B) = 130^\\circ \\]\n\\[ m\\angle B = 65^\\circ \\]\n\nCommon Misconceptions:\n- \\(80^\\circ\\): Occurs if \\(50^\\circ\\) is incorrectly assumed to be a base angle rather than the vertex angle, leading to \\(180^\\circ - 2(50^\\circ) = 80^\\circ\\).\n- \\(130^\\circ\\): Occurs if the student subtracts \\(50^\\circ\\) from \\(180^\\circ\\) but forgets to divide by \\(2\\) for the two congruent base angles.\n- \\(50^\\circ\\): Occurs if the student mistakes the triangle for an equilateral triangle.",
+      "sympy_verified": true,
       "fig": {
         "type": "triangle",
         "vertices": [
           [
-            0,
-            0
+            120,
+            40
           ],
           [
-            10,
-            0
+            40,
+            180
           ],
           [
-            10,
-            4.2
+            200,
+            180
           ]
         ],
-        "right": 1,
-        "sides": [
-          "",
-          "5",
-          "13"
+        "labels": [
+          "A",
+          "B",
+          "C"
         ],
         "angles": [
-          "θ",
-          null,
-          null
-        ],
-        "w": 190
-      },
-      "difficulty": "medium"
-    },
-    {
-      "type": "mcq",
-      "domain": "Right Triangles & Trigonometry",
-      "text": "In a 45-45-90 triangle with legs of length 1, the hypotenuse is:",
-      "choices": [
-        "1",
-        "\\(\\sqrt{2}\\)",
-        "\\(\\sqrt{3}\\)",
-        "2"
-      ],
-      "answer": 1,
-      "sol": "Pythagorean theorem: \\(c=\\sqrt{1^2+1^2}=\\sqrt{2}\\).",
-      "fig": {
-        "type": "triangle",
-        "vertices": [
-          [
-            0,
-            0
-          ],
-          [
-            10,
-            0
-          ],
-          [
-            0,
-            10
-          ]
-        ],
-        "right": 0,
-        "sides": [
-          "1",
+          "50°",
           "",
-          "1"
-        ],
-        "w": 190
-      },
-      "difficulty": "easy"
-    },
-    {
-      "type": "mcq",
-      "domain": "Circles",
-      "text": "The area of a circle with radius 5 is:",
-      "choices": [
-        "\\(5\\pi\\)",
-        "\\(10\\pi\\)",
-        "\\(25\\pi\\)",
-        "\\(50\\pi\\)"
-      ],
-      "answer": 2,
-      "sol": "\\(A=\\pi r^2=\\pi(5^2)=25\\pi\\).",
-      "fig": {
-        "type": "circle",
-        "radius": "r=5",
-        "w": 180
-      },
-      "difficulty": "easy"
-    },
-    {
-      "type": "mcq",
-      "domain": "Circles",
-      "text": "A central angle of \\(60^\\circ\\) in a circle of radius 6 subtends an arc of length:",
-      "choices": [
-        "\\(\\pi\\)",
-        "\\(2\\pi\\)",
-        "\\(3\\pi\\)",
-        "\\(6\\pi\\)"
-      ],
-      "answer": 1,
-      "sol": "Arc length \\(=r\\theta=6\\cdot\\frac{\\pi}{3}=2\\pi\\) (convert 60° to radians: \\(\\frac{\\pi}{3}\\)).",
-      "fig": {
-        "type": "circle",
-        "radius": "r=6",
-        "sector": {
-          "start_deg": 30,
-          "end_deg": 90,
-          "label": "60°"
-        },
-        "w": 190
-      },
-      "difficulty": "medium"
-    },
-    {
-      "type": "mcq",
-      "domain": "Area, Surface Area & Volume",
-      "text": "Volume of a rectangular prism with dimensions 3 × 4 × 5 is:",
-      "choices": [
-        "47",
-        "60",
-        "120",
-        "20"
-      ],
-      "answer": 1,
-      "sol": "\\(V=l\\times w\\times h=3\\times4\\times5=60\\).",
-      "fig": {
-        "type": "geometry_3d",
-        "solid": "rectangular_prism",
-        "dims": [
-          3,
-          4,
-          5
-        ],
-        "w": 200
-      },
-      "difficulty": "easy"
-    },
-    {
-      "type": "mcq",
-      "domain": "Area, Surface Area & Volume",
-      "text": "Volume of a sphere with radius 3 is:",
-      "choices": [
-        "\\(9\\pi\\)",
-        "\\(12\\pi\\)",
-        "\\(36\\pi\\)",
-        "\\(27\\pi\\)"
-      ],
-      "answer": 2,
-      "sol": "\\(V=\\frac{4}{3}\\pi r^3=\\frac{4}{3}\\pi(27)=36\\pi\\).",
-      "fig": {
-        "type": "geometry_3d",
-        "solid": "sphere",
-        "dims": [
-          3
-        ],
-        "w": 190
-      },
-      "difficulty": "medium"
-    },
-    {
-      "type": "mcq",
-      "domain": "Coordinate Geometry",
-      "text": "Distance between \\((1,2)\\) and \\((4,6)\\) is:",
-      "choices": [
-        "3",
-        "4",
-        "5",
-        "7"
-      ],
-      "answer": 2,
-      "sol": "\\(d=\\sqrt{(4-1)^2+(6-2)^2}=\\sqrt{9+16}=\\sqrt{25}=5\\).",
-      "fig": {
-        "type": "fn",
-        "xrange": [
-          -1,
-          7
-        ],
-        "yrange": [
-          -1,
-          7
-        ],
-        "points": [
-          {
-            "x": 1,
-            "y": 2,
-            "label": "(1,2)"
-          },
-          {
-            "x": 4,
-            "y": 6,
-            "label": "(4,6)"
-          }
-        ],
-        "w": 250,
-        "h": 250,
-        "fns": [
-          {
-            "fn": "(1.3333333333333333)*x+(0.6666666666666666)"
-          }
+          ""
         ]
-      },
-      "difficulty": "easy"
-    },
-    {
-      "type": "mcq",
-      "domain": "Coordinate Geometry",
-      "text": "Midpoint of \\((0,4)\\) and \\((6,2)\\) is:",
-      "choices": [
-        "\\((3,6)\\)",
-        "\\((3,3)\\)",
-        "\\((6,3)\\)",
-        "\\((6,6)\\)"
-      ],
-      "answer": 1,
-      "sol": "Midpoint \\(=\\left(\\frac{0+6}{2},\\frac{4+2}{2}\\right)=(3,3)\\).",
-      "fig": {
-        "type": "fn",
-        "xrange": [
-          -1,
-          7
-        ],
-        "yrange": [
-          -1,
-          7
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": 4,
-            "label": "(0,4)"
-          },
-          {
-            "x": 6,
-            "y": 2,
-            "label": "(6,2)"
-          }
-        ],
-        "w": 250,
-        "h": 250,
-        "fns": [
-          {
-            "fn": "(-0.3333333333333333)*x+(4.0)"
-          }
-        ]
-      },
-      "difficulty": "easy"
-    },
-    {
-      "type": "mcq",
-      "domain": "Polygons & Quadrilaterals",
-      "text": "Sum of interior angles of a hexagon is:",
-      "choices": [
-        "540°",
-        "720°",
-        "900°",
-        "360°"
-      ],
-      "answer": 1,
-      "sol": "\\((n-2)\\times180^\\circ=(6-2)\\times180^\\circ=720^\\circ\\).",
-      "fig": {
-        "type": "polygon",
-        "vertices": [
-          [
-            0,
-            10
-          ],
-          [
-            -8.66,
-            5
-          ],
-          [
-            -8.66,
-            -5
-          ],
-          [
-            0,
-            -10
-          ],
-          [
-            8.66,
-            -5
-          ],
-          [
-            8.66,
-            5
-          ]
-        ],
-        "w": 200
-      },
-      "difficulty": "easy"
-    },
-    {
-      "type": "mcq",
-      "domain": "Transformations & Symmetry",
-      "text": "Reflecting \\((3,-2)\\) over the x-axis gives:",
-      "choices": [
-        "\\((-3,-2)\\)",
-        "\\((3,2)\\)",
-        "\\((-3,2)\\)",
-        "\\((2,-3)\\)"
-      ],
-      "answer": 1,
-      "sol": "Reflection over x-axis negates the y-coordinate: \\((3,-(-2))=(3,2)\\).",
-      "fig": {
-        "type": "fn",
-        "xrange": [
-          -4,
-          10
-        ],
-        "yrange": [
-          -9,
-          9
-        ],
-        "points": [
-          {
-            "x": 3,
-            "y": -2,
-            "label": "(3,-2)"
-          }
-        ],
-        "label": "reflect over x-axis",
-        "w": 210
-      },
-      "difficulty": "easy"
-    },
-    {
-      "type": "mcq",
-      "domain": "Triangles",
-      "text": "Right triangle legs 5 and 12: hypotenuse:",
-      "choices": [
-        "17",
-        "\\(\\sqrt{119}\\)",
-        "15",
-        "13"
-      ],
-      "answer": 3,
-      "sol": "sqrt(25+144)=13.",
-      "fig": {
-        "type": "triangle",
-        "vertices": [
-          [
-            0,
-            0
-          ],
-          [
-            5,
-            0
-          ],
-          [
-            5,
-            12
-          ]
-        ],
-        "right": 1,
-        "sides": [
-          "5",
-          "12",
-          "?"
-        ],
-        "w": 190
-      },
-      "difficulty": "easy"
-    },
-    {
-      "type": "mcq",
-      "domain": "Triangles",
-      "text": "Sum of interior angles of a triangle:",
-      "choices": [
-        "90",
-        "180",
-        "270",
-        "360"
-      ],
-      "answer": 1,
-      "sol": "The sum of interior angles in any triangle is always \\( 180^\\circ \\).",
-      "difficulty": "easy"
-    },
-    {
-      "type": "mcq",
-      "domain": "Circles",
-      "text": "Circumference of circle radius 5:",
-      "choices": [
-        "\\(5\\pi\\)",
-        "\\(10\\pi\\)",
-        "\\(25\\pi\\)",
-        "\\(20\\pi\\)"
-      ],
-      "answer": 1,
-      "sol": "The circumference of a circle is given by \\( C = 2\\pi r \\). For \\( r = 5 \\), \\( C = 2\\pi(5) = 10\\pi \\).",
-      "difficulty": "easy"
-    },
-    {
-      "type": "mcq",
-      "domain": "Circles",
-      "text": "Area of circle radius 4:",
-      "choices": [
-        "\\(8\\pi\\)",
-        "\\(4\\pi\\)",
-        "\\(16\\pi\\)",
-        "\\(12\\pi\\)"
-      ],
-      "answer": 2,
-      "sol": "The area of a circle is given by \\( A = \\pi r^2 \\). For \\( r = 4 \\), \\( A = \\pi(4^2) = 16\\pi \\).",
-      "fig": {
-        "type": "circle",
-        "radius": "r=4",
-        "w": 180
-      },
-      "difficulty": "easy"
-    },
-    {
-      "type": "mcq",
-      "domain": "Polygons",
-      "text": "Sum of interior angles of hexagon:",
-      "choices": [
-        "540",
-        "720",
-        "900",
-        "360"
-      ],
-      "answer": 1,
-      "sol": "The sum of the interior angles of an \\( n \\)-sided polygon is \\( (n - 2) \\cdot 180^\\circ \\). For a hexagon (\\( n = 6 \\)), the sum is \\( (6 - 2) \\cdot 180^\\circ = 4 \\cdot 180^\\circ = 720^\\circ \\).",
-      "fig": {
-        "type": "polygon",
-        "vertices": [
-          [
-            10,
-            0
-          ],
-          [
-            5,
-            8.66
-          ],
-          [
-            -5,
-            8.66
-          ],
-          [
-            -10,
-            0
-          ],
-          [
-            -5,
-            -8.66
-          ],
-          [
-            5,
-            -8.66
-          ]
-        ],
-        "w": 190
-      },
-      "difficulty": "easy"
-    },
-    {
-      "type": "mcq",
-      "domain": "Polygons",
-      "text": "Each interior angle of regular pentagon:",
-      "choices": [
-        "120",
-        "112",
-        "108",
-        "100"
-      ],
-      "answer": 2,
-      "sol": "The sum of the interior angles of a pentagon is \\( (5 - 2) \\cdot 180^\\circ = 540^\\circ \\). Since the pentagon is regular, each interior angle measures \\( \\dfrac{540^\\circ}{5} = 108^\\circ \\).",
-      "fig": {
-        "type": "polygon",
-        "vertices": [
-          [
-            0,
-            10
-          ],
-          [
-            9.51,
-            3.09
-          ],
-          [
-            5.88,
-            -8.09
-          ],
-          [
-            -5.88,
-            -8.09
-          ],
-          [
-            -9.51,
-            3.09
-          ]
-        ],
-        "w": 190
-      },
-      "difficulty": "medium"
-    },
-    {
-      "type": "mcq",
-      "domain": "Coordinate Geometry",
-      "text": "Orbital oscillator [GEO-21] operates under the relation a right triangle \\( ABC \\) with perpendicular legs \\( AB = 6\\text{ cm} \\) and \\( AC = 7\\text{ cm} \\). Find the area of \\( \\triangle ABC \\) in \\( \\text{cm}^2 \\).",
-      "choices": [
-        "29",
-        "21",
-        "42",
-        "34"
-      ],
-      "answer": 1,
-      "sol": "Using the right-triangle area formula \\( A = \\frac{1}{2}bh \\): \\[ A = \\frac{1}{2}(6)(7) = 21\\text{ cm}^2. \\]",
-      "difficulty": "easy",
-      "fig": {
-        "type": "triangle",
-        "A": [
-          0,
-          0
-        ],
-        "B": [
-          6,
-          0
-        ],
-        "C": [
-          0,
-          7
-        ],
-        "labels": {
-          "A": "A",
-          "B": "B",
-          "C": "C"
-        },
-        "sides": {
-          "c": "6",
-          "b": "7"
-        },
-        "rightAt": "A"
       }
     },
     {
-      "type": "mcq",
-      "domain": "Coordinate Geometry",
-      "text": "Midpoint of \\( (0,0) \\) and \\( (6,8) \\):",
-      "choices": [
-        "\\((1,2)\\)",
-        "\\((6,8)\\)",
-        "\\((3,4)\\)",
-        "\\((4,3)\\)"
-      ],
-      "answer": 2,
-      "sol": "Using the midpoint formula: \\( \\left(\\dfrac{x_1 + x_2}{2}, \\dfrac{y_1 + y_2}{2}\\right) = \\left(\\dfrac{0 + 6}{2}, \\dfrac{0 + 8}{2}\\right) = (3, 4) \\).",
-      "fig": {
-        "type": "fn",
-        "xrange": [
-          -1,
-          9
-        ],
-        "yrange": [
-          -1,
-          9
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": 0,
-            "label": "(0,0)"
-          },
-          {
-            "x": 6,
-            "y": 8,
-            "label": "(6,8)"
-          }
-        ],
-        "w": 250,
-        "h": 250,
-        "fns": [
-          {
-            "fn": "(1.3333333333333333)*x+(0.0)"
-          }
-        ]
-      },
-      "difficulty": "easy"
-    },
-    {
-      "type": "mcq",
-      "domain": "Triangles",
-      "text": "Area of triangle base 8 height 5:",
-      "choices": [
-        "13",
-        "20",
-        "40",
-        "10"
-      ],
-      "answer": 1,
-      "sol": "The area of a triangle is given by \\( A = \\dfrac{1}{2}bh \\). Here, \\( A = \\dfrac{1}{2}(8)(5) = 20 \\).",
-      "fig": {
-        "type": "triangle",
-        "vertices": [
-          [
-            0,
-            0
-          ],
-          [
-            8,
-            0
-          ],
-          [
-            3,
-            5
-          ]
-        ],
-        "sides": [
-          "8",
-          "",
-          ""
-        ],
-        "dlines": [
-          {
-            "from": [
-              3,
-              5
-            ],
-            "to": [
-              3,
-              0
-            ],
-            "label": "5",
-            "right": true
-          }
-        ],
-        "w": 190
-      },
-      "difficulty": "easy"
-    },
-    {
-      "type": "mcq",
-      "domain": "Quadrilaterals",
-      "text": "Area of parallelogram base 7 height 4:",
-      "choices": [
-        "11",
-        "14",
-        "28",
-        "22"
-      ],
-      "answer": 2,
-      "sol": "The area of a parallelogram is given by \\( A = bh \\). Here, \\( A = 7 \\cdot 4 = 28 \\).",
-      "fig": {
-        "type": "polygon",
-        "vertices": [
-          [
-            0,
-            0
-          ],
-          [
-            7,
-            0
-          ],
-          [
-            9,
-            4
-          ],
-          [
-            2,
-            4
-          ]
-        ],
-        "sides": [
-          "7",
-          "",
-          "",
-          ""
-        ],
-        "dlines": [
-          {
-            "from": [
-              2,
-              4
-            ],
-            "to": [
-              2,
-              0
-            ],
-            "label": "4",
-            "right": true
-          }
-        ],
-        "w": 200
-      },
-      "difficulty": "easy"
-    },
-    {
-      "type": "mcq",
-      "domain": "Quadrilaterals",
-      "text": "Diagonals of rectangle are:",
-      "choices": [
-        "Perpendicular",
-        "Equal",
-        "Parallel",
-        "Unequal"
-      ],
-      "answer": 1,
-      "sol": "A defining geometric property of every rectangle is that its diagonals are equal in length and bisect each other.",
-      "fig": {
-        "type": "polygon",
-        "vertices": [
-          [
-            0,
-            0
-          ],
-          [
-            9,
-            0
-          ],
-          [
-            9,
-            6
-          ],
-          [
-            0,
-            6
-          ]
-        ],
-        "dlines": [
-          {
-            "from": [
-              0,
-              0
-            ],
-            "to": [
-              9,
-              6
-            ],
-            "label": ""
-          },
-          {
-            "from": [
-              9,
-              0
-            ],
-            "to": [
-              0,
-              6
-            ],
-            "label": ""
-          }
-        ],
-        "w": 190
-      },
-      "difficulty": "easy"
-    },
-    {
-      "type": "mcq",
+      "id": "geo-0012",
       "domain": "Circles",
-      "text": "Arc length radius 6, central angle 60 deg:",
+      "topic_id": "geo-circles",
+      "subskill_id": "geo-circles-2",
+      "educational_aim": "Apply Power of a Point theorems (PA·PB = PC·PD for chords and secants, PT^2 = PA·PB for tangent-secant) and the perpendicularity of a radius to a tangent line.",
+      "exam_archetype": "Power of a Point (Intersecting Chords, Secants & Tangents) & Tangent-Radius Perpendicularity",
+      "difficulty": "medium",
+      "text": "In the circle shown, chords \\(AB\\) and \\(CD\\) intersect at point \\(P\\). If \\(PA = 6\\), \\(PB = 8\\), and \\(PC = 4\\), what is the value of \\(x\\), the length of segment \\(PD\\)?",
       "choices": [
-        "\\(\\pi\\)",
-        "\\(2\\pi\\)",
-        "\\(3\\pi\\)",
-        "\\(6\\pi\\)"
+        "10",
+        "12",
+        "16",
+        "18"
       ],
-      "answer": 1,
-      "sol": "The arc length formula is \\( s = \\dfrac{\\theta}{360^\\circ} \\cdot 2\\pi r \\). Here, \\( s = \\dfrac{60^\\circ}{360^\\circ} \\cdot 2\\pi(6) = \\dfrac{1}{6} \\cdot 12\\pi = 2\\pi \\).",
+      "correct": 1,
+      "solution": "By the Intersecting Chords Theorem (Power of a Point inside a circle), when two chords \\(AB\\) and \\(CD\\) intersect at point \\(P\\), the products of the lengths of their segments are equal:\n\\[PA \\cdot PB = PC \\cdot PD\\]\n\nSubstitute the given values into the equation:\n\\[6 \\cdot 8 = 4 \\cdot x\\]\n\\[48 = 4x\\]\n\\[x = 12\\]\n\nTherefore, the length of segment \\(PD\\) is \\(12\\).\n\nMisconception Analysis:\n- Choice A (10): Additive error, incorrectly assuming segment lengths add across chords (\\(6 + 8 = 4 + x\\), yielding \\(x = 10\\)).\n- Choice C (16): Finds the full chord length \\(CD = PC + PD = 4 + 12 = 16\\) instead of \\(PD\\).\n- Choice D (18): Careless addition of all given lengths (\\(6 + 8 + 4 = 18\\)).",
+      "sympy_verified": true,
       "fig": {
-        "type": "circle",
-        "radius": "r=6",
-        "arc": {
-          "start_deg": 30,
-          "end_deg": 90,
-          "label": "60°"
-        },
-        "w": 190
-      },
-      "difficulty": "easy"
+        "type": "circle_chords_similarity",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "P"
+        ],
+        "sides": {
+          "pa": "6",
+          "pb": "8",
+          "pc": "4",
+          "pd": "x"
+        }
+      }
     },
     {
-      "type": "mcq",
+      "id": "geo-0013",
       "domain": "Coordinate Geometry",
-      "text": "Slope through \\( (1,3) \\) and \\( (3,7) \\):",
+      "topic_id": "geo-coord",
+      "subskill_id": "geo-coord-2",
+      "educational_aim": "Calculate the exact perimeter and area of triangles and quadrilaterals on the coordinate plane and prove whether a coordinate quadrilateral is a rectangle, rhombus, square, or trapezoid.",
+      "exam_archetype": "Coordinate Polygon Area (Shoelace / Box Method), Perimeter & Classification",
+      "difficulty": "medium",
+      "text": "In the coordinate plane, quadrilateral \\(ABCD\\) has vertices \\(A(-2, 3)\\), \\(B(4, 5)\\), \\(C(6, -1)\\), and \\(D(0, -3)\\). Which of the following correctly classifies quadrilateral \\(ABCD\\) and gives its exact area?",
       "choices": [
-        "1",
-        "2",
-        "3",
-        "4"
+        "A square with an area of \\(40\\)",
+        "A rectangle that is not a square, with an area of \\(40\\)",
+        "A rhombus that is not a square, with an area of \\(40\\)",
+        "A square with an area of \\(64\\)"
       ],
-      "answer": 1,
-      "sol": "The slope formula is \\( m = \\dfrac{y_2 - y_1}{x_2 - x_1} \\). Substituting the points: \\( m = \\dfrac{7 - 3}{3 - 1} = \\dfrac{4}{2} = 2 \\).",
-      "fig": {
-        "type": "fn",
-        "xrange": [
-          -1,
-          8
-        ],
-        "yrange": [
-          -1,
-          8
-        ],
-        "points": [
-          {
-            "x": 1,
-            "y": 3,
-            "label": "(1,3)"
-          },
-          {
-            "x": 3,
-            "y": 7,
-            "label": "(3,7)"
-          }
-        ],
-        "w": 250,
-        "h": 250,
-        "fns": [
-          {
-            "fn": "(2.0)*x+(1.0)"
-          }
-        ]
-      },
-      "difficulty": "easy"
+      "correct": 0,
+      "solution": "To classify quadrilateral \\(ABCD\\) and determine its area, we examine its side lengths, slopes, and dimensions:\n\n1. **Side Lengths (Distance Formula):**\n- \\(AB = \\sqrt{(4 - (-2))^2 + (5 - 3)^2} = \\sqrt{6^2 + 2^2} = \\sqrt{36 + 4} = \\sqrt{40}\\)\n- \\(BC = \\sqrt{(6 - 4)^2 + (-1 - 5)^2} = \\sqrt{2^2 + (-6)^2} = \\sqrt{4 + 36} = \\sqrt{40}\\)\n- \\(CD = \\sqrt{(0 - 6)^2 + (-3 - (-1))^2} = \\sqrt{(-6)^2 + (-2)^2} = \\sqrt{36 + 4} = \\sqrt{40}\\)\n- \\(DA = \\sqrt{(-2 - 0)^2 + (3 - (-3))^2} = \\sqrt{(-2)^2 + 6^2} = \\sqrt{4 + 36} = \\sqrt{40}\\)\n\nSince all four sides are congruent (\\(AB = BC = CD = DA = \\sqrt{40}\\)), \\(ABCD\\) is a rhombus.\n\n2. **Slopes of Adjacent Sides:**\n- Slope of \\(AB = \\frac{5 - 3}{4 - (-2)} = \\frac{2}{6} = \\frac{1}{3}\\)\n- Slope of \\(BC = \\frac{-1 - 5}{6 - 4} = \\frac{-6}{2} = -3\\)\n\nSince the product of their slopes is \\(\\frac{1}{3} \\times (-3) = -1\\), side \\(AB\\) is perpendicular to side \\(BC\\) (\\(\\angle B = 90^\\circ\\)). A rhombus with a right angle is a **square**.\n\n3. **Area:**\n- Direct formula: \\(\\text{Area} = (\\text{side})^2 = (\\sqrt{40})^2 = 40\\).\n- Box Method: The bounding rectangle enclosing \\(ABCD\\) spans from \\(x = -2\\) to \\(x = 6\\) (width \\(8\\)) and \\(y = -3\\) to \\(y = 5\\) (height \\(8\\)), with total area \\(8 \\times 8 = 64\\). Subtracting the four corner right triangles, each with legs \\(6\\) and \\(2\\) and area \\(\\frac{1}{2} \\times 6 \\times 2 = 6\\):\n\\[\\text{Area} = 64 - 4(6) = 64 - 24 = 40.\\]\n\nThus, \\(ABCD\\) is a square with an area of \\(40\\).\n\n**Common Misconceptions:**\n- Choice B is incorrect because it fails to recognize that all four sides are equal, which makes the rectangle specifically a square.\n- Choice C is incorrect because it overlooks that the adjacent sides are perpendicular (product of slopes is \\(-1\\)).\n- Choice D mistakenly takes the area of the bounding box (\\(8 \\times 8 = 64\\)) without subtracting the surrounding corner triangles.",
+      "sympy_verified": true
     },
     {
-      "type": "mcq",
-      "domain": "Angles",
-      "text": "Supplementary angles sum to:",
+      "id": "geo-0014",
+      "domain": "Foundations & Reasoning",
+      "topic_id": "geo-foundations",
+      "subskill_id": "geo-foundations-2",
+      "educational_aim": "Find the coordinates of a point P that partitions a directed line segment AB in a given ratio m:n.",
+      "exam_archetype": "Directed Segment Fractional Partitioning",
+      "difficulty": "medium",
+      "text": "In the coordinate plane, the directed line segment from \\(A(-5, -3)\\) to \\(B(5, 7)\\) is partitioned by point \\(P\\) in the ratio \\(3:2\\). What are the coordinates of point \\(P\\)?",
       "choices": [
-        "45",
-        "90",
-        "180",
-        "360"
+        "\\((1, 3)\\)",
+        "\\((-1, 1)\\)",
+        "\\((0, 2)\\)",
+        "\\((2, 4)\\)"
       ],
-      "answer": 2,
-      "sol": "Two angles are supplementary if and only if their angle measures sum to \\( 180^\\circ \\).",
-      "fig": {
-        "type": "vertex_angles",
-        "mode": "linear",
-        "labels": {
-          "1": "1",
-          "2": "2"
-        },
-        "w": 190
-      },
-      "difficulty": "easy"
+      "correct": 0,
+      "solution": "To find the coordinates of point \\(P\\) that partitions the directed segment from \\(A(x_1, y_1)\\) to \\(B(x_2, y_2)\\) in the ratio \\(m:n = 3:2\\), we find the fraction of the total distance from \\(A\\) to \\(B\\):\n\n\\[k = \\frac{m}{m + n} = \\frac{3}{3 + 2} = \\frac{3}{5}\\]\n\nNow, apply this fractional distance to the changes in \\(x\\) and \\(y\\):\n\n\\[x_P = x_1 + k(x_2 - x_1) = -5 + \\frac{3}{5}(5 - (-5)) = -5 + \\frac{3}{5}(10) = -5 + 6 = 1\\]\n\n\\[y_P = y_1 + k(y_2 - y_1) = -3 + \\frac{3}{5}(7 - (-3)) = -3 + \\frac{3}{5}(10) = -3 + 6 = 3\\]\n\nThus, the coordinates of point \\(P\\) are \\((1, 3)\\).\n\n- Choice B, \\((-1, 1)\\), corresponds to partitioning the segment in the reversed ratio \\(2:3\\) (or moving from \\(B\\) to \\(A\\)).\n- Choice C, \\((0, 2)\\), is the midpoint of segment \\(AB\\), representing a \\(1:1\\) ratio.\n- Choice D, \\((2, 4)\\), is an arithmetic error from adding half the differences to \\((0, 2)\\).",
+      "sympy_verified": true
     },
     {
-      "type": "mcq",
-      "domain": "Angles",
-      "text": "Complementary angles sum to:",
+      "id": "geo-0015",
+      "domain": "Lines & Angles",
+      "topic_id": "geo-lines",
+      "subskill_id": "geo-lines-2",
+      "educational_aim": "Apply corresponding, alternate interior, alternate exterior, and consecutive interior angle theorems to solve for unknown variables.",
+      "exam_archetype": "Parallel Lines Cut by a Transversal",
+      "difficulty": "medium",
+      "text": "Two parallel lines, \\(p\\) and \\(q\\), are intersected by a transversal line \\(t\\). A pair of consecutive interior angles have measures \\((4x + 9)^\\circ\\) and \\((2x + 33)^\\circ\\). What is the value of \\(x\\)?",
       "choices": [
-        "45",
-        "90",
-        "180",
-        "360"
+        "8",
+        "12",
+        "23",
+        "37"
       ],
-      "answer": 1,
-      "sol": "Two angles are complementary if and only if their angle measures sum to \\( 90^\\circ \\).",
+      "correct": 2,
+      "solution": "By the Consecutive Interior Angles Theorem, when two parallel lines are cut by a transversal, consecutive interior angles are supplementary (their measures sum to \\(180^\\circ\\)).\n\nSet up the equation:\n\\[(4x + 9) + (2x + 33) = 180\\]\n\nCombine like terms:\n\\[6x + 42 = 180\\]\n\nSubtract \\(42\\) from both sides:\n\\[6x = 138\\]\n\nDivide by \\(6\\):\n\\[x = 23\\]\n\nEvaluating the angle measures at \\(x = 23\\) gives \\(4(23) + 9 = 101^\\circ\\) and \\(2(23) + 33 = 79^\\circ\\), which are supplementary (\\(101^\\circ + 79^\\circ = 180^\\circ\\)).\n\nCommon Misconceptions:\n- Choice A (\\(8\\)): Mistakenly assumes consecutive interior angles are complementary, solving \\(6x + 42 = 90\\).\n- Choice B (\\(12\\)): Confuses consecutive interior angles with alternate interior angles and sets them equal, solving \\(4x + 9 = 2x + 33\\).\n- Choice D (\\(37\\)): Makes an algebraic sign error by adding \\(42\\) to \\(180\\) instead of subtracting, solving \\(6x = 222\\).",
+      "sympy_verified": true
+    },
+    {
+      "id": "geo-0016",
+      "domain": "Probability",
+      "topic_id": "geo-prob",
+      "subskill_id": "geo-prob-2",
+      "educational_aim": "Calculate conditional probabilities from two-way frequency tables and Venn diagrams, and test whether two events A and B are statistically independent.",
+      "exam_archetype": "Conditional Probability P(A|B), Two-Way Tables & Independence Tests",
+      "difficulty": "medium",
+      "text": "A random sample of 200 high school students was surveyed regarding their grade level and whether they participate in school sports. The results are summarized in the two-way frequency table below:\n\n| | Participates in Sports (\\(S\\)) | Does Not Participate in Sports | Total |\n| :--- | :---: | :---: | :---: |\n| Grade 10 (\\(T\\)) | 48 | 32 | 80 |\n| Grade 11 | 42 | 78 | 120 |\n| Total | 90 | 110 | 200 |\n\nA student is selected at random from this sample. Let \\(S\\) be the event that the student participates in sports, and let \\(T\\) be the event that the student is in Grade 10. Which of the following statements is correct regarding the conditional probability \\(P(S \\mid T)\\) and the statistical independence of events \\(S\\) and \\(T\\)?",
+      "choices": [
+        "\\(P(S \\mid T) = 0.60\\), and the events are not independent because \\(P(S \\mid T) \\neq P(S)\\).",
+        "\\(P(S \\mid T) = 0.60\\), and the events are independent because \\(P(S \\mid T) > P(S)\\).",
+        "\\(P(S \\mid T) = 0.24\\), and the events are not independent because \\(P(S \\mid T) \\neq P(S)\\).",
+        "\\(P(S \\mid T) = 0.40\\), and the events are independent because \\(P(S \\mid T) = P(T)\\)."
+      ],
+      "correct": 0,
+      "solution": "1. **Calculate the conditional probability \\(P(S \\mid T)\\):**\n   The condition restricts the sample space to students in Grade 10 (row \\(T\\)), which contains a total of 80 students. Among these, 48 participate in sports:\n   \\[\n   P(S \\mid T) = \\frac{n(S \\cap T)}{n(T)} = \\frac{48}{80} = 0.60\n   \\]\n\n2. **Calculate the unconditional probability \\(P(S)\\):**\n   Across all 200 surveyed students, 90 participate in sports:\n   \\[\n   P(S) = \\frac{n(S)}{N} = \\frac{90}{200} = 0.45\n   \\]\n\n3. **Test for statistical independence:**\n   Two events \\(A\\) and \\(B\\) are statistically independent if and only if \\(P(A \\mid B) = P(A)\\), or equivalently \\(P(A \\cap B) = P(A) \\cdot P(B)\\).\n   Here:\n   \\[\n   P(S \\mid T) = 0.60 \\quad \\text{and} \\quad P(S) = 0.45\n   \\]\n   Since \\(P(S \\mid T) \\neq P(S)\\), the events \\(S\\) and \\(T\\) are not independent.\n\n4. **Analysis of distractors:**\n   - **Choice B** correctly calculates \\(P(S \\mid T) = 0.60\\), but misidentifies an inequality between conditional and unconditional probability as evidence of independence rather than dependence.\n   - **Choice C** confuses the conditional probability \\(P(S \\mid T)\\) with the joint probability \\(P(S \\cap T) = \\frac{48}{200} = 0.24\\).\n   - **Choice D** evaluates the proportion not participating in Grade 10 (\\(\\frac{32}{80} = 0.40\\)) or \\(P(T) = \\frac{80}{200} = 0.40\\) and applies a false criterion comparing \\(P(S \\mid T)\\) to \\(P(T)\\) instead of \\(P(S)\\).",
+      "sympy_verified": true
+    },
+    {
+      "id": "geo-quads-2-001",
+      "domain": "Polygons & Quadrilaterals",
+      "topic_id": "geo-quads",
+      "subskill_id": "geo-quads-2",
+      "educational_aim": "Apply opposite-side, opposite-angle, and diagonal bisection/perpendicularity/congruence properties of parallelograms, rectangles, rhombi, squares, and kites.",
+      "exam_archetype": "Parallelogram, Rectangle, Rhombus, Square & Kite Diagonal/Angle Properties",
+      "difficulty": "medium",
+      "text": "In rhombus \\(ABCD\\), the diagonals \\(AC\\) and \\(BD\\) intersect at point \\(E\\). If \\(m\\angle BAC = (3x + 10)^\\circ\\) and \\(m\\angle ABD = (2x - 5)^\\circ\\), what is the measure of \\(\\angle ABC\\)?",
+      "choices": [
+        "\\(29^\\circ\\)",
+        "\\(58^\\circ\\)",
+        "\\(61^\\circ\\)",
+        "\\(122^\\circ\\)"
+      ],
+      "correct": 1,
+      "solution": "1. In any rhombus, the diagonals are perpendicular to each other. Therefore, \\(AC \\perp BD\\), which means \\(m\\angle AEB = 90^\\circ\\).\n\n2. In right triangle \\(\\triangle ABE\\), the acute angles \\(\\angle EAB\\) (which is \\(\\angle BAC\\)) and \\(\\angle EBA\\) (which is \\(\\angle ABD\\)) are complementary:\n\\[ (3x + 10) + (2x - 5) = 90 \\]\n\\[ 5x + 5 = 90 \\implies 5x = 85 \\implies x = 17 \\]\n\n3. Calculate \\(m\\angle ABD\\):\n\\[ m\\angle ABD = 2(17) - 5 = 34 - 5 = 29^\\circ \\]\n\n4. The diagonals of a rhombus bisect the vertex angles. Thus, diagonal \\(BD\\) bisects \\(\\angle ABC\\):\n\\[ m\\angle ABC = 2 \\times m\\angle ABD = 2 \\times 29^\\circ = 58^\\circ \\]\n\nMisconception checks:\n- \\(29^\\circ\\) is \\(m\\angle ABD\\), omitting the step where \\(BD\\) bisects \\(\\angle ABC\\).\n- \\(61^\\circ\\) is \\(m\\angle BAC\\).\n- \\(122^\\circ\\) is \\(m\\angle BAD\\) (or \\(m\\angle BCD\\)), the supplementary consecutive angle.",
+      "sympy_verified": true
+    },
+    {
+      "id": "geo-right-2-cofunction-001",
+      "domain": "Right Triangles & Trigonometry",
+      "topic_id": "geo-right",
+      "subskill_id": "geo-right-2",
+      "educational_aim": "Apply sine, cosine, tangent, inverse trigonometric ratios, and the complementary cofunction identity sin(theta) = cos(90° - theta) to solve right-triangle and angle of elevation/depression problems.",
+      "exam_archetype": "Right-Triangle Trig Ratios, Cofunction Identity sin(x)=cos(90-x) & Elevation/Depression",
+      "difficulty": "medium",
+      "text": "In right triangle \\(ABC\\), the measure of \\(\\angle C\\) is \\(90^\\circ\\). If \\(\\sin A = \\frac{x + 1}{13}\\) and \\(\\cos B = \\frac{3x - 7}{13}\\), what is the value of \\(\\tan A\\)?",
+      "choices": [
+        "\\(\\frac{5}{12}\\)",
+        "\\(\\frac{12}{5}\\)",
+        "\\(\\frac{5}{13}\\)",
+        "\\(\\frac{12}{13}\\)"
+      ],
+      "correct": 0,
+      "solution": "Step 1: Apply the complementary cofunction identity.\nIn right triangle \\(ABC\\) with right angle at \\(C\\), the acute angles satisfy \\(A + B = 90^\\circ\\). Therefore, \\(\\cos B = \\cos(90^\\circ - A) = \\sin A\\).\n\nStep 2: Solve for \\(x\\).\nEquating \\(\\sin A\\) and \\(\\cos B\\):\n\\[\n\\frac{x + 1}{13} = \\frac{3x - 7}{13}\n\\]\n\\[\nx + 1 = 3x - 7 \\implies 2x = 8 \\implies x = 4\n\\]\n\nStep 3: Find the trigonometric ratios for angle \\(A\\).\nSubstitute \\(x = 4\\) into the sine expression:\n\\[\n\\sin A = \\frac{4 + 1}{13} = \\frac{5}{13}\n\\]\nSince \\(\\sin A = \\frac{\\text{opposite}}{\\text{hypotenuse}} = \\frac{5}{13}\\), we find the adjacent side using the Pythagorean theorem:\n\\[\n\\text{adjacent} = \\sqrt{13^2 - 5^2} = \\sqrt{169 - 25} = \\sqrt{144} = 12\n\\]\nThus, the tangent of angle \\(A\\) is:\n\\[\n\\tan A = \\frac{\\text{opposite}}{\\text{adjacent}} = \\frac{5}{12}\n\\]\n\nMisconception Analysis:\n- Choice B (\\(\\frac{12}{5}\\)) represents \\(\\tan B\\) or inverting the ratio (adjacent/opposite).\n- Choice C (\\(\\frac{5}{13}\\)) is \\(\\sin A\\).\n- Choice D (\\(\\frac{12}{13}\\)) is \\(\\cos A\\).",
+      "sympy_verified": true
+    },
+    {
+      "id": "geo-0019",
+      "domain": "Similarity & Proportional Reasoning",
+      "topic_id": "geo-similarity",
+      "subskill_id": "geo-similarity-2",
+      "educational_aim": "Solve proportions in bowtie/hourglass parallel-line triangles, indirect shadow/mirror height problems, and triangles divided by an interior angle bisector.",
+      "exam_archetype": "Bowtie/Hourglass Similarity, Indirect Shadow Measurement & Angle Bisector Theorem",
+      "difficulty": "medium",
+      "text": "In the figure shown, line segments \\(AC\\) and \\(BD\\) intersect at point \\(E\\), and \\(\\overline{AB} \\parallel \\overline{CD}\\). If \\(AB = 9\\), \\(CD = 15\\), and \\(AE = 6\\), what is the length of segment \\(EC\\)?",
+      "choices": [
+        "\\(3.6\\)",
+        "\\(9\\)",
+        "\\(10\\)",
+        "\\(12\\)"
+      ],
+      "correct": 2,
+      "solution": "Because segment \\(\\overline{AB}\\) is parallel to segment \\(\\overline{CD}\\), alternate interior angles formed by transversals \\(AC\\) and \\(BD\\) are congruent:\n\\[\n\\angle EAB \\cong \\angle ECD \\quad \\text{and} \\quad \\angle EBA \\cong \\angle EDC\n\\]\nAdditionally, vertical angles \\(\\angle AEB\\) and \\(\\angle CED\\) are congruent. Therefore, \\(\\triangle ABE \\sim \\triangle CDE\\) by Angle-Angle (AA) similarity.\n\nCorresponding side lengths of similar triangles are proportional:\n\\[\n\\frac{AB}{CD} = \\frac{AE}{EC}\n\\]\nSubstitute the given values into the proportion:\n\\[\n\\frac{9}{15} = \\frac{6}{EC}\n\\]\nSimplify the ratio \\(\\frac{9}{15}\\) to \\(\\frac{3}{5}\\):\n\\[\n\\frac{3}{5} = \\frac{6}{EC} \\implies 3 \\cdot EC = 30 \\implies EC = 10\n\\]\n\nCommon Misconceptions:\n- Inverting the ratio to write \\(\\frac{9}{15} = \\frac{EC}{6}\\) leads to \\(EC = \\frac{54}{15} = 3.6\\).\n- Applying additive reasoning instead of multiplicative scaling (e.g., noting \\(15 - 9 = 6\\) and adding \\(6 + 6 = 12\\)) yields \\(12\\).",
+      "sympy_verified": true,
       "fig": {
-        "type": "vertex_angles",
-        "mode": "complementary",
-        "labels": {
-          "1": "1",
-          "2": "2"
-        },
-        "w": 190
-      },
-      "difficulty": "easy"
+        "type": "bowtie",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "ratio": 0.6,
+        "sides": {
+          "ab": "9",
+          "cd": "15",
+          "ae": "6",
+          "ec": "x"
+        }
+      }
+    },
+    {
+      "id": "geo-0020",
+      "domain": "Area, Surface Area & Volume",
+      "topic_id": "geo-solids",
+      "subskill_id": "geo-solids-2",
+      "educational_aim": "Identify 2D cross-sections of 3D solids sliced by a plane, apply Cavalieri’s principle to oblique solids, and compute the volume generated by rotating a 2D polygon around an axis.",
+      "exam_archetype": "2D Plane Cross-Sections, Cavalieri’s Principle & Solids of Revolution",
+      "difficulty": "medium",
+      "text": "A quadrilateral in the coordinate plane has vertices at \\((0, 0)\\), \\((3, 0)\\), \\((3, 5)\\), and \\((0, 9)\\). What is the volume of the three-dimensional solid generated by rotating this region \\(360^\\circ\\) about the \\(y\\)-axis?",
+      "choices": [
+        "\\(57\\pi\\)",
+        "\\(66\\pi\\)",
+        "\\(72\\pi\\)",
+        "\\(81\\pi\\)"
+      ],
+      "correct": 0,
+      "solution": "To find the volume of the solid generated by revolving the region about the \\(y\\)-axis, we can decompose the quadrilateral horizontally at \\(y = 5\\) into two simpler geometric shapes:\n\n1. **Bottom Region (from \\(y = 0\\) to \\(y = 5\\)):**\n   This region is a rectangle bounded by \\(x = 0\\), \\(x = 3\\), \\(y = 0\\), and \\(y = 5\\). Revolving this rectangle around the \\(y\\)-axis generates a right circular cylinder with radius \\(r = 3\\) and height \\(h_1 = 5\\).\n   \\[\n   V_{\\text{cylinder}} = \\pi r^2 h_1 = \\pi (3^2)(5) = 45\\pi\n   \\]\n\n2. **Top Region (from \\(y = 5\\) to \\(y = 9\\)):**\n   This region is a right triangle with vertices at \\((0, 5)\\), \\((3, 5)\\), and \\((0, 9)\\). Revolving this right triangle around the \\(y\\)-axis generates a right circular cone with base radius \\(r = 3\\) and height \\(h_2 = 9 - 5 = 4\\).\n   \\[\n   V_{\\text{cone}} = \\frac{1}{3}\\pi r^2 h_2 = \\frac{1}{3}\\pi (3^2)(4) = 12\\pi\n   \\]\n\n3. **Total Volume:**\n   Adding the volumes of the two components:\n   \\[\n   V = V_{\\text{cylinder}} + V_{\\text{cone}} = 45\\pi + 12\\pi = 57\\pi\n   \\]\n\n- The distractor \\(81\\pi\\) corresponds to forgetting the factor of \\(\\frac{1}{3}\\) for the cone volume (treating the top as a cylinder of height 4: \\(45\\pi + 36\\pi = 81\\pi\\)).\n- The distractor \\(72\\pi\\) corresponds to using the full height \\(9\\) as the height of the cone: \\(45\\pi + \\frac{1}{3}\\pi(3^2)(9) = 72\\pi\\).",
+      "sympy_verified": true
+    },
+    {
+      "id": "geo-0021",
+      "domain": "Transformations & Symmetry",
+      "topic_id": "geo-transform",
+      "subskill_id": "geo-transform-2",
+      "educational_aim": "Compute exact image coordinates under reflections across horizontal, vertical, or diagonal lines and 90°/180°/270° rotations about the origin or an arbitrary center (h, k).",
+      "exam_archetype": "Reflections Across Lines (x = h, y = k, y = x, y = -x) & Rotations About (h, k)",
+      "difficulty": "medium",
+      "text": "In the coordinate plane, point \\(P(7, -2)\\) is rotated \\(90^\\circ\\) counterclockwise about the point \\(C(3, 1)\\) to produce image point \\(P'\\). What are the coordinates of \\(P'\\)?",
+      "choices": [
+        "\\((6, 5)\\)",
+        "\\((3, 4)\\)",
+        "\\((2, 7)\\)",
+        "\\((0, -3)\\)"
+      ],
+      "correct": 0,
+      "solution": "To rotate a point \\(P(x, y)\\) by \\(90^\\circ\\) counterclockwise about an arbitrary center \\(C(h, k)\\):\n\n1. Translate the center \\(C(3, 1)\\) to the origin by finding the displacement vector from \\(C\\) to \\(P\\):\n\\[\n\\Delta x = x - h = 7 - 3 = 4\n\\]\n\\[\n\\Delta y = y - k = -2 - 1 = -3\n\\]\n\n2. Apply a \\(90^\\circ\\) counterclockwise rotation about the origin, which maps \\((\\Delta x, \\Delta y) \\to (-\\Delta y, \\Delta x)\\):\n\\[\n\\Delta x' = -(-3) = 3\n\\]\n\\[\n\\Delta y' = 4\n\\]\n\n3. Translate back by adding the coordinates of center \\(C(3, 1)\\):\n\\[\nx' = h + \\Delta x' = 3 + 3 = 6\n\\]\n\\[\ny' = k + \\Delta y' = 1 + 4 = 5\n\\]\n\nThus, the coordinates of \\(P'\\) are \\((6, 5)\\).\n\nCommon Misconceptions:\n- Choice B, \\((3, 4)\\), results from rotating the relative displacement vector but forgetting to translate back by adding the center \\(C(3, 1)\\).\n- Choice C, \\((2, 7)\\), results from mistakenly rotating about the origin \\((0, 0)\\) instead of the center \\(C(3, 1)\\).\n- Choice D, \\((0, -3)\\), results from rotating clockwise instead of counterclockwise about \\(C(3, 1)\\).",
+      "sympy_verified": true
+    },
+    {
+      "id": "geo-0022",
+      "domain": "Triangles & Congruence",
+      "topic_id": "geo-triangles",
+      "subskill_id": "geo-triangles-2",
+      "educational_aim": "Identify valid congruence criteria (SSS, SAS, ASA, AAS, HL), recognize why SSA and AAA fail, and determine the exact missing condition needed to prove two triangles congruent.",
+      "exam_archetype": "Triangle Congruence Proofs (SSS, SAS, ASA, AAS, HL vs. SSA)",
+      "difficulty": "medium",
+      "text": "In triangles \\(ABC\\) and \\(DEF\\), it is given that \\(AB \\cong DE\\) and \\(\\angle B \\cong \\angle E\\). Which of the following additional conditions is NOT sufficient by itself to guarantee that \\(\\triangle ABC \\cong \\triangle DEF\\)?",
+      "choices": [
+        "\\(AC \\cong DF\\)",
+        "\\(BC \\cong EF\\)",
+        "\\(\\angle A \\cong \\angle D\\)",
+        "\\(\\angle C \\cong \\angle F\\)"
+      ],
+      "correct": 0,
+      "solution": "We are given one pair of congruent sides (\\(AB \\cong DE\\)) and one pair of congruent angles (\\(\\angle B \\cong \\angle E\\)). We evaluate each choice:\n\n1. If \\(AC \\cong DF\\): The given angle \\(\\angle B\\) is not between the two known sides \\(AB\\) and \\(AC\\). This setup corresponds to Side-Side-Angle (SSA), which is not a valid congruence criterion because two non-congruent triangles can share these measurements (the ambiguous case). Thus, this condition is NOT sufficient.\n\n2. If \\(BC \\cong EF\\): The angle \\(\\angle B\\) is the included angle between sides \\(AB\\) and \\(BC\\), and \\(\\angle E\\) is between \\(DE\\) and \\(EF\\). This proves congruence by the Side-Angle-Side (SAS) criterion.\n\n3. If \\(\\angle A \\cong \\angle D\\): Side \\(AB\\) is the included side between angles \\(\\angle A\\) and \\(\\angle B\\). This proves congruence by the Angle-Side-Angle (ASA) criterion.\n\n4. If \\(\\angle C \\cong \\angle F\\): We have two pairs of congruent angles and a non-included side adjacent to one of them. This proves congruence by the Angle-Angle-Side (AAS) criterion.\n\nTherefore, the condition \\(AC \\cong DF\\) is NOT sufficient to guarantee congruence.",
+      "sympy_verified": true
+    },
+    {
+      "id": "geo-0023",
+      "domain": "Circles",
+      "topic_id": "geo-circles",
+      "subskill_id": "geo-circles-3",
+      "educational_aim": "Convert x^2 + y^2 + Dx + Ey + F = 0 to standard form (x - h)^2 + (y - k)^2 = r^2 by completing the square, and find the equation of the line tangent to a circle at a given point.",
+      "exam_archetype": "Completing the Square on Circle Equations & Tangent Line Equations",
+      "difficulty": "hard",
+      "text": "In the \\(xy\\)-plane, the circle given by the equation \\(x^2 + y^2 - 4x + 6y - 12 = 0\\) is tangent to line \\(\\ell\\) at the point \\((5, 1)\\). Which of the following is an equation of line \\(\\ell\\)?",
+      "choices": [
+        "\\(3x + 4y = 19\\)",
+        "\\(4x + 3y = 23\\)",
+        "\\(3x - 4y = 11\\)",
+        "\\(4x - 3y = 17\\)"
+      ],
+      "correct": 0,
+      "solution": "To find the equation of the tangent line \\(\\ell\\), we first find the center of the circle by completing the square:\n\n1. Group the \\(x\\) and \\(y\\) terms:\n\\[ (x^2 - 4x) + (y^2 + 6y) = 12 \\]\n\n2. Complete the square for both variables:\n\\[ \\left(x^2 - 4x + 4\\right) + \\left(y^2 + 6y + 9\\right) = 12 + 4 + 9 \\]\n\\[ (x - 2)^2 + (y + 3)^2 = 25 \\]\n\nThus, the center of the circle is \\(C(2, -3)\\) and the radius is \\(r = 5\\).\n\n3. Determine the slope of the radius connecting the center \\(C(2, -3)\\) to the point of tangency \\(P(5, 1)\\):\n\\[ m_{\\text{radius}} = \\frac{1 - (-3)}{5 - 2} = \\frac{4}{3} \\]\n\n4. A tangent line is perpendicular to the radius at the point of tangency. Therefore, the slope of line \\(\\ell\\) is the negative reciprocal of \\(m_{\\text{radius}}\\):\n\\[ m_{\\ell} = -\\frac{1}{\\frac{4}{3}} = -\\frac{3}{4} \\]\n\n5. Write the equation of line \\(\\ell\\) using point-slope form through \\((5, 1)\\):\n\\[ y - 1 = -\\frac{3}{4}(x - 5) \\]\nMultiply both sides by 4:\n\\[ 4(y - 1) = -3(x - 5) \\implies 4y - 4 = -3x + 15 \\implies 3x + 4y = 19 \\]\n\nAll four options contain the point \\((5, 1)\\), but only \\(3x + 4y = 19\\) has the correct perpendicular slope of \\(-\\frac{3}{4}\\).",
+      "sympy_verified": true
+    },
+    {
+      "id": "geo-0024",
+      "domain": "Coordinate Geometry",
+      "topic_id": "geo-coord",
+      "subskill_id": "geo-coord-3",
+      "educational_aim": "Compute the shortest perpendicular distance from a point to a line, find coordinate orthocenters/circumcenters, and derive parabola equations from focus and directrix.",
+      "exam_archetype": "Point-to-Line Distance, Coordinate Triangle Centers & Focus-Directrix Parabolas",
+      "difficulty": "hard",
+      "text": "In the \\(xy\\)-plane, a parabola \\(\\mathcal{P}\\) is defined as the set of all points equidistant from the focus \\(F(1, 2)\\) and the directrix line \\(y = -2\\). The line \\(x - y = 1\\) intersects \\(\\mathcal{P}\\) at two distinct points, \\(A\\) and \\(B\\). What is the length of the segment \\(AB\\)?",
+      "choices": [
+        "\\(4\\sqrt{2}\\)",
+        "\\(8\\)",
+        "\\(8\\sqrt{2}\\)",
+        "\\(16\\)"
+      ],
+      "correct": 2,
+      "solution": "Step 1: Derive the equation of the parabola \\(\\mathcal{P}\\) using the focus-directrix definition.\nBy definition, any point \\(P(x, y)\\) on the parabola satisfies:\n\\[\n\\text{distance}(P, F) = \\text{distance}(P, \\text{directrix})\n\\]\nThe distance from \\((x, y)\\) to \\(F(1, 2)\\) is \\(\\sqrt{(x - 1)^2 + (y - 2)^2}\\), and the perpendicular distance to the directrix \\(y = -2\\) is \\(|y - (-2)| = |y + 2|\\).\n\nEquating the squared distances:\n\\[\n(x - 1)^2 + (y - 2)^2 = (y + 2)^2\n\\]\nExpanding the terms involving \\(y\\):\n\\[\n(x - 1)^2 + y^2 - 4y + 4 = y^2 + 4y + 4\n\\]\nSubtracting \\(y^2 + 4\\) from both sides and simplifying:\n\\[\n(x - 1)^2 = 8y \\implies y = \\frac{(x - 1)^2}{8}\n\\]\n\nStep 2: Find the intersection points of the parabola and the line \\(x - y = 1\\).\nFrom the line's equation, \\(y = x - 1\\). Substitute this into the parabola's equation:\n\\[\nx - 1 = \\frac{(x - 1)^2}{8}\n\\]\n\\[\n8(x - 1) = (x - 1)^2\n\\]\n\\[\n(x - 1)^2 - 8(x - 1) = 0 \\implies (x - 1)(x - 1 - 8) = 0\n\\]\nThus, \\(x - 1 = 0\\) or \\(x - 9 = 0\\), yielding \\(x = 1\\) or \\(x = 9\\).\n\nStep 3: Determine the coordinates of \\(A\\) and \\(B\\).\n- For \\(x = 1\\): \\(y = 1 - 1 = 0\\), so \\(A = (1, 0)\\).\n- For \\(x = 9\\): \\(y = 9 - 1 = 8\\), so \\(B = (9, 8)\\).\n\nStep 4: Compute the length of segment \\(AB\\).\n\\[\nAB = \\sqrt{(9 - 1)^2 + (8 - 0)^2} = \\sqrt{8^2 + 8^2} = \\sqrt{64 + 64} = \\sqrt{128} = 8\\sqrt{2}\n\\]\n\nMisconception Analysis:\n- Choice A (\\(4\\sqrt{2}\\)) results from incorrectly using \\(4p = 4\\) instead of \\(4p = 8\\) (where \\(p = 2\\) is the directed distance from vertex to focus).\n- Choice B (\\(8\\)) results from computing only the horizontal change \\(\\Delta x = 9 - 1 = 8\\) instead of the Euclidean distance.\n- Choice D (\\(16\\)) results from computing the taxicab/Manhattan distance \\(|\\Delta x| + |\\Delta y| = 8 + 8 = 16\\).",
+      "sympy_verified": true
+    },
+    {
+      "id": "geo-0025",
+      "domain": "Foundations & Reasoning",
+      "topic_id": "geo-foundations",
+      "subskill_id": "geo-foundations-3",
+      "educational_aim": "Evaluate truth values of conditional, converse, inverse, contrapositive, and biconditional geometric statements and construct counterexamples.",
+      "exam_archetype": "Deductive Logic: Converse, Inverse, Contrapositive & Counterexamples",
+      "difficulty": "hard",
+      "text": "Consider the following conditional statement where the universe of discourse is the set of all parallelograms:\n\n\\(\\text{Statement } P\\text{: \"If the diagonals of a parallelogram are perpendicular, then the parallelogram is a square.\"}\\)\n\nWhich of the following correctly classifies the truth values of Statement \\(P\\), its converse, its inverse, and its contrapositive, along with a mathematically valid counterexample for any false statement(s)?",
+      "choices": [
+        "Statement \\(P\\) is False (counterexample: a rhombus with unequal diagonal lengths);\nConverse is True;\nInverse is True;\nContrapositive is False (counterexample: a rhombus with unequal diagonal lengths).",
+        "Statement \\(P\\) is False (counterexample: a rectangle with unequal adjacent sides);\nConverse is True;\nInverse is True;\nContrapositive is False (counterexample: a rectangle with unequal adjacent sides).",
+        "Statement \\(P\\) is False (counterexample: a rhombus with unequal diagonal lengths);\nConverse is False (counterexample: a non-square rhombus);\nInverse is False (counterexample: a non-square rectangle);\nContrapositive is False (counterexample: a rhombus with unequal diagonal lengths).",
+        "Statement \\(P\\) is True;\nConverse is False (counterexample: a rhombus with unequal diagonal lengths);\nInverse is False (counterexample: a rhombus with unequal diagonal lengths);\nContrapositive is True."
+      ],
+      "correct": 0,
+      "solution": "Let the universe of discourse be the set of all parallelograms. Define the component propositions:\n- \\(p\\): \"The diagonals of the parallelogram are perpendicular.\"\n- \\(q\\): \"The parallelogram is a square.\"\n\n1. **Statement \\(P\\) (Conditional \\(p \\to q\\)):**\n   - A conditional statement \\(p \\to q\\) is false if and only if there exists a counterexample where the hypothesis \\(p\\) is true and the conclusion \\(q\\) is false.\n   - A rhombus with unequal diagonal lengths (a non-square rhombus) is a parallelogram whose diagonals are perpendicular (so \\(p\\) is true), but its four interior angles are not all \\(90^\\circ\\), so it is not a square (thus \\(q\\) is false).\n   - Therefore, Statement \\(P\\) is **False**.\n   - *Misconception alert:* A non-square rectangle cannot serve as a counterexample to \\(p \\to q\\) because its diagonals are not perpendicular (its hypothesis \\(p\\) is false).\n\n2. **Converse (\\(q \\to p\\)):**\n   - \"If a parallelogram is a square, then its diagonals are perpendicular.\"\n   - Every square is a rhombus, and all rhombi have mutually perpendicular diagonals. Hence, this statement is **True**.\n\n3. **Inverse (\\(\\neg p \\to \\neg q\\)):**\n   - \"If the diagonals of a parallelogram are not perpendicular, then the parallelogram is not a square.\"\n   - The inverse is logically equivalent to the converse (\\(\\neg p \\to \\neg q \\equiv q \\to p\\)). Since the converse is true, the inverse is **True**.\n\n4. **Contrapositive (\\(\\neg q \\to \\neg p\\)):**\n   - \"If a parallelogram is not a square, then its diagonals are not perpendicular.\"\n   - The contrapositive is logically equivalent to the original conditional (\\(\\neg q \\to \\neg p \\equiv p \\to q\\)). Since Statement \\(P\\) is false, the contrapositive is **False**.\n   - A valid counterexample to \\(\\neg q \\to \\neg p\\) must make \\(\\neg q\\) true (not a square) and \\(\\neg p\\) false (diagonals are perpendicular). A rhombus with unequal diagonals satisfies both conditions.",
+      "sympy_verified": true
+    },
+    {
+      "id": "geo-0026",
+      "domain": "Lines & Angles",
+      "topic_id": "geo-lines",
+      "subskill_id": "geo-lines-3",
+      "educational_aim": "Solve multi-transversal and bent/crook-angle problems between parallel lines by constructing an auxiliary parallel line.",
+      "exam_archetype": "Auxiliary Parallel Lines & Crook-Angle Transversals",
+      "difficulty": "hard",
+      "text": "In a plane, two horizontal lines \\(\\ell_1\\) and \\(\\ell_2\\) are parallel, with \\(\\ell_1\\) positioned above \\(\\ell_2\\). A zig-zag transversal path connects point \\(A\\) on \\(\\ell_1\\) to point \\(D\\) on \\(\\ell_2\\) through intermediate vertices \\(B\\) and \\(C\\), which lie strictly between the two parallel lines.\n\n- Segment \\(AB\\) extends downward and to the right from \\(A\\), forming an acute angle of \\(65^\\circ\\) with line \\(\\ell_1\\).\n- Segment \\(BC\\) extends downward and to the left from \\(B\\) to \\(C\\).\n- Segment \\(CD\\) extends downward and to the right from \\(C\\), meeting line \\(\\ell_2\\) at an acute angle of \\(25^\\circ\\).\n\nIf the ray that bisects \\(\\angle BCD\\) is perpendicular to segment \\(AB\\), what is the measure of \\(\\angle ABC\\)?",
+      "choices": [
+        "\\(115^\\circ\\)",
+        "\\(130^\\circ\\)",
+        "\\(140^\\circ\\)",
+        "\\(150^\\circ\\)"
+      ],
+      "correct": 2,
+      "solution": "To solve this crook-angle transversal problem, we construct auxiliary horizontal lines parallel to \\(\\ell_1\\) and \\(\\ell_2\\) through vertices \\(B\\) and \\(C\\).\n\n1. **Determine the direction of the angle bisector of \\(\\angle BCD\\):**\n   - Segment \\(AB\\) slopes downward and to the right at an angle of \\(65^\\circ\\) below the horizontal (direction angle \\(-65^\\circ\\)).\n   - Since the ray bisecting \\(\\angle BCD\\) points into the interior of \\(\\angle BCD\\) (to the right) and is perpendicular to segment \\(AB\\), its inclination angle relative to the horizontal is \\(-65^\\circ + 90^\\circ = +25^\\circ\\) (i.e., \\(25^\\circ\\) above the horizontal).\n\n2. **Determine the direction of ray \\(CB\\):**\n   - Construct an auxiliary horizontal line through vertex \\(C\\).\n   - By alternate interior angles with \\(\\ell_2\\), segment \\(CD\\) points downward and to the right at an angle of \\(25^\\circ\\) below the horizontal (direction angle \\(-25^\\circ\\)).\n   - The angle between ray \\(CD\\) and the bisector ray is \\(25^\\circ - (-25^\\circ) = 50^\\circ\\).\n   - Because the ray bisects \\(\\angle BCD\\), the angle between the bisector ray and ray \\(CB\\) is also \\(50^\\circ\\).\n   - Thus, ray \\(CB\\) points upward and to the right at an angle of \\(25^\\circ + 50^\\circ = 75^\\circ\\) above the horizontal.\n\n3. **Calculate \\(m\\angle ABC\\) using the auxiliary horizontal line at \\(B\\):**\n   - Through vertex \\(B\\), draw a horizontal line parallel to \\(\\ell_1\\).\n   - Segment \\(BA\\) extends upward and to the left, making an angle of \\(65^\\circ\\) above the leftward horizontal ray (alternate interior to the \\(65^\\circ\\) angle at \\(A\\)).\n   - Segment \\(BC\\) extends downward and to the left, making an angle of \\(75^\\circ\\) below the leftward horizontal ray (alternate interior to the \\(75^\\circ\\) angle made by ray \\(CB\\) with the horizontal at \\(C\\)).\n   - Summing these two adjacent angles gives:\n     \\[\n     m\\angle ABC = 65^\\circ + 75^\\circ = 140^\\circ\n     \\]",
+      "sympy_verified": true
+    },
+    {
+      "id": "geo-0027",
+      "domain": "Probability",
+      "topic_id": "geo-prob",
+      "subskill_id": "geo-prob-3",
+      "educational_aim": "Solve compound probability problems without replacement using tree diagrams, combinations nCr, permutations nPr, and Bayes’ theorem.",
+      "exam_archetype": "Permutations, Combinations & Multi-Stage Tree Diagram / Bayes Probability",
+      "difficulty": "hard",
+      "text": "A quality control laboratory receives components sorted into two bins:\n- **Bin A** contains 10 components, of which exactly 3 are defective and 7 are non-defective.\n- **Bin B** contains 10 components, of which exactly 6 are defective and 4 are non-defective.\n\nTo conduct an inspection, an automated system first selects a bin at random: it rolls a fair standard six-sided die and selects **Bin A** if the result is 1 or 2; otherwise (if the result is 3, 4, 5, or 6), it selects **Bin B**. From the chosen bin, the system then randomly samples 2 components without replacement.\n\nIf both sampled components are found to be defective, what is the probability that the components were drawn from **Bin A**?",
+      "choices": [
+        "\\(\\dfrac{1}{11}\\)",
+        "\\(\\dfrac{1}{9}\\)",
+        "\\(\\dfrac{1}{6}\\)",
+        "\\(\\dfrac{10}{11}\\)"
+      ],
+      "correct": 0,
+      "solution": "We use Bayes' theorem combined with combinations to find the conditional probability \\(P(\\text{Bin A} \\mid \\text{both defective})\\).\n\n**Step 1: Determine prior probabilities of selecting each bin.**\nThe die has 6 equally likely outcomes:\n- Bin A is selected if the die shows 1 or 2: \n  \\[ P(A) = \\dfrac{2}{6} = \\dfrac{1}{3} \\]\n- Bin B is selected if the die shows 3, 4, 5, or 6:\n  \\[ P(B) = \\dfrac{4}{6} = \\dfrac{2}{3} \\]\n\n**Step 2: Determine conditional probabilities of sampling 2 defective components without replacement.**\nLet \\(D_2\\) denote the event that both selected components are defective.\n- From Bin A (3 defective out of 10):\n  \\[ P(D_2 \\mid A) = \\dfrac{\\binom{3}{2}}{\\binom{10}{2}} = \\dfrac{3}{45} = \\dfrac{1}{15} \\]\n- From Bin B (6 defective out of 10):\n  \\[ P(D_2 \\mid B) = \\dfrac{\\binom{6}{2}}{\\binom{10}{2}} = \\dfrac{15}{45} = \\dfrac{1}{3} \\]\n\n**Step 3: Apply the Law of Total Probability to find \\(P(D_2)\\).**\n\\[ P(D_2) = P(A) \\cdot P(D_2 \\mid A) + P(B) \\cdot P(D_2 \\mid B) \\]\n\\[ P(D_2) = \\left(\\dfrac{1}{3}\\right)\\left(\\dfrac{3}{45}\\right) + \\left(\\dfrac{2}{3}\\right)\\left(\\dfrac{15}{45}\\right) = \\dfrac{3}{135} + \\dfrac{30}{135} = \\dfrac{33}{135} = \\dfrac{11}{45} \\]\n\n**Step 4: Apply Bayes' theorem.**\n\\[ P(A \\mid D_2) = \\dfrac{P(A) \\cdot P(D_2 \\mid A)}{P(D_2)} = \\dfrac{\\dfrac{3}{135}}{\\dfrac{33}{135}} = \\dfrac{3}{33} = \\dfrac{1}{11} \\]\n\n**Common Misconceptions:**\n- Choice B (\\(\\frac{1}{9}\\)) occurs if sampling is incorrectly modeled with replacement, giving likelihoods \\((\\frac{3}{10})^2\\) and \\((\\frac{6}{10})^2\\).\n- Choice C (\\(\\frac{1}{6}\\)) occurs if the prior probabilities of the bins are neglected (assuming \\(P(A) = P(B) = \\frac{1}{2}\\)).\n- Choice D (\\(\\frac{10}{11}\\)) is the posterior probability that the components came from Bin B.",
+      "sympy_verified": true
+    },
+    {
+      "id": "geo-quads-3-hard-001",
+      "domain": "Polygons & Quadrilaterals",
+      "topic_id": "geo-quads",
+      "subskill_id": "geo-quads-3",
+      "educational_aim": "Solve algebraic problems using the Trapezoid Midsegment Theorem, isosceles trapezoid base angles/diagonals, and quadrilateral classification on the coordinate plane.",
+      "exam_archetype": "Trapezoid Midsegment Theorem & Diagonals of Isosceles Trapezoids",
+      "difficulty": "hard",
+      "text": "In isosceles trapezoid \\(ABCD\\), base \\(AB\\) is parallel to base \\(CD\\) with \\(AB > CD\\). The midsegment \\(MN\\) connects the midpoint \\(M\\) of leg \\(AD\\) to the midpoint \\(N\\) of leg \\(BC\\). Diagonals \\(AC\\) and \\(BD\\) intersect \\(MN\\) at points \\(P\\) and \\(Q\\), respectively. If \\(MN = 16\\), \\(PQ = 5\\), and the leg length is \\(AD = 13\\), what is the length of diagonal \\(AC\\)?",
+      "choices": [
+        "20",
+        "18",
+        "5\\sqrt{17}",
+        "2\\sqrt{61}"
+      ],
+      "correct": 0,
+      "solution": "We solve the problem in three geometric steps using midsegment and isosceles trapezoid properties:\n\n1. **Determine the Base Lengths:**\nBy the Trapezoid Midsegment Theorem, the midsegment \\(MN\\) has length:\n\\[ MN = \\frac{AB + CD}{2} = 16 \\implies AB + CD = 32 \\]\nIn \\(\\triangle ACD\\), \\(MP\\) connects the midpoint of \\(AD\\) parallel to base \\(CD\\), so \\(MP = \\frac{1}{2}CD\\). In \\(\\triangle ABD\\), \\(MQ\\) connects the midpoint of \\(AD\\) parallel to base \\(AB\\), so \\(MQ = \\frac{1}{2}AB\\). Therefore, the segment along the midsegment between the two diagonals is:\n\\[ PQ = MQ - MP = \\frac{AB - CD}{2} = 5 \\implies AB - CD = 10 \\]\nSolving the linear system:\n\\[ AB = \\frac{32 + 10}{2} = 21, \\quad CD = \\frac{32 - 10}{2} = 11 \\]\n\n2. **Determine the Height:**\nDropping altitudes from \\(D\\) and \\(C\\) perpendicular to base \\(AB\\) at \\(D'\\) and \\(C'\\), respectively, the projection of leg \\(AD\\) onto \\(AB\\) is:\n\\[ AD' = \\frac{AB - CD}{2} = 5 \\]\nApplying the Pythagorean theorem in right triangle \\(\\triangle AD'D\\):\n\\[ (DD')^2 = AD^2 - (AD')^2 = 13^2 - 5^2 = 169 - 25 = 144 \\implies DD' = 12 \\]\n\n3. **Determine the Diagonal Length:**\nThe remaining segment along the base from \\(D'\\) to \\(B\\) has length:\n\\[ D'B = AB - AD' = 21 - 5 = 16 \\]\nNotice that for any isosceles trapezoid, \\(D'B\\) is equal to the midsegment length \\(MN\\).\nApplying the Pythagorean theorem in right triangle \\(\\triangle BD'D\\):\n\\[ BD = \\sqrt{(DD')^2 + (D'B)^2} = \\sqrt{12^2 + 16^2} = \\sqrt{144 + 256} = \\sqrt{400} = 20 \\]\nSince the diagonals of an isosceles trapezoid are congruent, \\(AC = BD = 20\\).",
+      "sympy_verified": true
+    },
+    {
+      "id": "geo-0029",
+      "domain": "Right Triangles & Trigonometry",
+      "topic_id": "geo-right",
+      "subskill_id": "geo-right-3",
+      "educational_aim": "Solve non-right triangles using the Law of Sines, Law of Cosines, and K = (1/2)ab sin(C), including two-observer elevation sightlines and navigation bearings.",
+      "exam_archetype": "Law of Sines, Law of Cosines, Area 1/2 ab sin(C) & Two-Station Sightlines",
+      "difficulty": "hard",
+      "text": "Two coastal observation stations, \\(A\\) and \\(B\\), are situated \\(12\\text{ km}\\) apart along a straight shoreline running due east-west, with station \\(B\\) located due east of station \\(A\\). Both stations detect a distressed vessel at point \\(C\\) offshore (north of the shoreline). From station \\(A\\), the vessel is on a bearing of \\(030^\\circ\\). From station \\(B\\), the vessel is on a bearing of \\(315^\\circ\\). What is the area of \\(\\triangle ABC\\), in square kilometers?\n\n*(Note: Bearings are measured clockwise from true north.)*",
+      "choices": [
+        "\\(108 - 36\\sqrt{3}\\)",
+        "\\(108 + 36\\sqrt{3}\\)",
+        "\\(36\\sqrt{3} - 36\\)",
+        "\\(216 - 72\\sqrt{3}\\)"
+      ],
+      "correct": 0,
+      "solution": "1. **Determine the interior angles of \\(\\triangle ABC\\)**:\n- The baseline segment \\(AB\\) runs due east from \\(A\\) to \\(B\\), corresponding to a bearing of \\(090^\\circ\\).\n- The bearing from \\(A\\) to \\(C\\) is \\(030^\\circ\\). The interior angle at \\(A\\) is:\n  \\[\n  \\angle CAB = 90^\\circ - 30^\\circ = 60^\\circ\n  \\]\n- From station \\(B\\), due west toward \\(A\\) is along a bearing of \\(270^\\circ\\). The vessel \\(C\\) is on a bearing of \\(315^\\circ\\). Thus, the interior angle at \\(B\\) is:\n  \\[\n  \\angle CBA = 315^\\circ - 270^\\circ = 45^\\circ\n  \\]\n- The interior angle at \\(C\\) is:\n  \\[\n  \\angle ACB = 180^\\circ - (60^\\circ + 45^\\circ) = 75^\\circ\n  \\]\n\n2. **Find side length \\(AC\\) using the Law of Sines**:\n- By the sum-of-angles identity, \\(\\sin 75^\\circ = \\sin(45^\\circ + 30^\\circ) = \\sin 45^\\circ \\cos 30^\\circ + \\cos 45^\\circ \\sin 30^\\circ = \\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{3}}{2} + \\frac{\\sqrt{2}}{2} \\cdot \\frac{1}{2} = \\frac{\\sqrt{6} + \\sqrt{2}}{4}\\).\n- Applying the Law of Sines:\n  \\[\n  \\frac{AC}{\\sin(\\angle CBA)} = \\frac{AB}{\\sin(\\angle ACB)} \\implies \\frac{AC}{\\sin 45^\\circ} = \\frac{12}{\\sin 75^\\circ}\n  \\]\n  \\[\n  AC = \\frac{12 \\cdot \\frac{\\sqrt{2}}{2}}{\\frac{\\sqrt{6} + \\sqrt{2}}{4}} = \\frac{24\\sqrt{2}}{\\sqrt{6} + \\sqrt{2}} = \\frac{24}{\\sqrt{3} + 1} = 12(\\sqrt{3} - 1)\\text{ km}\n  \\]\n\n3. **Compute the area \\(K\\) using \\(K = \\frac{1}{2}ab\\sin C\\)**:\n  \\[\n  \\text{Area} = \\frac{1}{2} \\cdot AB \\cdot AC \\cdot \\sin(\\angle CAB) = \\frac{1}{2} \\cdot 12 \\cdot 12(\\sqrt{3} - 1) \\cdot \\sin 60^\\circ\n  \\]\n  \\[\n  \\text{Area} = 72(\\sqrt{3} - 1) \\cdot \\frac{\\sqrt{3}}{2} = 36\\sqrt{3}(\\sqrt{3} - 1) = 36(3 - \\sqrt{3}) = 108 - 36\\sqrt{3}\\text{ km}^2\n  \\]\n\n**Common Misconceptions**:\n- **Choice B (\\(108 + 36\\sqrt{3}\\))**: Results from a sign error when expanding \\(\\sin(45^\\circ + 30^\\circ)\\) as \\(\\frac{\\sqrt{6} - \\sqrt{2}}{4}\\).\n- **Choice C (\\(36\\sqrt{3} - 36\\))**: Results from directly confusing bearing angles with the interior angles (taking \\(\\angle A = 30^\\circ\\) instead of \\(60^\\circ\\)).\n- **Choice D (\\(216 - 72\\sqrt{3}\\))**: Results from forgetting the \\(\\frac{1}{2}\\) factor in the triangle area formula.",
+      "sympy_verified": true
+    },
+    {
+      "id": "geo-0030",
+      "domain": "Similarity & Proportional Reasoning",
+      "topic_id": "geo-similarity",
+      "subskill_id": "geo-similarity-3",
+      "educational_aim": "Apply the Right-Triangle Altitude Geometric Mean Theorems to find altitude and leg lengths, solve inverted overlapping similar triangles (SAS/AA), and relate scale factor k to perimeter (k), area (k^2), and volume (k^3) ratios.",
+      "exam_archetype": "Right-Triangle Altitude Geometric Mean (h^2 = pq, a^2 = qc) & k^2 Area / k^3 Volume Scaling",
+      "difficulty": "hard",
+      "text": "In the figure, right triangle \\(ABC\\) has a right angle at \\(B\\), and altitude \\(\\overline{BD}\\) is drawn to hypotenuse \\(\\overline{AC}\\). The altitude divides the hypotenuse into segments of lengths \\(AD = 9\\) and \\(DC = 16\\). Two similar right-triangular prisms, \\(\\mathcal{P}_1\\) and \\(\\mathcal{P}_2\\), have bases \\(\\triangle ABD\\) and \\(\\triangle BCD\\), respectively. If the volume of prism \\(\\mathcal{P}_1\\) is \\(135\\text{ cm}^3\\), what is the volume of prism \\(\\mathcal{P}_2\\), in \\(\\text{cm}^3\\)?",
+      "choices": [
+        "320",
+        "240",
+        "625",
+        "180"
+      ],
+      "correct": 0,
+      "solution": "1. **Find the altitude and side lengths using the Geometric Mean Theorem:**\nIn right triangle \\(ABC\\) with altitude \\(\\overline{BD}\\) to hypotenuse \\(\\overline{AC}\\):\n\\[\nBD = \\sqrt{AD \\cdot DC} = \\sqrt{9 \\cdot 16} = \\sqrt{144} = 12\n\\]\nAlternatively, we can find the hypotenuse \\(AC = AD + DC = 9 + 16 = 25\\), and the legs of \\(\\triangle ABC\\) using the Leg Geometric Mean Theorem:\n\\[\nAB = \\sqrt{AD \\cdot AC} = \\sqrt{9 \\cdot 25} = 15\n\\]\n\\[\nBC = \\sqrt{DC \\cdot AC} = \\sqrt{16 \\cdot 25} = 20\n\\]\n\n2. **Determine the linear scale factor \\(k\\) between \\(\\triangle ABD\\) and \\(\\triangle BCD\\):**\nBoth sub-triangles are similar to \\(\\triangle ABC\\) and to each other: \\(\\triangle ABD \\sim \\triangle BCD\\).\nMatching corresponding sides (for instance, the hypotenuses \\(AB\\) and \\(BC\\), or corresponding legs \\(BD\\) and \\(AD\\)):\n\\[\nk = \\frac{BC}{AB} = \\frac{20}{15} = \\frac{4}{3} \\quad \\left(\\text{or } k = \\frac{CD}{BD} = \\frac{16}{12} = \\frac{4}{3}\\right)\n\\]\n\n3. **Relate the scale factor to the volume ratio:**\nSince prisms \\(\\mathcal{P}_1\\) and \\(\\mathcal{P}_2\\) are similar three-dimensional solids, their volumes scale as the cube of the linear scale factor \\(k\\):\n\\[\n\\frac{\\text{Volume}(\\mathcal{P}_2)}{\\text{Volume}(\\mathcal{P}_1)} = k^3 = \\left(\\frac{4}{3}\\right)^3 = \\frac{64}{27}\n\\]\n\n4. **Calculate the volume of \\(\\mathcal{P}_2\\):**\n\\[\n\\text{Volume}(\\mathcal{P}_2) = 135 \\cdot \\frac{64}{27} = 5 \\cdot 64 = 320\\text{ cm}^3\n\\]\n\n**Common Misconceptions:**\n- **Choice B (240):** Incorrectly scales volume by the area ratio \\(k^2 = \\frac{16}{9}\\) instead of \\(k^3\\) (i.e., \\(135 \\cdot \\frac{16}{9} = 240\\)).\n- **Choice C (625):** Scales to the prism based on the entire triangle \\(\\triangle ABC\\) using ratio \\(\\left(\\frac{5}{3}\\right)^3 = \\frac{125}{27}\\) (i.e., \\(135 \\cdot \\frac{125}{27} = 625\\)).\n- **Choice D (180):** Incorrectly scales volume by the linear scale factor \\(k = \\frac{4}{3}\\) instead of \\(k^3\\) (i.e., \\(135 \\cdot \\frac{4}{3} = 180\\)).",
+      "sympy_verified": true,
+      "fig": {
+        "type": "right_triangle_altitude",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "t": 0.36,
+        "p": "9",
+        "q": "16",
+        "h": "h"
+      }
     },
     {
       "type": "mcq",
