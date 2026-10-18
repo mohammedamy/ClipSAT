@@ -38,11 +38,11 @@ function _tex(s){
   if(out.indexOf('$') !== -1){
     out = out.replace(/\$([^\$\n]+)\$/g, '\\($1\\)');
   }
-  if(typeof window.CSAutoMath === 'function') return window.CSAutoMath(out);
-  if(out.indexOf('\\(') === -1 && out.indexOf('\\[') === -1 && out.indexOf('\\') !== -1){
+  if(typeof window.CSAutoMath === 'function') out = window.CSAutoMath(out);
+  else if(out.indexOf('\\(') === -1 && out.indexOf('\\[') === -1 && out.indexOf('\\') !== -1){
     out = '\\(' + out + '\\)';
   }
-  return out;
+  return typeof window.CSRenderMathString === 'function' ? window.CSRenderMathString(out) : out;
 }
 
 /* Picks the Arabic variant of a D[] field (e.g. cfg.ti_ar) when the current
@@ -98,7 +98,10 @@ var _IX_EN_FALLBACK={'ix.badge.qc':'Quick Check','ix.badge.sr':'Worked Example',
   'ix.ms.totalMarks':'Total: {n} marks','ix.ms.score':'Earned: {earned} / {total} marks ({pct}%)','ix.ms.grade':'Projected: {grade}',
   'ix.ms.examinerTip':'💡 Examiner Report & Common Mistakes:'};
 function _t(key,vars){
-  if(window.i18n)return window.i18n.t(key,vars);
+  if(window.i18n){
+    var r=window.i18n.t(key,vars);
+    if(r && r!==key) return r;
+  }
   var s=_IX_EN_FALLBACK[key]||key;
   if(vars)Object.keys(vars).forEach(function(k){s=s.replace('{'+k+'}',vars[k]);});
   return s;

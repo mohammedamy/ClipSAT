@@ -917,7 +917,7 @@
         else out+=c;
         i++;
       }
-      return out;
+      return typeof window.CSRenderMathString === 'function' ? window.CSRenderMathString(out) : out;
     }
     function _autoMath(s){
       if(window.CSAutoMath) return window.CSAutoMath(s);

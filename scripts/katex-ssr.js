@@ -36,7 +36,7 @@
 const katex = require('katex');
 const cheerio = require('cheerio');
 
-const SKIP_TAGS = new Set(['script', 'style', 'textarea', 'pre', 'code', 'noscript']);
+const SKIP_TAGS = new Set(['script', 'style', 'textarea', 'pre', 'code', 'noscript', 'annotation']);
 
 // Matches \( ... \) (inline, group 1) or \[ ... \] (display, group 2).
 // Non-greedy, single-pair matching only — same as KaTeX auto-render's
@@ -68,11 +68,6 @@ function renderMathInText(text, warn) {
     try {
       result += katex.renderToString(src, { displayMode: isDisplay, throwOnError: false });
     } catch (err) {
-      // throwOnError:false covers malformed TeX (renders a red error span,
-      // matching what the client would show); this catch is a second net
-      // for anything that still throws — e.g. a truly catastrophic parser
-      // error — where falling back to the original raw text is safer than
-      // failing the whole build.
       warn(rawDelimited, err.message);
       result += escapeHtml(rawDelimited);
     }
@@ -93,6 +88,7 @@ function walk($, root, warn) {
     .each((_, node) => {
       if (node.type === 'tag') {
         if (SKIP_TAGS.has(node.name)) return;
+        if ($(node).hasClass('katex')) return;
         walk($, node, warn);
       } else if (node.type === 'text') {
         const text = node.data;
@@ -104,15 +100,15 @@ function walk($, root, warn) {
 }
 
 /**
- * Renders every .chapter element's math to KaTeX HTML in place. Returns the
- * mutated HTML string, or the original `html` untouched if there were no
- * .chapter elements (e.g. home/legal pages never reach this far — see the
- * outputPath gate in .eleventy.js).
+ * Renders every math expression in <body> to KaTeX HTML in place. Returns the
+ * mutated HTML string, or the original `html` untouched if no math delimiters
+ * are present.
  */
 function renderChapterMath(html, pageLabel) {
+  if (!html || (html.indexOf('\\(') === -1 && html.indexOf('\\[') === -1)) return html;
   const $ = cheerio.load(html, { decodeEntities: false });
-  const chapters = $('.chapter');
-  if (chapters.length === 0) return html;
+  const body = $('body');
+  if (body.length === 0) return html;
 
   let warnCount = 0;
   const warn = (rawDelimited, message) => {
@@ -122,7 +118,7 @@ function renderChapterMath(html, pageLabel) {
     );
   };
 
-  chapters.each((_, ch) => walk($, ch, warn));
+  body.each((_, el) => walk($, el, warn));
 
   if (warnCount > 0) {
     console.warn(`[katex-ssr] ${pageLabel}: ${warnCount} expression(s) left as raw text — see warnings above.`);

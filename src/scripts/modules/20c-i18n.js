@@ -14,6 +14,11 @@
         'ix.badge.num':'Numeric Entry','ix.num.check':'Check Answer','ix.num.showSol':'Show Solution','ix.num.hintPrefix':'Hint: ','ix.num.correct':'✓ Correct!','ix.num.incorrect':'✗ Incorrect. ','ix.num.close':'Almost! Check precision or rounding. ',
         'ix.badge.ord':'Order the Steps','ix.ord.check':'Check Order','ix.ord.allCorrect':'✓ Steps are in the correct sequence!','ix.ord.someCorrect':'{n} of {total} steps in the correct position.','ix.ord.showCorrect':'Show Correct Order','ix.ord.moveUp':'Move Up','ix.ord.moveDown':'Move Down',
         'ix.badge.cat':'Categorize','ix.cat.check':'Check Categories','ix.cat.allCorrect':'✓ All items correctly categorized!','ix.cat.someCorrect':'{n} of {total} items correctly placed.','ix.cat.showCorrect':'Show Correct Placement',
+        'ix.mp.toggle':'Math Keyboard','ix.mp.hide':'Hide Keyboard',
+        'ix.mp.tab123':'123 & Algebra','ix.mp.tabFunc':'Functions & Trig','ix.mp.tabSym':'Symbols & Calculus',
+        'ix.mp.preview':'Math Preview:','ix.mp.previewEmpty':'Type or tap keys below',
+        'ix.mp.check':'Check','ix.mp.clear':'Clear','ix.mp.backspace':'Backspace',
+        'ix.mp.left':'Move left','ix.mp.right':'Move right','ix.mp.close':'Close keyboard',
         'ix.badge.gp':'Graph Plotter','ix.gp.check':'Check Points','ix.gp.clear':'Clear Points','ix.gp.showSol':'Show Target Points',
         'ix.gp.allCorrect':'✓ All key features accurately plotted!','ix.gp.someCorrect':'{n} of {total} features placed correctly.',
         'ix.gp.hint':'Tap or click on the grid to plot points. Click an existing point to remove it.',
@@ -560,7 +565,8 @@
          contains a styled child element (e.g. the hero H1's <span class="q1">),
          so it needs an innerHTML swap instead of a plain textContent one. */
       document.querySelectorAll('[data-i18n-html]').forEach(function(el){
-        el.innerHTML = t(el.getAttribute('data-i18n-html'));
+        var raw = t(el.getAttribute('data-i18n-html'));
+        el.innerHTML = typeof window.CSRenderMathString === 'function' ? window.CSRenderMathString(raw) : raw;
       });
       /* data-i18n-attr="attrName:key" — translates a single named attribute
          (placeholders, titles) instead of the element's own content. */

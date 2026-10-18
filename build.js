@@ -67,6 +67,25 @@ const cssMinified = csso.minify(cssOut).css;
 console.log(`  Minified CSS: ${cssOut.length} → ${cssMinified.length} bytes`);
 write(PUBLIC_CSS, cssMinified + '\n');
 
+// Copy self-hosted KaTeX 0.16.11 assets from node_modules/katex/dist → public/vendor/katex
+const KATEX_SRC = path.join(ROOT, 'node_modules', 'katex', 'dist');
+const KATEX_DEST = path.join(ROOT, 'public', 'vendor', 'katex');
+if (fs.existsSync(KATEX_SRC)) {
+  mkdirp(path.join(KATEX_DEST, 'contrib'));
+  mkdirp(path.join(KATEX_DEST, 'fonts'));
+  for (const f of ['katex.min.css', 'katex.min.js']) {
+    fs.copyFileSync(path.join(KATEX_SRC, f), path.join(KATEX_DEST, f));
+  }
+  fs.copyFileSync(
+    path.join(KATEX_SRC, 'contrib', 'auto-render.min.js'),
+    path.join(KATEX_DEST, 'contrib', 'auto-render.min.js')
+  );
+  for (const fontFile of fs.readdirSync(path.join(KATEX_SRC, 'fonts'))) {
+    fs.copyFileSync(path.join(KATEX_SRC, 'fonts', fontFile), path.join(KATEX_DEST, 'fonts', fontFile));
+  }
+  console.log('  ✓  public/vendor/katex (self-hosted KaTeX 0.16.11 + fonts)');
+}
+
 // ─── 2. Read JS ─────────────────────────────────────────────────────────────
 // Real, hand-edited source at src/scripts/modules/*.js (Plan 5, Phase 5.012)
 // — this step reads every module named in modules/manifest.json, concatenates
@@ -417,39 +436,14 @@ const baseNjk = `<!DOCTYPE html>
        round-trip from the critical path with no visual change: raw
        "\( ... \)" source text (present either way until the deferred JS
        runs) doesn't need this stylesheet to display. -->
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" integrity="sha384-5bRuRJz0ZoqKq2KVCixePzyQqDx62ARzcK0IDTaoaPSGFVInFLwFgJh9EkM+gkvc" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.css" integrity="sha384-5bRuRJz0ZoqKq2KVCixePzyQqDx62ARzcK0IDTaoaPSGFVInFLwFgJh9EkM+gkvc" crossorigin="anonymous"></noscript>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/katex.min.js" integrity="sha384-XxErEt5JC4iP+lcDWdGKaHhvDDXTn7cb4wucJWzWlz2SzWs+IXGRD/MzzEUl/xBM" crossorigin="anonymous"></script>
-  <!-- No onload="renderMathInElement(document.body,...)" here (removed —
-       see LCP fix below). Every chapter/practice-set/test-gen/downloads
-       section starts as .chapter{display:none} (main.css) until JS adds
-       .ch-active — ALL of them, active or not, are still full DOM nodes
-       auto-render would walk regardless of visibility. On a track like
-       calculus (18 chapters on one page), a whole-document
-       renderMathInElement() pass was measured (Lighthouse LCP breakdown)
-       at ~7.7s of pure main-thread "element render delay" BEFORE the
-       first paragraph could even paint, for content 17 of those 18
-       chapters didn't need yet. showView() (engine.js) already runs on
-       every page load via init() and typesets — now scoped to just the
-       one active chapter, not the whole view — so this script only needs
-       to load and define window.renderMathInElement; nothing here calls
-       it directly. -->
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.11/contrib/auto-render.min.js" integrity="sha384-oSjIum2X1YeR08BjcmR3JNLHMzeIyonv0dw4ooZzsmhYHa4nS9BvK/hV8YclQx3y" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="${BASE_PATH}/vendor/katex/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+  <script defer src="${BASE_PATH}/vendor/katex/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+  <script defer src="${BASE_PATH}/vendor/katex/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
 
-  <!-- MathJax-compatible shim, backed by KaTeX.
-       engine.js (src/scripts/engine.js) was written against the MathJax
-       API and calls window.MathJax.typesetPromise(...)/typeset(...) in ~20
-       places to re-render math after DYNAMICALLY inserting content (chapter
-       quiz generation, the AI chat panel, practice-quiz-from-mistakes,
-       flashcard review, etc.). The KaTeX auto-render script above only
-       renders document.body ONCE on initial load, so none of those dynamic
-       call sites had any effect — new math showed up as raw "\\( ... \\)"
-       source text. This shim gives window.MathJax the same call signature,
-       implemented with KaTeX's renderMathInElement, so every existing call
-       site keeps working without changes. It waits for renderMathInElement
-       to exist (KaTeX's script tags are deferred) before doing anything. -->
+  <!-- MathJax-compatible shim + synchronous string renderer + MutationObserver, backed by KaTeX. -->
   <script>
   (function(){
+    var O_IN = '\\\\(', C_IN = '\\\\)', O_DP = '\\\\[', C_DP = '\\\\]', DD = '$$';
     var KATEX_OPTS = {
       delimiters: [
         {left:'$$', right:'$$', display:true},
@@ -457,25 +451,40 @@ const baseNjk = `<!DOCTYPE html>
         {left:'\\\\(', right:'\\\\)', display:false},
         {left:'$', right:'$', display:false}
       ],
+      ignoredClasses: ['katex', 'katex-display', 'katex-html', 'katex-mathml'],
       throwOnError: false
     };
-    /* a11y: a long equation makes KaTeX's own .katex-display wrapper
-       overflow-x:auto (main.css) so it doesn't blow out the layout — but a
-       div that scrolls and isn't otherwise focusable is unreachable by
-       keyboard (axe-core's scrollable-region-focusable rule, found live on
-       igcse/precalc/linalg). Only equations that actually overflow get
-       tabindex, so this doesn't add a tab stop to every equation on the
-       page. Most equations on the page are already real .katex-display
-       markup before any JS runs at all — scripts/katex-ssr.js typesets them
-       at BUILD time — so this can't be folded into the renderMathInElement
-       wait below: on a page where the KaTeX CDN script never loads (a flaky
-       network, an ad blocker), that wait never resolves, and those
-       already-rendered equations would never get checked at all. Called
-       both immediately (below, and from every typesetPromise/typeset call)
-       and on resize, since a viewport change can flip which equations
-       overflow; also re-checked 400ms after each typeset call for content
-       that WAS just freshly rendered, since the very first measurement can
-       undershoot KaTeX's web fonts' real metrics before they've loaded. */
+    function decodeEntities(s){
+      return s.replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&#(\d+);/g,function(_,n){return String.fromCharCode(parseInt(n,10));}).replace(/&amp;/g,'&');
+    }
+    window.CSRenderMathString = function(str){
+      if(!str || typeof str !== 'string') return str;
+      if(!window.katex || typeof window.katex.renderToString !== 'function') return str;
+      if(str.indexOf(O_IN) === -1 && str.indexOf(O_DP) === -1 && str.indexOf(DD) === -1) return str;
+      var out = '', i = 0, L = str.length;
+      while(i < L){
+        var i1 = str.indexOf(O_IN, i);
+        var i2 = str.indexOf(O_DP, i);
+        var i3 = str.indexOf(DD, i);
+        var next = -1, mode = 0;
+        if(i1 !== -1){ next = i1; mode = 1; }
+        if(i2 !== -1 && (next === -1 || i2 < next)){ next = i2; mode = 2; }
+        if(i3 !== -1 && (next === -1 || i3 < next)){ next = i3; mode = 3; }
+        if(next === -1){ out += str.slice(i); break; }
+        out += str.slice(i, next);
+        var closeTok = mode === 1 ? C_IN : (mode === 2 ? C_DP : DD);
+        var end = str.indexOf(closeTok, next + 2);
+        if(end === -1){ out += str.slice(next); break; }
+        var rawTex = decodeEntities(str.slice(next + 2, end));
+        try {
+          out += window.katex.renderToString(rawTex, { displayMode: mode !== 1, throwOnError: false });
+        } catch(e){
+          out += str.slice(next, end + 2);
+        }
+        i = end + 2;
+      }
+      return out;
+    };
     function markScrollableMath(el){
       if(!el || !el.querySelectorAll) return;
       var list = el.querySelectorAll('.katex-display');
@@ -490,7 +499,7 @@ const baseNjk = `<!DOCTYPE html>
     }
     function renderEls(elements){
       (elements || [document.body]).forEach(function(el){
-        if(!el) return;
+        if(!el || el.nodeType !== 1) return;
         try { window.renderMathInElement(el, KATEX_OPTS); } catch(e){}
         markScrollableMath(el);
         setTimeout(function(){ markScrollableMath(el); }, 400);
@@ -498,10 +507,8 @@ const baseNjk = `<!DOCTYPE html>
     }
     function whenReady(fn){
       if(typeof window.renderMathInElement === 'function'){ fn(); }
-      else { setTimeout(function(){ whenReady(fn); }, 100); }
+      else { setTimeout(function(){ whenReady(fn); }, 60); }
     }
-    /* Runs the a11y scan up front, synchronously, before waiting on
-       renderMathInElement at all — see markScrollableMath's comment above. */
     function typesetLike(elements, cb){
       (elements || [document.body]).forEach(function(el){ if(el) markScrollableMath(el); });
       whenReady(function(){ renderEls(elements); if(cb) cb(); });
@@ -513,6 +520,47 @@ const baseNjk = `<!DOCTYPE html>
       typeset: function(elements){ typesetLike(elements); },
       startup: { promise: Promise.resolve() }
     };
+    function hasRawMath(txt){
+      if(!txt) return false;
+      return txt.indexOf(O_IN) !== -1 || txt.indexOf(O_DP) !== -1 || txt.indexOf(DD) !== -1;
+    }
+    var pendingNodes = [];
+    var moTimer = null;
+    function flushPending(){
+      moTimer = null;
+      if(!pendingNodes.length) return;
+      var batch = pendingNodes.slice();
+      pendingNodes.length = 0;
+      typesetLike(batch);
+    }
+    function queueNode(n){
+      if(!n || n.nodeType !== 1) return;
+      if(n.classList && (n.classList.contains('katex') || n.classList.contains('katex-display'))) return;
+      if(!hasRawMath(n.textContent)) return;
+      if(pendingNodes.indexOf(n) === -1) pendingNodes.push(n);
+      if(!moTimer) moTimer = setTimeout(flushPending, 30);
+    }
+    whenReady(function(){
+      var initTargets = document.querySelectorAll('.chapter.ch-active, .deep-card, .ch-link, .cq-paper, .fep-body, .ix-sec, #pq-overlay');
+      for(var i=0;i<initTargets.length;i++) queueNode(initTargets[i]);
+      if(typeof MutationObserver !== 'undefined' && document.body){
+        var mo = new MutationObserver(function(muts){
+          for(var i=0;i<muts.length;i++){
+            var m = muts[i];
+            if(m.type === 'attributes'){
+              queueNode(m.target);
+            } else if(m.addedNodes){
+              for(var j=0;j<m.addedNodes.length;j++){
+                var ad = m.addedNodes[j];
+                if(ad.nodeType === 1) queueNode(ad);
+                else if(ad.nodeType === 3 && ad.parentNode) queueNode(ad.parentNode);
+              }
+            }
+          }
+        });
+        mo.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+      }
+    });
     var resizeTimer;
     window.addEventListener('resize', function(){
       clearTimeout(resizeTimer);
@@ -522,7 +570,7 @@ const baseNjk = `<!DOCTYPE html>
   </script>
 
   <!-- JSZip (needed for export) -->
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" integrity="sha384-v23j4pMVDeH7xAvXGXZ13fnyvkzWhtSRfRqyck9XxhTVPaoqJhCUA1Fzm/BAGbeq" crossorigin="anonymous"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" crossorigin="anonymous"></script>
 
   <!-- Import map only — resolves the bare "three" specifier so Three.js addons
        (OrbitControls) can \`import ... from "three"\` when a 3D explorer

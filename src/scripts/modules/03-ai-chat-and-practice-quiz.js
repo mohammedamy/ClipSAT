@@ -444,7 +444,7 @@ window.launchPracticeQuiz=function(mistake){
       else out+=c;
       i++;
     }
-    return out;
+    return typeof window.CSRenderMathString === 'function' ? window.CSRenderMathString(out) : out;
   }
   /* shared with the assignment view (assignment-view.js, ADR 0047) */
   window.CSQuizMath=_maths;

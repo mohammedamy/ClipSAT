@@ -394,7 +394,7 @@ function renderAIQuestion(q,idx,totalLetters,viewId){
       else o+=c;
       i++;
     }
-    return o;
+    return typeof window.CSRenderMathString === 'function' ? window.CSRenderMathString(o) : o;
   }
   var letters=totalLetters||['A','B','C','D'];
   var isQC=!!(q.isQC||q.qc||(q.colA!=null&&q.colB!=null));
@@ -865,7 +865,7 @@ function _maths(s){
     else o+=c;
     i++;
   }
-  return o;
+  return typeof window.CSRenderMathString === 'function' ? window.CSRenderMathString(o) : o;
 }
 function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
   var _tg=btn&&btn.closest&&btn.closest('.testgen');

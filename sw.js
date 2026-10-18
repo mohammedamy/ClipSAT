@@ -61,7 +61,7 @@ var SHELL_ASSETS = [
  * including the files loaded on demand (js/ex/, js/ix/, figures.js, bank-exam.js, ...). All of
  * them are build output, and the version hash above covers them, so a cached copy is never
  * kept past a deploy that changes it. (Plan 5 Phase 5.017, ADR 0046) */
-var SHELL_DIRS = ['./css/', './js/'];
+var SHELL_DIRS = ['./css/', './js/', './vendor/'];
 
 /* ── Subset of SHELL_ASSETS actually fetched eagerly at install ──
  * NOTE: cache.addAll() below is atomic — if ANY single URL here 404s, the

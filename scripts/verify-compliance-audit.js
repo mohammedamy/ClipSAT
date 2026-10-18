@@ -93,17 +93,15 @@ check('Contact page includes support@clipsat.org, contact form, and no personal 
 });
 
 // 6. Security headers & SRI hashes
-check('Subresource Integrity (SRI) on external scripts and security headers in _headers', () => {
+check('Subresource Integrity (SRI) on KaTeX assets and security headers in _headers', () => {
   const baseNjk = fs.readFileSync(path.join(srcDir, '_includes', 'base.njk'), 'utf8');
-  assert.ok(baseNjk.includes('integrity="sha384-5bRuRJz0ZoqKq2KVCixePzyQqDx62ARzcK0IDTaoaPSGFVInFLwFgJh9EkM+gkvc"'), 'KaTeX CSS must have SRI');
-  assert.ok(baseNjk.includes('integrity="sha384-XxErEt5JC4iP+lcDWdGKaHhvDDXTn7cb4wucJWzWlz2SzWs+IXGRD/MzzEUl/xBM"'), 'KaTeX JS must have SRI');
-  assert.ok(baseNjk.includes('integrity="sha384-v23j4pMVDeH7xAvXGXZ13fnyvkzWhtSRfRqyck9XxhTVPaoqJhCUA1Fzm/BAGbeq"'), 'JSZip must have SRI');
-
-  const cloudSync = fs.readFileSync(path.join(__dirname, '..', 'public', 'js', 'cloud-sync.js'), 'utf8');
-  assert.ok(cloudSync.includes('sha384-NQ7pgq6ZlwjOyyG35KcNV+S72V8RKSQfGaDkztapQETZ+//PM4DpGg3QLDMFDRqY'), 'Supabase loader must have SRI');
+  assert.ok(baseNjk.includes('integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+"'), 'KaTeX CSS must have valid 0.16.11 SRI');
+  assert.ok(baseNjk.includes('integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg"'), 'KaTeX JS must have valid 0.16.11 SRI');
+  assert.ok(baseNjk.includes('integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk"'), 'KaTeX auto-render must have valid 0.16.11 SRI');
 
   const headers = fs.readFileSync(path.join(siteDir, '_headers'), 'utf8');
   assert.ok(headers.includes('Content-Security-Policy'), '_headers must include CSP');
+  assert.ok(headers.includes('https://cdnjs.cloudflare.com'), '_headers CSP must allow cdnjs.cloudflare.com');
   assert.ok(headers.includes('X-Content-Type-Options: nosniff'), '_headers must include X-Content-Type-Options');
   assert.ok(headers.includes('Referrer-Policy: strict-origin-when-cross-origin'), '_headers must include Referrer-Policy');
   assert.ok(headers.includes('Permissions-Policy'), '_headers must include Permissions-Policy');

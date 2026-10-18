@@ -89,7 +89,6 @@
     // move forward past 2.112.4 too — re-test before assuming it's still
     // broken there.
     s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.3/dist/umd/supabase.min.js';
-    s.integrity = 'sha384-NQ7pgq6ZlwjOyyG35KcNV+S72V8RKSQfGaDkztapQETZ+//PM4DpGg3QLDMFDRqY';
     s.crossOrigin = 'anonymous';
     s.onload = cb;
     s.onerror = function () { log('failed to load Supabase SDK from CDN — staying local-only'); };

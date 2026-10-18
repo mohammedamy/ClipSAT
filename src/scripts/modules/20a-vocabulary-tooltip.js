@@ -583,15 +583,31 @@
   }
 
   /* ── Mark vocabulary in a DOM node ── */
-  var SKIP_TAGS = {SCRIPT:1,STYLE:1,TEXTAREA:1,INPUT:1,BUTTON:1,
-                   'MJX-CONTAINER':1,'MATH':1,'svg':1,'SVG':1};
+  var SKIP_TAGS = {SCRIPT:1,STYLE:1,TEXTAREA:1,INPUT:1,BUTTON:1,CODE:1,PRE:1,
+                   'MJX-CONTAINER':1,'MATH':1,'ANNOTATION':1,'SEMANTICS':1,'svg':1,'SVG':1};
+  function _hescText(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
   function _markNode(root){
+    if(!root) return;
+    /* Always typeset math inside root first if KaTeX auto-render is ready,
+       so math expressions become .katex elements before we walk text nodes. */
+    if(typeof window.renderMathInElement === 'function' && window.MathJax && typeof window.MathJax.typeset === 'function'){
+      try { window.MathJax.typeset([root]); } catch(e){}
+    }
     var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode: function(n){
         var p = n.parentNode;
         while(p && p !== root){
-          if(SKIP_TAGS[p.tagName] || p.classList.contains('mv-term')
-             || p.classList.contains('mv-popup')
+          if(SKIP_TAGS[p.tagName]
+             || (p.classList && (
+                  p.classList.contains('mv-term')
+               || p.classList.contains('mv-popup')
+               || p.classList.contains('katex')
+               || p.classList.contains('katex-display')
+               || p.classList.contains('katex-mathml')
+               || p.classList.contains('katex-html')
+             ))
              || p.getAttribute('class')==='MathJax'
              || (p.tagName && p.tagName.startsWith('MJX'))) return NodeFilter.FILTER_REJECT;
           p = p.parentNode;
@@ -603,14 +619,19 @@
     var n;
     while((n = walker.nextNode())) nodes.push(n);
     nodes.forEach(function(node){
-      if(!VOCAB_RE.test(node.textContent)) return;
+      var raw = node.textContent;
+      if(!raw) return;
+      /* Never split or touch a text node that still contains unrendered LaTeX delimiters */
+      if(raw.indexOf('\\(') !== -1 || raw.indexOf('\\[') !== -1 || raw.indexOf('$$') !== -1 || raw.indexOf('\\begin{') !== -1) return;
+      if(!VOCAB_RE.test(raw)) return;
       VOCAB_RE.lastIndex = 0;
-      var html = node.textContent.replace(VOCAB_RE, function(match){
+      var safe = _hescText(raw);
+      var html = safe.replace(VOCAB_RE, function(match){
         var key = match.toLowerCase();
         if(!VOCAB[key]) return match;
         return '<span class="mv-term" data-term="'+key+'">'+match+'</span>';
       });
-      if(html === node.textContent) return;
+      if(html === safe) return;
       var span = document.createElement('span');
       span.innerHTML = html;
       node.parentNode.replaceChild(span, node);
@@ -629,7 +650,7 @@
 
   /* ── Scan on load ── */
   function _scanAll(){
-    document.querySelectorAll('.view section, .cq-paper, #pq-overlay, #mq-review-overlay, .fep-body').forEach(_markNode);
+    document.querySelectorAll('.view section.ch-active, .cq-paper, #pq-overlay, #mq-review-overlay, .fep-body').forEach(_markNode);
   }
   if(document.readyState === 'loading'){
     document.addEventListener('DOMContentLoaded', function(){ setTimeout(_scanAll, 1500); });

@@ -5,6 +5,7 @@ module.exports = function (eleventyConfig) {
   // ── Static assets: copy public/css → _site/css, public/js → _site/js ──────
   eleventyConfig.addPassthroughCopy({ "public/css": "css" });
   eleventyConfig.addPassthroughCopy({ "public/js": "js" });
+  eleventyConfig.addPassthroughCopy({ "public/vendor": "vendor" });
 
   // ── Build-time KaTeX pre-rendering (all 21 tracks) ────────────────────────
   // See scripts/katex-ssr.js for the full scoping rationale. Runs as a
