@@ -1,102 +1,109 @@
 {
   "pool": [
     {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "Solve \\( \\dfrac{dy}{dx}=3y \\), \\( y(0)=2 \\). Find \\( y(1) \\).",
-      "choices": [
-        "\\( 2e^{3} \\)",
-        "5",
-        "\\( e^{3} \\)",
-        "6"
-      ],
-      "answer": 0,
-      "sol": "Separable: \\( \\dfrac{dy}{y}=3\\,dx \\Rightarrow \\ln|y|=3x+C \\Rightarrow y=Ae^{3x} \\). \\( y(0)=A=2 \\), so \\( y=2e^{3x} \\), and \\( y(1)=2e^{3} \\).",
-      "difficulty": "easy"
-    },
-    {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "Solve \\( \\dfrac{dy}{dx}=2x \\), \\( y(0)=5 \\). Find \\( y(2) \\).",
-      "choices": [
-        "4",
-        "13",
-        "9",
-        "-1"
-      ],
-      "answer": 2,
-      "sol": "Separable (trivially): \\( dy=2x\\,dx \\Rightarrow y=x^2+C \\). \\( y(0)=C=5 \\), so \\( y=x^2+5 \\), and \\( y(2)=4+5=9 \\).",
-      "difficulty": "easy"
-    },
-    {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "A quantity satisfies \\( \\dfrac{dy}{dt}=-4y \\), \\( y(0)=10 \\). Find the time \\( t \\) at which \\( y=5 \\) (the half-life).",
-      "choices": [
-        "\\( \\dfrac{\\ln 2}{4} \\)",
-        "\\( \\dfrac{\\ln 2}{2} \\)",
-        "\\( 4\\ln 2 \\)",
-        "\\( \\dfrac{1}{4}\\ln 5 \\)"
-      ],
-      "answer": 0,
-      "sol": "Separable: \\( \\dfrac{dy}{y}=-4\\,dt \\Rightarrow \\ln y=-4t+C \\Rightarrow y=10e^{-4t} \\). Setting \\( 10e^{-4t}=5 \\) gives \\( e^{-4t}=\\tfrac12 \\), so \\( -4t=-\\ln2 \\) and \\( t=\\dfrac{\\ln2}{4} \\).",
+      "id": "odes-0001",
+      "domain": "The Laplace Transform, Discontinuous Forcing & Convolution Theory",
+      "topic_id": "ode-laplace-transforms",
+      "subskill_id": "ode-laplace-transforms-1",
+      "educational_aim": "Demonstrate foundational mastery of The Laplace Transform, Discontinuous Forcing & Convolution Theory by solving direct algebraic, graphical, or geometric formulations tested on ODES past papers.",
+      "exam_archetype": "The Laplace Transform, Discontinuous Forcing & Convolution Theory — Direct Concept & Representation",
       "difficulty": "easy",
-      "figure": {
-        "type": "fn",
-        "xrange": [
-          -1,
-          3
-        ],
-        "yrange": [
-          -1,
-          40
-        ],
-        "fns": [
-          {
-            "fn": "10*exp(-4*x)",
-            "label": "y(t)",
-            "color": "#1E3A6E"
-          }
-        ],
-        "points": [
-          {
-            "x": 0,
-            "y": 10,
-            "label": "(0,10)",
-            "color": "#C8902A"
-          }
-        ],
-        "w": 260,
-        "h": 200
-      }
-    },
-    {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "Solve \\( \\dfrac{dy}{dx}=xy \\), \\( y(0)=3 \\). Find \\( y(2) \\).",
+      "text": "Consider the differential equation \\( y'' - 3y' + 2y = f(t) \\) with initial conditions \\( y(0) = 0 \\) and \\( y'(0) = 0 \\). If the forcing function is \\( f(t) = u(t-2) \\), where \\( u(t) \\) is the Heaviside step function, what is the Laplace transform of the solution \\( Y(s) = \\mathcal{L}\\{y(t)\\} \\)?",
       "choices": [
-        "\\( 3e^{2} \\)",
-        "\\( 3e^{4} \\)",
-        "\\( 3e^{1} \\)",
-        "\\( 2e^{3} \\)"
+        "\\( \\frac{1}{s(s-1)(s-2)}e^{-2s} \\)",
+        "\\( \\frac{1}{s(s-1)(s-2)} \\)",
+        "\\( \\frac{e^{-2s}}{s^2-3s+2} \\)",
+        "\\( \\frac{1}{(s-1)(s-2)}e^{-2s} \\)"
       ],
       "answer": 0,
-      "sol": "Separable: \\( \\dfrac{dy}{y}=x\\,dx \\Rightarrow \\ln y=\\dfrac{x^2}{2}+C \\Rightarrow y=Ae^{x^2/2} \\). \\( y(0)=A=3 \\), so \\( y=3e^{x^2/2} \\), and \\( y(2)=3e^{4/2}=3e^{2} \\).",
-      "difficulty": "medium"
+      "correct": 0,
+      "sol": "The Laplace transform of the differential equation is \\( s^2Y(s) - sy(0) - y'(0) - 3(sY(s) - y(0)) + 2Y(s) = \\mathcal{L}\\{f(t)\\} \\). Given \\( y(0) = 0 \\) and \\( y'(0) = 0 \\), this simplifies to \\( s^2Y(s) - 3sY(s) + 2Y(s) = \\mathcal{L}\\{u(t-2)\\} \\), so \\( Y(s)(s^2 - 3s + 2) = \\mathcal{L}\\{u(t-2)\\} \\). The Laplace transform of \\( u(t-a) \\) is \\( \\frac{e^{-as}}{s} \\). Therefore, \\( \\mathcal{L}\\{u(t-2)\\} = \\frac{e^{-2s}}{s} \\). Thus, \\( Y(s) = \\frac{e^{-2s}}{s(s^2 - 3s + 2)} \\). Factoring the denominator, \\( s^2 - 3s + 2 = (s-1)(s-2) \\). So, \\( Y(s) = \\frac{e^{-2s}}{s(s-1)(s-2)} \\).",
+      "solution": "The Laplace transform of the differential equation is \\( s^2Y(s) - sy(0) - y'(0) - 3(sY(s) - y(0)) + 2Y(s) = \\mathcal{L}\\{f(t)\\} \\). Given \\( y(0) = 0 \\) and \\( y'(0) = 0 \\), this simplifies to \\( s^2Y(s) - 3sY(s) + 2Y(s) = \\mathcal{L}\\{u(t-2)\\} \\), so \\( Y(s)(s^2 - 3s + 2) = \\mathcal{L}\\{u(t-2)\\} \\). The Laplace transform of \\( u(t-a) \\) is \\( \\frac{e^{-as}}{s} \\). Therefore, \\( \\mathcal{L}\\{u(t-2)\\} = \\frac{e^{-2s}}{s} \\). Thus, \\( Y(s) = \\frac{e^{-2s}}{s(s^2 - 3s + 2)} \\). Factoring the denominator, \\( s^2 - 3s + 2 = (s-1)(s-2) \\). So, \\( Y(s) = \\frac{e^{-2s}}{s(s-1)(s-2)} \\).",
+      "sympy_verified": true
     },
     {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "Solve \\( \\dfrac{dy}{dx}=\\dfrac{x}{y} \\) with \\( y(0)=4 \\) and \\( y>0 \\). Find \\( y(3) \\).",
+      "id": "odes-0002",
+      "domain": "Linear First-Order Equations, Integrating Factors & Nonlinear Reductions",
+      "topic_id": "ode-linear",
+      "subskill_id": "ode-linear-1",
+      "educational_aim": "Demonstrate foundational mastery of Linear First-Order Equations, Integrating Factors & Nonlinear Reductions by solving direct algebraic, graphical, or geometric formulations tested on ODES past papers.",
+      "exam_archetype": "Linear First-Order Equations, Integrating Factors & Nonlinear Reductions — Direct Concept & Representation",
+      "difficulty": "easy",
+      "text": "Consider the linear first-order differential equation \\( \\frac{dy}{dx} + 2y = 6 \\). If the initial condition is \\( y(0) = 1 \\), find the value of \\( y(1) \\).",
+      "choices": [
+        "2",
+        "e^2 - 1",
+        "3 - 2e^{-2}",
+        "3 - 2e^{-1}"
+      ],
+      "answer": 3,
+      "correct": 3,
+      "sol": "The given differential equation is a linear first-order ODE of the form \\( \\frac{dy}{dx} + P(x)y = Q(x) \\), where \\( P(x) = 2 \\) and \\( Q(x) = 6 \\). The integrating factor \\( \\mu(x) \\) is given by \\( \\mu(x) = e^{\\int P(x) dx} \\). \n\nCalculating the integrating factor: \\( \\mu(x) = e^{\\int 2 dx} = e^{2x} \\).\n\nMultiplying the differential equation by the integrating factor: \\( e^{2x}\\frac{dy}{dx} + 2e^{2x}y = 6e^{2x} \\).\nThe left side is the derivative of the product \\( y\\mu(x) \\): \\( \\frac{d}{dx}(ye^{2x}) = 6e^{2x} \\).\n\nIntegrating both sides with respect to \\( x \\): \\( ye^{2x} = \\int 6e^{2x} dx \\).\n\\( ye^{2x} = 6 \\cdot \\frac{1}{2}e^{2x} + C \\).\n\\( ye^{2x} = 3e^{2x} + C \\).\n\nSolving for \\( y \\): \\( y = 3 + Ce^{-2x} \\).\n\nUsing the initial condition \\( y(0) = 1 \\) to find \\( C \\): \\( 1 = 3 + Ce^{-2(0)} \\).\n\\( 1 = 3 + C \\).\n\\( C = 1 - 3 = -2 \\).\n\nSo, the particular solution is \\( y(x) = 3 - 2e^{-2x} \\).\n\nNow, we need to find \\( y(1) \\): \\( y(1) = 3 - 2e^{-2(1)} = 3 - 2e^{-2} \\).\n\nThis matches choice C.",
+      "solution": "The given differential equation is a linear first-order ODE of the form \\( \\frac{dy}{dx} + P(x)y = Q(x) \\), where \\( P(x) = 2 \\) and \\( Q(x) = 6 \\). The integrating factor \\( \\mu(x) \\) is given by \\( \\mu(x) = e^{\\int P(x) dx} \\). \n\nCalculating the integrating factor: \\( \\mu(x) = e^{\\int 2 dx} = e^{2x} \\).\n\nMultiplying the differential equation by the integrating factor: \\( e^{2x}\\frac{dy}{dx} + 2e^{2x}y = 6e^{2x} \\).\nThe left side is the derivative of the product \\( y\\mu(x) \\): \\( \\frac{d}{dx}(ye^{2x}) = 6e^{2x} \\).\n\nIntegrating both sides with respect to \\( x \\): \\( ye^{2x} = \\int 6e^{2x} dx \\).\n\\( ye^{2x} = 6 \\cdot \\frac{1}{2}e^{2x} + C \\).\n\\( ye^{2x} = 3e^{2x} + C \\).\n\nSolving for \\( y \\): \\( y = 3 + Ce^{-2x} \\).\n\nUsing the initial condition \\( y(0) = 1 \\) to find \\( C \\): \\( 1 = 3 + Ce^{-2(0)} \\).\n\\( 1 = 3 + C \\).\n\\( C = 1 - 3 = -2 \\).\n\nSo, the particular solution is \\( y(x) = 3 - 2e^{-2x} \\).\n\nNow, we need to find \\( y(1) \\): \\( y(1) = 3 - 2e^{-2(1)} = 3 - 2e^{-2} \\).\n\nThis matches choice C.",
+      "sympy_verified": true
+    },
+    {
+      "id": "odes-0003",
+      "domain": "Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability",
+      "topic_id": "ode-numerical-methods",
+      "subskill_id": "ode-numerical-methods-1",
+      "educational_aim": "Demonstrate foundational mastery of Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability by solving direct algebraic, graphical, or geometric formulations tested on ODES past papers.",
+      "exam_archetype": "Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability — Direct Concept & Representation",
+      "difficulty": "easy",
+      "text": "Consider the differential equation \\( \\dfrac{dy}{dx} = x + y \\) with the initial condition \\( y(0) = 1 \\). Use the Euler method with a step size of \\( h = 0.1 \\) to approximate \\( y(0.2) \\).",
+      "choices": [
+        "1.200",
+        "1.210",
+        "1.230",
+        "1.220"
+      ],
+      "answer": 1,
+      "correct": 1,
+      "sol": "The Euler method uses the formula \\( y_{n+1} = y_n + h \\cdot f(x_n, y_n) \\), where \\( f(x, y) = x + y \\) and \\( h = 0.1 \\). \n\nStarting with \\( x_0 = 0 \\) and \\( y_0 = 1 \\):\n\nStep 1: Approximate \\( y(0.1) \\).\n\\( y_1 = y_0 + h \\cdot f(x_0, y_0) \\)\n\\( y_1 = 1 + 0.1 \\cdot (0 + 1) \\)\n\\( y_1 = 1 + 0.1 \\cdot 1 \\)\n\\( y_1 = 1.1 \\)\nSo, \\( x_1 = 0.1 \\) and \\( y_1 = 1.1 \\).\n\nStep 2: Approximate \\( y(0.2) \\).\n\\( y_2 = y_1 + h \\cdot f(x_1, y_1) \\)\n\\( y_2 = 1.1 + 0.1 \\cdot (0.1 + 1.1) \\)\n\\( y_2 = 1.1 + 0.1 \\cdot (1.2) \\)\n\\( y_2 = 1.1 + 0.12 \\)\n\\( y_2 = 1.22 \\)\nTherefore, the approximation for \\( y(0.2) \\) is 1.220.",
+      "solution": "The Euler method uses the formula \\( y_{n+1} = y_n + h \\cdot f(x_n, y_n) \\), where \\( f(x, y) = x + y \\) and \\( h = 0.1 \\). \n\nStarting with \\( x_0 = 0 \\) and \\( y_0 = 1 \\):\n\nStep 1: Approximate \\( y(0.1) \\).\n\\( y_1 = y_0 + h \\cdot f(x_0, y_0) \\)\n\\( y_1 = 1 + 0.1 \\cdot (0 + 1) \\)\n\\( y_1 = 1 + 0.1 \\cdot 1 \\)\n\\( y_1 = 1.1 \\)\nSo, \\( x_1 = 0.1 \\) and \\( y_1 = 1.1 \\).\n\nStep 2: Approximate \\( y(0.2) \\).\n\\( y_2 = y_1 + h \\cdot f(x_1, y_1) \\)\n\\( y_2 = 1.1 + 0.1 \\cdot (0.1 + 1.1) \\)\n\\( y_2 = 1.1 + 0.1 \\cdot (1.2) \\)\n\\( y_2 = 1.1 + 0.12 \\)\n\\( y_2 = 1.22 \\)\nTherefore, the approximation for \\( y(0.2) \\) is 1.220.",
+      "sympy_verified": true
+    },
+    {
+      "id": "odes-0004",
+      "domain": "Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory",
+      "topic_id": "ode-second-order",
+      "subskill_id": "ode-second-order-1",
+      "educational_aim": "Demonstrate foundational mastery of Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory by solving direct algebraic, graphical, or geometric formulations tested on ODES past papers.",
+      "exam_archetype": "Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory — Direct Concept & Representation",
+      "difficulty": "easy",
+      "text": "Consider the second-order linear homogeneous differential equation \\( y'' - 5y' + 6y = 0 \\). If the auxiliary equation has roots \\( r_1 \\) and \\( r_2 \\), find the value of \\( r_1 + r_2 \\).",
       "choices": [
         "5",
-        "4",
-        "\\( \\sqrt{7} \\)",
-        "7"
+        "-5",
+        "6",
+        "-6"
       ],
       "answer": 0,
-      "sol": "Separable: \\( y\\,dy=x\\,dx \\Rightarrow \\dfrac{y^2}{2}=\\dfrac{x^2}{2}+C \\Rightarrow y^2=x^2+C' \\). \\( y(0)^2=16=C' \\), so \\( y^2=x^2+16 \\), and \\( y(3)=\\sqrt{9+16}=\\sqrt{25}=5 \\).",
-      "difficulty": "medium"
+      "correct": 0,
+      "sol": "The given differential equation is \\( y'' - 5y' + 6y = 0 \\). The auxiliary equation for a second-order linear homogeneous differential equation of the form \\( ay'' + by' + cy = 0 \\) is \\( ar^2 + br + c = 0 \\). In this case, \\( a=1 \\), \\( b=-5 \\), and \\( c=6 \\). So the auxiliary equation is \\( r^2 - 5r + 6 = 0 \\). Let the roots of this quadratic equation be \\( r_1 \\) and \\( r_2 \\). According to Vieta's formulas, for a quadratic equation \\( ar^2 + br + c = 0 \\), the sum of the roots \\( r_1 + r_2 \\) is equal to \\( -\\frac{b}{a} \\). In our auxiliary equation \\( r^2 - 5r + 6 = 0 \\), \\( a=1 \\) and \\( b=-5 \\). Therefore, the sum of the roots is \\( r_1 + r_2 = - \\frac{-5}{1} = 5 \\).",
+      "solution": "The given differential equation is \\( y'' - 5y' + 6y = 0 \\). The auxiliary equation for a second-order linear homogeneous differential equation of the form \\( ay'' + by' + cy = 0 \\) is \\( ar^2 + br + c = 0 \\). In this case, \\( a=1 \\), \\( b=-5 \\), and \\( c=6 \\). So the auxiliary equation is \\( r^2 - 5r + 6 = 0 \\). Let the roots of this quadratic equation be \\( r_1 \\) and \\( r_2 \\). According to Vieta's formulas, for a quadratic equation \\( ar^2 + br + c = 0 \\), the sum of the roots \\( r_1 + r_2 \\) is equal to \\( -\\frac{b}{a} \\). In our auxiliary equation \\( r^2 - 5r + 6 = 0 \\), \\( a=1 \\) and \\( b=-5 \\). Therefore, the sum of the roots is \\( r_1 + r_2 = - \\frac{-5}{1} = 5 \\).",
+      "sympy_verified": true
+    },
+    {
+      "id": "odes-0005",
+      "domain": "First-Order Differential Equations, Separable Equations & Existence Theory",
+      "topic_id": "ode-separable",
+      "subskill_id": "ode-separable-1",
+      "educational_aim": "Demonstrate foundational mastery of First-Order Differential Equations, Separable Equations & Existence Theory by solving direct algebraic, graphical, or geometric formulations tested on ODES past papers.",
+      "exam_archetype": "First-Order Differential Equations, Separable Equations & Existence Theory — Direct Concept & Representation",
+      "difficulty": "easy",
+      "text": "Consider the separable differential equation \\( \\dfrac{dy}{dx} = 2x \\) with the initial condition \\( y(0) = 3 \\). Find the value of \\( y(2) \\).",
+      "choices": [
+        "7",
+        "6",
+        "8",
+        "5"
+      ],
+      "answer": 0,
+      "correct": 0,
+      "sol": "The differential equation is \\( \\dfrac{dy}{dx} = 2x \\). This is a separable equation. We can rewrite it as \\( dy = 2x \\, dx \\). Integrating both sides gives \\( \\int dy = \\int 2x \\, dx \\), which results in \\( y = x^2 + C \\), where C is the constant of integration. We are given the initial condition \\( y(0) = 3 \\). Substituting these values into the general solution, we get \\( 3 = (0)^2 + C \\), so \\( C = 3 \\). Therefore, the particular solution is \\( y = x^2 + 3 \\). We need to find the value of \\( y(2) \\). Substituting \\( x = 2 \\) into the particular solution, we have \\( y(2) = (2)^2 + 3 = 4 + 3 = 7 \\).",
+      "solution": "The differential equation is \\( \\dfrac{dy}{dx} = 2x \\). This is a separable equation. We can rewrite it as \\( dy = 2x \\, dx \\). Integrating both sides gives \\( \\int dy = \\int 2x \\, dx \\), which results in \\( y = x^2 + C \\), where C is the constant of integration. We are given the initial condition \\( y(0) = 3 \\). Substituting these values into the general solution, we get \\( 3 = (0)^2 + C \\), so \\( C = 3 \\). Therefore, the particular solution is \\( y = x^2 + 3 \\). We need to find the value of \\( y(2) \\). Substituting \\( x = 2 \\) into the particular solution, we have \\( y(2) = (2)^2 + 3 = 4 + 3 = 7 \\).",
+      "sympy_verified": true
     },
     {
       "type": "mcq",
@@ -113,32 +120,46 @@
       "difficulty": "medium"
     },
     {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "Solve \\( \\dfrac{dy}{dx}=x(1+y^2) \\), \\( y(0)=1 \\). Find \\( y(1) \\).",
+      "id": "odes-0007",
+      "domain": "Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials",
+      "topic_id": "ode-systems",
+      "subskill_id": "ode-systems-1",
+      "educational_aim": "Demonstrate foundational mastery of Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials by solving direct algebraic, graphical, or geometric formulations tested on ODES past papers.",
+      "exam_archetype": "Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials — Direct Concept & Representation",
+      "difficulty": "easy",
+      "text": "Consider the system of linear first-order differential equations given by:\\n\\( \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} 1 & 2 \\\\ 3 & 0 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} \\).\\nFind the eigenvalues of the coefficient matrix.",
       "choices": [
-        "\\( \\tan\\!\\big(\\tfrac{\\pi}{4}\\big) \\)",
-        "\\( \\tan(1)+1 \\)",
-        "\\( \\tan\\!\\big(\\tfrac12+\\tfrac{\\pi}{4}\\big) \\)",
-        "\\( 1+\\tfrac12 \\)"
+        "\\( -3, 2 \\)",
+        "\\( 3, -2 \\)",
+        "\\( 1, 0 \\)",
+        "\\( -1, 0 \\)"
       ],
-      "answer": 2,
-      "sol": "Separable: \\( \\dfrac{dy}{1+y^2}=x\\,dx \\Rightarrow \\arctan y=\\dfrac{x^2}{2}+C \\). \\( y(0)=1 \\) gives \\( \\arctan1=\\tfrac{\\pi}{4}=C \\). So \\( \\arctan y=\\dfrac{x^2}{2}+\\dfrac{\\pi}{4} \\), and \\( y(1)=\\tan\\!\\big(\\tfrac12+\\tfrac{\\pi}{4}\\big) \\) (valid since \\( \\tfrac12+\\tfrac{\\pi}{4}<\\tfrac{\\pi}{2} \\), i.e. \\( x=1 \\) is within this solution's domain \\( |x|<\\sqrt{\\pi/2} \\)).",
-      "difficulty": "hard"
+      "answer": 1,
+      "correct": 1,
+      "sol": "The given system is of the form \\( \\mathbf{x}' = A \\mathbf{x} \\), where \\( A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 0 \\end{pmatrix} \\) is the coefficient matrix. To find the eigenvalues, we solve the characteristic equation det\\( (A - \\lambda I) = 0 \\), where \\( I \\) is the identity matrix and \\( \\lambda \\) represents the eigenvalues.\\n\\n\\( A - \\lambda I = \\begin{pmatrix} 1 & 2 \\\\ 3 & 0 \\end{pmatrix} - \\lambda \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} = \\begin{pmatrix} 1-\\lambda & 2 \\\\ 3 & -\\lambda \\end{pmatrix} \\)\\n\\ndet\\( (A - \\lambda I) = (1-\\lambda)(-\\lambda) - (2)(3) = -\\lambda + \\lambda^2 - 6 = \\lambda^2 - \\lambda - 6 \\)\\nSetting the determinant to zero:\\n\\( \\lambda^2 - \\lambda - 6 = 0 \\)\\nFactoring the quadratic equation:\\n\\( (\\lambda - 3)(\\lambda + 2) = 0 \\)\\nThus, the eigenvalues are \\( \\lambda_1 = 3 \\) and \\( \\lambda_2 = -2 \\).",
+      "solution": "The given system is of the form \\( \\mathbf{x}' = A \\mathbf{x} \\), where \\( A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 0 \\end{pmatrix} \\) is the coefficient matrix. To find the eigenvalues, we solve the characteristic equation det\\( (A - \\lambda I) = 0 \\), where \\( I \\) is the identity matrix and \\( \\lambda \\) represents the eigenvalues.\\n\\n\\( A - \\lambda I = \\begin{pmatrix} 1 & 2 \\\\ 3 & 0 \\end{pmatrix} - \\lambda \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} = \\begin{pmatrix} 1-\\lambda & 2 \\\\ 3 & -\\lambda \\end{pmatrix} \\)\\n\\ndet\\( (A - \\lambda I) = (1-\\lambda)(-\\lambda) - (2)(3) = -\\lambda + \\lambda^2 - 6 = \\lambda^2 - \\lambda - 6 \\)\\nSetting the determinant to zero:\\n\\( \\lambda^2 - \\lambda - 6 = 0 \\)\\nFactoring the quadratic equation:\\n\\( (\\lambda - 3)(\\lambda + 2) = 0 \\)\\nThus, the eigenvalues are \\( \\lambda_1 = 3 \\) and \\( \\lambda_2 = -2 \\).",
+      "sympy_verified": true
     },
     {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "Solve \\( \\dfrac{dy}{dx}=y\\cos x \\), \\( y(0)=2 \\). Find \\( y(\\pi/2) \\).",
+      "id": "odes-0008",
+      "domain": "Nonhomogeneous Equations, Undetermined Coefficients & Resonance",
+      "topic_id": "ode-undetermined-coefficients",
+      "subskill_id": "ode-undetermined-coefficients-1",
+      "educational_aim": "Demonstrate foundational mastery of Nonhomogeneous Equations, Undetermined Coefficients & Resonance by solving direct algebraic, graphical, or geometric formulations tested on ODES past papers.",
+      "exam_archetype": "Nonhomogeneous Equations, Undetermined Coefficients & Resonance — Direct Concept & Representation",
+      "difficulty": "easy",
+      "text": "Consider the nonhomogeneous linear second-order differential equation \\( y'' + y = 5 \\). If \\( y_p(x) = A \\) is a particular solution, what is the value of \\( A \\)?",
       "choices": [
-        "\\( 2e^{-1} \\)",
-        "2",
-        "\\( 2e^{2} \\)",
-        "\\( 2e \\)"
+        "1",
+        "5",
+        "1/5",
+        "0"
       ],
-      "answer": 3,
-      "sol": "Separable: \\( \\dfrac{dy}{y}=\\cos x\\,dx \\Rightarrow \\ln y=\\sin x+C \\Rightarrow y=Ae^{\\sin x} \\). \\( y(0)=A=2 \\), so \\( y=2e^{\\sin x} \\), and \\( y(\\pi/2)=2e^{\\sin(\\pi/2)}=2e^{1}=2e \\).",
-      "difficulty": "hard"
+      "answer": 1,
+      "correct": 1,
+      "sol": "The given differential equation is \\( y'' + y = 5 \\). We are looking for a particular solution of the form \\( y_p(x) = A \\), where \\( A \\) is a constant. \nTo find the value of \\( A \\), we substitute \\( y_p(x) \\) and its derivatives into the differential equation.\nIf \\( y_p(x) = A \\), then the first derivative is \\( y_p'(x) = 0 \\) and the second derivative is \\( y_p''(x) = 0 \\).\nSubstituting these into the differential equation \\( y'' + y = 5 \\), we get:\n\\( 0 + A = 5 \\)\nTherefore, \\( A = 5 \\).",
+      "solution": "The given differential equation is \\( y'' + y = 5 \\). We are looking for a particular solution of the form \\( y_p(x) = A \\), where \\( A \\) is a constant. \nTo find the value of \\( A \\), we substitute \\( y_p(x) \\) and its derivatives into the differential equation.\nIf \\( y_p(x) = A \\), then the first derivative is \\( y_p'(x) = 0 \\) and the second derivative is \\( y_p''(x) = 0 \\).\nSubstituting these into the differential equation \\( y'' + y = 5 \\), we get:\n\\( 0 + A = 5 \\)\nTherefore, \\( A = 5 \\).",
+      "sympy_verified": true
     },
     {
       "type": "mcq",
@@ -183,18 +204,25 @@
       "difficulty": "easy"
     },
     {
-      "type": "mcq",
-      "domain": "Linear First-Order Equations",
-      "text": "Solve \\( \\dfrac{dy}{dx}-2y=0 \\), \\( y(0)=4 \\). Find \\( y(1) \\).",
+      "id": "odes-0012",
+      "domain": "Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability",
+      "topic_id": "ode-numerical-methods",
+      "subskill_id": "ode-numerical-methods-2",
+      "educational_aim": "Apply properties and theorems of Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
+      "exam_archetype": "Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability — Multi-Step Application & Parameter Solve",
+      "difficulty": "medium",
+      "text": "Consider the differential equation \\( \\dfrac{dy}{dx} = x + y \\) with the initial condition \\( y(0) = 1 \\). You are asked to approximate \\( y(0.2) \\) using Euler's method. If the step size \\( h = 0.1 \\) is used, and it is known that the exact solution at \\( x=0.2 \\) is \\( y(0.2) = 1.24 \\), determine the value of \\( k \\) such that \\( y(0.2)_{\\text{Euler}} = 1.24 - k \\).",
       "choices": [
-        "\\( 2e^{4} \\)",
-        "\\( 8e \\)",
-        "\\( 4e^{2} \\)",
-        "\\( 4e^{-2} \\)"
+        "0.01",
+        "0.02",
+        "0.03",
+        "0.04"
       ],
-      "answer": 2,
-      "sol": "Write as \\( y'+(-2)y=0 \\); \\( \\mu=e^{-2x} \\): \\( (e^{-2x}y)'=0 \\Rightarrow e^{-2x}y=C \\Rightarrow y=Ce^{2x} \\). \\( y(0)=C=4 \\). So \\( y=4e^{2x} \\), and \\( y(1)=4e^{2} \\).",
-      "difficulty": "easy"
+      "answer": 1,
+      "correct": 1,
+      "sol": "Euler's method for approximating the solution to \\( \\dfrac{dy}{dx} = f(x, y) \\) with initial condition \\( y(x_0) = y_0 \\) and step size \\( h \\) is given by \\( y_{n+1} = y_n + h f(x_n, y_n) \\).\n\nIn this problem, \\( f(x, y) = x + y \\), \\( x_0 = 0 \\), \\( y_0 = 1 \\), and \\( h = 0.1 \\).\n\nWe want to approximate \\( y(0.2) \\) with \\( h=0.1 \\). This requires two steps:\n\nStep 1: From \\( x_0 = 0 \\) to \\( x_1 = 0.1 \\).\n\\( y_1 = y_0 + h f(x_0, y_0) \\)\n\\( y_1 = 1 + 0.1 (0 + 1) \\)\n\\( y_1 = 1 + 0.1 (1) \\)\n\\( y_1 = 1 + 0.1 \\)\n\\( y_1 = 1.1 \\)\n\nStep 2: From \\( x_1 = 0.1 \\) to \\( x_2 = 0.2 \\).\n\\( y_2 = y_1 + h f(x_1, y_1) \\)\n\\( y_2 = 1.1 + 0.1 (0.1 + 1.1) \\)\n\\( y_2 = 1.1 + 0.1 (1.2) \\)\n\\( y_2 = 1.1 + 0.12 \\)\n\\( y_2 = 1.22 \\)\n\nSo, the approximation using Euler's method is \\( y(0.2)_{\\text{Euler}} = 1.22 \\).\n\nWe are given that the exact solution is \\( y(0.2) = 1.24 \\) and \\( y(0.2)_{\\text{Euler}} = 1.24 - k \\).\nSubstituting the value of \\( y(0.2)_{\\text{Euler}} \\), we get:\n\\( 1.22 = 1.24 - k \\)\n\\( k = 1.24 - 1.22 \\)\n\\( k = 0.02 \\)\n\nTherefore, the value of \\( k \\) is 0.02.",
+      "solution": "Euler's method for approximating the solution to \\( \\dfrac{dy}{dx} = f(x, y) \\) with initial condition \\( y(x_0) = y_0 \\) and step size \\( h \\) is given by \\( y_{n+1} = y_n + h f(x_n, y_n) \\).\n\nIn this problem, \\( f(x, y) = x + y \\), \\( x_0 = 0 \\), \\( y_0 = 1 \\), and \\( h = 0.1 \\).\n\nWe want to approximate \\( y(0.2) \\) with \\( h=0.1 \\). This requires two steps:\n\nStep 1: From \\( x_0 = 0 \\) to \\( x_1 = 0.1 \\).\n\\( y_1 = y_0 + h f(x_0, y_0) \\)\n\\( y_1 = 1 + 0.1 (0 + 1) \\)\n\\( y_1 = 1 + 0.1 (1) \\)\n\\( y_1 = 1 + 0.1 \\)\n\\( y_1 = 1.1 \\)\n\nStep 2: From \\( x_1 = 0.1 \\) to \\( x_2 = 0.2 \\).\n\\( y_2 = y_1 + h f(x_1, y_1) \\)\n\\( y_2 = 1.1 + 0.1 (0.1 + 1.1) \\)\n\\( y_2 = 1.1 + 0.1 (1.2) \\)\n\\( y_2 = 1.1 + 0.12 \\)\n\\( y_2 = 1.22 \\)\n\nSo, the approximation using Euler's method is \\( y(0.2)_{\\text{Euler}} = 1.22 \\).\n\nWe are given that the exact solution is \\( y(0.2) = 1.24 \\) and \\( y(0.2)_{\\text{Euler}} = 1.24 - k \\).\nSubstituting the value of \\( y(0.2)_{\\text{Euler}} \\), we get:\n\\( 1.22 = 1.24 - k \\)\n\\( k = 1.24 - 1.22 \\)\n\\( k = 0.02 \\)\n\nTherefore, the value of \\( k \\) is 0.02.",
+      "sympy_verified": true
     },
     {
       "type": "mcq",
@@ -211,46 +239,67 @@
       "difficulty": "medium"
     },
     {
-      "type": "mcq",
-      "domain": "Linear First-Order Equations",
-      "text": "Solve \\( \\dfrac{dy}{dx}+\\dfrac{y}{x}=x \\) for \\( x>0 \\), \\( y(1)=0 \\). Find \\( y(2) \\).",
+      "id": "odes-0014",
+      "domain": "First-Order Differential Equations, Separable Equations & Existence Theory",
+      "topic_id": "ode-separable",
+      "subskill_id": "ode-separable-2",
+      "educational_aim": "Apply properties and theorems of First-Order Differential Equations, Separable Equations & Existence Theory in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
+      "exam_archetype": "First-Order Differential Equations, Separable Equations & Existence Theory — Multi-Step Application & Parameter Solve",
+      "difficulty": "medium",
+      "text": "Consider the separable differential equation \\( \\dfrac{dy}{dx} = ky \\) where \\( k \\) is a positive constant. A solution curve passes through the points \\( (0, 5) \\) and \\( (2, 20) \\). Determine the value of \\( k \\) and then find the value of \\( y \\) when \\( x = 3 \\).",
       "choices": [
-        "\\( \\dfrac{5}{6} \\)",
-        "\\( \\dfrac{4}{3} \\)",
-        "1",
-        "\\( \\dfrac{7}{6} \\)"
+        "\\( k = \\ln 2, y(3) = 40 \\)",
+        "\\( k = 2 \\ln 2, y(3) = 40 \\)",
+        "\\( k = \\ln 2, y(3) = 20 \\sqrt{2} \\)",
+        "\\( k = \\ln 4, y(3) = 80 \\)"
       ],
       "answer": 3,
-      "sol": "\\( \\mu=x \\): \\( (xy)'=x^2 \\Rightarrow xy=\\dfrac{x^3}{3}+C \\Rightarrow y=\\dfrac{x^2}{3}+\\dfrac{C}{x} \\). \\( y(1)=\\dfrac13+C=0\\Rightarrow C=-\\dfrac13 \\). So \\( y=\\dfrac{x^3-1}{3x} \\), and \\( y(2)=\\dfrac{7}{6} \\).",
-      "difficulty": "medium"
+      "correct": 3,
+      "sol": "The differential equation \\( \\dfrac{dy}{dx} = ky \\) is separable. Separating variables gives \\( \\frac{dy}{y} = k \\, dx \\). Integrating both sides, we get \\( \\int \\frac{dy}{y} = \\int k \\, dx \\), which yields \\( \\ln|y| = kx + C_1 \\). Exponentiating both sides gives \\( |y| = e^{kx+C_1} = e^{C_1}e^{kx} \\). Let \\( C = \\pm e^{C_1} \\), so \\( y = Ce^{kx} \\). \\n\\nWe are given that the solution curve passes through \\( (0, 5) \\). Substituting these values into \\( y = Ce^{kx} \\): \\( 5 = Ce^{k(0)} \\Rightarrow 5 = C \\). Thus, the particular solution is \\( y = 5e^{kx} \\). \\n\\nWe are also given that the solution curve passes through \\( (2, 20) \\). Substituting these values into \\( y = 5e^{kx} \\): \\( 20 = 5e^{k(2)} \\Rightarrow 4 = e^{2k} \\). Taking the natural logarithm of both sides: \\( \\ln 4 = \\ln(e^{2k}) \\Rightarrow \\ln 4 = 2k \\Rightarrow k = \\dfrac{\\ln 4}{2} = \\dfrac{2 \\ln 2}{2} = \\ln 2 \\). \\n\\nSo, the value of \\( k \\) is \\( \\ln 2 \\). The particular solution is \\( y = 5e^{(\\ln 2)x} = 5(e^{\\ln 2})^x = 5(2^x) \\). \\n\\nFinally, we need to find the value of \\( y \\) when \\( x = 3 \\). Substituting \\( x = 3 \\) into \\( y = 5(2^x) \\): \\( y(3) = 5(2^3) = 5(8) = 40 \\). \\n\\nTherefore, \\( k = \\ln 2 \\) and \\( y(3) = 40 \\).",
+      "solution": "The differential equation \\( \\dfrac{dy}{dx} = ky \\) is separable. Separating variables gives \\( \\frac{dy}{y} = k \\, dx \\). Integrating both sides, we get \\( \\int \\frac{dy}{y} = \\int k \\, dx \\), which yields \\( \\ln|y| = kx + C_1 \\). Exponentiating both sides gives \\( |y| = e^{kx+C_1} = e^{C_1}e^{kx} \\). Let \\( C = \\pm e^{C_1} \\), so \\( y = Ce^{kx} \\). \\n\\nWe are given that the solution curve passes through \\( (0, 5) \\). Substituting these values into \\( y = Ce^{kx} \\): \\( 5 = Ce^{k(0)} \\Rightarrow 5 = C \\). Thus, the particular solution is \\( y = 5e^{kx} \\). \\n\\nWe are also given that the solution curve passes through \\( (2, 20) \\). Substituting these values into \\( y = 5e^{kx} \\): \\( 20 = 5e^{k(2)} \\Rightarrow 4 = e^{2k} \\). Taking the natural logarithm of both sides: \\( \\ln 4 = \\ln(e^{2k}) \\Rightarrow \\ln 4 = 2k \\Rightarrow k = \\dfrac{\\ln 4}{2} = \\dfrac{2 \\ln 2}{2} = \\ln 2 \\). \\n\\nSo, the value of \\( k \\) is \\( \\ln 2 \\). The particular solution is \\( y = 5e^{(\\ln 2)x} = 5(e^{\\ln 2})^x = 5(2^x) \\). \\n\\nFinally, we need to find the value of \\( y \\) when \\( x = 3 \\). Substituting \\( x = 3 \\) into \\( y = 5(2^x) \\): \\( y(3) = 5(2^3) = 5(8) = 40 \\). \\n\\nTherefore, \\( k = \\ln 2 \\) and \\( y(3) = 40 \\).",
+      "sympy_verified": true
     },
     {
-      "type": "mcq",
-      "domain": "Linear First-Order Equations",
-      "text": "Solve \\( \\dfrac{dy}{dx}+y=e^{x} \\), \\( y(0)=1 \\). Find \\( y(1) \\).",
+      "id": "odes-0015",
+      "domain": "Power Series Solutions, Ordinary Points & the Method of Frobenius",
+      "topic_id": "ode-series-solutions",
+      "subskill_id": "ode-series-solutions-2",
+      "educational_aim": "Apply properties and theorems of Power Series Solutions, Ordinary Points & the Method of Frobenius in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
+      "exam_archetype": "Power Series Solutions, Ordinary Points & the Method of Frobenius — Multi-Step Application & Parameter Solve",
+      "difficulty": "medium",
+      "text": "Consider the second-order linear homogeneous differential equation \\( y'' + P(x)y' + Q(x)y = 0 \\). For the equation \\( x^2 y'' + x y' + (x^2 - \\nu^2)y = 0 \\) (Bessel's equation of order \\( \\nu \\)), the point \\( x=0 \\) is a regular singular point. If we assume a series solution of the form \\( y(x) = \\sum_{n=0}^{\\infty} a_n x^{n+r} \\), where \\( a_0 \\neq 0 \\), the indicial equation is given by \\( r^2 - \\nu^2 = 0 \\). For this problem, let \\( \\nu=1 \\), so the indicial equation is \\( r^2 - 1 = 0 \\). This yields two distinct roots, \\( r_1 = 1 \\) and \\( r_2 = -1 \\). For the larger root \\( r_1=1 \\), the power series solution takes the form \\( y_1(x) = x + \\sum_{n=1}^{\\infty} a_n x^{n+1} \\). Substituting this into Bessel's equation of order 1, and after considerable algebraic manipulation, the recurrence relation for the coefficients \\( a_n \\) is found to be \\( a_n = -\\frac{a_{n-2}}{n(n+2)} \\) for \\( n \\ge 2 \\). Given \\( a_0 = 1 \\), find the value of \\( a_3 \\) for the solution corresponding to the larger root \\( r_1=1 \\).",
       "choices": [
-        "\\( \\dfrac{e}{2} \\)",
-        "\\( \\dfrac{e+e^{-1}}{2} \\)",
-        "\\( \\dfrac{e-e^{-1}}{2} \\)",
-        "\\( e^{-1} \\)"
+        "0",
+        "1/24",
+        "1/48",
+        "1/12"
       ],
-      "answer": 1,
-      "sol": "\\( \\mu=e^{x} \\): \\( (e^{x}y)'=e^{2x} \\Rightarrow e^{x}y=\\dfrac{e^{2x}}{2}+C \\Rightarrow y=\\dfrac{e^{x}}{2}+Ce^{-x} \\). \\( y(0)=\\dfrac12+C=1\\Rightarrow C=\\dfrac12 \\). So \\( y=\\dfrac{e^{x}+e^{-x}}{2} \\), and \\( y(1)=\\dfrac{e+e^{-1}}{2} \\).",
-      "difficulty": "medium"
+      "answer": 0,
+      "correct": 0,
+      "sol": "The recurrence relation is \\( a_n = -\\frac{a_{n-2}}{n(n+2)} \\) for \\( n \\ge 2 \\), with \\( a_0 = 1 \\). We need to find \\( a_3 \\). For \\( n=2 \\), \\( a_2 = -\\frac{a_0}{2(2+2)} = -\\frac{1}{2(4)} = -\\frac{1}{8} \\). For \\( n=3 \\), \\( a_3 = -\\frac{a_{3-2}}{3(3+2)} = -\\frac{a_1}{3(5)} = -\\frac{a_1}{15} \\). Since the recurrence relation only relates terms that are two indices apart, and we are given \\( a_0 \\), any odd-indexed coefficients will depend on \\( a_1 \\). However, the form of the solution for Bessel's equation of order \\( \\nu \\) is \\( y(x) = x^r \\sum_{n=0}^{\\infty} a_n x^n \\). In this problem, \\( r=1 \\), so \\( y(x) = x \\sum_{n=0}^{\\infty} a_n x^n = x(a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \\dots) = a_0 x + a_1 x^2 + a_2 x^3 + a_3 x^4 + \\dots \\). If we substitute this into Bessel's equation, it can be shown that for \\( \\nu=1 \\), \\( a_1=0 \\). Therefore, \\( a_3 = -\\frac{a_1}{15} = -\\frac{0}{15} = 0 \\).",
+      "solution": "The recurrence relation is \\( a_n = -\\frac{a_{n-2}}{n(n+2)} \\) for \\( n \\ge 2 \\), with \\( a_0 = 1 \\). We need to find \\( a_3 \\). For \\( n=2 \\), \\( a_2 = -\\frac{a_0}{2(2+2)} = -\\frac{1}{2(4)} = -\\frac{1}{8} \\). For \\( n=3 \\), \\( a_3 = -\\frac{a_{3-2}}{3(3+2)} = -\\frac{a_1}{3(5)} = -\\frac{a_1}{15} \\). Since the recurrence relation only relates terms that are two indices apart, and we are given \\( a_0 \\), any odd-indexed coefficients will depend on \\( a_1 \\). However, the form of the solution for Bessel's equation of order \\( \\nu \\) is \\( y(x) = x^r \\sum_{n=0}^{\\infty} a_n x^n \\). In this problem, \\( r=1 \\), so \\( y(x) = x \\sum_{n=0}^{\\infty} a_n x^n = x(a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \\dots) = a_0 x + a_1 x^2 + a_2 x^3 + a_3 x^4 + \\dots \\). If we substitute this into Bessel's equation, it can be shown that for \\( \\nu=1 \\), \\( a_1=0 \\). Therefore, \\( a_3 = -\\frac{a_1}{15} = -\\frac{0}{15} = 0 \\).",
+      "sympy_verified": true
     },
     {
-      "type": "mcq",
-      "domain": "Linear First-Order Equations",
-      "text": "Solve \\( \\dfrac{dy}{dx}+2xy=x \\), \\( y(0)=0 \\). Find \\( y(1) \\).",
+      "id": "odes-0016",
+      "domain": "Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials",
+      "topic_id": "ode-systems",
+      "subskill_id": "ode-systems-2",
+      "educational_aim": "Apply properties and theorems of Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
+      "exam_archetype": "Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials — Multi-Step Application & Parameter Solve",
+      "difficulty": "medium",
+      "text": "Consider the system of linear differential equations given by: \\(\\qquad \\begin{cases} \\dfrac{dx}{dt} = -x + 2y \\\\ \\dfrac{dy}{dt} = 3x - 2y \\end{cases}\\)\n\nLet the general solution be of the form \\( \\mathbf{x}(t) = c_1 \\mathbf{v}_1 e^{\\lambda_1 t} + c_2 \\mathbf{v}_2 e^{\\lambda_2 t} \\), where \\( \\lambda_1 < \\lambda_2 \\). Determine the value of \\( \\lambda_2 \\).",
       "choices": [
-        "\\( \\dfrac{e^{-1}}{2} \\)",
-        "\\( \\dfrac{1+e^{-1}}{2} \\)",
-        "\\( \\dfrac{1-e^{-1}}{2} \\)",
-        "\\( 1-e^{-1} \\)"
+        "1",
+        "2",
+        "3",
+        "4"
       ],
       "answer": 2,
-      "sol": "\\( \\mu=e^{x^2} \\): \\( (e^{x^2}y)'=xe^{x^2} \\Rightarrow e^{x^2}y=\\dfrac12 e^{x^2}+C \\Rightarrow y=\\dfrac12+Ce^{-x^2} \\). \\( y(0)=\\dfrac12+C=0\\Rightarrow C=-\\dfrac12 \\). So \\( y=\\dfrac{1-e^{-x^2}}{2} \\), and \\( y(1)=\\dfrac{1-e^{-1}}{2} \\).",
-      "difficulty": "hard"
+      "correct": 2,
+      "sol": "The given system can be written in matrix form as \\( \\dfrac{d\\mathbf{x}}{dt} = A\\mathbf{x} \\), where \\( A = \\begin{pmatrix} -1 & 2 \\\\ 3 & -2 \\end{pmatrix} \\).\n\nTo find the eigenvalues \\( \\lambda \\), we solve the characteristic equation \\( \\det(A - \\lambda I) = 0 \\).\n\\( \\det \\begin{pmatrix} -1-\\lambda & 2 \\\\ 3 & -2-\\lambda \\end{pmatrix} = 0 \\)\n\\( (-1-\\lambda)(-2-\\lambda) - (2)(3) = 0 \\)\n\\( (1+\\lambda)(2+\\lambda) - 6 = 0 \\)\n\\( 2 + \\lambda + 2\\lambda + \\lambda^2 - 6 = 0 \\)\n\\( \\lambda^2 + 3\\lambda - 4 = 0 \\)\n\nFactoring the quadratic equation:\n\\( (\\lambda + 4)(\\lambda - 1) = 0 \\)\n\nThe eigenvalues are \\( \\lambda_1 = -4 \\) and \\( \\lambda_2 = 1 \\).\n\nSince the problem states \\( \\lambda_1 < \\lambda_2 \\), we have \\( \\lambda_1 = -4 \\) and \\( \\lambda_2 = 1 \\). The question asks for \\( \\lambda_2 \\).",
+      "solution": "The given system can be written in matrix form as \\( \\dfrac{d\\mathbf{x}}{dt} = A\\mathbf{x} \\), where \\( A = \\begin{pmatrix} -1 & 2 \\\\ 3 & -2 \\end{pmatrix} \\).\n\nTo find the eigenvalues \\( \\lambda \\), we solve the characteristic equation \\( \\det(A - \\lambda I) = 0 \\).\n\\( \\det \\begin{pmatrix} -1-\\lambda & 2 \\\\ 3 & -2-\\lambda \\end{pmatrix} = 0 \\)\n\\( (-1-\\lambda)(-2-\\lambda) - (2)(3) = 0 \\)\n\\( (1+\\lambda)(2+\\lambda) - 6 = 0 \\)\n\\( 2 + \\lambda + 2\\lambda + \\lambda^2 - 6 = 0 \\)\n\\( \\lambda^2 + 3\\lambda - 4 = 0 \\)\n\nFactoring the quadratic equation:\n\\( (\\lambda + 4)(\\lambda - 1) = 0 \\)\n\nThe eigenvalues are \\( \\lambda_1 = -4 \\) and \\( \\lambda_2 = 1 \\).\n\nSince the problem states \\( \\lambda_1 < \\lambda_2 \\), we have \\( \\lambda_1 = -4 \\) and \\( \\lambda_2 = 1 \\). The question asks for \\( \\lambda_2 \\).",
+      "sympy_verified": true
     },
     {
       "type": "mcq",
@@ -337,18 +386,25 @@
       "difficulty": "easy"
     },
     {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "If \\(\\frac{dy}{dx} = 3x^2 (y - 1)\\) and \\(y(0) = 4\\), what is \\(y(1)\\)?",
+      "id": "odes-0023",
+      "domain": "First-Order Differential Equations, Separable Equations & Existence Theory",
+      "topic_id": "ode-separable",
+      "subskill_id": "ode-separable-3",
+      "educational_aim": "Synthesize First-Order Differential Equations, Separable Equations & Existence Theory with related mathematical concepts to solve high-difficulty past-paper synthesis, optimization, proof, or modeling problems.",
+      "exam_archetype": "First-Order Differential Equations, Separable Equations & Existence Theory — Non-Routine Synthesis & Past-Paper Challenge",
+      "difficulty": "hard",
+      "text": "Consider the differential equation \\( \\frac{dy}{dx} = \\frac{x^2 \\cos(y)}{1 - x^3} \\) with the initial condition \\( y(0) = \\frac{\\pi}{2} \\). If there exists a unique solution in a neighborhood of \\( x=0 \\) and \\( y=\\frac{\\pi}{2} \\), find the value of \\( y'(0) \\).",
       "choices": [
-        "\\(4e\\)",
-        "\\(1 + 3e\\)",
-        "\\(3 + e\\)",
-        "\\(1 + 4e\\)"
+        "0",
+        "1",
+        "\\(\\frac{\\pi}{2}\\)",
+        "Undefined"
       ],
-      "answer": 1,
-      "sol": "Separable: \\(\\frac{dy}{y - 1} = 3x^2\\,dx\\). Integrating gives \\(\\ln|y - 1| = x^3 + C\\), so \\(y - 1 = A e^{x^3}\\). Applying \\(y(0) = 4\\) yields \\(4 - 1 = A \\implies A = 3\\). Thus \\(y(x) = 1 + 3e^{x^3}\\), and \\(y(1) = 1 + 3e\\).",
-      "difficulty": "easy"
+      "answer": 0,
+      "correct": 0,
+      "sol": "The given differential equation is \\( \\frac{dy}{dx} = \\frac{x^2 \\cos(y)}{1 - x^3} \\) with the initial condition \\( y(0) = \\frac{\\pi}{2} \\).\n\nWe are asked to find \\( y'(0) \\). The differential equation directly gives us the expression for \\( \\frac{dy}{dx} \\), which is \\( y'(x) \\).\n\nTo find \\( y'(0) \\), we substitute \\( x=0 \\) and \\( y=y(0)=\\frac{\\pi}{2} \\) into the differential equation:\n\n\\( y'(0) = \\frac{(0)^2 \\cos(y(0))}{1 - (0)^3} \\)\n\nSubstitute \\( y(0) = \\frac{\\pi}{2} \\):\n\n\\( y'(0) = \\frac{0 \\cdot \\cos(\\frac{\\pi}{2})}{1 - 0} \\)\n\nWe know that \\( \\cos(\\frac{\\pi}{2}) = 0 \\).\n\nSo, \\( y'(0) = \\frac{0 \\cdot 0}{1} \\)\n\n\\( y'(0) = \\frac{0}{1} \\)\n\n\\( y'(0) = 0 \\)\n\nThe existence and uniqueness theorem for first-order ODEs guarantees that if \\( f(x, y) = \\frac{x^2 \\cos(y)}{1 - x^3} \\) and \\( \\frac{\\partial f}{\\partial y} = \\frac{x^2 (-\\sin(y))}{1 - x^3} \\) are continuous in a rectangular region containing \\( (0, \\frac{\\pi}{2}) \\), then a unique solution exists. At \\( x=0 \\), both \\( f(x, y) \\) and \\( \\frac{\\partial f}{\\partial y} \\) are continuous since the denominator \\( 1 - x^3 \\) is non-zero and the numerators are well-defined. Therefore, the condition for a unique solution is met.",
+      "solution": "The given differential equation is \\( \\frac{dy}{dx} = \\frac{x^2 \\cos(y)}{1 - x^3} \\) with the initial condition \\( y(0) = \\frac{\\pi}{2} \\).\n\nWe are asked to find \\( y'(0) \\). The differential equation directly gives us the expression for \\( \\frac{dy}{dx} \\), which is \\( y'(x) \\).\n\nTo find \\( y'(0) \\), we substitute \\( x=0 \\) and \\( y=y(0)=\\frac{\\pi}{2} \\) into the differential equation:\n\n\\( y'(0) = \\frac{(0)^2 \\cos(y(0))}{1 - (0)^3} \\)\n\nSubstitute \\( y(0) = \\frac{\\pi}{2} \\):\n\n\\( y'(0) = \\frac{0 \\cdot \\cos(\\frac{\\pi}{2})}{1 - 0} \\)\n\nWe know that \\( \\cos(\\frac{\\pi}{2}) = 0 \\).\n\nSo, \\( y'(0) = \\frac{0 \\cdot 0}{1} \\)\n\n\\( y'(0) = \\frac{0}{1} \\)\n\n\\( y'(0) = 0 \\)\n\nThe existence and uniqueness theorem for first-order ODEs guarantees that if \\( f(x, y) = \\frac{x^2 \\cos(y)}{1 - x^3} \\) and \\( \\frac{\\partial f}{\\partial y} = \\frac{x^2 (-\\sin(y))}{1 - x^3} \\) are continuous in a rectangular region containing \\( (0, \\frac{\\pi}{2}) \\), then a unique solution exists. At \\( x=0 \\), both \\( f(x, y) \\) and \\( \\frac{\\partial f}{\\partial y} \\) are continuous since the denominator \\( 1 - x^3 \\) is non-zero and the numerators are well-defined. Therefore, the condition for a unique solution is met.",
+      "sympy_verified": true
     },
     {
       "type": "mcq",
@@ -421,60 +477,88 @@
       "difficulty": "easy"
     },
     {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "If \\(\\frac{dy}{dx} = 4x^3 y^2\\) and \\(y(0) = -1\\), what is the value of \\(y(1)\\)?",
+      "id": "odes-0029",
+      "domain": "Linear First-Order Equations, Integrating Factors & Nonlinear Reductions",
+      "topic_id": "ode-linear",
+      "subskill_id": "ode-linear-1",
+      "educational_aim": "Demonstrate foundational mastery of Linear First-Order Equations, Integrating Factors & Nonlinear Reductions by solving direct algebraic, graphical, or geometric formulations tested on ODES past papers.",
+      "exam_archetype": "Linear First-Order Equations, Integrating Factors & Nonlinear Reductions — Direct Concept & Representation",
+      "difficulty": "easy",
+      "text": "Consider the first-order linear differential equation \\( \\frac{dy}{dx} + 2y = 4 \\). If the initial condition is \\(y(0) = 1\\), find the value of \\(y(1)\\).",
       "choices": [
-        "\\(\\frac{1}{2}\\)",
-        "\\(-\\frac{1}{4}\\)",
-        "\\(-\\frac{1}{2}\\)",
-        "\\(-2\\)"
+        "\\(e^{-2} + 2\\)",
+        "\\(1 + e^{-2}\\)",
+        "\\(2 - e^{-2}\\)",
+        "\\(2 + e^{-2}\\)"
       ],
       "answer": 2,
-      "sol": "Separable: \\(y^{-2}\\,dy = 4x^3\\,dx\\). Integrating gives \\(-\\frac{1}{y} = x^4 + C\\). With \\(y(0) = -1\\), \\(1 = C\\). Thus \\(-\\frac{1}{y} = x^4 + 1 \\implies y(x) = -\\frac{1}{x^4 + 1}\\). At \\(x = 1\\), \\(y(1) = -\\frac{1}{2}\\).",
-      "difficulty": "easy"
+      "correct": 2,
+      "sol": "The given differential equation is a first-order linear ODE of the form \\( \\frac{dy}{dx} + P(x)y = Q(x) \\). Here, \\( P(x) = 2 \\) and \\( Q(x) = 4 \\). The integrating factor is \\( I(x) = e^{\\int P(x) dx} = e^{\\int 2 dx} = e^{2x} \\). Multiplying the differential equation by the integrating factor, we get: \\( e^{2x} \\frac{dy}{dx} + 2e^{2x}y = 4e^{2x} \\). The left side is the derivative of \\( y \\cdot I(x) \\): \\( \\frac{d}{dx}(ye^{2x}) = 4e^{2x} \\). Integrating both sides with respect to \\(x\\): \\( ye^{2x} = \\int 4e^{2x} dx = 4 \\cdot \\frac{1}{2}e^{2x} + C = 2e^{2x} + C \\). Solving for \\(y\\): \\( y(x) = 2 + Ce^{-2x} \\). Using the initial condition \\(y(0) = 1\\): \\( 1 = 2 + Ce^{0} \\implies 1 = 2 + C \\implies C = -1 \\). Thus, the particular solution is \\( y(x) = 2 - e^{-2x} \\). Finally, we need to find \\(y(1)\\): \\( y(1) = 2 - e^{-2(1)} = 2 - e^{-2} \\).",
+      "solution": "The given differential equation is a first-order linear ODE of the form \\( \\frac{dy}{dx} + P(x)y = Q(x) \\). Here, \\( P(x) = 2 \\) and \\( Q(x) = 4 \\). The integrating factor is \\( I(x) = e^{\\int P(x) dx} = e^{\\int 2 dx} = e^{2x} \\). Multiplying the differential equation by the integrating factor, we get: \\( e^{2x} \\frac{dy}{dx} + 2e^{2x}y = 4e^{2x} \\). The left side is the derivative of \\( y \\cdot I(x) \\): \\( \\frac{d}{dx}(ye^{2x}) = 4e^{2x} \\). Integrating both sides with respect to \\(x\\): \\( ye^{2x} = \\int 4e^{2x} dx = 4 \\cdot \\frac{1}{2}e^{2x} + C = 2e^{2x} + C \\). Solving for \\(y\\): \\( y(x) = 2 + Ce^{-2x} \\). Using the initial condition \\(y(0) = 1\\): \\( 1 = 2 + Ce^{0} \\implies 1 = 2 + C \\implies C = -1 \\). Thus, the particular solution is \\( y(x) = 2 - e^{-2x} \\). Finally, we need to find \\(y(1)\\): \\( y(1) = 2 - e^{-2(1)} = 2 - e^{-2} \\).",
+      "sympy_verified": true
     },
     {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "Find \\(y(12)\\) for the differential equation \\(\\frac{dy}{dx} = \\frac{x}{y}\\) with \\(y(0) = 5\\) and \\(y > 0\\).",
+      "id": "odes-0030",
+      "domain": "Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability",
+      "topic_id": "ode-numerical-methods",
+      "subskill_id": "ode-numerical-methods-1",
+      "educational_aim": "Demonstrate foundational mastery of Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability by solving direct algebraic, graphical, or geometric formulations tested on ODES past papers.",
+      "exam_archetype": "Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability — Direct Concept & Representation",
+      "difficulty": "easy",
+      "text": "Consider the differential equation \\(\\frac{dy}{dx} = x + y\\) with the initial condition \\(y(0) = 1\\). Use the Euler method with a step size \\(h = 0.1\\) to approximate the value of \\(y(0.2)\\).",
       "choices": [
-        "\\(13\\)",
-        "\\(17\\)",
-        "\\(7\\)",
-        "\\(\\sqrt{119}\\)"
+        "1.20",
+        "1.21",
+        "1.23",
+        "1.24"
+      ],
+      "answer": 1,
+      "correct": 1,
+      "sol": "The Euler method approximates the solution to an initial value problem \\(\\frac{dy}{dx} = f(x, y)\\), \\(y(x_0) = y_0\\) using the iterative formula \\(y_{n+1} = y_n + h f(x_n, y_n)\\), where \\(h\\) is the step size and \\(x_{n+1} = x_n + h\\).\n\nGiven \\(f(x, y) = x + y\\), \\(x_0 = 0\\), \\(y_0 = 1\\), and \\(h = 0.1\\).\n\nFor the first step (approximating y(0.1)):\n\\(x_1 = x_0 + h = 0 + 0.1 = 0.1\\)\n\\(y_1 = y_0 + h f(x_0, y_0) = 1 + 0.1 (0 + 1) = 1 + 0.1(1) = 1.1\\).\n\nFor the second step (approximating y(0.2)):\n\\(x_2 = x_1 + h = 0.1 + 0.1 = 0.2\\)\n\\(y_2 = y_1 + h f(x_1, y_1) = 1.1 + 0.1 (0.1 + 1.1) = 1.1 + 0.1 (1.2) = 1.1 + 0.12 = 1.22\\).\n\nTherefore, the approximate value of \\(y(0.2)\\) using the Euler method is 1.22.",
+      "solution": "The Euler method approximates the solution to an initial value problem \\(\\frac{dy}{dx} = f(x, y)\\), \\(y(x_0) = y_0\\) using the iterative formula \\(y_{n+1} = y_n + h f(x_n, y_n)\\), where \\(h\\) is the step size and \\(x_{n+1} = x_n + h\\).\n\nGiven \\(f(x, y) = x + y\\), \\(x_0 = 0\\), \\(y_0 = 1\\), and \\(h = 0.1\\).\n\nFor the first step (approximating y(0.1)):\n\\(x_1 = x_0 + h = 0 + 0.1 = 0.1\\)\n\\(y_1 = y_0 + h f(x_0, y_0) = 1 + 0.1 (0 + 1) = 1 + 0.1(1) = 1.1\\).\n\nFor the second step (approximating y(0.2)):\n\\(x_2 = x_1 + h = 0.1 + 0.1 = 0.2\\)\n\\(y_2 = y_1 + h f(x_1, y_1) = 1.1 + 0.1 (0.1 + 1.1) = 1.1 + 0.1 (1.2) = 1.1 + 0.12 = 1.22\\).\n\nTherefore, the approximate value of \\(y(0.2)\\) using the Euler method is 1.22.",
+      "sympy_verified": true
+    },
+    {
+      "id": "odes-0031",
+      "domain": "Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory",
+      "topic_id": "ode-second-order",
+      "subskill_id": "ode-second-order-1",
+      "educational_aim": "Demonstrate foundational mastery of Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory by solving direct algebraic, graphical, or geometric formulations tested on ODES past papers.",
+      "exam_archetype": "Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory — Direct Concept & Representation",
+      "difficulty": "easy",
+      "text": "Consider the second-order linear homogeneous differential equation \\[ y'' - 3y' + 2y = 0. \\] Find the general solution to this equation.",
+      "choices": [
+        "\\[ y(x) = c_1 e^x + c_2 e^{2x} \\]",
+        "\\[ y(x) = c_1 e^{-x} + c_2 e^{-2x} \\]",
+        "\\[ y(x) = c_1 \\cos(x) + c_2 \\sin(x) \\]",
+        "\\[ y(x) = c_1 x e^x + c_2 e^x \\]"
       ],
       "answer": 0,
-      "sol": "Separable: \\(y\\,dy = x\\,dx\\). Integrating gives \\(y^2 = x^2 + C\\). Using \\(y(0) = 5\\) gives \\(25 = C\\), so \\(y^2 = x^2 + 25\\). At \\(x = 12\\), \\(y = \\sqrt{144 + 25} = \\sqrt{169} = 13\\).",
-      "difficulty": "easy"
+      "correct": 0,
+      "sol": "The characteristic equation for the differential equation $y'' - 3y' + 2y = 0$ is $r^2 - 3r + 2 = 0$. Factoring this quadratic equation gives $(r-1)(r-2) = 0$. The roots are $r_1 = 1$ and $r_2 = 2$. Since the roots are real and distinct, the general solution is of the form $y(x) = c_1 e^{r_1 x} + c_2 e^{r_2 x}$. Substituting the roots, we get $y(x) = c_1 e^x + c_2 e^{2x}$.\n\nChoice B is incorrect because it uses negative roots.\nChoice C is incorrect because it corresponds to complex roots.\nChoice D is incorrect because it corresponds to a repeated root.",
+      "solution": "The characteristic equation for the differential equation $y'' - 3y' + 2y = 0$ is $r^2 - 3r + 2 = 0$. Factoring this quadratic equation gives $(r-1)(r-2) = 0$. The roots are $r_1 = 1$ and $r_2 = 2$. Since the roots are real and distinct, the general solution is of the form $y(x) = c_1 e^{r_1 x} + c_2 e^{r_2 x}$. Substituting the roots, we get $y(x) = c_1 e^x + c_2 e^{2x}$.\n\nChoice B is incorrect because it uses negative roots.\nChoice C is incorrect because it corresponds to complex roots.\nChoice D is incorrect because it corresponds to a repeated root.",
+      "sympy_verified": true
     },
     {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "Solve the initial value problem \\(\\frac{dy}{dx} = e^{x - y}\\) with \\(y(0) = \\ln 2\\). What is \\(y(1)\\)?",
+      "id": "odes-0032",
+      "domain": "First-Order Differential Equations, Separable Equations & Existence Theory",
+      "topic_id": "ode-separable",
+      "subskill_id": "ode-separable-1",
+      "educational_aim": "Demonstrate foundational mastery of First-Order Differential Equations, Separable Equations & Existence Theory by solving direct algebraic, graphical, or geometric formulations tested on ODES past papers.",
+      "exam_archetype": "First-Order Differential Equations, Separable Equations & Existence Theory — Direct Concept & Representation",
+      "difficulty": "easy",
+      "text": "Consider the separable differential equation \\(\\frac{dy}{dx} = \\frac{2x}{y}\\) with the initial condition \\(y(1) = 2\\). Find the value of \\(y(3)\\).",
       "choices": [
-        "\\(\\ln(e + 2)\\)",
-        "\\(e + 1\\)",
-        "\\(1\\)",
-        "\\(\\ln(e + 1)\\)"
+        "\\(2 \\sqrt{3}\\)",
+        "\\(2 \\sqrt{5}\\)",
+        "\\(2 \\sqrt{2}\\)",
+        "\\(4\\)"
       ],
-      "answer": 3,
-      "sol": "Separable: \\(e^y\\,dy = e^x\\,dx\\). Integrating both sides gives \\(e^y = e^x + C\\). Using \\(y(0) = \\ln 2\\) gives \\(e^{\\ln 2} = e^0 + C \\implies 2 = 1 + C \\implies C = 1\\). Thus \\(e^y = e^x + 1 \\implies y = \\ln(e^x + 1)\\). For \\(x = 1\\), \\(y(1) = \\ln(e + 1)\\).",
-      "difficulty": "easy"
-    },
-    {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "Solve the initial value problem \\(\\frac{dy}{dx} = \\frac{y + 2}{x + 1}\\) for \\(x > -1\\), with \\(y(0) = 1\\). What is the value of \\(y(2)\\)?",
-      "choices": [
-        "\\(8\\)",
-        "\\(9\\)",
-        "\\(7\\)",
-        "\\(5\\)"
-      ],
-      "answer": 2,
-      "sol": "Separable: \\(\\frac{dy}{y + 2} = \\frac{dx}{x + 1}\\). Integrating gives \\(\\ln|y + 2| = \\ln|x + 1| + C \\implies y + 2 = A(x + 1)\\). Using \\(y(0) = 1\\) yields \\(3 = A(1) \\implies A = 3\\). Thus \\(y = 3(x + 1) - 2 = 3x + 1\\). At \\(x = 2\\), \\(y(2) = 3(2) + 1 = 7\\).",
-      "difficulty": "easy"
+      "answer": 1,
+      "correct": 1,
+      "sol": "The differential equation is separable: \\(y dy = 2x dx\\).\nIntegrate both sides: \\(\\int y dy = \\int 2x dx\\).\nThis gives \\(\\frac{1}{2}y^2 = x^2 + C\\).\nUse the initial condition \\(y(1) = 2\\) to find C: \\(\\frac{1}{2}(2)^2 = (1)^2 + C \\implies 2 = 1 + C \\implies C = 1\\).\nSo, the solution is \\(\\frac{1}{2}y^2 = x^2 + 1\\), which means \\(y^2 = 2x^2 + 2\\), and \\(y = \\sqrt{2x^2 + 2}\\) (since \\(y(1) = 2 > 0\\)).\nNow, find \\(y(3)\\): \\(y(3) = \\sqrt{2(3)^2 + 2} = \\sqrt{2(9) + 2} = \\sqrt{18 + 2} = \\sqrt{20} = 2\\sqrt{5}\\).",
+      "solution": "The differential equation is separable: \\(y dy = 2x dx\\).\nIntegrate both sides: \\(\\int y dy = \\int 2x dx\\).\nThis gives \\(\\frac{1}{2}y^2 = x^2 + C\\).\nUse the initial condition \\(y(1) = 2\\) to find C: \\(\\frac{1}{2}(2)^2 = (1)^2 + C \\implies 2 = 1 + C \\implies C = 1\\).\nSo, the solution is \\(\\frac{1}{2}y^2 = x^2 + 1\\), which means \\(y^2 = 2x^2 + 2\\), and \\(y = \\sqrt{2x^2 + 2}\\) (since \\(y(1) = 2 > 0\\)).\nNow, find \\(y(3)\\): \\(y(3) = \\sqrt{2(3)^2 + 2} = \\sqrt{2(9) + 2} = \\sqrt{18 + 2} = \\sqrt{20} = 2\\sqrt{5}\\).",
+      "sympy_verified": true
     },
     {
       "type": "mcq",
@@ -491,32 +575,46 @@
       "difficulty": "easy"
     },
     {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "Solve \\(\\frac{dy}{dx} = \\frac{x}{y + 1}\\) with \\(y(0) = 1\\) for \\(y > -1\\). Find \\(y(2)\\).",
+      "id": "odes-0034",
+      "domain": "Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials",
+      "topic_id": "ode-systems",
+      "subskill_id": "ode-systems-1",
+      "educational_aim": "Demonstrate foundational mastery of Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials by solving direct algebraic, graphical, or geometric formulations tested on ODES past papers.",
+      "exam_archetype": "Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials — Direct Concept & Representation",
+      "difficulty": "easy",
+      "text": "Consider the system of linear differential equations: \\[\n\\begin{aligned}\n\\frac{dx}{dt} &= 3x + y \\\\\n\\frac{dy}{dt} &= x + 3y\n\\end{aligned}\n\\]\nFind the eigenvalues of the coefficient matrix for this system.",
       "choices": [
-        "\\(2\\sqrt{2}\\)",
-        "\\(2\\sqrt{2} + 1\\)",
-        "\\(2\\sqrt{2} - 1\\)",
-        "\\(\\sqrt{5} - 1\\)"
+        "$\\lambda_1 = 2, \\lambda_2 = 4$",
+        "$\\lambda_1 = 1, \\lambda_2 = 5$",
+        "$\\lambda_1 = 3, \\lambda_2 = 3$",
+        "$\\lambda_1 = -2, \\lambda_2 = 4$"
       ],
-      "answer": 2,
-      "sol": "Separable: \\((y + 1)\\,dy = x\\,dx\\). Integrating gives \\(\\frac{1}{2}(y + 1)^2 = \\frac{1}{2}x^2 + C\\). Using \\(y(0) = 1\\) gives \\(\\frac{1}{2}(4) = C \\implies C = 2\\). Thus \\((y + 1)^2 = x^2 + 4\\). For \\(x = 2\\), \\((y + 1)^2 = 8 \\implies y + 1 = 2\\sqrt{2}\\), so \\(y(2) = 2\\sqrt{2} - 1\\).",
-      "difficulty": "easy"
+      "answer": 0,
+      "correct": 0,
+      "sol": "The given system of linear differential equations can be written in matrix form as \\(\\mathbf{x}' = A\\mathbf{x}\\), where \\(A = \\begin{pmatrix} 3 & 1 \\\\ 1 & 3 \\end{pmatrix}\\). To find the eigenvalues, we solve the characteristic equation \\(\\det(A - \\lambda I) = 0\\), where \\(I\\) is the identity matrix and \\(\\lambda\\) represents the eigenvalues.\n\nSo, \\(\\det\\left( \\begin{pmatrix} 3 - \\lambda & 1 \\\\ 1 & 3 - \\lambda \\end{pmatrix} \\right) = 0\\).\n\nThis expands to \\((3 - \\lambda)(3 - \\lambda) - (1)(1) = 0\\).\n\n\\((3 - \\lambda)^2 - 1 = 0\\)\n\n\\(9 - 6\\lambda + \\lambda^2 - 1 = 0\\)\n\n\\(\\lambda^2 - 6\\lambda + 8 = 0\\)\n\nFactoring the quadratic equation, we get \\((\\lambda - 2)(\\lambda - 4) = 0\\).\n\nTherefore, the eigenvalues are \\(\\lambda_1 = 2\\) and \\(\\lambda_2 = 4\\).",
+      "solution": "The given system of linear differential equations can be written in matrix form as \\(\\mathbf{x}' = A\\mathbf{x}\\), where \\(A = \\begin{pmatrix} 3 & 1 \\\\ 1 & 3 \\end{pmatrix}\\). To find the eigenvalues, we solve the characteristic equation \\(\\det(A - \\lambda I) = 0\\), where \\(I\\) is the identity matrix and \\(\\lambda\\) represents the eigenvalues.\n\nSo, \\(\\det\\left( \\begin{pmatrix} 3 - \\lambda & 1 \\\\ 1 & 3 - \\lambda \\end{pmatrix} \\right) = 0\\).\n\nThis expands to \\((3 - \\lambda)(3 - \\lambda) - (1)(1) = 0\\).\n\n\\((3 - \\lambda)^2 - 1 = 0\\)\n\n\\(9 - 6\\lambda + \\lambda^2 - 1 = 0\\)\n\n\\(\\lambda^2 - 6\\lambda + 8 = 0\\)\n\nFactoring the quadratic equation, we get \\((\\lambda - 2)(\\lambda - 4) = 0\\).\n\nTherefore, the eigenvalues are \\(\\lambda_1 = 2\\) and \\(\\lambda_2 = 4\\).",
+      "sympy_verified": true
     },
     {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "A quantity satisfies \\(\\frac{dy}{dt} = 5 - y\\) with \\(y(0) = 1\\). What is \\(\\lim_{t \\to \\infty} y(t)\\)?",
+      "id": "odes-0035",
+      "domain": "Nonhomogeneous Equations, Undetermined Coefficients & Resonance",
+      "topic_id": "ode-undetermined-coefficients",
+      "subskill_id": "ode-undetermined-coefficients-1",
+      "educational_aim": "Demonstrate foundational mastery of Nonhomogeneous Equations, Undetermined Coefficients & Resonance by solving direct algebraic, graphical, or geometric formulations tested on ODES past papers.",
+      "exam_archetype": "Nonhomogeneous Equations, Undetermined Coefficients & Resonance — Direct Concept & Representation",
+      "difficulty": "easy",
+      "text": "Consider the nonhomogeneous second-order linear differential equation \\( y'' + 4y = 8 \\). What is the particular solution, \\(y_p(x)\\), to this equation?",
       "choices": [
-        "\\(4\\)",
-        "\\(1\\)",
-        "\\(5\\)",
-        "\\(\\infty\\)"
+        "\\(2\\)",
+        "\\(2x\\)",
+        "\\(2\\sin(2x)\\)",
+        "\\(2\\cos(2x)\\)"
       ],
-      "answer": 2,
-      "sol": "Separable: \\(\\frac{dy}{y - 5} = -dt \\implies \\ln|y - 5| = -t + C \\implies y(t) = 5 + A e^{-t}\\). Since \\(y(0) = 1\\), \\(A = -4\\), giving \\(y(t) = 5 - 4e^{-t}\\). As \\(t \\to \\infty\\), \\(e^{-t} \\to 0\\), so \\(y(t) \\to 5\\).",
-      "difficulty": "easy"
+      "answer": 0,
+      "correct": 0,
+      "sol": "The given differential equation is \\( y'' + 4y = 8 \\). This is a nonhomogeneous second-order linear differential equation. We use the method of undetermined coefficients to find a particular solution, \\(y_p(x)\\). The nonhomogeneous term is a constant, 8.  We guess a particular solution of the form \\(y_p(x) = A\\), where A is a constant. Then, \\(y_p'(x) = 0\\) and \\(y_p''(x) = 0\\). Substituting these into the differential equation: \\(0 + 4(A) = 8\\). Solving for A, we get \\(4A = 8\\), which means \\(A = 2\\). Therefore, the particular solution is \\(y_p(x) = 2\\).",
+      "solution": "The given differential equation is \\( y'' + 4y = 8 \\). This is a nonhomogeneous second-order linear differential equation. We use the method of undetermined coefficients to find a particular solution, \\(y_p(x)\\). The nonhomogeneous term is a constant, 8.  We guess a particular solution of the form \\(y_p(x) = A\\), where A is a constant. Then, \\(y_p'(x) = 0\\) and \\(y_p''(x) = 0\\). Substituting these into the differential equation: \\(0 + 4(A) = 8\\). Solving for A, we get \\(4A = 8\\), which means \\(A = 2\\). Therefore, the particular solution is \\(y_p(x) = 2\\).",
+      "sympy_verified": true
     },
     {
       "type": "mcq",
@@ -547,46 +645,67 @@
       "difficulty": "easy"
     },
     {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "Solve the initial value problem \\(\\frac{dy}{dx} = e^{-y}(2x + 3)\\) with \\(y(0) = 0\\). What is \\(y(1)\\)?",
+      "id": "odes-0038",
+      "domain": "Linear First-Order Equations, Integrating Factors & Nonlinear Reductions",
+      "topic_id": "ode-linear",
+      "subskill_id": "ode-linear-2",
+      "educational_aim": "Apply properties and theorems of Linear First-Order Equations, Integrating Factors & Nonlinear Reductions in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
+      "exam_archetype": "Linear First-Order Equations, Integrating Factors & Nonlinear Reductions — Multi-Step Application & Parameter Solve",
+      "difficulty": "medium",
+      "text": "Consider the first-order linear differential equation \\(\\frac{dy}{dx} + P(x)y = Q(x)\\).  If the integrating factor for this equation is given by \\(e^{x^2}\\) and \\(Q(x) = 2xe^{x^2}\\), find the value of the constant \\(C\\) in the general solution if \\(y(0) = 3\\). The general solution is of the form \\(y = e^{-x^2} \\left( \\int Q(x) e^{-x^2} dx + C \\right)\\).",
       "choices": [
-        "\\(\\ln 4\\)",
-        "\\(\\ln 6\\)",
-        "\\(\\ln 5\\)",
-        "\\(5\\)"
+        "1",
+        "3",
+        "4",
+        "6"
       ],
-      "answer": 2,
-      "sol": "Separable: \\(e^y\\,dy = (2x + 3)\\,dx\\). Integrating gives \\(e^y = x^2 + 3x + C\\). Using \\(y(0) = 0\\) yields \\(e^0 = 1 = C\\). Thus \\(e^y = x^2 + 3x + 1 \\implies y = \\ln(x^2 + 3x + 1)\\). For \\(x = 1\\), \\(y(1) = \\ln(1 + 3 + 1) = \\ln 5\\).",
-      "difficulty": "easy"
+      "answer": 1,
+      "correct": 1,
+      "sol": "The given differential equation is in the form \\(\\frac{dy}{dx} + P(x)y = Q(x)\\). The integrating factor (IF) is given by \\(e^{\\int P(x) dx}\\). We are told that the integrating factor is \\(e^{x^2}\\). Therefore, \\(\\int P(x) dx = x^2\\), which implies \\(P(x) = 2x\\).\n\nThe general solution to a first-order linear differential equation is given by \\(y \\cdot \\text{IF} = \\int Q(x) \\cdot \\text{IF} \\, dx + C\\).\nSubstituting the IF and \\(Q(x)\\), we get:\n\\(y e^{x^2} = \\int (2xe^{x^2}) e^{-x^2} \\, dx + C\\)\n\\(y e^{x^2} = \\int 2x \\, dx + C\\)\n\\(y e^{x^2} = x^2 + C\\)\nNow, we need to find the value of \\(C\\) using the initial condition \\(y(0) = 3\\).\nSubstitute \\(x=0\\) and \\(y=3\\) into the general solution:\n\\(3 e^{0^2} = 0^2 + C\\)\n\\(3 \\cdot 1 = 0 + C\\)\n\\(C = 3\\).\nTherefore, the value of the constant \\(C\\) is 3.",
+      "solution": "The given differential equation is in the form \\(\\frac{dy}{dx} + P(x)y = Q(x)\\). The integrating factor (IF) is given by \\(e^{\\int P(x) dx}\\). We are told that the integrating factor is \\(e^{x^2}\\). Therefore, \\(\\int P(x) dx = x^2\\), which implies \\(P(x) = 2x\\).\n\nThe general solution to a first-order linear differential equation is given by \\(y \\cdot \\text{IF} = \\int Q(x) \\cdot \\text{IF} \\, dx + C\\).\nSubstituting the IF and \\(Q(x)\\), we get:\n\\(y e^{x^2} = \\int (2xe^{x^2}) e^{-x^2} \\, dx + C\\)\n\\(y e^{x^2} = \\int 2x \\, dx + C\\)\n\\(y e^{x^2} = x^2 + C\\)\nNow, we need to find the value of \\(C\\) using the initial condition \\(y(0) = 3\\).\nSubstitute \\(x=0\\) and \\(y=3\\) into the general solution:\n\\(3 e^{0^2} = 0^2 + C\\)\n\\(3 \\cdot 1 = 0 + C\\)\n\\(C = 3\\).\nTherefore, the value of the constant \\(C\\) is 3.",
+      "sympy_verified": true
     },
     {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "Solve \\(\\frac{dy}{dx} = 1 + y^2\\) subject to \\(y(0) = 0\\). What is \\(y(\\pi/4)\\)?",
+      "id": "odes-0039",
+      "domain": "Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability",
+      "topic_id": "ode-numerical-methods",
+      "subskill_id": "ode-numerical-methods-2",
+      "educational_aim": "Apply properties and theorems of Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
+      "exam_archetype": "Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability — Multi-Step Application & Parameter Solve",
+      "difficulty": "medium",
+      "text": "Consider the ordinary differential equation \\(\\frac{dy}{dx} = x + y\\), with the initial condition \\(y(0) = 1\\). We will use Euler's method to approximate the value of \\(y(0.2)\\) using a step size of \\(h = 0.1\\). Let \\(y_0 = y(x_0)\\), \\(y_1 = y(x_1)\\), and \\(y_2 = y(x_2)\\) be the approximations at \\(x_0 = 0\\), \\(x_1 = 0.1\\), and \\(x_2 = 0.2\\) respectively.\n\nWhich of the following statements is TRUE regarding these approximations?",
       "choices": [
-        "\\(\\frac{\\pi}{4}\\)",
-        "\\(0\\)",
-        "\\(\\sqrt{2}\\)",
-        "\\(1\\)"
+        "\\(y_1 = 1.1\\) and the approximation for \\(y(0.2)\\) is \\(1.21\\)",
+        "\\(y_1 = 1.1\\) and the approximation for \\(y(0.2)\\) is \\(1.22\\)",
+        "\\(y_1 = 1.2\\) and the approximation for \\(y(0.2)\\) is \\(1.32\\)",
+        "\\(y_1 = 1.2\\) and the approximation for \\(y(0.2)\\) is \\(1.30\\)"
       ],
-      "answer": 3,
-      "sol": "Separable: \\(\\frac{dy}{1 + y^2} = dx\\). Integrating gives \\(\\arctan(y) = x + C\\). Using \\(y(0) = 0\\) gives \\(C = 0\\), so \\(y(x) = \\tan(x)\\). At \\(x = \\pi/4\\), \\(y(\\pi/4) = \\tan(\\pi/4) = 1\\).",
-      "difficulty": "easy"
+      "answer": 1,
+      "correct": 1,
+      "sol": "Euler's method formula is given by \\(y_{n+1} = y_n + h \\cdot f(x_n, y_n)\\), where \\(f(x, y) = x + y\\) and \\(h = 0.1\\).\n\nFor the first step, from \\(x_0 = 0\\) to \\(x_1 = 0.1\\):\n\\(y_1 = y_0 + h \\cdot f(x_0, y_0)\\)\n\\(y_1 = 1 + 0.1 \\cdot (0 + 1)\\)\n\\(y_1 = 1 + 0.1 \\cdot 1\\)\n\\(y_1 = 1 + 0.1 = 1.1\\)\n\nSo, the approximation for \\(y(0.1)\\) is \\(y_1 = 1.1\\).\n\nFor the second step, from \\(x_1 = 0.1\\) to \\(x_2 = 0.2\\):\n\\(y_2 = y_1 + h \\cdot f(x_1, y_1)\\)\n\\(y_2 = 1.1 + 0.1 \\cdot (0.1 + 1.1)\\)\n\\(y_2 = 1.1 + 0.1 \\cdot (1.2)\\)\n\\(y_2 = 1.1 + 0.12 = 1.22\\)\n\nThus, the approximation for \\(y(0.2)\\) is \\(y_2 = 1.22\\). Therefore, the correct statement is that \\(y_1 = 1.1\\) and the approximation for \\(y(0.2)\\) is \\(1.22\\).",
+      "solution": "Euler's method formula is given by \\(y_{n+1} = y_n + h \\cdot f(x_n, y_n)\\), where \\(f(x, y) = x + y\\) and \\(h = 0.1\\).\n\nFor the first step, from \\(x_0 = 0\\) to \\(x_1 = 0.1\\):\n\\(y_1 = y_0 + h \\cdot f(x_0, y_0)\\)\n\\(y_1 = 1 + 0.1 \\cdot (0 + 1)\\)\n\\(y_1 = 1 + 0.1 \\cdot 1\\)\n\\(y_1 = 1 + 0.1 = 1.1\\)\n\nSo, the approximation for \\(y(0.1)\\) is \\(y_1 = 1.1\\).\n\nFor the second step, from \\(x_1 = 0.1\\) to \\(x_2 = 0.2\\):\n\\(y_2 = y_1 + h \\cdot f(x_1, y_1)\\)\n\\(y_2 = 1.1 + 0.1 \\cdot (0.1 + 1.1)\\)\n\\(y_2 = 1.1 + 0.1 \\cdot (1.2)\\)\n\\(y_2 = 1.1 + 0.12 = 1.22\\)\n\nThus, the approximation for \\(y(0.2)\\) is \\(y_2 = 1.22\\). Therefore, the correct statement is that \\(y_1 = 1.1\\) and the approximation for \\(y(0.2)\\) is \\(1.22\\).",
+      "sympy_verified": true
     },
     {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "For the differential equation \\(\\frac{dy}{dx} = \\frac{x^3}{y^3}\\) with initial condition \\(y(0) = 2\\), what is \\(y(2)\\)?",
+      "id": "odes-0040",
+      "domain": "Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory",
+      "topic_id": "ode-second-order",
+      "subskill_id": "ode-second-order-2",
+      "educational_aim": "Apply properties and theorems of Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
+      "exam_archetype": "Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory — Multi-Step Application & Parameter Solve",
+      "difficulty": "medium",
+      "text": "Consider the second-order linear homogeneous differential equation \\(y'' - 2y' + ky = 0\\). We are given that \\(y_1(x) = e^{3x}\\) is a solution to this equation. \\\\\n(a) Find the value of the parameter \\(k\\). \\\\\n(b) Find the general solution to the differential equation.",
       "choices": [
-        "\\(2\\)",
-        "\\(\\sqrt[4]{24}\\)",
-        "\\(\\sqrt[4]{32}\\)",
-        "\\(4\\)"
+        "k = -3, y(x) = c_1e^{3x} + c_2e^{-x}",
+        "k = 3, y(x) = c_1e^{3x} + c_2xe^{3x}",
+        "k = -3, y(x) = c_1e^{3x} + c_2e^{x}",
+        "k = 9, y(x) = c_1e^{3x} + c_2e^{-3x}"
       ],
-      "answer": 2,
-      "sol": "Separable: \\(y^3\\,dy = x^3\\,dx\\). Integrating gives \\(\\frac{1}{4}y^4 = \\frac{1}{4}x^4 + C_1 \\implies y^4 = x^4 + C\\). Using \\(y(0) = 2\\) gives \\(16 = C\\). Then \\(y^4 = x^4 + 16\\). At \\(x = 2\\), \\(y^4 = 16 + 16 = 32\\), so \\(y(2) = \\sqrt[4]{32}\\).",
-      "difficulty": "easy"
+      "answer": 0,
+      "correct": 0,
+      "sol": "Part (a): \\\\\nIf \\(y_1(x) = e^{3x}\\) is a solution, then its derivatives must satisfy the equation.\\\\\n\\(y_1'(x) = 3e^{3x}\\)\\\\\n\\(y_1''(x) = 9e^{3x}\\)\\\\\nSubstitute these into the differential equation \\(y'' - 2y' + ky = 0\\):\\\\\n\\(9e^{3x} - 2(3e^{3x}) + k(e^{3x}) = 0\\)\\\\\n\\(9e^{3x} - 6e^{3x} + ke^{3x} = 0\\)\\\\\nFactor out \\(e^{3x}\\) (which is never zero):\\\\\n\\(e^{3x}(9 - 6 + k) = 0\\)\\\\\n\\(3 + k = 0\\)\\\\\nSo, \\(k = -3\\).\\\\\n\\\\\nPart (b): \\\\\nNow that we know \\(k = -3\\), the differential equation is \\(y'' - 2y' - 3y = 0\\).\\\\\nThe auxiliary (characteristic) equation is \\(r^2 - 2r - 3 = 0\\).\\\\\nFactor the quadratic equation: \\((r - 3)(r + 1) = 0\\).\\\\\nThe roots are \\(r_1 = 3\\) and \\(r_2 = -1\\).\\\\\nSince the roots are real and distinct, the general solution is of the form \\(y(x) = c_1e^{r_1x} + c_2e^{r_2x}\\).\\\\\nTherefore, the general solution is \\(y(x) = c_1e^{3x} + c_2e^{-x}\\). \\\\\nThis matches choice A.",
+      "solution": "Part (a): \\\\\nIf \\(y_1(x) = e^{3x}\\) is a solution, then its derivatives must satisfy the equation.\\\\\n\\(y_1'(x) = 3e^{3x}\\)\\\\\n\\(y_1''(x) = 9e^{3x}\\)\\\\\nSubstitute these into the differential equation \\(y'' - 2y' + ky = 0\\):\\\\\n\\(9e^{3x} - 2(3e^{3x}) + k(e^{3x}) = 0\\)\\\\\n\\(9e^{3x} - 6e^{3x} + ke^{3x} = 0\\)\\\\\nFactor out \\(e^{3x}\\) (which is never zero):\\\\\n\\(e^{3x}(9 - 6 + k) = 0\\)\\\\\n\\(3 + k = 0\\)\\\\\nSo, \\(k = -3\\).\\\\\n\\\\\nPart (b): \\\\\nNow that we know \\(k = -3\\), the differential equation is \\(y'' - 2y' - 3y = 0\\).\\\\\nThe auxiliary (characteristic) equation is \\(r^2 - 2r - 3 = 0\\).\\\\\nFactor the quadratic equation: \\((r - 3)(r + 1) = 0\\).\\\\\nThe roots are \\(r_1 = 3\\) and \\(r_2 = -1\\).\\\\\nSince the roots are real and distinct, the general solution is of the form \\(y(x) = c_1e^{r_1x} + c_2e^{r_2x}\\).\\\\\nTherefore, the general solution is \\(y(x) = c_1e^{3x} + c_2e^{-x}\\). \\\\\nThis matches choice A.",
+      "sympy_verified": true
     },
     {
       "type": "mcq",
@@ -617,32 +736,46 @@
       "difficulty": "easy"
     },
     {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "Solve \\(\\frac{dy}{dx} = \\frac{2x + 3}{y}\\) with \\(y(1) = 4\\) for \\(y > 0\\). What is the value of \\(y(2)\\)?",
+      "id": "odes-0043",
+      "domain": "Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials",
+      "topic_id": "ode-systems",
+      "subskill_id": "ode-systems-2",
+      "educational_aim": "Apply properties and theorems of Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
+      "exam_archetype": "Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials — Multi-Step Application & Parameter Solve",
+      "difficulty": "medium",
+      "text": "Consider the system of linear differential equations: \\(\\begin{aligned} \\frac{dx}{dt} &= ax + by \\\\ \\frac{dy}{dt} &= cx + dy \\end{aligned}\\) where \\(a, b, c, d\\) are constants. The characteristic equation for the system is \\(\\lambda^2 - (a+d)\\lambda + (ad-bc) = 0\\). We are given that the eigenvalues of the system are \\(\\lambda_1 = 2\\) and \\(\\lambda_2 = -1\\). The trace of the coefficient matrix, \\(T = a+d\\), is \\(1\\). Determine the value of the determinant of the coefficient matrix, \\(D = ad-bc\\).",
       "choices": [
-        "\\(2\\sqrt{6}\\)",
-        "\\(2\\sqrt{7}\\)",
-        "\\(\\sqrt{30}\\)",
-        "\\(\\sqrt{22}\\)"
+        "\\(-2\\)",
+        "\\(-4\\)",
+        "\\(2\\)",
+        "\\(4\\)"
       ],
-      "answer": 1,
-      "sol": "Separable: \\(y\\,dy = (2x + 3)\\,dx\\). Integrating gives \\(\\frac{1}{2}y^2 = x^2 + 3x + C\\). Using \\(y(1) = 4\\) gives \\(\\frac{1}{2}(16) = 1 + 3 + C \\implies 8 = 4 + C \\implies C = 4\\). Thus \\(y^2 = 2x^2 + 6x + 8\\). At \\(x = 2\\), \\(y^2 = 2(4) + 6(2) + 8 = 28\\), so \\(y(2) = \\sqrt{28} = 2\\sqrt{7}\\).",
-      "difficulty": "easy"
+      "answer": 0,
+      "correct": 0,
+      "sol": "The characteristic equation of a 2x2 system of linear differential equations \\(\\begin{aligned} \\frac{dx}{dt} &= ax + by \\\\ \\frac{dy}{dt} &= cx + dy \\end{aligned}\\) is given by \\(\\lambda^2 - (a+d)\\lambda + (ad-bc) = 0\\). This can be written in terms of the trace (T = a+d) and determinant (D = ad-bc) of the coefficient matrix as \\(\\lambda^2 - T\\lambda + D = 0\\). We are given that the eigenvalues are \\(\\lambda_1 = 2\\) and \\(\\lambda_2 = -1\\). The sum of the roots of a quadratic equation \\(p\\lambda^2 + q\\lambda + r = 0\\) is \\(-q/p\\), and the product of the roots is \\(r/p\\). For the characteristic equation \\(\\lambda^2 - T\\lambda + D = 0\\), the sum of the eigenvalues is \\(\\lambda_1 + \\lambda_2 = -(-T)/1 = T\\), and the product of the eigenvalues is \\(\\lambda_1 \\lambda_2 = D/1 = D\\). We are given that the trace \\(T = a+d = 1\\). Let's verify this with the given eigenvalues: \\(\\lambda_1 + \\lambda_2 = 2 + (-1) = 1\\), which matches the given trace. We need to find the determinant \\(D = ad-bc\\). Using the product of the eigenvalues: \\(D = \\lambda_1 \\lambda_2 = (2)(-1) = -2\\).",
+      "solution": "The characteristic equation of a 2x2 system of linear differential equations \\(\\begin{aligned} \\frac{dx}{dt} &= ax + by \\\\ \\frac{dy}{dt} &= cx + dy \\end{aligned}\\) is given by \\(\\lambda^2 - (a+d)\\lambda + (ad-bc) = 0\\). This can be written in terms of the trace (T = a+d) and determinant (D = ad-bc) of the coefficient matrix as \\(\\lambda^2 - T\\lambda + D = 0\\). We are given that the eigenvalues are \\(\\lambda_1 = 2\\) and \\(\\lambda_2 = -1\\). The sum of the roots of a quadratic equation \\(p\\lambda^2 + q\\lambda + r = 0\\) is \\(-q/p\\), and the product of the roots is \\(r/p\\). For the characteristic equation \\(\\lambda^2 - T\\lambda + D = 0\\), the sum of the eigenvalues is \\(\\lambda_1 + \\lambda_2 = -(-T)/1 = T\\), and the product of the eigenvalues is \\(\\lambda_1 \\lambda_2 = D/1 = D\\). We are given that the trace \\(T = a+d = 1\\). Let's verify this with the given eigenvalues: \\(\\lambda_1 + \\lambda_2 = 2 + (-1) = 1\\), which matches the given trace. We need to find the determinant \\(D = ad-bc\\). Using the product of the eigenvalues: \\(D = \\lambda_1 \\lambda_2 = (2)(-1) = -2\\).",
+      "sympy_verified": true
     },
     {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "Given \\(\\frac{dy}{dx} = -4x^3 y\\) with \\(y(0) = e^3\\), find the positive value of \\(x\\) for which \\(y(x) = 1\\).",
+      "id": "odes-0044",
+      "domain": "Nonhomogeneous Equations, Undetermined Coefficients & Resonance",
+      "topic_id": "ode-undetermined-coefficients",
+      "subskill_id": "ode-undetermined-coefficients-2",
+      "educational_aim": "Apply properties and theorems of Nonhomogeneous Equations, Undetermined Coefficients & Resonance in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
+      "exam_archetype": "Nonhomogeneous Equations, Undetermined Coefficients & Resonance — Multi-Step Application & Parameter Solve",
+      "difficulty": "medium",
+      "text": "Consider the second-order nonhomogeneous linear differential equation \\(y'' - 5y' + 6y = 12x + 4\\). If a particular solution is of the form \\(y_p(x) = Ax + B\\) and the general solution is \\(y(x) = C_1e^{2x} + C_2e^{3x} + Ax + B\\), find the value of \\(A\\).",
       "choices": [
-        "\\(\\sqrt{3}\\)",
-        "\\(3^{1/4}\\)",
-        "\\(\\ln 3\\)",
-        "\\(3\\)"
+        "1",
+        "2",
+        "6",
+        "12"
       ],
       "answer": 1,
-      "sol": "Separable: \\(\\frac{dy}{y} = -4x^3\\,dx\\). Integrating gives \\(\\ln|y| = -x^4 + C\\), so \\(y = A e^{-x^4}\\). With \\(y(0) = e^3\\), \\(A = e^3\\), giving \\(y(x) = e^{3 - x^4}\\). Setting \\(y(x) = 1 = e^0\\) yields \\(3 - x^4 = 0 \\implies x^4 = 3\\). For \\(x > 0\\), \\(x = 3^{1/4}\\).",
-      "difficulty": "easy"
+      "correct": 1,
+      "sol": "The given differential equation is \\(y'' - 5y' + 6y = 12x + 4\\). \\\\ We are given that a particular solution is of the form \\(y_p(x) = Ax + B\\). \\\\ To find the coefficients \\(A\\) and \\(B\\), we substitute \\(y_p(x)\\) and its derivatives into the differential equation. \\\\ The first derivative is \\(y_p'(x) = A\\). \\\\ The second derivative is \\(y_p''(x) = 0\\). \\\\ Substituting these into the differential equation: \\\\ \\(0 - 5(A) + 6(Ax + B) = 12x + 4\\\\ -5A + 6Ax + 6B = 12x + 4\\\\ 6Ax + (6B - 5A) = 12x + 4\\\\ \\)By comparing the coefficients of \\(x\\) on both sides, we get: \\\\ \\(6A = 12 \\implies A = 2\\\\ \\)By comparing the constant terms on both sides, we get: \\\\ \\(6B - 5A = 4\\\\ 6B - 5(2) = 4\\\\ 6B - 10 = 4\\\\ 6B = 14 \\implies B = \\frac{14}{6} = \\frac{7}{3}\\\\ \\)The question asks for the value of \\(A\\). Therefore, \\(A = 2\\).",
+      "solution": "The given differential equation is \\(y'' - 5y' + 6y = 12x + 4\\). \\\\ We are given that a particular solution is of the form \\(y_p(x) = Ax + B\\). \\\\ To find the coefficients \\(A\\) and \\(B\\), we substitute \\(y_p(x)\\) and its derivatives into the differential equation. \\\\ The first derivative is \\(y_p'(x) = A\\). \\\\ The second derivative is \\(y_p''(x) = 0\\). \\\\ Substituting these into the differential equation: \\\\ \\(0 - 5(A) + 6(Ax + B) = 12x + 4\\\\ -5A + 6Ax + 6B = 12x + 4\\\\ 6Ax + (6B - 5A) = 12x + 4\\\\ \\)By comparing the coefficients of \\(x\\) on both sides, we get: \\\\ \\(6A = 12 \\implies A = 2\\\\ \\)By comparing the constant terms on both sides, we get: \\\\ \\(6B - 5A = 4\\\\ 6B - 5(2) = 4\\\\ 6B - 10 = 4\\\\ 6B = 14 \\implies B = \\frac{14}{6} = \\frac{7}{3}\\\\ \\)The question asks for the value of \\(A\\). Therefore, \\(A = 2\\).",
+      "sympy_verified": true
     },
     {
       "type": "mcq",
@@ -743,18 +876,25 @@
       "difficulty": "easy"
     },
     {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "Solve \\(\\frac{dy}{dx} = \\frac{1 + y^2}{x}\\) for \\(x > 0\\) with \\(y(1) = 0\\). What is \\(y(e^{\\pi/4})\\)?",
+      "id": "odes-0052",
+      "domain": "Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials",
+      "topic_id": "ode-systems",
+      "subskill_id": "ode-systems-3",
+      "educational_aim": "Synthesize Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials with related mathematical concepts to solve high-difficulty past-paper synthesis, optimization, proof, or modeling problems.",
+      "exam_archetype": "Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials — Non-Routine Synthesis & Past-Paper Challenge",
+      "difficulty": "hard",
+      "text": "Consider the system of linear differential equations given by:\\n\\begin{align*}\\n  \\mathbf{y}'(t) &= A \\mathbf{y}(t) \\\\end{align*}where $A = \\begin{pmatrix} 1 & -2 \\\\ 2 & 1 \\end{pmatrix}$.\\nLet $\\mathbf{y}(t) = \\begin{pmatrix} y_1(t) \\\\ y_2(t) \\end{pmatrix}$ be a solution to this system with initial condition $\\mathbf{y}(0) = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$.\\nFind the value of $y_1(t)$ as $t \\to \\infty$.",
       "choices": [
-        "\\(\\frac{\\pi}{4}\\)",
-        "\\(0\\)",
-        "\\(\\sqrt{3}\\)",
-        "\\(1\\)"
+        "$\\\\infty$",
+        "$0$",
+        "$1$",
+        "$\\\\e^t$"
       ],
-      "answer": 3,
-      "sol": "Separable: \\(\\frac{dy}{1 + y^2} = \\frac{dx}{x}\\). Integrating gives \\(\\arctan(y) = \\ln x + C\\). Using \\(y(1) = 0\\) gives \\(\\arctan(0) = 0 = C\\). Thus \\(y = \\tan(\\ln x)\\). For \\(x = e^{\\pi/4}\\), \\(\\ln(e^{\\pi/4}) = \\pi/4\\), so \\(y = \\tan(\\pi/4) = 1\\).",
-      "difficulty": "easy"
+      "answer": 0,
+      "correct": 0,
+      "sol": "The given system is $\\mathbf{y}'(t) = A \\mathbf{y}(t)$ with $A = \\begin{pmatrix} 1 & -2 \\\\ 2 & 1 \\end{pmatrix}$. To solve this, we first find the eigenvalues and eigenvectors of $A$. The characteristic equation is $\\det(A - \\lambda I) = 0$. \n\n$\\det \\begin{pmatrix} 1-\\lambda & -2 \\\\ 2 & 1-\\lambda \\end{pmatrix} = (1-\\lambda)^2 - (-2)(2) = (1-\\lambda)^2 + 4 = 0$.\nThis gives $(1-\\lambda)^2 = -4$, so $1-\\lambda = \\pm 2i$. Thus, the eigenvalues are $\\lambda_1 = 1 - 2i$ and $\\lambda_2 = 1 + 2i$.\n\nSince the real part of the eigenvalues is $1 > 0$, the solutions will grow exponentially as $t \\to \\infty$. The general solution is of the form $\\mathbf{y}(t) = c_1 e^{\\lambda_1 t} \\mathbf{v}_1 + c_2 e^{\\lambda_2 t} \\mathbf{v}_2$, where $\\mathbf{v}_1$ and $\\mathbf{v}_2$ are the corresponding eigenvectors. Even without explicitly calculating the eigenvectors, the exponential term $e^{\\lambda t}$ dictates the long-term behavior. Since the real part of $\\lambda$ is positive, $e^{\\operatorname{Re}(\\lambda) t}$ will grow as $t \\to \\infty$. \n\nSpecifically, for $\\lambda_1 = 1 - 2i$, $e^{(1-2i)t} = e^t e^{-2it} = e^t (\\cos(2t) - i \\sin(2t))$. The $e^t$ term dominates, causing the solution to grow in magnitude. Therefore, as $t \\to \\infty$, $y_1(t)$ will tend to infinity.\n\nLet's verify this with a more direct approach. The general solution for a system $\\mathbf{y}' = A \\mathbf{y}$ where $A$ has complex eigenvalues $a \\pm bi$ is of the form $e^{at}(c_1 \\cos(bt) + c_2 \\sin(bt))\\mathbf{u}_1 + e^{at}(d_1 \\cos(bt) + d_2 \\sin(bt))\\mathbf{u}_2$. The dominant term is $e^{at}$. In this case, $a=1$, so the solutions will grow as $e^t$. Thus, $y_1(t) \\to \\infty$ as $t \\to \\infty$.",
+      "solution": "The given system is $\\mathbf{y}'(t) = A \\mathbf{y}(t)$ with $A = \\begin{pmatrix} 1 & -2 \\\\ 2 & 1 \\end{pmatrix}$. To solve this, we first find the eigenvalues and eigenvectors of $A$. The characteristic equation is $\\det(A - \\lambda I) = 0$. \n\n$\\det \\begin{pmatrix} 1-\\lambda & -2 \\\\ 2 & 1-\\lambda \\end{pmatrix} = (1-\\lambda)^2 - (-2)(2) = (1-\\lambda)^2 + 4 = 0$.\nThis gives $(1-\\lambda)^2 = -4$, so $1-\\lambda = \\pm 2i$. Thus, the eigenvalues are $\\lambda_1 = 1 - 2i$ and $\\lambda_2 = 1 + 2i$.\n\nSince the real part of the eigenvalues is $1 > 0$, the solutions will grow exponentially as $t \\to \\infty$. The general solution is of the form $\\mathbf{y}(t) = c_1 e^{\\lambda_1 t} \\mathbf{v}_1 + c_2 e^{\\lambda_2 t} \\mathbf{v}_2$, where $\\mathbf{v}_1$ and $\\mathbf{v}_2$ are the corresponding eigenvectors. Even without explicitly calculating the eigenvectors, the exponential term $e^{\\lambda t}$ dictates the long-term behavior. Since the real part of $\\lambda$ is positive, $e^{\\operatorname{Re}(\\lambda) t}$ will grow as $t \\to \\infty$. \n\nSpecifically, for $\\lambda_1 = 1 - 2i$, $e^{(1-2i)t} = e^t e^{-2it} = e^t (\\cos(2t) - i \\sin(2t))$. The $e^t$ term dominates, causing the solution to grow in magnitude. Therefore, as $t \\to \\infty$, $y_1(t)$ will tend to infinity.\n\nLet's verify this with a more direct approach. The general solution for a system $\\mathbf{y}' = A \\mathbf{y}$ where $A$ has complex eigenvalues $a \\pm bi$ is of the form $e^{at}(c_1 \\cos(bt) + c_2 \\sin(bt))\\mathbf{u}_1 + e^{at}(d_1 \\cos(bt) + d_2 \\sin(bt))\\mathbf{u}_2$. The dominant term is $e^{at}$. In this case, $a=1$, so the solutions will grow as $e^t$. Thus, $y_1(t) \\to \\infty$ as $t \\to \\infty$.",
+      "sympy_verified": true
     },
     {
       "type": "mcq",
@@ -785,18 +925,25 @@
       "difficulty": "easy"
     },
     {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "Solve \\(\\frac{dy}{dx} = \\frac{y}{x^2}\\) with \\(y(1) = 3\\) for \\(x > 0\\). What is the value of \\(y(2)\\)?",
+      "id": "odes-0055",
+      "domain": "The Laplace Transform, Discontinuous Forcing & Convolution Theory",
+      "topic_id": "ode-laplace-transforms",
+      "subskill_id": "ode-laplace-transforms-1",
+      "educational_aim": "Demonstrate foundational mastery of The Laplace Transform, Discontinuous Forcing & Convolution Theory by solving direct algebraic, graphical, or geometric formulations tested on ODES past papers.",
+      "exam_archetype": "The Laplace Transform, Discontinuous Forcing & Convolution Theory — Direct Concept & Representation",
+      "difficulty": "easy",
+      "text": "Consider the differential equation \\(y''(t) + 4y(t) = u(t-2)\\), where \\(u(t)\\) is the Heaviside step function, with initial conditions \\(y(0) = 0\\) and \\(y'(0) = 0\\). Apply the Laplace Transform to both sides of the equation. If \\(Y(s) = \\mathcal{L}\\{y(t)\\}\\) and \\(\\mathcal{L}\\{u(t-a)\\} = \\frac{e^{-as}}{s}\\), which of the following expressions represents \\(Y(s)\\)?",
       "choices": [
-        "\\(e^{3/2}\\)",
-        "\\(3e\\)",
-        "\\(3\\sqrt{e}\\)",
-        "\\(\\frac{3}{\\sqrt{e}}\\)"
+        "\\(\\frac{e^{-2s}}{s(s^2 + 4)}\\)",
+        "\\(\\frac{1}{(s^2 + 4)}\\)",
+        "\\(\\frac{1}{s(s^2 + 4)}\\)",
+        "\\(\\frac{e^{-2s}}{s^2 + 4}\\)"
       ],
-      "answer": 2,
-      "sol": "Separable: \\(\\frac{dy}{y} = x^{-2}\\,dx\\). Integrating gives \\(\\ln|y| = -\\frac{1}{x} + C\\). Using \\(y(1) = 3\\) yields \\(\\ln 3 = -1 + C \\implies C = 1 + \\ln 3\\). Thus \\(\\ln y = 1 - \\frac{1}{x} + \\ln 3 \\implies y(x) = 3e^{1 - 1/x}\\). At \\(x = 2\\), \\(y(2) = 3e^{1 - 1/2} = 3\\sqrt{e}\\).",
-      "difficulty": "easy"
+      "answer": 0,
+      "correct": 0,
+      "sol": "Applying the Laplace Transform to the given differential equation: \\(\\mathcal{L}\\{y''(t)\\} + 4\\mathcal{L}\\{y(t)\\} = \\mathcal{L}\\{u(t-2)\\}\\). Using the properties of the Laplace Transform and the given initial conditions \\(y(0) = 0\\) and \\(y'(0) = 0\\), we have \\(\\mathcal{L}\\{y''(t)\\} = s^2 Y(s) - sy(0) - y'(0) = s^2 Y(s)\\). The Laplace Transform of \\(y(t)\\) is \\(Y(s)\\). The Laplace Transform of the Heaviside step function \\(u(t-2)\\) is \\(\\frac{e^{-2s}}{s}\\). Substituting these into the transformed equation gives: \\(s^2 Y(s) + 4 Y(s) = \\frac{e^{-2s}}{s}\\). Factoring out \\(Y(s)\\), we get \\(Y(s)(s^2 + 4) = \\frac{e^{-2s}}{s}\\). Solving for \\(Y(s)\\), we obtain \\(Y(s) = \\frac{e^{-2s}}{s(s^2 + 4)}\\).",
+      "solution": "Applying the Laplace Transform to the given differential equation: \\(\\mathcal{L}\\{y''(t)\\} + 4\\mathcal{L}\\{y(t)\\} = \\mathcal{L}\\{u(t-2)\\}\\). Using the properties of the Laplace Transform and the given initial conditions \\(y(0) = 0\\) and \\(y'(0) = 0\\), we have \\(\\mathcal{L}\\{y''(t)\\} = s^2 Y(s) - sy(0) - y'(0) = s^2 Y(s)\\). The Laplace Transform of \\(y(t)\\) is \\(Y(s)\\). The Laplace Transform of the Heaviside step function \\(u(t-2)\\) is \\(\\frac{e^{-2s}}{s}\\). Substituting these into the transformed equation gives: \\(s^2 Y(s) + 4 Y(s) = \\frac{e^{-2s}}{s}\\). Factoring out \\(Y(s)\\), we get \\(Y(s)(s^2 + 4) = \\frac{e^{-2s}}{s}\\). Solving for \\(Y(s)\\), we obtain \\(Y(s) = \\frac{e^{-2s}}{s(s^2 + 4)}\\).",
+      "sympy_verified": true
     },
     {
       "type": "mcq",
@@ -813,32 +960,46 @@
       "difficulty": "easy"
     },
     {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "A cooling liquid satisfies \\(\\frac{dy}{dt} = -0.1(y - 25)\\) with \\(y(0) = 75\\). At what time \\(t\\) does \\(y(t) = 30\\)?",
+      "id": "odes-0057",
+      "domain": "Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability",
+      "topic_id": "ode-numerical-methods",
+      "subskill_id": "ode-numerical-methods-1",
+      "educational_aim": "Demonstrate foundational mastery of Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability by solving direct algebraic, graphical, or geometric formulations tested on ODES past papers.",
+      "exam_archetype": "Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability — Direct Concept & Representation",
+      "difficulty": "easy",
+      "text": "Consider the initial value problem \\(\\frac{dy}{dx} = x + y\\) with \\(y(0) = 1\\). Use the Euler method with step size \\(h = 0.5\\) to approximate \\(y(1)\\).",
       "choices": [
-        "\\(\\frac{\\ln 10}{10}\\)",
-        "\\(5\\ln 10\\)",
-        "\\(10\\ln 10\\)",
-        "\\(10\\ln 5\\)"
-      ],
-      "answer": 2,
-      "sol": "Separable: \\(\\frac{dy}{y - 25} = -0.1\\,dt \\implies y(t) - 25 = (75 - 25)e^{-0.1t} = 50e^{-0.1t}\\). Setting \\(y(t) = 30\\) gives \\(5 = 50e^{-0.1t} \\implies e^{-0.1t} = \\frac{1}{10} \\implies -0.1t = -\\ln 10 \\implies t = 10\\ln 10\\).",
-      "difficulty": "easy"
-    },
-    {
-      "type": "mcq",
-      "domain": "Separable Equations",
-      "text": "Solve \\(\\frac{dy}{dx} = 4x e^{-2y}\\) with \\(y(0) = 0\\). Which expression represents \\(y(x)\\)?",
-      "choices": [
-        "\\(y = \\frac{1}{2}\\ln(4x^2 + 1)\\)",
-        "\\(y = \\ln(4x^2 + 1)\\)",
-        "\\(y = \\frac{1}{2}\\ln(2x^2 + 1)\\)",
-        "\\(y = \\ln(2x^2 + 1)\\)"
+        "2.75",
+        "2.50",
+        "3.00",
+        "2.25"
       ],
       "answer": 0,
-      "sol": "Separable: \\(e^{2y}\\,dy = 4x\\,dx\\). Integrating gives \\(\\frac{1}{2}e^{2y} = 2x^2 + C\\). Using \\(y(0) = 0\\) gives \\(\\frac{1}{2} = C\\). Thus \\(\\frac{1}{2}e^{2y} = 2x^2 + \\frac{1}{2} \\implies e^{2y} = 4x^2 + 1 \\implies y = \\frac{1}{2}\\ln(4x^2 + 1)\\).",
-      "difficulty": "easy"
+      "correct": 0,
+      "sol": "The Euler method approximates the solution of an ODE \\(\\frac{dy}{dx} = f(x, y)\\) with initial condition \\(y(x_0) = y_0\\) using the iterative formula \\(y_{i+1} = y_i + h f(x_i, y_i)\\), where \\(h\\) is the step size and \\(x_i = x_0 + ih\\).\n\nGiven: \\(f(x, y) = x + y\\), \\(x_0 = 0\\), \\(y_0 = 1\\), and \\(h = 0.5\\).\n\nWe want to approximate \\(y(1)\\). Since \\(1 = 0 + 2 \\times 0.5\\), we need two steps.\n\nStep 1: Approximate \\(y(0.5)\\).\n\\(x_1 = x_0 + h = 0 + 0.5 = 0.5\\)\n\\(y_1 = y_0 + h f(x_0, y_0) = 1 + 0.5 (0 + 1) = 1 + 0.5(1) = 1.5\\).\n\nStep 2: Approximate \\(y(1)\\).\n\\(x_2 = x_1 + h = 0.5 + 0.5 = 1.0\\)\n\\(y_2 = y_1 + h f(x_1, y_1) = 1.5 + 0.5 (0.5 + 1.5) = 1.5 + 0.5(2.0) = 1.5 + 1.0 = 2.5\\).\n\nTherefore, the Euler approximation for \\(y(1)\\) is 2.50.",
+      "solution": "The Euler method approximates the solution of an ODE \\(\\frac{dy}{dx} = f(x, y)\\) with initial condition \\(y(x_0) = y_0\\) using the iterative formula \\(y_{i+1} = y_i + h f(x_i, y_i)\\), where \\(h\\) is the step size and \\(x_i = x_0 + ih\\).\n\nGiven: \\(f(x, y) = x + y\\), \\(x_0 = 0\\), \\(y_0 = 1\\), and \\(h = 0.5\\).\n\nWe want to approximate \\(y(1)\\). Since \\(1 = 0 + 2 \\times 0.5\\), we need two steps.\n\nStep 1: Approximate \\(y(0.5)\\).\n\\(x_1 = x_0 + h = 0 + 0.5 = 0.5\\)\n\\(y_1 = y_0 + h f(x_0, y_0) = 1 + 0.5 (0 + 1) = 1 + 0.5(1) = 1.5\\).\n\nStep 2: Approximate \\(y(1)\\).\n\\(x_2 = x_1 + h = 0.5 + 0.5 = 1.0\\)\n\\(y_2 = y_1 + h f(x_1, y_1) = 1.5 + 0.5 (0.5 + 1.5) = 1.5 + 0.5(2.0) = 1.5 + 1.0 = 2.5\\).\n\nTherefore, the Euler approximation for \\(y(1)\\) is 2.50.",
+      "sympy_verified": true
+    },
+    {
+      "id": "odes-0058",
+      "domain": "Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory",
+      "topic_id": "ode-second-order",
+      "subskill_id": "ode-second-order-1",
+      "educational_aim": "Demonstrate foundational mastery of Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory by solving direct algebraic, graphical, or geometric formulations tested on ODES past papers.",
+      "exam_archetype": "Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory — Direct Concept & Representation",
+      "difficulty": "easy",
+      "text": "Consider the second-order linear homogeneous differential equation \\(y''(x) + 5y'(x) + 6y(x) = 0\\). If the auxiliary equation has roots \\(r_1\\) and \\(r_2\\), what is the value of \\(r_1 + r_2\\)?",
+      "choices": [
+        "5",
+        "-5",
+        "6",
+        "-6"
+      ],
+      "answer": 1,
+      "correct": 1,
+      "sol": "The general form of a second-order linear homogeneous differential equation with constant coefficients is \\(ay''(x) + by'(x) + cy(x) = 0\\). The associated auxiliary equation is \\(ar^2 + br + c = 0\\). For the given equation \\(y''(x) + 5y'(x) + 6y(x) = 0\\), the auxiliary equation is \\(r^2 + 5r + 6 = 0\\).  According to Vieta's formulas, for a quadratic equation of the form \\(ar^2 + br + c = 0\\), the sum of the roots \\(r_1 + r_2 = -b/a\\). In this case, \\(a=1\\), \\(b=5\\), and \\(c=6\\). Therefore, the sum of the roots is \\(r_1 + r_2 = -5/1 = -5\\).",
+      "solution": "The general form of a second-order linear homogeneous differential equation with constant coefficients is \\(ay''(x) + by'(x) + cy(x) = 0\\). The associated auxiliary equation is \\(ar^2 + br + c = 0\\). For the given equation \\(y''(x) + 5y'(x) + 6y(x) = 0\\), the auxiliary equation is \\(r^2 + 5r + 6 = 0\\).  According to Vieta's formulas, for a quadratic equation of the form \\(ar^2 + br + c = 0\\), the sum of the roots \\(r_1 + r_2 = -b/a\\). In this case, \\(a=1\\), \\(b=5\\), and \\(c=6\\). Therefore, the sum of the roots is \\(r_1 + r_2 = -5/1 = -5\\).",
+      "sympy_verified": true
     },
     {
       "type": "mcq",
