@@ -1,160 +1,730 @@
 {
   "track": "sat",
   "num": "9.01",
-  "slug": "statistics-and-sampling",
-  "title": "Statistics & Sampling",
+  "title": "Statistics, Data Analysis & Sampling",
+  "sub": "20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Measures of Center & Spread",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "A data set consists of the numbers $4, 7, 8, 11, 14, 16, 24$. What is the median of the data set?",
+          "qtype": "FRQ",
+          "difficulty": "Foundational",
+          "target": "Measures of Center & Spread",
+          "q": "Compute the mean, median, range, and interquartile range (IQR) of the dataset $\\{12, 15, 15, 18, 22, 25, 33\\}$.",
+          "answer": "Sum $= 12 + 15 + 15 + 18 + 22 + 25 + 33 = 140$, so Mean $= \\dfrac{140}{7} = 20$. The middle (4th) value is Median $= 18$. Range $= 33 - 12 = 21$. Lower half $\\{12, 15, 15\\}$ has $Q_1 = 15$; upper half $\\{22, 25, 33\\}$ has $Q_3 = 25$; thus $\\mathrm{IQR} = 25 - 15 = 10$.",
+          "figure": {
+            "type": "boxplot",
+            "groups": [
+              {
+                "label": "Sample",
+                "stats": [
+                  12,
+                  15,
+                  18,
+                  25,
+                  33
+                ]
+              }
+            ],
+            "min": 8,
+            "max": 38,
+            "xlabel": "Value",
+            "width": 215
+          }
+        },
+        {
+          "qtype": "FRQ",
+          "difficulty": "Foundational",
+          "target": "Target Mean & Weighted Totals",
+          "q": "A student has a mean score of $84$ across $5$ exams. What score must the student earn on the $6$th exam to raise the overall mean to $86$?",
+          "answer": "Total points on the first $5$ exams $= 5 \\times 84 = 420$. Required total on $6$ exams $= 6 \\times 86 = 516$. Thus the $6$th exam score must be $516 - 420 = 96$."
+        },
+        {
+          "qtype": "FRQ",
+          "difficulty": "Foundational",
+          "target": "Comparing Boxplots (Median & IQR)",
+          "q": "The side-by-side boxplots below compare daily commuter times (in minutes) on Route A and Route B. State the median and IQR for each route, and identify which route has more consistent travel times.",
+          "answer": "Route A has five-number summary $(15, 22, 28, 34, 45)$, so Median $= 28\\,\\mathrm{min}$ and $\\mathrm{IQR} = 34 - 22 = 12\\,\\mathrm{min}$. Route B has $(10, 20, 32, 42, 50)$, so Median $= 32\\,\\mathrm{min}$ and $\\mathrm{IQR} = 42 - 20 = 22\\,\\mathrm{min}$. Route A has smaller IQR and range, so its travel times are more consistent.",
+          "figure": {
+            "type": "boxplot",
+            "groups": [
+              {
+                "label": "Route A",
+                "stats": [
+                  15,
+                  22,
+                  28,
+                  34,
+                  45
+                ]
+              },
+              {
+                "label": "Route B",
+                "stats": [
+                  10,
+                  20,
+                  32,
+                  42,
+                  50
+                ]
+              }
+            ],
+            "min": 5,
+            "max": 55,
+            "xlabel": "Commute Time (minutes)",
+            "width": 225
+          }
+        },
+        {
+          "qtype": "FRQ",
+          "difficulty": "Foundational",
+          "target": "Two-Way Tables & Conditional Probability",
+          "q": "In a clinical study of $200$ patients, $120$ received Treatment X ($90$ improved, $30$ did not) and $80$ received a Placebo ($30$ improved, $50$ did not). Compute (a) $P(\\mathrm{Improved})$, (b) $P(\\mathrm{Improved} \\mid \\mathrm{Treatment\\ X})$, and (c) $P(\\mathrm{Treatment\\ X} \\mid \\mathrm{Improved})$.",
+          "answer": "Total improved $= 90 + 30 = 120$. (a) $P(\\mathrm{Improved}) = \\dfrac{120}{200} = 0.60$. (b) $P(\\mathrm{Improved} \\mid \\mathrm{Treatment\\ X}) = \\dfrac{90}{120} = 0.75$. (c) $P(\\mathrm{Treatment\\ X} \\mid \\mathrm{Improved}) = \\dfrac{90}{120} = 0.75$."
+        },
+        {
+          "qtype": "FRQ",
+          "difficulty": "Foundational",
+          "target": "Scatterplots, Line of Best Fit & Residuals",
+          "q": "A scatterplot of study hours $x$ versus quiz score $y$ has line of best fit $\\hat{y} = 4.5x + 52$, as shown. Calculate the predicted score for $x = 6$ hours and the residual for a student who studied $6$ hours and scored $83$.",
+          "answer": "Predicted score: $\\hat{y}(6) = 4.5(6) + 52 = 27 + 52 = 79$. Residual $= y - \\hat{y} = 83 - 79 = +4$ (the student scored $4$ points above the model prediction).",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4.5*x + 52"
+            ],
+            "scatter_pts": [
+              [
+                1,
+                56
+              ],
+              [
+                2,
+                62
+              ],
+              [
+                3,
+                64
+              ],
+              [
+                4,
+                71
+              ],
+              [
+                5,
+                73
+              ],
+              [
+                6,
+                83
+              ],
+              [
+                7,
+                82
+              ],
+              [
+                8,
+                88
+              ]
+            ],
+            "xmin": 0,
+            "xmax": 9,
+            "ymin": 50,
+            "ymax": 95,
+            "width": 210
+          }
+        },
+        {
+          "qtype": "FRQ",
+          "difficulty": "Foundational",
+          "target": "Conceptual Understanding of Standard Deviation",
+          "q": "Explain without calculation which dataset has the larger standard deviation: Dataset A $= \\{10, 12, 14, 16, 18\\}$ or Dataset B $= \\{10, 10, 14, 18, 18\\}$. Then verify by computing both sample variances.",
+          "answer": "Both datasets have mean $\\bar{x} = 14$, but Dataset B places four of its five values at the extreme endpoints $10$ and $18$ (distance $4$ from the mean), whereas Dataset A has two values at distance $2$ and two at distance $4$. Indeed, $\\sum(x_i - 14)^2 = 40$ for A vs. $64$ for B, so Dataset B has a larger standard deviation."
+        },
+        {
+          "qtype": "FRQ",
+          "difficulty": "Foundational",
+          "target": "Margin of Error & Confidence Intervals",
+          "q": "A public-opinion poll of $600$ randomly selected registered voters in a state of $4{,}000{,}000$ registered voters finds that $54\\%$ support Proposition 7, with a margin of error of $\\pm 4\\%$ at the $95\\%$ confidence level. State the plausible interval for the true state-wide support percentage and the corresponding interval of voter counts.",
+          "answer": "The plausible percentage interval is $54\\% \\pm 4\\% = [50\\%, 58\\%]$. Multiplying by $4{,}000{,}000$ gives an interval of $[2{,}000{,}000,\\, 2{,}320{,}000]$ voters."
+        }
+      ]
+    },
+    {
+      "heading": "Part I — Free-Response Questions (FRQs): Intermediate Modeling (8–14)",
+      "questions": [
+        {
+          "qtype": "FRQ",
+          "difficulty": "Intermediate",
+          "target": "Sensitivity of Mean vs. Median to Outliers",
+          "q": "A dataset of $9$ distinct positive integers has median $18$ and mean $20$. If the largest number in the dataset is increased by $18$ while all other numbers remain unchanged, what are the new mean and new median?",
+          "answer": "Increasing the maximum value by $18$ increases the sum of the $9$ numbers by $18$, so the new mean is $20 + \\dfrac{18}{9} = 22$. Because the rank order of the $9$ values does not change, the 5th value (the median) remains $18$."
+        },
+        {
+          "qtype": "FRQ",
+          "difficulty": "Intermediate",
+          "target": "Mean & Median from Frequency Distributions",
+          "q": "A frequency table shows the number of books read over the summer by $25$ students: $1$ book ($4$ students), $2$ books ($7$ students), $3$ books ($6$ students), $4$ books ($5$ students), $5$ books ($3$ students). Find the mean and median number of books read.",
+          "answer": "Total books $= 1(4) + 2(7) + 3(6) + 4(5) + 5(3) = 4 + 14 + 18 + 20 + 15 = 71$, so Mean $= \\dfrac{71}{25} = 2.84$. The median is the 13th value in sorted order; cumulative frequencies are $4, 11, 17$, so the 13th student falls in the '$3$ books' group (Median $= 3$).",
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5"
+            ],
+            "values": [
+              4,
+              7,
+              6,
+              5,
+              3
+            ],
+            "highlight_index": 1,
+            "ylabel": "Students",
+            "width": 195
+          }
+        },
+        {
+          "qtype": "FRQ",
+          "difficulty": "Intermediate",
+          "target": "Sampling Without Replacement",
+          "q": "A box contains $5$ red marbles and $3$ blue marbles. Two marbles are drawn at random without replacement. Find the probability that (a) both marbles are red, and (b) the two marbles have different colors.",
+          "answer": "(a) $P(\\mathrm{RR}) = \\dfrac{5}{8} \\cdot \\dfrac{4}{7} = \\dfrac{20}{56} = \\dfrac{5}{14}$. (b) $P(\\mathrm{different}) = P(\\mathrm{RB}) + P(\\mathrm{BR}) = \\dfrac{5}{8}\\cdot\\dfrac{3}{7} + \\dfrac{3}{8}\\cdot\\dfrac{5}{7} = \\dfrac{30}{56} = \\dfrac{15}{28}$."
+        },
+        {
+          "qtype": "FRQ",
+          "difficulty": "Intermediate",
+          "target": "Sample Size & Margin of Error Scaling",
+          "q": "Explain how the margin of error of a sample proportion $\\mathrm{ME} \\approx 1.96\\sqrt{\\dfrac{\\hat{p}(1-\\hat{p})}{n}}$ changes if the sample size $n$ is quadrupled from $n = 250$ to $n = 1{,}000$.",
+          "answer": "Because margin of error is inversely proportional to $\\sqrt{n}$, multiplying the sample size $n$ by $4$ divides the margin of error by $\\sqrt{4} = 2$ (cutting the margin of error in half)."
+        },
+        {
+          "qtype": "FRQ",
+          "difficulty": "Intermediate",
+          "target": "Observational Studies vs. Randomized Experiments",
+          "q": "Determine whether each study design supports a cause-and-effect conclusion or only an association, and identify the target population to which results can be generalized: (a) A random sample of $500$ adults in City X is surveyed on sleep duration and blood pressure. (b) $200$ volunteers with hypertension are randomly assigned to either a daily walking regimen or a control group.",
+          "answer": "(a) Observational study with random sampling: establishes correlation/association (not causation), generalizable to all adults in City X. (b) Randomized controlled experiment on volunteers: establishes a causal effect of the walking regimen, strictly applicable to individuals similar to the study volunteers."
+        },
+        {
+          "qtype": "FRQ",
+          "difficulty": "Intermediate",
+          "target": "Outlier Detection via the 1.5-IQR Rule",
+          "q": "Using the 1.5-IQR rule, determine whether the minimum value ($2$) or maximum value ($64$) is an outlier in a dataset with $Q_1 = 20$, median $= 27$, and $Q_3 = 36$.",
+          "answer": "Here $\\mathrm{IQR} = 36 - 20 = 16$, so $1.5 \\times \\mathrm{IQR} = 24$. The lower fence is $Q_1 - 24 = 20 - 24 = -4$ (since $2 \\geq -4$, $2$ is not an outlier). The upper fence is $Q_3 + 24 = 36 + 24 = 60$ (since $64 > 60$, $64$ is a high outlier)."
+        },
+        {
+          "qtype": "FRQ",
+          "difficulty": "Intermediate",
+          "target": "Weighted Means Across Subgroups",
+          "q": "Class A ($20$ students) has an exam mean of $78$, and Class B ($30$ students) has an exam mean of $88$. Find the combined mean of all $50$ students.",
+          "answer": "Combined mean is the weighted average $\\bar{x} = \\dfrac{20(78) + 30(88)}{20 + 30} = \\dfrac{1560 + 2640}{50} = \\dfrac{4200}{50} = 84$."
+        }
+      ]
+    },
+    {
+      "heading": "Part I — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "qtype": "FRQ",
+          "difficulty": "Challenging",
+          "target": "Linear Transformations of Random Variables & Data",
+          "q": "Every observation $x_i$ in a dataset with mean $\\bar{x} = 25$ and standard deviation $s_x = 4$ is transformed according to the linear rule $y_i = 3x_i - 15$. Find the mean $\\bar{y}$, standard deviation $s_y$, and variance $s_y^2$ of the transformed dataset.",
+          "answer": "By linearity of expectation, $\\bar{y} = 3\\bar{x} - 15 = 3(25) - 15 = 60$. Standard deviation scales by $|3|$ and ignores shifts: $s_y = 3(4) = 12$. Variance scales by $3^2$: $s_y^2 = 12^2 = 144$.",
+          "cross_lesson": "Topic 1.01 (Linear Transformations)"
+        },
+        {
+          "qtype": "FRQ",
+          "difficulty": "Challenging",
+          "target": "Residual Plot Diagnostics for Nonlinearity",
+          "q": "A residual plot $(x_i, y_i - \\hat{y}_i)$ from a linear regression displays a pronounced U-shaped parabolic pattern (positive residuals at both ends, negative residuals in the middle). Explain what this indicates about the appropriateness of the linear model and what model family would be more appropriate.",
+          "answer": "A deterministic U-shaped pattern in the residuals indicates that the underlying relationship between $x$ and $y$ is nonlinear (specifically concave upward), so a linear model systematically underpredicts at the extremes and overpredicts in the middle. A quadratic (or exponential) regression model is more appropriate.",
+          "cross_lesson": "Topic 3.01 (Quadratic Models)"
+        },
+        {
+          "qtype": "FRQ",
+          "difficulty": "Challenging",
+          "target": "Extremal Optimization with Mean, Median & Mode Constraints",
+          "q": "Five positive integers have a mode of $4$, a median of $6$, and a mean of $7$. What is the largest possible value of the maximum integer in the list?",
+          "answer": "Order the integers $a \\leq b \\leq c \\leq d \\leq e$ with $a + b + c + d + e = 35$ and $c = 6$. Since the mode is $4$ (which is less than $6$), we must have $a = b = 4$. To maximize $e$, make $d$ as small as possible without creating another mode ($d = 7$, since $d = 6$ would make $6$ tied for mode). Then $4 + 4 + 6 + 7 + e = 35 \\Rightarrow e = 14$.",
+          "cross_lesson": "Topic 2.01 (Inequalities & Optimization)"
+        },
+        {
+          "qtype": "FRQ",
+          "difficulty": "Challenging",
+          "target": "Bayes' Theorem & Law of Total Probability",
+          "q": "In a factory, Machine 1 produces $60\\%$ of all microchips (with a $2\\%$ defect rate) and Machine 2 produces $40\\%$ of all microchips (with a $5\\%$ defect rate). If a randomly selected microchip is found to be defective, what is the probability that it was produced by Machine 2?",
+          "answer": "By Bayes' Theorem: $P(D) = 0.60(0.02) + 0.40(0.05) = 0.012 + 0.020 = 0.032$. Therefore $P(M_2 \\mid D) = \\dfrac{0.020}{0.032} = \\dfrac{20}{32} = \\dfrac{5}{8} = 0.625$.",
+          "cross_lesson": "Topic 5.01 (Weighted Proportions)"
+        },
+        {
+          "qtype": "FRQ",
+          "difficulty": "Challenging",
+          "target": "Piecewise Median-Mean Equations",
+          "q": "A dataset of $6$ values is $\\{4, 7, 9, 12, 15, x\\}$. For what value(s) of $x$ is the mean of the dataset equal to its median?",
+          "answer": "Sum $= 47 + x$, so Mean $= \\dfrac{47 + x}{6}$. Case 1 ($x \\leq 9$): Median is $\\dfrac{7 + 9}{2} = 8 \\Rightarrow 47 + x = 48 \\Rightarrow x = 1 \\leq 9$ (valid). Case 2 ($9 < x < 12$): Median is $\\dfrac{9 + x}{2} = \\dfrac{47 + x}{6} \\Rightarrow 27 + 3x = 47 + x \\Rightarrow x = 10 \\in (9, 12)$ (valid). Case 3 ($x \\geq 12$): Median is $\\dfrac{9 + 12}{2} = 10.5 \\Rightarrow 47 + x = 63 \\Rightarrow x = 16 \\geq 12$ (valid). Thus $x \\in \\{1, 10, 16\\}$.",
+          "cross_lesson": "Topic 1.01 (Piecewise Linear Equations)"
+        },
+        {
+          "qtype": "FRQ",
+          "difficulty": "Challenging",
+          "target": "Geometric Probability on Concentric Circles",
+          "q": "A dartboard consists of an outer circle of radius $10\\,\\mathrm{cm}$ and a concentric inner bullseye circle of radius $4\\,\\mathrm{cm}$. If a dart lands uniformly at random on the board, find the probability that it lands in the outer ring (outside the bullseye).",
+          "answer": "Area of outer circle $= 100\\pi\\,\\mathrm{cm^2}$; area of inner bullseye $= 16\\pi\\,\\mathrm{cm^2}$. Area of outer ring $= 100\\pi - 16\\pi = 84\\pi\\,\\mathrm{cm^2}$. Probability $= \\dfrac{84\\pi}{100\\pi} = \\dfrac{21}{25} = 0.84$.",
+          "cross_lesson": "Topic 9.01 (Area of Circles & Annuli)",
+          "figure": {
+            "type": "circle",
+            "radius": 10,
+            "center": [
+              0,
+              0
+            ],
+            "center_label": "$O$",
+            "radius_label": "$10\\,\\mathrm{cm}$",
+            "width": 185
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Multiple-Choice Questions (MCQs): Foundational Concepts (21–28)",
+      "questions": [
+        {
+          "qtype": "MCQ",
+          "difficulty": "Foundational",
+          "target": "Calculating the Median",
+          "q": "What is the median of the data set $\\{18, 7, 24, 11, 15, 30, 12\\}$?",
           "choices": [
-            "$8$",
-            "$11$",
             "$12$",
-            "$14$"
+            "$15$",
+            "$16.7$",
+            "$18$"
           ],
           "correct": 1,
-          "answer": "With $7$ ordered values, the median is the 4th value: $11$."
+          "answer": "Sort the $7$ numbers in ascending order: $7, 11, 12, 15, 18, 24, 30$. The middle (4th) number is $15$."
         },
         {
-          "q": "A student scored $82, 88, 91, 85$ on four tests. What score must the student earn on the fifth test to have an overall mean of $88$?",
+          "qtype": "MCQ",
+          "difficulty": "Foundational",
+          "target": "Basic Event Probability",
+          "q": "A fair six-sided die is rolled once. What is the probability of rolling a number that is both prime and odd?",
+          "choices": [
+            "$\\dfrac{1}{6}$",
+            "$\\dfrac{1}{3}$",
+            "$\\dfrac{1}{2}$",
+            "$\\dfrac{2}{3}$"
+          ],
+          "correct": 1,
+          "answer": "The prime outcomes on $\\{1, 2, 3, 4, 5, 6\\}$ are $\\{2, 3, 5\\}$, of which $\\{3, 5\\}$ are odd ($2$ outcomes). Thus $P = \\dfrac{2}{6} = \\dfrac{1}{3}$."
+        },
+        {
+          "qtype": "MCQ",
+          "difficulty": "Foundational",
+          "target": "Finding a Missing Value from the Mean",
+          "q": "If the mean of $4, 9, 11, 15,$ and $x$ is $12$, what is the value of $x$?",
+          "choices": [
+            "$17$",
+            "$19$",
+            "$21$",
+            "$23$"
+          ],
+          "correct": 2,
+          "answer": "Since the mean of $5$ numbers is $12$, their sum is $5 \\times 12 = 60$. Thus $4 + 9 + 11 + 15 + x = 39 + x = 60 \\Rightarrow x = 21$."
+        },
+        {
+          "qtype": "MCQ",
+          "difficulty": "Foundational",
+          "target": "Resistant vs. Non-Resistant Statistics",
+          "q": "Which statistic is LEAST affected when a single extreme high outlier is added to a dataset of $50$ home prices?",
+          "choices": [
+            "Mean",
+            "Range",
+            "Standard deviation",
+            "Median"
+          ],
+          "correct": 3,
+          "answer": "The median depends only on the middle rank(s) of the sorted data and is resistant to extreme outliers, whereas the mean, range, and standard deviation all increase substantially."
+        },
+        {
+          "qtype": "MCQ",
+          "difficulty": "Foundational",
+          "target": "Addition Rule of Probability",
+          "q": "In a survey of $150$ high school seniors, $90$ plan to study science, $60$ plan to study engineering, and $30$ plan to study both. If one senior is selected at random, what is the probability that the senior plans to study science or engineering?",
+          "choices": [
+            "$0.60$",
+            "$0.75$",
+            "$0.80$",
+            "$1.00$"
+          ],
+          "correct": 2,
+          "answer": "By the addition rule, $n(S \\cup E) = 90 + 60 - 30 = 120$. Probability $= \\dfrac{120}{150} = 0.80$."
+        },
+        {
+          "qtype": "MCQ",
+          "difficulty": "Foundational",
+          "target": "Interpreting the Correlation Coefficient $r$",
+          "q": "A scatterplot shows a strong negative linear association between $x$ and $y$. Which of the following could be the sample correlation coefficient $r$?",
+          "choices": [
+            "$r = -0.92$",
+            "$r = -0.15$",
+            "$r = 0.08$",
+            "$r = 0.89$"
+          ],
+          "correct": 0,
+          "answer": "A strong negative linear association corresponds to a correlation coefficient $r$ close to $-1$, such as $r = -0.92$."
+        },
+        {
+          "qtype": "MCQ",
+          "difficulty": "Foundational",
+          "target": "Reading Mode from a Frequency Histogram/Bar Chart",
+          "q": "The bar chart below shows the distribution of scores on a $5$-point quiz. What is the mode of the quiz scores?",
+          "choices": [
+            "$2$",
+            "$3$",
+            "$4$",
+            "$5$"
+          ],
+          "correct": 2,
+          "answer": "Score $4$ has the highest frequency ($14$ students), so the mode is $4$.",
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5"
+            ],
+            "values": [
+              2,
+              5,
+              9,
+              14,
+              6
+            ],
+            "highlight_index": 3,
+            "ylabel": "Number of Students",
+            "width": 205
+          }
+        },
+        {
+          "qtype": "MCQ",
+          "difficulty": "Foundational",
+          "target": "Random Sampling & Bias Prevention",
+          "q": "A researcher wants to estimate the average daily screen time of all $2{,}400$ students at a high school. Which sampling method is most likely to yield an unbiased estimate?",
+          "choices": [
+            "Surveying $100$ students in the computer club.",
+            "Selecting $100$ students using a random number generator from the full school roster.",
+            "Posting an optional online poll on the school website.",
+            "Asking the first $100$ students who arrive at the library before 8:00 AM."
+          ],
+          "correct": 1,
+          "answer": "A simple random sample from the complete population frame gives every student an equal probability of selection and avoids voluntary-response or convenience bias."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Multiple-Choice Questions (MCQs): Intermediate Exam Practice (29–37)",
+      "questions": [
+        {
+          "qtype": "MCQ",
+          "difficulty": "Intermediate",
+          "target": "Shift Invariance of Standard Deviation",
+          "q": "Set X is $\\{2, 4, 6, 8, 10\\}$ and Set Y is $\\{102, 104, 106, 108, 110\\}$. Which statement correctly compares their standard deviations?",
+          "choices": [
+            "Set X has a greater standard deviation than Set Y.",
+            "Set Y has a greater standard deviation than Set X.",
+            "Both sets have the exact same standard deviation.",
+            "The standard deviation of Set Y is $100$ plus the standard deviation of Set X."
+          ],
+          "correct": 2,
+          "answer": "Adding a constant ($+100$) to every element shifts the mean by $+100$ but leaves all deviations from the mean unchanged, so both sets have the exact same standard deviation."
+        },
+        {
+          "qtype": "MCQ",
+          "difficulty": "Intermediate",
+          "target": "Statistical Independence in Two-Way Tables",
+          "q": "In a two-way table of $280$ voters classified by age group (Under 40 vs. 40+) and opinion (Support vs. Oppose), $120$ voters are Under 40, and $75$ of those Under 40 support the measure. If opinion is statistically independent of age group, how many of the $160$ voters aged 40+ support the measure?",
           "choices": [
             "$90$",
-            "$92$",
-            "$94$",
-            "$96$"
+            "$96$",
+            "$100$",
+            "$112$"
           ],
           "correct": 2,
-          "answer": "Total points required for mean of $88$ over $5$ tests is $5 \\times 88 = 440$. Sum of first 4 tests: $82 + 88 + 91 + 85 = 346$. Fifth score required: $440 - 346 = 94$."
+          "answer": "Among voters Under 40, the support proportion is $\\dfrac{75}{120} = \\dfrac{5}{8} = 62.5\\%$. By statistical independence, the same proportion applies to the $160$ voters aged 40+: $\\dfrac{5}{8} \\times 160 = 100$."
         },
         {
-          "q": "If an extreme outlier of $150$ is added to a data set with a mean of $45$ and a median of $42$, which statistic will increase by the greatest amount?",
+          "qtype": "MCQ",
+          "difficulty": "Intermediate",
+          "target": "Residuals in Nonlinear Regression",
+          "q": "A exponential regression model $\\hat{y} = 25(1.4)^x$ is fit to a dataset. If the actual data point at $x = 2$ is $(2, 46.5)$, what is the residual at $x = 2$?",
           "choices": [
-            "The median",
-            "The mean",
-            "The mode",
-            "The standard deviation will remain constant"
+            "$-2.5$",
+            "$-1.5$",
+            "$1.5$",
+            "$2.5$"
+          ],
+          "correct": 0,
+          "answer": "Predicted value at $x = 2$: $\\hat{y} = 25(1.4)^2 = 25(1.96) = 49.0$. Residual $= y - \\hat{y} = 46.5 - 49.0 = -2.5$."
+        },
+        {
+          "qtype": "MCQ",
+          "difficulty": "Intermediate",
+          "target": "Effect of Linear Scaling on Median & IQR",
+          "q": "A dataset of $21$ integers has median $30$ and interquartile range $14$. If every number in the dataset is multiplied by $2$ and then increased by $5$, what are the new median and new IQR?",
+          "choices": [
+            "Median $= 65$, IQR $= 28$",
+            "Median $= 65$, IQR $= 33$",
+            "Median $= 60$, IQR $= 28$",
+            "Median $= 60$, IQR $= 33$"
+          ],
+          "correct": 0,
+          "answer": "Measures of position (median) scale and shift: $2(30) + 5 = 65$. Measures of spread (IQR) scale by $|2|$ but are unaffected by the $+5$ shift: $2(14) = 28$."
+        },
+        {
+          "qtype": "MCQ",
+          "difficulty": "Intermediate",
+          "target": "Scope of Inference (Generalizability vs. Causation)",
+          "q": "A clinical trial randomly assigns $400$ adult migraine sufferers to receive either a new medication or a placebo, and finds a statistically significant reduction in migraine frequency in the medication group. To which group can this causal finding be safely generalized?",
+          "choices": [
+            "All adults worldwide",
+            "All children and adults with headaches",
+            "Adults suffering from migraines similar to those in the study",
+            "Only the $400$ participants in the study"
+          ],
+          "correct": 2,
+          "answer": "Random assignment establishes causation, and results generalize to the population represented by the study's inclusion criteria (adult migraine sufferers similar to the participants)."
+        },
+        {
+          "qtype": "MCQ",
+          "difficulty": "Intermediate",
+          "target": "Compound Probability Without Replacement",
+          "q": "A bag contains $4$ green, $5$ yellow, and $6$ white balls. If two balls are drawn successively without replacement, what is the probability that neither ball is white?",
+          "choices": [
+            "$\\dfrac{6}{35}$",
+            "$\\dfrac{12}{35}$",
+            "$\\dfrac{9}{25}$",
+            "$\\dfrac{19}{35}$"
           ],
           "correct": 1,
-          "answer": "The mean is sensitive to extreme outliers because every value is factored into the sum, whereas the median is resistant."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Range & Standard Deviation",
-      "questions": [
-        {
-          "q": "Data Set A has values $10, 10, 10, 10$. Data Set B has values $5, 10, 10, 15$. Which statement is true regarding their standard deviations?",
-          "choices": [
-            "The standard deviation of Data Set A is $0$, which is less than that of Data Set B.",
-            "The standard deviation of Data Set A is equal to that of Data Set B.",
-            "Data Set A has a greater standard deviation than Data Set B.",
-            "Neither data set has a defined standard deviation."
-          ],
-          "correct": 0,
-          "answer": "Data Set A has zero variability (all identical), so its standard deviation is $0$. Data Set B has spread around $10$, so its standard deviation is positive."
+          "answer": "There are $4 + 5 = 9$ non-white balls out of $15$ total. Thus $P(\\mathrm{neither\\ white}) = \\dfrac{9}{15} \\cdot \\dfrac{8}{14} = \\dfrac{3}{5} \\cdot \\dfrac{4}{7} = \\dfrac{12}{35}$."
         },
         {
-          "q": "The range of a set of seven test scores is $28$. If the lowest score in the set is $64$, what is the highest score?",
+          "qtype": "MCQ",
+          "difficulty": "Intermediate",
+          "target": "Empirical Rule & Symmetry",
+          "q": "In a symmetric, bell-shaped distribution with mean $70$ and standard deviation $8$, approximately $68\\%$ of the data lies within one standard deviation of the mean, and $95\\%$ lies within two standard deviations. Approximately what percentage of the data lies between $70$ and $86$?",
           "choices": [
-            "$88$",
-            "$90$",
-            "$92$",
-            "$96$"
-          ],
-          "correct": 2,
-          "answer": "$\\text{Range} = \\text{Max} - \\text{Min} \\Rightarrow 28 = \\text{Max} - 64 \\Rightarrow \\text{Max} = 64 + 28 = 92$."
-        },
-        {
-          "q": "If every value in a dataset is multiplied by $3$, how are the mean and standard deviation affected?",
-          "choices": [
-            "The mean triples, and the standard deviation triples.",
-            "The mean triples, but the standard deviation remains unchanged.",
-            "The mean remains unchanged, but the standard deviation triples.",
-            "Both the mean and standard deviation increase by $3$."
-          ],
-          "correct": 0,
-          "answer": "Multiplying every observation by a constant $c = 3$ scales both the measures of center (mean) and measures of spread (standard deviation) by $|c| = 3$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Sampling Methods & Bias",
-      "questions": [
-        {
-          "q": "A researcher surveys the first $50$ people entering a fitness center at 6:00 AM regarding the average number of hours they exercise per week. To which population can the results be generalized?",
-          "choices": [
-            "All adults in the city.",
-            "All members of that fitness center.",
-            "Only patrons who visit the fitness center early in the morning.",
-            "All professional athletes."
-          ],
-          "correct": 2,
-          "answer": "A convenience sample of early morning visitors introduces bias and can only be generalized to members who visit the gym at that specific early time."
-        },
-        {
-          "q": "Which sampling method produces the most representative, unbiased sample of high school students' opinions on cafeteria food?",
-          "choices": [
-            "Surveying students sitting at the first three tables in the cafeteria.",
-            "Surveying $100$ students chosen at random from an alphabetical student roster.",
-            "Posting an online poll and asking volunteers to reply.",
-            "Surveying only members of the culinary club."
+            "$34\\%$",
+            "$47.5\\%$",
+            "$68\\%$",
+            "$81.5\\%$"
           ],
           "correct": 1,
-          "answer": "Simple random sampling from the complete school roster ensures every student has an equal chance of selection, eliminating systematic selection bias."
+          "answer": "The value $70$ is the mean $\\mu$, and $86 = 70 + 2(8) = \\mu + 2\\sigma$. Since $95\\%$ of the distribution lies within $\\mu \\pm 2\\sigma$, by symmetry half of that ($47.5\\%$) lies between $\\mu$ and $\\mu + 2\\sigma$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "12*exp(-0.5*((x - 70)/8)**2)"
+            ],
+            "xmin": 46,
+            "xmax": 94,
+            "ymin": 0,
+            "ymax": 14,
+            "shade": {
+              "fn1": "0",
+              "fn2": "12*exp(-0.5*((x - 70)/8)**2)",
+              "x0": 70,
+              "x1": 86
+            },
+            "width": 205
+          }
         },
         {
-          "q": "A randomized controlled experiment is conducted where participants are randomly assigned to either a new memory technique group or a control group. What does random assignment allow the researchers to establish?",
+          "qtype": "MCQ",
+          "difficulty": "Intermediate",
+          "target": "Subgroup Removal & Mean Reconstruction",
+          "q": "The mean of $10$ numbers is $15$. When two numbers are removed, the mean of the remaining $8$ numbers becomes $14$. What is the average (arithmetic mean) of the two removed numbers?",
           "choices": [
-            "A causal relationship between the technique and memory improvement.",
-            "That the sample represents the entire global population.",
-            "That no participants experienced any variation.",
-            "That the margin of error is zero."
+            "$16$",
+            "$17.5$",
+            "$19$",
+            "$21$"
           ],
-          "correct": 0,
-          "answer": "Random assignment of subjects to treatments controls for confounding variables and allows determination of cause-and-effect (causation)."
+          "correct": 2,
+          "answer": "Original sum $= 10 \\times 15 = 150$. Remaining sum $= 8 \\times 14 = 112$. Sum of the two removed numbers $= 150 - 112 = 38$, so their mean is $\\dfrac{38}{2} = 19$."
+        },
+        {
+          "qtype": "MCQ",
+          "difficulty": "Intermediate",
+          "target": "Inverse-Square Sample Size Rule",
+          "q": "A pollster wants to reduce the margin of error of a $95\\%$ confidence interval from $\\pm 6\\%$ to $\\pm 2\\%$. By what factor must the random sample size $n$ be multiplied?",
+          "choices": [
+            "$3$",
+            "$6$",
+            "$9$",
+            "$12$"
+          ],
+          "correct": 2,
+          "answer": "To divide the margin of error by $3$ (from $6\\%$ to $2\\%$), the sample size $n$ must be multiplied by $3^2 = 9$."
         }
       ]
     },
     {
-      "heading": "Section 4: Margin of Error & Confidence",
+      "heading": "Part II — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
       "questions": [
         {
-          "q": "A random sample poll reports that $54\\%$ of voters support a bond proposal with a margin of error of $\\pm 3.5\\%$. Which interval is plausible for the true population percentage?",
+          "qtype": "MCQ",
+          "difficulty": "Challenging",
+          "target": "Minimizing Variance via Quadratic Optimization",
+          "q": "For a dataset of $4$ numbers $\\{2, 5, 9, x\\}$, the sample variance is minimized when $x$ equals the mean of the other three numbers. What is this value of $x$?",
           "choices": [
-            "$50.5\\%$ to $57.5\\%$",
-            "$52.0\\%$ to $56.0\\%$",
-            "$47.0\\%$ to $61.0\\%$",
-            "$54.0\\%$ to $57.5\\%$"
+            "$5$",
+            "$\\dfrac{16}{3}$",
+            "$6$",
+            "$7$"
           ],
-          "correct": 0,
-          "answer": "Confidence interval is $\\hat{p} \\pm \\text{MOE} = 54\\% \\pm 3.5\\% = [50.5\\%, 57.5\\%]$."
+          "correct": 1,
+          "answer": "The sum of squared deviations $\\sum (x_i - \\bar{x})^2$ as a quadratic function of $x$ is minimized when $x$ equals the mean of the fixed numbers: $x = \\dfrac{2 + 5 + 9}{3} = \\dfrac{16}{3}$.",
+          "cross_lesson": "Topic 3.01 (Quadratic Minimization)"
         },
         {
-          "q": "If a polling organization increases its random sample size from $400$ to $1,600$ respondents, how will the margin of error change?",
+          "qtype": "MCQ",
+          "difficulty": "Challenging",
+          "target": "Independent Events & Quadratic Probability Equations",
+          "q": "Two independent events $A$ and $B$ satisfy $P(A) = p$, $P(B) = p + 0.2$, and $P(A \\cap B) = 0.15$. What is the value of $P(A \\cup B)$?",
           "choices": [
-            "It will be halved.",
-            "It will be quadrupled.",
-            "It will be reduced to one-fourth.",
-            "It will remain unchanged."
+            "$0.45$",
+            "$0.50$",
+            "$0.65$",
+            "$0.80$"
           ],
-          "correct": 0,
-          "answer": "The margin of error is inversely proportional to the square root of sample size: $\\frac{1}{\\sqrt{1600}} / \\frac{1}{\\sqrt{400}} = \\frac{20}{40} = \\frac{1}{2}$. It is cut in half."
+          "correct": 2,
+          "answer": "By independence, $P(A \\cap B) = p(p + 0.2) = 0.15 \\Rightarrow p^2 + 0.2p - 0.15 = 0 \\Rightarrow (p + 0.5)(p - 0.3) = 0 \\Rightarrow p = 0.3$. Then $P(A) = 0.3, P(B) = 0.5$, and $P(A \\cup B) = 0.3 + 0.5 - 0.15 = 0.65$.",
+          "cross_lesson": "Topic 3.01 (Quadratics)"
         },
         {
-          "q": "A study estimates that the mean weight of newborn calves is $78$ pounds with a margin of error of $4$ pounds at a $95\\%$ confidence level. Which of the following is the most accurate conclusion?",
+          "qtype": "MCQ",
+          "difficulty": "Challenging",
+          "target": "Binomial Random Walk on a Coordinate Line",
+          "q": "In a coordinate grid, a random walker starts at $(0, 0)$ and takes $4$ independent steps, each of length $1$ unit either East ($+x$) or North ($+y$) with equal probability $\\dfrac{1}{2}$. What is the probability that the walker ends on the line $y = x$?",
           "choices": [
-            "It is plausible that the true population mean weight is between $74$ and $82$ pounds.",
-            "Exactly $95\\%$ of all calves weigh between $74$ and $82$ pounds.",
-            "The weight of every calf in the population is at least $74$ pounds.",
-            "The sample mean was between $74$ and $82$ pounds."
+            "$\\dfrac{1}{4}$",
+            "$\\dfrac{3}{8}$",
+            "$\\dfrac{1}{2}$",
+            "$\\dfrac{5}{16}$"
+          ],
+          "correct": 1,
+          "answer": "After $4$ steps, $x + y = 4$. To land on $y = x$, the walker must land at $(2, 2)$, which requires choosing exactly $2$ East and $2$ North steps out of $4$: $\\dfrac{\\binom{4}{2}}{2^4} = \\dfrac{6}{16} = \\dfrac{3}{8}$.",
+          "cross_lesson": "Topic 1.01 (Coordinate Lines)"
+        },
+        {
+          "qtype": "MCQ",
+          "difficulty": "Challenging",
+          "target": "OLS Slope Identity $m = r(s_y/s_x)$ & Centroid",
+          "q": "The least-squares regression line for a bivariate dataset is $\\hat{y} = -1.5x + 28$. If the mean of the $y$-values is $\\bar{y} = 10$ and the ratio of standard deviations is $\\dfrac{s_y}{s_x} = 2.0$, what is the correlation coefficient $r$ and the mean $\\bar{x}$?",
+          "choices": [
+            "$r = -0.75$ and $\\bar{x} = 12$",
+            "$r = -0.75$ and $\\bar{x} = 10$",
+            "$r = 0.75$ and $\\bar{x} = 12$",
+            "$r = -0.50$ and $\\bar{x} = 12$"
           ],
           "correct": 0,
-          "answer": "A margin of error around the sample mean provides an interval of plausible values for the true population parameter ($78 \\pm 4 = [74, 82]$ pounds)."
+          "answer": "Since slope $m = r \\dfrac{s_y}{s_x}$, we have $-1.5 = r(2.0) \\Rightarrow r = -0.75$. Using the centroid $(\\bar{x}, \\bar{y})$: $10 = -1.5\\bar{x} + 28 \\Rightarrow 1.5\\bar{x} = 18 \\Rightarrow \\bar{x} = 12$.",
+          "cross_lesson": "Topic 1.01 (Linear Equations)",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-1.5*x + 28"
+            ],
+            "xmin": 0,
+            "xmax": 18,
+            "ymin": 0,
+            "ymax": 30,
+            "points": [
+              [
+                12,
+                10
+              ]
+            ],
+            "point_labels": [
+              {
+                "x": 12,
+                "y": 10,
+                "label": "$(\\bar{x},\\bar{y})=(12,10)$",
+                "dx": 0.5,
+                "dy": 1.0
+              }
+            ],
+            "width": 200
+          }
+        },
+        {
+          "qtype": "MCQ",
+          "difficulty": "Challenging",
+          "target": "Minimax Statistical Constraint Optimization",
+          "q": "A list of $7$ positive integers has median $10$, unique mode $8$, and mean $12$. What is the minimum possible value of the largest integer in the list?",
+          "choices": [
+            "$15$",
+            "$16$",
+            "$17$",
+            "$18$"
+          ],
+          "correct": 2,
+          "answer": "Sort $x_1 \\leq x_2 \\leq x_3 \\leq 10 \\leq x_5 \\leq x_6 \\leq x_7$ with sum $7 \\times 12 = 84$. To minimize $x_7$, maximize $x_1, x_2, x_3$ while making $8$ the unique mode: set $x_1 = x_2 = x_3 = 8$ (frequency $3$). Then $x_5 + x_6 + x_7 = 84 - 34 = 50$. Splitting $50$ as evenly as possible gives $16, 17, 17$ (where $17$ has frequency $2 < 3$), so the minimum possible value of $x_7$ is $17$.",
+          "cross_lesson": "Topic 2.01 (Systems of Inequalities)"
+        },
+        {
+          "qtype": "MCQ",
+          "difficulty": "Challenging",
+          "target": "Geometric Probability in Inscribed Polygons",
+          "q": "A point is chosen uniformly at random inside a regular hexagon of side length $2$. What is the probability that the point lies inside the inscribed circle (which is tangent to all $6$ sides)?",
+          "choices": [
+            "$\\dfrac{\\pi}{2\\sqrt{3}}$",
+            "$\\dfrac{\\pi}{3\\sqrt{3}}$",
+            "$\\dfrac{\\pi}{4\\sqrt{3}}$",
+            "$\\dfrac{2\\pi}{3\\sqrt{3}}$"
+          ],
+          "correct": 0,
+          "answer": "For side $s = 2$, the hexagon area is $6 \\cdot \\dfrac{\\sqrt{3}}{4}(2^2) = 6\\sqrt{3}$, and the apothem (inradius) is $r = \\sqrt{3}$, giving circle area $\\pi(\\sqrt{3})^2 = 3\\pi$. The probability is $\\dfrac{3\\pi}{6\\sqrt{3}} = \\dfrac{\\pi}{2\\sqrt{3}}$.",
+          "cross_lesson": "Topic 8.01 (Polygons) & Topic 9.01 (Circles)"
+        },
+        {
+          "qtype": "MCQ",
+          "difficulty": "Challenging",
+          "target": "Simpson's Paradox & Confounding Variables",
+          "q": "Across two hospital clinics, Clinic A treats $90$ mild cases ($90\\%$ recovery) and $10$ severe cases ($50\\%$ recovery), while Clinic B treats $20$ mild cases ($95\\%$ recovery) and $80$ severe cases ($60\\%$ recovery). Which statement illustrates Simpson's Paradox?",
+          "choices": [
+            "Clinic A has a higher recovery rate in both categories, and a higher overall recovery rate.",
+            "Clinic B has a higher recovery rate in both mild and severe categories, yet Clinic A has a higher overall combined recovery rate.",
+            "Both clinics have the exact same overall recovery rate.",
+            "Clinic B has a higher overall recovery rate despite lower category rates."
+          ],
+          "correct": 1,
+          "answer": "Clinic B outperforms Clinic A in both mild ($95\\% > 90\\%$) and severe ($60\\% > 50\\%$) cases, yet Clinic A's overall rate is $\\dfrac{81 + 5}{100} = 86\\%$ while Clinic B's overall rate is $\\dfrac{19 + 48}{100} = 67\\%$ because of confounding case-severity proportions (Simpson's Paradox).",
+          "cross_lesson": "Topic 5.01 (Weighted Percentages)"
+        },
+        {
+          "qtype": "MCQ",
+          "difficulty": "Challenging",
+          "target": "Linearized Regression Slope from Variances",
+          "q": "A exponential decay dataset $(t, y)$ is transformed via $u = \\ln(y)$. If the sample variance of $t$ is $s_t^2 = 4$, the sample variance of $u$ is $s_u^2 = 9$, and the points $(t_i, u_i)$ lie exactly on a line with negative slope, what is the slope of that line?",
+          "choices": [
+            "$-2.25$",
+            "$-1.5$",
+            "$-0.67$",
+            "$1.5$"
+          ],
+          "correct": 1,
+          "answer": "Because the points lie exactly on a line with negative slope, $r = -1$. With $s_t = 2$ and $s_u = 3$, the slope is $m = r \\dfrac{s_u}{s_t} = -1 \\cdot \\dfrac{3}{2} = -1.5$.",
+          "cross_lesson": "Topic 4.01 (Exponential Decay)"
         }
       ]
     }
-  ]
+  ],
+  "slug": "statistics-and-sampling"
 }

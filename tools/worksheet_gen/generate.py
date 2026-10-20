@@ -60,14 +60,23 @@ import os
 import re
 import sys
 
-import matplotlib
-
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
-from matplotlib import mathtext
-from matplotlib.font_manager import FontProperties
 import numpy as np
+
+try:
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    import matplotlib.patches as mpatches
+    from matplotlib import mathtext
+    from matplotlib.font_manager import FontProperties
+    _HAS_MPL = True
+except ImportError:
+    matplotlib = None
+    plt = None
+    mpatches = None
+    mathtext = None
+    FontProperties = None
+    _HAS_MPL = False
 
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.colors import HexColor
@@ -81,8 +90,17 @@ from reportlab.platypus import (
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
-import arabic_reshaper
-from bidi.algorithm import get_display
+try:
+    import arabic_reshaper
+    from bidi.algorithm import get_display
+    _ARABIC_RESHAPER = arabic_reshaper.ArabicReshaper({
+        "delete_harakat": False,
+        "support_ligatures": True,
+    })
+except ImportError:
+    arabic_reshaper = None
+    get_display = None
+    _ARABIC_RESHAPER = None
 
 # ── ClipSAT brand (mirrors index.html CSS tokens) ────────────────────────────
 INK = "#0E1726"
@@ -94,7 +112,7 @@ CURVE = "#0e9f8f"  # teal curve color, consistent with site explorers
 AMBER_TEXT = "#8A6017"  # WCAG-AA amber for on-white text labels (matches site --amber-text)
 BORDER = "#dde4f0"  # hairline dividers/frames (matches site FIG_BORDER)
 MUTED = "#5a6577"   # secondary/footer text (matches site FIG_MUTED)
-FOOTER_TEXT = "© ClipSAT: By Mr. Mohamed Abdallah +966597688647"
+FOOTER_TEXT = "© ClipSAT — clipsat.org | All Rights Reserved"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE_ROOT = os.path.dirname(os.path.dirname(HERE))
@@ -102,20 +120,15 @@ LOGO_PATH = os.path.join(SITE_ROOT, "clipsat-mark.png")
 CACHE_DIR = os.path.join(HERE, ".mathcache")
 
 ARABIC_FONT_PATH = os.path.join(HERE, "fonts", "NotoNaskhArabic-Regular.ttf")
-pdfmetrics.registerFont(TTFont("NotoNaskhArabic", ARABIC_FONT_PATH))
-
-_ARABIC_RESHAPER = arabic_reshaper.ArabicReshaper({
-    "delete_harakat": False,
-    "support_ligatures": True,
-})
+if os.path.exists(ARABIC_FONT_PATH):
+    pdfmetrics.registerFont(TTFont("NotoNaskhArabic", ARABIC_FONT_PATH))
 
 
 def shape_ar(text):
     """Reshape Arabic letters to contextual joining forms and resolve the
-    Unicode bidi algorithm to visual order. Non-Arabic runs (digits, Latin,
-    symbols — i.e. anything that will end up inside a $...$ math span) are
-    strong-LTR and pass through reshaping untouched, so this is safe to run
-    on a whole sentence that embeds math notation."""
+    Unicode bidi algorithm to visual order."""
+    if _ARABIC_RESHAPER is None or get_display is None:
+        return text
     return get_display(_ARABIC_RESHAPER.reshape(text))
 
 PAGE_W, PAGE_H = letter
@@ -126,20 +139,40 @@ MARGIN_B = 0.85 * inch
 BODY_W = PAGE_W - MARGIN_L - MARGIN_R
 
 MATH_DPI = 300
-MATH_PROP = FontProperties(size=10)
-_math_parser = mathtext.MathTextParser("path")
+MATH_PROP = FontProperties(size=10) if _HAS_MPL else None
+_math_parser = mathtext.MathTextParser("path") if _HAS_MPL else None
 
 
 # ── Inline math rendering ────────────────────────────────────────────────────
+def _normalize_mathtext(tex):
+    """Normalize standard LaTeX shorthands into matplotlib mathtext equivalents."""
+    tex = re.sub(r"\\dfrac(?![a-zA-Z])", r"\\frac", tex)
+    tex = re.sub(r"\\le(?![a-zA-Z])", r"\\leq", tex)
+    tex = re.sub(r"\\ge(?![a-zA-Z])", r"\\geq", tex)
+    tex = re.sub(r"\\ne(?![a-zA-Z])", r"\\neq", tex)
+    tex = re.sub(r"\\implies(?![a-zA-Z])", r"\\Rightarrow", tex)
+    tex = re.sub(r"\\iff(?![a-zA-Z])", r"\\Leftrightarrow", tex)
+    tex = re.sub(r"\\text\{([^}]*)\}", lambda m: r"\mathrm{" + m.group(1).replace(" ", r"\ ") + "}", tex)
+    return tex
+
+
 def render_math(tex, color=INK, size=10):
     """Render a $...$ span to a PNG; return (path, w_pt, h_pt, depth_pt)."""
+    tex = _normalize_mathtext(tex)
     os.makedirs(CACHE_DIR, exist_ok=True)
     key = hashlib.sha1(f"{tex}|{color}|{size}".encode()).hexdigest()[:16]
     path = os.path.join(CACHE_DIR, key + ".png")
+    meta_path = os.path.join(CACHE_DIR, key + ".meta")
+    if os.path.exists(path) and os.path.exists(meta_path):
+        with open(meta_path, encoding="utf-8") as mf:
+            width, height, depth = [float(x) for x in mf.read().strip().split(",")]
+        return path, width, height, depth
     prop = FontProperties(size=size)
     width, height, depth, _, _ = _math_parser.parse(tex, dpi=72, prop=prop)
     if not os.path.exists(path):
         mathtext.math_to_image(tex, path, prop=prop, dpi=MATH_DPI, color=color)
+    with open(meta_path, "w", encoding="utf-8") as mf:
+        mf.write(f"{width},{height},{depth}")
     return path, width, height, depth
 
 
@@ -604,6 +637,48 @@ def _draw_solid(spec):
     return fig, ax
 
 
+def _draw_boxplot(ax, spec):
+    """Render one or more horizontal boxplots from 5-number summaries."""
+    groups = spec.get("groups")
+    if not groups:
+        groups = [{
+            "label": spec.get("label", "Data"),
+            "stats": spec.get("stats", [10, 20, 30, 40, 50]),
+        }]
+    lo = spec.get("min", min(g["stats"][0] for g in groups) - 5)
+    hi = spec.get("max", max(g["stats"][4] for g in groups) + 5)
+    n = len(groups)
+    for idx, g in enumerate(groups):
+        y = n - idx
+        mn, q1, med, q3, mx = g["stats"]
+        col = AMBER if idx == 1 else INDIGO2
+        # whiskers
+        ax.plot([mn, q1], [y, y], color=INK, linewidth=1.3, zorder=2)
+        ax.plot([q3, mx], [y, y], color=INK, linewidth=1.3, zorder=2)
+        ax.plot([mn, mn], [y - 0.16, y + 0.16], color=INK, linewidth=1.3, zorder=2)
+        ax.plot([mx, mx], [y - 0.16, y + 0.16], color=INK, linewidth=1.3, zorder=2)
+        # box
+        rect = mpatches.Rectangle((q1, y - 0.24), q3 - q1, 0.48,
+                                  facecolor=col, alpha=0.22, edgecolor=col,
+                                  linewidth=1.5, zorder=3)
+        ax.add_patch(rect)
+        # median
+        ax.plot([med, med], [y - 0.24, y + 0.24], color=INK, linewidth=2.0, zorder=4)
+    ax.set_yticks([n - i for i in range(n)])
+    ax.set_yticklabels([g.get("label", f"Set {i+1}") for i, g in enumerate(groups)],
+                       fontsize=8.5, color=INK)
+    ax.set_xlim(lo, hi)
+    ax.set_ylim(0.35, n + 0.65)
+    ax.tick_params(axis="x", labelsize=8, colors=INK)
+    ax.tick_params(axis="y", length=0)
+    ax.grid(axis="x", color=GRID, linewidth=0.6, zorder=0)
+    for s in ("top", "right", "left"):
+        ax.spines[s].set_visible(False)
+    ax.spines["bottom"].set_color(INK)
+    if spec.get("xlabel"):
+        ax.set_xlabel(spec["xlabel"], fontsize=8.5, color=INK)
+
+
 def render_figure(spec):
     """Render a figure spec to PNG; return (path, w_pt, h_pt)."""
     os.makedirs(CACHE_DIR, exist_ok=True)
@@ -617,21 +692,42 @@ def render_figure(spec):
             xmin, xmax = spec.get("xmin", -5), spec.get("xmax", 5)
             ymin, ymax = spec.get("ymin", -5), spec.get("ymax", 5)
             x = np.linspace(xmin, xmax, 600)
+            eval_env = {"x": x, "np": np, "sin": np.sin, "cos": np.cos,
+                        "tan": np.tan, "exp": np.exp, "log": np.log,
+                        "sqrt": np.sqrt, "abs": np.abs, "pi": np.pi,
+                        "e": np.e}
             for i, fn in enumerate(spec.get("fns", [])):
                 with np.errstate(all="ignore"):
-                    y = eval(fn, {"__builtins__": {}},
-                             {"x": x, "np": np, "sin": np.sin, "cos": np.cos,
-                              "tan": np.tan, "exp": np.exp, "log": np.log,
-                              "sqrt": np.sqrt, "abs": np.abs, "pi": np.pi,
-                              "e": np.e})
-                # a constant expression (e.g. a horizontal bounding line "2")
-                # evaluates to a scalar — broadcast it to the x-array so
-                # ax.plot gets matching shapes instead of raising.
+                    y = eval(fn, {"__builtins__": {}}, eval_env)
                 y = np.broadcast_to(np.asarray(y, dtype=float), x.shape)
                 y = np.where((y > ymin - 2) & (y < ymax + 2), y, np.nan)
-                ax.plot(x, y, color=colors[i % len(colors)], linewidth=1.8)
+                style = "--" if i >= 2 and spec.get("dashed_last") else "-"
+                ax.plot(x, y, color=colors[i % len(colors)], linewidth=1.8, linestyle=style)
+            if spec.get("shade"):
+                sh = spec["shade"]
+                xs = np.linspace(sh.get("x0", xmin), sh.get("x1", xmax), 300)
+                sh_env = dict(eval_env, x=xs)
+                with np.errstate(all="ignore"):
+                    y1 = np.broadcast_to(np.asarray(eval(sh.get("fn1", "0"), {"__builtins__": {}}, sh_env), dtype=float), xs.shape)
+                    y2 = np.broadcast_to(np.asarray(eval(sh.get("fn2", "0"), {"__builtins__": {}}, sh_env), dtype=float), xs.shape)
+                ax.fill_between(xs, y1, y2, color=CURVE, alpha=0.18, zorder=2)
+            if spec.get("asymptotes"):
+                asym = spec["asymptotes"]
+                for vx in asym.get("x", []):
+                    ax.axvline(vx, color=AMBER, linewidth=1.1, linestyle=(0, (4, 3)), zorder=2)
+                for hy in asym.get("y", []):
+                    ax.axhline(hy, color=AMBER, linewidth=1.1, linestyle=(0, (4, 3)), zorder=2)
+            for sx, sy in spec.get("scatter_pts", []):
+                ax.plot([sx], [sy], "o", color=AMBER, markersize=4.2, alpha=0.88, zorder=4)
             for px, py in spec.get("points", []):
-                ax.plot([px], [py], "o", color=INDIGO, markersize=4)
+                ax.plot([px], [py], "o", color=INDIGO, markersize=4.5, zorder=5)
+            for pl in spec.get("point_labels", []):
+                px, py = pl["x"], pl["y"]
+                dx, dy = pl.get("dx", 0.25), pl.get("dy", 0.35)
+                ax.plot([px], [py], "o", color=INDIGO, markersize=4.5, zorder=5)
+                ax.text(px + dx, py + dy, pl["label"], fontsize=8, color=INK,
+                        ha="left" if dx >= 0 else "right", va="bottom" if dy >= 0 else "top",
+                        bbox=dict(boxstyle="round,pad=0.15", facecolor="white", edgecolor="none", alpha=0.8))
         elif ftype == "triangle":
             fig, ax = _geom_fig(spec["vertices"])
             _draw_triangle(ax, spec)
@@ -649,6 +745,10 @@ def render_figure(spec):
         elif ftype == "bars":
             fig, ax = plt.subplots(figsize=(3.5, 2.5))
             _draw_bars(ax, spec)
+        elif ftype == "boxplot":
+            n_g = len(spec.get("groups", [1]))
+            fig, ax = plt.subplots(figsize=(3.6, 1.15 + 0.55 * n_g))
+            _draw_boxplot(ax, spec)
         elif ftype == "solid":
             fig, ax = _draw_solid(spec)
         else:
@@ -671,11 +771,11 @@ S_TAG = ParagraphStyle("tag", fontName="Helvetica-Bold", fontSize=8.5,
                        leading=11, textColor=HexColor(AMBER))
 S_HEAD = ParagraphStyle("head", fontName="Helvetica-Bold", fontSize=12.5,
                         leading=16, textColor=HexColor(INK), spaceBefore=6)
-S_BODY = ParagraphStyle("body", fontName="Helvetica", fontSize=10, leading=15,
+S_BODY = ParagraphStyle("body", fontName="Helvetica", fontSize=10, leading=18,
                         textColor=HexColor(INK), alignment=TA_LEFT)
 S_QNUM = ParagraphStyle("qnum", fontName="Helvetica-Bold", fontSize=10,
-                        leading=15, textColor=HexColor(INDIGO))
-S_PART = ParagraphStyle("part", fontName="Helvetica", fontSize=10, leading=15,
+                        leading=18, textColor=HexColor(INDIGO))
+S_PART = ParagraphStyle("part", fontName="Helvetica", fontSize=10, leading=18,
                         textColor=HexColor(INK))
 
 # ── Arabic (RTL) style variants — same visual system, NotoNaskhArabic + right alignment
@@ -736,8 +836,8 @@ def parts_table(parts, cols, content_w, answers=None, rtl=False):
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
         ("LEFTPADDING", (0, 0), (-1, -1), 0),
         ("RIGHTPADDING", (0, 0), (-1, -1), 6),
-        ("TOPPADDING", (0, 0), (-1, -1), 2),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+        ("TOPPADDING", (0, 0), (-1, -1), 5),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 7),
     ]))
     return t
 
@@ -745,13 +845,21 @@ def parts_table(parts, cols, content_w, answers=None, rtl=False):
 CORRECT_GREEN = "#2F6B4F"  # matches the site's --ok token
 
 
+S_META = ParagraphStyle("meta", fontName="Helvetica-Bold", fontSize=8.0,
+                        leading=11, textColor=HexColor(MUTED), spaceAfter=2)
+S_SUB = ParagraphStyle("sub", fontName="Helvetica", fontSize=8.5,
+                       leading=12, textColor=HexColor(MUTED))
+
+
 def choices_block(choices, correct, content_w, answer_mode, rtl=False):
-    """Render 4 MCQ choices as a vertical lettered list (A/B/C/D, or the
-    Arabic exam convention أ/ب/ج/د via part_letter's shared _AR_LETTERS).
-    In answer_mode the correct choice is bolded + a checkmark in the site's
-    --ok green; the worksheet version gives no visual hint which is correct."""
+    """Render 4 MCQ choices as a lettered list (A/B/C/D, or the Arabic exam
+    convention أ/ب/ج/د via part_letter's shared _AR_LETTERS).
+    When all 4 choices are compact (<= 34 chars) and not in answer_mode, lays
+    them out in a clean 2x2 grid so 25-MCQ sheets stay compact on screen and
+    paper. In answer_mode the correct choice is bolded + a checkmark in the
+    site's --ok green."""
     part_style = S_PART_AR if rtl else S_PART
-    rows = []
+    cells = []
     for i, c in enumerate(choices):
         is_correct = answer_mode and i == correct
         letter = part_letter(i, rtl=rtl)
@@ -761,21 +869,51 @@ def choices_block(choices, correct, content_w, answer_mode, rtl=False):
         if is_correct:
             body = f'<b>{body}</b> ✓'
         text = f'{body}&nbsp;&nbsp;{label}' if rtl else f'{label}&nbsp;&nbsp;{body}'
-        rows.append([Paragraph(text, part_style)])
-    t = Table(rows, colWidths=[content_w])
+        cells.append(Paragraph(text, part_style))
+    use_two_cols = (not rtl) and len(cells) == 4 and max(len(str(c)) for c in choices) <= 34
+    if use_two_cols:
+        rows = [[cells[0], cells[1]], [cells[2], cells[3]]]
+        col_widths = [content_w / 2.0, content_w / 2.0]
+    else:
+        rows = [[cell] for cell in cells]
+        col_widths = [content_w]
+    t = Table(rows, colWidths=col_widths)
     t.setStyle(TableStyle([
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
         ("LEFTPADDING", (0, 0), (-1, -1), 0),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 0),
-        # Generous padding, not the 2/3pt parts_table() uses: a choice's inline
-        # math image (e.g. a 2-digit-numerator \dfrac{49}{32}) can render taller
-        # than part_style's fixed `leading`, and tight padding let adjacent
-        # choice rows visually overlap it — confirmed by inspecting an actual
-        # rendered PDF, not a hypothetical.
+        ("RIGHTPADDING", (0, 0), (-1, -1), 6 if use_two_cols else 0),
+        # Generous padding so inline math images (e.g. stacked \dfrac{49}{32})
+        # never overlap adjacent rows.
         ("TOPPADDING", (0, 0), (-1, -1), 5),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 9),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
     ]))
     return t
+
+
+def _meta_badge_line(q):
+    """Build a compact HTML badge string for difficulty, lesson target, and
+    cross-lesson synthesis tags when present on a question dict."""
+    badges = []
+    diff = q.get("difficulty")
+    if diff:
+        d_low = diff.lower()
+        if "found" in d_low or "easy" in d_low:
+            d_col = CURVE
+        elif "chal" in d_low or "hard" in d_low:
+            d_col = AMBER_TEXT
+        else:
+            d_col = INDIGO2
+        badges.append(f'<font color="{d_col}"><b>[{html.escape(diff)}]</b></font>')
+    qtype = q.get("qtype")
+    if qtype:
+        badges.append(f'<font color="{INDIGO}"><b>[{html.escape(qtype)}]</b></font>')
+    target = q.get("target")
+    if target:
+        badges.append(f'<font color="{MUTED}">Target: {html.escape(target)}</font>')
+    cross = q.get("cross_lesson")
+    if cross:
+        badges.append(f'<font color="{AMBER_TEXT}"><b>Cross-Lesson: {html.escape(cross)}</b></font>')
+    return "&nbsp;&nbsp;•&nbsp;&nbsp;".join(badges)
 
 
 def question_block(qnum, q, answer_mode, rtl=False):
@@ -785,6 +923,10 @@ def question_block(qnum, q, answer_mode, rtl=False):
     num_w = 24
     content_w = BODY_W - num_w
     inner = []
+    if not rtl:
+        meta_html = _meta_badge_line(q)
+        if meta_html:
+            inner.append(Paragraph(meta_html, S_META))
     if q.get("q"):
         inner.append(Paragraph(rich(q["q"], rtl=rtl), body_style))
     if q.get("figure") and not answer_mode:
@@ -844,29 +986,37 @@ def build_story(topic, answer_mode):
     head_style = S_HEAD_AR if rtl else S_HEAD
 
     story = []
-    # Header: title + logo, mirrored for RTL (logo on the left, title on the right)
+    # Header: title + brand subtitle + logo in dedicated column so logo NEVER overlaps content
     title = Paragraph(rich(topic["title"], rtl=rtl), title_style)
     header_bits = [title]
+    if not rtl:
+        sub_line = f"ClipSAT Printable Practice Suite (clipsat.org)  •  Topic {topic.get('num', '')}"
+        if topic.get("sub"):
+            sub_line += f"  •  {topic['sub']}"
+        header_bits.append(Spacer(1, 2))
+        header_bits.append(Paragraph(html.escape(sub_line), S_SUB))
     if answer_mode:
-        tag_text = shape_ar("مفتاح الإجابات") if rtl else "ANSWER KEY"
+        tag_text = shape_ar("مفتاح الإجابات") if rtl else "ANSWER KEY — COMPLETE WORKED SOLUTIONS"
+        header_bits.append(Spacer(1, 2))
         header_bits.append(Paragraph(html.escape(tag_text), tag_style))
-    logo = Image(LOGO_PATH, width=26, height=26 * 240 / 212)
+    logo = Image(LOGO_PATH, width=28, height=28 * 240 / 212)
     if rtl:
-        ht = Table([[logo, header_bits]], colWidths=[40, BODY_W - 40])
+        ht = Table([[logo, header_bits]], colWidths=[48, BODY_W - 48])
         align_cmd = ("ALIGN", (0, 0), (0, 0), "LEFT")
     else:
-        ht = Table([[header_bits, logo]], colWidths=[BODY_W - 40, 40])
+        ht = Table([[header_bits, logo]], colWidths=[BODY_W - 48, 48])
         align_cmd = ("ALIGN", (1, 0), (1, 0), "RIGHT")
     ht.setStyle(TableStyle([
-        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
         align_cmd,
         ("LEFTPADDING", (0, 0), (-1, -1), 0),
         ("RIGHTPADDING", (0, 0), (-1, -1), 0),
         ("TOPPADDING", (0, 0), (-1, -1), 0),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
     ]))
     story.append(ht)
-    story.append(Spacer(1, 14))
+    story.append(HRFlowable(width="100%", thickness=1.0, color=HexColor(INDIGO)))
+    story.append(Spacer(1, 10))
 
     qnum = 0
     for si, section in enumerate(topic["sections"]):
@@ -882,7 +1032,7 @@ def build_story(topic, answer_mode):
             qnum += 1
             block = question_block(qnum, q, answer_mode, rtl=rtl)
             story.append(KeepTogether(block))
-            story.append(Spacer(1, 16 if not answer_mode else 12))
+            story.append(Spacer(1, 15 if not answer_mode else 12))
     if story and isinstance(story[-1], Spacer):
         story.pop()
     return story
@@ -890,9 +1040,13 @@ def build_story(topic, answer_mode):
 
 def footer(canvas, doc):
     canvas.saveState()
+    canvas.setStrokeColor(HexColor(BORDER))
+    canvas.setLineWidth(0.5)
+    canvas.line(MARGIN_L, 0.58 * inch, PAGE_W - MARGIN_R, 0.58 * inch)
     canvas.setFont("Helvetica", 7.5)
     canvas.setFillColor(HexColor(MUTED))
-    canvas.drawCentredString(PAGE_W / 2, 0.45 * inch, FOOTER_TEXT)
+    canvas.drawString(MARGIN_L, 0.42 * inch, FOOTER_TEXT)
+    canvas.drawRightString(PAGE_W - MARGIN_R, 0.42 * inch, f"clipsat.org  •  Page {doc.page}")
     canvas.restoreState()
 
 
@@ -901,8 +1055,8 @@ def build_pdf(topic, out_path, answer_mode):
         out_path, pagesize=letter,
         leftMargin=MARGIN_L, rightMargin=MARGIN_R,
         topMargin=MARGIN_T, bottomMargin=MARGIN_B,
-        title=topic["title"], author="ClipSAT — Mr. Mohamed Abdallah",
-        subject="ClipSAT worksheet", creator="ClipSAT worksheet generator",
+        title=topic["title"], author="ClipSAT (clipsat.org)",
+        subject="ClipSAT Printable Math Worksheet", creator="ClipSAT Worksheet Generator (clipsat.org)",
     )
     frame = Frame(MARGIN_L, MARGIN_B, BODY_W, PAGE_H - MARGIN_T - MARGIN_B,
                   leftPadding=0, rightPadding=0, topPadding=0, bottomPadding=0)
@@ -915,9 +1069,14 @@ def slugify(s):
     return s
 
 
-def generate_topic(json_path, out_root):
+def generate_topic(json_path, out_root, prerender_only=False):
     with open(json_path, encoding="utf-8") as f:
         topic = json.load(f)
+    if prerender_only:
+        build_story(topic, answer_mode=False)
+        build_story(topic, answer_mode=True)
+        print(f"  [prerendered] {topic['num']} {topic['title']}")
+        return None
     track_dir = os.path.join(out_root, topic["track"])
     os.makedirs(track_dir, exist_ok=True)
     slug = topic.get("slug") or slugify(topic["title"])
@@ -944,14 +1103,17 @@ def main():
     ap.add_argument("--out", required=True, help="output root directory")
     ap.add_argument("--manifest", action="store_true",
                     help="also write/merge manifest.json per track")
+    ap.add_argument("--prerender-only", action="store_true",
+                    help="only pre-render math and figure PNGs into .mathcache")
     args = ap.parse_args()
 
     entries_by_track = {}
     for path in args.topics:
-        entry = generate_topic(path, args.out)
-        with open(path, encoding="utf-8") as f:
-            track = json.load(f)["track"]
-        entries_by_track.setdefault(track, []).append(entry)
+        entry = generate_topic(path, args.out, prerender_only=args.prerender_only)
+        if entry is not None:
+            with open(path, encoding="utf-8") as f:
+                track = json.load(f)["track"]
+            entries_by_track.setdefault(track, []).append(entry)
 
     if args.manifest:
         for track, entries in entries_by_track.items():

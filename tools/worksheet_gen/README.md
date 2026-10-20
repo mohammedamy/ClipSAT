@@ -2,7 +2,7 @@
 
 Turns JSON topic files into branded worksheet + answer-key PDF pairs that match
 the site's worksheet-library look (indigo question numbers, sectioned layout,
-ClipSAT logo header, `© ClipSAT: By Mr. Mohamed Abdallah +966597688647` footer).
+ClipSAT logo header, `© ClipSAT — clipsat.org | All Rights Reserved` footer).
 
 ## Usage
 
