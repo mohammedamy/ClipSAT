@@ -40,7 +40,8 @@
               "question":   { "$ref": "#/definitions/bilingualText" },
               "solution":   { "$ref": "#/definitions/bilingualText" },
               "difficulty": { "type": "string", "description": "Free text, not a fixed enum — real source uses at least three different vocabularies (Basic/Intermediate/Advanced for most 'standard' tracks, Easy/Medium/Hard for 'compact', and — WP19, apbc — an item can be styled by one of Basic/Intermediate/Advanced's colors while its VISIBLE badge text is 'MCQ'/'FRQ', a different dimension entirely. This field always drives the CSS color class (must be exactly 'Basic'/'Intermediate'/'Advanced' for the 'standard' variant's color lookup to resolve); use levelLabel when the real visible text differs from this word." },
-              "levelLabel": { "type": "string", "description": "Optional — the real visible text in the .lvl badge, when it differs from `difficulty` (e.g. apbc shows 'MCQ'/'FRQ' text on a Basic/Intermediate/Advanced-colored badge). Defaults to `difficulty` when absent." }
+              "levelLabel": { "type": "string", "description": "Optional — the real visible text in the .lvl badge, when it differs from `difficulty` (e.g. apbc shows 'MCQ'/'FRQ' text on a Basic/Intermediate/Advanced-colored badge). Defaults to `difficulty` when absent." },
+              "fig":        { "type": "object", "required": ["type"], "properties": { "type": { "type": "string" } }, "description": "Optional math figure descriptor rendered at build time via the renderFig filter (e.g. fn, triangle, circle, polygon, bar, scatter, box_plot, histogram, two_way_table, transformation_grid, unit_circle, slope_field)." }
             },
             "additionalProperties": false
           }

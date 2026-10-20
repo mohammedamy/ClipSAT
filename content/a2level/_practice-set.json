@@ -3,603 +3,877 @@
   "items": [
     {
       "number": 1,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find the inverse of \\( f(x)=2x+1 \\).",
-        "ar": null
+        "en": "Evaluate \\(\\int_0^{3} 2x(x^2+9)^{4}\\,dx\\)."
       },
       "solution": {
-        "en": "\\[ f^{-1}(x)=\\tfrac{x-1}{2}. \\]",
-        "ar": null
+        "en": "<p>Let \\(u=x^2+9\\), \\(du=2x\\,dx\\). \\(\\int u^{4}du=\\dfrac{u^{5}}{5}\\). At \\(x=3\\): \\(u=18\\), giving \\(1889568\\). At \\(x=0\\): \\(u=9\\), giving \\(59049\\). Result: \\(\\dfrac{1889568-59049}{5}=\\dfrac{1830519}{5}\\).</p>"
       },
-      "difficulty": "Basic"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          {
+            "fn": "0.25*x*x*x - 0.75*x*x + 2",
+            "label": "y = f(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": 2,
+            "label": "A"
+          },
+          {
+            "x": 2,
+            "y": 1,
+            "label": "B"
+          }
+        ],
+        "xrange": [
+          -1.5,
+          3.5
+        ],
+        "yrange": [
+          -1,
+          4
+        ]
+      }
     },
     {
       "number": 2,
+      "difficulty": "Basic",
       "question": {
-        "en": "If \\( f(x)=x^{2} \\) and \\( g(x)=x+1 \\), find \\( fg(2) \\).",
-        "ar": null
+        "en": "The complex number \\(z\\) satisfies the equation\n\\[z(2 - \\mathrm{i}) = 7 + 4\\mathrm{i}.\\]\nExpress \\(z\\) in the form \\(x + \\mathrm{i}y\\), where \\(x\\) and \\(y\\) are real."
       },
       "solution": {
-        "en": "<p>\\( g(2)=3 \\), then \\( f(3)=9 \\):</p>\\[ 9. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>To find \\(z\\), rearrange the given equation:<br>\\[z = \\frac{7 + 4\\mathrm{i}}{2 - \\mathrm{i}}\\]</p><p>Multiply the numerator and the denominator by the complex conjugate of the denominator, which is \\(2 + \\mathrm{i}\\):<br>\\[z = \\frac{(7 + 4\\mathrm{i})(2 + \\mathrm{i})}{(2 - \\mathrm{i})(2 + \\mathrm{i})}\\]</p><p>Expand the denominator:<br>\\[(2 - \\mathrm{i})(2 + \\mathrm{i}) = 2^2 - \\mathrm{i}^2 = 4 - (-1) = 5\\]</p><p>Expand the numerator:<br>\\[(7 + 4\\mathrm{i})(2 + \\mathrm{i}) = 14 + 7\\mathrm{i} + 8\\mathrm{i} + 4\\mathrm{i}^2 = 14 + 15\\mathrm{i} - 4 = 10 + 15\\mathrm{i}\\]</p><p>Divide each term by the denominator:<br>\\[z = \\frac{10 + 15\\mathrm{i}}{5} = 2 + 3\\mathrm{i}\\]</p><p>Common Pitfalls:</p>"
+      }
     },
     {
       "number": 3,
+      "difficulty": "Basic",
       "question": {
-        "en": "Solve \\( |x|=4 \\).",
-        "ar": null
+        "en": "The continuous random variable \\(X\\) has probability density function given by\n\\[f(x) = \\begin{cases} k(4 - x^2) & 0 \\le x \\le 2, \\\\ 0 & \\text{otherwise,} \\end{cases}\\]\nwhere \\(k\\) is a constant.\n\nFind the value of \\(k\\)."
       },
       "solution": {
-        "en": "\\[ x=\\pm4. \\]",
-        "ar": null
+        "en": "<p>For \\(f(x)\\) to be a valid probability density function, the total area under the curve must equal 1:<br>\\[\\int_{-\\infty}^{\\infty} f(x) \\, dx = 1\\]</p><p>Substitute the non-zero definition of \\(f(x)\\):<br>\\[\\int_0^2 k(4 - x^2) \\, dx = 1\\]</p><p>Factor out the constant \\(k\\) and integrate term by term:<br>\\[k \\left[ 4x - \\frac{x^3}{3} \\right]_0^2 = 1\\]</p><p>Evaluate at the upper and lower limits:<br>\\[k \\left( \\left( 4(2) - \\frac{2^3}{3} \\right) - 0 \\right) = 1\\]<br>\\[k \\left( 8 - \\frac{8}{3} \\right) = 1\\]<br>\\[k \\left( \\frac{16}{3} \\right) = 1 \\implies k = \\frac{3}{16}\\]</p><p>Common errors include:<br>- Integrating \\(x^2\\) as \\(x^2\\) or dividing by 2 instead of 3, leading to \\(k = \\frac{1}{4}\\).<br>- Integrating over \\([-2, 2]\\) instead of \\([0, 2]\\), which gives double the integral and results in \\(k = \\frac{3}{8}\\).<br>- Evaluating the integral correctly as \\(\\frac{16}{3}\\) but forgetting to invert to solve for \\(k\\), yielding \\(\\frac{16}{3}\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "sign_chart",
+        "title": "Derivative Sign & Monotonicity Analysis",
+        "points": [
+          "c₁",
+          "c₂"
+        ],
+        "rows": [
+          {
+            "label": "f'(x)",
+            "signs": [
+              "+",
+              "0",
+              "-",
+              "0",
+              "+"
+            ]
+          },
+          {
+            "label": "f(x)",
+            "shape": [
+              "↗",
+              "Max",
+              "↘",
+              "Min",
+              "↗"
+            ]
+          }
+        ]
+      }
     },
     {
       "number": 4,
+      "difficulty": "Basic",
       "question": {
-        "en": "Solve \\( |x-1|=3 \\).",
-        "ar": null
+        "en": "A curve has equation \\(y = \\ln(2x^3 + 1)\\). What is the gradient of the tangent to the curve at the point where \\(x = 1\\)?"
       },
       "solution": {
-        "en": "<p>\\( x-1=\\pm3 \\):</p>\\[ x=4,\\ -2. \\]",
-        "ar": null
+        "en": "<p>To find the gradient of the tangent to the curve \\(y = \\ln(2x^3 + 1)\\) at \\(x = 1\\), we differentiate \\(y\\) with respect to \\(x\\) using the chain rule.</p><p>Let \\(u = 2x^3 + 1\\), so \\(y = \\ln(u)\\).<br>Then:<br>\\[\\dfrac{\\mathrm{d}u}{\\mathrm{d}x} = 6x^2 \\quad \\text{and} \\quad \\dfrac{\\mathrm{d}y}{\\mathrm{d}u} = \\dfrac{1}{u}\\]<br>Applying the chain rule:<br>\\[\\dfrac{\\mathrm{d}y}{\\mathrm{d}x} = \\dfrac{\\mathrm{d}y}{\\mathrm{d}u} \\cdot \\dfrac{\\mathrm{d}u}{\\mathrm{d}x} = \\dfrac{6x^2}{2x^3 + 1}\\]<br>Now evaluate the derivative at \\(x = 1\\):<br>\\[\\left.\\dfrac{\\mathrm{d}y}{\\mathrm{d}x}\\right|_{x=1} = \\dfrac{6(1)^2}{2(1)^3 + 1} = \\dfrac{6}{3} = 2\\]</p><p>Misconception Analysis:</p>"
       },
-      "difficulty": "Advanced"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          {
+            "fn": "0.25*x*x*x - 0.75*x*x + 2",
+            "label": "y = f(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": 2,
+            "label": "A"
+          },
+          {
+            "x": 2,
+            "y": 1,
+            "label": "B"
+          }
+        ],
+        "xrange": [
+          -1.5,
+          3.5
+        ],
+        "yrange": [
+          -1,
+          4
+        ]
+      }
     },
     {
       "number": 5,
+      "difficulty": "Basic",
       "question": {
-        "en": "If \\( f(x)=x^{2} \\) and \\( g(x)=x+1 \\), find \\( gf(x) \\).",
-        "ar": null
+        "en": "Find the particular solution of the differential equation\n\\[\\frac{\\mathrm{d}y}{\\mathrm{d}x} = x\\mathrm{e}^{-y}\\]\ngiven that \\(y = 0\\) when \\(x = 0\\)."
       },
       "solution": {
-        "en": "<p>\\( g(f(x))=f(x)+1 \\):</p>\\[ x^{2}+1. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>To solve the differential equation, separate the variables:<br>\\[\\frac{\\mathrm{d}y}{\\mathrm{e}^{-y}} = x \\,\\mathrm{d}x \\implies \\mathrm{e}^y \\,\\mathrm{d}y = x \\,\\mathrm{d}x.\\]</p><p>Integrate both sides:<br>\\[\\int \\mathrm{e}^y \\,\\mathrm{d}y = \\int x \\,\\mathrm{d}x \\implies \\mathrm{e}^y = \\frac{1}{2}x^2 + c.\\]</p><p>Apply the initial condition \\(y = 0\\) when \\(x = 0\\):<br>\\[\\mathrm{e}^0 = \\frac{1}{2}(0)^2 + c \\implies 1 = c.\\]</p><p>Substitute \\(c = 1\\) into the solution:<br>\\[\\mathrm{e}^y = \\frac{1}{2}x^2 + 1.\\]</p><p>Taking the natural logarithm of both sides gives:<br>\\[y = \\ln\\left(\\frac{1}{2}x^2 + 1\\right).\\]</p><p>Common misconceptions:<br>- Forgetting the factor of \\(\\frac{1}{2}\\) when integrating \\(x\\) leads to \\(y = \\ln(x^2 + 1)\\).<br>- Setting \\(c = 0\\) without applying the condition \\(\\mathrm{e}^0 = 1\\) leads to \\(y = \\ln\\left(\\frac{1}{2}x^2\\right)\\), which is undefined at \\(x = 0\\).</p>"
+      }
     },
     {
       "number": 6,
+      "difficulty": "Basic",
       "question": {
-        "en": "State the range of \\( f(x)=x^{2}+1 \\).",
-        "ar": null
+        "en": "Find the exact real solution to the equation\n\\[2e^{2x} + 5e^x - 12 = 0.\\]"
       },
       "solution": {
-        "en": "\\[ f(x)\\ge 1. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p>We recognize that the equation is quadratic in terms of \\(e^x\\):<br>\\[2(e^x)^2 + 5(e^x) - 12 = 0.\\]</p><p>Let \\(u = e^x\\). Then the equation becomes:<br>\\[2u^2 + 5u - 12 = 0.\\]</p><p>Factoring the quadratic expression:<br>\\[(2u - 3)(u + 4) = 0.\\]</p><p>This gives two possible values for \\(u\\):<br>\\[u = \\frac{3}{2} \\quad \\text{or} \\quad u = -4.\\]</p><p>Since \\(u = e^x\\):<br>1. For \\(e^x = \\frac{3}{2}\\), taking the natural logarithm of both sides yields:<br>\\[x = \\ln\\left(\\frac{3}{2}\\right).\\]</p><p>2. For \\(e^x = -4\\), since \\(e^x \\gt 0\\) for all real numbers \\(x\\), there are no real solutions.</p><p>Thus, the only real solution is \\(x = \\ln\\left(\\frac{3}{2}\\right)\\).</p><p>Common errors include:<br>- Factoring with incorrect signs as \\((2u + 3)(u - 4) = 0\\), which leads to the incorrect root \\(x = \\ln 4\\).<br>- Forgetting to take the logarithm of \\(u\\), giving \\(x = \\frac{3}{2}\\).<br>- Failing to discard the negative root \\(u = -4\\) and falsely combining signs.</p>"
+      }
     },
     {
       "number": 7,
+      "difficulty": "Basic",
       "question": {
-        "en": "Solve \\( 2^{x}=8 \\).",
-        "ar": null
+        "en": "What are the values of \\(x\\) that satisfy the equation\n\\[|3x - 2| = 2|x + 1| \\,?\\]"
       },
       "solution": {
-        "en": "\\[ 2^{3}=8\\Rightarrow x=3. \\]",
-        "ar": null
+        "en": "<p>To solve the modulus equation \\(|3x - 2| = 2|x + 1|\\), we can either consider the linear cases or square both sides.</p><p><strong>Method 1: Considering linear cases</strong><br>The equation \\(|A| = |B|\\) (where \\(B = 2(x+1)\\)) is equivalent to \\(A = B\\) or \\(A = -B\\):<br>- Case 1:<br>\\[3x - 2 = 2(x + 1) \\implies 3x - 2 = 2x + 2 \\implies x = 4\\]<br>- Case 2:<br>\\[3x - 2 = -2(x + 1) \\implies 3x - 2 = -2x - 2 \\implies 5x = 0 \\implies x = 0\\]</p><p><strong>Method 2: Squaring both sides</strong><br>Since both sides are non-negative, we can square both sides:<br>\\[(3x - 2)^2 = [2(x + 1)]^2\\]<br>\\[9x^2 - 12x + 4 = 4(x^2 + 2x + 1)\\]<br>\\[9x^2 - 12x + 4 = 4x^2 + 8x + 4\\]<br>Subtracting \\(4x^2 + 8x + 4\\) from both sides gives:<br>\\[5x^2 - 20x = 0 \\implies 5x(x - 4) = 0\\]<br>Thus, \\(x = 0\\) or \\(x = 4\\).</p><p><strong>Misconceptions:</strong></p>"
       },
-      "difficulty": "Basic"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          {
+            "fn": "0.25*x*x*x - 0.75*x*x + 2",
+            "label": "y = f(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": 2,
+            "label": "A"
+          },
+          {
+            "x": 2,
+            "y": 1,
+            "label": "B"
+          }
+        ],
+        "xrange": [
+          -1.5,
+          3.5
+        ],
+        "yrange": [
+          -1,
+          4
+        ]
+      }
     },
     {
       "number": 8,
+      "difficulty": "Basic",
       "question": {
-        "en": "Evaluate \\( \\log_2 8 \\).",
-        "ar": null
+        "en": "A machine produces steel rods whose lengths are normally distributed with standard deviation \\(\\sigma = 2.4\\text{ cm}\\). A quality controller suspects that the mean length has increased from the target value of \\(50\\text{ cm}\\). A random sample of \\(36\\) rods is measured, yielding a sample mean of \\(\\bar{x} = 50.8\\text{ cm}\\).\n\\nFind the value of the standardized test statistic \\(z\\) for testing \\(H_0: \\mu = 50\\) against \\(H_1: \\mu \\gt 50\\)."
       },
       "solution": {
-        "en": "\\[ 3. \\]",
-        "ar": null
+        "en": "<p>Under the null hypothesis \\(H_0: \\mu = 50\\), the sample mean of \\(n = 36\\) independent observations follows a normal distribution:<br>\\[\\bar{X} \\sim N\\left(\\mu, \\frac{\\sigma^2}{n}\\right) = N\\left(50, \\frac{2.4^2}{36}\\right)\\]<br>\\nThe standard error of the mean is:<br>\\[\\text{SE} = \\frac{\\sigma}{\\sqrt{n}} = \\frac{2.4}{\\sqrt{36}} = \\frac{2.4}{6} = 0.4\\]<br>\\nThe standardized test statistic \\(z\\) is calculated as:<br>\\[z = \\frac{\\bar{x} - \\mu_0}{\\frac{\\sigma}{\\sqrt{n}}} = \\frac{50.8 - 50}{0.4} = \\frac{0.8}{0.4} = 2.0\\]<br>\\nCommon errors include:<br>- Omitting the sample size factor \\(\\sqrt{n}\\), which produces \\(\\frac{50.8 - 50}{2.4} \\approx 0.33\\).<br>- Inverting the ratio, yielding \\(\\frac{0.4}{0.8} = 0.5\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "normal_curve",
+        "title": "Normal Distribution Model",
+        "mean": 0,
+        "sd": 1,
+        "shade": [
+          -1,
+          1.5
+        ]
+      }
     },
     {
       "number": 9,
+      "difficulty": "Basic",
       "question": {
-        "en": "Evaluate \\( \\log_{10}1000 \\).",
-        "ar": null
+        "en": "Find the exact value of the definite integral\n\\[\\int_{0}^{\\ln 2} \\mathrm{e}^{2x} \\, \\mathrm{d}x.\\]"
       },
       "solution": {
-        "en": "\\[ 3. \\]",
-        "ar": null
+        "en": "<p>To evaluate the definite integral:</p><p>1. Find the antiderivative using the standard standard result \\(\\int \\mathrm{e}^{kx} \\, \\mathrm{d}x = \\frac{1}{k}\\mathrm{e}^{kx} + C\\):<br>\\[\\int \\mathrm{e}^{2x} \\, \\mathrm{d}x = \\frac{1}{2}\\mathrm{e}^{2x}\\]</p><p>2. Apply the limits from \\(x = 0\\) to \\(x = \\ln 2\\):<br>\\[\\left[ \\frac{1}{2}\\mathrm{e}^{2x} \\right]_{0}^{\\ln 2} = \\frac{1}{2}\\mathrm{e}^{2\\ln 2} - \\frac{1}{2}\\mathrm{e}^{2(0)}\\]</p><p>3. Simplify the exponential terms using the power law of logarithms, \\(2\\ln 2 = \\ln(2^2) = \\ln 4\\):<br>\\[\\mathrm{e}^{2\\ln 2} = \\mathrm{e}^{\\ln 4} = 4\\]<br>and<br>\\[\\mathrm{e}^{0} = 1\\]</p><p>4. Compute the final value:<br>\\[\\frac{1}{2}(4) - \\frac{1}{2}(1) = 2 - \\frac{1}{2} = \\frac{3}{2}\\]</p><p>Common Errors:<br>- Omitting the factor of \\(\\frac{1}{2}\\) gives \\(4 - 1 = 3\\) (Choice B).<br>- Forgetting that \\(2\\ln 2 = \\ln 4\\) and incorrectly setting \\(\\mathrm{e}^{2\\ln 2} = 2\\) gives \\(\\frac{1}{2}(2 - 1) = \\frac{1}{2}\\) (Choice C).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "sign_chart",
+        "title": "Derivative Sign & Monotonicity Analysis",
+        "points": [
+          "c₁",
+          "c₂"
+        ],
+        "rows": [
+          {
+            "label": "f'(x)",
+            "signs": [
+              "+",
+              "0",
+              "-",
+              "0",
+              "+"
+            ]
+          },
+          {
+            "label": "f(x)",
+            "shape": [
+              "↗",
+              "Max",
+              "↘",
+              "Min",
+              "↗"
+            ]
+          }
+        ]
+      }
     },
     {
       "number": 10,
+      "difficulty": "Basic",
       "question": {
-        "en": "Solve \\( e^{x}=1 \\).",
-        "ar": null
+        "en": "The function \\(f\\) is defined for all real numbers by\n\\[f(x) = x^3 + 3x - 5.\\]\nBetween which pair of consecutive integers does the unique real root of the equation \\(f(x) = 0\\) lie?"
       },
       "solution": {
-        "en": "\\[ x=0. \\]",
-        "ar": null
+        "en": "<p>To locate the root using the change of sign method, evaluate \\(f(x)\\) at consecutive integer values:<br>\\[f(0) = (0)^3 + 3(0) - 5 = -5  \\lt  0\\]<br>\\[f(1) = (1)^3 + 3(1) - 5 = 1 + 3 - 5 = -1  \\lt  0\\]<br>\\[f(2) = (2)^3 + 3(2) - 5 = 8 + 6 - 5 = 9  \\gt  0\\]<br>Since \\(f(x)\\) is a continuous polynomial function and there is a sign change between \\(x = 1\\) (where \\(f(1) \\lt 0\\)) and \\(x = 2\\) (where \\(f(2) \\gt 0\\)), by the Intermediate Value Theorem, a root of \\(f(x) = 0\\) lies between \\(1\\) and \\(2\\).</p><p>Checking the other intervals:<br>- On \\([0, 1]\\), \\(f(0) = -5\\) and \\(f(1) = -1\\) (no sign change).<br>- On \\([2, 3]\\), \\(f(2) = 9\\) and \\(f(3) = 31\\) (no sign change).<br>- On \\([-1, 0]\\), \\(f(-1) = -9\\) and \\(f(0) = -5\\) (no sign change).</p>"
       },
-      "difficulty": "Advanced"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          {
+            "fn": "x*x*x + (3)*x",
+            "label": "y = f(x)"
+          }
+        ],
+        "xrange": [
+          -3.5,
+          3.5
+        ],
+        "yrange": [
+          -12,
+          12
+        ]
+      }
     },
     {
       "number": 11,
+      "difficulty": "Basic",
       "question": {
-        "en": "Evaluate \\( \\ln e \\).",
-        "ar": null
+        "en": "The random variable \\(X\\) has a Poisson distribution with parameter \\(\\lambda\\), where \\(\\lambda \\gt 0\\). Given that \\(\\mathrm{P}(X = 3) = \\mathrm{P}(X = 4)\\), find the value of \\(\\lambda\\)."
       },
       "solution": {
-        "en": "\\[ 1. \\]",
-        "ar": null
+        "en": "<p>For a random variable \\(X \\sim \\mathrm{Po}(\\lambda)\\), the probability mass function is given by:<br>\\[\\mathrm{P}(X = x) = \\frac{\\mathrm{e}^{-\\lambda} \\lambda^x}{x!}, \\quad x = 0, 1, 2, \\dots\\]</p><p>Given \\(\\mathrm{P}(X = 3) = \\mathrm{P}(X = 4)\\), we substitute \\(x = 3\\) and \\(x = 4\\):<br>\\[\\frac{\\mathrm{e}^{-\\lambda} \\lambda^3}{3!} = \\frac{\\mathrm{e}^{-\\lambda} \\lambda^4}{4!}\\]</p><p>Since \\(\\mathrm{e}^{-\\lambda} \\gt 0\\) and \\(\\lambda \\gt 0\\), we can divide both sides by \\(\\mathrm{e}^{-\\lambda} \\lambda^3\\):<br>\\[\\frac{1}{3!} = \\frac{\\lambda}{4!}\\]</p><p>Multiplying both sides by \\(4!\\):<br>\\[\\lambda = \\frac{4!}{3!} = \\frac{24}{6} = 4\\]</p><p>- Choosing \\(3\\) commonly arises from misidentifying the distribution parameter directly as the given index \\(X = 3\\).<br>- Choosing \\(12\\) arises from mistakenly multiplying the indices \\(3 \\times 4\\).<br>- Choosing \\(\\frac{4}{3}\\) results from omitting the factorials and solving \\(\\frac{\\lambda}{4} = \\frac{1}{3}\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          {
+            "fn": "4 - x*x",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "x + 2",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -2,
+            "y": 0,
+            "label": "P"
+          },
+          {
+            "x": 1,
+            "y": 3,
+            "label": "Q"
+          }
+        ],
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -2,
+          5
+        ]
+      }
     },
     {
       "number": 12,
+      "difficulty": "Basic",
       "question": {
-        "en": "Solve \\( \\log_{10}x=2 \\).",
-        "ar": null
+        "en": "A random sample of 10 values of a variable \\(x\\) is taken. The results are summarised as follows:\n\\[\\sum x = 50, \\quad \\sum x^2 = 322\\]\nCalculate an unbiased estimate of the population variance."
       },
       "solution": {
-        "en": "\\[ x=100. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p>To find an unbiased estimate of the population variance \\(s^2\\), we use the formula:<br>\\[s^2 = \\frac{1}{n - 1} \\left( \\sum x^2 - \\frac{(\\sum x)^2}{n} \\right)\\]</p><p>Given \\(n = 10\\), \\(\\sum x = 50\\), and \\(\\sum x^2 = 322\\):<br>\\[\\frac{(\\sum x)^2}{n} = \\frac{50^2}{10} = \\frac{2500}{10} = 250\\]</p><p>Substitute these values into the formula:<br>\\[s^2 = \\frac{1}{10 - 1} (322 - 250) = \\frac{1}{9} \\times 72 = 8\\]</p><p>- The distractor 7.2 results from dividing by \\(n = 10\\) instead of \\(n - 1 = 9\\), which gives the biased sample variance rather than the unbiased estimate of the population variance.<br>- The distractor 2.83 is the unbiased estimate of the population standard deviation \\(\\sqrt{8} \\approx 2.83\\).<br>- The distractor 32.2 arises from incorrectly dividing \\(\\sum x^2\\) by 10.</p>"
+      }
     },
     {
       "number": 13,
+      "difficulty": "Basic",
       "question": {
-        "en": "Write \\( \\log a+\\log b \\) as a single logarithm.",
-        "ar": null
+        "en": "The first term of a geometric progression is \\(16\\) and the fourth term is \\(2\\). Find the sum to infinity, \\(S_\\infty\\), of the progression."
       },
       "solution": {
-        "en": "\\[ \\log(ab). \\]",
-        "ar": null
+        "en": "<p>The \\(n\\)th term of a geometric progression is given by \\(u_n = ar^{n-1}\\), where \\(a\\) is the first term and \\(r\\) is the common ratio.</p><p>Given \\(a = 16\\) and the fourth term \\(u_4 = 2\\):<br>\\[ar^3 = 2 \\implies 16r^3 = 2 \\implies r^3 = \\frac{2}{16} = \\frac{1}{8} \\implies r = \\frac{1}{2}\\]</p><p>Since \\(|r| \\lt 1\\), the sum to infinity exists and is given by:<br>\\[S_\\infty = \\frac{a}{1 - r} = \\frac{16}{1 - \\frac{1}{2}} = \\frac{16}{\\frac{1}{2}} = 32\\]</p><p>Common errors include setting \\(u_4 = ar^4\\) which yields \\(r^4 = \\frac{1}{8}\\), or miscalculating the denominator \\(1 - r\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          {
+            "fn": "0.25*x*x*x - 0.75*x*x + 2",
+            "label": "y = f(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": 2,
+            "label": "A"
+          },
+          {
+            "x": 2,
+            "y": 1,
+            "label": "B"
+          }
+        ],
+        "xrange": [
+          -1.5,
+          3.5
+        ],
+        "yrange": [
+          -1,
+          4
+        ]
+      }
     },
     {
       "number": 14,
+      "difficulty": "Basic",
       "question": {
-        "en": "Solve \\( 3^{x}=81 \\).",
-        "ar": null
+        "en": "Given that \\(\\cos \\theta = -\\dfrac{3}{5}\\) and \\(\\dfrac{\\pi}{2} \\lt \\theta \\lt \\pi\\), find the exact value of \\(\\sin 2\\theta\\)."
       },
       "solution": {
-        "en": "\\[ 3^{4}=81\\Rightarrow x=4. \\]",
-        "ar": null
+        "en": "<p>We are given \\(\\cos \\theta = -\\dfrac{3}{5}\\) for an angle in the second quadrant, \\(\\dfrac{\\pi}{2} \\lt \\theta \\lt \\pi\\).</p><p>1. In the second quadrant, the sine function is positive:<br>\\[\\sin \\theta = \\sqrt{1 - \\cos^2 \\theta} = \\sqrt{1 - \\left(-\\dfrac{3}{5}\\right)^2} = \\sqrt{1 - \\dfrac{9}{25}} = \\sqrt{\\dfrac{16}{25}} = \\dfrac{4}{5}.\\]</p><p>2. Use the double-angle identity for sine, \\(\\sin 2\\theta = 2\\sin \\theta \\cos \\theta\\):<br>\\[\\sin 2\\theta = 2 \\left(\\dfrac{4}{5}\\right) \\left(-\\dfrac{3}{5}\\right) = -\\dfrac{24}{25}.\\]</p><p>Common misconceptions:<br>- \\(\\dfrac{24}{25}\\) fails to account for the negative sign of \\(\\cos \\theta\\).<br>- \\(-\\dfrac{7}{25}\\) results from mistakenly evaluating \\(\\cos 2\\theta = \\cos^2 \\theta - \\sin^2 \\theta = \\dfrac{9}{25} - \\dfrac{16}{25}\\).<br>- \\(-\\dfrac{12}{25}\\) forgets the multiplier of 2 in the double-angle formula.</p>"
       },
-      "difficulty": "Advanced"
+      "fig": {
+        "type": "unit_circle",
+        "title": "Unit Circle Reference",
+        "angle": 45,
+        "showTriangle": true
+      }
     },
     {
       "number": 15,
+      "difficulty": "Basic",
       "question": {
-        "en": "State the formula for \\( \\sin2\\theta \\).",
-        "ar": null
+        "en": "Relative to a fixed origin \\(O\\), the position vectors of the points \\(A\\) and \\(B\\) are given by\n\\[\\vec{OA} = \\mathbf{i} - 2\\mathbf{j} + 4\\mathbf{k} \\quad \\text{and} \\quad \\vec{OB} = 4\\mathbf{i} + 2\\mathbf{j} - 8\\mathbf{k}.\\]\nFind the unit vector in the direction of \\(\\vec{AB}\\)."
       },
       "solution": {
-        "en": "\\[ 2\\sin\\theta\\cos\\theta. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>First, find the displacement vector \\(\\vec{AB}\\):<br>\\[\\vec{AB} = \\vec{OB} - \\vec{OA} = (4 - 1)\\mathbf{i} + (2 - (-2))\\mathbf{j} + (-8 - 4)\\mathbf{k} = 3\\mathbf{i} + 4\\mathbf{j} - 12\\mathbf{k}.\\]</p><p>Next, calculate the magnitude of \\(\\vec{AB}\\):<br>\\[|\\vec{AB}| = \\sqrt{3^2 + 4^2 + (-12)^2} = \\sqrt{9 + 16 + 144} = \\sqrt{169} = 13.\\]</p><p>The unit vector in the direction of \\(\\vec{AB}\\) is given by \\(\\frac{\\vec{AB}}{|\\vec{AB}|}\\):<br>\\[\\frac{1}{13}(3\\mathbf{i} + 4\\mathbf{j} - 12\\mathbf{k}).\\]</p><p>Common misconceptions:<br>- Reversing the subtraction (calculating \\(\\vec{OA} - \\vec{OB}\\)) gives the vector \\(\\vec{BA} = -3\\mathbf{i} - 4\\mathbf{j} + 12\\mathbf{k}\\), leading to \\(\\frac{1}{13}(-3\\mathbf{i} - 4\\mathbf{j} + 12\\mathbf{k})\\).<br>- Forgetting to take the square root of the sum of squares yields the factor \\(\\frac{1}{169}\\).<br>- Adding the absolute values of the components (\\(3 + 4 + 12 = 19\\)) instead of using the Euclidean norm gives \\(\\frac{1}{19}\\).</p>"
+      }
     },
     {
       "number": 16,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Evaluate \\( \\cos0^{\\circ} \\).",
-        "ar": null
+        "en": "The complex number \\(z\\) is defined by\n\\[z = \\frac{a + 3\\mathrm{i}}{2 + a\\mathrm{i}},\\]\nwhere \\(a\\) is a real constant. Given that \\(\\arg(z) = \\frac{\\pi}{4}\\), find the value of \\(a\\)."
       },
       "solution": {
-        "en": "\\[ 1. \\]",
-        "ar": null
+        "en": "<p>To find \\(a\\), we first express \\(z\\) in Cartesian form \\(x + \\mathrm{i}y\\) by multiplying the numerator and denominator by the complex conjugate of the denominator, \\(2 - a\\mathrm{i}\\):<br>\\[z = \\frac{(a + 3\\mathrm{i})(2 - a\\mathrm{i})}{(2 + a\\mathrm{i})(2 - a\\mathrm{i})} = \\frac{2a - a^2\\mathrm{i} + 6\\mathrm{i} - 3a\\mathrm{i}^2}{4 + a^2} = \\frac{5a + (6 - a^2)\\mathrm{i}}{4 + a^2}\\]</p><p>Thus, the real and imaginary parts are:<br>\\[\\operatorname{Re}(z) = \\frac{5a}{4 + a^2}, \\qquad \\operatorname{Im}(z) = \\frac{6 - a^2}{4 + a^2}\\]</p><p>For \\(\\arg(z) = \\frac{\\pi}{4}\\), the complex number \\(z\\) must lie on the half-line in the first quadrant where the real and imaginary parts are equal and strictly positive:<br>1. \\(\\operatorname{Re}(z) \\gt 0 \\implies 5a \\gt 0 \\implies a \\gt 0\\)<br>2. \\(\\operatorname{Im}(z) \\gt 0 \\implies 6 - a^2 \\gt 0\\)<br>3. \\(\\operatorname{Re}(z) = \\operatorname{Im}(z) \\implies 5a = 6 - a^2\\)</p><p>Rearranging the equality gives the quadratic equation:<br>\\[a^2 + 5a - 6 = 0 \\implies (a + 6)(a - 1) = 0\\]<br>which yields \\(a = 1\\) or \\(a = -6\\).</p><p>Checking the values:<br>- If \\(a = 1\\): \\(\\operatorname{Re}(z) = 1 \\gt 0\\) and \\(\\operatorname{Im}(z) = 1 \\gt 0\\), so \\(\\arg(z) = \\frac{\\pi}{4}\\).<br>- If \\(a = -6\\): \\(\\operatorname{Re}(z) = -\\frac{3}{4} \\lt 0\\) and \\(\\operatorname{Im}(z) = -\\frac{3}{4} \\lt 0\\), so \\(z\\) lies in the third quadrant with \\(\\arg(z) = -\\frac{3\\pi}{4}\\).</p><p>Therefore, \\(a = -6\\) is an extraneous solution resulting from the equation \\(\\tan(\\arg z) = 1\\), and the only valid solution is \\(a = 1\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "unit_circle",
+        "title": "Unit Circle Reference",
+        "angle": 120,
+        "showTriangle": true
+      }
     },
     {
       "number": 17,
+      "difficulty": "Basic",
       "question": {
-        "en": "Solve \\( \\cos\\theta=0 \\) for \\( 0^{\\circ}\\le\\theta\\le180^{\\circ} \\).",
-        "ar": null
+        "en": "A continuous random variable \\(X\\) has probability density function given by \\(f(x) = \\frac{3}{8}x^2\\) for \\(0 \\le x \\le 2\\), and \\(f(x) = 0\\) otherwise. Find \\(\\mathrm{P}(1 \\le X \\le 2)\\)."
       },
       "solution": {
-        "en": "\\[ \\theta=90^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>To find the probability \\(\\mathrm{P}(1 \\le X \\le 2)\\), we integrate the probability density function \\(f(x)\\) over the interval \\([1, 2]\\):</p><p>\\[\\mathrm{P}(1 \\le X \\le 2) = \\int_{1}^{2} \\frac{3}{8}x^2 \\, \\mathrm{d}x\\]</p><p>Find the antiderivative:</p><p>\\[\\int \\frac{3}{8}x^2 \\, \\mathrm{d}x = \\frac{3}{8} \\cdot \\frac{x^3}{3} = \\frac{x^3}{8}\\]</p><p>Evaluate between the limits \\(x = 1\\) and \\(x = 2\\):</p><p>\\[\\left[ \\frac{x^3}{8} \\right]_{1}^{2} = \\frac{2^3}{8} - \\frac{1^3}{8} = \\frac{8}{8} - \\frac{1}{8} = \\frac{7}{8}\\]</p><p>Common errors include calculating the lower tail \\(\\mathrm{P}(0 \\le X \\le 1) = \\frac{1}{8}\\), or mistakenly substituting values directly into \\(f(x)\\) instead of integrating.</p>"
       },
-      "difficulty": "Advanced"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          {
+            "fn": "4 - x*x",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "x + 2",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -2,
+            "y": 0,
+            "label": "P"
+          },
+          {
+            "x": 1,
+            "y": 3,
+            "label": "Q"
+          }
+        ],
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -2,
+          5
+        ]
+      }
     },
     {
       "number": 18,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Evaluate \\( \\tan45^{\\circ} \\).",
-        "ar": null
+        "en": "The curve \\(C\\) has equation\n\\[y = \\frac{a x + 6}{x^2 + 3}\\]\nwhere \\(a\\) is a constant. Given that \\(C\\) has a stationary point at \\(x = 1\\), find the coordinates of the other stationary point of \\(C\\)."
       },
       "solution": {
-        "en": "\\[ 1. \\]",
-        "ar": null
+        "en": "<p>To find the unknown parameter \\(a\\), differentiate \\(y\\) with respect to \\(x\\) using the quotient rule:<br>\\[\\frac{\\mathrm{d}y}{\\mathrm{d}x} = \\frac{a(x^2 + 3) - (ax + 6)(2x)}{(x^2 + 3)^2} = \\frac{3a - 12x - ax^2}{(x^2 + 3)^2}\\]</p><p>At a stationary point, \\(\\frac{\\mathrm{d}y}{\\mathrm{d}x} = 0\\), which requires the numerator to be zero:<br>\\[3a - 12x - ax^2 = 0\\]</p><p>Given that \\(x = 1\\) is a stationary point:<br>\\[3a - 12(1) - a(1)^2 = 0 \\implies 2a - 12 = 0 \\implies a = 6\\]</p><p>Substitute \\(a = 6\\) back into the numerator of the derivative:<br>\\[3(6) - 12x - 6x^2 = 18 - 12x - 6x^2 = -6(x^2 + 2x - 3) = 0\\]</p><p>Factoring the quadratic gives:<br>\\[-6(x + 3)(x - 1) = 0\\]</p><p>Thus, the other stationary point occurs at \\(x = -3\\).</p><p>Finally, calculate the corresponding \\(y\\)-coordinate by substituting \\(x = -3\\) and \\(a = 6\\) into the original equation:<br>\\[y = \\frac{6(-3) + 6}{(-3)^2 + 3} = \\frac{-18 + 6}{9 + 3} = \\frac{-12}{12} = -1\\]</p><p>Hence, the coordinates of the other stationary point are \\((-3, -1)\\).</p><p>Common traps:<br>- Factoring error: incorrectly writing \\((x - 3)(x + 1) = 0\\) leads to \\(x = 3\\).<br>- Denominator evaluation error: computing \\((-3)^2 + 3 = -9 + 3 = -6\\) or forgetting to square the negative sign.</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "sign_chart",
+        "title": "Derivative Sign & Monotonicity Analysis",
+        "points": [
+          "c₁",
+          "c₂"
+        ],
+        "rows": [
+          {
+            "label": "f'(x)",
+            "signs": [
+              "+",
+              "0",
+              "-",
+              "0",
+              "+"
+            ]
+          },
+          {
+            "label": "f(x)",
+            "shape": [
+              "↗",
+              "Max",
+              "↘",
+              "Min",
+              "↗"
+            ]
+          }
+        ]
+      }
     },
     {
       "number": 19,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "State the exact value of \\( \\sin45^{\\circ} \\).",
-        "ar": null
+        "en": "Find the set of all real solutions to the equation\n\\[\\log_2(x - 1) - \\log_4(x + 14) = 1\\]"
       },
       "solution": {
-        "en": "\\[ \\tfrac{\\sqrt{2}}{2}. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p>To solve the equation, we first express all logarithms in the same base using the change of base formula:<br>\\[\\log_4(x + 14) = \\frac{\\log_2(x + 14)}{\\log_2 4} = \\frac{\\log_2(x + 14)}{2} = \\frac{1}{2}\\log_2(x + 14)\\]</p><p>Substitute this back into the original equation:<br>\\[\\log_2(x - 1) - \\frac{1}{2}\\log_2(x + 14) = 1\\]</p><p>Multiply through by \\(2\\):<br>\\[2\\log_2(x - 1) - \\log_2(x + 14) = 2\\]</p><p>Apply the power law and the quotient law of logarithms:<br>\\[\\log_2\\left((x - 1)^2\\right) - \\log_2(x + 14) = 2 \\implies \\log_2\\left(\\frac{(x - 1)^2}{x + 14}\\right) = 2\\]</p><p>Convert from logarithmic form to exponential form:<br>\\[\\frac{(x - 1)^2}{x + 14} = 2^2 = 4\\]</p><p>Clear the denominator and expand:<br>\\[(x - 1)^2 = 4(x + 14)\\]<br>\\[x^2 - 2x + 1 = 4x + 56\\]<br>\\[x^2 - 6x - 55 = 0\\]</p><p>Factor the quadratic equation:<br>\\[(x - 11)(x + 5) = 0 \\implies x = 11 \\quad \\text{or} \\quad x = -5\\]</p><p>Now, we must consider the domain of the original logarithmic expressions:<br>- For \\(\\log_2(x - 1)\\) to be defined, \\(x - 1 \\gt 0 \\implies x \\gt 1\\).<br>- For \\(\\log_4(x + 14)\\) to be defined, \\(x + 14 \\gt 0 \\implies x \\gt -14\\).</p><p>Thus, the domain requires \\(x \\gt 1\\).<br>- For \\(x = -5\\), the term \\(\\log_2(-5 - 1) = \\log_2(-6)\\) is undefined in the real numbers. Hence, \\(x = -5\\) is an extraneous solution introduced by squaring.<br>- For \\(x = 11\\), \\(\\log_2(10) - \\log_4(25) = \\log_2(10) - \\log_2(5) = \\log_2(2) = 1\\), which is valid.</p><p>Therefore, the only real solution is \\(x = 11\\).</p><p>Misconception Traps:</p>"
+      }
     },
     {
       "number": 20,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Express \\( \\sec\\theta \\) in terms of \\( \\cos\\theta \\).",
-        "ar": null
+        "en": "The function \\(f\\) is defined for \\(x \\in \\mathbb{R}\\) by\n\\[f(x) = 3x + k,\\]\nwhere \\(k\\) is a constant. The function \\(g\\) is defined for \\(x \\in \\mathbb{R}\\) by\n\\[g(x) = |x - 4|.\\]\nGiven that \\(f^{-1}(4) = 2\\), find the value of \\(k\\) and all real solutions to the equation \\(f^{-1}(x) = g(x)\\)."
       },
       "solution": {
-        "en": "\\[ \\sec\\theta=\\tfrac{1}{\\cos\\theta}. \\]",
-        "ar": null
+        "en": "<p>1. <strong>Find the parameter \\(k\\):</strong><br>By the definition of an inverse function, \\(f^{-1}(4) = 2 \\iff f(2) = 4\\).<br>Substituting \\(x = 2\\) into \\(f(x)\\):<br>\\[f(2) = 3(2) + k = 6 + k\\]<br>\\[6 + k = 4 \\implies k = -2\\]</p><p>2. <strong>Determine the inverse function \\(f^{-1}(x)\\):</strong><br>With \\(k = -2\\), \\(f(x) = 3x - 2\\).<br>Setting \\(y = 3x - 2\\) and solving for \\(x\\):<br>\\[3x = y + 2 \\implies x = \\frac{y + 2}{3}\\]<br>Thus, \\(f^{-1}(x) = \\dfrac{x + 2}{3}\\).</p><p>3. <strong>Solve the equation \\(f^{-1}(x) = g(x)\\):</strong><br>\\[\\frac{x + 2}{3} = |x - 4| \\iff x + 2 = 3|x - 4|\\]<br>Since the right-hand side is non-negative, any solution must satisfy \\(x + 2 \\ge 0 \\implies x \\ge -2\\).</p><p>- <strong>Case 1 (\\(x \\ge 4\\)):</strong><br>  Here, \\(|x - 4| = x - 4\\):<br>  \\[x + 2 = 3(x - 4) \\implies x + 2 = 3x - 12 \\implies 2x = 14 \\implies x = 7\\]<br>  Since \\(7 \\ge 4\\), \\(x = 7\\) is a valid solution.</p><p>- <strong>Case 2 (\\(x \\lt 4\\)):</strong><br>  Here, \\(|x - 4| = -(x - 4) = 4 - x\\):<br>  \\[x + 2 = 3(4 - x) \\implies x + 2 = 12 - 3x \\implies 4x = 10 \\implies x = \\frac{5}{2}\\]<br>  Since \\(\\frac{5}{2} = 2.5 \\lt 4\\) and \\(2.5 \\ge -2\\), \\(x = \\frac{5}{2}\\) is also a valid solution.</p><p><strong>Common Traps:</strong></p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          {
+            "fn": "4 - x*x",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "x + 2",
+            "label": "y = g(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": -2,
+            "y": 0,
+            "label": "P"
+          },
+          {
+            "x": 1,
+            "y": 3,
+            "label": "Q"
+          }
+        ],
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -2,
+          5
+        ]
+      }
     },
     {
       "number": 21,
+      "difficulty": "Basic",
       "question": {
-        "en": "Write \\( \\cos2\\theta \\) in terms of \\( \\cos\\theta \\).",
-        "ar": null
+        "en": "Find the exact value of the definite integral \\(\\int_0^4 \\frac{1}{2x + 1} \\, \\mathrm{d}x\\)."
       },
       "solution": {
-        "en": "\\[ 2\\cos^{2}\\theta-1. \\]",
-        "ar": null
+        "en": "<p>To evaluate the definite integral \\(\\int_0^4 \\frac{1}{2x + 1} \\, \\mathrm{d}x\\):<br>1. Use the standard integration rule \\(\\int \\frac{1}{ax + b} \\, \\mathrm{d}x = \\frac{1}{a} \\ln |ax + b| + C\\).<br>Here, \\(a = 2\\) and \\(b = 1\\), giving the antiderivative:<br>\\[\\int \\frac{1}{2x + 1} \\, \\mathrm{d}x = \\frac{1}{2} \\ln |2x + 1|\\]<br>2. Evaluate between the limits \\(x = 0\\) and \\(x = 4\\):<br>\\[\\left[ \\frac{1}{2} \\ln |2x + 1| \\right]_0^4 = \\frac{1}{2} \\ln(2(4) + 1) - \\frac{1}{2} \\ln(2(0) + 1) = \\frac{1}{2} \\ln 9 - \\frac{1}{2} \\ln 1\\]<br>3. Using the properties of logarithms, \\(\\ln 1 = 0\\) and \\(\\ln 9 = \\ln(3^2) = 2 \\ln 3\\):<br>\\[\\frac{1}{2} \\ln 9 = \\frac{1}{2} (2 \\ln 3) = \\ln 3\\]</p><p>Common errors:<br>- Omitting the factor of \\(\\frac{1}{2}\\) from the chain rule leads to \\(\\ln 9\\).<br>- Evaluating \\(2(4)\\) without adding 1 leads to \\(\\frac{1}{2} \\ln 8\\).<br>- Dividing by the upper limit 4 instead of the coefficient 2 leads to \\(\\frac{1}{4} \\ln 9\\).</p>"
       },
-      "difficulty": "Advanced"
+      "fig": {
+        "type": "sign_chart",
+        "title": "Derivative Sign & Monotonicity Analysis",
+        "points": [
+          "c₁",
+          "c₂"
+        ],
+        "rows": [
+          {
+            "label": "f'(x)",
+            "signs": [
+              "+",
+              "0",
+              "-",
+              "0",
+              "+"
+            ]
+          },
+          {
+            "label": "f(x)",
+            "shape": [
+              "↗",
+              "Max",
+              "↘",
+              "Min",
+              "↗"
+            ]
+          }
+        ]
+      }
     },
     {
       "number": 22,
+      "difficulty": "Basic",
       "question": {
-        "en": "State the period of \\( y=\\tan x \\).",
-        "ar": null
+        "en": "The continuous function \\(f\\) is defined for all \\(x \\in \\mathbb{R}\\) by\n\\[f(x) = 2^x + 3x - 11.\\]\nBetween which pair of consecutive integers does a root of the equation \\(f(x) = 0\\) lie?"
       },
       "solution": {
-        "en": "\\[ 180^{\\circ}. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>To determine the interval containing a root of a continuous function \\(f(x)\\), we use the change-of-sign rule (Intermediate Value Theorem). If \\(f(a)\\) and \\(f(b)\\) have opposite signs, then at least one real root of \\(f(x) = 0\\) lies in the interval \\((a, b)\\).</p><p>Evaluate \\(f(x)\\) at consecutive integers:<br>- For \\(x = 0\\):<br>  \\[f(0) = 2^0 + 3(0) - 11 = 1 + 0 - 11 = -10  \\lt  0\\]<br>- For \\(x = 1\\):<br>  \\[f(1) = 2^1 + 3(1) - 11 = 2 + 3 - 11 = -6  \\lt  0\\]<br>- For \\(x = 2\\):<br>  \\[f(2) = 2^2 + 3(2) - 11 = 4 + 6 - 11 = -1  \\lt  0\\]<br>- For \\(x = 3\\):<br>  \\[f(3) = 2^3 + 3(3) - 11 = 8 + 9 - 11 = 6  \\gt  0\\]<br>- For \\(x = 4\\):<br>  \\[f(4) = 2^4 + 3(4) - 11 = 16 + 12 - 11 = 17  \\gt  0\\]</p><p>Since \\(f(2) = -1 \\lt 0\\) and \\(f(3) = 6 \\gt 0\\), there is a change of sign between \\(x = 2\\) and \\(x = 3\\). Because \\(f\\) is continuous, a root of \\(f(x) = 0\\) lies between \\(2\\) and \\(3\\).</p><p>Common misconception:<br>In the interval \\([1, 2]\\), \\(f(1) = -6\\) and \\(f(2) = -1\\). Although the value increases significantly, both values remain negative, so no root is guaranteed in \\([1, 2]\\).</p>"
+      }
     },
     {
       "number": 23,
+      "difficulty": "Basic",
       "question": {
-        "en": "Differentiate \\( x^{4} \\).",
-        "ar": null
+        "en": "The random variable \\(X\\) has a Poisson distribution with mean \\(\\lambda \\gt 0\\). Given that\n\\[3\\,\\mathrm{P}(X = 2) = \\mathrm{P}(X = 4),\\]\nfind the value of \\(\\lambda\\)."
       },
       "solution": {
-        "en": "\\[ 4x^{3}. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>For a Poisson distribution \\(X \\sim \\mathrm{Po}(\\lambda)\\), the probability mass function is given by:<br>\\[\\mathrm{P}(X = r) = \\frac{e^{-\\lambda} \\lambda^r}{r!}\\]</p><p>Substitute \\(r = 2\\) and \\(r = 4\\) into the given equation \\(3\\,\\mathrm{P}(X = 2) = \\mathrm{P}(X = 4)\\):<br>\\[3 \\left(\\frac{e^{-\\lambda} \\lambda^2}{2!}\\right) = \\frac{e^{-\\lambda} \\lambda^4}{4!}\\]</p><p>Since \\(e^{-\\lambda} \\gt 0\\) and \\(\\lambda \\gt 0\\), divide both sides by \\(e^{-\\lambda} \\lambda^2\\):<br>\\[\\frac{3}{2} = \\frac{\\lambda^2}{24}\\]</p><p>Multiply both sides by 24:<br>\\[\\lambda^2 = 36\\]</p><p>Since \\(\\lambda \\gt 0\\), we take the positive square root:<br>\\[\\lambda = 6\\]</p><p>Common pitfalls:<br>- Forgetting to take the square root of \\(\\lambda^2 = 36\\) leads to \\(36\\).<br>- Incorrectly evaluating \\(4!\\) as \\(4\\) or \\(8\\) leads to erroneous values such as \\(12\\).</p>"
+      }
     },
     {
       "number": 24,
+      "difficulty": "Basic",
       "question": {
-        "en": "Differentiate \\( \\sin x \\).",
-        "ar": null
+        "en": "A random sample of \\(n = 50\\) observations is taken from a population. The sample values are summarised as follows:\n\\[\\sum x = 450, \\quad \\sum x^2 = 4295.\\]\nFind an unbiased estimate of the population variance."
       },
       "solution": {
-        "en": "\\[ \\cos x. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>The unbiased estimate of the population variance, denoted \\(s^2\\), is calculated using the formula:<br>\\[s^2 = \\frac{1}{n - 1} \\left( \\sum x^2 - \\frac{(\\sum x)^2}{n} \\right)\\]</p><p>Substitute the given values \\(n = 50\\), \\(\\sum x = 450\\), and \\(\\sum x^2 = 4295\\):<br>\\[s^2 = \\frac{1}{50 - 1} \\left( 4295 - \\frac{450^2}{50} \\right)\\]<br>\\[s^2 = \\frac{1}{49} \\left( 4295 - \\frac{202500}{50} \\right)\\]<br>\\[s^2 = \\frac{1}{49} (4295 - 4050) = \\frac{245}{49} = 5.0\\]</p><p>Why other choices fail:<br>- \\(4.9\\) is the biased sample variance obtained by dividing by \\(n = 50\\) instead of \\(n - 1 = 49\\).<br>- \\(2.24\\) is the unbiased estimate of the standard deviation, \\(\\sqrt{5.0} \\approx 2.24\\).<br>- \\(9.0\\) is the sample mean \\(\\bar{x} = \\frac{450}{50}\\).</p>"
+      }
     },
     {
       "number": 25,
+      "difficulty": "Basic",
       "question": {
-        "en": "Differentiate \\( e^{x} \\).",
-        "ar": null
+        "en": "The first three terms of a geometric progression are \\(32\\), \\(24\\), and \\(18\\). Find the sum to infinity, \\(S_\\infty\\), of the progression."
       },
       "solution": {
-        "en": "\\[ e^{x}. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>The first term of the geometric progression is \\(a = 32\\).</p><p>The common ratio \\(r\\) is found by dividing any term by the preceding term:<br>\\[r = \\frac{24}{32} = \\frac{3}{4}\\]</p><p>Since \\(|r| = \\left|\\frac{3}{4}\\right| \\lt 1\\), the geometric progression converges and the sum to infinity exists.</p><p>The sum to infinity is given by:<br>\\[S_\\infty = \\frac{a}{1 - r}\\]</p><p>Substituting \\(a = 32\\) and \\(r = \\frac{3}{4}\\):<br>\\[S_\\infty = \\frac{32}{1 - \\frac{3}{4}} = \\frac{32}{\\frac{1}{4}} = 32 \\times 4 = 128\\]</p><p>Common misconceptions:</p>"
+      }
     },
     {
       "number": 26,
+      "difficulty": "Basic",
       "question": {
-        "en": "Differentiate \\( \\ln x \\).",
-        "ar": null
+        "en": "Given that \\(\\cot \\theta = -\\dfrac{3}{4}\\) and \\(\\dfrac{\\pi}{2} \\lt \\theta \\lt \\pi\\), find the exact value of \\(\\operatorname{cosec} \\theta\\)."
       },
       "solution": {
-        "en": "\\[ \\tfrac{1}{x}. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>We use the standard Pythagorean identity relating \\(\\cot \\theta\\) and \\(\\operatorname{cosec} \\theta\\):<br>\\[1 + \\cot^2 \\theta = \\operatorname{cosec}^2 \\theta.\\]</p><p>Substitute \\(\\cot \\theta = -\\dfrac{3}{4}\\):<br>\\[\\operatorname{cosec}^2 \\theta = 1 + \\left(-\\dfrac{3}{4}\\right)^2 = 1 + \\dfrac{9}{16} = \\dfrac{25}{16}.\\]</p><p>Taking the square root gives:<br>\\[\\operatorname{cosec} \\theta = \\pm \\dfrac{5}{4}.\\]</p><p>Since \\(\\dfrac{\\pi}{2} \\lt \\theta \\lt \\pi\\) (the second quadrant), \\(\\sin \\theta \\gt 0\\), and therefore \\(\\operatorname{cosec} \\theta = \\dfrac{1}{\\sin \\theta} \\gt 0\\).</p><p>Hence, \\(\\operatorname{cosec} \\theta = \\dfrac{5}{4}\\).</p><p>Common misconceptions:<br>- Choosing \\(-\\dfrac{5}{4}\\) results from forgetting that the sine function (and therefore cosecant) is strictly positive in the second quadrant.<br>- Choosing \\(\\dfrac{5}{3}\\) confuses \\(\\operatorname{cosec} \\theta\\) with \\(-\\sec \\theta\\).<br>- Choosing \\(-\\dfrac{4}{3}\\) mistakenly computes \\(\\tan \\theta = \\dfrac{1}{\\cot \\theta}\\).</p>"
+      }
     },
     {
       "number": 27,
+      "difficulty": "Basic",
       "question": {
-        "en": "Differentiate \\( x^{2}e^{x} \\).",
-        "ar": null
+        "en": "Relative to a fixed origin \\(O\\), the points \\(A\\) and \\(B\\) have position vectors\n\\[\\overrightarrow{OA} = \\mathbf{i} + 5\\mathbf{j} - 2\\mathbf{k} \\quad \\text{and} \\quad \\overrightarrow{OB} = 3\\mathbf{i} + 2\\mathbf{j} + 4\\mathbf{k}.\\]\nFind the length of the vector \\(\\overrightarrow{AB}\\)."
       },
       "solution": {
-        "en": "<p>Product rule:</p>\\[ 2xe^{x}+x^{2}e^{x}=(x^{2}+2x)e^{x}. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p>To find the vector \\(\\overrightarrow{AB}\\), subtract the position vector of \\(A\\) from that of \\(B\\):<br>\\[\\overrightarrow{AB} = \\overrightarrow{OB} - \\overrightarrow{OA} = (3 - 1)\\mathbf{i} + (2 - 5)\\mathbf{j} + (4 - (-2))\\mathbf{k} = 2\\mathbf{i} - 3\\mathbf{j} + 6\\mathbf{k}.\\]<br>The magnitude (length) of \\(\\overrightarrow{AB}\\) is:<br>\\[|\\overrightarrow{AB}| = \\sqrt{2^2 + (-3)^2 + 6^2} = \\sqrt{4 + 9 + 36} = \\sqrt{49} = 7.\\]<br>Common misconceptions:<br>- Incorrectly taking \\((-3)^2 = -9\\) leads to \\(\\sqrt{4 - 9 + 36} = \\sqrt{31}\\).<br>- Adding the position vectors instead of subtracting yields \\(\\sqrt{4^2 + 7^2 + 2^2} = \\sqrt{69}\\).<br>- Forgetting to take the square root gives \\(49\\).</p>"
+      }
     },
     {
       "number": 28,
+      "difficulty": "Basic",
       "question": {
-        "en": "Differentiate \\( (2x+1)^{3} \\).",
-        "ar": null
+        "en": "The complex number \\(z\\) is given by\n\\[z = \\frac{4 + 3\\mathrm{i}}{2 - \\mathrm{i}}.\\]\nExpress \\(z\\) in the Cartesian form \\(x + \\mathrm{i}y\\), where \\(x\\) and \\(y\\) are real numbers."
       },
       "solution": {
-        "en": "<p>Chain rule:</p>\\[ 6(2x+1)^{2}. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>To express \\(z\\) in the form \\(x + \\mathrm{i}y\\), multiply the numerator and the denominator by the complex conjugate of the denominator.</p><p>The denominator is \\(2 - \\mathrm{i}\\), so its complex conjugate is \\(2 + \\mathrm{i}\\).</p><p>Multiply numerator and denominator:<br>\\[z = \\frac{(4 + 3\\mathrm{i})(2 + \\mathrm{i})}{(2 - \\mathrm{i})(2 + \\mathrm{i})}\\]</p><p>Expand the numerator:<br>\\[(4 + 3\\mathrm{i})(2 + \\mathrm{i}) = 8 + 4\\mathrm{i} + 6\\mathrm{i} + 3\\mathrm{i}^2 = 8 + 10\\mathrm{i} - 3 = 5 + 10\\mathrm{i}\\]</p><p>Expand the denominator:<br>\\[(2 - \\mathrm{i})(2 + \\mathrm{i}) = 2^2 - \\mathrm{i}^2 = 4 - (-1) = 5\\]</p><p>Divide the numerator by the denominator:<br>\\[z = \\frac{5 + 10\\mathrm{i}}{5} = 1 + 2\\mathrm{i}\\]</p><p>Common errors:<br>- \\(1 - 2\\mathrm{i}\\) results from an inadvertent sign flip in the imaginary term (taking the conjugate of the answer).<br>- \\(\\frac{11}{5} + \\frac{2}{5}\\mathrm{i}\\) results from mistakenly multiplying the numerator by \\(2 - \\mathrm{i}\\) instead of the conjugate \\(2 + \\mathrm{i}\\).<br>- \\(5 + 10\\mathrm{i}\\) results from expanding the numerator correctly but omitting the division by the real denominator \\(5\\).</p>"
+      }
     },
     {
       "number": 29,
+      "difficulty": "Basic",
       "question": {
-        "en": "Differentiate \\( \\cos x \\).",
-        "ar": null
+        "en": "A curve has equation \\(y = x^2 e^{3x}\\). Find the gradient of the curve at the point where \\(x = 1\\)."
       },
       "solution": {
-        "en": "\\[ -\\sin x. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p>To find the gradient of the curve, differentiate \\(y = x^2 e^{3x}\\) with respect to \\(x\\) using the product rule:<br>\\[\\frac{\\mathrm{d}}{\\mathrm{d}x}[u v] = u \\frac{\\mathrm{d}v}{\\mathrm{d}x} + v \\frac{\\mathrm{d}u}{\\mathrm{d}x}\\]<br>Let \\(u = x^2\\) and \\(v = e^{3x}\\).<br>Then \\(\\frac{\\mathrm{d}u}{\\mathrm{d}x} = 2x\\) and, by the chain rule, \\(\\frac{\\mathrm{d}v}{\\mathrm{d}x} = 3e^{3x}\\).</p><p>Applying the product rule:<br>\\[\\frac{\\mathrm{d}y}{\\mathrm{d}x} = x^2(3e^{3x}) + 2x(e^{3x}) = (3x^2 + 2x)e^{3x}\\]</p><p>Substitute \\(x = 1\\):<br>\\[\\left. \\frac{\\mathrm{d}y}{\\mathrm{d}x} \\right|_{x=1} = (3(1)^2 + 2(1))e^{3(1)} = (3 + 2)e^3 = 5e^3\\]</p><p>Common misconceptions:<br>- \\(6e^3\\) arises from mistakenly differentiating a product by multiplying the individual derivatives: \\((2x)(3e^{3x}) = 6x e^{3x} \\to 6e^3\\).<br>- \\(3e^3\\) arises from forgetting the chain rule factor when differentiating \\(e^{3x}\\), treating \\(\\frac{\\mathrm{d}}{\\mathrm{d}x}(e^{3x})\\) as \\(e^{3x}\\).<br>- \\(2e^3\\) arises from differentiating only \\(x^2\\) while treating \\(e^{3x}\\) as a constant.</p>"
+      }
     },
     {
       "number": 30,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Find the gradient of \\( y=x^{3} \\) at \\( x=2 \\).",
-        "ar": null
+        "en": "A curve satisfies the differential equation\n\\[\\frac{\\mathrm{d}y}{\\mathrm{d}x} = \\frac{k - y}{2x + 1}\\]\nfor \\(x \\gt -\\frac{1}{2}\\), where \\(k\\) is a real constant. The curve passes through the points \\((0, 8)\\) and \\((4, 2)\\).\n\nFind the value of \\(k\\)."
       },
       "solution": {
-        "en": "<p>\\( \\tfrac{dy}{dx}=3x^{2}=12 \\):</p>\\[ 12. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>To find the constant \\(k\\), we solve the differential equation by separation of variables:<br>\\[\\int \\frac{1}{k - y} \\,\\mathrm{d}y = \\int \\frac{1}{2x + 1} \\,\\mathrm{d}x\\]</p><p>Integrating both sides (paying close attention to the chain rule):<br>\\[-\\ln |k - y| = \\frac{1}{2} \\ln (2x + 1) + C\\]</p><p>Multiplying by \\(-1\\) and exponentiating:<br>\\[\\ln |k - y| = -\\frac{1}{2} \\ln (2x + 1) - C = \\ln\\left((2x + 1)^{-1/2}\\right) - C\\]<br>\\[|k - y| = \\frac{A}{\\sqrt{2x + 1}} \\quad \\text{where } A = \\mathrm{e}^{-C}  \\gt  0\\]</p><p>Removing the absolute value gives the general form:<br>\\[k - y = \\frac{B}{\\sqrt{2x + 1}} \\implies y = k - \\frac{B}{\\sqrt{2x + 1}}\\]<br>where \\(B\\) is an arbitrary non-zero constant.</p><p>Now, apply the given boundary conditions:<br>1. At \\((0, 8)\\):<br>\\[8 = k - \\frac{B}{\\sqrt{2(0) + 1}} = k - B \\implies B = k - 8\\]</p><p>2. At \\((4, 2)\\):<br>\\[2 = k - \\frac{B}{\\sqrt{2(4) + 1}} = k - \\frac{B}{\\sqrt{9}} = k - \\frac{B}{3}\\]</p><p>Substitute \\(B = k - 8\\) into this equation:<br>\\[2 = k - \\frac{k - 8}{3}\\]<br>\\[6 = 3k - (k - 8)\\]<br>\\[6 = 2k + 8\\]<br>\\[2k = -2 \\implies k = -1\\]</p><p>Common Pitfalls:</p>"
+      }
     },
     {
       "number": 31,
+      "difficulty": "Basic",
       "question": {
-        "en": "Differentiate \\( \\dfrac{x}{x+1} \\).",
-        "ar": null
+        "en": "Solve the equation\n\\[\\ln(3x + 1) - 2\\ln 2 = \\ln(x - 1).\\]"
       },
       "solution": {
-        "en": "<p>Quotient rule:</p>\\[ \\frac{1}{(x+1)^{2}}. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p>Using the power law of logarithms on the second term:<br>\\[2\\ln 2 = \\ln(2^2) = \\ln 4.\\]</p><p>Substitute this back into the equation:<br>\\[\\ln(3x + 1) - \\ln 4 = \\ln(x - 1).\\]</p><p>Apply the quotient rule for logarithms, \\(\\ln A - \\ln B = \\ln\\left(\\frac{A}{B}\\right)\\):<br>\\[\\ln\\left(\\frac{3x + 1}{4}\\right) = \\ln(x - 1).\\]</p><p>Since the natural logarithm function is one-to-one, we equate the arguments:<br>\\[\\frac{3x + 1}{4} = x - 1.\\]</p><p>Multiply both sides by \\(4\\):<br>\\[3x + 1 = 4(x - 1),\\]<br>\\[3x + 1 = 4x - 4.\\]</p><p>Rearranging gives:<br>\\[4x - 3x = 1 + 4 \\implies x = 5.\\]</p><p>Checking domain restrictions:<br>- For \\(\\ln(3x + 1)\\): \\(3(5) + 1 = 16 \\gt 0\\).<br>- For \\(\\ln(x - 1)\\): \\(5 - 1 = 4 \\gt 0\\).</p><p>Both arguments are positive, so \\(x = 5\\) is the valid solution.</p><p>Common errors:<br>- \\(x = 1\\) results from falsely assuming \\(\\ln A - \\ln B = \\ln(A - B)\\), yielding \\((3x + 1) - 4 = x - 1 \\implies 2x = 2\\).<br>- \\(x = 2\\) results from an expansion error \\(4(x - 1) = 4x - 1\\).<br>- \\(x = 3\\) results from omitting the power law and treating \\(2\\ln 2\\) simply as \\(\\ln 2\\), along with a sign error.</p>"
+      }
     },
     {
       "number": 32,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Find the second derivative of \\( x^{3} \\).",
-        "ar": null
+        "en": "Evaluate \\(\\int_{-2}^{1} (5x+8)^{4}\\,dx\\)."
       },
       "solution": {
-        "en": "<p>\\( \\tfrac{dy}{dx}=3x^{2} \\), again:</p>\\[ 6x. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>\\(\\int (5x+8)^{4}dx=\\dfrac{(5x+8)^{5}}{5(5)}\\). At \\(x=1\\): base \\(=13\\), giving \\(371293\\). At \\(x=-2\\): base \\(=-2\\), giving \\(-32\\). Result: \\(\\dfrac{371293+32}{25}=14853\\).</p>"
+      }
     },
     {
       "number": 33,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Find \\( \\displaystyle\\int x^{3}\\,dx \\).",
-        "ar": null
+        "en": "The region \\(R\\) in the first quadrant is bounded by the curve \\(y = \\frac{6}{\\sqrt{3x + 4}}\\), the coordinate axes, and the vertical line \\(x = k\\), where \\(k \\gt 0\\).\n\nGiven that the total area of \\(R\\) is \\(8\\), and the vertical line \\(x = c\\) (where \\(0 \\lt c \\lt k\\)) divides \\(R\\) into two regions of equal area, find the exact value of \\(c\\)."
       },
       "solution": {
-        "en": "\\[ \\tfrac{x^{4}}{4}+C. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p><strong>Step 1:</strong> Integrate the function using the reverse chain rule.<br>\\[\\int 6(3x + 4)^{-\\frac{1}{2}}\\,\\mathrm{d}x = \\frac{6}{\\frac{1}{2} \\cdot 3}(3x + 4)^{\\frac{1}{2}} = 4\\sqrt{3x + 4}\\]</p><p><strong>Step 2:</strong> Find the parameter \\(k\\) using the given total area of \\(8\\).<br>\\[\\text{Area} = \\int_0^k \\frac{6}{\\sqrt{3x + 4}}\\,\\mathrm{d}x = \\left[ 4\\sqrt{3x + 4} \\right]_0^k = 4\\sqrt{3k + 4} - 4\\sqrt{4} = 4\\sqrt{3k + 4} - 8\\]<br>Setting this equal to \\(8\\):<br>\\[4\\sqrt{3k + 4} - 8 = 8 \\implies 4\\sqrt{3k + 4} = 16 \\implies \\sqrt{3k + 4} = 4\\]<br>Squaring both sides:<br>\\[3k + 4 = 16 \\implies 3k = 12 \\implies k = 4\\]</p><p><strong>Step 3:</strong> Determine the value of \\(c\\) that divides the area into two equal halves.<br>Each half has an area of \\(\\frac{8}{2} = 4\\):<br>\\[\\int_0^c \\frac{6}{\\sqrt{3x + 4}}\\,\\mathrm{d}x = 4\\sqrt{3c + 4} - 8 = 4\\]<br>\\[4\\sqrt{3c + 4} = 12 \\implies \\sqrt{3c + 4} = 3\\]<br>Squaring both sides:<br>\\[3c + 4 = 9 \\implies 3c = 5 \\implies c = \\frac{5}{3}\\]</p><p>Common Misconceptions:<br>- \\(2\\): Incorrectly assumes the line dividing the area in half occurs at the midpoint of the interval, \\(c = \\frac{k}{2} = 2\\), which does not hold for non-constant functions.<br>- \\(\\frac{7}{3}\\): Mistakenly calculates the width of the second region \\(k - c = 4 - \\frac{5}{3} = \\frac{7}{3}\\) instead of the coordinate \\(c\\).<br>- \\(\\frac{13}{27}\\): Forgets to divide by the inner derivative \\(3\\) during integration, leading to an incorrect antiderivative.</p>"
+      }
     },
     {
       "number": 34,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Find \\( \\displaystyle\\int e^{x}\\,dx \\).",
-        "ar": null
+        "en": "The function \\(f\\) is defined for all \\(x \\in \\mathbb{R}\\) by\n\\[f(x) = x^3 - 2x^2 - kx + 12,\\]\nwhere \\(k\\) is a real constant.\n\nThe Newton-Raphson method is used to find an approximation to a root of the equation \\(f(x) = 0\\).\n\nGiven that an initial approximation \\(x_0 = 2\\) produces a first approximation \\(x_1 = 4\\), find the value of the constant \\(k\\) and the exact value of the second approximation \\(x_2\\)."
       },
       "solution": {
-        "en": "\\[ e^{x}+C. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>We solve the problem in two steps:</p><p><strong>Step 1: Find the value of \\(k\\)</strong></p><p>The Newton-Raphson iteration formula is:<br>\\[x_{n+1} = x_n - \\frac{f(x_n)}{f'(x_n)}\\]</p><p>Differentiating \\(f(x) = x^3 - 2x^2 - kx + 12\\) with respect to \\(x\\):<br>\\[f'(x) = 3x^2 - 4x - k\\]</p><p>Evaluating \\(f(x)\\) and \\(f'(x)\\) at \\(x_0 = 2\\):<br>\\[f(2) = 2^3 - 2(2^2) - 2k + 12 = 8 - 8 - 2k + 12 = 12 - 2k\\]<br>\\[f'(2) = 3(2^2) - 4(2) - k = 12 - 8 - k = 4 - k\\]</p><p>Using the iteration formula for \\(x_1\\):<br>\\[x_1 = x_0 - \\frac{f(x_0)}{f'(x_0)} \\implies 4 = 2 - \\frac{12 - 2k}{4 - k}\\]</p><p>Rearranging to solve for \\(k\\):<br>\\[2 = -\\frac{12 - 2k}{4 - k} = \\frac{2k - 12}{4 - k}\\]<br>\\[2(4 - k) = 2k - 12\\]<br>\\[8 - 2k = 2k - 12 \\implies 4k = 20 \\implies k = 5\\]</p><p><strong>Step 2: Find the second approximation \\(x_2\\)</strong></p><p>With \\(k = 5\\), the function and its derivative are:<br>\\[f(x) = x^3 - 2x^2 - 5x + 12\\]<br>\\[f'(x) = 3x^2 - 4x - 5\\]</p><p>Now apply the iteration starting from \\(x_1 = 4\\):<br>\\[f(4) = 4^3 - 2(4^2) - 5(4) + 12 = 64 - 32 - 20 + 12 = 24\\]<br>\\[f'(4) = 3(4^2) - 4(4) - 5 = 48 - 16 - 5 = 27\\]</p><p>Therefore:<br>\\[x_2 = 4 - \\frac{f(4)}{f'(4)} = 4 - \\frac{24}{27} = 4 - \\frac{8}{9} = \\frac{28}{9}\\]</p><p><strong>Common Traps:</strong></p>"
+      }
     },
     {
       "number": 35,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Find \\( \\displaystyle\\int \\cos x\\,dx \\).",
-        "ar": null
+        "en": "Calls arrive at a technical support desk according to a Poisson process with an average rate of \\(\\lambda\\) calls per hour. It is known that the probability of receiving exactly \\(1\\) call in a given hour is \\(1.5\\) times the probability of receiving exactly \\(3\\) calls in that same hour.\n\nFind the probability that the desk receives exactly \\(4\\) calls during a randomly chosen \\(3\\)-hour period."
       },
       "solution": {
-        "en": "\\[ \\sin x+C. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>1. <strong>Find the parameter \\(\\lambda\\) for a \\(1\\)-hour period:</strong><br>Let \\(X\\) be the number of calls received in \\(1\\) hour. Then \\(X \\sim \\text{Po}(\\lambda)\\).<br>The probability mass function is \\(\\mathrm{P}(X = x) = \\frac{\\lambda^x \\mathrm{e}^{-\\lambda}}{x!}\\).<br>We are given:<br>\\[\\mathrm{P}(X = 1) = 1.5 \\,\\mathrm{P}(X = 3)\\]<br>Substitute the formula for each probability:<br>\\[\\lambda \\mathrm{e}^{-\\lambda} = \\frac{3}{2} \\left( \\frac{\\lambda^3 \\mathrm{e}^{-\\lambda}}{3!} \\right) = \\frac{3}{2} \\cdot \\frac{\\lambda^3 \\mathrm{e}^{-\\lambda}}{6} = \\frac{\\lambda^3 \\mathrm{e}^{-\\lambda}}{4}\\]<br>Since \\(\\lambda \\gt 0\\) and \\(\\mathrm{e}^{-\\lambda} \\gt 0\\), divide both sides by \\(\\lambda \\mathrm{e}^{-\\lambda}\\):<br>\\[1 = \\frac{\\lambda^2}{4} \\implies \\lambda^2 = 4 \\implies \\lambda = 2\\]</p><p>2. <strong>Scale the parameter to the \\(3\\)-hour period:</strong><br>For a Poisson process, the mean number of occurrences scales linearly with the duration of the time interval. For a \\(3\\)-hour period, the rate parameter is:<br>\\[\\mu = 3\\lambda = 3(2) = 6\\]<br>Let \\(Y\\) be the number of calls received in a \\(3\\)-hour period, so \\(Y \\sim \\text{Po}(6)\\).</p><p>3. <strong>Calculate \\(\\mathrm{P}(Y = 4)\\):</strong><br>\\[\\mathrm{P}(Y = 4) = \\frac{6^4 \\mathrm{e}^{-6}}{4!} = \\frac{1296 \\mathrm{e}^{-6}}{24} = 54\\mathrm{e}^{-6} \\approx 0.134\\]</p><p><strong>Common Misconceptions / Traps:</strong></p>"
+      }
     },
     {
       "number": 36,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Find \\( \\displaystyle\\int \\tfrac{1}{x}\\,dx \\).",
-        "ar": null
+        "en": "The first three terms of a geometric progression are given by\n\\[u_1 = 3k - 2, \\quad u_2 = k + 2, \\quad u_3 = k - 2,\\]\nwhere \\(k\\) is a real constant. Given that the infinite geometric series \\(\\sum_{n=1}^\\infty u_n\\) converges, find the sum to infinity, \\(S_\\infty\\)."
       },
       "solution": {
-        "en": "\\[ \\ln|x|+C. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p><strong>Step 1:</strong> Set up the common ratio property of a geometric sequence.<br>Since the terms form a geometric progression, the ratio between consecutive terms must be equal:<br>\\[\\frac{u_2}{u_1} = \\frac{u_3}{u_2} \\implies u_2^2 = u_1 u_3\\]</p><p><strong>Step 2:</strong> Substitute the expressions in terms of \\(k\\):<br>\\[(k + 2)^2 = (3k - 2)(k - 2)\\]<br>\\[k^2 + 4k + 4 = 3k^2 - 8k + 4\\]</p><p><strong>Step 3:</strong> Solve the quadratic equation for \\(k\\):<br>\\[2k^2 - 12k = 0 \\implies 2k(k - 6) = 0\\]<br>Thus, \\(k = 0\\) or \\(k = 6\\).</p><p><strong>Step 4:</strong> Apply the convergence criterion \\(|r| \\lt 1\\):<br>- If \\(k = 0\\):<br>  \\(u_1 = -2\\), \\(u_2 = 2\\), and \\(r = \\frac{2}{-2} = -1\\).<br>  Since \\(|r| = |-1| = 1 \\not \\lt 1\\), the infinite series diverges.<br>- If \\(k = 6\\):<br>  \\(u_1 = 3(6) - 2 = 16\\), \\(u_2 = 6 + 2 = 8\\), and \\(r = \\frac{8}{16} = \\frac{1}{2}\\).<br>  Since \\(|r| = \\frac{1}{2} \\lt 1\\), the series converges.</p><p><strong>Step 5:</strong> Calculate the sum to infinity \\(S_\\infty\\):<br>\\[S_\\infty = \\frac{a}{1 - r} = \\frac{16}{1 - \\frac{1}{2}} = \\frac{16}{\\frac{1}{2}} = 32\\]</p><p>Common Misconceptions:</p>"
+      }
     },
     {
       "number": 37,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\int_{0}^{1} x\\,dx \\).",
-        "ar": null
+        "en": "The line \\(l_1\\) has vector equation\n\\[\\mathbf{r} = \\begin{pmatrix} 1 \\\\ 5 \\\\ 0 \\end{pmatrix} + \\lambda \\begin{pmatrix} 1 \\\\ -2 \\\\ 2 \\end{pmatrix}\\]\nand the line \\(l_2\\) has vector equation\n\\[\\mathbf{r} = \\begin{pmatrix} 1 \\\\ p \\\\ 2 \\end{pmatrix} + \\mu \\begin{pmatrix} 2 \\\\ 3 \\\\ q \\end{pmatrix}\\]\nwhere \\(p\\) and \\(q\\) are constants, and \\(\\lambda, \\mu \\in \\mathbb{R}\\).\n\nGiven that the lines \\(l_1\\) and \\(l_2\\) are perpendicular and intersect at a common point, find the value of \\(p\\)."
       },
       "solution": {
-        "en": "\\[ \\left[\\tfrac{x^{2}}{2}\\right]_{0}^{1}=\\tfrac12. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>We solve the problem in three steps:</p><p><strong>Step 1: Determine \\(q\\) using perpendicularity</strong><br>The direction vectors of \\(l_1\\) and \\(l_2\\) are \\(\\mathbf{d}_1 = \\begin{pmatrix} 1 \\\\ -2 \\\\ 2 \\end{pmatrix}\\) and \\(\\mathbf{d}_2 = \\begin{pmatrix} 2 \\\\ 3 \\\\ q \\end{pmatrix}\\).<br>Since \\(l_1 \\perp l_2\\), their scalar (dot) product must equal zero:<br>\\[\\mathbf{d}_1 \\cdot \\mathbf{d}_2 = (1)(2) + (-2)(3) + (2)(q) = 0\\]<br>\\[2 - 6 + 2q = 0 \\implies 2q = 4 \\implies q = 2.\\]</p><p><strong>Step 2: Find the parameters \\(\\lambda\\) and \\(\\mu\\) at the intersection</strong><br>Equating the coordinates of \\(l_1\\) and \\(l_2\\):<br>- \\(x\\)-component: \\(1 + \\lambda = 1 + 2\\mu \\implies \\lambda = 2\\mu\\)<br>- \\(z\\)-component: \\(0 + 2\\lambda = 2 + q\\mu \\implies 2\\lambda = 2 + 2\\mu\\)</p><p>Substitute \\(\\lambda = 2\\mu\\) into the \\(z\\)-equation:<br>\\[2(2\\mu) = 2 + 2\\mu \\implies 4\\mu = 2 + 2\\mu \\implies 2\\mu = 2 \\implies \\mu = 1.\\]<br>Then \\(\\lambda = 2(1) = 2\\).</p><p><strong>Step 3: Solve for \\(p\\) using the \\(y\\)-component</strong><br>Equating the \\(y\\)-components at the point of intersection:<br>\\[5 - 2\\lambda = p + 3\\mu\\]<br>Substitute \\(\\lambda = 2\\) and \\(\\mu = 1\\):<br>\\[5 - 2(2) = p + 3(1) \\implies 1 = p + 3 \\implies p = -2.\\]</p><p><strong>Common Traps:</strong><br>- Solving \\(1 = p + 3\\) as \\(p = 1 + 3 = 4\\) or \\(p = 3 - 1 = 2\\) by mishandling signs across the equals sign.<br>- Forgetting that direction vectors are used for perpendicularity (rather than points on the lines).</p>"
+      }
     },
     {
       "number": 38,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\int_{0}^{\\pi} \\sin x\\,dx \\).",
-        "ar": null
+        "en": "An interval of width 200 containing a root must be reduced to width at most 1 using repeated bisection. Find the minimum number of bisections required."
       },
       "solution": {
-        "en": "\\[ \\left[-\\cos x\\right]_{0}^{\\pi}=2. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p>Halving repeatedly, after \\(n\\) bisections the width is \\(200/2^n\\). The smallest \\(n\\) with \\(200/2^n\\le 1\\) is \\(n=8\\) (width becomes \\(\\dfrac{25}{32}\\)).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 39,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find \\( \\displaystyle\\int 6x^{2}\\,dx \\).",
-        "ar": null
+        "en": "Evaluate \\(\\int_{0}^{5} (x-12)^{5}\\,dx\\)."
       },
       "solution": {
-        "en": "\\[ 2x^{3}+C. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>\\(\\int (x-12)^{5}dx=\\dfrac{(x-12)^{6}}{(6)}\\). At \\(x=5\\): base \\(=-7\\), giving \\(117649\\). At \\(x=0\\): base \\(=-12\\), giving \\(2985984\\). Result: \\(\\dfrac{117649-2985984}{6}=-\\dfrac{2868335}{6}\\).</p>"
+      }
     },
     {
       "number": 40,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Find the area under \\( y=x^{2} \\) from \\( 0 \\) to \\( 3 \\).",
-        "ar": null
+        "en": "Evaluate \\(\\int_{0}^{4} (4x-5)^{4}\\,dx\\)."
       },
       "solution": {
-        "en": "\\[ \\left[\\tfrac{x^{3}}{3}\\right]_{0}^{3}=9. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p>\\(\\int (4x-5)^{4}dx=\\dfrac{(4x-5)^{5}}{4(5)}\\). At \\(x=4\\): base \\(=11\\), giving \\(161051\\). At \\(x=0\\): base \\(=-5\\), giving \\(-3125\\). Result: \\(\\dfrac{161051+3125}{20}=\\dfrac{41044}{5}\\).</p>"
+      }
     },
     {
       "number": 41,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "State the sum of the first \\( n \\) integers.",
-        "ar": null
+        "en": "Evaluate \\(\\int_{1}^{3} (x+2)^{2}\\,dx\\)."
       },
       "solution": {
-        "en": "\\[ \\tfrac{n(n+1)}{2}. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>\\(\\int (x+2)^{2}dx=\\dfrac{(x+2)^{3}}{(3)}\\). At \\(x=3\\): base \\(=5\\), giving \\(125\\). At \\(x=1\\): base \\(=3\\), giving \\(27\\). Result: \\(\\dfrac{125-27}{3}=\\dfrac{98}{3}\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 42,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find the 10th term of the AP \\( 2,5,8,\\dots \\)",
-        "ar": null
+        "en": "Flaws in an optical fiber occur according to a Poisson process with a constant mean rate of \\(\\lambda\\) flaws per kilometer. An automated quality-assurance test inspects two independent sections of fiber. The first section has length \\(1\\text{ km}\\) and the second section has length \\(2\\text{ km}\\). Let \\(X\\) and \\(Y\\) denote the number of flaws observed in the first and second sections, respectively. Given that the total number of flaws observed across both sections is \\(X + Y = 3\\), find the conditional probability \\(\\text{P}(X \\ge 1 \\mid X + Y = 3)\\)."
       },
       "solution": {
-        "en": "<p>\\( a=2,\\ d=3 \\):</p>\\[ 2+9(3)=29. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>Let \\(X \\sim \\text{Po}(\\lambda)\\) and \\(Y \\sim \\text{Po}(2\\lambda)\\) be independent Poisson random variables. The sum \\(T = X + Y\\) follows a Poisson distribution with parameter \\(\\lambda + 2\\lambda = 3\\lambda\\).</p><p>The conditional distribution of \\(X\\) given \\(X + Y = n\\) is binomial \\(\\text{B}\\left(n, \\frac{\\lambda}{\\lambda + 2\\lambda}\\right) = \\text{B}\\left(n, \\frac{1}{3}\\right)\\).</p><p>Here, \\(n = 3\\), so \\(X \\mid (X + Y = 3) \\sim \\text{B}\\left(3, \\frac{1}{3}\\right)\\).</p><p>We want to find:<br>\\[\\text{P}(X \\ge 1 \\mid X + Y = 3) = 1 - \\text{P}(X = 0 \\mid X + Y = 3)\\]</p><p>Using the conditional formula directly:<br>\\[\\text{P}(X = 0 \\mid X + Y = 3) = \\frac{\\text{P}(X = 0 \\cap Y = 3)}{\\text{P}(X + Y = 3)} = \\frac{\\left(e^{-\\lambda}\\right) \\left(\\frac{(2\\lambda)^3 e^{-2\\lambda}}{3!}\\right)}{\\frac{(3\\lambda)^3 e^{-3\\lambda}}{3!}} = \\frac{2^3}{3^3} = \\frac{8}{27}\\]</p><p>Therefore:<br>\\[\\text{P}(X \\ge 1 \\mid X + Y = 3) = 1 - \\frac{8}{27} = \\frac{19}{27}\\]</p><p>Common errors:<br>- Calculating \\(\\text{P}(X = 0 \\mid X+Y=3) = \\frac{8}{27}\\) and forgetting to subtract from 1.<br>- Assuming equal lengths, which gives \\(1 - \\left(\\frac{1}{2}\\right)^3 = \\frac{7}{8}\\).<br>- Taking the proportion of length \\(\\frac{1}{1+2} = \\frac{1}{3}\\) and subtracting from 1 to obtain \\(\\frac{2}{3}\\).</p>"
+      }
     },
     {
       "number": 43,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Find the 5th term of the GP \\( 3,6,12,\\dots \\)",
-        "ar": null
+        "en": "A quality control process monitors the weight, \\(W\\) grams, of chocolate bars produced by a machine. A random sample of 50 chocolate bars was taken, and their weights were recorded. The sample mean weight was 102.5 grams, and the sample standard deviation was 3.5 grams. <br><br>A) Calculate the standard error of the mean.<br>B) Construct a 95% confidence interval for the mean weight of the chocolate bars. <br>C) The machine is calibrated to produce chocolate bars with a mean weight of \\(\\mu_0 = 100\\) grams. Based on your confidence interval, what conclusion can be drawn about the calibration of the machine?"
       },
       "solution": {
-        "en": "<p>\\( a=3,\\ r=2 \\):</p>\\[ 3\\cdot2^{4}=48. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p>A) The standard error of the mean (SE) is calculated using the formula: \\(SE = \\frac{s}{\\sqrt{n}}\\), where \\(s\\) is the sample standard deviation and \\(n\\) is the sample size.<br>Given \\(s = 3.5\\) grams and \\(n = 50\\).<br>\\(SE = \\frac{3.5}{\\sqrt{50}} \\approx \\frac{3.5}{7.071} \\approx 0.495\\) grams.</p><p>B) To construct a 95% confidence interval for the mean weight, we use the formula: \\(CI = \\bar{x} \\pm z^* \\times SE\\), where \\(\\bar{x}\\) is the sample mean and \\(z^*\\) is the critical z-value for a 95% confidence level. For a 95% confidence level, \\(z^* \\approx 1.96\\).<br>Given \\(\\bar{x} = 102.5\\) grams and \\(SE \\approx 0.495\\) grams.<br>\\(CI = 102.5 \\pm 1.96 \\times 0.495\\)<br>\\(CI = 102.5 \\pm 0.9702\\)<br>The 95% confidence interval is approximately $(101.53, 103.47)$ grams.</p><p>C) The machine is calibrated to produce chocolate bars with a mean weight of \\(\\mu_0 = 100\\) grams. Our calculated 95% confidence interval for the mean weight is $(101.53, 103.47)$ grams. Since the hypothesized mean weight of 100 grams lies outside this interval, we have statistically significant evidence to conclude that the machine is likely not calibrated correctly to produce chocolate bars with a mean weight of 100 grams.</p>"
+      }
     },
     {
       "number": 44,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Expand \\( (1+x)^{2} \\).",
-        "ar": null
+        "en": "Solve \\(|4x+12| \\gt 6\\). What is the smaller boundary value separating the two regions?"
       },
       "solution": {
-        "en": "\\[ 1+2x+x^{2}. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>\\(4x+12 \\gt 6\\) or \\(4x+12 \\lt -6\\), giving boundary values \\(x=-\\dfrac{3}{2}\\) and \\(x=-\\dfrac{9}{2}\\). Smaller boundary: \\(x=-\\dfrac{9}{2}\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 45,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Find the sum \\( 1+2+\\dots+100 \\).",
-        "ar": null
+        "en": "Evaluate \\(\\int_{-1}^{0} (3x-8)^{1}\\,dx\\)."
       },
       "solution": {
-        "en": "\\[ \\tfrac{100\\cdot101}{2}=5050. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p>\\(\\int (3x-8)^{1}dx=\\dfrac{(3x-8)^{2}}{3(2)}\\). At \\(x=0\\): base \\(=-8\\), giving \\(64\\). At \\(x=-1\\): base \\(=-11\\), giving \\(121\\). Result: \\(\\dfrac{64-121}{6}=-\\dfrac{19}{2}\\).</p>"
+      }
     },
     {
       "number": 46,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find the sum to infinity of a GP with \\( a=1 \\), \\( r=\\tfrac12 \\).",
-        "ar": null
+        "en": "Find \\(\\displaystyle\\int \\dfrac{2x}{(x+2)(x-1)}\\,dx\\)."
       },
       "solution": {
-        "en": "\\[ \\frac{1}{1-\\tfrac12}=2. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>Partial fractions give \\(\\displaystyle\\int \\dfrac{2x}{(x+2)(x-1)}\\,dx=\\frac{2\\log{\\left(x-1\\right)}}{3}+\\frac{4\\log{\\left(x+2\\right)}}{3}+C\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 47,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Find the magnitude of \\( (3,4) \\).",
-        "ar": null
+        "en": "Find \\(\\displaystyle\\int x(x^2+1)^{5}\\,dx\\) using substitution."
       },
       "solution": {
-        "en": "\\[ \\sqrt{9+16}=5. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>Let \\(u=x^2+1\\), \\(du=2x\\,dx\\): \\(\\displaystyle\\int x(x^2+1)^{5}dx=\\frac{x^{12}}{12}+\\frac{x^{10}}{2}+\\frac{5x^{8}}{4}+\\frac{5x^{6}}{3}+\\frac{5x^{4}}{4}+\\frac{x^{2}}{2}+C\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 48,
+      "difficulty": "Basic",
       "question": {
-        "en": "Find \\( (1,2)+(3,1) \\).",
-        "ar": null
+        "en": "Evaluate \\(\\int_0^{\\ln(4)/2} e^{2x}\\,dx\\)."
       },
       "solution": {
-        "en": "\\[ (4,\\,3). \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>\\(\\int e^{2x}\\,dx=\\dfrac{1}{2}e^{2x}\\). At \\(x=\\ln(4)/2\\): \\(e^{2x}=4\\). At \\(x=0\\): \\(e^{2x}=1\\). Result: \\(\\dfrac{1}{2}(4-1)=\\dfrac{3}{2}\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 49,
+      "difficulty": "Basic",
       "question": {
-        "en": "Find \\( 2(1,3) \\).",
-        "ar": null
+        "en": "Evaluate \\(\\int_{1}^{2} (2x+5)^{1}\\,dx\\)."
       },
       "solution": {
-        "en": "\\[ (2,\\,6). \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p>\\(\\int (2x+5)^{1}dx=\\dfrac{(2x+5)^{2}}{2(2)}\\). At \\(x=2\\): base \\(=9\\), giving \\(81\\). At \\(x=1\\): base \\(=7\\), giving \\(49\\). Result: \\(\\dfrac{81-49}{4}=8\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 50,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Find the magnitude of \\( (6,8) \\).",
-        "ar": null
+        "en": "Evaluate \\(\\int_0^{\\ln(8)/4} 5e^{4x}\\,dx\\)."
       },
       "solution": {
-        "en": "\\[ \\sqrt{36+64}=10. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>\\(\\int 5e^{4x}\\,dx=\\dfrac{5}{4}e^{4x}\\). At \\(x=\\ln(8)/4\\): \\(e^{4x}=8\\). At \\(x=0\\): \\(e^{4x}=1\\). Result: \\(\\dfrac{5}{4}(8-1)=\\dfrac{35}{4}\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     }
   ]
 }

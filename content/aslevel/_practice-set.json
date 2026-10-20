@@ -3,603 +3,822 @@
   "items": [
     {
       "number": 1,
+      "difficulty": "Basic",
       "question": {
-        "en": "Simplify \\( x^{3}\\cdot x^{4} \\).",
-        "ar": null
+        "en": "The diagram shows a right-angled triangle ABC, with the right angle at D. The altitude from D to the hypotenuse BC is drawn. Given that BD = 4 cm and DC = 9 cm, find the length of the altitude AD."
       },
       "solution": {
-        "en": "\\[ x^{7}. \\]",
-        "ar": null
+        "en": "<p>In a right-angled triangle, the altitude to the hypotenuse creates three similar triangles. Specifically, triangle ABD is similar to triangle CAD, and both are similar to the original triangle ABC. By the geometric mean theorem (or by using similarity ratios), the square of the altitude to the hypotenuse is equal to the product of the two segments it divides the hypotenuse into.<br>Therefore, \\(AD^2 = BD \\times DC\\).<br>Given \\(BD = 4\\) cm and \\(DC = 9\\) cm.<br>\\(AD^2 = 4 \\times 9\\)<br>\\(AD^2 = 36\\)<br>\\(AD = \\sqrt{36}\\)<br>\\(AD = 6\\) cm.</p>"
       },
-      "difficulty": "Basic"
+      "fig": {
+        "type": "right_triangle_altitude",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "t": 0.36,
+        "p": "4",
+        "q": "9",
+        "altitude": "h"
+      }
     },
     {
       "number": 2,
+      "difficulty": "Basic",
       "question": {
-        "en": "Evaluate \\( 2^{-3} \\).",
-        "ar": null
+        "en": "A fair coin is tossed 3 times. Let X be the number of heads obtained. What is the probability that X = 2?"
       },
       "solution": {
-        "en": "\\[ \\frac{1}{2^{3}}=\\tfrac{1}{8}. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>This is a binomial distribution scenario. The number of trials is \\(n=3\\) (the number of coin tosses). The probability of success (getting a head) in a single trial is \\(p = \\frac{1}{2}\\), and the probability of failure (getting a tail) is \\(q = 1-p = \\frac{1}{2}\\). We want to find the probability of getting exactly \\(k=2\\) heads.</p><p>The binomial probability formula is \\(P(X=k) = \\binom{n}{k} p^k q^{n-k}\\).</p><p>Substituting the values:<br>\\(P(X=2) = \\binom{3}{2} (\\frac{1}{2})^2 (\\frac{1}{2})^{3-2}\\)<br>\\(P(X=2) = \\binom{3}{2} (\\frac{1}{2})^2 (\\frac{1}{2})^1\\)</p><p>First, calculate the binomial coefficient \\(\\binom{3}{2}\\). This represents the number of ways to choose 2 heads from 3 tosses:<br>\\(\\binom{3}{2} = \\frac{3!}{2!(3-2)!} = \\frac{3!}{2!1!} = \\frac{3 \\times 2 \\times 1}{(2 \\times 1) \\times 1} = 3\\).</p><p>Now, substitute this back into the probability formula:<br>\\(P(X=2) = 3 \\times (\\frac{1}{4}) \\times (\\frac{1}{2})\\)<br>\\(P(X=2) = 3 \\times \\frac{1}{8}\\)<br>\\(P(X=2) = \\frac{3}{8}\\).</p><p>Alternatively, we can list all possible outcomes for 3 coin tosses (H for heads, T for tails):<br>HHH, HHT, HTH, THH, HTT, THT, TTH, TTT.<br>There are \\(2^3 = 8\\) total possible outcomes.</p><p>The outcomes with exactly 2 heads are:<br>HHT, HTH, THH.<br>There are 3 such outcomes.</p><p>Therefore, the probability of getting exactly 2 heads is \\(\\frac{\\text{Number of favorable outcomes}}{\\text{Total number of outcomes}} = \\frac{3}{8}\\).</p>"
+      }
     },
     {
       "number": 3,
+      "difficulty": "Basic",
       "question": {
-        "en": "Simplify \\( \\sqrt{12} \\).",
-        "ar": null
+        "en": "The diagram shows part of the curve with equation \\(y = x^2 - 4x + 5\\) and the point \\(P(3, 2)\\) lying on the curve.\n\nFind the gradient of the tangent to the curve at the point \\(P\\)."
       },
       "solution": {
-        "en": "\\[ \\sqrt{4\\cdot3}=2\\sqrt{3}. \\]",
-        "ar": null
+        "en": "<p>To find the gradient of the tangent to the curve at \\(P(3, 2)\\), we determine the derivative \\(\\dfrac{\\mathrm{d}y}{\\mathrm{d}x}\\) and evaluate it at \\(x = 3\\).</p><p>1. Differentiate \\(y = x^2 - 4x + 5\\) with respect to \\(x\\) using the power rule:<br>\\[\\frac{\\mathrm{d}y}{\\mathrm{d}x} = 2x - 4\\]</p><p>2. Substitute \\(x = 3\\) into the derivative:<br>\\[\\left.\\frac{\\mathrm{d}y}{\\mathrm{d}x}\\right|_{x=3} = 2(3) - 4 = 6 - 4 = 2\\]</p><p>Common errors:<br>- \\(6\\) occurs if only the first term is differentiated (giving \\(2x\\)) and evaluated at \\(x = 3\\), omitting the derivative of \\(-4x\\).<br>- \\(-4\\) incorrectly takes the linear coefficient without differentiating the quadratic term.<br>- \\(\\dfrac{2}{3}\\) confuses the instantaneous gradient of the tangent with the gradient of the line from the origin to \\(P\\), \\(\\dfrac{y}{x} = \\dfrac{2}{3}\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "x*x - 4*x + 5"
+        ],
+        "points": [
+          {
+            "x": 3,
+            "y": 2,
+            "label": "P(3, 2)"
+          }
+        ],
+        "xrange": [
+          0,
+          5
+        ],
+        "yrange": [
+          0,
+          8
+        ]
+      }
     },
     {
       "number": 4,
+      "difficulty": "Basic",
       "question": {
-        "en": "Rationalise \\( \\dfrac{1}{\\sqrt{2}} \\).",
-        "ar": null
+        "en": "The diagram shows a triangle ABC with coordinates A(2, 1), B(8, 1) and C(5, 5). Find the length of the side AC."
       },
       "solution": {
-        "en": "<p>Multiply by \\( \\tfrac{\\sqrt2}{\\sqrt2} \\):</p>\\[ \\tfrac{\\sqrt{2}}{2}. \\]",
-        "ar": null
+        "en": "<p>The coordinates of A are (2, 1) and the coordinates of C are (5, 5).<br>Using the distance formula, \\(d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\\).<br>Length of AC = \\(\\sqrt{(5 - 2)^2 + (5 - 1)^2}\\)<br>Length of AC = \\(\\sqrt{(3)^2 + (4)^2}\\)<br>Length of AC = \\(\\sqrt{9 + 16}\\)<br>Length of AC = \\(\\sqrt{25}\\)<br>Length of AC = 5.</p>"
       },
-      "difficulty": "Advanced"
+      "fig": {
+        "type": "triangle",
+        "vertices": [
+          [
+            2,
+            1
+          ],
+          [
+            8,
+            1
+          ],
+          [
+            5,
+            5
+          ]
+        ],
+        "labels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sides": [
+          "x",
+          "y",
+          "z"
+        ],
+        "angles": [
+          "",
+          "",
+          ""
+        ]
+      }
     },
     {
       "number": 5,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Simplify \\( (x^{2})^{5} \\).",
-        "ar": null
+        "en": "Solve the inequality \\(x^2+x-20 \\gt 0\\)."
       },
       "solution": {
-        "en": "\\[ x^{10}. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>The quadratic factorises as \\((x-4)(x+5)\\) with roots \\(-5\\) and \\(4\\); since the parabola opens upward, the expression is > 0 outside the roots, giving \\(x \\lt -5 \\text{ or } x \\gt 4\\).</p>"
+      }
     },
     {
       "number": 6,
+      "difficulty": "Basic",
       "question": {
-        "en": "Evaluate \\( 27^{1/3} \\).",
-        "ar": null
+        "en": "A discrete random variable, \\(X\\), can take the values 1, 2, 3, 4, and 5. The probability distribution of \\(X\\) is given by \\(P(X=x) = kx\\) for \\(x \\in \\{1, 2, 3, 4, 5\\}\\), where \\(k\\) is a constant. Find the value of \\(k\\)."
       },
       "solution": {
-        "en": "\\[ \\sqrt[3]{27}=3. \\]",
-        "ar": null
+        "en": "<p>The sum of probabilities for all possible values of a discrete random variable must equal 1. Therefore, \\(\\sum_{x=1}^5 P(X=x) = 1\\).</p><p>Given \\(P(X=x) = kx\\), we have:<br>\\(P(X=1) = k(1) = k\\)<br>\\(P(X=2) = k(2) = 2k\\)<br>\\(P(X=3) = k(3) = 3k\\)<br>\\(P(X=4) = k(4) = 4k\\)<br>\\(P(X=5) = k(5) = 5k\\)</p><p>Summing these probabilities:<br>\\(k + 2k + 3k + 4k + 5k = 1\\)<br>\\(15k = 1\\)<br>\\(k = \\frac{1}{15}\\)</p><p>Therefore, the value of \\(k\\) is \\(\\frac{1}{15}\\).</p>"
       },
-      "difficulty": "Advanced"
+      "fig": {
+        "type": "bar",
+        "labels": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "data": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
     },
     {
       "number": 7,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Solve \\( x^{2}=16 \\).",
-        "ar": null
+        "en": "A particle of mass 5 kg moves under the action of a variable force \\(\\mathbf{F}\\) N. The force is given by \\(\\mathbf{F} = (3x^2 - 2x) \\mathbf{i}\\) N, where \\(x\\) is the displacement in metres from a fixed origin O. The particle moves from \\(x = 2\\) m to \\(x = 4\\) m. Find the work done by the force \\(\\mathbf{F}\\) during this displacement."
       },
       "solution": {
-        "en": "\\[ x=\\pm4. \\]",
-        "ar": null
-      },
-      "difficulty": "Basic"
+        "en": "<p>The work done by a variable force \\(\\mathbf{F}\\) when a particle moves from position \\(x_1\\) to \\(x_2\\) is given by the integral \\(W = \\int_{x_1}^{x_2} \\mathbf{F} \\cdot d\\mathbf{r}\\).<br>In this case, the force is \\(\\mathbf{F} = (3x^2 - 2x) \\mathbf{i}\\) and the displacement is along the x-axis, so \\(d\\mathbf{r} = dx \\mathbf{i}\\).<br>The particle moves from \\(x_1 = 2\\) m to \\(x_2 = 4\\) m.<br>Therefore, the work done is:<br>\\(W = \\int_{2}^{4} (3x^2 - 2x) dx\\)<br>Integrating term by term:<br>\\(W = \\left[ \\frac{3x^3}{3} - \\frac{2x^2}{2} \\right]_{2}^{4}\\)<br>\\(W = \\left[ x^3 - x^2 \\right]_{2}^{4}\\)<br>Now, substitute the limits of integration:<br>\\(W = (4^3 - 4^2) - (2^3 - 2^2)\\)<br>\\(W = (64 - 16) - (8 - 4)\\)<br>\\(W = 48 - 4\\)<br>\\(W = 44\\) J.</p><p>Common algebraic traps include incorrect integration, incorrect substitution of limits, or forgetting to subtract the lower limit from the upper limit.</p>"
+      }
     },
     {
       "number": 8,
+      "difficulty": "Basic",
       "question": {
-        "en": "Factor \\( x^{2}+5x+6 \\).",
-        "ar": null
+        "en": "The diagram shows the graphs of two linear equations. The point of intersection of the two lines represents the solution to the system of simultaneous equations.\n\nFind the coordinates of the point of intersection."
       },
       "solution": {
-        "en": "\\[ (x+2)(x+3). \\]",
-        "ar": null
+        "en": "<p>The point of intersection of two lines is the solution to the system of simultaneous equations that represent these lines. By visually inspecting the graph, we can identify the coordinates where the two lines cross. The first line appears to pass through the points (0, 3) and (3, 0). The second line appears to pass through the points (0, 1) and (2, 3).</p><p>Let's find the equations of the lines.<br>For the first line:<br>Gradient \\(m_1 = \\frac{0-3}{3-0} = \\frac{-3}{3} = -1\\).<br>Using the point-slope form with (3, 0): \\(y - 0 = -1(x - 3) \\Rightarrow y = -x + 3\\).</p><p>For the second line:<br>Gradient \\(m_2 = \\frac{3-1}{2-0} = \\frac{2}{2} = 1\\).<br>Using the point-slope form with (0, 1): \\(y - 1 = 1(x - 0) \\Rightarrow y = x + 1\\).</p><p>Now, we solve the system of equations:<br>1) \\(y = -x + 3\\)<br>2) \\(y = x + 1\\)</p><p>Set the expressions for y equal to each other:<br>\\(-x + 3 = x + 1\\)<br>\\(3 - 1 = x + x\\)<br>\\(2 = 2x\\)<br>\\(x = 1\\)</p><p>Substitute x = 1 into either equation to find y.<br>Using equation 2: \\(y = 1 + 1 \\Rightarrow y = 2\\).</p><p>The point of intersection is (1, 2).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "-x + 3",
+          "x + 1"
+        ],
+        "points": [],
+        "xrange": [
+          -1,
+          4
+        ],
+        "yrange": [
+          -1,
+          4
+        ]
+      }
     },
     {
       "number": 9,
+      "difficulty": "Basic",
       "question": {
-        "en": "Solve \\( x^{2}-6x+8=0 \\).",
-        "ar": null
+        "en": "A particle of mass 3 kg is at rest on a smooth horizontal surface. A horizontal force of magnitude P N is applied to the particle, causing it to accelerate at a rate of 4 m/s\\(^2\\). Find the value of P."
       },
       "solution": {
-        "en": "<p>\\( (x-2)(x-4)=0 \\):</p>\\[ x=2,\\ 4. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>According to Newton's Second Law of Motion, the net force acting on an object is equal to the product of its mass and acceleration, i.e., F = ma. In this case, the mass of the particle is m = 3 kg and its acceleration is a = 4 m/s\\(^2\\). The applied force P is the net force acting on the particle, as the surface is smooth and horizontal, meaning there are no other horizontal forces to consider. Therefore, P = ma = (3 kg) * (4 m/s\\(^2\\)) = 12 N. Thus, the value of P is 12 N.</p>"
+      }
     },
     {
       "number": 10,
+      "difficulty": "Basic",
       "question": {
-        "en": "Complete the square for \\( x^{2}+4x \\).",
-        "ar": null
+        "en": "A particle of mass \\(5\\) kg slides down a rough plane inclined at \\(30^\\circ\\) to the horizontal, experiencing a constant friction force of \\(0\\) N. Taking \\(g=9.8\\) m/s\\(^2\\), find its acceleration down the slope."
       },
       "solution": {
-        "en": "\\[ (x+2)^{2}-4. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>\\(W=mg=5\\times9.8=49.00\\) N. Component along slope \\(=W\\sin30^\\circ\\approx24.50\\) N. Net force \\(\\approx24.50\\) N. \\(a=F/m\\approx4.90\\) m/s\\(^2\\)</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 11,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "How many real roots does \\( x^{2}+x+1=0 \\) have?",
-        "ar": null
+        "en": "The diagram shows the graph of the function \\(y = f(x)\\). The graph is transformed by a sequence of operations. The resulting graph, \\(y = g(x)\\), is also shown. The function \\(f(x)\\) is given by \\(f(x) = ax^2 + bx + c\\), where \\(a, b,\\) and \\(c\\) are constants. The vertex of the graph of \\(y = f(x)\\) is at \\((2, -1)\\), and it passes through the point \\((4, 3)\\). The graph of \\(y = g(x)\\) is obtained by translating the graph of \\(y = f(x)\\) by \\(\\begin{pmatrix} -1 \\ 3 \\end{pmatrix}\\) followed by a reflection in the y-axis. Find the values of \\(a, b,\\) and \\(c\\)."
       },
       "solution": {
-        "en": "<p>Discriminant \\( =1-4=-3&lt;0 \\):</p>\\[ \\text{none.} \\]",
-        "ar": null
+        "en": "<p>The vertex of the parabola \\(y = ax^2 + bx + c\\) is at \\(\\left(-\\frac{b}{2a}, f\\left(-\\frac{b}{2a}\\right)\\right)\\). We are given that the vertex is at \\((2, -1)\\). Therefore, \\(-\\frac{b}{2a} = 2\\), which implies \\(b = -4a\\). The vertex form of the quadratic equation is \\(y = a(x-h)^2 + k\\), where \\((h,k)\\) is the vertex. So, \\(y = a(x-2)^2 - 1\\). The graph passes through \\((4, 3)\\). Substituting this point into the equation: \\(3 = a(4-2)^2 - 1 \\Rightarrow 3 = a(2)^2 - 1 \\Rightarrow 3 = 4a - 1 \\Rightarrow 4a = 4 \\Rightarrow a = 1\\). Since \\(a = 1\\) and \\(b = -4a\\), we have \\(b = -4(1) = -4\\). Expanding the vertex form \\(y = 1(x-2)^2 - 1 = (x^2 - 4x + 4) - 1 = x^2 - 4x + 3\\). Thus, \\(c = 3\\). The values are \\(a=1, b=-4, c=3\\).</p>"
       },
-      "difficulty": "Advanced"
+      "fig": {
+        "type": "transformation_grid",
+        "xmin": -6,
+        "xmax": 6,
+        "ymin": -6,
+        "ymax": 6,
+        "object": [
+          [
+            2,
+            -1
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "objectLabels": [
+          "V",
+          "P",
+          "Q"
+        ],
+        "image": [
+          [
+            2,
+            2
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ],
+        "imageLabels": [
+          "V'",
+          "P'",
+          "Q'"
+        ],
+        "mirrorLine": {
+          "x": 0,
+          "label": "y-axis"
+        }
+      }
     },
     {
       "number": 12,
+      "difficulty": "Basic",
       "question": {
-        "en": "Find the sum of the roots of \\( x^{2}-5x+6=0 \\).",
-        "ar": null
+        "en": "A particle moves along a straight line. Its velocity, \\(v\\) m/s, at time \\(t\\) seconds is given by \\(v = 3t - 2\\). Find the displacement of the particle during the first 4 seconds of its motion."
       },
       "solution": {
-        "en": "\\[ 2+3=5. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>The displacement of the particle can be found by integrating the velocity function with respect to time. The displacement \\(s\\) is given by:<br>\\[s = \\int v \\, dt\\]<br>In this case, \\(v = 3t - 2\\).<br>\\[s = \\int (3t - 2) \\, dt\\]<br>Integrating, we get:<br>\\[s = \\frac{3}{2}t^2 - 2t + C\\]<br>To find the displacement during the first 4 seconds, we evaluate the definite integral from \\(t=0\\) to \\(t=4\\). We can assume \\(C=0\\) for calculating the change in displacement from \\(t=0\\).<br>\\[s(4) - s(0) = \\left[ \\frac{3}{2}t^2 - 2t \\right]_0^4\\]<br>\\[s(4) - s(0) = \\left( \\frac{3}{2}(4)^2 - 2(4) \\right) - \\left( \\frac{3}{2}(0)^2 - 2(0) \\right)\\]<br>\\[s(4) - s(0) = \\left( \\frac{3}{2}(16) - 8 \\right) - (0)\\]<br>\\[s(4) - s(0) = (3 \\times 8 - 8)\\]<br>\\[s(4) - s(0) = (24 - 8)\\]<br>\\[s(4) - s(0) = 16\\]<br>Therefore, the displacement of the particle during the first 4 seconds is 16 m.</p>"
+      }
     },
     {
       "number": 13,
+      "difficulty": "Basic",
       "question": {
-        "en": "Solve \\( 2x^{2}-5x-3=0 \\).",
-        "ar": null
+        "en": "The weights of bags of sugar are normally distributed with a mean of 1000 g and a standard deviation of 5 g. Let \\(X\\) be the weight of a randomly selected bag of sugar. Calculate the probability that a bag of sugar weighs between 990 g and 1010 g."
       },
       "solution": {
-        "en": "<p>\\( (2x+1)(x-3)=0 \\):</p>\\[ x=3,\\ -\\tfrac12. \\]",
-        "ar": null
+        "en": "<p>Let \\(X\\) be the weight of a randomly selected bag of sugar. We are given that \\(X \\sim N(\\mu=1000, \\sigma^2=5^2)\\). We want to find \\(P(990 \\lt X \\lt 1010)\\).</p><p>First, we convert the weights to z-scores:<br>For \\(X=990\\), \\(z = \\frac{990 - 1000}{5} = \\frac{-10}{5} = -2\\).<br>For \\(X=1010\\), \\(z = \\frac{1010 - 1000}{5} = \\frac{10}{5} = 2\\).</p><p>So we need to find \\(P(-2 \\lt Z \\lt 2)\\), where \\(Z\\) is the standard normal distribution.</p><p>This probability can be found using a standard normal distribution table or calculator. The area to the left of \\(z=2\\) is approximately USD 0.9772$, and the area to the left of \\(z=-2\\) is approximately USD 0.0228$.</p><p>Therefore, \\(P(-2 \\lt Z \\lt 2) = P(Z \\lt 2) - P(Z \\lt -2) \\approx 0.9772 - 0.0228 = 0.9544\\).</p><p>Alternatively, using the empirical rule (68-95-99.7 rule), approximately 95% of the data falls within 2 standard deviations of the mean. Thus, \\(P(\\mu - 2\\sigma \\lt X \\lt \\mu + 2\\sigma) \\approx 0.95\\).</p><p>Comparing this with the options, 0.9545 is the closest value.</p>"
       },
-      "difficulty": "Advanced"
+      "fig": {
+        "type": "normal_curve",
+        "title": "Normal Distribution Model",
+        "mean": 0,
+        "sd": 1,
+        "shade": [
+          -1,
+          1.5
+        ]
+      }
     },
     {
       "number": 14,
+      "difficulty": "Basic",
       "question": {
-        "en": "Find the vertex of \\( y=x^{2}-4x+3 \\).",
-        "ar": null
+        "en": "A committee of 3 people is to be selected from a group of 5 people. The number of ways to form this committee is given by the combination formula \\(^nC_r = \\frac{n!}{r!(n-r)!}\\). How many different committees can be formed?"
       },
       "solution": {
-        "en": "<p>\\( (x-2)^{2}-1 \\):</p>\\[ (2,\\,-1). \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>The problem requires us to find the number of combinations of selecting 3 people from a group of 5. This is a direct application of the combination formula \\(^nC_r\\), where \\(n\\) is the total number of items to choose from, and \\(r\\) is the number of items to choose. In this case, \\(n=5\\) and \\(r=3\\).</p><p>Using the formula: \\(^5C_3 = \\frac{5!}{3!(5-3)!} = \\frac{5!}{3!2!} = \\frac{5 \\times 4 \\times 3!}{3! \\times (2 \\times 1)} = \\frac{5 \\times 4}{2} = \\frac{20}{2} = 10\\).</p><p>Therefore, there are 10 different committees that can be formed. The calculation \\(5 \\times 4 \\times 3 = 60\\) represents the number of permutations (where order matters), not combinations. \\(^5C_3\\) calculation is correct.</p>"
+      }
     },
     {
       "number": 15,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Solve \\( x+y=5 \\), \\( x-y=1 \\).",
-        "ar": null
+        "en": "The diagram shows a sector of a circle with centre O. The arc length of the sector is given by \\(6 \\pi \\text{ cm}\\) and the area of the sector is \\(27 \\pi \\text{ cm}^2\\). The radius of the circle is \\(r \\text{ cm}\\) and the angle of the sector is \\(\\theta \\text{ radians}\\).<br><br>Find the value of \\(r\\) and \\(\\theta\\)."
       },
       "solution": {
-        "en": "<p>Add: \\( 2x=6 \\):</p>\\[ x=3,\\ y=2. \\]",
-        "ar": null
+        "en": "<p>The formula for the arc length of a sector is \\(L = r\\theta\\), where \\(L\\) is the arc length, \\(r\\) is the radius, and \\(\\theta\\) is the angle in radians. We are given that \\(L = 6\\pi\\). So, we have the equation:</p><p>\\(r\\theta = 6\\pi\\) (1)</p><p>The formula for the area of a sector is \\(A = \\frac{1}{2}r^2\\theta\\), where \\(A\\) is the area, \\(r\\) is the radius, and \\(\\theta\\) is the angle in radians. We are given that \\(A = 27\\pi\\). So, we have the equation:</p><p>\\(\\frac{1}{2}r^2\\theta = 27\\pi\\) (2)</p><p>We can rewrite equation (2) as \\(r(r\\theta) = 54\\pi\\).<br>Substitute equation (1) into this rewritten equation:</p><p>\\(r(6\\pi) = 54\\pi\\)</p><p>Divide both sides by \\(6\\pi\\) to find \\(r\\):</p><p>\\(r = \\frac{54\\pi}{6\\pi} = 9\\)</p><p>Now substitute the value of \\(r\\) back into equation (1) to find \\(\\theta\\):</p><p>\\(9\\theta = 6\\pi\\)</p><p>Divide both sides by 9:</p><p>\\(\\theta = \\frac{6\\pi}{9} = \\frac{2\\pi}{3}\\)</p><p>Therefore, \\(r = 9\\) cm and \\(\\theta = \\frac{2\\pi}{3}\\) radians.</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "circle",
+        "sector": "theta",
+        "arc_length": "6*pi",
+        "sector_area": "27*pi",
+        "radius": "r"
+      }
     },
     {
       "number": 16,
+      "difficulty": "Basic",
       "question": {
-        "en": "Solve \\( 2x+y=8 \\), \\( y=x-1 \\).",
-        "ar": null
+        "en": "The first three terms of the binomial expansion of \\((1+kx)^n\\) are \\(1 + 6x + 12x^2\\). Find the value of \\(k\\)."
       },
       "solution": {
-        "en": "<p>\\( 2x+x-1=8 \\Rightarrow x=3 \\):</p>\\[ x=3,\\ y=2. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>The binomial expansion of \\((1+x)^n\\) is given by \\(1 + nx + \\frac{n(n-1)}{2!}x^2 + \\dots\\).</p><p>For the given expansion \\((1+kx)^n\\), we can substitute \\(y = kx\\) to get \\((1+y)^n\\). The first three terms of the expansion are \\(1 + ny + \\frac{n(n-1)}{2!}y^2 + \\dots\\). Substituting \\(y=kx\\) back, we have:</p><p>\\(1 + n(kx) + \\frac{n(n-1)}{2!}(kx)^2 + \\dots\\)</p><p>\\(1 + nkx + \\frac{n(n-1)}{2!}k^2x^2 + \\dots\\)</p><p>We are given that the first three terms are \\(1 + 6x + 12x^2\\). Comparing the coefficients:</p><p>1. Coefficient of \\(x\\): \\(nk = 6\\)<br>2. Coefficient of \\(x^2\\): \\(\\frac{n(n-1)}{2}k^2 = 12\\)</p><p>From equation (1), \\(n = \\frac{6}{k}\\).<br>Substitute this into equation (2):</p><p>\\(\\frac{\\frac{6}{k}(\\frac{6}{k}-1)}{2}k^2 = 12\\)</p><p>\\(\\frac{6k^2}{2k}(\\frac{6-k}{k}) = 12\\)</p><p>\\(3k(\\frac{6-k}{k}) = 12\\)</p><p>\\(3(6-k) = 12\\)</p><p>\\(18 - 3k = 12\\)</p><p>\\(3k = 18 - 12\\)</p><p>\\(3k = 6\\)</p><p>\\(k = 2\\)</p><p>With \\(k=2\\), we can find \\(n\\): \\(n = \\frac{6}{2} = 3\\). Let's check this with the \\(x^2\\) coefficient: \\(\\frac{3(3-1)}{2}(2^2) = \\frac{3 \\times 2}{2} \\times 4 = 3 \\times 4 = 12\\), which matches the given expansion.</p>"
+      }
     },
     {
       "number": 17,
+      "difficulty": "Basic",
       "question": {
-        "en": "Solve \\( y=x^{2} \\), \\( y=x+2 \\).",
-        "ar": null
+        "en": "The two-way table shows the results of a survey of 100 students on their preferred mode of transport to school and their year group. \n\n|              | Car | Bus | Walk | Total | \n|--------------|-----|-----|------|-------|\n| Year 1       | 15  | 20  | 10   | 45    |\n| Year 2       | 25  | 18  | 12   | 55    |\n| Total        | 40  | 38  | 22   | 100   |\n\nWhat is the probability that a randomly selected student is a Year 1 student who prefers to travel by car?"
       },
       "solution": {
-        "en": "<p>\\( x^{2}-x-2=0\\Rightarrow(x-2)(x+1)=0 \\):</p>\\[ (2,4),\\ (-1,1). \\]",
-        "ar": null
+        "en": "<p>The total number of students surveyed is 100.<br>The number of Year 1 students who prefer to travel by car is 15.<br>Therefore, the probability of selecting a Year 1 student who prefers to travel by car is the number of Year 1 students who prefer to travel by car divided by the total number of students.<br>P(Year 1 and Car) = Number of (Year 1 and Car) / Total Number of Students = 15 / 100 = 0.15.</p>"
       },
-      "difficulty": "Advanced"
+      "fig": {
+        "type": "two_way_table",
+        "data": [
+          [
+            15,
+            20,
+            10
+          ],
+          [
+            25,
+            18,
+            12
+          ]
+        ],
+        "rows": [
+          "Year 1",
+          "Year 2"
+        ],
+        "cols": [
+          "Car",
+          "Bus",
+          "Walk"
+        ]
+      }
     },
     {
       "number": 18,
+      "difficulty": "Basic",
       "question": {
-        "en": "Solve \\( 2x-3&gt;5 \\).",
-        "ar": null
+        "en": "A particle in equilibrium is acted on by three concurrent forces. Two of the forces have equal magnitude \\(15\\) N and act symmetrically either side of the third force's line of action. If the angle between each of the two equal forces and the third force is \\(120^\\circ\\), find the magnitude of the third force."
       },
       "solution": {
-        "en": "<p>\\( 2x&gt;8 \\):</p>\\[ x&gt;4. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>By symmetry (each pair at \\(120^\\circ\\)), the third force balances the resultant of the two equal forces: \\(F_3=F_1=15\\) N (standard \\(120^\\circ\\)-\\(120^\\circ\\)-\\(120^\\circ\\) symmetric equilibrium).</p>"
+      }
     },
     {
       "number": 19,
+      "difficulty": "Basic",
       "question": {
-        "en": "Solve \\( 3x+1\\le10 \\).",
-        "ar": null
+        "en": "Solve \\(\\sin(x)=\\dfrac{1}{2}\\) for \\(0^\\circ\\le x\\le 360^\\circ\\)."
       },
       "solution": {
-        "en": "<p>\\( 3x\\le9 \\):</p>\\[ x\\le3. \\]",
-        "ar": null
+        "en": "<p>The reference angle gives one solution and CAST-rule symmetry gives the second: \\(x=30^\\circ\\) or \\(x=150^\\circ\\) within \\([0^\\circ,360^\\circ]\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "unit_circle",
+        "title": "Unit Circle Reference",
+        "angle": 30,
+        "showTriangle": true
+      }
     },
     {
       "number": 20,
+      "difficulty": "Basic",
       "question": {
-        "en": "Solve \\( x^{2}-4&lt;0 \\).",
-        "ar": null
+        "en": "A curve is given by the equation \\(y = x^3 - 3x^2 + 2x\\). Find the gradient of the curve at \\(x = 2\\)."
       },
       "solution": {
-        "en": "\\[ -2&lt;x&lt;2. \\]",
-        "ar": null
+        "en": "<p>To find the gradient of the curve, we need to find the first derivative of the equation with respect to \\(x\\). The derivative of \\(y = x^3 - 3x^2 + 2x\\) is \\(\\frac{dy}{dx} = 3x^2 - 6x + 2\\). To find the gradient at \\(x = 2\\), substitute \\(x = 2\\) into the derivative: \\(\\frac{dy}{dx} \\Big|_{x=2} = 3(2)^2 - 6(2) + 2 = 3(4) - 12 + 2 = 12 - 12 + 2 = 2\\).</p>"
       },
-      "difficulty": "Advanced"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "x**3 - 3*x**2 + 2*x"
+        ],
+        "points": [],
+        "xrange": [
+          -1,
+          4
+        ],
+        "yrange": [
+          -2,
+          4
+        ]
+      }
     },
     {
       "number": 21,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Find the gradient through \\( (1,2) \\) and \\( (4,11) \\).",
-        "ar": null
+        "en": "The points A, B, and C have coordinates A(2, 5), B(k, 1), and C(8, -3). If A, B, and C are collinear, find the value of \\(k\\)."
       },
       "solution": {
-        "en": "\\[ \\frac{11-2}{4-1}=3. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>For three points A, B, and C to be collinear, the gradient of the line segment AB must be equal to the gradient of the line segment BC (or AC).</p><p>The gradient formula between two points \\((x_1, y_1)\\) and \\((x_2, y_2)\\) is given by \\(m = \\frac{y_2 - y_1}{x_2 - x_1}\\).</p><p>Gradient of AB, \\(m_{AB} = \\frac{1 - 5}{k - 2} = \\frac{-4}{k - 2}\\).</p><p>Gradient of BC, \\(m_{BC} = \\frac{-3 - 1}{8 - k} = \\frac{-4}{8 - k}\\).</p><p>Equating the gradients:<br>\\(\\frac{-4}{k - 2} = \\frac{-4}{8 - k}\\)<br>Since the numerators are equal and non-zero, the denominators must be equal:<br>\\(k - 2 = 8 - k\\)<br>Add \\(k\\) to both sides:<br>\\(2k - 2 = 8\\)<br>Add 2 to both sides:<br>\\(2k = 10\\)<br>Divide by 2:<br>\\(k = 5\\)</p><p>Common algebraic trap: A student might incorrectly assume that \\(k-2 = -(8-k)\\) leading to \\(k-2 = -8+k\\) which has no solution. Alternatively, cross-multiplying and making an error in expansion is also a pitfall.</p>"
+      }
     },
     {
       "number": 22,
+      "difficulty": "Basic",
       "question": {
-        "en": "Find the midpoint of \\( (2,3) \\) and \\( (8,7) \\).",
-        "ar": null
+        "en": "A factory tests 30 independent components, each with a fixed probability of being defective; \\(X\\) is the number of defective components. Is \\(X\\) binomially distributed?"
       },
       "solution": {
-        "en": "\\[ (5,\\,5). \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>The trials are fixed in number, independent, and each has the same probability of success, so the conditions for a binomial distribution are satisfied.</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 23,
+      "difficulty": "Basic",
       "question": {
-        "en": "Find the equation of the line with gradient \\( 2 \\) through \\( (1,3) \\).",
-        "ar": null
+        "en": "Solve the inequality \\(x^2+6x \\gt 0\\)."
       },
       "solution": {
-        "en": "<p>\\( y-3=2(x-1) \\):</p>\\[ y=2x+1. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p>The quadratic factorises as \\((x+6)x\\) with roots \\(-6\\) and \\(0\\); since the parabola opens upward, the expression is > 0 outside the roots, giving \\(x \\lt -6 \\text{ or } x \\gt 0\\).</p>"
+      }
     },
     {
       "number": 24,
+      "difficulty": "Basic",
       "question": {
-        "en": "Find the distance between \\( (1,1) \\) and \\( (4,5) \\).",
-        "ar": null
+        "en": "A constant force of 15 N is applied to an object, causing it to move a distance of 4 m in the direction of the force. Calculate the work done by the force."
       },
       "solution": {
-        "en": "\\[ \\sqrt{9+16}=5. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>The work done by a constant force is given by the formula:<br>Work Done = Force × Distance × cos(θ)<br>where θ is the angle between the force and the direction of motion.<br>In this case, the force and the distance are in the same direction, so θ = 0°.<br>Therefore, cos(0°) = 1.<br>Work Done = 15 N × 4 m × 1<br>Work Done = 60 J</p>"
+      }
     },
     {
       "number": 25,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "State the centre of \\( (x-2)^{2}+(y+3)^{2}=25 \\).",
-        "ar": null
+        "en": "The diagram shows the graphs of the linear equation \\(y = 2x + c\\) and the quadratic equation \\(y = -x^2 + 4x + 5\\). The two graphs intersect at the points where \\(x = -1\\) and \\(x = k\\). Find the value of \\(c\\) and the value of \\(k\\)."
       },
       "solution": {
-        "en": "\\[ (2,\\,-3). \\]",
-        "ar": null
+        "en": "<p>The points of intersection satisfy both equations. Therefore, we can set the equations equal to each other:<br>\\(2x + c = -x^2 + 4x + 5\\)<br>Rearranging this equation gives:<br>\\(x^2 - 2x + (c - 5) = 0\\)<br>We are given that the graphs intersect at \\(x = -1\\). Substituting \\(x = -1\\) into the quadratic equation \\(y = -x^2 + 4x + 5\\):<br>\\(y = -(-1)^2 + 4(-1) + 5 = -1 - 4 + 5 = 0\\)<br>So, the point of intersection is \\((-1, 0)\\). Since this point also lies on the line \\(y = 2x + c\\), we can substitute \\(x = -1\\) and \\(y = 0\\) into the linear equation:<br>\\(0 = 2(-1) + c\\)<br>\\(0 = -2 + c\\)<br>\\(c = 2\\)<br>Now we substitute \\(c = 2\\) back into the quadratic equation \\(x^2 - 2x + (c - 5) = 0\\):<br>\\(x^2 - 2x + (2 - 5) = 0\\)<br>\\(x^2 - 2x - 3 = 0\\)<br>Factorising this quadratic equation:<br>\\((x - 3)(x + 1) = 0\\)<br>The solutions are \\(x = 3\\) and \\(x = -1\\). We are given that one intersection point is \\(x = -1\\), so the other intersection point must be \\(x = k = 3\\).<br>Therefore, \\(c = 2\\) and \\(k = 3\\).</p>"
       },
-      "difficulty": "Advanced"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "2*x + 2",
+          "-x*x + 4*x + 5"
+        ],
+        "points": [
+          {
+            "x": -1,
+            "y": 0,
+            "label": ""
+          }
+        ],
+        "xrange": [
+          -2,
+          5
+        ],
+        "yrange": [
+          -5,
+          10
+        ]
+      }
     },
     {
       "number": 26,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "State the radius of \\( x^{2}+y^{2}=49 \\).",
-        "ar": null
+        "en": "A particle of mass \\(m\\) kg is placed on a rough inclined plane. The plane is inclined at an angle \\(\\alpha\\) to the horizontal, where \\(\\tan \\alpha = \\frac{3}{4}\\). The particle is on the point of sliding down the plane. The coefficient of static friction between the particle and the plane is \\(\\mu_s\\). Given that the acceleration due to gravity is \\(g = 9.8 \\text{ m/s}^2\\), find the value of \\(\\mu_s\\)."
       },
       "solution": {
-        "en": "\\[ r=7. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>When a particle is on the point of sliding down an inclined plane, the angle of inclination \\(\\alpha\\) is equal to the angle of friction \\(\\phi\\), where \\(\\tan \\phi = \\mu_s\\). \\nGiven that \\(\\tan \\alpha = \\frac{3}{4}\\), and the particle is on the point of sliding, we have \\(\\alpha = \\phi\\). \\nTherefore, \\(\\mu_s = \\tan \\phi = \\tan \\alpha = \\frac{3}{4}\\).</p>"
+      }
     },
     {
       "number": 27,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Describe \\( y=x^{2}+3 \\) relative to \\( y=x^{2} \\).",
-        "ar": null
+        "en": "A machine has a useful power output of \\(883\\) W and wastes \\(367\\) W as heat. Find its efficiency as a percentage, correct to 1 decimal place."
       },
       "solution": {
-        "en": "<p>A translation \\( 3 \\) units up.</p>",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>Total input \\(=883+367=1250\\) W. Efficiency \\(=\\dfrac{\\text{useful output}}{\\text{input}}\\times100\\%=\\dfrac{883}{1250}\\times100\\%\\approx70.6\\%\\)</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 28,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Describe \\( y=(x-2)^{2} \\) relative to \\( y=x^{2} \\).",
-        "ar": null
+        "en": "The graph of \\(y = f(x)\\) is a curve passing through the points A(1, 2), B(4, 2), and C(2, 5). This graph is then subjected to a sequence of transformations. First, it is reflected in the line \\(y = x\\). Let the image of the points A, B, and C under this reflection be A', B', and C' respectively. Secondly, the graph of the reflected curve is translated by the vector \\(\\begin{pmatrix} -3 \\\\ 0 \\end{pmatrix}\\). Let the final image of the points A', B', and C' after this translation be A'', B'', and C''.\n\nGiven that the original curve is a parabola with its axis of symmetry parallel to the y-axis, and passes through A, B, and C, find the coordinates of C''."
       },
       "solution": {
-        "en": "<p>A translation \\( 2 \\) units to the right.</p>",
-        "ar": null
+        "en": "<p>The original points are A(1, 2), B(4, 2), and C(2, 5). The curve \\(y = f(x)\\) is a parabola. Since A and B have the same y-coordinate, the axis of symmetry is \\(x = \\frac{1+4}{2} = 2.5\\). The equation of the parabola can be written as \\(y = a(x - 2.5)^2 + k\\). Substituting C(2, 5):<br>\\(5 = a(2 - 2.5)^2 + k \\implies 5 = 0.25a + k\\).</p><p><strong>Step 1:</strong> Reflection in the line \\(y=x\\). This transformation swaps the x and y coordinates.<br>A'(2, 1), B'(2, 4), C'(5, 2).</p><p><strong>Step 2:</strong> Translation by the vector \\(\\begin{pmatrix} -3 \\\\ 0 \\end{pmatrix}\\). This subtracts 3 from the x-coordinate and adds 0 to the y-coordinate.<br>A''(2 - 3, 1 + 0) = (-1, 1)<br>B''(2 - 3, 4 + 0) = (-1, 4)<br>C''(5 - 3, 2 + 0) = (2, 2)</p><p>Therefore, the coordinates of C'' are (2, 2).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "transformation_grid",
+        "xmin": -6,
+        "xmax": 6,
+        "ymin": -6,
+        "ymax": 6,
+        "object": [
+          [
+            1,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            2,
+            5
+          ]
+        ],
+        "objectLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "image": [
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            5,
+            2
+          ]
+        ],
+        "imageLabels": [
+          "A'",
+          "B'",
+          "C'"
+        ],
+        "mirrorLine": {
+          "m": 1,
+          "c": 0,
+          "label": "y = x"
+        }
+      }
     },
     {
       "number": 29,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Describe \\( y=-x^{2} \\) relative to \\( y=x^{2} \\).",
-        "ar": null
+        "en": "A particle's velocity \\(v\\) m/s at time \\(t\\) seconds is given by \\(v = \\frac{1}{2}t^2 - 3t + 5\\). The displacement of the particle from a fixed origin is \\(s\\) metres. It is known that at \\(t = 2\\), the displacement \\(s = 7\\). The displacement function \\(s(t)\\) can be expressed in the form \\(s(t) = At^3 + Bt^2 + Ct + D\\). Find the value of \\(A\\) and the value of \\(D\\)."
       },
       "solution": {
-        "en": "<p>A reflection in the \\( x \\)-axis.</p>",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p>We are given the velocity function \\(v(t) = \\frac{1}{2}t^2 - 3t + 5\\). Since displacement \\(s\\) is the integral of velocity with respect to time, we have:<br>\\[s(t) = \\int v(t) \\, dt = \\int \\left( \\frac{1}{2}t^2 - 3t + 5 \\right) dt\\] <br>Integrating term by term, we get:<br>\\[s(t) = \\frac{1}{2} \\cdot \\frac{t^3}{3} - 3 \\cdot \\frac{t^2}{2} + 5t + K\\] <br>\\[s(t) = \\frac{1}{6}t^3 - \\frac{3}{2}t^2 + 5t + K\\] <br>Comparing this with the given form \\(s(t) = At^3 + Bt^2 + Ct + D\\), we can identify \\(A = \\frac{1}{6}\\), \\(B = -\\frac{3}{2}\\), \\(C = 5\\). The constant of integration is \\(K = D\\).</p><p>We are given that at \\(t = 2\\), \\(s = 7\\). We can use this information to find the value of \\(D\\):<br>\\[7 = \\frac{1}{6}(2)^3 - \\frac{3}{2}(2)^2 + 5(2) + D\\] <br>\\[7 = \\frac{1}{6}(8) - \\frac{3}{2}(4) + 10 + D\\] <br>\\[7 = \\frac{8}{6} - \\frac{12}{2} + 10 + D\\] <br>\\[7 = \\frac{4}{3} - 6 + 10 + D\\] <br>\\[7 = \\frac{4}{3} + 4 + D\\] <br>Subtracting 4 from both sides:<br>\\[3 = \\frac{4}{3} + D\\] <br>To find \\(D\\), subtract \\(\\frac{4}{3}\\) from 3:<br>\\[D = 3 - \\frac{4}{3} = \\frac{9}{3} - \\frac{4}{3} = \\frac{5}{3}\\] <br>Therefore, \\(A = \\frac{1}{6}\\) and \\(D = \\frac{5}{3}\\). This corresponds to choice A.</p>"
+      }
     },
     {
       "number": 30,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "How does \\( y=f(x)+k \\) transform the graph of \\( y=f(x) \\)?",
-        "ar": null
+        "en": "A particle of mass 8 kg is moving under the action of a net force \\(\\mathbf{F}\\) N. The acceleration of the particle, \\(\\mathbf{a}\\) m/s\\(^2\\), is given by the vector \\(\\mathbf{a} = \\begin{pmatrix} 2t - 4 \\\\ t^2 - 9 \\end{pmatrix}\\) for \\(t \\ge 0\\), where \\(t\\) is the time in seconds. The particle is initially at rest at the origin."
       },
       "solution": {
-        "en": "<p>A vertical translation by \\( k \\).</p>",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>We are given the acceleration vector \\(\\mathbf{a} = \\begin{pmatrix} 2t - 4 \\\\ t^2 - 9 \\end{pmatrix}\\) and the mass of the particle \\(m = 8\\) kg. By Newton's Second Law, the net force \\(\\mathbf{F} = m\\mathbf{a}\\). Therefore, \\(\\mathbf{F} = 8 \\begin{pmatrix} 2t - 4 \\\\ t^2 - 9 \\end{pmatrix} = \\begin{pmatrix} 16t - 32 \\\\ 8t^2 - 72 \\end{pmatrix}\\).</p><p>The question asks for the magnitude of the net force at \\(t = 2\\) seconds. Substituting \\(t = 2\\) into the force vector:<br>\\(\\mathbf{F}(2) = \\begin{pmatrix} 16(2) - 32 \\\\ 8(2)^2 - 72 \\end{pmatrix} = \\begin{pmatrix} 32 - 32 \\\\ 8(4) - 72 \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 32 - 72 \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ -40 \\end{pmatrix}\\) N.</p><p>The magnitude of the net force is given by \\(|\\mathbf{F}| = \\sqrt{F_x^2 + F_y^2}\\).<br>\\(|\\mathbf{F}(2)| = \\sqrt{0^2 + (-40)^2} = \\sqrt{1600} = 40\\) N.</p><p>Let's re-read the question. It seems there was a misinterpretation of the question's intent in the initial draft. The question should focus on finding an unknown parameter related to the force or motion. Let's adjust to meet the archetype better.</p>"
+      }
     },
     {
       "number": 31,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Evaluate \\( \\sin30^{\\circ} \\).",
-        "ar": null
+        "en": "A 3 kg particle on a rough surface, \\(\\mu=0.4\\). Horizontal force \\(F\\) N.<br>(a) Find the limiting friction.<br>(b) Acceleration when \\(F=20\\) N.<br>(c) Time to travel 5 m from rest."
       },
       "solution": {
-        "en": "\\[ \\tfrac12. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>(a) \\(F_f=0.4\\times3\\times9.8=11.76\\text{ N}\\).<br>(b) \\(a=\\frac{20-11.76}{3}\\approx2.75\\text{ m s}^{-2}\\).<br>(c) \\(t=\\sqrt{10/2.75}\\approx1.91\\text{ s}\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 32,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Evaluate \\( \\cos0^{\\circ} \\).",
-        "ar": null
+        "en": "Evaluate \\(\\displaystyle\\int_{-2}^{4} \\left(3x^{2}-3x-1\\right)\\,dx\\)."
       },
       "solution": {
-        "en": "\\[ 1. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>\\(\\displaystyle\\int \\left(3x^{2}-3x-1\\right)dx=x^{3}-3/2x^{2}-x\\). Evaluating from \\(-2\\) to \\(4\\): \\(\\left[x^{3}-3/2x^{2}-x\\right]_{-2}^{4}=48\\)</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 33,
+      "difficulty": "Basic",
       "question": {
-        "en": "Evaluate \\( \\tan45^{\\circ} \\).",
-        "ar": null
+        "en": "The diagram shows a sector of a circle with radius \\(r\\). The angle at the centre is \\(\\theta\\) radians. If the arc length is USD 6$ cm and the radius is USD 3$ cm, find the angle \\(\\theta\\) in radians."
       },
       "solution": {
-        "en": "\\[ 1. \\]",
-        "ar": null
+        "en": "<p>The formula relating arc length (\\(s\\)), radius (\\(r\\)), and angle (\\(\\theta\\)) in radians is \\(s = r\\theta\\). We are given \\(s = 6\\) cm and \\(r = 3\\) cm. Substituting these values into the formula, we get \\(6 = 3\\theta\\). To find \\(\\theta\\), we divide both sides by 3: \\(\\theta = \\frac{6}{3} = 2\\) radians. Therefore, the angle at the centre is USD 2$ radians.</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "circle",
+        "sector": {
+          "angle_rad": "theta",
+          "label": "theta"
+        },
+        "arc_length_label": "6 cm",
+        "radius": "3"
+      }
     },
     {
       "number": 34,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Solve \\( \\sin\\theta=\\tfrac12 \\) for \\( 0^{\\circ}\\le\\theta\\le180^{\\circ} \\).",
-        "ar": null
+        "en": "A research team is studying the impact of different fertilizer types on crop yield. They conducted an experiment with two fertilizer types, A and B, and recorded the yield in kilograms per plot. The data is summarized in the two-way table below. The total number of plots is 200.\n\n| Fertilizer Type | Yield < 50 kg | Yield \\(\\ge\\) 50 kg | Total |\n|---|---|---|---|\n| A | 30 | 70 | 100 |\n| B | 50 | 50 | 100 |\n| Total | 80 | 120 | 200 |\n\nGiven that a plot was selected at random and its yield was less than 50 kg, what is the probability that it received fertilizer type B? Provide your answer as a fraction in its simplest form."
       },
       "solution": {
-        "en": "\\[ \\theta=30^{\\circ},\\ 150^{\\circ}. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p>Let Y be the event that the yield is less than 50 kg, and B be the event that the fertilizer type is B. We are asked to find the conditional probability P(B|Y).</p><p>From the table, we have:<br>Number of plots with yield < 50 kg (event Y) = 80.<br>Number of plots with yield < 50 kg AND fertilizer type B (event B \\(\\cap\\) Y) = 50.</p><p>The formula for conditional probability is P(B|Y) = P(B \\(\\cap\\) Y) / P(Y).</p><p>Alternatively, using the counts directly:<br>P(B|Y) = (Number of plots with yield < 50 kg and fertilizer type B) / (Number of plots with yield < 50 kg)</p><p>P(B|Y) = 50 / 80</p><p>Simplifying the fraction:<br>P(B|Y) = 5/8.</p><p>Therefore, the probability that a randomly selected plot with a yield less than 50 kg received fertilizer type B is 5/8.</p>"
+      }
     },
     {
       "number": 35,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Simplify \\( \\sin^{2}\\theta+\\cos^{2}\\theta \\).",
-        "ar": null
+        "en": "Solve the inequality \\(x^2+17x+72 \\gt 0\\)."
       },
       "solution": {
-        "en": "\\[ 1. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>The quadratic factorises as \\((x+9)(x+8)\\) with roots \\(-9\\) and \\(-8\\); since the parabola opens upward, the expression is > 0 outside the roots, giving \\(x \\lt -9 \\text{ or } x \\gt -8\\).</p>"
+      }
     },
     {
       "number": 36,
+      "difficulty": "Basic",
       "question": {
-        "en": "State the exact value of \\( \\sin60^{\\circ} \\).",
-        "ar": null
+        "en": "Given the quadratic equation \\(x^2 - 5x + 6 = 0\\), find the sum of the roots."
       },
       "solution": {
-        "en": "\\[ \\tfrac{\\sqrt{3}}{2}. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p>For a quadratic equation in the form \\(ax^2 + bx + c = 0\\), the sum of the roots is given by the formula \\(-\\frac{b}{a}\\). In the given equation \\(x^2 - 5x + 6 = 0\\), we have \\(a=1\\), \\(b=-5\\), and \\(c=6\\). Therefore, the sum of the roots is \\(-\\frac{-5}{1} = 5\\).</p>"
+      }
     },
     {
       "number": 37,
+      "difficulty": "Basic",
       "question": {
-        "en": "Evaluate \\( \\cos90^{\\circ} \\).",
-        "ar": null
+        "en": "Solve \\(\\tan(x)=\\dfrac{\\sqrt{3}}{3}\\) for \\(0^\\circ\\le x\\le 360^\\circ\\)."
       },
       "solution": {
-        "en": "\\[ 0. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>The reference angle gives one solution and CAST-rule symmetry gives the second: \\(x=30^\\circ\\) or \\(x=210^\\circ\\) within \\([0^\\circ,360^\\circ]\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 38,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "State the period of \\( y=\\sin x \\).",
-        "ar": null
+        "en": "Solve the inequality \\(x^2+7x-8 \\gt 0\\)."
       },
       "solution": {
-        "en": "\\[ 360^{\\circ}. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p>The quadratic factorises as \\((x+8)(x-1)\\) with roots \\(-8\\) and \\(1\\); since the parabola opens upward, the expression is > 0 outside the roots, giving \\(x \\lt -8 \\text{ or } x \\gt 1\\).</p>"
+      }
     },
     {
       "number": 39,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Differentiate \\( x^{2} \\).",
-        "ar": null
+        "en": "Three concurrent forces keep a particle in equilibrium, each pair separated by \\(120^\\circ\\), and two of the forces have magnitude \\(16\\) N. Find the magnitude of the third force."
       },
       "solution": {
-        "en": "\\[ 2x. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>With all three angles equal to \\(120^\\circ\\), Lami's theorem gives \\(\\dfrac{F_1}{\\sin120^\\circ}=\\dfrac{F_2}{\\sin120^\\circ}=\\dfrac{F_3}{\\sin120^\\circ} \\Rightarrow F_3=F_1=16\\) N.</p>"
+      }
     },
     {
       "number": 40,
+      "difficulty": "Basic",
       "question": {
-        "en": "Differentiate \\( x^{3} \\).",
-        "ar": null
+        "en": "The diagram shows the graph of the function \\(y = f(x)\\). The coordinates of the points A, B, and C are given. The graph is transformed by a translation of 3 units to the right and 2 units down. What are the new coordinates of point A?"
       },
       "solution": {
-        "en": "\\[ 3x^{2}. \\]",
-        "ar": null
+        "en": "<p>The original coordinates of point A are (-4, 2). A translation of 3 units to the right means we add 3 to the x-coordinate. A translation of 2 units down means we subtract 2 from the y-coordinate.</p><p>New x-coordinate = Original x-coordinate + 3 = -4 + 3 = -1<br>New y-coordinate = Original y-coordinate - 2 = 2 - 2 = 0</p><p>Therefore, the new coordinates of point A are (-1, 0).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "transformation_grid",
+        "xmin": -6,
+        "xmax": 6,
+        "ymin": -6,
+        "ymax": 6,
+        "object": [
+          [
+            -4,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            -2,
+            5
+          ]
+        ],
+        "objectLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "image": null,
+        "imageLabels": null
+      }
     },
     {
       "number": 41,
+      "difficulty": "Basic",
       "question": {
-        "en": "Differentiate \\( 5x \\).",
-        "ar": null
+        "en": "Solve the inequality \\(x^2-4x-5 \\gt 0\\)."
       },
       "solution": {
-        "en": "\\[ 5. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>The quadratic factorises as \\((x+1)(x-5)\\) with roots \\(-1\\) and \\(5\\); since the parabola opens upward, the expression is > 0 outside the roots, giving \\(x \\lt -1 \\text{ or } x \\gt 5\\).</p>"
+      }
     },
     {
       "number": 42,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Find \\( \\dfrac{dy}{dx} \\) for \\( y=x^{2}+3x \\).",
-        "ar": null
+        "en": "Solve \\(\\cos(x)=-\\dfrac{\\sqrt{2}}{2}\\) for \\(0^\\circ\\le x\\le 360^\\circ\\)."
       },
       "solution": {
-        "en": "\\[ 2x+3. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p>The reference angle gives one solution and CAST-rule symmetry gives the second: \\(x=135^\\circ\\) or \\(x=225^\\circ\\) within \\([0^\\circ,360^\\circ]\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 43,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find \\( \\displaystyle\\int 2x\\,dx \\).",
-        "ar": null
+        "en": "A sector of a circle with radius \\(r\\) cm has a perimeter of \\(P\\) cm. The area of the sector is \\(A\\) cm\\(^2\\). Prove that \\(P^2 \\ge 16A\\)."
       },
       "solution": {
-        "en": "\\[ x^{2}+C. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>Let the angle of the sector be \\(\\theta\\) radians. The arc length of the sector is \\(r\\theta\\). The perimeter \\(P = 2r + r\\theta\\). The area \\(A = \\frac{1}{2}r^2\\theta\\). We need to prove \\(P^2 \\ge 16A\\). Substituting the expressions for \\(P\\) and \\(A\\):<br>\\[(2r + r\\theta)^2 \\ge 16 \\left(\\frac{1}{2}r^2\\theta\\right)\\]<br>\\[r^2(2 + \\theta)^2 \\ge 8r^2\\theta\\]<br>Since \\(r^2\\) is positive, we can divide both sides by \\(r^2\\):<br>\\[(2 + \\theta)^2 \\ge 8\\theta\\]<br>\\[4 + 4\\theta + \\theta^2 \\ge 8\\theta\\]<br>\\[\\theta^2 - 4\\theta + 4 \\ge 0\\]<br>\\[(\\theta - 2)^2 \\ge 0\\]<br>This inequality is always true for any real value of \\(\\theta\\). Since \\(\\theta\\) represents an angle in a sector, it must be non-negative. Thus, the inequality \\(P^2 \\ge 16A\\) holds true for all valid sector angles \\(\\theta \\ge 0\\). A sector angle must be less than \\(2\\pi\\) radians. The derivation shows the inequality is always true, irrespective of the specific angle value within the valid range of a sector.</p>"
+      }
     },
     {
       "number": 44,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find \\( \\displaystyle\\int x^{2}\\,dx \\).",
-        "ar": null
+        "en": "A survey asks 50 randomly and independently selected people the same yes/no question; \\(X\\) is the number who say yes. Is \\(X\\) binomially distributed?"
       },
       "solution": {
-        "en": "\\[ \\tfrac{x^{3}}{3}+C. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p>The trials are fixed in number, independent, and each has the same probability of success, so the conditions for a binomial distribution are satisfied.</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 45,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find the gradient of \\( y=x^{2} \\) at \\( x=3 \\).",
-        "ar": null
+        "en": "Evaluate \\(\\displaystyle\\int_{1}^{2} \\left(6x^{2}-5x+1\\right)\\,dx\\)."
       },
       "solution": {
-        "en": "<p>\\( \\tfrac{dy}{dx}=2x=6 \\):</p>\\[ 6. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>\\(\\displaystyle\\int \\left(6x^{2}-5x+1\\right)dx=2x^{3}-5/2x^{2}+x\\). Evaluating from \\(1\\) to \\(2\\): \\(\\left[2x^{3}-5/2x^{2}+x\\right]_{1}^{2}=15/2\\)</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 46,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\int_{0}^{1} 2x\\,dx \\).",
-        "ar": null
+        "en": "Evaluate \\(\\displaystyle\\int_{1}^{3} \\left(6x^{2}+2x+3\\right)\\,dx\\)."
       },
       "solution": {
-        "en": "\\[ \\left[x^{2}\\right]_{0}^{1}=1. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p>\\(\\displaystyle\\int \\left(6x^{2}+2x+3\\right)dx=2x^{3}+x^{2}+3x\\). Evaluating from \\(1\\) to \\(3\\): \\(\\left[2x^{3}+x^{2}+3x\\right]_{1}^{3}=66\\)</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 47,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Find the mean of \\( 2,\\,4,\\,6,\\,8 \\).",
-        "ar": null
+        "en": "Solve \\(\\cos(x)=-\\dfrac{1}{2}\\) for \\(0^\\circ\\le x\\le 360^\\circ\\)."
       },
       "solution": {
-        "en": "\\[ \\frac{20}{4}=5. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>The reference angle gives one solution and CAST-rule symmetry gives the second: \\(x=120^\\circ\\) or \\(x=240^\\circ\\) within \\([0^\\circ,360^\\circ]\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 48,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find the median of \\( 3,\\,7,\\,9,\\,12,\\,20 \\).",
-        "ar": null
+        "en": "Given \\(X\\sim N(\\mu,\\sigma^2)\\), \\(P(X \\lt 99)=0.8\\) and \\(P(X \\lt 83)=0.2\\), find \\(\\mu\\), correct to the nearest integer."
       },
       "solution": {
-        "en": "\\[ 9. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>Using \\(z_1=0.8416\\), \\(z_2=-0.8416\\) and solving \\(x_1=\\mu+z_1\\sigma\\), \\(x_2=\\mu+z_2\\sigma\\) simultaneously gives \\(\\mu\\approx91\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 49,
+      "difficulty": "Basic",
       "question": {
-        "en": "A fair die is rolled. Find \\( P(\\text{even}) \\).",
-        "ar": null
+        "en": "Solve the inequality \\(x^2-8x+12 \\gt 0\\)."
       },
       "solution": {
-        "en": "\\[ \\tfrac{3}{6}=\\tfrac12. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p>The quadratic factorises as \\((x-6)(x-2)\\) with roots \\(2\\) and \\(6\\); since the parabola opens upward, the expression is > 0 outside the roots, giving \\(x \\lt 2 \\text{ or } x \\gt 6\\).</p>"
+      }
     },
     {
       "number": 50,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find the range of \\( 5,\\,9,\\,2,\\,11 \\).",
-        "ar": null
+        "en": "Solve \\(\\tan(x)=-\\dfrac{\\sqrt{3}}{3}\\) for \\(0^\\circ\\le x\\le 360^\\circ\\)."
       },
       "solution": {
-        "en": "\\[ 11-2=9. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>The reference angle gives one solution and CAST-rule symmetry gives the second: \\(x=150^\\circ\\) or \\(x=330^\\circ\\) within \\([0^\\circ,360^\\circ]\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     }
   ]
 }

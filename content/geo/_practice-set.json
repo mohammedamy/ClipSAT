@@ -3,603 +3,1329 @@
   "items": [
     {
       "number": 1,
+      "difficulty": "Basic",
       "question": {
-        "en": "\\( M \\) is the midpoint of \\( \\overline{AB} \\) with \\( AB=12 \\). Find \\( AM \\).",
-        "ar": null
+        "en": "A circle has a radius of \\(6\\). A sector of the circle is formed by a central angle of \\(60^\\circ\\). What is the area of the sector?"
       },
       "solution": {
-        "en": "\\[ \\tfrac12\\times 12=6. \\]",
-        "ar": null
+        "en": "<p>The area of a sector with radius \\(r\\) and central angle \\(\\theta\\) (in degrees) is given by the formula:<br>\\[\\text{Area} = \\frac{\\theta}{360^\\circ} \\pi r^2\\]<br>Given \\(r = 6\\) and \\(\\theta = 60^\\circ\\):<br>\\[\\text{Area} = \\frac{60^\\circ}{360^\\circ} \\pi (6^2) = \\frac{1}{6} \\pi (36) = 6\\pi\\]</p><p>- \\(2\\pi\\) is incorrect because it is the arc length of the sector, \\(\\frac{60^\\circ}{360^\\circ}(2\\pi r) = \\frac{1}{6}(12\\pi) = 2\\pi\\), rather than the sector area.<br>- \\(12\\pi\\) is incorrect because it is the full circumference of the circle, \\(2\\pi r\\).<br>- \\(36\\pi\\) is incorrect because it is the total area of the entire circle, \\(\\pi r^2\\), without scaling by the sector fraction.</p>"
       },
-      "difficulty": "Basic"
+      "fig": {
+        "type": "circle",
+        "sector": {
+          "start_deg": 0,
+          "end_deg": 60,
+          "label": "60°"
+        },
+        "radius": "6"
+      }
     },
     {
       "number": 2,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Find the complement of \\( 35^{\\circ} \\).",
-        "ar": null
+        "en": "In \\(\\triangle ABC\\) shown below, point \\(D\\) is on \\(AB\\) and \\(E\\) on \\(AC\\) such that \\(\\angle ADE \\cong \\angle C\\). If \\(AD = 4\\), \\(AE = 5\\), and \\(AC = 12\\), what is the length of side \\(AB\\)?"
       },
       "solution": {
-        "en": "\\[ 90^{\\circ}-35^{\\circ}=55^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>Both \\(\\triangle ADE\\) and \\(\\triangle ACB\\) share \\(\\angle A\\), and \\(\\angle ADE \\cong \\angle C\\). By AA similarity, \\(\\triangle ADE \\sim \\triangle ACB\\) in INVERTED order! Therefore, the corresponding sides satisfy: \\(\\frac{AD}{AC} = \\frac{AE}{AB} \\implies \\frac{4}{12} = \\frac{5}{AB} \\implies \\frac{1}{3} = \\frac{5}{AB} \\implies AB = 15\\). Warning: Reflexively assuming \\(DE \\parallel BC\\) gives the incorrect distractor \\(9.6\\).</p>"
       },
-      "difficulty": "Basic"
+      "fig": {
+        "type": "overlapping_triangles",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "sides": {
+          "ad": "4",
+          "ae": "5",
+          "ac": "12",
+          "ab": "x"
+        }
+      }
     },
     {
       "number": 3,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find the supplement of \\( 110^{\\circ} \\).",
-        "ar": null
+        "en": "A right triangle has legs of lengths \\(15\\) and \\(20\\). What is the exact length of the altitude drawn perpendicular to the hypotenuse?"
       },
       "solution": {
-        "en": "\\[ 180^{\\circ}-110^{\\circ}=70^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>First compute the hypotenuse using the Pythagorean theorem: \\(c = \\sqrt{15^2 + 20^2} = \\sqrt{225 + 400} = \\sqrt{625} = 25\\). Equating the area calculated in two ways: \\(\\text{Area} = \\frac{1}{2}ab = \\frac{1}{2}ch \\implies ab = ch\\). Substituting: \\(15 \\times 20 = 25 \\cdot h \\implies 300 = 25h \\implies h = \\frac{300}{25} = 12\\).</p>"
       },
-      "difficulty": "Basic"
+      "fig": {
+        "type": "right_triangle_altitude",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "t": 0.36,
+        "b": "15",
+        "a": "20",
+        "c": "25",
+        "altitude": "h"
+      }
     },
     {
       "number": 4,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Two angles are vertical and one measures \\( 70^{\\circ} \\). Find the other.",
-        "ar": null
+        "en": "In \\(\\triangle ABC\\), \\(AD = 3\\) and \\(DB = 9\\) (so \\(AB = 12\\)); \\(AE = 4\\) and \\(EC = 5\\) (so \\(AC = 9\\)). If base \\(BC = 21\\), what is the length of segment \\(DE\\)?"
       },
       "solution": {
-        "en": "<p>Vertical angles are equal:</p>\\[ 70^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>Compare the side ratios across the shared angle \\(\\angle A\\): \\(\\frac{AD}{AC} = \\frac{3}{9} = \\frac{1}{3}\\) and \\(\\frac{AE}{AB} = \\frac{4}{12} = \\frac{1}{3}\\). Because two pairs of corresponding sides are in the same constant ratio \\(1/3\\) and include the shared angle \\(\\angle A\\), \\(\\triangle ADE \\sim \\triangle ACB\\) by SAS similarity in inverted order. Thus, \\(\\frac{DE}{BC} = \\frac{1}{3} \\implies DE = 21 \\times \\frac{1}{3} = 7\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "overlapping_triangles",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "sides": {
+          "ad": "3",
+          "db": "9",
+          "ae": "4",
+          "ec": "5",
+          "bc": "21",
+          "de": "x"
+        }
+      }
     },
     {
       "number": 5,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "An angle bisector splits an \\( 80^{\\circ} \\) angle. Find each part.",
-        "ar": null
+        "en": "A survey was conducted on students' preferred modes of transportation to school. The results are summarized in the two-way frequency table below. \\\\\n\n|                 | Bus | Bicycle | Walking | Total |\n|-----------------|-----|---------|---------|-------|\n| <strong>Under 16</strong>    | 45  | 30      | 25      | 100   |\n| <strong>16 and Over</strong> | 60  | 15      | 25      | 100   |\n| <strong>Total</strong>       | 105 | 45      | 50      | 200   |\n\nLet B be the event that a randomly selected student prefers to travel by Bus. Let U be the event that a randomly selected student is Under 16 years old. \\\\\n\nWhat is the probability that a student prefers to travel by Bus, given that they are Under 16 years old? Mathematically, this is denoted as \\(P(B|U)\\)."
       },
       "solution": {
-        "en": "\\[ \\tfrac12\\times 80^{\\circ}=40^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>We are asked to find the conditional probability \\(P(B|U)\\), which represents the probability that a student prefers to travel by Bus given that they are Under 16 years old. \\\\</p><p>The formula for conditional probability is \\(P(B|U) = \\frac{P(B \\cap U)}{P(U)}\\). \\\\</p><p>From the table:<br>- The number of students who prefer Bus AND are Under 16 (\\(B \\cap U\\)) is 45. \\\\<br>- The total number of students who are Under 16 (\\(U\\)) is 100. \\\\</p><p>Therefore, \\(P(B \\cap U) = \\frac{45}{200}\\) and \\(P(U) = \\frac{100}{200}\\). \\\\</p><p>Substituting these values into the formula:<br>\\(P(B|U) = \\frac{\\frac{45}{200}}{\\frac{100}{200}} = \\frac{45}{100} = 0.45\\). \\\\</p><p>Alternatively, we can directly use the counts from the relevant row (Under 16) as our new sample space. Out of the 100 students who are Under 16, 45 prefer the Bus. So, \\(P(B|U) = \\frac{\\text{Number of students who are Bus and Under 16}}{\\text{Number of students who are Under 16}} = \\frac{45}{100} = 0.45\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "two_way_table",
+        "data": [
+          [
+            45,
+            30,
+            25,
+            100
+          ],
+          [
+            60,
+            15,
+            25,
+            100
+          ],
+          [
+            105,
+            45,
+            50,
+            200
+          ]
+        ],
+        "rows": [
+          "Under 16",
+          "16 and Over",
+          "Total"
+        ],
+        "cols": [
+          "Bus",
+          "Bicycle",
+          "Walking",
+          "Total"
+        ]
+      }
     },
     {
       "number": 6,
+      "difficulty": "Advanced",
       "question": {
-        "en": "\\( \\angle 1 \\) and \\( \\angle 2 \\) form a linear pair with \\( \\angle 1=125^{\\circ} \\). Find \\( \\angle 2 \\).",
-        "ar": null
+        "en": "In \\(\\triangle ABC\\), points \\(M\\) and \\(N\\) are the midpoints of sides \\(AB\\) and \\(AC\\) respectively. If the area of \\(\\triangle AMN\\) is \\(18\\text{ cm}^2\\), what is the area of trapezoid \\(BMNC\\)?"
       },
       "solution": {
-        "en": "\\[ 180^{\\circ}-125^{\\circ}=55^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>By the Midsegment Theorem, segment \\(MN \\parallel BC\\) and \\(MN = \\frac{1}{2}BC\\). Thus, \\(\\triangle AMN \\sim \\triangle ABC\\) with linear scale factor \\(k = \\frac{1}{2}\\). The area ratio is \\(k^2 = (1/2)^2 = 1/4\\). Thus, \\(\\text{Area}(\\triangle ABC) = 4 \\times \\text{Area}(\\triangle AMN) = 4 \\times 18 = 72\\text{ cm}^2\\). The trapezoid's area is \\(\\text{Area}(BMNC) = 72 - 18 = 54\\text{ cm}^2\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "nested_triangles",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "M",
+          "N"
+        ],
+        "t": 0.5,
+        "sides": {
+          "ad": "m",
+          "db": "m",
+          "ae": "n",
+          "ec": "n"
+        },
+        "shade": "bottom"
+      }
     },
     {
       "number": 7,
+      "difficulty": "Basic",
       "question": {
-        "en": "Parallel lines are cut by a transversal. Find the corresponding angle to \\( 65^{\\circ} \\).",
-        "ar": null
+        "en": "In the given right triangle ABC, where angle C is the right angle, the length of side AC is 5 units and the length of side BC is 5 units. What is the exact length of the hypotenuse AB?"
       },
       "solution": {
-        "en": "<p>Corresponding angles are equal:</p>\\[ 65^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>Since triangle ABC is a right triangle with angle C = 90°, we can use the Pythagorean theorem: \\(a^2 + b^2 = c^2\\), where a and b are the lengths of the legs and c is the length of the hypotenuse.<br>Given AC = 5 and BC = 5, we have a = 5 and b = 5.<br>Therefore, \\(5^2 + 5^2 = c^2\\)<br>\\(25 + 25 = c^2\\)<br>\\(50 = c^2\\)<br>\\(c = \\sqrt{50}\\)<br>To simplify the radical, we find the largest perfect square factor of 50, which is 25.<br>\\(c = \\sqrt{25 \\cdot 2}\\)<br>\\(c = \\sqrt{25} \\cdot \\sqrt{2}\\)<br>\\(c = 5\\sqrt{2}\\)<br>Alternatively, since the two legs are equal, this is a 45°-45°-90° triangle. The ratio of the sides in a 45°-45°-90° triangle is \\(1 : 1 : \\sqrt{2}\\). If the leg length is 5, the hypotenuse is \\(5\\sqrt{2}\\).</p>"
       },
-      "difficulty": "Basic"
+      "fig": {
+        "type": "right_triangle_altitude",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "t": 0.5,
+        "p": "5",
+        "q": "5",
+        "altitude": "h_altitude"
+      }
     },
     {
       "number": 8,
+      "difficulty": "Basic",
       "question": {
-        "en": "Find the alternate interior angle to \\( 72^{\\circ} \\).",
-        "ar": null
+        "en": "In \\(\\triangle ABC\\), line segment \\(DE\\) is parallel to \\(BC\\), with point \\(D\\) lying on \\(\\overline{AB}\\) and point \\(E\\) lying on \\(\\overline{AC}\\). If \\(AD = 3\\), \\(DB = 6\\), and \\(AE = 5\\), what is the length of segment \\(\\overline{EC}\\)?"
       },
       "solution": {
-        "en": "\\[ 72^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>By the Triangle Proportionality Theorem (Side-Splitter Theorem), if a line is parallel to one side of a triangle intersecting the other two sides, it divides the two sides proportionally:</p><p>\\[\\frac{AD}{DB} = \\frac{AE}{EC}\\]</p><p>Substitute the given lengths:</p><p>\\[\\frac{3}{6} = \\frac{5}{EC}\\]</p><p>Simplify the ratio on the left:</p><p>\\[\\frac{1}{2} = \\frac{5}{EC}\\]</p><p>Cross-multiplying gives:</p><p>\\[EC = 5 \\times 2 = 10\\]</p><p>Common misconceptions:<br>- Additive reasoning: finding \\(DB - AD = 6 - 3 = 3\\) and computing \\(AE + 3 = 8\\) (Choice A).<br>- Full side length confusion: solving for \\(AC = AE + EC = 5 + 10 = 15\\) instead of \\(EC\\) (Choice D).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "nested_triangles",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "t": 0.33,
+        "sides": {
+          "ad": "3",
+          "db": "6",
+          "ae": "5",
+          "ec": "x"
+        }
+      }
     },
     {
       "number": 9,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "One co-interior angle is \\( 110^{\\circ} \\). Find the other.",
-        "ar": null
+        "en": "In the figure below, lines \\(AB\\) and \\(CD\\) are parallel with \\(AB = 10\\) and \\(CD = 15\\). Segments \\(AD\\) and \\(BC\\) intersect at point \\(E\\). If the perimeter of \\(\\triangle ABE\\) is \\(26\\), what is the perimeter of \\(\\triangle CDE\\)?"
       },
       "solution": {
-        "en": "\\[ 180^{\\circ}-110^{\\circ}=70^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>Because \\(AB \\parallel CD\\), alternate interior angles make \\(\\triangle ABE \\sim \\triangle DCE\\). The linear scale factor between \\(\\triangle CDE\\) and \\(\\triangle ABE\\) is \\(k = \\frac{CD}{AB} = \\frac{15}{10} = \\frac{3}{2} = 1.5\\). Since the ratio of perimeters of similar triangles equals the linear scale factor, \\(\\text{Perimeter}(\\triangle CDE) = 1.5 \\times 26 = 39\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "bowtie",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "sides": {
+          "ab": "10",
+          "cd": "15"
+        }
+      }
     },
     {
       "number": 10,
+      "difficulty": "Basic",
       "question": {
-        "en": "Two corresponding angles measure \\( 3x \\) and \\( 75^{\\circ} \\). Find \\( x \\).",
-        "ar": null
+        "en": "The triangle ABC is translated on the coordinate plane according to the rule \\((x, y) \\to (x - 3, y + 2)\\). If the vertices of the image triangle A'B'C' are A'(-1, 5), B'(3, 1), and C'(-2, -3), what are the coordinates of the original vertices A, B, and C?"
       },
       "solution": {
-        "en": "<p>Equal, so \\( 3x=75 \\):</p>\\[ x=25. \\]",
-        "ar": null
+        "en": "<p>The translation rule \\((x, y) \\to (x - 3, y + 2)\\) means that to find the image coordinates $(x', y')$ from the pre-image coordinates $(x, y)$, we subtract 3 from the x-coordinate and add 2 to the y-coordinate: \\(x' = x - 3\\) and \\(y' = y + 2\\). <br>To find the pre-image coordinates from the image coordinates, we reverse this process. This means we add 3 to the x-coordinate of the image and subtract 2 from the y-coordinate of the image: \\(x = x' + 3\\) and \\(y = y' - 2\\).</p><p>For vertex A': \\(x = -1 + 3 = 2\\), \\(y = 5 - 2 = 3\\). So, A(2, 3).<br>For vertex B': \\(x = 3 + 3 = 6\\), \\(y = 1 - 2 = -1\\). So, B(6, -1).<br>For vertex C': \\(x = -2 + 3 = 1\\), \\(y = -3 - 2 = -5\\). So, C(1, -5).<br>Therefore, the original vertices are A(2, 3), B(6, -1), and C(1, -5).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "transformation_grid",
+        "xmin": -6,
+        "xmax": 6,
+        "ymin": -6,
+        "ymax": 6,
+        "object": [
+          [
+            2,
+            3
+          ],
+          [
+            6,
+            -1
+          ],
+          [
+            1,
+            -5
+          ]
+        ],
+        "objectLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "image": [
+          [
+            -1,
+            5
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            -2,
+            -3
+          ]
+        ],
+        "imageLabels": [
+          "A'",
+          "B'",
+          "C'"
+        ]
+      }
     },
     {
       "number": 11,
+      "difficulty": "Basic",
       "question": {
-        "en": "Alternate angles measure \\( 2x \\) and \\( x+40 \\). Find \\( x \\).",
-        "ar": null
+        "en": "In the isosceles triangle ABC shown below, AB = AC. If the measure of angle BAC is \\(52^\\circ\\), what is the measure of angle ABC?"
       },
       "solution": {
-        "en": "<p>\\( 2x=x+40 \\):</p>\\[ x=40. \\]",
-        "ar": null
+        "en": "<p>In triangle ABC, AB = AC, which means triangle ABC is an isosceles triangle with base BC. Therefore, the base angles ABC and ACB are equal. The sum of the interior angles of a triangle is \\(180^\\circ\\). So, \\(\\angle BAC + \\angle ABC + \\angle ACB = 180^\\circ\\). We are given that \\(\\angle BAC = 52^\\circ\\). Let \\(x = \\angle ABC = \\angle ACB\\). Then, \\(52^\\circ + x + x = 180^\\circ\\). \\(52^\\circ + 2x = 180^\\circ\\). Subtracting \\(52^\\circ\\) from both sides: \\(2x = 180^\\circ - 52^\\circ\\). \\(2x = 128^\\circ\\). Dividing by 2: \\(x = \\frac{128^\\circ}{2} = 64^\\circ\\). Therefore, the measure of angle ABC is \\(64^\\circ\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "triangle",
+        "vertices": [
+          [
+            100,
+            50
+          ],
+          [
+            20,
+            150
+          ],
+          [
+            180,
+            150
+          ]
+        ],
+        "labels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sides": [
+          "x",
+          "x",
+          "10"
+        ],
+        "angles": [
+          "52°",
+          "",
+          ""
+        ]
+      }
     },
     {
       "number": 12,
+      "difficulty": "Basic",
       "question": {
-        "en": "Angles on a straight line are \\( 120^{\\circ} \\) and \\( x \\). Find \\( x \\).",
-        "ar": null
+        "en": "In the given circle, the central angle \\(\\angle{AOB}\\) measures \\(120^{\\circ}\\). What is the measure of the inscribed angle \\(\\angle{ACB}\\) that subtends the same arc AB?"
       },
       "solution": {
-        "en": "\\[ 180^{\\circ}-120^{\\circ}=60^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>The relationship between a central angle and an inscribed angle that subtend the same arc is that the inscribed angle is half the measure of the central angle. <br>\\nGiven: Central angle \\(\\angle{AOB} = 120^{\\circ}\\). \\nWe want to find the inscribed angle \\(\\angle{ACB}\\). <br>\\nAccording to the theorem, \\(\\angle{ACB} = \\frac{1}{2} \\angle{AOB}\\). \\nSubstituting the given value: \\(\\angle{ACB} = \\frac{1}{2} (120^{\\circ}) = 60^{\\circ}\\). \\nTherefore, the measure of the inscribed angle \\(\\angle{ACB}\\) is \\(60^{\\circ}\\).</p>"
       },
-      "difficulty": "Basic"
+      "fig": {
+        "type": "circle",
+        "sector": {
+          "start_deg": 0,
+          "end_deg": 120,
+          "label": "120°"
+        },
+        "central_angle_label": "\\(\\angle{AOB} = 120^{\\circ}\\)",
+        "inscribed_angle_label": "\\(\\angle{ACB}\\)",
+        "labels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "radius": "6"
+      }
     },
     {
       "number": 13,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Two angles of a triangle are \\( 40^{\\circ} \\) and \\( 60^{\\circ} \\). Find the third.",
-        "ar": null
+        "en": "Trapezoid \\(ABCD\\) has parallel bases \\(AB = 6\\) and \\(CD = 14\\). The diagonals \\(AC\\) and \\(BD\\) intersect at point \\(P\\). What is the ratio of \\(\\text{Area}(\\triangle APB)\\) to \\(\\text{Area}(\\triangle CPD)\\)?"
       },
       "solution": {
-        "en": "\\[ 180^{\\circ}-40^{\\circ}-60^{\\circ}=80^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>Because \\(AB \\parallel CD\\), alternate interior angles and vertical angles prove that \\(\\triangle APB \\sim \\triangle CPD\\). The linear scale factor is \\(k = \\frac{AB}{CD} = \\frac{6}{14} = \\frac{3}{7}\\). The ratio of their areas equals the square of the linear scale factor: \\(k^2 = \\left(\\frac{3}{7}\\right)^2 = \\frac{9}{49}\\).</p>"
       },
-      "difficulty": "Basic"
+      "fig": {
+        "type": "trapezoid_diagonals",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "P"
+        ],
+        "sides": {
+          "ab": "6",
+          "cd": "14"
+        }
+      }
     },
     {
       "number": 14,
+      "difficulty": "Advanced",
       "question": {
-        "en": "An isosceles triangle has an apex angle of \\( 40^{\\circ} \\). Find each base angle.",
-        "ar": null
+        "en": "In \\(\\triangle ABC\\), point \\(D\\) lies on \\(AB\\) and \\(E\\) on \\(AC\\) such that \\(\\angle AED \\cong \\angle B\\). If \\(AE = 6\\), \\(AD = 8\\), \\(AC = 18\\), and base \\(BC = 27\\), what is the length of segment \\(DE\\)?"
       },
       "solution": {
-        "en": "<p>Base angles are equal: \\( \\tfrac{180^{\\circ}-40^{\\circ}}{2} \\):</p>\\[ 70^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>Since \\(\\angle A\\) is shared and \\(\\angle AED \\cong \\angle B\\), \\(\\triangle AED \\sim \\triangle ABC\\) by AA similarity. The ratio of corresponding sides is \\(\\frac{DE}{BC} = \\frac{AD}{AC}\\). Substituting the known lengths: \\(\\frac{DE}{27} = \\frac{8}{18} = \\frac{4}{9} \\implies DE = 27 \\times \\frac{4}{9} = 12\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "overlapping_triangles",
+        "labels": [
+          "A",
+          "C",
+          "B",
+          "E",
+          "D"
+        ],
+        "sides": {
+          "ae": "6",
+          "ad": "8",
+          "ac": "18",
+          "bc": "27",
+          "de": "x"
+        }
+      }
     },
     {
       "number": 15,
+      "difficulty": "Basic",
       "question": {
-        "en": "State the measure of each angle in an equilateral triangle.",
-        "ar": null
+        "en": "In the hourglass figure below, segment \\(AB \\parallel CD\\), and segments \\(AC\\) and \\(BD\\) intersect at \\(E\\). If \\(AB = 8\\), \\(CD = 12\\), and \\(AE = 6\\), what is the length of segment \\(CE\\)?"
       },
       "solution": {
-        "en": "\\[ \\frac{180^{\\circ}}{3}=60^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>Because \\(AB \\parallel CD\\), alternate interior angles \\(\\angle A \\cong \\angle C\\) and \\(\\angle B \\cong \\angle D\\) combined with vertical angles at \\(E\\) prove that \\(\\triangle ABE \\sim \\triangle CDE\\). Setting up the ratio of corresponding sides: \\(\\frac{AE}{CE} = \\frac{AB}{CD} \\implies \\frac{6}{CE} = \\frac{8}{12} = \\frac{2}{3} \\implies CE = \\frac{6 \\times 3}{2} = 9\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "bowtie",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "ratio": 0.67,
+        "sides": {
+          "ab": "8",
+          "cd": "12",
+          "ae": "6",
+          "ec": "x"
+        }
+      }
     },
     {
       "number": 16,
+      "difficulty": "Advanced",
       "question": {
-        "en": "An exterior angle of a triangle has remote interior angles \\( 50^{\\circ} \\) and \\( 60^{\\circ} \\). Find it.",
-        "ar": null
+        "en": "Chords \\(AB\\) and \\(CD\\) intersect inside a circle at point \\(P\\). The segments on chord \\(AB\\) measure \\(PA = x\\) and \\(PB = x + 7\\). The segments on chord \\(CD\\) measure \\(PC = 3\\) and \\(PD = 6\\). What is the total length of chord \\(AB\\)?"
       },
       "solution": {
-        "en": "<p>Exterior angle = sum of remote interior angles:</p>\\[ 50^{\\circ}+60^{\\circ}=110^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>By the Intersecting Chords Theorem: \\(PA \\cdot PB = PC \\cdot PD \\implies x(x + 7) = 3 \\times 6 = 18 \\implies x^2 + 7x - 18 = 0\\). Factoring: \\((x + 9)(x - 2) = 0\\). Since length must be positive, \\(x = 2\\). Therefore, \\(PA = 2\\) and \\(PB = 2 + 7 = 9\\). The total length of chord \\(AB = PA + PB = 2 + 9 = 11\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "circle_chords_similarity",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "P"
+        ],
+        "sides": {
+          "pc": "3",
+          "pd": "6"
+        }
+      }
     },
     {
       "number": 17,
+      "difficulty": "Advanced",
       "question": {
-        "en": "A right triangle has one acute angle of \\( 35^{\\circ} \\). Find the other acute angle.",
-        "ar": null
+        "en": "In \\(\\triangle ABC\\), \\(\\angle ADE \\cong \\angle C\\) with \\(AD = 5\\) and \\(AC = 15\\). If the total area of \\(\\triangle ABC\\) is \\(108\\), what is the area of quadrilateral \\(BDEC\\)?"
       },
       "solution": {
-        "en": "\\[ 90^{\\circ}-35^{\\circ}=55^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>Because \\(\\triangle ADE \\sim \\triangle ACB\\), the linear ratio is \\(k = \\frac{AD}{AC} = \\frac{5}{15} = \\frac{1}{3}\\). The area ratio is \\(k^2 = (1/3)^2 = 1/9\\). Thus, \\(\\text{Area}(\\triangle ADE) = \\frac{1}{9} \\times 108 = 12\\). The area of quadrilateral \\(BDEC = \\text{Area}(\\triangle ABC) - \\text{Area}(\\triangle ADE) = 108 - 12 = 96\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "overlapping_triangles",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "sides": {
+          "ad": "5",
+          "ac": "15"
+        }
+      }
     },
     {
       "number": 18,
+      "difficulty": "Basic",
       "question": {
-        "en": "A triangle has angles \\( x \\), \\( x \\) and \\( 80^{\\circ} \\). Find \\( x \\).",
-        "ar": null
+        "en": "In right triangle \\(ABC\\), \\(\\angle B = 90^\\circ\\), \\(\\angle A = 60^\\circ\\), and the length of side \\(AB\\) is \\(5\\). What is the length of side \\(BC\\)?"
       },
       "solution": {
-        "en": "<p>\\( 2x+80=180 \\):</p>\\[ x=50. \\]",
-        "ar": null
+        "en": "<p>In right triangle \\(ABC\\), the sum of the angles is \\(180^\\circ\\), so:<br>\\[\\angle C = 180^\\circ - 90^\\circ - 60^\\circ = 30^\\circ\\]<br>This is a \\(30^\\circ\\text{-}60^\\circ\\text{-}90^\\circ\\) special right triangle. The lengths of the sides opposite the angles \\(30^\\circ\\), \\(60^\\circ\\), and \\(90^\\circ\\) are in the ratio \\(1 : \\sqrt{3} : 2\\).</p><p>Side \\(AB\\) is opposite the \\(30^\\circ\\) angle, making it the shorter leg with length \\(5\\). Side \\(BC\\) is opposite the \\(60^\\circ\\) angle, which is the longer leg. Therefore:<br>\\[BC = AB \\cdot \\sqrt{3} = 5\\sqrt{3}\\]</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "triangle",
+        "vertices": [
+          [
+            50,
+            150
+          ],
+          [
+            200,
+            150
+          ],
+          [
+            50,
+            63
+          ]
+        ],
+        "labels": [
+          "B",
+          "C",
+          "A"
+        ],
+        "sides": [
+          "",
+          "",
+          "5"
+        ],
+        "angles": [
+          "",
+          "30°",
+          "60°"
+        ]
+      }
     },
     {
       "number": 19,
+      "difficulty": "Advanced",
       "question": {
-        "en": "The angles of a triangle are in the ratio \\( 1:2:3 \\). Find the largest.",
-        "ar": null
+        "en": "The diagonals of trapezoid \\(ABCD\\) with \\(AB \\parallel CD\\) intersect at \\(P\\). If \\(\\text{Area}(\\triangle APB) = 16\\) and \\(\\text{Area}(\\triangle CPD) = 49\\), what is the total area of trapezoid \\(ABCD\\)?"
       },
       "solution": {
-        "en": "<p>Six parts \\( =180^{\\circ} \\), one part \\( =30^{\\circ} \\); largest is 3 parts:</p>\\[ 90^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>Because \\(\\triangle APB \\sim \\triangle CPD\\), the ratio of areas is \\(16/49 = (4/7)^2\\). For any trapezoid, the side triangles have equal area given by the geometric mean of the base triangles: \\(\\text{Area}(\\triangle APD) = \\text{Area}(\\triangle BPC) = \\sqrt{16 \\times 49} = 4 \\times 7 = 28\\). The total area of the trapezoid is \\(16 + 49 + 28 + 28 = 121\\) (which equals \\((4 + 7)^2 = 11^2 = 121\\)).</p>"
       },
-      "difficulty": "Advanced"
+      "fig": {
+        "type": "trapezoid_diagonals",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "P"
+        ],
+        "sides": {
+          "ab": "4",
+          "cd": "7"
+        }
+      }
     },
     {
       "number": 20,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "State the sum of the exterior angles of any triangle.",
-        "ar": null
+        "en": "In \\(\\triangle ABC\\), segment \\(DE \\parallel BC\\). The segment lengths are \\(AD = x\\), \\(DB = x + 3\\), \\(AE = x + 2\\), and \\(EC = x + 7\\). What is the value of \\(x\\)?"
       },
       "solution": {
-        "en": "\\[ 360^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>By the Triangle Proportionality Theorem, \\(\\frac{AD}{DB} = \\frac{AE}{EC} \\implies \\frac{x}{x+3} = \\frac{x+2}{x+7}\\). Cross-multiplying: \\(x(x+7) = (x+3)(x+2) \\implies x^2 + 7x = x^2 + 5x + 6\\). Subtracting \\(x^2\\) from both sides gives \\(7x = 5x + 6 \\implies 2x = 6 \\implies x = 3\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "nested_triangles",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "t": 0.45,
+        "sides": {
+          "ad": "x",
+          "db": "x+3",
+          "ae": "x+2",
+          "ec": "x+7"
+        }
+      }
     },
     {
       "number": 21,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Two similar triangles have scale factor 2. A side of the small one is 5. Find the matching side of the large one.",
-        "ar": null
+        "en": "In \\(\\triangle ABC\\), \\(DE \\parallel BC\\) with \\(D\\) on \\(AB\\) and \\(E\\) on \\(AC\\). If \\(AD = 4\\) and \\(AB = 10\\), what fraction of the area of \\(\\triangle ABC\\) is occupied by trapezoid \\(BDEC\\)?"
       },
       "solution": {
-        "en": "\\[ 5\\times 2=10. \\]",
-        "ar": null
+        "en": "<p>Since \\(DE \\parallel BC\\), \\(\\triangle ADE \\sim \\triangle ABC\\) with linear scale factor \\(k = \\frac{AD}{AB} = \\frac{4}{10} = \\frac{2}{5}\\). The ratio of the area of \\(\\triangle ADE\\) to the area of \\(\\triangle ABC\\) is \\(k^2 = (2/5)^2 = 4/25\\). The area of trapezoid \\(BDEC\\) is the remaining fraction: \\(1 - \\frac{4}{25} = \\frac{21}{25}\\).</p>"
       },
-      "difficulty": "Basic"
+      "fig": {
+        "type": "nested_triangles",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "t": 0.4,
+        "sides": {
+          "ad": "4",
+          "ab": "10"
+        },
+        "shade": "bottom"
+      }
     },
     {
       "number": 22,
+      "difficulty": "Basic",
       "question": {
-        "en": "Similar triangles satisfy \\( \\dfrac{3}{6}=\\dfrac{x}{8} \\). Find \\( x \\).",
-        "ar": null
+        "en": "\\(\\triangle ABC\\) and \\(\\triangle DEF\\) are shown below with \\(\\angle A \\cong \\angle D = 55^\\circ\\). If \\(AB = 6\\), \\(AC = 10\\), \\(DE = 9\\), and \\(DF = 15\\), which similarity criterion applies and what is the scale factor from \\(\\triangle ABC\\) to \\(\\triangle DEF\\)?"
       },
       "solution": {
-        "en": "\\[ x=\\frac{3\\times 8}{6}=4. \\]",
-        "ar": null
+        "en": "<p>Check the ratio of corresponding sides adjacent to the congruent included angle: \\(\\frac{DE}{AB} = \\frac{9}{6} = 1.5\\) and \\(\\frac{DF}{AC} = \\frac{15}{10} = 1.5\\). Since two pairs of corresponding sides are in the same constant ratio and their included angles are congruent (\\(\\angle A \\cong \\angle D\\)), \\(\\triangle ABC \\sim \\triangle DEF\\) by SAS similarity with scale factor \\(k = 1.5\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "similar",
+        "vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            8,
+            0
+          ],
+          [
+            4,
+            6
+          ]
+        ],
+        "ratio": 0.67,
+        "left": {
+          "labels": [
+            "A",
+            "B",
+            "C"
+          ],
+          "sides": [
+            "6",
+            "",
+            "10"
+          ],
+          "angles": [
+            "55°",
+            "",
+            ""
+          ],
+          "caption": "△ABC"
+        },
+        "right": {
+          "labels": [
+            "D",
+            "E",
+            "F"
+          ],
+          "sides": [
+            "9",
+            "",
+            "15"
+          ],
+          "angles": [
+            "55°",
+            "",
+            ""
+          ],
+          "caption": "△DEF"
+        },
+        "tilde": true
+      }
     },
     {
       "number": 23,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Two similar figures have side ratio \\( 1:3 \\). Find the ratio of their areas.",
-        "ar": null
+        "en": "In the diagram below, two chords, \\(AB\\) and \\(CD\\), intersect at point \\(P\\) inside a circle. If \\(AP = 5\\) cm, \\(PB = 8\\) cm, and \\(CP = 4\\) cm, what is the length of \\(PD\\) in cm?"
       },
       "solution": {
-        "en": "\\[ 1^{2}:3^{2}=1:9. \\]",
-        "ar": null
+        "en": "<p>According to the Power of a Point theorem for intersecting chords, the product of the segments of one chord is equal to the product of the segments of the other chord.  In this case, \\(AP \\cdot PB = CP \\cdot PD\\). We are given \\(AP = 5\\) cm, \\(PB = 8\\) cm, and \\(CP = 4\\) cm. Substituting these values into the equation, we get \\(5 \\cdot 8 = 4 \\cdot PD\\). This simplifies to \\(40 = 4 \\cdot PD\\). Dividing both sides by 4, we find \\(PD = 10\\) cm. Therefore, the length of \\(PD\\) is 10 cm.</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "circle_chords_similarity",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "P"
+        ],
+        "sides": {
+          "pa": "5",
+          "pb": "8",
+          "pc": "4",
+          "pd": "x"
+        }
+      }
     },
     {
       "number": 24,
+      "difficulty": "Basic",
       "question": {
-        "en": "A \\( 6 \\)-ft person casts a \\( 4 \\)-ft shadow; a tree casts a \\( 20 \\)-ft shadow. Find the tree's height.",
-        "ar": null
+        "en": "In \\(\\triangle ABC\\), segment \\(DE \\parallel BC\\). If \\(AD = 8\\), \\(DB = 4\\), and \\(AC = 18\\), what is the length of segment \\(AE\\)?"
       },
       "solution": {
-        "en": "\\[ \\frac{6}{4}=\\frac{h}{20}\\Rightarrow h=30\\ \\text{ft}. \\]",
-        "ar": null
+        "en": "<p>Total length \\(AB = AD + DB = 8 + 4 = 12\\). The ratio of \\(AD\\) to \\(AB\\) is \\(\\frac{AD}{AB} = \\frac{8}{12} = \\frac{2}{3}\\). By similarity, \\(\\frac{AE}{AC} = \\frac{AD}{AB} = \\frac{2}{3}\\). Therefore, \\(AE = 18 \\times \\frac{2}{3} = 12\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "nested_triangles",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "t": 0.67,
+        "sides": {
+          "ad": "8",
+          "db": "4",
+          "ac": "18",
+          "ae": "x"
+        }
+      }
     },
     {
       "number": 25,
+      "difficulty": "Basic",
       "question": {
-        "en": "In similar triangles, sides 4 and 10 correspond. A second side of the small triangle is 6. Find its match.",
-        "ar": null
+        "en": "On a number line, point \\(A\\) is at \\(-3\\), and point \\(B\\) is at \\(7\\). Point \\(M\\) is the midpoint of segment \\(\\overline{AB}\\). What is the coordinate of point \\(M\\)?"
       },
       "solution": {
-        "en": "<p>Scale factor \\( \\tfrac{10}{4}=2.5 \\):</p>\\[ 6\\times 2.5=15. \\]",
-        "ar": null
+        "en": "<p>The midpoint \\(M\\) of a segment with endpoints \\(A\\) and \\(B\\) on a number line is found using the formula: \\[M = \\frac{A + B}{2}\\]. Given that \\(A = -3\\) and \\(B = 7\\), we substitute these values into the formula:<br>\\[M = \\frac{-3 + 7}{2} = \\frac{4}{2} = 2\\]. Therefore, the coordinate of point \\(M\\) is \\(2\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "numberline",
+        "min": -5,
+        "max": 10,
+        "marks": [
+          -3,
+          7
+        ],
+        "range": [
+          -3,
+          7
+        ],
+        "closed": true
+      }
     },
     {
       "number": 26,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Two similar solids have scale factor 3. By what factor does the area scale?",
-        "ar": null
+        "en": "In the bowtie figure with \\(AB \\parallel CD\\), segments \\(AC\\) and \\(BD\\) intersect at \\(E\\). If \\(AB = 10\\), \\(CD = 15\\), and the entire segment \\(BD = 35\\), what is the length of segment \\(BE\\)?"
       },
       "solution": {
-        "en": "\\[ 3^{2}=9. \\]",
-        "ar": null
+        "en": "<p>Since \\(AB \\parallel CD\\), \\(\\triangle ABE \\sim \\triangle CDE\\). The ratio of corresponding sides is \\(\\frac{BE}{ED} = \\frac{AB}{CD} = \\frac{10}{15} = \\frac{2}{3}\\). The total length \\(BD = BE + ED = 35\\). Therefore, \\(BE = 35 \\times \\frac{2}{2+3} = 35 \\times \\frac{2}{5} = 14\\).</p>"
       },
-      "difficulty": "Advanced"
+      "fig": {
+        "type": "bowtie",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "ratio": 0.67,
+        "sides": {
+          "ab": "10",
+          "cd": "15"
+        }
+      }
     },
     {
       "number": 27,
+      "difficulty": "Basic",
       "question": {
-        "en": "A right triangle has legs 3 and 4. Find the hypotenuse.",
-        "ar": null
+        "en": "A 5.5-foot-tall surveyor casts a 4.4-foot shadow on level ground. At the exact same moment, a nearby radio antenna tower casts a 36-foot shadow. How tall is the antenna tower?"
       },
       "solution": {
-        "en": "\\[ \\sqrt{3^{2}+4^{2}}=5. \\]",
-        "ar": null
+        "en": "<p>Sunlight rays strike level ground at the same angle of elevation, creating similar right triangles between objects and their shadows: \\(\\frac{\\text{Height}}{\\text{Shadow}} = \\frac{5.5}{4.4} = 1.25\\). For the tower: \\(\\frac{H}{36} = 1.25 \\implies H = 36 \\times 1.25 = 45\\text{ ft}\\).</p>"
       },
-      "difficulty": "Basic"
+      "fig": {
+        "type": "shadow_similarity",
+        "obj1": {
+          "label": "Surveyor",
+          "height": "5.5 ft",
+          "shadow": "4.4 ft"
+        },
+        "obj2": {
+          "label": "Tower",
+          "height": "h",
+          "shadow": "36 ft"
+        },
+        "angle_label": "θ"
+      }
     },
     {
       "number": 28,
+      "difficulty": "Advanced",
       "question": {
-        "en": "A right triangle has legs 5 and 12. Find the hypotenuse.",
-        "ar": null
+        "en": "In the figure below with \\(AB \\parallel CD\\), \\(\\text{Area}(\\triangle ABE) = 36\\) and \\(\\text{Area}(\\triangle CDE) = 81\\). If base \\(AB = 10\\), what is the length of base \\(CD\\)?"
       },
       "solution": {
-        "en": "\\[ \\sqrt{5^{2}+12^{2}}=\\sqrt{169}=13. \\]",
-        "ar": null
+        "en": "<p>Because \\(\\triangle ABE \\sim \\triangle CDE\\), the ratio of their areas equals the square of the linear scale factor: \\(\\frac{\\text{Area}(\\triangle CDE)}{\\text{Area}(\\triangle ABE)} = \\frac{81}{36} = \\frac{9}{4} = k^2\\). Taking the square root gives \\(k = \\sqrt{\\frac{9}{4}} = \\frac{3}{2}\\). Therefore, \\(CD = k \\cdot AB = \\frac{3}{2} \\times 10 = 15\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "bowtie",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "ratio": 0.67,
+        "sides": {
+          "ab": "10",
+          "cd": "x"
+        }
+      }
     },
     {
       "number": 29,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "In a \\( 45\\text{–}45\\text{–}90 \\) triangle each leg is 1. Find the hypotenuse.",
-        "ar": null
+        "en": "In \\(\\triangle ABC\\), segment \\(DE \\parallel BC\\) with \\(D\\) on \\(AB\\) and \\(E\\) on \\(AC\\). If \\(AD = 5\\), \\(DB = 10\\), and \\(DE = 7\\), what is the length of base \\(BC\\)?"
       },
       "solution": {
-        "en": "\\[ \\sqrt{1^{2}+1^{2}}=\\sqrt2. \\]",
-        "ar": null
+        "en": "<p>Because \\(DE \\parallel BC\\), \\(\\triangle ADE \\sim \\triangle ABC\\) by AA. The parallel bases correspond to full triangle sides from vertex \\(A\\): \\(AB = AD + DB = 5 + 10 = 15\\). Setting up the whole-to-part ratio: \\(\\frac{DE}{BC} = \\frac{AD}{AB} \\implies \\frac{7}{BC} = \\frac{5}{15} = \\frac{1}{3} \\implies BC = 7 \\times 3 = 21\\). Note: Using part-to-part \\(5/10\\) gives the distractor 14.</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "nested_triangles",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "t": 0.33,
+        "sides": {
+          "ad": "5",
+          "db": "10",
+          "de": "7",
+          "bc": "x"
+        }
+      }
     },
     {
       "number": 30,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "In a \\( 30\\text{–}60\\text{–}90 \\) triangle the short leg is 1. Find the hypotenuse.",
-        "ar": null
+        "en": "In an hourglass figure with \\(AB \\parallel CD\\), \\(\\angle BAE = 38^\\circ\\) and \\(\\angle AEB = 84^\\circ\\). What is the measure of \\(\\angle EDC\\)?"
       },
       "solution": {
-        "en": "\\[ 2. \\]",
-        "ar": null
+        "en": "<p>In \\(\\triangle ABE\\), the angle sum is \\(180^\\circ\\): \\(\\angle ABE = 180^\\circ - 38^\\circ - 84^\\circ = 58^\\circ\\). Because lines \\(AB\\) and \\(CD\\) are parallel, alternate interior angles are equal: \\(\\angle EDC = \\angle ABE = 58^\\circ\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "bowtie",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "ratio": 0.7
+      }
     },
     {
       "number": 31,
+      "difficulty": "Advanced",
       "question": {
-        "en": "A right triangle has hypotenuse 10 and one leg 6. Find the other leg.",
-        "ar": null
+        "en": "In \\(\\triangle ABC\\), ray \\(AD\\) bisects \\(\\angle A\\). If \\(AB = x\\), \\(AC = x + 4\\), \\(BD = 4\\), and \\(DC = 6\\), what is the length of side \\(AC\\)?"
       },
       "solution": {
-        "en": "\\[ \\sqrt{10^{2}-6^{2}}=\\sqrt{64}=8. \\]",
-        "ar": null
+        "en": "<p>Apply the Angle Bisector Theorem: \\(\\frac{BD}{DC} = \\frac{AB}{AC} \\implies \\frac{4}{6} = \\frac{x}{x+4} \\implies \\frac{2}{3} = \\frac{x}{x+4}\\). Cross-multiplying: \\(2(x+4) = 3x \\implies 2x + 8 = 3x \\implies x = 8\\). Side \\(AC = x + 4 = 8 + 4 = 12\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "angle_bisector",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "sides": {
+          "bd": "4",
+          "dc": "6",
+          "ab": "x",
+          "ac": "x+4"
+        }
+      }
     },
     {
       "number": 32,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Evaluate \\( \\sin 30^{\\circ} \\).",
-        "ar": null
+        "en": "A civil engineer measures the width of a river \\(BC\\) by setting up parallel stakes such that \\(DE \\parallel BC\\). Point \\(D\\) is on line \\(AB\\) and \\(E\\) is on line \\(AC\\). If \\(AD = 45\\text{ m}\\), \\(DB = 75\\text{ m}\\), and \\(DE = 36\\text{ m}\\), what is the width of the river \\(BC\\)?"
       },
       "solution": {
-        "en": "\\[ \\tfrac12. \\]",
-        "ar": null
+        "en": "<p>First compute the total line length: \\(AB = AD + DB = 45 + 75 = 120\\text{ m}\\). Because \\(DE \\parallel BC\\), \\(\\triangle ADE \\sim \\triangle ABC\\). The proportion of corresponding sides is \\(\\frac{DE}{BC} = \\frac{AD}{AB} \\implies \\frac{36}{BC} = \\frac{45}{120} = \\frac{3}{8}\\). Cross-multiplying: \\(3 \\cdot BC = 36 \\times 8 = 288 \\implies BC = 96\\text{ m}\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "nested_triangles",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "t": 0.375,
+        "sides": {
+          "ad": "45 m",
+          "db": "75 m",
+          "de": "36 m",
+          "bc": "x"
+        }
+      }
     },
     {
       "number": 33,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Evaluate \\( \\cos 60^{\\circ} \\).",
-        "ar": null
+        "en": "In \\(\\triangle ABC\\), a transversal segment \\(DE\\) connects side \\(AB\\) at \\(D\\) and side \\(AC\\) at \\(E\\) such that \\(\\angle ADE = \\angle C\\). If \\(AD = 3\\), \\(AC = 9\\), and the area of \\(\\triangle ADE\\) is \\(8\\), what is the area of quadrilateral \\(BDEC\\)?"
       },
       "solution": {
-        "en": "\\[ \\tfrac12. \\]",
-        "ar": null
+        "en": "<p>Because \\(\\angle ADE = \\angle C\\) and both triangles share \\(\\angle A\\), \\(\\triangle ADE \\sim \\triangle ACB\\) by AA. The linear scale factor from the small triangle to the large triangle is \\(k = \\frac{AC}{AD} = \\frac{9}{3} = 3\\). The ratio of their areas is \\(k^2 = 3^2 = 9\\). Thus, \\(\\text{Area}(\\triangle ABC) = 9 \\times \\text{Area}(\\triangle ADE) = 9 \\times 8 = 72\\). The area of quadrilateral \\(BDEC = \\text{Area}(\\triangle ABC) - \\text{Area}(\\triangle ADE) = 72 - 8 = 64\\).</p>"
       },
-      "difficulty": "Advanced"
+      "fig": {
+        "type": "overlapping_triangles",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "sides": {
+          "ad": "3",
+          "ac": "9"
+        }
+      }
     },
     {
       "number": 34,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find the sum of the interior angles of a quadrilateral.",
-        "ar": null
+        "en": "Consider the line \\(L\\) with the equation \\(3x - 4y + 15 = 0\\). A point \\(P\\) has coordinates $(5, -2)$. Calculate the shortest perpendicular distance from point \\(P\\) to line \\(L\\)."
       },
       "solution": {
-        "en": "\\[ (4-2)\\times 180^{\\circ}=360^{\\circ}. \\]",
-        "ar": null
-      },
-      "difficulty": "Basic"
+        "en": "<p>The formula for the shortest perpendicular distance from a point \\((x_0, y_0)\\) to a line \\(Ax + By + C = 0\\) is given by \\(d = \\frac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}\\).<br>In this problem, the point \\(P\\) has coordinates \\((x_0, y_0) = (5, -2)\\) and the line \\(L\\) is \\(3x - 4y + 15 = 0\\). Thus, \\(A = 3\\), \\(B = -4\\), and \\(C = 15\\).<br>Substituting these values into the distance formula:<br>\\(d = \\frac{|(3)(5) + (-4)(-2) + 15|}{\\sqrt{3^2 + (-4)^2}}\\)<br>\\(d = \\frac{|15 + 8 + 15|}{\\sqrt{9 + 16}}\\)<br>\\(d = \\frac{|38|}{\\sqrt{25}}\\)<br>\\(d = \\frac{38}{5}\\)<br>Therefore, the shortest perpendicular distance from point \\(P\\) to line \\(L\\) is \\(\\frac{38}{5}\\).</p>"
+      }
     },
     {
       "number": 35,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find each interior angle of a regular hexagon.",
-        "ar": null
+        "en": "In trapezoid \\(ABCD\\) with \\(AB \\parallel CD\\), \\(AB = 8\\) and \\(CD = 12\\). The diagonals intersect at \\(P\\). If the entire diagonal \\(AC = 30\\), what is the length of segment \\(AP\\)?"
       },
       "solution": {
-        "en": "\\[ \\frac{(6-2)\\times 180^{\\circ}}{6}=120^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>Because \\(\\triangle APB \\sim \\triangle CPD\\), corresponding segments along the diagonal satisfy \\(\\frac{AP}{PC} = \\frac{AB}{CD} = \\frac{8}{12} = \\frac{2}{3}\\). The total length is \\(AC = AP + PC = 30\\). Thus, \\(AP = 30 \\times \\frac{2}{2+3} = 30 \\times \\frac{2}{5} = 12\\) (and \\(PC = 18\\)).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "trapezoid_diagonals",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "P"
+        ],
+        "sides": {
+          "ab": "8",
+          "cd": "12"
+        }
+      }
     },
     {
       "number": 36,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find the sum of the interior angles of an octagon.",
-        "ar": null
+        "en": "In right \\(\\triangle ABC\\), altitude \\(CD\\) to hypotenuse \\(AB\\) measures \\(6\\), and the entire hypotenuse \\(AB = 13\\). What is the length of the longer of the two segments into which \\(D\\) divides \\(AB\\)?"
       },
       "solution": {
-        "en": "\\[ (8-2)\\times 180^{\\circ}=1080^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>Let the two segments be \\(p\\) and \\(q\\). We know \\(p + q = 13\\) and \\(p \\cdot q = CD^2 = 6^2 = 36\\). These are the roots of the quadratic equation \\(t^2 - 13t + 36 = 0\\). Factoring: \\((t - 4)(t - 9) = 0\\). The segments are \\(4\\) and \\(9\\). The longer segment is \\(9\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "right_triangle_altitude",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "t": 0.308,
+        "altitude": "6",
+        "c": "13"
+      }
     },
     {
       "number": 37,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "In a parallelogram one angle is \\( 70^{\\circ} \\). Find its opposite angle.",
-        "ar": null
+        "en": "In right \\(\\triangle ABC\\) with altitude \\(CD \\perp AB\\), \\(AD = 2\\) and \\(DB = 8\\). What is the ratio of the legs \\(\\frac{AC}{BC}\\)?"
       },
       "solution": {
-        "en": "<p>Opposite angles of a parallelogram are equal:</p>\\[ 70^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>By the Geometric Mean Leg Theorems: \\(AC^2 = AB \\cdot AD\\) and \\(BC^2 = AB \\cdot DB\\). Dividing the two equations: \\(\\frac{AC^2}{BC^2} = \\frac{AD}{DB} = \\frac{2}{8} = \\frac{1}{4}\\). Taking the square root gives \\(\\frac{AC}{BC} = \\sqrt{\\frac{1}{4}} = \\frac{1}{2}\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "right_triangle_altitude",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "t": 0.2,
+        "p": "2",
+        "q": "8"
+      }
     },
     {
       "number": 38,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "A rectangle has one diagonal of length 10. Find the length of the other diagonal.",
-        "ar": null
+        "en": "In an hourglass figure where \\(AB \\parallel CD\\) with intersection at \\(E\\), \\(AE = 2x + 1\\), \\(EC = 5x - 4\\), \\(BE = 6\\), and \\(ED = 9\\). What is the value of \\(x\\)?"
       },
       "solution": {
-        "en": "<p>A rectangle's diagonals are equal:</p>\\[ 10. \\]",
-        "ar": null
+        "en": "<p>By similarity \\(\\triangle ABE \\sim \\triangle CDE\\): \\(\\frac{AE}{EC} = \\frac{BE}{ED} \\implies \\frac{2x+1}{5x-4} = \\frac{6}{9} = \\frac{2}{3}\\). Cross-multiplying: \\(3(2x + 1) = 2(5x - 4) \\implies 6x + 3 = 10x - 8 \\implies 4x = 11 \\implies x = \\frac{11}{4} = 2.75\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "bowtie",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "ratio": 0.67,
+        "sides": {
+          "be": "6",
+          "ed": "9",
+          "ae": "2x+1",
+          "ec": "5x-4"
+        }
+      }
     },
     {
       "number": 39,
+      "difficulty": "Basic",
       "question": {
-        "en": "Find the exterior angle of a regular pentagon.",
-        "ar": null
+        "en": "In \\(\\triangle ABC\\) shown below, segment \\(DE \\parallel BC\\). If \\(AD = 6\\), \\(DB = 9\\), and \\(AE = 8\\), what is the length of segment \\(EC\\)?"
       },
       "solution": {
-        "en": "\\[ \\frac{360^{\\circ}}{5}=72^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>By the Triangle Proportionality Theorem (Thales' Theorem), a line parallel to one side of a triangle divides the other two sides proportionally: \\(\\frac{AD}{DB} = \\frac{AE}{EC}\\). Substituting the given values: \\(\\frac{6}{9} = \\frac{8}{EC} \\implies \\frac{2}{3} = \\frac{8}{EC} \\implies EC = \\frac{3 \\times 8}{2} = 12\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "nested_triangles",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "t": 0.4,
+        "sides": {
+          "ad": "6",
+          "db": "9",
+          "ae": "8",
+          "ec": "x"
+        }
+      }
     },
     {
       "number": 40,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "A polygon has interior angles summing to \\( 1440^{\\circ} \\). How many sides has it?",
-        "ar": null
+        "en": "In \\(\\triangle ABC\\), ray \\(AD\\) bisects \\(\\angle A\\) with \\(D\\) on \\(BC\\). If \\(AB = 10\\), \\(AC = 15\\), and the entire base \\(BC = 20\\), what is the length of segment \\(BD\\)?"
       },
       "solution": {
-        "en": "<p>\\( (n-2)180=1440\\Rightarrow n-2=8 \\):</p>\\[ n=10. \\]",
-        "ar": null
+        "en": "<p>By the Angle Bisector Theorem: \\(\\frac{BD}{DC} = \\frac{AB}{AC} = \\frac{10}{15} = \\frac{2}{3}\\). The total base is \\(BC = BD + DC = 20\\). Therefore, \\(BD = 20 \\times \\frac{2}{2+3} = 20 \\times \\frac{2}{5} = 8\\) (and \\(DC = 12\\)).</p>"
       },
-      "difficulty": "Advanced"
+      "fig": {
+        "type": "angle_bisector",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "sides": {
+          "ab": "10",
+          "ac": "15"
+        }
+      }
     },
     {
       "number": 41,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Find the circumference of a circle of radius 7. Take \\( \\pi=\\tfrac{22}{7} \\).",
-        "ar": null
+        "en": "Two similar triangles have areas of \\(45\\text{ cm}^2\\) and \\(80\\text{ cm}^2\\). If the perimeter of the smaller triangle is \\(27\\text{ cm}\\), what is the perimeter of the larger triangle?"
       },
       "solution": {
-        "en": "\\[ 2\\pi r=2\\times\\tfrac{22}{7}\\times 7=44. \\]",
-        "ar": null
+        "en": "<p>The ratio of the areas is \\(\\frac{A_2}{A_1} = \\frac{80}{45} = \\frac{16}{9} = k^2\\). The linear scale factor is \\(k = \\sqrt{\\frac{16}{9}} = \\frac{4}{3}\\). Perimeters scale linearly by \\(k\\): \\(P_2 = 27 \\times \\frac{4}{3} = 36\\text{ cm}\\).</p>"
       },
-      "difficulty": "Basic"
+      "fig": {
+        "type": "similar",
+        "vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            8,
+            0
+          ],
+          [
+            3,
+            5
+          ]
+        ],
+        "ratio": 0.75,
+        "left": {
+          "caption": "Area = 45 cm²"
+        },
+        "right": {
+          "caption": "Area = 80 cm²"
+        },
+        "tilde": true
+      }
     },
     {
       "number": 42,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Find the area of a circle of radius 5. Take \\( \\pi=3.14 \\).",
-        "ar": null
+        "en": "The point P has coordinates \\((-3, 4)\\). Point P' is the image of P after a reflection across the line \\(y = x\\). What are the coordinates of P'?"
       },
       "solution": {
-        "en": "\\[ \\pi r^{2}=3.14\\times 25=78.5. \\]",
-        "ar": null
+        "en": "<p>When a point \\((x, y)\\) is reflected across the line \\(y = x\\), its image has coordinates \\((y, x)\\). \\nGiven the point P has coordinates \\((-3, 4)\\). \\nApplying the reflection rule, the coordinates of P' will be \\((4, -3)\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "transformation_grid",
+        "xmin": -6,
+        "xmax": 6,
+        "ymin": -6,
+        "ymax": 6,
+        "object": [
+          [
+            -3,
+            4
+          ]
+        ],
+        "objectLabels": [
+          "P"
+        ],
+        "image": [
+          [
+            4,
+            -3
+          ]
+        ],
+        "imageLabels": [
+          "P'"
+        ],
+        "mirrorLine": {
+          "m": 1,
+          "c": 0,
+          "label": "y = x"
+        }
+      }
     },
     {
       "number": 43,
+      "difficulty": "Advanced",
       "question": {
-        "en": "A triangle is inscribed in a circle with one side a diameter. Find the angle opposite that side.",
-        "ar": null
+        "en": "In \\(\\triangle ABC\\), ray \\(AD\\) bisects \\(\\angle BAC\\) with \\(D\\) lying on side \\(BC\\). If \\(AB = x + 3\\), \\(AC = 2x\\), \\(BD = 4\\), and \\(DC = 6\\), what is the value of \\(x\\)?"
       },
       "solution": {
-        "en": "<p>Angle in a semicircle:</p>\\[ 90^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>By the Angle Bisector Theorem, the ratio of the divided base segments equals the ratio of the adjacent sides: \\(\\frac{BD}{DC} = \\frac{AB}{AC} \\implies \\frac{4}{6} = \\frac{x + 3}{2x}\\). Cross-multiplying: \\(4(2x) = 6(x + 3) \\implies 8x = 6x + 18 \\implies 2x = 18 \\implies x = 9\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "angle_bisector",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "sides": {
+          "c": "x+3",
+          "b": "2x",
+          "bd": "4",
+          "dc": "6"
+        }
+      }
     },
     {
       "number": 44,
+      "difficulty": "Advanced",
       "question": {
-        "en": "A central angle is \\( 100^{\\circ} \\). Find the inscribed angle on the same arc.",
-        "ar": null
+        "en": "In \\(\\triangle ABC\\), line segment \\(DE\\) is drawn parallel to base \\(BC\\) such that it divides the triangle into two regions of equal area: \\(\\text{Area}(\\triangle ADE) = \\text{Area}(BDEC)\\). What is the ratio \\(\\frac{AD}{AB}\\)?"
       },
       "solution": {
-        "en": "\\[ \\tfrac12\\times 100^{\\circ}=50^{\\circ}. \\]",
-        "ar": null
+        "en": "<p>Since \\(DE \\parallel BC\\), \\(\\triangle ADE \\sim \\triangle ABC\\). Let \\(\\text{Area}(\\triangle ADE) = A\\). Then \\(\\text{Area}(BDEC) = A\\), making the total area \\(\\text{Area}(\\triangle ABC) = 2A\\). The area ratio is \\(\\frac{\\text{Area}(\\triangle ADE)}{\\text{Area}(\\triangle ABC)} = \\frac{A}{2A} = \\frac{1}{2}\\). Since area scales as the square of linear dimensions, \\(\\left(\\frac{AD}{AB}\\right)^2 = \\frac{1}{2} \\implies \\frac{AD}{AB} = \\frac{1}{\\sqrt{2}} = \\frac{\\sqrt{2}}{2}\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "nested_triangles",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "t": 0.707,
+        "shade": "top"
+      }
     },
     {
       "number": 45,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Find the arc length of a quarter circle of radius 8. Take \\( \\pi=3.14 \\).",
-        "ar": null
+        "en": "A student whose eyes are \\(1.5\\text{ m}\\) above the ground places a mirror flat on the ground \\(2\\text{ m}\\) in front of her feet. Looking into the mirror, she sees the reflection of the top of a school flagpole located \\(18\\text{ m}\\) beyond the mirror. If the angle of incidence equals the angle of reflection, how tall is the flagpole?"
       },
       "solution": {
-        "en": "\\[ \\tfrac14\\times 2\\pi r=\\tfrac14\\times 2\\times 3.14\\times 8=12.56. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate"
+        "en": "<p>The student, the ground, and the line of sight form a right triangle with legs \\(1.5\\text{ m}\\) (eye height) and \\(2\\text{ m}\\) (distance to mirror). The flagpole, ground, and reflected ray form a second right triangle with distance \\(18\\text{ m}\\) and height \\(h\\). Because the angle of incidence equals the angle of reflection, the two right triangles are similar by AA. Setting up the proportion: \\(\\frac{h}{1.5} = \\frac{18}{2} = 9 \\implies h = 9 \\times 1.5 = 13.5\\text{ m}\\).</p>"
+      }
     },
     {
       "number": 46,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Find the area of a \\( 90^{\\circ} \\) sector of a circle with \\( r=4 \\). Take \\( \\pi=3.14 \\).",
-        "ar": null
+        "en": "In the coordinate plane, the directed line segment from \\(A(-5, -3)\\) to \\(B(5, 7)\\) is partitioned by point \\(P\\) in the ratio \\(3:2\\). What are the coordinates of point \\(P\\)?"
       },
       "solution": {
-        "en": "\\[ \\tfrac14\\,\\pi r^{2}=\\tfrac14\\times 3.14\\times 16=12.56. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced"
+        "en": "<p>To find the coordinates of point \\(P\\) that partitions the directed segment from \\(A(x_1, y_1)\\) to \\(B(x_2, y_2)\\) in the ratio \\(m:n = 3:2\\), we find the fraction of the total distance from \\(A\\) to \\(B\\):</p><p>\\[k = \\frac{m}{m + n} = \\frac{3}{3 + 2} = \\frac{3}{5}\\]</p><p>Now, apply this fractional distance to the changes in \\(x\\) and \\(y\\):</p><p>\\[x_P = x_1 + k(x_2 - x_1) = -5 + \\frac{3}{5}(5 - (-5)) = -5 + \\frac{3}{5}(10) = -5 + 6 = 1\\]</p><p>\\[y_P = y_1 + k(y_2 - y_1) = -3 + \\frac{3}{5}(7 - (-3)) = -3 + \\frac{3}{5}(10) = -3 + 6 = 3\\]</p><p>Thus, the coordinates of point \\(P\\) are \\((1, 3)\\).</p>"
+      }
     },
     {
       "number": 47,
+      "difficulty": "Basic",
       "question": {
-        "en": "Find the area of a rectangle measuring \\( 8\\times 5 \\).",
-        "ar": null
+        "en": "Two angles, \\(\\angle A\\) and \\(\\angle B\\), are complementary. If \\(\\angle A = (3x + 15)^\\circ\\) and \\(\\angle B = (2x + 30)^\\circ\\), what is the measure of \\(\\angle A\\)?"
       },
       "solution": {
-        "en": "\\[ 8\\times 5=40. \\]",
-        "ar": null
-      },
-      "difficulty": "Basic"
+        "en": "<p>Complementary angles are two angles that add up to \\(90^\\circ\\). Therefore, \\(\\angle A + \\angle B = 90^\\circ\\).<br>Substituting the given expressions for \\(\\angle A\\) and \\(\\angle B\\):<br>\\((3x + 15) + (2x + 30) = 90\\)<br>Combine like terms:<br>\\(5x + 45 = 90\\)<br>Subtract 45 from both sides:<br>\\(5x = 45\\)<br>Divide by 5:<br>\\(x = 9\\)<br>Now, substitute the value of \\(x\\) back into the expression for \\(\\angle A\\):<br>\\(\\angle A = 3x + 15 = 3(9) + 15 = 27 + 15 = 42^\\circ\\).<br>To verify, \\(\\angle B = 2x + 30 = 2(9) + 30 = 18 + 30 = 48^\\circ\\). \\(\\angle A + \\angle B = 42^\\circ + 48^\\circ = 90^\\circ\\), confirming they are complementary.</p>"
+      }
     },
     {
       "number": 48,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Find the volume of a cube of side 4.",
-        "ar": null
+        "en": "In \\(\\triangle ABC\\), \\(\\angle A = 50^\\circ\\). Transversal \\(DE\\) is drawn such that \\(\\angle ADE = \\angle C = 65^\\circ\\). What is the measure of \\(\\angle B\\)?"
       },
       "solution": {
-        "en": "\\[ 4^{3}=64. \\]",
-        "ar": null
+        "en": "<p>In \\(\\triangle ABC\\), the sum of angles is \\(180^\\circ\\): \\(\\angle B = 180^\\circ - \\angle A - \\angle C = 180^\\circ - 50^\\circ - 65^\\circ = 65^\\circ\\). Because \\(\\angle B = \\angle C = 65^\\circ\\), \\(\\triangle ABC\\) is an isosceles triangle with \\(AB = AC\\).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "overlapping_triangles",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ]
+      }
     },
     {
       "number": 49,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find the volume of a cylinder with \\( r=2 \\), \\( h=5 \\). Take \\( \\pi=3.14 \\).",
-        "ar": null
+        "en": "In right \\(\\triangle ABC\\) with right angle at \\(C\\) and altitude \\(CD \\perp AB\\), leg \\(BC = 12\\) and hypotenuse \\(AB = 16\\). What is the length of segment \\(DB\\)?"
       },
       "solution": {
-        "en": "\\[ \\pi r^{2}h=3.14\\times 4\\times 5=62.8. \\]",
-        "ar": null
+        "en": "<p>By the Geometric Mean Leg Theorem, \\(BC^2 = AB \\cdot DB\\). Substituting the known lengths: \\(12^2 = 16 \\cdot DB \\implies 144 = 16 \\cdot DB \\implies DB = \\frac{144}{16} = 9\\). (Consequently, \\(AD = 16 - 9 = 7\\)).</p>"
       },
-      "difficulty": "Intermediate"
+      "fig": {
+        "type": "right_triangle_altitude",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "t": 0.4375,
+        "a": "12",
+        "c": "16",
+        "q": "x"
+      }
     },
     {
       "number": 50,
+      "difficulty": "Basic",
       "question": {
-        "en": "A triangle has base 12 and height 5. Find its area.",
-        "ar": null
+        "en": "In \\(\\triangle ABC\\), ray \\(AD\\) bisects \\(\\angle A\\) with point \\(D\\) on side \\(BC\\). If \\(AB = 8\\), \\(AC = 12\\), and \\(BD = 6\\), what is the length of segment \\(DC\\)?"
       },
       "solution": {
-        "en": "\\[ \\tfrac12\\times 12\\times 5=30. \\]",
-        "ar": null
+        "en": "<p>By the Angle Bisector Theorem, an angle bisector divides the opposite side into segments proportional to the adjacent sides: \\(\\frac{BD}{DC} = \\frac{AB}{AC}\\). Substituting: \\(\\frac{6}{DC} = \\frac{8}{12} = \\frac{2}{3} \\implies 2 \\cdot DC = 18 \\implies DC = 9\\).</p>"
       },
-      "difficulty": "Advanced"
+      "fig": {
+        "type": "angle_bisector",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "sides": {
+          "ab": "8",
+          "ac": "12",
+          "bd": "6",
+          "dc": "x"
+        }
+      }
     }
   ]
 }

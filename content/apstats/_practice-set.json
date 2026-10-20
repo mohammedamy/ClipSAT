@@ -5,651 +5,1103 @@
     {
       "id": "aps-p1",
       "number": 1,
-      "question": {
-        "en": "A sample dataset has \\(Q_1 = 48\\) and \\(Q_3 = 76\\). Using the 1.5 IQR rule: (a) Determine the exact lower and upper outlier fences. (b) If the dataset includes values of 4 and 122, determine whether each is an outlier.",
-        "ar": null
-      },
       "difficulty": "Easy",
+      "question": {
+        "en": "A sample dataset has \\(Q_1 = 48\\) and \\(Q_3 = 76\\). Using the 1.5 IQR rule: (a) Determine the exact lower and upper outlier fences. (b) If the dataset includes values of 4 and 122, determine whether each is an outlier."
+      },
       "solution": {
-        "en": "<p><strong>(a) Outlier Fences:</strong> Calculate \\(\\text{IQR} = Q_3 - Q_1 = 76 - 48 = 28\\).<br>Lower fence: \\[ Q_1 - 1.5(\\text{IQR}) = 48 - 1.5(28) = 48 - 42 = \\mathbf{6}. \\]<br>Upper fence: \\[ Q_3 + 1.5(\\text{IQR}) = 76 + 1.5(28) = 76 + 42 = \\mathbf{118}. \\]</p><p><strong>(b) Outlier Status:</strong> Since \\(4 < 6\\), <strong>4 is a low outlier</strong>. Since \\(122 > 118\\), <strong>122 is a high outlier</strong>.</p>",
-        "ar": null
+        "en": "<p><strong>(a) Outlier Fences:</strong> Calculate \\(\\text{IQR} = Q_3 - Q_1 = 76 - 48 = 28\\).<br>Lower fence: \\[Q_1 - 1.5(\\text{IQR}) = 48 - 1.5(28) = 48 - 42 = \\mathbf{6}.\\]<br>Upper fence: \\[Q_3 + 1.5(\\text{IQR}) = 76 + 1.5(28) = 76 + 42 = \\mathbf{118}.\\]</p><p><strong>(b) Outlier Status:</strong> Since \\(4 \\lt 6\\), <strong>4 is a low outlier</strong>. Since \\(122 \\gt 118\\), <strong>122 is a high outlier</strong>.</p>"
+      },
+      "fig": {
+        "type": "box_plot",
+        "title": "Five-Number Summary Distribution",
+        "min": 12,
+        "q1": 24,
+        "med": 35,
+        "q3": 48,
+        "max": 64
       }
     },
     {
       "id": "aps-p2",
       "number": 2,
-      "question": {
-        "en": "A set of daily high temperatures in Celsius has mean \\(\\bar{x} = 25.0^{\\circ}\\text{C}\\) and standard deviation \\(s = 4.0^{\\circ}\\text{C}\\). Convert the temperatures to Fahrenheit using \\(F = 1.8C + 32\\). Find the new mean and standard deviation in Fahrenheit.",
-        "ar": null
-      },
       "difficulty": "Easy",
+      "question": {
+        "en": "A set of daily high temperatures in Celsius has mean \\(\\bar{x} = 25.0^{\\circ}\\text{C}\\) and standard deviation \\(s = 4.0^{\\circ}\\text{C}\\). Convert the temperatures to Fahrenheit using \\(F = 1.8C + 32\\). Find the new mean and standard deviation in Fahrenheit."
+      },
       "solution": {
-        "en": "<p><strong>Mean:</strong> Affected by both multiplication and addition: \\[ \\bar{x}_F = 1.8(25.0) + 32 = 45.0 + 32 = \\mathbf{77.0^{\\circ}\\text{F}}. \\]</p><p><strong>Standard Deviation:</strong> Affected ONLY by multiplication, not by the addition of 32: \\[ s_F = 1.8(s_C) = 1.8(4.0) = \\mathbf{7.2^{\\circ}\\text{F}}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>Mean:</strong> Affected by both multiplication and addition: \\[\\bar{x}_F = 1.8(25.0) + 32 = 45.0 + 32 = \\mathbf{77.0^{\\circ}\\text{F}}.\\]</p><p><strong>Standard Deviation:</strong> Affected ONLY by multiplication, not by the addition of 32: \\[s_F = 1.8(s_C) = 1.8(4.0) = \\mathbf{7.2^{\\circ}\\text{F}}.\\]</p>"
+      },
+      "fig": {
+        "type": "normal_curve",
+        "title": "Normal Distribution Model",
+        "mean": 0,
+        "sd": 1,
+        "shade": [
+          -1,
+          1.5
+        ]
       }
     },
     {
       "id": "aps-p3",
       "number": 3,
-      "question": {
-        "en": "The distribution of cholesterol levels in a population is approximately normal with \\(\\mu = 190\\text{ mg/dL}\\) and \\(\\sigma = 24\\text{ mg/dL}\\). (a) What proportion of individuals have cholesterol levels above 226 mg/dL? (b) What cholesterol level marks the 90th percentile?",
-        "ar": null
-      },
       "difficulty": "Medium",
+      "question": {
+        "en": "The distribution of cholesterol levels in a population is approximately normal with \\(\\mu = 190\\text{ mg/dL}\\) and \\(\\sigma = 24\\text{ mg/dL}\\). (a) What proportion of individuals have cholesterol levels above 226 mg/dL? (b) What cholesterol level marks the 90th percentile?"
+      },
       "solution": {
-        "en": "<p><strong>(a) Proportion Above 226:</strong> Standardize: \\[ z = \\frac{226 - 190}{24} = \\frac{36}{24} = 1.50. \\] Using standard normal tables: \\[ P(Z > 1.50) = 1 - 0.9332 = \\mathbf{0.0668} \\quad (6.68\\%). \\]</p><p><strong>(b) 90th Percentile:</strong> Find \\(z^*\\) such that \\(P(Z < z^*) = 0.90\\), which gives \\(z^* \\approx 1.282\\). Unstandardize: \\[ x = \\mu + z^* \\sigma = 190 + 1.282(24) = 190 + 30.77 = \\mathbf{220.77\\text{ mg/dL}}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>(a) Proportion Above 226:</strong> Standardize: \\[z = \\frac{226 - 190}{24} = \\frac{36}{24} = 1.50.\\] Using standard normal tables: \\[P(Z  \\gt  1.50) = 1 - 0.9332 = \\mathbf{0.0668} \\quad (6.68\\%).\\]</p><p><strong>(b) 90th Percentile:</strong> Find \\(z^*\\) such that \\(P(Z \\lt z^*) = 0.90\\), which gives \\(z^* \\approx 1.282\\). Unstandardize: \\[x = \\mu + z^* \\sigma = 190 + 1.282(24) = 190 + 30.77 = \\mathbf{220.77\\text{ mg/dL}}.\\]</p>"
       }
     },
     {
       "id": "aps-p4",
       "number": 4,
-      "question": {
-        "en": "A least-squares regression line predicting exam score (\\(y\\)) from homework completion percentage (\\(x\\)) is \\(\\hat{y} = 38.0 + 0.55x\\) with correlation \\(r = 0.82\\). (a) Interpret the slope 0.55 in context. (b) Calculate and interpret the coefficient of determination \\(r^2\\).",
-        "ar": null
-      },
       "difficulty": "Medium",
+      "question": {
+        "en": "A least-squares regression line predicting exam score (\\(y\\)) from homework completion percentage (\\(x\\)) is \\(\\hat{y} = 38.0 + 0.55x\\) with correlation \\(r = 0.82\\). (a) Interpret the slope 0.55 in context. (b) Calculate and interpret the coefficient of determination \\(r^2\\)."
+      },
       "solution": {
-        "en": "<p><strong>(a) Slope Interpretation:</strong> For each additional 1 percentage point increase in homework completion, the model predicts an average increase of <strong>0.55 points</strong> on the exam.</p><p><strong>(b) \\(r^2\\) Calculation & Interpretation:</strong> \\[ r^2 = (0.82)^2 = 0.6724 = \\mathbf{67.24\\%}. \\] Exactly <strong>67.24% of the variability in exam scores</strong> is explained by the linear relationship with homework completion percentage.</p>",
-        "ar": null
+        "en": "<p><strong>(a) Slope Interpretation:</strong> For each additional 1 percentage point increase in homework completion, the model predicts an average increase of <strong>0.55 points</strong> on the exam.</p><p><strong>(b) \\(r^2\\) Calculation & Interpretation:</strong> \\[r^2 = (0.82)^2 = 0.6724 = \\mathbf{67.24\\%}.\\] Exactly <strong>67.24% of the variability in exam scores</strong> is explained by the linear relationship with homework completion percentage.</p>"
+      },
+      "fig": {
+        "type": "scatter",
+        "title": "Bivariate Data & Trend",
+        "pts": [
+          [
+            1,
+            2.1
+          ],
+          [
+            2,
+            3.8
+          ],
+          [
+            3,
+            5.2
+          ],
+          [
+            4,
+            6.9
+          ],
+          [
+            5,
+            8.4
+          ]
+        ],
+        "xlabel": "Predictor (x)",
+        "ylabel": "Response (y)"
       }
     },
     {
       "id": "aps-p5",
       "number": 5,
-      "question": {
-        "en": "Using the regression model \\(\\hat{y} = 38.0 + 0.55x\\), a student who completed 80% of homework scored 86 on the exam. (a) Calculate the residual. (b) Explain what a random scatter of points around 0 on a residual plot indicates about model adequacy.",
-        "ar": null
-      },
       "difficulty": "Medium",
+      "question": {
+        "en": "Using the regression model \\(\\hat{y} = 38.0 + 0.55x\\), a student who completed 80% of homework scored 86 on the exam. (a) Calculate the residual. (b) Explain what a random scatter of points around 0 on a residual plot indicates about model adequacy."
+      },
       "solution": {
-        "en": "<p><strong>(a) Residual:</strong> Predicted score: \\[ \\hat{y} = 38.0 + 0.55(80) = 38.0 + 44.0 = 82.0. \\] Residual: \\[ e = y - \\hat{y} = 86 - 82.0 = \\mathbf{+4.0\\text{ points}}. \\] The student scored 4.0 points higher than predicted by the regression line.</p><p><strong>(b) Residual Plot Adequacy:</strong> A residual plot showing random scatter with no discernible curve, fanning, or systematic pattern confirms that a <strong>linear model is appropriate</strong> and that error variance is approximately constant.</p>",
-        "ar": null
+        "en": "<p><strong>(a) Residual:</strong> Predicted score: \\[\\hat{y} = 38.0 + 0.55(80) = 38.0 + 44.0 = 82.0.\\] Residual: \\[e = y - \\hat{y} = 86 - 82.0 = \\mathbf{+4.0\\text{ points}}.\\] The student scored 4.0 points higher than predicted by the regression line.</p><p><strong>(b) Residual Plot Adequacy:</strong> A residual plot showing random scatter with no discernible curve, fanning, or systematic pattern confirms that a <strong>linear model is appropriate</strong> and that error variance is approximately constant.</p>"
+      },
+      "fig": {
+        "type": "scatter",
+        "title": "Bivariate Data & Trend",
+        "pts": [
+          [
+            1,
+            2.1
+          ],
+          [
+            2,
+            3.8
+          ],
+          [
+            3,
+            5.2
+          ],
+          [
+            4,
+            6.9
+          ],
+          [
+            5,
+            8.4
+          ]
+        ],
+        "xlabel": "Predictor (x)",
+        "ylabel": "Response (y)"
       }
     },
     {
       "id": "aps-p6",
       "number": 6,
-      "question": {
-        "en": "A school district with 12 high schools wants to sample 300 teachers. Compare: (a) Stratified sampling (taking an SRS of 25 teachers from each of the 12 schools) vs. (b) Cluster sampling (randomly selecting 2 schools and surveying all 150 teachers in each). Discuss sampling variability and logistical practicality.",
-        "ar": null
-      },
       "difficulty": "Hard",
+      "question": {
+        "en": "A school district with 12 high schools wants to sample 300 teachers. Compare: (a) Stratified sampling (taking an SRS of 25 teachers from each of the 12 schools) vs. (b) Cluster sampling (randomly selecting 2 schools and surveying all 150 teachers in each). Discuss sampling variability and logistical practicality."
+      },
       "solution": {
-        "en": "<p><strong>(a) Stratified Sampling:</strong> Guarantees representation from every high school. Because schools may have differing cultures and student demographics (homogeneous within schools, heterogeneous between schools), stratifying reduces sampling variability between strata, providing a more precise district-wide estimate.</p><p><strong>(b) Cluster Sampling:</strong> Highly practical and cost-effective because surveyors only visit 2 physical campuses. However, if individual schools differ substantially from one another, cluster sampling introduces much higher sampling variability and may yield a non-representative sample if the two chosen schools happen to be atypical.</p>",
-        "ar": null
+        "en": "<p><strong>(a) Stratified Sampling:</strong> Guarantees representation from every high school. Because schools may have differing cultures and student demographics (homogeneous within schools, heterogeneous between schools), stratifying reduces sampling variability between strata, providing a more precise district-wide estimate.</p><p><strong>(b) Cluster Sampling:</strong> Highly practical and cost-effective because surveyors only visit 2 physical campuses. However, if individual schools differ substantially from one another, cluster sampling introduces much higher sampling variability and may yield a non-representative sample if the two chosen schools happen to be atypical.</p>"
       }
     },
     {
       "id": "aps-p7",
       "number": 7,
-      "question": {
-        "en": "An agronomist wants to test whether a new organic fertilizer increases tomato yield compared to a standard commercial fertilizer. Explain how the agronomist must incorporate the four principles of experimental design: Comparison, Random Assignment, Control, and Replication.",
-        "ar": null
-      },
       "difficulty": "Hard",
+      "question": {
+        "en": "An agronomist wants to test whether a new organic fertilizer increases tomato yield compared to a standard commercial fertilizer. Explain how the agronomist must incorporate the four principles of experimental design: Comparison, Random Assignment, Control, and Replication."
+      },
       "solution": {
-        "en": "<p><strong>1. Comparison:</strong> Use two treatment groups (organic fertilizer vs. standard fertilizer control) grown concurrently under the same environmental conditions.</p><p><strong>2. Random Assignment:</strong> Assign tomato plants to fertilizer treatments using a random number generator to balance unmeasured variables (e.g. baseline soil nutrient variations, microclimates).</p><p><strong>3. Control:</strong> Keep all extraneous variables identical for both groups: sunlight exposure, watering schedule, soil volume, and pest control.</p><p><strong>4. Replication:</strong> Apply each fertilizer to a large number of plants (e.g. 50 plants per treatment) so that genuine yield differences can be distinguished from natural plant-to-plant variation.</p>",
-        "ar": null
+        "en": "<p><strong>1. Comparison:</strong> Use two treatment groups (organic fertilizer vs. standard fertilizer control) grown concurrently under the same environmental conditions.</p><p><strong>2. Random Assignment:</strong> Assign tomato plants to fertilizer treatments using a random number generator to balance unmeasured variables (e.g. baseline soil nutrient variations, microclimates).</p><p><strong>3. Control:</strong> Keep all extraneous variables identical for both groups: sunlight exposure, watering schedule, soil volume, and pest control.</p><p><strong>4. Replication:</strong> Apply each fertilizer to a large number of plants (e.g. 50 plants per treatment) so that genuine yield differences can be distinguished from natural plant-to-plant variation.</p>"
       }
     },
     {
       "id": "aps-p8",
       "number": 8,
-      "question": {
-        "en": "In the tomato experiment in Problem 7, the agronomist has two distinct tomato varieties: Roma and Beefsteak. (a) Explain why a randomized block design is superior to a completely randomized design. (b) Outline the blocking protocol.",
-        "ar": null
-      },
       "difficulty": "Hard",
+      "question": {
+        "en": "In the tomato experiment in Problem 7, the agronomist has two distinct tomato varieties: Roma and Beefsteak. (a) Explain why a randomized block design is superior to a completely randomized design. (b) Outline the blocking protocol."
+      },
       "solution": {
-        "en": "<p><strong>(a) Superiority of Blocking:</strong> Tomato variety is known to have a massive effect on fruit yield. A completely randomized design risks assigning disproportionately more Beefsteak plants to one fertilizer, confounding variety with fertilizer efficacy. Blocking by variety isolates and eliminates the variability between varieties from the experimental error, increasing statistical power.</p><p><strong>(b) Blocking Protocol:</strong> Separate the plants into two blocks: Block 1 (Roma) and Block 2 (Beefsteak). Within Block 1, randomly assign half the Roma plants to organic fertilizer and half to standard fertilizer. Within Block 2, randomly assign half the Beefsteak plants to organic fertilizer and half to standard fertilizer independently. Compare yields between treatments separately within each block.</p>",
-        "ar": null
+        "en": "<p><strong>(a) Superiority of Blocking:</strong> Tomato variety is known to have a massive effect on fruit yield. A completely randomized design risks assigning disproportionately more Beefsteak plants to one fertilizer, confounding variety with fertilizer efficacy. Blocking by variety isolates and eliminates the variability between varieties from the experimental error, increasing statistical power.</p><p><strong>(b) Blocking Protocol:</strong> Separate the plants into two blocks: Block 1 (Roma) and Block 2 (Beefsteak). Within Block 1, randomly assign half the Roma plants to organic fertilizer and half to standard fertilizer. Within Block 2, randomly assign half the Beefsteak plants to organic fertilizer and half to standard fertilizer independently. Compare yields between treatments separately within each block.</p>"
       }
     },
     {
       "id": "aps-p9",
       "number": 9,
-      "question": {
-        "en": "A health study surveys 5,000 adults and finds that people who sleep 8 hours per night have significantly lower blood pressure than those who sleep 5 hours. (a) Can researchers conclude that increasing sleep causes a reduction in blood pressure? (b) Delineate the scope of inference using the 2×2 selection/assignment matrix.",
-        "ar": null
-      },
       "difficulty": "Hard",
+      "question": {
+        "en": "A health study surveys 5,000 adults and finds that people who sleep 8 hours per night have significantly lower blood pressure than those who sleep 5 hours. (a) Can researchers conclude that increasing sleep causes a reduction in blood pressure? (b) Delineate the scope of inference using the 2×2 selection/assignment matrix."
+      },
       "solution": {
-        "en": "<p><strong>(a) Causal Inference:</strong> <strong>No</strong>, cause-and-effect cannot be established because this is an observational study where sleep duration was not randomly assigned. Plausible confounding variables (e.g. job stress, diet, exercise) are associated with sleep duration and independently affect blood pressure.</p><p><strong>(b) Scope of Inference:</strong></p><ul><li>Were individuals randomly selected from the adult population? Yes \\(\\implies\\) Inferences can be generalized to the broader adult population.</li><li>Were treatments randomly assigned? No \\(\\implies\\) Inferences are strictly limited to association, NOT causation.</li></ul>",
-        "ar": null
+        "en": "<p><strong>(a) Causal Inference:</strong> <strong>No</strong>, cause-and-effect cannot be established because this is an observational study where sleep duration was not randomly assigned. Plausible confounding variables (e.g. job stress, diet, exercise) are associated with sleep duration and independently affect blood pressure.</p><p><strong>(b) Scope of Inference:</strong></p><ul><li>Were individuals randomly selected from the adult population? Yes \\(\\implies\\) Inferences can be generalized to the broader adult population.</li><li>Were treatments randomly assigned? No \\(\\implies\\) Inferences are strictly limited to association, NOT causation.</li></ul>"
+      },
+      "fig": {
+        "type": "transformation_grid",
+        "title": "Linear Transformation in R²",
+        "object": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "image": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "objectLabels": [
+          "O",
+          "A",
+          "B",
+          "C"
+        ]
       }
     },
     {
       "id": "aps-p10",
       "number": 10,
-      "question": {
-        "en": "A cereal manufacturer places a collectible card in each box: 20% of boxes have Card A, 30% have Card B, and 50% have Card C. Design a simulation using random digits to estimate the probability that a customer must buy at least 6 boxes to collect all three cards.",
-        "ar": null
-      },
       "difficulty": "Hard",
+      "question": {
+        "en": "A cereal manufacturer places a collectible card in each box: 20% of boxes have Card A, 30% have Card B, and 50% have Card C. Design a simulation using random digits to estimate the probability that a customer must buy at least 6 boxes to collect all three cards."
+      },
       "solution": {
-        "en": "<p><strong>1. Assign Digits:</strong> Assign single digits proportional to probabilities: Digits 0–1 represent Card A (20%); digits 2–4 represent Card B (30%); digits 5–9 represent Card C (50%).</p><p><strong>2. Describe One Trial:</strong> Read random digits one at a time. Record which card type is obtained on each digit. Continue reading digits until all three card types (A, B, and C) have appeared at least once. Count the total number of digits (boxes) required.</p><p><strong>3. Record Statistic:</strong> Record whether the total number of boxes opened is \\(\\ge 6\\) (Yes/No).</p><p><strong>4. Replicate & Estimate:</strong> Repeat this trial 100 times. Estimate the probability as the fraction of trials in which 6 or more boxes were required.</p>",
-        "ar": null
+        "en": "<p><strong>1. Assign Digits:</strong> Assign single digits proportional to probabilities: Digits 0–1 represent Card A (20%); digits 2–4 represent Card B (30%); digits 5–9 represent Card C (50%).</p><p><strong>2. Describe One Trial:</strong> Read random digits one at a time. Record which card type is obtained on each digit. Continue reading digits until all three card types (A, B, and C) have appeared at least once. Count the total number of digits (boxes) required.</p><p><strong>3. Record Statistic:</strong> Record whether the total number of boxes opened is \\(\\ge 6\\) (Yes/No).</p><p><strong>4. Replicate & Estimate:</strong> Repeat this trial 100 times. Estimate the probability as the fraction of trials in which 6 or more boxes were required.</p>"
       }
     },
     {
       "id": "aps-p11",
       "number": 11,
-      "question": {
-        "en": "A diagnostic medical screening test is 95% sensitive (positive if disease present) and 90% specific (negative if disease absent). In a population, 2% of people have the disease. Find the probability that a person who tests positive actually has the disease.",
-        "ar": null
-      },
       "difficulty": "Hard",
+      "question": {
+        "en": "A diagnostic medical screening test is 95% sensitive (positive if disease present) and 90% specific (negative if disease absent). In a population, 2% of people have the disease. Find the probability that a person who tests positive actually has the disease."
+      },
       "solution": {
-        "en": "<p>Let \\(D\\) = disease present, \\(T^+\\) = positive test. \\(P(D) = 0.02\\), \\(P(D^c) = 0.98\\).<br>Sensitivity: \\(P(T^+ \\mid D) = 0.95\\). Specificity: \\(P(T^- \\mid D^c) = 0.90 \\implies P(T^+ \\mid D^c) = 0.10\\).</p><p>By the Law of Total Probability: \\[ P(T^+) = P(D)P(T^+ \\mid D) + P(D^c)P(T^+ \\mid D^c) = (0.02)(0.95) + (0.98)(0.10) = 0.019 + 0.098 = 0.117. \\]</p><p>By Bayes' Theorem: \\[ P(D \\mid T^+) = \\frac{P(D \\cap T^+)}{P(T^+)} = \\frac{0.019}{0.117} \\approx \\mathbf{0.1624} \\quad (16.24\\%). \\]</p><p>Despite 95% sensitivity, only ~16.2% of positive testers have the disease due to low baseline prevalence.</p>",
-        "ar": null
+        "en": "<p>Let \\(D\\) = disease present, \\(T^+\\) = positive test. \\(P(D) = 0.02\\), \\(P(D^c) = 0.98\\).<br>Sensitivity: \\(P(T^+ \\mid D) = 0.95\\). Specificity: \\(P(T^- \\mid D^c) = 0.90 \\implies P(T^+ \\mid D^c) = 0.10\\).</p><p>By the Law of Total Probability: \\[P(T^+) = P(D)P(T^+ \\mid D) + P(D^c)P(T^+ \\mid D^c) = (0.02)(0.95) + (0.98)(0.10) = 0.019 + 0.098 = 0.117.\\]</p><p>By Bayes' Theorem: \\[P(D \\mid T^+) = \\frac{P(D \\cap T^+)}{P(T^+)} = \\frac{0.019}{0.117} \\approx \\mathbf{0.1624} \\quad (16.24\\%).\\]</p><p>Despite 95% sensitivity, only ~16.2% of positive testers have the disease due to low baseline prevalence.</p>"
       }
     },
     {
       "id": "aps-p12",
       "number": 12,
-      "question": {
-        "en": "Events \\(A\\) and \\(B\\) satisfy \\(P(A) = 0.40\\), \\(P(B) = 0.50\\), and \\(P(A \\cup B) = 0.70\\). (a) Find \\(P(A \\cap B)\\). (b) Determine whether \\(A\\) and \\(B\\) are independent. (c) Determine whether \\(A\\) and \\(B\\) are mutually exclusive.",
-        "ar": null
-      },
       "difficulty": "Medium",
+      "question": {
+        "en": "Events \\(A\\) and \\(B\\) satisfy \\(P(A) = 0.40\\), \\(P(B) = 0.50\\), and \\(P(A \\cup B) = 0.70\\). (a) Find \\(P(A \\cap B)\\). (b) Determine whether \\(A\\) and \\(B\\) are independent. (c) Determine whether \\(A\\) and \\(B\\) are mutually exclusive."
+      },
       "solution": {
-        "en": "<p><strong>(a) Intersection:</strong> \\[ P(A \\cap B) = P(A) + P(B) - P(A \\cup B) = 0.40 + 0.50 - 0.70 = \\mathbf{0.20}. \\]</p><p><strong>(b) Independence:</strong> Test whether \\(P(A \\cap B) = P(A)P(B)\\): \\[ P(A)P(B) = (0.40)(0.50) = 0.20. \\] Because \\(P(A \\cap B) = P(A)P(B) = 0.20\\), events \\(A\\) and \\(B\\) are <strong>independent</strong>.</p><p><strong>(c) Mutually Exclusive:</strong> Because \\(P(A \\cap B) = 0.20 \\neq 0\\), events \\(A\\) and \\(B\\) can occur simultaneously and are therefore <strong>not mutually exclusive</strong>.</p>",
-        "ar": null
+        "en": "<p><strong>(a) Intersection:</strong> \\[P(A \\cap B) = P(A) + P(B) - P(A \\cup B) = 0.40 + 0.50 - 0.70 = \\mathbf{0.20}.\\]</p><p><strong>(b) Independence:</strong> Test whether \\(P(A \\cap B) = P(A)P(B)\\): \\[P(A)P(B) = (0.40)(0.50) = 0.20.\\] Because \\(P(A \\cap B) = P(A)P(B) = 0.20\\), events \\(A\\) and \\(B\\) are <strong>independent</strong>.</p><p><strong>(c) Mutually Exclusive:</strong> Because \\(P(A \\cap B) = 0.20 \\neq 0\\), events \\(A\\) and \\(B\\) can occur simultaneously and are therefore <strong>not mutually exclusive</strong>.</p>"
       }
     },
     {
       "id": "aps-p13",
       "number": 13,
-      "question": {
-        "en": "A discrete random variable \\(X\\) has probability distribution: \\(P(X = 0) = 0.1\\), \\(P(X = 1) = 0.3\\), \\(P(X = 2) = 0.4\\), \\(P(X = 3) = 0.2\\). Calculate: (a) \\(E(X)\\), (b) \\(E(X^2)\\), and (c) \\(\\text{Var}(X)\\) and \\(\\sigma_X\\).",
-        "ar": null
-      },
       "difficulty": "Medium",
+      "question": {
+        "en": "A discrete random variable \\(X\\) has probability distribution: \\(P(X = 0) = 0.1\\), \\(P(X = 1) = 0.3\\), \\(P(X = 2) = 0.4\\), \\(P(X = 3) = 0.2\\). Calculate: (a) \\(E(X)\\), (b) \\(E(X^2)\\), and (c) \\(\\text{Var}(X)\\) and \\(\\sigma_X\\)."
+      },
       "solution": {
-        "en": "<p><strong>(a) Expected Value:</strong> \\[ E(X) = 0(0.1) + 1(0.3) + 2(0.4) + 3(0.2) = 0 + 0.3 + 0.8 + 0.6 = \\mathbf{1.7}. \\]</p><p><strong>(b) Expected Value of \\(X^2\\):</strong> \\[ E(X^2) = 0^2(0.1) + 1^2(0.3) + 2^2(0.4) + 3^2(0.2) = 0 + 0.3 + 1.6 + 1.8 = \\mathbf{3.7}. \\]</p><p><strong>(c) Variance & SD:</strong> \\[ \\text{Var}(X) = E(X^2) - [E(X)]^2 = 3.7 - (1.7)^2 = 3.7 - 2.89 = \\mathbf{0.81}. \\] \\[ \\sigma_X = \\sqrt{0.81} = \\mathbf{0.9}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>(a) Expected Value:</strong> \\[E(X) = 0(0.1) + 1(0.3) + 2(0.4) + 3(0.2) = 0 + 0.3 + 0.8 + 0.6 = \\mathbf{1.7}.\\]</p><p><strong>(b) Expected Value of \\(X^2\\):</strong> \\[E(X^2) = 0^2(0.1) + 1^2(0.3) + 2^2(0.4) + 3^2(0.2) = 0 + 0.3 + 1.6 + 1.8 = \\mathbf{3.7}.\\]</p><p><strong>(c) Variance & SD:</strong> \\[\\text{Var}(X) = E(X^2) - [E(X)]^2 = 3.7 - (1.7)^2 = 3.7 - 2.89 = \\mathbf{0.81}.\\] \\[\\sigma_X = \\sqrt{0.81} = \\mathbf{0.9}.\\]</p>"
       }
     },
     {
       "id": "aps-p14",
       "number": 14,
-      "question": {
-        "en": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\mu_X = 50, \\sigma_X = 6\\) and \\(\\mu_Y = 30, \\sigma_Y = 8\\). Define \\(W = 3X - 2Y + 10\\). Find the mean \\(\\mu_W\\) and standard deviation \\(\\sigma_W\\).",
-        "ar": null
-      },
       "difficulty": "Medium",
+      "question": {
+        "en": "Independent random variables \\(X\\) and \\(Y\\) have \\(\\mu_X = 50, \\sigma_X = 6\\) and \\(\\mu_Y = 30, \\sigma_Y = 8\\). Define \\(W = 3X - 2Y + 10\\). Find the mean \\(\\mu_W\\) and standard deviation \\(\\sigma_W\\)."
+      },
       "solution": {
-        "en": "<p><strong>Mean:</strong> \\[ \\mu_W = 3\\mu_X - 2\\mu_Y + 10 = 3(50) - 2(30) + 10 = 150 - 60 + 10 = \\mathbf{100}. \\]</p><p><strong>Variance (Variances Always Add!):</strong> Adding constants adds zero variance. Coefficients are squared: \\[ \\sigma_W^2 = 3^2 \\sigma_X^2 + (-2)^2 \\sigma_Y^2 = 9(6^2) + 4(8^2) = 9(36) + 4(64) = 324 + 256 = 580. \\]</p><p><strong>Standard Deviation:</strong> \\[ \\sigma_W = \\sqrt{580} \\approx \\mathbf{24.08}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>Mean:</strong> \\[\\mu_W = 3\\mu_X - 2\\mu_Y + 10 = 3(50) - 2(30) + 10 = 150 - 60 + 10 = \\mathbf{100}.\\]</p><p><strong>Variance (Variances Always Add!):</strong> Adding constants adds zero variance. Coefficients are squared: \\[\\sigma_W^2 = 3^2 \\sigma_X^2 + (-2)^2 \\sigma_Y^2 = 9(6^2) + 4(8^2) = 9(36) + 4(64) = 324 + 256 = 580.\\]</p><p><strong>Standard Deviation:</strong> \\[\\sigma_W = \\sqrt{580} \\approx \\mathbf{24.08}.\\]</p>"
       }
     },
     {
       "id": "aps-p15",
       "number": 15,
-      "question": {
-        "en": "A basketball player makes 75% of free throws. In a game, she shoots 12 free throws. Assuming attempts are independent: (a) Find the probability she makes exactly 9 free throws. (b) Find the mean and standard deviation of made free throws.",
-        "ar": null
-      },
       "difficulty": "Medium",
+      "question": {
+        "en": "A basketball player makes 75% of free throws. In a game, she shoots 12 free throws. Assuming attempts are independent: (a) Find the probability she makes exactly 9 free throws. (b) Find the mean and standard deviation of made free throws."
+      },
       "solution": {
-        "en": "<p><strong>(a) Binomial PMF:</strong> \\(X \\sim B(n = 12, p = 0.75)\\), \\(k = 9\\): \\[ P(X = 9) = \\binom{12}{9} (0.75)^9 (0.25)^3 = 220 \\times 0.075085 \\times 0.015625 \\approx \\mathbf{0.2581}. \\]</p><p><strong>(b) Mean & Standard Deviation:</strong> \\[ \\mu = np = 12(0.75) = \\mathbf{9.0\\text{ free throws}}. \\] \\[ \\sigma = \\sqrt{np(1-p)} = \\sqrt{12(0.75)(0.25)} = \\sqrt{2.25} = \\mathbf{1.5\\text{ free throws}}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>(a) Binomial PMF:</strong> \\(X \\sim B(n = 12, p = 0.75)\\), \\(k = 9\\): \\[P(X = 9) = \\binom{12}{9} (0.75)^9 (0.25)^3 = 220 \\times 0.075085 \\times 0.015625 \\approx \\mathbf{0.2581}.\\]</p><p><strong>(b) Mean & Standard Deviation:</strong> \\[\\mu = np = 12(0.75) = \\mathbf{9.0\\text{ free throws}}.\\] \\[\\sigma = \\sqrt{np(1-p)} = \\sqrt{12(0.75)(0.25)} = \\sqrt{2.25} = \\mathbf{1.5\\text{ free throws}}.\\]</p>"
       }
     },
     {
       "id": "aps-p16",
       "number": 16,
-      "question": {
-        "en": "The commute times for employees at a large tech company have a strongly right-skewed distribution with mean \\(\\mu = 38\\text{ minutes}\\) and standard deviation \\(\\sigma = 15\\text{ minutes}\\). A random sample of 49 employees is selected. (a) Describe the shape, mean, and standard error of the sampling distribution of the sample mean \\(\\bar{x}\\). (b) Calculate \\(P(\\bar{x} > 42\\text{ minutes})\\).",
-        "ar": null
-      },
       "difficulty": "Hard",
+      "question": {
+        "en": "The commute times for employees at a large tech company have a strongly right-skewed distribution with mean \\(\\mu = 38\\text{ minutes}\\) and standard deviation \\(\\sigma = 15\\text{ minutes}\\). A random sample of 49 employees is selected. (a) Describe the shape, mean, and standard error of the sampling distribution of the sample mean \\(\\bar{x}\\). (b) Calculate \\(P(\\bar{x} \\gt 42\\text{ minutes})\\)."
+      },
       "solution": {
-        "en": "<p><strong>(a) Sampling Distribution Characteristics:</strong></p><ul><li><strong>Shape:</strong> By the Central Limit Theorem, since \\(n = 49 \\ge 30\\), the sampling distribution of \\(\\bar{x}\\) is <strong>approximately normal</strong>, despite the right skewness of the population.</li><li><strong>Mean:</strong> \\(\\mu_{\\bar{x}} = \\mu = \\mathbf{38\\text{ minutes}}\\).</li><li><strong>Standard Error:</strong> \\(\\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}} = \\frac{15}{\\sqrt{49}} = \\frac{15}{7} \\approx \\mathbf{2.143\\text{ minutes}}\\).</li></ul><p><strong>(b) Probability Calculation:</strong> Standardize: \\[ z = \\frac{42 - 38}{2.143} = \\frac{4}{2.143} \\approx 1.87. \\] \\[ P(\\bar{x} > 42) = P(Z > 1.87) = 1 - 0.9693 = \\mathbf{0.0307} \\quad (3.07\\%). \\]</p>",
-        "ar": null
+        "en": "<p><strong>(a) Sampling Distribution Characteristics:</strong></p><ul><li><strong>Shape:</strong> By the Central Limit Theorem, since \\(n = 49 \\ge 30\\), the sampling distribution of \\(\\bar{x}\\) is <strong>approximately normal</strong>, despite the right skewness of the population.</li><li><strong>Mean:</strong> \\(\\mu_{\\bar{x}} = \\mu = \\mathbf{38\\text{ minutes}}\\).</li><li><strong>Standard Error:</strong> \\(\\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}} = \\frac{15}{\\sqrt{49}} = \\frac{15}{7} \\approx \\mathbf{2.143\\text{ minutes}}\\).</li></ul><p><strong>(b) Probability Calculation:</strong> Standardize: \\[z = \\frac{42 - 38}{2.143} = \\frac{4}{2.143} \\approx 1.87.\\] \\[P(\\bar{x}  \\gt  42) = P(Z  \\gt  1.87) = 1 - 0.9693 = \\mathbf{0.0307} \\quad (3.07\\%).\\]</p>"
       }
     },
     {
       "id": "aps-p17",
       "number": 17,
-      "question": {
-        "en": "In an SRS of 200 registered voters, 116 favor a new environmental regulation. (a) Check all three conditions for constructing a 95% confidence interval for the population proportion. (b) Construct the 95% confidence interval. (c) Interpret the interval in context.",
-        "ar": null
-      },
       "difficulty": "Hard",
+      "question": {
+        "en": "In an SRS of 200 registered voters, 116 favor a new environmental regulation. (a) Check all three conditions for constructing a 95% confidence interval for the population proportion. (b) Construct the 95% confidence interval. (c) Interpret the interval in context."
+      },
       "solution": {
-        "en": "<p><strong>(a) Condition Checks:</strong></p><ul><li><strong>Random:</strong> Stated as an SRS of 200 registered voters. (Satisfied).</li><li><strong>10% Condition:</strong> 200 voters is less than 10% of all registered voters (\\(N \\ge 2,000\\)). (Satisfied).</li><li><strong>Large Counts:</strong> \\(n\\hat{p} = 116 \\ge 10\\) and \\(n(1-\\hat{p}) = 84 \\ge 10\\). (Satisfied; normal approximation is valid).</li></ul><p><strong>(b) 95% Confidence Interval:</strong> \\(\\hat{p} = 116/200 = 0.58\\), \\(z^* = 1.96\\). \\[ \\text{SE} = \\sqrt{\\frac{0.58(0.42)}{200}} = \\sqrt{\\frac{0.2436}{200}} \\approx 0.0349. \\] Margin of error: \\[ \\text{ME} = 1.96(0.0349) \\approx 0.0684. \\] Interval: \\[ 0.58 \\pm 0.0684 = \\mathbf{(0.5116, 0.6484)} \\quad \\text{or } (51.2\\%, 64.8\\%). \\]</p><p><strong>(c) Interpretation:</strong> We are 95% confident that the interval from <strong>51.2% to 64.8%</strong> captures the true proportion of all registered voters who favor the new regulation.</p>",
-        "ar": null
+        "en": "<p><strong>(a) Condition Checks:</strong></p><ul><li><strong>Random:</strong> Stated as an SRS of 200 registered voters. (Satisfied).</li><li><strong>10% Condition:</strong> 200 voters is less than 10% of all registered voters (\\(N \\ge 2,000\\)). (Satisfied).</li><li><strong>Large Counts:</strong> \\(n\\hat{p} = 116 \\ge 10\\) and \\(n(1-\\hat{p}) = 84 \\ge 10\\). (Satisfied; normal approximation is valid).</li></ul><p><strong>(b) 95% Confidence Interval:</strong> \\(\\hat{p} = 116/200 = 0.58\\), \\(z^* = 1.96\\). \\[\\text{SE} = \\sqrt{\\frac{0.58(0.42)}{200}} = \\sqrt{\\frac{0.2436}{200}} \\approx 0.0349.\\] Margin of error: \\[\\text{ME} = 1.96(0.0349) \\approx 0.0684.\\] Interval: \\[0.58 \\pm 0.0684 = \\mathbf{(0.5116, 0.6484)} \\quad \\text{or } (51.2\\%, 64.8\\%).\\]</p><p><strong>(c) Interpretation:</strong> We are 95% confident that the interval from <strong>51.2% to 64.8%</strong> captures the true proportion of all registered voters who favor the new regulation.</p>"
       }
     },
     {
       "id": "aps-p18",
       "number": 18,
-      "question": {
-        "en": "A coffee brand claims its jars contain a mean of 200 grams of coffee. A consumer agency takes an SRS of 16 jars, finding \\(\\bar{x} = 197.5\\text{ g}\\) and \\(s = 4.0\\text{ g}\\). Assume jar weights are approximately normally distributed. Conduct a significance test of \\(H_0: \\mu = 200\\) vs. \\(H_a: \\mu < 200\\) at \\(\\alpha = 0.05\\).",
-        "ar": null
-      },
       "difficulty": "Hard",
+      "question": {
+        "en": "A coffee brand claims its jars contain a mean of 200 grams of coffee. A consumer agency takes an SRS of 16 jars, finding \\(\\bar{x} = 197.5\\text{ g}\\) and \\(s = 4.0\\text{ g}\\). Assume jar weights are approximately normally distributed. Conduct a significance test of \\(H_0: \\mu = 200\\) vs. \\(H_a: \\mu \\lt 200\\) at \\(\\alpha = 0.05\\)."
+      },
       "solution": {
-        "en": "<p><strong>1. State:</strong> Test \\(H_0: \\mu = 200\\text{ g}\\) vs \\(H_a: \\mu < 200\\text{ g}\\) at \\(\\alpha = 0.05\\), where \\(\\mu\\) is the true mean weight of all coffee jars.</p><p><strong>2. Plan:</strong> 1-sample \\(t\\)-test for mean. Random sample stated; \\(16 < 10\\%\\) of all jars; population stated as approximately normal.</p><p><strong>3. Do:</strong> \\[ t = \\frac{\\bar{x} - \\mu_0}{s / \\sqrt{n}} = \\frac{197.5 - 200}{4.0 / \\sqrt{16}} = \\frac{-2.5}{1.0} = -2.50 \\quad (df = n - 1 = 15). \\] From \\(t\\)-distribution table with \\(df = 15\\): \\[ \\text{p-value} = P(T < -2.50) \\approx 0.0123. \\]</p><p><strong>4. Conclude:</strong> Because \\(\\text{p-value} = 0.0123 < \\alpha = 0.05\\), we <strong>reject \\(H_0\\)</strong>. There is convincing statistical evidence that the true mean weight of coffee jars is less than 200 grams.</p>",
-        "ar": null
+        "en": "<p><strong>1. State:</strong> Test \\(H_0: \\mu = 200\\text{ g}\\) vs \\(H_a: \\mu \\lt 200\\text{ g}\\) at \\(\\alpha = 0.05\\), where \\(\\mu\\) is the true mean weight of all coffee jars.</p><p><strong>2. Plan:</strong> 1-sample \\(t\\)-test for mean. Random sample stated; \\(16 \\lt 10\\%\\) of all jars; population stated as approximately normal.</p><p><strong>3. Do:</strong> \\[t = \\frac{\\bar{x} - \\mu_0}{s / \\sqrt{n}} = \\frac{197.5 - 200}{4.0 / \\sqrt{16}} = \\frac{-2.5}{1.0} = -2.50 \\quad (df = n - 1 = 15).\\] From \\(t\\)-distribution table with \\(df = 15\\): \\[\\text{p-value} = P(T  \\lt  -2.50) \\approx 0.0123.\\]</p><p><strong>4. Conclude:</strong> Because \\(\\text{p-value} = 0.0123 \\lt \\alpha = 0.05\\), we <strong>reject \\(H_0\\)</strong>. There is convincing statistical evidence that the true mean weight of coffee jars is less than 200 grams.</p>"
       }
     },
     {
       "id": "aps-p19",
       "number": 19,
-      "question": {
-        "en": "Eight patients with chronic insomnia try a new relaxation therapy. Their sleep duration (hours/night) is measured before and after 4 weeks of therapy: Patient differences \\(d = \\text{After} - \\text{Before}\\) yield \\(\\bar{x}_d = 1.25\\text{ hours}\\) and \\(s_d = 0.80\\text{ hours}\\). Assuming normality of differences, test whether the therapy significantly increased sleep at \\(\\alpha = 0.01\\).",
-        "ar": null
-      },
       "difficulty": "Hard",
+      "question": {
+        "en": "Eight patients with chronic insomnia try a new relaxation therapy. Their sleep duration (hours/night) is measured before and after 4 weeks of therapy: Patient differences \\(d = \\text{After} - \\text{Before}\\) yield \\(\\bar{x}_d = 1.25\\text{ hours}\\) and \\(s_d = 0.80\\text{ hours}\\). Assuming normality of differences, test whether the therapy significantly increased sleep at \\(\\alpha = 0.01\\)."
+      },
       "solution": {
-        "en": "<p><strong>1. Method Choice:</strong> Paired data measured on the same 8 patients \\(\\implies\\) <strong>Paired \\(t\\)-test on differences</strong>.</p><p><strong>2. Hypotheses:</strong> \\[ H_0: \\mu_d = 0 \\quad \\text{vs.} \\quad H_a: \\mu_d > 0 \\quad (\\alpha = 0.01), \\] where \\(\\mu_d\\) is the true mean difference in sleep duration (After minus Before).</p><p><strong>3. Test Statistic & p-value:</strong> \\[ t = \\frac{\\bar{x}_d - 0}{s_d / \\sqrt{n}} = \\frac{1.25 - 0}{0.80 / \\sqrt{8}} = \\frac{1.25}{0.2828} \\approx 4.42 \\quad (df = 8 - 1 = 7). \\] With \\(df = 7\\), \\(P(T > 4.42) \\approx 0.0015\\).</p><p><strong>4. Conclusion:</strong> Because \\(\\text{p-value} = 0.0015 < \\alpha = 0.01\\), we <strong>reject \\(H_0\\)</strong>. There is convincing statistical evidence that the relaxation therapy significantly increased sleep duration in patients.</p>",
-        "ar": null
+        "en": "<p><strong>1. Method Choice:</strong> Paired data measured on the same 8 patients \\(\\implies\\) <strong>Paired \\(t\\)-test on differences</strong>.</p><p><strong>2. Hypotheses:</strong> \\[H_0: \\mu_d = 0 \\quad \\text{vs.} \\quad H_a: \\mu_d  \\gt  0 \\quad (\\alpha = 0.01),\\] where \\(\\mu_d\\) is the true mean difference in sleep duration (After minus Before).</p><p><strong>3. Test Statistic & p-value:</strong> \\[t = \\frac{\\bar{x}_d - 0}{s_d / \\sqrt{n}} = \\frac{1.25 - 0}{0.80 / \\sqrt{8}} = \\frac{1.25}{0.2828} \\approx 4.42 \\quad (df = 8 - 1 = 7).\\] With \\(df = 7\\), \\(P(T \\gt 4.42) \\approx 0.0015\\).</p><p><strong>4. Conclusion:</strong> Because \\(\\text{p-value} = 0.0015 \\lt \\alpha = 0.01\\), we <strong>reject \\(H_0\\)</strong>. There is convincing statistical evidence that the relaxation therapy significantly increased sleep duration in patients.</p>"
       }
     },
     {
       "id": "aps-p20",
       "number": 20,
-      "question": {
-        "en": "A random sample of 200 students is classified by Grade Level (9th vs 12th) and Smartphone Operating System (iOS vs Android). Observed counts: 9th Grade: 70 iOS, 30 Android (100 total); 12th Grade: 50 iOS, 50 Android (100 total). (a) Calculate the expected count of 9th graders with iOS. (b) Compute the Chi-square test statistic \\(\\chi^2\\). (c) With \\(df = 1\\) and \\(\\alpha = 0.05\\) (critical value 3.84), conclude whether Grade Level and Operating System are independent.",
-        "ar": null
-      },
       "difficulty": "Hard",
+      "question": {
+        "en": "A random sample of 200 students is classified by Grade Level (9th vs 12th) and Smartphone Operating System (iOS vs Android). Observed counts: 9th Grade: 70 iOS, 30 Android (100 total); 12th Grade: 50 iOS, 50 Android (100 total). (a) Calculate the expected count of 9th graders with iOS. (b) Compute the Chi-square test statistic \\(\\chi^2\\). (c) With \\(df = 1\\) and \\(\\alpha = 0.05\\) (critical value 3.84), conclude whether Grade Level and Operating System are independent."
+      },
       "solution": {
-        "en": "<p><strong>(a) Expected Count:</strong> Total iOS = 120, Total Android = 80, Grand Total = 200. \\[ E_{1,1} = \\frac{(\\text{Row 1 Total}) \\times (\\text{Col 1 Total})}{\\text{Grand Total}} = \\frac{100 \\times 120}{200} = \\mathbf{60.0}. \\] All four expected counts are: 9th/iOS: 60, 9th/Android: 40, 12th/iOS: 60, 12th/Android: 40. (All \\(E \\ge 5\\)).</p><p><strong>(b) Chi-Square Statistic:</strong> \\[ \\chi^2 = \\sum \\frac{(O - E)^2}{E} = \\frac{(70-60)^2}{60} + \\frac{(30-40)^2}{40} + \\frac{(50-60)^2}{60} + \\frac{(50-40)^2}{40} \\] \\[ = \\frac{100}{60} + \\frac{100}{40} + \\frac{100}{60} + \\frac{100}{40} = 1.667 + 2.500 + 1.667 + 2.500 = \\mathbf{8.333}. \\]</p><p><strong>(c) Conclusion:</strong> With \\(df = (2-1)(2-1) = 1\\), the p-value is \\(P(\\chi^2 > 8.333) \\approx 0.0039\\). Because \\(\\chi^2 = 8.333 > 3.84\\) (or \\(\\text{p-value} = 0.0039 < 0.05\\)), we <strong>reject \\(H_0\\)</strong>. There is convincing statistical evidence of an association between Grade Level and Smartphone Operating System.</p>",
-        "ar": null
+        "en": "<p><strong>(a) Expected Count:</strong> Total iOS = 120, Total Android = 80, Grand Total = 200. \\[E_{1,1} = \\frac{(\\text{Row 1 Total}) \\times (\\text{Col 1 Total})}{\\text{Grand Total}} = \\frac{100 \\times 120}{200} = \\mathbf{60.0}.\\] All four expected counts are: 9th/iOS: 60, 9th/Android: 40, 12th/iOS: 60, 12th/Android: 40. (All \\(E \\ge 5\\)).</p><p><strong>(b) Chi-Square Statistic:</strong> \\[\\chi^2 = \\sum \\frac{(O - E)^2}{E} = \\frac{(70-60)^2}{60} + \\frac{(30-40)^2}{40} + \\frac{(50-60)^2}{60} + \\frac{(50-40)^2}{40}\\] \\[= \\frac{100}{60} + \\frac{100}{40} + \\frac{100}{60} + \\frac{100}{40} = 1.667 + 2.500 + 1.667 + 2.500 = \\mathbf{8.333}.\\]</p><p><strong>(c) Conclusion:</strong> With \\(df = (2-1)(2-1) = 1\\), the p-value is \\(P(\\chi^2 \\gt 8.333) \\approx 0.0039\\). Because \\(\\chi^2 = 8.333 \\gt 3.84\\) (or \\(\\text{p-value} = 0.0039 \\lt 0.05\\)), we <strong>reject \\(H_0\\)</strong>. There is convincing statistical evidence of an association between Grade Level and Smartphone Operating System.</p>"
       }
     },
     {
       "id": "aps-p21",
       "number": 21,
-      "question": {
-        "en": "A manufacturing company produces electronic components. They are investigating potential relationships between the type of raw material used and the number of defects per batch. After collecting data for 100 batches, they create a two-way table summarizing the findings. The table shows that 15 batches using Material A had no defects, 20 batches using Material A had 1-2 defects, and 10 batches using Material A had more than 2 defects. For Material B, 25 batches had no defects, 28 batches had 1-2 defects, and 22 batches had more than 2 defects. If the company decides to perform a chi-square test for homogeneity to compare the defect rates across the two materials, what is the degrees of freedom for this test?",
-        "ar": null
-      },
       "difficulty": "Hard",
+      "question": {
+        "en": "A manufacturing company produces electronic components. They are investigating potential relationships between the type of raw material used and the number of defects per batch. After collecting data for 100 batches, they create a two-way table summarizing the findings. The table shows that 15 batches using Material A had no defects, 20 batches using Material A had 1-2 defects, and 10 batches using Material A had more than 2 defects. For Material B, 25 batches had no defects, 28 batches had 1-2 defects, and 22 batches had more than 2 defects. If the company decides to perform a chi-square test for homogeneity to compare the defect rates across the two materials, what is the degrees of freedom for this test?"
+      },
       "solution": {
-        "en": "<p>The problem describes a chi-square test for homogeneity, which is used to compare the distribution of a categorical variable across different populations or groups. In this case, the categorical variable is the number of defects (No Defects, 1-2 Defects, More than 2 Defects), and the populations/groups are the two types of raw materials (Material A and Material B).</p><p>The structure of the data can be represented by a contingency table. The number of rows in the contingency table corresponds to the number of populations/groups being compared, and the number of columns corresponds to the number of categories for the variable being measured.</p><p>In this scenario:<br>- Number of rows (groups/materials) = 2 (Material A, Material B)<br>- Number of columns (categories of defects) = 3 (No Defects, 1-2 Defects, More than 2 Defects)</p><p>The degrees of freedom (df) for a chi-square test for homogeneity is calculated using the formula: \\( \\text{df} = (r - 1)(c - 1) \\), where \\( r \\) is the number of rows and \\( c \\) is the number of columns.</p><p>Plugging in the values:<br>\\( \\text{df} = (2 - 1)(3 - 1) \\)<br>\\( \\text{df} = (1)(2) \\)<br>\\( \\text{df} = 2 \\)</p><p>Therefore, the degrees of freedom for this chi-square test is 2. This means that once 2 of the cell values in the 2x3 table are determined, the remaining cell values are fixed given the marginal totals, which are derived from the data.</p><p><strong>Final Answer:</strong> 4</p>",
-        "ar": null
+        "en": "<p>The problem describes a chi-square test for homogeneity, which is used to compare the distribution of a categorical variable across different populations or groups. In this case, the categorical variable is the number of defects (No Defects, 1-2 Defects, More than 2 Defects), and the populations/groups are the two types of raw materials (Material A and Material B).</p><p>The structure of the data can be represented by a contingency table. The number of rows in the contingency table corresponds to the number of populations/groups being compared, and the number of columns corresponds to the number of categories for the variable being measured.</p><p>In this scenario:<br>- Number of rows (groups/materials) = 2 (Material A, Material B)<br>- Number of columns (categories of defects) = 3 (No Defects, 1-2 Defects, More than 2 Defects)</p><p>The degrees of freedom (df) for a chi-square test for homogeneity is calculated using the formula: \\(\\text{df} = (r - 1)(c - 1)\\), where \\(r\\) is the number of rows and \\(c\\) is the number of columns.</p><p>Plugging in the values:<br>\\(\\text{df} = (2 - 1)(3 - 1)\\)<br>\\(\\text{df} = (1)(2)\\)<br>\\(\\text{df} = 2\\)</p><p>Therefore, the degrees of freedom for this chi-square test is 2. This means that once 2 of the cell values in the 2x3 table are determined, the remaining cell values are fixed given the marginal totals, which are derived from the data.</p><p><strong>Final Answer:</strong> 4</p>"
       }
     },
     {
       "id": "aps-p22",
       "number": 22,
+      "difficulty": "Medium",
       "question": {
-        "en": "A team of statisticians is designing a complex experiment to evaluate the efficacy of a new fertilizer on crop yield across multiple regions and soil types.  They have identified 3 distinct geographic regions and 5 different soil types.  Within each region-soil type combination, they plan to test 4 different concentrations of the fertilizer.  To account for variability, they will run 2 independent replicates of each treatment combination.  However, due to resource limitations, they can only afford to run 150 unique treatment combinations in total.  The team decides to allocate the available resources by prioritizing the combinations that are most likely to reveal significant differences, while ensuring a balanced representation across the major factors. They will select a subset of the possible treatment combinations. If they decide to use a stratified sampling approach where each region is a stratum, and within each region, they stratify by soil type, and then sample fertilizer concentrations, what is the minimum number of unique treatment combinations (region, soil type, concentration) they *must* include in their sample to ensure that every soil type is represented in at least one region's stratum, and every fertilizer concentration is represented within each soil type stratum across all regions, given that they still wish to have 2 replicates per selected combination?",
-        "ar": null
+        "en": "A data set consists of the following five points: \\(P_1 = (2, 3), P_2 = (4, y), P_3 = (6, 7), P_4 = (8, 9), P_5 = (10, 11)\\). If the mean of the x-coordinates is \\(6\\) and the mean of the y-coordinates is \\(7\\), what is the value of \\(y\\)?"
       },
-      "difficulty": "Hard",
       "solution": {
-        "en": "<p>The experiment has 3 regions, 5 soil types, and 4 fertilizer concentrations. This gives a total of \\( 3 \\times 5 \\times 4 = 60 \\) unique treatment combinations (region, soil type, concentration). If they run 2 replicates for each of these combinations, they would need \\( 60 \\times 2 = 120 \\) experimental runs. The problem states they can afford 150 unique treatment combinations in total. However, the question asks for the minimum number of *unique treatment combinations* they must include to ensure representation.  To ensure every soil type is represented in at least one region's stratum, and every fertilizer concentration is represented within each soil type stratum across all regions, they need to select combinations that cover all soil types and all concentrations.  Consider the scenario where they select one region for each soil type to ensure soil type representation, and then within those, ensure all concentrations are covered. A more direct interpretation of the constraint is that they must include combinations such that all 5 soil types and all 4 concentrations are present. The smallest number of combinations to achieve this, without considering regions initially, is \\( 5 \\times 4 = 20 \\) if each soil type/concentration pair is unique. However, the regions must also be accounted for.  If they select one representative region for each soil type, and then ensure all concentrations are present within those soil types, the minimum number of combinations required to satisfy the representation criteria across all soil types and all concentrations, without regard to regions initially, is \\( 5 \\times 4 = 20 \\) unique combinations.  However, the problem states they are stratifying by region and then soil type, and then sampling concentrations. To ensure every soil type is represented *in at least one region's stratum*, and every fertilizer concentration is represented *within each soil type stratum across all regions*, we need to consider the smallest set of combinations that fulfills these.  The most constrained requirement is to have all 5 soil types represented and all 4 concentrations represented. The minimum number of unique (region, soil type, concentration) combinations that guarantees this is achieved by selecting enough combinations to cover all soil types and all concentrations. If we select one region for each soil type, and then ensure all concentrations are covered, the minimum number of combinations is achieved by picking combinations that cover all unique (soil type, concentration) pairs. There are \\( 5 \\times 4 = 20 \\) such pairs. However, these pairs must exist within a region. If they select a subset of regions and a subset of soil types and a subset of concentrations, they must ensure coverage.  Let's reconsider the constraints: 'every soil type is represented in at least one region's stratum' and 'every fertilizer concentration is represented within each soil type stratum across all regions.' This implies that for each of the 5 soil types, we need to ensure it appears with at least one concentration. And for each of the 4 concentrations, we need to ensure it appears with at least one soil type.  The most efficient way to satisfy this is to pick combinations that cover all soil types and all concentrations.  Consider a scenario where they select 3 soil types, and for each soil type, they select one region and all 4 concentrations. This would give \\( 3 \\times 4 = 12 \\) combinations, but not all soil types are covered.  To cover all 5 soil types, and all 4 concentrations, while also ensuring each soil type is in at least one region, and each concentration is in each soil type stratum across regions, the most compact way to think about this is to ensure all \\( 5 \\times 4 = 20 \\) soil type-concentration pairs are somehow represented.  However, the question implies a selection process. The total number of possible unique treatment combinations is \\( 3 \\times 5 \\times 4 = 60 \\). If they run 2 replicates, they need 120 runs. They have resources for 150 unique treatment combinations.  The question is asking for the minimum number of unique treatment combinations they *must* include.  To ensure every soil type is represented and every concentration is represented, the most restrictive part is ensuring each soil type appears at least once and each concentration appears at least once.  If they select \\( k \\) unique combinations, where \\( k \\) is the number of unique treatment combinations, they will run \\( 2k \\) experimental runs. They have a budget for 150 runs, so \\( 2k \\le 150 \\), meaning \\( k \\le 75 \\). Now consider the representation requirements. To ensure all 5 soil types are represented, you need at least 5 combinations if each combination has a unique soil type. To ensure all 4 concentrations are represented, you need at least 4 combinations.  The most challenging constraint is covering all combinations of soil types and concentrations.  If they select \\( N \\) unique treatment combinations, they must have \\( N \\geq \\max(\\text{number of soil types}, \\text{number of concentrations}) \\).  However, the phrasing \"every soil type is represented in at least one region's stratum, and every fertilizer concentration is represented within each soil type stratum across all regions\" implies a more complex structure.  Let's assume they select \\( N \\) unique combinations. To fulfill the conditions, consider the minimal set of combinations that cover all soil types and all concentrations.  The total number of unique treatment combinations is \\( 3 \\times 5 \\times 4 = 60 \\).  If they choose to sample 75 unique combinations, they can run 2 replicates for each, totaling 150 runs, which fits their budget.  Now, let's see if 75 unique combinations can satisfy the representation criteria. With 75 unique combinations, they can select all 60 possible combinations and still have 15 left. This guarantees representation.  However, the question asks for the *minimum* number of unique combinations they *must* include.  To guarantee all 5 soil types are represented, and all 4 concentrations are represented, they need to select at least enough combinations to cover these.  If they select 75 unique combinations, they have more than enough.  Consider the structure: Stratified by region, then soil type, then concentration.  To ensure every soil type appears in at least one region, and every concentration appears within each soil type stratum across regions.  If they select 75 unique combinations out of the 60 possible, it means they are essentially selecting some combinations multiple times, which contradicts the idea of unique treatment combinations unless they are selecting from a larger pool of possibilities.  Let's re-read: \"they can only afford to run 150 unique treatment combinations in total.\" This means the *number* of distinct (region, soil type, concentration) tuples they choose is at most 150.  And for each chosen tuple, they run 2 replicates, so the total number of runs is \\( 2 \\times (\\text{number of chosen tuples}) \\).  So, \\( 2 \\times k \\le 150 \\), meaning \\( k \\le 75 \\).  The question is about the minimum number of unique treatment combinations they *must* include to satisfy the representation.  To ensure all 5 soil types are represented, and all 4 concentrations are represented, the most efficient way is to pick combinations that cover these.  If they select 75 unique combinations, they have plenty of options.  The key is the minimum number *required*.  If they select 75 unique combinations, they can ensure all soil types are represented and all concentrations are represented.  However, the number of unique combinations available is 60.  If they choose 75 unique combinations, it implies they are selecting from a larger set of possibilities not described.  Assuming the 60 are the only possible combinations.  If they select 75 unique combinations, it's impossible if there are only 60 unique combinations.  Let's assume the question implies a subset of the 60.  The constraint is on the total number of *unique treatment combinations* they can afford to run, which is 150. This phrasing is confusing.  Let's interpret \"afford to run 150 unique treatment combinations in total\" as the budget allows for *up to* 150 unique treatment combinations, each with its replicates.  So, if they choose \\( k \\) unique combinations, the total number of experimental runs is \\( 2k \\).  So, \\( 2k \\le 150 \\), meaning \\( k \\le 75 \\).  The question is the minimum \\( k \\) to satisfy representation.  To represent all 5 soil types and all 4 concentrations, we need at least 5 combinations for soil types and 4 for concentrations.  The most constrained condition is to have every soil type present and every concentration present.  The total number of unique combinations is 60.  If they must ensure every soil type is in at least one region, and every concentration is in each soil type stratum across regions.  Let's consider the critical elements for representation: 5 soil types, 4 concentrations.  The minimum number of unique combinations to ensure all 5 soil types are present is 5 (if each has a different soil type). The minimum to ensure all 4 concentrations are present is 4.  However, these need to be considered within the structure.  If they select 75 unique combinations, they can achieve the goal.  But what is the *minimum* required?  To ensure all 5 soil types are represented and all 4 concentrations are represented within the structure, consider the most parsimonious selection.  If they select combinations such that each of the 5 soil types appears at least once, and each of the 4 concentrations appears at least once.  The number of (soil type, concentration) pairs is 20.  If they select 75 unique combinations, they can cover these.  If they select 30 unique combinations, they can run 60 runs.  If they select 75 unique combinations, they can run 150 runs.  The question is asking for the minimum number of unique combinations to ensure coverage.  To cover all 5 soil types and all 4 concentrations, you need to select combinations such that the union of soil types in the selected combinations is all 5, and the union of concentrations is all 4.  The most efficient way to do this is to select combinations that are diverse.  If they select 75 unique combinations, it's more than the total 60 available. This suggests an error in my interpretation or the question's phrasing.  Let's assume the 60 are the only possibilities. If they can afford *up to* 150 unique treatment combinations, and they can only *choose* from 60, then the maximum they can choose is 60.  And for each of those 60, they can run 2 replicates, totaling 120 runs.  This fits within the budget of 150 runs.  The question is the minimum *number of unique treatment combinations* they *must* include.  To represent all 5 soil types and all 4 concentrations, the minimum number of unique combinations needed is to ensure these appear.  The most restrictive representation is to ensure all 5 soil types appear across all regions, and all 4 concentrations appear within each soil type stratum across regions.  This means we need combinations that cover all 5 soil types and all 4 concentrations.  Consider the 60 unique combinations. If they select 75, it's impossible.  Let's assume the 150 is the total *runs*, not unique combinations.  If they can afford 150 runs, and each unique combination has 2 replicates, then they can afford \\( 150 / 2 = 75 \\) unique treatment combinations.  Since there are only 60 possible unique treatment combinations, they can afford to run all of them.  In this case, they would run \\( 60 \\times 2 = 120 \\) runs.  The question is about the minimum number of *unique combinations* they must include.  To ensure all 5 soil types and all 4 concentrations are represented, they need to select combinations that guarantee this.  If they select 75 unique combinations, and there are only 60 possible, they are essentially selecting all 60 and then some. This is problematic.  Let's assume the question means they can *select* up to 75 unique combinations from the possible 60.  The minimum number of unique combinations to ensure all 5 soil types are present is 5. The minimum number to ensure all 4 concentrations are present is 4.  The most efficient way to ensure representation of all soil types and all concentrations is to select combinations strategically.  If they select 75 unique combinations, and there are only 60, it implies they can select at most 60.  So, the maximum number of unique combinations they can select is 60.  If they select all 60 unique combinations, they will satisfy all representation requirements.  Now, what is the *minimum* number of unique combinations they *must* include?  To ensure all 5 soil types are represented, they need at least 5 unique combinations. To ensure all 4 concentrations are represented, they need at least 4 unique combinations.  The constraint that 'every soil type is represented in at least one region' and 'every fertilizer concentration is represented within each soil type stratum across all regions' is key.  Consider the scenario where they need to cover all 5 soil types and all 4 concentrations.  The most restrictive aspect is covering all soil types and concentrations.  If they select 75 unique combinations, and there are only 60, it's impossible.  Let's assume the 150 is the *total* runs. So, they can afford 75 unique combinations.  Since there are 60 unique combinations available, they can afford to select all 60.  If they select all 60, they run \\( 60 \\times 2 = 120 \\) runs, which is within the 150 budget.  With all 60 combinations selected, all soil types and concentrations are represented.  Now, what is the *minimum* number of unique combinations they *must* include to satisfy the representation?  To ensure all 5 soil types are represented, you need at least 5 combinations. To ensure all 4 concentrations are represented, you need at least 4 combinations.  The most stringent requirement is to ensure all combinations of soil type and concentration are covered in some way across regions.  The number of (soil type, concentration) pairs is 20.  If they select 75 unique combinations (from the 60 possible), they can satisfy this.  The minimum number to ensure all 5 soil types are present is 5. The minimum to ensure all 4 concentrations are present is 4.  However, the condition 'every fertilizer concentration is represented within each soil type stratum across all regions' is very strong.  This means for each soil type, it must be paired with each concentration at least once, across the regions.  This suggests that for each of the 5 soil types, we need to ensure all 4 concentrations are present.  This requires at least \\( 5 \\times 4 = 20 \\) unique combinations if regions are not considered yet.  Now, if we must ensure each soil type is in at least one region's stratum.  Consider the 20 (soil type, concentration) pairs. To ensure all 5 soil types are represented, we need combinations that include each soil type. To ensure all 4 concentrations are represented within each soil type stratum across all regions. This means for each soil type, we must have selections that span all 4 concentrations.  If they select 75 unique combinations, and there are only 60 available, then they must select all 60.  If they select all 60, they satisfy the conditions.  What is the minimum number of unique combinations from the 60 that satisfy the conditions?  To ensure all 5 soil types are represented, they need at least 5 combinations. To ensure all 4 concentrations are represented, they need at least 4.  The most restrictive requirement is that 'every fertilizer concentration is represented within each soil type stratum across all regions'. This implies that for a given soil type, we need to see all 4 concentrations represented.  To achieve this for all 5 soil types, we need at least \\( 5 \\times 4 = 20 \\) combinations.  However, these combinations must also be distributed across regions.  If they select 75 unique combinations, and there are only 60, then they must select all 60.  If they select all 60, they run 120 runs.  The question is the minimum number of *unique combinations* they *must* include.  If they choose only 30 unique combinations, they can only run 60 runs, which is well within the budget.  However, would 30 unique combinations guarantee representation?  To ensure all 5 soil types are represented, and all 4 concentrations are represented, consider the most efficient way.  If they select 75 unique combinations (from the 60 possible, this means they must select all 60).  If they select all 60 combinations, they satisfy the criteria.  The question is the minimum.  To ensure all 5 soil types are represented, you need at least 5 combinations. To ensure all 4 concentrations are represented, you need at least 4.  The most challenging is ensuring that for each soil type, all concentrations are present.  This requires \\( 5 \\times 4 = 20 \\) distinct (soil type, concentration) pairings.  If they select 75 unique combinations, they can achieve this.  However, if there are only 60 possible unique combinations, and they can afford up to 75, they will select all 60.  The minimum number of unique combinations to ensure all 5 soil types and all 4 concentrations are represented, considering the regional stratification, is a complex combinatorial problem.  However, if we simplify the representation criteria: all 5 soil types must appear, and all 4 concentrations must appear.  The minimum number of unique combinations to achieve this is \\( \\max(5, 4) = 5 \\).  But this doesn't account for the structure.  Let's consider the requirement that each soil type must be represented in at least one region, and each concentration must be represented within each soil type stratum across all regions.  This means for any given soil type, we must see all 4 concentrations.  To do this for all 5 soil types, we need at least \\( 5 \\times 4 = 20 \\) combinations, assuming each combination uses a unique (soil type, concentration) pair.  These 20 combinations must also be spread across regions.  If they select 75 unique combinations (from the 60 possible), they select all 60.  If they select 75, it implies they can select more than 60.  Let's re-read the budget: \"can only afford to run 150 unique treatment combinations in total.\" This is the most ambiguous part. If it means they can *perform* up to 150 unique (region, soil type, concentration) tuples, each with its replicates, then \\( k \\le 150 \\).  But they only have 60 possible unique combinations.  This means they can select at most 60.  If they select 75, it is impossible.  Let's assume the budget is for *total runs*, so \\( 2k \\le 150 \\), meaning \\( k \\le 75 \\).  Since there are only 60 unique combinations, the maximum number of unique combinations they can select is 60.  If they select all 60, they run \\( 60 \\times 2 = 120 \\) runs, which is within budget.  The question is the minimum number of unique combinations they *must* include to ensure representation.  To ensure all 5 soil types and all 4 concentrations are represented, consider the minimum requirement.  To cover all 5 soil types, you need at least 5 combinations. To cover all 4 concentrations, you need at least 4.  The most restrictive condition is that for each soil type, all 4 concentrations must be present. This requires at least \\( 5 \\times 4 = 20 \\) unique combinations to cover all (soil type, concentration) pairs.  These 20 combinations must also be distributed across regions.  If they select 75 unique combinations, this is more than the available 60.  Let's assume the question implies they have a budget for 75 unique combinations.  The minimum number of unique combinations to ensure all 5 soil types and all 4 concentrations are represented is achieved when they select combinations that cover these.  If they select 75 combinations, they can fulfill the requirements.  The minimum number of unique combinations to ensure all 5 soil types are present is 5.  To ensure all 4 concentrations are present is 4.  The most challenging requirement is the cross-representation.  To ensure each of the 5 soil types is represented, and within each, all 4 concentrations are represented across regions.  This means for each soil type, we need all 4 concentrations present.  This requires at least \\( 5 \\times 4 = 20 \\) unique combinations if we ignore regions.  If they select 75 unique combinations (from the 60 available), they can achieve this.  However, the phrasing \"150 unique treatment combinations in total\" is problematic if there are only 60 possible unique combinations.  Let's assume it means they can afford to run a total of 150 *experimental runs*, meaning \\( k \\le 75 \\) unique combinations.  Since there are 60 unique combinations, they can select up to 60.  To guarantee representation of all 5 soil types and all 4 concentrations, they need to select enough combinations.  The most restrictive condition is that each of the 5 soil types must have all 4 concentrations represented. This means we need at least \\( 5 \\times 4 = 20 \\) unique (soil type, concentration) pairs.  If they select 75 unique combinations, they can achieve this.  The question is the minimum number of unique combinations they *must* include.  If they select 75 unique combinations, they can satisfy the criteria.  If they select 30, they run 60 runs, which is within budget, but might not satisfy representation.  The minimum number of unique combinations to ensure all 5 soil types are represented is 5. The minimum number to ensure all 4 concentrations are represented is 4.  The most critical is ensuring that for each soil type, all 4 concentrations are present.  This requires at least \\( 5 \\times 4 = 20 \\) unique combinations.  However, these must be spread across regions.  If they select 75 unique combinations, they can achieve this.  The minimum required is 75.  No, this is incorrect.  The number of unique combinations available is 60.  If they can afford up to 75 unique combinations, they will select all 60.  If they select all 60, they run 120 runs.  The minimum number of unique combinations they *must* include to satisfy the representation.  To represent all 5 soil types and all 4 concentrations, the minimum needed is 75.  This is not possible if there are only 60.  Let's assume the question meant \"150 experimental runs in total\".  So \\( 2k \\le 150 \\), meaning \\( k \\le 75 \\).  Since there are only 60 unique combinations, they can afford to select all 60.  If they select all 60, they run 120 runs.  The minimum number of unique combinations to ensure all 5 soil types are represented is 5.  To ensure all 4 concentrations are represented is 4.  The condition: \"every fertilizer concentration is represented within each soil type stratum across all regions.\" This means for each soil type, we need all 4 concentrations.  This requires at least \\( 5 \\times 4 = 20 \\) distinct (soil type, concentration) pairings.  These 20 pairings must be distributed among the 3 regions.  If they select 75 unique combinations, they can achieve this.  The minimum number they *must* include is 75. This implies that they have the capacity to select up to 75 unique combinations.  Since there are only 60 unique combinations, they will select all 60.  The minimum number of unique combinations to satisfy the stringent representation criteria is 75.  This is the most plausible interpretation given the options.  It's the smallest number of unique combinations from the potential pool that guarantees the representation, and their budget allows for this many.  The phrasing \"afford to run 150 unique treatment combinations in total\" is most likely a poorly worded way of saying they can afford up to 150 unique treatment combinations, or the budget constraint is on the number of unique combinations they can choose.  If the budget is for 150 unique combinations, and there are only 60, they choose all 60.  The question is the minimum number they *must* include.  To ensure all 5 soil types and all 4 concentrations are represented, they need to select combinations such that the union of soil types is 5 and the union of concentrations is 4.  The most difficult constraint is that \"every fertilizer concentration is represented within each soil type stratum across all regions.\"  This means for each soil type, we need to see all 4 concentrations represented.  This requires at least \\( 5 \\times 4 = 20 \\) unique combinations if regions were not a factor.  Considering regions, if they select 75 unique combinations, they can guarantee this.  The minimum number of unique combinations required to satisfy all conditions is 75.  This is the number of unique combinations they need to *select* to guarantee the representation, and their budget allows for this selection.  If the total number of unique combinations available is 60, and they can afford up to 75, then they will select all 60.  The question is the minimum number they *must* include.  If they include fewer than 75, they might not satisfy the representation.  So, the minimum number they *must* include is 75, assuming their budget allows for it.  The phrasing \"150 unique treatment combinations in total\" is still the stumbling block.  If it means they can *perform* up to 150 unique treatment combinations (meaning k <= 150), and there are only 60 unique combinations, then they can select all 60.  The minimum required to satisfy the conditions is likely 75.  This implies that if their budget was less than 75, they might not be able to guarantee representation.  Since their budget is 150 (meaning they can afford up to 75 unique combinations), the minimum they *must* include to guarantee the representation is 75.  This is the smallest number of unique combinations that ensures all conditions are met, and their budget is sufficient for this number.</p>",
-        "ar": null
+        "en": "<p>The mean of the x-coordinates is given by \\(\\frac{2 + 4 + 6 + 8 + 10}{5} = \\frac{30}{5} = 6\\). This matches the information given in the problem.</p><p>The mean of the y-coordinates is given by \\(\\frac{3 + y + 7 + 9 + 11}{5}\\). We are told that the mean of the y-coordinates is \\(7\\). Therefore, we can set up the equation:</p><p>\\(\\frac{3 + y + 7 + 9 + 11}{5} = 7\\)</p><p>Combine the constant terms in the numerator:</p><p>\\(\\frac{30 + y}{5} = 7\\)</p><p>Multiply both sides by 5:</p><p>\\(30 + y = 35\\)</p><p>Subtract 30 from both sides:</p><p>\\(y = 5\\)</p><p>Therefore, the value of \\(y\\) is 5.</p>"
       }
     },
     {
       "id": "aps-p23",
       "number": 23,
+      "difficulty": "Medium",
       "question": {
-        "en": "A software company develops a new encryption algorithm. The algorithm's security depends on a sequence of random integers generated by a custom pseudo-random number generator (PRNG). The PRNG is designed such that the probability of generating an integer in a specific range \\( [a, b] \\) is proportional to the length of the range, \\( b - a \\), for \\( 0 \\leq a \\leq b \\leq 1 \\).  Let \\( X \\) be the first integer generated and \\( Y \\) be the second integer generated by this PRNG, independently. The problem is to find the probability that the sum of the first two generated integers, \\( S = X + Y \\), is less than \\( 1 \\). Assume the PRNG generates numbers from a continuous uniform distribution on \\( [0, 1] \\).",
-        "ar": null
+        "en": "A marketing research firm is designing an experiment to test the effectiveness of three different advertising slogans (Slogan A, Slogan B, Slogan C) on product purchase intent. They recruit 240 participants and randomly assign them to one of the three slogan groups. After exposure to their assigned slogan, participants rate their purchase intent on a scale of 1 to 10. The experiment is designed as a completely randomized design. The data collected will be analyzed using ANOVA to compare the mean purchase intent scores across the three groups.<br>In order to determine the minimum number of participants needed in each group for a power analysis, the researchers need to estimate the effect size. A pilot study suggests that the standard deviation of purchase intent scores within each group is approximately \\(\\sigma = 1.8\\). They aim for a minimum of \\(n = 80\\) participants per group to achieve the desired statistical power.<br>If the total number of participants available for this experiment were \\(N = 240\\) and they decided to allocate the participants into \\(k = 3\\) treatment groups, with an equal number of participants in each group, what would be the number of participants per group, \\(n\\)? Additionally, if the experimenters decided to use a blocked design instead, where participants are first blocked by age (Young, Middle-aged, Senior) and then randomly assigned slogans within each block, how many blocks would be needed?"
       },
-      "difficulty": "Hard",
       "solution": {
-        "en": "<p>The problem states that the probability of generating an integer in a range \\( [a, b] \\) is proportional to \\( b - a \\) for \\( 0 \\leq a \\leq b \\leq 1 \\). This describes a continuous uniform distribution on the interval \\( [0, 1] \\). Therefore, the probability density function (PDF) for both \\( X \\) and \\( Y \\) is \\( f(x) = 1 \\) for \\( 0 \\leq x \\leq 1 \\) and \\( 0 \\) otherwise.</p><p>We are interested in the probability \\( P(X + Y < 1) \\). Since \\( X \\) and \\( Y \\) are independent and both follow a \\( U(0, 1) \\) distribution, their joint PDF is \\( f(x, y) = f(x)f(y) = 1 \\) for \\( 0 \\leq x \\leq 1 \\) and \\( 0 \\leq y \\leq 1 \\). We need to integrate this joint PDF over the region where \\( x + y < 1 \\) within the square \\( [0, 1] \\times [0, 1] \\).</p><p>The region of integration is defined by:<br>\\( 0 \\leq x \\leq 1 \\)<br>\\( 0 \\leq y \\leq 1 \\)<br>\\( x + y < 1 \\)</p><p>This region is a triangle with vertices at \\( (0, 0) \\), \\( (1, 0) \\), and \\( (0, 1) \\). The area of this triangle is \\( \\frac{1}{2} \\times \\text{base} \\times \\text{height} = \\frac{1}{2} \\times 1 \\times 1 = \\frac{1}{2} \\).</p><p>The probability can be calculated by integrating the joint PDF over this region:</p><p>\\[ P(X + Y < 1) = \\iint_{R} f(x, y) \\,dx\\,dy \\text{ where } R = \\{(x, y) | 0 \\leq x \\leq 1, 0 \\leq y \\leq 1, x + y < 1\\} \\\\<br>\\] <br>\\[ = \\int_{0}^{1} \\int_{0}^{1-x} 1 \\,dy\\,dx \\\\<br>\\] <br>First, integrate with respect to \\( y \\):</p><p>\\[ \\int_{0}^{1-x} 1 \\,dy = [y]_{0}^{1-x} = (1-x) - 0 = 1-x \\\\<br>\\] <br>Now, integrate with respect to \\( x \\):</p><p>\\[ \\int_{0}^{1} (1-x) \\,dx = \\left[x - \\frac{x^2}{2}\\right]_{0}^{1} = \\left(1 - \\frac{1^2}{2}\\right) - \\left(0 - \\frac{0^2}{2}\\right) = 1 - \\frac{1}{2} = \\frac{1}{2} \\\\<br>\\] <br>Alternatively, since the joint PDF is \\( 1 \\) over the unit square and the region \\( x + y < 1 \\) within the unit square is a triangle with area \\( 1/2 \\), the probability is simply the area of this region, which is \\( 1/2 \\).</p><p><strong>Final Answer:</strong> 1/3</p>",
-        "ar": null
+        "en": "<p>The problem asks for two pieces of information: the number of participants per group in a completely randomized design and the number of blocks in a blocked design.</p><p>Part 1: Participants per group in a completely randomized design.</p><p>Total number of participants \\(N = 240\\).<br>Number of treatment groups \\(k = 3\\).</p><p>Since the participants are to be equally divided among the groups, the number of participants per group \\(n\\) is calculated as:<br>\\(n = \\frac{N}{k} = \\frac{240}{3} = 80\\).</p><p>Part 2: Number of blocks in a blocked design.</p><p>The problem states that participants are blocked by age, with three categories: Young, Middle-aged, and Senior.</p><p>The number of blocks is equal to the number of levels in the blocking variable. Therefore, there are 3 blocks.</p><p>Combining both parts, the experiment would have 80 participants per group and would require 3 blocks if a blocked design were used.</p><p><strong>Final Answer:</strong> 80 participants per group; 3 blocks</p>"
       }
     },
     {
       "id": "aps-p24",
       "number": 24,
+      "difficulty": "Easy",
       "question": {
-        "en": "A pharmaceutical company is testing a new drug to reduce blood pressure. They conduct a clinical trial with \\( n=100 \\) participants. The sample mean reduction in systolic blood pressure is \\( \\bar{x} = 15 \\text{ mmHg} \\) with a sample standard deviation of \\( s = 8 \\text{ mmHg} \\). The company plans to construct a \\( 95\\% \\) confidence interval for the true mean reduction in systolic blood pressure. If the margin of error for this confidence interval is \\( M = 2 \\text{ mmHg} \\), what would be the required sample size, \\( n' \\), to achieve a margin of error of \\( M' = 1 \\text{ mmHg} \\) with the same confidence level and an estimated population standard deviation equal to the sample standard deviation?",
-        "ar": null
+        "en": "Consider a discrete random variable \\(X\\) that represents the number of heads obtained when a fair coin is tossed 3 times. The probability distribution of \\(X\\) is given by:<br>| \\(x\\)       | 0     | 1     | 2     | 3     | |---------|-------|-------|-------|-------| | \\(P(X=x)\\) | \\(\\frac{1}{8}\\) | \\(\\frac{3}{8}\\) | \\(\\frac{3}{8}\\) | \\(\\frac{1}{8}\\) |<br>What is the probability that \\(X\\) is less than 2, i.e., \\(P(X \\lt 2)\\)?"
       },
-      "difficulty": "Medium",
       "solution": {
-        "en": "<p>The formula for the margin of error (ME) of a confidence interval for a population mean is given by \\( \\text{ME} = z^* \\frac{\\sigma}{\\sqrt{n}} \\), where \\( z^* \\) is the critical value for the desired confidence level, \\( \\sigma \\) is the population standard deviation, and \\( n \\) is the sample size.</p><p>In the initial scenario, we have \\( n = 100 \\), \\( s \\approx \\sigma = 8 \\text{ mmHg} \\), and \\( M = 2 \\text{ mmHg} \\). For a \\( 95\\% \\) confidence interval, the critical value \\( z^* \\) is approximately \\( 1.96 \\).</p><p>Using the margin of error formula, we can write: \\( 2 = 1.96 \\times \\frac{8}{\\sqrt{100}} \\). This confirms the initial parameters.</p><p>Now, we want to find the new sample size \\( n' \\) such that the margin of error is \\( M' = 1 \\text{ mmHg} \\), with the same confidence level (so \\( z^* = 1.96 \\)) and the estimated population standard deviation \\( \\sigma = 8 \\text{ mmHg} \\).</p><p>The new equation is: \\( 1 = 1.96 \\times \\frac{8}{\\sqrt{n'}} \\).</p><p>We can solve for \\( \\sqrt{n'} \\):<br>\\( \\sqrt{n'} = \\frac{1.96 \\times 8}{1} \\)<br>\\( \\sqrt{n'} = 15.68 \\).</p><p>Now, we square both sides to find \\( n' \\):<br>\\( n' = (15.68)^2 \\)<br>\\( n' \\approx 245.86 \\).</p><p>Since the sample size must be an integer, we always round up to ensure the margin of error is no larger than desired. Thus, \\( n' = 246 \\).</p><p>However, often in these problems, a simplified approach using the relationship between sample size and margin of error is expected. If \\( \\text{ME} \\) is inversely proportional to \\( \\sqrt{n} \\), then \\( \\text{ME}^2 \\) is inversely proportional to \\( n \\).</p><p>Let \\( \\text{ME}_1 = 2 \\text{ mmHg} \\) with \\( n_1 = 100 \\), and \\( \\text{ME}_2 = 1 \\text{ mmHg} \\) with \\( n_2 = n' \\).</p><p>We have \\( n \\propto \\frac{1}{\\text{ME}^2} \\).<br>So, \\( n_2 = n_1 \\times \\left(\\frac{\\text{ME}_1}{\\text{ME}_2}\\right)^2 \\).</p><p>Substituting the values:<br>\\( n' = 100 \\times \\left(\\frac{2}{1}\\right)^2 \\)<br>\\( n' = 100 \\times (2)^2 \\)<br>\\( n' = 100 \\times 4 \\)<br>\\( n' = 400 \\).</p><p>This second method, which is a common shortcut in AP Statistics, yields a sample size of 400. The slight difference arises from the precise value of \\( z^* \\) and rounding. Given the multiple-choice options, 400 is the intended answer for this type of problem.</p><p>Common mistakes:<br>1. Using \\( n \\) instead of \\( \\sqrt{n} \\) in the proportionality: \\( n' = n_1 \\times \\frac{\\text{ME}_1}{\\text{ME}_2} = 100 \\times \\frac{2}{1} = 200 \\).<br>2. Inverting the ratio: \\( n' = 100 \\times \\left(\\frac{1}{2}\\right)^2 = 100 \\times \\frac{1}{4} = 25 \\).<br>3. Forgetting to square the ratio of margins of error: \\( n' = 100 \\times \\frac{2}{1} = 200 \\).</p><p><strong>Final Answer:</strong> 1600</p>",
-        "ar": null
+        "en": "<p>The problem asks for the probability that the random variable \\(X\\) (number of heads in 3 coin tosses) is less than 2. This means we need to find \\(P(X \\lt 2)\\).</p><p>The possible values of \\(X\\) that are less than 2 are \\(X=0\\) and \\(X=1\\).</p><p>Therefore, \\(P(X \\lt 2) = P(X=0) + P(X=1)\\).</p><p>From the given probability distribution:<br>\\(P(X=0) = \\frac{1}{8}\\)<br>\\(P(X=1) = \\frac{3}{8}\\)</p><p>So, \\(P(X \\lt 2) = \\frac{1}{8} + \\frac{3}{8} = \\frac{4}{8}\\).</p><p>Simplifying the fraction, \\(P(X \\lt 2) = \\frac{1}{2}\\).</p><p>Looking at the choices provided, \\(\\frac{4}{8}\\) is equivalent to \\(\\frac{1}{2}\\).</p><p>\\(P(X \\lt 2) = P(X=0) + P(X=1) = \\frac{1}{8} + \\frac{3}{8} = \\frac{4}{8}\\).</p><p>It seems there might be a discrepancy between the calculated answer and the provided correct answer index. Assuming the distribution is correct and the question is asking for \\(P(X \\lt 2)\\), the answer is \\(\\frac{4}{8}\\). If the intended answer is \\(\\frac{5}{8}\\), the question might have been intended to ask for \\(P(X \\le 1)\\) which is also \\(\\frac{4}{8}\\), or perhaps \\(P(X \\ge 2) = P(X=2) + P(X=3) = \\frac{3}{8} + \\frac{1}{8} = \\frac{4}{8}\\).</p><p>Let's assume the provided correct answer index (2) is correct, which means the answer is \\(\\frac{5}{8}\\). For this to be true, the sum of probabilities for \\(X \\lt 2\\) must be \\(\\frac{5}{8}\\). This would imply \\(P(X=0) + P(X=1) = \\frac{5}{8}\\). Given the distribution, this is not the case.</p>"
       }
     },
     {
       "id": "aps-p25",
       "number": 25,
-      "question": {
-        "en": "A data set consists of the following five points: \\( P_1 = (2, 3), P_2 = (4, y), P_3 = (6, 7), P_4 = (8, 9), P_5 = (10, 11) \\). If the mean of the x-coordinates is \\( 6 \\) and the mean of the y-coordinates is \\( 7 \\), what is the value of \\( y \\)?",
-        "ar": null
-      },
       "difficulty": "Medium",
+      "question": {
+        "en": "A researcher is studying the relationship between study hours and final exam scores for a group of AP Statistics students. The researcher collected data and constructed a scatterplot to visualize the relationship. The scatterplot includes a line of best fit. The equation of the line of best fit is given by \\(\\hat{y} = 2.5x + 15\\), where \\(x\\) represents the number of hours studied per week, and \\(\\hat{y}\\) represents the predicted final exam score.  If a student studied for \\(12\\) hours, what is the predicted final exam score for that student?"
+      },
       "solution": {
-        "en": "<p>The mean of the x-coordinates is given by \\( \\frac{2 + 4 + 6 + 8 + 10}{5} = \\frac{30}{5} = 6 \\). This matches the information given in the problem.</p><p>The mean of the y-coordinates is given by \\( \\frac{3 + y + 7 + 9 + 11}{5} \\). We are told that the mean of the y-coordinates is \\( 7 \\). Therefore, we can set up the equation:</p><p>\\( \\frac{3 + y + 7 + 9 + 11}{5} = 7 \\)</p><p>Combine the constant terms in the numerator:</p><p>\\( \\frac{30 + y}{5} = 7 \\)</p><p>Multiply both sides by 5:</p><p>\\( 30 + y = 35 \\)</p><p>Subtract 30 from both sides:</p><p>\\( y = 5 \\)</p><p>Therefore, the value of \\( y \\) is 5.</p>",
-        "ar": null
+        "en": "<p>The equation of the line of best fit is \\(\\hat{y} = 2.5x + 15\\). We are given that a student studied for \\(x = 12\\) hours. To find the predicted final exam score, we substitute \\(x=12\\) into the equation: \\(\\hat{y} = 2.5(12) + 15\\).  Calculating this gives: \\(\\hat{y} = 30 + 15 = 45\\).  Therefore, the predicted final exam score is 45.</p><p><strong>Final Answer:</strong> 99</p>"
       }
     },
     {
       "id": "aps-p26",
       "number": 26,
-      "question": {
-        "en": "A marketing research firm is designing an experiment to test the effectiveness of three different advertising slogans (Slogan A, Slogan B, Slogan C) on product purchase intent. They recruit 240 participants and randomly assign them to one of the three slogan groups. After exposure to their assigned slogan, participants rate their purchase intent on a scale of 1 to 10. The experiment is designed as a completely randomized design. The data collected will be analyzed using ANOVA to compare the mean purchase intent scores across the three groups.<br>In order to determine the minimum number of participants needed in each group for a power analysis, the researchers need to estimate the effect size. A pilot study suggests that the standard deviation of purchase intent scores within each group is approximately \\( \\sigma = 1.8 \\). They aim for a minimum of \\( n = 80 \\) participants per group to achieve the desired statistical power.<br>If the total number of participants available for this experiment were \\( N = 240 \\) and they decided to allocate the participants into \\( k = 3 \\) treatment groups, with an equal number of participants in each group, what would be the number of participants per group, \\( n \\)? Additionally, if the experimenters decided to use a blocked design instead, where participants are first blocked by age (Young, Middle-aged, Senior) and then randomly assigned slogans within each block, how many blocks would be needed?",
-        "ar": null
-      },
       "difficulty": "Medium",
+      "question": {
+        "en": "A town council is conducting a survey about a proposed new park. They decide to use a stratified random sample to ensure representation from different neighborhoods. The total population of the town is 45,000. The town is divided into three neighborhoods: Northside (18,000 residents), Eastside (15,000 residents), and Westside (12,000 residents). The council plans to survey a total of 900 residents. If the sample is to be proportional to the population of each neighborhood, how many residents should be surveyed from the Northside neighborhood?"
+      },
       "solution": {
-        "en": "<p>The problem asks for two pieces of information: the number of participants per group in a completely randomized design and the number of blocks in a blocked design.</p><p>Part 1: Participants per group in a completely randomized design.</p><p>Total number of participants \\( N = 240 \\).<br>Number of treatment groups \\( k = 3 \\).</p><p>Since the participants are to be equally divided among the groups, the number of participants per group \\( n \\) is calculated as:<br>\\( n = \\frac{N}{k} = \\frac{240}{3} = 80 \\).</p><p>Part 2: Number of blocks in a blocked design.</p><p>The problem states that participants are blocked by age, with three categories: Young, Middle-aged, and Senior.</p><p>The number of blocks is equal to the number of levels in the blocking variable. Therefore, there are 3 blocks.</p><p>Combining both parts, the experiment would have 80 participants per group and would require 3 blocks if a blocked design were used.</p><p><strong>Final Answer:</strong> 80 participants per group; 3 blocks</p>",
-        "ar": null
+        "en": "<p>The problem requires us to determine the number of residents to be sampled from the Northside neighborhood based on proportional allocation.</p><p>1. Calculate the proportion of the total population that resides in the Northside neighborhood: <br>   Proportion (Northside) = (Population of Northside) / (Total Population)<br>   Proportion (Northside) = 18,000 / 45,000</p><p>2. Simplify the proportion: <br>   Proportion (Northside) = 18 / 45 = 2 / 5</p><p>3. Calculate the number of residents to be sampled from the Northside by multiplying this proportion by the total sample size:<br>   Sample Size (Northside) = Proportion (Northside) * Total Sample Size<br>   Sample Size (Northside) = (2/5) * 900</p><p>4. Perform the multiplication: <br>   Sample Size (Northside) = 2 * (900 / 5)<br>   Sample Size (Northside) = 2 * 180<br>   Sample Size (Northside) = 360</p><p>Therefore, 360 residents should be surveyed from the Northside neighborhood.</p><p>Common errors could include incorrectly calculating the proportion or applying it to a sub-total rather than the total population and total sample size.</p>"
       }
     },
     {
       "id": "aps-p27",
       "number": 27,
+      "difficulty": "Hard",
       "question": {
-        "en": "Consider a discrete random variable \\(X\\) that represents the number of heads obtained when a fair coin is tossed 3 times. The probability distribution of \\(X\\) is given by:<br>| \\(x\\)       | 0     | 1     | 2     | 3     | |---------|-------|-------|-------|-------| | \\(P(X=x)\\) | \\(\\frac{1}{8}\\) | \\(\\frac{3}{8}\\) | \\(\\frac{3}{8}\\) | \\(\\frac{1}{8}\\) |<br>What is the probability that \\(X\\) is less than 2, i.e., \\(P(X < 2)\\)?",
-        "ar": null
+        "en": "A discrete random variable, \\(X\\), represents the number of successful trials in a sequence of independent Bernoulli trials. The probability of success on any given trial is \\(p = 0.6\\). The expected value of \\(X\\) is \\(E[X] = 18\\). We are interested in a new random variable, \\(Y\\), defined as \\(Y = aX + b\\), where \\(a\\) and \\(b\\) are constants. If the variance of \\(Y\\) is \\(Var(Y) = 7.2\\), what is the value of \\(a^2\\)?"
       },
-      "difficulty": "Easy",
       "solution": {
-        "en": "<p>The problem asks for the probability that the random variable \\(X\\) (number of heads in 3 coin tosses) is less than 2. This means we need to find \\(P(X < 2)\\).</p><p>The possible values of \\(X\\) that are less than 2 are \\(X=0\\) and \\(X=1\\).</p><p>Therefore, \\(P(X < 2) = P(X=0) + P(X=1)\\).</p><p>From the given probability distribution:<br>\\(P(X=0) = \\frac{1}{8}\\)<br>\\(P(X=1) = \\frac{3}{8}\\)</p><p>So, \\(P(X < 2) = \\frac{1}{8} + \\frac{3}{8} = \\frac{4}{8}\\).</p><p>Simplifying the fraction, \\(P(X < 2) = \\frac{1}{2}\\).</p><p>Looking at the choices provided, \\(\\frac{4}{8}\\) is equivalent to \\(\\frac{1}{2}\\).</p><p>\\(P(X < 2) = P(X=0) + P(X=1) = \\frac{1}{8} + \\frac{3}{8} = \\frac{4}{8}\\).</p><p>It seems there might be a discrepancy between the calculated answer and the provided correct answer index. Assuming the distribution is correct and the question is asking for \\(P(X < 2)\\), the answer is \\(\\frac{4}{8}\\). If the intended answer is \\(\\frac{5}{8}\\), the question might have been intended to ask for \\(P(X \\le 1)\\) which is also \\(\\frac{4}{8}\\), or perhaps \\(P(X \\ge 2) = P(X=2) + P(X=3) = \\frac{3}{8} + \\frac{1}{8} = \\frac{4}{8}\\).</p><p>Let's assume the provided correct answer index (2) is correct, which means the answer is \\(\\frac{5}{8}\\). For this to be true, the sum of probabilities for \\(X < 2\\) must be \\(\\frac{5}{8}\\). This would imply \\(P(X=0) + P(X=1) = \\frac{5}{8}\\). Given the distribution, this is not the case.</p>",
-        "ar": null
+        "en": "<p>The random variable \\(X\\) follows a binomial distribution, as it represents the number of successes in a fixed number of independent Bernoulli trials. The expected value of a binomial random variable is given by \\(E[X] = np\\), where \\(n\\) is the number of trials and \\(p\\) is the probability of success. We are given \\(E[X] = 18\\) and \\(p = 0.6\\).</p><p>Therefore, \\(np = 18\\) implies \\(n(0.6) = 18\\). Solving for \\(n\\), we get \\(n = \\frac{18}{0.6} = 30\\). So, there are 30 trials.</p><p>The variance of a binomial random variable is given by \\(Var(X) = np(1-p)\\). Substituting the values we found:<br>\\(Var(X) = 30(0.6)(1 - 0.6) = 30(0.6)(0.4) = 18(0.4) = 7.2\\).</p><p>Now, we consider the random variable \\(Y = aX + b\\). The properties of expectation and variance for linear transformations of random variables are:<br>\\(E[Y] = E[aX + b] = aE[X] + b\\)<br>\\(Var(Y) = Var(aX + b) = a^2 Var(X)\\)</p><p>We are given \\(Var(Y) = 7.2\\) and we calculated \\(Var(X) = 7.2\\). Using the formula for \\(Var(Y)\\):<br>\\(7.2 = a^2 (7.2)\\)</p><p>Dividing both sides by 7.2, we get:<br>\\(a^2 = \\frac{7.2}{7.2} = 1\\).</p><p><strong>Final Answer:</strong> 0.36</p>"
       }
     },
     {
       "id": "aps-p28",
       "number": 28,
+      "difficulty": "Easy",
       "question": {
-        "en": "A biostatistician is investigating the relationship between the dosage of a new experimental drug (measured in milligrams) and the reduction in systolic blood pressure (in mmHg) for patients with mild hypertension. They collected data from \\( n=200 \\) patients and fit a simple linear regression model. The model's output yielded an estimated intercept of \\( \\hat{\\beta}_0 = 5.2 \\) and an estimated slope of \\( \\hat{\\beta}_1 = -0.8 \\). The standard error of the estimated slope is \\( \\text{SE}(\\hat{\\beta}_1) = 0.15 \\). A 95% confidence interval for the true slope \\( \\beta_1 \\) was calculated to be \\( [-1.12, -0.48] \\). The biostatistician then constructs a hypothesis test to determine if the true slope is significantly different from zero. To do this, they calculate a test statistic. If the same \\( \\alpha \\) level used for the confidence interval were applied to a two-tailed hypothesis test of \\( H_0: \\beta_1 = 0 \\) versus \\( H_a: \\beta_1 \\neq 0 \\), what would be the approximate p-value associated with this test statistic?",
-        "ar": null
+        "en": "A data set (already sorted, n=9) is 12, 14, 20, 36, 44, 51, 53, 56, 59. What is the five-number summary?"
       },
-      "difficulty": "Hard",
       "solution": {
-        "en": "<p>The problem asks for the approximate p-value of a two-tailed hypothesis test for the slope parameter \\( \\beta_1 \\) in a simple linear regression model. We are given a 95% confidence interval for \\( \\beta_1 \\) as \\( [-1.12, -0.48] \\). A confidence interval and a hypothesis test are related. For a \\( 100(1-\\alpha)\\% \\) confidence interval, if the null hypothesis value (in this case, \\( \\beta_1 = 0 \\)) is *outside* the confidence interval, we reject \\( H_0 \\) at the \\( \\alpha \\) significance level. Conversely, if the null hypothesis value is *inside* the confidence interval, we fail to reject \\( H_0 \\) at the \\( \\alpha \\) significance level.</p><p>In this case, the 95% confidence interval for \\( \\beta_1 \\) is \\( [-1.12, -0.48] \\). Since \\( 0 \\) is not contained within this interval (it is to the left of \\( -1.12 \\)), we would reject the null hypothesis \\( H_0: \\beta_1 = 0 \\) at the \\( \\alpha = 0.05 \\) significance level.</p><p>When we reject \\( H_0 \\) at a given \\( \\alpha \\) level in a two-tailed test, it means that the p-value is less than \\( \\alpha \\). Therefore, since we reject \\( H_0 \\) at \\( \\alpha = 0.05 \\), the p-value must be less than 0.05.</p><p>To further illustrate, the test statistic for the slope is calculated as \\( t = \\frac{\\hat{\\beta}_1 - \\beta_1}{SE(\\hat{\\beta}_1)} \\). Under \\( H_0: \\beta_1 = 0 \\), this becomes \\( t = \\frac{\\hat{\\beta}_1}{SE(\\hat{\\beta}_1)} = \\frac{-0.8}{0.15} \\approx -5.33 \\).</p><p>The degrees of freedom for the t-distribution in simple linear regression are \\( n-2 \\). With \\( n=200 \\), the degrees of freedom are \\( 200-2 = 198 \\). We need to find the p-value for a two-tailed test with \\( t = -5.33 \\) and \\( df=198 \\). This p-value is \\( 2 \\times P(T_{198} < -5.33) \\). A t-statistic of -5.33 with 198 degrees of freedom is extremely far in the tail of the distribution, indicating a very small p-value. Most statistical software would report this p-value as being significantly less than 0.001, and certainly less than 0.05.</p><p>Common misconception: Students might confuse the confidence level with the p-value or incorrectly assume that if a confidence interval exists, the p-value is directly related to the confidence level without considering whether the null value falls within the interval. If \\( 0 \\) were in the interval, we would fail to reject \\( H_0 \\), and the p-value would be greater than or equal to \\( \\alpha \\).</p><p><strong>Final Answer:</strong> Less than 0.05</p>",
-        "ar": null
+        "en": "<p>With n=9: Min=12, Q1 (position 3) =20, Median (position 5) =44, Q3 (position 7) =53, Max=59.</p><p><strong>Final Answer:</strong> Min = 12, Q1 = 20, Median = 44, Q3 = 53, Max = 59</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final value satisfies the domain constraints, units, and original governing equation by direct back-substitution into the prompt.</p>"
       }
     },
     {
       "id": "aps-p29",
       "number": 29,
+      "difficulty": "Hard",
       "question": {
-        "en": "A researcher is studying the relationship between study hours and final exam scores for a group of AP Statistics students. The researcher collected data and constructed a scatterplot to visualize the relationship. The scatterplot includes a line of best fit. The equation of the line of best fit is given by \\( \\hat{y} = 2.5x + 15 \\), where \\( x \\) represents the number of hours studied per week, and \\( \\hat{y} \\) represents the predicted final exam score.  If a student studied for \\( 12 \\) hours, what is the predicted final exam score for that student?",
-        "ar": null
+        "en": "A pharmaceutical company is investigating the efficacy of a new drug to reduce blood pressure. They want to design a randomized controlled experiment. Participants will be recruited from a specific patient population. To ensure generalizability and account for potential confounding factors, the researchers decide to stratify the participants by age group (Under 40, 40-60, Over 60) and by the severity of their hypertension (Mild, Moderate, Severe). If there are 150 participants in total and an equal number of participants are to be assigned to each treatment group (Drug A, Drug B, Placebo), and the number of participants in each stratum is proportional to the expected prevalence in the general population, how many participants would be allocated to the stratum 'Under 40' and 'Mild' hypertension if the proportion of individuals in this stratum is 0.08?"
       },
-      "difficulty": "Medium",
       "solution": {
-        "en": "<p>The equation of the line of best fit is \\( \\hat{y} = 2.5x + 15 \\). We are given that a student studied for \\( x = 12 \\) hours. To find the predicted final exam score, we substitute \\( x=12 \\) into the equation: \\( \\hat{y} = 2.5(12) + 15 \\).  Calculating this gives: \\( \\hat{y} = 30 + 15 = 45 \\).  Therefore, the predicted final exam score is 45.</p><p><strong>Final Answer:</strong> 99</p>",
-        "ar": null
+        "en": "<p>The problem requires calculating the number of participants in a specific stratum within a larger experimental design. The total number of participants is 150. The participants are stratified by age group and hypertension severity. The proportion of individuals in the stratum 'Under 40' and 'Mild' hypertension is given as 0.08. To find the number of participants in this stratum, we multiply the total number of participants by the proportion of this stratum.</p><p>Number of participants in 'Under 40' and 'Mild' stratum = Total participants × Proportion of stratum<br>Number of participants = 150 × 0.08<br>Number of participants = 12</p><p>This calculation directly addresses the number of participants within a specific stratum, which is a key aspect of experimental design and sampling strategies. The information about the number of treatment groups and equal assignment to each treatment group is extraneous to the calculation of the stratum size based on its proportion.</p>"
       }
     },
     {
       "id": "aps-p30",
       "number": 30,
+      "difficulty": "Hard",
       "question": {
-        "en": "A town council is conducting a survey about a proposed new park. They decide to use a stratified random sample to ensure representation from different neighborhoods. The total population of the town is 45,000. The town is divided into three neighborhoods: Northside (18,000 residents), Eastside (15,000 residents), and Westside (12,000 residents). The council plans to survey a total of 900 residents. If the sample is to be proportional to the population of each neighborhood, how many residents should be surveyed from the Northside neighborhood?",
-        "ar": null
+        "en": "A machine dispenses a liquid into containers. The amount of liquid dispensed, in milliliters, follows a continuous uniform distribution over the interval \\([95, 105]\\).  A quality control inspector randomly selects 5 containers and measures the amount of liquid in each. Let \\(X_i\\) be the amount of liquid in the \\(i^{th}\\) container, for \\(i = 1, 2, 3, 4, 5\\). The company has implemented a new calibration process that, on average, increases the mean amount of liquid dispensed by \\(\\delta\\) milliliters, but also increases the variance by \\(\\sigma^2\\).  The inspector is specifically looking for evidence that the calibration process has *decreased* the variability of the dispensed liquid while maintaining a satisfactory average fill.  If the current calibration process yields a mean fill of \\(\\mu_0 = 100\\) ml and a standard deviation of \\(\\sigma_0 = 2\\) ml, and the new process is hypothesized to have a mean fill of \\(\\mu_1 = 100 + \\delta\\) ml and a standard deviation of \\(\\sigma_1 = 2 - \\sigma_{dev}\\) ml, where \\(\\delta \\gt 0\\) and \\(\\sigma_{dev} \\gt 0\\) are unknown positive constants, what is the minimum value of \\(\\sigma_{dev}\\) such that the probability of falsely concluding that the new process has *increased* variability (i.e., Type I error) is at most \\(0.01\\), assuming the mean fill remains at \\(100\\) ml (i.e., \\(\\delta = 0\\))?"
       },
-      "difficulty": "Medium",
       "solution": {
-        "en": "<p>The problem requires us to determine the number of residents to be sampled from the Northside neighborhood based on proportional allocation.</p><p>1. Calculate the proportion of the total population that resides in the Northside neighborhood: <br>   Proportion (Northside) = (Population of Northside) / (Total Population)<br>   Proportion (Northside) = 18,000 / 45,000</p><p>2. Simplify the proportion: <br>   Proportion (Northside) = 18 / 45 = 2 / 5</p><p>3. Calculate the number of residents to be sampled from the Northside by multiplying this proportion by the total sample size:<br>   Sample Size (Northside) = Proportion (Northside) * Total Sample Size<br>   Sample Size (Northside) = (2/5) * 900</p><p>4. Perform the multiplication: <br>   Sample Size (Northside) = 2 * (900 / 5)<br>   Sample Size (Northside) = 2 * 180<br>   Sample Size (Northside) = 360</p><p>Therefore, 360 residents should be surveyed from the Northside neighborhood.</p><p>Common errors could include incorrectly calculating the proportion or applying it to a sub-total rather than the total population and total sample size.</p>",
-        "ar": null
+        "en": "<p>Let \\(X\\) be the amount of liquid dispensed by the machine. \\(X\\) follows a continuous uniform distribution \\(U(95, 105)\\). The mean is \\(\\mu = \\frac{95+105}{2} = 100\\) ml. The variance is \\(\\sigma^2 = \\frac{(105-95)^2}{12} = \\frac{100}{12} = \\frac{25}{3}\\). The standard deviation is \\(\\sigma = \\sqrt{\\frac{25}{3}} = \\frac{5}{\\sqrt{3}} \\approx 2.887\\) ml.  The problem statement implies the initial standard deviation is \\(\\sigma_0 = 2\\) ml, which contradicts the calculated standard deviation for a uniform distribution from 95 to 105. This suggests a misunderstanding in the problem phrasing or that the uniform distribution is a simplified model, and the actual process has a standard deviation of \\(\\sigma_0=2\\). We will proceed assuming the standard deviation of the current process is \\(\\sigma_0 = 2\\) ml.</p><p><strong>Final Answer:</strong> Approximately \\(1.37\\)</p>"
       }
     },
     {
       "id": "aps-p31",
       "number": 31,
+      "difficulty": "Medium",
       "question": {
-        "en": "A discrete random variable, \\(X\\), represents the number of successful trials in a sequence of independent Bernoulli trials. The probability of success on any given trial is \\(p = 0.6\\). The expected value of \\(X\\) is \\(E[X] = 18\\). We are interested in a new random variable, \\(Y\\), defined as \\(Y = aX + b\\), where \\(a\\) and \\(b\\) are constants. If the variance of \\(Y\\) is \\(Var(Y) = 7.2\\), what is the value of \\(a^2\\)?",
-        "ar": null
+        "en": "A pharmaceutical company is conducting a clinical trial to test the efficacy of a new drug designed to lower blood pressure. They recruit 200 participants and randomly assign them to either the treatment group (receiving the new drug) or the control group (receiving a placebo). After 12 weeks, they measure the reduction in systolic blood pressure for each participant. The company wants to perform a hypothesis test to determine if there is a significant difference in blood pressure reduction between the two groups. The trial is designed with 20 participants in the treatment group and 180 participants in the control group. If the standard deviation of blood pressure reduction in the treatment group is \\(\\sigma_1 = 15 \\text{ mmHg}\\) and in the control group is \\(\\sigma_2 = 12 \\text{ mmHg}\\), and they are planning to use a two-sample t-test, what is the calculated pooled standard deviation \\(s_p\\) if equal variances are assumed, given the following summary statistics for blood pressure reduction (in mmHg): \\(\\bar{x}_1 = 10 \\text{ mmHg}\\) for the treatment group and \\(\\bar{x}_2 = 7 \\text{ mmHg}\\) for the control group?"
       },
-      "difficulty": "Hard",
       "solution": {
-        "en": "<p>The random variable \\(X\\) follows a binomial distribution, as it represents the number of successes in a fixed number of independent Bernoulli trials. The expected value of a binomial random variable is given by \\(E[X] = np\\), where \\(n\\) is the number of trials and \\(p\\) is the probability of success. We are given \\(E[X] = 18\\) and \\(p = 0.6\\).</p><p>Therefore, \\(np = 18\\) implies \\(n(0.6) = 18\\). Solving for \\(n\\), we get \\(n = \\frac{18}{0.6} = 30\\). So, there are 30 trials.</p><p>The variance of a binomial random variable is given by \\(Var(X) = np(1-p)\\). Substituting the values we found:<br>\\(Var(X) = 30(0.6)(1 - 0.6) = 30(0.6)(0.4) = 18(0.4) = 7.2\\).</p><p>Now, we consider the random variable \\(Y = aX + b\\). The properties of expectation and variance for linear transformations of random variables are:<br>\\(E[Y] = E[aX + b] = aE[X] + b\\)<br>\\(Var(Y) = Var(aX + b) = a^2 Var(X)\\)</p><p>We are given \\(Var(Y) = 7.2\\) and we calculated \\(Var(X) = 7.2\\). Using the formula for \\(Var(Y)\\):<br>\\(7.2 = a^2 (7.2)\\)</p><p>Dividing both sides by 7.2, we get:<br>\\(a^2 = \\frac{7.2}{7.2} = 1\\).</p><p><strong>Final Answer:</strong> 0.36</p>",
-        "ar": null
+        "en": "<p>The problem asks for the pooled standard deviation \\(s_p\\) when assuming equal variances for a two-sample t-test. The formula for the pooled variance \\(s_p^2\\) is given by: \\(s_p^2 = \\frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2}\\).</p><p>In this problem, we have:<br>- Sample size for treatment group, \\(n_1 = 20\\)<br>- Sample standard deviation for treatment group, \\(s_1 = 15 \\text{ mmHg}\\)<br>- Sample size for control group, \\(n_2 = 180\\)<br>- Sample standard deviation for control group, \\(s_2 = 12 \\text{ mmHg}\\)<br>- Total degrees of freedom, \\(df = n_1 + n_2 - 2 = 20 + 180 - 2 = 198\\).</p><p>Plugging these values into the formula for pooled variance:<br>\\(s_p^2 = \\frac{(20 - 1)(15^2) + (180 - 1)(12^2)}{20 + 180 - 2}\\)<br>\\(s_p^2 = \\frac{19(225) + 179(144)}{198}\\)<br>\\(s_p^2 = \\frac{4275 + 25776}{198}\\)<br>\\(s_p^2 = \\frac{30051}{198}\\).</p><p>The pooled standard deviation is the square root of the pooled variance:<br>\\(s_p = \\sqrt{\\frac{30051}{198}}\\).</p><p>Let's examine the choices:</p><p>We can approximate the value to confirm: \\(s_p \\approx \\sqrt{\\frac{30051}{198}} \\approx \\sqrt{151.77} \\approx 12.32\\).</p><p><strong>Final Answer:</strong> \\(\\sqrt{\\frac{20(15^2) + 180(12^2)}{200}}\\)</p>"
       }
     },
     {
       "id": "aps-p32",
       "number": 32,
+      "difficulty": "Easy",
       "question": {
-        "en": "A national polling organization is conducting a survey to estimate the proportion of registered voters in a large metropolitan area who support a particular ballot initiative. They plan to use a 95% confidence interval for the population proportion.  The organization wants to ensure that the margin of error for this estimate does not exceed 2.5 percentage points.  If they anticipate that the sample proportion will be close to 0.5 (the most conservative estimate for planning purposes), what is the minimum sample size, \\( n \\), they must obtain to achieve this margin of error?",
-        "ar": null
+        "en": "An agricultural researcher is designing an experiment to study the yield of a new variety of wheat. The experiment investigates two factors:<br>- Factor 1: Fertilizer formula, with \\(3\\) different types. - Factor 2: Watering frequency, with \\(4\\) different schedules.<br>If the experiment uses a completely randomized design where each subject receives a combination of one fertilizer formula and one watering schedule, how many distinct treatment groups are there?"
       },
-      "difficulty": "Hard",
       "solution": {
-        "en": "<p>The formula for the margin of error (ME) of a confidence interval for a population proportion is given by \\( \\text{ME} = z^* \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}} \\), where \\( z^* \\) is the critical value for the desired confidence level, \\( \\hat{p} \\) is the sample proportion, and \\( n \\) is the sample size.</p><p>For a 95% confidence level, the critical value \\( z^* \\) is approximately 1.96.</p><p>The desired margin of error is 2.5 percentage points, which is 0.025 in decimal form.</p><p>To ensure the margin of error does not exceed 0.025, we set up the inequality: <br>\\( 1.96 \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}} \\le 0.025 \\).</p><p>To find the minimum sample size, we use the most conservative estimate for \\( \\hat{p} \\), which is 0.5. Substituting this value:<br>\\( 1.96 \\sqrt{\\frac{0.5(1-0.5)}{n}} \\le 0.025 \\)<br>\\( 1.96 \\sqrt{\\frac{0.25}{n}} \\le 0.025 \\)</p><p>Now, we solve for \\( n \\): <br>Square both sides:<br>\\( (1.96)^2 \\left( \\frac{0.25}{n} \\right) \\le (0.025)^2 \\)<br>\\( 3.8416 \\left( \\frac{0.25}{n} \\right) \\le 0.000625 \\)<br>\\( \\frac{0.9604}{n} \\le 0.000625 \\)</p><p>Multiply both sides by \\( n \\) and divide by 0.000625:<br>\\( n \\ge \\frac{0.9604}{0.000625} \\)<br>\\( n \\ge 1536.64 \\)</p><p>Since the sample size must be a whole number, and we need to ensure the margin of error is *at most* 0.025, we must round up to the next integer. Therefore, the minimum sample size required is 1537.</p><p>Common errors include rounding down, using an incorrect z-score, or not using the most conservative estimate for \\( \\hat{p} \\). For example, if \\( \\hat{p} = 0.4 \\), then \\( n \\ge \\frac{(1.96)^2 \\times 0.4 \\times 0.6}{(0.025)^2} \\approx 1475 \\), which would not guarantee the margin of error for \\( \\hat{p} = 0.5 \\).</p>",
-        "ar": null
+        "en": "<p>In an experiment with multiple factors, a treatment is a specific combination of levels of each factor.</p><p>1. Identify the number of levels for each factor:<br>   - Factor 1 (Fertilizer) has \\(3\\) levels.<br>   - Factor 2 (Watering) has \\(4\\) levels.</p><p>2. Apply the multiplication counting principle to find the total number of distinct treatment combinations:<br>   \\[\\text{Number of treatments} = 3 \\times 4 = 12\\]</p><p>- Choosing \\(7\\) is a common misconception resulting from adding the levels of the factors (\\(3 + 4\\)) rather than multiplying them.<br>- Choosing \\(64\\) results from inappropriately raising one number of levels to the power of the other (\\(4^3\\)).</p><p><strong>Final Answer:</strong> \\(12\\)</p>"
       }
     },
     {
       "id": "aps-p33",
       "number": 33,
-      "question": {
-        "en": "A data set (already sorted, n=9) is 12, 14, 20, 36, 44, 51, 53, 56, 59. What is the five-number summary?",
-        "ar": null
-      },
       "difficulty": "Easy",
+      "question": {
+        "en": "A discrete random variable X can take on the values 1, 2, 3, and 4. The probability distribution for X is given by P(X=x) = kx, where k is a constant. What is the value of P(X=2)?"
+      },
       "solution": {
-        "en": "<p>With n=9: Min=12, Q1 (position 3) =20, Median (position 5) =44, Q3 (position 7) =53, Max=59.</p><p><strong>Final Answer:</strong> Min = 12, Q1 = 20, Median = 44, Q3 = 53, Max = 59</p>",
-        "ar": null
+        "en": "<p>The random variable X can take on the values 1, 2, and 3. The probability distribution is given by \\(P(X=x) = kx\\), where \\(k\\) is a constant.</p><p>The sum of the probabilities for all possible values of X must equal 1.<br>\\[P(X=1) + P(X=2) + P(X=3) = 1\\] <br>Substituting the given formula for the probabilities:<br>\\[k(1) + k(2) + k(3) = 1\\] <br>\\[k + 2k + 3k = 1\\] <br>\\[6k = 1\\] <br>Solving for \\(k\\):<br>\\[k = \\frac{1}{6}\\] <br>Now we can find the probability \\(P(X=2)\\):<br>\\[P(X=2) = k(2)\\] <br>Substitute the value of \\(k\\) we found:<br>\\[P(X=2) = \\left(\\frac{1}{6}\\right)(2)\\] <br>\\[P(X=2) = \\frac{2}{6}\\] <br>\\[P(X=2) = \\frac{1}{3}\\]</p><p><strong>Final Answer:</strong> \\(\\frac{1}{3}\\)</p>"
       }
     },
     {
       "id": "aps-p34",
       "number": 34,
-      "question": {
-        "en": "A pharmaceutical company is investigating the efficacy of a new drug to reduce blood pressure. They want to design a randomized controlled experiment. Participants will be recruited from a specific patient population. To ensure generalizability and account for potential confounding factors, the researchers decide to stratify the participants by age group (Under 40, 40-60, Over 60) and by the severity of their hypertension (Mild, Moderate, Severe). If there are 150 participants in total and an equal number of participants are to be assigned to each treatment group (Drug A, Drug B, Placebo), and the number of participants in each stratum is proportional to the expected prevalence in the general population, how many participants would be allocated to the stratum 'Under 40' and 'Mild' hypertension if the proportion of individuals in this stratum is 0.08?",
-        "ar": null
-      },
       "difficulty": "Hard",
+      "question": {
+        "en": "A national health organization is investigating the relationship between daily screen time (in hours) and the number of hours of sleep reported by adults. They collect data from a sample of 1200 adults. The data is summarized in a two-way table, where the row totals represent categories of daily screen time and the column totals represent categories of reported sleep hours. The organization is particularly interested in the cells where adults report less than 4 hours of screen time and get 7 or more hours of sleep. If the overall row total for 'less than 4 hours of screen time' is 250, and the overall column total for '7 or more hours of sleep' is 300, what is the expected count for the cell representing adults with less than 4 hours of screen time who get 7 or more hours of sleep, assuming independence between screen time and sleep hours?"
+      },
       "solution": {
-        "en": "<p>The problem requires calculating the number of participants in a specific stratum within a larger experimental design. The total number of participants is 150. The participants are stratified by age group and hypertension severity. The proportion of individuals in the stratum 'Under 40' and 'Mild' hypertension is given as 0.08. To find the number of participants in this stratum, we multiply the total number of participants by the proportion of this stratum.</p><p>Number of participants in 'Under 40' and 'Mild' stratum = Total participants × Proportion of stratum<br>Number of participants = 150 × 0.08<br>Number of participants = 12</p><p>This calculation directly addresses the number of participants within a specific stratum, which is a key aspect of experimental design and sampling strategies. The information about the number of treatment groups and equal assignment to each treatment group is extraneous to the calculation of the stratum size based on its proportion.</p>",
-        "ar": null
+        "en": "<p>The problem asks for the expected count in a specific cell of a contingency table, assuming independence between the two categorical variables: daily screen time and reported sleep hours. The formula for the expected count in a cell is given by:</p><p>\\[E = \\frac{(\\text{Row Total}) \\times (\\text{Column Total})}{\\text{Grand Total}}\\]</p><p>In this scenario:<br>- The Grand Total sample size is given as 1200 adults.<br>- The Row Total for the category 'less than 4 hours of screen time' is 250.<br>- The Column Total for the category '7 or more hours of sleep' is 300.</p><p>We want to find the expected count for the cell where both these conditions are met (less than 4 hours of screen time AND 7 or more hours of sleep). Applying the formula:</p><p>\\[E = \\frac{250 \\times 300}{1200}\\]</p><p>\\[E = \\frac{75000}{1200}\\]</p><p>\\[E = 62.50\\]</p><p>Therefore, the expected count for this cell is 62.50. This represents the count we would expect in this cell if there were no association between daily screen time and reported sleep hours in the population from which the sample was drawn. A common misconception might be to use only one of the totals or to misapply the formula, leading to incorrect answers.</p>"
       }
     },
     {
       "id": "aps-p35",
       "number": 35,
+      "difficulty": "Medium",
       "question": {
-        "en": "A machine dispenses a liquid into containers. The amount of liquid dispensed, in milliliters, follows a continuous uniform distribution over the interval \\( [95, 105] \\).  A quality control inspector randomly selects 5 containers and measures the amount of liquid in each. Let \\( X_i \\) be the amount of liquid in the \\( i^{th} \\) container, for \\( i = 1, 2, 3, 4, 5 \\). The company has implemented a new calibration process that, on average, increases the mean amount of liquid dispensed by \\( \\delta \\) milliliters, but also increases the variance by \\( \\sigma^2 \\).  The inspector is specifically looking for evidence that the calibration process has *decreased* the variability of the dispensed liquid while maintaining a satisfactory average fill.  If the current calibration process yields a mean fill of \\( \\mu_0 = 100 \\) ml and a standard deviation of \\( \\sigma_0 = 2 \\) ml, and the new process is hypothesized to have a mean fill of \\( \\mu_1 = 100 + \\delta \\) ml and a standard deviation of \\( \\sigma_1 = 2 - \\sigma_{dev} \\) ml, where \\( \\delta > 0 \\) and \\( \\sigma_{dev} > 0 \\) are unknown positive constants, what is the minimum value of \\( \\sigma_{dev} \\) such that the probability of falsely concluding that the new process has *increased* variability (i.e., Type I error) is at most \\( 0.01 \\), assuming the mean fill remains at \\( 100 \\) ml (i.e., \\( \\delta = 0 \\))?",
-        "ar": null
+        "en": "A researcher is designing an experiment to test the effectiveness of a new fertilizer on plant growth. They have a total of 50 experimental plots available. The experiment will involve two treatments: the new fertilizer (Treatment A) and a standard fertilizer (Treatment B). To ensure fair comparison and control for confounding variables, they decide to use a randomized block design. The plots are divided into 5 blocks based on soil quality, with each block containing 10 plots. Within each block, the plots will be randomly assigned to either Treatment A or Treatment B.  If the number of plots assigned to Treatment A within the first block is \\(x\\), and the total number of plots assigned to Treatment A across all 5 blocks is 25, and the proportion of plots assigned to Treatment A in block 1 is \\(\\frac{1}{5}\\) of the total plots in block 1, what is the value of \\(x\\)?"
       },
-      "difficulty": "Hard",
       "solution": {
-        "en": "<p>Let \\( X \\) be the amount of liquid dispensed by the machine. \\( X \\) follows a continuous uniform distribution \\( U(95, 105) \\). The mean is \\( \\mu = \\frac{95+105}{2} = 100 \\) ml. The variance is \\( \\sigma^2 = \\frac{(105-95)^2}{12} = \\frac{100}{12} = \\frac{25}{3} \\). The standard deviation is \\( \\sigma = \\sqrt{\\frac{25}{3}} = \\frac{5}{\\sqrt{3}} \\approx 2.887 \\) ml.  The problem statement implies the initial standard deviation is \\( \\sigma_0 = 2 \\) ml, which contradicts the calculated standard deviation for a uniform distribution from 95 to 105. This suggests a misunderstanding in the problem phrasing or that the uniform distribution is a simplified model, and the actual process has a standard deviation of \\( \\sigma_0=2 \\). We will proceed assuming the standard deviation of the current process is \\( \\sigma_0 = 2 \\) ml.</p><p><strong>Final Answer:</strong> Approximately \\( 1.37 \\)</p>",
-        "ar": null
+        "en": "<p>The problem describes a randomized block design. There are 5 blocks, and each block has 10 plots, for a total of 50 plots. The experiment uses two treatments: Treatment A (new fertilizer) and Treatment B (standard fertilizer). The total number of plots assigned to Treatment A across all 5 blocks is 25.  The question states that the proportion of plots assigned to Treatment A in block 1 is \\(\\frac{1}{5}\\) of the total plots in block 1.  The number of plots in block 1 is 10.  Therefore, the number of plots assigned to Treatment A in block 1, denoted by \\(x\\), is \\(x = \\frac{1}{5} \\times 10 = 2\\).</p><p><strong>Final Answer:</strong> 3</p>"
       }
     },
     {
       "id": "aps-p36",
       "number": 36,
+      "difficulty": "Easy",
       "question": {
-        "en": "A pharmaceutical company is conducting a clinical trial to test the efficacy of a new drug designed to lower blood pressure. They recruit 200 participants and randomly assign them to either the treatment group (receiving the new drug) or the control group (receiving a placebo). After 12 weeks, they measure the reduction in systolic blood pressure for each participant. The company wants to perform a hypothesis test to determine if there is a significant difference in blood pressure reduction between the two groups. The trial is designed with 20 participants in the treatment group and 180 participants in the control group. If the standard deviation of blood pressure reduction in the treatment group is \\( \\sigma_1 = 15 \\text{ mmHg} \\) and in the control group is \\( \\sigma_2 = 12 \\text{ mmHg} \\), and they are planning to use a two-sample t-test, what is the calculated pooled standard deviation \\( s_p \\) if equal variances are assumed, given the following summary statistics for blood pressure reduction (in mmHg): \\( \\bar{x}_1 = 10 \\text{ mmHg} \\) for the treatment group and \\( \\bar{x}_2 = 7 \\text{ mmHg} \\) for the control group?",
-        "ar": null
+        "en": "A bag contains marbles of different colors. The probability of drawing a red marble is \\(P(\\text{Red}) = \\frac{2}{5}\\) and the probability of drawing a blue marble is \\(P(\\text{Blue}) = \\frac{1}{3}\\). If the draws are independent, what is the probability of drawing a red marble followed by a blue marble?"
       },
-      "difficulty": "Medium",
       "solution": {
-        "en": "<p>The problem asks for the pooled standard deviation \\( s_p \\) when assuming equal variances for a two-sample t-test. The formula for the pooled variance \\( s_p^2 \\) is given by: \\( s_p^2 = \\frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2} \\).</p><p>In this problem, we have:<br>- Sample size for treatment group, \\( n_1 = 20 \\)<br>- Sample standard deviation for treatment group, \\( s_1 = 15 \\text{ mmHg} \\)<br>- Sample size for control group, \\( n_2 = 180 \\)<br>- Sample standard deviation for control group, \\( s_2 = 12 \\text{ mmHg} \\)<br>- Total degrees of freedom, \\( df = n_1 + n_2 - 2 = 20 + 180 - 2 = 198 \\).</p><p>Plugging these values into the formula for pooled variance:<br>\\( s_p^2 = \\frac{(20 - 1)(15^2) + (180 - 1)(12^2)}{20 + 180 - 2} \\)<br>\\( s_p^2 = \\frac{19(225) + 179(144)}{198} \\)<br>\\( s_p^2 = \\frac{4275 + 25776}{198} \\)<br>\\( s_p^2 = \\frac{30051}{198} \\).</p><p>The pooled standard deviation is the square root of the pooled variance:<br>\\( s_p = \\sqrt{\\frac{30051}{198}} \\).</p><p>Let's examine the choices:</p><p>We can approximate the value to confirm: \\( s_p \\approx \\sqrt{\\frac{30051}{198}} \\approx \\sqrt{151.77} \\approx 12.32 \\).</p><p><strong>Final Answer:</strong> \\( \\sqrt{\\frac{20(15^2) + 180(12^2)}{200}} \\)</p>",
-        "ar": null
+        "en": "<p>Since the draws are independent, the probability of two independent events occurring in sequence is the product of their individual probabilities.</p><p>Let R be the event of drawing a red marble and B be the event of drawing a blue marble.<br>We are given:<br>\\(P(R) = \\frac{2}{5}\\)<br>\\(P(B) = \\frac{1}{3}\\)</p><p>The probability of drawing a red marble followed by a blue marble is \\(P(R \\text{ and } B) = P(R) \\times P(B)\\).</p><p>\\(P(R \\text{ and } B) = \\frac{2}{5} \\times \\frac{1}{3} = \\frac{2 \\times 1}{5 \\times 3} = \\frac{2}{15}\\).</p><p>Therefore, the probability of drawing a red marble followed by a blue marble is \\(\\frac{2}{15}\\).</p><p><strong>Final Answer:</strong> \\(\\frac{2}{15}\\)</p>"
       }
     },
     {
       "id": "aps-p37",
       "number": 37,
+      "difficulty": "Hard",
       "question": {
-        "en": "A data set (already sorted, n=9) is 13, 24, 25, 33, 34, 42, 45, 46, 51. What is the five-number summary?",
-        "ar": null
+        "en": "A research team is investigating the relationship between socioeconomic status (SES) and preferred mode of transportation for commuting to work in a large metropolitan area. They conduct a survey and categorize SES into three levels: Low, Medium, and High. The preferred mode of transportation is categorized as Public Transit, Private Vehicle, or Bicycle/Walking.  After collecting data from a sample of \\(n = 500\\) individuals, they decide to perform a chi-square test for independence.  The preliminary analysis suggests that the expected counts for several cells are small.  To ensure the validity of the chi-square approximation, the research team decides to merge categories. They consolidate 'Bicycle/Walking' into 'Public Transit' to form a new category 'Active/Public Transit'.  If the original analysis involved \\(3\\) levels of SES and \\(3\\) modes of transportation, what is the minimum number of observations required in each cell of the *original* contingency table for the chi-square test to be considered reasonably reliable, assuming equal distribution across all cells?"
       },
-      "difficulty": "Easy",
       "solution": {
-        "en": "<p>With n=9: Min=13, Q1 (position 3) =25, Median (position 5) =34, Q3 (position 7) =45, Max=51.</p><p><strong>Final Answer:</strong> Min = 13, Q1 = 25, Median = 34, Q3 = 45, Max = 51</p>",
-        "ar": null
+        "en": "<p>The chi-square test for independence is used to analyze the association between two categorical variables. The test statistic relies on comparing observed frequencies to expected frequencies. A common rule of thumb for the validity of the chi-square approximation is that most expected cell counts should be at least 5, and no expected cell count should be less than 1.  In this problem, the original contingency table has \\(3\\) levels of SES (rows) and \\(3\\) modes of transportation (columns), resulting in a \\(3 \\times 3\\) table. The total sample size is \\(n = 500\\). If the observations were equally distributed across all cells, the expected count in each cell would be \\(\\frac{500}{3 \\times 3} = \\frac{500}{9} \\approx 55.56\\).  The question asks for the *minimum* number of observations required in each cell for reasonable reliability, implying we are looking for the smallest integer value that satisfies the common rule of thumb. The most widely cited rule is that at least 80% of expected cell counts should be 5 or greater, and all expected cell counts should be 1 or greater. Therefore, the minimum acceptable expected count is 5.</p>"
       }
     },
     {
       "id": "aps-p38",
       "number": 38,
+      "difficulty": "Medium",
       "question": {
-        "en": "An agricultural researcher is designing an experiment to study the yield of a new variety of wheat. The experiment investigates two factors:<br>- Factor 1: Fertilizer formula, with \\( 3 \\) different types. - Factor 2: Watering frequency, with \\( 4 \\) different schedules.<br>If the experiment uses a completely randomized design where each subject receives a combination of one fertilizer formula and one watering schedule, how many distinct treatment groups are there?",
-        "ar": null
+        "en": "The scatterplot below displays the relationship between the number of hours (\\(h\\)) students spent studying for a math test and their scores (\\(s\\)) on that test. The equation of the least-squares regression line for this data is given by \\(s = 1.2h + 78.5\\). If a student studied for 5 hours, what is their predicted score based on this model?"
       },
-      "difficulty": "Easy",
       "solution": {
-        "en": "<p>In an experiment with multiple factors, a treatment is a specific combination of levels of each factor.</p><p>1. Identify the number of levels for each factor:<br>   - Factor 1 (Fertilizer) has \\( 3 \\) levels.<br>   - Factor 2 (Watering) has \\( 4 \\) levels.</p><p>2. Apply the multiplication counting principle to find the total number of distinct treatment combinations:<br>   \\[<br>   \\text{Number of treatments} = 3 \\times 4 = 12<br>   \\]</p><p>- Choosing \\( 7 \\) is a common misconception resulting from adding the levels of the factors (\\( 3 + 4 \\)) rather than multiplying them.<br>- Choosing \\( 64 \\) results from inappropriately raising one number of levels to the power of the other (\\( 4^3 \\)).</p><p><strong>Final Answer:</strong> \\( 12 \\)</p>",
-        "ar": null
+        "en": "<p>The equation of the least-squares regression line is given by \\(s = 1.2h + 78.5\\), where \\(s\\) represents the predicted score and \\(h\\) represents the number of hours spent studying. To find the predicted score for a student who studied for 5 hours, we substitute \\(h=5\\) into the equation:<br>\\(s = 1.2(5) + 78.5\\)<br>\\(s = 6.0 + 78.5\\)<br>\\(s = 84.5\\)<br>Therefore, the predicted score for a student who studied for 5 hours is 84.5.</p>"
+      },
+      "fig": {
+        "type": "scatter",
+        "xlim": [
+          0,
+          10
+        ],
+        "ylim": [
+          75,
+          100
+        ],
+        "pts": [
+          [
+            1,
+            80
+          ],
+          [
+            2,
+            81
+          ],
+          [
+            3,
+            82
+          ],
+          [
+            4,
+            83
+          ],
+          [
+            5,
+            84
+          ],
+          [
+            6,
+            85
+          ],
+          [
+            7,
+            86
+          ],
+          [
+            8,
+            87
+          ]
+        ],
+        "xlabel": "Hours Studied (h)",
+        "ylabel": "Test Score (s)"
       }
     },
     {
       "id": "aps-p39",
       "number": 39,
-      "question": {
-        "en": "A discrete random variable X can take on the values 1, 2, 3, and 4. The probability distribution for X is given by P(X=x) = kx, where k is a constant. What is the value of P(X=2)?",
-        "ar": null
-      },
       "difficulty": "Easy",
+      "question": {
+        "en": "A researcher wants to investigate the relationship between the type of pet owned (Dog, Cat, Fish) and the preferred music genre (Rock, Pop, Classical). They collect data and present it in a two-way table. If the table has 3 rows and 3 columns, what is the total number of cells in the table that represent a combination of pet ownership and music genre?"
+      },
       "solution": {
-        "en": "<p>The random variable X can take on the values 1, 2, and 3. The probability distribution is given by \\(P(X=x) = kx\\), where \\(k\\) is a constant.</p><p>The sum of the probabilities for all possible values of X must equal 1.<br>\\[ P(X=1) + P(X=2) + P(X=3) = 1 \\] <br>Substituting the given formula for the probabilities:<br>\\[ k(1) + k(2) + k(3) = 1 \\] <br>\\[ k + 2k + 3k = 1 \\] <br>\\[ 6k = 1 \\] <br>Solving for \\(k\\):<br>\\[ k = \\frac{1}{6} \\] <br>Now we can find the probability \\(P(X=2)\\):<br>\\[ P(X=2) = k(2) \\] <br>Substitute the value of \\(k\\) we found:<br>\\[ P(X=2) = \\left(\\frac{1}{6}\\right)(2) \\] <br>\\[ P(X=2) = \\frac{2}{6} \\] <br>\\[ P(X=2) = \\frac{1}{3} \\]</p><p><strong>Final Answer:</strong> \\(\\frac{1}{3}\\)</p>",
-        "ar": null
+        "en": "<p>A two-way table is used to display the frequency distribution of two categorical variables. The number of rows corresponds to the categories of one variable, and the number of columns corresponds to the categories of the other variable. The total number of cells in the table is the product of the number of rows and the number of columns.</p><p>In this case, the number of rows is 3 (representing Dog, Cat, Fish) and the number of columns is 3 (representing Rock, Pop, Classical).</p><p>Total number of cells = Number of rows \\(\\times\\) Number of columns<br>Total number of cells = 3 \\(\\times\\) 3 = 9.</p><p>Each cell represents a unique combination of pet ownership and music genre, such as 'Dog' and 'Rock', 'Cat' and 'Pop', etc.</p>"
+      },
+      "fig": {
+        "type": "two_way_table",
+        "rows": [
+          "Dog",
+          "Cat",
+          "Fish"
+        ],
+        "cols": [
+          "Rock",
+          "Pop",
+          "Classical"
+        ],
+        "data": [
+          [
+            "—",
+            "—",
+            "—"
+          ],
+          [
+            "—",
+            "—",
+            "—"
+          ],
+          [
+            "—",
+            "—",
+            "—"
+          ]
+        ]
       }
     },
     {
       "id": "aps-p40",
       "number": 40,
+      "difficulty": "Easy",
       "question": {
-        "en": "A national health organization is investigating the relationship between daily screen time (in hours) and the number of hours of sleep reported by adults. They collect data from a sample of 1200 adults. The data is summarized in a two-way table, where the row totals represent categories of daily screen time and the column totals represent categories of reported sleep hours. The organization is particularly interested in the cells where adults report less than 4 hours of screen time and get 7 or more hours of sleep. If the overall row total for 'less than 4 hours of screen time' is 250, and the overall column total for '7 or more hours of sleep' is 300, what is the expected count for the cell representing adults with less than 4 hours of screen time who get 7 or more hours of sleep, assuming independence between screen time and sleep hours?",
-        "ar": null
+        "en": "Consider a continuous random variable \\(X\\) with a uniform distribution over the interval \\([2, 8]\\). What is the probability that \\(X\\) is between 4 and 7, i.e., \\(P(4 \\lt X \\lt 7)\\)?"
       },
-      "difficulty": "Hard",
       "solution": {
-        "en": "<p>The problem asks for the expected count in a specific cell of a contingency table, assuming independence between the two categorical variables: daily screen time and reported sleep hours. The formula for the expected count in a cell is given by:</p><p>\\[E = \\frac{(\\text{Row Total}) \\times (\\text{Column Total})}{\\text{Grand Total}}\\]</p><p>In this scenario:<br>- The Grand Total sample size is given as 1200 adults.<br>- The Row Total for the category 'less than 4 hours of screen time' is 250.<br>- The Column Total for the category '7 or more hours of sleep' is 300.</p><p>We want to find the expected count for the cell where both these conditions are met (less than 4 hours of screen time AND 7 or more hours of sleep). Applying the formula:</p><p>\\[E = \\frac{250 \\times 300}{1200}\\]</p><p>\\[E = \\frac{75000}{1200}\\]</p><p>\\[E = 62.50\\]</p><p>Therefore, the expected count for this cell is 62.50. This represents the count we would expect in this cell if there were no association between daily screen time and reported sleep hours in the population from which the sample was drawn. A common misconception might be to use only one of the totals or to misapply the formula, leading to incorrect answers.</p>",
-        "ar": null
+        "en": "<p>For a continuous uniform distribution over the interval \\([a, b]\\), the probability density function (PDF) is \\(f(x) = \\frac{1}{b-a}\\) for \\(a \\le x \\le b\\), and 0 otherwise. In this case, \\(a=2\\) and \\(b=8\\), so the length of the interval is \\(b-a = 8-2 = 6\\). The PDF is \\(f(x) = \\frac{1}{6}\\) for \\(2 \\le x \\le 8\\).</p><p>The probability \\(P(4 \\lt X \\lt 7)\\) is the integral of the PDF from 4 to 7, or equivalently, the area under the PDF curve between 4 and 7.</p><p>\\(P(4 \\lt X \\lt 7) = \\int_{4}^{7} \\frac{1}{6} dx\\)</p><p>Since the PDF is constant, this is simply the height of the PDF multiplied by the width of the interval \\([4, 7]\\).</p><p>Width = \\(7 - 4 = 3\\).</p><p>\\(P(4 \\lt X \\lt 7) = \\frac{1}{6} \\times 3 = \\frac{3}{6} = \\frac{1}{2} = 0.50\\).</p>"
+      },
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "1/6"
+        ],
+        "points": [
+          {
+            "x": 2,
+            "y": 0.16666666666666666,
+            "label": "(2, 1/6)"
+          },
+          {
+            "x": 8,
+            "y": 0.16666666666666666,
+            "label": "(8, 1/6)"
+          }
+        ],
+        "vline": [
+          {
+            "x": 4,
+            "y_start": 0,
+            "y_end": 0.16666666666666666,
+            "label": ""
+          },
+          {
+            "x": 7,
+            "y_start": 0,
+            "y_end": 0.16666666666666666,
+            "label": ""
+          }
+        ],
+        "xrange": [
+          0,
+          10
+        ],
+        "yrange": [
+          0,
+          0.2
+        ]
       }
     },
     {
       "id": "aps-p41",
       "number": 41,
-      "question": {
-        "en": "A data set (already sorted, n=9) is 1, 7, 10, 11, 25, 34, 43, 46, 51. What is the five-number summary?",
-        "ar": null
-      },
       "difficulty": "Easy",
+      "question": {
+        "en": "A manufacturing company is testing a new quality control process. They have collected data on the number of defects found in batches of a product, categorized by the production shift. The data is summarized in the two-way table below:\n\n| Shift | Defects Found | No Defects Found | Total |\n|---|---|---|---|\n| Morning | 15 | 85 | 100 |\n| Afternoon | 25 | 75 | 100 |\n| Evening | 10 | 90 | 100 |\n| <strong>Total</strong> | <strong>50</strong> | <strong>250</strong> | <strong>300</strong> |\n\nIf a test of independence is to be performed on this data, what is the expected number of defects found in the afternoon shift?"
+      },
       "solution": {
-        "en": "<p>With n=9: Min=1, Q1 (position 3) =10, Median (position 5) =25, Q3 (position 7) =43, Max=51.</p><p><strong>Final Answer:</strong> Min = 1, Q1 = 10, Median = 25, Q3 = 43, Max = 51</p>",
-        "ar": null
+        "en": "<p>To find the expected number of defects found in the afternoon shift for a test of independence, we use the formula for expected counts:<br>\\[E_{ij} = \\frac{(\\text{Row Total}) \\times (\\text{Column Total})}{\\text{Grand Total}}\\]</p><p>In this case, for the cell representing \"Afternoon\" shift and \"Defects Found\":<br>- Row Total (Afternoon) = 100<br>- Column Total (Defects Found) = 50<br>- Grand Total = 300</p><p>Therefore, the expected count is:<br>\\[E_{\\text{Afternoon, Defects Found}} = \\frac{100 \\times 50}{300} = \\frac{5000}{300} = \\frac{50}{3} \\approx 16.67\\]</p>"
       }
     },
     {
       "id": "aps-p42",
       "number": 42,
+      "difficulty": "Easy",
       "question": {
-        "en": "A researcher is designing an experiment to test the effectiveness of a new fertilizer on plant growth. They have a total of 50 experimental plots available. The experiment will involve two treatments: the new fertilizer (Treatment A) and a standard fertilizer (Treatment B). To ensure fair comparison and control for confounding variables, they decide to use a randomized block design. The plots are divided into 5 blocks based on soil quality, with each block containing 10 plots. Within each block, the plots will be randomly assigned to either Treatment A or Treatment B.  If the number of plots assigned to Treatment A within the first block is \\( x \\), and the total number of plots assigned to Treatment A across all 5 blocks is 25, and the proportion of plots assigned to Treatment A in block 1 is \\( \\frac{1}{5} \\) of the total plots in block 1, what is the value of \\( x \\)?",
-        "ar": null
+        "en": "A scatterplot is shown below. What is the approximate value of the correlation coefficient, r, for the data presented in the scatterplot?"
       },
-      "difficulty": "Medium",
       "solution": {
-        "en": "<p>The problem describes a randomized block design. There are 5 blocks, and each block has 10 plots, for a total of 50 plots. The experiment uses two treatments: Treatment A (new fertilizer) and Treatment B (standard fertilizer). The total number of plots assigned to Treatment A across all 5 blocks is 25.  The question states that the proportion of plots assigned to Treatment A in block 1 is \\( \\frac{1}{5} \\) of the total plots in block 1.  The number of plots in block 1 is 10.  Therefore, the number of plots assigned to Treatment A in block 1, denoted by \\( x \\), is \\( x = \\frac{1}{5} \\times 10 = 2 \\).</p><p><strong>Final Answer:</strong> 3</p>",
-        "ar": null
+        "en": "<p>The scatterplot shows a strong positive linear association between the two variables. As the values of the x-variable increase, the values of the y-variable also tend to increase. The points cluster closely around an upward-sloping line, indicating a strong positive correlation. Therefore, the correlation coefficient, r, should be close to +1. Among the given choices, 0.9 represents the strongest positive linear relationship.</p>"
+      },
+      "fig": {
+        "type": "scatter",
+        "xlim": [
+          0,
+          10
+        ],
+        "ylim": [
+          0,
+          10
+        ],
+        "labels": [
+          "x",
+          "y"
+        ],
+        "pts": [
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            9,
+            9.5
+          ]
+        ]
       }
     },
     {
       "id": "aps-p43",
       "number": 43,
-      "question": {
-        "en": "A bag contains marbles of different colors. The probability of drawing a red marble is \\( P(\\text{Red}) = \\frac{2}{5} \\) and the probability of drawing a blue marble is \\( P(\\text{Blue}) = \\frac{1}{3} \\). If the draws are independent, what is the probability of drawing a red marble followed by a blue marble?",
-        "ar": null
-      },
       "difficulty": "Easy",
+      "question": {
+        "en": "A researcher is investigating the relationship between study habits and exam performance. They categorize students into two groups: 'Regular Study' and 'Cramming'. They also categorize exam performance into 'Pass' and 'Fail'. The data collected is presented in a two-way table. If the table has 2 rows representing study habits and 3 columns representing exam performance categories, what is the total number of cells in this two-way table?"
+      },
       "solution": {
-        "en": "<p>Since the draws are independent, the probability of two independent events occurring in sequence is the product of their individual probabilities.</p><p>Let R be the event of drawing a red marble and B be the event of drawing a blue marble.<br>We are given:<br>\\( P(R) = \\frac{2}{5} \\)<br>\\( P(B) = \\frac{1}{3} \\)</p><p>The probability of drawing a red marble followed by a blue marble is \\( P(R \\text{ and } B) = P(R) \\times P(B) \\).</p><p>\\( P(R \\text{ and } B) = \\frac{2}{5} \\times \\frac{1}{3} = \\frac{2 \\times 1}{5 \\times 3} = \\frac{2}{15} \\).</p><p>Therefore, the probability of drawing a red marble followed by a blue marble is \\( \\frac{2}{15} \\).</p><p><strong>Final Answer:</strong> \\(\\frac{2}{15}\\)</p>",
-        "ar": null
+        "en": "<p>A two-way table displays the frequencies of two categorical variables. The number of rows represents the number of categories for the first variable, and the number of columns represents the number of categories for the second variable. To find the total number of cells in the table, we multiply the number of rows by the number of columns.</p><p>Number of rows = 2<br>Number of columns = 3</p><p>Total number of cells = Number of rows \\(\\times\\) Number of columns = \\(2 \\times 3 = 6\\).</p>"
+      },
+      "fig": {
+        "type": "two_way_table",
+        "rows": [
+          "Regular Study",
+          "Cramming"
+        ],
+        "cols": [
+          "Pass",
+          "Fail",
+          "Retake"
+        ],
+        "labels": [
+          [
+            "Regular Study",
+            "Cramming"
+          ],
+          [
+            "Pass",
+            "Fail",
+            "Retake"
+          ]
+        ],
+        "data": [
+          [
+            15,
+            20,
+            25
+          ],
+          [
+            25,
+            30,
+            35
+          ]
+        ]
       }
     },
     {
       "id": "aps-p44",
       "number": 44,
-      "question": {
-        "en": "A research team is investigating the relationship between socioeconomic status (SES) and preferred mode of transportation for commuting to work in a large metropolitan area. They conduct a survey and categorize SES into three levels: Low, Medium, and High. The preferred mode of transportation is categorized as Public Transit, Private Vehicle, or Bicycle/Walking.  After collecting data from a sample of \\( n = 500 \\) individuals, they decide to perform a chi-square test for independence.  The preliminary analysis suggests that the expected counts for several cells are small.  To ensure the validity of the chi-square approximation, the research team decides to merge categories. They consolidate 'Bicycle/Walking' into 'Public Transit' to form a new category 'Active/Public Transit'.  If the original analysis involved \\( 3 \\) levels of SES and \\( 3 \\) modes of transportation, what is the minimum number of observations required in each cell of the *original* contingency table for the chi-square test to be considered reasonably reliable, assuming equal distribution across all cells?",
-        "ar": null
-      },
       "difficulty": "Hard",
+      "question": {
+        "en": "A quality control engineer is monitoring the number of defects produced by two different machines, Machine A and Machine B. Let \\(X\\) be the number of defects produced by Machine A in a given hour, and \\(Y\\) be the number of defects produced by Machine B in the same hour. The joint probability distribution of \\(X\\) and \\(Y\\) is given in the table below:\n\n\n| \\(P(X=x, Y=y)\\) | \\(y=0\\) | \\(y=1\\) | \\(y=2\\) |\n| :---------------: | :-------: | :-------: | :-------: |\n| \\(x=0\\)       |    0.10   |    0.15   |    0.05   |\n| \\(x=1\\)       |    0.20   |    0.30   |    0.10   |\n| \\(x=2\\)       |    0.05   |    0.05   |    0.00   |\n\nWhat is the expected value of the total number of defects produced by both machines in a given hour, \\(E(X+Y)\\)?"
+      },
       "solution": {
-        "en": "<p>The chi-square test for independence is used to analyze the association between two categorical variables. The test statistic relies on comparing observed frequencies to expected frequencies. A common rule of thumb for the validity of the chi-square approximation is that most expected cell counts should be at least 5, and no expected cell count should be less than 1.  In this problem, the original contingency table has \\( 3 \\) levels of SES (rows) and \\( 3 \\) modes of transportation (columns), resulting in a \\( 3 \\times 3 \\) table. The total sample size is \\( n = 500 \\). If the observations were equally distributed across all cells, the expected count in each cell would be \\( \\frac{500}{3 \\times 3} = \\frac{500}{9} \\approx 55.56 \\).  The question asks for the *minimum* number of observations required in each cell for reasonable reliability, implying we are looking for the smallest integer value that satisfies the common rule of thumb. The most widely cited rule is that at least 80% of expected cell counts should be 5 or greater, and all expected cell counts should be 1 or greater. Therefore, the minimum acceptable expected count is 5.</p>",
-        "ar": null
+        "en": "<p>To find the expected value of the total number of defects, \\(E(X+Y)\\), we can use the property of linearity of expectation: \\(E(X+Y) = E(X) + E(Y)\\).</p><p>First, let's calculate the marginal probability distributions for \\(X\\) and \\(Y\\).</p><p>For \\(X\\):<br>\\(P(X=0) = 0.10 + 0.15 + 0.05 = 0.30\\)<br>\\(P(X=1) = 0.20 + 0.30 + 0.10 = 0.60\\)<br>\\(P(X=2) = 0.05 + 0.05 + 0.00 = 0.10\\)</p><p>Now, calculate \\(E(X)\\):<br>\\(E(X) = (0 \\times 0.30) + (1 \\times 0.60) + (2 \\times 0.10) = 0 + 0.60 + 0.20 = 0.80\\)</p><p>For \\(Y\\):<br>\\(P(Y=0) = 0.10 + 0.20 + 0.05 = 0.35\\)<br>\\(P(Y=1) = 0.15 + 0.30 + 0.05 = 0.50\\)<br>\\(P(Y=2) = 0.05 + 0.10 + 0.00 = 0.15\\)</p><p>Now, calculate \\(E(Y)\\):<br>\\(E(Y) = (0 \\times 0.35) + (1 \\times 0.50) + (2 \\times 0.15) = 0 + 0.50 + 0.30 = 0.80\\)</p><p>Finally, calculate \\(E(X+Y)\\):<br>\\(E(X+Y) = E(X) + E(Y) = 0.80 + 0.80 = 1.60\\)</p><p>Alternatively, we can directly compute \\(E(X+Y)\\) from the joint distribution:<br>\\(E(X+Y) = \\sum_{x}\\sum_{y} (x+y) P(X=x, Y=y)\\)</p><p>\\(E(X+Y) = (0+0)(0.10) + (0+1)(0.15) + (0+2)(0.05)\\)<br>   \\(+ (1+0)(0.20) + (1+1)(0.30) + (1+2)(0.10)\\)<br>   \\(+ (2+0)(0.05) + (2+1)(0.05) + (2+2)(0.00)\\)</p><p>\\(E(X+Y) = 0 + 0.15 + 0.10 + 0.20 + 0.60 + 0.30 + 0.10 + 0.15 + 0\\)<br>\\(E(X+Y) = 1.60\\)</p><p>Common misconceptions might arise from incorrectly calculating marginal probabilities or assuming independence when it is not stated, which would lead to incorrect calculations for \\(E(X)\\) or \\(E(Y)\\).</p>"
+      },
+      "fig": {
+        "type": "two_way_table",
+        "data": [
+          [
+            0.1,
+            0.15,
+            0.05
+          ],
+          [
+            0.2,
+            0.3,
+            0.1
+          ],
+          [
+            0.05,
+            0.05,
+            0.0
+          ]
+        ],
+        "rows": [
+          "x=0",
+          "x=1",
+          "x=2"
+        ],
+        "cols": [
+          "y=0",
+          "y=1",
+          "y=2"
+        ]
       }
     },
     {
       "id": "aps-p45",
       "number": 45,
+      "difficulty": "Medium",
       "question": {
-        "en": "A data set (already sorted, n=9) is 4, 9, 12, 26, 33, 39, 40, 46, 48. What is the five-number summary?",
-        "ar": null
+        "en": "A political scientist is analyzing voter preferences for two candidates, Candidate A and Candidate B, across different age groups. The data is summarized in the two-way table below. The total number of surveyed individuals is \\(N = 500\\). The total number of individuals in the 'Young Adults' row is \\(R_1 = 120\\), and the total number of individuals who prefer Candidate A (Column 1) is \\(C_1 = 200\\). If the political scientist were to conduct a chi-square test of independence on this data, what would be the expected count for the cell representing 'Young Adults' who prefer 'Candidate A'?"
       },
-      "difficulty": "Easy",
       "solution": {
-        "en": "<p>With n=9: Min=4, Q1 (position 3) =12, Median (position 5) =33, Q3 (position 7) =40, Max=48.</p><p><strong>Final Answer:</strong> Min = 4, Q1 = 12, Median = 33, Q3 = 40, Max = 48</p>",
-        "ar": null
+        "en": "<p>The expected count for a cell in a chi-square test of independence is calculated using the formula: \\(E = \\frac{\\text{Row Total} \\times \\text{Column Total}}{\\text{Grand Total}}\\). In this case, the Grand Total \\(N = 500\\), the Row Total for 'Young Adults' is \\(R_1 = 120\\), and the Column Total for 'Candidate A' is \\(C_1 = 200\\). Therefore, the expected count for the cell representing 'Young Adults' who prefer 'Candidate A' is: \\(E = \\frac{120 \\times 200}{500} = \\frac{24000}{500} = 48\\).</p>"
+      },
+      "fig": {
+        "type": "two_way_table",
+        "row_totals": [
+          120,
+          "R2",
+          "R3"
+        ],
+        "col_totals": [
+          200,
+          "C2"
+        ],
+        "grand_total": 500,
+        "cell_values": [
+          [
+            "cell1",
+            "cell2"
+          ],
+          [
+            "cell3",
+            "cell4"
+          ],
+          [
+            "cell5",
+            "cell6"
+          ]
+        ],
+        "rows": [
+          "Young Adults",
+          "Middle-aged Adults",
+          "Seniors"
+        ],
+        "cols": [
+          "Candidate A",
+          "Candidate B"
+        ],
+        "data": [
+          [
+            15,
+            20
+          ],
+          [
+            25,
+            30
+          ],
+          [
+            35,
+            40
+          ]
+        ]
       }
     },
     {
       "id": "aps-p46",
       "number": 46,
+      "difficulty": "Easy",
       "question": {
-        "en": "A researcher is designing a complex experiment to investigate the impact of three different fertilizer treatments (A, B, C) on crop yield, while also controlling for two different irrigation methods (I1, I2) and two soil types (S1, S2). To ensure a robust comparison and account for potential interactions, a stratified randomized block design is employed.  Within each unique combination of irrigation method and soil type (forming the blocks), the three fertilizer treatments will be randomly assigned to distinct plots.  What is the total number of unique experimental units (plots) that will be established for this experiment?",
-        "ar": null
+        "en": "A histogram is used to display the distribution of the number of hours college students reported spending on social media per day. The bins for the histogram are as follows: 0-2 hours, 2-4 hours, 4-6 hours, 6-8 hours, and 8-10 hours. The heights of the bars are 5, 12, 15, 8, and 3, respectively. What is the total number of students represented by this histogram?"
       },
-      "difficulty": "Hard",
       "solution": {
-        "en": "<p>The problem describes a factorial experimental design with blocking. The blocks are formed by the combinations of irrigation methods and soil types. There are 2 irrigation methods and 2 soil types, so the number of blocks is \\( 2 \\times 2 = 4 \\).  Within each block, there are 3 fertilizer treatments that are randomly assigned to plots.  Therefore, the number of experimental units (plots) per block is equal to the number of treatments, which is 3.  The total number of experimental units is the number of blocks multiplied by the number of units per block. Total units = (Number of irrigation methods) \\(\\times\\) (Number of soil types) \\(\\times\\) (Number of fertilizer treatments) = \\( 2 \\times 2 \\times 3 = 12 \\).</p>",
-        "ar": null
+        "en": "<p>The heights of the bars in a histogram represent the frequencies (counts) of data points within each bin. To find the total number of students represented, we sum the heights of all the bars.</p><p>Total students = Height of bar 1 + Height of bar 2 + Height of bar 3 + Height of bar 4 + Height of bar 5<br>Total students = 5 + 12 + 15 + 8 + 3 = 43.</p><p>Therefore, 43 students are represented by this histogram.</p>"
+      },
+      "fig": {
+        "type": "bar",
+        "labels": [
+          "0-2",
+          "2-4",
+          "4-6",
+          "6-8",
+          "8-10"
+        ],
+        "data": [
+          5,
+          12,
+          15,
+          8,
+          3
+        ]
       }
     },
     {
       "id": "aps-p47",
       "number": 47,
+      "difficulty": "Easy",
       "question": {
-        "en": "A discrete random variable \\( X \\) can take on the values \\( 1, 2, 3, \\) and \\( 4 \\). The probability mass function \\( P(X=x) \\) is given by \\( P(X=x) = kx \\) for \\( x \\in \\{1, 2, 3, 4\\} \\). What is the value of \\( k \\)?",
-        "ar": null
+        "en": "A study investigates the effectiveness of a new teaching method by comparing the test scores of students who used the new method versus those who used the traditional method. The results are summarized in a two-way table. If the table has \\(4\\) rows and \\(3\\) columns, what is the degrees of freedom (df) for a chi-square test of homogeneity?"
       },
-      "difficulty": "Medium",
       "solution": {
-        "en": "<p>The sum of probabilities for all possible values of a discrete random variable must equal 1. Therefore, \\( \\sum_{x=1}^{4} P(X=x) = 1 \\).<br>Substituting the given probability mass function, we have:<br>\\( P(X=1) + P(X=2) + P(X=3) + P(X=4) = 1 \\)<br>\\( k(1) + k(2) + k(3) + k(4) = 1 \\)<br>Factoring out \\( k \\):<br>\\( k(1 + 2 + 3 + 4) = 1 \\)<br>\\( k(10) = 1 \\)<br>Solving for \\( k \\):<br>\\( k = \\frac{1}{10} \\).</p><p>Common algebraic traps include incorrectly summing the values of \\( x \\) or forgetting to set the sum of probabilities to 1. For example, setting \\( k = 1 \\) or \\( k = 1/4 \\) would be incorrect.</p><p><strong>Final Answer:</strong> 1/10</p>",
-        "ar": null
+        "en": "<p>For a chi-square test of homogeneity or independence with a two-way table, the degrees of freedom (df) are calculated using the formula: \\(\\text{df} = (r-1)(c-1)\\), where \\(r\\) is the number of rows and \\(c\\) is the number of columns.</p><p>In this case, the number of rows is \\(r = 4\\) and the number of columns is \\(c = 3\\).</p><p>Substituting these values into the formula:<br>\\(\\text{df} = (4-1)(3-1) = (3)(2) = 6\\).</p><p>Therefore, the degrees of freedom are 6.</p>"
+      },
+      "fig": {
+        "type": "two_way_table",
+        "rows": [
+          "Row 1",
+          "Row 2",
+          "Row 3",
+          "Row 4"
+        ],
+        "cols": [
+          "Col 1",
+          "Col 2",
+          "Col 3"
+        ],
+        "data": [
+          [
+            100,
+            150,
+            200
+          ],
+          [
+            120,
+            180,
+            220
+          ],
+          [
+            90,
+            130,
+            190
+          ],
+          [
+            110,
+            160,
+            210
+          ]
+        ]
       }
     },
     {
       "id": "aps-p48",
       "number": 48,
+      "difficulty": "Hard",
       "question": {
-        "en": "A social scientist is investigating the relationship between the number of hours spent studying per week (X) and the final exam score (Y) for a group of \\( n=100 \\) students. The least-squares regression line is given by \\( \\hat{y} = 55.2 + 8.5x \\). The standard error of the slope is \\( SE_b = 1.2 \\). The researcher wants to construct a \\( 95\\% \\) confidence interval for the true slope of the regression line. What is the value of the t-score used for this confidence interval?",
-        "ar": null
+        "en": "A researcher is designing a complex experiment to investigate the impact of three different fertilizer treatments (A, B, C) on crop yield, while also controlling for two different irrigation methods (I1, I2) and two soil types (S1, S2). To ensure a robust comparison and account for potential interactions, a stratified randomized block design is employed.  Within each unique combination of irrigation method and soil type (forming the blocks), the three fertilizer treatments will be randomly assigned to distinct plots.  What is the total number of unique experimental units (plots) that will be established for this experiment?"
       },
-      "difficulty": "Medium",
       "solution": {
-        "en": "<p>The problem asks for the t-score used to construct a \\( 95\\% \\) confidence interval for the true slope of a regression line. The degrees of freedom for a simple linear regression are \\( df = n - 2 \\), where \\( n \\) is the number of data points. In this case, \\( n = 100 \\), so \\( df = 100 - 2 = 98 \\). We need to find the t-score such that \\( 95\\% \\) of the area under the t-distribution curve with \\( 98 \\) degrees of freedom is between \\( -t \\) and \\( t \\). This means that \\( 2.5\\% \\) of the area is in each tail (\\( \\alpha/2 = 0.025 \\)). Looking up the t-table or using statistical software for \\( df = 98 \\) and \\( \\alpha/2 = 0.025 \\), we find the t-score to be approximately \\( 1.984 \\). The value \\( 1.645 \\) corresponds to the z-score for \\( 90\\% \\) confidence. The value \\( 1.960 \\) corresponds to the z-score for \\( 95\\% \\) confidence, which is often used as an approximation for large sample sizes, but the t-score is more accurate. The value \\( 2.576 \\) corresponds to the z-score for \\( 99\\% \\) confidence.</p>",
-        "ar": null
+        "en": "<p>The problem describes a factorial experimental design with blocking. The blocks are formed by the combinations of irrigation methods and soil types. There are 2 irrigation methods and 2 soil types, so the number of blocks is \\(2 \\times 2 = 4\\).  Within each block, there are 3 fertilizer treatments that are randomly assigned to plots.  Therefore, the number of experimental units (plots) per block is equal to the number of treatments, which is 3.  The total number of experimental units is the number of blocks multiplied by the number of units per block. Total units = (Number of irrigation methods) \\(\\times\\) (Number of soil types) \\(\\times\\) (Number of fertilizer treatments) = \\(2 \\times 2 \\times 3 = 12\\).</p>"
       }
     },
     {
       "id": "aps-p49",
       "number": 49,
-      "question": {
-        "en": "A data set (already sorted, n=9) is 1, 12, 15, 24, 30, 32, 41, 49, 52. What is the five-number summary?",
-        "ar": null
-      },
       "difficulty": "Easy",
+      "question": {
+        "en": "A researcher is conducting a survey on the relationship between college major and career satisfaction. They collected data from \\(150\\) students and organized it into a two-way table. If the number of rows in the table represents \\(3\\) different college majors and the number of columns represents \\(5\\) different levels of career satisfaction, what is the \\(\\text{df}\\) for a chi-square test of independence?"
+      },
       "solution": {
-        "en": "<p>With n=9: Min=1, Q1 (position 3) =15, Median (position 5) =30, Q3 (position 7) =41, Max=52.</p><p><strong>Final Answer:</strong> Min = 1, Q1 = 15, Median = 30, Q3 = 41, Max = 52</p>",
-        "ar": null
+        "en": "<p>For a chi-square test of independence, the degrees of freedom (\\(\\text{df}\\)) are calculated using the formula \\(\\text{df} = (r - 1)(c - 1)\\), where \\(r\\) is the number of rows and \\(c\\) is the number of columns in the contingency table. In this case, \\(r = 3\\) (college majors) and \\(c = 5\\) (career satisfaction levels). Therefore, \\(\\text{df} = (3 - 1)(5 - 1) = (2)(4) = 8\\).</p>"
+      },
+      "fig": {
+        "type": "two_way_table",
+        "rows": [
+          "Major A",
+          "Major B",
+          "Major C"
+        ],
+        "data": [
+          [
+            "?",
+            "?",
+            "?",
+            "?",
+            "?"
+          ],
+          [
+            "?",
+            "?",
+            "?",
+            "?",
+            "?"
+          ],
+          [
+            "?",
+            "?",
+            "?",
+            "?",
+            "?"
+          ]
+        ],
+        "cols": [
+          "Satisfied",
+          "Neutral",
+          "Dissatisfied",
+          "Very Satisfied",
+          "Unsatisfied"
+        ]
       }
     },
     {
       "id": "aps-p50",
       "number": 50,
+      "difficulty": "Easy",
       "question": {
-        "en": "A large university is conducting a comprehensive study on student satisfaction with campus dining services. They decide to employ a complex sampling strategy involving multiple stages to ensure representation across various student demographics and living situations. The university has identified three main housing categories: On-Campus Dormitories (CD), Off-Campus Apartments (OA), and Commuters (CM). Within the On-Campus Dormitories, there are two distinct dining halls: North Campus Dining (ND) and South Campus Dining (SD).  The total student population is 25,000. The university wants to select a sample that reflects the proportion of students in each housing category.  Additionally, for students in On-Campus Dormitories, they want to ensure proportional representation from each dining hall.  The initial allocation of the total sample size of 1000 students is as follows: 60% to On-Campus Dormitories, 30% to Off-Campus Apartments, and 10% to Commuters.  For the On-Campus Dormitory sample, 70% are allocated to North Campus Dining and 30% to South Campus Dining. If the university wishes to further stratify the sample within Off-Campus Apartments based on student major (Humanities, STEM, Business), and they have determined that the proportion of Humanities majors in the Off-Campus Apartments is 0.40, STEM is 0.35, and Business is 0.25, what is the expected number of students from Off-Campus Apartments who are Humanities majors in the overall sample of 1000 students?",
-        "ar": null
+        "en": "The following diagram shows a scatterplot comparing the number of hours studied per week for a math course and the final exam score for a sample of students. What is the approximate y-intercept of the line of best fit?"
       },
-      "difficulty": "Hard",
       "solution": {
-        "en": "<p>The total sample size is 1000 students.  The proportion of the sample allocated to Off-Campus Apartments (OA) is 30%.  Therefore, the number of students sampled from Off-Campus Apartments is \\( 1000 \\times 0.30 = 300 \\) students.</p><p>Within the Off-Campus Apartments, the proportion of students who are Humanities majors is 0.40.  To find the expected number of Humanities majors from Off-Campus Apartments in the overall sample, we multiply the number of students sampled from Off-Campus Apartments by the proportion of Humanities majors within that group.</p><p>Expected number of Humanities majors from OA = \\( 300 \\times 0.40 = 120 \\) students.</p>",
-        "ar": null
+        "en": "<p>The y-intercept of the line of best fit represents the predicted score when the number of hours studied is 0. Looking at the scatterplot, if we were to extend the apparent trend of the data back to the y-axis (where hours studied is 0), the line of best fit would cross the y-axis at approximately 60.</p>"
+      },
+      "fig": {
+        "type": "scatter",
+        "xlabel": "Hours Studied per Week",
+        "ylabel": "Final Exam Score",
+        "xlim": [
+          0,
+          10
+        ],
+        "ylim": [
+          40,
+          100
+        ],
+        "trendline": {
+          "slope": 5,
+          "intercept": 50
+        },
+        "pts": [
+          [
+            2,
+            55
+          ],
+          [
+            3,
+            60
+          ],
+          [
+            4,
+            65
+          ],
+          [
+            5,
+            70
+          ],
+          [
+            6,
+            75
+          ],
+          [
+            7,
+            80
+          ],
+          [
+            8,
+            85
+          ],
+          [
+            1,
+            50
+          ],
+          [
+            9,
+            90
+          ]
+        ]
       }
     }
   ]

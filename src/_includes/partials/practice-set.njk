@@ -36,6 +36,7 @@
       <div class="prow"><span class="pn">{{ item.number }}</span><span class="lvl">{{ item.difficulty }}</span>
         <p class="qt">{{ bl.text(item.question) }}</p>
       </div>
+      {% if item.fig %}<div class="lesson-figure-svg">{{ item.fig | renderFig | safe }}</div>{% endif %}
       <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
       <div class="solution">{{ bl.text(item.solution, 'div') }}</div>
     </div>
@@ -48,6 +49,7 @@
         <p class="pq">{{ bl.text(item.question) }}</p>
         <span class="lvl {{ LVL_CLASS[item.difficulty] }}">{{ item.levelLabel or item.difficulty }}</span>
       </div>
+      {% if item.fig %}<div class="lesson-figure-svg">{{ item.fig | renderFig | safe }}</div>{% endif %}
       <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
       <div class="solution">{{ bl.text(item.solution, 'div') }}</div>
     </div>

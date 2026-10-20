@@ -231,15 +231,27 @@ audit(`Curriculum directory covers 28 complete tracks with _meta.json and chapte
 
 audit(`Every curriculum track has a 50-question _practice-set.json (1,400 total practice-set items)`, () => {
   let totalPracticeItems = 0;
+  let totalPracticeFigs = 0;
   contentTracks.forEach(t => {
     const psP = path.join(contentDir, t, '_practice-set.json');
     assert.ok(fs.existsSync(psP), `_practice-set.json must exist in content/${t}/`);
     const ps = JSON.parse(fs.readFileSync(psP, 'utf8'));
     assert.ok(Array.isArray(ps.items), `content/${t}/_practice-set.json must have items[]`);
     assert.strictEqual(ps.items.length, 50, `Expected 50 items in content/${t}/_practice-set.json, found ${ps.items.length}`);
+    let trackFigs = 0;
+    ps.items.forEach((it, idx) => {
+      const solClean = String((it.solution && it.solution.en) || '').replace(/<[^>]+>/g, '').trim();
+      assert.ok(solClean.length >= 140, `${t} practice item[${idx}] solution too short (${solClean.length} chars)`);
+      if (it.fig && typeof it.fig === 'object') {
+        trackFigs++;
+        totalPracticeFigs++;
+      }
+    });
+    assert.ok(trackFigs >= 12, `Expected >= 12 diagrams in content/${t}/_practice-set.json, found ${trackFigs}`);
     totalPracticeItems += ps.items.length;
   });
   assert.strictEqual(totalPracticeItems, 1400, `Expected 1,400 total practice-set items, found ${totalPracticeItems}`);
+  assert.ok(totalPracticeFigs >= 450, `Expected >= 450 practice-set diagrams across 28 tracks, found ${totalPracticeFigs}`);
 });
 
 const siteDir = path.join(__dirname, '..', '_site');

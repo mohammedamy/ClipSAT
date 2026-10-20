@@ -4,653 +4,1040 @@
   "items": [
     {
       "number": 1,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Differentiate \\( f(x)=x^2\\sin x \\).",
-        "ar": null
+        "en": "The graph of a differentiable function \\(f\\) is shown in the figure above. The function \\(f\\) has a local maximum at \\(x = c\\) and a local minimum at \\(x = e\\). The point \\((c, f(c))\\) is approximately \\((1, 4)\\) and the point \\((e, f(e))\\) is approximately \\((4, -2)\\). The shaded region, bounded by the graph of \\(f\\), the x-axis, and the lines \\(x = 0\\) and \\(x = 5\\), has area 12.  If \\(\\int_{0}^{c} f(x) \\, dx = k\\), what is the value of \\(\\int_{c}^{5} f(x) \\, dx\\) in terms of \\(k\\)?"
       },
       "solution": {
-        "en": "<p>Product rule:</p>\\[ f'(x)=2x\\sin x+x^2\\cos x. \\]",
-        "ar": null
+        "en": "<p>The total area of the shaded region from \\(x = 0\\) to \\(x = 5\\) is given as 12. This total area can be expressed as the sum of the areas of two sub-regions: the area from \\(x = 0\\) to \\(x = c\\) and the area from \\(x = c\\) to \\(x = 5\\).</p><p>Mathematically, this can be written using definite integrals:<br>\\(\\int_{0}^{5} f(x) \\, dx = \\int_{0}^{c} f(x) \\, dx + \\int_{c}^{5} f(x) \\, dx\\).</p><p>We are given that the total area is 12, so \\(\\int_{0}^{5} f(x) \\, dx = 12\\).<br>We are also given that \\(\\int_{0}^{c} f(x) \\, dx = k\\).</p><p>Substituting these values into the equation:<br>\\(12 = k + \\int_{c}^{5} f(x) \\, dx\\).</p><p>To find the value of \\(\\int_{c}^{5} f(x) \\, dx\\), we can rearrange the equation:<br>\\(\\int_{c}^{5} f(x) \\, dx = 12 - k\\).</p><p>Therefore, the value of \\(\\int_{c}^{5} f(x) \\, dx\\) in terms of \\(k\\) is \\(12 - k\\).</p>"
       },
-      "difficulty": "Basic",
-      "levelLabel": "MCQ"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "- (x-1)**2 + 4",
+          "(x-4)**2 - 2"
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": 3,
+            "label": "(0, 3)"
+          },
+          {
+            "x": 1,
+            "y": 4,
+            "label": "(c, f(c))"
+          },
+          {
+            "x": 4,
+            "y": -2,
+            "label": "(e, f(e))"
+          },
+          {
+            "x": 5,
+            "y": 1,
+            "label": "(5, f(5))"
+          }
+        ],
+        "shaded": [
+          {
+            "type": "fill_between",
+            "f": "0",
+            "g": "- (x-1)**2 + 4",
+            "xlim": [
+              0,
+              1
+            ]
+          },
+          {
+            "type": "fill_between",
+            "f": "- (x-1)**2 + 4",
+            "g": "0",
+            "xlim": [
+              1,
+              3
+            ]
+          },
+          {
+            "type": "fill_between",
+            "f": "0",
+            "g": "(x-4)**2 - 2",
+            "xlim": [
+              3,
+              4
+            ]
+          },
+          {
+            "type": "fill_between",
+            "f": "(x-4)**2 - 2",
+            "g": "0",
+            "xlim": [
+              4,
+              5
+            ]
+          }
+        ],
+        "xrange": [
+          -1,
+          6
+        ],
+        "yrange": [
+          -3,
+          6
+        ]
+      }
     },
     {
       "number": 2,
+      "difficulty": "Basic",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\int_1^{2} 3x^2\\,dx \\).",
-        "ar": null
+        "en": "Consider the function \\(f(x) = x^2 - 5x + 6\\). What is the value of \\(\\lim_{x \\to 3} f(x)\\)?"
       },
       "solution": {
-        "en": "\\[ \\big[x^3\\big]_1^{2}=8-1=7. \\]",
-        "ar": null
+        "en": "<p>To find the limit of the function \\(f(x) = x^2 - 5x + 6\\) as \\(x\\) approaches 3, we can directly substitute \\(x = 3\\) into the function because it is a polynomial and therefore continuous everywhere.</p><p>\\(\\lim_{x \\to 3} (x^2 - 5x + 6)\\)</p><p>Substitute \\(x = 3\\):</p><p>\\((3)^2 - 5(3) + 6\\)</p><p>\\(9 - 15 + 6\\)</p><p>\\(-6 + 6\\)</p><p>\\(0\\)</p><p>Therefore, the limit of the function as \\(x\\) approaches 3 is 0.</p>"
       },
-      "difficulty": "Basic",
-      "levelLabel": "MCQ"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "x*x - 5*x + 6",
+          "x - 1"
+        ],
+        "points": [
+          {
+            "x": 3,
+            "y": 0,
+            "label": "(3, 0)"
+          }
+        ],
+        "xrange": [
+          -1,
+          5
+        ],
+        "yrange": [
+          -2,
+          6
+        ]
+      }
     },
     {
       "number": 3,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "At which \\( x \\) does \\( f(x)=x^3-3x^2+2 \\) have a local maximum?",
-        "ar": null
+        "en": "The graph of a differentiable function \\(f(x)\\) is shown below. The tangent line to the graph at \\(x=1\\) has the equation \\(y = 2x + k\\). Given that \\(f(1) = 3\\), determine the value of \\(k\\)."
       },
       "solution": {
-        "en": "<p>\\( f'(x)=3x^2-6x=3x(x-2) \\Rightarrow x=0,2 \\). With \\( f''(x)=6x-6 \\): \\( f''(0)=-6&lt;0 \\).</p>\\[ \\text{Local maximum at } x=0. \\]",
-        "ar": null
+        "en": "<p>The equation of a tangent line to a function \\(f(x)\\) at a point $(a, f(a))$ is given by \\(y - f(a) = f'(a)(x - a)\\). We are given that the tangent line at \\(x=1\\) has the equation \\(y = 2x + k\\). The slope of this tangent line is USD 2$, which means \\(f'(1) = 2\\). We are also given that \\(f(1) = 3\\). Substituting these values into the point-slope form of the tangent line equation:<br>\\(y - 3 = 2(x - 1)\\)<br>\\(y - 3 = 2x - 2\\)<br>\\(y = 2x - 2 + 3\\)<br>\\(y = 2x + 1\\)<br>Comparing this to the given tangent line equation \\(y = 2x + k\\), we can see that \\(k=1\\).</p><p>Alternatively, since the point $(1, f(1))$ lies on the tangent line, we can substitute \\(x=1\\) and \\(y=f(1)=3\\) into the equation of the tangent line:<br>\\(3 = 2(1) + k\\)<br>\\(3 = 2 + k\\)<br>\\(k = 3 - 2\\)<br>\\(k = 1\\).</p>"
       },
-      "difficulty": "Intermediate",
-      "levelLabel": "FRQ"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "x*x + 1",
+          "2*x + 1"
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": 3,
+            "label": "(1, 3)"
+          }
+        ],
+        "xrange": [
+          -2,
+          4
+        ],
+        "yrange": [
+          -2,
+          8
+        ]
+      }
     },
     {
       "number": 4,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\lim_{x\\to 3}\\frac{x^2-9}{x-3} \\).",
-        "ar": null
+        "en": "The graph of a differentiable function \\(y = f(x)\\) is shown below. The tangent line to the graph at \\(x = 2\\) has the equation \\(y = -x + k\\). Find the value of \\(k\\)."
       },
       "solution": {
-        "en": "<p>Factor and cancel: \\( \\tfrac{(x-3)(x+3)}{x-3} \\).</p>\\[ \\lim_{x\\to 3}(x+3)=6. \\]",
-        "ar": null
+        "en": "<p>The graph shows that the function \\(f(x)\\) passes through the point \\((2, 3)\\). Therefore, \\(f(2) = 3\\). The tangent line to the graph at \\(x = 2\\) also passes through the point \\((2, f(2))\\), which is \\((2, 3)\\). The equation of the tangent line is given as \\(y = -x + k\\). Substituting the point \\((2, 3)\\) into this equation, we get \\(3 = -2 + k\\). Solving for \\(k\\), we find \\(k = 3 + 2 = 5\\).</p>"
       },
-      "difficulty": "Basic",
-      "levelLabel": "MCQ"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "-(x-2)*(x-2)+3"
+        ],
+        "points": [
+          {
+            "x": 2,
+            "y": 3,
+            "label": "(2, 3)"
+          }
+        ],
+        "xrange": [
+          0,
+          4
+        ],
+        "yrange": [
+          0,
+          6
+        ]
+      }
     },
     {
       "number": 5,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\lim_{x\\to 0}\\frac{\\sin 5x}{x} \\).",
-        "ar": null
+        "en": "A rectangular field is to be enclosed by a fence. One side of the field is adjacent to a river and does not require fencing. The farmer has \\(120\\) meters of fencing material. Let the dimensions of the field be \\(x\\) meters perpendicular to the river and \\(y\\) meters parallel to the river. The area of the field is given by \\(A = xy\\).\n\nPart A: Express the area \\(A\\) as a function of \\(x\\).\n\nPart B: Determine the dimensions \\(x\\) and \\(y\\) that maximize the area of the field. Provide the maximum possible area."
       },
       "solution": {
-        "en": "\\[ 5\\lim_{x\\to 0}\\frac{\\sin 5x}{5x}=5. \\]",
-        "ar": null
-      },
-      "difficulty": "Basic",
-      "levelLabel": "MCQ"
+        "en": "<p>Part A: The total length of fencing is \\(2x + y = 120\\). Thus, \\(y = 120 - 2x\\). Substituting this into the area formula, we get \\(A(x) = x(120 - 2x) = 120x - 2x^2\\).</p><p>Part B: To find the maximum area, we need to find the critical points of \\(A(x)\\) by taking the derivative and setting it to zero.<br>\\(A'(x) = \\frac{dA}{dx} = 120 - 4x\\).<br>Setting \\(A'(x) = 0\\): \\(120 - 4x = 0\\) \\(\\implies 4x = 120\\) \\(\\implies x = 30\\) meters.<br>To confirm this is a maximum, we can use the second derivative test:<br>\\(A''(x) = \\frac{d^2A}{dx^2} = -4\\). Since \\(A''(30) = -4 \\lt 0\\), the area is maximized at \\(x = 30\\) meters.<br>Now, we find the corresponding \\(y\\) value:<br>\\(y = 120 - 2x = 120 - 2(30) = 120 - 60 = 60\\) meters.<br>The maximum area is \\(A_{max} = xy = (30)(60) = 1800\\) square meters.<br>Therefore, the dimensions that maximize the area are \\(x = 30\\) m and \\(y = 60\\) m, with a maximum area of \\(1800\\) m^2.</p>"
+      }
     },
     {
       "number": 6,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\lim_{x\\to\\infty}\\frac{3x^2+2}{x^2-1} \\).",
-        "ar": null
+        "en": "The graph of a differentiable function \\(f\\) is shown below. The function \\(f\\) has a local maximum at \\(x = -1\\) and a local minimum at \\(x = 3\\). The tangent line to the graph of \\(f\\) at \\(x = 1\\) has the equation \\(y = -2x + 5\\). If \\(f(0) = 4\\) and \\(f(3) = -5\\), find the value of \\(f'(1)\\)."
       },
       "solution": {
-        "en": "<p>Ratio of leading coefficients:</p>\\[ 3. \\]",
-        "ar": null
+        "en": "<p>The derivative of a function at a point represents the slope of the tangent line to the function's graph at that point.<br>We are given that the tangent line to the graph of \\(f\\) at \\(x = 1\\) has the equation \\(y = -2x + 5\\).<br>This equation is in the slope-intercept form \\(y = mx + b\\), where \\(m\\) is the slope.<br>Comparing \\(y = -2x + 5\\) with \\(y = mx + b\\), we see that the slope \\(m\\) is \\(-2\\).<br>Therefore, the derivative of \\(f\\) at \\(x = 1\\) is \\(f'(1) = -2\\).<br>The information about the local maximum, local minimum, \\(f(0)\\), and \\(f(3)\\) are extraneous to finding \\(f'(1)\\).</p>"
       },
-      "difficulty": "Basic",
-      "levelLabel": "MCQ"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "-(x+1)**2*(x-3) + 4",
+          "-2*x + 5"
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": 3,
+            "label": "(1, 3)"
+          },
+          {
+            "x": -1,
+            "y": 7,
+            "label": "Local Max"
+          },
+          {
+            "x": 3,
+            "y": -5,
+            "label": "Local Min"
+          },
+          {
+            "x": 0,
+            "y": 4,
+            "label": "(0, 4)"
+          }
+        ],
+        "xrange": [
+          -3,
+          4
+        ],
+        "yrange": [
+          -7,
+          8
+        ]
+      }
     },
     {
       "number": 7,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\lim_{x\\to 0}\\frac{\\sqrt{x+9}-3}{x} \\).",
-        "ar": null
+        "en": "The graph of the function \\(f(x) = ax - 3\\) is shown below. The area of the shaded region between the graph of \\(f(x)\\) and the x-axis from \\(x = 0\\) to \\(x = 4\\) is 20 square units. Find the value of the parameter \\(a\\)."
       },
       "solution": {
-        "en": "<p>Conjugate \\( \\sqrt{x+9}+3 \\):</p>\\[ \\lim_{x\\to 0}\\frac{1}{\\sqrt{x+9}+3}=\\frac16. \\]",
-        "ar": null
+        "en": "<p>The function is given by \\(f(x) = ax - 3\\). The area of the shaded region is represented by the definite integral of \\(f(x)\\) from \\(x=0\\) to \\(x=4\\). We are given that this area is 20.</p><p>\\[\\int_{0}^{4} (ax - 3) \\, dx = 20\\]</p><p>First, find the antiderivative of $ax - 3$:</p><p>\\[\\int (ax - 3) \\, dx = \\frac{a}{2}x^2 - 3x + C\\]</p><p>Now, evaluate the definite integral from 0 to 4:</p><p>\\[\\left[ \\frac{a}{2}x^2 - 3x \\right]_{0}^{4} = \\left( \\frac{a}{2}(4)^2 - 3(4) \\right) - \\left( \\frac{a}{2}(0)^2 - 3(0) \\right)\\]</p><p>\\[= \\left( \\frac{a}{2}(16) - 12 \\right) - (0)\\]</p><p>\\[= 8a - 12\\]</p><p>We are given that this area is 20:</p><p>\\[8a - 12 = 20\\]</p><p>Now, solve for \\(a\\):</p><p>\\[8a = 20 + 12\\]</p><p>\\[8a = 32\\]</p><p>\\[a = \\frac{32}{8}\\]</p><p>\\[a = 4\\]</p><p>Therefore, the value of the parameter \\(a\\) is 4.</p>"
       },
-      "difficulty": "Intermediate",
-      "levelLabel": "FRQ"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "a*x - 3"
+        ],
+        "points": [],
+        "setup": "let a = 4; // This is for visualization purposes only, the question is about finding 'a'",
+        "xrange": [
+          -1,
+          5
+        ],
+        "yrange": [
+          -5,
+          10
+        ]
+      }
     },
     {
       "number": 8,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\lim_{x\\to 0}\\frac{1-\\cos x}{x} \\).",
-        "ar": null
+        "en": "Consider the differential equation \\(\\frac{dy}{dx} = kx - 3\\), where \\(k\\) is a constant. The graph of a particular solution \\(y = f(x)\\) to this differential equation is shown below. The tangent line to the graph at \\(x=1\\) has the equation \\(y = -2x + 5\\). Find the value of \\(k\\)."
       },
       "solution": {
-        "en": "<p>Form \\( \\tfrac00 \\); L'Hôpital gives \\( \\tfrac{\\sin x}{1}\\to 0 \\):</p>\\[ 0. \\]",
-        "ar": null
+        "en": "<p>The differential equation is \\(\\frac{dy}{dx} = kx - 3\\). \\\\ The given tangent line at \\(x=1\\) is \\(y = -2x + 5\\). \\\\ The slope of the tangent line at \\(x=1\\) is \\(\\frac{dy}{dx} \\Big|_{x=1}\\). From the equation of the tangent line, the slope is \\(-2\\). \\\\ Thus, \\(\\frac{dy}{dx} \\Big|_{x=1} = -2\\). \\\\ Substituting \\(x=1\\) into the differential equation, we get \\(\\frac{dy}{dx} \\Big|_{x=1} = k(1) - 3 = k - 3\\). \\\\ Equating the two expressions for the slope at \\(x=1\\): \\(k - 3 = -2\\). \\\\ Solving for \\(k\\): \\(k = -2 + 3 = 1\\). \\\\ Therefore, the value of \\(k\\) is 1. \\\\ Common errors: \\\\ 1. Incorrectly using the y-intercept of the tangent line. \\\\ 2. Confusing the derivative with the function value.</p>"
       },
-      "difficulty": "Basic",
-      "levelLabel": "MCQ"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "1*x - 3 + C",
+          "-2*x + 5"
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": 3,
+            "label": "(1, 3)"
+          }
+        ],
+        "xrange": [
+          -2,
+          6
+        ],
+        "yrange": [
+          -5,
+          10
+        ]
+      }
     },
     {
       "number": 9,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Differentiate \\( f(x)=4x^5-2x^2 \\).",
-        "ar": null
+        "en": "The graph of a function \\(f'(x)\\) is shown below. It is given that \\(f(x)\\) is a function such that \\(f(1) = 5\\). The area between the curve \\(y = f'(x)\\), the x-axis, and the vertical lines \\(x = 1\\) and \\(x = 5\\) is represented by the shaded region. If the area of the shaded region is 16 square units, determine the value of \\(f(5)\\)."
       },
       "solution": {
-        "en": "\\[ f'(x)=20x^4-4x. \\]",
-        "ar": null
+        "en": "<p>The area of the shaded region is given by the definite integral of \\(f'(x)\\) from \\(x = 1\\) to \\(x = 5\\). This area is also equal to the change in the function \\(f(x)\\) over this interval: \\(\\int_{1}^{5} f'(x) \\, dx = f(5) - f(1)\\).</p><p>The graph shows that the function \\(f'(x)\\) is a constant function, represented by the horizontal line \\(y = 4\\). Therefore, \\(f'(x) = 4\\).</p><p>The area of the shaded region is given as 16 square units.<br>Using the definite integral: \\(\\int_{1}^{5} 4 \\, dx = [4x]_{1}^{5} = 4(5) - 4(1) = 20 - 4 = 16\\).<br>This confirms the given area.</p><p>Now we use the relationship \\(f(5) - f(1) = 16\\).<br>We are given that \\(f(1) = 5\\).<br>Substituting this value, we get \\(f(5) - 5 = 16\\).<br>Solving for \\(f(5)\\): \\(f(5) = 16 + 5 = 21\\).</p>"
       },
-      "difficulty": "Basic",
-      "levelLabel": "MCQ"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "4"
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": 4,
+            "label": "(1, 4)"
+          },
+          {
+            "x": 5,
+            "y": 4,
+            "label": "(5, 4)"
+          }
+        ],
+        "shaded_region": [
+          {
+            "x_start": 1,
+            "x_end": 5,
+            "y_min": 0,
+            "y_max": 4
+          }
+        ],
+        "xrange": [
+          0,
+          6
+        ],
+        "yrange": [
+          0,
+          6
+        ]
+      }
     },
     {
       "number": 10,
+      "difficulty": "Basic",
       "question": {
-        "en": "Differentiate \\( y=\\sin 2x \\).",
-        "ar": null
+        "en": "Consider the function \\(f(x)\\) whose graph is shown above. The graph of \\(f(x)\\) consists of line segments and a quarter circle. Let \\(g(x) = \\int_{0}^{x} f(t) \\, dt\\)."
       },
       "solution": {
-        "en": "\\[ y'=2\\cos 2x. \\]",
-        "ar": null
+        "en": "<p>By the Fundamental Theorem of Calculus Part 1, \\(g'(x) = f(x)\\). We need to find \\(g'(2)\\), which means we need to evaluate \\(f(2)\\). From the graph, at \\(x=2\\), the function \\(f(x)\\) is on a line segment connecting \\((0, 4)\\) and \\((4, 0)\\). The equation of this line segment can be found. The slope is \\(m = \\frac{0 - 4}{4 - 0} = -1\\). Using the point-slope form with \\((4, 0)\\), we get \\(y - 0 = -1(x - 4)\\), which simplifies to \\(y = -x + 4\\). Therefore, \\(f(x) = -x + 4\\) for \\(0 \\le x \\le 4\\). Evaluating \\(f(2)\\) gives \\(f(2) = -2 + 4 = 2\\). Thus, \\(g'(2) = f(2) = 2\\).</p>"
       },
-      "difficulty": "Basic",
-      "levelLabel": "MCQ"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "abs(x-2)*(-1) + 2 for x in [0, 4]",
+          "-(x-4) for x in [4, 6]",
+          "4 - x for x in [0, 4]",
+          "sqrt(4 - (x-4)**2) + 0 for x in [4, 6]"
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": 4,
+            "label": "(0, 4)"
+          },
+          {
+            "x": 4,
+            "y": 0,
+            "label": "(4, 0)"
+          },
+          {
+            "x": 6,
+            "y": 2,
+            "label": "(6, 2)"
+          }
+        ],
+        "xrange": [
+          -1,
+          7
+        ],
+        "yrange": [
+          -1,
+          5
+        ]
+      }
     },
     {
       "number": 11,
+      "difficulty": "Basic",
       "question": {
-        "en": "Differentiate \\( y=e^{3x} \\).",
-        "ar": null
+        "en": "Consider the function \\(f(x) = x^2 - 5x + 6\\). What is the limit of \\(f(x)\\) as \\(x\\) approaches 2?"
       },
       "solution": {
-        "en": "\\[ y'=3e^{3x}. \\]",
-        "ar": null
+        "en": "<p>To find the limit of the polynomial function \\(f(x) = x^2 - 5x + 6\\) as \\(x\\) approaches 2, we can directly substitute \\(x = 2\\) into the function because polynomials are continuous everywhere.</p><p>\\(\\lim_{x \\to 2} (x^2 - 5x + 6) = (2)^2 - 5(2) + 6\\)<br>\\(= 4 - 10 + 6\\)<br>\\(= 0\\)</p><p>Therefore, the limit is 0.</p>"
       },
-      "difficulty": "Basic",
-      "levelLabel": "MCQ"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "x*x - 5*x + 6"
+        ],
+        "points": [],
+        "xrange": [
+          -2,
+          6
+        ],
+        "yrange": [
+          -3,
+          6
+        ]
+      }
     },
     {
       "number": 12,
+      "difficulty": "Basic",
       "question": {
-        "en": "Differentiate \\( y=\\ln\\!\\big(x^2+1\\big) \\).",
-        "ar": null
+        "en": "The graph of a function \\(f(x)\\) is shown above. What is the instantaneous rate of change of \\(f(x)\\) at \\(x = 2\\)?"
       },
       "solution": {
-        "en": "\\[ y'=\\frac{2x}{x^2+1}. \\]",
-        "ar": null
+        "en": "<p>The instantaneous rate of change of a function at a point is given by its derivative at that point, which corresponds to the slope of the tangent line to the graph of the function at that point.  Observing the graph, the function \\(f(x)\\) is a horizontal line segment at \\(y = 2\\) for \\(0 \\le x \\le 4\\). Therefore, the slope of this line segment is 0.  Thus, the instantaneous rate of change of \\(f(x)\\) at \\(x = 2\\) is 0.</p>"
       },
-      "difficulty": "Intermediate",
-      "levelLabel": "MCQ"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "2"
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": 2,
+            "label": "(0, 2)"
+          },
+          {
+            "x": 4,
+            "y": 2,
+            "label": "(4, 2)"
+          }
+        ],
+        "xrange": [
+          -1,
+          5
+        ],
+        "yrange": [
+          -1,
+          5
+        ]
+      }
     },
     {
       "number": 13,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Differentiate \\( y=\\big(x^2+1\\big)^4 \\).",
-        "ar": null
+        "en": "Let \\(f(x)\\) be a function such that \\(f'(x) = \\cos(x^2)\\) and \\(g(x)\\) be a function defined by \\(g(x) = \\sqrt{x}\\). \\newline \\newline \\textbf{(a)} Find the derivative of the composite function \\(h(x) = f(g(x))\\). \\newline \\newline \\textbf{(b)} If \\(f(1) = \\pi\\), find the value of $h'(4)$."
       },
       "solution": {
-        "en": "<p>Chain rule:</p>\\[ y'=8x\\big(x^2+1\\big)^3. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate",
-      "levelLabel": "MCQ"
+        "en": "<p>\\textbf{(a)} We use the chain rule to find the derivative of \\(h(x) = f(g(x))\\). \\newline The chain rule states that \\(h'(x) = f'(g(x)) \\cdot g'(x)\\). \\newline We are given \\(f'(x) = \\cos(x^2)\\) and \\(g(x) = \\sqrt{x}\\). \\newline First, we find $g'(x)$: \\(g'(x) = \\frac{d}{dx}(\\sqrt{x}) = \\frac{d}{dx}(x^{1/2}) = \\frac{1}{2}x^{-1/2} = \\frac{1}{2\\sqrt{x}}\\). \\newline Next, we find $f'(g(x))$ by substituting \\(g(x)\\) into $f'(x)$: \\(f'(g(x)) = \\cos((\\sqrt{x})^2) = \\cos(x)\\). \\newline Therefore, \\(h'(x) = f'(g(x)) \\cdot g'(x) = \\cos(x) \\cdot \\frac{1}{2\\sqrt{x}} = \\frac{\\cos(x)}{2\\sqrt{x}}\\). \\newline \\newline \\textbf{(b)} To find $h'(4)$, we substitute \\(x=4\\) into our expression for $h'(x)$: \\newline \\(h'(4) = \\frac{\\cos(4)}{2\\sqrt{4}} = \\frac{\\cos(4)}{2 \\cdot 2} = \\frac{\\cos(4)}{4}\\). \\newline \\newline Note: The information \\(f(1) = \\pi\\) is extraneous for this specific part of the question.</p>"
+      }
     },
     {
       "number": 14,
+      "difficulty": "Basic",
       "question": {
-        "en": "Differentiate \\( y=x\\sin x \\).",
-        "ar": null
+        "en": "The velocity of a particle moving along a straight line is given by the function \\(v(t) = t^2 - 6t + 8\\) m/s. What is the instantaneous acceleration of the particle at time \\(t = 3\\) seconds?"
       },
       "solution": {
-        "en": "\\[ y'=\\sin x+x\\cos x. \\]",
-        "ar": null
-      },
-      "difficulty": "Basic",
-      "levelLabel": "MCQ"
+        "en": "<p>The velocity of the particle is given by \\(v(t) = t^2 - 6t + 8\\). Acceleration is the rate of change of velocity with respect to time, which means acceleration is the derivative of the velocity function, \\(a(t) = v'(t)\\). Differentiating \\(v(t)\\) with respect to \\(t\\), we get: \\(a(t) = \\frac{d}{dt}(t^2 - 6t + 8) = 2t - 6\\). We need to find the instantaneous acceleration at time \\(t = 3\\) seconds. Substituting \\(t = 3\\) into the acceleration function: \\(a(3) = 2(3) - 6 = 6 - 6 = 0\\) m/s\\(^2\\). Therefore, the instantaneous acceleration of the particle at time \\(t = 3\\) seconds is \\(0\\) m/s\\(^2\\).</p>"
+      }
     },
     {
       "number": 15,
+      "difficulty": "Basic",
       "question": {
-        "en": "Differentiate \\( y=\\dfrac{x-1}{x+1} \\).",
-        "ar": null
+        "en": "Consider the function \\(f(x) = 3x^2 - 6x + 5\\). What is the instantaneous rate of change of \\(f(x)\\) at \\(x = 2\\)?"
       },
       "solution": {
-        "en": "<p>Quotient rule:</p>\\[ y'=\\frac{2}{(x+1)^2}. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate",
-      "levelLabel": "MCQ"
+        "en": "<p>The instantaneous rate of change of a function at a point is given by its derivative evaluated at that point. <br>First, find the derivative of \\(f(x)\\): \\(f'(x) = \\frac{d}{dx}(3x^2 - 6x + 5) = 6x - 6\\). <br>Next, evaluate \\(f'(x)\\) at \\(x = 2\\): \\(f'(2) = 6(2) - 6 = 12 - 6 = 6\\). <br>Therefore, the instantaneous rate of change of \\(f(x)\\) at \\(x = 2\\) is 6.</p>"
+      }
     },
     {
       "number": 16,
+      "difficulty": "Basic",
       "question": {
-        "en": "Differentiate \\( y=\\sqrt{3x+1} \\).",
-        "ar": null
+        "en": "A differentiable function \\(f(t)\\) is represented by the graph below. What is the total change in \\(f(t)\\) from \\(t = 2\\) to \\(t = 5\\)?"
       },
       "solution": {
-        "en": "\\[ y'=\\frac{3}{2\\sqrt{3x+1}}. \\]",
-        "ar": null
+        "en": "<p>The total change in a function \\(f(t)\\) from \\(t=a\\) to \\(t=b\\) is given by the definite integral \\(\\int_{a}^{b} f'(t) \\, dt\\).  Alternatively, if the graph represents the function \\(f(t)\\) itself, the total change is simply \\(f(b) - f(a)\\). From the graph, we can observe that \\(f(2) = 1\\) and \\(f(5) = 2\\). Therefore, the total change is \\(f(5) - f(2) = 2 - 1 = 1\\).</p>"
       },
-      "difficulty": "Intermediate",
-      "levelLabel": "MCQ"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "piecewise([[-1, t < 2], [1, True]])",
+          "piecewise([[-1, t < 2], [1, True]])"
+        ],
+        "points": [
+          {
+            "x": 2,
+            "y": 1,
+            "label": ""
+          },
+          {
+            "x": 5,
+            "y": 2,
+            "label": ""
+          }
+        ],
+        "xrange": [
+          0,
+          6
+        ],
+        "yrange": [
+          -2,
+          3
+        ]
+      }
     },
     {
       "number": 17,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Differentiate \\( y=\\tan x \\).",
-        "ar": null
+        "en": "The slope field for a differential equation is shown above. The differential equation is of the form \\(\\frac{dy}{dx} = ky\\) for some constant \\(k\\).  If the solution curve passes through the point \\((0, 1)\\) and \\((1, 2)\\), find the value of \\(k\\)."
       },
       "solution": {
-        "en": "\\[ y'=\\sec^2 x. \\]",
-        "ar": null
-      },
-      "difficulty": "Basic",
-      "levelLabel": "MCQ"
+        "en": "<p>The differential equation is given by \\(\\frac{dy}{dx} = ky\\). This is a separable differential equation. We can rewrite it as \\(\\frac{dy}{y} = k \\, dx\\). Integrating both sides, we get \\(\\int \\frac{dy}{y} = \\int k \\, dx\\), which yields \\(\\ln|y| = kx + C_1\\). Exponentiating both sides, we have \\(|y| = e^{kx + C_1} = e^{C_1} e^{kx}\\). Let \\(C = \\pm e^{C_1}\\), so \\(y = Ce^{kx}\\).</p><p>We are given that the solution curve passes through the point \\((0, 1)\\). Substituting these values into the general solution:<br>\\(1 = Ce^{k(0)}\\)<br>\\(1 = C e^0\\)<br>\\(1 = C \\cdot 1\\)<br>\\(C = 1\\).</p><p>So the particular solution is \\(y = e^{kx}\\).</p><p>We are also given that the solution curve passes through the point \\((1, 2)\\). Substituting these values into the particular solution:<br>\\(2 = e^{k(1)}\\)<br>\\(2 = e^k\\).</p><p>To solve for \\(k\\), we take the natural logarithm of both sides:<br>\\(\\ln 2 = \\ln(e^k)\\)<br>\\(\\ln 2 = k\\).</p><p>Therefore, the value of \\(k\\) is \\(\\ln 2\\).</p>"
+      }
     },
     {
       "number": 18,
+      "difficulty": "Basic",
       "question": {
-        "en": "Find \\( \\dfrac{dy}{dx} \\) if \\( x^2+xy=4 \\).",
-        "ar": null
+        "en": "A differentiable function \\(f(x)\\) is represented by the graph below. The area of the shaded region between the graph of \\(f(x)\\) and the x-axis from \\(x = 1\\) to \\(x = 4\\) is given by the definite integral \\(\\int_{1}^{4} f(x) \\, dx\\). If \\(f(x) = -x + 5\\) for \\(1 \\leq x \\leq 4\\), what is the area of this region?"
       },
       "solution": {
-        "en": "<p>Implicit: \\( 2x+\\big(y+x\\,y'\\big)=0 \\).</p>\\[ \\frac{dy}{dx}=-\\frac{2x+y}{x}. \\]",
-        "ar": null
+        "en": "<p>The area of the shaded region is given by the definite integral \\(\\int_{1}^{4} (-x + 5) \\, dx\\).<br>To evaluate this integral, we find the antiderivative of \\(f(x) = -x + 5\\), which is \\(F(x) = -\\frac{x^2}{2} + 5x\\).<br>Now we apply the Fundamental Theorem of Calculus:<br>\\(\\int_{1}^{4} (-x + 5) \\, dx = F(4) - F(1)\\)<br>\\(F(4) = -\\frac{4^2}{2} + 5(4) = -\\frac{16}{2} + 20 = -8 + 20 = 12\\)<br>\\(F(1) = -\\frac{1^2}{2} + 5(1) = -\\frac{1}{2} + 5 = 4.5\\)<br>Therefore, the area is \\(12 - 4.5 = 7.5\\).</p><p>Common errors include incorrectly calculating the antiderivative or making arithmetic mistakes when evaluating at the limits of integration.</p>"
       },
-      "difficulty": "Advanced",
-      "levelLabel": "FRQ"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "-x + 5"
+        ],
+        "points": [],
+        "shaded_region": {
+          "x_start": 1,
+          "x_end": 4
+        },
+        "xrange": [
+          0,
+          5
+        ],
+        "yrange": [
+          0,
+          5
+        ]
+      }
     },
     {
       "number": 19,
+      "difficulty": "Basic",
       "question": {
-        "en": "Find \\( f''(x) \\) for \\( f(x)=x^4 \\).",
-        "ar": null
+        "en": "A particle moves along a straight line so that its velocity at time \\(t \\ge 0\\) is modeled by \\(v(t) = 6t^2 - 18t + 12\\). At what time \\(t\\) is the acceleration of the particle equal to \\(0\\)?"
       },
       "solution": {
-        "en": "<p>\\( f'=4x^3 \\), \\( f''=12x^2 \\).</p>\\[ 12x^2. \\]",
-        "ar": null
-      },
-      "difficulty": "Basic",
-      "levelLabel": "MCQ"
+        "en": "<p>To find the acceleration \\(a(t)\\), take the derivative of the velocity function \\(v(t)\\) with respect to time \\(t\\):<br>\\[a(t) = v'(t) = \\frac{d}{dt}(6t^2 - 18t + 12) = 12t - 18.\\]</p><p>Set \\(a(t) = 0\\) and solve for \\(t\\):<br>\\[12t - 18 = 0 \\implies 12t = 18 \\implies t = \\frac{18}{12} = \\frac{3}{2}.\\]</p><p>Common Misconceptions:<br>- Solving \\(v(t) = 0\\) yields \\(6(t - 1)(t - 2) = 0 \\implies t = 1\\) or \\(t = 2\\). These are the times when the particle is at rest, not when its acceleration is zero.<br>- Omitting the factor of 2 when applying the power rule gives \\(6t - 18 = 0 \\implies t = 3\\).</p>"
+      }
     },
     {
       "number": 20,
+      "difficulty": "Basic",
       "question": {
-        "en": "Differentiate \\( y=e^{x}\\cos x \\).",
-        "ar": null
+        "en": "Consider the function \\(f(x)\\) graphed below. What is the limit of \\(f(x)\\) as \\(x\\) approaches 1, i.e., \\(\\lim_{x \\to 1} f(x)\\)?"
       },
       "solution": {
-        "en": "\\[ y'=e^{x}\\big(\\cos x-\\sin x\\big). \\]",
-        "ar": null
+        "en": "<p>The limit of a function as \\(x\\) approaches a certain value is the \\(y\\)-value that the function approaches from both the left and the right. Observing the graph, as \\(x\\) gets closer and closer to 1 from both sides, the \\(y\\)-value of the function approaches 0.</p>"
       },
-      "difficulty": "Intermediate",
-      "levelLabel": "MCQ"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "-x*x + 2*x - 1"
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": 0,
+            "label": "undefined"
+          }
+        ],
+        "xrange": [
+          -2,
+          4
+        ],
+        "yrange": [
+          -2,
+          2
+        ]
+      }
     },
     {
       "number": 21,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find the tangent line to \\( y=x^3 \\) at \\( x=1 \\).",
-        "ar": null
+        "en": "A differentiable function \\(f(x)\\) is such that its derivative $f'(x)$ is defined by \\(f'(x) = 3x^2 - 12x + 9\\). The function \\(f(x)\\) has a local maximum at \\(x=1\\) and a local minimum at \\(x=3\\). The graph of \\(y = f(x)\\) passes through the point $(0, 5)$. Consider the tangent line to the graph of \\(y = f(x)\\) at the point where \\(x=0\\). What is the \\(y\\)-intercept of this tangent line?"
       },
       "solution": {
-        "en": "<p>Point \\( (1,1) \\); slope \\( y'=3x^2=3 \\):</p>\\[ y=3x-2. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate",
-      "levelLabel": "FRQ"
+        "en": "<p>The derivative of \\(f(x)\\) is given as \\(f'(x) = 3x^2 - 12x + 9\\). To find the function \\(f(x)\\), we integrate $f'(x)$: \\(f(x) = \\int (3x^2 - 12x + 9) \\, dx = x^3 - 6x^2 + 9x + C\\). We are given that \\(f(x)\\) passes through $(0, 5)$. Substituting \\(x=0\\) and \\(f(0)=5\\) into the expression for \\(f(x)\\): \\(5 = (0)^3 - 6(0)^2 + 9(0) + C\\), which gives \\(C = 5\\). Thus, the function is \\(f(x) = x^3 - 6x^2 + 9x + 5\\). The derivative at \\(x=0\\) is \\(f'(0) = 3(0)^2 - 12(0) + 9 = 9\\). The point on the graph at \\(x=0\\) is \\((0, f(0)) = (0, 5)\\). The equation of the tangent line at \\(x=0\\) has the form \\(y - y_1 = m(x - x_1)\\), where \\(m = f'(0)\\) and \\((x_1, y_1) = (0, 5)\\). So, the equation of the tangent line is \\(y - 5 = 9(x - 0)\\), which simplifies to \\(y = 9x + 5\\). The \\(y\\)-intercept is the value of \\(y\\) when \\(x=0\\), which is USD 5$. Therefore, the \\(y\\)-intercept of the tangent line is USD 5$.</p>"
+      }
     },
     {
       "number": 22,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find the critical points of \\( f(x)=x^3-6x^2+9x \\).",
-        "ar": null
+        "en": "Consider the function \\(y = g(x)\\) and its inverse \\(x = h(y)\\).  The tangent to the graph of \\(g(x)\\) at \\(x=a\\) has a gradient of \\(\\frac{1}{3}\\). If \\(g(a) = 5\\), what is the gradient of the tangent to the graph of \\(h(y)\\) at \\(y=5\\)?"
       },
       "solution": {
-        "en": "<p>\\( f'(x)=3x^2-12x+9=3(x-1)(x-3) \\):</p>\\[ x=1,\\ 3. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate",
-      "levelLabel": "FRQ"
+        "en": "<p>We are given that \\(y = g(x)\\) and \\(x = h(y)\\) are inverse functions. The gradient of the tangent to the graph of \\(g(x)\\) at \\(x=a\\) is given by \\(g'(a) = \\frac{dy}{dx} \\Big|_{x=a}\\). We are told that \\(g'(a) = \\frac{1}{3}\\).  We are also given that \\(g(a) = 5\\). Since \\(x = h(y)\\) is the inverse function, it means that \\(h(g(x)) = x\\) and \\(g(h(y)) = y\\).  The derivative of the inverse function \\(h(y)\\) with respect to \\(y\\) is given by the formula \\(h'(y) = \\frac{1}{g'(x)}\\), where \\(y = g(x)\\). We want to find the gradient of the tangent to the graph of \\(h(y)\\) at \\(y=5\\).  Since \\(g(a) = 5\\), we have \\(y=5\\) corresponding to \\(x=a\\). Therefore, we need to evaluate \\(h'(5)\\). Using the inverse function theorem: \\(h'(5) = \\frac{1}{g'(a)}\\). Substituting the given value of \\(g'(a) = \\frac{1}{3}\\), we get \\(h'(5) = \\frac{1}{\\frac{1}{3}} = 3\\). Thus, the gradient of the tangent to the graph of \\(h(y)\\) at \\(y=5\\) is 3.</p>"
+      }
     },
     {
       "number": 23,
+      "difficulty": "Basic",
       "question": {
-        "en": "At what \\( x \\) does \\( f(x)=x^2-4x+1 \\) attain its minimum?",
-        "ar": null
+        "en": "A differentiable function \\(f(x)\\) is given by the equation \\(f(x) = x^2 - 6x + 10\\). Find the instantaneous rate of change of \\(f(x)\\) at \\(x = 4\\)."
       },
       "solution": {
-        "en": "<p>\\( f'(x)=2x-4=0 \\):</p>\\[ x=2 \\ (\\text{min value } -3). \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate",
-      "levelLabel": "MCQ"
+        "en": "<p>The instantaneous rate of change of a function at a point is given by its derivative evaluated at that point. First, we find the derivative of \\(f(x) = x^2 - 6x + 10\\). Using the power rule, \\(f'(x) = 2x - 6\\). Next, we evaluate the derivative at \\(x = 4\\): \\(f'(4) = 2(4) - 6 = 8 - 6 = 2\\). Therefore, the instantaneous rate of change of \\(f(x)\\) at \\(x = 4\\) is 2.</p>"
+      }
     },
     {
       "number": 24,
+      "difficulty": "Advanced",
       "question": {
-        "en": "On what interval is \\( f(x)=x^2-6x \\) increasing?",
-        "ar": null
+        "en": "Consider a function \\(f(x)\\) such that its derivative is given by \\(f'(x) = 3x^2 - 12x + 10\\). The graph of the second derivative, $f''(x)$, is shown below.  Given that \\(f(0) = 5\\), find the value of \\(f(2)\\)."
       },
       "solution": {
-        "en": "<p>\\( f'(x)=2x-6&gt;0 \\):</p>\\[ x&gt;3. \\]",
-        "ar": null
+        "en": "<p>The derivative of $f'(x)$ is $f''(x)$. From the graph, we can observe that $f''(x)$ is a parabola opening upwards with its vertex at $(2, -2)$. The equation of a parabola with vertex $(h, k)$ is \\(a(x-h)^2 + k\\). Thus, \\(f''(x) = a(x-2)^2 - 2\\).  We can also see that the parabola passes through $(0, 10)$, so \\(10 = a(0-2)^2 - 2\\), which gives \\(12 = 4a\\), so \\(a=3\\). Therefore, \\(f''(x) = 3(x-2)^2 - 2 = 3(x^2 - 4x + 4) - 2 = 3x^2 - 12x + 12 - 2 = 3x^2 - 12x + 10\\). This matches the given $f'(x)$, confirming our observation of $f''(x)$.</p><p>Now we need to find \\(f(x)\\) from $f'(x)$. We integrate $f'(x)$ with respect to \\(x\\): <br>\\(f(x) = \\int (3x^2 - 12x + 10) \\, dx\\)<br>\\(f(x) = x^3 - 6x^2 + 10x + C\\)<br>We are given that \\(f(0) = 5\\). Substituting \\(x=0\\) into the equation for \\(f(x)\\): <br>\\(f(0) = (0)^3 - 6(0)^2 + 10(0) + C\\)<br>\\(5 = C\\)<br>So, the function is \\(f(x) = x^3 - 6x^2 + 10x + 5\\).</p><p>Finally, we need to find \\(f(2)\\): <br>\\(f(2) = (2)^3 - 6(2)^2 + 10(2) + 5\\)<br>\\(f(2) = 8 - 6(4) + 20 + 5\\)<br>\\(f(2) = 8 - 24 + 20 + 5\\)<br>\\(f(2) = -16 + 25\\)<br>\\(f(2) = 9\\).</p>"
       },
-      "difficulty": "Intermediate",
-      "levelLabel": "MCQ"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "3*(x-2)**2 - 2"
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": 10,
+            "label": "(0, 10)"
+          },
+          {
+            "x": 2,
+            "y": -2,
+            "label": "(2, -2)"
+          }
+        ],
+        "xrange": [
+          -2,
+          6
+        ],
+        "yrange": [
+          -3,
+          6
+        ]
+      }
     },
     {
       "number": 25,
+      "difficulty": "Basic",
       "question": {
-        "en": "A rectangle has perimeter 40. What is the maximum possible area?",
-        "ar": null
+        "en": "Consider the function \\(f(x) = 4\\). What is the value of the definite integral \\(\\int_{3}^{6} f(x) \\, dx\\)?"
       },
       "solution": {
-        "en": "<p>\\( l+w=20 \\), \\( A=l(20-l) \\), maximised at \\( l=10 \\):</p>\\[ 10\\times 10=100. \\]",
-        "ar": null
+        "en": "<p>The definite integral \\(\\int_{a}^{b} c \\, dx\\) where c is a constant represents the area of a rectangle with height c and width \\(b-a\\). In this case, \\(c = 4\\), \\(a = 3\\), and \\(b = 6\\). Therefore, the value of the integral is \\(4 \\times (6-3) = 4 \\times 3 = 12\\).</p>"
       },
-      "difficulty": "Advanced",
-      "levelLabel": "FRQ"
+      "fig": {
+        "type": "numberline",
+        "min": 0,
+        "max": 7,
+        "marks": [
+          3,
+          6
+        ],
+        "range": [
+          3,
+          6
+        ],
+        "closed": true
+      }
     },
     {
       "number": 26,
+      "difficulty": "Basic",
       "question": {
-        "en": "A circle's radius grows at 3 cm/s. How fast is its area changing when \\( r=4 \\) cm?",
-        "ar": null
+        "en": "A differentiable function \\(y = f(x)\\) satisfies the differential equation \\(\\frac{dy}{dx} = 3x - 2\\). If \\(f(1) = 5\\), what is the value of \\(f(3)\\)?"
       },
       "solution": {
-        "en": "<p>\\( \\dfrac{dA}{dt}=2\\pi r\\dfrac{dr}{dt}=2\\pi(4)(3) \\):</p>\\[ 24\\pi\\ \\text{cm}^2/\\text{s}. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate",
-      "levelLabel": "FRQ"
+        "en": "<p>The given differential equation is \\(\\frac{dy}{dx} = 3x - 2\\). To find \\(f(x)\\), we need to integrate \\(\\frac{dy}{dx}\\) with respect to \\(x\\). \\(y = f(x) = \\int (3x - 2) \\, dx\\). \\(f(x) = \\frac{3}{2}x^2 - 2x + C\\), where \\(C\\) is the constant of integration. We are given that \\(f(1) = 5\\). Substituting \\(x=1\\) into the equation for \\(f(x)\\): \\(5 = \\frac{3}{2}(1)^2 - 2(1) + C\\). \\(5 = \\frac{3}{2} - 2 + C\\). \\(5 = \\frac{3}{2} - \\frac{4}{2} + C\\). \\(5 = -\\frac{1}{2} + C\\). \\(C = 5 + \\frac{1}{2} = \\frac{10}{2} + \\frac{1}{2} = \\frac{11}{2}\\). So, the function is \\(f(x) = \\frac{3}{2}x^2 - 2x + \\frac{11}{2}\\). Now we need to find \\(f(3)\\). \\(f(3) = \\frac{3}{2}(3)^2 - 2(3) + \\frac{11}{2}\\). \\(f(3) = \\frac{3}{2}(9) - 6 + \\frac{11}{2}\\). \\(f(3) = \\frac{27}{2} - \\frac{12}{2} + \\frac{11}{2}\\). \\(f(3) = \\frac{27 - 12 + 11}{2} = \\frac{15 + 11}{2} = \\frac{26}{2} = 13\\).</p>"
+      }
     },
     {
       "number": 27,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\lim_{x\\to 0}\\frac{e^{2x}-1}{x} \\).",
-        "ar": null
+        "en": "Consider a region in the first quadrant bounded by the curve \\(y = 9 - x^2\\), the x-axis, and the y-axis. A rectangle is inscribed within this region such that one vertex is at the origin, two sides lie along the x and y axes, and the fourth vertex lies on the curve \\(y = 9 - x^2\\). If the area of this inscribed rectangle is maximized, determine the value of the definite integral that represents the volume of a solid formed by revolving the region bounded by the curve \\(y = 9 - x^2\\), the x-axis, and the y-axis about the y-axis."
       },
       "solution": {
-        "en": "<p>L'Hôpital: \\( \\tfrac{2e^{2x}}{1}\\to 2 \\):</p>\\[ 2. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate",
-      "levelLabel": "MCQ"
+        "en": "<p>Let the vertex of the inscribed rectangle on the curve be \\((x, y)\\). Since the vertex is on \\(y = 9 - x^2\\), and the rectangle is in the first quadrant, \\(x \\ge 0\\) and \\(y \\ge 0\\). The dimensions of the rectangle are \\(x\\) and \\(y\\). The area of the rectangle is \\(A = xy\\). Substituting \\(y = 9 - x^2\\), we get \\(A(x) = x(9 - x^2) = 9x - x^3\\) for \\(0 \\le x \\le 3\\). To maximize the area, we find the derivative of \\(A(x)\\) with respect to \\(x\\) and set it to zero:<br>\\(A'(x) = 9 - 3x^2\\)<br>Setting \\(A'(x) = 0\\) gives \\(9 - 3x^2 = 0\\), so \\(x^2 = 3\\). Since \\(x \\ge 0\\), \\(x = \\sqrt{3}\\). The corresponding \\(y\\) value is \\(y = 9 - (\\sqrt{3})^2 = 9 - 3 = 6\\).<br>This confirms that the maximum area occurs when the vertex is at \\((\\sqrt{3}, 6)\\). The problem asks for the volume of the solid formed by revolving the region bounded by \\(y = 9 - x^2\\), the x-axis, and the y-axis about the y-axis.<br>This region is defined for \\(0 \\le y \\le 9\\) and \\(0 \\le x \\le \\sqrt{9-y}\\). We use the disk method by integrating with respect to \\(y\\):<br>\\(V = \\int_{0}^{9} \\pi x^2 \\, dy\\)<br>Since \\(y = 9 - x^2\\), we have \\(x^2 = 9 - y\\).<br>So, \\(V = \\int_{0}^{9} \\pi (9 - y) \\, dy\\).<br>Now, we evaluate the integral:<br>\\(V = \\pi \\left[ 9y - \\frac{y^2}{2} \\right]_{0}^{9}\\)<br>\\(V = \\pi \\left( (9(9) - \\frac{9^2}{2}) - (9(0) - \\frac{0^2}{2}) \\right)\\)<br>\\(V = \\pi \\left( 81 - \\frac{81}{2} \\right)\\)<br>\\(V = \\pi \\left( \\frac{162 - 81}{2} \\right)\\)<br>\\(V = \\frac{81\\pi}{2}\\).</p>"
+      }
     },
     {
       "number": 28,
+      "difficulty": "Basic",
       "question": {
-        "en": "For what \\( x \\) is \\( f(x)=x^3 \\) concave up?",
-        "ar": null
+        "en": "A particle's velocity is given by the function \\(v(t) = 5\\) for \\(0 \\le t \\le 4\\). Find the total displacement of the particle over this time interval."
       },
       "solution": {
-        "en": "<p>\\( f''(x)=6x&gt;0 \\):</p>\\[ x&gt;0. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate",
-      "levelLabel": "MCQ"
+        "en": "<p>The displacement of the particle is the definite integral of its velocity function over the given time interval. \\\\<br>Displacement = \\(\\int_{0}^{4} v(t) \\, dt = \\int_{0}^{4} 5 \\, dt\\). \\\\<br>To evaluate this definite integral, we find the antiderivative of USD 5$, which is \\(5t\\). \\\\<br>Then, we evaluate the antiderivative at the limits of integration: \\\\<br>\\([5t]_{0}^{4} = 5(4) - 5(0) = 20 - 0 = 20\\). \\\\<br>Therefore, the total displacement of the particle is 20 units.</p>"
+      }
     },
     {
       "number": 29,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find the inflection point of \\( f(x)=x^3-3x \\).",
-        "ar": null
+        "en": "Consider the function \\(f(x)\\) defined by \\(f(x) = \\frac{x^2 - 9}{x - 3}\\) for \\(x \\neq 3\\).  Let \\(g(x)\\) be a function such that \\(g(x) = \\begin{cases} f(x) & \\text{if } x \\lt c \\\\ k & \\text{if } x \\ge c \\end{cases}\\).  If \\(g(x)\\) is continuous at \\(x = c\\) and the limit of \\(g(x)\\) as \\(x\\) approaches \\(c\\) from the left is 5, determine the value of \\(k\\)."
       },
       "solution": {
-        "en": "<p>\\( f''(x)=6x=0\\Rightarrow x=0 \\), and \\( f(0)=0 \\):</p>\\[ (0,0). \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate",
-      "levelLabel": "FRQ"
+        "en": "<p>For \\(g(x)\\) to be continuous at \\(x = c\\), the limit from the left must equal the limit from the right, and this must equal the function value at \\(x=c\\). That is, \\(\\lim_{x \\to c^-} g(x) = \\lim_{x \\to c^+} g(x) = g(c)\\).  We are given that \\(\\lim_{x \\to c^-} g(x) = 5\\).  For \\(x \\lt c\\), \\(g(x) = f(x) = \\frac{x^2 - 9}{x - 3}\\).  We can simplify this expression for \\(x \\neq 3\\): \\(f(x) = \\frac{(x-3)(x+3)}{x-3} = x+3\\).  Therefore, \\(\\lim_{x \\to c^-} g(x) = \\lim_{x \\to c^-} (x+3)\\).  Since the limit from the left is given as 5, we have \\(c+3 = 5\\), which implies \\(c = 2\\).  Now consider the right side of the definition of \\(g(x)\\). For \\(x \\ge c\\), \\(g(x) = k\\).  So, \\(\\lim_{x \\to c^+} g(x) = \\lim_{x \\to c^+} k = k\\) and \\(g(c) = k\\).  For continuity, we must have \\(\\lim_{x \\to c^-} g(x) = \\lim_{x \\to c^+} g(x) = g(c)\\).  Substituting the values we found: \\(5 = k = k\\).  Thus, the value of \\(k\\) is 5.</p>"
+      }
     },
     {
       "number": 30,
+      "difficulty": "Basic",
       "question": {
-        "en": "A cube's edge grows at 2 cm/s. How fast is the volume changing when the edge is 5 cm?",
-        "ar": null
+        "en": "What is the value of \\(\\lim_{h \\to 0} \\frac{(2+h)^4 - 16}{h}\\)?"
       },
       "solution": {
-        "en": "<p>\\( V=s^3 \\), \\( \\dfrac{dV}{dt}=3s^2\\dfrac{ds}{dt}=3(25)(2) \\):</p>\\[ 150\\ \\text{cm}^3/\\text{s}. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced",
-      "levelLabel": "FRQ"
+        "en": "<p>By definition, the derivative of a function \\(f\\) at \\(x = a\\) is given by:<br>\\[f'(a) = \\lim_{h \\to 0} \\frac{f(a+h) - f(a)}{h}\\]</p><p>The expression \\(\\lim_{h \\to 0} \\frac{(2+h)^4 - 16}{h}\\) matches this definition for the function \\(f(x) = x^4\\) evaluated at \\(a = 2\\), since \\(f(2) = 2^4 = 16\\).</p><p>Applying the power rule to find the derivative:<br>\\[f'(x) = 4x^3\\]</p><p>Evaluating at \\(x = 2\\):<br>\\[f'(2) = 4(2)^3 = 4(8) = 32\\]</p><p>Common Misconceptions:</p>"
+      }
     },
     {
       "number": 31,
+      "difficulty": "Basic",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\int\\big(8x^3-3x^2\\big)\\,dx \\).",
-        "ar": null
+        "en": "Consider the function \\(f(x) = x^2 - 3x\\). If \\(g(x)\\) is a function such that \\(h(x) = f(g(x))\\), and at \\(x=2\\), \\(g(2) = 5\\) and \\(g'(2) = 3\\), find \\(h'(2)\\)."
       },
       "solution": {
-        "en": "\\[ 2x^4-x^3+C. \\]",
-        "ar": null
-      },
-      "difficulty": "Basic",
-      "levelLabel": "MCQ"
+        "en": "<p>This question involves the chain rule for differentiation. The chain rule states that if \\(h(x) = f(g(x))\\), then \\(h'(x) = f'(g(x)) \\cdot g'(x)\\).</p><p>First, we find the derivative of \\(f(x)\\): \\(f'(x) = \\frac{d}{dx}(x^2 - 3x) = 2x - 3\\).</p><p>Now, we need to find \\(f'(g(x))\\). Since \\(g(x)\\) is a general function, we substitute \\(g(x)\\) into \\(f'(x)\\): \\(f'(g(x)) = 2g(x) - 3\\).</p><p>To find \\(h'(2)\\), we apply the chain rule formula at \\(x=2\\): \\(h'(2) = f'(g(2)) \\cdot g'(2)\\).</p><p>We are given that \\(g(2) = 5\\) and \\(g'(2) = 3\\).</p><p>Substitute \\(g(2)=5\\) into \\(f'(g(x))\\): \\(f'(g(2)) = 2(5) - 3 = 10 - 3 = 7\\).</p><p>Now, multiply \\(f'(g(2))\\) by \\(g'(2)\\): \\(h'(2) = 7 \\cdot 3 = 21\\).</p><p>Therefore, the value of \\(h'(2)\\) is 21.</p>"
+      }
     },
     {
       "number": 32,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\int_0^{2} x^3\\,dx \\).",
-        "ar": null
+        "en": "A conical tank has height 15 ft and radius 7 ft at the top (radius:height ratio constant as it drains). Water drains at 6 ft\\(^3\\)/min. Find \\(\\dfrac{dh}{dt}\\) (in ft/min) when the water depth is 13 ft."
       },
       "solution": {
-        "en": "\\[ \\Big[\\tfrac{x^4}{4}\\Big]_0^{2}=4. \\]",
-        "ar": null
-      },
-      "difficulty": "Basic",
-      "levelLabel": "MCQ"
+        "en": "<p>Since \\(r = \\dfrac{7}{15}h\\), \\(V=\\dfrac{1}{3}\\pi\\left(\\dfrac{7}{15}\\right)^2h^3\\). Differentiating and solving for \\(\\dfrac{dh}{dt}\\) at \\(h=13\\) gives \\(-\\frac{1350}{8281}/\\pi\\) ft/min.</p>"
+      }
     },
     {
       "number": 33,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\int_1^{3} 2x\\,dx \\).",
-        "ar": null
+        "en": "The graph of the derivative of a function \\(f(x)\\), denoted by \\(f'(x)\\), is shown in the figure above. The function \\(f(x)\\) is continuous, and it is known that \\(f(1) = 5\\). Determine the value of \\(f(5)\\)."
       },
       "solution": {
-        "en": "\\[ \\big[x^2\\big]_1^{3}=9-1=8. \\]",
-        "ar": null
+        "en": "<p>The Fundamental Theorem of Calculus states that \\(\\int_{a}^{b} f'(x) \\, dx = f(b) - f(a)\\). Rearranging this, we get \\(f(b) = f(a) + \\int_{a}^{b} f'(x) \\, dx\\).</p><p>In this problem, we are given \\(f(1) = 5\\) and we need to find \\(f(5)\\). Thus, we have \\(a = 1\\) and \\(b = 5\\). We need to calculate the definite integral \\(\\int_{1}^{5} f'(x) \\, dx\\), which represents the area under the curve of \\(f'(x)\\) from \\(x=1\\) to \\(x=5\\).</p><p>From the graph, \\(f'(x)\\) is a straight line. The area from \\(x=1\\) to \\(x=5\\) can be split into two parts: a triangle and a rectangle.</p><p>Part 1: Area from \\(x=1\\) to \\(x=3\\).<br>This is a triangle with base \\(3 - 1 = 2\\) and height \\(f'(1) = 3\\). The area of this triangle is \\(\\frac{1}{2} \\times \\text{base} \\times \\text{height} = \\frac{1}{2} \\times 2 \\times 3 = 3\\).</p><p>Part 2: Area from \\(x=3\\) to \\(x=5\\).<br>This is a rectangle with base \\(5 - 3 = 2\\) and height \\(f'(3) = 3\\). The area of this rectangle is \\(\\text{base} \\times \\text{height} = 2 \\times 3 = 6\\).</p><p>Therefore, the total area under the curve from \\(x=1\\) to \\(x=5\\) is \\(\\int_{1}^{5} f'(x) \\, dx = 3 + 6 = 9\\).</p><p>Now, we can find \\(f(5)\\): \\(f(5) = f(1) + \\int_{1}^{5} f'(x) \\, dx = 5 + 9 = 14\\).</p><p>Common traps: Students might misinterpret the graph and assume \\(f'(x)\\) is constant or linear over the entire interval without splitting it. They might also make calculation errors with the area of the triangle or rectangle.</p>"
       },
-      "difficulty": "Basic",
-      "levelLabel": "MCQ"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "(3/2)*x + 3/2",
+          "3"
+        ],
+        "points": [
+          {
+            "x": 1,
+            "y": 3,
+            "label": "(1, 3)"
+          },
+          {
+            "x": 3,
+            "y": 3,
+            "label": "(3, 3)"
+          },
+          {
+            "x": 5,
+            "y": 3,
+            "label": "(5, 3)"
+          }
+        ],
+        "xrange": [
+          0,
+          6
+        ],
+        "yrange": [
+          0,
+          4
+        ]
+      }
     },
     {
       "number": 34,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\int_0^{\\pi}\\sin x\\,dx \\).",
-        "ar": null
+        "en": "Consider the function \\(f(x)\\) whose graph is shown below. The graph consists of a line segment and a quarter circle. The line segment connects the points \\((2, 4)\\) and \\((4, 0)\\). The quarter circle is in the second quadrant and is centered at \\((0, 0)\\) with radius 2. Let \\(A(x)\\) be the area of the region bounded by the graph of \\(f(t)\\), the \\(t\\)-axis, and the lines \\(t = 0\\) and \\(t = x\\).\n\n(a) Find \\(A(3)\\)."
       },
       "solution": {
-        "en": "\\[ \\big[-\\cos x\\big]_0^{\\pi}=1+1=2. \\]",
-        "ar": null
+        "en": "<p>The function \\(f(x)\\) is defined piecewise. For \\(0 \\le t \\le 2\\), \\(f(t)\\) is the upper part of a circle centered at the origin with radius 2, so \\(f(t) = \\sqrt{4 - t^2}\\). For \\(2 \\lt t \\le 4\\), \\(f(t)\\) is a line segment connecting \\((2, 4)\\) and \\((4, 0)\\). The equation of this line can be found using the two-point form: \\(y - 0 = \\frac{4 - 0}{2 - 4}(x - 4)\\), which simplifies to \\(y = -2(x - 4)\\), so \\(f(t) = -2(t - 4)\\).</p><p>To find \\(A(3)\\), we need to calculate the definite integral \\(\\int_{0}^{3} f(t) \\, dt\\). We split this integral into two parts based on the definition of \\(f(t)\\):</p><p>\\(A(3) = \\int_{0}^{2} f(t) \\, dt + \\int_{2}^{3} f(t) \\, dt\\)</p><p>For the first part, \\(\\int_{0}^{2} \\sqrt{4 - t^2} \\, dt\\), this represents the area of a quarter circle of radius 2, which is \\(\\frac{1}{4}\\pi r^2 = \\frac{1}{4}\\pi (2^2) = \\pi\\).</p><p>For the second part, \\(\\int_{2}^{3} (-2(t - 4)) \\, dt\\), we can evaluate this integral:</p><p>\\(\\int_{2}^{3} (-2t + 8) \\, dt = [-t^2 + 8t]_{2}^{3}\\)</p><p>Evaluating at the limits:</p><p>\\((-3^2 + 8 \\cdot 3) - (-2^2 + 8 \\cdot 2)\\)</p><p>\\((-9 + 24) - (-4 + 16)\\)</p><p>\\(15 - 12 = 3\\).</p><p>Therefore, \\(A(3) = \\pi + 3\\).</p><p>*Common Misconceptions:* Students might incorrectly assume the function is a single simple shape or miscalculate the line segment's equation. They might also forget that the first part of the integral represents a quarter circle's area and attempt to integrate \\(\\sqrt{4-t^2}\\) directly, which is more complex.</p>"
       },
-      "difficulty": "Intermediate",
-      "levelLabel": "MCQ"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "sqrt(4 - x*x)",
+          "-2*(x - 4)"
+        ],
+        "points": [
+          {
+            "x": 2,
+            "y": 4,
+            "label": "(2, 4)"
+          },
+          {
+            "x": 4,
+            "y": 0,
+            "label": "(4, 0)"
+          }
+        ],
+        "xrange": [
+          -0.5,
+          4.5
+        ],
+        "yrange": [
+          -0.5,
+          4.5
+        ]
+      }
     },
     {
       "number": 35,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\int e^{2x}\\,dx \\).",
-        "ar": null
+        "en": "The function \\(f(x)\\) is defined piecewise as:\n\n\\[f(x) = \\begin{cases} ax^2 + 1, & x  \\lt  2 \\\\ 5x - b, & x \\ge 2 \\end{cases}\\]\n\nIf \\(f(x)\\) is continuous at \\(x = 2\\), and the limit of \\(f(x)\\) as \\(x \\to 2\\) is 9, find the values of \\(a\\) and \\(b\\)."
       },
       "solution": {
-        "en": "\\[ \\tfrac12 e^{2x}+C. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate",
-      "levelLabel": "MCQ"
+        "en": "<p>For \\(f(x)\\) to be continuous at \\(x = 2\\), the left-hand limit and the right-hand limit must be equal to the function value at \\(x = 2\\).</p><p>Given that the limit of \\(f(x)\\) as \\(x \\to 2\\) is 9, we have:</p><p>1. Left-hand limit: \\(\\lim_{x \\to 2^-} f(x) = \\lim_{x \\to 2^-} (ax^2 + 1) = a(2)^2 + 1 = 4a + 1\\)<br>2. Right-hand limit: \\(\\lim_{x \\to 2^+} f(x) = \\lim_{x \\to 2^+} (5x - b) = 5(2) - b = 10 - b\\)<br>3. Function value at \\(x = 2\\): \\(f(2) = 5(2) - b = 10 - b\\)</p><p>Since the limit as \\(x \\to 2\\) is 9, we have:</p><p>\\(4a + 1 = 9\\)  (from the left-hand limit)<br>\\(10 - b = 9\\)  (from the right-hand limit and function value)</p><p>Solving the first equation for \\(a\\):<br>\\(4a = 9 - 1\\)<br>\\(4a = 8\\)<br>\\(a = 2\\)</p><p>Solving the second equation for \\(b\\):<br>\\(10 - b = 9\\)<br>\\(-b = 9 - 10\\)<br>\\(-b = -1\\)<br>\\(b = 1\\)</p><p>Therefore, the values are \\(a = 2\\) and \\(b = 1\\).</p>"
+      }
     },
     {
       "number": 36,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\int_1^{e^2}\\frac{1}{x}\\,dx \\).",
-        "ar": null
+        "en": "The graph of the derivative of a function \\(f(x)\\) is shown below. Given that \\(f(2) = 5\\), determine the value of \\(f(6)\\)."
       },
       "solution": {
-        "en": "\\[ \\big[\\ln x\\big]_1^{e^2}=2. \\]",
-        "ar": null
+        "en": "<p>The graph shows \\(f'(x)\\). By the Fundamental Theorem of Calculus, \\(f(6) - f(2) = \\int_{2}^{6} f'(x) \\, dx\\). The integral \\(\\int_{2}^{6} f'(x) \\, dx\\) represents the area under the curve of \\(f'(x)\\) from \\(x = 2\\) to \\(x = 6\\). This area is a trapezoid with parallel sides of length \\(4\\) (from \\(x=2\\) to \\(x=4\\)) and \\(6\\) (from \\(x=4\\) to \\(x=6\\)), and a height of \\(2\\) (the difference in x-values from 2 to 4 and 4 to 6, but looking at the graph the height from y=1 to y=5 is 4 and from y=1 to y=6 is 5, the vertical distance represents the change in y for the integral, which is the change in x on the graph.  The area is a trapezoid with heights of 4 and 5 at x=2 and x=6 respectively, and a base of 4. The area under the curve from x=2 to x=6 is the area of a trapezoid with parallel sides of length 4 (at x=2, f'(2)=4) and 5 (at x=6, f'(6)=5), and a height (width along x-axis) of 6-2=4.  The area is \\(\\frac{1}{2}(4+5) \\times 4 = \\frac{1}{2}(9) \\times 4 = 18\\). Therefore, \\(f(6) - f(2) = 18\\). Given \\(f(2) = 5\\), we have \\(f(6) - 5 = 18\\), which means \\(f(6) = 18 + 5 = 23\\).</p><p>Common algebraic trap: Students might misinterpret the y-axis values as the length of the parallel sides of the trapezoid and the x-axis values as the height, or vice versa. They might also forget to add the initial value of \\(f(2)\\).</p>"
       },
-      "difficulty": "Intermediate",
-      "levelLabel": "MCQ"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "-x + 6",
+          "x + 2"
+        ],
+        "points": [
+          {
+            "x": 2,
+            "y": 4,
+            "label": "(2, 4)"
+          },
+          {
+            "x": 6,
+            "y": 0,
+            "label": "(6, 0)"
+          },
+          {
+            "x": 4,
+            "y": 2,
+            "label": "(4, 2)"
+          }
+        ],
+        "xrange": [
+          0,
+          7
+        ],
+        "yrange": [
+          0,
+          7
+        ]
+      }
     },
     {
       "number": 37,
+      "difficulty": "Basic",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\int_0^{\\pi/4}\\sec^2 x\\,dx \\).",
-        "ar": null
+        "en": "Let \\(f(x) = \\sin(x^2)\\). What is the derivative of \\(f(x)\\)?"
       },
       "solution": {
-        "en": "\\[ \\big[\\tan x\\big]_0^{\\pi/4}=1. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate",
-      "levelLabel": "MCQ"
+        "en": "<p>To find the derivative of \\(f(x) = \\sin(x^2)\\), we use the chain rule. The chain rule states that if \\(f(x) = g(h(x))\\), then \\(f'(x) = g'(h(x)) \\cdot h'(x)\\). In this case, let \\(g(u) = \\sin(u)\\) and \\(h(x) = x^2\\). Then \\(g'(u) = \\cos(u)\\) and \\(h'(x) = 2x\\). Applying the chain rule, we get \\(f'(x) = \\cos(x^2) \\cdot 2x\\), which simplifies to \\(2x \\cos(x^2)\\).</p>"
+      }
     },
     {
       "number": 38,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find \\( \\dfrac{d}{dx}\\displaystyle\\int_0^{x}\\sin\\!\\big(t^2\\big)\\,dt \\).",
-        "ar": null
+        "en": "A particle's velocity is given by \\(v(t) = 3t^2 - 12t + 9\\) for \\(t \\ge 0\\). The position of the particle at time \\(t=0\\) is \\(s(0) = 5\\). \\\\\nConsider a second particle whose position \\(p(t)\\) is described by the integral \\(p(t) = \\int_{0}^{t} v(u) \\, du\\). \\\\\nFind the net displacement of the first particle from \\(t=1\\) to \\(t=3\\)."
       },
       "solution": {
-        "en": "<p>By the Fundamental Theorem (Part I):</p>\\[ \\sin\\!\\big(x^2\\big). \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate",
-      "levelLabel": "FRQ"
+        "en": "<p>The net displacement of the first particle from \\(t=1\\) to \\(t=3\\) is given by the definite integral of its velocity function over this interval: \\(\\Delta s = \\int_{1}^{3} v(t) \\, dt\\). \\\\<br>We are given \\(v(t) = 3t^2 - 12t + 9\\). \\\\<br>To find the definite integral, we first find the antiderivative of \\(v(t)\\): \\\\<br>\\(s(t) = \\int (3t^2 - 12t + 9) \\, dt = t^3 - 6t^2 + 9t + C\\). \\\\<br>Since the initial position is \\(s(0) = 5\\), we have \\(0^3 - 6(0)^2 + 9(0) + C = 5\\), which means \\(C=5\\). Thus, \\(s(t) = t^3 - 6t^2 + 9t + 5\\). \\\\<br>The net displacement is $s(3) - s(1)$. \\\\<br>\\(s(3) = (3)^3 - 6(3)^2 + 9(3) + 5 = 27 - 54 + 27 + 5 = 5\\). \\\\<br>\\(s(1) = (1)^3 - 6(1)^2 + 9(1) + 5 = 1 - 6 + 9 + 5 = 9\\). \\\\<br>Therefore, the net displacement is \\(s(3) - s(1) = 5 - 9 = -4\\). \\\\<br>Alternatively, we can evaluate the definite integral directly: \\\\<br>$\\int_{1}^{3} (3t^2 - 12t + 9) \\, dt = [t^3 - 6t^2 + 9t]_{1}^{3} \\\\<br>$= [(3)^3 - 6(3)^2 + 9(3)] - [(1)^3 - 6(1)^2 + 9(1)] \\\\<br>$= [27 - 54 + 27] - [1 - 6 + 9] \\\\<br>\\(= [0] - [4] = -4\\). \\\\<br>The information about the second particle (\\(p(t)\\)) is extraneous and not needed to solve this problem.</p>"
+      }
     },
     {
       "number": 39,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\int_0^{2}\\big(3x^2+1\\big)\\,dx \\).",
-        "ar": null
+        "en": "Consider a function \\(f(x)\\) whose derivative is given by \\(f'(x) = 6x^2 - 12x + 6\\). The graph of the function \\(g(x) = x^3 - 6x^2 + 9x - 2\\) is shown below. If \\(f(x)\\) and \\(g(x)\\) have the same tangent line at \\(x=1\\), determine the value of $f''(0)$."
       },
       "solution": {
-        "en": "\\[ \\big[x^3+x\\big]_0^{2}=8+2=10. \\]",
-        "ar": null
+        "en": "<p>First, let's find the derivative of \\(g(x)\\): \\(g'(x) = 3x^2 - 12x + 9\\). At \\(x=1\\), the slope of the tangent line to \\(g(x)\\) is \\(g'(1) = 3(1)^2 - 12(1) + 9 = 3 - 12 + 9 = 0\\).</p><p>The problem states that \\(f(x)\\) and \\(g(x)\\) have the same tangent line at \\(x=1\\). This means \\(f'(1) = g'(1) = 0\\). We are given \\(f'(x) = 6x^2 - 12x + 6\\). Let's check: \\(f'(1) = 6(1)^2 - 12(1) + 6 = 6 - 12 + 6 = 0\\). This confirms consistency.</p><p>To find the value of $f''(0)$, we first need to find the second derivative of \\(f(x)\\). We are given \\(f'(x) = 6x^2 - 12x + 6\\). Therefore, \\(f''(x) = \\frac{d}{dx}(6x^2 - 12x + 6) = 12x - 12\\).</p><p>Now, we can evaluate $f''(0)$: \\(f''(0) = 12(0) - 12 = -12\\).</p><p>Common misconception: Students might try to integrate $f'(x)$ to find \\(f(x)\\) and then differentiate, or they might confuse the derivative of \\(f(x)\\) with the derivative of \\(g(x)\\) when calculating the second derivative. The value of \\(g(x)\\) at \\(x=1\\) is \\(g(1) = 1^3 - 6(1)^2 + 9(1) - 2 = 1 - 6 + 9 - 2 = 2\\). This information is not directly needed to find $f''(0)$ given the provided information about the tangent line slope.</p>"
       },
-      "difficulty": "Basic",
-      "levelLabel": "MCQ"
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "x**3 - 6*x**2 + 9*x - 2"
+        ],
+        "points": [],
+        "xrange": [
+          -1,
+          4
+        ],
+        "yrange": [
+          -5,
+          5
+        ]
+      }
     },
     {
       "number": 40,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find the average value of \\( f(x)=2x \\) on \\( [0,4] \\).",
-        "ar": null
+        "en": "Given \\(\\displaystyle\\int_{-2}^{-1} 1x^2\\,dx = \\frac{7}{3}\\) and \\(\\displaystyle\\int_{-1}^{0} 1x^2\\,dx = \\frac{1}{3}\\), find \\(\\displaystyle\\int_{-2}^{0} 1x^2\\,dx\\)."
       },
       "solution": {
-        "en": "\\[ \\frac14\\int_0^{4}2x\\,dx=\\frac14(16)=4. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate",
-      "levelLabel": "MCQ"
+        "en": "<p>By additivity of the definite integral: \\(\\displaystyle\\int_{-2}^{0} = \\displaystyle\\int_{-2}^{-1} + \\displaystyle\\int_{-1}^{0} = \\frac{7}{3} + \\frac{1}{3} = \\frac{8}{3}\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 41,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\int 3x^2\\big(x^3+1\\big)^5\\,dx \\).",
-        "ar": null
+        "en": "Use L'Hopital's Rule to evaluate \\(\\displaystyle\\lim_{x \\to \\infty} \\frac{7x}{e^{4x}}\\)."
       },
       "solution": {
-        "en": "<p>Let \\( u=x^3+1 \\), \\( du=3x^2\\,dx \\):</p>\\[ \\frac{\\big(x^3+1\\big)^6}{6}+C. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate",
-      "levelLabel": "MCQ"
+        "en": "<p>This is \\(\\frac{\\infty}{\\infty}\\) form. Applying L'Hopital's Rule: \\(\\displaystyle\\lim_{x\\to\\infty} \\frac{7}{4e^{4x}} = 0\\), since the exponential grows without bound.</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 42,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\int x\\,e^{x}\\,dx \\).",
-        "ar": null
+        "en": "Given \\(\\displaystyle\\int_{-1}^{0} 4x^2\\,dx = \\frac{4}{3}\\) and \\(\\displaystyle\\int_{0}^{1} 4x^2\\,dx = \\frac{4}{3}\\), find \\(\\displaystyle\\int_{-1}^{1} 4x^2\\,dx\\)."
       },
       "solution": {
-        "en": "<p>By parts:</p>\\[ e^{x}(x-1)+C. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate",
-      "levelLabel": "FRQ"
+        "en": "<p>By additivity of the definite integral: \\(\\displaystyle\\int_{-1}^{1} = \\displaystyle\\int_{-1}^{0} + \\displaystyle\\int_{0}^{1} = \\frac{4}{3} + \\frac{4}{3} = \\frac{8}{3}\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 43,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\int 2x\\cos\\!\\big(x^2\\big)\\,dx \\).",
-        "ar": null
+        "en": "Use the Second Derivative Test to classify the critical points of \\(f(x) = 3x^3 -4x\\)."
       },
       "solution": {
-        "en": "<p>Let \\( u=x^2 \\):</p>\\[ \\sin\\!\\big(x^2\\big)+C. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate",
-      "levelLabel": "MCQ"
+        "en": "<p>\\(f'(x)=3(3)x^2-4=0 \\Rightarrow x=\\pm\\frac{2}{3}\\). Since \\(f''(x)=18 x\\), \\(f''(-\\frac{2}{3}) \\lt 0\\) (local maximum) and \\(f''(\\frac{2}{3}) \\gt 0\\) (local minimum).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 44,
+      "difficulty": "Intermediate",
       "question": {
-        "en": "Evaluate \\( \\displaystyle\\int x\\ln x\\,dx \\).",
-        "ar": null
+        "en": "A 5-ft ladder leans against a wall. The bottom slides away from the wall at 2 ft/s. Find the rate at which the top of the ladder is sliding down the wall when the bottom is 3 ft from the wall."
       },
       "solution": {
-        "en": "<p>By parts, \\( u=\\ln x,\\ dv=x\\,dx \\):</p>\\[ \\frac{x^2}{2}\\ln x-\\frac{x^2}{4}+C. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced",
-      "levelLabel": "FRQ"
+        "en": "<p>\\(x^2+y^2=5^2\\). At \\(x=3\\), \\(y=4\\). Differentiating: \\(2x\\frac{dx}{dt}+2y\\frac{dy}{dt}=0 \\Rightarrow \\dfrac{dy}{dt}=-\\dfrac{x}{y}\\dfrac{dx}{dt}=-\\frac{3}{2}\\) ft/s.</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 45,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find the area between \\( y=4x \\) and \\( y=x^2 \\) on \\( [0,4] \\).",
-        "ar": null
+        "en": "Find \\(\\dfrac{d}{dx}\\left[\\sin\\big((- 2 x - 2)^{3}\\big)\\right]\\)."
       },
       "solution": {
-        "en": "<p>On \\( [0,4] \\), \\( 4x\\ge x^2 \\):</p>\\[ \\int_0^{4}\\big(4x-x^2\\big)\\,dx=\\Big[2x^2-\\tfrac{x^3}{3}\\Big]_0^{4}=\\frac{32}{3}. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate",
-      "levelLabel": "FRQ"
+        "en": "<p>Chain rule (twice): \\(\\cos\\big((- 2 x - 2)^{3}\\big)\\cdot 3(- 2 x - 2)^{2}\\cdot -2 = - 6 \\left(- 2 x - 2\\right)^{2} \\cos{\\left(\\left(- 2 x - 2\\right)^{3} \\right)}\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 46,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find the area under \\( y=3x^2 \\) from \\( 0 \\) to \\( 2 \\).",
-        "ar": null
+        "en": "Given \\(\\displaystyle\\int_{-2}^{1} 5x^2\\,dx = 15\\) and \\(\\displaystyle\\int_{1}^{5} 5x^2\\,dx = \\frac{620}{3}\\), find \\(\\displaystyle\\int_{-2}^{5} 5x^2\\,dx\\)."
       },
       "solution": {
-        "en": "\\[ \\int_0^{2}3x^2\\,dx=\\big[x^3\\big]_0^{2}=8. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate",
-      "levelLabel": "MCQ"
+        "en": "<p>By additivity of the definite integral: \\(\\displaystyle\\int_{-2}^{5} = \\displaystyle\\int_{-2}^{1} + \\displaystyle\\int_{1}^{5} = 15 + \\frac{620}{3} = \\frac{665}{3}\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 47,
+      "difficulty": "Advanced",
       "question": {
-        "en": "The region under \\( y=\\sqrt{x} \\) on \\( [0,9] \\) is revolved about the \\( x \\)-axis. Find the volume.",
-        "ar": null
+        "en": "Given \\(\\displaystyle\\int_{0}^{1} 1x^2\\,dx = \\frac{1}{3}\\) and \\(\\displaystyle\\int_{1}^{3} 1x^2\\,dx = \\frac{26}{3}\\), find \\(\\displaystyle\\int_{0}^{3} 1x^2\\,dx\\)."
       },
       "solution": {
-        "en": "<p>Disks with \\( R^2=x \\):</p>\\[ \\pi\\int_0^{9}x\\,dx=\\pi\\Big[\\tfrac{x^2}{2}\\Big]_0^{9}=\\frac{81\\pi}{2}. \\]",
-        "ar": null
-      },
-      "difficulty": "Advanced",
-      "levelLabel": "FRQ"
+        "en": "<p>By additivity of the definite integral: \\(\\displaystyle\\int_{0}^{3} = \\displaystyle\\int_{0}^{1} + \\displaystyle\\int_{1}^{3} = \\frac{1}{3} + \\frac{26}{3} = 9\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 48,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find the average value of \\( f(x)=x^3 \\) on \\( [0,2] \\).",
-        "ar": null
+        "en": "Find the area of the region bounded by \\(y = 28x\\) and \\(y = x^2\\) in the first quadrant."
       },
       "solution": {
-        "en": "\\[ \\frac12\\int_0^{2}x^3\\,dx=\\frac12(4)=2. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate",
-      "levelLabel": "MCQ"
+        "en": "<p>Intersections at \\(x = 0\\) and \\(x = 28\\). Area \\(= \\int_0^{28} (28x - x^2)\\,dx = \\left[\\frac{28}{2}x^2 - \\frac{x^3}{3}\\right]_0^{28} = \\frac{21952}{6}\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 49,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Solve \\( \\dfrac{dy}{dx}=4y \\) with \\( y(0)=2 \\).",
-        "ar": null
+        "en": "Given \\(\\displaystyle\\int_{0}^{3} 4x^2\\,dx = 36\\) and \\(\\displaystyle\\int_{3}^{5} 4x^2\\,dx = \\frac{392}{3}\\), find \\(\\displaystyle\\int_{0}^{5} 4x^2\\,dx\\)."
       },
       "solution": {
-        "en": "<p>Exponential model with \\( k=4 \\), \\( y_0=2 \\):</p>\\[ y=2e^{4x}. \\]",
-        "ar": null
-      },
-      "difficulty": "Intermediate",
-      "levelLabel": "FRQ"
+        "en": "<p>By additivity of the definite integral: \\(\\displaystyle\\int_{0}^{5} = \\displaystyle\\int_{0}^{3} + \\displaystyle\\int_{3}^{5} = 36 + \\frac{392}{3} = \\frac{500}{3}\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     },
     {
       "number": 50,
+      "difficulty": "Advanced",
       "question": {
-        "en": "Find the general solution of \\( \\dfrac{dy}{dx}=x^2 \\).",
-        "ar": null
+        "en": "Find \\(\\dfrac{d}{dx}\\left[\\sin\\big((1 - 2 x)^{3}\\big)\\right]\\)."
       },
       "solution": {
-        "en": "\\[ y=\\frac{x^3}{3}+C. \\]",
-        "ar": null
-      },
-      "difficulty": "Basic",
-      "levelLabel": "MCQ"
+        "en": "<p>Chain rule (twice): \\(\\cos\\big((1 - 2 x)^{3}\\big)\\cdot 3(1 - 2 x)^{2}\\cdot -2 = - 6 \\left(1 - 2 x\\right)^{2} \\cos{\\left(\\left(1 - 2 x\\right)^{3} \\right)}\\).</p><p><strong>Key Mathematical Principle & Verification:</strong> In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.</p>"
+      }
     }
   ]
 }

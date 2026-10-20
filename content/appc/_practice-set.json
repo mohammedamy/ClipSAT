@@ -5,651 +5,888 @@
     {
       "id": "appc-p1",
       "number": 1,
-      "question": {
-        "en": "State the amplitude, period, phase shift, and midline of \\(f(x)=3\\sin(2x-\\pi)+1\\).",
-        "ar": null
-      },
       "difficulty": "Medium",
+      "question": {
+        "en": "State the amplitude, period, phase shift, and midline of \\(f(x)=3\\sin(2x-\\pi)+1\\)."
+      },
       "solution": {
-        "en": "<p><strong>Step 1: Factor the argument into standard sinusoidal form \\(f(x) = A\\sin(B(x - C)) + D\\):</strong> \\[ f(x) = 3\\sin\\left(2\\left(x - \\frac{\\pi}{2}\\right)\\right) + 1. \\]</p><p><strong>Step 2: Read off the four sinusoidal invariants:</strong><ul><li><strong>Amplitude:</strong> \\(|A| = |3| = \\mathbf{3}\\).</li><li><strong>Period:</strong> \\(T = \\dfrac{2\\pi}{|B|} = \\dfrac{2\\pi}{2} = \\mathbf{\\pi}\\).</li><li><strong>Phase Shift:</strong> \\(C = \\mathbf{\\dfrac{\\pi}{2}}\\) units to the right.</li><li><strong>Midline:</strong> Horizontal line \\(\\mathbf{y = 1}\\).</li></ul></p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Factor the argument into standard sinusoidal form \\(f(x) = A\\sin(B(x - C)) + D\\):</strong> \\[f(x) = 3\\sin\\left(2\\left(x - \\frac{\\pi}{2}\\right)\\right) + 1.\\]</p><p><strong>Step 2: Read off the four sinusoidal invariants:</strong><ul><li><strong>Amplitude:</strong> \\(|A| = |3| = \\mathbf{3}\\).</li><li><strong>Period:</strong> \\(T = \\dfrac{2\\pi}{|B|} = \\dfrac{2\\pi}{2} = \\mathbf{\\pi}\\).</li><li><strong>Phase Shift:</strong> \\(C = \\mathbf{\\dfrac{\\pi}{2}}\\) units to the right.</li><li><strong>Midline:</strong> Horizontal line \\(\\mathbf{y = 1}\\).</li></ul></p>"
+      },
+      "fig": {
+        "type": "sinusoid",
+        "title": "Periodic Wave Profile",
+        "amp": 2,
+        "period": 6.28,
+        "midline": 0,
+        "fnType": "sin"
       }
     },
     {
       "id": "appc-p2",
       "number": 2,
-      "question": {
-        "en": "A population doubles every 12 years, starting from \\(P_0=500\\). When does it reach 4000?",
-        "ar": null
-      },
       "difficulty": "Hard",
+      "question": {
+        "en": "A population doubles every 12 years, starting from \\(P_0=500\\). When does it reach 4000?"
+      },
       "solution": {
-        "en": "<p><strong>Step 1: Formulate the exponential doubling model:</strong> \\[ P(t) = P_0 \\cdot 2^{t/12} = 500 \\cdot 2^{t/12}. \\]</p><p><strong>Step 2: Set \\(P(t) = 4000\\) and isolate the exponential base:</strong> \\[ 500 \\cdot 2^{t/12} = 4000 \\implies 2^{t/12} = \\frac{4000}{500} = 8. \\]</p><p><strong>Step 3: Equate exponents of base 2:</strong> \\[ 2^{t/12} = 2^3 \\implies \\frac{t}{12} = 3 \\implies t = \\mathbf{36\\text{ years}}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Formulate the exponential doubling model:</strong> \\[P(t) = P_0 \\cdot 2^{t/12} = 500 \\cdot 2^{t/12}.\\]</p><p><strong>Step 2: Set \\(P(t) = 4000\\) and isolate the exponential base:</strong> \\[500 \\cdot 2^{t/12} = 4000 \\implies 2^{t/12} = \\frac{4000}{500} = 8.\\]</p><p><strong>Step 3: Equate exponents of base 2:</strong> \\[2^{t/12} = 2^3 \\implies \\frac{t}{12} = 3 \\implies t = \\mathbf{36\\text{ years}}.\\]</p>"
       }
     },
     {
       "id": "appc-p3",
       "number": 3,
+      "difficulty": "Hard",
       "question": {
-        "en": "Find all zeros of \\(p(x)=x^3-2x^2-x+2.\\)",
-        "ar": null
+        "en": "The half-life of Carbon-14 is 5730 years. (a) Write \\(A(t)\\). (b) How much of 200 g remains after 11 460 years? (c) When is only 10% left?"
       },
-      "difficulty": "Medium",
       "solution": {
-        "en": "<p><strong>Step 1: Factor by grouping:</strong> \\[ p(x) = x^2(x - 2) - 1(x - 2) = (x - 2)(x^2 - 1). \\]</p><p><strong>Step 2: Factor the difference of squares:</strong> \\[ p(x) = (x - 2)(x - 1)(x + 1). \\]</p><p><strong>Step 3: Solve \\(p(x) = 0\\):</strong> Setting each linear factor to zero yields the three real zeros: \\[ \\mathbf{x = -1, \\quad x = 1, \\quad x = 2}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>(a) Exponential Decay Function:</strong> \\[A(t) = 200\\left(\\frac{1}{2}\\right)^{t/5730}.\\]</p><p><strong>(b) Mass Remaining at \\(t = 11{,}460\\) years:</strong> Notice that \\(\\dfrac{11{,}460}{5730} = 2\\) half-lives: \\[A(11{,}460) = 200\\left(\\frac{1}{2}\\right)^2 = 200\\left(\\frac{1}{4}\\right) = \\mathbf{50\\text{ g}}.\\]</p><p><strong>(c) Time to Reach 10% of Initial Mass:</strong> Set \\(\\dfrac{A(t)}{200} = 0.10\\): \\[\\left(\\frac{1}{2}\\right)^{t/5730} = 0.10 \\implies \\frac{t}{5730}\\ln(0.5) = \\ln(0.10) \\implies t = 5730\\frac{\\ln(0.10)}{\\ln(0.5)} \\approx \\mathbf{19{,}035\\text{ years}}.\\]</p>"
       }
     },
     {
       "id": "appc-p4",
       "number": 4,
+      "difficulty": "Medium",
       "question": {
-        "en": "Solve \\(\\ln(2x+1)=3\\).",
-        "ar": null
+        "en": "A particle moves along \\(x(t)=2t+1,\\;y(t)=t^2-3.\\) Find the Cartesian equation of the path."
       },
-      "difficulty": "Easy",
       "solution": {
-        "en": "<p><strong>Step 1: Exponentiate both sides with base \\(e\\):</strong> \\[ e^{\\ln(2x+1)} = e^3 \\implies 2x + 1 = e^3. \\]</p><p><strong>Step 2: Solve the linear equation for \\(x\\):</strong> \\[ 2x = e^3 - 1 \\implies x = \\mathbf{\\frac{e^3 - 1}{2} \\approx 9.543}. \\] Since \\(2x + 1 = e^3 > 0\\), the solution lies strictly inside the domain of the natural logarithm.</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Solve the horizontal parametric equation for parameter \\(t\\):</strong> \\[x = 2t + 1 \\implies 2t = x - 1 \\implies t = \\frac{x - 1}{2}.\\]</p><p><strong>Step 2: Substitute \\(t\\) into the vertical equation \\(y(t)\\):</strong> \\[y = \\left(\\frac{x - 1}{2}\\right)^2 - 3 = \\mathbf{\\frac{(x - 1)^2}{4} - 3}.\\] The trajectory is an upward-opening parabola with vertex at \\((1, -3)\\).</p>"
       }
     },
     {
       "id": "appc-p5",
       "number": 5,
+      "difficulty": "Easy",
       "question": {
-        "en": "The half-life of Carbon-14 is 5730 years. (a) Write \\(A(t)\\). (b) How much of 200 g remains after 11 460 years? (c) When is only 10% left?",
-        "ar": null
+        "en": "Find the average rate of change of the polynomial function \\(f(x) = 2x^3 - 5x + 4\\) over the closed interval \\([-1, 2]\\)."
       },
-      "difficulty": "Hard",
       "solution": {
-        "en": "<p><strong>(a) Exponential Decay Function:</strong> \\[ A(t) = 200\\left(\\frac{1}{2}\\right)^{t/5730}. \\]</p><p><strong>(b) Mass Remaining at \\(t = 11{,}460\\) years:</strong> Notice that \\(\\dfrac{11{,}460}{5730} = 2\\) half-lives: \\[ A(11{,}460) = 200\\left(\\frac{1}{2}\\right)^2 = 200\\left(\\frac{1}{4}\\right) = \\mathbf{50\\text{ g}}. \\]</p><p><strong>(c) Time to Reach 10% of Initial Mass:</strong> Set \\(\\dfrac{A(t)}{200} = 0.10\\): \\[ \\left(\\frac{1}{2}\\right)^{t/5730} = 0.10 \\implies \\frac{t}{5730}\\ln(0.5) = \\ln(0.10) \\implies t = 5730\\frac{\\ln(0.10)}{\\ln(0.5)} \\approx \\mathbf{19{,}035\\text{ years}}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Evaluate the function at the interval endpoints:</strong> \\[f(-1) = 2(-1)^3 - 5(-1) + 4 = -2 + 5 + 4 = 7.\\] \\[f(2) = 2(2)^3 - 5(2) + 4 = 16 - 10 + 4 = 10.\\]</p><p><strong>Step 2: Compute the difference quotient:</strong> \\[\\text{AROC} = \\frac{f(2) - f(-1)}{2 - (-1)} = \\frac{10 - 7}{3} = \\frac{3}{3} = \\mathbf{1}.\\]</p>"
+      },
+      "fig": {
+        "type": "fn",
+        "fns": [
+          {
+            "fn": "4 - x*x",
+            "label": "y = f(x)"
+          },
+          {
+            "fn": "x + 2",
+            "label": "y = g(x)"
+          }
+        ],
+        "xrange": [
+          -3,
+          3
+        ],
+        "yrange": [
+          -2,
+          5
+        ]
       }
     },
     {
       "id": "appc-p6",
       "number": 6,
-      "question": {
-        "en": "A particle moves along \\(x(t)=2t+1,\\;y(t)=t^2-3.\\) Find the Cartesian equation of the path.",
-        "ar": null
-      },
       "difficulty": "Medium",
+      "question": {
+        "en": "Determine the end behavior of \\(P(x) = -4x^5 + 7x^3 - 2x + 9\\) as \\(x \\to -\\infty\\) and as \\(x \\to +\\infty\\) using limit notation, and state the maximum number of local extrema."
+      },
       "solution": {
-        "en": "<p><strong>Step 1: Solve the horizontal parametric equation for parameter \\(t\\):</strong> \\[ x = 2t + 1 \\implies 2t = x - 1 \\implies t = \\frac{x - 1}{2}. \\]</p><p><strong>Step 2: Substitute \\(t\\) into the vertical equation \\(y(t)\\):</strong> \\[ y = \\left(\\frac{x - 1}{2}\\right)^2 - 3 = \\mathbf{\\frac{(x - 1)^2}{4} - 3}. \\] The trajectory is an upward-opening parabola with vertex at \\((1, -3)\\).</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Identify leading term:</strong> The leading term is \\(-4x^5\\), which has odd degree \\(n = 5\\) and negative leading coefficient \\(a_5 = -4 \\lt 0\\).</p><p><strong>Step 2: Write limit statements:</strong> \\[\\lim_{x \\to -\\infty} P(x) = +\\infty, \\qquad \\lim_{x \\to +\\infty} P(x) = -\\infty.\\]</p><p><strong>Step 3: Bound on local extrema:</strong> A polynomial of degree \\(n = 5\\) has at most \\(n - 1 = \\mathbf{4}\\) local extrema (turning points).</p>"
+      },
+      "fig": {
+        "type": "sign_chart",
+        "title": "Derivative Sign & Monotonicity Analysis",
+        "points": [
+          "c₁",
+          "c₂"
+        ],
+        "rows": [
+          {
+            "label": "f'(x)",
+            "signs": [
+              "+",
+              "0",
+              "-",
+              "0",
+              "+"
+            ]
+          },
+          {
+            "label": "f(x)",
+            "shape": [
+              "↗",
+              "Max",
+              "↘",
+              "Min",
+              "↗"
+            ]
+          }
+        ]
       }
     },
     {
       "id": "appc-p7",
       "number": 7,
+      "difficulty": "Medium",
       "question": {
-        "en": "Find the average rate of change of the polynomial function \\(f(x) = 2x^3 - 5x + 4\\) over the closed interval \\([-1, 2]\\).",
-        "ar": null
+        "en": "A polynomial \\(f(x)\\) of degree 4 with real coefficients has leading coefficient \\(2\\) and zeros at \\(x = -1\\) (multiplicity 2) and \\(x = 2 + i\\). Write \\(f(x)\\) in fully expanded standard form."
       },
-      "difficulty": "Easy",
       "solution": {
-        "en": "<p><strong>Step 1: Evaluate the function at the interval endpoints:</strong> \\[ f(-1) = 2(-1)^3 - 5(-1) + 4 = -2 + 5 + 4 = 7. \\] \\[ f(2) = 2(2)^3 - 5(2) + 4 = 16 - 10 + 4 = 10. \\]</p><p><strong>Step 2: Compute the difference quotient:</strong> \\[ \\text{AROC} = \\frac{f(2) - f(-1)}{2 - (-1)} = \\frac{10 - 7}{3} = \\frac{3}{3} = \\mathbf{1}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Apply the Conjugate Root Theorem:</strong> Since \\(f(x)\\) has real coefficients, the complex conjugate \\(2 - i\\) must also be a zero.</p><p><strong>Step 2: Construct the factored form:</strong> \\[f(x) = 2(x + 1)^2\\big((x - 2) - i\\big)\\big((x - 2) + i\\big) = 2(x^2 + 2x + 1)\\big((x - 2)^2 + 1\\big).\\]</p><p><strong>Step 3: Expand and simplify:</strong> \\[(x - 2)^2 + 1 = x^2 - 4x + 5.\\] \\[f(x) = 2(x^2 + 2x + 1)(x^2 - 4x + 5) = 2(x^4 - 2x^3 - 2x^2 + 6x + 5) = \\mathbf{2x^4 - 4x^3 - 4x^2 + 12x + 10}.\\]</p>"
+      },
+      "fig": {
+        "type": "fn",
+        "fns": [
+          {
+            "fn": "0.25*x*x*x - 0.75*x*x + 2",
+            "label": "y = f(x)"
+          }
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": 2,
+            "label": "A"
+          },
+          {
+            "x": 2,
+            "y": 1,
+            "label": "B"
+          }
+        ],
+        "xrange": [
+          -1.5,
+          3.5
+        ],
+        "yrange": [
+          -1,
+          4
+        ]
       }
     },
     {
       "id": "appc-p8",
       "number": 8,
+      "difficulty": "Hard",
       "question": {
-        "en": "Determine the end behavior of \\(P(x) = -4x^5 + 7x^3 - 2x + 9\\) as \\(x \\to -\\infty\\) and as \\(x \\to +\\infty\\) using limit notation, and state the maximum number of local extrema.",
-        "ar": null
+        "en": "For the rational function \\(r(x) = \\dfrac{2x^2 - 2x - 12}{x^2 - 9}\\), find: (a) the domain, (b) the coordinates of any removable discontinuity (hole), (c) the vertical and horizontal asymptotes, and (d) the \\(x\\)- and \\(y\\)-intercepts."
       },
-      "difficulty": "Medium",
       "solution": {
-        "en": "<p><strong>Step 1: Identify leading term:</strong> The leading term is \\(-4x^5\\), which has odd degree \\(n = 5\\) and negative leading coefficient \\(a_5 = -4 < 0\\).</p><p><strong>Step 2: Write limit statements:</strong> \\[ \\lim_{x \\to -\\infty} P(x) = +\\infty, \\qquad \\lim_{x \\to +\\infty} P(x) = -\\infty. \\]</p><p><strong>Step 3: Bound on local extrema:</strong> A polynomial of degree \\(n = 5\\) has at most \\(n - 1 = \\mathbf{4}\\) local extrema (turning points).</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Factor numerator and denominator completely:</strong> \\[r(x) = \\frac{2(x^2 - x - 6)}{(x - 3)(x + 3)} = \\frac{2(x - 3)(x + 2)}{(x - 3)(x + 3)}.\\]</p><p><strong>Step 2: Answer each part:</strong><ul><li><strong>(a) Domain:</strong> \\((-\\infty, -3) \\cup (-3, 3) \\cup (3, \\infty)\\), i.e. \\(x \\neq \\pm 3\\).</li><li><strong>(b) Removable Discontinuity:</strong> The factor \\((x - 3)\\) cancels; for \\(x \\neq 3\\), \\(r(x) = \\dfrac{2(x + 2)}{x + 3}\\). Evaluating at \\(x = 3\\) gives \\(y = \\dfrac{2(5)}{6} = \\dfrac{5}{3}\\). Hole at \\(\\mathbf{\\left(3, \\dfrac{5}{3}\\right)}\\).</li><li><strong>(c) Asymptotes:</strong> Vertical asymptote at \\(\\mathbf{x = -3}\\); horizontal asymptote at \\(\\mathbf{y = 2}\\).</li><li><strong>(d) Intercepts:</strong> \\(x\\)-intercept at \\(\\mathbf{(-2, 0)}\\); \\(y\\)-intercept at \\(\\mathbf{\\left(0, \\dfrac{4}{3}\\right)}\\).</li></ul></p>"
+      },
+      "fig": {
+        "type": "fn",
+        "fns": [
+          {
+            "fn": "2*x*x + (-2)*x + (-12)",
+            "label": "y = f(x)"
+          }
+        ],
+        "xrange": [
+          -3.5,
+          4.5
+        ],
+        "yrange": [
+          -14.5,
+          21.5
+        ]
       }
     },
     {
       "id": "appc-p9",
       "number": 9,
-      "question": {
-        "en": "A polynomial \\(f(x)\\) of degree 4 with real coefficients has leading coefficient \\(2\\) and zeros at \\(x = -1\\) (multiplicity 2) and \\(x = 2 + i\\). Write \\(f(x)\\) in fully expanded standard form.",
-        "ar": null
-      },
       "difficulty": "Medium",
+      "question": {
+        "en": "Find the equation of the slant (oblique) asymptote of the rational function \\(g(x) = \\dfrac{3x^2 - 5x + 7}{x - 2}\\), and compute \\(\\lim_{x \\to 2^+} g(x)\\)."
+      },
       "solution": {
-        "en": "<p><strong>Step 1: Apply the Conjugate Root Theorem:</strong> Since \\(f(x)\\) has real coefficients, the complex conjugate \\(2 - i\\) must also be a zero.</p><p><strong>Step 2: Construct the factored form:</strong> \\[ f(x) = 2(x + 1)^2\\big((x - 2) - i\\big)\\big((x - 2) + i\\big) = 2(x^2 + 2x + 1)\\big((x - 2)^2 + 1\\big). \\]</p><p><strong>Step 3: Expand and simplify:</strong> \\[ (x - 2)^2 + 1 = x^2 - 4x + 5. \\] \\[ f(x) = 2(x^2 + 2x + 1)(x^2 - 4x + 5) = 2(x^4 - 2x^3 - 2x^2 + 6x + 5) = \\mathbf{2x^4 - 4x^3 - 4x^2 + 12x + 10}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Perform polynomial long division (or synthetic division by \\(c = 2\\)):</strong> \\[3x^2 - 5x + 7 = (x - 2)(3x + 1) + 9 \\implies g(x) = 3x + 1 + \\frac{9}{x - 2}.\\]</p><p><strong>Step 2: Identify the slant asymptote:</strong> As \\(x \\to \\pm\\infty\\), \\(\\dfrac{9}{x - 2} \\to 0\\), so the slant asymptote is \\(\\mathbf{y = 3x + 1}\\).</p><p><strong>Step 3: One-sided limit at \\(x = 2^+\\):</strong> As \\(x \\to 2^+\\), \\(x - 2 \\to 0^+\\) and numerator \\(\\to 9 \\gt 0\\), so \\(\\displaystyle\\lim_{x \\to 2^+} g(x) = \\mathbf{+\\infty}\\).</p>"
       }
     },
     {
       "id": "appc-p10",
       "number": 10,
-      "question": {
-        "en": "For the rational function \\(r(x) = \\dfrac{2x^2 - 2x - 12}{x^2 - 9}\\), find: (a) the domain, (b) the coordinates of any removable discontinuity (hole), (c) the vertical and horizontal asymptotes, and (d) the \\(x\\)- and \\(y\\)-intercepts.",
-        "ar": null
-      },
       "difficulty": "Hard",
+      "question": {
+        "en": "Solve the rational inequality \\(\\dfrac{x + 4}{x - 2} \\le 3\\) and express the solution set in interval notation."
+      },
       "solution": {
-        "en": "<p><strong>Step 1: Factor numerator and denominator completely:</strong> \\[ r(x) = \\frac{2(x^2 - x - 6)}{(x - 3)(x + 3)} = \\frac{2(x - 3)(x + 2)}{(x - 3)(x + 3)}. \\]</p><p><strong>Step 2: Answer each part:</strong><ul><li><strong>(a) Domain:</strong> \\((-\\infty, -3) \\cup (-3, 3) \\cup (3, \\infty)\\), i.e. \\(x \\neq \\pm 3\\).</li><li><strong>(b) Removable Discontinuity:</strong> The factor \\((x - 3)\\) cancels; for \\(x \\neq 3\\), \\(r(x) = \\dfrac{2(x + 2)}{x + 3}\\). Evaluating at \\(x = 3\\) gives \\(y = \\dfrac{2(5)}{6} = \\dfrac{5}{3}\\). Hole at \\(\\mathbf{\\left(3, \\dfrac{5}{3}\\right)}\\).</li><li><strong>(c) Asymptotes:</strong> Vertical asymptote at \\(\\mathbf{x = -3}\\); horizontal asymptote at \\(\\mathbf{y = 2}\\).</li><li><strong>(d) Intercepts:</strong> \\(x\\)-intercept at \\(\\mathbf{(-2, 0)}\\); \\(y\\)-intercept at \\(\\mathbf{\\left(0, \\dfrac{4}{3}\\right)}\\).</li></ul></p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Subtract 3 and combine over a single common denominator:</strong> \\[\\frac{x + 4}{x - 2} - 3 \\le 0 \\implies \\frac{(x + 4) - 3(x - 2)}{x - 2} \\le 0 \\implies \\frac{-2x + 10}{x - 2} \\le 0.\\]</p><p><strong>Step 2: Factor and identify critical boundary values:</strong> \\[\\frac{-2(x - 5)}{x - 2} \\le 0 \\iff \\frac{x - 5}{x - 2} \\ge 0.\\] Critical values are \\(x = 2\\) (undefined) and \\(x = 5\\) (zero).</p><p><strong>Step 3: Sign chart analysis:</strong> The quotient \\(\\dfrac{x - 5}{x - 2}\\) is positive on \\((-\\infty, 2)\\) and \\((5, \\infty)\\), and negative on \\((2, 5)\\). Including the zero at \\(x = 5\\) and excluding \\(x = 2\\): \\[\\mathbf{(-\\infty, 2) \\cup [5, \\infty)}.\\]</p>"
       }
     },
     {
       "id": "appc-p11",
       "number": 11,
+      "difficulty": "Easy",
       "question": {
-        "en": "Find the equation of the slant (oblique) asymptote of the rational function \\(g(x) = \\dfrac{3x^2 - 5x + 7}{x - 2}\\), and compute \\(\\lim_{x \\to 2^+} g(x)\\).",
-        "ar": null
+        "en": "Use the Binomial Theorem to find the coefficient of \\(x^3 y^2\\) in the expansion of \\((2x - 3y)^5\\)."
       },
-      "difficulty": "Medium",
       "solution": {
-        "en": "<p><strong>Step 1: Perform polynomial long division (or synthetic division by \\(c = 2\\)):</strong> \\[ 3x^2 - 5x + 7 = (x - 2)(3x + 1) + 9 \\implies g(x) = 3x + 1 + \\frac{9}{x - 2}. \\]</p><p><strong>Step 2: Identify the slant asymptote:</strong> As \\(x \\to \\pm\\infty\\), \\(\\dfrac{9}{x - 2} \\to 0\\), so the slant asymptote is \\(\\mathbf{y = 3x + 1}\\).</p><p><strong>Step 3: One-sided limit at \\(x = 2^+\\):</strong> As \\(x \\to 2^+\\), \\(x - 2 \\to 0^+\\) and numerator \\(\\to 9 > 0\\), so \\(\\displaystyle\\lim_{x \\to 2^+} g(x) = \\mathbf{+\\infty}\\).</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Apply the general binomial term formula \\(\\binom{n}{k} a^{n-k} b^k\\):</strong> With \\(n = 5\\), \\(a = 2x\\), \\(b = -3y\\), and \\(k = 2\\): \\[T_3 = \\binom{5}{2} (2x)^3 (-3y)^2.\\]</p><p><strong>Step 2: Evaluate numerical factors:</strong> \\[\\binom{5}{2} = 10, \\qquad (2x)^3 = 8x^3, \\qquad (-3y)^2 = 9y^2.\\] \\[T_3 = 10 \\cdot 8 \\cdot 9 \\, x^3 y^2 = 720 x^3 y^2.\\] The coefficient is \\(\\mathbf{720}\\).</p>"
       }
     },
     {
       "id": "appc-p12",
       "number": 12,
+      "difficulty": "Medium",
       "question": {
-        "en": "Solve the rational inequality \\(\\dfrac{x + 4}{x - 2} \\le 3\\) and express the solution set in interval notation.",
-        "ar": null
+        "en": "When the polynomial \\(P(x) = 2x^3 + kx^2 - 7x + 6\\) is divided by \\((x - 2)\\), the remainder is \\(12\\). Find the value of \\(k\\), and determine whether \\((x + 3)\\) is a factor of \\(P(x)\\)."
       },
-      "difficulty": "Hard",
       "solution": {
-        "en": "<p><strong>Step 1: Subtract 3 and combine over a single common denominator:</strong> \\[ \\frac{x + 4}{x - 2} - 3 \\le 0 \\implies \\frac{(x + 4) - 3(x - 2)}{x - 2} \\le 0 \\implies \\frac{-2x + 10}{x - 2} \\le 0. \\]</p><p><strong>Step 2: Factor and identify critical boundary values:</strong> \\[ \\frac{-2(x - 5)}{x - 2} \\le 0 \\iff \\frac{x - 5}{x - 2} \\ge 0. \\] Critical values are \\(x = 2\\) (undefined) and \\(x = 5\\) (zero).</p><p><strong>Step 3: Sign chart analysis:</strong> The quotient \\(\\dfrac{x - 5}{x - 2}\\) is positive on \\((-\\infty, 2)\\) and \\((5, \\infty)\\), and negative on \\((2, 5)\\). Including the zero at \\(x = 5\\) and excluding \\(x = 2\\): \\[ \\mathbf{(-\\infty, 2) \\cup [5, \\infty)}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Apply the Remainder Theorem \\(P(2) = 12\\):</strong> \\[2(2)^3 + k(2)^2 - 7(2) + 6 = 12 \\implies 16 + 4k - 14 + 6 = 12 \\implies 4k + 8 = 12 \\implies \\mathbf{k = 1}.\\]</p><p><strong>Step 2: Test \\((x + 3)\\) using the Factor Theorem:</strong> With \\(k = 1\\), \\(P(x) = 2x^3 + x^2 - 7x + 6\\). Evaluate \\(P(-3)\\): \\[P(-3) = 2(-27) + (-3)^2 - 7(-3) + 6 = -54 + 9 + 21 + 6 = -18 \\neq 0.\\] Since \\(P(-3) = -18 \\neq 0\\), \\((x + 3)\\) is <strong>not a factor</strong>.</p>"
       }
     },
     {
       "id": "appc-p13",
       "number": 13,
+      "difficulty": "Medium",
       "question": {
-        "en": "Use the Binomial Theorem to find the coefficient of \\(x^3 y^2\\) in the expansion of \\((2x - 3y)^5\\).",
-        "ar": null
+        "en": "For a quadratic function \\(f(x)\\), selected values are \\(f(1) = 4\\), \\(f(2) = 9\\), \\(f(3) = 18\\), and \\(f(4) = 31\\). Compute the first and second differences, verify that \\(f\\) is quadratic, and find its explicit formula \\(f(x) = ax^2 + bx + c\\)."
       },
-      "difficulty": "Easy",
       "solution": {
-        "en": "<p><strong>Step 1: Apply the general binomial term formula \\(\\binom{n}{k} a^{n-k} b^k\\):</strong> With \\(n = 5\\), \\(a = 2x\\), \\(b = -3y\\), and \\(k = 2\\): \\[ T_3 = \\binom{5}{2} (2x)^3 (-3y)^2. \\]</p><p><strong>Step 2: Evaluate numerical factors:</strong> \\[ \\binom{5}{2} = 10, \\qquad (2x)^3 = 8x^3, \\qquad (-3y)^2 = 9y^2. \\] \\[ T_3 = 10 \\cdot 8 \\cdot 9 \\, x^3 y^2 = 720 x^3 y^2. \\] The coefficient is \\(\\mathbf{720}\\).</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Compute first and second differences:</strong><ul><li>First differences \\(\\Delta y\\): \\(9 - 4 = 5\\), \\(18 - 9 = 9\\), \\(31 - 18 = 13\\).</li><li>Second differences \\(\\Delta^2 y\\): \\(9 - 5 = 4\\), \\(13 - 9 = 4\\).</li></ul>Since \\(\\Delta^2 y = 4\\) is constant, \\(f(x)\\) is quadratic with \\(2a = 4 \\implies a = 2\\).</p><p><strong>Step 2: Solve for \\(b\\) and \\(c\\):</strong><ul><li>\\(f(1) = 2(1)^2 + b(1) + c = 4 \\implies b + c = 2\\).</li><li>\\(f(2) = 2(2)^2 + b(2) + c = 9 \\implies 2b + c = 1\\).</li></ul>Subtracting gives \\(b = -1\\) and \\(c = 3\\). Thus \\(\\mathbf{f(x) = 2x^2 - x + 3}\\).</p>"
       }
     },
     {
       "id": "appc-p14",
       "number": 14,
+      "difficulty": "Hard",
       "question": {
-        "en": "When the polynomial \\(P(x) = 2x^3 + kx^2 - 7x + 6\\) is divided by \\((x - 2)\\), the remainder is \\(12\\). Find the value of \\(k\\), and determine whether \\((x + 3)\\) is a factor of \\(P(x)\\).",
-        "ar": null
+        "en": "Solve the polynomial inequality \\(x^3 - 4x^2 + x + 6 \\le 0\\)."
       },
-      "difficulty": "Medium",
       "solution": {
-        "en": "<p><strong>Step 1: Apply the Remainder Theorem \\(P(2) = 12\\):</strong> \\[ 2(2)^3 + k(2)^2 - 7(2) + 6 = 12 \\implies 16 + 4k - 14 + 6 = 12 \\implies 4k + 8 = 12 \\implies \\mathbf{k = 1}. \\]</p><p><strong>Step 2: Test \\((x + 3)\\) using the Factor Theorem:</strong> With \\(k = 1\\), \\(P(x) = 2x^3 + x^2 - 7x + 6\\). Evaluate \\(P(-3)\\): \\[ P(-3) = 2(-27) + (-3)^2 - 7(-3) + 6 = -54 + 9 + 21 + 6 = -18 \\neq 0. \\] Since \\(P(-3) = -18 \\neq 0\\), \\((x + 3)\\) is <strong>not a factor</strong>.</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Find rational roots and factor:</strong> Testing \\(x = -1\\): \\((-1)^3 - 4(-1)^2 + (-1) + 6 = -1 - 4 - 1 + 6 = 0\\). Dividing by \\((x + 1)\\) gives: \\[x^3 - 4x^2 + x + 6 = (x + 1)(x^2 - 5x + 6) = (x + 1)(x - 2)(x - 3).\\]</p><p><strong>Step 2: Sign analysis across roots \\(-1, 2, 3\\):</strong><ul><li>\\(x \\lt -1\\): \\((-)(-)(-) \\lt 0\\)</li><li>\\(-1 \\lt x \\lt 2\\): \\((+)(-)(-) \\gt 0\\)</li><li>\\(2 \\lt x \\lt 3\\): \\((+)(+)(-) \\lt 0\\)</li><li>\\(x \\gt 3\\): \\((+)(+)(+) \\gt 0\\)</li></ul>Including zeros gives the solution set: \\(\\mathbf{(-\\infty, -1] \\cup [2, 3]}\\).</p>"
       }
     },
     {
       "id": "appc-p15",
       "number": 15,
-      "question": {
-        "en": "For a quadratic function \\(f(x)\\), selected values are \\(f(1) = 4\\), \\(f(2) = 9\\), \\(f(3) = 18\\), and \\(f(4) = 31\\). Compute the first and second differences, verify that \\(f\\) is quadratic, and find its explicit formula \\(f(x) = ax^2 + bx + c\\).",
-        "ar": null
-      },
       "difficulty": "Medium",
+      "question": {
+        "en": "The graph of \\(y = f(x)\\) is transformed into \\(y = -2f(3x - 6) + 5\\). Describe the exact sequence of geometric transformations applied to \\(f(x)\\), and find the image of the point \\((3, -1)\\) on \\(y = f(x)\\)."
+      },
       "solution": {
-        "en": "<p><strong>Step 1: Compute first and second differences:</strong><ul><li>First differences \\(\\Delta y\\): \\(9 - 4 = 5\\), \\(18 - 9 = 9\\), \\(31 - 18 = 13\\).</li><li>Second differences \\(\\Delta^2 y\\): \\(9 - 5 = 4\\), \\(13 - 9 = 4\\).</li></ul>Since \\(\\Delta^2 y = 4\\) is constant, \\(f(x)\\) is quadratic with \\(2a = 4 \\implies a = 2\\).</p><p><strong>Step 2: Solve for \\(b\\) and \\(c\\):</strong><ul><li>\\(f(1) = 2(1)^2 + b(1) + c = 4 \\implies b + c = 2\\).</li><li>\\(f(2) = 2(2)^2 + b(2) + c = 9 \\implies 2b + c = 1\\).</li></ul>Subtracting gives \\(b = -1\\) and \\(c = 3\\). Thus \\(\\mathbf{f(x) = 2x^2 - x + 3}\\).</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Factor the horizontal coefficient:</strong> \\[y = -2f\\big(3(x - 2)\\big) + 5.\\]</p><p><strong>Step 2: Sequence of transformations:</strong><ol><li>Horizontal dilation (compression) by factor \\(\\dfrac{1}{3}\\).</li><li>Horizontal translation \\(2\\) units right.</li><li>Vertical dilation (stretch) by factor \\(2\\) and reflection across the \\(x\\)-axis.</li><li>Vertical translation \\(5\\) units up.</li></ol></p><p><strong>Step 3: Map the point \\((3, -1)\\):</strong> Set \\(3x - 6 = 3 \\implies x = 3\\). Then \\(y = -2f(3) + 5 = -2(-1) + 5 = 7\\). Image point: \\(\\mathbf{(3, 7)}\\).</p>"
       }
     },
     {
       "id": "appc-p16",
       "number": 16,
+      "difficulty": "Easy",
       "question": {
-        "en": "Solve the polynomial inequality \\(x^3 - 4x^2 + x + 6 \\le 0\\).",
-        "ar": null
+        "en": "Find the 12th term and the sum of the first 25 terms of the arithmetic sequence with \\(a_1 = -7\\) and common difference \\(d = 4\\)."
       },
-      "difficulty": "Hard",
       "solution": {
-        "en": "<p><strong>Step 1: Find rational roots and factor:</strong> Testing \\(x = -1\\): \\((-1)^3 - 4(-1)^2 + (-1) + 6 = -1 - 4 - 1 + 6 = 0\\). Dividing by \\((x + 1)\\) gives: \\[ x^3 - 4x^2 + x + 6 = (x + 1)(x^2 - 5x + 6) = (x + 1)(x - 2)(x - 3). \\]</p><p><strong>Step 2: Sign analysis across roots \\(-1, 2, 3\\):</strong><ul><li>\\(x < -1\\): \\((-)(-)(-) < 0\\)</li><li>\\(-1 < x < 2\\): \\((+)(-)(-) > 0\\)</li><li>\\(2 < x < 3\\): \\((+)(+)(-) < 0\\)</li><li>\\(x > 3\\): \\((+)(+)(+) > 0\\)</li></ul>Including zeros gives the solution set: \\(\\mathbf{(-\\infty, -1] \\cup [2, 3]}\\).</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: General term formula \\(a_n = a_1 + (n - 1)d\\):</strong> \\[a_{12} = -7 + (12 - 1)(4) = -7 + 44 = \\mathbf{37}.\\]</p><p><strong>Step 2: Arithmetic series sum \\(S_n = \\dfrac{n}{2}(2a_1 + (n - 1)d)\\):</strong> \\[S_{25} = \\frac{25}{2}\\big(2(-7) + 24(4)\\big) = \\frac{25}{2}(-14 + 96) = \\frac{25}{2}(82) = 25 \\times 41 = \\mathbf{1025}.\\]</p>"
       }
     },
     {
       "id": "appc-p17",
       "number": 17,
-      "question": {
-        "en": "The graph of \\(y = f(x)\\) is transformed into \\(y = -2f(3x - 6) + 5\\). Describe the exact sequence of geometric transformations applied to \\(f(x)\\), and find the image of the point \\((3, -1)\\) on \\(y = f(x)\\).",
-        "ar": null
-      },
       "difficulty": "Medium",
+      "question": {
+        "en": "A geometric sequence has third term \\(g_3 = 18\\) and sixth term \\(g_6 = -\\dfrac{16}{3}\\). Find the common ratio \\(r\\), the first term \\(g_1\\), and the infinite sum \\(S_\\infty\\)."
+      },
       "solution": {
-        "en": "<p><strong>Step 1: Factor the horizontal coefficient:</strong> \\[ y = -2f\\big(3(x - 2)\\big) + 5. \\]</p><p><strong>Step 2: Sequence of transformations:</strong><ol><li>Horizontal dilation (compression) by factor \\(\\dfrac{1}{3}\\).</li><li>Horizontal translation \\(2\\) units right.</li><li>Vertical dilation (stretch) by factor \\(2\\) and reflection across the \\(x\\)-axis.</li><li>Vertical translation \\(5\\) units up.</li></ol></p><p><strong>Step 3: Map the point \\((3, -1)\\):</strong> Set \\(3x - 6 = 3 \\implies x = 3\\). Then \\(y = -2f(3) + 5 = -2(-1) + 5 = 7\\). Image point: \\(\\mathbf{(3, 7)}\\).</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Find common ratio \\(r\\):</strong> \\[\\frac{g_6}{g_3} = r^3 = \\frac{-16/3}{18} = -\\frac{8}{27} \\implies r = \\mathbf{-\\frac{2}{3}}.\\]</p><p><strong>Step 2: Find first term \\(g_1\\):</strong> \\[g_1 r^2 = 18 \\implies g_1 \\left(\\frac{4}{9}\\right) = 18 \\implies g_1 = \\mathbf{\\frac{81}{2}}.\\]</p><p><strong>Step 3: Infinite geometric series sum (\\(|r| = 2/3 \\lt 1\\)):</strong> \\[S_\\infty = \\frac{g_1}{1 - r} = \\frac{81/2}{1 - (-2/3)} = \\frac{81/2}{5/3} = \\mathbf{\\frac{243}{10} = 24.3}.\\]</p>"
       }
     },
     {
       "id": "appc-p18",
       "number": 18,
+      "difficulty": "Medium",
       "question": {
-        "en": "Find the 12th term and the sum of the first 25 terms of the arithmetic sequence with \\(a_1 = -7\\) and common difference \\(d = 4\\).",
-        "ar": null
+        "en": "Let \\(f(x) = \\dfrac{4e^{2x}}{e^{2x} + 3}\\). Prove that \\(f\\) is strictly one-to-one and find an explicit formula for its inverse function \\(f^{-1}(x)\\), stating the domain of \\(f^{-1}\\)."
       },
-      "difficulty": "Easy",
       "solution": {
-        "en": "<p><strong>Step 1: General term formula \\(a_n = a_1 + (n - 1)d\\):</strong> \\[ a_{12} = -7 + (12 - 1)(4) = -7 + 44 = \\mathbf{37}. \\]</p><p><strong>Step 2: Arithmetic series sum \\(S_n = \\dfrac{n}{2}(2a_1 + (n - 1)d)\\):</strong> \\[ S_{25} = \\frac{25}{2}\\big(2(-7) + 24(4)\\big) = \\frac{25}{2}(-14 + 96) = \\frac{25}{2}(82) = 25 \\times 41 = \\mathbf{1025}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Solve \\(y = \\dfrac{4e^{2x}}{e^{2x} + 3}\\) for \\(e^{2x}\\):</strong> \\[y(e^{2x} + 3) = 4e^{2x} \\implies 3y = e^{2x}(4 - y) \\implies e^{2x} = \\frac{3y}{4 - y}.\\]</p><p><strong>Step 2: Take the natural logarithm and divide by 2:</strong> \\[2x = \\ln\\left(\\frac{3y}{4 - y}\\right) \\implies f^{-1}(x) = \\mathbf{\\frac{1}{2}\\ln\\left(\\frac{3x}{4 - x}\\right)}.\\]</p><p><strong>Step 3: Domain of \\(f^{-1}\\) (range of \\(f\\)):</strong> Since \\(e^{2x} \\gt 0\\), we require \\(\\dfrac{3x}{4 - x} \\gt 0 \\implies \\mathbf{0 \\lt x \\lt 4}\\).</p>"
       }
     },
     {
       "id": "appc-p19",
       "number": 19,
-      "question": {
-        "en": "A geometric sequence has third term \\(g_3 = 18\\) and sixth term \\(g_6 = -\\dfrac{16}{3}\\). Find the common ratio \\(r\\), the first term \\(g_1\\), and the infinite sum \\(S_\\infty\\).",
-        "ar": null
-      },
       "difficulty": "Medium",
+      "question": {
+        "en": "Solve the exponential equation \\(9^x - 4 \\cdot 3^{x+1} + 27 = 0\\) for all real \\(x\\)."
+      },
       "solution": {
-        "en": "<p><strong>Step 1: Find common ratio \\(r\\):</strong> \\[ \\frac{g_6}{g_3} = r^3 = \\frac{-16/3}{18} = -\\frac{8}{27} \\implies r = \\mathbf{-\\frac{2}{3}}. \\]</p><p><strong>Step 2: Find first term \\(g_1\\):</strong> \\[ g_1 r^2 = 18 \\implies g_1 \\left(\\frac{4}{9}\\right) = 18 \\implies g_1 = \\mathbf{\\frac{81}{2}}. \\]</p><p><strong>Step 3: Infinite geometric series sum (\\(|r| = 2/3 < 1\\)):</strong> \\[ S_\\infty = \\frac{g_1}{1 - r} = \\frac{81/2}{1 - (-2/3)} = \\frac{81/2}{5/3} = \\mathbf{\\frac{243}{10} = 24.3}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Rewrite in terms of \\(u = 3^x\\):</strong> Note that \\(9^x = (3^x)^2 = u^2\\) and \\(3^{x+1} = 3 \\cdot 3^x = 3u\\): \\[u^2 - 12u + 27 = 0.\\]</p><p><strong>Step 2: Factor the quadratic:</strong> \\[(u - 3)(u - 9) = 0 \\implies u = 3 \\quad\\text{or}\\quad u = 9.\\]</p><p><strong>Step 3: Back-substitute \\(3^x = u\\):</strong> \\[3^x = 3^1 \\implies x = 1; \\qquad 3^x = 3^2 \\implies x = 2.\\] Solutions: \\(\\mathbf{x = 1, 2}\\).</p>"
       }
     },
     {
       "id": "appc-p20",
       "number": 20,
+      "difficulty": "Hard",
       "question": {
-        "en": "Let \\(f(x) = \\dfrac{4e^{2x}}{e^{2x} + 3}\\). Prove that \\(f\\) is strictly one-to-one and find an explicit formula for its inverse function \\(f^{-1}(x)\\), stating the domain of \\(f^{-1}\\).",
-        "ar": null
+        "en": "Solve the logarithmic equation \\(\\log_4(x + 6) + \\log_4(x - 6) = 3\\), checking for extraneous roots."
       },
-      "difficulty": "Medium",
       "solution": {
-        "en": "<p><strong>Step 1: Solve \\(y = \\dfrac{4e^{2x}}{e^{2x} + 3}\\) for \\(e^{2x}\\):</strong> \\[ y(e^{2x} + 3) = 4e^{2x} \\implies 3y = e^{2x}(4 - y) \\implies e^{2x} = \\frac{3y}{4 - y}. \\]</p><p><strong>Step 2: Take the natural logarithm and divide by 2:</strong> \\[ 2x = \\ln\\left(\\frac{3y}{4 - y}\\right) \\implies f^{-1}(x) = \\mathbf{\\frac{1}{2}\\ln\\left(\\frac{3x}{4 - x}\\right)}. \\]</p><p><strong>Step 3: Domain of \\(f^{-1}\\) (range of \\(f\\)):</strong> Since \\(e^{2x} > 0\\), we require \\(\\dfrac{3x}{4 - x} > 0 \\implies \\mathbf{0 < x < 4}\\).</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Domain restriction:</strong> We require \\(x + 6 \\gt 0\\) and \\(x - 6 \\gt 0\\), so \\(x \\gt 6\\).</p><p><strong>Step 2: Condense logarithms using the product rule:</strong> \\[\\log_4\\big((x + 6)(x - 6)\\big) = 3 \\implies x^2 - 36 = 4^3 = 64.\\]</p><p><strong>Step 3: Solve for \\(x\\) and filter by domain:</strong> \\[x^2 = 100 \\implies x = \\pm 10.\\] Reject \\(x = -10\\) since \\(-10 \\not \\gt 6\\). The unique valid solution is \\(\\mathbf{x = 10}\\).</p>"
       }
     },
     {
       "id": "appc-p21",
       "number": 21,
-      "question": {
-        "en": "Solve the exponential equation \\(9^x - 4 \\cdot 3^{x+1} + 27 = 0\\) for all real \\(x\\).",
-        "ar": null
-      },
       "difficulty": "Medium",
+      "question": {
+        "en": "Evaluate \\(\\log_2(5) \\cdot \\log_5(9) \\cdot \\log_3(16)\\) without a calculator using the change-of-base formula."
+      },
       "solution": {
-        "en": "<p><strong>Step 1: Rewrite in terms of \\(u = 3^x\\):</strong> Note that \\(9^x = (3^x)^2 = u^2\\) and \\(3^{x+1} = 3 \\cdot 3^x = 3u\\): \\[ u^2 - 12u + 27 = 0. \\]</p><p><strong>Step 2: Factor the quadratic:</strong> \\[ (u - 3)(u - 9) = 0 \\implies u = 3 \\quad\\text{or}\\quad u = 9. \\]</p><p><strong>Step 3: Back-substitute \\(3^x = u\\):</strong> \\[ 3^x = 3^1 \\implies x = 1; \\qquad 3^x = 3^2 \\implies x = 2. \\] Solutions: \\(\\mathbf{x = 1, 2}\\).</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Convert all logarithms to natural logarithms:</strong> \\[\\frac{\\ln 5}{\\ln 2} \\cdot \\frac{\\ln 9}{\\ln 5} \\cdot \\frac{\\ln 16}{\\ln 3}.\\]</p><p><strong>Step 2: Simplify using prime power identities \\(\\ln 9 = 2\\ln 3\\) and \\(\\ln 16 = 4\\ln 2\\):</strong> \\[\\frac{\\ln 5}{\\ln 2} \\cdot \\frac{2\\ln 3}{\\ln 5} \\cdot \\frac{4\\ln 2}{\\ln 3} = 2 \\times 4 = \\mathbf{8}.\\]</p>"
       }
     },
     {
       "id": "appc-p22",
       "number": 22,
-      "question": {
-        "en": "Solve the logarithmic equation \\(\\log_4(x + 6) + \\log_4(x - 6) = 3\\), checking for extraneous roots.",
-        "ar": null
-      },
       "difficulty": "Hard",
+      "question": {
+        "en": "A bivariate dataset \\((x, y)\\) is transformed into a semi-log plot \\((x, \\ln y)\\), yielding the linear regression model \\(\\ln(\\hat{y}) = 1.5 + 0.4x\\). Express \\(\\hat{y}\\) as an exponential function of \\(x\\) in the form \\(\\hat{y} = a \\cdot b^x\\), and find the predicted percentage growth rate per unit increase in \\(x\\)."
+      },
       "solution": {
-        "en": "<p><strong>Step 1: Domain restriction:</strong> We require \\(x + 6 > 0\\) and \\(x - 6 > 0\\), so \\(x > 6\\).</p><p><strong>Step 2: Condense logarithms using the product rule:</strong> \\[ \\log_4\\big((x + 6)(x - 6)\\big) = 3 \\implies x^2 - 36 = 4^3 = 64. \\]</p><p><strong>Step 3: Solve for \\(x\\) and filter by domain:</strong> \\[ x^2 = 100 \\implies x = \\pm 10. \\] Reject \\(x = -10\\) since \\(-10 \\not> 6\\). The unique valid solution is \\(\\mathbf{x = 10}\\).</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Exponentiate both sides of the semi-log regression equation:</strong> \\[\\hat{y} = e^{1.5 + 0.4x} = e^{1.5} \\cdot (e^{0.4})^x.\\]</p><p><strong>Step 2: Evaluate parameters \\(a\\) and \\(b\\):</strong> \\[a = e^{1.5} \\approx 4.4817, \\qquad b = e^{0.4} \\approx 1.4918 \\implies \\mathbf{\\hat{y} = e^{1.5}(e^{0.4})^x \\approx 4.482(1.492)^x}.\\]</p><p><strong>Step 3: Percentage growth rate:</strong> Since \\(b - 1 = e^{0.4} - 1 \\approx 0.4918\\), \\(\\hat{y}\\) increases by approximately \\(\\mathbf{49.18\\%}\\) per unit increase in \\(x\\).</p>"
       }
     },
     {
       "id": "appc-p23",
       "number": 23,
+      "difficulty": "Hard",
       "question": {
-        "en": "Evaluate \\(\\log_2(5) \\cdot \\log_5(9) \\cdot \\log_3(16)\\) without a calculator using the change-of-base formula.",
-        "ar": null
+        "en": "A log-log regression plot of \\((\\ln x, \\ln y)\\) produces the linear fit \\(\\ln(\\hat{y}) = \\ln(5) - 2.5\\ln(x)\\) for \\(x \\gt 0\\). Write \\(\\hat{y}\\) as an explicit power function of \\(x\\), and find the factor by which \\(\\hat{y}\\) changes when \\(x\\) is multiplied by \\(4\\)."
       },
-      "difficulty": "Medium",
       "solution": {
-        "en": "<p><strong>Step 1: Convert all logarithms to natural logarithms:</strong> \\[ \\frac{\\ln 5}{\\ln 2} \\cdot \\frac{\\ln 9}{\\ln 5} \\cdot \\frac{\\ln 16}{\\ln 3}. \\]</p><p><strong>Step 2: Simplify using prime power identities \\(\\ln 9 = 2\\ln 3\\) and \\(\\ln 16 = 4\\ln 2\\):</strong> \\[ \\frac{\\ln 5}{\\ln 2} \\cdot \\frac{2\\ln 3}{\\ln 5} \\cdot \\frac{4\\ln 2}{\\ln 3} = 2 \\times 4 = \\mathbf{8}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Condense the right-hand side using logarithm power and quotient laws:</strong> \\[\\ln(\\hat{y}) = \\ln(5) + \\ln(x^{-2.5}) = \\ln\\left(5x^{-5/2}\\right) \\implies \\mathbf{\\hat{y} = 5x^{-5/2} = \\frac{5}{\\sqrt{x^5}}}.\\]</p><p><strong>Step 2: Scaling analysis when \\(x \\to 4x\\):</strong> \\[\\hat{y}(4x) = 5(4x)^{-5/2} = 4^{-5/2} \\cdot 5x^{-5/2} = \\frac{1}{(\\sqrt{4})^5}\\hat{y}(x) = \\mathbf{\\frac{1}{32}}\\hat{y}(x).\\]</p>"
       }
     },
     {
       "id": "appc-p24",
       "number": 24,
+      "difficulty": "Medium",
       "question": {
-        "en": "A bivariate dataset \\((x, y)\\) is transformed into a semi-log plot \\((x, \\ln y)\\), yielding the linear regression model \\(\\ln(\\hat{y}) = 1.5 + 0.4x\\). Express \\(\\hat{y}\\) as an exponential function of \\(x\\) in the form \\(\\hat{y} = a \\cdot b^x\\), and find the predicted percentage growth rate per unit increase in \\(x\\).",
-        "ar": null
+        "en": "A cup of coffee at \\(92^\\circ\\text{C}\\) is placed in a room kept at a constant \\(20^\\circ\\text{C}\\). After 10 minutes, the coffee has cooled to \\(68^\\circ\\text{C}\\). Using Newton's Law of Cooling \\(T(t) = 20 + 72 b^{t/10}\\), find the exact temperature after 20 minutes and when the coffee reaches \\(36^\\circ\\text{C}\\)."
       },
-      "difficulty": "Hard",
       "solution": {
-        "en": "<p><strong>Step 1: Exponentiate both sides of the semi-log regression equation:</strong> \\[ \\hat{y} = e^{1.5 + 0.4x} = e^{1.5} \\cdot (e^{0.4})^x. \\]</p><p><strong>Step 2: Evaluate parameters \\(a\\) and \\(b\\):</strong> \\[ a = e^{1.5} \\approx 4.4817, \\qquad b = e^{0.4} \\approx 1.4918 \\implies \\mathbf{\\hat{y} = e^{1.5}(e^{0.4})^x \\approx 4.482(1.492)^x}. \\]</p><p><strong>Step 3: Percentage growth rate:</strong> Since \\(b - 1 = e^{0.4} - 1 \\approx 0.4918\\), \\(\\hat{y}\\) increases by approximately \\(\\mathbf{49.18\\%}\\) per unit increase in \\(x\\).</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Find the 10-minute decay base \\(b\\):</strong> \\[T(10) = 20 + 72b^1 = 68 \\implies 72b = 48 \\implies b = \\frac{48}{72} = \\frac{2}{3}.\\]</p><p><strong>Step 2: Temperature at \\(t = 20\\) minutes:</strong> \\[T(20) = 20 + 72\\left(\\frac{2}{3}\\right)^{20/10} = 20 + 72\\left(\\frac{4}{9}\\right) = 20 + 32 = \\mathbf{52^\\circ\\text{C}}.\\]</p><p><strong>Step 3: Solve \\(T(t) = 36^\\circ\\text{C}\\):</strong> \\[20 + 72\\left(\\frac{2}{3}\\right)^{t/10} = 36 \\implies \\left(\\frac{2}{3}\\right)^{t/10} = \\frac{16}{72} = \\frac{2}{9}.\\] \\[t = 10 \\cdot \\frac{\\ln(2/9)}{\\ln(2/3)} \\approx \\mathbf{37.10\\text{ minutes}}.\\]</p>"
       }
     },
     {
       "id": "appc-p25",
       "number": 25,
+      "difficulty": "Easy",
       "question": {
-        "en": "A log-log regression plot of \\((\\ln x, \\ln y)\\) produces the linear fit \\(\\ln(\\hat{y}) = \\ln(5) - 2.5\\ln(x)\\) for \\(x > 0\\). Write \\(\\hat{y}\\) as an explicit power function of \\(x\\), and find the factor by which \\(\\hat{y}\\) changes when \\(x\\) is multiplied by \\(4\\).",
-        "ar": null
+        "en": "Let \\(f(x) = 2x^2 - 3\\) and \\(g(x) = \\sqrt{x + 5}\\). Find the composite function \\((f \\circ g)(x)\\) and state its exact domain."
       },
-      "difficulty": "Hard",
       "solution": {
-        "en": "<p><strong>Step 1: Condense the right-hand side using logarithm power and quotient laws:</strong> \\[ \\ln(\\hat{y}) = \\ln(5) + \\ln(x^{-2.5}) = \\ln\\left(5x^{-5/2}\\right) \\implies \\mathbf{\\hat{y} = 5x^{-5/2} = \\frac{5}{\\sqrt{x^5}}}. \\]</p><p><strong>Step 2: Scaling analysis when \\(x \\to 4x\\):</strong> \\[ \\hat{y}(4x) = 5(4x)^{-5/2} = 4^{-5/2} \\cdot 5x^{-5/2} = \\frac{1}{(\\sqrt{4})^5}\\hat{y}(x) = \\mathbf{\\frac{1}{32}}\\hat{y}(x). \\]</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Determine the domain of the inner function \\(g(x)\\):</strong> \\[x + 5 \\ge 0 \\implies x \\ge -5.\\]</p><p><strong>Step 2: Substitute \\(g(x)\\) into \\(f(x)\\):</strong> \\[(f \\circ g)(x) = f\\left(\\sqrt{x + 5}\\right) = 2\\left(\\sqrt{x + 5}\\right)^2 - 3 = 2(x + 5) - 3 = \\mathbf{2x + 7}, \\quad \\text{with domain } \\mathbf{[-5, \\infty)}.\\]</p>"
       }
     },
     {
       "id": "appc-p26",
       "number": 26,
+      "difficulty": "Easy",
       "question": {
-        "en": "A cup of coffee at \\(92^\\circ\\text{C}\\) is placed in a room kept at a constant \\(20^\\circ\\text{C}\\). After 10 minutes, the coffee has cooled to \\(68^\\circ\\text{C}\\). Using Newton's Law of Cooling \\(T(t) = 20 + 72 b^{t/10}\\), find the exact temperature after 20 minutes and when the coffee reaches \\(36^\\circ\\text{C}\\).",
-        "ar": null
+        "en": "A terminal ray in standard position passes through the point \\(P(-8, 15)\\). Find the exact values of \\(\\sin\\theta\\), \\(\\cos\\theta\\), and \\(\\tan\\theta\\)."
       },
-      "difficulty": "Medium",
       "solution": {
-        "en": "<p><strong>Step 1: Find the 10-minute decay base \\(b\\):</strong> \\[ T(10) = 20 + 72b^1 = 68 \\implies 72b = 48 \\implies b = \\frac{48}{72} = \\frac{2}{3}. \\]</p><p><strong>Step 2: Temperature at \\(t = 20\\) minutes:</strong> \\[ T(20) = 20 + 72\\left(\\frac{2}{3}\\right)^{20/10} = 20 + 72\\left(\\frac{4}{9}\\right) = 20 + 32 = \\mathbf{52^\\circ\\text{C}}. \\]</p><p><strong>Step 3: Solve \\(T(t) = 36^\\circ\\text{C}\\):</strong> \\[ 20 + 72\\left(\\frac{2}{3}\\right)^{t/10} = 36 \\implies \\left(\\frac{2}{3}\\right)^{t/10} = \\frac{16}{72} = \\frac{2}{9}. \\] \\[ t = 10 \\cdot \\frac{\\ln(2/9)}{\\ln(2/3)} \\approx \\mathbf{37.10\\text{ minutes}}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Compute the radial distance \\(r = \\sqrt{x^2 + y^2}\\):</strong> \\[r = \\sqrt{(-8)^2 + 15^2} = \\sqrt{64 + 225} = \\sqrt{289} = 17.\\]</p><p><strong>Step 2: Apply circular trigonometric definitions:</strong> \\[\\mathbf{\\sin\\theta = \\frac{y}{r} = \\frac{15}{17}, \\qquad \\cos\\theta = \\frac{x}{r} = -\\frac{8}{17}, \\qquad \\tan\\theta = \\frac{y}{x} = -\\frac{15}{8}}.\\]</p>"
       }
     },
     {
       "id": "appc-p27",
       "number": 27,
+      "difficulty": "Medium",
       "question": {
-        "en": "Let \\(f(x) = 2x^2 - 3\\) and \\(g(x) = \\sqrt{x + 5}\\). Find the composite function \\((f \\circ g)(x)\\) and state its exact domain.",
-        "ar": null
+        "en": "Given that \\(\\cos\\alpha = -\\dfrac{5}{13}\\) with \\(\\dfrac{\\pi}{2} \\lt \\alpha \\lt \\pi\\), find the exact values of \\(\\sin(2\\alpha)\\), \\(\\cos(2\\alpha)\\), and \\(\\tan(2\\alpha)\\)."
       },
-      "difficulty": "Easy",
       "solution": {
-        "en": "<p><strong>Step 1: Determine the domain of the inner function \\(g(x)\\):</strong> \\[ x + 5 \\ge 0 \\implies x \\ge -5. \\]</p><p><strong>Step 2: Substitute \\(g(x)\\) into \\(f(x)\\):</strong> \\[ (f \\circ g)(x) = f\\left(\\sqrt{x + 5}\\right) = 2\\left(\\sqrt{x + 5}\\right)^2 - 3 = 2(x + 5) - 3 = \\mathbf{2x + 7}, \\quad \\text{with domain } \\mathbf{[-5, \\infty)}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Find \\(\\sin\\alpha\\) in Quadrant II (\\(\\sin\\alpha \\gt 0\\)):</strong> \\[\\sin\\alpha = \\sqrt{1 - \\left(-\\frac{5}{13}\\right)^2} = \\sqrt{1 - \\frac{25}{169}} = \\frac{12}{13}.\\]</p><p><strong>Step 2: Apply double-angle formulas:</strong> \\[\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha = 2\\left(\\frac{12}{13}\\right)\\left(-\\frac{5}{13}\\right) = \\mathbf{-\\frac{120}{169}}.\\] \\[\\cos(2\\alpha) = \\cos^2\\alpha - \\sin^2\\alpha = \\frac{25}{169} - \\frac{144}{169} = \\mathbf{-\\frac{119}{169}}.\\] \\[\\tan(2\\alpha) = \\frac{\\sin(2\\alpha)}{\\cos(2\\alpha)} = \\mathbf{\\frac{120}{119}}.\\]</p>"
       }
     },
     {
       "id": "appc-p28",
       "number": 28,
+      "difficulty": "Medium",
       "question": {
-        "en": "A terminal ray in standard position passes through the point \\(P(-8, 15)\\). Find the exact values of \\(\\sin\\theta\\), \\(\\cos\\theta\\), and \\(\\tan\\theta\\).",
-        "ar": null
+        "en": "Find the exact value of \\(\\cos\\left(\\dfrac{7\\pi}{12}\\right)\\) and \\(\\sin\\left(\\dfrac{7\\pi}{12}\\right)\\) using angle addition identities."
       },
-      "difficulty": "Easy",
       "solution": {
-        "en": "<p><strong>Step 1: Compute the radial distance \\(r = \\sqrt{x^2 + y^2}\\):</strong> \\[ r = \\sqrt{(-8)^2 + 15^2} = \\sqrt{64 + 225} = \\sqrt{289} = 17. \\]</p><p><strong>Step 2: Apply circular trigonometric definitions:</strong> \\[ \\mathbf{\\sin\\theta = \\frac{y}{r} = \\frac{15}{17}, \\qquad \\cos\\theta = \\frac{x}{r} = -\\frac{8}{17}, \\qquad \\tan\\theta = \\frac{y}{x} = -\\frac{15}{8}}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Decompose \\(\\dfrac{7\\pi}{12} = \\dfrac{\\pi}{3} + \\dfrac{\\pi}{4}\\):</strong></p><p><strong>Step 2: Apply cosine and sine sum formulas:</strong> \\[\\cos\\left(\\frac{7\\pi}{12}\\right) = \\cos\\frac{\\pi}{3}\\cos\\frac{\\pi}{4} - \\sin\\frac{\\pi}{3}\\sin\\frac{\\pi}{4} = \\left(\\frac{1}{2}\\right)\\left(\\frac{\\sqrt{2}}{2}\\right) - \\left(\\frac{\\sqrt{3}}{2}\\right)\\left(\\frac{\\sqrt{2}}{2}\\right) = \\mathbf{\\frac{\\sqrt{2} - \\sqrt{6}}{4}}.\\] \\[\\sin\\left(\\frac{7\\pi}{12}\\right) = \\sin\\frac{\\pi}{3}\\cos\\frac{\\pi}{4} + \\cos\\frac{\\pi}{3}\\sin\\frac{\\pi}{4} = \\left(\\frac{\\sqrt{3}}{2}\\right)\\left(\\frac{\\sqrt{2}}{2}\\right) + \\left(\\frac{1}{2}\\right)\\left(\\frac{\\sqrt{2}}{2}\\right) = \\mathbf{\\frac{\\sqrt{6} + \\sqrt{2}}{4}}.\\]</p>"
       }
     },
     {
       "id": "appc-p29",
       "number": 29,
+      "difficulty": "Hard",
       "question": {
-        "en": "Given that \\(\\cos\\alpha = -\\dfrac{5}{13}\\) with \\(\\dfrac{\\pi}{2} < \\alpha < \\pi\\), find the exact values of \\(\\sin(2\\alpha)\\), \\(\\cos(2\\alpha)\\), and \\(\\tan(2\\alpha)\\).",
-        "ar": null
+        "en": "Solve the trigonometric equation \\(2\\cos^2 x - \\sin x - 1 = 0\\) for all \\(x\\) in the interval \\([0, 2\\pi)\\)."
       },
-      "difficulty": "Medium",
       "solution": {
-        "en": "<p><strong>Step 1: Find \\(\\sin\\alpha\\) in Quadrant II (\\(\\sin\\alpha > 0\\)):</strong> \\[ \\sin\\alpha = \\sqrt{1 - \\left(-\\frac{5}{13}\\right)^2} = \\sqrt{1 - \\frac{25}{169}} = \\frac{12}{13}. \\]</p><p><strong>Step 2: Apply double-angle formulas:</strong> \\[ \\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha = 2\\left(\\frac{12}{13}\\right)\\left(-\\frac{5}{13}\\right) = \\mathbf{-\\frac{120}{169}}. \\] \\[ \\cos(2\\alpha) = \\cos^2\\alpha - \\sin^2\\alpha = \\frac{25}{169} - \\frac{144}{169} = \\mathbf{-\\frac{119}{169}}. \\] \\[ \\tan(2\\alpha) = \\frac{\\sin(2\\alpha)}{\\cos(2\\alpha)} = \\mathbf{\\frac{120}{119}}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Apply the Pythagorean identity \\(\\cos^2 x = 1 - \\sin^2 x\\):</strong> \\[2(1 - \\sin^2 x) - \\sin x - 1 = 0 \\implies 2\\sin^2 x + \\sin x - 1 = 0.\\]</p><p><strong>Step 2: Factor the quadratic in \\(\\sin x\\):</strong> \\[(2\\sin x - 1)(\\sin x + 1) = 0 \\implies \\sin x = \\frac{1}{2} \\quad\\text{or}\\quad \\sin x = -1.\\]</p><p><strong>Step 3: Extract all solutions in \\([0, 2\\pi)\\):</strong> \\[\\mathbf{x \\in \\left\\{\\frac{\\pi}{6}, \\; \\frac{5\\pi}{6}, \\; \\frac{3\\pi}{2}\\right\\}}.\\]</p>"
       }
     },
     {
       "id": "appc-p30",
       "number": 30,
-      "question": {
-        "en": "Find the exact value of \\(\\cos\\left(\\dfrac{7\\pi}{12}\\right)\\) and \\(\\sin\\left(\\dfrac{7\\pi}{12}\\right)\\) using angle addition identities.",
-        "ar": null
-      },
       "difficulty": "Medium",
+      "question": {
+        "en": "Evaluate the exact value of \\(\\sin\\left(\\arccos\\left(-\\dfrac{3}{5}\\right)\\right)\\) and \\(\\tan\\left(\\arcsin\\left(\\dfrac{8}{17}\\right)\\right)\\)."
+      },
       "solution": {
-        "en": "<p><strong>Step 1: Decompose \\(\\dfrac{7\\pi}{12} = \\dfrac{\\pi}{3} + \\dfrac{\\pi}{4}\\):</strong></p><p><strong>Step 2: Apply cosine and sine sum formulas:</strong> \\[ \\cos\\left(\\frac{7\\pi}{12}\\right) = \\cos\\frac{\\pi}{3}\\cos\\frac{\\pi}{4} - \\sin\\frac{\\pi}{3}\\sin\\frac{\\pi}{4} = \\left(\\frac{1}{2}\\right)\\left(\\frac{\\sqrt{2}}{2}\\right) - \\left(\\frac{\\sqrt{3}}{2}\\right)\\left(\\frac{\\sqrt{2}}{2}\\right) = \\mathbf{\\frac{\\sqrt{2} - \\sqrt{6}}{4}}. \\] \\[ \\sin\\left(\\frac{7\\pi}{12}\\right) = \\sin\\frac{\\pi}{3}\\cos\\frac{\\pi}{4} + \\cos\\frac{\\pi}{3}\\sin\\frac{\\pi}{4} = \\left(\\frac{\\sqrt{3}}{2}\\right)\\left(\\frac{\\sqrt{2}}{2}\\right) + \\left(\\frac{1}{2}\\right)\\left(\\frac{\\sqrt{2}}{2}\\right) = \\mathbf{\\frac{\\sqrt{6} + \\sqrt{2}}{4}}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Evaluate \\(\\sin\\left(\\arccos\\left(-\\dfrac{3}{5}\\right)\\right)\\):</strong> Let \\(\\theta = \\arccos(-3/5) \\in [0, \\pi]\\). Since \\(\\cos\\theta = -3/5 \\lt 0\\), \\(\\theta\\) is in Quadrant II where \\(\\sin\\theta \\gt 0\\): \\[\\sin\\theta = \\sqrt{1 - (-3/5)^2} = \\mathbf{\\frac{4}{5}}.\\]</p><p><strong>Step 2: Evaluate \\(\\tan\\left(\\arcsin\\left(\\dfrac{8}{17}\\right)\\right)\\):</strong> Let \\(\\phi = \\arcsin(8/17) \\in (0, \\pi/2)\\). Then \\(\\cos\\phi = \\sqrt{1 - (8/17)^2} = \\dfrac{15}{17}\\), so: \\[\\tan\\phi = \\frac{8/17}{15/17} = \\mathbf{\\frac{8}{15}}.\\]</p>"
       }
     },
     {
       "id": "appc-p31",
       "number": 31,
+      "difficulty": "Medium",
       "question": {
-        "en": "Solve the trigonometric equation \\(2\\cos^2 x - \\sin x - 1 = 0\\) for all \\(x\\) in the interval \\([0, 2\\pi)\\).",
-        "ar": null
+        "en": "A Ferris wheel has a diameter of \\(40\\text{ meters}\\) and its lowest point is \\(4\\text{ meters}\\) above the ground. Passengers board at the lowest point at \\(t = 0\\), and the wheel completes one full revolution every \\(8\\text{ minutes}\\). Write a cosine model \\(h(t)\\) for a passenger's height at time \\(t\\), and find the times during the first revolution when \\(h(t) = 34\\text{ meters}\\)."
       },
-      "difficulty": "Hard",
       "solution": {
-        "en": "<p><strong>Step 1: Apply the Pythagorean identity \\(\\cos^2 x = 1 - \\sin^2 x\\):</strong> \\[ 2(1 - \\sin^2 x) - \\sin x - 1 = 0 \\implies 2\\sin^2 x + \\sin x - 1 = 0. \\]</p><p><strong>Step 2: Factor the quadratic in \\(\\sin x\\):</strong> \\[ (2\\sin x - 1)(\\sin x + 1) = 0 \\implies \\sin x = \\frac{1}{2} \\quad\\text{or}\\quad \\sin x = -1. \\]</p><p><strong>Step 3: Extract all solutions in \\([0, 2\\pi)\\):</strong> \\[ \\mathbf{x \\in \\left\\{\\frac{\\pi}{6}, \\; \\frac{5\\pi}{6}, \\; \\frac{3\\pi}{2}\\right\\}}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Determine sinusoidal parameters:</strong> Radius (amplitude) \\(= 20\\text{ m}\\); midline \\(D = 4 + 20 = 24\\text{ m}\\); angular frequency \\(B = \\dfrac{2\\pi}{8} = \\dfrac{\\pi}{4}\\). Starting at the minimum gives a negative cosine: \\[\\mathbf{h(t) = -20\\cos\\left(\\frac{\\pi}{4}t\\right) + 24}.\\]</p><p><strong>Step 2: Solve \\(h(t) = 34\\) on \\([0, 8]\\):</strong> \\[-20\\cos\\left(\\frac{\\pi}{4}t\\right) + 24 = 34 \\implies \\cos\\left(\\frac{\\pi}{4}t\\right) = -\\frac{1}{2}.\\] \\[\\frac{\\pi}{4}t = \\frac{2\\pi}{3}, \\frac{4\\pi}{3} \\implies \\mathbf{t = \\frac{8}{3}\\text{ min} \\quad\\text{and}\\quad t = \\frac{16}{3}\\text{ min}}.\\]</p>"
       }
     },
     {
       "id": "appc-p32",
       "number": 32,
-      "question": {
-        "en": "Evaluate the exact value of \\(\\sin\\left(\\arccos\\left(-\\dfrac{3}{5}\\right)\\right)\\) and \\(\\tan\\left(\\arcsin\\left(\\dfrac{8}{17}\\right)\\right)\\).",
-        "ar": null
-      },
       "difficulty": "Medium",
+      "question": {
+        "en": "Convert the polar equation \\(r = 6\\cos\\theta - 8\\sin\\theta\\) to Cartesian rectangular form, and identify the geometric curve, its center, and its radius."
+      },
       "solution": {
-        "en": "<p><strong>Step 1: Evaluate \\(\\sin\\left(\\arccos\\left(-\\dfrac{3}{5}\\right)\\right)\\):</strong> Let \\(\\theta = \\arccos(-3/5) \\in [0, \\pi]\\). Since \\(\\cos\\theta = -3/5 < 0\\), \\(\\theta\\) is in Quadrant II where \\(\\sin\\theta > 0\\): \\[ \\sin\\theta = \\sqrt{1 - (-3/5)^2} = \\mathbf{\\frac{4}{5}}. \\]</p><p><strong>Step 2: Evaluate \\(\\tan\\left(\\arcsin\\left(\\dfrac{8}{17}\\right)\\right)\\):</strong> Let \\(\\phi = \\arcsin(8/17) \\in (0, \\pi/2)\\). Then \\(\\cos\\phi = \\sqrt{1 - (8/17)^2} = \\dfrac{15}{17}\\), so: \\[ \\tan\\phi = \\frac{8/17}{15/17} = \\mathbf{\\frac{8}{15}}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Multiply both sides by \\(r\\):</strong> \\[r^2 = 6r\\cos\\theta - 8r\\sin\\theta.\\]</p><p><strong>Step 2: Substitute \\(r^2 = x^2 + y^2\\), \\(r\\cos\\theta = x\\), and \\(r\\sin\\theta = y\\):</strong> \\[x^2 + y^2 = 6x - 8y \\implies (x^2 - 6x + 9) + (y^2 + 8y + 16) = 9 + 16 = 25.\\] \\[\\mathbf{(x - 3)^2 + (y + 4)^2 = 25}.\\] The curve is a <strong>circle</strong> with center \\(\\mathbf{(3, -4)}\\) and radius \\(\\mathbf{R = 5}\\).</p>"
       }
     },
     {
       "id": "appc-p33",
       "number": 33,
+      "difficulty": "Hard",
       "question": {
-        "en": "A Ferris wheel has a diameter of \\(40\\text{ meters}\\) and its lowest point is \\(4\\text{ meters}\\) above the ground. Passengers board at the lowest point at \\(t = 0\\), and the wheel completes one full revolution every \\(8\\text{ minutes}\\). Write a cosine model \\(h(t)\\) for a passenger's height at time \\(t\\), and find the times during the first revolution when \\(h(t) = 34\\text{ meters}\\).",
-        "ar": null
+        "en": "Analyze the polar curve \\(r(\\theta) = 2 - 4\\cos\\theta\\) for \\(0 \\le \\theta \\lt 2\\pi\\). Identify the curve type, find the maximum distance from the pole, and determine the exact angles \\(\\theta\\) where the curve passes through the pole."
       },
-      "difficulty": "Medium",
       "solution": {
-        "en": "<p><strong>Step 1: Determine sinusoidal parameters:</strong> Radius (amplitude) \\(= 20\\text{ m}\\); midline \\(D = 4 + 20 = 24\\text{ m}\\); angular frequency \\(B = \\dfrac{2\\pi}{8} = \\dfrac{\\pi}{4}\\). Starting at the minimum gives a negative cosine: \\[ \\mathbf{h(t) = -20\\cos\\left(\\frac{\\pi}{4}t\\right) + 24}. \\]</p><p><strong>Step 2: Solve \\(h(t) = 34\\) on \\([0, 8]\\):</strong> \\[ -20\\cos\\left(\\frac{\\pi}{4}t\\right) + 24 = 34 \\implies \\cos\\left(\\frac{\\pi}{4}t\\right) = -\\frac{1}{2}. \\] \\[ \\frac{\\pi}{4}t = \\frac{2\\pi}{3}, \\frac{4\\pi}{3} \\implies \\mathbf{t = \\frac{8}{3}\\text{ min} \\quad\\text{and}\\quad t = \\frac{16}{3}\\text{ min}}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Classify the limaçon \\(r = a - b\\cos\\theta\\):</strong> Since \\(\\dfrac{a}{b} = \\dfrac{2}{4} = \\dfrac{1}{2} \\lt 1\\), the curve is a <strong>limaçon with an inner loop</strong>.</p><p><strong>Step 2: Maximum distance from the pole:</strong> Occurs when \\(\\cos\\theta = -1\\) (\\(\\theta = \\pi\\)): \\[r_{\\max} = 2 - 4(-1) = \\mathbf{6}.\\]</p><p><strong>Step 3: Angles at the pole (\\(r = 0\\)):</strong> \\[2 - 4\\cos\\theta = 0 \\implies \\cos\\theta = \\frac{1}{2} \\implies \\mathbf{\\theta = \\frac{\\pi}{3}, \\; \\frac{5\\pi}{3}}.\\]</p>"
       }
     },
     {
       "id": "appc-p34",
       "number": 34,
+      "difficulty": "Hard",
       "question": {
-        "en": "Convert the polar equation \\(r = 6\\cos\\theta - 8\\sin\\theta\\) to Cartesian rectangular form, and identify the geometric curve, its center, and its radius.",
-        "ar": null
+        "en": "Let \\(z_1 = 2\\left(\\cos\\dfrac{\\pi}{4} + i\\sin\\dfrac{\\pi}{4}\\right)\\) and \\(z_2 = 3\\left(\\cos\\dfrac{5\\pi}{12} + i\\sin\\dfrac{5\\pi}{12}\\right)\\). Find the product \\(z_1 z_2\\) in rectangular form \\(a + bi\\), and compute \\(z_1^6\\) using De Moivre's Theorem."
       },
-      "difficulty": "Medium",
       "solution": {
-        "en": "<p><strong>Step 1: Multiply both sides by \\(r\\):</strong> \\[ r^2 = 6r\\cos\\theta - 8r\\sin\\theta. \\]</p><p><strong>Step 2: Substitute \\(r^2 = x^2 + y^2\\), \\(r\\cos\\theta = x\\), and \\(r\\sin\\theta = y\\):</strong> \\[ x^2 + y^2 = 6x - 8y \\implies (x^2 - 6x + 9) + (y^2 + 8y + 16) = 9 + 16 = 25. \\] \\[ \\mathbf{(x - 3)^2 + (y + 4)^2 = 25}. \\] The curve is a <strong>circle</strong> with center \\(\\mathbf{(3, -4)}\\) and radius \\(\\mathbf{R = 5}\\).</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Multiply in polar form:</strong> \\[z_1 z_2 = (2 \\cdot 3)\\left[\\cos\\left(\\frac{\\pi}{4} + \\frac{5\\pi}{12}\\right) + i\\sin\\left(\\frac{\\pi}{4} + \\frac{5\\pi}{12}\\right)\\right] = 6\\left(\\cos\\frac{2\\pi}{3} + i\\sin\\frac{2\\pi}{3}\\right) = \\mathbf{-3 + 3i\\sqrt{3}}.\\]</p><p><strong>Step 2: Compute \\(z_1^6\\) via De Moivre's Theorem:</strong> \\[z_1^6 = 2^6\\left(\\cos\\frac{6\\pi}{4} + i\\sin\\frac{6\\pi}{4}\\right) = 64\\left(\\cos\\frac{3\\pi}{2} + i\\sin\\frac{3\\pi}{2}\\right) = \\mathbf{-64i}.\\]</p>"
       }
     },
     {
       "id": "appc-p35",
       "number": 35,
+      "difficulty": "Medium",
       "question": {
-        "en": "Analyze the polar curve \\(r(\\theta) = 2 - 4\\cos\\theta\\) for \\(0 \\le \\theta < 2\\pi\\). Identify the curve type, find the maximum distance from the pole, and determine the exact angles \\(\\theta\\) where the curve passes through the pole.",
-        "ar": null
+        "en": "Prove the trigonometric identity \\(\\dfrac{\\sin(2x)}{1 + \\cos(2x)} = \\tan x\\) and state the domain exclusions."
       },
-      "difficulty": "Hard",
       "solution": {
-        "en": "<p><strong>Step 1: Classify the limaçon \\(r = a - b\\cos\\theta\\):</strong> Since \\(\\dfrac{a}{b} = \\dfrac{2}{4} = \\dfrac{1}{2} < 1\\), the curve is a <strong>limaçon with an inner loop</strong>.</p><p><strong>Step 2: Maximum distance from the pole:</strong> Occurs when \\(\\cos\\theta = -1\\) (\\(\\theta = \\pi\\)): \\[ r_{\\max} = 2 - 4(-1) = \\mathbf{6}. \\]</p><p><strong>Step 3: Angles at the pole (\\(r = 0\\)):</strong> \\[ 2 - 4\\cos\\theta = 0 \\implies \\cos\\theta = \\frac{1}{2} \\implies \\mathbf{\\theta = \\frac{\\pi}{3}, \\; \\frac{5\\pi}{3}}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Apply double-angle identities \\(\\sin(2x) = 2\\sin x\\cos x\\) and \\(\\cos(2x) = 2\\cos^2 x - 1\\):</strong> \\[\\text{LHS} = \\frac{2\\sin x\\cos x}{1 + (2\\cos^2 x - 1)} = \\frac{2\\sin x\\cos x}{2\\cos^2 x}.\\]</p><p><strong>Step 2: Cancel \\(2\\cos x\\) (for \\(\\cos x \\neq 0\\)):</strong> \\[\\frac{\\sin x}{\\cos x} = \\tan x = \\text{RHS}. \\quad \\blacksquare\\] Domain exclusions: \\(\\mathbf{x \\neq \\dfrac{\\pi}{2} + k\\pi}\\) for \\(k \\in \\mathbb{Z}\\).</p>"
       }
     },
     {
       "id": "appc-p36",
       "number": 36,
-      "question": {
-        "en": "Let \\(z_1 = 2\\left(\\cos\\dfrac{\\pi}{4} + i\\sin\\dfrac{\\pi}{4}\\right)\\) and \\(z_2 = 3\\left(\\cos\\dfrac{5\\pi}{12} + i\\sin\\dfrac{5\\pi}{12}\\right)\\). Find the product \\(z_1 z_2\\) in rectangular form \\(a + bi\\), and compute \\(z_1^6\\) using De Moivre's Theorem.",
-        "ar": null
-      },
       "difficulty": "Hard",
+      "question": {
+        "en": "Find the average rate of change of the polar radius \\(r(\\theta) = 3 + 2\\sin(2\\theta)\\) over the interval \\(\\left[0, \\dfrac{\\pi}{4}\\right]\\), and interpret whether the distance from the origin is increasing or decreasing on this interval."
+      },
       "solution": {
-        "en": "<p><strong>Step 1: Multiply in polar form:</strong> \\[ z_1 z_2 = (2 \\cdot 3)\\left[\\cos\\left(\\frac{\\pi}{4} + \\frac{5\\pi}{12}\\right) + i\\sin\\left(\\frac{\\pi}{4} + \\frac{5\\pi}{12}\\right)\\right] = 6\\left(\\cos\\frac{2\\pi}{3} + i\\sin\\frac{2\\pi}{3}\\right) = \\mathbf{-3 + 3i\\sqrt{3}}. \\]</p><p><strong>Step 2: Compute \\(z_1^6\\) via De Moivre's Theorem:</strong> \\[ z_1^6 = 2^6\\left(\\cos\\frac{6\\pi}{4} + i\\sin\\frac{6\\pi}{4}\\right) = 64\\left(\\cos\\frac{3\\pi}{2} + i\\sin\\frac{3\\pi}{2}\\right) = \\mathbf{-64i}. \\]</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Evaluate \\(r(\\theta)\\) at \\(\\theta = 0\\) and \\(\\theta = \\pi/4\\):</strong> \\[r(0) = 3 + 2\\sin(0) = 3, \\qquad r\\left(\\frac{\\pi}{4}\\right) = 3 + 2\\sin\\left(\\frac{\\pi}{2}\\right) = 3 + 2 = 5.\\]</p><p><strong>Step 2: Compute the average rate of change:</strong> \\[\\frac{r(\\pi/4) - r(0)}{\\pi/4 - 0} = \\frac{5 - 3}{\\pi/4} = \\mathbf{\\frac{8}{\\pi} \\approx 2.546\\text{ units/rad}}.\\] Because \\(r(\\theta)\\) is strictly increasing and positive on \\([0, \\pi/4]\\), the curve moves further away from the pole.</p>"
       }
     },
     {
       "id": "appc-p37",
       "number": 37,
-      "question": {
-        "en": "Prove the trigonometric identity \\(\\dfrac{\\sin(2x)}{1 + \\cos(2x)} = \\tan x\\) and state the domain exclusions.",
-        "ar": null
-      },
       "difficulty": "Medium",
+      "question": {
+        "en": "Eliminate the parameter \\(t\\) from the parametric curve \\(x(t) = 3 + 4\\cos t\\), \\(y(t) = -2 + 5\\sin t\\) for \\(0 \\le t \\le 2\\pi\\). Identify the conic section, its center, and its vertices."
+      },
       "solution": {
-        "en": "<p><strong>Step 1: Apply double-angle identities \\(\\sin(2x) = 2\\sin x\\cos x\\) and \\(\\cos(2x) = 2\\cos^2 x - 1\\):</strong> \\[ \\text{LHS} = \\frac{2\\sin x\\cos x}{1 + (2\\cos^2 x - 1)} = \\frac{2\\sin x\\cos x}{2\\cos^2 x}. \\]</p><p><strong>Step 2: Cancel \\(2\\cos x\\) (for \\(\\cos x \\neq 0\\)):</strong> \\[ \\frac{\\sin x}{\\cos x} = \\tan x = \\text{RHS}. \\quad \\blacksquare \\] Domain exclusions: \\(\\mathbf{x \\neq \\dfrac{\\pi}{2} + k\\pi}\\) for \\(k \\in \\mathbb{Z}\\).</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Isolate \\(\\cos t\\) and \\(\\sin t\\):</strong> \\[\\cos t = \\frac{x - 3}{4}, \\qquad \\sin t = \\frac{y + 2}{5}.\\]</p><p><strong>Step 2: Apply the Pythagorean identity \\(\\cos^2 t + \\sin^2 t = 1\\):</strong> \\[\\mathbf{\\frac{(x - 3)^2}{16} + \\frac{(y + 2)^2}{25} = 1}.\\] This is a <strong>vertical ellipse</strong> centered at \\(\\mathbf{(3, -2)}\\) with major-axis vertices at \\(\\mathbf{(3, -7)}\\) and \\(\\mathbf{(3, 3)}\\).</p>"
       }
     },
     {
       "id": "appc-p38",
       "number": 38,
-      "question": {
-        "en": "Find the average rate of change of the polar radius \\(r(\\theta) = 3 + 2\\sin(2\\theta)\\) over the interval \\(\\left[0, \\dfrac{\\pi}{4}\\right]\\), and interpret whether the distance from the origin is increasing or decreasing on this interval.",
-        "ar": null
-      },
       "difficulty": "Hard",
+      "question": {
+        "en": "Identify the conic section \\(4x^2 - 9y^2 - 16x - 18y - 29 = 0\\) by completing the square. Find its center, vertices, foci, and asymptotes."
+      },
       "solution": {
-        "en": "<p><strong>Step 1: Evaluate \\(r(\\theta)\\) at \\(\\theta = 0\\) and \\(\\theta = \\pi/4\\):</strong> \\[ r(0) = 3 + 2\\sin(0) = 3, \\qquad r\\left(\\frac{\\pi}{4}\\right) = 3 + 2\\sin\\left(\\frac{\\pi}{2}\\right) = 3 + 2 = 5. \\]</p><p><strong>Step 2: Compute the average rate of change:</strong> \\[ \\frac{r(\\pi/4) - r(0)}{\\pi/4 - 0} = \\frac{5 - 3}{\\pi/4} = \\mathbf{\\frac{8}{\\pi} \\approx 2.546\\text{ units/rad}}. \\] Because \\(r(\\theta)\\) is strictly increasing and positive on \\([0, \\pi/4]\\), the curve moves further away from the pole.</p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Group and complete the square:</strong> \\[4(x^2 - 4x + 4) - 9(y^2 + 2y + 1) = 29 + 16 - 9 = 36.\\] \\[\\mathbf{\\frac{(x - 2)^2}{9} - \\frac{(y + 1)^2}{4} = 1}.\\]</p><p><strong>Step 2: Extract hyperbola properties (\\(a = 3, b = 2, c = \\sqrt{9 + 4} = \\sqrt{13}\\)):</strong><ul><li><strong>Center:</strong> \\((2, -1)\\)</li><li><strong>Vertices:</strong> \\((-1, -1)\\) and \\((5, -1)\\)</li><li><strong>Foci:</strong> \\((2 \\pm \\sqrt{13}, -1)\\)</li><li><strong>Asymptotes:</strong> \\(y + 1 = \\pm\\dfrac{2}{3}(x - 2)\\)</li></ul></p>"
       }
     },
     {
       "id": "appc-p39",
       "number": 39,
+      "difficulty": "Easy",
       "question": {
-        "en": "Eliminate the parameter \\(t\\) from the parametric curve \\(x(t) = 3 + 4\\cos t\\), \\(y(t) = -2 + 5\\sin t\\) for \\(0 \\le t \\le 2\\pi\\). Identify the conic section, its center, and its vertices.",
-        "ar": null
+        "en": "Given vectors \\(\\mathbf{u} = \\langle 4, -3 \\rangle\\) and \\(\\mathbf{v} = \\langle -1, 5 \\rangle\\), compute: (a) \\(2\\mathbf{u} - 3\\mathbf{v}\\), (b) the magnitude \\(\\|\\mathbf{u}\\|\\) and unit vector in the direction of \\(\\mathbf{u}\\), and (c) the dot product \\(\\mathbf{u} \\cdot \\mathbf{v}\\)."
       },
-      "difficulty": "Medium",
       "solution": {
-        "en": "<p><strong>Step 1: Isolate \\(\\cos t\\) and \\(\\sin t\\):</strong> \\[ \\cos t = \\frac{x - 3}{4}, \\qquad \\sin t = \\frac{y + 2}{5}. \\]</p><p><strong>Step 2: Apply the Pythagorean identity \\(\\cos^2 t + \\sin^2 t = 1\\):</strong> \\[ \\mathbf{\\frac{(x - 3)^2}{16} + \\frac{(y + 2)^2}{25} = 1}. \\] This is a <strong>vertical ellipse</strong> centered at \\(\\mathbf{(3, -2)}\\) with major-axis vertices at \\(\\mathbf{(3, -7)}\\) and \\(\\mathbf{(3, 3)}\\).</p>",
-        "ar": null
+        "en": "<p><strong>(a) Linear combination:</strong> \\[2\\langle 4, -3 \\rangle - 3\\langle -1, 5 \\rangle = \\langle 8 + 3, -6 - 15 \\rangle = \\mathbf{\\langle 11, -21 \\rangle}.\\]</p><p><strong>(b) Magnitude and unit vector:</strong> \\[\\|\\mathbf{u}\\| = \\sqrt{4^2 + (-3)^2} = \\mathbf{5}, \\qquad \\hat{\\mathbf{u}} = \\mathbf{\\left\\langle \\frac{4}{5}, -\\frac{3}{5} \\right\\rangle}.\\]</p><p><strong>(c) Dot product:</strong> \\[\\mathbf{u} \\cdot \\mathbf{v} = (4)(-1) + (-3)(5) = -4 - 15 = \\mathbf{-19}.\\]</p>"
       }
     },
     {
       "id": "appc-p40",
       "number": 40,
+      "difficulty": "Medium",
       "question": {
-        "en": "Identify the conic section \\(4x^2 - 9y^2 - 16x - 18y - 29 = 0\\) by completing the square. Find its center, vertices, foci, and asymptotes.",
-        "ar": null
+        "en": "Find the exact angle \\(\\theta\\) between \\(\\mathbf{u} = \\langle 3, 1 \\rangle\\) and \\(\\mathbf{v} = \\langle 1, 2 \\rangle\\), and compute the vector projection \\(\\text{proj}_{\\mathbf{v}}\\mathbf{u}\\)."
       },
-      "difficulty": "Hard",
       "solution": {
-        "en": "<p><strong>Step 1: Group and complete the square:</strong> \\[ 4(x^2 - 4x + 4) - 9(y^2 + 2y + 1) = 29 + 16 - 9 = 36. \\] \\[ \\mathbf{\\frac{(x - 2)^2}{9} - \\frac{(y + 1)^2}{4} = 1}. \\]</p><p><strong>Step 2: Extract hyperbola properties (\\(a = 3, b = 2, c = \\sqrt{9 + 4} = \\sqrt{13}\\)):</strong><ul><li><strong>Center:</strong> \\((2, -1)\\)</li><li><strong>Vertices:</strong> \\((-1, -1)\\) and \\((5, -1)\\)</li><li><strong>Foci:</strong> \\((2 \\pm \\sqrt{13}, -1)\\)</li><li><strong>Asymptotes:</strong> \\(y + 1 = \\pm\\dfrac{2}{3}(x - 2)\\)</li></ul></p>",
-        "ar": null
+        "en": "<p><strong>Step 1: Compute dot product and magnitudes:</strong> \\[\\mathbf{u} \\cdot \\mathbf{v} = 3(1) + 1(2) = 5, \\qquad \\|\\mathbf{u}\\| = \\sqrt{10}, \\qquad \\|\\mathbf{v}\\| = \\sqrt{5}.\\]</p><p><strong>Step 2: Angle between vectors:</strong> \\[\\cos\\theta = \\frac{5}{\\sqrt{10}\\sqrt{5}} = \\frac{5}{5\\sqrt{2}} = \\frac{\\sqrt{2}}{2} \\implies \\mathbf{\\theta = \\frac{\\pi}{4} = 45^\\circ}.\\]</p><p><strong>Step 3: Vector projection onto \\(\\mathbf{v}\\):</strong> \\[\\text{proj}_{\\mathbf{v}}\\mathbf{u} = \\left(\\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{v}\\|^2}\\right)\\mathbf{v} = \\frac{5}{5}\\langle 1, 2 \\rangle = \\mathbf{\\langle 1, 2 \\rangle}.\\]</p>"
       }
     },
     {
       "id": "appc-p41",
       "number": 41,
+      "difficulty": "Medium",
       "question": {
-        "en": "Given vectors \\(\\mathbf{u} = \\langle 4, -3 \\rangle\\) and \\(\\mathbf{v} = \\langle -1, 5 \\rangle\\), compute: (a) \\(2\\mathbf{u} - 3\\mathbf{v}\\), (b) the magnitude \\(\\|\\mathbf{u}\\|\\) and unit vector in the direction of \\(\\mathbf{u}\\), and (c) the dot product \\(\\mathbf{u} \\cdot \\mathbf{v}\\).",
-        "ar": null
+        "en": "The graph of the quadratic function \\(f(x) = x^2 - bx + c\\) is shown below. The vertex of the parabola is at $(2, -3)$, and it passes through the point $(0, 1)$. Determine the value of the parameter \\(b\\)."
       },
-      "difficulty": "Easy",
       "solution": {
-        "en": "<p><strong>(a) Linear combination:</strong> \\[ 2\\langle 4, -3 \\rangle - 3\\langle -1, 5 \\rangle = \\langle 8 + 3, -6 - 15 \\rangle = \\mathbf{\\langle 11, -21 \\rangle}. \\]</p><p><strong>(b) Magnitude and unit vector:</strong> \\[ \\|\\mathbf{u}\\| = \\sqrt{4^2 + (-3)^2} = \\mathbf{5}, \\qquad \\hat{\\mathbf{u}} = \\mathbf{\\left\\langle \\frac{4}{5}, -\\frac{3}{5} \\right\\rangle}. \\]</p><p><strong>(c) Dot product:</strong> \\[ \\mathbf{u} \\cdot \\mathbf{v} = (4)(-1) + (-3)(5) = -4 - 15 = \\mathbf{-19}. \\]</p>",
-        "ar": null
+        "en": "<p>The standard form of a quadratic function is \\(f(x) = ax^2 + bx + c\\). In this problem, \\(a=1\\). The vertex form of a quadratic function is \\(f(x) = a(x-h)^2 + k\\), where $(h, k)$ is the vertex. Given the vertex is $(2, -3)$ and \\(a=1\\), the function can be written as \\(f(x) = 1(x-2)^2 - 3\\). Expanding this, we get \\(f(x) = (x^2 - 4x + 4) - 3 = x^2 - 4x + 1\\). We are given that \\(f(x) = x^2 - bx + c\\). By comparing the coefficients, we see that \\(-b = -4\\), which implies \\(b = 4\\), and \\(c = 1\\). We can verify this by checking if the point $(0, 1)$ lies on the graph of \\(f(x) = x^2 - 4x + 1\\). Substituting \\(x=0\\), we get \\(f(0) = 0^2 - 4(0) + 1 = 1\\), which matches the given point. Therefore, the value of \\(b\\) is 4.</p>"
+      },
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "x**2 - 4*x + 1"
+        ],
+        "points": [
+          {
+            "x": 0,
+            "y": 1,
+            "label": "(0, 1)"
+          },
+          {
+            "x": 2,
+            "y": -3,
+            "label": "Vertex (2, -3)"
+          }
+        ],
+        "xrange": [
+          -3,
+          5
+        ],
+        "yrange": [
+          -4,
+          6
+        ]
       }
     },
     {
       "id": "appc-p42",
       "number": 42,
-      "question": {
-        "en": "Find the exact angle \\(\\theta\\) between \\(\\mathbf{u} = \\langle 3, 1 \\rangle\\) and \\(\\mathbf{v} = \\langle 1, 2 \\rangle\\), and compute the vector projection \\(\\text{proj}_{\\mathbf{v}}\\mathbf{u}\\).",
-        "ar": null
-      },
       "difficulty": "Medium",
+      "question": {
+        "en": "The graph of the exponential function \\(f(x) = a \\cdot \\log_3(x-h) + k\\) is shown below. The function has a vertical asymptote at \\(x = 3\\) and passes through the points \\((4, 5)\\) and \\((12, 7)\\). Determine the value of the parameter \\(a\\)."
+      },
       "solution": {
-        "en": "<p><strong>Step 1: Compute dot product and magnitudes:</strong> \\[ \\mathbf{u} \\cdot \\mathbf{v} = 3(1) + 1(2) = 5, \\qquad \\|\\mathbf{u}\\| = \\sqrt{10}, \\qquad \\|\\mathbf{v}\\| = \\sqrt{5}. \\]</p><p><strong>Step 2: Angle between vectors:</strong> \\[ \\cos\\theta = \\frac{5}{\\sqrt{10}\\sqrt{5}} = \\frac{5}{5\\sqrt{2}} = \\frac{\\sqrt{2}}{2} \\implies \\mathbf{\\theta = \\frac{\\pi}{4} = 45^\\circ}. \\]</p><p><strong>Step 3: Vector projection onto \\(\\mathbf{v}\\):</strong> \\[ \\text{proj}_{\\mathbf{v}}\\mathbf{u} = \\left(\\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{v}\\|^2}\\right)\\mathbf{v} = \\frac{5}{5}\\langle 1, 2 \\rangle = \\mathbf{\\langle 1, 2 \\rangle}. \\]</p>",
-        "ar": null
+        "en": "<p>The general form of the logarithmic function is \\(f(x) = a \\cdot \\log_b(x-h) + k\\). The vertical asymptote occurs at \\(x = h\\), so we are given that \\(h = 3\\). Thus, the function can be written as \\(f(x) = a \\cdot \\log_3(x-3) + k\\).</p><p>We are given two points on the graph: \\((4, 5)\\) and \\((12, 7)\\).<br>Substituting these points into the function, we get a system of two equations:<br>1) \\(5 = a \\cdot \\log_3(4-3) + k\\)<br>   \\(5 = a \\cdot \\log_3(1) + k\\)<br>   Since \\(\\log_3(1) = 0\\), this simplifies to \\(5 = k\\).</p><p>2) \\(7 = a \\cdot \\log_3(12-3) + k\\)<br>   \\(7 = a \\cdot \\log_3(9) + k\\)<br>   Since \\(\\log_3(9) = 2\\), this becomes \\(7 = 2a + k\\).</p><p>Now substitute the value of \\(k\\) from the first equation into the second equation:<br>\\(7 = 2a + 5\\)<br>Subtract 5 from both sides:<br>\\(2 = 2a\\)<br>Divide by 2:<br>\\(a = 1\\).</p><p>Therefore, the value of the parameter \\(a\\) is 1.</p>"
+      },
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "1 * math.log(x - 3, 3) + 5",
+          "x - 3"
+        ],
+        "points": [
+          {
+            "x": 4,
+            "y": 5,
+            "label": "(4, 5)"
+          },
+          {
+            "x": 12,
+            "y": 7,
+            "label": "(12, 7)"
+          }
+        ],
+        "asy_code": "real a=1, h=3, k=5;\ndraw(graph(x->a*log(x-h,3)+k, 3.1, 15),blue); // f(x)\ndraw(graph(x->x-3, 0, 15),dotted); // asymptote x=3\ndraw((0,5)--(15,5),dashed); // y=k\ndot((4,5)); label(\"(4, 5)\", (4,5), SE);\ndot((12,7)); label(\"(12, 7)\", (12,7), SE);\nlabel(\"$f(x) = a \\log_3(x-h) + k$\", (14,9), NE);\nlabel(\"$x=3$\", (3,8), NE);\nxaxis(-1, 15, Ticks());\nyaxis(-5, 10, Ticks());",
+        "xrange": [
+          0,
+          15
+        ],
+        "yrange": [
+          -5,
+          10
+        ]
       }
     },
     {
       "id": "appc-p43",
       "number": 43,
-      "question": {
-        "en": "A particle moves in the plane with position vector \\(\\mathbf{r}(t) = \\langle 2t - 5, \\; -3t + 4 \\rangle\\) where \\(t\\) is in seconds and coordinates are in meters. Find the velocity vector, the constant speed of the particle, and the time when the particle crosses the \\(y\\)-axis.",
-        "ar": null
-      },
       "difficulty": "Medium",
+      "question": {
+        "en": "A point \\(P\\) is on the unit circle such that its terminal ray makes an angle of \\(\\theta\\) with the positive x-axis. The coordinates of \\(P\\) are \\(\\left( \\frac{1}{2}, \\frac{\\sqrt{3}}{2} \\right)\\). If a point \\(Q\\) on the unit circle has an angle \\(\\phi\\) such that \\(\\phi = \\theta + \\frac{\\pi}{3}\\), what is the y-coordinate of point \\(Q\\)?"
+      },
       "solution": {
-        "en": "<p><strong>Step 1: Velocity vector and speed:</strong> Since position is linear in \\(t\\), the velocity vector is the constant rate of change: \\[ \\mathbf{v} = \\langle 2, -3 \\rangle\\text{ m/s}, \\qquad \\text{Speed} = \\|\\mathbf{v}\\| = \\sqrt{2^2 + (-3)^2} = \\mathbf{\\sqrt{13}\\text{ m/s}}. \\]</p><p><strong>Step 2: Crossing the \\(y\\)-axis (\\(x(t) = 0\\)):</strong> \\[ 2t - 5 = 0 \\implies \\mathbf{t = 2.5\\text{ s}} \\quad\\text{at point }\\mathbf{(0, -3.5)}. \\]</p>",
-        "ar": null
+        "en": "<p>The coordinates of point \\(P\\) on the unit circle are given as \\(\\left( \\cos \\theta, \\sin \\theta \\right)\\). Therefore, \\(\\cos \\theta = \\frac{1}{2}\\) and \\(\\sin \\theta = \\frac{\\sqrt{3}}{2}\\). This implies that \\(\\theta = \\frac{\\pi}{3}\\) (or 60 degrees). The point \\(Q\\) on the unit circle has an angle \\(\\phi = \\theta + \\frac{\\pi}{3}\\). Substituting the value of \\(\\theta\\), we get \\(\\phi = \\frac{\\pi}{3} + \\frac{\\pi}{3} = \\frac{2\\pi}{3}\\) (or 120 degrees). The coordinates of \\(Q\\) are \\(\\left( \\cos \\phi, \\sin \\phi \\right)\\). We need to find the y-coordinate of \\(Q\\), which is \\(\\sin \\phi\\). Therefore, the y-coordinate of \\(Q\\) is \\(\\sin \\left( \\frac{2\\pi}{3} \\right)\\). Using the unit circle or trigonometric identities, \\(\\sin \\left( \\frac{2\\pi}{3} \\right) = \\frac{\\sqrt{3}}{2}\\).</p>"
+      },
+      "fig": {
+        "type": "unit_circle",
+        "r": 1,
+        "points": [
+          {
+            "x": "1/2",
+            "y": "sqrt(3)/2",
+            "label": "P",
+            "angle": "theta"
+          },
+          {
+            "x": "cos(theta + pi/3)",
+            "y": "sin(theta + pi/3)",
+            "label": "Q",
+            "angle": "phi"
+          }
+        ]
       }
     },
     {
       "id": "appc-p44",
       "number": 44,
-      "question": {
-        "en": "For the matrix \\(A = \\begin{pmatrix} 3 & -2 \\\\ 5 & -4 \\end{pmatrix}\\), compute \\(\\det(A)\\) and find the inverse matrix \\(A^{-1}\\).",
-        "ar": null
-      },
       "difficulty": "Easy",
+      "question": {
+        "en": "A transformation maps point \\(A = (1, 2)\\) to \\(A' = (-4, 2)\\). If this transformation is a translation, what is the component form of the translation vector \\(\\mathbf{v}\\)?"
+      },
       "solution": {
-        "en": "<p><strong>Step 1: Compute the determinant:</strong> \\[ \\det(A) = (3)(-4) - (-2)(5) = -12 + 10 = \\mathbf{-2}. \\]</p><p><strong>Step 2: Apply the \\(2 \\times 2\\) inverse formula:</strong> \\[ A^{-1} = \\frac{1}{\\det(A)}\\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix} = -\\frac{1}{2}\\begin{pmatrix} -4 & 2 \\\\ -5 & 3 \\end{pmatrix} = \\mathbf{\\begin{pmatrix} 2 & -1 \\\\ 5/2 & -3/2 \\end{pmatrix}}. \\]</p>",
-        "ar": null
+        "en": "<p>Let the initial point be \\(A = (x_1, y_1)\\) and the translated point be \\(A' = (x_2, y_2)\\). The translation vector \\(\\mathbf{v}\\) is given by \\(\\mathbf{v} = \\langle x_2 - x_1, y_2 - y_1 \\rangle\\). In this case, \\((x_1, y_1) = (1, 2)\\) and \\((x_2, y_2) = (-4, 2)\\). Therefore, \\(\\mathbf{v} = \\langle -4 - 1, 2 - 2 \\rangle = \\langle -5, 0 \\rangle\\).</p>"
+      },
+      "fig": {
+        "type": "transformation_grid",
+        "xmin": -6,
+        "xmax": 6,
+        "ymin": -6,
+        "ymax": 6,
+        "object": [
+          [
+            1,
+            2
+          ]
+        ],
+        "objectLabels": [
+          "A"
+        ],
+        "image": [
+          [
+            -4,
+            2
+          ]
+        ],
+        "imageLabels": [
+          "A'"
+        ]
       }
     },
     {
       "id": "appc-p45",
       "number": 45,
+      "difficulty": "Easy",
       "question": {
-        "en": "Use a matrix inverse to solve the linear system \\(\\begin{cases} 3x - 2y = 8 \\\\ 5x - 4y = 14 \\end{cases}\\).",
-        "ar": null
+        "en": "Consider the quadratic function \\(f(x) = x^2 - 4x + 3\\). What are the x-intercepts of the graph of this function?"
       },
-      "difficulty": "Medium",
       "solution": {
-        "en": "<p><strong>Step 1: Write in matrix form \\(A\\mathbf{x} = \\mathbf{b}\\):</strong> Here \\(A = \\begin{pmatrix} 3 & -2 \\\\ 5 & -4 \\end{pmatrix}\\) and \\(\\mathbf{b} = \\begin{pmatrix} 8 \\\\ 14 \\end{pmatrix}\\).</p><p><strong>Step 2: Multiply by \\(A^{-1} = \\begin{pmatrix} 2 & -1 \\\\ 5/2 & -3/2 \\end{pmatrix}\\):</strong> \\[ \\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 2 & -1 \\\\ 5/2 & -3/2 \\end{pmatrix}\\begin{pmatrix} 8 \\\\ 14 \\end{pmatrix} = \\begin{pmatrix} 16 - 14 \\\\ 20 - 21 \\end{pmatrix} = \\mathbf{\\begin{pmatrix} 2 \\\\ -1 \\end{pmatrix}}. \\]</p>",
-        "ar": null
+        "en": "<p>To find the x-intercepts of the graph of a function, we need to find the values of \\(x\\) for which \\(f(x) = 0\\). For the given function \\(f(x) = x^2 - 4x + 3\\), we set \\(x^2 - 4x + 3 = 0\\). This is a quadratic equation that can be solved by factoring. We look for two numbers that multiply to 3 and add to -4. These numbers are -1 and -3. Thus, we can factor the equation as \\((x - 1)(x - 3) = 0\\). Setting each factor to zero, we get \\(x - 1 = 0\\) or \\(x - 3 = 0\\). Solving these equations gives \\(x = 1\\) and \\(x = 3\\). Therefore, the x-intercepts are \\((1, 0)\\) and \\((3, 0)\\).</p>"
+      },
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "x*x - 4*x + 3",
+          "0"
+        ],
+        "points": [],
+        "xrange": [
+          -2,
+          6
+        ],
+        "yrange": [
+          -3,
+          6
+        ]
       }
     },
     {
       "id": "appc-p46",
       "number": 46,
+      "difficulty": "Easy",
       "question": {
-        "en": "A linear transformation \\(T: \\mathbb{R}^2 \\to \\mathbb{R}^2\\) first reflects vectors across the \\(y\\)-axis and then rotates them counterclockwise by \\(90^\\circ\\). Find the standard \\(2 \\times 2\\) matrix \\(M\\) of \\(T\\), and find the image of the triangle with vertices \\((0,0), (2,0), (2,3)\\), along with its transformed area.",
-        "ar": null
+        "en": "The graph of the exponential function \\(f(x) = 2^x\\) is given. A point P on the graph has a y-coordinate of 8. What is the x-coordinate of point P?"
       },
-      "difficulty": "Medium",
       "solution": {
-        "en": "<p><strong>Step 1: Multiply the transformation matrices \\(M = R_{90^\\circ} \\cdot \\text{Ref}_y\\):</strong> \\[ M = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}\\begin{pmatrix} -1 & 0 \\\\ 0 & 1 \\end{pmatrix} = \\mathbf{\\begin{pmatrix} 0 & -1 \\\\ -1 & 0 \\end{pmatrix}}. \\]</p><p><strong>Step 2: Image of vertices and area:</strong> \\[ (0,0) \\mapsto (0,0), \\quad (2,0) \\mapsto (0,-2), \\quad (2,3) \\mapsto (-3,-2). \\] Since \\(|\\det(M)| = |0 - 1| = 1\\), area is preserved: \\(\\text{Area} = 1 \\times \\left(\\frac{1}{2}\\cdot 2 \\cdot 3\\right) = \\mathbf{3}\\).</p>",
-        "ar": null
+        "en": "<p>The function is given by \\(f(x) = 2^x\\). We are looking for a point P on the graph where the y-coordinate is 8. This means we need to solve for \\(x\\) when \\(f(x) = 8\\). So, we have the equation \\(2^x = 8\\). Since \\(8 = 2^3\\), we can rewrite the equation as \\(2^x = 2^3\\). By equating the exponents, we find that \\(x = 3\\). Therefore, the x-coordinate of point P is 3.</p>"
+      },
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "2**x"
+        ],
+        "points": [],
+        "xrange": [
+          -2,
+          4
+        ],
+        "yrange": [
+          0,
+          10
+        ]
       }
     },
     {
       "id": "appc-p47",
       "number": 47,
+      "difficulty": "Easy",
       "question": {
-        "en": "Two competing streaming platforms track monthly subscriber transitions. Each month, Platform A retains \\(80\\%\\) of its subscribers and loses \\(20\\%\\) to Platform B, while Platform B retains \\(70\\%\\) and loses \\(30\\%\\) to Platform A. Write the Markov transition matrix \\(P\\), find the state distribution after 1 month if initial shares are \\(\\mathbf{x}_0 = \\begin{pmatrix} 0.5 \\\\ 0.5 \\end{pmatrix}\\), and find the long-term steady-state distribution.",
-        "ar": null
+        "en": "A right-angled triangle ABC is shown with the right angle at vertex C. The length of side AC is 8 units and the length of side BC is 6 units. What is the value of \\(\\sin(\\angle BAC)\\)?"
       },
-      "difficulty": "Hard",
       "solution": {
-        "en": "<p><strong>Step 1: Construct column-stochastic transition matrix \\(P\\):</strong> \\[ P = \\begin{pmatrix} 0.8 & 0.3 \\\\ 0.2 & 0.7 \\end{pmatrix}. \\]</p><p><strong>Step 2: State after 1 month:</strong> \\[ \\mathbf{x}_1 = P\\mathbf{x}_0 = \\begin{pmatrix} 0.8(0.5) + 0.3(0.5) \\\\ 0.2(0.5) + 0.7(0.5) \\end{pmatrix} = \\mathbf{\\begin{pmatrix} 0.55 \\\\ 0.45 \\end{pmatrix}}. \\]</p><p><strong>Step 3: Steady-state vector \\(P\\mathbf{q} = \\mathbf{q}\\) with \\(q_1 + q_2 = 1\\):</strong> \\[ -0.2q_1 + 0.3q_2 = 0 \\implies q_1 = 1.5q_2 \\implies 2.5q_2 = 1 \\implies \\mathbf{\\mathbf{q} = \\begin{pmatrix} 0.6 \\\\ 0.4 \\end{pmatrix}}. \\]</p>",
-        "ar": null
+        "en": "<p>The triangle ABC is a right-angled triangle with the right angle at C. We are given AC = 8 and BC = 6. We want to find \\(\\sin(\\angle BAC)\\).</p><p>In a right-angled triangle, the sine of an angle is defined as the ratio of the length of the side opposite the angle to the length of the hypotenuse.</p><p>First, we need to find the length of the hypotenuse AB using the Pythagorean theorem: \\(AB^2 = AC^2 + BC^2\\).<br>\\(AB^2 = 8^2 + 6^2\\)<br>\\(AB^2 = 64 + 36\\)<br>\\(AB^2 = 100\\)<br>\\(AB = \\sqrt{100} = 10\\) units.</p><p>Now, we can find \\(\\sin(\\angle BAC)\\):<br>\\(\\sin(\\angle BAC) = \\frac{\\text{Opposite}}{\\text{Hypotenuse}} = \\frac{BC}{AB}\\)<br>\\(\\sin(\\angle BAC) = \\frac{6}{10} = \\frac{3}{5}\\).</p><p>Therefore, the value of \\(\\sin(\\angle BAC)\\) is \\(\\frac{3}{5}\\).</p>"
+      },
+      "fig": {
+        "type": "triangle",
+        "vertices": [
+          [
+            0,
+            0
+          ],
+          [
+            8,
+            0
+          ],
+          [
+            0,
+            6
+          ]
+        ],
+        "labels": [
+          "C",
+          "A",
+          "B"
+        ],
+        "sides": [
+          "6",
+          "8",
+          "x"
+        ],
+        "angles": [
+          "90°",
+          "",
+          ""
+        ]
       }
     },
     {
       "id": "appc-p48",
       "number": 48,
+      "difficulty": "Easy",
       "question": {
-        "en": "Find the values of \\(k\\) for which the matrix \\(B = \\begin{pmatrix} k - 1 & 3 \\\\ 4 & k + 3 \\end{pmatrix}\\) is singular (non-invertible).",
-        "ar": null
+        "en": "Consider the transformation grid below. If the original point \\(A\\) is mapped to \\(A'\\), what is the vector representing this translation?"
       },
-      "difficulty": "Hard",
       "solution": {
-        "en": "<p><strong>Step 1: Set the determinant equal to zero:</strong> \\[ \\det(B) = (k - 1)(k + 3) - (3)(4) = 0. \\]</p><p><strong>Step 2: Expand and factor the quadratic equation:</strong> \\[ k^2 + 2k - 3 - 12 = k^2 + 2k - 15 = (k + 5)(k - 3) = 0. \\] Thus \\(B\\) is singular for \\(\\mathbf{k = -5}\\) and \\(\\mathbf{k = 3}\\).</p>",
-        "ar": null
+        "en": "<p>The vector representing a translation from point \\(P = (x_1, y_1)\\) to point \\(P' = (x_2, y_2)\\) is given by \\(\\langle x_2 - x_1, y_2 - y_1 \\rangle\\). In this case, point \\(A\\) is at \\((1, 2)\\) and point \\(A'\\) is at \\((-5, 2)\\). Therefore, the translation vector is \\(\\langle -5 - 1, 2 - 2 \\rangle = \\langle -6, 0 \\rangle\\).</p>"
+      },
+      "fig": {
+        "type": "transformation_grid",
+        "xmin": -6,
+        "xmax": 6,
+        "ymin": -6,
+        "ymax": 6,
+        "object": [
+          [
+            1,
+            2
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            2,
+            5
+          ]
+        ],
+        "objectLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "image": [
+          [
+            -5,
+            2
+          ],
+          [
+            -2,
+            2
+          ],
+          [
+            -4,
+            5
+          ]
+        ],
+        "imageLabels": [
+          "A'",
+          "B'",
+          "C'"
+        ],
+        "mirrorLine": null
       }
     },
     {
       "id": "appc-p49",
       "number": 49,
+      "difficulty": "Easy",
       "question": {
-        "en": "A projectile is launched from the ground with initial speed \\(v_0 = 40\\text{ m/s}\\) at an angle of \\(30^\\circ\\) above the horizontal (take \\(g = 9.8\\text{ m/s}^2\\)). Write the parametric equations \\((x(t), y(t))\\), find the exact flight time, maximum height, and horizontal range.",
-        "ar": null
+        "en": "Consider the polynomial function \\(f(x) = x^2 - 5x + 6\\). What are the roots of the function \\(f(x)\\)?"
       },
-      "difficulty": "Hard",
       "solution": {
-        "en": "<p><strong>Step 1: Parametric equations:</strong> With \\(v_0\\cos 30^\\circ = 20\\sqrt{3}\\) and \\(v_0\\sin 30^\\circ = 20\\): \\[ x(t) = 20\\sqrt{3}\\,t, \\qquad y(t) = 20t - 4.9t^2. \\]</p><p><strong>Step 2: Flight time, peak height, and range:</strong><ul><li><strong>Flight time (\\(y(t) = 0\\)):</strong> \\(t = \\dfrac{20}{4.9} = \\mathbf{\\dfrac{200}{49} \\approx 4.08\\text{ s}}\\).</li><li><strong>Maximum height (at \\(t = 100/49\\text{ s}\\)):</strong> \\(y_{\\max} = \\dfrac{20^2}{2(9.8)} = \\mathbf{\\dfrac{1000}{49} \\approx 20.41\\text{ m}}\\).</li><li><strong>Horizontal range:</strong> \\(R = 20\\sqrt{3}\\left(\\dfrac{200}{49}\\right) = \\mathbf{\\dfrac{4000\\sqrt{3}}{49} \\approx 141.39\\text{ m}}\\).</li></ul></p>",
-        "ar": null
+        "en": "<p>To find the roots of the function \\(f(x) = x^2 - 5x + 6\\), we need to solve the equation \\(f(x) = 0\\). This means we need to find the values of \\(x\\) for which \\(x^2 - 5x + 6 = 0\\). This is a quadratic equation that can be solved by factoring. We are looking for two numbers that multiply to 6 and add up to -5. These numbers are -2 and -3. Therefore, we can factor the quadratic as \\((x-2)(x-3) = 0\\). Setting each factor to zero gives us the roots: \\(x-2 = 0 \\implies x = 2\\) and \\(x-3 = 0 \\implies x = 3\\). Thus, the roots of the function \\(f(x)\\) are 2 and 3.</p>"
+      },
+      "fig": {
+        "type": "fn",
+        "fns": [
+          "x*x - 5*x + 6"
+        ],
+        "xrange": [
+          -1,
+          6
+        ],
+        "yrange": [
+          -2,
+          7
+        ]
       }
     },
     {
       "id": "appc-p50",
       "number": 50,
+      "difficulty": "Easy",
       "question": {
-        "en": "Find the focus, directrix, and focal width of the parabola \\((y - 3)^2 = -12(x + 1)\\).",
-        "ar": null
+        "en": "A point P lies on the unit circle such that its terminal ray makes an angle of \\(\\theta\\) with the positive x-axis. If the x-coordinate of P is \\(\\frac{1}{2}\\), what is the y-coordinate of P? Assume \\(\\theta\\) is in the first quadrant."
       },
-      "difficulty": "Hard",
       "solution": {
-        "en": "<p><strong>Step 1: Match standard horizontal parabola form \\((y - k)^2 = 4p(x - h)\\):</strong> Vertex is \\((h, k) = (-1, 3)\\), and \\(4p = -12 \\implies p = -3 < 0\\) (opens left).</p><p><strong>Step 2: Focus, directrix, and focal width:</strong><ul><li><strong>Focus:</strong> \\((h + p, k) = (-1 - 3, 3) = \\mathbf{(-4, 3)}\\).</li><li><strong>Directrix:</strong> Vertical line \\(x = h - p = -1 - (-3) = \\mathbf{x = 2}\\).</li><li><strong>Focal Width (Latus Rectum):</strong> \\(|4p| = \\mathbf{12}\\).</li></ul></p>",
-        "ar": null
+        "en": "<p>For a point P on the unit circle, its coordinates are given by \\((\\cos \\theta, \\sin \\theta)\\). We are given that the x-coordinate of P is \\(\\frac{1}{2}\\), so \\(\\cos \\theta = \\frac{1}{2}\\). Since P is on the unit circle, its coordinates satisfy the equation \\(x^2 + y^2 = 1\\). Substituting the x-coordinate, we get \\((\\frac{1}{2})^2 + y^2 = 1\\). This simplifies to \\(\\frac{1}{4} + y^2 = 1\\). Subtracting \\(\\frac{1}{4}\\) from both sides gives \\(y^2 = 1 - \\frac{1}{4} = \\frac{3}{4}\\). Taking the square root of both sides, we get \\(y = \\pm \\frac{\\sqrt{3}}{2}\\). Since the problem states that \\(\\theta\\) is in the first quadrant, the y-coordinate must be positive. Therefore, the y-coordinate of P is \\(\\frac{\\sqrt{3}}{2}\\).</p>"
+      },
+      "fig": {
+        "type": "unit_circle",
+        "r": 1,
+        "point": [
+          0.5,
+          "y"
+        ],
+        "angle": "theta",
+        "labels": [
+          "P"
+        ]
       }
     }
   ]
