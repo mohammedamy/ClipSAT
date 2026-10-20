@@ -229,6 +229,19 @@ audit(`Curriculum directory covers 28 complete tracks with _meta.json and chapte
   });
 });
 
+audit(`Every curriculum track has a 50-question _practice-set.json (1,400 total practice-set items)`, () => {
+  let totalPracticeItems = 0;
+  contentTracks.forEach(t => {
+    const psP = path.join(contentDir, t, '_practice-set.json');
+    assert.ok(fs.existsSync(psP), `_practice-set.json must exist in content/${t}/`);
+    const ps = JSON.parse(fs.readFileSync(psP, 'utf8'));
+    assert.ok(Array.isArray(ps.items), `content/${t}/_practice-set.json must have items[]`);
+    assert.strictEqual(ps.items.length, 50, `Expected 50 items in content/${t}/_practice-set.json, found ${ps.items.length}`);
+    totalPracticeItems += ps.items.length;
+  });
+  assert.strictEqual(totalPracticeItems, 1400, `Expected 1,400 total practice-set items, found ${totalPracticeItems}`);
+});
+
 const siteDir = path.join(__dirname, '..', '_site');
 if (fs.existsSync(siteDir)) {
   audit(`Compiled _site contains entrypoints for all 28 tracks and index.html`, () => {

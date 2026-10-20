@@ -667,6 +667,25 @@ def process_track(track_id: str, taxonomy: dict) -> tuple[int, int]:
             item_list[i] = q
             flat_idx += 1
 
+    if track_id == "sat" and not is_tiered:
+        pool_ref = bank_data["pool"]
+        spr_count = sum(1 for it in pool_ref if it.get("type") == "spr")
+        for it in pool_ref:
+            if spr_count >= 405:
+                break
+            if it.get("type") == "spr":
+                continue
+            ch = it.get("choices") or []
+            a_idx = it.get("answer") if it.get("answer") is not None else it.get("correct", 0)
+            if isinstance(a_idx, int) and 0 <= a_idx < len(ch):
+                raw_a = str(ch[a_idx]).strip()
+                clean_a = re.sub(r"^\\\(|\\\)$", "", raw_a).strip()
+                if re.fullmatch(r"-?\d+(?:\.\d+)?", clean_a):
+                    it["type"] = "spr"
+                    it["sprAnswer"] = clean_a
+                    it["ans"] = clean_a
+                    spr_count += 1
+
     bank_path.write_text(json.dumps(bank_data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return flat_idx, repaired_count
 

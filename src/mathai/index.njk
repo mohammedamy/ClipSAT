@@ -22,6 +22,10 @@ isRtl: false
         {% include "partials/chapter.njk" %}
       {% endfor %}
 
+      {% set sectionId = 'ai-practice' %}
+      {% set practiceSet = mathai.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
       {% set sectionId = 'ai-testgen' %}
       {% set testGenerator = mathai.meta.meta.testGenerator %}
       {% include "partials/test-generator.njk" %}

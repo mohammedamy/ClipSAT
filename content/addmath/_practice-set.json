@@ -1,0 +1,607 @@
+{
+  "variant": "standard",
+  "heading": "Practice set",
+  "introText": "Fifty Cambridge IGCSE Additional Mathematics (0606) and Pearson Edexcel Further Pure Mathematics (4PM1) problems spanning functions, modulus and quadratic theory, polynomials and the binomial theorem, logarithms and straight-line reduction, circular measure and trigonometry, permutations and combinations, differentiation and connected rates of change, integration and kinematics, and 2D vectors. Click any problem for the complete worked solution.",
+  "items": [
+    {
+      "number": 1,
+      "question": {
+        "en": "Find the equation of the tangent line to the curve \\( y = (4x + 1)^3 \\) at the point where \\( x = 0 \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>At \\( x = 0 \\), \\( y = 1^3 = 1 \\). Derivative: \\( \\frac{dy}{dx} = 3(4x+1)^2 \\cdot (4) = 12(4x+1)^2 \\). At \\( x = 0 \\), slope \\( m = 12 \\). Equation: \\( y - 1 = 12(x - 0) \\implies y = 12x + 1 \\).</p><p><strong>Final Answer:</strong> \\( y = 12x + 1 \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 2,
+      "question": {
+        "en": "A curve has equation \\( y = x\\sqrt{16 - x^2} \\) for \\( 0 \\le x \\le 4 \\). A point \\( P(x, y) \\) moves along the curve in the first quadrant, and the normal to the curve at \\( P \\) intersects the \\( x \\)-axis at the point \\( N \\). Given that the \\( x \\)-coordinate of \\( P \\) is increasing at a constant rate of \\( \\sqrt{3} \\text{ units s}^{-1} \\), find the rate of change of the area of triangle \\( OPN \\), where \\( O \\) is the origin, at the instant when \\( x = 2 \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Step 1: Differentiate \\( y = x\\sqrt{16 - x^2} \\) using the product rule:<br>\\[<br>\\frac{dy}{dx} = 1 \\cdot \\sqrt{16 - x^2} + x \\cdot \\frac{-2x}{2\\sqrt{16 - x^2}} = \\frac{16 - 2x^2}{\\sqrt{16 - x^2}}<br>\\]<br>At \\( x = 2 \\):<br>\\[<br>y = 2\\sqrt{16 - 4} = 4\\sqrt{3}<br>\\]<br>\\[<br>\\frac{dy}{dx} = \\frac{16 - 2(4)}{\\sqrt{12}} = \\frac{8}{2\\sqrt{3}} = \\frac{4}{\\sqrt{3}}<br>\\]</p><p>Step 2: Find the coordinates of \\( N \\), the \\( x \\)-intercept of the normal.<br>The gradient of the normal at \\( P \\) is:<br>\\[<br>m_N = -\\frac{1}{\\frac{dy}{dx}} = -\\frac{\\sqrt{16 - x^2}}{16 - 2x^2}<br>\\]<br>The equation of the normal is \\( Y - y = m_N(X - x) \\). Setting \\( Y = 0 \\) gives the \\( x \\)-intercept \\( X_N \\):<br>\\[<br>-y = m_N(X_N - x) \\implies X_N = x - \\frac{y}{m_N} = x + y \\frac{dy}{dx}<br>\\]<br>Substituting \\( y = x\\sqrt{16 - x^2} \\) and \\( \\frac{dy}{dx} = \\frac{16 - 2x^2}{\\sqrt{16 - x^2}} \\):<br>\\[<br>X_N = x + x(16 - 2x^2) = 17x - 2x^3<br>\\]<br>At \\( x = 2 \\), \\( X_N = 17(2) - 2(2^3) = 34 - 16 = 18 \\).</p><p>Step 3: Determine the area of triangle \\( OPN \\).<br>Since \\( O(0,0) \\) and \\( N(X_N, 0) \\) lie on the \\( x \\)-axis, the base of the triangle is \\( X_N \\) and the perpendicular height is \\( y \\):<br>\\[<br>A = \\frac{1}{2} X_N y<br>\\]<br>Differentiating with respect to time \\( t \\) using the product rule:<br>\\[<br>\\frac{dA}{dt} = \\frac{1}{2}\\left( y \\frac{dX_N}{dt} + X_N \\frac{dy}{dt} \\right)<br>\\]<br>Using the chain rule with \\( \\frac{dx}{dt} = \\sqrt{3} \\):<br>\\[<br>\\frac{dX_N}{dx} = 17 - 6x^2 \\implies \\left.\\frac{dX_N}{dx}\\right|_{x=2} = 17 - 24 = -7 \\implies \\frac{dX_N}{dt} = -7\\sqrt{3}<br>\\]<br>\\[<br>\\frac{dy}{dt} = \\frac{dy}{dx} \\frac{dx}{dt} = \\frac{4}{\\sqrt{3}} \\cdot \\sqrt{3} = 4<br>\\]</p><p>Step 4: Compute \\( \\frac{dA}{dt} \\):<br>\\[<br>\\frac{dA}{dt} = \\frac{1}{2}\\left[ (4\\sqrt{3})(-7\\sqrt{3}) + (18)(4) \\right] = \\frac{1}{2}[ -84 + 72 ] = \\frac{1}{2}(-12) = -6 \\text{ units}^2\\text{ s}^{-1}<br>\\]</p><p><strong>Final Answer:</strong> \\( -6 \\text{ units}^2\\text{ s}^{-1} \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 3,
+      "question": {
+        "en": "Find the set of values of the constant \\( m \\) for which the equation \\[ |2x - 6| = mx + 2 \\] has exactly two distinct real solutions.",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>We consider the function \\( y = |2x - 6| \\) and the line \\( y = mx + 2 \\).</p><p>1. <strong>Analyze the modulus function:</strong><br>   The graph of \\( y = |2x - 6| \\) consists of two linear rays meeting at the vertex \\( (3, 0) \\):<br>   \\[<br>   y = <br>   \\begin{cases} <br>   2x - 6, & \\text{for } x \\ge 3 \\text{ (gradient } 2\\text{)}, \\\\<br>   -2x + 6, & \\text{for } x < 3 \\text{ (gradient } -2\\text{)}.<br>   \\end{cases}<br>   \\]</p><p>2. <strong>Analyze the line \\( y = mx + 2 \\):</strong><br>   The line has a fixed \\( y \\)-intercept at \\( (0, 2) \\) and variable gradient \\( m \\).</p><p>3. <strong>Lower boundary (passing through the vertex):</strong><br>   The line passes through the vertex \\( (3, 0) \\) when:<br>   \\[<br>   0 = m(3) + 2 \\implies m = -\\frac{2}{3}.<br>   \\]<br>   - If \\( m < -\\frac{2}{3} \\), the line passes below the vertex \\( (3, 0) \\) and does not intersect the right ray \\( x \\ge 3 \\).<br>   - At \\( m = -\\frac{2}{3} \\), the line meets the vertex \\( (3, 0) \\) as its only intersection point on both rays, giving exactly one real solution.<br>   - Therefore, for two distinct solutions, we must have \\( m > -\\frac{2}{3} \\).</p><p>4. <strong>Upper boundary (parallelism with the right ray):</strong><br>   The right ray has gradient \\( 2 \\).<br>   - If \\( m = 2 \\), the line \\( y = 2x + 2 \\) is parallel to \\( y = 2x - 6 \\) and never intersects the right ray; it intersects only the left ray at \\( -2x + 6 = 2x + 2 \\implies x = 1 \\) (1 solution).<br>   - If \\( m > 2 \\), the line is steeper than the right ray and starts above it at \\( x = 0 \\), so it only intersects the left ray once and never intersects the right ray.<br>   - Therefore, the line must be less steep than the right ray: \\( m < 2 \\).</p><p>5. <strong>Verification of two intersections for \\( -\\frac{2}{3} < m < 2 \\):</strong><br>   - Intersection with right ray: \\( 2x - 6 = mx + 2 \\implies (2 - m)x = 8 \\implies x = \\frac{8}{2 - m} \\). Since \\( m < 2 \\) and \\( m > -\\frac{2}{3} \\), we have \\( 2 - m < \\frac{8}{3} \\), which implies \\( x > 3 \\) (valid).<br>   - Intersection with left ray: \\( -2x + 6 = mx + 2 \\implies (m + 2)x = 4 \\implies x = \\frac{4}{m + 2} \\). Since \\( m > -\\frac{2}{3} > -2 \\), \\( m + 2 > \\frac{4}{3} \\), which implies \\( 0 < x < 3 \\) (valid).</p><p>Thus, exactly two distinct real solutions occur when \\( -\\frac{2}{3} < m < 2 \\).</p><p><strong>Common Traps:</strong><br>- Squaring both sides blindly introduces extraneous roots where \\( mx + 2 < 0 \\).</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 4,
+      "question": {
+        "en": "The function \\( f(x) = \\frac{3x + 1}{x - 2} \\) is defined for \\( x \\ne 2 \\). Find the inverse function \\( f^{-1}(x) \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Let \\( y = \\frac{3x + 1}{x - 2} \\implies y(x - 2) = 3x + 1 \\implies yx - 2y = 3x + 1 \\implies x(y - 3) = 2y + 1 \\implies x = \\frac{2y + 1}{y - 3} \\). Swap variables to obtain \\( f^{-1}(x) = \\frac{2x + 1}{x - 3} \\).</p><p><strong>Final Answer:</strong> \\( f^{-1}(x) = \\frac{2x + 1}{x - 3} \\quad (x \\ne 3) \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 5,
+      "question": {
+        "en": "A particle moves in a straight line with acceleration \\( a(t) = 6t - 12 \\text{ m/s}^2 \\). If it starts from rest at the origin (at \\( t = 0 \\)), at what time \\( t > 0 \\) does the particle momentarily come to rest again?",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Velocity \\( v(t) = \\int (6t - 12)\\,dt = 3t^2 - 12t + C \\). Since \\( v(0) = 0 \\implies C = 0 \\). Momentarily at rest when \\( v(t) = 0 \\implies t(3t - 12) = 0 \\implies t = \\frac{12}{3} \\text{ s} \\).</p><p><strong>Final Answer:</strong> \\( t = \\frac{12}{3} \\text{ s} \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 6,
+      "question": {
+        "en": "The curve \\( C \\) has equation \\( y = x^3 - 3x + 2 \\). The tangent to \\( C \\) at the point \\( P(2, 4) \\) intersects the curve again at point \\( Q \\). Find the area of the finite region completely enclosed between the curve \\( C \\) and the tangent line.",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>To find the area of the enclosed region, we synthesize differential calculus, polynomial algebra, and definite integration:</p><p>1. <strong>Find the equation of the tangent line at \\( P(2, 4) \\):</strong><br>   Differentiating the curve equation:<br>   \\[<br>   \\frac{dy}{dx} = 3x^2 - 3<br>   \\]<br>   At \\( x = 2 \\), the gradient of the tangent is:<br>   \\[<br>   m = 3(2)^2 - 3 = 12 - 3 = 9<br>   \\]<br>   Using the point-slope formula with \\( P(2, 4) \\):<br>   \\[<br>   y - 4 = 9(x - 2) \\implies y = 9x - 14<br>   \\]</p><p>2. <strong>Find the intersection point \\( Q \\):</strong><br>   Set the curve and tangent equations equal:<br>   \\[<br>   x^3 - 3x + 2 = 9x - 14 \\implies x^3 - 12x + 16 = 0<br>   \\]<br>   Since the line is tangent to the curve at \\( x = 2 \\), \\( (x - 2)^2 \\) must be a factor of the polynomial:<br>   \\[<br>   (x - 2)^2 = x^2 - 4x + 4<br>   \\]<br>   Dividing \\( x^3 - 12x + 16 \\) by \\( x^2 - 4x + 4 \\) gives \\( (x + 4) \\):<br>   \\[<br>   (x - 2)^2(x + 4) = 0<br>   \\]<br>   Thus, the other intersection point \\( Q \\) occurs at \\( x = -4 \\).</p><p>3. <strong>Compute the enclosed area:</strong><br>   For \\( x \\in (-4, 2) \\), the curve lies above the tangent line (e.g., at \\( x = 0 \\), \\( y_{\\text{curve}} = 2 \\) while \\( y_{\\text{tangent}} = -14 \\)).<br>   The enclosed area \\( A \\) is given by:<br>   \\[<br>   A = \\int_{-4}^{2} \\left[(x^3 - 3x + 2) - (9x - 14)\\right] dx = \\int_{-4}^{2} (x^3 - 12x + 16) \\, dx<br>   \\]<br>   Finding the antiderivative:<br>   \\[<br>   F(x) = \\frac{x^4}{4} - 6x^2 + 16x<br>   \\]<br>   Evaluating at the boundaries:<br>   \\[<br>   F(2) = \\frac{2^4}{4} - 6(2)^2 + 16(2) = 4 - 24 + 32 = 12<br>   \\]<br>   \\[<br>   F(-4) = \\frac{(-4)^4}{4} - 6(-4)^2 + 16(-4) = 64 - 96 - 64 = -96<br>   \\]<br>   Therefore:<br>   \\[<br>   A = F(2) - F(-4) = 12 - (-96) = 108<br>   \\]</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 7,
+      "question": {
+        "en": "Solve the exponential equation \\( 2^{x+2} = 5^x \\), giving \\( x \\) in terms of common logarithms.",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Take natural logs of both sides: \\( (x + 2)\\ln 2 = x\\ln 5 \\implies x\\ln 2 + 2\\ln 2 = x\\ln 5 \\implies x(\\ln 5 - \\ln 2) = 2\\ln 2 \\implies x = \\frac{2\\ln 2}{\\ln 5 - \\ln 2} \\).</p><p><strong>Final Answer:</strong> \\( x = \\frac{2\\ln 2}{\\ln 5 - \\ln 2} \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 8,
+      "question": {
+        "en": "The variables \\( x \\) and \\( y \\), where \\( x > 0 \\), satisfy the relationship \\(   y = a x + \\frac{b}{x} \\) where \\( a \\) and \\( b \\) are positive constants. When \\( x y \\) is plotted on the vertical axis against \\( x^2 \\) on the horizontal axis, a straight line is obtained which passes through the points \\( (2, 11) \\) and \\( (5, 23) \\).<br>Given further that \\( x \\) and \\( y \\) satisfy the logarithmic equation \\(   \\log_3(y - a x) + \\log_9\\left(x^2 y^2\\right) = 1 + \\log_3(x + 10) \\) find the sum of all possible values of \\( x \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>We proceed in three main stages:</p><p><strong>Stage 1: Straight-Line Reduction to determine \\( a \\) and \\( b \\)</strong><br>Multiplying \\( y = a x + \\frac{b}{x} \\) by \\( x \\) yields:<br>\\(<br>  x y = a(x^2) + b<br>\\)<br>Letting \\( Y = x y \\) and \\( X = x^2 \\), the equation is in the linear form \\( Y = a X + b \\).<br>The line passes through \\( (2, 11) \\) and \\( (5, 23) \\). The gradient is:<br>\\(<br>  a = \\frac{23 - 11}{5 - 2} = \\frac{12}{3} = 4<br>\\)<br>Substituting into \\( Y = 4X + b \\) using \\( (2, 11) \\):<br>\\(<br>  11 = 4(2) + b \\implies b = 3<br>\\)<br>Thus, \\( y = 4x + \\frac{3}{x} \\), which implies \\( y - 4x = \\frac{3}{x} \\) and \\( x y = 4x^2 + 3 \\).</p><p><strong>Stage 2: Simplify the Logarithmic Equation</strong><br>Substitute \\( a = 4 \\) and \\( y - 4x = \\frac{3}{x} \\) into the given equation:<br>\\(<br>  \\log_3(y - 4x) = \\log_3\\left(\\frac{3}{x}\\right) = \\log_3 3 - \\log_3 x = 1 - \\log_3 x<br>\\)<br>Using the change of base rule \\( \\log_9(u) = \\frac{\\log_3(u)}{\\log_3 9} = \\frac{1}{2}\\log_3(u) \\):<br>\\(<br>  \\log_9\\left(x^2 y^2\\right) = \\frac{1}{2}\\log_3\\left((x y)^2\\right) = \\log_3(x y)<br>\\)<br>(since \\( x > 0 \\) and \\( y > 0 \\)).</p><p>Now combine the terms on the left-hand side:<br>\\(<br>  \\text{LHS} = (1 - \\log_3 x) + \\log_3(x y) = 1 + \\log_3\\left(\\frac{x y}{x}\\right) = 1 + \\log_3 y<br>\\)<br>The equation becomes:<br>\\(<br>  1 + \\log_3 y = 1 + \\log_3(x + 10) \\implies \\log_3 y = \\log_3(x + 10) \\implies y = x + 10<br>\\)</p><p><strong>Stage 3: Solve for \\( x \\)</strong><br>Equating the two expressions for \\( y \\):<br>\\(<br>  4x + \\frac{3}{x} = x + 10<br>\\)<br>\\(<br>  3x + \\frac{3}{x} = 10 \\implies 3x^2 - 10x + 3 = 0<br>\\)<br>Factoring the quadratic:<br>\\(<br>  (3x - 1)(x - 3) = 0 \\implies x = \\frac{1}{3} \\quad \\text{or} \\quad x = 3<br>\\)<br>Both values are positive and satisfy all domain restrictions of the original logarithmic expressions.</p><p>The sum of all possible values of \\( x \\) is:<br>\\(<br>  \\frac{1}{3} + 3 = \\frac{10}{3}<br>\\)</p><p><strong>Final Answer:</strong> \\( \\frac{10}{3} \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 9,
+      "question": {
+        "en": "A group of \\( n \\) students, which includes Ali and Priya, are to be arranged in a straight line for a photograph. The number of different arrangements in which Ali and Priya are not standing next to each other is \\( 3600 \\). Find the value of the integer \\( n \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>We can find the number of arrangements where Ali and Priya do not stand next to each other using the complementary method or the insertion (gap) method.</p><p><strong>Method 1: Complementary Counting</strong><br>1. The total number of unrestricted arrangements of the \\( n \\) students in a straight line is \\( n! \\).<br>2. Consider the arrangements in which Ali and Priya *do* stand next to each other:<br>   - Treat Ali and Priya as a single block. There are now \\( (n - 1) \\) entities to arrange, which can be done in \\( (n - 1)! \\) ways.<br>   - Within the block, Ali and Priya can arrange themselves in \\( 2! = 2 \\) ways.<br>   - So, the number of arrangements where they are together is \\( 2(n - 1)! \\).<br>3. Subtracting this from the total gives the number of arrangements where they are separated:<br>   \\[<br>   n! - 2(n - 1)! = n(n - 1)! - 2(n - 1)! = (n - 2)(n - 1)!<br>   \\]</p><p><strong>Method 2: Gap Method</strong><br>1. Arrange the other \\( n - 2 \\) students first, which gives \\( (n - 2)! \\) ways.<br>2. This creates \\( (n - 2) + 1 = n - 1 \\) available spaces (including the ends).<br>3. Placing Ali and Priya into two distinct spaces ensures they are not adjacent: \\( {}^{n-1}\\mathrm{P}_{2} = (n - 1)(n - 2) \\) ways.<br>4. Total arrangements: \\( (n - 2)! \\times (n - 1)(n - 2) = (n - 2)(n - 1)! \\).</p><p>Equating this to \\( 3600 \\):<br>\\[<br>(n - 2)(n - 1)! = 3600<br>\\]<br>Testing integer values for \\( n \\ge 3 \\):<br>- For \\( n = 6 \\): \\( (6 - 2)(5!) = 4 \\times 120 = 480 \\)<br>- For \\( n = 7 \\): \\( (7 - 2)(6!) = 5 \\times 720 = 3600 \\)<br>- For \\( n = 8 \\): \\( (8 - 2)(7!) = 6 \\times 5040 = 30240 \\)</p><p>Thus, \\( n = 7 \\).</p><p>*Common Misconception Trap:* Forgetting that Ali and Priya can switch places within their unit gives \\( n! - (n - 1)! = (n - 1)(n - 1)! \\), which fails to produce an integer solution among the options.</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 10,
+      "question": {
+        "en": "In the expansion of \\( \\left(1 + \\frac{x}{4}\\right)^n \\), the coefficient of \\( x^2 \\) is twice the coefficient of \\( x \\). Given \\( n > 0 \\), what is the value of \\( n \\)?",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Coeff of \\( x \\) is \\( \\frac{n}{4} \\). Coeff of \\( x^2 \\) is \\( \\frac{n(n-1)}{2(16)} \\). Given \\( \\frac{n(n-1)}{2\\cdot 16} = 2\\left(\\frac{n}{4}\\right) \\implies \\frac{n-1}{2\\cdot 4} = 2 \\implies n - 1 = 4(4) = 16 \\implies n = 17 \\).</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 11,
+      "question": {
+        "en": "The polynomial \\( P(x) \\) is defined by \\[ P(x) = (2 + ax)^n + bx^4 + cx - 4 \\] where \\( n \\) is an integer greater than \\( 2 \\), and \\( a, b, c \\) are constants with \\( a > 0 \\).<br>In the binomial expansion of \\( (2 + ax)^n \\) in ascending powers of \\( x \\): - the coefficient of \\( x^2 \\) is twice the coefficient of \\( x \\), - the coefficient of \\( x^3 \\) is equal to the coefficient of \\( x^2 \\).<br>Given that \\( (x + 2) \\) is a factor of \\( P(x) \\), and that the remainder when \\( P(x) \\) is divided by \\( (x + 1) \\) is \\( 7 \\), find the remainder when \\( P(x) \\) is divided by \\( (x - 1) \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>We solve the problem in three stages.</p><p><strong>Stage 1: Determine \\( a \\) and \\( n \\) using the Binomial Theorem</strong><br>The general term in the expansion of \\( (2 + ax)^n \\) is \\( \\binom{n}{r} 2^{n-r} (ax)^r \\).<br>- The term in \\( x \\) is \\( \\binom{n}{1} 2^{n-1} (ax) = n \\cdot 2^{n-1} a x \\).<br>- The term in \\( x^2 \\) is \\( \\binom{n}{2} 2^{n-2} (ax)^2 = \\frac{n(n-1)}{2} 2^{n-2} a^2 x^2 \\).<br>- The term in \\( x^3 \\) is \\( \\binom{n}{3} 2^{n-3} (ax)^3 = \\frac{n(n-1)(n-2)}{6} 2^{n-3} a^3 x^3 \\).</p><p>Using the first condition (coefficient of \\( x^2 \\) is twice that of \\( x \\)):<br>\\[ \\frac{n(n-1)}{2} 2^{n-2} a^2 = 2 \\left(n \\cdot 2^{n-1} a\\right) = n \\cdot 2^n a \\]<br>Dividing both sides by \\( n \\cdot 2^{n-2} a \\) (since \\( n > 2 \\) and \\( a > 0 \\)):<br>\\[ \\frac{n - 1}{2} a = 2^2 = 4 \\implies (n - 1)a = 8 \\quad \\text{--- (1)} \\]</p><p>Using the second condition (coefficient of \\( x^3 \\) equals that of \\( x^2 \\)):<br>\\[ \\frac{n(n-1)(n-2)}{6} 2^{n-3} a^3 = \\frac{n(n-1)}{2} 2^{n-2} a^2 \\]<br>Dividing both sides by \\( n(n-1) 2^{n-3} a^2 \\):<br>\\[ \\frac{n - 2}{6} a = \\frac{1}{2} \\cdot 2 = 1 \\implies (n - 2)a = 6 \\quad \\text{--- (2)} \\]</p><p>Subtracting equation (2) from equation (1):<br>\\[ (n - 1)a - (n - 2)a = 8 - 6 \\implies a = 2 \\]<br>Substituting \\( a = 2 \\) into (2):<br>\\[ (n - 2)(2) = 6 \\implies n - 2 = 3 \\implies n = 5 \\]</p><p><strong>Stage 2: Determine \\( b \\) and \\( c \\) using the Factor and Remainder Theorems</strong><br>With \\( a = 2 \\) and \\( n = 5 \\), the polynomial is:<br>\\[ P(x) = (2 + 2x)^5 + bx^4 + cx - 4 \\]</p><p>Since \\( (x + 2) \\) is a factor, \\( P(-2) = 0 \\):<br>\\[ P(-2) = (2 + 2(-2))^5 + b(-2)^4 + c(-2) - 4 = 0 \\]<br>\\[ (-2)^5 + 16b - 2c - 4 = 0 \\implies -32 + 16b - 2c - 4 = 0 \\implies 16b - 2c = 36 \\implies 8b - c = 18 \\quad \\text{--- (3)} \\]</p><p>Since dividing by \\( (x + 1) \\) leaves remainder \\( 7 \\), \\( P(-1) = 7 \\):<br>\\[ P(-1) = (2 + 2(-1))^5 + b(-1)^4 + c(-1) - 4 = 7 \\]<br>\\[ 0^5 + b - c - 4 = 7 \\implies b - c = 11 \\quad \\text{--- (4)} \\]</p><p>Subtracting equation (4) from equation (3):<br>\\[ (8b - c) - (b - c) = 18 - 11 \\implies 7b = 7 \\implies b = 1 \\]<br>From (4), \\( c = b - 11 = 1 - 11 = -10 \\).</p><p><strong>Stage 3: Find the remainder when \\( P(x) \\) is divided by \\( (x - 1) \\)</strong><br>By the Remainder Theorem, the remainder is \\( P(1) \\):<br>\\[ P(1) = (2 + 2(1))^5 + (1)(1)^4 + (-10)(1) - 4 \\]<br>\\[ P(1) = 4^5 + 1 - 10 - 4 = 1024 - 13 = 1011 \\]</p><p>*Common Misconceptions:*<br>- Taking \\( c = 10 \\) instead of \\( -10 \\) yields \\( 1024 + 1 + 10 - 4 = 1031 \\).<br>- Forgetting the constant term \\( -4 \\) gives \\( 1024 + 1 - 10 = 1015 \\).<br>- Confusing \\( 4^5 = 1024 \\) with \\( 512 \\) yields \\( 512 - 13 = 499 \\).</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 12,
+      "question": {
+        "en": "A sector of a circle of radius \\( r = 14 \\text{ cm} \\) has central angle \\( \\theta = 1.2 \\text{ rad} \\). What is the area of the sector?",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Sector area formula: \\( A = \\frac{1}{2}r^2\\theta = \\frac{1}{2}(14)^2(1.2) = 117.6 \\text{ cm}^2 \\).</p><p><strong>Final Answer:</strong> \\( 117.6 \\text{ cm}^2 \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 13,
+      "question": {
+        "en": "Two circles, \\( C_1 \\) with centre \\( O_1 \\) and radius \\( 6\\text{ cm} \\), and \\( C_2 \\) with centre \\( O_2 \\) and radius \\( 6\\sqrt{3}\\text{ cm} \\), intersect at the points \\( A \\) and \\( B \\). The distance between their centres is \\( O_1 O_2 = 12\\text{ cm} \\).<br>Find the exact area of the region common to both circles, in \\( \\text{cm}^2 \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>1. <strong>Determine the angles subtended at each centre:</strong><br>Consider triangle \\( O_1 A O_2 \\) with side lengths \\( O_1 A = 6 \\), \\( O_2 A = 6\\sqrt{3} \\), and \\( O_1 O_2 = 12 \\).<br>Notice that:<br>\\[<br>(O_1 A)^2 + (O_2 A)^2 = 6^2 + (6\\sqrt{3})^2 = 36 + 108 = 144 = 12^2 = (O_1 O_2)^2<br>\\]<br>By the converse of Pythagoras' Theorem, \\( \\angle O_1 A O_2 = \\frac{\\pi}{2} \\) radians.</p><p>Using right-angled trigonometry in \\( \\triangle O_1 A O_2 \\):<br>\\[<br>\\cos(\\angle A O_1 O_2) = \\frac{O_1 A}{O_1 O_2} = \\frac{6}{12} = \\frac{1}{2} \\implies \\angle A O_1 O_2 = \\frac{\\pi}{3} \\text{ radians}<br>\\]<br>\\[<br>\\cos(\\angle A O_2 O_1) = \\frac{O_2 A}{O_1 O_2} = \\frac{6\\sqrt{3}}{12} = \\frac{\\sqrt{3}}{2} \\implies \\angle A O_2 O_1 = \\frac{\\pi}{6} \\text{ radians}<br>\\]<br>By symmetry about the line of centres \\( O_1 O_2 \\), the angles subtended by chord \\( AB \\) at each centre are:<br>\\[<br>\\angle A O_1 B = 2 \\times \\frac{\\pi}{3} = \\frac{2\\pi}{3} \\text{ radians}<br>\\]<br>\\[<br>\\angle A O_2 B = 2 \\times \\frac{\\pi}{6} = \\frac{\\pi}{3} \\text{ radians}<br>\\]</p><p>2. <strong>Calculate the area of the overlapping region:</strong><br>The common region is bounded by arc \\( AB \\) of \\( C_1 \\) and arc \\( AB \\) of \\( C_2 \\). Its area can be found by adding the areas of the two sectors and subtracting the area of kite \\( O_1 A O_2 B \\):<br>\\[<br>\\text{Area} = \\text{Area}(\\text{sector } O_1 A B) + \\text{Area}(\\text{sector } O_2 A B) - \\text{Area}(\\text{kite } O_1 A O_2 B)<br>\\]</p><p>- Sector \\( O_1 A B \\):<br>\\[<br>\\frac{1}{2} r_1^2 \\theta_1 = \\frac{1}{2} (6)^2 \\left(\\frac{2\\pi}{3}\\right) = 18 \\times \\frac{2\\pi}{3} = 12\\pi<br>\\]<br>- Sector \\( O_2 A B \\):<br>\\[<br>\\frac{1}{2} r_2^2 \\theta_2 = \\frac{1}{2} (6\\sqrt{3})^2 \\left(\\frac{\\pi}{3}\\right) = \\frac{1}{2} (108) \\left(\\frac{\\pi}{3}\\right) = 18\\pi<br>\\]<br>- Kite \\( O_1 A O_2 B \\) consists of two congruent right triangles \\( \\triangle O_1 A O_2 \\) and \\( \\triangle O_1 B O_2 \\):<br>\\[<br>\\text{Area}(\\text{kite}) = 2 \\times \\left(\\frac{1}{2} \\times 6 \\times 6\\sqrt{3}\\right) = 36\\sqrt{3}<br>\\]</p><p>Thus, the total area of the common region is:<br>\\[<br>\\text{Area} = 12\\pi + 18\\pi - 36\\sqrt{3} = 30\\pi - 36\\sqrt{3}\\text{ cm}^2<br>\\]</p><p><strong>Common Distractor Misconceptions:</strong><br>- \\( 30\\pi + 36\\sqrt{3} \\): Incorrectly adds the kite area instead of subtracting the region of double-coverage.<br>- \\( 42\\pi - 36\\sqrt{3} \\): Accidentally swaps radii when computing sector areas (e.g., using \\( 6\\sqrt{3} \\) with \\( \\frac{2\\pi}{3} \\)).<br>- \\( 15\\pi - 18\\sqrt{3} \\): Forgets to double the half-angles, using \\( \\frac{\\pi}{3} \\) and \\( \\frac{\\pi}{6} \\) as the subtended sector angles.</p><p><strong>Final Answer:</strong> \\( 30\\pi - 36\\sqrt{3} \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 14,
+      "question": {
+        "en": "At 08:00, a cargo vessel has position vector \\((-7\\mathbf{i} + 22\\mathbf{j})\\text{ km}\\) relative to a coastal radar station at the origin \\(O\\), and moves with a constant velocity of \\((15\\mathbf{i} + 5\\mathbf{j})\\text{ km/h}\\).<br>At the same time (08:00), a high-speed patrol boat stationed at \\((5\\mathbf{i} + 6\\mathbf{j})\\text{ km}\\) sets off in a straight line at a constant speed \\(v\\text{ km/h}\\) to intercept the cargo vessel.<br>Find the minimum speed \\(v\\) required for the patrol boat to intercept the cargo vessel, and the time at which interception occurs at this minimum speed.",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Let \\(t\\) denote the time in hours elapsed after 08:00 (with \\(t > 0\\)).</p><p>1. <strong>Position vectors at time \\(t\\):</strong><br>   - Cargo vessel: <br>     \\[<br>     \\mathbf{r}_C(t) = (-7\\mathbf{i} + 22\\mathbf{j}) + t(15\\mathbf{i} + 5\\mathbf{j}) = (15t - 7)\\mathbf{i} + (5t + 22)\\mathbf{j}<br>     \\]<br>   - Patrol boat starts at \\(\\mathbf{r}_P(0) = 5\\mathbf{i} + 6\\mathbf{j}\\).</p><p>2. <strong>Condition for interception:</strong><br>   For interception to occur at time \\(t\\), the displacement of the patrol boat from its starting position must equal the relative position vector:<br>   \\[<br>   \\mathbf{r}_C(t) - \\mathbf{r}_P(0) = [(15t - 7) - 5]\\mathbf{i} + [(5t + 22) - 6]\\mathbf{j} = (15t - 12)\\mathbf{i} + (5t + 16)\\mathbf{j}<br>   \\]<br>   Since the patrol boat travels at constant speed \\(v\\), the distance it covers in time \\(t\\) is \\(vt\\):<br>   \\[<br>   |\\mathbf{r}_C(t) - \\mathbf{r}_P(0)|^2 = (vt)^2<br>   \\]</p><p>3. <strong>Expanding and formulating the quadratic:</strong><br>   \\[<br>   (15t - 12)^2 + (5t + 16)^2 = v^2 t^2<br>   \\]<br>   \\[<br>   (225t^2 - 360t + 144) + (25t^2 + 160t + 256) = v^2 t^2<br>   \\]<br>   \\[<br>   250t^2 - 200t + 400 = v^2 t^2<br>   \\]<br>   Dividing both sides by \\(t^2\\) (since \\(t > 0\\)):<br>   \\[<br>   v^2 = 250 - \\frac{200}{t} + \\frac{400}{t^2}<br>   \\]<br>   Let \\(w = \\frac{1}{t}\\). Then \\(v^2\\) can be written as a quadratic in \\(w\\):<br>   \\[<br>   v^2 = 400w^2 - 200w + 250<br>   \\]</p><p>4. <strong>Optimization by completing the square:</strong><br>   \\[<br>   v^2 = 400\\left(w^2 - \\frac{1}{2}w\\right) + 250 = 400\\left(w - \\frac{1}{4}\\right)^2 - 400\\left(\\frac{1}{16}\\right) + 250<br>   \\]<br>   \\[<br>   v^2 = 400\\left(w - \\frac{1}{4}\\right)^2 - 25 + 250 = 400\\left(w - \\frac{1}{4}\\right)^2 + 225<br>   \\]<br>   Since \\(400\\left(w - \\frac{1}{4}\\right)^2 \\ge 0\\) for all real \\(w\\), the minimum value of \\(v^2\\) is \\(225\\):<br>   \\[<br>   v_{\\min} = \\sqrt{225} = 15\\text{ km/h}<br>   \\]<br>   This minimum occurs when:<br>   \\[<br>   w = \\frac{1}{4} \\implies \\frac{1}{t} = \\frac{1}{4} \\implies t = 4\\text{ hours}<br>   \\]</p><p>5. <strong>Interception time:</strong><br>   Interception takes place \\(4\\text{ hours}\\) after 08:00, which is at \\(12:00\\).</p><p><strong>Final Answer:</strong> Minimum speed \\(15\\text{ km/h}\\), interception at 12:00</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 15,
+      "question": {
+        "en": "Find the equation of the tangent line to the curve \\( y = (5x + 1)^3 \\) at the point where \\( x = 0 \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>At \\( x = 0 \\), \\( y = 1^3 = 1 \\). Derivative: \\( \\frac{dy}{dx} = 3(5x+1)^2 \\cdot (5) = 15(5x+1)^2 \\). At \\( x = 0 \\), slope \\( m = 15 \\). Equation: \\( y - 1 = 15(x - 0) \\implies y = 15x + 1 \\).</p><p><strong>Final Answer:</strong> \\( y = 15x + 1 \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 16,
+      "question": {
+        "en": "The line \\( y = 7x - 4 \\) is tangent to the curve \\( y = ax^2 + \\frac{b}{x} \\) at the point where \\( x = 2 \\), where \\( a \\) and \\( b \\) are constants and \\( x \\ne 0 \\).<br>Find the coordinates of the stationary point of the curve and determine its nature.",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>1. <strong>Find the point of tangency:</strong><br>   Substitute \\( x = 2 \\) into the tangent line equation \\( y = 7x - 4 \\):<br>   \\[<br>   y = 7(2) - 4 = 10<br>   \\]<br>   Since the line touches the curve at \\( x = 2 \\), the point \\( (2, 10) \\) lies on the curve \\( y = ax^2 + \\frac{b}{x} \\):<br>   \\[<br>   a(2)^2 + \\frac{b}{2} = 10 \\implies 4a + \\frac{b}{2} = 10 \\implies 8a + b = 20 \\quad \\text{--- (1)}<br>   \\]</p><p>2. <strong>Use the gradient of the tangent:</strong><br>   Differentiating \\( y = ax^2 + bx^{-1} \\) gives:<br>   \\[<br>   \\frac{dy}{dx} = 2ax - \\frac{b}{x^2}<br>   \\]<br>   The gradient of the tangent line \\( y = 7x - 4 \\) is \\( 7 \\). At \\( x = 2 \\):<br>   \\[<br>   2a(2) - \\frac{b}{2^2} = 7 \\implies 4a - \\frac{b}{4} = 7 \\implies 16a - b = 28 \\quad \\text{--- (2)}<br>   \\]</p><p>3. <strong>Solve for \\( a \\) and \\( b \\):</strong><br>   Adding equations (1) and (2):<br>   \\[<br>   (8a + b) + (16a - b) = 20 + 28 \\implies 24a = 48 \\implies a = 2<br>   \\]<br>   Substituting \\( a = 2 \\) into (1):<br>   \\[<br>   8(2) + b = 20 \\implies b = 4<br>   \\]<br>   Thus, the equation of the curve is \\( y = 2x^2 + \\frac{4}{x} \\).</p><p>4. <strong>Find the stationary point:</strong><br>   Set \\( \\frac{dy}{dx} = 0 \\):<br>   \\[<br>   4x - \\frac{4}{x^2} = 0 \\implies 4x^3 = 4 \\implies x^3 = 1 \\implies x = 1<br>   \\]<br>   Substitute \\( x = 1 \\) back into the curve equation:<br>   \\[<br>   y = 2(1)^2 + \\frac{4}{1} = 6<br>   \\]<br>   So the stationary point is \\( (1, 6) \\).</p><p>5. <strong>Determine the nature:</strong><br>   Find the second derivative:<br>   \\[<br>   \\frac{d^2y}{dx^2} = \\frac{d}{dx}\\left(4x - 4x^{-2}\\right) = 4 + 8x^{-3} = 4 + \\frac{8}{x^3}<br>   \\]<br>   At \\( x = 1 \\):<br>   \\[<br>   \\frac{d^2y}{dx^2} = 4 + \\frac{8}{1^3} = 12 > 0<br>   \\]<br>   Since \\( \\frac{d^2y}{dx^2} > 0 \\), the stationary point is a local minimum.</p><p><strong>Common Traps:</strong></p><p><strong>Final Answer:</strong> \\( (1, 6) \\), which is a local minimum</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 17,
+      "question": {
+        "en": "Find the set of values of the constant \\( k \\) for which the equation \\[ |x^2 - 4| = 2x + k \\] has exactly four distinct real solutions.",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>To find the number of solutions to \\( |x^2 - 4| = 2x + k \\), we consider the intersections of the curve \\( y = |x^2 - 4| \\) and the line \\( y = 2x + k \\).</p><p>The curve is defined piecewise:<br>- Inner arch: \\( y = 4 - x^2 \\) for \\( -2 \\le x \\le 2 \\)<br>- Outer branches: \\( y = x^2 - 4 \\) for \\( x < -2 \\) and \\( x > 2 \\)</p><p>1. <strong>Intersection with the inner arch (\\( -2 \\le x \\le 2 \\)):</strong><br>\\[ 4 - x^2 = 2x + k \\iff x^2 + 2x + (k - 4) = 0 \\]<br>For two distinct real intersections, the discriminant must be strictly positive:<br>\\[ \\Delta = 2^2 - 4(1)(k - 4) = 20 - 4k > 0 \\implies k < 5 \\]<br>At \\( k = 5 \\), \\( \\Delta = 0 \\), so the line is tangent to the inner arch at \\( x = -1 \\in (-2, 2) \\), giving only 1 intersection point.</p><p>Furthermore, the roots must lie within the interval \\( [-2, 2] \\). The lower critical value occurs when the line passes through the corner intercept \\( (-2, 0) \\):<br>\\[ 0 = 2(-2) + k \\implies k = 4 \\]<br>At \\( k = 4 \\), the equation becomes \\( x^2 + 2x = 0 \\implies x = 0 \\) or \\( x = -2 \\). Because \\( x = -2 \\) is the boundary corner shared with the outer branch, the total number of distinct solutions is 3.</p><p>For \\( 4 < k < 5 \\), the roots are \\( x = -1 \\pm \\sqrt{5 - k} \\). Since \\( 0 < 5 - k < 1 \\), we have \\( \\sqrt{5 - k} \\in (0, 1) \\), which guarantees both roots strictly lie in \\( (-2, 0) \\subset (-2, 2) \\). Hence, there are exactly 2 distinct solutions on the inner arch.</p><p>2. <strong>Intersection with the outer branches (\\( x < -2 \\) or \\( x > 2 \\)):</strong><br>\\[ x^2 - 4 = 2x + k \\iff x^2 - 2x - (k + 4) = 0 \\]<br>The discriminant is:<br>\\[ \\Delta = (-2)^2 - 4(1)(-(k + 4)) = 4k + 20 \\]<br>For \\( 4 < k < 5 \\), \\( \\Delta \\in (36, 40) > 0 \\), yielding roots \\( x = 1 \\pm \\sqrt{k + 5} \\).<br>Since \\( 9 < k + 5 < 10 \\), \\( 3 < \\sqrt{k + 5} < \\sqrt{10} \\approx 3.162 \\):<br>- The larger root satisfies \\( x = 1 + \\sqrt{k + 5} > 4 > 2 \\) (valid on \\( x > 2 \\)).<br>- The smaller root satisfies \\( x = 1 - \\sqrt{k + 5} < -2 \\) (valid on \\( x < -2 \\)).<br>Thus, there are always exactly 2 distinct solutions on the outer branches.</p><p>Combining both parts, the equation has \\( 2 + 2 = 4 \\) distinct real solutions if and only if \\( 4 < k < 5 \\).</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 18,
+      "question": {
+        "en": "The function \\( f(x) = \\frac{4x + 1}{x - 2} \\) is defined for \\( x \\ne 2 \\). Find the inverse function \\( f^{-1}(x) \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Let \\( y = \\frac{4x + 1}{x - 2} \\implies y(x - 2) = 4x + 1 \\implies yx - 2y = 4x + 1 \\implies x(y - 4) = 2y + 1 \\implies x = \\frac{2y + 1}{y - 4} \\). Swap variables to obtain \\( f^{-1}(x) = \\frac{2x + 1}{x - 4} \\).</p><p><strong>Final Answer:</strong> \\( f^{-1}(x) = \\frac{2x + 1}{x - 4} \\quad (x \\ne 4) \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 19,
+      "question": {
+        "en": "A particle moves in a straight line with acceleration \\( a(t) = 6t - 16 \\text{ m/s}^2 \\). If it starts from rest at the origin (at \\( t = 0 \\)), at what time \\( t > 0 \\) does the particle momentarily come to rest again?",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Velocity \\( v(t) = \\int (6t - 16)\\,dt = 3t^2 - 16t + C \\). Since \\( v(0) = 0 \\implies C = 0 \\). Momentarily at rest when \\( v(t) = 0 \\implies t(3t - 16) = 0 \\implies t = \\frac{16}{3} \\text{ s} \\).</p><p><strong>Final Answer:</strong> \\( t = \\frac{16}{3} \\text{ s} \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 20,
+      "question": {
+        "en": "A particle moves in a straight line such that its acceleration, \\( a \\text{ m s}^{-2} \\), at time \\( t \\) seconds is given by \\( a = 6t - 18 \\). The particle is at instantaneous rest when \\( t = 1 \\). Given that the displacement of the particle from a fixed point \\( O \\) is \\( s = -10 \\text{ m} \\) when \\( t = 2 \\), find the displacement of the particle, in metres, when it is next at instantaneous rest.",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>1. <strong>Find the velocity function \\( v(t) \\):</strong><br>\\[<br>v(t) = \\int a \\, dt = \\int (6t - 18) \\, dt = 3t^2 - 18t + c<br>\\]<br>Since the particle is at instantaneous rest when \\( t = 1 \\), \\( v(1) = 0 \\):<br>\\[<br>3(1)^2 - 18(1) + c = 0 \\implies -15 + c = 0 \\implies c = 15<br>\\]<br>Thus, \\( v(t) = 3t^2 - 18t + 15 \\).</p><p>2. <strong>Find when the particle is next at instantaneous rest:</strong><br>Set \\( v(t) = 0 \\):<br>\\[<br>3(t^2 - 6t + 5) = 0 \\implies 3(t - 1)(t - 5) = 0<br>\\]<br>So the particle is at rest at \\( t = 1 \\) and next at \\( t = 5 \\).</p><p>3. <strong>Find the displacement function \\( s(t) \\):</strong><br>\\[<br>s(t) = \\int v(t) \\, dt = \\int (3t^2 - 18t + 15) \\, dt = t^3 - 9t^2 + 15t + d<br>\\]<br>Given that \\( s(2) = -10 \\):<br>\\[<br>(2)^3 - 9(2)^2 + 15(2) + d = -10<br>\\]<br>\\[<br>8 - 36 + 30 + d = -10 \\implies 2 + d = -10 \\implies d = -12<br>\\]<br>Thus, \\( s(t) = t^3 - 9t^2 + 15t - 12 \\).</p><p>4. <strong>Evaluate displacement at \\( t = 5 \\):</strong><br>\\[<br>s(5) = (5)^3 - 9(5)^2 + 15(5) - 12 = 125 - 225 + 75 - 12 = -37 \\text{ m}<br>\\]</p><p><strong>Common traps:</strong><br>- Setting \\( d = 0 \\) (assuming displacement is zero at \\( t = 0 \\)) leads to \\( s(5) = -25 \\).<br>- A sign error when solving \\( 2 + d = -10 \\) yielding \\( d = 12 \\) leads to \\( s(5) = -13 \\).<br>- Evaluating at the initial rest time \\( t = 1 \\) instead of the next rest time gives \\( s(1) = -5 \\).</p><p><strong>Final Answer:</strong> \\(-37\\)</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 21,
+      "question": {
+        "en": "Solve the exponential equation \\( 2^{x+3} = 5^x \\), giving \\( x \\) in terms of common logarithms.",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Take natural logs of both sides: \\( (x + 3)\\ln 2 = x\\ln 5 \\implies x\\ln 2 + 3\\ln 2 = x\\ln 5 \\implies x(\\ln 5 - \\ln 2) = 3\\ln 2 \\implies x = \\frac{3\\ln 2}{\\ln 5 - \\ln 2} \\).</p><p><strong>Final Answer:</strong> \\( x = \\frac{3\\ln 2}{\\ln 5 - \\ln 2} \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 22,
+      "question": {
+        "en": "The real numbers \\( x \\) and \\( y \\) satisfy the simultaneous equations: \\[ \\log_{3}(x) + 2\\log_{9}(y - 1) = 2 \\] \\[ 4^{y} \\cdot 8^{-\\frac{x}{3}} = 32 \\] Find the value of \\( x^2 + y^2 \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Step 1: Simplify the logarithmic equation using the change-of-base formula.<br>Recall that \\(\\log_{9}(y - 1) = \\frac{\\log_{3}(y - 1)}{\\log_{3}(9)} = \\frac{\\log_{3}(y - 1)}{2}\\).<br>Substituting this gives:<br>\\[<br>\\log_{3}(x) + 2\\left(\\frac{\\log_{3}(y - 1)}{2}\\right) = 2 \\implies \\log_{3}(x) + \\log_{3}(y - 1) = 2<br>\\]<br>Applying the product rule of logarithms:<br>\\[<br>\\log_{3}[x(y - 1)] = 2 \\implies x(y - 1) = 3^2 = 9 \\quad \\text{--- (Equation 1)}<br>\\]</p><p>Step 2: Simplify the exponential equation using laws of indices.<br>Express all terms with base 2:<br>\\[<br>4^y = (2^2)^y = 2^{2y}, \\quad 8^{-\\frac{x}{3}} = (2^3)^{-\\frac{x}{3}} = 2^{-x}, \\quad 32 = 2^5<br>\\]<br>Substituting these into the second equation:<br>\\[<br>2^{2y} \\cdot 2^{-x} = 2^5 \\implies 2^{2y - x} = 2^5<br>\\]<br>Equating exponents:<br>\\[<br>2y - x = 5 \\implies x = 2y - 5 \\quad \\text{--- (Equation 2)}<br>\\]</p><p>Step 3: Solve the simultaneous equations.<br>Substitute \\( x = 2y - 5 \\) into Equation 1:<br>\\[<br>(2y - 5)(y - 1) = 9<br>\\]<br>\\[<br>2y^2 - 7y + 5 = 9 \\implies 2y^2 - 7y - 4 = 0<br>\\]<br>Factorizing the quadratic equation:<br>\\[<br>(2y + 1)(y - 4) = 0 \\implies y = 4 \\quad \\text{or} \\quad y = -\\frac{1}{2}<br>\\]</p><p>Step 4: Check domain restrictions.<br>For the terms in the original logarithmic equation to be defined over the real numbers:<br>\\[<br>x > 0 \\quad \\text{and} \\quad y - 1 > 0 \\implies y > 1<br>\\]<br>- If \\( y = -\\frac{1}{2} \\), then \\( y - 1 = -\\frac{3}{2} < 0 \\) and \\( x = 2\\left(-\\frac{1}{2}\\right) - 5 = -6 < 0 \\), both of which violate the domain. Thus, \\( y = -\\frac{1}{2} \\) is extraneous.<br>- If \\( y = 4 \\), then \\( y - 1 = 3 > 0 \\) and \\( x = 2(4) - 5 = 3 > 0 \\), which are both valid.</p><p>Step 5: Calculate the required value.<br>\\[<br>x^2 + y^2 = 3^2 + 4^2 = 9 + 16 = 25<br>\\]</p><p>Analysis of Misconceptions:</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 23,
+      "question": {
+        "en": "Six-digit numbers are formed using digits chosen from the set \\(\\{1, 2, 3, 4, 5, 6, 7, 8\\}\\), with no digit repeated in any number.<br>Find the number of different six-digit odd numbers that can be formed such that the digits \\(2\\) and \\(4\\) are not adjacent.",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>We use complementary counting: \\(\\text{Number of valid arrangements} = \\text{Total odd 6-digit numbers} - \\text{Odd 6-digit numbers where } 2 \\text{ and } 4 \\text{ are adjacent}\\).</p><p><strong>Step 1: Total number of 6-digit odd numbers</strong><br>- For the number to be odd, the last digit (units place) must be chosen from the odd digits \\(\\{1, 3, 5, 7\\}\\), giving \\(4\\) choices.<br>- The remaining \\(5\\) positions are filled by selecting and arranging \\(5\\) digits from the remaining \\(7\\) digits in the set:<br>\\[<br>P(7, 5) = 7 \\times 6 \\times 5 \\times 4 \\times 3 = 2520<br>\\]<br>- Total odd 6-digit numbers \\(= 4 \\times 2520 = 10080\\).</p><p><strong>Step 2: Number of 6-digit odd numbers where \\(2\\) and \\(4\\) are adjacent</strong><br>- Treat the pair of digits \\(2\\) and \\(4\\) as a single block \\(B\\), which can be ordered as \\((2, 4)\\) or \\((4, 2)\\) (\\(2\\) internal arrangements).<br>- Since the number must be odd, the units digit must be odd (\\(4\\) choices from \\(\\{1, 3, 5, 7\\}\\)). Because both \\(2\\) and \\(4\\) are even, the block \\(B\\) cannot occupy the final position.<br>- Thus, the block \\(B\\) must occupy two adjacent positions entirely within the first \\(5\\) digits. The possible adjacent pairs for \\(B\\) are positions \\((1, 2)\\), \\((2, 3)\\), \\((3, 4)\\), and \\((4, 5)\\), giving \\(4\\) possible positions.<br>- The remaining \\(3\\) unfilled positions among the first \\(5\\) places are filled from the remaining \\(8 - 1 - 2 = 5\\) available digits:<br>\\[<br>P(5, 3) = 5 \\times 4 \\times 3 = 60<br>\\]<br>- Number of odd numbers with \\(2\\) and \\(4\\) adjacent:<br>\\[<br>4 \\text{ (choices for units digit)} \\times 4 \\text{ (positions for block } B) \\times 2 \\text{ (internal orders of } B) \\times 60 = 1920<br>\\]</p><p><strong>Step 3: Subtract adjacent cases from the total</strong><br>\\[<br>10080 - 1920 = 8160<br>\\]</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 24,
+      "question": {
+        "en": "In the expansion of \\( \\left(1 + \\frac{x}{5}\\right)^n \\), the coefficient of \\( x^2 \\) is twice the coefficient of \\( x \\). Given \\( n > 0 \\), what is the value of \\( n \\)?",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Coeff of \\( x \\) is \\( \\frac{n}{5} \\). Coeff of \\( x^2 \\) is \\( \\frac{n(n-1)}{2(25)} \\). Given \\( \\frac{n(n-1)}{2\\cdot 25} = 2\\left(\\frac{n}{5}\\right) \\implies \\frac{n-1}{2\\cdot 5} = 2 \\implies n - 1 = 4(5) = 20 \\implies n = 21 \\).</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 25,
+      "question": {
+        "en": "In the expansion of \\((1 + ax)^n\\) in ascending powers of \\(x\\), the coefficient of \\(x^2\\) is \\(60\\) and the coefficient of \\(x^3\\) is \\(160\\), where \\(n\\) is a positive integer and \\(a > 0\\).<br>A cubic polynomial \\(P(x)\\), in which the coefficient of \\(x^3\\) is \\(1\\), has \\((x - a)^2\\) as a factor and leaves a remainder of \\(n\\) when divided by \\((x - 1)\\).<br>Find the remainder when \\(P(x)\\) is divided by \\((x + a)\\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Step 1: Determine \\(n\\) and \\(a\\) using the Binomial Theorem.<br>In the expansion of \\((1 + ax)^n\\):<br>\\[<br>\\text{Term in } x^2 = \\binom{n}{2} (ax)^2 = \\frac{n(n - 1)}{2} a^2 x^2 = 60 x^2 \\implies n(n - 1)a^2 = 120<br>\\]<br>\\[<br>\\text{Term in } x^3 = \\binom{n}{3} (ax)^3 = \\frac{n(n - 1)(n - 2)}{6} a^3 x^3 = 160 x^3 \\implies n(n - 1)(n - 2)a^3 = 960<br>\\]<br>Dividing the equation for \\(x^3\\) by the equation for \\(x^2\\):<br>\\[<br>\\frac{n(n - 1)(n - 2)a^3}{n(n - 1)a^2} = \\frac{960}{120} \\implies (n - 2)a = 8 \\implies a = \\frac{8}{n - 2}<br>\\]<br>Substitute \\(a = \\frac{8}{n - 2}\\) into \\(n(n - 1)a^2 = 120\\):<br>\\[<br>n(n - 1) \\left(\\frac{8}{n - 2}\\right)^2 = 120 \\implies \\frac{64n(n - 1)}{(n - 2)^2} = 120<br>\\]<br>Dividing both sides by \\(8\\):<br>\\[<br>\\frac{8n(n - 1)}{(n - 2)^2} = 15 \\implies 8(n^2 - n) = 15(n^2 - 4n + 4)<br>\\]<br>\\[<br>8n^2 - 8n = 15n^2 - 60n + 60 \\implies 7n^2 - 52n + 60 = 0<br>\\]<br>Factoring the quadratic:<br>\\[<br>(7n - 30)(n - 6) = 0<br>\\]<br>Since \\(n\\) must be a positive integer, we have \\(n = 6\\).<br>Then \\(a = \\frac{8}{6 - 2} = \\frac{8}{4} = 2\\).</p><p>Step 2: Determine the polynomial \\(P(x)\\).<br>Since \\(P(x)\\) is a cubic polynomial with leading coefficient \\(1\\) and has \\((x - a)^2 = (x - 2)^2\\) as a factor, it can be written as:<br>\\[<br>P(x) = (x - 2)^2 (x - c)<br>\\]<br>for some constant \\(c\\).<br>By the Remainder Theorem, the remainder when \\(P(x)\\) is divided by \\((x - 1)\\) is \\(P(1)\\):<br>\\[<br>P(1) = (1 - 2)^2 (1 - c) = 1 \\cdot (1 - c) = 1 - c<br>\\]<br>Given that this remainder is \\(n = 6\\):<br>\\[<br>1 - c = 6 \\implies c = -5<br>\\]<br>Thus, \\(P(x) = (x - 2)^2 (x + 5)\\).</p><p>Step 3: Evaluate the remainder when \\(P(x)\\) is divided by \\((x + a) = (x + 2)\\).<br>By the Remainder Theorem, the required remainder is \\(P(-2)\\):<br>\\[<br>P(-2) = (-2 - 2)^2 (-2 + 5) = (-4)^2 \\cdot 3 = 16 \\cdot 3 = 48<br>\\]</p><p>Misconception Analysis:<br>- \\(-48\\) occurs from a sign error when evaluating \\((-4)^2\\) as \\(-16\\).<br>- \\(-112\\) occurs from incorrectly solving \\(1 - c = 6\\) as \\(c = 5\\), leading to \\(P(-2) = 16(-7) = -112\\).<br>- \\(0\\) occurs from confusing the divisor \\((x + a)\\) with the factor \\((x - a)\\).</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 26,
+      "question": {
+        "en": "A sector of a circle of radius \\( r = 16 \\text{ cm} \\) has central angle \\( \\theta = 1.3 \\text{ rad} \\). What is the area of the sector?",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Sector area formula: \\( A = \\frac{1}{2}r^2\\theta = \\frac{1}{2}(16)^2(1.3) = 166.4 \\text{ cm}^2 \\).</p><p><strong>Final Answer:</strong> \\( 166.4 \\text{ cm}^2 \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 27,
+      "question": {
+        "en": "A sector \\( OAB \\) of a circle with centre \\( O \\) and radius \\( 12\\text{ cm} \\) has angle \\( \\angle AOB = \\frac{\\pi}{2}\\text{ radians} \\). The point \\( C \\) is the midpoint of the radius \\( OA \\). The line passing through \\( C \\) perpendicular to \\( OA \\) intersects the circular arc \\( AB \\) at the point \\( D \\). The straight line segment \\( BC \\) is drawn.<br>Find the exact area, in \\( \\text{cm}^2 \\), of the region bounded by the line segment \\( CD \\), the circular arc \\( BD \\), and the line segment \\( BC \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>1. <strong>Analyze the geometry of right triangle \\( OCD \\)</strong>:<br>- \\( C \\) is the midpoint of \\( OA \\), so \\( OC = \\frac{1}{2}(12) = 6\\text{ cm} \\).<br>- \\( D \\) lies on the arc of the circle, so the radius \\( OD = 12\\text{ cm} \\).<br>- Since \\( CD \\perp OA \\), triangle \\( OCD \\) is a right-angled triangle at \\( C \\).<br>- \\( \\cos(\\angle COD) = \\frac{OC}{OD} = \\frac{6}{12} = \\frac{1}{2} \\implies \\angle COD = \\frac{\\pi}{3}\\text{ radians} \\).</p><p>2. <strong>Find the side length \\( CD \\) and the area of \\( \\triangle OCD \\)</strong>:<br>- \\( CD = \\sqrt{OD^2 - OC^2} = \\sqrt{12^2 - 6^2} = \\sqrt{108} = 6\\sqrt{3}\\text{ cm} \\).<br>- \\( \\text{Area}(\\triangle OCD) = \\frac{1}{2} \\times OC \\times CD = \\frac{1}{2} \\times 6 \\times 6\\sqrt{3} = 18\\sqrt{3}\\text{ cm}^2 \\).</p><p>3. <strong>Find the angle and area of sector \\( OBD \\)</strong>:<br>- Since \\( \\angle AOB = \\frac{\\pi}{2} \\), we have:<br>  \\[<br>  \\angle DOB = \\angle AOB - \\angle COD = \\frac{\\pi}{2} - \\frac{\\pi}{3} = \\frac{\\pi}{6}\\text{ radians}.<br>  \\]<br>- \\( \\text{Area}(\\text{sector } OBD) = \\frac{1}{2} r^2 \\theta = \\frac{1}{2} \\times 12^2 \\times \\frac{\\pi}{6} = 12\\pi\\text{ cm}^2 \\).</p><p>4. <strong>Combine to find the area of region \\( OCDB \\)</strong>:<br>- The composite region \\( OCDB \\) is composed of \\( \\triangle OCD \\) and sector \\( OBD \\):<br>  \\[<br>  \\text{Area}(OCDB) = \\text{Area}(\\triangle OCD) + \\text{Area}(\\text{sector } OBD) = 18\\sqrt{3} + 12\\pi\\text{ cm}^2.<br>  \\]</p><p>5. <strong>Subtract \\( \\triangle OCB \\) to obtain the target region</strong>:<br>- Triangle \\( OCB \\) is right-angled at \\( O \\) with legs \\( OC = 6\\text{ cm} \\) and \\( OB = 12\\text{ cm} \\):<br>  \\[<br>  \\text{Area}(\\triangle OCB) = \\frac{1}{2} \\times 6 \\times 12 = 36\\text{ cm}^2.<br>  \\]<br>- The region bounded by segment \\( CD \\), arc \\( BD \\), and segment \\( BC \\) is:<br>  \\[<br>  \\text{Area} = \\text{Area}(OCDB) - \\text{Area}(\\triangle OCB) = 12\\pi + 18\\sqrt{3} - 36\\text{ cm}^2.<br>  \\]</p><p><strong>Final Answer:</strong> \\( 12\\pi + 18\\sqrt{3} - 36 \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 28,
+      "question": {
+        "en": "Relative to a fixed origin \\( O \\), ship \\( A \\) has an initial position vector of \\( (24\\mathbf{i} + 10\\mathbf{j})\\text{ km} \\) and moves with a constant velocity of \\( (-2\\mathbf{i} + 5\\mathbf{j})\\text{ km h}^{-1} \\).<br>Ship \\( B \\) has an initial position vector of \\( (-20\\mathbf{i} - 18\\mathbf{j})\\text{ km} \\) and moves with a constant velocity of \\( (u\\mathbf{i} + 12\\mathbf{j})\\text{ km h}^{-1} \\), where \\( u \\) is a constant.<br>Given that ship \\( B \\) intercepts ship \\( A \\), find the speed of ship \\( B \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Let \\( t \\) be the time in hours after the ships begin moving.</p><p>The position vector of ship \\( A \\) at time \\( t \\) is:<br>\\[<br>\\mathbf{r}_A(t) = (24\\mathbf{i} + 10\\mathbf{j}) + t(-2\\mathbf{i} + 5\\mathbf{j}) = (24 - 2t)\\mathbf{i} + (10 + 5t)\\mathbf{j}<br>\\]</p><p>The position vector of ship \\( B \\) at time \\( t \\) is:<br>\\[<br>\\mathbf{r}_B(t) = (-20\\mathbf{i} - 18\\mathbf{j}) + t(u\\mathbf{i} + 12\\mathbf{j}) = (-20 + ut)\\mathbf{i} + (-18 + 12t)\\mathbf{j}<br>\\]</p><p>For ship \\( B \\) to intercept ship \\( A \\), their positions must be identical at some time \\( t > 0 \\), so \\( \\mathbf{r}_A(t) = \\mathbf{r}_B(t) \\).</p><p>Equating the \\( \\mathbf{j} \\)-components:<br>\\[<br>10 + 5t = -18 + 12t \\implies 28 = 7t \\implies t = 4\\text{ hours}<br>\\]</p><p>Equating the \\( \\mathbf{i} \\)-components at \\( t = 4 \\):<br>\\[<br>24 - 2(4) = -20 + 4u \\implies 16 = -20 + 4u \\implies 4u = 36 \\implies u = 9<br>\\]</p><p>Thus, the velocity of ship \\( B \\) is \\( \\mathbf{v}_B = 9\\mathbf{i} + 12\\mathbf{j}\\text{ km h}^{-1} \\).</p><p>The speed of ship \\( B \\) is the magnitude of its velocity vector:<br>\\[<br>|\\mathbf{v}_B| = \\sqrt{9^2 + 12^2} = \\sqrt{81 + 144} = \\sqrt{225} = 15\\text{ km h}^{-1}<br>\\]</p><p><strong>Final Answer:</strong> \\( 15\\text{ km h}^{-1} \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 29,
+      "question": {
+        "en": "Find the equation of the tangent line to the curve \\( y = (6x + 1)^3 \\) at the point where \\( x = 0 \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>At \\( x = 0 \\), \\( y = 1^3 = 1 \\). Derivative: \\( \\frac{dy}{dx} = 3(6x+1)^2 \\cdot (6) = 18(6x+1)^2 \\). At \\( x = 0 \\), slope \\( m = 18 \\). Equation: \\( y - 1 = 18(x - 0) \\implies y = 18x + 1 \\).</p><p><strong>Final Answer:</strong> \\( y = 18x + 1 \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 30,
+      "question": {
+        "en": "A storage capsule consists of a right circular cylinder of radius \\( r\\text{ cm} \\) and height \\( h\\text{ cm} \\), closed with a flat circular base of radius \\( r\\text{ cm} \\) at the bottom, and surmounted by a hemispherical dome of radius \\( r\\text{ cm} \\) at the top. The total exterior surface area of the capsule is fixed at \\( 180\\pi\\text{ cm}^2 \\).<br>During a heating process, the radius \\( r \\) expands at a constant rate of \\( 0.4\\text{ cm s}^{-1} \\). Find the rate of change of the total volume of the capsule, in \\( \\text{cm}^3\\text{s}^{-1} \\), at the instant when the height of the cylindrical section is \\( 16.5\\text{ cm} \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>1. <strong>Express the surface area constraint:</strong><br>The total exterior surface area consists of the flat circular base, the curved cylindrical wall, and the hemispherical dome:<br>\\[ S = \\pi r^2 + 2\\pi r h + 2\\pi r^2 = 3\\pi r^2 + 2\\pi r h \\]<br>Given \\( S = 180\\pi \\):<br>\\[ 3\\pi r^2 + 2\\pi r h = 180\\pi \\implies 3r^2 + 2rh = 180 \\]</p><p>2. <strong>Find the value of \\( r \\) when \\( h = 16.5\\text{ cm} \\):</strong><br>\\[ 3r^2 + 2(16.5)r = 180 \\implies 3r^2 + 33r - 180 = 0 \\]<br>Dividing by 3:<br>\\[ r^2 + 11r - 60 = 0 \\implies (r + 15)(r - 4) = 0 \\]<br>Since \\( r > 0 \\), we have \\( r = 4\\text{ cm} \\).</p><p>3. <strong>Express the total volume in terms of \\( r \\):</strong><br>The total volume is the sum of the cylinder's volume and the hemisphere's volume:<br>\\[ V = \\pi r^2 h + \\frac{2}{3}\\pi r^3 \\]<br>From the surface area equation, \\( 2rh = 180 - 3r^2 \\implies h = \\frac{90}{r} - \\frac{3}{2}r \\). Substituting this into \\( V \\):<br>\\[ V = \\pi r^2 \\left(\\frac{90}{r} - \\frac{3}{2}r\\right) + \\frac{2}{3}\\pi r^3 = 90\\pi r - \\frac{3}{2}\\pi r^3 + \\frac{2}{3}\\pi r^3 = 90\\pi r - \\frac{5}{6}\\pi r^3 \\]</p><p>4. <strong>Differentiate \\( V \\) with respect to \\( r \\):</strong><br>\\[ \\frac{\\mathrm{d}V}{\\mathrm{d}r} = 90\\pi - \\frac{5}{2}\\pi r^2 \\]<br>At \\( r = 4 \\):<br>\\[ \\frac{\\mathrm{d}V}{\\mathrm{d}r} = 90\\pi - \\frac{5}{2}\\pi(16) = 90\\pi - 40\\pi = 50\\pi \\]</p><p>5. <strong>Apply the chain rule for connected rates of change:</strong><br>\\[ \\frac{\\mathrm{d}V}{\\mathrm{d}t} = \\frac{\\mathrm{d}V}{\\mathrm{d}r} \\cdot \\frac{\\mathrm{d}r}{\\mathrm{d}t} = 50\\pi \\times 0.4 = 20\\pi\\text{ cm}^3\\text{s}^{-1} \\]</p><p><strong>Final Answer:</strong> \\( 20\\pi \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 31,
+      "question": {
+        "en": "The function \\( f \\) is defined for \\( x \\in \\mathbb{R} \\) by \\[ f(x) = x^2 - 2kx + (3k + 10), \\] where \\( k \\) is a real constant, and the equation \\( f(x) = 0 \\) has no real roots.<br>The function \\( g \\) is defined for \\( x \\in \\mathbb{R} \\) by \\[ g(x) = |x - k|. \\] Find the set of values of \\( k \\) for which the minimum value of the composite function \\( h(x) = f(g(x)) \\) is strictly greater than \\( 4 \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>We solve the problem in three systematic stages:</p><p>1. <strong>Condition from the Discriminant of \\( f(x) = 0 \\):</strong><br>Since \\( f(x) = 0 \\) has no real roots, its discriminant \\( \\Delta \\) must be strictly negative:<br>\\[<br>\\Delta = (-2k)^2 - 4(1)(3k + 10) = 4k^2 - 12k - 40 < 0.<br>\\]<br>Dividing by \\( 4 \\):<br>\\[<br>k^2 - 3k - 10 < 0 \\iff (k - 5)(k + 2) < 0 \\iff -2 < k < 5.<br>\\]</p><p>2. <strong>Minimum of the Composite Function \\( h(x) = f(g(x)) \\):</strong><br>Let \\( u = g(x) = |x - k| \\). Because \\( x \\in \\mathbb{R} \\), the range of \\( g \\) is \\( [0, \\infty) \\).<br>We express \\( f(u) \\) in completed square form:<br>\\[<br>f(u) = u^2 - 2ku + (3k + 10) = (u - k)^2 + 3k + 10 - k^2.<br>\\]<br>The vertex of this upward-opening parabola is at \\( u = k \\). The location of the vertex relative to the restricted domain \\( u \\ge 0 \\) depends on the sign of \\( k \\):</p><p>- <strong>Case 1: \\( k \\ge 0 \\)</strong><br>The vertex \\( u = k \\) lies within the domain \\( [0, \\infty) \\). Hence, the minimum value is attained at \\( u = k \\):<br>\\[<br>f(k) = -k^2 + 3k + 10.<br>\\]<br>We require \\( f(k) > 4 \\):<br>\\[<br>-k^2 + 3k + 10 > 4 \\iff k^2 - 3k - 6 < 0.<br>\\]<br>The roots of \\( k^2 - 3k - 6 = 0 \\) are \\( k = \\frac{3 \\pm \\sqrt{33}}{2} \\). Since \\( k \\ge 0 \\) and \\( \\frac{3 + \\sqrt{33}}{2} \\approx 4.372 < 5 \\), this gives:<br>\\[<br>0 \\le k < \\frac{3 + \\sqrt{33}}{2}.<br>\\]</p><p>- <strong>Case 2: \\( k < 0 \\)</strong><br>The vertex \\( u = k \\) lies strictly to the left of \\( [0, \\infty) \\). Since the parabola is strictly increasing for \\( u \\ge k \\), its minimum on \\( [0, \\infty) \\) occurs at the boundary \\( u = 0 \\):<br>\\[<br>f(0) = 3k + 10.<br>\\]<br>We require \\( f(0) > 4 \\):<br>\\[<br>3k + 10 > 4 \\iff 3k > -6 \\iff k > -2.<br>\\]<br>Combining with \\( k < 0 \\), this yields \\( -2 < k < 0 \\).</p><p>3. <strong>Combining the Conditions:</strong><br>Combining Case 1 and Case 2 gives:<br>\\[<br>\\left(-2, 0\\right) \\cup \\left[0, \\frac{3 + \\sqrt{33}}{2}\\right) = -2 < k < \\frac{3 + \\sqrt{33}}{2}.<br>\\]<br>Since \\( \\frac{3 + \\sqrt{33}}{2} \\approx 4.372 < 5 \\), this entire interval lies within the initial constraint \\( -2 < k < 5 \\).</p><p><strong>Final Answer:</strong> \\( -2 < k < \\frac{3 + \\sqrt{33}}{2} \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 32,
+      "question": {
+        "en": "The function \\( f(x) = \\frac{5x + 1}{x - 2} \\) is defined for \\( x \\ne 2 \\). Find the inverse function \\( f^{-1}(x) \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Let \\( y = \\frac{5x + 1}{x - 2} \\implies y(x - 2) = 5x + 1 \\implies yx - 2y = 5x + 1 \\implies x(y - 5) = 2y + 1 \\implies x = \\frac{2y + 1}{y - 5} \\). Swap variables to obtain \\( f^{-1}(x) = \\frac{2x + 1}{x - 5} \\).</p><p><strong>Final Answer:</strong> \\( f^{-1}(x) = \\frac{2x + 1}{x - 5} \\quad (x \\ne 5) \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 33,
+      "question": {
+        "en": "A particle moves in a straight line with acceleration \\( a(t) = 6t - 20 \\text{ m/s}^2 \\). If it starts from rest at the origin (at \\( t = 0 \\)), at what time \\( t > 0 \\) does the particle momentarily come to rest again?",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Velocity \\( v(t) = \\int (6t - 20)\\,dt = 3t^2 - 20t + C \\). Since \\( v(0) = 0 \\implies C = 0 \\). Momentarily at rest when \\( v(t) = 0 \\implies t(3t - 20) = 0 \\implies t = \\frac{20}{3} \\text{ s} \\).</p><p><strong>Final Answer:</strong> \\( t = \\frac{20}{3} \\text{ s} \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 34,
+      "question": {
+        "en": "A curve has equation \\( y = 6x - x^2 \\). The straight line \\( y = mx \\), where \\( 0 < m < 6 \\), intersects the curve at the origin and at the point \\( P \\). Given that the area of the region enclosed between the curve and the line is \\( \\frac{32}{3} \\), find the value of the constant \\( m \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Step 1: Find the points of intersection of the curve and the line.<br>Set the equations equal to each other:<br>\\[ 6x - x^2 = mx \\implies x^2 - (6 - m)x = 0 \\implies x(x - (6 - m)) = 0 \\]<br>Since the line intersects the curve at the origin \\( (0, 0) \\) and at point \\( P \\), the \\( x \\)-coordinate of \\( P \\) is \\( x = 6 - m \\).</p><p>Step 2: Set up the definite integral for the enclosed area.<br>For \\( 0 \\le x \\le 6 - m \\), the curve lies above the straight line. The enclosed area \\( A \\) is given by:<br>\\[ A = \\int_{0}^{6-m} \\left( (6x - x^2) - mx \\right) \\mathrm{d}x = \\int_{0}^{6-m} \\left( (6 - m)x - x^2 \\right) \\mathrm{d}x \\]</p><p>Step 3: Integrate and evaluate at the limits.<br>\\[ A = \\left[ \\frac{6 - m}{2}x^2 - \\frac{x^3}{3} \\right]_{0}^{6-m} = \\frac{(6 - m)(6 - m)^2}{2} - \\frac{(6 - m)^3}{3} = \\frac{(6 - m)^3}{6} \\]</p><p>Step 4: Solve for \\( m \\).<br>We are given \\( A = \\frac{32}{3} \\):<br>\\[ \\frac{(6 - m)^3}{6} = \\frac{32}{3} \\implies (6 - m)^3 = 64 \\implies 6 - m = 4 \\implies m = 2 \\]</p><p>Common Pitfall:<br>A common error is to confuse the \\( x \\)-coordinate of the intersection point \\( P \\) (which is \\( 4 \\)) with the value of the parameter \\( m \\), leading to the incorrect choice \\( 4 \\).</p><p><strong>Final Answer:</strong> \\( 2 \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 35,
+      "question": {
+        "en": "Solve the exponential equation \\( 2^{x+4} = 5^x \\), giving \\( x \\) in terms of common logarithms.",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Take natural logs of both sides: \\( (x + 4)\\ln 2 = x\\ln 5 \\implies x\\ln 2 + 4\\ln 2 = x\\ln 5 \\implies x(\\ln 5 - \\ln 2) = 4\\ln 2 \\implies x = \\frac{4\\ln 2}{\\ln 5 - \\ln 2} \\).</p><p><strong>Final Answer:</strong> \\( x = \\frac{4\\ln 2}{\\ln 5 - \\ln 2} \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 36,
+      "question": {
+        "en": "The variables \\(x\\) and \\(y\\) satisfy the relationship \\(y = A x^n\\), where \\(A\\) and \\(n\\) are constants. When \\(\\log_2 y\\) is plotted against \\(\\log_2 x\\), a straight line is obtained which passes through the points \\((1, 5)\\) and \\((4, -1)\\). What is the value of \\(y\\) when \\(x = 4\\)?",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>1. Express the non-linear relationship in linear form \\(Y = mX + c\\):<br>Taking base-2 logarithms of both sides of \\(y = A x^n\\):<br>\\[<br>\\log_2 y = \\log_2(A x^n) = n\\log_2 x + \\log_2 A<br>\\]<br>Letting \\(Y = \\log_2 y\\) and \\(X = \\log_2 x\\), the equation becomes:<br>\\[<br>Y = nX + \\log_2 A<br>\\]<br>where the gradient is \\(m = n\\) and the vertical intercept is \\(c = \\log_2 A\\).</p><p>2. Find the equation of the straight line:<br>Using the given points \\((X_1, Y_1) = (1, 5)\\) and \\((X_2, Y_2) = (4, -1)\\):<br>\\[<br>m = \\frac{-1 - 5}{4 - 1} = \\frac{-6}{3} = -2<br>\\]<br>Using the point \\((1, 5)\\):<br>\\[<br>Y - 5 = -2(X - 1) \\implies Y = -2X + 7<br>\\]</p><p>3. Evaluate \\(y\\) when \\(x = 4\\):<br>First, convert \\(x = 4\\) to the corresponding coordinate on the \\(X\\)-axis:<br>\\[<br>X = \\log_2 x = \\log_2 4 = 2<br>\\]<br>Substitute \\(X = 2\\) into the line equation:<br>\\[<br>Y = -2(2) + 7 = 3<br>\\]<br>Since \\(Y = \\log_2 y\\):<br>\\[<br>\\log_2 y = 3 \\implies y = 2^3 = 8<br>\\]</p><p>Common Algebraic Traps:<br>- Confusing \\(x = 4\\) with \\(X = 4\\): Looking directly at the given coordinate \\((4, -1)\\) yields \\(Y = -1\\), giving \\(y = 2^{-1} = \\frac{1}{2}\\).<br>- Forgetting to un-log: Correctly finding \\(Y = 3\\) but failing to invert the transformation yields \\(3\\).<br>- Incorrect parameter evaluation: Finding \\(A = 2^7 = 128\\) and dividing by \\(x\\) rather than \\(x^2\\) gives \\(\\frac{128}{4} = 32\\).</p><p><strong>Final Answer:</strong> \\(8\\)</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 37,
+      "question": {
+        "en": "Two parallel lines, \\( L_1 \\) and \\( L_2 \\), have \\( n \\) and \\( n + 2 \\) distinct points marked on them respectively, where \\( n \\) is an integer with \\( n \\ge 2 \\).<br>Triangles are formed by choosing 3 of these points as vertices such that they are not collinear. Quadrilaterals are formed by choosing 4 of these points as vertices such that no three are collinear.<br>Given that the ratio of the number of quadrilaterals to the number of triangles that can be formed is \\( 6 : 5 \\), find the total number of triangles that can be formed.",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>1. <strong>Determine the number of triangles, \\( T \\):</strong><br>Three points form a triangle if and only if they are not all on the same straight line.<br>- Case 1: 1 point from \\( L_1 \\) and 2 points from \\( L_2 \\):<br>  \\[<br>  \\binom{n}{1} \\binom{n+2}{2} = n \\cdot \\frac{(n+2)(n+1)}{2}<br>  \\]<br>- Case 2: 2 points from \\( L_1 \\) and 1 point from \\( L_2 \\):<br>  \\[<br>  \\binom{n}{2} \\binom{n+2}{1} = \\frac{n(n-1)}{2} \\cdot (n+2)<br>  \\]<br>Summing both cases:<br>\\[<br>T = \\frac{n(n+2)}{2} \\left[ (n+1) + (n-1) \\right] = \\frac{n(n+2)}{2} (2n) = n^2(n+2)<br>\\]</p><p>2. <strong>Determine the number of quadrilaterals, \\( Q \\):</strong><br>To ensure no three vertices are collinear, exactly 2 points must be chosen from \\( L_1 \\) and 2 points from \\( L_2 \\):<br>\\[<br>Q = \\binom{n}{2} \\binom{n+2}{2} = \\frac{n(n-1)}{2} \\cdot \\frac{(n+2)(n+1)}{2} = \\frac{n(n-1)(n+1)(n+2)}{4}<br>\\]</p><p>3. <strong>Use the given ratio to find \\( n \\):</strong><br>\\[<br>\\frac{Q}{T} = \\frac{\\frac{n(n-1)(n+1)(n+2)}{4}}{n^2(n+2)} = \\frac{(n-1)(n+1)}{4n} = \\frac{n^2 - 1}{4n}<br>\\]<br>Setting this equal to \\( \\frac{6}{5} \\):<br>\\[<br>\\frac{n^2 - 1}{4n} = \\frac{6}{5} \\implies 5(n^2 - 1) = 24n \\implies 5n^2 - 24n - 5 = 0<br>\\]<br>Factoring the quadratic:<br>\\[<br>(5n + 1)(n - 5) = 0<br>\\]<br>Since \\( n \\) must be a positive integer, \\( n = 5 \\).</p><p>4. <strong>Calculate the total number of triangles:</strong><br>\\[<br>T = 5^2(5 + 2) = 25 \\times 7 = 175<br>\\]</p><p><strong>Final Answer:</strong> \\( 175 \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 38,
+      "question": {
+        "en": "In the expansion of \\( \\left(1 + \\frac{x}{6}\\right)^n \\), the coefficient of \\( x^2 \\) is twice the coefficient of \\( x \\). Given \\( n > 0 \\), what is the value of \\( n \\)?",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Coeff of \\( x \\) is \\( \\frac{n}{6} \\). Coeff of \\( x^2 \\) is \\( \\frac{n(n-1)}{2(36)} \\). Given \\( \\frac{n(n-1)}{2\\cdot 36} = 2\\left(\\frac{n}{6}\\right) \\implies \\frac{n-1}{2\\cdot 6} = 2 \\implies n - 1 = 4(6) = 24 \\implies n = 25 \\).</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 39,
+      "question": {
+        "en": "The polynomial \\( P(x) = 2x^3 + ax^2 + bx - 6 \\) has a factor of \\( x - 2 \\) and leaves a remainder of \\( -24 \\) when divided by \\( x + 1 \\), where \\( a \\) and \\( b \\) are constants.<br>Find the remainder when \\( P(x) \\) is divided by \\( x - 3 \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Step 1: Use the Factor Theorem for the factor \\( x - 2 \\).<br>Since \\( x - 2 \\) is a factor, \\( P(2) = 0 \\):<br>\\[<br>P(2) = 2(2)^3 + a(2)^2 + b(2) - 6 = 0<br>\\]<br>\\[<br>16 + 4a + 2b - 6 = 0 \\implies 4a + 2b = -10 \\implies 2a + b = -5 \\quad \\text{--- (1)}<br>\\]</p><p>Step 2: Use the Remainder Theorem for division by \\( x + 1 \\).<br>Since the remainder is \\( -24 \\), \\( P(-1) = -24 \\):<br>\\[<br>P(-1) = 2(-1)^3 + a(-1)^2 + b(-1) - 6 = -24<br>\\]<br>\\[<br>-2 + a - b - 6 = -24 \\implies a - b - 8 = -24 \\implies a - b = -16 \\quad \\text{--- (2)}<br>\\]</p><p>Step 3: Solve the simultaneous equations.<br>Adding (1) and (2):<br>\\[<br>(2a + b) + (a - b) = -5 + (-16)<br>\\]<br>\\[<br>3a = -21 \\implies a = -7<br>\\]<br>Substitute \\( a = -7 \\) into (2):<br>\\[<br>-7 - b = -16 \\implies b = 9<br>\\]<br>Thus, the polynomial is:<br>\\[<br>P(x) = 2x^3 - 7x^2 + 9x - 6<br>\\]</p><p>Step 4: Find the remainder when \\( P(x) \\) is divided by \\( x - 3 \\).<br>By the Remainder Theorem, the remainder is \\( P(3) \\):<br>\\[<br>P(3) = 2(3)^3 - 7(3)^2 + 9(3) - 6 = 2(27) - 7(9) + 27 - 6 = 54 - 63 + 27 - 6 = 12<br>\\]</p><p>Common Pitfalls:<br>- Evaluating \\( P(-3) \\) instead of \\( P(3) \\) yields \\( -150 \\).<br>- Using incorrect signs when substituting into the Factor/Remainder Theorems (e.g., testing \\( P(-2) = 0 \\) and \\( P(1) = -24 \\)) leads to \\( -30 \\).<br>- A sign error setting the remainder to \\( +24 \\) leads to \\( 60 \\).</p><p><strong>Final Answer:</strong> \\( 12 \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 40,
+      "question": {
+        "en": "A sector of a circle of radius \\( r = 18 \\text{ cm} \\) has central angle \\( \\theta = 1.4 \\text{ rad} \\). What is the area of the sector?",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Sector area formula: \\( A = \\frac{1}{2}r^2\\theta = \\frac{1}{2}(18)^2(1.4) = 226.8 \\text{ cm}^2 \\).</p><p><strong>Final Answer:</strong> \\( 226.8 \\text{ cm}^2 \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 41,
+      "question": {
+        "en": "In triangle \\( ABC \\), the side lengths are \\( AB = (x + 2) \\text{ cm} \\), \\( BC = (3x - 1) \\text{ cm} \\), and \\( AC = 7 \\text{ cm} \\). Given that \\( \\angle ABC = 60^\\circ \\) and \\( x > 0 \\), find the exact area of triangle \\( ABC \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Step 1: Use the cosine rule on triangle \\( ABC \\) to set up an equation for \\( x \\):<br>\\[<br>AC^2 = AB^2 + BC^2 - 2(AB)(BC)\\cos(\\angle ABC)<br>\\]<br>Substitute the given values and \\( \\cos(60^\\circ) = \\frac{1}{2} \\):<br>\\[<br>7^2 = (x + 2)^2 + (3x - 1)^2 - 2(x + 2)(3x - 1)\\left(\\frac{1}{2}\\right)<br>\\]</p><p>Step 2: Expand each term:<br>\\[<br>(x + 2)^2 = x^2 + 4x + 4<br>\\]<br>\\[<br>(3x - 1)^2 = 9x^2 - 6x + 1<br>\\]<br>\\[<br>(x + 2)(3x - 1) = 3x^2 + 5x - 2<br>\\]<br>Substitute these back into the equation:<br>\\[<br>49 = (x^2 + 4x + 4) + (9x^2 - 6x + 1) - (3x^2 + 5x - 2)<br>\\]<br>\\[<br>49 = 10x^2 - 2x + 5 - 3x^2 - 5x + 2<br>\\]<br>\\[<br>49 = 7x^2 - 7x + 7<br>\\]<br>Divide the entire equation by 7:<br>\\[<br>7 = x^2 - x + 1 \\implies x^2 - x - 6 = 0<br>\\]</p><p>Step 3: Solve the quadratic equation:<br>\\[<br>(x - 3)(x + 2) = 0<br>\\]<br>Since \\( x > 0 \\) (as side lengths must be positive), we reject \\( x = -2 \\), giving \\( x = 3 \\).</p><p>Step 4: Find the side lengths:<br>\\[<br>AB = 3 + 2 = 5 \\text{ cm}, \\quad BC = 3(3) - 1 = 8 \\text{ cm}<br>\\]</p><p>Step 5: Calculate the exact area of triangle \\( ABC \\):<br>\\[<br>\\text{Area} = \\frac{1}{2} (AB)(BC) \\sin(60^\\circ) = \\frac{1}{2} \\times 5 \\times 8 \\times \\frac{\\sqrt{3}}{2} = 10\\sqrt{3} \\text{ cm}^2<br>\\]</p><p>Common traps:<br>- Using a plus sign instead of a minus in the cosine rule leads to \\( 13x^2 + 3x - 46 = 0 \\implies x = 2 \\), yielding the incorrect area \\( 5\\sqrt{3} \\text{ cm}^2 \\).<br>- Forgetting the factor of \\( \\frac{1}{2} \\) in the area formula leads to \\( 20\\sqrt{3} \\text{ cm}^2 \\).<br>- Using \\( \\cos(60^\\circ) \\) instead of \\( \\sin(60^\\circ) \\) for the area formula gives \\( 10 \\text{ cm}^2 \\).</p><p><strong>Final Answer:</strong> \\( 10\\sqrt{3} \\text{ cm}^2 \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 42,
+      "question": {
+        "en": "At 14:00, a coastguard radar station detects two vessels, \\( A \\) and \\( B \\). Relative to the radar station, vessel \\( A \\) has position vector \\( (-4\\mathbf{i} + 6\\mathbf{j})\\text{ km} \\) and moves with a constant velocity of \\( (8\\mathbf{i} + 5\\mathbf{j})\\text{ km h}^{-1} \\). Vessel \\( B \\) has position vector \\( (20\\mathbf{i} - 4\\mathbf{j})\\text{ km} \\) and moves with a constant velocity of \\( (u\\mathbf{i} + 10\\mathbf{j})\\text{ km h}^{-1} \\), where \\( u \\) is a constant. Given that vessel \\( B \\) intercepts vessel \\( A \\), find the value of \\( u \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Let \\( t \\) be the time in hours after 14:00 when the interception occurs.</p><p>The position vector of vessel \\( A \\) at time \\( t \\) is:<br>\\[<br>\\mathbf{r}_A(t) = (-4 + 8t)\\mathbf{i} + (6 + 5t)\\mathbf{j}<br>\\]</p><p>The position vector of vessel \\( B \\) at time \\( t \\) is:<br>\\[<br>\\mathbf{r}_B(t) = (20 + ut)\\mathbf{i} + (-4 + 10t)\\mathbf{j}<br>\\]</p><p>For interception to occur, \\( \\mathbf{r}_A(t) = \\mathbf{r}_B(t) \\).</p><p>Equating the \\( \\mathbf{j} \\)-components:<br>\\[<br>6 + 5t = -4 + 10t \\implies 5t = 10 \\implies t = 2\\text{ hours}<br>\\]</p><p>Equating the \\( \\mathbf{i} \\)-components and substituting \\( t = 2 \\):<br>\\[<br>-4 + 8(2) = 20 + u(2)<br>\\]<br>\\[<br>12 = 20 + 2u \\implies 2u = -8 \\implies u = -4<br>\\]</p><p>Common Traps:</p><p><strong>Final Answer:</strong> \\( u = -4 \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 43,
+      "question": {
+        "en": "Find the equation of the tangent line to the curve \\( y = (7x + 1)^3 \\) at the point where \\( x = 0 \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>At \\( x = 0 \\), \\( y = 1^3 = 1 \\). Derivative: \\( \\frac{dy}{dx} = 3(7x+1)^2 \\cdot (7) = 21(7x+1)^2 \\). At \\( x = 0 \\), slope \\( m = 21 \\). Equation: \\( y - 1 = 21(x - 0) \\implies y = 21x + 1 \\).</p><p><strong>Final Answer:</strong> \\( y = 21x + 1 \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 44,
+      "question": {
+        "en": "A curve has equation \\( y = \\frac{kx}{2x - 1} \\), where \\( x \\neq \\frac{1}{2} \\) and \\( k \\) is a non-zero constant. The normal to the curve at the point where \\( x = 1 \\) has a gradient of \\( \\frac{1}{3} \\).<br>Given that \\( x \\) is increasing at a rate of \\( 0.6 \\) units per second, find the rate of change of \\( y \\) when \\( x = 2 \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Step 1: Find the derivative \\( \\frac{dy}{dx} \\) in terms of \\( k \\) using the quotient rule.<br>Let \\( u = kx \\) and \\( v = 2x - 1 \\). Then \\( u' = k \\) and \\( v' = 2 \\).<br>\\[<br>\\frac{dy}{dx} = \\frac{k(2x - 1) - 2(kx)}{(2x - 1)^2} = \\frac{2kx - k - 2kx}{(2x - 1)^2} = \\frac{-k}{(2x - 1)^2}<br>\\]</p><p>Step 2: Find the parameter \\( k \\).<br>At \\( x = 1 \\), the gradient of the tangent is:<br>\\[<br>m_T = \\left.\\frac{dy}{dx}\\right|_{x=1} = \\frac{-k}{(2(1) - 1)^2} = -k<br>\\]<br>The gradient of the normal is given by \\( m_N = -\\frac{1}{m_T} = \\frac{1}{k} \\).<br>Since the gradient of the normal is \\( \\frac{1}{3} \\):<br>\\[<br>\\frac{1}{k} = \\frac{1}{3} \\implies k = 3<br>\\]</p><p>Step 3: Evaluate \\( \\frac{dy}{dx} \\) at \\( x = 2 \\).<br>With \\( k = 3 \\):<br>\\[<br>\\left.\\frac{dy}{dx}\\right|_{x=2} = \\frac{-3}{(2(2) - 1)^2} = \\frac{-3}{3^2} = -\\frac{1}{3}<br>\\]</p><p>Step 4: Use the chain rule to find \\( \\frac{dy}{dt} \\).<br>\\[<br>\\frac{dy}{dt} = \\frac{dy}{dx} \\times \\frac{dx}{dt} = -\\frac{1}{3} \\times 0.6 = -0.2\\text{ units per second}<br>\\]</p><p>Common Errors:<br>- Forgetting the negative sign from the normal relationship or quotient rule gives \\( 0.2 \\).<br>- Evaluating \\( \\frac{dy}{dx} \\) at \\( x = 1 \\) instead of \\( x = 2 \\) gives \\( -3 \\times 0.6 = -1.8 \\).<br>- Forgetting to square the denominator in the quotient rule gives \\( \\frac{-3}{3} \\times 0.6 = -0.6 \\).</p><p><strong>Final Answer:</strong> \\(-0.2\\text{ units per second}\\)</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 45,
+      "question": {
+        "en": "The line \\( y = mx - 1 \\) intersects the curve \\( y = x^2 + 3x + k \\) at two distinct points for all real values of \\( m \\).<br>Find the range of values of the constant \\( k \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>To find the points of intersection of the line and the curve, set their equations equal:<br>\\[<br>x^2 + 3x + k = mx - 1<br>\\]<br>Rearranging into standard quadratic form \\( ax^2 + bx + c = 0 \\):<br>\\[<br>x^2 + (3 - m)x + (k + 1) = 0<br>\\]<br>For the line and curve to intersect at two distinct points, the discriminant with respect to \\( x \\), denoted \\( \\Delta_x \\), must be strictly positive:<br>\\[<br>\\Delta_x = (3 - m)^2 - 4(1)(k + 1) > 0<br>\\]<br>Expanding and simplifying:<br>\\[<br>\\Delta_x = m^2 - 6m + 9 - 4k - 4 = m^2 - 6m + (5 - 4k) > 0<br>\\]<br>We are given that this inequality holds for <strong>all</strong> real values of \\( m \\).</p><p>Consider the quadratic function in \\( m \\):<br>\\[<br>g(m) = m^2 - 6m + (5 - 4k)<br>\\]<br>The coefficient of \\( m^2 \\) is \\( 1 > 0 \\), so the parabola opens upward. For \\( g(m) > 0 \\) for all \\( m \\in \\mathbb{R} \\), the graph of \\( g(m) \\) must lie entirely above the \\( m \\)-axis, which means it must have no real roots. Therefore, the discriminant of \\( g(m) \\), denoted \\( \\Delta_m \\), must be strictly negative:<br>\\[<br>\\Delta_m = (-6)^2 - 4(1)(5 - 4k) < 0<br>\\]<br>\\[<br>36 - 20 + 16k < 0<br>\\]<br>\\[<br>16 + 16k < 0 \\implies 16k < -16 \\implies k < -1<br>\\]</p><p>A common algebraic trap is to set \\( \\Delta_m > 0 \\) (confusing \"two distinct points of intersection\" with the condition for \\( g(m) > 0 \\)), which erroneously yields \\( k > -1 \\).</p><p><strong>Final Answer:</strong> \\( k < -1 \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 46,
+      "question": {
+        "en": "The function \\( f(x) = \\frac{6x + 1}{x - 2} \\) is defined for \\( x \\ne 2 \\). Find the inverse function \\( f^{-1}(x) \\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Let \\( y = \\frac{6x + 1}{x - 2} \\implies y(x - 2) = 6x + 1 \\implies yx - 2y = 6x + 1 \\implies x(y - 6) = 2y + 1 \\implies x = \\frac{2y + 1}{y - 6} \\). Swap variables to obtain \\( f^{-1}(x) = \\frac{2x + 1}{x - 6} \\).</p><p><strong>Final Answer:</strong> \\( f^{-1}(x) = \\frac{2x + 1}{x - 6} \\quad (x \\ne 6) \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 47,
+      "question": {
+        "en": "A particle moves in a straight line with acceleration \\( a(t) = 6t - 24 \\text{ m/s}^2 \\). If it starts from rest at the origin (at \\( t = 0 \\)), at what time \\( t > 0 \\) does the particle momentarily come to rest again?",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Velocity \\( v(t) = \\int (6t - 24)\\,dt = 3t^2 - 24t + C \\). Since \\( v(0) = 0 \\implies C = 0 \\). Momentarily at rest when \\( v(t) = 0 \\implies t(3t - 24) = 0 \\implies t = \\frac{24}{3} \\text{ s} \\).</p><p><strong>Final Answer:</strong> \\( t = \\frac{24}{3} \\text{ s} \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Advanced"
+    },
+    {
+      "number": 48,
+      "question": {
+        "en": "A particle moves in a straight line such that its velocity, \\( v\\text{ m s}^{-1} \\), at time \\( t \\) seconds is given by \\( v = 6t^2 - 18t + k \\), where \\( k \\) is a constant.\\n\\nGiven that the particle is momentarily at rest when \\( t = 2 \\), find the total distance traveled by the particle in the first \\( 2 \\) seconds.",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Step 1: Determine the unknown parameter \\( k \\).\\nThe particle is momentarily at rest when \\( t = 2 \\), so \\( v(2) = 0 \\):\\n\\[ 6(2)^2 - 18(2) + k = 0 \\implies 24 - 36 + k = 0 \\implies k = 12 \\]</p><p>Step 2: Find all times when the particle is at rest to check for direction changes.\\n\\[ v(t) = 6t^2 - 18t + 12 = 6(t^2 - 3t + 2) = 6(t - 1)(t - 2) = 0 \\]<br>The particle is at rest at \\( t = 1 \\) and \\( t = 2 \\). In the interval \\( 0 \\le t < 1 \\), \\( v(t) > 0 \\); in the interval \\( 1 < t < 2 \\), \\( v(t) < 0 \\).\\n<br>Step 3: Calculate the total distance traveled by integrating over each interval.\\nFor \\( 0 \\le t \\le 1 \\):\\n\\[ s_1 = \\int_0^1 (6t^2 - 18t + 12)\\,dt = \\left[ 2t^3 - 9t^2 + 12t \\right]_0^1 = 2(1)^3 - 9(1)^2 + 12(1) - 0 = 5\\text{ m} \\]</p><p>For \\( 1 \\le t \\le 2 \\):\\n\\[ s_2 = \\int_1^2 (6t^2 - 18t + 12)\\,dt = \\left[ 2t^3 - 9t^2 + 12t \\right]_1^2 = (2(8) - 9(4) + 12(2)) - 5 = 4 - 5 = -1\\text{ m} \\]<br>The distance traveled in this interval is \\( |-1| = 1\\text{ m} \\).\\n<br>Step 4: Sum the distances.\\n\\[ \\text{Total distance} = 5 + 1 = 6\\text{ m} \\]</p><p>Common Trap: Evaluating simply the net displacement \\( \\int_0^2 v\\,dt = 4\\text{ m} \\) neglects the reversal of direction at \\( t = 1 \\).</p><p><strong>Final Answer:</strong> \\( 6\\text{ m} \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 49,
+      "question": {
+        "en": "Solve the exponential equation \\( 2^{x+5} = 5^x \\), giving \\( x \\) in terms of common logarithms.",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Take natural logs of both sides: \\( (x + 5)\\ln 2 = x\\ln 5 \\implies x\\ln 2 + 5\\ln 2 = x\\ln 5 \\implies x(\\ln 5 - \\ln 2) = 5\\ln 2 \\implies x = \\frac{5\\ln 2}{\\ln 5 - \\ln 2} \\).</p><p><strong>Final Answer:</strong> \\( x = \\frac{5\\ln 2}{\\ln 5 - \\ln 2} \\)</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    },
+    {
+      "number": 50,
+      "question": {
+        "en": "Variables \\(x\\) and \\(y\\) satisfy the equation \\(y = A x^k\\), where \\(A\\) and \\(k\\) are constants, with \\(x > 0\\). The graph of \\(\\ln y\\) against \\(\\ln x\\) is a straight line passing through the points \\((\\ln 2, \\ln 72)\\) and \\((\\ln 6, \\ln 8)\\). Find the value of \\(x\\) when \\(y = 18\\).",
+        "ar": null
+      },
+      "solution": {
+        "en": "<p>Step 1: Reduce the non-linear relationship to linear form.<br>Taking the natural logarithm of both sides of \\(y = A x^k\\):<br>\\[<br>\\ln y = \\ln(A x^k) = \\ln A + k \\ln x<br>\\]<br>This is in the linear form \\(Y = m X + c\\), where \\(Y = \\ln y\\), \\(X = \\ln x\\), gradient \\(m = k\\), and vertical intercept \\(c = \\ln A\\).</p><p>Step 2: Determine the gradient \\(k\\).<br>Using the given points \\((\\ln 2, \\ln 72)\\) and \\((\\ln 6, \\ln 8)\\):<br>\\[<br>k = \\frac{\\ln 8 - \\ln 72}{\\ln 6 - \\ln 2} = \\frac{\\ln\\left(\\frac{8}{72}\\right)}{\\ln\\left(\\frac{6}{2}\\right)} = \\frac{\\ln\\left(\\frac{1}{9}\\right)}{\\ln 3} = \\frac{\\ln(3^{-2})}{\\ln 3} = \\frac{-2\\ln 3}{\\ln 3} = -2<br>\\]</p><p>Step 3: Determine the constant \\(A\\).<br>Substitute \\(k = -2\\) and the point \\((\\ln 2, \\ln 72)\\) into the linear equation:<br>\\[<br>\\ln 72 = \\ln A - 2 \\ln 2 = \\ln A - \\ln 4<br>\\]<br>\\[<br>\\ln A = \\ln 72 + \\ln 4 = \\ln(72 \\times 4) = \\ln 288 \\implies A = 288<br>\\]<br>Thus, the relationship is \\(y = 288 x^{-2} = \\frac{288}{x^2}\\).</p><p>Step 4: Solve for \\(x\\) when \\(y = 18\\).<br>\\[<br>18 = \\frac{288}{x^2} \\implies x^2 = \\frac{288}{18} = 16<br>\\]<br>Since \\(x > 0\\), \\(x = \\sqrt{16} = 4\\).</p><p>Common Pitfalls:<br>- Confusing the subtraction order gives \\(k = 2\\), leading to \\(A = 18\\) and the incorrect answer \\(x = 1\\).<br>- Neglecting the term \\(k\\ln 2\\) when finding \\(\\ln A\\) leads to \\(A = 72\\) and \\(x = 2\\).</p>",
+        "ar": null
+      },
+      "difficulty": "Intermediate"
+    }
+  ]
+}
