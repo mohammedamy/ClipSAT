@@ -12,128 +12,50 @@
           "q": "Find the interval of convergence of $\\sum_{n=0}^{\\infty} x^{n}$.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
-          "target": "Limits of Sequences & Monotonicity",
+          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
           "answer": "Theorem (Interval of Convergence for Geometric Power Series): The series $\\sum_{n=0}^{\\infty} x^n$ is a geometric series with common ratio $r = x$. Step 1 · Apply Geometric Convergence Criterion: An infinite geometric series converges if and only if $|r| < 1$. Therefore: $|x| < 1 \\Rightarrow -1 < x < 1.$ Radius of convergence is $R = 1$, centered at $c = 0$. Step 2 · Test the boundary endpoints: At $x = 1$: $\\sum 1^n = 1 + 1 + 1 + \\dots$ diverges by the $n$th-term test ($\\lim_{n\\rightarrow\\infty} 1 = 1 e 0$). At $x = -1$: $\\sum (-1)^n = 1 - 1 + 1 - 1 + \\dots$ diverges by oscillation ($\\lim_{n\\rightarrow\\infty} (-1)^n$ DNE). Conclusion: Neither endpoint is included. The interval of convergence is strictly: $\\mathbf{(-1, 1)}.$",
           "explanation": "Theorem (Interval of Convergence for Geometric Power Series): The series $\\sum_{n=0}^{\\infty} x^n$ is a geometric series with common ratio $r = x$. Step 1 · Apply Geometric Convergence Criterion: An infinite geometric series converges if and only if $|r| < 1$. Therefore: $|x| < 1 \\Rightarrow -1 < x < 1.$ Radius of convergence is $R = 1$, centered at $c = 0$. Step 2 · Test the boundary endpoints: At $x = 1$: $\\sum 1^n = 1 + 1 + 1 + \\dots$ diverges by the $n$th-term test ($\\lim_{n\\rightarrow\\infty} 1 = 1 e 0$). At $x = -1$: $\\sum (-1)^n = 1 - 1 + 1 - 1 + \\dots$ diverges by oscillation ($\\lim_{n\\rightarrow\\infty} (-1)^n$ DNE). Conclusion: Neither endpoint is included. The interval of convergence is strictly: $\\mathbf{(-1, 1)}.$"
-        },
-        {
-          "q": "The graph of the function $f(x)$ is shown below. What is the value of the definite integral $\\int_{-2}^{2} f(x) \\, dx$?",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Geometric Series & n-th Term Divergence Test",
-          "answer": "The definite integral $\\int_{-2}^{2} f(x) \\, dx$ represents the net signed area between the graph of $f(x)$ and the x-axis from $x = -2$ to $x = 2$. The graph of $f(x)$ for $-2 \\leq x \\leq 2$ forms a semicircle above the x-axis with radius 2. The area of this semicircle is $\\frac{1}{2} \\pi r^2 = \\frac{1}{2} \\pi (2^2) = 2\\pi$. However, the provided figure shows a region that is a combination of triangles and a rectangle. From $x=-2$ to $x=0$, the area is a triangle with base 2 and height 2, so the area is $\\frac{1}{2} \\times 2 \\times 2 = 2$. From $x=0$ to $x=2$, the area is a triangle with base 2 and height 2, so the area is $\\frac{1}{2} \\times 2 \\times 2 = 2$. The total net signed area is $2 + 2 = 4$.",
-          "explanation": "The definite integral $\\int_{-2}^{2} f(x) \\, dx$ represents the net signed area between the graph of $f(x)$ and the x-axis from $x = -2$ to $x = 2$. The graph of $f(x)$ for $-2 \\leq x \\leq 2$ forms a semicircle above the x-axis with radius 2. The area of this semicircle is $\\frac{1}{2} \\pi r^2 = \\frac{1}{2} \\pi (2^2) = 2\\pi$. However, the provided figure shows a region that is a combination of triangles and a rectangle. From $x=-2$ to $x=0$, the area is a triangle with base 2 and height 2, so the area is $\\frac{1}{2} \\times 2 \\times 2 = 2$. From $x=0$ to $x=2$, the area is a triangle with base 2 and height 2, so the area is $\\frac{1}{2} \\times 2 \\times 2 = 2$. The total net signed area is $2 + 2 = 4$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "-0.30*x**2 + 1.2*x + 2.2",
-              "0.35*x + 0.4"
-            ],
-            "xmin": -1,
-            "xmax": 5,
-            "ymin": -1,
-            "ymax": 5,
-            "shade": {
-              "fn1": "-0.30*x**2 + 1.2*x + 2.2",
-              "fn2": "0.35*x + 0.4",
-              "x0": 0.0,
-              "x1": 3.5
-            },
-            "point_labels": [
-              {
-                "x": 2.0,
-                "y": 3.4,
-                "label": "$y=f(x)$"
-              }
-            ],
-            "width": 230
-          }
-        },
-        {
-          "q": "Use a two-term Maclaurin polynomial for $e^{x}$ to approximate $e^{0.1}$.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Integral Test & p-Series",
-          "answer": "Method · Taylor/Maclaurin Polynomial Approximation: Step 1 · Define the two-term (degree 1) Maclaurin polynomial for $e^x$: $P_1(x) = 1 + x.$ Step 2 · Evaluate at $x = 0.1$: $P_1(0.1) = 1 + 0.1 = \\mathbf{1.1}.$ Step 3 · Error analysis via Lagrange Remainder: By Taylor's Theorem: $|R_1(0.1)| = \\left| \\frac{f''(c)}{2!} (0.1)^2 \\right| = \\frac{e^c}{2}(0.01) \\quad \\mathrm{for\\ some\\ } c \\in (0, 0.1).$ Since $e^c < e^{0.1} < 1.2$, $|R_1(0.1)| < \\frac{1.2}{2}(0.01) = 0.006$. Exact value: $e^{0.1} \\approx 1.10517$. The two-term approximation $\\mathbf{1.1}$ captures the true value within $0.47\\%$.",
-          "explanation": "Method · Taylor/Maclaurin Polynomial Approximation: Step 1 · Define the two-term (degree 1) Maclaurin polynomial for $e^x$: $P_1(x) = 1 + x.$ Step 2 · Evaluate at $x = 0.1$: $P_1(0.1) = 1 + 0.1 = \\mathbf{1.1}.$ Step 3 · Error analysis via Lagrange Remainder: By Taylor's Theorem: $|R_1(0.1)| = \\left| \\frac{f''(c)}{2!} (0.1)^2 \\right| = \\frac{e^c}{2}(0.01) \\quad \\mathrm{for\\ some\\ } c \\in (0, 0.1).$ Since $e^c < e^{0.1} < 1.2$, $|R_1(0.1)| < \\frac{1.2}{2}(0.01) = 0.006$. Exact value: $e^{0.1} \\approx 1.10517$. The two-term approximation $\\mathbf{1.1}$ captures the true value within $0.47\\%$."
         },
         {
           "q": "Find the radius of convergence of $\\sum_{n=0}^{\\infty}\\frac{x^n}{2^n}$.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
-          "target": "Direct Comparison & Limit Comparison Tests",
+          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
           "answer": "Theorem (Ratio Test for Radius of Convergence): Step 1 · Set up ratio limit for $a_n = \\frac{x^n}{2^n}$: $L = \\lim_{n\\rightarrow\\infty}\\left| \\frac{x^{n+1}}{2^{n+1}} \\cdot \\frac{2^n}{x^n} \\right| = \\lim_{n\\rightarrow\\infty}\\left| \\frac{x \\cdot 2^n}{2 \\cdot 2^n} \\right| = \\frac{|x|}{2}.$ Step 2 · Apply convergence condition $L < 1$: $\\frac{|x|}{2} < 1 \\Rightarrow |x| < 2.$ Conclusion: The series converges for all $x$ strictly within distance $2$ of the center $c = 0$. The radius of convergence is: $\\mathbf{R = 2}.$",
-          "explanation": "Theorem (Ratio Test for Radius of Convergence): Step 1 · Set up ratio limit for $a_n = \\frac{x^n}{2^n}$: $L = \\lim_{n\\rightarrow\\infty}\\left| \\frac{x^{n+1}}{2^{n+1}} \\cdot \\frac{2^n}{x^n} \\right| = \\lim_{n\\rightarrow\\infty}\\left| \\frac{x \\cdot 2^n}{2 \\cdot 2^n} \\right| = \\frac{|x|}{2}.$ Step 2 · Apply convergence condition $L < 1$: $\\frac{|x|}{2} < 1 \\Rightarrow |x| < 2.$ Conclusion: The series converges for all $x$ strictly within distance $2$ of the center $c = 0$. The radius of convergence is: $\\mathbf{R = 2}.$"
-        },
-        {
-          "q": "Consider the function represented by the graph of $f(x)$ below. What is the value of the definite integral $\\int_{0}^{4} f(x) \\, dx$?",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Limits of Sequences & Monotonicity",
-          "answer": "The definite integral $\\int_{0}^{4} f(x) \\, dx$ represents the area under the curve $f(x)$ from $x=0$ to $x=4$. The graph of $f(x)$ from $x=0$ to $x=4$ forms a triangle with a base of 4 units (from 0 to 4 on the x-axis) and a height of 6 units (the value of $f(x)$ at $x=0$). The area of a triangle is given by $\\frac{1}{2} \\times \\mathrm{base} \\times \\mathrm{height}$. Therefore, the area is $\\frac{1}{2} \\times 4 \\times 6 = 12$.",
-          "explanation": "The definite integral $\\int_{0}^{4} f(x) \\, dx$ represents the area under the curve $f(x)$ from $x=0$ to $x=4$. The graph of $f(x)$ from $x=0$ to $x=4$ forms a triangle with a base of 4 units (from 0 to 4 on the x-axis) and a height of 6 units (the value of $f(x)$ at $x=0$). The area of a triangle is given by $\\frac{1}{2} \\times \\mathrm{base} \\times \\mathrm{height}$. Therefore, the area is $\\frac{1}{2} \\times 4 \\times 6 = 12$."
-        },
-        {
-          "q": "Consider the infinite series $\\sum_{n=1}^{\\infty} \\frac{1}{n^p}$. For what value(s) of $p$ does this series converge?",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Geometric Series & n-th Term Divergence Test",
-          "answer": "The given series is the p-series, $\\sum_{n=1}^{\\infty} \\frac{1}{n^p}$. This series is a fundamental example in the study of convergence. The p-series test states that the p-series converges if and only if $p > 1$. Therefore, the series converges for $p > 1$.",
-          "explanation": "The given series is the p-series, $\\sum_{n=1}^{\\infty} \\frac{1}{n^p}$. This series is a fundamental example in the study of convergence. The p-series test states that the p-series converges if and only if $p > 1$. Therefore, the series converges for $p > 1$.",
+          "explanation": "Theorem (Ratio Test for Radius of Convergence): Step 1 · Set up ratio limit for $a_n = \\frac{x^n}{2^n}$: $L = \\lim_{n\\rightarrow\\infty}\\left| \\frac{x^{n+1}}{2^{n+1}} \\cdot \\frac{2^n}{x^n} \\right| = \\lim_{n\\rightarrow\\infty}\\left| \\frac{x \\cdot 2^n}{2 \\cdot 2^n} \\right| = \\frac{|x|}{2}.$ Step 2 · Apply convergence condition $L < 1$: $\\frac{|x|}{2} < 1 \\Rightarrow |x| < 2.$ Conclusion: The series converges for all $x$ strictly within distance $2$ of the center $c = 0$. The radius of convergence is: $\\mathbf{R = 2}.$",
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (1))**2 + (-1)",
-              "0.5*x + 1"
+              "0.45*(x - (1.0))**2 + (-1.5)",
+              "0.4*x + (-0.3)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
                 "x": 1.0,
-                "y": -1.0,
-                "label": "$(1,-1)$"
+                "y": -1.5,
+                "label": "$(1,-1.5)$"
               }
             ],
             "width": 230
           }
         },
         {
-          "q": "Find the arc length of $x=t,\\ y=t$ for $t\\in[0,1]$.",
+          "q": "Does $\\sum_{n=1}^{\\infty}\\frac{(-1)^n}{n}$ converge?",
           "difficulty": "Foundational",
           "question_type": "FRQ",
-          "target": "Integral Test & p-Series",
-          "answer": "Theorem (Parametric Arc Length Formula): If a curve is given parametrically by $x(t)$ and $y(t)$ with continuous derivatives on $[a, b]$, its arc length $L$ is: $L = \\int_a^b \\sqrt{\\left(\\frac{dx}{dt}\\right)^2 + \\left(\\frac{dy}{dt}\\right)^2}\\,dt.$ Step 1 · Compute derivatives: $\\frac{dx}{dt} = \\frac{d}{dt}[t] = 1, \\quad \\frac{dy}{dt} = \\frac{d}{dt}[t] = 1.$ Step 2 · Evaluate the integrand (differential speed element): $\\sqrt{(1)^2 + (1)^2} = \\sqrt{1 + 1} = \\sqrt{2}.$ Step 3 · Integrate over $t \\in [0, 1]$: $L = \\int_0^1 \\sqrt{2}\\,dt = [ \\sqrt{2}\\,t ]_0^1 = \\sqrt{2}(1) - \\sqrt{2}(0) = \\mathbf{\\sqrt{2}}.$ Geometric check: The curve represents the straight line segment connecting $(0, 0)$ to $(1, 1)$. By the Pythagorean distance formula, $d = \\sqrt{(1 - 0)^2 + (1 - 0)^2} = \\sqrt{2}$.",
-          "explanation": "Theorem (Parametric Arc Length Formula): If a curve is given parametrically by $x(t)$ and $y(t)$ with continuous derivatives on $[a, b]$, its arc length $L$ is: $L = \\int_a^b \\sqrt{\\left(\\frac{dx}{dt}\\right)^2 + \\left(\\frac{dy}{dt}\\right)^2}\\,dt.$ Step 1 · Compute derivatives: $\\frac{dx}{dt} = \\frac{d}{dt}[t] = 1, \\quad \\frac{dy}{dt} = \\frac{d}{dt}[t] = 1.$ Step 2 · Evaluate the integrand (differential speed element): $\\sqrt{(1)^2 + (1)^2} = \\sqrt{1 + 1} = \\sqrt{2}.$ Step 3 · Integrate over $t \\in [0, 1]$: $L = \\int_0^1 \\sqrt{2}\\,dt = [ \\sqrt{2}\\,t ]_0^1 = \\sqrt{2}(1) - \\sqrt{2}(0) = \\mathbf{\\sqrt{2}}.$ Geometric check: The curve represents the straight line segment connecting $(0, 0)$ to $(1, 1)$. By the Pythagorean distance formula, $d = \\sqrt{(1 - 0)^2 + (1 - 0)^2} = \\sqrt{2}$."
-        }
-      ]
-    },
-    {
-      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
-      "questions": [
-        {
-          "q": "Evaluate $\\sum_{n=1}^{\\infty}\\frac{1}{n(n+1)}$.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Direct Comparison & Limit Comparison Tests",
-          "answer": "Method · Telescoping Series Evaluation via Partial Fractions: Step 1 · Decompose general term: $\\frac{1}{n(n+1)} = \\frac{1}{n} - \\frac{1}{n+1}.$ Step 2 · Write out the $N$th partial sum $S_N$: $S_N = \\sum_{n=1}^{N}\\left(\\frac{1}{n} - \\frac{1}{n+1}\\right) = \\left(1 - \\frac{1}{2}\\right) + \\left(\\frac{1}{2} - \\frac{1}{3}\\right) + \\left(\\frac{1}{3} - \\frac{1}{4}\\right) + \\dots + \\left(\\frac{1}{N} - \\frac{1}{N+1}\\right).$ Step 3 · Cancel intermediate terms: Every internal term cancels symmetrically, leaving only the first and last components: $S_N = 1 - \\frac{1}{N+1}.$ Step 4 · Take the limit as $N \\rightarrow \\infty$: $S = \\lim_{N\\rightarrow\\infty} S_N = \\lim_{N\\rightarrow\\infty}\\left(1 - \\frac{1}{N+1}\\right) = 1 - 0 = \\mathbf{1}.$",
-          "explanation": "Method · Telescoping Series Evaluation via Partial Fractions: Step 1 · Decompose general term: $\\frac{1}{n(n+1)} = \\frac{1}{n} - \\frac{1}{n+1}.$ Step 2 · Write out the $N$th partial sum $S_N$: $S_N = \\sum_{n=1}^{N}\\left(\\frac{1}{n} - \\frac{1}{n+1}\\right) = \\left(1 - \\frac{1}{2}\\right) + \\left(\\frac{1}{2} - \\frac{1}{3}\\right) + \\left(\\frac{1}{3} - \\frac{1}{4}\\right) + \\dots + \\left(\\frac{1}{N} - \\frac{1}{N+1}\\right).$ Step 3 · Cancel intermediate terms: Every internal term cancels symmetrically, leaving only the first and last components: $S_N = 1 - \\frac{1}{N+1}.$ Step 4 · Take the limit as $N \\rightarrow \\infty$: $S = \\lim_{N\\rightarrow\\infty} S_N = \\lim_{N\\rightarrow\\infty}\\left(1 - \\frac{1}{N+1}\\right) = 1 - 0 = \\mathbf{1}.$"
-        },
-        {
-          "q": "Does $\\sum_{n=1}^{\\infty}\\frac{(-1)^n}{n}$ converge?",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Limits of Sequences & Monotonicity",
+          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
           "answer": "Theorem (Alternating Series Test / Leibniz's Theorem): An alternating series of the form $\\sum_{n=1}^{\\infty} (-1)^n b_n$ or $\\sum_{n=1}^{\\infty} (-1)^{n+1} b_n$ converges if all three conditions are satisfied: 1. $b_n > 0$ for all $n$; 2. $b_{n+1} \\leq b_n$ for all $n \\geq N$ (sequence of magnitudes is monotonically decreasing); 3. $\\lim_{n\\rightarrow\\infty} b_n = 0$. Verification for $b_n = \\frac{1}{n}$: 1. $b_n = \\frac{1}{n} > 0$ for all integers $n \\geq 1$. 2. $b_{n+1} = \\frac{1}{n+1} < \\frac{1}{n} = b_n$ holds for all $n \\geq 1$. 3. $\\lim_{n\\rightarrow\\infty} \\frac{1}{n} = 0$. Conclusion: All three hypotheses are met, so the series converges (conditionally, with exact sum $-\\ln 2$).",
           "explanation": "Theorem (Alternating Series Test / Leibniz's Theorem): An alternating series of the form $\\sum_{n=1}^{\\infty} (-1)^n b_n$ or $\\sum_{n=1}^{\\infty} (-1)^{n+1} b_n$ converges if all three conditions are satisfied: 1. $b_n > 0$ for all $n$; 2. $b_{n+1} \\leq b_n$ for all $n \\geq N$ (sequence of magnitudes is monotonically decreasing); 3. $\\lim_{n\\rightarrow\\infty} b_n = 0$. Verification for $b_n = \\frac{1}{n}$: 1. $b_n = \\frac{1}{n} > 0$ for all integers $n \\geq 1$. 2. $b_{n+1} = \\frac{1}{n+1} < \\frac{1}{n} = b_n$ holds for all $n \\geq 1$. 3. $\\lim_{n\\rightarrow\\infty} \\frac{1}{n} = 0$. Conclusion: All three hypotheses are met, so the series converges (conditionally, with exact sum $-\\ln 2$)."
         },
         {
           "q": "Find the speed of a particle with $x=t^2,\\ y=t^2$ at $t=1$.",
-          "difficulty": "Intermediate",
+          "difficulty": "Foundational",
           "question_type": "FRQ",
-          "target": "Geometric Series & n-th Term Divergence Test",
+          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
           "answer": "Theorem (Particle Kinematics & Speed Formula): For a particle whose position vector is $\\vec{r}(t) = \\langle x(t), y(t) \\rangle$, the velocity vector is $\\vec{v}(t) = \\langle x'(t), y'(t) \\rangle$, and its instantaneous speed is the Euclidean magnitude of velocity: $\\mathrm{Speed} = ||\\vec{v}(t)|| = \\sqrt{\\left(\\frac{dx}{dt}\\right)^2 + \\left(\\frac{dy}{dt}\\right)^2}.$ Step 1 · Determine velocity components: $x'(t) = \\frac{d}{dt}[t^2] = 2t, \\quad y'(t) = \\frac{d}{dt}[t^2] = 2t.$ Step 2 · Evaluate components at $t = 1$: $x'(1) = 2(1) = 2, \\quad y'(1) = 2(1) = 2.$ Step 3 · Compute speed: $\\mathrm{Speed}(1) = \\sqrt{(2)^2 + (2)^2} = \\sqrt{4 + 4} = \\sqrt{8} = \\mathbf{2\\sqrt{2}}.$",
           "explanation": "Theorem (Particle Kinematics & Speed Formula): For a particle whose position vector is $\\vec{r}(t) = \\langle x(t), y(t) \\rangle$, the velocity vector is $\\vec{v}(t) = \\langle x'(t), y'(t) \\rangle$, and its instantaneous speed is the Euclidean magnitude of velocity: $\\mathrm{Speed} = ||\\vec{v}(t)|| = \\sqrt{\\left(\\frac{dx}{dt}\\right)^2 + \\left(\\frac{dy}{dt}\\right)^2}.$ Step 1 · Determine velocity components: $x'(t) = \\frac{d}{dt}[t^2] = 2t, \\quad y'(t) = \\frac{d}{dt}[t^2] = 2t.$ Step 2 · Evaluate components at $t = 1$: $x'(1) = 2(1) = 2, \\quad y'(1) = 2(1) = 2.$ Step 3 · Compute speed: $\\mathrm{Speed}(1) = \\sqrt{(2)^2 + (2)^2} = \\sqrt{4 + 4} = \\sqrt{8} = \\mathbf{2\\sqrt{2}}.$",
           "figure": {
@@ -157,36 +79,127 @@
           }
         },
         {
-          "q": "Evaluate $\\int \\frac{1}{x^2-1}\\,dx$.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Integral Test & p-Series",
-          "answer": "Method · Partial Fraction Decomposition (Distinct Linear Factors): Step 1 · Factor the denominator: $\\frac{1}{x^2 - 1} = \\frac{1}{(x - 1)(x + 1)} = \\frac{A}{x - 1} + \\frac{B}{x + 1}.$ Step 2 · Solve for coefficients via Heaviside Cover-Up: $A = \\left.\\frac{1}{x + 1}\\right|_{x=1} = \\frac{1}{1 + 1} = \\frac{1}{2}, \\quad B = \\left.\\frac{1}{x - 1}\\right|_{x=-1} = \\frac{1}{-1 - 1} = -\\frac{1}{2}.$ Step 3 · Integrate term by term: $\\int \\frac{1}{x^2-1}\\,dx = \\frac{1}{2}\\int \\frac{1}{x-1}\\,dx - \\frac{1}{2}\\int \\frac{1}{x+1}\\,dx = \\frac{1}{2}\\ln|x-1| - \\frac{1}{2}\\ln|x+1| + C.$ Step 4 · Combine logarithms: $\\mathbf{\\frac{1}{2}\\ln\\left|\\frac{x-1}{x+1}\\right| + C}.$",
-          "explanation": "Method · Partial Fraction Decomposition (Distinct Linear Factors): Step 1 · Factor the denominator: $\\frac{1}{x^2 - 1} = \\frac{1}{(x - 1)(x + 1)} = \\frac{A}{x - 1} + \\frac{B}{x + 1}.$ Step 2 · Solve for coefficients via Heaviside Cover-Up: $A = \\left.\\frac{1}{x + 1}\\right|_{x=1} = \\frac{1}{1 + 1} = \\frac{1}{2}, \\quad B = \\left.\\frac{1}{x - 1}\\right|_{x=-1} = \\frac{1}{-1 - 1} = -\\frac{1}{2}.$ Step 3 · Integrate term by term: $\\int \\frac{1}{x^2-1}\\,dx = \\frac{1}{2}\\int \\frac{1}{x-1}\\,dx - \\frac{1}{2}\\int \\frac{1}{x+1}\\,dx = \\frac{1}{2}\\ln|x-1| - \\frac{1}{2}\\ln|x+1| + C.$ Step 4 · Combine logarithms: $\\mathbf{\\frac{1}{2}\\ln\\left|\\frac{x-1}{x+1}\\right| + C}.$"
-        },
-        {
-          "q": "Does $\\sum_{n=1}^{\\infty}\\frac{1}{n}$ converge?",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Direct Comparison & Limit Comparison Tests",
-          "answer": "Theorem (Divergence of the Harmonic Series): The series $\\sum_{n=1}^{\\infty}\\frac{1}{n}$ is the fundamental Harmonic Series. Proof via $p$-Series Test: A $p$-series $\\sum \\frac{1}{n^p}$ converges if and only if $p > 1$. Here, $p = 1 \\leq 1$, so the series diverges. Alternative Proof via Integral Test: The function $f(x) = \\frac{1}{x}$ is positive, continuous, and strictly decreasing on $[1, \\infty)$: $\\int_1^{\\infty}\\frac{1}{x}\\,dx = \\lim_{b\\rightarrow\\infty}[ \\ln x ]_1^b = \\lim_{b\\rightarrow\\infty}(\\ln b - 0) = \\infty.$ Because the improper integral diverges, the series $\\sum_{n=1}^{\\infty}\\frac{1}{n}$ diverges. Conclusion: $\\mathbf{\\mathrm{Diverges}}$.",
-          "explanation": "Theorem (Divergence of the Harmonic Series): The series $\\sum_{n=1}^{\\infty}\\frac{1}{n}$ is the fundamental Harmonic Series. Proof via $p$-Series Test: A $p$-series $\\sum \\frac{1}{n^p}$ converges if and only if $p > 1$. Here, $p = 1 \\leq 1$, so the series diverges. Alternative Proof via Integral Test: The function $f(x) = \\frac{1}{x}$ is positive, continuous, and strictly decreasing on $[1, \\infty)$: $\\int_1^{\\infty}\\frac{1}{x}\\,dx = \\lim_{b\\rightarrow\\infty}[ \\ln x ]_1^b = \\lim_{b\\rightarrow\\infty}(\\ln b - 0) = \\infty.$ Because the improper integral diverges, the series $\\sum_{n=1}^{\\infty}\\frac{1}{n}$ diverges. Conclusion: $\\mathbf{\\mathrm{Diverges}}$."
-        },
-        {
           "q": "Does $\\sum_{n=1}^{\\infty}\\frac{1}{n^2}$ converge or diverge?",
-          "difficulty": "Intermediate",
+          "difficulty": "Foundational",
           "question_type": "FRQ",
-          "target": "Limits of Sequences & Monotonicity",
+          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
           "answer": "Theorem ($p$-Series Convergence Test): The infinite series $\\sum_{n=1}^{\\infty}\\frac{1}{n^p}$ converges if and only if $p > 1$, and diverges if $p \\leq 1$. Step 1 · Identify the series parameter $p$: The general term is $a_n = \\frac{1}{n^2}$, which is a $p$-series with exponent $p = 2$. Step 2 · Test against convergence condition: Because $p = 2 > 1$, the series converges by the $p$-Series Test. Analytical Note: By Euler's classical Basel solution, this series converges to the exact sum: $\\sum_{n=1}^{\\infty}\\frac{1}{n^2} = \\frac{\\pi^2}{6} \\approx 1.64493.$ Conclusion: $\\mathbf{\\mathrm{Converges\\ by\\ the\\ } p\\mathrm{-Series\\ Test\\ } (p = 2 > 1)}$.",
           "explanation": "Theorem ($p$-Series Convergence Test): The infinite series $\\sum_{n=1}^{\\infty}\\frac{1}{n^p}$ converges if and only if $p > 1$, and diverges if $p \\leq 1$. Step 1 · Identify the series parameter $p$: The general term is $a_n = \\frac{1}{n^2}$, which is a $p$-series with exponent $p = 2$. Step 2 · Test against convergence condition: Because $p = 2 > 1$, the series converges by the $p$-Series Test. Analytical Note: By Euler's classical Basel solution, this series converges to the exact sum: $\\sum_{n=1}^{\\infty}\\frac{1}{n^2} = \\frac{\\pi^2}{6} \\approx 1.64493.$ Conclusion: $\\mathbf{\\mathrm{Converges\\ by\\ the\\ } p\\mathrm{-Series\\ Test\\ } (p = 2 > 1)}$."
         },
         {
-          "q": "Does $\\sum_{n=1}^{\\infty}\\frac{n}{n+1}$ converge?",
+          "q": "[Unit 10 · Infinite Sequences & Series — Convergence Tests · Practice 4] If the governing relation for this system is $g(t) = 6t + 6$, evaluate $g(10)$ and find the inverse input $t$ when $g(t) = 72$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+          "answer": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$.",
+          "explanation": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-0.6*(x - (-1.5))**2 + (1.0)",
+              "1.4*x + (-0.2)"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -5,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.5,
+                "y": 1.0,
+                "label": "$(-1.5,1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Level 3 · Advanced / AP FRQOn an AP Calculus BC exam question asking whether a series $\\sum_{n=1}^\\infty a_n$ converges, a student writes: \"Since $\\lim_{n\\rightarrow\\infty} a_n = 0$, the series converges.\" Evaluate the mathematical validity of this statement, identify the logical fallacy, and provide a standard counterexample that disproves it.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+          "answer": "Evaluation: The statement is mathematically invalid and earns 0 points. Logical Fallacy: The student has committed the fallacy of the converse. The $n$-th Term Test states: If a series $\\sum a_n$ converges, then $\\lim_{n\\rightarrow\\infty} a_n = 0$. The contrapositive is also true: If $\\lim_{n\\rightarrow\\infty} a_n eq 0$, then the series diverges. However, $\\lim_{n\\rightarrow\\infty} a_n = 0$ is a necessary condition, NOT a sufficient condition for convergence. Counterexample: The harmonic series $\\sum_{n=1}^\\infty \\frac{1}{n}$. Here $\\lim_{n\\rightarrow\\infty} \\frac{1}{n} = 0$, yet the harmonic series is a $p$-series with $p = 1$, which diverges to infinity.",
+          "explanation": "Evaluation: The statement is mathematically invalid and earns 0 points. Logical Fallacy: The student has committed the fallacy of the converse. The $n$-th Term Test states: If a series $\\sum a_n$ converges, then $\\lim_{n\\rightarrow\\infty} a_n = 0$. The contrapositive is also true: If $\\lim_{n\\rightarrow\\infty} a_n eq 0$, then the series diverges. However, $\\lim_{n\\rightarrow\\infty} a_n = 0$ is a necessary condition, NOT a sufficient condition for convergence. Counterexample: The harmonic series $\\sum_{n=1}^\\infty \\frac{1}{n}$. Here $\\lim_{n\\rightarrow\\infty} \\frac{1}{n} = 0$, yet the harmonic series is a $p$-series with $p = 1$, which diverges to infinity."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Level 1 · FoundationsFind the radius of convergence $R$ for the power series $\\sum_{n=0}^\\infty n! (2x - 1)^n$.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
-          "target": "Geometric Series & n-th Term Divergence Test",
-          "answer": "Theorem ($n$th-Term Divergence Test): If $\\lim_{n\\rightarrow\\infty} a_n e 0$ or does not exist, then the infinite series $\\sum_{n=1}^{\\infty} a_n$ diverges. Step 1 · Evaluate the limit of the general term as $n \\rightarrow \\infty$: $\\lim_{n\\rightarrow\\infty} a_n = \\lim_{n\\rightarrow\\infty}\\frac{n}{n + 1} = \\lim_{n\\rightarrow\\infty}\\frac{1}{1 + \\frac{1}{n}} = \\frac{1}{1 + 0} = 1.$ Step 2 · Apply the test: Since $\\lim_{n\\rightarrow\\infty} a_n = 1 e 0$, the sequence of terms does not approach zero. Therefore, the series cannot converge. Conclusion: $\\mathbf{\\mathrm{Diverges\\ by\\ the\\ } n\\mathrm{th-Term\\ Divergence\\ Test}}$.",
-          "explanation": "Theorem ($n$th-Term Divergence Test): If $\\lim_{n\\rightarrow\\infty} a_n e 0$ or does not exist, then the infinite series $\\sum_{n=1}^{\\infty} a_n$ diverges. Step 1 · Evaluate the limit of the general term as $n \\rightarrow \\infty$: $\\lim_{n\\rightarrow\\infty} a_n = \\lim_{n\\rightarrow\\infty}\\frac{n}{n + 1} = \\lim_{n\\rightarrow\\infty}\\frac{1}{1 + \\frac{1}{n}} = \\frac{1}{1 + 0} = 1.$ Step 2 · Apply the test: Since $\\lim_{n\\rightarrow\\infty} a_n = 1 e 0$, the sequence of terms does not approach zero. Therefore, the series cannot converge. Conclusion: $\\mathbf{\\mathrm{Diverges\\ by\\ the\\ } n\\mathrm{th-Term\\ Divergence\\ Test}}$."
+          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+          "answer": "Apply the Ratio Test: $L = \\lim_{n\\rightarrow\\infty} \\left| \\frac{(n+1)! (2x - 1)^{n+1}}{n! (2x - 1)^n} \\right| = |2x - 1| \\lim_{n\\rightarrow\\infty} (n+1).$ For any $x eq \\frac{1}{2}$, this limit is $\\infty$. The series converges only at its center $x = \\frac{1}{2}$. Thus, the radius of convergence is $\\mathbf{R = 0}$.",
+          "explanation": "Apply the Ratio Test: $L = \\lim_{n\\rightarrow\\infty} \\left| \\frac{(n+1)! (2x - 1)^{n+1}}{n! (2x - 1)^n} \\right| = |2x - 1| \\lim_{n\\rightarrow\\infty} (n+1).$ For any $x eq \\frac{1}{2}$, this limit is $\\infty$. The series converges only at its center $x = \\frac{1}{2}$. Thus, the radius of convergence is $\\mathbf{R = 0}$."
+        },
+        {
+          "q": "Level 2 · MediumThe graph of $f'$ consists of a semicircle of radius 2 centered at the origin, lying above the x-axis. If $f(0) = 5$, find the value of $f(2)$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+          "answer": "By the Fundamental Theorem of Calculus: $f(2) = f(0) + \\int_0^2 f'(x)\\,dx.$ The region under $f'$ from $x = 0$ to $x = 2$ is a quarter-circle of radius 2: $\\int_0^2 f'(x)\\,dx = \\frac{1}{4}\\pi(2^2) = \\pi.$ Therefore, $f(2) = 5 + \\pi \\approx \\mathbf{8.142}.$",
+          "explanation": "By the Fundamental Theorem of Calculus: $f(2) = f(0) + \\int_0^2 f'(x)\\,dx.$ The region under $f'$ from $x = 0$ to $x = 2$ is a quarter-circle of radius 2: $\\int_0^2 f'(x)\\,dx = \\frac{1}{4}\\pi(2^2) = \\pi.$ Therefore, $f(2) = 5 + \\pi \\approx \\mathbf{8.142}.$"
+        },
+        {
+          "q": "Level 1 · FoundationsOn a Rate In / Rate Out FRQ, if rain falls into a cistern at rate $R(t)$ and is pumped out at rate $P(t)$, when is the amount of water in the cistern at a relative maximum?",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+          "answer": "Let $W(t)$ be the amount of water. $W'(t) = R(t) - P(t)$. A relative maximum occurs when $W'(t) = 0$ and changes from positive to negative, which occurs when $R(t) = P(t)$ and $R(t)$ crosses below $P(t)$.",
+          "explanation": "Let $W(t)$ be the amount of water. $W'(t) = R(t) - P(t)$. A relative maximum occurs when $W'(t) = 0$ and changes from positive to negative, which occurs when $R(t) = P(t)$ and $R(t)$ crosses below $P(t)$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.45*(x - (0.0))**2 + (-0.5)",
+              "-0.1*x + (0.7)"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -5,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -0.5,
+                "label": "$(0,-0.5)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Level 1 · FoundationsHow many total questions are on the AP Calculus AB exam, and what percentage of the composite score comes from Free-Response questions?",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+          "answer": "The exam consists of 45 Multiple-Choice Questions and 6 Free-Response Questions (51 total). Free Response accounts for exactly 50% of the composite score (54 out of 108 scaled points).",
+          "explanation": "The exam consists of 45 Multiple-Choice Questions and 6 Free-Response Questions (51 total). Free Response accounts for exactly 50% of the composite score (54 out of 108 scaled points)."
+        },
+        {
+          "q": "[AP Calculus AB Free-Response Questions (FRQs) · Practice 4] If the governing relation for this system is $g(t) = 6t + 6$, evaluate $g(10)$ and find the inverse input $t$ when $g(t) = 72$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+          "answer": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$.",
+          "explanation": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$."
+        },
+        {
+          "q": "Level 2 · MediumFind the third-degree Taylor polynomial $P_3(x)$ for $f(x) = \\sqrt{x}$ centered at $c = 4$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+          "answer": "Evaluate derivatives at $c = 4$: • $f(x) = x^{1/2} \\Rightarrow f(4) = 2$. • $f'(x) = \\frac{1}{2}x^{-1/2} \\Rightarrow f'(4) = \\frac{1}{2(2)} = \\frac{1}{4}$. • $f''(x) = -\\frac{1}{4}x^{-3/2} \\Rightarrow f''(4) = -\\frac{1}{4(8)} = -\\frac{1}{32}$. • $f'''(x) = \\frac{3}{8}x^{-5/2} \\Rightarrow f'''(4) = \\frac{3}{8(32)} = \\frac{3}{256}$. Assemble the Taylor polynomial: $P_3(x) = 2 + \\frac{1}{4}(x - 4) + \\frac{-1/32}{2!}(x - 4)^2 + \\frac{3/256}{3!}(x - 4)^3$ $= \\mathbf{2 + \\frac{1}{4}(x - 4) - \\frac{1}{64}(x - 4)^2 + \\frac{1}{512}(x - 4)^3}.$",
+          "explanation": "Evaluate derivatives at $c = 4$: • $f(x) = x^{1/2} \\Rightarrow f(4) = 2$. • $f'(x) = \\frac{1}{2}x^{-1/2} \\Rightarrow f'(4) = \\frac{1}{2(2)} = \\frac{1}{4}$. • $f''(x) = -\\frac{1}{4}x^{-3/2} \\Rightarrow f''(4) = -\\frac{1}{4(8)} = -\\frac{1}{32}$. • $f'''(x) = \\frac{3}{8}x^{-5/2} \\Rightarrow f'''(4) = \\frac{3}{8(32)} = \\frac{3}{256}$. Assemble the Taylor polynomial: $P_3(x) = 2 + \\frac{1}{4}(x - 4) + \\frac{-1/32}{2!}(x - 4)^2 + \\frac{3/256}{3!}(x - 4)^3$ $= \\mathbf{2 + \\frac{1}{4}(x - 4) - \\frac{1}{64}(x - 4)^2 + \\frac{1}{512}(x - 4)^3}.$"
+        },
+        {
+          "q": "Level 3 · Advanced / AP FRQLet $P_4(x)$ be the fourth-degree Maclaurin polynomial for $\\cos(x)$. Use the Lagrange Error Bound to prove that \\(|\\cos(0.5) - P_4(0.5)|",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+          "answer": "For $f(x) = \\cos(x)$, $f^{(5)}(x) = -\\sin(x)$. Since $|-\\sin(t)| \\leq 1$ for all $t$, we take $M = 1$. Apply the Lagrange Error Bound formula with $n = 4, c = 0, x = 0.5$: $|R_4(0.5)| \\leq \\frac{M}{(4+1)!}|0.5 - 0|^{4+1} = \\frac{1}{5!} (0.5)^5 = \\frac{1}{120} \\left(\\frac{1}{32}\\right) = \\frac{1}{3840}.$ Because $3840 > 3000$, it follows that: \\[ \\frac{1}{3840}",
+          "explanation": "For $f(x) = \\cos(x)$, $f^{(5)}(x) = -\\sin(x)$. Since $|-\\sin(t)| \\leq 1$ for all $t$, we take $M = 1$. Apply the Lagrange Error Bound formula with $n = 4, c = 0, x = 0.5$: $|R_4(0.5)| \\leq \\frac{M}{(4+1)!}|0.5 - 0|^{4+1} = \\frac{1}{5!} (0.5)^5 = \\frac{1}{120} \\left(\\frac{1}{32}\\right) = \\frac{1}{3840}.$ Because $3840 > 3000$, it follows that: \\[ \\frac{1}{3840}"
         }
       ]
     },
@@ -194,77 +207,77 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "For $x=t^2,\\ y=t^3$, find $\\frac{dy}{dx}$.",
+          "q": "[Unit 10 · Power Series, Taylor & Maclaurin Series · Practice 4] If the governing relation for this system is $g(t) = 6t + 6$, evaluate $g(10)$ and find the inverse input $t$ when $g(t) = 72$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Integral Test & p-Series",
+          "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
           "cross_lesson": "1.02 Partial Fractions and Improper Integrals",
-          "answer": "Theorem (Parametric First Derivative): For parametric equations $x = x(t)$ and $y = y(t)$: $\\frac{dy}{dx} = \\frac{y'(t)}{x'(t)} = \\frac{dy/dt}{dx/dt}, \\quad \\mathrm{provided\\ } \\frac{dx}{dt} e 0.$ Step 1 · Differentiate with respect to $t$: $\\frac{dx}{dt} = \\frac{d}{dt}[t^2] = 2t, \\quad \\frac{dy}{dt} = \\frac{d}{dt}[t^3] = 3t^2.$ Step 2 · Form the quotient: $\\frac{dy}{dx} = \\frac{3t^2}{2t} = \\mathbf{\\frac{3}{2}t} \\quad (t e 0).$ Verification via Cartesian Equation: $x = t^2 \\Rightarrow t = x^{1/2} \\Rightarrow y = (x^{1/2})^3 = x^{3/2}$. Then $\\frac{dy}{dx} = \\frac{3}{2}x^{1/2} = \\frac{3}{2}t$, in exact agreement.",
-          "explanation": "Theorem (Parametric First Derivative): For parametric equations $x = x(t)$ and $y = y(t)$: $\\frac{dy}{dx} = \\frac{y'(t)}{x'(t)} = \\frac{dy/dt}{dx/dt}, \\quad \\mathrm{provided\\ } \\frac{dx}{dt} e 0.$ Step 1 · Differentiate with respect to $t$: $\\frac{dx}{dt} = \\frac{d}{dt}[t^2] = 2t, \\quad \\frac{dy}{dt} = \\frac{d}{dt}[t^3] = 3t^2.$ Step 2 · Form the quotient: $\\frac{dy}{dx} = \\frac{3t^2}{2t} = \\mathbf{\\frac{3}{2}t} \\quad (t e 0).$ Verification via Cartesian Equation: $x = t^2 \\Rightarrow t = x^{1/2} \\Rightarrow y = (x^{1/2})^3 = x^{3/2}$. Then $\\frac{dy}{dx} = \\frac{3}{2}x^{1/2} = \\frac{3}{2}t$, in exact agreement."
+          "answer": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$.",
+          "explanation": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$."
         },
         {
-          "q": "Evaluate $\\int_0^{\\infty} e^{-x}\\,dx$.",
+          "q": "[AP Calculus BC Exam Format & Units Overview · Practice 4] If the governing relation for this system is $g(t) = 6t + 6$, evaluate $g(10)$ and find the inverse input $t$ when $g(t) = 72$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Direct Comparison & Limit Comparison Tests",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "cross_lesson": "2.01 Euler's Method and Logistic Growth",
-          "answer": "Theorem (Improper Exponential Integral): Formulate the integral as the limit of proper definite integrals: $\\int_0^{\\infty} e^{-x}\\,dx = \\lim_{b\\rightarrow\\infty}\\int_0^b e^{-x}\\,dx.$ Step 1 · Antidifferentiate: $\\int_0^b e^{-x}\\,dx = [ -e^{-x} ]_0^b = (-e^{-b}) - (-e^0) = 1 - e^{-b} = 1 - \\frac{1}{e^b}.$ Step 2 · Evaluate the limit: Since $\\lim_{b\\rightarrow\\infty} e^b = \\infty$, we have $\\lim_{b\\rightarrow\\infty} \\frac{1}{e^b} = 0$: $\\lim_{b\\rightarrow\\infty}\\left(1 - \\frac{1}{e^b}\\right) = 1 - 0 = \\mathbf{1}.$ Conclusion: The improper integral converges to $\\mathbf{1}$.",
-          "explanation": "Theorem (Improper Exponential Integral): Formulate the integral as the limit of proper definite integrals: $\\int_0^{\\infty} e^{-x}\\,dx = \\lim_{b\\rightarrow\\infty}\\int_0^b e^{-x}\\,dx.$ Step 1 · Antidifferentiate: $\\int_0^b e^{-x}\\,dx = [ -e^{-x} ]_0^b = (-e^{-b}) - (-e^0) = 1 - e^{-b} = 1 - \\frac{1}{e^b}.$ Step 2 · Evaluate the limit: Since $\\lim_{b\\rightarrow\\infty} e^b = \\infty$, we have $\\lim_{b\\rightarrow\\infty} \\frac{1}{e^b} = 0$: $\\lim_{b\\rightarrow\\infty}\\left(1 - \\frac{1}{e^b}\\right) = 1 - 0 = \\mathbf{1}.$ Conclusion: The improper integral converges to $\\mathbf{1}$.",
+          "answer": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$.",
+          "explanation": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$.",
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
+              "-0.3*(x - (-0.5))**2 + (1.0)",
+              "0.4*x + (-0.2)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
-                "x": -1.0,
-                "y": -1.0,
-                "label": "$(-1,-1)$"
+                "x": -0.5,
+                "y": 1.0,
+                "label": "$(-0.5,1)$"
               }
             ],
             "width": 230
           }
         },
         {
-          "q": "Evaluate $\\int x\\,e^{x^2}\\,dx$.",
+          "q": "Level 3 · Advanced Find the full interval of convergence (including endpoint behavior) for the power series $\\sum_{n=1}^\\infty \\frac{(2x - 1)^n}{n^2 \\cdot 4^n}$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Limits of Sequences & Monotonicity",
+          "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "cross_lesson": "3.01 Parametric Equations",
-          "answer": "Method · Integration by Substitution ($u$-Substitution): Step 1 · Identify inner function and differential: Notice that the derivative of $x^2$ is $2x$, and the integrand contains the factor $x\\,dx$. Let: $u = x^2 \\Rightarrow du = 2x\\,dx \\Rightarrow x\\,dx = \\frac{1}{2}\\,du.$ Step 2 · Substitute into the integral: $\\int x e^{x^2}\\,dx = \\int e^{x^2} (x\\,dx) = \\int e^u \\left(\\frac{1}{2}\\,du\\right) = \\frac{1}{2}\\int e^u\\,du.$ Step 3 · Integrate and substitute back $u = x^2$: $\\frac{1}{2} e^u + C = \\mathbf{\\frac{1}{2} e^{x^2} + C}.$",
-          "explanation": "Method · Integration by Substitution ($u$-Substitution): Step 1 · Identify inner function and differential: Notice that the derivative of $x^2$ is $2x$, and the integrand contains the factor $x\\,dx$. Let: $u = x^2 \\Rightarrow du = 2x\\,dx \\Rightarrow x\\,dx = \\frac{1}{2}\\,du.$ Step 2 · Substitute into the integral: $\\int x e^{x^2}\\,dx = \\int e^{x^2} (x\\,dx) = \\int e^u \\left(\\frac{1}{2}\\,du\\right) = \\frac{1}{2}\\int e^u\\,du.$ Step 3 · Integrate and substitute back $u = x^2$: $\\frac{1}{2} e^u + C = \\mathbf{\\frac{1}{2} e^{x^2} + C}.$"
+          "answer": "Apply the Ratio Test: $L = \\lim_{n \\rightarrow \\infty} \\left| \\frac{(2x - 1)^{n+1}}{(n+1)^2 4^{n+1}} \\cdot \\frac{n^2 4^n}{(2x - 1)^n} \\right| = \\lim_{n \\rightarrow \\infty} \\left(\\frac{n}{n+1}\\right)^2 \\cdot \\frac{|2x - 1|}{4} = \\frac{|2x - 1|}{4}$ Require $x$: $2x - 1 = 4$, giving $\\sum_{n=1}^\\infty \\frac{4^n}{n^2 4^n} = \\sum_{n=1}^\\infty \\frac{1}{n^2}$, which converges by the $p$-series test ($p = 2 > 1$). Endpoint $x = -3/2$: $2x - 1 = -4$, giving $\\sum_{n=1}^\\infty \\frac{(-4)^n}{n^2 4^n} = \\sum_{n=1}^\\infty \\frac{(-1)^n}{n^2}$, which converges absolutely (since $\\sum 1/n^2$ converges). Therefore, the interval of convergence is $\\left[ -\\frac{3}{2}, \\frac{5}{2} \\right]$.",
+          "explanation": "Apply the Ratio Test: $L = \\lim_{n \\rightarrow \\infty} \\left| \\frac{(2x - 1)^{n+1}}{(n+1)^2 4^{n+1}} \\cdot \\frac{n^2 4^n}{(2x - 1)^n} \\right| = \\lim_{n \\rightarrow \\infty} \\left(\\frac{n}{n+1}\\right)^2 \\cdot \\frac{|2x - 1|}{4} = \\frac{|2x - 1|}{4}$ Require $x$: $2x - 1 = 4$, giving $\\sum_{n=1}^\\infty \\frac{4^n}{n^2 4^n} = \\sum_{n=1}^\\infty \\frac{1}{n^2}$, which converges by the $p$-series test ($p = 2 > 1$). Endpoint $x = -3/2$: $2x - 1 = -4$, giving $\\sum_{n=1}^\\infty \\frac{(-4)^n}{n^2 4^n} = \\sum_{n=1}^\\infty \\frac{(-1)^n}{n^2}$, which converges absolutely (since $\\sum 1/n^2$ converges). Therefore, the interval of convergence is $\\left[ -\\frac{3}{2}, \\frac{5}{2} \\right]$."
         },
         {
-          "q": "Evaluate $\\sum_{n=0}^{\\infty}(\\frac{1}{2})^{n}$.",
+          "q": "Level 2 · Medium Determine whether the series $\\sum_{n=1}^\\infty \\frac{(-1)^{n+1}}{\\sqrt{n}}$ converges absolutely, converges conditionally, or diverges.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Geometric Series & n-th Term Divergence Test",
+          "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
           "cross_lesson": "3.02 Vector-Valued Functions",
-          "answer": "Theorem (Geometric Series Sum Formula): For an infinite geometric series $\\sum_{n=0}^{\\infty} a r^n$, the series converges if and only if $|r| < 1$, and its sum is given by: $S = \\frac{a}{1 - r}.$ Step 1 · Identify parameters: Initial term ($n = 0$): $a = \\left(\\frac{1}{2}\\right)^0 = 1$. Common ratio: $r = \\frac{1}{2}$. Step 2 · Check convergence criterion: $|r| = |1/2| = 0.5 < 1$, so the series converges. Step 3 · Compute the sum: $S = \\frac{1}{1 - 1/2} = \\frac{1}{1/2} = \\mathbf{2}.$",
-          "explanation": "Theorem (Geometric Series Sum Formula): For an infinite geometric series $\\sum_{n=0}^{\\infty} a r^n$, the series converges if and only if $|r| < 1$, and its sum is given by: $S = \\frac{a}{1 - r}.$ Step 1 · Identify parameters: Initial term ($n = 0$): $a = \\left(\\frac{1}{2}\\right)^0 = 1$. Common ratio: $r = \\frac{1}{2}$. Step 2 · Check convergence criterion: $|r| = |1/2| = 0.5 < 1$, so the series converges. Step 3 · Compute the sum: $S = \\frac{1}{1 - 1/2} = \\frac{1}{1/2} = \\mathbf{2}.$"
+          "answer": "Step 1: Test for absolute convergence. Consider $\\sum |a_n| = \\sum_{n=1}^\\infty \\frac{1}{n^{1/2}}$. This is a $p$-series with $p = 1/2 \\leq 1$, which diverges. Hence the series does NOT converge absolutely. Step 2: Apply Alternating Series Test. Here $b_n = \\frac{1}{\\sqrt{n}} > 0$. 1. Monotonicity: \\(n+1 > n \\implies \\sqrt{n+1} > \\sqrt{n} \\implies \\frac{1}{\\sqrt{n+1}} conditionally convergent.",
+          "explanation": "Step 1: Test for absolute convergence. Consider $\\sum |a_n| = \\sum_{n=1}^\\infty \\frac{1}{n^{1/2}}$. This is a $p$-series with $p = 1/2 \\leq 1$, which diverges. Hence the series does NOT converge absolutely. Step 2: Apply Alternating Series Test. Here $b_n = \\frac{1}{\\sqrt{n}} > 0$. 1. Monotonicity: \\(n+1 > n \\implies \\sqrt{n+1} > \\sqrt{n} \\implies \\frac{1}{\\sqrt{n+1}} conditionally convergent."
         },
         {
-          "q": "Evaluate $\\int x\\,e^{x}\\,dx$.",
+          "q": "Level 1 · Foundations Use the Divergence Test to determine whether $\\sum_{n=1}^\\infty \\cos\\left(\\frac{1}{n}\\right)$ converges or diverges.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Integral Test & p-Series",
+          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
           "cross_lesson": "4.01 Polar Curves and Derivatives",
-          "answer": "Theorem (Integration by Parts Formula): For continuously differentiable functions $u(x)$ and $v(x)$: $\\int u\\,dv = uv - \\int v\\,du.$ Step 1 · Choose $u$ and $dv$ via LIATE protocol: Algebraic ($x$) precedes Exponential ($e^x$), so set: $u = x \\Rightarrow du = dx, \\quad dv = e^x\\,dx \\Rightarrow v = \\int e^x\\,dx = e^x.$ Step 2 · Apply the formula: $\\int x e^x\\,dx = x e^x - \\int e^x\\,dx.$ Step 3 · Integrate the remaining term: $x e^x - e^x + C = \\mathbf{(x - 1)e^x + C}.$",
-          "explanation": "Theorem (Integration by Parts Formula): For continuously differentiable functions $u(x)$ and $v(x)$: $\\int u\\,dv = uv - \\int v\\,du.$ Step 1 · Choose $u$ and $dv$ via LIATE protocol: Algebraic ($x$) precedes Exponential ($e^x$), so set: $u = x \\Rightarrow du = dx, \\quad dv = e^x\\,dx \\Rightarrow v = \\int e^x\\,dx = e^x.$ Step 2 · Apply the formula: $\\int x e^x\\,dx = x e^x - \\int e^x\\,dx.$ Step 3 · Integrate the remaining term: $x e^x - e^x + C = \\mathbf{(x - 1)e^x + C}.$"
+          "answer": "Compute the limit of the general term as $n \\rightarrow \\infty$: $\\lim_{n \\rightarrow \\infty} a_n = \\lim_{n \\rightarrow \\infty} \\cos\\left(\\frac{1}{n}\\right) = \\cos\\left( \\lim_{n\\rightarrow\\infty} \\frac{1}{n} \\right) = \\cos(0) = 1$ Because $\\lim_{n \\rightarrow \\infty} a_n = 1 e 0$, the series diverges by the Divergence Test.",
+          "explanation": "Compute the limit of the general term as $n \\rightarrow \\infty$: $\\lim_{n \\rightarrow \\infty} a_n = \\lim_{n \\rightarrow \\infty} \\cos\\left(\\frac{1}{n}\\right) = \\cos\\left( \\lim_{n\\rightarrow\\infty} \\frac{1}{n} \\right) = \\cos(0) = 1$ Because $\\lim_{n \\rightarrow \\infty} a_n = 1 e 0$, the series diverges by the Divergence Test."
         },
         {
-          "q": "For $x=e^{t},\\ y=e^{2t}$, find $\\frac{dy}{dx}$.",
+          "q": "[Convergence Tests & Power Series · Practice 4] If the governing relation for this system is $g(t) = 6t + 6$, evaluate $g(10)$ and find the inverse input $t$ when $g(t) = 72$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Direct Comparison & Limit Comparison Tests",
+          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
           "cross_lesson": "4.02 Area in Polar Coordinates",
-          "answer": "Method 1 · Parametric Derivative: Step 1 · Differentiate both components with respect to $t$: $\\frac{dx}{dt} = \\frac{d}{dt}[e^t] = e^t, \\quad \\frac{dy}{dt} = \\frac{d}{dt}[e^{2t}] = 2e^{2t}.$ Step 2 · Compute derivative ratio: $\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{2e^{2t}}{e^t} = 2e^{2t - t} = \\mathbf{2e^t}.$ Method 2 · Cartesian Elimination: Notice $y = e^{2t} = (e^t)^2 = x^2$. Differentiating directly with respect to $x$: $\\frac{dy}{dx} = 2x = \\mathbf{2e^t}.$",
-          "explanation": "Method 1 · Parametric Derivative: Step 1 · Differentiate both components with respect to $t$: $\\frac{dx}{dt} = \\frac{d}{dt}[e^t] = e^t, \\quad \\frac{dy}{dt} = \\frac{d}{dt}[e^{2t}] = 2e^{2t}.$ Step 2 · Compute derivative ratio: $\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{2e^{2t}}{e^t} = 2e^{2t - t} = \\mathbf{2e^t}.$ Method 2 · Cartesian Elimination: Notice $y = e^{2t} = (e^t)^2 = x^2$. Differentiating directly with respect to $x$: $\\frac{dy}{dx} = 2x = \\mathbf{2e^t}.$"
+          "answer": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$.",
+          "explanation": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$."
         }
       ]
     },
@@ -275,7 +288,7 @@
           "q": "Determine the limit of the sequence $a_n = \\frac{4n^2 - 3n}{2n^2 + 5}$.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Limits of Sequences & Monotonicity",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
             "$2$",
             "$4$",
@@ -290,7 +303,7 @@
           "q": "Which statement is guaranteed by the Monotone Convergence Theorem for Sequences?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Limits of Sequences & Monotonicity",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
             "Every bounded monotonic sequence converges",
             "Every alternating sequence converges",
@@ -302,51 +315,10 @@
           "explanation": "The Monotone Convergence Theorem states that if a sequence is bounded and monotonic (either non-decreasing or non-increasing), it must converge."
         },
         {
-          "q": "What is $\\lim_{n \\rightarrow \\infty} (1 + \\frac{2}{n})^n$?",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Limits of Sequences & Monotonicity",
-          "choices": [
-            "$e^2$",
-            "$e$",
-            "$1$",
-            "$\\infty$"
-          ],
-          "correct": 0,
-          "answer": "By the standard exponential limit $\\lim_{n \\rightarrow \\infty} (1 + \\frac{x}{n})^n = e^x$, with $x = 2$, the limit is $e^2$.",
-          "explanation": "By the standard exponential limit $\\lim_{n \\rightarrow \\infty} (1 + \\frac{x}{n})^n = e^x$, with $x = 2$, the limit is $e^2$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "2 + 1.5/(x - (1))"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "asymptotes": {
-              "x": [
-                1
-              ],
-              "y": [
-                2
-              ]
-            },
-            "point_labels": [
-              {
-                "x": 2.5,
-                "y": 3.0,
-                "label": "$( 2.5, 3 )$"
-              }
-            ],
-            "width": 230
-          }
-        },
-        {
           "q": "Evaluate the sum of the series $\\sum_{n=1}^\\infty 3(\\frac{2}{5})^n$.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Geometric Series & n-th Term Divergence Test",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
             "$2$",
             "$\\frac{6}{5}$",
@@ -355,13 +327,32 @@
           ],
           "correct": 0,
           "answer": "First term $a = 3(\\frac{2}{5}) = \\frac{6}{5}$, common ratio $r = \\frac{2}{5}$. Sum $= \\frac{a}{1 - r} = \\frac{6/5}{1 - 2/5} = \\frac{6/5}{3/5} = 2$.",
-          "explanation": "First term $a = 3(\\frac{2}{5}) = \\frac{6}{5}$, common ratio $r = \\frac{2}{5}$. Sum $= \\frac{a}{1 - r} = \\frac{6/5}{1 - 2/5} = \\frac{6/5}{3/5} = 2$."
+          "explanation": "First term $a = 3(\\frac{2}{5}) = \\frac{6}{5}$, common ratio $r = \\frac{2}{5}$. Sum $= \\frac{a}{1 - r} = \\frac{6/5}{1 - 2/5} = \\frac{6/5}{3/5} = 2$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-0.45*(x - (1.0))**2 + (-1.5)",
+              "-0.1*x + (-2.7)"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -5,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -1.5,
+                "label": "$(1,-1.5)$"
+              }
+            ],
+            "width": 230
+          }
         },
         {
           "q": "If $\\lim_{n \\rightarrow \\infty} a_n = \\frac{1}{2}$, what does the $n$-th Term Test conclude about $\\sum_{n=1}^\\infty a_n$?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Geometric Series & n-th Term Divergence Test",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
             "The series diverges",
             "The series converges to $\\frac{1}{2}$",
@@ -376,7 +367,7 @@
           "q": "If $\\lim_{n \\rightarrow \\infty} a_n = 0$, what can be concluded about $\\sum a_n$?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Geometric Series & n-th Term Divergence Test",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
             "The test is inconclusive; the series may converge or diverge",
             "The series converges",
@@ -391,7 +382,7 @@
           "q": "For what values of $p$ does the $p$-series $\\sum_{n=1}^\\infty \\frac{1}{n^p}$ converge?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Integral Test & p-Series",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
             "$p > 1$",
             "$p \\geq 1$",
@@ -406,7 +397,7 @@
           "q": "Which series converges by the Integral Test?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Integral Test & p-Series",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
             "$\\sum_{n=2}^\\infty \\frac{1}{n(\\ln n)^2}$",
             "$\\sum_{n=2}^\\infty \\frac{1}{n\\ln n}$",
@@ -441,17 +432,12 @@
             ],
             "width": 230
           }
-        }
-      ]
-    },
-    {
-      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
-      "questions": [
+        },
         {
           "q": "What three conditions must $f(x)$ satisfy on $[1, \\infty)$ to apply the Integral Test to $\\sum a_n$?",
-          "difficulty": "Intermediate",
+          "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Integral Test & p-Series",
+          "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "choices": [
             "$f(x)$ must be continuous, positive, and decreasing",
             "$f(x)$ must be differentiable, alternating, and bounded",
@@ -461,12 +447,17 @@
           "correct": 0,
           "answer": "The hypotheses of the Integral Test require $f(x)$ to be continuous, positive, and decreasing on $[1, \\infty)$ where $f(n) = a_n$.",
           "explanation": "The hypotheses of the Integral Test require $f(x)$ to be continuous, positive, and decreasing on $[1, \\infty)$ where $f(n) = a_n$."
-        },
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
         {
           "q": "Determine the convergence of $\\sum_{n=1}^\\infty \\frac{1}{n^3 + 5n}$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Direct Comparison & Limit Comparison Tests",
+          "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "choices": [
             "Converges by Direct Comparison with $\\sum \\frac{1}{n^3}$",
             "Diverges by Comparison with $\\sum \\frac{1}{n}$",
@@ -481,7 +472,7 @@
           "q": "Which series should be used for the Limit Comparison Test with $\\sum_{n=1}^\\infty \\frac{3n + 2}{2n^3 - 1}$?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Direct Comparison & Limit Comparison Tests",
+          "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "choices": [
             "$\\sum \\frac{1}{n^2}$ (convergent)",
             "$\\sum \\frac{1}{n}$ (divergent)",
@@ -496,7 +487,7 @@
           "q": "In the Limit Comparison Test, if $\\lim_{n \\rightarrow \\infty} \\frac{a_n}{b_n} = L$ where $0 < L < \\infty$, what does this mean?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Direct Comparison & Limit Comparison Tests",
+          "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "choices": [
             "Both $\\sum a_n$ and $\\sum b_n$ either both converge or both diverge",
             "$\\sum a_n$ converges to $L$",
@@ -508,98 +499,152 @@
           "explanation": "A finite positive limit $L$ ensures that both series share the exact same convergence or divergence behavior."
         },
         {
-          "q": "Use the comparison test to determine whether $\\sum_{n=1}^{\\infty} \\frac{1}{n^{2}+6}$ converges.",
+          "q": "The alternating series $\\sum(-1)^n\\frac{1}{n}$:",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Limits of Sequences & Monotonicity",
+          "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
           "choices": [
-            "$\\mathrm{Diverges\\ by\\ the\\ nth-term\\ test}$",
-            "$\\mathrm{Converges\\ (compare\\ to\\ }\\sum 1/n^2\\mathrm{)}$",
-            "$\\mathrm{Diverges\\ (compare\\ to\\ }\\sum 1/n\\mathrm{)}$",
-            "$\\mathrm{Inconclusive}$"
+            "Diverges",
+            "Converges absolutely",
+            "Converges conditionally",
+            "Oscillates without limit"
           ],
-          "correct": 1,
-          "answer": "Since $01$), the given series converges by the comparison test.",
-          "explanation": "Since $01$), the given series converges by the comparison test.",
+          "correct": 2,
+          "answer": "Alternating harmonic series converges conditionally.",
+          "explanation": "Alternating harmonic series converges conditionally."
+        },
+        {
+          "q": "Consider the function $f(x)$ whose graph is shown below. The graph consists of a line segment and a quarter circle. The line segment connects the points $(2, 4)$ and $(4, 0)$. The quarter circle is in the second quadrant and is centered at $(0, 0)$ with radius 2. Let $A(x)$ be the area of the region bounded by the graph of $f(t)$, the $t$-axis, and the lines $t = 0$ and $t = x$. (a) Find $A(3)$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+          "choices": [
+            "4",
+            "6",
+            "5",
+            "7"
+          ],
+          "correct": 0,
+          "answer": "The function $f(x)$ is defined piecewise. For $0 \\leq t \\leq 2$, $f(t)$ is the upper part of a circle centered at the origin with radius 2, so $f(t) = \\sqrt{4 - t^2}$. For $2 < t \\leq 4$, $f(t)$ is a line segment connecting $(2, 4)$ and $(4, 0)$. The equation of this line can be found using the two-point form: $y - 0 = \\frac{4 - 0}{2 - 4}(x - 4)$, which simplifies to $y = -2(x - 4)$, so $f(t) = -2(t - 4)$. To find $A(3)$, we need to calculate the definite integral $\\int_{0}^{3} f(t) \\, dt$. We split this integral into two parts based on the definition of $f(t)$: $A(3) = \\int_{0}^{2} f(t) \\, dt + \\int_{2}^{3} f(t) \\, dt$ For the first part, $\\int_{0}^{2} \\sqrt{4 - t^2} \\, dt$, this represents the area of a quarter circle of radius 2, which is $\\frac{1}{4}\\pi r^2 = \\frac{1}{4}\\pi (2^2) = \\pi$. For the second part, $\\int_{2}^{3} (-2(t - 4)) \\, dt$, we can evaluate this integral: $\\int_{2}^{3} (-2t + 8) \\, dt = [-t^2 + 8t]_{2}^{3}$ Evaluating at the limits: $(-3^2 + 8 \\cdot 3) - (-2^2 + 8 \\cdot 2)$ $(-9 + 24) - (-4 + 16)$ $15 - 12 = 3$. Therefore, $A(3) = \\pi + 3$. *Common Misconceptions:* Students might incorrectly assume the function is a single simple shape or miscalculate the line segment's equation. They might also forget that the first part of the integral represents a quarter circle's area and attempt to integrate $\\sqrt{4-t^2}$ directly, which is more complex.",
+          "explanation": "The function $f(x)$ is defined piecewise. For $0 \\leq t \\leq 2$, $f(t)$ is the upper part of a circle centered at the origin with radius 2, so $f(t) = \\sqrt{4 - t^2}$. For $2 < t \\leq 4$, $f(t)$ is a line segment connecting $(2, 4)$ and $(4, 0)$. The equation of this line can be found using the two-point form: $y - 0 = \\frac{4 - 0}{2 - 4}(x - 4)$, which simplifies to $y = -2(x - 4)$, so $f(t) = -2(t - 4)$. To find $A(3)$, we need to calculate the definite integral $\\int_{0}^{3} f(t) \\, dt$. We split this integral into two parts based on the definition of $f(t)$: $A(3) = \\int_{0}^{2} f(t) \\, dt + \\int_{2}^{3} f(t) \\, dt$ For the first part, $\\int_{0}^{2} \\sqrt{4 - t^2} \\, dt$, this represents the area of a quarter circle of radius 2, which is $\\frac{1}{4}\\pi r^2 = \\frac{1}{4}\\pi (2^2) = \\pi$. For the second part, $\\int_{2}^{3} (-2(t - 4)) \\, dt$, we can evaluate this integral: $\\int_{2}^{3} (-2t + 8) \\, dt = [-t^2 + 8t]_{2}^{3}$ Evaluating at the limits: $(-3^2 + 8 \\cdot 3) - (-2^2 + 8 \\cdot 2)$ $(-9 + 24) - (-4 + 16)$ $15 - 12 = 3$. Therefore, $A(3) = \\pi + 3$. *Common Misconceptions:* Students might incorrectly assume the function is a single simple shape or miscalculate the line segment's equation. They might also forget that the first part of the integral represents a quarter circle's area and attempt to integrate $\\sqrt{4-t^2}$ directly, which is more complex.",
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (1))**2 + (-2)",
-              "0.5*x + 1"
+              "sqrt(4 - x*x)",
+              "-2*(x - 4)"
             ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
+            "xmin": -0.5,
+            "xmax": 4.5,
+            "ymin": -0.5,
+            "ymax": 4.5,
+            "width": 230,
             "point_labels": [
               {
-                "x": 1.0,
-                "y": -2.0,
-                "label": "$(1,-2)$"
+                "x": 2.0,
+                "y": 4.0,
+                "label": "(2, 4)"
+              },
+              {
+                "x": 4.0,
+                "y": 0.0,
+                "label": "(4, 0)"
               }
-            ],
-            "width": 230
+            ]
           }
         },
         {
-          "q": "Use the comparison test to determine whether $\\sum_{n=1}^{\\infty} \\frac{1}{n^{2}+5}$ converges.",
+          "q": "The graph of a differentiable function $f$ is shown in the figure above. The function $f$ has a local maximum at $x = c$ and a local minimum at $x = e$. The point $(c, f(c))$ is approximately $(1, 4)$ and the point $(e, f(e))$ is approximately $(4, -2)$. The shaded region, bounded by the graph of $f$, the x-axis, and the lines $x = 0$ and $x = 5$, has area 12. $$If$\\int_{0}^{c} f(x) \\, dx = k$, what is the value of$\\int_{c}^{5} f(x) \\, dx$in terms of$k$?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Geometric Series & n-th Term Divergence Test",
+          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
           "choices": [
-            "$\\mathrm{Inconclusive}$",
-            "$\\mathrm{Diverges\\ by\\ the\\ nth-term\\ test}$",
-            "$\\mathrm{Diverges\\ (compare\\ to\\ }\\sum 1/n\\mathrm{)}$",
-            "$\\mathrm{Converges\\ (compare\\ to\\ }\\sum 1/n^2\\mathrm{)}$"
+            "12 + k",
+            "12 - k",
+            "k - 12",
+            "k + 2"
+          ],
+          "correct": 1,
+          "answer": "The total area of the shaded region from $x = 0$ to $x = 5$ is given as 12. This total area can be expressed as the sum of the areas of two sub-regions: the area from $x = 0$ to $x = c$ and the area from $x = c$ to $x = 5$. Mathematically, this can be written using definite integrals: $\\int_{0}^{5} f(x) \\, dx = \\int_{0}^{c} f(x) \\, dx + \\int_{c}^{5} f(x) \\, dx$. We are given that the total area is 12, so $\\int_{0}^{5} f(x) \\, dx = 12$. We are also given that $\\int_{0}^{c} f(x) \\, dx = k$. Substituting these values into the equation: $12 = k + \\int_{c}^{5} f(x) \\, dx$. To find the value of $\\int_{c}^{5} f(x) \\, dx$, we can rearrange the equation: $\\int_{c}^{5} f(x) \\, dx = 12 - k$. Therefore, the value of $\\int_{c}^{5} f(x) \\, dx$ in terms of $k$ is $12 - k$.",
+          "explanation": "The total area of the shaded region from $x = 0$ to $x = 5$ is given as 12. This total area can be expressed as the sum of the areas of two sub-regions: the area from $x = 0$ to $x = c$ and the area from $x = c$ to $x = 5$. Mathematically, this can be written using definite integrals: $\\int_{0}^{5} f(x) \\, dx = \\int_{0}^{c} f(x) \\, dx + \\int_{c}^{5} f(x) \\, dx$. We are given that the total area is 12, so $\\int_{0}^{5} f(x) \\, dx = 12$. We are also given that $\\int_{0}^{c} f(x) \\, dx = k$. Substituting these values into the equation: $12 = k + \\int_{c}^{5} f(x) \\, dx$. To find the value of $\\int_{c}^{5} f(x) \\, dx$, we can rearrange the equation: $\\int_{c}^{5} f(x) \\, dx = 12 - k$. Therefore, the value of $\\int_{c}^{5} f(x) \\, dx$ in terms of $k$ is $12 - k$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "- (x-1)**2 + 4",
+              "(x-4)**2 - 2"
+            ],
+            "xmin": -1.0,
+            "xmax": 6.0,
+            "ymin": -3.0,
+            "ymax": 6.0,
+            "width": 230,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": 3.0,
+                "label": "(0, 3)"
+              },
+              {
+                "x": 1.0,
+                "y": 4.0,
+                "label": "(c, f(c))"
+              },
+              {
+                "x": 4.0,
+                "y": -2.0,
+                "label": "(e, f(e))"
+              },
+              {
+                "x": 5.0,
+                "y": 1.0,
+                "label": "(5, f(5))"
+              }
+            ]
+          }
+        },
+        {
+          "q": "Find the radius of convergence of the power series $\\sum_{n=1}^{\\infty} \\frac{(x - 6)^n}{n \\cdot 4^n}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+          "choices": [
+            "$\\infty$",
+            "$\\frac{1}{4}$",
+            "6",
+            "4"
           ],
           "correct": 3,
-          "answer": "Since $01$), the given series converges by the comparison test.",
-          "explanation": "Since $01$), the given series converges by the comparison test."
+          "answer": "Applying the ratio test yields $\\lim_{n\\rightarrow\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-6|}{4} < 1 \\Rightarrow R = 4$.",
+          "explanation": "Applying the ratio test yields $\\lim_{n\\rightarrow\\infty} \\left|\\frac{u_{n+1}}{u_n}\\right| = \\frac{|x-6|}{4} < 1 \\Rightarrow R = 4$."
         },
         {
-          "q": "Use the comparison test to determine whether $\\sum_{n=1}^{\\infty} \\frac{1}{n^{2}+3}$ converges.",
+          "q": "What is the radius of convergence of the Maclaurin series for $\\frac{1}{1-x}$? (variant 3)",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Integral Test & p-Series",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
-            "$\\mathrm{Diverges\\ (compare\\ to\\ }\\sum 1/n\\mathrm{)}$",
-            "$\\mathrm{Inconclusive}$",
-            "$\\mathrm{Diverges\\ by\\ the\\ nth-term\\ test}$",
-            "$\\mathrm{Converges\\ (compare\\ to\\ }\\sum 1/n^2\\mathrm{)}$"
+            "$\\infty$",
+            "1",
+            "2",
+            "0"
           ],
-          "correct": 3,
-          "answer": "Since $01$), the given series converges by the comparison test.",
-          "explanation": "Since $01$), the given series converges by the comparison test."
+          "correct": 1,
+          "answer": "The Maclaurin series for $\\frac{1}{1-x}$ has radius of convergence $R=1.$",
+          "explanation": "The Maclaurin series for $\\frac{1}{1-x}$ has radius of convergence $R=1.$"
         },
         {
-          "q": "Use the comparison test to determine whether $\\sum_{n=1}^{\\infty} \\frac{1}{n^{2}+2}$ converges.",
+          "q": "A differentiable function $f$ is defined on the interval $[-4, 4]$. The graph of $f'$, the derivative of $f$, is shown in the figure above. The graph of $f'$ consists of two line segments and a semicircle. (a) Find the value of $f(2) - f(-2)$. Show the setup for your answer. (b) For how many values of $c$ in the interval $(-4, 4)$ does $f'(c) = 0$? Explain your reasoning. (c) The function $f$ has a local maximum at $x = k$. Find the value of $k$. Explain your reasoning. (d) The function $f$ has an inflection point at $x = p$. Find the value of $p$. Explain your reasoning.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Direct Comparison & Limit Comparison Tests",
+          "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "choices": [
-            "$\\mathrm{Converges\\ (compare\\ to\\ }\\sum 1/n^2\\mathrm{)}$",
-            "$\\mathrm{Diverges\\ by\\ the\\ nth-term\\ test}$",
-            "$\\mathrm{Diverges\\ (compare\\ to\\ }\\sum 1/n\\mathrm{)}$",
-            "$\\mathrm{Inconclusive}$"
-          ],
-          "correct": 0,
-          "answer": "Since $01$), the given series converges by the comparison test.",
-          "explanation": "Since $01$), the given series converges by the comparison test."
-        },
-        {
-          "q": "Use the comparison test to determine whether $\\sum_{n=1}^{\\infty} \\frac{1}{n^{2}+4}$ converges.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Limits of Sequences & Monotonicity",
-          "choices": [
-            "$\\mathrm{Diverges\\ (compare\\ to\\ }\\sum 1/n\\mathrm{)}$",
-            "$\\mathrm{Diverges\\ by\\ the\\ nth-term\\ test}$",
-            "$\\mathrm{Converges\\ (compare\\ to\\ }\\sum 1/n^2\\mathrm{)}$",
-            "$\\mathrm{Inconclusive}$"
+            "There are no values of $c$ for which $f'(c)=0$.",
+            "There is one value of $c$ for which $f'(c)=0$.",
+            "There are two values of $c$ for which $f'(c)=0$.",
+            "There are three values of $c$ for which $f'(c)=0$."
           ],
           "correct": 2,
-          "answer": "Since $01$), the given series converges by the comparison test.",
-          "explanation": "Since $01$), the given series converges by the comparison test."
+          "answer": "**(a)** By the Fundamental Theorem of Calculus, $f(2) - f(-2) = \\int_{-2}^{2} f'(x) \\, dx$. The region from $x = -2$ to $x = 2$ is a semicircle with radius 2. The area of this semicircle is $\\frac{1}{2} \\pi (2)^2 = 2\\pi$. Therefore, $f(2) - f(-2) = 2\\pi$. **(b)** The graph of $f'(x)$ is shown. $f'(c) = 0$ when the graph of $f'$ intersects the x-axis. This occurs at $x = -4$ and $x = 2$. Since we are looking for values of $c$ in the open interval $(-4, 4)$, there is one such value, $c = 2$. **(c)** A local maximum of $f$ occurs when $f'$ changes from positive to negative. Looking at the graph of $f'$, this occurs at $x = 2$, where $f'$ changes from positive to negative. Therefore, $k = 2$. **(d)** An inflection point of $f$ occurs when $f''$ changes sign. This means that $f'$ changes from increasing to decreasing or vice versa. Looking at the graph of $f'$, the slope of $f'$ (which is $f''$) changes at $x = -2$ and $x = 2$. At $x = -2$, $f'$ changes from decreasing to increasing. At $x = 2$, $f'$ changes from increasing to decreasing. Inflection points occur where the concavity of $f$ changes, which is where $f''$ changes sign. The sign of $f''$ changes at $x = -2$ (from negative to positive) and at $x = 2$ (from positive to negative). However, the question asks for *an* inflection point. The graph of $f'$ has a corner at $x = -2$, indicating a change in concavity of $f$. The graph also has a point where the slope changes drastically at $x=2$ (from positive slope to zero slope for the semicircle). Looking closely at the graph, the derivative $f'$ itself changes behavior at $x = -2$ and $x = 2$. The concavity of $f$ changes where $f''$ changes sign. $f''$ is the slope of $f'$. The slope of $f'$ is negative for $x 2$. This means $f''$ changes sign at $x = -2$ (negative to zero, then zero to positive if we consider the end of the semicircle). The graph of $f'$ has a corner at $x = -2$ and the slope of $f'$ is 0 for $x > 2$. The concavity of $f$ changes at $x = -2$. The rate of change of $f'$ (which is $f''$) changes from negative to positive at $x=-2$. Thus, $p = -2$.",
+          "explanation": "**(a)** By the Fundamental Theorem of Calculus, $f(2) - f(-2) = \\int_{-2}^{2} f'(x) \\, dx$. The region from $x = -2$ to $x = 2$ is a semicircle with radius 2. The area of this semicircle is $\\frac{1}{2} \\pi (2)^2 = 2\\pi$. Therefore, $f(2) - f(-2) = 2\\pi$. **(b)** The graph of $f'(x)$ is shown. $f'(c) = 0$ when the graph of $f'$ intersects the x-axis. This occurs at $x = -4$ and $x = 2$. Since we are looking for values of $c$ in the open interval $(-4, 4)$, there is one such value, $c = 2$. **(c)** A local maximum of $f$ occurs when $f'$ changes from positive to negative. Looking at the graph of $f'$, this occurs at $x = 2$, where $f'$ changes from positive to negative. Therefore, $k = 2$. **(d)** An inflection point of $f$ occurs when $f''$ changes sign. This means that $f'$ changes from increasing to decreasing or vice versa. Looking at the graph of $f'$, the slope of $f'$ (which is $f''$) changes at $x = -2$ and $x = 2$. At $x = -2$, $f'$ changes from decreasing to increasing. At $x = 2$, $f'$ changes from increasing to decreasing. Inflection points occur where the concavity of $f$ changes, which is where $f''$ changes sign. The sign of $f''$ changes at $x = -2$ (from negative to positive) and at $x = 2$ (from positive to negative). However, the question asks for *an* inflection point. The graph of $f'$ has a corner at $x = -2$, indicating a change in concavity of $f$. The graph also has a point where the slope changes drastically at $x=2$ (from positive slope to zero slope for the semicircle). Looking closely at the graph, the derivative $f'$ itself changes behavior at $x = -2$ and $x = 2$. The concavity of $f$ changes where $f''$ changes sign. $f''$ is the slope of $f'$. The slope of $f'$ is negative for $x 2$. This means $f''$ changes sign at $x = -2$ (negative to zero, then zero to positive if we consider the end of the semicircle). The graph of $f'$ has a corner at $x = -2$ and the slope of $f'$ is 0 for $x > 2$. The concavity of $f$ changes at $x = -2$. The rate of change of $f'$ (which is $f''$) changes from negative to positive at $x=-2$. Thus, $p = -2$."
         }
       ]
     },
@@ -607,172 +652,131 @@
       "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
       "questions": [
         {
-          "q": "Consider the infinite series $\\sum_{n=1}^{\\infty} a_n$. If the terms of the series are given by $a_n = \\frac{3n+1}{2n+5}$, which of the following statements about the convergence of the series is true based on the limit of the terms?",
+          "q": "A particle moves along a straight line so that its velocity at time $t \\geq 0$ is modeled by $v(t) = 6t^2 - 18t + 12$. At what time $t$ is the acceleration of the particle equal to $0$?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Geometric Series & n-th Term Divergence Test",
+          "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
           "choices": [
-            "The series converges because $\\lim_{n \\rightarrow \\infty} a_n = 0$.",
-            "The series diverges because $\\lim_{n \\rightarrow \\infty} a_n = \\frac{3}{2}$.",
-            "The series converges because $\\lim_{n \\rightarrow \\infty} a_n = \\frac{3}{2}$.",
-            "The series diverges because $\\lim_{n \\rightarrow \\infty} a_n$ does not exist."
+            "$t = \\frac{3}{2}$",
+            "$t = 1$",
+            "$t = 2$",
+            "$t = 3$"
           ],
-          "correct": 1,
-          "answer": "To determine the convergence or divergence of an infinite series $\\sum_{n=1}^{\\infty} a_n$, we can first examine the limit of its terms, $\\lim_{n \\rightarrow \\infty} a_n$. If this limit is not equal to zero, then the series diverges by the Test for Divergence. For the given series, the terms are $a_n = \\frac{3n+1}{2n+5}$. We evaluate the limit as $n \\rightarrow \\infty$: $\\lim_{n \\rightarrow \\infty} a_n = \\lim_{n \\rightarrow \\infty} \\frac{3n+1}{2n+5}$ To evaluate this limit, we can divide both the numerator and the denominator by the highest power of $n$ in the denominator, which is $n$: $\\lim_{n \\rightarrow \\infty} \\frac{\\frac{3n}{n}+\\frac{1}{n}}{\\frac{2n}{n}+\\frac{5}{n}} = \\lim_{n \\rightarrow \\infty} \\frac{3+\\frac{1}{n}}{2+\\frac{5}{n}}$ As $n \\rightarrow \\infty$, $\\frac{1}{n} \\rightarrow 0$ and $\\frac{5}{n} \\rightarrow 0$. Therefore, the limit becomes: $\\frac{3+0}{2+0} = \\frac{3}{2}$ Since $\\lim_{n \\rightarrow \\infty} a_n = \\frac{3}{2}$, and $\\frac{3}{2} eq 0$, the series diverges by the Test for Divergence. Therefore, choice B is correct.",
-          "explanation": "To determine the convergence or divergence of an infinite series $\\sum_{n=1}^{\\infty} a_n$, we can first examine the limit of its terms, $\\lim_{n \\rightarrow \\infty} a_n$. If this limit is not equal to zero, then the series diverges by the Test for Divergence. For the given series, the terms are $a_n = \\frac{3n+1}{2n+5}$. We evaluate the limit as $n \\rightarrow \\infty$: $\\lim_{n \\rightarrow \\infty} a_n = \\lim_{n \\rightarrow \\infty} \\frac{3n+1}{2n+5}$ To evaluate this limit, we can divide both the numerator and the denominator by the highest power of $n$ in the denominator, which is $n$: $\\lim_{n \\rightarrow \\infty} \\frac{\\frac{3n}{n}+\\frac{1}{n}}{\\frac{2n}{n}+\\frac{5}{n}} = \\lim_{n \\rightarrow \\infty} \\frac{3+\\frac{1}{n}}{2+\\frac{5}{n}}$ As $n \\rightarrow \\infty$, $\\frac{1}{n} \\rightarrow 0$ and $\\frac{5}{n} \\rightarrow 0$. Therefore, the limit becomes: $\\frac{3+0}{2+0} = \\frac{3}{2}$ Since $\\lim_{n \\rightarrow \\infty} a_n = \\frac{3}{2}$, and $\\frac{3}{2} eq 0$, the series diverges by the Test for Divergence. Therefore, choice B is correct.",
+          "correct": 0,
+          "answer": "To find the acceleration $a(t)$, take the derivative of the velocity function $v(t)$ with respect to time $t$: $a(t) = v'(t) = \\frac{d}{dt}(6t^2 - 18t + 12) = 12t - 18.$ Set $a(t) = 0$ and solve for $t$: $12t - 18 = 0 \\Rightarrow 12t = 18 \\Rightarrow t = \\frac{18}{12} = \\frac{3}{2}.$ Common Misconceptions: - Solving $v(t) = 0$ yields $6(t - 1)(t - 2) = 0 \\Rightarrow t = 1$ or $t = 2$. These are the times when the particle is at rest, not when its acceleration is zero. - Omitting the factor of 2 when applying the power rule gives $6t - 18 = 0 \\Rightarrow t = 3$.",
+          "explanation": "To find the acceleration $a(t)$, take the derivative of the velocity function $v(t)$ with respect to time $t$: $a(t) = v'(t) = \\frac{d}{dt}(6t^2 - 18t + 12) = 12t - 18.$ Set $a(t) = 0$ and solve for $t$: $12t - 18 = 0 \\Rightarrow 12t = 18 \\Rightarrow t = \\frac{18}{12} = \\frac{3}{2}.$ Common Misconceptions: - Solving $v(t) = 0$ yields $6(t - 1)(t - 2) = 0 \\Rightarrow t = 1$ or $t = 2$. These are the times when the particle is at rest, not when its acceleration is zero. - Omitting the factor of 2 when applying the power rule gives $6t - 18 = 0 \\Rightarrow t = 3$.",
           "cross_lesson": "3.02 Vector-Valued Functions"
         },
         {
-          "q": "Consider the infinite series $\\sum_{n=1}^{\\infty} \\frac{n^p}{5^n}$. The series converges if and only if the parameter $p$ satisfies which of the following conditions? Use the Ratio Test to determine the interval of convergence.",
+          "q": "Consider the function $f(x)$ whose graph is shown above. The graph of $f(x)$ consists of line segments and a quarter circle. Let $g(x) = \\int_{0}^{x} f(t) \\, dt$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Integral Test & p-Series",
+          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
           "choices": [
-            "$p > 0$",
-            "$p < 1$",
-            "$p > -1$",
-            "For all real values of $p$"
+            "g'(2) = 2",
+            "g'(2) = 0",
+            "g'(5) = -2",
+            "g'(5) = 0"
           ],
-          "correct": 3,
-          "answer": "We apply the Ratio Test. Let $a_n = \\frac{n^p}{5^n}$. Then $a_{n+1} = \\frac{(n+1)^p}{5^{n+1}}$. We compute the limit of the ratio of consecutive terms: $L = \\lim_{n \\rightarrow \\infty} \\left| \\frac{a_{n+1}}{a_n} \\right| = \\lim_{n \\rightarrow \\infty} \\left| \\frac{(n+1)^p}{5^{n+1}} \\cdot \\frac{5^n}{n^p} \\right|$ $L = \\lim_{n \\rightarrow \\infty} \\left| \\frac{1}{5} \\left( \\frac{n+1}{n} \\right)^p \\right| = \\lim_{n \\rightarrow \\infty} \\left| \\frac{1}{5} \\left( 1 + \\frac{1}{n} \\right)^p \\right|$ As $n \\rightarrow \\infty$, $\\frac{1}{n} \\rightarrow 0$, so $\\left( 1 + \\frac{1}{n} \\right)^p \\rightarrow 1^p = 1$ for any real $p$. Thus, $L = \\frac{1}{5} \\cdot 1 = \\frac{1}{5}$ . According to the Ratio Test, the series converges if $L < 1$. Since $L = \\frac{1}{5} < 1$ for all real values of $p$, the series converges for all real values of $p$.",
-          "explanation": "We apply the Ratio Test. Let $a_n = \\frac{n^p}{5^n}$. Then $a_{n+1} = \\frac{(n+1)^p}{5^{n+1}}$. We compute the limit of the ratio of consecutive terms: $L = \\lim_{n \\rightarrow \\infty} \\left| \\frac{a_{n+1}}{a_n} \\right| = \\lim_{n \\rightarrow \\infty} \\left| \\frac{(n+1)^p}{5^{n+1}} \\cdot \\frac{5^n}{n^p} \\right|$ $L = \\lim_{n \\rightarrow \\infty} \\left| \\frac{1}{5} \\left( \\frac{n+1}{n} \\right)^p \\right| = \\lim_{n \\rightarrow \\infty} \\left| \\frac{1}{5} \\left( 1 + \\frac{1}{n} \\right)^p \\right|$ As $n \\rightarrow \\infty$, $\\frac{1}{n} \\rightarrow 0$, so $\\left( 1 + \\frac{1}{n} \\right)^p \\rightarrow 1^p = 1$ for any real $p$. Thus, $L = \\frac{1}{5} \\cdot 1 = \\frac{1}{5}$ . According to the Ratio Test, the series converges if $L < 1$. Since $L = \\frac{1}{5} < 1$ for all real values of $p$, the series converges for all real values of $p$.",
-          "cross_lesson": "4.01 Polar Curves and Derivatives",
-          "figure": {
-            "type": "numberline",
-            "min": -7,
-            "max": 6,
-            "shade": [
-              -5,
-              4
-            ],
-            "marks": [
-              {
-                "x": -5,
-                "open": false,
-                "label": "$-5$"
-              },
-              {
-                "x": 4,
-                "open": false,
-                "label": "$4$"
-              }
-            ],
-            "width": 250
-          }
+          "correct": 0,
+          "answer": "By the Fundamental Theorem of Calculus Part 1, $g'(x) = f(x)$. We need to find $g'(2)$, which means we need to evaluate $f(2)$. From the graph, at $x=2$, the function $f(x)$ is on a line segment connecting $(0, 4)$ and $(4, 0)$. The equation of this line segment can be found. The slope is $m = \\frac{0 - 4}{4 - 0} = -1$. Using the point-slope form with $(4, 0)$, we get $y - 0 = -1(x - 4)$, which simplifies to $y = -x + 4$. Therefore, $f(x) = -x + 4$ for $0 \\leq x \\leq 4$. Evaluating $f(2)$ gives $f(2) = -2 + 4 = 2$. Thus, $g'(2) = f(2) = 2$.",
+          "explanation": "By the Fundamental Theorem of Calculus Part 1, $g'(x) = f(x)$. We need to find $g'(2)$, which means we need to evaluate $f(2)$. From the graph, at $x=2$, the function $f(x)$ is on a line segment connecting $(0, 4)$ and $(4, 0)$. The equation of this line segment can be found. The slope is $m = \\frac{0 - 4}{4 - 0} = -1$. Using the point-slope form with $(4, 0)$, we get $y - 0 = -1(x - 4)$, which simplifies to $y = -x + 4$. Therefore, $f(x) = -x + 4$ for $0 \\leq x \\leq 4$. Evaluating $f(2)$ gives $f(2) = -2 + 4 = 2$. Thus, $g'(2) = f(2) = 2$.",
+          "cross_lesson": "4.01 Polar Curves and Derivatives"
         },
         {
-          "q": "Consider the infinite sequence defined by $a_n = \\frac{3n^2 + 2n - 1}{n^2 + 5}$. To determine if this sequence converges, we examine its limit as $n \\rightarrow \\infty$. Which of the following statements is true about the limit of $a_n$?",
+          "q": "If $f(x)=x^2+3$ is increasing on $[1,6]$, a left Riemann sum with equal subintervals will:",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Direct Comparison & Limit Comparison Tests",
+          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
           "choices": [
-            "The limit is 0.",
-            "The limit is 2.",
-            "The limit is 3.",
-            "The sequence diverges."
+            "equal the true area exactly",
+            "underestimate the true area",
+            "overestimate the true area",
+            "cannot be determined"
           ],
-          "correct": 2,
-          "answer": "To find the limit of the sequence $a_n = \\frac{3n^2 + 2n - 1}{n^2 + 5}$ as $n \\rightarrow \\infty$, we can divide both the numerator and the denominator by the highest power of $n$ in the denominator, which is $n^2$. $x$ As $n \\rightarrow \\infty$, the terms $\\frac{2}{n}$, $\\frac{1}{n^2}$, and $\\frac{5}{n^2}$ all approach 0. $= \\frac{3 + 0 - 0}{1 + 0} = \\frac{3}{1} = 3$ Therefore, the sequence converges to 3.",
-          "explanation": "To find the limit of the sequence $a_n = \\frac{3n^2 + 2n - 1}{n^2 + 5}$ as $n \\rightarrow \\infty$, we can divide both the numerator and the denominator by the highest power of $n$ in the denominator, which is $n^2$. $x$ As $n \\rightarrow \\infty$, the terms $\\frac{2}{n}$, $\\frac{1}{n^2}$, and $\\frac{5}{n^2}$ all approach 0. $= \\frac{3 + 0 - 0}{1 + 0} = \\frac{3}{1} = 3$ Therefore, the sequence converges to 3.",
+          "correct": 1,
+          "answer": "For an increasing function, left-endpoint heights are too small and right-endpoint heights are too large, so a left sum will underestimate the true area.",
+          "explanation": "For an increasing function, left-endpoint heights are too small and right-endpoint heights are too large, so a left sum will underestimate the true area.",
           "cross_lesson": "4.02 Area in Polar Coordinates"
         },
         {
-          "q": "Geometric series $\\sum ar^n$ converges when:",
+          "q": "If $f(x)=2x^2+5$ is increasing on $[2,5]$, a right Riemann sum with equal subintervals will:",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Limits of Sequences & Monotonicity",
+          "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
           "choices": [
-            "$r>1$",
-            "$|r|<1$",
-            "$r<0$",
-            "$r=1$"
+            "equal the true area exactly",
+            "cannot be determined",
+            "underestimate the true area",
+            "overestimate the true area"
           ],
-          "correct": 1,
-          "answer": "Applying Unit 10 · Infinite Sequences & Series — Convergence Tests principles, Convergence requires $|r|<1$. Therefore, the verified correct option is $|r|<1$.",
-          "explanation": "Applying Unit 10 · Infinite Sequences & Series — Convergence Tests principles, Convergence requires $|r|<1$. Therefore, the verified correct option is $|r|<1$.",
+          "correct": 3,
+          "answer": "For an increasing function, left-endpoint heights are too small and right-endpoint heights are too large, so a right sum will overestimate the true area.",
+          "explanation": "For an increasing function, left-endpoint heights are too small and right-endpoint heights are too large, so a right sum will overestimate the true area.",
           "cross_lesson": "5.02 Ratio, Root, and Alternating Series Tests"
         },
         {
-          "q": "For $\\sum_{n=1}^{\\infty} \\frac{n^{13}}{2^{n}}$, apply the ratio test and determine convergence.",
+          "q": "Using a right Riemann sum with 4 subintervals of equal width on $[0,2]$, approximate $\\int_{0}^{2} (x^2+x-2)\\,dx$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Geometric Series & n-th Term Divergence Test",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
-            "$\\mathrm{Converges\\ (}L=1/2<1\\mathrm{)}$",
-            "$\\mathrm{Inconclusive\\ (}L=1\\mathrm{)}$",
-            "$\\mathrm{Diverges\\ by\\ comparison}$",
-            "$\\mathrm{Diverges\\ (}L=2>1\\mathrm{)}$"
+            "$\\frac{21}{4}$",
+            "$-\\frac{3}{4}$",
+            "$-\\frac{15}{4}$",
+            "$\\frac{9}{4}$"
           ],
-          "correct": 0,
-          "answer": "$\\frac{a_{n+1}}{a_n}=\\left(\\frac{n+1}{n}\\right)^{13}\\cdot\\frac{1}{2}\\rightarrow\\frac{1}{2}<1$. Ratio test: converges regardless of the fixed power 13.",
-          "explanation": "$\\frac{a_{n+1}}{a_n}=\\left(\\frac{n+1}{n}\\right)^{13}\\cdot\\frac{1}{2}\\rightarrow\\frac{1}{2}<1$. Ratio test: converges regardless of the fixed power 13.",
+          "correct": 3,
+          "answer": "$\\Delta x=\\frac{1}{2}$; heights at the right endpoints give $\\frac{1}{2}(-\\frac{5}{4}+0+\\frac{7}{4}+4) = \\frac{9}{4}$.",
+          "explanation": "$\\Delta x=\\frac{1}{2}$; heights at the right endpoints give $\\frac{1}{2}(-\\frac{5}{4}+0+\\frac{7}{4}+4) = \\frac{9}{4}$.",
           "cross_lesson": "6.01 Power Series and Interval of Convergence"
         },
         {
-          "q": "For $\\sum_{n=1}^{\\infty} \\frac{n^{12}}{2^{n}}$, apply the ratio test and determine convergence.",
+          "q": "Using the Trapezoidal Rule with 2 subintervals on $[0,6]$, approximate $\\int_{0}^{6} (2x^2-3x-1)\\,dx$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Integral Test & p-Series",
+          "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "choices": [
-            "$\\mathrm{Diverges\\ by\\ comparison}$",
-            "$\\mathrm{Diverges\\ (}L=2>1\\mathrm{)}$",
-            "$\\mathrm{Converges\\ (}L=1/2<1\\mathrm{)}$",
-            "$\\mathrm{Inconclusive\\ (}L=1\\mathrm{)}$"
-          ],
-          "correct": 2,
-          "answer": "$\\frac{a_{n+1}}{a_n}=\\left(\\frac{n+1}{n}\\right)^{12}\\cdot\\frac{1}{2}\\rightarrow\\frac{1}{2}<1$. Ratio test: converges regardless of the fixed power 12.",
-          "explanation": "$\\frac{a_{n+1}}{a_n}=\\left(\\frac{n+1}{n}\\right)^{12}\\cdot\\frac{1}{2}\\rightarrow\\frac{1}{2}<1$. Ratio test: converges regardless of the fixed power 12.",
-          "cross_lesson": "6.02 Taylor and Maclaurin Series",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (-1))**2 + (-2)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": -1.0,
-                "y": -2.0,
-                "label": "$(-1,-2)$"
-              }
-            ],
-            "width": 230
-          }
-        },
-        {
-          "q": "For $\\sum_{n=1}^{\\infty} \\frac{n^{10}}{2^{n}}$, apply the ratio test and determine convergence.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Direct Comparison & Limit Comparison Tests",
-          "choices": [
-            "$\\mathrm{Diverges\\ by\\ comparison}$",
-            "$\\mathrm{Inconclusive\\ (}L=1\\mathrm{)}$",
-            "$\\mathrm{Diverges\\ (}L=2>1\\mathrm{)}$",
-            "$\\mathrm{Converges\\ (}L=1/2<1\\mathrm{)}$"
+            "183",
+            "21",
+            "104",
+            "102"
           ],
           "correct": 3,
-          "answer": "$\\frac{a_{n+1}}{a_n}=\\left(\\frac{n+1}{n}\\right)^{10}\\cdot\\frac{1}{2}\\rightarrow\\frac{1}{2}<1$. Ratio test: converges regardless of the fixed power 10.",
-          "explanation": "$\\frac{a_{n+1}}{a_n}=\\left(\\frac{n+1}{n}\\right)^{10}\\cdot\\frac{1}{2}\\rightarrow\\frac{1}{2}<1$. Ratio test: converges regardless of the fixed power 10.",
+          "answer": "$T=\\frac{\\Delta x}{2}\\left[f(x_0)+2f(x_1)+f(x_2)\\right] = \\frac{3}{2}\\left[-1+2(8)+53\\right] = 102$",
+          "explanation": "$T=\\frac{\\Delta x}{2}\\left[f(x_0)+2f(x_1)+f(x_2)\\right] = \\frac{3}{2}\\left[-1+2(8)+53\\right] = 102$",
+          "cross_lesson": "6.02 Taylor and Maclaurin Series"
+        },
+        {
+          "q": "The table shows values of $g(x)$ at $x=[0, 3, 6, 8]$: $g=[2, 3, 8, 7]$. Using a right Riemann sum with these subintervals, approximate $\\int_{0}^{8} g(x)\\,dx$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+          "choices": [
+            "41",
+            "47",
+            "31",
+            "50"
+          ],
+          "correct": 1,
+          "answer": "Sum of (width $\\times$ right height) over each subinterval: $3(3)+3(8)+2(7) = 47$.",
+          "explanation": "Sum of (width $\\times$ right height) over each subinterval: $3(3)+3(8)+2(7) = 47$.",
           "cross_lesson": "1.01 Integration by Parts"
         },
         {
-          "q": "For $\\sum_{n=1}^{\\infty} \\frac{n^{11}}{2^{n}}$, apply the ratio test and determine convergence.",
+          "q": "The table shows values of $g(x)$ at $x=[0, 2, 5, 7]$: $g=[7, 8, 12, 4]$. Using a left Riemann sum with these subintervals, approximate $\\int_{0}^{7} g(x)\\,dx$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Limits of Sequences & Monotonicity",
+          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
           "choices": [
-            "$\\mathrm{Diverges\\ (}L=2>1\\mathrm{)}$",
-            "$\\mathrm{Diverges\\ by\\ comparison}$",
-            "$\\mathrm{Inconclusive\\ (}L=1\\mathrm{)}$",
-            "$\\mathrm{Converges\\ (}L=1/2<1\\mathrm{)}$"
+            "56",
+            "65",
+            "62",
+            "60"
           ],
-          "correct": 3,
-          "answer": "$\\frac{a_{n+1}}{a_n}=\\left(\\frac{n+1}{n}\\right)^{11}\\cdot\\frac{1}{2}\\rightarrow\\frac{1}{2}<1$. Ratio test: converges regardless of the fixed power 11.",
-          "explanation": "$\\frac{a_{n+1}}{a_n}=\\left(\\frac{n+1}{n}\\right)^{11}\\cdot\\frac{1}{2}\\rightarrow\\frac{1}{2}<1$. Ratio test: converges regardless of the fixed power 11.",
+          "correct": 2,
+          "answer": "Sum of (width $\\times$ left height) over each subinterval: $2(7)+3(8)+2(12) = 62$.",
+          "explanation": "Sum of (width $\\times$ left height) over each subinterval: $2(7)+3(8)+2(12) = 62$.",
           "cross_lesson": "1.02 Partial Fractions and Improper Integrals"
         }
       ]

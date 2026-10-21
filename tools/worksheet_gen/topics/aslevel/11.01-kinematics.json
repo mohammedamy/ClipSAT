@@ -26,18 +26,18 @@
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (0))**2 + (-1)",
-              "0.5*x + 1"
+              "-0.45*(x - (-1.0))**2 + (-1.5)",
+              "-0.35*x + (-2.7)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
-                "x": 0.0,
-                "y": -1.0,
-                "label": "$(0,-1)$"
+                "x": -1.0,
+                "y": -1.5,
+                "label": "$(-1,-1.5)$"
               }
             ],
             "width": 230
@@ -125,30 +125,22 @@
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
+              "0.6*(x - (-1.5))**2 + (-1.0)",
+              "0.4*x + (0.2)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
-                "x": -1.0,
+                "x": -1.5,
                 "y": -1.0,
-                "label": "$(-1,-1)$"
+                "label": "$(-1.5,-1)$"
               }
             ],
             "width": 230
           }
-        },
-        {
-          "q": "A particle has velocity $v=4t-t^2$ (m/s). Find its displacement from $t=0$ to $t=2$, and its acceleration at $t=2$.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Using calculus for variable acceleration",
-          "answer": "Displacement: $s=\\int_0^2(4t-t^2)\\,dt=\\left[2t^2-\\frac{t^3}{3}\\right]_0^2=8-\\frac{8}{3}=\\frac{16}{3}\\approx5.33$ m. Acceleration: $a=\\frac{dv}{dt}=4-2t$; at $t=2$: $a=0$ m/s$^2$.",
-          "explanation": "Displacement: $s=\\int_0^2(4t-t^2)\\,dt=\\left[2t^2-\\frac{t^3}{3}\\right]_0^2=8-\\frac{8}{3}=\\frac{16}{3}\\approx5.33$ m. Acceleration: $a=\\frac{dv}{dt}=4-2t$; at $t=2$: $a=0$ m/s$^2$."
         },
         {
           "q": "A particle has velocity $v=t^2-5t+6$ (m/s). Find the times at which the particle is instantaneously at rest.",
@@ -159,20 +151,28 @@
           "explanation": "$t^2-5t+6=0$, so $(t-2)(t-3)=0$, giving $t=2$ or $t=3$ seconds."
         },
         {
-          "q": "A particle has velocity $v=t^2-7t+10$ (m/s). Find the times at which the particle is instantaneously at rest.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Finding when a particle is at rest or changes direction",
-          "answer": "$t^2-7t+10=0$, so $(t-2)(t-5)=0$, giving $t=2$ or $t=5$ seconds.",
-          "explanation": "$t^2-7t+10=0$, so $(t-2)(t-5)=0$, giving $t=2$ or $t=5$ seconds."
-        },
-        {
           "q": "Two cars start 300 meters apart on a straight road and travel toward each other, one at $18$ m/s and the other at $12$ m/s, both at constant speed. Find the time until they meet.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Relative and combined motion",
           "answer": "Combined closing speed: $18+12=30$ m/s. Time $=\\frac{300}{30}=10$ seconds.",
           "explanation": "Combined closing speed: $18+12=30$ m/s. Time $=\\frac{300}{30}=10$ seconds."
+        },
+        {
+          "q": "Two cars start at the same point on a straight road, one traveling at $25$ m/s. The second car starts 4 seconds later, traveling at $30$ m/s. Find how long after the first car starts the second car catches up.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Relative and combined motion",
+          "answer": "Let $t$ be the time (seconds) after the first car starts. First car's position: $25t$. Second car's position (starting 4 s later): $30(t-4)$. Setting equal: $25t=30(t-4)=30t-120$, so $5t=120$, giving $t=24$ seconds.",
+          "explanation": "Let $t$ be the time (seconds) after the first car starts. First car's position: $25t$. Second car's position (starting 4 s later): $30(t-4)$. Setting equal: $25t=30(t-4)=30t-120$, so $5t=120$, giving $t=24$ seconds."
+        },
+        {
+          "q": "This question has two parts. A train starts from rest at station A and accelerates uniformly at $0.5$ m/s$^2$ until it reaches a speed of $20$ m/s. It then travels at this constant speed before decelerating uniformly at $1$ m/s$^2$ to come to rest at station B. The total distance between the stations is $2400$ meters. (a) Find the time and distance covered during the acceleration phase. (b) Find the total journey time between the two stations.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "A well-designed word problem: a train between two stations",
+          "answer": "(a) Acceleration phase: $t_1=\\frac{v-u}{a}=\\frac{20}{0.5}=40$ s. Distance: $s_1=\\frac{1}{2}(0+20)(40)=400$ m. (b) Deceleration phase: $t_3=\\frac{20}{1}=20$ s, distance $s_3=\\frac{1}{2}(20+0)(20)=200$ m. Constant-speed distance: $2400-400-200=1800$ m, taking $t_2=\\frac{1800}{20}=90$ s. Total journey time: $40+90+20=150$ seconds.",
+          "explanation": "(a) Acceleration phase: $t_1=\\frac{v-u}{a}=\\frac{20}{0.5}=40$ s. Distance: $s_1=\\frac{1}{2}(0+20)(40)=400$ m. (b) Deceleration phase: $t_3=\\frac{20}{1}=20$ s, distance $s_3=\\frac{1}{2}(20+0)(20)=200$ m. Constant-speed distance: $2400-400-200=1800$ m, taking $t_2=\\frac{1800}{20}=90$ s. Total journey time: $40+90+20=150$ seconds."
         }
       ]
     },
@@ -180,77 +180,77 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "Two cars start at the same point on a straight road, one traveling at $25$ m/s. The second car starts 4 seconds later, traveling at $30$ m/s. Find how long after the first car starts the second car catches up.",
+          "q": "A train accelerates uniformly from rest to $30\\mathrm{\\ m/s}$ in $20\\mathrm{\\ s}$, travels at constant speed $30\\mathrm{\\ m/s}$ for $60\\mathrm{\\ s}$, and then decelerates uniformly to rest in $15\\mathrm{\\ s}$. Find: (a) the acceleration in the first phase, (b) the total distance travelled, (c) the average speed for the entire journey.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Relative and combined motion",
           "cross_lesson": "8.01 Functions: Composite & Inverse",
-          "answer": "Let $t$ be the time (seconds) after the first car starts. First car's position: $25t$. Second car's position (starting 4 s later): $30(t-4)$. Setting equal: $25t=30(t-4)=30t-120$, so $5t=120$, giving $t=24$ seconds.",
-          "explanation": "Let $t$ be the time (seconds) after the first car starts. First car's position: $25t$. Second car's position (starting 4 s later): $30(t-4)$. Setting equal: $25t=30(t-4)=30t-120$, so $5t=120$, giving $t=24$ seconds."
+          "answer": "(a) $a_1 = \\frac{v - u}{t} = \\frac{30 - 0}{20} = 1.5\\mathrm{\\ m/s}^2$. (b) Total distance is the area of the trapezoid on the $v$-$t$ graph with parallel sides $60\\mathrm{\\ s}$ and $20 + 60 + 15 = 95\\mathrm{\\ s}$, and height $30\\mathrm{\\ m/s}$: $s = \\frac{60 + 95}{2} \\times 30 = \\frac{155}{2} \\times 30 = 155 \\times 15 = 2325\\mathrm{\\ m}$ (c) Average speed: $\\mathrm{Average\\ speed} = \\frac{\\mathrm{Total\\ distance}}{\\mathrm{Total\\ time}} = \\frac{2325\\mathrm{\\ m}}{95\\mathrm{\\ s}} \\approx 24.47\\mathrm{\\ m/s} \\approx 24.5\\mathrm{\\ m/s\\ (3\\ s.f.)}$",
+          "explanation": "(a) $a_1 = \\frac{v - u}{t} = \\frac{30 - 0}{20} = 1.5\\mathrm{\\ m/s}^2$. (b) Total distance is the area of the trapezoid on the $v$-$t$ graph with parallel sides $60\\mathrm{\\ s}$ and $20 + 60 + 15 = 95\\mathrm{\\ s}$, and height $30\\mathrm{\\ m/s}$: $s = \\frac{60 + 95}{2} \\times 30 = \\frac{155}{2} \\times 30 = 155 \\times 15 = 2325\\mathrm{\\ m}$ (c) Average speed: $\\mathrm{Average\\ speed} = \\frac{\\mathrm{Total\\ distance}}{\\mathrm{Total\\ time}} = \\frac{2325\\mathrm{\\ m}}{95\\mathrm{\\ s}} \\approx 24.47\\mathrm{\\ m/s} \\approx 24.5\\mathrm{\\ m/s\\ (3\\ s.f.)}$"
         },
         {
-          "q": "This question has two parts. A train starts from rest at station A and accelerates uniformly at $0.5$ m/s$^2$ until it reaches a speed of $20$ m/s. It then travels at this constant speed before decelerating uniformly at $1$ m/s$^2$ to come to rest at station B. The total distance between the stations is $2400$ meters. (a) Find the time and distance covered during the acceleration phase. (b) Find the total journey time between the two stations.",
+          "q": "Two particles $P$ of mass $3\\mathrm{\\ kg}$ and $Q$ of mass $5\\mathrm{\\ kg}$ are connected by a light inextensible string passing over a smooth fixed pulley. The system is held at rest and released. Taking $g = 9.8\\mathrm{\\ m/s}^2$: (a) find the acceleration $a$ of the system, (b) calculate the tension $T$ in the string, (c) find the force exerted by the string on the pulley.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "A well-designed word problem: a train between two stations",
           "cross_lesson": "9.01 Circular Measure",
-          "answer": "(a) Acceleration phase: $t_1=\\frac{v-u}{a}=\\frac{20}{0.5}=40$ s. Distance: $s_1=\\frac{1}{2}(0+20)(40)=400$ m. (b) Deceleration phase: $t_3=\\frac{20}{1}=20$ s, distance $s_3=\\frac{1}{2}(20+0)(20)=200$ m. Constant-speed distance: $2400-400-200=1800$ m, taking $t_2=\\frac{1800}{20}=90$ s. Total journey time: $40+90+20=150$ seconds.",
-          "explanation": "(a) Acceleration phase: $t_1=\\frac{v-u}{a}=\\frac{20}{0.5}=40$ s. Distance: $s_1=\\frac{1}{2}(0+20)(40)=400$ m. (b) Deceleration phase: $t_3=\\frac{20}{1}=20$ s, distance $s_3=\\frac{1}{2}(20+0)(20)=200$ m. Constant-speed distance: $2400-400-200=1800$ m, taking $t_2=\\frac{1800}{20}=90$ s. Total journey time: $40+90+20=150$ seconds.",
+          "answer": "(a) Write $F = ma$ for each particle in its direction of motion: For $Q$ (moving downwards): $5g - T = 5a$ For $P$ (moving upwards): $T - 3g = 3a$ Add the equations: $2g = 8a \\Rightarrow a = \\frac{2(9.8)}{8} = 2.45\\mathrm{\\ m/s}^2$ (b) Substitute $a$ into the equation for $P$: $T = 3g + 3a = 3(9.8 + 2.45) = 3(12.25) = 36.75\\mathrm{\\ N} \\approx 36.8\\mathrm{\\ N}$ (c) The pulley supports two vertical segments of string with tension $T$, so the total downward force on the pulley is: $F_{\\mathrm{pulley}} = 2T = 2(36.75) = 73.5\\mathrm{\\ N}$",
+          "explanation": "(a) Write $F = ma$ for each particle in its direction of motion: For $Q$ (moving downwards): $5g - T = 5a$ For $P$ (moving upwards): $T - 3g = 3a$ Add the equations: $2g = 8a \\Rightarrow a = \\frac{2(9.8)}{8} = 2.45\\mathrm{\\ m/s}^2$ (b) Substitute $a$ into the equation for $P$: $T = 3g + 3a = 3(9.8 + 2.45) = 3(12.25) = 36.75\\mathrm{\\ N} \\approx 36.8\\mathrm{\\ N}$ (c) The pulley supports two vertical segments of string with tension $T$, so the total downward force on the pulley is: $F_{\\mathrm{pulley}} = 2T = 2(36.75) = 73.5\\mathrm{\\ N}$",
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
+              "-0.75*(x - (1.5))**2 + (1.5)",
+              "-0.35*x + (0.3)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
-                "x": -1.0,
-                "y": -1.0,
-                "label": "$(-1,-1)$"
+                "x": 1.5,
+                "y": 1.5,
+                "label": "$(1.5,1.5)$"
               }
             ],
             "width": 230
           }
         },
         {
-          "q": "A particle in equilibrium is acted on by three concurrent forces. Two of the forces have equal magnitude $15$ N and act symmetrically either side of the third force's line of action. If the angle between each of the two equal forces and the third force is $120^\\circ$, find the magnitude of the third force.",
+          "q": "A particle moves along a straight line such that its velocity in $\\mathrm{m/s}$ at time $t$ seconds is given by $v(t) = 6t - 2t^2$ for $0 \\leq t \\leq 4$. (a) Find the acceleration of the particle at $t = 2\\mathrm{\\ s}$. (b) Determine the net displacement of the particle between $t = 0$ and $t = 4$. (c) Calculate the total distance travelled by the particle over the interval $[0, 4]$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Using calculus for variable acceleration",
+          "target": "Displacement, velocity, and acceleration",
           "cross_lesson": "1.01 Indices, Surds & Quadratics",
-          "answer": "By symmetry (each pair at $120^\\circ$), the third force balances the resultant of the two equal forces: $F_3=F_1=15$ N (standard $120^\\circ$-$120^\\circ$-$120^\\circ$ symmetric equilibrium).",
-          "explanation": "By symmetry (each pair at $120^\\circ$), the third force balances the resultant of the two equal forces: $F_3=F_1=15$ N (standard $120^\\circ$-$120^\\circ$-$120^\\circ$ symmetric equilibrium)."
+          "answer": "(a) Acceleration: $a(t) = v'(t) = 6 - 4t$. At $t = 2$: $a(2) = 6 - 4(2) = -2\\mathrm{\\ m/s}^2$. (b) Net displacement is the integral of velocity: $\\Delta s = \\int_0^4 (6t - 2t^2)\\,dt = \\left[ 3t^2 - \\frac{2}{3}t^3 \\right]_0^4 = \\left( 3(16) - \\frac{2}{3}(64) \\right) - 0 = 48 - \\frac{128}{3} = \\frac{16}{3} = 5\\frac{1}{3}\\mathrm{\\ m}.$ (c) Velocity vanishes when $6t - 2t^2 = 0 \\Rightarrow 2t(3 - t) = 0 \\Rightarrow t = 0$ and $t = 3$. For $0 \\leq t \\leq 3$, $v(t) \\geq 0$: $s(3) - s(0) = \\left[ 3t^2 - \\frac{2}{3}t^3 \\right]_0^3 = 27 - 18 = 9\\mathrm{\\ m}.$ For $3 \\leq t \\leq 4$, $v(t) \\leq 0$: $s(4) - s(3) = \\frac{16}{3} - 9 = -\\frac{11}{3}\\mathrm{\\ m} \\Rightarrow \\mathrm{Distance} = \\left| -\\frac{11}{3} \\right| = \\frac{11}{3}\\mathrm{\\ m}.$ Total distance travelled: $\\mathrm{Total\\ Distance} = 9 + \\frac{11}{3} = \\frac{38}{3} = 12\\frac{2}{3}\\mathrm{\\ m} \\approx 12.67\\mathrm{\\ m}.$",
+          "explanation": "(a) Acceleration: $a(t) = v'(t) = 6 - 4t$. At $t = 2$: $a(2) = 6 - 4(2) = -2\\mathrm{\\ m/s}^2$. (b) Net displacement is the integral of velocity: $\\Delta s = \\int_0^4 (6t - 2t^2)\\,dt = \\left[ 3t^2 - \\frac{2}{3}t^3 \\right]_0^4 = \\left( 3(16) - \\frac{2}{3}(64) \\right) - 0 = 48 - \\frac{128}{3} = \\frac{16}{3} = 5\\frac{1}{3}\\mathrm{\\ m}.$ (c) Velocity vanishes when $6t - 2t^2 = 0 \\Rightarrow 2t(3 - t) = 0 \\Rightarrow t = 0$ and $t = 3$. For $0 \\leq t \\leq 3$, $v(t) \\geq 0$: $s(3) - s(0) = \\left[ 3t^2 - \\frac{2}{3}t^3 \\right]_0^3 = 27 - 18 = 9\\mathrm{\\ m}.$ For $3 \\leq t \\leq 4$, $v(t) \\leq 0$: $s(4) - s(3) = \\frac{16}{3} - 9 = -\\frac{11}{3}\\mathrm{\\ m} \\Rightarrow \\mathrm{Distance} = \\left| -\\frac{11}{3} \\right| = \\frac{11}{3}\\mathrm{\\ m}.$ Total distance travelled: $\\mathrm{Total\\ Distance} = 9 + \\frac{11}{3} = \\frac{38}{3} = 12\\frac{2}{3}\\mathrm{\\ m} \\approx 12.67\\mathrm{\\ m}.$"
         },
         {
-          "q": "A constant force of 15 N is applied to an object, causing it to move a distance of 4 m in the direction of the force. Calculate the work done by the force.",
+          "q": "Practice 5.2: A particle moves in a straight line with velocity $v(t) = 3t^2 - 12t + 9\\mathrm{\\ m/s}$ for $0 \\leq t \\leq 4$. (a) Find the times at which the particle is momentarily at rest. (b) Calculate the net displacement of the particle over $[0, 4]$. (c) Calculate the total distance travelled by the particle over $[0, 4]$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Finding when a particle is at rest or changes direction",
+          "target": "The suvat equations for constant acceleration",
           "cross_lesson": "10.01 Series & Binomial Theorem",
-          "answer": "The work done by a constant force is given by the formula: Work Done = Force × Distance × cos(θ) where θ is the angle between the force and the direction of motion. In this case, the force and the distance are in the same direction, so θ = 0°. Therefore, cos(0°) = 1. Work Done = 15 N × 4 m × 1 Work Done = 60 J",
-          "explanation": "The work done by a constant force is given by the formula: Work Done = Force × Distance × cos(θ) where θ is the angle between the force and the direction of motion. In this case, the force and the distance are in the same direction, so θ = 0°. Therefore, cos(0°) = 1. Work Done = 15 N × 4 m × 1 Work Done = 60 J"
+          "answer": "(a) $v(t) = 0 \\Rightarrow 3(t^2 - 4t + 3) = 0 \\Rightarrow 3(t - 1)(t - 3) = 0 \\Rightarrow t = 1\\mathrm{\\ s}$ and $t = 3\\mathrm{\\ s}$. (b) Displacement: $\\Delta s = \\int_0^4 (3t^2 - 12t + 9)\\,dt = \\left[ t^3 - 6t^2 + 9t \\right]_0^4 = (64 - 96 + 36) - 0 = 4\\mathrm{\\ m}.$ (c) Total distance requires splitting the integral where velocity changes sign: Over $[0, 1]$: $v(t) > 0$; $\\int_0^1 (3t^2 - 12t + 9)\\,dt = [t^3 - 6t^2 + 9t]_0^1 = 4\\mathrm{\\ m}$. Over $[1, 3]$: $v(t) 0$; $\\int_3^4 (3t^2 - 12t + 9)\\,dt = [t^3 - 6t^2 + 9t]_3^4 = 4 - 0 = 4\\mathrm{\\ m}$. Total distance travelled = $4 + 4 + 4 = 12\\mathrm{\\ m}$.",
+          "explanation": "(a) $v(t) = 0 \\Rightarrow 3(t^2 - 4t + 3) = 0 \\Rightarrow 3(t - 1)(t - 3) = 0 \\Rightarrow t = 1\\mathrm{\\ s}$ and $t = 3\\mathrm{\\ s}$. (b) Displacement: $\\Delta s = \\int_0^4 (3t^2 - 12t + 9)\\,dt = \\left[ t^3 - 6t^2 + 9t \\right]_0^4 = (64 - 96 + 36) - 0 = 4\\mathrm{\\ m}.$ (c) Total distance requires splitting the integral where velocity changes sign: Over $[0, 1]$: $v(t) > 0$; $\\int_0^1 (3t^2 - 12t + 9)\\,dt = [t^3 - 6t^2 + 9t]_0^1 = 4\\mathrm{\\ m}$. Over $[1, 3]$: $v(t) 0$; $\\int_3^4 (3t^2 - 12t + 9)\\,dt = [t^3 - 6t^2 + 9t]_3^4 = 4 - 0 = 4\\mathrm{\\ m}$. Total distance travelled = $4 + 4 + 4 = 12\\mathrm{\\ m}$."
         },
         {
-          "q": "Three concurrent forces keep a particle in equilibrium, each pair separated by $120^\\circ$, and two of the forces have magnitude $16$ N. Find the magnitude of the third force.",
+          "q": "A block of mass $5\\mathrm{\\ kg}$ is released from rest at the top of a rough plane inclined at $30^\\circ$ to the horizontal. The length of the incline is $8\\mathrm{\\ m}$ and the coefficient of friction is $\\mu = 0.2$. Using the work-energy principle and taking $g = 9.8\\mathrm{\\ m/s}^2$, calculate the speed of the block at the bottom of the incline.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Relative and combined motion",
+          "target": "Velocity-time graphs",
           "cross_lesson": "12.01 Forces & Equilibrium",
-          "answer": "With all three angles equal to $120^\\circ$, Lami's theorem gives $\\frac{F_1}{\\sin120^\\circ}=\\frac{F_2}{\\sin120^\\circ}=\\frac{F_3}{\\sin120^\\circ} \\Rightarrow F_3=F_1=16$ N.",
-          "explanation": "With all three angles equal to $120^\\circ$, Lami's theorem gives $\\frac{F_1}{\\sin120^\\circ}=\\frac{F_2}{\\sin120^\\circ}=\\frac{F_3}{\\sin120^\\circ} \\Rightarrow F_3=F_1=16$ N."
+          "answer": "1. Vertical height descended: $h = 8\\sin 30^\\circ = 8(0.5) = 4\\mathrm{\\ m}$. Initial gravitational potential energy: $\\mathrm{PE} = mgh = 5(9.8)(4) = 196\\mathrm{\\ J}$ 2. Normal reaction: $R = mg\\cos 30^\\circ = 5(9.8)\\left(\\frac{\\sqrt{3}}{2}\\right) = 24.5\\sqrt{3}\\mathrm{\\ N}$. Friction force: $F = \\mu R = 0.2(24.5\\sqrt{3}) = 4.9\\sqrt{3}\\mathrm{\\ N}$. Work done against friction over distance $d = 8\\mathrm{\\ m}$: $W_{\\mathrm{fric}} = F \\times d = (4.9\\sqrt{3}) \\times 8 = 39.2\\sqrt{3} \\approx 67.896\\mathrm{\\ J}$ 3. By work-energy principle: $\\mathrm{Gain\\ in\\ KE} = \\mathrm{Loss\\ in\\ PE} - W_{\\mathrm{fric}} \\Rightarrow \\frac{1}{2}mv^2 = 196 - 67.896 = 128.104\\mathrm{\\ J}$ Substitute $m = 5\\mathrm{\\ kg}$: $2.5v^2 = 128.104 \\Rightarrow v^2 = \\frac{128.104}{2.5} = 51.2416 \\Rightarrow v = \\sqrt{51.2416} \\approx 7.16\\mathrm{\\ m/s\\ (3\\ s.f.)}$",
+          "explanation": "1. Vertical height descended: $h = 8\\sin 30^\\circ = 8(0.5) = 4\\mathrm{\\ m}$. Initial gravitational potential energy: $\\mathrm{PE} = mgh = 5(9.8)(4) = 196\\mathrm{\\ J}$ 2. Normal reaction: $R = mg\\cos 30^\\circ = 5(9.8)\\left(\\frac{\\sqrt{3}}{2}\\right) = 24.5\\sqrt{3}\\mathrm{\\ N}$. Friction force: $F = \\mu R = 0.2(24.5\\sqrt{3}) = 4.9\\sqrt{3}\\mathrm{\\ N}$. Work done against friction over distance $d = 8\\mathrm{\\ m}$: $W_{\\mathrm{fric}} = F \\times d = (4.9\\sqrt{3}) \\times 8 = 39.2\\sqrt{3} \\approx 67.896\\mathrm{\\ J}$ 3. By work-energy principle: $\\mathrm{Gain\\ in\\ KE} = \\mathrm{Loss\\ in\\ PE} - W_{\\mathrm{fric}} \\Rightarrow \\frac{1}{2}mv^2 = 196 - 67.896 = 128.104\\mathrm{\\ J}$ Substitute $m = 5\\mathrm{\\ kg}$: $2.5v^2 = 128.104 \\Rightarrow v^2 = \\frac{128.104}{2.5} = 51.2416 \\Rightarrow v = \\sqrt{51.2416} \\approx 7.16\\mathrm{\\ m/s\\ (3\\ s.f.)}$"
         },
         {
-          "q": "A research team is studying the impact of different fertilizer types on crop yield. They conducted an experiment with two fertilizer types, A and B, and recorded the yield in kilograms per plot. The data is summarized in the two-way table below. The total number of plots is 200. | Fertilizer Type | Yield < 50 kg | Yield $\\geq$ 50 kg | Total | |---|---|---|---| | A | 30 | 70 | 100 | | B | 50 | 50 | 100 | | Total | 80 | 120 | 200 | Given that a plot was selected at random and its yield was less than 50 kg, what is the probability that it received fertilizer type B? Provide your answer as a fraction in its simplest form.",
+          "q": "A stone is thrown vertically upwards with speed $15\\mathrm{\\ m/s}$ from the top of a cliff $40\\mathrm{\\ m}$ above sea level. Taking $g = 9.8\\mathrm{\\ m/s}^2$ and upwards as positive: (a) find the maximum height reached above the cliff, (b) calculate the time taken for the stone to reach the sea.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "A well-designed word problem: a train between two stations",
+          "target": "Motion under gravity",
           "cross_lesson": "13.01 Newton's Laws",
-          "answer": "Let Y be the event that the yield is less than 50 kg, and B be the event that the fertilizer type is B. We are asked to find the conditional probability P(B|Y). From the table, we have: Number of plots with yield",
-          "explanation": "Let Y be the event that the yield is less than 50 kg, and B be the event that the fertilizer type is B. We are asked to find the conditional probability P(B|Y). From the table, we have: Number of plots with yield"
+          "answer": "(a) At maximum height, $v = 0$. $u = +15\\mathrm{\\ m/s}$, $a = -9.8\\mathrm{\\ m/s}^2$: $v^2 = u^2 + 2as \\Rightarrow 0 = 15^2 + 2(-9.8)s \\Rightarrow 19.6s = 225 \\Rightarrow s = \\frac{225}{19.6} \\approx 11.48\\mathrm{\\ m} \\approx 11.5\\mathrm{\\ m}$ (b) At the sea, the displacement relative to the launch point is $s = -40\\mathrm{\\ m}$. Use $s = ut + \\frac{1}{2}at^2$: $-40 = 15t + \\frac{1}{2}(-9.8)t^2 \\Rightarrow -40 = 15t - 4.9t^2 \\Rightarrow 4.9t^2 - 15t - 40 = 0$ Solve via quadratic formula: $t = \\frac{15 \\pm \\sqrt{(-15)^2 - 4(4.9)(-40)}}{2(4.9)} = \\frac{15 \\pm \\sqrt{225 + 784}}{9.8} = \\frac{15 \\pm \\sqrt{1009}}{9.8}$ Since $\\sqrt{1009} \\approx 31.765$, and $t > 0$: $t = \\frac{15 + 31.765}{9.8} = \\frac{46.765}{9.8} \\approx 4.77\\mathrm{\\ s\\ (3\\ s.f.)}$",
+          "explanation": "(a) At maximum height, $v = 0$. $u = +15\\mathrm{\\ m/s}$, $a = -9.8\\mathrm{\\ m/s}^2$: $v^2 = u^2 + 2as \\Rightarrow 0 = 15^2 + 2(-9.8)s \\Rightarrow 19.6s = 225 \\Rightarrow s = \\frac{225}{19.6} \\approx 11.48\\mathrm{\\ m} \\approx 11.5\\mathrm{\\ m}$ (b) At the sea, the displacement relative to the launch point is $s = -40\\mathrm{\\ m}$. Use $s = ut + \\frac{1}{2}at^2$: $-40 = 15t + \\frac{1}{2}(-9.8)t^2 \\Rightarrow -40 = 15t - 4.9t^2 \\Rightarrow 4.9t^2 - 15t - 40 = 0$ Solve via quadratic formula: $t = \\frac{15 \\pm \\sqrt{(-15)^2 - 4(4.9)(-40)}}{2(4.9)} = \\frac{15 \\pm \\sqrt{225 + 784}}{9.8} = \\frac{15 \\pm \\sqrt{1009}}{9.8}$ Since $\\sqrt{1009} \\approx 31.765$, and $t > 0$: $t = \\frac{15 + 31.765}{9.8} = \\frac{46.765}{9.8} \\approx 4.77\\mathrm{\\ s\\ (3\\ s.f.)}$"
         }
       ]
     },
@@ -258,158 +258,158 @@
       "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
-          "q": "A car accelerates uniformly from rest to a speed of 24 m/s over a distance of 144 m. Find its acceleration.",
+          "q": "A particle moves so that its velocity at time $t$ s ($t\\geq0$) is $v=t^{2}-4t$ m/s. Find when the particle is momentarily at rest.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Constant Acceleration & SUVAT Equations",
+          "target": "Displacement, velocity, and acceleration",
           "choices": [
-            "$2\\mathrm{\\ m/s}^2$",
-            "$1.5\\mathrm{\\ m/s}^2$",
-            "$3\\mathrm{\\ m/s}^2$",
-            "$4\\mathrm{\\ m/s}^2$"
+            "$t=3\\mathrm{\\ s\\ (excluding\\ }t=0\\mathrm{)}$",
+            "$t=5\\mathrm{\\ s\\ (excluding\\ }t=0\\mathrm{)}$",
+            "$t=0\\mathrm{\\ s\\ only}$",
+            "$t=4\\mathrm{\\ s\\ (excluding\\ }t=0\\mathrm{)}$"
           ],
-          "correct": 0,
-          "answer": "Use $v^2 = u^2 + 2as$: $24^2 = 0^2 + 2a(144) \\Rightarrow 576 = 288a \\Rightarrow a = 2\\mathrm{\\ m/s}^2$.",
-          "explanation": "Use $v^2 = u^2 + 2as$: $24^2 = 0^2 + 2a(144) \\Rightarrow 576 = 288a \\Rightarrow a = 2\\mathrm{\\ m/s}^2$."
+          "correct": 3,
+          "answer": "Setting $v=0$: $t^{2}-4t=0 \\Rightarrow t(t-4)=0 \\Rightarrow t=4\\mathrm{\\ s\\ (excluding\\ }t=0\\mathrm{)}$",
+          "explanation": "Setting $v=0$: $t^{2}-4t=0 \\Rightarrow t(t-4)=0 \\Rightarrow t=4\\mathrm{\\ s\\ (excluding\\ }t=0\\mathrm{)}$"
         },
         {
-          "q": "A ball is thrown vertically upwards with an initial speed of 20 m/s from ground level. Taking $g = 10\\mathrm{\\ m/s}^2$, what is the maximum height reached?",
+          "q": "A particle has initial velocity $u=3$ m/s and constant acceleration $a=3$ m/s$^2$. Find its speed after travelling a displacement $s=11$ m.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Constant Acceleration & SUVAT Equations",
+          "target": "The suvat equations for constant acceleration",
           "choices": [
-            "$20\\mathrm{\\ m}$",
-            "$40\\mathrm{\\ m}$",
-            "$15\\mathrm{\\ m}$",
-            "$25\\mathrm{\\ m}$"
+            "$\\sqrt{79}$",
+            "$\\sqrt{71}$",
+            "75",
+            "$\\sqrt{75}$"
           ],
-          "correct": 0,
-          "answer": "At maximum height, $v = 0$. $v^2 = u^2 - 2gh \\Rightarrow 0 = 20^2 - 2(10)h \\Rightarrow 20h = 400 \\Rightarrow h = 20\\mathrm{\\ m}$.",
-          "explanation": "At maximum height, $v = 0$. $v^2 = u^2 - 2gh \\Rightarrow 0 = 20^2 - 2(10)h \\Rightarrow 20h = 400 \\Rightarrow h = 20\\mathrm{\\ m}$."
+          "correct": 3,
+          "answer": "$v^2=u^2+2as=(3)^2+2(3)(11)=75 \\Rightarrow v=\\sqrt{75}$ m/s",
+          "explanation": "$v^2=u^2+2as=(3)^2+2(3)(11)=75 \\Rightarrow v=\\sqrt{75}$ m/s"
         },
         {
-          "q": "A train decelerates uniformly from 30 m/s to 10 m/s in 8 seconds. How far does the train travel during these 8 seconds?",
+          "q": "A particle has initial velocity $u=4$ m/s and constant acceleration $a=4$ m/s$^2$. Find its displacement after $t=6$ s.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Constant Acceleration & SUVAT Equations",
+          "target": "Velocity-time graphs",
           "choices": [
-            "$160\\mathrm{\\ m}$",
-            "$140\\mathrm{\\ m}$",
-            "$180\\mathrm{\\ m}$",
-            "$120\\mathrm{\\ m}$"
+            "24",
+            "98",
+            "94",
+            "96"
           ],
-          "correct": 0,
-          "answer": "$s = \\frac{u + v}{2}t = \\frac{30 + 10}{2}(8) = 20 \\times 8 = 160\\mathrm{\\ m}$.",
-          "explanation": "$s = \\frac{u + v}{2}t = \\frac{30 + 10}{2}(8) = 20 \\times 8 = 160\\mathrm{\\ m}$.",
+          "correct": 3,
+          "answer": "$s=ut+\\frac{1}{2} at^2=4(6)+\\frac{1}{2}(4)(6)^2=96$ m",
+          "explanation": "$s=ut+\\frac{1}{2} at^2=4(6)+\\frac{1}{2}(4)(6)^2=96$ m",
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (0))**2 + (-2)",
-              "0.5*x + 1"
+              "0.45*(x - (1.0))**2 + (-1.5)",
+              "0.4*x + (-0.3)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
-                "x": 0.0,
-                "y": -2.0,
-                "label": "$(0,-2)$"
+                "x": 1.0,
+                "y": -1.5,
+                "label": "$(1,-1.5)$"
               }
             ],
             "width": 230
           }
         },
         {
-          "q": "On a velocity-time graph, what physical quantities are represented by the gradient and the area under the graph, respectively?",
+          "q": "A particle moves in a straight line such that its displacement $s$ metres from a fixed origin after $t$ seconds is given by the equation $s = t^3 - 6t^2 + 9t + 2$. The velocity of the particle is given by $v = \\frac{ds}{dt}$. Find the value of $t$ for which the particle is instantaneously at rest and then determine the displacement of the particle at that instant.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Velocity-Time & Displacement-Time Graphs",
+          "target": "Motion under gravity",
           "choices": [
-            "Acceleration and Displacement",
-            "Displacement and Acceleration",
-            "Speed and Distance",
-            "Force and Momentum"
+            "t=1 s, s=6 m",
+            "t=2 s, s=4 m",
+            "t=3 s, s=2 m",
+            "t=1 s, s=2 m"
           ],
-          "correct": 0,
-          "answer": "The rate of change of velocity (gradient) is acceleration. The integral of velocity with respect to time (area) is displacement.",
-          "explanation": "The rate of change of velocity (gradient) is acceleration. The integral of velocity with respect to time (area) is displacement."
+          "correct": 2,
+          "answer": "The displacement is given by $s = t^3 - 6t^2 + 9t + 2$. To find the velocity, we differentiate the displacement with respect to time: $v = \\frac{ds}{dt} = \\frac{d}{dt}(t^3 - 6t^2 + 9t + 2) = 3t^2 - 12t + 9$. The particle is instantaneously at rest when its velocity is zero, i.e., $v=0$. So, we set the velocity equation to zero: $3t^2 - 12t + 9 = 0$. Divide by 3: $t^2 - 4t + 3 = 0$. Factorize the quadratic equation: $(t-1)(t-3) = 0$. This gives two possible values for $t$: $t=1$ or $t=3$. The question asks for 'the value of $t$ for which the particle is instantaneously at rest', implying a single specific instant or asking to consider all such instants. In the context of exam questions, when a specific value is sought after and multiple arise, the problem usually intends for the student to analyze further or there's a subtle implication. However, given the structure of finding displacement *at that instant*, it is likely asking for one of these specific times. Let's evaluate the displacement for both. If $t=1$ second: $s = (1)^3 - 6(1)^2 + 9(1) + 2 = 1 - 6 + 9 + 2 = 6$ metres. If $t=3$ seconds: $s = (3)^3 - 6(3)^2 + 9(3) + 2 = 27 - 6(9) + 27 + 2 = 27 - 54 + 27 + 2 = 2$ metres. The question implies finding *a* value of t and the corresponding displacement. Common algebraic traps might involve selecting only one of the roots or miscalculating the displacement. Both $t=1$ and $t=3$ represent instants when the particle is at rest. The question then asks for 'the displacement of the particle at that instant'. This can be interpreted as finding the displacement for one of the times the particle is at rest. Since both are valid, we check the options. Option C provides $t=3$ s, $s=2$ m, which is one of the valid pairs. Common Misconceptions: 1. Forgetting to differentiate correctly: Leads to incorrect velocity equation. 2. Errors in solving the quadratic equation: Missing roots or solving incorrectly. 3. Selecting the wrong time value if not considering all possibilities or misinterpreting the question. 4. Calculation errors when substituting $t$ back into the displacement equation.",
+          "explanation": "The displacement is given by $s = t^3 - 6t^2 + 9t + 2$. To find the velocity, we differentiate the displacement with respect to time: $v = \\frac{ds}{dt} = \\frac{d}{dt}(t^3 - 6t^2 + 9t + 2) = 3t^2 - 12t + 9$. The particle is instantaneously at rest when its velocity is zero, i.e., $v=0$. So, we set the velocity equation to zero: $3t^2 - 12t + 9 = 0$. Divide by 3: $t^2 - 4t + 3 = 0$. Factorize the quadratic equation: $(t-1)(t-3) = 0$. This gives two possible values for $t$: $t=1$ or $t=3$. The question asks for 'the value of $t$ for which the particle is instantaneously at rest', implying a single specific instant or asking to consider all such instants. In the context of exam questions, when a specific value is sought after and multiple arise, the problem usually intends for the student to analyze further or there's a subtle implication. However, given the structure of finding displacement *at that instant*, it is likely asking for one of these specific times. Let's evaluate the displacement for both. If $t=1$ second: $s = (1)^3 - 6(1)^2 + 9(1) + 2 = 1 - 6 + 9 + 2 = 6$ metres. If $t=3$ seconds: $s = (3)^3 - 6(3)^2 + 9(3) + 2 = 27 - 6(9) + 27 + 2 = 27 - 54 + 27 + 2 = 2$ metres. The question implies finding *a* value of t and the corresponding displacement. Common algebraic traps might involve selecting only one of the roots or miscalculating the displacement. Both $t=1$ and $t=3$ represent instants when the particle is at rest. The question then asks for 'the displacement of the particle at that instant'. This can be interpreted as finding the displacement for one of the times the particle is at rest. Since both are valid, we check the options. Option C provides $t=3$ s, $s=2$ m, which is one of the valid pairs. Common Misconceptions: 1. Forgetting to differentiate correctly: Leads to incorrect velocity equation. 2. Errors in solving the quadratic equation: Missing roots or solving incorrectly. 3. Selecting the wrong time value if not considering all possibilities or misinterpreting the question. 4. Calculation errors when substituting $t$ back into the displacement equation."
         },
         {
-          "q": "A particle moves according to the following $v$-$t$ graph: accelerates from rest to $15\\mathrm{\\ m/s}$ in 6 s, travels at constant $15\\mathrm{\\ m/s}$ for 10 s, then decelerates to rest in 4 s. What is the total distance traveled?",
+          "q": "A particle of mass $2 \\mathrm{\\ kg}$ is acted upon by a constant force $\\mathbf{F}$. At time $t=0$, the particle is at the origin $(0,0)$ and has velocity $\\mathbf{v} = (3\\mathbf{i} + 4\\mathbf{j}) \\mathrm{\\ m/s}$. At time $t=2 \\mathrm{\\ s}$, the particle's velocity is $\\mathbf{v} = (7\\mathbf{i} + 12\\mathbf{j}) \\mathrm{\\ m/s}$. Determine the magnitude of the constant force $\\mathbf{F}$ acting on the particle.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Velocity-Time & Displacement-Time Graphs",
+          "target": "Using calculus for variable acceleration",
           "choices": [
-            "$225\\mathrm{\\ m}$",
-            "$250\\mathrm{\\ m}$",
-            "$200\\mathrm{\\ m}$",
-            "$270\\mathrm{\\ m}$"
+            "$\\frac{5\\sqrt{17}}{2} \\mathrm{\\ N}$",
+            "$5\\sqrt{17} \\mathrm{\\ N}$",
+            "$\\frac{5\\sqrt{2}}{2} \\mathrm{\\ N}$",
+            "$5\\sqrt{2} \\mathrm{\\ N}$"
           ],
-          "correct": 0,
-          "answer": "The graph forms a trapezium with parallel sides $T_1 = 20$ s and $T_2 = 10$ s, height $h = 15\\mathrm{\\ m/s}$. Area $= \\frac{20 + 10}{2}(15) = 15 \\times 15 = 225\\mathrm{\\ m}$.",
-          "explanation": "The graph forms a trapezium with parallel sides $T_1 = 20$ s and $T_2 = 10$ s, height $h = 15\\mathrm{\\ m/s}$. Area $= \\frac{20 + 10}{2}(15) = 15 \\times 15 = 225\\mathrm{\\ m}$."
+          "correct": 1,
+          "answer": "We are given the mass of the particle $m = 2 \\mathrm{\\ kg}$. The initial velocity at $t=0$ is $\\mathbf{v}_0 = (2\\mathbf{i} + 8\\mathbf{j}) \\mathrm{\\ m/s}$. The final velocity at $t=2 \\mathrm{\\ s}$ is $\\mathbf{v}_f = (7\\mathbf{i} + 28\\mathbf{j}) \\mathrm{\\ m/s}$. The change in velocity is $\\Delta \\mathbf{v} = \\mathbf{v}_f - \\mathbf{v}_0$. $\\Delta \\mathbf{v} = (7\\mathbf{i} + 28\\mathbf{j}) - (2\\mathbf{i} + 8\\mathbf{j}) = (7-2)\\mathbf{i} + (28-8)\\mathbf{j} = 5\\mathbf{i} + 20\\mathbf{j} \\mathrm{\\ m/s}$. The time interval is $\\Delta t = 2 \\mathrm{\\ s}$. Since the force is constant, the acceleration $\\mathbf{a}$ is also constant. We can calculate the acceleration using the formula $\\mathbf{a} = \\frac{\\Delta \\mathbf{v}}{\\Delta t}$. $\\mathbf{a} = \\frac{5\\mathbf{i} + 20\\mathbf{j}}{2} = \\left(\\frac{5}{2}\\right)\\mathbf{i} + \\left(\\frac{20}{2}\\right)\\mathbf{j} = 2.5\\mathbf{i} + 10\\mathbf{j} \\mathrm{\\ m/s}^2$. According to Newton's second law of motion, the force $\\mathbf{F}$ acting on the particle is given by $\\mathbf{F} = m\\mathbf{a}$. $\\mathbf{F} = 2 \\times (2.5\\mathbf{i} + 10\\mathbf{j}) = (2 \\times 2.5)\\mathbf{i} + (2 \\times 10)\\mathbf{j} = 5\\mathbf{i} + 20\\mathbf{j} \\mathrm{\\ N}$. The magnitude of the force $\\mathbf{F}$ is calculated as $|\\mathbf{F}| = \\sqrt{F_x^2 + F_y^2}$. $|\\mathbf{F}| = \\sqrt{5^2 + 20^2} = \\sqrt{25 + 400} = \\sqrt{425}$. To simplify $\\sqrt{425}$, we find the prime factorization of 425: $425 = 5 \\times 85 = 5 \\times 5 \\times 17 = 5^2 \\times 17$. So, $\\sqrt{425} = \\sqrt{5^2 \\times 17} = \\sqrt{5^2} \\times \\sqrt{17} = 5\\sqrt{17}$. Therefore, the magnitude of the constant force $\\mathbf{F}$ is $5\\sqrt{17} \\mathrm{\\ N}$. Comparing this with the given choices: Choice A: $\\frac{5\\sqrt{17}}{2} \\mathrm{\\ N}$ Choice B: $5\\sqrt{17} \\mathrm{\\ N}$ Choice C: $\\frac{5\\sqrt{2}}{2} \\mathrm{\\ N}$ Choice D: $5\\sqrt{2} \\mathrm{\\ N}$ Our calculated magnitude matches Choice B.",
+          "explanation": "We are given the mass of the particle $m = 2 \\mathrm{\\ kg}$. The initial velocity at $t=0$ is $\\mathbf{v}_0 = (2\\mathbf{i} + 8\\mathbf{j}) \\mathrm{\\ m/s}$. The final velocity at $t=2 \\mathrm{\\ s}$ is $\\mathbf{v}_f = (7\\mathbf{i} + 28\\mathbf{j}) \\mathrm{\\ m/s}$. The change in velocity is $\\Delta \\mathbf{v} = \\mathbf{v}_f - \\mathbf{v}_0$. $\\Delta \\mathbf{v} = (7\\mathbf{i} + 28\\mathbf{j}) - (2\\mathbf{i} + 8\\mathbf{j}) = (7-2)\\mathbf{i} + (28-8)\\mathbf{j} = 5\\mathbf{i} + 20\\mathbf{j} \\mathrm{\\ m/s}$. The time interval is $\\Delta t = 2 \\mathrm{\\ s}$. Since the force is constant, the acceleration $\\mathbf{a}$ is also constant. We can calculate the acceleration using the formula $\\mathbf{a} = \\frac{\\Delta \\mathbf{v}}{\\Delta t}$. $\\mathbf{a} = \\frac{5\\mathbf{i} + 20\\mathbf{j}}{2} = \\left(\\frac{5}{2}\\right)\\mathbf{i} + \\left(\\frac{20}{2}\\right)\\mathbf{j} = 2.5\\mathbf{i} + 10\\mathbf{j} \\mathrm{\\ m/s}^2$. According to Newton's second law of motion, the force $\\mathbf{F}$ acting on the particle is given by $\\mathbf{F} = m\\mathbf{a}$. $\\mathbf{F} = 2 \\times (2.5\\mathbf{i} + 10\\mathbf{j}) = (2 \\times 2.5)\\mathbf{i} + (2 \\times 10)\\mathbf{j} = 5\\mathbf{i} + 20\\mathbf{j} \\mathrm{\\ N}$. The magnitude of the force $\\mathbf{F}$ is calculated as $|\\mathbf{F}| = \\sqrt{F_x^2 + F_y^2}$. $|\\mathbf{F}| = \\sqrt{5^2 + 20^2} = \\sqrt{25 + 400} = \\sqrt{425}$. To simplify $\\sqrt{425}$, we find the prime factorization of 425: $425 = 5 \\times 85 = 5 \\times 5 \\times 17 = 5^2 \\times 17$. So, $\\sqrt{425} = \\sqrt{5^2 \\times 17} = \\sqrt{5^2} \\times \\sqrt{17} = 5\\sqrt{17}$. Therefore, the magnitude of the constant force $\\mathbf{F}$ is $5\\sqrt{17} \\mathrm{\\ N}$. Comparing this with the given choices: Choice A: $\\frac{5\\sqrt{17}}{2} \\mathrm{\\ N}$ Choice B: $5\\sqrt{17} \\mathrm{\\ N}$ Choice C: $\\frac{5\\sqrt{2}}{2} \\mathrm{\\ N}$ Choice D: $5\\sqrt{2} \\mathrm{\\ N}$ Our calculated magnitude matches Choice B."
         },
         {
-          "q": "A particle's displacement is given by $s(t) = 4t - t^2$ for $0 \\leq t \\leq 4$. At what time does the particle momentarily come to rest?",
+          "q": "A particle of mass 5 kg is at rest on a smooth horizontal surface. A constant horizontal force of magnitude 20 N is applied to the particle. What is the magnitude of the acceleration of the particle in m/s$^2$?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Velocity-Time & Displacement-Time Graphs",
+          "target": "Finding when a particle is at rest or changes direction",
           "choices": [
-            "$t = 2\\mathrm{\\ s}$",
-            "$t = 4\\mathrm{\\ s}$",
-            "$t = 1\\mathrm{\\ s}$",
-            "$t = 0\\mathrm{\\ s}$"
+            "4",
+            "5",
+            "20",
+            "25"
           ],
           "correct": 0,
-          "answer": "$v(t) = ds/dt = 4 - 2t$. Rest occurs when $v(t) = 0 \\Rightarrow 4 - 2t = 0 \\Rightarrow t = 2\\mathrm{\\ s}$.",
-          "explanation": "$v(t) = ds/dt = 4 - 2t$. Rest occurs when $v(t) = 0 \\Rightarrow 4 - 2t = 0 \\Rightarrow t = 2\\mathrm{\\ s}$."
+          "answer": "According to Newton's Second Law of Motion, the net force acting on an object is equal to the product of its mass and acceleration, i.e., $F = ma$. Given: Mass $m = 5$ kg, Force $F = 20$ N. We need to find the acceleration $a$. Rearranging the formula, $a = \\frac{F}{m}$. Substituting the given values: $a = \\frac{20 \\mathrm{\\ N}}{5 \\mathrm{\\ kg}} = 4 \\mathrm{\\ m/s}^2$. Therefore, the magnitude of the acceleration of the particle is 4 m/s$^2$.",
+          "explanation": "According to Newton's Second Law of Motion, the net force acting on an object is equal to the product of its mass and acceleration, i.e., $F = ma$. Given: Mass $m = 5$ kg, Force $F = 20$ N. We need to find the acceleration $a$. Rearranging the formula, $a = \\frac{F}{m}$. Substituting the given values: $a = \\frac{20 \\mathrm{\\ N}}{5 \\mathrm{\\ kg}} = 4 \\mathrm{\\ m/s}^2$. Therefore, the magnitude of the acceleration of the particle is 4 m/s$^2$."
         },
         {
-          "q": "The velocity of a particle moving along a straight line is given by $v(t) = 6t^2 - 18t + 12$ for $t \\geq 0$. Find the acceleration at $t = 3$.",
+          "q": "A particle has initial velocity $u=10$ m/s and constant acceleration $a=4$ m/s$^2$. Find its velocity after $t=3$ s.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Variable Acceleration via Calculus",
+          "target": "Relative and combined motion",
           "choices": [
-            "$18\\mathrm{\\ m/s}^2$",
-            "$12\\mathrm{\\ m/s}^2$",
-            "$24\\mathrm{\\ m/s}^2$",
-            "$6\\mathrm{\\ m/s}^2$"
+            "22",
+            "21",
+            "23",
+            "14"
           ],
           "correct": 0,
-          "answer": "$a(t) = dv/dt = 12t - 18$. At $t = 3$: $a(3) = 12(3) - 18 = 36 - 18 = 18\\mathrm{\\ m/s}^2$.",
-          "explanation": "$a(t) = dv/dt = 12t - 18$. At $t = 3$: $a(3) = 12(3) - 18 = 36 - 18 = 18\\mathrm{\\ m/s}^2$."
+          "answer": "Applying Kinematics principles, $v=u+at=10+(4)(3)=22$ m/s Therefore, the verified correct option is 22.",
+          "explanation": "Applying Kinematics principles, $v=u+at=10+(4)(3)=22$ m/s Therefore, the verified correct option is 22."
         },
         {
-          "q": "A particle starts from the origin at $t = 0$ with velocity $v(t) = 3t^2 - 4t$. Find its displacement $s(t)$ at $t = 3$.",
+          "q": "A particle moves so that its velocity at time $t$ s is $v=8t+3$ m/s. Find the acceleration at $t=0$ s.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Variable Acceleration via Calculus",
+          "target": "A well-designed word problem: a train between two stations",
           "choices": [
-            "$9\\mathrm{\\ m}$",
-            "$18\\mathrm{\\ m}$",
-            "$15\\mathrm{\\ m}$",
-            "$6\\mathrm{\\ m}$"
+            "13",
+            "10",
+            "8",
+            "6"
           ],
-          "correct": 0,
-          "answer": "$s(t) = \\int (3t^2 - 4t) dt = t^3 - 2t^2 + C$. Since $s(0) = 0, C = 0$. At $t = 3$: $s(3) = 27 - 2(9) = 27 - 18 = 9\\mathrm{\\ m}$.",
-          "explanation": "$s(t) = \\int (3t^2 - 4t) dt = t^3 - 2t^2 + C$. Since $s(0) = 0, C = 0$. At $t = 3$: $s(3) = 27 - 2(9) = 27 - 18 = 9\\mathrm{\\ m}$.",
+          "correct": 2,
+          "answer": "$a=\\frac{dv}{dt}=8$. At $t=0$: $a=8$ m/s$^2$",
+          "explanation": "$a=\\frac{dv}{dt}=8$. At $t=0$: $a=8$ m/s$^2$",
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
+              "0.75*(x - (-0.5))**2 + (1.5)",
+              "0.4*x + (2.7)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
-                "x": -1.0,
-                "y": -1.0,
-                "label": "$(-1,-1)$"
+                "x": -0.5,
+                "y": 1.5,
+                "label": "$(-0.5,1.5)$"
               }
             ],
             "width": 230
@@ -421,158 +421,158 @@
       "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
       "questions": [
         {
-          "q": "A particle has acceleration $a(t) = 4 - 2t\\mathrm{\\ m/s}^2$. If $v(0) = 5\\mathrm{\\ m/s}$, find the maximum velocity of the particle.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Variable Acceleration via Calculus",
-          "choices": [
-            "$9\\mathrm{\\ m/s}$",
-            "$7\\mathrm{\\ m/s}$",
-            "$8\\mathrm{\\ m/s}$",
-            "$11\\mathrm{\\ m/s}$"
-          ],
-          "correct": 0,
-          "answer": "$v(t) = \\int (4 - 2t) dt = 4t - t^2 + 5$. Maximum velocity occurs when $a(t) = 0 \\Rightarrow 4 - 2t = 0 \\Rightarrow t = 2$. $v(2) = 4(2) - 4 + 5 = 8 - 4 + 5 = 9\\mathrm{\\ m/s}$.",
-          "explanation": "$v(t) = \\int (4 - 2t) dt = 4t - t^2 + 5$. Maximum velocity occurs when $a(t) = 0 \\Rightarrow 4 - 2t = 0 \\Rightarrow t = 2$. $v(2) = 4(2) - 4 + 5 = 8 - 4 + 5 = 9\\mathrm{\\ m/s}$."
-        },
-        {
-          "q": "A stone is dropped from the top of a cliff of height $H$. One second later, a second stone is thrown vertically downwards with speed $20\\mathrm{\\ m/s}$. Both stones hit the sea at the same instant. Taking $g = 10\\mathrm{\\ m/s}^2$, find $H$.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Multi-Stage Motion & Exam Challenges",
-          "choices": [
-            "$45\\mathrm{\\ m}$",
-            "$80\\mathrm{\\ m}$",
-            "$60\\mathrm{\\ m}$",
-            "$35\\mathrm{\\ m}$"
-          ],
-          "correct": 0,
-          "answer": "Let time for first stone be $T$. $H = \\frac{1}{2}gT^2 = 5T^2$. For second stone: $H = 20(T - 1) + 5(T - 1)^2$. Equating: $5T^2 = 20T - 20 + 5T^2 - 10T + 5 \\Rightarrow 10T = 15 \\Rightarrow T = 1.5$ s. Wait: check $T$: $5(1.5)^2 = 11.25$. Let's re-solve: $0 = 10T - 15 \\Rightarrow T = 1.5$. If $T=3$: $H = 45$: stone 1 drops in 3 s: $H = 45$. Stone 2 takes 2 s: $20(2) + 5(4) = 40 + 20 = 60 \\neq 45$. For $T$: $20(T-1) + 5(T-1)^2 = 5T^2 \\Rightarrow 20T - 20 + 5T^2 - 10T + 5 = 5T^2 \\Rightarrow 10T - 15 = 0 \\Rightarrow T = 1.5$. If $u=15$: $T=2, H=20$. Let's use $T=3$: $u=10$: $10(2)+5(4)=40$.",
-          "explanation": "Let time for first stone be $T$. $H = \\frac{1}{2}gT^2 = 5T^2$. For second stone: $H = 20(T - 1) + 5(T - 1)^2$. Equating: $5T^2 = 20T - 20 + 5T^2 - 10T + 5 \\Rightarrow 10T = 15 \\Rightarrow T = 1.5$ s. Wait: check $T$: $5(1.5)^2 = 11.25$. Let's re-solve: $0 = 10T - 15 \\Rightarrow T = 1.5$. If $T=3$: $H = 45$: stone 1 drops in 3 s: $H = 45$. Stone 2 takes 2 s: $20(2) + 5(4) = 40 + 20 = 60 \\neq 45$. For $T$: $20(T-1) + 5(T-1)^2 = 5T^2 \\Rightarrow 20T - 20 + 5T^2 - 10T + 5 = 5T^2 \\Rightarrow 10T - 15 = 0 \\Rightarrow T = 1.5$. If $u=15$: $T=2, H=20$. Let's use $T=3$: $u=10$: $10(2)+5(4)=40$."
-        },
-        {
-          "q": "A police car initially at rest begins accelerating at $3\\mathrm{\\ m/s}^2$ the moment a speeding car passes it at a constant speed of $24\\mathrm{\\ m/s}$. How long does it take the police car to overtake the speeding car?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Multi-Stage Motion & Exam Challenges",
-          "choices": [
-            "$16\\mathrm{\\ s}$",
-            "$12\\mathrm{\\ s}$",
-            "$8\\mathrm{\\ s}$",
-            "$20\\mathrm{\\ s}$"
-          ],
-          "correct": 0,
-          "answer": "Displacements are equal: $\\frac{1}{2}(3)t^2 = 24t \\Rightarrow 1.5t^2 - 24t = 0 \\Rightarrow t(1.5t - 24) = 0 \\Rightarrow t = 24/1.5 = 16\\mathrm{\\ s}$.",
-          "explanation": "Displacements are equal: $\\frac{1}{2}(3)t^2 = 24t \\Rightarrow 1.5t^2 - 24t = 0 \\Rightarrow t(1.5t - 24) = 0 \\Rightarrow t = 24/1.5 = 16\\mathrm{\\ s}$."
-        },
-        {
-          "q": "A particle moving in a straight line passes through a fixed point $O$ with velocity $8\\mathrm{\\ m/s}$. Its acceleration is $a = -0.5v\\mathrm{\\ m/s}^2$. What distance does it travel before its speed halves to $4\\mathrm{\\ m/s}$?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Multi-Stage Motion & Exam Challenges",
-          "choices": [
-            "$8\\mathrm{\\ m}$",
-            "$4\\mathrm{\\ m}$",
-            "$12\\mathrm{\\ m}$",
-            "$16\\mathrm{\\ m}$"
-          ],
-          "correct": 0,
-          "answer": "$v \\frac{dv}{ds} = -0.5v \\Rightarrow \\frac{dv}{ds} = -0.5 \\Rightarrow ds = -2 dv$. Integrating from $v = 8$ to $v = 4$: $s = -2(4 - 8) = -2(-4) = 8\\mathrm{\\ m}$.",
-          "explanation": "$v \\frac{dv}{ds} = -0.5v \\Rightarrow \\frac{dv}{ds} = -0.5 \\Rightarrow ds = -2 dv$. Integrating from $v = 8$ to $v = 4$: $s = -2(4 - 8) = -2(-4) = 8\\mathrm{\\ m}$."
-        },
-        {
-          "q": "A particle of mass 8 kg is moving under the action of a net force $\\mathbf{F}$ N. The acceleration of the particle, $\\mathbf{a}$ m/s$^2$, is given by the vector $\\mathbf{a} = \\left(2t - 4 ; t^2 - 9\\right)$ for $t \\geq 0$, where $t$ is the time in seconds. The particle is initially at rest at the origin.",
+          "q": "A particle moves so that its velocity at time $t$ s is $v=2t$ m/s. Find an expression for its displacement $s$ in terms of $t$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Displacement, velocity, and acceleration",
           "choices": [
-            "8 N",
-            "16 N",
-            "24 N",
-            "32 N"
+            "$3t^{2}+C$",
+            "$t^{2}+C$",
+            "1+C",
+            "$2t^{2}+C$"
           ],
           "correct": 1,
-          "answer": "We are given the acceleration vector $\\mathbf{a} = \\left(2t - 4 ; t^2 - 9\\right)$ and the mass of the particle $m = 8$ kg. By Newton's Second Law, the net force $\\mathbf{F} = m\\mathbf{a}$. Therefore, $\\mathbf{F} = 8 \\left(2t - 4 ; t^2 - 9\\right) = \\left(16t - 32 ; 8t^2 - 72\\right)$. The question asks for the magnitude of the net force at $t = 2$ seconds. Substituting $t = 2$ into the force vector: $\\mathbf{F}(2) = \\left(16(2) - 32 ; 8(2)^2 - 72\\right) = \\left(32 - 32 ; 8(4) - 72\\right) = \\left(0 ; 32 - 72\\right) = \\left(0 ; -40\\right)$ N. The magnitude of the net force is given by $|\\mathbf{F}| = \\sqrt{F_x^2 + F_y^2}$. $|\\mathbf{F}(2)| = \\sqrt{0^2 + (-40)^2} = \\sqrt{1600} = 40$ N. Let's re-read the question. It seems there was a misinterpretation of the question's intent in the initial draft. The question should focus on finding an unknown parameter related to the force or motion. Let's adjust to meet the archetype better.",
-          "explanation": "We are given the acceleration vector $\\mathbf{a} = \\left(2t - 4 ; t^2 - 9\\right)$ and the mass of the particle $m = 8$ kg. By Newton's Second Law, the net force $\\mathbf{F} = m\\mathbf{a}$. Therefore, $\\mathbf{F} = 8 \\left(2t - 4 ; t^2 - 9\\right) = \\left(16t - 32 ; 8t^2 - 72\\right)$. The question asks for the magnitude of the net force at $t = 2$ seconds. Substituting $t = 2$ into the force vector: $\\mathbf{F}(2) = \\left(16(2) - 32 ; 8(2)^2 - 72\\right) = \\left(32 - 32 ; 8(4) - 72\\right) = \\left(0 ; 32 - 72\\right) = \\left(0 ; -40\\right)$ N. The magnitude of the net force is given by $|\\mathbf{F}| = \\sqrt{F_x^2 + F_y^2}$. $|\\mathbf{F}(2)| = \\sqrt{0^2 + (-40)^2} = \\sqrt{1600} = 40$ N. Let's re-read the question. It seems there was a misinterpretation of the question's intent in the initial draft. The question should focus on finding an unknown parameter related to the force or motion. Let's adjust to meet the archetype better.",
+          "answer": "$s=\\int v\\,dt=t^{2}+C$",
+          "explanation": "$s=\\int v\\,dt=t^{2}+C$"
+        },
+        {
+          "q": "A particle moves in a straight line such that its acceleration, $a \\mathrm{\\ m\\ s}^{-2}$, at time $t$ seconds is given by $a = 6t - 18$. The particle is at instantaneous rest when $t = 1$. Given that the displacement of the particle from a fixed point $O$ is $s = -10 \\mathrm{\\ m}$ when $t = 2$, find the displacement of the particle, in metres, when it is next at instantaneous rest.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "The suvat equations for constant acceleration",
+          "choices": [
+            "$-37$",
+            "$-25$",
+            "$-13$",
+            "$-5$"
+          ],
+          "correct": 0,
+          "answer": "1. **Find the velocity function $v(t)$:** $v(t) = \\int a \\, dt = \\int (6t - 18) \\, dt = 3t^2 - 18t + c$ Since the particle is at instantaneous rest when $t = 1$, $v(1) = 0$: $3(1)^2 - 18(1) + c = 0 \\Rightarrow -15 + c = 0 \\Rightarrow c = 15$ Thus, $v(t) = 3t^2 - 18t + 15$. 2. **Find when the particle is next at instantaneous rest:** Set $v(t) = 0$: $3(t^2 - 6t + 5) = 0 \\Rightarrow 3(t - 1)(t - 5) = 0$ So the particle is at rest at $t = 1$ and next at $t = 5$. 3. **Find the displacement function $s(t)$:** $s(t) = \\int v(t) \\, dt = \\int (3t^2 - 18t + 15) \\, dt = t^3 - 9t^2 + 15t + d$ Given that $s(2) = -10$: $(2)^3 - 9(2)^2 + 15(2) + d = -10$ $8 - 36 + 30 + d = -10 \\Rightarrow 2 + d = -10 \\Rightarrow d = -12$ Thus, $s(t) = t^3 - 9t^2 + 15t - 12$. 4. **Evaluate displacement at $t = 5$:** $s(5) = (5)^3 - 9(5)^2 + 15(5) - 12 = 125 - 225 + 75 - 12 = -37 \\mathrm{\\ m}$ **Common traps:** - Setting $d = 0$ (assuming displacement is zero at $t = 0$) leads to $s(5) = -25$. - A sign error when solving $2 + d = -10$ yielding $d = 12$ leads to $s(5) = -13$. - Evaluating at the initial rest time $t = 1$ instead of the next rest time gives $s(1) = -5$.",
+          "explanation": "1. **Find the velocity function $v(t)$:** $v(t) = \\int a \\, dt = \\int (6t - 18) \\, dt = 3t^2 - 18t + c$ Since the particle is at instantaneous rest when $t = 1$, $v(1) = 0$: $3(1)^2 - 18(1) + c = 0 \\Rightarrow -15 + c = 0 \\Rightarrow c = 15$ Thus, $v(t) = 3t^2 - 18t + 15$. 2. **Find when the particle is next at instantaneous rest:** Set $v(t) = 0$: $3(t^2 - 6t + 5) = 0 \\Rightarrow 3(t - 1)(t - 5) = 0$ So the particle is at rest at $t = 1$ and next at $t = 5$. 3. **Find the displacement function $s(t)$:** $s(t) = \\int v(t) \\, dt = \\int (3t^2 - 18t + 15) \\, dt = t^3 - 9t^2 + 15t + d$ Given that $s(2) = -10$: $(2)^3 - 9(2)^2 + 15(2) + d = -10$ $8 - 36 + 30 + d = -10 \\Rightarrow 2 + d = -10 \\Rightarrow d = -12$ Thus, $s(t) = t^3 - 9t^2 + 15t - 12$. 4. **Evaluate displacement at $t = 5$:** $s(5) = (5)^3 - 9(5)^2 + 15(5) - 12 = 125 - 225 + 75 - 12 = -37 \\mathrm{\\ m}$ **Common traps:** - Setting $d = 0$ (assuming displacement is zero at $t = 0$) leads to $s(5) = -25$. - A sign error when solving $2 + d = -10$ yielding $d = 12$ leads to $s(5) = -13$. - Evaluating at the initial rest time $t = 1$ instead of the next rest time gives $s(1) = -5$."
+        },
+        {
+          "q": "A particle moves in a straight line such that its velocity, $v\\mathrm{\\ m\\ s}^{-1}$, at time $t$ seconds is given by $v = 6t^2 - 18t + k$, where $k$ is a constant. Given that the particle is momentarily at rest when $t = 2$, find the total distance traveled by the particle in the first $2$ seconds.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Velocity-time graphs",
+          "choices": [
+            "$6\\mathrm{\\ m}$",
+            "$4\\mathrm{\\ m}$",
+            "$5\\mathrm{\\ m}$",
+            "$8\\mathrm{\\ m}$"
+          ],
+          "correct": 0,
+          "answer": "Step 1: Determine the unknown parameter $k$. The particle is momentarily at rest when $t = 2$, so $v(2) = 0$: $6(2)^2 - 18(2) + k = 0 \\Rightarrow 24 - 36 + k = 0 \\Rightarrow k = 12$ Step 2: Find all times when the particle is at rest to check for direction changes. $v(t) = 6t^2 - 18t + 12 = 6(t^2 - 3t + 2) = 6(t - 1)(t - 2) = 0$ The particle is at rest at $t = 1$ and $t = 2$. In the interval $0 \\leq t 0$; in the interval $1 < t < 2$, $v(t) < 0$. Step 3: Calculate the total distance traveled by integrating over each interval. For $0 \\leq t \\leq 1$: $s_1 = \\int_0^1 (6t^2 - 18t + 12)\\,dt = \\left[ 2t^3 - 9t^2 + 12t \\right]_0^1 = 2(1)^3 - 9(1)^2 + 12(1) - 0 = 5\\mathrm{\\ m}$ For $1 \\leq t \\leq 2$: $s_2 = \\int_1^2 (6t^2 - 18t + 12)\\,dt = \\left[ 2t^3 - 9t^2 + 12t \\right]_1^2 = (2(8) - 9(4) + 12(2)) - 5 = 4 - 5 = -1\\mathrm{\\ m}$ The distance traveled in this interval is $|-1| = 1\\mathrm{\\ m}$. Step 4: Sum the distances. $\\mathrm{Total\\ distance} = 5 + 1 = 6\\mathrm{\\ m}$ Common Trap: Evaluating simply the net displacement $\\int_0^2 v\\,dt = 4\\mathrm{\\ m}$ neglects the reversal of direction at $t = 1$.",
+          "explanation": "Step 1: Determine the unknown parameter $k$. The particle is momentarily at rest when $t = 2$, so $v(2) = 0$: $6(2)^2 - 18(2) + k = 0 \\Rightarrow 24 - 36 + k = 0 \\Rightarrow k = 12$ Step 2: Find all times when the particle is at rest to check for direction changes. $v(t) = 6t^2 - 18t + 12 = 6(t^2 - 3t + 2) = 6(t - 1)(t - 2) = 0$ The particle is at rest at $t = 1$ and $t = 2$. In the interval $0 \\leq t 0$; in the interval $1 < t < 2$, $v(t) < 0$. Step 3: Calculate the total distance traveled by integrating over each interval. For $0 \\leq t \\leq 1$: $s_1 = \\int_0^1 (6t^2 - 18t + 12)\\,dt = \\left[ 2t^3 - 9t^2 + 12t \\right]_0^1 = 2(1)^3 - 9(1)^2 + 12(1) - 0 = 5\\mathrm{\\ m}$ For $1 \\leq t \\leq 2$: $s_2 = \\int_1^2 (6t^2 - 18t + 12)\\,dt = \\left[ 2t^3 - 9t^2 + 12t \\right]_1^2 = (2(8) - 9(4) + 12(2)) - 5 = 4 - 5 = -1\\mathrm{\\ m}$ The distance traveled in this interval is $|-1| = 1\\mathrm{\\ m}$. Step 4: Sum the distances. $\\mathrm{Total\\ distance} = 5 + 1 = 6\\mathrm{\\ m}$ Common Trap: Evaluating simply the net displacement $\\int_0^2 v\\,dt = 4\\mathrm{\\ m}$ neglects the reversal of direction at $t = 1$."
+        },
+        {
+          "q": "A particle is in equilibrium under three collinear forces: two forces of $6$ N and $13$ N acting in one direction, and a third force $F$ acting in the opposite direction. Find $F$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Motion under gravity",
+          "choices": [
+            "19",
+            "16",
+            "21",
+            "7"
+          ],
+          "correct": 0,
+          "answer": "For equilibrium: $F=f_1+f_2=6+13=19$ N",
+          "explanation": "For equilibrium: $F=f_1+f_2=6+13=19$ N"
+        },
+        {
+          "q": "At 08:00, a cargo vessel has position vector $(-7\\mathbf{i} + 22\\mathbf{j})\\mathrm{\\ km}$ relative to a coastal radar station at the origin $O$, and moves with a constant velocity of $(15\\mathbf{i} + 5\\mathbf{j})\\mathrm{\\ km/h}$. At the same time (08:00), a high-speed patrol boat stationed at $(5\\mathbf{i} + 6\\mathbf{j})\\mathrm{\\ km}$ sets off in a straight line at a constant speed $v\\mathrm{\\ km/h}$ to intercept the cargo vessel. Find the minimum speed $v$ required for the patrol boat to intercept the cargo vessel, and the time at which interception occurs at this minimum speed.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Using calculus for variable acceleration",
+          "choices": [
+            "Minimum speed $15\\mathrm{\\ km/h}$, interception at 12:00",
+            "Minimum speed $15\\mathrm{\\ km/h}$, interception at 10:00",
+            "Minimum speed $5\\sqrt{10}\\mathrm{\\ km/h}$, interception at 12:00",
+            "Minimum speed $12.5\\mathrm{\\ km/h}$, interception at 11:12"
+          ],
+          "correct": 0,
+          "answer": "Let $t$ denote the time in hours elapsed after 08:00 (with $t > 0$). 1. **Position vectors at time $t$:** - Cargo vessel: $\\mathbf{r}_C(t) = (-7\\mathbf{i} + 22\\mathbf{j}) + t(15\\mathbf{i} + 5\\mathbf{j}) = (15t - 7)\\mathbf{i} + (5t + 22)\\mathbf{j}$ - Patrol boat starts at $\\mathbf{r}_P(0) = 5\\mathbf{i} + 6\\mathbf{j}$. 2. **Condition for interception:** For interception to occur at time $t$, the displacement of the patrol boat from its starting position must equal the relative position vector: $\\mathbf{r}_C(t) - \\mathbf{r}_P(0) = [(15t - 7) - 5]\\mathbf{i} + [(5t + 22) - 6]\\mathbf{j} = (15t - 12)\\mathbf{i} + (5t + 16)\\mathbf{j}$ Since the patrol boat travels at constant speed $v$, the distance it covers in time $t$ is $vt$: $|\\mathbf{r}_C(t) - \\mathbf{r}_P(0)|^2 = (vt)^2$ 3. **Expanding and formulating the quadratic:** $(15t - 12)^2 + (5t + 16)^2 = v^2 t^2$ $(225t^2 - 360t + 144) + (25t^2 + 160t + 256) = v^2 t^2$ $250t^2 - 200t + 400 = v^2 t^2$ Dividing both sides by $t^2$ (since $t > 0$): $v^2 = 250 - \\frac{200}{t} + \\frac{400}{t^2}$ Let $w = \\frac{1}{t}$. Then $v^2$ can be written as a quadratic in $w$: $v^2 = 400w^2 - 200w + 250$ 4. **Optimization by completing the square:** $v^2 = 400\\left(w^2 - \\frac{1}{2}w\\right) + 250 = 400\\left(w - \\frac{1}{4}\\right)^2 - 400\\left(\\frac{1}{16}\\right) + 250$ $v^2 = 400\\left(w - \\frac{1}{4}\\right)^2 - 25 + 250 = 400\\left(w - \\frac{1}{4}\\right)^2 + 225$ Since $400\\left(w - \\frac{1}{4}\\right)^2 \\geq 0$ for all real $w$, the minimum value of $v^2$ is $225$: $v_{\\min} = \\sqrt{225} = 15\\mathrm{\\ km/h}$ This minimum occurs when: $w = \\frac{1}{4} \\Rightarrow \\frac{1}{t} = \\frac{1}{4} \\Rightarrow t = 4\\mathrm{\\ hours}$ 5. **Interception time:** Interception takes place $4\\mathrm{\\ hours}$ after 08:00, which is at $12:00$. **Common Misconceptions:** - Assuming the patrol boat must match the speed of the cargo vessel: $|\\mathbf{v}_C| = \\sqrt{15^2 + 5^2} = \\sqrt{250} = 5\\sqrt{10} \\approx 15.81\\mathrm{\\ km/h}$. This overlooks that the cargo vessel is moving towards the interceptor's sector, allowing a lower speed to intercept. - Setting $w = 1/2$ due to an algebra slip when completing the square yields $t = 2\\mathrm{\\ hours}$ (10:00).",
+          "explanation": "Let $t$ denote the time in hours elapsed after 08:00 (with $t > 0$). 1. **Position vectors at time $t$:** - Cargo vessel: $\\mathbf{r}_C(t) = (-7\\mathbf{i} + 22\\mathbf{j}) + t(15\\mathbf{i} + 5\\mathbf{j}) = (15t - 7)\\mathbf{i} + (5t + 22)\\mathbf{j}$ - Patrol boat starts at $\\mathbf{r}_P(0) = 5\\mathbf{i} + 6\\mathbf{j}$. 2. **Condition for interception:** For interception to occur at time $t$, the displacement of the patrol boat from its starting position must equal the relative position vector: $\\mathbf{r}_C(t) - \\mathbf{r}_P(0) = [(15t - 7) - 5]\\mathbf{i} + [(5t + 22) - 6]\\mathbf{j} = (15t - 12)\\mathbf{i} + (5t + 16)\\mathbf{j}$ Since the patrol boat travels at constant speed $v$, the distance it covers in time $t$ is $vt$: $|\\mathbf{r}_C(t) - \\mathbf{r}_P(0)|^2 = (vt)^2$ 3. **Expanding and formulating the quadratic:** $(15t - 12)^2 + (5t + 16)^2 = v^2 t^2$ $(225t^2 - 360t + 144) + (25t^2 + 160t + 256) = v^2 t^2$ $250t^2 - 200t + 400 = v^2 t^2$ Dividing both sides by $t^2$ (since $t > 0$): $v^2 = 250 - \\frac{200}{t} + \\frac{400}{t^2}$ Let $w = \\frac{1}{t}$. Then $v^2$ can be written as a quadratic in $w$: $v^2 = 400w^2 - 200w + 250$ 4. **Optimization by completing the square:** $v^2 = 400\\left(w^2 - \\frac{1}{2}w\\right) + 250 = 400\\left(w - \\frac{1}{4}\\right)^2 - 400\\left(\\frac{1}{16}\\right) + 250$ $v^2 = 400\\left(w - \\frac{1}{4}\\right)^2 - 25 + 250 = 400\\left(w - \\frac{1}{4}\\right)^2 + 225$ Since $400\\left(w - \\frac{1}{4}\\right)^2 \\geq 0$ for all real $w$, the minimum value of $v^2$ is $225$: $v_{\\min} = \\sqrt{225} = 15\\mathrm{\\ km/h}$ This minimum occurs when: $w = \\frac{1}{4} \\Rightarrow \\frac{1}{t} = \\frac{1}{4} \\Rightarrow t = 4\\mathrm{\\ hours}$ 5. **Interception time:** Interception takes place $4\\mathrm{\\ hours}$ after 08:00, which is at $12:00$. **Common Misconceptions:** - Assuming the patrol boat must match the speed of the cargo vessel: $|\\mathbf{v}_C| = \\sqrt{15^2 + 5^2} = \\sqrt{250} = 5\\sqrt{10} \\approx 15.81\\mathrm{\\ km/h}$. This overlooks that the cargo vessel is moving towards the interceptor's sector, allowing a lower speed to intercept. - Setting $w = 1/2$ due to an algebra slip when completing the square yields $t = 2\\mathrm{\\ hours}$ (10:00).",
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (1))**2 + (-2)",
-              "0.5*x + 1"
+              "0.6*(x - (-0.5))**2 + (-1.5)",
+              "0.4*x + (-0.3)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
-                "x": 1.0,
-                "y": -2.0,
-                "label": "$(1,-2)$"
+                "x": -0.5,
+                "y": -1.5,
+                "label": "$(-0.5,-1.5)$"
               }
             ],
             "width": 230
           }
         },
         {
-          "q": "A particle moves along a straight line. Its velocity, $v$ m/s, at time $t$ seconds is given by $v = 3t - 2$. Find the displacement of the particle during the first 4 seconds of its motion.",
+          "q": "A supply launch $S$ departs from a base at the origin $O$ at time $t = 0$ to intercept an automated cargo barge $C$. At $t = 0$, the barge has position vector $\\mathbf{r}_0 = \\left(16 ; 12\\right) \\mathrm{\\ km}$ relative to $O$ and maintains a constant velocity of $\\mathbf{v}_C = \\left(-15 ; 0\\right) \\mathrm{\\ km/h}$. The launch travels in a straight line with constant velocity $\\mathbf{v}_S$ and constant speed $v \\mathrm{\\ km/h}$. Determine the minimum speed $v$ required for the launch to successfully intercept the barge.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "The suvat equations for constant acceleration",
+          "target": "Finding when a particle is at rest or changes direction",
           "choices": [
-            "16 m",
-            "20 m",
-            "24 m",
-            "28 m"
-          ],
-          "correct": 1,
-          "answer": "The displacement of the particle can be found by integrating the velocity function with respect to time. The displacement $s$ is given by: $s = \\int v \\, dt$ In this case, $v = 3t - 2$. $s = \\int (3t - 2) \\, dt$ Integrating, we get: $s = \\frac{3}{2}t^2 - 2t + C$ To find the displacement during the first 4 seconds, we evaluate the definite integral from $t=0$ to $t=4$. We can assume $C=0$ for calculating the change in displacement from $t=0$. $s(4) - s(0) = \\left[ \\frac{3}{2}t^2 - 2t \\right]_0^4$ $s(4) - s(0) = \\left( \\frac{3}{2}(4)^2 - 2(4) \\right) - \\left( \\frac{3}{2}(0)^2 - 2(0) \\right)$ $s(4) - s(0) = \\left( \\frac{3}{2}(16) - 8 \\right) - (0)$ $s(4) - s(0) = (3 \\times 8 - 8)$ $s(4) - s(0) = (24 - 8)$ $s(4) - s(0) = 16$ Therefore, the displacement of the particle during the first 4 seconds is 16 m.",
-          "explanation": "The displacement of the particle can be found by integrating the velocity function with respect to time. The displacement $s$ is given by: $s = \\int v \\, dt$ In this case, $v = 3t - 2$. $s = \\int (3t - 2) \\, dt$ Integrating, we get: $s = \\frac{3}{2}t^2 - 2t + C$ To find the displacement during the first 4 seconds, we evaluate the definite integral from $t=0$ to $t=4$. We can assume $C=0$ for calculating the change in displacement from $t=0$. $s(4) - s(0) = \\left[ \\frac{3}{2}t^2 - 2t \\right]_0^4$ $s(4) - s(0) = \\left( \\frac{3}{2}(4)^2 - 2(4) \\right) - \\left( \\frac{3}{2}(0)^2 - 2(0) \\right)$ $s(4) - s(0) = \\left( \\frac{3}{2}(16) - 8 \\right) - (0)$ $s(4) - s(0) = (3 \\times 8 - 8)$ $s(4) - s(0) = (24 - 8)$ $s(4) - s(0) = 16$ Therefore, the displacement of the particle during the first 4 seconds is 16 m."
-        },
-        {
-          "q": "A particle moves so that its velocity at time $t$ s ($t\\geq0$) is $v=3t^{2}-21t+36$ m/s. Find when the particle is momentarily at rest.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Velocity-time graphs",
-          "choices": [
-            "$t=4\\mathrm{\\ s\\ or\\ }t=4\\mathrm{\\ s}$",
-            "$t=3\\mathrm{\\ s\\ or\\ }t=5\\mathrm{\\ s}$",
-            "$t=3\\mathrm{\\ s\\ only}$",
-            "$t=3\\mathrm{\\ s\\ or\\ }t=4\\mathrm{\\ s}$"
-          ],
-          "correct": 3,
-          "answer": "Setting $v=0$: $3t^{2}-21t+36=0 \\Rightarrow 3(t-3)(t-4)=0 \\Rightarrow t=3\\mathrm{\\ s\\ or\\ }t=4\\mathrm{\\ s}$",
-          "explanation": "Setting $v=0$: $3t^{2}-21t+36=0 \\Rightarrow 3(t-3)(t-4)=0 \\Rightarrow t=3\\mathrm{\\ s\\ or\\ }t=4\\mathrm{\\ s}$"
-        },
-        {
-          "q": "A particle moves so that its velocity at time $t$ s ($t\\geq0$) is $v=3t^{2}-18t+24$ m/s. Find when the particle is momentarily at rest.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Motion under gravity",
-          "choices": [
-            "$t=3\\mathrm{\\ s\\ or\\ }t=4\\mathrm{\\ s}$",
-            "$t=2\\mathrm{\\ s\\ only}$",
-            "$t=2\\mathrm{\\ s\\ or\\ }t=4\\mathrm{\\ s}$",
-            "$t=2\\mathrm{\\ s\\ or\\ }t=5\\mathrm{\\ s}$"
-          ],
-          "correct": 2,
-          "answer": "Setting $v=0$: $3t^{2}-18t+24=0 \\Rightarrow 3(t-2)(t-4)=0 \\Rightarrow t=2\\mathrm{\\ s\\ or\\ }t=4\\mathrm{\\ s}$",
-          "explanation": "Setting $v=0$: $3t^{2}-18t+24=0 \\Rightarrow 3(t-2)(t-4)=0 \\Rightarrow t=2\\mathrm{\\ s\\ or\\ }t=4\\mathrm{\\ s}$"
-        },
-        {
-          "q": "A particle moves so that its velocity at time $t$ s ($t\\geq0$) is $v=2t^{2}-18t+40$ m/s. Find when the particle is momentarily at rest.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Using calculus for variable acceleration",
-          "choices": [
-            "$t=4\\mathrm{\\ s\\ or\\ }t=5\\mathrm{\\ s}$",
-            "$t=4\\mathrm{\\ s\\ or\\ }t=6\\mathrm{\\ s}$",
-            "$t=5\\mathrm{\\ s\\ or\\ }t=5\\mathrm{\\ s}$",
-            "$t=4\\mathrm{\\ s\\ only}$"
+            "$9\\mathrm{\\ km/h}$",
+            "$12\\mathrm{\\ km/h}$",
+            "$15\\mathrm{\\ km/h}$",
+            "$7.2\\mathrm{\\ km/h}$"
           ],
           "correct": 0,
-          "answer": "Setting $v=0$: $2t^{2}-18t+40=0 \\Rightarrow 2(t-4)(t-5)=0 \\Rightarrow t=4\\mathrm{\\ s\\ or\\ }t=5\\mathrm{\\ s}$",
-          "explanation": "Setting $v=0$: $2t^{2}-18t+40=0 \\Rightarrow 2(t-4)(t-5)=0 \\Rightarrow t=4\\mathrm{\\ s\\ or\\ }t=5\\mathrm{\\ s}$"
+          "answer": "To intercept the cargo barge at some time $t > 0$, the position vectors must satisfy: $\\mathbf{r}_S(t) = \\mathbf{r}_C(t) \\Rightarrow t\\mathbf{v}_S = \\mathbf{r}_0 + t\\mathbf{v}_C$ Dividing by $t$ gives: $\\mathbf{v}_S = \\mathbf{v}_C + \\frac{1}{t}\\mathbf{r}_0 = \\left(-15 ; 0\\right) + \\frac{1}{t}\\left(16 ; 12\\right) = \\left(-15 + \\frac{16}{t} ; [4pt] \\frac{12}{t}\\right)$ Let $u = \\frac{1}{t} > 0$. The square of the speed of the launch is: $v^2 = (-15 + 16u)^2 + (12u)^2 = 225 - 480u + 256u^2 + 144u^2 = 400u^2 - 480u + 225$ This is a quadratic in $u$ opening upwards. Completing the square or differentiating with respect to $u$: $\\frac{\\mathrm{d}(v^2)}{\\mathrm{d}u} = 800u - 480 = 0 \\Rightarrow u = \\frac{480}{800} = \\frac{3}{5}$ Since $u = \\frac{3}{5} > 0$, the interception occurs at $t = \\frac{5}{3}\\mathrm{\\ hours}$ (1 hour 40 minutes), which is physically valid. Substituting $u = \\frac{3}{5}$ into $v^2$: $v^2 = 400\\left(\\frac{3}{5}\\right)^2 - 480\\left(\\frac{3}{5}\\right) + 225 = 400\\left(\\frac{9}{25}\\right) - 288 + 225 = 144 - 288 + 225 = 81$ Thus, the minimum speed is: $v_{\\min} = \\sqrt{81} = 9\\mathrm{\\ km/h}$ *(Alternative geometric approach)*: In the relative velocity triangle, $\\mathbf{v}_S = \\mathbf{v}_C + \\mathbf{v}_{S/C}$, where the relative velocity $\\mathbf{v}_{S/C}$ must lie along the line of sight vector $\\mathbf{r}_0 = \\left(16 ; 12\\right)$. The minimum magnitude $|\\mathbf{v}_S|$ occurs when $\\mathbf{v}_S$ is perpendicular to $\\mathbf{r}_0$. The angle $\\theta$ between $-\\mathbf{v}_C$ and $\\mathbf{r}_0$ satisfies $\\sin\\theta = \\frac{12}{|\\mathbf{r}_0|} = \\frac{12}{20} = \\frac{3}{5}$. Therefore, $v_{\\min} = |\\mathbf{v}_C| \\sin\\theta = 15 \\times \\frac{3}{5} = 9\\mathrm{\\ km/h}$. Misconception checks: - $12\\mathrm{\\ km/h}$ arises from taking the component along the line of sight, $15 \\cos\\theta = 15 \\times \\frac{4}{5} = 12$. - $15\\mathrm{\\ km/h}$ assumes the launch must match the cargo barge's speed. - $7.2\\mathrm{\\ km/h}$ is the vertical component of the launch velocity $|v_y| = \\frac{12}{5/3} = 7.2$, confusing a velocity component with total speed.",
+          "explanation": "To intercept the cargo barge at some time $t > 0$, the position vectors must satisfy: $\\mathbf{r}_S(t) = \\mathbf{r}_C(t) \\Rightarrow t\\mathbf{v}_S = \\mathbf{r}_0 + t\\mathbf{v}_C$ Dividing by $t$ gives: $\\mathbf{v}_S = \\mathbf{v}_C + \\frac{1}{t}\\mathbf{r}_0 = \\left(-15 ; 0\\right) + \\frac{1}{t}\\left(16 ; 12\\right) = \\left(-15 + \\frac{16}{t} ; [4pt] \\frac{12}{t}\\right)$ Let $u = \\frac{1}{t} > 0$. The square of the speed of the launch is: $v^2 = (-15 + 16u)^2 + (12u)^2 = 225 - 480u + 256u^2 + 144u^2 = 400u^2 - 480u + 225$ This is a quadratic in $u$ opening upwards. Completing the square or differentiating with respect to $u$: $\\frac{\\mathrm{d}(v^2)}{\\mathrm{d}u} = 800u - 480 = 0 \\Rightarrow u = \\frac{480}{800} = \\frac{3}{5}$ Since $u = \\frac{3}{5} > 0$, the interception occurs at $t = \\frac{5}{3}\\mathrm{\\ hours}$ (1 hour 40 minutes), which is physically valid. Substituting $u = \\frac{3}{5}$ into $v^2$: $v^2 = 400\\left(\\frac{3}{5}\\right)^2 - 480\\left(\\frac{3}{5}\\right) + 225 = 400\\left(\\frac{9}{25}\\right) - 288 + 225 = 144 - 288 + 225 = 81$ Thus, the minimum speed is: $v_{\\min} = \\sqrt{81} = 9\\mathrm{\\ km/h}$ *(Alternative geometric approach)*: In the relative velocity triangle, $\\mathbf{v}_S = \\mathbf{v}_C + \\mathbf{v}_{S/C}$, where the relative velocity $\\mathbf{v}_{S/C}$ must lie along the line of sight vector $\\mathbf{r}_0 = \\left(16 ; 12\\right)$. The minimum magnitude $|\\mathbf{v}_S|$ occurs when $\\mathbf{v}_S$ is perpendicular to $\\mathbf{r}_0$. The angle $\\theta$ between $-\\mathbf{v}_C$ and $\\mathbf{r}_0$ satisfies $\\sin\\theta = \\frac{12}{|\\mathbf{r}_0|} = \\frac{12}{20} = \\frac{3}{5}$. Therefore, $v_{\\min} = |\\mathbf{v}_C| \\sin\\theta = 15 \\times \\frac{3}{5} = 9\\mathrm{\\ km/h}$. Misconception checks: - $12\\mathrm{\\ km/h}$ arises from taking the component along the line of sight, $15 \\cos\\theta = 15 \\times \\frac{4}{5} = 12$. - $15\\mathrm{\\ km/h}$ assumes the launch must match the cargo barge's speed. - $7.2\\mathrm{\\ km/h}$ is the vertical component of the launch velocity $|v_y| = \\frac{12}{5/3} = 7.2$, confusing a velocity component with total speed."
+        },
+        {
+          "q": "Two particles, A and B, move in the xy-plane. Their position vectors at time $t$ seconds, for $t \\geq 0$, are given by $\\mathbf{r}_A(t) = \\left(2t ; 4t - 1\\right)$ and $\\mathbf{r}_B(t) = \\left(3 + 5t ; 1 - 2t\\right)$ respectively. The particles start their motion at $t=0$. Find the minimum distance between particle A and particle B.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Relative and combined motion",
+          "choices": [
+            "$\\sqrt{26}$",
+            "$2\\sqrt{13}$",
+            "$3\\sqrt{10}$",
+            "$4\\sqrt{5}$"
+          ],
+          "correct": 0,
+          "answer": "The position vectors of particle A and particle B at time $t$ are given by $\\mathbf{r}_A(t) = \\left(2t ; 4t - 1\\right)$ and $\\mathbf{r}_B(t) = \\left(3 + 5t ; 1 - 2t\\right)$. The vector representing the displacement from particle B to particle A at time $t$ is $\\mathbf{d}(t) = \\mathbf{r}_A(t) - \\mathbf{r}_B(t) = \\left(2t - (3 + 5t) ; (4t - 1) - (1 - 2t)\\right) = \\left(-3t - 3 ; 6t - 2\\right)$. The distance between the particles at time $t$ is the magnitude of this displacement vector, $D(t) = ||\\mathbf{d}(t)|| = \\sqrt{(-3t - 3)^2 + (6t - 2)^2}$. To minimize the distance, we can minimize the square of the distance, $D(t)^2 = (-3t - 3)^2 + (6t - 2)^2$. Let $f(t) = D(t)^2 = (9t^2 + 18t + 9) + (36t^2 - 24t + 4) = 45t^2 - 6t + 13$. This is a quadratic function of $t$, representing a parabola opening upwards. The minimum value occurs at the vertex. The t-coordinate of the vertex is given by $t = -\\frac{b}{2a}$, where $a=45$ and $b=-6$. So, $t = -\\frac{-6}{2 \\times 45} = \\frac{6}{90} = \\frac{1}{15}$. Now, substitute this value of $t$ back into the expression for $D(t)^2$ to find the minimum squared distance: $f(\\frac{1}{15}) = 45(\\frac{1}{15})^2 - 6(\\frac{1}{15}) + 13 = 45(\\frac{1}{225}) - \\frac{6}{15} + 13 = \\frac{1}{5} - \\frac{2}{5} + 13 = -\\frac{1}{5} + 13 = \\frac{-1 + 65}{5} = \\frac{64}{5}$. The minimum distance is the square root of the minimum squared distance: $D_{min} = \\sqrt{\\frac{64}{5}} = \\frac{8}{\\sqrt{5}} = \\frac{8\\sqrt{5}}{5}$.",
+          "explanation": "The position vectors of particle A and particle B at time $t$ are given by $\\mathbf{r}_A(t) = \\left(2t ; 4t - 1\\right)$ and $\\mathbf{r}_B(t) = \\left(3 + 5t ; 1 - 2t\\right)$. The vector representing the displacement from particle B to particle A at time $t$ is $\\mathbf{d}(t) = \\mathbf{r}_A(t) - \\mathbf{r}_B(t) = \\left(2t - (3 + 5t) ; (4t - 1) - (1 - 2t)\\right) = \\left(-3t - 3 ; 6t - 2\\right)$. The distance between the particles at time $t$ is the magnitude of this displacement vector, $D(t) = ||\\mathbf{d}(t)|| = \\sqrt{(-3t - 3)^2 + (6t - 2)^2}$. To minimize the distance, we can minimize the square of the distance, $D(t)^2 = (-3t - 3)^2 + (6t - 2)^2$. Let $f(t) = D(t)^2 = (9t^2 + 18t + 9) + (36t^2 - 24t + 4) = 45t^2 - 6t + 13$. This is a quadratic function of $t$, representing a parabola opening upwards. The minimum value occurs at the vertex. The t-coordinate of the vertex is given by $t = -\\frac{b}{2a}$, where $a=45$ and $b=-6$. So, $t = -\\frac{-6}{2 \\times 45} = \\frac{6}{90} = \\frac{1}{15}$. Now, substitute this value of $t$ back into the expression for $D(t)^2$ to find the minimum squared distance: $f(\\frac{1}{15}) = 45(\\frac{1}{15})^2 - 6(\\frac{1}{15}) + 13 = 45(\\frac{1}{225}) - \\frac{6}{15} + 13 = \\frac{1}{5} - \\frac{2}{5} + 13 = -\\frac{1}{5} + 13 = \\frac{-1 + 65}{5} = \\frac{64}{5}$. The minimum distance is the square root of the minimum squared distance: $D_{min} = \\sqrt{\\frac{64}{5}} = \\frac{8}{\\sqrt{5}} = \\frac{8\\sqrt{5}}{5}$."
+        },
+        {
+          "q": "A particle moves in a straight line such that its acceleration, $a \\mathrm{\\ m\\ s}^{-2}$, at time $t$ seconds is given by $a = 6t - 4$. When $t = 1$, the velocity of the particle is $5 \\mathrm{\\ m\\ s}^{-1}$. Find the velocity of the particle when $t = 3$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "A well-designed word problem: a train between two stations",
+          "choices": [
+            "$15 \\mathrm{\\ m\\ s}^{-1}$",
+            "$19 \\mathrm{\\ m\\ s}^{-1}$",
+            "$21 \\mathrm{\\ m\\ s}^{-1}$",
+            "$27 \\mathrm{\\ m\\ s}^{-1}$"
+          ],
+          "correct": 2,
+          "answer": "To find the velocity $v$, integrate the acceleration function with respect to $t$: $v = \\int a \\, \\mathrm{d}t = \\int (6t - 4) \\, \\mathrm{d}t = 3t^2 - 4t + C$ Using the initial condition that $v = 5$ when $t = 1$: $3(1)^2 - 4(1) + C = 5 \\Rightarrow -1 + C = 5 \\Rightarrow C = 6$ Thus, the velocity function is: $v(t) = 3t^2 - 4t + 6$ Substitute $t = 3$: $v(3) = 3(3)^2 - 4(3) + 6 = 27 - 12 + 6 = 21 \\mathrm{\\ m\\ s}^{-1}$ Common misconceptions: - Omitting the constant of integration $C$ gives $3(3)^2 - 4(3) = 15 \\mathrm{\\ m\\ s}^{-1}$. - A sign error when solving $3 - 4 + C = 5$ (such as writing $1 + C = 5 \\Rightarrow C = 4$) leads to $19 \\mathrm{\\ m\\ s}^{-1}$.",
+          "explanation": "To find the velocity $v$, integrate the acceleration function with respect to $t$: $v = \\int a \\, \\mathrm{d}t = \\int (6t - 4) \\, \\mathrm{d}t = 3t^2 - 4t + C$ Using the initial condition that $v = 5$ when $t = 1$: $3(1)^2 - 4(1) + C = 5 \\Rightarrow -1 + C = 5 \\Rightarrow C = 6$ Thus, the velocity function is: $v(t) = 3t^2 - 4t + 6$ Substitute $t = 3$: $v(3) = 3(3)^2 - 4(3) + 6 = 27 - 12 + 6 = 21 \\mathrm{\\ m\\ s}^{-1}$ Common misconceptions: - Omitting the constant of integration $C$ gives $3(3)^2 - 4(3) = 15 \\mathrm{\\ m\\ s}^{-1}$. - A sign error when solving $3 - 4 + C = 5$ (such as writing $1 + C = 5 \\Rightarrow C = 4$) leads to $19 \\mathrm{\\ m\\ s}^{-1}$."
+        },
+        {
+          "q": "A particle in equilibrium is acted on by three concurrent forces. Two of the forces have equal magnitude $20$ N and act symmetrically either side of the third force's line of action. If the angle between each of the two equal forces and the third force is $120^\\circ$, find the magnitude of the third force.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Displacement, velocity, and acceleration",
+          "choices": [
+            "18",
+            "20",
+            "25",
+            "22"
+          ],
+          "correct": 1,
+          "answer": "By symmetry (each pair at $120^\\circ$), the third force balances the resultant of the two equal forces: $F_3=F_1=20$ N (standard $120^\\circ$-$120^\\circ$-$120^\\circ$ symmetric equilibrium).",
+          "explanation": "By symmetry (each pair at $120^\\circ$), the third force balances the resultant of the two equal forces: $F_3=F_1=20$ N (standard $120^\\circ$-$120^\\circ$-$120^\\circ$ symmetric equilibrium)."
         }
       ]
     },
@@ -580,169 +580,169 @@
       "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
       "questions": [
         {
-          "q": "A particle moves so that its velocity at time $t$ s ($t\\geq0$) is $v=3t^{2}-33t+90$ m/s. Find when the particle is momentarily at rest.",
+          "q": "A particle of mass $6$ kg moving at $6$ m/s collides and sticks to a particle of mass $6$ kg moving at $0$ m/s (same line of motion). Find the common velocity after collision.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Finding when a particle is at rest or changes direction",
+          "target": "The suvat equations for constant acceleration",
           "choices": [
-            "$t=5\\mathrm{\\ s\\ or\\ }t=6\\mathrm{\\ s}$",
-            "$t=5\\mathrm{\\ s\\ or\\ }t=7\\mathrm{\\ s}$",
-            "$t=6\\mathrm{\\ s\\ or\\ }t=6\\mathrm{\\ s}$",
-            "$t=5\\mathrm{\\ s\\ only}$"
+            "2",
+            "4",
+            "6",
+            "3"
           ],
-          "correct": 0,
-          "answer": "Setting $v=0$: $3t^{2}-33t+90=0 \\Rightarrow 3(t-5)(t-6)=0 \\Rightarrow t=5\\mathrm{\\ s\\ or\\ }t=6\\mathrm{\\ s}$",
-          "explanation": "Setting $v=0$: $3t^{2}-33t+90=0 \\Rightarrow 3(t-5)(t-6)=0 \\Rightarrow t=5\\mathrm{\\ s\\ or\\ }t=6\\mathrm{\\ s}$",
+          "correct": 3,
+          "answer": "By conservation of momentum: $m_1u_1+m_2u_2=(m_1+m_2)v \\Rightarrow (6)(6)+(6)(0)=(12)v \\Rightarrow v=3$ m/s",
+          "explanation": "By conservation of momentum: $m_1u_1+m_2u_2=(m_1+m_2)v \\Rightarrow (6)(6)+(6)(0)=(12)v \\Rightarrow v=3$ m/s",
           "cross_lesson": "10.01 Series & Binomial Theorem"
         },
         {
-          "q": "A particle moves so that its velocity at time $t$ s ($t\\geq0$) is $v=2t^{2}-12t+10$ m/s. Find when the particle is momentarily at rest.",
+          "q": "Particles of mass $2$ kg and $5$ kg are connected by a light inextensible string over a smooth pulley, and released from rest. Taking $g=9.8$ m/s$^2$, find the acceleration of the system.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Relative and combined motion",
+          "target": "Velocity-time graphs",
           "choices": [
-            "$t=1\\mathrm{\\ s\\ only}$",
-            "$t=1\\mathrm{\\ s\\ or\\ }t=5\\mathrm{\\ s}$",
-            "$t=1\\mathrm{\\ s\\ or\\ }t=6\\mathrm{\\ s}$",
-            "$t=2\\mathrm{\\ s\\ or\\ }t=5\\mathrm{\\ s}$"
+            "4.20",
+            "8.40",
+            "4.70",
+            "3.70"
           ],
-          "correct": 1,
-          "answer": "Setting $v=0$: $2t^{2}-12t+10=0 \\Rightarrow 2(t-1)(t-5)=0 \\Rightarrow t=1\\mathrm{\\ s\\ or\\ }t=5\\mathrm{\\ s}$",
-          "explanation": "Setting $v=0$: $2t^{2}-12t+10=0 \\Rightarrow 2(t-1)(t-5)=0 \\Rightarrow t=1\\mathrm{\\ s\\ or\\ }t=5\\mathrm{\\ s}$",
+          "correct": 0,
+          "answer": "$a=\\frac{(m_2-m_1)g}{m_1+m_2}=\\frac{(5-2)(9.8)}{2+5}=4.20$ m/s$^2$",
+          "explanation": "$a=\\frac{(m_2-m_1)g}{m_1+m_2}=\\frac{(5-2)(9.8)}{2+5}=4.20$ m/s$^2$",
           "cross_lesson": "12.01 Forces & Equilibrium",
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (1))**2 + (-2)",
-              "0.5*x + 1"
+              "0.3*(x - (1.0))**2 + (-1.0)",
+              "0.9*x + (0.2)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
                 "x": 1.0,
-                "y": -2.0,
-                "label": "$(1,-2)$"
+                "y": -1.0,
+                "label": "$(1,-1)$"
               }
             ],
             "width": 230
           }
         },
         {
-          "q": "A particle moves so that its velocity at time $t$ s ($t\\geq0$) is $v=3t^{2}-18t+15$ m/s. Find when the particle is momentarily at rest.",
+          "q": "A particle accelerates uniformly from $u=2$ m/s to $v=14$ m/s in $t=6$ s. Find its acceleration.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "A well-designed word problem: a train between two stations",
+          "target": "Motion under gravity",
           "choices": [
-            "$t=1\\mathrm{\\ s\\ only}$",
-            "$t=2\\mathrm{\\ s\\ or\\ }t=5\\mathrm{\\ s}$",
-            "$t=1\\mathrm{\\ s\\ or\\ }t=5\\mathrm{\\ s}$",
-            "$t=1\\mathrm{\\ s\\ or\\ }t=6\\mathrm{\\ s}$"
+            "1",
+            "3",
+            "2",
+            "12/7"
           ],
           "correct": 2,
-          "answer": "Setting $v=0$: $3t^{2}-18t+15=0 \\Rightarrow 3(t-1)(t-5)=0 \\Rightarrow t=1\\mathrm{\\ s\\ or\\ }t=5\\mathrm{\\ s}$",
-          "explanation": "Setting $v=0$: $3t^{2}-18t+15=0 \\Rightarrow 3(t-1)(t-5)=0 \\Rightarrow t=1\\mathrm{\\ s\\ or\\ }t=5\\mathrm{\\ s}$",
+          "answer": "$a=\\frac{v-u}{t}=\\frac{14-(2)}{6}=2$ m/s$^2$",
+          "explanation": "$a=\\frac{v-u}{t}=\\frac{14-(2)}{6}=2$ m/s$^2$",
           "cross_lesson": "13.01 Newton's Laws"
         },
         {
-          "q": "A particle moves so that its velocity at time $t$ s ($t\\geq0$) is $v=2t^{2}-26t+84$ m/s. Find when the particle is momentarily at rest.",
+          "q": "Relative to a fixed origin $O$, ship $A$ has an initial position vector of $(24\\mathbf{i} + 10\\mathbf{j})\\mathrm{\\ km}$ and moves with a constant velocity of $(-2\\mathbf{i} + 5\\mathbf{j})\\mathrm{\\ km\\ h}^{-1}$. Ship $B$ has an initial position vector of $(-20\\mathbf{i} - 18\\mathbf{j})\\mathrm{\\ km}$ and moves with a constant velocity of $(u\\mathbf{i} + 12\\mathbf{j})\\mathrm{\\ km\\ h}^{-1}$, where $u$ is a constant. Given that ship $B$ intercepts ship $A$, find the speed of ship $B$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Constant Acceleration & SUVAT Equations",
+          "target": "Using calculus for variable acceleration",
           "choices": [
-            "$t=7\\mathrm{\\ s\\ or\\ }t=7\\mathrm{\\ s}$",
-            "$t=6\\mathrm{\\ s\\ only}$",
-            "$t=6\\mathrm{\\ s\\ or\\ }t=7\\mathrm{\\ s}$",
-            "$t=6\\mathrm{\\ s\\ or\\ }t=8\\mathrm{\\ s}$"
+            "$15\\mathrm{\\ km\\ h}^{-1}$",
+            "$9\\mathrm{\\ km\\ h}^{-1}$",
+            "$21\\mathrm{\\ km\\ h}^{-1}$",
+            "$34\\mathrm{\\ km\\ h}^{-1}$"
           ],
-          "correct": 2,
-          "answer": "Setting $v=0$: $2t^{2}-26t+84=0 \\Rightarrow 2(t-6)(t-7)=0 \\Rightarrow t=6\\mathrm{\\ s\\ or\\ }t=7\\mathrm{\\ s}$",
-          "explanation": "Setting $v=0$: $2t^{2}-26t+84=0 \\Rightarrow 2(t-6)(t-7)=0 \\Rightarrow t=6\\mathrm{\\ s\\ or\\ }t=7\\mathrm{\\ s}$",
+          "correct": 0,
+          "answer": "Let $t$ be the time in hours after the ships begin moving. The position vector of ship $A$ at time $t$ is: $\\mathbf{r}_A(t) = (24\\mathbf{i} + 10\\mathbf{j}) + t(-2\\mathbf{i} + 5\\mathbf{j}) = (24 - 2t)\\mathbf{i} + (10 + 5t)\\mathbf{j}$ The position vector of ship $B$ at time $t$ is: $\\mathbf{r}_B(t) = (-20\\mathbf{i} - 18\\mathbf{j}) + t(u\\mathbf{i} + 12\\mathbf{j}) = (-20 + ut)\\mathbf{i} + (-18 + 12t)\\mathbf{j}$ For ship $B$ to intercept ship $A$, their positions must be identical at some time $t > 0$, so $\\mathbf{r}_A(t) = \\mathbf{r}_B(t)$. Equating the $\\mathbf{j}$-components: $10 + 5t = -18 + 12t \\Rightarrow 28 = 7t \\Rightarrow t = 4\\mathrm{\\ hours}$ Equating the $\\mathbf{i}$-components at $t = 4$: $24 - 2(4) = -20 + 4u \\Rightarrow 16 = -20 + 4u \\Rightarrow 4u = 36 \\Rightarrow u = 9$ Thus, the velocity of ship $B$ is $\\mathbf{v}_B = 9\\mathbf{i} + 12\\mathbf{j}\\mathrm{\\ km\\ h}^{-1}$. The speed of ship $B$ is the magnitude of its velocity vector: $|\\mathbf{v}_B| = \\sqrt{9^2 + 12^2} = \\sqrt{81 + 144} = \\sqrt{225} = 15\\mathrm{\\ km\\ h}^{-1}$ Common misconceptions: - Choosing $9\\mathrm{\\ km\\ h}^{-1}$ confuses the horizontal component $u$ with the speed. - Choosing $21\\mathrm{\\ km\\ h}^{-1}$ computes the scalar sum of the velocity components $9 + 12$ rather than the vector magnitude. - Choosing $34\\mathrm{\\ km\\ h}^{-1}$ calculates the distance of the interception point from the origin ($|16\\mathbf{i} + 30\\mathbf{j}| = 34\\mathrm{\\ km}$) instead of the speed.",
+          "explanation": "Let $t$ be the time in hours after the ships begin moving. The position vector of ship $A$ at time $t$ is: $\\mathbf{r}_A(t) = (24\\mathbf{i} + 10\\mathbf{j}) + t(-2\\mathbf{i} + 5\\mathbf{j}) = (24 - 2t)\\mathbf{i} + (10 + 5t)\\mathbf{j}$ The position vector of ship $B$ at time $t$ is: $\\mathbf{r}_B(t) = (-20\\mathbf{i} - 18\\mathbf{j}) + t(u\\mathbf{i} + 12\\mathbf{j}) = (-20 + ut)\\mathbf{i} + (-18 + 12t)\\mathbf{j}$ For ship $B$ to intercept ship $A$, their positions must be identical at some time $t > 0$, so $\\mathbf{r}_A(t) = \\mathbf{r}_B(t)$. Equating the $\\mathbf{j}$-components: $10 + 5t = -18 + 12t \\Rightarrow 28 = 7t \\Rightarrow t = 4\\mathrm{\\ hours}$ Equating the $\\mathbf{i}$-components at $t = 4$: $24 - 2(4) = -20 + 4u \\Rightarrow 16 = -20 + 4u \\Rightarrow 4u = 36 \\Rightarrow u = 9$ Thus, the velocity of ship $B$ is $\\mathbf{v}_B = 9\\mathbf{i} + 12\\mathbf{j}\\mathrm{\\ km\\ h}^{-1}$. The speed of ship $B$ is the magnitude of its velocity vector: $|\\mathbf{v}_B| = \\sqrt{9^2 + 12^2} = \\sqrt{81 + 144} = \\sqrt{225} = 15\\mathrm{\\ km\\ h}^{-1}$ Common misconceptions: - Choosing $9\\mathrm{\\ km\\ h}^{-1}$ confuses the horizontal component $u$ with the speed. - Choosing $21\\mathrm{\\ km\\ h}^{-1}$ computes the scalar sum of the velocity components $9 + 12$ rather than the vector magnitude. - Choosing $34\\mathrm{\\ km\\ h}^{-1}$ calculates the distance of the interception point from the origin ($|16\\mathbf{i} + 30\\mathbf{j}| = 34\\mathrm{\\ km}$) instead of the speed.",
           "cross_lesson": "14.01 Energy, Work & Power"
         },
         {
-          "q": "A particle moves so that its velocity at time $t$ s ($t\\geq0$) is $v=2t^{2}-20t+48$ m/s. Find when the particle is momentarily at rest.",
+          "q": "At 14:00, a coastguard radar station detects two vessels, $A$ and $B$. Relative to the radar station, vessel $A$ has position vector $(-4\\mathbf{i} + 6\\mathbf{j})\\mathrm{\\ km}$ and moves with a constant velocity of $(8\\mathbf{i} + 5\\mathbf{j})\\mathrm{\\ km\\ h}^{-1}$. Vessel $B$ has position vector $(20\\mathbf{i} - 4\\mathbf{j})\\mathrm{\\ km}$ and moves with a constant velocity of $(u\\mathbf{i} + 10\\mathbf{j})\\mathrm{\\ km\\ h}^{-1}$, where $u$ is a constant. Given that vessel $B$ intercepts vessel $A$, find the value of $u$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Velocity-Time & Displacement-Time Graphs",
+          "target": "Finding when a particle is at rest or changes direction",
           "choices": [
-            "$t=4\\mathrm{\\ s\\ only}$",
-            "$t=5\\mathrm{\\ s\\ or\\ }t=6\\mathrm{\\ s}$",
-            "$t=4\\mathrm{\\ s\\ or\\ }t=7\\mathrm{\\ s}$",
-            "$t=4\\mathrm{\\ s\\ or\\ }t=6\\mathrm{\\ s}$"
+            "$u = -4$",
+            "$u = 4$",
+            "$u = -2$",
+            "$u = -8$"
           ],
-          "correct": 3,
-          "answer": "Setting $v=0$: $2t^{2}-20t+48=0 \\Rightarrow 2(t-4)(t-6)=0 \\Rightarrow t=4\\mathrm{\\ s\\ or\\ }t=6\\mathrm{\\ s}$",
-          "explanation": "Setting $v=0$: $2t^{2}-20t+48=0 \\Rightarrow 2(t-4)(t-6)=0 \\Rightarrow t=4\\mathrm{\\ s\\ or\\ }t=6\\mathrm{\\ s}$",
+          "correct": 0,
+          "answer": "Let $t$ be the time in hours after 14:00 when the interception occurs. The position vector of vessel $A$ at time $t$ is: $\\mathbf{r}_A(t) = (-4 + 8t)\\mathbf{i} + (6 + 5t)\\mathbf{j}$ The position vector of vessel $B$ at time $t$ is: $\\mathbf{r}_B(t) = (20 + ut)\\mathbf{i} + (-4 + 10t)\\mathbf{j}$ For interception to occur, $\\mathbf{r}_A(t) = \\mathbf{r}_B(t)$. Equating the $\\mathbf{j}$-components: $6 + 5t = -4 + 10t \\Rightarrow 5t = 10 \\Rightarrow t = 2\\mathrm{\\ hours}$ Equating the $\\mathbf{i}$-components and substituting $t = 2$: $-4 + 8(2) = 20 + u(2)$ $12 = 20 + 2u \\Rightarrow 2u = -8 \\Rightarrow u = -4$ Common Traps: - Choice B ($u = 4$) results from a sign error when rearranging $12 = 20 + 2u$ to $2u = 20 - 12 = 8$. - Choice C ($u = -2$) arises from an arithmetic error when dividing or finding $t$. - Choice D ($u = -8$) occurs if one forgets to divide $2u = -8$ by the time $t = 2$.",
+          "explanation": "Let $t$ be the time in hours after 14:00 when the interception occurs. The position vector of vessel $A$ at time $t$ is: $\\mathbf{r}_A(t) = (-4 + 8t)\\mathbf{i} + (6 + 5t)\\mathbf{j}$ The position vector of vessel $B$ at time $t$ is: $\\mathbf{r}_B(t) = (20 + ut)\\mathbf{i} + (-4 + 10t)\\mathbf{j}$ For interception to occur, $\\mathbf{r}_A(t) = \\mathbf{r}_B(t)$. Equating the $\\mathbf{j}$-components: $6 + 5t = -4 + 10t \\Rightarrow 5t = 10 \\Rightarrow t = 2\\mathrm{\\ hours}$ Equating the $\\mathbf{i}$-components and substituting $t = 2$: $-4 + 8(2) = 20 + u(2)$ $12 = 20 + 2u \\Rightarrow 2u = -8 \\Rightarrow u = -4$ Common Traps: - Choice B ($u = 4$) results from a sign error when rearranging $12 = 20 + 2u$ to $2u = 20 - 12 = 8$. - Choice C ($u = -2$) arises from an arithmetic error when dividing or finding $t$. - Choice D ($u = -8$) occurs if one forgets to divide $2u = -8$ by the time $t = 2$.",
           "cross_lesson": "15.01 Representation of Data"
         },
         {
-          "q": "A particle moves so that its velocity at time $t$ s ($t\\geq0$) is $v=2t^{2}-14t+24$ m/s. Find when the particle is momentarily at rest.",
+          "q": "A particle moves in a straight line with acceleration $a(t) = 6t - 8 \\mathrm{\\ m/s}^2$. If it starts from rest at the origin (at $t = 0$), at what time $t > 0$ does the particle momentarily come to rest again?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Variable Acceleration via Calculus",
+          "target": "Relative and combined motion",
           "choices": [
-            "$t=3\\mathrm{\\ s\\ or\\ }t=5\\mathrm{\\ s}$",
-            "$t=3\\mathrm{\\ s\\ only}$",
-            "$t=4\\mathrm{\\ s\\ or\\ }t=4\\mathrm{\\ s}$",
-            "$t=3\\mathrm{\\ s\\ or\\ }t=4\\mathrm{\\ s}$"
+            "$t = 4 \\mathrm{\\ s}$",
+            "$t = \\frac{4}{3} \\mathrm{\\ s}$",
+            "$t = \\frac{8}{3} \\mathrm{\\ s}$",
+            "$t = 8 \\mathrm{\\ s}$"
           ],
-          "correct": 3,
-          "answer": "Setting $v=0$: $2t^{2}-14t+24=0 \\Rightarrow 2(t-3)(t-4)=0 \\Rightarrow t=3\\mathrm{\\ s\\ or\\ }t=4\\mathrm{\\ s}$",
-          "explanation": "Setting $v=0$: $2t^{2}-14t+24=0 \\Rightarrow 2(t-3)(t-4)=0 \\Rightarrow t=3\\mathrm{\\ s\\ or\\ }t=4\\mathrm{\\ s}$",
+          "correct": 2,
+          "answer": "Velocity $v(t) = \\int (6t - 8)\\,dt = 3t^2 - 8t + C$. Since $v(0) = 0 \\Rightarrow C = 0$. Momentarily at rest when $v(t) = 0 \\Rightarrow t(3t - 8) = 0 \\Rightarrow t = \\frac{8}{3} \\mathrm{\\ s}$.",
+          "explanation": "Velocity $v(t) = \\int (6t - 8)\\,dt = 3t^2 - 8t + C$. Since $v(0) = 0 \\Rightarrow C = 0$. Momentarily at rest when $v(t) = 0 \\Rightarrow t(3t - 8) = 0 \\Rightarrow t = \\frac{8}{3} \\mathrm{\\ s}$.",
           "cross_lesson": "16.01 Permutations & Combinations",
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (-1))**2 + (-2)",
-              "0.5*x + 1"
+              "0.3*(x - (-0.5))**2 + (-0.5)",
+              "1.4*x + (0.7)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
-                "x": -1.0,
-                "y": -2.0,
-                "label": "$(-1,-2)$"
+                "x": -0.5,
+                "y": -0.5,
+                "label": "$(-0.5,-0.5)$"
               }
             ],
             "width": 230
           }
         },
         {
-          "q": "A particle moves so that its velocity at time $t$ s ($t\\geq0$) is $v=2t^{2}-18t+28$ m/s. Find when the particle is momentarily at rest.",
+          "q": "A constant force of 15 N is applied to an object, causing it to move a distance of 4 m in the direction of the force. Calculate the work done by the force.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Multi-Stage Motion & Exam Challenges",
+          "target": "A well-designed word problem: a train between two stations",
           "choices": [
-            "$t=3\\mathrm{\\ s\\ or\\ }t=7\\mathrm{\\ s}$",
-            "$t=2\\mathrm{\\ s\\ or\\ }t=8\\mathrm{\\ s}$",
-            "$t=2\\mathrm{\\ s\\ only}$",
-            "$t=2\\mathrm{\\ s\\ or\\ }t=7\\mathrm{\\ s}$"
+            "60 J",
+            "19 J",
+            "11 J",
+            "3.75 J"
           ],
-          "correct": 3,
-          "answer": "Setting $v=0$: $2t^{2}-18t+28=0 \\Rightarrow 2(t-2)(t-7)=0 \\Rightarrow t=2\\mathrm{\\ s\\ or\\ }t=7\\mathrm{\\ s}$",
-          "explanation": "Setting $v=0$: $2t^{2}-18t+28=0 \\Rightarrow 2(t-2)(t-7)=0 \\Rightarrow t=2\\mathrm{\\ s\\ or\\ }t=7\\mathrm{\\ s}$",
+          "correct": 0,
+          "answer": "The work done by a constant force is given by the formula: Work Done = Force × Distance × cos(θ) where θ is the angle between the force and the direction of motion. In this case, the force and the distance are in the same direction, so θ = 0°. Therefore, cos(0°) = 1. Work Done = 15 N × 4 m × 1 Work Done = 60 J",
+          "explanation": "The work done by a constant force is given by the formula: Work Done = Force × Distance × cos(θ) where θ is the angle between the force and the direction of motion. In this case, the force and the distance are in the same direction, so θ = 0°. Therefore, cos(0°) = 1. Work Done = 15 N × 4 m × 1 Work Done = 60 J",
           "cross_lesson": "17.01 Discrete Random Variables"
         },
         {
-          "q": "A particle moves so that its velocity at time $t$ s ($t\\geq0$) is $v=3t^{2}-21t+30$ m/s. Find when the particle is momentarily at rest.",
+          "q": "Three concurrent forces keep a particle in equilibrium, each pair separated by $120^\\circ$, and two of the forces have magnitude $28$ N. Find the magnitude of the third force.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Displacement, velocity, and acceleration",
           "choices": [
-            "$t=2\\mathrm{\\ s\\ or\\ }t=5\\mathrm{\\ s}$",
-            "$t=2\\mathrm{\\ s\\ only}$",
-            "$t=2\\mathrm{\\ s\\ or\\ }t=6\\mathrm{\\ s}$",
-            "$t=3\\mathrm{\\ s\\ or\\ }t=5\\mathrm{\\ s}$"
+            "26",
+            "30",
+            "33",
+            "28"
           ],
-          "correct": 0,
-          "answer": "Setting $v=0$: $3t^{2}-21t+30=0 \\Rightarrow 3(t-2)(t-5)=0 \\Rightarrow t=2\\mathrm{\\ s\\ or\\ }t=5\\mathrm{\\ s}$",
-          "explanation": "Setting $v=0$: $3t^{2}-21t+30=0 \\Rightarrow 3(t-2)(t-5)=0 \\Rightarrow t=2\\mathrm{\\ s\\ or\\ }t=5\\mathrm{\\ s}$",
+          "correct": 3,
+          "answer": "With all three angles equal to $120^\\circ$, Lami's theorem gives $\\frac{F_1}{\\sin120^\\circ}=\\frac{F_2}{\\sin120^\\circ}=\\frac{F_3}{\\sin120^\\circ} \\Rightarrow F_3=F_1=28$ N.",
+          "explanation": "With all three angles equal to $120^\\circ$, Lami's theorem gives $\\frac{F_1}{\\sin120^\\circ}=\\frac{F_2}{\\sin120^\\circ}=\\frac{F_3}{\\sin120^\\circ} \\Rightarrow F_3=F_1=28$ N.",
           "cross_lesson": "18.01 Binomial Distribution"
         }
       ]

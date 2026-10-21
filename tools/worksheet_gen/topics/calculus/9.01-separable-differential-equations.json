@@ -17,24 +17,6 @@
           "explanation": "$y\\,dy = x\\,dx$, so $\\frac{y^2}{2} = \\frac{x^2}{2} + C$. Using $y(0)=3$: $C = \\frac{9}{2}$. Solution: $y^2 = x^2 + 9$, i.e. $y = \\sqrt{x^2+9}$ (taking the positive root since $y(0)=3>0$)."
         },
         {
-          "q": "Solve $\\frac{dy}{dx} = 2xy$, given $y(0) = 5$.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Solving by separation of variables",
-          "answer": "$\\frac{1}{y}dy = 2x\\,dx$, so $\\ln|y| = x^2 + C$. Using $y(0)=5$: $C = \\ln 5$. Solution: $y = 5e^{x^2}$.",
-          "explanation": "$\\frac{1}{y}dy = 2x\\,dx$, so $\\ln|y| = x^2 + C$. Using $y(0)=5$: $C = \\ln 5$. Solution: $y = 5e^{x^2}$.",
-          "figure": {
-            "type": "slope_field",
-            "expr": "0.35*x - 0.25*y + 0.1*2",
-            "sol_fn": "1.4*x - 5.2 + 5*exp(-0.25*x)",
-            "xmin": -4,
-            "xmax": 4,
-            "ymin": -4,
-            "ymax": 4,
-            "width": 225
-          }
-        },
-        {
           "q": "A population grows according to $\\frac{dP}{dt} = 0.05P$, with $P(0) = 2000$.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
@@ -49,7 +31,17 @@
             "$P(20) = 2000e^1 \\approx 5437$."
           ],
           "answer": "(a) $P(t) = 2000e^{0.05t}$.; (b) $P(20) = 2000e^1 \\approx 5437$.",
-          "explanation": "(a) $P(t) = 2000e^{0.05t}$.; (b) $P(20) = 2000e^1 \\approx 5437$."
+          "explanation": "(a) $P(t) = 2000e^{0.05t}$.; (b) $P(20) = 2000e^1 \\approx 5437$.",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.2*x - 0.25*y + 0.1*(-2)",
+            "sol_fn": "0.8*x - 3.2 + 2*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
         },
         {
           "q": "Newton's law of cooling gives $\\frac{dT}{dt} = -k(T - 20)$ for an object cooling in a $20°$C room. If $T(0) = 100$ and $T(5) = 60$, find $k$ and hence $T(t)$.",
@@ -60,30 +52,12 @@
           "explanation": "Solving: $T(t) = 20 + 80e^{-kt}$. Using $T(5)=60$: $40 = 80e^{-5k}$, so $e^{-5k} = \\frac{1}{2}$, giving $k = \\frac{\\ln 2}{5} \\approx 0.1386$. So $T(t) = 20 + 80e^{-0.1386t}$."
         },
         {
-          "q": "Solve $\\frac{dy}{dx} = \\frac{y}{x}$, given $y(1)=4$.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "More separable equations",
-          "answer": "$\\frac{1}{y}dy = \\frac{1}{x}dx$: $\\ln|y|=\\ln|x|+C$, so $y=Ax$ for constant $A$. Using $y(1)=4$: $A=4$: $y=4x$.",
-          "explanation": "$\\frac{1}{y}dy = \\frac{1}{x}dx$: $\\ln|y|=\\ln|x|+C$, so $y=Ax$ for constant $A$. Using $y(1)=4$: $A=4$: $y=4x$."
-        },
-        {
           "q": "Solve $\\frac{dy}{dx} = y(1-y)$ (logistic-type equation), given $y(0)=\\frac{1}{2}$, using partial fractions $\\frac{1}{y(1-y)}=\\frac{1}{y}+\\frac{1}{1-y}$.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "More separable equations",
           "answer": "$\\int\\left(\\frac{1}{y}+\\frac{1}{1-y}\\right)dy = \\int dx$: $\\ln|y|-\\ln|1-y|=x+C$, i.e. $\\ln\\left|\\frac{y}{1-y}\\right|=x+C$. Using $y(0)=\\frac{1}{2}$: $\\frac{y}{1-y}=1$ at $x=0$, so $C=0$: $\\frac{y}{1-y}=e^x$, giving $y=\\frac{e^x}{1+e^x}$.",
-          "explanation": "$\\int\\left(\\frac{1}{y}+\\frac{1}{1-y}\\right)dy = \\int dx$: $\\ln|y|-\\ln|1-y|=x+C$, i.e. $\\ln\\left|\\frac{y}{1-y}\\right|=x+C$. Using $y(0)=\\frac{1}{2}$: $\\frac{y}{1-y}=1$ at $x=0$, so $C=0$: $\\frac{y}{1-y}=e^x$, giving $y=\\frac{e^x}{1+e^x}$.",
-          "figure": {
-            "type": "slope_field",
-            "expr": "0.35*x - 0.25*y + 0.1*2",
-            "sol_fn": "1.4*x - 5.2 + 5*exp(-0.25*x)",
-            "xmin": -4,
-            "xmax": 4,
-            "ymin": -4,
-            "ymax": 4,
-            "width": 225
-          }
+          "explanation": "$\\int\\left(\\frac{1}{y}+\\frac{1}{1-y}\\right)dy = \\int dx$: $\\ln|y|-\\ln|1-y|=x+C$, i.e. $\\ln\\left|\\frac{y}{1-y}\\right|=x+C$. Using $y(0)=\\frac{1}{2}$: $\\frac{y}{1-y}=1$ at $x=0$, so $C=0$: $\\frac{y}{1-y}=e^x$, giving $y=\\frac{e^x}{1+e^x}$."
         },
         {
           "q": "A tank has 100 L of pure water. Brine with concentration 2 kg/L flows in at 3 L/min, and the well-mixed solution drains at the same rate, so the volume stays constant. Let $y(t)$ be the amount of salt (kg) at time $t$. The differential equation is $\\frac{dy}{dt} = 6 - \\frac{3y}{100}$.",
@@ -112,23 +86,28 @@
             "ymax": 7,
             "width": 220
           }
-        }
-      ]
-    },
-    {
-      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
-      "questions": [
+        },
         {
           "q": "For the differential equation $\\frac{dy}{dx}=x-y$, find the slope of the solution curve at the points $(0,0)$, $(1,0)$, and $(1,1)$.",
-          "difficulty": "Intermediate",
+          "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Slope fields and qualitative behavior",
           "answer": "At $(0,0)$: slope $=0-0=0$. At $(1,0)$: slope $=1-0=1$. At $(1,1)$: slope $=1-1=0$.",
-          "explanation": "At $(0,0)$: slope $=0-0=0$. At $(1,0)$: slope $=1-0=1$. At $(1,1)$: slope $=1-1=0$."
+          "explanation": "At $(0,0)$: slope $=0-0=0$. At $(1,0)$: slope $=1-0=1$. At $(1,1)$: slope $=1-1=0$.",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.2*x - 0.35*y + 0.1*(-2)",
+            "sol_fn": "0.57*x - 1.63 + 4*exp(-0.35*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
         },
         {
           "q": "Verify that $y=x-1+2e^{-x}$ is a solution to $\\frac{dy}{dx}=x-y$, by substituting into both sides.",
-          "difficulty": "Intermediate",
+          "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Slope fields and qualitative behavior",
           "answer": "$\\frac{dy}{dx}=1-2e^{-x}$. Right side: $x-y=x-(x-1+2e^{-x})=1-2e^{-x}$. Both sides equal $1-2e^{-x}$, confirming the solution.",
@@ -144,7 +123,12 @@
             "ymax": 5,
             "width": 200
           }
-        },
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
         {
           "q": "The graph shows the logistic solution $y=\\frac{e^x}{1+e^x}$ found earlier for $\\frac{dy}{dx}=y(1-y)$, $y(0)=\\frac{1}{2}$. Use the graph to describe the long-run behavior of $y$ as $x\\rightarrow\\infty$ and as $x\\rightarrow-\\infty$.",
           "difficulty": "Intermediate",
@@ -173,22 +157,6 @@
           "explanation": "$A(t)=80e^{-kt}$. Using $A(30)=20$: $\\frac{20}{80}=\\frac{1}{4}=e^{-30k}$, so $k=\\frac{\\ln4}{30}\\approx0.0462$/day. Half-life: $e^{-kt_{1/2}}=\\frac{1}{2}$ gives $t_{1/2}=\\frac{\\ln2}{k}=\\frac{30\\ln2}{\\ln4}=15$ days."
         },
         {
-          "q": "Solve $\\frac{dy}{dx}=\\frac{x^2}{y^2}$, given $y(0)=2$.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Separable equations with algebraic solutions",
-          "answer": "$y^2\\,dy=x^2\\,dx$: $\\frac{y^3}{3}=\\frac{x^3}{3}+C$. Using $y(0)=2$: $\\frac{8}{3}=C$. Solution: $y^3=x^3+8$, i.e. $y=(x^3+8)^{1/3}$.",
-          "explanation": "$y^2\\,dy=x^2\\,dx$: $\\frac{y^3}{3}=\\frac{x^3}{3}+C$. Using $y(0)=2$: $\\frac{8}{3}=C$. Solution: $y^3=x^3+8$, i.e. $y=(x^3+8)^{1/3}$."
-        },
-        {
-          "q": "Solve $\\frac{dy}{dx}=\\frac{1}{2y}$, given $y(0)=3$.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Separable equations with algebraic solutions",
-          "answer": "$2y\\,dy=dx$: $y^2=x+C$. Using $y(0)=3$: $C=9$. Solution: $y=\\sqrt{x+9}$ (positive root, since $y(0)=3>0$).",
-          "explanation": "$2y\\,dy=dx$: $y^2=x+C$. Using $y(0)=3$: $C=9$. Solution: $y=\\sqrt{x+9}$ (positive root, since $y(0)=3>0$)."
-        },
-        {
           "q": "For the mixing problem $\\frac{dy}{dt}=6-\\frac{3y}{100}$ with $y(0)=0$, verify that $y(t)=200\\left(1-e^{-0.03t}\\right)$ is a solution, and confirm it approaches the equilibrium $200$ found earlier as $t\\rightarrow\\infty$.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
@@ -206,27 +174,20 @@
             "ymax": 220,
             "width": 220
           }
-        }
-      ]
-    },
-    {
-      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
-      "questions": [
+        },
         {
           "q": "Solve $\\frac{dy}{dx}=e^{x-y}$, given $y(0)=0$, using the fact that $e^{x-y}=e^x\\cdot e^{-y}$.",
-          "difficulty": "Challenging",
+          "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Verifying a solution to an applied model",
-          "cross_lesson": "4.02 Riemann Sums and Definite Integrals",
           "answer": "$e^y\\,dy=e^x\\,dx$: $e^y=e^x+C$. Using $y(0)=0$: $1=1+C$, so $C=0$: $e^y=e^x$, giving $y=x$.",
           "explanation": "$e^y\\,dy=e^x\\,dx$: $e^y=e^x+C$. Using $y(0)=0$: $1=1+C$, so $C=0$: $e^y=e^x$, giving $y=x$."
         },
         {
           "q": "A pond's fish population $P$ grows according to $\\frac{dP}{dt}=0.08P\\left(1-\\frac{P}{500}\\right)$, a logistic model with carrying capacity $500$. Without solving the equation explicitly, determine the equilibrium population levels (where $\\frac{dP}{dt}=0$), and state which one is realistic for a growing population starting from $P(0)=50$.",
-          "difficulty": "Challenging",
+          "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Verifying a solution to an applied model",
-          "cross_lesson": "5.01 The Fundamental Theorem of Calculus",
           "answer": "Setting $\\frac{dP}{dt}=0$: $P=0$ or $P=500$. Starting from $P(0)=50>0$, the population will grow toward the stable equilibrium $P=500$ (the carrying capacity), since $P=0$ is an unstable equilibrium for any positive starting population.",
           "explanation": "Setting $\\frac{dP}{dt}=0$: $P=0$ or $P=500$. Starting from $P(0)=50>0$, the population will grow toward the stable equilibrium $P=500$ (the carrying capacity), since $P=0$ is an unstable equilibrium for any positive starting population.",
           "figure": {
@@ -243,39 +204,96 @@
         },
         {
           "q": "Solve $\\frac{dy}{dx}=\\frac{\\cos x}{y}$, given $y(0)=-2$, and state why the negative root must be chosen.",
-          "difficulty": "Challenging",
+          "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Verifying a solution to an applied model",
-          "cross_lesson": "6.01 Related Rates",
           "answer": "$y\\,dy=\\cos x\\,dx$: $\\frac{y^2}{2}=\\sin x+C$. Using $y(0)=-2$: $2=0+C$, so $C=2$: $y^2=2\\sin x+4$, giving $y=-\\sqrt{2\\sin x+4}$. The negative root is required because $y(0)=-2<0$, and $y$ must vary continuously from that starting sign.",
           "explanation": "$y\\,dy=\\cos x\\,dx$: $\\frac{y^2}{2}=\\sin x+C$. Using $y(0)=-2$: $2=0+C$, so $C=2$: $y^2=2\\sin x+4$, giving $y=-\\sqrt{2\\sin x+4}$. The negative root is required because $y(0)=-2<0$, and $y$ must vary continuously from that starting sign."
         },
         {
           "q": "A drug is eliminated from the bloodstream according to $\\frac{dC}{dt}=-0.2C$, where $C$ is concentration (mg/L) and $t$ is hours. If the initial dose gives $C(0)=50$ mg/L, find $C(t)$, then find how many hours it takes for the concentration to drop below $5$ mg/L, to one decimal place.",
-          "difficulty": "Challenging",
+          "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "A final applied separable model",
-          "cross_lesson": "6.02 Optimization and Curve Sketching",
           "answer": "$C(t)=50e^{-0.2t}$. Setting $50e^{-0.2t}=5$: $e^{-0.2t}=0.1$, so $t=\\frac{\\ln0.1}{-0.2}=\\frac{-2.3026}{-0.2}\\approx11.5$ hours.",
           "explanation": "$C(t)=50e^{-0.2t}$. Setting $50e^{-0.2t}=5$: $e^{-0.2t}=0.1$, so $t=\\frac{\\ln0.1}{-0.2}=\\frac{-2.3026}{-0.2}\\approx11.5$ hours."
-        },
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
         {
-          "q": "Logistic model: $\\frac{dP}{dt}=rP(1-P/K)$. At $P=K/2$, the growth rate is:.",
+          "q": "Level 2 · MediumFind the particular solution to the differential equation $\\frac{dy}{dx} = \\frac{x}{y}$ with initial condition $y(0) = -4$. State the domain of the solution.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Slope fields and qualitative behavior",
-          "cross_lesson": "7.01 Integration by Substitution",
-          "answer": "Final Answer: maximum. Applying Differential Equations principles, Maximum growth at $P=K/2$. Therefore, the verified correct option is maximum.",
-          "explanation": "Applying Differential Equations principles, Maximum growth at $P=K/2$. Therefore, the verified correct option is maximum."
+          "cross_lesson": "4.02 Riemann Sums and Definite Integrals",
+          "answer": "1. Separate variables: $y\\,dy = x\\,dx$ 2. Integrate both sides: $\\int y\\,dy = \\int x\\,dx \\Rightarrow \\frac{y^2}{2} = \\frac{x^2}{2} + C_1 \\Rightarrow y^2 = x^2 + C$ 3. Substitute initial condition $x = 0, y = -4$: $(-4)^2 = 0^2 + C \\Rightarrow C = 16 \\Rightarrow y^2 = x^2 + 16$ 4. Solve for $y$: Since $y(0) = -4 0$ for all $x$, $y$ is strictly negative and never zero. The domain is $(-\\infty, \\infty)$.",
+          "explanation": "1. Separate variables: $y\\,dy = x\\,dx$ 2. Integrate both sides: $\\int y\\,dy = \\int x\\,dx \\Rightarrow \\frac{y^2}{2} = \\frac{x^2}{2} + C_1 \\Rightarrow y^2 = x^2 + C$ 3. Substitute initial condition $x = 0, y = -4$: $(-4)^2 = 0^2 + C \\Rightarrow C = 16 \\Rightarrow y^2 = x^2 + 16$ 4. Solve for $y$: Since $y(0) = -4 0$ for all $x$, $y$ is strictly negative and never zero. The domain is $(-\\infty, \\infty)$."
         },
         {
-          "q": "Carrying capacity $K$ in the logistic model: as $P\\rightarrow K$ from below, growth rate $dP/dt\\rightarrow$.",
+          "q": "Level 1 · FoundationsWhich of the following functions is a solution to the differential equation $y'' + 4y = 0$? (A) $y = e^{2x}$ (B) $y = \\sin(2x) - 3\\cos(2x)$ (C) $y = 4\\cos(4x)$ (D) $y = x^2 - 4$",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Visualizing a logistic solution curve",
+          "cross_lesson": "5.01 The Fundamental Theorem of Calculus",
+          "answer": "Test (B): $y = \\sin(2x) - 3\\cos(2x)$. First derivative: $y' = 2\\cos(2x) + 6\\sin(2x)$ Second derivative: $y'' = -4\\sin(2x) + 12\\cos(2x) = -4\\left(\\sin(2x) - 3\\cos(2x)\\right) = -4y$ Substitute into the differential equation: $y'' + 4y = -4y + 4y = 0$ The equation is satisfied identically. Correct answer is (B).",
+          "explanation": "Test (B): $y = \\sin(2x) - 3\\cos(2x)$. First derivative: $y' = 2\\cos(2x) + 6\\sin(2x)$ Second derivative: $y'' = -4\\sin(2x) + 12\\cos(2x) = -4\\left(\\sin(2x) - 3\\cos(2x)\\right) = -4y$ Substitute into the differential equation: $y'' + 4y = -4y + 4y = 0$ The equation is satisfied identically. Correct answer is (B).",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "e**(2*x)"
+            ],
+            "xmin": -4.5,
+            "xmax": 4.5,
+            "ymin": -2.0,
+            "ymax": 20.0,
+            "width": 225,
+            "point_labels": [
+              {
+                "x": -0.5,
+                "y": 0.37,
+                "label": "$(-0.5, 0.37)$"
+              }
+            ]
+          }
+        },
+        {
+          "q": "Level 3 · Advanced / AP FRQLet $y = f(x)$ be the particular solution to $\\frac{dy}{dx} = xy^2$ with $f(1) = -1$. Use Euler's method with step size $\\Delta x = 0.5$ starting at $x = 1$ to approximate $f(2)$, and determine whether the approximation is an overestimate or underestimate by computing $\\frac{d^2y}{dx^2}$ at $(1, -1)$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Another applied separable equation",
+          "cross_lesson": "6.01 Related Rates",
+          "answer": "Step 1 · Euler Iteration: • $(x_0, y_0) = (1, -1)$. Slope $m_0 = (1)(-1)^2 = 1$. $y_1 = -1 + (1)(0.5) = -0.5$. Point $(1.5, -0.5)$. • $(x_1, y_1) = (1.5, -0.5)$. Slope $m_1 = (1.5)(-0.5)^2 = 1.5(0.25) = 0.375$. $y_2 = -0.5 + (0.375)(0.5) = -0.5 + 0.1875 = \\mathbf{-0.3125}$. Step 2 · Second Derivative Evaluation: $\\frac{d^2y}{dx^2} = \\frac{d}{dx}[x y^2] = (1)y^2 + x(2y y') = y^2 + 2xy(x y^2) = y^2 + 2x^2 y^3.$ At $(1, -1)$: \\[ \\left. \\frac{d^2y}{dx^2} \\right|_{(1, -1)} = (-1)^2 + 2(1)^2(-1)^3 = 1 + 2(-1) = 1 - 2 = -1 concave down, so the approximation is an overestimate.",
+          "explanation": "Step 1 · Euler Iteration: • $(x_0, y_0) = (1, -1)$. Slope $m_0 = (1)(-1)^2 = 1$. $y_1 = -1 + (1)(0.5) = -0.5$. Point $(1.5, -0.5)$. • $(x_1, y_1) = (1.5, -0.5)$. Slope $m_1 = (1.5)(-0.5)^2 = 1.5(0.25) = 0.375$. $y_2 = -0.5 + (0.375)(0.5) = -0.5 + 0.1875 = \\mathbf{-0.3125}$. Step 2 · Second Derivative Evaluation: $\\frac{d^2y}{dx^2} = \\frac{d}{dx}[x y^2] = (1)y^2 + x(2y y') = y^2 + 2xy(x y^2) = y^2 + 2x^2 y^3.$ At $(1, -1)$: \\[ \\left. \\frac{d^2y}{dx^2} \\right|_{(1, -1)} = (-1)^2 + 2(1)^2(-1)^3 = 1 + 2(-1) = 1 - 2 = -1 concave down, so the approximation is an overestimate."
+        },
+        {
+          "q": "Solve the separable DE $\\frac{dy}{dx}=\\frac{x+1}{y}$ given $y=2$ when $x=0$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Separable equations with algebraic solutions",
+          "cross_lesson": "6.02 Optimization and Curve Sketching",
+          "answer": "Separate: $y\\,dy=(x+1)\\,dx$. Integrate: $\\frac{y^2}{2}=\\frac{x^2}{2}+x+c$. At $(0,2)$: $2=c$. So $y^2=x^2+2x+4$.",
+          "explanation": "Separate: $y\\,dy=(x+1)\\,dx$. Integrate: $\\frac{y^2}{2}=\\frac{x^2}{2}+x+c$. At $(0,2)$: $2=c$. So $y^2=x^2+2x+4$."
+        },
+        {
+          "q": "The temperature $\\theta$ of a cooling metal rod satisfies $\\frac{d\\theta}{dt} = -k(\\theta - 20)$, where $t$ is time in minutes and $k$ is a constant. Given $\\theta = 80$ when $t = 0$ and $\\theta = 50$ when $t = 10$, find the value of $t$ when $\\theta = 30$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Verifying a solution to an applied model",
+          "cross_lesson": "7.01 Integration by Substitution",
+          "answer": "Separate variables and integrate: $\\int \\frac{1}{\\theta - 20}\\,d\\theta = -\\int k\\,dt \\Rightarrow \\ln(\\theta - 20) = -kt + C$ Apply initial condition $t = 0, \\theta = 80$: $\\ln(60) = C \\Rightarrow \\ln\\left(\\frac{\\theta - 20}{60}\\right) = -kt \\Rightarrow \\theta - 20 = 60e^{-kt}$ Apply condition $t = 10, \\theta = 50$: $30 = 60e^{-10k} \\Rightarrow e^{-10k} = \\frac{1}{2} \\Rightarrow k = \\frac{\\ln 2}{10} \\approx 0.06931$ Set $\\theta = 30$: $10 = 60e^{-kt} \\Rightarrow e^{-kt} = \\frac{1}{6} \\Rightarrow t = \\frac{\\ln 6}{k} = \\frac{10\\ln 6}{\\ln 2} \\approx 25.8\\mathrm{\\ minutes}$",
+          "explanation": "Separate variables and integrate: $\\int \\frac{1}{\\theta - 20}\\,d\\theta = -\\int k\\,dt \\Rightarrow \\ln(\\theta - 20) = -kt + C$ Apply initial condition $t = 0, \\theta = 80$: $\\ln(60) = C \\Rightarrow \\ln\\left(\\frac{\\theta - 20}{60}\\right) = -kt \\Rightarrow \\theta - 20 = 60e^{-kt}$ Apply condition $t = 10, \\theta = 50$: $30 = 60e^{-10k} \\Rightarrow e^{-10k} = \\frac{1}{2} \\Rightarrow k = \\frac{\\ln 2}{10} \\approx 0.06931$ Set $\\theta = 30$: $10 = 60e^{-kt} \\Rightarrow e^{-kt} = \\frac{1}{6} \\Rightarrow t = \\frac{\\ln 6}{k} = \\frac{10\\ln 6}{\\ln 2} \\approx 25.8\\mathrm{\\ minutes}$"
+        },
+        {
+          "q": "Solve the equation $z^3 + 8 = 0$, expressing all solutions in Cartesian form $a + bi$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "A final applied separable model",
           "cross_lesson": "7.02 Integration by Parts",
-          "answer": "Final Answer: $0$. Applying Differential Equations principles, At $P=K$: $dP/dt=rK(1-K/K)=0$. Therefore, the verified correct option is $0$.",
-          "explanation": "Applying Differential Equations principles, At $P=K$: $dP/dt=rK(1-K/K)=0$. Therefore, the verified correct option is $0$."
+          "answer": "Write $z^3 = -8 = 8e^{i\\pi}$. By De Moivre's Theorem, the three cube roots are: $z_k = 2\\exp\\left(i\\frac{\\pi + 2\\pi k}{3}\\right) \\quad \\mathrm{for\\ } k = 0, 1, 2.$ For $k = 0$: $z_0 = 2e^{i\\pi/3} = 2\\left(\\frac{1}{2} + i\\frac{\\sqrt{3}}{2}\\right) = 1 + i\\sqrt{3}$. For $k = 1$: $z_1 = 2e^{i\\pi} = 2(-1) = -2$. For $k = 2$: $z_2 = 2e^{i 5\\pi/3} = 2e^{-i\\pi/3} = 2\\left(\\frac{1}{2} - i\\frac{\\sqrt{3}}{2}\\right) = 1 - i\\sqrt{3}$. Notice that $1 \\pm i\\sqrt{3}$ are complex conjugates, as predicted by the Conjugate Root Theorem for $z^3 + 8 \\in \\mathbb{R}[z]$.",
+          "explanation": "Write $z^3 = -8 = 8e^{i\\pi}$. By De Moivre's Theorem, the three cube roots are: $z_k = 2\\exp\\left(i\\frac{\\pi + 2\\pi k}{3}\\right) \\quad \\mathrm{for\\ } k = 0, 1, 2.$ For $k = 0$: $z_0 = 2e^{i\\pi/3} = 2\\left(\\frac{1}{2} + i\\frac{\\sqrt{3}}{2}\\right) = 1 + i\\sqrt{3}$. For $k = 1$: $z_1 = 2e^{i\\pi} = 2(-1) = -2$. For $k = 2$: $z_2 = 2e^{i 5\\pi/3} = 2e^{-i\\pi/3} = 2\\left(\\frac{1}{2} - i\\frac{\\sqrt{3}}{2}\\right) = 1 - i\\sqrt{3}$. Notice that $1 \\pm i\\sqrt{3}$ are complex conjugates, as predicted by the Conjugate Root Theorem for $z^3 + 8 \\in \\mathbb{R}[z]$."
         }
       ]
     },
@@ -283,230 +301,25 @@
       "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
-          "q": "Solve the differential equation $\\frac{dy}{dx} = \\frac{2x}{y}$.",
+          "q": "A population grows according to the logistic model $\\frac{dP}{dt} = 0.08 P \\left(1 - \\frac{P}{315}\\right)$. Find the population $P$ at the point of maximum growth.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "General Solutions of Separable Equations",
+          "target": "Solving by separation of variables",
           "choices": [
-            "$y^2 = 2x^2 + C$",
-            "$y = x^2 + C$",
-            "$y^2 = x^2 + C$",
-            "$y = 2x^2 + C$"
-          ],
-          "correct": 0,
-          "answer": "Separate variables: $y\\,dy = 2x\\,dx$. Integrate both sides: $\\frac{1}{2}y^2 = x^2 + C_1 \\Rightarrow y^2 = 2x^2 + C$.",
-          "explanation": "Separate variables: $y\\,dy = 2x\\,dx$. Integrate both sides: $\\frac{1}{2}y^2 = x^2 + C_1 \\Rightarrow y^2 = 2x^2 + C$."
-        },
-        {
-          "q": "Find the general solution to $\\frac{dy}{dx} = 3x^2 y$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "General Solutions of Separable Equations",
-          "choices": [
-            "$y = C e^{x^3}$",
-            "$y = e^{x^3} + C$",
-            "$y = C x^3$",
-            "$y = 3x^3 + C$"
-          ],
-          "correct": 0,
-          "answer": "$\\frac{1}{y}\\,dy = 3x^2\\,dx \\Rightarrow \\ln|y| = x^3 + C_1 \\Rightarrow |y| = e^{C_1}e^{x^3} \\Rightarrow y = C e^{x^3}$.",
-          "explanation": "$\\frac{1}{y}\\,dy = 3x^2\\,dx \\Rightarrow \\ln|y| = x^3 + C_1 \\Rightarrow |y| = e^{C_1}e^{x^3} \\Rightarrow y = C e^{x^3}$."
-        },
-        {
-          "q": "Find the general solution of $\\frac{dy}{dx} = (1 + y^2)e^x$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "General Solutions of Separable Equations",
-          "choices": [
-            "$\\arctan(y) = e^x + C$",
-            "$y = \\tan(e^x) + C$",
-            "$y = e^x + C$",
-            "$\\ln(1 + y^2) = e^x + C$"
-          ],
-          "correct": 0,
-          "answer": "$\\frac{1}{1 + y^2}\\,dy = e^x\\,dx \\Rightarrow \\arctan(y) = e^x + C$.",
-          "explanation": "$\\frac{1}{1 + y^2}\\,dy = e^x\\,dx \\Rightarrow \\arctan(y) = e^x + C$.",
-          "figure": {
-            "type": "slope_field",
-            "expr": "0.35*x - 0.25*y + 0.1*3",
-            "sol_fn": "1.4*x - 5.2 + 6*exp(-0.25*x)",
-            "xmin": -4,
-            "xmax": 4,
-            "ymin": -4,
-            "ymax": 4,
-            "width": 225
-          }
-        },
-        {
-          "q": "Solve the initial value problem $\\frac{dy}{dx} = 2xy$ with $y(0) = 3$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Initial Value Problems (IVPs)",
-          "choices": [
-            "$y = 3e^{x^2}$",
-            "$y = e^{x^2} + 2$",
-            "$y = 3e^{2x}$",
-            "$y = 3x^2 + 3$"
-          ],
-          "correct": 0,
-          "answer": "$\\frac{dy}{y} = 2x\\,dx \\Rightarrow \\ln|y| = x^2 + C_1 \\Rightarrow y = C e^{x^2}$. Using $y(0) = 3 \\Rightarrow C = 3$. Thus $y = 3e^{x^2}$.",
-          "explanation": "$\\frac{dy}{y} = 2x\\,dx \\Rightarrow \\ln|y| = x^2 + C_1 \\Rightarrow y = C e^{x^2}$. Using $y(0) = 3 \\Rightarrow C = 3$. Thus $y = 3e^{x^2}$."
-        },
-        {
-          "q": "Solve $\\frac{dy}{dx} = -\\frac{x}{y}$ with $y(3) = 4$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Initial Value Problems (IVPs)",
-          "choices": [
-            "$x^2 + y^2 = 25$",
-            "$x^2 - y^2 = -7$",
-            "$y = -x + 7$",
-            "$x^2 + y^2 = 7$"
-          ],
-          "correct": 0,
-          "answer": "$y\\,dy = -x\\,dx \\Rightarrow \\frac{y^2}{2} = -\\frac{x^2}{2} + C_1 \\Rightarrow x^2 + y^2 = C$. At $(3, 4)$: $9 + 16 = 25 \\Rightarrow x^2 + y^2 = 25$.",
-          "explanation": "$y\\,dy = -x\\,dx \\Rightarrow \\frac{y^2}{2} = -\\frac{x^2}{2} + C_1 \\Rightarrow x^2 + y^2 = C$. At $(3, 4)$: $9 + 16 = 25 \\Rightarrow x^2 + y^2 = 25$."
-        },
-        {
-          "q": "Solve $\\frac{dy}{dt} = k y$ given $y(0) = 50$ and $y(2) = 200$. What is the formula for $y(t)$?",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Initial Value Problems (IVPs)",
-          "choices": [
-            "$y(t) = 50 \\cdot 2^t$",
-            "$y(t) = 50 e^{2t}$",
-            "$y(t) = 50 \\cdot 4^t$",
-            "$y(t) = 50 + 75t$"
-          ],
-          "correct": 0,
-          "answer": "$y(t) = y_0 e^{kt} = 50 e^{kt}$. $y(2) = 50 e^{2k} = 200 \\Rightarrow e^{2k} = 4 \\Rightarrow e^k = 2$. Thus $y(t) = 50(2^t)$.",
-          "explanation": "$y(t) = y_0 e^{kt} = 50 e^{kt}$. $y(2) = 50 e^{2k} = 200 \\Rightarrow e^{2k} = 4 \\Rightarrow e^k = 2$. Thus $y(t) = 50(2^t)$."
-        },
-        {
-          "q": "Along which curve in the $xy$-plane do the line segments in the slope field for $\\frac{dy}{dx} = x - y$ have slope 0?",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Slope Fields and Solution Curves",
-          "choices": [
-            "Along the line $y = x$",
-            "Along the $x$-axis ($y = 0$)",
-            "Along the $y$-axis ($x = 0$)",
-            "Along $y = -x$"
-          ],
-          "correct": 0,
-          "answer": "Slope $= 0 \\Rightarrow \\frac{dy}{dx} = 0 \\Rightarrow x - y = 0 \\Rightarrow y = x$.",
-          "explanation": "Slope $= 0 \\Rightarrow \\frac{dy}{dx} = 0 \\Rightarrow x - y = 0 \\Rightarrow y = x$."
-        },
-        {
-          "q": "A slope field shows line segments that depend ONLY on $y$ (horizontal rows of equal slopes). Which differential equation could this represent?",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Slope Fields and Solution Curves",
-          "choices": [
-            "$\\frac{dy}{dx} = y(2 - y)$",
-            "$\\frac{dy}{dx} = x^2 - y$",
-            "$\\frac{dy}{dx} = x y$",
-            "$\\frac{dy}{dx} = 3x + 1$"
-          ],
-          "correct": 0,
-          "answer": "If slopes are identical for every $x$ at a fixed $y$, $\\frac{dy}{dx}$ is independent of $x$, as in autonomous equations like $\\frac{dy}{dx} = y(2 - y)$.",
-          "explanation": "If slopes are identical for every $x$ at a fixed $y$, $\\frac{dy}{dx}$ is independent of $x$, as in autonomous equations like $\\frac{dy}{dx} = y(2 - y)$.",
-          "figure": {
-            "type": "slope_field",
-            "expr": "0.35*x - 0.25*y + 0.1*4",
-            "sol_fn": "1.4*x - 5.2 + 7*exp(-0.25*x)",
-            "xmin": -4,
-            "xmax": 4,
-            "ymin": -4,
-            "ymax": 4,
-            "width": 225
-          }
-        }
-      ]
-    },
-    {
-      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
-      "questions": [
-        {
-          "q": "For $\\frac{dy}{dx} = x^2 + y^2$, what can be said about all non-origin slopes in the slope field?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Slope Fields and Solution Curves",
-          "choices": [
-            "All slopes are strictly positive",
-            "Slopes are positive in quadrants I and III only",
-            "Slopes are 0 everywhere",
-            "Slopes are negative when $x < 0$"
-          ],
-          "correct": 0,
-          "answer": "Since $x^2 + y^2 > 0$ for all $(x, y) \\neq (0, 0)$, all tangent line segments have strictly positive slope.",
-          "explanation": "Since $x^2 + y^2 > 0$ for all $(x, y) \\neq (0, 0)$, all tangent line segments have strictly positive slope."
-        },
-        {
-          "q": "In the logistic differential equation $\\frac{dP}{dt} = 0.05 P\\left(1 - \\frac{P}{800}\\right)$, what is the carrying capacity $M$?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Logistic Growth Models",
-          "choices": [
-            "$800$",
-            "$0.05$",
-            "$400$",
-            "$16000$"
-          ],
-          "correct": 0,
-          "answer": "The standard logistic equation is $\\frac{dP}{dt} = kP(1 - P/M)$, where $M$ is the carrying capacity. Here $M = 800$.",
-          "explanation": "The standard logistic equation is $\\frac{dP}{dt} = kP(1 - P/M)$, where $M$ is the carrying capacity. Here $M = 800$."
-        },
-        {
-          "q": "At what population $P$ is the growth rate $\\frac{dP}{dt}$ maximized in the logistic equation $\\frac{dP}{dt} = 0.05 P\\left(1 - \\frac{P}{800}\\right)$?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Logistic Growth Models",
-          "choices": [
-            "$P = 400$",
-            "$P = 800$",
-            "$P = 200$",
-            "$P = 0$"
-          ],
-          "correct": 0,
-          "answer": "The growth rate is a quadratic function of $P$ that attains its maximum at half the carrying capacity: $P = M/2 = 800/2 = 400$.",
-          "explanation": "The growth rate is a quadratic function of $P$ that attains its maximum at half the carrying capacity: $P = M/2 = 800/2 = 400$."
-        },
-        {
-          "q": "What is $\\lim_{t \\rightarrow \\infty} P(t)$ for any solution to $\\frac{dP}{dt} = 0.05 P\\left(1 - \\frac{P}{800}\\right)$ with $P(0) = 50$?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Logistic Growth Models",
-          "choices": [
-            "$800$",
-            "$\\infty$",
-            "$400$",
-            "$50$"
-          ],
-          "correct": 0,
-          "answer": "For any initial population $P_0 > 0$, the logistic curve asymptotically approaches the stable carrying capacity $M = 800$ as $t \\rightarrow \\infty$.",
-          "explanation": "For any initial population $P_0 > 0$, the logistic curve asymptotically approaches the stable carrying capacity $M = 800$ as $t \\rightarrow \\infty$."
-        },
-        {
-          "q": "The equation $y'=ky$ models exponential growth when:",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Slope Fields and Solution Curves",
-          "choices": [
-            "$k=0$",
-            "$k<0$",
-            "$k=1$",
-            "$k>0$"
+            "630",
+            "78.75",
+            "315",
+            "157.5"
           ],
           "correct": 3,
-          "answer": "Applying Differential Equations principles, $k>0$: growth; $k0$.",
-          "explanation": "Applying Differential Equations principles, $k>0$: growth; $k0$."
+          "answer": "Logistic growth is maximal at the point of inflection, where $P = M/2 = 315/2 = 157.5$.",
+          "explanation": "Logistic growth is maximal at the point of inflection, where $P = M/2 = 315/2 = 157.5$."
         },
         {
           "q": "Consider the differential equation $\\frac{dy}{dx} = 2x$. Which of the following is a particular solution passing through the point $(1, 3)$?",
-          "difficulty": "Intermediate",
+          "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Logistic Growth Models",
+          "target": "Growth, decay, and applications",
           "choices": [
             "$y = x^2 + 2$",
             "$y = x^2 + 1$",
@@ -518,10 +331,160 @@
           "explanation": "The given differential equation is $\\frac{dy}{dx} = 2x$. To find the general solution, we integrate both sides with respect to $x$: $\\int \\frac{dy}{dx} dx = \\int 2x dx$ $y = x^2 + C$, where $C$ is the constant of integration. We are given that the particular solution passes through the point $(1, 3)$. Substitute these values into the general solution: $3 = (1)^2 + C$ $3 = 1 + C$ $C = 3 - 1 = 2$. Therefore, the particular solution is $y = x^2 + 2$."
         },
         {
-          "q": "A second-order ODE with repeated root $r=r_1$ has general solution:",
+          "q": "Exponential decay: $\\frac{dN}{dt}=-kN$, $k>0$. Solution:",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "More separable equations",
+          "choices": [
+            "$N=N_0e^{kt}$",
+            "$N=N_0/(1+kt)$",
+            "$N=N_0-kt$",
+            "$N=N_0e^{-kt}$"
+          ],
+          "correct": 3,
+          "answer": "Applying Differential Equations principles, $N=N_0e^{-kt}$. Therefore, the verified correct option is $N=N_0e^{-kt}$.",
+          "explanation": "Applying Differential Equations principles, $N=N_0e^{-kt}$. Therefore, the verified correct option is $N=N_0e^{-kt}$."
+        },
+        {
+          "q": "Separable ODE $\\frac{dy}{dx}=xy$. Solution:",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Mixing and applied models",
+          "choices": [
+            "$y=x^2/2+C$",
+            "$y=Ce^x$",
+            "$y=Ce^{x^2/2}$",
+            "$y=Ce^{x^2}$"
+          ],
+          "correct": 2,
+          "answer": "$\\frac{dy}{y}=x\\,dx\\Rightarrow\\ln|y|=x^2/2+C$.",
+          "explanation": "$\\frac{dy}{y}=x\\,dx\\Rightarrow\\ln|y|=x^2/2+C$."
+        },
+        {
+          "q": "Separable ODE: $\\frac{dy}{dx}=\\frac{x}{y}$. Solution (implicit):",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Slope fields and qualitative behavior",
+          "choices": [
+            "$x^2+y^2=C$",
+            "$y^2=x^2$",
+            "$y=x+C$",
+            "$y^2=x^2+C$"
+          ],
+          "correct": 3,
+          "answer": "$y\\,dy=x\\,dx\\Rightarrow y^2/2=x^2/2+C_1$.",
+          "explanation": "$y\\,dy=x\\,dx\\Rightarrow y^2/2=x^2/2+C_1$."
+        },
+        {
+          "q": "Logistic equation steady states (equilibria):",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Visualizing a logistic solution curve",
+          "choices": [
+            "$P=0$ only",
+            "$P=K$ only",
+            "$P=0$ and $P=K$",
+            "$P=K/2$"
+          ],
+          "correct": 2,
+          "answer": "$rP(1-P/K)=0\\Rightarrow P=0$ or $P=K$.",
+          "explanation": "$rP(1-P/K)=0\\Rightarrow P=0$ or $P=K$."
+        },
+        {
+          "q": "The slope field for a differential equation is shown above. The differential equation is of the form $\\frac{dy}{dx} = ky$ for some constant $k$. If the solution curve passes through the point $(0, 1)$ and $(1, 2)$, find the value of $k$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Another applied separable equation",
+          "choices": [
+            "$\\ln 2$",
+            "$2$",
+            "$\\frac{1}{2}$",
+            "$1$"
+          ],
+          "correct": 0,
+          "answer": "The differential equation is given by $\\frac{dy}{dx} = ky$. This is a separable differential equation. We can rewrite it as $\\frac{dy}{y} = k \\, dx$. Integrating both sides, we get $\\int \\frac{dy}{y} = \\int k \\, dx$, which yields $\\ln|y| = kx + C_1$. Exponentiating both sides, we have $|y| = e^{kx + C_1} = e^{C_1} e^{kx}$. Let $C = \\pm e^{C_1}$, so $y = Ce^{kx}$. We are given that the solution curve passes through the point $(0, 1)$. Substituting these values into the general solution: $1 = Ce^{k(0)}$ $1 = C e^0$ $1 = C \\cdot 1$ $C = 1$. So the particular solution is $y = e^{kx}$. We are also given that the solution curve passes through the point $(1, 2)$. Substituting these values into the particular solution: $2 = e^{k(1)}$ $2 = e^k$. To solve for $k$, we take the natural logarithm of both sides: $\\ln 2 = \\ln(e^k)$ $\\ln 2 = k$. Therefore, the value of $k$ is $\\ln 2$.",
+          "explanation": "The differential equation is given by $\\frac{dy}{dx} = ky$. This is a separable differential equation. We can rewrite it as $\\frac{dy}{y} = k \\, dx$. Integrating both sides, we get $\\int \\frac{dy}{y} = \\int k \\, dx$, which yields $\\ln|y| = kx + C_1$. Exponentiating both sides, we have $|y| = e^{kx + C_1} = e^{C_1} e^{kx}$. Let $C = \\pm e^{C_1}$, so $y = Ce^{kx}$. We are given that the solution curve passes through the point $(0, 1)$. Substituting these values into the general solution: $1 = Ce^{k(0)}$ $1 = C e^0$ $1 = C \\cdot 1$ $C = 1$. So the particular solution is $y = e^{kx}$. We are also given that the solution curve passes through the point $(1, 2)$. Substituting these values into the particular solution: $2 = e^{k(1)}$ $2 = e^k$. To solve for $k$, we take the natural logarithm of both sides: $\\ln 2 = \\ln(e^k)$ $\\ln 2 = k$. Therefore, the value of $k$ is $\\ln 2$."
+        },
+        {
+          "q": "Consider the slope field shown below. Which of the following differential equations could represent this slope field, assuming the slopes are defined at all points except where division by zero occurs? $\\frac{dy}{dx} = \\frac{x}{y}$",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Separable equations with algebraic solutions",
+          "choices": [
+            "$\\frac{dy}{dx} = \\frac{x}{y}$",
+            "$\\frac{dy}{dx} = \\frac{y}{x}$",
+            "$\\frac{dy}{dx} = x - y$",
+            "$\\frac{dy}{dx} = x + y$"
+          ],
+          "correct": 0,
+          "answer": "The slope field shows that at points where $y=0$ (the x-axis), the slopes are undefined (vertical lines). This is consistent with the differential equation $\\frac{dy}{dx} = \\frac{x}{y}$, as division by zero occurs when $y=0$. Additionally, observe the slopes in different quadrants. In the first quadrant ($x>0, y>0$), the slopes are positive, consistent with $\\frac{x}{y} > 0$. In the second quadrant ($x0$), the slopes are negative, consistent with $\\frac{x}{y} 0$. In the fourth quadrant ($x>0, y<0$), the slopes are negative, consistent with $\\frac{x}{y} < 0$. Let's examine the other options: $\\frac{dy}{dx} = \\frac{y}{x}$ would have undefined slopes when $x=0$. This is not seen in the slope field. $\\frac{dy}{dx} = x - y$ and $\\frac{dy}{dx} = x + y$ do not exhibit the characteristic vertical slopes along the x-axis ($y=0$).",
+          "explanation": "The slope field shows that at points where $y=0$ (the x-axis), the slopes are undefined (vertical lines). This is consistent with the differential equation $\\frac{dy}{dx} = \\frac{x}{y}$, as division by zero occurs when $y=0$. Additionally, observe the slopes in different quadrants. In the first quadrant ($x>0, y>0$), the slopes are positive, consistent with $\\frac{x}{y} > 0$. In the second quadrant ($x0$), the slopes are negative, consistent with $\\frac{x}{y} 0$. In the fourth quadrant ($x>0, y<0$), the slopes are negative, consistent with $\\frac{x}{y} < 0$. Let's examine the other options: $\\frac{dy}{dx} = \\frac{y}{x}$ would have undefined slopes when $x=0$. This is not seen in the slope field. $\\frac{dy}{dx} = x - y$ and $\\frac{dy}{dx} = x + y$ do not exhibit the characteristic vertical slopes along the x-axis ($y=0$).",
+          "figure": {
+            "type": "slope_field",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "dx": 0.5,
+            "dy": 0.5,
+            "eq": "x/y"
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
+        {
+          "q": "A population of bacteria follows a logistic growth model where $P(t)$ is the population at time $t$ (in hours). The differential equation governing the population growth is $\\frac{dP}{dt} = 0.05P \\left( 1 - \\frac{P}{1000} \\right)$. If the initial population is $P(0) = 200$, use Euler's method with a step size of $\\Delta t = 1$ hour to approximate the population after 1 hour, $P(1)$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Verifying a solution to an applied model",
+          "choices": [
+            "210",
+            "208",
+            "212",
+            "209"
+          ],
+          "correct": 1,
+          "answer": "Euler's method approximates the next value $P(t + \\Delta t)$ using the formula $P(t + \\Delta t) \\approx P(t) + \\frac{dP}{dt} |_{t} \\cdot \\Delta t$. We are given $P(0) = 200$ and $\\Delta t = 1$. First, we find the rate of change at $t=0$: $\\frac{dP}{dt} |_{t=0} = 0.05 \\cdot P(0) \\left( 1 - \\frac{P(0)}{1000} \\right)$ $\\frac{dP}{dt} |_{t=0} = 0.05 \\cdot 200 \\left( 1 - \\frac{200}{1000} \\right)$ $\\frac{dP}{dt} |_{t=0} = 10 \\left( 1 - 0.2 \\right)$ $\\frac{dP}{dt} |_{t=0} = 10 \\cdot 0.8$ $\\frac{dP}{dt} |_{t=0} = 8$ Now, we use Euler's method to approximate $P(1)$: $P(1) \\approx P(0) + \\frac{dP}{dt} |_{t=0} \\cdot \\Delta t$ $P(1) \\approx 200 + 8 \\cdot 1$ $P(1) \\approx 208$",
+          "explanation": "Euler's method approximates the next value $P(t + \\Delta t)$ using the formula $P(t + \\Delta t) \\approx P(t) + \\frac{dP}{dt} |_{t} \\cdot \\Delta t$. We are given $P(0) = 200$ and $\\Delta t = 1$. First, we find the rate of change at $t=0$: $\\frac{dP}{dt} |_{t=0} = 0.05 \\cdot P(0) \\left( 1 - \\frac{P(0)}{1000} \\right)$ $\\frac{dP}{dt} |_{t=0} = 0.05 \\cdot 200 \\left( 1 - \\frac{200}{1000} \\right)$ $\\frac{dP}{dt} |_{t=0} = 10 \\left( 1 - 0.2 \\right)$ $\\frac{dP}{dt} |_{t=0} = 10 \\cdot 0.8$ $\\frac{dP}{dt} |_{t=0} = 8$ Now, we use Euler's method to approximate $P(1)$: $P(1) \\approx P(0) + \\frac{dP}{dt} |_{t=0} \\cdot \\Delta t$ $P(1) \\approx 200 + 8 \\cdot 1$ $P(1) \\approx 208$"
+        },
+        {
+          "q": "Identify the general solution to the first-order differential equation $\\frac{dy}{dx} = 3y$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "A final applied separable model",
+          "choices": [
+            "$y = C \\ln(3x)$",
+            "$y = \\frac{3}{2}x^2 + C$",
+            "$y = C e^{-3x}$",
+            "$y = C e^{3x}$"
+          ],
+          "correct": 3,
+          "answer": "Separation of variables $\\frac{dy}{y} = 3dx \\Rightarrow \\ln|y| = 3x + c_1 \\Rightarrow y = Ce^{3x}$.",
+          "explanation": "Separation of variables $\\frac{dy}{y} = 3dx \\Rightarrow \\ln|y| = 3x + c_1 \\Rightarrow y = Ce^{3x}$."
+        },
+        {
+          "q": "For the differential equation $\\frac{dy}{dx} = 1x -5y$, find the slope of the solution curve at the point $(3, 2)$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Solving by separation of variables",
+          "choices": [
+            "-9",
+            "-5",
+            "7",
+            "-7"
+          ],
+          "correct": 3,
+          "answer": "Substitute $x=3$, $y=2$: $\\frac{dy}{dx} = 1(3) -5(2) = -7$.",
+          "explanation": "Substitute $x=3$, $y=2$: $\\frac{dy}{dx} = 1(3) -5(2) = -7$."
+        },
+        {
+          "q": "A second-order ODE with repeated root $r=r_1$ has general solution:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Growth, decay, and applications",
           "choices": [
             "$y=C_1e^{r_1x}+C_2e^{-r_1x}$",
             "$y=C_1e^{r_1x}$",
@@ -533,34 +496,79 @@
           "explanation": "Applying Differential Equations principles, Repeated root: multiply by $x$. Therefore, the verified correct option is $y=(C_1+C_2x)e^{r_1x}$."
         },
         {
-          "q": "$y''+y=0$: general solution:",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Growth, decay, and applications",
-          "choices": [
-            "$y=C_1\\sin x+C_2\\cos x$",
-            "$y=C_1e^x+C_2e^{-x}$",
-            "$y=C_1x+C_2$",
-            "$y=C_1e^{-x}$"
-          ],
-          "correct": 0,
-          "answer": "Applying Differential Equations principles, Complex roots $\\pm i$. Therefore, the verified correct option is $y=C_1\\sin x+C_2\\cos x$.",
-          "explanation": "Applying Differential Equations principles, Complex roots $\\pm i$. Therefore, the verified correct option is $y=C_1\\sin x+C_2\\cos x$."
-        },
-        {
-          "q": "Variation of parameters for $y''+y=\\sec x$: general solution involves $\\ln|\\sec x+\\tan x|$. This appears because the particular integral of $\\int\\sin x\\sec x\\,dx=$",
+          "q": "For the autonomous equation $y' = - y^{2} - y$, which equilibrium is unstable?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "More separable equations",
           "choices": [
-            "$\\tan x$",
-            "$\\ln|\\cos x|$",
-            "$-\\ln|\\cos x|$",
-            "$-\\cos x$"
+            "$y = -1$",
+            "$y = 0$",
+            "both are stable",
+            "neither is stable"
+          ],
+          "correct": 0,
+          "answer": "Equilibria: $y = -1$, $y = 0$. Checking the sign of $y'$ on each side (phase line), solutions move toward $y = 0$ and away from $y = -1$.",
+          "explanation": "Equilibria: $y = -1$, $y = 0$. Checking the sign of $y'$ on each side (phase line), solutions move toward $y = 0$ and away from $y = -1$."
+        },
+        {
+          "q": "For the autonomous equation $y' = - y^{2} + 5 y$, which equilibrium is stable?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Mixing and applied models",
+          "choices": [
+            "$y = 5$",
+            "$y = 0$",
+            "both are stable",
+            "neither is stable"
+          ],
+          "correct": 0,
+          "answer": "Equilibria: $y = 0$, $y = 5$. Checking the sign of $y'$ on each side (phase line), solutions move toward $y = 5$ and away from $y = 0$.",
+          "explanation": "Equilibria: $y = 0$, $y = 5$. Checking the sign of $y'$ on each side (phase line), solutions move toward $y = 5$ and away from $y = 0$."
+        },
+        {
+          "q": "Bernoulli equation $y'+P(x)y=Q(x)y^n$: substitution to linearise is:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Slope fields and qualitative behavior",
+          "choices": [
+            "$v=y^n$",
+            "$v=y^{1-n}$",
+            "$v=y^2$",
+            "$v=1/y$"
+          ],
+          "correct": 1,
+          "answer": "Applying Differential Equations principles, $v=y^{1-n}$ linearises Bernoulli. Therefore, the verified correct option is $v=y^{1-n}$.",
+          "explanation": "Applying Differential Equations principles, $v=y^{1-n}$ linearises Bernoulli. Therefore, the verified correct option is $v=y^{1-n}$."
+        },
+        {
+          "q": "Homogeneous 2nd-order: characteristic equation $r^2+r-6=0$. Roots:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Visualizing a logistic solution curve",
+          "choices": [
+            "$r=2,-3$",
+            "$r=-2,3$",
+            "$r=1,-6$",
+            "$r=3,2$"
+          ],
+          "correct": 0,
+          "answer": "Applying Differential Equations principles, $(r+3)(r-2)=0\\Rightarrow r=2,-3$. Therefore, the verified correct option is $r=2,-3$.",
+          "explanation": "Applying Differential Equations principles, $(r+3)(r-2)=0\\Rightarrow r=2,-3$. Therefore, the verified correct option is $r=2,-3$."
+        },
+        {
+          "q": "Second-order constant-coefficient ODE $y''-y=0$: characteristic equation:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Another applied separable equation",
+          "choices": [
+            "$r-1=0$",
+            "$r^2+1=0$",
+            "$r^2-1=0$",
+            "$r^2+r-1=0$"
           ],
           "correct": 2,
-          "answer": "Applying Differential Equations principles, $\\int\\tan x\\,dx=-\\ln|\\cos x|$. Therefore, the verified correct option is $-\\ln|\\cos x|$.",
-          "explanation": "Applying Differential Equations principles, $\\int\\tan x\\,dx=-\\ln|\\cos x|$. Therefore, the verified correct option is $-\\ln|\\cos x|$."
+          "answer": "Applying Differential Equations principles, $r^2-1=0\\Rightarrow r=\\pm1$. Therefore, the verified correct option is $r^2-1=0$.",
+          "explanation": "Applying Differential Equations principles, $r^2-1=0\\Rightarrow r=\\pm1$. Therefore, the verified correct option is $r^2-1=0$."
         }
       ]
     },
@@ -568,10 +576,42 @@
       "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
       "questions": [
         {
+          "q": "Radioactive decay: $A$ has a 10-year half-life. After 30 years, fraction remaining:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Separable equations with algebraic solutions",
+          "choices": [
+            "$1/4$",
+            "$1/8$",
+            "$1/6$",
+            "$1/3$"
+          ],
+          "correct": 1,
+          "answer": "Applying Differential Equations principles, Three half-lives: $(1/2)^3=1/8$. Therefore, the verified correct option is $1/8$.",
+          "explanation": "Applying Differential Equations principles, Three half-lives: $(1/2)^3=1/8$. Therefore, the verified correct option is $1/8$.",
+          "cross_lesson": "6.02 Optimization and Curve Sketching"
+        },
+        {
+          "q": "Linear homogeneous 2nd-order ODE: if $y_1,y_2$ are solutions, so is:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Verifying a solution to an applied model",
+          "choices": [
+            "$y_1^2$",
+            "$y_1y_2$",
+            "$y_1'$",
+            "$y_1+y_2$"
+          ],
+          "correct": 3,
+          "answer": "Applying Differential Equations principles, Superposition principle. Therefore, the verified correct option is $y_1+y_2$.",
+          "explanation": "Applying Differential Equations principles, Superposition principle. Therefore, the verified correct option is $y_1+y_2$.",
+          "cross_lesson": "7.01 Integration by Substitution"
+        },
+        {
           "q": "First-order linear ODE solution structure: general solution = homogeneous solution $+$",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Mixing and applied models",
+          "target": "A final applied separable model",
           "choices": [
             "particular solution",
             "another homogeneous solution",
@@ -581,29 +621,13 @@
           "correct": 0,
           "answer": "Applying Differential Equations principles, $y=y_h+y_p$. Therefore, the verified correct option is particular solution.",
           "explanation": "Applying Differential Equations principles, $y=y_h+y_p$. Therefore, the verified correct option is particular solution.",
-          "cross_lesson": "6.02 Optimization and Curve Sketching"
-        },
-        {
-          "q": "Logistic model: $dP/dt=0.1P(1-P/100)$, $P(0)=10$. $P\\rightarrow$ as $t\\rightarrow\\infty$:",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Slope fields and qualitative behavior",
-          "choices": [
-            "$0$",
-            "$10$",
-            "$\\infty$",
-            "$100$"
-          ],
-          "correct": 3,
-          "answer": "Applying Differential Equations principles, Carrying capacity $K=100$. Therefore, the verified correct option is $100$.",
-          "explanation": "Applying Differential Equations principles, Carrying capacity $K=100$. Therefore, the verified correct option is $100$.",
-          "cross_lesson": "7.01 Integration by Substitution"
+          "cross_lesson": "7.02 Integration by Parts"
         },
         {
           "q": "General solution of $\\frac{dy}{dx}=2x$:",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Visualizing a logistic solution curve",
+          "target": "Solving by separation of variables",
           "choices": [
             "$y=x^2$",
             "$y=2$",
@@ -613,13 +637,13 @@
           "correct": 2,
           "answer": "Applying Differential Equations principles, Integrate: $y=x^2+C$. Therefore, the verified correct option is $y=x^2+C$.",
           "explanation": "Applying Differential Equations principles, Integrate: $y=x^2+C$. Therefore, the verified correct option is $y=x^2+C$.",
-          "cross_lesson": "7.02 Integration by Parts"
+          "cross_lesson": "8.01 Area Between Curves"
         },
         {
           "q": "Initial value problem: $y'=y$, $y(0)=2$. Solution:",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Another applied separable equation",
+          "target": "Growth, decay, and applications",
           "choices": [
             "$y=e^{2x}$",
             "$y=2e^x$",
@@ -629,70 +653,54 @@
           "correct": 1,
           "answer": "Applying Differential Equations principles, $y=Ce^x$; $y(0)=C=2$. Therefore, the verified correct option is $y=2e^x$.",
           "explanation": "Applying Differential Equations principles, $y=Ce^x$; $y(0)=C=2$. Therefore, the verified correct option is $y=2e^x$.",
-          "cross_lesson": "8.01 Area Between Curves"
-        },
-        {
-          "q": "Exponential decay: $\\frac{dN}{dt}=-kN$, $k>0$. Solution:",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Separable equations with algebraic solutions",
-          "choices": [
-            "$N=N_0e^{kt}$",
-            "$N=N_0/(1+kt)$",
-            "$N=N_0-kt$",
-            "$N=N_0e^{-kt}$"
-          ],
-          "correct": 3,
-          "answer": "Applying Differential Equations principles, $N=N_0e^{-kt}$. Therefore, the verified correct option is $N=N_0e^{-kt}$.",
-          "explanation": "Applying Differential Equations principles, $N=N_0e^{-kt}$. Therefore, the verified correct option is $N=N_0e^{-kt}$.",
           "cross_lesson": "8.02 Volumes of Revolution"
         },
         {
-          "q": "Separable ODE $\\frac{dy}{dx}=\\frac{y\\ln y}{x}$, solution:",
+          "q": "Method of undetermined coefficients: for $y''+y=e^x$, try particular solution:",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Verifying a solution to an applied model",
+          "target": "More separable equations",
           "choices": [
-            "$\\ln y=Cx$",
-            "$y=Ae^{Bx}$",
-            "$y=e^{Cx}$",
-            "$\\ln(\\ln y)=\\ln x+C\\Rightarrow \\ln y=Ax$"
+            "$y_p=Ae^x$",
+            "$y_p=Ae^{2x}$",
+            "$y_p=Axe^x$",
+            "$y_p=A\\sin x$"
           ],
-          "correct": 3,
-          "answer": "$\\int\\frac{dy}{y\\ln y}=\\int\\frac{dx}{x}\\Rightarrow\\ln(\\ln y)=\\ln x+C\\Rightarrow\\ln y=Ax$.",
-          "explanation": "$\\int\\frac{dy}{y\\ln y}=\\int\\frac{dx}{x}\\Rightarrow\\ln(\\ln y)=\\ln x+C\\Rightarrow\\ln y=Ax$.",
+          "correct": 0,
+          "answer": "$e^x$ is not a solution of the homogeneous equation; try $Ae^x$.",
+          "explanation": "$e^x$ is not a solution of the homogeneous equation; try $Ae^x$.",
           "cross_lesson": "8.03 Arc Length and Improper Integrals"
         },
         {
-          "q": "Separable ODE: $\\frac{dy}{dx}=\\frac{y}{x}$. Solution:",
+          "q": "Resonance in $x''+\\omega_0^2x=F_0\\cos(\\omega_0t)$: particular solution grows as:",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "A final applied separable model",
+          "target": "Mixing and applied models",
           "choices": [
-            "$y=x+C$",
-            "$y=Ce^x$",
-            "$y=Cx$",
-            "$y=C/x$"
+            "$\\sin(\\omega_0t)$",
+            "$e^{\\omega_0t}$",
+            "$t^2\\cos(\\omega_0t)$",
+            "$t\\cos(\\omega_0t)$"
           ],
-          "correct": 2,
-          "answer": "$\\frac{dy}{y}=\\frac{dx}{x}\\Rightarrow\\ln|y|=\\ln|x|+C\\Rightarrow y=Cx$.",
-          "explanation": "$\\frac{dy}{y}=\\frac{dx}{x}\\Rightarrow\\ln|y|=\\ln|x|+C\\Rightarrow y=Cx$.",
+          "correct": 3,
+          "answer": "Resonance: particular solution $\\propto t\\sin$ or $t\\cos$.",
+          "explanation": "Resonance: particular solution $\\propto t\\sin$ or $t\\cos$.",
           "cross_lesson": "1.01 Precalculus Review for Calculus"
         },
         {
-          "q": "Second-order ODE with complex roots $r=\\alpha\\pm\\beta i$: general solution includes:",
+          "q": "Cauchy-Euler $x^2y''+xy'+y=0$: characteristic roots $r=\\pm i$. Solution:",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "General Solutions of Separable Equations",
+          "target": "Slope fields and qualitative behavior",
           "choices": [
-            "$e^{i\\beta x}$",
-            "$C_1e^{\\alpha x}+C_2e^{\\beta x}$",
-            "$(C_1+C_2x)e^{(\\alpha+\\beta)x}$",
-            "$e^{\\alpha x}(C_1\\cos\\beta x+C_2\\sin\\beta x)$"
+            "$y=C_1x^i+C_2x^{-i}$",
+            "$y=C_1\\cos(\\ln x)+C_2\\sin(\\ln x)$",
+            "$y=C_1\\ln x+C_2$",
+            "$y=x(C_1\\cos x+C_2\\sin x)$"
           ],
-          "correct": 3,
-          "answer": "Euler: $e^{\\alpha x}$ envelope times sinusoids.",
-          "explanation": "Euler: $e^{\\alpha x}$ envelope times sinusoids.",
+          "correct": 1,
+          "answer": "Complex roots: $y=C_1\\cos(\\ln x)+C_2\\sin(\\ln x)$.",
+          "explanation": "Complex roots: $y=C_1\\cos(\\ln x)+C_2\\sin(\\ln x)$.",
           "cross_lesson": "10.01 Calculus with Parametric and Polar Curves"
         }
       ]

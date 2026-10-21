@@ -9,6 +9,71 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
+          "q": "Decompose $\\frac{5x-1}{(x-1)(x+2)}$ into partial fractions.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Partial fraction decomposition: distinct linear factors",
+          "answer": "$\\frac{5x-1}{(x-1)(x+2)}=\\frac{A}{x-1}+\\frac{B}{x+2}$. $5x-1=A(x+2)+B(x-1)$. At $x=1$: $4=3A \\Rightarrow A=\\frac{4}{3}$. At $x=-2$: $-11=-3B \\Rightarrow B=\\frac{11}{3}$. So $\\frac{4/3}{x-1}+\\frac{11/3}{x+2}$.",
+          "explanation": "$\\frac{5x-1}{(x-1)(x+2)}=\\frac{A}{x-1}+\\frac{B}{x+2}$. $5x-1=A(x+2)+B(x-1)$. At $x=1$: $4=3A \\Rightarrow A=\\frac{4}{3}$. At $x=-2$: $-11=-3B \\Rightarrow B=\\frac{11}{3}$. So $\\frac{4/3}{x-1}+\\frac{11/3}{x+2}$."
+        },
+        {
+          "q": "Evaluate $\\int\\frac{3x+5}{x^2+x-2}\\,dx$ using partial fractions (note $x^2+x-2=(x+2)(x-1)$).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Partial fraction decomposition: distinct linear factors",
+          "answer": "$\\frac{3x+5}{(x+2)(x-1)}=\\frac{A}{x+2}+\\frac{B}{x-1}$. $3x+5=A(x-1)+B(x+2)$. At $x=1$: $8=3B \\Rightarrow B=\\frac{8}{3}$. At $x=-2$: $-1=-3A \\Rightarrow A=\\frac{1}{3}$. $\\int\\left(\\frac{1/3}{x+2}+\\frac{8/3}{x-1}\\right)dx=\\frac{1}{3}\\ln|x+2|+\\frac{8}{3}\\ln|x-1|+C$.",
+          "explanation": "$\\frac{3x+5}{(x+2)(x-1)}=\\frac{A}{x+2}+\\frac{B}{x-1}$. $3x+5=A(x-1)+B(x+2)$. At $x=1$: $8=3B \\Rightarrow B=\\frac{8}{3}$. At $x=-2$: $-1=-3A \\Rightarrow A=\\frac{1}{3}$. $\\int\\left(\\frac{1/3}{x+2}+\\frac{8/3}{x-1}\\right)dx=\\frac{1}{3}\\ln|x+2|+\\frac{8}{3}\\ln|x-1|+C$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-0.48*x**2 + 1.75*x + 1.8",
+              "0.3*x + 0.3"
+            ],
+            "xmin": -1,
+            "xmax": 5,
+            "ymin": -1,
+            "ymax": 5.5,
+            "shade": {
+              "fn1": "-0.48*x**2 + 1.75*x + 1.8",
+              "fn2": "0.3*x + 0.3",
+              "x0": 0.0,
+              "x1": 2.9
+            },
+            "point_labels": [
+              {
+                "x": 1.5,
+                "y": 3.34,
+                "label": "$y=f(x)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Decompose $\\frac{x+7}{x^2-x-6}$ into partial fractions (note $x^2-x-6=(x-3)(x+2)$).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Partial fraction decomposition: distinct linear factors",
+          "answer": "$\\frac{x+7}{(x-3)(x+2)}=\\frac{A}{x-3}+\\frac{B}{x+2}$. $x+7=A(x+2)+B(x-3)$. At $x=3$: $10=5A \\Rightarrow A=2$. At $x=-2$: $5=-5B \\Rightarrow B=-1$. So $\\frac{2}{x-3}-\\frac{1}{x+2}$.",
+          "explanation": "$\\frac{x+7}{(x-3)(x+2)}=\\frac{A}{x-3}+\\frac{B}{x+2}$. $x+7=A(x+2)+B(x-3)$. At $x=3$: $10=5A \\Rightarrow A=2$. At $x=-2$: $5=-5B \\Rightarrow B=-1$. So $\\frac{2}{x-3}-\\frac{1}{x+2}$."
+        },
+        {
+          "q": "Evaluate $\\int\\frac{2x+3}{(x-1)^2}\\,dx$ using the decomposition found above.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Partial fractions with a repeated linear factor",
+          "answer": "$\\int\\left(\\frac{2}{x-1}+\\frac{5}{(x-1)^2}\\right)dx=2\\ln|x-1|-\\frac{5}{x-1}+C$.",
+          "explanation": "$\\int\\left(\\frac{2}{x-1}+\\frac{5}{(x-1)^2}\\right)dx=2\\ln|x-1|-\\frac{5}{x-1}+C$."
+        },
+        {
+          "q": "Set up (but do not solve for constants) the partial fraction decomposition of $\\frac{3x^2+2}{(x-1)(x^2+4)}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Partial fractions with an irreducible quadratic factor",
+          "answer": "Since $x^2+4$ is irreducible over the reals, the decomposition has the form $\\frac{A}{x-1}+\\frac{Bx+C}{x^2+4}$.",
+          "explanation": "Since $x^2+4$ is irreducible over the reals, the decomposition has the form $\\frac{A}{x-1}+\\frac{Bx+C}{x^2+4}$."
+        },
+        {
           "q": "Evaluate $\\int_1^{\\infty}\\frac{1}{x^2}\\,dx$, or show it diverges.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
@@ -28,8 +93,94 @@
           }
         },
         {
-          "q": "By contrast, $\\int_1^{\\infty}\\frac{1}{x}\\,dx$ diverges. Compare the graphs of $y=\\frac{1}{x}$ and $y=\\frac{1}{x^2}$ on $[1,10]$ and explain why $\\frac{1}{x}$ decays too slowly for the area to stay finite.",
+          "q": "Evaluate $\\int_0^1\\frac{1}{\\sqrt{x}}\\,dx$, or show it diverges (note the integrand is undefined at $x=0$).",
           "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Improper integrals: discontinuous integrands",
+          "answer": "$\\int_0^1x^{-1/2}\\,dx=\\lim_{a\\rightarrow0^+}\\left[2\\sqrt{x}\\right]_a^1=\\lim_{a\\rightarrow0^+}(2-2\\sqrt{a})=2-0=2$. Converges to $2$.",
+          "explanation": "$\\int_0^1x^{-1/2}\\,dx=\\lim_{a\\rightarrow0^+}\\left[2\\sqrt{x}\\right]_a^1=\\lim_{a\\rightarrow0^+}(2-2\\sqrt{a})=2-0=2$. Converges to $2$."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Evaluate $\\int_0^2\\frac{1}{(x-2)^2}\\,dx$, or show it diverges (the integrand is undefined at $x=2$).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Improper integrals: discontinuous integrands",
+          "answer": "$\\int_0^2(x-2)^{-2}\\,dx=\\lim_{b\\rightarrow2^-}\\left[-\\frac{1}{x-2}\\right]_0^b=\\lim_{b\\rightarrow2^-}\\left(-\\frac{1}{b-2}-\\frac{1}{2}\\right)=\\infty$. Diverges.",
+          "explanation": "$\\int_0^2(x-2)^{-2}\\,dx=\\lim_{b\\rightarrow2^-}\\left[-\\frac{1}{x-2}\\right]_0^b=\\lim_{b\\rightarrow2^-}\\left(-\\frac{1}{b-2}-\\frac{1}{2}\\right)=\\infty$. Diverges."
+        },
+        {
+          "q": "State the p-test for $\\int_1^{\\infty}\\frac{1}{x^p}\\,dx$, and use it to determine convergence for $p=3$ and $p=0.5$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "The p-test for improper integrals",
+          "answer": "$\\int_1^{\\infty}\\frac{1}{x^p}\\,dx$ converges if $p>1$ and diverges if $p\\leq1$. For $p=3>1$: converges. For $p=0.5\\leq1$: diverges.",
+          "explanation": "$\\int_1^{\\infty}\\frac{1}{x^p}\\,dx$ converges if $p>1$ and diverges if $p\\leq1$. For $p=3>1$: converges. For $p=0.5\\leq1$: diverges."
+        },
+        {
+          "q": "State the analogous p-test for $\\int_0^1\\frac{1}{x^p}\\,dx$ (a discontinuity at $x=0$), and determine convergence for $p=\\frac{1}{2}$ and $p=2$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "The p-test for improper integrals",
+          "answer": "$\\int_0^1\\frac{1}{x^p}\\,dx$ converges if $p<1$ and diverges if $p\\geq1$ (opposite condition from the infinite-limit case). For $p=\\frac{1}{2}<1$: converges. For $p=2\\geq1$: diverges.",
+          "explanation": "$\\int_0^1\\frac{1}{x^p}\\,dx$ converges if $p<1$ and diverges if $p\\geq1$ (opposite condition from the infinite-limit case). For $p=\\frac{1}{2}<1$: converges. For $p=2\\geq1$: diverges.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-0.34*x**2 + 1.5*x + 2.1",
+              "0.4*x + 0.3"
+            ],
+            "xmin": -1,
+            "xmax": 5,
+            "ymin": -1,
+            "ymax": 5.5,
+            "shade": {
+              "fn1": "-0.34*x**2 + 1.5*x + 2.1",
+              "fn2": "0.4*x + 0.3",
+              "x0": 0.0,
+              "x1": 3.3
+            },
+            "point_labels": [
+              {
+                "x": 1.5,
+                "y": 3.58,
+                "label": "$y=f(x)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\infty}\\frac{1}{(x+1)(x+2)}\\,dx$ using partial fractions.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Combining partial fractions with improper integrals",
+          "answer": "$\\frac{1}{(x+1)(x+2)}=\\frac{1}{x+1}-\\frac{1}{x+2}$. $\\int_0^{b}\\left(\\frac{1}{x+1}-\\frac{1}{x+2}\\right)dx=\\left[\\ln\\frac{x+1}{x+2}\\right]_0^b=\\ln\\frac{b+1}{b+2}-\\ln\\frac{1}{2}$. As $b\\rightarrow\\infty$, $\\frac{b+1}{b+2}\\rightarrow1$, so the limit is $\\ln1-\\ln\\frac{1}{2}=\\ln2$. Converges to $\\ln2$.",
+          "explanation": "$\\frac{1}{(x+1)(x+2)}=\\frac{1}{x+1}-\\frac{1}{x+2}$. $\\int_0^{b}\\left(\\frac{1}{x+1}-\\frac{1}{x+2}\\right)dx=\\left[\\ln\\frac{x+1}{x+2}\\right]_0^b=\\ln\\frac{b+1}{b+2}-\\ln\\frac{1}{2}$. As $b\\rightarrow\\infty$, $\\frac{b+1}{b+2}\\rightarrow1$, so the limit is $\\ln1-\\ln\\frac{1}{2}=\\ln2$. Converges to $\\ln2$."
+        },
+        {
+          "q": "Evaluate $\\int\\frac{6x^2-3x-1}{x(x-1)(x+1)}\\,dx$ using the decomposition above.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Three distinct linear factors",
+          "answer": "$\\int\\left(\\frac{1}{x}+\\frac{1}{x-1}+\\frac{4}{x+1}\\right)dx=\\ln|x|+\\ln|x-1|+4\\ln|x+1|+C$.",
+          "explanation": "$\\int\\left(\\frac{1}{x}+\\frac{1}{x-1}+\\frac{4}{x+1}\\right)dx=\\ln|x|+\\ln|x-1|+4\\ln|x+1|+C$."
+        },
+        {
+          "q": "The convergent improper integral $\\int_1^{\\infty}\\frac{1}{x^2}\\,dx=1$ (shown earlier) means the infinite region under $y=\\frac{1}{x^2}$ for $x\\geq1$ has FINITE area. Explain intuitively why this is possible even though the region extends forever.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Visualizing convergence: area under the curve",
+          "answer": "Even though the region is infinitely long, the height $\\frac{1}{x^2}$ shrinks fast enough as $x\\rightarrow\\infty$ that the accumulated area still converges to a finite total — the 'tail' contributes less and less area, summing to a bounded amount, similar to how a convergent geometric series sums to a finite value despite infinitely many terms.",
+          "explanation": "Even though the region is infinitely long, the height $\\frac{1}{x^2}$ shrinks fast enough as $x\\rightarrow\\infty$ that the accumulated area still converges to a finite total — the 'tail' contributes less and less area, summing to a bounded amount, similar to how a convergent geometric series sums to a finite value despite infinitely many terms."
+        },
+        {
+          "q": "By contrast, $\\int_1^{\\infty}\\frac{1}{x}\\,dx$ diverges. Compare the graphs of $y=\\frac{1}{x}$ and $y=\\frac{1}{x^2}$ on $[1,10]$ and explain why $\\frac{1}{x}$ decays too slowly for the area to stay finite.",
+          "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Visualizing convergence: area under the curve",
           "answer": "Both curves decrease, but $\\frac{1}{x}$ stays larger than $\\frac{1}{x^2}$ for all $x>1$ (e.g. at $x=10$: $0.1$ vs $0.01$). This slower decay means the accumulated area under $\\frac{1}{x}$ keeps growing without bound as $x\\rightarrow\\infty$, while $\\frac{1}{x^2}$'s faster decay allows its total area to converge.",
@@ -46,157 +197,6 @@
             "ymax": 3,
             "width": 240
           }
-        },
-        {
-          "q": "Decompose $\\frac{5x-1}{(x-1)(x+2)}$ into partial fractions.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Partial fraction decomposition: distinct linear factors",
-          "answer": "$\\frac{5x-1}{(x-1)(x+2)}=\\frac{A}{x-1}+\\frac{B}{x+2}$. $5x-1=A(x+2)+B(x-1)$. At $x=1$: $4=3A \\Rightarrow A=\\frac{4}{3}$. At $x=-2$: $-11=-3B \\Rightarrow B=\\frac{11}{3}$. So $\\frac{4/3}{x-1}+\\frac{11/3}{x+2}$.",
-          "explanation": "$\\frac{5x-1}{(x-1)(x+2)}=\\frac{A}{x-1}+\\frac{B}{x+2}$. $5x-1=A(x+2)+B(x-1)$. At $x=1$: $4=3A \\Rightarrow A=\\frac{4}{3}$. At $x=-2$: $-11=-3B \\Rightarrow B=\\frac{11}{3}$. So $\\frac{4/3}{x-1}+\\frac{11/3}{x+2}$."
-        },
-        {
-          "q": "Evaluate $\\int\\frac{3x+5}{x^2+x-2}\\,dx$ using partial fractions (note $x^2+x-2=(x+2)(x-1)$).",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Partial fraction decomposition: distinct linear factors",
-          "answer": "$\\frac{3x+5}{(x+2)(x-1)}=\\frac{A}{x+2}+\\frac{B}{x-1}$. $3x+5=A(x-1)+B(x+2)$. At $x=1$: $8=3B \\Rightarrow B=\\frac{8}{3}$. At $x=-2$: $-1=-3A \\Rightarrow A=\\frac{1}{3}$. $\\int\\left(\\frac{1/3}{x+2}+\\frac{8/3}{x-1}\\right)dx=\\frac{1}{3}\\ln|x+2|+\\frac{8}{3}\\ln|x-1|+C$.",
-          "explanation": "$\\frac{3x+5}{(x+2)(x-1)}=\\frac{A}{x+2}+\\frac{B}{x-1}$. $3x+5=A(x-1)+B(x+2)$. At $x=1$: $8=3B \\Rightarrow B=\\frac{8}{3}$. At $x=-2$: $-1=-3A \\Rightarrow A=\\frac{1}{3}$. $\\int\\left(\\frac{1/3}{x+2}+\\frac{8/3}{x-1}\\right)dx=\\frac{1}{3}\\ln|x+2|+\\frac{8}{3}\\ln|x-1|+C$."
-        },
-        {
-          "q": "Decompose $\\frac{x+7}{x^2-x-6}$ into partial fractions (note $x^2-x-6=(x-3)(x+2)$).",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Partial fraction decomposition: distinct linear factors",
-          "answer": "$\\frac{x+7}{(x-3)(x+2)}=\\frac{A}{x-3}+\\frac{B}{x+2}$. $x+7=A(x+2)+B(x-3)$. At $x=3$: $10=5A \\Rightarrow A=2$. At $x=-2$: $5=-5B \\Rightarrow B=-1$. So $\\frac{2}{x-3}-\\frac{1}{x+2}$.",
-          "explanation": "$\\frac{x+7}{(x-3)(x+2)}=\\frac{A}{x-3}+\\frac{B}{x+2}$. $x+7=A(x+2)+B(x-3)$. At $x=3$: $10=5A \\Rightarrow A=2$. At $x=-2$: $5=-5B \\Rightarrow B=-1$. So $\\frac{2}{x-3}-\\frac{1}{x+2}$."
-        },
-        {
-          "q": "Decompose $\\frac{2x+3}{(x-1)^2}$ into partial fractions.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Partial fractions with a repeated linear factor",
-          "answer": "$\\frac{2x+3}{(x-1)^2}=\\frac{A}{x-1}+\\frac{B}{(x-1)^2}$. $2x+3=A(x-1)+B$. At $x=1$: $5=B$. Comparing $x$ coefficients: $A=2$. So $\\frac{2}{x-1}+\\frac{5}{(x-1)^2}$.",
-          "explanation": "$\\frac{2x+3}{(x-1)^2}=\\frac{A}{x-1}+\\frac{B}{(x-1)^2}$. $2x+3=A(x-1)+B$. At $x=1$: $5=B$. Comparing $x$ coefficients: $A=2$. So $\\frac{2}{x-1}+\\frac{5}{(x-1)^2}$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "-0.35*x**2 + 1.2*x + 2.2",
-              "0.35*x + 0.4"
-            ],
-            "xmin": -1,
-            "xmax": 5,
-            "ymin": -1,
-            "ymax": 5,
-            "shade": {
-              "fn1": "-0.35*x**2 + 1.2*x + 2.2",
-              "fn2": "0.35*x + 0.4",
-              "x0": 0.0,
-              "x1": 3.5
-            },
-            "point_labels": [
-              {
-                "x": 2.0,
-                "y": 3.2,
-                "label": "$y=f(x)$"
-              }
-            ],
-            "width": 230
-          }
-        },
-        {
-          "q": "Evaluate $\\int\\frac{2x+3}{(x-1)^2}\\,dx$ using the decomposition found above.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Partial fractions with a repeated linear factor",
-          "answer": "$\\int\\left(\\frac{2}{x-1}+\\frac{5}{(x-1)^2}\\right)dx=2\\ln|x-1|-\\frac{5}{x-1}+C$.",
-          "explanation": "$\\int\\left(\\frac{2}{x-1}+\\frac{5}{(x-1)^2}\\right)dx=2\\ln|x-1|-\\frac{5}{x-1}+C$."
-        }
-      ]
-    },
-    {
-      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
-      "questions": [
-        {
-          "q": "Set up (but do not solve for constants) the partial fraction decomposition of $\\frac{3x^2+2}{(x-1)(x^2+4)}$.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Partial fractions with an irreducible quadratic factor",
-          "answer": "Since $x^2+4$ is irreducible over the reals, the decomposition has the form $\\frac{A}{x-1}+\\frac{Bx+C}{x^2+4}$.",
-          "explanation": "Since $x^2+4$ is irreducible over the reals, the decomposition has the form $\\frac{A}{x-1}+\\frac{Bx+C}{x^2+4}$."
-        },
-        {
-          "q": "Evaluate $\\int_1^{\\infty}\\frac{1}{x}\\,dx$, or show it diverges.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Improper integrals: infinite limits",
-          "answer": "$\\int_1^{\\infty}\\frac{1}{x}\\,dx=\\lim_{b\\rightarrow\\infty}\\left[\\ln x\\right]_1^b=\\lim_{b\\rightarrow\\infty}(\\ln b-0)=\\infty$. Diverges.",
-          "explanation": "$\\int_1^{\\infty}\\frac{1}{x}\\,dx=\\lim_{b\\rightarrow\\infty}\\left[\\ln x\\right]_1^b=\\lim_{b\\rightarrow\\infty}(\\ln b-0)=\\infty$. Diverges."
-        },
-        {
-          "q": "Evaluate $\\int_0^{\\infty}e^{-2x}\\,dx$, or show it diverges.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Improper integrals: infinite limits",
-          "answer": "$\\int_0^{\\infty}e^{-2x}\\,dx=\\lim_{b\\rightarrow\\infty}\\left[-\\frac{1}{2}e^{-2x}\\right]_0^b=\\lim_{b\\rightarrow\\infty}\\left(-\\frac{1}{2}e^{-2b}+\\frac{1}{2}\\right)=0+\\frac{1}{2}=\\frac{1}{2}$. Converges to $\\frac{1}{2}$.",
-          "explanation": "$\\int_0^{\\infty}e^{-2x}\\,dx=\\lim_{b\\rightarrow\\infty}\\left[-\\frac{1}{2}e^{-2x}\\right]_0^b=\\lim_{b\\rightarrow\\infty}\\left(-\\frac{1}{2}e^{-2b}+\\frac{1}{2}\\right)=0+\\frac{1}{2}=\\frac{1}{2}$. Converges to $\\frac{1}{2}$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "-0.25*x**2 + 1.2*x + 2.2",
-              "0.35*x + 0.4"
-            ],
-            "xmin": -1,
-            "xmax": 5,
-            "ymin": -1,
-            "ymax": 5,
-            "shade": {
-              "fn1": "-0.25*x**2 + 1.2*x + 2.2",
-              "fn2": "0.35*x + 0.4",
-              "x0": 0.0,
-              "x1": 3.5
-            },
-            "point_labels": [
-              {
-                "x": 2.0,
-                "y": 3.6,
-                "label": "$y=f(x)$"
-              }
-            ],
-            "width": 230
-          }
-        },
-        {
-          "q": "Evaluate $\\int_{-\\infty}^{0}e^{x}\\,dx$, or show it diverges.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Improper integrals: infinite limits",
-          "answer": "$\\int_{-\\infty}^{0}e^x\\,dx=\\lim_{a\\rightarrow-\\infty}\\left[e^x\\right]_a^0=\\lim_{a\\rightarrow-\\infty}(1-e^a)=1-0=1$. Converges to $1$.",
-          "explanation": "$\\int_{-\\infty}^{0}e^x\\,dx=\\lim_{a\\rightarrow-\\infty}\\left[e^x\\right]_a^0=\\lim_{a\\rightarrow-\\infty}(1-e^a)=1-0=1$. Converges to $1$."
-        },
-        {
-          "q": "Evaluate $\\int_0^1\\frac{1}{\\sqrt{x}}\\,dx$, or show it diverges (note the integrand is undefined at $x=0$).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Improper integrals: discontinuous integrands",
-          "answer": "$\\int_0^1x^{-1/2}\\,dx=\\lim_{a\\rightarrow0^+}\\left[2\\sqrt{x}\\right]_a^1=\\lim_{a\\rightarrow0^+}(2-2\\sqrt{a})=2-0=2$. Converges to $2$.",
-          "explanation": "$\\int_0^1x^{-1/2}\\,dx=\\lim_{a\\rightarrow0^+}\\left[2\\sqrt{x}\\right]_a^1=\\lim_{a\\rightarrow0^+}(2-2\\sqrt{a})=2-0=2$. Converges to $2$."
-        },
-        {
-          "q": "Evaluate $\\int_0^1\\frac{1}{x}\\,dx$, or show it diverges.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Improper integrals: discontinuous integrands",
-          "answer": "$\\int_0^1\\frac{1}{x}\\,dx=\\lim_{a\\rightarrow0^+}\\left[\\ln x\\right]_a^1=\\lim_{a\\rightarrow0^+}(0-\\ln a)=\\infty$. Diverges.",
-          "explanation": "$\\int_0^1\\frac{1}{x}\\,dx=\\lim_{a\\rightarrow0^+}\\left[\\ln x\\right]_a^1=\\lim_{a\\rightarrow0^+}(0-\\ln a)=\\infty$. Diverges."
-        },
-        {
-          "q": "Evaluate $\\int_0^2\\frac{1}{(x-2)^2}\\,dx$, or show it diverges (the integrand is undefined at $x=2$).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Improper integrals: discontinuous integrands",
-          "answer": "$\\int_0^2(x-2)^{-2}\\,dx=\\lim_{b\\rightarrow2^-}\\left[-\\frac{1}{x-2}\\right]_0^b=\\lim_{b\\rightarrow2^-}\\left(-\\frac{1}{b-2}-\\frac{1}{2}\\right)=\\infty$. Diverges.",
-          "explanation": "$\\int_0^2(x-2)^{-2}\\,dx=\\lim_{b\\rightarrow2^-}\\left[-\\frac{1}{x-2}\\right]_0^b=\\lim_{b\\rightarrow2^-}\\left(-\\frac{1}{b-2}-\\frac{1}{2}\\right)=\\infty$. Diverges."
         }
       ]
     },
@@ -204,42 +204,42 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "State the p-test for $\\int_1^{\\infty}\\frac{1}{x^p}\\,dx$, and use it to determine convergence for $p=3$ and $p=0.5$.",
+          "q": "Evaluate $\\int_0^{\\infty}\\frac{1}{\\sqrt{x}(1+x)}\\,dx$ is a classic doubly-improper integral (discontinuous at $x=0$ AND infinite upper bound). Explain how such an integral must be split to evaluate it.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "The p-test for improper integrals",
+          "target": "Improper integrals with both an infinite bound and a discontinuity",
           "cross_lesson": "4.02 Area in Polar Coordinates",
-          "answer": "$\\int_1^{\\infty}\\frac{1}{x^p}\\,dx$ converges if $p>1$ and diverges if $p\\leq1$. For $p=3>1$: converges. For $p=0.5\\leq1$: diverges.",
-          "explanation": "$\\int_1^{\\infty}\\frac{1}{x^p}\\,dx$ converges if $p>1$ and diverges if $p\\leq1$. For $p=3>1$: converges. For $p=0.5\\leq1$: diverges."
+          "answer": "Split at any convenient interior point, e.g. $x=1$: $\\int_0^{\\infty}=\\int_0^1+\\int_1^{\\infty}$. Each piece is evaluated as its own limit (one with $a\\rightarrow0^+$, the other with $b\\rightarrow\\infty$), and the original integral converges only if BOTH pieces converge.",
+          "explanation": "Split at any convenient interior point, e.g. $x=1$: $\\int_0^{\\infty}=\\int_0^1+\\int_1^{\\infty}$. Each piece is evaluated as its own limit (one with $a\\rightarrow0^+$, the other with $b\\rightarrow\\infty$), and the original integral converges only if BOTH pieces converge."
         },
         {
-          "q": "State the analogous p-test for $\\int_0^1\\frac{1}{x^p}\\,dx$ (a discontinuity at $x=0$), and determine convergence for $p=\\frac{1}{2}$ and $p=2$.",
+          "q": "Use a direct comparison to argue that $\\int_1^{\\infty}\\frac{1}{x^2+1}\\,dx$ converges, without computing it exactly.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "The p-test for improper integrals",
+          "target": "Comparison test for improper integrals",
           "cross_lesson": "5.01 Sequences and Basic Series Convergence Tests",
-          "answer": "$\\int_0^1\\frac{1}{x^p}\\,dx$ converges if $p<1$ and diverges if $p\\geq1$ (opposite condition from the infinite-limit case). For $p=\\frac{1}{2}<1$: converges. For $p=2\\geq1$: diverges.",
-          "explanation": "$\\int_0^1\\frac{1}{x^p}\\,dx$ converges if $p<1$ and diverges if $p\\geq1$ (opposite condition from the infinite-limit case). For $p=\\frac{1}{2}<1$: converges. For $p=2\\geq1$: diverges.",
+          "answer": "For $x\\geq1$: $\\frac{1}{x^2+1}<\\frac{1}{x^2}$. Since $\\int_1^{\\infty}\\frac{1}{x^2}\\,dx$ converges (shown earlier, $p=2>1$), and the given integrand is smaller and positive, $\\int_1^{\\infty}\\frac{1}{x^2+1}\\,dx$ also converges by comparison.",
+          "explanation": "For $x\\geq1$: $\\frac{1}{x^2+1}<\\frac{1}{x^2}$. Since $\\int_1^{\\infty}\\frac{1}{x^2}\\,dx$ converges (shown earlier, $p=2>1$), and the given integrand is smaller and positive, $\\int_1^{\\infty}\\frac{1}{x^2+1}\\,dx$ also converges by comparison.",
           "figure": {
             "type": "plot",
             "fns": [
-              "-0.25*x**2 + 1.2*x + 2.2",
-              "0.35*x + 0.4"
+              "-0.27*x**2 + 1.25*x + 2.4",
+              "0.4*x + 0.3"
             ],
             "xmin": -1,
             "xmax": 5,
             "ymin": -1,
-            "ymax": 5,
+            "ymax": 5.5,
             "shade": {
-              "fn1": "-0.25*x**2 + 1.2*x + 2.2",
-              "fn2": "0.35*x + 0.4",
+              "fn1": "-0.27*x**2 + 1.25*x + 2.4",
+              "fn2": "0.4*x + 0.3",
               "x0": 0.0,
-              "x1": 3.5
+              "x1": 3.3
             },
             "point_labels": [
               {
-                "x": 2.0,
-                "y": 3.6,
+                "x": 1.5,
+                "y": 3.67,
                 "label": "$y=f(x)$"
               }
             ],
@@ -247,40 +247,40 @@
           }
         },
         {
-          "q": "Evaluate $\\int_0^{\\infty}\\frac{1}{(x+1)(x+2)}\\,dx$ using partial fractions.",
+          "q": "Use a direct comparison to argue that $\\int_1^{\\infty}\\frac{2+\\sin x}{x}\\,dx$ diverges.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Comparison test for improper integrals",
+          "cross_lesson": "5.02 Ratio, Root, and Alternating Series Tests",
+          "answer": "Since $-1\\leq\\sin x\\leq1$, we have $2+\\sin x\\geq1$, so $\\frac{2+\\sin x}{x}\\geq\\frac{1}{x}$ for $x\\geq1$. Since $\\int_1^{\\infty}\\frac{1}{x}\\,dx$ diverges, and the given integrand is at least as large, $\\int_1^{\\infty}\\frac{2+\\sin x}{x}\\,dx$ also diverges by comparison.",
+          "explanation": "Since $-1\\leq\\sin x\\leq1$, we have $2+\\sin x\\geq1$, so $\\frac{2+\\sin x}{x}\\geq\\frac{1}{x}$ for $x\\geq1$. Since $\\int_1^{\\infty}\\frac{1}{x}\\,dx$ diverges, and the given integrand is at least as large, $\\int_1^{\\infty}\\frac{2+\\sin x}{x}\\,dx$ also diverges by comparison."
+        },
+        {
+          "q": "Level 3 · Advanced / AP FRQThe alternating series $\\sum_{n=1}^\\infty \\frac{(-1)^{n+1}}{n^4}$ converges to sum $S$. If the sum is approximated by the fourth partial sum $S_4$, use the Alternating Series Error Bound to find an upper bound for the error $|S - S_4|$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Combining partial fractions with improper integrals",
-          "cross_lesson": "5.02 Ratio, Root, and Alternating Series Tests",
-          "answer": "$\\frac{1}{(x+1)(x+2)}=\\frac{1}{x+1}-\\frac{1}{x+2}$. $\\int_0^{b}\\left(\\frac{1}{x+1}-\\frac{1}{x+2}\\right)dx=\\left[\\ln\\frac{x+1}{x+2}\\right]_0^b=\\ln\\frac{b+1}{b+2}-\\ln\\frac{1}{2}$. As $b\\rightarrow\\infty$, $\\frac{b+1}{b+2}\\rightarrow1$, so the limit is $\\ln1-\\ln\\frac{1}{2}=\\ln2$. Converges to $\\ln2$.",
-          "explanation": "$\\frac{1}{(x+1)(x+2)}=\\frac{1}{x+1}-\\frac{1}{x+2}$. $\\int_0^{b}\\left(\\frac{1}{x+1}-\\frac{1}{x+2}\\right)dx=\\left[\\ln\\frac{x+1}{x+2}\\right]_0^b=\\ln\\frac{b+1}{b+2}-\\ln\\frac{1}{2}$. As $b\\rightarrow\\infty$, $\\frac{b+1}{b+2}\\rightarrow1$, so the limit is $\\ln1-\\ln\\frac{1}{2}=\\ln2$. Converges to $\\ln2$."
-        },
-        {
-          "q": "Decompose $\\frac{6x^2-3x-1}{x(x-1)(x+1)}$ into partial fractions.",
-          "difficulty": "Challenging",
-          "question_type": "FRQ",
-          "target": "Three distinct linear factors",
           "cross_lesson": "6.01 Power Series and Interval of Convergence",
-          "answer": "$\\frac{6x^2-3x-1}{x(x-1)(x+1)}=\\frac{A}{x}+\\frac{B}{x-1}+\\frac{C}{x+1}$. $6x^2-3x-1=A(x-1)(x+1)+Bx(x+1)+Cx(x-1)$. At $x=0$: $-1=-A \\Rightarrow A=1$. At $x=1$: $2=2B \\Rightarrow B=1$. At $x=-1$: $8=2C \\Rightarrow C=4$. So $\\frac{1}{x}+\\frac{1}{x-1}+\\frac{4}{x+1}$.",
-          "explanation": "$\\frac{6x^2-3x-1}{x(x-1)(x+1)}=\\frac{A}{x}+\\frac{B}{x-1}+\\frac{C}{x+1}$. $6x^2-3x-1=A(x-1)(x+1)+Bx(x+1)+Cx(x-1)$. At $x=0$: $-1=-A \\Rightarrow A=1$. At $x=1$: $2=2B \\Rightarrow B=1$. At $x=-1$: $8=2C \\Rightarrow C=4$. So $\\frac{1}{x}+\\frac{1}{x-1}+\\frac{4}{x+1}$."
+          "answer": "The series satisfies the hypotheses of the AST: $a_n = \\frac{1}{n^4}$ is positive, strictly decreasing, and $\\lim_{n\\rightarrow\\infty} \\frac{1}{n^4} = 0$. By the Alternating Series Error Bound: $|S - S_4| \\leq a_5 = \\frac{1}{5^4} = \\frac{1}{625} = \\mathbf{0.0016}.$ The approximation error is guaranteed to be less than or equal to 0.0016.",
+          "explanation": "The series satisfies the hypotheses of the AST: $a_n = \\frac{1}{n^4}$ is positive, strictly decreasing, and $\\lim_{n\\rightarrow\\infty} \\frac{1}{n^4} = 0$. By the Alternating Series Error Bound: $|S - S_4| \\leq a_5 = \\frac{1}{5^4} = \\frac{1}{625} = \\mathbf{0.0016}.$ The approximation error is guaranteed to be less than or equal to 0.0016."
         },
         {
-          "q": "Evaluate $\\int\\frac{6x^2-3x-1}{x(x-1)(x+1)}\\,dx$ using the decomposition above.",
+          "q": "Level 2 · MediumApply the Ratio Test to determine the convergence or divergence of $\\sum_{n=1}^\\infty \\frac{4^n}{n!}$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Three distinct linear factors",
           "cross_lesson": "6.02 Taylor and Maclaurin Series",
-          "answer": "$\\int\\left(\\frac{1}{x}+\\frac{1}{x-1}+\\frac{4}{x+1}\\right)dx=\\ln|x|+\\ln|x-1|+4\\ln|x+1|+C$.",
-          "explanation": "$\\int\\left(\\frac{1}{x}+\\frac{1}{x-1}+\\frac{4}{x+1}\\right)dx=\\ln|x|+\\ln|x-1|+4\\ln|x+1|+C$."
+          "answer": "Set up the ratio: $\\rho = \\lim_{n\\rightarrow\\infty} \\left| \\frac{a_{n+1}}{a_n} \\right| = \\lim_{n\\rightarrow\\infty} \\left| \\frac{4^{n+1}}{(n+1)!} \\cdot \\frac{n!}{4^n} \\right| = \\lim_{n\\rightarrow\\infty} \\left( \\frac{4^{n+1}}{4^n} \\cdot \\frac{n!}{(n+1)n!} \\right) = \\lim_{n\\rightarrow\\infty} \\frac{4}{n+1} = 0.$ Since \\(\\rho = 0 Ratio Test, the series converges absolutely.",
+          "explanation": "Set up the ratio: $\\rho = \\lim_{n\\rightarrow\\infty} \\left| \\frac{a_{n+1}}{a_n} \\right| = \\lim_{n\\rightarrow\\infty} \\left| \\frac{4^{n+1}}{(n+1)!} \\cdot \\frac{n!}{4^n} \\right| = \\lim_{n\\rightarrow\\infty} \\left( \\frac{4^{n+1}}{4^n} \\cdot \\frac{n!}{(n+1)n!} \\right) = \\lim_{n\\rightarrow\\infty} \\frac{4}{n+1} = 0.$ Since \\(\\rho = 0 Ratio Test, the series converges absolutely."
         },
         {
-          "q": "The convergent improper integral $\\int_1^{\\infty}\\frac{1}{x^2}\\,dx=1$ (shown earlier) means the infinite region under $y=\\frac{1}{x^2}$ for $x\\geq1$ has FINITE area. Explain intuitively why this is possible even though the region extends forever.",
+          "q": "Level 1 · FoundationsExpress the repeating decimal $0.272727\\dots = 0.\\overline{27}$ as an infinite geometric series, and find its exact fraction representation in simplest form.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Visualizing convergence: area under the curve",
           "cross_lesson": "1.01 Integration by Parts",
-          "answer": "Even though the region is infinitely long, the height $\\frac{1}{x^2}$ shrinks fast enough as $x\\rightarrow\\infty$ that the accumulated area still converges to a finite total — the 'tail' contributes less and less area, summing to a bounded amount, similar to how a convergent geometric series sums to a finite value despite infinitely many terms.",
-          "explanation": "Even though the region is infinitely long, the height $\\frac{1}{x^2}$ shrinks fast enough as $x\\rightarrow\\infty$ that the accumulated area still converges to a finite total — the 'tail' contributes less and less area, summing to a bounded amount, similar to how a convergent geometric series sums to a finite value despite infinitely many terms."
+          "answer": "Write as a series: $0.\\overline{27} = \\frac{27}{100} + \\frac{27}{10000} + \\frac{27}{1000000} + \\dots$ First term $a = \\frac{27}{100}$, common ratio $r = \\frac{1}{100}$. Since \\(|r| = 0.01",
+          "explanation": "Write as a series: $0.\\overline{27} = \\frac{27}{100} + \\frac{27}{10000} + \\frac{27}{1000000} + \\dots$ First term $a = \\frac{27}{100}$, common ratio $r = \\frac{1}{100}$. Since \\(|r| = 0.01"
         }
       ]
     },
@@ -288,69 +288,69 @@
       "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
-          "q": "For $\\frac{7x+5}{(x+3)(x-4)}=\\frac{A}{x+3}+\\frac{B}{x-4}$, find $A$.",
+          "q": "Use a direct comparison to determine whether $\\int_1^{\\infty}\\frac{4+\\sin x}{x}\\,dx$ converges or diverges.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Partial fraction decomposition: distinct linear factors",
           "choices": [
-            "$-\\frac{16}{7}$",
-            "$\\frac{23}{7}$",
-            "$\\frac{16}{7}$",
-            "$\\frac{33}{7}$"
+            "Diverges only because $a=4$ happens to be even.",
+            "Diverges, since $\\frac{4+\\sin x}{x}\\geq\\frac{3}{x}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{3}{x}\\,dx$ diverges since $p=1\\leq1$.",
+            "Converges, since $\\frac{4+\\sin x}{x}\\leq\\frac{5}{x}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{5}{x}\\,dx$ converges since $p=1>1$.",
+            "Cannot be determined by comparison, since $\\sin x$ oscillates."
           ],
-          "correct": 2,
-          "answer": "Using the cover-up method, set $x=-3$: $A=\\frac{7(-3)+5}{-3-(4)}=\\frac{-16}{-7}=\\frac{16}{7}$.",
-          "explanation": "Using the cover-up method, set $x=-3$: $A=\\frac{7(-3)+5}{-3-(4)}=\\frac{-16}{-7}=\\frac{16}{7}$."
+          "correct": 1,
+          "answer": "Since $-1\\leq\\sin x\\leq1$: Diverges, since $\\frac{4+\\sin x}{x}\\geq\\frac{3}{x}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{3}{x}\\,dx$ diverges since $p=1\\leq1$.",
+          "explanation": "Since $-1\\leq\\sin x\\leq1$: Diverges, since $\\frac{4+\\sin x}{x}\\geq\\frac{3}{x}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{3}{x}\\,dx$ diverges since $p=1\\leq1$."
         },
         {
-          "q": "For $\\frac{7x-5}{(x)(x+5)}=\\frac{A}{x}+\\frac{B}{x+5}$, find $A$.",
+          "q": "Evaluate $\\sum_{n=1}^{\\infty} \\frac{1}{n(n+1)}$ using partial fractions (telescoping).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Partial fractions with a repeated linear factor",
           "choices": [
-            "$8$",
-            "$-1$",
-            "$1$",
-            "$0$"
+            "2",
+            "$\\mathrm{diverges}$",
+            "1",
+            "$\\frac{1}{2}$"
           ],
-          "correct": 1,
-          "answer": "Using the cover-up method, set $x=0$: $A=\\frac{7(0)-5}{0-(-5)}=\\frac{-5}{5}=-1$.",
-          "explanation": "Using the cover-up method, set $x=0$: $A=\\frac{7(0)-5}{0-(-5)}=\\frac{-5}{5}=-1$."
+          "correct": 2,
+          "answer": "$\\frac{1}{n(n+1)}=\\frac{1}{1}\\left(\\frac{1}{n}-\\frac{1}{n+1}\\right)$. Telescoping leaves $\\frac{1}{1}\\left(1+\\frac{1}{2}+\\cdots+\\frac{1}{1}\\right)=1.$",
+          "explanation": "$\\frac{1}{n(n+1)}=\\frac{1}{1}\\left(\\frac{1}{n}-\\frac{1}{n+1}\\right)$. Telescoping leaves $\\frac{1}{1}\\left(1+\\frac{1}{2}+\\cdots+\\frac{1}{1}\\right)=1.$"
         },
         {
-          "q": "For $\\frac{2x-6}{(x)(x+4)}=\\frac{A}{x}+\\frac{B}{x+4}$, find $A$.",
+          "q": "Use the comparison test to determine whether $\\sum_{n=1}^{\\infty} \\frac{1}{n^{2}+6}$ converges.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Partial fractions with an irreducible quadratic factor",
           "choices": [
-            "$\\frac{7}{2}$",
-            "$-\\frac{3}{2}$",
-            "$\\frac{3}{2}$",
-            "$-\\frac{1}{2}$"
+            "$\\mathrm{Diverges\\ by\\ the\\ nth-term\\ test}$",
+            "$\\mathrm{Converges\\ (compare\\ to\\ }\\sum 1/n^2\\mathrm{)}$",
+            "$\\mathrm{Diverges\\ (compare\\ to\\ }\\sum 1/n\\mathrm{)}$",
+            "$\\mathrm{Inconclusive}$"
           ],
           "correct": 1,
-          "answer": "Using the cover-up method, set $x=0$: $A=\\frac{2(0)-6}{0-(-4)}=\\frac{-6}{4}=-\\frac{3}{2}$.",
-          "explanation": "Using the cover-up method, set $x=0$: $A=\\frac{2(0)-6}{0-(-4)}=\\frac{-6}{4}=-\\frac{3}{2}$.",
+          "answer": "Since $01$), the given series converges by the comparison test.",
+          "explanation": "Since $01$), the given series converges by the comparison test.",
           "figure": {
             "type": "plot",
             "fns": [
-              "-0.30*x**2 + 1.2*x + 2.2",
-              "0.35*x + 0.4"
+              "-0.41*x**2 + 1.5*x + 2.1",
+              "0.3*x + 0.3"
             ],
             "xmin": -1,
             "xmax": 5,
             "ymin": -1,
-            "ymax": 5,
+            "ymax": 5.5,
             "shade": {
-              "fn1": "-0.30*x**2 + 1.2*x + 2.2",
-              "fn2": "0.35*x + 0.4",
+              "fn1": "-0.41*x**2 + 1.5*x + 2.1",
+              "fn2": "0.3*x + 0.3",
               "x0": 0.0,
-              "x1": 3.5
+              "x1": 2.9
             },
             "point_labels": [
               {
-                "x": 2.0,
-                "y": 3.4,
+                "x": 1.5,
+                "y": 3.43,
                 "label": "$y=f(x)$"
               }
             ],
@@ -358,99 +358,99 @@
           }
         },
         {
-          "q": "For $\\frac{7x+1}{(x-3)(x-2)}=\\frac{A}{x-3}+\\frac{B}{x-2}$, find $A$.",
+          "q": "Consider the infinite series $\\sum_{n=1}^{\\infty} \\frac{n^p}{5^n}$. The series converges if and only if the parameter $p$ satisfies which of the following conditions? Use the Ratio Test to determine the interval of convergence.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Improper integrals: infinite limits",
           "choices": [
-            "$23$",
-            "$-22$",
-            "$-15$",
-            "$22$"
+            "$p > 0$",
+            "$p < 1$",
+            "$p > -1$",
+            "For all real values of $p$"
           ],
           "correct": 3,
-          "answer": "Using the cover-up method, set $x=3$: $A=\\frac{7(3)+1}{3-(2)}=\\frac{22}{1}=22$.",
-          "explanation": "Using the cover-up method, set $x=3$: $A=\\frac{7(3)+1}{3-(2)}=\\frac{22}{1}=22$."
+          "answer": "We apply the Ratio Test. Let $a_n = \\frac{n^p}{5^n}$. Then $a_{n+1} = \\frac{(n+1)^p}{5^{n+1}}$. We compute the limit of the ratio of consecutive terms: $L = \\lim_{n \\rightarrow \\infty} \\left| \\frac{a_{n+1}}{a_n} \\right| = \\lim_{n \\rightarrow \\infty} \\left| \\frac{(n+1)^p}{5^{n+1}} \\cdot \\frac{5^n}{n^p} \\right|$ $L = \\lim_{n \\rightarrow \\infty} \\left| \\frac{1}{5} \\left( \\frac{n+1}{n} \\right)^p \\right| = \\lim_{n \\rightarrow \\infty} \\left| \\frac{1}{5} \\left( 1 + \\frac{1}{n} \\right)^p \\right|$ As $n \\rightarrow \\infty$, $\\frac{1}{n} \\rightarrow 0$, so $\\left( 1 + \\frac{1}{n} \\right)^p \\rightarrow 1^p = 1$ for any real $p$. Thus, $L = \\frac{1}{5} \\cdot 1 = \\frac{1}{5}$ . According to the Ratio Test, the series converges if $L < 1$. Since $L = \\frac{1}{5} < 1$ for all real values of $p$, the series converges for all real values of $p$.",
+          "explanation": "We apply the Ratio Test. Let $a_n = \\frac{n^p}{5^n}$. Then $a_{n+1} = \\frac{(n+1)^p}{5^{n+1}}$. We compute the limit of the ratio of consecutive terms: $L = \\lim_{n \\rightarrow \\infty} \\left| \\frac{a_{n+1}}{a_n} \\right| = \\lim_{n \\rightarrow \\infty} \\left| \\frac{(n+1)^p}{5^{n+1}} \\cdot \\frac{5^n}{n^p} \\right|$ $L = \\lim_{n \\rightarrow \\infty} \\left| \\frac{1}{5} \\left( \\frac{n+1}{n} \\right)^p \\right| = \\lim_{n \\rightarrow \\infty} \\left| \\frac{1}{5} \\left( 1 + \\frac{1}{n} \\right)^p \\right|$ As $n \\rightarrow \\infty$, $\\frac{1}{n} \\rightarrow 0$, so $\\left( 1 + \\frac{1}{n} \\right)^p \\rightarrow 1^p = 1$ for any real $p$. Thus, $L = \\frac{1}{5} \\cdot 1 = \\frac{1}{5}$ . According to the Ratio Test, the series converges if $L < 1$. Since $L = \\frac{1}{5} < 1$ for all real values of $p$, the series converges for all real values of $p$."
         },
         {
-          "q": "For $\\frac{6x+9}{(x+1)(x-5)}=\\frac{A}{x+1}+\\frac{B}{x-5}$, find $A$.",
+          "q": "For $\\sum_{n=1}^{\\infty} \\frac{n^{2}}{2^{n}}$, apply the ratio test and determine convergence.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Improper integrals: discontinuous integrands",
           "choices": [
-            "$\\frac{1}{2}$",
-            "$\\frac{13}{2}$",
-            "$-\\frac{1}{2}$",
-            "$-1$"
+            "$\\mathrm{Inconclusive\\ (}L=1\\mathrm{)}$",
+            "$\\mathrm{Converges\\ (}L=1/2<1\\mathrm{)}$",
+            "$\\mathrm{Diverges\\ (}L=2>1\\mathrm{)}$",
+            "$\\mathrm{Diverges\\ by\\ comparison}$"
           ],
-          "correct": 2,
-          "answer": "Using the cover-up method, set $x=-1$: $A=\\frac{6(-1)+9}{-1-(5)}=\\frac{3}{-6}=-\\frac{1}{2}$.",
-          "explanation": "Using the cover-up method, set $x=-1$: $A=\\frac{6(-1)+9}{-1-(5)}=\\frac{3}{-6}=-\\frac{1}{2}$."
+          "correct": 1,
+          "answer": "$\\frac{a_{n+1}}{a_n}=\\left(\\frac{n+1}{n}\\right)^{2}\\cdot\\frac{1}{2}\\rightarrow\\frac{1}{2}<1$. Ratio test: converges regardless of the fixed power 2.",
+          "explanation": "$\\frac{a_{n+1}}{a_n}=\\left(\\frac{n+1}{n}\\right)^{2}\\cdot\\frac{1}{2}\\rightarrow\\frac{1}{2}<1$. Ratio test: converges regardless of the fixed power 2."
         },
         {
-          "q": "For $\\frac{3x+3}{(x+3)(x-5)}=\\frac{A}{x+3}+\\frac{B}{x-5}$, find $A$.",
+          "q": "Apply the ratio test to $\\sum_{n=1}^{\\infty} \\frac{6^{n}}{n!}$. What is $L=\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|$?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "The p-test for improper integrals",
           "choices": [
-            "$\\frac{7}{4}$",
-            "$-\\frac{3}{4}$",
-            "$\\frac{9}{4}$",
-            "$\\frac{3}{4}$"
+            "0",
+            "$\\infty$",
+            "1",
+            "6"
           ],
-          "correct": 3,
-          "answer": "Using the cover-up method, set $x=-3$: $A=\\frac{3(-3)+3}{-3-(5)}=\\frac{-6}{-8}=\\frac{3}{4}$.",
-          "explanation": "Using the cover-up method, set $x=-3$: $A=\\frac{3(-3)+3}{-3-(5)}=\\frac{-6}{-8}=\\frac{3}{4}$."
+          "correct": 0,
+          "answer": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{6}{n+1}\\rightarrow0$ as $n\\rightarrow\\infty$. Since $L=0<1$, the series converges (for every $x$).",
+          "explanation": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{6}{n+1}\\rightarrow0$ as $n\\rightarrow\\infty$. Since $L=0<1$, the series converges (for every $x$)."
         },
         {
-          "q": "For $\\frac{3x-4}{(x-4)(x-5)}=\\frac{A}{x-4}+\\frac{B}{x-5}$, find $A$.",
+          "q": "Determine whether $\\sum_{n=1}^{\\infty} \\frac{n!}{n^{n}}$ converges using the ratio test. (variant 1)",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Combining partial fractions with improper integrals",
           "choices": [
-            "$-8$",
-            "$8$",
-            "$-7$",
-            "$11$"
+            "$\\mathrm{Converges\\ (}L=1/e<1\\mathrm{)}$",
+            "$\\mathrm{Diverges\\ by\\ the\\ nth-term\\ test}$",
+            "$\\mathrm{Diverges\\ (}L=1/e>1\\mathrm{)}$",
+            "$\\mathrm{Inconclusive\\ (}L=1\\mathrm{)}$"
           ],
           "correct": 0,
-          "answer": "Using the cover-up method, set $x=4$: $A=\\frac{3(4)-4}{4-(5)}=\\frac{8}{-1}=-8$.",
-          "explanation": "Using the cover-up method, set $x=4$: $A=\\frac{3(4)-4}{4-(5)}=\\frac{8}{-1}=-8$."
+          "answer": "$\\frac{a_{n+1}}{a_n}=\\frac{n^n}{(n+1)^n}=\\left(\\frac{n}{n+1}\\right)^n\\rightarrow\\frac{1}{e}<1$. Ratio test: converges.",
+          "explanation": "$\\frac{a_{n+1}}{a_n}=\\frac{n^n}{(n+1)^n}=\\left(\\frac{n}{n+1}\\right)^n\\rightarrow\\frac{1}{e}<1$. Ratio test: converges."
         },
         {
-          "q": "Evaluate $\\int_1^{\\infty}\\frac{2}{x^{3}}\\,dx$, or show it diverges.",
+          "q": "In the partial fraction decomposition $\\frac{1}{(x-3)(x-5)}=\\frac{A}{x-3}+\\frac{B}{x-5}$, find $A$.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Three distinct linear factors",
           "choices": [
-            "$-1$",
-            "$1$",
-            "$2$",
-            "$\\frac{2}{3}$"
+            "1",
+            "$\\frac{1}{2}$",
+            "$\\frac{1}{3}$",
+            "$- \\frac{1}{2}$"
           ],
           "correct": 1,
-          "answer": "$\\int_1^{\\infty}2x^{-3}\\,dx=\\lim_{b\\rightarrow\\infty}\\left[\\frac{2x^{-2}}{-2}\\right]_1^b=\\lim_{b\\rightarrow\\infty}\\left(\\frac{-2}{(2)b^{2}}+\\frac{2}{2}\\right)=0+\\frac{2}{2}=1$. Converges.",
-          "explanation": "$\\int_1^{\\infty}2x^{-3}\\,dx=\\lim_{b\\rightarrow\\infty}\\left[\\frac{2x^{-2}}{-2}\\right]_1^b=\\lim_{b\\rightarrow\\infty}\\left(\\frac{-2}{(2)b^{2}}+\\frac{2}{2}\\right)=0+\\frac{2}{2}=1$. Converges.",
+          "answer": "Multiply by $(x-3)(x-5)$: $1=A(x-5)+B(x-3)$. Set $x=3$: $1=A(3-5)\\Rightarrow A=\\frac{1}{3-5}=\\frac{1}{2}$.",
+          "explanation": "Multiply by $(x-3)(x-5)$: $1=A(x-5)+B(x-3)$. Set $x=3$: $1=A(3-5)\\Rightarrow A=\\frac{1}{3-5}=\\frac{1}{2}$.",
           "figure": {
             "type": "plot",
             "fns": [
-              "-0.25*x**2 + 1.2*x + 2.2",
-              "0.35*x + 0.4"
+              "-0.27*x**2 + 1.5*x + 2.4",
+              "0.4*x + 0.3"
             ],
             "xmin": -1,
             "xmax": 5,
             "ymin": -1,
-            "ymax": 5,
+            "ymax": 5.5,
             "shade": {
-              "fn1": "-0.25*x**2 + 1.2*x + 2.2",
-              "fn2": "0.35*x + 0.4",
+              "fn1": "-0.27*x**2 + 1.5*x + 2.4",
+              "fn2": "0.4*x + 0.3",
               "x0": 0.0,
-              "x1": 3.5
+              "x1": 3.3
             },
             "point_labels": [
               {
-                "x": 2.0,
-                "y": 3.6,
+                "x": 1.5,
+                "y": 4.04,
                 "label": "$y=f(x)$"
               }
             ],
@@ -463,99 +463,99 @@
       "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
       "questions": [
         {
-          "q": "Evaluate $\\int_1^{\\infty}\\frac{8}{x^{2}}\\,dx$, or show it diverges.",
+          "q": "Approximating $\\sum_{n=1}^{\\infty} \\frac{(-1)^{n+1}}{n^{2}}$ by its first $5$ terms, bound the error using the alternating series error bound.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Visualizing convergence: area under the curve",
           "choices": [
-            "$-8$",
-            "$4$",
-            "$8$",
-            "$9$"
+            "$\\left|S-S_{5}\\right|\\leq\\frac{1}{49}$",
+            "$\\left|S-S_{5}\\right|\\leq 36$",
+            "$\\left|S-S_{5}\\right|\\leq\\frac{1}{25}$",
+            "$\\left|S-S_{5}\\right|\\leq\\frac{1}{36}$"
           ],
-          "correct": 2,
-          "answer": "$\\int_1^{\\infty}8x^{-2}\\,dx=\\lim_{b\\rightarrow\\infty}\\left[\\frac{8x^{-1}}{-1}\\right]_1^b=\\lim_{b\\rightarrow\\infty}\\left(\\frac{-8}{(1)b^{1}}+\\frac{8}{1}\\right)=0+\\frac{8}{1}=8$. Converges.",
-          "explanation": "$\\int_1^{\\infty}8x^{-2}\\,dx=\\lim_{b\\rightarrow\\infty}\\left[\\frac{8x^{-1}}{-1}\\right]_1^b=\\lim_{b\\rightarrow\\infty}\\left(\\frac{-8}{(1)b^{1}}+\\frac{8}{1}\\right)=0+\\frac{8}{1}=8$. Converges."
+          "correct": 3,
+          "answer": "The alternating series error bound: $|S-S_N|\\leq a_{N+1}=\\frac{1}{(5+1)^{2}}=\\frac{1}{36}.$",
+          "explanation": "The alternating series error bound: $|S-S_N|\\leq a_{N+1}=\\frac{1}{(5+1)^{2}}=\\frac{1}{36}.$"
         },
         {
-          "q": "Evaluate $\\int_1^{\\infty}\\frac{3}{x^{2}}\\,dx$, or show it diverges.",
+          "q": "Ratio test: if $\\lim\\frac{a_{n+1}}{a_n}<1$, the series:",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Improper integrals with both an infinite bound and a discontinuity",
           "choices": [
-            "$\\frac{3}{2}$",
-            "$-3$",
-            "$4$",
-            "$3$"
+            "Diverges",
+            "Converges absolutely",
+            "May converge",
+            "Converges conditionally"
           ],
-          "correct": 3,
-          "answer": "$\\int_1^{\\infty}3x^{-2}\\,dx=\\lim_{b\\rightarrow\\infty}\\left[\\frac{3x^{-1}}{-1}\\right]_1^b=\\lim_{b\\rightarrow\\infty}\\left(\\frac{-3}{(1)b^{1}}+\\frac{3}{1}\\right)=0+\\frac{3}{1}=3$. Converges.",
-          "explanation": "$\\int_1^{\\infty}3x^{-2}\\,dx=\\lim_{b\\rightarrow\\infty}\\left[\\frac{3x^{-1}}{-1}\\right]_1^b=\\lim_{b\\rightarrow\\infty}\\left(\\frac{-3}{(1)b^{1}}+\\frac{3}{1}\\right)=0+\\frac{3}{1}=3$. Converges."
+          "correct": 1,
+          "answer": "Ratio < 1 implies absolute convergence.",
+          "explanation": "Ratio < 1 implies absolute convergence."
         },
         {
-          "q": "Evaluate $\\int_1^{\\infty}\\frac{4}{x^{2}}\\,dx$, or show it diverges.",
+          "q": "Repeated linear factor in partial fractions: $\\frac{1}{(x-1)^2}=\\frac{A}{x-1}+\\frac{B}{(x-1)^2}$. Decompose $\\frac{x}{(x-1)^2}$:",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Comparison test for improper integrals",
           "choices": [
-            "$5$",
-            "$-4$",
-            "$2$",
-            "$4$"
-          ],
-          "correct": 3,
-          "answer": "$\\int_1^{\\infty}4x^{-2}\\,dx=\\lim_{b\\rightarrow\\infty}\\left[\\frac{4x^{-1}}{-1}\\right]_1^b=\\lim_{b\\rightarrow\\infty}\\left(\\frac{-4}{(1)b^{1}}+\\frac{4}{1}\\right)=0+\\frac{4}{1}=4$. Converges.",
-          "explanation": "$\\int_1^{\\infty}4x^{-2}\\,dx=\\lim_{b\\rightarrow\\infty}\\left[\\frac{4x^{-1}}{-1}\\right]_1^b=\\lim_{b\\rightarrow\\infty}\\left(\\frac{-4}{(1)b^{1}}+\\frac{4}{1}\\right)=0+\\frac{4}{1}=4$. Converges."
-        },
-        {
-          "q": "Evaluate $\\int_1^{\\infty}\\frac{2}{x^{4}}\\,dx$, or show it diverges.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Linear Partial Fractions",
-          "choices": [
-            "$\\frac{2}{3}$",
-            "$\\frac{5}{3}$",
-            "$\\frac{1}{2}$",
-            "$-\\frac{2}{3}$"
+            "$\\frac{1}{x-1}+\\frac{1}{(x-1)^2}$",
+            "$\\frac{x}{(x-1)^2}$",
+            "$\\frac{1}{x-1}$",
+            "$\\frac{2}{(x-1)^2}$"
           ],
           "correct": 0,
-          "answer": "$\\int_1^{\\infty}2x^{-4}\\,dx=\\lim_{b\\rightarrow\\infty}\\left[\\frac{2x^{-3}}{-3}\\right]_1^b=\\lim_{b\\rightarrow\\infty}\\left(\\frac{-2}{(3)b^{3}}+\\frac{2}{3}\\right)=0+\\frac{2}{3}=\\frac{2}{3}$. Converges.",
-          "explanation": "$\\int_1^{\\infty}2x^{-4}\\,dx=\\lim_{b\\rightarrow\\infty}\\left[\\frac{2x^{-3}}{-3}\\right]_1^b=\\lim_{b\\rightarrow\\infty}\\left(\\frac{-2}{(3)b^{3}}+\\frac{2}{3}\\right)=0+\\frac{2}{3}=\\frac{2}{3}$. Converges."
+          "answer": "Applying Techniques of Integration principles, $x=(x-1)+1\\Rightarrow A=1,B=1$. Therefore, the verified correct option is $\\frac{1}{x-1}+\\frac{1}{(x-1)^2}$.",
+          "explanation": "Applying Techniques of Integration principles, $x=(x-1)+1\\Rightarrow A=1,B=1$. Therefore, the verified correct option is $\\frac{1}{x-1}+\\frac{1}{(x-1)^2}$."
         },
         {
-          "q": "Evaluate $\\int_1^{\\infty}\\frac{8}{x^{4}}\\,dx$, or show it diverges.",
+          "q": "Consider the sequence defined by $a_n = \\int_{0}^{1/n} \\frac{\\sin(x^2)}{x} dx$. Which of the following statements about the convergence of the sequence $\\{a_n\\}_{n=1}^{\\infty}$ is true?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Repeated Linear & Irreducible Factors",
+          "target": "Partial fraction decomposition: distinct linear factors",
           "choices": [
-            "$\\frac{8}{3}$",
-            "$-\\frac{8}{3}$",
-            "$\\frac{11}{3}$",
-            "$2$"
+            "The sequence converges to 0.",
+            "The sequence diverges to infinity.",
+            "The sequence converges to 1.",
+            "The sequence converges to $\\pi/2$."
           ],
           "correct": 0,
-          "answer": "$\\int_1^{\\infty}8x^{-4}\\,dx=\\lim_{b\\rightarrow\\infty}\\left[\\frac{8x^{-3}}{-3}\\right]_1^b=\\lim_{b\\rightarrow\\infty}\\left(\\frac{-8}{(3)b^{3}}+\\frac{8}{3}\\right)=0+\\frac{8}{3}=\\frac{8}{3}$. Converges.",
-          "explanation": "$\\int_1^{\\infty}8x^{-4}\\,dx=\\lim_{b\\rightarrow\\infty}\\left[\\frac{8x^{-3}}{-3}\\right]_1^b=\\lim_{b\\rightarrow\\infty}\\left(\\frac{-8}{(3)b^{3}}+\\frac{8}{3}\\right)=0+\\frac{8}{3}=\\frac{8}{3}$. Converges.",
+          "answer": "We need to determine the limit of the sequence $a_n = \\int_{0}^{1/n} \\frac{\\sin(x^2)}{x} dx$ as $n \\rightarrow \\infty$. As $n \\rightarrow \\infty$, the upper limit of integration $1/n \\rightarrow 0$. We examine the behavior of the integrand $\\frac{\\sin(x^2)}{x}$ near $x=0$. Using the Taylor series expansion for $\\sin(u)$ around $u=0$, which is $\\sin(u) = u - \\frac{u^3}{3!} + O(u^5)$, we substitute $u=x^2$: $\\sin(x^2) = x^2 - \\frac{(x^2)^3}{3!} + O(x^{10}) = x^2 - \\frac{x^6}{6} + O(x^{10})$. Therefore, for $x$ close to 0, $\\frac{\\sin(x^2)}{x} = \\frac{x^2 - \\frac{x^6}{6} + O(x^{10})}{x} = x - \\frac{x^5}{6} + O(x^9)$. This shows that the integrand $\\frac{\\sin(x^2)}{x}$ approaches 0 as $x \\rightarrow 0$. In fact, for small $x$, $\\frac{\\sin(x^2)}{x} \\approx x$, which is continuous at $x=0$ if we define it to be 0. More formally, by L'Hopital's Rule applied to $\\frac{\\sin(x^2)}{x^2}$ and then multiplying by $x$, we can see that $\\lim_{x\\rightarrow 0} \\frac{\\sin(x^2)}{x} = \\lim_{x\\rightarrow 0} x \\cdot \\lim_{x\\rightarrow 0} \\frac{\\sin(x^2)}{x^2} = 0 \\cdot 1 = 0$. Since the integrand is continuous on the interval $[0, 1/n]$ for any $n \\geq 1$ (if we define the integrand to be 0 at $x=0$, or by noting the limit is 0), and the interval of integration shrinks to 0 as $n \\rightarrow \\infty$, the value of the integral $a_n$ must also approach 0. Let $f(x) = \\frac{\\sin(x^2)}{x}$. For $x \\in (0, 1]$, $f(x)$ is well-defined. As $x \\rightarrow 0^+$, $f(x) \\rightarrow 0$. We can consider a continuous extension of $f(x)$ on $[0, 1]$ by defining $f(0)=0$. The function $f(x)$ is continuous on $[0, 1]$. By the Mean Value Theorem for Integrals, for $n \\geq 1$, there exists a $c_n \\in [0, 1/n]$ such that $a_n = f(c_n) \\cdot (1/n - 0) = f(c_n) \\cdot (1/n)$. As $n \\rightarrow \\infty$, $c_n \\rightarrow 0$. Since $f$ is continuous at 0, $\\lim_{n \\rightarrow \\infty} f(c_n) = f(0) = 0$. Therefore, $\\lim_{n \\rightarrow \\infty} a_n = \\lim_{n \\rightarrow \\infty} f(c_n) \\cdot \\frac{1}{n} = 0 \\cdot 0 = 0$. Thus, the sequence converges to 0.",
+          "explanation": "We need to determine the limit of the sequence $a_n = \\int_{0}^{1/n} \\frac{\\sin(x^2)}{x} dx$ as $n \\rightarrow \\infty$. As $n \\rightarrow \\infty$, the upper limit of integration $1/n \\rightarrow 0$. We examine the behavior of the integrand $\\frac{\\sin(x^2)}{x}$ near $x=0$. Using the Taylor series expansion for $\\sin(u)$ around $u=0$, which is $\\sin(u) = u - \\frac{u^3}{3!} + O(u^5)$, we substitute $u=x^2$: $\\sin(x^2) = x^2 - \\frac{(x^2)^3}{3!} + O(x^{10}) = x^2 - \\frac{x^6}{6} + O(x^{10})$. Therefore, for $x$ close to 0, $\\frac{\\sin(x^2)}{x} = \\frac{x^2 - \\frac{x^6}{6} + O(x^{10})}{x} = x - \\frac{x^5}{6} + O(x^9)$. This shows that the integrand $\\frac{\\sin(x^2)}{x}$ approaches 0 as $x \\rightarrow 0$. In fact, for small $x$, $\\frac{\\sin(x^2)}{x} \\approx x$, which is continuous at $x=0$ if we define it to be 0. More formally, by L'Hopital's Rule applied to $\\frac{\\sin(x^2)}{x^2}$ and then multiplying by $x$, we can see that $\\lim_{x\\rightarrow 0} \\frac{\\sin(x^2)}{x} = \\lim_{x\\rightarrow 0} x \\cdot \\lim_{x\\rightarrow 0} \\frac{\\sin(x^2)}{x^2} = 0 \\cdot 1 = 0$. Since the integrand is continuous on the interval $[0, 1/n]$ for any $n \\geq 1$ (if we define the integrand to be 0 at $x=0$, or by noting the limit is 0), and the interval of integration shrinks to 0 as $n \\rightarrow \\infty$, the value of the integral $a_n$ must also approach 0. Let $f(x) = \\frac{\\sin(x^2)}{x}$. For $x \\in (0, 1]$, $f(x)$ is well-defined. As $x \\rightarrow 0^+$, $f(x) \\rightarrow 0$. We can consider a continuous extension of $f(x)$ on $[0, 1]$ by defining $f(0)=0$. The function $f(x)$ is continuous on $[0, 1]$. By the Mean Value Theorem for Integrals, for $n \\geq 1$, there exists a $c_n \\in [0, 1/n]$ such that $a_n = f(c_n) \\cdot (1/n - 0) = f(c_n) \\cdot (1/n)$. As $n \\rightarrow \\infty$, $c_n \\rightarrow 0$. Since $f$ is continuous at 0, $\\lim_{n \\rightarrow \\infty} f(c_n) = f(0) = 0$. Therefore, $\\lim_{n \\rightarrow \\infty} a_n = \\lim_{n \\rightarrow \\infty} f(c_n) \\cdot \\frac{1}{n} = 0 \\cdot 0 = 0$. Thus, the sequence converges to 0."
+        },
+        {
+          "q": "Consider the infinite series $\\sum_{n=1}^{\\infty} a_n$. If the terms of the series are given by $a_n = \\frac{3n+1}{2n+5}$, which of the following statements about the convergence of the series is true based on the limit of the terms?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Partial fractions with a repeated linear factor",
+          "choices": [
+            "The series converges because $\\lim_{n \\rightarrow \\infty} a_n = 0$.",
+            "The series diverges because $\\lim_{n \\rightarrow \\infty} a_n = \\frac{3}{2}$.",
+            "The series converges because $\\lim_{n \\rightarrow \\infty} a_n = \\frac{3}{2}$.",
+            "The series diverges because $\\lim_{n \\rightarrow \\infty} a_n$ does not exist."
+          ],
+          "correct": 1,
+          "answer": "To determine the convergence or divergence of an infinite series $\\sum_{n=1}^{\\infty} a_n$, we can first examine the limit of its terms, $\\lim_{n \\rightarrow \\infty} a_n$. If this limit is not equal to zero, then the series diverges by the Test for Divergence. For the given series, the terms are $a_n = \\frac{3n+1}{2n+5}$. We evaluate the limit as $n \\rightarrow \\infty$: $\\lim_{n \\rightarrow \\infty} a_n = \\lim_{n \\rightarrow \\infty} \\frac{3n+1}{2n+5}$ To evaluate this limit, we can divide both the numerator and the denominator by the highest power of $n$ in the denominator, which is $n$: $\\lim_{n \\rightarrow \\infty} \\frac{\\frac{3n}{n}+\\frac{1}{n}}{\\frac{2n}{n}+\\frac{5}{n}} = \\lim_{n \\rightarrow \\infty} \\frac{3+\\frac{1}{n}}{2+\\frac{5}{n}}$ As $n \\rightarrow \\infty$, $\\frac{1}{n} \\rightarrow 0$ and $\\frac{5}{n} \\rightarrow 0$. Therefore, the limit becomes: $\\frac{3+0}{2+0} = \\frac{3}{2}$ Since $\\lim_{n \\rightarrow \\infty} a_n = \\frac{3}{2}$, and $\\frac{3}{2} eq 0$, the series diverges by the Test for Divergence. Therefore, choice B is correct.",
+          "explanation": "To determine the convergence or divergence of an infinite series $\\sum_{n=1}^{\\infty} a_n$, we can first examine the limit of its terms, $\\lim_{n \\rightarrow \\infty} a_n$. If this limit is not equal to zero, then the series diverges by the Test for Divergence. For the given series, the terms are $a_n = \\frac{3n+1}{2n+5}$. We evaluate the limit as $n \\rightarrow \\infty$: $\\lim_{n \\rightarrow \\infty} a_n = \\lim_{n \\rightarrow \\infty} \\frac{3n+1}{2n+5}$ To evaluate this limit, we can divide both the numerator and the denominator by the highest power of $n$ in the denominator, which is $n$: $\\lim_{n \\rightarrow \\infty} \\frac{\\frac{3n}{n}+\\frac{1}{n}}{\\frac{2n}{n}+\\frac{5}{n}} = \\lim_{n \\rightarrow \\infty} \\frac{3+\\frac{1}{n}}{2+\\frac{5}{n}}$ As $n \\rightarrow \\infty$, $\\frac{1}{n} \\rightarrow 0$ and $\\frac{5}{n} \\rightarrow 0$. Therefore, the limit becomes: $\\frac{3+0}{2+0} = \\frac{3}{2}$ Since $\\lim_{n \\rightarrow \\infty} a_n = \\frac{3}{2}$, and $\\frac{3}{2} eq 0$, the series diverges by the Test for Divergence. Therefore, choice B is correct.",
           "figure": {
             "type": "plot",
             "fns": [
-              "-0.35*x**2 + 1.2*x + 2.2",
-              "0.35*x + 0.4"
+              "-0.2*x**2 + 1.5*x + 2.4",
+              "0.2*x + 0.3"
             ],
             "xmin": -1,
             "xmax": 5,
             "ymin": -1,
-            "ymax": 5,
+            "ymax": 5.5,
             "shade": {
-              "fn1": "-0.35*x**2 + 1.2*x + 2.2",
-              "fn2": "0.35*x + 0.4",
+              "fn1": "-0.2*x**2 + 1.5*x + 2.4",
+              "fn2": "0.2*x + 0.3",
               "x0": 0.0,
-              "x1": 3.5
+              "x1": 2.5
             },
             "point_labels": [
               {
-                "x": 2.0,
-                "y": 3.2,
+                "x": 1.5,
+                "y": 4.2,
                 "label": "$y=f(x)$"
               }
             ],
@@ -563,64 +563,64 @@
           }
         },
         {
-          "q": "Evaluate $\\int_1^{\\infty}\\frac{3}{x^{4}}\\,dx$, or show it diverges.",
+          "q": "Consider the infinite series $\\sum_{n=1}^{\\infty} \\frac{n^p}{4^n}$. For what values of $p$ does the series converge?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Improper Integrals with Infinite Limits (Type 1)",
+          "target": "Partial fractions with an irreducible quadratic factor",
           "choices": [
-            "$\\frac{3}{4}$",
-            "$1$",
-            "$2$",
-            "$-1$"
+            "All real numbers $p$",
+            "$p < 0$",
+            "$p > 0$",
+            "No real numbers $p$"
+          ],
+          "correct": 0,
+          "answer": "We will use the Ratio Test to determine the convergence of the series $\\sum_{n=1}^{\\infty} \\frac{n^p}{4^n}$. Let $a_n = \\frac{n^p}{4^n}$. Then $a_{n+1} = \\frac{(n+1)^p}{4^{n+1}}$. The ratio of consecutive terms is: $\\left| \\frac{a_{n+1}}{a_n} \\right| = \\left| \\frac{(n+1)^p / 4^{n+1}}{n^p / 4^n} \\right| = \\left| \\frac{(n+1)^p}{n^p} \\cdot \\frac{4^n}{4^{n+1}} \\right| = \\left| \\left( \\frac{n+1}{n} \\right)^p \\cdot \\frac{1}{4} \\right| = \\left| \\left( 1 + \\frac{1}{n} \\right)^p \\cdot \\frac{1}{4} \\right|$ Now, we take the limit as $n \\rightarrow \\infty$: $L = \\lim_{n\\rightarrow\\infty} \\left( 1 + \\frac{1}{n} \\right)^p \\cdot \\frac{1}{4}$ Since $\\lim_{n\\rightarrow\\infty} \\left( 1 + \\frac{1}{n} \\right) = 1$, we have: $L = 1^p \\cdot \\frac{1}{4} = 1 \\cdot \\frac{1}{4} = \\frac{1}{4}$ According to the Ratio Test, if $L < 1$, the series converges. In this case, $L = \\frac{1}{4}$, which is indeed less than 1. The limit $L$ is independent of the value of $p$. Therefore, the series converges for all real values of $p$.",
+          "explanation": "We will use the Ratio Test to determine the convergence of the series $\\sum_{n=1}^{\\infty} \\frac{n^p}{4^n}$. Let $a_n = \\frac{n^p}{4^n}$. Then $a_{n+1} = \\frac{(n+1)^p}{4^{n+1}}$. The ratio of consecutive terms is: $\\left| \\frac{a_{n+1}}{a_n} \\right| = \\left| \\frac{(n+1)^p / 4^{n+1}}{n^p / 4^n} \\right| = \\left| \\frac{(n+1)^p}{n^p} \\cdot \\frac{4^n}{4^{n+1}} \\right| = \\left| \\left( \\frac{n+1}{n} \\right)^p \\cdot \\frac{1}{4} \\right| = \\left| \\left( 1 + \\frac{1}{n} \\right)^p \\cdot \\frac{1}{4} \\right|$ Now, we take the limit as $n \\rightarrow \\infty$: $L = \\lim_{n\\rightarrow\\infty} \\left( 1 + \\frac{1}{n} \\right)^p \\cdot \\frac{1}{4}$ Since $\\lim_{n\\rightarrow\\infty} \\left( 1 + \\frac{1}{n} \\right) = 1$, we have: $L = 1^p \\cdot \\frac{1}{4} = 1 \\cdot \\frac{1}{4} = \\frac{1}{4}$ According to the Ratio Test, if $L < 1$, the series converges. In this case, $L = \\frac{1}{4}$, which is indeed less than 1. The limit $L$ is independent of the value of $p$. Therefore, the series converges for all real values of $p$."
+        },
+        {
+          "q": "Consider the sequence $a_n = \\frac{1}{n!} \\int_0^n e^{-t^2} dt$. Which of the following statements about the convergence of $\\lbrace a_n \\rbrace$ is true?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Improper integrals: infinite limits",
+          "choices": [
+            "The sequence diverges to $\\infty$.",
+            "The sequence converges to 0.",
+            "The sequence converges to 1.",
+            "The sequence oscillates and does not converge."
           ],
           "correct": 1,
-          "answer": "$\\int_1^{\\infty}3x^{-4}\\,dx=\\lim_{b\\rightarrow\\infty}\\left[\\frac{3x^{-3}}{-3}\\right]_1^b=\\lim_{b\\rightarrow\\infty}\\left(\\frac{-3}{(3)b^{3}}+\\frac{3}{3}\\right)=0+\\frac{3}{3}=1$. Converges.",
-          "explanation": "$\\int_1^{\\infty}3x^{-4}\\,dx=\\lim_{b\\rightarrow\\infty}\\left[\\frac{3x^{-3}}{-3}\\right]_1^b=\\lim_{b\\rightarrow\\infty}\\left(\\frac{-3}{(3)b^{3}}+\\frac{3}{3}\\right)=0+\\frac{3}{3}=1$. Converges."
+          "answer": "Let $I_n = \\int_0^n e^{-t^2} dt$. We know that $e^{-t^2} \\leq 1$ for all $t \\geq 0$. Thus, $I_n = \\int_0^n e^{-t^2} dt \\leq \\int_0^n 1 dt = n$. More precisely, as $n \\rightarrow \\infty$, $I_n$ approaches $\\int_0^\\infty e^{-t^2} dt = \\frac{\\sqrt{\\pi}}{2}$, which is a finite constant. Therefore, $I_n$ is bounded. Now consider the sequence $a_n = \\frac{I_n}{n!}$. We have $0 \\leq a_n = \\frac{I_n}{n!} \\leq \\frac{n}{n!} = \\frac{1}{(n-1)!}$ for $n \\geq 1$. We know that $\\lim_{n\\rightarrow\\infty} \\frac{1}{(n-1)!} = 0$. By the Squeeze Theorem, since $0 \\leq a_n \\leq \\frac{1}{(n-1)!}$ and $\\lim_{n\\rightarrow\\infty} 0 = 0$ and $\\lim_{n\\rightarrow\\infty} \\frac{1}{(n-1)!} = 0$, we can conclude that $\\lim_{n\\rightarrow\\infty} a_n = 0$. Thus, the sequence converges to 0.",
+          "explanation": "Let $I_n = \\int_0^n e^{-t^2} dt$. We know that $e^{-t^2} \\leq 1$ for all $t \\geq 0$. Thus, $I_n = \\int_0^n e^{-t^2} dt \\leq \\int_0^n 1 dt = n$. More precisely, as $n \\rightarrow \\infty$, $I_n$ approaches $\\int_0^\\infty e^{-t^2} dt = \\frac{\\sqrt{\\pi}}{2}$, which is a finite constant. Therefore, $I_n$ is bounded. Now consider the sequence $a_n = \\frac{I_n}{n!}$. We have $0 \\leq a_n = \\frac{I_n}{n!} \\leq \\frac{n}{n!} = \\frac{1}{(n-1)!}$ for $n \\geq 1$. We know that $\\lim_{n\\rightarrow\\infty} \\frac{1}{(n-1)!} = 0$. By the Squeeze Theorem, since $0 \\leq a_n \\leq \\frac{1}{(n-1)!}$ and $\\lim_{n\\rightarrow\\infty} 0 = 0$ and $\\lim_{n\\rightarrow\\infty} \\frac{1}{(n-1)!} = 0$, we can conclude that $\\lim_{n\\rightarrow\\infty} a_n = 0$. Thus, the sequence converges to 0."
         },
         {
-          "q": "Evaluate $\\int_0^1\\frac{2}{x^{\\frac{1}{4}}}\\,dx$, or show it diverges (the integrand is undefined at $x=0$).",
+          "q": "Consider the polar curve given by the equation $r = 3 - 2\\sin(\\theta)$. A point $P$ on this curve has polar coordinates $(r, \\theta)$. If the Cartesian coordinates of $P$ are $(x, y)$, and $\\theta = \\frac{\\pi}{2}$, find the value of $x$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Improper Integrals with Discontinuous Integrands (Type 2)",
+          "target": "Improper integrals: discontinuous integrands",
           "choices": [
-            "$\\frac{8}{3}$",
-            "$\\frac{11}{3}$",
-            "$8$",
-            "$-\\frac{8}{3}$"
+            "3",
+            "0",
+            "1",
+            "-1"
           ],
-          "correct": 0,
-          "answer": "Since $p=\\frac{1}{4}<1$, this converges (by the $p$-test at a discontinuity). $\\int_0^12x^{-\\frac{1}{4}}\\,dx=\\lim_{a\\rightarrow0^+}\\left[\\frac{2x^{\\frac{3}{4}}}{\\frac{3}{4}}\\right]_a^1=\\frac{2}{\\frac{3}{4}}-0=\\frac{8}{3}$.",
-          "explanation": "Since $p=\\frac{1}{4}<1$, this converges (by the $p$-test at a discontinuity). $\\int_0^12x^{-\\frac{1}{4}}\\,dx=\\lim_{a\\rightarrow0^+}\\left[\\frac{2x^{\\frac{3}{4}}}{\\frac{3}{4}}\\right]_a^1=\\frac{2}{\\frac{3}{4}}-0=\\frac{8}{3}$."
+          "correct": 1,
+          "answer": "The relationship between polar coordinates $(r, \\theta)$ and Cartesian coordinates $(x, y)$ is given by $x = r\\cos(\\theta)$ and $y = r\\sin(\\theta)$. We are given the polar equation $r = 3 - 2\\sin(\\theta)$ and that $\\theta = \\frac{\\pi}{2}$. First, we find the value of $r$ at $\\theta = \\frac{\\pi}{2}$: $r = 3 - 2\\sin(\\frac{\\pi}{2}) = 3 - 2(1) = 1$. Now we can find the Cartesian coordinate $x$ using $x = r\\cos(\\theta)$: $x = 1 \\cdot \\cos(\\frac{\\pi}{2}) = 1 \\cdot 0 = 0$. Therefore, the value of $x$ is 0.",
+          "explanation": "The relationship between polar coordinates $(r, \\theta)$ and Cartesian coordinates $(x, y)$ is given by $x = r\\cos(\\theta)$ and $y = r\\sin(\\theta)$. We are given the polar equation $r = 3 - 2\\sin(\\theta)$ and that $\\theta = \\frac{\\pi}{2}$. First, we find the value of $r$ at $\\theta = \\frac{\\pi}{2}$: $r = 3 - 2\\sin(\\frac{\\pi}{2}) = 3 - 2(1) = 1$. Now we can find the Cartesian coordinate $x$ using $x = r\\cos(\\theta)$: $x = 1 \\cdot \\cos(\\frac{\\pi}{2}) = 1 \\cdot 0 = 0$. Therefore, the value of $x$ is 0."
         },
         {
-          "q": "Evaluate $\\int_0^1\\frac{6}{x^{\\frac{1}{5}}}\\,dx$, or show it diverges (the integrand is undefined at $x=0$).",
+          "q": "Consider the infinite sequence defined by $a_n = \\frac{3n^2 + 2n - 1}{n^2 + 5}$. To determine if this sequence converges, we examine its limit as $n \\rightarrow \\infty$. Which of the following statements is true about the limit of $a_n$?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Partial fraction decomposition: distinct linear factors",
+          "target": "The p-test for improper integrals",
           "choices": [
-            "$\\frac{15}{2}$",
-            "$30$",
-            "$-\\frac{15}{2}$",
-            "$\\frac{17}{2}$"
+            "The limit is 0.",
+            "The limit is 2.",
+            "The limit is 3.",
+            "The sequence diverges."
           ],
-          "correct": 0,
-          "answer": "Since $p=\\frac{1}{5}<1$, this converges (by the $p$-test at a discontinuity). $\\int_0^16x^{-\\frac{1}{5}}\\,dx=\\lim_{a\\rightarrow0^+}\\left[\\frac{6x^{\\frac{4}{5}}}{\\frac{4}{5}}\\right]_a^1=\\frac{6}{\\frac{4}{5}}-0=\\frac{15}{2}$.",
-          "explanation": "Since $p=\\frac{1}{5}<1$, this converges (by the $p$-test at a discontinuity). $\\int_0^16x^{-\\frac{1}{5}}\\,dx=\\lim_{a\\rightarrow0^+}\\left[\\frac{6x^{\\frac{4}{5}}}{\\frac{4}{5}}\\right]_a^1=\\frac{6}{\\frac{4}{5}}-0=\\frac{15}{2}$."
-        },
-        {
-          "q": "For $\\frac{5x-9}{(x-4)^2}=\\frac{A}{x-4}+\\frac{B}{(x-4)^2}$, find $B$.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Partial fractions with a repeated linear factor",
-          "choices": [
-            "$11$",
-            "$-4$",
-            "$13$",
-            "$-11$"
-          ],
-          "correct": 0,
-          "answer": "Multiplying both sides by $(x-4)^2$: $5x-9=A(x-4)+B$. Setting $x=4$: $B=5(4)-9=11$.",
-          "explanation": "Multiplying both sides by $(x-4)^2$: $5x-9=A(x-4)+B$. Setting $x=4$: $B=5(4)-9=11$."
+          "correct": 2,
+          "answer": "To find the limit of the sequence $a_n = \\frac{3n^2 + 2n - 1}{n^2 + 5}$ as $n \\rightarrow \\infty$, we can divide both the numerator and the denominator by the highest power of $n$ in the denominator, which is $n^2$. $x$ As $n \\rightarrow \\infty$, the terms $\\frac{2}{n}$, $\\frac{1}{n^2}$, and $\\frac{5}{n^2}$ all approach 0. $= \\frac{3 + 0 - 0}{1 + 0} = \\frac{3}{1} = 3$ Therefore, the sequence converges to 3.",
+          "explanation": "To find the limit of the sequence $a_n = \\frac{3n^2 + 2n - 1}{n^2 + 5}$ as $n \\rightarrow \\infty$, we can divide both the numerator and the denominator by the highest power of $n$ in the denominator, which is $n^2$. $x$ As $n \\rightarrow \\infty$, the terms $\\frac{2}{n}$, $\\frac{1}{n^2}$, and $\\frac{5}{n^2}$ all approach 0. $= \\frac{3 + 0 - 0}{1 + 0} = \\frac{3}{1} = 3$ Therefore, the sequence converges to 3."
         }
       ]
     },
@@ -628,56 +628,56 @@
       "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
       "questions": [
         {
-          "q": "For $\\frac{5x-3}{(x-1)^2}=\\frac{A}{x-1}+\\frac{B}{(x-1)^2}$, find $B$.",
+          "q": "The polar curve is given by the equation $r = 4 \\cos(\\theta)$. What is the equivalent Cartesian equation for this curve?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Partial fractions with an irreducible quadratic factor",
+          "target": "Combining partial fractions with improper integrals",
           "choices": [
-            "$-2$",
-            "$4$",
-            "$6$",
-            "$2$"
+            "$x^2 + y^2 = 4x$",
+            "$x^2 + y^2 = 16$",
+            "$y = 4x$",
+            "$x = 4 \\cos(y)$"
           ],
-          "correct": 3,
-          "answer": "Multiplying both sides by $(x-1)^2$: $5x-3=A(x-1)+B$. Setting $x=1$: $B=5(1)-3=2$.",
-          "explanation": "Multiplying both sides by $(x-1)^2$: $5x-3=A(x-1)+B$. Setting $x=1$: $B=5(1)-3=2$.",
+          "correct": 0,
+          "answer": "We know the relationships between polar and Cartesian coordinates: $r^2 = x^2 + y^2$, $x = r \\cos(\\theta)$, and $y = r \\sin(\\theta)$. The given polar equation is $r = 4 \\cos(\\theta)$. To convert this to a Cartesian equation, we can multiply both sides by $r$ to get $r^2 = 4r \\cos(\\theta)$. Substituting the Cartesian equivalents, we have $x^2 + y^2 = 4x$.",
+          "explanation": "We know the relationships between polar and Cartesian coordinates: $r^2 = x^2 + y^2$, $x = r \\cos(\\theta)$, and $y = r \\sin(\\theta)$. The given polar equation is $r = 4 \\cos(\\theta)$. To convert this to a Cartesian equation, we can multiply both sides by $r$ to get $r^2 = 4r \\cos(\\theta)$. Substituting the Cartesian equivalents, we have $x^2 + y^2 = 4x$.",
           "cross_lesson": "6.01 Power Series and Interval of Convergence"
         },
         {
-          "q": "Use a direct comparison to determine whether $\\int_1^{\\infty}\\frac{2+\\sin x}{x^2}\\,dx$ converges or diverges.",
+          "q": "Consider the infinite series $\\sum_{n=1}^{\\infty} \\frac{1}{n^p}$. For what value(s) of $p$ does this series converge?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Improper integrals: infinite limits",
+          "target": "Three distinct linear factors",
           "choices": [
-            "Cannot be determined by comparison, since $\\sin x$ oscillates.",
-            "Diverges, since $\\frac{2+\\sin x}{x^2}\\geq\\frac{1}{x^2}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{1}{x^2}\\,dx$ diverges since $p=2\\leq1$.",
-            "Converges, since $\\frac{2+\\sin x}{x^2}\\leq\\frac{3}{x^2}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{3}{x^2}\\,dx$ converges since $p=2>1$.",
-            "Converges only because $a=2$ happens to be even."
+            "$p \\leq 1$",
+            "$p < 1$",
+            "$p > 1$",
+            "$p = 1$"
           ],
           "correct": 2,
-          "answer": "Since $-1\\leq\\sin x\\leq1$: Converges, since $\\frac{2+\\sin x}{x^2}\\leq\\frac{3}{x^2}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{3}{x^2}\\,dx$ converges since $p=2>1$.",
-          "explanation": "Since $-1\\leq\\sin x\\leq1$: Converges, since $\\frac{2+\\sin x}{x^2}\\leq\\frac{3}{x^2}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{3}{x^2}\\,dx$ converges since $p=2>1$.",
+          "answer": "The given series is the p-series, $\\sum_{n=1}^{\\infty} \\frac{1}{n^p}$. This series is a fundamental example in the study of convergence. The p-series test states that the p-series converges if and only if $p > 1$. Therefore, the series converges for $p > 1$.",
+          "explanation": "The given series is the p-series, $\\sum_{n=1}^{\\infty} \\frac{1}{n^p}$. This series is a fundamental example in the study of convergence. The p-series test states that the p-series converges if and only if $p > 1$. Therefore, the series converges for $p > 1$.",
           "cross_lesson": "6.02 Taylor and Maclaurin Series",
           "figure": {
             "type": "plot",
             "fns": [
-              "-0.35*x**2 + 1.2*x + 2.2",
-              "0.35*x + 0.4"
+              "-0.41*x**2 + 1.5*x + 2.7",
+              "0.2*x + 0.3"
             ],
             "xmin": -1,
             "xmax": 5,
             "ymin": -1,
-            "ymax": 5,
+            "ymax": 5.5,
             "shade": {
-              "fn1": "-0.35*x**2 + 1.2*x + 2.2",
-              "fn2": "0.35*x + 0.4",
+              "fn1": "-0.41*x**2 + 1.5*x + 2.7",
+              "fn2": "0.2*x + 0.3",
               "x0": 0.0,
-              "x1": 3.5
+              "x1": 2.5
             },
             "point_labels": [
               {
-                "x": 2.0,
-                "y": 3.2,
+                "x": 1.5,
+                "y": 4.03,
                 "label": "$y=f(x)$"
               }
             ],
@@ -685,99 +685,99 @@
           }
         },
         {
-          "q": "Use a direct comparison to determine whether $\\int_1^{\\infty}\\frac{5+\\sin x}{x}\\,dx$ converges or diverges.",
+          "q": "Geometric series $\\sum ar^n$ converges when:",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Improper integrals: discontinuous integrands",
+          "target": "Visualizing convergence: area under the curve",
           "choices": [
-            "Diverges only because $a=5$ happens to be even.",
-            "Diverges, since $\\frac{5+\\sin x}{x}\\geq\\frac{4}{x}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{4}{x}\\,dx$ diverges since $p=1\\leq1$.",
-            "Cannot be determined by comparison, since $\\sin x$ oscillates.",
-            "Converges, since $\\frac{5+\\sin x}{x}\\leq\\frac{6}{x}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{6}{x}\\,dx$ converges since $p=1>1$."
+            "$r>1$",
+            "$|r|<1$",
+            "$r<0$",
+            "$r=1$"
           ],
           "correct": 1,
-          "answer": "Since $-1\\leq\\sin x\\leq1$: Diverges, since $\\frac{5+\\sin x}{x}\\geq\\frac{4}{x}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{4}{x}\\,dx$ diverges since $p=1\\leq1$.",
-          "explanation": "Since $-1\\leq\\sin x\\leq1$: Diverges, since $\\frac{5+\\sin x}{x}\\geq\\frac{4}{x}$ for $x\\geq1$, and $\\int_1^{\\infty}\\frac{4}{x}\\,dx$ diverges since $p=1\\leq1$.",
+          "answer": "Applying Unit 10 · Infinite Sequences & Series — Convergence Tests principles, Convergence requires $|r|<1$. Therefore, the verified correct option is $|r|<1$.",
+          "explanation": "Applying Unit 10 · Infinite Sequences & Series — Convergence Tests principles, Convergence requires $|r|<1$. Therefore, the verified correct option is $|r|<1$.",
           "cross_lesson": "1.01 Integration by Parts"
         },
         {
-          "q": "Evaluate $\\int \\frac{1}{x^2 - 4} dx$.",
+          "q": "Remainder estimate for alternating series: $|R_n|\\leq$",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Linear Partial Fractions",
+          "target": "Improper integrals with both an infinite bound and a discontinuity",
           "choices": [
-            "$\\frac{1}{4}\\ln|\\frac{x - 2}{x + 2}| + C$",
-            "$\\frac{1}{2}\\ln|\\frac{x - 2}{x + 2}| + C$",
-            "$\\frac{1}{4}\\ln|x^2 - 4| + C$",
-            "$\\frac{1}{2}\\arctan(\\frac{x}{2}) + C$"
+            "$a_n$",
+            "$a_{n+1}$",
+            "$\\frac{1}{n}$",
+            "$na_n$"
           ],
-          "correct": 0,
-          "answer": "Decomposition: $\\frac{1}{(x - 2)(x + 2)} = \\frac{1/4}{x - 2} - \\frac{1/4}{x + 2}$. Integrating gives $\\frac{1}{4}\\ln|x - 2| - \\frac{1}{4}\\ln|x + 2| + C = \\frac{1}{4}\\ln|\\frac{x - 2}{x + 2}| + C$.",
-          "explanation": "Decomposition: $\\frac{1}{(x - 2)(x + 2)} = \\frac{1/4}{x - 2} - \\frac{1/4}{x + 2}$. Integrating gives $\\frac{1}{4}\\ln|x - 2| - \\frac{1}{4}\\ln|x + 2| + C = \\frac{1}{4}\\ln|\\frac{x - 2}{x + 2}| + C$.",
+          "correct": 1,
+          "answer": "Applying Unit 10 · Infinite Sequences & Series — Convergence Tests principles, Error ≤ first omitted term. Therefore, the verified correct option is $a_{n+1}$.",
+          "explanation": "Applying Unit 10 · Infinite Sequences & Series — Convergence Tests principles, Error ≤ first omitted term. Therefore, the verified correct option is $a_{n+1}$.",
           "cross_lesson": "2.01 Euler's Method and Logistic Growth"
         },
         {
-          "q": "When must long division be performed BEFORE applying partial fractions?",
+          "q": "What curve is described by the polar equation $r=3$?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Linear Partial Fractions",
+          "target": "Comparison test for improper integrals",
           "choices": [
-            "When the degree of the numerator is greater than or equal to the degree of the denominator",
-            "When the denominator has repeated roots",
-            "When the numerator is a constant",
-            "Always"
+            "$\\mathrm{a\\ line\\ through\\ the\\ origin}$",
+            "$\\mathrm{a\\ circle\\ of\\ radius\\ }3\\mathrm{\\ centred\\ at\\ the\\ origin}$",
+            "$\\mathrm{a\\ horizontal\\ line\\ }y=3$",
+            "$\\mathrm{a\\ vertical\\ line\\ }x=3$"
           ],
-          "correct": 0,
-          "answer": "Partial fractions applies only to proper rational functions. If $\\deg(P) \\geq \\deg(Q)$, polynomial long division must be performed first.",
-          "explanation": "Partial fractions applies only to proper rational functions. If $\\deg(P) \\geq \\deg(Q)$, polynomial long division must be performed first.",
+          "correct": 1,
+          "answer": "$r=3$ means every point is a constant distance 3 from the origin — a circle of radius 3.",
+          "explanation": "$r=3$ means every point is a constant distance 3 from the origin — a circle of radius 3.",
           "cross_lesson": "3.01 Parametric Equations"
         },
         {
-          "q": "Evaluate $\\int_2^3 \\frac{1}{x(x - 1)} dx$.",
+          "q": "Find the area enclosed by the polar curve $r=14$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Repeated Linear & Irreducible Factors",
+          "target": "Partial fraction decomposition: distinct linear factors",
           "choices": [
-            "$\\ln(\\frac{4}{3})$",
-            "$\\ln 2$",
-            "$\\ln 3$",
-            "$\\frac{1}{6}$"
+            "$196 \\pi$",
+            "$14 \\pi$",
+            "$28 \\pi$",
+            "$98 \\pi$"
           ],
           "correct": 0,
-          "answer": "$\\frac{1}{x(x - 1)} = \\frac{1}{x - 1} - \\frac{1}{x}$. $[\\ln|\\frac{x - 1}{x}|]_2^3 = \\ln(\\frac{2}{3}) - \\ln(\\frac{1}{2}) = \\ln(\\frac{4}{3})$.",
-          "explanation": "$\\frac{1}{x(x - 1)} = \\frac{1}{x - 1} - \\frac{1}{x}$. $[\\ln|\\frac{x - 1}{x}|]_2^3 = \\ln(\\frac{2}{3}) - \\ln(\\frac{1}{2}) = \\ln(\\frac{4}{3})$.",
+          "answer": "Area $=\\frac{1}{2}\\int_0^{2\\pi} 14^{2}\\,d\\theta=\\frac{1}{2}\\cdot196\\cdot2\\pi=196 \\pi.$",
+          "explanation": "Area $=\\frac{1}{2}\\int_0^{2\\pi} 14^{2}\\,d\\theta=\\frac{1}{2}\\cdot196\\cdot2\\pi=196 \\pi.$",
           "cross_lesson": "3.02 Vector-Valued Functions"
         },
         {
-          "q": "For what values of $p$ does the improper integral $\\int_1^\\infty \\frac{1}{x^p} dx$ converge?",
+          "q": "Interval of convergence of $\\sum\\frac{x^n}{n}$ is:",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Improper Integrals with Infinite Limits (Type 1)",
+          "target": "Partial fractions with a repeated linear factor",
           "choices": [
-            "$p > 1$",
-            "$p \\geq 1$",
-            "$p < 1$",
-            "All real $p$"
+            "$(-1,1)$",
+            "$[-1,1)$",
+            "$(-1,1]$",
+            "$[-1,1]$"
           ],
-          "correct": 0,
-          "answer": "By the $p$-integral test, $\\int_1^\\infty \\frac{1}{x^p} dx$ converges if and only if $p > 1$ (to $\\frac{1}{p - 1}$), and diverges for $p \\leq 1$.",
-          "explanation": "By the $p$-integral test, $\\int_1^\\infty \\frac{1}{x^p} dx$ converges if and only if $p > 1$ (to $\\frac{1}{p - 1}$), and diverges for $p \\leq 1$.",
+          "correct": 1,
+          "answer": "Radius=1; check endpoints: diverges at 1 (harmonic), converges at −1 (alternating).",
+          "explanation": "Radius=1; check endpoints: diverges at 1 (harmonic), converges at −1 (alternating).",
           "cross_lesson": "4.01 Polar Curves and Derivatives"
         },
         {
-          "q": "Evaluate the improper integral $\\int_0^1 \\frac{1}{\\sqrt{x}} dx$.",
+          "q": "Classify $\\sum_{n=1}^{\\infty} \\frac{(-1)^{n}}{n^{3}}$: absolutely convergent, conditionally convergent, or divergent?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Improper Integrals with Discontinuous Integrands (Type 2)",
+          "target": "Partial fractions with an irreducible quadratic factor",
           "choices": [
-            "$2$",
-            "$1$",
-            "$\\infty$ (diverges)",
-            "$\\frac{1}{2}$"
+            "$\\mathrm{Converges\\ absolutely}$",
+            "$\\mathrm{Diverges}$",
+            "$\\mathrm{Converges\\ conditionally}$",
+            "$\\mathrm{Option\\ 0}$"
           ],
           "correct": 0,
-          "answer": "The integrand has an infinite discontinuity at $x = 0$: $\\lim_{a \\rightarrow 0^+} [2\\sqrt{x}]_a^1 = 2(1) - 0 = 2$.",
-          "explanation": "The integrand has an infinite discontinuity at $x = 0$: $\\lim_{a \\rightarrow 0^+} [2\\sqrt{x}]_a^1 = 2(1) - 0 = 2$.",
+          "answer": "$\\sum 1/n^{3}$ converges (p>1) so original converges absolutely.",
+          "explanation": "$\\sum 1/n^{3}$ converges (p>1) so original converges absolutely.",
           "cross_lesson": "4.02 Area in Polar Coordinates"
         }
       ]

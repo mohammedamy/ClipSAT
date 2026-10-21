@@ -17,39 +17,31 @@
           "explanation": "$\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|=\\lim_{n\\rightarrow\\infty}\\frac{(n+1)/2^{n+1}}{n/2^n}=\\lim_{n\\rightarrow\\infty}\\frac{n+1}{2n}=\\frac{1}{2}<1$. Converges by the Ratio Test."
         },
         {
-          "q": "Use the Ratio Test to determine whether $\\sum_{n=1}^{\\infty}\\frac{n!}{3^n}$ converges.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "The Ratio Test",
-          "answer": "$\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|=\\lim_{n\\rightarrow\\infty}\\frac{(n+1)!/3^{n+1}}{n!/3^n}=\\lim_{n\\rightarrow\\infty}\\frac{n+1}{3}=\\infty>1$. Diverges by the Ratio Test.",
-          "explanation": "$\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|=\\lim_{n\\rightarrow\\infty}\\frac{(n+1)!/3^{n+1}}{n!/3^n}=\\lim_{n\\rightarrow\\infty}\\frac{n+1}{3}=\\infty>1$. Diverges by the Ratio Test.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (0))**2 + (-1)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 0.0,
-                "y": -1.0,
-                "label": "$(0,-1)$"
-              }
-            ],
-            "width": 230
-          }
-        },
-        {
           "q": "Use the Root Test to determine whether $\\sum_{n=1}^{\\infty}\\left(\\frac{n}{2n+1}\\right)^n$ converges.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The Root Test",
           "answer": "$\\lim_{n\\rightarrow\\infty}\\sqrt[n]{\\left|\\left(\\frac{n}{2n+1}\\right)^n\\right|}=\\lim_{n\\rightarrow\\infty}\\frac{n}{2n+1}=\\frac{1}{2}<1$. Converges by the Root Test.",
-          "explanation": "$\\lim_{n\\rightarrow\\infty}\\sqrt[n]{\\left|\\left(\\frac{n}{2n+1}\\right)^n\\right|}=\\lim_{n\\rightarrow\\infty}\\frac{n}{2n+1}=\\frac{1}{2}<1$. Converges by the Root Test."
+          "explanation": "$\\lim_{n\\rightarrow\\infty}\\sqrt[n]{\\left|\\left(\\frac{n}{2n+1}\\right)^n\\right|}=\\lim_{n\\rightarrow\\infty}\\frac{n}{2n+1}=\\frac{1}{2}<1$. Converges by the Root Test.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.45*(x - (1.0))**2 + (0.5)",
+              "-0.1*x + (1.7)"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -5,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": 0.5,
+                "label": "$(1,0.5)$"
+              }
+            ],
+            "width": 230
+          }
         },
         {
           "q": "State the Alternating Series Test, and use it to show $\\sum_{n=1}^{\\infty}\\frac{(-1)^{n+1}}{n}$ converges.",
@@ -73,26 +65,7 @@
           "question_type": "FRQ",
           "target": "Alternating series error bound",
           "answer": "$S_4=1-\\frac{1}{4}+\\frac{1}{9}-\\frac{1}{16}\\approx1-0.25+0.111-0.0625=0.7986$. Error bound: $|S-S_4|\\leq b_5=\\frac{1}{25}=0.04$.",
-          "explanation": "$S_4=1-\\frac{1}{4}+\\frac{1}{9}-\\frac{1}{16}\\approx1-0.25+0.111-0.0625=0.7986$. Error bound: $|S-S_4|\\leq b_5=\\frac{1}{25}=0.04$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (1))**2 + (-1)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 1.0,
-                "y": -1.0,
-                "label": "$(1,-1)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "$S_4=1-\\frac{1}{4}+\\frac{1}{9}-\\frac{1}{16}\\approx1-0.25+0.111-0.0625=0.7986$. Error bound: $|S-S_4|\\leq b_5=\\frac{1}{25}=0.04$."
         },
         {
           "q": "Determine whether $\\sum_{n=1}^{\\infty}\\frac{(-1)^{n+1}}{n^2}$ converges absolutely, conditionally, or diverges.",
@@ -100,56 +73,40 @@
           "question_type": "FRQ",
           "target": "Absolute vs. conditional convergence",
           "answer": "$\\sum\\left|\\frac{(-1)^{n+1}}{n^2}\\right|=\\sum\\frac{1}{n^2}$, a convergent p-series ($p=2>1$). So the series converges ABSOLUTELY.",
-          "explanation": "$\\sum\\left|\\frac{(-1)^{n+1}}{n^2}\\right|=\\sum\\frac{1}{n^2}$, a convergent p-series ($p=2>1$). So the series converges ABSOLUTELY."
+          "explanation": "$\\sum\\left|\\frac{(-1)^{n+1}}{n^2}\\right|=\\sum\\frac{1}{n^2}$, a convergent p-series ($p=2>1$). So the series converges ABSOLUTELY.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.45*(x - (-1.5))**2 + (-0.5)",
+              "0.15*x + (0.7)"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -5,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.5,
+                "y": -0.5,
+                "label": "$(-1.5,-0.5)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Explain why the Ratio Test is INCONCLUSIVE for $\\sum_{n=1}^{\\infty}\\frac{1}{n}$, and identify which test should be used instead.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "More Ratio Test practice",
+          "answer": "$\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|=\\lim_{n\\rightarrow\\infty}\\frac{n}{n+1}=1$. Since the limit equals exactly $1$, the Ratio Test gives no conclusion. The p-series test (or Integral Test) should be used instead, correctly showing divergence.",
+          "explanation": "$\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|=\\lim_{n\\rightarrow\\infty}\\frac{n}{n+1}=1$. Since the limit equals exactly $1$, the Ratio Test gives no conclusion. The p-series test (or Integral Test) should be used instead, correctly showing divergence."
         }
       ]
     },
     {
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
-        {
-          "q": "Determine whether $\\sum_{n=1}^{\\infty}\\frac{(-1)^{n+1}}{n}$ converges absolutely, conditionally, or diverges.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Absolute vs. conditional convergence",
-          "answer": "$\\sum\\left|\\frac{(-1)^{n+1}}{n}\\right|=\\sum\\frac{1}{n}$, the harmonic series, which diverges. But the alternating series itself converges (shown earlier by the AST). So it converges CONDITIONALLY.",
-          "explanation": "$\\sum\\left|\\frac{(-1)^{n+1}}{n}\\right|=\\sum\\frac{1}{n}$, the harmonic series, which diverges. But the alternating series itself converges (shown earlier by the AST). So it converges CONDITIONALLY."
-        },
-        {
-          "q": "Use the Ratio Test to determine whether $\\sum_{n=1}^{\\infty}\\frac{3^n}{n!}$ converges.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "More Ratio Test practice",
-          "answer": "$\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|=\\lim_{n\\rightarrow\\infty}\\frac{3^{n+1}/(n+1)!}{3^n/n!}=\\lim_{n\\rightarrow\\infty}\\frac{3}{n+1}=0<1$. Converges by the Ratio Test.",
-          "explanation": "$\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|=\\lim_{n\\rightarrow\\infty}\\frac{3^{n+1}/(n+1)!}{3^n/n!}=\\lim_{n\\rightarrow\\infty}\\frac{3}{n+1}=0<1$. Converges by the Ratio Test."
-        },
-        {
-          "q": "Explain why the Ratio Test is INCONCLUSIVE for $\\sum_{n=1}^{\\infty}\\frac{1}{n}$, and identify which test should be used instead.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "More Ratio Test practice",
-          "answer": "$\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|=\\lim_{n\\rightarrow\\infty}\\frac{n}{n+1}=1$. Since the limit equals exactly $1$, the Ratio Test gives no conclusion. The p-series test (or Integral Test) should be used instead, correctly showing divergence.",
-          "explanation": "$\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|=\\lim_{n\\rightarrow\\infty}\\frac{n}{n+1}=1$. Since the limit equals exactly $1$, the Ratio Test gives no conclusion. The p-series test (or Integral Test) should be used instead, correctly showing divergence.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": -1.0,
-                "y": -1.0,
-                "label": "$(-1,-1)$"
-              }
-            ],
-            "width": 230
-          }
-        },
         {
           "q": "Compute the first 5 partial sums of $\\sum_{n=1}^{\\infty}\\frac{(-1)^{n+1}}{n}$ (the alternating harmonic series, which converges to $\\ln2\\approx0.693$), and describe how they oscillate.",
           "difficulty": "Intermediate",
@@ -183,15 +140,58 @@
             "Absolutely convergent — $\\sum\\frac{1}{n!}$ converges by the Ratio Test (ratio $\\rightarrow0$)"
           ],
           "answer": "(a) Conditionally convergent — converges by AST ($b_n=\\frac{1}{\\sqrt{n}}\\rightarrow0$, decreasing), but $\\sum\\frac{1}{\\sqrt{n}}$ diverges ($p=\\frac{1}{2}\\leq1$); (b) Conditionally convergent — converges by AST, but $\\sum\\frac{n^2}{n^3+1}$ diverges by Limit Comparison to $\\sum\\frac{1}{n}$; (c) Absolutely convergent — $\\sum\\frac{1}{n!}$ converges by the Ratio Test (ratio $\\rightarrow0$)",
-          "explanation": "(a) Conditionally convergent — converges by AST ($b_n=\\frac{1}{\\sqrt{n}}\\rightarrow0$, decreasing), but $\\sum\\frac{1}{\\sqrt{n}}$ diverges ($p=\\frac{1}{2}\\leq1$); (b) Conditionally convergent — converges by AST, but $\\sum\\frac{n^2}{n^3+1}$ diverges by Limit Comparison to $\\sum\\frac{1}{n}$; (c) Absolutely convergent — $\\sum\\frac{1}{n!}$ converges by the Ratio Test (ratio $\\rightarrow0$)"
+          "explanation": "(a) Conditionally convergent — converges by AST ($b_n=\\frac{1}{\\sqrt{n}}\\rightarrow0$, decreasing), but $\\sum\\frac{1}{\\sqrt{n}}$ diverges ($p=\\frac{1}{2}\\leq1$); (b) Conditionally convergent — converges by AST, but $\\sum\\frac{n^2}{n^3+1}$ diverges by Limit Comparison to $\\sum\\frac{1}{n}$; (c) Absolutely convergent — $\\sum\\frac{1}{n!}$ converges by the Ratio Test (ratio $\\rightarrow0$)",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-0.45*(x - (-1.0))**2 + (0.0)",
+              "-0.35*x + (-1.2)"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -5,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": 0.0,
+                "label": "$(-1,0)$"
+              }
+            ],
+            "width": 230
+          }
         },
         {
-          "q": "Use the Root Test to determine whether $\\sum_{n=1}^{\\infty}\\left(\\frac{2n+1}{3n-1}\\right)^n$ converges.",
+          "q": "Show that the Ratio Test is inconclusive for EVERY p-series $\\sum\\frac{1}{n^p}$, regardless of $p$.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
-          "target": "The Root Test with more complex expressions",
-          "answer": "$\\lim_{n\\rightarrow\\infty}\\sqrt[n]{\\left(\\frac{2n+1}{3n-1}\\right)^n}=\\lim_{n\\rightarrow\\infty}\\frac{2n+1}{3n-1}=\\frac{2}{3}<1$. Converges by the Root Test.",
-          "explanation": "$\\lim_{n\\rightarrow\\infty}\\sqrt[n]{\\left(\\frac{2n+1}{3n-1}\\right)^n}=\\lim_{n\\rightarrow\\infty}\\frac{2n+1}{3n-1}=\\frac{2}{3}<1$. Converges by the Root Test."
+          "target": "Why the Ratio Test fails for p-series",
+          "answer": "$\\lim_{n\\rightarrow\\infty}\\left|\\frac{1/(n+1)^p}{1/n^p}\\right|=\\lim_{n\\rightarrow\\infty}\\left(\\frac{n}{n+1}\\right)^p=1^p=1$ for ANY value of $p$. Since the limit always equals exactly $1$, the Ratio Test can never determine convergence or divergence for p-series — a different test (the p-series test itself) is required.",
+          "explanation": "$\\lim_{n\\rightarrow\\infty}\\left|\\frac{1/(n+1)^p}{1/n^p}\\right|=\\lim_{n\\rightarrow\\infty}\\left(\\frac{n}{n+1}\\right)^p=1^p=1$ for ANY value of $p$. Since the limit always equals exactly $1$, the Ratio Test can never determine convergence or divergence for p-series — a different test (the p-series test itself) is required."
+        },
+        {
+          "q": "Level 3 · Advanced / AP FRQLet $f(x)$ be a function whose third derivative satisfies $|f'''(x)| \\leq 6$ for all $x \\in [0, 0.4]$. If the second-degree Taylor polynomial $P_2(x)$ centered at $c = 0$ is used to approximate $f(0.2)$, find the maximum possible error in this approximation using the Lagrange Error Bound.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Combining multiple tests in one problem",
+          "answer": "Using the Lagrange Error Bound formula with $n = 2$, $c = 0$, $x = 0.2$, and $M = 6$: $|R_2(0.2)| \\leq \\frac{M}{(2+1)!}|x - c|^{2+1} = \\frac{6}{3!}|0.2 - 0|^3.$ Since $3! = 6$: $|R_2(0.2)| \\leq \\frac{6}{6}(0.2)^3 = 1 \\times 0.008 = \\mathbf{0.008} \\quad \\left( \\mathrm{or\\ } \\frac{1}{125} \\right).$ The maximum truncation error is guaranteed to be no greater than 0.008.",
+          "explanation": "Using the Lagrange Error Bound formula with $n = 2$, $c = 0$, $x = 0.2$, and $M = 6$: $|R_2(0.2)| \\leq \\frac{M}{(2+1)!}|x - c|^{2+1} = \\frac{6}{3!}|0.2 - 0|^3.$ Since $3! = 6$: $|R_2(0.2)| \\leq \\frac{6}{6}(0.2)^3 = 1 \\times 0.008 = \\mathbf{0.008} \\quad \\left( \\mathrm{or\\ } \\frac{1}{125} \\right).$ The maximum truncation error is guaranteed to be no greater than 0.008."
+        },
+        {
+          "q": "[Beyond AB — Core BC Topics Overview · Practice 4] If the governing relation for this system is $g(t) = 6t + 6$, evaluate $g(10)$ and find the inverse input $t$ when $g(t) = 72$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "The Ratio Test",
+          "answer": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$.",
+          "explanation": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$."
+        },
+        {
+          "q": "[Unit 9 · Parametric Equations & Vector-Valued Functions · Practice 4] If the governing relation for this system is $g(t) = 6t + 6$, evaluate $g(10)$ and find the inverse input $t$ when $g(t) = 72$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "The Root Test",
+          "answer": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$.",
+          "explanation": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$."
         }
       ]
     },
@@ -199,77 +199,83 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "Use the Root Test to determine whether $\\sum_{n=1}^{\\infty}\\frac{2^n}{n^n}$ converges.",
+          "q": "Level 2 · MediumFind the minimum number of subintervals $n$ required to guarantee that the Trapezoidal approximation of $\\int_1^3 \\frac{1}{x}\\,dx$ has an absolute error less than $10^{-4}$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "The Root Test with more complex expressions",
+          "target": "Alternating series and the Alternating Series Test",
           "cross_lesson": "2.01 Euler's Method and Logistic Growth",
-          "answer": "$\\lim_{n\\rightarrow\\infty}\\sqrt[n]{\\frac{2^n}{n^n}}=\\lim_{n\\rightarrow\\infty}\\frac{2}{n}=0<1$. Converges by the Root Test.",
-          "explanation": "$\\lim_{n\\rightarrow\\infty}\\sqrt[n]{\\frac{2^n}{n^n}}=\\lim_{n\\rightarrow\\infty}\\frac{2}{n}=0<1$. Converges by the Root Test."
+          "answer": "Compute second derivative: $f(x) = x^{-1} \\Rightarrow f'(x) = -x^{-2} \\Rightarrow f''(x) = 2x^{-3} = \\frac{2}{x^3}$. On $[1, 3]$, $|f''(x)| = \\frac{2}{x^3}$ is decreasing, so its maximum occurs at $x = 1$: $K = \\frac{2}{1^3} = 2$. Using the Trapezoidal error bound with $a = 1, b = 3$: $|E_T| \\leq \\frac{K(b-a)^3}{12n^2} = \\frac{2(3-1)^3}{12n^2} = \\frac{2(8)}{12n^2} = \\frac{16}{12n^2} = \\frac{4}{3n^2}.$ Require: $\\frac{4}{3n^2} \\frac{4 \\times 10^4}{3} = \\frac{40000}{3} \\approx 13333.33 \\Rightarrow n > \\sqrt{13333.33} \\approx 115.47.$ Since $n$ must be an integer, we require at least $\\mathbf{n = 116}$ subintervals.",
+          "explanation": "Compute second derivative: $f(x) = x^{-1} \\Rightarrow f'(x) = -x^{-2} \\Rightarrow f''(x) = 2x^{-3} = \\frac{2}{x^3}$. On $[1, 3]$, $|f''(x)| = \\frac{2}{x^3}$ is decreasing, so its maximum occurs at $x = 1$: $K = \\frac{2}{1^3} = 2$. Using the Trapezoidal error bound with $a = 1, b = 3$: $|E_T| \\leq \\frac{K(b-a)^3}{12n^2} = \\frac{2(3-1)^3}{12n^2} = \\frac{2(8)}{12n^2} = \\frac{16}{12n^2} = \\frac{4}{3n^2}.$ Require: $\\frac{4}{3n^2} \\frac{4 \\times 10^4}{3} = \\frac{40000}{3} \\approx 13333.33 \\Rightarrow n > \\sqrt{13333.33} \\approx 115.47.$ Since $n$ must be an integer, we require at least $\\mathbf{n = 116}$ subintervals."
         },
         {
-          "q": "Show that the Ratio Test is inconclusive for EVERY p-series $\\sum\\frac{1}{n^p}$, regardless of $p$.",
+          "q": "Level 3 · Advanced / AP FRQEvaluate the improper integral $\\int_0^\\infty x e^{-2x}\\,dx$ or establish that it diverges.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Why the Ratio Test fails for p-series",
+          "target": "Alternating series error bound",
           "cross_lesson": "3.01 Parametric Equations",
-          "answer": "$\\lim_{n\\rightarrow\\infty}\\left|\\frac{1/(n+1)^p}{1/n^p}\\right|=\\lim_{n\\rightarrow\\infty}\\left(\\frac{n}{n+1}\\right)^p=1^p=1$ for ANY value of $p$. Since the limit always equals exactly $1$, the Ratio Test can never determine convergence or divergence for p-series — a different test (the p-series test itself) is required.",
-          "explanation": "$\\lim_{n\\rightarrow\\infty}\\left|\\frac{1/(n+1)^p}{1/n^p}\\right|=\\lim_{n\\rightarrow\\infty}\\left(\\frac{n}{n+1}\\right)^p=1^p=1$ for ANY value of $p$. Since the limit always equals exactly $1$, the Ratio Test can never determine convergence or divergence for p-series — a different test (the p-series test itself) is required.",
+          "answer": "Rewrite with limit notation: $\\lim_{b \\rightarrow \\infty} \\int_0^b x e^{-2x}\\,dx.$ Use integration by parts: $u = x \\Rightarrow du = dx$, $dv = e^{-2x}\\,dx \\Rightarrow v = -\\frac{1}{2}e^{-2x}$. $\\int x e^{-2x}\\,dx = -\\frac{1}{2}x e^{-2x} - \\int \\left(-\\frac{1}{2}e^{-2x}\\right)dx = -\\frac{1}{2}x e^{-2x} - \\frac{1}{4}e^{-2x}.$ Evaluate from 0 to $b$: $\\lim_{b \\rightarrow \\infty} \\left[ -\\frac{1}{2}b e^{-2b} - \\frac{1}{4}e^{-2b} - \\left(0 - \\frac{1}{4}e^0\\right) \\right].$ By L'Hôpital's Rule, $\\lim_{b\\rightarrow\\infty} \\frac{b}{e^{2b}} = \\lim_{b\\rightarrow\\infty} \\frac{1}{2e^{2b}} = 0$, and $\\lim_{b\\rightarrow\\infty} e^{-2b} = 0$. Therefore: $0 - 0 - \\left(-\\frac{1}{4}\\right) = \\mathbf{\\frac{1}{4}}.$ The improper integral converges to $\\frac{1}{4}$.",
+          "explanation": "Rewrite with limit notation: $\\lim_{b \\rightarrow \\infty} \\int_0^b x e^{-2x}\\,dx.$ Use integration by parts: $u = x \\Rightarrow du = dx$, $dv = e^{-2x}\\,dx \\Rightarrow v = -\\frac{1}{2}e^{-2x}$. $\\int x e^{-2x}\\,dx = -\\frac{1}{2}x e^{-2x} - \\int \\left(-\\frac{1}{2}e^{-2x}\\right)dx = -\\frac{1}{2}x e^{-2x} - \\frac{1}{4}e^{-2x}.$ Evaluate from 0 to $b$: $\\lim_{b \\rightarrow \\infty} \\left[ -\\frac{1}{2}b e^{-2b} - \\frac{1}{4}e^{-2b} - \\left(0 - \\frac{1}{4}e^0\\right) \\right].$ By L'Hôpital's Rule, $\\lim_{b\\rightarrow\\infty} \\frac{b}{e^{2b}} = \\lim_{b\\rightarrow\\infty} \\frac{1}{2e^{2b}} = 0$, and $\\lim_{b\\rightarrow\\infty} e^{-2b} = 0$. Therefore: $0 - 0 - \\left(-\\frac{1}{4}\\right) = \\mathbf{\\frac{1}{4}}.$ The improper integral converges to $\\frac{1}{4}$.",
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
+              "-0.41*x**2 + 1.0*x + 2.7",
+              "0.2*x + 0.3"
             ],
-            "xmin": -5,
+            "xmin": -1,
             "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
+            "ymin": -1,
+            "ymax": 5.5,
+            "shade": {
+              "fn1": "-0.41*x**2 + 1.0*x + 2.7",
+              "fn2": "0.2*x + 0.3",
+              "x0": 0.0,
+              "x1": 2.5
+            },
             "point_labels": [
               {
-                "x": -1.0,
-                "y": -1.0,
-                "label": "$(-1,-1)$"
+                "x": 1.5,
+                "y": 3.28,
+                "label": "$y=f(x)$"
               }
             ],
             "width": 230
           }
         },
         {
-          "q": "Determine whether $\\sum_{n=1}^{\\infty}\\frac{(-2)^n}{n^2}$ converges absolutely, conditionally, or diverges.",
-          "difficulty": "Challenging",
-          "question_type": "FRQ",
-          "target": "Combining multiple tests in one problem",
-          "cross_lesson": "3.02 Vector-Valued Functions",
-          "answer": "Test absolute convergence with the Ratio Test on $\\left|\\frac{(-2)^n}{n^2}\\right|=\\frac{2^n}{n^2}$: $\\lim_{n\\rightarrow\\infty}\\left|\\frac{2^{n+1}/(n+1)^2}{2^n/n^2}\\right|=\\lim_{n\\rightarrow\\infty}\\frac{2n^2}{(n+1)^2}=2>1$. Diverges (even in absolute value) — so the original series DIVERGES (the terms don't even approach $0$ since $|a_n|\\rightarrow\\infty$).",
-          "explanation": "Test absolute convergence with the Ratio Test on $\\left|\\frac{(-2)^n}{n^2}\\right|=\\frac{2^n}{n^2}$: $\\lim_{n\\rightarrow\\infty}\\left|\\frac{2^{n+1}/(n+1)^2}{2^n/n^2}\\right|=\\lim_{n\\rightarrow\\infty}\\frac{2n^2}{(n+1)^2}=2>1$. Diverges (even in absolute value) — so the original series DIVERGES (the terms don't even approach $0$ since $|a_n|\\rightarrow\\infty$)."
-        },
-        {
-          "q": "For $x=3t,\\ y=t^2-1$, find $\\frac{dy}{dx}$.",
-          "difficulty": "Challenging",
-          "question_type": "FRQ",
-          "target": "Alternating series and the Alternating Series Test",
-          "cross_lesson": "4.01 Polar Curves and Derivatives",
-          "answer": "Method · Parametric Derivative Formula: Step 1 · Compute component derivatives: $\\frac{dx}{dt} = \\frac{d}{dt}[3t] = 3, \\quad \\frac{dy}{dt} = \\frac{d}{dt}[t^2 - 1] = 2t.$ Step 2 · Form the derivative ratio: $\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\mathbf{\\frac{2t}{3}}.$ Cartesian check: $x = 3t \\Rightarrow t = \\frac{x}{3} \\Rightarrow y = \\left(\\frac{x}{3}\\right)^2 - 1 = \\frac{x^2}{9} - 1$. Then $\\frac{dy}{dx} = \\frac{2x}{9} = \\frac{2(3t)}{9} = \\frac{2t}{3}$.",
-          "explanation": "Method · Parametric Derivative Formula: Step 1 · Compute component derivatives: $\\frac{dx}{dt} = \\frac{d}{dt}[3t] = 3, \\quad \\frac{dy}{dt} = \\frac{d}{dt}[t^2 - 1] = 2t.$ Step 2 · Form the derivative ratio: $\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\mathbf{\\frac{2t}{3}}.$ Cartesian check: $x = 3t \\Rightarrow t = \\frac{x}{3} \\Rightarrow y = \\left(\\frac{x}{3}\\right)^2 - 1 = \\frac{x^2}{9} - 1$. Then $\\frac{dy}{dx} = \\frac{2x}{9} = \\frac{2(3t)}{9} = \\frac{2t}{3}$."
-        },
-        {
-          "q": "Convert the rectangular point $(1,1)$ to polar coordinates.",
-          "difficulty": "Challenging",
-          "question_type": "FRQ",
-          "target": "Alternating series error bound",
-          "cross_lesson": "4.02 Area in Polar Coordinates",
-          "answer": "Method · Rectangular to Polar Coordinates in Quadrant I: Step 1 · Compute distance from pole: $r = \\sqrt{x^2 + y^2} = \\sqrt{1^2 + 1^2} = \\mathbf{\\sqrt{2}}.$ Step 2 · Compute angle $\\theta$: Since $x = 1 > 0$ and $y = 1 > 0$, the point lies in Quadrant I: $\\theta = \\arctan\\left(\\frac{y}{x}\\right) = \\arctan\\left(\\frac{1}{1}\\right) = \\arctan(1) = \\mathbf{\\frac{\\pi}{4}}.$ Conclusion: The polar representation is: $\\mathbf{\\left(\\sqrt{2}, \\frac{\\pi}{4}\\right)}.$",
-          "explanation": "Method · Rectangular to Polar Coordinates in Quadrant I: Step 1 · Compute distance from pole: $r = \\sqrt{x^2 + y^2} = \\sqrt{1^2 + 1^2} = \\mathbf{\\sqrt{2}}.$ Step 2 · Compute angle $\\theta$: Since $x = 1 > 0$ and $y = 1 > 0$, the point lies in Quadrant I: $\\theta = \\arctan\\left(\\frac{y}{x}\\right) = \\arctan\\left(\\frac{1}{1}\\right) = \\arctan(1) = \\mathbf{\\frac{\\pi}{4}}.$ Conclusion: The polar representation is: $\\mathbf{\\left(\\sqrt{2}, \\frac{\\pi}{4}\\right)}.$"
-        },
-        {
-          "q": "Does $\\sum_{n=1}^{\\infty}\\frac{1}{\\sqrt{n}}$ converge?",
+          "q": "Does $\\sum_{n=0}^{\\infty}(0.9)^{n}$ converge, and to what?",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Absolute vs. conditional convergence",
+          "cross_lesson": "3.02 Vector-Valued Functions",
+          "answer": "Method · Geometric Series Convergence & Sum: Step 1 · Identify series parameters: Initial term: $a = (0.9)^0 = 1$. Common ratio: $r = 0.9 = \\frac{9}{10}$. Step 2 · Test convergence: $|r| = 0.9 < 1$, therefore the series converges. Step 3 · Calculate exact sum: $S = \\frac{a}{1 - r} = \\frac{1}{1 - 0.9} = \\frac{1}{0.1} = \\mathbf{10}.$ Conclusion: $\\mathbf{\\mathrm{Converges\\ to\\ } 10}$.",
+          "explanation": "Method · Geometric Series Convergence & Sum: Step 1 · Identify series parameters: Initial term: $a = (0.9)^0 = 1$. Common ratio: $r = 0.9 = \\frac{9}{10}$. Step 2 · Test convergence: $|r| = 0.9 < 1$, therefore the series converges. Step 3 · Calculate exact sum: $S = \\frac{a}{1 - r} = \\frac{1}{1 - 0.9} = \\frac{1}{0.1} = \\mathbf{10}.$ Conclusion: $\\mathbf{\\mathrm{Converges\\ to\\ } 10}$."
+        },
+        {
+          "q": "Level 1 · FoundationsEvaluate the indefinite integral $\\int \\arctan(x)\\,dx$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "More Ratio Test practice",
+          "cross_lesson": "4.01 Polar Curves and Derivatives",
+          "answer": "Use LIATE: $u = \\arctan(x) \\Rightarrow du = \\frac{1}{1+x^2}\\,dx$, and $dv = dx \\Rightarrow v = x$. Applying parts: $\\int \\arctan(x)\\,dx = x\\arctan(x) - \\int \\frac{x}{1+x^2}\\,dx.$ For the second integral, let $w = 1+x^2 \\Rightarrow dw = 2x\\,dx$: $\\int \\frac{x}{1+x^2}\\,dx = \\frac{1}{2}\\ln(1+x^2).$ Thus: $\\mathbf{x\\arctan(x) - \\frac{1}{2}\\ln(1+x^2) + C}.$",
+          "explanation": "Use LIATE: $u = \\arctan(x) \\Rightarrow du = \\frac{1}{1+x^2}\\,dx$, and $dv = dx \\Rightarrow v = x$. Applying parts: $\\int \\arctan(x)\\,dx = x\\arctan(x) - \\int \\frac{x}{1+x^2}\\,dx.$ For the second integral, let $w = 1+x^2 \\Rightarrow dw = 2x\\,dx$: $\\int \\frac{x}{1+x^2}\\,dx = \\frac{1}{2}\\ln(1+x^2).$ Thus: $\\mathbf{x\\arctan(x) - \\frac{1}{2}\\ln(1+x^2) + C}.$"
+        },
+        {
+          "q": "Level 1 · FoundationsFor the parametric curve $x(t) = \\cos(t)$ and $y(t) = \\sin(2t)$, find all values of $t \\in [0, \\pi]$ where the curve has a vertical tangent line.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Partial sums of an alternating series (visualizing oscillating convergence)",
+          "cross_lesson": "4.02 Area in Polar Coordinates",
+          "answer": "A vertical tangent occurs when $\\frac{dx}{dt} = 0$ and $\\frac{dy}{dt} eq 0$. Compute $x'(t) = -\\sin(t) = 0 \\Rightarrow t = 0, \\pi$. Check $y'(t) = 2\\cos(2t)$: • At $t = 0$: $y'(0) = 2\\cos(0) = 2 eq 0$. • At $t = \\pi$: $y'(\\pi) = 2\\cos(2\\pi) = 2 eq 0$. Therefore, vertical tangents occur at $\\mathbf{t = 0}$ and $\\mathbf{t = \\pi}$.",
+          "explanation": "A vertical tangent occurs when $\\frac{dx}{dt} = 0$ and $\\frac{dy}{dt} eq 0$. Compute $x'(t) = -\\sin(t) = 0 \\Rightarrow t = 0, \\pi$. Check $y'(t) = 2\\cos(2t)$: • At $t = 0$: $y'(0) = 2\\cos(0) = 2 eq 0$. • At $t = \\pi$: $y'(\\pi) = 2\\cos(2\\pi) = 2 eq 0$. Therefore, vertical tangents occur at $\\mathbf{t = 0}$ and $\\mathbf{t = \\pi}$."
+        },
+        {
+          "q": "Level 2 · MediumA particle moves with position vector $\\vec{r}(t) = \\langle t^2 - 4t, \\frac{1}{3}t^3 - 4t \\rangle$. At what time $t > 0$ is the particle at rest?",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Determining the number of terms needed for a given accuracy",
           "cross_lesson": "5.01 Sequences and Basic Series Convergence Tests",
-          "answer": "Theorem ($p$-Series Test with Fractional Exponents): Step 1 · Rewrite general term as a power of $n$: $a_n = \\frac{1}{\\sqrt{n}} = \\frac{1}{n^{1/2}}.$ Step 2 · Apply $p$-series criteria: The series is of the form $\\sum_{n=1}^{\\infty}\\frac{1}{n^p}$ with exponent $p = \\frac{1}{2} = 0.5$. Because $p = 0.5 \\leq 1$, the series diverges. Conclusion: $\\mathbf{\\mathrm{Diverges\\ by\\ the\\ } p\\mathrm{-Series\\ Test\\ } (p = 0.5 \\leq 1)}$.",
-          "explanation": "Theorem ($p$-Series Test with Fractional Exponents): Step 1 · Rewrite general term as a power of $n$: $a_n = \\frac{1}{\\sqrt{n}} = \\frac{1}{n^{1/2}}.$ Step 2 · Apply $p$-series criteria: The series is of the form $\\sum_{n=1}^{\\infty}\\frac{1}{n^p}$ with exponent $p = \\frac{1}{2} = 0.5$. Because $p = 0.5 \\leq 1$, the series diverges. Conclusion: $\\mathbf{\\mathrm{Diverges\\ by\\ the\\ } p\\mathrm{-Series\\ Test\\ } (p = 0.5 \\leq 1)}$."
+          "answer": "A particle is at rest if and only if its velocity vector is $\\vec{0}$ (both components are simultaneously 0). • $x'(t) = 2t - 4 = 0 \\Rightarrow t = 2$. • $y'(t) = t^2 - 4 = 0 \\Rightarrow t = \\pm 2$. Since $t > 0$, both components are zero simultaneously at $\\mathbf{t = 2}$.",
+          "explanation": "A particle is at rest if and only if its velocity vector is $\\vec{0}$ (both components are simultaneously 0). • $x'(t) = 2t - 4 = 0 \\Rightarrow t = 2$. • $y'(t) = t^2 - 4 = 0 \\Rightarrow t = \\pm 2$. Since $t > 0$, both components are zero simultaneously at $\\mathbf{t = 2}$."
         }
       ]
     },
@@ -292,126 +298,10 @@
           "explanation": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{(n+1)/3^{n+1}}{n/3^n}=\\frac{n+1}{3n}\\rightarrow\\frac{1}{3}$. Since $\\frac{1}{3}<1$, the series converges by the Ratio Test."
         },
         {
-          "q": "Use the Ratio Test to find $L=\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|$ for $\\sum_{n=1}^{\\infty}\\frac{n}{14^n}$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "The Root Test",
-          "choices": [
-            "$14$",
-            "$\\frac{1}{14}$",
-            "$\\frac{1}{15}$",
-            "$\\frac{15}{14}$"
-          ],
-          "correct": 1,
-          "answer": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{(n+1)/14^{n+1}}{n/14^n}=\\frac{n+1}{14n}\\rightarrow\\frac{1}{14}$. Since $\\frac{1}{14}<1$, the series converges by the Ratio Test.",
-          "explanation": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{(n+1)/14^{n+1}}{n/14^n}=\\frac{n+1}{14n}\\rightarrow\\frac{1}{14}$. Since $\\frac{1}{14}<1$, the series converges by the Ratio Test."
-        },
-        {
-          "q": "Use the Ratio Test to find $L=\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|$ for $\\sum_{n=1}^{\\infty}\\frac{n}{10^n}$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Alternating series and the Alternating Series Test",
-          "choices": [
-            "$10$",
-            "$\\frac{1}{11}$",
-            "$\\frac{1}{10}$",
-            "$\\frac{11}{10}$"
-          ],
-          "correct": 2,
-          "answer": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{(n+1)/10^{n+1}}{n/10^n}=\\frac{n+1}{10n}\\rightarrow\\frac{1}{10}$. Since $\\frac{1}{10}<1$, the series converges by the Ratio Test.",
-          "explanation": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{(n+1)/10^{n+1}}{n/10^n}=\\frac{n+1}{10n}\\rightarrow\\frac{1}{10}$. Since $\\frac{1}{10}<1$, the series converges by the Ratio Test.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "2 + 1.5/(x - (1))"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "asymptotes": {
-              "x": [
-                1
-              ],
-              "y": [
-                2
-              ]
-            },
-            "point_labels": [
-              {
-                "x": 2.5,
-                "y": 3.0,
-                "label": "$( 2.5, 3 )$"
-              }
-            ],
-            "width": 230
-          }
-        },
-        {
-          "q": "Use the Ratio Test to find $L=\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|$ for $\\sum_{n=1}^{\\infty}\\frac{n}{13^n}$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Alternating series error bound",
-          "choices": [
-            "$\\frac{1}{14}$",
-            "$13$",
-            "$\\frac{14}{13}$",
-            "$\\frac{1}{13}$"
-          ],
-          "correct": 3,
-          "answer": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{(n+1)/13^{n+1}}{n/13^n}=\\frac{n+1}{13n}\\rightarrow\\frac{1}{13}$. Since $\\frac{1}{13}<1$, the series converges by the Ratio Test.",
-          "explanation": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{(n+1)/13^{n+1}}{n/13^n}=\\frac{n+1}{13n}\\rightarrow\\frac{1}{13}$. Since $\\frac{1}{13}<1$, the series converges by the Ratio Test."
-        },
-        {
-          "q": "Use the Ratio Test to find $L=\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|$ for $\\sum_{n=1}^{\\infty}\\frac{n}{11^n}$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Absolute vs. conditional convergence",
-          "choices": [
-            "$\\frac{1}{11}$",
-            "$\\frac{1}{12}$",
-            "$11$",
-            "$\\frac{12}{11}$"
-          ],
-          "correct": 0,
-          "answer": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{(n+1)/11^{n+1}}{n/11^n}=\\frac{n+1}{11n}\\rightarrow\\frac{1}{11}$. Since $\\frac{1}{11}<1$, the series converges by the Ratio Test.",
-          "explanation": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{(n+1)/11^{n+1}}{n/11^n}=\\frac{n+1}{11n}\\rightarrow\\frac{1}{11}$. Since $\\frac{1}{11}<1$, the series converges by the Ratio Test."
-        },
-        {
-          "q": "Use the Ratio Test to find $L=\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|$ for $\\sum_{n=1}^{\\infty}\\frac{n}{12^n}$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "More Ratio Test practice",
-          "choices": [
-            "$\\frac{13}{12}$",
-            "$\\frac{1}{13}$",
-            "$\\frac{1}{12}$",
-            "$12$"
-          ],
-          "correct": 2,
-          "answer": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{(n+1)/12^{n+1}}{n/12^n}=\\frac{n+1}{12n}\\rightarrow\\frac{1}{12}$. Since $\\frac{1}{12}<1$, the series converges by the Ratio Test.",
-          "explanation": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{(n+1)/12^{n+1}}{n/12^n}=\\frac{n+1}{12n}\\rightarrow\\frac{1}{12}$. Since $\\frac{1}{12}<1$, the series converges by the Ratio Test."
-        },
-        {
-          "q": "Use the Ratio Test to find $L=\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|$ for $\\sum_{n=1}^{\\infty}\\frac{n}{16^n}$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Partial sums of an alternating series (visualizing oscillating convergence)",
-          "choices": [
-            "$\\frac{1}{16}$",
-            "$\\frac{1}{17}$",
-            "$16$",
-            "$\\frac{17}{16}$"
-          ],
-          "correct": 0,
-          "answer": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{(n+1)/16^{n+1}}{n/16^n}=\\frac{n+1}{16n}\\rightarrow\\frac{1}{16}$. Since $\\frac{1}{16}<1$, the series converges by the Ratio Test.",
-          "explanation": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{(n+1)/16^{n+1}}{n/16^n}=\\frac{n+1}{16n}\\rightarrow\\frac{1}{16}$. Since $\\frac{1}{16}<1$, the series converges by the Ratio Test."
-        },
-        {
           "q": "Use the Root Test to find $L=\\lim_{n\\rightarrow\\infty}\\sqrt[n]{\\left|\\left(\\frac{4n+4}{11n-7}\\right)^n\\right|}$.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Determining the number of terms needed for a given accuracy",
+          "target": "The Root Test",
           "choices": [
             "$\\frac{4}{11}$",
             "$\\frac{11}{4}$",
@@ -420,29 +310,131 @@
           ],
           "correct": 0,
           "answer": "$\\sqrt[n]{\\left(\\frac{4n+4}{11n-7}\\right)^n}=\\frac{4n+4}{11n-7}\\rightarrow\\frac{4}{11}=\\frac{4}{11}$. Since $\\frac{4}{11}<1$, converges by the Root Test.",
-          "explanation": "$\\sqrt[n]{\\left(\\frac{4n+4}{11n-7}\\right)^n}=\\frac{4n+4}{11n-7}\\rightarrow\\frac{4}{11}=\\frac{4}{11}$. Since $\\frac{4}{11}<1$, converges by the Root Test.",
+          "explanation": "$\\sqrt[n]{\\left(\\frac{4n+4}{11n-7}\\right)^n}=\\frac{4n+4}{11n-7}\\rightarrow\\frac{4}{11}=\\frac{4}{11}$. Since $\\frac{4}{11}<1$, converges by the Root Test."
+        },
+        {
+          "q": "By the alternating series estimation theorem, what is the fewest number of terms of $\\sum_{n=0}^\\infty\\frac{(-1)^{n}}{n!}$ needed to guarantee an error less than $\\frac{1}{10000}$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Alternating series and the Alternating Series Test",
+          "choices": [
+            "$8$",
+            "$9$",
+            "$7$",
+            "$10000$"
+          ],
+          "correct": 0,
+          "answer": "The error after summing up to $n=7$ is at most the next term, $\\frac{1}{40320}$ $<$ $\\frac{1}{10000}$, while stopping one term earlier leaves a bound $\\frac{1}{5040}$ $\\geq$ $\\frac{1}{10000}$. So 8 terms are needed.",
+          "explanation": "The error after summing up to $n=7$ is at most the next term, $\\frac{1}{40320}$ $<$ $\\frac{1}{10000}$, while stopping one term earlier leaves a bound $\\frac{1}{5040}$ $\\geq$ $\\frac{1}{10000}$. So 8 terms are needed.",
           "figure": {
             "type": "plot",
             "fns": [
-              "1 + 1.5/(x - (-1))"
+              "0.3*(x - (-1.5))**2 + (0.0)",
+              "0.4*x + (1.2)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
-            "asymptotes": {
-              "x": [
-                -1
-              ],
-              "y": [
-                1
-              ]
-            },
             "point_labels": [
               {
-                "x": 0.5,
-                "y": 2.0,
-                "label": "$( 0.5, 2 )$"
+                "x": -1.5,
+                "y": 0.0,
+                "label": "$(-1.5,0)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "When approximating $\\sin(0.3)$ by its Taylor polynomial of degree $5$ about $x = 0$, what is the alternating series error bound?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Alternating series error bound",
+          "choices": [
+            "$\\frac{(0.3)^{7}}{(7)!}$",
+            "$\\frac{1}{(7)!}$",
+            "$\\frac{(0.3)^{5}}{(5)!}$",
+            "$\\frac{(0.3)^{7}}{(3)!}$"
+          ],
+          "correct": 0,
+          "answer": "The error bound is the absolute value of the next omitted term: $\\frac{(0.3)^{7}}{(7)!}$.",
+          "explanation": "The error bound is the absolute value of the next omitted term: $\\frac{(0.3)^{7}}{(7)!}$."
+        },
+        {
+          "q": "The ratio test gives $L=1$: the test is:",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Absolute vs. conditional convergence",
+          "choices": [
+            "inconclusive",
+            "divergent",
+            "convergent",
+            "absolutely convergent"
+          ],
+          "correct": 0,
+          "answer": "Applying Convergence Tests and Power Series principles, Ratio test inconclusive at $L=1$. Therefore, the verified correct option is inconclusive.",
+          "explanation": "Applying Convergence Tests and Power Series principles, Ratio test inconclusive at $L=1$. Therefore, the verified correct option is inconclusive."
+        },
+        {
+          "q": "Error bound: $|\\cos x-1+x^2/2|\\leq x^4/24$ (from $T_4$ bound). This means the error at $x=0.1$ is at most:",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "More Ratio Test practice",
+          "choices": [
+            "$0.0001/24$",
+            "$0.1^4/24$",
+            "$0.1^2/2$",
+            "$1/24$"
+          ],
+          "correct": 1,
+          "answer": "Applying Convergence Tests and Power Series principles, $|x^4/24|=0.0001/24$. Therefore, the verified correct option is $0.1^4/24$.",
+          "explanation": "Applying Convergence Tests and Power Series principles, $|x^4/24|=0.0001/24$. Therefore, the verified correct option is $0.1^4/24$."
+        },
+        {
+          "q": "Series $\\sum_{n=1}^\\infty(-1)^{n-1}/\\sqrt{n}$ converges by alternating series test. Is it absolutely convergent?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Partial sums of an alternating series (visualizing oscillating convergence)",
+          "choices": [
+            "Yes, $p=1/2<1$ diverges",
+            "No, $\\sum1/\\sqrt{n}$ diverges ($p=1/2\\leq1$)",
+            "Yes, $\\sum1/\\sqrt{n}$ converges",
+            "Cannot determine"
+          ],
+          "correct": 1,
+          "answer": "$p=1/2\\leq1\\Rightarrow\\sum1/\\sqrt{n}$ diverges: only conditionally convergent.",
+          "explanation": "$p=1/2\\leq1\\Rightarrow\\sum1/\\sqrt{n}$ diverges: only conditionally convergent."
+        },
+        {
+          "q": "Which test determines $\\sum n^2/e^n$? Answer: by ratio test $L=$",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Determining the number of terms needed for a given accuracy",
+          "choices": [
+            "$e$",
+            "$1$",
+            "$1/e<1$",
+            "$e^2$"
+          ],
+          "correct": 2,
+          "answer": "$L=\\lim(n+1)^2/e^{n+1}\\cdot e^n/n^2=1/e<1\\Rightarrow$ converges.",
+          "explanation": "$L=\\lim(n+1)^2/e^{n+1}\\cdot e^n/n^2=1/e<1\\Rightarrow$ converges.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.6*(x - (0.0))**2 + (-1.0)",
+              "0.65*x + (0.2)"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -5,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -1.0,
+                "label": "$(0,-1)$"
               }
             ],
             "width": 230
@@ -454,165 +446,158 @@
       "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
       "questions": [
         {
-          "q": "Use the Root Test to find $L=\\lim_{n\\rightarrow\\infty}\\sqrt[n]{\\left|\\left(\\frac{7n-7}{12n+4}\\right)^n\\right|}$.",
+          "q": "Series $\\sum_{n=1}^\\infty n\\cdot(1/2)^n$: ratio test gives $L=$",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Mixed practice: classify each series",
           "choices": [
-            "$\\frac{12}{7}$",
-            "$\\frac{7}{12}$",
-            "$\\frac{19}{12}$",
-            "$\\frac{13}{12}$"
+            "$1$",
+            "$2$",
+            "$1/2$",
+            "$n/2$"
           ],
-          "correct": 1,
-          "answer": "$\\sqrt[n]{\\left(\\frac{7n-7}{12n+4}\\right)^n}=\\frac{7n-7}{12n+4}\\rightarrow\\frac{7}{12}=\\frac{7}{12}$. Since $\\frac{7}{12}<1$, converges by the Root Test.",
-          "explanation": "$\\sqrt[n]{\\left(\\frac{7n-7}{12n+4}\\right)^n}=\\frac{7n-7}{12n+4}\\rightarrow\\frac{7}{12}=\\frac{7}{12}$. Since $\\frac{7}{12}<1$, converges by the Root Test."
+          "correct": 2,
+          "answer": "$|a_{n+1}/a_n|=(n+1)/(2n)\\rightarrow1/2<1\\Rightarrow$ converges.",
+          "explanation": "$|a_{n+1}/a_n|=(n+1)/(2n)\\rightarrow1/2<1\\Rightarrow$ converges."
         },
         {
-          "q": "Use the Root Test to find $L=\\lim_{n\\rightarrow\\infty}\\sqrt[n]{\\left|\\left(\\frac{4n+6}{9n-2}\\right)^n\\right|}$.",
+          "q": "Alternating test: $a_n=1/n!$: does $a_n\\rightarrow0$? Does $a_{n+1}<a_n$?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "The Root Test with more complex expressions",
           "choices": [
-            "$\\frac{9}{4}$",
-            "$\\frac{4}{9}$",
-            "$\\frac{17}{18}$",
-            "$\\frac{13}{9}$"
+            "Neither",
+            "Both $a_n\\rightarrow0$ and $a_{n+1}<a_n$",
+            "$a_n\\rightarrow0$ only",
+            "$a_{n+1}>a_n$"
           ],
           "correct": 1,
-          "answer": "$\\sqrt[n]{\\left(\\frac{4n+6}{9n-2}\\right)^n}=\\frac{4n+6}{9n-2}\\rightarrow\\frac{4}{9}=\\frac{4}{9}$. Since $\\frac{4}{9}<1$, converges by the Root Test.",
-          "explanation": "$\\sqrt[n]{\\left(\\frac{4n+6}{9n-2}\\right)^n}=\\frac{4n+6}{9n-2}\\rightarrow\\frac{4}{9}=\\frac{4}{9}$. Since $\\frac{4}{9}<1$, converges by the Root Test."
+          "answer": "$1/n!\\rightarrow0$ and is decreasing: both conditions met.",
+          "explanation": "$1/n!\\rightarrow0$ and is decreasing: both conditions met."
         },
         {
-          "q": "Use the Root Test to find $L=\\lim_{n\\rightarrow\\infty}\\sqrt[n]{\\left|\\left(\\frac{9n+4}{12n+3}\\right)^n\\right|}$.",
+          "q": "The integral $\\int_0^1e^{-x^2}dx$ (error function) — the exact value cannot be expressed in elementary functions. Using the series, approximate as $\\sum\\frac{(-1)^n}{n!(2n+1)}$. First two terms:",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Why the Ratio Test fails for p-series",
           "choices": [
-            "$\\frac{3}{4}$",
-            "$\\frac{7}{4}$",
-            "$\\frac{4}{3}$",
-            "$\\frac{5}{4}$"
+            "$1-1/6\\approx0.833$",
+            "$1-1/3\\approx0.667$",
+            "$1+1/3\\approx1.333$",
+            "$0$"
           ],
-          "correct": 0,
-          "answer": "$\\sqrt[n]{\\left(\\frac{9n+4}{12n+3}\\right)^n}=\\frac{9n+4}{12n+3}\\rightarrow\\frac{9}{12}=\\frac{3}{4}$. Since $\\frac{3}{4}<1$, converges by the Root Test.",
-          "explanation": "$\\sqrt[n]{\\left(\\frac{9n+4}{12n+3}\\right)^n}=\\frac{9n+4}{12n+3}\\rightarrow\\frac{9}{12}=\\frac{3}{4}$. Since $\\frac{3}{4}<1$, converges by the Root Test."
+          "correct": 1,
+          "answer": "$\\int_0^1e^{-x^2}dx\\approx1-1/3+\\cdots\\approx0.667$.",
+          "explanation": "$\\int_0^1e^{-x^2}dx\\approx1-1/3+\\cdots\\approx0.667$."
         },
         {
-          "q": "Use the Root Test to find $L=\\lim_{n\\rightarrow\\infty}\\sqrt[n]{\\left|\\left(\\frac{6n-6}{12n-3}\\right)^n\\right|}$.",
+          "q": "Maclaurin series for $\\tan^{-1}x$ at $x=1$ gives $\\pi/4=1-1/3+1/5-1/7+\\cdots$. This converges very slowly. The 10th partial sum approximates $\\pi/4$ with error less than:",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Combining multiple tests in one problem",
           "choices": [
-            "$\\frac{3}{2}$",
-            "$\\frac{1}{2}$",
-            "$2$",
-            "$1$"
+            "$1/11$",
+            "$1/21$",
+            "$1/19$",
+            "$0.01$"
           ],
           "correct": 1,
-          "answer": "$\\sqrt[n]{\\left(\\frac{6n-6}{12n-3}\\right)^n}=\\frac{6n-6}{12n-3}\\rightarrow\\frac{6}{12}=\\frac{1}{2}$. Since $\\frac{1}{2}<1$, converges by the Root Test.",
-          "explanation": "$\\sqrt[n]{\\left(\\frac{6n-6}{12n-3}\\right)^n}=\\frac{6n-6}{12n-3}\\rightarrow\\frac{6}{12}=\\frac{1}{2}$. Since $\\frac{1}{2}<1$, converges by the Root Test."
+          "answer": "Alternating series: error $\\leq a_{11}=1/21$.",
+          "explanation": "Alternating series: error $\\leq a_{11}=1/21$."
         },
         {
-          "q": "Use the Root Test to find $L=\\lim_{n\\rightarrow\\infty}\\sqrt[n]{\\left|\\left(\\frac{8n-6}{13n+7}\\right)^n\\right|}$.",
+          "q": "Absolute convergence implies conditional convergence. The converse:",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "The Alternating Series Test",
+          "target": "The Ratio Test",
           "choices": [
-            "$\\frac{21}{13}$",
-            "$\\frac{8}{13}$",
-            "$\\frac{29}{26}$",
-            "$\\frac{13}{8}$"
+            "is also true",
+            "is false (counterexample: alternating harmonic series)",
+            "requires $a_n\\geq0$",
+            "is true for power series"
           ],
           "correct": 1,
-          "answer": "$\\sqrt[n]{\\left(\\frac{8n-6}{13n+7}\\right)^n}=\\frac{8n-6}{13n+7}\\rightarrow\\frac{8}{13}=\\frac{8}{13}$. Since $\\frac{8}{13}<1$, converges by the Root Test.",
-          "explanation": "$\\sqrt[n]{\\left(\\frac{8n-6}{13n+7}\\right)^n}=\\frac{8n-6}{13n+7}\\rightarrow\\frac{8}{13}=\\frac{8}{13}$. Since $\\frac{8}{13}<1$, converges by the Root Test.",
+          "answer": "Conditional does not imply absolute.",
+          "explanation": "Conditional does not imply absolute.",
           "figure": {
             "type": "plot",
             "fns": [
-              "2 + 1.5/(x - (1))"
+              "-0.6*(x - (0.5))**2 + (1.0)",
+              "0.65*x + (-0.2)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
-            "asymptotes": {
-              "x": [
-                1
-              ],
-              "y": [
-                2
-              ]
-            },
             "point_labels": [
               {
-                "x": 2.5,
-                "y": 3.0,
-                "label": "$( 2.5, 3 )$"
+                "x": 0.5,
+                "y": 1.0,
+                "label": "$(0.5,1)$"
               }
             ],
             "width": 230
           }
         },
         {
-          "q": "Use the Root Test to find $L=\\lim_{n\\rightarrow\\infty}\\sqrt[n]{\\left|\\left(\\frac{8n-5}{12n-4}\\right)^n\\right|}$.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Absolute vs. Conditional Convergence",
-          "choices": [
-            "$\\frac{3}{2}$",
-            "$\\frac{2}{3}$",
-            "$\\frac{5}{3}$",
-            "$\\frac{7}{6}$"
-          ],
-          "correct": 1,
-          "answer": "$\\sqrt[n]{\\left(\\frac{8n-5}{12n-4}\\right)^n}=\\frac{8n-5}{12n-4}\\rightarrow\\frac{8}{12}=\\frac{2}{3}$. Since $\\frac{2}{3}<1$, converges by the Root Test.",
-          "explanation": "$\\sqrt[n]{\\left(\\frac{8n-5}{12n-4}\\right)^n}=\\frac{8n-5}{12n-4}\\rightarrow\\frac{8}{12}=\\frac{2}{3}$. Since $\\frac{2}{3}<1$, converges by the Root Test."
-        },
-        {
-          "q": "Determine whether $\\sum_{n=1}^{\\infty}\\frac{(-1)^nn}{n+6}$ converges absolutely, conditionally, or diverges.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Alternating Series Error Bound",
-          "choices": [
-            "Cannot be determined without more information",
-            "Diverges",
-            "Conditionally convergent",
-            "Absolutely convergent"
-          ],
-          "correct": 1,
-          "answer": "$b_n=\\frac{n}{n+6}\\rightarrow1\\neq0$. Since the terms don't approach $0$, the series diverges by the $n$th-term test.",
-          "explanation": "$b_n=\\frac{n}{n+6}\\rightarrow1\\neq0$. Since the terms don't approach $0$, the series diverges by the $n$th-term test."
-        },
-        {
-          "q": "Determine whether $\\sum_{n=1}^{\\infty}\\frac{(-1)^n4}{n^{1}}$ converges absolutely, conditionally, or diverges.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "The Ratio Test",
-          "choices": [
-            "Absolutely convergent",
-            "Cannot be determined without more information",
-            "Diverges",
-            "Conditionally convergent"
-          ],
-          "correct": 3,
-          "answer": "The series alternates and $b_n=\\frac{4}{n^{1}}\\rightarrow0$, decreasing, so it converges by the AST. Testing absolute convergence: since $\\sum\\left|\\frac{4}{n^{1}}\\right|=\\sum\\frac{4}{n^{1}}$ diverges ($p=1$). So the series is CONDITIONALLY CONVERGENT.",
-          "explanation": "The series alternates and $b_n=\\frac{4}{n^{1}}\\rightarrow0$, decreasing, so it converges by the AST. Testing absolute convergence: since $\\sum\\left|\\frac{4}{n^{1}}\\right|=\\sum\\frac{4}{n^{1}}$ diverges ($p=1$). So the series is CONDITIONALLY CONVERGENT."
-        },
-        {
-          "q": "Use the Ratio Test to determine whether $\\sum_{n=1}^{\\infty}\\frac{8^n}{n!}$ converges.",
+          "q": "The Maclaurin series for a function $f(x)$ is given by $\\sum_{n=0}^{\\infty} \\frac{f^{(n)}(0)}{n!} x^n$. If the first three terms of the Maclaurin series for $f(x)$ are $5 - 2x + \\frac{3}{2}x^2$, what are the values of $f(0)$, $f'(0)$, and $f''(0)$?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "The Root Test",
           "choices": [
-            "Diverges ($L=\\infty$)",
-            "Converges by the Alternating Series Test",
-            "Inconclusive ($L=1$)",
-            "Converges ($L=0$)"
+            "$f(0) = 5, f'(0) = -2, f''(0) = 3$",
+            "$f(0) = 5, f'(0) = -2, f''(0) = 6$",
+            "$f(0) = 5, f'(0) = -1, f''(0) = 3$",
+            "$f(0) = 3, f'(0) = -2, f''(0) = 5$"
           ],
-          "correct": 3,
-          "answer": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{8^{n+1}/(n+1)!}{8^n/n!}=\\frac{8}{n+1}\\rightarrow0$. Converges by the Ratio Test.",
-          "explanation": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{8^{n+1}/(n+1)!}{8^n/n!}=\\frac{8}{n+1}\\rightarrow0$. Converges by the Ratio Test."
+          "correct": 0,
+          "answer": "The Maclaurin series for a function $f(x)$ is given by $f(x) = f(0) + \\frac{f'(0)}{1!}x + \\frac{f''(0)}{2!}x^2 + \\frac{f'''(0)}{3!}x^3 + \\dots$. We are given the first three terms of the Maclaurin series as $5 - 2x + \\frac{3}{2}x^2$. Comparing the coefficients term by term: For the constant term (x^0): $f(0) = 5$. For the x term (x^1): $\\frac{f'(0)}{1!} = -2 \\Rightarrow f'(0) = -2$. For the x^2 term (x^2): $\\frac{f''(0)}{2!} = \\frac{3}{2} \\Rightarrow \\frac{f''(0)}{2} = \\frac{3}{2} \\Rightarrow f''(0) = 3$. Therefore, $f(0) = 5, f'(0) = -2, f''(0) = 3$.",
+          "explanation": "The Maclaurin series for a function $f(x)$ is given by $f(x) = f(0) + \\frac{f'(0)}{1!}x + \\frac{f''(0)}{2!}x^2 + \\frac{f'''(0)}{3!}x^3 + \\dots$. We are given the first three terms of the Maclaurin series as $5 - 2x + \\frac{3}{2}x^2$. Comparing the coefficients term by term: For the constant term (x^0): $f(0) = 5$. For the x term (x^1): $\\frac{f'(0)}{1!} = -2 \\Rightarrow f'(0) = -2$. For the x^2 term (x^2): $\\frac{f''(0)}{2!} = \\frac{3}{2} \\Rightarrow \\frac{f''(0)}{2} = \\frac{3}{2} \\Rightarrow f''(0) = 3$. Therefore, $f(0) = 5, f'(0) = -2, f''(0) = 3$."
+        },
+        {
+          "q": "Consider the Taylor series expansion of the function $f(x) = \\frac{1}{1-x}$ centered at $x=0$. If the sum of the first three non-constant terms of the Taylor series is denoted by $S_3(x)$, and we are given that $S_3(x) = ax + bx^2 + cx^3$, find the value of $b + c$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Alternating series and the Alternating Series Test",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "correct": 2,
+          "answer": "The Taylor series expansion of $f(x) = \\frac{1}{1-x}$ centered at $x=0$ is given by $f(x) = \\sum_{n=0}^{\\infty} x^n = 1 + x + x^2 + x^3 + \\dots$, for $|x| < 1$. The first three non-constant terms of this series are $x$, $x^2$, and $x^3$. Thus, $S_3(x) = x + x^2 + x^3$. We are given that $S_3(x) = ax + bx^2 + cx^3$. By comparing the coefficients, we have $a=1$, $b=1$, and $c=1$. Therefore, $b+c = 1+1 = 2$.",
+          "explanation": "The Taylor series expansion of $f(x) = \\frac{1}{1-x}$ centered at $x=0$ is given by $f(x) = \\sum_{n=0}^{\\infty} x^n = 1 + x + x^2 + x^3 + \\dots$, for $|x| < 1$. The first three non-constant terms of this series are $x$, $x^2$, and $x^3$. Thus, $S_3(x) = x + x^2 + x^3$. We are given that $S_3(x) = ax + bx^2 + cx^3$. By comparing the coefficients, we have $a=1$, $b=1$, and $c=1$. Therefore, $b+c = 1+1 = 2$."
+        },
+        {
+          "q": "The error function $\\mathrm{erf}(x)=\\frac{2}{\\sqrt{\\pi}}\\int_0^xe^{-t^2}dt$. Using $e^{-t^2}=\\sum(-1)^nt^{2n}/n!$:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Alternating series error bound",
+          "choices": [
+            "$\\mathrm{erf}(x)=\\sum x^n/n!$",
+            "$\\mathrm{erf}(x)=\\frac{2}{\\sqrt{\\pi}}\\sum_{n=0}^\\infty\\frac{(-1)^n x^{2n+1}}{n!(2n+1)}$",
+            "$\\mathrm{erf}(x)=e^{-x^2}$",
+            "$\\mathrm{erf}(x)=2x/\\sqrt{\\pi}$"
+          ],
+          "correct": 1,
+          "answer": "Applying Convergence Tests and Power Series principles, Integrate term-by-term. Therefore, the verified correct option is $\\mathrm{erf}(x)=\\frac{2}{\\sqrt{\\pi}}\\sum_{n=0}^\\infty\\frac{(-1)^n x^{2n+1}}{n!(2n+1)}$.",
+          "explanation": "Applying Convergence Tests and Power Series principles, Integrate term-by-term. Therefore, the verified correct option is $\\mathrm{erf}(x)=\\frac{2}{\\sqrt{\\pi}}\\sum_{n=0}^\\infty\\frac{(-1)^n x^{2n+1}}{n!(2n+1)}$."
+        },
+        {
+          "q": "Generalised binomial: $\\sqrt{1-x}=\\sum_{n=0}^\\infty\\binom{1/2}{n}(-1)^n x^n$. First three terms:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Absolute vs. conditional convergence",
+          "choices": [
+            "$1-x-x^2$",
+            "$1+x/2-x^2/8$",
+            "$1-x/2-x^2/8$",
+            "$1-x/2$"
+          ],
+          "correct": 2,
+          "answer": "Applying Convergence Tests and Power Series principles, $1-x/2-x^2/8-\\cdots$ Therefore, the verified correct option is $1-x/2-x^2/8$.",
+          "explanation": "Applying Convergence Tests and Power Series principles, $1-x/2-x^2/8-\\cdots$ Therefore, the verified correct option is $1-x/2-x^2/8$."
         }
       ]
     },
@@ -620,176 +605,186 @@
       "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
       "questions": [
         {
-          "q": "Use the Ratio Test to determine whether $\\sum_{n=1}^{\\infty}\\frac{7^n}{n!}$ converges.",
+          "q": "Use alternating series estimation: $|\\cos1-1+1/2|\\leq|{-1/4!}|=$",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Alternating series and the Alternating Series Test",
+          "target": "More Ratio Test practice",
           "choices": [
-            "Inconclusive ($L=1$)",
-            "Converges ($L=0$)",
-            "Diverges ($L=\\infty$)",
-            "Converges by the Alternating Series Test"
+            "$1/12$",
+            "$1/120$",
+            "$1/6$",
+            "$1/24$"
           ],
-          "correct": 1,
-          "answer": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{7^{n+1}/(n+1)!}{7^n/n!}=\\frac{7}{n+1}\\rightarrow0$. Converges by the Ratio Test.",
-          "explanation": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{7^{n+1}/(n+1)!}{7^n/n!}=\\frac{7}{n+1}\\rightarrow0$. Converges by the Ratio Test.",
+          "correct": 3,
+          "answer": "Applying Convergence Tests and Power Series principles, Error $\\leq a_4=1/4!=1/24$. Therefore, the verified correct option is $1/24$.",
+          "explanation": "Applying Convergence Tests and Power Series principles, Error $\\leq a_4=1/4!=1/24$. Therefore, the verified correct option is $1/24$.",
           "cross_lesson": "4.01 Polar Curves and Derivatives"
         },
         {
-          "q": "Use the Root Test to find $L=\\lim_{n\\rightarrow\\infty}\\sqrt[n]{\\left(\\frac{3n}{n+5}\\right)^n}$ for $\\sum_{n=1}^{\\infty}\\left(\\frac{3n}{n+5}\\right)^n$.",
+          "q": "Approximate $\\int_0^1\\frac{\\sin x}{x}dx$ using power series (first three terms):",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Alternating series error bound",
+          "target": "Partial sums of an alternating series (visualizing oscillating convergence)",
           "choices": [
-            "$4$",
-            "$2$",
-            "$5$",
-            "$3$"
+            "$1-1/3+1/10$",
+            "$1-1/18+1/600$",
+            "$1-1/6+1/20$",
+            "$1-1/18$"
           ],
-          "correct": 3,
-          "answer": "$\\sqrt[n]{\\left(\\frac{3n}{n+5}\\right)^n}=\\frac{3n}{n+5}\\rightarrow3$ as $n\\rightarrow\\infty$. Since $3>1$, diverges by the Root Test.",
-          "explanation": "$\\sqrt[n]{\\left(\\frac{3n}{n+5}\\right)^n}=\\frac{3n}{n+5}\\rightarrow3$ as $n\\rightarrow\\infty$. Since $3>1$, diverges by the Root Test.",
+          "correct": 1,
+          "answer": "$\\sin x/x=\\sum(-1)^nx^{2n}/(2n+1)!$; $\\int_0^1=\\sum(-1)^n/(2n+1)(2n+1)!=1-1/18+1/600-\\cdots$.",
+          "explanation": "$\\sin x/x=\\sum(-1)^nx^{2n}/(2n+1)!$; $\\int_0^1=\\sum(-1)^n/(2n+1)(2n+1)!=1-1/18+1/600-\\cdots$.",
           "cross_lesson": "4.02 Area in Polar Coordinates",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "2 + 1.5/(x - (1))"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "asymptotes": {
-              "x": [
-                1
+            "type": "triangle",
+            "vertices": [
+              [
+                0,
+                0
               ],
-              "y": [
-                2
+              [
+                24.0,
+                0
+              ],
+              [
+                0,
+                10.0
               ]
-            },
-            "point_labels": [
+            ],
+            "labels": [
+              "$C$",
+              "$B$",
+              "$A$"
+            ],
+            "side_labels": [
+              "$24$",
+              "$26$",
+              "$10$"
+            ],
+            "right_angle_at": 0,
+            "angle_marks": [
               {
-                "x": 2.5,
-                "y": 3.0,
-                "label": "$( 2.5, 3 )$"
+                "vertex": 1,
+                "label": "$\\theta$"
               }
             ],
-            "width": 230
+            "fill": true,
+            "width": 220
           }
         },
         {
-          "q": "Use the Root Test to find $L=\\lim_{n\\rightarrow\\infty}\\sqrt[n]{\\left(\\frac{9n}{n+1}\\right)^n}$ for $\\sum_{n=1}^{\\infty}\\left(\\frac{9n}{n+1}\\right)^n$.",
+          "q": "Convergence of $\\sum n^2/3^n$: by ratio test, $L=$",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Absolute vs. conditional convergence",
+          "target": "Determining the number of terms needed for a given accuracy",
           "choices": [
             "$1$",
-            "$8$",
-            "$10$",
-            "$9$"
+            "$1/3$",
+            "$3$",
+            "$0$"
           ],
-          "correct": 3,
-          "answer": "$\\sqrt[n]{\\left(\\frac{9n}{n+1}\\right)^n}=\\frac{9n}{n+1}\\rightarrow9$ as $n\\rightarrow\\infty$. Since $9>1$, diverges by the Root Test.",
-          "explanation": "$\\sqrt[n]{\\left(\\frac{9n}{n+1}\\right)^n}=\\frac{9n}{n+1}\\rightarrow9$ as $n\\rightarrow\\infty$. Since $9>1$, diverges by the Root Test.",
+          "correct": 1,
+          "answer": "$|(n+1)^2/3^{n+1}\\cdot3^n/n^2|\\rightarrow1/3<1\\Rightarrow$ converges.",
+          "explanation": "$|(n+1)^2/3^{n+1}\\cdot3^n/n^2|\\rightarrow1/3<1\\Rightarrow$ converges.",
           "cross_lesson": "5.01 Sequences and Basic Series Convergence Tests"
         },
         {
-          "q": "Evaluate the limit $L = \\lim_{n \\rightarrow \\infty} |\\frac{a_{n+1}}{a_n}|$ for the series $\\sum_{n=1}^\\infty \\frac{3^n}{n!}$.",
+          "q": "Integral test convergence of $\\sum_{n=1}^\\infty 1/n(\\ln n)^2$ (from $n=2$) gives sum approximately:",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "The Ratio Test",
+          "target": "Mixed practice: classify each series",
           "choices": [
-            "$0$ (converges)",
-            "$3$ (diverges)",
-            "$1$ (inconclusive)",
-            "$\\infty$ (diverges)"
+            "converges",
+            "diverges",
+            "equals $e$",
+            "equals $\\pi^2$"
           ],
           "correct": 0,
-          "answer": "$\\lim_{n \\rightarrow \\infty} \\frac{3^{n+1}}{(n+1)!} \\frac{n!}{3^n} = \\lim_{n \\rightarrow \\infty} \\frac{3}{n+1} = 0 < 1$. By the Ratio Test, the series converges.",
-          "explanation": "$\\lim_{n \\rightarrow \\infty} \\frac{3^{n+1}}{(n+1)!} \\frac{n!}{3^n} = \\lim_{n \\rightarrow \\infty} \\frac{3}{n+1} = 0 < 1$. By the Ratio Test, the series converges.",
+          "answer": "$\\int_2^\\infty dx/(x(\\ln x)^2)=1/\\ln2<\\infty\\Rightarrow$ converges.",
+          "explanation": "$\\int_2^\\infty dx/(x(\\ln x)^2)=1/\\ln2<\\infty\\Rightarrow$ converges.",
           "cross_lesson": "6.01 Power Series and Interval of Convergence"
         },
         {
-          "q": "What two conditions must an alternating series $\\sum (-1)^{n-1} b_n$ with $b_n > 0$ satisfy to converge by the AST?",
+          "q": "Error bound for alternating series: $|S-S_n|\\leq$",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "The Alternating Series Test",
+          "target": "The Root Test with more complex expressions",
           "choices": [
-            "$b_{n+1} \\leq b_n$ for all $n$, and $\\lim_{n \\rightarrow \\infty} b_n = 0$",
-            "$b_n$ is increasing, and $\\lim_{n \\rightarrow \\infty} b_n = 1$",
-            "$\\lim_{n \\rightarrow \\infty} b_n = 0$ only",
-            "The Ratio Test limit must be $< 1$"
+            "$a_n$",
+            "$S_n$",
+            "$na_n$",
+            "$a_{n+1}$"
           ],
-          "correct": 0,
-          "answer": "By the Alternating Series Test (Leibniz's rule), the terms must be non-increasing in magnitude ($b_{n+1} \\leq b_n$) and must approach zero ($\\lim_{n \\rightarrow \\infty} b_n = 0$).",
-          "explanation": "By the Alternating Series Test (Leibniz's rule), the terms must be non-increasing in magnitude ($b_{n+1} \\leq b_n$) and must approach zero ($\\lim_{n \\rightarrow \\infty} b_n = 0$).",
+          "correct": 3,
+          "answer": "Alternating series error bound: first omitted term $a_{n+1}$.",
+          "explanation": "Alternating series error bound: first omitted term $a_{n+1}$.",
           "cross_lesson": "6.02 Taylor and Maclaurin Series"
         },
         {
-          "q": "Determine the convergence of $\\sum_{n=1}^\\infty \\frac{(-1)^n}{\\sqrt{n}}$.",
+          "q": "Dirichlet test: $\\sum a_n b_n$ converges if $a_n$ monotone $\\rightarrow0$ and partial sums of $\\sum b_n$ are:",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "The Alternating Series Test",
+          "target": "Why the Ratio Test fails for p-series",
           "choices": [
-            "Converges conditionally",
-            "Converges absolutely",
-            "Diverges",
-            "Inconclusive"
+            "convergent",
+            "zero",
+            "increasing",
+            "bounded"
           ],
-          "correct": 0,
-          "answer": "Terms decrease to $0$, so it converges by the AST. The absolute series $\\sum n^{-1/2}$ is a divergent $p$-series ($p = 0.5 \\leq 1$). Hence conditional convergence.",
-          "explanation": "Terms decrease to $0$, so it converges by the AST. The absolute series $\\sum n^{-1/2}$ is a divergent $p$-series ($p = 0.5 \\leq 1$). Hence conditional convergence.",
+          "correct": 3,
+          "answer": "Dirichlet: bounded partial sums + monotone $a_n\\rightarrow0$.",
+          "explanation": "Dirichlet: bounded partial sums + monotone $a_n\\rightarrow0$.",
           "cross_lesson": "1.01 Integration by Parts",
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (-1))**2 + (-2)",
-              "0.5*x + 1"
+              "-0.45*(x - (1.5))**2 + (1.0)",
+              "0.4*x + (-0.2)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
-                "x": -1.0,
-                "y": -2.0,
-                "label": "$(-1,-2)$"
+                "x": 1.5,
+                "y": 1.0,
+                "label": "$(1.5,1)$"
               }
             ],
             "width": 230
           }
         },
         {
-          "q": "Which of the following series converges absolutely?",
+          "q": "The error in using $T_n(x)$ decreases as $n$ increases (assuming convergence). This is because the remainder $R_n\\rightarrow$",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Absolute vs. Conditional Convergence",
+          "target": "Combining multiple tests in one problem",
           "choices": [
-            "$\\sum_{n=1}^\\infty \\frac{(-1)^n}{n^2}$",
-            "$\\sum_{n=1}^\\infty \\frac{(-1)^n}{n}$",
-            "$\\sum_{n=1}^\\infty \\frac{(-1)^n}{\\sqrt{n}}$",
-            "$\\sum_{n=1}^\\infty (-1)^n$"
+            "$1$",
+            "$f(x)$",
+            "$n!$",
+            "$0$"
           ],
-          "correct": 0,
-          "answer": "The absolute series is $\\sum \\frac{1}{n^2}$, which is a convergent $p$-series ($p = 2 > 1$). Therefore, it converges absolutely.",
-          "explanation": "The absolute series is $\\sum \\frac{1}{n^2}$, which is a convergent $p$-series ($p = 2 > 1$). Therefore, it converges absolutely.",
+          "correct": 3,
+          "answer": "Remainder $R_n\\rightarrow0$ for convergent Taylor series.",
+          "explanation": "Remainder $R_n\\rightarrow0$ for convergent Taylor series.",
           "cross_lesson": "1.02 Partial Fractions and Improper Integrals"
         },
         {
-          "q": "For a convergent alternating series $\\sum (-1)^{n-1} b_n$, what is the upper bound for the error $|R_n| = |S - S_n|$?",
+          "q": "Use the integral test to show $\\sum_{n=2}^\\infty\\frac{1}{n(\\ln n)^2}$ converges. The integral $\\int_2^\\infty\\frac{dx}{x(\\ln x)^2}=$",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Alternating Series Error Bound",
+          "target": "The Ratio Test",
           "choices": [
-            "$|R_n| \\leq b_{n+1}$",
-            "$|R_n| \\leq b_n$",
-            "$|R_n| \\leq \\frac{b_{n+1}}{2}$",
-            "$|R_n| \\leq \\frac{b_n}{n}$"
+            "$\\infty$",
+            "$\\pi$",
+            "$\\ln2$",
+            "$1/\\ln2$"
           ],
-          "correct": 0,
-          "answer": "The Alternating Series Estimation Theorem states that the truncation error $|S - S_n|$ is bounded by the magnitude of the first omitted term: $b_{n+1}$.",
-          "explanation": "The Alternating Series Estimation Theorem states that the truncation error $|S - S_n|$ is bounded by the magnitude of the first omitted term: $b_{n+1}$.",
+          "correct": 3,
+          "answer": "$u=\\ln x$: $\\int_{\\ln2}^\\infty u^{-2}du=1/\\ln2<\\infty$.",
+          "explanation": "$u=\\ln x$: $\\int_{\\ln2}^\\infty u^{-2}du=1/\\ln2<\\infty$.",
           "cross_lesson": "2.01 Euler's Method and Logistic Growth"
         }
       ]

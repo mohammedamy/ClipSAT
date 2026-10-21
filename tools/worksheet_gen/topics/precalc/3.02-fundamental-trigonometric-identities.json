@@ -39,18 +39,18 @@
           "figure": {
             "type": "plot",
             "fns": [
-              "3*sin(x)",
+              "3.5*sin(1*x) + (1)",
               "cos(x)"
             ],
             "xmin": -4,
             "xmax": 4,
-            "ymin": -3.5,
-            "ymax": 3.5,
+            "ymin": -4.5,
+            "ymax": 4.5,
             "point_labels": [
               {
                 "x": 1.57,
-                "y": 3.0,
-                "label": "$( \\frac{\\pi}{2}, 3 )$"
+                "y": 4.5,
+                "label": "$(1.57, 4.5)$"
               }
             ],
             "width": 230
@@ -84,14 +84,6 @@
           "explanation": "$(1 + \\tan^2 x)\\cos^2 x = \\sec^2 x \\cos^2 x = \\frac{1}{\\cos^2 x}\\cos^2 x = 1$."
         },
         {
-          "q": "Verify the identity $\\frac{\\sin x}{1 + \\cos x} = \\frac{1 - \\cos x}{\\sin x}$.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Simplifying and verifying",
-          "answer": "Cross-multiplying view: $\\sin^2 x = (1 + \\cos x)(1 - \\cos x) = 1 - \\cos^2 x$, which is the Pythagorean identity. Equivalently, multiply the left side by $\\frac{1 - \\cos x}{1 - \\cos x}$ to obtain $\\frac{\\sin x(1 - \\cos x)}{1 - \\cos^2 x} = \\frac{\\sin x(1 - \\cos x)}{\\sin^2 x} = \\frac{1 - \\cos x}{\\sin x}$.",
-          "explanation": "Cross-multiplying view: $\\sin^2 x = (1 + \\cos x)(1 - \\cos x) = 1 - \\cos^2 x$, which is the Pythagorean identity. Equivalently, multiply the left side by $\\frac{1 - \\cos x}{1 - \\cos x}$ to obtain $\\frac{\\sin x(1 - \\cos x)}{1 - \\cos^2 x} = \\frac{\\sin x(1 - \\cos x)}{\\sin^2 x} = \\frac{1 - \\cos x}{\\sin x}$."
-        },
-        {
           "q": "Rewrite each expression using only $\\sin x$ and $\\cos x$, then simplify:",
           "difficulty": "Foundational",
           "question_type": "FRQ",
@@ -108,7 +100,15 @@
             "$1 - \\sin^2 x = \\cos^2 x$ (since $\\csc^2 x \\sin^2 x = 1$)"
           ],
           "answer": "(a) $= \\frac{\\cos x}{\\sin x}\\cdot\\sin x = \\cos x$; (b) $= \\frac{1/\\cos x}{1/\\sin x} = \\frac{\\sin x}{\\cos x} = \\tan x$; (c) $1 - \\sin^2 x = \\cos^2 x$ (since $\\csc^2 x \\sin^2 x = 1$)",
-          "explanation": "(a) $= \\frac{\\cos x}{\\sin x}\\cdot\\sin x = \\cos x$; (b) $= \\frac{1/\\cos x}{1/\\sin x} = \\frac{\\sin x}{\\cos x} = \\tan x$; (c) $1 - \\sin^2 x = \\cos^2 x$ (since $\\csc^2 x \\sin^2 x = 1$)",
+          "explanation": "(a) $= \\frac{\\cos x}{\\sin x}\\cdot\\sin x = \\cos x$; (b) $= \\frac{1/\\cos x}{1/\\sin x} = \\frac{\\sin x}{\\cos x} = \\tan x$; (c) $1 - \\sin^2 x = \\cos^2 x$ (since $\\csc^2 x \\sin^2 x = 1$)"
+        },
+        {
+          "q": "Simplify $\\frac{\\cos x}{1-\\sin x} - \\tan x$ to a single term.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Quotient and reciprocal identities",
+          "answer": "Combine over $\\cos x(1-\\sin x)$: $\\frac{\\cos^2 x - \\sin x(1-\\sin x)}{\\cos x(1-\\sin x)} = \\frac{\\cos^2 x + \\sin^2 x - \\sin x}{\\cos x(1-\\sin x)} = \\frac{1-\\sin x}{\\cos x(1-\\sin x)} = \\sec x$.",
+          "explanation": "Combine over $\\cos x(1-\\sin x)$: $\\frac{\\cos^2 x - \\sin x(1-\\sin x)}{\\cos x(1-\\sin x)} = \\frac{\\cos^2 x + \\sin^2 x - \\sin x}{\\cos x(1-\\sin x)} = \\frac{1-\\sin x}{\\cos x(1-\\sin x)} = \\sec x$.",
           "figure": {
             "type": "triangle",
             "vertices": [
@@ -147,94 +147,18 @@
           }
         },
         {
-          "q": "Simplify $\\frac{\\cos x}{1-\\sin x} - \\tan x$ to a single term.",
+          "q": "Verify the identity $\\sec^2 x - \\tan^2 x = 1$ using the Pythagorean identity for tangent and secant.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
-          "target": "Quotient and reciprocal identities",
-          "answer": "Combine over $\\cos x(1-\\sin x)$: $\\frac{\\cos^2 x - \\sin x(1-\\sin x)}{\\cos x(1-\\sin x)} = \\frac{\\cos^2 x + \\sin^2 x - \\sin x}{\\cos x(1-\\sin x)} = \\frac{1-\\sin x}{\\cos x(1-\\sin x)} = \\sec x$.",
-          "explanation": "Combine over $\\cos x(1-\\sin x)$: $\\frac{\\cos^2 x - \\sin x(1-\\sin x)}{\\cos x(1-\\sin x)} = \\frac{\\cos^2 x + \\sin^2 x - \\sin x}{\\cos x(1-\\sin x)} = \\frac{1-\\sin x}{\\cos x(1-\\sin x)} = \\sec x$."
+          "target": "More identity verifications",
+          "answer": "The identity $1 + \\tan^2 x = \\sec^2 x$ (dividing $\\sin^2x+\\cos^2x=1$ by $\\cos^2 x$) rearranges directly to $\\sec^2 x - \\tan^2 x = 1$.",
+          "explanation": "The identity $1 + \\tan^2 x = \\sec^2 x$ (dividing $\\sin^2x+\\cos^2x=1$ by $\\cos^2 x$) rearranges directly to $\\sec^2 x - \\tan^2 x = 1$."
         }
       ]
     },
     {
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
-        {
-          "q": "Verify the identity $\\sec^2 x - \\tan^2 x = 1$ using the Pythagorean identity for tangent and secant.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "More identity verifications",
-          "answer": "The identity $1 + \\tan^2 x = \\sec^2 x$ (dividing $\\sin^2x+\\cos^2x=1$ by $\\cos^2 x$) rearranges directly to $\\sec^2 x - \\tan^2 x = 1$.",
-          "explanation": "The identity $1 + \\tan^2 x = \\sec^2 x$ (dividing $\\sin^2x+\\cos^2x=1$ by $\\cos^2 x$) rearranges directly to $\\sec^2 x - \\tan^2 x = 1$."
-        },
-        {
-          "q": "Verify the identity $\\frac{1}{1-\\cos x} + \\frac{1}{1+\\cos x} = 2\\csc^2 x$.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "More identity verifications",
-          "answer": "Combine over a common denominator: $\\frac{(1+\\cos x)+(1-\\cos x)}{(1-\\cos x)(1+\\cos x)} = \\frac{2}{1-\\cos^2 x} = \\frac{2}{\\sin^2 x} = 2\\csc^2 x$.",
-          "explanation": "Combine over a common denominator: $\\frac{(1+\\cos x)+(1-\\cos x)}{(1-\\cos x)(1+\\cos x)} = \\frac{2}{1-\\cos^2 x} = \\frac{2}{\\sin^2 x} = 2\\csc^2 x$."
-        },
-        {
-          "q": "Show that $(\\sin x + \\cos x)^2 = 1 + 2\\sin x\\cos x$.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "More identity verifications",
-          "answer": "Expand: $(\\sin x+\\cos x)^2 = \\sin^2x + 2\\sin x\\cos x + \\cos^2 x = (\\sin^2x+\\cos^2x) + 2\\sin x\\cos x = 1 + 2\\sin x\\cos x$.",
-          "explanation": "Expand: $(\\sin x+\\cos x)^2 = \\sin^2x + 2\\sin x\\cos x + \\cos^2 x = (\\sin^2x+\\cos^2x) + 2\\sin x\\cos x = 1 + 2\\sin x\\cos x$.",
-          "figure": {
-            "type": "triangle",
-            "vertices": [
-              [
-                0,
-                0
-              ],
-              [
-                24.0,
-                0
-              ],
-              [
-                0,
-                7.0
-              ]
-            ],
-            "labels": [
-              "$C$",
-              "$B$",
-              "$A$"
-            ],
-            "side_labels": [
-              "$24$",
-              "$25$",
-              "$7$"
-            ],
-            "right_angle_at": 0,
-            "angle_marks": [
-              {
-                "vertex": 1,
-                "label": "$\\theta$"
-              }
-            ],
-            "fill": true,
-            "width": 220
-          }
-        },
-        {
-          "q": "Given that $\\cos\\theta = -\\frac{8}{17}$ and $\\theta$ lies in Quadrant III, find $\\sin\\theta$, $\\tan\\theta$, and $\\cot\\theta$ in exact simplified form.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "More identity verifications",
-          "answer": "$\\sin^2\\theta = 1-\\frac{64}{289}=\\frac{225}{289}$, and in QIII $\\sin\\theta<0$: $\\sin\\theta=-\\frac{15}{17}$. $\\tan\\theta=\\frac{-15/17}{-8/17}=\\frac{15}{8}$. $\\cot\\theta=\\frac{8}{15}$.",
-          "explanation": "$\\sin^2\\theta = 1-\\frac{64}{289}=\\frac{225}{289}$, and in QIII $\\sin\\theta<0$: $\\sin\\theta=-\\frac{15}{17}$. $\\tan\\theta=\\frac{-15/17}{-8/17}=\\frac{15}{8}$. $\\cot\\theta=\\frac{8}{15}$."
-        },
-        {
-          "q": "Verify the identity $\\sin x\\cos x(\\tan x+\\cot x) = 1$.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Identities with sums and products",
-          "answer": "$\\sin x\\cos x\\left(\\frac{\\sin x}{\\cos x}+\\frac{\\cos x}{\\sin x}\\right) = \\sin^2x+\\cos^2x = 1$.",
-          "explanation": "$\\sin x\\cos x\\left(\\frac{\\sin x}{\\cos x}+\\frac{\\cos x}{\\sin x}\\right) = \\sin^2x+\\cos^2x = 1$."
-        },
         {
           "q": "Simplify $(\\sec x - \\tan x)(\\sec x+\\tan x)$ to a constant.",
           "difficulty": "Intermediate",
@@ -250,29 +174,14 @@
           "target": "Identities involving all three Pythagorean forms",
           "answer": "$\\sin^2x+\\cos^2x=1$; $1+\\tan^2x=\\sec^2x$; $1+\\cot^2x=\\csc^2x$.",
           "explanation": "$\\sin^2x+\\cos^2x=1$; $1+\\tan^2x=\\sec^2x$; $1+\\cot^2x=\\csc^2x$."
-        }
-      ]
-    },
-    {
-      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
-      "questions": [
-        {
-          "q": "Given $\\cot\\theta=\\frac{5}{12}$ and $\\theta$ in Quadrant I, find $\\csc\\theta$ and $\\sin\\theta$ using the cotangent-cosecant identity.",
-          "difficulty": "Challenging",
-          "question_type": "FRQ",
-          "target": "Identities involving all three Pythagorean forms",
-          "cross_lesson": "8.01 Rational Functions and Asymptotes",
-          "answer": "$\\csc^2\\theta=1+\\frac{25}{144}=\\frac{169}{144}$, and in QI $\\csc\\theta>0$: $\\csc\\theta=\\frac{13}{12}$. $\\sin\\theta=\\frac{1}{\\csc\\theta}=\\frac{12}{13}$.",
-          "explanation": "$\\csc^2\\theta=1+\\frac{25}{144}=\\frac{169}{144}$, and in QI $\\csc\\theta>0$: $\\csc\\theta=\\frac{13}{12}$. $\\sin\\theta=\\frac{1}{\\csc\\theta}=\\frac{12}{13}$."
         },
         {
-          "q": "Simplify $\\frac{\\sin^3x+\\cos^3x}{\\sin x+\\cos x}$ using the sum-of-cubes factoring pattern.",
-          "difficulty": "Challenging",
+          "q": "Given $\\cot\\theta=\\frac{5}{12}$ and $\\theta$ in Quadrant I, find $\\csc\\theta$ and $\\sin\\theta$ using the cotangent-cosecant identity.",
+          "difficulty": "Intermediate",
           "question_type": "FRQ",
-          "target": "Simplifying more complex expressions",
-          "cross_lesson": "8.02 Graphing Rational Functions",
-          "answer": "Factor as a sum of cubes: $\\sin^3x+\\cos^3x=(\\sin x+\\cos x)(\\sin^2x-\\sin x\\cos x+\\cos^2x)$. Dividing: $\\frac{(\\sin x+\\cos x)(1-\\sin x\\cos x)}{\\sin x+\\cos x}=1-\\sin x\\cos x$.",
-          "explanation": "Factor as a sum of cubes: $\\sin^3x+\\cos^3x=(\\sin x+\\cos x)(\\sin^2x-\\sin x\\cos x+\\cos^2x)$. Dividing: $\\frac{(\\sin x+\\cos x)(1-\\sin x\\cos x)}{\\sin x+\\cos x}=1-\\sin x\\cos x$.",
+          "target": "Identities involving all three Pythagorean forms",
+          "answer": "$\\csc^2\\theta=1+\\frac{25}{144}=\\frac{169}{144}$, and in QI $\\csc\\theta>0$: $\\csc\\theta=\\frac{13}{12}$. $\\sin\\theta=\\frac{1}{\\csc\\theta}=\\frac{12}{13}$.",
+          "explanation": "$\\csc^2\\theta=1+\\frac{25}{144}=\\frac{169}{144}$, and in QI $\\csc\\theta>0$: $\\csc\\theta=\\frac{13}{12}$. $\\sin\\theta=\\frac{1}{\\csc\\theta}=\\frac{12}{13}$.",
           "figure": {
             "type": "triangle",
             "vertices": [
@@ -281,12 +190,12 @@
                 0
               ],
               [
-                8.0,
+                35.0,
                 0
               ],
               [
                 0,
-                6.0
+                12.0
               ]
             ],
             "labels": [
@@ -295,9 +204,9 @@
               "$A$"
             ],
             "side_labels": [
-              "$8$",
-              "$10$",
-              "$6$"
+              "$35$",
+              "$37$",
+              "$12$"
             ],
             "right_angle_at": 0,
             "angle_marks": [
@@ -311,40 +220,121 @@
           }
         },
         {
-          "q": "Verify $\\tan x+\\cot x=\\sec x\\csc x$.",
-          "difficulty": "Challenging",
+          "q": "Simplify $\\frac{\\sin^3x+\\cos^3x}{\\sin x+\\cos x}$ using the sum-of-cubes factoring pattern.",
+          "difficulty": "Intermediate",
           "question_type": "FRQ",
-          "target": "Verifying identities with a common denominator strategy",
-          "cross_lesson": "8.03 Introduction to Limits",
-          "answer": "$\\tan x+\\cot x=\\frac{\\sin x}{\\cos x}+\\frac{\\cos x}{\\sin x}=\\frac{\\sin^2x+\\cos^2x}{\\sin x\\cos x}=\\frac{1}{\\sin x\\cos x}=\\sec x\\csc x$.",
-          "explanation": "$\\tan x+\\cot x=\\frac{\\sin x}{\\cos x}+\\frac{\\cos x}{\\sin x}=\\frac{\\sin^2x+\\cos^2x}{\\sin x\\cos x}=\\frac{1}{\\sin x\\cos x}=\\sec x\\csc x$."
-        },
-        {
-          "q": "Verify $\\frac{\\sin x}{\\csc x}+\\frac{\\cos x}{\\sec x}=1$.",
-          "difficulty": "Challenging",
-          "question_type": "FRQ",
-          "target": "Verifying identities with a common denominator strategy",
-          "cross_lesson": "9.01 Arithmetic Sequences and Series",
-          "answer": "$\\frac{\\sin x}{\\csc x}=\\sin x\\cdot\\sin x=\\sin^2x$; $\\frac{\\cos x}{\\sec x}=\\cos x\\cdot\\cos x=\\cos^2x$. Sum: $\\sin^2x+\\cos^2x=1$.",
-          "explanation": "$\\frac{\\sin x}{\\csc x}=\\sin x\\cdot\\sin x=\\sin^2x$; $\\frac{\\cos x}{\\sec x}=\\cos x\\cdot\\cos x=\\cos^2x$. Sum: $\\sin^2x+\\cos^2x=1$."
+          "target": "Simplifying more complex expressions",
+          "answer": "Factor as a sum of cubes: $\\sin^3x+\\cos^3x=(\\sin x+\\cos x)(\\sin^2x-\\sin x\\cos x+\\cos^2x)$. Dividing: $\\frac{(\\sin x+\\cos x)(1-\\sin x\\cos x)}{\\sin x+\\cos x}=1-\\sin x\\cos x$.",
+          "explanation": "Factor as a sum of cubes: $\\sin^3x+\\cos^3x=(\\sin x+\\cos x)(\\sin^2x-\\sin x\\cos x+\\cos^2x)$. Dividing: $\\frac{(\\sin x+\\cos x)(1-\\sin x\\cos x)}{\\sin x+\\cos x}=1-\\sin x\\cos x$."
         },
         {
           "q": "Verify the identity $1+\\tan^2x=\\sec^2x$ numerically at $x=\\frac{\\pi}{6}$ by computing both sides.",
-          "difficulty": "Challenging",
+          "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Numeric identity verification (checking a specific angle)",
-          "cross_lesson": "9.02 Geometric Sequences and Series",
           "answer": "$\\tan\\frac{\\pi}{6}=\\frac{1}{\\sqrt{3}}$: LHS $=1+\\frac{1}{3}=\\frac{4}{3}$. $\\sec\\frac{\\pi}{6}=\\frac{1}{\\cos(\\pi/6)}=\\frac{2}{\\sqrt{3}}$: RHS $=\\frac{4}{3}$. Both sides match, confirming the identity at this angle (though this alone doesn't prove it for all $x$).",
           "explanation": "$\\tan\\frac{\\pi}{6}=\\frac{1}{\\sqrt{3}}$: LHS $=1+\\frac{1}{3}=\\frac{4}{3}$. $\\sec\\frac{\\pi}{6}=\\frac{1}{\\cos(\\pi/6)}=\\frac{2}{\\sqrt{3}}$: RHS $=\\frac{4}{3}$. Both sides match, confirming the identity at this angle (though this alone doesn't prove it for all $x$)."
         },
         {
-          "q": "Simplify $(1-\\sin^2x)(1+\\tan^2x)$ to a constant.",
+          "q": "Given that $\\sec\\theta=-\\frac{13}{5}$ and $\\theta$ lies in Quadrant II, use the Pythagorean identity $1+\\tan^2\\theta=\\sec^2\\theta$ to find $\\tan\\theta$ exactly, and then find $\\sin\\theta$ using the quotient identity.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Identities with squared expressions",
+          "answer": "$\\tan^2\\theta=\\sec^2\\theta-1=\\frac{169}{25}-1=\\frac{144}{25}$, and in QII $\\tan\\theta<0$: $\\tan\\theta=-\\frac{12}{5}$. Since $\\cos\\theta=\\frac{1}{\\sec\\theta}=-\\frac{5}{13}$: $\\sin\\theta=\\tan\\theta\\cos\\theta=\\left(-\\frac{12}{5}\\right)\\left(-\\frac{5}{13}\\right)=\\frac{12}{13}$.",
+          "explanation": "$\\tan^2\\theta=\\sec^2\\theta-1=\\frac{169}{25}-1=\\frac{144}{25}$, and in QII $\\tan\\theta<0$: $\\tan\\theta=-\\frac{12}{5}$. Since $\\cos\\theta=\\frac{1}{\\sec\\theta}=-\\frac{5}{13}$: $\\sin\\theta=\\tan\\theta\\cos\\theta=\\left(-\\frac{12}{5}\\right)\\left(-\\frac{5}{13}\\right)=\\frac{12}{13}$."
+        },
+        {
+          "q": "Verify the identity $\\frac{\\csc x-1}{\\cot x}=\\frac{\\cot x}{\\csc x+1}$ by cross-multiplying and using the Pythagorean identity.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Identities with squared expressions",
+          "answer": "Cross-multiplying: $(\\csc x-1)(\\csc x+1)=\\cot^2x$, i.e. $\\csc^2x-1=\\cot^2x$, which is exactly the Pythagorean identity $1+\\cot^2x=\\csc^2x$ rearranged — confirming the identity holds.",
+          "explanation": "Cross-multiplying: $(\\csc x-1)(\\csc x+1)=\\cot^2x$, i.e. $\\csc^2x-1=\\cot^2x$, which is exactly the Pythagorean identity $1+\\cot^2x=\\csc^2x$ rearranged — confirming the identity holds."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "Find all solutions to the trigonometric equation $2\\sin^2 x - 3\\sin x + 1 = 0$ on the domain $x \\in [0, 2\\pi)$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Identities with sums and products",
+          "cross_lesson": "8.01 Rational Functions and Asymptotes",
+          "answer": "Step 1: Factor the quadratic in $\\sin x$: $(2\\sin x - 1)(\\sin x - 1) = 0.$ Step 2: Solve each factor branch:Branch 1: $2\\sin x - 1 = 0 \\Rightarrow \\sin x = \\frac{1}{2}$. On $[0, 2\\pi)$, $x = \\frac{\\pi}{6}$ (Quadrant I) or $x = \\frac{5\\pi}{6}$ (Quadrant II).Branch 2: $\\sin x - 1 = 0 \\Rightarrow \\sin x = 1$. On $[0, 2\\pi)$, $x = \\frac{\\pi}{2}$.The complete solution set is $x \\in \\left\\{ \\frac{\\pi}{6}, \\frac{\\pi}{2}, \\frac{5\\pi}{6} \\right\\}$.",
+          "explanation": "Step 1: Factor the quadratic in $\\sin x$: $(2\\sin x - 1)(\\sin x - 1) = 0.$ Step 2: Solve each factor branch:Branch 1: $2\\sin x - 1 = 0 \\Rightarrow \\sin x = \\frac{1}{2}$. On $[0, 2\\pi)$, $x = \\frac{\\pi}{6}$ (Quadrant I) or $x = \\frac{5\\pi}{6}$ (Quadrant II).Branch 2: $\\sin x - 1 = 0 \\Rightarrow \\sin x = 1$. On $[0, 2\\pi)$, $x = \\frac{\\pi}{2}$.The complete solution set is $x \\in \\left\\{ \\frac{\\pi}{6}, \\frac{\\pi}{2}, \\frac{5\\pi}{6} \\right\\}$."
+        },
+        {
+          "q": "[Unit Circle & Trigonometric Identities · Practice 3] If the governing relation for this system is $g(t) = 5t + 5$, evaluate $g(8)$ and find the inverse input $t$ when $g(t) = 50$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Identities involving all three Pythagorean forms",
+          "cross_lesson": "8.02 Graphing Rational Functions",
+          "answer": "Substitute $t = 8$: $g(8) = 5(8) + 5 = \\mathbf{45}$. Setting $5t + 5 = 50$ gives $5t = 45 \\Rightarrow t = \\mathbf{9}$.",
+          "explanation": "Substitute $t = 8$: $g(8) = 5(8) + 5 = \\mathbf{45}$. Setting $5t + 5 = 50$ gives $5t = 45 \\Rightarrow t = \\mathbf{9}$.",
+          "figure": {
+            "type": "circle",
+            "center": [
+              0,
+              0
+            ],
+            "radius": 3.0,
+            "center_label": "$O$",
+            "radius_label": "$r = 3$",
+            "sector": {
+              "start_deg": 0,
+              "end_deg": 120,
+              "label": "$120^\\circ$"
+            },
+            "points": [
+              {
+                "angle": 0,
+                "label": "$A$"
+              },
+              {
+                "angle": 120,
+                "label": "$B$"
+              }
+            ],
+            "width": 215
+          }
+        },
+        {
+          "q": "Rotate the Cartesian axes to eliminate the cross-product term in $5x^2 - 4xy + 8y^2 = 36$. Find the angle of rotation $\\theta$, standard form in the rotated system $(x', y')$, and the lengths of the semi-major and semi-minor axes.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Simplifying more complex expressions",
+          "cross_lesson": "8.03 Introduction to Limits",
+          "answer": "Step 1: Determine the rotation angle $\\theta$: Here $A = 5$, $B = -4$, and $C = 8$. $\\cot(2\\theta) = \\frac{A - C}{B} = \\frac{5 - 8}{-4} = \\frac{-3}{-4} = \\frac{3}{4} > 0.$ Since $\\cot(2\\theta) = 3/4$, by right triangle trigonometry $\\cos(2\\theta) = \\frac{3}{5}$. Using half-angle formulas for $\\theta \\in (0, \\pi/4)$: $\\cos\\theta = \\sqrt{\\frac{1 + \\cos(2\\theta)}{2}} = \\sqrt{\\frac{1 + 3/5}{2}} = \\sqrt{\\frac{4}{5}} = \\frac{2}{\\sqrt{5}},$ $\\sin\\theta = \\sqrt{\\frac{1 - \\cos(2\\theta)}{2}} = \\sqrt{\\frac{1 - 3/5}{2}} = \\sqrt{\\frac{1}{5}} = \\frac{1}{\\sqrt{5}}.$ The angle is $\\theta = \\arctan(1/2) \\approx 26.57^\\circ$. Step 2: Transform to the rotated coordinate system: Substitute $x = \\frac{2x' - y'}{\\sqrt{5}}$ and $y = \\frac{x' + 2y'}{\\sqrt{5}}$ into $5x^2 - 4xy + 8y^2$: $5\\left(\\frac{4(x')^2 - 4x'y' + (y')^2}{5}\\right) - 4\\left(\\frac{2(x')^2 + 3x'y' - 2(y')^2}{5}\\right) + 8\\left(\\frac{(x')^2 + 4x'y' + 4(y')^2}{5}\\right) = 36.$ Combine coefficients:Coefficient of $(x')^2$: $4 - \\frac{8}{5} + \\frac{8}{5} = 4$.Coefficient of $x'y'$: $-4 - \\frac{12}{5} + \\frac{32}{5} = -4 + \\frac{20}{5} = 0$.Coefficient of $(y')^2$: $1 + \\frac{8}{5} + \\frac{32}{5} = 1 + 8 = 9$.The equation simplifies to $4(x')^2 + 9(y')^2 = 36 \\Rightarrow \\frac{(x')^2}{9} + \\frac{(y')^2}{4} = 1.$ Step 3: Extract invariants: This is an ellipse with semi-major axis $a = 3$ and semi-minor axis $b = 2$.",
+          "explanation": "Step 1: Determine the rotation angle $\\theta$: Here $A = 5$, $B = -4$, and $C = 8$. $\\cot(2\\theta) = \\frac{A - C}{B} = \\frac{5 - 8}{-4} = \\frac{-3}{-4} = \\frac{3}{4} > 0.$ Since $\\cot(2\\theta) = 3/4$, by right triangle trigonometry $\\cos(2\\theta) = \\frac{3}{5}$. Using half-angle formulas for $\\theta \\in (0, \\pi/4)$: $\\cos\\theta = \\sqrt{\\frac{1 + \\cos(2\\theta)}{2}} = \\sqrt{\\frac{1 + 3/5}{2}} = \\sqrt{\\frac{4}{5}} = \\frac{2}{\\sqrt{5}},$ $\\sin\\theta = \\sqrt{\\frac{1 - \\cos(2\\theta)}{2}} = \\sqrt{\\frac{1 - 3/5}{2}} = \\sqrt{\\frac{1}{5}} = \\frac{1}{\\sqrt{5}}.$ The angle is $\\theta = \\arctan(1/2) \\approx 26.57^\\circ$. Step 2: Transform to the rotated coordinate system: Substitute $x = \\frac{2x' - y'}{\\sqrt{5}}$ and $y = \\frac{x' + 2y'}{\\sqrt{5}}$ into $5x^2 - 4xy + 8y^2$: $5\\left(\\frac{4(x')^2 - 4x'y' + (y')^2}{5}\\right) - 4\\left(\\frac{2(x')^2 + 3x'y' - 2(y')^2}{5}\\right) + 8\\left(\\frac{(x')^2 + 4x'y' + 4(y')^2}{5}\\right) = 36.$ Combine coefficients:Coefficient of $(x')^2$: $4 - \\frac{8}{5} + \\frac{8}{5} = 4$.Coefficient of $x'y'$: $-4 - \\frac{12}{5} + \\frac{32}{5} = -4 + \\frac{20}{5} = 0$.Coefficient of $(y')^2$: $1 + \\frac{8}{5} + \\frac{32}{5} = 1 + 8 = 9$.The equation simplifies to $4(x')^2 + 9(y')^2 = 36 \\Rightarrow \\frac{(x')^2}{9} + \\frac{(y')^2}{4} = 1.$ Step 3: Extract invariants: This is an ellipse with semi-major axis $a = 3$ and semi-minor axis $b = 2$."
+        },
+        {
+          "q": "Prove by mathematical induction that for all integers $n \\geq 1$: $1 + 3 + 5 + \\dots + (2n - 1) = n^2.$",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Verifying identities with a common denominator strategy",
+          "cross_lesson": "9.01 Arithmetic Sequences and Series",
+          "answer": "1. Base Step ($n = 1$): $\\mathrm{LHS} = 2(1) - 1 = 1, \\qquad \\mathrm{RHS} = 1^2 = 1.$ Since $\\mathrm{LHS} = \\mathrm{RHS}$, the base case $P(1)$ is true. 2. Inductive Hypothesis: Assume $P(k)$ is true for some integer $k \\geq 1$: $1 + 3 + 5 + \\dots + (2k - 1) = k^2.$ 3. Inductive Step ($n = k + 1$): Show that $1 + \\dots + (2k - 1) + (2(k+1) - 1) = (k + 1)^2$: $\\mathrm{LHS} = [1 + 3 + \\dots + (2k - 1)] + (2k + 1).$ By the inductive hypothesis, substitute $k^2$: $= k^2 + (2k + 1) = k^2 + 2k + 1 = (k + 1)^2 = \\mathrm{RHS\\ for\\ } n = k + 1.$ Therefore, $P(k) \\Rightarrow P(k+1)$. By PMI, the identity holds for all integers $n \\geq 1$. $\\blacksquare$",
+          "explanation": "1. Base Step ($n = 1$): $\\mathrm{LHS} = 2(1) - 1 = 1, \\qquad \\mathrm{RHS} = 1^2 = 1.$ Since $\\mathrm{LHS} = \\mathrm{RHS}$, the base case $P(1)$ is true. 2. Inductive Hypothesis: Assume $P(k)$ is true for some integer $k \\geq 1$: $1 + 3 + 5 + \\dots + (2k - 1) = k^2.$ 3. Inductive Step ($n = k + 1$): Show that $1 + \\dots + (2k - 1) + (2(k+1) - 1) = (k + 1)^2$: $\\mathrm{LHS} = [1 + 3 + \\dots + (2k - 1)] + (2k + 1).$ By the inductive hypothesis, substitute $k^2$: $= k^2 + (2k + 1) = k^2 + 2k + 1 = (k + 1)^2 = \\mathrm{RHS\\ for\\ } n = k + 1.$ Therefore, $P(k) \\Rightarrow P(k+1)$. By PMI, the identity holds for all integers $n \\geq 1$. $\\blacksquare$"
+        },
+        {
+          "q": "Solve the logarithmic equation $\\log_2(x + 3) + \\log_2(x - 3) = 4$ for all real solutions $x$. State any extraneous roots.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Numeric identity verification (checking a specific angle)",
+          "cross_lesson": "9.02 Geometric Sequences and Series",
+          "answer": "Step 1: State domain restrictions: $x + 3 > 0 \\Rightarrow x > -3$ and $x - 3 > 0 \\Rightarrow x > 3$, so $x > 3$. Step 2: Combine logarithms: $\\log_2[(x + 3)(x - 3)] = 4 \\Rightarrow \\log_2(x^2 - 9) = 4.$ $x^2 - 9 = 2^4 = 16 \\Rightarrow x^2 = 25 \\Rightarrow x = \\pm 5.$ Step 3: Eliminate extraneous solutions: $x = -5$ violates $x > 3$ (producing negative arguments), so it is extraneous. The unique valid solution is $x = 5$.",
+          "explanation": "Step 1: State domain restrictions: $x + 3 > 0 \\Rightarrow x > -3$ and $x - 3 > 0 \\Rightarrow x > 3$, so $x > 3$. Step 2: Combine logarithms: $\\log_2[(x + 3)(x - 3)] = 4 \\Rightarrow \\log_2(x^2 - 9) = 4.$ $x^2 - 9 = 2^4 = 16 \\Rightarrow x^2 = 25 \\Rightarrow x = \\pm 5.$ Step 3: Eliminate extraneous solutions: $x = -5$ violates $x > 3$ (producing negative arguments), so it is extraneous. The unique valid solution is $x = 5$."
+        },
+        {
+          "q": "An infinite geometric series has common ratio $r = -0.4$ and converges to an infinite sum of $S_\\infty = 25$. Find the first term $a_1$, and compute the exact value of the partial sum $S_4$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Identities with squared expressions",
           "cross_lesson": "9.03 The Binomial Theorem",
-          "answer": "$(1-\\sin^2x)=\\cos^2x$ and $(1+\\tan^2x)=\\sec^2x=\\frac{1}{\\cos^2x}$. Product: $\\cos^2x\\cdot\\frac{1}{\\cos^2x}=1$.",
-          "explanation": "$(1-\\sin^2x)=\\cos^2x$ and $(1+\\tan^2x)=\\sec^2x=\\frac{1}{\\cos^2x}$. Product: $\\cos^2x\\cdot\\frac{1}{\\cos^2x}=1$."
+          "answer": "Use the infinite sum formula $S_\\infty = \\frac{a_1}{1 - r}$: $25 = \\frac{a_1}{1 - (-0.4)} = \\frac{a_1}{1.4} \\Rightarrow a_1 = 25 \\times 1.4 = 35.$ Compute the 4th partial sum $S_4 = \\frac{a_1(1 - r^4)}{1 - r}$: $(-0.4)^4 = 0.0256.$ $S_4 = \\frac{35(1 - 0.0256)}{1.4} = \\frac{35(0.9744)}{1.4} = 25 \\times 0.9744 = 24.36.$",
+          "explanation": "Use the infinite sum formula $S_\\infty = \\frac{a_1}{1 - r}$: $25 = \\frac{a_1}{1 - (-0.4)} = \\frac{a_1}{1.4} \\Rightarrow a_1 = 25 \\times 1.4 = 35.$ Compute the 4th partial sum $S_4 = \\frac{a_1(1 - r^4)}{1 - r}$: $(-0.4)^4 = 0.0256.$ $S_4 = \\frac{35(1 - 0.0256)}{1.4} = \\frac{35(0.9744)}{1.4} = 25 \\times 0.9744 = 24.36.$"
         }
       ]
     },
@@ -352,158 +342,158 @@
       "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
-          "q": "Simplify the expression $\\tan x \\cdot \\csc x$.",
+          "q": "Divide $f(x)=2x^{3}+5x^{2}+5x+2$ by $(x+1)$ using synthetic division. Find the quotient.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Reciprocal and Quotient Identities",
+          "target": "Using the Pythagorean identities",
           "choices": [
-            "$\\sec x$",
-            "$\\cos x$",
-            "$\\sin x$",
-            "$\\cot x$"
+            "$2x^{2}+3x+2$",
+            "$2x^{2}+3x-2$",
+            "$2x^{2}-3x+2$",
+            "$3x^{2}+3x+2$"
           ],
           "correct": 0,
-          "answer": "$\\tan x \\cdot \\csc x = \\frac{\\sin x}{\\cos x} \\cdot \\frac{1}{\\sin x} = \\frac{1}{\\cos x} = \\sec x$.",
-          "explanation": "$\\tan x \\cdot \\csc x = \\frac{\\sin x}{\\cos x} \\cdot \\frac{1}{\\sin x} = \\frac{1}{\\cos x} = \\sec x$."
+          "answer": "Synthetic division of $2x^{3}+5x^{2}+5x+2$ by $x+1$ gives quotient $2x^{2}+3x+2$ with remainder $0$.",
+          "explanation": "Synthetic division of $2x^{3}+5x^{2}+5x+2$ by $x+1$ gives quotient $2x^{2}+3x+2$ with remainder $0$."
         },
         {
-          "q": "Simplify $\\frac{\\cos x}{\\cot x}$.",
+          "q": "Consider the complex number $z = r(\\cos \\theta + i \\sin \\theta)$. If $z^3 = -8$ and $r > 0$, and the principal argument of $z$ is $\\frac{\\pi}{3}$, find the value of $r$.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Reciprocal and Quotient Identities",
+          "target": "Simplifying and verifying",
           "choices": [
-            "$\\sin x$",
-            "$\\cos^2 x$",
-            "$\\tan x$",
-            "$\\csc x$"
+            "2",
+            "4",
+            "8",
+            "16"
           ],
           "correct": 0,
-          "answer": "$\\frac{\\cos x}{\\cos x / \\sin x} = \\cos x \\cdot \\frac{\\sin x}{\\cos x} = \\sin x$.",
-          "explanation": "$\\frac{\\cos x}{\\cos x / \\sin x} = \\cos x \\cdot \\frac{\\sin x}{\\cos x} = \\sin x$."
+          "answer": "We are given the complex number $z = r(\\cos \\theta + i \\sin \\theta)$, where $r > 0$. We are also given that $z^3 = -8$ and the principal argument of $z$ is $\\theta = \\frac{\\pi}{3}$. Using De Moivre's Theorem, we have $z^3 = r^3 (\\cos(3\\theta) + i \\sin(3\\theta))$. We are given $z^3 = -8$, which can be written in polar form as $8(\\cos(\\pi + 2k\\pi) + i \\sin(\\pi + 2k\\pi))$ for any integer $k$. Equating the magnitudes, we get $r^3 = 8$. Since $r > 0$, we have $r = \\sqrt[3]{8} = 2$. Equating the arguments, we get $3\\theta = \\pi + 2k\\pi$. Given that the principal argument of $z$ is $\\theta = \\frac{\\pi}{3}$, we substitute this into the equation: $3 \\left( \\frac{\\pi}{3} \\right) = \\pi + 2k\\pi$ $\\pi = \\pi + 2k\\pi$ This implies $2k\\pi = 0$, so $k = 0$. This is consistent. Therefore, the value of $r$ is 2.",
+          "explanation": "We are given the complex number $z = r(\\cos \\theta + i \\sin \\theta)$, where $r > 0$. We are also given that $z^3 = -8$ and the principal argument of $z$ is $\\theta = \\frac{\\pi}{3}$. Using De Moivre's Theorem, we have $z^3 = r^3 (\\cos(3\\theta) + i \\sin(3\\theta))$. We are given $z^3 = -8$, which can be written in polar form as $8(\\cos(\\pi + 2k\\pi) + i \\sin(\\pi + 2k\\pi))$ for any integer $k$. Equating the magnitudes, we get $r^3 = 8$. Since $r > 0$, we have $r = \\sqrt[3]{8} = 2$. Equating the arguments, we get $3\\theta = \\pi + 2k\\pi$. Given that the principal argument of $z$ is $\\theta = \\frac{\\pi}{3}$, we substitute this into the equation: $3 \\left( \\frac{\\pi}{3} \\right) = \\pi + 2k\\pi$ $\\pi = \\pi + 2k\\pi$ This implies $2k\\pi = 0$, so $k = 0$. This is consistent. Therefore, the value of $r$ is 2."
         },
         {
-          "q": "If $\\sin\\theta = -3/5$ and $\\tan\\theta > 0$, find $\\cos\\theta$.",
+          "q": "Consider the exponential growth model described by the function $P(t) = P_0 e^{kt}$, where $P(t)$ is the population at time $t$, $P_0$ is the initial population, and $k$ is the growth constant. If the initial population $P_0$ is 500 and the population after 4 years is 2000, determine the value of the growth constant $k$ to three decimal places.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Reciprocal and Quotient Identities",
+          "target": "Quotient and reciprocal identities",
           "choices": [
-            "$-4/5$",
-            "$4/5$",
-            "$-3/4$",
-            "$5/4$"
+            "0.347",
+            "0.416",
+            "0.301",
+            "0.477"
           ],
           "correct": 0,
-          "answer": "$\\sin < 0$ and $\\tan > 0 \\Rightarrow$ Quadrant III. In QIII, $\\cos\\theta = -\\sqrt{1 - (-3/5)^2} = -\\sqrt{16/25} = -4/5$.",
-          "explanation": "$\\sin < 0$ and $\\tan > 0 \\Rightarrow$ Quadrant III. In QIII, $\\cos\\theta = -\\sqrt{1 - (-3/5)^2} = -\\sqrt{16/25} = -4/5$.",
+          "answer": "The population model is given by $P(t) = P_0 e^{kt}$. We are given that $P_0 = 500$. We are also given that $P(4) = 2000$. Substituting these values into the equation, we get: $2000 = 500 e^{k \\cdot 4}$ Divide both sides by 500: $4 = e^{4k}$ Take the natural logarithm of both sides: $\\ln(4) = \\ln(e^{4k})$ $\\ln(4) = 4k$ Solve for $k$: $k = \\frac{\\ln(4)}{4}$ Using a calculator, $\\ln(4) \\approx 1.38629$. $k \\approx \\frac{1.38629}{4}$ $k \\approx 0.34657$ Rounding to three decimal places, $k \\approx 0.347$.",
+          "explanation": "The population model is given by $P(t) = P_0 e^{kt}$. We are given that $P_0 = 500$. We are also given that $P(4) = 2000$. Substituting these values into the equation, we get: $2000 = 500 e^{k \\cdot 4}$ Divide both sides by 500: $4 = e^{4k}$ Take the natural logarithm of both sides: $\\ln(4) = \\ln(e^{4k})$ $\\ln(4) = 4k$ Solve for $k$: $k = \\frac{\\ln(4)}{4}$ Using a calculator, $\\ln(4) \\approx 1.38629$. $k \\approx \\frac{1.38629}{4}$ $k \\approx 0.34657$ Rounding to three decimal places, $k \\approx 0.347$.",
           "figure": {
             "type": "plot",
             "fns": [
-              "2*sin(x)",
+              "2.0*sin(1*x) + (-1)",
               "cos(x)"
             ],
             "xmin": -4,
             "xmax": 4,
-            "ymin": -3.5,
-            "ymax": 3.5,
+            "ymin": -4.5,
+            "ymax": 4.5,
             "point_labels": [
               {
                 "x": 1.57,
-                "y": 2.0,
-                "label": "$( \\frac{\\pi}{2}, 2 )$"
+                "y": 1.0,
+                "label": "$(1.57, 1)$"
               }
             ],
             "width": 230
           }
         },
         {
-          "q": "Which identity is directly derived by dividing $\\sin^2\\theta + \\cos^2\\theta = 1$ by $\\cos^2\\theta$?",
+          "q": "A complex number $z$ is represented in polar form as $z = r(\\cos(\\theta) + i\\sin(\\theta))$. If a complex number has a modulus $r=5$ and an argument $\\theta = \\frac{\\pi}{3}$, what is its rectangular form $a+bi$?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Pythagorean Identities",
+          "target": "More identity verifications",
           "choices": [
-            "$1 + \\tan^2\\theta = \\sec^2\\theta$",
-            "$1 + \\cot^2\\theta = \\csc^2\\theta$",
-            "$\\sin^2\\theta = 1 - \\cos^2\\theta$",
-            "$\\tan^2\\theta + \\cot^2\\theta = 1$"
+            "$\\frac{5}{2} + i\\frac{5\\sqrt{3}}{2}$",
+            "$5 + i5$",
+            "$\\frac{5\\sqrt{3}}{2} + i\\frac{5}{2}$",
+            "$5i$"
           ],
           "correct": 0,
-          "answer": "$\\frac{\\sin^2\\theta}{\\cos^2\\theta} + \\frac{\\cos^2\\theta}{\\cos^2\\theta} = \\frac{1}{\\cos^2\\theta} \\Rightarrow \\tan^2\\theta + 1 = \\sec^2\\theta$.",
-          "explanation": "$\\frac{\\sin^2\\theta}{\\cos^2\\theta} + \\frac{\\cos^2\\theta}{\\cos^2\\theta} = \\frac{1}{\\cos^2\\theta} \\Rightarrow \\tan^2\\theta + 1 = \\sec^2\\theta$."
+          "answer": "The rectangular form of a complex number given in polar form $z = r(\\cos(\\theta) + i\\sin(\\theta))$ is $a+bi$, where $a = r\\cos(\\theta)$ and $b = r\\sin(\\theta)$. Given $r=5$ and $\\theta = \\frac{\\pi}{3}$: $a = 5 \\cos(\\frac{\\pi}{3}) = 5 \\times \\frac{1}{2} = \\frac{5}{2}$ $b = 5 \\sin(\\frac{\\pi}{3}) = 5 \\times \\frac{\\sqrt{3}}{2} = \\frac{5\\sqrt{3}}{2}$ Therefore, the rectangular form is $\\frac{5}{2} + i\\frac{5\\sqrt{3}}{2}$.",
+          "explanation": "The rectangular form of a complex number given in polar form $z = r(\\cos(\\theta) + i\\sin(\\theta))$ is $a+bi$, where $a = r\\cos(\\theta)$ and $b = r\\sin(\\theta)$. Given $r=5$ and $\\theta = \\frac{\\pi}{3}$: $a = 5 \\cos(\\frac{\\pi}{3}) = 5 \\times \\frac{1}{2} = \\frac{5}{2}$ $b = 5 \\sin(\\frac{\\pi}{3}) = 5 \\times \\frac{\\sqrt{3}}{2} = \\frac{5\\sqrt{3}}{2}$ Therefore, the rectangular form is $\\frac{5}{2} + i\\frac{5\\sqrt{3}}{2}$."
         },
         {
-          "q": "Simplify $(\\sec\\theta - 1)(\\sec\\theta + 1)$.",
+          "q": "Find all real roots of $f(x)=x^{3}-4x^{2}-36x+144$.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Pythagorean Identities",
+          "target": "Identities with sums and products",
           "choices": [
-            "$\\tan^2\\theta$",
-            "$\\cot^2\\theta$",
-            "$\\cos^2\\theta$",
-            "$1$"
+            "x=-6",
+            "x=-6,4",
+            "x=-5,4,6",
+            "x=-6,4,6"
           ],
-          "correct": 0,
-          "answer": "Difference of squares: $\\sec^2\\theta - 1 = \\tan^2\\theta$.",
-          "explanation": "Difference of squares: $\\sec^2\\theta - 1 = \\tan^2\\theta$."
+          "correct": 3,
+          "answer": "Factoring: $f(x)=(x+6)(x-4)(x-6)\\Rightarrow x=-6,4,6$.",
+          "explanation": "Factoring: $f(x)=(x+6)(x-4)(x-6)\\Rightarrow x=-6,4,6$."
         },
         {
-          "q": "Simplify $\\frac{1 - \\cos^2 x}{\\sin x}$.",
+          "q": "Find the common difference of the arithmetic sequence: -1, -2, -3, -4, ...",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Pythagorean Identities",
+          "target": "Identities involving all three Pythagorean forms",
           "choices": [
-            "$\\sin x$",
-            "$\\cos x$",
-            "$\\csc x$",
-            "$1$"
+            "0",
+            "-2",
+            "1",
+            "-1"
           ],
-          "correct": 0,
-          "answer": "$\\frac{\\sin^2 x}{\\sin x} = \\sin x$.",
-          "explanation": "$\\frac{\\sin^2 x}{\\sin x} = \\sin x$."
+          "correct": 3,
+          "answer": "Subtracting consecutive terms: $-2-(-1)=-1$.",
+          "explanation": "Subtracting consecutive terms: $-2-(-1)=-1$."
         },
         {
-          "q": "Which trigonometric functions are even functions ($f(-\\theta) = f(\\theta)$)?",
+          "q": "Find the 4th term of the geometric sequence with $a_1=2$ and common ratio $r=2$.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Even/Odd Identities and Symmetry",
+          "target": "Simplifying more complex expressions",
           "choices": [
-            "$\\cos\\theta$ and $\\sec\\theta$",
-            "$\\sin\\theta$ and $\\csc\\theta$",
-            "$\\tan\\theta$ and $\\cot\\theta$",
-            "All six functions"
+            "$18$",
+            "$17$",
+            "$32$",
+            "$16$"
           ],
-          "correct": 0,
-          "answer": "Only cosine and its reciprocal secant are even: $\\cos(-\\theta) = \\cos\\theta$ and $\\sec(-\\theta) = \\sec\\theta$.",
-          "explanation": "Only cosine and its reciprocal secant are even: $\\cos(-\\theta) = \\cos\\theta$ and $\\sec(-\\theta) = \\sec\\theta$."
+          "correct": 3,
+          "answer": "$a_n=a_1r^{n-1}=2\\cdot(2)^{3}=16$.",
+          "explanation": "$a_n=a_1r^{n-1}=2\\cdot(2)^{3}=16$."
         },
         {
-          "q": "Simplify $\\sin(-\\theta) \\cdot \\cot(-\\theta)$.",
+          "q": "Let $(a_n)_{n \\geq 1}$ be an arithmetic sequence of real numbers with first term $a_1 > 0$ and non-zero common difference $d$. The terms $a_1$, $a_3$, and $a_4$ form the first three terms of a convergent geometric sequence $(g_k)_{k \\geq 1}$, such that $g_1 = a_1$, $g_2 = a_3$, and $g_3 = a_4$. Let $S_\\infty = \\sum_{k=1}^\\infty g_k$ denote the sum to infinity of the geometric sequence, and let $S_n = \\sum_{j=1}^n a_j$ denote the $n$-th partial sum of the arithmetic sequence. If $M = \\max_{n \\geq 1} S_n$ is the maximum value attained by the partial sums of the arithmetic sequence, what is the value of $\\frac{M}{S_\\infty}$?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Even/Odd Identities and Symmetry",
+          "target": "Verifying identities with a common denominator strategy",
           "choices": [
-            "$\\cos\\theta$",
-            "$-\\cos\\theta$",
-            "$\\sin\\theta$",
-            "$-\\sin\\theta$"
+            "$\\frac{5}{4}$",
+            "$\\frac{81}{64}$",
+            "$\\frac{9}{8}$",
+            "$\\frac{5}{8}$"
           ],
           "correct": 0,
-          "answer": "$\\sin(-\\theta) = -\\sin\\theta$ and $\\cot(-\\theta) = -\\cot\\theta$. Product $= (-\\sin\\theta)(-\\cot\\theta) = \\sin\\theta \\cdot \\frac{\\cos\\theta}{\\sin\\theta} = \\cos\\theta$.",
-          "explanation": "$\\sin(-\\theta) = -\\sin\\theta$ and $\\cot(-\\theta) = -\\cot\\theta$. Product $= (-\\sin\\theta)(-\\cot\\theta) = \\sin\\theta \\cdot \\frac{\\cos\\theta}{\\sin\\theta} = \\cos\\theta$.",
+          "answer": "1. **Determine the relation between $d$ and $a_1$:** The terms of the arithmetic sequence are $a_n = a_1 + (n - 1)d$. Therefore: $g_1 = a_1, \\quad g_2 = a_3 = a_1 + 2d, \\quad g_3 = a_4 = a_1 + 3d$ Since $g_1, g_2, g_3$ form a geometric progression, the geometric mean property requires: $g_2^2 = g_1 g_3 \\Rightarrow (a_1 + 2d)^2 = a_1(a_1 + 3d)$ Expanding both sides: $a_1^2 + 4a_1 d + 4d^2 = a_1^2 + 3a_1 d$ $a_1 d + 4d^2 = 0 \\Rightarrow d(a_1 + 4d) = 0$ Since $d e 0$, we have $a_1 + 4d = 0$, which gives: $d = -\\frac{1}{4}a_1$ 2. **Find the common ratio $r$ and sum to infinity $S_\\infty$:** The common ratio is: $r = \\frac{g_2}{g_1} = \\frac{a_1 + 2\\left(-\\frac{1}{4}a_1\\right)}{a_1} = \\frac{\\frac{1}{2}a_1}{a_1} = \\frac{1}{2}$ Because $|r| = \\frac{1}{2} 0$ - $a_2 = \\frac{3}{4}a_1 > 0$ - $a_3 = \\frac{1}{2}a_1 > 0$ - $a_4 = \\frac{1}{4}a_1 > 0$ - $a_5 = 0$ - $a_n < 0$ for all $n \\geq 6$ Since the terms are positive for $n \\leq 4$, zero at $n = 5$, and negative thereafter, the partial sum $S_n$ increases up to $n = 4$, remains unchanged at $n = 5$, and strictly decreases for $n \\geq 6$. Thus, the maximum integer partial sum occurs at $n = 4$ (or $n = 5$): $M = S_4 = a_1\\left(1 + \\frac{3}{4} + \\frac{1}{2} + \\frac{1}{4}\\right) = \\frac{5}{2}a_1$ 4. **Compute the ratio $\\frac{M}{S_\\infty}$:** $\\frac{M}{S_\\infty} = \\frac{\\frac{5}{2}a_1}{2a_1} = \\frac{5}{4}$ **Distractor Analysis:** - Choice B ($\\frac{81}{64}$) results from treating $n$ as a continuous real variable and evaluating the quadratic vertex at $n = 4.5$, yielding $S(4.5) = \\frac{81}{32}a_1$, ignoring that the number of terms $n$ must be an integer. - Choice C ($\\frac{9}{8}$) prematurely stops the sum at $n = 3$, giving $S_3 = \\frac{9}{4}a_1$. - Choice D ($\\frac{5}{8}$) misses the factor of $2$ in the numerator of the sum formula, computing $M = \\frac{5}{4}a_1$.",
+          "explanation": "1. **Determine the relation between $d$ and $a_1$:** The terms of the arithmetic sequence are $a_n = a_1 + (n - 1)d$. Therefore: $g_1 = a_1, \\quad g_2 = a_3 = a_1 + 2d, \\quad g_3 = a_4 = a_1 + 3d$ Since $g_1, g_2, g_3$ form a geometric progression, the geometric mean property requires: $g_2^2 = g_1 g_3 \\Rightarrow (a_1 + 2d)^2 = a_1(a_1 + 3d)$ Expanding both sides: $a_1^2 + 4a_1 d + 4d^2 = a_1^2 + 3a_1 d$ $a_1 d + 4d^2 = 0 \\Rightarrow d(a_1 + 4d) = 0$ Since $d e 0$, we have $a_1 + 4d = 0$, which gives: $d = -\\frac{1}{4}a_1$ 2. **Find the common ratio $r$ and sum to infinity $S_\\infty$:** The common ratio is: $r = \\frac{g_2}{g_1} = \\frac{a_1 + 2\\left(-\\frac{1}{4}a_1\\right)}{a_1} = \\frac{\\frac{1}{2}a_1}{a_1} = \\frac{1}{2}$ Because $|r| = \\frac{1}{2} 0$ - $a_2 = \\frac{3}{4}a_1 > 0$ - $a_3 = \\frac{1}{2}a_1 > 0$ - $a_4 = \\frac{1}{4}a_1 > 0$ - $a_5 = 0$ - $a_n < 0$ for all $n \\geq 6$ Since the terms are positive for $n \\leq 4$, zero at $n = 5$, and negative thereafter, the partial sum $S_n$ increases up to $n = 4$, remains unchanged at $n = 5$, and strictly decreases for $n \\geq 6$. Thus, the maximum integer partial sum occurs at $n = 4$ (or $n = 5$): $M = S_4 = a_1\\left(1 + \\frac{3}{4} + \\frac{1}{2} + \\frac{1}{4}\\right) = \\frac{5}{2}a_1$ 4. **Compute the ratio $\\frac{M}{S_\\infty}$:** $\\frac{M}{S_\\infty} = \\frac{\\frac{5}{2}a_1}{2a_1} = \\frac{5}{4}$ **Distractor Analysis:** - Choice B ($\\frac{81}{64}$) results from treating $n$ as a continuous real variable and evaluating the quadratic vertex at $n = 4.5$, yielding $S(4.5) = \\frac{81}{32}a_1$, ignoring that the number of terms $n$ must be an integer. - Choice C ($\\frac{9}{8}$) prematurely stops the sum at $n = 3$, giving $S_3 = \\frac{9}{4}a_1$. - Choice D ($\\frac{5}{8}$) misses the factor of $2$ in the numerator of the sum formula, computing $M = \\frac{5}{4}a_1$.",
           "figure": {
             "type": "plot",
             "fns": [
-              "3*sin(x)",
+              "2.5*sin(1*x) + (-1)",
               "cos(x)"
             ],
             "xmin": -4,
             "xmax": 4,
-            "ymin": -3.5,
-            "ymax": 3.5,
+            "ymin": -4.5,
+            "ymax": 4.5,
             "point_labels": [
               {
                 "x": 1.57,
-                "y": 3.0,
-                "label": "$( \\frac{\\pi}{2}, 3 )$"
+                "y": 1.5,
+                "label": "$(1.57, 1.5)$"
               }
             ],
             "width": 230
@@ -515,175 +505,178 @@
       "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
       "questions": [
         {
-          "q": "Simplify $\\frac{\\tan(-x)}{\\sin(-x)}$.",
+          "q": "Using a double-angle identity, evaluate $\\cos^2\\theta - \\sin^2\\theta$ when $\\theta = 15^\\circ$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Even/Odd Identities and Symmetry",
+          "target": "Numeric identity verification (checking a specific angle)",
           "choices": [
-            "$\\sec x$",
-            "$-\\sec x$",
-            "$\\cos x$",
-            "$-\\cos x$"
+            "-1",
+            "$-\\frac{\\sqrt{3}}{2}$",
+            "$\\frac{\\sqrt{2}}{2}$",
+            "$\\frac{\\sqrt{3}}{2}$"
           ],
-          "correct": 0,
-          "answer": "$\\frac{-\\tan x}{-\\sin x} = \\frac{\\tan x}{\\sin x} = \\frac{\\sin x / \\cos x}{\\sin x} = \\frac{1}{\\cos x} = \\sec x$.",
-          "explanation": "$\\frac{-\\tan x}{-\\sin x} = \\frac{\\tan x}{\\sin x} = \\frac{\\sin x / \\cos x}{\\sin x} = \\frac{1}{\\cos x} = \\sec x$."
+          "correct": 3,
+          "answer": "$\\cos^2\\theta - \\sin^2\\theta = \\cos(2\\theta)$; at $\\theta=15^\\circ$, $2\\theta = 30^\\circ$, so the value is $\\frac{\\sqrt{3}}{2}$.",
+          "explanation": "$\\cos^2\\theta - \\sin^2\\theta = \\cos(2\\theta)$; at $\\theta=15^\\circ$, $2\\theta = 30^\\circ$, so the value is $\\frac{\\sqrt{3}}{2}$."
         },
         {
-          "q": "Prove $\\frac{\\sin x}{1 + \\cos x} = \\frac{1 - \\cos x}{\\sin x}$. What technique verifies this algebraically?",
+          "q": "Find the center and radius of $(x+6)^2+(y-1)^2=25$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Verifying Identities Algebraically",
+          "target": "Identities with squared expressions",
           "choices": [
-            "Multiply numerator and denominator of the left side by the conjugate $(1 - \\cos x)$",
-            "Square both sides",
-            "Take the derivative",
-            "Cross multiply and set to 0"
-          ],
-          "correct": 0,
-          "answer": "$\\frac{\\sin x(1 - \\cos x)}{(1 + \\cos x)(1 - \\cos x)} = \\frac{\\sin x(1 - \\cos x)}{1 - \\cos^2 x} = \\frac{\\sin x(1 - \\cos x)}{\\sin^2 x} = \\frac{1 - \\cos x}{\\sin x}$.",
-          "explanation": "$\\frac{\\sin x(1 - \\cos x)}{(1 + \\cos x)(1 - \\cos x)} = \\frac{\\sin x(1 - \\cos x)}{1 - \\cos^2 x} = \\frac{\\sin x(1 - \\cos x)}{\\sin^2 x} = \\frac{1 - \\cos x}{\\sin x}$."
-        },
-        {
-          "q": "Simplify $\\frac{\\sec x - \\cos x}{\\sin x}$.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Verifying Identities Algebraically",
-          "choices": [
-            "$\\tan x$",
-            "$\\cot x$",
-            "$\\sec x$",
-            "$\\sin x$"
-          ],
-          "correct": 0,
-          "answer": "$\\frac{1/\\cos x - \\cos x}{\\sin x} = \\frac{(1 - \\cos^2 x)/\\cos x}{\\sin x} = \\frac{\\sin^2 x}{\\cos x \\sin x} = \\frac{\\sin x}{\\cos x} = \\tan x$.",
-          "explanation": "$\\frac{1/\\cos x - \\cos x}{\\sin x} = \\frac{(1 - \\cos^2 x)/\\cos x}{\\sin x} = \\frac{\\sin^2 x}{\\cos x \\sin x} = \\frac{\\sin x}{\\cos x} = \\tan x$."
-        },
-        {
-          "q": "Simplify $(1 + \\tan^2\\theta)(1 - \\sin^2\\theta)$.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Verifying Identities Algebraically",
-          "choices": [
-            "$1$",
-            "$\\sec^2\\theta$",
-            "$\\tan^2\\theta$",
-            "$\\cos^2\\theta$"
-          ],
-          "correct": 0,
-          "answer": "$(1 + \\tan^2\\theta) = \\sec^2\\theta$ and $(1 - \\sin^2\\theta) = \\cos^2\\theta$. Product $= \\sec^2\\theta \\cdot \\cos^2\\theta = 1$.",
-          "explanation": "$(1 + \\tan^2\\theta) = \\sec^2\\theta$ and $(1 - \\sin^2\\theta) = \\cos^2\\theta$. Product $= \\sec^2\\theta \\cdot \\cos^2\\theta = 1$."
-        },
-        {
-          "q": "If $\\cos\\theta=\\frac{77}{85}$ and $\\theta$ is in Quadrant I, find $\\sin\\theta$ using the Pythagorean identity.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Even/Odd Identities and Symmetry",
-          "choices": [
-            "$\\frac{77}{85}$",
-            "$\\frac{36}{85}$",
-            "$-\\frac{36}{85}$",
-            "$\\frac{89}{170}$"
+            "Center $(6, -1)$, radius 5",
+            "Center $(-6,1)$, radius 5",
+            "Center $(1,-6)$, radius 5",
+            "Center $(-6,1)$, radius 25"
           ],
           "correct": 1,
-          "answer": "$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\frac{5929}{7225}}=\\frac{36}{85}$.",
-          "explanation": "$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\frac{5929}{7225}}=\\frac{36}{85}$.",
+          "answer": "Standard form $(x-h)^2+(y-k)^2=r^2$ gives center $(h,k)=(-6,1)$ and $r^2=25$, so $r=5$.",
+          "explanation": "Standard form $(x-h)^2+(y-k)^2=r^2$ gives center $(h,k)=(-6,1)$ and $r^2=25$, so $r=5$.",
           "figure": {
-            "type": "triangle",
-            "vertices": [
-              [
-                0,
-                0
-              ],
-              [
-                15.0,
-                0
-              ],
-              [
-                0,
-                8.0
-              ]
-            ],
-            "labels": [
-              "$C$",
-              "$B$",
-              "$A$"
-            ],
-            "side_labels": [
-              "$15$",
-              "$17$",
-              "$8$"
-            ],
-            "right_angle_at": 0,
-            "angle_marks": [
-              {
-                "vertex": 1,
-                "label": "$\\theta$"
-              }
-            ],
-            "fill": true,
-            "width": 220
+            "type": "circle",
+            "center": "(-6, 1)",
+            "radius": 5.0,
+            "center_label": "$O$",
+            "radius_label": "$r = 5.0$",
+            "sector": null,
+            "chord": null,
+            "width": 210
           }
         },
         {
-          "q": "If $\\cos\\theta=\\frac{80}{89}$ and $\\theta$ is in Quadrant I, find $\\sin\\theta$ using the Pythagorean identity.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Verifying Identities Algebraically",
-          "choices": [
-            "$\\frac{80}{89}$",
-            "$-\\frac{39}{89}$",
-            "$\\frac{39}{89}$",
-            "$\\frac{479}{890}$"
-          ],
-          "correct": 2,
-          "answer": "$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\frac{6400}{7921}}=\\frac{39}{89}$.",
-          "explanation": "$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\frac{6400}{7921}}=\\frac{39}{89}$."
-        },
-        {
-          "q": "If $\\cos\\theta=\\frac{40}{41}$ and $\\theta$ is in Quadrant I, find $\\sin\\theta$ using the Pythagorean identity.",
+          "q": "Using complex numbers, find $\\cos^4\\theta$ as a sum of cosines.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Using the Pythagorean identities",
           "choices": [
-            "$\\frac{131}{410}$",
-            "$\\frac{40}{41}$",
-            "$\\frac{9}{41}$",
-            "$-\\frac{9}{41}$"
+            "$\\frac{3+4\\cos2\\theta+\\cos4\\theta}{8}$",
+            "$\\frac{1+\\cos4\\theta}{2}$",
+            "$3/8$",
+            "$\\cos4\\theta/8$"
           ],
-          "correct": 2,
-          "answer": "$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\frac{1600}{1681}}=\\frac{9}{41}$.",
-          "explanation": "$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\frac{1600}{1681}}=\\frac{9}{41}$."
+          "correct": 0,
+          "answer": "$\\cos^4\\theta=\\left(\\frac{e^{i\\theta}+e^{-i\\theta}}{2}\\right)^4$. Expand binomially.",
+          "explanation": "$\\cos^4\\theta=\\left(\\frac{e^{i\\theta}+e^{-i\\theta}}{2}\\right)^4$. Expand binomially."
         },
         {
-          "q": "If $\\cos\\theta=\\frac{21}{29}$ and $\\theta$ is in Quadrant I, find $\\sin\\theta$ using the Pythagorean identity.",
+          "q": "What is the center of the circle $(x-3)^2+(y+2)^2=16$?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Simplifying and verifying",
           "choices": [
-            "$-\\frac{20}{29}$",
-            "$\\frac{229}{290}$",
-            "$\\frac{20}{29}$",
-            "$\\frac{21}{29}$"
+            "(-3, 2)",
+            "(3, -2)",
+            "(3, 2)",
+            "(-2, 3)"
           ],
-          "correct": 2,
-          "answer": "$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\frac{441}{841}}=\\frac{20}{29}$.",
-          "explanation": "$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\frac{441}{841}}=\\frac{20}{29}$."
+          "correct": 1,
+          "answer": "Comparing to $(x-h)^2+(y-k)^2=r^2$: center $(h,k)=(3,-2)$.",
+          "explanation": "Comparing to $(x-h)^2+(y-k)^2=r^2$: center $(h,k)=(3,-2)$.",
+          "figure": {
+            "type": "circle",
+            "center": "(3, -2)",
+            "radius": 4.0,
+            "center_label": "$O$",
+            "radius_label": "$r = 4.0$",
+            "sector": null,
+            "chord": null,
+            "width": 210
+          }
         },
         {
-          "q": "If $\\cos\\theta=\\frac{12}{13}$ and $\\theta$ is in Quadrant I, find $\\sin\\theta$ using the Pythagorean identity.",
+          "q": "For $z=re^{i\\theta}$, express $\\mathrm{Re}(z^3)$ using triple angle formula.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Quotient and reciprocal identities",
           "choices": [
-            "$\\frac{63}{130}$",
-            "$\\frac{12}{13}$",
-            "$-\\frac{5}{13}$",
-            "$\\frac{5}{13}$"
+            "$r^3$",
+            "$3r^3\\cos\\theta$",
+            "$r^3\\cos3\\theta$",
+            "$r\\cos3\\theta$"
           ],
-          "correct": 3,
-          "answer": "$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\frac{144}{169}}=\\frac{5}{13}$.",
-          "explanation": "$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\frac{144}{169}}=\\frac{5}{13}$."
+          "correct": 2,
+          "answer": "$z^3=r^3e^{3i\\theta}$. $\\mathrm{Re}(z^3)=r^3\\cos3\\theta$.",
+          "explanation": "$z^3=r^3e^{3i\\theta}$. $\\mathrm{Re}(z^3)=r^3\\cos3\\theta$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "1.5*sin(3*x) + (1)",
+              "cos(x)"
+            ],
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4.5,
+            "ymax": 4.5,
+            "point_labels": [
+              {
+                "x": 0.52,
+                "y": 2.5,
+                "label": "$(0.52, 2.5)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Evaluate $\\sum_{k=1}^{n}\\cos k\\theta$ using complex exponentials.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "More identity verifications",
+          "choices": [
+            "$0$",
+            "$n\\cos\\theta$",
+            "$\\frac{\\sin(n\\theta/2)}{\\sin(\\theta/2)}\\cos\\frac{(n+1)\\theta}{2}$",
+            "$\\cos(n\\theta)$"
+          ],
+          "correct": 2,
+          "answer": "Geometric series of $e^{ik\\theta}$, take real part.",
+          "explanation": "Geometric series of $e^{ik\\theta}$, take real part."
+        },
+        {
+          "q": "State $\\cos 2\\theta$ in three equivalent forms.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Identities with sums and products",
+          "choices": [
+            "$\\cos^2\\theta-\\sin^2\\theta=2\\cos^2\\theta-1=1-2\\sin^2\\theta$",
+            "$\\cos\\theta+\\sin\\theta$",
+            "$2\\sin\\theta\\cos\\theta$",
+            "$\\cos^2\\theta$"
+          ],
+          "correct": 0,
+          "answer": "Three forms of double angle for cosine.",
+          "explanation": "Three forms of double angle for cosine."
+        },
+        {
+          "q": "A sequence is defined by the recurrence relation $a_{n+1} = a_n^2 - 2$ for $n \\geq 1$. If $a_1 = 2$, find the value of $a_{2023}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Identities involving all three Pythagorean forms",
+          "choices": [
+            "2",
+            "0",
+            "-2",
+            "1"
+          ],
+          "correct": 0,
+          "answer": "Let's compute the first few terms of the sequence: $a_1 = 2$ $a_2 = a_1^2 - 2 = 2^2 - 2 = 4 - 2 = 2$ $a_3 = a_2^2 - 2 = 2^2 - 2 = 4 - 2 = 2$ It appears that for $a_1 = 2$, all subsequent terms of the sequence are also 2. We can prove this by induction. Base case: For $n=1$, $a_1 = 2$, which is true. Inductive step: Assume that for some integer $k \\geq 1$, $a_k = 2$. We need to show that $a_{k+1} = 2$. From the recurrence relation, $a_{k+1} = a_k^2 - 2$. By the inductive hypothesis, $a_k = 2$. Substituting this into the relation: $a_{k+1} = 2^2 - 2 = 4 - 2 = 2$. Thus, by induction, $a_n = 2$ for all $n \\geq 1$. Therefore, $a_{2023} = 2$.",
+          "explanation": "Let's compute the first few terms of the sequence: $a_1 = 2$ $a_2 = a_1^2 - 2 = 2^2 - 2 = 4 - 2 = 2$ $a_3 = a_2^2 - 2 = 2^2 - 2 = 4 - 2 = 2$ It appears that for $a_1 = 2$, all subsequent terms of the sequence are also 2. We can prove this by induction. Base case: For $n=1$, $a_1 = 2$, which is true. Inductive step: Assume that for some integer $k \\geq 1$, $a_k = 2$. We need to show that $a_{k+1} = 2$. From the recurrence relation, $a_{k+1} = a_k^2 - 2$. By the inductive hypothesis, $a_k = 2$. Substituting this into the relation: $a_{k+1} = 2^2 - 2 = 4 - 2 = 2$. Thus, by induction, $a_n = 2$ for all $n \\geq 1$. Therefore, $a_{2023} = 2$."
+        },
+        {
+          "q": "A population of bacteria, initially $P_0$ cells, grows according to the logistic model $P(t) = \\frac{L}{1 + Ae^{-kt}}$, where $t$ is in hours, $L$ is the carrying capacity, and $A$ and $k$ are positive constants. At $t=0$, the population is $P(0) = \\frac{L}{3}$. After 2 hours, the population has doubled to $P(2) = \\frac{2L}{3}$. Find the exact value of $e^{2k}$ in terms of $L$ and $P_0$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Simplifying more complex expressions",
+          "choices": [
+            "$\\frac{9}{4}$",
+            "$\\frac{4}{9}$",
+            "$3$",
+            "$\\frac{3}{2}$"
+          ],
+          "correct": 0,
+          "answer": "The logistic model is given by $P(t) = \\frac{L}{1 + Ae^{-kt}}$. At $t=0$, $P(0) = \\frac{L}{3}$. Substituting into the model: $\\frac{L}{3} = \\frac{L}{1 + Ae^{-k \\cdot 0}}$ $\\frac{L}{3} = \\frac{L}{1 + A}$ $1 + A = 3$ $A = 2$. So the model becomes $P(t) = \\frac{L}{1 + 2e^{-kt}}$. We are also given that $P(2) = \\frac{2L}{3}$. Substituting into the model: $\\frac{2L}{3} = \\frac{L}{1 + 2e^{-2k}}$ $\\frac{2}{3} = \\frac{1}{1 + 2e^{-2k}}$ $2(1 + 2e^{-2k}) = 3$ $2 + 4e^{-2k} = 3$ $4e^{-2k} = 1$ $e^{-2k} = \\frac{1}{4}$. We need to find the value of $e^{2k}$. Since $e^{-2k} = \\frac{1}{e^{2k}}$, we have: $\\frac{1}{e^{2k}} = \\frac{1}{4}$ $e^{2k} = 4$.",
+          "explanation": "The logistic model is given by $P(t) = \\frac{L}{1 + Ae^{-kt}}$. At $t=0$, $P(0) = \\frac{L}{3}$. Substituting into the model: $\\frac{L}{3} = \\frac{L}{1 + Ae^{-k \\cdot 0}}$ $\\frac{L}{3} = \\frac{L}{1 + A}$ $1 + A = 3$ $A = 2$. So the model becomes $P(t) = \\frac{L}{1 + 2e^{-kt}}$. We are also given that $P(2) = \\frac{2L}{3}$. Substituting into the model: $\\frac{2L}{3} = \\frac{L}{1 + 2e^{-2k}}$ $\\frac{2}{3} = \\frac{1}{1 + 2e^{-2k}}$ $2(1 + 2e^{-2k}) = 3$ $2 + 4e^{-2k} = 3$ $4e^{-2k} = 1$ $e^{-2k} = \\frac{1}{4}$. We need to find the value of $e^{2k}$. Since $e^{-2k} = \\frac{1}{e^{2k}}$, we have: $\\frac{1}{e^{2k}} = \\frac{1}{4}$ $e^{2k} = 4$."
         }
       ]
     },
@@ -691,203 +684,131 @@
       "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
       "questions": [
         {
-          "q": "If $\\cos\\theta=\\frac{15}{17}$ and $\\theta$ is in Quadrant I, find $\\sin\\theta$ using the Pythagorean identity.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "More identity verifications",
-          "choices": [
-            "$\\frac{15}{17}$",
-            "$\\frac{97}{170}$",
-            "$\\frac{8}{17}$",
-            "$-\\frac{8}{17}$"
-          ],
-          "correct": 2,
-          "answer": "$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\frac{225}{289}}=\\frac{8}{17}$.",
-          "explanation": "$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\frac{225}{289}}=\\frac{8}{17}$.",
-          "cross_lesson": "9.01 Arithmetic Sequences and Series"
-        },
-        {
-          "q": "If $\\cos\\theta=\\frac{24}{25}$ and $\\theta$ is in Quadrant I, find $\\sin\\theta$ using the Pythagorean identity.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Identities with sums and products",
-          "choices": [
-            "$\\frac{24}{25}$",
-            "$\\frac{19}{50}$",
-            "$\\frac{7}{25}$",
-            "$-\\frac{7}{25}$"
-          ],
-          "correct": 2,
-          "answer": "$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\frac{576}{625}}=\\frac{7}{25}$.",
-          "explanation": "$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\frac{576}{625}}=\\frac{7}{25}$.",
-          "cross_lesson": "9.02 Geometric Sequences and Series",
-          "figure": {
-            "type": "triangle",
-            "vertices": [
-              [
-                0,
-                0
-              ],
-              [
-                12.0,
-                0
-              ],
-              [
-                0,
-                9.0
-              ]
-            ],
-            "labels": [
-              "$C$",
-              "$B$",
-              "$A$"
-            ],
-            "side_labels": [
-              "$12$",
-              "$15$",
-              "$9$"
-            ],
-            "right_angle_at": 0,
-            "angle_marks": [
-              {
-                "vertex": 1,
-                "label": "$\\theta$"
-              }
-            ],
-            "fill": true,
-            "width": 220
-          }
-        },
-        {
-          "q": "If $\\cos\\theta=\\frac{4}{5}$ and $\\theta$ is in Quadrant I, find $\\sin\\theta$ using the Pythagorean identity.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Identities involving all three Pythagorean forms",
-          "choices": [
-            "$\\frac{4}{5}$",
-            "$-\\frac{3}{5}$",
-            "$\\frac{3}{5}$",
-            "$\\frac{7}{10}$"
-          ],
-          "correct": 2,
-          "answer": "$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\frac{16}{25}}=\\frac{3}{5}$.",
-          "explanation": "$\\sin\\theta=\\sqrt{1-\\cos^2\\theta}=\\sqrt{1-\\frac{16}{25}}=\\frac{3}{5}$.",
-          "cross_lesson": "9.03 The Binomial Theorem"
-        },
-        {
-          "q": "If $\\sin\\theta=\\frac{33}{65}$, find $\\cos^2\\theta$ using the Pythagorean identity.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Simplifying more complex expressions",
-          "choices": [
-            "$\\frac{1089}{4225}$",
-            "$\\frac{56}{65}$",
-            "$\\frac{3136}{4225}$",
-            "$\\frac{7117}{8450}$"
-          ],
-          "correct": 2,
-          "answer": "$\\cos^2\\theta=1-\\sin^2\\theta=1-\\frac{1089}{4225}=\\frac{3136}{4225}$.",
-          "explanation": "$\\cos^2\\theta=1-\\sin^2\\theta=1-\\frac{1089}{4225}=\\frac{3136}{4225}$.",
-          "cross_lesson": "1.01 Functions and Function Notation"
-        },
-        {
-          "q": "If $\\sin\\theta=\\frac{48}{73}$, find $\\cos^2\\theta$ using the Pythagorean identity.",
+          "q": "Consider the exponential function $f(x) = 2^x$. If $f(a) = 8$, what is the value of $a$?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Verifying identities with a common denominator strategy",
           "choices": [
-            "$\\frac{3025}{5329}$",
-            "$\\frac{2304}{5329}$",
-            "$\\frac{55}{73}$",
-            "$\\frac{35579}{53290}$"
+            "1",
+            "2",
+            "3",
+            "4"
           ],
-          "correct": 0,
-          "answer": "$\\cos^2\\theta=1-\\sin^2\\theta=1-\\frac{2304}{5329}=\\frac{3025}{5329}$.",
-          "explanation": "$\\cos^2\\theta=1-\\sin^2\\theta=1-\\frac{2304}{5329}=\\frac{3025}{5329}$.",
-          "cross_lesson": "1.02 Domain and Range"
+          "correct": 2,
+          "answer": "The given function is $f(x) = 2^x$. We are given that $f(a) = 8$. Substituting $a$ into the function, we get $2^a = 8$. To solve for $a$, we need to express 8 as a power of 2. Since $2^3 = 2 \\times 2 \\times 2 = 8$, we can rewrite the equation as $2^a = 2^3$. Since the bases are equal, the exponents must be equal. Therefore, $a = 3$.",
+          "explanation": "The given function is $f(x) = 2^x$. We are given that $f(a) = 8$. Substituting $a$ into the function, we get $2^a = 8$. To solve for $a$, we need to express 8 as a power of 2. Since $2^3 = 2 \\times 2 \\times 2 = 8$, we can rewrite the equation as $2^a = 2^3$. Since the bases are equal, the exponents must be equal. Therefore, $a = 3$.",
+          "cross_lesson": "9.01 Arithmetic Sequences and Series"
         },
         {
-          "q": "If $\\sin\\theta=\\frac{36}{85}$, find $\\cos^2\\theta$ using the Pythagorean identity.",
+          "q": "Consider the exponential function $f(x) = 2^x$. What is the value of $f(3)$?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Numeric identity verification (checking a specific angle)",
           "choices": [
-            "$\\frac{5929}{7225}$",
-            "$\\frac{1296}{7225}$",
-            "$\\frac{77}{85}$",
-            "$\\frac{13303}{14450}$"
+            "6",
+            "8",
+            "9",
+            "5"
           ],
-          "correct": 0,
-          "answer": "$\\cos^2\\theta=1-\\sin^2\\theta=1-\\frac{1296}{7225}=\\frac{5929}{7225}$.",
-          "explanation": "$\\cos^2\\theta=1-\\sin^2\\theta=1-\\frac{1296}{7225}=\\frac{5929}{7225}$.",
-          "cross_lesson": "1.03 Average Rate of Change",
-          "figure": {
-            "type": "triangle",
-            "vertices": [
-              [
-                0,
-                0
-              ],
-              [
-                15.0,
-                0
-              ],
-              [
-                0,
-                8.0
-              ]
-            ],
-            "labels": [
-              "$C$",
-              "$B$",
-              "$A$"
-            ],
-            "side_labels": [
-              "$15$",
-              "$17$",
-              "$8$"
-            ],
-            "right_angle_at": 0,
-            "angle_marks": [
-              {
-                "vertex": 1,
-                "label": "$\\theta$"
-              }
-            ],
-            "fill": true,
-            "width": 220
-          }
+          "correct": 1,
+          "answer": "The function is given by $f(x) = 2^x$. To find $f(3)$, we substitute $x = 3$ into the function: $f(3) = 2^3$. Calculating the power, $2^3 = 2 \\times 2 \\times 2 = 8$. Therefore, the value of $f(3)$ is 8.",
+          "explanation": "The function is given by $f(x) = 2^x$. To find $f(3)$, we substitute $x = 3$ into the function: $f(3) = 2^3$. Calculating the power, $2^3 = 2 \\times 2 \\times 2 = 8$. Therefore, the value of $f(3)$ is 8.",
+          "cross_lesson": "9.02 Geometric Sequences and Series"
         },
         {
-          "q": "If $\\sin\\theta=\\frac{39}{89}$, find $\\cos^2\\theta$ using the Pythagorean identity.",
+          "q": "Find the vector projection of $\\mathbf{u}=\\langle3,4\\rangle$ onto $\\mathbf{v}=\\langle2,0\\rangle$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Identities with squared expressions",
           "choices": [
-            "$\\frac{1521}{7921}$",
-            "$\\frac{80}{89}$",
-            "$\\frac{6400}{7921}$",
-            "$\\frac{71921}{79210}$"
+            "$\\langle0,3\\rangle$",
+            "$\\langle4,0\\rangle$",
+            "$\\langle3,0\\rangle$",
+            "$\\langle3,4\\rangle$"
           ],
           "correct": 2,
-          "answer": "$\\cos^2\\theta=1-\\sin^2\\theta=1-\\frac{1521}{7921}=\\frac{6400}{7921}$.",
-          "explanation": "$\\cos^2\\theta=1-\\sin^2\\theta=1-\\frac{1521}{7921}=\\frac{6400}{7921}$.",
+          "answer": "$\\mathrm{proj}_{\\mathbf{v}}\\mathbf{u}=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\mathbf{v}\\cdot\\mathbf{v}}\\mathbf{v}=\\frac{3}{2}\\,\\langle2,0\\rangle=\\langle3,0\\rangle$.",
+          "explanation": "$\\mathrm{proj}_{\\mathbf{v}}\\mathbf{u}=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\mathbf{v}\\cdot\\mathbf{v}}\\mathbf{v}=\\frac{3}{2}\\,\\langle2,0\\rangle=\\langle3,0\\rangle$.",
+          "cross_lesson": "9.03 The Binomial Theorem"
+        },
+        {
+          "q": "For $f(x)=\\frac{x^2-25}{x-5}$ when $x eq 5$, and $f(5)=k$, find $k$ so that $f$ is continuous at $x=5$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Using the Pythagorean identities",
+          "choices": [
+            "10",
+            "5",
+            "9",
+            "11"
+          ],
+          "correct": 0,
+          "answer": "$\\lim_{x\\rightarrow 5}f(x)=\\lim_{x\\rightarrow 5}(x+5)=10$ (after canceling $x-5$). For continuity, $k$ must equal this limit: $k=10$.",
+          "explanation": "$\\lim_{x\\rightarrow 5}f(x)=\\lim_{x\\rightarrow 5}(x+5)=10$ (after canceling $x-5$). For continuity, $k$ must equal this limit: $k=10$.",
+          "cross_lesson": "1.01 Functions and Function Notation"
+        },
+        {
+          "q": "The arithmetic sequence with $a_1=3$ and $d=4$ has $a_n=99$. Find $n$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Simplifying and verifying",
+          "choices": [
+            "25",
+            "99",
+            "26",
+            "24"
+          ],
+          "correct": 0,
+          "answer": "Applying Sequences principles, $3+(n-1)(4)=99\\Rightarrow n=25$. Therefore, the verified correct option is 25.",
+          "explanation": "Applying Sequences principles, $3+(n-1)(4)=99\\Rightarrow n=25$. Therefore, the verified correct option is 25.",
+          "cross_lesson": "1.02 Domain and Range"
+        },
+        {
+          "q": "Solve for the larger value of $x$: $2^{2x}-10\\cdot2^{x}+16=0$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Quotient and reciprocal identities",
+          "choices": [
+            "5",
+            "3",
+            "1",
+            "4"
+          ],
+          "correct": 1,
+          "answer": "Let $u=2^x$: $u^2-10u+16=0\\Rightarrow(u-2^{1})(u-2^{3})=0\\Rightarrow x=1\\mathrm{\\ or\\ }3$. Larger: $x=3$.",
+          "explanation": "Let $u=2^x$: $u^2-10u+16=0\\Rightarrow(u-2^{1})(u-2^{3})=0\\Rightarrow x=1\\mathrm{\\ or\\ }3$. Larger: $x=3$.",
+          "cross_lesson": "1.03 Average Rate of Change"
+        },
+        {
+          "q": "For the parabola $y^2=-20x$, find the vertex, focus, and directrix.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "More identity verifications",
+          "choices": [
+            "Vertex $(0,0)$, focus $(-5,0)$, directrix $x=5$",
+            "Vertex $(0,0)$, focus $(-10,0)$, directrix $x=10$",
+            "Vertex $(0,0)$, focus $(0,-5)$, directrix $y=5$",
+            "Vertex $(-5,0)$, focus $(0,0)$, directrix $x=-5$"
+          ],
+          "correct": 0,
+          "answer": "Comparing $y^2=4px$ to $y^2=-20x$: $4p=-20$, so $p=-5$. Vertex $(0,0)$, focus $(-5,0)$, directrix $x=5$.",
+          "explanation": "Comparing $y^2=4px$ to $y^2=-20x$: $4p=-20$, so $p=-5$. Vertex $(0,0)$, focus $(-5,0)$, directrix $x=5$.",
           "cross_lesson": "2.01 Right-Triangle Trigonometry"
         },
         {
-          "q": "If $\\sin\\theta=\\frac{11}{61}$, find $\\cos^2\\theta$ using the Pythagorean identity.",
+          "q": "Find the $10$th term of the arithmetic sequence with $a_1=3$ and $d=4$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Reciprocal and Quotient Identities",
+          "target": "Identities with sums and products",
           "choices": [
-            "$\\frac{121}{3721}$",
-            "$\\frac{39721}{37210}$",
-            "$\\frac{3600}{3721}$",
-            "$\\frac{60}{61}$"
+            "36",
+            "35",
+            "39",
+            "43"
           ],
           "correct": 2,
-          "answer": "$\\cos^2\\theta=1-\\sin^2\\theta=1-\\frac{121}{3721}=\\frac{3600}{3721}$.",
-          "explanation": "$\\cos^2\\theta=1-\\sin^2\\theta=1-\\frac{121}{3721}=\\frac{3600}{3721}$.",
+          "answer": "Applying Sequences principles, $a_{10}=3+(10-1)(4)=39$. Therefore, the verified correct option is 39.",
+          "explanation": "Applying Sequences principles, $a_{10}=3+(10-1)(4)=39$. Therefore, the verified correct option is 39.",
           "cross_lesson": "2.02 Radian Measure and Arc Length"
         }
       ]

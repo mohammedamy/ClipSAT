@@ -9,98 +9,87 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "A weighted graph has edges (with weights) $1\\mathrm{-}2(1), 2\\mathrm{-}3(6), 3\\mathrm{-}4(5), 4\\mathrm{-}5(7), 1\\mathrm{-}5(8), 2\\mathrm{-}5(2), 1\\mathrm{-}3(9)$. Find the total weight of the minimum spanning tree.",
+          "q": "Variables $x$ and $y$ satisfy $y = a x^b$. A graph of $\\ln y$ against $\\ln x$ is a straight line passing through $(0, 1.20)$ and $(4, 6.80)$. Find the values of the constants $a$ and $b$ to 3 significant figures.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
-          "target": "Degrees and the Handshaking Lemma",
-          "answer": "Final Answer: 14. $\\mathrm{Applying\\ Kruskal's\\ algorithm\\ (adding\\ edges\\ in\\ increasing\\ weight\\ order,\\ skipping\\ cycles)\\ gives\\ a\\ minimum\\ spanning\\ tree\\ of\\ total\\ weight\\ }14.$",
-          "explanation": "$\\mathrm{Applying\\ Kruskal's\\ algorithm\\ (adding\\ edges\\ in\\ increasing\\ weight\\ order,\\ skipping\\ cycles)\\ gives\\ a\\ minimum\\ spanning\\ tree\\ of\\ total\\ weight\\ }14.$"
+          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+          "answer": "Take natural logarithms of $y = a x^b$: $\\ln y = \\ln a + b\\ln x$ This is a linear equation $Y = mX + c$ with $Y = \\ln y$, $X = \\ln x$, gradient $m = b$, and intercept $c = \\ln a$. Gradient: $b = \\frac{6.80 - 1.20}{4 - 0} = \\frac{5.60}{4} = 1.40$ Vertical intercept gives $\\ln a = 1.20$: $a = e^{1.20} \\approx 3.32$ Therefore, $a = 3.32$ and $b = 1.40$.",
+          "explanation": "Take natural logarithms of $y = a x^b$: $\\ln y = \\ln a + b\\ln x$ This is a linear equation $Y = mX + c$ with $Y = \\ln y$, $X = \\ln x$, gradient $m = b$, and intercept $c = \\ln a$. Gradient: $b = \\frac{6.80 - 1.20}{4 - 0} = \\frac{5.60}{4} = 1.40$ Vertical intercept gives $\\ln a = 1.20$: $a = e^{1.20} \\approx 3.32$ Therefore, $a = 3.32$ and $b = 1.40$."
         },
         {
-          "q": "A weighted graph has edges (with weights) $1\\mathrm{-}2(9), 2\\mathrm{-}3(5), 3\\mathrm{-}4(7), 4\\mathrm{-}5(2), 1\\mathrm{-}5(3), 2\\mathrm{-}5(4), 1\\mathrm{-}3(8)$. Find the total weight of the minimum spanning tree.",
+          "q": "Given $\\ln y = 2\\ln x + \\ln 3$, express $y$ in terms of $x$. Hence sketch the graph.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
-          "target": "Eulerian and Hamiltonian Paths and Circuits",
-          "answer": "Final Answer: 14. $\\mathrm{Applying\\ Kruskal's\\ algorithm\\ (adding\\ edges\\ in\\ increasing\\ weight\\ order,\\ skipping\\ cycles)\\ gives\\ a\\ minimum\\ spanning\\ tree\\ of\\ total\\ weight\\ }14.$",
-          "explanation": "$\\mathrm{Applying\\ Kruskal's\\ algorithm\\ (adding\\ edges\\ in\\ increasing\\ weight\\ order,\\ skipping\\ cycles)\\ gives\\ a\\ minimum\\ spanning\\ tree\\ of\\ total\\ weight\\ }14.$",
+          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+          "answer": "$\\ln y=\\ln x^2+\\ln 3=\\ln(3x^2)\\Rightarrow y=3x^2$. Parabola through origin, scaled by 3.",
+          "explanation": "$\\ln y=\\ln x^2+\\ln 3=\\ln(3x^2)\\Rightarrow y=3x^2$. Parabola through origin, scaled by 3.",
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (0))**2 + (-1)",
-              "0.5*x + 1"
+              "2**(0.4*x) + (-1)",
+              "log(x - (-2)) + 0.5"
             ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
+            "xmin": -1.9,
+            "xmax": 4.5,
+            "ymin": -2.5,
+            "ymax": 7.0,
+            "asymptotes": {
+              "x": [
+                -2.0
+              ],
+              "y": [
+                -1.0
+              ]
+            },
             "point_labels": [
               {
                 "x": 0.0,
-                "y": -1.0,
-                "label": "$(0,-1)$"
+                "y": 0.0,
+                "label": "$(0, 0)$"
               }
             ],
             "width": 230
           }
         },
         {
-          "q": "A weighted graph has edges (with weights) $1\\mathrm{-}2(8), 2\\mathrm{-}3(6), 3\\mathrm{-}4(3), 4\\mathrm{-}5(1), 1\\mathrm{-}5(4), 2\\mathrm{-}5(7), 1\\mathrm{-}3(9)$. Find the total weight of the minimum spanning tree.",
+          "q": "A student calculates $\\int_1^3 \\frac{4}{2x+1}\\,dx$ by rounding $\\ln 7 \\approx 1.95$ and $\\ln 3 \\approx 1.10$ at the start, obtaining $2(1.95 - 1.10) = 1.70$. State the exact value of the integral and calculate the absolute error introduced by premature rounding.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
-          "target": "Minimum Spanning Trees (Kruskal & Prim)",
-          "answer": "Final Answer: 14. $\\mathrm{Applying\\ Kruskal's\\ algorithm\\ (adding\\ edges\\ in\\ increasing\\ weight\\ order,\\ skipping\\ cycles)\\ gives\\ a\\ minimum\\ spanning\\ tree\\ of\\ total\\ weight\\ }14.$",
-          "explanation": "$\\mathrm{Applying\\ Kruskal's\\ algorithm\\ (adding\\ edges\\ in\\ increasing\\ weight\\ order,\\ skipping\\ cycles)\\ gives\\ a\\ minimum\\ spanning\\ tree\\ of\\ total\\ weight\\ }14.$"
+          "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+          "answer": "Integrate exactly: $\\int_1^3 \\frac{4}{2x+1}\\,dx = [2\\ln(2x+1)]_1^3 = 2\\ln 7 - 2\\ln 3 = 2\\ln\\left(\\frac{7}{3}\\right) \\approx 1.6946\\dots$ The exact value is $2\\ln\\left(\\frac{7}{3}\\right)$. The premature rounding gives $1.70$, yielding an absolute error of: $|1.70 - 1.6946| \\approx 0.0054$ On Cambridge Paper 3, this premature rounding costs the final accuracy mark (A1) because the 3 s.f. answer is 1.69, not 1.70.",
+          "explanation": "Integrate exactly: $\\int_1^3 \\frac{4}{2x+1}\\,dx = [2\\ln(2x+1)]_1^3 = 2\\ln 7 - 2\\ln 3 = 2\\ln\\left(\\frac{7}{3}\\right) \\approx 1.6946\\dots$ The exact value is $2\\ln\\left(\\frac{7}{3}\\right)$. The premature rounding gives $1.70$, yielding an absolute error of: $|1.70 - 1.6946| \\approx 0.0054$ On Cambridge Paper 3, this premature rounding costs the final accuracy mark (A1) because the 3 s.f. answer is 1.69, not 1.70."
         },
         {
-          "q": "A weighted graph has edges (with weights) $1\\mathrm{-}2(3), 2\\mathrm{-}3(1), 3\\mathrm{-}4(2), 4\\mathrm{-}5(4), 1\\mathrm{-}5(5), 2\\mathrm{-}5(6), 1\\mathrm{-}3(9)$. Find the total weight of the minimum spanning tree.",
+          "q": "Level 2 · Medium Use the method of cylindrical shells to find the volume generated by revolving the region bounded by $y = 3x - x^2$ and $y = 0$ about the $y$-axis.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
-          "target": "Shortest Paths and Dijkstra's Algorithm",
-          "answer": "Final Answer: 10. $\\mathrm{Applying\\ Kruskal's\\ algorithm\\ (adding\\ edges\\ in\\ increasing\\ weight\\ order,\\ skipping\\ cycles)\\ gives\\ a\\ minimum\\ spanning\\ tree\\ of\\ total\\ weight\\ }10.$",
-          "explanation": "$\\mathrm{Applying\\ Kruskal's\\ algorithm\\ (adding\\ edges\\ in\\ increasing\\ weight\\ order,\\ skipping\\ cycles)\\ gives\\ a\\ minimum\\ spanning\\ tree\\ of\\ total\\ weight\\ }10.$"
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+          "answer": "Find intersections with $y = 0$: $3x - x^2 = 0 \\Rightarrow x(3 - x) = 0$, so $a = 0$ and $b = 3$. Revolving about $y$-axis: shell radius $r(x) = x$, shell height $h(x) = 3x - x^2$. $V = 2\\pi \\int_0^3 x(3x - x^2)\\,dx = 2\\pi \\int_0^3 (3x^2 - x^3)\\,dx = 2\\pi \\left[ x^3 - \\frac{x^4}{4} \\right]_0^3$ $= 2\\pi \\left( 27 - \\frac{81}{4} \\right) = 2\\pi \\left( \\frac{27}{4} \\right) = \\frac{27\\pi}{2}$",
+          "explanation": "Find intersections with $y = 0$: $3x - x^2 = 0 \\Rightarrow x(3 - x) = 0$, so $a = 0$ and $b = 3$. Revolving about $y$-axis: shell radius $r(x) = x$, shell height $h(x) = 3x - x^2$. $V = 2\\pi \\int_0^3 x(3x - x^2)\\,dx = 2\\pi \\int_0^3 (3x^2 - x^3)\\,dx = 2\\pi \\left[ x^3 - \\frac{x^4}{4} \\right]_0^3$ $= 2\\pi \\left( 27 - \\frac{81}{4} \\right) = 2\\pi \\left( \\frac{27}{4} \\right) = \\frac{27\\pi}{2}$"
         },
         {
-          "q": "A weighted graph has edges (with weights) $1\\mathrm{-}2(1), 2\\mathrm{-}3(6), 3\\mathrm{-}4(3), 4\\mathrm{-}5(2), 1\\mathrm{-}5(4), 2\\mathrm{-}5(5), 1\\mathrm{-}3(8)$. Find the total weight of the minimum spanning tree.",
+          "q": "Find the vertex, focus, and directrix of the parabola given by the general equation $y^2 + 8x - 4y + 28 = 0$.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
-          "target": "Degrees and the Handshaking Lemma",
-          "answer": "Final Answer: 10. $\\mathrm{Applying\\ Kruskal's\\ algorithm\\ (adding\\ edges\\ in\\ increasing\\ weight\\ order,\\ skipping\\ cycles)\\ gives\\ a\\ minimum\\ spanning\\ tree\\ of\\ total\\ weight\\ }10.$",
-          "explanation": "$\\mathrm{Applying\\ Kruskal's\\ algorithm\\ (adding\\ edges\\ in\\ increasing\\ weight\\ order,\\ skipping\\ cycles)\\ gives\\ a\\ minimum\\ spanning\\ tree\\ of\\ total\\ weight\\ }10.$"
+          "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+          "answer": "Complete the square on the $y$-terms: $y^2 - 4y = -8x - 28 \\Rightarrow (y^2 - 4y + 4) = -8x - 28 + 4.$ $(y - 2)^2 = -8x - 24 = -8(x + 3).$ This matches $(y - k)^2 = 4p(x - h)$ with:Vertex: $(h, k) = (-3, 2)$Focal parameter: $4p = -8 \\Rightarrow p = -2$ (opens horizontally to the left)Focus: $(h + p, k) = (-3 + (-2), 2) = (-5, 2)$Directrix: $x = h - p = -3 - (-2) \\Rightarrow x = -1$",
+          "explanation": "Complete the square on the $y$-terms: $y^2 - 4y = -8x - 28 \\Rightarrow (y^2 - 4y + 4) = -8x - 28 + 4.$ $(y - 2)^2 = -8x - 24 = -8(x + 3).$ This matches $(y - k)^2 = 4p(x - h)$ with:Vertex: $(h, k) = (-3, 2)$Focal parameter: $4p = -8 \\Rightarrow p = -2$ (opens horizontally to the left)Focus: $(h + p, k) = (-3 + (-2), 2) = (-5, 2)$Directrix: $x = h - p = -3 - (-2) \\Rightarrow x = -1$"
         },
         {
-          "q": "A weighted graph has edges (with weights) $1\\mathrm{-}2(1), 2\\mathrm{-}3(4), 3\\mathrm{-}4(3), 4\\mathrm{-}5(5), 1\\mathrm{-}5(6), 2\\mathrm{-}5(7), 1\\mathrm{-}3(8)$. Find the total weight of the minimum spanning tree.",
+          "q": "A 3 kg particle on a rough surface, $\\mu=0.4$. Horizontal force $F$ N. (a) Find the limiting friction. (b) Acceleration when $F=20$ N. (c) Time to travel 5 m from rest.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
-          "target": "Eulerian and Hamiltonian Paths and Circuits",
-          "answer": "Final Answer: 13. $\\mathrm{Applying\\ Kruskal's\\ algorithm\\ (adding\\ edges\\ in\\ increasing\\ weight\\ order,\\ skipping\\ cycles)\\ gives\\ a\\ minimum\\ spanning\\ tree\\ of\\ total\\ weight\\ }13.$",
-          "explanation": "$\\mathrm{Applying\\ Kruskal's\\ algorithm\\ (adding\\ edges\\ in\\ increasing\\ weight\\ order,\\ skipping\\ cycles)\\ gives\\ a\\ minimum\\ spanning\\ tree\\ of\\ total\\ weight\\ }13.$",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (1))**2 + (-1)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 1.0,
-                "y": -1.0,
-                "label": "$(1,-1)$"
-              }
-            ],
-            "width": 230
-          }
+          "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+          "answer": "(a) $F_f=0.4\\times3\\times9.8=11.76\\mathrm{\\ N}$. (b) $a=\\frac{20-11.76}{3}\\approx2.75\\mathrm{\\ m\\ s}^{-2}$. (c) $t=\\sqrt{10/2.75}\\approx1.91\\mathrm{\\ s}$. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.",
+          "explanation": "(a) $F_f=0.4\\times3\\times9.8=11.76\\mathrm{\\ N}$. (b) $a=\\frac{20-11.76}{3}\\approx2.75\\mathrm{\\ m\\ s}^{-2}$. (c) $t=\\sqrt{10/2.75}\\approx1.91\\mathrm{\\ s}$. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt."
         },
         {
-          "q": "A weighted graph has edges (with weights) $1\\mathrm{-}2(6), 2\\mathrm{-}3(8), 3\\mathrm{-}4(2), 4\\mathrm{-}5(4), 1\\mathrm{-}5(7), 2\\mathrm{-}5(9), 1\\mathrm{-}3(10)$. Find the total weight of the minimum spanning tree.",
+          "q": "Level 2 · MediumFind the derivative $\\frac{dy}{dx}$ for the function: $y = \\int_{\\cos x}^{x^3} \\sqrt{1 - t^2}\\,dt.$",
           "difficulty": "Foundational",
           "question_type": "FRQ",
-          "target": "Minimum Spanning Trees (Kruskal & Prim)",
-          "answer": "Final Answer: 19. $\\mathrm{Applying\\ Kruskal's\\ algorithm\\ (adding\\ edges\\ in\\ increasing\\ weight\\ order,\\ skipping\\ cycles)\\ gives\\ a\\ minimum\\ spanning\\ tree\\ of\\ total\\ weight\\ }19.$",
-          "explanation": "$\\mathrm{Applying\\ Kruskal's\\ algorithm\\ (adding\\ edges\\ in\\ increasing\\ weight\\ order,\\ skipping\\ cycles)\\ gives\\ a\\ minimum\\ spanning\\ tree\\ of\\ total\\ weight\\ }19.$"
+          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+          "answer": "Apply the Leibniz Rule with upper limit $u(x) = x^3 \\Rightarrow u'(x) = 3x^2$ and lower limit $v(x) = \\cos x \\Rightarrow v'(x) = -\\sin x$: $\\frac{dy}{dx} = \\sqrt{1 - (x^3)^2} \\cdot (3x^2) - \\sqrt{1 - (\\cos x)^2} \\cdot (-\\sin x).$ Simplify trigonometric terms with $\\sqrt{1 - \\cos^2 x} = \\sqrt{\\sin^2 x} = |\\sin x|$: $\\frac{dy}{dx} = \\mathbf{3x^2 \\sqrt{1 - x^6} + |\\sin x|\\sin x}.$",
+          "explanation": "Apply the Leibniz Rule with upper limit $u(x) = x^3 \\Rightarrow u'(x) = 3x^2$ and lower limit $v(x) = \\cos x \\Rightarrow v'(x) = -\\sin x$: $\\frac{dy}{dx} = \\sqrt{1 - (x^3)^2} \\cdot (3x^2) - \\sqrt{1 - (\\cos x)^2} \\cdot (-\\sin x).$ Simplify trigonometric terms with $\\sqrt{1 - \\cos^2 x} = \\sqrt{\\sin^2 x} = |\\sin x|$: $\\frac{dy}{dx} = \\mathbf{3x^2 \\sqrt{1 - x^6} + |\\sin x|\\sin x}.$"
         }
       ]
     },
@@ -108,96 +97,60 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "Consider the function $f(x) = \\frac{1}{2}x^2 - 3x + 5$. The graph of $y = f(x)$ is a parabola. Find the x-coordinate of the vertex of the parabola.",
+          "q": "Level 1 · Foundations Find the area of the region bounded by $y = x^2$ and $y = 2x - x^2$.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
-          "target": "Shortest Paths and Dijkstra's Algorithm",
-          "answer": "Final Answer: 3. The x-coordinate of the vertex of a parabola given by the equation $f(x) = ax^2 + bx + c$ is found using the formula $x = -\\frac{b}{2a}$. In this case, $a = \\frac{1}{2}$ and $b = -3$. Therefore, the x-coordinate of the vertex is $x = -\\frac{-3}{2(\\frac{1}{2})} = -\\frac{-3}{1} = 3$.",
-          "explanation": "The x-coordinate of the vertex of a parabola given by the equation $f(x) = ax^2 + bx + c$ is found using the formula $x = -\\frac{b}{2a}$. In this case, $a = \\frac{1}{2}$ and $b = -3$. Therefore, the x-coordinate of the vertex is $x = -\\frac{-3}{2(\\frac{1}{2})} = -\\frac{-3}{1} = 3$."
+          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+          "answer": "Find intersection points: $x^2 = 2x - x^2 \\Rightarrow 2x^2 - 2x = 0 \\Rightarrow 2x(x - 1) = 0$, so $x = 0$ and $x = 1$. On $[0, 1]$, test $x = 0.5$: $2(0.5) - (0.5)^2 = 0.75 > (0.5)^2 = 0.25$, so $y = 2x - x^2$ is the upper curve. $A = \\int_0^1 [(2x - x^2) - x^2]\\,dx = \\int_0^1 (2x - 2x^2)\\,dx = \\left[ x^2 - \\frac{2x^3}{3} \\right]_0^1 = 1 - \\frac{2}{3} = \\frac{1}{3}$",
+          "explanation": "Find intersection points: $x^2 = 2x - x^2 \\Rightarrow 2x^2 - 2x = 0 \\Rightarrow 2x(x - 1) = 0$, so $x = 0$ and $x = 1$. On $[0, 1]$, test $x = 0.5$: $2(0.5) - (0.5)^2 = 0.75 > (0.5)^2 = 0.25$, so $y = 2x - x^2$ is the upper curve. $A = \\int_0^1 [(2x - x^2) - x^2]\\,dx = \\int_0^1 (2x - 2x^2)\\,dx = \\left[ x^2 - \\frac{2x^3}{3} \\right]_0^1 = 1 - \\frac{2}{3} = \\frac{1}{3}$"
         },
         {
-          "q": "State the principal value (in degrees, $-90^\\circ\\leq\\theta\\leq90^\\circ$) satisfying $\\sin\\theta = -\\frac{1}{2}$.",
+          "q": "Find the set of values of $x$ satisfying the inequality $2x^2 - 7x + 3 \\leq 0$.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
-          "target": "Degrees and the Handshaking Lemma",
-          "answer": "Final Answer: $-30^\\circ$. Working through this additional-topics step: $\\sin^{-1}(-\\frac{1}{2})=-30^\\circ$ (within the required range $-90^\\circ\\leq\\theta\\leq90^\\circ$; $150^\\circ$ is out of range).",
-          "explanation": "Working through this additional-topics step: $\\sin^{-1}(-\\frac{1}{2})=-30^\\circ$ (within the required range $-90^\\circ\\leq\\theta\\leq90^\\circ$; $150^\\circ$ is out of range)."
+          "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+          "answer": "Find the critical values where $2x^2 - 7x + 3 = 0$. Factor the quadratic: $(2x - 1)(x - 3) = 0$, so the roots are $x = \\frac{1}{2}$ and $x = 3$. Since the coefficient of $x^2$ is positive ($a = 2 > 0$), the parabola opens upward. The quadratic is less than or equal to zero between and including the roots. Therefore, the solution set is $\\frac{1}{2} \\leq x \\leq 3$.",
+          "explanation": "Find the critical values where $2x^2 - 7x + 3 = 0$. Factor the quadratic: $(2x - 1)(x - 3) = 0$, so the roots are $x = \\frac{1}{2}$ and $x = 3$. Since the coefficient of $x^2$ is positive ($a = 2 > 0$), the parabola opens upward. The quadratic is less than or equal to zero between and including the roots. Therefore, the solution set is $\\frac{1}{2} \\leq x \\leq 3$."
         },
         {
-          "q": "If $z = 2\\left(\\cos 45^\\circ+i\\sin 45^\\circ\\right)$, find $|z^{6}|$ and $\\arg(z^{6})$ (in degrees, $0\\leq\\arg<360$).",
+          "q": "The equation $x^3 - x - 1 = 0$ has a root near $x = 1.3$. (a) Show that the iterative formula $x_{n+1} = (x_n + 1)^{1/3}$ converges by considering $g'(x)$. (b) Starting with $x_1 = 1.3$, calculate $x_2$ and $x_3$ to 4 decimal places.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
-          "target": "Eulerian and Hamiltonian Paths and Circuits",
-          "answer": "Final Answer: $|z^{6}|=64,\\ \\arg(z^{6})=270^\\circ$. $\\mathrm{By\\ De\\ Moivre's\\ theorem,\\ }|z^{6}|=|z|^{6}=2^{6}=64,\\ \\arg(z^{6})=6\\times45^\\circ=270^\\circ$",
-          "explanation": "$\\mathrm{By\\ De\\ Moivre's\\ theorem,\\ }|z^{6}|=|z|^{6}=2^{6}=64,\\ \\arg(z^{6})=6\\times45^\\circ=270^\\circ$",
-          "figure": {
-            "type": "triangle",
-            "vertices": [
-              [
-                0,
-                0
-              ],
-              [
-                24.0,
-                0
-              ],
-              [
-                0,
-                7.0
-              ]
-            ],
-            "labels": [
-              "$C$",
-              "$B$",
-              "$A$"
-            ],
-            "side_labels": [
-              "$24$",
-              "$25$",
-              "$7$"
-            ],
-            "right_angle_at": 0,
-            "angle_marks": [
-              {
-                "vertex": 1,
-                "label": "$\\theta$"
-              }
-            ],
-            "fill": true,
-            "width": 220
-          }
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+          "answer": "(a) Let $g(x) = (x + 1)^{1/3}$. Differentiate: $g'(x) = \\frac{1}{3}(x + 1)^{-2/3} = \\frac{1}{3(x + 1)^{2/3}}$ Near the root $x \\approx 1.3$: $g'(1.3) = \\frac{1}{3(2.3)^{2/3}} \\approx \\frac{1}{3(1.742)} \\approx 0.191$ Since \\(|g'(x)| $x_1 = 1.3$ $x_2 = (1.3 + 1)^{1/3} = (2.3)^{1/3} \\approx 1.3200$ $x_3 = (1.3200 + 1)^{1/3} = (2.3200)^{1/3} \\approx 1.3238$",
+          "explanation": "(a) Let $g(x) = (x + 1)^{1/3}$. Differentiate: $g'(x) = \\frac{1}{3}(x + 1)^{-2/3} = \\frac{1}{3(x + 1)^{2/3}}$ Near the root $x \\approx 1.3$: $g'(1.3) = \\frac{1}{3(2.3)^{2/3}} \\approx \\frac{1}{3(1.742)} \\approx 0.191$ Since \\(|g'(x)| $x_1 = 1.3$ $x_2 = (1.3 + 1)^{1/3} = (2.3)^{1/3} \\approx 1.3200$ $x_3 = (1.3200 + 1)^{1/3} = (2.3200)^{1/3} \\approx 1.3238$"
         },
         {
-          "q": "If $z = 2\\left(\\cos 30^\\circ+i\\sin 30^\\circ\\right)$, find $|z^{6}|$ and $\\arg(z^{6})$ (in degrees, $0\\leq\\arg<360$).",
+          "q": "Level 1 · Foundations Evaluate the line integral $\\int_C \\mathbf{F} \\cdot d\\mathbf{r}$ for $\\mathbf{F} = abla(x^3 y + 2z)$ along any curve $C$ from $(0, 0, 1)$ to $(2, 1, 3)$.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
-          "target": "Minimum Spanning Trees (Kruskal & Prim)",
-          "answer": "Final Answer: $|z^{6}|=64,\\ \\arg(z^{6})=180^\\circ$. $\\mathrm{By\\ De\\ Moivre's\\ theorem,\\ }|z^{6}|=|z|^{6}=2^{6}=64,\\ \\arg(z^{6})=6\\times30^\\circ=180^\\circ$",
-          "explanation": "$\\mathrm{By\\ De\\ Moivre's\\ theorem,\\ }|z^{6}|=|z|^{6}=2^{6}=64,\\ \\arg(z^{6})=6\\times30^\\circ=180^\\circ$"
+          "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+          "answer": "The field is conservative with potential function $f(x, y, z) = x^3 y + 2z$. By the Fundamental Theorem for Line Integrals: $\\int_C abla f \\cdot d\\mathbf{r} = f(2, 1, 3) - f(0, 0, 1)$ Evaluate at endpoints: $f(2, 1, 3) = 2^3(1) + 2(3) = 8 + 6 = 14$ $f(0, 0, 1) = 0^3(0) + 2(1) = 2$ Therefore: $\\int_C \\mathbf{F} \\cdot d\\mathbf{r} = 14 - 2 = 12$",
+          "explanation": "The field is conservative with potential function $f(x, y, z) = x^3 y + 2z$. By the Fundamental Theorem for Line Integrals: $\\int_C abla f \\cdot d\\mathbf{r} = f(2, 1, 3) - f(0, 0, 1)$ Evaluate at endpoints: $f(2, 1, 3) = 2^3(1) + 2(3) = 8 + 6 = 14$ $f(0, 0, 1) = 0^3(0) + 2(1) = 2$ Therefore: $\\int_C \\mathbf{F} \\cdot d\\mathbf{r} = 14 - 2 = 12$"
         },
         {
-          "q": "If $z = 1\\left(\\cos 60^\\circ+i\\sin 60^\\circ\\right)$, find $|z^{3}|$ and $\\arg(z^{3})$ (in degrees, $0\\leq\\arg<360$).",
+          "q": "Level 1 · FoundationsFind the exact natural domain of the function $g(x) = \\sqrt{\\frac{x - 1}{x + 3}} - \\ln(5 - x)$ in interval notation.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
-          "target": "Shortest Paths and Dijkstra's Algorithm",
-          "answer": "Final Answer: $|z^{3}|=1,\\ \\arg(z^{3})=180^\\circ$. $\\mathrm{By\\ De\\ Moivre's\\ theorem,\\ }|z^{3}|=|z|^{3}=1^{3}=1,\\ \\arg(z^{3})=3\\times60^\\circ=180^\\circ$",
-          "explanation": "$\\mathrm{By\\ De\\ Moivre's\\ theorem,\\ }|z^{3}|=|z|^{3}=1^{3}=1,\\ \\arg(z^{3})=3\\times60^\\circ=180^\\circ$"
+          "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+          "answer": "We must evaluate two simultaneous restrictions:Square root radicand must be non-negative and denominator non-zero: $\\frac{x - 1}{x + 3} \\geq 0 \\quad \\mathrm{and} \\quad x + 3 eq 0.$ Sign analysis of the quotient with critical numbers $x = -3$ and $x = 1$: • For \\( x Logarithm argument must be strictly positive: $x$",
+          "explanation": "We must evaluate two simultaneous restrictions:Square root radicand must be non-negative and denominator non-zero: $\\frac{x - 1}{x + 3} \\geq 0 \\quad \\mathrm{and} \\quad x + 3 eq 0.$ Sign analysis of the quotient with critical numbers $x = -3$ and $x = 1$: • For \\( x Logarithm argument must be strictly positive: $x$"
         },
         {
-          "q": "If $z = 1\\left(\\cos 90^\\circ+i\\sin 90^\\circ\\right)$, find $|z^{6}|$ and $\\arg(z^{6})$ (in degrees, $0\\leq\\arg<360$).",
+          "q": "Find the 15th term and the sum of the first 20 terms of the arithmetic progression $4, 9, 14, 19, \\dots$.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
-          "target": "Degrees and the Handshaking Lemma",
-          "answer": "Final Answer: $|z^{6}|=1,\\ \\arg(z^{6})=180^\\circ$. $\\mathrm{By\\ De\\ Moivre's\\ theorem,\\ }|z^{6}|=|z|^{6}=1^{6}=1,\\ \\arg(z^{6})=6\\times90^\\circ=180^\\circ$",
-          "explanation": "$\\mathrm{By\\ De\\ Moivre's\\ theorem,\\ }|z^{6}|=|z|^{6}=1^{6}=1,\\ \\arg(z^{6})=6\\times90^\\circ=180^\\circ$"
+          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+          "answer": "Step 1: Identify progression parameters: First term $a_1 = 4$, common difference $d = 9 - 4 = 5$. Step 2: Compute $a_{15}$: $a_{15} = a_1 + (15 - 1)d = 4 + 14(5) = 4 + 70 = 74.$ Step 3: Compute finite sum $S_{20}$: $S_{20} = \\frac{20}{2}[2a_1 + (20 - 1)d] = 10[2(4) + 19(5)] = 10[8 + 95] = 10(103) = 1030.$",
+          "explanation": "Step 1: Identify progression parameters: First term $a_1 = 4$, common difference $d = 9 - 4 = 5$. Step 2: Compute $a_{15}$: $a_{15} = a_1 + (15 - 1)d = 4 + 14(5) = 4 + 70 = 74.$ Step 3: Compute finite sum $S_{20}$: $S_{20} = \\frac{20}{2}[2a_1 + (20 - 1)d] = 10[2(4) + 19(5)] = 10[8 + 95] = 10(103) = 1030.$"
         },
         {
-          "q": "If $z = 2\\left(\\cos 60^\\circ+i\\sin 60^\\circ\\right)$, find $|z^{3}|$ and $\\arg(z^{3})$ (in degrees, $0\\leq\\arg<360$).",
+          "q": "Level 1 · FoundationsFind $h'(2)$ given the accumulation function $h(x) = \\int_0^{x^2} \\frac{t}{t + 1}\\,dt$.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
-          "target": "Eulerian and Hamiltonian Paths and Circuits",
-          "answer": "Final Answer: $|z^{3}|=8,\\ \\arg(z^{3})=180^\\circ$. $\\mathrm{By\\ De\\ Moivre's\\ theorem,\\ }|z^{3}|=|z|^{3}=2^{3}=8,\\ \\arg(z^{3})=3\\times60^\\circ=180^\\circ$",
-          "explanation": "$\\mathrm{By\\ De\\ Moivre's\\ theorem,\\ }|z^{3}|=|z|^{3}=2^{3}=8,\\ \\arg(z^{3})=3\\times60^\\circ=180^\\circ$"
+          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+          "answer": "By FTC Part 1 and the Chain Rule, let $u = x^2 \\Rightarrow \\frac{du}{dx} = 2x$: $h'(x) = \\frac{u}{u + 1} \\cdot \\frac{du}{dx} = \\frac{x^2}{x^2 + 1} \\cdot (2x) = \\frac{2x^3}{x^2 + 1}.$ Evaluate at $x = 2$: $h'(2) = \\frac{2(2^3)}{2^2 + 1} = \\frac{2(8)}{4 + 1} = \\mathbf{\\frac{16}{5}}.$",
+          "explanation": "By FTC Part 1 and the Chain Rule, let $u = x^2 \\Rightarrow \\frac{du}{dx} = 2x$: $h'(x) = \\frac{u}{u + 1} \\cdot \\frac{du}{dx} = \\frac{x^2}{x^2 + 1} \\cdot (2x) = \\frac{2x^3}{x^2 + 1}.$ Evaluate at $x = 2$: $h'(2) = \\frac{2(2^3)}{2^2 + 1} = \\frac{2(8)}{4 + 1} = \\mathbf{\\frac{16}{5}}.$"
         }
       ]
     },
@@ -205,94 +158,58 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "If $z = 1\\left(\\cos 45^\\circ+i\\sin 45^\\circ\\right)$, find $|z^{5}|$ and $\\arg(z^{5})$ (in degrees, $0\\leq\\arg<360$).",
+          "q": "A student computes the volume of a cylinder using $r = 3.2\\mathrm{\\ cm}$ and $h = 7.85\\mathrm{\\ cm}$. The raw calculator display shows $252.518...$. How should the final answer be reported according to Cambridge AS Level guidelines?",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Minimum Spanning Trees (Kruskal & Prim)",
+          "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
           "cross_lesson": "5.03 Maclaurin Series & Convergence of Series",
-          "answer": "Final Answer: $|z^{5}|=1,\\ \\arg(z^{5})=225^\\circ$. $\\mathrm{By\\ De\\ Moivre's\\ theorem,\\ }|z^{5}|=|z|^{5}=1^{5}=1,\\ \\arg(z^{5})=5\\times45^\\circ=225^\\circ$",
-          "explanation": "$\\mathrm{By\\ De\\ Moivre's\\ theorem,\\ }|z^{5}|=|z|^{5}=1^{5}=1,\\ \\arg(z^{5})=5\\times45^\\circ=225^\\circ$"
+          "answer": "Unless otherwise specified, non-exact numerical answers must be given to 3 significant figures. Rounding $252.518...$ to 3 s.f. gives $253\\mathrm{\\ cm}^3$. Giving 1 or 2 s.f., or excessive decimal places without justification, incurs an accuracy penalty (A1).",
+          "explanation": "Unless otherwise specified, non-exact numerical answers must be given to 3 significant figures. Rounding $252.518...$ to 3 s.f. gives $253\\mathrm{\\ cm}^3$. Giving 1 or 2 s.f., or excessive decimal places without justification, incurs an accuracy penalty (A1)."
         },
         {
-          "q": "If $z = 2\\left(\\cos 60^\\circ+i\\sin 60^\\circ\\right)$, find $|z^{6}|$ and $\\arg(z^{6})$ (in degrees, $0\\leq\\arg<360$).",
+          "q": "A radioactive isotope has a decay constant $k = 0.035\\mathrm{\\ year}^{-1}$. (a) Find its half-life to the nearest tenth of a year. (b) If an initial sample contains $250\\mathrm{\\ mg}$, how much remains after $40\\mathrm{\\ years}$?",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Shortest Paths and Dijkstra's Algorithm",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "cross_lesson": "5.04 Graphs of Inverse Trigonometric Functions & Their Derivatives (AA HL)",
-          "answer": "Final Answer: $|z^{6}|=64,\\ \\arg(z^{6})=0^\\circ$. $\\mathrm{By\\ De\\ Moivre's\\ theorem,\\ }|z^{6}|=|z|^{6}=2^{6}=64,\\ \\arg(z^{6})=6\\times60^\\circ=0^\\circ$",
-          "explanation": "$\\mathrm{By\\ De\\ Moivre's\\ theorem,\\ }|z^{6}|=|z|^{6}=2^{6}=64,\\ \\arg(z^{6})=6\\times60^\\circ=0^\\circ$",
-          "figure": {
-            "type": "triangle",
-            "vertices": [
-              [
-                0,
-                0
-              ],
-              [
-                8.0,
-                0
-              ],
-              [
-                0,
-                6.0
-              ]
-            ],
-            "labels": [
-              "$C$",
-              "$B$",
-              "$A$"
-            ],
-            "side_labels": [
-              "$8$",
-              "$10$",
-              "$6$"
-            ],
-            "right_angle_at": 0,
-            "angle_marks": [
-              {
-                "vertex": 1,
-                "label": "$\\theta$"
-              }
-            ],
-            "fill": true,
-            "width": 220
-          }
+          "answer": "(a) Half-life calculation: $t_{1/2} = \\frac{\\ln 2}{k} = \\frac{0.693147}{0.035} \\approx 19.8\\mathrm{\\ years}.$ (b) Remaining mass at $t = 40$: $A(t) = A_0 e^{-kt} = 250 e^{-0.035(40)} = 250 e^{-1.4} \\approx 250(0.246597) \\approx 61.65\\mathrm{\\ mg}.$",
+          "explanation": "(a) Half-life calculation: $t_{1/2} = \\frac{\\ln 2}{k} = \\frac{0.693147}{0.035} \\approx 19.8\\mathrm{\\ years}.$ (b) Remaining mass at $t = 40$: $A(t) = A_0 e^{-kt} = 250 e^{-0.035(40)} = 250 e^{-1.4} \\approx 250(0.246597) \\approx 61.65\\mathrm{\\ mg}.$"
         },
         {
-          "q": "If $z = 2\\left(\\cos 30^\\circ+i\\sin 30^\\circ\\right)$, find $|z^{3}|$ and $\\arg(z^{3})$ (in degrees, $0\\leq\\arg<360$).",
+          "q": "$f(x)=cx^2$ for $0\\leq x\\leq3$, zero otherwise. Find $c$, $E(X)$, and $P(1\\leq X\\leq2)$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Degrees and the Handshaking Lemma",
+          "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "cross_lesson": "6.01 Matrices (AI HL)",
-          "answer": "Final Answer: $|z^{3}|=8,\\ \\arg(z^{3})=90^\\circ$. $\\mathrm{By\\ De\\ Moivre's\\ theorem,\\ }|z^{3}|=|z|^{3}=2^{3}=8,\\ \\arg(z^{3})=3\\times30^\\circ=90^\\circ$",
-          "explanation": "$\\mathrm{By\\ De\\ Moivre's\\ theorem,\\ }|z^{3}|=|z|^{3}=2^{3}=8,\\ \\arg(z^{3})=3\\times30^\\circ=90^\\circ$"
+          "answer": "$\\int_0^3 cx^2\\,dx=9c=1\\Rightarrow c=\\frac{1}{9}$. $E(X)=\\frac{1}{9}\\int_0^3 x^3\\,dx=\\frac{1}{9}\\cdot\\frac{81}{4}=\\frac{9}{4}$. $P(1\\leq X\\leq2)=\\frac{1}{9}\\left[\\frac{x^3}{3}\\right]_1^2=\\frac{1}{27}(8-1)=\\frac{7}{27}$.",
+          "explanation": "$\\int_0^3 cx^2\\,dx=9c=1\\Rightarrow c=\\frac{1}{9}$. $E(X)=\\frac{1}{9}\\int_0^3 x^3\\,dx=\\frac{1}{9}\\cdot\\frac{81}{4}=\\frac{9}{4}$. $P(1\\leq X\\leq2)=\\frac{1}{9}\\left[\\frac{x^3}{3}\\right]_1^2=\\frac{1}{27}(8-1)=\\frac{7}{27}$."
         },
         {
-          "q": "If $z = 1\\left(\\cos 60^\\circ+i\\sin 60^\\circ\\right)$, find $|z^{6}|$ and $\\arg(z^{6})$ (in degrees, $0\\leq\\arg<360$).",
+          "q": "A manufacturer claims that the mean breaking strength of cables is at least 80 kN. A sample of 16 cables gives $\\bar{x}=77.5$ kN with population SD 5 kN. Test this claim at 1% significance.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Eulerian and Hamiltonian Paths and Circuits",
+          "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
           "cross_lesson": "6.03 Markov Chains (AI HL)",
-          "answer": "Final Answer: $|z^{6}|=1,\\ \\arg(z^{6})=0^\\circ$. $\\mathrm{By\\ De\\ Moivre's\\ theorem,\\ }|z^{6}|=|z|^{6}=1^{6}=1,\\ \\arg(z^{6})=6\\times60^\\circ=0^\\circ$",
-          "explanation": "$\\mathrm{By\\ De\\ Moivre's\\ theorem,\\ }|z^{6}|=|z|^{6}=1^{6}=1,\\ \\arg(z^{6})=6\\times60^\\circ=0^\\circ$"
+          "answer": "$H_0:\\mu=80$, $H_1:\\mu<80$. $Z=\\frac{77.5-80}{5/4}=-\\frac{2.5}{1.25}=-2$. Critical value at 1%: $-2.326$. Since $-2>-2.326$, do not reject $H_0$. Insufficient evidence at 1% that mean breaking strength is below 80 kN.",
+          "explanation": "$H_0:\\mu=80$, $H_1:\\mu<80$. $Z=\\frac{77.5-80}{5/4}=-\\frac{2.5}{1.25}=-2$. Critical value at 1%: $-2.326$. Since $-2>-2.326$, do not reject $H_0$. Insufficient evidence at 1% that mean breaking strength is below 80 kN."
         },
         {
-          "q": "A graph has vertices $\\{1,\\ldots,6\\}$ and edges $1\\mathrm{-}5, 1\\mathrm{-}4, 4\\mathrm{-}5, 2\\mathrm{-}6, 2\\mathrm{-}5, 1\\mathrm{-}3$. Find the degree of vertex $2$.",
+          "q": "A discrete random variable $Y$ has $E(Y) = 5$ and $\\mathrm{Var}(Y) = 4$. Calculate $E(Y^2)$ and $\\mathrm{Var}(10 - 3Y)$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Minimum Spanning Trees (Kruskal & Prim)",
+          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
           "cross_lesson": "1.01 Proof by Mathematical Induction",
-          "answer": "$\\mathrm{Vertex\\ }2\\mathrm{\\ appears\\ in\\ }2\\mathrm{\\ edge(s),\\ so\\ its\\ degree\\ is\\ }2.$",
-          "explanation": "$\\mathrm{Vertex\\ }2\\mathrm{\\ appears\\ in\\ }2\\mathrm{\\ edge(s),\\ so\\ its\\ degree\\ is\\ }2.$"
+          "answer": "Using $\\mathrm{Var}(Y) = E(Y^2) - [E(Y)]^2$, we get $E(Y^2) = \\mathrm{Var}(Y) + [E(Y)]^2 = 4 + 5^2 = 4 + 25 = 29$. For the linear transformation: $\\mathrm{Var}(10 - 3Y) = (-3)^2 \\mathrm{Var}(Y) = 9 \\times 4 = 36$.",
+          "explanation": "Using $\\mathrm{Var}(Y) = E(Y^2) - [E(Y)]^2$, we get $E(Y^2) = \\mathrm{Var}(Y) + [E(Y)]^2 = 4 + 5^2 = 4 + 25 = 29$. For the linear transformation: $\\mathrm{Var}(10 - 3Y) = (-3)^2 \\mathrm{Var}(Y) = 9 \\times 4 = 36$."
         },
         {
-          "q": "A graph has vertices $\\{1,\\ldots,6\\}$ and edges $1\\mathrm{-}2, 5\\mathrm{-}6, 2\\mathrm{-}5, 1\\mathrm{-}3, 3\\mathrm{-}5$. Find the degree of vertex $2$.",
+          "q": "Level 1 · Foundations Find $\\frac{dy}{dx}$ in terms of $t$ for the parametric curve $x = 2\\cos t$, $y = 5\\sin t$ for $t \\in (0, \\pi)$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Shortest Paths and Dijkstra's Algorithm",
+          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
           "cross_lesson": "1.02 Complex Numbers: Cartesian Form & Algebra",
-          "answer": "$\\mathrm{Vertex\\ }2\\mathrm{\\ appears\\ in\\ }2\\mathrm{\\ edge(s),\\ so\\ its\\ degree\\ is\\ }2.$",
-          "explanation": "$\\mathrm{Vertex\\ }2\\mathrm{\\ appears\\ in\\ }2\\mathrm{\\ edge(s),\\ so\\ its\\ degree\\ is\\ }2.$"
+          "answer": "Compute derivatives with respect to $t$: $\\frac{dx}{dt} = -2\\sin t$ $\\frac{dy}{dt} = 5\\cos t$ By Theorem 9.1: $\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{5\\cos t}{-2\\sin t} = -\\frac{5}{2}\\cot t$",
+          "explanation": "Compute derivatives with respect to $t$: $\\frac{dx}{dt} = -2\\sin t$ $\\frac{dy}{dt} = 5\\cos t$ By Theorem 9.1: $\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{5\\cos t}{-2\\sin t} = -\\frac{5}{2}\\cot t$"
         }
       ]
     },
@@ -303,7 +220,7 @@
           "q": "What does the Handshaking Lemma state for any undirected graph with $V$ vertices and $E$ edges?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Degrees and the Handshaking Lemma",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
             "The sum of the degrees of all vertices equals twice the number of edges: $\\sum \\deg(v) = 2E$",
             "The sum of the degrees equals $E$",
@@ -318,7 +235,7 @@
           "q": "A graph has $6$ vertices, each having degree $3$. How many edges does the graph have?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Degrees and the Handshaking Lemma",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
             "$9$",
             "$18$",
@@ -333,7 +250,7 @@
           "q": "Why can a graph never have an odd number of vertices of odd degree?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Degrees and the Handshaking Lemma",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
             "Because $\\sum \\deg(v) = 2E$ is always even, the sum of odd degrees must be even, forcing an even count of odd vertices",
             "Because edges cannot cross each other",
@@ -346,18 +263,18 @@
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (0))**2 + (-2)",
-              "0.5*x + 1"
+              "-0.3*(x - (-1.5))**2 + (0.0)",
+              "0.9*x + (-1.2)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
-                "x": 0.0,
-                "y": -2.0,
-                "label": "$(0,-2)$"
+                "x": -1.5,
+                "y": 0.0,
+                "label": "$(-1.5,0)$"
               }
             ],
             "width": 230
@@ -367,7 +284,7 @@
           "q": "What condition is both necessary and sufficient for a connected graph to contain an Eulerian circuit (a closed trail visiting every edge exactly once)?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Eulerian and Hamiltonian Paths and Circuits",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
             "Every vertex has an even degree",
             "Exactly two vertices have odd degree",
@@ -382,7 +299,7 @@
           "q": "If a connected graph has exactly two vertices of odd degree, what type of Eulerian walk does it contain?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Eulerian and Hamiltonian Paths and Circuits",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
             "An Eulerian trail (open path visiting every edge once) that starts at one odd vertex and ends at the other",
             "An Eulerian circuit returning to the start",
@@ -397,7 +314,7 @@
           "q": "What is the difference between an Eulerian circuit and a Hamiltonian cycle?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Eulerian and Hamiltonian Paths and Circuits",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
             "An Eulerian circuit visits every edge once; a Hamiltonian cycle visits every vertex once",
             "An Eulerian circuit visits every vertex once; a Hamiltonian cycle visits every edge once",
@@ -412,7 +329,7 @@
           "q": "In a connected weighted graph with $V$ vertices, how many edges does any spanning tree contain?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Minimum Spanning Trees (Kruskal & Prim)",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
             "$V - 1$",
             "$V$",
@@ -427,7 +344,7 @@
           "q": "How does Kruskal's algorithm select edges to construct a Minimum Spanning Tree (MST)?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Minimum Spanning Trees (Kruskal & Prim)",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
             "Sorts all edges by weight and greedily adds the smallest available edge that does not create a cycle",
             "Grows a single tree by continuously adding the closest vertex to the current tree",
@@ -440,18 +357,18 @@
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
+              "0.3*(x - (0.0))**2 + (1.5)",
+              "0.9*x + (2.7)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
-                "x": -1.0,
-                "y": -1.0,
-                "label": "$(-1,-1)$"
+                "x": 0.0,
+                "y": 1.5,
+                "label": "$(0,1.5)$"
               }
             ],
             "width": 230
@@ -466,7 +383,7 @@
           "q": "How does Prim's algorithm differ conceptually from Kruskal's algorithm?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Minimum Spanning Trees (Kruskal & Prim)",
+          "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "choices": [
             "Prim grows a single connected tree from an arbitrary starting vertex, whereas Kruskal maintains a forest of components until unified",
             "Prim works only on unweighted graphs",
@@ -481,7 +398,7 @@
           "q": "What is the purpose of Dijkstra's algorithm?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Shortest Paths and Dijkstra's Algorithm",
+          "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "choices": [
             "To find the shortest paths from a single source vertex to all other vertices in a network with non-negative edge weights",
             "To find a minimum spanning tree",
@@ -496,7 +413,7 @@
           "q": "Why does Dijkstra's algorithm fail if a network contains negative edge weights?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Shortest Paths and Dijkstra's Algorithm",
+          "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "choices": [
             "A greedy choice once finalized could be improved later by a negative edge, invalidating the optimality assumption",
             "Distances cannot be negative by definition",
@@ -511,7 +428,7 @@
           "q": "In a planar graph, if $V = 6$ and $E = 9$, how many faces $F$ does the graph enclose according to Euler's formula $V - E + F = 2$?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Shortest Paths and Dijkstra's Algorithm",
+          "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "choices": [
             "$5$",
             "$3$",
@@ -523,98 +440,134 @@
           "explanation": "By Euler's planar formula $V - E + F = 2$: $6 - 9 + F = 2 \\Rightarrow -3 + F = 2 \\Rightarrow F = 5$."
         },
         {
-          "q": "A graph has vertices $\\{1,\\ldots,6\\}$ and edges $1\\mathrm{-}5, 2\\mathrm{-}3, 5\\mathrm{-}6, 3\\mathrm{-}6, 1\\mathrm{-}6, 2\\mathrm{-}5$. Find the degree of vertex $5$.",
+          "q": "If $f''(x)>0$ on an interval, the graph of $f$ is:",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Degrees and the Handshaking Lemma",
+          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
           "choices": [
-            "3",
-            "5",
-            "1",
-            "4"
+            "concave up",
+            "decreasing",
+            "concave down",
+            "linear"
           ],
           "correct": 0,
-          "answer": "$\\mathrm{Vertex\\ }5\\mathrm{\\ appears\\ in\\ }3\\mathrm{\\ edge(s),\\ so\\ its\\ degree\\ is\\ }3.$",
-          "explanation": "$\\mathrm{Vertex\\ }5\\mathrm{\\ appears\\ in\\ }3\\mathrm{\\ edge(s),\\ so\\ its\\ degree\\ is\\ }3.$",
+          "answer": "A positive second derivative means the graph curves upward (concave up).",
+          "explanation": "A positive second derivative means the graph curves upward (concave up)."
+        },
+        {
+          "q": "Given $f(x)=\\left(x-2\\right)^{2}\\left(x+1\\right)$, does the graph touch or cross the x-axis at $x=2$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+          "choices": [
+            "The graph does not intersect the x-axis there",
+            "Not enough information",
+            "Touches (does not cross)",
+            "Crosses"
+          ],
+          "correct": 2,
+          "answer": "Multiplicity of $x=2$ is $2$ (even), so the graph touches the x-axis.",
+          "explanation": "Multiplicity of $x=2$ is $2$ (even), so the graph touches the x-axis."
+        },
+        {
+          "q": "The figure shows the graph of the function $f(x) = x^2 - 2x - 1$ and the point $P(3, 2)$ on the curve. What is the slope of the tangent line to the graph of $f$ at point $P$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+          "choices": [
+            "4",
+            "2",
+            "3",
+            "6"
+          ],
+          "correct": 0,
+          "answer": "The slope of the tangent line to the graph of $f(x)$ at any point is given by its derivative, $f'(x)$. 1. Find the derivative of $f(x) = x^2 - 2x - 1$ using the power rule: $f'(x) = 2x - 2$ 2. Evaluate the derivative at the $x$-coordinate of point $P(3, 2)$, which is $x = 3$: $f'(3) = 2(3) - 2 = 6 - 2 = 4$ Thus, the slope of the tangent line at $P$ is $4$. Misconception Analysis: - $2$ results from mistakenly reading the $y$-coordinate of point $P$ as the slope, since $f(3) = 2$. - $3$ results from taking the $x$-coordinate of point $P$. - $6$ results from differentiating only the leading term $x^2$ to get $2x$ and evaluating $2(3) = 6$, while forgetting to subtract the derivative of the linear term $2x$.",
+          "explanation": "The slope of the tangent line to the graph of $f(x)$ at any point is given by its derivative, $f'(x)$. 1. Find the derivative of $f(x) = x^2 - 2x - 1$ using the power rule: $f'(x) = 2x - 2$ 2. Evaluate the derivative at the $x$-coordinate of point $P(3, 2)$, which is $x = 3$: $f'(3) = 2(3) - 2 = 6 - 2 = 4$ Thus, the slope of the tangent line at $P$ is $4$. Misconception Analysis: - $2$ results from mistakenly reading the $y$-coordinate of point $P$ as the slope, since $f(3) = 2$. - $3$ results from taking the $x$-coordinate of point $P$. - $6$ results from differentiating only the leading term $x^2$ to get $2x$ and evaluating $2(3) = 6$, while forgetting to subtract the derivative of the linear term $2x$.",
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (1))**2 + (-2)",
-              "0.5*x + 1"
+              "x*x - 2*x - 1"
             ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
+            "xmin": -1.0,
+            "xmax": 5.0,
+            "ymin": -3.0,
+            "ymax": 8.0,
+            "width": 230,
             "point_labels": [
               {
-                "x": 1.0,
-                "y": -2.0,
-                "label": "$(1,-2)$"
+                "x": 3.0,
+                "y": 2.0,
+                "label": "P(3, 2)"
               }
-            ],
-            "width": 230
+            ]
           }
         },
         {
-          "q": "A graph has vertices $\\{1,\\ldots,6\\}$ and edges $2\\mathrm{-}4, 4\\mathrm{-}6, 2\\mathrm{-}6, 2\\mathrm{-}5, 1\\mathrm{-}3, 3\\mathrm{-}5$. Find the degree of vertex $4$.",
+          "q": "The graph of the quadratic function $f(x) = x^2 - 6x + k$ is shown. The vertex of the parabola is at the point $(3, -5)$. Find the value of the parameter $k$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Eulerian and Hamiltonian Paths and Circuits",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
-            "2",
-            "4",
-            "0",
-            "1"
+            "$-5$",
+            "$4$",
+            "$9$",
+            "$0$"
           ],
-          "correct": 0,
-          "answer": "$\\mathrm{Vertex\\ }4\\mathrm{\\ appears\\ in\\ }2\\mathrm{\\ edge(s),\\ so\\ its\\ degree\\ is\\ }2.$",
-          "explanation": "$\\mathrm{Vertex\\ }4\\mathrm{\\ appears\\ in\\ }2\\mathrm{\\ edge(s),\\ so\\ its\\ degree\\ is\\ }2.$"
+          "correct": 1,
+          "answer": "The vertex of a parabola in the form $f(x) = ax^2 + bx + c$ occurs at $x = -\\frac{b}{2a}$. For the given function $f(x) = x^2 - 6x + k$, we have $a=1$ and $b=-6$. Thus, the x-coordinate of the vertex is $x = -\\frac{-6}{2(1)} = 3$. This matches the given vertex $(3, -5)$. Since the vertex $(3, -5)$ lies on the graph of the function, it must satisfy the function's equation. Substitute $x=3$ and $f(x)=-5$ into the equation: $-5 = (3)^2 - 6(3) + k$ $-5 = 9 - 18 + k$ $-5 = -9 + k$ To solve for $k$, add 9 to both sides: $k = -5 + 9$ $k = 4$ Therefore, the value of the parameter $k$ is $4$.",
+          "explanation": "The vertex of a parabola in the form $f(x) = ax^2 + bx + c$ occurs at $x = -\\frac{b}{2a}$. For the given function $f(x) = x^2 - 6x + k$, we have $a=1$ and $b=-6$. Thus, the x-coordinate of the vertex is $x = -\\frac{-6}{2(1)} = 3$. This matches the given vertex $(3, -5)$. Since the vertex $(3, -5)$ lies on the graph of the function, it must satisfy the function's equation. Substitute $x=3$ and $f(x)=-5$ into the equation: $-5 = (3)^2 - 6(3) + k$ $-5 = 9 - 18 + k$ $-5 = -9 + k$ To solve for $k$, add 9 to both sides: $k = -5 + 9$ $k = 4$ Therefore, the value of the parameter $k$ is $4$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*x - 6*x + 4"
+            ],
+            "xmin": -1.0,
+            "xmax": 7.0,
+            "ymin": -6.0,
+            "ymax": 5.0,
+            "width": 230,
+            "point_labels": [
+              {
+                "x": 3.0,
+                "y": -5.0,
+                "label": "(3, -5)"
+              }
+            ]
+          }
         },
         {
-          "q": "A graph has vertices $\\{1,\\ldots,6\\}$ and edges $2\\mathrm{-}4, 1\\mathrm{-}2, 1\\mathrm{-}4, 5\\mathrm{-}6, 3\\mathrm{-}6, 2\\mathrm{-}5$. Find the degree of vertex $4$.",
+          "q": "The graph of a differentiable function $f(x)$ is shown below. The function has a tangent line at $x = 1$ with equation $y = 2x + c$. If $f(1) = 3$, find the value of $c$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Minimum Spanning Trees (Kruskal & Prim)",
+          "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "choices": [
-            "4",
             "1",
-            "0",
-            "2"
-          ],
-          "correct": 3,
-          "answer": "$\\mathrm{Vertex\\ }4\\mathrm{\\ appears\\ in\\ }2\\mathrm{\\ edge(s),\\ so\\ its\\ degree\\ is\\ }2.$",
-          "explanation": "$\\mathrm{Vertex\\ }4\\mathrm{\\ appears\\ in\\ }2\\mathrm{\\ edge(s),\\ so\\ its\\ degree\\ is\\ }2.$"
-        },
-        {
-          "q": "A graph has vertices $\\{1,\\ldots,5\\}$ and edges $1\\mathrm{-}5, 1\\mathrm{-}4, 4\\mathrm{-}5, 2\\mathrm{-}5, 3\\mathrm{-}5$. Find the degree of vertex $4$.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Shortest Paths and Dijkstra's Algorithm",
-          "choices": [
             "2",
-            "0",
-            "1",
+            "3",
             "4"
           ],
           "correct": 0,
-          "answer": "$\\mathrm{Vertex\\ }4\\mathrm{\\ appears\\ in\\ }2\\mathrm{\\ edge(s),\\ so\\ its\\ degree\\ is\\ }2.$",
-          "explanation": "$\\mathrm{Vertex\\ }4\\mathrm{\\ appears\\ in\\ }2\\mathrm{\\ edge(s),\\ so\\ its\\ degree\\ is\\ }2.$"
-        },
-        {
-          "q": "A graph has vertices $\\{1,\\ldots,6\\}$ and edges $2\\mathrm{-}4, 1\\mathrm{-}2, 4\\mathrm{-}5, 3\\mathrm{-}6, 1\\mathrm{-}6, 1\\mathrm{-}3$. Find the degree of vertex $6$.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Degrees and the Handshaking Lemma",
-          "choices": [
-            "2",
-            "1",
-            "4",
-            "0"
-          ],
-          "correct": 0,
-          "answer": "$\\mathrm{Vertex\\ }6\\mathrm{\\ appears\\ in\\ }2\\mathrm{\\ edge(s),\\ so\\ its\\ degree\\ is\\ }2.$",
-          "explanation": "$\\mathrm{Vertex\\ }6\\mathrm{\\ appears\\ in\\ }2\\mathrm{\\ edge(s),\\ so\\ its\\ degree\\ is\\ }2.$"
+          "answer": "The equation of the tangent line to $f(x)$ at $x = 1$ is given as $y = 2x + c$. We are given that $f(1) = 3$. This means the point $(1, 3)$ lies on both the function $f(x)$ and its tangent line at $x = 1$. Since the point $(1, 3)$ lies on the tangent line $y = 2x + c$, we can substitute the coordinates into the equation: $3 = 2(1) + c$ $3 = 2 + c$ $c = 3 - 2$ $c = 1$ The derivative of the function at $x = 1$ is the slope of the tangent line, which is 2. This information is consistent with the problem but not directly needed to find $c$.",
+          "explanation": "The equation of the tangent line to $f(x)$ at $x = 1$ is given as $y = 2x + c$. We are given that $f(1) = 3$. This means the point $(1, 3)$ lies on both the function $f(x)$ and its tangent line at $x = 1$. Since the point $(1, 3)$ lies on the tangent line $y = 2x + c$, we can substitute the coordinates into the equation: $3 = 2(1) + c$ $3 = 2 + c$ $c = 3 - 2$ $c = 1$ The derivative of the function at $x = 1$ is the slope of the tangent line, which is 2. This information is consistent with the problem but not directly needed to find $c$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2*x + 1",
+              "x**2 + 2"
+            ],
+            "xmin": -2.0,
+            "xmax": 4.0,
+            "ymin": -2.0,
+            "ymax": 7.0,
+            "width": 230,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": 3.0,
+                "label": "(1, 3)"
+              }
+            ]
+          }
         }
       ]
     },
@@ -622,169 +575,185 @@
       "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
       "questions": [
         {
-          "q": "A graph has vertices $\\{1,\\ldots,5\\}$ and edges $2\\mathrm{-}4, 1\\mathrm{-}2, 3\\mathrm{-}4, 1\\mathrm{-}4, 2\\mathrm{-}5$. Find the degree of vertex $2$.",
+          "q": "Consider the graph of the function $f(x)$ shown below. Which of the following points lies on the graph of $f(x)$?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Eulerian and Hamiltonian Paths and Circuits",
+          "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
           "choices": [
-            "3",
-            "5",
-            "4",
-            "2"
+            "$(-2, 3)$",
+            "$(0, -1)$",
+            "$(1, 0)$",
+            "$(3, 4)$"
           ],
-          "correct": 0,
-          "answer": "$\\mathrm{Vertex\\ }2\\mathrm{\\ appears\\ in\\ }3\\mathrm{\\ edge(s),\\ so\\ its\\ degree\\ is\\ }3.$",
-          "explanation": "$\\mathrm{Vertex\\ }2\\mathrm{\\ appears\\ in\\ }3\\mathrm{\\ edge(s),\\ so\\ its\\ degree\\ is\\ }3.$",
-          "cross_lesson": "6.03 Markov Chains (AI HL)"
+          "correct": 2,
+          "answer": "The graph of $f(x)$ passes through the point $(1, 0)$. To verify this, we can observe the graph and identify the coordinates where the curve intersects the x-axis at $x=1$. Let's check the other options. The point $(-2, 3)$ is not on the curve as the function value at $x=-2$ is approximately $5$. The point $(0, -1)$ is not on the curve as the function value at $x=0$ is approximately $3$. The point $(3, 4)$ is not on the curve as the function value at $x=3$ is approximately $0$. Therefore, only $(1, 0)$ lies on the graph of $f(x)$.",
+          "explanation": "The graph of $f(x)$ passes through the point $(1, 0)$. To verify this, we can observe the graph and identify the coordinates where the curve intersects the x-axis at $x=1$. Let's check the other options. The point $(-2, 3)$ is not on the curve as the function value at $x=-2$ is approximately $5$. The point $(0, -1)$ is not on the curve as the function value at $x=0$ is approximately $3$. The point $(3, 4)$ is not on the curve as the function value at $x=3$ is approximately $0$. Therefore, only $(1, 0)$ lies on the graph of $f(x)$.",
+          "cross_lesson": "6.03 Markov Chains (AI HL)",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "(x-1)*(x-3)*(x+1.5) + 0.5"
+            ],
+            "xmin": -3.0,
+            "xmax": 5.0,
+            "ymin": -5.0,
+            "ymax": 5.0,
+            "width": 230,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": 0.0,
+                "label": "(1, 0)"
+              }
+            ]
+          }
         },
         {
-          "q": "State the principal value (in degrees, $-90^\\circ\\leq\\theta\\leq90^\\circ$) satisfying $\\sin\\theta = \\frac{1}{2}$.",
+          "q": "The graph of the function $f(x) = x^2 - 4x + 3$ is shown below. The function has a local minimum. What are the coordinates of the local minimum?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Minimum Spanning Trees (Kruskal & Prim)",
+          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
           "choices": [
-            "$50^\\circ$",
-            "$30^\\circ$",
-            "$69^\\circ$",
-            "$62^\\circ$"
+            "(2, 1)",
+            "(2, -1)",
+            "(1, 0)",
+            "(3, 0)"
           ],
           "correct": 1,
-          "answer": "Working through this additional-topics step: $\\sin^{-1}(\\frac{1}{2})=30^\\circ$",
-          "explanation": "Working through this additional-topics step: $\\sin^{-1}(\\frac{1}{2})=30^\\circ$",
+          "answer": "The function is a parabola opening upwards, so its local minimum is also its vertex. The x-coordinate of the vertex of a parabola given by $f(x) = ax^2 + bx + c$ is $x = -b/(2a)$. For $f(x) = x^2 - 4x + 3$, we have $a=1$ and $b=-4$. Therefore, the x-coordinate of the vertex is $x = -(-4)/(2*1) = 4/2 = 2$. To find the y-coordinate, we substitute $x=2$ into the function: $f(2) = (2)^2 - 4(2) + 3 = 4 - 8 + 3 = -1$. Thus, the coordinates of the local minimum are (2, -1).",
+          "explanation": "The function is a parabola opening upwards, so its local minimum is also its vertex. The x-coordinate of the vertex of a parabola given by $f(x) = ax^2 + bx + c$ is $x = -b/(2a)$. For $f(x) = x^2 - 4x + 3$, we have $a=1$ and $b=-4$. Therefore, the x-coordinate of the vertex is $x = -(-4)/(2*1) = 4/2 = 2$. To find the y-coordinate, we substitute $x=2$ into the function: $f(2) = (2)^2 - 4(2) + 3 = 4 - 8 + 3 = -1$. Thus, the coordinates of the local minimum are (2, -1).",
           "cross_lesson": "1.01 Proof by Mathematical Induction",
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (1))**2 + (-2)",
-              "0.5*x + 1"
+              "x**2 - 4*x + 3"
             ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
+            "xmin": -4.5,
+            "xmax": 4.5,
+            "ymin": -3.0,
+            "ymax": 20.0,
+            "width": 225,
             "point_labels": [
               {
-                "x": 1.0,
-                "y": -2.0,
-                "label": "$(1,-2)$"
+                "x": 0.5,
+                "y": 1.25,
+                "label": "$(0.5, 1.25)$"
               }
-            ],
-            "width": 230
+            ]
           }
         },
         {
-          "q": "Evaluate $\\sin^{-1}\\left(-\\frac{1}{2}\\right)$ in degrees.",
+          "q": "Consider the graph of the function $f(x)$ shown below. What is the limit of $f(x)$ as $x$ approaches 1?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Shortest Paths and Dijkstra's Algorithm",
+          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
           "choices": [
-            "$-30^\\circ$",
-            "$-24^\\circ$",
-            "$-32^\\circ$",
-            "$-17^\\circ$"
+            "1",
+            "0",
+            "2",
+            "Does not exist"
           ],
           "correct": 0,
-          "answer": "Working through this functions step: $\\sin^{-1}(-\\frac{1}{2}) = -30^\\circ$",
-          "explanation": "Working through this functions step: $\\sin^{-1}(-\\frac{1}{2}) = -30^\\circ$",
-          "cross_lesson": "1.02 Complex Numbers: Cartesian Form & Algebra"
-        },
-        {
-          "q": "Evaluate $\\cos^{-1}\\left(-\\frac{1}{2}\\right)$ in degrees.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Degrees and the Handshaking Lemma",
-          "choices": [
-            "$120^\\circ$",
-            "$97^\\circ$",
-            "$142^\\circ$",
-            "$143^\\circ$"
-          ],
-          "correct": 0,
-          "answer": "Working through this functions step: $\\cos^{-1}(-\\frac{1}{2}) = 120^\\circ$",
-          "explanation": "Working through this functions step: $\\cos^{-1}(-\\frac{1}{2}) = 120^\\circ$",
-          "cross_lesson": "1.03 Polar Form, De Moivre's Theorem & Roots of Unity"
-        },
-        {
-          "q": "Evaluate $\\sin^{-1}\\left(\\frac{1}{2}\\right)$ in degrees.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Eulerian and Hamiltonian Paths and Circuits",
-          "choices": [
-            "$41^\\circ$",
-            "$30^\\circ$",
-            "$15^\\circ$",
-            "$24^\\circ$"
-          ],
-          "correct": 1,
-          "answer": "Working through this functions step: $\\sin^{-1}(\\frac{1}{2}) = 30^\\circ$",
-          "explanation": "Working through this functions step: $\\sin^{-1}(\\frac{1}{2}) = 30^\\circ$",
-          "cross_lesson": "1.04 Partial Fractions"
-        },
-        {
-          "q": "State the principal value (in degrees, $-90^\\circ\\leq\\theta\\leq90^\\circ$) satisfying $\\sin\\theta = 1$.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Minimum Spanning Trees (Kruskal & Prim)",
-          "choices": [
-            "$59^\\circ$",
-            "$90^\\circ$",
-            "$89^\\circ$",
-            "$82^\\circ$"
-          ],
-          "correct": 1,
-          "answer": "Working through this additional-topics step: $\\sin^{-1}(1)=90^\\circ$",
-          "explanation": "Working through this additional-topics step: $\\sin^{-1}(1)=90^\\circ$",
-          "cross_lesson": "1.05 Systems of Linear Equations (AA HL)",
+          "answer": "The limit of a function as $x$ approaches a certain value is the value that $f(x)$ gets arbitrarily close to as $x$ gets arbitrarily close to that value. Observing the graph, as $x$ approaches 1 from both the left and the right, the value of $f(x)$ approaches 1. Therefore, $\\lim_{x\\rightarrow 1} f(x) = 1$.",
+          "explanation": "The limit of a function as $x$ approaches a certain value is the value that $f(x)$ gets arbitrarily close to as $x$ gets arbitrarily close to that value. Observing the graph, as $x$ approaches 1 from both the left and the right, the value of $f(x)$ approaches 1. Therefore, $\\lim_{x\\rightarrow 1} f(x) = 1$.",
+          "cross_lesson": "1.02 Complex Numbers: Cartesian Form & Algebra",
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (-1))**2 + (-2)",
-              "0.5*x + 1"
+              "x"
             ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
+            "xmin": -3.0,
+            "xmax": 3.0,
+            "ymin": -3.0,
+            "ymax": 3.0,
+            "width": 230,
             "point_labels": [
               {
-                "x": -1.0,
-                "y": -2.0,
-                "label": "$(-1,-2)$"
+                "x": 1.0,
+                "y": 1.0,
+                "label": "$(1,1)$"
               }
-            ],
-            "width": 230
+            ]
           }
         },
         {
-          "q": "State the principal value (in degrees, $-90^\\circ\\leq\\theta\\leq90^\\circ$) satisfying $\\sin\\theta = 0$.",
+          "q": "Consider the function $f(x)$ whose graph is given below. The function is defined piecewise. For $x \\leq 2$, $f(x) = ax+b$. For $x > 2$, $f(x) = cx+d$. The graph of $f(x)$ passes through the point $(0, 3)$. The limit of $f(x)$ as $x$ approaches 2 exists. Find the value of $a$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Shortest Paths and Dijkstra's Algorithm",
+          "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
           "choices": [
-            "$16^\\circ$",
-            "$0^\\circ$",
-            "$-34^\\circ$",
-            "$18^\\circ$"
+            "$-1$",
+            "$1$",
+            "$2$",
+            "$-2$"
+          ],
+          "correct": 0,
+          "answer": "For the limit of $f(x)$ as $x$ approaches 2 to exist, the left-hand limit must equal the right-hand limit. That is, $\\lim_{x \\rightarrow 2^-} f(x) = \\lim_{x \\rightarrow 2^+} f(x)$. For $x \\leq 2$, $f(x) = ax+b$. So, the left-hand limit is $\\lim_{x \\rightarrow 2^-} (ax+b) = 2a+b$. For $x > 2$, $f(x) = cx+d$. So, the right-hand limit is $\\lim_{x \\rightarrow 2^+} (cx+d) = 2c+d$. Therefore, $2a+b = 2c+d$. From the graph, we can see that the function passes through $(0, 3)$. This means $f(0) = 3$. Since $0 \\leq 2$, we use the definition $f(x) = ax+b$. Thus, $a(0)+b = 3$, which implies $b = 3$. Also from the graph, we can see the point $(2, 1)$ is on the graph. Since $2 \\leq 2$, $f(2) = a(2)+b = 2a+b = 1$. Substituting $b=3$, we get $2a+3 = 1$, so $2a = -2$, which means $a = -1$. We also observe from the graph that the line segment for $x>2$ passes through $(2, 1)$ and $(4, 0)$. This means $f(x)=cx+d$ must satisfy these points. For $(2, 1)$: $2c+d = 1$. For $(4, 0)$: $4c+d = 0$. Subtracting the first equation from the second: $(4c+d) - (2c+d) = 0 - 1$, which gives $2c = -1$, so $c = -1/2$. Substituting $c = -1/2$ into $4c+d=0$: $4(-1/2)+d = 0$, so $-2+d=0$, which means $d=2$. Now, let's check the limit condition: $2a+b = 2c+d$. We found $a=-1$, $b=3$, $c=-1/2$, $d=2$. So, $2(-1)+3 = -2+3 = 1$. And $2(-1/2)+2 = -1+2 = 1$. The condition is satisfied. The question asks for the value of $a$, which we found to be $-1$. Common algebraic traps to avoid: 1. Mistaking the point $(2,1)$ as the endpoint of the $cx+d$ segment, which would lead to using $2c+d=1$ for the limit and potentially solving for $c$ and $d$ incorrectly. 2. Assuming continuity at $x=2$ and not just the existence of the limit. While the graph *appears* continuous, the problem only states the limit exists.",
+          "explanation": "For the limit of $f(x)$ as $x$ approaches 2 to exist, the left-hand limit must equal the right-hand limit. That is, $\\lim_{x \\rightarrow 2^-} f(x) = \\lim_{x \\rightarrow 2^+} f(x)$. For $x \\leq 2$, $f(x) = ax+b$. So, the left-hand limit is $\\lim_{x \\rightarrow 2^-} (ax+b) = 2a+b$. For $x > 2$, $f(x) = cx+d$. So, the right-hand limit is $\\lim_{x \\rightarrow 2^+} (cx+d) = 2c+d$. Therefore, $2a+b = 2c+d$. From the graph, we can see that the function passes through $(0, 3)$. This means $f(0) = 3$. Since $0 \\leq 2$, we use the definition $f(x) = ax+b$. Thus, $a(0)+b = 3$, which implies $b = 3$. Also from the graph, we can see the point $(2, 1)$ is on the graph. Since $2 \\leq 2$, $f(2) = a(2)+b = 2a+b = 1$. Substituting $b=3$, we get $2a+3 = 1$, so $2a = -2$, which means $a = -1$. We also observe from the graph that the line segment for $x>2$ passes through $(2, 1)$ and $(4, 0)$. This means $f(x)=cx+d$ must satisfy these points. For $(2, 1)$: $2c+d = 1$. For $(4, 0)$: $4c+d = 0$. Subtracting the first equation from the second: $(4c+d) - (2c+d) = 0 - 1$, which gives $2c = -1$, so $c = -1/2$. Substituting $c = -1/2$ into $4c+d=0$: $4(-1/2)+d = 0$, so $-2+d=0$, which means $d=2$. Now, let's check the limit condition: $2a+b = 2c+d$. We found $a=-1$, $b=3$, $c=-1/2$, $d=2$. So, $2(-1)+3 = -2+3 = 1$. And $2(-1/2)+2 = -1+2 = 1$. The condition is satisfied. The question asks for the value of $a$, which we found to be $-1$. Common algebraic traps to avoid: 1. Mistaking the point $(2,1)$ as the endpoint of the $cx+d$ segment, which would lead to using $2c+d=1$ for the limit and potentially solving for $c$ and $d$ incorrectly. 2. Assuming continuity at $x=2$ and not just the existence of the limit. While the graph *appears* continuous, the problem only states the limit exists.",
+          "cross_lesson": "1.03 Polar Form, De Moivre's Theorem & Roots of Unity"
+        },
+        {
+          "q": "Consider the rational function $f(x) = \\frac{ax^2 - 4x + 1}{x^2 - bx + 2}$. The graph of $y = f(x)$ has a vertical asymptote at $x = 1$ and a horizontal asymptote at $y = 2$. If $f(0) = \\frac{1}{2}$, find the value of $a$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4"
           ],
           "correct": 1,
-          "answer": "Working through this additional-topics step: $\\sin^{-1}(0)=0^\\circ$",
-          "explanation": "Working through this additional-topics step: $\\sin^{-1}(0)=0^\\circ$",
+          "answer": "For a rational function $f(x) = \\frac{P(x)}{Q(x)}$, vertical asymptotes occur at the zeros of the denominator $Q(x)$ that are not also zeros of the numerator $P(x)$. Given a vertical asymptote at $x = 1$, we know that $x=1$ is a root of the denominator $x^2 - bx + 2 = 0$. Therefore, $1^2 - b(1) + 2 = 0$, which simplifies to $1 - b + 2 = 0$, so $b = 3$. The denominator is $x^2 - 3x + 2 = (x-1)(x-2)$. The horizontal asymptote is determined by the ratio of the leading coefficients of the numerator and denominator if the degrees are equal. Here, the degree of the numerator is 2 and the degree of the denominator is 2. The horizontal asymptote is $y = \\frac{a}{1}$. We are given that the horizontal asymptote is $y = 2$, so $a = 2$. We can verify this with the condition $f(0) = \\frac{1}{2}$. If $a=2$ and $b=3$, then $f(x) = \\frac{2x^2 - 4x + 1}{x^2 - 3x + 2}$. $f(0) = \\frac{2(0)^2 - 4(0) + 1}{0^2 - 3(0) + 2} = \\frac{1}{2}$, which matches the given information. Therefore, the value of $a$ is 2.",
+          "explanation": "For a rational function $f(x) = \\frac{P(x)}{Q(x)}$, vertical asymptotes occur at the zeros of the denominator $Q(x)$ that are not also zeros of the numerator $P(x)$. Given a vertical asymptote at $x = 1$, we know that $x=1$ is a root of the denominator $x^2 - bx + 2 = 0$. Therefore, $1^2 - b(1) + 2 = 0$, which simplifies to $1 - b + 2 = 0$, so $b = 3$. The denominator is $x^2 - 3x + 2 = (x-1)(x-2)$. The horizontal asymptote is determined by the ratio of the leading coefficients of the numerator and denominator if the degrees are equal. Here, the degree of the numerator is 2 and the degree of the denominator is 2. The horizontal asymptote is $y = \\frac{a}{1}$. We are given that the horizontal asymptote is $y = 2$, so $a = 2$. We can verify this with the condition $f(0) = \\frac{1}{2}$. If $a=2$ and $b=3$, then $f(x) = \\frac{2x^2 - 4x + 1}{x^2 - 3x + 2}$. $f(0) = \\frac{2(0)^2 - 4(0) + 1}{0^2 - 3(0) + 2} = \\frac{1}{2}$, which matches the given information. Therefore, the value of $a$ is 2.",
+          "cross_lesson": "1.04 Partial Fractions"
+        },
+        {
+          "q": "Consider the rational function $f(x) = \\frac{x^2 - ax + 6}{x - b}$. If the graph of $f(x)$ has a removable discontinuity at $x = 2$ and a vertical asymptote at $x = 3$, determine the values of $a$ and $b$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+          "choices": [
+            "a = 5, b = 3",
+            "a = -5, b = 3",
+            "a = 5, b = 2",
+            "a = -5, b = 2"
+          ],
+          "correct": 0,
+          "answer": "For a rational function to have a removable discontinuity at $x = c$, the numerator must have a factor of $(x - c)$ that cancels with a factor in the denominator. Given a removable discontinuity at $x = 2$, the numerator $x^2 - ax + 6$ must have $x = 2$ as a root. Thus, $2^2 - a(2) + 6 = 0$, which simplifies to $4 - 2a + 6 = 0$, so $10 - 2a = 0$, and $a = 5$. The numerator can be factored as $(x - 2)(x - 3)$ since $2 \\times 3 = 6$ and $2+3=5$, so $a=5$. For the function to have a vertical asymptote at $x = 3$, the denominator must have a factor of $(x - 3)$ that is not cancelled by a factor in the numerator. This means $b$ must be equal to 3. The function becomes $f(x) = \\frac{(x-2)(x-3)}{x-3}$. This function has a removable discontinuity at $x=2$ (after cancellation of $(x-3)$) and a vertical asymptote at $x=3$. Therefore, $a = 5$ and $b = 3$.",
+          "explanation": "For a rational function to have a removable discontinuity at $x = c$, the numerator must have a factor of $(x - c)$ that cancels with a factor in the denominator. Given a removable discontinuity at $x = 2$, the numerator $x^2 - ax + 6$ must have $x = 2$ as a root. Thus, $2^2 - a(2) + 6 = 0$, which simplifies to $4 - 2a + 6 = 0$, so $10 - 2a = 0$, and $a = 5$. The numerator can be factored as $(x - 2)(x - 3)$ since $2 \\times 3 = 6$ and $2+3=5$, so $a=5$. For the function to have a vertical asymptote at $x = 3$, the denominator must have a factor of $(x - 3)$ that is not cancelled by a factor in the numerator. This means $b$ must be equal to 3. The function becomes $f(x) = \\frac{(x-2)(x-3)}{x-3}$. This function has a removable discontinuity at $x=2$ (after cancellation of $(x-3)$) and a vertical asymptote at $x=3$. Therefore, $a = 5$ and $b = 3$.",
+          "cross_lesson": "1.05 Systems of Linear Equations (AA HL)"
+        },
+        {
+          "q": "The diagram shows the graph of the function $y = f(x)$. The graph is transformed by a sequence of operations. The resulting graph, $y = g(x)$, is also shown. The function $f(x)$ is given by $f(x) = ax^2 + bx + c$, where $a, b,$ and $c$ are constants. The vertex of the graph of $y = f(x)$ is at $(2, -1)$, and it passes through the point $(4, 3)$. The graph of $y = g(x)$ is obtained by translating the graph of $y = f(x)$ by $\\left(-1 \\ 3\\right)$ followed by a reflection in the y-axis. Find the values of $a, b,$ and $c$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+          "choices": [
+            "$a=1, b=-4, c=3$",
+            "$a=1, b=4, c=-5$",
+            "$a=2, b=-8, c=7$",
+            "$a=-1, b=4, c=-5$"
+          ],
+          "correct": 0,
+          "answer": "The vertex of the parabola $y = ax^2 + bx + c$ is at $\\left(-\\frac{b}{2a}, f\\left(-\\frac{b}{2a}\\right)\\right)$. We are given that the vertex is at $(2, -1)$. Therefore, $-\\frac{b}{2a} = 2$, which implies $b = -4a$. The vertex form of the quadratic equation is $y = a(x-h)^2 + k$, where $(h,k)$ is the vertex. So, $y = a(x-2)^2 - 1$. The graph passes through $(4, 3)$. Substituting this point into the equation: $3 = a(4-2)^2 - 1 \\Rightarrow 3 = a(2)^2 - 1 \\Rightarrow 3 = 4a - 1 \\Rightarrow 4a = 4 \\Rightarrow a = 1$. Since $a = 1$ and $b = -4a$, we have $b = -4(1) = -4$. Expanding the vertex form $y = 1(x-2)^2 - 1 = (x^2 - 4x + 4) - 1 = x^2 - 4x + 3$. Thus, $c = 3$. The values are $a=1, b=-4, c=3$.",
+          "explanation": "The vertex of the parabola $y = ax^2 + bx + c$ is at $\\left(-\\frac{b}{2a}, f\\left(-\\frac{b}{2a}\\right)\\right)$. We are given that the vertex is at $(2, -1)$. Therefore, $-\\frac{b}{2a} = 2$, which implies $b = -4a$. The vertex form of the quadratic equation is $y = a(x-h)^2 + k$, where $(h,k)$ is the vertex. So, $y = a(x-2)^2 - 1$. The graph passes through $(4, 3)$. Substituting this point into the equation: $3 = a(4-2)^2 - 1 \\Rightarrow 3 = a(2)^2 - 1 \\Rightarrow 3 = 4a - 1 \\Rightarrow 4a = 4 \\Rightarrow a = 1$. Since $a = 1$ and $b = -4a$, we have $b = -4(1) = -4$. Expanding the vertex form $y = 1(x-2)^2 - 1 = (x^2 - 4x + 4) - 1 = x^2 - 4x + 3$. Thus, $c = 3$. The values are $a=1, b=-4, c=3$.",
           "cross_lesson": "2.01 Modulus Functions & the Factor/Remainder Theorem"
         },
         {
-          "q": "Evaluate $\\tan^{-1}\\left(-1\\right)$ in degrees.",
+          "q": "The graph of the function $f(x) = a \\cdot b^x$ passes through the points $(1, 12)$ and $(3, 108)$. Determine the value of the parameter $a$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Degrees and the Handshaking Lemma",
+          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
           "choices": [
-            "$-55^\\circ$",
-            "$-58^\\circ$",
-            "$-35^\\circ$",
-            "$-45^\\circ$"
+            "1",
+            "2",
+            "3",
+            "4"
           ],
-          "correct": 3,
-          "answer": "Working through this functions step: $\\tan^{-1}(-1) = -45^\\circ$",
-          "explanation": "Working through this functions step: $\\tan^{-1}(-1) = -45^\\circ$",
+          "correct": 1,
+          "answer": "We are given the function $f(x) = a \\cdot b^x$ and two points it passes through: $(1, 12)$ and $(3, 108)$. Using the first point $(1, 12)$, we have: $12 = a \\cdot b^1$ (Equation 1) Using the second point $(3, 108)$, we have: $108 = a \\cdot b^3$ (Equation 2) To find $a$ and $b$, we can divide Equation 2 by Equation 1: $\\frac{108}{12} = \\frac{a \\cdot b^3}{a \\cdot b^1}$ $9 = b^2$ Taking the square root of both sides, and assuming $b > 0$ for exponential functions: $b = 3$ Now, substitute the value of $b=3$ back into Equation 1: $12 = a \\cdot 3^1$ $12 = 3a$ Divide by 3 to solve for $a$: $a = \\frac{12}{3}$ $a = 4$ Therefore, the value of the parameter $a$ is 4.",
+          "explanation": "We are given the function $f(x) = a \\cdot b^x$ and two points it passes through: $(1, 12)$ and $(3, 108)$. Using the first point $(1, 12)$, we have: $12 = a \\cdot b^1$ (Equation 1) Using the second point $(3, 108)$, we have: $108 = a \\cdot b^3$ (Equation 2) To find $a$ and $b$, we can divide Equation 2 by Equation 1: $\\frac{108}{12} = \\frac{a \\cdot b^3}{a \\cdot b^1}$ $9 = b^2$ Taking the square root of both sides, and assuming $b > 0$ for exponential functions: $b = 3$ Now, substitute the value of $b=3$ back into Equation 1: $12 = a \\cdot 3^1$ $12 = 3a$ Divide by 3 to solve for $a$: $a = \\frac{12}{3}$ $a = 4$ Therefore, the value of the parameter $a$ is 4.",
           "cross_lesson": "3.01 3D Vectors & the Cross Product"
         }
       ]

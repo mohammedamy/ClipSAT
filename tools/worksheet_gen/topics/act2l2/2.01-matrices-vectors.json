@@ -26,18 +26,18 @@
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (0))**2 + (-1)",
-              "0.5*x + 1"
+              "-0.45*(x - (-1.0))**2 + (-1.5)",
+              "-0.6*x + (-2.7)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
-                "x": 0.0,
-                "y": -1.0,
-                "label": "$(0,-1)$"
+                "x": -1.0,
+                "y": -1.5,
+                "label": "$(-1,-1.5)$"
               }
             ],
             "width": 230
@@ -77,18 +77,18 @@
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (1))**2 + (-1)",
-              "0.5*x + 1"
+              "-0.3*(x - (-1.0))**2 + (0.5)",
+              "0.9*x + (-0.7)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
-                "x": 1.0,
-                "y": -1.0,
-                "label": "$(1,-1)$"
+                "x": -1.0,
+                "y": 0.5,
+                "label": "$(-1,0.5)$"
               }
             ],
             "width": 230
@@ -124,39 +124,31 @@
           "explanation": "$M$ has rows $\\langle3,-1\\rangle$ and $\\langle1,2\\rangle$, so $\\det M=(3)(2)-(-1)(1)=7$, and $M^{-1}$ has rows $\\langle\\frac{2}{7},\\frac{1}{7}\\rangle$ and $\\langle-\\frac{1}{7},\\frac{3}{7}\\rangle$. Then $x=\\frac{1}{7}\\left[2(8)+1(5)\\right]=3$ and $y=\\frac{1}{7}\\left[-1(8)+3(5)\\right]=1$. Check: $3(3)-1=8$ and $3+2(1)=5$."
         },
         {
-          "q": "For $\\mathbf{u}=\\langle3,4\\rangle$ and $\\mathbf{w}=\\langle-4,3\\rangle$, find $\\mathbf{u}\\cdot\\mathbf{w}$ and $|\\mathbf{u}|$.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Vector magnitude and dot product",
-          "answer": "$\\mathbf{u}\\cdot\\mathbf{w}=(3)(-4)+(4)(3)=0$, and $|\\mathbf{u}|=\\sqrt{3^2+4^2}=5$.",
-          "explanation": "$\\mathbf{u}\\cdot\\mathbf{w}=(3)(-4)+(4)(3)=0$, and $|\\mathbf{u}|=\\sqrt{3^2+4^2}=5$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": -1.0,
-                "y": -1.0,
-                "label": "$(-1,-1)$"
-              }
-            ],
-            "width": 230
-          }
-        },
-        {
           "q": "What does $\\mathbf{u}\\cdot\\mathbf{w}=0$ tell you about $\\mathbf{u}$ and $\\mathbf{w}$ from the previous question?",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Vector magnitude and dot product",
           "answer": "A zero dot product means $\\mathbf{u}$ and $\\mathbf{w}$ are perpendicular (orthogonal).",
-          "explanation": "A zero dot product means $\\mathbf{u}$ and $\\mathbf{w}$ are perpendicular (orthogonal)."
+          "explanation": "A zero dot product means $\\mathbf{u}$ and $\\mathbf{w}$ are perpendicular (orthogonal).",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.45*(x - (0.0))**2 + (1.0)",
+              "0.15*x + (2.2)"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -5,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": 1.0,
+                "label": "$(0,1)$"
+              }
+            ],
+            "width": 230
+          }
         },
         {
           "q": "Find the angle between $\\mathbf{p}=\\langle1,0\\rangle$ and $\\mathbf{q}=\\langle1,1\\rangle$.",
@@ -175,12 +167,20 @@
           "explanation": "Dot product $=18-32=-14$, magnitudes $10$ and $5$. $\\cos\\theta=\\frac{-14}{50}=-0.28 \\Rightarrow \\theta\\approx106.3^\\circ$."
         },
         {
-          "q": "Find the magnitude and direction angle $\\theta$ (in degrees, $0^\\circ \\leq \\theta < 360^\\circ$) of the vector $\\mathbf{v} = \\langle -5, 5\\sqrt{3} \\rangle$.",
+          "q": "Given 3D vectors $\\mathbf{u} = \\langle 2, -3, 6 \\rangle$ and $\\mathbf{v} = \\langle 1, 4, 2 \\rangle$: (a) Find the unit vector in the direction of $\\mathbf{u}$. (b) Calculate the angle $\\theta$ between $\\mathbf{u}$ and $\\mathbf{v}$ to the nearest degree.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
-          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
-          "answer": "Step 1: Compute magnitude: $|\\mathbf{v}| = \\sqrt{(-5)^2 + (5\\sqrt{3})^2} = \\sqrt{25 + 75} = \\sqrt{100} = \\mathbf{10}.$ Step 2: Direction angle: Since $v_x = -5 < 0$ and $v_y = 5\\sqrt{3} > 0$, the vector lies in Quadrant II. Reference angle: $\\alpha = \\tan^{-1}\\left(\\frac{5\\sqrt{3}}{5}\\right) = \\tan^{-1}(\\sqrt{3}) = 60^\\circ$. $\\theta = 180^\\circ - 60^\\circ = \\mathbf{120^\\circ}.$",
-          "explanation": "Step 1: Compute magnitude: $|\\mathbf{v}| = \\sqrt{(-5)^2 + (5\\sqrt{3})^2} = \\sqrt{25 + 75} = \\sqrt{100} = \\mathbf{10}.$ Step 2: Direction angle: Since $v_x = -5 < 0$ and $v_y = 5\\sqrt{3} > 0$, the vector lies in Quadrant II. Reference angle: $\\alpha = \\tan^{-1}\\left(\\frac{5\\sqrt{3}}{5}\\right) = \\tan^{-1}(\\sqrt{3}) = 60^\\circ$. $\\theta = 180^\\circ - 60^\\circ = \\mathbf{120^\\circ}.$"
+          "target": "Addition and scalar multiplication",
+          "answer": "Part (a): Find the unit vector $\\hat{\\mathbf{u}}$: 1. Magnitude of $\\mathbf{u}$: $|\\mathbf{u}| = \\sqrt{2^2 + (-3)^2 + 6^2} = \\sqrt{4 + 9 + 36} = \\sqrt{49} = 7.$ 2. Unit vector: $\\hat{\\mathbf{u}} = \\frac{\\mathbf{u}}{|\\mathbf{u}|} = \\mathbf{\\left\\langle \\frac{2}{7}, -\\frac{3}{7}, \\frac{6}{7} \\right\\rangle}.$ Part (b): Find the angle $\\theta$: 1. Dot product $\\mathbf{u}\\cdot\\mathbf{v}$: $\\mathbf{u}\\cdot\\mathbf{v} = (2)(1) + (-3)(4) + (6)(2) = 2 - 12 + 12 = 2.$ 2. Magnitude of $\\mathbf{v}$: $|\\mathbf{v}| = \\sqrt{1^2 + 4^2 + 2^2} = \\sqrt{1 + 16 + 4} = \\sqrt{21}.$ 3. Angle $\\theta$: $\\cos\\theta = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|} = \\frac{2}{7\\sqrt{21}} \\approx \\frac{2}{32.078} \\approx 0.06235.$ $\\theta = \\cos^{-1}(0.06235) \\approx \\mathbf{86^\\circ}.$",
+          "explanation": "Part (a): Find the unit vector $\\hat{\\mathbf{u}}$: 1. Magnitude of $\\mathbf{u}$: $|\\mathbf{u}| = \\sqrt{2^2 + (-3)^2 + 6^2} = \\sqrt{4 + 9 + 36} = \\sqrt{49} = 7.$ 2. Unit vector: $\\hat{\\mathbf{u}} = \\frac{\\mathbf{u}}{|\\mathbf{u}|} = \\mathbf{\\left\\langle \\frac{2}{7}, -\\frac{3}{7}, \\frac{6}{7} \\right\\rangle}.$ Part (b): Find the angle $\\theta$: 1. Dot product $\\mathbf{u}\\cdot\\mathbf{v}$: $\\mathbf{u}\\cdot\\mathbf{v} = (2)(1) + (-3)(4) + (6)(2) = 2 - 12 + 12 = 2.$ 2. Magnitude of $\\mathbf{v}$: $|\\mathbf{v}| = \\sqrt{1^2 + 4^2 + 2^2} = \\sqrt{1 + 16 + 4} = \\sqrt{21}.$ 3. Angle $\\theta$: $\\cos\\theta = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|} = \\frac{2}{7\\sqrt{21}} \\approx \\frac{2}{32.078} \\approx 0.06235.$ $\\theta = \\cos^{-1}(0.06235) \\approx \\mathbf{86^\\circ}.$"
+        },
+        {
+          "q": "Find all real values of the constant $k$ for which the matrix $M = \\left(k+2, 4 ; 3, k-2\\right)$ is singular (has no inverse).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Matrix multiplication",
+          "answer": "Step 1: Set the determinant to zero: A matrix is singular if and only if $\\det(M) = 0$: $\\det(M) = (k+2)(k-2) - (4)(3) = 0.$ Step 2: Solve the algebraic equation: $(k^2 - 4) - 12 = 0 \\Rightarrow k^2 - 16 = 0.$ Step 3: Extract roots: $(k - 4)(k + 4) = 0 \\Rightarrow \\mathbf{k = 4 \\quad\\mathrm{or}\\quad k = -4}.$ Check: For $k = 4$, $M = \\left(6, 4 ; 3, 2\\right)$, $\\det = 12 - 12 = 0$ ✓. For $k = -4$, $M = \\left(-2, 4 ; 3, -6\\right)$, $\\det = 12 - 12 = 0$ ✓.",
+          "explanation": "Step 1: Set the determinant to zero: A matrix is singular if and only if $\\det(M) = 0$: $\\det(M) = (k+2)(k-2) - (4)(3) = 0.$ Step 2: Solve the algebraic equation: $(k^2 - 4) - 12 = 0 \\Rightarrow k^2 - 16 = 0.$ Step 3: Extract roots: $(k - 4)(k + 4) = 0 \\Rightarrow \\mathbf{k = 4 \\quad\\mathrm{or}\\quad k = -4}.$ Check: For $k = 4$, $M = \\left(6, 4 ; 3, 2\\right)$, $\\det = 12 - 12 = 0$ ✓. For $k = -4$, $M = \\left(-2, 4 ; 3, -6\\right)$, $\\det = 12 - 12 = 0$ ✓."
         }
       ]
     },
@@ -188,20 +188,48 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
+          "q": "Find the magnitude and direction angle $\\theta$ (in degrees, $0^\\circ \\leq \\theta < 360^\\circ$) of the vector $\\mathbf{v} = \\langle -5, 5\\sqrt{3} \\rangle$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Determinant and inverse",
+          "cross_lesson": "1.01 Complex Numbers",
+          "answer": "Step 1: Compute magnitude: $|\\mathbf{v}| = \\sqrt{(-5)^2 + (5\\sqrt{3})^2} = \\sqrt{25 + 75} = \\sqrt{100} = \\mathbf{10}.$ Step 2: Direction angle: Since $v_x = -5 < 0$ and $v_y = 5\\sqrt{3} > 0$, the vector lies in Quadrant II. Reference angle: $\\alpha = \\tan^{-1}\\left(\\frac{5\\sqrt{3}}{5}\\right) = \\tan^{-1}(\\sqrt{3}) = 60^\\circ$. $\\theta = 180^\\circ - 60^\\circ = \\mathbf{120^\\circ}.$",
+          "explanation": "Step 1: Compute magnitude: $|\\mathbf{v}| = \\sqrt{(-5)^2 + (5\\sqrt{3})^2} = \\sqrt{25 + 75} = \\sqrt{100} = \\mathbf{10}.$ Step 2: Direction angle: Since $v_x = -5 < 0$ and $v_y = 5\\sqrt{3} > 0$, the vector lies in Quadrant II. Reference angle: $\\alpha = \\tan^{-1}\\left(\\frac{5\\sqrt{3}}{5}\\right) = \\tan^{-1}(\\sqrt{3}) = 60^\\circ$. $\\theta = 180^\\circ - 60^\\circ = \\mathbf{120^\\circ}.$"
+        },
+        {
           "q": "Find the angle $\\theta$ between the vectors $\\mathbf{a} = \\langle 1, 2, 2 \\rangle$ and $\\mathbf{b} = \\langle 2, -2, 1 \\rangle$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
-          "cross_lesson": "1.01 Complex Numbers",
+          "target": "Solving systems with the inverse matrix",
+          "cross_lesson": "3.01 Sequences & Series",
           "answer": "Step 1: Compute dot product: $\\mathbf{a}\\cdot\\mathbf{b} = (1)(2) + (2)(-2) + (2)(1) = 2 - 4 + 2 = 0.$ Step 2: Conclude angle: Since $\\mathbf{a}\\cdot\\mathbf{b} = 0$ and both vectors have non-zero magnitude ($|\\mathbf{a}| = 3, |\\mathbf{b}| = 3$): $\\cos\\theta = 0 \\Rightarrow \\theta = \\mathbf{90^\\circ} \\quad \\left(\\mathrm{or\\ } \\frac{\\pi}{2}\\mathrm{\\ rad}\\right).$",
-          "explanation": "Step 1: Compute dot product: $\\mathbf{a}\\cdot\\mathbf{b} = (1)(2) + (2)(-2) + (2)(1) = 2 - 4 + 2 = 0.$ Step 2: Conclude angle: Since $\\mathbf{a}\\cdot\\mathbf{b} = 0$ and both vectors have non-zero magnitude ($|\\mathbf{a}| = 3, |\\mathbf{b}| = 3$): $\\cos\\theta = 0 \\Rightarrow \\theta = \\mathbf{90^\\circ} \\quad \\left(\\mathrm{or\\ } \\frac{\\pi}{2}\\mathrm{\\ rad}\\right).$"
+          "explanation": "Step 1: Compute dot product: $\\mathbf{a}\\cdot\\mathbf{b} = (1)(2) + (2)(-2) + (2)(1) = 2 - 4 + 2 = 0.$ Step 2: Conclude angle: Since $\\mathbf{a}\\cdot\\mathbf{b} = 0$ and both vectors have non-zero magnitude ($|\\mathbf{a}| = 3, |\\mathbf{b}| = 3$): $\\cos\\theta = 0 \\Rightarrow \\theta = \\mathbf{90^\\circ} \\quad \\left(\\mathrm{or\\ } \\frac{\\pi}{2}\\mathrm{\\ rad}\\right).$",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.45*(x - (-1.5))**2 + (-0.5)",
+              "-0.35*x + (0.7)"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -5,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.5,
+                "y": -0.5,
+                "label": "$(-1.5,-0.5)$"
+              }
+            ],
+            "width": 230
+          }
         },
         {
           "q": "Find the inverse of the matrix $A = \\left(4, 7 ; 1, 2\\right)$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
-          "cross_lesson": "3.01 Sequences & Series",
+          "target": "Vector magnitude and dot product",
+          "cross_lesson": "4.01 Advanced Functions & Equations",
           "answer": "Step 1: Compute determinant: $\\det(A) = (4)(2) - (7)(1) = 8 - 7 = 1.$ Step 2: Apply the inverse formula: $A^{-1} = \\frac{1}{\\det(A)} \\left(d, -b ; -c, a\\right) = \\frac{1}{1} \\left(2, -7 ; -1, 4\\right) = \\mathbf{\\left(2, -7 ; -1, 4\\right)}.$ Check: $A A^{-1} = \\left(8-7, -28+28 ; 2-2, -7+8\\right) = \\left(1, 0 ; 0, 1\\right) = I$ ✓.",
           "explanation": "Step 1: Compute determinant: $\\det(A) = (4)(2) - (7)(1) = 8 - 7 = 1.$ Step 2: Apply the inverse formula: $A^{-1} = \\frac{1}{\\det(A)} \\left(d, -b ; -c, a\\right) = \\frac{1}{1} \\left(2, -7 ; -1, 4\\right) = \\mathbf{\\left(2, -7 ; -1, 4\\right)}.$ Check: $A A^{-1} = \\left(8-7, -28+28 ; 2-2, -7+8\\right) = \\left(1, 0 ; 0, 1\\right) = I$ ✓.",
           "figure": {
@@ -210,11 +238,11 @@
               "0.5*x",
               "-2*x"
             ],
-            "xmin": -6.0,
-            "xmax": 6.0,
-            "ymin": -6.0,
-            "ymax": 6.0,
-            "points": [],
+            "xmin": -4.0,
+            "xmax": 4.0,
+            "ymin": -4.0,
+            "ymax": 4.0,
+            "width": 230,
             "point_labels": [
               {
                 "x": 2.0,
@@ -226,87 +254,54 @@
                 "y": 2.0,
                 "label": "v2"
               }
-            ],
-            "width": 230
+            ]
           }
         },
         {
           "q": "Compute the matrix product $AB$ where $A = \\left(1, 3 ; -2, 4\\right)$ and $B = \\left(2, 0 ; 5, -1\\right)$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
-          "cross_lesson": "4.01 Advanced Functions & Equations",
+          "target": "Angle between vectors",
+          "cross_lesson": "5.01 Trigonometry & Polar Coordinates",
           "answer": "Step 1: Compute rows of $A$ dot columns of $B$: $(AB)_{11} = (1)(2) + (3)(5) = 2 + 15 = 17$ $(AB)_{12} = (1)(0) + (3)(-1) = 0 - 3 = -3$ $(AB)_{21} = (-2)(2) + (4)(5) = -4 + 20 = 16$ $(AB)_{22} = (-2)(0) + (4)(-1) = 0 - 4 = -4$ Conclusion: $AB = \\mathbf{\\left(17, -3 ; 16, -4\\right)}.$",
           "explanation": "Step 1: Compute rows of $A$ dot columns of $B$: $(AB)_{11} = (1)(2) + (3)(5) = 2 + 15 = 17$ $(AB)_{12} = (1)(0) + (3)(-1) = 0 - 3 = -3$ $(AB)_{21} = (-2)(2) + (4)(5) = -4 + 20 = 16$ $(AB)_{22} = (-2)(0) + (4)(-1) = 0 - 4 = -4$ Conclusion: $AB = \\mathbf{\\left(17, -3 ; 16, -4\\right)}.$",
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*x",
-              "-2*x"
+              "-0.3*(x - (1.0))**2 + (-1.0)",
+              "1.15*x + (-2.2)"
             ],
-            "xmin": -6.0,
-            "xmax": 6.0,
-            "ymin": -6.0,
-            "ymax": 6.0,
-            "points": [],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -5,
+            "ymax": 6,
             "point_labels": [
               {
-                "x": 2.0,
-                "y": 1.0,
-                "label": "v1"
-              },
-              {
-                "x": -1.0,
-                "y": 2.0,
-                "label": "v2"
+                "x": 1.0,
+                "y": -1.0,
+                "label": "$(1,-1)$"
               }
             ],
             "width": 230
           }
         },
         {
-          "q": "Calculate the determinant of the matrix $M = \\left(7, 3 ; -2, 5\\right)$.",
+          "q": "Vectors $\\mathbf{a} = \\langle 4, k \\rangle$ and $\\mathbf{b} = \\langle 6, -8 \\rangle$ are perpendicular. Find the value of $k$, and compute the projection of $\\mathbf{c} = \\langle 10, 5 \\rangle$ onto $\\mathbf{b}$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
-          "cross_lesson": "5.01 Trigonometry & Polar Coordinates",
-          "answer": "Formula: For $\\left(a, b ; c, d\\right)$, $\\det(M) = ad - bc$. $\\det(M) = (7)(5) - (3)(-2) = 35 - (-6) = 35 + 6 = \\mathbf{41}.$ Key Mathematical Principle & Verification: In exam revision, always verify that the final value satisfies the domain constraints, units, and original governing equation by direct back-substitution into the prompt.",
-          "explanation": "Formula: For $\\left(a, b ; c, d\\right)$, $\\det(M) = ad - bc$. $\\det(M) = (7)(5) - (3)(-2) = 35 - (-6) = 35 + 6 = \\mathbf{41}.$ Key Mathematical Principle & Verification: In exam revision, always verify that the final value satisfies the domain constraints, units, and original governing equation by direct back-substitution into the prompt."
-        },
-        {
-          "q": "Find the distance in the polar coordinate plane between the two points $P_1\\left(4, \\frac{\\pi}{3}\\right)$ and $P_2\\left(7, \\frac{2\\pi}{3}\\right)$.",
-          "difficulty": "Challenging",
-          "question_type": "FRQ",
-          "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+          "target": "Addition and scalar multiplication",
           "cross_lesson": "6.01 Limits",
-          "answer": "Step 1: Apply the Law of Cosines for polar distance: $d = \\sqrt{r_1^2 + r_2^2 - 2r_1 r_2 \\cos(\\theta_2 - \\theta_1)}$ Step 2: Substitute values: $r_1 = 4$, $r_2 = 7$, $\\theta_2 - \\theta_1 = \\frac{2\\pi}{3} - \\frac{\\pi}{3} = \\frac{\\pi}{3}$. $d = \\sqrt{4^2 + 7^2 - 2(4)(7)\\cos\\left(\\frac{\\pi}{3}\\right)} = \\sqrt{16 + 49 - 56\\left(\\frac{1}{2}\\right)}$ $d = \\sqrt{65 - 28} = \\mathbf{\\sqrt{37}}.$",
-          "explanation": "Step 1: Apply the Law of Cosines for polar distance: $d = \\sqrt{r_1^2 + r_2^2 - 2r_1 r_2 \\cos(\\theta_2 - \\theta_1)}$ Step 2: Substitute values: $r_1 = 4$, $r_2 = 7$, $\\theta_2 - \\theta_1 = \\frac{2\\pi}{3} - \\frac{\\pi}{3} = \\frac{\\pi}{3}$. $d = \\sqrt{4^2 + 7^2 - 2(4)(7)\\cos\\left(\\frac{\\pi}{3}\\right)} = \\sqrt{16 + 49 - 56\\left(\\frac{1}{2}\\right)}$ $d = \\sqrt{65 - 28} = \\mathbf{\\sqrt{37}}.$",
-          "figure": {
-            "type": "circle",
-            "center": [
-              0,
-              0
-            ],
-            "radius": 6.0,
-            "center_label": "$O$",
-            "radius_label": "$r = 6$",
-            "sector": {
-              "start_deg": 0,
-              "end_deg": 60,
-              "label": "$60^\\circ$"
-            },
-            "chord": null,
-            "width": 210
-          }
+          "answer": "Step 1: Use the orthogonality condition $\\mathbf{a} \\cdot \\mathbf{b} = 0$: $\\mathbf{a}\\cdot\\mathbf{b} = (4)(6) + (k)(-8) = 24 - 8k = 0 \\Rightarrow 8k = 24 \\Rightarrow \\mathbf{k = 3}.$ Step 2: Compute the vector projection of $\\mathbf{c}$ onto $\\mathbf{b}$: The scalar projection is $\\mathrm{comp}_{\\mathbf{b}}\\mathbf{c} = \\frac{\\mathbf{c}\\cdot\\mathbf{b}}{|\\mathbf{b}|}$. 1. $\\mathbf{c}\\cdot\\mathbf{b} = (10)(6) + (5)(-8) = 60 - 40 = 20$. 2. $|\\mathbf{b}| = \\sqrt{6^2 + (-8)^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10$. 3. Vector projection: $\\mathrm{proj}_{\\mathbf{b}}\\mathbf{c} = \\left(\\frac{\\mathbf{c}\\cdot\\mathbf{b}}{|\\mathbf{b}|^2}\\right)\\mathbf{b} = \\left(\\frac{20}{100}\\right)\\langle 6, -8 \\rangle = \\frac{1}{5}\\langle 6, -8 \\rangle = \\mathbf{\\left\\langle \\frac{6}{5}, -\\frac{8}{5} \\right\\rangle}.$",
+          "explanation": "Step 1: Use the orthogonality condition $\\mathbf{a} \\cdot \\mathbf{b} = 0$: $\\mathbf{a}\\cdot\\mathbf{b} = (4)(6) + (k)(-8) = 24 - 8k = 0 \\Rightarrow 8k = 24 \\Rightarrow \\mathbf{k = 3}.$ Step 2: Compute the vector projection of $\\mathbf{c}$ onto $\\mathbf{b}$: The scalar projection is $\\mathrm{comp}_{\\mathbf{b}}\\mathbf{c} = \\frac{\\mathbf{c}\\cdot\\mathbf{b}}{|\\mathbf{b}|}$. 1. $\\mathbf{c}\\cdot\\mathbf{b} = (10)(6) + (5)(-8) = 60 - 40 = 20$. 2. $|\\mathbf{b}| = \\sqrt{6^2 + (-8)^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10$. 3. Vector projection: $\\mathrm{proj}_{\\mathbf{b}}\\mathbf{c} = \\left(\\frac{\\mathbf{c}\\cdot\\mathbf{b}}{|\\mathbf{b}|^2}\\right)\\mathbf{b} = \\left(\\frac{20}{100}\\right)\\langle 6, -8 \\rangle = \\frac{1}{5}\\langle 6, -8 \\rangle = \\mathbf{\\left\\langle \\frac{6}{5}, -\\frac{8}{5} \\right\\rangle}.$"
         },
         {
-          "q": "Solve the system using matrix inversion: $4x + 7y = 11$ $x + 2y = 3$",
+          "q": "Let $A = \\left(3, 1 ; 5, 2\\right)$. Find $A^{-1}$ and use it to solve the linear system: $3x + y = 7$ $5x + 2y = 12$",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+          "target": "Matrix multiplication",
           "cross_lesson": "1.01 Complex Numbers",
-          "answer": "Step 1: Write as matrix equation $A\\mathbf{x} = \\mathbf{b}$: $\\left(4, 7 ; 1, 2\\right) \\left(x ; y\\right) = \\left(11 ; 3\\right)$ Step 2: Multiply by $A^{-1} = \\left(2, -7 ; -1, 4\\right)$ (from Problem 14): $\\left(x ; y\\right) = \\left(2, -7 ; -1, 4\\right) \\left(11 ; 3\\right) = \\left(2(11) + (-7)(3) ; -1(11) + 4(3)\\right) = \\left(22 - 21 ; -11 + 12\\right) = \\mathbf{\\left(1 ; 1\\right)}.$ Thus $\\mathbf{x = 1}$ and $\\mathbf{y = 1}$.",
-          "explanation": "Step 1: Write as matrix equation $A\\mathbf{x} = \\mathbf{b}$: $\\left(4, 7 ; 1, 2\\right) \\left(x ; y\\right) = \\left(11 ; 3\\right)$ Step 2: Multiply by $A^{-1} = \\left(2, -7 ; -1, 4\\right)$ (from Problem 14): $\\left(x ; y\\right) = \\left(2, -7 ; -1, 4\\right) \\left(11 ; 3\\right) = \\left(2(11) + (-7)(3) ; -1(11) + 4(3)\\right) = \\left(22 - 21 ; -11 + 12\\right) = \\mathbf{\\left(1 ; 1\\right)}.$ Thus $\\mathbf{x = 1}$ and $\\mathbf{y = 1}$."
+          "answer": "Step 1: Compute the determinant of $A$: $\\det(A) = ad - bc = (3)(2) - (1)(5) = 6 - 5 = 1.$ Step 2: Construct the inverse $A^{-1}$: Swap the main diagonal entries, negate the off-diagonal entries, and divide by $\\det(A) = 1$: $A^{-1} = \\frac{1}{1} \\left(2, -1 ; -5, 3\\right) = \\mathbf{\\left(2, -1 ; -5, 3\\right)}.$ Step 3: Solve the matrix equation $A\\mathbf{x} = \\mathbf{b}$: $\\left(x ; y\\right) = A^{-1}\\mathbf{b} = \\left(2, -1 ; -5, 3\\right) \\left(7 ; 12\\right) = \\left(2(7) + (-1)(12) ; -5(7) + 3(12)\\right) = \\left(14 - 12 ; -35 + 36\\right) = \\mathbf{\\left(2 ; 1\\right)}.$ Thus $\\mathbf{x = 2}$ and $\\mathbf{y = 1}$. (Check: $3(2) + 1 = 7$ ✓ and $5(2) + 2(1) = 12$ ✓).",
+          "explanation": "Step 1: Compute the determinant of $A$: $\\det(A) = ad - bc = (3)(2) - (1)(5) = 6 - 5 = 1.$ Step 2: Construct the inverse $A^{-1}$: Swap the main diagonal entries, negate the off-diagonal entries, and divide by $\\det(A) = 1$: $A^{-1} = \\frac{1}{1} \\left(2, -1 ; -5, 3\\right) = \\mathbf{\\left(2, -1 ; -5, 3\\right)}.$ Step 3: Solve the matrix equation $A\\mathbf{x} = \\mathbf{b}$: $\\left(x ; y\\right) = A^{-1}\\mathbf{b} = \\left(2, -1 ; -5, 3\\right) \\left(7 ; 12\\right) = \\left(2(7) + (-1)(12) ; -5(7) + 3(12)\\right) = \\left(14 - 12 ; -35 + 36\\right) = \\mathbf{\\left(2 ; 1\\right)}.$ Thus $\\mathbf{x = 2}$ and $\\mathbf{y = 1}$. (Check: $3(2) + 1 = 7$ ✓ and $5(2) + 2(1) = 12$ ✓)."
         }
       ]
     },
@@ -314,158 +309,158 @@
       "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
-          "q": "Find $\\det A$ for the matrix $A$ with rows $\\langle-2,9\\rangle$ and $\\langle-5,-1\\rangle$.",
+          "q": "For $\\mathbf{u}=\\langle20,21\\rangle$ and $\\mathbf{v}=\\langle-5,-12\\rangle$, find $\\cos\\theta$ where $\\theta$ is the angle between them, using $\\cos\\theta=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|}$.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Addition and scalar multiplication",
           "choices": [
-            "$19$",
-            "$47$",
-            "$-43$",
-            "$49$"
+            "$\\frac{352}{377}$",
+            "$-\\frac{352}{377}$",
+            "$-\\frac{27}{29}$",
+            "$-\\frac{176}{21}$"
           ],
           "correct": 1,
-          "answer": "$\\det A=(-2)(-1)-(9)(-5)=2+45=47$.",
-          "explanation": "$\\det A=(-2)(-1)-(9)(-5)=2+45=47$."
+          "answer": "$\\mathbf{u}\\cdot\\mathbf{v}=(20)(-5)+(21)(-12)=-352$. $|\\mathbf{u}|=29$, $|\\mathbf{v}|=13$. $\\cos\\theta=-352/377=-\\frac{352}{377}$.",
+          "explanation": "$\\mathbf{u}\\cdot\\mathbf{v}=(20)(-5)+(21)(-12)=-352$. $|\\mathbf{u}|=29$, $|\\mathbf{v}|=13$. $\\cos\\theta=-352/377=-\\frac{352}{377}$."
         },
         {
-          "q": "Find $\\det A$ for the matrix $A$ with rows $\\langle2,-2\\rangle$ and $\\langle9,-8\\rangle$.",
+          "q": "Let $\\mathbf{u}$ and $\\mathbf{v}$ be vectors in the coordinate plane such that $|\\mathbf{u}| = 5$, $|\\mathbf{v}| = 10$, and the angle $\\theta$ between them is obtuse ($90^\\circ < \\theta < 180^\\circ$). If the minimum value of $|t\\mathbf{u} + \\mathbf{v}|$ over all real numbers $t$ is equal to $6$, what is the value of the dot product $\\mathbf{u} \\cdot \\mathbf{v}$?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Matrix multiplication",
           "choices": [
-            "$5$",
-            "$-34$",
-            "$2$",
-            "$4$"
+            "-50",
+            "-40",
+            "-30",
+            "40"
           ],
-          "correct": 2,
-          "answer": "$\\det A=(2)(-8)-(-2)(9)=-16+18=2$.",
-          "explanation": "$\\det A=(2)(-8)-(-2)(9)=-16+18=2$."
+          "correct": 1,
+          "answer": "We can solve this problem algebraically or geometrically. **Method 1: Algebraic (Quadratic Optimization)** Consider the square of the magnitude $|t\\mathbf{u} + \\mathbf{v}|$: $|t\\mathbf{u} + \\mathbf{v}|^2 = (t\\mathbf{u} + \\mathbf{v}) \\cdot (t\\mathbf{u} + \\mathbf{v}) = t^2|\\mathbf{u}|^2 + 2t(\\mathbf{u} \\cdot \\mathbf{v}) + |\\mathbf{v}|^2$ Let $D = \\mathbf{u} \\cdot \\mathbf{v}$. Substituting $|\\mathbf{u}| = 5$ and $|\\mathbf{v}| = 10$: $f(t) = 25t^2 + 2Dt + 100$ This is a quadratic function in $t$ with leading coefficient $a = 25 > 0$. Its minimum occurs at the vertex: $t_{\\min} = -\\frac{2D}{2(25)} = -\\frac{D}{25}$ Evaluating $f(t)$ at the vertex gives the minimum squared magnitude: $f(t_{\\min}) = 25\\left(-\\frac{D}{25}\\right)^2 + 2D\\left(-\\frac{D}{25}\\right) + 100 = 100 - \\frac{D^2}{25}$ We are given that the minimum value of $|t\\mathbf{u} + \\mathbf{v}|$ is $6$, so the minimum squared magnitude is $6^2 = 36$: $100 - \\frac{D^2}{25} = 36 \\Rightarrow \\frac{D^2}{25} = 64 \\Rightarrow D^2 = 1600$ Taking the square root gives $D = \\pm 40$. Because the angle $\\theta$ between $\\mathbf{u}$ and $\\mathbf{v}$ is obtuse ($90^\\circ < \\theta < 180^\\circ$), $\\cos \\theta < 0$, which implies $\\mathbf{u} \\cdot \\mathbf{v} = |\\mathbf{u}||\\mathbf{v}|\\cos \\theta < 0$. Therefore: $\\mathbf{u} \\cdot \\mathbf{v} = -40$ **Method 2: Geometric (Orthogonal Distance)** The set of points with position vectors $t\\mathbf{u} + \\mathbf{v}$ forms a straight line parallel to $\\mathbf{u}$ passing through the endpoint of $\\mathbf{v}$. The minimum magnitude $|t\\mathbf{u} + \\mathbf{v}|$ is the perpendicular distance from the origin to this line. In the right triangle formed by the origin, the endpoint of $\\mathbf{v}$, and the projection point, the hypotenuse is $|\\mathbf{v}| = 10$ and the perpendicular leg is $6$. Hence, $\\sin(180^\\circ - \\theta) = \\sin \\theta = \\frac{6}{10} = \\frac{3}{5}$. Since $\\theta$ is obtuse, $\\cos \\theta = -\\sqrt{1 - \\left(\\frac{3}{5}\\right)^2} = -\\frac{4}{5}$. Finally, $\\mathbf{u} \\cdot \\mathbf{v} = |\\mathbf{u}||\\mathbf{v}|\\cos \\theta = (5)(10)\\left(-\\frac{4}{5}\\right) = -40$. **Analysis of Distractors:** - $-50$: Assumes the vectors are directly antiparallel ($\\theta = 180^\\circ$), yielding $-|\\mathbf{u}||\\mathbf{v}| = -50$. - $-30$: Arises from confusing $\\sin \\theta$ and $\\cos \\theta$, erroneously taking $\\cos \\theta = -\\frac{6}{10} = -\\frac{3}{5}$, which gives $(50)\\left(-\\frac{3}{5}\\right) = -30$. - $40$: Solves $D^2 = 1600$ correctly but neglects the condition that $\\theta$ is obtuse, improperly taking the positive root.",
+          "explanation": "We can solve this problem algebraically or geometrically. **Method 1: Algebraic (Quadratic Optimization)** Consider the square of the magnitude $|t\\mathbf{u} + \\mathbf{v}|$: $|t\\mathbf{u} + \\mathbf{v}|^2 = (t\\mathbf{u} + \\mathbf{v}) \\cdot (t\\mathbf{u} + \\mathbf{v}) = t^2|\\mathbf{u}|^2 + 2t(\\mathbf{u} \\cdot \\mathbf{v}) + |\\mathbf{v}|^2$ Let $D = \\mathbf{u} \\cdot \\mathbf{v}$. Substituting $|\\mathbf{u}| = 5$ and $|\\mathbf{v}| = 10$: $f(t) = 25t^2 + 2Dt + 100$ This is a quadratic function in $t$ with leading coefficient $a = 25 > 0$. Its minimum occurs at the vertex: $t_{\\min} = -\\frac{2D}{2(25)} = -\\frac{D}{25}$ Evaluating $f(t)$ at the vertex gives the minimum squared magnitude: $f(t_{\\min}) = 25\\left(-\\frac{D}{25}\\right)^2 + 2D\\left(-\\frac{D}{25}\\right) + 100 = 100 - \\frac{D^2}{25}$ We are given that the minimum value of $|t\\mathbf{u} + \\mathbf{v}|$ is $6$, so the minimum squared magnitude is $6^2 = 36$: $100 - \\frac{D^2}{25} = 36 \\Rightarrow \\frac{D^2}{25} = 64 \\Rightarrow D^2 = 1600$ Taking the square root gives $D = \\pm 40$. Because the angle $\\theta$ between $\\mathbf{u}$ and $\\mathbf{v}$ is obtuse ($90^\\circ < \\theta < 180^\\circ$), $\\cos \\theta < 0$, which implies $\\mathbf{u} \\cdot \\mathbf{v} = |\\mathbf{u}||\\mathbf{v}|\\cos \\theta < 0$. Therefore: $\\mathbf{u} \\cdot \\mathbf{v} = -40$ **Method 2: Geometric (Orthogonal Distance)** The set of points with position vectors $t\\mathbf{u} + \\mathbf{v}$ forms a straight line parallel to $\\mathbf{u}$ passing through the endpoint of $\\mathbf{v}$. The minimum magnitude $|t\\mathbf{u} + \\mathbf{v}|$ is the perpendicular distance from the origin to this line. In the right triangle formed by the origin, the endpoint of $\\mathbf{v}$, and the projection point, the hypotenuse is $|\\mathbf{v}| = 10$ and the perpendicular leg is $6$. Hence, $\\sin(180^\\circ - \\theta) = \\sin \\theta = \\frac{6}{10} = \\frac{3}{5}$. Since $\\theta$ is obtuse, $\\cos \\theta = -\\sqrt{1 - \\left(\\frac{3}{5}\\right)^2} = -\\frac{4}{5}$. Finally, $\\mathbf{u} \\cdot \\mathbf{v} = |\\mathbf{u}||\\mathbf{v}|\\cos \\theta = (5)(10)\\left(-\\frac{4}{5}\\right) = -40$. **Analysis of Distractors:** - $-50$: Assumes the vectors are directly antiparallel ($\\theta = 180^\\circ$), yielding $-|\\mathbf{u}||\\mathbf{v}| = -50$. - $-30$: Arises from confusing $\\sin \\theta$ and $\\cos \\theta$, erroneously taking $\\cos \\theta = -\\frac{6}{10} = -\\frac{3}{5}$, which gives $(50)\\left(-\\frac{3}{5}\\right) = -30$. - $40$: Solves $D^2 = 1600$ correctly but neglects the condition that $\\theta$ is obtuse, improperly taking the positive root."
         },
         {
-          "q": "Find $\\det A$ for the matrix $A$ with rows $\\langle-4,-8\\rangle$ and $\\langle-1,-3\\rangle$.",
+          "q": "In the standard $(x, y)$-coordinate plane, vectors $\\mathbf{u} = \\langle a, b \\rangle$ and $\\mathbf{v} = \\langle c, d \\rangle$ have magnitudes $||\\mathbf{u}|| = 13$ and $||\\mathbf{v}|| = 5$. If their dot product is $\\mathbf{u} \\cdot \\mathbf{v} = 25$, and the matrix $M = \\left[a, b ; c, d\\right]$ has $\\det(M) > 0$, what is the value of $\\det(M)$?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Determinant and inverse",
           "choices": [
-            "$20$",
-            "$-20$",
-            "$4$",
-            "$6$"
+            "25",
+            "40",
+            "60",
+            "65"
           ],
           "correct": 2,
-          "answer": "$\\det A=(-4)(-3)-(-8)(-1)=12-8=4$.",
-          "explanation": "$\\det A=(-4)(-3)-(-8)(-1)=12-8=4$.",
+          "answer": "We can solve this using either Lagrange's algebraic identity or the geometric interpretation of the dot product and determinant. **Method 1: Lagrange's Identity** For any real numbers $a, b, c, d$, the identity connecting the determinant and the dot product is: $(ad - bc)^2 + (ac + bd)^2 = (a^2 + b^2)(c^2 + d^2)$ Notice that: - $\\det(M) = ad - bc$ - $\\mathbf{u} \\cdot \\mathbf{v} = ac + bd = 25$ - $||\\mathbf{u}||^2 = a^2 + b^2 = 13^2 = 169$ - $||\\mathbf{v}||^2 = c^2 + d^2 = 5^2 = 25$ Substituting these values into the identity: $(\\det(M))^2 + 25^2 = 169 \\times 25$ $(\\det(M))^2 + 625 = 4{,}225$ $(\\det(M))^2 = 4{,}225 - 625 = 3{,}600$ Since $\\det(M) > 0$, taking the positive square root gives: $\\det(M) = \\sqrt{3{,}600} = 60$ **Method 2: Geometric Relationship** The dot product satisfies $\\mathbf{u} \\cdot \\mathbf{v} = ||\\mathbf{u}|| ||\\mathbf{v}|| \\cos\\theta$, so: $25 = 13 \\times 5 \\times \\cos\\theta = 65\\cos\\theta \\Rightarrow \\cos\\theta = \\frac{25}{65} = \\frac{5}{13}$ Using $\\sin^2\\theta + \\cos^2\\theta = 1$: $\\sin\\theta = \\sqrt{1 - \\left(\\frac{5}{13}\\right)^2} = \\sqrt{\\frac{144}{169}} = \\frac{12}{13}$ The magnitude of $\\det(M)$ is equal to the area of the parallelogram spanned by $\\mathbf{u}$ and $\\mathbf{v}$: $|\\det(M)| = ||\\mathbf{u}|| ||\\mathbf{v}|| \\sin\\theta = 13 \\times 5 \\times \\frac{12}{13} = 60$ Since $\\det(M) > 0$, $\\det(M) = 60$. **Misconception Analysis:** - Choice A (25) confuses the determinant $ad - bc$ with the dot product $ac + bd$. - Choice B (40) erroneously computes $||\\mathbf{u}||||\\mathbf{v}|| - (\\mathbf{u} \\cdot \\mathbf{v}) = 65 - 25 = 40$. - Choice D (65) computes the product of magnitudes $||\\mathbf{u}||||\\mathbf{v}|| = 13 \\times 5 = 65$, which only equals the determinant if the vectors are orthogonal.",
+          "explanation": "We can solve this using either Lagrange's algebraic identity or the geometric interpretation of the dot product and determinant. **Method 1: Lagrange's Identity** For any real numbers $a, b, c, d$, the identity connecting the determinant and the dot product is: $(ad - bc)^2 + (ac + bd)^2 = (a^2 + b^2)(c^2 + d^2)$ Notice that: - $\\det(M) = ad - bc$ - $\\mathbf{u} \\cdot \\mathbf{v} = ac + bd = 25$ - $||\\mathbf{u}||^2 = a^2 + b^2 = 13^2 = 169$ - $||\\mathbf{v}||^2 = c^2 + d^2 = 5^2 = 25$ Substituting these values into the identity: $(\\det(M))^2 + 25^2 = 169 \\times 25$ $(\\det(M))^2 + 625 = 4{,}225$ $(\\det(M))^2 = 4{,}225 - 625 = 3{,}600$ Since $\\det(M) > 0$, taking the positive square root gives: $\\det(M) = \\sqrt{3{,}600} = 60$ **Method 2: Geometric Relationship** The dot product satisfies $\\mathbf{u} \\cdot \\mathbf{v} = ||\\mathbf{u}|| ||\\mathbf{v}|| \\cos\\theta$, so: $25 = 13 \\times 5 \\times \\cos\\theta = 65\\cos\\theta \\Rightarrow \\cos\\theta = \\frac{25}{65} = \\frac{5}{13}$ Using $\\sin^2\\theta + \\cos^2\\theta = 1$: $\\sin\\theta = \\sqrt{1 - \\left(\\frac{5}{13}\\right)^2} = \\sqrt{\\frac{144}{169}} = \\frac{12}{13}$ The magnitude of $\\det(M)$ is equal to the area of the parallelogram spanned by $\\mathbf{u}$ and $\\mathbf{v}$: $|\\det(M)| = ||\\mathbf{u}|| ||\\mathbf{v}|| \\sin\\theta = 13 \\times 5 \\times \\frac{12}{13} = 60$ Since $\\det(M) > 0$, $\\det(M) = 60$. **Misconception Analysis:** - Choice A (25) confuses the determinant $ad - bc$ with the dot product $ac + bd$. - Choice B (40) erroneously computes $||\\mathbf{u}||||\\mathbf{v}|| - (\\mathbf{u} \\cdot \\mathbf{v}) = 65 - 25 = 40$. - Choice D (65) computes the product of magnitudes $||\\mathbf{u}||||\\mathbf{v}|| = 13 \\times 5 = 65$, which only equals the determinant if the vectors are orthogonal.",
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (0))**2 + (-2)",
-              "0.5*x + 1"
+              "-0.45*(x - (0.5))**2 + (1.5)",
+              "-0.35*x + (0.3)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
-                "x": 0.0,
-                "y": -2.0,
-                "label": "$(0,-2)$"
+                "x": 0.5,
+                "y": 1.5,
+                "label": "$(0.5,1.5)$"
               }
             ],
             "width": 230
           }
         },
         {
-          "q": "Find $\\det A$ for the matrix $A$ with rows $\\langle0,-8\\rangle$ and $\\langle-4,4\\rangle$.",
+          "q": "For all real values of $\\theta$, the matrix product $\\left[\\cos\\theta, \\sin\\theta\\right] \\left[6, 2 ; 2, 3\\right] \\left[\\cos\\theta ; \\sin\\theta\\right]$ evaluates to a $1 \\times 1$ matrix $[k]$. What is the maximum possible value of $k$?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Solving systems with the inverse matrix",
           "choices": [
-            "$-30$",
-            "$32$",
-            "$-29$",
-            "$-32$"
+            "6",
+            "7",
+            "9",
+            "14"
           ],
-          "correct": 3,
-          "answer": "$\\det A=(0)(4)-(-8)(-4)=0-32=-32$.",
-          "explanation": "$\\det A=(0)(4)-(-8)(-4)=0-32=-32$."
+          "correct": 1,
+          "answer": "Step 1: Perform the matrix multiplication. First, multiply the $1 \\times 2$ row vector by the $2 \\times 2$ matrix: $\\left[\\cos\\theta, \\sin\\theta\\right] \\left[6, 2 ; 2, 3\\right] = \\left[6\\cos\\theta + 2\\sin\\theta, 2\\cos\\theta + 3\\sin\\theta\\right]$ Next, multiply this result by the $2 \\times 1$ column vector: $k = (6\\cos\\theta + 2\\sin\\theta)\\cos\\theta + (2\\cos\\theta + 3\\sin\\theta)\\sin\\theta$ $k = 6\\cos^2\\theta + 4\\sin\\theta\\cos\\theta + 3\\sin^2\\theta$ Step 2: Express the quadratic trigonometric terms using double-angle identities. Recall the standard identities: $\\cos^2\\theta = \\frac{1 + \\cos(2\\theta)}{2}, \\quad \\sin^2\\theta = \\frac{1 - \\cos(2\\theta)}{2}, \\quad 2\\sin\\theta\\cos\\theta = \\sin(2\\theta)$ Substitute these into the expression for $k$: $k = 6\\left(\\frac{1 + \\cos(2\\theta)}{2}\\right) + 3\\left(\\frac{1 - \\cos(2\\theta)}{2}\\right) + 2\\sin(2\\theta)$ $k = 3(1 + \\cos(2\\theta)) + \\frac{3}{2}(1 - \\cos(2\\theta)) + 2\\sin(2\\theta)$ $k = \\frac{9}{2} + \\frac{3}{2}\\cos(2\\theta) + 2\\sin(2\\theta)$ Step 3: Maximize the resulting trigonometric expression. For real constants $A$ and $B$, the maximum value of $A\\cos\\phi + B\\sin\\phi$ is $\\sqrt{A^2 + B^2}$. Here, $A = \\frac{3}{2}$ and $B = 2$: $\\sqrt{\\left(\\frac{3}{2}\\right)^2 + 2^2} = \\sqrt{\\frac{9}{4} + \\frac{16}{4}} = \\sqrt{\\frac{25}{4}} = \\frac{5}{2}$ Thus, the maximum value of $k$ is: $k_{\\mathrm{max}} = \\frac{9}{2} + \\frac{5}{2} = 7$ Misconception Analysis: - Choice A (6) results from ignoring the cross-product term $4\\sin\\theta\\cos\\theta$ and merely selecting the maximum diagonal entry. - Choice C (9) results from taking the trace (sum of diagonal entries) of the matrix. - Choice D (14) results from calculating the determinant of the matrix, $6(3) - 2(2) = 14$.",
+          "explanation": "Step 1: Perform the matrix multiplication. First, multiply the $1 \\times 2$ row vector by the $2 \\times 2$ matrix: $\\left[\\cos\\theta, \\sin\\theta\\right] \\left[6, 2 ; 2, 3\\right] = \\left[6\\cos\\theta + 2\\sin\\theta, 2\\cos\\theta + 3\\sin\\theta\\right]$ Next, multiply this result by the $2 \\times 1$ column vector: $k = (6\\cos\\theta + 2\\sin\\theta)\\cos\\theta + (2\\cos\\theta + 3\\sin\\theta)\\sin\\theta$ $k = 6\\cos^2\\theta + 4\\sin\\theta\\cos\\theta + 3\\sin^2\\theta$ Step 2: Express the quadratic trigonometric terms using double-angle identities. Recall the standard identities: $\\cos^2\\theta = \\frac{1 + \\cos(2\\theta)}{2}, \\quad \\sin^2\\theta = \\frac{1 - \\cos(2\\theta)}{2}, \\quad 2\\sin\\theta\\cos\\theta = \\sin(2\\theta)$ Substitute these into the expression for $k$: $k = 6\\left(\\frac{1 + \\cos(2\\theta)}{2}\\right) + 3\\left(\\frac{1 - \\cos(2\\theta)}{2}\\right) + 2\\sin(2\\theta)$ $k = 3(1 + \\cos(2\\theta)) + \\frac{3}{2}(1 - \\cos(2\\theta)) + 2\\sin(2\\theta)$ $k = \\frac{9}{2} + \\frac{3}{2}\\cos(2\\theta) + 2\\sin(2\\theta)$ Step 3: Maximize the resulting trigonometric expression. For real constants $A$ and $B$, the maximum value of $A\\cos\\phi + B\\sin\\phi$ is $\\sqrt{A^2 + B^2}$. Here, $A = \\frac{3}{2}$ and $B = 2$: $\\sqrt{\\left(\\frac{3}{2}\\right)^2 + 2^2} = \\sqrt{\\frac{9}{4} + \\frac{16}{4}} = \\sqrt{\\frac{25}{4}} = \\frac{5}{2}$ Thus, the maximum value of $k$ is: $k_{\\mathrm{max}} = \\frac{9}{2} + \\frac{5}{2} = 7$ Misconception Analysis: - Choice A (6) results from ignoring the cross-product term $4\\sin\\theta\\cos\\theta$ and merely selecting the maximum diagonal entry. - Choice C (9) results from taking the trace (sum of diagonal entries) of the matrix. - Choice D (14) results from calculating the determinant of the matrix, $6(3) - 2(2) = 14$."
         },
         {
-          "q": "Find $\\det A$ for the matrix $A$ with rows $\\langle-5,0\\rangle$ and $\\langle-7,8\\rangle$.",
+          "q": "Matrices $A$ and $B$ are defined as $A = \\left[2, k ; -1, 3\\right]$ and $B = \\left[1, 4 ; 2, k\\right]$, where $k$ is a real number. If the determinant of the matrix sum $A + B$ is equal to $17$, what is the value of $k$? (Note: The determinant of a $2 \\times 2$ matrix $\\left[a, b ; c, d\\right]$ is defined as $ad - bc$.)",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Vector magnitude and dot product",
           "choices": [
-            "$-40$",
-            "$35$",
-            "$-37$",
-            "$-38$"
+            "1",
+            "2",
+            "6",
+            "$\\frac{19}{2}$"
           ],
-          "correct": 0,
-          "answer": "$\\det A=(-5)(8)-(0)(-7)=-40=-40$.",
-          "explanation": "$\\det A=(-5)(8)-(0)(-7)=-40=-40$."
+          "correct": 2,
+          "answer": "Step 1: Compute the matrix sum $A + B$ by adding corresponding entries: $A + B = \\left[2 + 1, k + 4 ; -1 + 2, 3 + k\\right] = \\left[3, k + 4 ; 1, k + 3\\right]$ Step 2: Calculate the determinant of $A + B$ using the definition $\\det\\left[a, b ; c, d\\right] = ad - bc$: $\\det(A + B) = (3)(k + 3) - (1)(k + 4)$ Distribute carefully across both terms: $\\det(A + B) = 3k + 9 - k - 4 = 2k + 5$ Step 3: Set the determinant equal to $17$ and solve for $k$: $2k + 5 = 17 \\Rightarrow 2k = 12 \\Rightarrow k = 6$ Common Misconceptions: - Choice B ($2$) results from a sign distribution error when subtracting: $3k + 9 - k + 4 = 2k + 13 = 17 \\Rightarrow k = 2$. - Choice A ($1$) results from incorrectly using $ad + bc$ instead of $ad - bc$: $(3k + 9) + (k + 4) = 4k + 13 = 17 \\Rightarrow k = 1$. - Choice D ($\\frac{19}{2}$) comes from the false assumption that $\\det(A + B) = \\det(A) + \\det(B)$, which gives $(6 + k) + (k - 8) = 2k - 2 = 17 \\Rightarrow k = \\frac{19}{2}$.",
+          "explanation": "Step 1: Compute the matrix sum $A + B$ by adding corresponding entries: $A + B = \\left[2 + 1, k + 4 ; -1 + 2, 3 + k\\right] = \\left[3, k + 4 ; 1, k + 3\\right]$ Step 2: Calculate the determinant of $A + B$ using the definition $\\det\\left[a, b ; c, d\\right] = ad - bc$: $\\det(A + B) = (3)(k + 3) - (1)(k + 4)$ Distribute carefully across both terms: $\\det(A + B) = 3k + 9 - k - 4 = 2k + 5$ Step 3: Set the determinant equal to $17$ and solve for $k$: $2k + 5 = 17 \\Rightarrow 2k = 12 \\Rightarrow k = 6$ Common Misconceptions: - Choice B ($2$) results from a sign distribution error when subtracting: $3k + 9 - k + 4 = 2k + 13 = 17 \\Rightarrow k = 2$. - Choice A ($1$) results from incorrectly using $ad + bc$ instead of $ad - bc$: $(3k + 9) + (k + 4) = 4k + 13 = 17 \\Rightarrow k = 1$. - Choice D ($\\frac{19}{2}$) comes from the false assumption that $\\det(A + B) = \\det(A) + \\det(B)$, which gives $(6 + k) + (k - 8) = 2k - 2 = 17 \\Rightarrow k = \\frac{19}{2}$."
         },
         {
-          "q": "Find $\\det A$ for the matrix $A$ with rows $\\langle7,-5\\rangle$ and $\\langle6,-4\\rangle$.",
+          "q": "For a $2 \\times 2$ matrix $\\left[a, b ; c, d\\right]$, the determinant is defined as $ad - bc$. Given the matrices $A = \\left[x, 2 ; -1, 3\\right]$ and $B = \\left[1, -4 ; 3, x\\right]$, the determinant of the matrix $A + B$ is equal to $19$. If $x > 0$, what is the value of $x$?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Angle between vectors",
           "choices": [
-            "$2$",
-            "$4$",
-            "$-58$",
-            "$22$"
+            "2",
+            "$\\frac{5}{4}$",
+            "4",
+            "6"
           ],
           "correct": 0,
-          "answer": "$\\det A=(7)(-4)-(-5)(6)=-28+30=2$.",
-          "explanation": "$\\det A=(7)(-4)-(-5)(6)=-28+30=2$."
+          "answer": "First, find the matrix sum $A + B$ by adding corresponding entries: $A + B = \\left[x + 1, 2 + (-4) ; -1 + 3, 3 + x\\right] = \\left[x + 1, -2 ; 2, x + 3\\right]$ Next, calculate the determinant of $A + B$: $\\det(A + B) = (x + 1)(x + 3) - (-2)(2)$ $\\det(A + B) = (x^2 + 4x + 3) - (-4) = x^2 + 4x + 7$ Set the determinant equal to $19$ and solve for $x$: $x^2 + 4x + 7 = 19$ $x^2 + 4x - 12 = 0$ Factoring the quadratic gives: $(x + 6)(x - 2) = 0$ This yields $x = -6$ or $x = 2$. Since we are given that $x > 0$, the value is $x = 2$. Common Pitfalls: - Assuming $\\det(A + B) = \\det(A) + \\det(B)$: $\\det(A) = 3x + 2$ and $\\det(B) = x + 12$, so setting $4x + 14 = 19$ results in the incorrect answer $x = \\frac{5}{4}$. - Factoring sign error: solving $x^2 + 4x - 12 = 0$ as $(x - 6)(x + 2) = 0$ yields $x = 6$.",
+          "explanation": "First, find the matrix sum $A + B$ by adding corresponding entries: $A + B = \\left[x + 1, 2 + (-4) ; -1 + 3, 3 + x\\right] = \\left[x + 1, -2 ; 2, x + 3\\right]$ Next, calculate the determinant of $A + B$: $\\det(A + B) = (x + 1)(x + 3) - (-2)(2)$ $\\det(A + B) = (x^2 + 4x + 3) - (-4) = x^2 + 4x + 7$ Set the determinant equal to $19$ and solve for $x$: $x^2 + 4x + 7 = 19$ $x^2 + 4x - 12 = 0$ Factoring the quadratic gives: $(x + 6)(x - 2) = 0$ This yields $x = -6$ or $x = 2$. Since we are given that $x > 0$, the value is $x = 2$. Common Pitfalls: - Assuming $\\det(A + B) = \\det(A) + \\det(B)$: $\\det(A) = 3x + 2$ and $\\det(B) = x + 12$, so setting $4x + 14 = 19$ results in the incorrect answer $x = \\frac{5}{4}$. - Factoring sign error: solving $x^2 + 4x - 12 = 0$ as $(x - 6)(x + 2) = 0$ yields $x = 6$."
         },
         {
-          "q": "Find $\\det A$ for the matrix $A$ with rows $\\langle-7,9\\rangle$ and $\\langle6,-7\\rangle$.",
+          "q": "In the standard coordinate plane, vector $\\mathbf{u} = \\langle 2, -1 \\rangle$ and vector $\\mathbf{v} = \\langle k, 5 \\rangle$, where $k$ is a real constant. If the magnitude of the vector $\\mathbf{u} + \\mathbf{v}$ is equal to 5, which of the following is a possible value of $k$?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+          "target": "Addition and scalar multiplication",
           "choices": [
-            "$-5$",
-            "$103$",
-            "$-3$",
-            "$21$"
+            "-5",
+            "-1",
+            "3",
+            "7"
           ],
           "correct": 0,
-          "answer": "$\\det A=(-7)(-7)-(9)(6)=49-54=-5$.",
-          "explanation": "$\\det A=(-7)(-7)-(9)(6)=49-54=-5$."
+          "answer": "First, find the sum of vectors $\\mathbf{u}$ and $\\mathbf{v}$ by adding their corresponding components: $\\mathbf{u} + \\mathbf{v} = \\langle 2 + k, -1 + 5 \\rangle = \\langle 2 + k, 4 \\rangle$ Next, use the magnitude formula $||\\langle x, y \\rangle|| = \\sqrt{x^2 + y^2}$: $\\sqrt{(2 + k)^2 + 4^2} = 5$ Square both sides of the equation to eliminate the radical: $(2 + k)^2 + 16 = 25$ $(2 + k)^2 = 9$ Take the square root of both sides: $2 + k = 3 \\quad \\mathrm{or} \\quad 2 + k = -3$ $k = 1 \\quad \\mathrm{or} \\quad k = -5$ Among the choices, only $-5$ is listed. Common traps: - Solving $(2 + k) + 4 = 5$ by mistakenly adding components linearly instead of using the Pythagorean theorem yields $k = -1$. - Forgetting the negative square root $2 + k = -3$ causes students to miss $k = -5$.",
+          "explanation": "First, find the sum of vectors $\\mathbf{u}$ and $\\mathbf{v}$ by adding their corresponding components: $\\mathbf{u} + \\mathbf{v} = \\langle 2 + k, -1 + 5 \\rangle = \\langle 2 + k, 4 \\rangle$ Next, use the magnitude formula $||\\langle x, y \\rangle|| = \\sqrt{x^2 + y^2}$: $\\sqrt{(2 + k)^2 + 4^2} = 5$ Square both sides of the equation to eliminate the radical: $(2 + k)^2 + 16 = 25$ $(2 + k)^2 = 9$ Take the square root of both sides: $2 + k = 3 \\quad \\mathrm{or} \\quad 2 + k = -3$ $k = 1 \\quad \\mathrm{or} \\quad k = -5$ Among the choices, only $-5$ is listed. Common traps: - Solving $(2 + k) + 4 = 5$ by mistakenly adding components linearly instead of using the Pythagorean theorem yields $k = -1$. - Forgetting the negative square root $2 + k = -3$ causes students to miss $k = -5$."
         },
         {
-          "q": "Find $\\det A$ for the matrix $A$ with rows $\\langle5,2\\rangle$ and $\\langle-9,-3\\rangle$.",
+          "q": "What is the value of the determinant of the matrix $\\left[7, -3 ; 2, 4\\right]$?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+          "target": "Matrix multiplication",
           "choices": [
-            "$-33$",
-            "$3$",
-            "$5$",
-            "$-39$"
+            "34",
+            "22",
+            "-29",
+            "-34"
           ],
-          "correct": 1,
-          "answer": "$\\det A=(5)(-3)-(2)(-9)=-15+18=3$.",
-          "explanation": "$\\det A=(5)(-3)-(2)(-9)=-15+18=3$.",
+          "correct": 0,
+          "answer": "The determinant of a $2 \\times 2$ matrix $\\left[a, b ; c, d\\right]$ is given by the formula: $\\det = ad - bc$ Substitute the entries $a = 7$, $b = -3$, $c = 2$, and $d = 4$: $\\det = (7)(4) - (-3)(2) = 28 - (-6) = 28 + 6 = 34$ Common misconceptions: - Calculating $ad + bc$ gives $28 + (-6) = 22$. - Reversing the subtraction order as $bc - ad$ gives $-6 - 28 = -34$. - Multiplying along the rows instead of diagonals gives $(7)(-3) - (2)(4) = -21 - 8 = -29$.",
+          "explanation": "The determinant of a $2 \\times 2$ matrix $\\left[a, b ; c, d\\right]$ is given by the formula: $\\det = ad - bc$ Substitute the entries $a = 7$, $b = -3$, $c = 2$, and $d = 4$: $\\det = (7)(4) - (-3)(2) = 28 - (-6) = 28 + 6 = 34$ Common misconceptions: - Calculating $ad + bc$ gives $28 + (-6) = 22$. - Reversing the subtraction order as $bc - ad$ gives $-6 - 28 = -34$. - Multiplying along the rows instead of diagonals gives $(7)(-3) - (2)(4) = -21 - 8 = -29$.",
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
+              "-0.6*(x - (0.0))**2 + (-1.0)",
+              "1.4*x + (-2.2)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
-                "x": -1.0,
+                "x": 0.0,
                 "y": -1.0,
-                "label": "$(-1,-1)$"
+                "label": "$(0,-1)$"
               }
             ],
             "width": 230
@@ -477,158 +472,158 @@
       "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
       "questions": [
         {
-          "q": "Let $A$ have rows $\\langle-3,7\\rangle$ and $\\langle1,3\\rangle$, and let $\\mathbf{v}=\\langle3,-5\\rangle$. Find $A\\mathbf{v}$.",
+          "q": "Find the angle $\\theta$ between $\\mathbf{u}=\\langle -6,0\\rangle$ and $\\mathbf{v}=\\langle 6,-1\\rangle$, to the nearest $0.1^\\circ$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+          "target": "Determinant and inverse",
           "choices": [
-            "$\\langle-42,-12\\rangle$",
-            "$\\langle-12,-44\\rangle$",
-            "$\\langle-44,-12\\rangle$",
-            "$\\langle-44,-14\\rangle$"
-          ],
-          "correct": 2,
-          "answer": "$A\\mathbf{v}=\\langle(-3)(3)+(7)(-5),\\,(1)(3)+(3)(-5)\\rangle=\\langle-44,-12\\rangle$.",
-          "explanation": "$A\\mathbf{v}=\\langle(-3)(3)+(7)(-5),\\,(1)(3)+(3)(-5)\\rangle=\\langle-44,-12\\rangle$."
-        },
-        {
-          "q": "Let $A$ have rows $\\langle1,1\\rangle$ and $\\langle7,-7\\rangle$, and let $\\mathbf{v}=\\langle7,7\\rangle$. Find $A\\mathbf{v}$.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
-          "choices": [
-            "$\\langle14,0\\rangle$",
-            "$\\langle0,14\\rangle$",
-            "$\\langle14,-2\\rangle$",
-            "$\\langle16,0\\rangle$"
+            "$170.5^\\circ$",
+            "$9.5^\\circ$",
+            "$180.5^\\circ$",
+            "$165.5^\\circ$"
           ],
           "correct": 0,
-          "answer": "$A\\mathbf{v}=\\langle(1)(7)+(1)(7),\\,(7)(7)+(-7)(7)\\rangle=\\langle14,0\\rangle$.",
-          "explanation": "$A\\mathbf{v}=\\langle(1)(7)+(1)(7),\\,(7)(7)+(-7)(7)\\rangle=\\langle14,0\\rangle$."
+          "answer": "$\\mathbf{u}\\cdot\\mathbf{v}=-36$, $|\\mathbf{u}|=\\sqrt{36}$, $|\\mathbf{v}|=\\sqrt{37}$. $\\cos\\theta=\\frac{-36}{\\sqrt{36}\\sqrt{37}}\\approx-0.9864$, so $\\theta\\approx170.5^\\circ$ (Theorem 2.2).",
+          "explanation": "$\\mathbf{u}\\cdot\\mathbf{v}=-36$, $|\\mathbf{u}|=\\sqrt{36}$, $|\\mathbf{v}|=\\sqrt{37}$. $\\cos\\theta=\\frac{-36}{\\sqrt{36}\\sqrt{37}}\\approx-0.9864$, so $\\theta\\approx170.5^\\circ$ (Theorem 2.2)."
         },
         {
-          "q": "Let $A$ have rows $\\langle-1,6\\rangle$ and $\\langle2,2\\rangle$, and let $\\mathbf{v}=\\langle-1,5\\rangle$. Find $A\\mathbf{v}$.",
+          "q": "Solve using the inverse-matrix method: $\\left\\{ -5x+3y=28 ; -5x+0y=25 \\right.$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+          "target": "Solving systems with the inverse matrix",
           "choices": [
-            "$\\langle33,8\\rangle$",
-            "$\\langle31,8\\rangle$",
-            "$\\langle8,31\\rangle$",
-            "$\\langle31,6\\rangle$"
+            "x=-5,\\ y=1",
+            "x=1,\\ y=-5",
+            "x=-4,\\ y=1",
+            "x=-5,\\ y=-1"
           ],
-          "correct": 1,
-          "answer": "$A\\mathbf{v}=\\langle(-1)(-1)+(6)(5),\\,(2)(-1)+(2)(5)\\rangle=\\langle31,8\\rangle$.",
-          "explanation": "$A\\mathbf{v}=\\langle(-1)(-1)+(6)(5),\\,(2)(-1)+(2)(5)\\rangle=\\langle31,8\\rangle$."
+          "correct": 0,
+          "answer": "$\\det A=15$. Using $A^{-1}$ (Theorem 2.1) on $\\mathbf{b}=\\left[28 ; 25\\right]$ gives $x=-5,\\ y=1$. Check: $-5(-5)+3(1)=28$ ✓ and $-5(-5)+0(1)=25$ ✓.",
+          "explanation": "$\\det A=15$. Using $A^{-1}$ (Theorem 2.1) on $\\mathbf{b}=\\left[28 ; 25\\right]$ gives $x=-5,\\ y=1$. Check: $-5(-5)+3(1)=28$ ✓ and $-5(-5)+0(1)=25$ ✓."
         },
         {
-          "q": "Let $A$ have rows $\\langle-7,-6\\rangle$ and $\\langle8,4\\rangle$, and let $\\mathbf{v}=\\langle-5,-4\\rangle$. Find $A\\mathbf{v}$.",
+          "q": "Given the vectors $\\mathbf{u} = \\langle 3, -4 \\rangle$ and $\\mathbf{v} = \\langle -2, 5 \\rangle$, what is the vector $2\\mathbf{u} + \\mathbf{v}$?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+          "target": "Vector magnitude and dot product",
           "choices": [
-            "$\\langle61,-56\\rangle$",
-            "$\\langle59,-56\\rangle$",
-            "$\\langle59,-58\\rangle$",
-            "$\\langle-56,59\\rangle$"
+            "$\\langle 4, -3 \\rangle$",
+            "$\\langle 1, 1 \\rangle$",
+            "$\\langle 4, 1 \\rangle$",
+            "$\\langle 8, -13 \\rangle$"
           ],
-          "correct": 1,
-          "answer": "$A\\mathbf{v}=\\langle(-7)(-5)+(-6)(-4),\\,(8)(-5)+(4)(-4)\\rangle=\\langle59,-56\\rangle$.",
-          "explanation": "$A\\mathbf{v}=\\langle(-7)(-5)+(-6)(-4),\\,(8)(-5)+(4)(-4)\\rangle=\\langle59,-56\\rangle$."
+          "correct": 0,
+          "answer": "To find $2\\mathbf{u} + \\mathbf{v}$, first perform the scalar multiplication on $\\mathbf{u}$: $2\\mathbf{u} = 2\\langle 3, -4 \\rangle = \\langle 2(3), 2(-4) \\rangle = \\langle 6, -8 \\rangle$ Next, add the corresponding components of $2\\mathbf{u}$ and $\\mathbf{v}$: $2\\mathbf{u} + \\mathbf{v} = \\langle 6 + (-2), -8 + 5 \\rangle = \\langle 4, -3 \\rangle$ - $\\langle 1, 1 \\rangle$ is incorrect because it represents $\\mathbf{u} + \\mathbf{v}$, omitting the scalar factor of 2. - $\\langle 4, 1 \\rangle$ is incorrect because the scalar 2 was only distributed to the horizontal component. - $\\langle 8, -13 \\rangle$ is incorrect because it calculates $2\\mathbf{u} - \\mathbf{v}$ instead of $2\\mathbf{u} + \\mathbf{v}$.",
+          "explanation": "To find $2\\mathbf{u} + \\mathbf{v}$, first perform the scalar multiplication on $\\mathbf{u}$: $2\\mathbf{u} = 2\\langle 3, -4 \\rangle = \\langle 2(3), 2(-4) \\rangle = \\langle 6, -8 \\rangle$ Next, add the corresponding components of $2\\mathbf{u}$ and $\\mathbf{v}$: $2\\mathbf{u} + \\mathbf{v} = \\langle 6 + (-2), -8 + 5 \\rangle = \\langle 4, -3 \\rangle$ - $\\langle 1, 1 \\rangle$ is incorrect because it represents $\\mathbf{u} + \\mathbf{v}$, omitting the scalar factor of 2. - $\\langle 4, 1 \\rangle$ is incorrect because the scalar 2 was only distributed to the horizontal component. - $\\langle 8, -13 \\rangle$ is incorrect because it calculates $2\\mathbf{u} - \\mathbf{v}$ instead of $2\\mathbf{u} + \\mathbf{v}$."
         },
         {
-          "q": "Let $A$ have rows $\\langle-2,-6\\rangle$ and $\\langle7,-5\\rangle$, and let $\\mathbf{v}=\\langle-9,-3\\rangle$. Find $A\\mathbf{v}$.",
+          "q": "If matrix $A = \\left[3, -2 ; 0, 4\\right]$ and matrix $B = \\left[-1, 5 ; 2, -3\\right]$, what is the matrix $2A + B$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Angle between vectors",
+          "choices": [
+            "$\\left[5, 1 ; 2, 5\\right]$",
+            "$\\left[2, 3 ; 2, 1\\right]$",
+            "$\\left[5, 3 ; 2, 1\\right]$",
+            "$\\left[7, -9 ; -2, 11\\right]$"
+          ],
+          "correct": 0,
+          "answer": "To find the matrix $2A + B$, first perform scalar multiplication by multiplying each entry of matrix $A$ by $2$: $2A = 2\\left[3, -2 ; 0, 4\\right] = \\left[2(3), 2(-2) ; 2(0), 2(4)\\right] = \\left[6, -4 ; 0, 8\\right]$ Next, add the corresponding entries of $2A$ and $B$: $2A + B = \\left[6, -4 ; 0, 8\\right] + \\left[-1, 5 ; 2, -3\\right] = \\left[6 + (-1), -4 + 5 ; 0 + 2, 8 + (-3)\\right] = \\left[5, 1 ; 2, 5\\right]$",
+          "explanation": "To find the matrix $2A + B$, first perform scalar multiplication by multiplying each entry of matrix $A$ by $2$: $2A = 2\\left[3, -2 ; 0, 4\\right] = \\left[2(3), 2(-2) ; 2(0), 2(4)\\right] = \\left[6, -4 ; 0, 8\\right]$ Next, add the corresponding entries of $2A$ and $B$: $2A + B = \\left[6, -4 ; 0, 8\\right] + \\left[-1, 5 ; 2, -3\\right] = \\left[6 + (-1), -4 + 5 ; 0 + 2, 8 + (-3)\\right] = \\left[5, 1 ; 2, 5\\right]$"
+        },
+        {
+          "q": "Given matrix $A = \\left(2, -1 ; 3, 3\\right)$, what is the scalar product $3A$?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Addition and scalar multiplication",
           "choices": [
-            "$\\langle38,-48\\rangle$",
-            "$\\langle36,-48\\rangle$",
-            "$\\langle36,-50\\rangle$",
-            "$\\langle-48,36\\rangle$"
+            "$\\left(5, 2 ; 6, 6\\right)$",
+            "$\\left(6, -1 ; 3, 9\\right)$",
+            "$\\left(6, -3 ; 9, 9\\right)$",
+            "$\\left(6, 3 ; 9, 10\\right)$"
           ],
-          "correct": 1,
-          "answer": "$A\\mathbf{v}=\\langle(-2)(-9)+(-6)(-3),\\,(7)(-9)+(-5)(-3)\\rangle=\\langle36,-48\\rangle$.",
-          "explanation": "$A\\mathbf{v}=\\langle(-2)(-9)+(-6)(-3),\\,(7)(-9)+(-5)(-3)\\rangle=\\langle36,-48\\rangle$.",
+          "correct": 2,
+          "answer": "Multiply each element by $3$: $3(2)=6$, $3(-1)=-3$, $3(3)=9$, $3(3)=9$.",
+          "explanation": "Multiply each element by $3$: $3(2)=6$, $3(-1)=-3$, $3(3)=9$, $3(3)=9$.",
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (1))**2 + (-2)",
-              "0.5*x + 1"
+              "-0.45*(x - (-1.5))**2 + (-0.5)",
+              "-0.35*x + (-1.7)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
-                "x": 1.0,
-                "y": -2.0,
-                "label": "$(1,-2)$"
+                "x": -1.5,
+                "y": -0.5,
+                "label": "$(-1.5,-0.5)$"
               }
             ],
             "width": 230
           }
         },
         {
-          "q": "Let $A$ have rows $\\langle-7,-2\\rangle$ and $\\langle1,0\\rangle$, and let $\\mathbf{v}=\\langle8,-1\\rangle$. Find $A\\mathbf{v}$.",
+          "q": "A transformation maps point $A(1, 2)$ to $A'(-4, 2)$ and point $B(3, 5)$ to $B'(-2, 5)$. This transformation can be represented by matrix multiplication $\\left(x \\ y\\right)' = M \\left(x \\ y\\right) + \\left(a \\ b\\right)$. Find the values of $a$ and $b$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Matrix multiplication",
           "choices": [
-            "$\\langle-54,6\\rangle$",
-            "$\\langle8,-54\\rangle$",
-            "$\\langle-52,8\\rangle$",
-            "$\\langle-54,8\\rangle$"
+            "a = -5, b = 0",
+            "a = 5, b = 0",
+            "a = 0, b = -5",
+            "a = 0, b = 5"
           ],
-          "correct": 3,
-          "answer": "$A\\mathbf{v}=\\langle(-7)(8)+(-2)(-1),\\,(1)(8)+(0)(-1)\\rangle=\\langle-54,8\\rangle$.",
-          "explanation": "$A\\mathbf{v}=\\langle(-7)(8)+(-2)(-1),\\,(1)(8)+(0)(-1)\\rangle=\\langle-54,8\\rangle$."
+          "correct": 0,
+          "answer": "Let the transformation be given by $\\left(x \\ y\\right)' = M \\left(x \\ y\\right) + \\left(a \\ b\\right)$. We are given two points and their images under this transformation: 1. $A(1, 2) \\rightarrow A'(-4, 2)$: $\\left(-4 \\ 2\\right) = M \\left(1 \\ 2\\right) + \\left(a \\ b\\right)$ 2. $B(3, 5) \\rightarrow B'(-2, 5)$: $\\left(-2 \\ 5\\right) = M \\left(3 \\ 5\\right) + \\left(a \\ b\\right)$ Subtracting the first equation from the second, we get: $\\left(-2 - (-4) \\ 5 - 2\\right) = M \\left(3 - 1 \\ 5 - 2\\right)$ $\\left(2 \\ 3\\right) = M \\left(2 \\ 3\\right)$ This implies that the matrix $M$ represents a scaling or rotation, and since the components of the vector $\\left(2 \\ 3\\right)$ are unchanged when multiplied by $M$, we can infer that $M = I$ (the identity matrix), or that the transformation is purely a translation. However, the problem states that the transformation can be represented by matrix multiplication *and* a translation vector. This suggests that the mapping of the *vectors* between the points might give us information about $M$. Let's reconsider the equations: $\\left(-4 \\ 2\\right) = M \\left(1 \\ 2\\right) + \\left(a \\ b\\right)$ $\\left(-2 \\ 5\\right) = M \\left(3 \\ 5\\right) + \\left(a \\ b\\right)$ Subtracting the two equations directly: $\\left(-2 - (-4) \\ 5 - 2\\right) = M \\left(3 - 1 \\ 5 - 2\\right)$ $\\left(2 \\ 3\\right) = M \\left(2 \\ 3\\right)$ This result only tells us how the vector $\\left(2 \\ 3\\right)$ is transformed. If we assume $M$ is a general $2 \\times 2$ matrix $\\left(m_{11}, m_{12} \\ m_{21}, m_{22}\\right)$, then: $\\left(2 \\ 3\\right) = \\left(m_{11}, m_{12} \\ m_{21}, m_{22}\\right) \\left(2 \\ 3\\right) = \\left(2m_{11} + 3m_{12} \\ 2m_{21} + 3m_{22}\\right)$ This gives us two equations with four unknowns. However, the problem implies a specific type of transformation is being applied, and we need to find the translation vector $\\left(a \\ b\\right)$. A common trap is to assume $M$ is the identity matrix without justification. Let's consider the displacement vector: $\\vec{AA'} = \\left(-4-1 \\ 2-2\\right) = \\left(-5 \\ 0\\right)$ and $\\vec{BB'} = \\left(-2-3 \\ 5-5\\right) = \\left(-5 \\ 0\\right)$. Since the displacement vectors are the same for both points, this indicates that the transformation is a pure translation. In this case, the matrix multiplication part of the transformation either does not change the points or $M$ is the identity matrix and the entire transformation is described by the translation vector. If it were a general linear transformation $M$, the displacement vectors $\\vec{AA'}$ and $\\vec{BB'}$ would likely be different unless $M$ has specific properties. If the transformation is a pure translation, then $M$ could be the identity matrix, i.e., $M = \\left(1, 0 \\ 0, 1\\right)$. In this scenario, the equations become: 1. $\\left(-4 \\ 2\\right) = \\left(1, 0 \\ 0, 1\\right) \\left(1 \\ 2\\right) + \\left(a \\ b\\right) \\Rightarrow \\left(-4 \\ 2\\right) = \\left(1 \\ 2\\right) + \\left(a \\ b\\right)$ $\\left(a \\ b\\right) = \\left(-4 - 1 \\ 2 - 2\\right) = \\left(-5 \\ 0\\right)$ 2. $\\left(-2 \\ 5\\right) = \\left(1, 0 \\ 0, 1\\right) \\left(3 \\ 5\\right) + \\left(a \\ b\\right) \\Rightarrow \\left(-2 \\ 5\\right) = \\left(3 \\ 5\\right) + \\left(a \\ b\\right)$ $\\left(a \\ b\\right) = \\left(-2 - 3 \\ 5 - 5\\right) = \\left(-5 \\ 0\\right)$ Both points yield the same translation vector $\\left(a \\ b\\right) = \\left(-5 \\ 0\\right)$. Therefore, $a = -5$ and $b = 0$.",
+          "explanation": "Let the transformation be given by $\\left(x \\ y\\right)' = M \\left(x \\ y\\right) + \\left(a \\ b\\right)$. We are given two points and their images under this transformation: 1. $A(1, 2) \\rightarrow A'(-4, 2)$: $\\left(-4 \\ 2\\right) = M \\left(1 \\ 2\\right) + \\left(a \\ b\\right)$ 2. $B(3, 5) \\rightarrow B'(-2, 5)$: $\\left(-2 \\ 5\\right) = M \\left(3 \\ 5\\right) + \\left(a \\ b\\right)$ Subtracting the first equation from the second, we get: $\\left(-2 - (-4) \\ 5 - 2\\right) = M \\left(3 - 1 \\ 5 - 2\\right)$ $\\left(2 \\ 3\\right) = M \\left(2 \\ 3\\right)$ This implies that the matrix $M$ represents a scaling or rotation, and since the components of the vector $\\left(2 \\ 3\\right)$ are unchanged when multiplied by $M$, we can infer that $M = I$ (the identity matrix), or that the transformation is purely a translation. However, the problem states that the transformation can be represented by matrix multiplication *and* a translation vector. This suggests that the mapping of the *vectors* between the points might give us information about $M$. Let's reconsider the equations: $\\left(-4 \\ 2\\right) = M \\left(1 \\ 2\\right) + \\left(a \\ b\\right)$ $\\left(-2 \\ 5\\right) = M \\left(3 \\ 5\\right) + \\left(a \\ b\\right)$ Subtracting the two equations directly: $\\left(-2 - (-4) \\ 5 - 2\\right) = M \\left(3 - 1 \\ 5 - 2\\right)$ $\\left(2 \\ 3\\right) = M \\left(2 \\ 3\\right)$ This result only tells us how the vector $\\left(2 \\ 3\\right)$ is transformed. If we assume $M$ is a general $2 \\times 2$ matrix $\\left(m_{11}, m_{12} \\ m_{21}, m_{22}\\right)$, then: $\\left(2 \\ 3\\right) = \\left(m_{11}, m_{12} \\ m_{21}, m_{22}\\right) \\left(2 \\ 3\\right) = \\left(2m_{11} + 3m_{12} \\ 2m_{21} + 3m_{22}\\right)$ This gives us two equations with four unknowns. However, the problem implies a specific type of transformation is being applied, and we need to find the translation vector $\\left(a \\ b\\right)$. A common trap is to assume $M$ is the identity matrix without justification. Let's consider the displacement vector: $\\vec{AA'} = \\left(-4-1 \\ 2-2\\right) = \\left(-5 \\ 0\\right)$ and $\\vec{BB'} = \\left(-2-3 \\ 5-5\\right) = \\left(-5 \\ 0\\right)$. Since the displacement vectors are the same for both points, this indicates that the transformation is a pure translation. In this case, the matrix multiplication part of the transformation either does not change the points or $M$ is the identity matrix and the entire transformation is described by the translation vector. If it were a general linear transformation $M$, the displacement vectors $\\vec{AA'}$ and $\\vec{BB'}$ would likely be different unless $M$ has specific properties. If the transformation is a pure translation, then $M$ could be the identity matrix, i.e., $M = \\left(1, 0 \\ 0, 1\\right)$. In this scenario, the equations become: 1. $\\left(-4 \\ 2\\right) = \\left(1, 0 \\ 0, 1\\right) \\left(1 \\ 2\\right) + \\left(a \\ b\\right) \\Rightarrow \\left(-4 \\ 2\\right) = \\left(1 \\ 2\\right) + \\left(a \\ b\\right)$ $\\left(a \\ b\\right) = \\left(-4 - 1 \\ 2 - 2\\right) = \\left(-5 \\ 0\\right)$ 2. $\\left(-2 \\ 5\\right) = \\left(1, 0 \\ 0, 1\\right) \\left(3 \\ 5\\right) + \\left(a \\ b\\right) \\Rightarrow \\left(-2 \\ 5\\right) = \\left(3 \\ 5\\right) + \\left(a \\ b\\right)$ $\\left(a \\ b\\right) = \\left(-2 - 3 \\ 5 - 5\\right) = \\left(-5 \\ 0\\right)$ Both points yield the same translation vector $\\left(a \\ b\\right) = \\left(-5 \\ 0\\right)$. Therefore, $a = -5$ and $b = 0$."
         },
         {
-          "q": "Let $A$ have rows $\\langle3,-2\\rangle$ and $\\langle-5,1\\rangle$, and let $\\mathbf{v}=\\langle5,5\\rangle$. Find $A\\mathbf{v}$.",
+          "q": "Consider a linear transformation $T$ represented by the matrix $A = \\left(2, 1 \\ 1, 3\\right)$. Let $P = \\left(x ; y\\right)$ be a point in the plane. The transformation maps $P$ to $P'$. If the area of the region transformed by $T$ from a unit square in the $xy$-plane is $A$, and the determinant of $A$ is $\\det(A)$, find the value of $\\det(A)$ if the area of the transformed region is $5$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Determinant and inverse",
           "choices": [
-            "$\\langle5,-22\\rangle$",
-            "$\\langle7,-20\\rangle$",
-            "$\\langle5,-20\\rangle$",
-            "$\\langle-20,5\\rangle$"
+            "5",
+            "2",
+            "1",
+            "10"
           ],
-          "correct": 2,
-          "answer": "$A\\mathbf{v}=\\langle(3)(5)+(-2)(5),\\,(-5)(5)+(1)(5)\\rangle=\\langle5,-20\\rangle$.",
-          "explanation": "$A\\mathbf{v}=\\langle(3)(5)+(-2)(5),\\,(-5)(5)+(1)(5)\\rangle=\\langle5,-20\\rangle$."
+          "correct": 0,
+          "answer": "The area of the region transformed by a linear transformation $T$ represented by a matrix $A$ from a unit square is given by the absolute value of the determinant of $A$, i.e., Area $= |\\det(A)|$. In this problem, we are given that the matrix representing the transformation is $A = \\left(2, 1 \\ 1, 3\\right)$. The determinant of $A$ is calculated as: $\\det(A) = (2 \\times 3) - (1 \\times 1) = 6 - 1 = 5$. We are also given that the area of the transformed region is $5$. Thus, $|\\det(A)| = 5$. Since we calculated $\\det(A) = 5$, which is positive, the condition is satisfied. Therefore, the value of $\\det(A)$ is $5$.",
+          "explanation": "The area of the region transformed by a linear transformation $T$ represented by a matrix $A$ from a unit square is given by the absolute value of the determinant of $A$, i.e., Area $= |\\det(A)|$. In this problem, we are given that the matrix representing the transformation is $A = \\left(2, 1 \\ 1, 3\\right)$. The determinant of $A$ is calculated as: $\\det(A) = (2 \\times 3) - (1 \\times 1) = 6 - 1 = 5$. We are also given that the area of the transformed region is $5$. Thus, $|\\det(A)| = 5$. Since we calculated $\\det(A) = 5$, which is positive, the condition is satisfied. Therefore, the value of $\\det(A)$ is $5$."
         },
         {
-          "q": "Find $A^{-1}$ for the matrix $A$ with rows $\\langle3,1\\rangle$ and $\\langle-1,0\\rangle$.",
+          "q": "Consider the matrix $A = \\left(2, 0 ; 0, 3\\right)$. When the matrix $A$ is applied to the vector $\\mathbf{v} = \\left(x ; y\\right)$, the resulting vector is $A\\mathbf{v} = \\left(6 ; 9\\right)$. What is the original vector $\\mathbf{v}$?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Solving systems with the inverse matrix",
           "choices": [
-            "$\\langle0,-1\\rangle,\\langle1,3\\rangle$",
-            "$\\langle0,1\\rangle,\\langle-1,3\\rangle$",
-            "$\\langle1,3\\rangle,\\langle0,-1\\rangle$",
-            "$\\langle3,1\\rangle,\\langle-1,0\\rangle$"
+            "$\\left(3 ; 3\\right)$",
+            "$\\left(1 ; 2\\right)$",
+            "$\\left(6 ; 3\\right)$",
+            "$\\left(12 ; 27\\right)$"
           ],
           "correct": 0,
-          "answer": "$\\det A=(3)(0)-(1)(-1)=1$. $A^{-1}=\\frac{1}{1}\\times$ the matrix with rows $\\langle0,-1\\rangle$ and $\\langle1,3\\rangle$, giving rows $\\langle0,-1\\rangle$ and $\\langle1,3\\rangle$.",
-          "explanation": "$\\det A=(3)(0)-(1)(-1)=1$. $A^{-1}=\\frac{1}{1}\\times$ the matrix with rows $\\langle0,-1\\rangle$ and $\\langle1,3\\rangle$, giving rows $\\langle0,-1\\rangle$ and $\\langle1,3\\rangle$."
+          "answer": "The matrix multiplication is given by: $\\left(2, 0 ; 0, 3\\right) \\left(x ; y\\right) = \\left(2x ; 3y\\right)$ We are given that this result is $\\left(6 ; 9\\right)$. Therefore, we have the system of equations: $2x = 6$ $3y = 9$ Solving for $x$ and $y$: $x = \\frac{6}{2} = 3$ $y = \\frac{9}{3} = 3$ So, the original vector $\\mathbf{v}$ is $\\left(3 ; 3\\right)$.",
+          "explanation": "The matrix multiplication is given by: $\\left(2, 0 ; 0, 3\\right) \\left(x ; y\\right) = \\left(2x ; 3y\\right)$ We are given that this result is $\\left(6 ; 9\\right)$. Therefore, we have the system of equations: $2x = 6$ $3y = 9$ Solving for $x$ and $y$: $x = \\frac{6}{2} = 3$ $y = \\frac{9}{3} = 3$ So, the original vector $\\mathbf{v}$ is $\\left(3 ; 3\\right)$."
         },
         {
-          "q": "Find $A^{-1}$ for the matrix $A$ with rows $\\langle1,-2\\rangle$ and $\\langle2,-5\\rangle$.",
+          "q": "Compute the dot product $\\mathbf{u} \\cdot \\mathbf{v}$ for $\\mathbf{u} = \\langle 2, 3 \\rangle$ and $\\mathbf{v} = \\langle 2, 5 \\rangle$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Vector magnitude and dot product",
           "choices": [
-            "$\\langle5,2\\rangle,\\langle-2,-1\\rangle$",
-            "$\\langle2,-1\\rangle,\\langle5,-2\\rangle$",
-            "$\\langle5,-2\\rangle,\\langle2,-1\\rangle$",
-            "$\\langle1,-2\\rangle,\\langle2,-5\\rangle$"
+            "19",
+            "22",
+            "16",
+            "14"
           ],
-          "correct": 2,
-          "answer": "$\\det A=(1)(-5)-(-2)(2)=-1$. $A^{-1}=\\frac{1}{-1}\\times$ the matrix with rows $\\langle-5,2\\rangle$ and $\\langle-2,1\\rangle$, giving rows $\\langle5,-2\\rangle$ and $\\langle2,-1\\rangle$.",
-          "explanation": "$\\det A=(1)(-5)-(-2)(2)=-1$. $A^{-1}=\\frac{1}{-1}\\times$ the matrix with rows $\\langle-5,2\\rangle$ and $\\langle-2,1\\rangle$, giving rows $\\langle5,-2\\rangle$ and $\\langle2,-1\\rangle$."
+          "correct": 0,
+          "answer": "$\\mathbf{u} \\cdot \\mathbf{v} = u_1 v_1 + u_2 v_2 = (2)(2) + (3)(5) = 4 + 15 = 19$.",
+          "explanation": "$\\mathbf{u} \\cdot \\mathbf{v} = u_1 v_1 + u_2 v_2 = (2)(2) + (3)(5) = 4 + 15 = 19$."
         }
       ]
     },
@@ -636,131 +631,131 @@
       "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
       "questions": [
         {
-          "q": "Solve the system $6y=-30$ and $6x=24$ using $\\mathbf{x}=M^{-1}\\mathbf{b}$.",
+          "q": "What is the magnitude of the 2D vector $\\mathbf{v} = \\langle 3, -4 \\rangle$?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Angle between vectors",
           "choices": [
-            "$\\langle-5,4\\rangle$",
-            "$\\langle6,-5\\rangle$",
-            "$\\langle4,-5\\rangle$",
-            "$\\langle4,-7\\rangle$"
+            "5",
+            "12",
+            "10",
+            "7"
           ],
-          "correct": 2,
-          "answer": "$M$ has rows $\\langle0,6\\rangle$ and $\\langle6,0\\rangle$, so $\\det M=(0)(0)-(6)(6)=-36$. Solving gives $x=4$ and $y=-5$. Check: $(0)(4)-30=-30$ and $(6)(4)=24$.",
-          "explanation": "$M$ has rows $\\langle0,6\\rangle$ and $\\langle6,0\\rangle$, so $\\det M=(0)(0)-(6)(6)=-36$. Solving gives $x=4$ and $y=-5$. Check: $(0)(4)-30=-30$ and $(6)(4)=24$.",
+          "correct": 0,
+          "answer": "$||\\mathbf{v}|| = \\sqrt{(3)^2 + (-4)^2} = \\sqrt{25} = 5$.",
+          "explanation": "$||\\mathbf{v}|| = \\sqrt{(3)^2 + (-4)^2} = \\sqrt{25} = 5$.",
           "cross_lesson": "5.01 Trigonometry & Polar Coordinates"
         },
         {
-          "q": "Solve the system $x+3y=-15$ and $x+2y=-8$ using $\\mathbf{x}=M^{-1}\\mathbf{b}$.",
+          "q": "In $\\Delta  ABC$, the side lengths are $AB = 5$ and $BC = 4$, and $\\angle B$ is an acute angle. If $\\cos(2B) = -\\frac{31}{32}$, what is the length of side $AC$?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+          "target": "Addition and scalar multiplication",
           "choices": [
-            "$\\langle6,-7\\rangle$",
-            "$\\langle-7,6\\rangle$",
-            "$\\langle8,-7\\rangle$",
-            "$\\langle6,-9\\rangle$"
+            "$6$",
+            "$\\sqrt{46}$",
+            "$\\sqrt{41}$",
+            "$\\sqrt{31}$"
           ],
           "correct": 0,
-          "answer": "$M$ has rows $\\langle1,3\\rangle$ and $\\langle1,2\\rangle$, so $\\det M=(1)(2)-(3)(1)=-1$. Solving gives $x=6$ and $y=-7$. Check: $(1)(6)-21=-15$ and $(1)(6)-14=-8$.",
-          "explanation": "$M$ has rows $\\langle1,3\\rangle$ and $\\langle1,2\\rangle$, so $\\det M=(1)(2)-(3)(1)=-1$. Solving gives $x=6$ and $y=-7$. Check: $(1)(6)-21=-15$ and $(1)(6)-14=-8$.",
+          "answer": "We solve the problem in two steps by first determining $\\cos(B)$ and then applying the Law of Cosines to find $AC$. **Step 1: Find $\\cos(B)$** Using the double-angle identity for cosine: $\\cos(2B) = 2\\cos^2(B) - 1$ Substitute the given value $\\cos(2B) = -\\frac{31}{32}$: $-\\frac{31}{32} = 2\\cos^2(B) - 1$ $2\\cos^2(B) = 1 - \\frac{31}{32} = \\frac{1}{32}$ $\\cos^2(B) = \\frac{1}{64}$ Since $\\angle B$ is acute ($0^\\circ 0$: $\\cos(B) = \\frac{1}{8}$ **Step 2: Apply the Law of Cosines** In $\\Delta  ABC$, the side opposite $\\angle B$ is $AC$: $AC^2 = AB^2 + BC^2 - 2(AB)(BC)\\cos(B)$ Substitute $AB = 5$, $BC = 4$, and $\\cos(B) = \\frac{1}{8}$: $AC^2 = 5^2 + 4^2 - 2(5)(4)\\left(\\frac{1}{8}\\right)$ $AC^2 = 25 + 16 - \\frac{40}{8} = 41 - 5 = 36$ Taking the principal square root gives: $AC = 6$ **Common Traps:** - $\\sqrt{46}$ arises from using an incorrect sign in the Law of Cosines ($41 + 5 = 46$) or erroneously setting $\\cos(B) = -\\frac{1}{8}$. - $\\sqrt{41}$ comes from assuming $\\Delta  ABC$ is a right triangle and applying the Pythagorean theorem directly ($\\sqrt{5^2 + 4^2}$). - $\\sqrt{31}$ results from an arithmetic error such as computing $\\cos(B) = \\frac{1}{4}$ instead of $\\frac{1}{8}$.",
+          "explanation": "We solve the problem in two steps by first determining $\\cos(B)$ and then applying the Law of Cosines to find $AC$. **Step 1: Find $\\cos(B)$** Using the double-angle identity for cosine: $\\cos(2B) = 2\\cos^2(B) - 1$ Substitute the given value $\\cos(2B) = -\\frac{31}{32}$: $-\\frac{31}{32} = 2\\cos^2(B) - 1$ $2\\cos^2(B) = 1 - \\frac{31}{32} = \\frac{1}{32}$ $\\cos^2(B) = \\frac{1}{64}$ Since $\\angle B$ is acute ($0^\\circ 0$: $\\cos(B) = \\frac{1}{8}$ **Step 2: Apply the Law of Cosines** In $\\Delta  ABC$, the side opposite $\\angle B$ is $AC$: $AC^2 = AB^2 + BC^2 - 2(AB)(BC)\\cos(B)$ Substitute $AB = 5$, $BC = 4$, and $\\cos(B) = \\frac{1}{8}$: $AC^2 = 5^2 + 4^2 - 2(5)(4)\\left(\\frac{1}{8}\\right)$ $AC^2 = 25 + 16 - \\frac{40}{8} = 41 - 5 = 36$ Taking the principal square root gives: $AC = 6$ **Common Traps:** - $\\sqrt{46}$ arises from using an incorrect sign in the Law of Cosines ($41 + 5 = 46$) or erroneously setting $\\cos(B) = -\\frac{1}{8}$. - $\\sqrt{41}$ comes from assuming $\\Delta  ABC$ is a right triangle and applying the Pythagorean theorem directly ($\\sqrt{5^2 + 4^2}$). - $\\sqrt{31}$ results from an arithmetic error such as computing $\\cos(B) = \\frac{1}{4}$ instead of $\\frac{1}{8}$.",
           "cross_lesson": "6.01 Limits"
         },
         {
-          "q": "Solve the system $x-y=0$ and $-3x-6y=-54$ using $\\mathbf{x}=M^{-1}\\mathbf{b}$.",
+          "q": "In $\\Delta  ABC$, the lengths of sides $AB$ and $BC$ are $5$ and $8$, respectively, and the measure of $\\angle B$ is $60^\\circ$. What is the length of the altitude from vertex $B$ to side $AC$?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+          "target": "Matrix multiplication",
           "choices": [
-            "$\\langle9,6\\rangle$",
-            "$\\langle6,4\\rangle$",
-            "$\\langle6,6\\rangle$",
-            "$\\langle8,6\\rangle$"
+            "$\\frac{20\\sqrt{3}}{7}$",
+            "$\\frac{40\\sqrt{3}}{7}$",
+            "$\\frac{10\\sqrt{3}}{7}$",
+            "$\\frac{20}{7}$"
           ],
-          "correct": 2,
-          "answer": "$M$ has rows $\\langle1,-1\\rangle$ and $\\langle-3,-6\\rangle$, so $\\det M=(1)(-6)-(-1)(-3)=-9$. Solving gives $x=6$ and $y=6$. Check: $(1)(6)-6=0$ and $(-3)(6)-36=-54$.",
-          "explanation": "$M$ has rows $\\langle1,-1\\rangle$ and $\\langle-3,-6\\rangle$, so $\\det M=(1)(-6)-(-1)(-3)=-9$. Solving gives $x=6$ and $y=6$. Check: $(1)(6)-6=0$ and $(-3)(6)-36=-54$.",
+          "correct": 0,
+          "answer": "To find the altitude from vertex $B$ to side $AC$, we first determine the length of side $AC$ using the Law of Cosines: $AC^2 = AB^2 + BC^2 - 2(AB)(BC)\\cos(\\angle B)$ Substitute the given values: $AC^2 = 5^2 + 8^2 - 2(5)(8)\\cos(60^\\circ) = 25 + 64 - 80\\left(\\frac{1}{2}\\right) = 89 - 40 = 49$ Taking the positive square root gives $AC = 7$. Next, calculate the area of $\\Delta  ABC$ using the sine formula for triangle area: $\\mathrm{Area} = \\frac{1}{2} \\cdot AB \\cdot BC \\cdot \\sin(\\angle B) = \\frac{1}{2} \\cdot 5 \\cdot 8 \\cdot \\sin(60^\\circ) = 20 \\cdot \\frac{\\sqrt{3}}{2} = 10\\sqrt{3}$ Finally, relate the area to the base $AC$ and the altitude $h$ from $B$: $\\mathrm{Area} = \\frac{1}{2} \\cdot AC \\cdot h \\Rightarrow 10\\sqrt{3} = \\frac{1}{2} \\cdot 7 \\cdot h \\Rightarrow h = \\frac{20\\sqrt{3}}{7}$ Common errors: - $\\frac{40\\sqrt{3}}{7}$ results from omitting the factor of $\\frac{1}{2}$ in the area formula. - $\\frac{10\\sqrt{3}}{7}$ results from computing $\\frac{\\mathrm{Area}}{AC}$ instead of $\\frac{2\\cdot\\mathrm{Area}}{AC}$. - $\\frac{20}{7}$ results from mistakenly using $\\cos(60^\\circ) = \\frac{1}{2}$ instead of $\\sin(60^\\circ) = \\frac{\\sqrt{3}}{2}$ when finding the area.",
+          "explanation": "To find the altitude from vertex $B$ to side $AC$, we first determine the length of side $AC$ using the Law of Cosines: $AC^2 = AB^2 + BC^2 - 2(AB)(BC)\\cos(\\angle B)$ Substitute the given values: $AC^2 = 5^2 + 8^2 - 2(5)(8)\\cos(60^\\circ) = 25 + 64 - 80\\left(\\frac{1}{2}\\right) = 89 - 40 = 49$ Taking the positive square root gives $AC = 7$. Next, calculate the area of $\\Delta  ABC$ using the sine formula for triangle area: $\\mathrm{Area} = \\frac{1}{2} \\cdot AB \\cdot BC \\cdot \\sin(\\angle B) = \\frac{1}{2} \\cdot 5 \\cdot 8 \\cdot \\sin(60^\\circ) = 20 \\cdot \\frac{\\sqrt{3}}{2} = 10\\sqrt{3}$ Finally, relate the area to the base $AC$ and the altitude $h$ from $B$: $\\mathrm{Area} = \\frac{1}{2} \\cdot AC \\cdot h \\Rightarrow 10\\sqrt{3} = \\frac{1}{2} \\cdot 7 \\cdot h \\Rightarrow h = \\frac{20\\sqrt{3}}{7}$ Common errors: - $\\frac{40\\sqrt{3}}{7}$ results from omitting the factor of $\\frac{1}{2}$ in the area formula. - $\\frac{10\\sqrt{3}}{7}$ results from computing $\\frac{\\mathrm{Area}}{AC}$ instead of $\\frac{2\\cdot\\mathrm{Area}}{AC}$. - $\\frac{20}{7}$ results from mistakenly using $\\cos(60^\\circ) = \\frac{1}{2}$ instead of $\\sin(60^\\circ) = \\frac{\\sqrt{3}}{2}$ when finding the area.",
           "cross_lesson": "1.01 Complex Numbers"
         },
         {
-          "q": "For $\\mathbf{u}=\\langle-20,-21\\rangle$ and $\\mathbf{v}=\\langle8,-15\\rangle$, find $\\cos\\theta$ where $\\theta$ is the angle between them, using $\\cos\\theta=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|}$.",
+          "q": "In $\\Delta  ABC$, the length of side $AB$ is $x$, the length of side $BC$ is $x + 3$, and the length of side $AC$ is $7$. If $\\angle B = 60^\\circ$, what is the value of $x$?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+          "target": "Determinant and inverse",
           "choices": [
-            "$\\frac{155}{493}$",
-            "$-\\frac{155}{493}$",
-            "$\\frac{156}{493}$",
-            "$\\frac{155}{46}$"
+            "5",
+            "8",
+            "4",
+            "6"
           ],
           "correct": 0,
-          "answer": "$\\mathbf{u}\\cdot\\mathbf{v}=(-20)(8)+(-21)(-15)=155$. $|\\mathbf{u}|=29$, $|\\mathbf{v}|=17$. $\\cos\\theta=155/493=\\frac{155}{493}$.",
-          "explanation": "$\\mathbf{u}\\cdot\\mathbf{v}=(-20)(8)+(-21)(-15)=155$. $|\\mathbf{u}|=29$, $|\\mathbf{v}|=17$. $\\cos\\theta=155/493=\\frac{155}{493}$.",
+          "answer": "To find $x$, apply the Law of Cosines to $\\Delta  ABC$ with angle $B$: $AC^2 = AB^2 + BC^2 - 2(AB)(BC)\\cos(B)$ Substitute the given values $AC = 7$, $AB = x$, $BC = x + 3$, and $\\angle B = 60^\\circ$: $7^2 = x^2 + (x + 3)^2 - 2x(x + 3)\\cos(60^\\circ)$ Recall that $\\cos(60^\\circ) = \\frac{1}{2}$: $49 = x^2 + (x^2 + 6x + 9) - 2x(x + 3)\\left(\\frac{1}{2}\\right)$ $49 = 2x^2 + 6x + 9 - x(x + 3)$ $49 = 2x^2 + 6x + 9 - x^2 - 3x$ $49 = x^2 + 3x + 9$ Rearrange into standard quadratic form: $x^2 + 3x - 40 = 0$ Factor the quadratic expression: $(x - 5)(x + 8) = 0$ This yields $x = 5$ or $x = -8$. Since a triangle side length must be positive, we reject $x = -8$, giving $x = 5$. Common traps: - Solving for the length of side $BC$ instead of $x$ gives $x + 3 = 8$ (Choice B). - Sign errors when expanding $(x - 5)(x + 8) = 0$ often lead students to select $x = 8$.",
+          "explanation": "To find $x$, apply the Law of Cosines to $\\Delta  ABC$ with angle $B$: $AC^2 = AB^2 + BC^2 - 2(AB)(BC)\\cos(B)$ Substitute the given values $AC = 7$, $AB = x$, $BC = x + 3$, and $\\angle B = 60^\\circ$: $7^2 = x^2 + (x + 3)^2 - 2x(x + 3)\\cos(60^\\circ)$ Recall that $\\cos(60^\\circ) = \\frac{1}{2}$: $49 = x^2 + (x^2 + 6x + 9) - 2x(x + 3)\\left(\\frac{1}{2}\\right)$ $49 = 2x^2 + 6x + 9 - x(x + 3)$ $49 = 2x^2 + 6x + 9 - x^2 - 3x$ $49 = x^2 + 3x + 9$ Rearrange into standard quadratic form: $x^2 + 3x - 40 = 0$ Factor the quadratic expression: $(x - 5)(x + 8) = 0$ This yields $x = 5$ or $x = -8$. Since a triangle side length must be positive, we reject $x = -8$, giving $x = 5$. Common traps: - Solving for the length of side $BC$ instead of $x$ gives $x + 3 = 8$ (Choice B). - Sign errors when expanding $(x - 5)(x + 8) = 0$ often lead students to select $x = 8$.",
           "cross_lesson": "3.01 Sequences & Series"
         },
         {
-          "q": "For $\\mathbf{u}=\\langle8,15\\rangle$ and $\\mathbf{v}=\\langle7,24\\rangle$, find $\\cos\\theta$ where $\\theta$ is the angle between them, using $\\cos\\theta=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|}$.",
+          "q": "In $\\Delta  ABC$, $A=64^\\circ$, $a=18$, $b=9$. Find angle $B$ to the nearest tenth (assume $B$ acute).",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+          "target": "Solving systems with the inverse matrix",
           "choices": [
-            "$\\frac{417}{425}$",
-            "$\\frac{208}{21}$",
-            "$-\\frac{416}{425}$",
-            "$\\frac{416}{425}$"
+            "$26.7^\\circ$",
+            "$28.7^\\circ$",
+            "$89.3^\\circ$",
+            "$23.7^\\circ$"
           ],
-          "correct": 3,
-          "answer": "$\\mathbf{u}\\cdot\\mathbf{v}=(8)(7)+(15)(24)=416$. $|\\mathbf{u}|=17$, $|\\mathbf{v}|=25$. $\\cos\\theta=416/425=\\frac{416}{425}$.",
-          "explanation": "$\\mathbf{u}\\cdot\\mathbf{v}=(8)(7)+(15)(24)=416$. $|\\mathbf{u}|=17$, $|\\mathbf{v}|=25$. $\\cos\\theta=416/425=\\frac{416}{425}$.",
+          "correct": 0,
+          "answer": "$\\frac{\\sin B}{b}=\\frac{\\sin A}{a}\\Rightarrow \\sin B=\\frac{9\\sin64^\\circ}{18}\\approx0.4494\\Rightarrow B\\approx26.7^\\circ$.",
+          "explanation": "$\\frac{\\sin B}{b}=\\frac{\\sin A}{a}\\Rightarrow \\sin B=\\frac{9\\sin64^\\circ}{18}\\approx0.4494\\Rightarrow B\\approx26.7^\\circ$.",
           "cross_lesson": "4.01 Advanced Functions & Equations"
         },
         {
-          "q": "For $\\mathbf{u}=\\langle-20,-21\\rangle$ and $\\mathbf{v}=\\langle8,-15\\rangle$, find $\\cos\\theta$ where $\\theta$ is the angle between them, using $\\cos\\theta=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{u}||\\mathbf{v}|}$.",
+          "q": "In $\\Delta  ABC$, $a=13$, $b=9$, included angle $C=60^\\circ$. Find $c$ to the nearest tenth.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+          "target": "Vector magnitude and dot product",
           "choices": [
-            "$\\frac{155}{493}$",
-            "$-\\frac{155}{493}$",
-            "$\\frac{156}{493}$",
-            "$\\frac{155}{46}$"
+            "11.5",
+            "12.5",
+            "10.8",
+            "22"
           ],
           "correct": 0,
-          "answer": "$\\mathbf{u}\\cdot\\mathbf{v}=(-20)(8)+(-21)(-15)=155$. $|\\mathbf{u}|=29$, $|\\mathbf{v}|=17$. $\\cos\\theta=155/493=\\frac{155}{493}$.",
-          "explanation": "$\\mathbf{u}\\cdot\\mathbf{v}=(-20)(8)+(-21)(-15)=155$. $|\\mathbf{u}|=29$, $|\\mathbf{v}|=17$. $\\cos\\theta=155/493=\\frac{155}{493}$.",
+          "answer": "$c^2=13^2+9^2-2(13)(9)\\cos60^\\circ\\approx133.00$, so $c\\approx11.5$.",
+          "explanation": "$c^2=13^2+9^2-2(13)(9)\\cos60^\\circ\\approx133.00$, so $c\\approx11.5$.",
           "cross_lesson": "5.01 Trigonometry & Polar Coordinates"
         },
         {
-          "q": "If $A$ is a $3 \\times 2$ matrix and $B$ is a $2 \\times 4$ matrix, what are the dimensions of the product matrix $AB$?",
+          "q": "In $\\Delta  ABC$, $a=15$, $b=7$, included angle $C=60^\\circ$. Find $c$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+          "target": "Angle between vectors",
           "choices": [
-            "$3 \\times 4$",
-            "$2 \\times 2$",
-            "$4 \\times 3$",
-            "Multiplication is undefined"
+            "13",
+            "14",
+            "9",
+            "17"
           ],
           "correct": 0,
-          "answer": "Inner dimensions match ($2 = 2$). The resulting matrix has dimensions equal to outer indices: $3 \\times 4$.",
-          "explanation": "Inner dimensions match ($2 = 2$). The resulting matrix has dimensions equal to outer indices: $3 \\times 4$.",
+          "answer": "$c^2=15^2+7^2-2(15)(7)\\cos60^\\circ=169$, so $c=13$.",
+          "explanation": "$c^2=15^2+7^2-2(15)(7)\\cos60^\\circ=169$, so $c=13$.",
           "cross_lesson": "6.01 Limits"
         },
         {
-          "q": "For what value of $x$ is the matrix $[[x, 3], [12, x]]$ singular?",
+          "q": "A linear transformation in the 2D plane is represented by the matrix $M = \\left(a, b ; c, d\\right)$. This transformation maps the point $P(1, 2)$ to $P'(-3, 7)$ and the point $Q(3, 1)$ to $Q'(5, 1)$. Determine the values of $a, b, c,$ and $d$, and then calculate the sum $a+b+c+d$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+          "target": "Addition and scalar multiplication",
           "choices": [
-            "$\\pm 6$",
-            "$\\pm 4$",
-            "$\\pm 12$",
-            "$0$"
+            "9",
+            "11",
+            "7",
+            "5"
           ],
           "correct": 0,
-          "answer": "Singular means determinant equals zero: $x^2 - 36 = 0 \\Rightarrow x^2 = 36 \\Rightarrow x = \\pm 6$.",
-          "explanation": "Singular means determinant equals zero: $x^2 - 36 = 0 \\Rightarrow x^2 = 36 \\Rightarrow x = \\pm 6$.",
+          "answer": "Let the linear transformation matrix be $M = \\left(a, b ; c, d\\right)$. The transformation of a point $\\mathbf{x}$ to $\\mathbf{x'}$ is given by $M\\mathbf{x} = \\mathbf{x'}$. For point $P(1, 2)$ mapped to $P'(4, 9)$: $\\left(a, b ; c, d\\right) \\left(1 ; 2\\right) = \\left(4 ; 9\\right)$ This yields the equations: 1) $a + 2b = 4$ 2) $c + 2d = 9$ For point $Q(3, 1)$ mapped to $Q'(7, 12)$: $\\left(a, b ; c, d\\right) \\left(3 ; 1\\right) = \\left(7 ; 12\\right)$ This yields the equations: 3) $3a + b = 7$ 4) $3c + d = 12$ We need to solve these two systems of linear equations for $a, b, c,$ and $d$. Solving for $a$ and $b$ using equations (1) and (3): From equation (3), $b = 7 - 3a$. Substitute this into equation (1): $a + 2(7 - 3a) = 4$ $a + 14 - 6a = 4$ $-5a = 4 - 14$ $-5a = -10$ $a = 2$ Now substitute the value of $a$ back into the expression for $b$: $b = 7 - 3(2) = 7 - 6 = 1$ Solving for $c$ and $d$ using equations (2) and (4): From equation (4), $d = 12 - 3c$. Substitute this into equation (2): $c + 2(12 - 3c) = 9$ $c + 24 - 6c = 9$ $-5c = 9 - 24$ $-5c = -15$ $c = 3$ Now substitute the value of $c$ back into the expression for $d$: $d = 12 - 3(3) = 12 - 9 = 3$ So, the transformation matrix is $M = \\left(2, 1 ; 3, 3\\right)$. The sum of the elements of the transformation matrix is $a + b + c + d = 2 + 1 + 3 + 3 = 9$. Common misconceptions might arise from errors in solving the systems of equations, such as sign errors or algebraic mistakes when isolating variables. For instance, incorrectly solving for $b$ or $d$ could lead to a wrong sum. Alternatively, a student might forget to sum all four elements and only sum the elements of one row or column.",
+          "explanation": "Let the linear transformation matrix be $M = \\left(a, b ; c, d\\right)$. The transformation of a point $\\mathbf{x}$ to $\\mathbf{x'}$ is given by $M\\mathbf{x} = \\mathbf{x'}$. For point $P(1, 2)$ mapped to $P'(4, 9)$: $\\left(a, b ; c, d\\right) \\left(1 ; 2\\right) = \\left(4 ; 9\\right)$ This yields the equations: 1) $a + 2b = 4$ 2) $c + 2d = 9$ For point $Q(3, 1)$ mapped to $Q'(7, 12)$: $\\left(a, b ; c, d\\right) \\left(3 ; 1\\right) = \\left(7 ; 12\\right)$ This yields the equations: 3) $3a + b = 7$ 4) $3c + d = 12$ We need to solve these two systems of linear equations for $a, b, c,$ and $d$. Solving for $a$ and $b$ using equations (1) and (3): From equation (3), $b = 7 - 3a$. Substitute this into equation (1): $a + 2(7 - 3a) = 4$ $a + 14 - 6a = 4$ $-5a = 4 - 14$ $-5a = -10$ $a = 2$ Now substitute the value of $a$ back into the expression for $b$: $b = 7 - 3(2) = 7 - 6 = 1$ Solving for $c$ and $d$ using equations (2) and (4): From equation (4), $d = 12 - 3c$. Substitute this into equation (2): $c + 2(12 - 3c) = 9$ $c + 24 - 6c = 9$ $-5c = 9 - 24$ $-5c = -15$ $c = 3$ Now substitute the value of $c$ back into the expression for $d$: $d = 12 - 3(3) = 12 - 9 = 3$ So, the transformation matrix is $M = \\left(2, 1 ; 3, 3\\right)$. The sum of the elements of the transformation matrix is $a + b + c + d = 2 + 1 + 3 + 3 = 9$. Common misconceptions might arise from errors in solving the systems of equations, such as sign errors or algebraic mistakes when isolating variables. For instance, incorrectly solving for $b$ or $d$ could lead to a wrong sum. Alternatively, a student might forget to sum all four elements and only sum the elements of one row or column.",
           "cross_lesson": "1.01 Complex Numbers"
         }
       ]

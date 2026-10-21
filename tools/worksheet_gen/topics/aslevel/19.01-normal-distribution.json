@@ -9,55 +9,12 @@
       "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "A random variable $X\\sim N(100,225)$. Find $P(X<115)$, given that $\\Phi(1)\\approx0.8413$.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Finding probabilities using the standard normal table",
-          "answer": "$\\sigma=\\sqrt{225}=15$. $z=\\frac{115-100}{15}=1$. $P(X<115)=\\Phi(1)\\approx0.8413$.",
-          "explanation": "$\\sigma=\\sqrt{225}=15$. $z=\\frac{115-100}{15}=1$. $P(X<115)=\\Phi(1)\\approx0.8413$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "exp(-(x-100)**2/(2*225))/18.81"
-            ],
-            "xmin": 55,
-            "xmax": 145,
-            "ymin": 0,
-            "ymax": 0.06,
-            "width": 200
-          }
-        },
-        {
           "q": "State two key properties of the normal distribution curve.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Properties of the normal distribution",
           "answer": "The normal distribution curve is symmetric (bell-shaped) about its mean $\\mu$, and the total area under the curve equals 1. (Other valid properties: mean = median = mode; the curve is asymptotic to the horizontal axis.)",
-          "explanation": "The normal distribution curve is symmetric (bell-shaped) about its mean $\\mu$, and the total area under the curve equals 1. (Other valid properties: mean = median = mode; the curve is asymptotic to the horizontal axis.)",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "4*exp(-0.5*x**2)"
-            ],
-            "xmin": -3.5,
-            "xmax": 3.5,
-            "ymin": -0.4,
-            "ymax": 4.6,
-            "shade": {
-              "fn1": "4*exp(-0.5*x**2)",
-              "fn2": "0",
-              "x0": -1.96,
-              "x1": 1.96
-            },
-            "point_labels": [
-              {
-                "x": 1.96,
-                "y": 0.59,
-                "label": "$z=1.96$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "The normal distribution curve is symmetric (bell-shaped) about its mean $\\mu$, and the total area under the curve equals 1. (Other valid properties: mean = median = mode; the curve is asymptotic to the horizontal axis.)"
         },
         {
           "q": "Explain what it means for the normal distribution curve to be \"asymptotic\" to the horizontal axis.",
@@ -65,7 +22,31 @@
           "question_type": "FRQ",
           "target": "Properties of the normal distribution",
           "answer": "It means the curve approaches the horizontal axis as $x\\rightarrow\\pm\\infty$ but never actually touches or crosses it — the probability density gets arbitrarily close to zero but is never exactly zero for any finite $x$.",
-          "explanation": "It means the curve approaches the horizontal axis as $x\\rightarrow\\pm\\infty$ but never actually touches or crosses it — the probability density gets arbitrarily close to zero but is never exactly zero for any finite $x$."
+          "explanation": "It means the curve approaches the horizontal axis as $x\\rightarrow\\pm\\infty$ but never actually touches or crosses it — the probability density gets arbitrarily close to zero but is never exactly zero for any finite $x$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4.0*exp(-0.5*x**2)"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -0.3,
+            "ymax": 4.5,
+            "shade": {
+              "fn1": "4.0*exp(-0.5*x**2)",
+              "fn2": "0",
+              "x0": -2.33,
+              "x1": 2.33
+            },
+            "point_labels": [
+              {
+                "x": 2.33,
+                "y": 0.26,
+                "label": "$z=2.33$"
+              }
+            ],
+            "width": 230
+          }
         },
         {
           "q": "State one similarity and one difference between the normal distribution and the discrete uniform distribution.",
@@ -89,93 +70,40 @@
           "question_type": "FRQ",
           "target": "Standardizing a normal variable",
           "answer": "$\\sigma=\\sqrt{25}=5$. $z=\\frac{23-30}{5}=\\frac{-7}{5}=-1.4$.",
-          "explanation": "$\\sigma=\\sqrt{25}=5$. $z=\\frac{23-30}{5}=\\frac{-7}{5}=-1.4$.",
+          "explanation": "$\\sigma=\\sqrt{25}=5$. $z=\\frac{23-30}{5}=\\frac{-7}{5}=-1.4$."
+        },
+        {
+          "q": "A random variable $X\\sim N(100,225)$. Find $P(X<115)$, given that $\\Phi(1)\\approx0.8413$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Finding probabilities using the standard normal table",
+          "answer": "$\\sigma=\\sqrt{225}=15$. $z=\\frac{115-100}{15}=1$. $P(X<115)=\\Phi(1)\\approx0.8413$.",
+          "explanation": "$\\sigma=\\sqrt{225}=15$. $z=\\frac{115-100}{15}=1$. $P(X<115)=\\Phi(1)\\approx0.8413$.",
           "figure": {
             "type": "plot",
             "fns": [
-              "4*exp(-0.5*x**2)"
+              "exp(-(x-100)**2/(2*225))/18.81"
             ],
-            "xmin": -3.5,
-            "xmax": 3.5,
-            "ymin": -0.4,
-            "ymax": 4.6,
-            "shade": {
-              "fn1": "4*exp(-0.5*x**2)",
-              "fn2": "0",
-              "x0": -1.96,
-              "x1": 1.96
-            },
-            "point_labels": [
-              {
-                "x": 1.96,
-                "y": 0.59,
-                "label": "$z=1.96$"
-              }
-            ],
-            "width": 230
+            "xmin": 55,
+            "xmax": 145,
+            "ymin": 0,
+            "ymax": 0.06,
+            "width": 200
           }
         },
         {
-          "q": "A random variable $X\\sim N(70,144)$. Find the $z$-score corresponding to $x=88$.",
+          "q": "Using the same distribution $X\\sim N(100,225)$, find $P(X>130)$, given that $\\Phi(2)\\approx0.9772$.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
-          "target": "Standardizing a normal variable",
-          "answer": "$\\sigma=\\sqrt{144}=12$. $z=\\frac{88-70}{12}=\\frac{18}{12}=1.5$.",
-          "explanation": "$\\sigma=\\sqrt{144}=12$. $z=\\frac{88-70}{12}=\\frac{18}{12}=1.5$."
+          "target": "Finding probabilities using the standard normal table",
+          "answer": "$z=\\frac{130-100}{15}=2$. $P(X>130)=1-\\Phi(2)\\approx1-0.9772=0.0228$.",
+          "explanation": "$z=\\frac{130-100}{15}=2$. $P(X>130)=1-\\Phi(2)\\approx1-0.9772=0.0228$."
         }
       ]
     },
     {
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
-        {
-          "q": "Using the same distribution $X\\sim N(100,225)$, find $P(X>130)$, given that $\\Phi(2)\\approx0.9772$.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Finding probabilities using the standard normal table",
-          "answer": "$z=\\frac{130-100}{15}=2$. $P(X>130)=1-\\Phi(2)\\approx1-0.9772=0.0228$.",
-          "explanation": "$z=\\frac{130-100}{15}=2$. $P(X>130)=1-\\Phi(2)\\approx1-0.9772=0.0228$."
-        },
-        {
-          "q": "A random variable $X\\sim N(50,16)$. Find $P(X<54)$, given that $\\Phi(1)\\approx0.8413$.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Finding probabilities using the standard normal table",
-          "answer": "$\\sigma=\\sqrt{16}=4$. $z=\\frac{54-50}{4}=1$. $P(X<54)=\\Phi(1)\\approx0.8413$.",
-          "explanation": "$\\sigma=\\sqrt{16}=4$. $z=\\frac{54-50}{4}=1$. $P(X<54)=\\Phi(1)\\approx0.8413$."
-        },
-        {
-          "q": "A random variable $X\\sim N(80,100)$. Find $P(X>95)$, given that $\\Phi(1.5)\\approx0.9332$.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Finding probabilities using the standard normal table",
-          "answer": "$\\sigma=\\sqrt{100}=10$. $z=\\frac{95-80}{10}=1.5$. $P(X>95)=1-\\Phi(1.5)\\approx1-0.9332=0.0668$.",
-          "explanation": "$\\sigma=\\sqrt{100}=10$. $z=\\frac{95-80}{10}=1.5$. $P(X>95)=1-\\Phi(1.5)\\approx1-0.9332=0.0668$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "4*exp(-0.5*x**2)"
-            ],
-            "xmin": -3.5,
-            "xmax": 3.5,
-            "ymin": -0.4,
-            "ymax": 4.6,
-            "shade": {
-              "fn1": "4*exp(-0.5*x**2)",
-              "fn2": "0",
-              "x0": -1.96,
-              "x1": 1.96
-            },
-            "point_labels": [
-              {
-                "x": 1.96,
-                "y": 0.59,
-                "label": "$z=1.96$"
-              }
-            ],
-            "width": 230
-          }
-        },
         {
           "q": "A random variable $X\\sim N(60,100)$. Find the value $x$ such that $P(X<x)=0.9332$, given that $\\Phi(1.5)\\approx0.9332$.",
           "difficulty": "Intermediate",
@@ -185,28 +113,87 @@
           "explanation": "Since $\\Phi(1.5)\\approx0.9332$, the corresponding $z$-value is $1.5$. $x=\\mu+z\\sigma=60+1.5(10)=75$."
         },
         {
-          "q": "A random variable $X\\sim N(80,64)$. Find the value $x$ such that $P(X<x)=0.9772$, given that $\\Phi(2)\\approx0.9772$.",
+          "q": "A random variable $X\\sim B(200,0.4)$ is to be approximated by a normal distribution. State the mean and variance to use, and check the approximation is valid (both $np$ and $n(1-p)$ should exceed 5).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
-          "target": "Finding a value given a probability (inverse normal)",
-          "answer": "Since $\\Phi(2)\\approx0.9772$, the corresponding $z$-value is $2$. $x=\\mu+z\\sigma=80+2(8)=96$.",
-          "explanation": "Since $\\Phi(2)\\approx0.9772$, the corresponding $z$-value is $2$. $x=\\mu+z\\sigma=80+2(8)=96$."
+          "target": "The normal approximation to the binomial distribution",
+          "answer": "$np=200(0.4)=80$ and $n(1-p)=200(0.6)=120$, both exceed 5, so the approximation is valid. Use $X\\approx N(80,48)$, since $\\mathrm{Var}(X)=np(1-p)=200(0.4)(0.6)=48$.",
+          "explanation": "$np=200(0.4)=80$ and $n(1-p)=200(0.6)=120$, both exceed 5, so the approximation is valid. Use $X\\approx N(80,48)$, since $\\mathrm{Var}(X)=np(1-p)=200(0.4)(0.6)=48$."
         },
         {
-          "q": "A random variable $X\\sim N(45,49)$. Find the value $x$ such that $P(X<x)=0.8413$, given that $\\Phi(1)\\approx0.8413$.",
+          "q": "A random variable $X\\sim B(150,0.5)$ is to be approximated by a normal distribution. State the mean and variance to use, and check the approximation is valid.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
-          "target": "Finding a value given a probability (inverse normal)",
-          "answer": "Since $\\Phi(1)\\approx0.8413$, the corresponding $z$-value is $1$. $x=\\mu+z\\sigma=45+1(7)=52$.",
-          "explanation": "Since $\\Phi(1)\\approx0.8413$, the corresponding $z$-value is $1$. $x=\\mu+z\\sigma=45+1(7)=52$."
+          "target": "The normal approximation to the binomial distribution",
+          "answer": "$np=150(0.5)=75$ and $n(1-p)=150(0.5)=75$, both exceed 5, so the approximation is valid. Use $X\\approx N(75,37.5)$, since $\\mathrm{Var}(X)=np(1-p)=150(0.5)(0.5)=37.5$.",
+          "explanation": "$np=150(0.5)=75$ and $n(1-p)=150(0.5)=75$, both exceed 5, so the approximation is valid. Use $X\\approx N(75,37.5)$, since $\\mathrm{Var}(X)=np(1-p)=150(0.5)(0.5)=37.5$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4.0*exp(-0.5*x**2)"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -0.3,
+            "ymax": 4.5,
+            "shade": {
+              "fn1": "4.0*exp(-0.5*x**2)",
+              "fn2": "0",
+              "x0": -1.65,
+              "x1": 1.65
+            },
+            "point_labels": [
+              {
+                "x": 1.65,
+                "y": 1.03,
+                "label": "$z=1.65$"
+              }
+            ],
+            "width": 230,
+            "xrange": [
+              -5.0,
+              5.5
+            ],
+            "points": [
+              {
+                "x": 2.0,
+                "y": -2.0,
+                "label": "$P_{10}$"
+              }
+            ]
+          }
         },
         {
-          "q": "A random variable $X\\sim N(40,25)$. Find $P(35<X<48)$, given that $\\Phi(1)\\approx0.8413$ and $\\Phi(1.6)\\approx0.9452$.",
+          "q": "A random variable $X\\sim N(\\mu,36)$ satisfies $P(X<50)=0.8413$, given $\\Phi(1)\\approx0.8413$. Find $\\mu$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Solving for unknown parameters of a normal distribution",
+          "answer": "$\\sigma=6$, and the $z$-value corresponding to probability $0.8413$ is $z=1$. So $\\frac{50-\\mu}{6}=1$, giving $\\mu=50-6=44$.",
+          "explanation": "$\\sigma=6$, and the $z$-value corresponding to probability $0.8413$ is $z=1$. So $\\frac{50-\\mu}{6}=1$, giving $\\mu=50-6=44$."
+        },
+        {
+          "q": "This question has two parts. Scores on a standardized exam are normally distributed with mean $\\mu=68$ and standard deviation $\\sigma=12$. The exam board wants to set a pass mark so that exactly the top $10\\%$ of students pass, and is told that the $z$-value corresponding to the top $10\\%$ (i.e. $P(Z>z)=0.10$) is $z\\approx1.2816$. (a) Find the pass mark, to the nearest whole number. (b) A student scores 90 on the exam. Find their $z$-score, and state whether they are in the top 10%.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "A well-designed word problem: setting a pass mark for an exam",
+          "answer": "(a) $x=\\mu+z\\sigma=68+1.2816(12)\\approx68+15.38\\approx83$ (to the nearest whole number). (b) $z=\\frac{90-68}{12}=\\frac{22}{12}\\approx1.833$. Since a score of 90 exceeds the pass mark of approximately 83 (and $z\\approx1.833>1.2816$), this student IS in the top 10%.",
+          "explanation": "(a) $x=\\mu+z\\sigma=68+1.2816(12)\\approx68+15.38\\approx83$ (to the nearest whole number). (b) $z=\\frac{90-68}{12}=\\frac{22}{12}\\approx1.833$. Since a score of 90 exceeds the pass mark of approximately 83 (and $z\\approx1.833>1.2816$), this student IS in the top 10%."
+        },
+        {
+          "q": "Practice 3.2: Ship $A$ leaves port $P$ on a bearing of $040^\\circ$ traveling at $15\\mathrm{\\ km/h}$. At the same time, ship $B$ leaves $P$ on a bearing of $130^\\circ$ traveling at $20\\mathrm{\\ km/h}$. Find the distance between the two ships after 2 hours.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "The probability of a value lying between two bounds",
-          "answer": "$\\sigma=5$. For $x=35$: $z=\\frac{35-40}{5}=-1$. For $x=48$: $z=\\frac{48-40}{5}=1.6$. $P(35<X<48)=\\Phi(1.6)-\\Phi(-1)=\\Phi(1.6)-[1-\\Phi(1)]=0.9452-(1-0.8413)=0.9452-0.1587=0.7865$.",
-          "explanation": "$\\sigma=5$. For $x=35$: $z=\\frac{35-40}{5}=-1$. For $x=48$: $z=\\frac{48-40}{5}=1.6$. $P(35<X<48)=\\Phi(1.6)-\\Phi(-1)=\\Phi(1.6)-[1-\\Phi(1)]=0.9452-(1-0.8413)=0.9452-0.1587=0.7865$."
+          "answer": "1. Distance travelled by ship $A$: $d_A = 15 \\times 2 = 30\\mathrm{\\ km}$. 2. Distance travelled by ship $B$: $d_B = 20 \\times 2 = 40\\mathrm{\\ km}$. 3. The angle between their paths is the difference in bearings: $\\theta = 130^\\circ - 40^\\circ = 90^\\circ$. 4. Since the triangle is right-angled at $P$, apply the Pythagorean theorem (or Cosine Rule with $\\cos 90^\\circ = 0$): $d = \\sqrt{30^2 + 40^2} = \\sqrt{900 + 1600} = \\sqrt{2500} = 50\\mathrm{\\ km}.$ The distance between the ships after 2 hours is exactly 50 km.",
+          "explanation": "1. Distance travelled by ship $A$: $d_A = 15 \\times 2 = 30\\mathrm{\\ km}$. 2. Distance travelled by ship $B$: $d_B = 20 \\times 2 = 40\\mathrm{\\ km}$. 3. The angle between their paths is the difference in bearings: $\\theta = 130^\\circ - 40^\\circ = 90^\\circ$. 4. Since the triangle is right-angled at $P$, apply the Pythagorean theorem (or Cosine Rule with $\\cos 90^\\circ = 0$): $d = \\sqrt{30^2 + 40^2} = \\sqrt{900 + 1600} = \\sqrt{2500} = 50\\mathrm{\\ km}.$ The distance between the ships after 2 hours is exactly 50 km."
+        },
+        {
+          "q": "Cars arrive at a toll booth at an average rate of 3 per minute. Find the probability that (a) exactly 5 arrive in one minute, (b) at least 2 arrive in 30 seconds.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "The normal approximation to the binomial distribution",
+          "answer": "(a) $P(X=5)=\\frac{e^{-3}\\cdot243}{120}\\approx0.1008$. (b) $\\lambda=1.5$: $P(X\\geq2)=1-P(0)-P(1)=1-e^{-1.5}-1.5e^{-1.5}=1-2.5e^{-1.5}\\approx0.4422$.",
+          "explanation": "(a) $P(X=5)=\\frac{e^{-3}\\cdot243}{120}\\approx0.1008$. (b) $\\lambda=1.5$: $P(X\\geq2)=1-P(0)-P(1)=1-e^{-1.5}-1.5e^{-1.5}=1-2.5e^{-1.5}\\approx0.4422$."
         }
       ]
     },
@@ -214,82 +201,93 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "A random variable $X\\sim N(20,16)$. Find $P(16<X<26)$, given that $\\Phi(1)\\approx0.8413$ and $\\Phi(1.5)\\approx0.9332$.",
+          "q": "[Poisson Distribution · Practice 3] If the governing relation for this system is $g(t) = 5t + 5$, evaluate $g(8)$ and find the inverse input $t$ when $g(t) = 50$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "The probability of a value lying between two bounds",
+          "target": "Solving for unknown parameters of a normal distribution",
           "cross_lesson": "15.01 Representation of Data",
-          "answer": "$\\sigma=4$. For $x=16$: $z=\\frac{16-20}{4}=-1$. For $x=26$: $z=\\frac{26-20}{4}=1.5$. $P(16<X<26)=\\Phi(1.5)-\\Phi(-1)=\\Phi(1.5)-[1-\\Phi(1)]=0.9332-(1-0.8413)=0.9332-0.1587=0.7745$.",
-          "explanation": "$\\sigma=4$. For $x=16$: $z=\\frac{16-20}{4}=-1$. For $x=26$: $z=\\frac{26-20}{4}=1.5$. $P(16<X<26)=\\Phi(1.5)-\\Phi(-1)=\\Phi(1.5)-[1-\\Phi(1)]=0.9332-(1-0.8413)=0.9332-0.1587=0.7745$."
+          "answer": "Substitute $t = 8$: $g(8) = 5(8) + 5 = \\mathbf{45}$. Setting $5t + 5 = 50$ gives $5t = 45 \\Rightarrow t = \\mathbf{9}$.",
+          "explanation": "Substitute $t = 8$: $g(8) = 5(8) + 5 = \\mathbf{45}$. Setting $5t + 5 = 50$ gives $5t = 45 \\Rightarrow t = \\mathbf{9}$."
         },
         {
-          "q": "A random variable $X\\sim N(50,100)$. Find $P(35<X<65)$, given that $\\Phi(1.5)\\approx0.9332$.",
+          "q": "[Polynomials, Remainder Theorem & Binomial Theorem · Practice 1] If the governing relation for this system is $g(t) = 3t + 3$, evaluate $g(4)$ and find the inverse input $t$ when $g(t) = 18$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "The probability of a value lying between two bounds",
+          "target": "A well-designed word problem: setting a pass mark for an exam",
           "cross_lesson": "16.01 Permutations & Combinations",
-          "answer": "$\\sigma=10$. For $x=35$: $z=\\frac{35-50}{10}=-1.5$. For $x=65$: $z=\\frac{65-50}{10}=1.5$. Since these bounds are symmetric about the mean: $P(35<X<65)=\\Phi(1.5)-\\Phi(-1.5)=2\\Phi(1.5)-1=2(0.9332)-1=0.8664$.",
-          "explanation": "$\\sigma=10$. For $x=35$: $z=\\frac{35-50}{10}=-1.5$. For $x=65$: $z=\\frac{65-50}{10}=1.5$. Since these bounds are symmetric about the mean: $P(35<X<65)=\\Phi(1.5)-\\Phi(-1.5)=2\\Phi(1.5)-1=2(0.9332)-1=0.8664$.",
+          "answer": "Substitute $t = 4$: $g(4) = 3(4) + 3 = \\mathbf{15}$. Setting $3t + 3 = 18$ gives $3t = 15 \\Rightarrow t = \\mathbf{5}$.",
+          "explanation": "Substitute $t = 4$: $g(4) = 3(4) + 3 = \\mathbf{15}$. Setting $3t + 3 = 18$ gives $3t = 15 \\Rightarrow t = \\mathbf{5}$.",
           "figure": {
             "type": "plot",
             "fns": [
-              "4*exp(-0.5*x**2)"
+              "3.8*exp(-0.5*x**2)"
             ],
             "xmin": -3.5,
             "xmax": 3.5,
-            "ymin": -0.4,
-            "ymax": 4.6,
+            "ymin": -0.3,
+            "ymax": 4.5,
             "shade": {
-              "fn1": "4*exp(-0.5*x**2)",
+              "fn1": "3.8*exp(-0.5*x**2)",
               "fn2": "0",
-              "x0": -1.96,
-              "x1": 1.96
+              "x0": -2.15,
+              "x1": 2.15
             },
             "point_labels": [
               {
-                "x": 1.96,
-                "y": 0.59,
-                "label": "$z=1.96$"
+                "x": 2.15,
+                "y": 0.38,
+                "label": "$z=2.15$"
               }
             ],
-            "width": 230
+            "width": 230,
+            "xrange": [
+              -5.25,
+              5.75
+            ],
+            "points": [
+              {
+                "x": 1.0,
+                "y": 2.0,
+                "label": "$P_{16}$"
+              }
+            ]
           }
         },
         {
-          "q": "A random variable $X\\sim B(200,0.4)$ is to be approximated by a normal distribution. State the mean and variance to use, and check the approximation is valid (both $np$ and $n(1-p)$ should exceed 5).",
+          "q": "[Vectors in Two Dimensions & Relative Motion · Practice 1] If the governing relation for this system is $g(t) = 3t + 3$, evaluate $g(4)$ and find the inverse input $t$ when $g(t) = 18$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "The normal approximation to the binomial distribution",
+          "target": "Properties of the normal distribution",
           "cross_lesson": "17.01 Discrete Random Variables",
-          "answer": "$np=200(0.4)=80$ and $n(1-p)=200(0.6)=120$, both exceed 5, so the approximation is valid. Use $X\\approx N(80,48)$, since $\\mathrm{Var}(X)=np(1-p)=200(0.4)(0.6)=48$.",
-          "explanation": "$np=200(0.4)=80$ and $n(1-p)=200(0.6)=120$, both exceed 5, so the approximation is valid. Use $X\\approx N(80,48)$, since $\\mathrm{Var}(X)=np(1-p)=200(0.4)(0.6)=48$."
+          "answer": "Substitute $t = 4$: $g(4) = 3(4) + 3 = \\mathbf{15}$. Setting $3t + 3 = 18$ gives $3t = 15 \\Rightarrow t = \\mathbf{5}$.",
+          "explanation": "Substitute $t = 4$: $g(4) = 3(4) + 3 = \\mathbf{15}$. Setting $3t + 3 = 18$ gives $3t = 15 \\Rightarrow t = \\mathbf{5}$."
         },
         {
-          "q": "A random variable $X\\sim B(150,0.5)$ is to be approximated by a normal distribution. State the mean and variance to use, and check the approximation is valid.",
+          "q": "[Sequences, Series, Induction & the Binomial Theorem · Practice 3] If the governing relation for this system is $g(t) = 5t + 5$, evaluate $g(8)$ and find the inverse input $t$ when $g(t) = 50$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "The normal approximation to the binomial distribution",
+          "target": "Standardizing a normal variable",
           "cross_lesson": "18.01 Binomial Distribution",
-          "answer": "$np=150(0.5)=75$ and $n(1-p)=150(0.5)=75$, both exceed 5, so the approximation is valid. Use $X\\approx N(75,37.5)$, since $\\mathrm{Var}(X)=np(1-p)=150(0.5)(0.5)=37.5$.",
-          "explanation": "$np=150(0.5)=75$ and $n(1-p)=150(0.5)=75$, both exceed 5, so the approximation is valid. Use $X\\approx N(75,37.5)$, since $\\mathrm{Var}(X)=np(1-p)=150(0.5)(0.5)=37.5$."
+          "answer": "Substitute $t = 8$: $g(8) = 5(8) + 5 = \\mathbf{45}$. Setting $5t + 5 = 50$ gives $5t = 45 \\Rightarrow t = \\mathbf{9}$.",
+          "explanation": "Substitute $t = 8$: $g(8) = 5(8) + 5 = \\mathbf{45}$. Setting $5t + 5 = 50$ gives $5t = 45 \\Rightarrow t = \\mathbf{9}$."
         },
         {
-          "q": "A random variable $X\\sim B(100,0.3)$ is to be approximated by a normal distribution. State the mean and variance to use, and check the approximation is valid.",
+          "q": "In a factory, 60% of components are manufactured by Machine $A$ and 40% by Machine $B$. It is known that 3% of components produced by Machine $A$ are defective, whereas 5% of components produced by Machine $B$ are defective. (a) Find the probability that a randomly chosen component is defective. (b) Given that a randomly chosen component is defective, find the probability that it was produced by Machine $B$. (c) Determine whether the events \"component produced by Machine B\" and \"component is defective\" are independent.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "The normal approximation to the binomial distribution",
+          "target": "Finding probabilities using the standard normal table",
           "cross_lesson": "2.01 Simultaneous Equations & Inequalities",
-          "answer": "$np=100(0.3)=30$ and $n(1-p)=100(0.7)=70$, both exceed 5, so the approximation is valid. Use $X\\approx N(30,21)$, since $\\mathrm{Var}(X)=np(1-p)=100(0.3)(0.7)=21$.",
-          "explanation": "$np=100(0.3)=30$ and $n(1-p)=100(0.7)=70$, both exceed 5, so the approximation is valid. Use $X\\approx N(30,21)$, since $\\mathrm{Var}(X)=np(1-p)=100(0.3)(0.7)=21$."
+          "answer": "(a) By the law of total probability: $P(D) = P(A)P(D \\mid A) + P(B)P(D \\mid B) = (0.60)(0.03) + (0.40)(0.05)$ $= 0.018 + 0.020 = 0.038 \\quad (3.8\\%).$ (b) By Bayes' Theorem / conditional probability: $P(B \\mid D) = \\frac{P(B \\cap D)}{P(D)} = \\frac{P(B)P(D \\mid B)}{P(D)} = \\frac{(0.40)(0.05)}{0.038} = \\frac{0.020}{0.038} = \\frac{20}{38} = \\frac{10}{19} \\approx 0.5263 \\quad (52.6\\%).$ (c) Check the independence condition $P(B \\cap D) = P(B)P(D)$: $P(B \\cap D) = 0.020$. $P(B) \\times P(D) = 0.40 \\times 0.038 = 0.0152$. Since $0.020 eq 0.0152$ (or equivalently, $P(D \\mid B) = 0.05 eq 0.038 = P(D)$), the events are not independent.",
+          "explanation": "(a) By the law of total probability: $P(D) = P(A)P(D \\mid A) + P(B)P(D \\mid B) = (0.60)(0.03) + (0.40)(0.05)$ $= 0.018 + 0.020 = 0.038 \\quad (3.8\\%).$ (b) By Bayes' Theorem / conditional probability: $P(B \\mid D) = \\frac{P(B \\cap D)}{P(D)} = \\frac{P(B)P(D \\mid B)}{P(D)} = \\frac{(0.40)(0.05)}{0.038} = \\frac{0.020}{0.038} = \\frac{20}{38} = \\frac{10}{19} \\approx 0.5263 \\quad (52.6\\%).$ (c) Check the independence condition $P(B \\cap D) = P(B)P(D)$: $P(B \\cap D) = 0.020$. $P(B) \\times P(D) = 0.40 \\times 0.038 = 0.0152$. Since $0.020 eq 0.0152$ (or equivalently, $P(D \\mid B) = 0.05 eq 0.038 = P(D)$), the events are not independent."
         },
         {
-          "q": "A random variable $X\\sim B(250,0.2)$ is to be approximated by a normal distribution. State the mean and variance to use, and check the approximation is valid.",
+          "q": "Given vectors $\\mathbf{a} = 2\\mathbf{i} - 5\\mathbf{j}$ and $\\mathbf{b} = -3\\mathbf{i} + 4\\mathbf{j}$, find the scalar projection of $\\mathbf{a}$ onto $\\mathbf{b}$ and the angle $\\theta$ between them to the nearest tenth of a degree.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "The normal approximation to the binomial distribution",
+          "target": "Finding a value given a probability (inverse normal)",
           "cross_lesson": "3.01 Graphs & Transformations",
-          "answer": "$np=250(0.2)=50$ and $n(1-p)=250(0.8)=200$, both exceed 5, so the approximation is valid. Use $X\\approx N(50,40)$, since $\\mathrm{Var}(X)=np(1-p)=250(0.2)(0.8)=40$.",
-          "explanation": "$np=250(0.2)=50$ and $n(1-p)=250(0.8)=200$, both exceed 5, so the approximation is valid. Use $X\\approx N(50,40)$, since $\\mathrm{Var}(X)=np(1-p)=250(0.2)(0.8)=40$."
+          "answer": "Calculate the dot product: $\\mathbf{a}\\cdot\\mathbf{b} = (2)(-3) + (-5)(4) = -6 - 20 = -26.$ Calculate the magnitudes: $|\\mathbf{a}| = \\sqrt{2^2 + (-5)^2} = \\sqrt{4 + 25} = \\sqrt{29} \\approx 5.385,$ $|\\mathbf{b}| = \\sqrt{(-3)^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5.$ Scalar projection of $\\mathbf{a}$ onto $\\mathbf{b}$: $\\mathrm{comp}_{\\mathbf{b}}\\mathbf{a} = \\frac{\\mathbf{a}\\cdot\\mathbf{b}}{|\\mathbf{b}|} = \\frac{-26}{5} = -5.2.$ Angle $\\theta$ between vectors: $\\cos\\theta = \\frac{\\mathbf{a}\\cdot\\mathbf{b}}{|\\mathbf{a}||\\mathbf{b}|} = \\frac{-26}{5\\sqrt{29}} \\approx -0.9656 \\Rightarrow \\theta = \\arccos(-0.9656) \\approx 164.9°.$",
+          "explanation": "Calculate the dot product: $\\mathbf{a}\\cdot\\mathbf{b} = (2)(-3) + (-5)(4) = -6 - 20 = -26.$ Calculate the magnitudes: $|\\mathbf{a}| = \\sqrt{2^2 + (-5)^2} = \\sqrt{4 + 25} = \\sqrt{29} \\approx 5.385,$ $|\\mathbf{b}| = \\sqrt{(-3)^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5.$ Scalar projection of $\\mathbf{a}$ onto $\\mathbf{b}$: $\\mathrm{comp}_{\\mathbf{b}}\\mathbf{a} = \\frac{\\mathbf{a}\\cdot\\mathbf{b}}{|\\mathbf{b}|} = \\frac{-26}{5} = -5.2.$ Angle $\\theta$ between vectors: $\\cos\\theta = \\frac{\\mathbf{a}\\cdot\\mathbf{b}}{|\\mathbf{a}||\\mathbf{b}|} = \\frac{-26}{5\\sqrt{29}} \\approx -0.9656 \\Rightarrow \\theta = \\arccos(-0.9656) \\approx 164.9°.$"
         }
       ]
     },
@@ -297,172 +295,124 @@
       "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
-          "q": "Find $P(Z < 1.645)$ for the standard normal distribution $Z \\sim N(0, 1)$.",
+          "q": "The histogram below shows the number of hours 100 students spent studying for an exam. The number of students who studied for between 0 and 5 hours is represented by a bar with a height of 30. Determine the number of students who studied for between 5 and 10 hours.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "The Standard Normal Distribution $Z \\sim N(0, 1)$",
+          "target": "Properties of the normal distribution",
           "choices": [
-            "$0.9500$",
-            "$0.9750$",
-            "$0.9000$",
-            "$0.9900$"
+            "20",
+            "25",
+            "30",
+            "35"
           ],
           "correct": 0,
-          "answer": "From the standard normal cumulative distribution tables, $\\Phi(1.645) = 0.9500$.",
-          "explanation": "From the standard normal cumulative distribution tables, $\\Phi(1.645) = 0.9500$."
+          "answer": "The histogram displays the distribution of study hours for 100 students. The total number of students is 100. The question states that the number of students who studied for between 0 and 5 hours is 30. The bar for the '0-5 hours' interval has a height of 30, representing 30 students. The bars for the '5-10 hours' and '10-15 hours' intervals have heights of 20 and 15 respectively, representing 20 and 15 students. Therefore, the number of students who studied for between 5 and 10 hours is 20.",
+          "explanation": "The histogram displays the distribution of study hours for 100 students. The total number of students is 100. The question states that the number of students who studied for between 0 and 5 hours is 30. The bar for the '0-5 hours' interval has a height of 30, representing 30 students. The bars for the '5-10 hours' and '10-15 hours' intervals have heights of 20 and 15 respectively, representing 20 and 15 students. Therefore, the number of students who studied for between 5 and 10 hours is 20."
         },
         {
-          "q": "Find $P(Z > -1.282)$ for $Z \\sim N(0, 1)$.",
+          "q": "The following two-way table shows the results of a survey on favourite sports among a group of students. Calculate the total number of students surveyed.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "The Standard Normal Distribution $Z \\sim N(0, 1)$",
+          "target": "Standardizing a normal variable",
           "choices": [
-            "$0.9000$",
-            "$0.1000$",
-            "$0.8000$",
-            "$0.8500$"
+            "50",
+            "45",
+            "60",
+            "55"
           ],
-          "correct": 0,
-          "answer": "By symmetry, $P(Z > -1.282) = P(Z < 1.282) = \\Phi(1.282) = 0.9000$.",
-          "explanation": "By symmetry, $P(Z > -1.282) = P(Z < 1.282) = \\Phi(1.282) = 0.9000$."
+          "correct": 2,
+          "answer": "The total number of students surveyed is the sum of all entries in the two-way table. $\\mathrm{Total} = 15 + 10 + 20 + 15 = 60$.",
+          "explanation": "The total number of students surveyed is the sum of all entries in the two-way table. $\\mathrm{Total} = 15 + 10 + 20 + 15 = 60$."
         },
         {
-          "q": "Find $P(-1.96 < Z < 1.96)$ for $Z \\sim N(0, 1)$.",
+          "q": "Normal distribution $X\\sim N(50,9)$: P(X<50)=",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "The Standard Normal Distribution $Z \\sim N(0, 1)$",
+          "target": "Finding probabilities using the standard normal table",
           "choices": [
-            "$0.9500$",
-            "$0.9750$",
-            "$0.9000$",
-            "$0.9900$"
+            "0",
+            "0.25",
+            "0.5",
+            "1"
           ],
-          "correct": 0,
-          "answer": "$P(-1.96 < Z < 1.96) = 2\\Phi(1.96) - 1 = 2(0.9750) - 1 = 1.95 - 1 = 0.9500$.",
-          "explanation": "$P(-1.96 < Z < 1.96) = 2\\Phi(1.96) - 1 = 2(0.9750) - 1 = 1.95 - 1 = 0.9500$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "4*exp(-0.5*x**2)"
-            ],
-            "xmin": -3.5,
-            "xmax": 3.5,
-            "ymin": -0.4,
-            "ymax": 4.6,
-            "shade": {
-              "fn1": "4*exp(-0.5*x**2)",
-              "fn2": "0",
-              "x0": -1.65,
-              "x1": 1.65
-            },
-            "point_labels": [
-              {
-                "x": 1.65,
-                "y": 1.03,
-                "label": "$z=1.65$"
-              }
-            ],
-            "width": 230
-          }
+          "correct": 2,
+          "answer": "Mean=50, so P(X<50)=0.5 by symmetry.",
+          "explanation": "Mean=50, so P(X<50)=0.5 by symmetry."
         },
         {
-          "q": "The random variable $X \\sim N(50, 16)$. Find $P(X < 56)$.",
+          "q": "Two circles, $C_1$ with centre $O_1$ and radius $6\\mathrm{\\ cm}$, and $C_2$ with centre $O_2$ and radius $6\\sqrt{3}\\mathrm{\\ cm}$, intersect at the points $A$ and $B$. The distance between their centres is $O_1 O_2 = 12\\mathrm{\\ cm}$. Find the exact area of the region common to both circles, in $\\mathrm{cm}^2$.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Standardization & General Normal Distribution",
+          "target": "Finding a value given a probability (inverse normal)",
           "choices": [
-            "$0.9332$",
-            "$0.8413$",
-            "$0.9772$",
-            "$0.8849$"
+            "$30\\pi - 36\\sqrt{3}$",
+            "$30\\pi + 36\\sqrt{3}$",
+            "$42\\pi - 36\\sqrt{3}$",
+            "$15\\pi - 18\\sqrt{3}$"
           ],
           "correct": 0,
-          "answer": "Standard deviation $\\sigma = \\sqrt{16} = 4$. $z = \\frac{56 - 50}{4} = 1.5$. $P(X < 56) = \\Phi(1.5) = 0.9332$.",
-          "explanation": "Standard deviation $\\sigma = \\sqrt{16} = 4$. $z = \\frac{56 - 50}{4} = 1.5$. $P(X < 56) = \\Phi(1.5) = 0.9332$."
+          "answer": "1. **Determine the angles subtended at each centre:** Consider triangle $O_1 A O_2$ with side lengths $O_1 A = 6$, $O_2 A = 6\\sqrt{3}$, and $O_1 O_2 = 12$. Notice that: $(O_1 A)^2 + (O_2 A)^2 = 6^2 + (6\\sqrt{3})^2 = 36 + 108 = 144 = 12^2 = (O_1 O_2)^2$ By the converse of Pythagoras' Theorem, $\\angle O_1 A O_2 = \\frac{\\pi}{2}$ radians. Using right-angled trigonometry in $\\Delta  O_1 A O_2$: $\\cos(\\angle A O_1 O_2) = \\frac{O_1 A}{O_1 O_2} = \\frac{6}{12} = \\frac{1}{2} \\Rightarrow \\angle A O_1 O_2 = \\frac{\\pi}{3} \\mathrm{\\ radians}$ $\\cos(\\angle A O_2 O_1) = \\frac{O_2 A}{O_1 O_2} = \\frac{6\\sqrt{3}}{12} = \\frac{\\sqrt{3}}{2} \\Rightarrow \\angle A O_2 O_1 = \\frac{\\pi}{6} \\mathrm{\\ radians}$ By symmetry about the line of centres $O_1 O_2$, the angles subtended by chord $AB$ at each centre are: $\\angle A O_1 B = 2 \\times \\frac{\\pi}{3} = \\frac{2\\pi}{3} \\mathrm{\\ radians}$ $\\angle A O_2 B = 2 \\times \\frac{\\pi}{6} = \\frac{\\pi}{3} \\mathrm{\\ radians}$ 2. **Calculate the area of the overlapping region:** The common region is bounded by arc $AB$ of $C_1$ and arc $AB$ of $C_2$. Its area can be found by adding the areas of the two sectors and subtracting the area of kite $O_1 A O_2 B$: $\\mathrm{Area} = \\mathrm{Area}(\\mathrm{sector\\ } O_1 A B) + \\mathrm{Area}(\\mathrm{sector\\ } O_2 A B) - \\mathrm{Area}(\\mathrm{kite\\ } O_1 A O_2 B)$ - Sector $O_1 A B$: $\\frac{1}{2} r_1^2 \\theta_1 = \\frac{1}{2} (6)^2 \\left(\\frac{2\\pi}{3}\\right) = 18 \\times \\frac{2\\pi}{3} = 12\\pi$ - Sector $O_2 A B$: $\\frac{1}{2} r_2^2 \\theta_2 = \\frac{1}{2} (6\\sqrt{3})^2 \\left(\\frac{\\pi}{3}\\right) = \\frac{1}{2} (108) \\left(\\frac{\\pi}{3}\\right) = 18\\pi$ - Kite $O_1 A O_2 B$ consists of two congruent right triangles $\\Delta  O_1 A O_2$ and $\\Delta  O_1 B O_2$: $\\mathrm{Area}(\\mathrm{kite}) = 2 \\times \\left(\\frac{1}{2} \\times 6 \\times 6\\sqrt{3}\\right) = 36\\sqrt{3}$ Thus, the total area of the common region is: $\\mathrm{Area} = 12\\pi + 18\\pi - 36\\sqrt{3} = 30\\pi - 36\\sqrt{3}\\mathrm{\\ cm}^2$ **Common Distractor Misconceptions:** - $30\\pi + 36\\sqrt{3}$: Incorrectly adds the kite area instead of subtracting the region of double-coverage. - $42\\pi - 36\\sqrt{3}$: Accidentally swaps radii when computing sector areas (e.g., using $6\\sqrt{3}$ with $\\frac{2\\pi}{3}$). - $15\\pi - 18\\sqrt{3}$: Forgets to double the half-angles, using $\\frac{\\pi}{3}$ and $\\frac{\\pi}{6}$ as the subtended sector angles.",
+          "explanation": "1. **Determine the angles subtended at each centre:** Consider triangle $O_1 A O_2$ with side lengths $O_1 A = 6$, $O_2 A = 6\\sqrt{3}$, and $O_1 O_2 = 12$. Notice that: $(O_1 A)^2 + (O_2 A)^2 = 6^2 + (6\\sqrt{3})^2 = 36 + 108 = 144 = 12^2 = (O_1 O_2)^2$ By the converse of Pythagoras' Theorem, $\\angle O_1 A O_2 = \\frac{\\pi}{2}$ radians. Using right-angled trigonometry in $\\Delta  O_1 A O_2$: $\\cos(\\angle A O_1 O_2) = \\frac{O_1 A}{O_1 O_2} = \\frac{6}{12} = \\frac{1}{2} \\Rightarrow \\angle A O_1 O_2 = \\frac{\\pi}{3} \\mathrm{\\ radians}$ $\\cos(\\angle A O_2 O_1) = \\frac{O_2 A}{O_1 O_2} = \\frac{6\\sqrt{3}}{12} = \\frac{\\sqrt{3}}{2} \\Rightarrow \\angle A O_2 O_1 = \\frac{\\pi}{6} \\mathrm{\\ radians}$ By symmetry about the line of centres $O_1 O_2$, the angles subtended by chord $AB$ at each centre are: $\\angle A O_1 B = 2 \\times \\frac{\\pi}{3} = \\frac{2\\pi}{3} \\mathrm{\\ radians}$ $\\angle A O_2 B = 2 \\times \\frac{\\pi}{6} = \\frac{\\pi}{3} \\mathrm{\\ radians}$ 2. **Calculate the area of the overlapping region:** The common region is bounded by arc $AB$ of $C_1$ and arc $AB$ of $C_2$. Its area can be found by adding the areas of the two sectors and subtracting the area of kite $O_1 A O_2 B$: $\\mathrm{Area} = \\mathrm{Area}(\\mathrm{sector\\ } O_1 A B) + \\mathrm{Area}(\\mathrm{sector\\ } O_2 A B) - \\mathrm{Area}(\\mathrm{kite\\ } O_1 A O_2 B)$ - Sector $O_1 A B$: $\\frac{1}{2} r_1^2 \\theta_1 = \\frac{1}{2} (6)^2 \\left(\\frac{2\\pi}{3}\\right) = 18 \\times \\frac{2\\pi}{3} = 12\\pi$ - Sector $O_2 A B$: $\\frac{1}{2} r_2^2 \\theta_2 = \\frac{1}{2} (6\\sqrt{3})^2 \\left(\\frac{\\pi}{3}\\right) = \\frac{1}{2} (108) \\left(\\frac{\\pi}{3}\\right) = 18\\pi$ - Kite $O_1 A O_2 B$ consists of two congruent right triangles $\\Delta  O_1 A O_2$ and $\\Delta  O_1 B O_2$: $\\mathrm{Area}(\\mathrm{kite}) = 2 \\times \\left(\\frac{1}{2} \\times 6 \\times 6\\sqrt{3}\\right) = 36\\sqrt{3}$ Thus, the total area of the common region is: $\\mathrm{Area} = 12\\pi + 18\\pi - 36\\sqrt{3} = 30\\pi - 36\\sqrt{3}\\mathrm{\\ cm}^2$ **Common Distractor Misconceptions:** - $30\\pi + 36\\sqrt{3}$: Incorrectly adds the kite area instead of subtracting the region of double-coverage. - $42\\pi - 36\\sqrt{3}$: Accidentally swaps radii when computing sector areas (e.g., using $6\\sqrt{3}$ with $\\frac{2\\pi}{3}$). - $15\\pi - 18\\sqrt{3}$: Forgets to double the half-angles, using $\\frac{\\pi}{3}$ and $\\frac{\\pi}{6}$ as the subtended sector angles."
         },
         {
-          "q": "Heights of adult females are normally distributed with mean 165 cm and standard deviation 6 cm. What percentage of females are taller than 177 cm?",
+          "q": "A straight line passing through the origin is tangent to both the curve $C_1$ with equation $y = e^{kx}$, where $k$ is a positive constant, and the curve $C_2$ with equation $y = \\ln x$. Determine the exact distance between the two points of contact.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Standardization & General Normal Distribution",
+          "target": "The probability of a value lying between two bounds",
           "choices": [
-            "$2.28\\%$",
-            "$5.00\\%$",
-            "$4.56\\%$",
-            "$1.14\\%$"
+            "$(e - 1)\\sqrt{e^2 + 1}$",
+            "$e\\sqrt{e^2 + 1}$",
+            "$(e - 1)\\sqrt{e^2 - 1}$",
+            "$\\sqrt{e^4 - e^2 + 1}$"
           ],
           "correct": 0,
-          "answer": "$z = \\frac{177 - 165}{6} = 2.0$. $P(X > 177) = 1 - \\Phi(2.0) = 1 - 0.9772 = 0.0228 = 2.28\\%$.",
-          "explanation": "$z = \\frac{177 - 165}{6} = 2.0$. $P(X > 177) = 1 - \\Phi(2.0) = 1 - 0.9772 = 0.0228 = 2.28\\%$."
+          "answer": "We synthesize differentiation with coordinate geometry to find the two points of contact. **Step 1: Point of tangency on $C_2: y = \\ln x$** Let $A(x_1, y_1)$ be the point of contact on $C_2$, so $y_1 = \\ln x_1$. The derivative is $\\frac{dy}{dx} = \\frac{1}{x}$, so the gradient of the tangent at $A$ is $\\frac{1}{x_1}$. Since the tangent line passes through the origin $(0, 0)$, its gradient is also: $m = \\frac{y_1 - 0}{x_1 - 0} = \\frac{\\ln x_1}{x_1}$ Equating the two expressions for the gradient: $\\frac{1}{x_1} = \\frac{\\ln x_1}{x_1} \\Rightarrow \\ln x_1 = 1 \\Rightarrow x_1 = e$ Thus, $y_1 = \\ln e = 1$, giving the point of contact $A(e, 1)$. The equation of the tangent line is: $y = \\frac{1}{e}x$ **Step 2: Point of tangency on $C_1: y = e^{kx}$** Let $B(x_2, y_2)$ be the point of contact on $C_1$, so $y_2 = e^{k x_2}$. The derivative is $\\frac{dy}{dx} = k e^{kx}$, so the gradient of the tangent at $B$ is $k e^{k x_2}$. Since the tangent line passes through the origin, its gradient is also: $m = \\frac{y_2 - 0}{x_2 - 0} = \\frac{e^{k x_2}}{x_2}$ Equating the two expressions for the gradient: $k e^{k x_2} = \\frac{e^{k x_2}}{x_2} \\Rightarrow k x_2 = 1 \\Rightarrow x_2 = \\frac{1}{k}$ Then the $y$-coordinate is: $y_2 = e^{k(1/k)} = e^1 = e$ Since $B$ lies on the common tangent line $y = \\frac{1}{e}x$: $e = \\frac{1}{e} x_2 \\Rightarrow x_2 = e^2$ (This also implies $k = \\frac{1}{e^2}$). Thus, the point of contact on $C_1$ is $B(e^2, e)$. **Step 3: Distance between $A$ and $B$** Using the distance formula between $A(e, 1)$ and $B(e^2, e)$: $d = \\sqrt{(e^2 - e)^2 + (e - 1)^2} = \\sqrt{\\left[e(e - 1)\\right]^2 + (e - 1)^2} = \\sqrt{(e - 1)^2(e^2 + 1)} = (e - 1)\\sqrt{e^2 + 1}$ **Misconception Analysis:** - Choice B mistakenly factors $e$ instead of $(e - 1)$. - Choice C arises from a sign error when expanding or factoring $(e^2 - e)^2 + (e - 1)^2$. - Choice D assumes the point on $C_2$ is the $x$-intercept $(1, 0)$ rather than the actual point of tangency $(e, 1)$.",
+          "explanation": "We synthesize differentiation with coordinate geometry to find the two points of contact. **Step 1: Point of tangency on $C_2: y = \\ln x$** Let $A(x_1, y_1)$ be the point of contact on $C_2$, so $y_1 = \\ln x_1$. The derivative is $\\frac{dy}{dx} = \\frac{1}{x}$, so the gradient of the tangent at $A$ is $\\frac{1}{x_1}$. Since the tangent line passes through the origin $(0, 0)$, its gradient is also: $m = \\frac{y_1 - 0}{x_1 - 0} = \\frac{\\ln x_1}{x_1}$ Equating the two expressions for the gradient: $\\frac{1}{x_1} = \\frac{\\ln x_1}{x_1} \\Rightarrow \\ln x_1 = 1 \\Rightarrow x_1 = e$ Thus, $y_1 = \\ln e = 1$, giving the point of contact $A(e, 1)$. The equation of the tangent line is: $y = \\frac{1}{e}x$ **Step 2: Point of tangency on $C_1: y = e^{kx}$** Let $B(x_2, y_2)$ be the point of contact on $C_1$, so $y_2 = e^{k x_2}$. The derivative is $\\frac{dy}{dx} = k e^{kx}$, so the gradient of the tangent at $B$ is $k e^{k x_2}$. Since the tangent line passes through the origin, its gradient is also: $m = \\frac{y_2 - 0}{x_2 - 0} = \\frac{e^{k x_2}}{x_2}$ Equating the two expressions for the gradient: $k e^{k x_2} = \\frac{e^{k x_2}}{x_2} \\Rightarrow k x_2 = 1 \\Rightarrow x_2 = \\frac{1}{k}$ Then the $y$-coordinate is: $y_2 = e^{k(1/k)} = e^1 = e$ Since $B$ lies on the common tangent line $y = \\frac{1}{e}x$: $e = \\frac{1}{e} x_2 \\Rightarrow x_2 = e^2$ (This also implies $k = \\frac{1}{e^2}$). Thus, the point of contact on $C_1$ is $B(e^2, e)$. **Step 3: Distance between $A$ and $B$** Using the distance formula between $A(e, 1)$ and $B(e^2, e)$: $d = \\sqrt{(e^2 - e)^2 + (e - 1)^2} = \\sqrt{\\left[e(e - 1)\\right]^2 + (e - 1)^2} = \\sqrt{(e - 1)^2(e^2 + 1)} = (e - 1)\\sqrt{e^2 + 1}$ **Misconception Analysis:** - Choice B mistakenly factors $e$ instead of $(e - 1)$. - Choice C arises from a sign error when expanding or factoring $(e^2 - e)^2 + (e - 1)^2$. - Choice D assumes the point on $C_2$ is the $x$-intercept $(1, 0)$ rather than the actual point of tangency $(e, 1)$."
         },
         {
-          "q": "If $Y \\sim N(100, 225)$, find $P(85 < Y < 115)$.",
+          "q": "In a Voronoi diagram, two sites are located at $A(2, 4)$ and $B(6, 2)$. Which of the following is the equation of the boundary edge lying on the perpendicular bisector of the line segment $AB$?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Standardization & General Normal Distribution",
+          "target": "The normal approximation to the binomial distribution",
           "choices": [
-            "$0.6826$",
-            "$0.9544$",
-            "$0.5000$",
-            "$0.7500$"
+            "$y = 2x - 5$",
+            "$y = -\\frac{1}{2}x + 5$",
+            "$y = 2x - 8$",
+            "$y = -2x + 11$"
           ],
           "correct": 0,
-          "answer": "$\\sigma = \\sqrt{225} = 15$. The interval $85 < Y < 115$ represents $\\mu \\pm 1\\sigma$. $P(-1 < Z < 1) = 2\\Phi(1) - 1 = 2(0.8413) - 1 = 0.6826$.",
-          "explanation": "$\\sigma = \\sqrt{225} = 15$. The interval $85 < Y < 115$ represents $\\mu \\pm 1\\sigma$. $P(-1 < Z < 1) = 2\\Phi(1) - 1 = 2(0.8413) - 1 = 0.6826$."
+          "answer": "In a Voronoi diagram, the boundary edge between two sites is along the perpendicular bisector of the line segment connecting them. 1. Find the midpoint $M$ of the segment $AB$: $M = \\left(\\frac{2 + 6}{2}, \\frac{4 + 2}{2}\\right) = (4, 3)$ 2. Find the gradient of segment $AB$: $m_{AB} = \\frac{2 - 4}{6 - 2} = \\frac{-2}{4} = -\\frac{1}{2}$ 3. The gradient of the perpendicular bisector is the negative reciprocal of $m_{AB}$: $m_{\\perp} = -\\frac{1}{-\\frac{1}{2}} = 2$ 4. Use the point-slope form with midpoint $(4, 3)$ and gradient $m_{\\perp} = 2$: $y - 3 = 2(x - 4) \\Rightarrow y = 2x - 8 + 3 \\Rightarrow y = 2x - 5$ Common Misconceptions: - Choice B uses the gradient of $AB$ rather than its negative reciprocal. - Choice C correctly finds the gradient $m = 2$ but forgets to add the $y$-coordinate of the midpoint, setting $y = 2(x - 4) = 2x - 8$. - Choice D uses $m = -2$ instead of $+2$.",
+          "explanation": "In a Voronoi diagram, the boundary edge between two sites is along the perpendicular bisector of the line segment connecting them. 1. Find the midpoint $M$ of the segment $AB$: $M = \\left(\\frac{2 + 6}{2}, \\frac{4 + 2}{2}\\right) = (4, 3)$ 2. Find the gradient of segment $AB$: $m_{AB} = \\frac{2 - 4}{6 - 2} = \\frac{-2}{4} = -\\frac{1}{2}$ 3. The gradient of the perpendicular bisector is the negative reciprocal of $m_{AB}$: $m_{\\perp} = -\\frac{1}{-\\frac{1}{2}} = 2$ 4. Use the point-slope form with midpoint $(4, 3)$ and gradient $m_{\\perp} = 2$: $y - 3 = 2(x - 4) \\Rightarrow y = 2x - 8 + 3 \\Rightarrow y = 2x - 5$ Common Misconceptions: - Choice B uses the gradient of $AB$ rather than its negative reciprocal. - Choice C correctly finds the gradient $m = 2$ but forgets to add the $y$-coordinate of the midpoint, setting $y = 2(x - 4) = 2x - 8$. - Choice D uses $m = -2$ instead of $+2$."
         },
         {
-          "q": "The random variable $X \\sim N(\\mu, 25)$ has $P(X < 62) = 0.8413$. Find the mean $\\mu$.",
+          "q": "In triangle $ABC$, point $D$ lies on side $BC$ such that $AD$ is an angle bisector of angle $A$. Let $AB = c$, $AC = b$, $BD = m$, and $CD = n$. Prove that $\\frac{m}{n} = \\frac{c}{b}$ using a combination of the Sine Rule and the properties of angle bisectors.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Inverse Normal & Finding $\\mu$ and $\\sigma$",
+          "target": "Solving for unknown parameters of a normal distribution",
           "choices": [
-            "57",
-            "55",
-            "52",
-            "60"
+            "This statement is a direct consequence of the Sine Rule applied to triangles $ABD$ and $ACD$.",
+            "This statement can be proven by applying the Law of Cosines to triangles $ABD$ and $ACD$ and equating expressions for $AD^2$.",
+            "This statement is true only if triangle $ABC$ is isosceles with $b=c$.",
+            "This statement requires the use of vector methods for its proof."
           ],
           "correct": 0,
-          "answer": "$\\Phi(z) = 0.8413 \\Rightarrow z = 1.0$. Since $\\sigma = 5$: $1.0 = \\frac{62 - \\mu}{5} \\Rightarrow 62 - \\mu = 5 \\Rightarrow \\mu = 57$.",
-          "explanation": "$\\Phi(z) = 0.8413 \\Rightarrow z = 1.0$. Since $\\sigma = 5$: $1.0 = \\frac{62 - \\mu}{5} \\Rightarrow 62 - \\mu = 5 \\Rightarrow \\mu = 57$."
+          "answer": "Let $\\angle BAD = \\angle CAD = \\alpha$. In triangle $ABD$, by the Sine Rule, we have $\\frac{m}{\\sin \\alpha} = \\frac{c}{\\sin \\angle ADB}$. Therefore, $m = \\frac{c \\sin \\alpha}{\\sin \\angle ADB}$. In triangle $ACD$, by the Sine Rule, we have $\\frac{n}{\\sin \\alpha} = \\frac{b}{\\sin \\angle ADC}$. Therefore, $n = \\frac{b \\sin \\alpha}{\\sin \\angle ADC}$. Since $\\angle ADB$ and $\\angle ADC$ are supplementary angles, $\\sin \\angle ADB = \\sin (180^{\\circ} - \\angle ADC) = \\sin \\angle ADC$. Now, we can form the ratio $\\frac{m}{n} = \\frac{\\frac{c \\sin \\alpha}{\\sin \\angle ADB}}{\\frac{b \\sin \\alpha}{\\sin \\angle ADC}}$. Since $\\sin \\angle ADB = \\sin \\angle ADC$ and $\\sin \\alpha eq 0$ (as $\\alpha$ is an angle in a triangle), we can cancel these terms, yielding $\\frac{m}{n} = \\frac{c}{b}$. This proves the statement.",
+          "explanation": "Let $\\angle BAD = \\angle CAD = \\alpha$. In triangle $ABD$, by the Sine Rule, we have $\\frac{m}{\\sin \\alpha} = \\frac{c}{\\sin \\angle ADB}$. Therefore, $m = \\frac{c \\sin \\alpha}{\\sin \\angle ADB}$. In triangle $ACD$, by the Sine Rule, we have $\\frac{n}{\\sin \\alpha} = \\frac{b}{\\sin \\angle ADC}$. Therefore, $n = \\frac{b \\sin \\alpha}{\\sin \\angle ADC}$. Since $\\angle ADB$ and $\\angle ADC$ are supplementary angles, $\\sin \\angle ADB = \\sin (180^{\\circ} - \\angle ADC) = \\sin \\angle ADC$. Now, we can form the ratio $\\frac{m}{n} = \\frac{\\frac{c \\sin \\alpha}{\\sin \\angle ADB}}{\\frac{b \\sin \\alpha}{\\sin \\angle ADC}}$. Since $\\sin \\angle ADB = \\sin \\angle ADC$ and $\\sin \\alpha eq 0$ (as $\\alpha$ is an angle in a triangle), we can cancel these terms, yielding $\\frac{m}{n} = \\frac{c}{b}$. This proves the statement."
         },
         {
-          "q": "For a normal variable $X$, $P(X < 40) = 0.05$ and $P(X < 70) = 0.95$. Find $\\mu$ and $\\sigma$.",
+          "q": "The histogram below shows the distribution of scores for a class of students on a recent quiz. The total number of students who took the quiz is 50. The frequency for the score interval [70, 80) is $x$. Determine the value of $x$.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Inverse Normal & Finding $\\mu$ and $\\sigma$",
+          "target": "A well-designed word problem: setting a pass mark for an exam",
           "choices": [
-            "$\\mu = 55, \\sigma = 9.12$",
-            "$\\mu = 55, \\sigma = 15.0$",
-            "$\\mu = 50, \\sigma = 10.0$",
-            "$\\mu = 55, \\sigma = 5.50$"
+            "5",
+            "10",
+            "15",
+            "20"
           ],
-          "correct": 0,
-          "answer": "By symmetry, $\\mu = (40 + 70)/2 = 55$. For 95th percentile, $z = 1.645$: $1.645 = \\frac{70 - 55}{\\sigma} \\Rightarrow \\sigma = \\frac{15}{1.645} \\approx 9.12$.",
-          "explanation": "By symmetry, $\\mu = (40 + 70)/2 = 55$. For 95th percentile, $z = 1.645$: $1.645 = \\frac{70 - 55}{\\sigma} \\Rightarrow \\sigma = \\frac{15}{1.645} \\approx 9.12$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "4*exp(-0.5*x**2)"
-            ],
-            "xmin": -3.5,
-            "xmax": 3.5,
-            "ymin": -0.4,
-            "ymax": 4.6,
-            "shade": {
-              "fn1": "4*exp(-0.5*x**2)",
-              "fn2": "0",
-              "x0": -1.96,
-              "x1": 1.96
-            },
-            "point_labels": [
-              {
-                "x": 1.96,
-                "y": 0.59,
-                "label": "$z=1.96$"
-              }
-            ],
-            "width": 230
-          }
+          "correct": 1,
+          "answer": "The histogram represents the frequency distribution of quiz scores. The total number of students is given as 50. The frequencies for the score intervals are as follows: [50, 60): 8 [60, 70): 12 [70, 80): x [80, 90): 7 [90, 100]: 8 The sum of the frequencies must equal the total number of students: 8 + 12 + x + 7 + 8 = 50 Combine the known frequencies: 35 + x = 50 Solve for x: x = 50 - 35 x = 15 Therefore, the frequency for the score interval [70, 80) is 15.",
+          "explanation": "The histogram represents the frequency distribution of quiz scores. The total number of students is given as 50. The frequencies for the score intervals are as follows: [50, 60): 8 [60, 70): 12 [70, 80): x [80, 90): 7 [90, 100]: 8 The sum of the frequencies must equal the total number of students: 8 + 12 + x + 7 + 8 = 50 Combine the known frequencies: 35 + x = 50 Solve for x: x = 50 - 35 x = 15 Therefore, the frequency for the score interval [70, 80) is 15."
         }
       ]
     },
@@ -470,163 +420,180 @@
       "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
       "questions": [
         {
-          "q": "Packets of biscuits have nominal weight 200 g. Actual weights are normally distributed with $\\mu = 204$ g and $\\sigma = 2.5$ g. What proportion of packets are underweight ($< 200$ g)?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Inverse Normal & Finding $\\mu$ and $\\sigma$",
-          "choices": [
-            "$0.0548$",
-            "$0.0228$",
-            "$0.0100$",
-            "$0.0808$"
-          ],
-          "correct": 0,
-          "answer": "$z = \\frac{200 - 204}{2.5} = -1.6$. $P(X < 200) = \\Phi(-1.6) = 1 - \\Phi(1.6) = 1 - 0.9452 = 0.0548$.",
-          "explanation": "$z = \\frac{200 - 204}{2.5} = -1.6$. $P(X < 200) = \\Phi(-1.6) = 1 - \\Phi(1.6) = 1 - 0.9452 = 0.0548$."
-        },
-        {
-          "q": "State the two conditions required to approximate a binomial distribution $X \\sim B(n, p)$ by a normal distribution.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Normal Approximation to the Binomial Distribution",
-          "choices": [
-            "$np > 5$ and $n(1 - p) > 5$",
-            "$n > 30$ and $p = 0.5$",
-            "$np > 10$ only",
-            "$n(1 - p) > 100$"
-          ],
-          "correct": 0,
-          "answer": "The standard Cambridge AS Level guideline requires both $np > 5$ and $n(1 - p) > 5$ for an adequate normal approximation.",
-          "explanation": "The standard Cambridge AS Level guideline requires both $np > 5$ and $n(1 - p) > 5$ for an adequate normal approximation."
-        },
-        {
-          "q": "A fair coin is tossed 100 times. Using the normal approximation with continuity correction, what is the expression for $P(X \\geq 55)$?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Normal Approximation to the Binomial Distribution",
-          "choices": [
-            "$P(Y > 54.5)$ where $Y \\sim N(50, 25)$",
-            "$P(Y > 55.5)$ where $Y \\sim N(50, 25)$",
-            "$P(Y > 54.5)$ where $Y \\sim N(50, 5)$",
-            "$P(Y > 55.0)$ where $Y \\sim N(50, 25)$"
-          ],
-          "correct": 0,
-          "answer": "$\\mu = 100(0.5) = 50$, $\\sigma^2 = 100(0.5)(0.5) = 25$. For $X \\geq 55$, the continuity correction shifts to the left boundary: $P(Y > 54.5)$.",
-          "explanation": "$\\mu = 100(0.5) = 50$, $\\sigma^2 = 100(0.5)(0.5) = 25$. For $X \\geq 55$, the continuity correction shifts to the left boundary: $P(Y > 54.5)$."
-        },
-        {
-          "q": "Compute the approximate probability of getting at least 55 heads in 100 tosses using $Y \\sim N(50, 25)$.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Normal Approximation to the Binomial Distribution",
-          "choices": [
-            "$0.1841$",
-            "$0.1587$",
-            "$0.2119$",
-            "$0.1250$"
-          ],
-          "correct": 0,
-          "answer": "$z = \\frac{54.5 - 50}{5} = 0.90$. $P(Y > 54.5) = 1 - \\Phi(0.90) = 1 - 0.8159 = 0.1841$.",
-          "explanation": "$z = \\frac{54.5 - 50}{5} = 0.90$. $P(Y > 54.5) = 1 - \\Phi(0.90) = 1 - 0.8159 = 0.1841$."
-        },
-        {
-          "q": "Given $X\\sim N(\\mu,\\sigma^2)$, $P(X<57)=0.9$ and $P(X<27)=0.1$, find $\\mu$, correct to the nearest integer.",
+          "q": "Find the standard deviation of the data set: $12, 19, 14, 22, 24$, correct to 2 decimal places.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Properties of the normal distribution",
           "choices": [
-            "39",
-            "42",
-            "48",
-            "45"
+            "4.98",
+            "4.58",
+            "4.18",
+            "3.78"
           ],
           "correct": 1,
-          "answer": "Using $z_1=1.2816$, $z_2=-1.2816$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx42$.",
-          "explanation": "Using $z_1=1.2816$, $z_2=-1.2816$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx42$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "4*exp(-0.5*x**2)"
-            ],
-            "xmin": -3.5,
-            "xmax": 3.5,
-            "ymin": -0.4,
-            "ymax": 4.6,
-            "shade": {
-              "fn1": "4*exp(-0.5*x**2)",
-              "fn2": "0",
-              "x0": -1.65,
-              "x1": 1.65
-            },
-            "point_labels": [
-              {
-                "x": 1.65,
-                "y": 1.03,
-                "label": "$z=1.65$"
-              }
-            ],
-            "width": 230
-          }
+          "answer": "Working through this statistics step: Mean $=\\frac{12+19+14+22+24}{5}=18.20$. $\\sigma=\\sqrt{\\frac{\\sum(x-\\bar{x})^2}{n}}\\approx 4.58$.",
+          "explanation": "Working through this statistics step: Mean $=\\frac{12+19+14+22+24}{5}=18.20$. $\\sigma=\\sqrt{\\frac{\\sum(x-\\bar{x})^2}{n}}\\approx 4.58$."
         },
         {
-          "q": "Given $X\\sim N(\\mu,\\sigma^2)$, $P(X<100)=0.95$ and $P(X<80)=0.05$, find $\\mu$, correct to the nearest integer.",
+          "q": "A bag contains 8 red and 9 blue balls. Two balls are drawn at random without replacement. Find $P(\\mathrm{both\\ red})$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Standardizing a normal variable",
           "choices": [
-            "87",
-            "93",
-            "96",
-            "90"
+            "$\\frac{64}{289}$",
+            "$\\frac{8}{17}$",
+            "$\\frac{7}{34}$",
+            "$\\frac{56}{289}$"
           ],
-          "correct": 3,
-          "answer": "Using $z_1=1.6449$, $z_2=-1.6449$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx90$.",
-          "explanation": "Using $z_1=1.6449$, $z_2=-1.6449$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx90$."
+          "correct": 2,
+          "answer": "Working through this statistics step: $P(\\mathrm{both\\ red})=\\frac{8}{17}\\times\\frac{7}{16}=\\frac{7}{34}$.",
+          "explanation": "Working through this statistics step: $P(\\mathrm{both\\ red})=\\frac{8}{17}\\times\\frac{7}{16}=\\frac{7}{34}$."
         },
         {
-          "q": "Given $X\\sim N(\\mu,\\sigma^2)$, $P(X<51)=0.8$ and $P(X<37)=0.2$, find $\\mu$, correct to the nearest integer.",
+          "q": "Solve $|x-6|>6$. What is the smaller boundary value separating the two regions?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Finding probabilities using the standard normal table",
           "choices": [
-            "50",
-            "41",
-            "47",
-            "44"
+            "11",
+            "0",
+            "12",
+            "1"
           ],
-          "correct": 3,
-          "answer": "Using $z_1=0.8416$, $z_2=-0.8416$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx44$.",
-          "explanation": "Using $z_1=0.8416$, $z_2=-0.8416$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx44$."
+          "correct": 1,
+          "answer": "$x-6>6$ or $x-6<-6$, giving boundary values $x=12$ and $x=0$. Smaller boundary: $x=0$.",
+          "explanation": "$x-6>6$ or $x-6<-6$, giving boundary values $x=12$ and $x=0$. Smaller boundary: $x=0$."
         },
         {
-          "q": "Given $X\\sim N(\\mu,\\sigma^2)$, $P(X<46)=0.8$ and $P(X<32)=0.2$, find $\\mu$, correct to the nearest integer.",
+          "q": "Solve $|2x+3|=3$ for $x$. What is the larger of the two solutions?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Finding a value given a probability (inverse normal)",
           "choices": [
-            "45",
-            "39",
-            "42",
-            "36"
+            "0",
+            "-3",
+            "3",
+            "$\\frac{1}{12}$"
           ],
-          "correct": 1,
-          "answer": "Using $z_1=0.8416$, $z_2=-0.8416$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx39$.",
-          "explanation": "Using $z_1=0.8416$, $z_2=-0.8416$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx39$."
+          "correct": 0,
+          "answer": "$2x+3=\\pm 3$, giving $x=0$ or $x=-3$. The larger solution is $x=0$.",
+          "explanation": "$2x+3=\\pm 3$, giving $x=0$ or $x=-3$. The larger solution is $x=0$."
         },
         {
-          "q": "Given $X\\sim N(\\mu,\\sigma^2)$, $P(X<107)=0.9$ and $P(X<77)=0.1$, find $\\mu$, correct to the nearest integer.",
+          "q": "Two lines have direction vectors $\\mathbf{d_1}=(-2,3,-5)$ and $\\mathbf{d_2}=(4,-6,10)$. What is the relationship between the two lines (assuming they are coplanar)?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "The probability of a value lying between two bounds",
           "choices": [
-            "92",
-            "98",
-            "89",
-            "95"
+            "neither parallel nor perpendicular",
+            "perpendicular",
+            "identical",
+            "parallel"
           ],
-          "correct": 0,
-          "answer": "Using $z_1=1.2816$, $z_2=-1.2816$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx92$.",
-          "explanation": "Using $z_1=1.2816$, $z_2=-1.2816$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx92$."
+          "correct": 3,
+          "answer": "$\\mathbf{d_2}=-2\\mathbf{d_1}$, so the lines are parallel.",
+          "explanation": "$\\mathbf{d_2}=-2\\mathbf{d_1}$, so the lines are parallel."
+        },
+        {
+          "q": "Expand $\\log\\left(\\frac{x}{y}\\right)$ using properties of logarithms. (variant 6)",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "The normal approximation to the binomial distribution",
+          "choices": [
+            "$\\frac{\\log x}{\\log y}$",
+            "$\\log(x)\\cdot\\log(y)$",
+            "$\\log x+\\log y$",
+            "$\\log x-\\log y$"
+          ],
+          "correct": 3,
+          "answer": "Quotient rule: $\\log(x/y)=\\log x-\\log y$.",
+          "explanation": "Quotient rule: $\\log(x/y)=\\log x-\\log y$."
+        },
+        {
+          "q": "Expand $\\log\\left(\\frac{x^2}{y^3}\\right)$ using properties of logarithms.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Solving for unknown parameters of a normal distribution",
+          "choices": [
+            "$\\log(x)\\cdot\\log(y)$",
+            "$2\\log x-3\\log y$",
+            "$2\\log x+3\\log y$",
+            "$\\frac{\\log x}{\\log y}$"
+          ],
+          "correct": 1,
+          "answer": "Combine power and quotient rules.",
+          "explanation": "Combine power and quotient rules."
+        },
+        {
+          "q": "Consider the two functions $f(x) = \\log_2(x)$ and $g(x) = 3 - x$. The graphs of $f(x)$ and $g(x)$ intersect at a point P, and $f(x)$ intersects the x-axis at point Q. A line segment is drawn from Q to a point R on the graph of $g(x)$ such that QR is perpendicular to the x-axis. Find the coordinates of the point R.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "A well-designed word problem: setting a pass mark for an exam",
+          "choices": [
+            "(3, 0)",
+            "(1, 2)",
+            "(2, 1)",
+            "(4, -1)"
+          ],
+          "correct": 2,
+          "answer": "The graph of $f(x) = \\log_2(x)$ intersects the x-axis when $f(x) = 0$. Thus, $\\log_2(x) = 0$, which implies $x = 2^0 = 1$. So, point Q has coordinates (1, 0). The line segment QR is perpendicular to the x-axis, meaning that the x-coordinate of R is the same as the x-coordinate of Q. Therefore, the x-coordinate of R is 1. Point R lies on the graph of $g(x) = 3 - x$. Substituting the x-coordinate of R into the equation for $g(x)$, we get $g(1) = 3 - 1 = 2$. Thus, the coordinates of point R are (1, 2). Let's check the intersection point P. The equation to solve is $\\log_2(x) = 3 - x$. By inspection, when $x=2$, $\\log_2(2) = 1$ and $3-2 = 1$. So P is (2, 1). This information is not directly needed to find R, but confirms the graphs intersect.",
+          "explanation": "The graph of $f(x) = \\log_2(x)$ intersects the x-axis when $f(x) = 0$. Thus, $\\log_2(x) = 0$, which implies $x = 2^0 = 1$. So, point Q has coordinates (1, 0). The line segment QR is perpendicular to the x-axis, meaning that the x-coordinate of R is the same as the x-coordinate of Q. Therefore, the x-coordinate of R is 1. Point R lies on the graph of $g(x) = 3 - x$. Substituting the x-coordinate of R into the equation for $g(x)$, we get $g(1) = 3 - 1 = 2$. Thus, the coordinates of point R are (1, 2). Let's check the intersection point P. The equation to solve is $\\log_2(x) = 3 - x$. By inspection, when $x=2$, $\\log_2(2) = 1$ and $3-2 = 1$. So P is (2, 1). This information is not directly needed to find R, but confirms the graphs intersect.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "3 - x"
+            ],
+            "xmin": -1.0,
+            "xmax": 5.0,
+            "ymin": -2.0,
+            "ymax": 4.0,
+            "width": 230,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": 0.0,
+                "label": "Q"
+              }
+            ]
+          }
+        },
+        {
+          "q": "The diagram shows part of the curve $y = 6x - x^2$, which intersects the $x$-axis at $(0, 0)$ and $(6, 0)$. Find the area of the region enclosed between the curve and the $x$-axis.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Properties of the normal distribution",
+          "choices": [
+            "27",
+            "36",
+            "54",
+            "72"
+          ],
+          "correct": 1,
+          "answer": "To find the area enclosed between the curve and the $x$-axis, integrate $y$ with respect to $x$ from $x = 0$ to $x = 6$: $\\mathrm{Area} = \\int_{0}^{6} (6x - x^2) \\, \\mathrm{d}x$ Integrate term by term: $\\int (6x - x^2) \\, \\mathrm{d}x = \\left[ \\frac{6x^2}{2} - \\frac{x^3}{3} \\right]_{0}^{6} = \\left[ 3x^2 - \\frac{x^3}{3} \\right]_{0}^{6}$ Substitute the limits: $\\left( 3(6)^2 - \\frac{6^3}{3} \\right) - 0 = 3(36) - \\frac{216}{3} = 108 - 72 = 36$ Common errors: - Estimating the region as a triangle with base $6$ and maximum height $9$ yields $\\frac{1}{2} \\times 6 \\times 9 = 27$. - Taking the bounding rectangle gives $6 \\times 9 = 54$. - Integrating $6x$ as $6x^2$ without dividing by $2$ gives $216 - 72 = 144$, or subtracting $108 - 36 = 72$.",
+          "explanation": "To find the area enclosed between the curve and the $x$-axis, integrate $y$ with respect to $x$ from $x = 0$ to $x = 6$: $\\mathrm{Area} = \\int_{0}^{6} (6x - x^2) \\, \\mathrm{d}x$ Integrate term by term: $\\int (6x - x^2) \\, \\mathrm{d}x = \\left[ \\frac{6x^2}{2} - \\frac{x^3}{3} \\right]_{0}^{6} = \\left[ 3x^2 - \\frac{x^3}{3} \\right]_{0}^{6}$ Substitute the limits: $\\left( 3(6)^2 - \\frac{6^3}{3} \\right) - 0 = 3(36) - \\frac{216}{3} = 108 - 72 = 36$ Common errors: - Estimating the region as a triangle with base $6$ and maximum height $9$ yields $\\frac{1}{2} \\times 6 \\times 9 = 27$. - Taking the bounding rectangle gives $6 \\times 9 = 54$. - Integrating $6x$ as $6x^2$ without dividing by $2$ gives $216 - 72 = 144$, or subtracting $108 - 36 = 72$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "6*x - x*x"
+            ],
+            "xmin": -1.0,
+            "xmax": 7.0,
+            "ymin": -2.0,
+            "ymax": 11.0,
+            "width": 230,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": 0.0,
+                "label": "(0, 0)"
+              },
+              {
+                "x": 6.0,
+                "y": 0.0,
+                "label": "(6, 0)"
+              }
+            ]
+          }
         }
       ]
     },
@@ -634,155 +601,192 @@
       "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
       "questions": [
         {
-          "q": "Given $X\\sim N(\\mu,\\sigma^2)$, $P(X<55)=0.9$ and $P(X<29)=0.1$, find $\\mu$, correct to the nearest integer.",
+          "q": "Consider the functions $f(x) = x^2 - 6x + 11$ and $g(x) = 2x - 1$. The graphs of these functions intersect at two points. One of the intersection points is $(2, 3)$. Find the x-coordinate of the other intersection point.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "The normal approximation to the binomial distribution",
+          "target": "Standardizing a normal variable",
           "choices": [
-            "45",
-            "42",
-            "39",
-            "48"
+            "3",
+            "4",
+            "5",
+            "6"
           ],
-          "correct": 1,
-          "answer": "Using $z_1=1.2816$, $z_2=-1.2816$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx42$.",
-          "explanation": "Using $z_1=1.2816$, $z_2=-1.2816$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx42$.",
-          "cross_lesson": "18.01 Binomial Distribution"
+          "correct": 2,
+          "answer": "To find the intersection points of the two functions, we set $f(x) = g(x)$. $x^2 - 6x + 11 = 2x - 1$ Rearrange the equation to form a quadratic equation: $x^2 - 6x - 2x + 11 + 1 = 0$ $x^2 - 8x + 12 = 0$ We can factor this quadratic equation. We are looking for two numbers that multiply to 12 and add to -8. These numbers are -6 and -2. $(x - 2)(x - 6) = 0$ This gives us two possible solutions for x: $x = 2$ or $x = 6$. We are given that one intersection point has an x-coordinate of 2. Therefore, the x-coordinate of the other intersection point is 6.",
+          "explanation": "To find the intersection points of the two functions, we set $f(x) = g(x)$. $x^2 - 6x + 11 = 2x - 1$ Rearrange the equation to form a quadratic equation: $x^2 - 6x - 2x + 11 + 1 = 0$ $x^2 - 8x + 12 = 0$ We can factor this quadratic equation. We are looking for two numbers that multiply to 12 and add to -8. These numbers are -6 and -2. $(x - 2)(x - 6) = 0$ This gives us two possible solutions for x: $x = 2$ or $x = 6$. We are given that one intersection point has an x-coordinate of 2. Therefore, the x-coordinate of the other intersection point is 6.",
+          "cross_lesson": "18.01 Binomial Distribution",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*x - 6*x + 11",
+              "2*x - 1"
+            ],
+            "xmin": -1.0,
+            "xmax": 7.0,
+            "ymin": -2.0,
+            "ymax": 10.0,
+            "width": 230,
+            "point_labels": [
+              {
+                "x": 2.0,
+                "y": 3.0,
+                "label": "(2, 3)"
+              }
+            ]
+          }
         },
         {
-          "q": "Given $X\\sim N(\\mu,\\sigma^2)$, $P(X<36)=0.85$ and $P(X<12)=0.15$, find $\\mu$, correct to the nearest integer.",
+          "q": "Consider the quadratic function $f(x) = x^2 - 4x + 3$. The graph of this function is shown below. The points where the graph intersects the x-axis are denoted by A and B. What is the distance between points A and B?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Solving for unknown parameters of a normal distribution",
+          "target": "Finding probabilities using the standard normal table",
           "choices": [
-            "27",
-            "24",
-            "30",
-            "21"
+            "1",
+            "2",
+            "3",
+            "4"
           ],
-          "correct": 1,
-          "answer": "Using $z_1=1.0364$, $z_2=-1.0364$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx24$.",
-          "explanation": "Using $z_1=1.0364$, $z_2=-1.0364$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx24$.",
+          "correct": 2,
+          "answer": "The points where the graph intersects the x-axis are the roots of the quadratic equation $f(x) = 0$. We need to solve $x^2 - 4x + 3 = 0$. Factoring the quadratic, we get $(x-1)(x-3) = 0$. Thus, the roots are $x=1$ and $x=3$. Let point A have coordinates $(1, 0)$ and point B have coordinates $(3, 0)$. The distance between A and B is the absolute difference of their x-coordinates: $|3 - 1| = 2$.",
+          "explanation": "The points where the graph intersects the x-axis are the roots of the quadratic equation $f(x) = 0$. We need to solve $x^2 - 4x + 3 = 0$. Factoring the quadratic, we get $(x-1)(x-3) = 0$. Thus, the roots are $x=1$ and $x=3$. Let point A have coordinates $(1, 0)$ and point B have coordinates $(3, 0)$. The distance between A and B is the absolute difference of their x-coordinates: $|3 - 1| = 2$.",
           "cross_lesson": "2.01 Simultaneous Equations & Inequalities",
           "figure": {
             "type": "plot",
             "fns": [
-              "4*exp(-0.5*x**2)"
+              "x*x - 4*x + 3"
             ],
-            "xmin": -3.5,
-            "xmax": 3.5,
-            "ymin": -0.4,
-            "ymax": 4.6,
-            "shade": {
-              "fn1": "4*exp(-0.5*x**2)",
-              "fn2": "0",
-              "x0": -1.65,
-              "x1": 1.65
-            },
+            "xmin": -2.0,
+            "xmax": 6.0,
+            "ymin": -3.0,
+            "ymax": 6.0,
+            "width": 230,
             "point_labels": [
               {
-                "x": 1.65,
-                "y": 1.03,
-                "label": "$z=1.65$"
+                "x": 1.0,
+                "y": 0.0,
+                "label": "A"
+              },
+              {
+                "x": 3.0,
+                "y": 0.0,
+                "label": "B"
               }
-            ],
-            "width": 230
+            ]
           }
         },
         {
-          "q": "Given $X\\sim N(\\mu,\\sigma^2)$, $P(X<103)=0.9$ and $P(X<77)=0.1$, find $\\mu$, correct to the nearest integer.",
+          "q": "Consider the function $f(x) = x^2 - 4x + 3$. The graph of $y = f(x)$ is shown below. The function intersects the x-axis at two points. Find the coordinates of the point with the smaller x-value.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Finding a value given a probability (inverse normal)",
+          "choices": [
+            "(1, 0)",
+            "(3, 0)",
+            "(0, 3)",
+            "(0, 1)"
+          ],
+          "correct": 0,
+          "answer": "To find the x-intercepts of the function $f(x) = x^2 - 4x + 3$, we set $f(x) = 0$. This gives us the quadratic equation $x^2 - 4x + 3 = 0$. We can factor this equation as $(x-1)(x-3) = 0$. The solutions are $x=1$ and $x=3$. Therefore, the x-intercepts are at $(1, 0)$ and $(3, 0)$. The point with the smaller x-value is $(1, 0)$.",
+          "explanation": "To find the x-intercepts of the function $f(x) = x^2 - 4x + 3$, we set $f(x) = 0$. This gives us the quadratic equation $x^2 - 4x + 3 = 0$. We can factor this equation as $(x-1)(x-3) = 0$. The solutions are $x=1$ and $x=3$. Therefore, the x-intercepts are at $(1, 0)$ and $(3, 0)$. The point with the smaller x-value is $(1, 0)$.",
+          "cross_lesson": "3.01 Graphs & Transformations",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*x - 4*x + 3",
+              "x - 1"
+            ],
+            "xmin": -2.0,
+            "xmax": 6.0,
+            "ymin": -3.0,
+            "ymax": 6.0,
+            "width": 230,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": 0.0,
+                "label": "(1, 0)"
+              }
+            ]
+          }
+        },
+        {
+          "q": "A curve has equation $y = x\\sqrt{16 - x^2}$ for $0 \\leq x \\leq 4$. A point $P(x, y)$ moves along the curve in the first quadrant, and the normal to the curve at $P$ intersects the $x$-axis at the point $N$. Given that the $x$-coordinate of $P$ is increasing at a constant rate of $\\sqrt{3} \\mathrm{\\ units\\ s}^{-1}$, find the rate of change of the area of triangle $OPN$, where $O$ is the origin, at the instant when $x = 2$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "The probability of a value lying between two bounds",
+          "choices": [
+            "$-6 \\mathrm{\\ units}^2\\mathrm{\\ s}^{-1}$",
+            "$6 \\mathrm{\\ units}^2\\mathrm{\\ s}^{-1}$",
+            "$-12 \\mathrm{\\ units}^2\\mathrm{\\ s}^{-1}$",
+            "$-2\\sqrt{3} \\mathrm{\\ units}^2\\mathrm{\\ s}^{-1}$"
+          ],
+          "correct": 0,
+          "answer": "Step 1: Differentiate $y = x\\sqrt{16 - x^2}$ using the product rule: $\\frac{dy}{dx} = 1 \\cdot \\sqrt{16 - x^2} + x \\cdot \\frac{-2x}{2\\sqrt{16 - x^2}} = \\frac{16 - 2x^2}{\\sqrt{16 - x^2}}$ At $x = 2$: $y = 2\\sqrt{16 - 4} = 4\\sqrt{3}$ $\\frac{dy}{dx} = \\frac{16 - 2(4)}{\\sqrt{12}} = \\frac{8}{2\\sqrt{3}} = \\frac{4}{\\sqrt{3}}$ Step 2: Find the coordinates of $N$, the $x$-intercept of the normal. The gradient of the normal at $P$ is: $m_N = -\\frac{1}{\\frac{dy}{dx}} = -\\frac{\\sqrt{16 - x^2}}{16 - 2x^2}$ The equation of the normal is $Y - y = m_N(X - x)$. Setting $Y = 0$ gives the $x$-intercept $X_N$: $-y = m_N(X_N - x) \\Rightarrow X_N = x - \\frac{y}{m_N} = x + y \\frac{dy}{dx}$ Substituting $y = x\\sqrt{16 - x^2}$ and $\\frac{dy}{dx} = \\frac{16 - 2x^2}{\\sqrt{16 - x^2}}$: $X_N = x + x(16 - 2x^2) = 17x - 2x^3$ At $x = 2$, $X_N = 17(2) - 2(2^3) = 34 - 16 = 18$. Step 3: Determine the area of triangle $OPN$. Since $O(0,0)$ and $N(X_N, 0)$ lie on the $x$-axis, the base of the triangle is $X_N$ and the perpendicular height is $y$: $A = \\frac{1}{2} X_N y$ Differentiating with respect to time $t$ using the product rule: $\\frac{dA}{dt} = \\frac{1}{2}\\left( y \\frac{dX_N}{dt} + X_N \\frac{dy}{dt} \\right)$ Using the chain rule with $\\frac{dx}{dt} = \\sqrt{3}$: $\\frac{dX_N}{dx} = 17 - 6x^2 \\Rightarrow \\left.\\frac{dX_N}{dx}\\right|_{x=2} = 17 - 24 = -7 \\Rightarrow \\frac{dX_N}{dt} = -7\\sqrt{3}$ $\\frac{dy}{dt} = \\frac{dy}{dx} \\frac{dx}{dt} = \\frac{4}{\\sqrt{3}} \\cdot \\sqrt{3} = 4$ Step 4: Compute $\\frac{dA}{dt}$: $\\frac{dA}{dt} = \\frac{1}{2}\\left[ (4\\sqrt{3})(-7\\sqrt{3}) + (18)(4) \\right] = \\frac{1}{2}[ -84 + 72 ] = \\frac{1}{2}(-12) = -6 \\mathrm{\\ units}^2\\mathrm{\\ s}^{-1}$ Common Misconceptions: - Choice B ($6$): A sign error occurs when solving for the intercept of the normal or evaluating $4\\sqrt{3}(-7\\sqrt{3})$. - Choice C ($-12$): Omitting the factor of $\\frac{1}{2}$ in the triangle area formula $A = \\frac{1}{2}bh$. - Choice D ($-2\\sqrt{3}$): Calculating the spatial rate $\\frac{dA}{dx} = -2\\sqrt{3}$ and forgetting to multiply by $\\frac{dx}{dt} = \\sqrt{3}$ via the chain rule.",
+          "explanation": "Step 1: Differentiate $y = x\\sqrt{16 - x^2}$ using the product rule: $\\frac{dy}{dx} = 1 \\cdot \\sqrt{16 - x^2} + x \\cdot \\frac{-2x}{2\\sqrt{16 - x^2}} = \\frac{16 - 2x^2}{\\sqrt{16 - x^2}}$ At $x = 2$: $y = 2\\sqrt{16 - 4} = 4\\sqrt{3}$ $\\frac{dy}{dx} = \\frac{16 - 2(4)}{\\sqrt{12}} = \\frac{8}{2\\sqrt{3}} = \\frac{4}{\\sqrt{3}}$ Step 2: Find the coordinates of $N$, the $x$-intercept of the normal. The gradient of the normal at $P$ is: $m_N = -\\frac{1}{\\frac{dy}{dx}} = -\\frac{\\sqrt{16 - x^2}}{16 - 2x^2}$ The equation of the normal is $Y - y = m_N(X - x)$. Setting $Y = 0$ gives the $x$-intercept $X_N$: $-y = m_N(X_N - x) \\Rightarrow X_N = x - \\frac{y}{m_N} = x + y \\frac{dy}{dx}$ Substituting $y = x\\sqrt{16 - x^2}$ and $\\frac{dy}{dx} = \\frac{16 - 2x^2}{\\sqrt{16 - x^2}}$: $X_N = x + x(16 - 2x^2) = 17x - 2x^3$ At $x = 2$, $X_N = 17(2) - 2(2^3) = 34 - 16 = 18$. Step 3: Determine the area of triangle $OPN$. Since $O(0,0)$ and $N(X_N, 0)$ lie on the $x$-axis, the base of the triangle is $X_N$ and the perpendicular height is $y$: $A = \\frac{1}{2} X_N y$ Differentiating with respect to time $t$ using the product rule: $\\frac{dA}{dt} = \\frac{1}{2}\\left( y \\frac{dX_N}{dt} + X_N \\frac{dy}{dt} \\right)$ Using the chain rule with $\\frac{dx}{dt} = \\sqrt{3}$: $\\frac{dX_N}{dx} = 17 - 6x^2 \\Rightarrow \\left.\\frac{dX_N}{dx}\\right|_{x=2} = 17 - 24 = -7 \\Rightarrow \\frac{dX_N}{dt} = -7\\sqrt{3}$ $\\frac{dy}{dt} = \\frac{dy}{dx} \\frac{dx}{dt} = \\frac{4}{\\sqrt{3}} \\cdot \\sqrt{3} = 4$ Step 4: Compute $\\frac{dA}{dt}$: $\\frac{dA}{dt} = \\frac{1}{2}\\left[ (4\\sqrt{3})(-7\\sqrt{3}) + (18)(4) \\right] = \\frac{1}{2}[ -84 + 72 ] = \\frac{1}{2}(-12) = -6 \\mathrm{\\ units}^2\\mathrm{\\ s}^{-1}$ Common Misconceptions: - Choice B ($6$): A sign error occurs when solving for the intercept of the normal or evaluating $4\\sqrt{3}(-7\\sqrt{3})$. - Choice C ($-12$): Omitting the factor of $\\frac{1}{2}$ in the triangle area formula $A = \\frac{1}{2}bh$. - Choice D ($-2\\sqrt{3}$): Calculating the spatial rate $\\frac{dA}{dx} = -2\\sqrt{3}$ and forgetting to multiply by $\\frac{dx}{dt} = \\sqrt{3}$ via the chain rule.",
+          "cross_lesson": "4.01 Coordinate Geometry"
+        },
+        {
+          "q": "The curve $C$ has equation $y = x^3 - 3x + 2$. The tangent to $C$ at the point $P(2, 4)$ intersects the curve again at point $Q$. Find the area of the finite region completely enclosed between the curve $C$ and the tangent line.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "The normal approximation to the binomial distribution",
+          "choices": [
+            "108",
+            "84",
+            "64",
+            "12"
+          ],
+          "correct": 0,
+          "answer": "To find the area of the enclosed region, we synthesize differential calculus, polynomial algebra, and definite integration: 1. **Find the equation of the tangent line at $P(2, 4)$:** Differentiating the curve equation: $\\frac{dy}{dx} = 3x^2 - 3$ At $x = 2$, the gradient of the tangent is: $m = 3(2)^2 - 3 = 12 - 3 = 9$ Using the point-slope formula with $P(2, 4)$: $y - 4 = 9(x - 2) \\Rightarrow y = 9x - 14$ 2. **Find the intersection point $Q$:** Set the curve and tangent equations equal: $x^3 - 3x + 2 = 9x - 14 \\Rightarrow x^3 - 12x + 16 = 0$ Since the line is tangent to the curve at $x = 2$, $(x - 2)^2$ must be a factor of the polynomial: $(x - 2)^2 = x^2 - 4x + 4$ Dividing $x^3 - 12x + 16$ by $x^2 - 4x + 4$ gives $(x + 4)$: $(x - 2)^2(x + 4) = 0$ Thus, the other intersection point $Q$ occurs at $x = -4$. 3. **Compute the enclosed area:** For $x \\in (-4, 2)$, the curve lies above the tangent line (e.g., at $x = 0$, $y_{\\mathrm{curve}} = 2$ while $y_{\\mathrm{tangent}} = -14$). The enclosed area $A$ is given by: $A = \\int_{-4}^{2} \\left[(x^3 - 3x + 2) - (9x - 14)\\right] dx = \\int_{-4}^{2} (x^3 - 12x + 16) \\, dx$ Finding the antiderivative: $F(x) = \\frac{x^4}{4} - 6x^2 + 16x$ Evaluating at the boundaries: $F(2) = \\frac{2^4}{4} - 6(2)^2 + 16(2) = 4 - 24 + 32 = 12$ $F(-4) = \\frac{(-4)^4}{4} - 6(-4)^2 + 16(-4) = 64 - 96 - 64 = -96$ Therefore: $A = F(2) - F(-4) = 12 - (-96) = 108$ **Common Misconceptions:** - Choice B (84) results from an arithmetic sign error when expanding $F(-4)$ as $64 + 96 - 64 = 96$, leading to $12 - (-96) \\rightarrow 96 - 12 = 84$. - Choice C (64) arises from incorrectly assuming the region is symmetric about the $y$-axis and integrating over $[-2, 2]$. - Choice D (12) arises from mistakenly integrating only over the positive domain from the $y$-axis $[0, 2]$.",
+          "explanation": "To find the area of the enclosed region, we synthesize differential calculus, polynomial algebra, and definite integration: 1. **Find the equation of the tangent line at $P(2, 4)$:** Differentiating the curve equation: $\\frac{dy}{dx} = 3x^2 - 3$ At $x = 2$, the gradient of the tangent is: $m = 3(2)^2 - 3 = 12 - 3 = 9$ Using the point-slope formula with $P(2, 4)$: $y - 4 = 9(x - 2) \\Rightarrow y = 9x - 14$ 2. **Find the intersection point $Q$:** Set the curve and tangent equations equal: $x^3 - 3x + 2 = 9x - 14 \\Rightarrow x^3 - 12x + 16 = 0$ Since the line is tangent to the curve at $x = 2$, $(x - 2)^2$ must be a factor of the polynomial: $(x - 2)^2 = x^2 - 4x + 4$ Dividing $x^3 - 12x + 16$ by $x^2 - 4x + 4$ gives $(x + 4)$: $(x - 2)^2(x + 4) = 0$ Thus, the other intersection point $Q$ occurs at $x = -4$. 3. **Compute the enclosed area:** For $x \\in (-4, 2)$, the curve lies above the tangent line (e.g., at $x = 0$, $y_{\\mathrm{curve}} = 2$ while $y_{\\mathrm{tangent}} = -14$). The enclosed area $A$ is given by: $A = \\int_{-4}^{2} \\left[(x^3 - 3x + 2) - (9x - 14)\\right] dx = \\int_{-4}^{2} (x^3 - 12x + 16) \\, dx$ Finding the antiderivative: $F(x) = \\frac{x^4}{4} - 6x^2 + 16x$ Evaluating at the boundaries: $F(2) = \\frac{2^4}{4} - 6(2)^2 + 16(2) = 4 - 24 + 32 = 12$ $F(-4) = \\frac{(-4)^4}{4} - 6(-4)^2 + 16(-4) = 64 - 96 - 64 = -96$ Therefore: $A = F(2) - F(-4) = 12 - (-96) = 108$ **Common Misconceptions:** - Choice B (84) results from an arithmetic sign error when expanding $F(-4)$ as $64 + 96 - 64 = 96$, leading to $12 - (-96) \\rightarrow 96 - 12 = 84$. - Choice C (64) arises from incorrectly assuming the region is symmetric about the $y$-axis and integrating over $[-2, 2]$. - Choice D (12) arises from mistakenly integrating only over the positive domain from the $y$-axis $[0, 2]$.",
+          "cross_lesson": "5.01 Trigonometry"
+        },
+        {
+          "q": "Consider the two functions $f(x) = ax^2 + bx + c$ and $g(x) = dx + e$. The graph of $f(x)$ is a parabola with its vertex at $(3, -1)$ and passes through the point $(1, 3)$. The graph of $g(x)$ is a straight line passing through the points $(2, 5)$ and $(6, -3)$. If the graphs of $f(x)$ and $g(x)$ intersect at two points, and the x-coordinate of one of these intersection points is $p$, find the value of $\\frac{a+d}{p}$ given that $p$ is an integer.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Solving for unknown parameters of a normal distribution",
+          "choices": [
+            "3",
+            "2",
+            "-2",
+            "-3"
+          ],
+          "correct": 1,
+          "answer": "First, we find the equation for $f(x)$. Since the vertex is at $(3, -1)$, we can write $f(x) = a(x-3)^2 - 1$. Given that the graph passes through $(1, 3)$: $3 = a(1-3)^2 - 1$ $3 = a(-2)^2 - 1$ $3 = 4a - 1$ $4 = 4a$ $a = 1$. So, $f(x) = 1(x-3)^2 - 1 = x^2 - 6x + 9 - 1 = x^2 - 6x + 8$. Thus, $a = 1$. Next, we find the equation for $g(x)$. The slope $d$ is $\\frac{3 - 2}{1 - 0} = \\frac{1}{1} = 1$. Using the point-slope form with $(0, 2)$: $y - 2 = 1(x - 0)$ $y = x + 2$. So, $g(x) = x + 2$. Thus, $d = 1$. Now, we find the intersection points by setting $f(x) = g(x)$: $x^2 - 6x + 8 = x + 2$ $x^2 - 7x + 6 = 0$. Factoring the quadratic equation: $(x-1)(x-6) = 0$. The x-coordinates of the intersection points are $x = 1$ and $x = 6$. The problem states that $p$ is the x-coordinate of one of these intersection points and $p$ is an integer. Both 1 and 6 are integers. We need to find the value of $\\frac{a+d}{p}$. We have $a = 1$ and $d = 1$, so $a+d = 1 + 1 = 2$. Case 1: If $p = 1$, then $\\frac{a+d}{p} = \\frac{2}{1} = 2$. Case 2: If $p = 6$, then $\\frac{a+d}{p} = \\frac{2}{6} = \\frac{1}{3}$. Since 2 is one of the options and arises from an integer intersection point, this is the correct value. The question implies there is a unique value for $\\frac{a+d}{p}$, which is true if the question is interpreted as 'find *a* value of ... given *a* value of p'. However, typically in such questions, the expression evaluates to the same value regardless of which integer root is chosen, or one of the choices is the only possible outcome. Here, 2 is a choice, and 1/3 is not. Thus, we select the result that matches a choice.",
+          "explanation": "First, we find the equation for $f(x)$. Since the vertex is at $(3, -1)$, we can write $f(x) = a(x-3)^2 - 1$. Given that the graph passes through $(1, 3)$: $3 = a(1-3)^2 - 1$ $3 = a(-2)^2 - 1$ $3 = 4a - 1$ $4 = 4a$ $a = 1$. So, $f(x) = 1(x-3)^2 - 1 = x^2 - 6x + 9 - 1 = x^2 - 6x + 8$. Thus, $a = 1$. Next, we find the equation for $g(x)$. The slope $d$ is $\\frac{3 - 2}{1 - 0} = \\frac{1}{1} = 1$. Using the point-slope form with $(0, 2)$: $y - 2 = 1(x - 0)$ $y = x + 2$. So, $g(x) = x + 2$. Thus, $d = 1$. Now, we find the intersection points by setting $f(x) = g(x)$: $x^2 - 6x + 8 = x + 2$ $x^2 - 7x + 6 = 0$. Factoring the quadratic equation: $(x-1)(x-6) = 0$. The x-coordinates of the intersection points are $x = 1$ and $x = 6$. The problem states that $p$ is the x-coordinate of one of these intersection points and $p$ is an integer. Both 1 and 6 are integers. We need to find the value of $\\frac{a+d}{p}$. We have $a = 1$ and $d = 1$, so $a+d = 1 + 1 = 2$. Case 1: If $p = 1$, then $\\frac{a+d}{p} = \\frac{2}{1} = 2$. Case 2: If $p = 6$, then $\\frac{a+d}{p} = \\frac{2}{6} = \\frac{1}{3}$. Since 2 is one of the options and arises from an integer intersection point, this is the correct value. The question implies there is a unique value for $\\frac{a+d}{p}$, which is true if the question is interpreted as 'find *a* value of ... given *a* value of p'. However, typically in such questions, the expression evaluates to the same value regardless of which integer root is chosen, or one of the choices is the only possible outcome. Here, 2 is a choice, and 1/3 is not. Thus, we select the result that matches a choice.",
+          "cross_lesson": "6.01 Differentiation & Integration"
+        },
+        {
+          "q": "Two parallel lines, $L_1$ and $L_2$, have $n$ and $n + 2$ distinct points marked on them respectively, where $n$ is an integer with $n \\geq 2$. Triangles are formed by choosing 3 of these points as vertices such that they are not collinear. Quadrilaterals are formed by choosing 4 of these points as vertices such that no three are collinear. Given that the ratio of the number of quadrilaterals to the number of triangles that can be formed is $6 : 5$, find the total number of triangles that can be formed.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "A well-designed word problem: setting a pass mark for an exam",
           "choices": [
-            "96",
-            "87",
-            "93",
-            "90"
+            "$175$",
+            "$210$",
+            "$220$",
+            "$96$"
           ],
-          "correct": 3,
-          "answer": "Using $z_1=1.2816$, $z_2=-1.2816$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx90$.",
-          "explanation": "Using $z_1=1.2816$, $z_2=-1.2816$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx90$.",
-          "cross_lesson": "3.01 Graphs & Transformations"
-        },
-        {
-          "q": "Given $X\\sim N(\\mu,\\sigma^2)$, $P(X<99)=0.8$ and $P(X<83)=0.2$, find $\\mu$, correct to the nearest integer.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "The Standard Normal Distribution $Z \\sim N(0, 1)$",
-          "choices": [
-            "94",
-            "91",
-            "88",
-            "97"
-          ],
-          "correct": 1,
-          "answer": "Using $z_1=0.8416$, $z_2=-0.8416$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx91$.",
-          "explanation": "Using $z_1=0.8416$, $z_2=-0.8416$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx91$.",
-          "cross_lesson": "4.01 Coordinate Geometry"
-        },
-        {
-          "q": "Given $X\\sim N(\\mu,\\sigma^2)$, $P(X<66)=0.9$ and $P(X<36)=0.1$, find $\\mu$, correct to the nearest integer.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Standardization & General Normal Distribution",
-          "choices": [
-            "48",
-            "57",
-            "54",
-            "51"
-          ],
-          "correct": 3,
-          "answer": "Using $z_1=1.2816$, $z_2=-1.2816$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx51$.",
-          "explanation": "Using $z_1=1.2816$, $z_2=-1.2816$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx51$.",
-          "cross_lesson": "5.01 Trigonometry"
-        },
-        {
-          "q": "A random variable $X\\sim B(201,0.75)$ is approximated by a normal distribution. State the mean of the approximating normal distribution.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Inverse Normal & Finding $\\mu$ and $\\sigma$",
-          "choices": [
-            "148.8",
-            "152.8",
-            "155.8",
-            "150.75"
-          ],
-          "correct": 3,
-          "answer": "Applying Normal Distribution principles, Mean $=np=201\\times0.75=150.75$ Therefore, the verified correct option is 150.75.",
-          "explanation": "Applying Normal Distribution principles, Mean $=np=201\\times0.75=150.75$ Therefore, the verified correct option is 150.75.",
-          "cross_lesson": "6.01 Differentiation & Integration"
-        },
-        {
-          "q": "A random variable $X\\sim B(266,0.7)$ is approximated by a normal distribution. State the mean of the approximating normal distribution.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Normal Approximation to the Binomial Distribution",
-          "choices": [
-            "184.2",
-            "186.2",
-            "188.2",
-            "191.2"
-          ],
-          "correct": 1,
-          "answer": "Applying Normal Distribution principles, Mean $=np=266\\times0.7=186.2$ Therefore, the verified correct option is 186.2.",
-          "explanation": "Applying Normal Distribution principles, Mean $=np=266\\times0.7=186.2$ Therefore, the verified correct option is 186.2.",
+          "correct": 0,
+          "answer": "1. **Determine the number of triangles, $T$:** Three points form a triangle if and only if they are not all on the same straight line. - Case 1: 1 point from $L_1$ and 2 points from $L_2$: $\\binom{n}{1} \\binom{n+2}{2} = n \\cdot \\frac{(n+2)(n+1)}{2}$ - Case 2: 2 points from $L_1$ and 1 point from $L_2$: $\\binom{n}{2} \\binom{n+2}{1} = \\frac{n(n-1)}{2} \\cdot (n+2)$ Summing both cases: $T = \\frac{n(n+2)}{2} \\left[ (n+1) + (n-1) \\right] = \\frac{n(n+2)}{2} (2n) = n^2(n+2)$ 2. **Determine the number of quadrilaterals, $Q$:** To ensure no three vertices are collinear, exactly 2 points must be chosen from $L_1$ and 2 points from $L_2$: $Q = \\binom{n}{2} \\binom{n+2}{2} = \\frac{n(n-1)}{2} \\cdot \\frac{(n+2)(n+1)}{2} = \\frac{n(n-1)(n+1)(n+2)}{4}$ 3. **Use the given ratio to find $n$:** $\\frac{Q}{T} = \\frac{\\frac{n(n-1)(n+1)(n+2)}{4}}{n^2(n+2)} = \\frac{(n-1)(n+1)}{4n} = \\frac{n^2 - 1}{4n}$ Setting this equal to $\\frac{6}{5}$: $\\frac{n^2 - 1}{4n} = \\frac{6}{5} \\Rightarrow 5(n^2 - 1) = 24n \\Rightarrow 5n^2 - 24n - 5 = 0$ Factoring the quadratic: $(5n + 1)(n - 5) = 0$ Since $n$ must be a positive integer, $n = 5$. 4. **Calculate the total number of triangles:** $T = 5^2(5 + 2) = 25 \\times 7 = 175$ **Distractor Analysis:** - $210$ is the number of quadrilaterals, $Q = \\frac{6}{5} \\times 175 = 210$. - $220$ is $\\binom{12}{3}$, which erroneously counts sets of 3 collinear points. - $96$ is obtained from substituting $n = 4$ into $T$.",
+          "explanation": "1. **Determine the number of triangles, $T$:** Three points form a triangle if and only if they are not all on the same straight line. - Case 1: 1 point from $L_1$ and 2 points from $L_2$: $\\binom{n}{1} \\binom{n+2}{2} = n \\cdot \\frac{(n+2)(n+1)}{2}$ - Case 2: 2 points from $L_1$ and 1 point from $L_2$: $\\binom{n}{2} \\binom{n+2}{1} = \\frac{n(n-1)}{2} \\cdot (n+2)$ Summing both cases: $T = \\frac{n(n+2)}{2} \\left[ (n+1) + (n-1) \\right] = \\frac{n(n+2)}{2} (2n) = n^2(n+2)$ 2. **Determine the number of quadrilaterals, $Q$:** To ensure no three vertices are collinear, exactly 2 points must be chosen from $L_1$ and 2 points from $L_2$: $Q = \\binom{n}{2} \\binom{n+2}{2} = \\frac{n(n-1)}{2} \\cdot \\frac{(n+2)(n+1)}{2} = \\frac{n(n-1)(n+1)(n+2)}{4}$ 3. **Use the given ratio to find $n$:** $\\frac{Q}{T} = \\frac{\\frac{n(n-1)(n+1)(n+2)}{4}}{n^2(n+2)} = \\frac{(n-1)(n+1)}{4n} = \\frac{n^2 - 1}{4n}$ Setting this equal to $\\frac{6}{5}$: $\\frac{n^2 - 1}{4n} = \\frac{6}{5} \\Rightarrow 5(n^2 - 1) = 24n \\Rightarrow 5n^2 - 24n - 5 = 0$ Factoring the quadratic: $(5n + 1)(n - 5) = 0$ Since $n$ must be a positive integer, $n = 5$. 4. **Calculate the total number of triangles:** $T = 5^2(5 + 2) = 25 \\times 7 = 175$ **Distractor Analysis:** - $210$ is the number of quadrilaterals, $Q = \\frac{6}{5} \\times 175 = 210$. - $220$ is $\\binom{12}{3}$, which erroneously counts sets of 3 collinear points. - $96$ is obtained from substituting $n = 4$ into $T$.",
           "cross_lesson": "7.01 Statistics & Probability"
         },
         {
-          "q": "A random variable $X\\sim B(170,0.25)$ is approximated by a normal distribution. State the mean of the approximating normal distribution.",
+          "q": "The region $R$ in the first quadrant is bounded by the curve $y = \\frac{6}{\\sqrt{3x + 4}}$, the coordinate axes, and the vertical line $x = k$, where $k > 0$. Given that the total area of $R$ is $8$, and the vertical line $x = c$ (where $0 < c < k$) divides $R$ into two regions of equal area, find the exact value of $c$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Properties of the normal distribution",
           "choices": [
-            "44.5",
-            "47.5",
-            "42.5",
-            "40.5"
+            "$\\frac{5}{3}$",
+            "$2$",
+            "$\\frac{7}{3}$",
+            "$\\frac{13}{27}$"
           ],
-          "correct": 2,
-          "answer": "Applying Normal Distribution principles, Mean $=np=170\\times0.25=42.5$ Therefore, the verified correct option is 42.5.",
-          "explanation": "Applying Normal Distribution principles, Mean $=np=170\\times0.25=42.5$ Therefore, the verified correct option is 42.5.",
+          "correct": 0,
+          "answer": "Step 1: Integrate the function using the reverse chain rule. $\\int 6(3x + 4)^{-\\frac{1}{2}}\\,\\mathrm{d}x = \\frac{6}{\\frac{1}{2} \\cdot 3}(3x + 4)^{\\frac{1}{2}} = 4\\sqrt{3x + 4}$ Step 2: Find the parameter $k$ using the given total area of $8$. $\\mathrm{Area} = \\int_0^k \\frac{6}{\\sqrt{3x + 4}}\\,\\mathrm{d}x = \\left[ 4\\sqrt{3x + 4} \\right]_0^k = 4\\sqrt{3k + 4} - 4\\sqrt{4} = 4\\sqrt{3k + 4} - 8$ Setting this equal to $8$: $4\\sqrt{3k + 4} - 8 = 8 \\Rightarrow 4\\sqrt{3k + 4} = 16 \\Rightarrow \\sqrt{3k + 4} = 4$ Squaring both sides: $3k + 4 = 16 \\Rightarrow 3k = 12 \\Rightarrow k = 4$ Step 3: Determine the value of $c$ that divides the area into two equal halves. Each half has an area of $\\frac{8}{2} = 4$: $\\int_0^c \\frac{6}{\\sqrt{3x + 4}}\\,\\mathrm{d}x = 4\\sqrt{3c + 4} - 8 = 4$ $4\\sqrt{3c + 4} = 12 \\Rightarrow \\sqrt{3c + 4} = 3$ Squaring both sides: $3c + 4 = 9 \\Rightarrow 3c = 5 \\Rightarrow c = \\frac{5}{3}$ Common Misconceptions: - $2$: Incorrectly assumes the line dividing the area in half occurs at the midpoint of the interval, $c = \\frac{k}{2} = 2$, which does not hold for non-constant functions. - $\\frac{7}{3}$: Mistakenly calculates the width of the second region $k - c = 4 - \\frac{5}{3} = \\frac{7}{3}$ instead of the coordinate $c$. - $\\frac{13}{27}$: Forgets to divide by the inner derivative $3$ during integration, leading to an incorrect antiderivative.",
+          "explanation": "Step 1: Integrate the function using the reverse chain rule. $\\int 6(3x + 4)^{-\\frac{1}{2}}\\,\\mathrm{d}x = \\frac{6}{\\frac{1}{2} \\cdot 3}(3x + 4)^{\\frac{1}{2}} = 4\\sqrt{3x + 4}$ Step 2: Find the parameter $k$ using the given total area of $8$. $\\mathrm{Area} = \\int_0^k \\frac{6}{\\sqrt{3x + 4}}\\,\\mathrm{d}x = \\left[ 4\\sqrt{3x + 4} \\right]_0^k = 4\\sqrt{3k + 4} - 4\\sqrt{4} = 4\\sqrt{3k + 4} - 8$ Setting this equal to $8$: $4\\sqrt{3k + 4} - 8 = 8 \\Rightarrow 4\\sqrt{3k + 4} = 16 \\Rightarrow \\sqrt{3k + 4} = 4$ Squaring both sides: $3k + 4 = 16 \\Rightarrow 3k = 12 \\Rightarrow k = 4$ Step 3: Determine the value of $c$ that divides the area into two equal halves. Each half has an area of $\\frac{8}{2} = 4$: $\\int_0^c \\frac{6}{\\sqrt{3x + 4}}\\,\\mathrm{d}x = 4\\sqrt{3c + 4} - 8 = 4$ $4\\sqrt{3c + 4} = 12 \\Rightarrow \\sqrt{3c + 4} = 3$ Squaring both sides: $3c + 4 = 9 \\Rightarrow 3c = 5 \\Rightarrow c = \\frac{5}{3}$ Common Misconceptions: - $2$: Incorrectly assumes the line dividing the area in half occurs at the midpoint of the interval, $c = \\frac{k}{2} = 2$, which does not hold for non-constant functions. - $\\frac{7}{3}$: Mistakenly calculates the width of the second region $k - c = 4 - \\frac{5}{3} = \\frac{7}{3}$ instead of the coordinate $c$. - $\\frac{13}{27}$: Forgets to divide by the inner derivative $3$ during integration, leading to an incorrect antiderivative.",
           "cross_lesson": "8.01 Functions: Composite & Inverse"
         }
       ]

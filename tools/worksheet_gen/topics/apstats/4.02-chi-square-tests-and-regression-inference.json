@@ -26,15 +26,15 @@
               "6"
             ],
             "values": [
-              12,
-              8,
-              11,
-              9,
-              7,
-              13
+              12.0,
+              8.0,
+              11.0,
+              9.0,
+              7.0,
+              13.0
             ],
             "ylabel": "Observed count",
-            "width": 220
+            "width": 230
           }
         },
         {
@@ -47,21 +47,21 @@
           "figure": {
             "type": "bars",
             "categories": [
-              "Q1",
-              "Q2",
-              "Q3",
-              "Q4",
-              "Q5"
+              "C1",
+              "C2",
+              "C3",
+              "C4",
+              "C5"
             ],
             "values": [
-              15,
-              21,
-              26,
-              19,
-              24
+              22,
+              30,
+              37,
+              29,
+              27
             ],
             "ylabel": "Frequency",
-            "highlight_index": 2,
+            "highlight_index": 1,
             "width": 230
           }
         },
@@ -99,21 +99,21 @@
           "figure": {
             "type": "bars",
             "categories": [
-              "Q1",
-              "Q2",
-              "Q3",
-              "Q4",
-              "Q5"
+              "C1",
+              "C2",
+              "C3",
+              "C4",
+              "C5"
             ],
             "values": [
-              15,
-              21,
-              26,
-              19,
-              24
+              20,
+              28,
+              31,
+              25,
+              32
             ],
             "ylabel": "Frequency",
-            "highlight_index": 2,
+            "highlight_index": 0,
             "width": 230
           }
         },
@@ -156,18 +156,18 @@
           "figure": {
             "type": "bars",
             "categories": [
-              "Q1",
-              "Q2",
-              "Q3",
-              "Q4",
-              "Q5"
+              "C1",
+              "C2",
+              "C3",
+              "C4",
+              "C5"
             ],
             "values": [
+              12,
               15,
-              21,
-              26,
-              19,
-              24
+              23,
+              15,
+              19
             ],
             "ylabel": "Frequency",
             "highlight_index": 2,
@@ -214,13 +214,13 @@
               "D"
             ],
             "values": [
-              9,
-              3,
-              3,
-              1
+              9.0,
+              3.0,
+              3.0,
+              1.0
             ],
             "ylabel": "Ratio units",
-            "width": 190
+            "width": 230
           }
         }
       ]
@@ -247,8 +247,8 @@
           "explanation": "Since the $p$-value ($0.0033$) is less than $\\alpha=0.01$, we reject $H_0$. This means there is convincing statistical evidence of an association between preferred study location and class year — in context, this suggests underclassmen and upperclassmen tend to have systematically different study location preferences, which could inform decisions like where the university invests in study space improvements for each group.",
           "figure": {
             "type": "slope_field",
-            "expr": "0.35*x - 0.25*y + 0.1*4",
-            "sol_fn": "1.4*x - 5.2 + 7*exp(-0.25*x)",
+            "expr": "0.2*x - 0.35*y + 0.1*(-2)",
+            "sol_fn": "0.57*x - 1.63 + 4*exp(-0.35*x)",
             "xmin": -4,
             "xmax": 4,
             "ymin": -4,
@@ -266,31 +266,31 @@
           "explanation": "Margin of error: $2.086(0.85)\\approx1.773$. Confidence interval: $3.2\\pm1.773$, or approximately $(1.427,4.973)$. Interpretation: we are 95% confident that, for every additional thousand dollars spent on advertising, monthly sales increase by somewhere between about 1.427 and 4.973 thousand dollars, on average. Since this entire interval is positive (it does not contain $0$), this suggests a statistically significant positive association between advertising spending and sales."
         },
         {
+          "q": "Level 2 · MediumA significance test produces a test statistic of $z = 2.15$ for a two-sided test $H_0: p = 0.40$ vs $H_a: p eq 0.40$. What is the p-value, and what decision is made at $\\alpha = 0.05$?",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Chi-square test for independence",
+          "cross_lesson": "3.03 The Normal Distribution",
+          "answer": "For a standard normal distribution, $P(Z > 2.15) = 1 - 0.9842 = 0.0158$. Since the alternative hypothesis is two-sided ($eq$), multiply by 2: $\\mathrm{p-value} = 2 \\times 0.0158 = \\mathbf{0.0316}.$ Because $x$. There is convincing statistical evidence that the true population proportion differs from 0.40.",
+          "explanation": "For a standard normal distribution, $P(Z > 2.15) = 1 - 0.9842 = 0.0158$. Since the alternative hypothesis is two-sided ($eq$), multiply by 2: $\\mathrm{p-value} = 2 \\times 0.0158 = \\mathbf{0.0316}.$ Because $x$. There is convincing statistical evidence that the true population proportion differs from 0.40."
+        },
+        {
           "q": "Eight patients with chronic insomnia try a new relaxation therapy. Their sleep duration (hours/night) is measured before and after 4 weeks of therapy: Patient differences $d = \\mathrm{After} - \\mathrm{Before}$ yield $\\bar{x}_d = 1.25\\mathrm{\\ hours}$ and $s_d = 0.80\\mathrm{\\ hours}$. Assuming normality of differences, test whether the therapy significantly increased sleep at $\\alpha = 0.01$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Putting it together: a full inference scenario",
-          "cross_lesson": "3.03 The Normal Distribution",
+          "target": "Interpreting chi-square results",
+          "cross_lesson": "3.04 Sampling Distributions & Central Limit Theorem",
           "answer": "1. Method Choice: Paired data measured on the same 8 patients $\\Rightarrow$ Paired $t$-test on differences. 2. Hypotheses: $H_0: \\mu_d = 0 \\quad \\mathrm{vs.} \\quad H_a: \\mu_d > 0 \\quad (\\alpha = 0.01),$ where $\\mu_d$ is the true mean difference in sleep duration (After minus Before). 3. Test Statistic & p-value: $t = \\frac{\\bar{x}_d - 0}{s_d / \\sqrt{n}} = \\frac{1.25 - 0}{0.80 / \\sqrt{8}} = \\frac{1.25}{0.2828} \\approx 4.42 \\quad (df = 8 - 1 = 7).$ With $df = 7$, $P(T > 4.42) \\approx 0.0015$. 4. Conclusion: Because $\\mathrm{p-value} = 0.0015 < \\alpha = 0.01$, we reject $H_0$. There is convincing statistical evidence that the relaxation therapy significantly increased sleep duration in patients.",
           "explanation": "1. Method Choice: Paired data measured on the same 8 patients $\\Rightarrow$ Paired $t$-test on differences. 2. Hypotheses: $H_0: \\mu_d = 0 \\quad \\mathrm{vs.} \\quad H_a: \\mu_d > 0 \\quad (\\alpha = 0.01),$ where $\\mu_d$ is the true mean difference in sleep duration (After minus Before). 3. Test Statistic & p-value: $t = \\frac{\\bar{x}_d - 0}{s_d / \\sqrt{n}} = \\frac{1.25 - 0}{0.80 / \\sqrt{8}} = \\frac{1.25}{0.2828} \\approx 4.42 \\quad (df = 8 - 1 = 7).$ With $df = 7$, $P(T > 4.42) \\approx 0.0015$. 4. Conclusion: Because $\\mathrm{p-value} = 0.0015 < \\alpha = 0.01$, we reject $H_0$. There is convincing statistical evidence that the relaxation therapy significantly increased sleep duration in patients."
         },
         {
-          "q": "In the tomato experiment in Problem 7, the agronomist has two distinct tomato varieties: Roma and Beefsteak. (a) Explain why a randomized block design is superior to a completely randomized design. (b) Outline the blocking protocol.",
+          "q": "[Unit 4 · Statistical Inference: Proportions, Means & Slopes · Practice 4] If the governing relation for this system is $g(t) = 6t + 6$, evaluate $g(10)$ and find the inverse input $t$ when $g(t) = 72$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Chi-square test for homogeneity",
-          "cross_lesson": "3.04 Sampling Distributions & Central Limit Theorem",
-          "answer": "(a) Superiority of Blocking: Tomato variety is known to have a massive effect on fruit yield. A completely randomized design risks assigning disproportionately more Beefsteak plants to one fertilizer, confounding variety with fertilizer efficacy. Blocking by variety isolates and eliminates the variability between varieties from the experimental error, increasing statistical power. (b) Blocking Protocol: Separate the plants into two blocks: Block 1 (Roma) and Block 2 (Beefsteak). Within Block 1, randomly assign half the Roma plants to organic fertilizer and half to standard fertilizer. Within Block 2, randomly assign half the Beefsteak plants to organic fertilizer and half to standard fertilizer independently. Compare yields between treatments separately within each block.",
-          "explanation": "(a) Superiority of Blocking: Tomato variety is known to have a massive effect on fruit yield. A completely randomized design risks assigning disproportionately more Beefsteak plants to one fertilizer, confounding variety with fertilizer efficacy. Blocking by variety isolates and eliminates the variability between varieties from the experimental error, increasing statistical power. (b) Blocking Protocol: Separate the plants into two blocks: Block 1 (Roma) and Block 2 (Beefsteak). Within Block 1, randomly assign half the Roma plants to organic fertilizer and half to standard fertilizer. Within Block 2, randomly assign half the Beefsteak plants to organic fertilizer and half to standard fertilizer independently. Compare yields between treatments separately within each block."
-        },
-        {
-          "q": "A researcher is investigating the relationship between study habits and exam performance. They categorize students into two groups: 'Regular Study' and 'Cramming'. They also categorize exam performance into 'Pass' and 'Fail'. The data collected is presented in a two-way table. If the table has 2 rows representing study habits and 3 columns representing exam performance categories, what is the total number of cells in this two-way table?",
-          "difficulty": "Challenging",
-          "question_type": "FRQ",
-          "target": "Computing expected counts for a chi-square test",
+          "target": "Inference for the slope of a regression line",
           "cross_lesson": "4.01 Confidence Intervals & Hypothesis Testing",
-          "answer": "A two-way table displays the frequencies of two categorical variables. The number of rows represents the number of categories for the first variable, and the number of columns represents the number of categories for the second variable. To find the total number of cells in the table, we multiply the number of rows by the number of columns. Number of rows = 2 Number of columns = 3 Total number of cells = Number of rows $\\times$ Number of columns = $2 \\times 3 = 6$.",
-          "explanation": "A two-way table displays the frequencies of two categorical variables. The number of rows represents the number of categories for the first variable, and the number of columns represents the number of categories for the second variable. To find the total number of cells in the table, we multiply the number of rows by the number of columns. Number of rows = 2 Number of columns = 3 Total number of cells = Number of rows $\\times$ Number of columns = $2 \\times 3 = 6$."
+          "answer": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$.",
+          "explanation": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$."
         }
       ]
     },
@@ -313,120 +313,10 @@
           "explanation": "$\\chi^2=(4+36+4+36)/15=80/15\\approx5.33$."
         },
         {
-          "q": "A survey expects 4 categories to appear equally often, with expected count $E=20$ per category. The observed counts are $24, 14, 18, 24$. Compute the chi-square test statistic using $\\chi^2=\\sum(O-E)^2/E$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Chi-square test for independence",
-          "choices": [
-            "$4.60$",
-            "$3.60$",
-            "$2.60$",
-            "$3.43$"
-          ],
-          "correct": 1,
-          "answer": "$\\chi^2=(16+36+4+16)/20=72/20\\approx3.60$.",
-          "explanation": "$\\chi^2=(16+36+4+16)/20=72/20\\approx3.60$."
-        },
-        {
-          "q": "A survey expects 4 categories to appear equally often, with expected count $E=11$ per category. The observed counts are $6, 16, 9, 13$. Compute the chi-square test statistic using $\\chi^2=\\sum(O-E)^2/E$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Interpreting chi-square results",
-          "choices": [
-            "$4.83$",
-            "$6.27$",
-            "$4.27$",
-            "$5.27$"
-          ],
-          "correct": 3,
-          "answer": "$\\chi^2=(25+25+4+4)/11=58/11\\approx5.27$.",
-          "explanation": "$\\chi^2=(25+25+4+4)/11=58/11\\approx5.27$.",
-          "figure": {
-            "type": "bars",
-            "categories": [
-              "Q1",
-              "Q2",
-              "Q3",
-              "Q4",
-              "Q5"
-            ],
-            "values": [
-              18,
-              24,
-              29,
-              22,
-              27
-            ],
-            "ylabel": "Frequency",
-            "highlight_index": 2,
-            "width": 230
-          }
-        },
-        {
-          "q": "A survey expects 4 categories to appear equally often, with expected count $E=15$ per category. The observed counts are $10, 18, 12, 20$. Compute the chi-square test statistic using $\\chi^2=\\sum(O-E)^2/E$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Inference for the slope of a regression line",
-          "choices": [
-            "$5.53$",
-            "$4.53$",
-            "$4.25$",
-            "$3.53$"
-          ],
-          "correct": 1,
-          "answer": "$\\chi^2=(25+9+9+25)/15=68/15\\approx4.53$.",
-          "explanation": "$\\chi^2=(25+9+9+25)/15=68/15\\approx4.53$."
-        },
-        {
-          "q": "A survey expects 4 categories to appear equally often, with expected count $E=24$ per category. The observed counts are $27, 26, 25, 18$. Compute the chi-square test statistic using $\\chi^2=\\sum(O-E)^2/E$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Conditions for regression inference",
-          "choices": [
-            "$3.08$",
-            "$2.00$",
-            "$2.08$",
-            "$1.08$"
-          ],
-          "correct": 2,
-          "answer": "$\\chi^2=(9+4+1+36)/24=50/24\\approx2.08$.",
-          "explanation": "$\\chi^2=(9+4+1+36)/24=50/24\\approx2.08$."
-        },
-        {
-          "q": "A survey expects 4 categories to appear equally often, with expected count $E=15$ per category. The observed counts are $21, 9, 16, 14$. Compute the chi-square test statistic using $\\chi^2=\\sum(O-E)^2/E$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Putting it together: a full inference scenario",
-          "choices": [
-            "$3.93$",
-            "$4.93$",
-            "$5.93$",
-            "$4.62$"
-          ],
-          "correct": 1,
-          "answer": "$\\chi^2=(36+36+1+1)/15=74/15\\approx4.93$.",
-          "explanation": "$\\chi^2=(36+36+1+1)/15=74/15\\approx4.93$."
-        },
-        {
-          "q": "A survey expects 4 categories to appear equally often, with expected count $E=14$ per category. The observed counts are $15, 18, 11, 12$. Compute the chi-square test statistic using $\\chi^2=\\sum(O-E)^2/E$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Chi-square test for homogeneity",
-          "choices": [
-            "$1.14$",
-            "$3.14$",
-            "$2.00$",
-            "$2.14$"
-          ],
-          "correct": 3,
-          "answer": "$\\chi^2=(1+16+9+4)/14=30/14\\approx2.14$.",
-          "explanation": "$\\chi^2=(1+16+9+4)/14=30/14\\approx2.14$."
-        },
-        {
           "q": "In a two-way table, a row total is $87$, a column total is $46$, and the grand total is $200$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Computing expected counts for a chi-square test",
+          "target": "Chi-square test for independence",
           "choices": [
             "$23.01$",
             "$112.99$",
@@ -435,22 +325,147 @@
           ],
           "correct": 2,
           "answer": "$E=(87)(46)/200=4002/200\\approx20.01$.",
-          "explanation": "$E=(87)(46)/200=4002/200\\approx20.01$.",
+          "explanation": "$E=(87)(46)/200=4002/200\\approx20.01$."
+        },
+        {
+          "q": "A regression gives a sample slope $b_1=-3.5$ with standard error $SE_{b_1}=1.1$, based on data with $df=10$. Construct a 95% confidence interval for the true population slope $\\beta_1$, using a critical value $t^*\\approx2.228$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Interpreting chi-square results",
+          "choices": [
+            "$\\left(-5.45,-1.05\\right)$",
+            "$\\left(-5.95,-1.05\\right)$",
+            "$\\left(-6.95,-0.05\\right)$",
+            "$\\left(-5.95,-1.55\\right)$"
+          ],
+          "correct": 1,
+          "answer": "Margin of error: $2.228(1.1)\\approx2.45$. Interval: $-3.5\\pm2.45$, or approximately $\\left(-5.95,-1.05\\right)$.",
+          "explanation": "Margin of error: $2.228(1.1)\\approx2.45$. Interval: $-3.5\\pm2.45$, or approximately $\\left(-5.95,-1.05\\right)$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4.2*exp(-0.5*x**2)"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -0.3,
+            "ymax": 4.5,
+            "shade": {
+              "fn1": "4.2*exp(-0.5*x**2)",
+              "fn2": "0",
+              "x0": -2.58,
+              "x1": 2.58
+            },
+            "point_labels": [
+              {
+                "x": 2.58,
+                "y": 0.15,
+                "label": "$z=2.58$"
+              }
+            ],
+            "width": 230,
+            "xrange": [
+              -5.75,
+              6.0
+            ],
+            "points": [
+              {
+                "x": 1.0,
+                "y": 2.0,
+                "label": "$P_{23}$"
+              }
+            ]
+          }
+        },
+        {
+          "q": "A regression gives a sample slope $b_1=3.8$ with standard error $SE_{b_1}=0.9$. Compute the test statistic for testing $H_0:\\beta_1=0$, using $t=b_1/SE_{b_1}$, to two decimal places.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Inference for the slope of a regression line",
+          "choices": [
+            "$3.22$",
+            "$4.22$",
+            "$5.22$",
+            "$-4.22$"
+          ],
+          "correct": 1,
+          "answer": "$t=b_1/SE_{b_1}=3.8/0.9\\approx4.22$.",
+          "explanation": "$t=b_1/SE_{b_1}=3.8/0.9\\approx4.22$."
+        },
+        {
+          "q": "A chi-square test produces a test statistic $\\chi^2=15.9$ with $df=4$, and a critical value of $\\chi^2_{0.05}=9.49$ at $\\alpha=0.05$. State the conclusion, comparing the test statistic directly to the critical value.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Conditions for regression inference",
+          "choices": [
+            "The test cannot be completed without a $p$-value",
+            "Reject $H_0$; there is convincing evidence of an association",
+            "Fail to reject $H_0$; there is not convincing evidence of an association",
+            "Accept $H_0$ as definitely true"
+          ],
+          "correct": 1,
+          "answer": "Since the test statistic ($15.9$) is greater than the critical value ($9.49$), we reject $H_0$. Reject $H_0$; there is convincing evidence of an association.",
+          "explanation": "Since the test statistic ($15.9$) is greater than the critical value ($9.49$), we reject $H_0$. Reject $H_0$; there is convincing evidence of an association."
+        },
+        {
+          "q": "A chi-square goodness-of-fit test has 4 categories with observed counts 21, 25, 50, 10 (equal expected proportions). Find the chi-square test statistic.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Putting it together: a full inference scenario",
+          "choices": [
+            "32.34",
+            "35.34",
+            "30.34",
+            "36.34"
+          ],
+          "correct": 0,
+          "answer": "$\\chi^2 = \\sum\\frac{(O-E)^2}{E} = \\frac{(21-26.5)^2}{26.5} + \\frac{(25-26.5)^2}{26.5} + \\frac{(50-26.5)^2}{26.5} + \\frac{(10-26.5)^2}{26.5} = 32.34$.",
+          "explanation": "$\\chi^2 = \\sum\\frac{(O-E)^2}{E} = \\frac{(21-26.5)^2}{26.5} + \\frac{(25-26.5)^2}{26.5} + \\frac{(50-26.5)^2}{26.5} + \\frac{(10-26.5)^2}{26.5} = 32.34$."
+        },
+        {
+          "q": "A study investigates the effectiveness of a new teaching method by comparing the test scores of students who used the new method versus those who used the traditional method. The results are summarized in a two-way table. If the table has $4$ rows and $3$ columns, what is the degrees of freedom (df) for a chi-square test of homogeneity?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Chi-square test for homogeneity",
+          "choices": [
+            "12",
+            "6",
+            "5",
+            "2"
+          ],
+          "correct": 1,
+          "answer": "For a chi-square test of homogeneity or independence with a two-way table, the degrees of freedom (df) are calculated using the formula: $\\mathrm{df} = (r-1)(c-1)$, where $r$ is the number of rows and $c$ is the number of columns. In this case, the number of rows is $r = 4$ and the number of columns is $c = 3$. Substituting these values into the formula: $\\mathrm{df} = (4-1)(3-1) = (3)(2) = 6$. Therefore, the degrees of freedom are 6.",
+          "explanation": "For a chi-square test of homogeneity or independence with a two-way table, the degrees of freedom (df) are calculated using the formula: $\\mathrm{df} = (r-1)(c-1)$, where $r$ is the number of rows and $c$ is the number of columns. In this case, the number of rows is $r = 4$ and the number of columns is $c = 3$. Substituting these values into the formula: $\\mathrm{df} = (4-1)(3-1) = (3)(2) = 6$. Therefore, the degrees of freedom are 6."
+        },
+        {
+          "q": "A chi-square goodness-of-fit test has 4 categories. Find the degrees of freedom.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Computing expected counts for a chi-square test",
+          "choices": [
+            "4",
+            "2",
+            "5",
+            "3"
+          ],
+          "correct": 3,
+          "answer": "For goodness-of-fit, $df = k-1 = 4-1 = 3$.",
+          "explanation": "For goodness-of-fit, $df = k-1 = 4-1 = 3$.",
           "figure": {
             "type": "bars",
             "categories": [
-              "Q1",
-              "Q2",
-              "Q3",
-              "Q4",
-              "Q5"
+              "C1",
+              "C2",
+              "C3",
+              "C4",
+              "C5"
             ],
             "values": [
-              21,
-              27,
-              32,
-              25,
-              30
+              4,
+              11,
+              17,
+              9,
+              11
             ],
             "ylabel": "Frequency",
             "highlight_index": 2,
@@ -463,159 +478,139 @@
       "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
       "questions": [
         {
-          "q": "In a two-way table, a row total is $266$, a column total is $99$, and the grand total is $400$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Chi-Square Goodness-of-Fit Test",
-          "choices": [
-            "$68.83$",
-            "$65.83$",
-            "$62.84$",
-            "$299.17$"
-          ],
-          "correct": 1,
-          "answer": "$E=(266)(99)/400=26334/400\\approx65.83$.",
-          "explanation": "$E=(266)(99)/400=26334/400\\approx65.83$."
-        },
-        {
-          "q": "In a two-way table, a row total is $250$, a column total is $314$, and the grand total is $500$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Chi-Square Test of Independence vs. Homogeneity",
-          "choices": [
-            "$160.00$",
-            "$157.00$",
-            "$407.00$",
-            "$154.00$"
-          ],
-          "correct": 1,
-          "answer": "$E=(250)(314)/500=78500/500\\approx157.00$.",
-          "explanation": "$E=(250)(314)/500=78500/500\\approx157.00$."
-        },
-        {
-          "q": "In a two-way table, a row total is $103$, a column total is $50$, and the grand total is $150$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Inference for Linear Regression Slope",
-          "choices": [
-            "$118.67$",
-            "$31.33$",
-            "$37.33$",
-            "$34.33$"
-          ],
-          "correct": 3,
-          "answer": "$E=(103)(50)/150=5150/150\\approx34.33$.",
-          "explanation": "$E=(103)(50)/150=5150/150\\approx34.33$."
-        },
-        {
-          "q": "In a two-way table, a row total is $154$, a column total is $295$, and the grand total is $500$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Regression Model Conditions (LINER)",
-          "choices": [
-            "$358.14$",
-            "$87.86$",
-            "$90.86$",
-            "$93.86$"
-          ],
-          "correct": 2,
-          "answer": "$E=(154)(295)/500=45430/500\\approx90.86$.",
-          "explanation": "$E=(154)(295)/500=45430/500\\approx90.86$."
-        },
-        {
-          "q": "In a two-way table, a row total is $96$, a column total is $134$, and the grand total is $200$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
+          "q": "A chi-square test of independence uses a 2×4 table. Find the degrees of freedom.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Chi-square goodness-of-fit test",
           "choices": [
-            "$64.32$",
-            "$61.32$",
-            "$165.68$",
-            "$67.32$"
+            "4",
+            "5",
+            "2",
+            "3"
           ],
-          "correct": 0,
-          "answer": "$E=(96)(134)/200=12864/200\\approx64.32$.",
-          "explanation": "$E=(96)(134)/200=12864/200\\approx64.32$.",
-          "figure": {
-            "type": "bars",
-            "categories": [
-              "Q1",
-              "Q2",
-              "Q3",
-              "Q4",
-              "Q5"
-            ],
-            "values": [
-              12,
-              18,
-              23,
-              16,
-              21
-            ],
-            "ylabel": "Frequency",
-            "highlight_index": 2,
-            "width": 230
-          }
+          "correct": 3,
+          "answer": "For a test of independence, $df = (r-1)(c-1) = (2-1)(4-1) = 3$.",
+          "explanation": "For a test of independence, $df = (r-1)(c-1) = (2-1)(4-1) = 3$."
         },
         {
-          "q": "In a two-way table, a row total is $65$, a column total is $80$, and the grand total is $250$. Find the expected count for that cell, using $E=$ row total $\\times$ column total $/$ grand total.",
+          "q": "In a chi-square test of independence for a contingency table with $7$ rows and $2$ columns (Trial #5), what is the value of $\\mathrm{df}$?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Chi-square test for independence",
           "choices": [
-            "$23.80$",
-            "$17.80$",
-            "$124.20$",
-            "$20.80$"
+            "6",
+            "7",
+            "14",
+            "13"
           ],
-          "correct": 3,
-          "answer": "$E=(65)(80)/250=5200/250\\approx20.80$.",
-          "explanation": "$E=(65)(80)/250=5200/250\\approx20.80$."
+          "correct": 0,
+          "answer": "$\\mathrm{df} = (r - 1)(c - 1) = (7 - 1)(2 - 1) = 6$.",
+          "explanation": "$\\mathrm{df} = (r - 1)(c - 1) = (7 - 1)(2 - 1) = 6$."
         },
         {
-          "q": "A regression gives a sample slope $b_1=-5.2$ with standard error $SE_{b_1}=1.4$, based on data with $df=33$. Construct a 95% confidence interval for the true population slope $\\beta_1$, using a critical value $t^*\\approx2.03$.",
+          "q": "In a test of independence with total sample $N = 390$, row total $85$, and column total $70$ (Experiment 5), find the expected cell count.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Interpreting chi-square results",
           "choices": [
-            "$\\left(-8.04,-2.86\\right)$",
-            "$\\left(-9.04,-1.36\\right)$",
-            "$\\left(-7.54,-2.36\\right)$",
-            "$\\left(-8.04,-2.36\\right)$"
+            "14.38",
+            "16.33",
+            "15.26",
+            "44.29"
           ],
-          "correct": 3,
-          "answer": "Margin of error: $2.03(1.4)\\approx2.84$. Interval: $-5.2\\pm2.84$, or approximately $\\left(-8.04,-2.36\\right)$.",
-          "explanation": "Margin of error: $2.03(1.4)\\approx2.84$. Interval: $-5.2\\pm2.84$, or approximately $\\left(-8.04,-2.36\\right)$."
+          "correct": 2,
+          "answer": "Expected frequency: $E = \\frac{\\mathrm{Row\\ Total} \\times \\mathrm{Col\\ Total}}{\\mathrm{Grand\\ Total}} = \\frac{85 \\times 70}{390} = 15.26$.",
+          "explanation": "Expected frequency: $E = \\frac{\\mathrm{Row\\ Total} \\times \\mathrm{Col\\ Total}}{\\mathrm{Grand\\ Total}} = \\frac{85 \\times 70}{390} = 15.26$."
         },
         {
-          "q": "A regression gives a sample slope $b_1=3.1$ with standard error $SE_{b_1}=0.6$, based on data with $df=15$. Construct a 95% confidence interval for the true population slope $\\beta_1$, using a critical value $t^*\\approx2.131$.",
+          "q": "Chi-square test is used for:",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Inference for the slope of a regression line",
           "choices": [
-            "$\\left(1.82,3.88\\right)$",
-            "$\\left(0.82,5.38\\right)$",
-            "$\\left(2.32,4.38\\right)$",
-            "$\\left(1.82,4.38\\right)$"
+            "Comparing two means",
+            "Relationships between categorical variables",
+            "Regression coefficients",
+            "Differences in variances only"
           ],
-          "correct": 3,
-          "answer": "Margin of error: $2.131(0.6)\\approx1.28$. Interval: $3.1\\pm1.28$, or approximately $\\left(1.82,4.38\\right)$.",
-          "explanation": "Margin of error: $2.131(0.6)\\approx1.28$. Interval: $3.1\\pm1.28$, or approximately $\\left(1.82,4.38\\right)$."
+          "correct": 1,
+          "answer": "Chi-square tests for association between categoricals.",
+          "explanation": "Chi-square tests for association between categoricals."
         },
         {
-          "q": "A regression gives a sample slope $b_1=6.8$ with standard error $SE_{b_1}=1.25$. Compute the test statistic for testing $H_0:\\beta_1=0$, using $t=b_1/SE_{b_1}$, to two decimal places.",
+          "q": "Conditions for inference with proportions (1-prop z-test):",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Conditions for regression inference",
           "choices": [
-            "$6.44$",
-            "$-5.44$",
-            "$4.44$",
-            "$5.44$"
+            "n>30",
+            "np≥10 and n(1-p)≥10",
+            "Normal population",
+            "Known σ"
           ],
-          "correct": 3,
-          "answer": "$t=b_1/SE_{b_1}=6.8/1.25\\approx5.44$.",
-          "explanation": "$t=b_1/SE_{b_1}=6.8/1.25\\approx5.44$."
+          "correct": 1,
+          "answer": "Large counts condition: np≥10 and n(1-p)≥10.",
+          "explanation": "Large counts condition: np≥10 and n(1-p)≥10."
+        },
+        {
+          "q": "A test of $H_0: \\mu=81$ uses a sample of $n=10$ with $\\bar x=85$, $s=12$. Find the test statistic $t$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Putting it together: a full inference scenario",
+          "choices": [
+            "2.05",
+            "3.05",
+            "1.05",
+            "1.55"
+          ],
+          "correct": 2,
+          "answer": "$SE=s/\\sqrt{n}=12/\\sqrt{10}=3.7947$. $t=\\frac{85-81}{3.7947}=1.05$.",
+          "explanation": "$SE=s/\\sqrt{n}=12/\\sqrt{10}=3.7947$. $t=\\frac{85-81}{3.7947}=1.05$."
+        },
+        {
+          "q": "In a hypothesis test, failing to reject $H_0$ when $H_a$ is actually true. What is this called?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Chi-square test for homogeneity",
+          "choices": [
+            "Confounding",
+            "Type II error",
+            "Type I error",
+            "Sampling bias"
+          ],
+          "correct": 1,
+          "answer": "This is a Type II error by definition.",
+          "explanation": "This is a Type II error by definition."
+        },
+        {
+          "q": "In a hypothesis test, rejecting $H_0$ when $H_0$ is actually true. What is this called?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Computing expected counts for a chi-square test",
+          "choices": [
+            "Confounding",
+            "Type I error",
+            "Type II error",
+            "Sampling bias"
+          ],
+          "correct": 1,
+          "answer": "This is a Type I error by definition.",
+          "explanation": "This is a Type I error by definition."
+        },
+        {
+          "q": "A pharmaceutical company is investigating the efficacy of a new drug to reduce blood pressure. They want to design a randomized controlled experiment. Participants will be recruited from a specific patient population. To ensure generalizability and account for potential confounding factors, the researchers decide to stratify the participants by age group (Under 40, 40-60, Over 60) and by the severity of their hypertension (Mild, Moderate, Severe). If there are 150 participants in total and an equal number of participants are to be assigned to each treatment group (Drug A, Drug B, Placebo), and the number of participants in each stratum is proportional to the expected prevalence in the general population, how many participants would be allocated to the stratum 'Under 40' and 'Mild' hypertension if the proportion of individuals in this stratum is 0.08?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Chi-square goodness-of-fit test",
+          "choices": [
+            "10",
+            "12",
+            "15",
+            "8"
+          ],
+          "correct": 1,
+          "answer": "The problem requires calculating the number of participants in a specific stratum within a larger experimental design. The total number of participants is 150. The participants are stratified by age group and hypertension severity. The proportion of individuals in the stratum 'Under 40' and 'Mild' hypertension is given as 0.08. To find the number of participants in this stratum, we multiply the total number of participants by the proportion of this stratum. Number of participants in 'Under 40' and 'Mild' stratum = Total participants × Proportion of stratum Number of participants = 150 × 0.08 Number of participants = 12 This calculation directly addresses the number of participants within a specific stratum, which is a key aspect of experimental design and sampling strategies. The information about the number of treatment groups and equal assignment to each treatment group is extraneous to the calculation of the stratum size based on its proportion.",
+          "explanation": "The problem requires calculating the number of participants in a specific stratum within a larger experimental design. The total number of participants is 150. The participants are stratified by age group and hypertension severity. The proportion of individuals in the stratum 'Under 40' and 'Mild' hypertension is given as 0.08. To find the number of participants in this stratum, we multiply the total number of participants by the proportion of this stratum. Number of participants in 'Under 40' and 'Mild' stratum = Total participants × Proportion of stratum Number of participants = 150 × 0.08 Number of participants = 12 This calculation directly addresses the number of participants within a specific stratum, which is a key aspect of experimental design and sampling strategies. The information about the number of treatment groups and equal assignment to each treatment group is extraneous to the calculation of the stratum size based on its proportion."
         }
       ]
     },
@@ -623,132 +618,161 @@
       "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
       "questions": [
         {
-          "q": "A regression gives a sample slope $b_1=6.2$ with standard error $SE_{b_1}=1.25$. Compute the test statistic for testing $H_0:\\beta_1=0$, using $t=b_1/SE_{b_1}$, to two decimal places.",
+          "q": "What is the general structure of a 90% confidence interval?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Chi-square test for independence",
+          "choices": [
+            "estimate × (critical value) + (standard error)",
+            "(critical value) ± (standard error) × estimate",
+            "estimate − (critical value) ÷ (standard error)",
+            "estimate ± (critical value) × (standard error)"
+          ],
+          "correct": 3,
+          "answer": "A confidence interval always has the form: estimate ± margin of error, where margin of error = (critical value) × (standard error).",
+          "explanation": "A confidence interval always has the form: estimate ± margin of error, where margin of error = (critical value) × (standard error).",
+          "cross_lesson": "3.03 The Normal Distribution"
+        },
+        {
+          "q": "Increasing significance level α:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Interpreting chi-square results",
+          "choices": [
+            "Decreases Type I error",
+            "Increases power",
+            "Decreases power",
+            "Has no effect"
+          ],
+          "correct": 1,
+          "answer": "Higher α → more likely to reject → higher power (but more Type I errors).",
+          "explanation": "Higher α → more likely to reject → higher power (but more Type I errors).",
+          "cross_lesson": "3.04 Sampling Distributions & Central Limit Theorem"
+        },
+        {
+          "q": "A 95% confidence interval means:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Inference for the slope of a regression line",
+          "choices": [
+            "95% chance the true parameter is inside",
+            "95% of all possible such intervals contain the true value",
+            "The sample mean is 95% accurate",
+            "p-value is 0.05"
+          ],
+          "correct": 1,
+          "answer": "Frequentist interpretation: 95% of intervals capture μ.",
+          "explanation": "Frequentist interpretation: 95% of intervals capture μ.",
+          "cross_lesson": "4.01 Confidence Intervals & Hypothesis Testing"
+        },
+        {
+          "q": "p-value is the probability of:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Conditions for regression inference",
+          "choices": [
+            "The null hypothesis being true",
+            "Observing data at least as extreme, assuming H₀ true",
+            "The alternative hypothesis being true",
+            "A Type II error"
+          ],
+          "correct": 1,
+          "answer": "p-value is computed under the null.",
+          "explanation": "p-value is computed under the null.",
+          "cross_lesson": "1.01 Measures of Center & Spread"
+        },
+        {
+          "q": "The scatterplot below shows the number of hours a group of students studied for a test and their scores on that test. The line of best fit for the data is given by the equation $S = 5H + 40$, where $S$ is the score on the test and $H$ is the number of hours studied. If a student studied for $x$ hours and achieved a score of 85, what is the value of $x$?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Putting it together: a full inference scenario",
           "choices": [
-            "$-4.96$",
-            "$3.96$",
-            "$4.96$",
-            "$5.96$"
+            "10",
+            "9",
+            "8",
+            "7"
           ],
           "correct": 2,
-          "answer": "$t=b_1/SE_{b_1}=6.2/1.25\\approx4.96$.",
-          "explanation": "$t=b_1/SE_{b_1}=6.2/1.25\\approx4.96$.",
-          "cross_lesson": "3.03 The Normal Distribution"
+          "answer": "The equation for the line of best fit is given as $S = 5H + 40$. We are told that a student studied for $x$ hours and achieved a score of 85. We can substitute these values into the equation: $85 = 5x + 40$. To solve for $x$, first subtract 40 from both sides of the equation: $85 - 40 = 5x$ which simplifies to $45 = 5x$. Then, divide both sides by 5: $x = \\frac{45}{5}$ which gives $x = 9$. Therefore, the student studied for 9 hours.",
+          "explanation": "The equation for the line of best fit is given as $S = 5H + 40$. We are told that a student studied for $x$ hours and achieved a score of 85. We can substitute these values into the equation: $85 = 5x + 40$. To solve for $x$, first subtract 40 from both sides of the equation: $85 - 40 = 5x$ which simplifies to $45 = 5x$. Then, divide both sides by 5: $x = \\frac{45}{5}$ which gives $x = 9$. Therefore, the student studied for 9 hours.",
+          "cross_lesson": "1.02 Z-Scores & Linear Transformations"
         },
         {
-          "q": "A chi-square test produces a test statistic $\\chi^2=13.7$ with $df=5$, and a critical value of $\\chi^2_{0.05}=11.07$ at $\\alpha=0.05$. State the conclusion, comparing the test statistic directly to the critical value.",
+          "q": "The scatterplot below shows the number of hours spent studying for a test versus the score achieved on that test for a group of students. The equation of the line of best fit is given by $S = 5H + 50$, where $S$ is the score and $H$ is the number of hours spent studying. If a student scored 80 on the test, approximately how many hours did they study?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Chi-square test for homogeneity",
           "choices": [
-            "The test cannot be completed without a $p$-value",
-            "Reject $H_0$; there is convincing evidence of an association",
-            "Fail to reject $H_0$; there is not convincing evidence of an association",
-            "Accept $H_0$ as definitely true"
+            "5.0 hours",
+            "5.5 hours",
+            "6.0 hours",
+            "6.5 hours"
           ],
-          "correct": 1,
-          "answer": "Since the test statistic ($13.7$) is greater than the critical value ($11.07$), we reject $H_0$. Reject $H_0$; there is convincing evidence of an association.",
-          "explanation": "Since the test statistic ($13.7$) is greater than the critical value ($11.07$), we reject $H_0$. Reject $H_0$; there is convincing evidence of an association.",
-          "cross_lesson": "3.04 Sampling Distributions & Central Limit Theorem"
+          "correct": 2,
+          "answer": "The equation of the line of best fit is $S = 5H + 50$. We are given that a student scored $S = 80$. We need to find the number of hours $H$ they studied. Substitute $S = 80$ into the equation: $80 = 5H + 50$. To solve for $H$, first subtract 50 from both sides of the equation: $80 - 50 = 5H$ $30 = 5H$. Now, divide both sides by 5: $H = \\frac{30}{5}$. $H = 6$. Therefore, the student studied approximately 6.0 hours.",
+          "explanation": "The equation of the line of best fit is $S = 5H + 50$. We are given that a student scored $S = 80$. We need to find the number of hours $H$ they studied. Substitute $S = 80$ into the equation: $80 = 5H + 50$. To solve for $H$, first subtract 50 from both sides of the equation: $80 - 50 = 5H$ $30 = 5H$. Now, divide both sides by 5: $H = \\frac{30}{5}$. $H = 6$. Therefore, the student studied approximately 6.0 hours.",
+          "cross_lesson": "1.03 Describing Distributions & Linear Regression"
         },
         {
-          "q": "A chi-square test produces a test statistic $\\chi^2=1.2$ with $df=6$, and a critical value of $\\chi^2_{0.05}=12.59$ at $\\alpha=0.05$. State the conclusion, comparing the test statistic directly to the critical value.",
+          "q": "A line of best fit relating hours studied ( $x$ ) to test score ( $\\hat y$ ) is $\\hat y = 10x+27$. Using this model, what is the predicted score for a student who studies $4$ hours?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Computing expected counts for a chi-square test",
           "choices": [
-            "The test cannot be completed without a $p$-value",
-            "Accept $H_0$ as definitely true",
-            "Fail to reject $H_0$; there is not convincing evidence of an association",
-            "Reject $H_0$; there is convincing evidence of an association"
+            "63",
+            "67",
+            "62",
+            "76"
           ],
-          "correct": 2,
-          "answer": "Since the test statistic ($1.2$) is less than the critical value ($12.59$), we fail to reject $H_0$. Fail to reject $H_0$; there is not convincing evidence of an association.",
-          "explanation": "Since the test statistic ($1.2$) is less than the critical value ($12.59$), we fail to reject $H_0$. Fail to reject $H_0$; there is not convincing evidence of an association.",
-          "cross_lesson": "4.01 Confidence Intervals & Hypothesis Testing"
-        },
-        {
-          "q": "What is the formula for the Chi-Square test statistic?",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Chi-Square Goodness-of-Fit Test",
-          "choices": [
-            "$\\chi^2 = \\sum \\frac{(O - E)^2}{E}$",
-            "$\\chi^2 = \\sum \\frac{(O - E)}{E}$",
-            "$\\chi^2 = \\sum \\frac{(O - E)^2}{O}$",
-            "$\\chi^2 = \\frac{(\\bar{x} - \\mu)^2}{s^2}$"
-          ],
-          "correct": 0,
-          "answer": "The Chi-square statistic measures discrepancy between observed counts $O$ and expected counts $E$: $\\chi^2 = \\sum \\frac{(O - E)^2}{E}$.",
-          "explanation": "The Chi-square statistic measures discrepancy between observed counts $O$ and expected counts $E$: $\\chi^2 = \\sum \\frac{(O - E)^2}{E}$.",
-          "cross_lesson": "1.01 Measures of Center & Spread"
-        },
-        {
-          "q": "What condition must be satisfied regarding expected counts for a Chi-Square test to be valid?",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Chi-Square Goodness-of-Fit Test",
-          "choices": [
-            "All expected cell counts must be at least $5$",
-            "All observed cell counts must be at least $30$",
-            "The sample size must be exactly 100",
-            "The categories must be normally distributed"
-          ],
-          "correct": 0,
-          "answer": "The standard Large Counts condition for Chi-square tests requires all expected counts to be at least $5$.",
-          "explanation": "The standard Large Counts condition for Chi-square tests requires all expected counts to be at least $5$.",
-          "cross_lesson": "1.02 Z-Scores & Linear Transformations"
-        },
-        {
-          "q": "What are the degrees of freedom for a Chi-Square test on a $3 \\times 4$ contingency table?",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Chi-Square Test of Independence vs. Homogeneity",
-          "choices": [
-            "$6$",
-            "$12$",
-            "$7$",
-            "$11$"
-          ],
-          "correct": 0,
-          "answer": "$df = (r - 1)(c - 1) = (3 - 1)(4 - 1) = 2 \\times 3 = 6$.",
-          "explanation": "$df = (r - 1)(c - 1) = (3 - 1)(4 - 1) = 2 \\times 3 = 6$.",
-          "cross_lesson": "1.03 Describing Distributions & Linear Regression"
-        },
-        {
-          "q": "Computer regression output shows: Predictor Coef SE Coef T P; Constant 14.2 2.1 6.76 0.000; Slope 3.45 0.69 5.00 0.0001. For $n = 18$ observations, what is the $t$-statistic for the slope?",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Inference for Linear Regression Slope",
-          "choices": [
-            "$5.00$",
-            "$6.76$",
-            "$3.45$",
-            "$0.69$"
-          ],
-          "correct": 0,
-          "answer": "The $t$-statistic for the slope is $t = \\frac{b - 0}{\\mathrm{SE}_b} = \\frac{3.45}{0.69} = 5.00$.",
-          "explanation": "The $t$-statistic for the slope is $t = \\frac{b - 0}{\\mathrm{SE}_b} = \\frac{3.45}{0.69} = 5.00$.",
+          "correct": 1,
+          "answer": "Substitute $x = 4$ into the regression equation: $\\hat y = 10(4) + 27 = 40 + 27 = 67$.",
+          "explanation": "Substitute $x = 4$ into the regression equation: $\\hat y = 10(4) + 27 = 40 + 27 = 67$.",
           "cross_lesson": "2.01 Sampling Methods & Bias"
         },
         {
-          "q": "What does the acronym LINER stand for regarding the conditions for regression inference?",
+          "q": "In the standard $(x,y)$ coordinate plane below, the graph of the quadratic function $f(x) = 9 - x^2$ and the line $g(x) = x + 3$ intersect at points $A$ and $B$, where $A$ has a negative $x$-coordinate and $B$ has a positive $x$-coordinate. Point $C$ is the vertex of the parabola $y = f(x)$. What is the area, in square coordinate units, of $\\Delta  ABC$?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Regression Model Conditions (LINER)",
+          "target": "Chi-square goodness-of-fit test",
           "choices": [
-            "Linear, Independent, Normal $y$ for each $x$, Equal variance, Random sampling",
-            "Least squares, Intercept, Normal, Errors, Residuals",
-            "Linear, Integrated, Numerical, Estimated, Robust",
-            "Limit, Interval, Normal, Expected, Ratio"
+            "12.5",
+            "15",
+            "22.5",
+            "30"
           ],
-          "correct": 0,
-          "answer": "The regression conditions are: Linear relationship, Independent observations, Normal distribution of response $y$ at each $x$, Equal variance of residuals (homoscedasticity), and Random data collection.",
-          "explanation": "The regression conditions are: Linear relationship, Independent observations, Normal distribution of response $y$ at each $x$, Equal variance of residuals (homoscedasticity), and Random data collection.",
-          "cross_lesson": "2.02 Experimental Design & Scope of Inference"
+          "correct": 1,
+          "answer": "To find the area of $\\Delta  ABC$, we first determine the coordinates of its three vertices: $A$, $B$, and $C$. 1. **Vertex $C$**: The function $f(x) = 9 - x^2$ is a downward-opening parabola with its maximum at $x = 0$. $f(0) = 9 - 0^2 = 9$, so the vertex is $C(0, 9)$. 2. **Intersection Points $A$ and $B$**: Set $f(x) = g(x)$: $9 - x^2 = x + 3$ Rearrange into standard quadratic form: $x^2 + x - 6 = 0$ Factor the quadratic equation: $(x + 3)(x - 2) = 0$ Thus, the $x$-coordinates of the intersection points are $x = -3$ and $x = 2$. - For $x = -3$: $y = g(-3) = -3 + 3 = 0$, giving point $A(-3, 0)$. - For $x = 2$: $y = g(2) = 2 + 3 = 5$, giving point $B(2, 5)$. 3. **Area of $\\Delta  ABC$**: Using the coordinate geometry area formula (Shoelace formula) for vertices $(-3, 0)$, $(2, 5)$, and $(0, 9)$: $\\mathrm{Area} = \\frac{1}{2} |x_A(y_B - y_C) + x_B(y_C - y_A) + x_C(y_A - y_B)|$ Substitute the coordinates: $\\mathrm{Area} = \\frac{1}{2} |-3(5 - 9) + 2(9 - 0) + 0(0 - 5)|$ $\\mathrm{Area} = \\frac{1}{2} |-3(-4) + 2(9) + 0| = \\frac{1}{2} |12 + 18| = \\frac{1}{2}(30) = 15$ Alternatively, enclosing $\\Delta  ABC$ in a bounding rectangle with horizontal span from $x = -3$ to $x = 2$ (width 5) and vertical span from $y = 0$ to $y = 9$ (height 9) gives a total box area of $5 \\times 9 = 45$. Subtracting the three surrounding right triangles gives $45 - \\frac{1}{2}(5)(5) - \\frac{1}{2}(2)(4) - \\frac{1}{2}(3)(9) = 45 - 12.5 - 4 - 13.5 = 15$. Common errors include forgetting the factor of $\\frac{1}{2}$ (yielding 30) or multiplying the horizontal width by the total height and dividing by 2 without adjusting for the non-right shape (yielding 22.5).",
+          "explanation": "To find the area of $\\Delta  ABC$, we first determine the coordinates of its three vertices: $A$, $B$, and $C$. 1. **Vertex $C$**: The function $f(x) = 9 - x^2$ is a downward-opening parabola with its maximum at $x = 0$. $f(0) = 9 - 0^2 = 9$, so the vertex is $C(0, 9)$. 2. **Intersection Points $A$ and $B$**: Set $f(x) = g(x)$: $9 - x^2 = x + 3$ Rearrange into standard quadratic form: $x^2 + x - 6 = 0$ Factor the quadratic equation: $(x + 3)(x - 2) = 0$ Thus, the $x$-coordinates of the intersection points are $x = -3$ and $x = 2$. - For $x = -3$: $y = g(-3) = -3 + 3 = 0$, giving point $A(-3, 0)$. - For $x = 2$: $y = g(2) = 2 + 3 = 5$, giving point $B(2, 5)$. 3. **Area of $\\Delta  ABC$**: Using the coordinate geometry area formula (Shoelace formula) for vertices $(-3, 0)$, $(2, 5)$, and $(0, 9)$: $\\mathrm{Area} = \\frac{1}{2} |x_A(y_B - y_C) + x_B(y_C - y_A) + x_C(y_A - y_B)|$ Substitute the coordinates: $\\mathrm{Area} = \\frac{1}{2} |-3(5 - 9) + 2(9 - 0) + 0(0 - 5)|$ $\\mathrm{Area} = \\frac{1}{2} |-3(-4) + 2(9) + 0| = \\frac{1}{2} |12 + 18| = \\frac{1}{2}(30) = 15$ Alternatively, enclosing $\\Delta  ABC$ in a bounding rectangle with horizontal span from $x = -3$ to $x = 2$ (width 5) and vertical span from $y = 0$ to $y = 9$ (height 9) gives a total box area of $5 \\times 9 = 45$. Subtracting the three surrounding right triangles gives $45 - \\frac{1}{2}(5)(5) - \\frac{1}{2}(2)(4) - \\frac{1}{2}(3)(9) = 45 - 12.5 - 4 - 13.5 = 15$. Common errors include forgetting the factor of $\\frac{1}{2}$ (yielding 30) or multiplying the horizontal width by the total height and dividing by 2 without adjusting for the non-right shape (yielding 22.5).",
+          "cross_lesson": "2.02 Experimental Design & Scope of Inference",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "9 - x*x",
+              "x + 3"
+            ],
+            "xmin": -4.0,
+            "xmax": 4.0,
+            "ymin": -2.0,
+            "ymax": 11.0,
+            "width": 230,
+            "point_labels": [
+              {
+                "x": -3.0,
+                "y": 0.0,
+                "label": "A"
+              },
+              {
+                "x": 2.0,
+                "y": 5.0,
+                "label": "B"
+              },
+              {
+                "x": 0.0,
+                "y": 9.0,
+                "label": "C"
+              }
+            ]
+          }
         }
       ]
     }

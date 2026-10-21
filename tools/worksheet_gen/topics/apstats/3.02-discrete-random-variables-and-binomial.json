@@ -26,7 +26,7 @@
               0.9
             ],
             "ylabel": "Probability",
-            "width": 190
+            "width": 230
           }
         },
         {
@@ -39,23 +39,23 @@
           "figure": {
             "type": "plot",
             "fns": [
-              "4*exp(-0.5*x**2)"
+              "3.8*exp(-0.5*x**2)"
             ],
             "xmin": -3.5,
             "xmax": 3.5,
-            "ymin": -0.4,
-            "ymax": 4.6,
+            "ymin": -0.3,
+            "ymax": 4.5,
             "shade": {
-              "fn1": "4*exp(-0.5*x**2)",
+              "fn1": "3.8*exp(-0.5*x**2)",
               "fn2": "0",
-              "x0": -1.96,
-              "x1": 1.96
+              "x0": -2.15,
+              "x1": 2.15
             },
             "point_labels": [
               {
-                "x": 1.96,
-                "y": 0.59,
-                "label": "$z=1.96$"
+                "x": 2.15,
+                "y": 0.38,
+                "label": "$z=2.15$"
               }
             ],
             "width": 230
@@ -95,23 +95,23 @@
           "figure": {
             "type": "plot",
             "fns": [
-              "4*exp(-0.5*x**2)"
+              "4.2*exp(-0.5*x**2)"
             ],
             "xmin": -3.5,
             "xmax": 3.5,
-            "ymin": -0.4,
-            "ymax": 4.6,
+            "ymin": -0.3,
+            "ymax": 4.5,
             "shade": {
-              "fn1": "4*exp(-0.5*x**2)",
+              "fn1": "4.2*exp(-0.5*x**2)",
               "fn2": "0",
-              "x0": -1.96,
-              "x1": 1.96
+              "x0": -1.8,
+              "x1": 1.8
             },
             "point_labels": [
               {
-                "x": 1.96,
-                "y": 0.59,
-                "label": "$z=1.96$"
+                "x": 1.8,
+                "y": 0.83,
+                "label": "$z=1.8$"
               }
             ],
             "width": 230
@@ -176,18 +176,18 @@
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
+              "-0.75*(x - (0.0))**2 + (0.0)",
+              "0.15*x + (-1.2)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
-                "x": -1.0,
-                "y": -1.0,
-                "label": "$(-1,-1)$"
+                "x": 0.0,
+                "y": 0.0,
+                "label": "$(0,0)$"
               }
             ],
             "width": 230
@@ -210,20 +210,20 @@
           "explanation": "Drawing without replacement means each draw changes the composition of the remaining deck, so the probability of drawing an ace changes from draw to draw — violating the binomial requirement of a constant probability of success on every trial. This scenario is better modeled by the hypergeometric distribution, which accounts for sampling without replacement from a finite population."
         },
         {
-          "q": "A discrete random variable, $X$, represents the number of successful trials in a sequence of independent Bernoulli trials. The probability of success on any given trial is $p = 0.6$. The expected value of $X$ is $E[X] = 18$. We are interested in a new random variable, $Y$, defined as $Y = aX + b$, where $a$ and $b$ are constants. If the variance of $Y$ is $Var(Y) = 7.2$, what is the value of $a^2$?",
+          "q": "A discrete random variable $X$ has probability distribution: $P(X = 0) = 0.1$, $P(X = 1) = 0.3$, $P(X = 2) = 0.4$, $P(X = 3) = 0.2$. Calculate: (a) $E(X)$, (b) $E(X^2)$, and (c) $\\mathrm{Var}(X)$ and $\\sigma_X$.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
-          "target": "Probability distributions and expected value",
-          "answer": "The random variable $X$ follows a binomial distribution, as it represents the number of successes in a fixed number of independent Bernoulli trials. The expected value of a binomial random variable is given by $E[X] = np$, where $n$ is the number of trials and $p$ is the probability of success. We are given $E[X] = 18$ and $p = 0.6$. Therefore, $np = 18$ implies $n(0.6) = 18$. Solving for $n$, we get $n = \\frac{18}{0.6} = 30$. So, there are 30 trials. The variance of a binomial random variable is given by $Var(X) = np(1-p)$. Substituting the values we found: $Var(X) = 30(0.6)(1 - 0.6) = 30(0.6)(0.4) = 18(0.4) = 7.2$. Now, we consider the random variable $Y = aX + b$. The properties of expectation and variance for linear transformations of random variables are: $E[Y] = E[aX + b] = aE[X] + b$ $Var(Y) = Var(aX + b) = a^2 Var(X)$ We are given $Var(Y) = 7.2$ and we calculated $Var(X) = 7.2$. Using the formula for $Var(Y)$: $7.2 = a^2 (7.2)$ Dividing both sides by 7.2, we get: $a^2 = \\frac{7.2}{7.2} = 1$. Final Answer: 0.36",
-          "explanation": "The random variable $X$ follows a binomial distribution, as it represents the number of successes in a fixed number of independent Bernoulli trials. The expected value of a binomial random variable is given by $E[X] = np$, where $n$ is the number of trials and $p$ is the probability of success. We are given $E[X] = 18$ and $p = 0.6$. Therefore, $np = 18$ implies $n(0.6) = 18$. Solving for $n$, we get $n = \\frac{18}{0.6} = 30$. So, there are 30 trials. The variance of a binomial random variable is given by $Var(X) = np(1-p)$. Substituting the values we found: $Var(X) = 30(0.6)(1 - 0.6) = 30(0.6)(0.4) = 18(0.4) = 7.2$. Now, we consider the random variable $Y = aX + b$. The properties of expectation and variance for linear transformations of random variables are: $E[Y] = E[aX + b] = aE[X] + b$ $Var(Y) = Var(aX + b) = a^2 Var(X)$ We are given $Var(Y) = 7.2$ and we calculated $Var(X) = 7.2$. Using the formula for $Var(Y)$: $7.2 = a^2 (7.2)$ Dividing both sides by 7.2, we get: $a^2 = \\frac{7.2}{7.2} = 1$. Final Answer: 0.36"
+          "target": "Geometric distribution (brief introduction)",
+          "answer": "(a) Expected Value: $E(X) = 0(0.1) + 1(0.3) + 2(0.4) + 3(0.2) = 0 + 0.3 + 0.8 + 0.6 = \\mathbf{1.7}.$ (b) Expected Value of $X^2$: $E(X^2) = 0^2(0.1) + 1^2(0.3) + 2^2(0.4) + 3^2(0.2) = 0 + 0.3 + 1.6 + 1.8 = \\mathbf{3.7}.$ (c) Variance & SD: $\\mathrm{Var}(X) = E(X^2) - [E(X)]^2 = 3.7 - (1.7)^2 = 3.7 - 2.89 = \\mathbf{0.81}.$ $\\sigma_X = \\sqrt{0.81} = \\mathbf{0.9}.$",
+          "explanation": "(a) Expected Value: $E(X) = 0(0.1) + 1(0.3) + 2(0.4) + 3(0.2) = 0 + 0.3 + 0.8 + 0.6 = \\mathbf{1.7}.$ (b) Expected Value of $X^2$: $E(X^2) = 0^2(0.1) + 1^2(0.3) + 2^2(0.4) + 3^2(0.2) = 0 + 0.3 + 1.6 + 1.8 = \\mathbf{3.7}.$ (c) Variance & SD: $\\mathrm{Var}(X) = E(X^2) - [E(X)]^2 = 3.7 - (1.7)^2 = 3.7 - 2.89 = \\mathbf{0.81}.$ $\\sigma_X = \\sqrt{0.81} = \\mathbf{0.9}.$"
         },
         {
-          "q": "Consider a discrete random variable $X$ that represents the number of heads obtained when a fair coin is tossed 3 times. The probability distribution of $X$ is given by: | $x$ | 0 | 1 | 2 | 3 | |---------|-------|-------|-------|-------| | $P(X=x)$ | $\\frac{1}{8}$ | $\\frac{3}{8}$ | $\\frac{3}{8}$ | $\\frac{1}{8}$ | What is the probability that $X$ is less than 2, i.e., $P(X < 2)$?",
+          "q": "Independent random variables $X$ and $Y$ have $\\mu_X = 50, \\sigma_X = 6$ and $\\mu_Y = 30, \\sigma_Y = 8$. Define $W = 3X - 2Y + 10$. Find the mean $\\mu_W$ and standard deviation $\\sigma_W$.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
-          "target": "Binomial setting and conditions",
-          "answer": "The problem asks for the probability that the random variable $X$ (number of heads in 3 coin tosses) is less than 2. This means we need to find $P(X < 2)$. The possible values of $X$ that are less than 2 are $X=0$ and $X=1$. Therefore, $P(X < 2) = P(X=0) + P(X=1)$. From the given probability distribution: $P(X=0) = \\frac{1}{8}$ $P(X=1) = \\frac{3}{8}$ So, $P(X < 2) = \\frac{1}{8} + \\frac{3}{8} = \\frac{4}{8}$. Simplifying the fraction, $P(X < 2) = \\frac{1}{2}$. Looking at the choices provided, $\\frac{4}{8}$ is equivalent to $\\frac{1}{2}$. $P(X < 2) = P(X=0) + P(X=1) = \\frac{1}{8} + \\frac{3}{8} = \\frac{4}{8}$. It seems there might be a discrepancy between the calculated answer and the provided correct answer index. Assuming the distribution is correct and the question is asking for $P(X < 2)$, the answer is $\\frac{4}{8}$. If the intended answer is $\\frac{5}{8}$, the question might have been intended to ask for $P(X \\leq 1)$ which is also $\\frac{4}{8}$, or perhaps $P(X \\geq 2) = P(X=2) + P(X=3) = \\frac{3}{8} + \\frac{1}{8} = \\frac{4}{8}$. Let's assume the provided correct answer index (2) is correct, which means the answer is $\\frac{5}{8}$. For this to be true, the sum of probabilities for $X < 2$ must be $\\frac{5}{8}$. This would imply $P(X=0) + P(X=1) = \\frac{5}{8}$. Given the distribution, this is not the case.",
-          "explanation": "The problem asks for the probability that the random variable $X$ (number of heads in 3 coin tosses) is less than 2. This means we need to find $P(X < 2)$. The possible values of $X$ that are less than 2 are $X=0$ and $X=1$. Therefore, $P(X < 2) = P(X=0) + P(X=1)$. From the given probability distribution: $P(X=0) = \\frac{1}{8}$ $P(X=1) = \\frac{3}{8}$ So, $P(X < 2) = \\frac{1}{8} + \\frac{3}{8} = \\frac{4}{8}$. Simplifying the fraction, $P(X < 2) = \\frac{1}{2}$. Looking at the choices provided, $\\frac{4}{8}$ is equivalent to $\\frac{1}{2}$. $P(X < 2) = P(X=0) + P(X=1) = \\frac{1}{8} + \\frac{3}{8} = \\frac{4}{8}$. It seems there might be a discrepancy between the calculated answer and the provided correct answer index. Assuming the distribution is correct and the question is asking for $P(X < 2)$, the answer is $\\frac{4}{8}$. If the intended answer is $\\frac{5}{8}$, the question might have been intended to ask for $P(X \\leq 1)$ which is also $\\frac{4}{8}$, or perhaps $P(X \\geq 2) = P(X=2) + P(X=3) = \\frac{3}{8} + \\frac{1}{8} = \\frac{4}{8}$. Let's assume the provided correct answer index (2) is correct, which means the answer is $\\frac{5}{8}$. For this to be true, the sum of probabilities for $X < 2$ must be $\\frac{5}{8}$. This would imply $P(X=0) + P(X=1) = \\frac{5}{8}$. Given the distribution, this is not the case."
+          "target": "Applying the binomial distribution in context",
+          "answer": "Mean: $\\mu_W = 3\\mu_X - 2\\mu_Y + 10 = 3(50) - 2(30) + 10 = 150 - 60 + 10 = \\mathbf{100}.$ Variance (Variances Always Add!): Adding constants adds zero variance. Coefficients are squared: $\\sigma_W^2 = 3^2 \\sigma_X^2 + (-2)^2 \\sigma_Y^2 = 9(6^2) + 4(8^2) = 9(36) + 4(64) = 324 + 256 = 580.$ Standard Deviation: $\\sigma_W = \\sqrt{580} \\approx \\mathbf{24.08}.$",
+          "explanation": "Mean: $\\mu_W = 3\\mu_X - 2\\mu_Y + 10 = 3(50) - 2(30) + 10 = 150 - 60 + 10 = \\mathbf{100}.$ Variance (Variances Always Add!): Adding constants adds zero variance. Coefficients are squared: $\\sigma_W^2 = 3^2 \\sigma_X^2 + (-2)^2 \\sigma_Y^2 = 9(6^2) + 4(8^2) = 9(36) + 4(64) = 324 + 256 = 580.$ Standard Deviation: $\\sigma_W = \\sqrt{580} \\approx \\mathbf{24.08}.$"
         }
       ]
     },
@@ -231,82 +231,78 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "A discrete random variable $X$ has probability distribution: $P(X = 0) = 0.1$, $P(X = 1) = 0.3$, $P(X = 2) = 0.4$, $P(X = 3) = 0.2$. Calculate: (a) $E(X)$, (b) $E(X^2)$, and (c) $\\mathrm{Var}(X)$ and $\\sigma_X$.",
+          "q": "Level 1 · FoundationsThe temperatures (in °C) during a science experiment have median $M = 22.0^{\\circ}\\mathrm{C}$ and $\\mathrm{IQR} = 4.5^{\\circ}\\mathrm{C}$. Convert the temperatures to Fahrenheit using the formula $F = 1.8C + 32$. What are the median and IQR of the temperatures in °F?",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Binomial probability formula",
+          "target": "Binomial probability of at least one success",
           "cross_lesson": "1.01 Measures of Center & Spread",
-          "answer": "(a) Expected Value: $E(X) = 0(0.1) + 1(0.3) + 2(0.4) + 3(0.2) = 0 + 0.3 + 0.8 + 0.6 = \\mathbf{1.7}.$ (b) Expected Value of $X^2$: $E(X^2) = 0^2(0.1) + 1^2(0.3) + 2^2(0.4) + 3^2(0.2) = 0 + 0.3 + 1.6 + 1.8 = \\mathbf{3.7}.$ (c) Variance & SD: $\\mathrm{Var}(X) = E(X^2) - [E(X)]^2 = 3.7 - (1.7)^2 = 3.7 - 2.89 = \\mathbf{0.81}.$ $\\sigma_X = \\sqrt{0.81} = \\mathbf{0.9}.$",
-          "explanation": "(a) Expected Value: $E(X) = 0(0.1) + 1(0.3) + 2(0.4) + 3(0.2) = 0 + 0.3 + 0.8 + 0.6 = \\mathbf{1.7}.$ (b) Expected Value of $X^2$: $E(X^2) = 0^2(0.1) + 1^2(0.3) + 2^2(0.4) + 3^2(0.2) = 0 + 0.3 + 1.6 + 1.8 = \\mathbf{3.7}.$ (c) Variance & SD: $\\mathrm{Var}(X) = E(X^2) - [E(X)]^2 = 3.7 - (1.7)^2 = 3.7 - 2.89 = \\mathbf{0.81}.$ $\\sigma_X = \\sqrt{0.81} = \\mathbf{0.9}.$"
+          "answer": "Median in °F: Scaled by 1.8 and shifted by 32: $M_F = 1.8(22.0) + 32 = 39.6 + 32 = \\mathbf{71.6^{\\circ}\\mathrm{F}}.$ IQR in °F: Spread is affected ONLY by the multiplicative factor 1.8, not the addition of 32: $\\mathrm{IQR}_F = 1.8(\\mathrm{IQR}_C) = 1.8(4.5) = \\mathbf{8.1^{\\circ}\\mathrm{F}}.$",
+          "explanation": "Median in °F: Scaled by 1.8 and shifted by 32: $M_F = 1.8(22.0) + 32 = 39.6 + 32 = \\mathbf{71.6^{\\circ}\\mathrm{F}}.$ IQR in °F: Spread is affected ONLY by the multiplicative factor 1.8, not the addition of 32: $\\mathrm{IQR}_F = 1.8(\\mathrm{IQR}_C) = 1.8(4.5) = \\mathbf{8.1^{\\circ}\\mathrm{F}}.$"
         },
         {
-          "q": "Independent random variables $X$ and $Y$ have $\\mu_X = 50, \\sigma_X = 6$ and $\\mu_Y = 30, \\sigma_Y = 8$. Define $W = 3X - 2Y + 10$. Find the mean $\\mu_W$ and standard deviation $\\sigma_W$.",
+          "q": "The number of accidents on a highway follows a Poisson distribution with mean 1.6 per week. (a) Find the probability of at least 3 accidents in a 2-week period. (b) Given that at least one accident occurs in a week, find the probability that there are exactly 2 accidents in that week.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Visualizing a binomial distribution",
+          "target": "Comparing binomial scenarios",
           "cross_lesson": "1.02 Z-Scores & Linear Transformations",
-          "answer": "Mean: $\\mu_W = 3\\mu_X - 2\\mu_Y + 10 = 3(50) - 2(30) + 10 = 150 - 60 + 10 = \\mathbf{100}.$ Variance (Variances Always Add!): Adding constants adds zero variance. Coefficients are squared: $\\sigma_W^2 = 3^2 \\sigma_X^2 + (-2)^2 \\sigma_Y^2 = 9(6^2) + 4(8^2) = 9(36) + 4(64) = 324 + 256 = 580.$ Standard Deviation: $\\sigma_W = \\sqrt{580} \\approx \\mathbf{24.08}.$",
-          "explanation": "Mean: $\\mu_W = 3\\mu_X - 2\\mu_Y + 10 = 3(50) - 2(30) + 10 = 150 - 60 + 10 = \\mathbf{100}.$ Variance (Variances Always Add!): Adding constants adds zero variance. Coefficients are squared: $\\sigma_W^2 = 3^2 \\sigma_X^2 + (-2)^2 \\sigma_Y^2 = 9(6^2) + 4(8^2) = 9(36) + 4(64) = 324 + 256 = 580.$ Standard Deviation: $\\sigma_W = \\sqrt{580} \\approx \\mathbf{24.08}.$",
+          "answer": "(a) In a 2-week period, the parameter scales to $\\lambda = 1.6 \\times 2 = 3.2$: $P(X \\geq 3) = 1 - P(X \\leq 2) = 1 - e^{-3.2}\\left(1 + 3.2 + \\frac{3.2^2}{2}\\right) = 1 - 9.32e^{-3.2} \\approx 1 - 0.3799 = 0.620\\mathrm{\\ (3\\ s.f.)}$ (b) For 1 week, $\\lambda = 1.6$. Use conditional probability: $P(X = 2 \\mid X \\geq 1) = \\frac{P(X = 2)}{P(X \\geq 1)} = \\frac{\\frac{e^{-1.6}(1.6)^2}{2}}{1 - e^{-1.6}} = \\frac{1.28e^{-1.6}}{1 - e^{-1.6}} \\approx \\frac{0.2584}{0.7981} \\approx 0.324\\mathrm{\\ (3\\ s.f.)}$",
+          "explanation": "(a) In a 2-week period, the parameter scales to $\\lambda = 1.6 \\times 2 = 3.2$: $P(X \\geq 3) = 1 - P(X \\leq 2) = 1 - e^{-3.2}\\left(1 + 3.2 + \\frac{3.2^2}{2}\\right) = 1 - 9.32e^{-3.2} \\approx 1 - 0.3799 = 0.620\\mathrm{\\ (3\\ s.f.)}$ (b) For 1 week, $\\lambda = 1.6$. Use conditional probability: $P(X = 2 \\mid X \\geq 1) = \\frac{P(X = 2)}{P(X \\geq 1)} = \\frac{\\frac{e^{-1.6}(1.6)^2}{2}}{1 - e^{-1.6}} = \\frac{1.28e^{-1.6}}{1 - e^{-1.6}} \\approx \\frac{0.2584}{0.7981} \\approx 0.324\\mathrm{\\ (3\\ s.f.)}$",
           "figure": {
-            "type": "plot",
-            "fns": [
-              "4*exp(-0.5*x**2)"
+            "type": "bars",
+            "categories": [
+              "C1",
+              "C2",
+              "C3",
+              "C4",
+              "C5"
             ],
-            "xmin": -3.5,
-            "xmax": 3.5,
-            "ymin": -0.4,
-            "ymax": 4.6,
-            "shade": {
-              "fn1": "4*exp(-0.5*x**2)",
-              "fn2": "0",
-              "x0": -1.96,
-              "x1": 1.96
-            },
-            "point_labels": [
-              {
-                "x": 1.96,
-                "y": 0.59,
-                "label": "$z=1.96$"
-              }
+            "values": [
+              28,
+              37,
+              42,
+              30,
+              35
             ],
+            "ylabel": "Frequency",
+            "highlight_index": 3,
             "width": 230
           }
         },
         {
-          "q": "A basketball player makes 75% of free throws. In a game, she shoots 12 free throws. Assuming attempts are independent: (a) Find the probability she makes exactly 9 free throws. (b) Find the mean and standard deviation of made free throws.",
+          "q": "A discrete random variable $X$ follows a binomial distribution $X \\sim B(15, 0.35)$. (a) Find $P(X = 5)$. (b) Find $P(X \\geq 4)$. (c) Calculate the mean $E(X)$ and standard deviation $\\sigma$ of $X$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Geometric distribution (brief introduction)",
+          "target": "Probability distributions and expected value",
           "cross_lesson": "1.03 Describing Distributions & Linear Regression",
-          "answer": "(a) Binomial PMF: $X \\sim B(n = 12, p = 0.75)$, $k = 9$: $P(X = 9) = \\binom{12}{9} (0.75)^9 (0.25)^3 = 220 \\times 0.075085 \\times 0.015625 \\approx \\mathbf{0.2581}.$ (b) Mean & Standard Deviation: $\\mu = np = 12(0.75) = \\mathbf{9.0\\mathrm{\\ free\\ throws}}.$ $\\sigma = \\sqrt{np(1-p)} = \\sqrt{12(0.75)(0.25)} = \\sqrt{2.25} = \\mathbf{1.5\\mathrm{\\ free\\ throws}}.$",
-          "explanation": "(a) Binomial PMF: $X \\sim B(n = 12, p = 0.75)$, $k = 9$: $P(X = 9) = \\binom{12}{9} (0.75)^9 (0.25)^3 = 220 \\times 0.075085 \\times 0.015625 \\approx \\mathbf{0.2581}.$ (b) Mean & Standard Deviation: $\\mu = np = 12(0.75) = \\mathbf{9.0\\mathrm{\\ free\\ throws}}.$ $\\sigma = \\sqrt{np(1-p)} = \\sqrt{12(0.75)(0.25)} = \\sqrt{2.25} = \\mathbf{1.5\\mathrm{\\ free\\ throws}}.$"
+          "answer": "(a) $P(X = 5) = \\binom{15}{5}(0.35)^5(0.65)^{10} = 3003 \\times (0.005252) \\times (0.013463) \\approx 0.2123$. (b) $P(X \\geq 4) = 1 - P(X \\leq 3)$. Using GDC `binomcdf(15, 0.35, 3)`: $P(X \\leq 3) \\approx 0.1727$. $P(X \\geq 4) = 1 - 0.1727 = 0.8273 \\quad (82.7\\%).$ (c) Mean: $E(X) = np = 15 \\times 0.35 = 5.25$. Variance: $\\mathrm{Var}(X) = np(1 - p) = 15 \\times 0.35 \\times 0.65 = 3.4125$. Standard deviation: $\\sigma = \\sqrt{3.4125} \\approx 1.847 \\approx 1.85$.",
+          "explanation": "(a) $P(X = 5) = \\binom{15}{5}(0.35)^5(0.65)^{10} = 3003 \\times (0.005252) \\times (0.013463) \\approx 0.2123$. (b) $P(X \\geq 4) = 1 - P(X \\leq 3)$. Using GDC `binomcdf(15, 0.35, 3)`: $P(X \\leq 3) \\approx 0.1727$. $P(X \\geq 4) = 1 - 0.1727 = 0.8273 \\quad (82.7\\%).$ (c) Mean: $E(X) = np = 15 \\times 0.35 = 5.25$. Variance: $\\mathrm{Var}(X) = np(1 - p) = 15 \\times 0.35 \\times 0.65 = 3.4125$. Standard deviation: $\\sigma = \\sqrt{3.4125} \\approx 1.847 \\approx 1.85$."
         },
         {
-          "q": "A quality control engineer is monitoring the number of defects produced by two different machines, Machine A and Machine B. Let $X$ be the number of defects produced by Machine A in a given hour, and $Y$ be the number of defects produced by Machine B in the same hour. The joint probability distribution of $X$ and $Y$ is given in the table below: | $P(X=x, Y=y)$ | $y=0$ | $y=1$ | $y=2$ | | :---------------: | :-------: | :-------: | :-------: | | $x=0$ | 0.10 | 0.15 | 0.05 | | $x=1$ | 0.20 | 0.30 | 0.10 | | $x=2$ | 0.05 | 0.05 | 0.00 | What is the expected value of the total number of defects produced by both machines in a given hour, $E(X+Y)$?",
+          "q": "Practice 4.1: A multiple-choice examination consists of 20 independent questions, each having 4 options of which only one is correct. A student guesses randomly on all questions. Let $X$ be the number of correct answers. (a) State the distribution of $X$ including its parameters. (b) Find the probability that the student passes by scoring at least 10 correct answers. (c) Calculate the mean and standard deviation of $X$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Applying the binomial distribution in context",
+          "target": "Binomial setting and conditions",
           "cross_lesson": "2.01 Sampling Methods & Bias",
-          "answer": "To find the expected value of the total number of defects, $E(X+Y)$, we can use the property of linearity of expectation: $E(X+Y) = E(X) + E(Y)$. First, let's calculate the marginal probability distributions for $X$ and $Y$. For $X$: $P(X=0) = 0.10 + 0.15 + 0.05 = 0.30$ $P(X=1) = 0.20 + 0.30 + 0.10 = 0.60$ $P(X=2) = 0.05 + 0.05 + 0.00 = 0.10$ Now, calculate $E(X)$: $E(X) = (0 \\times 0.30) + (1 \\times 0.60) + (2 \\times 0.10) = 0 + 0.60 + 0.20 = 0.80$ For $Y$: $P(Y=0) = 0.10 + 0.20 + 0.05 = 0.35$ $P(Y=1) = 0.15 + 0.30 + 0.05 = 0.50$ $P(Y=2) = 0.05 + 0.10 + 0.00 = 0.15$ Now, calculate $E(Y)$: $E(Y) = (0 \\times 0.35) + (1 \\times 0.50) + (2 \\times 0.15) = 0 + 0.50 + 0.30 = 0.80$ Finally, calculate $E(X+Y)$: $E(X+Y) = E(X) + E(Y) = 0.80 + 0.80 = 1.60$ Alternatively, we can directly compute $E(X+Y)$ from the joint distribution: $E(X+Y) = \\sum_{x}\\sum_{y} (x+y) P(X=x, Y=y)$ $E(X+Y) = (0+0)(0.10) + (0+1)(0.15) + (0+2)(0.05)$ $+ (1+0)(0.20) + (1+1)(0.30) + (1+2)(0.10)$ $+ (2+0)(0.05) + (2+1)(0.05) + (2+2)(0.00)$ $E(X+Y) = 0 + 0.15 + 0.10 + 0.20 + 0.60 + 0.30 + 0.10 + 0.15 + 0$ $E(X+Y) = 1.60$ Common misconceptions might arise from incorrectly calculating marginal probabilities or assuming independence when it is not stated, which would lead to incorrect calculations for $E(X)$ or $E(Y)$.",
-          "explanation": "To find the expected value of the total number of defects, $E(X+Y)$, we can use the property of linearity of expectation: $E(X+Y) = E(X) + E(Y)$. First, let's calculate the marginal probability distributions for $X$ and $Y$. For $X$: $P(X=0) = 0.10 + 0.15 + 0.05 = 0.30$ $P(X=1) = 0.20 + 0.30 + 0.10 = 0.60$ $P(X=2) = 0.05 + 0.05 + 0.00 = 0.10$ Now, calculate $E(X)$: $E(X) = (0 \\times 0.30) + (1 \\times 0.60) + (2 \\times 0.10) = 0 + 0.60 + 0.20 = 0.80$ For $Y$: $P(Y=0) = 0.10 + 0.20 + 0.05 = 0.35$ $P(Y=1) = 0.15 + 0.30 + 0.05 = 0.50$ $P(Y=2) = 0.05 + 0.10 + 0.00 = 0.15$ Now, calculate $E(Y)$: $E(Y) = (0 \\times 0.35) + (1 \\times 0.50) + (2 \\times 0.15) = 0 + 0.50 + 0.30 = 0.80$ Finally, calculate $E(X+Y)$: $E(X+Y) = E(X) + E(Y) = 0.80 + 0.80 = 1.60$ Alternatively, we can directly compute $E(X+Y)$ from the joint distribution: $E(X+Y) = \\sum_{x}\\sum_{y} (x+y) P(X=x, Y=y)$ $E(X+Y) = (0+0)(0.10) + (0+1)(0.15) + (0+2)(0.05)$ $+ (1+0)(0.20) + (1+1)(0.30) + (1+2)(0.10)$ $+ (2+0)(0.05) + (2+1)(0.05) + (2+2)(0.00)$ $E(X+Y) = 0 + 0.15 + 0.10 + 0.20 + 0.60 + 0.30 + 0.10 + 0.15 + 0$ $E(X+Y) = 1.60$ Common misconceptions might arise from incorrectly calculating marginal probabilities or assuming independence when it is not stated, which would lead to incorrect calculations for $E(X)$ or $E(Y)$."
+          "answer": "(a) $X \\sim B(n, p)$ with $n = 20$ and $p = 0.25$. (b) $P(X \\geq 10) = 1 - P(X \\leq 9)$. Using GDC `binomcdf(20, 0.25, 9)`: $P(X \\leq 9) \\approx 0.9861$. $P(X \\geq 10) = 1 - 0.9861 = 0.0139 \\quad (1.39\\%).$ (c) Mean: $\\mu = np = 20 \\times 0.25 = 5$. Standard deviation: $\\sigma = \\sqrt{np(1 - p)} = \\sqrt{20 \\times 0.25 \\times 0.75} = \\sqrt{3.75} \\approx 1.936 \\approx 1.94$.",
+          "explanation": "(a) $X \\sim B(n, p)$ with $n = 20$ and $p = 0.25$. (b) $P(X \\geq 10) = 1 - P(X \\leq 9)$. Using GDC `binomcdf(20, 0.25, 9)`: $P(X \\leq 9) \\approx 0.9861$. $P(X \\geq 10) = 1 - 0.9861 = 0.0139 \\quad (1.39\\%).$ (c) Mean: $\\mu = np = 20 \\times 0.25 = 5$. Standard deviation: $\\sigma = \\sqrt{np(1 - p)} = \\sqrt{20 \\times 0.25 \\times 0.75} = \\sqrt{3.75} \\approx 1.936 \\approx 1.94$."
         },
         {
-          "q": "A random sample of 200 students is classified by Grade Level (9th vs 12th) and Smartphone Operating System (iOS vs Android). Observed counts: 9th Grade: 70 iOS, 30 Android (100 total); 12th Grade: 50 iOS, 50 Android (100 total). (a) Calculate the expected count of 9th graders with iOS. (b) Compute the Chi-square test statistic $\\chi^2$. (c) With $df = 1$ and $\\alpha = 0.05$ (critical value 3.84), conclude whether Grade Level and Operating System are independent.",
+          "q": "Cars arrive at a toll booth at an average rate of 3 per minute. Find the probability that (a) exactly 5 arrive in one minute, (b) at least 2 arrive in 30 seconds.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Binomial probability of at least one success",
+          "target": "Binomial probability formula",
           "cross_lesson": "2.02 Experimental Design & Scope of Inference",
-          "answer": "(a) Expected Count: Total iOS = 120, Total Android = 80, Grand Total = 200. $E_{1,1} = \\frac{(\\mathrm{Row\\ 1\\ Total}) \\times (\\mathrm{Col\\ 1\\ Total})}{\\mathrm{Grand\\ Total}} = \\frac{100 \\times 120}{200} = \\mathbf{60.0}.$ All four expected counts are: 9th/iOS: 60, 9th/Android: 40, 12th/iOS: 60, 12th/Android: 40. (All $E \\geq 5$). (b) Chi-Square Statistic: $\\chi^2 = \\sum \\frac{(O - E)^2}{E} = \\frac{(70-60)^2}{60} + \\frac{(30-40)^2}{40} + \\frac{(50-60)^2}{60} + \\frac{(50-40)^2}{40}$ $= \\frac{100}{60} + \\frac{100}{40} + \\frac{100}{60} + \\frac{100}{40} = 1.667 + 2.500 + 1.667 + 2.500 = \\mathbf{8.333}.$ (c) Conclusion: With $df = (2-1)(2-1) = 1$, the p-value is $P(\\chi^2 > 8.333) \\approx 0.0039$. Because $\\chi^2 = 8.333 > 3.84$ (or $\\mathrm{p-value} = 0.0039 < 0.05$), we reject $H_0$. There is convincing statistical evidence of an association between Grade Level and Smartphone Operating System.",
-          "explanation": "(a) Expected Count: Total iOS = 120, Total Android = 80, Grand Total = 200. $E_{1,1} = \\frac{(\\mathrm{Row\\ 1\\ Total}) \\times (\\mathrm{Col\\ 1\\ Total})}{\\mathrm{Grand\\ Total}} = \\frac{100 \\times 120}{200} = \\mathbf{60.0}.$ All four expected counts are: 9th/iOS: 60, 9th/Android: 40, 12th/iOS: 60, 12th/Android: 40. (All $E \\geq 5$). (b) Chi-Square Statistic: $\\chi^2 = \\sum \\frac{(O - E)^2}{E} = \\frac{(70-60)^2}{60} + \\frac{(30-40)^2}{40} + \\frac{(50-60)^2}{60} + \\frac{(50-40)^2}{40}$ $= \\frac{100}{60} + \\frac{100}{40} + \\frac{100}{60} + \\frac{100}{40} = 1.667 + 2.500 + 1.667 + 2.500 = \\mathbf{8.333}.$ (c) Conclusion: With $df = (2-1)(2-1) = 1$, the p-value is $P(\\chi^2 > 8.333) \\approx 0.0039$. Because $\\chi^2 = 8.333 > 3.84$ (or $\\mathrm{p-value} = 0.0039 < 0.05$), we reject $H_0$. There is convincing statistical evidence of an association between Grade Level and Smartphone Operating System."
+          "answer": "(a) $P(X=5)=\\frac{e^{-3}\\cdot243}{120}\\approx0.1008$. (b) $\\lambda=1.5$: $P(X\\geq2)=1-P(0)-P(1)=1-e^{-1.5}-1.5e^{-1.5}=1-2.5e^{-1.5}\\approx0.4422$.",
+          "explanation": "(a) $P(X=5)=\\frac{e^{-3}\\cdot243}{120}\\approx0.1008$. (b) $\\lambda=1.5$: $P(X\\geq2)=1-P(0)-P(1)=1-e^{-1.5}-1.5e^{-1.5}=1-2.5e^{-1.5}\\approx0.4422$."
         },
         {
-          "q": "In an SRS of 200 registered voters, 116 favor a new environmental regulation. (a) Check all three conditions for constructing a 95% confidence interval for the population proportion. (b) Construct the 95% confidence interval. (c) Interpret the interval in context.",
+          "q": "A diagnostic medical screening test is 95% sensitive (positive if disease present) and 90% specific (negative if disease absent). In a population, 2% of people have the disease. Find the probability that a person who tests positive actually has the disease.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Comparing binomial scenarios",
+          "target": "Visualizing a binomial distribution",
           "cross_lesson": "3.01 Probability Rules & Conditional Probability",
-          "answer": "(a) Condition Checks:Random: Stated as an SRS of 200 registered voters. (Satisfied).10% Condition: 200 voters is less than 10% of all registered voters ($N \\geq 2,000$). (Satisfied).Large Counts: $n\\hat{p} = 116 \\geq 10$ and $n(1-\\hat{p}) = 84 \\geq 10$. (Satisfied; normal approximation is valid).(b) 95% Confidence Interval: $\\hat{p} = 116/200 = 0.58$, $z^* = 1.96$. $\\mathrm{SE} = \\sqrt{\\frac{0.58(0.42)}{200}} = \\sqrt{\\frac{0.2436}{200}} \\approx 0.0349.$ Margin of error: $\\mathrm{ME} = 1.96(0.0349) \\approx 0.0684.$ Interval: $0.58 \\pm 0.0684 = \\mathbf{(0.5116, 0.6484)} \\quad \\mathrm{or\\ } (51.2\\%, 64.8\\%).$ (c) Interpretation: We are 95% confident that the interval from 51.2% to 64.8% captures the true proportion of all registered voters who favor the new regulation.",
-          "explanation": "(a) Condition Checks:Random: Stated as an SRS of 200 registered voters. (Satisfied).10% Condition: 200 voters is less than 10% of all registered voters ($N \\geq 2,000$). (Satisfied).Large Counts: $n\\hat{p} = 116 \\geq 10$ and $n(1-\\hat{p}) = 84 \\geq 10$. (Satisfied; normal approximation is valid).(b) 95% Confidence Interval: $\\hat{p} = 116/200 = 0.58$, $z^* = 1.96$. $\\mathrm{SE} = \\sqrt{\\frac{0.58(0.42)}{200}} = \\sqrt{\\frac{0.2436}{200}} \\approx 0.0349.$ Margin of error: $\\mathrm{ME} = 1.96(0.0349) \\approx 0.0684.$ Interval: $0.58 \\pm 0.0684 = \\mathbf{(0.5116, 0.6484)} \\quad \\mathrm{or\\ } (51.2\\%, 64.8\\%).$ (c) Interpretation: We are 95% confident that the interval from 51.2% to 64.8% captures the true proportion of all registered voters who favor the new regulation."
+          "answer": "Let $D$ = disease present, $T^+$ = positive test. $P(D) = 0.02$, $P(D^c) = 0.98$. Sensitivity: $P(T^+ \\mid D) = 0.95$. Specificity: $P(T^- \\mid D^c) = 0.90 \\Rightarrow P(T^+ \\mid D^c) = 0.10$. By the Law of Total Probability: $P(T^+) = P(D)P(T^+ \\mid D) + P(D^c)P(T^+ \\mid D^c) = (0.02)(0.95) + (0.98)(0.10) = 0.019 + 0.098 = 0.117.$ By Bayes' Theorem: $P(D \\mid T^+) = \\frac{P(D \\cap T^+)}{P(T^+)} = \\frac{0.019}{0.117} \\approx \\mathbf{0.1624} \\quad (16.24\\%).$ Despite 95% sensitivity, only ~16.2% of positive testers have the disease due to low baseline prevalence.",
+          "explanation": "Let $D$ = disease present, $T^+$ = positive test. $P(D) = 0.02$, $P(D^c) = 0.98$. Sensitivity: $P(T^+ \\mid D) = 0.95$. Specificity: $P(T^- \\mid D^c) = 0.90 \\Rightarrow P(T^+ \\mid D^c) = 0.10$. By the Law of Total Probability: $P(T^+) = P(D)P(T^+ \\mid D) + P(D^c)P(T^+ \\mid D^c) = (0.02)(0.95) + (0.98)(0.10) = 0.019 + 0.098 = 0.117.$ By Bayes' Theorem: $P(D \\mid T^+) = \\frac{P(D \\cap T^+)}{P(T^+)} = \\frac{0.019}{0.117} \\approx \\mathbf{0.1624} \\quad (16.24\\%).$ Despite 95% sensitivity, only ~16.2% of positive testers have the disease due to low baseline prevalence."
         }
       ]
     },
@@ -329,120 +325,10 @@
           "explanation": "$\\mu=np=14(0.7)=9.8$."
         },
         {
-          "q": "A binomial random variable has $n=30$ trials with success probability $p=0.3$. Find the mean $\\mu=np$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Binomial setting and conditions",
-          "choices": [
-            "$10.0$",
-            "$8.0$",
-            "$9.0$",
-            "$21.0$"
-          ],
-          "correct": 2,
-          "answer": "$\\mu=np=30(0.3)=9.0$.",
-          "explanation": "$\\mu=np=30(0.3)=9.0$."
-        },
-        {
-          "q": "A binomial random variable has $n=36$ trials with success probability $p=0.6$. Find the mean $\\mu=np$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Binomial probability formula",
-          "choices": [
-            "$21.6$",
-            "$22.6$",
-            "$20.6$",
-            "$14.4$"
-          ],
-          "correct": 0,
-          "answer": "$\\mu=np=36(0.6)=21.6$.",
-          "explanation": "$\\mu=np=36(0.6)=21.6$.",
-          "figure": {
-            "type": "bars",
-            "categories": [
-              "Q1",
-              "Q2",
-              "Q3",
-              "Q4",
-              "Q5"
-            ],
-            "values": [
-              18,
-              24,
-              29,
-              22,
-              27
-            ],
-            "ylabel": "Frequency",
-            "highlight_index": 2,
-            "width": 230
-          }
-        },
-        {
-          "q": "A binomial random variable has $n=21$ trials with success probability $p=0.4$. Find the mean $\\mu=np$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Visualizing a binomial distribution",
-          "choices": [
-            "$12.6$",
-            "$8.4$",
-            "$7.4$",
-            "$9.4$"
-          ],
-          "correct": 1,
-          "answer": "$\\mu=np=21(0.4)=8.4$.",
-          "explanation": "$\\mu=np=21(0.4)=8.4$."
-        },
-        {
-          "q": "A binomial random variable has $n=30$ trials with success probability $p=0.4$. Find the mean $\\mu=np$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Geometric distribution (brief introduction)",
-          "choices": [
-            "$13.0$",
-            "$12.0$",
-            "$11.0$",
-            "$18.0$"
-          ],
-          "correct": 1,
-          "answer": "$\\mu=np=30(0.4)=12.0$.",
-          "explanation": "$\\mu=np=30(0.4)=12.0$."
-        },
-        {
-          "q": "A binomial random variable has $n=13$ trials with success probability $p=0.3$. Find the mean $\\mu=np$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Applying the binomial distribution in context",
-          "choices": [
-            "$2.9$",
-            "$4.9$",
-            "$3.9$",
-            "$9.1$"
-          ],
-          "correct": 2,
-          "answer": "$\\mu=np=13(0.3)=3.9$.",
-          "explanation": "$\\mu=np=13(0.3)=3.9$."
-        },
-        {
-          "q": "A binomial random variable has $n=25$ trials with success probability $p=0.6$. Find the mean $\\mu=np$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Binomial probability of at least one success",
-          "choices": [
-            "$16.0$",
-            "$14.0$",
-            "$10.0$",
-            "$15.0$"
-          ],
-          "correct": 3,
-          "answer": "$\\mu=np=25(0.6)=15.0$.",
-          "explanation": "$\\mu=np=25(0.6)=15.0$."
-        },
-        {
           "q": "A binomial random variable has $n=15$ trials with success probability $p=0.9$. Find the standard deviation $\\sigma=\\sqrt{np(1-p)}$, to two decimal places.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Comparing binomial scenarios",
+          "target": "Binomial setting and conditions",
           "choices": [
             "$1.35$",
             "$1.16$",
@@ -451,27 +337,131 @@
           ],
           "correct": 1,
           "answer": "$\\sigma=\\sqrt{np(1-p)}=\\sqrt{15(0.9)(0.1)}=\\sqrt{1.35}\\approx1.16$.",
-          "explanation": "$\\sigma=\\sqrt{np(1-p)}=\\sqrt{15(0.9)(0.1)}=\\sqrt{1.35}\\approx1.16$.",
+          "explanation": "$\\sigma=\\sqrt{np(1-p)}=\\sqrt{15(0.9)(0.1)}=\\sqrt{1.35}\\approx1.16$."
+        },
+        {
+          "q": "A manufacturing process produces defective items independently with probability $0.3$. In a batch of $15$ items, find the probability that at least one item is defective, using the complement of \"zero defective,\" to three decimal places.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Binomial probability formula",
+          "choices": [
+            "$1.045$",
+            "$0.995$",
+            "$0.005$",
+            "$0.945$"
+          ],
+          "correct": 1,
+          "answer": "P(zero defective) $=(0.7)^{15}\\approx0.005$. P(at least one) $=1-0.005=0.995$.",
+          "explanation": "P(zero defective) $=(0.7)^{15}\\approx0.005$. P(at least one) $=1-0.005=0.995$.",
           "figure": {
             "type": "plot",
             "fns": [
-              "4*exp(-0.5*x**2)"
+              "0.6*(x - (-1.5))**2 + (-1.0)",
+              "0.65*x + (0.2)"
             ],
-            "xmin": -3.5,
-            "xmax": 3.5,
-            "ymin": -0.4,
-            "ymax": 4.6,
-            "shade": {
-              "fn1": "4*exp(-0.5*x**2)",
-              "fn2": "0",
-              "x0": -1.96,
-              "x1": 1.96
-            },
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -5,
+            "ymax": 6,
             "point_labels": [
               {
-                "x": 1.96,
-                "y": 0.59,
-                "label": "$z=1.96$"
+                "x": -1.5,
+                "y": -1.0,
+                "label": "$(-1.5,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A process succeeds independently with probability $p=0.5$ on each of $n=10$ trials. Find the probability of exactly $9$ successes, using $P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}$, to three decimal places.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Visualizing a binomial distribution",
+          "choices": [
+            "$0.001$",
+            "$0.020$",
+            "$0.060$",
+            "$0.010$"
+          ],
+          "correct": 3,
+          "answer": "$P(X=9)=\\binom{10}{9}(0.5)^{9}(0.5)^{1}=10(0.5)^{9}(0.5)^{1}\\approx0.010$.",
+          "explanation": "$P(X=9)=\\binom{10}{9}(0.5)^{9}(0.5)^{1}=10(0.5)^{9}(0.5)^{1}\\approx0.010$."
+        },
+        {
+          "q": "A game costs $5$ dollars to play. You win $15$ dollars with probability $0.9$, and win nothing otherwise. Letting $X$ be your net profit, find $E(X)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Geometric distribution (brief introduction)",
+          "choices": [
+            "$-\\frac{7}{2}$",
+            "$\\frac{15}{2}$",
+            "$\\frac{17}{2}$",
+            "$\\frac{19}{2}$"
+          ],
+          "correct": 2,
+          "answer": "$X=10$ (win, minus the $5$ cost) with probability $0.9$; $X=-5$ (lose the cost) with probability $0.1$. $E(X)=10(0.9)+(-5)(0.1)=\\frac{17}{2}$.",
+          "explanation": "$X=10$ (win, minus the $5$ cost) with probability $0.9$; $X=-5$ (lose the cost) with probability $0.1$. $E(X)=10(0.9)+(-5)(0.1)=\\frac{17}{2}$."
+        },
+        {
+          "q": "Binomial distribution requires:",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Applying the binomial distribution in context",
+          "choices": [
+            "Continuous outcomes",
+            "Fixed n, two outcomes, constant p, independence",
+            "Normal data",
+            "Dependent trials"
+          ],
+          "correct": 1,
+          "answer": "BINS: Binary, Independent, fixed N, same probability p.",
+          "explanation": "BINS: Binary, Independent, fixed N, same probability p."
+        },
+        {
+          "q": "A binomial random variable has $n=6$ trials and success probability $p=0.25$. Find $P(X=6)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Binomial probability of at least one success",
+          "choices": [
+            "0.0044",
+            "0.0002",
+            "0.1318",
+            "0.033"
+          ],
+          "correct": 1,
+          "answer": "$P(X=6)=\\binom{6}{6}(0.25)^{6}(1-0.25)^{0}=0.0002$.",
+          "explanation": "$P(X=6)=\\binom{6}{6}(0.25)^{6}(1-0.25)^{0}=0.0002$."
+        },
+        {
+          "q": "A geometric random variable counts trials until the first success, with success probability $p=0.29$ each trial. Find $P(X=6)$, the probability the first success occurs on trial 6.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Comparing binomial scenarios",
+          "choices": [
+            "0.0737",
+            "0.1462",
+            "0.0523",
+            "0.0264"
+          ],
+          "correct": 2,
+          "answer": "$P(X=6)=(1-0.29)^{5}(0.29)=0.0523$.",
+          "explanation": "$P(X=6)=(1-0.29)^{5}(0.29)=0.0523$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.3*(x - (0.0))**2 + (0.0)",
+              "1.4*x + (1.2)"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -5,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": 0.0,
+                "label": "$(0,0)$"
               }
             ],
             "width": 230
@@ -483,163 +473,139 @@
       "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
       "questions": [
         {
-          "q": "A binomial random variable has $n=29$ trials with success probability $p=0.6$. Find the standard deviation $\\sigma=\\sqrt{np(1-p)}$, to two decimal places.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Expected Value of a Discrete Random Variable",
-          "choices": [
-            "$2.34$",
-            "$6.96$",
-            "$2.64$",
-            "$2.94$"
-          ],
-          "correct": 2,
-          "answer": "$\\sigma=\\sqrt{np(1-p)}=\\sqrt{29(0.6)(0.4)}=\\sqrt{6.96}\\approx2.64$.",
-          "explanation": "$\\sigma=\\sqrt{np(1-p)}=\\sqrt{29(0.6)(0.4)}=\\sqrt{6.96}\\approx2.64$."
-        },
-        {
-          "q": "A binomial random variable has $n=34$ trials with success probability $p=0.8$. Find the standard deviation $\\sigma=\\sqrt{np(1-p)}$, to two decimal places.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Variance & Standard Deviation of Combinations",
-          "choices": [
-            "$2.63$",
-            "$2.33$",
-            "$5.44$",
-            "$2.03$"
-          ],
-          "correct": 1,
-          "answer": "$\\sigma=\\sqrt{np(1-p)}=\\sqrt{34(0.8)(0.2)}=\\sqrt{5.44}\\approx2.33$.",
-          "explanation": "$\\sigma=\\sqrt{np(1-p)}=\\sqrt{34(0.8)(0.2)}=\\sqrt{5.44}\\approx2.33$."
-        },
-        {
-          "q": "A binomial random variable has $n=33$ trials with success probability $p=0.1$. Find the standard deviation $\\sigma=\\sqrt{np(1-p)}$, to two decimal places.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "The Binomial Setting & Probability Formula",
-          "choices": [
-            "$2.02$",
-            "$1.42$",
-            "$2.97$",
-            "$1.72$"
-          ],
-          "correct": 3,
-          "answer": "$\\sigma=\\sqrt{np(1-p)}=\\sqrt{33(0.1)(0.9)}=\\sqrt{2.97}\\approx1.72$.",
-          "explanation": "$\\sigma=\\sqrt{np(1-p)}=\\sqrt{33(0.1)(0.9)}=\\sqrt{2.97}\\approx1.72$."
-        },
-        {
-          "q": "A binomial random variable has $n=11$ trials with success probability $p=0.6$. Find the standard deviation $\\sigma=\\sqrt{np(1-p)}$, to two decimal places.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Mean & Standard Deviation of Binomial Distributions",
-          "choices": [
-            "$1.62$",
-            "$1.32$",
-            "$1.92$",
-            "$2.64$"
-          ],
-          "correct": 0,
-          "answer": "$\\sigma=\\sqrt{np(1-p)}=\\sqrt{11(0.6)(0.4)}=\\sqrt{2.64}\\approx1.62$.",
-          "explanation": "$\\sigma=\\sqrt{np(1-p)}=\\sqrt{11(0.6)(0.4)}=\\sqrt{2.64}\\approx1.62$."
-        },
-        {
-          "q": "A binomial random variable has $n=39$ trials with success probability $p=0.8$. Find the standard deviation $\\sigma=\\sqrt{np(1-p)}$, to two decimal places.",
+          "q": "A binomial random variable has $n=30$ and $p=0.24$. Find its standard deviation $\\sigma = \\sqrt{np(1-p)}$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Probability distributions and expected value",
           "choices": [
-            "$2.50$",
-            "$2.80$",
-            "$2.20$",
-            "$6.24$"
+            "2.339",
+            "0.339",
+            "1.839",
+            "1.339"
           ],
           "correct": 0,
-          "answer": "$\\sigma=\\sqrt{np(1-p)}=\\sqrt{39(0.8)(0.2)}=\\sqrt{6.24}\\approx2.50$.",
-          "explanation": "$\\sigma=\\sqrt{np(1-p)}=\\sqrt{39(0.8)(0.2)}=\\sqrt{6.24}\\approx2.50$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "4*exp(-0.5*x**2)"
-            ],
-            "xmin": -3.5,
-            "xmax": 3.5,
-            "ymin": -0.4,
-            "ymax": 4.6,
-            "shade": {
-              "fn1": "4*exp(-0.5*x**2)",
-              "fn2": "0",
-              "x0": -1.65,
-              "x1": 1.65
-            },
-            "point_labels": [
-              {
-                "x": 1.65,
-                "y": 1.03,
-                "label": "$z=1.65$"
-              }
-            ],
-            "width": 230
-          }
+          "answer": "$\\sigma = \\sqrt{30\\times0.24\\times0.76} = 2.339$.",
+          "explanation": "$\\sigma = \\sqrt{30\\times0.24\\times0.76} = 2.339$."
         },
         {
-          "q": "A binomial random variable has $n=24$ trials with success probability $p=0.9$. Find the standard deviation $\\sigma=\\sqrt{np(1-p)}$, to two decimal places.",
+          "q": "Normal distribution is symmetric about:",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Binomial setting and conditions",
           "choices": [
-            "$2.16$",
-            "$1.77$",
-            "$1.47$",
-            "$1.17$"
+            "Standard deviation",
+            "Median only",
+            "The mean",
+            "Zero"
           ],
           "correct": 2,
-          "answer": "$\\sigma=\\sqrt{np(1-p)}=\\sqrt{24(0.9)(0.1)}=\\sqrt{2.16}\\approx1.47$.",
-          "explanation": "$\\sigma=\\sqrt{np(1-p)}=\\sqrt{24(0.9)(0.1)}=\\sqrt{2.16}\\approx1.47$."
+          "answer": "The normal curve is symmetric about its mean μ.",
+          "explanation": "The normal curve is symmetric about its mean μ."
         },
         {
-          "q": "A manufacturing process produces defective items independently with probability $0.1$. In a batch of $14$ items, find the probability that at least one item is defective, using the complement of \"zero defective,\" to three decimal places.",
+          "q": "The Central Limit Theorem states that sample means are approximately Normal when:",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Binomial probability formula",
           "choices": [
-            "$0.721$",
-            "$0.771$",
-            "$0.821$",
-            "$0.229$"
+            "Population is Normal",
+            "n is large (n≥30)",
+            "σ is known",
+            "p<0.5"
           ],
           "correct": 1,
-          "answer": "P(zero defective) $=(0.9)^{14}\\approx0.229$. P(at least one) $=1-0.229=0.771$.",
-          "explanation": "P(zero defective) $=(0.9)^{14}\\approx0.229$. P(at least one) $=1-0.229=0.771$."
+          "answer": "CLT: for large n, $\\bar{x}$ is approximately Normal regardless of population shape.",
+          "explanation": "CLT: for large n, $\\bar{x}$ is approximately Normal regardless of population shape."
         },
         {
-          "q": "A manufacturing process produces defective items independently with probability $0.1$. In a batch of $12$ items, find the probability that at least one item is defective, using the complement of \"zero defective,\" to three decimal places.",
+          "q": "A Normal random variable has $\\mu=189$ and $\\sigma=8$. Find $P(173 < X < 213)$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Visualizing a binomial distribution",
           "choices": [
-            "$0.282$",
-            "$0.668$",
-            "$0.718$",
-            "$0.768$"
+            "0.8759",
+            "0.9759",
+            "0.7759",
+            "0.6759"
           ],
-          "correct": 2,
-          "answer": "P(zero defective) $=(0.9)^{12}\\approx0.282$. P(at least one) $=1-0.282=0.718$.",
-          "explanation": "P(zero defective) $=(0.9)^{12}\\approx0.282$. P(at least one) $=1-0.282=0.718$."
+          "correct": 1,
+          "answer": "$z_1=\\frac{173-189}{8}=-2$, $z_2=\\frac{213-189}{8}=3$. $P(173<X<213)=0.9759$.",
+          "explanation": "$z_1=\\frac{173-189}{8}=-2$, $z_2=\\frac{213-189}{8}=3$. $P(173<X<213)=0.9759$."
         },
         {
-          "q": "A process succeeds independently with probability $p=0.8$ on each of $n=6$ trials. Find the probability of exactly $2$ successes, using $P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}$, to three decimal places.",
+          "q": "Events A and B satisfy $P(A) = 0.55$, $P(B) = 0.12$, and $P(A \\cap B) = 0.0$. Find $P(A \\cup B)$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Geometric distribution (brief introduction)",
           "choices": [
-            "$0.031$",
-            "$0.015$",
-            "$0.001$",
-            "$0.065$"
+            "0.57",
+            "0.67",
+            "0.82",
+            "0.62"
           ],
           "correct": 1,
-          "answer": "$P(X=2)=\\binom{6}{2}(0.8)^{2}(0.2)^{4}=15(0.8)^{2}(0.2)^{4}\\approx0.015$.",
-          "explanation": "$P(X=2)=\\binom{6}{2}(0.8)^{2}(0.2)^{4}=15(0.8)^{2}(0.2)^{4}\\approx0.015$."
+          "answer": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)=0.55+0.12-0.0=0.67$.",
+          "explanation": "$P(A\\cup B)=P(A)+P(B)-P(A\\cap B)=0.55+0.12-0.0=0.67$."
+        },
+        {
+          "q": "P(A and B) if A,B independent:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Applying the binomial distribution in context",
+          "choices": [
+            "$P(A)+P(B)$",
+            "$P(A)\\cdot P(B)$",
+            "$P(A|B)$",
+            "$P(A)+P(B)-P(A\\cup B)$"
+          ],
+          "correct": 1,
+          "answer": "Independence: multiply probabilities.",
+          "explanation": "Independence: multiply probabilities."
+        },
+        {
+          "q": "In a standard Normal, what % of values fall within 1σ?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Binomial probability of at least one success",
+          "choices": [
+            "~68%",
+            "~95%",
+            "~99.7%",
+            "~50%"
+          ],
+          "correct": 0,
+          "answer": "68-95-99.7 rule: 68% within ±1σ.",
+          "explanation": "68-95-99.7 rule: 68% within ±1σ."
+        },
+        {
+          "q": "A random variable $X$ follows a binomial distribution $B(n, p)$. The number of trials is $n=10$ and the probability of success in a single trial is $p$. If the mean of $X$ is 4, find the variance of $X$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Comparing binomial scenarios",
+          "choices": [
+            "2.4",
+            "3.6",
+            "6.4",
+            "7.2"
+          ],
+          "correct": 0,
+          "answer": "For a binomial distribution $X \\sim B(n, p)$, the mean is given by $E(X) = np$ and the variance is given by $Var(X) = np(1-p)$. We are given that $n=10$ and $E(X)=4$. Using the formula for the mean, we have $10p = 4$. Solving for $p$, we get $p = \\frac{4}{10} = 0.4$. Now we can find the variance using the formula $Var(X) = np(1-p)$. Substituting the values of $n$ and $p$, we get $Var(X) = 10 \\times 0.4 \\times (1 - 0.4)$. $Var(X) = 10 \\times 0.4 \\times 0.6$. $Var(X) = 4 \\times 0.6$. $Var(X) = 2.4$.",
+          "explanation": "For a binomial distribution $X \\sim B(n, p)$, the mean is given by $E(X) = np$ and the variance is given by $Var(X) = np(1-p)$. We are given that $n=10$ and $E(X)=4$. Using the formula for the mean, we have $10p = 4$. Solving for $p$, we get $p = \\frac{4}{10} = 0.4$. Now we can find the variance using the formula $Var(X) = np(1-p)$. Substituting the values of $n$ and $p$, we get $Var(X) = 10 \\times 0.4 \\times (1 - 0.4)$. $Var(X) = 10 \\times 0.4 \\times 0.6$. $Var(X) = 4 \\times 0.6$. $Var(X) = 2.4$."
+        },
+        {
+          "q": "A researcher is designing a survey to understand student preferences for extracurricular activities at a large university. The university has 4 distinct colleges: Arts & Sciences, Engineering, Business, and Health Sciences. The researcher decides to use stratified random sampling. If each college represents one stratum, and the researcher wants to survey 200 students in total, with the number of students surveyed from each college being proportional to the college's enrollment, which of the following represents a valid way to determine the sample size for each college?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Probability distributions and expected value",
+          "choices": [
+            "A simple random sample of 200 students from the entire university population.",
+            "A systematic sample of 200 students from an alphabetized list of all students.",
+            "A convenience sample of 200 students from the campus cafeteria.",
+            "Proportionally allocating the 200 students to each of the 4 colleges based on their enrollment figures."
+          ],
+          "correct": 3,
+          "answer": "Stratified random sampling involves dividing the population into subgroups (strata) and then taking a random sample from each stratum. In this scenario, the 4 colleges are the strata. Proportional allocation means that the number of students sampled from each college is in proportion to that college's size relative to the total university enrollment. Therefore, allocating the 200 students proportionally to the enrollment of each of the 4 colleges is the correct approach for stratified random sampling.",
+          "explanation": "Stratified random sampling involves dividing the population into subgroups (strata) and then taking a random sample from each stratum. In this scenario, the 4 colleges are the strata. Proportional allocation means that the number of students sampled from each college is in proportion to that college's size relative to the total university enrollment. Therefore, allocating the 200 students proportionally to the enrollment of each of the 4 colleges is the correct approach for stratified random sampling."
         }
       ]
     },
@@ -647,132 +613,143 @@
       "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
       "questions": [
         {
-          "q": "A process succeeds independently with probability $p=0.2$ on each of $n=8$ trials. Find the probability of exactly $1$ successes, using $P(X=k)=\\binom{n}{k}p^k(1-p)^{n-k}$, to three decimal places.",
+          "q": "A histogram is used to display the distribution of the number of hours college students reported spending on social media per day. The bins for the histogram are as follows: 0-2 hours, 2-4 hours, 4-6 hours, 6-8 hours, and 8-10 hours. The heights of the bars are 5, 12, 15, 8, and 3, respectively. What is the total number of students represented by this histogram?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Binomial setting and conditions",
+          "choices": [
+            "15",
+            "43",
+            "50",
+            "200"
+          ],
+          "correct": 2,
+          "answer": "The heights of the bars in a histogram represent the frequencies (counts) of data points within each bin. To find the total number of students represented, we sum the heights of all the bars. Total students = Height of bar 1 + Height of bar 2 + Height of bar 3 + Height of bar 4 + Height of bar 5 Total students = 5 + 12 + 15 + 8 + 3 = 43. Therefore, 43 students are represented by this histogram.",
+          "explanation": "The heights of the bars in a histogram represent the frequencies (counts) of data points within each bin. To find the total number of students represented, we sum the heights of all the bars. Total students = Height of bar 1 + Height of bar 2 + Height of bar 3 + Height of bar 4 + Height of bar 5 Total students = 5 + 12 + 15 + 8 + 3 = 43. Therefore, 43 students are represented by this histogram.",
+          "cross_lesson": "2.01 Sampling Methods & Bias"
+        },
+        {
+          "q": "A distribution is displayed as a symmetric, bell-shaped histogram with a single peak in the middle. How should this shape be described?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Binomial probability formula",
+          "choices": [
+            "Bimodal",
+            "Skewed left (negatively skewed)",
+            "Skewed right (positively skewed)",
+            "Approximately symmetric (unimodal)"
+          ],
+          "correct": 3,
+          "answer": "This description matches the shape: Approximately symmetric (unimodal). In this case, mean ≈ median.",
+          "explanation": "This description matches the shape: Approximately symmetric (unimodal). In this case, mean ≈ median.",
+          "cross_lesson": "2.02 Experimental Design & Scope of Inference"
+        },
+        {
+          "q": "A distribution is displayed as a histogram with two separate peaks. How should this shape be described?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Visualizing a binomial distribution",
+          "choices": [
+            "Skewed right (positively skewed)",
+            "Approximately symmetric (unimodal)",
+            "Skewed left (negatively skewed)",
+            "Bimodal"
+          ],
+          "correct": 3,
+          "answer": "This description matches the shape: Bimodal. In this case, no simple mean/median rule applies.",
+          "explanation": "This description matches the shape: Bimodal. In this case, no simple mean/median rule applies.",
+          "cross_lesson": "3.01 Probability Rules & Conditional Probability"
+        },
+        {
+          "q": "A distribution is right-skewed when:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Geometric distribution (brief introduction)",
+          "choices": [
+            "Mean < Median",
+            "Mean > Median",
+            "Mean = Median",
+            "Mode > Mean"
+          ],
+          "correct": 1,
+          "answer": "Right skew pulls mean above median.",
+          "explanation": "Right skew pulls mean above median.",
+          "cross_lesson": "3.03 The Normal Distribution"
+        },
+        {
+          "q": "A wire of length $4\\mathrm{\\ m}$ is bent to form a rectangle with adjacent sides of lengths $X\\mathrm{\\ m}$ and $(2 - X)\\mathrm{\\ m}$, where $X$ is a continuous random variable with probability density function $f(x) = \\left\\{ \\frac{3}{8}x^2,, 0 \\leq x \\leq 2, ; 0,, \\mathrm{otherwise.} \\right.$ Given that the area of the rectangle is at least $\\frac{3}{4}\\mathrm{\\ m}^2$, find the probability that the length of the shorter side is at most $\\frac{2}{3}\\mathrm{\\ m}$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Applying the binomial distribution in context",
           "choices": [
-            "$0.286$",
-            "$0.386$",
-            "$0.671$",
-            "$0.336$"
+            "$\\frac{127}{351}$",
+            "$\\frac{74}{351}$",
+            "$\\frac{37}{351}$",
+            "$\\frac{127}{640}$"
           ],
-          "correct": 3,
-          "answer": "$P(X=1)=\\binom{8}{1}(0.2)^{1}(0.8)^{7}=8(0.2)^{1}(0.8)^{7}\\approx0.336$.",
-          "explanation": "$P(X=1)=\\binom{8}{1}(0.2)^{1}(0.8)^{7}=8(0.2)^{1}(0.8)^{7}\\approx0.336$.",
-          "cross_lesson": "2.01 Sampling Methods & Bias"
+          "correct": 0,
+          "answer": "Let $A$ denote the area of the rectangle and $L_{\\min}$ denote the length of the shorter side. 1. **Determine the condition for $A \\geq \\frac{3}{4}$:** The area is given by $A = X(2 - X) = 2X - X^2$. $2X - X^2 \\geq \\frac{3}{4} \\Leftrightarrow X^2 - 2X + \\frac{3}{4} \\leq 0 \\Leftrightarrow \\left(X - \\frac{1}{2}\\right)\\left(X - \\frac{3}{2}\\right) \\leq 0$ Thus, $A \\geq \\frac{3}{4}$ corresponds to the interval $E_1 = \\left[\\frac{1}{2}, \\frac{3}{2}\\right]$. Using the cumulative distribution function $F(x) = \\int_0^x \\frac{3}{8}t^2\\,dt = \\frac{x^3}{8}$ for $0 \\leq x \\leq 2$: $P(E_1) = F\\left(\\frac{3}{2}\\right) - F\\left(\\frac{1}{2}\\right) = \\frac{\\left(\\frac{3}{2}\\right)^3 - \\left(\\frac{1}{2}\\right)^3}{8} = \\frac{\\frac{27}{8} - \\frac{1}{8}}{8} = \\frac{26}{64} = \\frac{13}{32}$ 2. **Determine the condition for $L_{\\min} \\leq \\frac{2}{3}$:** The shorter side length is $L_{\\min} = \\min(X, 2 - X)$. $\\min(X, 2 - X) \\leq \\frac{2}{3} \\Leftrightarrow X \\leq \\frac{2}{3} \\quad \\mathrm{or} \\quad 2 - X \\leq \\frac{2}{3} \\Leftrightarrow X \\geq \\frac{4}{3}$ Thus, $E_2 = \\left[0, \\frac{2}{3}\\right] \\cup \\left[\\frac{4}{3}, 2\\right]$. 3. **Find the probability of the intersection $E_1 \\cap E_2$:** $E_1 \\cap E_2 = \\left[\\frac{1}{2}, \\frac{2}{3}\\right] \\cup \\left[\\frac{4}{3}, \\frac{3}{2}\\right]$ Calculating the probabilities for these two disjoint intervals: $P\\left(\\left[\\frac{1}{2}, \\frac{2}{3}\\right]\\right) = \\frac{\\left(\\frac{2}{3}\\right)^3 - \\left(\\frac{1}{2}\\right)^3}{8} = \\frac{\\frac{8}{27} - \\frac{1}{8}}{8} = \\frac{37}{1728}$ $P\\left(\\left[\\frac{4}{3}, \\frac{3}{2}\\right]\\right) = \\frac{\\left(\\frac{3}{2}\\right)^3 - \\left(\\frac{4}{3}\\right)^3}{8} = \\frac{\\frac{27}{8} - \\frac{64}{27}}{8} = \\frac{217}{1728}$ $P(E_1 \\cap E_2) = \\frac{37 + 217}{1728} = \\frac{254}{1728} = \\frac{127}{864}$ 4. **Calculate the conditional probability:** $P(E_2 \\mid E_1) = \\frac{P(E_1 \\cap E_2)}{P(E_1)} = \\frac{\\frac{127}{864}}{\\frac{13}{32}} = \\frac{127}{864} \\times \\frac{32}{13} = \\frac{127}{27 \\times 13} = \\frac{127}{351}$ **Common Misconceptions:** - Assuming the distribution is symmetric about $x = 1$ leads to doubling the lower interval's probability $2 \\times \\frac{37}{1728} / \\frac{13}{32} = \\frac{74}{351}$. - Considering only the lower interval $X \\leq \\frac{2}{3}$ yields $\\frac{37}{351}$. - Inverting the condition to calculate $P(E_1 \\mid E_2)$ gives $\\frac{127}{640}$.",
+          "explanation": "Let $A$ denote the area of the rectangle and $L_{\\min}$ denote the length of the shorter side. 1. **Determine the condition for $A \\geq \\frac{3}{4}$:** The area is given by $A = X(2 - X) = 2X - X^2$. $2X - X^2 \\geq \\frac{3}{4} \\Leftrightarrow X^2 - 2X + \\frac{3}{4} \\leq 0 \\Leftrightarrow \\left(X - \\frac{1}{2}\\right)\\left(X - \\frac{3}{2}\\right) \\leq 0$ Thus, $A \\geq \\frac{3}{4}$ corresponds to the interval $E_1 = \\left[\\frac{1}{2}, \\frac{3}{2}\\right]$. Using the cumulative distribution function $F(x) = \\int_0^x \\frac{3}{8}t^2\\,dt = \\frac{x^3}{8}$ for $0 \\leq x \\leq 2$: $P(E_1) = F\\left(\\frac{3}{2}\\right) - F\\left(\\frac{1}{2}\\right) = \\frac{\\left(\\frac{3}{2}\\right)^3 - \\left(\\frac{1}{2}\\right)^3}{8} = \\frac{\\frac{27}{8} - \\frac{1}{8}}{8} = \\frac{26}{64} = \\frac{13}{32}$ 2. **Determine the condition for $L_{\\min} \\leq \\frac{2}{3}$:** The shorter side length is $L_{\\min} = \\min(X, 2 - X)$. $\\min(X, 2 - X) \\leq \\frac{2}{3} \\Leftrightarrow X \\leq \\frac{2}{3} \\quad \\mathrm{or} \\quad 2 - X \\leq \\frac{2}{3} \\Leftrightarrow X \\geq \\frac{4}{3}$ Thus, $E_2 = \\left[0, \\frac{2}{3}\\right] \\cup \\left[\\frac{4}{3}, 2\\right]$. 3. **Find the probability of the intersection $E_1 \\cap E_2$:** $E_1 \\cap E_2 = \\left[\\frac{1}{2}, \\frac{2}{3}\\right] \\cup \\left[\\frac{4}{3}, \\frac{3}{2}\\right]$ Calculating the probabilities for these two disjoint intervals: $P\\left(\\left[\\frac{1}{2}, \\frac{2}{3}\\right]\\right) = \\frac{\\left(\\frac{2}{3}\\right)^3 - \\left(\\frac{1}{2}\\right)^3}{8} = \\frac{\\frac{8}{27} - \\frac{1}{8}}{8} = \\frac{37}{1728}$ $P\\left(\\left[\\frac{4}{3}, \\frac{3}{2}\\right]\\right) = \\frac{\\left(\\frac{3}{2}\\right)^3 - \\left(\\frac{4}{3}\\right)^3}{8} = \\frac{\\frac{27}{8} - \\frac{64}{27}}{8} = \\frac{217}{1728}$ $P(E_1 \\cap E_2) = \\frac{37 + 217}{1728} = \\frac{254}{1728} = \\frac{127}{864}$ 4. **Calculate the conditional probability:** $P(E_2 \\mid E_1) = \\frac{P(E_1 \\cap E_2)}{P(E_1)} = \\frac{\\frac{127}{864}}{\\frac{13}{32}} = \\frac{127}{864} \\times \\frac{32}{13} = \\frac{127}{27 \\times 13} = \\frac{127}{351}$ **Common Misconceptions:** - Assuming the distribution is symmetric about $x = 1$ leads to doubling the lower interval's probability $2 \\times \\frac{37}{1728} / \\frac{13}{32} = \\frac{74}{351}$. - Considering only the lower interval $X \\leq \\frac{2}{3}$ yields $\\frac{37}{351}$. - Inverting the condition to calculate $P(E_1 \\mid E_2)$ gives $\\frac{127}{640}$.",
+          "cross_lesson": "3.04 Sampling Distributions & Central Limit Theorem"
         },
         {
-          "q": "A game costs $10$ dollars to play. You win $31$ dollars with probability $0.3$, and win nothing otherwise. Letting $X$ be your net profit, find $E(X)$.",
+          "q": "The bar graph below shows the distribution of the number of siblings reported by the 25 students in a homeroom class. If 1 student is selected at random from the class, what is the probability that the selected student has at least 2 siblings?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Binomial probability of at least one success",
           "choices": [
-            "$-\\frac{17}{10}$",
-            "$\\frac{3}{10}$",
-            "$-\\frac{7}{10}$",
-            "$\\frac{117}{10}$"
+            "$\\frac{6}{25}$",
+            "$\\frac{9}{25}$",
+            "$\\frac{12}{25}$",
+            "$\\frac{16}{25}$"
           ],
-          "correct": 2,
-          "answer": "$X=21$ (win, minus the $10$ cost) with probability $0.3$; $X=-10$ (lose the cost) with probability $0.7$. $E(X)=21(0.3)+(-10)(0.7)=-\\frac{7}{10}$.",
-          "explanation": "$X=21$ (win, minus the $10$ cost) with probability $0.3$; $X=-10$ (lose the cost) with probability $0.7$. $E(X)=21(0.3)+(-10)(0.7)=-\\frac{7}{10}$.",
-          "cross_lesson": "2.02 Experimental Design & Scope of Inference"
+          "correct": 1,
+          "answer": "To find the probability that a randomly chosen student has at least 2 siblings: 1. Find the total number of outcomes (students): $6 + 10 + 6 + 3 = 25$ 2. Find the number of favorable outcomes. The phrase \"at least 2 siblings\" means having 2 or more siblings (either 2 or 3 siblings): - Number of students with 2 siblings: $6$ - Number of students with 3 siblings: $3$ - Favorable outcomes: $6 + 3 = 9$ 3. Calculate the probability: $P(\\mathrm{at\\ least\\ 2\\ siblings}) = \\frac{9}{25}$ Common Misconceptions: - $\\frac{6}{25}$ counts only students with exactly 2 siblings, failing to include those with 3. - $\\frac{16}{25}$ incorrectly counts students with fewer than 2 siblings (0 or 1 sibling: $6 + 10 = 16$).",
+          "explanation": "To find the probability that a randomly chosen student has at least 2 siblings: 1. Find the total number of outcomes (students): $6 + 10 + 6 + 3 = 25$ 2. Find the number of favorable outcomes. The phrase \"at least 2 siblings\" means having 2 or more siblings (either 2 or 3 siblings): - Number of students with 2 siblings: $6$ - Number of students with 3 siblings: $3$ - Favorable outcomes: $6 + 3 = 9$ 3. Calculate the probability: $P(\\mathrm{at\\ least\\ 2\\ siblings}) = \\frac{9}{25}$ Common Misconceptions: - $\\frac{6}{25}$ counts only students with exactly 2 siblings, failing to include those with 3. - $\\frac{16}{25}$ incorrectly counts students with fewer than 2 siblings (0 or 1 sibling: $6 + 10 = 16$).",
+          "cross_lesson": "4.01 Confidence Intervals & Hypothesis Testing"
         },
         {
-          "q": "A game costs $9$ dollars to play. You win $20$ dollars with probability $0.5$, and win nothing otherwise. Letting $X$ be your net profit, find $E(X)$.",
+          "q": "Which of the following conditions is necessary to establish a cause-and-effect relationship between two variables?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Comparing binomial scenarios",
           "choices": [
-            "$\\frac{3}{2}$",
-            "$1$",
-            "$2$",
-            "$0$"
+            "A large sample size greater than 10,000",
+            "Random selection of participants from the population",
+            "Random assignment of participants to experimental treatment groups",
+            "A correlation coefficient of exactly 1.0"
           ],
-          "correct": 1,
-          "answer": "$X=11$ (win, minus the $9$ cost) with probability $0.5$; $X=-9$ (lose the cost) with probability $0.5$. $E(X)=11(0.5)+(-9)(0.5)=1$.",
-          "explanation": "$X=11$ (win, minus the $9$ cost) with probability $0.5$; $X=-9$ (lose the cost) with probability $0.5$. $E(X)=11(0.5)+(-9)(0.5)=1$.",
-          "cross_lesson": "3.01 Probability Rules & Conditional Probability"
-        },
-        {
-          "q": "A discrete random variable $X$ has distribution: $P(X=0)=0.2, P(X=1)=0.5, P(X=2)=0.3$. Find $E(X)$.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Expected Value of a Discrete Random Variable",
-          "choices": [
-            "$1.1$",
-            "$1.0$",
-            "$1.5$",
-            "$0.8$"
-          ],
-          "correct": 0,
-          "answer": "$E(X) = \\sum x_i P(x_i) = 0(0.2) + 1(0.5) + 2(0.3) = 0 + 0.5 + 0.6 = 1.1$.",
-          "explanation": "$E(X) = \\sum x_i P(x_i) = 0(0.2) + 1(0.5) + 2(0.3) = 0 + 0.5 + 0.6 = 1.1$.",
-          "cross_lesson": "3.03 The Normal Distribution"
-        },
-        {
-          "q": "If $E(X) = 12$ and $Y = 3X - 5$, what is $E(Y)$?",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Expected Value of a Discrete Random Variable",
-          "choices": [
-            "$31$",
-            "$36$",
-            "$41$",
-            "$12$"
-          ],
-          "correct": 0,
-          "answer": "By linearity of expectation: $E(Y) = E(3X - 5) = 3E(X) - 5 = 3(12) - 5 = 36 - 5 = 31$.",
-          "explanation": "By linearity of expectation: $E(Y) = E(3X - 5) = 3E(X) - 5 = 3(12) - 5 = 36 - 5 = 31$.",
-          "cross_lesson": "3.04 Sampling Distributions & Central Limit Theorem"
-        },
-        {
-          "q": "Why must variances be added rather than standard deviations when combining independent variables?",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Variance & Standard Deviation of Combinations",
-          "choices": [
-            "Standard deviations are not in squared units, while the Pythagorean relationship of orthogonal independent variables governs variances",
-            "Standard deviations can be negative",
-            "Adding standard deviations always gives an imaginary number",
-            "Because variance is always smaller than standard deviation"
-          ],
-          "correct": 0,
-          "answer": "By the Pythagorean property of independent random variables, variances add: $\\sigma_{X+Y}^2 = \\sigma_X^2 + \\sigma_Y^2$.",
-          "explanation": "By the Pythagorean property of independent random variables, variances add: $\\sigma_{X+Y}^2 = \\sigma_X^2 + \\sigma_Y^2$.",
-          "cross_lesson": "4.01 Confidence Intervals & Hypothesis Testing"
-        },
-        {
-          "q": "A fair 6-sided die is rolled 5 times. What is the probability of rolling exactly two 4s?",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "The Binomial Setting & Probability Formula",
-          "choices": [
-            "$\\binom{5}{2} \\left(\\frac{1}{6}\\right)^2 \\left(\\frac{5}{6}\\right)^3$",
-            "$\\left(\\frac{1}{6}\\right)^2 \\left(\\frac{5}{6}\\right)^3$",
-            "$\\binom{5}{2} \\left(\\frac{1}{6}\\right)^3 \\left(\\frac{5}{6}\\right)^2$",
-            "$\\frac{2}{5}$"
-          ],
-          "correct": 0,
-          "answer": "With $n = 5, k = 2, p = \\frac{1}{6}$: $P(X = 2) = \\binom{5}{2} \\left(\\frac{1}{6}\\right)^2 \\left(\\frac{5}{6}\\right)^3$.",
-          "explanation": "With $n = 5, k = 2, p = \\frac{1}{6}$: $P(X = 2) = \\binom{5}{2} \\left(\\frac{1}{6}\\right)^2 \\left(\\frac{5}{6}\\right)^3$.",
+          "correct": 2,
+          "answer": "Random assignment of treatments is the critical requirement that controls for confounding variables and enables causal inference.",
+          "explanation": "Random assignment of treatments is the critical requirement that controls for confounding variables and enables causal inference.",
           "cross_lesson": "4.02 Chi-Square Tests & Regression Inference"
         },
         {
-          "q": "A multiple-choice test has $20$ questions, each with $4$ options. If a student guesses completely at random, what are the mean and standard deviation of correct answers?",
+          "q": "In $\\hat{y}=a+bx$, the slope $b$ represents:",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Mean & Standard Deviation of Binomial Distributions",
+          "target": "Probability distributions and expected value",
           "choices": [
-            "$\\mu = 5.0$, $\\sigma = 1.94$",
-            "$\\mu = 5.0$, $\\sigma = 3.75$",
-            "$\\mu = 4.0$, $\\sigma = 2.00$",
-            "$\\mu = 5.0$, $\\sigma = 15.0$"
+            "The predicted value at x=0",
+            "Change in y per unit x",
+            "Correlation coefficient",
+            "Standard error"
           ],
-          "correct": 0,
-          "answer": "$n = 20, p = 0.25$. Mean: $\\mu = np = 20(0.25) = 5.0$. Standard deviation: $\\sigma = \\sqrt{np(1-p)} = \\sqrt{20(0.25)(0.75)} = \\sqrt{3.75} \\approx 1.936$.",
-          "explanation": "$n = 20, p = 0.25$. Mean: $\\mu = np = 20(0.25) = 5.0$. Standard deviation: $\\sigma = \\sqrt{np(1-p)} = \\sqrt{20(0.25)(0.75)} = \\sqrt{3.75} \\approx 1.936$.",
-          "cross_lesson": "1.01 Measures of Center & Spread"
+          "correct": 1,
+          "answer": "Slope = rise over run; change in ŷ per unit change in x.",
+          "explanation": "Slope = rise over run; change in ŷ per unit change in x.",
+          "cross_lesson": "1.01 Measures of Center & Spread",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "1.5*(x)+1"
+            ],
+            "xmin": 0.0,
+            "xmax": 6.0,
+            "ymin": 0.0,
+            "ymax": 10.0,
+            "width": 230
+          }
         }
       ]
     }

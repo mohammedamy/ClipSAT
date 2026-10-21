@@ -18,7 +18,7 @@
           "figure": {
             "type": "circle",
             "center": [
-              0,
+              2,
               0
             ],
             "radius": 2.0,
@@ -30,39 +30,31 @@
           }
         },
         {
-          "q": "Convert the polar point $\\left(4,\\frac{\\pi}{3}\\right)$ to rectangular coordinates.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Converting between polar and rectangular coordinates",
-          "answer": "$x=r\\cos\\theta=4\\cos\\left(\\frac{\\pi}{3}\\right)=4\\left(\\frac{1}{2}\\right)=2$. $y=r\\sin\\theta=4\\sin\\left(\\frac{\\pi}{3}\\right)=4\\left(\\frac{\\sqrt{3}}{2}\\right)=2\\sqrt{3}$. Point: $(2,2\\sqrt{3})$.",
-          "explanation": "$x=r\\cos\\theta=4\\cos\\left(\\frac{\\pi}{3}\\right)=4\\left(\\frac{1}{2}\\right)=2$. $y=r\\sin\\theta=4\\sin\\left(\\frac{\\pi}{3}\\right)=4\\left(\\frac{\\sqrt{3}}{2}\\right)=2\\sqrt{3}$. Point: $(2,2\\sqrt{3})$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (0))**2 + (-1)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 0.0,
-                "y": -1.0,
-                "label": "$(0,-1)$"
-              }
-            ],
-            "width": 230
-          }
-        },
-        {
           "q": "Identify the type of curve for $r=2+2\\sin\\theta$, and state its key feature.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Identifying and sketching common polar curves",
           "answer": "This is a cardioid (since the coefficient of $\\sin\\theta$ equals the constant term) — a heart-shaped curve passing through the pole.",
-          "explanation": "This is a cardioid (since the coefficient of $\\sin\\theta$ equals the constant term) — a heart-shaped curve passing through the pole."
+          "explanation": "This is a cardioid (since the coefficient of $\\sin\\theta$ equals the constant term) — a heart-shaped curve passing through the pole.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-0.75*(x - (-1.5))**2 + (0.5)",
+              "-0.1*x + (-0.7)"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -5,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.5,
+                "y": 0.5,
+                "label": "$(-1.5,0.5)$"
+              }
+            ],
+            "width": 230
+          }
         },
         {
           "q": "Identify the type of curve for $r=\\cos(3\\theta)$.",
@@ -81,39 +73,47 @@
           "explanation": "$\\frac{dy}{dx}=\\frac{dy/d\\theta}{dx/d\\theta}=\\frac{\\frac{dr}{d\\theta}\\sin\\theta+r\\cos\\theta}{\\frac{dr}{d\\theta}\\cos\\theta-r\\sin\\theta}$."
         },
         {
-          "q": "Find $\\frac{dy}{dx}$ for $r=2\\theta$ at $\\theta=\\frac{\\pi}{2}$.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "The slope of a polar curve",
-          "answer": "$\\frac{dr}{d\\theta}=2$. $x=2\\theta\\cos\\theta$, $y=2\\theta\\sin\\theta$. $\\frac{dy}{d\\theta}=2\\sin\\theta+2\\theta\\cos\\theta$; $\\frac{dx}{d\\theta}=2\\cos\\theta-2\\theta\\sin\\theta$. At $\\theta=\\frac{\\pi}{2}$: $\\frac{dy}{d\\theta}=2(1)+2\\left(\\frac{\\pi}{2}\\right)(0)=2$; $\\frac{dx}{d\\theta}=2(0)-2\\left(\\frac{\\pi}{2}\\right)(1)=-\\pi$. $\\frac{dy}{dx}=\\frac{2}{-\\pi}=-\\frac{2}{\\pi}$.",
-          "explanation": "$\\frac{dr}{d\\theta}=2$. $x=2\\theta\\cos\\theta$, $y=2\\theta\\sin\\theta$. $\\frac{dy}{d\\theta}=2\\sin\\theta+2\\theta\\cos\\theta$; $\\frac{dx}{d\\theta}=2\\cos\\theta-2\\theta\\sin\\theta$. At $\\theta=\\frac{\\pi}{2}$: $\\frac{dy}{d\\theta}=2(1)+2\\left(\\frac{\\pi}{2}\\right)(0)=2$; $\\frac{dx}{d\\theta}=2(0)-2\\left(\\frac{\\pi}{2}\\right)(1)=-\\pi$. $\\frac{dy}{dx}=\\frac{2}{-\\pi}=-\\frac{2}{\\pi}$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (1))**2 + (-1)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 1.0,
-                "y": -1.0,
-                "label": "$(1,-1)$"
-              }
-            ],
-            "width": 230
-          }
-        },
-        {
           "q": "For the circle $r=4\\cos\\theta$, find the value(s) of $\\theta$ in $[0,\\pi]$ where the tangent line is horizontal (where $y=r\\sin\\theta$ has a critical point).",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Finding horizontal and vertical tangents",
           "answer": "$y=4\\cos\\theta\\sin\\theta=2\\sin(2\\theta)$. $\\frac{dy}{d\\theta}=4\\cos(2\\theta)=0 \\Rightarrow 2\\theta=\\frac{\\pi}{2},\\frac{3\\pi}{2} \\Rightarrow \\theta=\\frac{\\pi}{4},\\frac{3\\pi}{4}$.",
           "explanation": "$y=4\\cos\\theta\\sin\\theta=2\\sin(2\\theta)$. $\\frac{dy}{d\\theta}=4\\cos(2\\theta)=0 \\Rightarrow 2\\theta=\\frac{\\pi}{2},\\frac{3\\pi}{2} \\Rightarrow \\theta=\\frac{\\pi}{4},\\frac{3\\pi}{4}$."
+        },
+        {
+          "q": "Explain how to test whether a polar curve $r=f(\\theta)$ is symmetric about the polar axis (the $x$-axis).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Symmetry of polar curves",
+          "answer": "Replace $\\theta$ with $-\\theta$ in the equation. If the equation is unchanged (or yields the same curve), the curve is symmetric about the polar axis. For example, $r=2+2\\cos\\theta$ satisfies $f(-\\theta)=2+2\\cos(-\\theta)=2+2\\cos\\theta=f(\\theta)$, confirming symmetry.",
+          "explanation": "Replace $\\theta$ with $-\\theta$ in the equation. If the equation is unchanged (or yields the same curve), the curve is symmetric about the polar axis. For example, $r=2+2\\cos\\theta$ satisfies $f(-\\theta)=2+2\\cos(-\\theta)=2+2\\cos\\theta=f(\\theta)$, confirming symmetry.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.6*(x - (1.0))**2 + (1.5)",
+              "1.15*x + (2.7)"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -5,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": 1.5,
+                "label": "$(1,1.5)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Test whether $r=3\\sin\\theta$ is symmetric about the $y$-axis (replace $\\theta$ with $\\pi-\\theta$).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Symmetry of polar curves",
+          "answer": "$f(\\pi-\\theta)=3\\sin(\\pi-\\theta)=3\\sin\\theta=f(\\theta)$ (using $\\sin(\\pi-\\theta)=\\sin\\theta$). Symmetric about the $y$-axis.",
+          "explanation": "$f(\\pi-\\theta)=3\\sin(\\pi-\\theta)=3\\sin\\theta=f(\\theta)$ (using $\\sin(\\pi-\\theta)=\\sin\\theta$). Symmetric about the $y$-axis."
         }
       ]
     },
@@ -121,47 +121,12 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "Explain how to test whether a polar curve $r=f(\\theta)$ is symmetric about the polar axis (the $x$-axis).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Symmetry of polar curves",
-          "answer": "Replace $\\theta$ with $-\\theta$ in the equation. If the equation is unchanged (or yields the same curve), the curve is symmetric about the polar axis. For example, $r=2+2\\cos\\theta$ satisfies $f(-\\theta)=2+2\\cos(-\\theta)=2+2\\cos\\theta=f(\\theta)$, confirming symmetry.",
-          "explanation": "Replace $\\theta$ with $-\\theta$ in the equation. If the equation is unchanged (or yields the same curve), the curve is symmetric about the polar axis. For example, $r=2+2\\cos\\theta$ satisfies $f(-\\theta)=2+2\\cos(-\\theta)=2+2\\cos\\theta=f(\\theta)$, confirming symmetry."
-        },
-        {
-          "q": "Test whether $r=3\\sin\\theta$ is symmetric about the $y$-axis (replace $\\theta$ with $\\pi-\\theta$).",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Symmetry of polar curves",
-          "answer": "$f(\\pi-\\theta)=3\\sin(\\pi-\\theta)=3\\sin\\theta=f(\\theta)$ (using $\\sin(\\pi-\\theta)=\\sin\\theta$). Symmetric about the $y$-axis.",
-          "explanation": "$f(\\pi-\\theta)=3\\sin(\\pi-\\theta)=3\\sin\\theta=f(\\theta)$ (using $\\sin(\\pi-\\theta)=\\sin\\theta$). Symmetric about the $y$-axis."
-        },
-        {
           "q": "Convert the rectangular point $(3,3\\sqrt{3})$ to polar coordinates ($r>0$, $0\\leq\\theta<2\\pi$).",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "More polar-to-rectangular conversions",
           "answer": "$r=\\sqrt{3^2+(3\\sqrt{3})^2}=\\sqrt{9+27}=\\sqrt{36}=6$. $\\theta=\\tan^{-1}\\left(\\frac{3\\sqrt{3}}{3}\\right)=\\tan^{-1}(\\sqrt{3})=\\frac{\\pi}{3}$ (in Quadrant I, matching both coordinates positive).",
-          "explanation": "$r=\\sqrt{3^2+(3\\sqrt{3})^2}=\\sqrt{9+27}=\\sqrt{36}=6$. $\\theta=\\tan^{-1}\\left(\\frac{3\\sqrt{3}}{3}\\right)=\\tan^{-1}(\\sqrt{3})=\\frac{\\pi}{3}$ (in Quadrant I, matching both coordinates positive).",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": -1.0,
-                "y": -1.0,
-                "label": "$(-1,-1)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "$r=\\sqrt{3^2+(3\\sqrt{3})^2}=\\sqrt{9+27}=\\sqrt{36}=6$. $\\theta=\\tan^{-1}\\left(\\frac{3\\sqrt{3}}{3}\\right)=\\tan^{-1}(\\sqrt{3})=\\frac{\\pi}{3}$ (in Quadrant I, matching both coordinates positive)."
         },
         {
           "q": "Convert the rectangular equation $y=x$ to polar form.",
@@ -172,20 +137,31 @@
           "explanation": "$r\\sin\\theta=r\\cos\\theta \\Rightarrow \\tan\\theta=1 \\Rightarrow \\theta=\\frac{\\pi}{4}$ (a constant-$\\theta$ ray, i.e. a straight line through the pole)."
         },
         {
-          "q": "Convert the polar equation $r\\sin\\theta=4$ to rectangular form, and identify the curve.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "More polar-to-rectangular conversions",
-          "answer": "$r\\sin\\theta=y$, so $y=4$: a horizontal line.",
-          "explanation": "$r\\sin\\theta=y$, so $y=4$: a horizontal line."
-        },
-        {
           "q": "Find $\\frac{dy}{dx}$ for the cardioid $r=1+\\sin\\theta$ at $\\theta=0$.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "More slope-of-a-polar-curve practice",
           "answer": "$\\frac{dr}{d\\theta}=\\cos\\theta$. $\\frac{dy}{dx}=\\frac{\\cos\\theta\\sin\\theta+r\\cos\\theta}{\\cos\\theta\\cos\\theta-r\\sin\\theta}$. At $\\theta=0$: $r=1$, $\\frac{dr}{d\\theta}=1$. Numerator: $1(0)+1(1)=1$. Denominator: $1(1)-1(0)=1$. $\\frac{dy}{dx}=\\frac{1}{1}=1$.",
-          "explanation": "$\\frac{dr}{d\\theta}=\\cos\\theta$. $\\frac{dy}{dx}=\\frac{\\cos\\theta\\sin\\theta+r\\cos\\theta}{\\cos\\theta\\cos\\theta-r\\sin\\theta}$. At $\\theta=0$: $r=1$, $\\frac{dr}{d\\theta}=1$. Numerator: $1(0)+1(1)=1$. Denominator: $1(1)-1(0)=1$. $\\frac{dy}{dx}=\\frac{1}{1}=1$."
+          "explanation": "$\\frac{dr}{d\\theta}=\\cos\\theta$. $\\frac{dy}{dx}=\\frac{\\cos\\theta\\sin\\theta+r\\cos\\theta}{\\cos\\theta\\cos\\theta-r\\sin\\theta}$. At $\\theta=0$: $r=1$, $\\frac{dr}{d\\theta}=1$. Numerator: $1(0)+1(1)=1$. Denominator: $1(1)-1(0)=1$. $\\frac{dy}{dx}=\\frac{1}{1}=1$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-0.6*(x - (-1.0))**2 + (-0.5)",
+              "1.15*x + (-1.7)"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -5,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -0.5,
+                "label": "$(-1,-0.5)$"
+              }
+            ],
+            "width": 230
+          }
         },
         {
           "q": "Find $\\frac{dy}{dx}$ for the circle $r=5$ (constant) at any angle $\\theta$, and interpret the result using the fact that a circle centered at the origin has radial symmetry.",
@@ -194,55 +170,28 @@
           "target": "More slope-of-a-polar-curve practice",
           "answer": "$\\frac{dr}{d\\theta}=0$. $\\frac{dy}{dx}=\\frac{0\\cdot\\sin\\theta+5\\cos\\theta}{0\\cdot\\cos\\theta-5\\sin\\theta}=\\frac{5\\cos\\theta}{-5\\sin\\theta}=-\\cot\\theta$. This matches the slope of the tangent line to a circle at angle $\\theta$ — perpendicular to the radius at that point, consistent with basic circle geometry.",
           "explanation": "$\\frac{dr}{d\\theta}=0$. $\\frac{dy}{dx}=\\frac{0\\cdot\\sin\\theta+5\\cos\\theta}{0\\cdot\\cos\\theta-5\\sin\\theta}=\\frac{5\\cos\\theta}{-5\\sin\\theta}=-\\cot\\theta$. This matches the slope of the tangent line to a circle at angle $\\theta$ — perpendicular to the radius at that point, consistent with basic circle geometry."
-        }
-      ]
-    },
-    {
-      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
-      "questions": [
+        },
         {
           "q": "Find the values of $\\theta$ where the cardioid $r=1-\\cos\\theta$ passes through the pole ($r=0$), and explain why these give the tangent line directions at the pole.",
-          "difficulty": "Challenging",
+          "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Tangent lines at the pole",
-          "cross_lesson": "6.02 Taylor and Maclaurin Series",
           "answer": "$1-\\cos\\theta=0 \\Rightarrow \\cos\\theta=1 \\Rightarrow \\theta=0$. At the single angle where $r=0$, the curve touches the pole; the tangent line there is along $\\theta=0$ (the polar axis), since that's the direction the curve approaches the origin from.",
           "explanation": "$1-\\cos\\theta=0 \\Rightarrow \\cos\\theta=1 \\Rightarrow \\theta=0$. At the single angle where $r=0$, the curve touches the pole; the tangent line there is along $\\theta=0$ (the polar axis), since that's the direction the curve approaches the origin from."
         },
         {
           "q": "Find the values of $\\theta\\in[0,2\\pi)$ where the rose $r=\\cos(2\\theta)$ passes through the pole.",
-          "difficulty": "Challenging",
+          "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Tangent lines at the pole",
-          "cross_lesson": "1.01 Integration by Parts",
           "answer": "$\\cos(2\\theta)=0 \\Rightarrow 2\\theta=\\frac{\\pi}{2},\\frac{3\\pi}{2},\\frac{5\\pi}{2},\\frac{7\\pi}{2} \\Rightarrow \\theta=\\frac{\\pi}{4},\\frac{3\\pi}{4},\\frac{5\\pi}{4},\\frac{7\\pi}{4}$ — these are the four tangent-line directions at the pole for this 4-petaled rose.",
-          "explanation": "$\\cos(2\\theta)=0 \\Rightarrow 2\\theta=\\frac{\\pi}{2},\\frac{3\\pi}{2},\\frac{5\\pi}{2},\\frac{7\\pi}{2} \\Rightarrow \\theta=\\frac{\\pi}{4},\\frac{3\\pi}{4},\\frac{5\\pi}{4},\\frac{7\\pi}{4}$ — these are the four tangent-line directions at the pole for this 4-petaled rose.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": -1.0,
-                "y": -1.0,
-                "label": "$(-1,-1)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "$\\cos(2\\theta)=0 \\Rightarrow 2\\theta=\\frac{\\pi}{2},\\frac{3\\pi}{2},\\frac{5\\pi}{2},\\frac{7\\pi}{2} \\Rightarrow \\theta=\\frac{\\pi}{4},\\frac{3\\pi}{4},\\frac{5\\pi}{4},\\frac{7\\pi}{4}$ — these are the four tangent-line directions at the pole for this 4-petaled rose."
         },
         {
           "q": "Classify each polar equation by curve type (circle, cardioid, limaçon with inner loop, rose, or line):",
-          "difficulty": "Challenging",
+          "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Classifying polar curves by equation type",
-          "cross_lesson": "1.02 Partial Fractions and Improper Integrals",
           "parts": [
             "$r=5$",
             "$r=3+3\\cos\\theta$",
@@ -258,13 +207,18 @@
           ],
           "answer": "(a) Circle centered at the pole; (b) Cardioid (coefficient equals constant); (c) Limaçon with an inner loop (constant $<$ coefficient); (d) Rose with $5$ petals (odd $n=5$)",
           "explanation": "(a) Circle centered at the pole; (b) Cardioid (coefficient equals constant); (c) Limaçon with an inner loop (constant $<$ coefficient); (d) Rose with $5$ petals (odd $n=5$)"
-        },
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
         {
           "q": "State the rule for the number of petals of $r=a\\cos(n\\theta)$ or $r=a\\sin(n\\theta)$ depending on whether $n$ is odd or even.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Number of petals in rose curves",
-          "cross_lesson": "2.01 Euler's Method and Logistic Growth",
+          "cross_lesson": "6.02 Taylor and Maclaurin Series",
           "answer": "If $n$ is odd, the rose has exactly $n$ petals (traced over $[0,\\pi]$). If $n$ is even, the rose has $2n$ petals (requires the full $[0,2\\pi]$ to trace, since each petal is retraced with opposite sign after $\\pi$).",
           "explanation": "If $n$ is odd, the rose has exactly $n$ petals (traced over $[0,\\pi]$). If $n$ is even, the rose has $2n$ petals (requires the full $[0,2\\pi]$ to trace, since each petal is retraced with opposite sign after $\\pi$)."
         },
@@ -273,18 +227,64 @@
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Number of petals in rose curves",
-          "cross_lesson": "3.01 Parametric Equations",
+          "cross_lesson": "1.01 Integration by Parts",
           "answer": "$r=2\\sin(4\\theta)$: $n=4$ (even) $\\Rightarrow 2(4)=8$ petals. $r=5\\cos(7\\theta)$: $n=7$ (odd) $\\Rightarrow 7$ petals.",
-          "explanation": "$r=2\\sin(4\\theta)$: $n=4$ (even) $\\Rightarrow 2(4)=8$ petals. $r=5\\cos(7\\theta)$: $n=7$ (odd) $\\Rightarrow 7$ petals."
+          "explanation": "$r=2\\sin(4\\theta)$: $n=4$ (even) $\\Rightarrow 2(4)=8$ petals. $r=5\\cos(7\\theta)$: $n=7$ (odd) $\\Rightarrow 7$ petals.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.3*(x - (-1.0))**2 + (-1.0)",
+              "1.4*x + (0.2)"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -5,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
         },
         {
           "q": "Complete a short table of $(\\theta,r)$ values for $r=2+2\\cos\\theta$ at $\\theta=0,\\frac{\\pi}{2},\\pi,\\frac{3\\pi}{2}$, and use it to describe the cardioid's shape.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Graphing polar curves point-by-point",
-          "cross_lesson": "3.02 Vector-Valued Functions",
+          "cross_lesson": "1.02 Partial Fractions and Improper Integrals",
           "answer": "$\\theta=0$: $r=4$. $\\theta=\\frac{\\pi}{2}$: $r=2$. $\\theta=\\pi$: $r=0$. $\\theta=\\frac{3\\pi}{2}$: $r=2$. The curve is widest ($r=4$) along the polar axis, pinches to a point ($r=0$) at $\\theta=\\pi$ (opposite direction), forming the characteristic heart shape.",
           "explanation": "$\\theta=0$: $r=4$. $\\theta=\\frac{\\pi}{2}$: $r=2$. $\\theta=\\pi$: $r=0$. $\\theta=\\frac{3\\pi}{2}$: $r=2$. The curve is widest ($r=4$) along the polar axis, pinches to a point ($r=0$) at $\\theta=\\pi$ (opposite direction), forming the characteristic heart shape."
+        },
+        {
+          "q": "Explain, in terms of $\\frac{dy}{dx}$, what a 'vertical tangent' means for a polar curve, and why it corresponds to $\\frac{dx}{d\\theta}=0$ (with $\\frac{dy}{d\\theta}\\neq0$).",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Concavity considerations for polar curves",
+          "cross_lesson": "2.01 Euler's Method and Logistic Growth",
+          "answer": "A vertical tangent means the slope $\\frac{dy}{dx}$ is undefined (infinite) — since $\\frac{dy}{dx}=\\frac{dy/d\\theta}{dx/d\\theta}$, this happens exactly when the denominator $\\frac{dx}{d\\theta}=0$ while the numerator stays nonzero, making the ratio blow up.",
+          "explanation": "A vertical tangent means the slope $\\frac{dy}{dx}$ is undefined (infinite) — since $\\frac{dy}{dx}=\\frac{dy/d\\theta}{dx/d\\theta}$, this happens exactly when the denominator $\\frac{dx}{d\\theta}=0$ while the numerator stays nonzero, making the ratio blow up."
+        },
+        {
+          "q": "Level 2 · MediumFind the angle(s) $\\theta \\in [0, \\pi]$ at which the polar curve $r = 3\\cos\\theta$ passes through the origin, and determine the equation of the tangent line at that point.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "More slope-of-a-polar-curve practice",
+          "cross_lesson": "3.01 Parametric Equations",
+          "answer": "Set $r = 0$: $3\\cos\\theta = 0 \\Rightarrow \\theta = \\frac{\\pi}{2}.$ By the Tangents at the Pole Theorem, when $r(\\theta_0) = 0$ and $r'(\\theta_0) eq 0$, the line $\\theta = \\theta_0$ is the tangent line. Thus, the tangent line at the pole is $\\mathbf{\\theta = \\frac{\\pi}{2}}$ (the vertical line $x = 0$).",
+          "explanation": "Set $r = 0$: $3\\cos\\theta = 0 \\Rightarrow \\theta = \\frac{\\pi}{2}.$ By the Tangents at the Pole Theorem, when $r(\\theta_0) = 0$ and $r'(\\theta_0) eq 0$, the line $\\theta = \\theta_0$ is the tangent line. Thus, the tangent line at the pole is $\\mathbf{\\theta = \\frac{\\pi}{2}}$ (the vertical line $x = 0$)."
+        },
+        {
+          "q": "Level 2 · MediumFind the slope of the tangent line $\\frac{dy}{dx}$ to the polar cardioid $r = 1 - \\cos\\theta$ at $\\theta = \\frac{\\pi}{2}$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Tangent lines at the pole",
+          "cross_lesson": "3.02 Vector-Valued Functions",
+          "answer": "Recall $x = r\\cos\\theta$ and $y = r\\sin\\theta$. By the Product Rule: $\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta} = \\frac{r'\\sin\\theta + r\\cos\\theta}{r'\\cos\\theta - r\\sin\\theta}.$ Given $r = 1 - \\cos\\theta \\Rightarrow r' = \\sin\\theta$. At $\\theta = \\pi/2$: $r = 1 - 0 = 1$, $r' = 1$, $\\sin(\\pi/2) = 1$, $\\cos(\\pi/2) = 0$. Substitute: $\\frac{dy}{dx} = \\frac{(1)(1) + (1)(0)}{(1)(0) - (1)(1)} = \\frac{1}{-1} = \\mathbf{-1}.$",
+          "explanation": "Recall $x = r\\cos\\theta$ and $y = r\\sin\\theta$. By the Product Rule: $\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta} = \\frac{r'\\sin\\theta + r\\cos\\theta}{r'\\cos\\theta - r\\sin\\theta}.$ Given $r = 1 - \\cos\\theta \\Rightarrow r' = \\sin\\theta$. At $\\theta = \\pi/2$: $r = 1 - 0 = 1$, $r' = 1$, $\\sin(\\pi/2) = 1$, $\\cos(\\pi/2) = 0$. Substitute: $\\frac{dy}{dx} = \\frac{(1)(1) + (1)(0)}{(1)(0) - (1)(1)} = \\frac{1}{-1} = \\mathbf{-1}.$"
         }
       ]
     },
@@ -307,147 +307,127 @@
           "explanation": "Here $n=2$, which is even, so the rose has $2n$ petals: $4$ petals."
         },
         {
-          "q": "How many petals does the rose $r=4\\cos(7\\theta)$ have?",
+          "q": "Find the smallest positive $\\theta$ where the rose $r=3\\sin(4\\theta)$ passes through the pole.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Identifying and sketching common polar curves",
           "choices": [
-            "$14$",
-            "$9$",
-            "$7$",
-            "$5$"
+            "$\\frac{\\pi}{4}$",
+            "$\\frac{\\pi}{16}$",
+            "$\\frac{3\\pi}{4}$",
+            "$\\frac{\\pi}{8}$"
           ],
-          "correct": 2,
-          "answer": "Here $n=7$, which is odd, so the rose has exactly $n$ petals: $7$ petals.",
-          "explanation": "Here $n=7$, which is odd, so the rose has exactly $n$ petals: $7$ petals."
+          "correct": 0,
+          "answer": "Set $3\\sin(4\\theta)=0 \\Rightarrow \\sin(4\\theta)=0$. The smallest positive solution is $4\\theta=\\pi$, so $\\theta=\\frac{\\pi}{4}$.",
+          "explanation": "Set $3\\sin(4\\theta)=0 \\Rightarrow \\sin(4\\theta)=0$. The smallest positive solution is $4\\theta=\\pi$, so $\\theta=\\frac{\\pi}{4}$."
         },
         {
-          "q": "How many petals does the rose $r=6\\cos(2\\theta)$ have?",
+          "q": "The limaçon $r=7+14\\cos\\theta$ has an inner loop. Find the smaller positive $\\theta\\in[0,2\\pi)$ where $r=0$.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "The slope of a polar curve",
           "choices": [
-            "$7$",
-            "$4$",
-            "$2$",
-            "$6$"
+            "$\\frac{2\\pi}{3}$",
+            "$\\frac{\\pi}{2}$",
+            "$\\frac{5\\pi}{6}$",
+            "$\\frac{4\\pi}{3}$"
           ],
-          "correct": 1,
-          "answer": "Here $n=2$, which is even, so the rose has $2n$ petals: $4$ petals.",
-          "explanation": "Here $n=2$, which is even, so the rose has $2n$ petals: $4$ petals.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (0))**2 + (-2)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 0.0,
-                "y": -2.0,
-                "label": "$(0,-2)$"
-              }
-            ],
-            "width": 230
-          }
+          "correct": 0,
+          "answer": "Set $r=0$: $7+14\\cos\\theta=0 \\Rightarrow \\cos\\theta=-\\frac{1}{2}$. The smaller positive solution is $\\theta=\\frac{2\\pi}{3}$.",
+          "explanation": "Set $r=0$: $7+14\\cos\\theta=0 \\Rightarrow \\cos\\theta=-\\frac{1}{2}$. The smaller positive solution is $\\theta=\\frac{2\\pi}{3}$."
         },
         {
-          "q": "How many petals does the rose $r=6\\sin(7\\theta)$ have?",
+          "q": "What is the slope of the line described by the polar equation $\\theta=\\pi/6$?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Finding horizontal and vertical tangents",
           "choices": [
-            "$14$",
-            "$5$",
-            "$7$",
-            "$9$"
+            "$- \\frac{\\sqrt{3}}{3}$",
+            "0",
+            "$\\sqrt{3}$",
+            "$\\frac{\\sqrt{3}}{3}$"
           ],
-          "correct": 2,
-          "answer": "Here $n=7$, which is odd, so the rose has exactly $n$ petals: $7$ petals.",
-          "explanation": "Here $n=7$, which is odd, so the rose has exactly $n$ petals: $7$ petals."
+          "correct": 3,
+          "answer": "$\\theta=\\pi/6$ is the ray/line through the origin with slope $\\tan(\\pi/6)=\\frac{\\sqrt{3}}{3}.$",
+          "explanation": "$\\theta=\\pi/6$ is the ray/line through the origin with slope $\\tan(\\pi/6)=\\frac{\\sqrt{3}}{3}.$"
         },
         {
-          "q": "How many petals does the rose $r=2\\sin(3\\theta)$ have?",
+          "q": "Find $r$ for the rectangular point $(20,\\ 21)$.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Symmetry of polar curves",
           "choices": [
-            "$6$",
-            "$5$",
-            "$1$",
-            "$3$"
+            "41",
+            "841",
+            "29",
+            "1"
           ],
-          "correct": 3,
-          "answer": "Here $n=3$, which is odd, so the rose has exactly $n$ petals: $3$ petals.",
-          "explanation": "Here $n=3$, which is odd, so the rose has exactly $n$ petals: $3$ petals."
+          "correct": 2,
+          "answer": "$r=\\sqrt{x^2+y^2}=\\sqrt{20^2+21^2}=29.$",
+          "explanation": "$r=\\sqrt{x^2+y^2}=\\sqrt{20^2+21^2}=29.$"
         },
         {
-          "q": "How many petals does the rose $r=2\\cos(4\\theta)$ have?",
+          "q": "The figure shows the graph of the function $f(x) = x^2 - 2x - 1$ and the point $P(3, 2)$ on the curve. What is the slope of the tangent line to the graph of $f$ at point $P$?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "More polar-to-rectangular conversions",
           "choices": [
-            "$6$",
-            "$4$",
-            "$10$",
-            "$8$"
+            "4",
+            "2",
+            "3",
+            "6"
           ],
-          "correct": 3,
-          "answer": "Here $n=4$, which is even, so the rose has $2n$ petals: $8$ petals.",
-          "explanation": "Here $n=4$, which is even, so the rose has $2n$ petals: $8$ petals."
+          "correct": 0,
+          "answer": "The slope of the tangent line to the graph of $f(x)$ at any point is given by its derivative, $f'(x)$. 1. Find the derivative of $f(x) = x^2 - 2x - 1$ using the power rule: $f'(x) = 2x - 2$ 2. Evaluate the derivative at the $x$-coordinate of point $P(3, 2)$, which is $x = 3$: $f'(3) = 2(3) - 2 = 6 - 2 = 4$ Thus, the slope of the tangent line at $P$ is $4$. Misconception Analysis: - $2$ results from mistakenly reading the $y$-coordinate of point $P$ as the slope, since $f(3) = 2$. - $3$ results from taking the $x$-coordinate of point $P$. - $6$ results from differentiating only the leading term $x^2$ to get $2x$ and evaluating $2(3) = 6$, while forgetting to subtract the derivative of the linear term $2x$.",
+          "explanation": "The slope of the tangent line to the graph of $f(x)$ at any point is given by its derivative, $f'(x)$. 1. Find the derivative of $f(x) = x^2 - 2x - 1$ using the power rule: $f'(x) = 2x - 2$ 2. Evaluate the derivative at the $x$-coordinate of point $P(3, 2)$, which is $x = 3$: $f'(3) = 2(3) - 2 = 6 - 2 = 4$ Thus, the slope of the tangent line at $P$ is $4$. Misconception Analysis: - $2$ results from mistakenly reading the $y$-coordinate of point $P$ as the slope, since $f(3) = 2$. - $3$ results from taking the $x$-coordinate of point $P$. - $6$ results from differentiating only the leading term $x^2$ to get $2x$ and evaluating $2(3) = 6$, while forgetting to subtract the derivative of the linear term $2x$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*x - 2*x - 1"
+            ],
+            "xmin": -1.0,
+            "xmax": 5.0,
+            "ymin": -3.0,
+            "ymax": 8.0,
+            "width": 230,
+            "point_labels": [
+              {
+                "x": 3.0,
+                "y": 2.0,
+                "label": "P(3, 2)"
+              }
+            ]
+          }
         },
         {
-          "q": "How many petals does the rose $r=2\\sin(6\\theta)$ have?",
+          "q": "Convert $r=28\\cos\\theta$ to rectangular form and identify the radius of the resulting circle.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "More slope-of-a-polar-curve practice",
           "choices": [
-            "$14$",
-            "$12$",
-            "$10$",
-            "$6$"
+            "56",
+            "196",
+            "28",
+            "14"
           ],
-          "correct": 1,
-          "answer": "Here $n=6$, which is even, so the rose has $2n$ petals: $12$ petals.",
-          "explanation": "Here $n=6$, which is even, so the rose has $2n$ petals: $12$ petals."
+          "correct": 3,
+          "answer": "Multiply by $r$: $r^2=28r\\cos\\theta\\Rightarrow x^2+y^2=28x\\Rightarrow(x-14)^2+y^2=196$. Radius $=14.$",
+          "explanation": "Multiply by $r$: $r^2=28r\\cos\\theta\\Rightarrow x^2+y^2=28x\\Rightarrow(x-14)^2+y^2=196$. Radius $=14.$"
         },
         {
-          "q": "Convert the polar point $\\left(-8,\\frac{3\\pi}{2}\\right)$ to rectangular coordinates.",
+          "q": "Find the area of one petal of the rose $r=3\\sin(2\\theta)$ (integrate $\\theta$ from $0$ to $\\frac{\\pi}{2}$).",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Tangent lines at the pole",
           "choices": [
-            "$(-1,10)$",
-            "$(8,0)$",
-            "$(0,8)$",
-            "$(0,-8)$"
+            "$\\frac{9 \\pi}{4}$",
+            "$\\frac{9 \\pi}{16}$",
+            "$\\frac{9 \\pi}{8}$",
+            "$9 \\pi$"
           ],
           "correct": 2,
-          "answer": "$x=r\\cos\\theta=-8\\cos\\left(\\frac{3\\pi}{2}\\right)=0$. $y=r\\sin\\theta=-8\\sin\\left(\\frac{3\\pi}{2}\\right)=8$. Point: $(0,8)$.",
-          "explanation": "$x=r\\cos\\theta=-8\\cos\\left(\\frac{3\\pi}{2}\\right)=0$. $y=r\\sin\\theta=-8\\sin\\left(\\frac{3\\pi}{2}\\right)=8$. Point: $(0,8)$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": -1.0,
-                "y": -1.0,
-                "label": "$(-1,-1)$"
-              }
-            ],
-            "width": 230
-          }
+          "answer": "Area $=\\frac{1}{2}\\int_0^{\\frac{\\pi}{2}} [3\\sin(2\\theta)]^{2}\\,d\\theta=\\frac{9 \\pi}{8}.$",
+          "explanation": "Area $=\\frac{1}{2}\\int_0^{\\frac{\\pi}{2}} [3\\sin(2\\theta)]^{2}\\,d\\theta=\\frac{9 \\pi}{8}.$"
         }
       ]
     },
@@ -455,158 +435,162 @@
       "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
       "questions": [
         {
-          "q": "Convert the polar point $\\left(2,\\frac{\\pi}{2}\\right)$ to rectangular coordinates.",
+          "q": "Rose curve $r=\\cos(n\\theta)$: number of petals when $n$ is even:",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Classifying polar curves by equation type",
           "choices": [
-            "$(2,0)$",
-            "$(0,2)$",
-            "$(0,-2)$",
-            "$(2,4)$"
+            "$n$",
+            "$2n$",
+            "$n+1$",
+            "$4n$"
           ],
           "correct": 1,
-          "answer": "$x=r\\cos\\theta=2\\cos\\left(\\frac{\\pi}{2}\\right)=0$. $y=r\\sin\\theta=2\\sin\\left(\\frac{\\pi}{2}\\right)=2$. Point: $(0,2)$.",
-          "explanation": "$x=r\\cos\\theta=2\\cos\\left(\\frac{\\pi}{2}\\right)=0$. $y=r\\sin\\theta=2\\sin\\left(\\frac{\\pi}{2}\\right)=2$. Point: $(0,2)$."
+          "answer": "Applying Parametric and Polar principles, Even $n$: $2n$ petals. Therefore, the verified correct option is $2n$.",
+          "explanation": "Applying Parametric and Polar principles, Even $n$: $2n$ petals. Therefore, the verified correct option is $2n$."
         },
         {
-          "q": "Convert the polar point $\\left(-5,\\frac{3\\pi}{2}\\right)$ to rectangular coordinates.",
+          "q": "Rose curve $r=\\cos(n\\theta)$: number of petals when $n$ is odd:",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Number of petals in rose curves",
           "choices": [
-            "$(5,0)$",
-            "$(0,5)$",
-            "$(0,-5)$",
-            "$(2,3)$"
+            "$n$",
+            "$2n$",
+            "$n/2$",
+            "$4n$"
           ],
-          "correct": 1,
-          "answer": "$x=r\\cos\\theta=-5\\cos\\left(\\frac{3\\pi}{2}\\right)=0$. $y=r\\sin\\theta=-5\\sin\\left(\\frac{3\\pi}{2}\\right)=5$. Point: $(0,5)$.",
-          "explanation": "$x=r\\cos\\theta=-5\\cos\\left(\\frac{3\\pi}{2}\\right)=0$. $y=r\\sin\\theta=-5\\sin\\left(\\frac{3\\pi}{2}\\right)=5$. Point: $(0,5)$."
+          "correct": 0,
+          "answer": "Applying Parametric and Polar principles, Odd $n$: $n$ petals. Therefore, the verified correct option is $n$.",
+          "explanation": "Applying Parametric and Polar principles, Odd $n$: $n$ petals. Therefore, the verified correct option is $n$."
         },
         {
-          "q": "Convert the polar point $\\left(2,\\pi\\right)$ to rectangular coordinates.",
+          "q": "The graph of a function $f'(x)$ is shown below. It is given that $f(x)$ is a function such that $f(1) = 5$. The area between the curve $y = f'(x)$, the x-axis, and the vertical lines $x = 1$ and $x = 5$ is represented by the shaded region. If the area of the shaded region is 16 square units, determine the value of $f(5)$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Graphing polar curves point-by-point",
           "choices": [
-            "$(2,0)$",
-            "$(-2,0)$",
-            "$(-1,0)$",
-            "$(0,-2)$"
+            "17",
+            "21",
+            "9",
+            "11"
           ],
           "correct": 1,
-          "answer": "$x=r\\cos\\theta=2\\cos\\left(\\pi\\right)=-2$. $y=r\\sin\\theta=2\\sin\\left(\\pi\\right)=0$. Point: $(-2,0)$.",
-          "explanation": "$x=r\\cos\\theta=2\\cos\\left(\\pi\\right)=-2$. $y=r\\sin\\theta=2\\sin\\left(\\pi\\right)=0$. Point: $(-2,0)$."
+          "answer": "The area of the shaded region is given by the definite integral of $f'(x)$ from $x = 1$ to $x = 5$. This area is also equal to the change in the function $f(x)$ over this interval: $\\int_{1}^{5} f'(x) \\, dx = f(5) - f(1)$. The graph shows that the function $f'(x)$ is a constant function, represented by the horizontal line $y = 4$. Therefore, $f'(x) = 4$. The area of the shaded region is given as 16 square units. Using the definite integral: $\\int_{1}^{5} 4 \\, dx = [4x]_{1}^{5} = 4(5) - 4(1) = 20 - 4 = 16$. This confirms the given area. Now we use the relationship $f(5) - f(1) = 16$. We are given that $f(1) = 5$. Substituting this value, we get $f(5) - 5 = 16$. Solving for $f(5)$: $f(5) = 16 + 5 = 21$.",
+          "explanation": "The area of the shaded region is given by the definite integral of $f'(x)$ from $x = 1$ to $x = 5$. This area is also equal to the change in the function $f(x)$ over this interval: $\\int_{1}^{5} f'(x) \\, dx = f(5) - f(1)$. The graph shows that the function $f'(x)$ is a constant function, represented by the horizontal line $y = 4$. Therefore, $f'(x) = 4$. The area of the shaded region is given as 16 square units. Using the definite integral: $\\int_{1}^{5} 4 \\, dx = [4x]_{1}^{5} = 4(5) - 4(1) = 20 - 4 = 16$. This confirms the given area. Now we use the relationship $f(5) - f(1) = 16$. We are given that $f(1) = 5$. Substituting this value, we get $f(5) - 5 = 16$. Solving for $f(5)$: $f(5) = 16 + 5 = 21$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4"
+            ],
+            "xmin": 0.0,
+            "xmax": 6.0,
+            "ymin": 0.0,
+            "ymax": 6.0,
+            "width": 230,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": 4.0,
+                "label": "(1, 4)"
+              },
+              {
+                "x": 5.0,
+                "y": 4.0,
+                "label": "(5, 4)"
+              }
+            ]
+          }
         },
         {
-          "q": "Convert the polar point $\\left(-3,0\\right)$ to rectangular coordinates.",
+          "q": "Find the area of one petal of $r=1\\cos(3\\theta)$ (integrate $\\theta$ from $-\\frac{\\pi}{6}$ to $\\frac{\\pi}{6}$).",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Concavity considerations for polar curves",
           "choices": [
-            "$(-3,0)$",
-            "$(3,0)$",
-            "$(-2,0)$",
-            "$(0,-3)$"
+            "$\\frac{\\pi}{12}$",
+            "$\\pi$",
+            "$\\frac{\\pi}{6}$",
+            "$\\frac{\\pi}{24}$"
           ],
           "correct": 0,
-          "answer": "$x=r\\cos\\theta=-3\\cos\\left(0\\right)=-3$. $y=r\\sin\\theta=-3\\sin\\left(0\\right)=0$. Point: $(-3,0)$.",
-          "explanation": "$x=r\\cos\\theta=-3\\cos\\left(0\\right)=-3$. $y=r\\sin\\theta=-3\\sin\\left(0\\right)=0$. Point: $(-3,0)$."
+          "answer": "Area $=\\frac{1}{2}\\int_{-\\frac{\\pi}{6}}^{\\frac{\\pi}{6}} [1\\cos(3\\theta)]^{2}\\,d\\theta=\\frac{\\pi}{12}.$",
+          "explanation": "Area $=\\frac{1}{2}\\int_{-\\frac{\\pi}{6}}^{\\frac{\\pi}{6}} [1\\cos(3\\theta)]^{2}\\,d\\theta=\\frac{\\pi}{12}.$"
         },
         {
-          "q": "Convert the polar point $\\left(9,\\frac{\\pi}{2}\\right)$ to rectangular coordinates.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Slopes of Tangent Lines to Polar Curves",
-          "choices": [
-            "$(0,9)$",
-            "$(0,-9)$",
-            "$(9,0)$",
-            "$(2,11)$"
-          ],
-          "correct": 0,
-          "answer": "$x=r\\cos\\theta=9\\cos\\left(\\frac{\\pi}{2}\\right)=0$. $y=r\\sin\\theta=9\\sin\\left(\\frac{\\pi}{2}\\right)=9$. Point: $(0,9)$.",
-          "explanation": "$x=r\\cos\\theta=9\\cos\\left(\\frac{\\pi}{2}\\right)=0$. $y=r\\sin\\theta=9\\sin\\left(\\frac{\\pi}{2}\\right)=9$. Point: $(0,9)$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (1))**2 + (-2)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 1.0,
-                "y": -2.0,
-                "label": "$(1,-2)$"
-              }
-            ],
-            "width": 230
-          }
-        },
-        {
-          "q": "Convert the polar point $\\left(-5,\\frac{\\pi}{2}\\right)$ to rectangular coordinates.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Horizontal and Vertical Tangents on Polar Curves",
-          "choices": [
-            "$(-5,0)$",
-            "$(0,-5)$",
-            "$(0,5)$",
-            "$(2,-3)$"
-          ],
-          "correct": 1,
-          "answer": "$x=r\\cos\\theta=-5\\cos\\left(\\frac{\\pi}{2}\\right)=0$. $y=r\\sin\\theta=-5\\sin\\left(\\frac{\\pi}{2}\\right)=-5$. Point: $(0,-5)$.",
-          "explanation": "$x=r\\cos\\theta=-5\\cos\\left(\\frac{\\pi}{2}\\right)=0$. $y=r\\sin\\theta=-5\\sin\\left(\\frac{\\pi}{2}\\right)=-5$. Point: $(0,-5)$."
-        },
-        {
-          "q": "Classify the curve $r=9+9\\cos\\theta$.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Rate of Change of r and Distance from Origin",
-          "choices": [
-            "Circle through the pole",
-            "Limaçon with an inner loop",
-            "Limaçon without an inner loop",
-            "Cardioid"
-          ],
-          "correct": 3,
-          "answer": "For $r=9+9\\cos\\theta$: the constant term equals the coefficient, the defining property of a cardioid. This is a cardioid.",
-          "explanation": "For $r=9+9\\cos\\theta$: the constant term equals the coefficient, the defining property of a cardioid. This is a cardioid."
-        },
-        {
-          "q": "Classify the curve $r=5+5\\sin\\theta$.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Arc Length of Polar Curves",
-          "choices": [
-            "Limaçon without an inner loop",
-            "Cardioid",
-            "Circle through the pole",
-            "Limaçon with an inner loop"
-          ],
-          "correct": 1,
-          "answer": "For $r=5+5\\sin\\theta$: the constant term equals the coefficient, the defining property of a cardioid. This is a cardioid.",
-          "explanation": "For $r=5+5\\sin\\theta$: the constant term equals the coefficient, the defining property of a cardioid. This is a cardioid."
-        },
-        {
-          "q": "Find the smallest positive $\\theta$ where the rose $r=4\\cos(6\\theta)$ passes through the pole.",
+          "q": "A sector of the circle $r=10$ sweeps from $\\theta=0$ to $\\theta=\\pi/6$. Find its area.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Converting between polar and rectangular coordinates",
           "choices": [
-            "$\\frac{7\\pi}{12}$",
-            "$\\frac{\\pi}{24}$",
-            "$\\frac{\\pi}{6}$",
-            "$\\frac{\\pi}{12}$"
+            "$\\frac{50 \\pi}{3}$",
+            "$\\frac{25 \\pi}{3}$",
+            "$\\frac{25 \\pi}{6}$",
+            "$\\frac{5 \\pi}{3}$"
           ],
-          "correct": 3,
-          "answer": "Set $4\\cos(6\\theta)=0 \\Rightarrow \\cos(6\\theta)=0$. The smallest positive solution is $6\\theta=\\frac{\\pi}{2}$, so $\\theta=\\frac{\\pi}{12}$.",
-          "explanation": "Set $4\\cos(6\\theta)=0 \\Rightarrow \\cos(6\\theta)=0$. The smallest positive solution is $6\\theta=\\frac{\\pi}{2}$, so $\\theta=\\frac{\\pi}{12}$."
+          "correct": 1,
+          "answer": "Area $=\\frac{1}{2}\\int_0^{\\pi/6} 10^{2}\\,d\\theta=\\frac{1}{2}\\cdot100\\cdot\\pi/6=\\frac{25 \\pi}{3}.$",
+          "explanation": "Area $=\\frac{1}{2}\\int_0^{\\pi/6} 10^{2}\\,d\\theta=\\frac{1}{2}\\cdot100\\cdot\\pi/6=\\frac{25 \\pi}{3}.$"
+        },
+        {
+          "q": "Find the area of the sector of $r=3$ from $\\theta=0$ to $\\theta=\\pi/4$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Identifying and sketching common polar curves",
+          "choices": [
+            "$\\frac{31 \\pi}{24}$",
+            "$\\frac{9 \\pi}{4}$",
+            "$\\frac{9 \\pi}{8}$",
+            "$\\frac{9 \\pi}{16}$"
+          ],
+          "correct": 2,
+          "answer": "Area $=\\frac{1}{2}\\int_0^{\\pi/4} 3^{2}\\,d\\theta=\\frac{1}{2}\\cdot9\\cdot\\pi/4=\\frac{9 \\pi}{8}.$",
+          "explanation": "Area $=\\frac{1}{2}\\int_0^{\\pi/4} 3^{2}\\,d\\theta=\\frac{1}{2}\\cdot9\\cdot\\pi/4=\\frac{9 \\pi}{8}.$"
+        },
+        {
+          "q": "Find the total area enclosed by the cardioid $r=2(1+\\cos\\theta)$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "The slope of a polar curve",
+          "choices": [
+            "$6 \\pi$",
+            "$3 \\pi$",
+            "$4 \\pi$",
+            "$12 \\pi$"
+          ],
+          "correct": 0,
+          "answer": "Area $=\\frac{1}{2}\\int_0^{2\\pi}[2(1+\\cos\\theta)]^{2}\\,d\\theta=\\frac{3}{2}\\pi\\cdot4=6 \\pi.$",
+          "explanation": "Area $=\\frac{1}{2}\\int_0^{2\\pi}[2(1+\\cos\\theta)]^{2}\\,d\\theta=\\frac{3}{2}\\pi\\cdot4=6 \\pi.$"
+        },
+        {
+          "q": "Find the area inside $r=11$ but outside $r=6$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Finding horizontal and vertical tangents",
+          "choices": [
+            "$121 \\pi$",
+            "$85 \\pi$",
+            "$25 \\pi$",
+            "$\\frac{85 \\pi}{2}$"
+          ],
+          "correct": 1,
+          "answer": "Area $=\\pi 11^2-\\pi 6^2=\\pi(11^2-6^2)=85 \\pi.$",
+          "explanation": "Area $=\\pi 11^2-\\pi 6^2=\\pi(11^2-6^2)=85 \\pi.$"
+        },
+        {
+          "q": "The slope field for a differential equation is shown above. The differential equation is of the form $\\frac{dy}{dx} = ky$ for some constant $k$. If the solution curve passes through the point $(0, 1)$ and $(1, 2)$, find the value of $k$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Symmetry of polar curves",
+          "choices": [
+            "$\\ln 2$",
+            "$2$",
+            "$\\frac{1}{2}$",
+            "$1$"
+          ],
+          "correct": 0,
+          "answer": "The differential equation is given by $\\frac{dy}{dx} = ky$. This is a separable differential equation. We can rewrite it as $\\frac{dy}{y} = k \\, dx$. Integrating both sides, we get $\\int \\frac{dy}{y} = \\int k \\, dx$, which yields $\\ln|y| = kx + C_1$. Exponentiating both sides, we have $|y| = e^{kx + C_1} = e^{C_1} e^{kx}$. Let $C = \\pm e^{C_1}$, so $y = Ce^{kx}$. We are given that the solution curve passes through the point $(0, 1)$. Substituting these values into the general solution: $1 = Ce^{k(0)}$ $1 = C e^0$ $1 = C \\cdot 1$ $C = 1$. So the particular solution is $y = e^{kx}$. We are also given that the solution curve passes through the point $(1, 2)$. Substituting these values into the particular solution: $2 = e^{k(1)}$ $2 = e^k$. To solve for $k$, we take the natural logarithm of both sides: $\\ln 2 = \\ln(e^k)$ $\\ln 2 = k$. Therefore, the value of $k$ is $\\ln 2$.",
+          "explanation": "The differential equation is given by $\\frac{dy}{dx} = ky$. This is a separable differential equation. We can rewrite it as $\\frac{dy}{y} = k \\, dx$. Integrating both sides, we get $\\int \\frac{dy}{y} = \\int k \\, dx$, which yields $\\ln|y| = kx + C_1$. Exponentiating both sides, we have $|y| = e^{kx + C_1} = e^{C_1} e^{kx}$. Let $C = \\pm e^{C_1}$, so $y = Ce^{kx}$. We are given that the solution curve passes through the point $(0, 1)$. Substituting these values into the general solution: $1 = Ce^{k(0)}$ $1 = C e^0$ $1 = C \\cdot 1$ $C = 1$. So the particular solution is $y = e^{kx}$. We are also given that the solution curve passes through the point $(1, 2)$. Substituting these values into the particular solution: $2 = e^{k(1)}$ $2 = e^k$. To solve for $k$, we take the natural logarithm of both sides: $\\ln 2 = \\ln(e^k)$ $\\ln 2 = k$. Therefore, the value of $k$ is $\\ln 2$."
         }
       ]
     },
@@ -614,151 +598,174 @@
       "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
       "questions": [
         {
-          "q": "Find the smallest positive $\\theta$ where the rose $r=9\\cos(4\\theta)$ passes through the pole.",
+          "q": "Parametric tangent at $t=t_0$: slope $m=\\frac{y'(t_0)}{x'(t_0)}$. If $x'(t_0)=y'(t_0)=0$, the point is:",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Identifying and sketching common polar curves",
+          "target": "More polar-to-rectangular conversions",
           "choices": [
-            "$\\frac{\\pi}{16}$",
-            "$\\frac{\\pi}{4}$",
-            "$\\frac{5\\pi}{8}$",
-            "$\\frac{\\pi}{8}$"
+            "always a cusp",
+            "regular",
+            "a node",
+            "a singular/cusp point — need L'Hôpital"
           ],
           "correct": 3,
-          "answer": "Set $9\\cos(4\\theta)=0 \\Rightarrow \\cos(4\\theta)=0$. The smallest positive solution is $4\\theta=\\frac{\\pi}{2}$, so $\\theta=\\frac{\\pi}{8}$.",
-          "explanation": "Set $9\\cos(4\\theta)=0 \\Rightarrow \\cos(4\\theta)=0$. The smallest positive solution is $4\\theta=\\frac{\\pi}{2}$, so $\\theta=\\frac{\\pi}{8}$.",
+          "answer": "Applying Parametric and Polar principles, Both zero: singular point. Therefore, the verified correct option is a singular/cusp point — need L'Hôpital.",
+          "explanation": "Applying Parametric and Polar principles, Both zero: singular point. Therefore, the verified correct option is a singular/cusp point — need L'Hôpital.",
           "cross_lesson": "2.01 Euler's Method and Logistic Growth"
         },
         {
-          "q": "The limaçon $r=7+14\\sin\\theta$ has an inner loop. Find the smaller positive $\\theta\\in[0,2\\pi)$ where $r=0$.",
+          "q": "Tangent line to parametric curve is horizontal when:",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "The slope of a polar curve",
+          "target": "More slope-of-a-polar-curve practice",
           "choices": [
-            "$\\frac{7\\pi}{6}$",
-            "$\\frac{11\\pi}{6}$",
-            "$\\frac{5\\pi}{6}$",
-            "$\\frac{\\pi}{2}$"
+            "$dx/dt=0$",
+            "$dy/dt=0$ and $dx/dt e0$",
+            "$t=0$",
+            "$dy/dt=dx/dt$"
           ],
-          "correct": 0,
-          "answer": "Set $r=0$: $7+14\\sin\\theta=0 \\Rightarrow \\sin\\theta=-\\frac{1}{2}$. The smaller positive solution is $\\theta=\\frac{7\\pi}{6}$.",
-          "explanation": "Set $r=0$: $7+14\\sin\\theta=0 \\Rightarrow \\sin\\theta=-\\frac{1}{2}$. The smaller positive solution is $\\theta=\\frac{7\\pi}{6}$.",
-          "cross_lesson": "3.01 Parametric Equations",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (1))**2 + (-2)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 1.0,
-                "y": -2.0,
-                "label": "$(1,-2)$"
-              }
-            ],
-            "width": 230
-          }
+          "correct": 1,
+          "answer": "Applying Parametric and Polar principles, Horizontal tangent: $dy/dt=0$. Therefore, the verified correct option is $dy/dt=0$ and $dx/dt e0$.",
+          "explanation": "Applying Parametric and Polar principles, Horizontal tangent: $dy/dt=0$. Therefore, the verified correct option is $dy/dt=0$ and $dx/dt e0$.",
+          "cross_lesson": "3.01 Parametric Equations"
         },
         {
-          "q": "The limaçon $r=8+16\\sin\\theta$ has an inner loop. Find the smaller positive $\\theta\\in[0,2\\pi)$ where $r=0$.",
+          "q": "Tangent line to parametric curve is vertical when:",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Finding horizontal and vertical tangents",
+          "target": "Tangent lines at the pole",
           "choices": [
-            "$\\frac{5\\pi}{6}$",
-            "$\\frac{\\pi}{2}$",
-            "$\\frac{7\\pi}{6}$",
-            "$\\frac{11\\pi}{6}$"
+            "$dy/dt=0$",
+            "$dx/dt=0$ and $dy/dt e0$",
+            "$dx/dt=dy/dt$",
+            "$t=0$"
           ],
-          "correct": 2,
-          "answer": "Set $r=0$: $8+16\\sin\\theta=0 \\Rightarrow \\sin\\theta=-\\frac{1}{2}$. The smaller positive solution is $\\theta=\\frac{7\\pi}{6}$.",
-          "explanation": "Set $r=0$: $8+16\\sin\\theta=0 \\Rightarrow \\sin\\theta=-\\frac{1}{2}$. The smaller positive solution is $\\theta=\\frac{7\\pi}{6}$.",
+          "correct": 1,
+          "answer": "Applying Parametric and Polar principles, Vertical tangent: $dx/dt=0$. Therefore, the verified correct option is $dx/dt=0$ and $dy/dt e0$.",
+          "explanation": "Applying Parametric and Polar principles, Vertical tangent: $dx/dt=0$. Therefore, the verified correct option is $dx/dt=0$ and $dy/dt e0$.",
           "cross_lesson": "3.02 Vector-Valued Functions"
         },
         {
-          "q": "Which formula gives the slope $\\frac{dy}{dx}$ of the tangent line to the polar curve $r = f(\\theta)$?",
+          "q": "At which point does $f(x)=x^2-4x$ have a horizontal tangent?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Slopes of Tangent Lines to Polar Curves",
+          "target": "Classifying polar curves by equation type",
           "choices": [
-            "$\\frac{\\frac{dr}{d\\theta}\\sin\\theta + r\\cos\\theta}{\\frac{dr}{d\\theta}\\cos\\theta - r\\sin\\theta}$",
-            "$\\frac{dr}{d\\theta}$",
-            "$\\frac{r\\sin\\theta}{r\\cos\\theta}$",
-            "$\\frac{\\frac{dr}{d\\theta}\\cos\\theta}{\\frac{dr}{d\\theta}\\sin\\theta}$"
+            "$x=0$",
+            "$x=2$",
+            "$x=4$",
+            "$x=-2$"
           ],
-          "correct": 0,
-          "answer": "From $x = r\\cos\\theta$ and $y = r\\sin\\theta$, applying product rule: $\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta} = \\frac{r'\\sin\\theta + r\\cos\\theta}{r'\\cos\\theta - r\\sin\\theta}$.",
-          "explanation": "From $x = r\\cos\\theta$ and $y = r\\sin\\theta$, applying product rule: $\\frac{dy}{dx} = \\frac{dy/d\\theta}{dx/d\\theta} = \\frac{r'\\sin\\theta + r\\cos\\theta}{r'\\cos\\theta - r\\sin\\theta}$.",
+          "correct": 1,
+          "answer": "Applying Derivatives principles, $f'(x)=2x-4=0\\Rightarrow x=2$. Therefore, the verified correct option is $x=2$.",
+          "explanation": "Applying Derivatives principles, $f'(x)=2x-4=0\\Rightarrow x=2$. Therefore, the verified correct option is $x=2$.",
           "cross_lesson": "4.02 Area in Polar Coordinates"
         },
         {
-          "q": "What is the slope of the tangent line to the cardioid $r = 1 + \\sin\\theta$ at $\\theta = 0$?",
+          "q": "Tangent lines at origin to $r=\\sin3\\theta$ (3-petal rose):",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Slopes of Tangent Lines to Polar Curves",
+          "target": "Number of petals in rose curves",
           "choices": [
-            "$1$",
-            "$-1$",
-            "$0$",
-            "Undefined"
+            "$\\theta=0,\\pi/3,2\\pi/3$",
+            "$\\theta=0,\\pi/6,\\pi/3$",
+            "$y=0$ only",
+            "3 lines at $\\theta=0,\\pi/3,2\\pi/3$"
           ],
           "correct": 0,
-          "answer": "At $\\theta = 0$: $r = 1$. $r' = \\cos(0) = 1$. Numerator $= 1(0) + 1(1) = 1$. Denominator $= 1(1) - 1(0) = 1$. Slope $= \\frac{1}{1} = 1$.",
-          "explanation": "At $\\theta = 0$: $r = 1$. $r' = \\cos(0) = 1$. Numerator $= 1(0) + 1(1) = 1$. Denominator $= 1(1) - 1(0) = 1$. Slope $= \\frac{1}{1} = 1$.",
+          "answer": "Rose passes through origin at $\\sin3\\theta=0$: $\\theta=0,\\pi/3,2\\pi/3$.",
+          "explanation": "Rose passes through origin at $\\sin3\\theta=0$: $\\theta=0,\\pi/3,2\\pi/3$.",
           "cross_lesson": "5.01 Sequences and Basic Series Convergence Tests"
         },
         {
-          "q": "At the pole ($r = 0$), what is the slope of the tangent line to the curve $r = f(\\theta)$ when $f(\\alpha) = 0$?",
+          "q": "For the differential equation $\\frac{dy}{dx} = 1x -5y$, find the slope of the solution curve at the point $(3, 2)$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Horizontal and Vertical Tangents on Polar Curves",
+          "target": "Graphing polar curves point-by-point",
           "choices": [
-            "$\\tan\\alpha$",
-            "$\\cot\\alpha$",
-            "$0$",
-            "Undefined"
+            "-9",
+            "-5",
+            "7",
+            "-7"
           ],
-          "correct": 0,
-          "answer": "When $r = 0$, $\\frac{dy}{dx} = \\frac{r'\\sin\\alpha + 0}{r'\\cos\\alpha - 0} = \\frac{\\sin\\alpha}{\\cos\\alpha} = \\tan\\alpha$.",
-          "explanation": "When $r = 0$, $\\frac{dy}{dx} = \\frac{r'\\sin\\alpha + 0}{r'\\cos\\alpha - 0} = \\frac{\\sin\\alpha}{\\cos\\alpha} = \\tan\\alpha$.",
+          "correct": 3,
+          "answer": "Substitute $x=3$, $y=2$: $\\frac{dy}{dx} = 1(3) -5(2) = -7$.",
+          "explanation": "Substitute $x=3$, $y=2$: $\\frac{dy}{dx} = 1(3) -5(2) = -7$.",
           "cross_lesson": "5.02 Ratio, Root, and Alternating Series Tests"
         },
         {
-          "q": "If $\\frac{dr}{d\\theta} > 0$ for a polar curve, what does this indicate about the distance from the pole?",
+          "q": "The graph of a differentiable function $f(x)$ is shown below. The function has a tangent line at $x = 1$ with equation $y = 2x + c$. If $f(1) = 3$, find the value of $c$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Rate of Change of r and Distance from Origin",
+          "target": "Concavity considerations for polar curves",
           "choices": [
-            "The distance from the origin is increasing as $\\theta$ increases",
-            "The distance is decreasing",
-            "The curve is concave up",
-            "The curve is a line"
+            "1",
+            "2",
+            "3",
+            "4"
           ],
           "correct": 0,
-          "answer": "Since $r$ measures directed distance from the origin, $\\frac{dr}{d\\theta} > 0$ (for $r > 0$) means the particle is moving away from the pole.",
-          "explanation": "Since $r$ measures directed distance from the origin, $\\frac{dr}{d\\theta} > 0$ (for $r > 0$) means the particle is moving away from the pole.",
-          "cross_lesson": "6.01 Power Series and Interval of Convergence"
+          "answer": "The equation of the tangent line to $f(x)$ at $x = 1$ is given as $y = 2x + c$. We are given that $f(1) = 3$. This means the point $(1, 3)$ lies on both the function $f(x)$ and its tangent line at $x = 1$. Since the point $(1, 3)$ lies on the tangent line $y = 2x + c$, we can substitute the coordinates into the equation: $3 = 2(1) + c$ $3 = 2 + c$ $c = 3 - 2$ $c = 1$ The derivative of the function at $x = 1$ is the slope of the tangent line, which is 2. This information is consistent with the problem but not directly needed to find $c$.",
+          "explanation": "The equation of the tangent line to $f(x)$ at $x = 1$ is given as $y = 2x + c$. We are given that $f(1) = 3$. This means the point $(1, 3)$ lies on both the function $f(x)$ and its tangent line at $x = 1$. Since the point $(1, 3)$ lies on the tangent line $y = 2x + c$, we can substitute the coordinates into the equation: $3 = 2(1) + c$ $3 = 2 + c$ $c = 3 - 2$ $c = 1$ The derivative of the function at $x = 1$ is the slope of the tangent line, which is 2. This information is consistent with the problem but not directly needed to find $c$.",
+          "cross_lesson": "6.01 Power Series and Interval of Convergence",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2*x + 1",
+              "x**2 + 2"
+            ],
+            "xmin": -2.0,
+            "xmax": 4.0,
+            "ymin": -2.0,
+            "ymax": 7.0,
+            "width": 230,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": 3.0,
+                "label": "(1, 3)"
+              }
+            ]
+          }
         },
         {
-          "q": "Which integral represents the arc length of the polar curve $r = f(\\theta)$ from $\\theta = \\alpha$ to $\\theta = \\beta$?",
+          "q": "The slope of $y=3x-5$ at any point is:",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Arc Length of Polar Curves",
+          "target": "Converting between polar and rectangular coordinates",
           "choices": [
-            "$\\int_\\alpha^\\beta \\sqrt{r^2 + (\\frac{dr}{d\\theta})^2} d\\theta$",
-            "$\\int_\\alpha^\\beta \\sqrt{1 + (\\frac{dr}{d\\theta})^2} d\\theta$",
-            "$\\frac{1}{2} \\int_\\alpha^\\beta r^2 d\\theta$",
-            "$\\int_\\alpha^\\beta r d\\theta$"
+            "$-5$",
+            "0",
+            "3",
+            "undefined"
           ],
-          "correct": 0,
-          "answer": "By transforming $ds = \\sqrt{(dx)^2 + (dy)^2}$, polar arc length is $L = \\int_\\alpha^\\beta \\sqrt{r^2 + (r')^2} d\\theta$.",
-          "explanation": "By transforming $ds = \\sqrt{(dx)^2 + (dy)^2}$, polar arc length is $L = \\int_\\alpha^\\beta \\sqrt{r^2 + (r')^2} d\\theta$.",
-          "cross_lesson": "6.02 Taylor and Maclaurin Series"
+          "correct": 2,
+          "answer": "Applying Derivatives principles, Slope of a line $y=mx+b$ is $m=3$. Therefore, the verified correct option is 3.",
+          "explanation": "Applying Derivatives principles, Slope of a line $y=mx+b$ is $m=3$. Therefore, the verified correct option is 3.",
+          "cross_lesson": "6.02 Taylor and Maclaurin Series",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "3*x + -5"
+            ],
+            "xmin": -4.0,
+            "xmax": 4.0,
+            "ymin": -7.0,
+            "ymax": 4.0,
+            "width": 230,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -5.0,
+                "label": "(0,-5)"
+              },
+              {
+                "x": 1.7,
+                "y": 0.0,
+                "label": "(1.67,0)"
+              }
+            ]
+          }
         }
       ]
     }

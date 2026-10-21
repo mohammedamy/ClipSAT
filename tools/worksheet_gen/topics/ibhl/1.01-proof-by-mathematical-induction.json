@@ -26,30 +26,22 @@
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (0))**2 + (-1)",
-              "0.5*x + 1"
+              "0.3*(x - (0.0))**2 + (0.0)",
+              "1.4*x + (1.2)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
                 "x": 0.0,
-                "y": -1.0,
-                "label": "$(0,-1)$"
+                "y": 0.0,
+                "label": "$(0,0)$"
               }
             ],
             "width": 230
           }
-        },
-        {
-          "q": "Prove by induction that $1^2+2^2+3^2+\\cdots+n^2=n(n+1)(2n+1)/6$ for all $n\\geq1$.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Proving a summation formula",
-          "answer": "Base case ($n=1$): LHS $=1$. RHS $=1(2)(3)/6=1$. True. Assume true for $n=k$: $1^2+2^2+\\cdots+k^2=k(k+1)(2k+1)/6$. For $n=k+1$: $1^2+\\cdots+k^2+(k+1)^2=k(k+1)(2k+1)/6+(k+1)^2$. Factoring out $(k+1)$: this is $(k+1)[k(2k+1)/6+(k+1)]$. Combining the bracketed terms over a denominator of 6: this is $(k+1)(2k^2+7k+6)/6$. Since $2k^2+7k+6=(2k+3)(k+2)$, this equals $(k+1)(k+2)(2k+3)/6$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$.",
-          "explanation": "Base case ($n=1$): LHS $=1$. RHS $=1(2)(3)/6=1$. True. Assume true for $n=k$: $1^2+2^2+\\cdots+k^2=k(k+1)(2k+1)/6$. For $n=k+1$: $1^2+\\cdots+k^2+(k+1)^2=k(k+1)(2k+1)/6+(k+1)^2$. Factoring out $(k+1)$: this is $(k+1)[k(2k+1)/6+(k+1)]$. Combining the bracketed terms over a denominator of 6: this is $(k+1)(2k^2+7k+6)/6$. Since $2k^2+7k+6=(2k+3)(k+2)$, this equals $(k+1)(k+2)(2k+3)/6$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$."
         },
         {
           "q": "Prove by induction that $7^n-1$ is divisible by $6$ for all $n\\geq1$.",
@@ -73,26 +65,7 @@
           "question_type": "FRQ",
           "target": "Induction in calculus: derivatives of a product",
           "answer": "Base case ($n=1$): differentiating $e^{ax}$ once gives $ae^{ax}=a^1e^{ax}$, matching the formula. Inductive hypothesis: assume the $k$-th derivative of $e^{ax}$ is $a^ke^{ax}$. Differentiating this once more: $\\frac{d}{dx}(a^ke^{ax})=a^k\\cdot ae^{ax}=a^{k+1}e^{ax}$ — this is exactly the $(k+1)$-th derivative, matching the formula at $n=k+1$. By induction, true for all positive integers $n$.",
-          "explanation": "Base case ($n=1$): differentiating $e^{ax}$ once gives $ae^{ax}=a^1e^{ax}$, matching the formula. Inductive hypothesis: assume the $k$-th derivative of $e^{ax}$ is $a^ke^{ax}$. Differentiating this once more: $\\frac{d}{dx}(a^ke^{ax})=a^k\\cdot ae^{ax}=a^{k+1}e^{ax}$ — this is exactly the $(k+1)$-th derivative, matching the formula at $n=k+1$. By induction, true for all positive integers $n$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (1))**2 + (-1)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 1.0,
-                "y": -1.0,
-                "label": "$(1,-1)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "Base case ($n=1$): differentiating $e^{ax}$ once gives $ae^{ax}=a^1e^{ax}$, matching the formula. Inductive hypothesis: assume the $k$-th derivative of $e^{ax}$ is $a^ke^{ax}$. Differentiating this once more: $\\frac{d}{dx}(a^ke^{ax})=a^k\\cdot ae^{ax}=a^{k+1}e^{ax}$ — this is exactly the $(k+1)$-th derivative, matching the formula at $n=k+1$. By induction, true for all positive integers $n$."
         },
         {
           "q": "A sequence is defined by $u_1=3$ and $u_{n+1}=2u_n-1$. Prove by induction that $u_n=2^n+1$ for all $n\\geq1$.",
@@ -100,56 +73,40 @@
           "question_type": "FRQ",
           "target": "Induction with a recursively defined sequence",
           "answer": "Base case ($n=1$): $u_1=3$ (given). Formula: $2^1+1=3$. True. Assume $u_k=2^k+1$. Then $u_{k+1}=2u_k-1=2(2^k+1)-1=2^{k+1}+2-1=2^{k+1}+1$, matching the formula at $n=k+1$. By induction, $u_n=2^n+1$ for all $n\\geq1$.",
-          "explanation": "Base case ($n=1$): $u_1=3$ (given). Formula: $2^1+1=3$. True. Assume $u_k=2^k+1$. Then $u_{k+1}=2u_k-1=2(2^k+1)-1=2^{k+1}+2-1=2^{k+1}+1$, matching the formula at $n=k+1$. By induction, $u_n=2^n+1$ for all $n\\geq1$."
+          "explanation": "Base case ($n=1$): $u_1=3$ (given). Formula: $2^1+1=3$. True. Assume $u_k=2^k+1$. Then $u_{k+1}=2u_k-1=2(2^k+1)-1=2^{k+1}+2-1=2^{k+1}+1$, matching the formula at $n=k+1$. By induction, $u_n=2^n+1$ for all $n\\geq1$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.75*(x - (0.5))**2 + (-1.0)",
+              "-0.1*x + (0.2)"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -5,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.5,
+                "y": -1.0,
+                "label": "$(0.5,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Prove by induction that the sum $3^0+3^1+\\cdots+3^{n-1}$ equals $(3^n-1)/2$ for all $n\\geq1$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Proving a geometric-series-style summation",
+          "answer": "Base case ($n=1$): LHS $=3^0=1$. RHS $=(3^1-1)/2=2/2=1$. True. Assume the sum $3^0+\\cdots+3^{k-1}=(3^k-1)/2$. For $n=k+1$: adding the next term $3^k$ gives $(3^k-1)/2+3^k$. Combining over a denominator of 2: this is $(3^k-1+2\\cdot3^k)/2=(3\\cdot3^k-1)/2=(3^{k+1}-1)/2$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$.",
+          "explanation": "Base case ($n=1$): LHS $=3^0=1$. RHS $=(3^1-1)/2=2/2=1$. True. Assume the sum $3^0+\\cdots+3^{k-1}=(3^k-1)/2$. For $n=k+1$: adding the next term $3^k$ gives $(3^k-1)/2+3^k$. Combining over a denominator of 2: this is $(3^k-1+2\\cdot3^k)/2=(3\\cdot3^k-1)/2=(3^{k+1}-1)/2$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$."
         }
       ]
     },
     {
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
-        {
-          "q": "Prove by induction that the sum $3^0+3^1+\\cdots+3^{n-1}$ equals $(3^n-1)/2$ for all $n\\geq1$.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Proving a geometric-series-style summation",
-          "answer": "Base case ($n=1$): LHS $=3^0=1$. RHS $=(3^1-1)/2=2/2=1$. True. Assume the sum $3^0+\\cdots+3^{k-1}=(3^k-1)/2$. For $n=k+1$: adding the next term $3^k$ gives $(3^k-1)/2+3^k$. Combining over a denominator of 2: this is $(3^k-1+2\\cdot3^k)/2=(3\\cdot3^k-1)/2=(3^{k+1}-1)/2$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$.",
-          "explanation": "Base case ($n=1$): LHS $=3^0=1$. RHS $=(3^1-1)/2=2/2=1$. True. Assume the sum $3^0+\\cdots+3^{k-1}=(3^k-1)/2$. For $n=k+1$: adding the next term $3^k$ gives $(3^k-1)/2+3^k$. Combining over a denominator of 2: this is $(3^k-1+2\\cdot3^k)/2=(3\\cdot3^k-1)/2=(3^{k+1}-1)/2$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$."
-        },
-        {
-          "q": "Prove by induction that the sum $1\\cdot1!+2\\cdot2!+\\cdots+n\\cdot n!$ equals $(n+1)!-1$ for all $n\\geq1$.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Proving a geometric-series-style summation",
-          "answer": "Base case ($n=1$): LHS $=1\\cdot1!=1$. RHS $=2!-1=2-1=1$. True. Assume $1\\cdot1!+\\cdots+k\\cdot k!=(k+1)!-1$. For $n=k+1$: adding the next term $(k+1)(k+1)!$ gives $(k+1)!-1+(k+1)(k+1)!=(k+1)![1+(k+1)]-1=(k+1)!(k+2)-1=(k+2)!-1$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$.",
-          "explanation": "Base case ($n=1$): LHS $=1\\cdot1!=1$. RHS $=2!-1=2-1=1$. True. Assume $1\\cdot1!+\\cdots+k\\cdot k!=(k+1)!-1$. For $n=k+1$: adding the next term $(k+1)(k+1)!$ gives $(k+1)!-1+(k+1)(k+1)!=(k+1)![1+(k+1)]-1=(k+1)!(k+2)-1=(k+2)!-1$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$."
-        },
-        {
-          "q": "Prove by induction that $n!>2^n$ for all integers $n\\geq4$.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Proving an inequality involving factorials",
-          "answer": "Base case ($n=4$): $4!=24$, $2^4=16$, and $24>16$. True. Assume $k!>2^k$ for some $k\\geq4$. For $n=k+1$: $(k+1)!=(k+1)\\cdot k!>(k+1)\\cdot2^k$. Since $k\\geq4$, $k+1\\geq5>2$, so $(k+1)\\cdot2^k>2\\cdot2^k=2^{k+1}$. Combining, $(k+1)!>2^{k+1}$, matching the inequality at $n=k+1$. By induction, $n!>2^n$ for all $n\\geq4$.",
-          "explanation": "Base case ($n=4$): $4!=24$, $2^4=16$, and $24>16$. True. Assume $k!>2^k$ for some $k\\geq4$. For $n=k+1$: $(k+1)!=(k+1)\\cdot k!>(k+1)\\cdot2^k$. Since $k\\geq4$, $k+1\\geq5>2$, so $(k+1)\\cdot2^k>2\\cdot2^k=2^{k+1}$. Combining, $(k+1)!>2^{k+1}$, matching the inequality at $n=k+1$. By induction, $n!>2^n$ for all $n\\geq4$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": -1.0,
-                "y": -1.0,
-                "label": "$(-1,-1)$"
-              }
-            ],
-            "width": 230
-          }
-        },
         {
           "q": "Prove by induction that $n^3+2n$ is divisible by $3$ for all positive integers $n\\geq1$.",
           "difficulty": "Intermediate",
@@ -175,12 +132,36 @@
           "explanation": "Base case ($n=1$): $S_1=2$ (given). Formula: $3(1)^2-1=2$. True. Assume $S_k=3k^2-k$. Then $S_{k+1}=S_k+6k+2=3k^2-k+6k+2=3k^2+5k+2$. The formula at $n=k+1$ gives $3(k+1)^2-(k+1)=3k^2+6k+3-k-1=3k^2+5k+2$, which matches exactly. Since it holds for $n=1$ and $n=k\\Rightarrow n=k+1$, by induction $S_n=3n^2-n$ for all $n\\geq1$."
         },
         {
-          "q": "Prove by induction that $11^n-4^n$ is divisible by $7$ for all positive integers $n\\geq1$.",
+          "q": "A student claims to prove that all horses are the same color using induction on the number of horses $n$ in a group: the base case $n=1$ is trivially true (one horse is trivially \"the same color\" as itself), and the student then argues that if any $k$ horses are the same color, then any $k+1$ horses must also be the same color. Explain precisely where this argument breaks down, and state why a correct induction proof must avoid this flaw.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
-          "target": "Induction with a strengthened hypothesis",
-          "answer": "Base case ($n=1$): $11^1-4^1=7$, divisible by 7. Assume $11^k-4^k=7m$ for some integer $m$, so $11^k=7m+4^k$. For $n=k+1$: $11^{k+1}-4^{k+1}=11\\cdot11^k-4\\cdot4^k$. Substituting $11^k=7m+4^k$: this is $11(7m+4^k)-4\\cdot4^k=77m+11\\cdot4^k-4\\cdot4^k$. Combining the $4^k$ terms: $77m+7\\cdot4^k$. Factoring out 7: $7(11m+4^k)$, which is divisible by 7. By induction, $11^n-4^n$ is divisible by 7 for all $n\\geq1$.",
-          "explanation": "Base case ($n=1$): $11^1-4^1=7$, divisible by 7. Assume $11^k-4^k=7m$ for some integer $m$, so $11^k=7m+4^k$. For $n=k+1$: $11^{k+1}-4^{k+1}=11\\cdot11^k-4\\cdot4^k$. Substituting $11^k=7m+4^k$: this is $11(7m+4^k)-4\\cdot4^k=77m+11\\cdot4^k-4\\cdot4^k$. Combining the $4^k$ terms: $77m+7\\cdot4^k$. Factoring out 7: $7(11m+4^k)$, which is divisible by 7. By induction, $11^n-4^n$ is divisible by 7 for all $n\\geq1$."
+          "target": "A closing check: identifying an invalid induction argument",
+          "answer": "The flaw is in the inductive step: the argument tries to overlap two groups of $k$ horses (the first $k$ and the last $k$ out of $k+1$ total) and conclude they share a common color through the overlap. This overlap argument only works when the overlap is non-empty, which requires $k\\geq2$. It fails silently at the transition from $n=1$ to $n=2$, since two groups of $1$ horse each (drawn from a total of $2$) have no horse in common, so there is no shared reference point linking their colors. This illustrates why a correct induction proof must verify that the inductive step logic genuinely holds for the smallest values of $k$ used in the argument, not just assume it holds uniformly for all $k$.",
+          "explanation": "The flaw is in the inductive step: the argument tries to overlap two groups of $k$ horses (the first $k$ and the last $k$ out of $k+1$ total) and conclude they share a common color through the overlap. This overlap argument only works when the overlap is non-empty, which requires $k\\geq2$. It fails silently at the transition from $n=1$ to $n=2$, since two groups of $1$ horse each (drawn from a total of $2$) have no horse in common, so there is no shared reference point linking their colors. This illustrates why a correct induction proof must verify that the inductive step logic genuinely holds for the smallest values of $k$ used in the argument, not just assume it holds uniformly for all $k$."
+        },
+        {
+          "q": "Prove by induction that $n^3-n$ is divisible by $6$ for all integers $n\\geq1$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Proving a divisibility result by induction",
+          "answer": "Base case $n=1$: $1^3-1=0$, and $0$ is divisible by $6$. Inductive step: assume $m^3-m=6k$ for some integer $k$. Then $(m+1)^3-(m+1)=m^3+3m^2+3m+1-m-1$. Simplifying: this is $m^3+3m^2+2m$. Regrouping: this is $(m^3-m)+3m(m+1)=6k+3m(m+1)$. Since $m$ and $m+1$ are consecutive integers, one of them is even, so $m(m+1)$ is even and $3m(m+1)$ is divisible by $6$. Thus $(m+1)^3-(m+1)=6k+6j=6(k+j)$ for some integer $j$, which is divisible by $6$. By induction, $n^3-n$ is divisible by $6$ for all $n\\geq1$.",
+          "explanation": "Base case $n=1$: $1^3-1=0$, and $0$ is divisible by $6$. Inductive step: assume $m^3-m=6k$ for some integer $k$. Then $(m+1)^3-(m+1)=m^3+3m^2+3m+1-m-1$. Simplifying: this is $m^3+3m^2+2m$. Regrouping: this is $(m^3-m)+3m(m+1)=6k+3m(m+1)$. Since $m$ and $m+1$ are consecutive integers, one of them is even, so $m(m+1)$ is even and $3m(m+1)$ is divisible by $6$. Thus $(m+1)^3-(m+1)=6k+6j=6(k+j)$ for some integer $j$, which is divisible by $6$. By induction, $n^3-n$ is divisible by $6$ for all $n\\geq1$."
+        },
+        {
+          "q": "Prove by induction that a set with $n$ elements has exactly $2^n$ subsets, for all integers $n\\geq1$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Induction in combinatorics: counting subsets",
+          "answer": "Base case $n=1$: a $1$-element set $\\{a\\}$ has exactly $2$ subsets ($\\emptyset$ and $\\{a\\}$), and $2^1=2$. True. Inductive step: assume every $k$-element set has $2^k$ subsets. Consider a $(k+1)$-element set formed by adding one new element $x$ to a $k$-element set. Every subset of the $(k+1)$-element set either excludes $x$ (giving exactly the $2^k$ subsets of the original $k$-element set) or includes $x$ (giving one more subset for each of those same $2^k$ subsets, with $x$ added in). This gives $2^k+2^k=2\\cdot2^k=2^{k+1}$ subsets in total. By induction, an $n$-element set has $2^n$ subsets for all $n\\geq1$.",
+          "explanation": "Base case $n=1$: a $1$-element set $\\{a\\}$ has exactly $2$ subsets ($\\emptyset$ and $\\{a\\}$), and $2^1=2$. True. Inductive step: assume every $k$-element set has $2^k$ subsets. Consider a $(k+1)$-element set formed by adding one new element $x$ to a $k$-element set. Every subset of the $(k+1)$-element set either excludes $x$ (giving exactly the $2^k$ subsets of the original $k$-element set) or includes $x$ (giving one more subset for each of those same $2^k$ subsets, with $x$ added in). This gives $2^k+2^k=2\\cdot2^k=2^{k+1}$ subsets in total. By induction, an $n$-element set has $2^n$ subsets for all $n\\geq1$."
+        },
+        {
+          "q": "(Paper 3 Extended Investigation) Consider the recursive Babylonian sequence defined by $x_0 = 3$ and $x_{n+1} = \\frac{1}{2}\\left(x_n + \\frac{5}{x_n}\\right)$ for $n \\geq 0$. (a) Use the AM-GM inequality to prove that $x_n \\geq \\sqrt{5}$ for all $n \\geq 1$. (b) Show that the sequence is strictly decreasing for $n \\geq 1$, and deduce that $\\lim_{n\\rightarrow\\infty} x_n = \\sqrt{5}$. (c) Prove the quadratic error relationship $|x_{n+1} - \\sqrt{5}| = \\frac{(x_n - \\sqrt{5})^2}{2x_n}$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "A closing check: identifying an invalid induction argument",
+          "answer": "(a) Lower bound via AM-GM: For any positive real number $x_n > 0$, the Arithmetic Mean-Geometric Mean inequality states that $\\frac{a + b}{2} \\geq \\sqrt{ab}$. With $a = x_n$ and $b = \\frac{5}{x_n}$: $x_{n+1} = \\frac{x_n + 5/x_n}{2} \\geq \\sqrt{x_n \\cdot \\frac{5}{x_n}} = \\sqrt{5}.$ Thus $x_n \\geq \\sqrt{5}$ for all $n \\geq 1$. (b) Monotonicity & Convergence: Compute the difference: $x_{n+1} - x_n = \\frac{1}{2}x_n + \\frac{5}{2x_n} - x_n = \\frac{5 - x_n^2}{2x_n}.$ Since $x_n \\geq \\sqrt{5}$ for $n \\geq 1$, $x_n^2 \\geq 5 \\Rightarrow 5 - x_n^2 \\leq 0$. Therefore $x_{n+1} \\leq x_n$, proving the sequence is non-increasing and bounded below by $\\sqrt{5}$. By the Monotone Convergence Theorem, the limit $L = \\lim_{n\\rightarrow\\infty} x_n$ exists and is positive. Taking limits on both sides of the recurrence: $L = \\frac{1}{2}\\left(L + \\frac{5}{L}\\right) \\Rightarrow 2L = L + \\frac{5}{L} \\Rightarrow L = \\frac{5}{L} \\Rightarrow L^2 = 5 \\Rightarrow L = \\sqrt{5}.$ (c) Quadratic Error Law: Compute the error at step $n+1$: $x_{n+1} - \\sqrt{5} = \\frac{x_n^2 + 5}{2x_n} - \\sqrt{5} = \\frac{x_n^2 - 2\\sqrt{5}x_n + 5}{2x_n} = \\frac{(x_n - \\sqrt{5})^2}{2x_n}. \\quad \\blacksquare$ This proves that the number of correct significant figures approximately doubles at every iteration (quadratic convergence).",
+          "explanation": "(a) Lower bound via AM-GM: For any positive real number $x_n > 0$, the Arithmetic Mean-Geometric Mean inequality states that $\\frac{a + b}{2} \\geq \\sqrt{ab}$. With $a = x_n$ and $b = \\frac{5}{x_n}$: $x_{n+1} = \\frac{x_n + 5/x_n}{2} \\geq \\sqrt{x_n \\cdot \\frac{5}{x_n}} = \\sqrt{5}.$ Thus $x_n \\geq \\sqrt{5}$ for all $n \\geq 1$. (b) Monotonicity & Convergence: Compute the difference: $x_{n+1} - x_n = \\frac{1}{2}x_n + \\frac{5}{2x_n} - x_n = \\frac{5 - x_n^2}{2x_n}.$ Since $x_n \\geq \\sqrt{5}$ for $n \\geq 1$, $x_n^2 \\geq 5 \\Rightarrow 5 - x_n^2 \\leq 0$. Therefore $x_{n+1} \\leq x_n$, proving the sequence is non-increasing and bounded below by $\\sqrt{5}$. By the Monotone Convergence Theorem, the limit $L = \\lim_{n\\rightarrow\\infty} x_n$ exists and is positive. Taking limits on both sides of the recurrence: $L = \\frac{1}{2}\\left(L + \\frac{5}{L}\\right) \\Rightarrow 2L = L + \\frac{5}{L} \\Rightarrow L = \\frac{5}{L} \\Rightarrow L^2 = 5 \\Rightarrow L = \\sqrt{5}.$ (c) Quadratic Error Law: Compute the error at step $n+1$: $x_{n+1} - \\sqrt{5} = \\frac{x_n^2 + 5}{2x_n} - \\sqrt{5} = \\frac{x_n^2 - 2\\sqrt{5}x_n + 5}{2x_n} = \\frac{(x_n - \\sqrt{5})^2}{2x_n}. \\quad \\blacksquare$ This proves that the number of correct significant figures approximately doubles at every iteration (quadratic convergence)."
         }
       ]
     },
@@ -188,77 +169,75 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "Prove by induction that $1^3+2^3+3^3+\\cdots+n^3=[n(n+1)/2]^2$ for all $n\\geq1$.",
-          "difficulty": "Challenging",
-          "question_type": "FRQ",
-          "target": "Induction to prove a formula for the sum of cubes",
-          "cross_lesson": "6.01 Matrices (AI HL)",
-          "answer": "Base case ($n=1$): LHS $=1^3=1$. RHS $=[1(2)/2]^2=1^2=1$. True. Assume $1^3+\\cdots+k^3=[k(k+1)/2]^2$. For $n=k+1$: adding $(k+1)^3$ gives $[k(k+1)/2]^2+(k+1)^3$. Factoring out $(k+1)^2$: this is $(k+1)^2[k^2/4+(k+1)]$. Combining over a denominator of 4: this is $(k+1)^2(k^2+4k+4)/4$. Since $k^2+4k+4=(k+2)^2$, this is $(k+1)^2(k+2)^2/4=[(k+1)(k+2)/2]^2$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$.",
-          "explanation": "Base case ($n=1$): LHS $=1^3=1$. RHS $=[1(2)/2]^2=1^2=1$. True. Assume $1^3+\\cdots+k^3=[k(k+1)/2]^2$. For $n=k+1$: adding $(k+1)^3$ gives $[k(k+1)/2]^2+(k+1)^3$. Factoring out $(k+1)^2$: this is $(k+1)^2[k^2/4+(k+1)]$. Combining over a denominator of 4: this is $(k+1)^2(k^2+4k+4)/4$. Since $k^2+4k+4=(k+2)^2$, this is $(k+1)^2(k+2)^2/4=[(k+1)(k+2)/2]^2$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$."
-        },
-        {
-          "q": "Prove by induction that $5^n+2\\cdot3^{n-1}+1$ is divisible by $8$ for all positive integers $n\\geq1$.",
-          "difficulty": "Challenging",
-          "question_type": "FRQ",
-          "target": "Induction to prove a formula for the sum of cubes",
-          "cross_lesson": "6.02 Graph Theory & Networks (AI HL)",
-          "answer": "Base case ($n=1$): $5^1+2(3^0)+1=5+2+1=8$, divisible by 8. Assume $5^k+2\\cdot3^{k-1}+1=8m$ for some integer $m$. Consider the difference between consecutive terms: $(5^{k+1}+2\\cdot3^k+1)-(5^k+2\\cdot3^{k-1}+1)=5^{k+1}-5^k+2\\cdot3^k-2\\cdot3^{k-1}$. This simplifies to $4\\cdot5^k+4\\cdot3^{k-1}=4(5^k+3^{k-1})$. Since $5^k$ and $3^{k-1}$ are both odd, their sum is even, so $4(5^k+3^{k-1})$ is a multiple of $8$. Therefore $5^{k+1}+2\\cdot3^k+1=8m+4(5^k+3^{k-1})$, and since both terms are multiples of $8$, so is their sum. By induction, the statement holds for all $n\\geq1$.",
-          "explanation": "Base case ($n=1$): $5^1+2(3^0)+1=5+2+1=8$, divisible by 8. Assume $5^k+2\\cdot3^{k-1}+1=8m$ for some integer $m$. Consider the difference between consecutive terms: $(5^{k+1}+2\\cdot3^k+1)-(5^k+2\\cdot3^{k-1}+1)=5^{k+1}-5^k+2\\cdot3^k-2\\cdot3^{k-1}$. This simplifies to $4\\cdot5^k+4\\cdot3^{k-1}=4(5^k+3^{k-1})$. Since $5^k$ and $3^{k-1}$ are both odd, their sum is even, so $4(5^k+3^{k-1})$ is a multiple of $8$. Therefore $5^{k+1}+2\\cdot3^k+1=8m+4(5^k+3^{k-1})$, and since both terms are multiples of $8$, so is their sum. By induction, the statement holds for all $n\\geq1$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": -1.0,
-                "y": -1.0,
-                "label": "$(-1,-1)$"
-              }
-            ],
-            "width": 230
-          }
-        },
-        {
-          "q": "Prove by induction that $1\\cdot2^1+2\\cdot2^2+3\\cdot2^3+\\cdots+n\\cdot2^n=(n-1)2^{n+1}+2$ for all $n\\geq1$.",
-          "difficulty": "Challenging",
-          "question_type": "FRQ",
-          "target": "Induction to prove a formula for a weighted geometric sum",
-          "cross_lesson": "6.03 Markov Chains (AI HL)",
-          "answer": "Base case ($n=1$): LHS $=1\\cdot2^1=2$. RHS $=(1-1)2^2+2=0+2=2$. True. Assume $1\\cdot2^1+\\cdots+k\\cdot2^k=(k-1)2^{k+1}+2$. For $n=k+1$: adding the next term $(k+1)2^{k+1}$ gives $(k-1)2^{k+1}+2+(k+1)2^{k+1}$. Combining the $2^{k+1}$ terms: this is $[(k-1)+(k+1)]2^{k+1}+2=2k\\cdot2^{k+1}+2=k\\cdot2^{k+2}+2$. The formula at $n=k+1$ requires $[(k+1)-1]2^{k+2}+2=k\\cdot2^{k+2}+2$, which matches exactly. By induction, the formula holds for all $n\\geq1$.",
-          "explanation": "Base case ($n=1$): LHS $=1\\cdot2^1=2$. RHS $=(1-1)2^2+2=0+2=2$. True. Assume $1\\cdot2^1+\\cdots+k\\cdot2^k=(k-1)2^{k+1}+2$. For $n=k+1$: adding the next term $(k+1)2^{k+1}$ gives $(k-1)2^{k+1}+2+(k+1)2^{k+1}$. Combining the $2^{k+1}$ terms: this is $[(k-1)+(k+1)]2^{k+1}+2=2k\\cdot2^{k+1}+2=k\\cdot2^{k+2}+2$. The formula at $n=k+1$ requires $[(k+1)-1]2^{k+2}+2=k\\cdot2^{k+2}+2$, which matches exactly. By induction, the formula holds for all $n\\geq1$."
-        },
-        {
-          "q": "A student claims to prove that all horses are the same color using induction on the number of horses $n$ in a group: the base case $n=1$ is trivially true (one horse is trivially \"the same color\" as itself), and the student then argues that if any $k$ horses are the same color, then any $k+1$ horses must also be the same color. Explain precisely where this argument breaks down, and state why a correct induction proof must avoid this flaw.",
-          "difficulty": "Challenging",
-          "question_type": "FRQ",
-          "target": "A closing check: identifying an invalid induction argument",
-          "cross_lesson": "1.02 Complex Numbers: Cartesian Form & Algebra",
-          "answer": "The flaw is in the inductive step: the argument tries to overlap two groups of $k$ horses (the first $k$ and the last $k$ out of $k+1$ total) and conclude they share a common color through the overlap. This overlap argument only works when the overlap is non-empty, which requires $k\\geq2$. It fails silently at the transition from $n=1$ to $n=2$, since two groups of $1$ horse each (drawn from a total of $2$) have no horse in common, so there is no shared reference point linking their colors. This illustrates why a correct induction proof must verify that the inductive step logic genuinely holds for the smallest values of $k$ used in the argument, not just assume it holds uniformly for all $k$.",
-          "explanation": "The flaw is in the inductive step: the argument tries to overlap two groups of $k$ horses (the first $k$ and the last $k$ out of $k+1$ total) and conclude they share a common color through the overlap. This overlap argument only works when the overlap is non-empty, which requires $k\\geq2$. It fails silently at the transition from $n=1$ to $n=2$, since two groups of $1$ horse each (drawn from a total of $2$) have no horse in common, so there is no shared reference point linking their colors. This illustrates why a correct induction proof must verify that the inductive step logic genuinely holds for the smallest values of $k$ used in the argument, not just assume it holds uniformly for all $k$."
-        },
-        {
-          "q": "Prove by induction that $1\\cdot2+2\\cdot3+3\\cdot4+\\cdots+n(n+1)=n(n+1)(n+2)/3$ for all $n\\geq1$.",
+          "q": "Express $z = -1 + i\\sqrt{3}$ in polar form $r(\\cos\\theta + i\\sin\\theta)$ and exponential form $r e^{i\\theta}$, with principal argument $-\\pi < \\theta \\leq \\pi$. Hence find $z^6$ and determine all three solutions to $w^3 = z$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Proving a sum-of-products formula by induction",
-          "cross_lesson": "1.03 Polar Form, De Moivre's Theorem & Roots of Unity",
-          "answer": "Base case $n=1$: LHS $=1\\cdot2=2$, RHS $=1(2)(3)/3=2$. Equal, so the base case holds. Inductive step: assume $1\\cdot2+\\cdots+m(m+1)=m(m+1)(m+2)/3$ for some $m\\geq1$. Adding $(m+1)(m+2)$ to both sides: the new sum is $m(m+1)(m+2)/3+(m+1)(m+2)$. Factoring out $(m+1)(m+2)$: this is $(m+1)(m+2)[m/3+1]=(m+1)(m+2)(m+3)/3$ — exactly the claimed formula with $n=m+1$. By induction, the formula holds for all $n\\geq1$.",
-          "explanation": "Base case $n=1$: LHS $=1\\cdot2=2$, RHS $=1(2)(3)/3=2$. Equal, so the base case holds. Inductive step: assume $1\\cdot2+\\cdots+m(m+1)=m(m+1)(m+2)/3$ for some $m\\geq1$. Adding $(m+1)(m+2)$ to both sides: the new sum is $m(m+1)(m+2)/3+(m+1)(m+2)$. Factoring out $(m+1)(m+2)$: this is $(m+1)(m+2)[m/3+1]=(m+1)(m+2)(m+3)/3$ — exactly the claimed formula with $n=m+1$. By induction, the formula holds for all $n\\geq1$."
+          "cross_lesson": "6.01 Matrices (AI HL)",
+          "answer": "1. Modulus: $r = |z| = \\sqrt{(-1)^2 + (\\sqrt{3})^2} = \\sqrt{1 + 3} = 2$. Argument: since $z$ lies in Quadrant II, $\\theta = \\pi - \\arctan(\\sqrt{3}) = \\pi - \\frac{\\pi}{3} = \\frac{2\\pi}{3}$. Polar form: $z = 2\\left(\\cos\\frac{2\\pi}{3} + i\\sin\\frac{2\\pi}{3}\\right)$; Exponential form: $z = 2e^{i 2\\pi/3}$. 2. Compute $z^6$ via De Moivre's Theorem: $z^6 = 2^6 e^{i \\cdot 6(2\\pi/3)} = 64 e^{i 4\\pi} = 64(\\cos 4\\pi + i\\sin 4\\pi) = 64(1 + 0i) = 64.$ 3. Solve $w^3 = z = 2e^{i 2\\pi/3}$: $w_k = 2^{1/3} \\exp\\left( i \\frac{2\\pi/3 + 2\\pi k}{3} \\right) = \\sqrt[3]{2} e^{i(2\\pi/9 + 2\\pi k/3)} \\quad \\mathrm{for\\ } k = 0, 1, 2.$ For $k = 0$: $w_0 = \\sqrt[3]{2} e^{i 2\\pi/9}$. For $k = 1$: $w_1 = \\sqrt[3]{2} e^{i 8\\pi/9}$. For $k = 2$: $w_2 = \\sqrt[3]{2} e^{i 14\\pi/9} = \\sqrt[3]{2} e^{-i 4\\pi/9}$.",
+          "explanation": "1. Modulus: $r = |z| = \\sqrt{(-1)^2 + (\\sqrt{3})^2} = \\sqrt{1 + 3} = 2$. Argument: since $z$ lies in Quadrant II, $\\theta = \\pi - \\arctan(\\sqrt{3}) = \\pi - \\frac{\\pi}{3} = \\frac{2\\pi}{3}$. Polar form: $z = 2\\left(\\cos\\frac{2\\pi}{3} + i\\sin\\frac{2\\pi}{3}\\right)$; Exponential form: $z = 2e^{i 2\\pi/3}$. 2. Compute $z^6$ via De Moivre's Theorem: $z^6 = 2^6 e^{i \\cdot 6(2\\pi/3)} = 64 e^{i 4\\pi} = 64(\\cos 4\\pi + i\\sin 4\\pi) = 64(1 + 0i) = 64.$ 3. Solve $w^3 = z = 2e^{i 2\\pi/3}$: $w_k = 2^{1/3} \\exp\\left( i \\frac{2\\pi/3 + 2\\pi k}{3} \\right) = \\sqrt[3]{2} e^{i(2\\pi/9 + 2\\pi k/3)} \\quad \\mathrm{for\\ } k = 0, 1, 2.$ For $k = 0$: $w_0 = \\sqrt[3]{2} e^{i 2\\pi/9}$. For $k = 1$: $w_1 = \\sqrt[3]{2} e^{i 8\\pi/9}$. For $k = 2$: $w_2 = \\sqrt[3]{2} e^{i 14\\pi/9} = \\sqrt[3]{2} e^{-i 4\\pi/9}$.",
+          "figure": {
+            "type": "circle",
+            "center": [
+              0,
+              0
+            ],
+            "radius": 6.0,
+            "center_label": "$O$",
+            "radius_label": "$r = 6$",
+            "sector": {
+              "start_deg": 0,
+              "end_deg": 60,
+              "label": "$60^\\circ$"
+            },
+            "chord": null,
+            "width": 210
+          }
         },
         {
-          "q": "Prove by induction that $2^n>n$ for all integers $n\\geq1$.",
+          "q": "Prove by mathematical induction that $5^n - 1$ is divisible by 4 for all positive integers $n \\in \\mathbb{Z}^+$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Proving an exponential inequality by induction",
+          "cross_lesson": "6.02 Graph Theory & Networks (AI HL)",
+          "answer": "Base Step: For $n = 1$: $5^1 - 1 = 4 = 4(1).$ Since 4 is divisible by 4, the statement $P(1)$ is true. Inductive Hypothesis: Assume $P(k)$ is true for some positive integer $k \\geq 1$, meaning: $5^k - 1 = 4m \\quad \\mathrm{for\\ some\\ integer\\ } m \\in \\mathbb{Z} \\Rightarrow 5^k = 4m + 1.$ Inductive Step: Consider $n = k + 1$: $5^{k+1} - 1 = 5\\cdot 5^k - 1.$ Substitute the inductive hypothesis $5^k = 4m + 1$: $5(4m + 1) - 1 = 20m + 5 - 1 = 20m + 4 = 4(5m + 1).$ Since $m \\in \\mathbb{Z}$, $5m + 1$ is an integer, so $5^{k+1} - 1$ is divisible by 4. Thus $P(k) \\Rightarrow P(k+1)$. Conclusion: Since true for $n = 1$, and if true for $n = k$ then true for $n = k + 1$, by the principle of mathematical induction the statement is true for all $n \\in \\mathbb{Z}^+$.",
+          "explanation": "Base Step: For $n = 1$: $5^1 - 1 = 4 = 4(1).$ Since 4 is divisible by 4, the statement $P(1)$ is true. Inductive Hypothesis: Assume $P(k)$ is true for some positive integer $k \\geq 1$, meaning: $5^k - 1 = 4m \\quad \\mathrm{for\\ some\\ integer\\ } m \\in \\mathbb{Z} \\Rightarrow 5^k = 4m + 1.$ Inductive Step: Consider $n = k + 1$: $5^{k+1} - 1 = 5\\cdot 5^k - 1.$ Substitute the inductive hypothesis $5^k = 4m + 1$: $5(4m + 1) - 1 = 20m + 5 - 1 = 20m + 4 = 4(5m + 1).$ Since $m \\in \\mathbb{Z}$, $5m + 1$ is an integer, so $5^{k+1} - 1$ is divisible by 4. Thus $P(k) \\Rightarrow P(k+1)$. Conclusion: Since true for $n = 1$, and if true for $n = k$ then true for $n = k + 1$, by the principle of mathematical induction the statement is true for all $n \\in \\mathbb{Z}^+$."
+        },
+        {
+          "q": "Solve the equation $z^3 + 8 = 0$, expressing all solutions in Cartesian form $a + bi$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Proving a divisibility result by induction",
+          "cross_lesson": "6.03 Markov Chains (AI HL)",
+          "answer": "Write $z^3 = -8 = 8e^{i\\pi}$. By De Moivre's Theorem, the three cube roots are: $z_k = 2\\exp\\left(i\\frac{\\pi + 2\\pi k}{3}\\right) \\quad \\mathrm{for\\ } k = 0, 1, 2.$ For $k = 0$: $z_0 = 2e^{i\\pi/3} = 2\\left(\\frac{1}{2} + i\\frac{\\sqrt{3}}{2}\\right) = 1 + i\\sqrt{3}$. For $k = 1$: $z_1 = 2e^{i\\pi} = 2(-1) = -2$. For $k = 2$: $z_2 = 2e^{i 5\\pi/3} = 2e^{-i\\pi/3} = 2\\left(\\frac{1}{2} - i\\frac{\\sqrt{3}}{2}\\right) = 1 - i\\sqrt{3}$. Notice that $1 \\pm i\\sqrt{3}$ are complex conjugates, as predicted by the Conjugate Root Theorem for $z^3 + 8 \\in \\mathbb{R}[z]$.",
+          "explanation": "Write $z^3 = -8 = 8e^{i\\pi}$. By De Moivre's Theorem, the three cube roots are: $z_k = 2\\exp\\left(i\\frac{\\pi + 2\\pi k}{3}\\right) \\quad \\mathrm{for\\ } k = 0, 1, 2.$ For $k = 0$: $z_0 = 2e^{i\\pi/3} = 2\\left(\\frac{1}{2} + i\\frac{\\sqrt{3}}{2}\\right) = 1 + i\\sqrt{3}$. For $k = 1$: $z_1 = 2e^{i\\pi} = 2(-1) = -2$. For $k = 2$: $z_2 = 2e^{i 5\\pi/3} = 2e^{-i\\pi/3} = 2\\left(\\frac{1}{2} - i\\frac{\\sqrt{3}}{2}\\right) = 1 - i\\sqrt{3}$. Notice that $1 \\pm i\\sqrt{3}$ are complex conjugates, as predicted by the Conjugate Root Theorem for $z^3 + 8 \\in \\mathbb{R}[z]$."
+        },
+        {
+          "q": "[Algebra, Proof & Complex Numbers · Practice 2] If the governing relation for this system is $g(t) = 4t + 4$, evaluate $g(6)$ and find the inverse input $t$ when $g(t) = 32$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Proving a closed form for a recursive sequence",
+          "cross_lesson": "1.02 Complex Numbers: Cartesian Form & Algebra",
+          "answer": "Substitute $t = 6$: $g(6) = 4(6) + 4 = \\mathbf{28}$. Setting $4t + 4 = 32$ gives $4t = 28 \\Rightarrow t = \\mathbf{7}$.",
+          "explanation": "Substitute $t = 6$: $g(6) = 4(6) + 4 = \\mathbf{28}$. Setting $4t + 4 = 32$ gives $4t = 28 \\Rightarrow t = \\mathbf{7}$."
+        },
+        {
+          "q": "An infinite geometric series has common ratio $r = -0.4$ and converges to an infinite sum of $S_\\infty = 25$. Find the first term $a_1$, and compute the exact value of the partial sum $S_4$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "A second exponential inequality by induction",
+          "cross_lesson": "1.03 Polar Form, De Moivre's Theorem & Roots of Unity",
+          "answer": "Use the infinite sum formula $S_\\infty = \\frac{a_1}{1 - r}$: $25 = \\frac{a_1}{1 - (-0.4)} = \\frac{a_1}{1.4} \\Rightarrow a_1 = 25 \\times 1.4 = 35.$ Compute the 4th partial sum $S_4 = \\frac{a_1(1 - r^4)}{1 - r}$: $(-0.4)^4 = 0.0256.$ $S_4 = \\frac{35(1 - 0.0256)}{1.4} = \\frac{35(0.9744)}{1.4} = 25 \\times 0.9744 = 24.36.$",
+          "explanation": "Use the infinite sum formula $S_\\infty = \\frac{a_1}{1 - r}$: $25 = \\frac{a_1}{1 - (-0.4)} = \\frac{a_1}{1.4} \\Rightarrow a_1 = 25 \\times 1.4 = 35.$ Compute the 4th partial sum $S_4 = \\frac{a_1(1 - r^4)}{1 - r}$: $(-0.4)^4 = 0.0256.$ $S_4 = \\frac{35(1 - 0.0256)}{1.4} = \\frac{35(0.9744)}{1.4} = 25 \\times 0.9744 = 24.36.$"
+        },
+        {
+          "q": "(Paper 3 Extended Investigation) Define the integral family $I_n = \\int_0^1 x^n e^x\\,dx$ for integers $n \\geq 0$. (a) Evaluate $I_0$. (b) Use integration by parts to establish the reduction formula $I_n = e - n I_{n-1}$ for $n \\geq 1$. (c) Hence determine the exact value of $\\int_0^1 x^3 e^x\\,dx$. (d) Prove that $0 < I_n < \\frac{e}{n+1}$, and deduce $\\lim_{n\\rightarrow\\infty} I_n$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "A third inequality by induction",
           "cross_lesson": "1.04 Partial Fractions",
-          "answer": "Base case $n=1$: $2^1=2>1$, true. Inductive step: assume $2^m>m$ for some $m\\geq1$. Then $2^{m+1}=2\\cdot2^m>2m$ (using the assumption). Since $m\\geq1$, $2m\\geq m+1$, so $2^{m+1}>2m\\geq m+1$. Thus $2^{m+1}>m+1$. By induction, $2^n>n$ for all $n\\geq1$.",
-          "explanation": "Base case $n=1$: $2^1=2>1$, true. Inductive step: assume $2^m>m$ for some $m\\geq1$. Then $2^{m+1}=2\\cdot2^m>2m$ (using the assumption). Since $m\\geq1$, $2m\\geq m+1$, so $2^{m+1}>2m\\geq m+1$. Thus $2^{m+1}>m+1$. By induction, $2^n>n$ for all $n\\geq1$."
+          "answer": "(a) Base integral: $I_0 = \\int_0^1 e^x\\,dx = [e^x]_0^1 = e^1 - e^0 = e - 1.$ (b) Reduction formula via IBP: Let $u = x^n \\Rightarrow du = n x^{n-1}\\,dx$. Let $dv = e^x\\,dx \\Rightarrow v = e^x$. $I_n = \\left[ x^n e^x \\right]_0^1 - n \\int_0^1 x^{n-1} e^x\\,dx = (1^n e^1 - 0) - n I_{n-1} = e - n I_{n-1}. \\quad \\blacksquare$ (c) Compute $I_3$: - $I_1 = e - 1(I_0) = e - (e - 1) = 1$. - $I_2 = e - 2(I_1) = e - 2(1) = e - 2$. - $I_3 = e - 3(I_2) = e - 3(e - 2) = e - 3e + 6 = 6 - 2e$. (d) Squeeze Theorem & Limit: For $x \\in [0, 1]$, $1 \\leq e^x \\leq e$. Multiply by $x^n > 0$: $x^n \\leq x^n e^x \\leq e x^n.$ Integrating from 0 to 1: $\\int_0^1 x^n\\,dx < I_n < e \\int_0^1 x^n\\,dx \\Rightarrow \\frac{1}{n+1} < I_n < \\frac{e}{n+1}.$ As $n \\rightarrow \\infty$, $\\frac{1}{n+1} \\rightarrow 0$ and $\\frac{e}{n+1} \\rightarrow 0$. By the Squeeze Theorem: $\\lim_{n\\rightarrow\\infty} I_n = 0.$",
+          "explanation": "(a) Base integral: $I_0 = \\int_0^1 e^x\\,dx = [e^x]_0^1 = e^1 - e^0 = e - 1.$ (b) Reduction formula via IBP: Let $u = x^n \\Rightarrow du = n x^{n-1}\\,dx$. Let $dv = e^x\\,dx \\Rightarrow v = e^x$. $I_n = \\left[ x^n e^x \\right]_0^1 - n \\int_0^1 x^{n-1} e^x\\,dx = (1^n e^1 - 0) - n I_{n-1} = e - n I_{n-1}. \\quad \\blacksquare$ (c) Compute $I_3$: - $I_1 = e - 1(I_0) = e - (e - 1) = 1$. - $I_2 = e - 2(I_1) = e - 2(1) = e - 2$. - $I_3 = e - 3(I_2) = e - 3(e - 2) = e - 3e + 6 = 6 - 2e$. (d) Squeeze Theorem & Limit: For $x \\in [0, 1]$, $1 \\leq e^x \\leq e$. Multiply by $x^n > 0$: $x^n \\leq x^n e^x \\leq e x^n.$ Integrating from 0 to 1: $\\int_0^1 x^n\\,dx < I_n < e \\int_0^1 x^n\\,dx \\Rightarrow \\frac{1}{n+1} < I_n < \\frac{e}{n+1}.$ As $n \\rightarrow \\infty$, $\\frac{1}{n+1} \\rightarrow 0$ and $\\frac{e}{n+1} \\rightarrow 0$. By the Squeeze Theorem: $\\lim_{n\\rightarrow\\infty} I_n = 0.$"
         }
       ]
     },
@@ -266,241 +245,10 @@
       "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
-          "q": "In a proof by mathematical induction that a proposition $P(n)$ is true for all integers $n \\geq 1$, what are the essential logical components?",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "The Principle & Architecture of Induction",
-          "choices": [
-            "Base case: prove $P(1)$ is true; Inductive step: prove $P(k) \\Rightarrow P(k+1)$; Conclusion by PMI",
-            "Verify $P(n)$ for $n = 1, 2, 3, 4, 5$ and deduce the pattern",
-            "Assume $P(n)$ is true for all $n$ and differentiate both sides",
-            "Prove $P(k+1) \\Rightarrow P(k)$ starting from an arbitrary large integer"
-          ],
-          "correct": 0,
-          "answer": "The Principle of Mathematical Induction requires establishing the base step (verify $P(1)$), stating the induction hypothesis (assume $P(k)$ is true), showing that $P(k) \\Rightarrow P(k+1)$, and stating the formal conclusion.",
-          "explanation": "The Principle of Mathematical Induction requires establishing the base step (verify $P(1)$), stating the induction hypothesis (assume $P(k)$ is true), showing that $P(k) \\Rightarrow P(k+1)$, and stating the formal conclusion."
-        },
-        {
-          "q": "If the base case of an induction proof is verified at $n = 4$, for which set of integers is $P(n)$ established (assuming the inductive step holds for all $k \\geq 4$)?",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "The Principle & Architecture of Induction",
-          "choices": [
-            "$n \\in \\{4, 5, 6, \\dots\\}$",
-            "All integers $n \\in \\mathbb{Z}$",
-            "$n \\in \\{1, 2, 3, 4\\}$",
-            "$n \\in \\mathbb{R}$ with $n \\geq 4$"
-          ],
-          "correct": 0,
-          "answer": "The chain of implications starts at the base case $n = 4$ and propagates to all subsequent integers $n \\geq 4$.",
-          "explanation": "The chain of implications starts at the base case $n = 4$ and propagates to all subsequent integers $n \\geq 4$."
-        },
-        {
-          "q": "In proving $\\sum_{r=1}^n r = \\frac{n(n+1)}{2}$, what is the algebraic expression for the sum up to $k+1$ using the induction hypothesis?",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "The Principle & Architecture of Induction",
-          "choices": [
-            "$\\frac{k(k+1)}{2} + (k + 1)$",
-            "$\\frac{(k+1)(k+2)}{2} + k$",
-            "$\\frac{k(k+1)}{2} \\times (k + 1)$",
-            "$\\frac{k(k-1)}{2} + (k + 1)$"
-          ],
-          "correct": 0,
-          "answer": "By definition, $\\sum_{r=1}^{k+1} r = \\left(\\sum_{r=1}^k r\\right) + (k+1)$. Substituting the inductive hypothesis gives $\\frac{k(k+1)}{2} + (k + 1)$.",
-          "explanation": "By definition, $\\sum_{r=1}^{k+1} r = \\left(\\sum_{r=1}^k r\\right) + (k+1)$. Substituting the inductive hypothesis gives $\\frac{k(k+1)}{2} + (k + 1)$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "4*exp(-0.5*x**2)"
-            ],
-            "xmin": -3.5,
-            "xmax": 3.5,
-            "ymin": -0.4,
-            "ymax": 4.6,
-            "shade": {
-              "fn1": "4*exp(-0.5*x**2)",
-              "fn2": "0",
-              "x0": -1.65,
-              "x1": 1.65
-            },
-            "point_labels": [
-              {
-                "x": 1.65,
-                "y": 1.03,
-                "label": "$z=1.65$"
-              }
-            ],
-            "width": 230
-          }
-        },
-        {
-          "q": "When proving by induction that $\\sum_{r=1}^n r^2 = \\frac{n(n+1)(2n+1)}{6}$, factoring $(k+1)$ from $\\frac{k(k+1)(2k+1)}{6} + (k+1)^2$ yields:",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Summation and Series Proofs",
-          "choices": [
-            "$\\frac{k+1}{6} [2k^2 + 7k + 6] = \\frac{(k+1)(k+2)(2k+3)}{6}$",
-            "$\\frac{k+1}{6} [2k^2 + 5k + 6]$",
-            "$\\frac{(k+1)^2(2k+1)}{6}$",
-            "$\\frac{k+1}{6} [k(2k+1) + 1]$"
-          ],
-          "correct": 0,
-          "answer": "Factor $\\frac{k+1}{6}$: $\\frac{k+1}{6}[k(2k+1) + 6(k+1)] = \\frac{k+1}{6}[2k^2 + 7k + 6] = \\frac{(k+1)(k+2)(2k+3)}{6}$, which is the target formula at $n = k+1$.",
-          "explanation": "Factor $\\frac{k+1}{6}$: $\\frac{k+1}{6}[k(2k+1) + 6(k+1)] = \\frac{k+1}{6}[2k^2 + 7k + 6] = \\frac{(k+1)(k+2)(2k+3)}{6}$, which is the target formula at $n = k+1$."
-        },
-        {
-          "q": "For the proposition $\\sum_{r=1}^n (2r - 1) = n^2$, verify the inductive step by simplifying $k^2 + (2(k+1) - 1)$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Summation and Series Proofs",
-          "choices": [
-            "$(k + 1)^2$",
-            "$k^2 + 2k$",
-            "$k^2 + 2k + 3$",
-            "$(k + 2)^2$"
-          ],
-          "correct": 0,
-          "answer": "$k^2 + (2k + 2 - 1) = k^2 + 2k + 1 = (k + 1)^2$, completing the induction step.",
-          "explanation": "$k^2 + (2k + 2 - 1) = k^2 + 2k + 1 = (k + 1)^2$, completing the induction step."
-        },
-        {
-          "q": "Consider the geometric series $\\sum_{r=1}^n 2^{r-1} = 2^n - 1$. What is the base case check for $n = 1$?",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Summation and Series Proofs",
-          "choices": [
-            "$\\mathrm{LHS} = 2^0 = 1$, $\\mathrm{RHS} = 2^1 - 1 = 1$; LHS $=$ RHS",
-            "$\\mathrm{LHS} = 2^1 = 2$, $\\mathrm{RHS} = 2^1 - 1 = 1$",
-            "$\\mathrm{LHS} = 0$, $\\mathrm{RHS} = 0$",
-            "$\\mathrm{LHS} = 1$, $\\mathrm{RHS} = 2$"
-          ],
-          "correct": 0,
-          "answer": "At $n = 1$, $\\mathrm{LHS} = 2^{1-1} = 1$ and $\\mathrm{RHS} = 2^1 - 1 = 1$, so the base case is verified.",
-          "explanation": "At $n = 1$, $\\mathrm{LHS} = 2^{1-1} = 1$ and $\\mathrm{RHS} = 2^1 - 1 = 1$, so the base case is verified."
-        },
-        {
-          "q": "To prove $5^n - 1$ is divisible by $4$ for $n \\geq 1$, express $5^{k+1} - 1$ in terms of $(5^k - 1)$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Divisibility and Inequality Proofs",
-          "choices": [
-            "$5(5^k - 1) + 4$",
-            "$5(5^k - 1) - 4$",
-            "$4(5^k - 1) + 5$",
-            "$(5^k - 1) + 5$"
-          ],
-          "correct": 0,
-          "answer": "$5^{k+1} - 1 = 5 \\cdot 5^k - 1 = 5(5^k - 1) + 5 - 1 = 5(5^k - 1) + 4$. If $5^k - 1 = 4M$, this equals $5(4M) + 4 = 4(5M + 1)$, which is divisible by 4.",
-          "explanation": "$5^{k+1} - 1 = 5 \\cdot 5^k - 1 = 5(5^k - 1) + 5 - 1 = 5(5^k - 1) + 4$. If $5^k - 1 = 4M$, this equals $5(4M) + 4 = 4(5M + 1)$, which is divisible by 4."
-        },
-        {
-          "q": "In proving $2^n > n^2$ for $n \\geq 5$, assuming $2^k > k^2$, which inequality must be justified to show $2^{k+1} > (k+1)^2$?",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Divisibility and Inequality Proofs",
-          "choices": [
-            "$2k^2 \\geq (k+1)^2 \\Leftrightarrow k^2 - 2k - 1 \\geq 0$, which holds for $k \\geq 5$",
-            "$k^2 > 2k + 1$ for all $k \\in \\mathbb{R}$",
-            "$2^k > 2k$",
-            "$(k+1)^2 > k^2 + 1$"
-          ],
-          "correct": 0,
-          "answer": "$2^{k+1} = 2 \\cdot 2^k > 2k^2$. We need $2k^2 \\geq (k+1)^2 = k^2 + 2k + 1 \\Leftrightarrow k^2 - 2k - 1 \\geq 0$. For $k \\geq 5$, $k(k-2) - 1 \\geq 5(3) - 1 = 14 > 0$.",
-          "explanation": "$2^{k+1} = 2 \\cdot 2^k > 2k^2$. We need $2k^2 \\geq (k+1)^2 = k^2 + 2k + 1 \\Leftrightarrow k^2 - 2k - 1 \\geq 0$. For $k \\geq 5$, $k(k-2) - 1 \\geq 5(3) - 1 = 14 > 0$.",
-          "figure": {
-            "type": "numberline",
-            "min": -5,
-            "max": 7,
-            "shade": [
-              -3,
-              5
-            ],
-            "marks": [
-              {
-                "x": -3,
-                "open": true,
-                "label": "$-3$"
-              },
-              {
-                "x": 5,
-                "open": false,
-                "label": "$5$"
-              }
-            ],
-            "width": 250
-          }
-        }
-      ]
-    },
-    {
-      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
-      "questions": [
-        {
-          "q": "To prove $3^{2n} - 1$ is divisible by $8$, evaluate the base case $n = 1$.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Divisibility and Inequality Proofs",
-          "choices": [
-            "$3^2 - 1 = 8$, which is divisible by $8$",
-            "$3^1 - 1 = 2$",
-            "$3^0 - 1 = 0$",
-            "$3^2 - 1 = 9$"
-          ],
-          "correct": 0,
-          "answer": "At $n = 1$: $3^{2(1)} - 1 = 9 - 1 = 8$, which is divisible by 8 with quotient 1.",
-          "explanation": "At $n = 1$: $3^{2(1)} - 1 = 9 - 1 = 8$, which is divisible by 8 with quotient 1."
-        },
-        {
-          "q": "Prove by induction that $\\frac{d^n}{dx^n}(x e^x) = (x + n)e^x$. What is the inductive step derivative $\\frac{d}{dx}[(x + k)e^x]$?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Calculus and Matrix Applications",
-          "choices": [
-            "$1 \\cdot e^x + (x + k)e^x = (x + k + 1)e^x$",
-            "$(x + k)e^x + e^x = (x + k)e^x$",
-            "$(x + 1)e^x + ke^x$",
-            "$(x + k + 1)x e^x$"
-          ],
-          "correct": 0,
-          "answer": "By the product rule: $\\frac{d}{dx}[(x + k)e^x] = \\frac{d}{dx}(x + k) \\cdot e^x + (x + k) \\cdot e^x = 1 \\cdot e^x + (x + k)e^x = (x + k + 1)e^x$.",
-          "explanation": "By the product rule: $\\frac{d}{dx}[(x + k)e^x] = \\frac{d}{dx}(x + k) \\cdot e^x + (x + k) \\cdot e^x = 1 \\cdot e^x + (x + k)e^x = (x + k + 1)e^x$."
-        },
-        {
-          "q": "If $A = [[1, 1], [0, 1]]$, prove by induction that $A^n = [[1, n], [0, 1]]$. What is the matrix product $A^k \\cdot A$?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Calculus and Matrix Applications",
-          "choices": [
-            "$[[1, k], [0, 1]] [[1, 1], [0, 1]] = [[1, k+1], [0, 1]]$",
-            "$[[1, k], [0, 1]] [[1, 1], [0, 1]] = [[1, 2k], [0, 1]]$",
-            "$[[1, k], [0, 1]] [[1, 1], [0, 1]] = [[1, k^2], [0, 1]]$",
-            "$[[1, 1], [0, 1]]$"
-          ],
-          "correct": 0,
-          "answer": "Multiplying row by column: $(1)(1) + (k)(0) = 1$; $(1)(1) + (k)(1) = k + 1$; $(0)(1) + (1)(0) = 0$; $(0)(1) + (1)(1) = 1$, giving $[[1, k+1], [0, 1]]$.",
-          "explanation": "Multiplying row by column: $(1)(1) + (k)(0) = 1$; $(1)(1) + (k)(1) = k + 1$; $(0)(1) + (1)(0) = 0$; $(0)(1) + (1)(1) = 1$, giving $[[1, k+1], [0, 1]]$."
-        },
-        {
-          "q": "A sequence is defined by $u_1 = 5$ and $u_{n+1} = 2u_n - 3$. Prove by induction that $u_n = 2^{n+1} + 3$. Assuming $u_k = 2^{k+1} + 3$, what is $u_{k+1}$?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Calculus and Matrix Applications",
-          "choices": [
-            "$2(2^{k+1} + 3) - 3 = 2^{k+2} + 6 - 3 = 2^{k+2} + 3$",
-            "$2(2^{k+1}) - 3 = 2^{k+2} - 3$",
-            "$2^{k+1} + 6$",
-            "$2^{k+2} + 6$"
-          ],
-          "correct": 0,
-          "answer": "Substitute hypothesis into recurrence: $u_{k+1} = 2u_k - 3 = 2(2^{k+1} + 3) - 3 = 2^{k+2} + 6 - 3 = 2^{(k+1)+1} + 3$, completing the inductive step.",
-          "explanation": "Substitute hypothesis into recurrence: $u_{k+1} = 2u_k - 3 = 2(2^{k+1} + 3) - 3 = 2^{k+2} + 6 - 3 = 2^{(k+1)+1} + 3$, completing the inductive step."
-        },
-        {
           "q": "In proving by induction that $\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}$, assuming the result is true for $n=k$, what must be added to $\\frac{k(k+1)}{2}$ to obtain the sum for $n=k+1$?",
-          "difficulty": "Intermediate",
+          "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Induction to prove a formula for a weighted geometric sum",
+          "target": "The three steps of induction",
           "choices": [
             "$k$",
             "$k+2$",
@@ -509,62 +257,28 @@
           ],
           "correct": 2,
           "answer": "$\\mathrm{The\\ }(k+1)\\mathrm{th\\ term\\ of\\ the\\ sum\\ is\\ }k+1\\mathrm{,\\ so\\ we\\ add\\ }k+1\\mathrm{\\ to\\ reach\\ }\\frac{(k+1)(k+2)}{2}.$",
-          "explanation": "$\\mathrm{The\\ }(k+1)\\mathrm{th\\ term\\ of\\ the\\ sum\\ is\\ }k+1\\mathrm{,\\ so\\ we\\ add\\ }k+1\\mathrm{\\ to\\ reach\\ }\\frac{(k+1)(k+2)}{2}.$",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (1))**2 + (-2)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 1.0,
-                "y": -2.0,
-                "label": "$(1,-2)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "$\\mathrm{The\\ }(k+1)\\mathrm{th\\ term\\ of\\ the\\ sum\\ is\\ }k+1\\mathrm{,\\ so\\ we\\ add\\ }k+1\\mathrm{\\ to\\ reach\\ }\\frac{(k+1)(k+2)}{2}.$"
         },
         {
-          "q": "Using the first three terms of the Maclaurin series for $e^{2x}$, approximate $e^{2\\times\\frac{1}{5}}$ as a fraction.",
-          "difficulty": "Intermediate",
+          "q": "A sequence is defined by $a_1 = 1$ and $a_{n+1} = a_n + 2n + 1$ for $n \\geq 1$. Prove by induction that $a_n = n^2$ for all positive integers $n$. Then, consider the series $S_N = \\sum_{n=1}^{N} a_n$. Find a closed-form expression for $S_N$ and use it to determine the value of $\\sum_{n=1}^{10} (a_n - a_{n-1})$ where $a_0=0$.",
+          "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "A closing check: identifying an invalid induction argument",
+          "target": "Proving a summation formula",
           "choices": [
-            "$\\frac{59}{50}$",
-            "$\\frac{69}{50}$",
-            "$\\frac{42}{25}$",
-            "$\\frac{37}{25}$"
-          ],
-          "correct": 3,
-          "answer": "$e^{2x}\\approx 1+2x+\\frac{(2x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{5}: 1+\\frac{2}{5}+\\frac{\\frac{4}{25}}{2}=\\frac{37}{25}$",
-          "explanation": "$e^{2x}\\approx 1+2x+\\frac{(2x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{5}: 1+\\frac{2}{5}+\\frac{\\frac{4}{25}}{2}=\\frac{37}{25}$"
-        },
-        {
-          "q": "Using the first three terms of the Maclaurin series for $e^{2x}$, approximate $e^{2\\times\\frac{1}{4}}$ as a fraction.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Proving a sum-of-products formula by induction",
-          "choices": [
-            "$\\frac{13}{8}$",
-            "$\\frac{57}{40}$",
-            "$\\frac{53}{40}$",
-            "$\\frac{77}{40}$"
+            "100",
+            "110",
+            "10",
+            "210"
           ],
           "correct": 0,
-          "answer": "$e^{2x}\\approx 1+2x+\\frac{(2x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{4}: 1+\\frac{1}{2}+\\frac{\\frac{1}{4}}{2}=\\frac{13}{8}$",
-          "explanation": "$e^{2x}\\approx 1+2x+\\frac{(2x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{4}: 1+\\frac{1}{2}+\\frac{\\frac{1}{4}}{2}=\\frac{13}{8}$"
+          "answer": "Proof by Induction: Base Case ($n=1$): $a_1 = 1$. The formula gives $1^2 = 1$. Thus, the base case holds. Inductive Hypothesis: Assume $a_k = k^2$ for some positive integer $k$. Inductive Step: We need to show that $a_{k+1} = (k+1)^2$. From the recurrence relation, $a_{k+1} = a_k + 2k + 1$. Using the inductive hypothesis, $a_{k+1} = k^2 + 2k + 1 = (k+1)^2$. Thus, by induction, $a_n = n^2$ for all positive integers $n$. Closed-form expression for $S_N$: $S_N = \\sum_{n=1}^{N} a_n = \\sum_{n=1}^{N} n^2$. This is the sum of the first $N$ squares, which has a known formula: $S_N = \\frac{N(N+1)(2N+1)}{6}$. Evaluating the sum $\\sum_{n=1}^{10} (a_n - a_{n-1})$: This is a telescoping sum. Let $b_n = a_n - a_{n-1}$. Then the sum is $\\sum_{n=1}^{10} b_n = b_1 + b_2 + \\dots + b_{10}$. $b_1 = a_1 - a_0 = 1 - 0 = 1$. $b_2 = a_2 - a_1 = 4 - 1 = 3$. $b_3 = a_3 - a_2 = 9 - 4 = 5$. In general, $a_n = n^2$ and $a_{n-1} = (n-1)^2$ for $n \\geq 1$, so $a_n - a_{n-1} = n^2 - (n-1)^2 = n^2 - (n^2 - 2n + 1) = 2n - 1$. So, $\\sum_{n=1}^{10} (a_n - a_{n-1}) = \\sum_{n=1}^{10} (2n - 1)$. This is the sum of the first 10 odd numbers, which is $10^2 = 100$. Alternatively, using the telescoping sum property directly: $\\sum_{n=1}^{10} (a_n - a_{n-1}) = (a_1 - a_0) + (a_2 - a_1) + \\dots + (a_{10} - a_9) = a_{10} - a_0$. Since $a_n = n^2$, $a_{10} = 10^2 = 100$. And $a_0 = 0$. So, the sum is $100 - 0 = 100$.",
+          "explanation": "Proof by Induction: Base Case ($n=1$): $a_1 = 1$. The formula gives $1^2 = 1$. Thus, the base case holds. Inductive Hypothesis: Assume $a_k = k^2$ for some positive integer $k$. Inductive Step: We need to show that $a_{k+1} = (k+1)^2$. From the recurrence relation, $a_{k+1} = a_k + 2k + 1$. Using the inductive hypothesis, $a_{k+1} = k^2 + 2k + 1 = (k+1)^2$. Thus, by induction, $a_n = n^2$ for all positive integers $n$. Closed-form expression for $S_N$: $S_N = \\sum_{n=1}^{N} a_n = \\sum_{n=1}^{N} n^2$. This is the sum of the first $N$ squares, which has a known formula: $S_N = \\frac{N(N+1)(2N+1)}{6}$. Evaluating the sum $\\sum_{n=1}^{10} (a_n - a_{n-1})$: This is a telescoping sum. Let $b_n = a_n - a_{n-1}$. Then the sum is $\\sum_{n=1}^{10} b_n = b_1 + b_2 + \\dots + b_{10}$. $b_1 = a_1 - a_0 = 1 - 0 = 1$. $b_2 = a_2 - a_1 = 4 - 1 = 3$. $b_3 = a_3 - a_2 = 9 - 4 = 5$. In general, $a_n = n^2$ and $a_{n-1} = (n-1)^2$ for $n \\geq 1$, so $a_n - a_{n-1} = n^2 - (n-1)^2 = n^2 - (n^2 - 2n + 1) = 2n - 1$. So, $\\sum_{n=1}^{10} (a_n - a_{n-1}) = \\sum_{n=1}^{10} (2n - 1)$. This is the sum of the first 10 odd numbers, which is $10^2 = 100$. Alternatively, using the telescoping sum property directly: $\\sum_{n=1}^{10} (a_n - a_{n-1}) = (a_1 - a_0) + (a_2 - a_1) + \\dots + (a_{10} - a_9) = a_{10} - a_0$. Since $a_n = n^2$, $a_{10} = 10^2 = 100$. And $a_0 = 0$. So, the sum is $100 - 0 = 100$."
         },
         {
           "q": "Using the first three terms of the Maclaurin series for $e^{x}$, approximate $e^{1\\times\\frac{1}{4}}$ as a fraction.",
-          "difficulty": "Intermediate",
+          "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Proving an exponential inequality by induction",
+          "target": "Proving divisibility results",
           "choices": [
             "$\\frac{173}{160}$",
             "$\\frac{41}{32}$",
@@ -576,97 +290,10 @@
           "explanation": "$e^{x}\\approx 1+x+\\frac{(x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{4}: 1+\\frac{1}{4}+\\frac{\\frac{1}{16}}{2}=\\frac{41}{32}$"
         },
         {
-          "q": "Using the first three terms of the Maclaurin series for $e^{x}$, approximate $e^{1\\times\\frac{1}{5}}$ as a fraction.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Proving a divisibility result by induction",
-          "choices": [
-            "$\\frac{51}{50}$",
-            "$\\frac{38}{25}$",
-            "$\\frac{71}{50}$",
-            "$\\frac{61}{50}$"
-          ],
-          "correct": 3,
-          "answer": "$e^{x}\\approx 1+x+\\frac{(x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{5}: 1+\\frac{1}{5}+\\frac{\\frac{1}{25}}{2}=\\frac{61}{50}$",
-          "explanation": "$e^{x}\\approx 1+x+\\frac{(x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{5}: 1+\\frac{1}{5}+\\frac{\\frac{1}{25}}{2}=\\frac{61}{50}$"
-        }
-      ]
-    },
-    {
-      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
-      "questions": [
-        {
-          "q": "Using the first three terms of the Maclaurin series for $e^{x}$, approximate $e^{1\\times\\frac{1}{2}}$ as a fraction.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Proving a closed form for a recursive sequence",
-          "choices": [
-            "$\\frac{73}{40}$",
-            "$\\frac{13}{8}$",
-            "$\\frac{57}{40}$",
-            "$\\frac{61}{40}$"
-          ],
-          "correct": 1,
-          "answer": "$e^{x}\\approx 1+x+\\frac{(x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{2}: 1+\\frac{1}{2}+\\frac{\\frac{1}{4}}{2}=\\frac{13}{8}$",
-          "explanation": "$e^{x}\\approx 1+x+\\frac{(x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{2}: 1+\\frac{1}{2}+\\frac{\\frac{1}{4}}{2}=\\frac{13}{8}$",
-          "cross_lesson": "1.02 Complex Numbers: Cartesian Form & Algebra"
-        },
-        {
-          "q": "For $x^{3} - 3x^{2} - 36x + 108 = 0$, find the product of the three roots.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "A second exponential inequality by induction",
-          "choices": [
-            "-73",
-            "-140",
-            "-134",
-            "-108"
-          ],
-          "correct": 3,
-          "answer": "Working through this complex-numbers step: $\\mathrm{Product\\ of\\ roots}=-\\frac{d}{a}=-(108)=-108$",
-          "explanation": "Working through this complex-numbers step: $\\mathrm{Product\\ of\\ roots}=-\\frac{d}{a}=-(108)=-108$",
-          "cross_lesson": "1.03 Polar Form, De Moivre's Theorem & Roots of Unity",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (1))**2 + (-2)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 1.0,
-                "y": -2.0,
-                "label": "$(1,-2)$"
-              }
-            ],
-            "width": 230
-          }
-        },
-        {
-          "q": "For $x^{3} - 7x^{2} - 14x + 120 = 0$, find the product of the three roots.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "A third inequality by induction",
-          "choices": [
-            "-128",
-            "-90",
-            "-156",
-            "-120"
-          ],
-          "correct": 3,
-          "answer": "Working through this complex-numbers step: $\\mathrm{Product\\ of\\ roots}=-\\frac{d}{a}=-(120)=-120$",
-          "explanation": "Working through this complex-numbers step: $\\mathrm{Product\\ of\\ roots}=-\\frac{d}{a}=-(120)=-120$",
-          "cross_lesson": "1.04 Partial Fractions"
-        },
-        {
           "q": "For $x^{3} - 19x - 30 = 0$, find the product of the three roots.",
-          "difficulty": "Challenging",
+          "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Induction in combinatorics: counting subsets",
+          "target": "Induction with inequalities",
           "choices": [
             "30",
             "43",
@@ -675,46 +302,43 @@
           ],
           "correct": 0,
           "answer": "Working through this complex-numbers step: $\\mathrm{Product\\ of\\ roots}=-\\frac{d}{a}=-(-30)=30$",
-          "explanation": "Working through this complex-numbers step: $\\mathrm{Product\\ of\\ roots}=-\\frac{d}{a}=-(-30)=30$",
-          "cross_lesson": "1.05 Systems of Linear Equations (AA HL)"
+          "explanation": "Working through this complex-numbers step: $\\mathrm{Product\\ of\\ roots}=-\\frac{d}{a}=-(-30)=30$"
         },
         {
-          "q": "Using the first three terms of the Maclaurin series for $e^{2x}$, approximate $e^{2\\times\\frac{1}{2}}$ as a fraction.",
-          "difficulty": "Challenging",
+          "q": "The first, fourth, and sixth terms of an arithmetic progression $(u_n)$ are equal to the first, second, and third terms, respectively, of an infinite geometric progression $(v_n)$ with common ratio $r e 1$. Given that the sum to infinity of the geometric progression is $27$, determine the maximum value of $S_n = \\sum_{k=1}^n u_k$, the sum of the first $n$ terms of the arithmetic progression.",
+          "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Proving the sum of the first n odd numbers",
+          "target": "Induction in calculus: derivatives of a product",
           "choices": [
-            "$\\frac{11}{5}$",
-            "$\\frac{5}{2}$",
-            "$\\frac{12}{5}$",
-            "$\\frac{14}{5}$"
+            "$44$",
+            "$45$",
+            "$50$",
+            "$54$"
           ],
           "correct": 1,
-          "answer": "$e^{2x}\\approx 1+2x+\\frac{(2x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{2}: 1+1+\\frac{1}{2}=\\frac{5}{2}$",
-          "explanation": "$e^{2x}\\approx 1+2x+\\frac{(2x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{2}: 1+1+\\frac{1}{2}=\\frac{5}{2}$",
-          "cross_lesson": "2.01 Modulus Functions & the Factor/Remainder Theorem"
+          "answer": "Let the arithmetic progression $(u_n)$ have first term $a$ and common difference $d$. Then: $u_1 = a, \\quad u_4 = a + 3d, \\quad u_6 = a + 5d.$ Let the geometric progression $(v_n)$ have first term $v_1$ and common ratio $r$. Since $u_1 = v_1$, $u_4 = v_2$, and $u_6 = v_3$, we have: $v_1 = a, \\quad v_2 = ar, \\quad v_3 = ar^2.$ Equating terms: 1) $a + 3d = ar \\Rightarrow 3d = a(r - 1) \\Rightarrow d = \\frac{a(r - 1)}{3}$. 2) $a + 5d = ar^2$. Substitute $d$ into the second equation: $a + 5\\left(\\frac{a(r - 1)}{3}\\right) = ar^2.$ Since the sum to infinity of $(v_n)$ exists and is non-zero, $a e 0$. Dividing both sides by $a$: $1 + \\frac{5(r - 1)}{3} = r^2 \\Rightarrow 3 + 5r - 5 = 3r^2 \\Rightarrow 3r^2 - 5r + 2 = 0.$ Factoring this quadratic gives: $(3r - 2)(r - 1) = 0.$ Since $r e 1$, we have $r = \\frac{2}{3}$. Note that $|r| < 1$, so the series converges as required. Now, use the sum to infinity of $(v_n)$: $S_\\infty = \\frac{a}{1 - r} = 27 \\Rightarrow \\frac{a}{1 - \\frac{2}{3}} = 27 \\Rightarrow 3a = 27 \\Rightarrow a = 9.$ We can now find the common difference $d$: $d = \\frac{9\\left(\\frac{2}{3} - 1\\right)}{3} = \\frac{9\\left(-\\frac{1}{3}\\right)}{3} = -1.$ The $n$-th term of the arithmetic progression is: $u_n = a + (n - 1)d = 9 - (n - 1) = 10 - n.$ The terms are positive for $n \\leq 9$, zero for $n = 10$, and negative for $n \\geq 11$. Hence, the sum $S_n$ increases as long as added terms are positive, reaching its maximum at $n = 9$ (or $n = 10$): $S_9 = S_{10} = \\frac{9}{2}(2(9) + 8(-1)) = \\frac{9}{2}(10) = 45.$ A common misconception is stopping at $n = 8$ (yielding $44$) by misidentifying the index of the last positive term, or mistakenly maximizing $S_n$ as a continuous variable without checking integer constraints.",
+          "explanation": "Let the arithmetic progression $(u_n)$ have first term $a$ and common difference $d$. Then: $u_1 = a, \\quad u_4 = a + 3d, \\quad u_6 = a + 5d.$ Let the geometric progression $(v_n)$ have first term $v_1$ and common ratio $r$. Since $u_1 = v_1$, $u_4 = v_2$, and $u_6 = v_3$, we have: $v_1 = a, \\quad v_2 = ar, \\quad v_3 = ar^2.$ Equating terms: 1) $a + 3d = ar \\Rightarrow 3d = a(r - 1) \\Rightarrow d = \\frac{a(r - 1)}{3}$. 2) $a + 5d = ar^2$. Substitute $d$ into the second equation: $a + 5\\left(\\frac{a(r - 1)}{3}\\right) = ar^2.$ Since the sum to infinity of $(v_n)$ exists and is non-zero, $a e 0$. Dividing both sides by $a$: $1 + \\frac{5(r - 1)}{3} = r^2 \\Rightarrow 3 + 5r - 5 = 3r^2 \\Rightarrow 3r^2 - 5r + 2 = 0.$ Factoring this quadratic gives: $(3r - 2)(r - 1) = 0.$ Since $r e 1$, we have $r = \\frac{2}{3}$. Note that $|r| < 1$, so the series converges as required. Now, use the sum to infinity of $(v_n)$: $S_\\infty = \\frac{a}{1 - r} = 27 \\Rightarrow \\frac{a}{1 - \\frac{2}{3}} = 27 \\Rightarrow 3a = 27 \\Rightarrow a = 9.$ We can now find the common difference $d$: $d = \\frac{9\\left(\\frac{2}{3} - 1\\right)}{3} = \\frac{9\\left(-\\frac{1}{3}\\right)}{3} = -1.$ The $n$-th term of the arithmetic progression is: $u_n = a + (n - 1)d = 9 - (n - 1) = 10 - n.$ The terms are positive for $n \\leq 9$, zero for $n = 10$, and negative for $n \\geq 11$. Hence, the sum $S_n$ increases as long as added terms are positive, reaching its maximum at $n = 9$ (or $n = 10$): $S_9 = S_{10} = \\frac{9}{2}(2(9) + 8(-1)) = \\frac{9}{2}(10) = 45.$ A common misconception is stopping at $n = 8$ (yielding $44$) by misidentifying the index of the last positive term, or mistakenly maximizing $S_n$ as a continuous variable without checking integer constraints."
         },
         {
-          "q": "For $x^{3} - 7x^{2} + 10x = 0$, find the product of the three roots.",
-          "difficulty": "Challenging",
+          "q": "A geometric sequence has its first term $a_1 = 5$ and its common ratio $r = 2$. If the sum of the first $n$ terms of this sequence is $S_n = 315$, find the value of $n$.",
+          "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "The Principle & Architecture of Induction",
+          "target": "Induction with a recursively defined sequence",
           "choices": [
-            "-1",
-            "-4",
-            "0",
-            "-3"
+            "4",
+            "5",
+            "6",
+            "7"
           ],
-          "correct": 2,
-          "answer": "Working through this complex-numbers step: $\\mathrm{Product\\ of\\ roots}=-\\frac{d}{a}=-(0)=0$",
-          "explanation": "Working through this complex-numbers step: $\\mathrm{Product\\ of\\ roots}=-\\frac{d}{a}=-(0)=0$",
-          "cross_lesson": "3.01 3D Vectors & the Cross Product"
+          "correct": 1,
+          "answer": "The sum of the first $n$ terms of a geometric sequence is given by the formula $S_n = a_1 \\frac{r^n - 1}{r - 1}$, where $a_1$ is the first term and $r$ is the common ratio. Given $a_1 = 5$ and $r = 2$, and $S_n = 315$, we can substitute these values into the formula: $315 = 5 \\frac{2^n - 1}{2 - 1}$ $315 = 5 \\frac{2^n - 1}{1}$ $315 = 5 (2^n - 1)$ Divide both sides by 5: $\\frac{315}{5} = 2^n - 1$ $63 = 2^n - 1$ Add 1 to both sides: $63 + 1 = 2^n$ $64 = 2^n$ Since $2^6 = 64$, we have $n = 6$. Let's check the choices: If $n=4$, $S_4 = 5 \\frac{2^4 - 1}{2-1} = 5(16-1) = 5(15) = 75 eq 315$. If $n=5$, $S_5 = 5 \\frac{2^5 - 1}{2-1} = 5(32-1) = 5(31) = 155 eq 315$. If $n=6$, $S_6 = 5 \\frac{2^6 - 1}{2-1} = 5(64-1) = 5(63) = 315$. This is the correct value. If $n=7$, $S_7 = 5 \\frac{2^7 - 1}{2-1} = 5(128-1) = 5(127) = 635 eq 315$.",
+          "explanation": "The sum of the first $n$ terms of a geometric sequence is given by the formula $S_n = a_1 \\frac{r^n - 1}{r - 1}$, where $a_1$ is the first term and $r$ is the common ratio. Given $a_1 = 5$ and $r = 2$, and $S_n = 315$, we can substitute these values into the formula: $315 = 5 \\frac{2^n - 1}{2 - 1}$ $315 = 5 \\frac{2^n - 1}{1}$ $315 = 5 (2^n - 1)$ Divide both sides by 5: $\\frac{315}{5} = 2^n - 1$ $63 = 2^n - 1$ Add 1 to both sides: $63 + 1 = 2^n$ $64 = 2^n$ Since $2^6 = 64$, we have $n = 6$. Let's check the choices: If $n=4$, $S_4 = 5 \\frac{2^4 - 1}{2-1} = 5(16-1) = 5(15) = 75 eq 315$. If $n=5$, $S_5 = 5 \\frac{2^5 - 1}{2-1} = 5(32-1) = 5(31) = 155 eq 315$. If $n=6$, $S_6 = 5 \\frac{2^6 - 1}{2-1} = 5(64-1) = 5(63) = 315$. This is the correct value. If $n=7$, $S_7 = 5 \\frac{2^7 - 1}{2-1} = 5(128-1) = 5(127) = 635 eq 315$."
         },
         {
           "q": "The graph of the function $f(x) = x^2 - 4x + 3$ is shown below. Determine the sum of the x-intercepts.",
-          "difficulty": "Challenging",
+          "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Summation and Series Proofs",
+          "target": "Proving a geometric-series-style summation",
           "choices": [
             "4",
             "3",
@@ -724,7 +348,6 @@
           "correct": 0,
           "answer": "The x-intercepts of a function are the values of x for which $f(x) = 0$. For the quadratic function $f(x) = x^2 - 4x + 3$, we can find the x-intercepts by solving the equation $x^2 - 4x + 3 = 0$. This is a quadratic equation that can be factored. We are looking for two numbers that multiply to 3 and add to -4. These numbers are -1 and -3. Therefore, the equation can be factored as $(x-1)(x-3) = 0$. The solutions are $x=1$ and $x=3$. These are the x-intercepts. The sum of the x-intercepts is $1 + 3 = 4$. Alternatively, for a quadratic equation of the form $ax^2 + bx + c = 0$, the sum of the roots (which correspond to the x-intercepts when $f(x) = 0$) is given by $-\\frac{b}{a}$. In this case, $a=1$ and $b=-4$, so the sum of the x-intercepts is $-\\frac{-4}{1} = 4$.",
           "explanation": "The x-intercepts of a function are the values of x for which $f(x) = 0$. For the quadratic function $f(x) = x^2 - 4x + 3$, we can find the x-intercepts by solving the equation $x^2 - 4x + 3 = 0$. This is a quadratic equation that can be factored. We are looking for two numbers that multiply to 3 and add to -4. These numbers are -1 and -3. Therefore, the equation can be factored as $(x-1)(x-3) = 0$. The solutions are $x=1$ and $x=3$. These are the x-intercepts. The sum of the x-intercepts is $1 + 3 = 4$. Alternatively, for a quadratic equation of the form $ax^2 + bx + c = 0$, the sum of the roots (which correspond to the x-intercepts when $f(x) = 0$) is given by $-\\frac{b}{a}$. In this case, $a=1$ and $b=-4$, so the sum of the x-intercepts is $-\\frac{-4}{1} = 4$.",
-          "cross_lesson": "3.02 Lines and Planes in Three Dimensions",
           "figure": {
             "type": "plot",
             "fns": [
@@ -734,7 +357,7 @@
             "xmax": 6.0,
             "ymin": -3.0,
             "ymax": 6.0,
-            "points": [],
+            "width": 230,
             "point_labels": [
               {
                 "x": 1.0,
@@ -746,15 +369,34 @@
                 "y": 0.0,
                 "label": "(3, 0)"
               }
-            ],
-            "width": 230
+            ]
           }
         },
         {
-          "q": "Product of roots of $2x^2-5x+3=0$:",
-          "difficulty": "Challenging",
+          "q": "A sequence is defined by the recurrence relation $a_{n+1} = a_n^2 - 2$ for $n \\geq 1$. If $a_1 = 2$, find the value of $a_{2023}$.",
+          "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Divisibility and Inequality Proofs",
+          "target": "Proving an inequality involving factorials",
+          "choices": [
+            "2",
+            "0",
+            "-2",
+            "1"
+          ],
+          "correct": 0,
+          "answer": "Let's compute the first few terms of the sequence: $a_1 = 2$ $a_2 = a_1^2 - 2 = 2^2 - 2 = 4 - 2 = 2$ $a_3 = a_2^2 - 2 = 2^2 - 2 = 4 - 2 = 2$ It appears that for $a_1 = 2$, all subsequent terms of the sequence are also 2. We can prove this by induction. Base case: For $n=1$, $a_1 = 2$, which is true. Inductive step: Assume that for some integer $k \\geq 1$, $a_k = 2$. We need to show that $a_{k+1} = 2$. From the recurrence relation, $a_{k+1} = a_k^2 - 2$. By the inductive hypothesis, $a_k = 2$. Substituting this into the relation: $a_{k+1} = 2^2 - 2 = 4 - 2 = 2$. Thus, by induction, $a_n = 2$ for all $n \\geq 1$. Therefore, $a_{2023} = 2$.",
+          "explanation": "Let's compute the first few terms of the sequence: $a_1 = 2$ $a_2 = a_1^2 - 2 = 2^2 - 2 = 4 - 2 = 2$ $a_3 = a_2^2 - 2 = 2^2 - 2 = 4 - 2 = 2$ It appears that for $a_1 = 2$, all subsequent terms of the sequence are also 2. We can prove this by induction. Base case: For $n=1$, $a_1 = 2$, which is true. Inductive step: Assume that for some integer $k \\geq 1$, $a_k = 2$. We need to show that $a_{k+1} = 2$. From the recurrence relation, $a_{k+1} = a_k^2 - 2$. By the inductive hypothesis, $a_k = 2$. Substituting this into the relation: $a_{k+1} = 2^2 - 2 = 4 - 2 = 2$. Thus, by induction, $a_n = 2$ for all $n \\geq 1$. Therefore, $a_{2023} = 2$."
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
+        {
+          "q": "Product of roots of $2x^2-5x+3=0$:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Proving a divisibility result with two variables",
           "choices": [
             "$\\frac{3}{2}$",
             "$\\frac{5}{2}$",
@@ -763,7 +405,358 @@
           ],
           "correct": 0,
           "answer": "Applying Algebra, Proof & Complex Numbers principles, Product = c/a = 3/2. Therefore, the verified correct option is $\\frac{3}{2}$.",
-          "explanation": "Applying Algebra, Proof & Complex Numbers principles, Product = c/a = 3/2. Therefore, the verified correct option is $\\frac{3}{2}$.",
+          "explanation": "Applying Algebra, Proof & Complex Numbers principles, Product = c/a = 3/2. Therefore, the verified correct option is $\\frac{3}{2}$."
+        },
+        {
+          "q": "For $x^{2} - x - 56 = 0$, find the product of the roots.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Induction with a recurrence relation for a sequence of sums",
+          "choices": [
+            "-42",
+            "-47",
+            "-56",
+            "-51"
+          ],
+          "correct": 2,
+          "answer": "Working through this complex-numbers step: $\\mathrm{Product\\ of\\ roots} = \\frac{c}{a} = -56 = -56$",
+          "explanation": "Working through this complex-numbers step: $\\mathrm{Product\\ of\\ roots} = \\frac{c}{a} = -56 = -56$"
+        },
+        {
+          "q": "Simplify $(1 + 2i)(5 + 5i)$, giving your answer in the form $x+yi$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Induction with a strengthened hypothesis",
+          "choices": [
+            "$-3 + 16i$",
+            "$-5 + 15i$",
+            "$-1 + 12i$",
+            "$-3 + 14i$"
+          ],
+          "correct": 1,
+          "answer": "Working through this complex-numbers step: $(1 + 2i)(5 + 5i) = (5)+(5)i+2(5)i+2(5)i^2 = -5 + 15i$",
+          "explanation": "Working through this complex-numbers step: $(1 + 2i)(5 + 5i) = (5)+(5)i+2(5)i+2(5)i^2 = -5 + 15i$"
+        },
+        {
+          "q": "Write $z = 4\\left(\\cos 180^\\circ + i\\sin 180^\\circ\\right)$ in the form $x+yi$ (exact values).",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Induction to prove a formula for the sum of cubes",
+          "choices": [
+            "$-4+1$",
+            "$4$",
+            "$-4$",
+            "$-4i$"
+          ],
+          "correct": 2,
+          "answer": "Working through this complex-numbers step: $z=4\\cos180^\\circ + 4\\sin180^\\circ\\, i = -4$",
+          "explanation": "Working through this complex-numbers step: $z=4\\cos180^\\circ + 4\\sin180^\\circ\\, i = -4$"
+        },
+        {
+          "q": "The first three terms of a geometric progression are given by $u_1 = 3k - 2, \\quad u_2 = k + 2, \\quad u_3 = k - 2,$ where $k$ is a real constant. Given that the infinite geometric series $\\sum_{n=1}^\\infty u_n$ converges, find the sum to infinity, $S_\\infty$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Induction to prove a formula for a weighted geometric sum",
+          "choices": [
+            "$32$",
+            "$-1$",
+            "$\\frac{32}{3}$",
+            "$16$"
+          ],
+          "correct": 0,
+          "answer": "Step 1: Set up the common ratio property of a geometric sequence. Since the terms form a geometric progression, the ratio between consecutive terms must be equal: $\\frac{u_2}{u_1} = \\frac{u_3}{u_2} \\Rightarrow u_2^2 = u_1 u_3$ Step 2: Substitute the expressions in terms of $k$: $(k + 2)^2 = (3k - 2)(k - 2)$ $k^2 + 4k + 4 = 3k^2 - 8k + 4$ Step 3: Solve the quadratic equation for $k$: $2k^2 - 12k = 0 \\Rightarrow 2k(k - 6) = 0$ Thus, $k = 0$ or $k = 6$. Step 4: Apply the convergence criterion $|r| < 1$: - If $k = 0$: $u_1 = -2$, $u_2 = 2$, and $r = \\frac{2}{-2} = -1$. Since $|r| = |-1| = 1 ot< 1$, the infinite series diverges. - If $k = 6$: $u_1 = 3(6) - 2 = 16$, $u_2 = 6 + 2 = 8$, and $r = \\frac{8}{16} = \\frac{1}{2}$. Since $|r| = \\frac{1}{2} < 1$, the series converges. Step 5: Calculate the sum to infinity $S_\\infty$: $S_\\infty = \\frac{a}{1 - r} = \\frac{16}{1 - \\frac{1}{2}} = \\frac{16}{\\frac{1}{2}} = 32$ Common Misconceptions: - Choice B ($-1$) arises from incorrectly assuming the $k = 0$ case converges and evaluating $\\frac{-2}{1 - (-1)} = -1$. - Choice C ($\\frac{32}{3}$) arises from using the incorrect formula $S_\\infty = \\frac{a}{1 + r}$. - Choice D ($16$) confuses the sum to infinity with the first term $a$.",
+          "explanation": "Step 1: Set up the common ratio property of a geometric sequence. Since the terms form a geometric progression, the ratio between consecutive terms must be equal: $\\frac{u_2}{u_1} = \\frac{u_3}{u_2} \\Rightarrow u_2^2 = u_1 u_3$ Step 2: Substitute the expressions in terms of $k$: $(k + 2)^2 = (3k - 2)(k - 2)$ $k^2 + 4k + 4 = 3k^2 - 8k + 4$ Step 3: Solve the quadratic equation for $k$: $2k^2 - 12k = 0 \\Rightarrow 2k(k - 6) = 0$ Thus, $k = 0$ or $k = 6$. Step 4: Apply the convergence criterion $|r| < 1$: - If $k = 0$: $u_1 = -2$, $u_2 = 2$, and $r = \\frac{2}{-2} = -1$. Since $|r| = |-1| = 1 ot< 1$, the infinite series diverges. - If $k = 6$: $u_1 = 3(6) - 2 = 16$, $u_2 = 6 + 2 = 8$, and $r = \\frac{8}{16} = \\frac{1}{2}$. Since $|r| = \\frac{1}{2} < 1$, the series converges. Step 5: Calculate the sum to infinity $S_\\infty$: $S_\\infty = \\frac{a}{1 - r} = \\frac{16}{1 - \\frac{1}{2}} = \\frac{16}{\\frac{1}{2}} = 32$ Common Misconceptions: - Choice B ($-1$) arises from incorrectly assuming the $k = 0$ case converges and evaluating $\\frac{-2}{1 - (-1)} = -1$. - Choice C ($\\frac{32}{3}$) arises from using the incorrect formula $S_\\infty = \\frac{a}{1 + r}$. - Choice D ($16$) confuses the sum to infinity with the first term $a$."
+        },
+        {
+          "q": "Consider the arithmetic sequence with first term $a_1 = 5$ and a common difference $d = 3$. What is the formula for the $n$-th term, $a_n$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "A closing check: identifying an invalid induction argument",
+          "choices": [
+            "$a_n = 5 + 3(n-1)$",
+            "$a_n = 3n + 2$",
+            "$a_n = 5n + 3$",
+            "$a_n = 5 + 3n$"
+          ],
+          "correct": 0,
+          "answer": "The formula for the $n$-th term of an arithmetic sequence is given by $a_n = a_1 + d(n-1)$, where $a_1$ is the first term and $d$ is the common difference. In this case, $a_1 = 5$ and $d = 3$. Substituting these values into the formula gives $a_n = 5 + 3(n-1)$. If we simplify this, we get $a_n = 5 + 3n - 3 = 3n + 2$. Therefore, the direct formula is $a_n = 5 + 3(n-1)$ or its simplified form $a_n = 3n + 2$. Choice A directly uses the definition. Choice B is the simplified form. Let's examine all options: Choice A: $a_n = 5 + 3(n-1)$. This is the standard definition of an arithmetic sequence and is correct. Choice B: $a_n = 3n + 2$. This is the simplified form of the correct formula: $5 + 3(n-1) = 5 + 3n - 3 = 3n + 2$. This is also correct, but choice A is the direct application of the definition. Choice C: $a_n = 5n + 3$. This formula would imply a common difference of 5 and a first term of 8 (for n=1), which is incorrect. Choice D: $a_n = 5 + 3n$. This formula would imply a common difference of 3 but a first term of 8 (for n=1), which is incorrect.",
+          "explanation": "The formula for the $n$-th term of an arithmetic sequence is given by $a_n = a_1 + d(n-1)$, where $a_1$ is the first term and $d$ is the common difference. In this case, $a_1 = 5$ and $d = 3$. Substituting these values into the formula gives $a_n = 5 + 3(n-1)$. If we simplify this, we get $a_n = 5 + 3n - 3 = 3n + 2$. Therefore, the direct formula is $a_n = 5 + 3(n-1)$ or its simplified form $a_n = 3n + 2$. Choice A directly uses the definition. Choice B is the simplified form. Let's examine all options: Choice A: $a_n = 5 + 3(n-1)$. This is the standard definition of an arithmetic sequence and is correct. Choice B: $a_n = 3n + 2$. This is the simplified form of the correct formula: $5 + 3(n-1) = 5 + 3n - 3 = 3n + 2$. This is also correct, but choice A is the direct application of the definition. Choice C: $a_n = 5n + 3$. This formula would imply a common difference of 5 and a first term of 8 (for n=1), which is incorrect. Choice D: $a_n = 5 + 3n$. This formula would imply a common difference of 3 but a first term of 8 (for n=1), which is incorrect."
+        },
+        {
+          "q": "Consider the quadratic function $f(x) = x^2 - 8x + k$. The graph of $y = f(x)$ is a parabola that intersects the x-axis at the points $(2, 0)$ and $(6, 0)$. Find the value of $k$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Proving a sum-of-products formula by induction",
+          "choices": [
+            "12",
+            "16",
+            "20",
+            "24"
+          ],
+          "correct": 0,
+          "answer": "Since the parabola intersects the x-axis at $(2, 0)$ and $(6, 0)$, these are the roots of the quadratic equation $f(x) = 0$. Therefore, we can write the function in factored form as $f(x) = a(x-2)(x-6)$. Expanding this, we get $f(x) = a(x^2 - 8x + 12)$. Comparing this with the given function $f(x) = x^2 - 8x + k$, we can see that the coefficient of $x^2$ is 1. Thus, $a=1$. So, $f(x) = x^2 - 8x + 12$. By comparing the constant terms, we find that $k = 12$. Alternatively, we can substitute one of the roots into the original equation. Using the point $(2, 0)$: $0 = (2)^2 - 8(2) + k \\Rightarrow 0 = 4 - 16 + k \\Rightarrow k = 12$. Using the point $(6, 0)$: $0 = (6)^2 - 8(6) + k \\Rightarrow 0 = 36 - 48 + k \\Rightarrow k = 12$. Common algebraic traps include misinterpreting the meaning of x-intercepts or incorrectly expanding the factored form of the quadratic.",
+          "explanation": "Since the parabola intersects the x-axis at $(2, 0)$ and $(6, 0)$, these are the roots of the quadratic equation $f(x) = 0$. Therefore, we can write the function in factored form as $f(x) = a(x-2)(x-6)$. Expanding this, we get $f(x) = a(x^2 - 8x + 12)$. Comparing this with the given function $f(x) = x^2 - 8x + k$, we can see that the coefficient of $x^2$ is 1. Thus, $a=1$. So, $f(x) = x^2 - 8x + 12$. By comparing the constant terms, we find that $k = 12$. Alternatively, we can substitute one of the roots into the original equation. Using the point $(2, 0)$: $0 = (2)^2 - 8(2) + k \\Rightarrow 0 = 4 - 16 + k \\Rightarrow k = 12$. Using the point $(6, 0)$: $0 = (6)^2 - 8(6) + k \\Rightarrow 0 = 36 - 48 + k \\Rightarrow k = 12$. Common algebraic traps include misinterpreting the meaning of x-intercepts or incorrectly expanding the factored form of the quadratic.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*x - 8*x + 12"
+            ],
+            "xmin": 0.0,
+            "xmax": 8.0,
+            "ymin": -5.0,
+            "ymax": 5.0,
+            "width": 230,
+            "point_labels": [
+              {
+                "x": 2.0,
+                "y": 0.0,
+                "label": "(2, 0)"
+              },
+              {
+                "x": 6.0,
+                "y": 0.0,
+                "label": "(6, 0)"
+              }
+            ]
+          }
+        },
+        {
+          "q": "The first three terms of a geometric progression are $32$, $24$, and $18$. Find the sum to infinity, $S_\\infty$, of the progression.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Proving an exponential inequality by induction",
+          "choices": [
+            "$128$",
+            "$96$",
+            "$74$",
+            "$64$"
+          ],
+          "correct": 0,
+          "answer": "The first term of the geometric progression is $a = 32$. The common ratio $r$ is found by dividing any term by the preceding term: $r = \\frac{24}{32} = \\frac{3}{4}$ Since $|r| = \\left|\\frac{3}{4}\\right| < 1$, the geometric progression converges and the sum to infinity exists. The sum to infinity is given by: $S_\\infty = \\frac{a}{1 - r}$ Substituting $a = 32$ and $r = \\frac{3}{4}$: $S_\\infty = \\frac{32}{1 - \\frac{3}{4}} = \\frac{32}{\\frac{1}{4}} = 32 \\times 4 = 128$ Common misconceptions: - Choice B ($96$) arises from mistakenly using a ratio of $\\frac{2}{3}$. - Choice C ($74$) is the finite sum of only the first three terms ($32 + 24 + 18$). - Choice D ($64$) incorrectly assumes a common ratio of $\\frac{1}{2}$.",
+          "explanation": "The first term of the geometric progression is $a = 32$. The common ratio $r$ is found by dividing any term by the preceding term: $r = \\frac{24}{32} = \\frac{3}{4}$ Since $|r| = \\left|\\frac{3}{4}\\right| < 1$, the geometric progression converges and the sum to infinity exists. The sum to infinity is given by: $S_\\infty = \\frac{a}{1 - r}$ Substituting $a = 32$ and $r = \\frac{3}{4}$: $S_\\infty = \\frac{32}{1 - \\frac{3}{4}} = \\frac{32}{\\frac{1}{4}} = 32 \\times 4 = 128$ Common misconceptions: - Choice B ($96$) arises from mistakenly using a ratio of $\\frac{2}{3}$. - Choice C ($74$) is the finite sum of only the first three terms ($32 + 24 + 18$). - Choice D ($64$) incorrectly assumes a common ratio of $\\frac{1}{2}$."
+        },
+        {
+          "q": "The diagram shows the graph of the function $y = f(x)$. The function is of the form $f(x) = x^2 + bx + c$. The graph passes through the point $(2, -3)$ and has a minimum value of $-4$ at $x = 1$. Find the value of $b$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Proving a divisibility result by induction",
+          "choices": [
+            "-2",
+            "1",
+            "2",
+            "-1"
+          ],
+          "correct": 2,
+          "answer": "The function is given by $f(x) = x^2 + bx + c$. The minimum value of a quadratic function in the form $ax^2 + bx + c$ occurs at $x = -\\frac{b}{2a}$. In this case, $a = 1$, so the minimum occurs at $x = -\\frac{b}{2}$. We are given that the minimum occurs at $x = 1$. Therefore, $1 = -\\frac{b}{2}$, which implies $b = -2$. Alternatively, we know the vertex is at $(1, -4)$. The vertex form of a quadratic is $f(x) = a(x-h)^2 + k$. Given $a=1$ and the vertex $(h, k) = (1, -4)$, we have $f(x) = 1(x-1)^2 - 4$. Expanding this, we get $f(x) = (x^2 - 2x + 1) - 4 = x^2 - 2x - 3$. Comparing this to $f(x) = x^2 + bx + c$, we find $b = -2$ and $c = -3$. The question asks for the value of $b$, which is $-2$.",
+          "explanation": "The function is given by $f(x) = x^2 + bx + c$. The minimum value of a quadratic function in the form $ax^2 + bx + c$ occurs at $x = -\\frac{b}{2a}$. In this case, $a = 1$, so the minimum occurs at $x = -\\frac{b}{2}$. We are given that the minimum occurs at $x = 1$. Therefore, $1 = -\\frac{b}{2}$, which implies $b = -2$. Alternatively, we know the vertex is at $(1, -4)$. The vertex form of a quadratic is $f(x) = a(x-h)^2 + k$. Given $a=1$ and the vertex $(h, k) = (1, -4)$, we have $f(x) = 1(x-1)^2 - 4$. Expanding this, we get $f(x) = (x^2 - 2x + 1) - 4 = x^2 - 2x - 3$. Comparing this to $f(x) = x^2 + bx + c$, we find $b = -2$ and $c = -3$. The question asks for the value of $b$, which is $-2$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*x - 2*x - 3"
+            ],
+            "xmin": -3.0,
+            "xmax": 5.0,
+            "ymin": -5.0,
+            "ymax": 10.0,
+            "width": 230,
+            "point_labels": [
+              {
+                "x": 2.0,
+                "y": -3.0,
+                "label": "(2, -3)"
+              },
+              {
+                "x": 1.0,
+                "y": -4.0,
+                "label": "(1, -4)"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "The graph of the function $g(x) = x^2 - 6x + k$ is shown below. The graph intersects the x-axis at points P and Q. Point P has coordinates $(2, 0)$. Find the value of the parameter $k$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Proving a closed form for a recursive sequence",
+          "choices": [
+            "1",
+            "2",
+            "4",
+            "8"
+          ],
+          "correct": 1,
+          "answer": "The graph of the quadratic function $g(x) = x^2 - 6x + k$ intersects the x-axis at points where $g(x) = 0$. We are given that one of these intersection points is P, with coordinates $(2, 0)$. This means that when $x = 2$, $g(x) = 0$. We can substitute these values into the function to find the value of $k$: $g(2) = (2)^2 - 6(2) + k$ $0 = 4 - 12 + k$ $0 = -8 + k$ $k = 8$ Therefore, the value of the parameter $k$ is 8.",
+          "explanation": "The graph of the quadratic function $g(x) = x^2 - 6x + k$ intersects the x-axis at points where $g(x) = 0$. We are given that one of these intersection points is P, with coordinates $(2, 0)$. This means that when $x = 2$, $g(x) = 0$. We can substitute these values into the function to find the value of $k$: $g(2) = (2)^2 - 6(2) + k$ $0 = 4 - 12 + k$ $0 = -8 + k$ $k = 8$ Therefore, the value of the parameter $k$ is 8.",
+          "cross_lesson": "1.02 Complex Numbers: Cartesian Form & Algebra",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*x - 6*x + 8"
+            ],
+            "xmin": -1.0,
+            "xmax": 7.0,
+            "ymin": -5.0,
+            "ymax": 5.0,
+            "width": 230,
+            "point_labels": [
+              {
+                "x": 2.0,
+                "y": 0.0,
+                "label": "P (2, 0)"
+              }
+            ]
+          }
+        },
+        {
+          "q": "Consider the quadratic function $f(x) = x^2 - 4x + 3$. Find the value of $x$ where the graph of $f(x)$ intersects the x-axis at the point $(x, 0)$, given that $x > 1$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "A second exponential inequality by induction",
+          "choices": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "correct": 1,
+          "answer": "The graph of $f(x)$ intersects the x-axis when $f(x) = 0$. We set the function equal to zero and solve for $x$: $x^2 - 4x + 3 = 0$ Factoring the quadratic equation, we get: $(x - 1)(x - 3) = 0$ This gives two possible solutions for $x$: $x = 1$ or $x = 3$. The question specifies that we need to find the value of $x$ where $x > 1$. Therefore, the correct value is $x = 3$.",
+          "explanation": "The graph of $f(x)$ intersects the x-axis when $f(x) = 0$. We set the function equal to zero and solve for $x$: $x^2 - 4x + 3 = 0$ Factoring the quadratic equation, we get: $(x - 1)(x - 3) = 0$ This gives two possible solutions for $x$: $x = 1$ or $x = 3$. The question specifies that we need to find the value of $x$ where $x > 1$. Therefore, the correct value is $x = 3$.",
+          "cross_lesson": "1.03 Polar Form, De Moivre's Theorem & Roots of Unity",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*x - 4*x + 3",
+              "0"
+            ],
+            "xmin": -2.0,
+            "xmax": 6.0,
+            "ymin": -3.0,
+            "ymax": 6.0,
+            "width": 230
+          }
+        },
+        {
+          "q": "The graph of the quadratic function $f(x) = x^2 - 4x + 3$ is shown below. The graph intersects the x-axis at points where $f(x) = 0$. Determine the sum of the x-coordinates of these intersection points.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "A third inequality by induction",
+          "choices": [
+            "1",
+            "3",
+            "4",
+            "-3"
+          ],
+          "correct": 2,
+          "answer": "The x-intercepts of the graph of $y = f(x)$ are the roots of the equation $f(x) = 0$. For a quadratic equation of the form $ax^2 + bx + c = 0$, the sum of the roots is given by $-\\frac{b}{a}$. In this case, $f(x) = x^2 - 4x + 3$, so $a = 1$, $b = -4$, and $c = 3$. The sum of the x-coordinates of the intersection points is $-\\frac{-4}{1} = 4$.",
+          "explanation": "The x-intercepts of the graph of $y = f(x)$ are the roots of the equation $f(x) = 0$. For a quadratic equation of the form $ax^2 + bx + c = 0$, the sum of the roots is given by $-\\frac{b}{a}$. In this case, $f(x) = x^2 - 4x + 3$, so $a = 1$, $b = -4$, and $c = 3$. The sum of the x-coordinates of the intersection points is $-\\frac{-4}{1} = 4$.",
+          "cross_lesson": "1.04 Partial Fractions",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*x - 4*x + 3"
+            ],
+            "xmin": -1.0,
+            "xmax": 5.0,
+            "ymin": -2.0,
+            "ymax": 4.0,
+            "width": 230,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": 0.0,
+                "label": "(1, 0)"
+              },
+              {
+                "x": 3.0,
+                "y": 0.0,
+                "label": "(3, 0)"
+              }
+            ]
+          }
+        },
+        {
+          "q": "A geometric sequence has first term $a=1$ and common ratio $r=2$. Find the sum of the first 5 terms.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Induction in combinatorics: counting subsets",
+          "choices": [
+            "31",
+            "-31",
+            "32",
+            "16"
+          ],
+          "correct": 0,
+          "answer": "$S_n=\\frac{a(r^n-1)}{r-1}\\Rightarrow S_{5}=\\frac{((2)^{5}-1)}{2-1}=31$.",
+          "explanation": "$S_n=\\frac{a(r^n-1)}{r-1}\\Rightarrow S_{5}=\\frac{((2)^{5}-1)}{2-1}=31$.",
+          "cross_lesson": "1.05 Systems of Linear Equations (AA HL)"
+        },
+        {
+          "q": "Arithmetic series sum: $S_{10}$ for $1+3+5+\\cdots$ (first 10 odd numbers):",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Proving the sum of the first n odd numbers",
+          "choices": [
+            "100",
+            "55",
+            "50",
+            "99"
+          ],
+          "correct": 0,
+          "answer": "Sum of first $n$ odd numbers $=n^2=100$.",
+          "explanation": "Sum of first $n$ odd numbers $=n^2=100$.",
+          "cross_lesson": "2.01 Modulus Functions & the Factor/Remainder Theorem"
+        },
+        {
+          "q": "Consider the quadratic equation $x^2 - kx + 8 = 0$, where $k$ is a real parameter. The graph of the corresponding quadratic function $y = x^2 - kx + 8$ is a parabola. Given that the parabola intersects the x-axis at exactly one point, find the value of $k$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "The three steps of induction",
+          "choices": [
+            "$-4\\sqrt{2}$",
+            "$-2\\sqrt{2}$",
+            "$2\\sqrt{2}$",
+            "$4\\sqrt{2}$"
+          ],
+          "correct": 3,
+          "answer": "The quadratic equation $ax^2 + bx + c = 0$ has exactly one real root (i.e., the parabola $y = ax^2 + bx + c$ intersects the x-axis at exactly one point) if and only if its discriminant, $\\Delta = b^2 - 4ac$, is equal to zero. In the given equation, $x^2 - kx + 8 = 0$, we have $a = 1$, $b = -k$, and $c = 8$. Therefore, the discriminant is $\\Delta = (-k)^2 - 4(1)(8) = k^2 - 32$. For the parabola to intersect the x-axis at exactly one point, we must have $\\Delta = 0$. So, $k^2 - 32 = 0$. This gives $k^2 = 32$, which means $k = \\pm\\sqrt{32}$. Simplifying the square root, $\\sqrt{32} = \\sqrt{16 \\times 2} = 4\\sqrt{2}$. Therefore, the possible values for $k$ are $4\\sqrt{2}$ and $-4\\sqrt{2}$. The question asks for 'the value of k', implying one specific value is expected, so we can infer the context allows for either positive or negative. Both are valid. Let's select the positive value as a primary choice. The provided options contain both. Common trap: Forgetting the negative root for $k$, or making errors in simplifying the radical.",
+          "explanation": "The quadratic equation $ax^2 + bx + c = 0$ has exactly one real root (i.e., the parabola $y = ax^2 + bx + c$ intersects the x-axis at exactly one point) if and only if its discriminant, $\\Delta = b^2 - 4ac$, is equal to zero. In the given equation, $x^2 - kx + 8 = 0$, we have $a = 1$, $b = -k$, and $c = 8$. Therefore, the discriminant is $\\Delta = (-k)^2 - 4(1)(8) = k^2 - 32$. For the parabola to intersect the x-axis at exactly one point, we must have $\\Delta = 0$. So, $k^2 - 32 = 0$. This gives $k^2 = 32$, which means $k = \\pm\\sqrt{32}$. Simplifying the square root, $\\sqrt{32} = \\sqrt{16 \\times 2} = 4\\sqrt{2}$. Therefore, the possible values for $k$ are $4\\sqrt{2}$ and $-4\\sqrt{2}$. The question asks for 'the value of k', implying one specific value is expected, so we can infer the context allows for either positive or negative. Both are valid. Let's select the positive value as a primary choice. The provided options contain both. Common trap: Forgetting the negative root for $k$, or making errors in simplifying the radical.",
+          "cross_lesson": "3.01 3D Vectors & the Cross Product"
+        },
+        {
+          "q": "Let $z_1$ and $z_2$ be complex numbers such that $z_1 = 2 + i$ and $z_2 = 3 - 2i$. ; Consider the complex number $w = \\frac{z_1^2}{z_2}$. ; If $w = a + bi$, where $a$ and $b$ are real numbers, find the value of $a^2 + b^2$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Proving a summation formula",
+          "choices": [
+            "$\\frac{25}{13}$",
+            "$\\frac{5}{13}$",
+            "$\\frac{169}{25}$",
+            "$\\frac{13}{5}$"
+          ],
+          "correct": 0,
+          "answer": "First, we calculate $z_1^2$: $z_1^2 = (2 + i)^2 = 4 + 4i + i^2 = 4 + 4i - 1 = 3 + 4i$. ; Next, we calculate $w = \\frac{z_1^2}{z_2} = \\frac{3 + 4i}{3 - 2i}$. ; To simplify, we multiply the numerator and denominator by the conjugate of the denominator: $w = \\frac{(3 + 4i)(3 + 2i)}{(3 - 2i)(3 + 2i)} = \\frac{9 + 6i + 12i + 8i^2}{9 - 4i^2} = \\frac{9 + 18i - 8}{9 + 4} = \\frac{1 + 18i}{13} = \\frac{1}{13} + \\frac{18}{13}i$. ; So, $a = \\frac{1}{13}$ and $b = \\frac{18}{13}$. ; We need to find $a^2 + b^2$: $a^2 + b^2 = \\left(\\frac{1}{13}\\right)^2 + \\left(\\frac{18}{13}\\right)^2 = \\frac{1}{169} + \\frac{324}{169} = \\frac{325}{169}$. ; Simplifying the fraction: $\\frac{325}{169} = \\frac{25 \\times 13}{13 \\times 13} = \\frac{25}{13}$. ; Alternatively, we can use the property that $|w| = \\frac{|z_1|^2}{|z_2|}$. Then $|w|^2 = \\left(\\frac{|z_1|^2}{|z_2|}\\right)^2 = \\frac{|z_1|^4}{|z_2|^2}$. ; $|z_1|^2 = 2^2 + 1^2 = 4 + 1 = 5$. $|z_2|^2 = 3^2 + (-2)^2 = 9 + 4 = 13$. $a^2 + b^2 = |w|^2 = \\frac{5^2}{13} = \\frac{25}{13}$.",
+          "explanation": "First, we calculate $z_1^2$: $z_1^2 = (2 + i)^2 = 4 + 4i + i^2 = 4 + 4i - 1 = 3 + 4i$. ; Next, we calculate $w = \\frac{z_1^2}{z_2} = \\frac{3 + 4i}{3 - 2i}$. ; To simplify, we multiply the numerator and denominator by the conjugate of the denominator: $w = \\frac{(3 + 4i)(3 + 2i)}{(3 - 2i)(3 + 2i)} = \\frac{9 + 6i + 12i + 8i^2}{9 - 4i^2} = \\frac{9 + 18i - 8}{9 + 4} = \\frac{1 + 18i}{13} = \\frac{1}{13} + \\frac{18}{13}i$. ; So, $a = \\frac{1}{13}$ and $b = \\frac{18}{13}$. ; We need to find $a^2 + b^2$: $a^2 + b^2 = \\left(\\frac{1}{13}\\right)^2 + \\left(\\frac{18}{13}\\right)^2 = \\frac{1}{169} + \\frac{324}{169} = \\frac{325}{169}$. ; Simplifying the fraction: $\\frac{325}{169} = \\frac{25 \\times 13}{13 \\times 13} = \\frac{25}{13}$. ; Alternatively, we can use the property that $|w| = \\frac{|z_1|^2}{|z_2|}$. Then $|w|^2 = \\left(\\frac{|z_1|^2}{|z_2|}\\right)^2 = \\frac{|z_1|^4}{|z_2|^2}$. ; $|z_1|^2 = 2^2 + 1^2 = 4 + 1 = 5$. $|z_2|^2 = 3^2 + (-2)^2 = 9 + 4 = 13$. $a^2 + b^2 = |w|^2 = \\frac{5^2}{13} = \\frac{25}{13}$.",
+          "cross_lesson": "3.02 Lines and Planes in Three Dimensions"
+        },
+        {
+          "q": "Consider the complex number $w = 4 - 3i$. Find the modulus of $w$, denoted as $|w|$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Proving divisibility results",
+          "choices": [
+            "5",
+            "6",
+            "7",
+            "25"
+          ],
+          "correct": 0,
+          "answer": "The modulus of a complex number $z = x + yi$ is given by $|z| = \\sqrt{x^2 + y^2}$. For the complex number $w = 4 - 3i$, we have $x=4$ and $y=-3$. Therefore, $|w| = \\sqrt{4^2 + (-3)^2} = \\sqrt{16 + 9} = \\sqrt{25} = 5$. Common errors include: - Forgetting to square the imaginary part: $\\sqrt{4 + (-3)} = \\sqrt{1} = 1$ (Incorrect). - Forgetting to take the square root: $4^2 + (-3)^2 = 16 + 9 = 25$ (Incorrect, as this is the square of the modulus). - Incorrectly handling the negative sign in the imaginary part: $4^2 + 3^2 = 16 + 9 = 25$, and then incorrectly stating the modulus as 25 (Incorrect).",
+          "explanation": "The modulus of a complex number $z = x + yi$ is given by $|z| = \\sqrt{x^2 + y^2}$. For the complex number $w = 4 - 3i$, we have $x=4$ and $y=-3$. Therefore, $|w| = \\sqrt{4^2 + (-3)^2} = \\sqrt{16 + 9} = \\sqrt{25} = 5$. Common errors include: - Forgetting to square the imaginary part: $\\sqrt{4 + (-3)} = \\sqrt{1} = 1$ (Incorrect). - Forgetting to take the square root: $4^2 + (-3)^2 = 16 + 9 = 25$ (Incorrect, as this is the square of the modulus). - Incorrectly handling the negative sign in the imaginary part: $4^2 + 3^2 = 16 + 9 = 25$, and then incorrectly stating the modulus as 25 (Incorrect).",
           "cross_lesson": "3.03 Compound Angle Identities & Reciprocal Trigonometric Functions (AA HL)"
         }
       ]

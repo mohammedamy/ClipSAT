@@ -17,55 +17,31 @@
           "explanation": "Write $(5x+7)/((x+1)(x+2))=A/(x+1)+B/(x+2)$. Multiply through: $5x+7=A(x+2)+B(x+1)$. At $x=-1$: $2=A(1)$, so $A=2$. At $x=-2$: $-3=B(-1)$, so $B=3$. Result: $2/(x+1)+3/(x+2)$."
         },
         {
-          "q": "Express $(3x-1)/(x(x-3))$ in partial fractions.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Distinct linear factors",
-          "answer": "Write $(3x-1)/(x(x-3))=A/x+B/(x-3)$. Then $3x-1=A(x-3)+Bx$. At $x=0$: $-1=-3A$, so $A=1/3$. At $x=3$: $8=3B$, so $B=8/3$. Result: $1/(3x)+8/(3(x-3))$.",
-          "explanation": "Write $(3x-1)/(x(x-3))=A/x+B/(x-3)$. Then $3x-1=A(x-3)+Bx$. At $x=0$: $-1=-3A$, so $A=1/3$. At $x=3$: $8=3B$, so $B=8/3$. Result: $1/(3x)+8/(3(x-3))$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (0))**2 + (-1)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 0.0,
-                "y": -1.0,
-                "label": "$(0,-1)$"
-              }
-            ],
-            "width": 230
-          }
-        },
-        {
           "q": "Express $(4x+1)/(x-1)^2$ in partial fractions of the form $A/(x-1)+B/(x-1)^2$.",
           "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Repeated linear factors",
           "answer": "$4x+1=A(x-1)+B$. At $x=1$: $5=B$. Comparing coefficients of $x$: $A=4$. Result: $4/(x-1)+5/(x-1)^2$.",
-          "explanation": "$4x+1=A(x-1)+B$. At $x=1$: $5=B$. Comparing coefficients of $x$: $A=4$. Result: $4/(x-1)+5/(x-1)^2$."
-        },
-        {
-          "q": "Express $(2x^2-3x+1)/(x(x-1)^2)$ in partial fractions of the form $A/x+B/(x-1)+C/(x-1)^2$.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Repeated linear factors",
-          "answer": "$2x^2-3x+1=A(x-1)^2+Bx(x-1)+Cx$. At $x=0$: $1=A(1)$, so $A=1$. At $x=1$: $0=C(1)$, so $C=0$. Comparing $x^2$ coefficients: $2=A+B$, so $B=2-1=1$. Result: $1/x+1/(x-1)$.",
-          "explanation": "$2x^2-3x+1=A(x-1)^2+Bx(x-1)+Cx$. At $x=0$: $1=A(1)$, so $A=1$. At $x=1$: $0=C(1)$, so $C=0$. Comparing $x^2$ coefficients: $2=A+B$, so $B=2-1=1$. Result: $1/x+1/(x-1)$."
-        },
-        {
-          "q": "Express $(3x^2+2)/((x-1)(x^2+1))$ in partial fractions of the form $A/(x-1)+(Bx+C)/(x^2+1)$.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Irreducible quadratic factors",
-          "answer": "$3x^2+2=A(x^2+1)+(Bx+C)(x-1)$. At $x=1$: $5=2A$, so $A=5/2$. Comparing $x^2$ coefficients: $3=A+B$, so $B=3-5/2=1/2$. Comparing constants: $2=A-C$, so $C=A-2=1/2$. Result: $5/(2(x-1))+(x+1)/(2(x^2+1))$.",
-          "explanation": "$3x^2+2=A(x^2+1)+(Bx+C)(x-1)$. At $x=1$: $5=2A$, so $A=5/2$. Comparing $x^2$ coefficients: $3=A+B$, so $B=3-5/2=1/2$. Comparing constants: $2=A-C$, so $C=A-2=1/2$. Result: $5/(2(x-1))+(x+1)/(2(x^2+1))$."
+          "explanation": "$4x+1=A(x-1)+B$. At $x=1$: $5=B$. Comparing coefficients of $x$: $A=4$. Result: $4/(x-1)+5/(x-1)^2$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.75*(x - (0.5))**2 + (-1.0)",
+              "0.4*x + (0.2)"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -5,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.5,
+                "y": -1.0,
+                "label": "$(0.5,-1)$"
+              }
+            ],
+            "width": 230
+          }
         },
         {
           "q": "Use partial fractions to evaluate $\\int(5x+7)/((x+1)(x+2))\\,dx$, using the decomposition found earlier in this worksheet.",
@@ -73,26 +49,7 @@
           "question_type": "FRQ",
           "target": "Applying partial fractions to integration",
           "answer": "From earlier: $(5x+7)/((x+1)(x+2))=2/(x+1)+3/(x+2)$. So $\\int(5x+7)/((x+1)(x+2))\\,dx=2\\ln|x+1|+3\\ln|x+2|+C$.",
-          "explanation": "From earlier: $(5x+7)/((x+1)(x+2))=2/(x+1)+3/(x+2)$. So $\\int(5x+7)/((x+1)(x+2))\\,dx=2\\ln|x+1|+3\\ln|x+2|+C$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (1))**2 + (-1)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 1.0,
-                "y": -1.0,
-                "label": "$(1,-1)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "From earlier: $(5x+7)/((x+1)(x+2))=2/(x+1)+3/(x+2)$. So $\\int(5x+7)/((x+1)(x+2))\\,dx=2\\ln|x+1|+3\\ln|x+2|+C$."
         },
         {
           "q": "Express $1/((1-x)(1-2x))$ in partial fractions, then use the result to write the first three terms of its series expansion in ascending powers of $x$.",
@@ -101,23 +58,10 @@
           "target": "Applying partial fractions to a binomial series expansion",
           "answer": "$1/((1-x)(1-2x))=A/(1-x)+B/(1-2x)$. Then $1=A(1-2x)+B(1-x)$. At $x=1$: $1=A(-1)$, so $A=-1$. At $x=1/2$: $1=B(1/2)$, so $B=2$. Result: $-1/(1-x)+2/(1-2x)$. Expanding each geometric series: $-1(1+x+x^2+\\cdots)+2(1+2x+4x^2+\\cdots)=(-1+2)+(-1+4)x+(-1+8)x^2+\\cdots=1+3x+7x^2+\\cdots$.",
           "explanation": "$1/((1-x)(1-2x))=A/(1-x)+B/(1-2x)$. Then $1=A(1-2x)+B(1-x)$. At $x=1$: $1=A(-1)$, so $A=-1$. At $x=1/2$: $1=B(1/2)$, so $B=2$. Result: $-1/(1-x)+2/(1-2x)$. Expanding each geometric series: $-1(1+x+x^2+\\cdots)+2(1+2x+4x^2+\\cdots)=(-1+2)+(-1+4)x+(-1+8)x^2+\\cdots=1+3x+7x^2+\\cdots$."
-        }
-      ]
-    },
-    {
-      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
-      "questions": [
-        {
-          "q": "Express $(7-x)/((x+1)(x-2))$ in partial fractions.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Combining terms before decomposing",
-          "answer": "Write $(7-x)/((x+1)(x-2))=A/(x+1)+B/(x-2)$. Then $7-x=A(x-2)+B(x+1)$. At $x=-1$: $8=A(-3)$, so $A=-8/3$. At $x=2$: $5=B(3)$, so $B=5/3$. Result: $-8/(3(x+1))+5/(3(x-2))$.",
-          "explanation": "Write $(7-x)/((x+1)(x-2))=A/(x+1)+B/(x-2)$. Then $7-x=A(x-2)+B(x+1)$. At $x=-1$: $8=A(-3)$, so $A=-8/3$. At $x=2$: $5=B(3)$, so $B=5/3$. Result: $-8/(3(x+1))+5/(3(x-2))$."
         },
         {
           "q": "Express $(x^2+x+1)/(x(x+1))$ in partial fractions. (Hint: the degree of the numerator equals the degree of the denominator, so first perform polynomial division.)",
-          "difficulty": "Intermediate",
+          "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Combining terms before decomposing",
           "answer": "Since numerator and denominator are both degree 2, divide first: $(x^2+x+1)/(x^2+x)=1+1/(x^2+x)=1+1/(x(x+1))$. Decompose $1/(x(x+1))=A/x+B/(x+1)$: $1=A(x+1)+Bx$. At $x=0$: $A=1$. At $x=-1$: $B=-1$. Result: $1+1/x-1/(x+1)$.",
@@ -125,7 +69,7 @@
         },
         {
           "q": "A population model gives the rate of change $dP/dt=1/(P(10-P))$. Express $1/(P(10-P))$ in partial fractions of the form $A/P+B/(10-P)$.",
-          "difficulty": "Intermediate",
+          "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Applying partial fractions to a rate problem",
           "answer": "$1=A(10-P)+BP$. At $P=0$: $1=10A$, so $A=1/10$. At $P=10$: $1=10B$, so $B=1/10$. Result: $1/(10P)+1/(10(10-P))$ — a decomposition commonly used to solve logistic-growth differential equations by separation of variables.",
@@ -133,39 +77,36 @@
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
+              "0.45*(x - (0.0))**2 + (1.0)",
+              "-0.6*x + (2.2)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
-                "x": -1.0,
-                "y": -1.0,
-                "label": "$(-1,-1)$"
+                "x": 0.0,
+                "y": 1.0,
+                "label": "$(0,1)$"
               }
             ],
             "width": 230
           }
         },
         {
-          "q": "Express $(6x^2-2x-1)/((x-1)(x+1)(x-2))$ in partial fractions.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Partial fractions with three distinct linear factors",
-          "answer": "Write $(6x^2-2x-1)/((x-1)(x+1)(x-2))=A/(x-1)+B/(x+1)+C/(x-2)$. Then $6x^2-2x-1=A(x+1)(x-2)+B(x-1)(x-2)+C(x-1)(x+1)$. At $x=1$: $3=A(2)(-1)=-2A$, so $A=-3/2$. At $x=-1$: $7=B(-2)(-3)=6B$, so $B=7/6$. At $x=2$: $19=C(1)(3)=3C$, so $C=19/3$.",
-          "explanation": "Write $(6x^2-2x-1)/((x-1)(x+1)(x-2))=A/(x-1)+B/(x+1)+C/(x-2)$. Then $6x^2-2x-1=A(x+1)(x-2)+B(x-1)(x-2)+C(x-1)(x+1)$. At $x=1$: $3=A(2)(-1)=-2A$, so $A=-3/2$. At $x=-1$: $7=B(-2)(-3)=6B$, so $B=7/6$. At $x=2$: $19=C(1)(3)=3C$, so $C=19/3$."
-        },
-        {
           "q": "Express $x^3/(x-1)^2$ in partial fractions, first performing polynomial division since the numerator has higher degree than the denominator.",
-          "difficulty": "Intermediate",
+          "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "Partial fractions with an improper fraction and repeated factor",
           "answer": "Divide $x^3$ by $(x-1)^2=x^2-2x+1$: $x^3\\div(x^2-2x+1)=x+2$ remainder $3x-2$. So $x^3/(x-1)^2=x+2+(3x-2)/(x-1)^2$. Decompose the remainder: $(3x-2)/(x-1)^2=A/(x-1)+B/(x-1)^2$, giving $3x-2=A(x-1)+B$. At $x=1$: $1=B$. Comparing $x$ coefficients: $A=3$. Result: $x+2+3/(x-1)+1/(x-1)^2$.",
           "explanation": "Divide $x^3$ by $(x-1)^2=x^2-2x+1$: $x^3\\div(x^2-2x+1)=x+2$ remainder $3x-2$. So $x^3/(x-1)^2=x+2+(3x-2)/(x-1)^2$. Decompose the remainder: $(3x-2)/(x-1)^2=A/(x-1)+B/(x-1)^2$, giving $3x-2=A(x-1)+B$. At $x=1$: $1=B$. Comparing $x$ coefficients: $A=3$. Result: $x+2+3/(x-1)+1/(x-1)^2$."
-        },
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
         {
           "q": "Express $1/(n(n+1))$ in partial fractions, and use the result to find $1/(1\\cdot2)+1/(2\\cdot3)+1/(3\\cdot4)+1/(4\\cdot5)$ by telescoping.",
           "difficulty": "Intermediate",
@@ -175,12 +116,71 @@
           "explanation": "$1/(n(n+1))=1/n-1/(n+1)$ (standard decomposition with $A=1$, $B=-1$). Summing from $n=1$ to $4$: $(1-1/2)+(1/2-1/3)+(1/3-1/4)+(1/4-1/5)=1-1/5=4/5$, since all the middle terms cancel (telescope)."
         },
         {
-          "q": "Express $(x+5)/((x-1)(x+1)^2)$ in partial fractions of the form $A/(x-1)+B/(x+1)+C/(x+1)^2$.",
+          "q": "Use partial fractions to find the Maclaurin (power series) expansion of $1/((1-x)(2-x))$ up to the term in $x^2$, first decomposing into the form $A/(1-x)+B/(2-x)$.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Decomposing a fraction with a repeated quadratic-adjacent structure",
-          "answer": "$x+5=A(x+1)^2+B(x-1)(x+1)+C(x-1)$. At $x=1$: $6=A(4)$, so $A=3/2$. At $x=-1$: $4=C(-2)$, so $C=-2$. Comparing $x^2$ coefficients: $0=A+B$, so $B=-3/2$. Result: $3/(2(x-1))-3/(2(x+1))-2/(x+1)^2$.",
-          "explanation": "$x+5=A(x+1)^2+B(x-1)(x+1)+C(x-1)$. At $x=1$: $6=A(4)$, so $A=3/2$. At $x=-1$: $4=C(-2)$, so $C=-2$. Comparing $x^2$ coefficients: $0=A+B$, so $B=-3/2$. Result: $3/(2(x-1))-3/(2(x+1))-2/(x+1)^2$."
+          "answer": "$1=A(2-x)+B(1-x)$. At $x=1$: $1=A(1)$, so $A=1$. At $x=2$: $1=B(-1)$, so $B=-1$. Result: $1/(1-x)-1/(2-x)=1/(1-x)-1/2\\cdot1/(1-x/2)$. Expanding each as a geometric series: $(1+x+x^2+\\cdots)-1/2(1+x/2+x^2/4+\\cdots)=(1-1/2)+(1-1/4)x+(1-1/8)x^2+\\cdots=1/2+3/4x+7/8x^2+\\cdots$.",
+          "explanation": "$1=A(2-x)+B(1-x)$. At $x=1$: $1=A(1)$, so $A=1$. At $x=2$: $1=B(-1)$, so $B=-1$. Result: $1/(1-x)-1/(2-x)=1/(1-x)-1/2\\cdot1/(1-x/2)$. Expanding each as a geometric series: $(1+x+x^2+\\cdots)-1/2(1+x/2+x^2/4+\\cdots)=(1-1/2)+(1-1/4)x+(1-1/8)x^2+\\cdots=1/2+3/4x+7/8x^2+\\cdots$."
+        },
+        {
+          "q": "Express $(4x^2-5x-15)/((x+1)(x-2)(x+3))$ in partial fractions, using the cover-up method (evaluating the numerator at each root while covering the matching factor in the denominator).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Decomposing a fraction with a repeated quadratic-adjacent structure",
+          "answer": "Write $(4x^2-5x-15)/((x+1)(x-2)(x+3))=A/(x+1)+B/(x-2)+C/(x+3)$. Using the cover-up method: $A=(4(-1)^2-5(-1)-15)/((-1-2)(-1+3))=(4+5-15)/((-3)(2))=-6/(-6)=1$. $B=(4(2)^2-5(2)-15)/((2+1)(2+3))=(16-10-15)/((3)(5))=-9/15=-3/5$. $C=(4(-3)^2-5(-3)-15)/((-3+1)(-3-2))=(36+15-15)/((-2)(-5))=36/10=18/5$. Result: $1/(x+1)-3/(5(x-2))+18/(5(x+3))$.",
+          "explanation": "Write $(4x^2-5x-15)/((x+1)(x-2)(x+3))=A/(x+1)+B/(x-2)+C/(x+3)$. Using the cover-up method: $A=(4(-1)^2-5(-1)-15)/((-1-2)(-1+3))=(4+5-15)/((-3)(2))=-6/(-6)=1$. $B=(4(2)^2-5(2)-15)/((2+1)(2+3))=(16-10-15)/((3)(5))=-9/15=-3/5$. $C=(4(-3)^2-5(-3)-15)/((-3+1)(-3-2))=(36+15-15)/((-2)(-5))=36/10=18/5$. Result: $1/(x+1)-3/(5(x-2))+18/(5(x+3))$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-0.75*(x - (-1.5))**2 + (-1.5)",
+              "-0.6*x + (-2.7)"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -5,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.5,
+                "y": -1.5,
+                "label": "$(-1.5,-1.5)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A chemical reaction's rate is modeled by $dC/dt=1/((C+2)(C-1))$, where $C$ is a concentration. Express $1/((C+2)(C-1))$ in partial fractions of the form $A/(C+2)+B/(C-1)$, and then use the result to write the general antiderivative $\\int1/((C+2)(C-1))\\,dC$ in terms of natural logarithms.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Decomposing a fraction with a repeated quadratic-adjacent structure",
+          "answer": "$1=A(C-1)+B(C+2)$. At $C=1$: $1=B(3)$, so $B=1/3$. At $C=-2$: $1=A(-3)$, so $A=-1/3$. Result: $-1/3/(C+2)+1/3/(C-1)$. Integrating: $\\int1/((C+2)(C-1))\\,dC=-1/3\\ln|C+2|+1/3\\ln|C-1|+K=1/3\\ln|(C-1)/(C+2)|+K$.",
+          "explanation": "$1=A(C-1)+B(C+2)$. At $C=1$: $1=B(3)$, so $B=1/3$. At $C=-2$: $1=A(-3)$, so $A=-1/3$. Result: $-1/3/(C+2)+1/3/(C-1)$. Integrating: $\\int1/((C+2)(C-1))\\,dC=-1/3\\ln|C+2|+1/3\\ln|C-1|+K=1/3\\ln|(C-1)/(C+2)|+K$."
+        },
+        {
+          "q": "Use the decomposition $1/(3x)+8/(3(x-3))$ found earlier in this worksheet for $(3x-1)/(x(x-3))$ to evaluate $\\int_4^5(3x-1)/(x(x-3))\\,dx$, giving your answer as a single logarithm expression.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Decomposing a fraction with a repeated quadratic-adjacent structure",
+          "answer": "$\\int(3x-1)/(x(x-3))\\,dx=1/3\\ln|x|+8/3\\ln|x-3|+C$. Evaluating from $4$ to $5$: $[1/3\\ln5+8/3\\ln2]-[1/3\\ln4+8/3\\ln1]=1/3\\ln5+8/3\\ln2-1/3\\ln4=1/3\\ln(5/4)+8/3\\ln2$.",
+          "explanation": "$\\int(3x-1)/(x(x-3))\\,dx=1/3\\ln|x|+8/3\\ln|x-3|+C$. Evaluating from $4$ to $5$: $[1/3\\ln5+8/3\\ln2]-[1/3\\ln4+8/3\\ln1]=1/3\\ln5+8/3\\ln2-1/3\\ln4=1/3\\ln(5/4)+8/3\\ln2$."
+        },
+        {
+          "q": "This question has three parts. (a) Factor $x^2-4$ and hence express $(x+8)/(x^2-4)$ in partial fractions. (b) Use your result from part (a) to write down $\\int(x+8)/(x^2-4)\\,dx$. (c) Hence evaluate $\\int_3^5(x+8)/(x^2-4)\\,dx$, giving your answer as a single expression involving natural logarithms.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Decomposing a fraction with a repeated quadratic-adjacent structure",
+          "answer": "(a) Factor $x^2-4=(x-2)(x+2)$, so $(x+8)/((x-2)(x+2))=A/(x-2)+B/(x+2)$. Then $x+8=A(x+2)+B(x-2)$. At $x=2$: $10=4A$, so $A=5/2$. At $x=-2$: $6=-4B$, so $B=-3/2$. Result: $5/2/(x-2)-3/2/(x+2)$. (b) $\\int(x+8)/(x^2-4)\\,dx=5/2\\ln|x-2|-3/2\\ln|x+2|+C$. (c) Evaluating from $3$ to $5$: $[5/2\\ln3-3/2\\ln7]-[5/2\\ln1-3/2\\ln5]=5/2\\ln3-3/2\\ln7+3/2\\ln5$ (since $\\ln1=0$).",
+          "explanation": "(a) Factor $x^2-4=(x-2)(x+2)$, so $(x+8)/((x-2)(x+2))=A/(x-2)+B/(x+2)$. Then $x+8=A(x+2)+B(x-2)$. At $x=2$: $10=4A$, so $A=5/2$. At $x=-2$: $6=-4B$, so $B=-3/2$. Result: $5/2/(x-2)-3/2/(x+2)$. (b) $\\int(x+8)/(x^2-4)\\,dx=5/2\\ln|x-2|-3/2\\ln|x+2|+C$. (c) Evaluating from $3$ to $5$: $[5/2\\ln3-3/2\\ln7]-[5/2\\ln1-3/2\\ln5]=5/2\\ln3-3/2\\ln7+3/2\\ln5$ (since $\\ln1=0$)."
+        },
+        {
+          "q": "Combine $2/(x+1)+3/(x+2)$ into a single fraction.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Combining partial fractions back into a single fraction",
+          "answer": "The common denominator is $(x+1)(x+2)$. So $2/(x+1)+3/(x+2)=(2(x+2)+3(x+1))/((x+1)(x+2))$. Expanding the numerator: $2(x+2)+3(x+1)=2x+4+3x+3=5x+7$. Result: $(5x+7)/((x+1)(x+2))$ — confirming the original expression from the first question of this worksheet.",
+          "explanation": "The common denominator is $(x+1)(x+2)$. So $2/(x+1)+3/(x+2)=(2(x+2)+3(x+1))/((x+1)(x+2))$. Expanding the numerator: $2(x+2)+3(x+1)=2x+4+3x+3=5x+7$. Result: $(5x+7)/((x+1)(x+2))$ — confirming the original expression from the first question of this worksheet."
         }
       ]
     },
@@ -188,77 +188,58 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "Express $(2x^2+x-1)/(x^2(x+1))$ in partial fractions of the form $A/x+B/(x^2)+C/(x+1)$.",
+          "q": "Solve the differential equation $dP/dt=P(10-P)/100$, given that $P=5$ when $t=0$. Use the partial fraction decomposition $1/(P(10-P))=1/(10P)+1/(10(10-P))$ found earlier in this worksheet to integrate, and give $P$ explicitly as a function of $t$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Decomposing a fraction with a repeated quadratic-adjacent structure",
+          "target": "Solving a separable differential equation using partial fractions",
           "cross_lesson": "1.01 Proof by Mathematical Induction",
-          "answer": "$2x^2+x-1=Ax(x+1)+B(x+1)+Cx^2$. At $x=0$: $-1=B(1)$, so $B=-1$. At $x=-1$: $0=C(1)$, so $C=0$. Comparing $x^2$ coefficients: $2=A+C=A$, so $A=2$. Result: $2/x-1/(x^2)$.",
-          "explanation": "$2x^2+x-1=Ax(x+1)+B(x+1)+Cx^2$. At $x=0$: $-1=B(1)$, so $B=-1$. At $x=-1$: $0=C(1)$, so $C=0$. Comparing $x^2$ coefficients: $2=A+C=A$, so $A=2$. Result: $2/x-1/(x^2)$."
+          "answer": "Separating variables: $dP/(P(10-P))=dt/100$. Using the decomposition, the left side integrates to $(1/10)\\ln|P|-(1/10)\\ln|10-P|=(1/10)\\ln|P/(10-P)|$. So $(1/10)\\ln|P/(10-P)|=t/100+C_1$. Multiplying by $10$: $\\ln|P/(10-P)|=t/10+C_2$. Exponentiating: $P/(10-P)=ke^{t/10}$ for some constant $k$. At $t=0$, $P=5$, so $5/5=1=k$. So $P/(10-P)=e^{t/10}$, which rearranges to $P=10e^{t/10}/(1+e^{t/10})$.",
+          "explanation": "Separating variables: $dP/(P(10-P))=dt/100$. Using the decomposition, the left side integrates to $(1/10)\\ln|P|-(1/10)\\ln|10-P|=(1/10)\\ln|P/(10-P)|$. So $(1/10)\\ln|P/(10-P)|=t/100+C_1$. Multiplying by $10$: $\\ln|P/(10-P)|=t/10+C_2$. Exponentiating: $P/(10-P)=ke^{t/10}$ for some constant $k$. At $t=0$, $P=5$, so $5/5=1=k$. So $P/(10-P)=e^{t/10}$, which rearranges to $P=10e^{t/10}/(1+e^{t/10})$."
         },
         {
-          "q": "Use partial fractions to find the Maclaurin (power series) expansion of $1/((1-x)(2-x))$ up to the term in $x^2$, first decomposing into the form $A/(1-x)+B/(2-x)$.",
+          "q": "Explain why polynomial division must be performed before applying partial fraction decomposition to $x^3/(x-1)^2$, but not to $(3x+1)/(x-1)^2$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Decomposing a fraction with a repeated quadratic-adjacent structure",
+          "target": "Explaining when polynomial division is required",
           "cross_lesson": "1.02 Complex Numbers: Cartesian Form & Algebra",
-          "answer": "$1=A(2-x)+B(1-x)$. At $x=1$: $1=A(1)$, so $A=1$. At $x=2$: $1=B(-1)$, so $B=-1$. Result: $1/(1-x)-1/(2-x)=1/(1-x)-1/2\\cdot1/(1-x/2)$. Expanding each as a geometric series: $(1+x+x^2+\\cdots)-1/2(1+x/2+x^2/4+\\cdots)=(1-1/2)+(1-1/4)x+(1-1/8)x^2+\\cdots=1/2+3/4x+7/8x^2+\\cdots$.",
-          "explanation": "$1=A(2-x)+B(1-x)$. At $x=1$: $1=A(1)$, so $A=1$. At $x=2$: $1=B(-1)$, so $B=-1$. Result: $1/(1-x)-1/(2-x)=1/(1-x)-1/2\\cdot1/(1-x/2)$. Expanding each as a geometric series: $(1+x+x^2+\\cdots)-1/2(1+x/2+x^2/4+\\cdots)=(1-1/2)+(1-1/4)x+(1-1/8)x^2+\\cdots=1/2+3/4x+7/8x^2+\\cdots$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": -1.0,
-                "y": -1.0,
-                "label": "$(-1,-1)$"
-              }
-            ],
-            "width": 230
-          }
+          "answer": "The standard partial fraction method requires the numerator's degree to be strictly less than the denominator's degree. In $x^3/(x-1)^2$, the numerator has degree $3$ while the denominator $(x-1)^2$ has degree $2$, so the fraction is improper and must first be reduced by polynomial division into a polynomial plus a proper fraction before decomposing. In $(3x+1)/(x-1)^2$, the numerator has degree $1$, which is already less than the denominator's degree $2$, so the fraction is already proper and can be decomposed directly as $A/(x-1)+B/(x-1)^2$.",
+          "explanation": "The standard partial fraction method requires the numerator's degree to be strictly less than the denominator's degree. In $x^3/(x-1)^2$, the numerator has degree $3$ while the denominator $(x-1)^2$ has degree $2$, so the fraction is improper and must first be reduced by polynomial division into a polynomial plus a proper fraction before decomposing. In $(3x+1)/(x-1)^2$, the numerator has degree $1$, which is already less than the denominator's degree $2$, so the fraction is already proper and can be decomposed directly as $A/(x-1)+B/(x-1)^2$."
         },
         {
-          "q": "Express $(4x^2-5x-15)/((x+1)(x-2)(x+3))$ in partial fractions, using the cover-up method (evaluating the numerator at each root while covering the matching factor in the denominator).",
+          "q": "Verify the decomposition $(5x+7)/((x+1)(x+2))=2/(x+1)+3/(x+2)$ found earlier in this worksheet by substituting $x=0$ into both sides.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Decomposing a fraction with a repeated quadratic-adjacent structure",
+          "target": "Verifying a decomposition by substitution",
           "cross_lesson": "1.03 Polar Form, De Moivre's Theorem & Roots of Unity",
-          "answer": "Write $(4x^2-5x-15)/((x+1)(x-2)(x+3))=A/(x+1)+B/(x-2)+C/(x+3)$. Using the cover-up method: $A=(4(-1)^2-5(-1)-15)/((-1-2)(-1+3))=(4+5-15)/((-3)(2))=-6/(-6)=1$. $B=(4(2)^2-5(2)-15)/((2+1)(2+3))=(16-10-15)/((3)(5))=-9/15=-3/5$. $C=(4(-3)^2-5(-3)-15)/((-3+1)(-3-2))=(36+15-15)/((-2)(-5))=36/10=18/5$. Result: $1/(x+1)-3/(5(x-2))+18/(5(x+3))$.",
-          "explanation": "Write $(4x^2-5x-15)/((x+1)(x-2)(x+3))=A/(x+1)+B/(x-2)+C/(x+3)$. Using the cover-up method: $A=(4(-1)^2-5(-1)-15)/((-1-2)(-1+3))=(4+5-15)/((-3)(2))=-6/(-6)=1$. $B=(4(2)^2-5(2)-15)/((2+1)(2+3))=(16-10-15)/((3)(5))=-9/15=-3/5$. $C=(4(-3)^2-5(-3)-15)/((-3+1)(-3-2))=(36+15-15)/((-2)(-5))=36/10=18/5$. Result: $1/(x+1)-3/(5(x-2))+18/(5(x+3))$."
+          "answer": "LHS: $(5(0)+7)/((0+1)(0+2))=7/2$. RHS: $2/(0+1)+3/(0+2)=2+3/2=7/2$. Since both sides equal $7/2$, the decomposition checks out at $x=0$.",
+          "explanation": "LHS: $(5(0)+7)/((0+1)(0+2))=7/2$. RHS: $2/(0+1)+3/(0+2)=2+3/2=7/2$. Since both sides equal $7/2$, the decomposition checks out at $x=0$."
         },
         {
-          "q": "A chemical reaction's rate is modeled by $dC/dt=1/((C+2)(C-1))$, where $C$ is a concentration. Express $1/((C+2)(C-1))$ in partial fractions of the form $A/(C+2)+B/(C-1)$, and then use the result to write the general antiderivative $\\int1/((C+2)(C-1))\\,dC$ in terms of natural logarithms.",
+          "q": "When decomposing $(2x+3)/((x-4)(x+5))$ using the equation $2x+3=A(x+5)+B(x-4)$, which two values of $x$ should be substituted to find $A$ and $B$ most efficiently, and why?",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Decomposing a fraction with a repeated quadratic-adjacent structure",
+          "target": "Choosing efficient substitution values",
           "cross_lesson": "1.05 Systems of Linear Equations (AA HL)",
-          "answer": "$1=A(C-1)+B(C+2)$. At $C=1$: $1=B(3)$, so $B=1/3$. At $C=-2$: $1=A(-3)$, so $A=-1/3$. Result: $-1/3/(C+2)+1/3/(C-1)$. Integrating: $\\int1/((C+2)(C-1))\\,dC=-1/3\\ln|C+2|+1/3\\ln|C-1|+K=1/3\\ln|(C-1)/(C+2)|+K$.",
-          "explanation": "$1=A(C-1)+B(C+2)$. At $C=1$: $1=B(3)$, so $B=1/3$. At $C=-2$: $1=A(-3)$, so $A=-1/3$. Result: $-1/3/(C+2)+1/3/(C-1)$. Integrating: $\\int1/((C+2)(C-1))\\,dC=-1/3\\ln|C+2|+1/3\\ln|C-1|+K=1/3\\ln|(C-1)/(C+2)|+K$."
+          "answer": "Substitute $x=4$ and $x=-5$ — the roots of the denominator's factors — since each choice makes one of the two terms on the right vanish, isolating $A$ or $B$ directly without solving simultaneous equations. At $x=4$: $11=9A$, so $A=11/9$. At $x=-5$: $-7=-9B$, so $B=7/9$.",
+          "explanation": "Substitute $x=4$ and $x=-5$ — the roots of the denominator's factors — since each choice makes one of the two terms on the right vanish, isolating $A$ or $B$ directly without solving simultaneous equations. At $x=4$: $11=9A$, so $A=11/9$. At $x=-5$: $-7=-9B$, so $B=7/9$."
         },
         {
-          "q": "Use the decomposition $1/(3x)+8/(3(x-3))$ found earlier in this worksheet for $(3x-1)/(x(x-3))$ to evaluate $\\int_4^5(3x-1)/(x(x-3))\\,dx$, giving your answer as a single logarithm expression.",
+          "q": "Solve the first-order linear differential equation $\\frac{dy}{dx} + \\frac{2}{x}y = 4x$ for $x > 0$, given the initial condition $y(1) = 2$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Decomposing a fraction with a repeated quadratic-adjacent structure",
+          "target": "Distinct linear factors",
           "cross_lesson": "2.01 Modulus Functions & the Factor/Remainder Theorem",
-          "answer": "$\\int(3x-1)/(x(x-3))\\,dx=1/3\\ln|x|+8/3\\ln|x-3|+C$. Evaluating from $4$ to $5$: $[1/3\\ln5+8/3\\ln2]-[1/3\\ln4+8/3\\ln1]=1/3\\ln5+8/3\\ln2-1/3\\ln4=1/3\\ln(5/4)+8/3\\ln2$.",
-          "explanation": "$\\int(3x-1)/(x(x-3))\\,dx=1/3\\ln|x|+8/3\\ln|x-3|+C$. Evaluating from $4$ to $5$: $[1/3\\ln5+8/3\\ln2]-[1/3\\ln4+8/3\\ln1]=1/3\\ln5+8/3\\ln2-1/3\\ln4=1/3\\ln(5/4)+8/3\\ln2$."
+          "answer": "1. Identify $P(x) = \\frac{2}{x}$ and $Q(x) = 4x$. 2. Calculate the integrating factor $\\mu(x)$: $\\mu(x) = \\exp\\left( \\int \\frac{2}{x}\\,dx \\right) = e^{2\\ln x} = e^{\\ln(x^2)} = x^2.$ 3. Multiply through by $x^2$: $x^2\\frac{dy}{dx} + 2x y = 4x^3 \\Rightarrow \\frac{d}{dx}[x^2 y] = 4x^3.$ 4. Integrate both sides: $x^2 y = \\int 4x^3\\,dx = x^4 + C.$ 5. Apply $y(1) = 2$: $(1)^2(2) = 1^4 + C \\Rightarrow 2 = 1 + C \\Rightarrow C = 1.$ 6. Explicit solution: $y = \\frac{x^4 + 1}{x^2} = x^2 + \\frac{1}{x^2}.$",
+          "explanation": "1. Identify $P(x) = \\frac{2}{x}$ and $Q(x) = 4x$. 2. Calculate the integrating factor $\\mu(x)$: $\\mu(x) = \\exp\\left( \\int \\frac{2}{x}\\,dx \\right) = e^{2\\ln x} = e^{\\ln(x^2)} = x^2.$ 3. Multiply through by $x^2$: $x^2\\frac{dy}{dx} + 2x y = 4x^3 \\Rightarrow \\frac{d}{dx}[x^2 y] = 4x^3.$ 4. Integrate both sides: $x^2 y = \\int 4x^3\\,dx = x^4 + C.$ 5. Apply $y(1) = 2$: $(1)^2(2) = 1^4 + C \\Rightarrow 2 = 1 + C \\Rightarrow C = 1.$ 6. Explicit solution: $y = \\frac{x^4 + 1}{x^2} = x^2 + \\frac{1}{x^2}.$"
         },
         {
-          "q": "This question has three parts. (a) Factor $x^2-4$ and hence express $(x+8)/(x^2-4)$ in partial fractions. (b) Use your result from part (a) to write down $\\int(x+8)/(x^2-4)\\,dx$. (c) Hence evaluate $\\int_3^5(x+8)/(x^2-4)\\,dx$, giving your answer as a single expression involving natural logarithms.",
+          "q": "Solve the second-order homogeneous linear differential equation $y'' - 5y' + 6y = 0$ satisfying initial conditions $y(0) = 1$ and $y'(0) = 3$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Decomposing a fraction with a repeated quadratic-adjacent structure",
+          "target": "Repeated linear factors",
           "cross_lesson": "3.01 3D Vectors & the Cross Product",
-          "answer": "(a) Factor $x^2-4=(x-2)(x+2)$, so $(x+8)/((x-2)(x+2))=A/(x-2)+B/(x+2)$. Then $x+8=A(x+2)+B(x-2)$. At $x=2$: $10=4A$, so $A=5/2$. At $x=-2$: $6=-4B$, so $B=-3/2$. Result: $5/2/(x-2)-3/2/(x+2)$. (b) $\\int(x+8)/(x^2-4)\\,dx=5/2\\ln|x-2|-3/2\\ln|x+2|+C$. (c) Evaluating from $3$ to $5$: $[5/2\\ln3-3/2\\ln7]-[5/2\\ln1-3/2\\ln5]=5/2\\ln3-3/2\\ln7+3/2\\ln5$ (since $\\ln1=0$).",
-          "explanation": "(a) Factor $x^2-4=(x-2)(x+2)$, so $(x+8)/((x-2)(x+2))=A/(x-2)+B/(x+2)$. Then $x+8=A(x+2)+B(x-2)$. At $x=2$: $10=4A$, so $A=5/2$. At $x=-2$: $6=-4B$, so $B=-3/2$. Result: $5/2/(x-2)-3/2/(x+2)$. (b) $\\int(x+8)/(x^2-4)\\,dx=5/2\\ln|x-2|-3/2\\ln|x+2|+C$. (c) Evaluating from $3$ to $5$: $[5/2\\ln3-3/2\\ln7]-[5/2\\ln1-3/2\\ln5]=5/2\\ln3-3/2\\ln7+3/2\\ln5$ (since $\\ln1=0$)."
+          "answer": "1. Write the characteristic equation: $m^2 - 5m + 6 = 0 \\Rightarrow (m - 2)(m - 3) = 0 \\Rightarrow m_1 = 2, \\; m_2 = 3.$ 2. General solution: $y(x) = A e^{2x} + B e^{3x}.$ 3. Derivative: $y'(x) = 2A e^{2x} + 3B e^{3x}.$ 4. Apply initial conditions: $y(0) = 1 \\Rightarrow A + B = 1$. $y'(0) = 3 \\Rightarrow 2A + 3B = 3$. Multiply first equation by 2: $2A + 2B = 2$. Subtract from second: $B = 1$. Then $A = 1 - 1 = 0$. Particular Solution: $y(x) = e^{3x}.$",
+          "explanation": "1. Write the characteristic equation: $m^2 - 5m + 6 = 0 \\Rightarrow (m - 2)(m - 3) = 0 \\Rightarrow m_1 = 2, \\; m_2 = 3.$ 2. General solution: $y(x) = A e^{2x} + B e^{3x}.$ 3. Derivative: $y'(x) = 2A e^{2x} + 3B e^{3x}.$ 4. Apply initial conditions: $y(0) = 1 \\Rightarrow A + B = 1$. $y'(0) = 3 \\Rightarrow 2A + 3B = 3$. Multiply first equation by 2: $2A + 2B = 2$. Subtract from second: $B = 1$. Then $A = 1 - 1 = 0$. Particular Solution: $y(x) = e^{3x}.$"
         }
       ]
     },
@@ -281,225 +262,70 @@
           "explanation": "A repeated linear factor $(x-2)^2$ requires two separate terms, $A/(x-2)$ and $B/(x-2)^2$, while the distinct linear factor $(x+1)$ contributes one term, $C/(x+1)$. The second option omits the repeated-factor structure, the third omits the lower-power term, and the fourth incorrectly uses a linear numerator over a repeated linear factor (that form is only needed for irreducible quadratic factors)."
         },
         {
-          "q": "Decompose $\\frac{5x - 1}{(x - 1)(x + 2)}$ into partial fractions $\\frac{A}{x - 1} + \\frac{B}{x + 2}$.",
+          "q": "The rational function $f$ is defined for all real $x otin \\{-1, 2\\}$ by $f(x) = \\frac{x^3 + kx + 7}{(x+1)(x-2)^2}$ where $k$ is a constant. The partial fraction decomposition of $f(x)$ takes the form $A + \\frac{B}{x+1} + \\frac{C}{x-2} + \\frac{D}{(x-2)^2}$ where $A, B, C,$ and $D$ are real constants. Given that $C = 2$, find the value of $k$.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Distinct Linear Factors",
+          "target": "Repeated linear factors",
           "choices": [
-            "$A = \\frac{4}{3}, B = \\frac{11}{3}$",
-            "$A = 4, B = 11$",
-            "$A = 1, B = 4$",
-            "$A = 2, B = 3$"
-          ],
-          "correct": 0,
-          "answer": "Cover-up rule: $A = \\left.\\frac{5x - 1}{x + 2}\\right|_{x=1} = \\frac{4}{3}$. $B = \\left.\\frac{5x - 1}{x - 1}\\right|_{x=-2} = \\frac{-11}{-3} = \\frac{11}{3}$.",
-          "explanation": "Cover-up rule: $A = \\left.\\frac{5x - 1}{x + 2}\\right|_{x=1} = \\frac{4}{3}$. $B = \\left.\\frac{5x - 1}{x - 1}\\right|_{x=-2} = \\frac{-11}{-3} = \\frac{11}{3}$."
-        },
-        {
-          "q": "Find the partial fraction decomposition of $\\frac{1}{x^2 - 9}$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Distinct Linear Factors",
-          "choices": [
-            "$\\frac{1/6}{x - 3} - \\frac{1/6}{x + 3}$",
-            "$\\frac{1/3}{x - 3} + \\frac{1/3}{x + 3}$",
-            "$\\frac{1}{x - 3} - \\frac{1}{x + 3}$",
-            "$\\frac{1/6}{x - 3} + \\frac{1/6}{x + 3}$"
-          ],
-          "correct": 0,
-          "answer": "$\\frac{1}{(x - 3)(x + 3)} = \\frac{A}{x - 3} + \\frac{B}{x + 3}$. $A = \\left.\\frac{1}{x+3}\\right|_{x=3} = \\frac{1}{6}$. $B = \\left.\\frac{1}{x-3}\\right|_{x=-3} = -\\frac{1}{6}$.",
-          "explanation": "$\\frac{1}{(x - 3)(x + 3)} = \\frac{A}{x - 3} + \\frac{B}{x + 3}$. $A = \\left.\\frac{1}{x+3}\\right|_{x=3} = \\frac{1}{6}$. $B = \\left.\\frac{1}{x-3}\\right|_{x=-3} = -\\frac{1}{6}$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (0))**2 + (-2)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 0.0,
-                "y": -2.0,
-                "label": "$(0,-2)$"
-              }
-            ],
-            "width": 230
-          }
-        },
-        {
-          "q": "Evaluate $\\int \\frac{3}{(x + 1)(x + 4)} dx$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Distinct Linear Factors",
-          "choices": [
-            "$\\ln\\left|\\frac{x + 1}{x + 4}\\right| + C$",
-            "$3\\ln|x + 1| + 3\\ln|x + 4| + C$",
-            "$\\frac{1}{3}\\ln\\left|\\frac{x + 1}{x + 4}\\right| + C$",
-            "$\\ln|(x+1)(x+4)| + C$"
-          ],
-          "correct": 0,
-          "answer": "Decompose: $\\frac{3}{(x+1)(x+4)} = \\frac{1}{x+1} - \\frac{1}{x+4}$. Integrating: $\\ln|x+1| - \\ln|x+4| + C = \\ln|\\frac{x+1}{x+4}| + C$.",
-          "explanation": "Decompose: $\\frac{3}{(x+1)(x+4)} = \\frac{1}{x+1} - \\frac{1}{x+4}$. Integrating: $\\ln|x+1| - \\ln|x+4| + C = \\ln|\\frac{x+1}{x+4}| + C$."
-        },
-        {
-          "q": "What is the correct template for decomposing $\\frac{2x + 7}{(x - 2)^2(x + 1)}$?",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Repeated Linear Factors",
-          "choices": [
-            "$\\frac{A}{x - 2} + \\frac{B}{(x - 2)^2} + \\frac{C}{x + 1}$",
-            "$\\frac{A}{x - 2} + \\frac{B}{x + 1}$",
-            "$\\frac{Ax + B}{(x - 2)^2} + \\frac{C}{x + 1}$",
-            "$\\frac{A}{(x - 2)^2} + \\frac{B}{x + 1}$"
-          ],
-          "correct": 0,
-          "answer": "A repeated linear factor $(x - c)^2$ requires terms for each ascending power: $\\frac{A}{x - c} + \\frac{B}{(x - c)^2}$, plus terms for any distinct factors.",
-          "explanation": "A repeated linear factor $(x - c)^2$ requires terms for each ascending power: $\\frac{A}{x - c} + \\frac{B}{(x - c)^2}$, plus terms for any distinct factors."
-        },
-        {
-          "q": "In $\\frac{3x^2 + 1}{(x - 1)^2} = A + \\frac{B}{x - 1} + \\frac{C}{(x - 1)^2}$, find $C$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Repeated Linear Factors",
-          "choices": [
-            "$4$",
-            "$3$",
+            "$-3$",
             "$1$",
-            "$0$"
+            "$3$",
+            "$24$"
           ],
           "correct": 0,
-          "answer": "Multiply through by $(x - 1)^2$: $3x^2 + 1 = A(x - 1)^2 + B(x - 1) + C$. Setting $x = 1$ yields $3(1)^2 + 1 = C \\Rightarrow C = 4$.",
-          "explanation": "Multiply through by $(x - 1)^2$: $3x^2 + 1 = A(x - 1)^2 + B(x - 1) + C$. Setting $x = 1$ yields $3(1)^2 + 1 = C \\Rightarrow C = 4$."
+          "answer": "Step 1: Determine the polynomial quotient $A$. The degree of the numerator is $3$ and the degree of the denominator is $1 + 2 = 3$. Expanding the denominator gives: $(x+1)(x-2)^2 = (x+1)(x^2 - 4x + 4) = x^3 - 3x^2 + 4$ Since the leading coefficient of both the numerator and the denominator is $1$, polynomial division yields a constant quotient: $A = \\frac{1}{1} = 1$ Step 2: Set up the algebraic identity. Multiplying both sides of the partial fraction expansion by $(x+1)(x-2)^2$: $x^3 + kx + 7 \\equiv A(x+1)(x-2)^2 + B(x-2)^2 + C(x+1)(x-2) + D(x+1)$ Step 3: Relate $B$ and $C$ by comparing coefficients of $x^2$. On the left-hand side, the coefficient of $x^2$ is $0$. On the right-hand side, collecting the $x^2$ terms: - $A(x+1)(x-2)^2 = A(x^3 - 3x^2 + 4) \\Rightarrow -3A$ - $B(x-2)^2 = B(x^2 - 4x + 4) \\Rightarrow +B$ - $C(x+1)(x-2) = C(x^2 - x - 2) \\Rightarrow +C$ - $D(x+1) \\Rightarrow 0$ Therefore: $0 = -3A + B + C$ Substitute $A = 1$ and the given value $C = 2$: $-3(1) + B + 2 = 0 \\Rightarrow B = 1$ Step 4: Solve for $k$ by substituting $x = -1$. Setting $x = -1$ eliminates the terms containing $(x+1)$: $(-1)^3 + k(-1) + 7 = B(-1 - 2)^2$ $-1 - k + 7 = B(-3)^2$ $6 - k = 9B$ Since $B = 1$: $6 - k = 9 \\Rightarrow k = -3$ Common Algebraic Traps: - $k = 24$: Omits the quotient $A$ (treating an improper fraction as proper), giving $B + C = 0 \\Rightarrow B = -2$, leading to $6 - k = -18 \\Rightarrow k = 24$. - $k = 1$: Substitutes $x = 1$ instead of the root $x = -1$, obtaining $1 + k + 7 = 9 \\Rightarrow k = 1$. - $k = 3$: Makes a sign error when rearranging $6 - k = 9$.",
+          "explanation": "Step 1: Determine the polynomial quotient $A$. The degree of the numerator is $3$ and the degree of the denominator is $1 + 2 = 3$. Expanding the denominator gives: $(x+1)(x-2)^2 = (x+1)(x^2 - 4x + 4) = x^3 - 3x^2 + 4$ Since the leading coefficient of both the numerator and the denominator is $1$, polynomial division yields a constant quotient: $A = \\frac{1}{1} = 1$ Step 2: Set up the algebraic identity. Multiplying both sides of the partial fraction expansion by $(x+1)(x-2)^2$: $x^3 + kx + 7 \\equiv A(x+1)(x-2)^2 + B(x-2)^2 + C(x+1)(x-2) + D(x+1)$ Step 3: Relate $B$ and $C$ by comparing coefficients of $x^2$. On the left-hand side, the coefficient of $x^2$ is $0$. On the right-hand side, collecting the $x^2$ terms: - $A(x+1)(x-2)^2 = A(x^3 - 3x^2 + 4) \\Rightarrow -3A$ - $B(x-2)^2 = B(x^2 - 4x + 4) \\Rightarrow +B$ - $C(x+1)(x-2) = C(x^2 - x - 2) \\Rightarrow +C$ - $D(x+1) \\Rightarrow 0$ Therefore: $0 = -3A + B + C$ Substitute $A = 1$ and the given value $C = 2$: $-3(1) + B + 2 = 0 \\Rightarrow B = 1$ Step 4: Solve for $k$ by substituting $x = -1$. Setting $x = -1$ eliminates the terms containing $(x+1)$: $(-1)^3 + k(-1) + 7 = B(-1 - 2)^2$ $-1 - k + 7 = B(-3)^2$ $6 - k = 9B$ Since $B = 1$: $6 - k = 9 \\Rightarrow k = -3$ Common Algebraic Traps: - $k = 24$: Omits the quotient $A$ (treating an improper fraction as proper), giving $B + C = 0 \\Rightarrow B = -2$, leading to $6 - k = -18 \\Rightarrow k = 24$. - $k = 1$: Substitutes $x = 1$ instead of the root $x = -1$, obtaining $1 + k + 7 = 9 \\Rightarrow k = 1$. - $k = 3$: Makes a sign error when rearranging $6 - k = 9$."
         },
         {
-          "q": "Decompose $\\frac{x}{(x + 1)^2}$.",
+          "q": "Repeated linear factor in partial fractions: $\\frac{1}{(x-1)^2}=\\frac{A}{x-1}+\\frac{B}{(x-1)^2}$. Decompose $\\frac{x}{(x-1)^2}$:",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Repeated Linear Factors",
+          "target": "Irreducible quadratic factors",
           "choices": [
-            "$\\frac{1}{x + 1} - \\frac{1}{(x + 1)^2}$",
-            "$\\frac{1}{x + 1} + \\frac{1}{(x + 1)^2}$",
-            "$\\frac{x}{x + 1} - \\frac{1}{(x + 1)^2}$",
-            "$\\frac{2}{x + 1} - \\frac{1}{(x + 1)^2}$"
+            "$\\frac{1}{x-1}+\\frac{1}{(x-1)^2}$",
+            "$\\frac{x}{(x-1)^2}$",
+            "$\\frac{1}{x-1}$",
+            "$\\frac{2}{(x-1)^2}$"
           ],
           "correct": 0,
-          "answer": "Rewrite numerator: $x = (x + 1) - 1$. Then $\\frac{(x + 1) - 1}{(x + 1)^2} = \\frac{1}{x + 1} - \\frac{1}{(x + 1)^2}$.",
-          "explanation": "Rewrite numerator: $x = (x + 1) - 1$. Then $\\frac{(x + 1) - 1}{(x + 1)^2} = \\frac{1}{x + 1} - \\frac{1}{(x + 1)^2}$."
+          "answer": "Applying Techniques of Integration principles, $x=(x-1)+1\\Rightarrow A=1,B=1$. Therefore, the verified correct option is $\\frac{1}{x-1}+\\frac{1}{(x-1)^2}$.",
+          "explanation": "Applying Techniques of Integration principles, $x=(x-1)+1\\Rightarrow A=1,B=1$. Therefore, the verified correct option is $\\frac{1}{x-1}+\\frac{1}{(x-1)^2}$."
         },
         {
-          "q": "What partial fraction form should be set up for $\\frac{4x^2 + 2x + 5}{(x - 3)(x^2 + 4)}$?",
+          "q": "The rational function $f$ is defined by $f(x) = \\frac{2x^4 - 3x^3 + kx^2 - 8x + 3}{(x - 2)(x^2 + 1)},$ where $k$ is a real constant. Given that the series expansion of $f(x)$ in ascending powers of $x$, valid for sufficiently small $|x|$, has no term in $x^2$, find the value of $k$.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Irreducible Quadratic Factors",
+          "target": "Applying partial fractions to integration",
           "choices": [
-            "$\\frac{A}{x - 3} + \\frac{Bx + C}{x^2 + 4}$",
-            "$\\frac{A}{x - 3} + \\frac{B}{x^2 + 4}$",
-            "$\\frac{A}{x - 3} + \\frac{B}{x + 2} + \\frac{C}{x - 2}$",
-            "$\\frac{Ax + B}{x - 3} + \\frac{Cx + D}{x^2 + 4}$"
+            "$\\frac{25}{4}$",
+            "$\\frac{17}{4}$",
+            "$-\\frac{25}{4}$",
+            "$\\frac{115}{12}$"
           ],
           "correct": 0,
-          "answer": "An irreducible real quadratic factor $(x^2 + a^2)$ requires a linear numerator $(Bx + C)$ over the quadratic denominator.",
-          "explanation": "An irreducible real quadratic factor $(x^2 + a^2)$ requires a linear numerator $(Bx + C)$ over the quadratic denominator.",
-          "figure": {
-            "type": "venn",
-            "u_label": "$U$",
-            "label_a": "$A$",
-            "label_b": "$B$",
-            "only_a": 2,
-            "both": 5,
-            "only_b": 3,
-            "neither": 2,
-            "width": 225
-          }
-        }
-      ]
-    },
-    {
-      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
-      "questions": [
-        {
-          "q": "In the decomposition $\\frac{x^2 + 1}{(x - 2)(x^2 + 1)} = \\frac{A}{x - 2} + \\frac{Bx + C}{x^2 + 1}$, find $A$.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Irreducible Quadratic Factors",
-          "choices": [
-            "$\\frac{5}{5} = 1$",
-            "$0$",
-            "$2$",
-            "$-1$"
-          ],
-          "correct": 0,
-          "answer": "Notice $\\frac{x^2 + 1}{(x - 2)(x^2 + 1)} = \\frac{1}{x - 2}$. Thus $A = 1$ and $B = C = 0$.",
-          "explanation": "Notice $\\frac{x^2 + 1}{(x - 2)(x^2 + 1)} = \\frac{1}{x - 2}$. Thus $A = 1$ and $B = C = 0$."
+          "answer": "To find the series expansion of $f(x)$, we first decompose $f(x)$ into partial fractions. **Step 1: Algebraic Division** The degree of the numerator is $4$ and the degree of the denominator is $1 + 2 = 3$. Because the numerator has a higher degree than the denominator, $f(x)$ is an improper algebraic fraction and polynomial division must be carried out first. Expanding the denominator: $(x - 2)(x^2 + 1) = x^3 - 2x^2 + x - 2.$ Dividing $2x^4 - 3x^3 + kx^2 - 8x + 3$ by $x^3 - 2x^2 + x - 2$: $2x(x^3 - 2x^2 + x - 2) = 2x^4 - 4x^3 + 2x^2 - 4x.$ Subtracting this gives: $(2x^4 - 3x^3 + kx^2 - 8x + 3) - (2x^4 - 4x^3 + 2x^2 - 4x) = x^3 + (k - 2)x^2 - 4x + 3.$ Next, dividing the leading term: $1(x^3 - 2x^2 + x - 2) = x^3 - 2x^2 + x - 2.$ Subtracting this gives the remainder: $[x^3 + (k - 2)x^2 - 4x + 3] - [x^3 - 2x^2 + x - 2] = kx^2 - 5x + 5.$ Hence, the quotient is $2x + 1$, and the fraction can be written as: $f(x) = 2x + 1 + \\frac{kx^2 - 5x + 5}{(x - 2)(x^2 + 1)}.$ **Step 2: Partial Fractions** Express the remainder over the denominator in partial fractions: $\\frac{kx^2 - 5x + 5}{(x - 2)(x^2 + 1)} = \\frac{A}{x - 2} + \\frac{Bx + C}{x^2 + 1}.$ Multiplying through by $(x - 2)(x^2 + 1)$: $kx^2 - 5x + 5 = A(x^2 + 1) + (Bx + C)(x - 2).$ - Substitute $x = 2$: $4k - 10 + 5 = A(4 + 1) \\Rightarrow 4k - 5 = 5A \\Rightarrow A = \\frac{4k - 5}{5}.$ - Substitute $x = 0$: $5 = A(1) + C(-2) \\Rightarrow 2C = A - 5 = \\frac{4k - 5}{5} - 5 = \\frac{4k - 30}{5} \\Rightarrow C = \\frac{2k - 15}{5}.$ - Equating coefficients of $x^2$: $k = A + B \\Rightarrow B = k - \\frac{4k - 5}{5} = \\frac{k + 5}{5}.$ **Step 3: Binomial Series Expansion** We expand each component for small $|x|$: 1. The polynomial part $2x + 1$ has degree 1 and contributes $0$ to the coefficient of $x^2$. 2. For the term $\\frac{A}{x - 2}$: $\\frac{A}{x - 2} = -\\frac{A}{2}\\left(1 - \\frac{x}{2}\\right)^{-1} = -\\frac{A}{2}\\left(1 + \\frac{x}{2} + \\frac{x^2}{4} + \\dots\\right).$ The coefficient of $x^2$ from this term is: $-\\frac{A}{2} \\cdot \\frac{1}{4} = -\\frac{A}{8} = -\\frac{4k - 5}{40}.$ 3. For the term $\\frac{Bx + C}{x^2 + 1}$: $\\frac{Bx + C}{x^2 + 1} = (Bx + C)(1 + x^2)^{-1} = (Bx + C)(1 - x^2 + x^4 - \\dots).$ The $x^2$ term comes from $C(-x^2) = -C x^2$. Its coefficient is: $-C = -\\frac{2k - 15}{5} = \\frac{15 - 2k}{5} = \\frac{120 - 16k}{40}.$ **Step 4: Setting the Total $x^2$ Coefficient to Zero** Combining the contributions to the $x^2$ term: $c_2 = -\\frac{4k - 5}{40} + \\frac{120 - 16k}{40} = \\frac{125 - 20k}{40} = \\frac{25 - 4k}{8}.$ Since the expansion has no term in $x^2$: $\\frac{25 - 4k}{8} = 0 \\Rightarrow 4k = 25 \\Rightarrow k = \\frac{25}{4}.$ **Common Misconceptions:** - **Choice B ($\\frac{17}{4}$):** Occurs if algebraic division is omitted and the improper fraction is decomposed directly as $\\frac{A}{x-2} + \\frac{Bx+C}{x^2+1}$, yielding $C = \\frac{2k-10}{5}$ and $k = \\frac{17}{4}$. - **Choice C ($-\\frac{25}{4}$):** Results from an overall sign error when expanding $(x - 2)^{-1}$ or in solving $25 - 4k = 0$. - **Choice D ($\\frac{115}{12}$):** Results from a sign error in expanding $(1 + x^2)^{-1}$ as $1 + x^2$ rather than $1 - x^2$.",
+          "explanation": "To find the series expansion of $f(x)$, we first decompose $f(x)$ into partial fractions. **Step 1: Algebraic Division** The degree of the numerator is $4$ and the degree of the denominator is $1 + 2 = 3$. Because the numerator has a higher degree than the denominator, $f(x)$ is an improper algebraic fraction and polynomial division must be carried out first. Expanding the denominator: $(x - 2)(x^2 + 1) = x^3 - 2x^2 + x - 2.$ Dividing $2x^4 - 3x^3 + kx^2 - 8x + 3$ by $x^3 - 2x^2 + x - 2$: $2x(x^3 - 2x^2 + x - 2) = 2x^4 - 4x^3 + 2x^2 - 4x.$ Subtracting this gives: $(2x^4 - 3x^3 + kx^2 - 8x + 3) - (2x^4 - 4x^3 + 2x^2 - 4x) = x^3 + (k - 2)x^2 - 4x + 3.$ Next, dividing the leading term: $1(x^3 - 2x^2 + x - 2) = x^3 - 2x^2 + x - 2.$ Subtracting this gives the remainder: $[x^3 + (k - 2)x^2 - 4x + 3] - [x^3 - 2x^2 + x - 2] = kx^2 - 5x + 5.$ Hence, the quotient is $2x + 1$, and the fraction can be written as: $f(x) = 2x + 1 + \\frac{kx^2 - 5x + 5}{(x - 2)(x^2 + 1)}.$ **Step 2: Partial Fractions** Express the remainder over the denominator in partial fractions: $\\frac{kx^2 - 5x + 5}{(x - 2)(x^2 + 1)} = \\frac{A}{x - 2} + \\frac{Bx + C}{x^2 + 1}.$ Multiplying through by $(x - 2)(x^2 + 1)$: $kx^2 - 5x + 5 = A(x^2 + 1) + (Bx + C)(x - 2).$ - Substitute $x = 2$: $4k - 10 + 5 = A(4 + 1) \\Rightarrow 4k - 5 = 5A \\Rightarrow A = \\frac{4k - 5}{5}.$ - Substitute $x = 0$: $5 = A(1) + C(-2) \\Rightarrow 2C = A - 5 = \\frac{4k - 5}{5} - 5 = \\frac{4k - 30}{5} \\Rightarrow C = \\frac{2k - 15}{5}.$ - Equating coefficients of $x^2$: $k = A + B \\Rightarrow B = k - \\frac{4k - 5}{5} = \\frac{k + 5}{5}.$ **Step 3: Binomial Series Expansion** We expand each component for small $|x|$: 1. The polynomial part $2x + 1$ has degree 1 and contributes $0$ to the coefficient of $x^2$. 2. For the term $\\frac{A}{x - 2}$: $\\frac{A}{x - 2} = -\\frac{A}{2}\\left(1 - \\frac{x}{2}\\right)^{-1} = -\\frac{A}{2}\\left(1 + \\frac{x}{2} + \\frac{x^2}{4} + \\dots\\right).$ The coefficient of $x^2$ from this term is: $-\\frac{A}{2} \\cdot \\frac{1}{4} = -\\frac{A}{8} = -\\frac{4k - 5}{40}.$ 3. For the term $\\frac{Bx + C}{x^2 + 1}$: $\\frac{Bx + C}{x^2 + 1} = (Bx + C)(1 + x^2)^{-1} = (Bx + C)(1 - x^2 + x^4 - \\dots).$ The $x^2$ term comes from $C(-x^2) = -C x^2$. Its coefficient is: $-C = -\\frac{2k - 15}{5} = \\frac{15 - 2k}{5} = \\frac{120 - 16k}{40}.$ **Step 4: Setting the Total $x^2$ Coefficient to Zero** Combining the contributions to the $x^2$ term: $c_2 = -\\frac{4k - 5}{40} + \\frac{120 - 16k}{40} = \\frac{125 - 20k}{40} = \\frac{25 - 4k}{8}.$ Since the expansion has no term in $x^2$: $\\frac{25 - 4k}{8} = 0 \\Rightarrow 4k = 25 \\Rightarrow k = \\frac{25}{4}.$ **Common Misconceptions:** - **Choice B ($\\frac{17}{4}$):** Occurs if algebraic division is omitted and the improper fraction is decomposed directly as $\\frac{A}{x-2} + \\frac{Bx+C}{x^2+1}$, yielding $C = \\frac{2k-10}{5}$ and $k = \\frac{17}{4}$. - **Choice C ($-\\frac{25}{4}$):** Results from an overall sign error when expanding $(x - 2)^{-1}$ or in solving $25 - 4k = 0$. - **Choice D ($\\frac{115}{12}$):** Results from a sign error in expanding $(1 + x^2)^{-1}$ as $1 + x^2$ rather than $1 - x^2$."
         },
         {
-          "q": "Evaluate $\\int \\frac{2x + 3}{x^2 + 9} dx$.",
-          "difficulty": "Intermediate",
+          "q": "The first three terms of the binomial expansion of $(1+kx)^n$ are $1 + 6x + 12x^2$. Find the value of $k$.",
+          "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Irreducible Quadratic Factors",
+          "target": "Applying partial fractions to a binomial series expansion",
           "choices": [
-            "$\\ln(x^2 + 9) + \\arctan\\left(\\frac{x}{3}\\right) + C$",
-            "$\\ln(x^2 + 9) + 3\\arctan(x) + C$",
-            "$\\frac{1}{2}\\ln(x^2 + 9) + \\frac{1}{3}\\arctan(x/3) + C$",
-            "$2\\ln(x^2 + 9) + C$"
+            "2",
+            "-2",
+            "3",
+            "-3"
           ],
           "correct": 0,
-          "answer": "Split into two integrals: $\\int \\frac{2x}{x^2 + 9} dx + \\int \\frac{3}{x^2 + 9} dx = \\ln(x^2 + 9) + 3 \\cdot \\frac{1}{3}\\arctan\\left(\\frac{x}{3}\\right) + C = \\ln(x^2 + 9) + \\arctan\\left(\\frac{x}{3}\\right) + C$.",
-          "explanation": "Split into two integrals: $\\int \\frac{2x}{x^2 + 9} dx + \\int \\frac{3}{x^2 + 9} dx = \\ln(x^2 + 9) + 3 \\cdot \\frac{1}{3}\\arctan\\left(\\frac{x}{3}\\right) + C = \\ln(x^2 + 9) + \\arctan\\left(\\frac{x}{3}\\right) + C$."
-        },
-        {
-          "q": "Before performing partial fractions on $\\frac{x^3 + 2x^2 + 1}{x^2 - 1}$, what preliminary algebraic step is mandatory?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Improper Rational Fractions (Long Division First)",
-          "choices": [
-            "Polynomial long division to separate into polynomial quotient plus proper remainder",
-            "Factoring the numerator completely",
-            "Applying the cover-up method directly",
-            "Multiplying numerator and denominator by $x$"
-          ],
-          "correct": 0,
-          "answer": "Because the degree of the numerator (3) is greater than or equal to the degree of the denominator (2), long division is required first.",
-          "explanation": "Because the degree of the numerator (3) is greater than or equal to the degree of the denominator (2), long division is required first."
-        },
-        {
-          "q": "Perform polynomial long division on $\\frac{x^3 + 2x^2 + 1}{x^2 - 1}$. What is the quotient?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Improper Rational Fractions (Long Division First)",
-          "choices": [
-            "$x + 2$",
-            "$x - 2$",
-            "$x^2 + 2$",
-            "$x$"
-          ],
-          "correct": 0,
-          "answer": "$x(x^2 - 1) = x^3 - x$. Subtract: $2x^2 + x + 1$. Next term: $2(x^2 - 1) = 2x^2 - 2$. Subtract: $x + 3$. The quotient is $x + 2$ with remainder $x + 3$.",
-          "explanation": "$x(x^2 - 1) = x^3 - x$. Subtract: $2x^2 + x + 1$. Next term: $2(x^2 - 1) = 2x^2 - 2$. Subtract: $x + 3$. The quotient is $x + 2$ with remainder $x + 3$."
-        },
-        {
-          "q": "Decompose the remainder term $\\frac{x + 3}{x^2 - 1} = \\frac{x + 3}{(x - 1)(x + 1)}$.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Improper Rational Fractions (Long Division First)",
-          "choices": [
-            "$\\frac{2}{x - 1} - \\frac{1}{x + 1}$",
-            "$\\frac{1}{x - 1} + \\frac{2}{x + 1}$",
-            "$\\frac{3}{x - 1} - \\frac{2}{x + 1}$",
-            "$\\frac{1}{x - 1} - \\frac{1}{x + 1}$"
-          ],
-          "correct": 0,
-          "answer": "$A = \\left.\\frac{x+3}{x+1}\\right|_{x=1} = \\frac{4}{2} = 2$. $B = \\left.\\frac{x+3}{x-1}\\right|_{x=-1} = \\frac{2}{-2} = -1$. Thus $\\frac{2}{x-1} - \\frac{1}{x+1}$.",
-          "explanation": "$A = \\left.\\frac{x+3}{x+1}\\right|_{x=1} = \\frac{4}{2} = 2$. $B = \\left.\\frac{x+3}{x-1}\\right|_{x=-1} = \\frac{2}{-2} = -1$. Thus $\\frac{2}{x-1} - \\frac{1}{x+1}$."
+          "answer": "The binomial expansion of $(1+x)^n$ is given by $1 + nx + \\frac{n(n-1)}{2!}x^2 + \\dots$. For the given expansion $(1+kx)^n$, we can substitute $y = kx$ to get $(1+y)^n$. The first three terms of the expansion are $1 + ny + \\frac{n(n-1)}{2!}y^2 + \\dots$. Substituting $y=kx$ back, we have: $1 + n(kx) + \\frac{n(n-1)}{2!}(kx)^2 + \\dots$ $1 + nkx + \\frac{n(n-1)}{2!}k^2x^2 + \\dots$ We are given that the first three terms are $1 + 6x + 12x^2$. Comparing the coefficients: 1. Coefficient of $x$: $nk = 6$ 2. Coefficient of $x^2$: $\\frac{n(n-1)}{2}k^2 = 12$ From equation (1), $n = \\frac{6}{k}$. Substitute this into equation (2): $\\frac{\\frac{6}{k}(\\frac{6}{k}-1)}{2}k^2 = 12$ $\\frac{6k^2}{2k}(\\frac{6-k}{k}) = 12$ $3k(\\frac{6-k}{k}) = 12$ $3(6-k) = 12$ $18 - 3k = 12$ $3k = 18 - 12$ $3k = 6$ $k = 2$ With $k=2$, we can find $n$: $n = \\frac{6}{2} = 3$. Let's check this with the $x^2$ coefficient: $\\frac{3(3-1)}{2}(2^2) = \\frac{3 \\times 2}{2} \\times 4 = 3 \\times 4 = 12$, which matches the given expansion.",
+          "explanation": "The binomial expansion of $(1+x)^n$ is given by $1 + nx + \\frac{n(n-1)}{2!}x^2 + \\dots$. For the given expansion $(1+kx)^n$, we can substitute $y = kx$ to get $(1+y)^n$. The first three terms of the expansion are $1 + ny + \\frac{n(n-1)}{2!}y^2 + \\dots$. Substituting $y=kx$ back, we have: $1 + n(kx) + \\frac{n(n-1)}{2!}(kx)^2 + \\dots$ $1 + nkx + \\frac{n(n-1)}{2!}k^2x^2 + \\dots$ We are given that the first three terms are $1 + 6x + 12x^2$. Comparing the coefficients: 1. Coefficient of $x$: $nk = 6$ 2. Coefficient of $x^2$: $\\frac{n(n-1)}{2}k^2 = 12$ From equation (1), $n = \\frac{6}{k}$. Substitute this into equation (2): $\\frac{\\frac{6}{k}(\\frac{6}{k}-1)}{2}k^2 = 12$ $\\frac{6k^2}{2k}(\\frac{6-k}{k}) = 12$ $3k(\\frac{6-k}{k}) = 12$ $3(6-k) = 12$ $18 - 3k = 12$ $3k = 18 - 12$ $3k = 6$ $k = 2$ With $k=2$, we can find $n$: $n = \\frac{6}{2} = 3$. Let's check this with the $x^2$ coefficient: $\\frac{3(3-1)}{2}(2^2) = \\frac{3 \\times 2}{2} \\times 4 = 3 \\times 4 = 12$, which matches the given expansion."
         },
         {
           "q": "Consider the quadratic function $f(x) = x^2 - 4x + 3$ and the linear function $g(x) = x - 1$. The points of intersection are given by their solutions. What is the y-coordinate of the point of intersection where x = 1?",
-          "difficulty": "Intermediate",
+          "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Solving a separable differential equation using partial fractions",
+          "target": "Combining terms before decomposing",
           "choices": [
             "0",
             "1",
@@ -519,55 +345,14 @@
             "xmax": 6.0,
             "ymin": -3.0,
             "ymax": 6.0,
-            "points": [],
-            "point_labels": [],
-            "width": 230
-          }
-        },
-        {
-          "q": "The graph of the quadratic function $f(x) = x^2 - 4x + 3$ is shown below. The graph intersects the x-axis at points where $f(x) = 0$. Determine the sum of the x-coordinates of these intersection points.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Explaining when polynomial division is required",
-          "choices": [
-            "1",
-            "3",
-            "4",
-            "-3"
-          ],
-          "correct": 2,
-          "answer": "The x-intercepts of the graph of $y = f(x)$ are the roots of the equation $f(x) = 0$. For a quadratic equation of the form $ax^2 + bx + c = 0$, the sum of the roots is given by $-\\frac{b}{a}$. In this case, $f(x) = x^2 - 4x + 3$, so $a = 1$, $b = -4$, and $c = 3$. The sum of the x-coordinates of the intersection points is $-\\frac{-4}{1} = 4$.",
-          "explanation": "The x-intercepts of the graph of $y = f(x)$ are the roots of the equation $f(x) = 0$. For a quadratic equation of the form $ax^2 + bx + c = 0$, the sum of the roots is given by $-\\frac{b}{a}$. In this case, $f(x) = x^2 - 4x + 3$, so $a = 1$, $b = -4$, and $c = 3$. The sum of the x-coordinates of the intersection points is $-\\frac{-4}{1} = 4$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "x*x - 4*x + 3"
-            ],
-            "xmin": -1.0,
-            "xmax": 5.0,
-            "ymin": -2.0,
-            "ymax": 4.0,
-            "points": [],
-            "point_labels": [
-              {
-                "x": 1.0,
-                "y": 0.0,
-                "label": "(1, 0)"
-              },
-              {
-                "x": 3.0,
-                "y": 0.0,
-                "label": "(3, 0)"
-              }
-            ],
             "width": 230
           }
         },
         {
           "q": "The graph of the quadratic function $f(x) = x^2 - 5x + 6$ is shown below. The graph intersects the x-axis at points A and B. Find the sum of the x-coordinates of points A and B.",
-          "difficulty": "Intermediate",
+          "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Repeated irreducible quadratic factor",
+          "target": "Applying partial fractions to a rate problem",
           "choices": [
             "5",
             "-5",
@@ -586,7 +371,7 @@
             "xmax": 6.0,
             "ymin": -3.0,
             "ymax": 4.0,
-            "points": [],
+            "width": 230,
             "point_labels": [
               {
                 "x": 2.0,
@@ -598,15 +383,79 @@
                 "y": 0.0,
                 "label": "B"
               }
-            ],
-            "width": 230
+            ]
           }
+        },
+        {
+          "q": "Generalised binomial: $\\sqrt{1-x}=\\sum_{n=0}^\\infty\\binom{1/2}{n}(-1)^n x^n$. First three terms:",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Partial fractions with three distinct linear factors",
+          "choices": [
+            "$1-x-x^2$",
+            "$1+x/2-x^2/8$",
+            "$1-x/2-x^2/8$",
+            "$1-x/2$"
+          ],
+          "correct": 2,
+          "answer": "Applying Convergence Tests and Power Series principles, $1-x/2-x^2/8-\\cdots$ Therefore, the verified correct option is $1-x/2-x^2/8$.",
+          "explanation": "Applying Convergence Tests and Power Series principles, $1-x/2-x^2/8-\\cdots$ Therefore, the verified correct option is $1-x/2-x^2/8$."
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
+        {
+          "q": "Find $\\sum_{n=1}^\\infty\\frac{1}{n(n+2)}$ using partial fractions:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Partial fractions with an improper fraction and repeated factor",
+          "choices": [
+            "$1$",
+            "$1/2$",
+            "$2/3$",
+            "$3/4$"
+          ],
+          "correct": 3,
+          "answer": "$\\frac{1}{n(n+2)}=\\frac{1}{2}(\\frac{1}{n}-\\frac{1}{n+2})$; telescopes to $\\frac{1}{2}(1+1/2)=3/4$.",
+          "explanation": "$\\frac{1}{n(n+2)}=\\frac{1}{2}(\\frac{1}{n}-\\frac{1}{n+2})$; telescopes to $\\frac{1}{2}(1+1/2)=3/4$."
+        },
+        {
+          "q": "Partial fractions: if denominator has irreducible quadratic $x^2+bx+c$, the numerator is:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Using partial fractions to sum a series",
+          "choices": [
+            "$A$",
+            "$A/(x^2+bx+c)$",
+            "$Ax^2+B$",
+            "$Ax+B$"
+          ],
+          "correct": 3,
+          "answer": "Linear numerator $Ax+B$ over irreducible quadratic.",
+          "explanation": "Linear numerator $Ax+B$ over irreducible quadratic."
+        },
+        {
+          "q": "Quadratic factor in partial fractions: $\\frac{1}{x^2+4}$ gives integral:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Decomposing a fraction with a repeated quadratic-adjacent structure",
+          "choices": [
+            "$\\frac{1}{2}\\arctan(x/2)+C$",
+            "$\\arctan x+C$",
+            "$\\ln(x^2+4)+C$",
+            "$1/(2x+4)+C$"
+          ],
+          "correct": 0,
+          "answer": "$\\int1/(x^2+4)dx=\\frac{1}{2}\\arctan(x/2)+C$.",
+          "explanation": "$\\int1/(x^2+4)dx=\\frac{1}{2}\\arctan(x/2)+C$."
         },
         {
           "q": "The diagram shows the graph of the function $y = f(x)$. The equation of the function is given by $f(x) = ax^2 + bx + c$. Given that the vertex of the parabola is at $(-1, 8)$ and the graph passes through the point $(1, 0)$, find the values of $a$ and $b$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Verifying a decomposition by substitution",
+          "target": "Combining partial fractions back into a single fraction",
           "choices": [
             "a = -2, b = -4",
             "a = -2, b = 4",
@@ -616,6 +465,81 @@
           "correct": 0,
           "answer": "The vertex of a parabola given by $f(x) = ax^2 + bx + c$ is at $\\left( -\\frac{b}{2a}, f\\left(-\\frac{b}{2a}\\right) \\right)$. We are given that the vertex is at $(-1, 8)$. Therefore, $-\\frac{b}{2a} = -1$, which implies $b = 2a$. We are also given that the vertex is at $y=8$, so $f(-1) = 8$. Substituting $x = -1$ into the function: $a(-1)^2 + b(-1) + c = 8 \\Rightarrow a - b + c = 8$. Since $b = 2a$, we have $a - 2a + c = 8 \\Rightarrow -a + c = 8$. The graph also passes through the point $(1, 0)$. So, $f(1) = 0$. Substituting $x = 1$ into the function: $a(1)^2 + b(1) + c = 0 \\Rightarrow a + b + c = 0$. Now we have a system of equations: 1) $b = 2a$ 2) $-a + c = 8$ 3) $a + b + c = 0$ Substitute (1) into (3): $a + 2a + c = 0 \\Rightarrow 3a + c = 0$. Now we have a system with $a$ and $c$: -a + c = 8 3a + c = 0 Subtract the first equation from the second: $(3a + c) - (-a + c) = 0 - 8 \\Rightarrow 4a = -8 \\Rightarrow a = -2$. Substitute $a = -2$ into $b = 2a$: $b = 2(-2) = -4$. So, $a = -2$ and $b = -4$. Common algebraic traps include: - Incorrectly applying the vertex formula. - Errors in solving the system of linear equations. - Confusing the x and y coordinates of the vertex.",
           "explanation": "The vertex of a parabola given by $f(x) = ax^2 + bx + c$ is at $\\left( -\\frac{b}{2a}, f\\left(-\\frac{b}{2a}\\right) \\right)$. We are given that the vertex is at $(-1, 8)$. Therefore, $-\\frac{b}{2a} = -1$, which implies $b = 2a$. We are also given that the vertex is at $y=8$, so $f(-1) = 8$. Substituting $x = -1$ into the function: $a(-1)^2 + b(-1) + c = 8 \\Rightarrow a - b + c = 8$. Since $b = 2a$, we have $a - 2a + c = 8 \\Rightarrow -a + c = 8$. The graph also passes through the point $(1, 0)$. So, $f(1) = 0$. Substituting $x = 1$ into the function: $a(1)^2 + b(1) + c = 0 \\Rightarrow a + b + c = 0$. Now we have a system of equations: 1) $b = 2a$ 2) $-a + c = 8$ 3) $a + b + c = 0$ Substitute (1) into (3): $a + 2a + c = 0 \\Rightarrow 3a + c = 0$. Now we have a system with $a$ and $c$: -a + c = 8 3a + c = 0 Subtract the first equation from the second: $(3a + c) - (-a + c) = 0 - 8 \\Rightarrow 4a = -8 \\Rightarrow a = -2$. Substitute $a = -2$ into $b = 2a$: $b = 2(-2) = -4$. So, $a = -2$ and $b = -4$. Common algebraic traps include: - Incorrectly applying the vertex formula. - Errors in solving the system of linear equations. - Confusing the x and y coordinates of the vertex."
+        },
+        {
+          "q": "Find $d$ in the equation $ax+by+cz=d$ of the plane through $A(2, 1, -4)$, $B(1, 4, -2)$, and $C(-1, -3, 4)$, using normal $\\mathbf{n}=\\overrightarrow{AB}\\times\\overrightarrow{AC}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Identifying the correct form of a decomposition",
+          "choices": [
+            "6",
+            "9",
+            "7",
+            "14"
+          ],
+          "correct": 3,
+          "answer": "Working through this vectors step: $\\overrightarrow{AB}=\\left(-1 ; 3 ; 2\\right),\\ \\overrightarrow{AC}=\\left(-3 ; -4 ; 8\\right),\\ \\mathbf{n}=\\left(32 ; 2 ; 13\\right),\\ d=\\mathbf{n}\\cdot A=14$",
+          "explanation": "Working through this vectors step: $\\overrightarrow{AB}=\\left(-1 ; 3 ; 2\\right),\\ \\overrightarrow{AC}=\\left(-3 ; -4 ; 8\\right),\\ \\mathbf{n}=\\left(32 ; 2 ; 13\\right),\\ d=\\mathbf{n}\\cdot A=14$"
+        },
+        {
+          "q": "A sphere's radius increases at $\\frac{dr}{dt}=3$ cm/s. Find $\\frac{dV}{dt}$ (in terms of $\\pi$) when $r=5$ cm.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Solving a separable differential equation using partial fractions",
+          "choices": [
+            "$320\\pi\\mathrm{\\ cm}^3\\mathrm{/s}$",
+            "$310\\pi\\mathrm{\\ cm}^3\\mathrm{/s}$",
+            "$300\\pi\\mathrm{\\ cm}^3\\mathrm{/s}$",
+            "$280\\pi\\mathrm{\\ cm}^3\\mathrm{/s}$"
+          ],
+          "correct": 2,
+          "answer": "Working through this calculus step: $V=\\frac{4}{3}\\pi r^3 \\Rightarrow \\frac{dV}{dt}=4\\pi r^2\\frac{dr}{dt}=4\\pi(5)^2(3)=300\\pi$",
+          "explanation": "Working through this calculus step: $V=\\frac{4}{3}\\pi r^3 \\Rightarrow \\frac{dV}{dt}=4\\pi r^2\\frac{dr}{dt}=4\\pi(5)^2(3)=300\\pi$"
+        },
+        {
+          "q": "A line has vector equation $\\mathbf{r} = \\left(-1 ; 4 ; 6\\right) + t\\left(-1 ; 4 ; 2\\right)$. Find the point when $t=-4$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Explaining when polynomial division is required",
+          "choices": [
+            "$(3, -12, -2)$",
+            "$(4, -10, -3)$",
+            "$(2, -10, 0)$",
+            "$(5, -14, 0)$"
+          ],
+          "correct": 0,
+          "answer": "Working through this vectors step: $\\mathbf{r}=\\left(-1 ; 4 ; 6\\right)+(-4)\\left(-1 ; 4 ; 2\\right) = (3, -12, -2)$",
+          "explanation": "Working through this vectors step: $\\mathbf{r}=\\left(-1 ; 4 ; 6\\right)+(-4)\\left(-1 ; 4 ; 2\\right) = (3, -12, -2)$"
+        },
+        {
+          "q": "An investment grows by $3\\%, 2\\%, 18\\%$ in three successive years. Find the average annual (geometric mean) growth rate, to 2 decimal places.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Repeated irreducible quadratic factor",
+          "choices": [
+            "8.93\\%",
+            "5.93\\%",
+            "9.43\\%",
+            "7.43\\%"
+          ],
+          "correct": 3,
+          "answer": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.03\\times1.02\\times1.18}-1\\approx 7.43\\%$",
+          "explanation": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.03\\times1.02\\times1.18}-1\\approx 7.43\\%$"
+        },
+        {
+          "q": "Determine the complete set of real values of the constant $k$ for which the equation $e^x - kx^2 = 0$ has exactly three distinct real roots.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Verifying a decomposition by substitution",
+          "choices": [
+            "$k > \\frac{e^2}{4}$",
+            "$k \\geq \\frac{e^2}{4}$",
+            "$0 < k < \\frac{e^2}{4}$",
+            "$k > \\frac{e}{2}$"
+          ],
+          "correct": 0,
+          "answer": "First, note that $x = 0$ is not a solution to $e^x - kx^2 = 0$ since $e^0 = 1 eq 0$. Therefore, we can rewrite the equation as: $k = \\frac{e^x}{x^2}$ Let $f(x) = \\frac{e^x}{x^2}$ defined for all $x eq 0$. The number of distinct real roots corresponds to the number of points of intersection between the curve $y = f(x)$ and the horizontal line $y = k$. Differentiating $f(x)$ using the quotient rule: $f'(x) = \\frac{e^x \\cdot x^2 - e^x \\cdot 2x}{x^4} = \\frac{e^x x(x - 2)}{x^4} = \\frac{e^x(x - 2)}{x^3}$ Setting $f'(x) = 0$ yields the single stationary point at $x = 2$, where: $f(2) = \\frac{e^2}{2^2} = \\frac{e^2}{4}$ Now consider the behavior of $f(x)$ on each separate branch of its domain: 1. On the interval $(-\\infty, 0)$: Both $(x - 2) 0$. Thus, $f(x)$ is strictly increasing. As $x \\rightarrow -\\infty$, $f(x) \\rightarrow 0^+$, and as $x \\rightarrow 0^-$, $f(x) \\rightarrow +\\infty$. By the Intermediate Value Theorem, for any $k > 0$, the line $y = k$ intersects this branch exactly once. 2. On the interval $(0, \\infty)$: For $0 0$, so $f'(x) 2$, $x - 2 > 0$ and $x^3 > 0$, so $f'(x) > 0$ (strictly increasing from $\\frac{e^2}{4}$ to $+\\infty$). Hence, $f(2) = \\frac{e^2}{4}$ is a local (and global positive) minimum on $(0, \\infty)$. - If $k \\frac{e^2}{4}$, there are exactly two distinct intersections on $(0, \\infty)$. Combining both intervals: - For $k \\leq 0$, there are 0 real roots since $f(x) > 0$ everywhere. - For $0 \\frac{e^2}{4}$, there is 1 negative root and 2 positive roots (3 distinct real roots in total). Thus, the equation has exactly three distinct real roots if and only if $k > \\frac{e^2}{4}$.",
+          "explanation": "First, note that $x = 0$ is not a solution to $e^x - kx^2 = 0$ since $e^0 = 1 eq 0$. Therefore, we can rewrite the equation as: $k = \\frac{e^x}{x^2}$ Let $f(x) = \\frac{e^x}{x^2}$ defined for all $x eq 0$. The number of distinct real roots corresponds to the number of points of intersection between the curve $y = f(x)$ and the horizontal line $y = k$. Differentiating $f(x)$ using the quotient rule: $f'(x) = \\frac{e^x \\cdot x^2 - e^x \\cdot 2x}{x^4} = \\frac{e^x x(x - 2)}{x^4} = \\frac{e^x(x - 2)}{x^3}$ Setting $f'(x) = 0$ yields the single stationary point at $x = 2$, where: $f(2) = \\frac{e^2}{2^2} = \\frac{e^2}{4}$ Now consider the behavior of $f(x)$ on each separate branch of its domain: 1. On the interval $(-\\infty, 0)$: Both $(x - 2) 0$. Thus, $f(x)$ is strictly increasing. As $x \\rightarrow -\\infty$, $f(x) \\rightarrow 0^+$, and as $x \\rightarrow 0^-$, $f(x) \\rightarrow +\\infty$. By the Intermediate Value Theorem, for any $k > 0$, the line $y = k$ intersects this branch exactly once. 2. On the interval $(0, \\infty)$: For $0 0$, so $f'(x) 2$, $x - 2 > 0$ and $x^3 > 0$, so $f'(x) > 0$ (strictly increasing from $\\frac{e^2}{4}$ to $+\\infty$). Hence, $f(2) = \\frac{e^2}{4}$ is a local (and global positive) minimum on $(0, \\infty)$. - If $k \\frac{e^2}{4}$, there are exactly two distinct intersections on $(0, \\infty)$. Combining both intervals: - For $k \\leq 0$, there are 0 real roots since $f(x) > 0$ everywhere. - For $0 \\frac{e^2}{4}$, there is 1 negative root and 2 positive roots (3 distinct real roots in total). Thus, the equation has exactly three distinct real roots if and only if $k > \\frac{e^2}{4}$."
         }
       ]
     },
@@ -623,131 +547,189 @@
       "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
       "questions": [
         {
-          "q": "Consider the quadratic equation $x^2 - kx + 8 = 0$, where $k$ is a real parameter. The graph of the corresponding quadratic function $y = x^2 - kx + 8$ is a parabola. Given that the parabola intersects the x-axis at exactly one point, find the value of $k$.",
+          "q": "Which of the following is the correct expression of $\\frac{5x + 1}{(x - 1)(x + 2)}$ in partial fractions?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Choosing efficient substitution values",
           "choices": [
-            "$-4\\sqrt{2}$",
-            "$-2\\sqrt{2}$",
-            "$2\\sqrt{2}$",
-            "$4\\sqrt{2}$"
+            "$\\frac{2}{x - 1} + \\frac{3}{x + 2}$",
+            "$\\frac{3}{x - 1} + \\frac{2}{x + 2}$",
+            "$\\frac{2}{x - 1} - \\frac{3}{x + 2}$",
+            "$\\frac{1}{x - 1} + \\frac{4}{x + 2}$"
           ],
-          "correct": 3,
-          "answer": "The quadratic equation $ax^2 + bx + c = 0$ has exactly one real root (i.e., the parabola $y = ax^2 + bx + c$ intersects the x-axis at exactly one point) if and only if its discriminant, $\\Delta = b^2 - 4ac$, is equal to zero. In the given equation, $x^2 - kx + 8 = 0$, we have $a = 1$, $b = -k$, and $c = 8$. Therefore, the discriminant is $\\Delta = (-k)^2 - 4(1)(8) = k^2 - 32$. For the parabola to intersect the x-axis at exactly one point, we must have $\\Delta = 0$. So, $k^2 - 32 = 0$. This gives $k^2 = 32$, which means $k = \\pm\\sqrt{32}$. Simplifying the square root, $\\sqrt{32} = \\sqrt{16 \\times 2} = 4\\sqrt{2}$. Therefore, the possible values for $k$ are $4\\sqrt{2}$ and $-4\\sqrt{2}$. The question asks for 'the value of k', implying one specific value is expected, so we can infer the context allows for either positive or negative. Both are valid. Let's select the positive value as a primary choice. The provided options contain both. Common trap: Forgetting the negative root for $k$, or making errors in simplifying the radical.",
-          "explanation": "The quadratic equation $ax^2 + bx + c = 0$ has exactly one real root (i.e., the parabola $y = ax^2 + bx + c$ intersects the x-axis at exactly one point) if and only if its discriminant, $\\Delta = b^2 - 4ac$, is equal to zero. In the given equation, $x^2 - kx + 8 = 0$, we have $a = 1$, $b = -k$, and $c = 8$. Therefore, the discriminant is $\\Delta = (-k)^2 - 4(1)(8) = k^2 - 32$. For the parabola to intersect the x-axis at exactly one point, we must have $\\Delta = 0$. So, $k^2 - 32 = 0$. This gives $k^2 = 32$, which means $k = \\pm\\sqrt{32}$. Simplifying the square root, $\\sqrt{32} = \\sqrt{16 \\times 2} = 4\\sqrt{2}$. Therefore, the possible values for $k$ are $4\\sqrt{2}$ and $-4\\sqrt{2}$. The question asks for 'the value of k', implying one specific value is expected, so we can infer the context allows for either positive or negative. Both are valid. Let's select the positive value as a primary choice. The provided options contain both. Common trap: Forgetting the negative root for $k$, or making errors in simplifying the radical.",
+          "correct": 0,
+          "answer": "To decompose the rational function into partial fractions, set up the identity with distinct linear factors: $\\frac{5x + 1}{(x - 1)(x + 2)} \\equiv \\frac{A}{x - 1} + \\frac{B}{x + 2}$ Multiplying both sides by the common denominator $(x - 1)(x + 2)$: $5x + 1 \\equiv A(x + 2) + B(x - 1)$ To determine $A$, substitute $x = 1$: $5(1) + 1 = A(1 + 2) + B(0) \\Rightarrow 6 = 3A \\Rightarrow A = 2$ To determine $B$, substitute $x = -2$: $5(-2) + 1 = A(0) + B(-2 - 1) \\Rightarrow -9 = -3B \\Rightarrow B = 3$ Therefore, the partial fraction decomposition is: $\\frac{2}{x - 1} + \\frac{3}{x + 2}$ Common Misconceptions: - Choice B incorrectly associates $A$ with the root $x = -2$ and $B$ with $x = 1$, reversing the numerators. - Choice C results from a sign error when solving $-9 = -3B$. - Choice D assumes coefficients must sum directly to 5 without properly weighting by denominator factors.",
+          "explanation": "To decompose the rational function into partial fractions, set up the identity with distinct linear factors: $\\frac{5x + 1}{(x - 1)(x + 2)} \\equiv \\frac{A}{x - 1} + \\frac{B}{x + 2}$ Multiplying both sides by the common denominator $(x - 1)(x + 2)$: $5x + 1 \\equiv A(x + 2) + B(x - 1)$ To determine $A$, substitute $x = 1$: $5(1) + 1 = A(1 + 2) + B(0) \\Rightarrow 6 = 3A \\Rightarrow A = 2$ To determine $B$, substitute $x = -2$: $5(-2) + 1 = A(0) + B(-2 - 1) \\Rightarrow -9 = -3B \\Rightarrow B = 3$ Therefore, the partial fraction decomposition is: $\\frac{2}{x - 1} + \\frac{3}{x + 2}$ Common Misconceptions: - Choice B incorrectly associates $A$ with the root $x = -2$ and $B$ with $x = 1$, reversing the numerators. - Choice C results from a sign error when solving $-9 = -3B$. - Choice D assumes coefficients must sum directly to 5 without properly weighting by denominator factors.",
           "cross_lesson": "1.05 Systems of Linear Equations (AA HL)"
         },
         {
-          "q": "A random variable $X$ follows a binomial distribution $B(n, p)$. The number of trials is $n=10$ and the probability of success in a single trial is $p$. If the mean of $X$ is 4, find the variance of $X$.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Distinct Linear Factors",
-          "choices": [
-            "2.4",
-            "3.6",
-            "6.4",
-            "7.2"
-          ],
-          "correct": 0,
-          "answer": "For a binomial distribution $X \\sim B(n, p)$, the mean is given by $E(X) = np$ and the variance is given by $Var(X) = np(1-p)$. We are given that $n=10$ and $E(X)=4$. Using the formula for the mean, we have $10p = 4$. Solving for $p$, we get $p = \\frac{4}{10} = 0.4$. Now we can find the variance using the formula $Var(X) = np(1-p)$. Substituting the values of $n$ and $p$, we get $Var(X) = 10 \\times 0.4 \\times (1 - 0.4)$. $Var(X) = 10 \\times 0.4 \\times 0.6$. $Var(X) = 4 \\times 0.6$. $Var(X) = 2.4$.",
-          "explanation": "For a binomial distribution $X \\sim B(n, p)$, the mean is given by $E(X) = np$ and the variance is given by $Var(X) = np(1-p)$. We are given that $n=10$ and $E(X)=4$. Using the formula for the mean, we have $10p = 4$. Solving for $p$, we get $p = \\frac{4}{10} = 0.4$. Now we can find the variance using the formula $Var(X) = np(1-p)$. Substituting the values of $n$ and $p$, we get $Var(X) = 10 \\times 0.4 \\times (1 - 0.4)$. $Var(X) = 10 \\times 0.4 \\times 0.6$. $Var(X) = 4 \\times 0.6$. $Var(X) = 2.4$.",
-          "cross_lesson": "2.01 Modulus Functions & the Factor/Remainder Theorem"
-        },
-        {
-          "q": "Find $d$ in the equation $ax+by+cz=d$ of the plane through $A(-1, 3, 4)$, $B(-3, 1, 1)$, and $C(4, 2, -4)$, using normal $\\mathbf{n}=\\overrightarrow{AB}\\times\\overrightarrow{AC}$.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Repeated Linear Factors",
-          "choices": [
-            "-59",
-            "-46",
-            "-75",
-            "-58"
-          ],
-          "correct": 3,
-          "answer": "Working through this vectors step: $\\overrightarrow{AB}=\\left(-2 ; -2 ; -3\\right),\\ \\overrightarrow{AC}=\\left(5 ; -1 ; -8\\right),\\ \\mathbf{n}=\\left(13 ; -31 ; 12\\right),\\ d=\\mathbf{n}\\cdot A=-58$",
-          "explanation": "Working through this vectors step: $\\overrightarrow{AB}=\\left(-2 ; -2 ; -3\\right),\\ \\overrightarrow{AC}=\\left(5 ; -1 ; -8\\right),\\ \\mathbf{n}=\\left(13 ; -31 ; 12\\right),\\ d=\\mathbf{n}\\cdot A=-58$",
-          "cross_lesson": "3.01 3D Vectors & the Cross Product"
-        },
-        {
-          "q": "Find $d$ in the equation $ax+by+cz=d$ of the plane through $A(2, -1, 4)$, $B(2, -3, -3)$, and $C(-4, 4, 2)$, using normal $\\mathbf{n}=\\overrightarrow{AB}\\times\\overrightarrow{AC}$.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Irreducible Quadratic Factors",
-          "choices": [
-            "0",
-            "-3",
-            "-6",
-            "-12"
-          ],
-          "correct": 3,
-          "answer": "Working through this vectors step: $\\overrightarrow{AB}=\\left(0 ; -2 ; -7\\right),\\ \\overrightarrow{AC}=\\left(-6 ; 5 ; -2\\right),\\ \\mathbf{n}=\\left(39 ; 42 ; -12\\right),\\ d=\\mathbf{n}\\cdot A=-12$",
-          "explanation": "Working through this vectors step: $\\overrightarrow{AB}=\\left(0 ; -2 ; -7\\right),\\ \\overrightarrow{AC}=\\left(-6 ; 5 ; -2\\right),\\ \\mathbf{n}=\\left(39 ; 42 ; -12\\right),\\ d=\\mathbf{n}\\cdot A=-12$",
-          "cross_lesson": "3.02 Lines and Planes in Three Dimensions"
-        },
-        {
-          "q": "Find $d$ in the equation $ax+by+cz=d$ of the plane through $A(2, 0, 3)$, $B(-4, 0, 1)$, and $C(0, -2, -3)$, using normal $\\mathbf{n}=\\overrightarrow{AB}\\times\\overrightarrow{AC}$.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Improper Rational Fractions (Long Division First)",
-          "choices": [
-            "16",
-            "12",
-            "24",
-            "28"
-          ],
-          "correct": 3,
-          "answer": "Working through this vectors step: $\\overrightarrow{AB}=\\left(-6 ; 0 ; -2\\right),\\ \\overrightarrow{AC}=\\left(-2 ; -2 ; -6\\right),\\ \\mathbf{n}=\\left(-4 ; -32 ; 12\\right),\\ d=\\mathbf{n}\\cdot A=28$",
-          "explanation": "Working through this vectors step: $\\overrightarrow{AB}=\\left(-6 ; 0 ; -2\\right),\\ \\overrightarrow{AC}=\\left(-2 ; -2 ; -6\\right),\\ \\mathbf{n}=\\left(-4 ; -32 ; 12\\right),\\ d=\\mathbf{n}\\cdot A=28$",
-          "cross_lesson": "3.03 Compound Angle Identities & Reciprocal Trigonometric Functions (AA HL)"
-        },
-        {
-          "q": "Find $d$ in the equation $ax+by+cz=d$ of the plane through $A(3, -1, -2)$, $B(-3, 2, 0)$, and $C(-1, 3, 4)$, using normal $\\mathbf{n}=\\overrightarrow{AB}\\times\\overrightarrow{AC}$.",
+          "q": "The diagram shows the graph of the function $y = f(x)$. The equation of the function is given by $f(x) = x^2 - 4x + 3$. Identify the coordinates of the local minimum of the graph.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Distinct linear factors",
           "choices": [
-            "42",
-            "32",
-            "26",
-            "22"
+            "(2, -1)",
+            "(1, 0)",
+            "(3, 0)",
+            "(2, 1)"
           ],
-          "correct": 2,
-          "answer": "Working through this vectors step: $\\overrightarrow{AB}=\\left(-6 ; 3 ; 2\\right),\\ \\overrightarrow{AC}=\\left(-4 ; 4 ; 6\\right),\\ \\mathbf{n}=\\left(10 ; 28 ; -12\\right),\\ d=\\mathbf{n}\\cdot A=26$",
-          "explanation": "Working through this vectors step: $\\overrightarrow{AB}=\\left(-6 ; 3 ; 2\\right),\\ \\overrightarrow{AC}=\\left(-4 ; 4 ; 6\\right),\\ \\mathbf{n}=\\left(10 ; 28 ; -12\\right),\\ d=\\mathbf{n}\\cdot A=26$",
-          "cross_lesson": "4.01 Unbiased Estimators & Confidence Intervals"
+          "correct": 0,
+          "answer": "The function is given by $f(x) = x^2 - 4x + 3$. To find the local minimum, we first find the derivative of the function: $f'(x) = 2x - 4$. We set the derivative to zero to find the critical points: $2x - 4 = 0$, which gives $x = 2$. To confirm this is a minimum, we can find the second derivative: $f''(x) = 2$. Since $f''(2) = 2 > 0$, the critical point at $x = 2$ corresponds to a local minimum. Now we find the y-coordinate by substituting $x = 2$ into the original function: $f(2) = (2)^2 - 4(2) + 3 = 4 - 8 + 3 = -1$. Therefore, the coordinates of the local minimum are (2, -1).",
+          "explanation": "The function is given by $f(x) = x^2 - 4x + 3$. To find the local minimum, we first find the derivative of the function: $f'(x) = 2x - 4$. We set the derivative to zero to find the critical points: $2x - 4 = 0$, which gives $x = 2$. To confirm this is a minimum, we can find the second derivative: $f''(x) = 2$. Since $f''(2) = 2 > 0$, the critical point at $x = 2$ corresponds to a local minimum. Now we find the y-coordinate by substituting $x = 2$ into the original function: $f(2) = (2)^2 - 4(2) + 3 = 4 - 8 + 3 = -1$. Therefore, the coordinates of the local minimum are (2, -1).",
+          "cross_lesson": "2.01 Modulus Functions & the Factor/Remainder Theorem",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*x - 4*x + 3"
+            ],
+            "xmin": -1.0,
+            "xmax": 5.0,
+            "ymin": -2.0,
+            "ymax": 8.0,
+            "width": 230
+          }
         },
         {
-          "q": "Find $d$ in the equation $ax+by+cz=d$ of the plane through $A(-4, -4, 1)$, $B(1, 0, -3)$, and $C(-4, 3, 4)$, using normal $\\mathbf{n}=\\overrightarrow{AB}\\times\\overrightarrow{AC}$.",
+          "q": "The graph of the quadratic function $f(x) = x^2 - 4x + 3$ is shown below. The graph intersects the x-axis at points A and B. Determine the x-coordinate of the vertex of the parabola.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Repeated linear factors",
           "choices": [
-            "-100",
-            "-60",
-            "-65",
-            "-45"
+            "1",
+            "2",
+            "3",
+            "4"
           ],
-          "correct": 2,
-          "answer": "Working through this vectors step: $\\overrightarrow{AB}=\\left(5 ; 4 ; -4\\right),\\ \\overrightarrow{AC}=\\left(0 ; 7 ; 3\\right),\\ \\mathbf{n}=\\left(40 ; -15 ; 35\\right),\\ d=\\mathbf{n}\\cdot A=-65$",
-          "explanation": "Working through this vectors step: $\\overrightarrow{AB}=\\left(5 ; 4 ; -4\\right),\\ \\overrightarrow{AC}=\\left(0 ; 7 ; 3\\right),\\ \\mathbf{n}=\\left(40 ; -15 ; 35\\right),\\ d=\\mathbf{n}\\cdot A=-65$",
-          "cross_lesson": "4.02 The Poisson Distribution"
+          "correct": 1,
+          "answer": "The x-coordinate of the vertex of a parabola given by the equation $f(x) = ax^2 + bx + c$ is found using the formula $x = -\\frac{b}{2a}$. In this case, $a = 1$ and $b = -4$. Therefore, the x-coordinate of the vertex is $x = -\\frac{-4}{2(1)} = \\frac{4}{2} = 2$. Alternatively, the x-coordinate of the vertex is the midpoint of the roots. The roots are the x-intercepts, which can be found by setting $f(x) = 0$: $x^2 - 4x + 3 = 0$. Factoring this gives $(x-1)(x-3) = 0$, so the roots are $x=1$ and $x=3$. The midpoint is $\\frac{1+3}{2} = \\frac{4}{2} = 2$.",
+          "explanation": "The x-coordinate of the vertex of a parabola given by the equation $f(x) = ax^2 + bx + c$ is found using the formula $x = -\\frac{b}{2a}$. In this case, $a = 1$ and $b = -4$. Therefore, the x-coordinate of the vertex is $x = -\\frac{-4}{2(1)} = \\frac{4}{2} = 2$. Alternatively, the x-coordinate of the vertex is the midpoint of the roots. The roots are the x-intercepts, which can be found by setting $f(x) = 0$: $x^2 - 4x + 3 = 0$. Factoring this gives $(x-1)(x-3) = 0$, so the roots are $x=1$ and $x=3$. The midpoint is $\\frac{1+3}{2} = \\frac{4}{2} = 2$.",
+          "cross_lesson": "3.01 3D Vectors & the Cross Product",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*x - 4*x + 3"
+            ],
+            "xmin": -2.0,
+            "xmax": 6.0,
+            "ymin": -3.0,
+            "ymax": 6.0,
+            "width": 230
+          }
         },
         {
-          "q": "Find $d$ in the equation $ax+by+cz=d$ of the plane through $A(3, 1, -3)$, $B(0, -4, 3)$, and $C(3, 3, 0)$, using normal $\\mathbf{n}=\\overrightarrow{AB}\\times\\overrightarrow{AC}$.",
+          "q": "The diagram shows the graph of a quadratic function $y = f(x) = x^2 - 6x + k$. The graph intersects the x-axis at point A, and has a minimum point at B. The coordinates of point A are $(3, 0)$. Find the value of $k$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Irreducible quadratic factors",
           "choices": [
-            "-54",
-            "-84",
-            "-63",
-            "-78"
+            "-9",
+            "0",
+            "9",
+            "18"
+          ],
+          "correct": 2,
+          "answer": "The function is given by $f(x) = x^2 - 6x + k$. We are given that the graph intersects the x-axis at point A $(3, 0)$. This means that when $x=3$, $f(x)=0$. Substituting these values into the function's equation: $0 = (3)^2 - 6(3) + k$ $0 = 9 - 18 + k$ $0 = -9 + k$ $k = 9$ Therefore, the value of $k$ is 9. Common algebraic traps include incorrectly substituting the coordinates or making errors in the order of operations when solving for $k$. For example, mistaking the point $(3,0)$ as the vertex would lead to an incorrect value of $k$.",
+          "explanation": "The function is given by $f(x) = x^2 - 6x + k$. We are given that the graph intersects the x-axis at point A $(3, 0)$. This means that when $x=3$, $f(x)=0$. Substituting these values into the function's equation: $0 = (3)^2 - 6(3) + k$ $0 = 9 - 18 + k$ $0 = -9 + k$ $k = 9$ Therefore, the value of $k$ is 9. Common algebraic traps include incorrectly substituting the coordinates or making errors in the order of operations when solving for $k$. For example, mistaking the point $(3,0)$ as the vertex would lead to an incorrect value of $k$.",
+          "cross_lesson": "3.02 Lines and Planes in Three Dimensions",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*x - 6*x + 9"
+            ],
+            "xmin": 0.0,
+            "xmax": 6.0,
+            "ymin": -10.0,
+            "ymax": 10.0,
+            "width": 230,
+            "point_labels": [
+              {
+                "x": 3.0,
+                "y": 0.0,
+                "label": "A"
+              }
+            ]
+          }
+        },
+        {
+          "q": "Consider the graph of the quadratic function $y = x^2 - 4x + 3$. What are the coordinates of the vertex of this parabola?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Applying partial fractions to integration",
+          "choices": [
+            "(2, -1)",
+            "(1, 0)",
+            "(3, 0)",
+            "(2, 1)"
           ],
           "correct": 0,
-          "answer": "Working through this vectors step: $\\overrightarrow{AB}=\\left(-3 ; -5 ; 6\\right),\\ \\overrightarrow{AC}=\\left(0 ; 2 ; 3\\right),\\ \\mathbf{n}=\\left(-27 ; 9 ; -6\\right),\\ d=\\mathbf{n}\\cdot A=-54$",
-          "explanation": "Working through this vectors step: $\\overrightarrow{AB}=\\left(-3 ; -5 ; 6\\right),\\ \\overrightarrow{AC}=\\left(0 ; 2 ; 3\\right),\\ \\mathbf{n}=\\left(-27 ; 9 ; -6\\right),\\ d=\\mathbf{n}\\cdot A=-54$",
+          "answer": "The given quadratic function is in the form $y = ax^2 + bx + c$, where $a=1, b=-4, c=3$. The x-coordinate of the vertex of a parabola is given by the formula $x = -b/(2a)$. In this case, $x = -(-4)/(2 \\times 1) = 4/2 = 2$. To find the y-coordinate of the vertex, substitute this x-value back into the function: $y = (2)^2 - 4(2) + 3 = 4 - 8 + 3 = -1$. Therefore, the coordinates of the vertex are (2, -1).",
+          "explanation": "The given quadratic function is in the form $y = ax^2 + bx + c$, where $a=1, b=-4, c=3$. The x-coordinate of the vertex of a parabola is given by the formula $x = -b/(2a)$. In this case, $x = -(-4)/(2 \\times 1) = 4/2 = 2$. To find the y-coordinate of the vertex, substitute this x-value back into the function: $y = (2)^2 - 4(2) + 3 = 4 - 8 + 3 = -1$. Therefore, the coordinates of the vertex are (2, -1).",
+          "cross_lesson": "3.03 Compound Angle Identities & Reciprocal Trigonometric Functions (AA HL)",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**2 - 4*x + 3"
+            ],
+            "xmin": -4.5,
+            "xmax": 4.5,
+            "ymin": -3.0,
+            "ymax": 20.0,
+            "width": 225,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": 3.0,
+                "label": "$(0, 3)$"
+              }
+            ]
+          }
+        },
+        {
+          "q": "$\\int_0^\\infty\\frac{1}{1+x^4}\\,dx$: evaluate using partial fractions over $\\mathbb{R}$:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Applying partial fractions to a binomial series expansion",
+          "choices": [
+            "$\\pi/2$",
+            "$\\pi/4$",
+            "$\\pi/(2\\sqrt{2})$",
+            "$\\pi$"
+          ],
+          "correct": 2,
+          "answer": "Applying Techniques of Integration principles, $=\\pi/(2\\sqrt{2})$. Therefore, the verified correct option is $\\pi/(2\\sqrt{2})$.",
+          "explanation": "Applying Techniques of Integration principles, $=\\pi/(2\\sqrt{2})$. Therefore, the verified correct option is $\\pi/(2\\sqrt{2})$.",
+          "cross_lesson": "4.01 Unbiased Estimators & Confidence Intervals"
+        },
+        {
+          "q": "Approximate $\\int_0^1\\frac{\\sin x}{x}dx$ using power series (first three terms):",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Combining terms before decomposing",
+          "choices": [
+            "$1-1/3+1/10$",
+            "$1-1/18+1/600$",
+            "$1-1/6+1/20$",
+            "$1-1/18$"
+          ],
+          "correct": 1,
+          "answer": "$\\sin x/x=\\sum(-1)^nx^{2n}/(2n+1)!$; $\\int_0^1=\\sum(-1)^n/(2n+1)(2n+1)!=1-1/18+1/600-\\cdots$.",
+          "explanation": "$\\sin x/x=\\sum(-1)^nx^{2n}/(2n+1)!$; $\\int_0^1=\\sum(-1)^n/(2n+1)(2n+1)!=1-1/18+1/600-\\cdots$.",
+          "cross_lesson": "4.02 The Poisson Distribution"
+        },
+        {
+          "q": "Find the constant term of the quotient when $4x^{2}+6x+3$ is divided by $(x+1)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Applying partial fractions to a rate problem",
+          "choices": [
+            "2",
+            "1",
+            "4",
+            "3"
+          ],
+          "correct": 0,
+          "answer": "Dividing: quotient $=4x+2$, remainder $=1$. Constant term of quotient: 2.",
+          "explanation": "Dividing: quotient $=4x+2$, remainder $=1$. Constant term of quotient: 2.",
           "cross_lesson": "5.01 Further Integration Techniques"
         }
       ]

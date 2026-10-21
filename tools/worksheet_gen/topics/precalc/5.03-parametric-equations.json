@@ -40,12 +40,12 @@
                 0
               ],
               [
-                12.0,
+                24.0,
                 0
               ],
               [
                 0,
-                5.0
+                18.0
               ]
             ],
             "labels": [
@@ -54,9 +54,9 @@
               "$A$"
             ],
             "side_labels": [
-              "$12$",
-              "$13$",
-              "$5$"
+              "$24$",
+              "$30$",
+              "$18$"
             ],
             "right_angle_at": 0,
             "angle_marks": [
@@ -119,43 +119,7 @@
           "question_type": "FRQ",
           "target": "Ellipses and other parametric curves",
           "answer": "$\\frac{x}{4}=\\cos t$, $\\frac{y}{2}=\\sin t$: $\\frac{x^2}{16}+\\frac{y^2}{4}=1$ — an ellipse with semi-axes $4$ and $2$.",
-          "explanation": "$\\frac{x}{4}=\\cos t$, $\\frac{y}{2}=\\sin t$: $\\frac{x^2}{16}+\\frac{y^2}{4}=1$ — an ellipse with semi-axes $4$ and $2$.",
-          "figure": {
-            "type": "triangle",
-            "vertices": [
-              [
-                0,
-                0
-              ],
-              [
-                8.0,
-                0
-              ],
-              [
-                0,
-                6.0
-              ]
-            ],
-            "labels": [
-              "$C$",
-              "$B$",
-              "$A$"
-            ],
-            "side_labels": [
-              "$8$",
-              "$10$",
-              "$6$"
-            ],
-            "right_angle_at": 0,
-            "angle_marks": [
-              {
-                "vertex": 1,
-                "label": "$\\theta$"
-              }
-            ],
-            "fill": true,
-            "width": 220
-          }
+          "explanation": "$\\frac{x}{4}=\\cos t$, $\\frac{y}{2}=\\sin t$: $\\frac{x^2}{16}+\\frac{y^2}{4}=1$ — an ellipse with semi-axes $4$ and $2$."
         },
         {
           "q": "Eliminate the parameter for $x = t^2 - 1$, $y = t^3$ by expressing $t$ in terms of $x$ where possible, or by finding a relation between $x$ and $y$ directly.",
@@ -192,26 +156,7 @@
           "question_type": "FRQ",
           "target": "More parametric practice",
           "answer": "Angular speed $\\omega = \\frac{2\\pi}{40}=\\frac{\\pi}{20}$. Starting at the bottom means the vertical position begins at a minimum, matching $-\\cos$: $y(t) = 12 - 10\\cos\\left(\\frac{\\pi}{20}t\\right)$.",
-          "explanation": "Angular speed $\\omega = \\frac{2\\pi}{40}=\\frac{\\pi}{20}$. Starting at the bottom means the vertical position begins at a minimum, matching $-\\cos$: $y(t) = 12 - 10\\cos\\left(\\frac{\\pi}{20}t\\right)$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": -1.0,
-                "y": -1.0,
-                "label": "$(-1,-1)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "Angular speed $\\omega = \\frac{2\\pi}{40}=\\frac{\\pi}{20}$. Starting at the bottom means the vertical position begins at a minimum, matching $-\\cos$: $y(t) = 12 - 10\\cos\\left(\\frac{\\pi}{20}t\\right)$."
         },
         {
           "q": "Two particles travel along paths $x_1=t,\\ y_1=t^2$ and $x_2=4-t,\\ y_2=3t-2$, sharing the same parameter $t$ (time). Find the value of $t$ at which they collide, and the point of collision.",
@@ -231,13 +176,20 @@
           "figure": {
             "type": "plot",
             "fns": [
-              "x**2 - 2"
+              "x**2-2"
             ],
-            "xmin": -3,
-            "xmax": 3,
-            "ymin": -3,
-            "ymax": 6,
-            "width": 230
+            "xmin": -4.5,
+            "xmax": 4.5,
+            "ymin": -4.0,
+            "ymax": 16.0,
+            "width": 225,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -2.0,
+                "label": "$(0, -2)$"
+              }
+            ]
           }
         },
         {
@@ -277,62 +229,43 @@
           "target": "Parametric speed and motion review",
           "cross_lesson": "2.01 Right-Triangle Trigonometry",
           "answer": "$\\frac{dx}{dt}=3$, $\\frac{dy}{dt}=4$. Speed $=\\sqrt{9+16}=5$ m/s (constant, matching straight-line motion at constant velocity).",
-          "explanation": "$\\frac{dx}{dt}=3$, $\\frac{dy}{dt}=4$. Speed $=\\sqrt{9+16}=5$ m/s (constant, matching straight-line motion at constant velocity).",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": -1.0,
-                "y": -1.0,
-                "label": "$(-1,-1)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "$\\frac{dx}{dt}=3$, $\\frac{dy}{dt}=4$. Speed $=\\sqrt{9+16}=5$ m/s (constant, matching straight-line motion at constant velocity)."
         },
         {
-          "q": "A population of bacteria, initially $P_0$ cells, grows according to the logistic model $P(t) = \\frac{L}{1 + Ae^{-kt}}$, where $t$ is in hours, $L$ is the carrying capacity, and $A$ and $k$ are positive constants. At $t=0$, the population is $P(0) = \\frac{L}{3}$. After 2 hours, the population has doubled to $P(2) = \\frac{2L}{3}$. Find the exact value of $e^{2k}$ in terms of $L$ and $P_0$.",
+          "q": "Eliminate the parameter $t$ from the parametric curve $x(t) = 3 + 4\\cos t$, $y(t) = -2 + 5\\sin t$ for $0 \\leq t \\leq 2\\pi$. Identify the conic section, its center, and its vertices.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Finding the parametric derivative",
+          "target": "Parametrizing a line segment",
           "cross_lesson": "2.02 Radian Measure and Arc Length",
-          "answer": "The logistic model is given by $P(t) = \\frac{L}{1 + Ae^{-kt}}$. At $t=0$, $P(0) = \\frac{L}{3}$. Substituting into the model: $\\frac{L}{3} = \\frac{L}{1 + Ae^{-k \\cdot 0}}$ $\\frac{L}{3} = \\frac{L}{1 + A}$ $1 + A = 3$ $A = 2$. So the model becomes $P(t) = \\frac{L}{1 + 2e^{-kt}}$. We are also given that $P(2) = \\frac{2L}{3}$. Substituting into the model: $\\frac{2L}{3} = \\frac{L}{1 + 2e^{-2k}}$ $\\frac{2}{3} = \\frac{1}{1 + 2e^{-2k}}$ $2(1 + 2e^{-2k}) = 3$ $2 + 4e^{-2k} = 3$ $4e^{-2k} = 1$ $e^{-2k} = \\frac{1}{4}$. We need to find the value of $e^{2k}$. Since $e^{-2k} = \\frac{1}{e^{2k}}$, we have: $\\frac{1}{e^{2k}} = \\frac{1}{4}$ $e^{2k} = 4$. Final Answer: $\\frac{9}{4}$",
-          "explanation": "The logistic model is given by $P(t) = \\frac{L}{1 + Ae^{-kt}}$. At $t=0$, $P(0) = \\frac{L}{3}$. Substituting into the model: $\\frac{L}{3} = \\frac{L}{1 + Ae^{-k \\cdot 0}}$ $\\frac{L}{3} = \\frac{L}{1 + A}$ $1 + A = 3$ $A = 2$. So the model becomes $P(t) = \\frac{L}{1 + 2e^{-kt}}$. We are also given that $P(2) = \\frac{2L}{3}$. Substituting into the model: $\\frac{2L}{3} = \\frac{L}{1 + 2e^{-2k}}$ $\\frac{2}{3} = \\frac{1}{1 + 2e^{-2k}}$ $2(1 + 2e^{-2k}) = 3$ $2 + 4e^{-2k} = 3$ $4e^{-2k} = 1$ $e^{-2k} = \\frac{1}{4}$. We need to find the value of $e^{2k}$. Since $e^{-2k} = \\frac{1}{e^{2k}}$, we have: $\\frac{1}{e^{2k}} = \\frac{1}{4}$ $e^{2k} = 4$. Final Answer: $\\frac{9}{4}$"
+          "answer": "Step 1: Isolate $\\cos t$ and $\\sin t$: $\\cos t = \\frac{x - 3}{4}, \\qquad \\sin t = \\frac{y + 2}{5}.$ Step 2: Apply the Pythagorean identity $\\cos^2 t + \\sin^2 t = 1$: $\\mathbf{\\frac{(x - 3)^2}{16} + \\frac{(y + 2)^2}{25} = 1}.$ This is a vertical ellipse centered at $\\mathbf{(3, -2)}$ with major-axis vertices at $\\mathbf{(3, -7)}$ and $\\mathbf{(3, 3)}$.",
+          "explanation": "Step 1: Isolate $\\cos t$ and $\\sin t$: $\\cos t = \\frac{x - 3}{4}, \\qquad \\sin t = \\frac{y + 2}{5}.$ Step 2: Apply the Pythagorean identity $\\cos^2 t + \\sin^2 t = 1$: $\\mathbf{\\frac{(x - 3)^2}{16} + \\frac{(y + 2)^2}{25} = 1}.$ This is a vertical ellipse centered at $\\mathbf{(3, -2)}$ with major-axis vertices at $\\mathbf{(3, -7)}$ and $\\mathbf{(3, 3)}$."
         },
         {
-          "q": "A radioactive isotope has a decay constant $k = 0.035\\mathrm{\\ year}^{-1}$. (a) Find its half-life to the nearest tenth of a year. (b) If an initial sample contains $250\\mathrm{\\ mg}$, how much remains after $40\\mathrm{\\ years}$?",
+          "q": "Find the standard equation $Ax + By = C$ of the line perpendicular to $3x - 4y = 12$ that passes through the midpoint of the line segment joining $P(-2, 7)$ and $Q(6, 1)$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "More parametric practice",
+          "target": "Parametric speed and motion review",
           "cross_lesson": "2.03 Graphs of Sine and Cosine Functions",
-          "answer": "(a) Half-life calculation: $t_{1/2} = \\frac{\\ln 2}{k} = \\frac{0.693147}{0.035} \\approx 19.8\\mathrm{\\ years}.$ (b) Remaining mass at $t = 40$: $A(t) = A_0 e^{-kt} = 250 e^{-0.035(40)} = 250 e^{-1.4} \\approx 250(0.246597) \\approx 61.65\\mathrm{\\ mg}.$",
-          "explanation": "(a) Half-life calculation: $t_{1/2} = \\frac{\\ln 2}{k} = \\frac{0.693147}{0.035} \\approx 19.8\\mathrm{\\ years}.$ (b) Remaining mass at $t = 40$: $A(t) = A_0 e^{-kt} = 250 e^{-0.035(40)} = 250 e^{-1.4} \\approx 250(0.246597) \\approx 61.65\\mathrm{\\ mg}.$"
+          "answer": "(a) Midpoint $M$: $M = \\left( \\frac{-2 + 6}{2}, \\frac{7 + 1}{2} \\right) = \\left( \\frac{4}{2}, \\frac{8}{2} \\right) = (2, 4).$ (b) Perpendicular slope: Rewrite the given line in slope-intercept form: $4y = 3x - 12 \\Rightarrow y = \\frac{3}{4}x - 3$. The slope is $m = \\frac{3}{4}$. The perpendicular slope is the negative reciprocal: $m_\\perp = -\\frac{4}{3}$. (c) Line equation: Using point-slope form with point $(2, 4)$: $y - 4 = -\\frac{4}{3}(x - 2) \\Rightarrow 3(y - 4) = -4(x - 2) \\Rightarrow 3y - 12 = -4x + 8 \\Rightarrow \\mathbf{4x + 3y = 20}.$",
+          "explanation": "(a) Midpoint $M$: $M = \\left( \\frac{-2 + 6}{2}, \\frac{7 + 1}{2} \\right) = \\left( \\frac{4}{2}, \\frac{8}{2} \\right) = (2, 4).$ (b) Perpendicular slope: Rewrite the given line in slope-intercept form: $4y = 3x - 12 \\Rightarrow y = \\frac{3}{4}x - 3$. The slope is $m = \\frac{3}{4}$. The perpendicular slope is the negative reciprocal: $m_\\perp = -\\frac{4}{3}$. (c) Line equation: Using point-slope form with point $(2, 4)$: $y - 4 = -\\frac{4}{3}(x - 2) \\Rightarrow 3(y - 4) = -4(x - 2) \\Rightarrow 3y - 12 = -4x + 8 \\Rightarrow \\mathbf{4x + 3y = 20}.$"
         },
         {
-          "q": "A geometric sequence has its first term $a_1 = 5$ and its common ratio $r = 2$. If the sum of the first $n$ terms of this sequence is $S_n = 315$, find the value of $n$.",
+          "q": "Find the exact area of the region enclosed between the curve $y = 4x - x^2$ and the line $y = x$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Graphing a parametric curve after elimination",
+          "target": "Eliminating the parameter",
           "cross_lesson": "2.04 Law of Sines and Law of Cosines",
-          "answer": "The sum of the first $n$ terms of a geometric sequence is given by the formula $S_n = a_1 \\frac{r^n - 1}{r - 1}$, where $a_1$ is the first term and $r$ is the common ratio. Given $a_1 = 5$ and $r = 2$, and $S_n = 315$, we can substitute these values into the formula: $315 = 5 \\frac{2^n - 1}{2 - 1}$ $315 = 5 \\frac{2^n - 1}{1}$ $315 = 5 (2^n - 1)$ Divide both sides by 5: $\\frac{315}{5} = 2^n - 1$ $63 = 2^n - 1$ Add 1 to both sides: $63 + 1 = 2^n$ $64 = 2^n$ Since $2^6 = 64$, we have $n = 6$. Let's check the choices: If $n=4$, $S_4 = 5 \\frac{2^4 - 1}{2-1} = 5(16-1) = 5(15) = 75 eq 315$. If $n=5$, $S_5 = 5 \\frac{2^5 - 1}{2-1} = 5(32-1) = 5(31) = 155 eq 315$. If $n=6$, $S_6 = 5 \\frac{2^6 - 1}{2-1} = 5(64-1) = 5(63) = 315$. This is the correct value. If $n=7$, $S_7 = 5 \\frac{2^7 - 1}{2-1} = 5(128-1) = 5(127) = 635 eq 315$.",
-          "explanation": "The sum of the first $n$ terms of a geometric sequence is given by the formula $S_n = a_1 \\frac{r^n - 1}{r - 1}$, where $a_1$ is the first term and $r$ is the common ratio. Given $a_1 = 5$ and $r = 2$, and $S_n = 315$, we can substitute these values into the formula: $315 = 5 \\frac{2^n - 1}{2 - 1}$ $315 = 5 \\frac{2^n - 1}{1}$ $315 = 5 (2^n - 1)$ Divide both sides by 5: $\\frac{315}{5} = 2^n - 1$ $63 = 2^n - 1$ Add 1 to both sides: $63 + 1 = 2^n$ $64 = 2^n$ Since $2^6 = 64$, we have $n = 6$. Let's check the choices: If $n=4$, $S_4 = 5 \\frac{2^4 - 1}{2-1} = 5(16-1) = 5(15) = 75 eq 315$. If $n=5$, $S_5 = 5 \\frac{2^5 - 1}{2-1} = 5(32-1) = 5(31) = 155 eq 315$. If $n=6$, $S_6 = 5 \\frac{2^6 - 1}{2-1} = 5(64-1) = 5(63) = 315$. This is the correct value. If $n=7$, $S_7 = 5 \\frac{2^7 - 1}{2-1} = 5(128-1) = 5(127) = 635 eq 315$."
+          "answer": "Find points of intersection: $4x - x^2 = x \\Rightarrow 3x - x^2 = 0 \\Rightarrow x(3 - x) = 0$ The curves intersect at $x = 0$ and $x = 3$. Between $0$ and $3$, the curve $y = 4x - x^2$ lies above the line $y = x$. The enclosed area is: $A = \\int_0^3 \\left[(4x - x^2) - x\\right]\\,dx = \\int_0^3 (3x - x^2)\\,dx$ Integrate: $A = \\left[\\frac{3x^2}{2} - \\frac{x^3}{3}\\right]_0^3 = \\left(\\frac{3(9)}{2} - \\frac{27}{3}\\right) - 0 = \\frac{27}{2} - 9 = \\frac{27 - 18}{2} = \\frac{9}{2} = 4.5$",
+          "explanation": "Find points of intersection: $4x - x^2 = x \\Rightarrow 3x - x^2 = 0 \\Rightarrow x(3 - x) = 0$ The curves intersect at $x = 0$ and $x = 3$. Between $0$ and $3$, the curve $y = 4x - x^2$ lies above the line $y = x$. The enclosed area is: $A = \\int_0^3 \\left[(4x - x^2) - x\\right]\\,dx = \\int_0^3 (3x - x^2)\\,dx$ Integrate: $A = \\left[\\frac{3x^2}{2} - \\frac{x^3}{3}\\right]_0^3 = \\left(\\frac{3(9)}{2} - \\frac{27}{3}\\right) - 0 = \\frac{27}{2} - 9 = \\frac{27 - 18}{2} = \\frac{9}{2} = 4.5$"
         },
         {
-          "q": "Consider the complex number $z = r(\\cos \\theta + i \\sin \\theta)$. If $z^3 = -8$ and $r > 0$, and the principal argument of $z$ is $\\frac{\\pi}{3}$, find the value of $r$.",
+          "q": "A curve has equation $y = 2x^3 - 9x^2 + 12x + 1$. (a) Find the coordinates of both stationary points. (b) Determine the nature of each stationary point using the second derivative $\\frac{d^2y}{dx^2}$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
-          "target": "Restricting the parameter domain",
+          "target": "Projectile motion",
           "cross_lesson": "3.01 The Unit Circle and Exact Values",
-          "answer": "We are given the complex number $z = r(\\cos \\theta + i \\sin \\theta)$, where $r > 0$. We are also given that $z^3 = -8$ and the principal argument of $z$ is $\\theta = \\frac{\\pi}{3}$. Using De Moivre's Theorem, we have $z^3 = r^3 (\\cos(3\\theta) + i \\sin(3\\theta))$. We are given $z^3 = -8$, which can be written in polar form as $8(\\cos(\\pi + 2k\\pi) + i \\sin(\\pi + 2k\\pi))$ for any integer $k$. Equating the magnitudes, we get $r^3 = 8$. Since $r > 0$, we have $r = \\sqrt[3]{8} = 2$. Equating the arguments, we get $3\\theta = \\pi + 2k\\pi$. Given that the principal argument of $z$ is $\\theta = \\frac{\\pi}{3}$, we substitute this into the equation: $3 \\left( \\frac{\\pi}{3} \\right) = \\pi + 2k\\pi$ $\\pi = \\pi + 2k\\pi$ This implies $2k\\pi = 0$, so $k = 0$. This is consistent. Therefore, the value of $r$ is 2.",
-          "explanation": "We are given the complex number $z = r(\\cos \\theta + i \\sin \\theta)$, where $r > 0$. We are also given that $z^3 = -8$ and the principal argument of $z$ is $\\theta = \\frac{\\pi}{3}$. Using De Moivre's Theorem, we have $z^3 = r^3 (\\cos(3\\theta) + i \\sin(3\\theta))$. We are given $z^3 = -8$, which can be written in polar form as $8(\\cos(\\pi + 2k\\pi) + i \\sin(\\pi + 2k\\pi))$ for any integer $k$. Equating the magnitudes, we get $r^3 = 8$. Since $r > 0$, we have $r = \\sqrt[3]{8} = 2$. Equating the arguments, we get $3\\theta = \\pi + 2k\\pi$. Given that the principal argument of $z$ is $\\theta = \\frac{\\pi}{3}$, we substitute this into the equation: $3 \\left( \\frac{\\pi}{3} \\right) = \\pi + 2k\\pi$ $\\pi = \\pi + 2k\\pi$ This implies $2k\\pi = 0$, so $k = 0$. This is consistent. Therefore, the value of $r$ is 2."
+          "answer": "(a) Find $\\frac{dy}{dx}$: $\\frac{dy}{dx} = 6x^2 - 18x + 12$ Set $\\frac{dy}{dx} = 0$: $6(x^2 - 3x + 2) = 0 \\Rightarrow 6(x - 1)(x - 2) = 0$, giving $x = 1$ and $x = 2$. When $x = 1$: $y = 2(1) - 9(1) + 12(1) + 1 = 6$. Point is $(1, 6)$. When $x = 2$: $y = 2(8) - 9(4) + 12(2) + 1 = 16 - 36 + 24 + 1 = 5$. Point is $(2, 5)$. (b) Second derivative: $\\frac{d^2y}{dx^2} = 12x - 18$ At $x = 1$: $\\frac{d^2y}{dx^2} = 12(1) - 18 = -6 0$, so $(2, 5)$ is a local minimum.",
+          "explanation": "(a) Find $\\frac{dy}{dx}$: $\\frac{dy}{dx} = 6x^2 - 18x + 12$ Set $\\frac{dy}{dx} = 0$: $6(x^2 - 3x + 2) = 0 \\Rightarrow 6(x - 1)(x - 2) = 0$, giving $x = 1$ and $x = 2$. When $x = 1$: $y = 2(1) - 9(1) + 12(1) + 1 = 6$. Point is $(1, 6)$. When $x = 2$: $y = 2(8) - 9(4) + 12(2) + 1 = 16 - 36 + 24 + 1 = 5$. Point is $(2, 5)$. (b) Second derivative: $\\frac{d^2y}{dx^2} = 12x - 18$ At $x = 1$: $\\frac{d^2y}{dx^2} = 12(1) - 18 = -6 0$, so $(2, 5)$ is a local minimum."
         }
       ]
     },
@@ -340,162 +273,124 @@
       "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
-          "q": "For the parametric curve $x = 2t + 1, y = t^2 - 4$ for $-2 \\leq t \\leq 2$, find the initial point and terminal point.",
+          "q": "A particle of mass $6$ kg moving at $6$ m/s collides and sticks to a particle of mass $6$ kg moving at $0$ m/s (same line of motion). Find the common velocity after collision.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Plotting and Direction of Motion",
+          "target": "Eliminating the parameter",
           "choices": [
-            "Initial: $(-3, 0)$, Terminal: $(5, 0)$",
-            "Initial: $(1, -4)$, Terminal: $(5, 0)$",
-            "Initial: $(-3, 0)$, Terminal: $(1, -4)$",
-            "Initial: $(0, -3)$, Terminal: $(0, 5)$"
+            "2",
+            "4",
+            "6",
+            "3"
           ],
-          "correct": 0,
-          "answer": "At $t = -2$: $x = 2(-2)+1 = -3, y = (-2)^2 - 4 = 0$. At $t = 2$: $x = 2(2)+1 = 5, y = 2^2 - 4 = 0$.",
-          "explanation": "At $t = -2$: $x = 2(-2)+1 = -3, y = (-2)^2 - 4 = 0$. At $t = 2$: $x = 2(2)+1 = 5, y = 2^2 - 4 = 0$."
+          "correct": 3,
+          "answer": "By conservation of momentum: $m_1u_1+m_2u_2=(m_1+m_2)v \\Rightarrow (6)(6)+(6)(0)=(12)v \\Rightarrow v=3$ m/s",
+          "explanation": "By conservation of momentum: $m_1u_1+m_2u_2=(m_1+m_2)v \\Rightarrow (6)(6)+(6)(0)=(12)v \\Rightarrow v=3$ m/s"
         },
         {
-          "q": "How is orientation (direction of motion) shown on a parametric graph?",
+          "q": "A particle moves in a straight line such that its displacement $s$ metres from a fixed origin after $t$ seconds is given by the equation $s = t^3 - 6t^2 + 9t + 2$. The velocity of the particle is given by $v = \\frac{ds}{dt}$. Find the value of $t$ for which the particle is instantaneously at rest and then determine the displacement of the particle at that instant.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Plotting and Direction of Motion",
+          "target": "Projectile motion",
           "choices": [
-            "Arrows placed along the curve indicating the direction as the parameter $t$ increases",
-            "By the slope of the curve",
-            "By the color of the line",
-            "By the quadrant of the initial point"
-          ],
-          "correct": 0,
-          "answer": "Orientation arrows indicate the forward direction of motion as time/parameter $t$ advances.",
-          "explanation": "Orientation arrows indicate the forward direction of motion as time/parameter $t$ advances."
-        },
-        {
-          "q": "Determine the direction of motion for $x = 3 - t, y = 2t$ as $t$ increases.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Plotting and Direction of Motion",
-          "choices": [
-            "Leftward and upward",
-            "Rightward and upward",
-            "Leftward and downward",
-            "Rightward and downward"
-          ],
-          "correct": 0,
-          "answer": "As $t$ increases, $x = 3 - t$ decreases (leftward) and $y = 2t$ increases (upward).",
-          "explanation": "As $t$ increases, $x = 3 - t$ decreases (leftward) and $y = 2t$ increases (upward).",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (0))**2 + (-2)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 0.0,
-                "y": -2.0,
-                "label": "$(0,-2)$"
-              }
-            ],
-            "width": 230
-          }
-        },
-        {
-          "q": "Eliminate the parameter $t$ from $x = t - 3, y = 2t + 1$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Eliminating the Parameter (Algebraic)",
-          "choices": [
-            "$y = 2x + 7$",
-            "$y = 2x - 5$",
-            "$y = 2x - 7$",
-            "$y = x + 4$"
-          ],
-          "correct": 0,
-          "answer": "Solve for $t$: $t = x + 3$. Substitute into $y$: $y = 2(x + 3) + 1 = 2x + 6 + 1 = 2x + 7$.",
-          "explanation": "Solve for $t$: $t = x + 3$. Substitute into $y$: $y = 2(x + 3) + 1 = 2x + 6 + 1 = 2x + 7$."
-        },
-        {
-          "q": "Eliminate the parameter from $x = t^2, y = 3t$ for $t \\geq 0$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Eliminating the Parameter (Algebraic)",
-          "choices": [
-            "$x = \\frac{y^2}{9}$ for $y \\geq 0$",
-            "$y = 3\\sqrt{x}$",
-            "Both of the above are correct",
-            "$x = 9y^2$"
+            "t=1 s, s=6 m",
+            "t=2 s, s=4 m",
+            "t=3 s, s=2 m",
+            "t=1 s, s=2 m"
           ],
           "correct": 2,
-          "answer": "$t = y/3 \\Rightarrow x = (y/3)^2 = y^2/9$, or equivalently $y = 3\\sqrt{x}$ for $x \\geq 0, y \\geq 0$.",
-          "explanation": "$t = y/3 \\Rightarrow x = (y/3)^2 = y^2/9$, or equivalently $y = 3\\sqrt{x}$ for $x \\geq 0, y \\geq 0$."
+          "answer": "The displacement is given by $s = t^3 - 6t^2 + 9t + 2$. To find the velocity, we differentiate the displacement with respect to time: $v = \\frac{ds}{dt} = \\frac{d}{dt}(t^3 - 6t^2 + 9t + 2) = 3t^2 - 12t + 9$. The particle is instantaneously at rest when its velocity is zero, i.e., $v=0$. So, we set the velocity equation to zero: $3t^2 - 12t + 9 = 0$. Divide by 3: $t^2 - 4t + 3 = 0$. Factorize the quadratic equation: $(t-1)(t-3) = 0$. This gives two possible values for $t$: $t=1$ or $t=3$. The question asks for 'the value of $t$ for which the particle is instantaneously at rest', implying a single specific instant or asking to consider all such instants. In the context of exam questions, when a specific value is sought after and multiple arise, the problem usually intends for the student to analyze further or there's a subtle implication. However, given the structure of finding displacement *at that instant*, it is likely asking for one of these specific times. Let's evaluate the displacement for both. If $t=1$ second: $s = (1)^3 - 6(1)^2 + 9(1) + 2 = 1 - 6 + 9 + 2 = 6$ metres. If $t=3$ seconds: $s = (3)^3 - 6(3)^2 + 9(3) + 2 = 27 - 6(9) + 27 + 2 = 27 - 54 + 27 + 2 = 2$ metres. The question implies finding *a* value of t and the corresponding displacement. Common algebraic traps might involve selecting only one of the roots or miscalculating the displacement. Both $t=1$ and $t=3$ represent instants when the particle is at rest. The question then asks for 'the displacement of the particle at that instant'. This can be interpreted as finding the displacement for one of the times the particle is at rest. Since both are valid, we check the options. Option C provides $t=3$ s, $s=2$ m, which is one of the valid pairs. Common Misconceptions: 1. Forgetting to differentiate correctly: Leads to incorrect velocity equation. 2. Errors in solving the quadratic equation: Missing roots or solving incorrectly. 3. Selecting the wrong time value if not considering all possibilities or misinterpreting the question. 4. Calculation errors when substituting $t$ back into the displacement equation.",
+          "explanation": "The displacement is given by $s = t^3 - 6t^2 + 9t + 2$. To find the velocity, we differentiate the displacement with respect to time: $v = \\frac{ds}{dt} = \\frac{d}{dt}(t^3 - 6t^2 + 9t + 2) = 3t^2 - 12t + 9$. The particle is instantaneously at rest when its velocity is zero, i.e., $v=0$. So, we set the velocity equation to zero: $3t^2 - 12t + 9 = 0$. Divide by 3: $t^2 - 4t + 3 = 0$. Factorize the quadratic equation: $(t-1)(t-3) = 0$. This gives two possible values for $t$: $t=1$ or $t=3$. The question asks for 'the value of $t$ for which the particle is instantaneously at rest', implying a single specific instant or asking to consider all such instants. In the context of exam questions, when a specific value is sought after and multiple arise, the problem usually intends for the student to analyze further or there's a subtle implication. However, given the structure of finding displacement *at that instant*, it is likely asking for one of these specific times. Let's evaluate the displacement for both. If $t=1$ second: $s = (1)^3 - 6(1)^2 + 9(1) + 2 = 1 - 6 + 9 + 2 = 6$ metres. If $t=3$ seconds: $s = (3)^3 - 6(3)^2 + 9(3) + 2 = 27 - 6(9) + 27 + 2 = 27 - 54 + 27 + 2 = 2$ metres. The question implies finding *a* value of t and the corresponding displacement. Common algebraic traps might involve selecting only one of the roots or miscalculating the displacement. Both $t=1$ and $t=3$ represent instants when the particle is at rest. The question then asks for 'the displacement of the particle at that instant'. This can be interpreted as finding the displacement for one of the times the particle is at rest. Since both are valid, we check the options. Option C provides $t=3$ s, $s=2$ m, which is one of the valid pairs. Common Misconceptions: 1. Forgetting to differentiate correctly: Leads to incorrect velocity equation. 2. Errors in solving the quadratic equation: Missing roots or solving incorrectly. 3. Selecting the wrong time value if not considering all possibilities or misinterpreting the question. 4. Calculation errors when substituting $t$ back into the displacement equation."
         },
         {
-          "q": "Eliminate the parameter from $x = e^t, y = 2e^{2t} - 1$.",
+          "q": "The region $R$ in the first quadrant is bounded by the curve $y = \\frac{6}{\\sqrt{3x + 4}}$, the coordinate axes, and the vertical line $x = k$, where $k > 0$. Given that the total area of $R$ is $8$, and the vertical line $x = c$ (where $0 < c < k$) divides $R$ into two regions of equal area, find the exact value of $c$.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Eliminating the Parameter (Algebraic)",
+          "target": "Ellipses and other parametric curves",
           "choices": [
-            "$y = 2x^2 - 1$ for $x > 0$",
-            "$y = 2x - 1$",
-            "$y = e^{2x} - 1$",
-            "$y = 4x^2 - 1$"
+            "$\\frac{5}{3}$",
+            "$2$",
+            "$\\frac{7}{3}$",
+            "$\\frac{13}{27}$"
           ],
           "correct": 0,
-          "answer": "$e^{2t} = (e^t)^2 = x^2$. Since $x = e^t > 0$, $y = 2x^2 - 1$ with domain $x > 0$.",
-          "explanation": "$e^{2t} = (e^t)^2 = x^2$. Since $x = e^t > 0$, $y = 2x^2 - 1$ with domain $x > 0$."
+          "answer": "Step 1: Integrate the function using the reverse chain rule. $\\int 6(3x + 4)^{-\\frac{1}{2}}\\,\\mathrm{d}x = \\frac{6}{\\frac{1}{2} \\cdot 3}(3x + 4)^{\\frac{1}{2}} = 4\\sqrt{3x + 4}$ Step 2: Find the parameter $k$ using the given total area of $8$. $\\mathrm{Area} = \\int_0^k \\frac{6}{\\sqrt{3x + 4}}\\,\\mathrm{d}x = \\left[ 4\\sqrt{3x + 4} \\right]_0^k = 4\\sqrt{3k + 4} - 4\\sqrt{4} = 4\\sqrt{3k + 4} - 8$ Setting this equal to $8$: $4\\sqrt{3k + 4} - 8 = 8 \\Rightarrow 4\\sqrt{3k + 4} = 16 \\Rightarrow \\sqrt{3k + 4} = 4$ Squaring both sides: $3k + 4 = 16 \\Rightarrow 3k = 12 \\Rightarrow k = 4$ Step 3: Determine the value of $c$ that divides the area into two equal halves. Each half has an area of $\\frac{8}{2} = 4$: $\\int_0^c \\frac{6}{\\sqrt{3x + 4}}\\,\\mathrm{d}x = 4\\sqrt{3c + 4} - 8 = 4$ $4\\sqrt{3c + 4} = 12 \\Rightarrow \\sqrt{3c + 4} = 3$ Squaring both sides: $3c + 4 = 9 \\Rightarrow 3c = 5 \\Rightarrow c = \\frac{5}{3}$ Common Misconceptions: - $2$: Incorrectly assumes the line dividing the area in half occurs at the midpoint of the interval, $c = \\frac{k}{2} = 2$, which does not hold for non-constant functions. - $\\frac{7}{3}$: Mistakenly calculates the width of the second region $k - c = 4 - \\frac{5}{3} = \\frac{7}{3}$ instead of the coordinate $c$. - $\\frac{13}{27}$: Forgets to divide by the inner derivative $3$ during integration, leading to an incorrect antiderivative.",
+          "explanation": "Step 1: Integrate the function using the reverse chain rule. $\\int 6(3x + 4)^{-\\frac{1}{2}}\\,\\mathrm{d}x = \\frac{6}{\\frac{1}{2} \\cdot 3}(3x + 4)^{\\frac{1}{2}} = 4\\sqrt{3x + 4}$ Step 2: Find the parameter $k$ using the given total area of $8$. $\\mathrm{Area} = \\int_0^k \\frac{6}{\\sqrt{3x + 4}}\\,\\mathrm{d}x = \\left[ 4\\sqrt{3x + 4} \\right]_0^k = 4\\sqrt{3k + 4} - 4\\sqrt{4} = 4\\sqrt{3k + 4} - 8$ Setting this equal to $8$: $4\\sqrt{3k + 4} - 8 = 8 \\Rightarrow 4\\sqrt{3k + 4} = 16 \\Rightarrow \\sqrt{3k + 4} = 4$ Squaring both sides: $3k + 4 = 16 \\Rightarrow 3k = 12 \\Rightarrow k = 4$ Step 3: Determine the value of $c$ that divides the area into two equal halves. Each half has an area of $\\frac{8}{2} = 4$: $\\int_0^c \\frac{6}{\\sqrt{3x + 4}}\\,\\mathrm{d}x = 4\\sqrt{3c + 4} - 8 = 4$ $4\\sqrt{3c + 4} = 12 \\Rightarrow \\sqrt{3c + 4} = 3$ Squaring both sides: $3c + 4 = 9 \\Rightarrow 3c = 5 \\Rightarrow c = \\frac{5}{3}$ Common Misconceptions: - $2$: Incorrectly assumes the line dividing the area in half occurs at the midpoint of the interval, $c = \\frac{k}{2} = 2$, which does not hold for non-constant functions. - $\\frac{7}{3}$: Mistakenly calculates the width of the second region $k - c = 4 - \\frac{5}{3} = \\frac{7}{3}$ instead of the coordinate $c$. - $\\frac{13}{27}$: Forgets to divide by the inner derivative $3$ during integration, leading to an incorrect antiderivative."
         },
         {
-          "q": "Eliminate the parameter from $x = 3\\cos\\theta, y = 3\\sin\\theta$.",
+          "q": "The curve $C$ has equation $y = \\frac{a x + 6}{x^2 + 3}$ where $a$ is a constant. Given that $C$ has a stationary point at $x = 1$, find the coordinates of the other stationary point of $C$.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Eliminating the Parameter (Trigonometric)",
+          "target": "Finding the parametric derivative",
           "choices": [
-            "$x^2 + y^2 = 9$",
-            "$x^2 + y^2 = 3$",
-            "$9x^2 + 9y^2 = 1$",
-            "$\\frac{x^2}{9} - \\frac{y^2}{9} = 1$"
+            "$(-3, -1)$",
+            "$(-3, 1)$",
+            "$(3, 1)$",
+            "$(-3, -2)$"
           ],
           "correct": 0,
-          "answer": "$\\cos\\theta = x/3, \\sin\\theta = y/3$. Using $\\cos^2\\theta + \\sin^2\\theta = 1$: $(x/3)^2 + (y/3)^2 = 1 \\Rightarrow x^2 + y^2 = 9$.",
-          "explanation": "$\\cos\\theta = x/3, \\sin\\theta = y/3$. Using $\\cos^2\\theta + \\sin^2\\theta = 1$: $(x/3)^2 + (y/3)^2 = 1 \\Rightarrow x^2 + y^2 = 9$."
+          "answer": "To find the unknown parameter $a$, differentiate $y$ with respect to $x$ using the quotient rule: $\\frac{\\mathrm{d}y}{\\mathrm{d}x} = \\frac{a(x^2 + 3) - (ax + 6)(2x)}{(x^2 + 3)^2} = \\frac{3a - 12x - ax^2}{(x^2 + 3)^2}$ At a stationary point, $\\frac{\\mathrm{d}y}{\\mathrm{d}x} = 0$, which requires the numerator to be zero: $3a - 12x - ax^2 = 0$ Given that $x = 1$ is a stationary point: $3a - 12(1) - a(1)^2 = 0 \\Rightarrow 2a - 12 = 0 \\Rightarrow a = 6$ Substitute $a = 6$ back into the numerator of the derivative: $3(6) - 12x - 6x^2 = 18 - 12x - 6x^2 = -6(x^2 + 2x - 3) = 0$ Factoring the quadratic gives: $-6(x + 3)(x - 1) = 0$ Thus, the other stationary point occurs at $x = -3$. Finally, calculate the corresponding $y$-coordinate by substituting $x = -3$ and $a = 6$ into the original equation: $y = \\frac{6(-3) + 6}{(-3)^2 + 3} = \\frac{-18 + 6}{9 + 3} = \\frac{-12}{12} = -1$ Hence, the coordinates of the other stationary point are $(-3, -1)$. Common traps: - Factoring error: incorrectly writing $(x - 3)(x + 1) = 0$ leads to $x = 3$. - Denominator evaluation error: computing $(-3)^2 + 3 = -9 + 3 = -6$ or forgetting to square the negative sign.",
+          "explanation": "To find the unknown parameter $a$, differentiate $y$ with respect to $x$ using the quotient rule: $\\frac{\\mathrm{d}y}{\\mathrm{d}x} = \\frac{a(x^2 + 3) - (ax + 6)(2x)}{(x^2 + 3)^2} = \\frac{3a - 12x - ax^2}{(x^2 + 3)^2}$ At a stationary point, $\\frac{\\mathrm{d}y}{\\mathrm{d}x} = 0$, which requires the numerator to be zero: $3a - 12x - ax^2 = 0$ Given that $x = 1$ is a stationary point: $3a - 12(1) - a(1)^2 = 0 \\Rightarrow 2a - 12 = 0 \\Rightarrow a = 6$ Substitute $a = 6$ back into the numerator of the derivative: $3(6) - 12x - 6x^2 = 18 - 12x - 6x^2 = -6(x^2 + 2x - 3) = 0$ Factoring the quadratic gives: $-6(x + 3)(x - 1) = 0$ Thus, the other stationary point occurs at $x = -3$. Finally, calculate the corresponding $y$-coordinate by substituting $x = -3$ and $a = 6$ into the original equation: $y = \\frac{6(-3) + 6}{(-3)^2 + 3} = \\frac{-18 + 6}{9 + 3} = \\frac{-12}{12} = -1$ Hence, the coordinates of the other stationary point are $(-3, -1)$. Common traps: - Factoring error: incorrectly writing $(x - 3)(x + 1) = 0$ leads to $x = 3$. - Denominator evaluation error: computing $(-3)^2 + 3 = -9 + 3 = -6$ or forgetting to square the negative sign."
         },
         {
-          "q": "Identify the Cartesian equation for $x = 4\\cos\\theta, y = 2\\sin\\theta$.",
+          "q": "A storage bin contains red, blue, and green blocks. The ratio of red blocks to blue blocks is $3:5$. After 12 green blocks are added to the bin, with no other blocks added or removed, the total number of blocks in the bin is 60, and the probability of randomly selecting a green block from the bin is $\\frac{1}{3}$. How many red blocks were in the bin originally?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Eliminating the Parameter (Trigonometric)",
+          "target": "More parametric practice",
           "choices": [
-            "$\\frac{x^2}{16} + \\frac{y^2}{4} = 1$ (an ellipse)",
-            "$x^2 + y^2 = 20$",
-            "$\\frac{x^2}{4} + \\frac{y^2}{16} = 1$",
-            "$\\frac{x^2}{16} - \\frac{y^2}{4} = 1$"
+            "12",
+            "15",
+            "18",
+            "25"
           ],
-          "correct": 0,
-          "answer": "$(x/4)^2 + (y/2)^2 = \\cos^2\\theta + \\sin^2\\theta = 1 \\Rightarrow \\frac{x^2}{16} + \\frac{y^2}{4} = 1$.",
-          "explanation": "$(x/4)^2 + (y/2)^2 = \\cos^2\\theta + \\sin^2\\theta = 1 \\Rightarrow \\frac{x^2}{16} + \\frac{y^2}{4} = 1$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": -1.0,
-                "y": -1.0,
-                "label": "$(-1,-1)$"
-              }
-            ],
-            "width": 230
-          }
+          "correct": 1,
+          "answer": "1. Find the total number of green blocks after the addition: Since the new total is 60 and the probability of selecting a green block is $\\frac{1}{3}$, the number of green blocks is: $60 \\times \\frac{1}{3} = 20$ 2. Determine the number of red and blue blocks: The remaining blocks in the bin are red and blue. Since green blocks account for 20 of the 60 blocks, the combined total of red and blue blocks is: $60 - 20 = 40$ (Alternatively, originally there were $20 - 12 = 8$ green blocks, and the original total was $60 - 12 = 48$ blocks, leaving $48 - 8 = 40$ red and blue blocks.) 3. Use the given ratio to find the number of red blocks: The ratio of red blocks to blue blocks is $3:5$, so red blocks represent $\\frac{3}{3 + 5} = \\frac{3}{8}$ of the red-and-blue total: $\\mathrm{Red\\ blocks} = \\frac{3}{8} \\times 40 = 15$ Common Pitfall: Subtracting only the 12 added green blocks from 60 gives 48. Assuming there were no green blocks originally leads to $\\frac{3}{8} \\times 48 = 18$, which incorrectly ignores the green blocks that were already present.",
+          "explanation": "1. Find the total number of green blocks after the addition: Since the new total is 60 and the probability of selecting a green block is $\\frac{1}{3}$, the number of green blocks is: $60 \\times \\frac{1}{3} = 20$ 2. Determine the number of red and blue blocks: The remaining blocks in the bin are red and blue. Since green blocks account for 20 of the 60 blocks, the combined total of red and blue blocks is: $60 - 20 = 40$ (Alternatively, originally there were $20 - 12 = 8$ green blocks, and the original total was $60 - 12 = 48$ blocks, leaving $48 - 8 = 40$ red and blue blocks.) 3. Use the given ratio to find the number of red blocks: The ratio of red blocks to blue blocks is $3:5$, so red blocks represent $\\frac{3}{3 + 5} = \\frac{3}{8}$ of the red-and-blue total: $\\mathrm{Red\\ blocks} = \\frac{3}{8} \\times 40 = 15$ Common Pitfall: Subtracting only the 12 added green blocks from 60 gives 48. Assuming there were no green blocks originally leads to $\\frac{3}{8} \\times 48 = 18$, which incorrectly ignores the green blocks that were already present."
+        },
+        {
+          "q": "In the diagram below, line segment DE is parallel to BC. Given that AD = 6, DB = 4, and DE = 12, find the length of BC.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Graphing a parametric curve after elimination",
+          "choices": [
+            "18",
+            "20",
+            "30",
+            "15"
+          ],
+          "correct": 1,
+          "answer": "Since DE is parallel to BC, triangle ADE is similar to triangle ABC (AA similarity: $\\angle DAE = \\angle BAC$ as they are the same angle, and $\\angle ADE = \\angle ABC$ as corresponding angles when DE || BC and AB is a transversal). Because the triangles are similar, the ratio of corresponding sides is equal: $\\frac{AD}{AB} = \\frac{AE}{AC} = \\frac{DE}{BC}$ We are given AD = 6 and DB = 4. Therefore, AB = AD + DB = 6 + 4 = 10. Using the ratio of similarity: $\\frac{AD}{AB} = \\frac{DE}{BC}$ Substitute the known values: $\\frac{6}{10} = \\frac{12}{BC}$ To solve for BC, we can cross-multiply: $6 \\times BC = 10 \\times 12$ $6 \\times BC = 120$ Now, divide by 6: $BC = \\frac{120}{6}$ $BC = 20$ Common algebraic traps might involve incorrectly calculating AB, or misapplying the similarity ratio (e.g., using AD/DB instead of AD/AB).",
+          "explanation": "Since DE is parallel to BC, triangle ADE is similar to triangle ABC (AA similarity: $\\angle DAE = \\angle BAC$ as they are the same angle, and $\\angle ADE = \\angle ABC$ as corresponding angles when DE || BC and AB is a transversal). Because the triangles are similar, the ratio of corresponding sides is equal: $\\frac{AD}{AB} = \\frac{AE}{AC} = \\frac{DE}{BC}$ We are given AD = 6 and DB = 4. Therefore, AB = AD + DB = 6 + 4 = 10. Using the ratio of similarity: $\\frac{AD}{AB} = \\frac{DE}{BC}$ Substitute the known values: $\\frac{6}{10} = \\frac{12}{BC}$ To solve for BC, we can cross-multiply: $6 \\times BC = 10 \\times 12$ $6 \\times BC = 120$ Now, divide by 6: $BC = \\frac{120}{6}$ $BC = 20$ Common algebraic traps might involve incorrectly calculating AB, or misapplying the similarity ratio (e.g., using AD/DB instead of AD/AB)."
+        },
+        {
+          "q": "A particle moves along a straight line. Its velocity, $v$ m/s, at time $t$ seconds is given by $v = 3t - 2$. Find the displacement of the particle during the first 4 seconds of its motion.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Restricting the parameter domain",
+          "choices": [
+            "16 m",
+            "20 m",
+            "24 m",
+            "28 m"
+          ],
+          "correct": 1,
+          "answer": "The displacement of the particle can be found by integrating the velocity function with respect to time. The displacement $s$ is given by: $s = \\int v \\, dt$ In this case, $v = 3t - 2$. $s = \\int (3t - 2) \\, dt$ Integrating, we get: $s = \\frac{3}{2}t^2 - 2t + C$ To find the displacement during the first 4 seconds, we evaluate the definite integral from $t=0$ to $t=4$. We can assume $C=0$ for calculating the change in displacement from $t=0$. $s(4) - s(0) = \\left[ \\frac{3}{2}t^2 - 2t \\right]_0^4$ $s(4) - s(0) = \\left( \\frac{3}{2}(4)^2 - 2(4) \\right) - \\left( \\frac{3}{2}(0)^2 - 2(0) \\right)$ $s(4) - s(0) = \\left( \\frac{3}{2}(16) - 8 \\right) - (0)$ $s(4) - s(0) = (3 \\times 8 - 8)$ $s(4) - s(0) = (24 - 8)$ $s(4) - s(0) = 16$ Therefore, the displacement of the particle during the first 4 seconds is 16 m.",
+          "explanation": "The displacement of the particle can be found by integrating the velocity function with respect to time. The displacement $s$ is given by: $s = \\int v \\, dt$ In this case, $v = 3t - 2$. $s = \\int (3t - 2) \\, dt$ Integrating, we get: $s = \\frac{3}{2}t^2 - 2t + C$ To find the displacement during the first 4 seconds, we evaluate the definite integral from $t=0$ to $t=4$. We can assume $C=0$ for calculating the change in displacement from $t=0$. $s(4) - s(0) = \\left[ \\frac{3}{2}t^2 - 2t \\right]_0^4$ $s(4) - s(0) = \\left( \\frac{3}{2}(4)^2 - 2(4) \\right) - \\left( \\frac{3}{2}(0)^2 - 2(0) \\right)$ $s(4) - s(0) = \\left( \\frac{3}{2}(16) - 8 \\right) - (0)$ $s(4) - s(0) = (3 \\times 8 - 8)$ $s(4) - s(0) = (24 - 8)$ $s(4) - s(0) = 16$ Therefore, the displacement of the particle during the first 4 seconds is 16 m."
+        },
+        {
+          "q": "A particle has initial velocity $u=3$ m/s and constant acceleration $a=3$ m/s$^2$. Find its speed after travelling a displacement $s=11$ m.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Parametrizing a line segment",
+          "choices": [
+            "$\\sqrt{79}$",
+            "$\\sqrt{71}$",
+            "75",
+            "$\\sqrt{75}$"
+          ],
+          "correct": 3,
+          "answer": "$v^2=u^2+2as=(3)^2+2(3)(11)=75 \\Rightarrow v=\\sqrt{75}$ m/s",
+          "explanation": "$v^2=u^2+2as=(3)^2+2(3)(11)=75 \\Rightarrow v=\\sqrt{75}$ m/s"
         }
       ]
     },
@@ -503,175 +398,258 @@
       "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
       "questions": [
         {
-          "q": "What curve is traced by $x = 3\\sec\\theta, y = 2\\tan\\theta$?",
+          "q": "Consider the function $f(x) = x^3 - 6x^2 + 9x + 1$. A line tangent to the graph of $f(x)$ at $x = 1$ intersects the graph at another point $P$. Determine the x-coordinate of point $P$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Eliminating the Parameter (Trigonometric)",
+          "target": "Parametric speed and motion review",
           "choices": [
-            "A hyperbola: $\\frac{x^2}{9} - \\frac{y^2}{4} = 1$",
-            "An ellipse: $\\frac{x^2}{9} + \\frac{y^2}{4} = 1$",
-            "A parabola: $y = 2x^2$",
-            "A circle: $x^2 + y^2 = 13$"
+            "4",
+            "5",
+            "3",
+            "2"
           ],
           "correct": 0,
-          "answer": "Using the identity $\\sec^2\\theta - \\tan^2\\theta = 1$: $(x/3)^2 - (y/2)^2 = 1 \\Rightarrow \\frac{x^2}{9} - \\frac{y^2}{4} = 1$.",
-          "explanation": "Using the identity $\\sec^2\\theta - \\tan^2\\theta = 1$: $(x/3)^2 - (y/2)^2 = 1 \\Rightarrow \\frac{x^2}{9} - \\frac{y^2}{4} = 1$."
-        },
-        {
-          "q": "State the standard parametric equations for projectile motion launched with speed $v_0$ at angle $\\theta$ from $(0, h_0)$ (with $g = 32\\mathrm{\\ ft/s}^2$).",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Projectile Motion Applications",
-          "choices": [
-            "$x(t) = (v_0\\cos\\theta)t, y(t) = -16t^2 + (v_0\\sin\\theta)t + h_0$",
-            "$x(t) = v_0 t, y(t) = -32t^2 + h_0$",
-            "$x(t) = (v_0\\sin\\theta)t, y(t) = -16t^2 + h_0$",
-            "$x(t) = (v_0\\cos\\theta)t, y(t) = (v_0\\sin\\theta)t$"
-          ],
-          "correct": 0,
-          "answer": "Horizontal velocity is constant ($v_0\\cos\\theta$), and vertical position is governed by gravity: $y(t) = -\\frac{1}{2}gt^2 + v_{0y}t + h_0$.",
-          "explanation": "Horizontal velocity is constant ($v_0\\cos\\theta$), and vertical position is governed by gravity: $y(t) = -\\frac{1}{2}gt^2 + v_{0y}t + h_0$."
-        },
-        {
-          "q": "A ball is kicked from ground level at $64\\mathrm{\\ ft/s}$ at an angle of $30^\\circ$. At what time does it hit the ground?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Projectile Motion Applications",
-          "choices": [
-            "$2\\mathrm{\\ seconds}$",
-            "$1\\mathrm{\\ second}$",
-            "$4\\mathrm{\\ seconds}$",
-            "$3\\mathrm{\\ seconds}$"
-          ],
-          "correct": 0,
-          "answer": "$v_{0y} = 64\\sin(30^\\circ) = 32\\mathrm{\\ ft/s}$. $y(t) = -16t^2 + 32t = -16t(t - 2) = 0 \\Rightarrow t = 2\\mathrm{\\ s}$.",
-          "explanation": "$v_{0y} = 64\\sin(30^\\circ) = 32\\mathrm{\\ ft/s}$. $y(t) = -16t^2 + 32t = -16t(t - 2) = 0 \\Rightarrow t = 2\\mathrm{\\ s}$."
-        },
-        {
-          "q": "In the previous question, what is the horizontal range of the ball?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Projectile Motion Applications",
-          "choices": [
-            "$64\\sqrt{3}\\mathrm{\\ ft}$",
-            "$128\\mathrm{\\ ft}$",
-            "$32\\sqrt{3}\\mathrm{\\ ft}$",
-            "$64\\mathrm{\\ ft}$"
-          ],
-          "correct": 0,
-          "answer": "$x(t) = (64\\cos 30^\\circ)t = (32\\sqrt{3})(2) = 64\\sqrt{3}\\mathrm{\\ ft}$.",
-          "explanation": "$x(t) = (64\\cos 30^\\circ)t = (32\\sqrt{3})(2) = 64\\sqrt{3}\\mathrm{\\ ft}$."
-        },
-        {
-          "q": "Eliminate the parameter: $x=2+5\\cos t$, $y=0+5\\sin t$.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Projectile Motion Applications",
-          "choices": [
-            "$(x-2)^2+(y-0)^2=5$",
-            "$(x-2)^2+(y-0)^2=25$",
-            "$(x-0)^2+(y-2)^2=25$",
-            "$\\frac{(x-2)^2}{25}+\\frac{(y-0)^2}{25}=1$"
-          ],
-          "correct": 1,
-          "answer": "Since $\\cos^2t+\\sin^2t=1$: $\\left(\\frac{x-2}{5}\\right)^2+\\left(\\frac{y-0}{5}\\right)^2=1$, giving $(x-2)^2+(y-0)^2=25$.",
-          "explanation": "Since $\\cos^2t+\\sin^2t=1$: $\\left(\\frac{x-2}{5}\\right)^2+\\left(\\frac{y-0}{5}\\right)^2=1$, giving $(x-2)^2+(y-0)^2=25$.",
+          "answer": "First, find the derivative of $f(x)$ to determine the slope of the tangent line: $f'(x) = 3x^2 - 12x + 9$. The slope of the tangent line at $x = 1$ is $f'(1) = 3(1)^2 - 12(1) + 9 = 3 - 12 + 9 = 0$. The y-coordinate of the point of tangency is $f(1) = (1)^3 - 6(1)^2 + 9(1) + 1 = 1 - 6 + 9 + 1 = 5$. The equation of the tangent line is $y - y_1 = m(x - x_1)$, which becomes $y - 5 = 0(x - 1)$, so $y = 5$. To find the intersection points, set $f(x)$ equal to the tangent line's equation: $x^3 - 6x^2 + 9x + 1 = 5$. Rearrange the equation: $x^3 - 6x^2 + 9x - 4 = 0$. We know that $x = 1$ is a point of tangency, which means it is a repeated root. Therefore, $(x - 1)^2$ must be a factor of $x^3 - 6x^2 + 9x - 4$. Expanding $(x - 1)^2 = x^2 - 2x + 1$. We can use polynomial division or synthetic division to find the other factor. Alternatively, we can reason that if $x = 1$ is a repeated root, the sum of the roots must be related to the coefficient of $x^2$. Let the roots be $1, 1, r$. According to Vieta's formulas, the sum of the roots is $-(-6)/1 = 6$. So, $1 + 1 + r = 6$, which gives $r = 4$. Thus, the other intersection point has an x-coordinate of 4.",
+          "explanation": "First, find the derivative of $f(x)$ to determine the slope of the tangent line: $f'(x) = 3x^2 - 12x + 9$. The slope of the tangent line at $x = 1$ is $f'(1) = 3(1)^2 - 12(1) + 9 = 3 - 12 + 9 = 0$. The y-coordinate of the point of tangency is $f(1) = (1)^3 - 6(1)^2 + 9(1) + 1 = 1 - 6 + 9 + 1 = 5$. The equation of the tangent line is $y - y_1 = m(x - x_1)$, which becomes $y - 5 = 0(x - 1)$, so $y = 5$. To find the intersection points, set $f(x)$ equal to the tangent line's equation: $x^3 - 6x^2 + 9x + 1 = 5$. Rearrange the equation: $x^3 - 6x^2 + 9x - 4 = 0$. We know that $x = 1$ is a point of tangency, which means it is a repeated root. Therefore, $(x - 1)^2$ must be a factor of $x^3 - 6x^2 + 9x - 4$. Expanding $(x - 1)^2 = x^2 - 2x + 1$. We can use polynomial division or synthetic division to find the other factor. Alternatively, we can reason that if $x = 1$ is a repeated root, the sum of the roots must be related to the coefficient of $x^2$. Let the roots be $1, 1, r$. According to Vieta's formulas, the sum of the roots is $-(-6)/1 = 6$. So, $1 + 1 + r = 6$, which gives $r = 4$. Thus, the other intersection point has an x-coordinate of 4.",
           "figure": {
-            "type": "triangle",
-            "vertices": [
-              [
-                0,
-                0
-              ],
-              [
-                15.0,
-                0
-              ],
-              [
-                0,
-                8.0
-              ]
+            "type": "plot",
+            "fns": [
+              "x**3 - 6*x**2 + 9*x + 1",
+              "5"
             ],
-            "labels": [
-              "$C$",
-              "$B$",
-              "$A$"
-            ],
-            "side_labels": [
-              "$15$",
-              "$17$",
-              "$8$"
-            ],
-            "right_angle_at": 0,
-            "angle_marks": [
+            "xmin": -1.0,
+            "xmax": 5.0,
+            "ymin": 0.0,
+            "ymax": 7.0,
+            "width": 230,
+            "point_labels": [
               {
-                "vertex": 1,
-                "label": "$\\theta$"
+                "x": 1.0,
+                "y": 5.0,
+                "label": "(1, 5)"
               }
-            ],
-            "fill": true,
-            "width": 220
+            ]
           }
         },
         {
-          "q": "Eliminate the parameter: $x=0+4\\cos t$, $y=-1+4\\sin t$.",
+          "q": "The diagram shows the graphs of two linear equations. The point of intersection of the two lines represents the solution to the system of simultaneous equations. Find the coordinates of the point of intersection.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Eliminating the parameter",
           "choices": [
-            "$\\frac{(x-0)^2}{16}+\\frac{(y+1)^2}{16}=1$",
-            "$(x+1)^2+(y-0)^2=16$",
-            "$(x-0)^2+(y+1)^2=4$",
-            "$(x-0)^2+(y+1)^2=16$"
+            "(1, 2)",
+            "(2, 1)",
+            "(3, 0)",
+            "(0, 3)"
           ],
-          "correct": 3,
-          "answer": "Since $\\cos^2t+\\sin^2t=1$: $\\left(\\frac{x-0}{4}\\right)^2+\\left(\\frac{y+1}{4}\\right)^2=1$, giving $(x-0)^2+(y+1)^2=16$.",
-          "explanation": "Since $\\cos^2t+\\sin^2t=1$: $\\left(\\frac{x-0}{4}\\right)^2+\\left(\\frac{y+1}{4}\\right)^2=1$, giving $(x-0)^2+(y+1)^2=16$."
+          "correct": 1,
+          "answer": "The point of intersection of two lines is the solution to the system of simultaneous equations that represent these lines. By visually inspecting the graph, we can identify the coordinates where the two lines cross. The first line appears to pass through the points (0, 3) and (3, 0). The second line appears to pass through the points (0, 1) and (2, 3). Let's find the equations of the lines. For the first line: Gradient $m_1 = \\frac{0-3}{3-0} = \\frac{-3}{3} = -1$. Using the point-slope form with (3, 0): $y - 0 = -1(x - 3) \\Rightarrow y = -x + 3$. For the second line: Gradient $m_2 = \\frac{3-1}{2-0} = \\frac{2}{2} = 1$. Using the point-slope form with (0, 1): $y - 1 = 1(x - 0) \\Rightarrow y = x + 1$. Now, we solve the system of equations: 1) $y = -x + 3$ 2) $y = x + 1$ Set the expressions for y equal to each other: $-x + 3 = x + 1$ $3 - 1 = x + x$ $2 = 2x$ $x = 1$ Substitute x = 1 into either equation to find y. Using equation 2: $y = 1 + 1 \\Rightarrow y = 2$. The point of intersection is (1, 2).",
+          "explanation": "The point of intersection of two lines is the solution to the system of simultaneous equations that represent these lines. By visually inspecting the graph, we can identify the coordinates where the two lines cross. The first line appears to pass through the points (0, 3) and (3, 0). The second line appears to pass through the points (0, 1) and (2, 3). Let's find the equations of the lines. For the first line: Gradient $m_1 = \\frac{0-3}{3-0} = \\frac{-3}{3} = -1$. Using the point-slope form with (3, 0): $y - 0 = -1(x - 3) \\Rightarrow y = -x + 3$. For the second line: Gradient $m_2 = \\frac{3-1}{2-0} = \\frac{2}{2} = 1$. Using the point-slope form with (0, 1): $y - 1 = 1(x - 0) \\Rightarrow y = x + 1$. Now, we solve the system of equations: 1) $y = -x + 3$ 2) $y = x + 1$ Set the expressions for y equal to each other: $-x + 3 = x + 1$ $3 - 1 = x + x$ $2 = 2x$ $x = 1$ Substitute x = 1 into either equation to find y. Using equation 2: $y = 1 + 1 \\Rightarrow y = 2$. The point of intersection is (1, 2).",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-x + 3",
+              "x + 1"
+            ],
+            "xmin": -1.0,
+            "xmax": 4.0,
+            "ymin": -1.0,
+            "ymax": 4.0,
+            "width": 230
+          }
         },
         {
-          "q": "Eliminate the parameter: $x=0+3\\cos t$, $y=-1+3\\sin t$.",
+          "q": "The closed interval $[12, 48]$ is shown on the number line below. How many integers $x$ in this interval satisfy the linear congruence $2x \\equiv 1 (\\mathrm{mod}\\ 5) \\mathrm{?}$",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Projectile motion",
           "choices": [
-            "$(x-0)^2+(y+1)^2=9$",
-            "$(x-0)^2+(y+1)^2=3$",
-            "$\\frac{(x-0)^2}{9}+\\frac{(y+1)^2}{9}=1$",
-            "$(x+1)^2+(y-0)^2=9$"
+            "6",
+            "7",
+            "8",
+            "9"
           ],
-          "correct": 0,
-          "answer": "Since $\\cos^2t+\\sin^2t=1$: $\\left(\\frac{x-0}{3}\\right)^2+\\left(\\frac{y+1}{3}\\right)^2=1$, giving $(x-0)^2+(y+1)^2=9$.",
-          "explanation": "Since $\\cos^2t+\\sin^2t=1$: $\\left(\\frac{x-0}{3}\\right)^2+\\left(\\frac{y+1}{3}\\right)^2=1$, giving $(x-0)^2+(y+1)^2=9$."
+          "correct": 2,
+          "answer": "Step 1: Solve the linear congruence $2x \\equiv 1 (\\mathrm{mod}\\ 5)$. Since $\\gcd(2, 5) = 1$, the modular inverse of $2$ modulo $5$ exists. We observe that $2 \\times 3 = 6 \\equiv 1 (\\mathrm{mod}\\ 5)$, so the inverse is $3$. Multiplying both sides by $3$: $x \\equiv 3 (\\mathrm{mod}\\ 5)$ Thus, the solutions are integers of the form $x = 5k + 3$ for some integer $k$. Step 2: Restrict to the closed interval $[12, 48]$: $12 \\leq 5k + 3 \\leq 48$ Subtract $3$ from each part: $9 \\leq 5k \\leq 45$ Divide by $5$: $1.8 \\leq k \\leq 9$ Since $k$ must be an integer, $k$ can take any value in the set $\\{2, 3, 4, 5, 6, 7, 8, 9\\}$. Step 3: Count the valid integers: The number of integer values of $k$ is $9 - 2 + 1 = 8$. The corresponding values of $x$ are $13, 18, 23, 28, 33, 38, 43,$ and $48$. A common misconception is computing $\\frac{48 - 13}{5} = 7$ and forgetting to add $1$ for an inclusive count (fencepost error), which incorrectly leads to 7.",
+          "explanation": "Step 1: Solve the linear congruence $2x \\equiv 1 (\\mathrm{mod}\\ 5)$. Since $\\gcd(2, 5) = 1$, the modular inverse of $2$ modulo $5$ exists. We observe that $2 \\times 3 = 6 \\equiv 1 (\\mathrm{mod}\\ 5)$, so the inverse is $3$. Multiplying both sides by $3$: $x \\equiv 3 (\\mathrm{mod}\\ 5)$ Thus, the solutions are integers of the form $x = 5k + 3$ for some integer $k$. Step 2: Restrict to the closed interval $[12, 48]$: $12 \\leq 5k + 3 \\leq 48$ Subtract $3$ from each part: $9 \\leq 5k \\leq 45$ Divide by $5$: $1.8 \\leq k \\leq 9$ Since $k$ must be an integer, $k$ can take any value in the set $\\{2, 3, 4, 5, 6, 7, 8, 9\\}$. Step 3: Count the valid integers: The number of integer values of $k$ is $9 - 2 + 1 = 8$. The corresponding values of $x$ are $13, 18, 23, 28, 33, 38, 43,$ and $48$. A common misconception is computing $\\frac{48 - 13}{5} = 7$ and forgetting to add $1$ for an inclusive count (fencepost error), which incorrectly leads to 7.",
+          "figure": {
+            "type": "numberline",
+            "min": 10.0,
+            "max": 50.0,
+            "marks": [],
+            "shade": null,
+            "width": 250
+          }
         },
         {
-          "q": "Eliminate the parameter: $x=2+2\\cos t$, $y=-1+2\\sin t$.",
+          "q": "The graph of the exponential function $f(x) = a \\cdot \\log_3(x-h) + k$ is shown below. The function has a vertical asymptote at $x = 3$ and passes through the points $(4, 5)$ and $(12, 7)$. Determine the value of the parameter $a$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Ellipses and other parametric curves",
           "choices": [
-            "$(x-2)^2+(y+1)^2=4$",
-            "$(x-2)^2+(y+1)^2=2$",
-            "$\\frac{(x-2)^2}{4}+\\frac{(y+1)^2}{4}=1$",
-            "$(x+1)^2+(y-2)^2=4$"
+            "1",
+            "2",
+            "1/2",
+            "4"
           ],
           "correct": 0,
-          "answer": "Since $\\cos^2t+\\sin^2t=1$: $\\left(\\frac{x-2}{2}\\right)^2+\\left(\\frac{y+1}{2}\\right)^2=1$, giving $(x-2)^2+(y+1)^2=4$.",
-          "explanation": "Since $\\cos^2t+\\sin^2t=1$: $\\left(\\frac{x-2}{2}\\right)^2+\\left(\\frac{y+1}{2}\\right)^2=1$, giving $(x-2)^2+(y+1)^2=4$."
+          "answer": "The general form of the logarithmic function is $f(x) = a \\cdot \\log_b(x-h) + k$. The vertical asymptote occurs at $x = h$, so we are given that $h = 3$. Thus, the function can be written as $f(x) = a \\cdot \\log_3(x-3) + k$. We are given two points on the graph: $(4, 5)$ and $(12, 7)$. Substituting these points into the function, we get a system of two equations: 1) $5 = a \\cdot \\log_3(4-3) + k$ $5 = a \\cdot \\log_3(1) + k$ Since $\\log_3(1) = 0$, this simplifies to $5 = k$. 2) $7 = a \\cdot \\log_3(12-3) + k$ $7 = a \\cdot \\log_3(9) + k$ Since $\\log_3(9) = 2$, this becomes $7 = 2a + k$. Now substitute the value of $k$ from the first equation into the second equation: $7 = 2a + 5$ Subtract 5 from both sides: $2 = 2a$ Divide by 2: $a = 1$. Therefore, the value of the parameter $a$ is 1.",
+          "explanation": "The general form of the logarithmic function is $f(x) = a \\cdot \\log_b(x-h) + k$. The vertical asymptote occurs at $x = h$, so we are given that $h = 3$. Thus, the function can be written as $f(x) = a \\cdot \\log_3(x-3) + k$. We are given two points on the graph: $(4, 5)$ and $(12, 7)$. Substituting these points into the function, we get a system of two equations: 1) $5 = a \\cdot \\log_3(4-3) + k$ $5 = a \\cdot \\log_3(1) + k$ Since $\\log_3(1) = 0$, this simplifies to $5 = k$. 2) $7 = a \\cdot \\log_3(12-3) + k$ $7 = a \\cdot \\log_3(9) + k$ Since $\\log_3(9) = 2$, this becomes $7 = 2a + k$. Now substitute the value of $k$ from the first equation into the second equation: $7 = 2a + 5$ Subtract 5 from both sides: $2 = 2a$ Divide by 2: $a = 1$. Therefore, the value of the parameter $a$ is 1.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x - 3"
+            ],
+            "xmin": 0.0,
+            "xmax": 15.0,
+            "ymin": -5.0,
+            "ymax": 10.0,
+            "width": 230,
+            "point_labels": [
+              {
+                "x": 4.0,
+                "y": 5.0,
+                "label": "(4, 5)"
+              },
+              {
+                "x": 12.0,
+                "y": 7.0,
+                "label": "(12, 7)"
+              }
+            ]
+          }
         },
         {
-          "q": "Eliminate the parameter: $x=t$, $y=-1t+5$.",
+          "q": "A curve is given by the equation $y = x^3 - 3x^2 + 2x$. Find the gradient of the curve at $x = 2$.",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Finding the parametric derivative",
           "choices": [
-            "$x=-1y+5$",
-            "$y=-1x$",
-            "$y=-1x+5$",
-            "$y=1x+5$"
+            "1",
+            "-2",
+            "2",
+            "0"
           ],
-          "correct": 2,
-          "answer": "Substitute $t=x$ into the equation for $y$: $y=-1x+5$.",
-          "explanation": "Substitute $t=x$ into the equation for $y$: $y=-1x+5$."
+          "correct": 1,
+          "answer": "To find the gradient of the curve, we need to find the first derivative of the equation with respect to $x$. The derivative of $y = x^3 - 3x^2 + 2x$ is $\\frac{dy}{dx} = 3x^2 - 6x + 2$. To find the gradient at $x = 2$, substitute $x = 2$ into the derivative: $\\frac{dy}{dx} |_{x=2} = 3(2)^2 - 6(2) + 2 = 3(4) - 12 + 2 = 12 - 12 + 2 = 2$.",
+          "explanation": "To find the gradient of the curve, we need to find the first derivative of the equation with respect to $x$. The derivative of $y = x^3 - 3x^2 + 2x$ is $\\frac{dy}{dx} = 3x^2 - 6x + 2$. To find the gradient at $x = 2$, substitute $x = 2$ into the derivative: $\\frac{dy}{dx} |_{x=2} = 3(2)^2 - 6(2) + 2 = 3(4) - 12 + 2 = 12 - 12 + 2 = 2$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**3 - 3*x**2 + 2*x"
+            ],
+            "xmin": -1.0,
+            "xmax": 4.0,
+            "ymin": -2.0,
+            "ymax": 4.0,
+            "width": 230
+          }
+        },
+        {
+          "q": "Find the equation of the line through $(0,-7)$ and $(-4,-5)$, in the form $y=mx+c$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "More parametric practice",
+          "choices": [
+            "y=-1/2x+7",
+            "y=-1/2x-7",
+            "y=-1/2x-6",
+            "y=1/2x-7"
+          ],
+          "correct": 1,
+          "answer": "Using $y-y_1=m(x-x_1)$: $y+7=-1/2(x-0)$, which rearranges to $y=-1/2x-7$.",
+          "explanation": "Using $y-y_1=m(x-x_1)$: $y+7=-1/2(x-0)$, which rearranges to $y=-1/2x-7$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-0.5*x - 7"
+            ],
+            "xmin": -6.0,
+            "xmax": 2.0,
+            "ymin": -9.0,
+            "ymax": -3.0,
+            "width": 230,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -7.0,
+                "label": "(0,-7)"
+              },
+              {
+                "x": -4.0,
+                "y": -5.0,
+                "label": "(-4,-5)"
+              }
+            ]
+          }
+        },
+        {
+          "q": "Find the slope of the line through $(-4,-2)$ and $(-7,-4)$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Graphing a parametric curve after elimination",
+          "choices": [
+            "2/3",
+            "-4/3",
+            "8/3",
+            "13/6"
+          ],
+          "correct": 0,
+          "answer": "$m=\\frac{-4 + 2}{-7 + 4} = 2/3$.",
+          "explanation": "$m=\\frac{-4 + 2}{-7 + 4} = 2/3$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.67*x + 0.67"
+            ],
+            "xmin": -9.0,
+            "xmax": -2.0,
+            "ymin": -6.0,
+            "ymax": 3.0,
+            "width": 230,
+            "point_labels": [
+              {
+                "x": -4.0,
+                "y": -2.0,
+                "label": "(-4,-2)"
+              },
+              {
+                "x": -7.0,
+                "y": -4.0,
+                "label": "(-7,-4)"
+              }
+            ]
+          }
+        },
+        {
+          "q": "A particle of mass $2 \\mathrm{\\ kg}$ is acted upon by a constant force $\\mathbf{F}$. At time $t=0$, the particle is at the origin $(0,0)$ and has velocity $\\mathbf{v} = (3\\mathbf{i} + 4\\mathbf{j}) \\mathrm{\\ m/s}$. At time $t=2 \\mathrm{\\ s}$, the particle's velocity is $\\mathbf{v} = (7\\mathbf{i} + 12\\mathbf{j}) \\mathrm{\\ m/s}$. Determine the magnitude of the constant force $\\mathbf{F}$ acting on the particle.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Restricting the parameter domain",
+          "choices": [
+            "$\\frac{5\\sqrt{17}}{2} \\mathrm{\\ N}$",
+            "$5\\sqrt{17} \\mathrm{\\ N}$",
+            "$\\frac{5\\sqrt{2}}{2} \\mathrm{\\ N}$",
+            "$5\\sqrt{2} \\mathrm{\\ N}$"
+          ],
+          "correct": 1,
+          "answer": "We are given the mass of the particle $m = 2 \\mathrm{\\ kg}$. The initial velocity at $t=0$ is $\\mathbf{v}_0 = (2\\mathbf{i} + 8\\mathbf{j}) \\mathrm{\\ m/s}$. The final velocity at $t=2 \\mathrm{\\ s}$ is $\\mathbf{v}_f = (7\\mathbf{i} + 28\\mathbf{j}) \\mathrm{\\ m/s}$. The change in velocity is $\\Delta \\mathbf{v} = \\mathbf{v}_f - \\mathbf{v}_0$. $\\Delta \\mathbf{v} = (7\\mathbf{i} + 28\\mathbf{j}) - (2\\mathbf{i} + 8\\mathbf{j}) = (7-2)\\mathbf{i} + (28-8)\\mathbf{j} = 5\\mathbf{i} + 20\\mathbf{j} \\mathrm{\\ m/s}$. The time interval is $\\Delta t = 2 \\mathrm{\\ s}$. Since the force is constant, the acceleration $\\mathbf{a}$ is also constant. We can calculate the acceleration using the formula $\\mathbf{a} = \\frac{\\Delta \\mathbf{v}}{\\Delta t}$. $\\mathbf{a} = \\frac{5\\mathbf{i} + 20\\mathbf{j}}{2} = \\left(\\frac{5}{2}\\right)\\mathbf{i} + \\left(\\frac{20}{2}\\right)\\mathbf{j} = 2.5\\mathbf{i} + 10\\mathbf{j} \\mathrm{\\ m/s}^2$. According to Newton's second law of motion, the force $\\mathbf{F}$ acting on the particle is given by $\\mathbf{F} = m\\mathbf{a}$. $\\mathbf{F} = 2 \\times (2.5\\mathbf{i} + 10\\mathbf{j}) = (2 \\times 2.5)\\mathbf{i} + (2 \\times 10)\\mathbf{j} = 5\\mathbf{i} + 20\\mathbf{j} \\mathrm{\\ N}$. The magnitude of the force $\\mathbf{F}$ is calculated as $|\\mathbf{F}| = \\sqrt{F_x^2 + F_y^2}$. $|\\mathbf{F}| = \\sqrt{5^2 + 20^2} = \\sqrt{25 + 400} = \\sqrt{425}$. To simplify $\\sqrt{425}$, we find the prime factorization of 425: $425 = 5 \\times 85 = 5 \\times 5 \\times 17 = 5^2 \\times 17$. So, $\\sqrt{425} = \\sqrt{5^2 \\times 17} = \\sqrt{5^2} \\times \\sqrt{17} = 5\\sqrt{17}$. Therefore, the magnitude of the constant force $\\mathbf{F}$ is $5\\sqrt{17} \\mathrm{\\ N}$. Comparing this with the given choices: Choice A: $\\frac{5\\sqrt{17}}{2} \\mathrm{\\ N}$ Choice B: $5\\sqrt{17} \\mathrm{\\ N}$ Choice C: $\\frac{5\\sqrt{2}}{2} \\mathrm{\\ N}$ Choice D: $5\\sqrt{2} \\mathrm{\\ N}$ Our calculated magnitude matches Choice B.",
+          "explanation": "We are given the mass of the particle $m = 2 \\mathrm{\\ kg}$. The initial velocity at $t=0$ is $\\mathbf{v}_0 = (2\\mathbf{i} + 8\\mathbf{j}) \\mathrm{\\ m/s}$. The final velocity at $t=2 \\mathrm{\\ s}$ is $\\mathbf{v}_f = (7\\mathbf{i} + 28\\mathbf{j}) \\mathrm{\\ m/s}$. The change in velocity is $\\Delta \\mathbf{v} = \\mathbf{v}_f - \\mathbf{v}_0$. $\\Delta \\mathbf{v} = (7\\mathbf{i} + 28\\mathbf{j}) - (2\\mathbf{i} + 8\\mathbf{j}) = (7-2)\\mathbf{i} + (28-8)\\mathbf{j} = 5\\mathbf{i} + 20\\mathbf{j} \\mathrm{\\ m/s}$. The time interval is $\\Delta t = 2 \\mathrm{\\ s}$. Since the force is constant, the acceleration $\\mathbf{a}$ is also constant. We can calculate the acceleration using the formula $\\mathbf{a} = \\frac{\\Delta \\mathbf{v}}{\\Delta t}$. $\\mathbf{a} = \\frac{5\\mathbf{i} + 20\\mathbf{j}}{2} = \\left(\\frac{5}{2}\\right)\\mathbf{i} + \\left(\\frac{20}{2}\\right)\\mathbf{j} = 2.5\\mathbf{i} + 10\\mathbf{j} \\mathrm{\\ m/s}^2$. According to Newton's second law of motion, the force $\\mathbf{F}$ acting on the particle is given by $\\mathbf{F} = m\\mathbf{a}$. $\\mathbf{F} = 2 \\times (2.5\\mathbf{i} + 10\\mathbf{j}) = (2 \\times 2.5)\\mathbf{i} + (2 \\times 10)\\mathbf{j} = 5\\mathbf{i} + 20\\mathbf{j} \\mathrm{\\ N}$. The magnitude of the force $\\mathbf{F}$ is calculated as $|\\mathbf{F}| = \\sqrt{F_x^2 + F_y^2}$. $|\\mathbf{F}| = \\sqrt{5^2 + 20^2} = \\sqrt{25 + 400} = \\sqrt{425}$. To simplify $\\sqrt{425}$, we find the prime factorization of 425: $425 = 5 \\times 85 = 5 \\times 5 \\times 17 = 5^2 \\times 17$. So, $\\sqrt{425} = \\sqrt{5^2 \\times 17} = \\sqrt{5^2} \\times \\sqrt{17} = 5\\sqrt{17}$. Therefore, the magnitude of the constant force $\\mathbf{F}$ is $5\\sqrt{17} \\mathrm{\\ N}$. Comparing this with the given choices: Choice A: $\\frac{5\\sqrt{17}}{2} \\mathrm{\\ N}$ Choice B: $5\\sqrt{17} \\mathrm{\\ N}$ Choice C: $\\frac{5\\sqrt{2}}{2} \\mathrm{\\ N}$ Choice D: $5\\sqrt{2} \\mathrm{\\ N}$ Our calculated magnitude matches Choice B."
+        },
+        {
+          "q": "In the standard $(x, y)$ coordinate plane, the line $y = mx$ (where $m > 0$) is tangent to the circle $(x - 10)^2 + y^2 = 36$. What is the value of $m$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Parametrizing a line segment",
+          "choices": [
+            "$\\frac{3}{5}$",
+            "$\\frac{3}{4}$",
+            "$\\frac{4}{5}$",
+            "$\\frac{4}{3}$"
+          ],
+          "correct": 1,
+          "answer": "We are given the circle $(x - 10)^2 + y^2 = 36$, which has its center at $C(10, 0)$ and radius $r = \\sqrt{36} = 6$. **Method 1: Geometric Approach (Right Triangle)** Let $O(0, 0)$ be the origin and let $T$ be the point of tangency in the first quadrant. A radius drawn to the point of tangency is perpendicular to the tangent line, so $\\Delta  OTC$ is a right triangle with right angle at $T$. - Hypotenuse: $OC = 10$ - Leg (radius): $CT = 6$ By the Pythagorean theorem: $OT = \\sqrt{OC^2 - CT^2} = \\sqrt{10^2 - 6^2} = \\sqrt{100 - 36} = \\sqrt{64} = 8$ Let $\\theta$ be the angle that the line $y = mx$ makes with the positive $x$-axis (line segment $OC$). In right triangle $\\Delta  OTC$: $\\sin(\\theta) = \\frac{CT}{OC} = \\frac{6}{10} = \\frac{3}{5}$ $\\cos(\\theta) = \\frac{OT}{OC} = \\frac{8}{10} = \\frac{4}{5}$ The slope $m$ of the line is given by $\\tan(\\theta)$: $m = \\tan(\\theta) = \\frac{\\sin(\\theta)}{\\cos(\\theta)} = \\frac{CT}{OT} = \\frac{6}{8} = \\frac{3}{4}$ **Method 2: Distance from Point to Line** The line $y = mx$ can be written in general form as $mx - y = 0$. The perpendicular distance from the center $(10, 0)$ to this tangent line must equal the radius $r = 6$: $\\frac{|m(10) - 0|}{\\sqrt{m^2 + (-1)^2}} = 6 \\Rightarrow \\frac{10m}{\\sqrt{m^2 + 1}} = 6 \\quad (\\mathrm{since\\ } m > 0)$ Squaring both sides: $\\frac{100m^2}{m^2 + 1} = 36 \\Rightarrow 100m^2 = 36m^2 + 36 \\Rightarrow 64m^2 = 36 \\Rightarrow m^2 = \\frac{36}{64} = \\frac{9}{16}$ Since $m > 0$, $m = \\frac{3}{4}$. **Common Traps:** - Misidentifying $\\sin(\\theta) = \\frac{6}{10} = \\frac{3}{5}$ as the slope leads to the incorrect choice $\\frac{3}{5}$. - Confusing the ratio $\\frac{\\Delta x}{\\Delta y}$ with $\\frac{\\Delta y}{\\Delta x}$ gives $\\frac{4}{3}$.",
+          "explanation": "We are given the circle $(x - 10)^2 + y^2 = 36$, which has its center at $C(10, 0)$ and radius $r = \\sqrt{36} = 6$. **Method 1: Geometric Approach (Right Triangle)** Let $O(0, 0)$ be the origin and let $T$ be the point of tangency in the first quadrant. A radius drawn to the point of tangency is perpendicular to the tangent line, so $\\Delta  OTC$ is a right triangle with right angle at $T$. - Hypotenuse: $OC = 10$ - Leg (radius): $CT = 6$ By the Pythagorean theorem: $OT = \\sqrt{OC^2 - CT^2} = \\sqrt{10^2 - 6^2} = \\sqrt{100 - 36} = \\sqrt{64} = 8$ Let $\\theta$ be the angle that the line $y = mx$ makes with the positive $x$-axis (line segment $OC$). In right triangle $\\Delta  OTC$: $\\sin(\\theta) = \\frac{CT}{OC} = \\frac{6}{10} = \\frac{3}{5}$ $\\cos(\\theta) = \\frac{OT}{OC} = \\frac{8}{10} = \\frac{4}{5}$ The slope $m$ of the line is given by $\\tan(\\theta)$: $m = \\tan(\\theta) = \\frac{\\sin(\\theta)}{\\cos(\\theta)} = \\frac{CT}{OT} = \\frac{6}{8} = \\frac{3}{4}$ **Method 2: Distance from Point to Line** The line $y = mx$ can be written in general form as $mx - y = 0$. The perpendicular distance from the center $(10, 0)$ to this tangent line must equal the radius $r = 6$: $\\frac{|m(10) - 0|}{\\sqrt{m^2 + (-1)^2}} = 6 \\Rightarrow \\frac{10m}{\\sqrt{m^2 + 1}} = 6 \\quad (\\mathrm{since\\ } m > 0)$ Squaring both sides: $\\frac{100m^2}{m^2 + 1} = 36 \\Rightarrow 100m^2 = 36m^2 + 36 \\Rightarrow 64m^2 = 36 \\Rightarrow m^2 = \\frac{36}{64} = \\frac{9}{16}$ Since $m > 0$, $m = \\frac{3}{4}$. **Common Traps:** - Misidentifying $\\sin(\\theta) = \\frac{6}{10} = \\frac{3}{5}$ as the slope leads to the incorrect choice $\\frac{3}{5}$. - Confusing the ratio $\\frac{\\Delta x}{\\Delta y}$ with $\\frac{\\Delta y}{\\Delta x}$ gives $\\frac{4}{3}$."
         }
       ]
     },
@@ -679,167 +657,131 @@
       "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
       "questions": [
         {
-          "q": "Two vectors are given by $\\vec{u} = 3\\hat{i} + k\\hat{j}$ and $\\vec{v} = -\\hat{i} + 4\\hat{j}$. If $\\vec{u}$ and $\\vec{v}$ are orthogonal, find the value of the scalar parameter $k$.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "More parametric practice",
-          "choices": [
-            "3/4",
-            "4/3",
-            "-3/4",
-            "-4/3"
-          ],
-          "correct": 1,
-          "answer": "Two vectors $\\vec{u}$ and $\\vec{v}$ are orthogonal if and only if their dot product is zero. The dot product of $\\vec{u} = u_1\\hat{i} + u_2\\hat{j}$ and $\\vec{v} = v_1\\hat{i} + v_2\\hat{j}$ is given by $\\vec{u} \\cdot \\vec{v} = u_1v_1 + u_2v_2$. Given $\\vec{u} = 3\\hat{i} + k\\hat{j}$ and $\\vec{v} = -\\hat{i} + 4\\hat{j}$, their dot product is: $\\vec{u} \\cdot \\vec{v} = (3)(-1) + (k)(4)$ $\\vec{u} \\cdot \\vec{v} = -3 + 4k$ For the vectors to be orthogonal, their dot product must be zero: $-3 + 4k = 0$ $4k = 3$ $k = \\frac{3}{4}$",
-          "explanation": "Two vectors $\\vec{u}$ and $\\vec{v}$ are orthogonal if and only if their dot product is zero. The dot product of $\\vec{u} = u_1\\hat{i} + u_2\\hat{j}$ and $\\vec{v} = v_1\\hat{i} + v_2\\hat{j}$ is given by $\\vec{u} \\cdot \\vec{v} = u_1v_1 + u_2v_2$. Given $\\vec{u} = 3\\hat{i} + k\\hat{j}$ and $\\vec{v} = -\\hat{i} + 4\\hat{j}$, their dot product is: $\\vec{u} \\cdot \\vec{v} = (3)(-1) + (k)(4)$ $\\vec{u} \\cdot \\vec{v} = -3 + 4k$ For the vectors to be orthogonal, their dot product must be zero: $-3 + 4k = 0$ $4k = 3$ $k = \\frac{3}{4}$",
-          "cross_lesson": "2.03 Graphs of Sine and Cosine Functions"
-        },
-        {
-          "q": "Solve $\\cos(2x)+\\sin x=0$ on $[0,2\\pi)$.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Graphing a parametric curve after elimination",
-          "choices": [
-            "$x=\\frac{7\\pi}{6}, \\frac{11\\pi}{6}$ only",
-            "$x=\\frac{\\pi}{2}, \\frac{7\\pi}{6}, \\frac{11\\pi}{6}$",
-            "$x=\\frac{\\pi}{2}$ only",
-            "$x=0, \\pi$"
-          ],
-          "correct": 1,
-          "answer": "Using $\\cos(2x)=1-2\\sin^2x$: $1-2\\sin^2x+\\sin x=0 \\Rightarrow 2\\sin^2x-\\sin x-1=0$. Factoring: $(2\\sin x+1)(\\sin x-1)=0$, so $\\sin x=1$ or $\\sin x=-\\frac{1}{2}$. This gives $x=\\frac{\\pi}{2}, \\frac{7\\pi}{6}, \\frac{11\\pi}{6}$.",
-          "explanation": "Using $\\cos(2x)=1-2\\sin^2x$: $1-2\\sin^2x+\\sin x=0 \\Rightarrow 2\\sin^2x-\\sin x-1=0$. Factoring: $(2\\sin x+1)(\\sin x-1)=0$, so $\\sin x=1$ or $\\sin x=-\\frac{1}{2}$. This gives $x=\\frac{\\pi}{2}, \\frac{7\\pi}{6}, \\frac{11\\pi}{6}$.",
-          "cross_lesson": "2.04 Law of Sines and Law of Cosines",
-          "figure": {
-            "type": "triangle",
-            "vertices": [
-              [
-                0,
-                0
-              ],
-              [
-                12.0,
-                0
-              ],
-              [
-                0,
-                9.0
-              ]
-            ],
-            "labels": [
-              "$C$",
-              "$B$",
-              "$A$"
-            ],
-            "side_labels": [
-              "$12$",
-              "$15$",
-              "$9$"
-            ],
-            "right_angle_at": 0,
-            "angle_marks": [
-              {
-                "vertex": 1,
-                "label": "$\\theta$"
-              }
-            ],
-            "fill": true,
-            "width": 220
-          }
-        },
-        {
-          "q": "Solve $\\cos(2x)+\\sin x=0$ on $[0,2\\pi)$. (attempt 3)",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Restricting the parameter domain",
-          "choices": [
-            "$x=\\frac{\\pi}{2}$ only",
-            "$x=\\frac{7\\pi}{6}, \\frac{11\\pi}{6}$ only",
-            "$x=0, \\pi$",
-            "$x=\\frac{\\pi}{2}, \\frac{7\\pi}{6}, \\frac{11\\pi}{6}$"
-          ],
-          "correct": 3,
-          "answer": "Using $\\cos(2x)=1-2\\sin^2x$: $1-2\\sin^2x+\\sin x=0 \\Rightarrow 2\\sin^2x-\\sin x-1=0$. Factoring: $(2\\sin x+1)(\\sin x-1)=0$, so $\\sin x=1$ or $\\sin x=-\\frac{1}{2}$. This gives $x=\\frac{\\pi}{2}, \\frac{7\\pi}{6}, \\frac{11\\pi}{6}$.",
-          "explanation": "Using $\\cos(2x)=1-2\\sin^2x$: $1-2\\sin^2x+\\sin x=0 \\Rightarrow 2\\sin^2x-\\sin x-1=0$. Factoring: $(2\\sin x+1)(\\sin x-1)=0$, so $\\sin x=1$ or $\\sin x=-\\frac{1}{2}$. This gives $x=\\frac{\\pi}{2}, \\frac{7\\pi}{6}, \\frac{11\\pi}{6}$.",
-          "cross_lesson": "3.01 The Unit Circle and Exact Values"
-        },
-        {
-          "q": "Solve $\\cos(2x)+\\sin x=0$ on $[0,2\\pi)$. (attempt 6)",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Parametrizing a line segment",
-          "choices": [
-            "$x=\\frac{\\pi}{2}, \\frac{7\\pi}{6}, \\frac{11\\pi}{6}$",
-            "$x=\\frac{\\pi}{2}$ only",
-            "$x=0, \\pi$",
-            "$x=\\frac{7\\pi}{6}, \\frac{11\\pi}{6}$ only"
-          ],
-          "correct": 0,
-          "answer": "Using $\\cos(2x)=1-2\\sin^2x$: $1-2\\sin^2x+\\sin x=0 \\Rightarrow 2\\sin^2x-\\sin x-1=0$. Factoring: $(2\\sin x+1)(\\sin x-1)=0$, so $\\sin x=1$ or $\\sin x=-\\frac{1}{2}$. This gives $x=\\frac{\\pi}{2}, \\frac{7\\pi}{6}, \\frac{11\\pi}{6}$.",
-          "explanation": "Using $\\cos(2x)=1-2\\sin^2x$: $1-2\\sin^2x+\\sin x=0 \\Rightarrow 2\\sin^2x-\\sin x-1=0$. Factoring: $(2\\sin x+1)(\\sin x-1)=0$, so $\\sin x=1$ or $\\sin x=-\\frac{1}{2}$. This gives $x=\\frac{\\pi}{2}, \\frac{7\\pi}{6}, \\frac{11\\pi}{6}$.",
-          "cross_lesson": "3.02 Fundamental Trigonometric Identities"
-        },
-        {
-          "q": "Solve $\\cos(2x)+\\sin x=0$ on $[0,2\\pi)$. (attempt 7)",
+          "q": "A factory produces light bulbs. The probability that a randomly selected light bulb is defective is $p$. The number of defective light bulbs in a random sample of $n$ bulbs follows a binomial distribution $X \\sim B(n, p)$. It is known that the mean number of defective bulbs in a sample of $n=25$ is $2$. \\\\ (i) Calculate the value of $p$. \\\\ (ii) For a sample of $n=50$ bulbs, calculate the probability of finding exactly $k$ defective bulbs, where $k$ is the smallest integer such that $P(X \\leq k) > 0.9$. \\\\ (iii) If a sample of $n=50$ bulbs is taken, find the smallest value of $n'$ such that the probability of observing at least one defective bulb is greater than $0.999$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Parametric speed and motion review",
           "choices": [
-            "$x=0, \\pi$",
-            "$x=\\frac{7\\pi}{6}, \\frac{11\\pi}{6}$ only",
-            "$x=\\frac{\\pi}{2}$ only",
-            "$x=\\frac{\\pi}{2}, \\frac{7\\pi}{6}, \\frac{11\\pi}{6}$"
+            "0.04",
+            "0.08",
+            "0.12",
+            "0.16"
+          ],
+          "correct": 1,
+          "answer": "Part (i): For a binomial distribution $X \\sim B(n, p)$, the mean is given by $E(X) = np$. \\\\ We are given $n=25$ and $E(X)=2$. \\\\ So, $25p = 2$, which gives $p = \\frac{2}{25} = 0.08$. \\\\ Part (ii): Now, $n=50$ and $p=0.08$. The number of defective bulbs follows $X \\sim B(50, 0.08)$. \\\\ We need to find the smallest integer $k$ such that $P(X \\leq k) > 0.9$. \\\\ We can use a binomial cumulative distribution table or a calculator. \\\\ Let's calculate a few values: $P(X \\leq 3) = P(X=0) + P(X=1) + P(X=2) + P(X=3)$ Using a binomial CDF calculator or table for $B(50, 0.08)$: \\\\ $P(X \\leq 3) \\approx 0.4503$ $P(X \\leq 4) \\approx 0.6333$ $P(X \\leq 5) \\approx 0.7918$ $P(X \\leq 6) \\approx 0.8941$ $P(X \\leq 7) \\approx 0.9575$ The smallest integer $k$ for which $P(X \\leq k) > 0.9$ is $k=7$. \\\\ Part (iii): We have $n=50$ and $p=0.08$. We want to find the smallest value of $n'$ such that the probability of observing at least one defective bulb is greater than $0.999$. \\\\ The probability of observing at least one defective bulb is $P(X \\geq 1) = 1 - P(X=0)$. \\\\ For a binomial distribution, $P(X=0) = \\binom{n'}{0} p^0 (1-p)^{n'} = (1-p)^{n'}$. \\\\ So we need $1 - (1-p)^{n'} > 0.999$. \\\\ Substituting $p=0.08$, we get $1 - (0.92)^{n'} > 0.999$. \\\\ This means $(0.92)^{n'} \\frac{\\ln(0.001)}{\\ln(0.92)}$. \\\\ $n' > \\frac{-6.907755...}{-0.083381...}$ $n' > 82.847...$ The smallest integer value of $n'$ is $83$. \\\\ The question asks for the smallest value of $n'$ for a sample of size $n=50$. This part of the question seems to imply a re-sampling or a different scenario for $n'$. Assuming $n'$ refers to the sample size for a new calculation of the probability of at least one defective bulb.",
+          "explanation": "Part (i): For a binomial distribution $X \\sim B(n, p)$, the mean is given by $E(X) = np$. \\\\ We are given $n=25$ and $E(X)=2$. \\\\ So, $25p = 2$, which gives $p = \\frac{2}{25} = 0.08$. \\\\ Part (ii): Now, $n=50$ and $p=0.08$. The number of defective bulbs follows $X \\sim B(50, 0.08)$. \\\\ We need to find the smallest integer $k$ such that $P(X \\leq k) > 0.9$. \\\\ We can use a binomial cumulative distribution table or a calculator. \\\\ Let's calculate a few values: $P(X \\leq 3) = P(X=0) + P(X=1) + P(X=2) + P(X=3)$ Using a binomial CDF calculator or table for $B(50, 0.08)$: \\\\ $P(X \\leq 3) \\approx 0.4503$ $P(X \\leq 4) \\approx 0.6333$ $P(X \\leq 5) \\approx 0.7918$ $P(X \\leq 6) \\approx 0.8941$ $P(X \\leq 7) \\approx 0.9575$ The smallest integer $k$ for which $P(X \\leq k) > 0.9$ is $k=7$. \\\\ Part (iii): We have $n=50$ and $p=0.08$. We want to find the smallest value of $n'$ such that the probability of observing at least one defective bulb is greater than $0.999$. \\\\ The probability of observing at least one defective bulb is $P(X \\geq 1) = 1 - P(X=0)$. \\\\ For a binomial distribution, $P(X=0) = \\binom{n'}{0} p^0 (1-p)^{n'} = (1-p)^{n'}$. \\\\ So we need $1 - (1-p)^{n'} > 0.999$. \\\\ Substituting $p=0.08$, we get $1 - (0.92)^{n'} > 0.999$. \\\\ This means $(0.92)^{n'} \\frac{\\ln(0.001)}{\\ln(0.92)}$. \\\\ $n' > \\frac{-6.907755...}{-0.083381...}$ $n' > 82.847...$ The smallest integer value of $n'$ is $83$. \\\\ The question asks for the smallest value of $n'$ for a sample of size $n=50$. This part of the question seems to imply a re-sampling or a different scenario for $n'$. Assuming $n'$ refers to the sample size for a new calculation of the probability of at least one defective bulb.",
+          "cross_lesson": "2.03 Graphs of Sine and Cosine Functions"
+        },
+        {
+          "q": "Consider the rational function $f(x) = \\frac{x^2 - 2x + c}{x^2 + 2x + c}$ where $c$ is a real constant. If the domain of $f$ is the set of all real numbers and the maximum value of $f(x)$ is $4$, what is the value of $c$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Eliminating the parameter",
+          "choices": [
+            "$\\frac{25}{9}$",
+            "$\\frac{9}{4}$",
+            "$3$",
+            "$\\frac{16}{5}$"
+          ],
+          "correct": 0,
+          "answer": "We are given the rational function $f(x) = \\frac{x^2 - 2x + c}{x^2 + 2x + c}$. **Step 1: Domain constraint** For the domain of $f$ to be all real numbers, the denominator $x^2 + 2x + c$ must have no real roots. Therefore, its discriminant must be strictly negative: $\\Delta_{\\mathrm{denom}} = 2^2 - 4(1)(c) = 4 - 4c 1$ **Step 2: Range and maximum value via discriminant method** Let $y = f(x)$. Because $x^2 + 2x + c > 0$ for all $x \\in \\mathbb{R}$, we can multiply through by the denominator: $y(x^2 + 2x + c) = x^2 - 2x + c$ Rearranging into a standard quadratic equation in $x$: $(y - 1)x^2 + 2(y + 1)x + c(y - 1) = 0$ For any real value $y$ in the range of $f$ (with $y eq 1$), there must exist at least one real $x$ satisfying this quadratic. Hence, the discriminant with respect to $x$ must be non-negative: $\\Delta_x = [2(y + 1)]^2 - 4(y - 1)[c(y - 1)] \\geq 0$ $4(y + 1)^2 - 4c(y - 1)^2 \\geq 0$ Dividing by 4: $(y + 1)^2 - c(y - 1)^2 \\geq 0$ **Step 3: Solve for $c$** The maximum value of $y$ is given as $4$. At an extreme value of the range, $\\Delta_x = 0$. Substituting $y = 4$: $(4 + 1)^2 - c(4 - 1)^2 = 0$ $5^2 - c(3^2) = 0$ $25 - 9c = 0 \\Rightarrow c = \\frac{25}{9}$ Since $\\frac{25}{9} > 1$, the domain condition $c > 1$ is satisfied. Substituting $c = \\frac{25}{9}$ back into the inequality gives $4y^2 - 17y + 4 \\leq 0 \\Rightarrow \\frac{1}{4} \\leq y \\leq 4$, confirming that the maximum value is indeed $4$.",
+          "explanation": "We are given the rational function $f(x) = \\frac{x^2 - 2x + c}{x^2 + 2x + c}$. **Step 1: Domain constraint** For the domain of $f$ to be all real numbers, the denominator $x^2 + 2x + c$ must have no real roots. Therefore, its discriminant must be strictly negative: $\\Delta_{\\mathrm{denom}} = 2^2 - 4(1)(c) = 4 - 4c 1$ **Step 2: Range and maximum value via discriminant method** Let $y = f(x)$. Because $x^2 + 2x + c > 0$ for all $x \\in \\mathbb{R}$, we can multiply through by the denominator: $y(x^2 + 2x + c) = x^2 - 2x + c$ Rearranging into a standard quadratic equation in $x$: $(y - 1)x^2 + 2(y + 1)x + c(y - 1) = 0$ For any real value $y$ in the range of $f$ (with $y eq 1$), there must exist at least one real $x$ satisfying this quadratic. Hence, the discriminant with respect to $x$ must be non-negative: $\\Delta_x = [2(y + 1)]^2 - 4(y - 1)[c(y - 1)] \\geq 0$ $4(y + 1)^2 - 4c(y - 1)^2 \\geq 0$ Dividing by 4: $(y + 1)^2 - c(y - 1)^2 \\geq 0$ **Step 3: Solve for $c$** The maximum value of $y$ is given as $4$. At an extreme value of the range, $\\Delta_x = 0$. Substituting $y = 4$: $(4 + 1)^2 - c(4 - 1)^2 = 0$ $5^2 - c(3^2) = 0$ $25 - 9c = 0 \\Rightarrow c = \\frac{25}{9}$ Since $\\frac{25}{9} > 1$, the domain condition $c > 1$ is satisfied. Substituting $c = \\frac{25}{9}$ back into the inequality gives $4y^2 - 17y + 4 \\leq 0 \\Rightarrow \\frac{1}{4} \\leq y \\leq 4$, confirming that the maximum value is indeed $4$.",
+          "cross_lesson": "2.04 Law of Sines and Law of Cosines"
+        },
+        {
+          "q": "In the standard $(x, y)$ coordinate plane, line $L$ is perpendicular to the line $3x + 4y = 15$ and passes through the point $(3, 1)$. Line $L$ intersects the line $2x + y = 17$ at the point $(p, q)$. What is the value of $p + q$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Projectile motion",
+          "choices": [
+            "5",
+            "6",
+            "8",
+            "11"
           ],
           "correct": 3,
-          "answer": "Using $\\cos(2x)=1-2\\sin^2x$: $1-2\\sin^2x+\\sin x=0 \\Rightarrow 2\\sin^2x-\\sin x-1=0$. Factoring: $(2\\sin x+1)(\\sin x-1)=0$, so $\\sin x=1$ or $\\sin x=-\\frac{1}{2}$. This gives $x=\\frac{\\pi}{2}, \\frac{7\\pi}{6}, \\frac{11\\pi}{6}$.",
-          "explanation": "Using $\\cos(2x)=1-2\\sin^2x$: $1-2\\sin^2x+\\sin x=0 \\Rightarrow 2\\sin^2x-\\sin x-1=0$. Factoring: $(2\\sin x+1)(\\sin x-1)=0$, so $\\sin x=1$ or $\\sin x=-\\frac{1}{2}$. This gives $x=\\frac{\\pi}{2}, \\frac{7\\pi}{6}, \\frac{11\\pi}{6}$.",
+          "answer": "Step 1: Find the slope of the given line $3x + 4y = 15$. Rewriting in slope-intercept form gives: $4y = -3x + 15 \\Rightarrow y = -\\frac{3}{4}x + \\frac{15}{4}$ Thus, the slope of this line is $m_1 = -\\frac{3}{4}$. Step 2: Determine the slope of line $L$. Since line $L$ is perpendicular to the given line, its slope $m_L$ is the negative reciprocal of $m_1$: $m_L = -\\frac{1}{-\\frac{3}{4}} = \\frac{4}{3}$ Step 3: Write the equation of line $L$. Line $L$ passes through $(3, 1)$ with slope $\\frac{4}{3}$: $y - 1 = \\frac{4}{3}(x - 3) \\Rightarrow y = \\frac{4}{3}x - 3$ Step 4: Find the point of intersection $(p, q)$ with the line $2x + y = 17$. Substitute $y = \\frac{4}{3}x - 3$ into $2x + y = 17$: $2x + \\left(\\frac{4}{3}x - 3\\right) = 17$ $\\frac{10}{3}x - 3 = 17 \\Rightarrow \\frac{10}{3}x = 20 \\Rightarrow x = 6$ Thus, $p = 6$. Step 5: Solve for $q$. Substitute $p = 6$ into $2x + y = 17$: $2(6) + q = 17 \\Rightarrow 12 + q = 17 \\Rightarrow q = 5$ Step 6: Compute $p + q$. $p + q = 6 + 5 = 11$ Common Misconceptions: - Reporting only $p = 6$ or $q = 5$ fails to answer the question, which asks for $p + q$. - Using the parallel slope $-\\frac{3}{4}$ instead of the perpendicular slope $\\frac{4}{3}$ yields $p = 11$ and $q = -5$, giving $p + q = 6$.",
+          "explanation": "Step 1: Find the slope of the given line $3x + 4y = 15$. Rewriting in slope-intercept form gives: $4y = -3x + 15 \\Rightarrow y = -\\frac{3}{4}x + \\frac{15}{4}$ Thus, the slope of this line is $m_1 = -\\frac{3}{4}$. Step 2: Determine the slope of line $L$. Since line $L$ is perpendicular to the given line, its slope $m_L$ is the negative reciprocal of $m_1$: $m_L = -\\frac{1}{-\\frac{3}{4}} = \\frac{4}{3}$ Step 3: Write the equation of line $L$. Line $L$ passes through $(3, 1)$ with slope $\\frac{4}{3}$: $y - 1 = \\frac{4}{3}(x - 3) \\Rightarrow y = \\frac{4}{3}x - 3$ Step 4: Find the point of intersection $(p, q)$ with the line $2x + y = 17$. Substitute $y = \\frac{4}{3}x - 3$ into $2x + y = 17$: $2x + \\left(\\frac{4}{3}x - 3\\right) = 17$ $\\frac{10}{3}x - 3 = 17 \\Rightarrow \\frac{10}{3}x = 20 \\Rightarrow x = 6$ Thus, $p = 6$. Step 5: Solve for $q$. Substitute $p = 6$ into $2x + y = 17$: $2(6) + q = 17 \\Rightarrow 12 + q = 17 \\Rightarrow q = 5$ Step 6: Compute $p + q$. $p + q = 6 + 5 = 11$ Common Misconceptions: - Reporting only $p = 6$ or $q = 5$ fails to answer the question, which asks for $p + q$. - Using the parallel slope $-\\frac{3}{4}$ instead of the perpendicular slope $\\frac{4}{3}$ yields $p = 11$ and $q = -5$, giving $p + q = 6$.",
+          "cross_lesson": "3.01 The Unit Circle and Exact Values"
+        },
+        {
+          "q": "A curve has equation $y = x^2 e^{3x}$. Find the gradient of the curve at the point where $x = 1$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Ellipses and other parametric curves",
+          "choices": [
+            "$5e^3$",
+            "$6e^3$",
+            "$3e^3$",
+            "$2e^3$"
+          ],
+          "correct": 0,
+          "answer": "To find the gradient of the curve, differentiate $y = x^2 e^{3x}$ with respect to $x$ using the product rule: $\\frac{\\mathrm{d}}{\\mathrm{d}x}[u v] = u \\frac{\\mathrm{d}v}{\\mathrm{d}x} + v \\frac{\\mathrm{d}u}{\\mathrm{d}x}$ Let $u = x^2$ and $v = e^{3x}$. Then $\\frac{\\mathrm{d}u}{\\mathrm{d}x} = 2x$ and, by the chain rule, $\\frac{\\mathrm{d}v}{\\mathrm{d}x} = 3e^{3x}$. Applying the product rule: $\\frac{\\mathrm{d}y}{\\mathrm{d}x} = x^2(3e^{3x}) + 2x(e^{3x}) = (3x^2 + 2x)e^{3x}$ Substitute $x = 1$: $\\left. \\frac{\\mathrm{d}y}{\\mathrm{d}x} \\right|_{x=1} = (3(1)^2 + 2(1))e^{3(1)} = (3 + 2)e^3 = 5e^3$ Common misconceptions: - $6e^3$ arises from mistakenly differentiating a product by multiplying the individual derivatives: $(2x)(3e^{3x}) = 6x e^{3x} \\rightarrow 6e^3$. - $3e^3$ arises from forgetting the chain rule factor when differentiating $e^{3x}$, treating $\\frac{\\mathrm{d}}{\\mathrm{d}x}(e^{3x})$ as $e^{3x}$. - $2e^3$ arises from differentiating only $x^2$ while treating $e^{3x}$ as a constant.",
+          "explanation": "To find the gradient of the curve, differentiate $y = x^2 e^{3x}$ with respect to $x$ using the product rule: $\\frac{\\mathrm{d}}{\\mathrm{d}x}[u v] = u \\frac{\\mathrm{d}v}{\\mathrm{d}x} + v \\frac{\\mathrm{d}u}{\\mathrm{d}x}$ Let $u = x^2$ and $v = e^{3x}$. Then $\\frac{\\mathrm{d}u}{\\mathrm{d}x} = 2x$ and, by the chain rule, $\\frac{\\mathrm{d}v}{\\mathrm{d}x} = 3e^{3x}$. Applying the product rule: $\\frac{\\mathrm{d}y}{\\mathrm{d}x} = x^2(3e^{3x}) + 2x(e^{3x}) = (3x^2 + 2x)e^{3x}$ Substitute $x = 1$: $\\left. \\frac{\\mathrm{d}y}{\\mathrm{d}x} \\right|_{x=1} = (3(1)^2 + 2(1))e^{3(1)} = (3 + 2)e^3 = 5e^3$ Common misconceptions: - $6e^3$ arises from mistakenly differentiating a product by multiplying the individual derivatives: $(2x)(3e^{3x}) = 6x e^{3x} \\rightarrow 6e^3$. - $3e^3$ arises from forgetting the chain rule factor when differentiating $e^{3x}$, treating $\\frac{\\mathrm{d}}{\\mathrm{d}x}(e^{3x})$ as $e^{3x}$. - $2e^3$ arises from differentiating only $x^2$ while treating $e^{3x}$ as a constant.",
+          "cross_lesson": "3.02 Fundamental Trigonometric Identities"
+        },
+        {
+          "q": "A particle of mass 8 kg is moving under the action of a net force $\\mathbf{F}$ N. The acceleration of the particle, $\\mathbf{a}$ m/s$^2$, is given by the vector $\\mathbf{a} = \\left(2t - 4 ; t^2 - 9\\right)$ for $t \\geq 0$, where $t$ is the time in seconds. The particle is initially at rest at the origin.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Finding the parametric derivative",
+          "choices": [
+            "8 N",
+            "16 N",
+            "24 N",
+            "32 N"
+          ],
+          "correct": 1,
+          "answer": "We are given the acceleration vector $\\mathbf{a} = \\left(2t - 4 ; t^2 - 9\\right)$ and the mass of the particle $m = 8$ kg. By Newton's Second Law, the net force $\\mathbf{F} = m\\mathbf{a}$. Therefore, $\\mathbf{F} = 8 \\left(2t - 4 ; t^2 - 9\\right) = \\left(16t - 32 ; 8t^2 - 72\\right)$. The question asks for the magnitude of the net force at $t = 2$ seconds. Substituting $t = 2$ into the force vector: $\\mathbf{F}(2) = \\left(16(2) - 32 ; 8(2)^2 - 72\\right) = \\left(32 - 32 ; 8(4) - 72\\right) = \\left(0 ; 32 - 72\\right) = \\left(0 ; -40\\right)$ N. The magnitude of the net force is given by $|\\mathbf{F}| = \\sqrt{F_x^2 + F_y^2}$. $|\\mathbf{F}(2)| = \\sqrt{0^2 + (-40)^2} = \\sqrt{1600} = 40$ N. Let's re-read the question. It seems there was a misinterpretation of the question's intent in the initial draft. The question should focus on finding an unknown parameter related to the force or motion. Let's adjust to meet the archetype better.",
+          "explanation": "We are given the acceleration vector $\\mathbf{a} = \\left(2t - 4 ; t^2 - 9\\right)$ and the mass of the particle $m = 8$ kg. By Newton's Second Law, the net force $\\mathbf{F} = m\\mathbf{a}$. Therefore, $\\mathbf{F} = 8 \\left(2t - 4 ; t^2 - 9\\right) = \\left(16t - 32 ; 8t^2 - 72\\right)$. The question asks for the magnitude of the net force at $t = 2$ seconds. Substituting $t = 2$ into the force vector: $\\mathbf{F}(2) = \\left(16(2) - 32 ; 8(2)^2 - 72\\right) = \\left(32 - 32 ; 8(4) - 72\\right) = \\left(0 ; 32 - 72\\right) = \\left(0 ; -40\\right)$ N. The magnitude of the net force is given by $|\\mathbf{F}| = \\sqrt{F_x^2 + F_y^2}$. $|\\mathbf{F}(2)| = \\sqrt{0^2 + (-40)^2} = \\sqrt{1600} = 40$ N. Let's re-read the question. It seems there was a misinterpretation of the question's intent in the initial draft. The question should focus on finding an unknown parameter related to the force or motion. Let's adjust to meet the archetype better.",
           "cross_lesson": "3.03 Sum and Difference Formulas"
         },
         {
-          "q": "Find the projection of $\\mathbf{u}=\\langle 6,-2\\rangle$ onto $\\mathbf{v}=\\langle 2,-1\\rangle$.",
+          "q": "The random variable $X$ has a Poisson distribution with parameter $\\lambda$, where $\\lambda > 0$. Given that $\\mathrm{P}(X = 3) = \\mathrm{P}(X = 4)$, find the value of $\\lambda$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Plotting and Direction of Motion",
+          "target": "More parametric practice",
           "choices": [
-            "$\\left\\langle \\frac{33}{5},-\\frac{14}{5}\\right\\rangle$",
-            "$\\left\\langle -\\frac{14}{5},\\frac{28}{5}\\right\\rangle$",
-            "$\\frac{14}{5}$",
-            "$\\left\\langle \\frac{28}{5},-\\frac{14}{5}\\right\\rangle$"
+            "4",
+            "3",
+            "12",
+            "$\\frac{4}{3}$"
           ],
-          "correct": 3,
-          "answer": "$\\mathrm{proj}_{\\mathbf{v}}\\mathbf{u}=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{v}|^2}\\mathbf{v}=\\frac{14}{5}\\langle 2,-1\\rangle=\\left\\langle \\frac{28}{5},-\\frac{14}{5}\\right\\rangle$.",
-          "explanation": "$\\mathrm{proj}_{\\mathbf{v}}\\mathbf{u}=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{v}|^2}\\mathbf{v}=\\frac{14}{5}\\langle 2,-1\\rangle=\\left\\langle \\frac{28}{5},-\\frac{14}{5}\\right\\rangle$.",
+          "correct": 0,
+          "answer": "For a random variable $X \\sim \\mathrm{Po}(\\lambda)$, the probability mass function is given by: $\\mathrm{P}(X = x) = \\frac{\\mathrm{e}^{-\\lambda} \\lambda^x}{x!}, \\quad x = 0, 1, 2, \\dots$ Given $\\mathrm{P}(X = 3) = \\mathrm{P}(X = 4)$, we substitute $x = 3$ and $x = 4$: $\\frac{\\mathrm{e}^{-\\lambda} \\lambda^3}{3!} = \\frac{\\mathrm{e}^{-\\lambda} \\lambda^4}{4!}$ Since $\\mathrm{e}^{-\\lambda} > 0$ and $\\lambda > 0$, we can divide both sides by $\\mathrm{e}^{-\\lambda} \\lambda^3$: $\\frac{1}{3!} = \\frac{\\lambda}{4!}$ Multiplying both sides by $4!$: $\\lambda = \\frac{4!}{3!} = \\frac{24}{6} = 4$ - Choosing $3$ commonly arises from misidentifying the distribution parameter directly as the given index $X = 3$. - Choosing $12$ arises from mistakenly multiplying the indices $3 \\times 4$. - Choosing $\\frac{4}{3}$ results from omitting the factorials and solving $\\frac{\\lambda}{4} = \\frac{1}{3}$.",
+          "explanation": "For a random variable $X \\sim \\mathrm{Po}(\\lambda)$, the probability mass function is given by: $\\mathrm{P}(X = x) = \\frac{\\mathrm{e}^{-\\lambda} \\lambda^x}{x!}, \\quad x = 0, 1, 2, \\dots$ Given $\\mathrm{P}(X = 3) = \\mathrm{P}(X = 4)$, we substitute $x = 3$ and $x = 4$: $\\frac{\\mathrm{e}^{-\\lambda} \\lambda^3}{3!} = \\frac{\\mathrm{e}^{-\\lambda} \\lambda^4}{4!}$ Since $\\mathrm{e}^{-\\lambda} > 0$ and $\\lambda > 0$, we can divide both sides by $\\mathrm{e}^{-\\lambda} \\lambda^3$: $\\frac{1}{3!} = \\frac{\\lambda}{4!}$ Multiplying both sides by $4!$: $\\lambda = \\frac{4!}{3!} = \\frac{24}{6} = 4$ - Choosing $3$ commonly arises from misidentifying the distribution parameter directly as the given index $X = 3$. - Choosing $12$ arises from mistakenly multiplying the indices $3 \\times 4$. - Choosing $\\frac{4}{3}$ results from omitting the factorials and solving $\\frac{\\lambda}{4} = \\frac{1}{3}$.",
           "cross_lesson": "3.04 Double-Angle Formulas and Trigonometric Equations"
         },
         {
-          "q": "Find the projection of $\\mathbf{u}=\\langle 3,0\\rangle$ onto $\\mathbf{v}=\\langle 1,-1\\rangle$.",
+          "q": "The function $f$ is defined by $f(x) = a \\cdot b^x + c$, where $a$, $b$, and $c$ are constants with $a > 0$, $b > 0$, and $b eq 1$. In the $xy$-plane, the horizontal asymptote of the graph of $y = f(x)$ is the line $y = -4$. If the graph passes through the points $(0, -1)$ and $(2, 8)$, what is the value of $f(3)$?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Eliminating the Parameter (Algebraic)",
+          "target": "Graphing a parametric curve after elimination",
           "choices": [
-            "$\\left\\langle \\frac{5}{2},-\\frac{3}{2}\\right\\rangle$",
-            "$\\frac{3}{2}$",
-            "$\\left\\langle \\frac{3}{2},-\\frac{3}{2}\\right\\rangle$",
-            "$\\left\\langle -\\frac{3}{2},\\frac{3}{2}\\right\\rangle$"
+            "20",
+            "24",
+            "32",
+            "44"
           ],
-          "correct": 2,
-          "answer": "$\\mathrm{proj}_{\\mathbf{v}}\\mathbf{u}=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{v}|^2}\\mathbf{v}=\\frac{3}{2}\\langle 1,-1\\rangle=\\left\\langle \\frac{3}{2},-\\frac{3}{2}\\right\\rangle$.",
-          "explanation": "$\\mathrm{proj}_{\\mathbf{v}}\\mathbf{u}=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{v}|^2}\\mathbf{v}=\\frac{3}{2}\\langle 1,-1\\rangle=\\left\\langle \\frac{3}{2},-\\frac{3}{2}\\right\\rangle$.",
+          "correct": 0,
+          "answer": "Step 1: Determine the vertical shift parameter $c$. For an exponential function in the form $f(x) = a \\cdot b^x + c$, the term $a \\cdot b^x$ approaches $0$ as $x \\rightarrow -\\infty$ (for $b > 1$) or as $x \\rightarrow \\infty$ (for $0 0$), we find $b = 2$. Step 4: Evaluate $f(3)$. The complete function is $f(x) = 3 \\cdot 2^x - 4$. Evaluating at $x = 3$: $f(3) = 3 \\cdot 2^3 - 4 = 3(8) - 4 = 24 - 4 = 20$ Misconception Traps: - Choice B ($24$) results from computing $a \\cdot b^3 = 3 \\cdot 8 = 24$ but forgetting to subtract the vertical shift $c = -4$. - Choice C ($32$) results from mistakenly applying the exponent to the product $(a \\cdot b)^x$ instead of only $b^x$, or solving incorrectly for $a$. - Choice D ($44$) results from confusing $b^2 = 4$ with $b = 4$, leading to $3 \\cdot 4^2 - 4 = 44$.",
+          "explanation": "Step 1: Determine the vertical shift parameter $c$. For an exponential function in the form $f(x) = a \\cdot b^x + c$, the term $a \\cdot b^x$ approaches $0$ as $x \\rightarrow -\\infty$ (for $b > 1$) or as $x \\rightarrow \\infty$ (for $0 0$), we find $b = 2$. Step 4: Evaluate $f(3)$. The complete function is $f(x) = 3 \\cdot 2^x - 4$. Evaluating at $x = 3$: $f(3) = 3 \\cdot 2^3 - 4 = 3(8) - 4 = 24 - 4 = 20$ Misconception Traps: - Choice B ($24$) results from computing $a \\cdot b^3 = 3 \\cdot 8 = 24$ but forgetting to subtract the vertical shift $c = -4$. - Choice C ($32$) results from mistakenly applying the exponent to the product $(a \\cdot b)^x$ instead of only $b^x$, or solving incorrectly for $a$. - Choice D ($44$) results from confusing $b^2 = 4$ with $b = 4$, leading to $3 \\cdot 4^2 - 4 = 44$.",
           "cross_lesson": "4.01 Circles and Parabolas"
         },
         {
-          "q": "Find the projection of $\\mathbf{u}=\\langle 3,2\\rangle$ onto $\\mathbf{v}=\\langle 2,2\\rangle$.",
+          "q": "A transformation is applied to a triangle ABC, mapping it to triangle A'B'C'. The transformation can be represented by a matrix multiplication of the form $M \\left(x ; y\\right) = \\left(3, 1 ; 1, k\\right) \\left(x ; y\\right)$, where $M$ is the transformation matrix and $k$ is an unknown parameter. If the original point A is $(2, 1)$ and its transformed image A' is $(7, 5)$, find the value of $k$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Eliminating the Parameter (Trigonometric)",
+          "target": "Restricting the parameter domain",
           "choices": [
-            "$\\left\\langle \\frac{3}{2},\\frac{5}{2}\\right\\rangle$",
-            "$\\left\\langle \\frac{5}{2},\\frac{5}{2}\\right\\rangle$",
-            "$\\left\\langle \\frac{7}{2},\\frac{5}{2}\\right\\rangle$",
-            "$\\frac{5}{4}$"
+            "2",
+            "3",
+            "4",
+            "5"
           ],
           "correct": 1,
-          "answer": "$\\mathrm{proj}_{\\mathbf{v}}\\mathbf{u}=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{v}|^2}\\mathbf{v}=\\frac{10}{8}\\langle 2,2\\rangle=\\left\\langle \\frac{5}{2},\\frac{5}{2}\\right\\rangle$.",
-          "explanation": "$\\mathrm{proj}_{\\mathbf{v}}\\mathbf{u}=\\frac{\\mathbf{u}\\cdot\\mathbf{v}}{|\\mathbf{v}|^2}\\mathbf{v}=\\frac{10}{8}\\langle 2,2\\rangle=\\left\\langle \\frac{5}{2},\\frac{5}{2}\\right\\rangle$.",
+          "answer": "The transformation matrix $M$ is given by $M = \\left(3, 1 ; 1, k\\right)$. We are given that point A $(2, 1)$ is transformed to point A' $(7, 5)$. This can be expressed as a matrix equation: $M \\left(2 ; 1\\right) = \\left(7 ; 5\\right)$. Substituting the matrix M, we get: $\\left(3, 1 ; 1, k\\right) \\left(2 ; 1\\right) = \\left(7 ; 5\\right)$. Performing the matrix multiplication for the first row: $(3 \\cdot 2) + (1 \\cdot 1) = 6 + 1 = 7$. This matches the first component of A', confirming the top row of the matrix is correct. Performing the matrix multiplication for the second row: $(1 \\cdot 2) + (k \\cdot 1) = 2 + k$. We are given that the second component of A' is 5, so we have the equation: $2 + k = 5$. Solving for $k$: $k = 5 - 2$, which gives $k = 3$.",
+          "explanation": "The transformation matrix $M$ is given by $M = \\left(3, 1 ; 1, k\\right)$. We are given that point A $(2, 1)$ is transformed to point A' $(7, 5)$. This can be expressed as a matrix equation: $M \\left(2 ; 1\\right) = \\left(7 ; 5\\right)$. Substituting the matrix M, we get: $\\left(3, 1 ; 1, k\\right) \\left(2 ; 1\\right) = \\left(7 ; 5\\right)$. Performing the matrix multiplication for the first row: $(3 \\cdot 2) + (1 \\cdot 1) = 6 + 1 = 7$. This matches the first component of A', confirming the top row of the matrix is correct. Performing the matrix multiplication for the second row: $(1 \\cdot 2) + (k \\cdot 1) = 2 + k$. We are given that the second component of A' is 5, so we have the equation: $2 + k = 5$. Solving for $k$: $k = 5 - 2$, which gives $k = 3$.",
           "cross_lesson": "4.02 Ellipses"
         }
       ]

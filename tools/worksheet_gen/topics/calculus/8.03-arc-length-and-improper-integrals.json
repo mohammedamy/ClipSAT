@@ -37,13 +37,27 @@
           "figure": {
             "type": "plot",
             "fns": [
-              "sin(x)"
+              "-0.34*x**2 + 1.75*x + 2.7",
+              "0.3*x + 0.3"
             ],
-            "xmin": -0.3,
-            "xmax": 3.5,
-            "ymin": -0.2,
-            "ymax": 1.3,
-            "width": 200
+            "xmin": -1,
+            "xmax": 5,
+            "ymin": -1,
+            "ymax": 5.5,
+            "shade": {
+              "fn1": "-0.34*x**2 + 1.75*x + 2.7",
+              "fn2": "0.3*x + 0.3",
+              "x0": 0.0,
+              "x1": 2.9
+            },
+            "point_labels": [
+              {
+                "x": 1.5,
+                "y": 4.56,
+                "label": "$y=f(x)$"
+              }
+            ],
+            "width": 230
           }
         },
         {
@@ -53,25 +67,6 @@
           "target": "Improper integrals",
           "answer": "$\\lim_{b\\rightarrow\\infty}\\left[-\\frac{1}{x}\\right]_1^b = \\lim_{b\\rightarrow\\infty}\\left(1 - \\frac{1}{b}\\right) = 1$: converges to $1$.",
           "explanation": "$\\lim_{b\\rightarrow\\infty}\\left[-\\frac{1}{x}\\right]_1^b = \\lim_{b\\rightarrow\\infty}\\left(1 - \\frac{1}{b}\\right) = 1$: converges to $1$."
-        },
-        {
-          "q": "Evaluate $\\int_1^\\infty \\frac{1}{x}\\,dx$, or state that it diverges.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Improper integrals",
-          "answer": "$\\lim_{b\\rightarrow\\infty}\\left[\\ln x\\right]_1^b = \\lim_{b\\rightarrow\\infty}\\ln b = \\infty$: diverges.",
-          "explanation": "$\\lim_{b\\rightarrow\\infty}\\left[\\ln x\\right]_1^b = \\lim_{b\\rightarrow\\infty}\\ln b = \\infty$: diverges.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "1/x"
-            ],
-            "xmin": 0.5,
-            "xmax": 10,
-            "ymin": -0.1,
-            "ymax": 1.2,
-            "width": 200
-          }
         },
         {
           "q": "Evaluate $\\int_0^1 \\frac{1}{\\sqrt{x}}\\,dx$ (improper at the lower limit).",
@@ -122,59 +117,8 @@
           }
         },
         {
-          "q": "Set up (do not evaluate) the arc length integral for $y=\\ln x$ on $[1,e]$.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "More arc length practice",
-          "answer": "$y'=\\frac{1}{x}$: $L=\\int_1^e\\sqrt{1+\\frac{1}{x^2}}\\,dx$.",
-          "explanation": "$y'=\\frac{1}{x}$: $L=\\int_1^e\\sqrt{1+\\frac{1}{x^2}}\\,dx$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "log(x)"
-            ],
-            "xmin": 0.5,
-            "xmax": 3.2,
-            "ymin": -0.5,
-            "ymax": 1.2,
-            "width": 200
-          }
-        }
-      ]
-    },
-    {
-      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
-      "questions": [
-        {
-          "q": "Evaluate $\\int_1^\\infty \\frac{1}{x^{1.5}}\\,dx$, or state that it diverges.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "More improper integrals",
-          "answer": "$\\lim_{b\\rightarrow\\infty}\\left[-2x^{-0.5}\\right]_1^b = \\lim_{b\\rightarrow\\infty}\\left(2-\\frac{2}{\\sqrt{b}}\\right) = 2$: converges to $2$.",
-          "explanation": "$\\lim_{b\\rightarrow\\infty}\\left[-2x^{-0.5}\\right]_1^b = \\lim_{b\\rightarrow\\infty}\\left(2-\\frac{2}{\\sqrt{b}}\\right) = 2$: converges to $2$."
-        },
-        {
-          "q": "Evaluate $\\int_{-\\infty}^0 e^x\\,dx$, or state that it diverges.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "More improper integrals",
-          "answer": "$\\lim_{a\\rightarrow-\\infty}\\left[e^x\\right]_a^0 = 1-\\lim_{a\\rightarrow-\\infty}e^a = 1-0=1$: converges to $1$.",
-          "explanation": "$\\lim_{a\\rightarrow-\\infty}\\left[e^x\\right]_a^0 = 1-\\lim_{a\\rightarrow-\\infty}e^a = 1-0=1$: converges to $1$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "exp(x)"
-            ],
-            "xmin": -6,
-            "xmax": 1,
-            "ymin": -0.3,
-            "ymax": 2,
-            "width": 200
-          }
-        },
-        {
           "q": "For $\\int_1^\\infty \\frac{1}{x^p}\\,dx$, state the condition on $p$ for convergence, and explain why using the antiderivative $\\frac{x^{1-p}}{1-p}$ (for $p\\neq1$).",
-          "difficulty": "Intermediate",
+          "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The p-integral test",
           "answer": "Converges when $p>1$. As $b\\rightarrow\\infty$, $b^{1-p}\\rightarrow0$ only when $1-p<0$, i.e. $p>1$; otherwise the limit is infinite (or, for $p=1$, the antiderivative is $\\ln x$, which also diverges).",
@@ -182,12 +126,17 @@
         },
         {
           "q": "Use the $p$-integral result to quickly determine whether $\\int_1^\\infty \\frac{1}{x^{0.9}}\\,dx$ converges.",
-          "difficulty": "Intermediate",
+          "difficulty": "Foundational",
           "question_type": "FRQ",
           "target": "The p-integral test",
           "answer": "$p=0.9<1$: diverges.",
           "explanation": "$p=0.9<1$: diverges."
-        },
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
         {
           "q": "Evaluate $\\int_0^2 \\frac{1}{(x-1)^2}\\,dx$, or explain why it diverges (note the integrand is undefined at $x=1$, inside the interval).",
           "difficulty": "Intermediate",
@@ -233,18 +182,12 @@
             "ymax": 2,
             "width": 220
           }
-        }
-      ]
-    },
-    {
-      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
-      "questions": [
+        },
         {
           "q": "Set up (do not evaluate) the arc length integral for $y=x^2$ on $[0,2]$, and estimate it using the straight-line distance between the endpoints as a lower bound.",
-          "difficulty": "Challenging",
+          "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Arc length of a more involved curve",
-          "cross_lesson": "4.01 Antiderivatives and Indefinite Integrals",
           "answer": "$y'=2x$: $L=\\int_0^2\\sqrt{1+4x^2}\\,dx$. Straight-line distance between $(0,0)$ and $(2,4)$: $\\sqrt{4+16}=\\sqrt{20}=2\\sqrt{5}\\approx4.47$, which is a lower bound since the actual curve is longer than the chord connecting its endpoints.",
           "explanation": "$y'=2x$: $L=\\int_0^2\\sqrt{1+4x^2}\\,dx$. Straight-line distance between $(0,0)$ and $(2,4)$: $\\sqrt{4+16}=\\sqrt{20}=2\\sqrt{5}\\approx4.47$, which is a lower bound since the actual curve is longer than the chord connecting its endpoints.",
           "figure": {
@@ -261,10 +204,9 @@
         },
         {
           "q": "Use a comparison with $\\int_1^\\infty \\frac{1}{x^2}\\,dx$ (known to converge) to argue that $\\int_1^\\infty \\frac{1}{x^2+1}\\,dx$ also converges, without evaluating it.",
-          "difficulty": "Challenging",
+          "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Comparison test for improper integrals",
-          "cross_lesson": "4.02 Riemann Sums and Definite Integrals",
           "answer": "For $x\\geq1$, $\\frac{1}{x^2+1}<\\frac{1}{x^2}$. Since $\\int_1^\\infty\\frac{1}{x^2}\\,dx$ converges (to $1$), and the integrand of interest is smaller and positive everywhere on $[1,\\infty)$, the comparison test guarantees $\\int_1^\\infty\\frac{1}{x^2+1}\\,dx$ also converges.",
           "explanation": "For $x\\geq1$, $\\frac{1}{x^2+1}<\\frac{1}{x^2}$. Since $\\int_1^\\infty\\frac{1}{x^2}\\,dx$ converges (to $1$), and the integrand of interest is smaller and positive everywhere on $[1,\\infty)$, the comparison test guarantees $\\int_1^\\infty\\frac{1}{x^2+1}\\,dx$ also converges.",
           "figure": {
@@ -282,10 +224,9 @@
         },
         {
           "q": "Use a comparison with $\\int_1^\\infty\\frac{1}{x}\\,dx$ (known to diverge) to argue that $\\int_1^\\infty\\frac{1}{\\sqrt{x}}\\,dx$ also diverges.",
-          "difficulty": "Challenging",
+          "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Comparison test for improper integrals",
-          "cross_lesson": "5.01 The Fundamental Theorem of Calculus",
           "answer": "For $x\\geq1$, $\\frac{1}{\\sqrt{x}}\\geq\\frac{1}{x}$ (since $\\sqrt{x}\\leq x$). Since $\\int_1^\\infty\\frac{1}{x}\\,dx$ diverges and the integrand of interest is even larger, the comparison test guarantees $\\int_1^\\infty\\frac{1}{\\sqrt{x}}\\,dx$ also diverges.",
           "explanation": "For $x\\geq1$, $\\frac{1}{\\sqrt{x}}\\geq\\frac{1}{x}$ (since $\\sqrt{x}\\leq x$). Since $\\int_1^\\infty\\frac{1}{x}\\,dx$ diverges and the integrand of interest is even larger, the comparison test guarantees $\\int_1^\\infty\\frac{1}{\\sqrt{x}}\\,dx$ also diverges.",
           "figure": {
@@ -303,10 +244,9 @@
         },
         {
           "q": "A cable hangs in the shape $y=\\frac{x^2}{8}$ between the towers at $x=-4$ and $x=4$. Set up the integral for the length of the cable (do not evaluate).",
-          "difficulty": "Challenging",
+          "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "A capstone arc-length application",
-          "cross_lesson": "6.01 Related Rates",
           "answer": "$y'=\\frac{x}{4}$: $L=\\int_{-4}^4\\sqrt{1+\\frac{x^2}{16}}\\,dx$.",
           "explanation": "$y'=\\frac{x}{4}$: $L=\\int_{-4}^4\\sqrt{1+\\frac{x^2}{16}}\\,dx$.",
           "figure": {
@@ -320,33 +260,18 @@
             "ymax": 3,
             "width": 200
           }
-        },
-        {
-          "q": "Evaluate $\\int_2^\\infty\\frac{1}{(x-1)^3}\\,dx$, or state that it diverges.",
-          "difficulty": "Challenging",
-          "question_type": "FRQ",
-          "target": "A capstone arc-length application",
-          "cross_lesson": "6.02 Optimization and Curve Sketching",
-          "answer": "$\\lim_{b\\rightarrow\\infty}\\left[-\\frac{1}{2(x-1)^2}\\right]_2^b=\\lim_{b\\rightarrow\\infty}\\left(-\\frac{1}{2(b-1)^2}+\\frac{1}{2}\\right)=\\frac{1}{2}$: converges to $\\frac{1}{2}$.",
-          "explanation": "$\\lim_{b\\rightarrow\\infty}\\left[-\\frac{1}{2(x-1)^2}\\right]_2^b=\\lim_{b\\rightarrow\\infty}\\left(-\\frac{1}{2(b-1)^2}+\\frac{1}{2}\\right)=\\frac{1}{2}$: converges to $\\frac{1}{2}$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "1/(x-1)**3"
-            ],
-            "xmin": 1.5,
-            "xmax": 10,
-            "ymin": -0.2,
-            "ymax": 1.5,
-            "width": 200
-          }
-        },
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
         {
           "q": "A city's water tower is shaped by revolving the curve $y=\\sqrt{25-x^2}$ (the upper half of a circle of radius 5) about the $x$-axis; set up (do not evaluate) the arc length integral for this curve on $[-4,4]$, which describes the profile of one side of the tower.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "A capstone arc-length application",
-          "cross_lesson": "7.01 Integration by Substitution",
+          "cross_lesson": "4.01 Antiderivatives and Indefinite Integrals",
           "answer": "$y'=\\frac{-x}{\\sqrt{25-x^2}}$: $L=\\int_{-4}^4\\sqrt{1+\\frac{x^2}{25-x^2}}\\,dx=\\int_{-4}^4\\sqrt{\\frac{25}{25-x^2}}\\,dx=\\int_{-4}^4\\frac{5}{\\sqrt{25-x^2}}\\,dx$.",
           "explanation": "$y'=\\frac{-x}{\\sqrt{25-x^2}}$: $L=\\int_{-4}^4\\sqrt{1+\\frac{x^2}{25-x^2}}\\,dx=\\int_{-4}^4\\sqrt{\\frac{25}{25-x^2}}\\,dx=\\int_{-4}^4\\frac{5}{\\sqrt{25-x^2}}\\,dx$.",
           "figure": {
@@ -360,6 +285,51 @@
             "ymax": 6,
             "width": 200
           }
+        },
+        {
+          "q": "Level 2 · MediumApply the Ratio Test to determine the convergence or divergence of $\\sum_{n=1}^\\infty \\frac{4^n}{n!}$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Improper integrals with infinite discontinuities inside the interval",
+          "cross_lesson": "4.02 Riemann Sums and Definite Integrals",
+          "answer": "Set up the ratio: $\\rho = \\lim_{n\\rightarrow\\infty} \\left| \\frac{a_{n+1}}{a_n} \\right| = \\lim_{n\\rightarrow\\infty} \\left| \\frac{4^{n+1}}{(n+1)!} \\cdot \\frac{n!}{4^n} \\right| = \\lim_{n\\rightarrow\\infty} \\left( \\frac{4^{n+1}}{4^n} \\cdot \\frac{n!}{(n+1)n!} \\right) = \\lim_{n\\rightarrow\\infty} \\frac{4}{n+1} = 0.$ Since \\(\\rho = 0 Ratio Test, the series converges absolutely.",
+          "explanation": "Set up the ratio: $\\rho = \\lim_{n\\rightarrow\\infty} \\left| \\frac{a_{n+1}}{a_n} \\right| = \\lim_{n\\rightarrow\\infty} \\left| \\frac{4^{n+1}}{(n+1)!} \\cdot \\frac{n!}{4^n} \\right| = \\lim_{n\\rightarrow\\infty} \\left( \\frac{4^{n+1}}{4^n} \\cdot \\frac{n!}{(n+1)n!} \\right) = \\lim_{n\\rightarrow\\infty} \\frac{4}{n+1} = 0.$ Since \\(\\rho = 0 Ratio Test, the series converges absolutely."
+        },
+        {
+          "q": "[Unit 9 · Polar Coordinates & Polar Area · Practice 4] If the governing relation for this system is $g(t) = 6t + 6$, evaluate $g(10)$ and find the inverse input $t$ when $g(t) = 72$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Visualizing an improper integral as a limiting area",
+          "cross_lesson": "5.01 The Fundamental Theorem of Calculus",
+          "answer": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$.",
+          "explanation": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$."
+        },
+        {
+          "q": "[Unit 10 · Infinite Sequences & Series — Convergence Tests · Practice 4] If the governing relation for this system is $g(t) = 6t + 6$, evaluate $g(10)$ and find the inverse input $t$ when $g(t) = 72$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Arc length of a more involved curve",
+          "cross_lesson": "6.01 Related Rates",
+          "answer": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$.",
+          "explanation": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$."
+        },
+        {
+          "q": "Level 1 · FoundationsFind all values of $c$ in the open interval $(-1, 2)$ that satisfy the Mean Value Theorem for $f(x) = x^3 - 2x^2 + 1$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Comparison test for improper integrals",
+          "cross_lesson": "6.02 Optimization and Curve Sketching",
+          "answer": "1. Check hypotheses: $f(x)$ is a polynomial, continuous on $[-1, 2]$ and differentiable on $(-1, 2)$. 2. Calculate the average rate of change on $[-1, 2]$: $f(-1) = (-1)^3 - 2(-1)^2 + 1 = -1 - 2 + 1 = -2$ $f(2) = 2^3 - 2(2)^2 + 1 = 8 - 8 + 1 = 1$ $\\frac{f(2) - f(-1)}{2 - (-1)} = \\frac{1 - (-2)}{3} = \\frac{3}{3} = 1$ 3. Set $f'(c) = 1$: $f'(x) = 3x^2 - 4x \\Rightarrow 3c^2 - 4c = 1 \\Rightarrow 3c^2 - 4c - 1 = 0$ Apply the quadratic formula: $c = \\frac{4 \\pm \\sqrt{(-4)^2 - 4(3)(-1)}}{2(3)} = \\frac{4 \\pm \\sqrt{16 + 12}}{6} = \\frac{4 \\pm \\sqrt{28}}{6} = \\frac{2 \\pm \\sqrt{7}}{3}$ Evaluating approximations: $\\frac{2 + 2.646}{3} \\approx 1.549 \\in (-1, 2)$ and $\\frac{2 - 2.646}{3} \\approx -0.215 \\in (-1, 2)$. Both values lie strictly inside $(-1, 2)$: $\\mathbf{c = \\frac{2 - \\sqrt{7}}{3}} \\quad \\mathrm{and} \\quad \\mathbf{c = \\frac{2 + \\sqrt{7}}{3}}.$",
+          "explanation": "1. Check hypotheses: $f(x)$ is a polynomial, continuous on $[-1, 2]$ and differentiable on $(-1, 2)$. 2. Calculate the average rate of change on $[-1, 2]$: $f(-1) = (-1)^3 - 2(-1)^2 + 1 = -1 - 2 + 1 = -2$ $f(2) = 2^3 - 2(2)^2 + 1 = 8 - 8 + 1 = 1$ $\\frac{f(2) - f(-1)}{2 - (-1)} = \\frac{1 - (-2)}{3} = \\frac{3}{3} = 1$ 3. Set $f'(c) = 1$: $f'(x) = 3x^2 - 4x \\Rightarrow 3c^2 - 4c = 1 \\Rightarrow 3c^2 - 4c - 1 = 0$ Apply the quadratic formula: $c = \\frac{4 \\pm \\sqrt{(-4)^2 - 4(3)(-1)}}{2(3)} = \\frac{4 \\pm \\sqrt{16 + 12}}{6} = \\frac{4 \\pm \\sqrt{28}}{6} = \\frac{2 \\pm \\sqrt{7}}{3}$ Evaluating approximations: $\\frac{2 + 2.646}{3} \\approx 1.549 \\in (-1, 2)$ and $\\frac{2 - 2.646}{3} \\approx -0.215 \\in (-1, 2)$. Both values lie strictly inside $(-1, 2)$: $\\mathbf{c = \\frac{2 - \\sqrt{7}}{3}} \\quad \\mathrm{and} \\quad \\mathbf{c = \\frac{2 + \\sqrt{7}}{3}}.$"
+        },
+        {
+          "q": "A random variable $X$ has distribution $\\mathrm{Po}(\\lambda)$. A single observation of $X$ is taken to test $H_0: \\lambda = 6$ against $H_1: \\lambda < 6$ at the 5% level. (a) Find the critical region. (b) State the actual significance level. (c) Find the probability of a Type II error if the true value of $\\lambda$ is 3.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "A capstone arc-length application",
+          "cross_lesson": "7.01 Integration by Substitution",
+          "answer": "(a) Under $H_0$, $X \\sim \\mathrm{Po}(6)$. Calculate cumulative probabilities: $P(X = 0) = e^{-6} \\approx 0.00248$ $P(X \\leq 1) = e^{-6}(1 + 6) = 7e^{-6} \\approx 0.01735$ $P(X \\leq 2) = e^{-6}(1 + 6 + 18) = 25e^{-6} \\approx 0.06197$ Since $P(X \\leq 1) 0.05$, the critical region is $X \\leq 1$ (i.e. $X = 0$ or $1$). (b) Actual significance level = $P(X \\leq 1 \\mid \\lambda = 6) = 7e^{-6} \\approx 0.0174$ (or 1.74%). (c) Type II error occurs when we fail to reject $H_0$ when $\\lambda = 3$. We fail to reject when $X \\geq 2$: $P(X \\geq 2 \\mid \\lambda = 3) = 1 - P(X \\leq 1 \\mid \\lambda = 3) = 1 - e^{-3}(1 + 3) = 1 - 4e^{-3} \\approx 1 - 0.1991 = 0.801\\mathrm{\\ (3\\ s.f.)}$",
+          "explanation": "(a) Under $H_0$, $X \\sim \\mathrm{Po}(6)$. Calculate cumulative probabilities: $P(X = 0) = e^{-6} \\approx 0.00248$ $P(X \\leq 1) = e^{-6}(1 + 6) = 7e^{-6} \\approx 0.01735$ $P(X \\leq 2) = e^{-6}(1 + 6 + 18) = 25e^{-6} \\approx 0.06197$ Since $P(X \\leq 1) 0.05$, the critical region is $X \\leq 1$ (i.e. $X = 0$ or $1$). (b) Actual significance level = $P(X \\leq 1 \\mid \\lambda = 6) = 7e^{-6} \\approx 0.0174$ (or 1.74%). (c) Type II error occurs when we fail to reject $H_0$ when $\\lambda = 3$. We fail to reject when $X \\geq 2$: $P(X \\geq 2 \\mid \\lambda = 3) = 1 - P(X \\leq 1 \\mid \\lambda = 3) = 1 - e^{-3}(1 + 3) = 1 - 4e^{-3} \\approx 1 - 0.1991 = 0.801\\mathrm{\\ (3\\ s.f.)}$"
         }
       ]
     },
@@ -367,195 +337,10 @@
       "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
-          "q": "State the formula for the arc length $L$ of $y = f(x)$ from $x = a$ to $x = b$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Arc Length of a Plane Curve",
-          "choices": [
-            "$L = \\int_a^b \\sqrt{1 + [f'(x)]^2}\\,dx$",
-            "$L = \\int_a^b \\sqrt{1 + f'(x)}\\,dx$",
-            "$L = \\int_a^b [1 + f'(x)]\\,dx$",
-            "$L = \\int_a^b \\sqrt{[f(x)]^2 + [f'(x)]^2}\\,dx$"
-          ],
-          "correct": 0,
-          "answer": "From $ds = \\sqrt{dx^2 + dy^2} = \\sqrt{1 + (dy/dx)^2}\\,dx$, arc length is $\\int_a^b \\sqrt{1 + [f'(x)]^2}\\,dx$.",
-          "explanation": "From $ds = \\sqrt{dx^2 + dy^2} = \\sqrt{1 + (dy/dx)^2}\\,dx$, arc length is $\\int_a^b \\sqrt{1 + [f'(x)]^2}\\,dx$."
-        },
-        {
-          "q": "Find the arc length of $y = \\frac{2}{3}x^{3/2}$ from $x = 0$ to $x = 3$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Arc Length of a Plane Curve",
-          "choices": [
-            "$\\frac{14}{3}$",
-            "$7$",
-            "$\\frac{16}{3}$",
-            "$8$"
-          ],
-          "correct": 0,
-          "answer": "$y' = x^{1/2} \\Rightarrow 1 + (y')^2 = 1 + x$. $L = \\int_0^3 \\sqrt{1 + x}\\,dx = [\\frac{2}{3}(1 + x)^{3/2}]_0^3 = \\frac{2}{3}(4^{3/2} - 1^{3/2}) = \\frac{2}{3}(8 - 1) = \\frac{14}{3}$.",
-          "explanation": "$y' = x^{1/2} \\Rightarrow 1 + (y')^2 = 1 + x$. $L = \\int_0^3 \\sqrt{1 + x}\\,dx = [\\frac{2}{3}(1 + x)^{3/2}]_0^3 = \\frac{2}{3}(4^{3/2} - 1^{3/2}) = \\frac{2}{3}(8 - 1) = \\frac{14}{3}$."
-        },
-        {
-          "q": "Find the arc length of the line segment $y = \\frac{4}{3}x + 2$ from $x = 0$ to $x = 3$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Arc Length of a Plane Curve",
-          "choices": [
-            "$5$",
-            "$4$",
-            "$6$",
-            "$\\sqrt{7}$"
-          ],
-          "correct": 0,
-          "answer": "$y' = 4/3 \\Rightarrow \\sqrt{1 + 16/9} = \\sqrt{25/9} = 5/3$. $L = \\int_0^3 \\frac{5}{3}\\,dx = \\frac{5}{3}(3) = 5$.",
-          "explanation": "$y' = 4/3 \\Rightarrow \\sqrt{1 + 16/9} = \\sqrt{25/9} = 5/3$. $L = \\int_0^3 \\frac{5}{3}\\,dx = \\frac{5}{3}(3) = 5$."
-        },
-        {
-          "q": "Evaluate $\\int_1^\\infty \\frac{1}{x^2}\\,dx$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Improper Integrals of Type I (Infinite Bounds)",
-          "choices": [
-            "$1$",
-            "$\\infty$ (diverges)",
-            "$1/2$",
-            "$2$"
-          ],
-          "correct": 0,
-          "answer": "$\\lim_{b \\rightarrow \\infty} \\int_1^b x^{-2}\\,dx = \\lim_{b \\rightarrow \\infty} [-1/x]_1^b = \\lim_{b \\rightarrow \\infty} (-1/b + 1) = 1$.",
-          "explanation": "$\\lim_{b \\rightarrow \\infty} \\int_1^b x^{-2}\\,dx = \\lim_{b \\rightarrow \\infty} [-1/x]_1^b = \\lim_{b \\rightarrow \\infty} (-1/b + 1) = 1$."
-        },
-        {
-          "q": "Evaluate $\\int_0^\\infty e^{-2x}\\,dx$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Improper Integrals of Type I (Infinite Bounds)",
-          "choices": [
-            "$1/2$",
-            "$1$",
-            "$\\infty$",
-            "$2$"
-          ],
-          "correct": 0,
-          "answer": "$\\lim_{b \\rightarrow \\infty} [-\\frac{1}{2}e^{-2x}]_0^b = \\lim_{b \\rightarrow \\infty} (-\\frac{1}{2}e^{-2b} + 1/2) = 1/2$.",
-          "explanation": "$\\lim_{b \\rightarrow \\infty} [-\\frac{1}{2}e^{-2x}]_0^b = \\lim_{b \\rightarrow \\infty} (-\\frac{1}{2}e^{-2b} + 1/2) = 1/2$."
-        },
-        {
-          "q": "For what values of $p$ does the improper integral $\\int_1^\\infty \\frac{1}{x^p}\\,dx$ converge?",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Improper Integrals of Type I (Infinite Bounds)",
-          "choices": [
-            "$p > 1$",
-            "$p \\geq 1$",
-            "$p < 1$",
-            "$p > 0$"
-          ],
-          "correct": 0,
-          "answer": "By the $p$-integral test on $[1, \\infty)$, $\\int_1^\\infty x^{-p}\\,dx$ converges if and only if $p > 1$. For $p \\leq 1$, it diverges.",
-          "explanation": "By the $p$-integral test on $[1, \\infty)$, $\\int_1^\\infty x^{-p}\\,dx$ converges if and only if $p > 1$. For $p \\leq 1$, it diverges."
-        },
-        {
-          "q": "Evaluate $\\int_0^1 \\frac{1}{\\sqrt{x}}\\,dx$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Improper Integrals of Type II (Discontinuous Integrands)",
-          "choices": [
-            "$2$",
-            "$1$",
-            "$\\infty$ (diverges)",
-            "$1/2$"
-          ],
-          "correct": 0,
-          "answer": "Integrand undefined at $x = 0$. $\\lim_{a \\rightarrow 0^+} [2\\sqrt{x}]_a^1 = \\lim_{a \\rightarrow 0^+} (2 - 2\\sqrt{a}) = 2$.",
-          "explanation": "Integrand undefined at $x = 0$. $\\lim_{a \\rightarrow 0^+} [2\\sqrt{x}]_a^1 = \\lim_{a \\rightarrow 0^+} (2 - 2\\sqrt{a}) = 2$."
-        },
-        {
-          "q": "Evaluate $\\int_0^2 \\frac{1}{x - 1}\\,dx$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Improper Integrals of Type II (Discontinuous Integrands)",
-          "choices": [
-            "Diverges",
-            "$0$",
-            "$\\ln 2$",
-            "$\\infty$"
-          ],
-          "correct": 0,
-          "answer": "Infinite discontinuity at $x = 1$. Split: $\\int_0^1 + \\int_1^2$. $\\int_0^1 \\frac{dx}{x-1} = \\lim_{b \\rightarrow 1^-} [\\ln|x-1|]_0^b = \\lim_{b \\rightarrow 1^-} \\ln|b-1| - 0 = -\\infty$. Since one part diverges, the integral diverges.",
-          "explanation": "Infinite discontinuity at $x = 1$. Split: $\\int_0^1 + \\int_1^2$. $\\int_0^1 \\frac{dx}{x-1} = \\lim_{b \\rightarrow 1^-} [\\ln|x-1|]_0^b = \\lim_{b \\rightarrow 1^-} \\ln|b-1| - 0 = -\\infty$. Since one part diverges, the integral diverges."
-        }
-      ]
-    },
-    {
-      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
-      "questions": [
-        {
-          "q": "For what values of $p$ does $\\int_0^1 \\frac{1}{x^p}\\,dx$ converge?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Improper Integrals of Type II (Discontinuous Integrands)",
-          "choices": [
-            "$p < 1$",
-            "$p > 1$",
-            "$p \\leq 1$",
-            "$p > 0$"
-          ],
-          "correct": 0,
-          "answer": "Near 0, $\\int_0^1 x^{-p}\\,dx = [\\frac{x^{1-p}}{1-p}]_0^1$. This converges if and only if the exponent $1 - p > 0 \\Rightarrow p < 1$.",
-          "explanation": "Near 0, $\\int_0^1 x^{-p}\\,dx = [\\frac{x^{1-p}}{1-p}]_0^1$. This converges if and only if the exponent $1 - p > 0 \\Rightarrow p < 1$."
-        },
-        {
-          "q": "Determine the convergence of $\\int_1^\\infty \\frac{\\sin^2(x)}{x^2}\\,dx$.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Comparison Test for Improper Integrals",
-          "choices": [
-            "Converges by comparison with $\\frac{1}{x^2}$",
-            "Diverges",
-            "Oscillates without limit",
-            "Converges to 0"
-          ],
-          "correct": 0,
-          "answer": "Since $0 \\leq \\frac{\\sin^2(x)}{x^2} \\leq \\frac{1}{x^2}$ and $\\int_1^\\infty \\frac{1}{x^2}\\,dx$ converges, by the Direct Comparison Test the integral converges.",
-          "explanation": "Since $0 \\leq \\frac{\\sin^2(x)}{x^2} \\leq \\frac{1}{x^2}$ and $\\int_1^\\infty \\frac{1}{x^2}\\,dx$ converges, by the Direct Comparison Test the integral converges."
-        },
-        {
-          "q": "Determine the convergence of $\\int_1^\\infty \\frac{1}{\\sqrt{x^3 + 1}}\\,dx$.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Comparison Test for Improper Integrals",
-          "choices": [
-            "Converges (behaves like $x^{-3/2}$ as $x \\rightarrow \\infty$)",
-            "Diverges (behaves like $x^{-1/2}$)",
-            "Diverges to $-\\infty$",
-            "Cannot be tested"
-          ],
-          "correct": 0,
-          "answer": "For large $x$, $\\frac{1}{\\sqrt{x^3 + 1}} \\approx \\frac{1}{x^{3/2}}$. By the Limit Comparison Test with $p = 3/2 > 1$, the integral converges.",
-          "explanation": "For large $x$, $\\frac{1}{\\sqrt{x^3 + 1}} \\approx \\frac{1}{x^{3/2}}$. By the Limit Comparison Test with $p = 3/2 > 1$, the integral converges."
-        },
-        {
-          "q": "Evaluate $\\int_{-\\infty}^\\infty \\frac{1}{1 + x^2}\\,dx$.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Comparison Test for Improper Integrals",
-          "choices": [
-            "$\\pi$",
-            "$2\\pi$",
-            "$\\pi/2$",
-            "Diverges"
-          ],
-          "correct": 0,
-          "answer": "Split at 0: $2\\int_0^\\infty \\frac{1}{1+x^2}\\,dx = 2\\lim_{b \\rightarrow \\infty} [\\arctan x]_0^b = 2(\\pi/2 - 0) = \\pi$.",
-          "explanation": "Split at 0: $2\\int_0^\\infty \\frac{1}{1+x^2}\\,dx = 2\\lim_{b \\rightarrow \\infty} [\\arctan x]_0^b = 2(\\pi/2 - 0) = \\pi$."
-        },
-        {
           "q": "Comparison test for improper integrals: $0\\leq f(x)\\leq g(x)$, $\\int_a^\\infty g$ converges implies:",
-          "difficulty": "Intermediate",
+          "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Improper Integrals of Type II (Discontinuous Integrands)",
+          "target": "Arc length",
           "choices": [
             "$\\int_a^\\infty f$ converges",
             "$\\int_a^\\infty f$ diverges",
@@ -567,64 +352,249 @@
           "explanation": "Comparison: dominated convergent integral converges."
         },
         {
-          "q": "Evaluate the improper integral $\\int_{0}^{\\infty} \\frac{1}{x^{2} + 9}\\, dx$.",
-          "difficulty": "Intermediate",
+          "q": "If $f'(x)=(x-3)$, on which interval is $f$ increasing?",
+          "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Comparison Test for Improper Integrals",
+          "target": "Improper integrals",
           "choices": [
-            "$\\frac{\\pi}{3}$",
-            "$\\infty$",
-            "$\\frac{\\pi}{6} + 1$",
-            "$\\frac{\\pi}{6}$"
+            "$(3,\\infty)$",
+            "\\{3\\}",
+            "$(-\\infty,\\infty)$",
+            "$(-\\infty,3)$"
           ],
-          "correct": 3,
-          "answer": "Write it as a limit, e.g. $\\lim_{b \\rightarrow \\infty} \\int_{0}^{b} \\frac{1}{x^{2} + 9}\\, dx$, integrate, and take the limit. The integral converges to $\\frac{\\pi}{6}$.",
-          "explanation": "Write it as a limit, e.g. $\\lim_{b \\rightarrow \\infty} \\int_{0}^{b} \\frac{1}{x^{2} + 9}\\, dx$, integrate, and take the limit. The integral converges to $\\frac{\\pi}{6}$."
+          "correct": 0,
+          "answer": "Applying Application of Derivatives principles, $f'(x)>0$ when $x-3>0$, i.e. $x>3$. Therefore, the verified correct option is $(3,\\infty)$.",
+          "explanation": "Applying Application of Derivatives principles, $f'(x)>0$ when $x-3>0$, i.e. $x>3$. Therefore, the verified correct option is $(3,\\infty)$."
         },
         {
-          "q": "Evaluate the improper integral $\\int_{0}^{\\infty} x e^{- 3 x^{2}}\\, dx$.",
+          "q": "Polar area inside $r=1+\\cos\\theta$ and outside $r=1$:",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "More arc length practice",
+          "choices": [
+            "$2+\\pi/4$",
+            "$\\pi/4+1$",
+            "$1+\\pi/4$",
+            "$\\pi/2$"
+          ],
+          "correct": 0,
+          "answer": "$A=\\frac{1}{2}\\int_{-\\pi/2}^{\\pi/2}[(1+\\cos\\theta)^2-1]d\\theta=\\frac{1}{2}\\int(2\\cos\\theta+\\cos^2\\theta)d\\theta=2+\\pi/4$.",
+          "explanation": "$A=\\frac{1}{2}\\int_{-\\pi/2}^{\\pi/2}[(1+\\cos\\theta)^2-1]d\\theta=\\frac{1}{2}\\int(2\\cos\\theta+\\cos^2\\theta)d\\theta=2+\\pi/4$."
+        },
+        {
+          "q": "Polar: find the area inside $r=3\\sin\\theta$ and outside $r=1+\\sin\\theta$:",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "More improper integrals",
+          "choices": [
+            "$\\pi/4$",
+            "$\\pi$",
+            "$\\pi/2$",
+            "$3\\pi/4$"
+          ],
+          "correct": 1,
+          "answer": "Intersect: $3\\sin\\theta=1+\\sin\\theta\\Rightarrow\\sin\\theta=1/2\\Rightarrow\\theta=\\pi/6,5\\pi/6$; $A=\\pi$.",
+          "explanation": "Intersect: $3\\sin\\theta=1+\\sin\\theta\\Rightarrow\\sin\\theta=1/2\\Rightarrow\\theta=\\pi/6,5\\pi/6$; $A=\\pi$."
+        },
+        {
+          "q": "A box with square base and open top must hold 32 m³. Minimise surface area. Optimal side length $x$:",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "The p-integral test",
+          "choices": [
+            "$2$",
+            "$4$",
+            "$2\\sqrt[3]{4}$",
+            "$\\sqrt[3]{32}$"
+          ],
+          "correct": 1,
+          "answer": "$S=x^2+4x(32/x^2)=x^2+128/x$; $S'=2x-128/x^2=0\\Rightarrow x^3=64\\Rightarrow x=4$.",
+          "explanation": "$S=x^2+4x(32/x^2)=x^2+128/x$; $S'=2x-128/x^2=0\\Rightarrow x^3=64\\Rightarrow x=4$."
+        },
+        {
+          "q": "Area inside $r=2\\cos\\theta$ and outside $r=1$:",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Improper integrals with infinite discontinuities inside the interval",
+          "choices": [
+            "$\\frac{\\pi}{2}+\\frac{\\sqrt{3}}{2}$",
+            "$\\frac{\\pi}{3}+\\frac{\\sqrt{3}}{2}$",
+            "$\\pi/3$",
+            "$\\pi/2$"
+          ],
+          "correct": 1,
+          "answer": "Intersection at $\\cos\\theta=1/2\\Rightarrow\\theta=\\pm\\pi/3$; $A=\\pi/3+\\sqrt{3}/2$.",
+          "explanation": "Intersection at $\\cos\\theta=1/2\\Rightarrow\\theta=\\pm\\pi/3$; $A=\\pi/3+\\sqrt{3}/2$."
+        },
+        {
+          "q": "If $f'(x)>0$ on an interval, $f$ is:",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Visualizing an improper integral as a limiting area",
+          "choices": [
+            "concave down",
+            "decreasing",
+            "increasing",
+            "constant"
+          ],
+          "correct": 2,
+          "answer": "A positive derivative means the function is increasing on that interval.",
+          "explanation": "A positive derivative means the function is increasing on that interval."
+        },
+        {
+          "q": "If $f''(x)>0$ on an interval, the graph of $f$ is:",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Arc length of a more involved curve",
+          "choices": [
+            "concave up",
+            "decreasing",
+            "concave down",
+            "linear"
+          ],
+          "correct": 0,
+          "answer": "A positive second derivative means the graph curves upward (concave up).",
+          "explanation": "A positive second derivative means the graph curves upward (concave up)."
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
+        {
+          "q": "Arc length of $r=2\\cos\\theta$ (full circle, $0\\leq\\theta\\leq\\pi$):",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Comparison test for improper integrals",
+          "choices": [
+            "$\\pi$",
+            "$4$",
+            "$\\pi/2$",
+            "$2\\pi$"
+          ],
+          "correct": 3,
+          "answer": "Circle radius 1 (centered at $(1,0)$), circumference $=2\\pi$.",
+          "explanation": "Circle radius 1 (centered at $(1,0)$), circumference $=2\\pi$."
+        },
+        {
+          "q": "For the catenary $y=a\\cosh(x/a)$, the arc length from $-L$ to $L$ is:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "A capstone arc-length application",
+          "choices": [
+            "$2L$",
+            "$2a\\sinh(L/a)$",
+            "$L\\cosh(L/a)$",
+            "$2a\\cosh(L/a)$"
+          ],
+          "correct": 1,
+          "answer": "$y'=\\sinh(x/a)$; $L=\\int_{-L}^L\\cosh(x/a)dx=2a\\sinh(L/a)$.",
+          "explanation": "$y'=\\sinh(x/a)$; $L=\\int_{-L}^L\\cosh(x/a)dx=2a\\sinh(L/a)$."
+        },
+        {
+          "q": "Area swept inside one loop of $r^2=4\\sin2\\theta$:",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Arc length",
           "choices": [
-            "$\\frac{1}{3}$",
-            "$\\infty$",
-            "$\\frac{1}{6}$",
-            "$\\frac{7}{6}$"
+            "$1$",
+            "$2$",
+            "$4$",
+            "$\\pi$"
           ],
-          "correct": 2,
-          "answer": "Write it as a limit, e.g. $\\lim_{b \\rightarrow \\infty} \\int_{0}^{b} x e^{- 3 x^{2}}\\, dx$, integrate, and take the limit. The integral converges to $\\frac{1}{6}$.",
-          "explanation": "Write it as a limit, e.g. $\\lim_{b \\rightarrow \\infty} \\int_{0}^{b} x e^{- 3 x^{2}}\\, dx$, integrate, and take the limit. The integral converges to $\\frac{1}{6}$."
+          "correct": 1,
+          "answer": "$A=\\frac{1}{2}\\int_0^{\\pi/2}4\\sin2\\theta\\,d\\theta=2$.",
+          "explanation": "$A=\\frac{1}{2}\\int_0^{\\pi/2}4\\sin2\\theta\\,d\\theta=2$."
         },
         {
-          "q": "Improper integral: $\\int_1^\\infty\\frac{1}{x^2}\\,dx=$",
+          "q": "Comparison test: if $0\\leq a_n\\leq b_n$ and $\\sum b_n$ converges, then $\\sum a_n$:",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Improper integrals",
           "choices": [
-            "$1$",
-            "$\\infty$",
-            "$1/2$",
-            "$2$"
+            "diverges",
+            "oscillates",
+            "converges",
+            "is zero"
           ],
-          "correct": 0,
-          "answer": "Applying Integrals principles, $[-1/x]_1^\\infty=0-(-1)=1$. Therefore, the verified correct option is $1$.",
-          "explanation": "Applying Integrals principles, $[-1/x]_1^\\infty=0-(-1)=1$. Therefore, the verified correct option is $1$."
+          "correct": 2,
+          "answer": "Direct comparison: dominated by convergent.",
+          "explanation": "Direct comparison: dominated by convergent."
         },
         {
-          "q": "Improper double integral: $\\int_0^\\infty\\int_0^\\infty e^{-(x+y)}dx\\,dy=$",
+          "q": "$\\int_0^\\pi\\int_0^{\\sin\\theta}r\\,dr\\,d\\theta$: inner integral gives $\\sin^2\\theta/2$; outer gives",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "More arc length practice",
           "choices": [
+            "$\\pi$",
+            "$\\pi/2$",
+            "$\\pi/4$",
+            "$1/2$"
+          ],
+          "correct": 2,
+          "answer": "$\\int_0^\\pi\\sin^2\\theta/2\\,d\\theta=\\pi/4$.",
+          "explanation": "$\\int_0^\\pi\\sin^2\\theta/2\\,d\\theta=\\pi/4$."
+        },
+        {
+          "q": "Triple integral in cylindrical: $\\int_0^{2\\pi}\\int_0^1\\int_0^1 r\\,dz\\,dr\\,d\\theta=$",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "More improper integrals",
+          "choices": [
+            "$4\\pi$",
+            "$2\\pi$",
+            "$\\pi/2$",
+            "$\\pi$"
+          ],
+          "correct": 3,
+          "answer": "$=2\\pi\\int_0^1 r\\,dr=2\\pi\\cdot1/2=\\pi$.",
+          "explanation": "$=2\\pi\\int_0^1 r\\,dr=2\\pi\\cdot1/2=\\pi$."
+        },
+        {
+          "q": "Arc length of helix $\\mathbf{r}(t)=(\\cos t,\\sin t,t)$, $0\\leq t\\leq2\\pi$:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "The p-integral test",
+          "choices": [
+            "$2\\pi$",
+            "$\\sqrt{2}$",
+            "$4\\pi$",
+            "$2\\pi\\sqrt{2}$"
+          ],
+          "correct": 3,
+          "answer": "$L=\\sqrt{2}\\cdot2\\pi=2\\pi\\sqrt{2}$.",
+          "explanation": "$L=\\sqrt{2}\\cdot2\\pi=2\\pi\\sqrt{2}$."
+        },
+        {
+          "q": "Arc length parametric: $L=\\int_a^b\\sqrt{\\dot x^2+\\dot y^2}\\,dt$. For $x=t,y=t$ from 0 to 1:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Improper integrals with infinite discontinuities inside the interval",
+          "choices": [
+            "$\\sqrt{2}$",
             "$1$",
-            "$0$",
-            "$\\infty$",
-            "$e$"
+            "$2$",
+            "$\\sqrt{2}/2$"
           ],
           "correct": 0,
-          "answer": "$=\\left(\\int_0^\\infty e^{-x}dx\\right)^2=1^2=1$.",
-          "explanation": "$=\\left(\\int_0^\\infty e^{-x}dx\\right)^2=1^2=1$."
+          "answer": "$L=\\int_0^1\\sqrt{1+1}dt=\\sqrt{2}$.",
+          "explanation": "$L=\\int_0^1\\sqrt{1+1}dt=\\sqrt{2}$."
+        },
+        {
+          "q": "Probability: $f(x,y)=6xy$ on $0\\leq x\\leq1,0\\leq y\\leq\\sqrt{1-x^2}$ (quarter circle). $P(X+Y\\leq1)=$",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Visualizing an improper integral as a limiting area",
+          "choices": [
+            "$\\frac{3}{4}$",
+            "$\\frac{1}{2}$",
+            "$\\frac{1}{4}$",
+            "$\\frac{2}{3}$"
+          ],
+          "correct": 2,
+          "answer": "Integrating over the triangle $x\\geq 0, y\\geq 0, x+y\\leq 1$ gives $\\int_0^1 \\int_0^{1-x} 6xy\\,dy\\,dx = 3\\int_0^1 x(1-x)^2\\,dx = 3\\left(\\frac{1}{2}-\\frac{2}{3}+\\frac{1}{4}\\right) = \\frac{1}{4}$.",
+          "explanation": "Integrating over the triangle $x\\geq 0, y\\geq 0, x+y\\leq 1$ gives $\\int_0^1 \\int_0^{1-x} 6xy\\,dy\\,dx = 3\\int_0^1 x(1-x)^2\\,dx = 3\\left(\\frac{1}{2}-\\frac{2}{3}+\\frac{1}{4}\\right) = \\frac{1}{4}$."
         }
       ]
     },
@@ -632,131 +602,131 @@
       "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
       "questions": [
         {
-          "q": "Integral test: $\\sum_{n=1}^\\infty f(n)$ converges iff $\\int_1^\\infty f(x)dx$ converges, for $f$ positive decreasing. So $\\sum 1/n^2$ converges because $\\int_1^\\infty x^{-2}dx=$",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "More improper integrals",
-          "choices": [
-            "$1$ (finite)",
-            "$\\infty$",
-            "$0$",
-            "$1/2$"
-          ],
-          "correct": 0,
-          "answer": "$\\int_1^\\infty x^{-2}dx=1$: finite.",
-          "explanation": "$\\int_1^\\infty x^{-2}dx=1$: finite.",
-          "cross_lesson": "6.01 Related Rates"
-        },
-        {
-          "q": "Find the area inside $r = 10 \\cos{\\left(\\theta \\right)}$ and outside $r = 5$.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "The p-integral test",
-          "choices": [
-            "$25 \\pi$",
-            "$25 \\sqrt{3} + \\frac{50 \\pi}{3}$",
-            "$\\frac{25 \\pi}{3}$",
-            "$\\frac{25 \\sqrt{3}}{2} + \\frac{25 \\pi}{3}$"
-          ],
-          "correct": 3,
-          "answer": "The curves meet at $\\theta=\\pm\\pi/3$. $A = \\int_{- \\frac{\\pi}{3}}^{\\frac{\\pi}{3}} \\left(50 \\cos^{2}{\\left(\\theta \\right)} - \\frac{25}{2}\\right)\\, d\\theta$ $=$ $\\frac{25 \\sqrt{3}}{2} + \\frac{25 \\pi}{3}$.",
-          "explanation": "The curves meet at $\\theta=\\pm\\pi/3$. $A = \\int_{- \\frac{\\pi}{3}}^{\\frac{\\pi}{3}} \\left(50 \\cos^{2}{\\left(\\theta \\right)} - \\frac{25}{2}\\right)\\, d\\theta$ $=$ $\\frac{25 \\sqrt{3}}{2} + \\frac{25 \\pi}{3}$.",
-          "cross_lesson": "6.02 Optimization and Curve Sketching"
-        },
-        {
-          "q": "Find the area inside $r = 2 \\cos{\\left(\\theta \\right)}$ and outside $r = 1$.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Improper integrals with infinite discontinuities inside the interval",
-          "choices": [
-            "$\\pi$",
-            "$\\sqrt{3} + \\frac{2 \\pi}{3}$",
-            "$\\frac{\\sqrt{3}}{2} + \\frac{\\pi}{3}$",
-            "$\\frac{\\pi}{3}$"
-          ],
-          "correct": 2,
-          "answer": "The curves meet at $\\theta=\\pm\\pi/3$. $A = \\int_{- \\frac{\\pi}{3}}^{\\frac{\\pi}{3}} \\left(2 \\cos^{2}{\\left(\\theta \\right)} - \\frac{1}{2}\\right)\\, d\\theta$ $=$ $\\frac{\\sqrt{3}}{2} + \\frac{\\pi}{3}$.",
-          "explanation": "The curves meet at $\\theta=\\pm\\pi/3$. $A = \\int_{- \\frac{\\pi}{3}}^{\\frac{\\pi}{3}} \\left(2 \\cos^{2}{\\left(\\theta \\right)} - \\frac{1}{2}\\right)\\, d\\theta$ $=$ $\\frac{\\sqrt{3}}{2} + \\frac{\\pi}{3}$.",
-          "cross_lesson": "7.01 Integration by Substitution"
-        },
-        {
-          "q": "Find the area inside $r = 8 \\cos{\\left(\\theta \\right)}$ and outside $r = 4$.",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Visualizing an improper integral as a limiting area",
-          "choices": [
-            "$16 \\pi$",
-            "$16 \\sqrt{3} + \\frac{32 \\pi}{3}$",
-            "$\\frac{16 \\pi}{3}$",
-            "$8 \\sqrt{3} + \\frac{16 \\pi}{3}$"
-          ],
-          "correct": 3,
-          "answer": "The curves meet at $\\theta=\\pm\\pi/3$. $A = \\int_{- \\frac{\\pi}{3}}^{\\frac{\\pi}{3}} \\left(32 \\cos^{2}{\\left(\\theta \\right)} - 8\\right)\\, d\\theta$ $=$ $8 \\sqrt{3} + \\frac{16 \\pi}{3}$.",
-          "explanation": "The curves meet at $\\theta=\\pm\\pi/3$. $A = \\int_{- \\frac{\\pi}{3}}^{\\frac{\\pi}{3}} \\left(32 \\cos^{2}{\\left(\\theta \\right)} - 8\\right)\\, d\\theta$ $=$ $8 \\sqrt{3} + \\frac{16 \\pi}{3}$.",
-          "cross_lesson": "7.02 Integration by Parts"
-        },
-        {
-          "q": "Find the area inside $r = 4 \\cos{\\left(\\theta \\right)}$ and outside $r = 2$.",
+          "q": "Use $x=u+v, y=u-v$ to compute $\\iint_D(x-y)e^{x+y}\\,dA$ where $D$ is the square $|x-y|\\leq1, |x+y|\\leq1$:",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Arc length of a more involved curve",
           "choices": [
-            "$4 \\pi$",
-            "$2 \\sqrt{3} + \\frac{4 \\pi}{3}$",
-            "$4 \\sqrt{3} + \\frac{8 \\pi}{3}$",
-            "$\\frac{4 \\pi}{3}$"
+            "$0$",
+            "$2(e-e^{-1})$",
+            "$(e-1)^2$",
+            "$4(e-e^{-1})/e$"
           ],
-          "correct": 1,
-          "answer": "The curves meet at $\\theta=\\pm\\pi/3$. $A = \\int_{- \\frac{\\pi}{3}}^{\\frac{\\pi}{3}} \\left(8 \\cos^{2}{\\left(\\theta \\right)} - 2\\right)\\, d\\theta$ $=$ $2 \\sqrt{3} + \\frac{4 \\pi}{3}$.",
-          "explanation": "The curves meet at $\\theta=\\pm\\pi/3$. $A = \\int_{- \\frac{\\pi}{3}}^{\\frac{\\pi}{3}} \\left(8 \\cos^{2}{\\left(\\theta \\right)} - 2\\right)\\, d\\theta$ $=$ $2 \\sqrt{3} + \\frac{4 \\pi}{3}$.",
-          "cross_lesson": "8.01 Area Between Curves"
+          "correct": 0,
+          "answer": "Under the change of variables $2u = x+y$ and $2v = x-y$, the integrand $2v\\,e^{2u}$ is odd in $v$ over the symmetric interval $[-1/2, 1/2]$, so the double integral equals $0$.",
+          "explanation": "Under the change of variables $2u = x+y$ and $2v = x-y$, the integrand $2v\\,e^{2u}$ is odd in $v$ over the symmetric interval $[-1/2, 1/2]$, so the double integral equals $0$.",
+          "cross_lesson": "6.01 Related Rates"
         },
         {
-          "q": "Find the arc length of $y = \\cosh{\\left(x \\right)}$ from $x = 0$ to $x = \\ln{\\left(3 \\right)}$.",
+          "q": "A ladder $10$ m long leans against a wall; the base slides away at $1$ m/s. How fast is the top sliding down when the base is $6$ m from the wall?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Comparison test for improper integrals",
           "choices": [
-            "$\\frac{4}{3}$",
-            "$\\frac{2}{3}$",
-            "$\\frac{7}{3}$",
-            "$\\frac{8}{3}$"
+            "$\\frac{3}{4}$",
+            "$-\\frac{3}{8}$",
+            "$-\\frac{3}{4}$",
+            "$-\\frac{3}{2}$"
           ],
-          "correct": 0,
-          "answer": "$L = \\int_{0}^{\\ln{\\left(3 \\right)}} \\sqrt{y'^{2} + 1}\\, dx$; here $y'^{2} + 1 = \\cosh^{2}{\\left(x \\right)}$ is a perfect square, so the integral evaluates to $\\frac{4}{3}$.",
-          "explanation": "$L = \\int_{0}^{\\ln{\\left(3 \\right)}} \\sqrt{y'^{2} + 1}\\, dx$; here $y'^{2} + 1 = \\cosh^{2}{\\left(x \\right)}$ is a perfect square, so the integral evaluates to $\\frac{4}{3}$.",
-          "cross_lesson": "8.02 Volumes of Revolution"
+          "correct": 2,
+          "answer": "$x^2+y^2=10^2$. At $x=6$: $y=\\sqrt{10^2-6^2}=8$. Differentiating: $2x\\frac{dx}{dt}+2y\\frac{dy}{dt}=0\\Rightarrow\\frac{dy}{dt}=-\\frac{x}{y}\\frac{dx}{dt}=-\\frac{3}{4}$ m/s.",
+          "explanation": "$x^2+y^2=10^2$. At $x=6$: $y=\\sqrt{10^2-6^2}=8$. Differentiating: $2x\\frac{dx}{dt}+2y\\frac{dy}{dt}=0\\Rightarrow\\frac{dy}{dt}=-\\frac{x}{y}\\frac{dx}{dt}=-\\frac{3}{4}$ m/s.",
+          "cross_lesson": "6.02 Optimization and Curve Sketching"
         },
         {
-          "q": "Find the arc length of $y = \\frac{x^{3}}{6} + \\frac{1}{2 x}$ from $x = 1$ to $x = 3$.",
+          "q": "Evaluate $\\iiint_B (x^2+y^2+z^2)\\,dV$ where $B$ is the ball $x^{2} + y^{2} + z^{2} \\leq 1$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "A capstone arc-length application",
           "choices": [
-            "$4$",
-            "$\\frac{17}{3}$",
-            "$\\frac{28}{3}$",
-            "$\\frac{14}{3}$"
+            "$\\frac{4 \\pi}{5}$",
+            "$\\frac{4 \\pi}{3}$",
+            "$\\frac{2 \\pi}{5}$",
+            "$\\frac{8 \\pi}{5}$"
           ],
-          "correct": 3,
-          "answer": "$L = \\int_{1}^{3} \\sqrt{y'^{2} + 1}\\, dx$; here $y'^{2} + 1 = \\frac{\\left(x^{4} + 1\\right)^{2}}{4 x^{4}}$ is a perfect square, so the integral evaluates to $\\frac{14}{3}$.",
-          "explanation": "$L = \\int_{1}^{3} \\sqrt{y'^{2} + 1}\\, dx$; here $y'^{2} + 1 = \\frac{\\left(x^{4} + 1\\right)^{2}}{4 x^{4}}$ is a perfect square, so the integral evaluates to $\\frac{14}{3}$.",
+          "correct": 0,
+          "answer": "In spherical coordinates the integrand is $\\rho^2$, so $\\int_0^{2\\pi}\\int_0^{\\pi}\\int_0^{1}\\rho^4\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta=\\frac{4 \\pi}{5}$.",
+          "explanation": "In spherical coordinates the integrand is $\\rho^2$, so $\\int_0^{2\\pi}\\int_0^{\\pi}\\int_0^{1}\\rho^4\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta=\\frac{4 \\pi}{5}$.",
+          "cross_lesson": "7.01 Integration by Substitution"
+        },
+        {
+          "q": "Variation of parameters for $y''+y=\\sec x$: general solution involves $\\ln|\\sec x+\\tan x|$. This appears because the particular integral of $\\int\\sin x\\sec x\\,dx=$",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Arc length",
+          "choices": [
+            "$\\tan x$",
+            "$\\ln|\\cos x|$",
+            "$-\\ln|\\cos x|$",
+            "$-\\cos x$"
+          ],
+          "correct": 2,
+          "answer": "Applying Differential Equations principles, $\\int\\tan x\\,dx=-\\ln|\\cos x|$. Therefore, the verified correct option is $-\\ln|\\cos x|$.",
+          "explanation": "Applying Differential Equations principles, $\\int\\tan x\\,dx=-\\ln|\\cos x|$. Therefore, the verified correct option is $-\\ln|\\cos x|$.",
+          "cross_lesson": "7.02 Integration by Parts"
+        },
+        {
+          "q": "The Jacobian of the transformation $x=r\\cosh u, y=r\\sinh u$ is $r$ times:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Improper integrals",
+          "choices": [
+            "$\\cosh^2u-\\sinh^2u=1$",
+            "$\\cosh u+\\sinh u$",
+            "$\\sinh^2u$",
+            "$r^2$"
+          ],
+          "correct": 0,
+          "answer": "Applying Multiple Integrals principles, $J=r(\\cosh^2u-\\sinh^2u)=r$. Therefore, the verified correct option is $\\cosh^2u-\\sinh^2u=1$.",
+          "explanation": "Applying Multiple Integrals principles, $J=r(\\cosh^2u-\\sinh^2u)=r$. Therefore, the verified correct option is $\\cosh^2u-\\sinh^2u=1$.",
+          "cross_lesson": "8.01 Area Between Curves"
+        },
+        {
+          "q": "Surface integral $\\iint_S c\\,dS$ for constant $c$ equals:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "More arc length practice",
+          "choices": [
+            "$c\\cdot\\mathrm{Area}(S)$",
+            "$c$",
+            "$0$",
+            "$c\\cdot\\mathrm{Vol}$"
+          ],
+          "correct": 0,
+          "answer": "Applying Vector Calculus principles, $\\iint_Sc\\,dS=c\\cdot A(S)$. Therefore, the verified correct option is $c\\cdot\\mathrm{Area}(S)$.",
+          "explanation": "Applying Vector Calculus principles, $\\iint_Sc\\,dS=c\\cdot A(S)$. Therefore, the verified correct option is $c\\cdot\\mathrm{Area}(S)$.",
+          "cross_lesson": "8.02 Volumes of Revolution"
+        },
+        {
+          "q": "Centre of mass of lamina $D=[0,1]\\times[0,1]$ with density $\\delta=xy$:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "More improper integrals",
+          "choices": [
+            "$(1/2,1/2)$",
+            "$(2/3,2/3)$",
+            "$(3/4,3/4)$",
+            "$(1,1)$"
+          ],
+          "correct": 1,
+          "answer": "$m=\\int_0^1\\int_0^1 xy\\,dy\\,dx=1/4$; $M_y=\\int_0^1\\int_0^1 x^2y\\,dy\\,dx=1/6$; $\\bar{x}=(1/6)/(1/4)=2/3$; similarly $\\bar{y}=2/3$.",
+          "explanation": "$m=\\int_0^1\\int_0^1 xy\\,dy\\,dx=1/4$; $M_y=\\int_0^1\\int_0^1 x^2y\\,dy\\,dx=1/6$; $\\bar{x}=(1/6)/(1/4)=2/3$; similarly $\\bar{y}=2/3$.",
           "cross_lesson": "9.01 Separable Differential Equations"
         },
         {
-          "q": "The improper integral $\\int_0^1 \\ln x\\,dx$ :",
+          "q": "Use polar coordinates to evaluate $\\iint_R \\left(x^{2} + y^{2}\\right)^{3}\\,dA$, where $R$ is the disk $x^{2} + y^{2} \\leq 9$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Arc Length of a Plane Curve",
+          "target": "The p-integral test",
           "choices": [
-            "converges to $-1$",
-            "diverges to $-\\infty$",
-            "converges to $0$",
-            "converges to $1$"
+            "$\\frac{6561}{4}$",
+            "$\\frac{6561 \\pi}{4}$",
+            "$\\frac{6561 \\pi}{2}$",
+            "$\\frac{6561 \\pi}{8}$"
           ],
-          "correct": 0,
-          "answer": "Antiderivative $x\\ln x-x$; as $x\\rightarrow0^+$, $x\\ln x\\rightarrow0$, so the value is $(1\\cdot0-1)-(0-0)=-1$, a finite limit despite the unbounded integrand near $0$.",
-          "explanation": "Antiderivative $x\\ln x-x$; as $x\\rightarrow0^+$, $x\\ln x\\rightarrow0$, so the value is $(1\\cdot0-1)-(0-0)=-1$, a finite limit despite the unbounded integrand near $0$.",
+          "correct": 1,
+          "answer": "With $x=r\\cos\\theta,\\ y=r\\sin\\theta$ and $dA=r\\,dr\\,d\\theta$, the integral becomes elementary; its value is $\\frac{6561 \\pi}{4}$.",
+          "explanation": "With $x=r\\cos\\theta,\\ y=r\\sin\\theta$ and $dA=r\\,dr\\,d\\theta$, the integral becomes elementary; its value is $\\frac{6561 \\pi}{4}$.",
           "cross_lesson": "1.01 Precalculus Review for Calculus"
         }
       ]

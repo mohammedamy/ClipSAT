@@ -26,18 +26,18 @@
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (0))**2 + (-1)",
-              "0.5*x + 1"
+              "0.75*(x - (-1.0))**2 + (1.0)",
+              "-0.35*x + (2.2)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
-                "x": 0.0,
-                "y": -1.0,
-                "label": "$(0,-1)$"
+                "x": -1.0,
+                "y": 1.0,
+                "label": "$(-1,1)$"
               }
             ],
             "width": 230
@@ -86,23 +86,23 @@
           "figure": {
             "type": "plot",
             "fns": [
-              "-0.35*x**2 + 1.2*x + 2.2",
-              "0.35*x + 0.4"
+              "-0.41*x**2 + 1.25*x + 2.1",
+              "0.2*x + 0.3"
             ],
             "xmin": -1,
             "xmax": 5,
             "ymin": -1,
-            "ymax": 5,
+            "ymax": 5.5,
             "shade": {
-              "fn1": "-0.35*x**2 + 1.2*x + 2.2",
-              "fn2": "0.35*x + 0.4",
+              "fn1": "-0.41*x**2 + 1.25*x + 2.1",
+              "fn2": "0.2*x + 0.3",
               "x0": 0.0,
-              "x1": 3.5
+              "x1": 2.5
             },
             "point_labels": [
               {
-                "x": 2.0,
-                "y": 3.2,
+                "x": 1.5,
+                "y": 3.05,
                 "label": "$y=f(x)$"
               }
             ],
@@ -170,25 +170,25 @@
           "figure": {
             "type": "plot",
             "fns": [
-              "1 + 1.5/(x - (-1))"
+              "0 + 2.5/(x - (1))"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "asymptotes": {
               "x": [
-                -1
+                1.0
               ],
               "y": [
-                1
+                0.0
               ]
             },
             "point_labels": [
               {
-                "x": 0.5,
-                "y": 2.0,
-                "label": "$( 0.5, 2 )$"
+                "x": 2.0,
+                "y": 2.5,
+                "label": "$(2, 2.5)$"
               }
             ],
             "width": 230
@@ -219,12 +219,12 @@
           "explanation": "Taking absolute values: $\\sum\\frac{1}{n^2}$ is a convergent $p$-series ($p=2>1$). Since the series of absolute values converges, the original series is absolutely convergent."
         },
         {
-          "q": "Determine whether $\\sum_{n=1}^{\\infty}\\frac{(-1)^n}{\\sqrt{n}}$ is absolutely convergent, conditionally convergent, or divergent.",
+          "q": "The alternating series $\\sum_{n=1}^{\\infty}\\frac{(-1)^{n+1}}{n^2}$ converges by the alternating series test. Use the fact that the error after $n$ terms is bounded by the first omitted term to estimate how many terms are needed for the partial sum to be within $0.001$ of the true sum.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
-          "target": "Absolute versus conditional convergence",
-          "answer": "Absolute values give $\\sum\\frac{1}{\\sqrt{n}}$, a divergent $p$-series ($p=\\frac{1}{2}\\leq1$). But the terms $\\frac{1}{\\sqrt{n}}$ decrease to $0$, so by the alternating series test the original series converges. It is conditionally convergent.",
-          "explanation": "Absolute values give $\\sum\\frac{1}{\\sqrt{n}}$, a divergent $p$-series ($p=\\frac{1}{2}\\leq1$). But the terms $\\frac{1}{\\sqrt{n}}$ decrease to $0$, so by the alternating series test the original series converges. It is conditionally convergent."
+          "target": "Estimating the sum of an alternating series",
+          "answer": "Error bound: $|S-S_n|\\leq a_{n+1}=\\frac{1}{(n+1)^2}$. Need $\\frac{1}{(n+1)^2}<0.001$: $(n+1)^2>1000$, so $n+1>31.6$, meaning $n\\geq32$ terms suffice.",
+          "explanation": "Error bound: $|S-S_n|\\leq a_{n+1}=\\frac{1}{(n+1)^2}$. Need $\\frac{1}{(n+1)^2}<0.001$: $(n+1)^2>1000$, so $n+1>31.6$, meaning $n\\geq32$ terms suffice."
         }
       ]
     },
@@ -232,57 +232,54 @@
       "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
       "questions": [
         {
-          "q": "The alternating series $\\sum_{n=1}^{\\infty}\\frac{(-1)^{n+1}}{n^2}$ converges by the alternating series test. Use the fact that the error after $n$ terms is bounded by the first omitted term to estimate how many terms are needed for the partial sum to be within $0.001$ of the true sum.",
-          "difficulty": "Challenging",
-          "question_type": "FRQ",
-          "target": "Estimating the sum of an alternating series",
-          "cross_lesson": "7.01 Integration by Substitution",
-          "answer": "Error bound: $|S-S_n|\\leq a_{n+1}=\\frac{1}{(n+1)^2}$. Need $\\frac{1}{(n+1)^2}<0.001$: $(n+1)^2>1000$, so $n+1>31.6$, meaning $n\\geq32$ terms suffice.",
-          "explanation": "Error bound: $|S-S_n|\\leq a_{n+1}=\\frac{1}{(n+1)^2}$. Need $\\frac{1}{(n+1)^2}<0.001$: $(n+1)^2>1000$, so $n+1>31.6$, meaning $n\\geq32$ terms suffice."
-        },
-        {
           "q": "Determine whether $\\sum_{n=1}^{\\infty}\\frac{n^2}{3^n}$ converges, using the ratio test.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "A combined convergence-test challenge",
-          "cross_lesson": "7.02 Integration by Parts",
+          "cross_lesson": "7.01 Integration by Substitution",
           "answer": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{(n+1)^2}{3^{n+1}}\\cdot\\frac{3^n}{n^2}=\\frac{1}{3}\\left(\\frac{n+1}{n}\\right)^2\\rightarrow\\frac{1}{3}<1$: converges.",
-          "explanation": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{(n+1)^2}{3^{n+1}}\\cdot\\frac{3^n}{n^2}=\\frac{1}{3}\\left(\\frac{n+1}{n}\\right)^2\\rightarrow\\frac{1}{3}<1$: converges.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": -1.0,
-                "y": -1.0,
-                "label": "$(-1,-1)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{(n+1)^2}{3^{n+1}}\\cdot\\frac{3^n}{n^2}=\\frac{1}{3}\\left(\\frac{n+1}{n}\\right)^2\\rightarrow\\frac{1}{3}<1$: converges."
         },
         {
           "q": "Determine whether $\\sum_{n=2}^{\\infty}\\frac{1}{n(\\ln n)^2}$ converges, using the integral test with $u=\\ln x$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "A combined convergence-test challenge",
-          "cross_lesson": "8.01 Area Between Curves",
+          "cross_lesson": "7.02 Integration by Parts",
           "answer": "$\\int_2^\\infty\\frac{1}{x(\\ln x)^2}\\,dx$: with $u=\\ln x$, $du=\\frac{1}{x}dx$: $\\int\\frac{1}{u^2}\\,du=-\\frac{1}{u}+C$. Evaluating: $\\lim_{b\\rightarrow\\infty}\\left[-\\frac{1}{\\ln x}\\right]_2^b=0-\\left(-\\frac{1}{\\ln2}\\right)=\\frac{1}{\\ln2}$, a finite value: the integral converges, so by the integral test the series converges.",
-          "explanation": "$\\int_2^\\infty\\frac{1}{x(\\ln x)^2}\\,dx$: with $u=\\ln x$, $du=\\frac{1}{x}dx$: $\\int\\frac{1}{u^2}\\,du=-\\frac{1}{u}+C$. Evaluating: $\\lim_{b\\rightarrow\\infty}\\left[-\\frac{1}{\\ln x}\\right]_2^b=0-\\left(-\\frac{1}{\\ln2}\\right)=\\frac{1}{\\ln2}$, a finite value: the integral converges, so by the integral test the series converges."
+          "explanation": "$\\int_2^\\infty\\frac{1}{x(\\ln x)^2}\\,dx$: with $u=\\ln x$, $du=\\frac{1}{x}dx$: $\\int\\frac{1}{u^2}\\,du=-\\frac{1}{u}+C$. Evaluating: $\\lim_{b\\rightarrow\\infty}\\left[-\\frac{1}{\\ln x}\\right]_2^b=0-\\left(-\\frac{1}{\\ln2}\\right)=\\frac{1}{\\ln2}$, a finite value: the integral converges, so by the integral test the series converges.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-0.2*x**2 + 1.25*x + 2.1",
+              "0.4*x + 0.3"
+            ],
+            "xmin": -1,
+            "xmax": 5,
+            "ymin": -1,
+            "ymax": 5.5,
+            "shade": {
+              "fn1": "-0.2*x**2 + 1.25*x + 2.1",
+              "fn2": "0.4*x + 0.3",
+              "x0": 0.0,
+              "x1": 3.3
+            },
+            "point_labels": [
+              {
+                "x": 1.5,
+                "y": 3.53,
+                "label": "$y=f(x)$"
+              }
+            ],
+            "width": 230
+          }
         },
         {
           "q": "A student claims that since $\\lim_{n\\rightarrow\\infty}\\frac{1}{n}=0$, the series $\\sum_{n=1}^{\\infty}\\frac{1}{n}$ must converge. Explain what is wrong with this reasoning, and state the correct necessary (but not sufficient) condition that the $n$th-term test actually provides, using the harmonic series as a counterexample.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "A combined convergence-test challenge",
-          "cross_lesson": "8.02 Volumes of Revolution",
+          "cross_lesson": "8.01 Area Between Curves",
           "answer": "The reasoning confuses a necessary condition with a sufficient one. The $n$th-term test only says: IF $\\lim_{n\\rightarrow\\infty}a_n\\neq0$, THEN the series diverges. It says nothing when the limit IS $0$ — that case is inconclusive. The harmonic series $\\sum\\frac{1}{n}$ is the standard counterexample: its terms go to $0$, yet the series diverges (proven via the integral test or the comparison/grouping argument), showing that $\\lim a_n=0$ alone never guarantees convergence.",
           "explanation": "The reasoning confuses a necessary condition with a sufficient one. The $n$th-term test only says: IF $\\lim_{n\\rightarrow\\infty}a_n\\neq0$, THEN the series diverges. It says nothing when the limit IS $0$ — that case is inconclusive. The harmonic series $\\sum\\frac{1}{n}$ is the standard counterexample: its terms go to $0$, yet the series diverges (proven via the integral test or the comparison/grouping argument), showing that $\\lim a_n=0$ alone never guarantees convergence."
         },
@@ -291,7 +288,7 @@
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "A multi-step convergence investigation",
-          "cross_lesson": "8.03 Arc Length and Improper Integrals",
+          "cross_lesson": "8.02 Volumes of Revolution",
           "answer": "$n$th-term limit: $\\lim_{n\\rightarrow\\infty}\\frac{n^3+2n}{2n^5-n+1}=0$ (inconclusive by itself). Limit comparison with $\\frac{1}{n^2}$: $\\lim_{n\\rightarrow\\infty}\\frac{(n^3+2n)/(2n^5-n+1)}{1/n^2}=\\lim_{n\\rightarrow\\infty}\\frac{n^5+2n^3}{2n^5-n+1}=\\frac{1}{2}$, finite and positive. Since $\\sum\\frac{1}{n^2}$ converges ($p=2>1$), by the limit comparison test the given series also converges.",
           "explanation": "$n$th-term limit: $\\lim_{n\\rightarrow\\infty}\\frac{n^3+2n}{2n^5-n+1}=0$ (inconclusive by itself). Limit comparison with $\\frac{1}{n^2}$: $\\lim_{n\\rightarrow\\infty}\\frac{(n^3+2n)/(2n^5-n+1)}{1/n^2}=\\lim_{n\\rightarrow\\infty}\\frac{n^5+2n^3}{2n^5-n+1}=\\frac{1}{2}$, finite and positive. Since $\\sum\\frac{1}{n^2}$ converges ($p=2>1$), by the limit comparison test the given series also converges."
         },
@@ -300,9 +297,18 @@
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "A multi-step convergence investigation",
-          "cross_lesson": "9.01 Separable Differential Equations",
+          "cross_lesson": "8.03 Arc Length and Improper Integrals",
           "answer": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{n\\cdot2^n}{(n+1)\\cdot2^{n+1}}=\\frac{n}{2(n+1)}\\rightarrow\\frac{1}{2}<1$: converges. Practically, a convergent bound guarantees the cumulative defect probability approaches a finite ceiling rather than growing without bound as more production runs occur, which is essential for meaningful long-run risk assessment.",
           "explanation": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{n\\cdot2^n}{(n+1)\\cdot2^{n+1}}=\\frac{n}{2(n+1)}\\rightarrow\\frac{1}{2}<1$: converges. Practically, a convergent bound guarantees the cumulative defect probability approaches a finite ceiling rather than growing without bound as more production runs occur, which is essential for meaningful long-run risk assessment."
+        },
+        {
+          "q": "Level 1 · Foundations Use the Divergence Test to determine whether $\\sum_{n=1}^\\infty \\cos\\left(\\frac{1}{n}\\right)$ converges or diverges.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "A multi-step convergence investigation",
+          "cross_lesson": "9.01 Separable Differential Equations",
+          "answer": "Compute the limit of the general term as $n \\rightarrow \\infty$: $\\lim_{n \\rightarrow \\infty} a_n = \\lim_{n \\rightarrow \\infty} \\cos\\left(\\frac{1}{n}\\right) = \\cos\\left( \\lim_{n\\rightarrow\\infty} \\frac{1}{n} \\right) = \\cos(0) = 1$ Because $\\lim_{n \\rightarrow \\infty} a_n = 1 e 0$, the series diverges by the Divergence Test.",
+          "explanation": "Compute the limit of the general term as $n \\rightarrow \\infty$: $\\lim_{n \\rightarrow \\infty} a_n = \\lim_{n \\rightarrow \\infty} \\cos\\left(\\frac{1}{n}\\right) = \\cos\\left( \\lim_{n\\rightarrow\\infty} \\frac{1}{n} \\right) = \\cos(0) = 1$ Because $\\lim_{n \\rightarrow \\infty} a_n = 1 e 0$, the series diverges by the Divergence Test."
         }
       ]
     },
@@ -310,164 +316,158 @@
       "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
-          "q": "For what values of $p$ does the $p$-series $\\sum_{n=1}^\\infty \\frac{1}{n^p}$ converge?",
+          "q": "Series $\\sum_{n=1}^\\infty(-1)^{n-1}/\\sqrt{n}$ converges by alternating series test. Is it absolutely convergent?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Integral Test and p-Series",
+          "target": "The ratio and comparison tests",
           "choices": [
-            "$p > 1$",
-            "$p \\geq 1$",
-            "$p < 1$",
-            "$p > 0$"
+            "Yes, $p=1/2<1$ diverges",
+            "No, $\\sum1/\\sqrt{n}$ diverges ($p=1/2\\leq1$)",
+            "Yes, $\\sum1/\\sqrt{n}$ converges",
+            "Cannot determine"
           ],
-          "correct": 0,
-          "answer": "By the Integral Test, $\\int_1^\\infty x^{-p}\\,dx$ converges if and only if $p > 1$. When $p \\leq 1$, the $p$-series diverges.",
-          "explanation": "By the Integral Test, $\\int_1^\\infty x^{-p}\\,dx$ converges if and only if $p > 1$. When $p \\leq 1$, the $p$-series diverges."
+          "correct": 1,
+          "answer": "$p=1/2\\leq1\\Rightarrow\\sum1/\\sqrt{n}$ diverges: only conditionally convergent.",
+          "explanation": "$p=1/2\\leq1\\Rightarrow\\sum1/\\sqrt{n}$ diverges: only conditionally convergent."
         },
         {
-          "q": "Use the Integral Test to determine the convergence of $\\sum_{n=2}^\\infty \\frac{1}{n\\ln n}$.",
+          "q": "Integral test convergence of $\\sum_{n=1}^\\infty 1/n(\\ln n)^2$ (from $n=2$) gives sum approximately:",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Integral Test and p-Series",
+          "target": "Alternating series and the p-series test",
           "choices": [
-            "Diverges",
-            "Converges to $1$",
-            "Converges to $\\ln 2$",
-            "Inconclusive"
+            "converges",
+            "diverges",
+            "equals $e$",
+            "equals $\\pi^2$"
           ],
           "correct": 0,
-          "answer": "$\\int_2^\\infty \\frac{1}{x\\ln x}\\,dx = [\\ln(\\ln x)]_2^\\infty = \\infty$. Since the integral diverges, the series diverges.",
-          "explanation": "$\\int_2^\\infty \\frac{1}{x\\ln x}\\,dx = [\\ln(\\ln x)]_2^\\infty = \\infty$. Since the integral diverges, the series diverges."
+          "answer": "$\\int_2^\\infty dx/(x(\\ln x)^2)=1/\\ln2<\\infty\\Rightarrow$ converges.",
+          "explanation": "$\\int_2^\\infty dx/(x(\\ln x)^2)=1/\\ln2<\\infty\\Rightarrow$ converges."
         },
         {
-          "q": "Which conditions must $f(x)$ satisfy to apply the Integral Test to $\\sum a_n$ where $a_n = f(n)$?",
+          "q": "Which test determines $\\sum n^2/e^n$? Answer: by ratio test $L=$",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Integral Test and p-Series",
+          "target": "The integral test",
           "choices": [
-            "$f$ must be continuous, positive, and decreasing on $[1, \\infty)$",
-            "$f$ must be differentiable and alternating",
-            "$f$ must be bounded and periodic",
-            "$f'(x) > 0$ everywhere"
+            "$e$",
+            "$1$",
+            "$1/e<1$",
+            "$e^2$"
           ],
-          "correct": 0,
-          "answer": "The Integral Test requires $f(x)$ to be continuous, positive, and eventually decreasing for all $x \\geq 1$.",
-          "explanation": "The Integral Test requires $f(x)$ to be continuous, positive, and eventually decreasing for all $x \\geq 1$.",
+          "correct": 2,
+          "answer": "$L=\\lim(n+1)^2/e^{n+1}\\cdot e^n/n^2=1/e<1\\Rightarrow$ converges.",
+          "explanation": "$L=\\lim(n+1)^2/e^{n+1}\\cdot e^n/n^2=1/e<1\\Rightarrow$ converges.",
           "figure": {
             "type": "plot",
             "fns": [
-              "-0.30*x**2 + 1.2*x + 2.2",
-              "0.35*x + 0.4"
+              "0.6*(x - (-0.5))**2 + (-1.5)",
+              "0.4*x + (-0.3)"
             ],
-            "xmin": -1,
+            "xmin": -5,
             "xmax": 5,
-            "ymin": -1,
-            "ymax": 5,
-            "shade": {
-              "fn1": "-0.30*x**2 + 1.2*x + 2.2",
-              "fn2": "0.35*x + 0.4",
-              "x0": 0.0,
-              "x1": 3.5
-            },
+            "ymin": -5,
+            "ymax": 6,
             "point_labels": [
               {
-                "x": 2.0,
-                "y": 3.4,
-                "label": "$y=f(x)$"
+                "x": -0.5,
+                "y": -1.5,
+                "label": "$(-0.5,-1.5)$"
               }
             ],
             "width": 230
           }
         },
         {
-          "q": "Determine the convergence of $\\sum_{n=1}^\\infty \\frac{1}{n^3 + 5}$.",
+          "q": "Series $\\sum_{n=1}^\\infty n\\cdot(1/2)^n$: ratio test gives $L=$",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Comparison Tests (Direct and Limit)",
+          "target": "Choosing the right test",
           "choices": [
-            "Converges by Direct Comparison with $\\sum \\frac{1}{n^3}$",
-            "Diverges by comparison with $1/n$",
-            "Inconclusive",
-            "Diverges by the Divergence Test"
+            "$1$",
+            "$2$",
+            "$1/2$",
+            "$n/2$"
           ],
-          "correct": 0,
-          "answer": "For $n \\geq 1$, $\\frac{1}{n^3 + 5} < \\frac{1}{n^3}$. Since $\\sum 1/n^3$ is a convergent $p$-series ($p = 3 > 1$), the series converges.",
-          "explanation": "For $n \\geq 1$, $\\frac{1}{n^3 + 5} < \\frac{1}{n^3}$. Since $\\sum 1/n^3$ is a convergent $p$-series ($p = 3 > 1$), the series converges."
+          "correct": 2,
+          "answer": "$|a_{n+1}/a_n|=(n+1)/(2n)\\rightarrow1/2<1\\Rightarrow$ converges.",
+          "explanation": "$|a_{n+1}/a_n|=(n+1)/(2n)\\rightarrow1/2<1\\Rightarrow$ converges."
         },
         {
-          "q": "Use the Limit Comparison Test with $b_n = 1/n$ to test $\\sum_{n=1}^\\infty \\frac{2n + 1}{n^2 - 3}$.",
+          "q": "Use the integral test to show $\\sum_{n=2}^\\infty\\frac{1}{n(\\ln n)^2}$ converges. The integral $\\int_2^\\infty\\frac{dx}{x(\\ln x)^2}=$",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Comparison Tests (Direct and Limit)",
+          "target": "The limit comparison test",
           "choices": [
-            "Diverges because $L = 2 > 0$ and $\\sum 1/n$ diverges",
-            "Converges because $L = 0$",
-            "Converges because $L = 2$",
-            "Inconclusive"
+            "$\\infty$",
+            "$\\pi$",
+            "$\\ln2$",
+            "$1/\\ln2$"
           ],
-          "correct": 0,
-          "answer": "$L = \\lim_{n \\rightarrow \\infty} \\frac{(2n+1)/(n^2-3)}{1/n} = \\lim_{n \\rightarrow \\infty} \\frac{2n^2 + n}{n^2 - 3} = 2$. Since $0 < L < \\infty$, both series share the same behavior. Thus it diverges.",
-          "explanation": "$L = \\lim_{n \\rightarrow \\infty} \\frac{(2n+1)/(n^2-3)}{1/n} = \\lim_{n \\rightarrow \\infty} \\frac{2n^2 + n}{n^2 - 3} = 2$. Since $0 < L < \\infty$, both series share the same behavior. Thus it diverges."
+          "correct": 3,
+          "answer": "$u=\\ln x$: $\\int_{\\ln2}^\\infty u^{-2}du=1/\\ln2<\\infty$.",
+          "explanation": "$u=\\ln x$: $\\int_{\\ln2}^\\infty u^{-2}du=1/\\ln2<\\infty$."
         },
         {
-          "q": "Which comparison series $b_n$ is best suited for testing $\\sum_{n=1}^\\infty \\frac{\\sqrt{n}}{n^2 + 4n}$ via LCT?",
+          "q": "The ratio test gives $L=1$: the test is:",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Comparison Tests (Direct and Limit)",
+          "target": "The root test",
           "choices": [
-            "$b_n = \\frac{1}{n^{3/2}}$",
-            "$b_n = \\frac{1}{n^2}$",
-            "$b_n = \\frac{1}{n}$",
-            "$b_n = \\frac{1}{\\sqrt{n}}$"
+            "inconclusive",
+            "divergent",
+            "convergent",
+            "absolutely convergent"
           ],
           "correct": 0,
-          "answer": "The dominant terms are $\\frac{\\sqrt{n}}{n^2} = \\frac{n^{1/2}}{n^2} = \\frac{1}{n^{3/2}}$. Since $p = 3/2 > 1$, it is a convergent $p$-series.",
-          "explanation": "The dominant terms are $\\frac{\\sqrt{n}}{n^2} = \\frac{n^{1/2}}{n^2} = \\frac{1}{n^{3/2}}$. Since $p = 3/2 > 1$, it is a convergent $p$-series."
+          "answer": "Applying Convergence Tests and Power Series principles, Ratio test inconclusive at $L=1$. Therefore, the verified correct option is inconclusive.",
+          "explanation": "Applying Convergence Tests and Power Series principles, Ratio test inconclusive at $L=1$. Therefore, the verified correct option is inconclusive."
         },
         {
-          "q": "What are the two conditions of the Alternating Series Test (AST) for $\\sum (-1)^n b_n$ ($b_n > 0$)?",
+          "q": "Limit comparison: $a_n=1/(n^2+1)$, compare to $b_n=1/n^2$. $\\lim a_n/b_n=$",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Alternating Series and Error Bounds",
+          "target": "Absolute versus conditional convergence",
           "choices": [
-            "$b_{n+1} \\leq b_n$ for all $n$ and $\\lim_{n \\rightarrow \\infty} b_n = 0$",
-            "$\\sum b_n$ converges and $b_n > 0$",
-            "$\\lim_{n \\rightarrow \\infty} b_n = 1$ and $b_n$ is decreasing",
-            "$b_n$ is geometric"
+            "$0$",
+            "$1/2$",
+            "$\\infty$",
+            "$1$"
           ],
-          "correct": 0,
-          "answer": "The Leibniz criteria require that the terms are positive, monotonically decreasing ($b_{n+1} \\leq b_n$), and have limit 0.",
-          "explanation": "The Leibniz criteria require that the terms are positive, monotonically decreasing ($b_{n+1} \\leq b_n$), and have limit 0."
+          "correct": 3,
+          "answer": "Applying Convergence Tests and Power Series principles, $(n^2)/(n^2+1)\\rightarrow1$. Therefore, the verified correct option is $1$.",
+          "explanation": "Applying Convergence Tests and Power Series principles, $(n^2)/(n^2+1)\\rightarrow1$. Therefore, the verified correct option is $1$."
         },
         {
-          "q": "Classify $\\sum_{n=1}^\\infty \\frac{(-1)^{n+1}}{n}$.",
+          "q": "Find the radius of convergence of $\\sum_{n=0}^{\\infty} \\frac{\\left(2 x\\right)^{n}}{n!}$.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
-          "target": "Alternating Series and Error Bounds",
+          "target": "Estimating the sum of an alternating series",
           "choices": [
-            "Conditionally convergent",
-            "Absolutely convergent",
-            "Divergent",
-            "Oscillating divergent"
+            "$0$",
+            "$2$",
+            "$\\infty$",
+            "$\\frac{1}{2}$"
           ],
-          "correct": 0,
-          "answer": "The alternating harmonic series converges by AST. However, the series of absolute values $\\sum 1/n$ is the divergent harmonic series. Thus it is conditionally convergent.",
-          "explanation": "The alternating harmonic series converges by AST. However, the series of absolute values $\\sum 1/n$ is the divergent harmonic series. Thus it is conditionally convergent.",
+          "correct": 2,
+          "answer": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{2|x|}{n+1}\\rightarrow0$ for every $x$, so $R=\\infty$.",
+          "explanation": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{2|x|}{n+1}\\rightarrow0$ for every $x$, so $R=\\infty$.",
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
+              "-0.3*(x - (0.0))**2 + (1.5)",
+              "1.15*x + (0.3)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
-                "x": -1.0,
-                "y": -1.0,
-                "label": "$(-1,-1)$"
+                "x": 0.0,
+                "y": 1.5,
+                "label": "$(0,1.5)$"
               }
             ],
             "width": 230
@@ -479,158 +479,166 @@
       "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
       "questions": [
         {
-          "q": "If $S = \\sum_{n=1}^\\infty \\frac{(-1)^{n+1}}{n^4}$ is approximated by $S_3$, what is the maximum error by the Alternating Series Estimation Theorem?",
+          "q": "Convergence of $\\sum n^2/3^n$: by ratio test, $L=$",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Alternating Series and Error Bounds",
+          "target": "A combined convergence-test challenge",
           "choices": [
-            "$|R_3| \\leq \\frac{1}{4^4} = \\frac{1}{256}$",
-            "$|R_3| \\leq \\frac{1}{3^4} = \\frac{1}{81}$",
-            "$|R_3| \\leq \\frac{1}{5^4}$",
-            "$|R_3| \\leq \\frac{1}{16}$"
+            "$1$",
+            "$1/3$",
+            "$3$",
+            "$0$"
           ],
-          "correct": 0,
-          "answer": "By the Alternating Series Estimation Theorem, $|R_n| \\leq b_{n+1}$. For $n = 3$, $|R_3| \\leq b_4 = \\frac{1}{4^4} = \\frac{1}{256}$.",
-          "explanation": "By the Alternating Series Estimation Theorem, $|R_n| \\leq b_{n+1}$. For $n = 3$, $|R_3| \\leq b_4 = \\frac{1}{4^4} = \\frac{1}{256}$."
+          "correct": 1,
+          "answer": "$|(n+1)^2/3^{n+1}\\cdot3^n/n^2|\\rightarrow1/3<1\\Rightarrow$ converges.",
+          "explanation": "$|(n+1)^2/3^{n+1}\\cdot3^n/n^2|\\rightarrow1/3<1\\Rightarrow$ converges."
         },
         {
-          "q": "State the conclusion of the Ratio Test when $L = \\lim_{n \\rightarrow \\infty} \\left|\\frac{a_{n+1}}{a_n}\\right| < 1$.",
+          "q": "Alternating test: $a_n=1/n!$: does $a_n\\rightarrow0$? Does $a_{n+1}<a_n$?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Ratio and Root Tests",
+          "target": "A multi-step convergence investigation",
           "choices": [
-            "The series converges absolutely",
-            "The series converges conditionally",
-            "The series diverges",
-            "The test is inconclusive"
+            "Neither",
+            "Both $a_n\\rightarrow0$ and $a_{n+1}<a_n$",
+            "$a_n\\rightarrow0$ only",
+            "$a_{n+1}>a_n$"
           ],
-          "correct": 0,
-          "answer": "If $L < 1$, the series converges absolutely. If $L > 1$, it diverges. If $L = 1$, the Ratio Test is inconclusive.",
-          "explanation": "If $L < 1$, the series converges absolutely. If $L > 1$, it diverges. If $L = 1$, the Ratio Test is inconclusive."
+          "correct": 1,
+          "answer": "$1/n!\\rightarrow0$ and is decreasing: both conditions met.",
+          "explanation": "$1/n!\\rightarrow0$ and is decreasing: both conditions met."
         },
         {
-          "q": "Apply the Ratio Test to $\\sum_{n=1}^\\infty \\frac{3^n}{n!}$.",
+          "q": "Comparison: if $\\sum b_n$ diverges and $a_n\\geq b_n>0$, then $\\sum a_n$:",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Ratio and Root Tests",
+          "target": "The ratio and comparison tests",
           "choices": [
-            "$L = 0 < 1 \\Rightarrow$ Converges absolutely",
-            "$L = 3 > 1 \\Rightarrow$ Diverges",
-            "$L = 1 \\Rightarrow$ Inconclusive",
-            "$L = \\infty \\Rightarrow$ Diverges"
-          ],
-          "correct": 0,
-          "answer": "$\\left|\\frac{a_{n+1}}{a_n}\\right| = \\frac{3^{n+1}}{(n+1)!} \\frac{n!}{3^n} = \\frac{3}{n+1} \\rightarrow 0$ as $n \\rightarrow \\infty$. Since $L = 0 < 1$, the series converges absolutely.",
-          "explanation": "$\\left|\\frac{a_{n+1}}{a_n}\\right| = \\frac{3^{n+1}}{(n+1)!} \\frac{n!}{3^n} = \\frac{3}{n+1} \\rightarrow 0$ as $n \\rightarrow \\infty$. Since $L = 0 < 1$, the series converges absolutely."
-        },
-        {
-          "q": "Use the Root Test to determine the convergence of $\\sum_{n=1}^\\infty \\left(\\frac{2n + 1}{3n - 1}\\right)^n$.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Ratio and Root Tests",
-          "choices": [
-            "$L = 2/3 < 1 \\Rightarrow$ Converges absolutely",
-            "$L = 2/3 \\Rightarrow$ Diverges",
-            "$L = 1 \\Rightarrow$ Inconclusive",
-            "$L = 0$"
-          ],
-          "correct": 0,
-          "answer": "$\\lim_{n \\rightarrow \\infty} \\sqrt[n]{|a_n|} = \\lim_{n \\rightarrow \\infty} \\frac{2n+1}{3n-1} = \\frac{2}{3}$. Since $L = 2/3 < 1$, the series converges absolutely.",
-          "explanation": "$\\lim_{n \\rightarrow \\infty} \\sqrt[n]{|a_n|} = \\lim_{n \\rightarrow \\infty} \\frac{2n+1}{3n-1} = \\frac{2}{3}$. Since $L = 2/3 < 1$, the series converges absolutely."
-        },
-        {
-          "q": "By the alternating series estimation theorem, what is the fewest number of terms of $\\sum_{n=1}^\\infty\\frac{(-1)^{n+1}}{n}$ needed to guarantee an error less than $\\frac{1}{10000}$?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Alternating Series and Error Bounds",
-          "choices": [
-            "$10001$",
-            "$9999$",
-            "$20000$",
-            "$10000$"
+            "converges",
+            "equals $\\sum b_n$",
+            "is inconclusive",
+            "diverges"
           ],
           "correct": 3,
-          "answer": "The error after summing up to $n=10000$ is at most the next term, $\\frac{1}{10001}$ $<$ $\\frac{1}{10000}$, while stopping one term earlier leaves a bound $\\frac{1}{10000}$ $\\geq$ $\\frac{1}{10000}$. So 10000 terms are needed.",
-          "explanation": "The error after summing up to $n=10000$ is at most the next term, $\\frac{1}{10001}$ $<$ $\\frac{1}{10000}$, while stopping one term earlier leaves a bound $\\frac{1}{10000}$ $\\geq$ $\\frac{1}{10000}$. So 10000 terms are needed.",
+          "answer": "Comparison: dominated from below by divergent ⟹ diverges.",
+          "explanation": "Comparison: dominated from below by divergent ⟹ diverges."
+        },
+        {
+          "q": "The integral $\\int_0^1e^{-x^2}dx$ (error function) — the exact value cannot be expressed in elementary functions. Using the series, approximate as $\\sum\\frac{(-1)^n}{n!(2n+1)}$. First two terms:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Alternating series and the p-series test",
+          "choices": [
+            "$1-1/6\\approx0.833$",
+            "$1-1/3\\approx0.667$",
+            "$1+1/3\\approx1.333$",
+            "$0$"
+          ],
+          "correct": 1,
+          "answer": "$\\int_0^1e^{-x^2}dx\\approx1-1/3+\\cdots\\approx0.667$.",
+          "explanation": "$\\int_0^1e^{-x^2}dx\\approx1-1/3+\\cdots\\approx0.667$."
+        },
+        {
+          "q": "Comparison: $0\\leq a_n\\leq 1/n^2$. Since $\\sum 1/n^2$ converges, $\\sum a_n$:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "The integral test",
+          "choices": [
+            "diverges",
+            "may diverge",
+            "converges",
+            "oscillates"
+          ],
+          "correct": 2,
+          "answer": "Direct comparison with convergent series.",
+          "explanation": "Direct comparison with convergent series.",
           "figure": {
             "type": "plot",
             "fns": [
-              "0.5*(x - (1))**2 + (-2)",
-              "0.5*x + 1"
+              "-0.3*(x - (-0.5))**2 + (-0.5)",
+              "0.9*x + (-1.7)"
             ],
             "xmin": -5,
             "xmax": 5,
-            "ymin": -4,
+            "ymin": -5,
             "ymax": 6,
             "point_labels": [
               {
-                "x": 1.0,
-                "y": -2.0,
-                "label": "$(1,-2)$"
+                "x": -0.5,
+                "y": -0.5,
+                "label": "$(-0.5,-0.5)$"
               }
             ],
             "width": 230
           }
         },
         {
-          "q": "By the alternating series estimation theorem, what is the fewest number of terms of $\\sum_{n=1}^\\infty\\frac{(-1)^{n+1}}{n^2}$ needed to guarantee an error less than $\\frac{1}{10000}$?",
+          "q": "Bessel function $J_0(x)=\\sum_{m=0}^\\infty\\frac{(-1)^m}{(m!)^2}\\left(\\frac{x}{2}\\right)^{2m}$. Radius of convergence:",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Ratio and Root Tests",
+          "target": "Choosing the right test",
           "choices": [
-            "$101$",
-            "$100$",
-            "$99$",
-            "$10000$"
+            "$1$",
+            "$\\infty$",
+            "$\\pi$",
+            "$2$"
           ],
           "correct": 1,
-          "answer": "The error after summing up to $n=100$ is at most the next term, $\\frac{1}{10201}$ $<$ $\\frac{1}{10000}$, while stopping one term earlier leaves a bound $\\frac{1}{10000}$ $\\geq$ $\\frac{1}{10000}$. So 100 terms are needed.",
-          "explanation": "The error after summing up to $n=100$ is at most the next term, $\\frac{1}{10201}$ $<$ $\\frac{1}{10000}$, while stopping one term earlier leaves a bound $\\frac{1}{10000}$ $\\geq$ $\\frac{1}{10000}$. So 100 terms are needed."
+          "answer": "Ratio test: $L=0\\Rightarrow R=\\infty$.",
+          "explanation": "Ratio test: $L=0\\Rightarrow R=\\infty$."
         },
         {
-          "q": "By the alternating series estimation theorem, what is the fewest number of terms of $\\sum_{n=1}^\\infty\\frac{(-1)^{n+1}}{n}$ needed to guarantee an error less than $\\frac{1}{1000}$?",
+          "q": "Absolute convergence implies conditional convergence. The converse:",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "The ratio and comparison tests",
+          "target": "The limit comparison test",
           "choices": [
-            "$1001$",
-            "$999$",
-            "$1000$",
-            "$2000$"
+            "is also true",
+            "is false (counterexample: alternating harmonic series)",
+            "requires $a_n\\geq0$",
+            "is true for power series"
           ],
-          "correct": 2,
-          "answer": "The error after summing up to $n=1000$ is at most the next term, $\\frac{1}{1001}$ $<$ $\\frac{1}{1000}$, while stopping one term earlier leaves a bound $\\frac{1}{1000}$ $\\geq$ $\\frac{1}{1000}$. So 1000 terms are needed.",
-          "explanation": "The error after summing up to $n=1000$ is at most the next term, $\\frac{1}{1001}$ $<$ $\\frac{1}{1000}$, while stopping one term earlier leaves a bound $\\frac{1}{1000}$ $\\geq$ $\\frac{1}{1000}$. So 1000 terms are needed."
+          "correct": 1,
+          "answer": "Conditional does not imply absolute.",
+          "explanation": "Conditional does not imply absolute."
         },
         {
-          "q": "By the alternating series estimation theorem, what is the fewest number of terms of $\\sum_{n=0}^\\infty\\frac{(-1)^{n}}{n!}$ needed to guarantee an error less than $\\frac{1}{10000}$?",
+          "q": "Consider the power series $\\sum_{n=0}^{\\infty} c_n (x-a)^n$. If the radius of convergence is $R=3$ and the center of the series is $a=2$, which of the following intervals represents the values of $x$ for which the series converges?",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
-          "target": "Alternating series and the p-series test",
+          "target": "The root test",
           "choices": [
-            "$8$",
-            "$9$",
-            "$7$",
-            "$10000$"
-          ],
-          "correct": 0,
-          "answer": "The error after summing up to $n=7$ is at most the next term, $\\frac{1}{40320}$ $<$ $\\frac{1}{10000}$, while stopping one term earlier leaves a bound $\\frac{1}{5040}$ $\\geq$ $\\frac{1}{10000}$. So 8 terms are needed.",
-          "explanation": "The error after summing up to $n=7$ is at most the next term, $\\frac{1}{40320}$ $<$ $\\frac{1}{10000}$, while stopping one term earlier leaves a bound $\\frac{1}{5040}$ $\\geq$ $\\frac{1}{10000}$. So 8 terms are needed."
-        },
-        {
-          "q": "By the alternating series estimation theorem, what is the fewest number of terms of $\\sum_{n=1}^\\infty\\frac{(-1)^{n+1}}{n^2}$ needed to guarantee an error less than $\\frac{1}{1000}$?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "The integral test",
-          "choices": [
-            "$31$",
-            "$32$",
-            "$30$",
-            "$1000$"
+            "$( -1, 5 )$",
+            "$[ -1, 5 ]$",
+            "$( -1, 5 ]$",
+            "$[ -1, 5 )$"
           ],
           "correct": 0,
-          "answer": "The error after summing up to $n=31$ is at most the next term, $\\frac{1}{1024}$ $<$ $\\frac{1}{1000}$, while stopping one term earlier leaves a bound $\\frac{1}{961}$ $\\geq$ $\\frac{1}{1000}$. So 31 terms are needed.",
-          "explanation": "The error after summing up to $n=31$ is at most the next term, $\\frac{1}{1024}$ $<$ $\\frac{1}{1000}$, while stopping one term earlier leaves a bound $\\frac{1}{961}$ $\\geq$ $\\frac{1}{1000}$. So 31 terms are needed."
+          "answer": "The radius of convergence $R$ of a power series $\\sum_{n=0}^{\\infty} c_n (x-a)^n$ indicates that the series converges absolutely for $|x-a| R$. The center of the series is $a$. In this problem, we are given $R=3$ and $a=2$. Thus, the series converges for $|x-2| < 3$. This inequality can be rewritten as $-3 < x-2 < 3$. Adding 2 to all parts of the inequality, we get $-3+2 < x < 3+2$, which simplifies to $-1 < x < 5$. This interval is written in open interval notation as $(-1, 5)$. The convergence at the endpoints $x=-1$ and $x=5$ is not determined by the radius of convergence alone and requires further testing (e.g., using the Alternating Series Test or p-series test). However, the question asks for the interval where the series converges, and the open interval derived from $|x-a| < R$ is the fundamental region of convergence for a power series. Therefore, the interval $(-1, 5)$ represents the values of $x$ for which the series converges.",
+          "explanation": "The radius of convergence $R$ of a power series $\\sum_{n=0}^{\\infty} c_n (x-a)^n$ indicates that the series converges absolutely for $|x-a| R$. The center of the series is $a$. In this problem, we are given $R=3$ and $a=2$. Thus, the series converges for $|x-2| < 3$. This inequality can be rewritten as $-3 < x-2 < 3$. Adding 2 to all parts of the inequality, we get $-3+2 < x < 3+2$, which simplifies to $-1 < x < 5$. This interval is written in open interval notation as $(-1, 5)$. The convergence at the endpoints $x=-1$ and $x=5$ is not determined by the radius of convergence alone and requires further testing (e.g., using the Alternating Series Test or p-series test). However, the question asks for the interval where the series converges, and the open interval derived from $|x-a| < R$ is the fundamental region of convergence for a power series. Therefore, the interval $(-1, 5)$ represents the values of $x$ for which the series converges.",
+          "figure": {
+            "type": "numberline",
+            "min": -5.0,
+            "max": 10.0,
+            "marks": [],
+            "shade": null,
+            "width": 250
+          }
+        },
+        {
+          "q": "Apply the ratio test to $\\sum_{n=1}^{\\infty} \\frac{6^{n}}{n!}$. What is $L=\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Absolute versus conditional convergence",
+          "choices": [
+            "0",
+            "$\\infty$",
+            "1",
+            "6"
+          ],
+          "correct": 0,
+          "answer": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{6}{n+1}\\rightarrow0$ as $n\\rightarrow\\infty$. Since $L=0<1$, the series converges (for every $x$).",
+          "explanation": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{6}{n+1}\\rightarrow0$ as $n\\rightarrow\\infty$. Since $L=0<1$, the series converges (for every $x$)."
         }
       ]
     },
@@ -638,150 +646,131 @@
       "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
       "questions": [
         {
-          "q": "By the alternating series estimation theorem, what is the fewest number of terms of $\\sum_{n=0}^\\infty\\frac{(-1)^{n}}{n!}$ needed to guarantee an error less than $\\frac{1}{1000}$?",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Choosing the right test",
-          "choices": [
-            "$8$",
-            "$6$",
-            "$7$",
-            "$1000$"
-          ],
-          "correct": 2,
-          "answer": "The error after summing up to $n=6$ is at most the next term, $\\frac{1}{5040}$ $<$ $\\frac{1}{1000}$, while stopping one term earlier leaves a bound $\\frac{1}{720}$ $\\geq$ $\\frac{1}{1000}$. So 7 terms are needed.",
-          "explanation": "The error after summing up to $n=6$ is at most the next term, $\\frac{1}{5040}$ $<$ $\\frac{1}{1000}$, while stopping one term earlier leaves a bound $\\frac{1}{720}$ $\\geq$ $\\frac{1}{1000}$. So 7 terms are needed.",
-          "cross_lesson": "8.02 Volumes of Revolution"
-        },
-        {
-          "q": "By the alternating series estimation theorem, what is the fewest number of terms of $\\sum_{n=1}^\\infty\\frac{(-1)^{n+1}}{n^2}$ needed to guarantee an error less than $\\frac{1}{100}$?",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "The limit comparison test",
-          "choices": [
-            "$11$",
-            "$9$",
-            "$100$",
-            "$10$"
-          ],
-          "correct": 3,
-          "answer": "The error after summing up to $n=10$ is at most the next term, $\\frac{1}{121}$ $<$ $\\frac{1}{100}$, while stopping one term earlier leaves a bound $\\frac{1}{100}$ $\\geq$ $\\frac{1}{100}$. So 10 terms are needed.",
-          "explanation": "The error after summing up to $n=10$ is at most the next term, $\\frac{1}{121}$ $<$ $\\frac{1}{100}$, while stopping one term earlier leaves a bound $\\frac{1}{100}$ $\\geq$ $\\frac{1}{100}$. So 10 terms are needed.",
-          "cross_lesson": "8.03 Arc Length and Improper Integrals",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (1))**2 + (-2)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 1.0,
-                "y": -2.0,
-                "label": "$(1,-2)$"
-              }
-            ],
-            "width": 230
-          }
-        },
-        {
-          "q": "By the alternating series estimation theorem, what is the fewest number of terms of $\\sum_{n=0}^\\infty\\frac{(-1)^{n}}{n!}$ needed to guarantee an error less than $\\frac{1}{100}$?",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "The root test",
-          "choices": [
-            "$6$",
-            "$4$",
-            "$100$",
-            "$5$"
-          ],
-          "correct": 3,
-          "answer": "The error after summing up to $n=4$ is at most the next term, $\\frac{1}{120}$ $<$ $\\frac{1}{100}$, while stopping one term earlier leaves a bound $\\frac{1}{24}$ $\\geq$ $\\frac{1}{100}$. So 5 terms are needed.",
-          "explanation": "The error after summing up to $n=4$ is at most the next term, $\\frac{1}{120}$ $<$ $\\frac{1}{100}$, while stopping one term earlier leaves a bound $\\frac{1}{24}$ $\\geq$ $\\frac{1}{100}$. So 5 terms are needed.",
-          "cross_lesson": "9.01 Separable Differential Equations"
-        },
-        {
-          "q": "Series $\\sum_{n=1}^\\infty(-1)^{n-1}/\\sqrt{n}$ converges by alternating series test. Is it absolutely convergent?",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Absolute versus conditional convergence",
-          "choices": [
-            "Yes, $p=1/2<1$ diverges",
-            "No, $\\sum1/\\sqrt{n}$ diverges ($p=1/2\\leq1$)",
-            "Yes, $\\sum1/\\sqrt{n}$ converges",
-            "Cannot determine"
-          ],
-          "correct": 1,
-          "answer": "$p=1/2\\leq1\\Rightarrow\\sum1/\\sqrt{n}$ diverges: only conditionally convergent.",
-          "explanation": "$p=1/2\\leq1\\Rightarrow\\sum1/\\sqrt{n}$ diverges: only conditionally convergent.",
-          "cross_lesson": "1.01 Precalculus Review for Calculus"
-        },
-        {
-          "q": "Integral test convergence of $\\sum_{n=1}^\\infty 1/n(\\ln n)^2$ (from $n=2$) gives sum approximately:",
+          "q": "Consider the power series $\\sum_{n=1}^{\\infty} \\frac{(2x-1)^n}{n \\cdot 3^n}$. For what values of $x$ does this series converge conditionally?",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "Estimating the sum of an alternating series",
           "choices": [
-            "converges",
-            "diverges",
-            "equals $e$",
-            "equals $\\pi^2$"
+            "$-1 \\leq x < 2$",
+            "$-1 < x \\leq 2$",
+            "$-1 \\leq x \\leq 2$",
+            "$-1 < x < 2$"
           ],
-          "correct": 0,
-          "answer": "$\\int_2^\\infty dx/(x(\\ln x)^2)=1/\\ln2<\\infty\\Rightarrow$ converges.",
-          "explanation": "$\\int_2^\\infty dx/(x(\\ln x)^2)=1/\\ln2<\\infty\\Rightarrow$ converges.",
-          "cross_lesson": "10.01 Calculus with Parametric and Polar Curves"
+          "correct": 1,
+          "answer": "Let the given power series be $\\sum_{n=1}^{\\infty} a_n$, where $a_n = \\frac{(2x-1)^n}{n \\cdot 3^n}$. We will use the Ratio Test to find the interval of convergence. $\\lim_{n\\rightarrow\\infty} \\left| \\frac{a_{n+1}}{a_n} \\right| = \\lim_{n\\rightarrow\\infty} \\left| \\frac{(2x-1)^{n+1}}{(n+1) \\cdot 3^{n+1}} \\cdot \\frac{n \\cdot 3^n}{(2x-1)^n} \\right|$ $= \\lim_{n\\rightarrow\\infty} \\left| \\frac{(2x-1) \\cdot n}{(n+1) \\cdot 3} \\right| = \\left| \\frac{2x-1}{3} \\right| \\lim_{n\\rightarrow\\infty} \\frac{n}{n+1} = \\left| \\frac{2x-1}{3} \\right| \\cdot 1 For convergence, we require this limit to be less than 1: \\left| \\frac{2x-1}{3} \\right| < 1$ $-1 < \\frac{2x-1}{3} < 1$ $-3 < 2x-1 < 3$ $-2 < 2x < 4$ $-1 < x < 2$ Now, we must check the endpoints of this interval for conditional convergence. Case 1: $x = -1$ The series becomes $\\sum_{n=1}^{\\infty} \\frac{(2(-1)-1)^n}{n \\cdot 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-3)^n}{n \\cdot 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-1)^n}{n}$. This is the alternating harmonic series, which converges conditionally by the Alternating Series Test (the terms $\\frac{1}{n}$ are positive, decreasing, and tend to 0). Therefore, $x=-1$ is a point of conditional convergence. Case 2: $x = 2$ The series becomes $\\sum_{n=1}^{\\infty} \\frac{(2(2)-1)^n}{n \\cdot 3^n} = \\sum_{n=1}^{\\infty} \\frac{(3)^n}{n \\cdot 3^n} = \\sum_{n=1}^{\\infty} \\frac{1}{n}$. This is the harmonic series, which diverges. Thus, the series converges for $-1 \\leq x < 2$. For conditional convergence, we exclude the endpoint $x=2$ where the series diverges, and include $x=-1$ where it converges conditionally. So, the interval of conditional convergence is $-1 \\leq x < 2$. Common Pitfall: Forgetting to test the endpoints for convergence, or misapplying convergence tests at the endpoints. Students might incorrectly assume convergence at $x=2$ or miss conditional convergence at $x=-1$.",
+          "explanation": "Let the given power series be $\\sum_{n=1}^{\\infty} a_n$, where $a_n = \\frac{(2x-1)^n}{n \\cdot 3^n}$. We will use the Ratio Test to find the interval of convergence. $\\lim_{n\\rightarrow\\infty} \\left| \\frac{a_{n+1}}{a_n} \\right| = \\lim_{n\\rightarrow\\infty} \\left| \\frac{(2x-1)^{n+1}}{(n+1) \\cdot 3^{n+1}} \\cdot \\frac{n \\cdot 3^n}{(2x-1)^n} \\right|$ $= \\lim_{n\\rightarrow\\infty} \\left| \\frac{(2x-1) \\cdot n}{(n+1) \\cdot 3} \\right| = \\left| \\frac{2x-1}{3} \\right| \\lim_{n\\rightarrow\\infty} \\frac{n}{n+1} = \\left| \\frac{2x-1}{3} \\right| \\cdot 1 For convergence, we require this limit to be less than 1: \\left| \\frac{2x-1}{3} \\right| < 1$ $-1 < \\frac{2x-1}{3} < 1$ $-3 < 2x-1 < 3$ $-2 < 2x < 4$ $-1 < x < 2$ Now, we must check the endpoints of this interval for conditional convergence. Case 1: $x = -1$ The series becomes $\\sum_{n=1}^{\\infty} \\frac{(2(-1)-1)^n}{n \\cdot 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-3)^n}{n \\cdot 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-1)^n}{n}$. This is the alternating harmonic series, which converges conditionally by the Alternating Series Test (the terms $\\frac{1}{n}$ are positive, decreasing, and tend to 0). Therefore, $x=-1$ is a point of conditional convergence. Case 2: $x = 2$ The series becomes $\\sum_{n=1}^{\\infty} \\frac{(2(2)-1)^n}{n \\cdot 3^n} = \\sum_{n=1}^{\\infty} \\frac{(3)^n}{n \\cdot 3^n} = \\sum_{n=1}^{\\infty} \\frac{1}{n}$. This is the harmonic series, which diverges. Thus, the series converges for $-1 \\leq x < 2$. For conditional convergence, we exclude the endpoint $x=2$ where the series diverges, and include $x=-1$ where it converges conditionally. So, the interval of conditional convergence is $-1 \\leq x < 2$. Common Pitfall: Forgetting to test the endpoints for convergence, or misapplying convergence tests at the endpoints. Students might incorrectly assume convergence at $x=2$ or miss conditional convergence at $x=-1$.",
+          "cross_lesson": "8.02 Volumes of Revolution"
         },
         {
-          "q": "Which test determines $\\sum n^2/e^n$? Answer: by ratio test $L=$",
+          "q": "Consider the power series $\\sum_{n=1}^{\\infty} \\frac{(x-2)^n}{n^2 3^n}$. This series defines a function $f(x)$ over its interval of convergence. Let $I$ be the interval of convergence for this power series. Determine which of the following statements is TRUE about $f(x)$ and its behavior at the endpoints of $I$.",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "A combined convergence-test challenge",
           "choices": [
-            "$e$",
-            "$1$",
-            "$1/e<1$",
-            "$e^2$"
+            "The radius of convergence is 3, and the series converges at both endpoints of the interval of convergence.",
+            "The radius of convergence is 3, and the series diverges at the left endpoint and converges at the right endpoint.",
+            "The radius of convergence is $1/3$, and the series converges at both endpoints of the interval of convergence.",
+            "The radius of convergence is $1/3$, and the series diverges at both endpoints of the interval of convergence."
           ],
-          "correct": 2,
-          "answer": "$L=\\lim(n+1)^2/e^{n+1}\\cdot e^n/n^2=1/e<1\\Rightarrow$ converges.",
-          "explanation": "$L=\\lim(n+1)^2/e^{n+1}\\cdot e^n/n^2=1/e<1\\Rightarrow$ converges.",
-          "cross_lesson": "11.01 Sequences and Series"
+          "correct": 0,
+          "answer": "We use the Ratio Test to find the radius of convergence. Let $a_n = \\frac{(x-2)^n}{n^2 3^n}$. Then, $L = \\lim_{n\\rightarrow\\infty} \\left| \\frac{a_{n+1}}{a_n} \\right| = \\lim_{n\\rightarrow\\infty} \\left| \\frac{(x-2)^{n+1}}{(n+1)^2 3^{n+1}} \\cdot \\frac{n^2 3^n}{(x-2)^n} \\right|$ $L = \\lim_{n\\rightarrow\\infty} \\left| \\frac{x-2}{3} \\cdot \\frac{n^2}{(n+1)^2} \\right| = \\left| \\frac{x-2}{3} \\right| \\lim_{n\\rightarrow\\infty} \\left( \\frac{n}{n+1} \\right)^2 = \\left| \\frac{x-2}{3} \\right| \\cdot 1$ For convergence, we need $L 1$. At $x = -1$: The series becomes $\\sum_{n=1}^{\\infty} \\frac{(-1-2)^n}{n^2 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-3)^n}{n^2 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-1)^n 3^n}{n^2 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-1)^n}{n^2}$. This is an alternating series. We can check for absolute convergence by considering $\\sum_{n=1}^{\\infty} \\left| \\frac{(-1)^n}{n^2} \\right| = \\sum_{n=1}^{\\infty} \\frac{1}{n^2}$, which we already established converges. Therefore, the series converges absolutely at $x=-1$. Since the series converges at both endpoints, the interval of convergence is $[-1, 5]$. The radius of convergence is 3. Therefore, the statement that the radius of convergence is 3 and the series converges at both endpoints is true.",
+          "explanation": "We use the Ratio Test to find the radius of convergence. Let $a_n = \\frac{(x-2)^n}{n^2 3^n}$. Then, $L = \\lim_{n\\rightarrow\\infty} \\left| \\frac{a_{n+1}}{a_n} \\right| = \\lim_{n\\rightarrow\\infty} \\left| \\frac{(x-2)^{n+1}}{(n+1)^2 3^{n+1}} \\cdot \\frac{n^2 3^n}{(x-2)^n} \\right|$ $L = \\lim_{n\\rightarrow\\infty} \\left| \\frac{x-2}{3} \\cdot \\frac{n^2}{(n+1)^2} \\right| = \\left| \\frac{x-2}{3} \\right| \\lim_{n\\rightarrow\\infty} \\left( \\frac{n}{n+1} \\right)^2 = \\left| \\frac{x-2}{3} \\right| \\cdot 1$ For convergence, we need $L 1$. At $x = -1$: The series becomes $\\sum_{n=1}^{\\infty} \\frac{(-1-2)^n}{n^2 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-3)^n}{n^2 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-1)^n 3^n}{n^2 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-1)^n}{n^2}$. This is an alternating series. We can check for absolute convergence by considering $\\sum_{n=1}^{\\infty} \\left| \\frac{(-1)^n}{n^2} \\right| = \\sum_{n=1}^{\\infty} \\frac{1}{n^2}$, which we already established converges. Therefore, the series converges absolutely at $x=-1$. Since the series converges at both endpoints, the interval of convergence is $[-1, 5]$. The radius of convergence is 3. Therefore, the statement that the radius of convergence is 3 and the series converges at both endpoints is true.",
+          "cross_lesson": "8.03 Arc Length and Improper Integrals"
         },
         {
-          "q": "Series $\\sum_{n=1}^\\infty n\\cdot(1/2)^n$: ratio test gives $L=$",
+          "q": "Find the interval of convergence of $\\sum\\frac{(x-1)^n}{n3^n}$:",
           "difficulty": "Challenging",
           "question_type": "MCQ",
           "target": "A multi-step convergence investigation",
           "choices": [
-            "$1$",
-            "$2$",
-            "$1/2$",
-            "$n/2$"
+            "$[-2,4)$",
+            "$(-2,4)$",
+            "$(-2,4]$",
+            "$[-2,4]$"
           ],
-          "correct": 2,
-          "answer": "$|a_{n+1}/a_n|=(n+1)/(2n)\\rightarrow1/2<1\\Rightarrow$ converges.",
-          "explanation": "$|a_{n+1}/a_n|=(n+1)/(2n)\\rightarrow1/2<1\\Rightarrow$ converges.",
+          "correct": 0,
+          "answer": "By the Ratio Test, $R=3$ centered at $x=1$. At $x=-2$ we get the convergent alternating harmonic series $\\sum \\frac{(-1)^n}{n}$, and at $x=4$ the divergent harmonic series $\\sum \\frac{1}{n}$, so the interval is $[-2,4)$.",
+          "explanation": "By the Ratio Test, $R=3$ centered at $x=1$. At $x=-2$ we get the convergent alternating harmonic series $\\sum \\frac{(-1)^n}{n}$, and at $x=4$ the divergent harmonic series $\\sum \\frac{1}{n}$, so the interval is $[-2,4)$.",
+          "cross_lesson": "9.01 Separable Differential Equations"
+        },
+        {
+          "q": "The error function $\\mathrm{erf}(x)=\\frac{2}{\\sqrt{\\pi}}\\int_0^xe^{-t^2}dt$. Using $e^{-t^2}=\\sum(-1)^nt^{2n}/n!$:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "The ratio and comparison tests",
+          "choices": [
+            "$\\mathrm{erf}(x)=\\sum x^n/n!$",
+            "$\\mathrm{erf}(x)=\\frac{2}{\\sqrt{\\pi}}\\sum_{n=0}^\\infty\\frac{(-1)^n x^{2n+1}}{n!(2n+1)}$",
+            "$\\mathrm{erf}(x)=e^{-x^2}$",
+            "$\\mathrm{erf}(x)=2x/\\sqrt{\\pi}$"
+          ],
+          "correct": 1,
+          "answer": "Applying Convergence Tests and Power Series principles, Integrate term-by-term. Therefore, the verified correct option is $\\mathrm{erf}(x)=\\frac{2}{\\sqrt{\\pi}}\\sum_{n=0}^\\infty\\frac{(-1)^n x^{2n+1}}{n!(2n+1)}$.",
+          "explanation": "Applying Convergence Tests and Power Series principles, Integrate term-by-term. Therefore, the verified correct option is $\\mathrm{erf}(x)=\\frac{2}{\\sqrt{\\pi}}\\sum_{n=0}^\\infty\\frac{(-1)^n x^{2n+1}}{n!(2n+1)}$.",
+          "cross_lesson": "1.01 Precalculus Review for Calculus"
+        },
+        {
+          "q": "For a power series $\\sum c_n x^n$, the radius of convergence $R$ satisfies $1/R=$",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Alternating series and the p-series test",
+          "choices": [
+            "$\\limsup|c_n|^{1/n}$",
+            "$\\limsup|c_{n+1}/c_n|$",
+            "$\\sup|c_n|$",
+            "$|c_0|$"
+          ],
+          "correct": 0,
+          "answer": "Applying Convergence Tests and Power Series principles, Cauchy-Hadamard formula. Therefore, the verified correct option is $\\limsup|c_n|^{1/n}$.",
+          "explanation": "Applying Convergence Tests and Power Series principles, Cauchy-Hadamard formula. Therefore, the verified correct option is $\\limsup|c_n|^{1/n}$.",
+          "cross_lesson": "10.01 Calculus with Parametric and Polar Curves"
+        },
+        {
+          "q": "Integral test: $\\sum_{n=1}^\\infty f(n)$ converges iff $\\int_1^\\infty f(x)\\,dx$ converges, when $f$ is:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "The integral test",
+          "choices": [
+            "any function",
+            "bounded",
+            "increasing",
+            "positive, decreasing, continuous"
+          ],
+          "correct": 3,
+          "answer": "Applying Sequences and Series principles, Integral test conditions. Therefore, the verified correct option is positive, decreasing, continuous.",
+          "explanation": "Applying Sequences and Series principles, Integral test conditions. Therefore, the verified correct option is positive, decreasing, continuous.",
+          "cross_lesson": "11.01 Sequences and Series"
+        },
+        {
+          "q": "Using the power series $1/(1-x)=\\sum x^n$, find $\\sum n x^{n-1}=$",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Choosing the right test",
+          "choices": [
+            "$1/(1-x)$",
+            "$1/(1-x)^2$",
+            "$x/(1-x)^2$",
+            "$1/(1+x)^2$"
+          ],
+          "correct": 1,
+          "answer": "Applying Convergence Tests and Power Series principles, Differentiate geometric series. Therefore, the verified correct option is $1/(1-x)^2$.",
+          "explanation": "Applying Convergence Tests and Power Series principles, Differentiate geometric series. Therefore, the verified correct option is $1/(1-x)^2$.",
           "cross_lesson": "12.02 Power Series and Taylor Series"
         },
         {
-          "q": "The ratio test for $\\sum_{n=0}^\\infty x^n/n!$: $|a_{n+1}/a_n|=|x|/(n+1)\\rightarrow$",
+          "q": "The series $\\sum_{n=0}^\\infty r^n$ converges for $|r|<1$ to:",
           "difficulty": "Challenging",
           "question_type": "MCQ",
-          "target": "Integral Test and p-Series",
+          "target": "The limit comparison test",
           "choices": [
-            "$|x|$",
-            "$1$",
-            "$0$",
-            "$\\infty$"
+            "$1/(1-r)$",
+            "$r/(1-r)$",
+            "$1/(1+r)$",
+            "$r$"
           ],
-          "correct": 2,
-          "answer": "$|x|/(n+1)\\rightarrow0<1$ for all $x\\Rightarrow R=\\infty$.",
-          "explanation": "$|x|/(n+1)\\rightarrow0<1$ for all $x\\Rightarrow R=\\infty$.",
+          "correct": 0,
+          "answer": "Applying Convergence Tests and Power Series principles, Geometric series sum $=1/(1-r)$. Therefore, the verified correct option is $1/(1-r)$.",
+          "explanation": "Applying Convergence Tests and Power Series principles, Geometric series sum $=1/(1-r)$. Therefore, the verified correct option is $1/(1-r)$.",
           "cross_lesson": "13.01 Vectors and Vector-Valued Functions"
         }
       ]
