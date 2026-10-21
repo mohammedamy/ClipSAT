@@ -3,23 +3,295 @@
   "num": "2.01",
   "slug": "the-definition-of-the-derivative",
   "title": "The Definition of the Derivative",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 2.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Difference Quotients & Limit Definitions",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+      "questions": [
+        {
+          "q": "Let $f(x)$ be a function such that $f'(x) = \\cos(x^2)$ and $g(x)$ be a function defined by $g(x) = \\sqrt{x}$. ; ; \\textbf{(a)} Find the derivative of the composite function $h(x) = f(g(x))$. ; ; \\textbf{(b)} If $f(1) = \\pi$, find the value of $h'(4)$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Difference Quotients & Limit Definitions",
+          "answer": "\\textbf{(a)} We use the chain rule to find the derivative of $h(x) = f(g(x))$. ; The chain rule states that $h'(x) = f'(g(x)) \\cdot g'(x)$. ; We are given $f'(x) = \\cos(x^2)$ and $g(x) = \\sqrt{x}$. ; First, we find $g'(x)$: $g'(x) = \\frac{d}{dx}(\\sqrt{x}) = \\frac{d}{dx}(x^{1/2}) = \\frac{1}{2}x^{-1/2} = \\frac{1}{2\\sqrt{x}}$. ; Next, we find $f'(g(x))$ by substituting $g(x)$ into $f'(x)$: $f'(g(x)) = \\cos((\\sqrt{x})^2) = \\cos(x)$. ; Therefore, $h'(x) = f'(g(x)) \\cdot g'(x) = \\cos(x) \\cdot \\frac{1}{2\\sqrt{x}} = \\frac{\\cos(x)}{2\\sqrt{x}}$. ; ; \\textbf{(b)} To find $h'(4)$, we substitute $x=4$ into our expression for $h'(x)$: ; $h'(4) = \\frac{\\cos(4)}{2\\sqrt{4}} = \\frac{\\cos(4)}{2 \\cdot 2} = \\frac{\\cos(4)}{4}$. ; ; Note: The information $f(1) = \\pi$ is extraneous for this specific part of the question.",
+          "explanation": "\\textbf{(a)} We use the chain rule to find the derivative of $h(x) = f(g(x))$. ; The chain rule states that $h'(x) = f'(g(x)) \\cdot g'(x)$. ; We are given $f'(x) = \\cos(x^2)$ and $g(x) = \\sqrt{x}$. ; First, we find $g'(x)$: $g'(x) = \\frac{d}{dx}(\\sqrt{x}) = \\frac{d}{dx}(x^{1/2}) = \\frac{1}{2}x^{-1/2} = \\frac{1}{2\\sqrt{x}}$. ; Next, we find $f'(g(x))$ by substituting $g(x)$ into $f'(x)$: $f'(g(x)) = \\cos((\\sqrt{x})^2) = \\cos(x)$. ; Therefore, $h'(x) = f'(g(x)) \\cdot g'(x) = \\cos(x) \\cdot \\frac{1}{2\\sqrt{x}} = \\frac{\\cos(x)}{2\\sqrt{x}}$. ; ; \\textbf{(b)} To find $h'(4)$, we substitute $x=4$ into our expression for $h'(x)$: ; $h'(4) = \\frac{\\cos(4)}{2\\sqrt{4}} = \\frac{\\cos(4)}{2 \\cdot 2} = \\frac{\\cos(4)}{4}$. ; ; Note: The information $f(1) = \\pi$ is extraneous for this specific part of the question."
+        },
+        {
+          "q": "Use the Second Derivative Test to classify the critical points of $f(x) = 3x^3 -4x$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Differentiability Implies Continuity",
+          "answer": "$f'(x)=3(3)x^2-4=0 \\Rightarrow x=\\pm\\frac{2}{3}$. Since $f''(x)=18 x$, $f''(-\\frac{2}{3}) < 0$ (local maximum) and $f''(\\frac{2}{3}) > 0$ (local minimum). Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.",
+          "explanation": "$f'(x)=3(3)x^2-4=0 \\Rightarrow x=\\pm\\frac{2}{3}$. Since $f''(x)=18 x$, $f''(-\\frac{2}{3}) < 0$ (local maximum) and $f''(\\frac{2}{3}) > 0$ (local minimum). Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (0))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -1.0,
+                "label": "$(0,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Let $f(x) = \\sin(x^2)$. What is the derivative of $f(x)$?",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Tangent and Normal Lines",
+          "answer": "To find the derivative of $f(x) = \\sin(x^2)$, we use the chain rule. The chain rule states that if $f(x) = g(h(x))$, then $f'(x) = g'(h(x)) \\cdot h'(x)$. In this case, let $g(u) = \\sin(u)$ and $h(x) = x^2$. Then $g'(u) = \\cos(u)$ and $h'(x) = 2x$. Applying the chain rule, we get $f'(x) = \\cos(x^2) \\cdot 2x$, which simplifies to $2x \\cos(x^2)$.",
+          "explanation": "To find the derivative of $f(x) = \\sin(x^2)$, we use the chain rule. The chain rule states that if $f(x) = g(h(x))$, then $f'(x) = g'(h(x)) \\cdot h'(x)$. In this case, let $g(u) = \\sin(u)$ and $h(x) = x^2$. Then $g'(u) = \\cos(u)$ and $h'(x) = 2x$. Applying the chain rule, we get $f'(x) = \\cos(x^2) \\cdot 2x$, which simplifies to $2x \\cos(x^2)$."
+        },
+        {
+          "q": "The graph of the function $f(x) = ax - 3$ is shown below. The area of the shaded region between the graph of $f(x)$ and the x-axis from $x = 0$ to $x = 4$ is 20 square units. Find the value of the parameter $a$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Estimating Derivatives from Tables & Graphs",
+          "answer": "The function is given by $f(x) = ax - 3$. The area of the shaded region is represented by the definite integral of $f(x)$ from $x=0$ to $x=4$. We are given that this area is 20. $\\int_{0}^{4} (ax - 3) \\, dx = 20$ First, find the antiderivative of $ax - 3$: $\\int (ax - 3) \\, dx = \\frac{a}{2}x^2 - 3x + C$ Now, evaluate the definite integral from 0 to 4: $\\left[ \\frac{a}{2}x^2 - 3x \\right]_{0}^{4} = \\left( \\frac{a}{2}(4)^2 - 3(4) \\right) - \\left( \\frac{a}{2}(0)^2 - 3(0) \\right)$ $= \\left( \\frac{a}{2}(16) - 12 \\right) - (0)$ $= 8a - 12$ We are given that this area is 20: $8a - 12 = 20$ Now, solve for $a$: $8a = 20 + 12$ $8a = 32$ $a = \\frac{32}{8}$ $a = 4$ Therefore, the value of the parameter $a$ is 4.",
+          "explanation": "The function is given by $f(x) = ax - 3$. The area of the shaded region is represented by the definite integral of $f(x)$ from $x=0$ to $x=4$. We are given that this area is 20. $\\int_{0}^{4} (ax - 3) \\, dx = 20$ First, find the antiderivative of $ax - 3$: $\\int (ax - 3) \\, dx = \\frac{a}{2}x^2 - 3x + C$ Now, evaluate the definite integral from 0 to 4: $\\left[ \\frac{a}{2}x^2 - 3x \\right]_{0}^{4} = \\left( \\frac{a}{2}(4)^2 - 3(4) \\right) - \\left( \\frac{a}{2}(0)^2 - 3(0) \\right)$ $= \\left( \\frac{a}{2}(16) - 12 \\right) - (0)$ $= 8a - 12$ We are given that this area is 20: $8a - 12 = 20$ Now, solve for $a$: $8a = 20 + 12$ $8a = 32$ $a = \\frac{32}{8}$ $a = 4$ Therefore, the value of the parameter $a$ is 4."
+        },
+        {
+          "q": "Consider the function $f(x) = x^2 - 3x$. If $g(x)$ is a function such that $h(x) = f(g(x))$, and at $x=2$, $g(2) = 5$ and $g'(2) = 3$, find $h'(2)$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Difference Quotients & Limit Definitions",
+          "answer": "This question involves the chain rule for differentiation. The chain rule states that if $h(x) = f(g(x))$, then $h'(x) = f'(g(x)) \\cdot g'(x)$. First, we find the derivative of $f(x)$: $f'(x) = \\frac{d}{dx}(x^2 - 3x) = 2x - 3$. Now, we need to find $f'(g(x))$. Since $g(x)$ is a general function, we substitute $g(x)$ into $f'(x)$: $f'(g(x)) = 2g(x) - 3$. To find $h'(2)$, we apply the chain rule formula at $x=2$: $h'(2) = f'(g(2)) \\cdot g'(2)$. We are given that $g(2) = 5$ and $g'(2) = 3$. Substitute $g(2)=5$ into $f'(g(x))$: $f'(g(2)) = 2(5) - 3 = 10 - 3 = 7$. Now, multiply $f'(g(2))$ by $g'(2)$: $h'(2) = 7 \\cdot 3 = 21$. Therefore, the value of $h'(2)$ is 21.",
+          "explanation": "This question involves the chain rule for differentiation. The chain rule states that if $h(x) = f(g(x))$, then $h'(x) = f'(g(x)) \\cdot g'(x)$. First, we find the derivative of $f(x)$: $f'(x) = \\frac{d}{dx}(x^2 - 3x) = 2x - 3$. Now, we need to find $f'(g(x))$. Since $g(x)$ is a general function, we substitute $g(x)$ into $f'(x)$: $f'(g(x)) = 2g(x) - 3$. To find $h'(2)$, we apply the chain rule formula at $x=2$: $h'(2) = f'(g(2)) \\cdot g'(2)$. We are given that $g(2) = 5$ and $g'(2) = 3$. Substitute $g(2)=5$ into $f'(g(x))$: $f'(g(2)) = 2(5) - 3 = 10 - 3 = 7$. Now, multiply $f'(g(2))$ by $g'(2)$: $h'(2) = 7 \\cdot 3 = 21$. Therefore, the value of $h'(2)$ is 21."
+        },
+        {
+          "q": "The velocity of a particle moving along a straight line is given by the function $v(t) = t^2 - 6t + 8$ m/s. What is the instantaneous acceleration of the particle at time $t = 3$ seconds?",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Differentiability Implies Continuity",
+          "answer": "The velocity of the particle is given by $v(t) = t^2 - 6t + 8$. Acceleration is the rate of change of velocity with respect to time, which means acceleration is the derivative of the velocity function, $a(t) = v'(t)$. Differentiating $v(t)$ with respect to $t$, we get: $a(t) = \\frac{d}{dt}(t^2 - 6t + 8) = 2t - 6$. We need to find the instantaneous acceleration at time $t = 3$ seconds. Substituting $t = 3$ into the acceleration function: $a(3) = 2(3) - 6 = 6 - 6 = 0$ m/s$^2$. Therefore, the instantaneous acceleration of the particle at time $t = 3$ seconds is $0$ m/s$^2$.",
+          "explanation": "The velocity of the particle is given by $v(t) = t^2 - 6t + 8$. Acceleration is the rate of change of velocity with respect to time, which means acceleration is the derivative of the velocity function, $a(t) = v'(t)$. Differentiating $v(t)$ with respect to $t$, we get: $a(t) = \\frac{d}{dt}(t^2 - 6t + 8) = 2t - 6$. We need to find the instantaneous acceleration at time $t = 3$ seconds. Substituting $t = 3$ into the acceleration function: $a(3) = 2(3) - 6 = 6 - 6 = 0$ m/s$^2$. Therefore, the instantaneous acceleration of the particle at time $t = 3$ seconds is $0$ m/s$^2$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -1.0,
+                "label": "$(1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A particle moves along a straight line so that its velocity at time $t \\geq 0$ is modeled by $v(t) = 6t^2 - 18t + 12$. At what time $t$ is the acceleration of the particle equal to $0$?",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Tangent and Normal Lines",
+          "answer": "To find the acceleration $a(t)$, take the derivative of the velocity function $v(t)$ with respect to time $t$: $a(t) = v'(t) = \\frac{d}{dt}(6t^2 - 18t + 12) = 12t - 18.$ Set $a(t) = 0$ and solve for $t$: $12t - 18 = 0 \\Rightarrow 12t = 18 \\Rightarrow t = \\frac{18}{12} = \\frac{3}{2}.$ Common Misconceptions: - Solving $v(t) = 0$ yields $6(t - 1)(t - 2) = 0 \\Rightarrow t = 1$ or $t = 2$. These are the times when the particle is at rest, not when its acceleration is zero. - Omitting the factor of 2 when applying the power rule gives $6t - 18 = 0 \\Rightarrow t = 3$.",
+          "explanation": "To find the acceleration $a(t)$, take the derivative of the velocity function $v(t)$ with respect to time $t$: $a(t) = v'(t) = \\frac{d}{dt}(6t^2 - 18t + 12) = 12t - 18.$ Set $a(t) = 0$ and solve for $t$: $12t - 18 = 0 \\Rightarrow 12t = 18 \\Rightarrow t = \\frac{18}{12} = \\frac{3}{2}.$ Common Misconceptions: - Solving $v(t) = 0$ yields $6(t - 1)(t - 2) = 0 \\Rightarrow t = 1$ or $t = 2$. These are the times when the particle is at rest, not when its acceleration is zero. - Omitting the factor of 2 when applying the power rule gives $6t - 18 = 0 \\Rightarrow t = 3$."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Consider the function $f(x)$ whose graph is shown above. The graph of $f(x)$ consists of line segments and a quarter circle. Let $g(x) = \\int_{0}^{x} f(t) \\, dt$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Estimating Derivatives from Tables & Graphs",
+          "answer": "By the Fundamental Theorem of Calculus Part 1, $g'(x) = f(x)$. We need to find $g'(2)$, which means we need to evaluate $f(2)$. From the graph, at $x=2$, the function $f(x)$ is on a line segment connecting $(0, 4)$ and $(4, 0)$. The equation of this line segment can be found. The slope is $m = \\frac{0 - 4}{4 - 0} = -1$. Using the point-slope form with $(4, 0)$, we get $y - 0 = -1(x - 4)$, which simplifies to $y = -x + 4$. Therefore, $f(x) = -x + 4$ for $0 \\leq x \\leq 4$. Evaluating $f(2)$ gives $f(2) = -2 + 4 = 2$. Thus, $g'(2) = f(2) = 2$.",
+          "explanation": "By the Fundamental Theorem of Calculus Part 1, $g'(x) = f(x)$. We need to find $g'(2)$, which means we need to evaluate $f(2)$. From the graph, at $x=2$, the function $f(x)$ is on a line segment connecting $(0, 4)$ and $(4, 0)$. The equation of this line segment can be found. The slope is $m = \\frac{0 - 4}{4 - 0} = -1$. Using the point-slope form with $(4, 0)$, we get $y - 0 = -1(x - 4)$, which simplifies to $y = -x + 4$. Therefore, $f(x) = -x + 4$ for $0 \\leq x \\leq 4$. Evaluating $f(2)$ gives $f(2) = -2 + 4 = 2$. Thus, $g'(2) = f(2) = 2$."
+        },
+        {
+          "q": "What is the value of $\\lim_{h \\rightarrow 0} \\frac{(2+h)^4 - 16}{h}$?",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Difference Quotients & Limit Definitions",
+          "answer": "By definition, the derivative of a function $f$ at $x = a$ is given by: $f'(a) = \\lim_{h \\rightarrow 0} \\frac{f(a+h) - f(a)}{h}$ The expression $\\lim_{h \\rightarrow 0} \\frac{(2+h)^4 - 16}{h}$ matches this definition for the function $f(x) = x^4$ evaluated at $a = 2$, since $f(2) = 2^4 = 16$. Applying the power rule to find the derivative: $f'(x) = 4x^3$ Evaluating at $x = 2$: $f'(2) = 4(2)^3 = 4(8) = 32$ Common Misconceptions:",
+          "explanation": "By definition, the derivative of a function $f$ at $x = a$ is given by: $f'(a) = \\lim_{h \\rightarrow 0} \\frac{f(a+h) - f(a)}{h}$ The expression $\\lim_{h \\rightarrow 0} \\frac{(2+h)^4 - 16}{h}$ matches this definition for the function $f(x) = x^4$ evaluated at $a = 2$, since $f(2) = 2^4 = 16$. Applying the power rule to find the derivative: $f'(x) = 4x^3$ Evaluating at $x = 2$: $f'(2) = 4(2)^3 = 4(8) = 32$ Common Misconceptions:"
+        },
+        {
+          "q": "Use L'Hopital's Rule to evaluate $\\lim_{x \\rightarrow \\infty} \\frac{7x}{e^{4x}}$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Differentiability Implies Continuity",
+          "answer": "This is $\\frac{\\infty}{\\infty}$ form. Applying L'Hopital's Rule: $\\lim_{x\\rightarrow\\infty} \\frac{7}{4e^{4x}} = 0$, since the exponential grows without bound. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.",
+          "explanation": "This is $\\frac{\\infty}{\\infty}$ form. Applying L'Hopital's Rule: $\\lim_{x\\rightarrow\\infty} \\frac{7}{4e^{4x}} = 0$, since the exponential grows without bound. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "1 + 1.5/(x - (-1))"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "asymptotes": {
+              "x": [
+                -1
+              ],
+              "y": [
+                1
+              ]
+            },
+            "point_labels": [
+              {
+                "x": 0.5,
+                "y": 2.0,
+                "label": "$( 0.5, 2 )$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A 5-ft ladder leans against a wall. The bottom slides away from the wall at 2 ft/s. Find the rate at which the top of the ladder is sliding down the wall when the bottom is 3 ft from the wall.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Tangent and Normal Lines",
+          "answer": "$x^2+y^2=5^2$. At $x=3$, $y=4$. Differentiating: $2x\\frac{dx}{dt}+2y\\frac{dy}{dt}=0 \\Rightarrow \\frac{dy}{dt}=-\\frac{x}{y}\\frac{dx}{dt}=-\\frac{3}{2}$ ft/s. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.",
+          "explanation": "$x^2+y^2=5^2$. At $x=3$, $y=4$. Differentiating: $2x\\frac{dx}{dt}+2y\\frac{dy}{dt}=0 \\Rightarrow \\frac{dy}{dt}=-\\frac{x}{y}\\frac{dx}{dt}=-\\frac{3}{2}$ ft/s. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt."
+        },
+        {
+          "q": "Find $\\frac{d}{dx}\\left[\\sin((- 2 x - 2)^{3})\\right]$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Estimating Derivatives from Tables & Graphs",
+          "answer": "Chain rule (twice): $\\cos((- 2 x - 2)^{3})\\cdot 3(- 2 x - 2)^{2}\\cdot -2 = - 6 \\left(- 2 x - 2\\right)^{2} \\cos{\\left(\\left(- 2 x - 2\\right)^{3} \\right)}$. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.",
+          "explanation": "Chain rule (twice): $\\cos((- 2 x - 2)^{3})\\cdot 3(- 2 x - 2)^{2}\\cdot -2 = - 6 \\left(- 2 x - 2\\right)^{2} \\cos{\\left(\\left(- 2 x - 2\\right)^{3} \\right)}$. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt."
+        },
+        {
+          "q": "A particle's velocity is given by the function $v(t) = 5$ for $0 \\leq t \\leq 4$. Find the total displacement of the particle over this time interval.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Difference Quotients & Limit Definitions",
+          "answer": "The displacement of the particle is the definite integral of its velocity function over the given time interval. \\\\ Displacement = $\\int_{0}^{4} v(t) \\, dt = \\int_{0}^{4} 5 \\, dt$. \\\\ To evaluate this definite integral, we find the antiderivative of USD 5$, which is$5t$x$[5t]_{0}^{4} = 5(4) - 5(0) = 20 - 0 = 20. \\\\ Therefore, the total displacement of the particle is 20 units.",
+          "explanation": "The displacement of the particle is the definite integral of its velocity function over the given time interval. \\\\ Displacement = $\\int_{0}^{4} v(t) \\, dt = \\int_{0}^{4} 5 \\, dt$. \\\\ To evaluate this definite integral, we find the antiderivative of USD 5$, which is$5t$x$[5t]_{0}^{4} = 5(4) - 5(0) = 20 - 0 = 20. \\\\ Therefore, the total displacement of the particle is 20 units."
+        },
+        {
+          "q": "Find the area of the region bounded by $y = 28x$ and $y = x^2$ in the first quadrant.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Differentiability Implies Continuity",
+          "answer": "Intersections at $x = 0$ and $x = 28$. Area $= \\int_0^{28} (28x - x^2)\\,dx = \\left[\\frac{28}{2}x^2 - \\frac{x^3}{3}\\right]_0^{28} = \\frac{21952}{6}$. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.",
+          "explanation": "Intersections at $x = 0$ and $x = 28$. Area $= \\int_0^{28} (28x - x^2)\\,dx = \\left[\\frac{28}{2}x^2 - \\frac{x^3}{3}\\right]_0^{28} = \\frac{21952}{6}$. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "Find $\\frac{d}{dx}\\left[\\sin((1 - 2 x)^{3})\\right]$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Tangent and Normal Lines",
+          "cross_lesson": "2.02 Product, Quotient, and Trigonometric Derivatives",
+          "answer": "Chain rule (twice): $\\cos((1 - 2 x)^{3})\\cdot 3(1 - 2 x)^{2}\\cdot -2 = - 6 \\left(1 - 2 x\\right)^{2} \\cos{\\left(\\left(1 - 2 x\\right)^{3} \\right)}$. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.",
+          "explanation": "Chain rule (twice): $\\cos((1 - 2 x)^{3})\\cdot 3(1 - 2 x)^{2}\\cdot -2 = - 6 \\left(1 - 2 x\\right)^{2} \\cos{\\left(\\left(1 - 2 x\\right)^{3} \\right)}$. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt."
+        },
+        {
+          "q": "Given $\\int_{-2}^{-1} 1x^2\\,dx = \\frac{7}{3}$ and $\\int_{-1}^{0} 1x^2\\,dx = \\frac{1}{3}$, find $\\int_{-2}^{0} 1x^2\\,dx$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Estimating Derivatives from Tables & Graphs",
+          "cross_lesson": "3.01 The Chain Rule",
+          "answer": "By additivity of the definite integral: $\\int_{-2}^{0} = \\int_{-2}^{-1} + \\int_{-1}^{0} = \\frac{7}{3} + \\frac{1}{3} = \\frac{8}{3}$. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.",
+          "explanation": "By additivity of the definite integral: $\\int_{-2}^{0} = \\int_{-2}^{-1} + \\int_{-1}^{0} = \\frac{7}{3} + \\frac{1}{3} = \\frac{8}{3}$. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Given $\\int_{-1}^{0} 4x^2\\,dx = \\frac{4}{3}$ and $\\int_{0}^{1} 4x^2\\,dx = \\frac{4}{3}$, find $\\int_{-1}^{1} 4x^2\\,dx$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Difference Quotients & Limit Definitions",
+          "cross_lesson": "3.02 Implicit Differentiation and Inverse Functions",
+          "answer": "By additivity of the definite integral: $\\int_{-1}^{1} = \\int_{-1}^{0} + \\int_{0}^{1} = \\frac{4}{3} + \\frac{4}{3} = \\frac{8}{3}$. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.",
+          "explanation": "By additivity of the definite integral: $\\int_{-1}^{1} = \\int_{-1}^{0} + \\int_{0}^{1} = \\frac{4}{3} + \\frac{4}{3} = \\frac{8}{3}$. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt."
+        },
+        {
+          "q": "A differentiable function $f(x)$ is given by the equation $f(x) = x^2 - 6x + 10$. Find the instantaneous rate of change of $f(x)$ at $x = 4$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Differentiability Implies Continuity",
+          "cross_lesson": "4.01 Rates of Change and Rectilinear Motion",
+          "answer": "The instantaneous rate of change of a function at a point is given by its derivative evaluated at that point. First, we find the derivative of $f(x) = x^2 - 6x + 10$. Using the power rule, $f'(x) = 2x - 6$. Next, we evaluate the derivative at $x = 4$: $f'(4) = 2(4) - 6 = 8 - 6 = 2$. Therefore, the instantaneous rate of change of $f(x)$ at $x = 4$ is 2.",
+          "explanation": "The instantaneous rate of change of a function at a point is given by its derivative evaluated at that point. First, we find the derivative of $f(x) = x^2 - 6x + 10$. Using the power rule, $f'(x) = 2x - 6$. Next, we evaluate the derivative at $x = 4$: $f'(4) = 2(4) - 6 = 8 - 6 = 2$. Therefore, the instantaneous rate of change of $f(x)$ at $x = 4$ is 2."
+        },
+        {
+          "q": "Given $\\int_{-2}^{1} 5x^2\\,dx = 15$ and $\\int_{1}^{5} 5x^2\\,dx = \\frac{620}{3}$, find $\\int_{-2}^{5} 5x^2\\,dx$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Tangent and Normal Lines",
+          "cross_lesson": "4.02 Linear Approximation and L'Hôpital's Rule",
+          "answer": "By additivity of the definite integral: $\\int_{-2}^{5} = \\int_{-2}^{1} + \\int_{1}^{5} = 15 + \\frac{620}{3} = \\frac{665}{3}$. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.",
+          "explanation": "By additivity of the definite integral: $\\int_{-2}^{5} = \\int_{-2}^{1} + \\int_{1}^{5} = 15 + \\frac{620}{3} = \\frac{665}{3}$. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt."
+        },
+        {
+          "q": "Given $\\int_{0}^{3} 4x^2\\,dx = 36$ and $\\int_{3}^{5} 4x^2\\,dx = \\frac{392}{3}$, find $\\int_{0}^{5} 4x^2\\,dx$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Estimating Derivatives from Tables & Graphs",
+          "cross_lesson": "5.01 Extrema and the Mean Value Theorem",
+          "answer": "By additivity of the definite integral: $\\int_{0}^{5} = \\int_{0}^{3} + \\int_{3}^{5} = 36 + \\frac{392}{3} = \\frac{500}{3}$. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.",
+          "explanation": "By additivity of the definite integral: $\\int_{0}^{5} = \\int_{0}^{3} + \\int_{3}^{5} = 36 + \\frac{392}{3} = \\frac{500}{3}$. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
           "q": "Which limit expression represents the derivative $f'(x)$ by definition?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Difference Quotients & Limit Definitions",
           "choices": [
-            "$\\lim_{h \\to 0} \\frac{f(x + h) - f(x)}{h}$",
-            "$\\lim_{h \\to 0} \\frac{f(x + h) + f(x)}{h}$",
-            "$\\lim_{h \\to \\infty} \\frac{f(x + h) - f(x)}{h}$",
+            "$\\lim_{h \\rightarrow 0} \\frac{f(x + h) - f(x)}{h}$",
+            "$\\lim_{h \\rightarrow 0} \\frac{f(x + h) + f(x)}{h}$",
+            "$\\lim_{h \\rightarrow \\infty} \\frac{f(x + h) - f(x)}{h}$",
             "$\\frac{f(x + h) - f(x)}{h}$"
           ],
           "correct": 0,
-          "answer": "By definition, $f'(x) = \\lim_{h \\to 0} \\frac{f(x + h) - f(x)}{h}$."
+          "answer": "By definition, $f'(x) = \\lim_{h \\rightarrow 0} \\frac{f(x + h) - f(x)}{h}$.",
+          "explanation": "By definition, $f'(x) = \\lim_{h \\rightarrow 0} \\frac{f(x + h) - f(x)}{h}$."
         },
         {
-          "q": "Evaluate $\\lim_{h \\to 0} \\frac{(3 + h)^2 - 9}{h}$.",
+          "q": "Evaluate $\\lim_{h \\rightarrow 0} \\frac{(3 + h)^2 - 9}{h}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Difference Quotients & Limit Definitions",
           "choices": [
             "$3$",
             "$6$",
@@ -27,10 +299,14 @@
             "$0$"
           ],
           "correct": 1,
-          "answer": "This limit represents $f'(3)$ for $f(x) = x^2$. $f'(x) = 2x \\Rightarrow f'(3) = 2(3) = 6$."
+          "answer": "This limit represents $f'(3)$ for $f(x) = x^2$. $f'(x) = 2x \\Rightarrow f'(3) = 2(3) = 6$.",
+          "explanation": "This limit represents $f'(3)$ for $f(x) = x^2$. $f'(x) = 2x \\Rightarrow f'(3) = 2(3) = 6$."
         },
         {
-          "q": "Which function and value of $c$ are represented by $\\lim_{x \\to 4} \\frac{\\sqrt{x} - 2}{x - 4}$?",
+          "q": "Which function and value of $c$ are represented by $\\lim_{x \\rightarrow 4} \\frac{\\sqrt{x} - 2}{x - 4}$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Difference Quotients & Limit Definitions",
           "choices": [
             "$f(x) = \\sqrt{x}$ at $c = 4$",
             "$f(x) = x^2$ at $c = 2$",
@@ -38,15 +314,40 @@
             "$f(x) = \\frac{1}{\\sqrt{x}}$ at $c = 4$"
           ],
           "correct": 0,
-          "answer": "Using the alternate form $f'(c) = \\lim_{x \\to c} \\frac{f(x) - f(c)}{x - c}$, this corresponds to $f(x) = \\sqrt{x}$ at $c = 4$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Differentiability Implies Continuity",
-      "questions": [
+          "answer": "Using the alternate form $f'(c) = \\lim_{x \\rightarrow c} \\frac{f(x) - f(c)}{x - c}$, this corresponds to $f(x) = \\sqrt{x}$ at $c = 4$.",
+          "explanation": "Using the alternate form $f'(c) = \\lim_{x \\rightarrow c} \\frac{f(x) - f(c)}{x - c}$, this corresponds to $f(x) = \\sqrt{x}$ at $c = 4$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2 + 1.5/(x - (1))"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "asymptotes": {
+              "x": [
+                1
+              ],
+              "y": [
+                2
+              ]
+            },
+            "point_labels": [
+              {
+                "x": 2.5,
+                "y": 3.0,
+                "label": "$( 2.5, 3 )$"
+              }
+            ],
+            "width": 230
+          }
+        },
         {
           "q": "If a function $f$ is differentiable at $x = c$, which of the following statements MUST be true?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Differentiability Implies Continuity",
           "choices": [
             "$f$ is continuous at $x = c$",
             "$f'(c) > 0$",
@@ -54,37 +355,44 @@
             "$f$ has a local extremum at $x = c$"
           ],
           "correct": 0,
-          "answer": "Differentiability implies continuity. (The converse is false, as demonstrated by sharp corners like $f(x) = |x|$)."
+          "answer": "Differentiability implies continuity. (The converse is false, as demonstrated by sharp corners like $f(x) = |x|$).",
+          "explanation": "Differentiability implies continuity. (The converse is false, as demonstrated by sharp corners like $f(x) = |x|$)."
         },
         {
           "q": "Why is the function $f(x) = |x - 3|$ not differentiable at $x = 3$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Differentiability Implies Continuity",
           "choices": [
             "The left-hand and right-hand derivative limits are unequal (corner)",
             "$f(3)$ is undefined",
             "$f$ is not continuous at $x = 3$",
-            "$\\lim_{x \\to 3} f(x) = \\infty$"
+            "$\\lim_{x \\rightarrow 3} f(x) = \\infty$"
           ],
           "correct": 0,
-          "answer": "For $x < 3, f'(x) = -1$, and for $x > 3, f'(x) = 1$. The corner creates unequal one-sided derivative limits."
+          "answer": "For $x < 3, f'(x) = -1$, and for $x > 3, f'(x) = 1$. The corner creates unequal one-sided derivative limits.",
+          "explanation": "For $x < 3, f'(x) = -1$, and for $x > 3, f'(x) = 1$. The corner creates unequal one-sided derivative limits."
         },
         {
           "q": "The graph of $f(x) = x^{1/3}$ has what feature at $x = 0$ that prevents differentiability?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Differentiability Implies Continuity",
           "choices": [
-            "A vertical tangent line where $f'(x) \\to \\infty$",
+            "A vertical tangent line where $f'(x) \\rightarrow \\infty$",
             "A jump discontinuity",
             "A sharp cusp",
             "A hole"
           ],
           "correct": 0,
-          "answer": "$f'(x) = \\frac{1}{3} x^{-2/3} = \\frac{1}{3 x^{2/3}}$. As $x \\to 0$, $f'(x) \\to \\infty$, which corresponds to a vertical tangent line."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Tangent and Normal Lines",
-      "questions": [
+          "answer": "$f'(x) = \\frac{1}{3} x^{-2/3} = \\frac{1}{3 x^{2/3}}$. As $x \\rightarrow 0$, $f'(x) \\rightarrow \\infty$, which corresponds to a vertical tangent line.",
+          "explanation": "$f'(x) = \\frac{1}{3} x^{-2/3} = \\frac{1}{3 x^{2/3}}$. As $x \\rightarrow 0$, $f'(x) \\rightarrow \\infty$, which corresponds to a vertical tangent line."
+        },
         {
           "q": "What is the equation of the tangent line to $f(x) = x^3 - 2x$ at the point $(2, 4)$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Tangent and Normal Lines",
           "choices": [
             "$y - 4 = 10(x - 2)$",
             "$y - 4 = 8(x - 2)$",
@@ -92,10 +400,14 @@
             "$y = 10x - 12$"
           ],
           "correct": 0,
-          "answer": "$f'(x) = 3x^2 - 2$. Slope at $x = 2$ is $f'(2) = 3(4) - 2 = 10$. In point-slope form: $y - 4 = 10(x - 2)$."
+          "answer": "$f'(x) = 3x^2 - 2$. Slope at $x = 2$ is $f'(2) = 3(4) - 2 = 10$. In point-slope form: $y - 4 = 10(x - 2)$.",
+          "explanation": "$f'(x) = 3x^2 - 2$. Slope at $x = 2$ is $f'(2) = 3(4) - 2 = 10$. In point-slope form: $y - 4 = 10(x - 2)$."
         },
         {
           "q": "What is the slope of the normal line to $y = x^2 + 3x$ at $x = 1$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Tangent and Normal Lines",
           "choices": [
             "$-\\frac{1}{5}$",
             "$5$",
@@ -103,10 +415,43 @@
             "$\\frac{1}{5}$"
           ],
           "correct": 0,
-          "answer": "$y' = 2x + 3 \\Rightarrow y'(1) = 5$. The normal line is perpendicular to the tangent line, so its slope is $-\\frac{1}{5}$."
-        },
+          "answer": "$y' = 2x + 3 \\Rightarrow y'(1) = 5$. The normal line is perpendicular to the tangent line, so its slope is $-\\frac{1}{5}$.",
+          "explanation": "$y' = 2x + 3 \\Rightarrow y'(1) = 5$. The normal line is perpendicular to the tangent line, so its slope is $-\\frac{1}{5}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4*exp(-0.5*x**2)"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -0.4,
+            "ymax": 4.6,
+            "shade": {
+              "fn1": "4*exp(-0.5*x**2)",
+              "fn2": "0",
+              "x0": -1.96,
+              "x1": 1.96
+            },
+            "point_labels": [
+              {
+                "x": 1.96,
+                "y": 0.59,
+                "label": "$z=1.96$"
+              }
+            ],
+            "width": 230
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
         {
           "q": "At what point on the parabola $y = x^2 - 4x + 3$ is the tangent line horizontal?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Tangent and Normal Lines",
           "choices": [
             "$(2, -1)$",
             "$(2, 0)$",
@@ -114,15 +459,14 @@
             "$(0, 3)$"
           ],
           "correct": 0,
-          "answer": "Horizontal tangent requires $y' = 0$: $2x - 4 = 0 \\Rightarrow x = 2$. $y(2) = 4 - 8 + 3 = -1$. Point is $(2, -1)$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Estimating Derivatives from Tables & Graphs",
-      "questions": [
+          "answer": "Horizontal tangent requires $y' = 0$: $2x - 4 = 0 \\Rightarrow x = 2$. $y(2) = 4 - 8 + 3 = -1$. Point is $(2, -1)$.",
+          "explanation": "Horizontal tangent requires $y' = 0$: $2x - 4 = 0 \\Rightarrow x = 2$. $y(2) = 4 - 8 + 3 = -1$. Point is $(2, -1)$."
+        },
         {
           "q": "Given values $t = 2, 4, 6$ with $s(2) = 14, s(4) = 30, s(6) = 54$, estimate $s'(4)$ using the average rate of change over $[2, 6]$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Estimating Derivatives from Tables & Graphs",
           "choices": [
             "$10$",
             "$8$",
@@ -130,10 +474,14 @@
             "$12$"
           ],
           "correct": 0,
-          "answer": "Symmetric difference quotient: $s'(4) \\approx \\frac{s(6) - s(2)}{6 - 2} = \\frac{54 - 14}{4} = \\frac{40}{4} = 10$."
+          "answer": "Symmetric difference quotient: $s'(4) \\approx \\frac{s(6) - s(2)}{6 - 2} = \\frac{54 - 14}{4} = \\frac{40}{4} = 10$.",
+          "explanation": "Symmetric difference quotient: $s'(4) \\approx \\frac{s(6) - s(2)}{6 - 2} = \\frac{54 - 14}{4} = \\frac{40}{4} = 10$."
         },
         {
           "q": "If the graph of $f$ has a local maximum at $x = 5$ and is differentiable, what is $f'(5)$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Estimating Derivatives from Tables & Graphs",
           "choices": [
             "$0$",
             "$1$",
@@ -141,10 +489,14 @@
             "Undefined"
           ],
           "correct": 0,
-          "answer": "By Fermat's theorem, the derivative at an interior local extremum of a differentiable function is zero: $f'(5) = 0$."
+          "answer": "By Fermat's theorem, the derivative at an interior local extremum of a differentiable function is zero: $f'(5) = 0$.",
+          "explanation": "By Fermat's theorem, the derivative at an interior local extremum of a differentiable function is zero: $f'(5) = 0$."
         },
         {
           "q": "If $f'(x) > 0$ for all $x \\in (a, b)$, what does this indicate about the graph of $f$ on $(a, b)$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Estimating Derivatives from Tables & Graphs",
           "choices": [
             "$f$ is strictly increasing",
             "$f$ is strictly decreasing",
@@ -152,7 +504,268 @@
             "$f$ is linear"
           ],
           "correct": 0,
-          "answer": "A strictly positive first derivative implies that the function is strictly increasing on the interval."
+          "answer": "A strictly positive first derivative implies that the function is strictly increasing on the interval.",
+          "explanation": "A strictly positive first derivative implies that the function is strictly increasing on the interval."
+        },
+        {
+          "q": "A differentiable function $f(x)$ is such that its derivative $f'(x)$ is defined by $f'(x) = 3x^2 - 12x + 9$. The function $f(x)$ has a local maximum at $x=1$ and a local minimum at $x=3$. The graph of $y = f(x)$ passes through the point $(0, 5)$. Consider the tangent line to the graph of $y = f(x)$ at the point where $x=0$. What is the $y$-intercept of this tangent line?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Difference Quotients & Limit Definitions",
+          "choices": [
+            "5",
+            "12",
+            "-3",
+            "9"
+          ],
+          "correct": 0,
+          "answer": "The derivative of $f(x)$ is given as $f'(x) = 3x^2 - 12x + 9$. To find the function $f(x)$, we integrate $f'(x)$: $f(x) = \\int (3x^2 - 12x + 9) \\, dx = x^3 - 6x^2 + 9x + C$. We are given that $f(x)$ passes through $(0, 5)$. Substituting $x=0$ and $f(0)=5$ into the expression for $f(x)$: $5 = (0)^3 - 6(0)^2 + 9(0) + C$, which gives $C = 5$. Thus, the function is $f(x) = x^3 - 6x^2 + 9x + 5$. The derivative at $x=0$ is $f'(0) = 3(0)^2 - 12(0) + 9 = 9$. The point on the graph at $x=0$ is $(0, f(0)) = (0, 5)$. The equation of the tangent line at $x=0$ has the form $y - y_1 = m(x - x_1)$, where $m = f'(0)$ and $(x_1, y_1) = (0, 5)$. So, the equation of the tangent line is $y - 5 = 9(x - 0)$, which simplifies to $y = 9x + 5$. The $y$-intercept is the value of $y$ when $x=0$, which is $5$. Therefore, the $y$-intercept of the tangent line is $5$.",
+          "explanation": "The derivative of $f(x)$ is given as $f'(x) = 3x^2 - 12x + 9$. To find the function $f(x)$, we integrate $f'(x)$: $f(x) = \\int (3x^2 - 12x + 9) \\, dx = x^3 - 6x^2 + 9x + C$. We are given that $f(x)$ passes through $(0, 5)$. Substituting $x=0$ and $f(0)=5$ into the expression for $f(x)$: $5 = (0)^3 - 6(0)^2 + 9(0) + C$, which gives $C = 5$. Thus, the function is $f(x) = x^3 - 6x^2 + 9x + 5$. The derivative at $x=0$ is $f'(0) = 3(0)^2 - 12(0) + 9 = 9$. The point on the graph at $x=0$ is $(0, f(0)) = (0, 5)$. The equation of the tangent line at $x=0$ has the form $y - y_1 = m(x - x_1)$, where $m = f'(0)$ and $(x_1, y_1) = (0, 5)$. So, the equation of the tangent line is $y - 5 = 9(x - 0)$, which simplifies to $y = 9x + 5$. The $y$-intercept is the value of $y$ when $x=0$, which is $5$. Therefore, the $y$-intercept of the tangent line is $5$."
+        },
+        {
+          "q": "The graph of a differentiable function $f(x)$ is shown below. The tangent line to the graph at $x=1$ has the equation $y = 2x + k$. Given that $f(1) = 3$, determine the value of $k$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Differentiability Implies Continuity",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "correct": 1,
+          "answer": "The equation of a tangent line to a function $f(x)$ at a point $(a, f(a))$ is given by $y - f(a) = f'(a)(x - a)$. We are given that the tangent line at $x=1$ has the equation $y = 2x + k$. The slope of this tangent line is $2$, which means $f'(1) = 2$. We are also given that $f(1) = 3$. Substituting these values into the point-slope form of the tangent line equation: $y - 3 = 2(x - 1)$ $y - 3 = 2x - 2$ $y = 2x - 2 + 3$ $y = 2x + 1$ Comparing this to the given tangent line equation $y = 2x + k$, we can see that $k=1$. Alternatively, since the point $(1, f(1))$ lies on the tangent line, we can substitute $x=1$ and $y=f(1)=3$ into the equation of the tangent line: $3 = 2(1) + k$ $3 = 2 + k$ $k = 3 - 2$ $k = 1$.",
+          "explanation": "The equation of a tangent line to a function $f(x)$ at a point $(a, f(a))$ is given by $y - f(a) = f'(a)(x - a)$. We are given that the tangent line at $x=1$ has the equation $y = 2x + k$. The slope of this tangent line is $2$, which means $f'(1) = 2$. We are also given that $f(1) = 3$. Substituting these values into the point-slope form of the tangent line equation: $y - 3 = 2(x - 1)$ $y - 3 = 2x - 2$ $y = 2x - 2 + 3$ $y = 2x + 1$ Comparing this to the given tangent line equation $y = 2x + k$, we can see that $k=1$. Alternatively, since the point $(1, f(1))$ lies on the tangent line, we can substitute $x=1$ and $y=f(1)=3$ into the equation of the tangent line: $3 = 2(1) + k$ $3 = 2 + k$ $k = 3 - 2$ $k = 1$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*x + 1",
+              "2*x + 1"
+            ],
+            "xmin": -2.0,
+            "xmax": 4.0,
+            "ymin": -2.0,
+            "ymax": 8.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": 3.0,
+                "label": "(1, 3)"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Consider the function $f(x) = x^2 - 5x + 6$. What is the limit of $f(x)$ as $x$ approaches 2?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Tangent and Normal Lines",
+          "choices": [
+            "-1",
+            "0",
+            "1",
+            "2"
+          ],
+          "correct": 0,
+          "answer": "To find the limit of the polynomial function $f(x) = x^2 - 5x + 6$ as $x$ approaches 2, we can directly substitute $x = 2$ into the function because polynomials are continuous everywhere. $\\lim_{x \\rightarrow 2} (x^2 - 5x + 6) = (2)^2 - 5(2) + 6$ $= 4 - 10 + 6$ $= 0$ Therefore, the limit is 0.",
+          "explanation": "To find the limit of the polynomial function $f(x) = x^2 - 5x + 6$ as $x$ approaches 2, we can directly substitute $x = 2$ into the function because polynomials are continuous everywhere. $\\lim_{x \\rightarrow 2} (x^2 - 5x + 6) = (2)^2 - 5(2) + 6$ $= 4 - 10 + 6$ $= 0$ Therefore, the limit is 0.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*x - 5*x + 6"
+            ],
+            "xmin": -2.0,
+            "xmax": 6.0,
+            "ymin": -3.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [],
+            "width": 230
+          }
+        },
+        {
+          "q": "Consider the function $f(x)$ graphed below. What is the limit of $f(x)$ as $x$ approaches 1, i.e., $\\lim_{x \\rightarrow 1} f(x)$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Estimating Derivatives from Tables & Graphs",
+          "choices": [
+            "-1",
+            "0",
+            "1",
+            "2"
+          ],
+          "correct": 1,
+          "answer": "The limit of a function as $x$ approaches a certain value is the $y$-value that the function approaches from both the left and the right. Observing the graph, as $x$ gets closer and closer to 1 from both sides, the $y$-value of the function approaches 0.",
+          "explanation": "The limit of a function as $x$ approaches a certain value is the $y$-value that the function approaches from both the left and the right. Observing the graph, as $x$ gets closer and closer to 1 from both sides, the $y$-value of the function approaches 0.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-x*x + 2*x - 1"
+            ],
+            "xmin": -2.0,
+            "xmax": 4.0,
+            "ymin": -2.0,
+            "ymax": 2.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": 0.0,
+                "label": "undefined"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A region R is bounded by the curve $y = \\frac{1}{x^2+1}$, the x-axis, and the vertical lines $x = 1$ and $x = 3$. A solid is formed by revolving this region R about the y-axis. Find the volume of this solid. \\\\ \\\\ \\\\ (Hint: Consider the shell method and use a substitution that relates to the derivative of the denominator of the integrand.)",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Difference Quotients & Limit Definitions",
+          "choices": [
+            "$\\pi \\ln(10)$",
+            "$2\\pi \\ln(5)$",
+            "$\\pi \\ln(5)$",
+            "$2\\pi \\ln(10)$"
+          ],
+          "correct": 2,
+          "answer": "The volume of the solid generated by revolving the region bounded by $y = f(x)$, the x-axis, and $x = a, x = b$ about the y-axis can be found using the shell method. The formula for the volume is $V = \\int_{a}^{b} 2\\pi x f(x) \\, dx$. \\\\ In this case, $f(x) = \\frac{1}{x^2+1}$, $a = 1$, and $b = 3$. \\\\ So, the volume is $V = \\int_{1}^{3} 2\\pi x \\left( \\frac{1}{x^2+1} \\right) \\, dx$. \\\\ We can pull out the constant $2\\pi$: $V = 2\\pi \\int_{1}^{3} \\frac{x}{x^2+1} \\, dx$. \\\\ To evaluate this integral, we use a substitution. Let $u = x^2+1$. Then, $du = 2x \\, dx$, which means $x \\, dx = \\frac{1}{2} du$. \\\\ We also need to change the limits of integration: \\\\ When $x = 1$, $u = 1^2 + 1 = 2$. \\\\ When $x = 3$, $u = 3^2 + 1 = 10$. \\\\ Substituting into the integral: $V = 2\\pi \\int_{2}^{10} \\frac{1}{u} \\cdot \\frac{1}{2} du$. \\\\ $V = \\pi \\int_{2}^{10} \\frac{1}{u} \\, du$. \\\\ The integral of $\\frac{1}{u}$ with respect to $u$ is $\\ln|u|$. \\\\ So, $V = \\pi [\\ln|u|]_{2}^{10}$. \\\\ Evaluating at the limits: $V = \\pi (\\ln(10) - \\ln(2))$. \\\\ Using the logarithm property $\\ln(a) - \\ln(b) = \\ln(\\frac{a}{b})$: $V = \\pi \\ln(\\frac{10}{2})$. \\\\ $V = \\pi \\ln(5)$. \\\\ Therefore, the volume of the solid is $\\pi \\ln(5)$. \\\\ Common misconception: Students might try to use the disk or washer method, which is more complex when revolving around the y-axis and integrating with respect to x. They might also forget the $2\\pi x$ factor in the shell method or make errors in the u-substitution.",
+          "explanation": "The volume of the solid generated by revolving the region bounded by $y = f(x)$, the x-axis, and $x = a, x = b$ about the y-axis can be found using the shell method. The formula for the volume is $V = \\int_{a}^{b} 2\\pi x f(x) \\, dx$. \\\\ In this case, $f(x) = \\frac{1}{x^2+1}$, $a = 1$, and $b = 3$. \\\\ So, the volume is $V = \\int_{1}^{3} 2\\pi x \\left( \\frac{1}{x^2+1} \\right) \\, dx$. \\\\ We can pull out the constant $2\\pi$: $V = 2\\pi \\int_{1}^{3} \\frac{x}{x^2+1} \\, dx$. \\\\ To evaluate this integral, we use a substitution. Let $u = x^2+1$. Then, $du = 2x \\, dx$, which means $x \\, dx = \\frac{1}{2} du$. \\\\ We also need to change the limits of integration: \\\\ When $x = 1$, $u = 1^2 + 1 = 2$. \\\\ When $x = 3$, $u = 3^2 + 1 = 10$. \\\\ Substituting into the integral: $V = 2\\pi \\int_{2}^{10} \\frac{1}{u} \\cdot \\frac{1}{2} du$. \\\\ $V = \\pi \\int_{2}^{10} \\frac{1}{u} \\, du$. \\\\ The integral of $\\frac{1}{u}$ with respect to $u$ is $\\ln|u|$. \\\\ So, $V = \\pi [\\ln|u|]_{2}^{10}$. \\\\ Evaluating at the limits: $V = \\pi (\\ln(10) - \\ln(2))$. \\\\ Using the logarithm property $\\ln(a) - \\ln(b) = \\ln(\\frac{a}{b})$: $V = \\pi \\ln(\\frac{10}{2})$. \\\\ $V = \\pi \\ln(5)$. \\\\ Therefore, the volume of the solid is $\\pi \\ln(5)$. \\\\ Common misconception: Students might try to use the disk or washer method, which is more complex when revolving around the y-axis and integrating with respect to x. They might also forget the $2\\pi x$ factor in the shell method or make errors in the u-substitution."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "Consider the function $f(x)$ defined by $f(x) = \\frac{x^2 - 9}{x - 3}$ for $x eq 3$. Let $g(x)$ be a function such that $g(x) = \\left\\{ f(x), \\mathrm{if\\ } x < c ; k, \\mathrm{if\\ } x \\geq c \\right.$. If $g(x)$ is continuous at $x = c$ and the limit of $g(x)$ as $x$ approaches $c$ from the left is 5, determine the value of $k$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Differentiability Implies Continuity",
+          "choices": [
+            "3",
+            "5",
+            "9",
+            "12"
+          ],
+          "correct": 1,
+          "answer": "For $g(x)$ to be continuous at $x = c$, the limit from the left must equal the limit from the right, and this must equal the function value at $x=c$. That is, $\\lim_{x \\rightarrow c^-} g(x) = \\lim_{x \\rightarrow c^+} g(x) = g(c)$. We are given that $\\lim_{x \\rightarrow c^-} g(x) = 5$. For $x < c$, $g(x) = f(x) = \\frac{x^2 - 9}{x - 3}$. We can simplify this expression for $x eq 3$: $f(x) = \\frac{(x-3)(x+3)}{x-3} = x+3$. Therefore, $\\lim_{x \\rightarrow c^-} g(x) = \\lim_{x \\rightarrow c^-} (x+3)$. Since the limit from the left is given as 5, we have $c+3 = 5$, which implies $c = 2$. Now consider the right side of the definition of $g(x)$. For $x \\geq c$, $g(x) = k$. So, $\\lim_{x \\rightarrow c^+} g(x) = \\lim_{x \\rightarrow c^+} k = k$ and $g(c) = k$. For continuity, we must have $\\lim_{x \\rightarrow c^-} g(x) = \\lim_{x \\rightarrow c^+} g(x) = g(c)$. Substituting the values we found: $5 = k = k$. Thus, the value of $k$ is 5.",
+          "explanation": "For $g(x)$ to be continuous at $x = c$, the limit from the left must equal the limit from the right, and this must equal the function value at $x=c$. That is, $\\lim_{x \\rightarrow c^-} g(x) = \\lim_{x \\rightarrow c^+} g(x) = g(c)$. We are given that $\\lim_{x \\rightarrow c^-} g(x) = 5$. For $x < c$, $g(x) = f(x) = \\frac{x^2 - 9}{x - 3}$. We can simplify this expression for $x eq 3$: $f(x) = \\frac{(x-3)(x+3)}{x-3} = x+3$. Therefore, $\\lim_{x \\rightarrow c^-} g(x) = \\lim_{x \\rightarrow c^-} (x+3)$. Since the limit from the left is given as 5, we have $c+3 = 5$, which implies $c = 2$. Now consider the right side of the definition of $g(x)$. For $x \\geq c$, $g(x) = k$. So, $\\lim_{x \\rightarrow c^+} g(x) = \\lim_{x \\rightarrow c^+} k = k$ and $g(c) = k$. For continuity, we must have $\\lim_{x \\rightarrow c^-} g(x) = \\lim_{x \\rightarrow c^+} g(x) = g(c)$. Substituting the values we found: $5 = k = k$. Thus, the value of $k$ is 5.",
+          "cross_lesson": "4.01 Rates of Change and Rectilinear Motion"
+        },
+        {
+          "q": "The function $f(x)$ is defined piecewise as: $f(x) = \\left\\{ ax^2 + 1,, x < 2 ; 5x - b,, x \\geq 2 \\right.$ If $f(x)$ is continuous at $x = 2$, and the limit of $f(x)$ as $x \\rightarrow 2$ is 9, find the values of $a$ and $b$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Tangent and Normal Lines",
+          "choices": [
+            "a = 2, b = 1",
+            "a = 1, b = 1",
+            "a = 2, b = -1",
+            "a = 1, b = -1"
+          ],
+          "correct": 3,
+          "answer": "For $f(x)$ to be continuous at $x = 2$, the left-hand limit and the right-hand limit must be equal to the function value at $x = 2$. Given that the limit of $f(x)$ as $x \\rightarrow 2$ is 9, we have: 1. Left-hand limit: $\\lim_{x \\rightarrow 2^-} f(x) = \\lim_{x \\rightarrow 2^-} (ax^2 + 1) = a(2)^2 + 1 = 4a + 1$ 2. Right-hand limit: $\\lim_{x \\rightarrow 2^+} f(x) = \\lim_{x \\rightarrow 2^+} (5x - b) = 5(2) - b = 10 - b$ 3. Function value at $x = 2$: $f(2) = 5(2) - b = 10 - b$ Since the limit as $x \\rightarrow 2$ is 9, we have: $4a + 1 = 9$ (from the left-hand limit) $10 - b = 9$ (from the right-hand limit and function value) Solving the first equation for $a$: $4a = 9 - 1$ $4a = 8$ $a = 2$ Solving the second equation for $b$: $10 - b = 9$ $-b = 9 - 10$ $-b = -1$ $b = 1$ Therefore, the values are $a = 2$ and $b = 1$.",
+          "explanation": "For $f(x)$ to be continuous at $x = 2$, the left-hand limit and the right-hand limit must be equal to the function value at $x = 2$. Given that the limit of $f(x)$ as $x \\rightarrow 2$ is 9, we have: 1. Left-hand limit: $\\lim_{x \\rightarrow 2^-} f(x) = \\lim_{x \\rightarrow 2^-} (ax^2 + 1) = a(2)^2 + 1 = 4a + 1$ 2. Right-hand limit: $\\lim_{x \\rightarrow 2^+} f(x) = \\lim_{x \\rightarrow 2^+} (5x - b) = 5(2) - b = 10 - b$ 3. Function value at $x = 2$: $f(2) = 5(2) - b = 10 - b$ Since the limit as $x \\rightarrow 2$ is 9, we have: $4a + 1 = 9$ (from the left-hand limit) $10 - b = 9$ (from the right-hand limit and function value) Solving the first equation for $a$: $4a = 9 - 1$ $4a = 8$ $a = 2$ Solving the second equation for $b$: $10 - b = 9$ $-b = 9 - 10$ $-b = -1$ $b = 1$ Therefore, the values are $a = 2$ and $b = 1$.",
+          "cross_lesson": "4.02 Linear Approximation and L'Hôpital's Rule"
+        },
+        {
+          "q": "The slope of the tangent to $y=x^3$ at $x=2$ is:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Estimating Derivatives from Tables & Graphs",
+          "choices": [
+            "6",
+            "8",
+            "12",
+            "16"
+          ],
+          "correct": 2,
+          "answer": "Applying Unit 2 · Differentiation — Definition and Fundamental Properties principles, $y'=3x^2;$ at $x=2$: $3(4)=12$ Therefore, the verified correct option is 12.",
+          "explanation": "Applying Unit 2 · Differentiation — Definition and Fundamental Properties principles, $y'=3x^2;$ at $x=2$: $3(4)=12$ Therefore, the verified correct option is 12.",
+          "cross_lesson": "5.01 Extrema and the Mean Value Theorem"
+        },
+        {
+          "q": "Find the derivative of $f(x) = 4e^x$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Difference Quotients & Limit Definitions",
+          "choices": [
+            "$e^{x}$",
+            "$4 e^{x}$",
+            "$- 4 e^{x}$",
+            "$4 e^{x} + 4$"
+          ],
+          "correct": 1,
+          "answer": "Applying Unit 2 · Differentiation — Definition and Fundamental Properties principles, $f'(x) = 4 e^{x}$. Therefore, the verified correct option is $4 e^{x}$.",
+          "explanation": "Applying Unit 2 · Differentiation — Definition and Fundamental Properties principles, $f'(x) = 4 e^{x}$. Therefore, the verified correct option is $4 e^{x}$.",
+          "cross_lesson": "5.02 Concavity, Curve Sketching, and Optimization"
+        },
+        {
+          "q": "Find the derivative of $f(x) = 5e^x$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Differentiability Implies Continuity",
+          "choices": [
+            "$- 5 e^{x}$",
+            "$5 e^{x}$",
+            "$5 e^{x} + 5$",
+            "$e^{x}$"
+          ],
+          "correct": 1,
+          "answer": "Applying Unit 2 · Differentiation — Definition and Fundamental Properties principles, $f'(x) = 5 e^{x}$. Therefore, the verified correct option is $5 e^{x}$.",
+          "explanation": "Applying Unit 2 · Differentiation — Definition and Fundamental Properties principles, $f'(x) = 5 e^{x}$. Therefore, the verified correct option is $5 e^{x}$.",
+          "cross_lesson": "6.01 Antiderivatives and Riemann Sums"
+        },
+        {
+          "q": "Find the derivative of $f(x) = 3e^x$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Tangent and Normal Lines",
+          "choices": [
+            "$- 3 e^{x}$",
+            "$3 e^{x} + 3$",
+            "$e^{x}$",
+            "$3 e^{x}$"
+          ],
+          "correct": 3,
+          "answer": "Applying Unit 2 · Differentiation — Definition and Fundamental Properties principles, $f'(x) = 3 e^{x}$. Therefore, the verified correct option is $3 e^{x}$.",
+          "explanation": "Applying Unit 2 · Differentiation — Definition and Fundamental Properties principles, $f'(x) = 3 e^{x}$. Therefore, the verified correct option is $3 e^{x}$.",
+          "cross_lesson": "6.02 The Fundamental Theorem of Calculus"
+        },
+        {
+          "q": "Find the derivative of $f(x) = 1\\sec x$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Estimating Derivatives from Tables & Graphs",
+          "choices": [
+            "$\\tan{\\left(x \\right)} \\sec{\\left(x \\right)}$",
+            "$\\sec{\\left(x \\right)}$",
+            "$\\tan{\\left(x \\right)} \\sec{\\left(x \\right)} + 1$",
+            "$- \\tan{\\left(x \\right)} \\sec{\\left(x \\right)}$"
+          ],
+          "correct": 0,
+          "answer": "$f'(x) = \\tan{\\left(x \\right)} \\sec{\\left(x \\right)}$.",
+          "explanation": "$f'(x) = \\tan{\\left(x \\right)} \\sec{\\left(x \\right)}$.",
+          "cross_lesson": "7.01 Differential Equations and Slope Fields"
+        },
+        {
+          "q": "Find the derivative of $f(x) = 5\\cos x$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Difference Quotients & Limit Definitions",
+          "choices": [
+            "$5 \\cos{\\left(x \\right)}$",
+            "$5 \\sin{\\left(x \\right)}$",
+            "$- \\sin{\\left(x \\right)}$",
+            "$- 5 \\sin{\\left(x \\right)}$"
+          ],
+          "correct": 3,
+          "answer": "$f'(x) = - 5 \\sin{\\left(x \\right)}$.",
+          "explanation": "$f'(x) = - 5 \\sin{\\left(x \\right)}$.",
+          "cross_lesson": "8.01 Area Between Curves"
         }
       ]
     }

@@ -3,12 +3,682 @@
   "num": "1.02",
   "slug": "z-scores-and-linear-transformations",
   "title": "Z-Scores & Linear Transformations",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 1.02 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Calculating and Interpreting Z-Scores",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
+          "q": "A test has mean $70$ and standard deviation $5$. Find the $z$-score for a student who scored $82$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Computing z-scores",
+          "answer": "$z=\\frac{x-\\mu}{\\sigma}=\\frac{82-70}{5}=\\frac{12}{5}=2.4$.",
+          "explanation": "$z=\\frac{x-\\mu}{\\sigma}=\\frac{82-70}{5}=\\frac{12}{5}=2.4$."
+        },
+        {
+          "q": "Explain in words what a $z$-score of $-1.5$ means, in the context of a data value's position relative to its distribution.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Computing z-scores",
+          "answer": "A $z$-score of $-1.5$ means the data value lies $1.5$ standard deviations below the mean of its distribution.",
+          "explanation": "A $z$-score of $-1.5$ means the data value lies $1.5$ standard deviations below the mean of its distribution.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4*exp(-0.5*x**2)"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -0.4,
+            "ymax": 4.6,
+            "shade": {
+              "fn1": "4*exp(-0.5*x**2)",
+              "fn2": "0",
+              "x0": -1.96,
+              "x1": 1.96
+            },
+            "point_labels": [
+              {
+                "x": 1.96,
+                "y": 0.59,
+                "label": "$z=1.96$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "On Test A (mean $75$, standard deviation $6$), a student scores $87$. On Test B (mean $70$, standard deviation $4$), a different student scores $77$. Compare the two students' relative performance using $z$-scores.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Comparing values across different distributions",
+          "answer": "Test A: $z=\\frac{87-75}{6}=\\frac{12}{6}=2$. Test B: $z=\\frac{77-70}{4}=\\frac{7}{4}=1.75$. Since $2>1.75$, the student on Test A performed better relative to their own test's distribution, even though the raw score gap ($12$ vs. $7$) might suggest otherwise.",
+          "explanation": "Test A: $z=\\frac{87-75}{6}=\\frac{12}{6}=2$. Test B: $z=\\frac{77-70}{4}=\\frac{7}{4}=1.75$. Since $2>1.75$, the student on Test A performed better relative to their own test's distribution, even though the raw score gap ($12$ vs. $7$) might suggest otherwise.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "40*exp(-((x-75)**2)/(2*6**2))",
+              "40*exp(-((x-70)**2)/(2*4**2))"
+            ],
+            "xmin": 50,
+            "xmax": 100,
+            "ymin": -5,
+            "ymax": 45,
+            "width": 220
+          }
+        },
+        {
+          "q": "A data set has mean $50$ and standard deviation $8$. If $10$ is added to every value, find the new mean and new standard deviation.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Effect of adding a constant to every data value",
+          "answer": "Adding a constant shifts the mean by that constant but does not change the spread: new mean $=50+10=60$; standard deviation stays $8$.",
+          "explanation": "Adding a constant shifts the mean by that constant but does not change the spread: new mean $=50+10=60$; standard deviation stays $8$."
+        },
+        {
+          "q": "Explain, without doing a full calculation, why adding a constant to every data value does not change the standard deviation.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Effect of adding a constant to every data value",
+          "answer": "Standard deviation measures how spread out the data is around the mean. Adding the same constant to every value shifts the entire data set (and its mean) by that constant, but every value's distance from the (also shifted) mean stays exactly the same — so the spread, and hence the standard deviation, is unaffected.",
+          "explanation": "Standard deviation measures how spread out the data is around the mean. Adding the same constant to every value shifts the entire data set (and its mean) by that constant, but every value's distance from the (also shifted) mean stays exactly the same — so the spread, and hence the standard deviation, is unaffected."
+        },
+        {
+          "q": "A data set has mean $20$ and standard deviation $3$. If every value is multiplied by $4$, find the new mean and new standard deviation.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Effect of multiplying every data value by a constant",
+          "answer": "Multiplying by a constant scales both the mean and the standard deviation by that constant (standard deviation uses the absolute value of the constant): new mean $=20\\times4=80$; new standard deviation $=3\\times4=12$.",
+          "explanation": "Multiplying by a constant scales both the mean and the standard deviation by that constant (standard deviation uses the absolute value of the constant): new mean $=20\\times4=80$; new standard deviation $=3\\times4=12$.",
+          "figure": {
+            "type": "venn",
+            "u_label": "$U$",
+            "label_a": "$A$",
+            "label_b": "$B$",
+            "only_a": 20,
+            "both": 3,
+            "only_b": 4,
+            "neither": 5,
+            "width": 225
+          }
+        },
+        {
+          "q": "A distance measured in miles has mean $10$ and standard deviation $2$. Convert both to kilometers (multiply by $1.609$), and find the new mean and standard deviation, to two decimal places.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Effect of multiplying every data value by a constant",
+          "answer": "New mean $=10\\times1.609=16.09$ km. New standard deviation $=2\\times1.609=3.22$ km.",
+          "explanation": "New mean $=10\\times1.609=16.09$ km. New standard deviation $=2\\times1.609=3.22$ km."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "The graph shows the standard normal distribution, which has mean $0$ and standard deviation $1$ — the distribution that results after standardizing any normal data set using $z$-scores.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Visualizing a standardized (z-score) distribution",
+          "parts": [
+            "State the mean and standard deviation shown by this curve.",
+            "Explain why standardizing a data set using $z=\\frac{x-\\mu}{\\sigma}$ always produces a distribution with mean $0$ and standard deviation $1$, regardless of the original data's mean and standard deviation."
+          ],
+          "cols": 1,
+          "answers": [
+            "Mean $=0$ (the curve is centered at $x=0$) and standard deviation $=1$ (this is the standard normal curve).",
+            "Subtracting $\\mu$ shifts the mean to $0$ (since subtracting a constant equal to the mean re-centers the data there), and dividing by $\\sigma$ rescales the standard deviation to $\\frac{\\sigma}{\\sigma}=1$ — combining a shift and a scaling that always produces mean $0$, standard deviation $1$."
+          ],
+          "answer": "(a) Mean $=0$ (the curve is centered at $x=0$) and standard deviation $=1$ (this is the standard normal curve).; (b) Subtracting $\\mu$ shifts the mean to $0$ (since subtracting a constant equal to the mean re-centers the data there), and dividing by $\\sigma$ rescales the standard deviation to $\\frac{\\sigma}{\\sigma}=1$ — combining a shift and a scaling that always produces mean $0$, standard deviation $1$.",
+          "explanation": "(a) Mean $=0$ (the curve is centered at $x=0$) and standard deviation $=1$ (this is the standard normal curve).; (b) Subtracting $\\mu$ shifts the mean to $0$ (since subtracting a constant equal to the mean re-centers the data there), and dividing by $\\sigma$ rescales the standard deviation to $\\frac{\\sigma}{\\sigma}=1$ — combining a shift and a scaling that always produces mean $0$, standard deviation $1$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2.5*exp(-(x**2)/2)"
+            ],
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -0.3,
+            "ymax": 3,
+            "width": 220
+          }
+        },
+        {
+          "q": "A factory's daily output (in units) has mean $500$ and standard deviation $30$. Management adds a fixed bonus batch of $50$ units to every day's count, then reports output in dozens (divide by $12$). Find the new mean and standard deviation, to two decimal places.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Applying linear transformations in context",
+          "answer": "Adding $50$: new mean $=550$, standard deviation stays $30$. Dividing by $12$: new mean $=\\frac{550}{12}\\approx45.83$ dozens, new standard deviation $=\\frac{30}{12}=2.5$ dozens.",
+          "explanation": "Adding $50$: new mean $=550$, standard deviation stays $30$. Dividing by $12$: new mean $=\\frac{550}{12}\\approx45.83$ dozens, new standard deviation $=\\frac{30}{12}=2.5$ dozens."
+        },
+        {
+          "q": "A distribution has mean $\\mu=64$ and standard deviation $\\sigma=5$. Find the data value corresponding to a $z$-score of $z=-1.8$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Finding a raw value from a z-score",
+          "answer": "$x=\\mu+z\\sigma=64+(-1.8)(5)=64-9=55$.",
+          "explanation": "$x=\\mu+z\\sigma=64+(-1.8)(5)=64-9=55$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4*exp(-0.5*x**2)"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -0.4,
+            "ymax": 4.6,
+            "shade": {
+              "fn1": "4*exp(-0.5*x**2)",
+              "fn2": "0",
+              "x0": -1.96,
+              "x1": 1.96
+            },
+            "point_labels": [
+              {
+                "x": 1.96,
+                "y": 0.59,
+                "label": "$z=1.96$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A distribution has mean $\\mu=200$ and standard deviation $\\sigma=15$. If a data value has $z=2.2$, find the data value.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Finding a raw value from a z-score",
+          "answer": "$x=\\mu+z\\sigma=200+2.2(15)=200+33=233$.",
+          "explanation": "$x=\\mu+z\\sigma=200+2.2(15)=200+33=233$."
+        },
+        {
+          "q": "A teacher curves test scores (mean $65$, standard deviation $10$) by first adding $5$ points to every score, then multiplying the result by $1.1$. Find the new mean and new standard deviation, to two decimal places.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Combined shift-and-scale transformations",
+          "answer": "After adding 5: mean $=70$, standard deviation stays $10$. After multiplying by $1.1$: new mean $=70\\times1.1=77$, new standard deviation $=10\\times1.1=11$.",
+          "explanation": "After adding 5: mean $=70$, standard deviation stays $10$. After multiplying by $1.1$: new mean $=70\\times1.1=77$, new standard deviation $=10\\times1.1=11$."
+        },
+        {
+          "q": "A weight distribution has mean $\\mu=68$ kg and standard deviation $\\sigma=9$ kg. Find the $z$-scores for weights of $77$ kg and $50$ kg.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Combined shift-and-scale transformations",
+          "answer": "$z_{77}=\\frac{77-68}{9}=\\frac{9}{9}=1$. $z_{50}=\\frac{50-68}{9}=\\frac{-18}{9}=-2$.",
+          "explanation": "$z_{77}=\\frac{77-68}{9}=\\frac{9}{9}=1$. $z_{50}=\\frac{50-68}{9}=\\frac{-18}{9}=-2$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "40*exp(-((x-68)**2)/(2*9**2))"
+            ],
+            "points": [
+              [
+                77,
+                24.26
+              ],
+              [
+                50,
+                5.41
+              ]
+            ],
+            "xmin": 35,
+            "xmax": 101,
+            "ymin": -5,
+            "ymax": 45,
+            "width": 220
+          }
+        },
+        {
+          "q": "A national math exam has mean $500$ and standard deviation $100$, while a national verbal exam has mean $500$ and standard deviation $110$. A student scores $640$ on the math exam and $625$ on the verbal exam. Even though the verbal raw score is lower, use $z$-scores to determine which exam the student performed better on relative to other test-takers, and explain your reasoning.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Combined shift-and-scale transformations",
+          "answer": "Math $z$-score: $\\frac{640-500}{100}=1.4$. Verbal $z$-score: $\\frac{625-500}{110}\\approx1.14$. Since $1.4>1.14$, the student performed better relative to other test-takers on the math exam, despite having a numerically higher raw score on the verbal exam — this shows why comparing raw scores directly across different distributions can be misleading, and $z$-scores put both exams on a common, comparable scale.",
+          "explanation": "Math $z$-score: $\\frac{640-500}{100}=1.4$. Verbal $z$-score: $\\frac{625-500}{110}\\approx1.14$. Since $1.4>1.14$, the student performed better relative to other test-takers on the math exam, despite having a numerically higher raw score on the verbal exam — this shows why comparing raw scores directly across different distributions can be misleading, and $z$-scores put both exams on a common, comparable scale.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "40*exp(-((x-500)**2)/(2*100**2))",
+              "40*exp(-((x-500)**2)/(2*110**2))"
+            ],
+            "xmin": 150,
+            "xmax": 850,
+            "ymin": -5,
+            "ymax": 45,
+            "width": 220
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "A shipping company records package weights with mean $18$ kg and standard deviation $2.5$ kg. The company then converts every measurement from kilograms to pounds by multiplying by $2.20462$, and separately subtracts $1$ kg from every package to account for packaging weight before converting. Describe, step by step, how each operation (the subtraction, then the multiplication) affects the mean and standard deviation.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Combined shift-and-scale transformations",
+          "cross_lesson": "3.02 Discrete Random Variables & Binomial Distributions",
+          "answer": "Subtracting $1$ kg from every package: new mean $=18-1=17$ kg; standard deviation is unchanged at $2.5$ kg (subtracting a constant doesn't affect spread). Multiplying by $2.20462$ to convert to pounds: new mean $=17\\times2.20462\\approx37.48$ lbs; new standard deviation $=2.5\\times2.20462\\approx5.51$ lbs (multiplying scales both the mean and the standard deviation by the same factor).",
+          "explanation": "Subtracting $1$ kg from every package: new mean $=18-1=17$ kg; standard deviation is unchanged at $2.5$ kg (subtracting a constant doesn't affect spread). Multiplying by $2.20462$ to convert to pounds: new mean $=17\\times2.20462\\approx37.48$ lbs; new standard deviation $=2.5\\times2.20462\\approx5.51$ lbs (multiplying scales both the mean and the standard deviation by the same factor)."
+        },
+        {
+          "q": "A manufacturing company produces electronic components. They are investigating potential relationships between the type of raw material used and the number of defects per batch. After collecting data for 100 batches, they create a two-way table summarizing the findings. The table shows that 15 batches using Material A had no defects, 20 batches using Material A had 1-2 defects, and 10 batches using Material A had more than 2 defects. For Material B, 25 batches had no defects, 28 batches had 1-2 defects, and 22 batches had more than 2 defects. If the company decides to perform a chi-square test for homogeneity to compare the defect rates across the two materials, what is the degrees of freedom for this test?",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Effect of multiplying every data value by a constant",
+          "cross_lesson": "3.03 The Normal Distribution",
+          "answer": "The problem describes a chi-square test for homogeneity, which is used to compare the distribution of a categorical variable across different populations or groups. In this case, the categorical variable is the number of defects (No Defects, 1-2 Defects, More than 2 Defects), and the populations/groups are the two types of raw materials (Material A and Material B). The structure of the data can be represented by a contingency table. The number of rows in the contingency table corresponds to the number of populations/groups being compared, and the number of columns corresponds to the number of categories for the variable being measured. In this scenario: - Number of rows (groups/materials) = 2 (Material A, Material B) - Number of columns (categories of defects) = 3 (No Defects, 1-2 Defects, More than 2 Defects) The degrees of freedom (df) for a chi-square test for homogeneity is calculated using the formula: $\\mathrm{df} = (r - 1)(c - 1)$, where $r$ is the number of rows and $c$ is the number of columns. Plugging in the values: $\\mathrm{df} = (2 - 1)(3 - 1)$ $\\mathrm{df} = (1)(2)$ $\\mathrm{df} = 2$ Therefore, the degrees of freedom for this chi-square test is 2. This means that once 2 of the cell values in the 2x3 table are determined, the remaining cell values are fixed given the marginal totals, which are derived from the data. Final Answer: 4",
+          "explanation": "The problem describes a chi-square test for homogeneity, which is used to compare the distribution of a categorical variable across different populations or groups. In this case, the categorical variable is the number of defects (No Defects, 1-2 Defects, More than 2 Defects), and the populations/groups are the two types of raw materials (Material A and Material B). The structure of the data can be represented by a contingency table. The number of rows in the contingency table corresponds to the number of populations/groups being compared, and the number of columns corresponds to the number of categories for the variable being measured. In this scenario: - Number of rows (groups/materials) = 2 (Material A, Material B) - Number of columns (categories of defects) = 3 (No Defects, 1-2 Defects, More than 2 Defects) The degrees of freedom (df) for a chi-square test for homogeneity is calculated using the formula: $\\mathrm{df} = (r - 1)(c - 1)$, where $r$ is the number of rows and $c$ is the number of columns. Plugging in the values: $\\mathrm{df} = (2 - 1)(3 - 1)$ $\\mathrm{df} = (1)(2)$ $\\mathrm{df} = 2$ Therefore, the degrees of freedom for this chi-square test is 2. This means that once 2 of the cell values in the 2x3 table are determined, the remaining cell values are fixed given the marginal totals, which are derived from the data. Final Answer: 4",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4*exp(-0.5*x**2)"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -0.4,
+            "ymax": 4.6,
+            "shade": {
+              "fn1": "4*exp(-0.5*x**2)",
+              "fn2": "0",
+              "x0": -1.96,
+              "x1": 1.96
+            },
+            "point_labels": [
+              {
+                "x": 1.96,
+                "y": 0.59,
+                "label": "$z=1.96$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A research team is investigating the relationship between socioeconomic status (SES) and preferred mode of transportation for commuting to work in a large metropolitan area. They conduct a survey and categorize SES into three levels: Low, Medium, and High. The preferred mode of transportation is categorized as Public Transit, Private Vehicle, or Bicycle/Walking. After collecting data from a sample of $n = 500$ individuals, they decide to perform a chi-square test for independence. The preliminary analysis suggests that the expected counts for several cells are small. To ensure the validity of the chi-square approximation, the research team decides to merge categories. They consolidate 'Bicycle/Walking' into 'Public Transit' to form a new category 'Active/Public Transit'. If the original analysis involved $3$ levels of SES and $3$ modes of transportation, what is the minimum number of observations required in each cell of the *original* contingency table for the chi-square test to be considered reasonably reliable, assuming equal distribution across all cells?",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Visualizing a standardized (z-score) distribution",
+          "cross_lesson": "3.04 Sampling Distributions & Central Limit Theorem",
+          "answer": "The chi-square test for independence is used to analyze the association between two categorical variables. The test statistic relies on comparing observed frequencies to expected frequencies. A common rule of thumb for the validity of the chi-square approximation is that most expected cell counts should be at least 5, and no expected cell count should be less than 1. In this problem, the original contingency table has $3$ levels of SES (rows) and $3$ modes of transportation (columns), resulting in a $3 \\times 3$ table. The total sample size is $n = 500$. If the observations were equally distributed across all cells, the expected count in each cell would be $\\frac{500}{3 \\times 3} = \\frac{500}{9} \\approx 55.56$. The question asks for the *minimum* number of observations required in each cell for reasonable reliability, implying we are looking for the smallest integer value that satisfies the common rule of thumb. The most widely cited rule is that at least 80% of expected cell counts should be 5 or greater, and all expected cell counts should be 1 or greater. Therefore, the minimum acceptable expected count is 5.",
+          "explanation": "The chi-square test for independence is used to analyze the association between two categorical variables. The test statistic relies on comparing observed frequencies to expected frequencies. A common rule of thumb for the validity of the chi-square approximation is that most expected cell counts should be at least 5, and no expected cell count should be less than 1. In this problem, the original contingency table has $3$ levels of SES (rows) and $3$ modes of transportation (columns), resulting in a $3 \\times 3$ table. The total sample size is $n = 500$. If the observations were equally distributed across all cells, the expected count in each cell would be $\\frac{500}{3 \\times 3} = \\frac{500}{9} \\approx 55.56$. The question asks for the *minimum* number of observations required in each cell for reasonable reliability, implying we are looking for the smallest integer value that satisfies the common rule of thumb. The most widely cited rule is that at least 80% of expected cell counts should be 5 or greater, and all expected cell counts should be 1 or greater. Therefore, the minimum acceptable expected count is 5."
+        },
+        {
+          "q": "A discrete random variable X can take on the values 1, 2, 3, and 4. The probability distribution for X is given by P(X=x) = kx, where k is a constant. What is the value of P(X=2)?",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Applying linear transformations in context",
+          "cross_lesson": "4.01 Confidence Intervals & Hypothesis Testing",
+          "answer": "The random variable X can take on the values 1, 2, and 3. The probability distribution is given by $P(X=x) = kx$, where $k$ is a constant. The sum of the probabilities for all possible values of X must equal 1. $P(X=1) + P(X=2) + P(X=3) = 1$ Substituting the given formula for the probabilities: $k(1) + k(2) + k(3) = 1$ $k + 2k + 3k = 1$ $6k = 1$ Solving for $k$: $k = \\frac{1}{6}$ Now we can find the probability $P(X=2)$: $P(X=2) = k(2)$ Substitute the value of $k$ we found: $P(X=2) = \\left(\\frac{1}{6}\\right)(2)$ $P(X=2) = \\frac{2}{6}$ $P(X=2) = \\frac{1}{3}$ Final Answer: $\\frac{1}{3}$",
+          "explanation": "The random variable X can take on the values 1, 2, and 3. The probability distribution is given by $P(X=x) = kx$, where $k$ is a constant. The sum of the probabilities for all possible values of X must equal 1. $P(X=1) + P(X=2) + P(X=3) = 1$ Substituting the given formula for the probabilities: $k(1) + k(2) + k(3) = 1$ $k + 2k + 3k = 1$ $6k = 1$ Solving for $k$: $k = \\frac{1}{6}$ Now we can find the probability $P(X=2)$: $P(X=2) = k(2)$ Substitute the value of $k$ we found: $P(X=2) = \\left(\\frac{1}{6}\\right)(2)$ $P(X=2) = \\frac{2}{6}$ $P(X=2) = \\frac{1}{3}$ Final Answer: $\\frac{1}{3}$"
+        },
+        {
+          "q": "A political scientist is analyzing voter preferences for two candidates, Candidate A and Candidate B, across different age groups. The data is summarized in the two-way table below. The total number of surveyed individuals is $N = 500$. The total number of individuals in the 'Young Adults' row is $R_1 = 120$, and the total number of individuals who prefer Candidate A (Column 1) is $C_1 = 200$. If the political scientist were to conduct a chi-square test of independence on this data, what would be the expected count for the cell representing 'Young Adults' who prefer 'Candidate A'?",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Finding a raw value from a z-score",
+          "cross_lesson": "4.02 Chi-Square Tests & Regression Inference",
+          "answer": "The expected count for a cell in a chi-square test of independence is calculated using the formula: $E = \\frac{\\mathrm{Row\\ Total} \\times \\mathrm{Column\\ Total}}{\\mathrm{Grand\\ Total}}$. In this case, the Grand Total $N = 500$, the Row Total for 'Young Adults' is $R_1 = 120$, and the Column Total for 'Candidate A' is $C_1 = 200$. Therefore, the expected count for the cell representing 'Young Adults' who prefer 'Candidate A' is: $E = \\frac{120 \\times 200}{500} = \\frac{24000}{500} = 48$.",
+          "explanation": "The expected count for a cell in a chi-square test of independence is calculated using the formula: $E = \\frac{\\mathrm{Row\\ Total} \\times \\mathrm{Column\\ Total}}{\\mathrm{Grand\\ Total}}$. In this case, the Grand Total $N = 500$, the Row Total for 'Young Adults' is $R_1 = 120$, and the Column Total for 'Candidate A' is $C_1 = 200$. Therefore, the expected count for the cell representing 'Young Adults' who prefer 'Candidate A' is: $E = \\frac{120 \\times 200}{500} = \\frac{24000}{500} = 48$."
+        },
+        {
+          "q": "The scatterplot below displays the relationship between the number of hours ($h$) students spent studying for a math test and their scores ($s$) on that test. The equation of the least-squares regression line for this data is given by $s = 1.2h + 78.5$. If a student studied for 5 hours, what is their predicted score based on this model?",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Combined shift-and-scale transformations",
+          "cross_lesson": "1.01 Measures of Center & Spread",
+          "answer": "The equation of the least-squares regression line is given by $s = 1.2h + 78.5$, where $s$ represents the predicted score and $h$ represents the number of hours spent studying. To find the predicted score for a student who studied for 5 hours, we substitute $h=5$ into the equation: $s = 1.2(5) + 78.5$ $s = 6.0 + 78.5$ $s = 84.5$ Therefore, the predicted score for a student who studied for 5 hours is 84.5.",
+          "explanation": "The equation of the least-squares regression line is given by $s = 1.2h + 78.5$, where $s$ represents the predicted score and $h$ represents the number of hours spent studying. To find the predicted score for a student who studied for 5 hours, we substitute $h=5$ into the equation: $s = 1.2(5) + 78.5$ $s = 6.0 + 78.5$ $s = 84.5$ Therefore, the predicted score for a student who studied for 5 hours is 84.5."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+      "questions": [
+        {
+          "q": "A distribution has mean $\\mu=51$ and standard deviation $\\sigma=25$. Find the $z$-score for a value of $x=41$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Computing z-scores",
+          "choices": [
+            "$-0.40$",
+            "$0.40$",
+            "$-0.90$",
+            "$0.10$"
+          ],
+          "correct": 0,
+          "answer": "$z=\\frac{x-\\mu}{\\sigma}=\\frac{41-51}{25}=-0.40$.",
+          "explanation": "$z=\\frac{x-\\mu}{\\sigma}=\\frac{41-51}{25}=-0.40$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=30$ and standard deviation $\\sigma=2$. Find the $z$-score for a value of $x=66$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Comparing values across different distributions",
+          "choices": [
+            "$18.50$",
+            "$-18.00$",
+            "$18.00$",
+            "$17.50$"
+          ],
+          "correct": 2,
+          "answer": "$z=\\frac{x-\\mu}{\\sigma}=\\frac{66-30}{2}=18.00$.",
+          "explanation": "$z=\\frac{x-\\mu}{\\sigma}=\\frac{66-30}{2}=18.00$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=50$ and standard deviation $\\sigma=2$. Find the $z$-score for a value of $x=-5$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Effect of adding a constant to every data value",
+          "choices": [
+            "$-27.50$",
+            "$-28.00$",
+            "$-27.00$",
+            "$27.50$"
+          ],
+          "correct": 0,
+          "answer": "$z=\\frac{x-\\mu}{\\sigma}=\\frac{-5-50}{2}=-27.50$.",
+          "explanation": "$z=\\frac{x-\\mu}{\\sigma}=\\frac{-5-50}{2}=-27.50$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4*exp(-0.5*x**2)"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -0.4,
+            "ymax": 4.6,
+            "shade": {
+              "fn1": "4*exp(-0.5*x**2)",
+              "fn2": "0",
+              "x0": -1.65,
+              "x1": 1.65
+            },
+            "point_labels": [
+              {
+                "x": 1.65,
+                "y": 1.03,
+                "label": "$z=1.65$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A distribution has mean $\\mu=77$ and standard deviation $\\sigma=25$. Find the $z$-score for a value of $x=50$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Effect of multiplying every data value by a constant",
+          "choices": [
+            "$-0.58$",
+            "$1.08$",
+            "$-1.58$",
+            "$-1.08$"
+          ],
+          "correct": 3,
+          "answer": "$z=\\frac{x-\\mu}{\\sigma}=\\frac{50-77}{25}=-1.08$.",
+          "explanation": "$z=\\frac{x-\\mu}{\\sigma}=\\frac{50-77}{25}=-1.08$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=78$ and standard deviation $\\sigma=8$. Find the $z$-score for a value of $x=19$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Visualizing a standardized (z-score) distribution",
+          "choices": [
+            "$7.38$",
+            "$-7.38$",
+            "$-7.88$",
+            "$-6.88$"
+          ],
+          "correct": 1,
+          "answer": "$z=\\frac{x-\\mu}{\\sigma}=\\frac{19-78}{8}=-7.38$.",
+          "explanation": "$z=\\frac{x-\\mu}{\\sigma}=\\frac{19-78}{8}=-7.38$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=80$ and standard deviation $\\sigma=20$. Find the $z$-score for a value of $x=119$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Applying linear transformations in context",
+          "choices": [
+            "$1.95$",
+            "$1.45$",
+            "$2.45$",
+            "$-1.95$"
+          ],
+          "correct": 0,
+          "answer": "$z=\\frac{x-\\mu}{\\sigma}=\\frac{119-80}{20}=1.95$.",
+          "explanation": "$z=\\frac{x-\\mu}{\\sigma}=\\frac{119-80}{20}=1.95$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=69$ and standard deviation $\\sigma=2$. Find the $z$-score for a value of $x=44$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Finding a raw value from a z-score",
+          "choices": [
+            "$-12.00$",
+            "$12.50$",
+            "$-12.50$",
+            "$-13.00$"
+          ],
+          "correct": 2,
+          "answer": "$z=\\frac{x-\\mu}{\\sigma}=\\frac{44-69}{2}=-12.50$.",
+          "explanation": "$z=\\frac{x-\\mu}{\\sigma}=\\frac{44-69}{2}=-12.50$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=85$ and standard deviation $\\sigma=25$. Find the data value corresponding to a $z$-score of $z=-1.4$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Combined shift-and-scale transformations",
+          "choices": [
+            "$49$",
+            "$51$",
+            "$120$",
+            "$50$"
+          ],
+          "correct": 3,
+          "answer": "$x=\\mu+z\\sigma=85+(-1.4)(25)=85+(-35)=50$.",
+          "explanation": "$x=\\mu+z\\sigma=85+(-1.4)(25)=85+(-35)=50$."
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
+        {
+          "q": "A distribution has mean $\\mu=76$ and standard deviation $\\sigma=20$. Find the data value corresponding to a $z$-score of $z=1.3$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Calculating and Interpreting Z-Scores",
+          "choices": [
+            "$101$",
+            "$103$",
+            "$102$",
+            "$50$"
+          ],
+          "correct": 2,
+          "answer": "$x=\\mu+z\\sigma=76+(1.3)(20)=76+(26)=102$.",
+          "explanation": "$x=\\mu+z\\sigma=76+(1.3)(20)=76+(26)=102$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=180$ and standard deviation $\\sigma=20$. Find the data value corresponding to a $z$-score of $z=-2.2$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Linear Transformations - Adding a Constant",
+          "choices": [
+            "$224$",
+            "$137$",
+            "$135$",
+            "$136$"
+          ],
+          "correct": 3,
+          "answer": "$x=\\mu+z\\sigma=180+(-2.2)(20)=180+(-44)=136$.",
+          "explanation": "$x=\\mu+z\\sigma=180+(-2.2)(20)=180+(-44)=136$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=123$ and standard deviation $\\sigma=25$. Find the data value corresponding to a $z$-score of $z=0.4$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Linear Transformations - Multiplying by a Constant",
+          "choices": [
+            "$113$",
+            "$132$",
+            "$133$",
+            "$134$"
+          ],
+          "correct": 2,
+          "answer": "$x=\\mu+z\\sigma=123+(0.4)(25)=123+(10)=133$.",
+          "explanation": "$x=\\mu+z\\sigma=123+(0.4)(25)=123+(10)=133$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=50$ and standard deviation $\\sigma=20$. Find the data value corresponding to a $z$-score of $z=2.4$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Standardizing an Entire Distribution",
+          "choices": [
+            "$98$",
+            "$97$",
+            "$99$",
+            "$2$"
+          ],
+          "correct": 0,
+          "answer": "$x=\\mu+z\\sigma=50+(2.4)(20)=50+(48)=98$.",
+          "explanation": "$x=\\mu+z\\sigma=50+(2.4)(20)=50+(48)=98$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=57$ and standard deviation $\\sigma=10$. Find the data value corresponding to a $z$-score of $z=-1.9$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Computing z-scores",
+          "choices": [
+            "$37$",
+            "$38$",
+            "$39$",
+            "$76$"
+          ],
+          "correct": 1,
+          "answer": "$x=\\mu+z\\sigma=57+(-1.9)(10)=57+(-19)=38$.",
+          "explanation": "$x=\\mu+z\\sigma=57+(-1.9)(10)=57+(-19)=38$."
+        },
+        {
+          "q": "A distribution has mean $\\mu=111$ and standard deviation $\\sigma=8$. Find the data value corresponding to a $z$-score of $z=0.5$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Comparing values across different distributions",
+          "choices": [
+            "$115$",
+            "$107$",
+            "$114$",
+            "$116$"
+          ],
+          "correct": 0,
+          "answer": "$x=\\mu+z\\sigma=111+(0.5)(8)=111+(4)=115$.",
+          "explanation": "$x=\\mu+z\\sigma=111+(0.5)(8)=111+(4)=115$."
+        },
+        {
+          "q": "On Test A (mean $52$, standard deviation $4$), a student scores $53$. On Test B (mean $54$, standard deviation $5$), a different student scores $61$. Using $z$-scores, which student performed better relative to their own test's distribution?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Effect of adding a constant to every data value",
+          "choices": [
+            "Test A",
+            "Both are exactly the same",
+            "Cannot be determined without more information",
+            "Test B"
+          ],
+          "correct": 3,
+          "answer": "Test A: $z=\\frac{53-52}{4}\\approx0.25$. Test B: $z=\\frac{61-54}{5}\\approx1.40$. Since $1.40>0.25$, Test B shows the stronger relative performance.",
+          "explanation": "Test A: $z=\\frac{53-52}{4}\\approx0.25$. Test B: $z=\\frac{61-54}{5}\\approx1.40$. Since $1.40>0.25$, Test B shows the stronger relative performance."
+        },
+        {
+          "q": "On Test A (mean $90$, standard deviation $10$), a student scores $94$. On Test B (mean $76$, standard deviation $4$), a different student scores $86$. Using $z$-scores, which student performed better relative to their own test's distribution?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Effect of multiplying every data value by a constant",
+          "choices": [
+            "Both are exactly the same",
+            "Test A",
+            "Test B",
+            "Cannot be determined without more information"
+          ],
+          "correct": 2,
+          "answer": "Test A: $z=\\frac{94-90}{10}\\approx0.40$. Test B: $z=\\frac{86-76}{4}\\approx2.50$. Since $2.50>0.40$, Test B shows the stronger relative performance.",
+          "explanation": "Test A: $z=\\frac{94-90}{10}\\approx0.40$. Test B: $z=\\frac{86-76}{4}\\approx2.50$. Since $2.50>0.40$, Test B shows the stronger relative performance."
+        },
+        {
+          "q": "A data set has mean $40$ and standard deviation $18$. First, $5$ is added to every value; then every value is multiplied by $2$. Find the new mean and standard deviation as an ordered pair (mean, SD).",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Visualizing a standardized (z-score) distribution",
+          "choices": [
+            "$\\left(90,18\\right)$",
+            "$\\left(80,36\\right)$",
+            "$\\left(91,36\\right)$",
+            "$\\left(90,36\\right)$"
+          ],
+          "correct": 3,
+          "answer": "After adding $5$: mean $=45$, SD stays $18$. After multiplying by $2$: new mean $=2\\times45=90$, new SD $=2\\times18=36$. $\\left(90,36\\right)$.",
+          "explanation": "After adding $5$: mean $=45$, SD stays $18$. After multiplying by $2$: new mean $=2\\times45=90$, new SD $=2\\times18=36$. $\\left(90,36\\right)$."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "A data set has mean $40$ and standard deviation $3$. First, $-7$ is added to every value; then every value is multiplied by $4$. Find the new mean and standard deviation as an ordered pair (mean, SD).",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Applying linear transformations in context",
+          "choices": [
+            "$\\left(132,12\\right)$",
+            "$\\left(133,12\\right)$",
+            "$\\left(160,12\\right)$",
+            "$\\left(132,3\\right)$"
+          ],
+          "correct": 0,
+          "answer": "After adding $-7$: mean $=33$, SD stays $3$. After multiplying by $4$: new mean $=4\\times33=132$, new SD $=4\\times3=12$. $\\left(132,12\\right)$.",
+          "explanation": "After adding $-7$: mean $=33$, SD stays $3$. After multiplying by $4$: new mean $=4\\times33=132$, new SD $=4\\times3=12$. $\\left(132,12\\right)$.",
+          "cross_lesson": "4.01 Confidence Intervals & Hypothesis Testing"
+        },
+        {
+          "q": "A distribution has mean $\\mu=41$ and standard deviation $\\sigma=8$. Find the $z$-scores for values of $52$ and $31$, as an ordered pair $(z_{52},z_{31})$, to two decimal places.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Finding a raw value from a z-score",
+          "choices": [
+            "$\\left(1.38,-1.25\\right)$",
+            "$\\left(1.68,-1.25\\right)$",
+            "$\\left(-1.25,1.38\\right)$",
+            "$\\left(1.38,-1.55\\right)$"
+          ],
+          "correct": 0,
+          "answer": "$z_{52}=\\frac{52-41}{8}\\approx1.38$. $z_{31}=\\frac{31-41}{8}\\approx-1.25$. $\\left(1.38,-1.25\\right)$.",
+          "explanation": "$z_{52}=\\frac{52-41}{8}\\approx1.38$. $z_{31}=\\frac{31-41}{8}\\approx-1.25$. $\\left(1.38,-1.25\\right)$.",
+          "cross_lesson": "4.02 Chi-Square Tests & Regression Inference"
+        },
+        {
+          "q": "A distribution has mean $\\mu=53$ and standard deviation $\\sigma=5$. Find the $z$-scores for values of $74$ and $47$, as an ordered pair $(z_{74},z_{47})$, to two decimal places.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Combined shift-and-scale transformations",
+          "choices": [
+            "$\\left(4.50,-1.20\\right)$",
+            "$\\left(4.20,-1.50\\right)$",
+            "$\\left(-1.20,4.20\\right)$",
+            "$\\left(4.20,-1.20\\right)$"
+          ],
+          "correct": 3,
+          "answer": "$z_{74}=\\frac{74-53}{5}\\approx4.20$. $z_{47}=\\frac{47-53}{5}\\approx-1.20$. $\\left(4.20,-1.20\\right)$.",
+          "explanation": "$z_{74}=\\frac{74-53}{5}\\approx4.20$. $z_{47}=\\frac{47-53}{5}\\approx-1.20$. $\\left(4.20,-1.20\\right)$.",
+          "cross_lesson": "1.01 Measures of Center & Spread"
+        },
+        {
           "q": "A student scores $82$ on an exam where the class mean is $74$ and the standard deviation is $5$. What is the student's standardized $z$-score?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Calculating and Interpreting Z-Scores",
           "choices": [
             "$1.60$",
             "$1.20$",
@@ -16,21 +686,15 @@
             "$-1.60$"
           ],
           "correct": 0,
-          "answer": "$z = \\frac{x - \\mu}{\\sigma} = \\frac{82 - 74}{5} = \\frac{8}{5} = 1.60$."
-        },
-        {
-          "q": "What does a $z$-score of $-2.4$ indicate about an observation?",
-          "choices": [
-            "The observation is $2.4$ standard deviations below the mean",
-            "The observation is $2.4$ units below the mean",
-            "The observation is in the 2.4th percentile",
-            "The probability of the observation is negative"
-          ],
-          "correct": 0,
-          "answer": "A $z$-score measures the signed number of standard deviations an observation falls relative to the arithmetic mean; negative indicates below the mean."
+          "answer": "$z = \\frac{x - \\mu}{\\sigma} = \\frac{82 - 74}{5} = \\frac{8}{5} = 1.60$.",
+          "explanation": "$z = \\frac{x - \\mu}{\\sigma} = \\frac{82 - 74}{5} = \\frac{8}{5} = 1.60$.",
+          "cross_lesson": "1.03 Describing Distributions & Linear Regression"
         },
         {
           "q": "On Test 1, Alice scored $88$ (mean $80$, SD $4$). On Test 2, she scored $92$ (mean $85$, SD $5$). On which test did she perform relatively better compared to peers?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Calculating and Interpreting Z-Scores",
           "choices": [
             "Test 1 ($z_1 = 2.0 > z_2 = 1.4$)",
             "Test 2 ($z_2 = 1.4 > z_1 = 1.0$)",
@@ -38,37 +702,15 @@
             "Test 2 because her raw score was $92$ vs $88$"
           ],
           "correct": 0,
-          "answer": "Test 1: $z_1 = \\frac{88 - 80}{4} = 2.0$. Test 2: $z_2 = \\frac{92 - 85}{5} = 1.4$. Performance relative to peers is higher on Test 1."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Linear Transformations - Adding a Constant",
-      "questions": [
-        {
-          "q": "A dataset has mean $\\mu = 50$ and standard deviation $\\sigma = 8$. If $5$ points are added to every observation ($y = x + 5$), what are the new mean and standard deviation?",
-          "choices": [
-            "New mean $= 55$, New $\\text{SD} = 8$",
-            "New mean $= 55$, New $\\text{SD} = 13$",
-            "New mean $= 50$, New $\\text{SD} = 13$",
-            "New mean $= 55$, New $\\text{SD} = 40$"
-          ],
-          "correct": 0,
-          "answer": "Adding a constant shifts all measures of center (mean increases by 5 to 55), but does not alter measures of spread (standard deviation remains 8)."
-        },
-        {
-          "q": "If a constant $c = 10$ is subtracted from every value in a dataset, which statistic changes?",
-          "choices": [
-            "Median",
-            "Range",
-            "IQR",
-            "Variance"
-          ],
-          "correct": 0,
-          "answer": "Subtracting a constant shifts the center (median decreases by 10), but leaves all measures of spread (range, IQR, variance, standard deviation) unchanged."
+          "answer": "Test 1: $z_1 = \\frac{88 - 80}{4} = 2.0$. Test 2: $z_2 = \\frac{92 - 85}{5} = 1.4$. Performance relative to peers is higher on Test 1.",
+          "explanation": "Test 1: $z_1 = \\frac{88 - 80}{4} = 2.0$. Test 2: $z_2 = \\frac{92 - 85}{5} = 1.4$. Performance relative to peers is higher on Test 1.",
+          "cross_lesson": "2.01 Sampling Methods & Bias"
         },
         {
           "q": "A teacher curves a test by adding 8 points to all student scores. How does this affect the shape of the score distribution?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Linear Transformations - Adding a Constant",
           "choices": [
             "The shape remains exactly the same",
             "The distribution becomes more symmetric",
@@ -76,26 +718,15 @@
             "The spread increases"
           ],
           "correct": 0,
-          "answer": "Adding a constant is a rigid shift of the distribution along the axis; it has zero impact on the shape or spread."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Linear Transformations - Multiplying by a Constant",
-      "questions": [
-        {
-          "q": "A dataset of temperatures in Celsius has mean $20^{\\circ}\\text{C}$ and standard deviation $4^{\\circ}\\text{C}$. Converting to Fahrenheit using $F = 1.8C + 32$, what are the new mean and standard deviation?",
-          "choices": [
-            "Mean $= 68^{\\circ}\\text{F}$, $\\text{SD} = 7.2^{\\circ}\\text{F}$",
-            "Mean $= 68^{\\circ}\\text{F}$, $\\text{SD} = 39.2^{\\circ}\\text{F}$",
-            "Mean $= 36^{\\circ}\\text{F}$, $\\text{SD} = 7.2^{\\circ}\\text{F}$",
-            "Mean $= 68^{\\circ}\\text{F}$, $\\text{SD} = 4.0^{\\circ}\\text{F}$"
-          ],
-          "correct": 0,
-          "answer": "New mean: $1.8(20) + 32 = 36 + 32 = 68^{\\circ}\\text{F}$. New standard deviation: $|1.8| \\times 4 = 7.2^{\\circ}\\text{F}$ (addition of $+32$ does not affect spread)."
+          "answer": "Adding a constant is a rigid shift of the distribution along the axis; it has zero impact on the shape or spread.",
+          "explanation": "Adding a constant is a rigid shift of the distribution along the axis; it has zero impact on the shape or spread.",
+          "cross_lesson": "2.02 Experimental Design & Scope of Inference"
         },
         {
           "q": "If all observations in a dataset with variance $16$ are multiplied by $-3$, what is the new variance?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Linear Transformations - Multiplying by a Constant",
           "choices": [
             "$144$",
             "$-48$",
@@ -103,26 +734,15 @@
             "$12$"
           ],
           "correct": 0,
-          "answer": "Multiplying by constant $b$ multiplies variance by $b^2$. Here $(-3)^2 \\times 16 = 9 \\times 16 = 144$."
+          "answer": "Multiplying by constant $b$ multiplies variance by $b^2$. Here $(-3)^2 \\times 16 = 9 \\times 16 = 144$.",
+          "explanation": "Multiplying by constant $b$ multiplies variance by $b^2$. Here $(-3)^2 \\times 16 = 9 \\times 16 = 144$.",
+          "cross_lesson": "3.01 Probability Rules & Conditional Probability"
         },
         {
-          "q": "If every observation is multiplied by $0.5$, how does the IQR change?",
-          "choices": [
-            "The IQR is halved (multiplied by $0.5$)",
-            "The IQR is unchanged",
-            "The IQR is quartered (multiplied by $0.25$)",
-            "The IQR doubles"
-          ],
-          "correct": 0,
-          "answer": "Measures of spread are multiplied by $|b|$. With $b = 0.5$, the new IQR is $0.5 \\times \\text{old IQR}$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Standardizing an Entire Distribution",
-      "questions": [
-        {
-          "q": "If an entire non-normal distribution with mean $\\mu = 40$ and $\\text{SD} = 6$ is converted to $z$-scores ($z = \\frac{x - 40}{6}$), what are the mean and standard deviation of the standardized values?",
+          "q": "If an entire non-normal distribution with mean $\\mu = 40$ and $\\mathrm{SD} = 6$ is converted to $z$-scores ($z = \\frac{x - 40}{6}$), what are the mean and standard deviation of the standardized values?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Standardizing an Entire Distribution",
           "choices": [
             "Mean $= 0$, Standard Deviation $= 1$",
             "Mean $= 40$, Standard Deviation $= 1$",
@@ -130,29 +750,9 @@
             "Mean $= 1$, Standard Deviation $= 0$"
           ],
           "correct": 0,
-          "answer": "Standardizing any distribution (regardless of shape) by subtracting its mean and dividing by its standard deviation always produces a new distribution with mean $0$ and standard deviation $1$."
-        },
-        {
-          "q": "Does standardizing a skewed dataset into $z$-scores transform the distribution into a normal shape?",
-          "choices": [
-            "No, standardizing changes center and scale but preserves the original skewed shape",
-            "Yes, standardizing always creates a standard normal bell curve",
-            "Only if the sample size is greater than 30",
-            "Yes, because the mean becomes 0 and standard deviation becomes 1"
-          ],
-          "correct": 0,
-          "answer": "Standardization is a linear transformation ($z = \\frac{1}{\\sigma}x - \\frac{\\mu}{\\sigma}$). Linear transformations never change the fundamental shape of a distribution."
-        },
-        {
-          "q": "A runner's race time is at the 85th percentile of all competitors. What does this mean?",
-          "choices": [
-            "The runner was faster than $85\\%$ of competitors (finished with lower time than $15\\%$ of competitors)",
-            "The runner scored an $85\\%$ on the race",
-            "The runner finished in the top $85\\%$",
-            "$85\\%$ of competitors finished before this runner"
-          ],
-          "correct": 0,
-          "answer": "In general percentile terminology, the $p$th percentile is the value such that $p$ percent of observations fall at or below it."
+          "answer": "Standardizing any distribution (regardless of shape) by subtracting its mean and dividing by its standard deviation always produces a new distribution with mean $0$ and standard deviation $1$.",
+          "explanation": "Standardizing any distribution (regardless of shape) by subtracting its mean and dividing by its standard deviation always produces a new distribution with mean $0$ and standard deviation $1$.",
+          "cross_lesson": "3.02 Discrete Random Variables & Binomial Distributions"
         }
       ]
     }

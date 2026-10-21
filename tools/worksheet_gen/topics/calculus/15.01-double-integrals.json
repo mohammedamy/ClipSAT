@@ -3,12 +3,331 @@
   "num": "15.01",
   "slug": "double-integrals",
   "title": "Double Integrals",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 15.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Iterated Integrals over Rectangles",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+      "questions": [
+        {
+          "q": "Evaluate $\\int_0^2\\int_0^3 (x^2 + y)\\,dy\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Iterated integrals over rectangles",
+          "answer": "Inner: $\\int_0^3 (x^2+y)\\,dy = 3x^2 + \\frac{9}{2}$. Outer: $\\int_0^2\\left(3x^2+\\frac{9}{2}\\right)dx = \\left[x^3+\\frac{9}{2}x\\right]_0^2 = 8+9=17$.",
+          "explanation": "Inner: $\\int_0^3 (x^2+y)\\,dy = 3x^2 + \\frac{9}{2}$. Outer: $\\int_0^2\\left(3x^2+\\frac{9}{2}\\right)dx = \\left[x^3+\\frac{9}{2}x\\right]_0^2 = 8+9=17$."
+        },
+        {
+          "q": "Evaluate $\\int_1^2\\int_0^1 6xy^2\\,dx\\,dy$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Iterated integrals over rectangles",
+          "answer": "Inner: $\\int_0^1 6xy^2\\,dx = 3y^2$. Outer: $\\int_1^2 3y^2\\,dy = \\left[y^3\\right]_1^2 = 8-1=7$.",
+          "explanation": "Inner: $\\int_0^1 6xy^2\\,dx = 3y^2$. Outer: $\\int_1^2 3y^2\\,dy = \\left[y^3\\right]_1^2 = 8-1=7$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-0.30*x**2 + 1.2*x + 2.2",
+              "0.35*x + 0.4"
+            ],
+            "xmin": -1,
+            "xmax": 5,
+            "ymin": -1,
+            "ymax": 5,
+            "shade": {
+              "fn1": "-0.30*x**2 + 1.2*x + 2.2",
+              "fn2": "0.35*x + 0.4",
+              "x0": 0.0,
+              "x1": 3.5
+            },
+            "point_labels": [
+              {
+                "x": 2.0,
+                "y": 3.4,
+                "label": "$y=f(x)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Evaluate $\\int_0^1\\int_0^{x} (x+y)\\,dy\\,dx$, integrating over the triangular region $0 \\leq y \\leq x \\leq 1$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Double integrals over general regions",
+          "answer": "Inner: $\\int_0^x (x+y)\\,dy = x^2 + \\frac{x^2}{2} = \\frac{3x^2}{2}$. Outer: $\\int_0^1 \\frac{3x^2}{2}\\,dx = \\left[\\frac{x^3}{2}\\right]_0^1 = \\frac{1}{2}$.",
+          "explanation": "Inner: $\\int_0^x (x+y)\\,dy = x^2 + \\frac{x^2}{2} = \\frac{3x^2}{2}$. Outer: $\\int_0^1 \\frac{3x^2}{2}\\,dx = \\left[\\frac{x^3}{2}\\right]_0^1 = \\frac{1}{2}$.",
+          "figure": {
+            "type": "polygon",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "side_labels": [
+              "y=0",
+              "x=1",
+              "y=x"
+            ],
+            "width": 220
+          }
+        },
+        {
+          "q": "Use a double integral to find the volume under $f(x,y) = 4 - x - y$ over the rectangle $0 \\leq x \\leq 1$, $0 \\leq y \\leq 1$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Double integrals over general regions",
+          "answer": "$\\int_0^1\\int_0^1 (4-x-y)\\,dy\\,dx$: inner $= 4 - x - \\frac{1}{2}$. Outer: $\\int_0^1\\left(\\frac{7}{2}-x\\right)dx = \\frac{7}{2}-\\frac{1}{2}=3$.",
+          "explanation": "$\\int_0^1\\int_0^1 (4-x-y)\\,dy\\,dx$: inner $= 4 - x - \\frac{1}{2}$. Outer: $\\int_0^1\\left(\\frac{7}{2}-x\\right)dx = \\frac{7}{2}-\\frac{1}{2}=3$."
+        },
+        {
+          "q": "Evaluate $\\int_0^1\\int_y^1 e^{x^2}\\,dx\\,dy$ by first reversing the order of integration (the region is $0\\leq y\\leq x\\leq1$).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Reversing the order of integration",
+          "answer": "Reversing: $\\int_0^1\\int_0^x e^{x^2}\\,dy\\,dx = \\int_0^1 xe^{x^2}\\,dx = \\left[\\frac{1}{2}e^{x^2}\\right]_0^1 = \\frac{e-1}{2}$.",
+          "explanation": "Reversing: $\\int_0^1\\int_0^x e^{x^2}\\,dy\\,dx = \\int_0^1 xe^{x^2}\\,dx = \\left[\\frac{1}{2}e^{x^2}\\right]_0^1 = \\frac{e-1}{2}$."
+        },
+        {
+          "q": "Evaluate $\\iint_D (x^2+y^2)\\,dA$ where $D$ is the disk $x^2+y^2\\leq4$, by converting to polar coordinates ($dA=r\\,dr\\,d\\theta$).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Double integrals in polar coordinates",
+          "answer": "$\\int_0^{2\\pi}\\int_0^2 r^2\\cdot r\\,dr\\,d\\theta = \\int_0^{2\\pi}\\left[\\frac{r^4}{4}\\right]_0^2 d\\theta = \\int_0^{2\\pi}4\\,d\\theta = 8\\pi$.",
+          "explanation": "$\\int_0^{2\\pi}\\int_0^2 r^2\\cdot r\\,dr\\,d\\theta = \\int_0^{2\\pi}\\left[\\frac{r^4}{4}\\right]_0^2 d\\theta = \\int_0^{2\\pi}4\\,d\\theta = 8\\pi$.",
+          "figure": {
+            "type": "circle",
+            "center": [
+              0,
+              0
+            ],
+            "radius": 2.0,
+            "center_label": "$O$",
+            "radius_label": "2",
+            "sector": null,
+            "chord": null,
+            "width": 210
+          }
+        },
+        {
+          "q": "Find the area of the region enclosed by $r=2\\cos\\theta$ using a double integral in polar coordinates.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Double integrals in polar coordinates",
+          "answer": "$A=\\int_{-\\pi/2}^{\\pi/2}\\int_0^{2\\cos\\theta} r\\,dr\\,d\\theta = \\int_{-\\pi/2}^{\\pi/2} 2\\cos^2\\theta\\,d\\theta = \\int_{-\\pi/2}^{\\pi/2}(1+\\cos2\\theta)\\,d\\theta = \\pi$.",
+          "explanation": "$A=\\int_{-\\pi/2}^{\\pi/2}\\int_0^{2\\cos\\theta} r\\,dr\\,d\\theta = \\int_{-\\pi/2}^{\\pi/2} 2\\cos^2\\theta\\,d\\theta = \\int_{-\\pi/2}^{\\pi/2}(1+\\cos2\\theta)\\,d\\theta = \\pi$."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Find the average value of $f(x,y)=xy$ over the rectangle $0\\leq x\\leq2$, $0\\leq y\\leq3$ (average value $=\\frac{1}{A}\\iint_D f\\,dA$, where $A$ is the region's area).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Average value over a region",
+          "answer": "$\\iint_D xy\\,dA = \\int_0^2\\int_0^3 xy\\,dy\\,dx = \\int_0^2 x\\cdot\\frac{9}{2}\\,dx = \\frac{9}{2}\\cdot2 = 9$. Area $=6$. Average $=\\frac{9}{6}=\\frac{3}{2}$.",
+          "explanation": "$\\iint_D xy\\,dA = \\int_0^2\\int_0^3 xy\\,dy\\,dx = \\int_0^2 x\\cdot\\frac{9}{2}\\,dx = \\frac{9}{2}\\cdot2 = 9$. Area $=6$. Average $=\\frac{9}{6}=\\frac{3}{2}$."
+        },
+        {
+          "q": "A lamina occupies the rectangle $0\\leq x\\leq2$, $0\\leq y\\leq1$ with density $\\rho(x,y)=x+y$. Find its total mass, $M=\\iint_D \\rho\\,dA$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Mass and center of a region",
+          "answer": "$M=\\int_0^2\\int_0^1(x+y)\\,dy\\,dx = \\int_0^2\\left(x+\\frac{1}{2}\\right)dx = \\left[\\frac{x^2}{2}+\\frac{x}{2}\\right]_0^2 = 2+1=3$.",
+          "explanation": "$M=\\int_0^2\\int_0^1(x+y)\\,dy\\,dx = \\int_0^2\\left(x+\\frac{1}{2}\\right)dx = \\left[\\frac{x^2}{2}+\\frac{x}{2}\\right]_0^2 = 2+1=3$."
+        },
+        {
+          "q": "For a lamina occupying $0\\leq x\\leq1$, $0\\leq y\\leq1$ with constant density $\\rho=1$, find the $x$-coordinate of the center of mass, $\\bar{x}=\\frac{1}{M}\\iint_D x\\,dA$ (where $M$ is the total mass).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Mass and center of a region",
+          "answer": "$M=1\\cdot1=1$. $\\iint_D x\\,dA = \\int_0^1\\int_0^1 x\\,dy\\,dx = \\int_0^1 x\\,dx = \\frac{1}{2}$. $\\bar{x}=\\frac{1/2}{1}=\\frac{1}{2}$ (as expected, the center of a uniform square).",
+          "explanation": "$M=1\\cdot1=1$. $\\iint_D x\\,dA = \\int_0^1\\int_0^1 x\\,dy\\,dx = \\int_0^1 x\\,dx = \\frac{1}{2}$. $\\bar{x}=\\frac{1/2}{1}=\\frac{1}{2}$ (as expected, the center of a uniform square).",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-0.25*x**2 + 1.2*x + 2.2",
+              "0.35*x + 0.4"
+            ],
+            "xmin": -1,
+            "xmax": 5,
+            "ymin": -1,
+            "ymax": 5,
+            "shade": {
+              "fn1": "-0.25*x**2 + 1.2*x + 2.2",
+              "fn2": "0.35*x + 0.4",
+              "x0": 0.0,
+              "x1": 3.5
+            },
+            "point_labels": [
+              {
+                "x": 2.0,
+                "y": 3.6,
+                "label": "$y=f(x)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Set up (do not evaluate) the triple integral for the volume of the solid bounded by $0\\leq x\\leq1$, $0\\leq y\\leq2$, $0\\leq z\\leq3$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Triple integral setup (a first look)",
+          "answer": "$V=\\int_0^1\\int_0^2\\int_0^3 dz\\,dy\\,dx$ (which evaluates to $1\\times2\\times3=6$, the box's volume).",
+          "explanation": "$V=\\int_0^1\\int_0^2\\int_0^3 dz\\,dy\\,dx$ (which evaluates to $1\\times2\\times3=6$, the box's volume)."
+        },
+        {
+          "q": "Evaluate $\\int_0^1\\int_0^{y^2} 3x\\,dx\\,dy$, integrating over the region $0\\leq x\\leq y^2$, $0\\leq y\\leq1$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Double integrals with a variable upper limit",
+          "answer": "Inner: $\\int_0^{y^2}3x\\,dx=\\frac{3}{2}y^4$. Outer: $\\int_0^1\\frac{3}{2}y^4\\,dy=\\left[\\frac{3}{10}y^5\\right]_0^1=\\frac{3}{10}$.",
+          "explanation": "Inner: $\\int_0^{y^2}3x\\,dx=\\frac{3}{2}y^4$. Outer: $\\int_0^1\\frac{3}{2}y^4\\,dy=\\left[\\frac{3}{10}y^5\\right]_0^1=\\frac{3}{10}$."
+        },
+        {
+          "q": "Set up and evaluate the double integral for the volume under $f(x,y)=xy^2$ over the triangular region bounded by $y=x$, $y=0$, and $x=2$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Double integrals with a variable upper limit",
+          "answer": "$V=\\int_0^2\\int_0^x xy^2\\,dy\\,dx=\\int_0^2 x\\cdot\\frac{x^3}{3}\\,dx=\\int_0^2\\frac{x^4}{3}\\,dx=\\left[\\frac{x^5}{15}\\right]_0^2=\\frac{32}{15}$.",
+          "explanation": "$V=\\int_0^2\\int_0^x xy^2\\,dy\\,dx=\\int_0^2 x\\cdot\\frac{x^3}{3}\\,dx=\\int_0^2\\frac{x^4}{3}\\,dx=\\left[\\frac{x^5}{15}\\right]_0^2=\\frac{32}{15}$."
+        },
+        {
+          "q": "A metal plate occupies the region $0\\leq x\\leq3$, $0\\leq y\\leq2$, with temperature distribution $T(x,y)=50-x^2-y^2$ (degrees Celsius). Find the average temperature over the plate.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "An applied double-integral problem",
+          "answer": "$\\iint_D T\\,dA=\\int_0^3\\int_0^2(50-x^2-y^2)\\,dy\\,dx=\\int_0^3\\left(100-2x^2-\\frac{8}{3}\\right)dx=\\int_0^3\\left(\\frac{292}{3}-2x^2\\right)dx=\\left[\\frac{292}{3}x-\\frac{2x^3}{3}\\right]_0^3=292-18=274$. Area $=6$. Average $=\\frac{274}{6}\\approx45.67°$C.",
+          "explanation": "$\\iint_D T\\,dA=\\int_0^3\\int_0^2(50-x^2-y^2)\\,dy\\,dx=\\int_0^3\\left(100-2x^2-\\frac{8}{3}\\right)dx=\\int_0^3\\left(\\frac{292}{3}-2x^2\\right)dx=\\left[\\frac{292}{3}x-\\frac{2x^3}{3}\\right]_0^3=292-18=274$. Area $=6$. Average $=\\frac{274}{6}\\approx45.67°$C."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "Find the volume of the solid between $z=8-x^2-y^2$ and $z=0$ over the region where $z\\geq0$ requires $x^2+y^2\\leq8$, using polar coordinates.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Volume between two surfaces",
+          "cross_lesson": "8.03 Arc Length and Improper Integrals",
+          "answer": "$V=\\int_0^{2\\pi}\\int_0^{2\\sqrt{2}}(8-r^2)r\\,dr\\,d\\theta=\\int_0^{2\\pi}\\left[4r^2-\\frac{r^4}{4}\\right]_0^{2\\sqrt{2}}d\\theta=\\int_0^{2\\pi}(32-16)\\,d\\theta=\\int_0^{2\\pi}16\\,d\\theta=32\\pi$.",
+          "explanation": "$V=\\int_0^{2\\pi}\\int_0^{2\\sqrt{2}}(8-r^2)r\\,dr\\,d\\theta=\\int_0^{2\\pi}\\left[4r^2-\\frac{r^4}{4}\\right]_0^{2\\sqrt{2}}d\\theta=\\int_0^{2\\pi}(32-16)\\,d\\theta=\\int_0^{2\\pi}16\\,d\\theta=32\\pi$."
+        },
+        {
+          "q": "Evaluate $\\int_0^1\\int_0^1 xe^{xy}\\,dy\\,dx$ by integrating with respect to $y$ first.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Double integrals with exponential integrands",
+          "cross_lesson": "9.01 Separable Differential Equations",
+          "answer": "Inner: $\\int_0^1 xe^{xy}\\,dy=\\left[e^{xy}\\right]_0^1=e^x-1$ (for $x\\neq0$). Outer: $\\int_0^1(e^x-1)\\,dx=\\left[e^x-x\\right]_0^1=(e-1)-1=e-2$.",
+          "explanation": "Inner: $\\int_0^1 xe^{xy}\\,dy=\\left[e^{xy}\\right]_0^1=e^x-1$ (for $x\\neq0$). Outer: $\\int_0^1(e^x-1)\\,dx=\\left[e^x-x\\right]_0^1=(e-1)-1=e-2$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-0.25*x**2 + 1.2*x + 2.2",
+              "0.35*x + 0.4"
+            ],
+            "xmin": -1,
+            "xmax": 5,
+            "ymin": -1,
+            "ymax": 5,
+            "shade": {
+              "fn1": "-0.25*x**2 + 1.2*x + 2.2",
+              "fn2": "0.35*x + 0.4",
+              "x0": 0.0,
+              "x1": 3.5
+            },
+            "point_labels": [
+              {
+                "x": 2.0,
+                "y": 3.6,
+                "label": "$y=f(x)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "An architect is designing a swimming pool whose floor depth varies according to $d(x,y)=1+0.2x+0.1y$ (meters) over a rectangular footprint $0\\leq x\\leq10$, $0\\leq y\\leq5$ (meters). Set up and evaluate the double integral for the total volume of water needed to fill the pool, then find the average depth by dividing by the pool's surface area.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "A capstone applied double-integral problem",
+          "cross_lesson": "1.01 Precalculus Review for Calculus",
+          "answer": "$V=\\int_0^{10}\\int_0^5(1+0.2x+0.1y)\\,dy\\,dx$. Inner: $\\int_0^5(1+0.2x+0.1y)\\,dy=5+x+1.25=6.25+x$. Outer: $\\int_0^{10}(6.25+x)\\,dx=\\left[6.25x+\\frac{x^2}{2}\\right]_0^{10}=62.5+50=112.5$ m$^3$. Surface area $=10\\times5=50$ m$^2$. Average depth $=\\frac{112.5}{50}=2.25$ m.",
+          "explanation": "$V=\\int_0^{10}\\int_0^5(1+0.2x+0.1y)\\,dy\\,dx$. Inner: $\\int_0^5(1+0.2x+0.1y)\\,dy=5+x+1.25=6.25+x$. Outer: $\\int_0^{10}(6.25+x)\\,dx=\\left[6.25x+\\frac{x^2}{2}\\right]_0^{10}=62.5+50=112.5$ m$^3$. Surface area $=10\\times5=50$ m$^2$. Average depth $=\\frac{112.5}{50}=2.25$ m."
+        },
+        {
+          "q": "For the double integral $\\iint_D(2x+y)\\,dA$ where $D$ is the region bounded by $y=x^2$ and $y=x$, complete each step:",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "A capstone applied double-integral problem",
+          "cross_lesson": "10.01 Calculus with Parametric and Polar Curves",
+          "parts": [
+            "Find the intersection points of the two curves to determine the bounds.",
+            "Set up the iterated integral with $x$ as the outer variable.",
+            "Evaluate the integral."
+          ],
+          "cols": 1,
+          "answers": [
+            "$x^2=x$ gives $x=0,1$. On $[0,1]$, $x\\geq x^2$, so $x^2\\leq y\\leq x$.",
+            "$\\iint_D(2x+y)\\,dA=\\int_0^1\\int_{x^2}^{x}(2x+y)\\,dy\\,dx$.",
+            "Inner: $\\left[2xy+\\frac{y^2}{2}\\right]_{x^2}^{x}=\\left(2x^2+\\frac{x^2}{2}\\right)-\\left(2x^3+\\frac{x^4}{2}\\right)=\\frac{5x^2}{2}-2x^3-\\frac{x^4}{2}$. Outer: $\\int_0^1\\left(\\frac{5x^2}{2}-2x^3-\\frac{x^4}{2}\\right)dx=\\frac{5}{6}-\\frac{1}{2}-\\frac{1}{10}=\\frac{25-15-3}{30}=\\frac{7}{30}$."
+          ],
+          "answer": "(a) $x^2=x$ gives $x=0,1$. On $[0,1]$, $x\\geq x^2$, so $x^2\\leq y\\leq x$.; (b) $\\iint_D(2x+y)\\,dA=\\int_0^1\\int_{x^2}^{x}(2x+y)\\,dy\\,dx$.; (c) Inner: $\\left[2xy+\\frac{y^2}{2}\\right]_{x^2}^{x}=\\left(2x^2+\\frac{x^2}{2}\\right)-\\left(2x^3+\\frac{x^4}{2}\\right)=\\frac{5x^2}{2}-2x^3-\\frac{x^4}{2}$. Outer: $\\int_0^1\\left(\\frac{5x^2}{2}-2x^3-\\frac{x^4}{2}\\right)dx=\\frac{5}{6}-\\frac{1}{2}-\\frac{1}{10}=\\frac{25-15-3}{30}=\\frac{7}{30}$.",
+          "explanation": "(a) $x^2=x$ gives $x=0,1$. On $[0,1]$, $x\\geq x^2$, so $x^2\\leq y\\leq x$.; (b) $\\iint_D(2x+y)\\,dA=\\int_0^1\\int_{x^2}^{x}(2x+y)\\,dy\\,dx$.; (c) Inner: $\\left[2xy+\\frac{y^2}{2}\\right]_{x^2}^{x}=\\left(2x^2+\\frac{x^2}{2}\\right)-\\left(2x^3+\\frac{x^4}{2}\\right)=\\frac{5x^2}{2}-2x^3-\\frac{x^4}{2}$. Outer: $\\int_0^1\\left(\\frac{5x^2}{2}-2x^3-\\frac{x^4}{2}\\right)dx=\\frac{5}{6}-\\frac{1}{2}-\\frac{1}{10}=\\frac{25-15-3}{30}=\\frac{7}{30}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**2",
+              "x"
+            ],
+            "xmin": -0.3,
+            "xmax": 1.4,
+            "ymin": -0.2,
+            "ymax": 1.4,
+            "width": 220
+          }
+        },
+        {
+          "q": "Evaluate $\\int_{0}^{\\sqrt{\\pi}}\\int_{x}^{\\sqrt{\\pi}} \\sin{\\left(y^{2} \\right)}\\, dy\\, dx$ by reversing the order of integration.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Reversing the order of integration",
+          "cross_lesson": "11.01 Sequences and Series",
+          "answer": "The inner integral has no elementary antiderivative as written. Reversing the order gives $\\int_{0}^{\\sqrt{\\pi}}\\int_{0}^{y} \\sin{\\left(y^{2} \\right)}\\, dx\\, dy$, which evaluates to $1$.",
+          "explanation": "The inner integral has no elementary antiderivative as written. Reversing the order gives $\\int_{0}^{\\sqrt{\\pi}}\\int_{0}^{y} \\sin{\\left(y^{2} \\right)}\\, dx\\, dy$, which evaluates to $1$."
+        },
+        {
+          "q": "Use polar coordinates to evaluate $\\iint_R e^{- x^{2} - y^{2}}\\,dA$, where $R$ is the disk $x^{2} + y^{2} \\leq 9$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Double integrals in polar coordinates",
+          "cross_lesson": "12.01 Convergence Tests",
+          "answer": "With $x=r\\cos\\theta,\\ y=r\\sin\\theta$ and $dA=r\\,dr\\,d\\theta$, the integral becomes elementary; its value is $\\frac{2^{\\frac{189}{271}} \\cdot 3^{\\frac{128}{271}} \\cdot 5^{\\frac{275}{813}} \\cdot 7^{\\frac{97}{271}}}{3}$.",
+          "explanation": "With $x=r\\cos\\theta,\\ y=r\\sin\\theta$ and $dA=r\\,dr\\,d\\theta$, the integral becomes elementary; its value is $\\frac{2^{\\frac{189}{271}} \\cdot 3^{\\frac{128}{271}} \\cdot 5^{\\frac{275}{813}} \\cdot 7^{\\frac{97}{271}}}{3}$."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
           "q": "Evaluate $\\int_0^2 \\int_0^3 (xy^2)\\,dx\\,dy$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Iterated Integrals over Rectangles",
           "choices": [
             "$12$",
             "$18$",
@@ -16,10 +335,14 @@
             "$6$"
           ],
           "correct": 0,
-          "answer": "Factor: $\\left(\\int_0^3 x\\,dx\\right)\\left(\\int_0^2 y^2\\,dy\\right) = [x^2/2]_0^3 [y^3/3]_0^2 = (9/2)(8/3) = 72/6 = 12$."
+          "answer": "Factor: $\\left(\\int_0^3 x\\,dx\\right)\\left(\\int_0^2 y^2\\,dy\\right) = [x^2/2]_0^3 [y^3/3]_0^2 = (9/2)(8/3) = 72/6 = 12$.",
+          "explanation": "Factor: $\\left(\\int_0^3 x\\,dx\\right)\\left(\\int_0^2 y^2\\,dy\\right) = [x^2/2]_0^3 [y^3/3]_0^2 = (9/2)(8/3) = 72/6 = 12$."
         },
         {
           "q": "Evaluate $\\int_0^1 \\int_0^2 (2x + 3y)\\,dy\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Iterated Integrals over Rectangles",
           "choices": [
             "$8$",
             "$6$",
@@ -27,10 +350,14 @@
             "$4$"
           ],
           "correct": 0,
-          "answer": "Inner: $\\int_0^2 (2x + 3y)\\,dy = [2xy + \\frac{3}{2}y^2]_0^2 = 4x + 6$. Outer: $\\int_0^1 (4x + 6)\\,dx = [2x^2 + 6x]_0^1 = 2 + 6 = 8$."
+          "answer": "Inner: $\\int_0^2 (2x + 3y)\\,dy = [2xy + \\frac{3}{2}y^2]_0^2 = 4x + 6$. Outer: $\\int_0^1 (4x + 6)\\,dx = [2x^2 + 6x]_0^1 = 2 + 6 = 8$.",
+          "explanation": "Inner: $\\int_0^2 (2x + 3y)\\,dy = [2xy + \\frac{3}{2}y^2]_0^2 = 4x + 6$. Outer: $\\int_0^1 (4x + 6)\\,dx = [2x^2 + 6x]_0^1 = 2 + 6 = 8$."
         },
         {
           "q": "What does Fubini's Theorem guarantee for a continuous function $f(x, y)$ over a rectangle $R = [a, b] \\times [c, d]$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Iterated Integrals over Rectangles",
           "choices": [
             "$\\int_a^b \\int_c^d f\\,dy\\,dx = \\int_c^d \\int_a^b f\\,dx\\,dy$",
             "The integral equals the perimeter times height",
@@ -38,15 +365,39 @@
             "The integral must be zero"
           ],
           "correct": 0,
-          "answer": "Fubini's Theorem ensures that the order of integration can be reversed without changing the value: $\\iint_R f\\,dA = \\int_a^b \\int_c^d f\\,dy\\,dx = \\int_c^d \\int_a^b f\\,dx\\,dy$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Double Integrals over General Regions",
-      "questions": [
+          "answer": "Fubini's Theorem ensures that the order of integration can be reversed without changing the value: $\\iint_R f\\,dA = \\int_a^b \\int_c^d f\\,dy\\,dx = \\int_c^d \\int_a^b f\\,dx\\,dy$.",
+          "explanation": "Fubini's Theorem ensures that the order of integration can be reversed without changing the value: $\\iint_R f\\,dA = \\int_a^b \\int_c^d f\\,dy\\,dx = \\int_c^d \\int_a^b f\\,dx\\,dy$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-0.30*x**2 + 1.2*x + 2.2",
+              "0.35*x + 0.4"
+            ],
+            "xmin": -1,
+            "xmax": 5,
+            "ymin": -1,
+            "ymax": 5,
+            "shade": {
+              "fn1": "-0.30*x**2 + 1.2*x + 2.2",
+              "fn2": "0.35*x + 0.4",
+              "x0": 0.0,
+              "x1": 3.5
+            },
+            "point_labels": [
+              {
+                "x": 2.0,
+                "y": 3.4,
+                "label": "$y=f(x)$"
+              }
+            ],
+            "width": 230
+          }
+        },
         {
           "q": "Evaluate $\\iint_D (x + y)\\,dA$ where $D$ is bounded by $y = 0, y = x$, and $x = 1$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Double Integrals over General Regions",
           "choices": [
             "$1/2$",
             "$1/3$",
@@ -54,10 +405,14 @@
             "$1/6$"
           ],
           "correct": 0,
-          "answer": "$\\int_0^1 \\int_0^x (x + y)\\,dy\\,dx = \\int_0^1 [xy + y^2/2]_0^x\\,dx = \\int_0^1 (x^2 + x^2/2)\\,dx = \\int_0^1 \\frac{3}{2}x^2\\,dx = [\\frac{x^3}{2}]_0^1 = 1/2$."
+          "answer": "$\\int_0^1 \\int_0^x (x + y)\\,dy\\,dx = \\int_0^1 [xy + y^2/2]_0^x\\,dx = \\int_0^1 (x^2 + x^2/2)\\,dx = \\int_0^1 \\frac{3}{2}x^2\\,dx = [\\frac{x^3}{2}]_0^1 = 1/2$.",
+          "explanation": "$\\int_0^1 \\int_0^x (x + y)\\,dy\\,dx = \\int_0^1 [xy + y^2/2]_0^x\\,dx = \\int_0^1 (x^2 + x^2/2)\\,dx = \\int_0^1 \\frac{3}{2}x^2\\,dx = [\\frac{x^3}{2}]_0^1 = 1/2$."
         },
         {
           "q": "Reverse the order of integration for $\\int_0^1 \\int_x^1 f(x, y)\\,dy\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Double Integrals over General Regions",
           "choices": [
             "$\\int_0^1 \\int_0^y f(x, y)\\,dx\\,dy$",
             "$\\int_0^1 \\int_y^1 f(x, y)\\,dx\\,dy$",
@@ -65,10 +420,14 @@
             "$\\int_x^1 \\int_0^1 f(x, y)\\,dx\\,dy$"
           ],
           "correct": 0,
-          "answer": "The region is $0 \\leq x \\leq 1$ and $x \\leq y \\leq 1$. In terms of $y$: $0 \\leq y \\leq 1$, and for each $y$, $x$ ranges from $0$ to $y$. Thus $\\int_0^1 \\int_0^y f(x, y)\\,dx\\,dy$."
+          "answer": "The region is $0 \\leq x \\leq 1$ and $x \\leq y \\leq 1$. In terms of $y$: $0 \\leq y \\leq 1$, and for each $y$, $x$ ranges from $0$ to $y$. Thus $\\int_0^1 \\int_0^y f(x, y)\\,dx\\,dy$.",
+          "explanation": "The region is $0 \\leq x \\leq 1$ and $x \\leq y \\leq 1$. In terms of $y$: $0 \\leq y \\leq 1$, and for each $y$, $x$ ranges from $0$ to $y$. Thus $\\int_0^1 \\int_0^y f(x, y)\\,dx\\,dy$."
         },
         {
           "q": "Evaluate $\\int_0^1 \\int_y^1 e^{x^2}\\,dx\\,dy$ by reversing the order of integration.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Double Integrals over General Regions",
           "choices": [
             "$\\frac{e - 1}{2}$",
             "$e - 1$",
@@ -76,15 +435,14 @@
             "$e^2 - 1$"
           ],
           "correct": 0,
-          "answer": "Reversed: $\\int_0^1 \\int_0^x e^{x^2}\\,dy\\,dx = \\int_0^1 x e^{x^2}\\,dx = [\\frac{1}{2}e^{x^2}]_0^1 = \\frac{e - 1}{2}$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Double Integrals in Polar Coordinates",
-      "questions": [
+          "answer": "Reversed: $\\int_0^1 \\int_0^x e^{x^2}\\,dy\\,dx = \\int_0^1 x e^{x^2}\\,dx = [\\frac{1}{2}e^{x^2}]_0^1 = \\frac{e - 1}{2}$.",
+          "explanation": "Reversed: $\\int_0^1 \\int_0^x e^{x^2}\\,dy\\,dx = \\int_0^1 x e^{x^2}\\,dx = [\\frac{1}{2}e^{x^2}]_0^1 = \\frac{e - 1}{2}$."
+        },
         {
           "q": "What is the area element $dA$ in polar coordinates?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Double Integrals in Polar Coordinates",
           "choices": [
             "$dA = r\\,dr\\,d\\theta$",
             "$dA = dr\\,d\\theta$",
@@ -92,10 +450,14 @@
             "$dA = \\frac{1}{r}\\,dr\\,d\\theta$"
           ],
           "correct": 0,
-          "answer": "The Jacobian factor for polar coordinates is $r$, so the infinitesimal area element is $dA = r\\,dr\\,d\\theta$."
+          "answer": "The Jacobian factor for polar coordinates is $r$, so the infinitesimal area element is $dA = r\\,dr\\,d\\theta$.",
+          "explanation": "The Jacobian factor for polar coordinates is $r$, so the infinitesimal area element is $dA = r\\,dr\\,d\\theta$."
         },
         {
           "q": "Evaluate $\\iint_R (x^2 + y^2)\\,dA$ over the disk $x^2 + y^2 \\leq 4$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Double Integrals in Polar Coordinates",
           "choices": [
             "$8\\pi$",
             "$16\\pi$",
@@ -103,10 +465,19 @@
             "$32\\pi$"
           ],
           "correct": 0,
-          "answer": "In polar: $x^2 + y^2 = r^2$. Bounds: $0 \\leq r \\leq 2, 0 \\leq \\theta \\leq 2\\pi$. $\\int_0^{2\\pi} \\int_0^2 r^2 (r\\,dr)\\,d\\theta = 2\\pi \\int_0^2 r^3\\,dr = 2\\pi [r^4/4]_0^2 = 2\\pi(4) = 8\\pi$."
-        },
+          "answer": "In polar: $x^2 + y^2 = r^2$. Bounds: $0 \\leq r \\leq 2, 0 \\leq \\theta \\leq 2\\pi$. $\\int_0^{2\\pi} \\int_0^2 r^2 (r\\,dr)\\,d\\theta = 2\\pi \\int_0^2 r^3\\,dr = 2\\pi [r^4/4]_0^2 = 2\\pi(4) = 8\\pi$.",
+          "explanation": "In polar: $x^2 + y^2 = r^2$. Bounds: $0 \\leq r \\leq 2, 0 \\leq \\theta \\leq 2\\pi$. $\\int_0^{2\\pi} \\int_0^2 r^2 (r\\,dr)\\,d\\theta = 2\\pi \\int_0^2 r^3\\,dr = 2\\pi [r^4/4]_0^2 = 2\\pi(4) = 8\\pi$."
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
         {
           "q": "Evaluate the Gaussian integral $\\int_{-\\infty}^\\infty e^{-x^2}\\,dx$ using polar coordinates.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Double Integrals in Polar Coordinates",
           "choices": [
             "$\\sqrt{\\pi}$",
             "$\\pi$",
@@ -114,15 +485,14 @@
             "$\\pi/2$"
           ],
           "correct": 0,
-          "answer": "$I^2 = \\iint_{\\mathbb{R}^2} e^{-(x^2+y^2)} dA = \\int_0^{2\\pi} d\\theta \\int_0^\\infty r e^{-r^2} dr = 2\\pi [-\\frac{1}{2}e^{-r^2}]_0^\\infty = 2\\pi(1/2) = \\pi \\Rightarrow I = \\sqrt{\\pi}$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Volume, Mass, and Center of Mass",
-      "questions": [
+          "answer": "$I^2 = \\iint_{\\mathbb{R}^2} e^{-(x^2+y^2)} dA = \\int_0^{2\\pi} d\\theta \\int_0^\\infty r e^{-r^2} dr = 2\\pi [-\\frac{1}{2}e^{-r^2}]_0^\\infty = 2\\pi(1/2) = \\pi \\Rightarrow I = \\sqrt{\\pi}$.",
+          "explanation": "$I^2 = \\iint_{\\mathbb{R}^2} e^{-(x^2+y^2)} dA = \\int_0^{2\\pi} d\\theta \\int_0^\\infty r e^{-r^2} dr = 2\\pi [-\\frac{1}{2}e^{-r^2}]_0^\\infty = 2\\pi(1/2) = \\pi \\Rightarrow I = \\sqrt{\\pi}$."
+        },
         {
           "q": "Find the volume under the paraboloid $z = 4 - x^2 - y^2$ above the $xy$-plane.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Volume, Mass, and Center of Mass",
           "choices": [
             "$8\\pi$",
             "$16\\pi$",
@@ -130,10 +500,14 @@
             "$2\\pi$"
           ],
           "correct": 0,
-          "answer": "Region $D$: disk of radius $r = 2$. $V = \\int_0^{2\\pi} \\int_0^2 (4 - r^2) r\\,dr\\,d\\theta = 2\\pi [2r^2 - r^4/4]_0^2 = 2\\pi(8 - 4) = 8\\pi$."
+          "answer": "Region $D$: disk of radius $r = 2$. $V = \\int_0^{2\\pi} \\int_0^2 (4 - r^2) r\\,dr\\,d\\theta = 2\\pi [2r^2 - r^4/4]_0^2 = 2\\pi(8 - 4) = 8\\pi$.",
+          "explanation": "Region $D$: disk of radius $r = 2$. $V = \\int_0^{2\\pi} \\int_0^2 (4 - r^2) r\\,dr\\,d\\theta = 2\\pi [2r^2 - r^4/4]_0^2 = 2\\pi(8 - 4) = 8\\pi$."
         },
         {
           "q": "A lamina occupies the region $[0, 1] \\times [0, 2]$ with density $\\rho(x, y) = 3x$. Find its total mass $M$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Volume, Mass, and Center of Mass",
           "choices": [
             "$3$",
             "$6$",
@@ -141,10 +515,14 @@
             "$4.5$"
           ],
           "correct": 0,
-          "answer": "$M = \\int_0^1 \\int_0^2 3x\\,dy\\,dx = 2 \\int_0^1 3x\\,dx = 2 [\\frac{3}{2}x^2]_0^1 = 3$."
+          "answer": "$M = \\int_0^1 \\int_0^2 3x\\,dy\\,dx = 2 \\int_0^1 3x\\,dx = 2 [\\frac{3}{2}x^2]_0^1 = 3$.",
+          "explanation": "$M = \\int_0^1 \\int_0^2 3x\\,dy\\,dx = 2 \\int_0^1 3x\\,dx = 2 [\\frac{3}{2}x^2]_0^1 = 3$."
         },
         {
           "q": "State the formula for the center of mass $\\bar{x}$ of a lamina with density $\\rho(x, y)$ and total mass $M$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Volume, Mass, and Center of Mass",
           "choices": [
             "$\\bar{x} = \\frac{1}{M}\\iint_D x\\rho(x, y)\\,dA$",
             "$\\bar{x} = \\frac{1}{M}\\iint_D y\\rho(x, y)\\,dA$",
@@ -152,7 +530,266 @@
             "$\\bar{x} = \\frac{M}{\\iint x\\,dA}$"
           ],
           "correct": 0,
-          "answer": "The $x$-coordinate of the center of mass is the moment about the $y$-axis divided by total mass: $\\bar{x} = \\frac{M_y}{M} = \\frac{1}{M}\\iint_D x\\rho(x, y)\\,dA$."
+          "answer": "The $x$-coordinate of the center of mass is the moment about the $y$-axis divided by total mass: $\\bar{x} = \\frac{M_y}{M} = \\frac{1}{M}\\iint_D x\\rho(x, y)\\,dA$.",
+          "explanation": "The $x$-coordinate of the center of mass is the moment about the $y$-axis divided by total mass: $\\bar{x} = \\frac{M_y}{M} = \\frac{1}{M}\\iint_D x\\rho(x, y)\\,dA$."
+        },
+        {
+          "q": "Consider the region bounded by the curves $y = x^2$ and $y = 4$. This region is revolved around the line $y = 5$ to form a solid. A cylindrical hole is drilled through the center of this solid, perpendicular to the axis of revolution. The radius of the cylindrical hole is $r$. The volume of the material removed by the cylindrical hole is given by $V_{\\mathrm{hole}} = \\pi \\int_a^b (R(x)^2 - r^2) dx$, where $R(x)$ is the outer radius of the solid at a given $x$ and $a, b$ are the limits of integration. Find the value of $a$ and $b$, and the expression for $V_{\\mathrm{hole}}$ in terms of $r$. The question asks for the setup of the integral representing the volume of the material removed.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Iterated Integrals over Rectangles",
+          "choices": [
+            "Limits of integration are -2 and 2; $V_{\\mathrm{hole}} = \\pi \\int_{-2}^2 ((5 - x^2)^2 - r^2) dx$",
+            "Limits of integration are 0 and 4; $V_{\\mathrm{hole}} = \\pi \\int_{0}^4 ((4 - x^2)^2 - r^2) dx$",
+            "Limits of integration are 1 and 4; $V_{\\mathrm{hole}} = \\pi \\int_{1}^4 ((5 - x^2)^2 - r^2) dx$",
+            "Limits of integration are -2 and 2; $V_{\\mathrm{hole}} = \\pi \\int_{-2}^2 ((4 - x^2)^2 - r^2) dx$"
+          ],
+          "correct": 0,
+          "answer": "The region is bounded by $y = x^2$ and $y = 4$. To find the intersection points, we set $x^2 = 4$, which gives $x = \\pm 2$. These are our limits of integration, $a = -2$ and $b = 2$. The region is revolved around the line $y = 5$. The outer radius $R(x)$ is the distance from the axis of revolution ($y=5$) to the outer boundary of the region. The outer boundary is the curve $y = x^2$. So, $R(x) = 5 - x^2$. The inner radius of the cylindrical hole is given as $r$. The volume of the material removed by the cylindrical hole is the integral of the area of the annular cross-section, which is $\\pi (R(x)^2 - r^2)$. Therefore, $V_{\\mathrm{hole}} = \\pi \\int_{-2}^2 ((5 - x^2)^2 - r^2) dx$.",
+          "explanation": "The region is bounded by $y = x^2$ and $y = 4$. To find the intersection points, we set $x^2 = 4$, which gives $x = \\pm 2$. These are our limits of integration, $a = -2$ and $b = 2$. The region is revolved around the line $y = 5$. The outer radius $R(x)$ is the distance from the axis of revolution ($y=5$) to the outer boundary of the region. The outer boundary is the curve $y = x^2$. So, $R(x) = 5 - x^2$. The inner radius of the cylindrical hole is given as $r$. The volume of the material removed by the cylindrical hole is the integral of the area of the annular cross-section, which is $\\pi (R(x)^2 - r^2)$. Therefore, $V_{\\mathrm{hole}} = \\pi \\int_{-2}^2 ((5 - x^2)^2 - r^2) dx$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*x",
+              "4"
+            ],
+            "xmin": -3.0,
+            "xmax": 3.0,
+            "ymin": -1.0,
+            "ymax": 5.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": -2.0,
+                "y": 4.0,
+                "label": "(-2, 4)"
+              },
+              {
+                "x": 2.0,
+                "y": 4.0,
+                "label": "(2, 4)"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Consider the solid $E$ bounded by the surfaces $z = x^2 + y^2$ and $z = 8 - x^2 - y^2$. Calculate the volume of this solid using a triple integral by first transforming to cylindrical coordinates. Express your answer in terms of $\\pi$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Double Integrals over General Regions",
+          "choices": [
+            "$\\frac{16\\pi}{3}$",
+            "$\\frac{32\\pi}{3}$",
+            "$16\\pi$",
+            "$\\frac{64\\pi}{3}$"
+          ],
+          "correct": 1,
+          "answer": "The solid $E$ is bounded below by the paraboloid $z = x^2 + y^2$ and above by the paraboloid $z = 8 - x^2 - y^2$. To find the intersection of these two surfaces, we set them equal: $x^2 + y^2 = 8 - x^2 - y^2$, which simplifies to $2(x^2 + y^2) = 8$, or $x^2 + y^2 = 4$. This is a circle of radius 2 in the $xy$-plane. In cylindrical coordinates, $x = r \\cos(\\theta)$, $y = r \\sin(\\theta)$, and $z = z$. The equations of the surfaces become $z = r^2$ and $z = 8 - r^2$. The intersection occurs at $r^2 = 8 - r^2$, so $2r^2 = 8$, which gives $r^2 = 4$, and thus $r = 2$. The range for $\\theta$ is $0 \\leq \\theta \\leq 2\\pi$. The range for $z$ is $r^2 \\leq z \\leq 8 - r^2$. The volume element in cylindrical coordinates is $dV = r \\, dz \\, dr \\, d\\theta$. The volume $V$ is given by the triple integral: $V = \\int_0^{2\\pi} \\int_0^2 \\int_{r^2}^{8-r^2} r \\, dz \\, dr \\, d\\theta$ First, integrate with respect to $z$: $\\int_{r^2}^{8-r^2} r \\, dz = r [z]_{r^2}^{8-r^2} = r (8-r^2 - r^2) = r(8 - 2r^2) = 8r - 2r^3$ Next, integrate with respect to $r$: $\\int_0^2 (8r - 2r^3) \\, dr = \\left[ 4r^2 - \\frac{1}{2}r^4 \\right]_0^2 = (4(2^2) - \\frac{1}{2}(2^4)) - (0) = (16 - \\frac{1}{2}(16)) = 16 - 8 = 8$ Finally, integrate with respect to $\\theta$: $V = \\int_0^{2\\pi} 8 \\, d\\theta = 8 [\\theta]_0^{2\\pi} = 8(2\\pi - 0) = 16\\pi$ Therefore, the volume of the solid is $16\\pi$.",
+          "explanation": "The solid $E$ is bounded below by the paraboloid $z = x^2 + y^2$ and above by the paraboloid $z = 8 - x^2 - y^2$. To find the intersection of these two surfaces, we set them equal: $x^2 + y^2 = 8 - x^2 - y^2$, which simplifies to $2(x^2 + y^2) = 8$, or $x^2 + y^2 = 4$. This is a circle of radius 2 in the $xy$-plane. In cylindrical coordinates, $x = r \\cos(\\theta)$, $y = r \\sin(\\theta)$, and $z = z$. The equations of the surfaces become $z = r^2$ and $z = 8 - r^2$. The intersection occurs at $r^2 = 8 - r^2$, so $2r^2 = 8$, which gives $r^2 = 4$, and thus $r = 2$. The range for $\\theta$ is $0 \\leq \\theta \\leq 2\\pi$. The range for $z$ is $r^2 \\leq z \\leq 8 - r^2$. The volume element in cylindrical coordinates is $dV = r \\, dz \\, dr \\, d\\theta$. The volume $V$ is given by the triple integral: $V = \\int_0^{2\\pi} \\int_0^2 \\int_{r^2}^{8-r^2} r \\, dz \\, dr \\, d\\theta$ First, integrate with respect to $z$: $\\int_{r^2}^{8-r^2} r \\, dz = r [z]_{r^2}^{8-r^2} = r (8-r^2 - r^2) = r(8 - 2r^2) = 8r - 2r^3$ Next, integrate with respect to $r$: $\\int_0^2 (8r - 2r^3) \\, dr = \\left[ 4r^2 - \\frac{1}{2}r^4 \\right]_0^2 = (4(2^2) - \\frac{1}{2}(2^4)) - (0) = (16 - \\frac{1}{2}(16)) = 16 - 8 = 8$ Finally, integrate with respect to $\\theta$: $V = \\int_0^{2\\pi} 8 \\, d\\theta = 8 [\\theta]_0^{2\\pi} = 8(2\\pi - 0) = 16\\pi$ Therefore, the volume of the solid is $16\\pi$."
+        },
+        {
+          "q": "The figure shows the region $R$ bounded by the curves $y = x^2$ and $y = 4$. Which of the following double integrals represents the area of region $R$ using the order of integration $dy dx$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Double Integrals in Polar Coordinates",
+          "choices": [
+            "$\\int_{-2}^{2} \\int_{x^2}^{4} dy dx$",
+            "$\\int_{-2}^{2} \\int_{4}^{x^2} dy dx$",
+            "$\\int_{0}^{4} \\int_{-\\sqrt{y}}^{\\sqrt{y}} dy dx$",
+            "$\\int_{0}^{4} \\int_{-\\sqrt{y}}^{\\sqrt{y}} dx dy$"
+          ],
+          "correct": 0,
+          "answer": "The region $R$ is bounded above by $y=4$ and below by $y=x^2$. To find the limits for $x$, we find the intersection points of the two curves: $x^2 = 4 \\Rightarrow x = \\pm 2$. Thus, the region is defined for $x$ from $-2$ to $2$. When integrating with respect to $y$ first ($dy dx$), the inner integral goes from the lower curve to the upper curve, so from $y=x^2$ to $y=4$. The outer integral is over the range of $x$, which is $-2$ to $2$. Therefore, the double integral representing the area is $\\int_{-2}^{2} \\int_{x^2}^{4} dy dx$.",
+          "explanation": "The region $R$ is bounded above by $y=4$ and below by $y=x^2$. To find the limits for $x$, we find the intersection points of the two curves: $x^2 = 4 \\Rightarrow x = \\pm 2$. Thus, the region is defined for $x$ from $-2$ to $2$. When integrating with respect to $y$ first ($dy dx$), the inner integral goes from the lower curve to the upper curve, so from $y=x^2$ to $y=4$. The outer integral is over the range of $x$, which is $-2$ to $2$. Therefore, the double integral representing the area is $\\int_{-2}^{2} \\int_{x^2}^{4} dy dx$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*x",
+              "4"
+            ],
+            "xmin": -3.0,
+            "xmax": 3.0,
+            "ymin": -1.0,
+            "ymax": 5.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": -2.0,
+                "y": 4.0,
+                "label": "(-2, 4)"
+              },
+              {
+                "x": 2.0,
+                "y": 4.0,
+                "label": "(2, 4)"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Iterated integral over tetrahedron $x+y+z\\leq1, x,y,z\\geq0$: volume = $1/6$. The integral $\\iiint x\\,dV=$",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Volume, Mass, and Center of Mass",
+          "choices": [
+            "$1/6$",
+            "$1/24$",
+            "$1/12$",
+            "$1/8$"
+          ],
+          "correct": 1,
+          "answer": "By symmetry $\\iiint x=\\iiint y=\\iiint z$; and $\\iiint(x+y+z)=3\\iiint x$; by integration $\\iiint(x+y+z)dV=1/8$... actually $\\iiint x\\,dV=1/24$ (standard result).",
+          "explanation": "By symmetry $\\iiint x=\\iiint y=\\iiint z$; and $\\iiint(x+y+z)=3\\iiint x$; by integration $\\iiint(x+y+z)dV=1/8$... actually $\\iiint x\\,dV=1/24$ (standard result)."
+        },
+        {
+          "q": "The region between $y = 2 x$ and $y = x^{3}$ in the first quadrant is revolved about the $x$-axis. Find the volume.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Iterated integrals over rectangles",
+          "choices": [
+            "$\\frac{64 \\sqrt{2} \\pi}{105}$",
+            "$\\frac{16 \\sqrt{2} \\pi}{15}$",
+            "$\\frac{32 \\sqrt{2}}{21}$",
+            "$\\frac{32 \\sqrt{2} \\pi}{21}$"
+          ],
+          "correct": 3,
+          "answer": "The curves meet at $x = 0$ and $x = \\sqrt{2}$. Washers: $V = \\pi \\int_{0}^{\\sqrt{2}} \\left(- x^{6} + 4 x^{2}\\right)\\, dx$ $=$ $\\frac{32 \\sqrt{2} \\pi}{21}$.",
+          "explanation": "The curves meet at $x = 0$ and $x = \\sqrt{2}$. Washers: $V = \\pi \\int_{0}^{\\sqrt{2}} \\left(- x^{6} + 4 x^{2}\\right)\\, dx$ $=$ $\\frac{32 \\sqrt{2} \\pi}{21}$."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "The region between $y = 2 x$ and $y = x^{3}$ in the first quadrant is revolved about the $y$-axis. Find the volume.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Double integrals over general regions",
+          "choices": [
+            "$\\frac{32 \\sqrt{2} \\pi}{21}$",
+            "$\\frac{8 \\sqrt{2} \\pi}{15}$",
+            "$\\frac{16 \\sqrt{2}}{15}$",
+            "$\\frac{16 \\sqrt{2} \\pi}{15}$"
+          ],
+          "correct": 3,
+          "answer": "The curves meet at $x = 0$ and $x = \\sqrt{2}$. Shells: $V = 2 \\pi \\int_{0}^{\\sqrt{2}} x \\left(- x^{3} + 2 x\\right)\\, dx$ $=$ $\\frac{16 \\sqrt{2} \\pi}{15}$.",
+          "explanation": "The curves meet at $x = 0$ and $x = \\sqrt{2}$. Shells: $V = 2 \\pi \\int_{0}^{\\sqrt{2}} x \\left(- x^{3} + 2 x\\right)\\, dx$ $=$ $\\frac{16 \\sqrt{2} \\pi}{15}$.",
+          "cross_lesson": "10.01 Calculus with Parametric and Polar Curves"
+        },
+        {
+          "q": "The region between $y = 3 x$ and $y = x^{2}$ in the first quadrant is revolved about the $x$-axis. Find the volume.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Reversing the order of integration",
+          "choices": [
+            "$\\frac{162 \\pi}{5}$",
+            "$\\frac{81 \\pi}{10}$",
+            "$\\frac{27 \\pi}{2}$",
+            "$\\frac{162}{5}$"
+          ],
+          "correct": 0,
+          "answer": "The curves meet at $x = 0$ and $x = 3$. Washers: $V = \\pi \\int_{0}^{3} \\left(- x^{4} + 9 x^{2}\\right)\\, dx$ $=$ $\\frac{162 \\pi}{5}$.",
+          "explanation": "The curves meet at $x = 0$ and $x = 3$. Washers: $V = \\pi \\int_{0}^{3} \\left(- x^{4} + 9 x^{2}\\right)\\, dx$ $=$ $\\frac{162 \\pi}{5}$.",
+          "cross_lesson": "11.01 Sequences and Series"
+        },
+        {
+          "q": "The region between $y = 2 x$ and $y = x^{2}$ in the first quadrant is revolved about the $y$-axis. Find the volume.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Double integrals in polar coordinates",
+          "choices": [
+            "$\\frac{8 \\pi}{3}$",
+            "$\\frac{64 \\pi}{15}$",
+            "$\\frac{4 \\pi}{3}$",
+            "$\\frac{8}{3}$"
+          ],
+          "correct": 0,
+          "answer": "The curves meet at $x = 0$ and $x = 2$. Shells: $V = 2 \\pi \\int_{0}^{2} x \\left(- x^{2} + 2 x\\right)\\, dx$ $=$ $\\frac{8 \\pi}{3}$.",
+          "explanation": "The curves meet at $x = 0$ and $x = 2$. Shells: $V = 2 \\pi \\int_{0}^{2} x \\left(- x^{2} + 2 x\\right)\\, dx$ $=$ $\\frac{8 \\pi}{3}$.",
+          "cross_lesson": "12.01 Convergence Tests"
+        },
+        {
+          "q": "The region between $y = x$ and $y = x^{3}$ in the first quadrant is revolved about the $y$-axis. Find the volume.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Average value over a region",
+          "choices": [
+            "$\\frac{4 \\pi}{21}$",
+            "$\\frac{4 \\pi}{15}$",
+            "$\\frac{2 \\pi}{15}$",
+            "$\\frac{4}{15}$"
+          ],
+          "correct": 1,
+          "answer": "The curves meet at $x = 0$ and $x = 1$. Shells: $V = 2 \\pi \\int_{0}^{1} x \\left(- x^{3} + x\\right)\\, dx$ $=$ $\\frac{4 \\pi}{15}$.",
+          "explanation": "The curves meet at $x = 0$ and $x = 1$. Shells: $V = 2 \\pi \\int_{0}^{1} x \\left(- x^{3} + x\\right)\\, dx$ $=$ $\\frac{4 \\pi}{15}$.",
+          "cross_lesson": "12.02 Power Series and Taylor Series"
+        },
+        {
+          "q": "The double integral over region $D$ of $f=1$ gives:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Mass and center of a region",
+          "choices": [
+            "area of $D$",
+            "perimeter of $D$",
+            "volume",
+            "0"
+          ],
+          "correct": 0,
+          "answer": "Applying Multiple Integrals principles, $\\iint_D 1\\,dA=\\mathrm{Area}(D)$. Therefore, the verified correct option is area of $D$.",
+          "explanation": "Applying Multiple Integrals principles, $\\iint_D 1\\,dA=\\mathrm{Area}(D)$. Therefore, the verified correct option is area of $D$.",
+          "cross_lesson": "13.01 Vectors and Vector-Valued Functions"
+        },
+        {
+          "q": "The region between $y = x$ and $y = x^{2}$ in the first quadrant is revolved about the $y$-axis. Find the volume.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Triple integral setup (a first look)",
+          "choices": [
+            "$\\frac{\\pi}{6}$",
+            "$\\frac{2 \\pi}{15}$",
+            "$\\frac{\\pi}{12}$",
+            "$\\frac{1}{6}$"
+          ],
+          "correct": 0,
+          "answer": "The curves meet at $x = 0$ and $x = 1$. Shells: $V = 2 \\pi \\int_{0}^{1} x \\left(- x^{2} + x\\right)\\, dx$ $=$ $\\frac{\\pi}{6}$.",
+          "explanation": "The curves meet at $x = 0$ and $x = 1$. Shells: $V = 2 \\pi \\int_{0}^{1} x \\left(- x^{2} + x\\right)\\, dx$ $=$ $\\frac{\\pi}{6}$.",
+          "cross_lesson": "14.01 Partial Derivatives and the Gradient"
+        },
+        {
+          "q": "Consider the region $R$ in the first quadrant bounded by the curves $y = \\sqrt{x}$, $y = 0$, and $x = 4$. A solid is formed by revolving $R$ about the line $x = 5$. Determine the volume of this solid using the method of cylindrical shells. The volume can be expressed in the form $V = k\\pi \\int_a^b (5 - x) \\sqrt{x} \\, dx$. Find the value of $k$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Double integrals with a variable upper limit",
+          "choices": [
+            "2",
+            "4/3",
+            "8/3",
+            "16/3"
+          ],
+          "correct": 2,
+          "answer": "The region $R$ is bounded by $y = \\sqrt{x}$, $y = 0$, and $x = 4$. We are revolving this region about the vertical line $x = 5$. We will use the method of cylindrical shells. The radius of a cylindrical shell at a given $x$ is the distance from the axis of revolution $x=5$ to $x$, which is $5 - x$. The height of the shell is the difference in the y-values of the bounding curves, which is $\\sqrt{x} - 0 = \\sqrt{x}$. The thickness of the shell is $dx$. The volume of a single cylindrical shell is $dV = 2\\pi \\times \\mathrm{radius} \\times \\mathrm{height} \\times \\mathrm{thickness} = 2\\pi (5 - x) \\sqrt{x} \\, dx$. The region extends from $x = 0$ to $x = 4$. Therefore, the total volume is given by the integral: $V = \\int_0^4 2\\pi (5 - x) \\sqrt{x} \\, dx$ The problem states the volume can be expressed in the form $V = k\\pi \\int_a^b (5 - x) \\sqrt{x} \\, dx$. Comparing this to our integral, we have $a=0$, $b=4$, and $k=2$. Thus, the value of $k$ is 2.",
+          "explanation": "The region $R$ is bounded by $y = \\sqrt{x}$, $y = 0$, and $x = 4$. We are revolving this region about the vertical line $x = 5$. We will use the method of cylindrical shells. The radius of a cylindrical shell at a given $x$ is the distance from the axis of revolution $x=5$ to $x$, which is $5 - x$. The height of the shell is the difference in the y-values of the bounding curves, which is $\\sqrt{x} - 0 = \\sqrt{x}$. The thickness of the shell is $dx$. The volume of a single cylindrical shell is $dV = 2\\pi \\times \\mathrm{radius} \\times \\mathrm{height} \\times \\mathrm{thickness} = 2\\pi (5 - x) \\sqrt{x} \\, dx$. The region extends from $x = 0$ to $x = 4$. Therefore, the total volume is given by the integral: $V = \\int_0^4 2\\pi (5 - x) \\sqrt{x} \\, dx$ The problem states the volume can be expressed in the form $V = k\\pi \\int_a^b (5 - x) \\sqrt{x} \\, dx$. Comparing this to our integral, we have $a=0$, $b=4$, and $k=2$. Thus, the value of $k$ is 2.",
+          "cross_lesson": "16.01 Vector Fields and Line Integrals"
+        },
+        {
+          "q": "Evaluate $\\int_{0}^{1}\\int_{\\sqrt{y}}^{1} \\sqrt{x^{3} + 1}\\, dx\\, dy$ by reversing the order of integration.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "An applied double-integral problem",
+          "choices": [
+            "$- \\frac{2}{9} + \\frac{4 \\sqrt{2}}{9}$",
+            "$- \\frac{4}{9} + \\frac{8 \\sqrt{2}}{9}$",
+            "$\\frac{4 \\sqrt{2}}{9} + \\frac{7}{9}$",
+            "$- \\frac{1}{9} + \\frac{2 \\sqrt{2}}{9}$"
+          ],
+          "correct": 0,
+          "answer": "The inner integral has no elementary antiderivative as written. Reversing the order gives $\\int_{0}^{1}\\int_{0}^{x^{2}} \\sqrt{x^{3} + 1}\\, dy\\, dx$, which evaluates to $- \\frac{2}{9} + \\frac{4 \\sqrt{2}}{9}$.",
+          "explanation": "The inner integral has no elementary antiderivative as written. Reversing the order gives $\\int_{0}^{1}\\int_{0}^{x^{2}} \\sqrt{x^{3} + 1}\\, dy\\, dx$, which evaluates to $- \\frac{2}{9} + \\frac{4 \\sqrt{2}}{9}$.",
+          "cross_lesson": "2.01 Evaluating Limits"
         }
       ]
     }

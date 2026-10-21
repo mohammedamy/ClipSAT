@@ -3,72 +3,728 @@
   "num": "3.01",
   "slug": "advanced-functions",
   "title": "Advanced Functions",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 3.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Exponential Functions & Growth/Decay",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "A bacterial culture doubles in population every $4$ hours. If the initial count is $500$, what is the population after $14$ hours?",
-          "choices": [
-            "$4,000$",
-            "$4,000\\sqrt{2}$",
-            "$8,000$",
-            "$16,000$"
-          ],
-          "correct": 1,
-          "answer": "Population formula: $P(t) = 500 \\times 2^{t/4}$. For $t = 14$: $P(14) = 500 \\times 2^{3.5} = 500 \\times 2^3 \\times 2^{0.5} = 500 \\times 8 \\times \\sqrt{2} = 4,000\\sqrt{2}$."
+          "q": "Find the inverse of $f(x)=x^2$ for $x\\geq0$, and explain why the restriction is necessary.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Inverse functions with domain restrictions",
+          "answer": "$f^{-1}(x)=\\sqrt{x}$. The restriction $x\\geq0$ is necessary because $f(x)=x^2$ is not one-to-one over all real numbers (e.g. $f(2)=f(-2)=4$), so it has no inverse function unless the domain is restricted to make it one-to-one.",
+          "explanation": "$f^{-1}(x)=\\sqrt{x}$. The restriction $x\\geq0$ is necessary because $f(x)=x^2$ is not one-to-one over all real numbers (e.g. $f(2)=f(-2)=4$), so it has no inverse function unless the domain is restricted to make it one-to-one.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**2"
+            ],
+            "xmin": 0,
+            "xmax": 3,
+            "ymin": -1,
+            "ymax": 9,
+            "width": 200
+          }
         },
         {
-          "q": "An investment of $2,000$ earns $6\\%$ annual interest compounded continuously. What is the value after $t$ years?",
-          "choices": [
-            "$2000(1.06)^t$",
-            "$2000 e^{0.06t}$",
-            "$2000(1 + \\frac{0.06}{12})^{12t}$",
-            "$2000 e^{6t}$"
-          ],
-          "correct": 1,
-          "answer": "Continuous compounding uses the formula $A = P e^{rt}$. Substituting $P = 2000$ and $r = 0.06$ gives $A = 2000 e^{0.06t}$."
+          "q": "Describe the end behavior of $f(x)=-2x^4+3x^2-1$, as $x\\rightarrow\\infty$ and $x\\rightarrow-\\infty$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "End behavior of polynomial functions",
+          "answer": "Since the leading term is $-2x^4$ (even degree, negative coefficient), both ends of the graph point downward: as $x\\rightarrow\\infty$, $f(x)\\rightarrow-\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow-\\infty$.",
+          "explanation": "Since the leading term is $-2x^4$ (even degree, negative coefficient), both ends of the graph point downward: as $x\\rightarrow\\infty$, $f(x)\\rightarrow-\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow-\\infty$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-2*x**4+3*x**2-1"
+            ],
+            "xmin": -1.8,
+            "xmax": 1.8,
+            "ymin": -12,
+            "ymax": 3,
+            "width": 200
+          }
         },
         {
-          "q": "Solve the exponential equation for $x$: $4^{x+1} = 8^{2x-1}$.",
-          "choices": [
-            "$\\frac{1}{2}$",
-            "$\\frac{5}{4}$",
-            "$\\frac{3}{2}$",
-            "$2$"
-          ],
-          "correct": 1,
-          "answer": "Express with base $2$: $(2^2)^{x+1} = (2^3)^{2x-1} \\Rightarrow 2^{2x+2} = 2^{6x-3}$. Equate exponents: $2x + 2 = 6x - 3 \\Rightarrow 4x = 5 \\Rightarrow x = \\frac{5}{4}$."
+          "q": "Describe the end behavior of $g(x)=3x^5-x^3+2$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "End behavior of polynomial functions",
+          "answer": "Since the leading term is $3x^5$ (odd degree, positive coefficient): as $x\\rightarrow\\infty$, $g(x)\\rightarrow\\infty$; as $x\\rightarrow-\\infty$, $g(x)\\rightarrow-\\infty$.",
+          "explanation": "Since the leading term is $3x^5$ (odd degree, positive coefficient): as $x\\rightarrow\\infty$, $g(x)\\rightarrow\\infty$; as $x\\rightarrow-\\infty$, $g(x)\\rightarrow-\\infty$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "3*x**5-x**3+2"
+            ],
+            "xmin": -1.3,
+            "xmax": 1.3,
+            "ymin": -6,
+            "ymax": 8,
+            "width": 200
+          }
+        },
+        {
+          "q": "Find the vertical and horizontal asymptotes of $f(x)=\\frac{2x+1}{x-3}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Rational functions: asymptotes and holes",
+          "answer": "Vertical asymptote: where the denominator is zero: $x=3$. Horizontal asymptote: since numerator and denominator have the same degree, the asymptote is the ratio of leading coefficients: $y=\\frac{2}{1}=2$.",
+          "explanation": "Vertical asymptote: where the denominator is zero: $x=3$. Horizontal asymptote: since numerator and denominator have the same degree, the asymptote is the ratio of leading coefficients: $y=\\frac{2}{1}=2$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "(2*x+1)/(x-3)"
+            ],
+            "xmin": -2,
+            "xmax": 8,
+            "ymin": -10,
+            "ymax": 10,
+            "width": 200
+          }
+        },
+        {
+          "q": "Determine whether $f(x)=x^4-3x^2$ is even, odd, or neither.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Even, odd, and periodic function classification",
+          "answer": "$f(-x)=(-x)^4-3(-x)^2=x^4-3x^2=f(x)$. Since $f(-x)=f(x)$, the function is even.",
+          "explanation": "$f(-x)=(-x)^4-3(-x)^2=x^4-3x^2=f(x)$. Since $f(-x)=f(x)$, the function is even.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**4-3*x**2"
+            ],
+            "xmin": -2.2,
+            "xmax": 2.2,
+            "ymin": -3,
+            "ymax": 5,
+            "width": 200
+          }
+        },
+        {
+          "q": "A quartic function $f(x)=x^4-5x^2+4$ can be treated as a quadratic in $x^2$. Find all real zeros.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Finding zeros of higher-degree functions graphically and algebraically",
+          "answer": "Let $u=x^2$: $u^2-5u+4=0$, factoring to $(u-1)(u-4)=0$, so $u=1$ or $u=4$. Since $u=x^2$: $x^2=1$ gives $x=\\pm1$; $x^2=4$ gives $x=\\pm2$. All real zeros: $x=-2,-1,1,2$.",
+          "explanation": "Let $u=x^2$: $u^2-5u+4=0$, factoring to $(u-1)(u-4)=0$, so $u=1$ or $u=4$. Since $u=x^2$: $x^2=1$ gives $x=\\pm1$; $x^2=4$ gives $x=\\pm2$. All real zeros: $x=-2,-1,1,2$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**4-5*x**2+4"
+            ],
+            "xmin": -2.5,
+            "xmax": 2.5,
+            "ymin": -3,
+            "ymax": 6,
+            "width": 200
+          }
+        },
+        {
+          "q": "Explain why $f(x)=\\frac{1}{x}$ is symmetric about the origin, and state whether it is even, odd, or neither.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Symmetry and transformations of rational functions",
+          "answer": "$f(-x)=\\frac{1}{-x}=-\\frac{1}{x}=-f(x)$. Since $f(-x)=-f(x)$, the function is odd, meaning its graph has point symmetry about the origin — rotating the graph $180^\\circ$ about the origin maps it onto itself.",
+          "explanation": "$f(-x)=\\frac{1}{-x}=-\\frac{1}{x}=-f(x)$. Since $f(-x)=-f(x)$, the function is odd, meaning its graph has point symmetry about the origin — rotating the graph $180^\\circ$ about the origin maps it onto itself.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "1/x"
+            ],
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 200
+          }
         }
       ]
     },
     {
-      "heading": "Section 2: Logarithmic Laws & Equations",
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "Solve for $x$: $\\log_2(x) + \\log_2(x - 2) = 3$.",
-          "choices": [
-            "$4$",
-            "$2$",
-            "$-2$",
-            "$4$ and $-2$"
-          ],
-          "correct": 0,
-          "answer": "Combine logs: $\\log_2(x(x - 2)) = 3 \\Rightarrow x^2 - 2x = 2^3 = 8 \\Rightarrow x^2 - 2x - 8 = 0 \\Rightarrow (x - 4)(x + 2) = 0$. Since $\\log_2(x)$ requires $x > 0$, the only valid solution is $x = 4$."
+          "q": "The graph of $y=\\sqrt{x}$ is shifted 2 units right, stretched vertically by a factor of 3, and shifted 1 unit down. Write the equation of the resulting function.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Finding a function's formula from a description of transformations",
+          "answer": "Shifting right by 2 replaces $x$ with $x-2$: $\\sqrt{x-2}$. Vertical stretch by 3: $3\\sqrt{x-2}$. Shift down 1: $y=3\\sqrt{x-2}-1$.",
+          "explanation": "Shifting right by 2 replaces $x$ with $x-2$: $\\sqrt{x-2}$. Vertical stretch by 3: $3\\sqrt{x-2}$. Shift down 1: $y=3\\sqrt{x-2}-1$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "sqrt(x)"
+            ],
+            "xmin": -1,
+            "xmax": 5,
+            "ymin": -1,
+            "ymax": 4,
+            "width": 200
+          }
         },
         {
-          "q": "Which of the following is equivalent to $\\frac{\\ln 25}{\\ln 5}$?",
+          "q": "This question has three parts. A function is given by $f(x)=\\frac{2x^2-8}{x^2-x-6}$. (a) Factor the numerator and denominator completely. (b) Identify any holes and vertical asymptotes. (c) State the horizontal asymptote.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "A multi-part rational function analysis problem",
+          "answer": "(a) Numerator: $2x^2-8=2(x^2-4)=2(x-2)(x+2)$. Denominator: $x^2-x-6=(x-3)(x+2)$. (b) The factor $(x+2)$ cancels, indicating a hole at $x=-2$ (specifically at the point found by substituting into the simplified expression). The remaining denominator factor $(x-3)$ gives a vertical asymptote at $x=3$ (not canceled). (c) Since the numerator and denominator have the same degree (both degree 2), the horizontal asymptote is the ratio of leading coefficients: $y=\\frac{2}{1}=2$.",
+          "explanation": "(a) Numerator: $2x^2-8=2(x^2-4)=2(x-2)(x+2)$. Denominator: $x^2-x-6=(x-3)(x+2)$. (b) The factor $(x+2)$ cancels, indicating a hole at $x=-2$ (specifically at the point found by substituting into the simplified expression). The remaining denominator factor $(x-3)$ gives a vertical asymptote at $x=3$ (not canceled). (c) Since the numerator and denominator have the same degree (both degree 2), the horizontal asymptote is the ratio of leading coefficients: $y=\\frac{2}{1}=2$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "(2*x**2-8)/(x**2-x-6)"
+            ],
+            "xmin": -6,
+            "xmax": 8,
+            "ymin": -10,
+            "ymax": 10,
+            "width": 200
+          }
+        },
+        {
+          "q": "A quadratic function $f(x)=ax^2+bx+c$ has $f(0)=5$, $f(1)=10$, and $f(2)=19$. Find $a$, $b$, and $c$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Finding a quadratic function from a table of values",
+          "answer": "From $f(0)=5$: $c=5$. From $f(1)=10$: $a+b+c=10$, so $a+b=5$. From $f(2)=19$: $4a+2b+c=19$, so $4a+2b=14$, i.e. $2a+b=7$. Subtracting $a+b=5$ from $2a+b=7$: $a=2$, then $b=5-2=3$. Function: $f(x)=2x^2+3x+5$.",
+          "explanation": "From $f(0)=5$: $c=5$. From $f(1)=10$: $a+b+c=10$, so $a+b=5$. From $f(2)=19$: $4a+2b+c=19$, so $4a+2b=14$, i.e. $2a+b=7$. Subtracting $a+b=5$ from $2a+b=7$: $a=2$, then $b=5-2=3$. Function: $f(x)=2x^2+3x+5$."
+        },
+        {
+          "q": "Explain the horizontal line test, and use it to determine whether $f(x)=x^3$ has an inverse function.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Determining if a function has an inverse using the horizontal line test",
+          "answer": "The horizontal line test states that a function has an inverse (is one-to-one) if and only if no horizontal line intersects its graph more than once. For $f(x)=x^3$, every horizontal line $y=k$ intersects the graph exactly once (since every real number has exactly one real cube root), so $f(x)=x^3$ does have an inverse function, namely $f^{-1}(x)=\\sqrt[3]{x}$.",
+          "explanation": "The horizontal line test states that a function has an inverse (is one-to-one) if and only if no horizontal line intersects its graph more than once. For $f(x)=x^3$, every horizontal line $y=k$ intersects the graph exactly once (since every real number has exactly one real cube root), so $f(x)=x^3$ does have an inverse function, namely $f^{-1}(x)=\\sqrt[3]{x}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**3"
+            ],
+            "xmin": -2,
+            "xmax": 2,
+            "ymin": -8,
+            "ymax": 8,
+            "width": 200
+          }
+        },
+        {
+          "q": "Describe the end behavior of $f(x)=-2x^4+3x^2-1$, as $x\\rightarrow\\infty$ and $x\\rightarrow-\\infty$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+          "answer": "Since the leading term is $-2x^4$ (even degree, negative coefficient), both ends of the graph point downward: as $x\\rightarrow\\infty$, $f(x)\\rightarrow-\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow-\\infty$.",
+          "explanation": "Since the leading term is $-2x^4$ (even degree, negative coefficient), both ends of the graph point downward: as $x\\rightarrow\\infty$, $f(x)\\rightarrow-\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow-\\infty$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-2*x**4+3*x**2-1"
+            ],
+            "xmin": -1.8,
+            "xmax": 1.8,
+            "ymin": -12,
+            "ymax": 3,
+            "width": 200
+          }
+        },
+        {
+          "q": "Find the vertical and horizontal asymptotes of $f(x)=\\frac{2x+1}{x-3}$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+          "answer": "Vertical asymptote: where the denominator is zero: $x=3$. Horizontal asymptote: since numerator and denominator have the same degree, the asymptote is the ratio of leading coefficients: $y=\\frac{2}{1}=2$.",
+          "explanation": "Vertical asymptote: where the denominator is zero: $x=3$. Horizontal asymptote: since numerator and denominator have the same degree, the asymptote is the ratio of leading coefficients: $y=\\frac{2}{1}=2$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "(2*x+1)/(x-3)"
+            ],
+            "xmin": -2,
+            "xmax": 8,
+            "ymin": -10,
+            "ymax": 10,
+            "width": 200
+          }
+        },
+        {
+          "q": "Explain why $f(x)=\\frac{1}{x}$ is symmetric about the origin, and state whether it is even, odd, or neither.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+          "answer": "$f(-x)=\\frac{1}{-x}=-\\frac{1}{x}=-f(x)$. Since $f(-x)=-f(x)$, the function is odd, meaning its graph has point symmetry about the origin — rotating the graph $180^\\circ$ about the origin maps it onto itself.",
+          "explanation": "$f(-x)=\\frac{1}{-x}=-\\frac{1}{x}=-f(x)$. Since $f(-x)=-f(x)$, the function is odd, meaning its graph has point symmetry about the origin — rotating the graph $180^\\circ$ about the origin maps it onto itself.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "1/x"
+            ],
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 200
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "This question has three parts. A function is given by $f(x)=\\frac{2x^2-8}{x^2-x-6}$. (a) Factor the numerator and denominator completely. (b) Identify any holes and vertical asymptotes. (c) State the horizontal asymptote.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+          "cross_lesson": "4.01 Advanced Trigonometry",
+          "answer": "(a) Numerator: $2x^2-8=2(x^2-4)=2(x-2)(x+2)$. Denominator: $x^2-x-6=(x-3)(x+2)$. (b) The factor $(x+2)$ cancels, indicating a hole at $x=-2$ (specifically at the point found by substituting into the simplified expression). The remaining denominator factor $(x-3)$ gives a vertical asymptote at $x=3$ (not canceled). (c) Since the numerator and denominator have the same degree (both degree 2), the horizontal asymptote is the ratio of leading coefficients: $y=\\frac{2}{1}=2$.",
+          "explanation": "(a) Numerator: $2x^2-8=2(x^2-4)=2(x-2)(x+2)$. Denominator: $x^2-x-6=(x-3)(x+2)$. (b) The factor $(x+2)$ cancels, indicating a hole at $x=-2$ (specifically at the point found by substituting into the simplified expression). The remaining denominator factor $(x-3)$ gives a vertical asymptote at $x=3$ (not canceled). (c) Since the numerator and denominator have the same degree (both degree 2), the horizontal asymptote is the ratio of leading coefficients: $y=\\frac{2}{1}=2$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "(2*x**2-8)/(x**2-x-6)"
+            ],
+            "xmin": -6,
+            "xmax": 8,
+            "ymin": -10,
+            "ymax": 10,
+            "width": 200
+          }
+        },
+        {
+          "q": "If $f(x)=\\sqrt{x}$ and $g(x)=x-5$, find the domain of $(f\\circ g)(x)$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Composite functions with restrictions",
+          "cross_lesson": "5.01 Pre-Calculus Concepts",
+          "answer": "$(f\\circ g)(x)=\\sqrt{x-5}$, which requires $x-5\\geq0$, so the domain is $x\\geq5$.",
+          "explanation": "$(f\\circ g)(x)=\\sqrt{x-5}$, which requires $x-5\\geq0$, so the domain is $x\\geq5$."
+        },
+        {
+          "q": "If $f(x)=x^2-1$ and $g(x)=\\frac{1}{x}$, find $(f\\circ g)(x)$ and simplify.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Composite functions with restrictions",
+          "cross_lesson": "6.01 Advanced Coordinate Geometry",
+          "answer": "$(f\\circ g)(x)=f\\left(\\frac{1}{x}\\right)=\\left(\\frac{1}{x}\\right)^2-1=\\frac{1}{x^2}-1$.",
+          "explanation": "$(f\\circ g)(x)=f\\left(\\frac{1}{x}\\right)=\\left(\\frac{1}{x}\\right)^2-1=\\frac{1}{x^2}-1$."
+        },
+        {
+          "q": "Find the hole (removable discontinuity) in the graph of $f(x)=\\frac{x^2-4}{x-2}$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Rational functions: asymptotes and holes",
+          "cross_lesson": "7.01 Advanced Plane Geometry",
+          "answer": "Factor: $f(x)=\\frac{(x-2)(x+2)}{x-2}=x+2$ for $x\\neq2$. There is a hole at $x=2$, at the point $(2,4)$ (found by substituting $x=2$ into the simplified expression $x+2$).",
+          "explanation": "Factor: $f(x)=\\frac{(x-2)(x+2)}{x-2}=x+2$ for $x\\neq2$. There is a hole at $x=2$, at the point $(2,4)$ (found by substituting $x=2$ into the simplified expression $x+2$)."
+        },
+        {
+          "q": "Simplify $\\log_3(9)+\\log_3(27)$, using the product rule for logarithms.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Logarithmic functions and their properties",
+          "cross_lesson": "8.01 Statistics, Counting & Probability",
+          "answer": "$\\log_3(9)+\\log_3(27)=\\log_3(9\\times27)=\\log_3(243)=\\log_3(3^5)=5$.",
+          "explanation": "$\\log_3(9)+\\log_3(27)=\\log_3(9\\times27)=\\log_3(243)=\\log_3(3^5)=5$."
+        },
+        {
+          "q": "Solve $\\ln(x)+\\ln(x-3)=\\ln(10)$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Logarithmic functions and their properties",
+          "cross_lesson": "1.01 Advanced Number Theory",
+          "answer": "Combine logs: $\\ln[x(x-3)]=\\ln(10)$, so $x(x-3)=10$, giving $x^2-3x-10=0$. Factor: $(x-5)(x+2)=0$, so $x=5$ or $x=-2$. Since $\\ln(x)$ requires $x>0$, reject $x=-2$. Solution: $x=5$.",
+          "explanation": "Combine logs: $\\ln[x(x-3)]=\\ln(10)$, so $x(x-3)=10$, giving $x^2-3x-10=0$. Factor: $(x-5)(x+2)=0$, so $x=5$ or $x=-2$. Since $\\ln(x)$ requires $x>0$, reject $x=-2$. Solution: $x=5$."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+      "questions": [
+        {
+          "q": "Describe the end behavior of $f(x)=4x^4-x^3$: as $x\\rightarrow\\infty$, $f(x)\\rightarrow$?, and as $x\\rightarrow-\\infty$, $f(x)\\rightarrow$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Composite functions with restrictions",
           "choices": [
-            "$\\ln 5$",
-            "$\\ln 20$",
-            "$2$",
+            "$-\\infty,\\infty$",
+            "$\\infty,-\\infty$",
+            "$-\\infty,-\\infty$",
+            "$\\infty,\\infty$"
+          ],
+          "correct": 3,
+          "answer": "The leading term is $4x^4$ (even degree, positive coefficient), so as $x\\rightarrow\\infty$, $f(x)\\rightarrow\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow\\infty$.",
+          "explanation": "The leading term is $4x^4$ (even degree, positive coefficient), so as $x\\rightarrow\\infty$, $f(x)\\rightarrow\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow\\infty$."
+        },
+        {
+          "q": "Describe the end behavior of $f(x)=-x^3+8x$: as $x\\rightarrow\\infty$, $f(x)\\rightarrow$?, and as $x\\rightarrow-\\infty$, $f(x)\\rightarrow$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Inverse functions with domain restrictions",
+          "choices": [
+            "$\\infty,-\\infty$",
+            "$-\\infty,\\infty$",
+            "$\\infty,\\infty$",
+            "$-\\infty,-\\infty$"
+          ],
+          "correct": 1,
+          "answer": "The leading term is $-x^3$ (odd degree, negative coefficient), so as $x\\rightarrow\\infty$, $f(x)\\rightarrow-\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow\\infty$.",
+          "explanation": "The leading term is $-x^3$ (odd degree, negative coefficient), so as $x\\rightarrow\\infty$, $f(x)\\rightarrow-\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow\\infty$."
+        },
+        {
+          "q": "Describe the end behavior of $f(x)=-4x^4-2x^2$: as $x\\rightarrow\\infty$, $f(x)\\rightarrow$?, and as $x\\rightarrow-\\infty$, $f(x)\\rightarrow$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "End behavior of polynomial functions",
+          "choices": [
+            "$-\\infty,\\infty$",
+            "$\\infty,-\\infty$",
+            "$\\infty,\\infty$",
+            "$-\\infty,-\\infty$"
+          ],
+          "correct": 3,
+          "answer": "The leading term is $-4x^4$ (even degree, negative coefficient), so as $x\\rightarrow\\infty$, $f(x)\\rightarrow-\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow-\\infty$.",
+          "explanation": "The leading term is $-4x^4$ (even degree, negative coefficient), so as $x\\rightarrow\\infty$, $f(x)\\rightarrow-\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow-\\infty$."
+        },
+        {
+          "q": "Describe the end behavior of $f(x)=x^2-2x$: as $x\\rightarrow\\infty$, $f(x)\\rightarrow$?, and as $x\\rightarrow-\\infty$, $f(x)\\rightarrow$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Rational functions: asymptotes and holes",
+          "choices": [
+            "$\\infty,\\infty$",
+            "$-\\infty,-\\infty$",
+            "$-\\infty,\\infty$",
+            "$\\infty,-\\infty$"
+          ],
+          "correct": 0,
+          "answer": "The leading term is $x^2$ (even degree, positive coefficient), so as $x\\rightarrow\\infty$, $f(x)\\rightarrow\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow\\infty$.",
+          "explanation": "The leading term is $x^2$ (even degree, positive coefficient), so as $x\\rightarrow\\infty$, $f(x)\\rightarrow\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow\\infty$."
+        },
+        {
+          "q": "Describe the end behavior of $f(x)=-4x^2+4x$: as $x\\rightarrow\\infty$, $f(x)\\rightarrow$?, and as $x\\rightarrow-\\infty$, $f(x)\\rightarrow$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Logarithmic functions and their properties",
+          "choices": [
+            "$\\infty,\\infty$",
+            "$-\\infty,-\\infty$",
+            "$\\infty,-\\infty$",
+            "$-\\infty,\\infty$"
+          ],
+          "correct": 1,
+          "answer": "The leading term is $-4x^2$ (even degree, negative coefficient), so as $x\\rightarrow\\infty$, $f(x)\\rightarrow-\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow-\\infty$.",
+          "explanation": "The leading term is $-4x^2$ (even degree, negative coefficient), so as $x\\rightarrow\\infty$, $f(x)\\rightarrow-\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow-\\infty$."
+        },
+        {
+          "q": "Describe the end behavior of $f(x)=x^5-x^3$: as $x\\rightarrow\\infty$, $f(x)\\rightarrow$?, and as $x\\rightarrow-\\infty$, $f(x)\\rightarrow$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Even, odd, and periodic function classification",
+          "choices": [
+            "$\\infty,-\\infty$",
+            "$-\\infty,\\infty$",
+            "$-\\infty,-\\infty$",
+            "$\\infty,\\infty$"
+          ],
+          "correct": 0,
+          "answer": "The leading term is $x^5$ (odd degree, positive coefficient), so as $x\\rightarrow\\infty$, $f(x)\\rightarrow\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow-\\infty$.",
+          "explanation": "The leading term is $x^5$ (odd degree, positive coefficient), so as $x\\rightarrow\\infty$, $f(x)\\rightarrow\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow-\\infty$."
+        },
+        {
+          "q": "Find the vertical asymptote of $f(x)=\\frac{x-15}{x+14}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Piecewise-defined functions and continuity",
+          "choices": [
+            "$-13$",
+            "$-15$",
+            "$14$",
+            "$-14$"
+          ],
+          "correct": 3,
+          "answer": "The vertical asymptote occurs where the denominator is zero: $x+14=0$, so $x=-14$.",
+          "explanation": "The vertical asymptote occurs where the denominator is zero: $x+14=0$, so $x=-14$."
+        },
+        {
+          "q": "Find the vertical asymptote of $f(x)=\\frac{x-7}{2x-12}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "A multi-part function transformation and composition problem",
+          "choices": [
+            "$7$",
+            "$-6$",
+            "$6$",
             "$5$"
           ],
           "correct": 2,
-          "answer": "Rewrite numerator: $\\ln 25 = \\ln(5^2) = 2\\ln 5$. Therefore, $\\frac{2\\ln 5}{\\ln 5} = 2$."
+          "answer": "The vertical asymptote occurs where the denominator is zero: $2x-12=0$, so $x=6$.",
+          "explanation": "The vertical asymptote occurs where the denominator is zero: $2x-12=0$, so $x=6$."
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
+        {
+          "q": "Find the vertical asymptote of $f(x)=\\frac{-8x-1}{7x+7}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Finding zeros of higher-degree functions graphically and algebraically",
+          "choices": [
+            "$1$",
+            "$-1$",
+            "$0$",
+            "$-2$"
+          ],
+          "correct": 1,
+          "answer": "The vertical asymptote occurs where the denominator is zero: $7x+7=0$, so $x=-1$.",
+          "explanation": "The vertical asymptote occurs where the denominator is zero: $7x+7=0$, so $x=-1$."
+        },
+        {
+          "q": "Find the vertical asymptote of $f(x)=\\frac{9x-10}{x-7}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Function operations: sum, difference, product, quotient",
+          "choices": [
+            "$-7$",
+            "$7$",
+            "$6$",
+            "$8$"
+          ],
+          "correct": 1,
+          "answer": "The vertical asymptote occurs where the denominator is zero: $x-7=0$, so $x=7$.",
+          "explanation": "The vertical asymptote occurs where the denominator is zero: $x-7=0$, so $x=7$."
+        },
+        {
+          "q": "Find the vertical asymptote of $f(x)=\\frac{5x+4}{-5x-15}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Symmetry and transformations of rational functions",
+          "choices": [
+            "$-4$",
+            "$3$",
+            "$-3$",
+            "$-2$"
+          ],
+          "correct": 2,
+          "answer": "The vertical asymptote occurs where the denominator is zero: $-5x-15=0$, so $x=-3$.",
+          "explanation": "The vertical asymptote occurs where the denominator is zero: $-5x-15=0$, so $x=-3$."
+        },
+        {
+          "q": "Find the vertical asymptote of $f(x)=\\frac{x-12}{7x-14}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Finding a function's formula from a description of transformations",
+          "choices": [
+            "$-2$",
+            "$2$",
+            "$3$",
+            "$1$"
+          ],
+          "correct": 1,
+          "answer": "The vertical asymptote occurs where the denominator is zero: $7x-14=0$, so $x=2$.",
+          "explanation": "The vertical asymptote occurs where the denominator is zero: $7x-14=0$, so $x=2$."
+        },
+        {
+          "q": "Solve $\\ln(x)+\\ln(x-5)=\\ln(55)$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "A multi-part rational function analysis problem",
+          "choices": [
+            "$11$",
+            "$5$",
+            "$10$",
+            "$12$"
+          ],
+          "correct": 0,
+          "answer": "Combine logs: $\\ln[x(x-5)]=\\ln(55)$, so $x(x-5)=55$, giving $x^2-5x-55=0$. Factor: $(x-11)(x-(-5))=0$, so $x=11$ or $x=-5$. Since $\\ln(x)$ requires $x>0$, reject $x=-5$. Solution: $x=11$.",
+          "explanation": "Combine logs: $\\ln[x(x-5)]=\\ln(55)$, so $x(x-5)=55$, giving $x^2-5x-55=0$. Factor: $(x-11)(x-(-5))=0$, so $x=11$ or $x=-5$. Since $\\ln(x)$ requires $x>0$, reject $x=-5$. Solution: $x=11$."
+        },
+        {
+          "q": "Solve $\\ln(x)+\\ln(x-8)=\\ln(32)$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Finding a quadratic function from a table of values",
+          "choices": [
+            "$3$",
+            "$8$",
+            "$4$",
+            "$5$"
+          ],
+          "correct": 2,
+          "answer": "Combine logs: $\\ln[x(x-8)]=\\ln(32)$, so $x(x-8)=32$, giving $x^2-8x-32=0$. Factor: $(x-4)(x-(-8))=0$, so $x=4$ or $x=-8$. Since $\\ln(x)$ requires $x>0$, reject $x=-8$. Solution: $x=4$.",
+          "explanation": "Combine logs: $\\ln[x(x-8)]=\\ln(32)$, so $x(x-8)=32$, giving $x^2-8x-32=0$. Factor: $(x-4)(x-(-8))=0$, so $x=4$ or $x=-8$. Since $\\ln(x)$ requires $x>0$, reject $x=-8$. Solution: $x=4$."
+        },
+        {
+          "q": "The quartic function $f(x)=x^4-5x^2+4$ can be treated as a quadratic in $x^2$. Find all real zeros.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Determining if a function has an inverse using the horizontal line test",
+          "choices": [
+            "$-2,-1,1,2$",
+            "$-1,-2,1,2$",
+            "$1,2$",
+            "$-2,2$"
+          ],
+          "correct": 0,
+          "answer": "Let $u=x^2$: $u^2-5u+4=0$, factoring to $(u-1)(u-4)=0$, so $u=1$ or $u=4$. Since $u=x^2$: $x^2=1$ gives $x=\\pm1$; $x^2=4$ gives $x=\\pm2$. All real zeros: $x=-2,-1,1,2$.",
+          "explanation": "Let $u=x^2$: $u^2-5u+4=0$, factoring to $(u-1)(u-4)=0$, so $u=1$ or $u=4$. Since $u=x^2$: $x^2=1$ gives $x=\\pm1$; $x^2=4$ gives $x=\\pm2$. All real zeros: $x=-2,-1,1,2$."
+        },
+        {
+          "q": "The quartic function $f(x)=x^4-17x^2+16$ can be treated as a quadratic in $x^2$. Find all real zeros.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+          "choices": [
+            "$-1,-4,1,4$",
+            "$1,4$",
+            "$-4,-1,1,4$",
+            "$-4,4$"
+          ],
+          "correct": 2,
+          "answer": "Let $u=x^2$: $u^2-17u+16=0$, factoring to $(u-1)(u-16)=0$, so $u=1$ or $u=16$. Since $u=x^2$: $x^2=1$ gives $x=\\pm1$; $x^2=16$ gives $x=\\pm4$. All real zeros: $x=-4,-1,1,4$.",
+          "explanation": "Let $u=x^2$: $u^2-17u+16=0$, factoring to $(u-1)(u-16)=0$, so $u=1$ or $u=16$. Since $u=x^2$: $x^2=1$ gives $x=\\pm1$; $x^2=16$ gives $x=\\pm4$. All real zeros: $x=-4,-1,1,4$."
+        },
+        {
+          "q": "If $f(x)=-3x+5$ and $g(x)=x^2+5$, find $(f\\circ g)(3)$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+          "choices": [
+            "$-39$",
+            "$-37$",
+            "$-35$",
+            "$14$"
+          ],
+          "correct": 1,
+          "answer": "First, $g(3)=(3)^2+5=14$. Then $f(14)=-3(14)+5=-37$.",
+          "explanation": "First, $g(3)=(3)^2+5=14$. Then $f(14)=-3(14)+5=-37$."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "If $f(x)=2x-1$ and $g(x)=-2x^2$, find $(f\\circ g)(-1)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+          "choices": [
+            "$-7$",
+            "$-2$",
+            "$-3$",
+            "$-5$"
+          ],
+          "correct": 3,
+          "answer": "First, $g(-1)=-2(-1)^2=-2$. Then $f(-2)=2(-2)-1=-5$.",
+          "explanation": "First, $g(-1)=-2(-1)^2=-2$. Then $f(-2)=2(-2)-1=-5$.",
+          "cross_lesson": "7.01 Advanced Plane Geometry"
+        },
+        {
+          "q": "Describe the end behavior of $f(x)=-x^3+8x$: as $x\\rightarrow\\infty$, $f(x)\\rightarrow$?, and as $x\\rightarrow-\\infty$, $f(x)\\rightarrow$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+          "choices": [
+            "$\\infty,-\\infty$",
+            "$-\\infty,\\infty$",
+            "$\\infty,\\infty$",
+            "$-\\infty,-\\infty$"
+          ],
+          "correct": 1,
+          "answer": "The leading term is $-x^3$ (odd degree, negative coefficient), so as $x\\rightarrow\\infty$, $f(x)\\rightarrow-\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow\\infty$.",
+          "explanation": "The leading term is $-x^3$ (odd degree, negative coefficient), so as $x\\rightarrow\\infty$, $f(x)\\rightarrow-\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow\\infty$.",
+          "cross_lesson": "8.01 Statistics, Counting & Probability"
+        },
+        {
+          "q": "Describe the end behavior of $f(x)=4x^5+5x$: as $x\\rightarrow\\infty$, $f(x)\\rightarrow$?, and as $x\\rightarrow-\\infty$, $f(x)\\rightarrow$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+          "choices": [
+            "$-\\infty,-\\infty$",
+            "$\\infty,-\\infty$",
+            "$\\infty,\\infty$",
+            "$-\\infty,\\infty$"
+          ],
+          "correct": 1,
+          "answer": "The leading term is $4x^5$ (odd degree, positive coefficient), so as $x\\rightarrow\\infty$, $f(x)\\rightarrow\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow-\\infty$.",
+          "explanation": "The leading term is $4x^5$ (odd degree, positive coefficient), so as $x\\rightarrow\\infty$, $f(x)\\rightarrow\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow-\\infty$.",
+          "cross_lesson": "1.01 Advanced Number Theory"
+        },
+        {
+          "q": "Describe the end behavior of $f(x)=-3x^2-9x$: as $x\\rightarrow\\infty$, $f(x)\\rightarrow$?, and as $x\\rightarrow-\\infty$, $f(x)\\rightarrow$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+          "choices": [
+            "$-\\infty,\\infty$",
+            "$\\infty,-\\infty$",
+            "$-\\infty,-\\infty$",
+            "$\\infty,\\infty$"
+          ],
+          "correct": 2,
+          "answer": "The leading term is $-3x^2$ (even degree, negative coefficient), so as $x\\rightarrow\\infty$, $f(x)\\rightarrow-\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow-\\infty$.",
+          "explanation": "The leading term is $-3x^2$ (even degree, negative coefficient), so as $x\\rightarrow\\infty$, $f(x)\\rightarrow-\\infty$; as $x\\rightarrow-\\infty$, $f(x)\\rightarrow-\\infty$.",
+          "cross_lesson": "2.01 Advanced Algebra & Systems"
+        },
+        {
+          "q": "Find the vertical asymptote of $f(x)=\\frac{2x+11}{-x-8}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+          "choices": [
+            "$-7$",
+            "$8$",
+            "$-9$",
+            "$-8$"
+          ],
+          "correct": 3,
+          "answer": "The vertical asymptote occurs where the denominator is zero: $-x-8=0$, so $x=-8$.",
+          "explanation": "The vertical asymptote occurs where the denominator is zero: $-x-8=0$, so $x=-8$.",
+          "cross_lesson": "4.01 Advanced Trigonometry"
+        },
+        {
+          "q": "Find the vertical asymptote of $f(x)=\\frac{5x+4}{-5x-15}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+          "choices": [
+            "$-4$",
+            "$3$",
+            "$-3$",
+            "$-2$"
+          ],
+          "correct": 2,
+          "answer": "The vertical asymptote occurs where the denominator is zero: $-5x-15=0$, so $x=-3$.",
+          "explanation": "The vertical asymptote occurs where the denominator is zero: $-5x-15=0$, so $x=-3$.",
+          "cross_lesson": "5.01 Pre-Calculus Concepts"
+        },
+        {
+          "q": "Find the vertical asymptote of $f(x)=\\frac{7x+14}{3x-9}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+          "choices": [
+            "$2$",
+            "$4$",
+            "$-3$",
+            "$3$"
+          ],
+          "correct": 3,
+          "answer": "The vertical asymptote occurs where the denominator is zero: $3x-9=0$, so $x=3$.",
+          "explanation": "The vertical asymptote occurs where the denominator is zero: $3x-9=0$, so $x=3$.",
+          "cross_lesson": "6.01 Advanced Coordinate Geometry"
         },
         {
           "q": "If $\\log_b 3 = x$ and $\\log_b 5 = y$, what is $\\log_b(45)$ in terms of $x$ and $y$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
           "choices": [
             "$2x + y$",
             "$x^2 + y$",
@@ -76,83 +732,9 @@
             "$x + 2y$"
           ],
           "correct": 0,
-          "answer": "Factor $45 = 3^2 \\times 5$. Using log properties: $\\log_b(3^2 \\times 5) = 2\\log_b 3 + \\log_b 5 = 2x + y$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Rational Functions & Asymptotes",
-      "questions": [
-        {
-          "q": "What is the slant (oblique) asymptote of the rational function $f(x) = \\frac{2x^2 + 5x - 3}{x + 1}$?",
-          "choices": [
-            "$y = 2x + 3$",
-            "$y = 2x - 1$",
-            "$y = 2x + 5$",
-            "$y = 2x$"
-          ],
-          "correct": 0,
-          "answer": "Perform polynomial division: $\\frac{2x^2 + 5x - 3}{x + 1} = (2x + 3) - \\frac{6}{x + 1}$. As $x \\to \\pm\\infty$, the remainder approaches zero, giving slant asymptote $y = 2x + 3$."
-        },
-        {
-          "q": "Where does the rational function $g(x) = \\frac{x^2 - 4}{x^2 - x - 2}$ have a removable discontinuity (hole)?",
-          "choices": [
-            "$x = 2$",
-            "$x = -1$",
-            "$x = -2$",
-            "No holes"
-          ],
-          "correct": 0,
-          "answer": "Factor: $\\frac{(x - 2)(x + 2)}{(x - 2)(x + 1)}$. The common factor $(x - 2)$ cancels, indicating a hole at $x = 2$ and a vertical asymptote at $x = -1$."
-        },
-        {
-          "q": "What is the domain of $h(x) = \\ln(x^2 - 9)$?",
-          "choices": [
-            "$(-3, 3)$",
-            "$(-\\infty, -3) \\cup (3, \\infty)$",
-            "$[3, \\infty)$",
-            "$x \\neq \\pm 3$"
-          ],
-          "correct": 1,
-          "answer": "The argument of natural log must be strictly positive: $x^2 - 9 > 0 \\Rightarrow (x - 3)(x + 3) > 0$. This holds for $x < -3$ or $x > 3$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Parametric & Polar Curves",
-      "questions": [
-        {
-          "q": "Eliminate the parameter $t$ in the parametric equations $x = 3\\cos t$ and $y = 3\\sin t$ to find the Cartesian equation.",
-          "choices": [
-            "$x^2 + y^2 = 9$",
-            "$x^2 - y^2 = 9$",
-            "$y = 3x$",
-            "$x + y = 3$"
-          ],
-          "correct": 0,
-          "answer": "Square and add: $x^2 + y^2 = (3\\cos t)^2 + (3\\sin t)^2 = 9(\\cos^2 t + \\sin^2 t) = 9$."
-        },
-        {
-          "q": "A curve is defined by $x(t) = 2t - 1$ and $y(t) = t^2 + 3$. What is $y$ expressed directly as a function of $x$?",
-          "choices": [
-            "$y = \\frac{(x+1)^2}{4} + 3$",
-            "$y = (2x-1)^2 + 3$",
-            "$y = \\frac{x^2 + 1}{2} + 3$",
-            "$y = \\frac{(x-1)^2}{4} + 3$"
-          ],
-          "correct": 0,
-          "answer": "From $x = 2t - 1$, solve for $t$: $t = \\frac{x + 1}{2}$. Substitute into $y$: $y = (\\frac{x + 1}{2})^2 + 3 = \\frac{(x + 1)^2}{4} + 3$."
-        },
-        {
-          "q": "Convert the polar equation $r = 4\\cos\\theta$ into an equivalent Cartesian equation.",
-          "choices": [
-            "$(x - 2)^2 + y^2 = 4$",
-            "$x^2 + (y - 2)^2 = 4$",
-            "$x^2 + y^2 = 4$",
-            "$(x - 4)^2 + y^2 = 16$"
-          ],
-          "correct": 0,
-          "answer": "Multiply both sides by $r$: $r^2 = 4r\\cos\\theta$. Substitute $r^2 = x^2 + y^2$ and $x = r\\cos\\theta$: $x^2 + y^2 = 4x \\Rightarrow x^2 - 4x + 4 + y^2 = 4 \\Rightarrow (x - 2)^2 + y^2 = 4$."
+          "answer": "Factor $45 = 3^2 \\times 5$. Using log properties: $\\log_b(3^2 \\times 5) = 2\\log_b 3 + \\log_b 5 = 2x + y$.",
+          "explanation": "Factor $45 = 3^2 \\times 5$. Using log properties: $\\log_b(3^2 \\times 5) = 2\\log_b 3 + \\log_b 5 = 2x + y$.",
+          "cross_lesson": "7.01 Advanced Plane Geometry"
         }
       ]
     }

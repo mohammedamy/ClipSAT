@@ -3,12 +3,421 @@
   "num": "7.01",
   "slug": "logistic-regression-and-classification",
   "title": "Logistic Regression and Classification",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 7.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: The Odds Ratio and Logit Formulation",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+      "questions": [
+        {
+          "q": "In evaluating a binary classifier, the confusion matrix shows $TP = 60$, $TN = 40$, $FP = 10$, and $FN = 10$. Compute the overall classification accuracy.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Logistic Regression & Classification Practice Exercises",
+          "answer": "Final Answer: $83.3\\%$. Accuracy is the ratio of correct predictions to total samples: $\\mathrm{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{60 + 40}{120} = \\frac{100}{120} = 83.3\\%$.",
+          "explanation": "Accuracy is the ratio of correct predictions to total samples: $\\mathrm{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{60 + 40}{120} = \\frac{100}{120} = 83.3\\%$."
+        },
+        {
+          "q": "In evaluating a binary classifier, the confusion matrix shows $TP = 70$, $TN = 40$, $FP = 10$, and $FN = 10$. Compute the overall classification accuracy.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "The Odds Ratio and Logit Formulation",
+          "answer": "Final Answer: $84.6\\%$. Accuracy is the ratio of correct predictions to total samples: $\\mathrm{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{70 + 40}{130} = \\frac{110}{130} = 84.6\\%$.",
+          "explanation": "Accuracy is the ratio of correct predictions to total samples: $\\mathrm{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{70 + 40}{130} = \\frac{110}{130} = 84.6\\%$.",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*2",
+            "sol_fn": "1.4*x - 5.2 + 5*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        },
+        {
+          "q": "In evaluating a binary classifier, the confusion matrix shows $TP = 45$, $TN = 40$, $FP = 10$, and $FN = 10$. Compute the overall classification accuracy.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Binary Cross-Entropy Loss",
+          "answer": "Final Answer: $81.0\\%$. Accuracy is the ratio of correct predictions to total samples: $\\mathrm{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{45 + 40}{105} = \\frac{85}{105} = 81.0\\%$.",
+          "explanation": "Accuracy is the ratio of correct predictions to total samples: $\\mathrm{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{45 + 40}{105} = \\frac{85}{105} = 81.0\\%$."
+        },
+        {
+          "q": "In evaluating a binary classifier, the confusion matrix shows $TP = 55$, $TN = 40$, $FP = 10$, and $FN = 10$. Compute the overall classification accuracy.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "The Confusion Matrix and Core Metrics",
+          "answer": "Final Answer: $82.6\\%$. Accuracy is the ratio of correct predictions to total samples: $\\mathrm{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{55 + 40}{115} = \\frac{95}{115} = 82.6\\%$.",
+          "explanation": "Accuracy is the ratio of correct predictions to total samples: $\\mathrm{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{55 + 40}{115} = \\frac{95}{115} = 82.6\\%$."
+        },
+        {
+          "q": "A logistic regression model produces a class probability $p = P(y=1|\\mathbf{x}) = 0.30$. Compute the corresponding log-odds (logit) $\\ln\\left(\\frac{p}{1-p}\\right)$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "The $F_1$-Score, Thresholding and ROC-AUC",
+          "answer": "Final Answer: $-0.847$. Odds are $\\frac{p}{1-p} = \\frac{0.30}{0.70} = 0.4286$. Taking natural logarithm: $\\ln(0.4286) = -0.847$.",
+          "explanation": "Odds are $\\frac{p}{1-p} = \\frac{0.30}{0.70} = 0.4286$. Taking natural logarithm: $\\ln(0.4286) = -0.847$."
+        },
+        {
+          "q": "A logistic regression model produces a class probability $p = P(y=1|\\mathbf{x}) = 0.40$. Compute the corresponding log-odds (logit) $\\ln\\left(\\frac{p}{1-p}\\right)$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Logistic Regression & Classification Practice Exercises",
+          "answer": "Final Answer: $-0.405$. Odds are $\\frac{p}{1-p} = \\frac{0.40}{0.60} = 0.6667$. Taking natural logarithm: $\\ln(0.6667) = -0.405$.",
+          "explanation": "Odds are $\\frac{p}{1-p} = \\frac{0.40}{0.60} = 0.6667$. Taking natural logarithm: $\\ln(0.6667) = -0.405$.",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*2",
+            "sol_fn": "1.4*x - 5.2 + 5*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        },
+        {
+          "q": "A logistic regression model produces a class probability $p = P(y=1|\\mathbf{x}) = 0.50$. Compute the corresponding log-odds (logit) $\\ln\\left(\\frac{p}{1-p}\\right)$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "The Odds Ratio and Logit Formulation",
+          "answer": "Final Answer: $0.000$. Odds are $\\frac{p}{1-p} = \\frac{0.50}{0.50} = 1.0000$. Taking natural logarithm: $\\ln(1.0000) = 0.000$.",
+          "explanation": "Odds are $\\frac{p}{1-p} = \\frac{0.50}{0.50} = 1.0000$. Taking natural logarithm: $\\ln(1.0000) = 0.000$."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "A logistic regression model produces a class probability $p = P(y=1|\\mathbf{x}) = 0.60$. Compute the corresponding log-odds (logit) $\\ln\\left(\\frac{p}{1-p}\\right)$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Binary Cross-Entropy Loss",
+          "answer": "Final Answer: $0.405$. Odds are $\\frac{p}{1-p} = \\frac{0.60}{0.40} = 1.5000$. Taking natural logarithm: $\\ln(1.5000) = 0.405$.",
+          "explanation": "Odds are $\\frac{p}{1-p} = \\frac{0.60}{0.40} = 1.5000$. Taking natural logarithm: $\\ln(1.5000) = 0.405$."
+        },
+        {
+          "q": "A logistic regression model produces a class probability $p = P(y=1|\\mathbf{x}) = 0.70$. Compute the corresponding log-odds (logit) $\\ln\\left(\\frac{p}{1-p}\\right)$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "The Confusion Matrix and Core Metrics",
+          "answer": "Final Answer: $0.847$. Odds are $\\frac{p}{1-p} = \\frac{0.70}{0.30} = 2.3333$. Taking natural logarithm: $\\ln(2.3333) = 0.847$.",
+          "explanation": "Odds are $\\frac{p}{1-p} = \\frac{0.70}{0.30} = 2.3333$. Taking natural logarithm: $\\ln(2.3333) = 0.847$."
+        },
+        {
+          "q": "A logistic regression model produces a class probability $p = P(y=1|\\mathbf{x}) = 0.80$. Compute the corresponding log-odds (logit) $\\ln\\left(\\frac{p}{1-p}\\right)$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "The $F_1$-Score, Thresholding and ROC-AUC",
+          "answer": "Final Answer: $1.386$. Odds are $\\frac{p}{1-p} = \\frac{0.80}{0.20} = 4.0000$. Taking natural logarithm: $\\ln(4.0000) = 1.386$.",
+          "explanation": "Odds are $\\frac{p}{1-p} = \\frac{0.80}{0.20} = 4.0000$. Taking natural logarithm: $\\ln(4.0000) = 1.386$.",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*2",
+            "sol_fn": "1.4*x - 5.2 + 5*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        },
+        {
+          "q": "Consider a binary classification problem where the decision boundary is defined by the logistic function $p(x) = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}}$, which represents the probability of a data point $\\mathbf{x} = (x_1, x_2)$ belonging to class 1. The estimated model parameters are $\\beta_0 = -3$, $\\beta_1 = 1$, and $\\beta_2 = -2$. We are interested in the geometric shape of the classification boundary. The classification boundary occurs where $p(x) = 0.5$. Find the equation of this boundary in the $x_1x_2$-plane.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Logistic Regression & Classification Practice Exercises",
+          "answer": "Final Answer: $x_2 = \\frac{1}{2} x_1 - \\frac{3}{2}$. The logistic regression model gives the probability of belonging to class 1 as $p(x) = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}}$. The classification boundary is the set of points where $p(x) = 0.5$. Setting $p(x) = 0.5$, we have: $0.5 = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}}$ This implies: $1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)} = 2$ Therefore: $e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)} = 1$ Taking the natural logarithm of both sides: $-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2) = \\ln(1)$ Since $\\ln(1) = 0$, we get: $\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 = 0$ This is the equation of the linear decision boundary. Substitute the given parameter values: $\\beta_0 = -3$, $\\beta_1 = 1$, and $\\beta_2 = -2$. $-3 + 1 \\cdot x_1 + (-2) \\cdot x_2 = 0$ $-3 + x_1 - 2x_2 = 0$ We need to express this in the form $x_2 = f(x_1)$. $2x_2 = x_1 - 3$ $x_2 = \\frac{1}{2} x_1 - \\frac{3}{2}$ This matches choice A.",
+          "explanation": "The logistic regression model gives the probability of belonging to class 1 as $p(x) = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}}$. The classification boundary is the set of points where $p(x) = 0.5$. Setting $p(x) = 0.5$, we have: $0.5 = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}}$ This implies: $1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)} = 2$ Therefore: $e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)} = 1$ Taking the natural logarithm of both sides: $-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2) = \\ln(1)$ Since $\\ln(1) = 0$, we get: $\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 = 0$ This is the equation of the linear decision boundary. Substitute the given parameter values: $\\beta_0 = -3$, $\\beta_1 = 1$, and $\\beta_2 = -2$. $-3 + 1 \\cdot x_1 + (-2) \\cdot x_2 = 0$ $-3 + x_1 - 2x_2 = 0$ We need to express this in the form $x_2 = f(x_1)$. $2x_2 = x_1 - 3$ $x_2 = \\frac{1}{2} x_1 - \\frac{3}{2}$ This matches choice A."
+        },
+        {
+          "q": "A binary classification model uses a logistic sigmoid function $\\sigma(z) = \\frac{1}{1 + e^{-z}}$. The decision boundary is defined by $\\sigma(z) = 0.5$, where $z = w_1 x_1 + w_0$. For a dataset with two features $x_1$ and $x_2$, the model's linear component is $z = 2x_1 - x_2 + b$. If the classification boundary passes through the point $(x_1, x_2) = (3, 1)$, what is the value of the bias $b$? Show your complete algebraic work.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "The Odds Ratio and Logit Formulation",
+          "answer": "Final Answer: $b = -7$. The logistic sigmoid function is $\\sigma(z) = \\frac{1}{1 + e^{-z}}$. The decision boundary is where $\\sigma(z) = 0.5$. Setting $\\sigma(z) = 0.5$ gives $\\frac{1}{1 + e^{-z}} = 0.5$, which implies $1 = 0.5(1 + e^{-z})$, so $2 = 1 + e^{-z}$, and $e^{-z} = 1$. This occurs when $-z = 0$, or $z = 0$. Therefore, the decision boundary is defined by $z = 0$. The linear component of the model is given by $z = w_1 x_1 + w_2 x_2 + b$. In this problem, $z = 2x_1 - x_2 + b$. Since the decision boundary is $z = 0$, we have $2x_1 - x_2 + b = 0$. The classification boundary passes through the point $(x_1, x_2) = (3, 1)$. Substituting these values into the equation for the decision boundary: $2(3) - 1 + b = 0$ $6 - 1 + b = 0$ $5 + b = 0$ $b = -5$",
+          "explanation": "The logistic sigmoid function is $\\sigma(z) = \\frac{1}{1 + e^{-z}}$. The decision boundary is where $\\sigma(z) = 0.5$. Setting $\\sigma(z) = 0.5$ gives $\\frac{1}{1 + e^{-z}} = 0.5$, which implies $1 = 0.5(1 + e^{-z})$, so $2 = 1 + e^{-z}$, and $e^{-z} = 1$. This occurs when $-z = 0$, or $z = 0$. Therefore, the decision boundary is defined by $z = 0$. The linear component of the model is given by $z = w_1 x_1 + w_2 x_2 + b$. In this problem, $z = 2x_1 - x_2 + b$. Since the decision boundary is $z = 0$, we have $2x_1 - x_2 + b = 0$. The classification boundary passes through the point $(x_1, x_2) = (3, 1)$. Substituting these values into the equation for the decision boundary: $2(3) - 1 + b = 0$ $6 - 1 + b = 0$ $5 + b = 0$ $b = -5$"
+        },
+        {
+          "q": "A spam classification model identifies $TP = 120$ genuine spam emails and $FP = 40$ legitimate emails falsely flagged as spam. What is the precision of this model? Show your complete algebraic work.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Binary Cross-Entropy Loss",
+          "answer": "Final Answer: $75.0\\%$. Precision is the fraction of predicted positive instances that are truly positive: $\\mathrm{Precision} = \\frac{TP}{TP + FP} = \\frac{120}{120 + 40} = \\frac{120}{160} = 75.0\\%$.",
+          "explanation": "Precision is the fraction of predicted positive instances that are truly positive: $\\mathrm{Precision} = \\frac{TP}{TP + FP} = \\frac{120}{120 + 40} = \\frac{120}{160} = 75.0\\%$."
+        },
+        {
+          "q": "A spam classification model identifies $TP = 150$ genuine spam emails and $FP = 50$ legitimate emails falsely flagged as spam. What is the precision of this model? Show your complete algebraic work.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "The Confusion Matrix and Core Metrics",
+          "answer": "Final Answer: $75.0\\%$. Precision is the fraction of predicted positive instances that are truly positive: $\\mathrm{Precision} = \\frac{TP}{TP + FP} = \\frac{150}{150 + 50} = \\frac{150}{200} = 75.0\\%$.",
+          "explanation": "Precision is the fraction of predicted positive instances that are truly positive: $\\mathrm{Precision} = \\frac{TP}{TP + FP} = \\frac{150}{150 + 50} = \\frac{150}{200} = 75.0\\%$."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "A spam classification model identifies $TP = 180$ genuine spam emails and $FP = 60$ legitimate emails falsely flagged as spam. What is the precision of this model? Show your complete algebraic work.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "The $F_1$-Score, Thresholding and ROC-AUC",
+          "cross_lesson": "8.01 PCA and Dimensionality Reduction",
+          "answer": "Final Answer: $75.0\\%$. Precision is the fraction of predicted positive instances that are truly positive: $\\mathrm{Precision} = \\frac{TP}{TP + FP} = \\frac{180}{180 + 60} = \\frac{180}{240} = 75.0\\%$.",
+          "explanation": "Precision is the fraction of predicted positive instances that are truly positive: $\\mathrm{Precision} = \\frac{TP}{TP + FP} = \\frac{180}{180 + 60} = \\frac{180}{240} = 75.0\\%$."
+        },
+        {
+          "q": "A spam classification model identifies $TP = 90$ genuine spam emails and $FP = 30$ legitimate emails falsely flagged as spam. What is the precision of this model? Show your complete algebraic work.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Logistic Regression & Classification Practice Exercises",
+          "cross_lesson": "1.01 Vectors and Embeddings in AI",
+          "answer": "Final Answer: $75.0\\%$. Precision is the fraction of predicted positive instances that are truly positive: $\\mathrm{Precision} = \\frac{TP}{TP + FP} = \\frac{90}{90 + 30} = \\frac{90}{120} = 75.0\\%$.",
+          "explanation": "Precision is the fraction of predicted positive instances that are truly positive: $\\mathrm{Precision} = \\frac{TP}{TP + FP} = \\frac{90}{90 + 30} = \\frac{90}{120} = 75.0\\%$.",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*4",
+            "sol_fn": "1.4*x - 5.2 + 7*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        },
+        {
+          "q": "A spam classification model identifies $TP = 30$ genuine spam emails and $FP = 10$ legitimate emails falsely flagged as spam. What is the precision of this model? Show your complete algebraic work.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "The Odds Ratio and Logit Formulation",
+          "cross_lesson": "2.01 Neural Layer Matrices and Activations",
+          "answer": "Final Answer: $75.0\\%$. Precision is the fraction of predicted positive instances that are truly positive: $\\mathrm{Precision} = \\frac{TP}{TP + FP} = \\frac{30}{30 + 10} = \\frac{30}{40} = 75.0\\%$.",
+          "explanation": "Precision is the fraction of predicted positive instances that are truly positive: $\\mathrm{Precision} = \\frac{TP}{TP + FP} = \\frac{30}{30 + 10} = \\frac{30}{40} = 75.0\\%$."
+        },
+        {
+          "q": "A spam classification model identifies $TP = 60$ genuine spam emails and $FP = 20$ legitimate emails falsely flagged as spam. What is the precision of this model? Show your complete algebraic work.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Binary Cross-Entropy Loss",
+          "cross_lesson": "3.01 Gradient Descent and Optimization",
+          "answer": "Final Answer: $75.0\\%$. Precision is the fraction of predicted positive instances that are truly positive: $\\mathrm{Precision} = \\frac{TP}{TP + FP} = \\frac{60}{60 + 20} = \\frac{60}{80} = 75.0\\%$.",
+          "explanation": "Precision is the fraction of predicted positive instances that are truly positive: $\\mathrm{Precision} = \\frac{TP}{TP + FP} = \\frac{60}{60 + 20} = \\frac{60}{80} = 75.0\\%$."
+        },
+        {
+          "q": "The scatterplot below displays the relationship between the number of hours students spent studying for a test and their scores on that test. The equation of the least-squares regression line is approximately $\\hat{y} = 55.2 + 4.8x$, where $x$ is the number of hours spent studying and $\\hat{y}$ is the predicted test score.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "The Confusion Matrix and Core Metrics",
+          "cross_lesson": "4.01 Conditional Probability and Bayes Rule",
+          "answer": "Final Answer: 4.8. The slope of the least-squares regression line represents the average change in the response variable (test score) for a one-unit increase in the explanatory variable (hours studying). In the given equation $\\hat{y} = 55.2 + 4.8x$, the coefficient of $x$ is 4.8. Therefore, for each additional hour a student studies, their predicted test score increases by an average of 4.8 points.",
+          "explanation": "The slope of the least-squares regression line represents the average change in the response variable (test score) for a one-unit increase in the explanatory variable (hours studying). In the given equation $\\hat{y} = 55.2 + 4.8x$, the coefficient of $x$ is 4.8. Therefore, for each additional hour a student studies, their predicted test score increases by an average of 4.8 points.",
+          "figure": {
+            "type": "plot",
+            "fns": [],
+            "scatter_pts": [
+              [
+                1.0,
+                60.0
+              ],
+              [
+                2.0,
+                65.0
+              ],
+              [
+                3.0,
+                70.0
+              ],
+              [
+                4.0,
+                75.0
+              ],
+              [
+                5.0,
+                80.0
+              ],
+              [
+                6.0,
+                85.0
+              ],
+              [
+                7.0,
+                90.0
+              ]
+            ],
+            "xmin": 0.0,
+            "xmax": 10.0,
+            "ymin": 0.0,
+            "ymax": 10.0,
+            "width": 230
+          }
+        },
+        {
+          "q": "A social scientist is investigating the relationship between the number of hours spent studying per week (X) and the final exam score (Y) for a group of $n=100$ students. The least-squares regression line is given by $\\hat{y} = 55.2 + 8.5x$. The standard error of the slope is $SE_b = 1.2$. The researcher wants to construct a $95\\%$ confidence interval for the true slope of the regression line. What is the value of the t-score used for this confidence interval? Show your complete algebraic work.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "The $F_1$-Score, Thresholding and ROC-AUC",
+          "cross_lesson": "5.01 Distributions and Maximum Likelihood",
+          "answer": "Final Answer: 1.984. The problem asks for the t-score used to construct a $95\\%$ confidence interval for the true slope of a regression line. The degrees of freedom for a simple linear regression are $df = n - 2$, where $n$ is the number of data points. In this case, $n = 100$, so $df = 100 - 2 = 98$. We need to find the t-score such that $95\\%$ of the area under the t-distribution curve with $98$ degrees of freedom is between $-t$ and $t$. This means that $2.5\\%$ of the area is in each tail ($\\alpha/2 = 0.025$). Looking up the t-table or using statistical software for $df = 98$ and $\\alpha/2 = 0.025$, we find the t-score to be approximately $1.984$. The value $1.645$ corresponds to the z-score for $90\\%$ confidence. The value $1.960$ corresponds to the z-score for $95\\%$ confidence, which is often used as an approximation for large sample sizes, but the t-score is more accurate. The value $2.576$ corresponds to the z-score for $99\\%$ confidence.",
+          "explanation": "The problem asks for the t-score used to construct a $95\\%$ confidence interval for the true slope of a regression line. The degrees of freedom for a simple linear regression are $df = n - 2$, where $n$ is the number of data points. In this case, $n = 100$, so $df = 100 - 2 = 98$. We need to find the t-score such that $95\\%$ of the area under the t-distribution curve with $98$ degrees of freedom is between $-t$ and $t$. This means that $2.5\\%$ of the area is in each tail ($\\alpha/2 = 0.025$). Looking up the t-table or using statistical software for $df = 98$ and $\\alpha/2 = 0.025$, we find the t-score to be approximately $1.984$. The value $1.645$ corresponds to the z-score for $90\\%$ confidence. The value $1.960$ corresponds to the z-score for $95\\%$ confidence, which is often used as an approximation for large sample sizes, but the t-score is more accurate. The value $2.576$ corresponds to the z-score for $99\\%$ confidence."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+      "questions": [
+        {
+          "q": "In evaluating a binary classifier, the confusion matrix shows \\( TP = 45 \\), \\( TN = 40 \\), \\( FP = 10 \\), and \\( FN = 10 \\). Compute the overall classification accuracy.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Logistic Regression & Classification Practice Exercises",
+          "choices": [
+            "\\( 81.0\\% \\)",
+            "\\( 81.8\\% \\)",
+            "\\( 52.4\\% \\)",
+            "\\( 13 \\)"
+          ],
+          "correct": 0,
+          "answer": "Accuracy is the ratio of correct predictions to total samples: \\( \\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{45 + 40}{105} = \\frac{85}{105} = 81.0\\% \\).",
+          "explanation": "Accuracy is the ratio of correct predictions to total samples: \\( \\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{45 + 40}{105} = \\frac{85}{105} = 81.0\\% \\)."
+        },
+        {
+          "q": "In evaluating a binary classifier, the confusion matrix shows \\( TP = 50 \\), \\( TN = 40 \\), \\( FP = 10 \\), and \\( FN = 10 \\). Compute the overall classification accuracy.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Logistic Regression & Classification Practice Exercises",
+          "choices": [
+            "\\( 81.8\\% \\)",
+            "\\( 83.3\\% \\)",
+            "\\( 54.5\\% \\)",
+            "\\( 13 \\)"
+          ],
+          "correct": 0,
+          "answer": "Accuracy is the ratio of correct predictions to total samples: \\( \\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{50 + 40}{110} = \\frac{90}{110} = 81.8\\% \\).",
+          "explanation": "Accuracy is the ratio of correct predictions to total samples: \\( \\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{50 + 40}{110} = \\frac{90}{110} = 81.8\\% \\)."
+        },
+        {
+          "q": "In evaluating a binary classifier, the confusion matrix shows \\( TP = 55 \\), \\( TN = 40 \\), \\( FP = 10 \\), and \\( FN = 10 \\). Compute the overall classification accuracy.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Logistic Regression & Classification Practice Exercises",
+          "choices": [
+            "\\( 82.6\\% \\)",
+            "\\( 84.6\\% \\)",
+            "\\( 56.5\\% \\)",
+            "\\( 13 \\)"
+          ],
+          "correct": 0,
+          "answer": "Accuracy is the ratio of correct predictions to total samples: \\( \\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{55 + 40}{115} = \\frac{95}{115} = 82.6\\% \\).",
+          "explanation": "Accuracy is the ratio of correct predictions to total samples: \\( \\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{55 + 40}{115} = \\frac{95}{115} = 82.6\\% \\).",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*3",
+            "sol_fn": "1.4*x - 5.2 + 6*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        },
+        {
+          "q": "In evaluating a binary classifier, the confusion matrix shows \\( TP = 60 \\), \\( TN = 40 \\), \\( FP = 10 \\), and \\( FN = 10 \\). Compute the overall classification accuracy.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Logistic Regression & Classification Practice Exercises",
+          "choices": [
+            "\\( 83.3\\% \\)",
+            "\\( 85.7\\% \\)",
+            "\\( 58.3\\% \\)",
+            "\\( 13 \\)"
+          ],
+          "correct": 0,
+          "answer": "Accuracy is the ratio of correct predictions to total samples: \\( \\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{60 + 40}{120} = \\frac{100}{120} = 83.3\\% \\).",
+          "explanation": "Accuracy is the ratio of correct predictions to total samples: \\( \\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{60 + 40}{120} = \\frac{100}{120} = 83.3\\% \\)."
+        },
+        {
+          "q": "In evaluating a binary classifier, the confusion matrix shows \\( TP = 65 \\), \\( TN = 40 \\), \\( FP = 10 \\), and \\( FN = 10 \\). Compute the overall classification accuracy.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Logistic Regression & Classification Practice Exercises",
+          "choices": [
+            "\\( 84.0\\% \\)",
+            "\\( 86.7\\% \\)",
+            "\\( 60.0\\% \\)",
+            "\\( 13 \\)"
+          ],
+          "correct": 0,
+          "answer": "Accuracy is the ratio of correct predictions to total samples: \\( \\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{65 + 40}{125} = \\frac{105}{125} = 84.0\\% \\).",
+          "explanation": "Accuracy is the ratio of correct predictions to total samples: \\( \\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{65 + 40}{125} = \\frac{105}{125} = 84.0\\% \\)."
+        },
+        {
+          "q": "In evaluating a binary classifier, the confusion matrix shows \\( TP = 70 \\), \\( TN = 40 \\), \\( FP = 10 \\), and \\( FN = 10 \\). Compute the overall classification accuracy.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Logistic Regression & Classification Practice Exercises",
+          "choices": [
+            "\\( 84.6\\% \\)",
+            "\\( 87.5\\% \\)",
+            "\\( 61.5\\% \\)",
+            "\\( 13 \\)"
+          ],
+          "correct": 0,
+          "answer": "Accuracy is the ratio of correct predictions to total samples: \\( \\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{70 + 40}{130} = \\frac{110}{130} = 84.6\\% \\).",
+          "explanation": "Accuracy is the ratio of correct predictions to total samples: \\( \\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{70 + 40}{130} = \\frac{110}{130} = 84.6\\% \\)."
+        },
+        {
+          "q": "A spam classification model identifies \\( TP = 30 \\) genuine spam emails and \\( FP = 10 \\) legitimate emails falsely flagged as spam. What is the precision of this model?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Logistic Regression & Classification Practice Exercises",
+          "choices": [
+            "\\( 75.0\\% \\)",
+            "\\( 60.0\\% \\)",
+            "\\( 25.0\\% \\)",
+            "\\( 85.7\\% \\)"
+          ],
+          "correct": 0,
+          "answer": "Precision is the fraction of predicted positive instances that are truly positive: \\( \\text{Precision} = \\frac{TP}{TP + FP} = \\frac{30}{30 + 10} = \\frac{30}{40} = 75.0\\% \\).",
+          "explanation": "Precision is the fraction of predicted positive instances that are truly positive: \\( \\text{Precision} = \\frac{TP}{TP + FP} = \\frac{30}{30 + 10} = \\frac{30}{40} = 75.0\\% \\)."
+        },
+        {
+          "q": "A spam classification model identifies \\( TP = 60 \\) genuine spam emails and \\( FP = 20 \\) legitimate emails falsely flagged as spam. What is the precision of this model?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Logistic Regression & Classification Practice Exercises",
+          "choices": [
+            "\\( 75.0\\% \\)",
+            "\\( 60.0\\% \\)",
+            "\\( 25.0\\% \\)",
+            "\\( 85.7\\% \\)"
+          ],
+          "correct": 0,
+          "answer": "Precision is the fraction of predicted positive instances that are truly positive: \\( \\text{Precision} = \\frac{TP}{TP + FP} = \\frac{60}{60 + 20} = \\frac{60}{80} = 75.0\\% \\).",
+          "explanation": "Precision is the fraction of predicted positive instances that are truly positive: \\( \\text{Precision} = \\frac{TP}{TP + FP} = \\frac{60}{60 + 20} = \\frac{60}{80} = 75.0\\% \\).",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*4",
+            "sol_fn": "1.4*x - 5.2 + 7*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
       "questions": [
         {
           "q": "If a classifier predicts probability $p = 0.80$ for disease occurrence, what are the odds of having the disease?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "The Odds Ratio and Logit Formulation",
           "choices": [
             "$4.0$",
             "$0.25$",
@@ -16,10 +425,14 @@
             "$5.0$"
           ],
           "correct": 0,
-          "answer": "$\\text{Odds} = \\frac{p}{1 - p} = \\frac{0.80}{0.20} = 4.0$ (or $4\\text{ to }1$)."
+          "answer": "$\\mathrm{Odds} = \\frac{p}{1 - p} = \\frac{0.80}{0.20} = 4.0$ (or $4\\mathrm{\\ to\\ }1$).",
+          "explanation": "$\\mathrm{Odds} = \\frac{p}{1 - p} = \\frac{0.80}{0.20} = 4.0$ (or $4\\mathrm{\\ to\\ }1$)."
         },
         {
           "q": "Compute the log-odds (logit) value when probability $p = 0.50$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "The Odds Ratio and Logit Formulation",
           "choices": [
             "$0.0$",
             "$1.0$",
@@ -27,10 +440,14 @@
             "$-1.0$"
           ],
           "correct": 0,
-          "answer": "$\\text{logit}(0.5) = \\ln\\left(\\frac{0.5}{0.5}\\right) = \\ln(1) = 0.0$."
+          "answer": "$\\mathrm{logit}(0.5) = \\ln\\left(\\frac{0.5}{0.5}\\right) = \\ln(1) = 0.0$.",
+          "explanation": "$\\mathrm{logit}(0.5) = \\ln\\left(\\frac{0.5}{0.5}\\right) = \\ln(1) = 0.0$."
         },
         {
           "q": "If a logistic model has equation $\\ln\\left(\\frac{p}{1-p}\\right) = 2.0$, find the predicted probability $p$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "The Odds Ratio and Logit Formulation",
           "choices": [
             "$\\frac{e^2}{1 + e^2} \\approx 0.88$",
             "$\\frac{1}{2} = 0.50$",
@@ -38,15 +455,14 @@
             "$0.95$"
           ],
           "correct": 0,
-          "answer": "Inverting logit: $p = \\sigma(2.0) = \\frac{e^2}{1 + e^2} = \\frac{7.389}{8.389} \\approx 0.88$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Binary Cross-Entropy Loss",
-      "questions": [
+          "answer": "Inverting logit: $p = \\sigma(2.0) = \\frac{e^2}{1 + e^2} = \\frac{7.389}{8.389} \\approx 0.88$.",
+          "explanation": "Inverting logit: $p = \\sigma(2.0) = \\frac{e^2}{1 + e^2} = \\frac{7.389}{8.389} \\approx 0.88$."
+        },
         {
           "q": "Calculate the binary cross-entropy loss $L = -[y\\ln\\hat{y} + (1-y)\\ln(1-\\hat{y})]$ for a sample where true label $y = 1$ and predicted probability $\\hat{y} = 0.90$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Binary Cross-Entropy Loss",
           "choices": [
             "$-\\ln(0.90) \\approx 0.105$",
             "$-\\ln(0.10) \\approx 2.30$",
@@ -54,10 +470,14 @@
             "$0.0$"
           ],
           "correct": 0,
-          "answer": "When $y = 1$: $L = -1\\ln(0.90) - 0 = -\\ln(0.90) \\approx 0.105$."
+          "answer": "When $y = 1$: $L = -1\\ln(0.90) - 0 = -\\ln(0.90) \\approx 0.105$.",
+          "explanation": "When $y = 1$: $L = -1\\ln(0.90) - 0 = -\\ln(0.90) \\approx 0.105$."
         },
         {
           "q": "What is the derivative of the binary cross-entropy loss with respect to the pre-activation logit $z$, where $\\hat{y} = \\sigma(z)$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Binary Cross-Entropy Loss",
           "choices": [
             "$\\hat{y} - y$",
             "$\\hat{y}(1 - \\hat{y})$",
@@ -65,10 +485,24 @@
             "$\\frac{\\hat{y} - y}{\\hat{y}(1 - \\hat{y})}$"
           ],
           "correct": 0,
-          "answer": "Remarkably clean: $\\frac{\\partial L}{\\partial z} = \\frac{\\partial L}{\\partial \\hat{y}} \\frac{\\partial \\hat{y}}{\\partial z} = -\\left(\\frac{y}{\\hat{y}} - \\frac{1-y}{1-\\hat{y}}\\right) \\hat{y}(1-\\hat{y}) = \\hat{y} - y$."
+          "answer": "Remarkably clean: $\\frac{\\partial L}{\\partial z} = \\frac{\\partial L}{\\partial \\hat{y}} \\frac{\\partial \\hat{y}}{\\partial z} = -\\left(\\frac{y}{\\hat{y}} - \\frac{1-y}{1-\\hat{y}}\\right) \\hat{y}(1-\\hat{y}) = \\hat{y} - y$.",
+          "explanation": "Remarkably clean: $\\frac{\\partial L}{\\partial z} = \\frac{\\partial L}{\\partial \\hat{y}} \\frac{\\partial \\hat{y}}{\\partial z} = -\\left(\\frac{y}{\\hat{y}} - \\frac{1-y}{1-\\hat{y}}\\right) \\hat{y}(1-\\hat{y}) = \\hat{y} - y$.",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*1",
+            "sol_fn": "1.4*x - 5.2 + 4*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
         },
         {
-          "q": "What happens to the cross-entropy loss as $\\hat{y} \\to 0$ when true label is $y = 1$?",
+          "q": "What happens to the cross-entropy loss as $\\hat{y} \\rightarrow 0$ when true label is $y = 1$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Binary Cross-Entropy Loss",
           "choices": [
             "It approaches $+\\infty$, heavily penalizing confident wrong predictions",
             "It approaches zero",
@@ -76,15 +510,14 @@
             "It equals the pre-activation logit"
           ],
           "correct": 0,
-          "answer": "$L = -\\ln(\\hat{y})$. As $\\hat{y} \\to 0$, $-\\ln(\\hat{y}) \\to +\\infty$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: The Confusion Matrix and Core Metrics",
-      "questions": [
+          "answer": "$L = -\\ln(\\hat{y})$. As $\\hat{y} \\rightarrow 0$, $-\\ln(\\hat{y}) \\rightarrow +\\infty$.",
+          "explanation": "$L = -\\ln(\\hat{y})$. As $\\hat{y} \\rightarrow 0$, $-\\ln(\\hat{y}) \\rightarrow +\\infty$."
+        },
         {
           "q": "A diagnostic model reports $TP = 70, TN = 20, FP = 5, FN = 5$. Compute the Accuracy.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "The Confusion Matrix and Core Metrics",
           "choices": [
             "$90\\%$",
             "$85\\%$",
@@ -92,10 +525,14 @@
             "$75\\%$"
           ],
           "correct": 0,
-          "answer": "$\\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{70 + 20}{100} = 90\\%$."
+          "answer": "$\\mathrm{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{70 + 20}{100} = 90\\%$.",
+          "explanation": "$\\mathrm{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{70 + 20}{100} = 90\\%$."
         },
         {
           "q": "Using the same counts ($TP = 70, FP = 5, FN = 5$), calculate the model's Precision.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "The Confusion Matrix and Core Metrics",
           "choices": [
             "$\\frac{70}{75} \\approx 93.3\\%$",
             "$\\frac{70}{70+5} = 90\\%$",
@@ -103,10 +540,14 @@
             "$\\frac{75}{100} = 75\\%$"
           ],
           "correct": 0,
-          "answer": "$\\text{Precision} = \\frac{TP}{TP + FP} = \\frac{70}{75} \\approx 93.3\\%$."
+          "answer": "$\\mathrm{Precision} = \\frac{TP}{TP + FP} = \\frac{70}{75} \\approx 93.3\\%$.",
+          "explanation": "$\\mathrm{Precision} = \\frac{TP}{TP + FP} = \\frac{70}{75} \\approx 93.3\\%$."
         },
         {
           "q": "Calculate the Recall (Sensitivity) for the model above.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "The Confusion Matrix and Core Metrics",
           "choices": [
             "$\\frac{70}{75} \\approx 93.3\\%$",
             "$\\frac{70}{90} \\approx 77.8\\%$",
@@ -114,15 +555,19 @@
             "$85\\%$"
           ],
           "correct": 0,
-          "answer": "$\\text{Recall} = \\frac{TP}{TP + FN} = \\frac{70}{70 + 5} = \\frac{70}{75} \\approx 93.3\\%$."
+          "answer": "$\\mathrm{Recall} = \\frac{TP}{TP + FN} = \\frac{70}{70 + 5} = \\frac{70}{75} \\approx 93.3\\%$.",
+          "explanation": "$\\mathrm{Recall} = \\frac{TP}{TP + FN} = \\frac{70}{70 + 5} = \\frac{70}{75} \\approx 93.3\\%$."
         }
       ]
     },
     {
-      "heading": "Section 4: The $F_1$-Score, Thresholding and ROC-AUC",
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
       "questions": [
         {
           "q": "Compute the $F_1$-score for a model having Precision $= 0.80$ and Recall $= 0.60$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "The $F_1$-Score, Thresholding and ROC-AUC",
           "choices": [
             "$\\frac{2(0.8)(0.6)}{0.8 + 0.6} \\approx 0.686$",
             "$0.700$",
@@ -130,10 +575,15 @@
             "$0.750$"
           ],
           "correct": 0,
-          "answer": "$F_1$ is the harmonic mean: $2 \\frac{P \\cdot R}{P + R} = \\frac{2(0.48)}{1.40} = \\frac{0.96}{1.40} \\approx 0.686$."
+          "answer": "$F_1$ is the harmonic mean: $2 \\frac{P \\cdot R}{P + R} = \\frac{2(0.48)}{1.40} = \\frac{0.96}{1.40} \\approx 0.686$.",
+          "explanation": "$F_1$ is the harmonic mean: $2 \\frac{P \\cdot R}{P + R} = \\frac{2(0.48)}{1.40} = \\frac{0.96}{1.40} \\approx 0.686$.",
+          "cross_lesson": "3.01 Gradient Descent and Optimization"
         },
         {
           "q": "If you lower the classification probability threshold from $0.5$ to $0.2$, what is the typical effect on Precision and Recall?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "The $F_1$-Score, Thresholding and ROC-AUC",
           "choices": [
             "Recall increases (fewer false negatives), while Precision typically decreases (more false alarms)",
             "Precision increases while Recall decreases",
@@ -141,10 +591,15 @@
             "Neither metric changes"
           ],
           "correct": 0,
-          "answer": "A lower threshold flags more samples positive: catches more real cases (high Recall), but flags more false alarms (lower Precision)."
+          "answer": "A lower threshold flags more samples positive: catches more real cases (high Recall), but flags more false alarms (lower Precision).",
+          "explanation": "A lower threshold flags more samples positive: catches more real cases (high Recall), but flags more false alarms (lower Precision).",
+          "cross_lesson": "4.01 Conditional Probability and Bayes Rule"
         },
         {
           "q": "What does an Area Under the ROC Curve (ROC-AUC) of $0.50$ indicate about a classifier?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "The $F_1$-Score, Thresholding and ROC-AUC",
           "choices": [
             "The model has no discriminative ability (equivalent to random guessing)",
             "The model is a perfect classifier",
@@ -152,7 +607,136 @@
             "The model is inverted"
           ],
           "correct": 0,
-          "answer": "The diagonal line from $(0,0)$ to $(1,1)$ represents random guessing and has area under the curve $= 0.50$."
+          "answer": "The diagonal line from $(0,0)$ to $(1,1)$ represents random guessing and has area under the curve $= 0.50$.",
+          "explanation": "The diagonal line from $(0,0)$ to $(1,1)$ represents random guessing and has area under the curve $= 0.50$.",
+          "cross_lesson": "5.01 Distributions and Maximum Likelihood"
+        },
+        {
+          "q": "Consider a simple logistic regression model where the decision boundary is defined by the equation $-1.5x_1 + 2x_2 + 5 = 0$. For a data point $(x_1, x_2)$, if $-1.5x_1 + 2x_2 + 5 < 0$, it is classified into Class 0. Otherwise, it is classified into Class 1. Which of the following points lies on the decision boundary?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Logistic Regression & Classification Practice Exercises",
+          "choices": [
+            "$(-1, 1)$",
+            "$(2, -2)$",
+            "$(0, -2.5)$",
+            "$(3, 0.5)$"
+          ],
+          "correct": 2,
+          "answer": "The decision boundary is defined by the equation $-1.5x_1 + 2x_2 + 5 = 0$. To find which point lies on the boundary, we substitute the coordinates of each point into the equation. For point $(-1, 1)$: $-1.5(-1) + 2(1) + 5 = 1.5 + 2 + 5 = 8.5$, which is not 0. For point $(2, -2)$: $-1.5(2) + 2(-2) + 5 = -3 - 4 + 5 = -2$, which is not 0. For point $(0, -2.5)$: $-1.5(0) + 2(-2.5) + 5 = 0 - 5 + 5 = 0$. This point lies on the boundary. For point $(3, 0.5)$: $-1.5(3) + 2(0.5) + 5 = -4.5 + 1 + 5 = 1.5$, which is not 0. Therefore, the point $(0, -2.5)$ lies on the decision boundary.",
+          "explanation": "The decision boundary is defined by the equation $-1.5x_1 + 2x_2 + 5 = 0$. To find which point lies on the boundary, we substitute the coordinates of each point into the equation. For point $(-1, 1)$: $-1.5(-1) + 2(1) + 5 = 1.5 + 2 + 5 = 8.5$, which is not 0. For point $(2, -2)$: $-1.5(2) + 2(-2) + 5 = -3 - 4 + 5 = -2$, which is not 0. For point $(0, -2.5)$: $-1.5(0) + 2(-2.5) + 5 = 0 - 5 + 5 = 0$. This point lies on the boundary. For point $(3, 0.5)$: $-1.5(3) + 2(0.5) + 5 = -4.5 + 1 + 5 = 1.5$, which is not 0. Therefore, the point $(0, -2.5)$ lies on the decision boundary.",
+          "cross_lesson": "6.01 Linear Regression and OLS"
+        },
+        {
+          "q": "A researcher is analyzing the relationship between the number of hours a student spends on extracurricular activities per week and their final exam score in a challenging STEM course. The researcher collects data from 100 students and fits a linear regression model. The model is given by $\\mathrm{Exam\\ Score} = 65 + 2.5 \\times \\mathrm{Hours} - 0.3 \\times \\mathrm{Hours}^2$, where $\\mathrm{Exam\\ Score}$ is the final exam score and $\\mathrm{Hours}$ is the number of hours spent on extracurricular activities per week. The researcher believes that for a certain range of hours, there might be an optimal number of extracurricular hours that maximizes the exam score, and beyond that, the score might decrease due to time constraints. \\\\ \\\\ Consider the function representing the exam score as a function of hours: $f(h) = 65 + 2.5h - 0.3h^2$. To find the maximum exam score and the corresponding hours, calculus can be used. \\\\ Which of the following is the approximate number of extracurricular hours per week that would maximize the student's final exam score, assuming the model holds for $h \\geq 0$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "The Odds Ratio and Logit Formulation",
+          "choices": [
+            "4.17 hours",
+            "2.5 hours",
+            "5.0 hours",
+            "8.33 hours"
+          ],
+          "correct": 0,
+          "answer": "The exam score is modeled by the quadratic function $f(h) = 65 + 2.5h - 0.3h^2$. This is a downward-opening parabola, so its maximum occurs at the vertex. To find the vertex, we can use calculus and find the critical points by taking the derivative with respect to $h$ and setting it to zero: \\\\ $f'(h) = \\frac{d}{dh}(65 + 2.5h - 0.3h^2) = 2.5 - 0.6h$. \\\\ Setting the derivative to zero to find the critical point: \\\\ $x$. \\\\ To confirm this is a maximum, we can check the second derivative: $f''(h) = -0.6$. Since the second derivative is negative, this critical point corresponds to a maximum. \\\\ Therefore, approximately 4.17 hours per week spent on extracurricular activities maximizes the exam score according to this model.",
+          "explanation": "The exam score is modeled by the quadratic function $f(h) = 65 + 2.5h - 0.3h^2$. This is a downward-opening parabola, so its maximum occurs at the vertex. To find the vertex, we can use calculus and find the critical points by taking the derivative with respect to $h$ and setting it to zero: \\\\ $f'(h) = \\frac{d}{dh}(65 + 2.5h - 0.3h^2) = 2.5 - 0.6h$. \\\\ Setting the derivative to zero to find the critical point: \\\\ $x$. \\\\ To confirm this is a maximum, we can check the second derivative: $f''(h) = -0.6$. Since the second derivative is negative, this critical point corresponds to a maximum. \\\\ Therefore, approximately 4.17 hours per week spent on extracurricular activities maximizes the exam score according to this model.",
+          "cross_lesson": "8.01 PCA and Dimensionality Reduction"
+        },
+        {
+          "q": "The scatterplot below displays the relationship between the number of hours ($h$) students spent studying for a math test and their scores ($s$) on that test. The equation of the least-squares regression line for this data is given by $s = 1.2h + 78.5$. If a student studied for 5 hours, what is their predicted score based on this model?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Binary Cross-Entropy Loss",
+          "choices": [
+            "91.5",
+            "84.5",
+            "81.5",
+            "90.5"
+          ],
+          "correct": 1,
+          "answer": "The equation of the least-squares regression line is given by $s = 1.2h + 78.5$, where $s$ represents the predicted score and $h$ represents the number of hours spent studying. To find the predicted score for a student who studied for 5 hours, we substitute $h=5$ into the equation: $s = 1.2(5) + 78.5$ $s = 6.0 + 78.5$ $s = 84.5$ Therefore, the predicted score for a student who studied for 5 hours is 84.5.",
+          "explanation": "The equation of the least-squares regression line is given by $s = 1.2h + 78.5$, where $s$ represents the predicted score and $h$ represents the number of hours spent studying. To find the predicted score for a student who studied for 5 hours, we substitute $h=5$ into the equation: $s = 1.2(5) + 78.5$ $s = 6.0 + 78.5$ $s = 84.5$ Therefore, the predicted score for a student who studied for 5 hours is 84.5.",
+          "cross_lesson": "1.01 Vectors and Embeddings in AI"
+        },
+        {
+          "q": "Consider the following quadratic loss function for a regression problem: $L(y, \\hat{y}) = (y - \\hat{y})^2$. If the predicted value $\\hat{y} = 5$ and the true value $y = 3$, what is the value of the loss function?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "The Confusion Matrix and Core Metrics",
+          "choices": [
+            "$4$",
+            "$-2$",
+            "$9$",
+            "$2$"
+          ],
+          "correct": 0,
+          "answer": "The quadratic loss function is defined as $L(y, \\hat{y}) = (y - \\hat{y})^2$. Given the true value $y = 3$ and the predicted value $\\hat{y} = 5$, we substitute these values into the loss function: $L(3, 5) = (3 - 5)^2$ $L(3, 5) = (-2)^2$ $L(3, 5) = 4$ Therefore, the value of the loss function is 4.",
+          "explanation": "The quadratic loss function is defined as $L(y, \\hat{y}) = (y - \\hat{y})^2$. Given the true value $y = 3$ and the predicted value $\\hat{y} = 5$, we substitute these values into the loss function: $L(3, 5) = (3 - 5)^2$ $L(3, 5) = (-2)^2$ $L(3, 5) = 4$ Therefore, the value of the loss function is 4.",
+          "cross_lesson": "2.01 Neural Layer Matrices and Activations"
+        },
+        {
+          "q": "The following diagram shows a scatterplot comparing the number of hours studied per week for a math course and the final exam score for a sample of students. What is the approximate y-intercept of the line of best fit?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "The $F_1$-Score, Thresholding and ROC-AUC",
+          "choices": [
+            "50",
+            "60",
+            "70",
+            "80"
+          ],
+          "correct": 1,
+          "answer": "The y-intercept of the line of best fit represents the predicted score when the number of hours studied is 0. Looking at the scatterplot, if we were to extend the apparent trend of the data back to the y-axis (where hours studied is 0), the line of best fit would cross the y-axis at approximately 60.",
+          "explanation": "The y-intercept of the line of best fit represents the predicted score when the number of hours studied is 0. Looking at the scatterplot, if we were to extend the apparent trend of the data back to the y-axis (where hours studied is 0), the line of best fit would cross the y-axis at approximately 60.",
+          "cross_lesson": "3.01 Gradient Descent and Optimization",
+          "figure": {
+            "type": "plot",
+            "fns": [],
+            "scatter_pts": [
+              [
+                2.0,
+                55.0
+              ],
+              [
+                3.0,
+                60.0
+              ],
+              [
+                4.0,
+                65.0
+              ],
+              [
+                5.0,
+                70.0
+              ],
+              [
+                6.0,
+                75.0
+              ],
+              [
+                7.0,
+                80.0
+              ],
+              [
+                8.0,
+                85.0
+              ],
+              [
+                1.0,
+                50.0
+              ],
+              [
+                9.0,
+                90.0
+              ]
+            ],
+            "xmin": 0.0,
+            "xmax": 10.0,
+            "ymin": 40.0,
+            "ymax": 100.0,
+            "width": 230
+          }
         }
       ]
     }

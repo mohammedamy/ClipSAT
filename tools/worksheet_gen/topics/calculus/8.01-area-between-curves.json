@@ -3,12 +3,360 @@
   "num": "8.01",
   "slug": "area-between-curves",
   "title": "Area Between Curves",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 8.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Vertical Slices (Integration with Respect to x)",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+      "questions": [
+        {
+          "q": "Find the area of the region bounded by $y = x^2$ and $y = x + 2$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Area between two curves",
+          "answer": "Intersections: $x^2 = x+2$, so $x^2-x-2=0$, $(x-2)(x+1)=0$: $x=-1,2$. Area $= \\int_{-1}^{2}\\left[(x+2)-x^2\\right]dx = \\left[\\frac{x^2}{2}+2x-\\frac{x^3}{3}\\right]_{-1}^2 = \\frac{9}{2}$.",
+          "explanation": "Intersections: $x^2 = x+2$, so $x^2-x-2=0$, $(x-2)(x+1)=0$: $x=-1,2$. Area $= \\int_{-1}^{2}\\left[(x+2)-x^2\\right]dx = \\left[\\frac{x^2}{2}+2x-\\frac{x^3}{3}\\right]_{-1}^2 = \\frac{9}{2}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**2",
+              "x + 2"
+            ],
+            "xmin": -2,
+            "xmax": 3,
+            "ymin": -1,
+            "ymax": 6,
+            "width": 220
+          }
+        },
+        {
+          "q": "The region bounded by $y = \\sqrt{x}$, $y = 0$, and $x = 4$ is shown. Find its area.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Area between two curves",
+          "answer": "$\\int_0^4 \\sqrt{x}\\,dx = \\left[\\frac{2}{3}x^{3/2}\\right]_0^4 = \\frac{16}{3}$.",
+          "explanation": "$\\int_0^4 \\sqrt{x}\\,dx = \\left[\\frac{2}{3}x^{3/2}\\right]_0^4 = \\frac{16}{3}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "sqrt(x)"
+            ],
+            "xmin": -1,
+            "xmax": 5,
+            "ymin": -1,
+            "ymax": 3,
+            "width": 220
+          }
+        },
+        {
+          "q": "Find the area enclosed by $x = y^2$ and $x = 2y$ by integrating with respect to $y$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Setting up with respect to y, and total area",
+          "answer": "Intersections: $y^2=2y$ gives $y=0,2$. Area $= \\int_0^2 (2y - y^2)\\,dy = \\left[y^2 - \\frac{y^3}{3}\\right]_0^2 = 4 - \\frac{8}{3} = \\frac{4}{3}$.",
+          "explanation": "Intersections: $y^2=2y$ gives $y=0,2$. Area $= \\int_0^2 (2y - y^2)\\,dy = \\left[y^2 - \\frac{y^3}{3}\\right]_0^2 = 4 - \\frac{8}{3} = \\frac{4}{3}$."
+        },
+        {
+          "q": "Find the total area between $f(x) = \\sin x$ and the $x$-axis on $[0, 2\\pi]$ (note the curve is below the axis on part of this interval).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Setting up with respect to y, and total area",
+          "answer": "By symmetry, $\\int_0^\\pi \\sin x\\,dx = 2$ and $\\left|\\int_\\pi^{2\\pi}\\sin x\\,dx\\right| = 2$. Total area $= 2 + 2 = 4$.",
+          "explanation": "By symmetry, $\\int_0^\\pi \\sin x\\,dx = 2$ and $\\left|\\int_\\pi^{2\\pi}\\sin x\\,dx\\right| = 2$. Total area $= 2 + 2 = 4$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "sin(x)"
+            ],
+            "xmin": -0.3,
+            "xmax": 6.6,
+            "ymin": -1.3,
+            "ymax": 1.3,
+            "width": 220
+          }
+        },
+        {
+          "q": "Find the area of the region bounded by $y=x^2-4$ and $y=4-x^2$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "More area problems",
+          "answer": "Intersections: $x^2-4=4-x^2$, so $2x^2=8$, $x=\\pm2$. Upper curve is $y=4-x^2$: Area $=\\int_{-2}^{2}\\left[(4-x^2)-(x^2-4)\\right]dx = \\int_{-2}^2(8-2x^2)\\,dx = \\left[8x-\\frac{2x^3}{3}\\right]_{-2}^2 = \\frac{64}{3}$.",
+          "explanation": "Intersections: $x^2-4=4-x^2$, so $2x^2=8$, $x=\\pm2$. Upper curve is $y=4-x^2$: Area $=\\int_{-2}^{2}\\left[(4-x^2)-(x^2-4)\\right]dx = \\int_{-2}^2(8-2x^2)\\,dx = \\left[8x-\\frac{2x^3}{3}\\right]_{-2}^2 = \\frac{64}{3}$."
+        },
+        {
+          "q": "Find the area between $y=x^3$ and $y=x$ on $[0,1]$ (note that $y=x$ is above $y=x^3$ on this interval).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "More area problems",
+          "answer": "Area $=\\int_0^1(x-x^3)\\,dx = \\left[\\frac{x^2}{2}-\\frac{x^4}{4}\\right]_0^1 = \\frac{1}{2}-\\frac{1}{4}=\\frac{1}{4}$.",
+          "explanation": "Area $=\\int_0^1(x-x^3)\\,dx = \\left[\\frac{x^2}{2}-\\frac{x^4}{4}\\right]_0^1 = \\frac{1}{2}-\\frac{1}{4}=\\frac{1}{4}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**3",
+              "x"
+            ],
+            "xmin": -0.2,
+            "xmax": 1.2,
+            "ymin": -0.2,
+            "ymax": 1.2,
+            "width": 200
+          }
+        },
+        {
+          "q": "Find the area between $y=x^3$ and $y=x$ on $[-1,1]$ (note the curves cross at $x=0$, so the identity of the upper curve switches).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Areas requiring case splits",
+          "answer": "On $[-1,0]$, $x^3\\geq x$; on $[0,1]$, $x\\geq x^3$. Area $=\\int_{-1}^0(x^3-x)\\,dx+\\int_0^1(x-x^3)\\,dx$. By symmetry both integrals equal $\\frac{1}{4}$ (using the earlier result), so total area $=\\frac{1}{2}$.",
+          "explanation": "On $[-1,0]$, $x^3\\geq x$; on $[0,1]$, $x\\geq x^3$. Area $=\\int_{-1}^0(x^3-x)\\,dx+\\int_0^1(x-x^3)\\,dx$. By symmetry both integrals equal $\\frac{1}{4}$ (using the earlier result), so total area $=\\frac{1}{2}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**3",
+              "x"
+            ],
+            "xmin": -1.5,
+            "xmax": 1.5,
+            "ymin": -1.5,
+            "ymax": 1.5,
+            "width": 220
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Find the area enclosed between $y=2x$ and $y=x^2$ on the interval where $y=2x$ is above $y=x^2$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Areas requiring case splits",
+          "answer": "Intersections: $2x=x^2$ gives $x=0,2$. On $(0,2)$, $2x>x^2$: Area $=\\int_0^2(2x-x^2)\\,dx = \\left[x^2-\\frac{x^3}{3}\\right]_0^2 = 4-\\frac{8}{3}=\\frac{4}{3}$.",
+          "explanation": "Intersections: $2x=x^2$ gives $x=0,2$. On $(0,2)$, $2x>x^2$: Area $=\\int_0^2(2x-x^2)\\,dx = \\left[x^2-\\frac{x^3}{3}\\right]_0^2 = 4-\\frac{8}{3}=\\frac{4}{3}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2*x",
+              "x**2"
+            ],
+            "xmin": -0.5,
+            "xmax": 3,
+            "ymin": -1,
+            "ymax": 5,
+            "width": 220
+          }
+        },
+        {
+          "q": "Find the area between $y=\\cos x$ and $y=0$ on $\\left[0,\\frac{\\pi}{2}\\right]$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Areas involving trigonometric and exponential curves",
+          "answer": "Area $=\\int_0^{\\pi/2}\\cos x\\,dx = \\left[\\sin x\\right]_0^{\\pi/2} = 1-0=1$.",
+          "explanation": "Area $=\\int_0^{\\pi/2}\\cos x\\,dx = \\left[\\sin x\\right]_0^{\\pi/2} = 1-0=1$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "cos(x)"
+            ],
+            "xmin": -0.3,
+            "xmax": 2,
+            "ymin": -0.2,
+            "ymax": 1.3,
+            "width": 200
+          }
+        },
+        {
+          "q": "Find the area between $y=e^x$ and $y=e^{-x}$ on $[0,1]$ (note $e^x\\geq e^{-x}$ on this interval).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Areas involving trigonometric and exponential curves",
+          "answer": "Area $=\\int_0^1(e^x-e^{-x})\\,dx = \\left[e^x+e^{-x}\\right]_0^1 = (e+e^{-1})-(1+1) = e+\\frac{1}{e}-2$.",
+          "explanation": "Area $=\\int_0^1(e^x-e^{-x})\\,dx = \\left[e^x+e^{-x}\\right]_0^1 = (e+e^{-1})-(1+1) = e+\\frac{1}{e}-2$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "exp(x)",
+              "exp(-x)"
+            ],
+            "xmin": -0.3,
+            "xmax": 1.5,
+            "ymin": -0.3,
+            "ymax": 3,
+            "width": 200
+          }
+        },
+        {
+          "q": "The graphs of $f(x)=x^2-4$ and $g(x)=4-x^2$ from an earlier problem are shown together. Confirm from the picture that the region is symmetric about the $y$-axis, and use this to verify the earlier area answer $\\frac{64}{3}$ using $2\\int_0^2(8-2x^2)\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Visualizing a region bounded by two curves",
+          "answer": "The region is symmetric about $x=0$ since both curves are even functions. $2\\int_0^2(8-2x^2)\\,dx=2\\left[8x-\\frac{2x^3}{3}\\right]_0^2=2\\left(16-\\frac{16}{3}\\right)=2\\cdot\\frac{32}{3}=\\frac{64}{3}$, matching the earlier full-interval computation.",
+          "explanation": "The region is symmetric about $x=0$ since both curves are even functions. $2\\int_0^2(8-2x^2)\\,dx=2\\left[8x-\\frac{2x^3}{3}\\right]_0^2=2\\left(16-\\frac{16}{3}\\right)=2\\cdot\\frac{32}{3}=\\frac{64}{3}$, matching the earlier full-interval computation.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**2 - 4",
+              "4 - x**2"
+            ],
+            "xmin": -3,
+            "xmax": 3,
+            "ymin": -5,
+            "ymax": 5,
+            "width": 220
+          }
+        },
+        {
+          "q": "Find the area between $y=6-x^2$ and $y=2$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Area between a curve and a horizontal line",
+          "answer": "Intersections: $6-x^2=2$ gives $x=\\pm2$. Area $=\\int_{-2}^2\\left[(6-x^2)-2\\right]dx=\\int_{-2}^2(4-x^2)\\,dx=\\left[4x-\\frac{x^3}{3}\\right]_{-2}^2=2\\left(8-\\frac{8}{3}\\right)=\\frac{32}{3}$.",
+          "explanation": "Intersections: $6-x^2=2$ gives $x=\\pm2$. Area $=\\int_{-2}^2\\left[(6-x^2)-2\\right]dx=\\int_{-2}^2(4-x^2)\\,dx=\\left[4x-\\frac{x^3}{3}\\right]_{-2}^2=2\\left(8-\\frac{8}{3}\\right)=\\frac{32}{3}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "6 - x**2",
+              "2"
+            ],
+            "xmin": -3,
+            "xmax": 3,
+            "ymin": -1,
+            "ymax": 8,
+            "width": 220
+          }
+        },
+        {
+          "q": "Find the area between $y=\\sqrt{x}$ and $y=\\frac{x}{2}$ for $x\\geq0$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Area between a curve and a horizontal line",
+          "answer": "Intersections: $\\sqrt{x}=\\frac{x}{2}$ gives $x=0$ or $x=4$. On $(0,4)$, $\\sqrt{x}\\geq\\frac{x}{2}$: Area $=\\int_0^4\\left(\\sqrt{x}-\\frac{x}{2}\\right)dx=\\left[\\frac{2}{3}x^{3/2}-\\frac{x^2}{4}\\right]_0^4=\\frac{16}{3}-4=\\frac{4}{3}$.",
+          "explanation": "Intersections: $\\sqrt{x}=\\frac{x}{2}$ gives $x=0$ or $x=4$. On $(0,4)$, $\\sqrt{x}\\geq\\frac{x}{2}$: Area $=\\int_0^4\\left(\\sqrt{x}-\\frac{x}{2}\\right)dx=\\left[\\frac{2}{3}x^{3/2}-\\frac{x^2}{4}\\right]_0^4=\\frac{16}{3}-4=\\frac{4}{3}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "sqrt(x)",
+              "x/2"
+            ],
+            "xmin": -0.5,
+            "xmax": 5,
+            "ymin": -0.5,
+            "ymax": 3,
+            "width": 220
+          }
+        },
+        {
+          "q": "Two runners' velocities (m/s) over a 10-second race are $v_1(t)=2t$ and $v_2(t)=t+3$. The area between these curves represents the gap in distance traveled. Find this gap over $[0,10]$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Area between curves in applied contexts",
+          "answer": "Intersection: $2t=t+3$ gives $t=3$. For $t<3$, $v_2>v_1$; for $t>3$, $v_1>v_2$. Gap $=\\left|\\int_0^3(v_2-v_1)dt\\right|+\\left|\\int_3^{10}(v_1-v_2)dt\\right|$. $\\int_0^3(3-t)\\,dt=\\left[3t-\\frac{t^2}{2}\\right]_0^3=9-4.5=4.5$. $\\int_3^{10}(t-3)\\,dt=\\left[\\frac{t^2}{2}-3t\\right]_3^{10}=(50-30)-(4.5-9)=20+4.5=24.5$. Total gap $=4.5+24.5=29$ m.",
+          "explanation": "Intersection: $2t=t+3$ gives $t=3$. For $t<3$, $v_2>v_1$; for $t>3$, $v_1>v_2$. Gap $=\\left|\\int_0^3(v_2-v_1)dt\\right|+\\left|\\int_3^{10}(v_1-v_2)dt\\right|$. $\\int_0^3(3-t)\\,dt=\\left[3t-\\frac{t^2}{2}\\right]_0^3=9-4.5=4.5$. $\\int_3^{10}(t-3)\\,dt=\\left[\\frac{t^2}{2}-3t\\right]_3^{10}=(50-30)-(4.5-9)=20+4.5=24.5$. Total gap $=4.5+24.5=29$ m.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2*x",
+              "x + 3"
+            ],
+            "xmin": -0.5,
+            "xmax": 11,
+            "ymin": -1,
+            "ymax": 22,
+            "width": 220
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "Find the area of the region bounded by $y=x^2-2x$ and the $x$-axis on $[0,2]$ (note the curve dips below the axis on this interval).",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Area between curves in applied contexts",
+          "cross_lesson": "3.01 The Derivative from First Principles",
+          "answer": "$y=x^2-2x=x(x-2)$ is $\\leq0$ on $[0,2]$. Area $=\\left|\\int_0^2(x^2-2x)\\,dx\\right|=\\left|\\left[\\frac{x^3}{3}-x^2\\right]_0^2\\right|=\\left|\\frac{8}{3}-4\\right|=\\frac{4}{3}$.",
+          "explanation": "$y=x^2-2x=x(x-2)$ is $\\leq0$ on $[0,2]$. Area $=\\left|\\int_0^2(x^2-2x)\\,dx\\right|=\\left|\\left[\\frac{x^3}{3}-x^2\\right]_0^2\\right|=\\left|\\frac{8}{3}-4\\right|=\\frac{4}{3}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**2 - 2*x"
+            ],
+            "xmin": -0.5,
+            "xmax": 2.5,
+            "ymin": -1.5,
+            "ymax": 2,
+            "width": 200
+          }
+        },
+        {
+          "q": "Find the area between $y=x^3-x$ and the $x$-axis on $[-1,1]$, splitting at the roots $x=-1,0,1$ where the sign changes.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Area between curves in applied contexts",
+          "cross_lesson": "3.02 Differentiation Rules: Power, Product, Quotient, Chain",
+          "answer": "On $[-1,0]$, $x^3-x\\geq0$; on $[0,1]$, $x^3-x\\leq0$. Area $=\\int_{-1}^0(x^3-x)\\,dx+\\left|\\int_0^1(x^3-x)\\,dx\\right|=\\left[\\frac{x^4}{4}-\\frac{x^2}{2}\\right]_{-1}^0+\\left|\\left[\\frac{x^4}{4}-\\frac{x^2}{2}\\right]_0^1\\right|=\\frac{1}{4}+\\frac{1}{4}=\\frac{1}{2}$.",
+          "explanation": "On $[-1,0]$, $x^3-x\\geq0$; on $[0,1]$, $x^3-x\\leq0$. Area $=\\int_{-1}^0(x^3-x)\\,dx+\\left|\\int_0^1(x^3-x)\\,dx\\right|=\\left[\\frac{x^4}{4}-\\frac{x^2}{2}\\right]_{-1}^0+\\left|\\left[\\frac{x^4}{4}-\\frac{x^2}{2}\\right]_0^1\\right|=\\frac{1}{4}+\\frac{1}{4}=\\frac{1}{2}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**3 - x"
+            ],
+            "xmin": -1.3,
+            "xmax": 1.3,
+            "ymin": -1,
+            "ymax": 1,
+            "width": 200
+          }
+        },
+        {
+          "q": "Region bounded by $y=3-x^2$ and $y=-1$. Area:.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Areas involving trigonometric and exponential curves",
+          "cross_lesson": "4.01 Antiderivatives and Indefinite Integrals",
+          "answer": "Final Answer: $32/3$. Intersect at $x=\\pm2$. $\\int_{-2}^2(4-x^2)dx=2\\int_0^2=2[4x-x^3/3]_0^2=2(8-8/3)=32/3$.",
+          "explanation": "Intersect at $x=\\pm2$. $\\int_{-2}^2(4-x^2)dx=2\\int_0^2=2[4x-x^3/3]_0^2=2(8-8/3)=32/3$."
+        },
+        {
+          "q": "Volume of region bounded by $x^2/4+y^2/9=1$ rotated about the x-axis:.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Visualizing a region bounded by two curves",
+          "cross_lesson": "4.02 Riemann Sums and Definite Integrals",
+          "answer": "Final Answer: $24\\pi$. Rotating $\\frac{x^2}{4}+\\frac{y^2}{9}=1$ about the $x$-axis gives $V = \\pi\\int_{-2}^2 9\\left(1-\\frac{x^2}{4}\\right)\\,dx = 9\\pi\\left[x - \\frac{x^3}{12}\\right]_{-2}^2 = 24\\pi$.",
+          "explanation": "Rotating $\\frac{x^2}{4}+\\frac{y^2}{9}=1$ about the $x$-axis gives $V = \\pi\\int_{-2}^2 9\\left(1-\\frac{x^2}{4}\\right)\\,dx = 9\\pi\\left[x - \\frac{x^3}{12}\\right]_{-2}^2 = 24\\pi$."
+        },
+        {
+          "q": "Find the total area enclosed by the cardioid $r = 2(1 - \\cos\\theta)$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Area between a curve and a horizontal line",
+          "cross_lesson": "5.01 The Fundamental Theorem of Calculus",
+          "answer": "Final Answer: $6\\pi$. The polar area is $A = \\frac{1}{2}\\int_0^{2\\pi} 4(1 - 2\\cos\\theta + \\cos^2\\theta)\\,d\\theta = 2\\left(2\\pi + \\pi\\right) = 6\\pi$.",
+          "explanation": "The polar area is $A = \\frac{1}{2}\\int_0^{2\\pi} 4(1 - 2\\cos\\theta + \\cos^2\\theta)\\,d\\theta = 2\\left(2\\pi + \\pi\\right) = 6\\pi$."
+        },
+        {
+          "q": "Centroid $\\bar{y}$ of the region bounded by $y=x^2$ and $y=4$:.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Area between curves in applied contexts",
+          "cross_lesson": "6.01 Related Rates",
+          "answer": "Final Answer: $\\bar{y}=12/5$. $A=32/3$; $M_x=\\int_{-2}^2\\frac{1}{2}(16-x^4)dx=128/5$; $\\bar{y}=(128/5)/(32/3)=12/5$.",
+          "explanation": "$A=32/3$; $M_x=\\int_{-2}^2\\frac{1}{2}(16-x^4)dx=128/5$; $\\bar{y}=(128/5)/(32/3)=12/5$."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
           "q": "Find the area enclosed by $y = x^2$ and $y = 2x - x^2$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Vertical Slices (Integration with Respect to x)",
           "choices": [
             "$1/3$",
             "$2/3$",
@@ -16,10 +364,14 @@
             "$1$"
           ],
           "correct": 0,
-          "answer": "Intersections: $x^2 = 2x - x^2 \\Rightarrow 2x^2 - 2x = 0 \\Rightarrow x = 0, 1$. Top curve is $2x - x^2$. Area $= \\int_0^1 (2x - 2x^2)\\,dx = [x^2 - \\frac{2}{3}x^3]_0^1 = 1 - 2/3 = 1/3$."
+          "answer": "Intersections: $x^2 = 2x - x^2 \\Rightarrow 2x^2 - 2x = 0 \\Rightarrow x = 0, 1$. Top curve is $2x - x^2$. Area $= \\int_0^1 (2x - 2x^2)\\,dx = [x^2 - \\frac{2}{3}x^3]_0^1 = 1 - 2/3 = 1/3$.",
+          "explanation": "Intersections: $x^2 = 2x - x^2 \\Rightarrow 2x^2 - 2x = 0 \\Rightarrow x = 0, 1$. Top curve is $2x - x^2$. Area $= \\int_0^1 (2x - 2x^2)\\,dx = [x^2 - \\frac{2}{3}x^3]_0^1 = 1 - 2/3 = 1/3$."
         },
         {
           "q": "Find the area between $y = x^2$ and $y = 4$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Vertical Slices (Integration with Respect to x)",
           "choices": [
             "$32/3$",
             "$16/3$",
@@ -27,10 +379,14 @@
             "$64/3$"
           ],
           "correct": 0,
-          "answer": "Intersections at $x = \\pm 2$. By symmetry: $2\\int_0^2 (4 - x^2)\\,dx = 2[4x - x^3/3]_0^2 = 2[8 - 8/3] = 2(16/3) = 32/3$."
+          "answer": "Intersections at $x = \\pm 2$. By symmetry: $2\\int_0^2 (4 - x^2)\\,dx = 2[4x - x^3/3]_0^2 = 2[8 - 8/3] = 2(16/3) = 32/3$.",
+          "explanation": "Intersections at $x = \\pm 2$. By symmetry: $2\\int_0^2 (4 - x^2)\\,dx = 2[4x - x^3/3]_0^2 = 2[8 - 8/3] = 2(16/3) = 32/3$."
         },
         {
           "q": "Find the area between $y = \\sqrt{x}$ and $y = x^2$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Vertical Slices (Integration with Respect to x)",
           "choices": [
             "$1/3$",
             "$2/3$",
@@ -38,15 +394,14 @@
             "$1/2$"
           ],
           "correct": 0,
-          "answer": "Intersections at $x = 0$ and $x = 1$. $\\int_0^1 (x^{1/2} - x^2)\\,dx = [\\frac{2}{3}x^{3/2} - \\frac{x^3}{3}]_0^1 = 2/3 - 1/3 = 1/3$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Horizontal Slices (Integration with Respect to y)",
-      "questions": [
+          "answer": "Intersections at $x = 0$ and $x = 1$. $\\int_0^1 (x^{1/2} - x^2)\\,dx = [\\frac{2}{3}x^{3/2} - \\frac{x^3}{3}]_0^1 = 2/3 - 1/3 = 1/3$.",
+          "explanation": "Intersections at $x = 0$ and $x = 1$. $\\int_0^1 (x^{1/2} - x^2)\\,dx = [\\frac{2}{3}x^{3/2} - \\frac{x^3}{3}]_0^1 = 2/3 - 1/3 = 1/3$."
+        },
         {
           "q": "Find the area enclosed by $x = y^2$ and $x = y + 2$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Horizontal Slices (Integration with Respect to y)",
           "choices": [
             "$9/2$",
             "$16/3$",
@@ -54,10 +409,14 @@
             "$9$"
           ],
           "correct": 0,
-          "answer": "Intersections: $y^2 = y + 2 \\Rightarrow y^2 - y - 2 = 0 \\Rightarrow (y-2)(y+1)=0 \\Rightarrow y = -1, 2$. Area $= \\int_{-1}^2 (y + 2 - y^2)\\,dy = [\\frac{y^2}{2} + 2y - \\frac{y^3}{3}]_{-1}^2 = (2 + 4 - 8/3) - (1/2 - 2 + 1/3) = 10/3 - (-7/6) = 27/6 = 9/2$."
+          "answer": "Intersections: $y^2 = y + 2 \\Rightarrow y^2 - y - 2 = 0 \\Rightarrow (y-2)(y+1)=0 \\Rightarrow y = -1, 2$. Area $= \\int_{-1}^2 (y + 2 - y^2)\\,dy = [\\frac{y^2}{2} + 2y - \\frac{y^3}{3}]_{-1}^2 = (2 + 4 - 8/3) - (1/2 - 2 + 1/3) = 10/3 - (-7/6) = 27/6 = 9/2$.",
+          "explanation": "Intersections: $y^2 = y + 2 \\Rightarrow y^2 - y - 2 = 0 \\Rightarrow (y-2)(y+1)=0 \\Rightarrow y = -1, 2$. Area $= \\int_{-1}^2 (y + 2 - y^2)\\,dy = [\\frac{y^2}{2} + 2y - \\frac{y^3}{3}]_{-1}^2 = (2 + 4 - 8/3) - (1/2 - 2 + 1/3) = 10/3 - (-7/6) = 27/6 = 9/2$."
         },
         {
           "q": "Why is integrating with respect to $y$ advantageous for curves like $x = y^2 - 4$ and $x = 0$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Horizontal Slices (Integration with Respect to y)",
           "choices": [
             "The right curve minus left curve is a single continuous expression without piecewise splitting",
             "Integration with respect to $x$ is impossible",
@@ -65,10 +424,14 @@
             "The bounds are always 0 and 1"
           ],
           "correct": 0,
-          "answer": "With horizontal slices, the right boundary is $x = 0$ and the left boundary is $x = y^2 - 4$ across the entire range $y \\in [-2, 2]$, avoiding splitting into upper and lower halves."
+          "answer": "With horizontal slices, the right boundary is $x = 0$ and the left boundary is $x = y^2 - 4$ across the entire range $y \\in [-2, 2]$, avoiding splitting into upper and lower halves.",
+          "explanation": "With horizontal slices, the right boundary is $x = 0$ and the left boundary is $x = y^2 - 4$ across the entire range $y \\in [-2, 2]$, avoiding splitting into upper and lower halves."
         },
         {
           "q": "Find the area enclosed between $x = 4 - y^2$ and the $y$-axis.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Horizontal Slices (Integration with Respect to y)",
           "choices": [
             "$32/3$",
             "$16/3$",
@@ -76,15 +439,14 @@
             "$16$"
           ],
           "correct": 0,
-          "answer": "Intersections with $y$-axis ($x = 0$): $y = \\pm 2$. Area $= \\int_{-2}^2 (4 - y^2)\\,dy = 2[4y - y^3/3]_0^2 = 2[8 - 8/3] = 32/3$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Crossing Curves and Multiple Regions",
-      "questions": [
+          "answer": "Intersections with $y$-axis ($x = 0$): $y = \\pm 2$. Area $= \\int_{-2}^2 (4 - y^2)\\,dy = 2[4y - y^3/3]_0^2 = 2[8 - 8/3] = 32/3$.",
+          "explanation": "Intersections with $y$-axis ($x = 0$): $y = \\pm 2$. Area $= \\int_{-2}^2 (4 - y^2)\\,dy = 2[4y - y^3/3]_0^2 = 2[8 - 8/3] = 32/3$."
+        },
         {
           "q": "Find the total area enclosed between $y = \\sin x$ and $y = \\cos x$ from $x = 0$ to $x = \\pi/2$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Crossing Curves and Multiple Regions",
           "choices": [
             "$2\\sqrt{2} - 2$",
             "$\\sqrt{2} - 1$",
@@ -92,10 +454,14 @@
             "$1$"
           ],
           "correct": 0,
-          "answer": "Intersection at $x = \\pi/4$. On $[0, \\pi/4]$, $\\cos x \\geq \\sin x$; on $[\\pi/4, \\pi/2]$, $\\sin x \\geq \\cos x$. $\\int_0^{\\pi/4}(\\cos x - \\sin x)dx + \\int_{\\pi/4}^{\\pi/2}(\\sin x - \\cos x)dx = (\\sqrt{2}-1) + (\\sqrt{2}-1) = 2\\sqrt{2} - 2$."
+          "answer": "Intersection at $x = \\pi/4$. On $[0, \\pi/4]$, $\\cos x \\geq \\sin x$; on $[\\pi/4, \\pi/2]$, $\\sin x \\geq \\cos x$. $\\int_0^{\\pi/4}(\\cos x - \\sin x)dx + \\int_{\\pi/4}^{\\pi/2}(\\sin x - \\cos x)dx = (\\sqrt{2}-1) + (\\sqrt{2}-1) = 2\\sqrt{2} - 2$.",
+          "explanation": "Intersection at $x = \\pi/4$. On $[0, \\pi/4]$, $\\cos x \\geq \\sin x$; on $[\\pi/4, \\pi/2]$, $\\sin x \\geq \\cos x$. $\\int_0^{\\pi/4}(\\cos x - \\sin x)dx + \\int_{\\pi/4}^{\\pi/2}(\\sin x - \\cos x)dx = (\\sqrt{2}-1) + (\\sqrt{2}-1) = 2\\sqrt{2} - 2$."
         },
         {
           "q": "Find the area enclosed between $y = x^3 - x$ and $y = 0$ for $x \\in [-1, 1]$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Crossing Curves and Multiple Regions",
           "choices": [
             "$1/2$",
             "$0$",
@@ -103,10 +469,19 @@
             "$1$"
           ],
           "correct": 0,
-          "answer": "Due to odd symmetry, integrating directly gives 0 (signed area). Absolute area $= 2\\int_0^1 -(x^3 - x)\\,dx = 2[\\frac{x^2}{2} - \\frac{x^4}{4}]_0^1 = 2(1/2 - 1/4) = 2(1/4) = 1/2$."
-        },
+          "answer": "Due to odd symmetry, integrating directly gives 0 (signed area). Absolute area $= 2\\int_0^1 -(x^3 - x)\\,dx = 2[\\frac{x^2}{2} - \\frac{x^4}{4}]_0^1 = 2(1/2 - 1/4) = 2(1/4) = 1/2$.",
+          "explanation": "Due to odd symmetry, integrating directly gives 0 (signed area). Absolute area $= 2\\int_0^1 -(x^3 - x)\\,dx = 2[\\frac{x^2}{2} - \\frac{x^4}{4}]_0^1 = 2(1/2 - 1/4) = 2(1/4) = 1/2$."
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
         {
           "q": "Find the area enclosed between $y = x^3$ and $y = 4x$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Crossing Curves and Multiple Regions",
           "choices": [
             "$8$",
             "$4$",
@@ -114,15 +489,14 @@
             "$0$"
           ],
           "correct": 0,
-          "answer": "Intersections: $x^3 = 4x \\Rightarrow x(x-2)(x+2) = 0 \\Rightarrow x = -2, 0, 2$. By symmetry, total area $= 2\\int_0^2 (4x - x^3)\\,dx = 2[2x^2 - x^4/4]_0^2 = 2[8 - 4] = 2(4) = 8$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Applications and Boundaries",
-      "questions": [
+          "answer": "Intersections: $x^3 = 4x \\Rightarrow x(x-2)(x+2) = 0 \\Rightarrow x = -2, 0, 2$. By symmetry, total area $= 2\\int_0^2 (4x - x^3)\\,dx = 2[2x^2 - x^4/4]_0^2 = 2[8 - 4] = 2(4) = 8$.",
+          "explanation": "Intersections: $x^3 = 4x \\Rightarrow x(x-2)(x+2) = 0 \\Rightarrow x = -2, 0, 2$. By symmetry, total area $= 2\\int_0^2 (4x - x^3)\\,dx = 2[2x^2 - x^4/4]_0^2 = 2[8 - 4] = 2(4) = 8$."
+        },
         {
           "q": "Find the area of the region bounded by $y = e^x, y = e^{-x}$, and $x = 1$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Applications and Boundaries",
           "choices": [
             "$e + 1/e - 2$",
             "$e - 1/e$",
@@ -130,10 +504,14 @@
             "$e - 2$"
           ],
           "correct": 0,
-          "answer": "On $[0, 1]$, $e^x \\geq e^{-x}$. Area $= \\int_0^1 (e^x - e^{-x})\\,dx = [e^x + e^{-x}]_0^1 = (e + e^{-1}) - (1 + 1) = e + 1/e - 2$."
+          "answer": "On $[0, 1]$, $e^x \\geq e^{-x}$. Area $= \\int_0^1 (e^x - e^{-x})\\,dx = [e^x + e^{-x}]_0^1 = (e + e^{-1}) - (1 + 1) = e + 1/e - 2$.",
+          "explanation": "On $[0, 1]$, $e^x \\geq e^{-x}$. Area $= \\int_0^1 (e^x - e^{-x})\\,dx = [e^x + e^{-x}]_0^1 = (e + e^{-1}) - (1 + 1) = e + 1/e - 2$."
         },
         {
           "q": "Find the area bounded by $y = \\frac{1}{x}$, the $x$-axis, $x = 1$, and $x = e^2$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Applications and Boundaries",
           "choices": [
             "$2$",
             "$1$",
@@ -141,10 +519,14 @@
             "$2e$"
           ],
           "correct": 0,
-          "answer": "$\\int_1^{e^2} \\frac{1}{x}\\,dx = [\\ln x]_1^{e^2} = \\ln(e^2) - \\ln(1) = 2 - 0 = 2$."
+          "answer": "$\\int_1^{e^2} \\frac{1}{x}\\,dx = [\\ln x]_1^{e^2} = \\ln(e^2) - \\ln(1) = 2 - 0 = 2$.",
+          "explanation": "$\\int_1^{e^2} \\frac{1}{x}\\,dx = [\\ln x]_1^{e^2} = \\ln(e^2) - \\ln(1) = 2 - 0 = 2$."
         },
         {
           "q": "The Gini index measures income inequality as twice the area between the line of perfect equality $y = x$ and the Lorenz curve $L(x) = x^2$ on $[0, 1]$. Find the Gini index.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Applications and Boundaries",
           "choices": [
             "$1/3$",
             "$1/6$",
@@ -152,7 +534,216 @@
             "$1/2$"
           ],
           "correct": 0,
-          "answer": "Area $= \\int_0^1 (x - x^2)\\,dx = [x^2/2 - x^3/3]_0^1 = 1/2 - 1/3 = 1/6$. Gini index $= 2 \\times 1/6 = 1/3$."
+          "answer": "Area $= \\int_0^1 (x - x^2)\\,dx = [x^2/2 - x^3/3]_0^1 = 1/2 - 1/3 = 1/6$. Gini index $= 2 \\times 1/6 = 1/3$.",
+          "explanation": "Area $= \\int_0^1 (x - x^2)\\,dx = [x^2/2 - x^3/3]_0^1 = 1/2 - 1/3 = 1/6$. Gini index $= 2 \\times 1/6 = 1/3$."
+        },
+        {
+          "q": "Area of the region enclosed by the lemniscate $r^2=4\\cos2\\theta$:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Area between two curves",
+          "choices": [
+            "$4$",
+            "$2$",
+            "$8$",
+            "$\\pi$"
+          ],
+          "correct": 0,
+          "answer": "$A=\\frac{1}{2}\\int_{-\\pi/4}^{\\pi/4}4\\cos2\\theta\\cdot2\\,d\\theta=4$.",
+          "explanation": "$A=\\frac{1}{2}\\int_{-\\pi/4}^{\\pi/4}4\\cos2\\theta\\cdot2\\,d\\theta=4$."
+        },
+        {
+          "q": "Area of region bounded by parametric curve $x=\\cos^3t, y=\\sin^3t$ (full astroid):",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Setting up with respect to y, and total area",
+          "choices": [
+            "$3\\pi/8$",
+            "$3\\pi/4$",
+            "$\\pi/4$",
+            "$\\pi/2$"
+          ],
+          "correct": 0,
+          "answer": "Astroid area $=3\\pi a^2/8$ with $a=1$: $3\\pi/8$.",
+          "explanation": "Astroid area $=3\\pi a^2/8$ with $a=1$: $3\\pi/8$."
+        },
+        {
+          "q": "Tangent line to parametric curve is horizontal when:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "More area problems",
+          "choices": [
+            "$dx/dt=0$",
+            "$dy/dt=0$ and $dx/dt e0$",
+            "$t=0$",
+            "$dy/dt=dx/dt$"
+          ],
+          "correct": 1,
+          "answer": "Applying Parametric and Polar principles, Horizontal tangent: $dy/dt=0$. Therefore, the verified correct option is $dy/dt=0$ and $dx/dt e0$.",
+          "explanation": "Applying Parametric and Polar principles, Horizontal tangent: $dy/dt=0$. Therefore, the verified correct option is $dy/dt=0$ and $dx/dt e0$."
+        },
+        {
+          "q": "Tangent line to parametric curve is vertical when:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Areas requiring case splits",
+          "choices": [
+            "$dy/dt=0$",
+            "$dx/dt=0$ and $dy/dt e0$",
+            "$dx/dt=dy/dt$",
+            "$t=0$"
+          ],
+          "correct": 1,
+          "answer": "Applying Parametric and Polar principles, Vertical tangent: $dx/dt=0$. Therefore, the verified correct option is $dx/dt=0$ and $dy/dt e0$.",
+          "explanation": "Applying Parametric and Polar principles, Vertical tangent: $dx/dt=0$. Therefore, the verified correct option is $dx/dt=0$ and $dy/dt e0$."
+        },
+        {
+          "q": "Pappus's theorem: volume of solid of revolution = $2\\pi\\overline{x}\\cdot A$ where $\\overline{x}$ is the centroid of the region and $A$ is the:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Areas involving trigonometric and exponential curves",
+          "choices": [
+            "arc length",
+            "surface area",
+            "area of the region",
+            "cross-sectional area"
+          ],
+          "correct": 2,
+          "answer": "Applying Applications of Integration principles, Pappus's centroid theorem. Therefore, the verified correct option is area of the region.",
+          "explanation": "Applying Applications of Integration principles, Pappus's centroid theorem. Therefore, the verified correct option is area of the region."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "Surface area of cone with radius $r$, slant height $l$:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Visualizing a region bounded by two curves",
+          "choices": [
+            "$\\pi r^2 l$",
+            "$\\pi r l$",
+            "$2\\pi r l$",
+            "$\\pi r(r+l)$"
+          ],
+          "correct": 1,
+          "answer": "Applying Applications of Integration principles, Lateral surface area $=\\pi r l$. Therefore, the verified correct option is $\\pi r l$.",
+          "explanation": "Applying Applications of Integration principles, Lateral surface area $=\\pi r l$. Therefore, the verified correct option is $\\pi r l$.",
+          "cross_lesson": "4.02 Riemann Sums and Definite Integrals"
+        },
+        {
+          "q": "Centroid of semicircular region radius $R$, $y\\geq0$:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Area between a curve and a horizontal line",
+          "choices": [
+            "$\\bar{y}=R/2$",
+            "$\\bar{y}=4R/(3\\pi)$",
+            "$\\bar{y}=2R/3$",
+            "$\\bar{y}=R/\\pi$"
+          ],
+          "correct": 1,
+          "answer": "Applying Applications of Integration principles, $\\bar{y}=4R/(3\\pi)$. Therefore, the verified correct option is $\\bar{y}=4R/(3\\pi)$.",
+          "explanation": "Applying Applications of Integration principles, $\\bar{y}=4R/(3\\pi)$. Therefore, the verified correct option is $\\bar{y}=4R/(3\\pi)$.",
+          "cross_lesson": "5.01 The Fundamental Theorem of Calculus"
+        },
+        {
+          "q": "Fluid force: pressure at depth $d$ is $\\rho g d$. Force on area $A$:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Area between curves in applied contexts",
+          "choices": [
+            "$\\rho g A$",
+            "$\\rho A^2$",
+            "$\\rho g dA$",
+            "$g d$"
+          ],
+          "correct": 2,
+          "answer": "Applying Applications of Integration principles, $F=PA=\\rho g d A$. Therefore, the verified correct option is $\\rho g dA$.",
+          "explanation": "Applying Applications of Integration principles, $F=PA=\\rho g d A$. Therefore, the verified correct option is $\\rho g dA$.",
+          "cross_lesson": "6.01 Related Rates"
+        },
+        {
+          "q": "Area under one arch of $y=\\sin x$ (from 0 to $\\pi$):",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Vertical Slices (Integration with Respect to x)",
+          "choices": [
+            "$0$",
+            "$2$",
+            "$1$",
+            "$\\pi$"
+          ],
+          "correct": 1,
+          "answer": "Applying Applications of Integration principles, $\\int_0^\\pi\\sin x\\,dx=2$. Therefore, the verified correct option is $2$.",
+          "explanation": "Applying Applications of Integration principles, $\\int_0^\\pi\\sin x\\,dx=2$. Therefore, the verified correct option is $2$.",
+          "cross_lesson": "6.02 Optimization and Curve Sketching"
+        },
+        {
+          "q": "Area of astroid $x=\\cos^3t$, $y=\\sin^3t$:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Horizontal Slices (Integration with Respect to y)",
+          "choices": [
+            "$3\\pi/4$",
+            "$3\\pi/8$",
+            "$\\pi/2$",
+            "$3\\pi/2$"
+          ],
+          "correct": 1,
+          "answer": "Applying Applications of Integration principles, $A=\\frac{3\\pi}{8}$. Therefore, the verified correct option is $3\\pi/8$.",
+          "explanation": "Applying Applications of Integration principles, $A=\\frac{3\\pi}{8}$. Therefore, the verified correct option is $3\\pi/8$.",
+          "cross_lesson": "7.01 Integration by Substitution"
+        },
+        {
+          "q": "Total area between $y=x$ and $x$-axis on $[-2,2]$:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Crossing Curves and Multiple Regions",
+          "choices": [
+            "$0$",
+            "$2$",
+            "$4$",
+            "$8$"
+          ],
+          "correct": 2,
+          "answer": "Applying Fundamental Theorem principles, $2\\int_0^2 x\\,dx=2\\cdot2=4$. Therefore, the verified correct option is $4$.",
+          "explanation": "Applying Fundamental Theorem principles, $2\\int_0^2 x\\,dx=2\\cdot2=4$. Therefore, the verified correct option is $4$.",
+          "cross_lesson": "7.02 Integration by Parts"
+        },
+        {
+          "q": "Find the area of the surface formed by revolving $y = \\sqrt{x}$, $0\\leq x\\leq 3$, about the $x$-axis.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Applications and Boundaries",
+          "choices": [
+            "$\\frac{\\pi \\left(-1 + 13 \\sqrt{13}\\right)}{6}$",
+            "$\\frac{\\pi \\left(-1 + 13 \\sqrt{13}\\right)}{12}$",
+            "$4 \\sqrt{3} \\pi$",
+            "$\\frac{9 \\pi}{2}$"
+          ],
+          "correct": 0,
+          "answer": "$S = 2 \\pi \\int_{0}^{3} \\sqrt{x} \\sqrt{1 + \\frac{1}{4 x}}\\, dx$ $=$ $\\frac{\\pi \\left(-1 + 13 \\sqrt{13}\\right)}{6}$.",
+          "explanation": "$S = 2 \\pi \\int_{0}^{3} \\sqrt{x} \\sqrt{1 + \\frac{1}{4 x}}\\, dx$ $=$ $\\frac{\\pi \\left(-1 + 13 \\sqrt{13}\\right)}{6}$.",
+          "cross_lesson": "8.02 Volumes of Revolution"
+        },
+        {
+          "q": "Find the area of the surface formed by revolving $y = \\sqrt{x}$, $0\\leq x\\leq 1$, about the $x$-axis.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Area between two curves",
+          "choices": [
+            "$\\frac{\\pi \\left(-1 + 5 \\sqrt{5}\\right)}{6}$",
+            "$\\frac{\\pi \\left(-1 + 5 \\sqrt{5}\\right)}{12}$",
+            "$\\frac{4 \\pi}{3}$",
+            "$\\frac{\\pi}{2}$"
+          ],
+          "correct": 0,
+          "answer": "$S = 2 \\pi \\int_{0}^{1} \\sqrt{x} \\sqrt{1 + \\frac{1}{4 x}}\\, dx$ $=$ $\\frac{\\pi \\left(-1 + 5 \\sqrt{5}\\right)}{6}$.",
+          "explanation": "$S = 2 \\pi \\int_{0}^{1} \\sqrt{x} \\sqrt{1 + \\frac{1}{4 x}}\\, dx$ $=$ $\\frac{\\pi \\left(-1 + 5 \\sqrt{5}\\right)}{6}$.",
+          "cross_lesson": "8.03 Arc Length and Improper Integrals"
         }
       ]
     }

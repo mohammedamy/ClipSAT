@@ -3,72 +3,395 @@
   "num": "5.01",
   "slug": "integration",
   "title": "Integration",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 5.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Standard Integrals (Trig, Exp & Rational)",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "Find $\\int \\dfrac{2}{3x - 1}\\,dx$.",
-          "choices": [
-            "$\\dfrac{2}{3}\\ln|3x - 1| + C$",
-            "$2\\ln|3x - 1| + C$",
-            "$\\dfrac{1}{3}\\ln|3x - 1| + C$",
-            "$-\\dfrac{2}{(3x-1)^2} + C$"
-          ],
-          "correct": 0,
-          "answer": "$\\int \\frac{1}{ax+b} dx = \\frac{1}{a}\\ln|ax+b| + C$. Multiplying by 2 gives $\\frac{2}{3}\\ln|3x - 1| + C$."
+          "q": "The region under $y=\\sqrt{x}$ on $[0,4]$ is revolved about the $x$-axis. Find the volume generated, using $V=\\pi\\int y^2\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Volumes of revolution: the disk method",
+          "answer": "$V=\\pi\\int_0^4x\\,dx=\\pi\\left[\\frac{x^2}{2}\\right]_0^4=8\\pi$.",
+          "explanation": "$V=\\pi\\int_0^4x\\,dx=\\pi\\left[\\frac{x^2}{2}\\right]_0^4=8\\pi$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "sqrt(x)"
+            ],
+            "xmin": 0,
+            "xmax": 5,
+            "ymin": -1,
+            "ymax": 3,
+            "width": 190
+          }
         },
         {
-          "q": "Find $\\int \\cos^2(x)\\,dx$.",
-          "choices": [
-            "$\\dfrac{x}{2} + \\dfrac{\\sin(2x)}{4} + C$",
-            "$\\dfrac{\\sin^3(x)}{3} + C$",
-            "$\\dfrac{x}{2} - \\dfrac{\\sin(2x)}{4} + C$",
-            "$\\sin(2x) + C$"
-          ],
-          "correct": 0,
-          "answer": "Use identity $\\cos^2 x = \\frac{1 + \\cos(2x)}{2}$. $\\int \\frac{1 + \\cos(2x)}{2} dx = \\frac{x}{2} + \\frac{\\sin(2x)}{4} + C$."
+          "q": "Find $\\int 2x(x^2+1)^4\\,dx$ using the substitution $u=x^2+1$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Integration by substitution",
+          "answer": "$du=2x\\,dx$. Integral becomes $\\int u^4\\,du=\\frac{u^5}{5}+C=\\frac{(x^2+1)^5}{5}+C$.",
+          "explanation": "$du=2x\\,dx$. Integral becomes $\\int u^4\\,du=\\frac{u^5}{5}+C=\\frac{(x^2+1)^5}{5}+C$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (0))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -1.0,
+                "label": "$(0,-1)$"
+              }
+            ],
+            "width": 230
+          }
         },
         {
-          "q": "Evaluate $\\int_0^{\\pi/4} \\tan(x)\\,dx$.",
-          "choices": [
-            "$\\dfrac{1}{2}\\ln 2$",
-            "$\\ln 2$",
-            "$1$",
-            "$\\dfrac{\\sqrt{2}}{2}$"
-          ],
-          "correct": 0,
-          "answer": "$\\int \\tan x dx = [-\\ln|\\cos x|]_0^{\\pi/4} = -\\ln(\\sqrt{2}/2) + 0 = -\\ln(2^{-1/2}) = \\frac{1}{2}\\ln 2$."
+          "q": "Find $\\int x\\sqrt{x^2+9}\\,dx$ using the substitution $u=x^2+9$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Integration by substitution",
+          "answer": "$du=2x\\,dx$, so $x\\,dx=\\frac{du}{2}$. Integral becomes $\\int\\sqrt{u}\\cdot\\frac{du}{2}=\\frac{1}{2}\\cdot\\frac{2}{3}u^{3/2}+C=\\frac{1}{3}(x^2+9)^{3/2}+C$.",
+          "explanation": "$du=2x\\,dx$, so $x\\,dx=\\frac{du}{2}$. Integral becomes $\\int\\sqrt{u}\\cdot\\frac{du}{2}=\\frac{1}{2}\\cdot\\frac{2}{3}u^{3/2}+C=\\frac{1}{3}(x^2+9)^{3/2}+C$."
+        },
+        {
+          "q": "Find $\\int(2x+1)(x^2+x)^3\\,dx$ using the substitution $u=x^2+x$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Integration by substitution",
+          "answer": "$du=(2x+1)\\,dx$. Integral becomes $\\int u^3\\,du=\\frac{u^4}{4}+C=\\frac{(x^2+x)^4}{4}+C$.",
+          "explanation": "$du=(2x+1)\\,dx$. Integral becomes $\\int u^3\\,du=\\frac{u^4}{4}+C=\\frac{(x^2+x)^4}{4}+C$."
+        },
+        {
+          "q": "Find $\\int 3x^2(x^3-2)^4\\,dx$ using the substitution $u=x^3-2$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Integration by substitution",
+          "answer": "$du=3x^2\\,dx$. Integral becomes $\\int u^4\\,du=\\frac{u^5}{5}+C=\\frac{(x^3-2)^5}{5}+C$.",
+          "explanation": "$du=3x^2\\,dx$. Integral becomes $\\int u^4\\,du=\\frac{u^5}{5}+C=\\frac{(x^3-2)^5}{5}+C$."
+        },
+        {
+          "q": "Find $\\int xe^x\\,dx$ using integration by parts.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Integration by parts",
+          "answer": "Let $u=x$, $dv=e^x\\,dx$, so $du=dx$, $v=e^x$. $\\int xe^x\\,dx=xe^x-\\int e^x\\,dx=xe^x-e^x+C=e^x(x-1)+C$.",
+          "explanation": "Let $u=x$, $dv=e^x\\,dx$, so $du=dx$, $v=e^x$. $\\int xe^x\\,dx=xe^x-\\int e^x\\,dx=xe^x-e^x+C=e^x(x-1)+C$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -1.0,
+                "label": "$(1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Find $\\int x\\cos x\\,dx$ using integration by parts.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Integration by parts",
+          "answer": "Let $u=x$, $dv=\\cos x\\,dx$, so $du=dx$, $v=\\sin x$. $\\int x\\cos x\\,dx=x\\sin x-\\int\\sin x\\,dx=x\\sin x+\\cos x+C$.",
+          "explanation": "Let $u=x$, $dv=\\cos x\\,dx$, so $du=dx$, $v=\\sin x$. $\\int x\\cos x\\,dx=x\\sin x-\\int\\sin x\\,dx=x\\sin x+\\cos x+C$."
         }
       ]
     },
     {
-      "heading": "Section 2: Integration by Substitution",
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "Evaluate $\\int x\\sqrt{x^2 + 5}\\,dx$.",
+          "q": "Find $\\int\\ln x\\,dx$ using integration by parts with $u=\\ln x$ and $dv=dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Integration by parts",
+          "answer": "$du=\\frac{1}{x}dx$, $v=x$. $\\int\\ln x\\,dx=x\\ln x-\\int x\\cdot\\frac{1}{x}\\,dx=x\\ln x-\\int1\\,dx=x\\ln x-x+C$.",
+          "explanation": "$du=\\frac{1}{x}dx$, $v=x$. $\\int\\ln x\\,dx=x\\ln x-\\int x\\cdot\\frac{1}{x}\\,dx=x\\ln x-\\int1\\,dx=x\\ln x-x+C$."
+        },
+        {
+          "q": "Find $\\int x^2e^x\\,dx$ using integration by parts twice.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Integration by parts",
+          "answer": "Let $u=x^2$, $dv=e^x\\,dx$: $\\int x^2e^x\\,dx=x^2e^x-\\int2xe^x\\,dx$. From an earlier result, $\\int xe^x\\,dx=e^x(x-1)+C$, so $\\int2xe^x\\,dx=2e^x(x-1)+C$. Result: $x^2e^x-2e^x(x-1)+C=e^x(x^2-2x+2)+C$.",
+          "explanation": "Let $u=x^2$, $dv=e^x\\,dx$: $\\int x^2e^x\\,dx=x^2e^x-\\int2xe^x\\,dx$. From an earlier result, $\\int xe^x\\,dx=e^x(x-1)+C$, so $\\int2xe^x\\,dx=2e^x(x-1)+C$. Result: $x^2e^x-2e^x(x-1)+C=e^x(x^2-2x+2)+C$."
+        },
+        {
+          "q": "Find $\\int\\frac{5x+7}{(x+1)(x+2)}\\,dx$, first decomposing into partial fractions.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Integration using partial fractions",
+          "answer": "$\\frac{5x+7}{(x+1)(x+2)}=\\frac{A}{x+1}+\\frac{B}{x+2}$: $5x+7=A(x+2)+B(x+1)$. At $x=-1$: $A=2$. At $x=-2$: $B=3$. Integral: $2\\ln|x+1|+3\\ln|x+2|+C$.",
+          "explanation": "$\\frac{5x+7}{(x+1)(x+2)}=\\frac{A}{x+1}+\\frac{B}{x+2}$: $5x+7=A(x+2)+B(x+1)$. At $x=-1$: $A=2$. At $x=-2$: $B=3$. Integral: $2\\ln|x+1|+3\\ln|x+2|+C$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Find $\\int\\frac{1}{x^2-4}\\,dx$ using partial fractions, factoring $x^2-4=(x-2)(x+2)$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Integration using partial fractions",
+          "answer": "$\\frac{1}{(x-2)(x+2)}=\\frac{A}{x-2}+\\frac{B}{x+2}$: $1=A(x+2)+B(x-2)$. At $x=2$: $A=\\frac{1}{4}$. At $x=-2$: $B=-\\frac{1}{4}$. Integral: $\\frac{1}{4}\\ln\\left|\\frac{x-2}{x+2}\\right|+C$.",
+          "explanation": "$\\frac{1}{(x-2)(x+2)}=\\frac{A}{x-2}+\\frac{B}{x+2}$: $1=A(x+2)+B(x-2)$. At $x=2$: $A=\\frac{1}{4}$. At $x=-2$: $B=-\\frac{1}{4}$. Integral: $\\frac{1}{4}\\ln\\left|\\frac{x-2}{x+2}\\right|+C$."
+        },
+        {
+          "q": "Find $\\int\\frac{3x-1}{x(x-3)}\\,dx$, first decomposing into partial fractions.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Integration using partial fractions",
+          "answer": "$\\frac{3x-1}{x(x-3)}=\\frac{A}{x}+\\frac{B}{x-3}$: $3x-1=A(x-3)+Bx$. At $x=0$: $A=\\frac{1}{3}$. At $x=3$: $B=\\frac{8}{3}$. Integral: $\\frac{1}{3}\\ln|x|+\\frac{8}{3}\\ln|x-3|+C$.",
+          "explanation": "$\\frac{3x-1}{x(x-3)}=\\frac{A}{x}+\\frac{B}{x-3}$: $3x-1=A(x-3)+Bx$. At $x=0$: $A=\\frac{1}{3}$. At $x=3$: $B=\\frac{8}{3}$. Integral: $\\frac{1}{3}\\ln|x|+\\frac{8}{3}\\ln|x-3|+C$."
+        },
+        {
+          "q": "Find $\\int\\frac{2x+3}{(x-1)(x+4)}\\,dx$, first decomposing into partial fractions.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Integration using partial fractions",
+          "answer": "$\\frac{2x+3}{(x-1)(x+4)}=\\frac{A}{x-1}+\\frac{B}{x+4}$: $2x+3=A(x+4)+B(x-1)$. At $x=1$: $A=1$. At $x=-4$: $B=1$. Integral: $\\ln|x-1|+\\ln|x+4|+C$.",
+          "explanation": "$\\frac{2x+3}{(x-1)(x+4)}=\\frac{A}{x-1}+\\frac{B}{x+4}$: $2x+3=A(x+4)+B(x-1)$. At $x=1$: $A=1$. At $x=-4$: $B=1$. Integral: $\\ln|x-1|+\\ln|x+4|+C$."
+        },
+        {
+          "q": "Find $\\int\\sin(3x)\\,dx$ and $\\int e^{2x}\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Integrating trigonometric, exponential and logarithmic functions",
+          "answer": "$\\int\\sin(3x)\\,dx=-\\frac{1}{3}\\cos(3x)+C$. $\\int e^{2x}\\,dx=\\frac{1}{2}e^{2x}+C$.",
+          "explanation": "$\\int\\sin(3x)\\,dx=-\\frac{1}{3}\\cos(3x)+C$. $\\int e^{2x}\\,dx=\\frac{1}{2}e^{2x}+C$."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "Find $\\int\\frac{4x}{x^2+1}\\,dx$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Integrating trigonometric, exponential and logarithmic functions",
+          "cross_lesson": "6.01 Sequences & Series",
+          "answer": "Since $\\frac{d}{dx}\\left[\\ln(x^2+1)\\right]=\\frac{2x}{x^2+1}$, and $\\frac{4x}{x^2+1}=2\\cdot\\frac{2x}{x^2+1}$: $\\int\\frac{4x}{x^2+1}\\,dx=2\\ln(x^2+1)+C$.",
+          "explanation": "Since $\\frac{d}{dx}\\left[\\ln(x^2+1)\\right]=\\frac{2x}{x^2+1}$, and $\\frac{4x}{x^2+1}=2\\cdot\\frac{2x}{x^2+1}$: $\\int\\frac{4x}{x^2+1}\\,dx=2\\ln(x^2+1)+C$."
+        },
+        {
+          "q": "Find $\\int\\tan x\\,dx$, using the substitution $u=\\cos x$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Integrating trigonometric, exponential and logarithmic functions",
+          "cross_lesson": "7.01 Vectors",
+          "answer": "$\\tan x=\\frac{\\sin x}{\\cos x}$. With $u=\\cos x$, $du=-\\sin x\\,dx$: $\\int\\frac{\\sin x}{\\cos x}\\,dx=-\\int\\frac{du}{u}=-\\ln|u|+C=-\\ln|\\cos x|+C=\\ln|\\sec x|+C$.",
+          "explanation": "$\\tan x=\\frac{\\sin x}{\\cos x}$. With $u=\\cos x$, $du=-\\sin x\\,dx$: $\\int\\frac{\\sin x}{\\cos x}\\,dx=-\\int\\frac{du}{u}=-\\ln|u|+C=-\\ln|\\cos x|+C=\\ln|\\sec x|+C$.",
+          "figure": {
+            "type": "triangle",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                8.0,
+                0
+              ],
+              [
+                0,
+                6.0
+              ]
+            ],
+            "labels": [
+              "$C$",
+              "$B$",
+              "$A$"
+            ],
+            "side_labels": [
+              "$8$",
+              "$10$",
+              "$6$"
+            ],
+            "right_angle_at": 0,
+            "angle_marks": [
+              {
+                "vertex": 1,
+                "label": "$\\theta$"
+              }
+            ],
+            "fill": true,
+            "width": 220
+          }
+        },
+        {
+          "q": "Find $\\int\\frac{1}{2x+3}\\,dx$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Integrating trigonometric, exponential and logarithmic functions",
+          "cross_lesson": "8.01 Algebra: Partial Fractions & Division",
+          "answer": "$\\int\\frac{1}{2x+3}\\,dx=\\frac{1}{2}\\ln|2x+3|+C$.",
+          "explanation": "$\\int\\frac{1}{2x+3}\\,dx=\\frac{1}{2}\\ln|2x+3|+C$."
+        },
+        {
+          "q": "Evaluate $\\int_0^2x(x^2+1)^3\\,dx$ using the substitution $u=x^2+1$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Definite integrals using substitution",
+          "cross_lesson": "9.01 Complex Numbers",
+          "answer": "When $x=0$, $u=1$; when $x=2$, $u=5$; $x\\,dx=\\frac{du}{2}$. $\\int_1^5u^3\\cdot\\frac{du}{2}=\\frac{1}{2}\\left[\\frac{u^4}{4}\\right]_1^5=\\frac{1}{8}(625-1)=\\frac{624}{8}=78$.",
+          "explanation": "When $x=0$, $u=1$; when $x=2$, $u=5$; $x\\,dx=\\frac{du}{2}$. $\\int_1^5u^3\\cdot\\frac{du}{2}=\\frac{1}{2}\\left[\\frac{u^4}{4}\\right]_1^5=\\frac{1}{8}(625-1)=\\frac{624}{8}=78$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi/2}\\sin x\\cos^3x\\,dx$ using the substitution $u=\\cos x$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Definite integrals using substitution",
+          "cross_lesson": "1.01 Functions: Modulus & Inverse",
+          "answer": "$du=-\\sin x\\,dx$. When $x=0$, $u=1$; when $x=\\frac{\\pi}{2}$, $u=0$. $\\int_1^0u^3(-du)=\\int_0^1u^3\\,du=\\left[\\frac{u^4}{4}\\right]_0^1=\\frac{1}{4}$.",
+          "explanation": "$du=-\\sin x\\,dx$. When $x=0$, $u=1$; when $x=\\frac{\\pi}{2}$, $u=0$. $\\int_1^0u^3(-du)=\\int_0^1u^3\\,du=\\left[\\frac{u^4}{4}\\right]_0^1=\\frac{1}{4}$."
+        },
+        {
+          "q": "Evaluate $\\int_1^e\\frac{\\ln x}{x}\\,dx$ using the substitution $u=\\ln x$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Definite integrals using substitution",
+          "cross_lesson": "10.01 Numerical Methods",
+          "answer": "$du=\\frac{1}{x}dx$. When $x=1$, $u=0$; when $x=e$, $u=1$. $\\int_0^1u\\,du=\\left[\\frac{u^2}{2}\\right]_0^1=\\frac{1}{2}$.",
+          "explanation": "$du=\\frac{1}{x}dx$. When $x=1$, $u=0$; when $x=e$, $u=1$. $\\int_0^1u\\,du=\\left[\\frac{u^2}{2}\\right]_0^1=\\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+      "questions": [
+        {
+          "q": "Find $\\int \\frac{2}{3x - 1}\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Standard Integrals (Trig, Exp & Rational)",
           "choices": [
-            "$\\dfrac{1}{3}(x^2 + 5)^{3/2} + C$",
-            "$\\dfrac{1}{2}(x^2 + 5)^{3/2} + C$",
-            "$\\dfrac{2}{3}(x^2 + 5)^{3/2} + C$",
+            "$\\frac{2}{3}\\ln|3x - 1| + C$",
+            "$2\\ln|3x - 1| + C$",
+            "$\\frac{1}{3}\\ln|3x - 1| + C$",
+            "$-\\frac{2}{(3x-1)^2} + C$"
+          ],
+          "correct": 0,
+          "answer": "$\\int \\frac{1}{ax+b} dx = \\frac{1}{a}\\ln|ax+b| + C$. Multiplying by 2 gives $\\frac{2}{3}\\ln|3x - 1| + C$.",
+          "explanation": "$\\int \\frac{1}{ax+b} dx = \\frac{1}{a}\\ln|ax+b| + C$. Multiplying by 2 gives $\\frac{2}{3}\\ln|3x - 1| + C$."
+        },
+        {
+          "q": "Find $\\int \\cos^2(x)\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Standard Integrals (Trig, Exp & Rational)",
+          "choices": [
+            "$\\frac{x}{2} + \\frac{\\sin(2x)}{4} + C$",
+            "$\\frac{\\sin^3(x)}{3} + C$",
+            "$\\frac{x}{2} - \\frac{\\sin(2x)}{4} + C$",
+            "$\\sin(2x) + C$"
+          ],
+          "correct": 0,
+          "answer": "Use identity $\\cos^2 x = \\frac{1 + \\cos(2x)}{2}$. $\\int \\frac{1 + \\cos(2x)}{2} dx = \\frac{x}{2} + \\frac{\\sin(2x)}{4} + C$.",
+          "explanation": "Use identity $\\cos^2 x = \\frac{1 + \\cos(2x)}{2}$. $\\int \\frac{1 + \\cos(2x)}{2} dx = \\frac{x}{2} + \\frac{\\sin(2x)}{4} + C$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi/4} \\tan(x)\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Standard Integrals (Trig, Exp & Rational)",
+          "choices": [
+            "$\\frac{1}{2}\\ln 2$",
+            "$\\ln 2$",
+            "$1$",
+            "$\\frac{\\sqrt{2}}{2}$"
+          ],
+          "correct": 0,
+          "answer": "$\\int \\tan x dx = [-\\ln|\\cos x|]_0^{\\pi/4} = -\\ln(\\sqrt{2}/2) + 0 = -\\ln(2^{-1/2}) = \\frac{1}{2}\\ln 2$.",
+          "explanation": "$\\int \\tan x dx = [-\\ln|\\cos x|]_0^{\\pi/4} = -\\ln(\\sqrt{2}/2) + 0 = -\\ln(2^{-1/2}) = \\frac{1}{2}\\ln 2$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (0))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -2.0,
+                "label": "$(0,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Evaluate $\\int x\\sqrt{x^2 + 5}\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Integration by Substitution",
+          "choices": [
+            "$\\frac{1}{3}(x^2 + 5)^{3/2} + C$",
+            "$\\frac{1}{2}(x^2 + 5)^{3/2} + C$",
+            "$\\frac{2}{3}(x^2 + 5)^{3/2} + C$",
             "$(x^2 + 5)^{3/2} + C$"
           ],
           "correct": 0,
-          "answer": "Let $u = x^2 + 5$, $du = 2x dx$. $\\int \\frac{1}{2} u^{1/2} du = \\frac{1}{2} \\cdot \\frac{2}{3} u^{3/2} + C = \\frac{1}{3}(x^2 + 5)^{3/2} + C$."
+          "answer": "Let $u = x^2 + 5$, $du = 2x dx$. $\\int \\frac{1}{2} u^{1/2} du = \\frac{1}{2} \\cdot \\frac{2}{3} u^{3/2} + C = \\frac{1}{3}(x^2 + 5)^{3/2} + C$.",
+          "explanation": "Let $u = x^2 + 5$, $du = 2x dx$. $\\int \\frac{1}{2} u^{1/2} du = \\frac{1}{2} \\cdot \\frac{2}{3} u^{3/2} + C = \\frac{1}{3}(x^2 + 5)^{3/2} + C$."
         },
         {
-          "q": "Evaluate $\\int_0^1 \\dfrac{x}{x^2 + 1}\\,dx$.",
+          "q": "Evaluate $\\int_0^1 \\frac{x}{x^2 + 1}\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Integration by Substitution",
           "choices": [
-            "$\\dfrac{1}{2}\\ln 2$",
+            "$\\frac{1}{2}\\ln 2$",
             "$\\ln 2$",
-            "$\\dfrac{\\pi}{4}$",
+            "$\\frac{\\pi}{4}$",
             "$1$"
           ],
           "correct": 0,
-          "answer": "Let $u = x^2 + 1, du = 2x dx$. Integral from $u = 1$ to $u = 2$: $\\int_1^2 \\frac{1}{2u} du = [\\frac{1}{2}\\ln u]_1^2 = \\frac{1}{2}\\ln 2$."
+          "answer": "Let $u = x^2 + 1, du = 2x dx$. Integral from $u = 1$ to $u = 2$: $\\int_1^2 \\frac{1}{2u} du = [\\frac{1}{2}\\ln u]_1^2 = \\frac{1}{2}\\ln 2$.",
+          "explanation": "Let $u = x^2 + 1, du = 2x dx$. Integral from $u = 1$ to $u = 2$: $\\int_1^2 \\frac{1}{2u} du = [\\frac{1}{2}\\ln u]_1^2 = \\frac{1}{2}\\ln 2$."
         },
         {
           "q": "Use the substitution $x = 2\\sin\\theta$ to find $\\int \\sqrt{4 - x^2}\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Integration by Substitution",
           "choices": [
             "$2\\theta + \\sin(2\\theta) + C$",
             "$4\\theta + 2\\sin(2\\theta) + C$",
@@ -76,37 +399,76 @@
             "$\\frac{1}{2}(4-x^2)^{3/2} + C$"
           ],
           "correct": 0,
-          "answer": "$dx = 2\\cos\\theta d\\theta, \\sqrt{4 - x^2} = 2\\cos\\theta$. $\\int 4\\cos^2\\theta d\\theta = \\int 2(1 + \\cos 2\\theta) d\\theta = 2\\theta + \\sin(2\\theta) + C$."
+          "answer": "$dx = 2\\cos\\theta d\\theta, \\sqrt{4 - x^2} = 2\\cos\\theta$. $\\int 4\\cos^2\\theta d\\theta = \\int 2(1 + \\cos 2\\theta) d\\theta = 2\\theta + \\sin(2\\theta) + C$.",
+          "explanation": "$dx = 2\\cos\\theta d\\theta, \\sqrt{4 - x^2} = 2\\cos\\theta$. $\\int 4\\cos^2\\theta d\\theta = \\int 2(1 + \\cos 2\\theta) d\\theta = 2\\theta + \\sin(2\\theta) + C$."
+        },
+        {
+          "q": "Find $\\int x e^{3x}\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Integration by Parts",
+          "choices": [
+            "$\\frac{x e^{3x}}{3} - \\frac{e^{3x}}{9} + C$",
+            "$\\frac{x e^{3x}}{3} - \\frac{e^{3x}}{3} + C$",
+            "$x e^{3x} - e^{3x} + C$",
+            "$\\frac{x^2 e^{3x}}{6} + C$"
+          ],
+          "correct": 0,
+          "answer": "Let $u = x, dv = e^{3x} dx \\Rightarrow du = dx, v = \\frac{1}{3}e^{3x}$. $uv - \\int v du = \\frac{1}{3}x e^{3x} - \\int \\frac{1}{3}e^{3x} dx = \\frac{x e^{3x}}{3} - \\frac{e^{3x}}{9} + C$.",
+          "explanation": "Let $u = x, dv = e^{3x} dx \\Rightarrow du = dx, v = \\frac{1}{3}e^{3x}$. $uv - \\int v du = \\frac{1}{3}x e^{3x} - \\int \\frac{1}{3}e^{3x} dx = \\frac{x e^{3x}}{3} - \\frac{e^{3x}}{9} + C$."
+        },
+        {
+          "q": "Evaluate $\\int_1^e x\\ln x\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Integration by Parts",
+          "choices": [
+            "$\\frac{e^2 + 1}{4}$",
+            "$\\frac{e^2 - 1}{4}$",
+            "$\\frac{e^2}{2}$",
+            "$\\frac{e^2 - 1}{2}$"
+          ],
+          "correct": 0,
+          "answer": "$u = \\ln x, dv = x dx \\Rightarrow du = dx/x, v = x^2/2$. $[\\frac{x^2}{2}\\ln x]_1^e - \\int_1^e \\frac{x}{2} dx = \\frac{e^2}{2} - [\\frac{x^2}{4}]_1^e = \\frac{e^2}{2} - (\\frac{e^2}{4} - \\frac{1}{4}) = \\frac{e^2 + 1}{4}$.",
+          "explanation": "$u = \\ln x, dv = x dx \\Rightarrow du = dx/x, v = x^2/2$. $[\\frac{x^2}{2}\\ln x]_1^e - \\int_1^e \\frac{x}{2} dx = \\frac{e^2}{2} - [\\frac{x^2}{4}]_1^e = \\frac{e^2}{2} - (\\frac{e^2}{4} - \\frac{1}{4}) = \\frac{e^2 + 1}{4}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2**(0.6*x)",
+              "log(x + 3) + 0.5"
+            ],
+            "xmin": -2.5,
+            "xmax": 4.5,
+            "ymin": -2,
+            "ymax": 6.5,
+            "asymptotes": {
+              "x": [
+                -3
+              ],
+              "y": [
+                0
+              ]
+            },
+            "point_labels": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "$(0,1)$"
+              }
+            ],
+            "width": 230
+          }
         }
       ]
     },
     {
-      "heading": "Section 3: Integration by Parts",
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
       "questions": [
         {
-          "q": "Find $\\int x e^{3x}\\,dx$.",
-          "choices": [
-            "$\\dfrac{x e^{3x}}{3} - \\dfrac{e^{3x}}{9} + C$",
-            "$\\dfrac{x e^{3x}}{3} - \\dfrac{e^{3x}}{3} + C$",
-            "$x e^{3x} - e^{3x} + C$",
-            "$\\dfrac{x^2 e^{3x}}{6} + C$"
-          ],
-          "correct": 0,
-          "answer": "Let $u = x, dv = e^{3x} dx \\Rightarrow du = dx, v = \\frac{1}{3}e^{3x}$. $uv - \\int v du = \\frac{1}{3}x e^{3x} - \\int \\frac{1}{3}e^{3x} dx = \\frac{x e^{3x}}{3} - \\frac{e^{3x}}{9} + C$."
-        },
-        {
-          "q": "Evaluate $\\int_1^e x\\ln x\\,dx$.",
-          "choices": [
-            "$\\dfrac{e^2 + 1}{4}$",
-            "$\\dfrac{e^2 - 1}{4}$",
-            "$\\dfrac{e^2}{2}$",
-            "$\\dfrac{e^2 - 1}{2}$"
-          ],
-          "correct": 0,
-          "answer": "$u = \\ln x, dv = x dx \\Rightarrow du = dx/x, v = x^2/2$. $[\\frac{x^2}{2}\\ln x]_1^e - \\int_1^e \\frac{x}{2} dx = \\frac{e^2}{2} - [\\frac{x^2}{4}]_1^e = \\frac{e^2}{2} - (\\frac{e^2}{4} - \\frac{1}{4}) = \\frac{e^2 + 1}{4}$."
-        },
-        {
           "q": "Evaluate $\\int_0^{\\pi} x\\sin x\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Integration by Parts",
           "choices": [
             "$\\pi$",
             "$2\\pi$",
@@ -114,26 +476,29 @@
             "$2$"
           ],
           "correct": 0,
-          "answer": "$u = x, dv = \\sin x dx \\Rightarrow du = dx, v = -\\cos x$. $[-x\\cos x]_0^\\pi - \\int_0^\\pi (-\\cos x) dx = -\\pi(-1) - 0 + [\\sin x]_0^\\pi = \\pi + 0 = \\pi$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Partial Fractions Integration & Trapezium Rule",
-      "questions": [
+          "answer": "$u = x, dv = \\sin x dx \\Rightarrow du = dx, v = -\\cos x$. $[-x\\cos x]_0^\\pi - \\int_0^\\pi (-\\cos x) dx = -\\pi(-1) - 0 + [\\sin x]_0^\\pi = \\pi + 0 = \\pi$.",
+          "explanation": "$u = x, dv = \\sin x dx \\Rightarrow du = dx, v = -\\cos x$. $[-x\\cos x]_0^\\pi - \\int_0^\\pi (-\\cos x) dx = -\\pi(-1) - 0 + [\\sin x]_0^\\pi = \\pi + 0 = \\pi$."
+        },
         {
-          "q": "Find $\\int \\dfrac{5x - 2}{(x - 2)(x + 1)}\\,dx$.",
+          "q": "Find $\\int \\frac{5x - 2}{(x - 2)(x + 1)}\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Partial Fractions Integration & Trapezium Rule",
           "choices": [
-            "$\\dfrac{8}{3}\\ln|x - 2| + \\dfrac{7}{3}\\ln|x + 1| + C$",
+            "$\\frac{8}{3}\\ln|x - 2| + \\frac{7}{3}\\ln|x + 1| + C$",
             "$3\\ln|x - 2| + 2\\ln|x + 1| + C$",
             "$8\\ln|x - 2| + 7\\ln|x + 1| + C$",
             "$\\ln|(x-2)(x+1)| + C$"
           ],
           "correct": 0,
-          "answer": "Partial fractions: $\\frac{A}{x-2} + \\frac{B}{x+1}$. For $A$: $(5(2)-2)/(2+1) = 8/3$. For $B$: $(5(-1)-2)/(-1-2) = -7/(-3) = 7/3$. Integrating gives $\\frac{8}{3}\\ln|x - 2| + \\frac{7}{3}\\ln|x + 1| + C$."
+          "answer": "Partial fractions: $\\frac{A}{x-2} + \\frac{B}{x+1}$. For $A$: $(5(2)-2)/(2+1) = 8/3$. For $B$: $(5(-1)-2)/(-1-2) = -7/(-3) = 7/3$. Integrating gives $\\frac{8}{3}\\ln|x - 2| + \\frac{7}{3}\\ln|x + 1| + C$.",
+          "explanation": "Partial fractions: $\\frac{A}{x-2} + \\frac{B}{x+1}$. For $A$: $(5(2)-2)/(2+1) = 8/3$. For $B$: $(5(-1)-2)/(-1-2) = -7/(-3) = 7/3$. Integrating gives $\\frac{8}{3}\\ln|x - 2| + \\frac{7}{3}\\ln|x + 1| + C$."
         },
         {
-          "q": "Use the trapezium rule with 4 intervals (5 ordinates) to approximate $\\int_1^3 \\dfrac{1}{x}\\,dx$.",
+          "q": "Use the trapezium rule with 4 intervals (5 ordinates) to approximate $\\int_1^3 \\frac{1}{x}\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Partial Fractions Integration & Trapezium Rule",
           "choices": [
             "$1.117$",
             "$1.099$",
@@ -141,10 +506,14 @@
             "$1.050$"
           ],
           "correct": 0,
-          "answer": "$h = (3 - 1)/4 = 0.5$. $x = 1, 1.5, 2, 2.5, 3$. $y = 1, 2/3, 1/2, 2/5, 1/3$. Area $\\approx \\frac{0.5}{2}[1 + 1/3 + 2(2/3 + 1/2 + 2/5)] = 0.25[4/3 + 2(47/30)] = 0.25[40/30 + 94/30] = 0.25(134/30) = 134/120 \\approx 1.1167$."
+          "answer": "$h = (3 - 1)/4 = 0.5$. $x = 1, 1.5, 2, 2.5, 3$. $y = 1, 2/3, 1/2, 2/5, 1/3$. Area $\\approx \\frac{0.5}{2}[1 + 1/3 + 2(2/3 + 1/2 + 2/5)] = 0.25[4/3 + 2(47/30)] = 0.25[40/30 + 94/30] = 0.25(134/30) = 134/120 \\approx 1.1167$.",
+          "explanation": "$h = (3 - 1)/4 = 0.5$. $x = 1, 1.5, 2, 2.5, 3$. $y = 1, 2/3, 1/2, 2/5, 1/3$. Area $\\approx \\frac{0.5}{2}[1 + 1/3 + 2(2/3 + 1/2 + 2/5)] = 0.25[4/3 + 2(47/30)] = 0.25[40/30 + 94/30] = 0.25(134/30) = 134/120 \\approx 1.1167$."
         },
         {
           "q": "Is the trapezium rule approximation in the previous question an overestimate or underestimate, and why?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Partial Fractions Integration & Trapezium Rule",
           "choices": [
             "Overestimate, because the curve $y = 1/x$ is concave up",
             "Underestimate, because $y = 1/x$ is decreasing",
@@ -152,7 +521,254 @@
             "Underestimate, because the chords lie below the curve"
           ],
           "correct": 0,
-          "answer": "Since $d^2y/dx^2 = 2/x^3 > 0$ for $x > 0$, the curve is convex (concave up). The straight line chords lie above the curve, producing an overestimate."
+          "answer": "Since $d^2y/dx^2 = 2/x^3 > 0$ for $x > 0$, the curve is convex (concave up). The straight line chords lie above the curve, producing an overestimate.",
+          "explanation": "Since $d^2y/dx^2 = 2/x^3 > 0$ for $x > 0$, the curve is convex (concave up). The straight line chords lie above the curve, producing an overestimate."
+        },
+        {
+          "q": "Using the trapezium rule with $5$ strips of width $h=1$, estimate $\\int y\\,dx$ given $y_{0}=15, y_{1}=13, y_{2}=3, y_{3}=15, y_{4}=10, y_{5}=6$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Integration by substitution",
+          "choices": [
+            "$\\frac{619}{12}$",
+            "$\\frac{105}{2}$",
+            "31",
+            "$\\frac{103}{2}$"
+          ],
+          "correct": 3,
+          "answer": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{5}+2(y_1+\\cdots+y_{4})\\right]=\\frac{1}{2}\\times 103=\\frac{103}{2}$.",
+          "explanation": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{5}+2(y_1+\\cdots+y_{4})\\right]=\\frac{1}{2}\\times 103=\\frac{103}{2}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -2.0,
+                "label": "$(1,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Using the trapezium rule with $4$ strips of width $h=3$, estimate $\\int y\\,dx$ given $y_{0}=8, y_{1}=18, y_{2}=5, y_{3}=18, y_{4}=17$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Integration by parts",
+          "choices": [
+            "$\\frac{1927}{12}$",
+            "$\\frac{321}{2}$",
+            "99",
+            "$\\frac{327}{2}$"
+          ],
+          "correct": 1,
+          "answer": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{4}+2(y_1+\\cdots+y_{3})\\right]=\\frac{3}{2}\\times 107=\\frac{321}{2}$.",
+          "explanation": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{4}+2(y_1+\\cdots+y_{3})\\right]=\\frac{3}{2}\\times 107=\\frac{321}{2}$."
+        },
+        {
+          "q": "Using the trapezium rule with $6$ strips of width $h=3$, estimate $\\int y\\,dx$ given $y_{0}=4, y_{1}=3, y_{2}=19, y_{3}=3, y_{4}=16, y_{5}=2, y_{6}=17$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Integration using partial fractions",
+          "choices": [
+            "$\\frac{1927}{12}$",
+            "$\\frac{321}{2}$",
+            "96",
+            "$\\frac{327}{2}$"
+          ],
+          "correct": 1,
+          "answer": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{6}+2(y_1+\\cdots+y_{5})\\right]=\\frac{3}{2}\\times 107=\\frac{321}{2}$.",
+          "explanation": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{6}+2(y_1+\\cdots+y_{5})\\right]=\\frac{3}{2}\\times 107=\\frac{321}{2}$."
+        },
+        {
+          "q": "Using the trapezium rule with $6$ strips of width $h=1$, estimate $\\int y\\,dx$ given $y_{0}=9, y_{1}=1, y_{2}=12, y_{3}=20, y_{4}=11, y_{5}=17, y_{6}=12$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Integrating trigonometric, exponential and logarithmic functions",
+          "choices": [
+            "$\\frac{145}{2}$",
+            "$\\frac{859}{12}$",
+            "41",
+            "$\\frac{143}{2}$"
+          ],
+          "correct": 3,
+          "answer": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{6}+2(y_1+\\cdots+y_{5})\\right]=\\frac{1}{2}\\times 143=\\frac{143}{2}$.",
+          "explanation": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{6}+2(y_1+\\cdots+y_{5})\\right]=\\frac{1}{2}\\times 143=\\frac{143}{2}$."
+        },
+        {
+          "q": "Using the trapezium rule with $4$ strips of width $h=1$, estimate $\\int y\\,dx$ given $y_{0}=16, y_{1}=15, y_{2}=14, y_{3}=19, y_{4}=7$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Definite integrals using substitution",
+          "choices": [
+            "$\\frac{715}{12}$",
+            "$\\frac{71}{2}$",
+            "$\\frac{121}{2}$",
+            "$\\frac{119}{2}$"
+          ],
+          "correct": 3,
+          "answer": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{4}+2(y_1+\\cdots+y_{3})\\right]=\\frac{1}{2}\\times 119=\\frac{119}{2}$.",
+          "explanation": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{4}+2(y_1+\\cdots+y_{3})\\right]=\\frac{1}{2}\\times 119=\\frac{119}{2}$."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "Using the trapezium rule with $3$ strips of width $h=1$, estimate $\\int y\\,dx$ given $y_{0}=1, y_{1}=1, y_{2}=2, y_{3}=10$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Volumes of revolution: the disk method",
+          "choices": [
+            "$\\frac{17}{2}$",
+            "7",
+            "$\\frac{103}{12}$",
+            "$\\frac{19}{2}$"
+          ],
+          "correct": 0,
+          "answer": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{3}+2(y_1+\\cdots+y_{2})\\right]=\\frac{1}{2}\\times 17=\\frac{17}{2}$.",
+          "explanation": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{3}+2(y_1+\\cdots+y_{2})\\right]=\\frac{1}{2}\\times 17=\\frac{17}{2}$.",
+          "cross_lesson": "9.01 Complex Numbers"
+        },
+        {
+          "q": "Using the trapezium rule with $2$ strips of width $h=1$, estimate $\\int y\\,dx$ given $y_{0}=9, y_{1}=10, y_{2}=4$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Volumes of revolution: washer and shell methods",
+          "choices": [
+            "$\\frac{35}{2}$",
+            "$\\frac{23}{2}$",
+            "$\\frac{199}{12}$",
+            "$\\frac{33}{2}$"
+          ],
+          "correct": 3,
+          "answer": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{2}+2(y_1+\\cdots+y_{1})\\right]=\\frac{1}{2}\\times 33=\\frac{33}{2}$.",
+          "explanation": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{2}+2(y_1+\\cdots+y_{1})\\right]=\\frac{1}{2}\\times 33=\\frac{33}{2}$.",
+          "cross_lesson": "1.01 Functions: Modulus & Inverse",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -2.0,
+                "label": "$(1,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Using the trapezium rule with $2$ strips of width $h=1$, estimate $\\int y\\,dx$ given $y_{0}=5, y_{1}=7, y_{2}=8$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "A well-designed word problem: designing a vase",
+          "choices": [
+            "$\\frac{27}{2}$",
+            "$\\frac{163}{12}$",
+            "10",
+            "$\\frac{29}{2}$"
+          ],
+          "correct": 0,
+          "answer": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{2}+2(y_1+\\cdots+y_{1})\\right]=\\frac{1}{2}\\times 27=\\frac{27}{2}$.",
+          "explanation": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{2}+2(y_1+\\cdots+y_{1})\\right]=\\frac{1}{2}\\times 27=\\frac{27}{2}$.",
+          "cross_lesson": "10.01 Numerical Methods"
+        },
+        {
+          "q": "Using the trapezium rule with $2$ strips of width $h=1$, estimate $\\int y\\,dx$ given $y_{0}=10, y_{1}=5, y_{2}=5$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Standard Integrals (Trig, Exp & Rational)",
+          "choices": [
+            "10",
+            "$\\frac{151}{12}$",
+            "$\\frac{27}{2}$",
+            "$\\frac{25}{2}$"
+          ],
+          "correct": 3,
+          "answer": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{2}+2(y_1+\\cdots+y_{1})\\right]=\\frac{1}{2}\\times 25=\\frac{25}{2}$.",
+          "explanation": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{2}+2(y_1+\\cdots+y_{1})\\right]=\\frac{1}{2}\\times 25=\\frac{25}{2}$.",
+          "cross_lesson": "11.01 Differential Equations"
+        },
+        {
+          "q": "Using the trapezium rule with $5$ strips of width $h=1$, estimate $\\int y\\,dx$ given $y_{0}=14, y_{1}=8, y_{2}=10, y_{3}=9, y_{4}=7, y_{5}=5$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Integration by Substitution",
+          "choices": [
+            "$\\frac{89}{2}$",
+            "$\\frac{53}{2}$",
+            "$\\frac{87}{2}$",
+            "$\\frac{523}{12}$"
+          ],
+          "correct": 2,
+          "answer": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{5}+2(y_1+\\cdots+y_{4})\\right]=\\frac{1}{2}\\times 87=\\frac{87}{2}$.",
+          "explanation": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{5}+2(y_1+\\cdots+y_{4})\\right]=\\frac{1}{2}\\times 87=\\frac{87}{2}$.",
+          "cross_lesson": "12.01 Poisson Distribution"
+        },
+        {
+          "q": "Using the trapezium rule with $4$ strips of width $h=1$, estimate $\\int y\\,dx$ given $y_{0}=2, y_{1}=8, y_{2}=5, y_{3}=13, y_{4}=5$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Integration by Parts",
+          "choices": [
+            "$\\frac{33}{2}$",
+            "$\\frac{355}{12}$",
+            "$\\frac{61}{2}$",
+            "$\\frac{59}{2}$"
+          ],
+          "correct": 3,
+          "answer": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{4}+2(y_1+\\cdots+y_{3})\\right]=\\frac{1}{2}\\times 59=\\frac{59}{2}$.",
+          "explanation": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{4}+2(y_1+\\cdots+y_{3})\\right]=\\frac{1}{2}\\times 59=\\frac{59}{2}$.",
+          "cross_lesson": "13.01 Continuous Random Variables"
+        },
+        {
+          "q": "Using the trapezium rule with $4$ strips of width $h=1$, estimate $\\int y\\,dx$ given $y_{0}=7, y_{1}=11, y_{2}=6, y_{3}=13, y_{4}=12$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Partial Fractions Integration & Trapezium Rule",
+          "choices": [
+            "$\\frac{81}{2}$",
+            "$\\frac{475}{12}$",
+            "$\\frac{79}{2}$",
+            "$\\frac{49}{2}$"
+          ],
+          "correct": 2,
+          "answer": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{4}+2(y_1+\\cdots+y_{3})\\right]=\\frac{1}{2}\\times 79=\\frac{79}{2}$.",
+          "explanation": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{4}+2(y_1+\\cdots+y_{3})\\right]=\\frac{1}{2}\\times 79=\\frac{79}{2}$.",
+          "cross_lesson": "14.01 Sampling & Estimation"
+        },
+        {
+          "q": "Using the trapezium rule with $4$ strips of width $h=1$, estimate $\\int y\\,dx$ given $y_{0}=13, y_{1}=15, y_{2}=9, y_{3}=13, y_{4}=12$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Integration by substitution",
+          "choices": [
+            "$\\frac{99}{2}$",
+            "31",
+            "$\\frac{595}{12}$",
+            "$\\frac{101}{2}$"
+          ],
+          "correct": 0,
+          "answer": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{4}+2(y_1+\\cdots+y_{3})\\right]=\\frac{1}{2}\\times 99=\\frac{99}{2}$.",
+          "explanation": "$\\int y\\,dx\\approx\\frac{h}{2}\\left[y_0+y_{4}+2(y_1+\\cdots+y_{3})\\right]=\\frac{1}{2}\\times 99=\\frac{99}{2}$.",
+          "cross_lesson": "15.01 Hypothesis Testing"
         }
       ]
     }

@@ -3,12 +3,315 @@
   "num": "5.01",
   "slug": "the-fundamental-theorem-of-calculus",
   "title": "The Fundamental Theorem of Calculus",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 5.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: FTC Part 1 (Derivative of an Accumulation Function)",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+      "questions": [
+        {
+          "q": "Evaluate each definite integral:",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Part 2: evaluating definite integrals",
+          "parts": [
+            "$\\int_1^3 (2x + 1)\\,dx$",
+            "$\\int_0^{\\pi} \\sin x\\,dx$",
+            "$\\int_1^4 \\sqrt{x}\\,dx$"
+          ],
+          "cols": 1,
+          "answers": [
+            "$\\left[x^2+x\\right]_1^3 = 12 - 2 = 10$.",
+            "$\\left[-\\cos x\\right]_0^{\\pi} = 1 - (-1) = 2$.",
+            "$\\left[\\frac{2}{3}x^{3/2}\\right]_1^4 = \\frac{16}{3} - \\frac{2}{3} = \\frac{14}{3}$."
+          ],
+          "answer": "(a) $\\left[x^2+x\\right]_1^3 = 12 - 2 = 10$.; (b) $\\left[-\\cos x\\right]_0^{\\pi} = 1 - (-1) = 2$.; (c) $\\left[\\frac{2}{3}x^{3/2}\\right]_1^4 = \\frac{16}{3} - \\frac{2}{3} = \\frac{14}{3}$.",
+          "explanation": "(a) $\\left[x^2+x\\right]_1^3 = 12 - 2 = 10$.; (b) $\\left[-\\cos x\\right]_0^{\\pi} = 1 - (-1) = 2$.; (c) $\\left[\\frac{2}{3}x^{3/2}\\right]_1^4 = \\frac{16}{3} - \\frac{2}{3} = \\frac{14}{3}$."
+        },
+        {
+          "q": "Evaluate $\\int_0^1 e^{2x}\\,dx$, to three decimal places.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Part 2: evaluating definite integrals",
+          "answer": "$\\left[\\frac{1}{2}e^{2x}\\right]_0^1 = \\frac{1}{2}(e^2 - 1) \\approx 3.195$.",
+          "explanation": "$\\left[\\frac{1}{2}e^{2x}\\right]_0^1 = \\frac{1}{2}(e^2 - 1) \\approx 3.195$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (0))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -1.0,
+                "label": "$(0,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Use the Fundamental Theorem, Part 1, to find $\\frac{d}{dx}\\int_2^x (t^3 + 1)\\,dt$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Part 1: differentiating an integral",
+          "answer": "$= x^3 + 1$ (directly, by FTC Part 1).",
+          "explanation": "$= x^3 + 1$ (directly, by FTC Part 1)."
+        },
+        {
+          "q": "Find $\\frac{d}{dx}\\int_1^{x^2} \\sin(t)\\,dt$ using the chain rule with FTC.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Part 1: differentiating an integral",
+          "answer": "$= \\sin(x^2)\\cdot 2x = 2x\\sin(x^2)$.",
+          "explanation": "$= \\sin(x^2)\\cdot 2x = 2x\\sin(x^2)$."
+        },
+        {
+          "q": "Let $g(x) = \\int_0^x \\sqrt{4 + t^2}\\,dt$. Find $g'(3)$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Part 1: differentiating an integral",
+          "answer": "$g'(x) = \\sqrt{4 + x^2}$, so $g'(3) = \\sqrt{13}$.",
+          "explanation": "$g'(x) = \\sqrt{4 + x^2}$, so $g'(3) = \\sqrt{13}$."
+        },
+        {
+          "q": "Find the average value of $f(x) = x^2$ on $[0, 3]$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Average value and applications",
+          "answer": "$\\frac{1}{3}\\int_0^3 x^2\\,dx = \\frac{1}{3}\\cdot 9 = 3$.",
+          "explanation": "$\\frac{1}{3}\\int_0^3 x^2\\,dx = \\frac{1}{3}\\cdot 9 = 3$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**2"
+            ],
+            "xmin": -0.5,
+            "xmax": 3.5,
+            "ymin": -1,
+            "ymax": 10,
+            "width": 200
+          }
+        },
+        {
+          "q": "A car's velocity is $v(t) = 3t^2 + 2$ m/s for $0 \\leq t \\leq 4$. Find the total distance traveled, and the average velocity over this interval.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Average value and applications",
+          "answer": "Distance $= \\int_0^4 (3t^2+2)\\,dt = \\left[t^3+2t\\right]_0^4 = 64+8 = 72$ m. Average velocity $= \\frac{72}{4} = 18$ m/s.",
+          "explanation": "Distance $= \\int_0^4 (3t^2+2)\\,dt = \\left[t^3+2t\\right]_0^4 = 64+8 = 72$ m. Average velocity $= \\frac{72}{4} = 18$ m/s.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "3*x**2 + 2"
+            ],
+            "xmin": -0.3,
+            "xmax": 4.3,
+            "ymin": 0,
+            "ymax": 52,
+            "width": 220
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Evaluate $\\int_0^2 (x^3 - 2x + 3)\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Further FTC practice",
+          "answer": "$\\left[\\frac{x^4}{4}-x^2+3x\\right]_0^2 = (4-4+6)-0=6$.",
+          "explanation": "$\\left[\\frac{x^4}{4}-x^2+3x\\right]_0^2 = (4-4+6)-0=6$."
+        },
+        {
+          "q": "Find $\\frac{d}{dx}\\int_x^5 \\cos(t^2)\\,dt$, using the property $\\int_a^b = -\\int_b^a$ before applying FTC Part 1.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Further FTC practice",
+          "answer": "$\\int_x^5 \\cos(t^2)\\,dt = -\\int_5^x \\cos(t^2)\\,dt$, so the derivative is $-\\cos(x^2)$.",
+          "explanation": "$\\int_x^5 \\cos(t^2)\\,dt = -\\int_5^x \\cos(t^2)\\,dt$, so the derivative is $-\\cos(x^2)$."
+        },
+        {
+          "q": "Find the average value of $f(x)=\\sin x$ on $[0,\\pi]$, to three decimal places.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Further FTC practice",
+          "answer": "$\\frac{1}{\\pi}\\int_0^\\pi \\sin x\\,dx = \\frac{1}{\\pi}\\left[-\\cos x\\right]_0^\\pi = \\frac{2}{\\pi} \\approx 0.637$.",
+          "explanation": "$\\frac{1}{\\pi}\\int_0^\\pi \\sin x\\,dx = \\frac{1}{\\pi}\\left[-\\cos x\\right]_0^\\pi = \\frac{2}{\\pi} \\approx 0.637$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "sin(x)"
+            ],
+            "xmin": -0.3,
+            "xmax": 3.5,
+            "ymin": -0.2,
+            "ymax": 1.2,
+            "width": 220
+          }
+        },
+        {
+          "q": "Find the value(s) of $c$ guaranteed by the Mean Value Theorem for Integrals for $f(x)=x^2$ on $[0,3]$ (where $f(c)$ equals the average value of $f$).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Mean Value Theorem for integrals",
+          "answer": "Average value $=\\frac{1}{3}\\int_0^3x^2\\,dx=3$ (found earlier). Solve $c^2=3$: $c=\\sqrt{3}$ (taking the positive root within $[0,3]$).",
+          "explanation": "Average value $=\\frac{1}{3}\\int_0^3x^2\\,dx=3$ (found earlier). Solve $c^2=3$: $c=\\sqrt{3}$ (taking the positive root within $[0,3]$)."
+        },
+        {
+          "q": "Evaluate $\\int_2^5 f(x)\\,dx$ given that the average value of $f$ on $[2,5]$ is $7$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Mean Value Theorem for integrals",
+          "answer": "Average value $=\\frac{1}{5-2}\\int_2^5 f(x)\\,dx = 7$, so $\\int_2^5 f(x)\\,dx = 7(3)=21$.",
+          "explanation": "Average value $=\\frac{1}{5-2}\\int_2^5 f(x)\\,dx = 7$, so $\\int_2^5 f(x)\\,dx = 7(3)=21$."
+        },
+        {
+          "q": "Evaluate $\\int_0^4 f(x)\\,dx$ where $f(x)=x$ for $x\\leq2$ and $f(x)=2x-2$ for $x>2$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Integrals of piecewise functions",
+          "answer": "$\\int_0^2 x\\,dx + \\int_2^4(2x-2)\\,dx = \\left[\\frac{x^2}{2}\\right]_0^2 + \\left[x^2-2x\\right]_2^4 = 2 + (8-0) = 10$.",
+          "explanation": "$\\int_0^2 x\\,dx + \\int_2^4(2x-2)\\,dx = \\left[\\frac{x^2}{2}\\right]_0^2 + \\left[x^2-2x\\right]_2^4 = 2 + (8-0) = 10$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "np.where(x <= 2, x, 2*x - 2)"
+            ],
+            "xmin": -0.5,
+            "xmax": 4.5,
+            "ymin": -1,
+            "ymax": 8,
+            "width": 220
+          }
+        },
+        {
+          "q": "For $g(x)=\\int_0^x(t^2-2)\\,dt$, find $g'(x)$ using FTC Part 1, then find where $g$ has a local minimum by analyzing the sign of $g'(x)$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Visualizing the two parts of FTC together",
+          "answer": "$g'(x)=x^2-2$ (FTC Part 1). Setting $g'(x)=0$: $x=\\pm\\sqrt{2}$. Since $g'$ changes from negative to positive at $x=\\sqrt{2}$ (for $x>0$), $g$ has a local minimum at $x=\\sqrt{2}$.",
+          "explanation": "$g'(x)=x^2-2$ (FTC Part 1). Setting $g'(x)=0$: $x=\\pm\\sqrt{2}$. Since $g'$ changes from negative to positive at $x=\\sqrt{2}$ (for $x>0$), $g$ has a local minimum at $x=\\sqrt{2}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**2 - 2"
+            ],
+            "xmin": -3,
+            "xmax": 3,
+            "ymin": -3,
+            "ymax": 6,
+            "width": 220
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "The rate of water flowing into a tank is $r(t)=5+2\\sin(t)$ liters/minute. Find the total volume that flows in during $[0,\\pi]$ minutes, using FTC.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "A capstone FTC application",
+          "cross_lesson": "14.01 Partial Derivatives and the Gradient",
+          "answer": "Volume $=\\int_0^\\pi\\left(5+2\\sin t\\right)dt=\\left[5t-2\\cos t\\right]_0^\\pi=(5\\pi+2)-(0-2)=5\\pi+4\\approx19.71$ liters.",
+          "explanation": "Volume $=\\int_0^\\pi\\left(5+2\\sin t\\right)dt=\\left[5t-2\\cos t\\right]_0^\\pi=(5\\pi+2)-(0-2)=5\\pi+4\\approx19.71$ liters.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "5 + 2*sin(x)"
+            ],
+            "xmin": -0.3,
+            "xmax": 3.5,
+            "ymin": 0,
+            "ymax": 8,
+            "width": 220
+          }
+        },
+        {
+          "q": "Find $\\frac{d}{dx}\\int_0^{x^3}\\sqrt{1+t^2}\\,dt$ using the chain rule with FTC.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "FTC Part 1 with more complex upper limits",
+          "cross_lesson": "15.01 Double Integrals",
+          "answer": "$=\\sqrt{1+(x^3)^2}\\cdot3x^2=3x^2\\sqrt{1+x^6}$.",
+          "explanation": "$=\\sqrt{1+(x^3)^2}\\cdot3x^2=3x^2\\sqrt{1+x^6}$."
+        },
+        {
+          "q": "Find $\\frac{d}{dx}\\int_{x^2}^{5}\\cos(t)\\,dt$, using $\\int_{x^2}^5=-\\int_5^{x^2}$ before differentiating.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "FTC Part 1 with more complex upper limits",
+          "cross_lesson": "16.01 Vector Fields and Line Integrals",
+          "answer": "$\\int_{x^2}^5\\cos t\\,dt=-\\int_5^{x^2}\\cos t\\,dt$, so the derivative is $-\\cos(x^2)\\cdot2x=-2x\\cos(x^2)$.",
+          "explanation": "$\\int_{x^2}^5\\cos t\\,dt=-\\int_5^{x^2}\\cos t\\,dt$, so the derivative is $-\\cos(x^2)\\cdot2x=-2x\\cos(x^2)$."
+        },
+        {
+          "q": "A tank starts with 200 liters of water. Water flows out at rate $r(t)=3t+2$ liters/minute for the first 5 minutes. Use FTC to find the amount of water in the tank at $t=5$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Net change and the FTC",
+          "cross_lesson": "2.01 Evaluating Limits",
+          "answer": "Net change $=-\\int_0^5(3t+2)\\,dt=-\\left[\\frac{3t^2}{2}+2t\\right]_0^5=-(37.5+10)=-47.5$ liters. Amount remaining $=200-47.5=152.5$ liters.",
+          "explanation": "Net change $=-\\int_0^5(3t+2)\\,dt=-\\left[\\frac{3t^2}{2}+2t\\right]_0^5=-(37.5+10)=-47.5$ liters. Amount remaining $=200-47.5=152.5$ liters.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "3*x + 2"
+            ],
+            "xmin": -0.3,
+            "xmax": 5.3,
+            "ymin": 0,
+            "ymax": 18,
+            "width": 220
+          }
+        },
+        {
+          "q": "The graph shows $f(x)=x^2-1$ on $[0,3]$. Use FTC to find $\\int_0^3(x^2-1)\\,dx$ and explain why the result is not simply the area of the shaded region (part of the curve dips below the axis).",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Visualizing FTC Part 2 as area",
+          "cross_lesson": "2.02 Continuity",
+          "answer": "$\\left[\\frac{x^3}{3}-x\\right]_0^3=(9-3)-0=6$. This is the SIGNED area: the small region below the axis on $[0,1]$ is subtracted from the larger region above the axis on $[1,3]$, so $6$ is a net value, not the total unsigned area.",
+          "explanation": "$\\left[\\frac{x^3}{3}-x\\right]_0^3=(9-3)-0=6$. This is the SIGNED area: the small region below the axis on $[0,1]$ is subtracted from the larger region above the axis on $[1,3]$, so $6$ is a net value, not the total unsigned area.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**2 - 1"
+            ],
+            "xmin": -0.5,
+            "xmax": 3.5,
+            "ymin": -1.5,
+            "ymax": 8,
+            "width": 220
+          }
+        },
+        {
+          "q": "Let $F(x)=\\int_1^x(3t^2-2)\\,dt$. Find $F(2)$ using Part 2, then verify $F'(2)$ using Part 1 and confirm it matches direct substitution into the integrand.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Combining FTC Part 1 and Part 2 in one problem",
+          "cross_lesson": "3.01 The Derivative from First Principles",
+          "answer": "$F(2)=\\left[t^3-2t\\right]_1^2=(8-4)-(1-2)=4-(-1)=5$. By Part 1, $F'(x)=3x^2-2$, so $F'(2)=12-2=10$, which matches the integrand $3t^2-2$ evaluated at $t=2$: $3(4)-2=10$ ✓.",
+          "explanation": "$F(2)=\\left[t^3-2t\\right]_1^2=(8-4)-(1-2)=4-(-1)=5$. By Part 1, $F'(x)=3x^2-2$, so $F'(2)=12-2=10$, which matches the integrand $3t^2-2$ evaluated at $t=2$: $3(4)-2=10$ ✓."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
           "q": "If $g(x) = \\int_1^x \\sqrt{t^3 + 1}\\,dt$, find $g'(x)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "FTC Part 1 (Derivative of an Accumulation Function)",
           "choices": [
             "$\\sqrt{x^3 + 1}$",
             "$\\frac{3x^2}{2\\sqrt{x^3 + 1}}$",
@@ -16,10 +319,14 @@
             "$\\frac{1}{3}(x^3 + 1)^{3/2}$"
           ],
           "correct": 0,
-          "answer": "By FTC Part 1, $\\frac{d}{dx}\\left[\\int_a^x f(t)\\,dt\\right] = f(x)$. Thus $g'(x) = \\sqrt{x^3 + 1}$."
+          "answer": "By FTC Part 1, $\\frac{d}{dx}\\left[\\int_a^x f(t)\\,dt\\right] = f(x)$. Thus $g'(x) = \\sqrt{x^3 + 1}$.",
+          "explanation": "By FTC Part 1, $\\frac{d}{dx}\\left[\\int_a^x f(t)\\,dt\\right] = f(x)$. Thus $g'(x) = \\sqrt{x^3 + 1}$."
         },
         {
           "q": "Find $\\frac{d}{dx}\\left[\\int_x^5 \\cos(t^2)\\,dt\\right]$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "FTC Part 1 (Derivative of an Accumulation Function)",
           "choices": [
             "$-\\cos(x^2)$",
             "$\\cos(x^2)$",
@@ -27,10 +334,14 @@
             "$\\cos(25) - \\cos(x^2)$"
           ],
           "correct": 0,
-          "answer": "Reverse limits: $\\int_x^5 = -\\int_5^x$. Differentiating yields $-\\cos(x^2)$."
+          "answer": "Reverse limits: $\\int_x^5 = -\\int_5^x$. Differentiating yields $-\\cos(x^2)$.",
+          "explanation": "Reverse limits: $\\int_x^5 = -\\int_5^x$. Differentiating yields $-\\cos(x^2)$."
         },
         {
           "q": "Find $h'(x)$ for $h(x) = \\int_0^{x^2} \\sin(t)\\,dt$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "FTC Part 1 (Derivative of an Accumulation Function)",
           "choices": [
             "$2x\\sin(x^2)$",
             "$\\sin(x^2)$",
@@ -38,15 +349,14 @@
             "$\\sin(x^4)$"
           ],
           "correct": 0,
-          "answer": "Chain rule with FTC 1: $\\frac{d}{dx}\\left[\\int_a^{u(x)} f(t)\\,dt\\right] = f(u(x)) \\cdot u'(x) = \\sin(x^2) \\cdot 2x = 2x\\sin(x^2)$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: FTC Part 1 with Variable Limits on Both Bounds",
-      "questions": [
+          "answer": "Chain rule with FTC 1: $\\frac{d}{dx}\\left[\\int_a^{u(x)} f(t)\\,dt\\right] = f(u(x)) \\cdot u'(x) = \\sin(x^2) \\cdot 2x = 2x\\sin(x^2)$.",
+          "explanation": "Chain rule with FTC 1: $\\frac{d}{dx}\\left[\\int_a^{u(x)} f(t)\\,dt\\right] = f(u(x)) \\cdot u'(x) = \\sin(x^2) \\cdot 2x = 2x\\sin(x^2)$."
+        },
         {
           "q": "Find $F'(x)$ for $F(x) = \\int_{2x}^{3x} (t^2 + 1)\\,dt$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "FTC Part 1 with Variable Limits on Both Bounds",
           "choices": [
             "$27x^2 + 3 - 2(4x^2 + 1) = 19x^2 + 1$",
             "$19x^2 + 1$",
@@ -54,10 +364,14 @@
             "$5x^2 + 1$"
           ],
           "correct": 0,
-          "answer": "Split at 0: $\\int_{2x}^{3x} = \\int_0^{3x} - \\int_0^{2x}$. Differentiating: $3[(3x)^2 + 1] - 2[(2x)^2 + 1] = 3(9x^2 + 1) - 2(4x^2 + 1) = 27x^2 + 3 - 8x^2 - 2 = 19x^2 + 1$."
+          "answer": "Split at 0: $\\int_{2x}^{3x} = \\int_0^{3x} - \\int_0^{2x}$. Differentiating: $3[(3x)^2 + 1] - 2[(2x)^2 + 1] = 3(9x^2 + 1) - 2(4x^2 + 1) = 27x^2 + 3 - 8x^2 - 2 = 19x^2 + 1$.",
+          "explanation": "Split at 0: $\\int_{2x}^{3x} = \\int_0^{3x} - \\int_0^{2x}$. Differentiating: $3[(3x)^2 + 1] - 2[(2x)^2 + 1] = 3(9x^2 + 1) - 2(4x^2 + 1) = 27x^2 + 3 - 8x^2 - 2 = 19x^2 + 1$."
         },
         {
           "q": "Evaluate $\\frac{d}{dx}\\left[\\int_{\\sin x}^{\\cos x} e^t\\,dt\\right]$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "FTC Part 1 with Variable Limits on Both Bounds",
           "choices": [
             "$-e^{\\cos x}\\sin x - e^{\\sin x}\\cos x$",
             "$e^{\\cos x} - e^{\\sin x}$",
@@ -65,10 +379,14 @@
             "$-e^{\\cos x} + e^{\\sin x}$"
           ],
           "correct": 0,
-          "answer": "FTC with chain rule: $e^{\\cos x} \\cdot (-\\sin x) - e^{\\sin x} \\cdot (\\cos x) = -e^{\\cos x}\\sin x - e^{\\sin x}\\cos x$."
+          "answer": "FTC with chain rule: $e^{\\cos x} \\cdot (-\\sin x) - e^{\\sin x} \\cdot (\\cos x) = -e^{\\cos x}\\sin x - e^{\\sin x}\\cos x$.",
+          "explanation": "FTC with chain rule: $e^{\\cos x} \\cdot (-\\sin x) - e^{\\sin x} \\cdot (\\cos x) = -e^{\\cos x}\\sin x - e^{\\sin x}\\cos x$."
         },
         {
           "q": "Find the inflection points of $g(x) = \\int_0^x (t^3 - 3t)\\,dt$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "FTC Part 1 with Variable Limits on Both Bounds",
           "choices": [
             "$x = 1$ and $x = -1$",
             "$x = 0$ and $x = \\pm\\sqrt{3}$",
@@ -76,15 +394,14 @@
             "No inflection points"
           ],
           "correct": 0,
-          "answer": "$g'(x) = x^3 - 3x$. $g''(x) = 3x^2 - 3 = 3(x-1)(x+1) = 0 \\Rightarrow x = \\pm 1$. Sign of $g''(x)$ changes at $x = -1$ and $x = 1$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: FTC Part 2 (Evaluating Definite Integrals)",
-      "questions": [
+          "answer": "$g'(x) = x^3 - 3x$. $g''(x) = 3x^2 - 3 = 3(x-1)(x+1) = 0 \\Rightarrow x = \\pm 1$. Sign of $g''(x)$ changes at $x = -1$ and $x = 1$.",
+          "explanation": "$g'(x) = x^3 - 3x$. $g''(x) = 3x^2 - 3 = 3(x-1)(x+1) = 0 \\Rightarrow x = \\pm 1$. Sign of $g''(x)$ changes at $x = -1$ and $x = 1$."
+        },
         {
           "q": "Evaluate $\\int_1^3 (3x^2 - 4x + 1)\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "FTC Part 2 (Evaluating Definite Integrals)",
           "choices": [
             "$12$",
             "$14$",
@@ -92,10 +409,14 @@
             "$16$"
           ],
           "correct": 0,
-          "answer": "Antiderivative $F(x) = x^3 - 2x^2 + x$. $F(3) = 27 - 18 + 3 = 12$. $F(1) = 1 - 2 + 1 = 0$. Value $= 12 - 0 = 12$."
+          "answer": "Antiderivative $F(x) = x^3 - 2x^2 + x$. $F(3) = 27 - 18 + 3 = 12$. $F(1) = 1 - 2 + 1 = 0$. Value $= 12 - 0 = 12$.",
+          "explanation": "Antiderivative $F(x) = x^3 - 2x^2 + x$. $F(3) = 27 - 18 + 3 = 12$. $F(1) = 1 - 2 + 1 = 0$. Value $= 12 - 0 = 12$."
         },
         {
           "q": "Evaluate $\\int_0^{\\pi/4} \\sec^2(x)\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "FTC Part 2 (Evaluating Definite Integrals)",
           "choices": [
             "$1$",
             "$\\sqrt{2}$",
@@ -103,10 +424,19 @@
             "$0$"
           ],
           "correct": 0,
-          "answer": "$[\\tan x]_0^{\\pi/4} = \\tan(\\pi/4) - \\tan(0) = 1 - 0 = 1$."
-        },
+          "answer": "$[\\tan x]_0^{\\pi/4} = \\tan(\\pi/4) - \\tan(0) = 1 - 0 = 1$.",
+          "explanation": "$[\\tan x]_0^{\\pi/4} = \\tan(\\pi/4) - \\tan(0) = 1 - 0 = 1$."
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
         {
           "q": "Evaluate $\\int_1^e \\frac{4}{x}\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "FTC Part 2 (Evaluating Definite Integrals)",
           "choices": [
             "$4$",
             "$4e$",
@@ -114,26 +444,29 @@
             "$1$"
           ],
           "correct": 0,
-          "answer": "$[4\\ln|x|]_1^e = 4\\ln(e) - 4\\ln(1) = 4(1) - 4(0) = 4$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Average Value of a Function",
-      "questions": [
+          "answer": "$[4\\ln|x|]_1^e = 4\\ln(e) - 4\\ln(1) = 4(1) - 4(0) = 4$.",
+          "explanation": "$[4\\ln|x|]_1^e = 4\\ln(e) - 4\\ln(1) = 4(1) - 4(0) = 4$."
+        },
         {
-          "q": "State the formula for the average value $f_{\\text{avg}}$ of a continuous function $f$ on $[a, b]$.",
+          "q": "State the formula for the average value $f_{\\mathrm{avg}}$ of a continuous function $f$ on $[a, b]$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Average Value of a Function",
           "choices": [
-            "$f_{\\text{avg}} = \\frac{1}{b - a} \\int_a^b f(x)\\,dx$",
-            "$f_{\\text{avg}} = \\frac{f(a) + f(b)}{2}$",
-            "$f_{\\text{avg}} = \\int_a^b f(x)\\,dx$",
-            "$f_{\\text{avg}} = \\frac{f(b) - f(a)}{b - a}$"
+            "$f_{\\mathrm{avg}} = \\frac{1}{b - a} \\int_a^b f(x)\\,dx$",
+            "$f_{\\mathrm{avg}} = \\frac{f(a) + f(b)}{2}$",
+            "$f_{\\mathrm{avg}} = \\int_a^b f(x)\\,dx$",
+            "$f_{\\mathrm{avg}} = \\frac{f(b) - f(a)}{b - a}$"
           ],
           "correct": 0,
-          "answer": "The average value is the total accumulation divided by the width of the interval: $\\frac{1}{b - a}\\int_a^b f(x)\\,dx$."
+          "answer": "The average value is the total accumulation divided by the width of the interval: $\\frac{1}{b - a}\\int_a^b f(x)\\,dx$.",
+          "explanation": "The average value is the total accumulation divided by the width of the interval: $\\frac{1}{b - a}\\int_a^b f(x)\\,dx$."
         },
         {
           "q": "Find the average value of $f(x) = 3x^2 - 2x$ on the interval $[0, 2]$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Average Value of a Function",
           "choices": [
             "$2$",
             "$4$",
@@ -141,10 +474,14 @@
             "$1$"
           ],
           "correct": 0,
-          "answer": "$\\frac{1}{2 - 0} \\int_0^2 (3x^2 - 2x)\\,dx = \\frac{1}{2}[x^3 - x^2]_0^2 = \\frac{1}{2}[8 - 4] = \\frac{1}{2}(4) = 2$."
+          "answer": "$\\frac{1}{2 - 0} \\int_0^2 (3x^2 - 2x)\\,dx = \\frac{1}{2}[x^3 - x^2]_0^2 = \\frac{1}{2}[8 - 4] = \\frac{1}{2}(4) = 2$.",
+          "explanation": "$\\frac{1}{2 - 0} \\int_0^2 (3x^2 - 2x)\\,dx = \\frac{1}{2}[x^3 - x^2]_0^2 = \\frac{1}{2}[8 - 4] = \\frac{1}{2}(4) = 2$."
         },
         {
-          "q": "By the Mean Value Theorem for Integrals, find $c \\in [0, 3]$ such that $f(c) = f_{\\text{avg}}$ for $f(x) = 2x$.",
+          "q": "By the Mean Value Theorem for Integrals, find $c \\in [0, 3]$ such that $f(c) = f_{\\mathrm{avg}}$ for $f(x) = 2x$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Average Value of a Function",
           "choices": [
             "$1.5$",
             "$1.0$",
@@ -152,7 +489,216 @@
             "$0.75$"
           ],
           "correct": 0,
-          "answer": "$f_{\\text{avg}} = \\frac{1}{3}\\int_0^3 2x\\,dx = \\frac{1}{3}[x^2]_0^3 = \\frac{1}{3}(9) = 3$. Set $2c = 3 \\Rightarrow c = 1.5$."
+          "answer": "$f_{\\mathrm{avg}} = \\frac{1}{3}\\int_0^3 2x\\,dx = \\frac{1}{3}[x^2]_0^3 = \\frac{1}{3}(9) = 3$. Set $2c = 3 \\Rightarrow c = 1.5$.",
+          "explanation": "$f_{\\mathrm{avg}} = \\frac{1}{3}\\int_0^3 2x\\,dx = \\frac{1}{3}[x^2]_0^3 = \\frac{1}{3}(9) = 3$. Set $2c = 3 \\Rightarrow c = 1.5$."
+        },
+        {
+          "q": "For $F(x)=\\int_a^x f(t)dt$ with $f$ continuous, the proof of FTC Part 1 uses the Mean Value Theorem for Integrals to write $F(x+h)-F(x)$ as:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "FTC Part 1 (Derivative of an Accumulation Function)",
+          "choices": [
+            "hf'(x)",
+            "$f(c)\\cdot h\\mathrm{\\ for\\ some\\ }c\\in[x,x+h]$",
+            "$f(x)\\cdot(x+h)$",
+            "f(x+h)-f(x)"
+          ],
+          "correct": 1,
+          "answer": "MVT for integrals gives $\\int_x^{x+h}f(t)dt=f(c)h$ for some $c$ between $x$ and $x+h$; letting $h\\rightarrow0$, $c\\rightarrow x$.",
+          "explanation": "MVT for integrals gives $\\int_x^{x+h}f(t)dt=f(c)h$ for some $c$ between $x$ and $x+h$; letting $h\\rightarrow0$, $c\\rightarrow x$."
+        },
+        {
+          "q": "If $f$ has a jump discontinuity at $c\\in(a,b)$, the accumulation function $F(x)=\\int_a^xf(t)dt$ is still:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "FTC Part 1 with Variable Limits on Both Bounds",
+          "choices": [
+            "$\\mathrm{continuous\\ at\\ }c\\mathrm{\\ (though\\ not\\ differentiable\\ there)}$",
+            "discontinuous at $c$",
+            "differentiable at $c$",
+            "undefined at $c$"
+          ],
+          "correct": 0,
+          "answer": "Integrating a bounded (even discontinuous) function always yields a continuous accumulation function; differentiability can fail at the jump.",
+          "explanation": "Integrating a bounded (even discontinuous) function always yields a continuous accumulation function; differentiability can fail at the jump."
+        },
+        {
+          "q": "FTC Part 1: $G(x)=\\int_0^x\\sin(t^2)dt$. $G'(x)=$",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "FTC Part 2 (Evaluating Definite Integrals)",
+          "choices": [
+            "$\\sin(x^2)$",
+            "$\\cos(x^2)$",
+            "$2x\\sin(x^2)$",
+            "$\\sin x^2/x$"
+          ],
+          "correct": 0,
+          "answer": "Applying Fundamental Theorem of Calculus principles, FTC1: $G'(x)=\\sin(x^2)$. Therefore, the verified correct option is $\\sin(x^2)$.",
+          "explanation": "Applying Fundamental Theorem of Calculus principles, FTC1: $G'(x)=\\sin(x^2)$. Therefore, the verified correct option is $\\sin(x^2)$."
+        },
+        {
+          "q": "FTC Part 2: $\\int_a^b f(x)dx=F(b)-F(a)$ where $F'=f$. Evaluate $\\int_0^\\pi\\cos x\\,dx$:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Average Value of a Function",
+          "choices": [
+            "$0$",
+            "$2$",
+            "$-2$",
+            "$1$"
+          ],
+          "correct": 0,
+          "answer": "Applying Fundamental Theorem of Calculus principles, $[\\sin x]_0^\\pi=0-0=0$. Therefore, the verified correct option is $0$.",
+          "explanation": "Applying Fundamental Theorem of Calculus principles, $[\\sin x]_0^\\pi=0-0=0$. Therefore, the verified correct option is $0$."
+        },
+        {
+          "q": "Net change theorem: $\\int_1^4 v(t)dt$ gives the net displacement if $v(t)$ is velocity. For $v=2t$:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Part 2: evaluating definite integrals",
+          "choices": [
+            "$15$",
+            "$8$",
+            "$30$",
+            "$4$"
+          ],
+          "correct": 0,
+          "answer": "Applying Fundamental Theorem of Calculus principles, $[t^2]_1^4=16-1=15$. Therefore, the verified correct option is $15$.",
+          "explanation": "Applying Fundamental Theorem of Calculus principles, $[t^2]_1^4=16-1=15$. Therefore, the verified correct option is $15$."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "If $f$ is continuous on $[a,b]$ and $F$ is any antiderivative, FTC Part 2 requires no assumption that $F$ is:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Part 1: differentiating an integral",
+          "choices": [
+            "equal to $f$",
+            "$\\mathrm{unique\\ --\\ any\\ antiderivative\\ works,\\ since\\ they\\ differ\\ by\\ a\\ constant}$",
+            "bounded on $[a,b]$",
+            "differentiable everywhere"
+          ],
+          "correct": 1,
+          "answer": "Any two antiderivatives of $f$ differ by a constant $C$, which cancels in $F(b)-F(a)$.",
+          "explanation": "Any two antiderivatives of $f$ differ by a constant $C$, which cancels in $F(b)-F(a)$.",
+          "cross_lesson": "2.01 Evaluating Limits"
+        },
+        {
+          "q": "The Net Change Theorem $\\int_a^b F'(x)dx=F(b)-F(a)$ requires $F'$ to be:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Average value and applications",
+          "choices": [
+            "continuous and positive",
+            "$\\mathrm{integrable\\ on\\ }[a,b]$",
+            "a polynomial",
+            "bounded and increasing"
+          ],
+          "correct": 1,
+          "answer": "The theorem (a restatement of FTC Part 2) only needs $F'$ integrable on $[a,b]$.",
+          "explanation": "The theorem (a restatement of FTC Part 2) only needs $F'$ integrable on $[a,b]$.",
+          "cross_lesson": "2.02 Continuity"
+        },
+        {
+          "q": "FTC Part 1 shows every continuous function has an:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Further FTC practice",
+          "choices": [
+            "antiderivative",
+            "derivative everywhere",
+            "limit",
+            "inflection point"
+          ],
+          "correct": 0,
+          "answer": "Constructs antiderivative $G(x)=\\int_a^xf\\,dt$.",
+          "explanation": "Constructs antiderivative $G(x)=\\int_a^xf\\,dt$.",
+          "cross_lesson": "3.01 The Derivative from First Principles"
+        },
+        {
+          "q": "Mean value theorem for integrals: $\\int_a^b f\\,dx=f(c)(b-a)$ for some $c\\in(a,b)$. Requires $f$ to be:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Mean Value Theorem for integrals",
+          "choices": [
+            "positive",
+            "integrable and bounded",
+            "continuous",
+            "analytic"
+          ],
+          "correct": 2,
+          "answer": "MVT for integrals: $f$ continuous on $[a,b]$.",
+          "explanation": "MVT for integrals: $f$ continuous on $[a,b]$.",
+          "cross_lesson": "3.02 Differentiation Rules: Power, Product, Quotient, Chain"
+        },
+        {
+          "q": "Let $F(x) = \\int_{2}^{x} (t^2 - 1) dt$. According to the Fundamental Theorem of Calculus, what is the derivative of $F(x)$ with respect to $x$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Integrals of piecewise functions",
+          "choices": [
+            "$x^2 - 1$",
+            "$x^2$",
+            "$x^2 - 1 - (2^2 - 1)$",
+            "$2x$"
+          ],
+          "correct": 0,
+          "answer": "The Fundamental Theorem of Calculus, Part 1, states that if $F(x) = \\int_{a}^{x} f(t) dt$, then $F'(x) = f(x)$. In this problem, $f(t) = t^2 - 1$ and the lower limit of integration is $a=2$. Therefore, $F'(x) = x^2 - 1$.",
+          "explanation": "The Fundamental Theorem of Calculus, Part 1, states that if $F(x) = \\int_{a}^{x} f(t) dt$, then $F'(x) = f(x)$. In this problem, $f(t) = t^2 - 1$ and the lower limit of integration is $a=2$. Therefore, $F'(x) = x^2 - 1$.",
+          "cross_lesson": "4.01 Antiderivatives and Indefinite Integrals"
+        },
+        {
+          "q": "Mean Value Theorem for Integrals: if $f$ is continuous on $[a,b]$, there exists $c\\in(a,b)$ with $\\int_a^b f(x)\\,dx=$",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Visualizing the two parts of FTC together",
+          "choices": [
+            "$f(c)(b-a)$",
+            "$f'(c)(b-a)$",
+            "$f(b)-f(a)$",
+            "$f(c)$"
+          ],
+          "correct": 0,
+          "answer": "This is the integral form of the MVT, closely tied to FTC Part 1: the average value $f(c)$ times the interval length equals the integral.",
+          "explanation": "This is the integral form of the MVT, closely tied to FTC Part 1: the average value $f(c)$ times the interval length equals the integral.",
+          "cross_lesson": "4.02 Riemann Sums and Definite Integrals"
+        },
+        {
+          "q": "Find the average value of $f(x)=\\cos{\\left(x\\right)}$ on $[0,\\frac{\\pi}{2}]$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "A capstone FTC application",
+          "choices": [
+            "$\\frac{2}{\\pi}$",
+            "$\\frac{4}{\\pi}$",
+            "1",
+            "$\\frac{1}{\\pi}$"
+          ],
+          "correct": 0,
+          "answer": "Average value $=\\frac{1}{\\frac{\\pi}{2}-0}\\int_{0}^{\\frac{\\pi}{2}}\\cos{\\left(x\\right)}\\,dx=\\frac{1}{\\frac{\\pi}{2}}=\\frac{2}{\\pi}$.",
+          "explanation": "Average value $=\\frac{1}{\\frac{\\pi}{2}-0}\\int_{0}^{\\frac{\\pi}{2}}\\cos{\\left(x\\right)}\\,dx=\\frac{1}{\\frac{\\pi}{2}}=\\frac{2}{\\pi}$.",
+          "cross_lesson": "6.01 Related Rates"
+        },
+        {
+          "q": "Net area from $0$ to $2\\pi$ of $\\sin x$:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "FTC Part 1 with more complex upper limits",
+          "choices": [
+            "$-2$",
+            "$0$",
+            "$2$",
+            "$4$"
+          ],
+          "correct": 1,
+          "answer": "Applying Fundamental Theorem principles, $[-\\cos x]_0^{2\\pi}=0$. Therefore, the verified correct option is $0$.",
+          "explanation": "Applying Fundamental Theorem principles, $[-\\cos x]_0^{2\\pi}=0$. Therefore, the verified correct option is $0$.",
+          "cross_lesson": "6.02 Optimization and Curve Sketching"
         }
       ]
     }

@@ -3,12 +3,670 @@
   "num": "1.02",
   "slug": "rational-functions-and-asymptotes",
   "title": "Rational Functions & Asymptotes",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 1.02 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Vertical Asymptotes vs. Removable Discontinuities",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
+          "q": "Find the vertical asymptotes and holes of $f(x)=\\frac{x^2-9}{x^2-x-12}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Vertical asymptotes and holes",
+          "answer": "Factor: $f(x)=\\frac{(x-3)(x+3)}{(x-4)(x+3)}$. The factor $(x+3)$ cancels, giving a hole at $x=-3$. The remaining denominator factor $(x-4)$ gives a vertical asymptote at $x=4$.",
+          "explanation": "Factor: $f(x)=\\frac{(x-3)(x+3)}{(x-4)(x+3)}$. The factor $(x+3)$ cancels, giving a hole at $x=-3$. The remaining denominator factor $(x-4)$ gives a vertical asymptote at $x=4$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "(x**2-9)/(x**2-x-12)"
+            ],
+            "xmin": -2,
+            "xmax": 7,
+            "ymin": -6,
+            "ymax": 8,
+            "width": 220
+          }
+        },
+        {
+          "q": "Find the $y$-coordinate of the hole in the function from the previous problem.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Vertical asymptotes and holes",
+          "answer": "Simplified form (away from the hole): $f(x)=\\frac{x-3}{x-4}$. At $x=-3$: $f(-3)=\\frac{-3-3}{-3-4}=\\frac{-6}{-7}=\\frac{6}{7}$. Hole at $\\left(-3,\\frac{6}{7}\\right)$.",
+          "explanation": "Simplified form (away from the hole): $f(x)=\\frac{x-3}{x-4}$. At $x=-3$: $f(-3)=\\frac{-3-3}{-3-4}=\\frac{-6}{-7}=\\frac{6}{7}$. Hole at $\\left(-3,\\frac{6}{7}\\right)$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "1 + 1.5/(x - (-1))"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "asymptotes": {
+              "x": [
+                -1
+              ],
+              "y": [
+                1
+              ]
+            },
+            "point_labels": [
+              {
+                "x": 0.5,
+                "y": 2.0,
+                "label": "$( 0.5, 2 )$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Find the horizontal asymptote of $f(x)=\\frac{3x^2-2x+1}{5x^2+4}$, using the degrees of numerator and denominator.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Horizontal and slant asymptotes",
+          "answer": "Degrees are equal (both 2), so the horizontal asymptote is the ratio of leading coefficients: $y=\\frac{3}{5}$.",
+          "explanation": "Degrees are equal (both 2), so the horizontal asymptote is the ratio of leading coefficients: $y=\\frac{3}{5}$."
+        },
+        {
+          "q": "Find the horizontal asymptote of $g(x)=\\frac{2x+7}{x^2-1}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Horizontal and slant asymptotes",
+          "answer": "Degree of numerator (1) is less than degree of denominator (2), so the horizontal asymptote is $y=0$.",
+          "explanation": "Degree of numerator (1) is less than degree of denominator (2), so the horizontal asymptote is $y=0$."
+        },
+        {
+          "q": "Explain why $h(x)=\\frac{x^2+1}{x-2}$ has a slant (oblique) asymptote instead of a horizontal one, and find it using polynomial division.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Horizontal and slant asymptotes",
+          "answer": "The numerator's degree (2) is exactly one more than the denominator's degree (1), producing a slant asymptote. Dividing: $x^2+1=(x-2)(x+2)+5$, so $h(x)=x+2+\\frac{5}{x-2}$. As $x\\rightarrow\\pm\\infty$, the remainder term vanishes, leaving the slant asymptote $y=x+2$.",
+          "explanation": "The numerator's degree (2) is exactly one more than the denominator's degree (1), producing a slant asymptote. Dividing: $x^2+1=(x-2)(x+2)+5$, so $h(x)=x+2+\\frac{5}{x-2}$. As $x\\rightarrow\\pm\\infty$, the remainder term vanishes, leaving the slant asymptote $y=x+2$."
+        },
+        {
+          "q": "The graph shows $f(x)=\\frac{1}{x-2}+1$, a transformed reciprocal function.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Visualizing a rational function's asymptotes",
+          "parts": [
+            "Identify the vertical asymptote shown.",
+            "Identify the horizontal asymptote shown."
+          ],
+          "cols": 1,
+          "answers": [
+            "Vertical asymptote at $x=2$, where the two branches shoot off toward $\\pm\\infty$.",
+            "Horizontal asymptote at $y=1$, which both branches approach far from $x=2$ (this is the reciprocal function $\\frac{1}{x}$ shifted right 2 and up 1)."
+          ],
+          "answer": "(a) Vertical asymptote at $x=2$, where the two branches shoot off toward $\\pm\\infty$.; (b) Horizontal asymptote at $y=1$, which both branches approach far from $x=2$ (this is the reciprocal function $\\frac{1}{x}$ shifted right 2 and up 1).",
+          "explanation": "(a) Vertical asymptote at $x=2$, where the two branches shoot off toward $\\pm\\infty$.; (b) Horizontal asymptote at $y=1$, which both branches approach far from $x=2$ (this is the reciprocal function $\\frac{1}{x}$ shifted right 2 and up 1).",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "1/(x-2) + 1"
+            ],
+            "xmin": -2,
+            "xmax": 6,
+            "ymin": -4,
+            "ymax": 6,
+            "width": 220
+          }
+        },
+        {
+          "q": "Describe the end behavior of $f(x)=\\frac{2x^3-x}{x^2+1}$ as $x\\rightarrow\\pm\\infty$ (note the numerator's degree exceeds the denominator's by 1, so the function behaves like its slant asymptote).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "End behavior of rational functions",
+          "answer": "Since the degree of the numerator (3) exceeds the denominator (2) by exactly 1, $f$ has a slant asymptote and $f(x)\\rightarrow\\pm\\infty$ as $x\\rightarrow\\pm\\infty$, following the line found by dividing $2x^3-x$ by $x^2+1$, approximately $y=2x$ for large $|x|$.",
+          "explanation": "Since the degree of the numerator (3) exceeds the denominator (2) by exactly 1, $f$ has a slant asymptote and $f(x)\\rightarrow\\pm\\infty$ as $x\\rightarrow\\pm\\infty$, following the line found by dividing $2x^3-x$ by $x^2+1$, approximately $y=2x$ for large $|x|$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "(2*x**3 - x)/(x**2+1)"
+            ],
+            "xmin": -3,
+            "xmax": 3,
+            "ymin": -6,
+            "ymax": 6,
+            "width": 220
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Find the domain, $x$-intercept(s), and $y$-intercept of $f(x)=\\frac{x-5}{x^2-4}$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Domain and intercepts",
+          "answer": "Domain: all reals except $x=\\pm2$ (where the denominator is zero), so $(-\\infty,-2)\\cup(-2,2)\\cup(2,\\infty)$. $x$-intercept: set numerator to $0$: $x=5$, giving $(5,0)$. $y$-intercept: $f(0)=\\frac{-5}{-4}=\\frac{5}{4}$, giving $\\left(0,\\frac{5}{4}\\right)$.",
+          "explanation": "Domain: all reals except $x=\\pm2$ (where the denominator is zero), so $(-\\infty,-2)\\cup(-2,2)\\cup(2,\\infty)$. $x$-intercept: set numerator to $0$: $x=5$, giving $(5,0)$. $y$-intercept: $f(0)=\\frac{-5}{-4}=\\frac{5}{4}$, giving $\\left(0,\\frac{5}{4}\\right)$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "(x-5)/(x**2-4)"
+            ],
+            "xmin": -4,
+            "xmax": 6,
+            "ymin": -6,
+            "ymax": 6,
+            "width": 220
+          }
+        },
+        {
+          "q": "Solve $\\frac{x+1}{x-3}=2$, checking that the solution doesn't create a zero denominator.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Solving rational equations and inequalities",
+          "answer": "$x+1=2(x-3)=2x-6$, so $-x=-7$, $x=7$. Check: $x-3=4\\neq0$, valid. Solution: $x=7$.",
+          "explanation": "$x+1=2(x-3)=2x-6$, so $-x=-7$, $x=7$. Check: $x-3=4\\neq0$, valid. Solution: $x=7$."
+        },
+        {
+          "q": "Solve the inequality $\\frac{x-1}{x+2}>0$ by determining the sign of the expression on each interval created by the zero and the excluded value.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Solving rational equations and inequalities",
+          "answer": "Critical points: $x=1$ (zero) and $x=-2$ (excluded). Testing intervals: for $x<-2$, both factors negative, ratio positive. For $-2<x<1$, numerator negative, denominator positive, ratio negative. For $x>1$, both positive, ratio positive. Solution: $x<-2$ or $x>1$, i.e. $(-\\infty,-2)\\cup(1,\\infty)$.",
+          "explanation": "Critical points: $x=1$ (zero) and $x=-2$ (excluded). Testing intervals: for $x<-2$, both factors negative, ratio positive. For $-2<x<1$, numerator negative, denominator positive, ratio negative. For $x>1$, both positive, ratio positive. Solution: $x<-2$ or $x>1$, i.e. $(-\\infty,-2)\\cup(1,\\infty)$.",
+          "figure": {
+            "type": "numberline",
+            "min": -5,
+            "max": 5,
+            "shade": [
+              -3,
+              3
+            ],
+            "marks": [
+              {
+                "x": -3,
+                "open": true,
+                "label": "$-3$"
+              },
+              {
+                "x": 3,
+                "open": false,
+                "label": "$3$"
+              }
+            ],
+            "width": 250
+          }
+        },
+        {
+          "q": "The graph shows $f(x)=\\frac{x^2}{x-1}$, which has a slant asymptote.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Visualizing a function with a slant asymptote",
+          "parts": [
+            "Find the vertical asymptote and confirm it matches the graph.",
+            "Use polynomial division to find the slant asymptote equation.",
+            "Explain why this function has no horizontal asymptote."
+          ],
+          "cols": 1,
+          "answers": [
+            "Vertical asymptote at $x=1$, matching the break in the graph shown there.",
+            "Dividing: $x^2=(x-1)(x+1)+1$, so $f(x)=x+1+\\frac{1}{x-1}$. Slant asymptote: $y=x+1$, matching the line the branches hug for large $|x|$.",
+            "Since the numerator's degree (2) exceeds the denominator's degree (1), the function grows without bound rather than leveling off, so there is no horizontal asymptote — only the slant asymptote found above."
+          ],
+          "answer": "(a) Vertical asymptote at $x=1$, matching the break in the graph shown there.; (b) Dividing: $x^2=(x-1)(x+1)+1$, so $f(x)=x+1+\\frac{1}{x-1}$. Slant asymptote: $y=x+1$, matching the line the branches hug for large $|x|$.; (c) Since the numerator's degree (2) exceeds the denominator's degree (1), the function grows without bound rather than leveling off, so there is no horizontal asymptote — only the slant asymptote found above.",
+          "explanation": "(a) Vertical asymptote at $x=1$, matching the break in the graph shown there.; (b) Dividing: $x^2=(x-1)(x+1)+1$, so $f(x)=x+1+\\frac{1}{x-1}$. Slant asymptote: $y=x+1$, matching the line the branches hug for large $|x|$.; (c) Since the numerator's degree (2) exceeds the denominator's degree (1), the function grows without bound rather than leveling off, so there is no horizontal asymptote — only the slant asymptote found above.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**2/(x-1)"
+            ],
+            "xmin": -3,
+            "xmax": 5,
+            "ymin": -10,
+            "ymax": 10,
+            "width": 220
+          }
+        },
+        {
+          "q": "Construct a rational function with a vertical asymptote at $x=3$, a hole at $x=-1$, and a horizontal asymptote at $y=2$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Building a rational function from given features",
+          "answer": "Start with $\\frac{2(x+1)}{x+1}\\cdot\\frac{1}{x-3}$-style construction: use $f(x)=\\frac{2(x+1)^2}{(x+1)(x-3)}$. The common factor $(x+1)$ creates the hole at $x=-1$; the remaining $(x-3)$ in the denominator gives the vertical asymptote; matching leading coefficients (2 over 1) gives horizontal asymptote $y=2$.",
+          "explanation": "Start with $\\frac{2(x+1)}{x+1}\\cdot\\frac{1}{x-3}$-style construction: use $f(x)=\\frac{2(x+1)^2}{(x+1)(x-3)}$. The common factor $(x+1)$ creates the hole at $x=-1$; the remaining $(x-3)$ in the denominator gives the vertical asymptote; matching leading coefficients (2 over 1) gives horizontal asymptote $y=2$."
+        },
+        {
+          "q": "Explain why a rational function cannot have both a horizontal asymptote and a slant asymptote at the same time.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Building a rational function from given features",
+          "answer": "A horizontal asymptote occurs when the numerator's degree is less than or equal to the denominator's degree, while a slant asymptote requires the numerator's degree to be exactly one more than the denominator's. These are mutually exclusive degree conditions, so a rational function has at most one of the two (or neither, if the numerator's degree exceeds the denominator's by more than 1).",
+          "explanation": "A horizontal asymptote occurs when the numerator's degree is less than or equal to the denominator's degree, while a slant asymptote requires the numerator's degree to be exactly one more than the denominator's. These are mutually exclusive degree conditions, so a rational function has at most one of the two (or neither, if the numerator's degree exceeds the denominator's by more than 1)."
+        },
+        {
+          "q": "The concentration of a drug in the bloodstream $t$ hours after a dose is modeled by $C(t)=\\frac{50t}{t^2+4}$ (mg/L). Find the horizontal asymptote and interpret it in context.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Rational functions in context",
+          "answer": "Degree of numerator (1) is less than degree of denominator (2), so the horizontal asymptote is $y=0$. In context, this means the drug concentration approaches $0$ mg/L as time goes on — the drug is eventually fully eliminated from the bloodstream.",
+          "explanation": "Degree of numerator (1) is less than degree of denominator (2), so the horizontal asymptote is $y=0$. In context, this means the drug concentration approaches $0$ mg/L as time goes on — the drug is eventually fully eliminated from the bloodstream.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "50*x/(x**2+4)"
+            ],
+            "xmin": 0,
+            "xmax": 12,
+            "ymin": 0,
+            "ymax": 14,
+            "width": 220
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "Let $f(x) = \\frac{4e^{2x}}{e^{2x} + 3}$. Prove that $f$ is strictly one-to-one and find an explicit formula for its inverse function $f^{-1}(x)$, stating the domain of $f^{-1}$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Horizontal and slant asymptotes",
+          "cross_lesson": "4.01 Inverse & Composite Functions",
+          "answer": "Step 1: Solve $y = \\frac{4e^{2x}}{e^{2x} + 3}$ for $e^{2x}$: $y(e^{2x} + 3) = 4e^{2x} \\Rightarrow 3y = e^{2x}(4 - y) \\Rightarrow e^{2x} = \\frac{3y}{4 - y}.$ Step 2: Take the natural logarithm and divide by 2: $2x = \\ln\\left(\\frac{3y}{4 - y}\\right) \\Rightarrow f^{-1}(x) = \\mathbf{\\frac{1}{2}\\ln\\left(\\frac{3x}{4 - x}\\right)}.$ Step 3: Domain of $f^{-1}$ (range of $f$): Since $e^{2x} > 0$, we require $\\frac{3x}{4 - x} > 0 \\Rightarrow \\mathbf{0 < x < 4}$.",
+          "explanation": "Step 1: Solve $y = \\frac{4e^{2x}}{e^{2x} + 3}$ for $e^{2x}$: $y(e^{2x} + 3) = 4e^{2x} \\Rightarrow 3y = e^{2x}(4 - y) \\Rightarrow e^{2x} = \\frac{3y}{4 - y}.$ Step 2: Take the natural logarithm and divide by 2: $2x = \\ln\\left(\\frac{3y}{4 - y}\\right) \\Rightarrow f^{-1}(x) = \\mathbf{\\frac{1}{2}\\ln\\left(\\frac{3x}{4 - x}\\right)}.$ Step 3: Domain of $f^{-1}$ (range of $f$): Since $e^{2x} > 0$, we require $\\frac{3x}{4 - x} > 0 \\Rightarrow \\mathbf{0 < x < 4}$."
+        },
+        {
+          "q": "Let $f(x) = 2x^2 - 3$ and $g(x) = \\sqrt{x + 5}$. Find the composite function $(f \\circ g)(x)$ and state its exact domain.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Visualizing a rational function's asymptotes",
+          "cross_lesson": "4.02 Piecewise-Defined & Implicit Functions",
+          "answer": "Step 1: Determine the domain of the inner function $g(x)$: $x + 5 \\geq 0 \\Rightarrow x \\geq -5.$ Step 2: Substitute $g(x)$ into $f(x)$: $(f \\circ g)(x) = f\\left(\\sqrt{x + 5}\\right) = 2\\left(\\sqrt{x + 5}\\right)^2 - 3 = 2(x + 5) - 3 = \\mathbf{2x + 7}, \\quad \\mathrm{with\\ domain\\ } \\mathbf{[-5, \\infty)}.$",
+          "explanation": "Step 1: Determine the domain of the inner function $g(x)$: $x + 5 \\geq 0 \\Rightarrow x \\geq -5.$ Step 2: Substitute $g(x)$ into $f(x)$: $(f \\circ g)(x) = f\\left(\\sqrt{x + 5}\\right) = 2\\left(\\sqrt{x + 5}\\right)^2 - 3 = 2(x + 5) - 3 = \\mathbf{2x + 7}, \\quad \\mathrm{with\\ domain\\ } \\mathbf{[-5, \\infty)}.$",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "1 + 1.5/(x - (-1))"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "asymptotes": {
+              "x": [
+                -1
+              ],
+              "y": [
+                1
+              ]
+            },
+            "point_labels": [
+              {
+                "x": 0.5,
+                "y": 2.0,
+                "label": "$( 0.5, 2 )$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "For a quadratic function $f(x)$, selected values are $f(1) = 4$, $f(2) = 9$, $f(3) = 18$, and $f(4) = 31$. Compute the first and second differences, verify that $f$ is quadratic, and find its explicit formula $f(x) = ax^2 + bx + c$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "End behavior of rational functions",
+          "cross_lesson": "4.03 Parametric Equations & Modeling",
+          "answer": "Step 1: Compute first and second differences:First differences $\\Delta y$: $9 - 4 = 5$, $18 - 9 = 9$, $31 - 18 = 13$.Second differences $\\Delta^2 y$: $9 - 5 = 4$, $13 - 9 = 4$.Since $\\Delta^2 y = 4$ is constant, $f(x)$ is quadratic with $2a = 4 \\Rightarrow a = 2$. Step 2: Solve for $b$ and $c$:$f(1) = 2(1)^2 + b(1) + c = 4 \\Rightarrow b + c = 2$.$f(2) = 2(2)^2 + b(2) + c = 9 \\Rightarrow 2b + c = 1$.Subtracting gives $b = -1$ and $c = 3$. Thus $\\mathbf{f(x) = 2x^2 - x + 3}$.",
+          "explanation": "Step 1: Compute first and second differences:First differences $\\Delta y$: $9 - 4 = 5$, $18 - 9 = 9$, $31 - 18 = 13$.Second differences $\\Delta^2 y$: $9 - 5 = 4$, $13 - 9 = 4$.Since $\\Delta^2 y = 4$ is constant, $f(x)$ is quadratic with $2a = 4 \\Rightarrow a = 2$. Step 2: Solve for $b$ and $c$:$f(1) = 2(1)^2 + b(1) + c = 4 \\Rightarrow b + c = 2$.$f(2) = 2(2)^2 + b(2) + c = 9 \\Rightarrow 2b + c = 1$.Subtracting gives $b = -1$ and $c = 3$. Thus $\\mathbf{f(x) = 2x^2 - x + 3}$."
+        },
+        {
+          "q": "A bivariate dataset $(x, y)$ is transformed into a semi-log plot $(x, \\ln y)$, yielding the linear regression model $\\ln(\\hat{y}) = 1.5 + 0.4x$. Express $\\hat{y}$ as an exponential function of $x$ in the form $\\hat{y} = a \\cdot b^x$, and find the predicted percentage growth rate per unit increase in $x$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Domain and intercepts",
+          "cross_lesson": "1.01 Polynomial End Behavior & Zeros",
+          "answer": "Step 1: Exponentiate both sides of the semi-log regression equation: $\\hat{y} = e^{1.5 + 0.4x} = e^{1.5} \\cdot (e^{0.4})^x.$ Step 2: Evaluate parameters $a$ and $b$: $a = e^{1.5} \\approx 4.4817, \\qquad b = e^{0.4} \\approx 1.4918 \\Rightarrow \\mathbf{\\hat{y} = e^{1.5}(e^{0.4})^x \\approx 4.482(1.492)^x}.$ Step 3: Percentage growth rate: Since $b - 1 = e^{0.4} - 1 \\approx 0.4918$, $\\hat{y}$ increases by approximately $\\mathbf{49.18\\%}$ per unit increase in $x$.",
+          "explanation": "Step 1: Exponentiate both sides of the semi-log regression equation: $\\hat{y} = e^{1.5 + 0.4x} = e^{1.5} \\cdot (e^{0.4})^x.$ Step 2: Evaluate parameters $a$ and $b$: $a = e^{1.5} \\approx 4.4817, \\qquad b = e^{0.4} \\approx 1.4918 \\Rightarrow \\mathbf{\\hat{y} = e^{1.5}(e^{0.4})^x \\approx 4.482(1.492)^x}.$ Step 3: Percentage growth rate: Since $b - 1 = e^{0.4} - 1 \\approx 0.4918$, $\\hat{y}$ increases by approximately $\\mathbf{49.18\\%}$ per unit increase in $x$."
+        },
+        {
+          "q": "Prove the trigonometric identity $\\frac{\\sin(2x)}{1 + \\cos(2x)} = \\tan x$ and state the domain exclusions.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Solving rational equations and inequalities",
+          "cross_lesson": "1.03 Rates of Change & Concavity",
+          "answer": "Step 1: Apply double-angle identities $\\sin(2x) = 2\\sin x\\cos x$ and $\\cos(2x) = 2\\cos^2 x - 1$: $\\mathrm{LHS} = \\frac{2\\sin x\\cos x}{1 + (2\\cos^2 x - 1)} = \\frac{2\\sin x\\cos x}{2\\cos^2 x}.$ Step 2: Cancel $2\\cos x$ (for $\\cos x eq 0$): $\\frac{\\sin x}{\\cos x} = \\tan x = \\mathrm{RHS}. \\quad \\blacksquare$ Domain exclusions: $\\mathbf{x eq \\frac{\\pi}{2} + k\\pi}$ for $k \\in \\mathbb{Z}$.",
+          "explanation": "Step 1: Apply double-angle identities $\\sin(2x) = 2\\sin x\\cos x$ and $\\cos(2x) = 2\\cos^2 x - 1$: $\\mathrm{LHS} = \\frac{2\\sin x\\cos x}{1 + (2\\cos^2 x - 1)} = \\frac{2\\sin x\\cos x}{2\\cos^2 x}.$ Step 2: Cancel $2\\cos x$ (for $\\cos x eq 0$): $\\frac{\\sin x}{\\cos x} = \\tan x = \\mathrm{RHS}. \\quad \\blacksquare$ Domain exclusions: $\\mathbf{x eq \\frac{\\pi}{2} + k\\pi}$ for $k \\in \\mathbb{Z}$."
+        },
+        {
+          "q": "Identify the conic section $4x^2 - 9y^2 - 16x - 18y - 29 = 0$ by completing the square. Find its center, vertices, foci, and asymptotes.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Visualizing a function with a slant asymptote",
+          "cross_lesson": "2.01 Exponential Functions & Growth Models",
+          "answer": "Step 1: Group and complete the square: $4(x^2 - 4x + 4) - 9(y^2 + 2y + 1) = 29 + 16 - 9 = 36.$ $\\mathbf{\\frac{(x - 2)^2}{9} - \\frac{(y + 1)^2}{4} = 1}.$ Step 2: Extract hyperbola properties ($a = 3, b = 2, c = \\sqrt{9 + 4} = \\sqrt{13}$):Center: $(2, -1)$Vertices: $(-1, -1)$ and $(5, -1)$Foci: $(2 \\pm \\sqrt{13}, -1)$Asymptotes: $y + 1 = \\pm\\frac{2}{3}(x - 2)$",
+          "explanation": "Step 1: Group and complete the square: $4(x^2 - 4x + 4) - 9(y^2 + 2y + 1) = 29 + 16 - 9 = 36.$ $\\mathbf{\\frac{(x - 2)^2}{9} - \\frac{(y + 1)^2}{4} = 1}.$ Step 2: Extract hyperbola properties ($a = 3, b = 2, c = \\sqrt{9 + 4} = \\sqrt{13}$):Center: $(2, -1)$Vertices: $(-1, -1)$ and $(5, -1)$Foci: $(2 \\pm \\sqrt{13}, -1)$Asymptotes: $y + 1 = \\pm\\frac{2}{3}(x - 2)$"
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+      "questions": [
+        {
+          "q": "Find the horizontal asymptote of $f(x)=\\frac{9x^2+5x-2}{6x^2+x-7}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Vertical asymptotes and holes",
+          "choices": [
+            "$y=\\frac{2}{3}$",
+            "$y=\\frac{5}{2}$",
+            "$y=0$",
+            "$y=\\frac{3}{2}$"
+          ],
+          "correct": 3,
+          "answer": "Degrees are equal (both 2), so the horizontal asymptote is the ratio of leading coefficients: $y=\\frac{9}{6}=\\frac{3}{2}$.",
+          "explanation": "Degrees are equal (both 2), so the horizontal asymptote is the ratio of leading coefficients: $y=\\frac{9}{6}=\\frac{3}{2}$."
+        },
+        {
+          "q": "Find the horizontal asymptote of $f(x)=\\frac{2x^2-9x-9}{2x^2-6x-3}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Horizontal and slant asymptotes",
+          "choices": [
+            "$y=\\frac{3}{2}$",
+            "$y=0$",
+            "$y=1$",
+            "$y=2$"
+          ],
+          "correct": 2,
+          "answer": "Degrees are equal (both 2), so the horizontal asymptote is the ratio of leading coefficients: $y=\\frac{2}{2}=1$.",
+          "explanation": "Degrees are equal (both 2), so the horizontal asymptote is the ratio of leading coefficients: $y=\\frac{2}{2}=1$."
+        },
+        {
+          "q": "Find the horizontal asymptote of $f(x)=\\frac{4x^2-8x+6}{9x^2+3x+9}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Visualizing a rational function's asymptotes",
+          "choices": [
+            "$y=\\frac{9}{4}$",
+            "$y=\\frac{4}{9}$",
+            "$y=0$",
+            "$y=\\frac{13}{9}$"
+          ],
+          "correct": 1,
+          "answer": "Degrees are equal (both 2), so the horizontal asymptote is the ratio of leading coefficients: $y=\\frac{4}{9}=\\frac{4}{9}$.",
+          "explanation": "Degrees are equal (both 2), so the horizontal asymptote is the ratio of leading coefficients: $y=\\frac{4}{9}=\\frac{4}{9}$."
+        },
+        {
+          "q": "Find the horizontal asymptote of $f(x)=\\frac{6x^2-7x}{4x^2-7x-9}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "End behavior of rational functions",
+          "choices": [
+            "$y=\\frac{3}{2}$",
+            "$y=\\frac{2}{3}$",
+            "$y=0$",
+            "$y=\\frac{5}{2}$"
+          ],
+          "correct": 0,
+          "answer": "Degrees are equal (both 2), so the horizontal asymptote is the ratio of leading coefficients: $y=\\frac{6}{4}=\\frac{3}{2}$.",
+          "explanation": "Degrees are equal (both 2), so the horizontal asymptote is the ratio of leading coefficients: $y=\\frac{6}{4}=\\frac{3}{2}$."
+        },
+        {
+          "q": "Find the horizontal asymptote of $g(x)=\\frac{9x+3}{7x^2+7x+5}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Domain and intercepts",
+          "choices": [
+            "$y=0$",
+            "$y=1$",
+            "$y=\\frac{9}{7}$",
+            "$y=-\\frac{9}{7}$"
+          ],
+          "correct": 0,
+          "answer": "Degree of numerator (1) is less than degree of denominator (2), so the horizontal asymptote is $y=0$.",
+          "explanation": "Degree of numerator (1) is less than degree of denominator (2), so the horizontal asymptote is $y=0$."
+        },
+        {
+          "q": "Find the horizontal asymptote of $f(x)=\\frac{9x^2+6x-3}{8x^2+3x-5}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Solving rational equations and inequalities",
+          "choices": [
+            "$y=0$",
+            "$y=\\frac{9}{8}$",
+            "$y=\\frac{8}{9}$",
+            "$y=\\frac{17}{8}$"
+          ],
+          "correct": 1,
+          "answer": "Degrees are equal (both 2), so the horizontal asymptote is the ratio of leading coefficients: $y=\\frac{9}{8}=\\frac{9}{8}$.",
+          "explanation": "Degrees are equal (both 2), so the horizontal asymptote is the ratio of leading coefficients: $y=\\frac{9}{8}=\\frac{9}{8}$."
+        },
+        {
+          "q": "Find the horizontal asymptote of $g(x)=\\frac{-7x+1}{4x^2-4x+4}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Visualizing a function with a slant asymptote",
+          "choices": [
+            "$y=\\frac{7}{4}$",
+            "$y=0$",
+            "$y=-\\frac{7}{4}$",
+            "$y=1$"
+          ],
+          "correct": 1,
+          "answer": "Degree of numerator (1) is less than degree of denominator (2), so the horizontal asymptote is $y=0$.",
+          "explanation": "Degree of numerator (1) is less than degree of denominator (2), so the horizontal asymptote is $y=0$."
+        },
+        {
+          "q": "Find the hole and vertical asymptote of $f(x)=\\frac{(x+2)(x-5)}{(x+2)(x-6)}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Building a rational function from given features",
+          "choices": [
+            "Hole at $x=6$; vertical asymptote at $x=-2$.",
+            "Hole at $x=-2$; vertical asymptote at $x=6$.",
+            "Vertical asymptotes at $x=-2$ and $x=6$, no hole.",
+            "Hole at $x=5$; vertical asymptote at $x=6$."
+          ],
+          "correct": 1,
+          "answer": "The factor $(x+2)$ cancels, giving a hole at $x=-2$. The remaining denominator factor $(x-6)$ gives a vertical asymptote at $x=6$.",
+          "explanation": "The factor $(x+2)$ cancels, giving a hole at $x=-2$. The remaining denominator factor $(x-6)$ gives a vertical asymptote at $x=6$."
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
+        {
+          "q": "Find the hole and vertical asymptote of $f(x)=\\frac{(x-2)(x-4)}{(x-2)(x+6)}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Rational functions in context",
+          "choices": [
+            "Hole at $x=2$; vertical asymptote at $x=-6$.",
+            "Vertical asymptotes at $x=2$ and $x=-6$, no hole.",
+            "Hole at $x=-6$; vertical asymptote at $x=2$.",
+            "Hole at $x=4$; vertical asymptote at $x=-6$."
+          ],
+          "correct": 0,
+          "answer": "The factor $(x-2)$ cancels, giving a hole at $x=2$. The remaining denominator factor $(x+6)$ gives a vertical asymptote at $x=-6$.",
+          "explanation": "The factor $(x-2)$ cancels, giving a hole at $x=2$. The remaining denominator factor $(x+6)$ gives a vertical asymptote at $x=-6$."
+        },
+        {
+          "q": "Find the hole and vertical asymptote of $f(x)=\\frac{(x+8)(x-8)}{(x+8)(x-3)}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Vertical Asymptotes vs. Removable Discontinuities",
+          "choices": [
+            "Vertical asymptotes at $x=-8$ and $x=3$, no hole.",
+            "Hole at $x=-8$; vertical asymptote at $x=3$.",
+            "Hole at $x=8$; vertical asymptote at $x=3$.",
+            "Hole at $x=3$; vertical asymptote at $x=-8$."
+          ],
+          "correct": 1,
+          "answer": "The factor $(x+8)$ cancels, giving a hole at $x=-8$. The remaining denominator factor $(x-3)$ gives a vertical asymptote at $x=3$.",
+          "explanation": "The factor $(x+8)$ cancels, giving a hole at $x=-8$. The remaining denominator factor $(x-3)$ gives a vertical asymptote at $x=3$."
+        },
+        {
+          "q": "Find the hole and vertical asymptote of $f(x)=\\frac{(x+8)(x-8)}{(x+8)(x-9)}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Horizontal Asymptotes and Degrees",
+          "choices": [
+            "Hole at $x=-8$; vertical asymptote at $x=9$.",
+            "Vertical asymptotes at $x=-8$ and $x=9$, no hole.",
+            "Hole at $x=8$; vertical asymptote at $x=9$.",
+            "Hole at $x=9$; vertical asymptote at $x=-8$."
+          ],
+          "correct": 0,
+          "answer": "The factor $(x+8)$ cancels, giving a hole at $x=-8$. The remaining denominator factor $(x-9)$ gives a vertical asymptote at $x=9$.",
+          "explanation": "The factor $(x+8)$ cancels, giving a hole at $x=-8$. The remaining denominator factor $(x-9)$ gives a vertical asymptote at $x=9$."
+        },
+        {
+          "q": "Find the hole and vertical asymptote of $f(x)=\\frac{(x-1)(x+1)}{(x-1)(x)}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Slant (Oblique) Asymptotes",
+          "choices": [
+            "Hole at $x=1$; vertical asymptote at $x=0$.",
+            "Vertical asymptotes at $x=1$ and $x=0$, no hole.",
+            "Hole at $x=0$; vertical asymptote at $x=1$.",
+            "Hole at $x=-1$; vertical asymptote at $x=0$."
+          ],
+          "correct": 0,
+          "answer": "The factor $(x-1)$ cancels, giving a hole at $x=1$. The remaining denominator factor $(x)$ gives a vertical asymptote at $x=0$.",
+          "explanation": "The factor $(x-1)$ cancels, giving a hole at $x=1$. The remaining denominator factor $(x)$ gives a vertical asymptote at $x=0$."
+        },
+        {
+          "q": "Find the hole and vertical asymptote of $f(x)=\\frac{(x-6)(x+1)}{(x-6)(x-5)}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Limit Notation and Asymptotic Behavior",
+          "choices": [
+            "Hole at $x=-1$; vertical asymptote at $x=5$.",
+            "Vertical asymptotes at $x=6$ and $x=5$, no hole.",
+            "Hole at $x=6$; vertical asymptote at $x=5$.",
+            "Hole at $x=5$; vertical asymptote at $x=6$."
+          ],
+          "correct": 2,
+          "answer": "The factor $(x-6)$ cancels, giving a hole at $x=6$. The remaining denominator factor $(x-5)$ gives a vertical asymptote at $x=5$.",
+          "explanation": "The factor $(x-6)$ cancels, giving a hole at $x=6$. The remaining denominator factor $(x-5)$ gives a vertical asymptote at $x=5$."
+        },
+        {
+          "q": "Find the hole and vertical asymptote of $f(x)=\\frac{(x+6)(x+4)}{(x+6)(x+7)}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Vertical asymptotes and holes",
+          "choices": [
+            "Vertical asymptotes at $x=-6$ and $x=-7$, no hole.",
+            "Hole at $x=-4$; vertical asymptote at $x=-7$.",
+            "Hole at $x=-7$; vertical asymptote at $x=-6$.",
+            "Hole at $x=-6$; vertical asymptote at $x=-7$."
+          ],
+          "correct": 3,
+          "answer": "The factor $(x+6)$ cancels, giving a hole at $x=-6$. The remaining denominator factor $(x+7)$ gives a vertical asymptote at $x=-7$.",
+          "explanation": "The factor $(x+6)$ cancels, giving a hole at $x=-6$. The remaining denominator factor $(x+7)$ gives a vertical asymptote at $x=-7$."
+        },
+        {
+          "q": "Find the slant asymptote of $h(x)=\\frac{x^2+8x-7}{x+9}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Horizontal and slant asymptotes",
+          "choices": [
+            "$y=x$",
+            "$y=x-2$",
+            "$y=x+1$",
+            "$y=x-1$"
+          ],
+          "correct": 3,
+          "answer": "Dividing $x^2+8x-7$ by $x+9$: quotient $=x-1$, with a remainder that vanishes as $x\\rightarrow\\pm\\infty$. Slant asymptote: $y=x-1$.",
+          "explanation": "Dividing $x^2+8x-7$ by $x+9$: quotient $=x-1$, with a remainder that vanishes as $x\\rightarrow\\pm\\infty$. Slant asymptote: $y=x-1$."
+        },
+        {
+          "q": "Find the slant asymptote of $h(x)=\\frac{x^2+4x+5}{x+6}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Visualizing a rational function's asymptotes",
+          "choices": [
+            "$y=x-3$",
+            "$y=x-1$",
+            "$y=x-2$",
+            "$y=x+2$"
+          ],
+          "correct": 2,
+          "answer": "Dividing $x^2+4x+5$ by $x+6$: quotient $=x-2$, with a remainder that vanishes as $x\\rightarrow\\pm\\infty$. Slant asymptote: $y=x-2$.",
+          "explanation": "Dividing $x^2+4x+5$ by $x+6$: quotient $=x-2$, with a remainder that vanishes as $x\\rightarrow\\pm\\infty$. Slant asymptote: $y=x-2$."
+        },
+        {
+          "q": "Solve $\\frac{x+4}{x-3}=-3$ for $x$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "End behavior of rational functions",
+          "choices": [
+            "$-\\frac{5}{4}$",
+            "$\\frac{5}{4}$",
+            "$-\\frac{4}{3}$",
+            "$\\frac{9}{4}$"
+          ],
+          "correct": 1,
+          "answer": "$x+4=-3(x-3)$. Solving: $(4)x=5$, so $x=\\frac{5}{4}$ (denominator $x-3\\neq0$ checked).",
+          "explanation": "$x+4=-3(x-3)$. Solving: $(4)x=5$, so $x=\\frac{5}{4}$ (denominator $x-3\\neq0$ checked)."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "Solve $\\frac{x+3}{x}=-2$ for $x$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Domain and intercepts",
+          "choices": [
+            "$1$",
+            "$-\\frac{3}{2}$",
+            "$0$",
+            "$-1$"
+          ],
+          "correct": 3,
+          "answer": "$x+3=-2(x)$. Solving: $(3)x=-3$, so $x=-1$ (denominator $x\\neq0$ checked).",
+          "explanation": "$x+3=-2(x)$. Solving: $(3)x=-3$, so $x=-1$ (denominator $x\\neq0$ checked).",
+          "cross_lesson": "1.01 Polynomial End Behavior & Zeros"
+        },
+        {
+          "q": "Solve the inequality $\\frac{x-6}{x-7}>0$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Solving rational equations and inequalities",
+          "choices": [
+            "$(-\\infty,6)\\cup(7,\\infty)$",
+            "$[6,7]$",
+            "$(6,7)$",
+            "$(-\\infty,7)\\cup(6,\\infty)$"
+          ],
+          "correct": 0,
+          "answer": "Critical points: $x=6$ (zero) and $x=7$ (excluded). The expression has the same sign as $(x-6)(x-7)$, which is positive outside $[6,7]$. Solution: $(-\\infty,6)\\cup(7,\\infty)$.",
+          "explanation": "Critical points: $x=6$ (zero) and $x=7$ (excluded). The expression has the same sign as $(x-6)(x-7)$, which is positive outside $[6,7]$. Solution: $(-\\infty,6)\\cup(7,\\infty)$.",
+          "cross_lesson": "1.03 Rates of Change & Concavity"
+        },
+        {
+          "q": "Solve the inequality $\\frac{x-2}{x-7}>0$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Visualizing a function with a slant asymptote",
+          "choices": [
+            "$(-\\infty,7)\\cup(2,\\infty)$",
+            "$(2,7)$",
+            "$(-\\infty,2)\\cup(7,\\infty)$",
+            "$[2,7]$"
+          ],
+          "correct": 2,
+          "answer": "Critical points: $x=2$ (zero) and $x=7$ (excluded). The expression has the same sign as $(x-2)(x-7)$, which is positive outside $[2,7]$. Solution: $(-\\infty,2)\\cup(7,\\infty)$.",
+          "explanation": "Critical points: $x=2$ (zero) and $x=7$ (excluded). The expression has the same sign as $(x-2)(x-7)$, which is positive outside $[2,7]$. Solution: $(-\\infty,2)\\cup(7,\\infty)$.",
+          "cross_lesson": "2.01 Exponential Functions & Growth Models"
+        },
+        {
           "q": "Find all vertical asymptotes and holes for $f(x) = \\frac{x^2 - 9}{x^2 - x - 6}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Vertical Asymptotes vs. Removable Discontinuities",
           "choices": [
             "Vertical asymptote at $x = -2$; hole at $x = 3$",
             "Vertical asymptote at $x = 3$; hole at $x = -2$",
@@ -16,21 +674,15 @@
             "Holes at $x = 3$ and $x = -2$; no vertical asymptotes"
           ],
           "correct": 0,
-          "answer": "Factor: $\\frac{(x - 3)(x + 3)}{(x - 3)(x + 2)}$. The factor $(x - 3)$ cancels, indicating a removable discontinuity (hole) at $x = 3$. The remaining denominator factor $(x + 2)$ yields a vertical asymptote at $x = -2$."
-        },
-        {
-          "q": "What is the coordinate $(x, y)$ of the hole in the graph of $g(x) = \\frac{2x^2 + 6x}{x^2 - 9}$?",
-          "choices": [
-            "$(-3, 1)$",
-            "$(-3, 0)$",
-            "$(3, 1)$",
-            "$(-3, \\infty)$"
-          ],
-          "correct": 0,
-          "answer": "Factor: $\\frac{2x(x + 3)}{(x - 3)(x + 3)} = \\frac{2x}{x - 3}$ for $x \\neq -3$. At $x = -3$, $y = \\frac{2(-3)}{-3 - 3} = \\frac{-6}{-6} = 1$. The hole is at $(-3, 1)$."
+          "answer": "Factor: $\\frac{(x - 3)(x + 3)}{(x - 3)(x + 2)}$. The factor $(x - 3)$ cancels, indicating a removable discontinuity (hole) at $x = 3$. The remaining denominator factor $(x + 2)$ yields a vertical asymptote at $x = -2$.",
+          "explanation": "Factor: $\\frac{(x - 3)(x + 3)}{(x - 3)(x + 2)}$. The factor $(x - 3)$ cancels, indicating a removable discontinuity (hole) at $x = 3$. The remaining denominator factor $(x + 2)$ yields a vertical asymptote at $x = -2$.",
+          "cross_lesson": "2.02 Logarithmic Functions & Properties"
         },
         {
           "q": "If $h(x) = \\frac{x - 4}{(x - 4)^2(x + 1)}$, which describes the behavior of $h$ near $x = 4$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Vertical Asymptotes vs. Removable Discontinuities",
           "choices": [
             "$h(x)$ has a vertical asymptote at $x = 4$",
             "$h(x)$ has a removable hole at $x = 4$",
@@ -38,37 +690,15 @@
             "$h(x)$ is continuous at $x = 4$"
           ],
           "correct": 0,
-          "answer": "Simplifying: $h(x) = \\frac{1}{(x - 4)(x + 1)}$ for $x \\neq 4$. Because $(x - 4)$ remains in the denominator to degree 1, $x = 4$ is a vertical asymptote, not a hole."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Horizontal Asymptotes and Degrees",
-      "questions": [
-        {
-          "q": "Determine the horizontal asymptote of $R(x) = \\frac{5x^3 - 2x + 1}{2x^3 + 7x^2 - 4}$.",
-          "choices": [
-            "$y = \\frac{5}{2}$",
-            "$y = 0$",
-            "$y = -\\frac{1}{4}$",
-            "No horizontal asymptote"
-          ],
-          "correct": 0,
-          "answer": "The degrees of numerator and denominator are both 3. The horizontal asymptote is the ratio of leading coefficients: $y = \\frac{5}{2}$."
-        },
-        {
-          "q": "Which rational function has a horizontal asymptote at $y = 0$?",
-          "choices": [
-            "$f(x) = \\frac{4x + 1}{3x^2 - 5}$",
-            "$g(x) = \\frac{3x^2 - 5}{4x + 1}$",
-            "$h(x) = \\frac{4x^2 + 1}{3x^2 - 5}$",
-            "$k(x) = \\frac{4x^3}{3x^2 - 5}$"
-          ],
-          "correct": 0,
-          "answer": "A rational function has $y = 0$ as its horizontal asymptote when the degree of the denominator is strictly greater than the degree of the numerator. Here degree of numerator is 1 and denominator is 2."
+          "answer": "Simplifying: $h(x) = \\frac{1}{(x - 4)(x + 1)}$ for $x \\neq 4$. Because $(x - 4)$ remains in the denominator to degree 1, $x = 4$ is a vertical asymptote, not a hole.",
+          "explanation": "Simplifying: $h(x) = \\frac{1}{(x - 4)(x + 1)}$ for $x \\neq 4$. Because $(x - 4)$ remains in the denominator to degree 1, $x = 4$ is a vertical asymptote, not a hole.",
+          "cross_lesson": "3.01 Trigonometric Functions & the Unit Circle"
         },
         {
           "q": "Can the graph of a rational function intersect its horizontal asymptote?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Horizontal Asymptotes and Degrees",
           "choices": [
             "Yes, the graph can cross a horizontal asymptote at finite values of $x$",
             "No, an asymptote can never be touched or crossed by definition",
@@ -76,26 +706,15 @@
             "Only if the function has no vertical asymptotes"
           ],
           "correct": 0,
-          "answer": "Horizontal asymptotes describe end behavior as $x \\to \\pm \\infty$. The graph of a rational function can intersect a horizontal asymptote one or more times in the interior/finite domain."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Slant (Oblique) Asymptotes",
-      "questions": [
-        {
-          "q": "Find the slant asymptote of $f(x) = \\frac{2x^2 + 5x - 1}{x + 2}$.",
-          "choices": [
-            "$y = 2x + 1$",
-            "$y = 2x + 9$",
-            "$y = 2x$",
-            "$y = x + 1$"
-          ],
-          "correct": 0,
-          "answer": "Perform polynomial long division: $(2x^2 + 5x - 1) \\div (x + 2) = 2x + 1 + \\frac{-3}{x + 2}$. As $x \\to \\pm \\infty$, $\\frac{-3}{x + 2} \\to 0$. The slant asymptote is $y = 2x + 1$."
+          "answer": "Horizontal asymptotes describe end behavior as $x \\rightarrow \\pm \\infty$. The graph of a rational function can intersect a horizontal asymptote one or more times in the interior/finite domain.",
+          "explanation": "Horizontal asymptotes describe end behavior as $x \\rightarrow \\pm \\infty$. The graph of a rational function can intersect a horizontal asymptote one or more times in the interior/finite domain.",
+          "cross_lesson": "3.02 Polar Coordinates & Polar Graphs"
         },
         {
           "q": "Under what condition does a rational function $f(x) = \\frac{P(x)}{Q(x)}$ possess a slant (oblique) asymptote?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Slant (Oblique) Asymptotes",
           "choices": [
             "The degree of $P(x)$ is exactly 1 greater than the degree of $Q(x)$",
             "The degree of $P(x)$ equals the degree of $Q(x)$",
@@ -103,56 +722,25 @@
             "The degree of $P(x)$ is at least 2 greater than the degree of $Q(x)$"
           ],
           "correct": 0,
-          "answer": "A slant asymptote exists if and only if the numerator's polynomial degree is exactly 1 higher than the denominator's polynomial degree."
+          "answer": "A slant asymptote exists if and only if the numerator's polynomial degree is exactly 1 higher than the denominator's polynomial degree.",
+          "explanation": "A slant asymptote exists if and only if the numerator's polynomial degree is exactly 1 higher than the denominator's polynomial degree.",
+          "cross_lesson": "4.01 Inverse & Composite Functions"
         },
         {
-          "q": "Find the equation of the slant asymptote for $g(x) = \\frac{x^3 - 3x^2 + 4}{x^2 + 1}$.",
+          "q": "For $f(x) = \\frac{1}{x - 3}$, what are $\\lim_{x \\rightarrow 3^+} f(x)$ and $\\lim_{x \\rightarrow 3^-} f(x)$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Limit Notation and Asymptotic Behavior",
           "choices": [
-            "$y = x - 3$",
-            "$y = x + 3$",
-            "$y = x$",
-            "$y = -3x$"
-          ],
-          "correct": 0,
-          "answer": "Dividing $x^3 - 3x^2 + 4$ by $x^2 + 1$: $x(x^2 + 1) = x^3 + x$, leaving remainder $-3x^2 - x + 4$. Next term: $-3(x^2 + 1) = -3x^2 - 3$, leaving remainder $-x + 7$. The quotient is $x - 3$, so the slant asymptote is $y = x - 3$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Limit Notation and Asymptotic Behavior",
-      "questions": [
-        {
-          "q": "For $f(x) = \\frac{1}{x - 3}$, what are $\\lim_{x \\to 3^+} f(x)$ and $\\lim_{x \\to 3^-} f(x)$?",
-          "choices": [
-            "$\\lim_{x \\to 3^+} f(x) = \\infty$ and $\\lim_{x \\to 3^-} f(x) = -\\infty$",
-            "$\\lim_{x \\to 3^+} f(x) = -\\infty$ and $\\lim_{x \\to 3^-} f(x) = \\infty$",
+            "$\\lim_{x \\rightarrow 3^+} f(x) = \\infty$ and $\\lim_{x \\rightarrow 3^-} f(x) = -\\infty$",
+            "$\\lim_{x \\rightarrow 3^+} f(x) = -\\infty$ and $\\lim_{x \\rightarrow 3^-} f(x) = \\infty$",
             "Both limits equal $\\infty$",
             "Both limits equal $-\\infty$"
           ],
           "correct": 0,
-          "answer": "As $x \\to 3$ from the right, $x - 3 > 0$, so $\\frac{1}{x - 3} \\to +\\infty$. As $x \\to 3$ from the left, $x - 3 < 0$, so $\\frac{1}{x - 3} \\to -\\infty$."
-        },
-        {
-          "q": "If $\\lim_{x \\to -\\infty} f(x) = 4$, which statement is justified?",
-          "choices": [
-            "The line $y = 4$ is a horizontal asymptote of $f$",
-            "The line $x = 4$ is a vertical asymptote of $f$",
-            "$f(4)$ is undefined",
-            "The range of $f$ is $[4, \\infty)$"
-          ],
-          "correct": 0,
-          "answer": "By definition, if $\\lim_{x \\to \\infty} f(x) = L$ or $\\lim_{x \\to -\\infty} f(x) = L$, the horizontal line $y = L$ is a horizontal asymptote."
-        },
-        {
-          "q": "Given $k(x) = \\frac{2x - 6}{(x - 3)(x - 5)}$, evaluate $\\lim_{x \\to 3} k(x)$.",
-          "choices": [
-            "$-1$",
-            "$1$",
-            "$\\infty$",
-            "$0$"
-          ],
-          "correct": 0,
-          "answer": "Factor and cancel: $k(x) = \\frac{2(x - 3)}{(x - 3)(x - 5)} = \\frac{2}{x - 5}$ for $x \\neq 3$. Taking the limit as $x \\to 3$: $\\frac{2}{3 - 5} = \\frac{2}{-2} = -1$."
+          "answer": "As $x \\rightarrow 3$ from the right, $x - 3 > 0$, so $\\frac{1}{x - 3} \\rightarrow +\\infty$. As $x \\rightarrow 3$ from the left, $x - 3 < 0$, so $\\frac{1}{x - 3} \\rightarrow -\\infty$.",
+          "explanation": "As $x \\rightarrow 3$ from the right, $x - 3 > 0$, so $\\frac{1}{x - 3} \\rightarrow +\\infty$. As $x \\rightarrow 3$ from the left, $x - 3 < 0$, so $\\frac{1}{x - 3} \\rightarrow -\\infty$.",
+          "cross_lesson": "4.02 Piecewise-Defined & Implicit Functions"
         }
       ]
     }

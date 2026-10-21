@@ -3,12 +3,685 @@
   "num": "5.01",
   "slug": "statistics-probability",
   "title": "Statistics & Probability",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 5.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Summary Statistics & Outliers",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
+          "q": "Find the mean of $12,15,18,9,21$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Measures of center",
+          "answer": "Sum $=75$. Mean $=\\frac{75}{5}=15$.",
+          "explanation": "Sum $=75$. Mean $=\\frac{75}{5}=15$."
+        },
+        {
+          "q": "Find the median of $4,9,2,11,7,15$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Measures of center",
+          "answer": "Sorted: $2,4,7,9,11,15$. Median $=\\frac{7+9}{2}=8$.",
+          "explanation": "Sorted: $2,4,7,9,11,15$. Median $=\\frac{7+9}{2}=8$.",
+          "figure": {
+            "type": "boxplot",
+            "groups": [
+              {
+                "label": "Group A",
+                "stats": [
+                  19,
+                  27,
+                  34,
+                  43,
+                  53
+                ]
+              },
+              {
+                "label": "Group B",
+                "stats": [
+                  23,
+                  31,
+                  40,
+                  49,
+                  57
+                ]
+              }
+            ],
+            "min": 14,
+            "max": 63,
+            "width": 240
+          }
+        },
+        {
+          "q": "Find the mode of $3,7,5,7,2,7,9$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Measures of center",
+          "answer": "The value 7 appears most often, so the mode is $7$.",
+          "explanation": "The value 7 appears most often, so the mode is $7$."
+        },
+        {
+          "q": "Find the range of the data set $22,18,35,9,27$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Measures of spread",
+          "answer": "Range $=35-9=26$.",
+          "explanation": "Range $=35-9=26$."
+        },
+        {
+          "q": "Find the interquartile range (IQR) of $4,7,9,12,15,18,21$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Measures of spread",
+          "answer": "Lower half (excluding the median 12): $4,7,9$, so $Q_1=7$. Upper half: $15,18,21$, so $Q_3=18$. IQR $=18-7=11$.",
+          "explanation": "Lower half (excluding the median 12): $4,7,9$, so $Q_1=7$. Upper half: $15,18,21$, so $Q_3=18$. IQR $=18-7=11$."
+        },
+        {
+          "q": "A data set has a range of 40 and a minimum value of 15. Find the maximum value.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Measures of spread",
+          "answer": "Maximum $=15+40=55$.",
+          "explanation": "Maximum $=15+40=55$.",
+          "figure": {
+            "type": "venn",
+            "u_label": "$U$",
+            "label_a": "$A$",
+            "label_b": "$B$",
+            "only_a": 40,
+            "both": 15,
+            "only_b": 16,
+            "neither": 5,
+            "width": 225
+          }
+        },
+        {
+          "q": "A jar has 5 red, 3 blue, and 2 green marbles. Find $P(\\mathrm{green})$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Basic probability",
+          "answer": "Total marbles $=10$. $P(\\mathrm{green})=\\frac{2}{10}=\\frac{1}{5}$.",
+          "explanation": "Total marbles $=10$. $P(\\mathrm{green})=\\frac{2}{10}=\\frac{1}{5}$."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "A fair six-sided die is rolled once. Find $P(\\mathrm{even\\ number})$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Basic probability",
+          "answer": "Even outcomes: $\\{2,4,6\\}$. $P=\\frac{3}{6}=\\frac{1}{2}$.",
+          "explanation": "Even outcomes: $\\{2,4,6\\}$. $P=\\frac{3}{6}=\\frac{1}{2}$."
+        },
+        {
+          "q": "A spinner has 8 equal sections numbered 1 through 8. Find $P(\\mathrm{number\\ greater\\ than\\ }5)$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Basic probability",
+          "answer": "Numbers greater than 5: $\\{6,7,8\\}$. $P=\\frac{3}{8}$.",
+          "explanation": "Numbers greater than 5: $\\{6,7,8\\}$. $P=\\frac{3}{8}$."
+        },
+        {
+          "q": "A card is drawn from a standard 52-card deck. Find $P(\\mathrm{king\\ or\\ queen})$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Combined probability: AND / OR",
+          "answer": "$4$ kings $+4$ queens $=8$ favorable cards. $P=\\frac{8}{52}=\\frac{2}{13}$.",
+          "explanation": "$4$ kings $+4$ queens $=8$ favorable cards. $P=\\frac{8}{52}=\\frac{2}{13}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Two independent events have $P(A)=0.4$ and $P(B)=0.5$. Find $P(A\\mathrm{\\ and\\ }B)$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Combined probability: AND / OR",
+          "answer": "$P(A\\cap B)=0.4\\times0.5=0.20$.",
+          "explanation": "$P(A\\cap B)=0.4\\times0.5=0.20$."
+        },
+        {
+          "q": "A bag has 6 yellow and 4 purple marbles. A marble is drawn, replaced, then a second is drawn. Find $P(\\mathrm{both\\ yellow})$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Combined probability: AND / OR",
+          "answer": "$P=\\frac{6}{10}\\times\\frac{6}{10}=\\frac{36}{100}=\\frac{9}{25}$.",
+          "explanation": "$P=\\frac{6}{10}\\times\\frac{6}{10}=\\frac{36}{100}=\\frac{9}{25}$."
+        },
+        {
+          "q": "A bag has 5 red and 7 blue marbles. Two marbles are drawn without replacement. Find $P(\\mathrm{both\\ red})$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Probability without replacement",
+          "answer": "$P=\\frac{5}{12}\\times\\frac{4}{11}=\\frac{20}{132}=\\frac{5}{33}$.",
+          "explanation": "$P=\\frac{5}{12}\\times\\frac{4}{11}=\\frac{20}{132}=\\frac{5}{33}$."
+        },
+        {
+          "q": "A committee of 2 is chosen at random, one at a time without replacement, from a group of 4 men and 6 women. Find $P(\\mathrm{both\\ chosen\\ are\\ women})$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Probability without replacement",
+          "answer": "$P=\\frac{6}{10}\\times\\frac{5}{9}=\\frac{30}{90}=\\frac{1}{3}$.",
+          "explanation": "$P=\\frac{6}{10}\\times\\frac{5}{9}=\\frac{30}{90}=\\frac{1}{3}$."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "The bar graph shows the results of rolling a fair die 40 times. Based on the experimental data, find the experimental probability of rolling a 4, and compare it to the theoretical probability.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Data displays",
+          "cross_lesson": "6.01 Geometry",
+          "answer": "Experimental $P(4)=\\frac{9}{40}=0.225$. Theoretical $P(4)=\\frac{1}{6}\\approx0.167$. The experimental probability is somewhat higher than the theoretical probability, which is expected random variation in a finite sample.",
+          "explanation": "Experimental $P(4)=\\frac{9}{40}=0.225$. Theoretical $P(4)=\\frac{1}{6}\\approx0.167$. The experimental probability is somewhat higher than the theoretical probability, which is expected random variation in a finite sample.",
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6"
+            ],
+            "values": [
+              5,
+              8,
+              6,
+              9,
+              5,
+              7
+            ],
+            "ylabel": "Frequency",
+            "width": 220
+          }
+        },
+        {
+          "q": "A game costs 2 dollars to play. A player wins 10 dollars with probability 0.1, and wins nothing otherwise. Find the expected net profit per play.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Expected value",
+          "cross_lesson": "7.01 Trigonometry & Additional Topics",
+          "answer": "Expected winnings $=0.1\\times10=1$ dollar. Expected net profit $=1-2=-1$ dollar (an expected loss of 1 dollar per play).",
+          "explanation": "Expected winnings $=0.1\\times10=1$ dollar. Expected net profit $=1-2=-1$ dollar (an expected loss of 1 dollar per play).",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A spinner has 4 equal sections labeled 5, 10, 15, and 20 points. Find the expected value of one spin.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Expected value",
+          "cross_lesson": "8.01 Exponentials & Logarithms",
+          "answer": "$E=\\frac{5+10+15+20}{4}=\\frac{50}{4}=12.5$ points.",
+          "explanation": "$E=\\frac{5+10+15+20}{4}=\\frac{50}{4}=12.5$ points."
+        },
+        {
+          "q": "A data set has mean 20. If every value in the set is increased by 5, find the new mean.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Effects of transformations on statistics",
+          "cross_lesson": "1.01 Heart of Algebra",
+          "answer": "New mean $=20+5=25$.",
+          "explanation": "New mean $=20+5=25$."
+        },
+        {
+          "q": "A data set has standard deviation 4. If every value is multiplied by 3, find the new standard deviation.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Effects of transformations on statistics",
+          "cross_lesson": "2.01 Quadratics & Polynomials",
+          "answer": "New standard deviation $=3\\times4=12$.",
+          "explanation": "New standard deviation $=3\\times4=12$."
+        },
+        {
+          "q": "This question has three parts. A researcher surveys 200 students about whether they play a sport and whether they play a musical instrument. Of the 200 students, 120 play a sport, 80 play an instrument, and 30 do both. (a) Find how many students do neither activity. (b) Find the probability that a randomly chosen student plays a sport or an instrument (or both). (c) Given that a randomly selected student plays a sport, find the probability that they also play an instrument.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "A well-designed word problem: a survey of students",
+          "cross_lesson": "3.01 Functions & Graphs",
+          "answer": "(a) By inclusion-exclusion, the number doing at least one activity is $120+80-30=170$. Neither $=200-170=30$. (b) $P(\\mathrm{sport\\ or\\ instrument})=\\frac{170}{200}=0.85$. (c) $P(\\mathrm{instrument}\\mid\\mathrm{sport})=\\frac{P(\\mathrm{both})}{P(\\mathrm{sport})}=\\frac{30}{120}=\\frac{1}{4}$.",
+          "explanation": "(a) By inclusion-exclusion, the number doing at least one activity is $120+80-30=170$. Neither $=200-170=30$. (b) $P(\\mathrm{sport\\ or\\ instrument})=\\frac{170}{200}=0.85$. (c) $P(\\mathrm{instrument}\\mid\\mathrm{sport})=\\frac{P(\\mathrm{both})}{P(\\mathrm{sport})}=\\frac{30}{120}=\\frac{1}{4}$."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+      "questions": [
+        {
+          "q": "Find the mean of $6,50,46,36,7$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Measures of center",
+          "choices": [
+            "$29$",
+            "$31$",
+            "$145$",
+            "$27$"
+          ],
+          "correct": 0,
+          "answer": "Sum $=145$. Mean $=\\frac{145}{5}=29$.",
+          "explanation": "Sum $=145$. Mean $=\\frac{145}{5}=29$."
+        },
+        {
+          "q": "Find the mean of $21,18,14,35,2$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Measures of spread",
+          "choices": [
+            "$90$",
+            "$16$",
+            "$18$",
+            "$20$"
+          ],
+          "correct": 2,
+          "answer": "Sum $=90$. Mean $=\\frac{90}{5}=18$.",
+          "explanation": "Sum $=90$. Mean $=\\frac{90}{5}=18$."
+        },
+        {
+          "q": "Find the mean of $23,12,44,5,26$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Basic probability",
+          "choices": [
+            "$24$",
+            "$20$",
+            "$110$",
+            "$22$"
+          ],
+          "correct": 3,
+          "answer": "Sum $=110$. Mean $=\\frac{110}{5}=22$.",
+          "explanation": "Sum $=110$. Mean $=\\frac{110}{5}=22$.",
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "Q1",
+              "Q2",
+              "Q3",
+              "Q4",
+              "Q5"
+            ],
+            "values": [
+              18,
+              24,
+              29,
+              22,
+              27
+            ],
+            "ylabel": "Frequency",
+            "highlight_index": 2,
+            "width": 230
+          }
+        },
+        {
+          "q": "Find the mean of $4,31,3,26,1$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Combined probability: AND / OR",
+          "choices": [
+            "$13$",
+            "$11$",
+            "$65$",
+            "$15$"
+          ],
+          "correct": 0,
+          "answer": "Sum $=65$. Mean $=\\frac{65}{5}=13$.",
+          "explanation": "Sum $=65$. Mean $=\\frac{65}{5}=13$."
+        },
+        {
+          "q": "Find the mean of $9,21,19,19,22$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Probability without replacement",
+          "choices": [
+            "$18$",
+            "$16$",
+            "$20$",
+            "$90$"
+          ],
+          "correct": 0,
+          "answer": "Sum $=90$. Mean $=\\frac{90}{5}=18$.",
+          "explanation": "Sum $=90$. Mean $=\\frac{90}{5}=18$."
+        },
+        {
+          "q": "Find the mean of $50,23,27,33,12$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Data displays",
+          "choices": [
+            "$145$",
+            "$31$",
+            "$29$",
+            "$27$"
+          ],
+          "correct": 2,
+          "answer": "Sum $=145$. Mean $=\\frac{145}{5}=29$.",
+          "explanation": "Sum $=145$. Mean $=\\frac{145}{5}=29$."
+        },
+        {
+          "q": "Find the mean of $14,29,33,44,30$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Expected value",
+          "choices": [
+            "$28$",
+            "$32$",
+            "$30$",
+            "$150$"
+          ],
+          "correct": 2,
+          "answer": "Sum $=150$. Mean $=\\frac{150}{5}=30$.",
+          "explanation": "Sum $=150$. Mean $=\\frac{150}{5}=30$."
+        },
+        {
+          "q": "A jar has 11 yellow, 6 red, and 6 green marbles. Find $P(\\mathrm{red})$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Effects of transformations on statistics",
+          "choices": [
+            "$\\frac{6}{23}$",
+            "$\\frac{8}{23}$",
+            "$\\frac{11}{23}$",
+            "$\\frac{9}{23}$"
+          ],
+          "correct": 0,
+          "answer": "Total marbles $=23$. $P(\\mathrm{red})=\\frac{6}{23}$.",
+          "explanation": "Total marbles $=23$. $P(\\mathrm{red})=\\frac{6}{23}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
+        {
+          "q": "A jar has 4 red, 8 purple, and 4 green marbles. Find $P(\\mathrm{red})$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "A well-designed word problem: a survey of students",
+          "choices": [
+            "$\\frac{7}{16}$",
+            "$\\frac{3}{8}$",
+            "$\\frac{1}{4}$",
+            "$\\frac{1}{2}$"
+          ],
+          "correct": 2,
+          "answer": "Total marbles $=16$. $P(\\mathrm{red})=\\frac{4}{16}=\\frac{1}{4}$.",
+          "explanation": "Total marbles $=16$. $P(\\mathrm{red})=\\frac{4}{16}=\\frac{1}{4}$."
+        },
+        {
+          "q": "A jar has 9 red, 2 green, and 10 blue marbles. Find $P(\\mathrm{red})$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Summary Statistics & Outliers",
+          "choices": [
+            "$\\frac{2}{21}$",
+            "$\\frac{10}{21}$",
+            "$\\frac{11}{21}$",
+            "$\\frac{3}{7}$"
+          ],
+          "correct": 3,
+          "answer": "Total marbles $=21$. $P(\\mathrm{red})=\\frac{9}{21}=\\frac{3}{7}$.",
+          "explanation": "Total marbles $=21$. $P(\\mathrm{red})=\\frac{9}{21}=\\frac{3}{7}$."
+        },
+        {
+          "q": "A jar has 2 red, 5 purple, and 1 orange marbles. Find $P(\\mathrm{red})$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Normal Distributions & Standard Deviation",
+          "choices": [
+            "$\\frac{1}{8}$",
+            "$\\frac{1}{2}$",
+            "$\\frac{5}{8}$",
+            "$\\frac{1}{4}$"
+          ],
+          "correct": 3,
+          "answer": "Total marbles $=8$. $P(\\mathrm{red})=\\frac{2}{8}=\\frac{1}{4}$.",
+          "explanation": "Total marbles $=8$. $P(\\mathrm{red})=\\frac{2}{8}=\\frac{1}{4}$."
+        },
+        {
+          "q": "A jar has 10 red, 8 purple, and 9 blue marbles. Find $P(\\mathrm{red})$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Compound & Conditional Probability",
+          "choices": [
+            "$\\frac{1}{3}$",
+            "$\\frac{8}{27}$",
+            "$\\frac{10}{27}$",
+            "$\\frac{4}{9}$"
+          ],
+          "correct": 2,
+          "answer": "Total marbles $=27$. $P(\\mathrm{red})=\\frac{10}{27}$.",
+          "explanation": "Total marbles $=27$. $P(\\mathrm{red})=\\frac{10}{27}$."
+        },
+        {
+          "q": "A jar has 12 green, 12 orange, and 2 blue marbles. Find $P(\\mathrm{blue})$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Permutations & Combinations",
+          "choices": [
+            "$\\frac{5}{26}$",
+            "$\\frac{1}{13}$",
+            "$\\frac{2}{13}$",
+            "$\\frac{6}{13}$"
+          ],
+          "correct": 1,
+          "answer": "Total marbles $=26$. $P(\\mathrm{blue})=\\frac{2}{26}=\\frac{1}{13}$.",
+          "explanation": "Total marbles $=26$. $P(\\mathrm{blue})=\\frac{2}{26}=\\frac{1}{13}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -2.0,
+                "label": "$(1,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A jar has 9 blue, 10 orange, and 3 red marbles. Find $P(\\mathrm{blue})$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Measures of center",
+          "choices": [
+            "$\\frac{5}{11}$",
+            "$\\frac{9}{22}$",
+            "$\\frac{3}{22}$",
+            "$\\frac{1}{2}$"
+          ],
+          "correct": 1,
+          "answer": "Total marbles $=22$. $P(\\mathrm{blue})=\\frac{9}{22}$.",
+          "explanation": "Total marbles $=22$. $P(\\mathrm{blue})=\\frac{9}{22}$."
+        },
+        {
+          "q": "Two independent events have $P(A)=0.1$ and $P(B)=0.7$. Find $P(A\\mathrm{\\ and\\ }B)$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Measures of spread",
+          "choices": [
+            "$0.27$",
+            "$0.17$",
+            "$0.12$",
+            "$0.07$"
+          ],
+          "correct": 3,
+          "answer": "$P(A\\cap B)=0.1\\times0.7=0.07$.",
+          "explanation": "$P(A\\cap B)=0.1\\times0.7=0.07$."
+        },
+        {
+          "q": "Two independent events have $P(A)=0.8$ and $P(B)=0.5$. Find $P(A\\mathrm{\\ and\\ }B)$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Basic probability",
+          "choices": [
+            "$0.40$",
+            "$0.30$",
+            "$0.50$",
+            "$0.60$"
+          ],
+          "correct": 0,
+          "answer": "$P(A\\cap B)=0.8\\times0.5=0.40$.",
+          "explanation": "$P(A\\cap B)=0.8\\times0.5=0.40$."
+        },
+        {
+          "q": "A bag has 7 red and 9 blue marbles. Two marbles are drawn without replacement. Find $P(\\mathrm{both\\ red})$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Combined probability: AND / OR",
+          "choices": [
+            "$\\frac{7}{16}$",
+            "$\\frac{21}{40}$",
+            "$\\frac{3}{10}$",
+            "$\\frac{7}{40}$"
+          ],
+          "correct": 3,
+          "answer": "$P=\\frac{7}{16}\\times\\frac{6}{15}=\\frac{42}{240}=\\frac{7}{40}$.",
+          "explanation": "$P=\\frac{7}{16}\\times\\frac{6}{15}=\\frac{42}{240}=\\frac{7}{40}$."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "A bag has 7 red and 4 blue marbles. Two marbles are drawn without replacement. Find $P(\\mathrm{both\\ red})$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Probability without replacement",
+          "choices": [
+            "$\\frac{21}{55}$",
+            "$\\frac{28}{55}$",
+            "$\\frac{7}{11}$",
+            "$\\frac{6}{55}$"
+          ],
+          "correct": 0,
+          "answer": "$P=\\frac{7}{11}\\times\\frac{6}{10}=\\frac{42}{110}=\\frac{21}{55}$.",
+          "explanation": "$P=\\frac{7}{11}\\times\\frac{6}{10}=\\frac{42}{110}=\\frac{21}{55}$.",
+          "cross_lesson": "1.01 Heart of Algebra"
+        },
+        {
+          "q": "A spinner has 4 equal sections labeled 10, 20, 25, and 40 points. Find the expected value of one spin.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Data displays",
+          "choices": [
+            "$26.75$",
+            "$24.75$",
+            "$23.75$",
+            "$22.75$"
+          ],
+          "correct": 2,
+          "answer": "$E=\\frac{10+20+25+40}{4}=\\frac{95}{4}=23.75$ points.",
+          "explanation": "$E=\\frac{10+20+25+40}{4}=\\frac{95}{4}=23.75$ points.",
+          "cross_lesson": "2.01 Quadratics & Polynomials",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -2.0,
+                "label": "$(1,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A spinner has 4 equal sections labeled 15, 20, 30, and 40 points. Find the expected value of one spin.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Expected value",
+          "choices": [
+            "$27.25$",
+            "$26.25$",
+            "$29.25$",
+            "$25.25$"
+          ],
+          "correct": 1,
+          "answer": "$E=\\frac{15+20+30+40}{4}=\\frac{105}{4}=26.25$ points.",
+          "explanation": "$E=\\frac{15+20+30+40}{4}=\\frac{105}{4}=26.25$ points.",
+          "cross_lesson": "3.01 Functions & Graphs"
+        },
+        {
           "q": "The mean of five numbers is $24$. When a sixth number is added, the mean becomes $26$. What is the sixth number?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Summary Statistics & Outliers",
           "choices": [
             "$32$",
             "$34$",
@@ -16,21 +689,15 @@
             "$38$"
           ],
           "correct": 2,
-          "answer": "Sum of 5 numbers $= 5 \\times 24 = 120$. Sum of 6 numbers $= 6 \\times 26 = 156$. Sixth number $= 156 - 120 = 36$."
+          "answer": "Sum of 5 numbers $= 5 \\times 24 = 120$. Sum of 6 numbers $= 6 \\times 26 = 156$. Sixth number $= 156 - 120 = 36$.",
+          "explanation": "Sum of 5 numbers $= 5 \\times 24 = 120$. Sum of 6 numbers $= 6 \\times 26 = 156$. Sixth number $= 156 - 120 = 36$.",
+          "cross_lesson": "4.01 Ratios, Rates & Data"
         },
         {
-          "q": "What is the median of the data set: $\\{14, 8, 22, 19, 11, 25, 17, 30\\}$?",
-          "choices": [
-            "$17$",
-            "$18$",
-            "$19$",
-            "$20.5$"
-          ],
-          "correct": 1,
-          "answer": "Sort in ascending order: $8, 11, 14, 17, 19, 22, 25, 30$. The two middle numbers are $17$ and $19$. Median $= \\frac{17 + 19}{2} = 18$."
-        },
-        {
-          "q": "An outlier is defined as any data point greater than $Q_3 + 1.5 \\times \\text{IQR}$. If $Q_1 = 20$ and $Q_3 = 35$, which value is considered an outlier?",
+          "q": "An outlier is defined as any data point greater than $Q_3 + 1.5 \\times \\mathrm{IQR}$. If $Q_1 = 20$ and $Q_3 = 35$, which value is considered an outlier?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Summary Statistics & Outliers",
           "choices": [
             "$50$",
             "$55$",
@@ -38,37 +705,15 @@
             "$60$"
           ],
           "correct": 3,
-          "answer": "$\\text{IQR} = 35 - 20 = 15$. Upper threshold $= 35 + 1.5(15) = 35 + 22.5 = 57.5$. Since $60 > 57.5$, $60$ is an outlier."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Normal Distributions & Standard Deviation",
-      "questions": [
-        {
-          "q": "Exam scores are normally distributed with $\\mu = 75$ and $\\sigma = 6$. What percentage of scores fall between $69$ and $81$?",
-          "choices": [
-            "$50\\%$",
-            "$68\\%$",
-            "$95\\%$",
-            "$99.7\\%$"
-          ],
-          "correct": 1,
-          "answer": "The interval $69$ to $81$ represents $\\mu \\pm 1\\sigma$ ($75 - 6$ to $75 + 6$). By the Empirical Rule, this contains approximately $68\\%$ of the distribution."
-        },
-        {
-          "q": "If a test score of $88$ has a $z$-score of $2.5$ with standard deviation $\\sigma = 4$, what is the mean score $\\mu$?",
-          "choices": [
-            "$76$",
-            "$78$",
-            "$80$",
-            "$82$"
-          ],
-          "correct": 1,
-          "answer": "$z = \\frac{x - \\mu}{\\sigma} \\Rightarrow 2.5 = \\frac{88 - \\mu}{4} \\Rightarrow 10 = 88 - \\mu \\Rightarrow \\mu = 78$."
+          "answer": "$\\mathrm{IQR} = 35 - 20 = 15$. Upper threshold $= 35 + 1.5(15) = 35 + 22.5 = 57.5$. Since $60 > 57.5$, $60$ is an outlier.",
+          "explanation": "$\\mathrm{IQR} = 35 - 20 = 15$. Upper threshold $= 35 + 1.5(15) = 35 + 22.5 = 57.5$. Since $60 > 57.5$, $60$ is an outlier.",
+          "cross_lesson": "6.01 Geometry"
         },
         {
           "q": "Which change will increase the standard deviation of a dataset?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Normal Distributions & Standard Deviation",
           "choices": [
             "Adding $10$ to all data points",
             "Multiplying all data points by $2$",
@@ -76,26 +721,15 @@
             "Dividing all data points by $3$"
           ],
           "correct": 1,
-          "answer": "Multiplying by $2$ doubles the dispersion and doubles the standard deviation. Adding/subtracting a constant shifts the data without affecting standard deviation."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Compound & Conditional Probability",
-      "questions": [
-        {
-          "q": "A fair six-sided die is rolled twice. What is the probability that both rolls result in a prime number?",
-          "choices": [
-            "$\\frac{1}{4}$",
-            "$\\frac{1}{3}$",
-            "$\\frac{1}{2}$",
-            "$\\frac{1}{6}$"
-          ],
-          "correct": 0,
-          "answer": "Prime numbers on a die are $\\{2, 3, 5\\}$ (3 out of 6, probability $\\frac{1}{2}$). For two independent rolls: $\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}$."
+          "answer": "Multiplying by $2$ doubles the dispersion and doubles the standard deviation. Adding/subtracting a constant shifts the data without affecting standard deviation.",
+          "explanation": "Multiplying by $2$ doubles the dispersion and doubles the standard deviation. Adding/subtracting a constant shifts the data without affecting standard deviation.",
+          "cross_lesson": "7.01 Trigonometry & Additional Topics"
         },
         {
           "q": "If $P(A) = 0.5$, $P(B) = 0.6$, and $P(A \\cup B) = 0.8$, what is $P(A \\cap B)$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Compound & Conditional Probability",
           "choices": [
             "$0.1$",
             "$0.2$",
@@ -103,26 +737,15 @@
             "$0.4$"
           ],
           "correct": 2,
-          "answer": "$P(A \\cup B) = P(A) + P(B) - P(A \\cap B) \\Rightarrow 0.8 = 0.5 + 0.6 - P(A \\cap B) \\Rightarrow P(A \\cap B) = 1.1 - 0.8 = 0.3$."
+          "answer": "$P(A \\cup B) = P(A) + P(B) - P(A \\cap B) \\Rightarrow 0.8 = 0.5 + 0.6 - P(A \\cap B) \\Rightarrow P(A \\cap B) = 1.1 - 0.8 = 0.3$.",
+          "explanation": "$P(A \\cup B) = P(A) + P(B) - P(A \\cap B) \\Rightarrow 0.8 = 0.5 + 0.6 - P(A \\cap B) \\Rightarrow P(A \\cap B) = 1.1 - 0.8 = 0.3$.",
+          "cross_lesson": "8.01 Exponentials & Logarithms"
         },
         {
-          "q": "A box contains $5$ red balls and $7$ black balls. Two balls are drawn in succession without replacement. What is the probability that both balls are red?",
-          "choices": [
-            "$\\frac{5}{33}$",
-            "$\\frac{5}{36}$",
-            "$\\frac{25}{144}$",
-            "$\\frac{1}{6}$"
-          ],
-          "correct": 0,
-          "answer": "Probability of first red $= \\frac{5}{12}$. Probability of second red $= \\frac{4}{11}$. Combined probability $= \\frac{5}{12} \\times \\frac{4}{11} = \\frac{5}{33}$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Permutations & Combinations",
-      "questions": [
-        {
           "q": "How many distinct $3$-person executive committees (President, Vice-President, Treasurer) can be elected from a club of $10$ members?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Permutations & Combinations",
           "choices": [
             "$120$",
             "$240$",
@@ -130,29 +753,9 @@
             "$1000$"
           ],
           "correct": 2,
-          "answer": "Since roles are distinct, order matters (permutation): $P(10, 3) = 10 \\times 9 \\times 8 = 720$."
-        },
-        {
-          "q": "How many subsets of $3$ elements can be formed from a set of $8$ elements?",
-          "choices": [
-            "$24$",
-            "$56$",
-            "$112$",
-            "$336$"
-          ],
-          "correct": 1,
-          "answer": "Combinations: $\\binom{8}{3} = \\frac{8 \\times 7 \\times 6}{3 \\times 2 \\times 1} = 56$."
-        },
-        {
-          "q": "In how many ways can $4$ math books and $3$ science books be arranged on a shelf if all math books must be grouped together and all science books must be grouped together?",
-          "choices": [
-            "$144$",
-            "$288$",
-            "$576$",
-            "$5040$"
-          ],
-          "correct": 1,
-          "answer": "There are $2!$ ways to arrange the two subject groups. Math books can be permuted in $4! = 24$ ways, and science books in $3! = 6$ ways. Total $= 2 \\times 24 \\times 6 = 288$."
+          "answer": "Since roles are distinct, order matters (permutation): $P(10, 3) = 10 \\times 9 \\times 8 = 720$.",
+          "explanation": "Since roles are distinct, order matters (permutation): $P(10, 3) = 10 \\times 9 \\times 8 = 720$.",
+          "cross_lesson": "1.01 Heart of Algebra"
         }
       ]
     }

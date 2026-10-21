@@ -3,12 +3,354 @@
   "num": "11.01",
   "slug": "sequences-and-series",
   "title": "Sequences and Series",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 11.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Limits of Sequences",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "Find the limit of the sequence $a_n = \\frac{3n^2 - 5n}{2n^2 + 7}$ as $n \\to \\infty$.",
+          "q": "Determine whether each sequence converges, and find the limit if it does:",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Sequence limits",
+          "parts": [
+            "$a_n = \\frac{3n+1}{n+2}$",
+            "$a_n = \\frac{n^2}{2^n}$",
+            "$a_n = (-1)^n$"
+          ],
+          "cols": 1,
+          "answers": [
+            "Converges to $3$ (divide by $n$).",
+            "Converges to $0$ (exponential growth dominates polynomial).",
+            "Diverges (oscillates between $-1$ and $1$)."
+          ],
+          "answer": "(a) Converges to $3$ (divide by $n$).; (b) Converges to $0$ (exponential growth dominates polynomial).; (c) Diverges (oscillates between $-1$ and $1$).",
+          "explanation": "(a) Converges to $3$ (divide by $n$).; (b) Converges to $0$ (exponential growth dominates polynomial).; (c) Diverges (oscillates between $-1$ and $1$)."
+        },
+        {
+          "q": "Evaluate $\\lim_{n \\rightarrow \\infty} \\left(1 + \\frac{3}{n}\\right)^n$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Sequence limits",
+          "answer": "This is the standard limit form giving $e^3$.",
+          "explanation": "This is the standard limit form giving $e^3$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "1 + 1.5/(x - (-1))"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "asymptotes": {
+              "x": [
+                -1
+              ],
+              "y": [
+                1
+              ]
+            },
+            "point_labels": [
+              {
+                "x": 0.5,
+                "y": 2.0,
+                "label": "$( 0.5, 2 )$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Determine whether $\\sum_{n=1}^{\\infty} \\frac{1}{n}$ converges or diverges, and name the test or fact that justifies your answer.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Series and partial sums",
+          "answer": "Diverges — this is the harmonic series, a standard example of a divergent series with terms going to $0$.",
+          "explanation": "Diverges — this is the harmonic series, a standard example of a divergent series with terms going to $0$."
+        },
+        {
+          "q": "Evaluate the geometric series $\\sum_{n=0}^{\\infty} 3\\left(\\frac{2}{5}\\right)^n$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Series and partial sums",
+          "answer": "$|r| = \\frac{2}{5} < 1$: $S = \\frac{3}{1 - 2/5} = 5$.",
+          "explanation": "$|r| = \\frac{2}{5} < 1$: $S = \\frac{3}{1 - 2/5} = 5$."
+        },
+        {
+          "q": "Use partial fractions and telescoping to evaluate $\\sum_{n=1}^{\\infty} \\frac{1}{n(n+1)}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Series and partial sums",
+          "answer": "$\\frac{1}{n(n+1)} = \\frac{1}{n} - \\frac{1}{n+1}$. The partial sums telescope: $S_N = 1 - \\frac{1}{N+1} \\rightarrow 1$.",
+          "explanation": "$\\frac{1}{n(n+1)} = \\frac{1}{n} - \\frac{1}{n+1}$. The partial sums telescope: $S_N = 1 - \\frac{1}{N+1} \\rightarrow 1$."
+        },
+        {
+          "q": "Show that the sequence $a_n = \\frac{n}{n+1}$ is increasing, by comparing $a_{n+1}$ and $a_n$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Monotonic and bounded sequences",
+          "answer": "$a_{n+1}-a_n = \\frac{n+1}{n+2}-\\frac{n}{n+1} = \\frac{(n+1)^2-n(n+2)}{(n+1)(n+2)} = \\frac{1}{(n+1)(n+2)} > 0$, so $a_{n+1}>a_n$: the sequence is increasing.",
+          "explanation": "$a_{n+1}-a_n = \\frac{n+1}{n+2}-\\frac{n}{n+1} = \\frac{(n+1)^2-n(n+2)}{(n+1)(n+2)} = \\frac{1}{(n+1)(n+2)} > 0$, so $a_{n+1}>a_n$: the sequence is increasing.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -1.0,
+                "label": "$(1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Explain why the sequence $a_n=\\frac{n}{n+1}$ (increasing and bounded above by $1$) must converge, and find its limit.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Monotonic and bounded sequences",
+          "answer": "By the Monotonic Convergence Theorem, a bounded, monotonic sequence converges. $\\lim_{n\\rightarrow\\infty}\\frac{n}{n+1}=1$ (divide numerator and denominator by $n$).",
+          "explanation": "By the Monotonic Convergence Theorem, a bounded, monotonic sequence converges. $\\lim_{n\\rightarrow\\infty}\\frac{n}{n+1}=1$ (divide numerator and denominator by $n$)."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Evaluate the series $\\sum_{n=1}^{\\infty} \\left[\\left(\\frac{1}{2}\\right)^n + \\left(\\frac{1}{3}\\right)^n\\right]$ by splitting into two geometric series.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "More series practice",
+          "answer": "$\\sum\\left(\\frac{1}{2}\\right)^n = \\frac{1/2}{1-1/2}=1$. $\\sum\\left(\\frac{1}{3}\\right)^n = \\frac{1/3}{1-1/3}=\\frac{1}{2}$. Total $=1+\\frac{1}{2}=\\frac{3}{2}$.",
+          "explanation": "$\\sum\\left(\\frac{1}{2}\\right)^n = \\frac{1/2}{1-1/2}=1$. $\\sum\\left(\\frac{1}{3}\\right)^n = \\frac{1/3}{1-1/3}=\\frac{1}{2}$. Total $=1+\\frac{1}{2}=\\frac{3}{2}$."
+        },
+        {
+          "q": "A ball dropped from 10 m rebounds to $60\\%$ of its previous height each bounce. Using an infinite geometric series, find the total distance traveled.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "More series practice",
+          "answer": "Total $= 10 + 2\\left(10(0.6)+10(0.6)^2+\\cdots\\right) = 10+2\\cdot\\frac{6}{1-0.6} = 10+2(15)=40$ m.",
+          "explanation": "Total $= 10 + 2\\left(10(0.6)+10(0.6)^2+\\cdots\\right) = 10+2\\cdot\\frac{6}{1-0.6} = 10+2(15)=40$ m.",
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5"
+            ],
+            "values": [
+              10,
+              6,
+              3.6,
+              2.16,
+              1.3,
+              0.78
+            ],
+            "ylabel": "Height (m)",
+            "width": 220
+          }
+        },
+        {
+          "q": "A sequence is defined recursively by $a_1=2$, $a_{n+1}=\\frac{a_n+6}{2}$. Compute $a_2$, $a_3$, and $a_4$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Recursive sequences",
+          "answer": "$a_2=\\frac{2+6}{2}=4$. $a_3=\\frac{4+6}{2}=5$. $a_4=\\frac{5+6}{2}=5.5$.",
+          "explanation": "$a_2=\\frac{2+6}{2}=4$. $a_3=\\frac{4+6}{2}=5$. $a_4=\\frac{5+6}{2}=5.5$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Assuming the recursive sequence above converges to a limit $L$, find $L$ by setting $L=\\frac{L+6}{2}$ and solving.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Recursive sequences",
+          "answer": "$2L=L+6$, so $L=6$.",
+          "explanation": "$2L=L+6$, so $L=6$."
+        },
+        {
+          "q": "Express the repeating decimal $0.\\overline{45}$ as a fraction using an infinite geometric series with $a=\\frac{45}{100}$ and $r=\\frac{1}{100}$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Repeating decimals as series",
+          "answer": "$S = \\frac{45/100}{1-1/100} = \\frac{45/100}{99/100} = \\frac{45}{99} = \\frac{5}{11}$.",
+          "explanation": "$S = \\frac{45/100}{1-1/100} = \\frac{45/100}{99/100} = \\frac{45}{99} = \\frac{5}{11}$."
+        },
+        {
+          "q": "The graph shows the first six partial sums $S_n=\\sum_{k=1}^n\\left(\\frac{1}{2}\\right)^k$ of a geometric series. Use the pattern to conjecture the value the sums are approaching, and confirm it using the geometric series formula.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Visualizing partial sums of a series",
+          "answer": "The partial sums appear to approach $1$. Using the geometric series formula: $S=\\frac{1/2}{1-1/2}=1$, confirming the visual pattern.",
+          "explanation": "The partial sums appear to approach $1$. Using the geometric series formula: $S=\\frac{1/2}{1-1/2}=1$, confirming the visual pattern."
+        },
+        {
+          "q": "Evaluate $\\sum_{n=0}^{\\infty}\\frac{1}{2^n}-\\sum_{n=0}^{\\infty}\\frac{1}{3^n}$ by evaluating each geometric series separately.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Series with factorial and combined terms",
+          "answer": "$\\sum\\frac{1}{2^n}=\\frac{1}{1-1/2}=2$. $\\sum\\frac{1}{3^n}=\\frac{1}{1-1/3}=\\frac{3}{2}$. Difference $=2-\\frac{3}{2}=\\frac{1}{2}$.",
+          "explanation": "$\\sum\\frac{1}{2^n}=\\frac{1}{1-1/2}=2$. $\\sum\\frac{1}{3^n}=\\frac{1}{1-1/3}=\\frac{3}{2}$. Difference $=2-\\frac{3}{2}=\\frac{1}{2}$."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "A sequence is defined by $a_n=\\frac{2n+(-1)^n}{n}$. Find $\\lim_{n\\rightarrow\\infty}a_n$, explaining why the $(-1)^n$ term does not affect the limit.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Series with factorial and combined terms",
+          "cross_lesson": "6.02 Optimization and Curve Sketching",
+          "answer": "$a_n=2+\\frac{(-1)^n}{n}$. As $n\\rightarrow\\infty$, $\\frac{(-1)^n}{n}\\rightarrow0$ (bounded numerator divided by an unbounded denominator), so $\\lim_{n\\rightarrow\\infty}a_n=2$.",
+          "explanation": "$a_n=2+\\frac{(-1)^n}{n}$. As $n\\rightarrow\\infty$, $\\frac{(-1)^n}{n}\\rightarrow0$ (bounded numerator divided by an unbounded denominator), so $\\lim_{n\\rightarrow\\infty}a_n=2$."
+        },
+        {
+          "q": "Use the squeeze theorem to find $\\lim_{n\\rightarrow\\infty}\\frac{\\sin n}{n}$, using the fact that $-1\\leq\\sin n\\leq1$ for all $n$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "The Squeeze Theorem for sequences",
+          "cross_lesson": "7.01 Integration by Substitution",
+          "answer": "$-\\frac{1}{n}\\leq\\frac{\\sin n}{n}\\leq\\frac{1}{n}$ for $n\\geq1$. Since $\\lim_{n\\rightarrow\\infty}\\left(\\pm\\frac{1}{n}\\right)=0$, by the squeeze theorem $\\lim_{n\\rightarrow\\infty}\\frac{\\sin n}{n}=0$.",
+          "explanation": "$-\\frac{1}{n}\\leq\\frac{\\sin n}{n}\\leq\\frac{1}{n}$ for $n\\geq1$. Since $\\lim_{n\\rightarrow\\infty}\\left(\\pm\\frac{1}{n}\\right)=0$, by the squeeze theorem $\\lim_{n\\rightarrow\\infty}\\frac{\\sin n}{n}=0$.",
+          "figure": {
+            "type": "triangle",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                8.0,
+                0
+              ],
+              [
+                0,
+                6.0
+              ]
+            ],
+            "labels": [
+              "$C$",
+              "$B$",
+              "$A$"
+            ],
+            "side_labels": [
+              "$8$",
+              "$10$",
+              "$6$"
+            ],
+            "right_angle_at": 0,
+            "angle_marks": [
+              {
+                "vertex": 1,
+                "label": "$\\theta$"
+              }
+            ],
+            "fill": true,
+            "width": 220
+          }
+        },
+        {
+          "q": "Use the squeeze theorem to find $\\lim_{n\\rightarrow\\infty}\\frac{n!}{n^n}$, using the bound $0<\\frac{n!}{n^n}\\leq\\frac{1}{n}$ for $n\\geq1$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "The Squeeze Theorem for sequences",
+          "cross_lesson": "7.02 Integration by Parts",
+          "answer": "Since $0\\leq\\frac{n!}{n^n}\\leq\\frac{1}{n}$ and $\\lim_{n\\rightarrow\\infty}\\frac{1}{n}=0$, by the squeeze theorem $\\lim_{n\\rightarrow\\infty}\\frac{n!}{n^n}=0$.",
+          "explanation": "Since $0\\leq\\frac{n!}{n^n}\\leq\\frac{1}{n}$ and $\\lim_{n\\rightarrow\\infty}\\frac{1}{n}=0$, by the squeeze theorem $\\lim_{n\\rightarrow\\infty}\\frac{n!}{n^n}=0$."
+        },
+        {
+          "q": "A patient takes a $100$ mg dose of medication every $8$ hours. Between doses, $75\\%$ of the drug remaining is eliminated, so a fraction $r=0.25$ carries over to just before the next dose. Using an infinite geometric series, find the long-run steady-state amount in the body immediately after a dose (assume doses accumulate indefinitely).",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Applications of infinite series",
+          "cross_lesson": "8.01 Area Between Curves",
+          "answer": "Immediately after the $n$th dose, the amount is $100+100r+100r^2+\\cdots=\\frac{100}{1-0.25}=\\frac{100}{0.75}\\approx133.33$ mg in the long run.",
+          "explanation": "Immediately after the $n$th dose, the amount is $100+100r+100r^2+\\cdots=\\frac{100}{1-0.25}=\\frac{100}{0.75}\\approx133.33$ mg in the long run."
+        },
+        {
+          "q": "Consider the region bounded by the curves $y = x^2$ and $y = 4$. This region is revolved around the line $y = 5$ to form a solid. A cylindrical hole is drilled through the center of this solid, perpendicular to the axis of revolution. The radius of the cylindrical hole is $r$. The volume of the material removed by the cylindrical hole is given by $V_{\\mathrm{hole}} = \\pi \\int_a^b (R(x)^2 - r^2) dx$, where $R(x)$ is the outer radius of the solid at a given $x$ and $a, b$ are the limits of integration. Find the value of $a$ and $b$, and the expression for $V_{\\mathrm{hole}}$ in terms of $r$. The question asks for the setup of the integral representing the volume of the material removed.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Recursive sequences",
+          "cross_lesson": "8.02 Volumes of Revolution",
+          "answer": "The region is bounded by $y = x^2$ and $y = 4$. To find the intersection points, we set $x^2 = 4$, which gives $x = \\pm 2$. These are our limits of integration, $a = -2$ and $b = 2$. The region is revolved around the line $y = 5$. The outer radius $R(x)$ is the distance from the axis of revolution ($y=5$) to the outer boundary of the region. The outer boundary is the curve $y = x^2$. So, $R(x) = 5 - x^2$. The inner radius of the cylindrical hole is given as $r$. The volume of the material removed by the cylindrical hole is the integral of the area of the annular cross-section, which is $\\pi (R(x)^2 - r^2)$. Therefore, $V_{\\mathrm{hole}} = \\pi \\int_{-2}^2 ((5 - x^2)^2 - r^2) dx$.",
+          "explanation": "The region is bounded by $y = x^2$ and $y = 4$. To find the intersection points, we set $x^2 = 4$, which gives $x = \\pm 2$. These are our limits of integration, $a = -2$ and $b = 2$. The region is revolved around the line $y = 5$. The outer radius $R(x)$ is the distance from the axis of revolution ($y=5$) to the outer boundary of the region. The outer boundary is the curve $y = x^2$. So, $R(x) = 5 - x^2$. The inner radius of the cylindrical hole is given as $r$. The volume of the material removed by the cylindrical hole is the integral of the area of the annular cross-section, which is $\\pi (R(x)^2 - r^2)$. Therefore, $V_{\\mathrm{hole}} = \\pi \\int_{-2}^2 ((5 - x^2)^2 - r^2) dx$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*x",
+              "4"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": -2.0,
+                "y": 4.0,
+                "label": "(-2, 4)"
+              },
+              {
+                "x": 2.0,
+                "y": 4.0,
+                "label": "(2, 4)"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "By the alternating series estimation theorem, what is the fewest number of terms of $\\sum_{n=0}^\\infty\\frac{(-1)^{n}}{n!}$ needed to guarantee an error less than $\\frac{1}{1000}$?",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Repeating decimals as series",
+          "cross_lesson": "8.03 Arc Length and Improper Integrals",
+          "answer": "The error after summing up to $n=6$ is at most the next term, $\\frac{1}{5040}$ $<$ $\\frac{1}{1000}$, while stopping one term earlier leaves a bound $\\frac{1}{720}$ $\\geq$ $\\frac{1}{1000}$. So 7 terms are needed.",
+          "explanation": "The error after summing up to $n=6$ is at most the next term, $\\frac{1}{5040}$ $<$ $\\frac{1}{1000}$, while stopping one term earlier leaves a bound $\\frac{1}{720}$ $\\geq$ $\\frac{1}{1000}$. So 7 terms are needed."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+      "questions": [
+        {
+          "q": "Find the limit of the sequence $a_n = \\frac{3n^2 - 5n}{2n^2 + 7}$ as $n \\rightarrow \\infty$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Limits of Sequences",
           "choices": [
             "$3/2$",
             "$0$",
@@ -16,10 +358,14 @@
             "$3/7$"
           ],
           "correct": 0,
-          "answer": "Divide numerator and denominator by $n^2$: $\\lim_{n \\to \\infty} \\frac{3 - 5/n}{2 + 7/n^2} = \\frac{3}{2}$."
+          "answer": "Divide numerator and denominator by $n^2$: $\\lim_{n \\rightarrow \\infty} \\frac{3 - 5/n}{2 + 7/n^2} = \\frac{3}{2}$.",
+          "explanation": "Divide numerator and denominator by $n^2$: $\\lim_{n \\rightarrow \\infty} \\frac{3 - 5/n}{2 + 7/n^2} = \\frac{3}{2}$."
         },
         {
           "q": "Determine if the sequence $a_n = \\frac{(-1)^n}{n}$ converges, and if so, find its limit.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Limits of Sequences",
           "choices": [
             "Converges to $0$",
             "Diverges (oscillates)",
@@ -27,10 +373,14 @@
             "Converges to $-1$"
           ],
           "correct": 0,
-          "answer": "Since $|a_n| = 1/n \\to 0$ as $n \\to \\infty$, the sequence converges to 0 by the Absolute Value Theorem for sequences."
+          "answer": "Since $|a_n| = 1/n \\rightarrow 0$ as $n \\rightarrow \\infty$, the sequence converges to 0 by the Absolute Value Theorem for sequences.",
+          "explanation": "Since $|a_n| = 1/n \\rightarrow 0$ as $n \\rightarrow \\infty$, the sequence converges to 0 by the Absolute Value Theorem for sequences."
         },
         {
-          "q": "Find the limit of the sequence $a_n = \\left(1 + \\frac{2}{n}\\right)^n$ as $n \\to \\infty$.",
+          "q": "Find the limit of the sequence $a_n = \\left(1 + \\frac{2}{n}\\right)^n$ as $n \\rightarrow \\infty$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Limits of Sequences",
           "choices": [
             "$e^2$",
             "$e$",
@@ -38,15 +388,40 @@
             "$\\infty$"
           ],
           "correct": 0,
-          "answer": "Using the standard exponential limit $\\lim_{n \\to \\infty} (1 + x/n)^n = e^x$, with $x = 2$ we get $e^2$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Geometric Series",
-      "questions": [
+          "answer": "Using the standard exponential limit $\\lim_{n \\rightarrow \\infty} (1 + x/n)^n = e^x$, with $x = 2$ we get $e^2$.",
+          "explanation": "Using the standard exponential limit $\\lim_{n \\rightarrow \\infty} (1 + x/n)^n = e^x$, with $x = 2$ we get $e^2$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2 + 1.5/(x - (1))"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "asymptotes": {
+              "x": [
+                1
+              ],
+              "y": [
+                2
+              ]
+            },
+            "point_labels": [
+              {
+                "x": 2.5,
+                "y": 3.0,
+                "label": "$( 2.5, 3 )$"
+              }
+            ],
+            "width": 230
+          }
+        },
         {
           "q": "Find the sum of the geometric series $\\sum_{n=1}^\\infty 3\\left(\\frac{2}{5}\\right)^{n-1}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Geometric Series",
           "choices": [
             "$5$",
             "$15/2$",
@@ -54,10 +429,14 @@
             "$15$"
           ],
           "correct": 0,
-          "answer": "First term $a = 3$, common ratio $r = 2/5$. Since $|r| < 1$, sum $S = \\frac{a}{1 - r} = \\frac{3}{1 - 2/5} = \\frac{3}{3/5} = 5$."
+          "answer": "First term $a = 3$, common ratio $r = 2/5$. Since $|r| < 1$, sum $S = \\frac{a}{1 - r} = \\frac{3}{1 - 2/5} = \\frac{3}{3/5} = 5$.",
+          "explanation": "First term $a = 3$, common ratio $r = 2/5$. Since $|r| < 1$, sum $S = \\frac{a}{1 - r} = \\frac{3}{1 - 2/5} = \\frac{3}{3/5} = 5$."
         },
         {
           "q": "Determine the convergence of $\\sum_{n=0}^\\infty 4\\left(-\\frac{3}{2}\\right)^n$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Geometric Series",
           "choices": [
             "Diverges because $|r| = 3/2 \\geq 1$",
             "Converges to $-8/5$",
@@ -65,10 +444,14 @@
             "Converges to 0"
           ],
           "correct": 0,
-          "answer": "The common ratio is $r = -3/2$. Since $|r| = 1.5 \\geq 1$, the geometric series diverges."
+          "answer": "The common ratio is $r = -3/2$. Since $|r| = 1.5 \\geq 1$, the geometric series diverges.",
+          "explanation": "The common ratio is $r = -3/2$. Since $|r| = 1.5 \\geq 1$, the geometric series diverges."
         },
         {
           "q": "Express the repeating decimal $0.\\overline{27} = 0.272727\\dots$ as a simplified fraction using a geometric series.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Geometric Series",
           "choices": [
             "$3/11$",
             "$27/100$",
@@ -76,15 +459,14 @@
             "$27/99$ is $3/11$"
           ],
           "correct": 0,
-          "answer": "$a = 27/100, r = 1/100$. $S = \\frac{27/100}{1 - 1/100} = \\frac{27/100}{99/100} = \\frac{27}{99} = \\frac{3}{11}$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Telescoping Series",
-      "questions": [
+          "answer": "$a = 27/100, r = 1/100$. $S = \\frac{27/100}{1 - 1/100} = \\frac{27/100}{99/100} = \\frac{27}{99} = \\frac{3}{11}$.",
+          "explanation": "$a = 27/100, r = 1/100$. $S = \\frac{27/100}{1 - 1/100} = \\frac{27/100}{99/100} = \\frac{27}{99} = \\frac{3}{11}$."
+        },
         {
           "q": "Find the sum of the telescoping series $\\sum_{n=1}^\\infty \\frac{1}{n(n+1)}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Telescoping Series",
           "choices": [
             "$1$",
             "$1/2$",
@@ -92,10 +474,14 @@
             "Diverges"
           ],
           "correct": 0,
-          "answer": "Partial fractions: $\\frac{1}{n} - \\frac{1}{n+1}$. Partial sum $S_k = (1 - 1/2) + (1/2 - 1/3) + \\dots + (1/k - 1/(k+1)) = 1 - \\frac{1}{k+1} \\to 1$ as $k \\to \\infty$."
+          "answer": "Partial fractions: $\\frac{1}{n} - \\frac{1}{n+1}$. Partial sum $S_k = (1 - 1/2) + (1/2 - 1/3) + \\dots + (1/k - 1/(k+1)) = 1 - \\frac{1}{k+1} \\rightarrow 1$ as $k \\rightarrow \\infty$.",
+          "explanation": "Partial fractions: $\\frac{1}{n} - \\frac{1}{n+1}$. Partial sum $S_k = (1 - 1/2) + (1/2 - 1/3) + \\dots + (1/k - 1/(k+1)) = 1 - \\frac{1}{k+1} \\rightarrow 1$ as $k \\rightarrow \\infty$."
         },
         {
           "q": "Find the sum of $\\sum_{n=1}^\\infty \\left(\\frac{1}{\\sqrt{n}} - \\frac{1}{\\sqrt{n+1}}\\right)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Telescoping Series",
           "choices": [
             "$1$",
             "$0$",
@@ -103,10 +489,38 @@
             "$\\sqrt{2}$"
           ],
           "correct": 0,
-          "answer": "$S_k = (1 - 1/\\sqrt{2}) + (1/\\sqrt{2} - 1/\\sqrt{3}) + \\dots + (1/\\sqrt{k} - 1/\\sqrt{k+1}) = 1 - 1/\\sqrt{k+1} \\to 1$."
-        },
+          "answer": "$S_k = (1 - 1/\\sqrt{2}) + (1/\\sqrt{2} - 1/\\sqrt{3}) + \\dots + (1/\\sqrt{k} - 1/\\sqrt{k+1}) = 1 - 1/\\sqrt{k+1} \\rightarrow 1$.",
+          "explanation": "$S_k = (1 - 1/\\sqrt{2}) + (1/\\sqrt{2} - 1/\\sqrt{3}) + \\dots + (1/\\sqrt{k} - 1/\\sqrt{k+1}) = 1 - 1/\\sqrt{k+1} \\rightarrow 1$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
         {
           "q": "Evaluate $\\sum_{n=1}^\\infty \\ln\\left(\\frac{n+1}{n}\\right)$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Telescoping Series",
           "choices": [
             "Diverges to $\\infty$",
             "$0$",
@@ -114,45 +528,281 @@
             "$\\ln 2$"
           ],
           "correct": 0,
-          "answer": "$S_k = \\sum_{n=1}^k [\\ln(n+1) - \\ln(n)] = \\ln(k+1) - \\ln(1) = \\ln(k+1) \\to \\infty$ as $k \\to \\infty$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Divergence Test (nth-Term Test)",
-      "questions": [
+          "answer": "$S_k = \\sum_{n=1}^k [\\ln(n+1) - \\ln(n)] = \\ln(k+1) - \\ln(1) = \\ln(k+1) \\rightarrow \\infty$ as $k \\rightarrow \\infty$.",
+          "explanation": "$S_k = \\sum_{n=1}^k [\\ln(n+1) - \\ln(n)] = \\ln(k+1) - \\ln(1) = \\ln(k+1) \\rightarrow \\infty$ as $k \\rightarrow \\infty$."
+        },
         {
           "q": "What does the nth-Term Test for Divergence state?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Divergence Test (nth-Term Test)",
           "choices": [
-            "If $\\lim_{n \\to \\infty} a_n \\neq 0$, then $\\sum a_n$ diverges",
-            "If $\\lim_{n \\to \\infty} a_n = 0$, then $\\sum a_n$ converges",
-            "If $\\sum a_n$ diverges, then $\\lim_{n \\to \\infty} a_n \\neq 0$",
-            "If $\\lim_{n \\to \\infty} a_n = 0$, the test proves divergence"
+            "If $\\lim_{n \\rightarrow \\infty} a_n \\neq 0$, then $\\sum a_n$ diverges",
+            "If $\\lim_{n \\rightarrow \\infty} a_n = 0$, then $\\sum a_n$ converges",
+            "If $\\sum a_n$ diverges, then $\\lim_{n \\rightarrow \\infty} a_n \\neq 0$",
+            "If $\\lim_{n \\rightarrow \\infty} a_n = 0$, the test proves divergence"
           ],
           "correct": 0,
-          "answer": "The test states: if the terms do not approach 0, the series MUST diverge. If $\\lim a_n = 0$, the test is inconclusive."
+          "answer": "The test states: if the terms do not approach 0, the series MUST diverge. If $\\lim a_n = 0$, the test is inconclusive.",
+          "explanation": "The test states: if the terms do not approach 0, the series MUST diverge. If $\\lim a_n = 0$, the test is inconclusive."
         },
         {
           "q": "Apply the Divergence Test to $\\sum_{n=1}^\\infty \\frac{n}{2n + 1}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Divergence Test (nth-Term Test)",
           "choices": [
-            "Diverges because $\\lim_{n \\to \\infty} a_n = 1/2 \\neq 0$",
+            "Diverges because $\\lim_{n \\rightarrow \\infty} a_n = 1/2 \\neq 0$",
             "Converges to $1/2$",
             "Inconclusive",
             "Converges by p-series"
           ],
           "correct": 0,
-          "answer": "$\\lim_{n \\to \\infty} \\frac{n}{2n + 1} = \\frac{1}{2} \\neq 0$. Since the limit of the terms is non-zero, the series diverges."
+          "answer": "$\\lim_{n \\rightarrow \\infty} \\frac{n}{2n + 1} = \\frac{1}{2} \\neq 0$. Since the limit of the terms is non-zero, the series diverges.",
+          "explanation": "$\\lim_{n \\rightarrow \\infty} \\frac{n}{2n + 1} = \\frac{1}{2} \\neq 0$. Since the limit of the terms is non-zero, the series diverges."
         },
         {
           "q": "Why is the Divergence Test inconclusive for the harmonic series $\\sum_{n=1}^\\infty \\frac{1}{n}$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Divergence Test (nth-Term Test)",
           "choices": [
-            "Because $\\lim_{n \\to \\infty} \\frac{1}{n} = 0$, which does not guarantee convergence",
+            "Because $\\lim_{n \\rightarrow \\infty} \\frac{1}{n} = 0$, which does not guarantee convergence",
             "Because $1/n$ is negative",
             "Because the terms oscillate",
             "Because it is a geometric series"
           ],
           "correct": 0,
-          "answer": "$\\lim_{n \\to \\infty} 1/n = 0$. Having terms approach 0 is a necessary condition for convergence, but not a sufficient one."
+          "answer": "$\\lim_{n \\rightarrow \\infty} 1/n = 0$. Having terms approach 0 is a necessary condition for convergence, but not a sufficient one.",
+          "explanation": "$\\lim_{n \\rightarrow \\infty} 1/n = 0$. Having terms approach 0 is a necessary condition for convergence, but not a sufficient one."
+        },
+        {
+          "q": "The sequence of partial sums $S_n=2-1/2^n$: this means $\\sum a_n=$",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Telescoping Series",
+          "choices": [
+            "$1$",
+            "$3/2$",
+            "$2$",
+            "diverges"
+          ],
+          "correct": 2,
+          "answer": "Applying Sequences and Series principles, $\\lim S_n=2$. Therefore, the verified correct option is $2$.",
+          "explanation": "Applying Sequences and Series principles, $\\lim S_n=2$. Therefore, the verified correct option is $2$.",
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "Q1",
+              "Q2",
+              "Q3",
+              "Q4",
+              "Q5"
+            ],
+            "values": [
+              12,
+              18,
+              23,
+              16,
+              21
+            ],
+            "ylabel": "Frequency",
+            "highlight_index": 2,
+            "width": 230
+          }
+        },
+        {
+          "q": "Dirichlet test: $\\sum a_n b_n$ converges if $a_n$ monotone $\\rightarrow0$ and partial sums of $\\sum b_n$ are:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Divergence Test (nth-Term Test)",
+          "choices": [
+            "convergent",
+            "zero",
+            "increasing",
+            "bounded"
+          ],
+          "correct": 3,
+          "answer": "Dirichlet: bounded partial sums + monotone $a_n\\rightarrow0$.",
+          "explanation": "Dirichlet: bounded partial sums + monotone $a_n\\rightarrow0$."
+        },
+        {
+          "q": "Consider the arithmetic sequence with the first term $a_1 = 5$ and a common difference $d = 3$. What is the value of the 5th term, $a_5$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Sequence limits",
+          "choices": [
+            "17",
+            "20",
+            "15",
+            "23"
+          ],
+          "correct": 0,
+          "answer": "The formula for the nth term of an arithmetic sequence is given by $a_n = a_1 + (n-1)d$, where $a_1$ is the first term and $d$ is the common difference. Given $a_1 = 5$ and $d = 3$, we want to find the 5th term, $a_5$. Using the formula: $a_5 = a_1 + (5-1)d$ $a_5 = 5 + (4)(3)$ $a_5 = 5 + 12$ $a_5 = 17$ Therefore, the 5th term of the sequence is 17.",
+          "explanation": "The formula for the nth term of an arithmetic sequence is given by $a_n = a_1 + (n-1)d$, where $a_1$ is the first term and $d$ is the common difference. Given $a_1 = 5$ and $d = 3$, we want to find the 5th term, $a_5$. Using the formula: $a_5 = a_1 + (5-1)d$ $a_5 = 5 + (4)(3)$ $a_5 = 5 + 12$ $a_5 = 17$ Therefore, the 5th term of the sequence is 17."
+        },
+        {
+          "q": "A monotone bounded sequence:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Series and partial sums",
+          "choices": [
+            "diverges",
+            "converges",
+            "oscillates",
+            "is arithmetic"
+          ],
+          "correct": 1,
+          "answer": "Applying Sequences and Series principles, Monotone convergence theorem. Therefore, the verified correct option is converges.",
+          "explanation": "Applying Sequences and Series principles, Monotone convergence theorem. Therefore, the verified correct option is converges."
+        },
+        {
+          "q": "An increasing sequence bounded above:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Monotonic and bounded sequences",
+          "choices": [
+            "diverges",
+            "oscillates",
+            "converges",
+            "is arithmetic"
+          ],
+          "correct": 2,
+          "answer": "Applying Sequences and Series principles, Monotone convergence theorem. Therefore, the verified correct option is converges.",
+          "explanation": "Applying Sequences and Series principles, Monotone convergence theorem. Therefore, the verified correct option is converges."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "Sum of infinite geometric series ($|r|<1$): $\\sum_{k=0}^\\infty ar^k=$",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "More series practice",
+          "choices": [
+            "$\\frac{a}{r}$",
+            "$\\frac{a}{1-r}$",
+            "$a(1-r)$",
+            "$\\frac{a}{1+r}$"
+          ],
+          "correct": 1,
+          "answer": "Applying Sequences and Series principles, $S=a/(1-r)$, $|r|<1$. Therefore, the verified correct option is $\\frac{a}{1-r}$.",
+          "explanation": "Applying Sequences and Series principles, $S=a/(1-r)$, $|r|<1$. Therefore, the verified correct option is $\\frac{a}{1-r}$.",
+          "cross_lesson": "8.01 Area Between Curves"
+        },
+        {
+          "q": "Sum of $n$ terms of geometric $1+2+4+\\cdots$: $S_n=$",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Recursive sequences",
+          "choices": [
+            "$2^n-1$",
+            "$2^n$",
+            "$n\\cdot2^n$",
+            "$2^{n+1}$"
+          ],
+          "correct": 0,
+          "answer": "Applying Sequences and Series principles, $S_n=(1-2^n)/(1-2)=2^n-1$. Therefore, the verified correct option is $2^n-1$.",
+          "explanation": "Applying Sequences and Series principles, $S_n=(1-2^n)/(1-2)=2^n-1$. Therefore, the verified correct option is $2^n-1$.",
+          "cross_lesson": "8.02 Volumes of Revolution"
+        },
+        {
+          "q": "Geometric series $3+1+1/3+1/9+\\cdots$: first term $a=3$, $r=$",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Repeating decimals as series",
+          "choices": [
+            "$1/3$",
+            "$1/2$",
+            "$3$",
+            "$1/9$"
+          ],
+          "correct": 0,
+          "answer": "Applying Sequences and Series principles, Ratio: $1/3\\div1=1/3$. Therefore, the verified correct option is $1/3$.",
+          "explanation": "Applying Sequences and Series principles, Ratio: $1/3\\div1=1/3$. Therefore, the verified correct option is $1/3$.",
+          "cross_lesson": "8.03 Arc Length and Improper Integrals"
+        },
+        {
+          "q": "Geometric sequence: $a_n=a_1\\cdot r^{n-1}$. If $a_1=2, r=3$, then $a_4=$",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Visualizing partial sums of a series",
+          "choices": [
+            "6",
+            "18",
+            "54",
+            "162"
+          ],
+          "correct": 2,
+          "answer": "Applying Sequences and Series principles, $a_4=2\\cdot27=54$. Therefore, the verified correct option is 54.",
+          "explanation": "Applying Sequences and Series principles, $a_4=2\\cdot27=54$. Therefore, the verified correct option is 54.",
+          "cross_lesson": "9.01 Separable Differential Equations"
+        },
+        {
+          "q": "Squeeze theorem for sequences: if $a_n\\leq b_n\\leq c_n$ and $a_n,c_n\\rightarrow L$, then $b_n\\rightarrow$",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Series with factorial and combined terms",
+          "choices": [
+            "$L$",
+            "$L/2$",
+            "$0$",
+            "$2L$"
+          ],
+          "correct": 0,
+          "answer": "Applying Sequences and Series principles, Squeeze theorem. Therefore, the verified correct option is $L$.",
+          "explanation": "Applying Sequences and Series principles, Squeeze theorem. Therefore, the verified correct option is $L$.",
+          "cross_lesson": "1.01 Precalculus Review for Calculus"
+        },
+        {
+          "q": "A sequence is bounded above if there exists $M$ such that $a_n\\leq M$ for all $n$. This bound is:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "The Squeeze Theorem for sequences",
+          "choices": [
+            "always 0",
+            "the limit",
+            "not necessarily unique",
+            "equal to the supremum"
+          ],
+          "correct": 2,
+          "answer": "The bound M is not unique (any larger M also works).",
+          "explanation": "The bound M is not unique (any larger M also works).",
+          "cross_lesson": "10.01 Calculus with Parametric and Polar Curves"
+        },
+        {
+          "q": "Geometric sequence with $a_1=5$, ratio $r=-1/2$: does it converge?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Applications of infinite series",
+          "choices": [
+            "No",
+            "Yes, to $-5$",
+            "Yes, to $5$",
+            "Yes, to $0$"
+          ],
+          "correct": 3,
+          "answer": "$|r|<1\\Rightarrow a_n=5(-1/2)^{n-1}\\rightarrow0$.",
+          "explanation": "$|r|<1\\Rightarrow a_n=5(-1/2)^{n-1}\\rightarrow0$.",
+          "cross_lesson": "12.01 Convergence Tests"
+        },
+        {
+          "q": "The $n$-th term test: if $\\lim_{n\\rightarrow\\infty}a_n e0$, the series $\\sum a_n$:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Limits of Sequences",
+          "choices": [
+            "converges",
+            "oscillates",
+            "may converge",
+            "diverges"
+          ],
+          "correct": 3,
+          "answer": "$n$-th term test: non-zero limit ⟹ diverges.",
+          "explanation": "$n$-th term test: non-zero limit ⟹ diverges.",
+          "cross_lesson": "12.02 Power Series and Taylor Series"
         }
       ]
     }

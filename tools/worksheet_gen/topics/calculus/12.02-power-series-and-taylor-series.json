@@ -3,12 +3,336 @@
   "num": "12.02",
   "slug": "power-series-and-taylor-series",
   "title": "Power Series and Taylor Series",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 12.02 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Radius and Interval of Convergence",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+      "questions": [
+        {
+          "q": "Find the radius of convergence of $\\sum_{n=1}^{\\infty} \\frac{x^n}{n}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Radius and interval of convergence",
+          "answer": "Ratio test: $\\left|\\frac{x^{n+1}/(n+1)}{x^n/n}\\right| \\rightarrow |x|$. Converges for $|x|<1$: radius of convergence $R=1$.",
+          "explanation": "Ratio test: $\\left|\\frac{x^{n+1}/(n+1)}{x^n/n}\\right| \\rightarrow |x|$. Converges for $|x|<1$: radius of convergence $R=1$."
+        },
+        {
+          "q": "Find the radius of convergence of $\\sum_{n=0}^{\\infty} \\frac{x^n}{n!}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Radius and interval of convergence",
+          "answer": "Ratio test: $\\left|\\frac{x^{n+1}n!}{(n+1)!x^n}\\right| = \\frac{|x|}{n+1} \\rightarrow 0$ for every $x$: radius of convergence $R=\\infty$.",
+          "explanation": "Ratio test: $\\left|\\frac{x^{n+1}n!}{(n+1)!x^n}\\right| = \\frac{|x|}{n+1} \\rightarrow 0$ for every $x$: radius of convergence $R=\\infty$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (0))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -1.0,
+                "label": "$(0,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Find the first three nonzero terms of the Maclaurin series for $f(x) = e^x$, using $f^{(n)}(0) = 1$ for all $n$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Taylor and Maclaurin series",
+          "answer": "$e^x = 1 + x + \\frac{x^2}{2!} + \\cdots = 1 + x + \\frac{x^2}{2} + \\cdots$.",
+          "explanation": "$e^x = 1 + x + \\frac{x^2}{2!} + \\cdots = 1 + x + \\frac{x^2}{2} + \\cdots$."
+        },
+        {
+          "q": "Find the third-degree Taylor polynomial for $f(x) = \\cos x$ centered at $x = 0$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Taylor and Maclaurin series",
+          "answer": "$f(0)=1$, $f'(0)=0$, $f''(0)=-1$, $f'''(0)=0$: $T_3(x) = 1 - \\frac{x^2}{2}$.",
+          "explanation": "$f(0)=1$, $f'(0)=0$, $f''(0)=-1$, $f'''(0)=0$: $T_3(x) = 1 - \\frac{x^2}{2}$."
+        },
+        {
+          "q": "Use the Maclaurin series $\\sin x = x - \\frac{x^3}{6} + \\frac{x^5}{120} - \\cdots$ to approximate $\\sin(0.2)$ using the first two nonzero terms, to four decimal places.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Taylor and Maclaurin series",
+          "answer": "$0.2 - \\frac{(0.2)^3}{6} = 0.2 - 0.001333\\ldots \\approx 0.1987$.",
+          "explanation": "$0.2 - \\frac{(0.2)^3}{6} = 0.2 - 0.001333\\ldots \\approx 0.1987$."
+        },
+        {
+          "q": "Find the interval of convergence of $\\sum_{n=1}^{\\infty} \\frac{(x-2)^n}{n}$, checking both endpoints.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Interval of convergence (including endpoints)",
+          "answer": "Ratio test gives radius $R=1$, centered at $x=2$: $1<x<3$ tentatively. At $x=3$: $\\sum\\frac{1}{n}$ diverges (harmonic). At $x=1$: $\\sum\\frac{(-1)^n}{n}$ converges (alternating). Interval of convergence: $[1,3)$.",
+          "explanation": "Ratio test gives radius $R=1$, centered at $x=2$: $1<x<3$ tentatively. At $x=3$: $\\sum\\frac{1}{n}$ diverges (harmonic). At $x=1$: $\\sum\\frac{(-1)^n}{n}$ converges (alternating). Interval of convergence: $[1,3)$.",
+          "figure": {
+            "type": "numberline",
+            "min": -7,
+            "max": 5,
+            "shade": [
+              -5,
+              3
+            ],
+            "marks": [
+              {
+                "x": -5,
+                "open": true,
+                "label": "$-5$"
+              },
+              {
+                "x": 3,
+                "open": false,
+                "label": "$3$"
+              }
+            ],
+            "width": 250
+          }
+        },
+        {
+          "q": "Find the radius of convergence of $\\sum_{n=1}^{\\infty} n!\\,x^n$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Interval of convergence (including endpoints)",
+          "answer": "Ratio test: $\\left|\\frac{(n+1)!x^{n+1}}{n!x^n}\\right| = (n+1)|x| \\rightarrow \\infty$ for any $x\\neq0$. The series converges only at $x=0$: radius of convergence $R=0$.",
+          "explanation": "Ratio test: $\\left|\\frac{(n+1)!x^{n+1}}{n!x^n}\\right| = (n+1)|x| \\rightarrow \\infty$ for any $x\\neq0$. The series converges only at $x=0$: radius of convergence $R=0$."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Using the known Maclaurin series $e^x = \\sum_{n=0}^{\\infty}\\frac{x^n}{n!}$, write the Maclaurin series for $e^{-x^2}$ (substitute $-x^2$ for $x$), giving the first three terms.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Using known series",
+          "answer": "$e^{-x^2} = 1 + (-x^2) + \\frac{(-x^2)^2}{2!} + \\cdots = 1 - x^2 + \\frac{x^4}{2} - \\cdots$.",
+          "explanation": "$e^{-x^2} = 1 + (-x^2) + \\frac{(-x^2)^2}{2!} + \\cdots = 1 - x^2 + \\frac{x^4}{2} - \\cdots$."
+        },
+        {
+          "q": "Using $\\frac{1}{1-x}=\\sum_{n=0}^{\\infty}x^n$ for $|x|<1$, write the power series for $\\frac{1}{1+x^2}$ (substitute $-x^2$ for $x$).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Using known series",
+          "answer": "$\\frac{1}{1+x^2} = \\frac{1}{1-(-x^2)} = \\sum_{n=0}^{\\infty}(-x^2)^n = \\sum_{n=0}^{\\infty}(-1)^nx^{2n} = 1-x^2+x^4-x^6+\\cdots$.",
+          "explanation": "$\\frac{1}{1+x^2} = \\frac{1}{1-(-x^2)} = \\sum_{n=0}^{\\infty}(-x^2)^n = \\sum_{n=0}^{\\infty}(-1)^nx^{2n} = 1-x^2+x^4-x^6+\\cdots$."
+        },
+        {
+          "q": "Find the first three terms of the Taylor series for $f(x)=\\ln x$ centered at $x=1$, using $f(1)=0$, $f'(1)=1$, $f''(1)=-1$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Taylor series centered at a nonzero point",
+          "answer": "$T(x) = f(1) + f'(1)(x-1) + \\frac{f''(1)}{2!}(x-1)^2 + \\cdots = (x-1) - \\frac{(x-1)^2}{2} + \\cdots$.",
+          "explanation": "$T(x) = f(1) + f'(1)(x-1) + \\frac{f''(1)}{2!}(x-1)^2 + \\cdots = (x-1) - \\frac{(x-1)^2}{2} + \\cdots$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "log(x)",
+              "(x-1) - (x-1)**2/2"
+            ],
+            "xmin": 0.2,
+            "xmax": 3,
+            "ymin": -2,
+            "ymax": 2,
+            "width": 220
+          }
+        },
+        {
+          "q": "Find the second-degree Taylor polynomial for $f(x)=\\sqrt{x}$ centered at $x=4$, given $f(4)=2$, $f'(4)=\\frac{1}{4}$, $f''(4)=-\\frac{1}{32}$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Taylor series centered at a nonzero point",
+          "answer": "$T_2(x) = 2 + \\frac{1}{4}(x-4) - \\frac{1}{64}(x-4)^2$.",
+          "explanation": "$T_2(x) = 2 + \\frac{1}{4}(x-4) - \\frac{1}{64}(x-4)^2$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "sqrt(x)",
+              "2 + (x-4)/4 - (x-4)**2/64"
+            ],
+            "xmin": 0,
+            "xmax": 9,
+            "ymin": 0,
+            "ymax": 4,
+            "width": 220
+          }
+        },
+        {
+          "q": "Using the second-degree Maclaurin polynomial for $\\cos x$, $T_2(x)=1-\\frac{x^2}{2}$, estimate $\\cos(0.3)$ to four decimal places, and compare to the true value $\\cos(0.3)\\approx0.9553$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Error estimation with Taylor polynomials",
+          "answer": "$T_2(0.3) = 1 - \\frac{0.09}{2} = 1-0.045 = 0.9550$, very close to the true value $0.9553$ (error $\\approx0.0003$).",
+          "explanation": "$T_2(0.3) = 1 - \\frac{0.09}{2} = 1-0.045 = 0.9550$, very close to the true value $0.9553$ (error $\\approx0.0003$)."
+        },
+        {
+          "q": "The graph compares $f(x)=\\cos x$ to its second-degree Maclaurin polynomial $T_2(x)=1-\\frac{x^2}{2}$. Use the graph to describe where the approximation is best and where it breaks down.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Visualizing a Taylor approximation",
+          "answer": "The two curves are nearly indistinguishable near $x=0$, where the approximation is best (the region of the expansion point). As $|x|$ increases toward $\\pm\\pi$, $T_2(x)$ (a downward parabola) diverges sharply from the bounded, oscillating $\\cos x$, showing the approximation breaks down away from the center.",
+          "explanation": "The two curves are nearly indistinguishable near $x=0$, where the approximation is best (the region of the expansion point). As $|x|$ increases toward $\\pm\\pi$, $T_2(x)$ (a downward parabola) diverges sharply from the bounded, oscillating $\\cos x$, showing the approximation breaks down away from the center.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "cos(x)",
+              "1 - x**2/2"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -3,
+            "ymax": 2,
+            "width": 220
+          }
+        },
+        {
+          "q": "Given $\\frac{1}{1-x}=\\sum_{n=0}^{\\infty}x^n$ for $|x|<1$, differentiate both sides term-by-term to find a power series for $\\frac{1}{(1-x)^2}$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Differentiating and integrating power series",
+          "answer": "$\\frac{d}{dx}\\left[\\frac{1}{1-x}\\right]=\\frac{1}{(1-x)^2}$. Differentiating the series: $\\sum_{n=1}^{\\infty}nx^{n-1}$. So $\\frac{1}{(1-x)^2}=\\sum_{n=1}^{\\infty}nx^{n-1}=1+2x+3x^2+\\cdots$.",
+          "explanation": "$\\frac{d}{dx}\\left[\\frac{1}{1-x}\\right]=\\frac{1}{(1-x)^2}$. Differentiating the series: $\\sum_{n=1}^{\\infty}nx^{n-1}$. So $\\frac{1}{(1-x)^2}=\\sum_{n=1}^{\\infty}nx^{n-1}=1+2x+3x^2+\\cdots$."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "Using the Maclaurin series $\\sin x=\\sum_{n=0}^{\\infty}\\frac{(-1)^nx^{2n+1}}{(2n+1)!}$, integrate term-by-term to find the first three terms of the power series for $\\int\\sin x\\,dx=-\\cos x+C$, and confirm they match the known Maclaurin series for $-\\cos x$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Differentiating and integrating power series",
+          "cross_lesson": "7.02 Integration by Parts",
+          "answer": "$\\int\\left(x-\\frac{x^3}{6}+\\cdots\\right)dx=\\frac{x^2}{2}-\\frac{x^4}{24}+\\cdots+C$. Comparing to $-\\cos x=-1+\\frac{x^2}{2}-\\frac{x^4}{24}+\\cdots$: matching term-by-term (aside from the constant $-1$, absorbed into $C$) confirms consistency.",
+          "explanation": "$\\int\\left(x-\\frac{x^3}{6}+\\cdots\\right)dx=\\frac{x^2}{2}-\\frac{x^4}{24}+\\cdots+C$. Comparing to $-\\cos x=-1+\\frac{x^2}{2}-\\frac{x^4}{24}+\\cdots$: matching term-by-term (aside from the constant $-1$, absorbed into $C$) confirms consistency."
+        },
+        {
+          "q": "Use the Maclaurin series $\\sin x=x-\\frac{x^3}{6}+\\cdots$ to evaluate $\\lim_{x\\rightarrow0}\\frac{\\sin x-x}{x^3}$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Using Taylor series to evaluate a limit",
+          "cross_lesson": "8.01 Area Between Curves",
+          "answer": "$\\sin x-x=-\\frac{x^3}{6}+\\frac{x^5}{120}-\\cdots$, so $\\frac{\\sin x-x}{x^3}=-\\frac{1}{6}+\\frac{x^2}{120}-\\cdots\\rightarrow-\\frac{1}{6}$ as $x\\rightarrow0$.",
+          "explanation": "$\\sin x-x=-\\frac{x^3}{6}+\\frac{x^5}{120}-\\cdots$, so $\\frac{\\sin x-x}{x^3}=-\\frac{1}{6}+\\frac{x^2}{120}-\\cdots\\rightarrow-\\frac{1}{6}$ as $x\\rightarrow0$.",
+          "figure": {
+            "type": "triangle",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                8.0,
+                0
+              ],
+              [
+                0,
+                6.0
+              ]
+            ],
+            "labels": [
+              "$C$",
+              "$B$",
+              "$A$"
+            ],
+            "side_labels": [
+              "$8$",
+              "$10$",
+              "$6$"
+            ],
+            "right_angle_at": 0,
+            "angle_marks": [
+              {
+                "vertex": 1,
+                "label": "$\\theta$"
+              }
+            ],
+            "fill": true,
+            "width": 220
+          }
+        },
+        {
+          "q": "Find the fourth-degree Taylor polynomial for $f(x)=e^x$ centered at $x=0$, and use it to estimate $e^{0.5}$, comparing to the true value $e^{0.5}\\approx1.6487$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Using Taylor series to evaluate a limit",
+          "cross_lesson": "8.02 Volumes of Revolution",
+          "answer": "$T_4(x)=1+x+\\frac{x^2}{2}+\\frac{x^3}{6}+\\frac{x^4}{24}$. $T_4(0.5)=1+0.5+0.125+0.02083+0.0026\\approx1.6484$, very close to the true value $1.6487$.",
+          "explanation": "$T_4(x)=1+x+\\frac{x^2}{2}+\\frac{x^3}{6}+\\frac{x^4}{24}$. $T_4(0.5)=1+0.5+0.125+0.02083+0.0026\\approx1.6484$, very close to the true value $1.6487$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "exp(x)",
+              "1 + x + x**2/2 + x**3/6 + x**4/24"
+            ],
+            "xmin": -2.5,
+            "xmax": 2.5,
+            "ymin": 0,
+            "ymax": 8,
+            "width": 220
+          }
+        },
+        {
+          "q": "An engineer needs a quick approximation for $\\ln(1.1)$ without a calculator. Using the Maclaurin series $\\ln(1+x)=x-\\frac{x^2}{2}+\\frac{x^3}{3}-\\cdots$ for $|x|<1$, find the approximation using the first three terms with $x=0.1$, and compare to the true value $\\ln(1.1)\\approx0.09531$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Using Taylor series to evaluate a limit",
+          "cross_lesson": "8.03 Arc Length and Improper Integrals",
+          "answer": "$\\ln(1.1)\\approx0.1-\\frac{(0.1)^2}{2}+\\frac{(0.1)^3}{3}=0.1-0.005+0.000333\\approx0.095333$, extremely close to the true value $0.09531$ (error $\\approx0.00002$).",
+          "explanation": "$\\ln(1.1)\\approx0.1-\\frac{(0.1)^2}{2}+\\frac{(0.1)^3}{3}=0.1-0.005+0.000333\\approx0.095333$, extremely close to the true value $0.09531$ (error $\\approx0.00002$)."
+        },
+        {
+          "q": "Using Stokes' Theorem, evaluate $\\oint_C \\mathbf{F}\\cdot d\\mathbf{r}$ where $\\mathbf{F}=\\langle -y^2,x,z^2\\rangle$ and $C$ is the intersection of $z=y$ and the cylinder $x^2+y^2=1$ (oriented counterclockwise from above).",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Error estimation with Taylor polynomials",
+          "cross_lesson": "9.01 Separable Differential Equations",
+          "answer": "$abla\\times\\mathbf{F}=\\langle0,0,1+2y\\rangle$. Surface: $z=y$ over disk $D:x^2+y^2\\leq1$. Normal upward. $\\iint_D(1+2y)dA=\\pi+2\\cdot0=\\pi$. Wait — correct orientation gives $\\oint=3\\pi/2$ after accounting for inclined surface normal. $d\\mathbf{S}=\\langle0,-1,1\\rangle dA$ on $z=y$. Then $\\langle0,0,1+2y\\rangle\\cdot\\langle0,-1,1\\rangle=(1+2y)$. $\\iint_D(1+2y)dA=\\pi$. Correction: $\\mathrm{curl}\\mathbf{F}=\\langle 0,0,1+2y\\rangle$, using $d\\mathbf{S}=(-z_x,-z_y,1)dA=\\langle0,-1,1\\rangle dA$: integral $=\\iint(1+2y)dA=\\pi(1)+0=\\pi$. The answer is $\\pi$.",
+          "explanation": "$abla\\times\\mathbf{F}=\\langle0,0,1+2y\\rangle$. Surface: $z=y$ over disk $D:x^2+y^2\\leq1$. Normal upward. $\\iint_D(1+2y)dA=\\pi+2\\cdot0=\\pi$. Wait — correct orientation gives $\\oint=3\\pi/2$ after accounting for inclined surface normal. $d\\mathbf{S}=\\langle0,-1,1\\rangle dA$ on $z=y$. Then $\\langle0,0,1+2y\\rangle\\cdot\\langle0,-1,1\\rangle=(1+2y)$. $\\iint_D(1+2y)dA=\\pi$. Correction: $\\mathrm{curl}\\mathbf{F}=\\langle 0,0,1+2y\\rangle$, using $d\\mathbf{S}=(-z_x,-z_y,1)dA=\\langle0,-1,1\\rangle dA$: integral $=\\iint(1+2y)dA=\\pi(1)+0=\\pi$. The answer is $\\pi$.",
+          "figure": {
+            "type": "solid",
+            "solid": "cylinder",
+            "dims": [
+              4.0,
+              4.0,
+              9.0
+            ],
+            "labels": {
+              "r": "r",
+              "h": "h"
+            },
+            "width": 220
+          }
+        },
+        {
+          "q": "Find the coefficient of $x^3$ in the Maclaurin series of $f(x) = \\frac{\\sin(x)}{1 - x}$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Visualizing a Taylor approximation",
+          "cross_lesson": "1.01 Precalculus Review for Calculus",
+          "answer": "Multiply known Maclaurin series: $\\sin(x) = x - \\frac{x^3}{6} + \\cdots$ and $\\frac{1}{1-x} = 1 + x + x^2 + \\cdots$. Collecting terms up to degree 3: $x(1 + x + x^2) - \\frac{x^3}{6}(1) = x + x^2 + \\left(1 - \\frac{1}{6}\\right)x^3 = x + x^2 + \\frac{5}{6}x^3$. The coefficient of $x^3$ is $\\frac{5}{6}$.",
+          "explanation": "Multiply known Maclaurin series: $\\sin(x) = x - \\frac{x^3}{6} + \\cdots$ and $\\frac{1}{1-x} = 1 + x + x^2 + \\cdots$. Collecting terms up to degree 3: $x(1 + x + x^2) - \\frac{x^3}{6}(1) = x + x^2 + \\left(1 - \\frac{1}{6}\\right)x^3 = x + x^2 + \\frac{5}{6}x^3$. The coefficient of $x^3$ is $\\frac{5}{6}$."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
           "q": "Find the radius of convergence $R$ for the power series $\\sum_{n=1}^\\infty \\frac{(x - 2)^n}{n \\cdot 3^n}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Radius and Interval of Convergence",
           "choices": [
             "$R = 3$",
             "$R = 1/3$",
@@ -16,10 +340,14 @@
             "$R = \\infty$"
           ],
           "correct": 0,
-          "answer": "Ratio Test: $\\lim_{n \\to \\infty} \\left|\\frac{(x-2)^{n+1}}{(n+1)3^{n+1}} \\cdot \\frac{n 3^n}{(x-2)^n}\\right| = \\frac{|x - 2|}{3} < 1 \\Rightarrow |x - 2| < 3$. Thus $R = 3$."
+          "answer": "Ratio Test: $\\lim_{n \\rightarrow \\infty} \\left|\\frac{(x-2)^{n+1}}{(n+1)3^{n+1}} \\cdot \\frac{n 3^n}{(x-2)^n}\\right| = \\frac{|x - 2|}{3} < 1 \\Rightarrow |x - 2| < 3$. Thus $R = 3$.",
+          "explanation": "Ratio Test: $\\lim_{n \\rightarrow \\infty} \\left|\\frac{(x-2)^{n+1}}{(n+1)3^{n+1}} \\cdot \\frac{n 3^n}{(x-2)^n}\\right| = \\frac{|x - 2|}{3} < 1 \\Rightarrow |x - 2| < 3$. Thus $R = 3$."
         },
         {
           "q": "Find the exact interval of convergence for $\\sum_{n=1}^\\infty \\frac{(x - 2)^n}{n \\cdot 3^n}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Radius and Interval of Convergence",
           "choices": [
             "$[-1, 5)$",
             "$(-1, 5)$",
@@ -27,10 +355,14 @@
             "$(-1, 5]$"
           ],
           "correct": 0,
-          "answer": "Center $c = 2, R = 3 \\Rightarrow (-1, 5)$. At $x = -1$: $\\sum \\frac{(-1)^n}{n}$ converges by AST. At $x = 5$: $\\sum \\frac{1}{n}$ diverges (harmonic). Interval: $[-1, 5)$."
+          "answer": "Center $c = 2, R = 3 \\Rightarrow (-1, 5)$. At $x = -1$: $\\sum \\frac{(-1)^n}{n}$ converges by AST. At $x = 5$: $\\sum \\frac{1}{n}$ diverges (harmonic). Interval: $[-1, 5)$.",
+          "explanation": "Center $c = 2, R = 3 \\Rightarrow (-1, 5)$. At $x = -1$: $\\sum \\frac{(-1)^n}{n}$ converges by AST. At $x = 5$: $\\sum \\frac{1}{n}$ diverges (harmonic). Interval: $[-1, 5)$."
         },
         {
           "q": "Find the radius of convergence of $\\sum_{n=0}^\\infty n!(2x)^n$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Radius and Interval of Convergence",
           "choices": [
             "$R = 0$",
             "$R = 1/2$",
@@ -38,15 +370,14 @@
             "$R = \\infty$"
           ],
           "correct": 0,
-          "answer": "Ratio: $\\lim_{n \\to \\infty} \\frac{(n+1)!|2x|^{n+1}}{n!|2x|^n} = \\lim_{n \\to \\infty} (n+1)2|x| = \\infty$ for any $x \\neq 0$. Thus $R = 0$ (converges only at $x = 0$)."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Geometric Series Representations",
-      "questions": [
+          "answer": "Ratio: $\\lim_{n \\rightarrow \\infty} \\frac{(n+1)!|2x|^{n+1}}{n!|2x|^n} = \\lim_{n \\rightarrow \\infty} (n+1)2|x| = \\infty$ for any $x \\neq 0$. Thus $R = 0$ (converges only at $x = 0$).",
+          "explanation": "Ratio: $\\lim_{n \\rightarrow \\infty} \\frac{(n+1)!|2x|^{n+1}}{n!|2x|^n} = \\lim_{n \\rightarrow \\infty} (n+1)2|x| = \\infty$ for any $x \\neq 0$. Thus $R = 0$ (converges only at $x = 0$)."
+        },
         {
           "q": "Find the power series representation for $f(x) = \\frac{1}{1 + 2x}$ centered at 0.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Geometric Series Representations",
           "choices": [
             "$\\sum_{n=0}^\\infty (-1)^n 2^n x^n$",
             "$\\sum_{n=0}^\\infty 2^n x^n$",
@@ -54,10 +385,14 @@
             "$\\sum_{n=1}^\\infty (-2x)^n$"
           ],
           "correct": 0,
-          "answer": "Using $\\frac{1}{1 - r} = \\sum_{n=0}^\\infty r^n$ with $r = -2x$: $\\frac{1}{1 - (-2x)} = \\sum_{n=0}^\\infty (-2x)^n = \\sum_{n=0}^\\infty (-1)^n 2^n x^n$ for $|x| < 1/2$."
+          "answer": "Using $\\frac{1}{1 - r} = \\sum_{n=0}^\\infty r^n$ with $r = -2x$: $\\frac{1}{1 - (-2x)} = \\sum_{n=0}^\\infty (-2x)^n = \\sum_{n=0}^\\infty (-1)^n 2^n x^n$ for $|x| < 1/2$.",
+          "explanation": "Using $\\frac{1}{1 - r} = \\sum_{n=0}^\\infty r^n$ with $r = -2x$: $\\frac{1}{1 - (-2x)} = \\sum_{n=0}^\\infty (-2x)^n = \\sum_{n=0}^\\infty (-1)^n 2^n x^n$ for $|x| < 1/2$."
         },
         {
           "q": "Find the Maclaurin series for $\\frac{x}{4 - x^2}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Geometric Series Representations",
           "choices": [
             "$\\sum_{n=0}^\\infty \\frac{x^{2n+1}}{4^{n+1}}$",
             "$\\sum_{n=0}^\\infty \\frac{x^{2n}}{4^n}$",
@@ -65,10 +400,14 @@
             "$\\frac{1}{4}\\sum_{n=0}^\\infty x^{2n+1}$"
           ],
           "correct": 0,
-          "answer": "$\\frac{x}{4(1 - x^2/4)} = \\frac{x}{4}\\sum_{n=0}^\\infty (x^2/4)^n = \\frac{x}{4}\\sum_{n=0}^\\infty \\frac{x^{2n}}{4^n} = \\sum_{n=0}^\\infty \\frac{x^{2n+1}}{4^{n+1}}$."
+          "answer": "$\\frac{x}{4(1 - x^2/4)} = \\frac{x}{4}\\sum_{n=0}^\\infty (x^2/4)^n = \\frac{x}{4}\\sum_{n=0}^\\infty \\frac{x^{2n}}{4^n} = \\sum_{n=0}^\\infty \\frac{x^{2n+1}}{4^{n+1}}$.",
+          "explanation": "$\\frac{x}{4(1 - x^2/4)} = \\frac{x}{4}\\sum_{n=0}^\\infty (x^2/4)^n = \\frac{x}{4}\\sum_{n=0}^\\infty \\frac{x^{2n}}{4^n} = \\sum_{n=0}^\\infty \\frac{x^{2n+1}}{4^{n+1}}$."
         },
         {
           "q": "Find the Maclaurin series for $\\ln(1 + x)$ by integrating the series for $\\frac{1}{1 + x}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Geometric Series Representations",
           "choices": [
             "$\\sum_{n=1}^\\infty (-1)^{n-1}\\frac{x^n}{n}$",
             "$\\sum_{n=0}^\\infty (-1)^n \\frac{x^{n+1}}{n+1}$",
@@ -76,15 +415,14 @@
             "$\\sum_{n=1}^\\infty \\frac{x^n}{n}$"
           ],
           "correct": 2,
-          "answer": "$\\frac{1}{1+x} = \\sum_{n=0}^\\infty (-1)^n x^n$. Integrating term-by-term gives $\\ln(1+x) = \\sum_{n=0}^\\infty (-1)^n \\frac{x^{n+1}}{n+1} = \\sum_{n=1}^\\infty (-1)^{n-1}\\frac{x^n}{n}$ for $|x| < 1$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Standard Maclaurin Series",
-      "questions": [
+          "answer": "$\\frac{1}{1+x} = \\sum_{n=0}^\\infty (-1)^n x^n$. Integrating term-by-term gives $\\ln(1+x) = \\sum_{n=0}^\\infty (-1)^n \\frac{x^{n+1}}{n+1} = \\sum_{n=1}^\\infty (-1)^{n-1}\\frac{x^n}{n}$ for $|x| < 1$.",
+          "explanation": "$\\frac{1}{1+x} = \\sum_{n=0}^\\infty (-1)^n x^n$. Integrating term-by-term gives $\\ln(1+x) = \\sum_{n=0}^\\infty (-1)^n \\frac{x^{n+1}}{n+1} = \\sum_{n=1}^\\infty (-1)^{n-1}\\frac{x^n}{n}$ for $|x| < 1$."
+        },
         {
           "q": "State the Maclaurin series for $e^x$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Standard Maclaurin Series",
           "choices": [
             "$\\sum_{n=0}^\\infty \\frac{x^n}{n!}$",
             "$\\sum_{n=1}^\\infty \\frac{x^n}{n}$",
@@ -92,10 +430,14 @@
             "$\\sum_{n=0}^\\infty \\frac{x^{2n}}{(2n)!}$"
           ],
           "correct": 0,
-          "answer": "The standard Maclaurin series for $e^x = 1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\dots = \\sum_{n=0}^\\infty \\frac{x^n}{n!}$, valid for all $x \\in \\mathbb{R}$."
+          "answer": "The standard Maclaurin series for $e^x = 1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\dots = \\sum_{n=0}^\\infty \\frac{x^n}{n!}$, valid for all $x \\in \\mathbb{R}$.",
+          "explanation": "The standard Maclaurin series for $e^x = 1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\dots = \\sum_{n=0}^\\infty \\frac{x^n}{n!}$, valid for all $x \\in \\mathbb{R}$."
         },
         {
           "q": "State the Maclaurin series for $\\cos(x)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Standard Maclaurin Series",
           "choices": [
             "$\\sum_{n=0}^\\infty (-1)^n \\frac{x^{2n}}{(2n)!}$",
             "$\\sum_{n=0}^\\infty (-1)^n \\frac{x^{2n+1}}{(2n+1)!}$",
@@ -103,10 +445,19 @@
             "$\\sum_{n=1}^\\infty (-1)^n \\frac{x^{2n-1}}{(2n-1)!}$"
           ],
           "correct": 0,
-          "answer": "Since $\\cos(x)$ is an even function, its Maclaurin series contains only even powers: $\\sum_{n=0}^\\infty (-1)^n \\frac{x^{2n}}{(2n)!} = 1 - \\frac{x^2}{2!} + \\frac{x^4}{4!} - \\dots$."
-        },
+          "answer": "Since $\\cos(x)$ is an even function, its Maclaurin series contains only even powers: $\\sum_{n=0}^\\infty (-1)^n \\frac{x^{2n}}{(2n)!} = 1 - \\frac{x^2}{2!} + \\frac{x^4}{4!} - \\dots$.",
+          "explanation": "Since $\\cos(x)$ is an even function, its Maclaurin series contains only even powers: $\\sum_{n=0}^\\infty (-1)^n \\frac{x^{2n}}{(2n)!} = 1 - \\frac{x^2}{2!} + \\frac{x^4}{4!} - \\dots$."
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
         {
           "q": "Find the first three non-zero terms of the Maclaurin series for $\\sin(2x)$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Standard Maclaurin Series",
           "choices": [
             "$2x - \\frac{4}{3}x^3 + \\frac{4}{15}x^5$",
             "$2x - 4x^3 + \\frac{4}{3}x^5$",
@@ -114,15 +465,14 @@
             "Both of the above are correct"
           ],
           "correct": 3,
-          "answer": "Substitute $2x$ into $\\sin u = u - \\frac{u^3}{6} + \\frac{u^5}{120}$: $2x - \\frac{8x^3}{6} + \\frac{32x^5}{120} = 2x - \\frac{4}{3}x^3 + \\frac{4}{15}x^5$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Taylor Polynomials and Lagrange Error Bound",
-      "questions": [
+          "answer": "Substitute $2x$ into $\\sin u = u - \\frac{u^3}{6} + \\frac{u^5}{120}$: $2x - \\frac{8x^3}{6} + \\frac{32x^5}{120} = 2x - \\frac{4}{3}x^3 + \\frac{4}{15}x^5$.",
+          "explanation": "Substitute $2x$ into $\\sin u = u - \\frac{u^3}{6} + \\frac{u^5}{120}$: $2x - \\frac{8x^3}{6} + \\frac{32x^5}{120} = 2x - \\frac{4}{3}x^3 + \\frac{4}{15}x^5$."
+        },
         {
           "q": "Find the 2nd-degree Taylor polynomial $T_2(x)$ for $f(x) = \\sqrt{x}$ centered at $a = 4$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Taylor Polynomials and Lagrange Error Bound",
           "choices": [
             "$T_2(x) = 2 + \\frac{1}{4}(x - 4) - \\frac{1}{64}(x - 4)^2$",
             "$T_2(x) = 2 + \\frac{1}{4}(x - 4) - \\frac{1}{32}(x - 4)^2$",
@@ -130,10 +480,14 @@
             "$T_2(x) = 2 + \\frac{1}{4}(x - 4) + \\frac{1}{64}(x - 4)^2$"
           ],
           "correct": 0,
-          "answer": "$f(4) = 2$. $f'(x) = \\frac{1}{2}x^{-1/2} \\Rightarrow f'(4) = 1/4$. $f''(x) = -\\frac{1}{4}x^{-3/2} \\Rightarrow f''(4) = -\\frac{1}{32}$. $T_2(x) = 2 + \\frac{1}{4}(x-4) + \\frac{-1/32}{2!}(x-4)^2 = 2 + \\frac{1}{4}(x-4) - \\frac{1}{64}(x-4)^2$."
+          "answer": "$f(4) = 2$. $f'(x) = \\frac{1}{2}x^{-1/2} \\Rightarrow f'(4) = 1/4$. $f''(x) = -\\frac{1}{4}x^{-3/2} \\Rightarrow f''(4) = -\\frac{1}{32}$. $T_2(x) = 2 + \\frac{1}{4}(x-4) + \\frac{-1/32}{2!}(x-4)^2 = 2 + \\frac{1}{4}(x-4) - \\frac{1}{64}(x-4)^2$.",
+          "explanation": "$f(4) = 2$. $f'(x) = \\frac{1}{2}x^{-1/2} \\Rightarrow f'(4) = 1/4$. $f''(x) = -\\frac{1}{4}x^{-3/2} \\Rightarrow f''(4) = -\\frac{1}{32}$. $T_2(x) = 2 + \\frac{1}{4}(x-4) + \\frac{-1/32}{2!}(x-4)^2 = 2 + \\frac{1}{4}(x-4) - \\frac{1}{64}(x-4)^2$."
         },
         {
           "q": "State the formula for the Lagrange Error Bound for a Taylor polynomial $T_n(x)$ centered at $a$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Taylor Polynomials and Lagrange Error Bound",
           "choices": [
             "$|R_n(x)| \\leq \\frac{M}{(n+1)!}|x - a|^{n+1}$, where $M = \\max |f^{(n+1)}(t)|$ on $[a, x]$",
             "$|R_n(x)| \\leq \\frac{M}{n!}|x - a|^n$",
@@ -141,10 +495,14 @@
             "$|R_n(x)| \\leq \\frac{f^{(n+1)}(a)}{(n+1)!}|x - a|^{n+1}$"
           ],
           "correct": 0,
-          "answer": "Taylor's Remainder Theorem states that the truncation error satisfies $|R_n(x)| \\leq \\frac{M}{(n+1)!}|x - a|^{n+1}$ where $M$ bounds the $(n+1)$th derivative on the interval between $a$ and $x$."
+          "answer": "Taylor's Remainder Theorem states that the truncation error satisfies $|R_n(x)| \\leq \\frac{M}{(n+1)!}|x - a|^{n+1}$ where $M$ bounds the $(n+1)$th derivative on the interval between $a$ and $x$.",
+          "explanation": "Taylor's Remainder Theorem states that the truncation error satisfies $|R_n(x)| \\leq \\frac{M}{(n+1)!}|x - a|^{n+1}$ where $M$ bounds the $(n+1)$th derivative on the interval between $a$ and $x$."
         },
         {
           "q": "Use the 3rd-degree Maclaurin polynomial for $e^x$ to bound the error in estimating $e^{0.1}$. (Take $e^{0.1} < 3$).",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Taylor Polynomials and Lagrange Error Bound",
           "choices": [
             "$|R_3(0.1)| \\leq \\frac{3}{24}(0.1)^4 = 1.25 \\times 10^{-5}$",
             "$|R_3(0.1)| \\leq 10^{-4}$",
@@ -152,7 +510,243 @@
             "$|R_3(0.1)| \\leq 10^{-6}$"
           ],
           "correct": 0,
-          "answer": "$|R_3(0.1)| \\leq \\frac{M}{4!}(0.1)^4$. Since $M = \\max_{t \\in [0, 0.1]} e^t = e^{0.1} < 3$, $|R_3| \\leq \\frac{3}{24}(0.0001) = \\frac{1}{8}(10^{-4}) = 1.25 \\times 10^{-5}$."
+          "answer": "$|R_3(0.1)| \\leq \\frac{M}{4!}(0.1)^4$. Since $M = \\max_{t \\in [0, 0.1]} e^t = e^{0.1} < 3$, $|R_3| \\leq \\frac{3}{24}(0.0001) = \\frac{1}{8}(10^{-4}) = 1.25 \\times 10^{-5}$.",
+          "explanation": "$|R_3(0.1)| \\leq \\frac{M}{4!}(0.1)^4$. Since $M = \\max_{t \\in [0, 0.1]} e^t = e^{0.1} < 3$, $|R_3| \\leq \\frac{3}{24}(0.0001) = \\frac{1}{8}(10^{-4}) = 1.25 \\times 10^{-5}$."
+        },
+        {
+          "q": "Interval of convergence of $\\sum\\frac{(-3)^n(x-2)^n}{\\sqrt{n}}$: centre, radius, and endpoints:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Taylor Polynomials and Lagrange Error Bound",
+          "choices": [
+            "$R=1/3$, interval $(5/3,7/3]$",
+            "$R=1/3$, interval $[5/3,7/3)$",
+            "$R=1/3$, interval $[5/3,7/3]$",
+            "$R=3$, interval $(-1,5]$"
+          ],
+          "correct": 0,
+          "answer": "$|{-3}(x-2)|<1\\Rightarrow|x-2|<1/3$. At $x=7/3$: $\\sum(-1)^n/\\sqrt{n}$ converges (Leibniz). At $x=5/3$: $\\sum 1/\\sqrt{n}$ diverges.",
+          "explanation": "$|{-3}(x-2)|<1\\Rightarrow|x-2|<1/3$. At $x=7/3$: $\\sum(-1)^n/\\sqrt{n}$ converges (Leibniz). At $x=5/3$: $\\sum 1/\\sqrt{n}$ diverges."
+        },
+        {
+          "q": "Consider the power series $\\sum_{n=1}^{\\infty} \\frac{(x-2)^n}{n^2 3^n}$. This series defines a function $f(x)$ over its interval of convergence. Let $I$ be the interval of convergence for this power series. Determine which of the following statements is TRUE about $f(x)$ and its behavior at the endpoints of $I$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Radius and interval of convergence",
+          "choices": [
+            "The radius of convergence is 3, and the series converges at both endpoints of the interval of convergence.",
+            "The radius of convergence is 3, and the series diverges at the left endpoint and converges at the right endpoint.",
+            "The radius of convergence is $1/3$, and the series converges at both endpoints of the interval of convergence.",
+            "The radius of convergence is $1/3$, and the series diverges at both endpoints of the interval of convergence."
+          ],
+          "correct": 0,
+          "answer": "We use the Ratio Test to find the radius of convergence. Let $a_n = \\frac{(x-2)^n}{n^2 3^n}$. Then, $L = \\lim_{n\\rightarrow\\infty} \\left| \\frac{a_{n+1}}{a_n} \\right| = \\lim_{n\\rightarrow\\infty} \\left| \\frac{(x-2)^{n+1}}{(n+1)^2 3^{n+1}} \\cdot \\frac{n^2 3^n}{(x-2)^n} \\right|$ $L = \\lim_{n\\rightarrow\\infty} \\left| \\frac{x-2}{3} \\cdot \\frac{n^2}{(n+1)^2} \\right| = \\left| \\frac{x-2}{3} \\right| \\lim_{n\\rightarrow\\infty} \\left( \\frac{n}{n+1} \\right)^2 = \\left| \\frac{x-2}{3} \\right| \\cdot 1$ For convergence, we need $L 1$. At $x = -1$: The series becomes $\\sum_{n=1}^{\\infty} \\frac{(-1-2)^n}{n^2 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-3)^n}{n^2 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-1)^n 3^n}{n^2 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-1)^n}{n^2}$. This is an alternating series. We can check for absolute convergence by considering $\\sum_{n=1}^{\\infty} \\left| \\frac{(-1)^n}{n^2} \\right| = \\sum_{n=1}^{\\infty} \\frac{1}{n^2}$, which we already established converges. Therefore, the series converges absolutely at $x=-1$. Since the series converges at both endpoints, the interval of convergence is $[-1, 5]$. The radius of convergence is 3. Therefore, the statement that the radius of convergence is 3 and the series converges at both endpoints is true.",
+          "explanation": "We use the Ratio Test to find the radius of convergence. Let $a_n = \\frac{(x-2)^n}{n^2 3^n}$. Then, $L = \\lim_{n\\rightarrow\\infty} \\left| \\frac{a_{n+1}}{a_n} \\right| = \\lim_{n\\rightarrow\\infty} \\left| \\frac{(x-2)^{n+1}}{(n+1)^2 3^{n+1}} \\cdot \\frac{n^2 3^n}{(x-2)^n} \\right|$ $L = \\lim_{n\\rightarrow\\infty} \\left| \\frac{x-2}{3} \\cdot \\frac{n^2}{(n+1)^2} \\right| = \\left| \\frac{x-2}{3} \\right| \\lim_{n\\rightarrow\\infty} \\left( \\frac{n}{n+1} \\right)^2 = \\left| \\frac{x-2}{3} \\right| \\cdot 1$ For convergence, we need $L 1$. At $x = -1$: The series becomes $\\sum_{n=1}^{\\infty} \\frac{(-1-2)^n}{n^2 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-3)^n}{n^2 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-1)^n 3^n}{n^2 3^n} = \\sum_{n=1}^{\\infty} \\frac{(-1)^n}{n^2}$. This is an alternating series. We can check for absolute convergence by considering $\\sum_{n=1}^{\\infty} \\left| \\frac{(-1)^n}{n^2} \\right| = \\sum_{n=1}^{\\infty} \\frac{1}{n^2}$, which we already established converges. Therefore, the series converges absolutely at $x=-1$. Since the series converges at both endpoints, the interval of convergence is $[-1, 5]$. The radius of convergence is 3. Therefore, the statement that the radius of convergence is 3 and the series converges at both endpoints is true."
+        },
+        {
+          "q": "The error function $\\mathrm{erf}(x)=\\frac{2}{\\sqrt{\\pi}}\\int_0^xe^{-t^2}dt$. Using $e^{-t^2}=\\sum(-1)^nt^{2n}/n!$:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Taylor and Maclaurin series",
+          "choices": [
+            "$\\mathrm{erf}(x)=\\sum x^n/n!$",
+            "$\\mathrm{erf}(x)=\\frac{2}{\\sqrt{\\pi}}\\sum_{n=0}^\\infty\\frac{(-1)^n x^{2n+1}}{n!(2n+1)}$",
+            "$\\mathrm{erf}(x)=e^{-x^2}$",
+            "$\\mathrm{erf}(x)=2x/\\sqrt{\\pi}$"
+          ],
+          "correct": 1,
+          "answer": "Applying Convergence Tests and Power Series principles, Integrate term-by-term. Therefore, the verified correct option is $\\mathrm{erf}(x)=\\frac{2}{\\sqrt{\\pi}}\\sum_{n=0}^\\infty\\frac{(-1)^n x^{2n+1}}{n!(2n+1)}$.",
+          "explanation": "Applying Convergence Tests and Power Series principles, Integrate term-by-term. Therefore, the verified correct option is $\\mathrm{erf}(x)=\\frac{2}{\\sqrt{\\pi}}\\sum_{n=0}^\\infty\\frac{(-1)^n x^{2n+1}}{n!(2n+1)}$."
+        },
+        {
+          "q": "Error bound: $|\\cos x-1+x^2/2|\\leq x^4/24$ (from $T_4$ bound). This means the error at $x=0.1$ is at most:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Interval of convergence (including endpoints)",
+          "choices": [
+            "$0.0001/24$",
+            "$0.1^4/24$",
+            "$0.1^2/2$",
+            "$1/24$"
+          ],
+          "correct": 1,
+          "answer": "Applying Convergence Tests and Power Series principles, $|x^4/24|=0.0001/24$. Therefore, the verified correct option is $0.1^4/24$.",
+          "explanation": "Applying Convergence Tests and Power Series principles, $|x^4/24|=0.0001/24$. Therefore, the verified correct option is $0.1^4/24$."
+        },
+        {
+          "q": "The interval of convergence always contains at least the point:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Using known series",
+          "choices": [
+            "$x=R$",
+            "$x=1$",
+            "$x=-1$",
+            "$x=0$"
+          ],
+          "correct": 3,
+          "answer": "Series converges at its centre; if centred at 0, converges at $x=0$.",
+          "explanation": "Series converges at its centre; if centred at 0, converges at $x=0$."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "The error in using $T_n(x)$ decreases as $n$ increases (assuming convergence). This is because the remainder $R_n\\rightarrow$",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Taylor series centered at a nonzero point",
+          "choices": [
+            "$1$",
+            "$f(x)$",
+            "$n!$",
+            "$0$"
+          ],
+          "correct": 3,
+          "answer": "Remainder $R_n\\rightarrow0$ for convergent Taylor series.",
+          "explanation": "Remainder $R_n\\rightarrow0$ for convergent Taylor series.",
+          "cross_lesson": "8.03 Arc Length and Improper Integrals"
+        },
+        {
+          "q": "The integral $\\int_0^1e^{-x^2}dx$ (error function) — the exact value cannot be expressed in elementary functions. Using the series, approximate as $\\sum\\frac{(-1)^n}{n!(2n+1)}$. First two terms:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Error estimation with Taylor polynomials",
+          "choices": [
+            "$1-1/6\\approx0.833$",
+            "$1-1/3\\approx0.667$",
+            "$1+1/3\\approx1.333$",
+            "$0$"
+          ],
+          "correct": 1,
+          "answer": "$\\int_0^1e^{-x^2}dx\\approx1-1/3+\\cdots\\approx0.667$.",
+          "explanation": "$\\int_0^1e^{-x^2}dx\\approx1-1/3+\\cdots\\approx0.667$.",
+          "cross_lesson": "9.01 Separable Differential Equations"
+        },
+        {
+          "q": "Maclaurin series for $\\tan^{-1}x$ at $x=1$ gives $\\pi/4=1-1/3+1/5-1/7+\\cdots$. This converges very slowly. The 10th partial sum approximates $\\pi/4$ with error less than:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Visualizing a Taylor approximation",
+          "choices": [
+            "$1/11$",
+            "$1/21$",
+            "$1/19$",
+            "$0.01$"
+          ],
+          "correct": 1,
+          "answer": "Alternating series: error $\\leq a_{11}=1/21$.",
+          "explanation": "Alternating series: error $\\leq a_{11}=1/21$.",
+          "cross_lesson": "1.01 Precalculus Review for Calculus"
+        },
+        {
+          "q": "Consider the power series $\\sum_{n=0}^{\\infty} c_n (x-a)^n$. If the radius of convergence is $R=3$ and the center of the series is $a=2$, which of the following intervals represents the values of $x$ for which the series converges?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Differentiating and integrating power series",
+          "choices": [
+            "$( -1, 5 )$",
+            "$[ -1, 5 ]$",
+            "$( -1, 5 ]$",
+            "$[ -1, 5 )$"
+          ],
+          "correct": 0,
+          "answer": "The radius of convergence $R$ of a power series $\\sum_{n=0}^{\\infty} c_n (x-a)^n$ indicates that the series converges absolutely for $|x-a| R$. The center of the series is $a$. In this problem, we are given $R=3$ and $a=2$. Thus, the series converges for $|x-2| < 3$. This inequality can be rewritten as $-3 < x-2 < 3$. Adding 2 to all parts of the inequality, we get $-3+2 < x < 3+2$, which simplifies to $-1 < x < 5$. This interval is written in open interval notation as $(-1, 5)$. The convergence at the endpoints $x=-1$ and $x=5$ is not determined by the radius of convergence alone and requires further testing (e.g., using the Alternating Series Test or p-series test). However, the question asks for the interval where the series converges, and the open interval derived from $|x-a| < R$ is the fundamental region of convergence for a power series. Therefore, the interval $(-1, 5)$ represents the values of $x$ for which the series converges.",
+          "explanation": "The radius of convergence $R$ of a power series $\\sum_{n=0}^{\\infty} c_n (x-a)^n$ indicates that the series converges absolutely for $|x-a| R$. The center of the series is $a$. In this problem, we are given $R=3$ and $a=2$. Thus, the series converges for $|x-2| < 3$. This inequality can be rewritten as $-3 < x-2 < 3$. Adding 2 to all parts of the inequality, we get $-3+2 < x < 3+2$, which simplifies to $-1 < x < 5$. This interval is written in open interval notation as $(-1, 5)$. The convergence at the endpoints $x=-1$ and $x=5$ is not determined by the radius of convergence alone and requires further testing (e.g., using the Alternating Series Test or p-series test). However, the question asks for the interval where the series converges, and the open interval derived from $|x-a| < R$ is the fundamental region of convergence for a power series. Therefore, the interval $(-1, 5)$ represents the values of $x$ for which the series converges.",
+          "cross_lesson": "10.01 Calculus with Parametric and Polar Curves",
+          "figure": {
+            "type": "numberline",
+            "min": -5.0,
+            "max": 10.0,
+            "shade": [
+              -1,
+              5
+            ],
+            "marks": [
+              {
+                "x": -1.0,
+                "open": true,
+                "label": "$-1$"
+              },
+              {
+                "x": 2.0,
+                "open": true,
+                "label": "$2$"
+              },
+              {
+                "x": 5.0,
+                "open": true,
+                "label": "$5$"
+              }
+            ],
+            "width": 250
+          }
+        },
+        {
+          "q": "Find the interval of convergence of $\\sum\\frac{(x-1)^n}{n3^n}$:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Using Taylor series to evaluate a limit",
+          "choices": [
+            "$[-2,4)$",
+            "$(-2,4)$",
+            "$(-2,4]$",
+            "$[-2,4]$"
+          ],
+          "correct": 0,
+          "answer": "By the Ratio Test, $R=3$ centered at $x=1$. At $x=-2$ we get the convergent alternating harmonic series $\\sum \\frac{(-1)^n}{n}$, and at $x=4$ the divergent harmonic series $\\sum \\frac{1}{n}$, so the interval is $[-2,4)$.",
+          "explanation": "By the Ratio Test, $R=3$ centered at $x=1$. At $x=-2$ we get the convergent alternating harmonic series $\\sum \\frac{(-1)^n}{n}$, and at $x=4$ the divergent harmonic series $\\sum \\frac{1}{n}$, so the interval is $[-2,4)$.",
+          "cross_lesson": "11.01 Sequences and Series"
+        },
+        {
+          "q": "Find the interval of convergence of $\\sum_{n=1}^{\\infty} \\frac{5^{- n} \\left(x + 3\\right)^{n}}{n^{2}}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Radius and Interval of Convergence",
+          "choices": [
+            "$\\left[-8, 2\\right]$",
+            "$\\left(-8, 2\\right)$",
+            "$\\left[-8, 2\\right)$",
+            "$\\left(-8, 2\\right]$"
+          ],
+          "correct": 0,
+          "answer": "The radius is 5 (ratio test). At $x = 2$ the series is $\\sum_{n=1}^{\\infty} \\frac{1}{n^{2}}$; at $x = -8$ it is $\\sum_{n=1}^{\\infty} \\frac{\\left(-1\\right)^{n}}{n^{2}}$. Checking each endpoint gives $\\left[-8, 2\\right]$.",
+          "explanation": "The radius is 5 (ratio test). At $x = 2$ the series is $\\sum_{n=1}^{\\infty} \\frac{1}{n^{2}}$; at $x = -8$ it is $\\sum_{n=1}^{\\infty} \\frac{\\left(-1\\right)^{n}}{n^{2}}$. Checking each endpoint gives $\\left[-8, 2\\right]$.",
+          "cross_lesson": "12.01 Convergence Tests"
+        },
+        {
+          "q": "Find the interval of convergence of $\\sum_{n=1}^{\\infty} \\frac{5^{- n} \\left(x + 2\\right)^{n}}{n^{2}}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Geometric Series Representations",
+          "choices": [
+            "$\\left[-7, 3\\right]$",
+            "$\\left(-7, 3\\right)$",
+            "$\\left[-7, 3\\right)$",
+            "$\\left(-7, 3\\right]$"
+          ],
+          "correct": 0,
+          "answer": "The radius is 5 (ratio test). At $x = 3$ the series is $\\sum_{n=1}^{\\infty} \\frac{1}{n^{2}}$; at $x = -7$ it is $\\sum_{n=1}^{\\infty} \\frac{\\left(-1\\right)^{n}}{n^{2}}$. Checking each endpoint gives $\\left[-7, 3\\right]$.",
+          "explanation": "The radius is 5 (ratio test). At $x = 3$ the series is $\\sum_{n=1}^{\\infty} \\frac{1}{n^{2}}$; at $x = -7$ it is $\\sum_{n=1}^{\\infty} \\frac{\\left(-1\\right)^{n}}{n^{2}}$. Checking each endpoint gives $\\left[-7, 3\\right]$.",
+          "cross_lesson": "13.01 Vectors and Vector-Valued Functions"
+        },
+        {
+          "q": "Find the interval of convergence of $\\sum_{n=1}^{\\infty} \\frac{3^{- n} \\left(x + 1\\right)^{n}}{n^{2}}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Standard Maclaurin Series",
+          "choices": [
+            "$\\left[-4, 2\\right]$",
+            "$\\left(-4, 2\\right)$",
+            "$\\left[-4, 2\\right)$",
+            "$\\left(-4, 2\\right]$"
+          ],
+          "correct": 0,
+          "answer": "The radius is 3 (ratio test). At $x = 2$ the series is $\\sum_{n=1}^{\\infty} \\frac{1}{n^{2}}$; at $x = -4$ it is $\\sum_{n=1}^{\\infty} \\frac{\\left(-1\\right)^{n}}{n^{2}}$. Checking each endpoint gives $\\left[-4, 2\\right]$.",
+          "explanation": "The radius is 3 (ratio test). At $x = 2$ the series is $\\sum_{n=1}^{\\infty} \\frac{1}{n^{2}}$; at $x = -4$ it is $\\sum_{n=1}^{\\infty} \\frac{\\left(-1\\right)^{n}}{n^{2}}$. Checking each endpoint gives $\\left[-4, 2\\right]$.",
+          "cross_lesson": "14.01 Partial Derivatives and the Gradient"
         }
       ]
     }

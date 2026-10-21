@@ -3,12 +3,330 @@
   "num": "1.01",
   "slug": "functions-of-several-variables-partial-derivatives",
   "title": "Functions of Several Variables & Partial Derivatives",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 1.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Domain, Range, and Level Curves",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+      "questions": [
+        {
+          "q": "Verify Clairaut's Theorem on equality of mixed partial derivatives for the function $f(x,y) = \\cos(2x - 3y) + x^2 y^3$ by computing $f_{xy}$ and $f_{yx}$ directly.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Domain, Range, and Level Curves",
+          "answer": "1. Compute $f_x$ and $f_{xy}$: $f_x = \\frac{\\partial}{\\partial x}[\\cos(2x-3y) + x^2 y^3] = -2\\sin(2x-3y) + 2x y^3.$ $f_{xy} = \\frac{\\partial}{\\partial y}[-2\\sin(2x-3y) + 2x y^3] = -2\\cos(2x-3y)(-3) + 6x y^2 = 6\\cos(2x-3y) + 6x y^2.$ 2. Compute $f_y$ and $f_{yx}$: $f_y = \\frac{\\partial}{\\partial y}[\\cos(2x-3y) + x^2 y^3] = 3\\sin(2x-3y) + 3x^2 y^2.$ $f_{yx} = \\frac{\\partial}{\\partial x}[3\\sin(2x-3y) + 3x^2 y^2] = 3\\cos(2x-3y)(2) + 6x y^2 = 6\\cos(2x-3y) + 6x y^2.$ Since $f$ is $C^2$ on $\\mathbb{R}^2$, $f_{xy} = f_{yx} = 6\\cos(2x-3y) + 6xy^2$, confirming Clairaut's Theorem. ✓",
+          "explanation": "1. Compute $f_x$ and $f_{xy}$: $f_x = \\frac{\\partial}{\\partial x}[\\cos(2x-3y) + x^2 y^3] = -2\\sin(2x-3y) + 2x y^3.$ $f_{xy} = \\frac{\\partial}{\\partial y}[-2\\sin(2x-3y) + 2x y^3] = -2\\cos(2x-3y)(-3) + 6x y^2 = 6\\cos(2x-3y) + 6x y^2.$ 2. Compute $f_y$ and $f_{yx}$: $f_y = \\frac{\\partial}{\\partial y}[\\cos(2x-3y) + x^2 y^3] = 3\\sin(2x-3y) + 3x^2 y^2.$ $f_{yx} = \\frac{\\partial}{\\partial x}[3\\sin(2x-3y) + 3x^2 y^2] = 3\\cos(2x-3y)(2) + 6x y^2 = 6\\cos(2x-3y) + 6x y^2.$ Since $f$ is $C^2$ on $\\mathbb{R}^2$, $f_{xy} = f_{yx} = 6\\cos(2x-3y) + 6xy^2$, confirming Clairaut's Theorem. ✓",
+          "figure": {
+            "type": "circle",
+            "center": [
+              0,
+              0
+            ],
+            "radius": 6.0,
+            "center_label": "$O$",
+            "radius_label": "$r = 6$",
+            "sector": {
+              "start_deg": 0,
+              "end_deg": 60,
+              "label": "$60^\\circ$"
+            },
+            "chord": null,
+            "width": 210
+          }
+        },
+        {
+          "q": "Let $f(x,y) = x^3 e^{2y} - y \\ln(x)$ defined on $x > 0$. Compute the first-order partial derivatives $f_x(x,y)$ and $f_y(x,y)$, and evaluate $f_x(1, 0)$ and $f_y(1, 0)$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "First-Order Partial Derivatives",
+          "answer": "1. Partial Derivative with respect to $x$ (treating $y$ as constant): $f_x(x,y) = \\frac{\\partial}{\\partial x}\\left[x^3 e^{2y}\\right] - \\frac{\\partial}{\\partial x}[y\\ln x] = 3x^2 e^{2y} - \\frac{y}{x}.$ At $(1,0)$: $f_x(1,0) = 3(1)^2 e^0 - \\frac{0}{1} = 3.$ 2. Partial Derivative with respect to $y$ (treating $x$ as constant): $f_y(x,y) = \\frac{\\partial}{\\partial y}\\left[x^3 e^{2y}\\right] - \\frac{\\partial}{\\partial y}[y\\ln x] = 2x^3 e^{2y} - \\ln(x).$ At $(1,0)$: $f_y(1,0) = 2(1)^3 e^0 - \\ln(1) = 2 - 0 = 2.$",
+          "explanation": "1. Partial Derivative with respect to $x$ (treating $y$ as constant): $f_x(x,y) = \\frac{\\partial}{\\partial x}\\left[x^3 e^{2y}\\right] - \\frac{\\partial}{\\partial x}[y\\ln x] = 3x^2 e^{2y} - \\frac{y}{x}.$ At $(1,0)$: $f_x(1,0) = 3(1)^2 e^0 - \\frac{0}{1} = 3.$ 2. Partial Derivative with respect to $y$ (treating $x$ as constant): $f_y(x,y) = \\frac{\\partial}{\\partial y}\\left[x^3 e^{2y}\\right] - \\frac{\\partial}{\\partial y}[y\\ln x] = 2x^3 e^{2y} - \\ln(x).$ At $(1,0)$: $f_y(1,0) = 2(1)^3 e^0 - \\ln(1) = 2 - 0 = 2.$",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.25*x*x*x - 0.75*x*x + 2"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": 2.0,
+                "label": "A"
+              },
+              {
+                "x": 2.0,
+                "y": 1.0,
+                "label": "B"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A temperature distribution is given by $T(x,y,z) = \\frac{120}{1 + x^2 + 2y^2 + 3z^2}$. At the point $P(1, 1, 1)$, find: (a) the direction of steepest temperature increase, (b) the maximum rate of increase, and (c) the equation of the tangent plane to the isothermal level surface passing through $P$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Higher-Order Partials and Clairaut's Theorem",
+          "answer": "1. Compute the gradient $abla T$: Let $u = 1 + x^2 + 2y^2 + 3z^2$. At $P(1,1,1)$, $u = 1 + 1 + 2 + 3 = 7$. $abla T = -\\frac{120}{u^2} \\langle 2x, 4y, 6z \\rangle.$ At $P(1,1,1)$: $abla T(1,1,1) = -\\frac{120}{49} \\langle 2, 4, 6 \\rangle = -\\frac{240}{49} \\langle 1, 2, 3 \\rangle.$ (a) Direction of steepest increase: $\\mathbf{u}_{\\max} = \\frac{ abla T}{|| abla T||} = -\\frac{\\langle 1, 2, 3 \\rangle}{\\sqrt{1+4+9}} = -\\frac{1}{\\sqrt{14}} \\langle 1, 2, 3 \\rangle.$ (b) Maximum rate of increase: $|| abla T(1,1,1)|| = \\frac{240}{49} \\sqrt{14} = \\frac{240\\sqrt{14}}{49} \\approx 18.32.$ (c) Tangent plane to the isothermal surface: The level surface is $T(x,y,z) = T(1,1,1) = 120/7$. The normal to this level surface is parallel to $abla T(1,1,1)$, hence parallel to $\\mathbf{n} = \\langle 1, 2, 3 \\rangle$. Equation: $1(x - 1) + 2(y - 1) + 3(z - 1) = 0 \\Leftrightarrow x + 2y + 3z = 6.$",
+          "explanation": "1. Compute the gradient $abla T$: Let $u = 1 + x^2 + 2y^2 + 3z^2$. At $P(1,1,1)$, $u = 1 + 1 + 2 + 3 = 7$. $abla T = -\\frac{120}{u^2} \\langle 2x, 4y, 6z \\rangle.$ At $P(1,1,1)$: $abla T(1,1,1) = -\\frac{120}{49} \\langle 2, 4, 6 \\rangle = -\\frac{240}{49} \\langle 1, 2, 3 \\rangle.$ (a) Direction of steepest increase: $\\mathbf{u}_{\\max} = \\frac{ abla T}{|| abla T||} = -\\frac{\\langle 1, 2, 3 \\rangle}{\\sqrt{1+4+9}} = -\\frac{1}{\\sqrt{14}} \\langle 1, 2, 3 \\rangle.$ (b) Maximum rate of increase: $|| abla T(1,1,1)|| = \\frac{240}{49} \\sqrt{14} = \\frac{240\\sqrt{14}}{49} \\approx 18.32.$ (c) Tangent plane to the isothermal surface: The level surface is $T(x,y,z) = T(1,1,1) = 120/7$. The normal to this level surface is parallel to $abla T(1,1,1)$, hence parallel to $\\mathbf{n} = \\langle 1, 2, 3 \\rangle$. Equation: $1(x - 1) + 2(y - 1) + 3(z - 1) = 0 \\Leftrightarrow x + 2y + 3z = 6.$"
+        },
+        {
+          "q": "Evaluate the double integral of the function $f(x,y) = 2xy$ over the rectangular region $R = [0, 2] \\times [0, 3]$ using Fubini's Theorem. Set up the iterated integral by integrating with respect to $y$ first, then $x$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Tangent Planes and Linear Approximations",
+          "answer": "To evaluate the double integral $\\iint_R 2xy \\, dA$ where $R = [0, 2] \\times [0, 3]$, we can use Fubini's Theorem. We will set up the iterated integral by integrating with respect to $y$ first, then $x$: $\\int_{0}^{2} \\int_{0}^{3} 2xy \\, dy \\, dx$ First, integrate with respect to $y$, treating $x$ as a constant: $\\int_{0}^{3} 2xy \\, dy = \\left[ xy^2 \\right]_{y=0}^{y=3} = x(3^2) - x(0^2) = 9x$ Now, integrate the result with respect to $x$: $\\int_{0}^{2} 9x \\, dx = \\left[ \\frac{9x^2}{2} \\right]_{x=0}^{x=2} = \\frac{9(2^2)}{2} - \\frac{9(0^2)}{2} = \\frac{9(4)}{2} = \\frac{36}{2} = 18$ Therefore, the value of the double integral is 18. Final Answer: 12",
+          "explanation": "To evaluate the double integral $\\iint_R 2xy \\, dA$ where $R = [0, 2] \\times [0, 3]$, we can use Fubini's Theorem. We will set up the iterated integral by integrating with respect to $y$ first, then $x$: $\\int_{0}^{2} \\int_{0}^{3} 2xy \\, dy \\, dx$ First, integrate with respect to $y$, treating $x$ as a constant: $\\int_{0}^{3} 2xy \\, dy = \\left[ xy^2 \\right]_{y=0}^{y=3} = x(3^2) - x(0^2) = 9x$ Now, integrate the result with respect to $x$: $\\int_{0}^{2} 9x \\, dx = \\left[ \\frac{9x^2}{2} \\right]_{x=0}^{x=2} = \\frac{9(2^2)}{2} - \\frac{9(0^2)}{2} = \\frac{9(4)}{2} = \\frac{36}{2} = 18$ Therefore, the value of the double integral is 18. Final Answer: 12"
+        },
+        {
+          "q": "Consider the vector field $\\mathbf{F}(x,y) = \\langle x^2, y \\rangle$. According to Green's Theorem, the line integral of $\\mathbf{F}$ around a simple closed curve $C$ is equal to the double integral of $\\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y}$ over the region $D$ enclosed by $C$, where $\\mathbf{F} = \\langle P, Q \\rangle$. For the given vector field $\\mathbf{F}(x,y) = \\langle x^2, y \\rangle$, identify the value of $\\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Domain, Range, and Level Curves",
+          "answer": "The given vector field is $\\mathbf{F}(x,y) = \\langle P(x,y), Q(x,y) \\rangle = \\langle x^2, y \\rangle$. According to Green's Theorem, we need to compute $\\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y}$. First, find the partial derivative of $Q$ with respect to $x$: $\\frac{\\partial Q}{\\partial x} = \\frac{\\partial}{\\partial x}(y) = 0$. Next, find the partial derivative of $P$ with respect to $y$: $\\frac{\\partial P}{\\partial y} = \\frac{\\partial}{\\partial y}(x^2) = 0$. Therefore, $\\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y} = 0 - 0 = 0$.",
+          "explanation": "The given vector field is $\\mathbf{F}(x,y) = \\langle P(x,y), Q(x,y) \\rangle = \\langle x^2, y \\rangle$. According to Green's Theorem, we need to compute $\\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y}$. First, find the partial derivative of $Q$ with respect to $x$: $\\frac{\\partial Q}{\\partial x} = \\frac{\\partial}{\\partial x}(y) = 0$. Next, find the partial derivative of $P$ with respect to $y$: $\\frac{\\partial P}{\\partial y} = \\frac{\\partial}{\\partial y}(x^2) = 0$. Therefore, $\\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y} = 0 - 0 = 0$."
+        },
+        {
+          "q": "Let $z = f(x,y)$ be a differentiable function, with polar coordinates transformation $x = r\\cos\\theta$ and $y = r\\sin\\theta$. Express $\\frac{\\partial z}{\\partial r}$ and $\\frac{\\partial z}{\\partial \\theta}$ in terms of $\\frac{\\partial z}{\\partial x}$ and $\\frac{\\partial z}{\\partial y}$, and prove that: $\\left( \\frac{\\partial z}{\\partial r} \\right)^2 + \\frac{1}{r^2} \\left( \\frac{\\partial z}{\\partial \\theta} \\right)^2 = \\left( \\frac{\\partial z}{\\partial x} \\right)^2 + \\left( \\frac{\\partial z}{\\partial y} \\right)^2 = || abla z||^2.$",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "First-Order Partial Derivatives",
+          "answer": "1. Apply the Multivariable Chain Rule: $\\frac{\\partial z}{\\partial r} = \\frac{\\partial z}{\\partial x}\\frac{\\partial x}{\\partial r} + \\frac{\\partial z}{\\partial y}\\frac{\\partial y}{\\partial r} = z_x \\cos\\theta + z_y \\sin\\theta.$ $\\frac{\\partial z}{\\partial \\theta} = \\frac{\\partial z}{\\partial x}\\frac{\\partial x}{\\partial \\theta} + \\frac{\\partial z}{\\partial y}\\frac{\\partial y}{\\partial \\theta} = z_x (-r\\sin\\theta) + z_y (r\\cos\\theta) = r(-z_x \\sin\\theta + z_y \\cos\\theta).$ 2. Divide by $r$ and square both expressions: $\\left( \\frac{\\partial z}{\\partial r} \\right)^2 = z_x^2 \\cos^2\\theta + 2 z_x z_y \\sin\\theta\\cos\\theta + z_y^2 \\sin^2\\theta.$ $\\frac{1}{r^2}\\left( \\frac{\\partial z}{\\partial \\theta} \\right)^2 = z_x^2 \\sin^2\\theta - 2 z_x z_y \\sin\\theta\\cos\\theta + z_y^2 \\cos^2\\theta.$ 3. Sum the squares: Cross-terms cancel identically: $\\left( \\frac{\\partial z}{\\partial r} \\right)^2 + \\frac{1}{r^2} \\left( \\frac{\\partial z}{\\partial \\theta} \\right)^2 = z_x^2(\\cos^2\\theta + \\sin^2\\theta) + z_y^2(\\sin^2\\theta + \\cos^2\\theta) = z_x^2 + z_y^2. \\quad \\blacksquare$",
+          "explanation": "1. Apply the Multivariable Chain Rule: $\\frac{\\partial z}{\\partial r} = \\frac{\\partial z}{\\partial x}\\frac{\\partial x}{\\partial r} + \\frac{\\partial z}{\\partial y}\\frac{\\partial y}{\\partial r} = z_x \\cos\\theta + z_y \\sin\\theta.$ $\\frac{\\partial z}{\\partial \\theta} = \\frac{\\partial z}{\\partial x}\\frac{\\partial x}{\\partial \\theta} + \\frac{\\partial z}{\\partial y}\\frac{\\partial y}{\\partial \\theta} = z_x (-r\\sin\\theta) + z_y (r\\cos\\theta) = r(-z_x \\sin\\theta + z_y \\cos\\theta).$ 2. Divide by $r$ and square both expressions: $\\left( \\frac{\\partial z}{\\partial r} \\right)^2 = z_x^2 \\cos^2\\theta + 2 z_x z_y \\sin\\theta\\cos\\theta + z_y^2 \\sin^2\\theta.$ $\\frac{1}{r^2}\\left( \\frac{\\partial z}{\\partial \\theta} \\right)^2 = z_x^2 \\sin^2\\theta - 2 z_x z_y \\sin\\theta\\cos\\theta + z_y^2 \\cos^2\\theta.$ 3. Sum the squares: Cross-terms cancel identically: $\\left( \\frac{\\partial z}{\\partial r} \\right)^2 + \\frac{1}{r^2} \\left( \\frac{\\partial z}{\\partial \\theta} \\right)^2 = z_x^2(\\cos^2\\theta + \\sin^2\\theta) + z_y^2(\\sin^2\\theta + \\cos^2\\theta) = z_x^2 + z_y^2. \\quad \\blacksquare$",
+          "figure": {
+            "type": "circle",
+            "center": [
+              0,
+              0
+            ],
+            "radius": 6.0,
+            "center_label": "$O$",
+            "radius_label": "$r = 6$",
+            "sector": {
+              "start_deg": 0,
+              "end_deg": 60,
+              "label": "$60^\\circ$"
+            },
+            "chord": null,
+            "width": 210
+          }
+        },
+        {
+          "q": "Use the method of Lagrange multipliers to find the maximum volume of a rectangular box with faces parallel to the coordinate planes inscribed in the ellipsoid $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} + \\frac{z^2}{c^2} = 1$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Higher-Order Partials and Clairaut's Theorem",
+          "answer": "Let the corner of the box in the first octant be $(x, y, z)$ with $x, y, z > 0$. The total volume is $V(x,y,z) = (2x)(2y)(2z) = 8xyz$. The constraint is $g(x,y,z) = \\frac{x^2}{a^2} + \\frac{y^2}{b^2} + \\frac{z^2}{c^2} - 1 = 0$. 1. Set up the Lagrange multiplier system $abla V = \\lambda abla g$: $8yz = \\lambda \\frac{2x}{a^2}, \\qquad 8xz = \\lambda \\frac{2y}{b^2}, \\qquad 8xy = \\lambda \\frac{2z}{c^2}.$ 2. Multiply the three equations by $x, y, z$ respectively: $8xyz = \\lambda \\frac{2x^2}{a^2} = \\lambda \\frac{2y^2}{b^2} = \\lambda \\frac{2z^2}{c^2}.$ Since $V > 0$, $\\lambda eq 0$, which implies: $\\frac{x^2}{a^2} = \\frac{y^2}{b^2} = \\frac{z^2}{c^2}.$ 3. Substitute into the ellipsoid constraint: $3\\left( \\frac{x^2}{a^2} \\right) = 1 \\Rightarrow \\frac{x^2}{a^2} = \\frac{1}{3} \\Rightarrow x = \\frac{a}{\\sqrt{3}}, \\quad y = \\frac{b}{\\sqrt{3}}, \\quad z = \\frac{c}{\\sqrt{3}}.$ 4. Calculate the maximum volume: $V_{\\max} = 8xyz = 8\\left(\\frac{a}{\\sqrt{3}}\\right)\\left(\\frac{b}{\\sqrt{3}}\\right)\\left(\\frac{c}{\\sqrt{3}}\\right) = \\frac{8abc}{3\\sqrt{3}}.$",
+          "explanation": "Let the corner of the box in the first octant be $(x, y, z)$ with $x, y, z > 0$. The total volume is $V(x,y,z) = (2x)(2y)(2z) = 8xyz$. The constraint is $g(x,y,z) = \\frac{x^2}{a^2} + \\frac{y^2}{b^2} + \\frac{z^2}{c^2} - 1 = 0$. 1. Set up the Lagrange multiplier system $abla V = \\lambda abla g$: $8yz = \\lambda \\frac{2x}{a^2}, \\qquad 8xz = \\lambda \\frac{2y}{b^2}, \\qquad 8xy = \\lambda \\frac{2z}{c^2}.$ 2. Multiply the three equations by $x, y, z$ respectively: $8xyz = \\lambda \\frac{2x^2}{a^2} = \\lambda \\frac{2y^2}{b^2} = \\lambda \\frac{2z^2}{c^2}.$ Since $V > 0$, $\\lambda eq 0$, which implies: $\\frac{x^2}{a^2} = \\frac{y^2}{b^2} = \\frac{z^2}{c^2}.$ 3. Substitute into the ellipsoid constraint: $3\\left( \\frac{x^2}{a^2} \\right) = 1 \\Rightarrow \\frac{x^2}{a^2} = \\frac{1}{3} \\Rightarrow x = \\frac{a}{\\sqrt{3}}, \\quad y = \\frac{b}{\\sqrt{3}}, \\quad z = \\frac{c}{\\sqrt{3}}.$ 4. Calculate the maximum volume: $V_{\\max} = 8xyz = 8\\left(\\frac{a}{\\sqrt{3}}\\right)\\left(\\frac{b}{\\sqrt{3}}\\right)\\left(\\frac{c}{\\sqrt{3}}\\right) = \\frac{8abc}{3\\sqrt{3}}.$",
+          "figure": {
+            "type": "solid",
+            "solid": "cylinder",
+            "dims": [
+              4.0,
+              4.0,
+              9.0
+            ],
+            "labels": {
+              "r": "r",
+              "h": "h"
+            },
+            "width": 220
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Derive the Gaussian integral $I = \\int_{-\\infty}^\\infty e^{-x^2/2} dx = \\sqrt{2\\pi}$ from first principles by evaluating the double integral $I^2 = \\iint_{\\mathbb{R}^2} e^{-(x^2+y^2)/2} dA$ in polar coordinates.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Tangent Planes and Linear Approximations",
+          "answer": "1. Express $I^2$ as a double integral: By Fubini's theorem on independent variables: $I^2 = \\left( \\int_{-\\infty}^\\infty e^{-x^2/2}\\,dx \\right) \\left( \\int_{-\\infty}^\\infty e^{-y^2/2}\\,dy \\right) = \\int_{-\\infty}^\\infty \\int_{-\\infty}^\\infty e^{-(x^2+y^2)/2}\\,dx\\,dy.$ 2. Convert to polar coordinates: Let $x = r\\cos\\theta, y = r\\sin\\theta$, so $x^2+y^2 = r^2$ and $dA = r\\,dr\\,d\\theta$. The domain $\\mathbb{R}^2$ maps to $0 \\leq r < \\infty$ and $0 \\leq \\theta \\leq 2\\pi$: $I^2 = \\int_0^{2\\pi} \\int_0^\\infty e^{-r^2/2} r\\,dr\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\lim_{R \\rightarrow \\infty} \\int_0^R e^{-r^2/2} r\\,dr \\right).$ 3. Evaluate the radial integral: Let $u = r^2/2$, $du = r\\,dr$: $\\int_0^R e^{-r^2/2} r\\,dr = [ -e^{-r^2/2} ]_0^R = 1 - e^{-R^2/2}.$ Taking the limit as $R \\rightarrow \\infty$, this equals $1$. 4. Conclude: $I^2 = (2\\pi)(1) = 2\\pi \\Rightarrow I = \\sqrt{2\\pi}. \\quad \\blacksquare$",
+          "explanation": "1. Express $I^2$ as a double integral: By Fubini's theorem on independent variables: $I^2 = \\left( \\int_{-\\infty}^\\infty e^{-x^2/2}\\,dx \\right) \\left( \\int_{-\\infty}^\\infty e^{-y^2/2}\\,dy \\right) = \\int_{-\\infty}^\\infty \\int_{-\\infty}^\\infty e^{-(x^2+y^2)/2}\\,dx\\,dy.$ 2. Convert to polar coordinates: Let $x = r\\cos\\theta, y = r\\sin\\theta$, so $x^2+y^2 = r^2$ and $dA = r\\,dr\\,d\\theta$. The domain $\\mathbb{R}^2$ maps to $0 \\leq r < \\infty$ and $0 \\leq \\theta \\leq 2\\pi$: $I^2 = \\int_0^{2\\pi} \\int_0^\\infty e^{-r^2/2} r\\,dr\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\lim_{R \\rightarrow \\infty} \\int_0^R e^{-r^2/2} r\\,dr \\right).$ 3. Evaluate the radial integral: Let $u = r^2/2$, $du = r\\,dr$: $\\int_0^R e^{-r^2/2} r\\,dr = [ -e^{-r^2/2} ]_0^R = 1 - e^{-R^2/2}.$ Taking the limit as $R \\rightarrow \\infty$, this equals $1$. 4. Conclude: $I^2 = (2\\pi)(1) = 2\\pi \\Rightarrow I = \\sqrt{2\\pi}. \\quad \\blacksquare$",
+          "figure": {
+            "type": "circle",
+            "center": [
+              0,
+              0
+            ],
+            "radius": 6.0,
+            "center_label": "$O$",
+            "radius_label": "$r = 6$",
+            "sector": {
+              "start_deg": 0,
+              "end_deg": 60,
+              "label": "$60^\\circ$"
+            },
+            "chord": null,
+            "width": 210
+          }
+        },
+        {
+          "q": "Consider the region $R$ in the first quadrant bounded by the x-axis, the y-axis, and the line $y = -2x + 6$. We are interested in evaluating the double integral $\\iint_R f(x, y) \\, dA$ where $f(x, y) = x + y$. However, the integral is set up in polar coordinates as $\\int_{\\alpha}^{\\beta} \\int_{r_1(\\theta)}^{r_2(\\theta)} f(r \\cos \\theta, r \\sin \\theta) \\cdot r \\, dr \\, d\\theta$. If this integral is evaluated from $\\theta = 0$ to $\\theta = \\frac{\\pi}{2}$, and the inner integral bounds are $r_1(\\theta) = 0$ and $r_2(\\theta) = \\frac{6}{\\sin \\theta + 2 \\cos \\theta}$, and the outer integral is $\\int_{0}^{\\pi/2} \\int_{0}^{\\frac{6}{\\sin \\theta + 2 \\cos \\theta}} (r \\cos \\theta + r \\sin \\theta) \\cdot r \\, dr \\, d\\theta$, determine the value of $\\alpha$ and $\\beta$ that correspond to the description of region $R$ in polar coordinates for $0 \\leq \\theta \\leq \\frac{\\pi}{2}$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Domain, Range, and Level Curves",
+          "answer": "The region R is in the first quadrant, bounded by the x-axis ($y=0$), the y-axis ($x=0$), and the line $y = -2x + 6$. When $x=0$, $y=6$. When $y=0$, $2x=6$, so $x=3$. The vertices of the region are $(0,0), (3,0), (0,6)$. In polar coordinates, $x = r \\cos \\theta$ and $y = r \\sin \\theta$. The line $y = -2x + 6$ becomes $r \\sin \\theta = -2 r \\cos \\theta + 6$. Rearranging for $r$, we get $r(\\sin \\theta + 2 \\cos \\theta) = 6$, so $r = \\frac{6}{\\sin \\theta + 2 \\cos \\theta}$. The first quadrant is defined by $0 \\leq \\theta \\leq \\frac{\\pi}{2}$. The radial bounds for the integration in polar coordinates are from the origin $r=0$ to the boundary line. Since the region is entirely within the first quadrant, the angular bounds for the integration are $\\alpha = 0$ and $\\beta = \\frac{\\pi}{2}$. The given integral setup correctly reflects these bounds.",
+          "explanation": "The region R is in the first quadrant, bounded by the x-axis ($y=0$), the y-axis ($x=0$), and the line $y = -2x + 6$. When $x=0$, $y=6$. When $y=0$, $2x=6$, so $x=3$. The vertices of the region are $(0,0), (3,0), (0,6)$. In polar coordinates, $x = r \\cos \\theta$ and $y = r \\sin \\theta$. The line $y = -2x + 6$ becomes $r \\sin \\theta = -2 r \\cos \\theta + 6$. Rearranging for $r$, we get $r(\\sin \\theta + 2 \\cos \\theta) = 6$, so $r = \\frac{6}{\\sin \\theta + 2 \\cos \\theta}$. The first quadrant is defined by $0 \\leq \\theta \\leq \\frac{\\pi}{2}$. The radial bounds for the integration in polar coordinates are from the origin $r=0$ to the boundary line. Since the region is entirely within the first quadrant, the angular bounds for the integration are $\\alpha = 0$ and $\\beta = \\frac{\\pi}{2}$. The given integral setup correctly reflects these bounds.",
+          "figure": {
+            "type": "triangle",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                0,
+                6
+              ]
+            ],
+            "labels": [
+              "O",
+              "A",
+              "B"
+            ],
+            "side_labels": [
+              "3",
+              "6",
+              "x"
+            ],
+            "fill": true,
+            "right_angle_at": null,
+            "width": 220
+          }
+        },
+        {
+          "q": "Evaluate the non-elementary integral $\\int_0^1 \\int_y^1 e^{x^2} dx\\,dy$ by reversing the order of integration.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "First-Order Partial Derivatives",
+          "answer": "1. Sketch the region of integration $D$: The given bounds are $y \\leq x \\leq 1$ for $0 \\leq y \\leq 1$. This describes the triangle bounded by the lines $y = 0$, $x = 1$, and $y = x$. 2. Reverse the order to $dy\\,dx$: In terms of vertical cross-sections, $x$ ranges from $0$ to $1$, and for each fixed $x$, $y$ ranges from $0$ up to the line $y = x$: $\\int_0^1 \\int_0^x e^{x^2} dy\\,dx.$ 3. Evaluate the inner integral: $\\int_0^x e^{x^2} dy = e^{x^2} [ y ]_0^x = x e^{x^2}.$ 4. Evaluate the outer integral: Substitute $u = x^2$, $du = 2x\\,dx$: $\\int_0^1 x e^{x^2} dx = \\frac{1}{2} [ e^{x^2} ]_0^1 = \\frac{1}{2}(e^1 - e^0) = \\frac{e - 1}{2}.$",
+          "explanation": "1. Sketch the region of integration $D$: The given bounds are $y \\leq x \\leq 1$ for $0 \\leq y \\leq 1$. This describes the triangle bounded by the lines $y = 0$, $x = 1$, and $y = x$. 2. Reverse the order to $dy\\,dx$: In terms of vertical cross-sections, $x$ ranges from $0$ to $1$, and for each fixed $x$, $y$ ranges from $0$ up to the line $y = x$: $\\int_0^1 \\int_0^x e^{x^2} dy\\,dx.$ 3. Evaluate the inner integral: $\\int_0^x e^{x^2} dy = e^{x^2} [ y ]_0^x = x e^{x^2}.$ 4. Evaluate the outer integral: Substitute $u = x^2$, $du = 2x\\,dx$: $\\int_0^1 x e^{x^2} dx = \\frac{1}{2} [ e^{x^2} ]_0^1 = \\frac{1}{2}(e^1 - e^0) = \\frac{e - 1}{2}.$",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4 - x*x",
+              "x + 2"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [],
+            "width": 230
+          }
+        },
+        {
+          "q": "Use Stokes' Theorem to evaluate $\\oint_C \\mathbf{F} \\cdot d\\mathbf{r}$, where $\\mathbf{F} = \\langle -y^3, x^3, -z^3 \\rangle$ and $C$ is the intersection of the cylinder $x^2+y^2=1$ and the plane $z = 1$, oriented counterclockwise when viewed from above. Verify surface independence by comparing the flux of $abla \\times \\mathbf{F}$ through the flat disk $S_1: x^2+y^2 \\leq 1, z=1$ and the paraboloid cap $S_2: z = 2 - (x^2+y^2)$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Higher-Order Partials and Clairaut's Theorem",
+          "answer": "1. Compute $abla \\times \\mathbf{F}$: $abla \\times \\mathbf{F} = \\left|\\mathbf{i}, \\mathbf{j}, \\mathbf{k} ; \\partial_x, \\partial_y, \\partial_z ; -y^3, x^3, -z^3\\right| = \\langle 0 - 0, \\; 0 - 0, \\; 3x^2 - (-3y^2) \\rangle = \\langle 0, \\; 0, \\; 3(x^2+y^2) \\rangle.$ 2. Flux through flat disk $S_1$ ($z = 1$, $\\mathbf{n} = \\mathbf{k}$): On $S_1$, $d\\mathbf{S} = \\mathbf{k}\\,dA$. $\\iint_{S_1} ( abla \\times \\mathbf{F}) \\cdot d\\mathbf{S} = \\iint_D 3(x^2+y^2)\\,dA.$ In polar coordinates: $\\int_0^{2\\pi} \\!\\! \\int_0^1 3r^2 \\cdot r\\,dr\\,d\\theta = (2\\pi) \\left( 3 [ \\frac{r^4}{4} ]_0^1 \\right) = 2\\pi \\left( \\frac{3}{4} \\right) = \\frac{3\\pi}{2}.$ 3. Flux through paraboloid $S_2$ ($z = g(x,y) = 2 - x^2 - y^2$): The upward normal is $\\mathbf{n}\\,dS = \\langle -g_x, -g_y, 1 \\rangle\\,dA = \\langle 2x, 2y, 1 \\rangle\\,dA$. $( abla \\times \\mathbf{F}) \\cdot d\\mathbf{S} = \\langle 0, 0, 3(x^2+y^2) \\rangle \\cdot \\langle 2x, 2y, 1 \\rangle\\,dA = 3(x^2+y^2)\\,dA.$ Since $S_2$ projects onto the exact same unit disk $D$, this yields identically $\\frac{3\\pi}{2}$. Both surfaces give the exact same circulation $\\frac{3\\pi}{2}$, rigorously illustrating the surface independence property of Stokes' Theorem. ✓",
+          "explanation": "1. Compute $abla \\times \\mathbf{F}$: $abla \\times \\mathbf{F} = \\left|\\mathbf{i}, \\mathbf{j}, \\mathbf{k} ; \\partial_x, \\partial_y, \\partial_z ; -y^3, x^3, -z^3\\right| = \\langle 0 - 0, \\; 0 - 0, \\; 3x^2 - (-3y^2) \\rangle = \\langle 0, \\; 0, \\; 3(x^2+y^2) \\rangle.$ 2. Flux through flat disk $S_1$ ($z = 1$, $\\mathbf{n} = \\mathbf{k}$): On $S_1$, $d\\mathbf{S} = \\mathbf{k}\\,dA$. $\\iint_{S_1} ( abla \\times \\mathbf{F}) \\cdot d\\mathbf{S} = \\iint_D 3(x^2+y^2)\\,dA.$ In polar coordinates: $\\int_0^{2\\pi} \\!\\! \\int_0^1 3r^2 \\cdot r\\,dr\\,d\\theta = (2\\pi) \\left( 3 [ \\frac{r^4}{4} ]_0^1 \\right) = 2\\pi \\left( \\frac{3}{4} \\right) = \\frac{3\\pi}{2}.$ 3. Flux through paraboloid $S_2$ ($z = g(x,y) = 2 - x^2 - y^2$): The upward normal is $\\mathbf{n}\\,dS = \\langle -g_x, -g_y, 1 \\rangle\\,dA = \\langle 2x, 2y, 1 \\rangle\\,dA$. $( abla \\times \\mathbf{F}) \\cdot d\\mathbf{S} = \\langle 0, 0, 3(x^2+y^2) \\rangle \\cdot \\langle 2x, 2y, 1 \\rangle\\,dA = 3(x^2+y^2)\\,dA.$ Since $S_2$ projects onto the exact same unit disk $D$, this yields identically $\\frac{3\\pi}{2}$. Both surfaces give the exact same circulation $\\frac{3\\pi}{2}$, rigorously illustrating the surface independence property of Stokes' Theorem. ✓"
+        },
+        {
+          "q": "A particle's position in three-dimensional space is given by the vector function $\\mathbf{r}(t) = \\langle x(t), y(t), z(t) \\rangle$, where $t$ represents time. The velocity of the particle is given by $\\mathbf{v}(t) = \\mathbf{r}'(t)$. Suppose the velocity components are related by the partial differential equations: $\\frac{\\partial v_x}{\\partial t} = -2x(t) + 3y(t)$ and $\\frac{\\partial v_y}{\\partial t} = x(t) - 4y(t)$. If at time $t=0$, the particle is at the origin $(0,0,0)$ and its velocity is $\\mathbf{v}(0) = \\langle 5, -2, 0 \\rangle$, determine the value of $\\frac{\\partial^2 v_x}{\\partial t^2}$ at $t=0$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Tangent Planes and Linear Approximations",
+          "answer": "We are given the partial differential equations relating the velocity components: $\\frac{\\partial v_x}{\\partial t} = -2x(t) + 3y(t)$ and $\\frac{\\partial v_y}{\\partial t} = x(t) - 4y(t)$. To find $\\frac{\\partial^2 v_x}{\\partial t^2}$, we differentiate the first equation with respect to $t$: $\\frac{\\partial^2 v_x}{\\partial t^2} = \\frac{\\partial}{\\partial t}(-2x(t) + 3y(t))$. Using the chain rule, this becomes $\\frac{\\partial^2 v_x}{\\partial t^2} = -2\\frac{\\partial x}{\\partial t} + 3\\frac{\\partial y}{\\partial t}$. Since $\\mathbf{v}(t) = \\langle v_x(t), v_y(t), v_z(t) \\rangle = \\langle \\frac{\\partial x}{\\partial t}, \\frac{\\partial y}{\\partial t}, \\frac{\\partial z}{\\partial t} \\rangle$, we have $\\frac{\\partial x}{\\partial t} = v_x(t)$ and $\\frac{\\partial y}{\\partial t} = v_y(t)$. Therefore, $\\frac{\\partial^2 v_x}{\\partial t^2} = -2v_x(t) + 3v_y(t)$. We are given that at $t=0$, $\\mathbf{v}(0) = \\langle 5, -2, 0 \\rangle$, so $v_x(0) = 5$ and $v_y(0) = -2$. Substituting these values, we get: $\\frac{\\partial^2 v_x}{\\partial t^2} |_{t=0} = -2(5) + 3(-2) = -10 - 6 = -16$.",
+          "explanation": "We are given the partial differential equations relating the velocity components: $\\frac{\\partial v_x}{\\partial t} = -2x(t) + 3y(t)$ and $\\frac{\\partial v_y}{\\partial t} = x(t) - 4y(t)$. To find $\\frac{\\partial^2 v_x}{\\partial t^2}$, we differentiate the first equation with respect to $t$: $\\frac{\\partial^2 v_x}{\\partial t^2} = \\frac{\\partial}{\\partial t}(-2x(t) + 3y(t))$. Using the chain rule, this becomes $\\frac{\\partial^2 v_x}{\\partial t^2} = -2\\frac{\\partial x}{\\partial t} + 3\\frac{\\partial y}{\\partial t}$. Since $\\mathbf{v}(t) = \\langle v_x(t), v_y(t), v_z(t) \\rangle = \\langle \\frac{\\partial x}{\\partial t}, \\frac{\\partial y}{\\partial t}, \\frac{\\partial z}{\\partial t} \\rangle$, we have $\\frac{\\partial x}{\\partial t} = v_x(t)$ and $\\frac{\\partial y}{\\partial t} = v_y(t)$. Therefore, $\\frac{\\partial^2 v_x}{\\partial t^2} = -2v_x(t) + 3v_y(t)$. We are given that at $t=0$, $\\mathbf{v}(0) = \\langle 5, -2, 0 \\rangle$, so $v_x(0) = 5$ and $v_y(0) = -2$. Substituting these values, we get: $\\frac{\\partial^2 v_x}{\\partial t^2} |_{t=0} = -2(5) + 3(-2) = -10 - 6 = -16$."
+        },
+        {
+          "q": "Use the Divergence Theorem to calculate the outward flux of $\\mathbf{F} = \\langle x^3 + y\\sin z, \\; y^3 + z\\cos x, \\; z^3 + xy \\rangle$ across the closed boundary surface of the solid cylinder $E: x^2 + y^2 \\leq a^2, \\; 0 \\leq z \\leq h$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Domain, Range, and Level Curves",
+          "answer": "1. Compute the divergence $abla \\cdot \\mathbf{F}$: $abla \\cdot \\mathbf{F} = \\frac{\\partial}{\\partial x}(x^3 + y\\sin z) + \\frac{\\partial}{\\partial y}(y^3 + z\\cos x) + \\frac{\\partial}{\\partial z}(z^3 + xy) = 3x^2 + 3y^2 + 3z^2 = 3(x^2 + y^2 + z^2).$ Notice that all cross-coupling transcendental terms vanish identically. 2. Apply the Divergence Theorem: $\\iint_{\\partial E} \\mathbf{F}\\cdot d\\mathbf{S} = \\iiint_E 3(x^2 + y^2 + z^2)\\,dV.$ 3. Convert to cylindrical coordinates: In $E$, $x^2+y^2 = r^2$, $0 \\leq r \\leq a$, $0 \\leq \\theta \\leq 2\\pi$, $0 \\leq z \\leq h$, and $dV = r\\,dz\\,dr\\,d\\theta$: $= 3 \\int_0^{2\\pi} \\!\\! \\int_0^a \\!\\! \\int_0^h (r^2 + z^2) r\\,dz\\,dr\\,d\\theta = 6\\pi \\int_0^a \\left[ r^3 h + r \\frac{h^3}{3} \\right] dr.$ $= 6\\pi \\left( h [ \\frac{r^4}{4} ]_0^a + \\frac{h^3}{3} [ \\frac{r^2}{2} ]_0^a \\right) = 6\\pi \\left( \\frac{h a^4}{4} + \\frac{h^3 a^2}{6} \\right) = \\frac{3\\pi h a^4}{2} + \\pi h^3 a^2 = \\pi h a^2 \\left( \\frac{3a^2}{2} + h^2 \\right).$",
+          "explanation": "1. Compute the divergence $abla \\cdot \\mathbf{F}$: $abla \\cdot \\mathbf{F} = \\frac{\\partial}{\\partial x}(x^3 + y\\sin z) + \\frac{\\partial}{\\partial y}(y^3 + z\\cos x) + \\frac{\\partial}{\\partial z}(z^3 + xy) = 3x^2 + 3y^2 + 3z^2 = 3(x^2 + y^2 + z^2).$ Notice that all cross-coupling transcendental terms vanish identically. 2. Apply the Divergence Theorem: $\\iint_{\\partial E} \\mathbf{F}\\cdot d\\mathbf{S} = \\iiint_E 3(x^2 + y^2 + z^2)\\,dV.$ 3. Convert to cylindrical coordinates: In $E$, $x^2+y^2 = r^2$, $0 \\leq r \\leq a$, $0 \\leq \\theta \\leq 2\\pi$, $0 \\leq z \\leq h$, and $dV = r\\,dz\\,dr\\,d\\theta$: $= 3 \\int_0^{2\\pi} \\!\\! \\int_0^a \\!\\! \\int_0^h (r^2 + z^2) r\\,dz\\,dr\\,d\\theta = 6\\pi \\int_0^a \\left[ r^3 h + r \\frac{h^3}{3} \\right] dr.$ $= 6\\pi \\left( h [ \\frac{r^4}{4} ]_0^a + \\frac{h^3}{3} [ \\frac{r^2}{2} ]_0^a \\right) = 6\\pi \\left( \\frac{h a^4}{4} + \\frac{h^3 a^2}{6} \\right) = \\frac{3\\pi h a^4}{2} + \\pi h^3 a^2 = \\pi h a^2 \\left( \\frac{3a^2}{2} + h^2 \\right).$"
+        },
+        {
+          "q": "Use the Green's Theorem line integral formula for area, $A = \\frac{1}{2}\\oint_C (x\\,dy - y\\,dx)$, to derive the area enclosed by the hypocycloid (astroid) $\\mathbf{r}(t) = \\langle a\\cos^3 t, \\; a\\sin^3 t \\rangle$ for $0 \\leq t \\leq 2\\pi$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "First-Order Partial Derivatives",
+          "answer": "1. Compute the differentials: $dx = -3a\\cos^2 t \\sin t\\,dt, \\qquad dy = 3a\\sin^2 t \\cos t\\,dt.$ 2. Evaluate $x\\,dy - y\\,dx$: $x\\,dy = (a\\cos^3 t)(3a\\sin^2 t \\cos t\\,dt) = 3a^2\\cos^4 t \\sin^2 t\\,dt.$ $y\\,dx = (a\\sin^3 t)(-3a\\cos^2 t \\sin t\\,dt) = -3a^2\\sin^4 t \\cos^2 t\\,dt.$ $x\\,dy - y\\,dx = 3a^2\\cos^2 t \\sin^2 t (\\cos^2 t + \\sin^2 t)\\,dt = 3a^2 \\cos^2 t \\sin^2 t\\,dt.$ 3. Use trigonometric identities: Since $\\cos t \\sin t = \\frac{1}{2}\\sin(2t)$: $x\\,dy - y\\,dx = \\frac{3a^2}{4} \\sin^2(2t)\\,dt = \\frac{3a^2}{4} \\left( \\frac{1 - \\cos(4t)}{2} \\right) dt = \\frac{3a^2}{8}(1 - \\cos(4t))\\,dt.$ 4. Integrate around the closed loop: $\\mathrm{Area} = \\frac{1}{2} \\int_0^{2\\pi} \\frac{3a^2}{8}(1 - \\cos(4t))\\,dt = \\frac{3a^2}{16} [ t - \\frac{\\sin(4t)}{4} ]_0^{2\\pi} = \\frac{3a^2}{16}(2\\pi) = \\frac{3\\pi a^2}{8}.$",
+          "explanation": "1. Compute the differentials: $dx = -3a\\cos^2 t \\sin t\\,dt, \\qquad dy = 3a\\sin^2 t \\cos t\\,dt.$ 2. Evaluate $x\\,dy - y\\,dx$: $x\\,dy = (a\\cos^3 t)(3a\\sin^2 t \\cos t\\,dt) = 3a^2\\cos^4 t \\sin^2 t\\,dt.$ $y\\,dx = (a\\sin^3 t)(-3a\\cos^2 t \\sin t\\,dt) = -3a^2\\sin^4 t \\cos^2 t\\,dt.$ $x\\,dy - y\\,dx = 3a^2\\cos^2 t \\sin^2 t (\\cos^2 t + \\sin^2 t)\\,dt = 3a^2 \\cos^2 t \\sin^2 t\\,dt.$ 3. Use trigonometric identities: Since $\\cos t \\sin t = \\frac{1}{2}\\sin(2t)$: $x\\,dy - y\\,dx = \\frac{3a^2}{4} \\sin^2(2t)\\,dt = \\frac{3a^2}{4} \\left( \\frac{1 - \\cos(4t)}{2} \\right) dt = \\frac{3a^2}{8}(1 - \\cos(4t))\\,dt.$ 4. Integrate around the closed loop: $\\mathrm{Area} = \\frac{1}{2} \\int_0^{2\\pi} \\frac{3a^2}{8}(1 - \\cos(4t))\\,dt = \\frac{3a^2}{16} [ t - \\frac{\\sin(4t)}{4} ]_0^{2\\pi} = \\frac{3a^2}{16}(2\\pi) = \\frac{3\\pi a^2}{8}.$"
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "Let the function $f(x,y)$ be defined as $f(x,y) = 2x^2 - 3y^2$. Calculate the partial derivative of $f$ with respect to $y$ at the point $(2, 3)$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Higher-Order Partials and Clairaut's Theorem",
+          "cross_lesson": "4.01 Double Integrals",
+          "answer": "The function is given by $f(x,y) = 2x^2 - 3y^2$. To find the partial derivative of $f$ with respect to $y$, denoted as $f_y$, we treat $x$ as a constant and differentiate with respect to $y$. $f_y(x,y) = \\frac{\\partial}{\\partial y}(2x^2 - 3y^2)$ Differentiating the term $2x^2$ with respect to $y$ yields 0, as it is a constant with respect to $y$. Differentiating the term $-3y^2$ with respect to $y$ yields $-3 \\cdot 2y = -6y$. Therefore, the partial derivative of $f$ with respect to $y$ is: $f_y(x,y) = -6y$ Now we need to evaluate this partial derivative at the point $(2, 3)$. We substitute $y=3$ into the expression for $f_y(x,y)$: $f_y(2,3) = -6(3)$ $f_y(2,3) = -18$ Thus, the partial derivative of $f$ with respect to $y$ at the point $(2, 3)$ is -18. Final Answer: -12",
+          "explanation": "The function is given by $f(x,y) = 2x^2 - 3y^2$. To find the partial derivative of $f$ with respect to $y$, denoted as $f_y$, we treat $x$ as a constant and differentiate with respect to $y$. $f_y(x,y) = \\frac{\\partial}{\\partial y}(2x^2 - 3y^2)$ Differentiating the term $2x^2$ with respect to $y$ yields 0, as it is a constant with respect to $y$. Differentiating the term $-3y^2$ with respect to $y$ yields $-3 \\cdot 2y = -6y$. Therefore, the partial derivative of $f$ with respect to $y$ is: $f_y(x,y) = -6y$ Now we need to evaluate this partial derivative at the point $(2, 3)$. We substitute $y=3$ into the expression for $f_y(x,y)$: $f_y(2,3) = -6(3)$ $f_y(2,3) = -18$ Thus, the partial derivative of $f$ with respect to $y$ at the point $(2, 3)$ is -18. Final Answer: -12"
+        },
+        {
+          "q": "Consider the vector field $\\mathbf{F}(x, y, z) = \\langle x, y, z \\rangle$. Let $S$ be the closed surface of the unit cube defined by $0 \\leq x \\leq 1, 0 \\leq y \\leq 1, 0 \\leq z \\leq 1$, oriented outwards. According to the Divergence Theorem, the flux of $\\mathbf{F}$ through $S$ is equal to the triple integral of the divergence of $\\mathbf{F}$ over the volume $V$ enclosed by $S$. Calculate this flux by evaluating $\\iiint_V abla \\cdot \\mathbf{F} \\, dV$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Tangent Planes and Linear Approximations",
+          "cross_lesson": "2.01 The Chain Rule & Directional Derivatives",
+          "answer": "The vector field is $\\mathbf{F}(x, y, z) = \\langle x, y, z \\rangle$. The divergence of $\\mathbf{F}$ is $abla \\cdot \\mathbf{F} = \\frac{\\partial}{\\partial x}(x) + \\frac{\\partial}{\\partial y}(y) + \\frac{\\partial}{\\partial z}(z) = 1 + 1 + 1 = 3$. The volume $V$ enclosed by the unit cube is given by $0 \\leq x \\leq 1, 0 \\leq y \\leq 1, 0 \\leq z \\leq 1$. The volume of this cube is $1 \\times 1 \\times 1 = 1$. Therefore, the flux is given by the triple integral: $\\iiint_V abla \\cdot \\mathbf{F} \\, dV = \\iiint_V 3 \\, dV$. Since the integrand is a constant, this is equal to $3 \\times \\mathrm{Volume}(V) = 3 \\times 1 = 3$.",
+          "explanation": "The vector field is $\\mathbf{F}(x, y, z) = \\langle x, y, z \\rangle$. The divergence of $\\mathbf{F}$ is $abla \\cdot \\mathbf{F} = \\frac{\\partial}{\\partial x}(x) + \\frac{\\partial}{\\partial y}(y) + \\frac{\\partial}{\\partial z}(z) = 1 + 1 + 1 = 3$. The volume $V$ enclosed by the unit cube is given by $0 \\leq x \\leq 1, 0 \\leq y \\leq 1, 0 \\leq z \\leq 1$. The volume of this cube is $1 \\times 1 \\times 1 = 1$. Therefore, the flux is given by the triple integral: $\\iiint_V abla \\cdot \\mathbf{F} \\, dV = \\iiint_V 3 \\, dV$. Since the integrand is a constant, this is equal to $3 \\times \\mathrm{Volume}(V) = 3 \\times 1 = 3$."
+        },
+        {
+          "q": "Use Green's Theorem to evaluate $\\oint_C (y^2 - 7y)\\,dx + (2xy + 2x)\\,dy$, where $C$ is the positively oriented boundary of the region $D$ enclosed between the parabolas $y = x^2$ and $x = y^2$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Domain, Range, and Level Curves",
+          "cross_lesson": "3.01 Optimization: Critical Points & Lagrange Multipliers",
+          "answer": "1. Compute the 2D curl: With $P = y^2 - 7y$ and $Q = 2xy + 2x$: $\\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y} = (2y + 2) - (2y - 7) = 2 - (-7) = 9.$ 2. Intersections of boundary curves: $y = x^2$ and $x = y^2 \\Rightarrow x = x^4 \\Rightarrow x = 0, 1$. Region $D$ is described by $0 \\leq x \\leq 1$ and $x^2 \\leq y \\leq \\sqrt{x}$. 3. Apply Green's Theorem: $\\oint_C P\\,dx + Q\\,dy = \\iint_D 9\\,dA = 9 \\int_0^1 (\\sqrt{x} - x^2)\\,dx = 9 \\left[ \\frac{2}{3}x^{3/2} - \\frac{x^3}{3} \\right]_0^1 = 9\\left( \\frac{2}{3} - \\frac{1}{3} \\right) = 9\\left( \\frac{1}{3} \\right) = 3.$",
+          "explanation": "1. Compute the 2D curl: With $P = y^2 - 7y$ and $Q = 2xy + 2x$: $\\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y} = (2y + 2) - (2y - 7) = 2 - (-7) = 9.$ 2. Intersections of boundary curves: $y = x^2$ and $x = y^2 \\Rightarrow x = x^4 \\Rightarrow x = 0, 1$. Region $D$ is described by $0 \\leq x \\leq 1$ and $x^2 \\leq y \\leq \\sqrt{x}$. 3. Apply Green's Theorem: $\\oint_C P\\,dx + Q\\,dy = \\iint_D 9\\,dA = 9 \\int_0^1 (\\sqrt{x} - x^2)\\,dx = 9 \\left[ \\frac{2}{3}x^{3/2} - \\frac{x^3}{3} \\right]_0^1 = 9\\left( \\frac{2}{3} - \\frac{1}{3} \\right) = 9\\left( \\frac{1}{3} \\right) = 3.$"
+        },
+        {
+          "q": "Use Green's Theorem to evaluate the circulation $\\oint_C (3y - e^{\\sin x})\\,dx + (7x + \\sqrt{y^4+1})\\,dy$, where $C$ is the circle $x^2 + y^2 = 9$ oriented counterclockwise.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "First-Order Partial Derivatives",
+          "cross_lesson": "4.01 Double Integrals",
+          "answer": "1. Identify components and compute 2D curl: With $P = 3y - e^{\\sin x}$ and $Q = 7x + \\sqrt{y^4+1}$: $\\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y} = \\frac{\\partial}{\\partial x}\\left( 7x + \\sqrt{y^4+1} \\right) - \\frac{\\partial}{\\partial y}\\left( 3y - e^{\\sin x} \\right) = 7 - 3 = 4.$ The non-elementary transcendental terms vanish completely. 2. Apply Green's Theorem: The region $D$ is the circular disk of radius $R = 3$: $\\oint_C P\\,dx + Q\\,dy = \\iint_D 4\\,dA = 4 \\cdot \\mathrm{Area}(D) = 4 \\cdot \\pi(3^2) = 36\\pi.$",
+          "explanation": "1. Identify components and compute 2D curl: With $P = 3y - e^{\\sin x}$ and $Q = 7x + \\sqrt{y^4+1}$: $\\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y} = \\frac{\\partial}{\\partial x}\\left( 7x + \\sqrt{y^4+1} \\right) - \\frac{\\partial}{\\partial y}\\left( 3y - e^{\\sin x} \\right) = 7 - 3 = 4.$ The non-elementary transcendental terms vanish completely. 2. Apply Green's Theorem: The region $D$ is the circular disk of radius $R = 3$: $\\oint_C P\\,dx + Q\\,dy = \\iint_D 4\\,dA = 4 \\cdot \\mathrm{Area}(D) = 4 \\cdot \\pi(3^2) = 36\\pi.$"
+        },
+        {
+          "q": "Consider the function $f(x,y) = 3x^2 - 5y^3$. Find the partial derivative of $f$ with respect to $y$ evaluated at the point $(2, -1)$, i.e., $f_y(2,-1)$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Higher-Order Partials and Clairaut's Theorem",
+          "cross_lesson": "2.01 The Chain Rule & Directional Derivatives",
+          "answer": "To find the partial derivative of $f(x,y) = 3x^2 - 5y^3$ with respect to $y$, we treat $x$ as a constant and differentiate with respect to $y$. $f_y(x,y) = \\frac{\\partial}{\\partial y}(3x^2 - 5y^3)$ Since $3x^2$ is a constant with respect to $y$, its derivative is 0. The derivative of $-5y^3$ with respect to $y$ is $-5 \\cdot 3y^{3-1} = -15y^2$. Therefore, $f_y(x,y) = -15y^2$. Now, we evaluate $f_y(x,y)$ at the point $(2, -1)$. $f_y(2,-1) = -15(-1)^2$ $f_y(2,-1) = -15(1)$ $f_y(2,-1) = -15$.",
+          "explanation": "To find the partial derivative of $f(x,y) = 3x^2 - 5y^3$ with respect to $y$, we treat $x$ as a constant and differentiate with respect to $y$. $f_y(x,y) = \\frac{\\partial}{\\partial y}(3x^2 - 5y^3)$ Since $3x^2$ is a constant with respect to $y$, its derivative is 0. The derivative of $-5y^3$ with respect to $y$ is $-5 \\cdot 3y^{3-1} = -15y^2$. Therefore, $f_y(x,y) = -15y^2$. Now, we evaluate $f_y(x,y)$ at the point $(2, -1)$. $f_y(2,-1) = -15(-1)^2$ $f_y(2,-1) = -15(1)$ $f_y(2,-1) = -15$."
+        },
+        {
+          "q": "Find the flux $\\iint_S\\mathbf{F}\\cdot d\\mathbf{S}$ of $\\mathbf{F}=\\langle x, y, z \\rangle$ across the part of the plane $x + y + z = 3$ in the first octant, with upward normal.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Tangent Planes and Linear Approximations",
+          "cross_lesson": "3.01 Optimization: Critical Points & Lagrange Multipliers",
+          "answer": "Write $z = - x - y + 3$; $d\\mathbf{S}=\\langle1,1,1\\rangle\\,dA$. The flux is $\\iint_D\\mathbf{F}\\cdot\\langle1,1,1\\rangle\\,dA=\\frac{27}{2}$. Final Answer: $\\frac{27}{2}$ Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.",
+          "explanation": "Write $z = - x - y + 3$; $d\\mathbf{S}=\\langle1,1,1\\rangle\\,dA$. The flux is $\\iint_D\\mathbf{F}\\cdot\\langle1,1,1\\rangle\\,dA=\\frac{27}{2}$. Final Answer: $\\frac{27}{2}$ Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
           "q": "Find the domain of the function $f(x, y) = \\ln(9 - x^2 - y^2)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Domain, Range, and Level Curves",
           "choices": [
             "The interior of the circle $x^2 + y^2 < 9$",
             "The exterior of the circle $x^2 + y^2 > 9$",
@@ -16,10 +334,14 @@
             "All of $\\mathbb{R}^2$"
           ],
           "correct": 0,
-          "answer": "The argument of the natural logarithm must be strictly positive: $9 - x^2 - y^2 > 0 \\Leftrightarrow x^2 + y^2 < 9$, which is the open interior of a circle of radius 3 centered at the origin."
+          "answer": "The argument of the natural logarithm must be strictly positive: $9 - x^2 - y^2 > 0 \\Leftrightarrow x^2 + y^2 < 9$, which is the open interior of a circle of radius 3 centered at the origin.",
+          "explanation": "The argument of the natural logarithm must be strictly positive: $9 - x^2 - y^2 > 0 \\Leftrightarrow x^2 + y^2 < 9$, which is the open interior of a circle of radius 3 centered at the origin."
         },
         {
           "q": "What geometric curves are the level curves of $z = x^2 + y^2$ for $c > 0$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Domain, Range, and Level Curves",
           "choices": [
             "Concentric circles centered at $(0, 0)$",
             "Lines of slope 1",
@@ -27,10 +349,14 @@
             "Hyperbolas"
           ],
           "correct": 0,
-          "answer": "Setting $z = c \\Rightarrow x^2 + y^2 = c$. For $c > 0$, this is a family of concentric circles of radius $\\sqrt{c}$."
+          "answer": "Setting $z = c \\Rightarrow x^2 + y^2 = c$. For $c > 0$, this is a family of concentric circles of radius $\\sqrt{c}$.",
+          "explanation": "Setting $z = c \\Rightarrow x^2 + y^2 = c$. For $c > 0$, this is a family of concentric circles of radius $\\sqrt{c}$."
         },
         {
           "q": "What is the range of $g(x, y) = \\sqrt{16 - x^2 - y^2}$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Domain, Range, and Level Curves",
           "choices": [
             "$[0, 4]$",
             "$[0, 16]$",
@@ -38,15 +364,14 @@
             "$[0, \\infty)$"
           ],
           "correct": 0,
-          "answer": "When $x^2 + y^2 = 0$, $g(0, 0) = \\sqrt{16} = 4$. On the boundary $x^2 + y^2 = 16$, $g = 0$. Since square roots are non-negative, the range is $[0, 4]$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: First-Order Partial Derivatives",
-      "questions": [
+          "answer": "When $x^2 + y^2 = 0$, $g(0, 0) = \\sqrt{16} = 4$. On the boundary $x^2 + y^2 = 16$, $g = 0$. Since square roots are non-negative, the range is $[0, 4]$.",
+          "explanation": "When $x^2 + y^2 = 0$, $g(0, 0) = \\sqrt{16} = 4$. On the boundary $x^2 + y^2 = 16$, $g = 0$. Since square roots are non-negative, the range is $[0, 4]$."
+        },
         {
           "q": "Find the partial derivative $f_x(x, y)$ for $f(x, y) = 3x^3 y^2 - 5x^2 + 4y^3$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "First-Order Partial Derivatives",
           "choices": [
             "$9x^2 y^2 - 10x$",
             "$6x^3 y + 12y^2$",
@@ -54,10 +379,14 @@
             "$3x^2 y^2 - 10x$"
           ],
           "correct": 0,
-          "answer": "Treat $y$ as a constant: $\\frac{\\partial}{\\partial x}[3x^3 y^2] = 3(3x^2)y^2 = 9x^2 y^2$; $\\frac{\\partial}{\\partial x}[-5x^2] = -10x$; $\\frac{\\partial}{\\partial x}[4y^3] = 0$. Result: $9x^2 y^2 - 10x$."
+          "answer": "Treat $y$ as a constant: $\\frac{\\partial}{\\partial x}[3x^3 y^2] = 3(3x^2)y^2 = 9x^2 y^2$; $\\frac{\\partial}{\\partial x}[-5x^2] = -10x$; $\\frac{\\partial}{\\partial x}[4y^3] = 0$. Result: $9x^2 y^2 - 10x$.",
+          "explanation": "Treat $y$ as a constant: $\\frac{\\partial}{\\partial x}[3x^3 y^2] = 3(3x^2)y^2 = 9x^2 y^2$; $\\frac{\\partial}{\\partial x}[-5x^2] = -10x$; $\\frac{\\partial}{\\partial x}[4y^3] = 0$. Result: $9x^2 y^2 - 10x$."
         },
         {
           "q": "Find $f_y(x, y)$ for $f(x, y) = e^{2x} \\sin(3y)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "First-Order Partial Derivatives",
           "choices": [
             "$3e^{2x} \\cos(3y)$",
             "$2e^{2x} \\sin(3y)$",
@@ -65,10 +394,14 @@
             "$-3e^{2x} \\cos(3y)$"
           ],
           "correct": 0,
-          "answer": "Treat $x$ as constant: $\\frac{\\partial}{\\partial y}[e^{2x} \\sin(3y)] = e^{2x} \\cdot 3\\cos(3y) = 3e^{2x}\\cos(3y)$."
+          "answer": "Treat $x$ as constant: $\\frac{\\partial}{\\partial y}[e^{2x} \\sin(3y)] = e^{2x} \\cdot 3\\cos(3y) = 3e^{2x}\\cos(3y)$.",
+          "explanation": "Treat $x$ as constant: $\\frac{\\partial}{\\partial y}[e^{2x} \\sin(3y)] = e^{2x} \\cdot 3\\cos(3y) = 3e^{2x}\\cos(3y)$."
         },
         {
           "q": "Evaluate $f_x(1, 2)$ for $f(x, y) = x^2 y + 3xy^2$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "First-Order Partial Derivatives",
           "choices": [
             "$16$",
             "$28$",
@@ -76,15 +409,14 @@
             "$8$"
           ],
           "correct": 0,
-          "answer": "$f_x(x, y) = 2xy + 3y^2$. At $(1, 2)$: $f_x(1, 2) = 2(1)(2) + 3(2^2) = 4 + 3(4) = 4 + 12 = 16$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Higher-Order Partials and Clairaut's Theorem",
-      "questions": [
+          "answer": "$f_x(x, y) = 2xy + 3y^2$. At $(1, 2)$: $f_x(1, 2) = 2(1)(2) + 3(2^2) = 4 + 3(4) = 4 + 12 = 16$.",
+          "explanation": "$f_x(x, y) = 2xy + 3y^2$. At $(1, 2)$: $f_x(1, 2) = 2(1)(2) + 3(2^2) = 4 + 3(4) = 4 + 12 = 16$."
+        },
         {
           "q": "What does Clairaut's Theorem state about mixed second-order partial derivatives $f_{xy}$ and $f_{yx}$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Higher-Order Partials and Clairaut's Theorem",
           "choices": [
             "If both $f_{xy}$ and $f_{yx}$ are continuous on an open region, then $f_{xy} = f_{yx}$",
             "Mixed partials are always equal to 0",
@@ -92,10 +424,14 @@
             "Equality holds only for polynomials"
           ],
           "correct": 0,
-          "answer": "Clairaut's Theorem guarantees that mixed partial derivatives are equal ($f_{xy} = f_{yx}$) provided they are continuous on an open disk."
+          "answer": "Clairaut's Theorem guarantees that mixed partial derivatives are equal ($f_{xy} = f_{yx}$) provided they are continuous on an open disk.",
+          "explanation": "Clairaut's Theorem guarantees that mixed partial derivatives are equal ($f_{xy} = f_{yx}$) provided they are continuous on an open disk."
         },
         {
           "q": "For $f(x, y) = x^3 y^4$, verify Clairaut's Theorem by finding $f_{xy}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Higher-Order Partials and Clairaut's Theorem",
           "choices": [
             "$12x^2 y^3$",
             "$3x^2 y^4$",
@@ -103,10 +439,19 @@
             "$6x y^2$"
           ],
           "correct": 0,
-          "answer": "$f_x = 3x^2 y^4$. Then $f_{xy} = \\frac{\\partial}{\\partial y}[3x^2 y^4] = 3x^2 (4y^3) = 12x^2 y^3$."
-        },
+          "answer": "$f_x = 3x^2 y^4$. Then $f_{xy} = \\frac{\\partial}{\\partial y}[3x^2 y^4] = 3x^2 (4y^3) = 12x^2 y^3$.",
+          "explanation": "$f_x = 3x^2 y^4$. Then $f_{xy} = \\frac{\\partial}{\\partial y}[3x^2 y^4] = 3x^2 (4y^3) = 12x^2 y^3$."
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
         {
           "q": "Find $f_{xx}$ for $f(x, y) = x^4 - 2x^2 y^3 + y^5$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Higher-Order Partials and Clairaut's Theorem",
           "choices": [
             "$12x^2 - 4y^3$",
             "$4x^3 - 4x y^3$",
@@ -114,15 +459,14 @@
             "$-12x^2 y^2$"
           ],
           "correct": 0,
-          "answer": "$f_x = 4x^3 - 4xy^3$. Differentiating again with respect to $x$: $f_{xx} = 12x^2 - 4y^3$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Tangent Planes and Linear Approximations",
-      "questions": [
+          "answer": "$f_x = 4x^3 - 4xy^3$. Differentiating again with respect to $x$: $f_{xx} = 12x^2 - 4y^3$.",
+          "explanation": "$f_x = 4x^3 - 4xy^3$. Differentiating again with respect to $x$: $f_{xx} = 12x^2 - 4y^3$."
+        },
         {
           "q": "What is the equation of the tangent plane to the surface $z = f(x, y)$ at the point $(x_0, y_0, z_0)$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Tangent Planes and Linear Approximations",
           "choices": [
             "$z - z_0 = f_x(x_0, y_0)(x - x_0) + f_y(x_0, y_0)(y - y_0)$",
             "$z - z_0 = f_x(x - x_0) - f_y(y - y_0)$",
@@ -130,10 +474,14 @@
             "$(x - x_0) + (y - y_0) + (z - z_0) = 0$"
           ],
           "correct": 0,
-          "answer": "The linear approximation (tangent plane) formula is $z - z_0 = f_x(x_0, y_0)(x - x_0) + f_y(x_0, y_0)(y - y_0)$."
+          "answer": "The linear approximation (tangent plane) formula is $z - z_0 = f_x(x_0, y_0)(x - x_0) + f_y(x_0, y_0)(y - y_0)$.",
+          "explanation": "The linear approximation (tangent plane) formula is $z - z_0 = f_x(x_0, y_0)(x - x_0) + f_y(x_0, y_0)(y - y_0)$."
         },
         {
           "q": "Find the equation of the tangent plane to $z = x^2 + y^2$ at $(1, 2, 5)$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Tangent Planes and Linear Approximations",
           "choices": [
             "$z - 5 = 2(x - 1) + 4(y - 2) \\Leftrightarrow 2x + 4y - z = 5$",
             "$2x + 4y + z = 15$",
@@ -141,10 +489,14 @@
             "$4x + 2y - z = 5$"
           ],
           "correct": 0,
-          "answer": "$f_x = 2x \\Rightarrow f_x(1, 2) = 2$. $f_y = 2y \\Rightarrow f_y(1, 2) = 4$. Plane: $z - 5 = 2(x - 1) + 4(y - 2) \\Rightarrow z - 5 = 2x - 2 + 4y - 8 \\Rightarrow 2x + 4y - z = 5$."
+          "answer": "$f_x = 2x \\Rightarrow f_x(1, 2) = 2$. $f_y = 2y \\Rightarrow f_y(1, 2) = 4$. Plane: $z - 5 = 2(x - 1) + 4(y - 2) \\Rightarrow z - 5 = 2x - 2 + 4y - 8 \\Rightarrow 2x + 4y - z = 5$.",
+          "explanation": "$f_x = 2x \\Rightarrow f_x(1, 2) = 2$. $f_y = 2y \\Rightarrow f_y(1, 2) = 4$. Plane: $z - 5 = 2(x - 1) + 4(y - 2) \\Rightarrow z - 5 = 2x - 2 + 4y - 8 \\Rightarrow 2x + 4y - z = 5$."
         },
         {
           "q": "What is a normal vector to the surface $z = f(x, y)$ at $(x_0, y_0)$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Tangent Planes and Linear Approximations",
           "choices": [
             "$\\mathbf{n} = [f_x(x_0, y_0), f_y(x_0, y_0), -1]$",
             "$\\mathbf{n} = [f_x, f_y, 1]$",
@@ -152,7 +504,459 @@
             "$\\mathbf{n} = [-f_y, f_x, 0]$"
           ],
           "correct": 0,
-          "answer": "Rewriting as $F(x, y, z) = f(x, y) - z = 0$, the gradient $\\nabla F = [f_x, f_y, -1]$ forms an outward normal vector."
+          "answer": "Rewriting as $F(x, y, z) = f(x, y) - z = 0$, the gradient $\\nabla F = [f_x, f_y, -1]$ forms an outward normal vector.",
+          "explanation": "Rewriting as $F(x, y, z) = f(x, y) - z = 0$, the gradient $\\nabla F = [f_x, f_y, -1]$ forms an outward normal vector."
+        },
+        {
+          "q": "Consider the function $f(x, y) = 5x^3 - 2y^2 + 7$. Compute the value of the partial derivative $f_y(2, -3)$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Domain, Range, and Level Curves",
+          "choices": [
+            "20",
+            "-12",
+            "12",
+            "-20"
+          ],
+          "correct": 1,
+          "answer": "To find the partial derivative of $f(x, y)$ with respect to $y$, we treat $x$ as a constant. Given $f(x, y) = 5x^3 - 2y^2 + 7$. The partial derivative with respect to $y$ is denoted by $f_y$. $f_y = \\frac{\\partial}{\\partial y} (5x^3 - 2y^2 + 7)$ Applying the power rule and noting that $5x^3$ and $7$ are constants with respect to $y$: $f_y = 0 - 2(2y) + 0$ $f_y = -4y$ Now, we need to evaluate $f_y$ at the point $(2, -3)$: $f_y(2, -3) = -4(-3)$ $f_y(2, -3) = 12$",
+          "explanation": "To find the partial derivative of $f(x, y)$ with respect to $y$, we treat $x$ as a constant. Given $f(x, y) = 5x^3 - 2y^2 + 7$. The partial derivative with respect to $y$ is denoted by $f_y$. $f_y = \\frac{\\partial}{\\partial y} (5x^3 - 2y^2 + 7)$ Applying the power rule and noting that $5x^3$ and $7$ are constants with respect to $y$: $f_y = 0 - 2(2y) + 0$ $f_y = -4y$ Now, we need to evaluate $f_y$ at the point $(2, -3)$: $f_y(2, -3) = -4(-3)$ $f_y(2, -3) = 12$"
+        },
+        {
+          "q": "Evaluate the double integral $\\iint_R x y \\, dA$ where $R$ is the region in the first quadrant bounded by the lines $y=x$, $x=1$, and $y=0$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "First-Order Partial Derivatives",
+          "choices": [
+            "1/12",
+            "1/8",
+            "1/6",
+            "1/4"
+          ],
+          "correct": 1,
+          "answer": "The region of integration $R$ is a triangle with vertices (0,0), (1,0), and (1,1). We can set up the double integral using Fubini's Theorem. Since $y=x$ is the upper bound for $y$ and $x=1$ is the upper bound for $x$, we can integrate with respect to $y$ first, then $x$. The limits for $y$ are from 0 to $x$, and the limits for $x$ are from 0 to 1. $\\iint_R x y \\, dA = \\int_0^1 \\int_0^x x y \\, dy \\, dx$ First, evaluate the inner integral with respect to $y$: $\\int_0^x x y \\, dy = x \\left[ \\frac{y^2}{2} \\right]_0^x = x \\left( \\frac{x^2}{2} - 0 \\right) = \\frac{x^3}{2}$ Now, evaluate the outer integral with respect to $x$: $\\int_0^1 \\frac{x^3}{2} \\, dx = \\frac{1}{2} \\left[ \\frac{x^4}{4} \\right]_0^1 = \\frac{1}{2} \\left( \\frac{1^4}{4} - 0 \\right) = \\frac{1}{2} \\times \\frac{1}{4} = \\frac{1}{8}$ Alternatively, we could integrate with respect to $x$ first. The region is bounded by $x=y$ and $x=1$ for $y$ from 0 to 1. $\\iint_R x y \\, dA = \\int_0^1 \\int_y^1 x y \\, dx \\, dy$ Inner integral with respect to $x$: $\\int_y^1 x y \\, dx = y \\left[ \\frac{x^2}{2} \\right]_y^1 = y \\left( \\frac{1^2}{2} - \\frac{y^2}{2} \\right) = \\frac{y}{2} - \\frac{y^3}{2}$ Outer integral with respect to $y$: $\\int_0^1 \\left( \\frac{y}{2} - \\frac{y^3}{2} \\right) \\, dy = \\left[ \\frac{y^2}{4} - \\frac{y^4}{8} \\right]_0^1 = \\left( \\frac{1^2}{4} - \\frac{1^4}{8} \\right) - (0-0) = \\frac{1}{4} - \\frac{1}{8} = \\frac{2}{8} - \\frac{1}{8} = \\frac{1}{8}$ Both methods yield the same result.",
+          "explanation": "The region of integration $R$ is a triangle with vertices (0,0), (1,0), and (1,1). We can set up the double integral using Fubini's Theorem. Since $y=x$ is the upper bound for $y$ and $x=1$ is the upper bound for $x$, we can integrate with respect to $y$ first, then $x$. The limits for $y$ are from 0 to $x$, and the limits for $x$ are from 0 to 1. $\\iint_R x y \\, dA = \\int_0^1 \\int_0^x x y \\, dy \\, dx$ First, evaluate the inner integral with respect to $y$: $\\int_0^x x y \\, dy = x \\left[ \\frac{y^2}{2} \\right]_0^x = x \\left( \\frac{x^2}{2} - 0 \\right) = \\frac{x^3}{2}$ Now, evaluate the outer integral with respect to $x$: $\\int_0^1 \\frac{x^3}{2} \\, dx = \\frac{1}{2} \\left[ \\frac{x^4}{4} \\right]_0^1 = \\frac{1}{2} \\left( \\frac{1^4}{4} - 0 \\right) = \\frac{1}{2} \\times \\frac{1}{4} = \\frac{1}{8}$ Alternatively, we could integrate with respect to $x$ first. The region is bounded by $x=y$ and $x=1$ for $y$ from 0 to 1. $\\iint_R x y \\, dA = \\int_0^1 \\int_y^1 x y \\, dx \\, dy$ Inner integral with respect to $x$: $\\int_y^1 x y \\, dx = y \\left[ \\frac{x^2}{2} \\right]_y^1 = y \\left( \\frac{1^2}{2} - \\frac{y^2}{2} \\right) = \\frac{y}{2} - \\frac{y^3}{2}$ Outer integral with respect to $y$: $\\int_0^1 \\left( \\frac{y}{2} - \\frac{y^3}{2} \\right) \\, dy = \\left[ \\frac{y^2}{4} - \\frac{y^4}{8} \\right]_0^1 = \\left( \\frac{1^2}{4} - \\frac{1^4}{8} \\right) - (0-0) = \\frac{1}{4} - \\frac{1}{8} = \\frac{2}{8} - \\frac{1}{8} = \\frac{1}{8}$ Both methods yield the same result.",
+          "figure": {
+            "type": "triangle",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "labels": [
+              "O",
+              "A",
+              "B"
+            ],
+            "side_labels": [
+              "1",
+              "1",
+              "sqrt(2)"
+            ],
+            "fill": true,
+            "right_angle_at": null,
+            "width": 220
+          }
+        },
+        {
+          "q": "Consider the region $R$ in the first quadrant bounded by the x-axis, the line $y = x$, and the circle $x^2 + y^2 = 16$. The integral $\\iint_R f(x,y) \\, dA$ can be evaluated more easily in polar coordinates. If $f(x,y) = \\frac{1}{\\sqrt{x^2 + y^2}}$, and the integral in polar coordinates is given by $\\int_0^{\\pi/4} \\int_0^4 r \\cdot \\frac{1}{r} \\, dr \\, d\\theta = \\int_0^{\\pi/4} A \\, d\\theta$, find the value of $A$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Higher-Order Partials and Clairaut's Theorem",
+          "choices": [
+            "4",
+            "$\\pi/4$",
+            "16",
+            "2"
+          ],
+          "correct": 0,
+          "answer": "The region R is described in the first quadrant, bounded by the x-axis ($\\theta = 0$), the line $y = x$ ($\\theta = \\pi/4$), and the circle $x^2 + y^2 = 16$ ($r = 4$). The integrand is $f(x,y) = \\frac{1}{\\sqrt{x^2 + y^2}}$. In polar coordinates, $x^2 + y^2 = r^2$, so $\\sqrt{x^2 + y^2} = r$. Thus, $f(x,y) = \\frac{1}{r}$. The differential area element in polar coordinates is $dA = r \\, dr \\, d\\theta$. The double integral in polar coordinates is: $\\iint_R f(x,y) \\, dA = \\int_0^{\\pi/4} \\int_0^4 \\left( \\frac{1}{r} \\right) r \\, dr \\, d\\theta$ This simplifies to: $\\int_0^{\\pi/4} \\int_0^4 1 \\, dr \\, d\\theta$ Evaluating the inner integral with respect to $r$: $\\int_0^4 1 \\, dr = [r]_0^4 = 4 - 0 = 4$ So the integral becomes: $\\int_0^{\\pi/4} 4 \\, d\\theta$ This is in the form $\\int_0^{\\pi/4} A \\, d\\theta$, where $A = 4$.",
+          "explanation": "The region R is described in the first quadrant, bounded by the x-axis ($\\theta = 0$), the line $y = x$ ($\\theta = \\pi/4$), and the circle $x^2 + y^2 = 16$ ($r = 4$). The integrand is $f(x,y) = \\frac{1}{\\sqrt{x^2 + y^2}}$. In polar coordinates, $x^2 + y^2 = r^2$, so $\\sqrt{x^2 + y^2} = r$. Thus, $f(x,y) = \\frac{1}{r}$. The differential area element in polar coordinates is $dA = r \\, dr \\, d\\theta$. The double integral in polar coordinates is: $\\iint_R f(x,y) \\, dA = \\int_0^{\\pi/4} \\int_0^4 \\left( \\frac{1}{r} \\right) r \\, dr \\, d\\theta$ This simplifies to: $\\int_0^{\\pi/4} \\int_0^4 1 \\, dr \\, d\\theta$ Evaluating the inner integral with respect to $r$: $\\int_0^4 1 \\, dr = [r]_0^4 = 4 - 0 = 4$ So the integral becomes: $\\int_0^{\\pi/4} 4 \\, d\\theta$ This is in the form $\\int_0^{\\pi/4} A \\, d\\theta$, where $A = 4$.",
+          "figure": {
+            "type": "circle",
+            "center": [
+              0,
+              0
+            ],
+            "radius": 5.0,
+            "center_label": "$O$",
+            "radius_label": "$r = 5$",
+            "sector": 45,
+            "chord": true,
+            "width": 210
+          }
+        },
+        {
+          "q": "For $f(x,y)=3 x^{2} + 4 y^{2}$, find $f_x(4,5)$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Tangent Planes and Linear Approximations",
+          "choices": [
+            "24",
+            "30",
+            "12",
+            "40"
+          ],
+          "correct": 0,
+          "answer": "Applying Partial Derivatives principles, $f_x=6 x$, so $f_x(4,5)=6(4)=24$. Therefore, the verified correct option is 24.",
+          "explanation": "Applying Partial Derivatives principles, $f_x=6 x$, so $f_x(4,5)=6(4)=24$. Therefore, the verified correct option is 24.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "3*x*x + 100",
+              "24*(x - 4) + 148"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": 4.0,
+                "y": 148.0,
+                "label": "P(4,148)"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "For $f(x,y)=7 x^{2} + 2 y^{2}$, find $f_y(3,6)$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Domain, Range, and Level Curves",
+          "choices": [
+            "24",
+            "12",
+            "42",
+            "-24"
+          ],
+          "correct": 0,
+          "answer": "Applying Partial Derivatives principles, $f_y=4 y$, so $f_y(3,6)=4(6)=24$. Therefore, the verified correct option is 24.",
+          "explanation": "Applying Partial Derivatives principles, $f_y=4 y$, so $f_y(3,6)=4(6)=24$. Therefore, the verified correct option is 24.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2*x*x + 63",
+              "24*(x - 6) + 135"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": 6.0,
+                "y": 135.0,
+                "label": "P(6,135)"
+              }
+            ],
+            "width": 230
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "For $f(x,y)=7 x^{2} + 4 y^{2}$, find $f_y(-3,1)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "First-Order Partial Derivatives",
+          "choices": [
+            "-24",
+            "4",
+            "8",
+            "-42"
+          ],
+          "correct": 2,
+          "answer": "Applying Partial Derivatives principles, $f_y=8 y$, so $f_y(-3,1)=8(1)=8$. Therefore, the verified correct option is 8.",
+          "explanation": "Applying Partial Derivatives principles, $f_y=8 y$, so $f_y(-3,1)=8(1)=8$. Therefore, the verified correct option is 8.",
+          "cross_lesson": "4.01 Double Integrals",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4*x*x + 63",
+              "8*(x - 1) + 67"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": 67.0,
+                "label": "P(1,67)"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "For $f(x,y)=8 x^{2} + 9 y^{2}$, find $f_x(-4,-3)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Higher-Order Partials and Clairaut's Theorem",
+          "choices": [
+            "-48",
+            "-64",
+            "-32",
+            "-54"
+          ],
+          "correct": 1,
+          "answer": "$f_x=16 x$, so $f_x(-4,-3)=16(-4)=-64$.",
+          "explanation": "$f_x=16 x$, so $f_x(-4,-3)=16(-4)=-64$.",
+          "cross_lesson": "2.01 The Chain Rule & Directional Derivatives",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "8*x*x + 81",
+              "-64*(x - -4) + 209"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": -4.0,
+                "y": 209.0,
+                "label": "P(-4,209)"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "For $f(x,y)=4 x^{2} + 7 y^{2}$, find $f_y(-2,-6)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Tangent Planes and Linear Approximations",
+          "choices": [
+            "-28",
+            "-42",
+            "-84",
+            "-16"
+          ],
+          "correct": 2,
+          "answer": "$f_y=14 y$, so $f_y(-2,-6)=14(-6)=-84$.",
+          "explanation": "$f_y=14 y$, so $f_y(-2,-6)=14(-6)=-84$.",
+          "cross_lesson": "3.01 Optimization: Critical Points & Lagrange Multipliers",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "7*x*x + 16",
+              "-84*(x - -6) + 268"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": -6.0,
+                "y": 268.0,
+                "label": "P(-6,268)"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "For $f(x,y)=9 x^{2} + 8 y^{2}$, find $f_y(3,-5)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Domain, Range, and Level Curves",
+          "choices": [
+            "-80",
+            "48",
+            "-40",
+            "54"
+          ],
+          "correct": 0,
+          "answer": "$f_y=16 y$, so $f_y(3,-5)=16(-5)=-80$.",
+          "explanation": "$f_y=16 y$, so $f_y(3,-5)=16(-5)=-80$.",
+          "cross_lesson": "4.01 Double Integrals",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "8*x*x + 81",
+              "-80*(x - -5) + 281"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": -5.0,
+                "y": 281.0,
+                "label": "P(-5,281)"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "For $f(x,y)=8 x^{2} + 7 y^{2}$, find $f_x(-4,2)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "First-Order Partial Derivatives",
+          "choices": [
+            "32",
+            "-32",
+            "28",
+            "-64"
+          ],
+          "correct": 3,
+          "answer": "$f_x=16 x$, so $f_x(-4,2)=16(-4)=-64$.",
+          "explanation": "$f_x=16 x$, so $f_x(-4,2)=16(-4)=-64$.",
+          "cross_lesson": "2.01 The Chain Rule & Directional Derivatives",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "8*x*x + 28",
+              "-64*(x - -4) + 156"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": -4.0,
+                "y": 156.0,
+                "label": "P(-4,156)"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "For $f(x,y)=5 x^{2} + 6 y^{2}$, find $f_x(-5,1)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Higher-Order Partials and Clairaut's Theorem",
+          "choices": [
+            "-50",
+            "10",
+            "-25",
+            "12"
+          ],
+          "correct": 0,
+          "answer": "$f_x=10 x$, so $f_x(-5,1)=10(-5)=-50$.",
+          "explanation": "$f_x=10 x$, so $f_x(-5,1)=10(-5)=-50$.",
+          "cross_lesson": "3.01 Optimization: Critical Points & Lagrange Multipliers",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "5*x*x + 6",
+              "-50*(x - -5) + 131"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": -5.0,
+                "y": 131.0,
+                "label": "P(-5,131)"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "For $f(x,y)=4 x^{2} + 7 y^{2}$, find $f_x(-5,-2)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Tangent Planes and Linear Approximations",
+          "choices": [
+            "-16",
+            "-20",
+            "-28",
+            "-40"
+          ],
+          "correct": 3,
+          "answer": "$f_x=8 x$, so $f_x(-5,-2)=8(-5)=-40$.",
+          "explanation": "$f_x=8 x$, so $f_x(-5,-2)=8(-5)=-40$.",
+          "cross_lesson": "4.01 Double Integrals",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4*x*x + 28",
+              "-40*(x - -5) + 128"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": -5.0,
+                "y": 128.0,
+                "label": "P(-5,128)"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "For $f(x,y)=4 x^{2} + 3 y^{2}$, find $f_y(-4,-3)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Domain, Range, and Level Curves",
+          "choices": [
+            "-18",
+            "-24",
+            "-9",
+            "-32"
+          ],
+          "correct": 0,
+          "answer": "$f_y=6 y$, so $f_y(-4,-3)=6(-3)=-18$.",
+          "explanation": "$f_y=6 y$, so $f_y(-4,-3)=6(-3)=-18$.",
+          "cross_lesson": "2.01 The Chain Rule & Directional Derivatives",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "3*x*x + 64",
+              "-18*(x - -3) + 91"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": -3.0,
+                "y": 91.0,
+                "label": "P(-3,91)"
+              }
+            ],
+            "width": 230
+          }
         }
       ]
     }

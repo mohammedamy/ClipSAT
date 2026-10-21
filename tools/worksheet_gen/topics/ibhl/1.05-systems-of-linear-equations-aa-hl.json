@@ -3,12 +3,278 @@
   "num": "1.05",
   "slug": "systems-of-linear-equations-aa-hl",
   "title": "Systems of Linear Equations (AA HL)",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 1.05 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Augmented Matrices and Gaussian Elimination",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+      "questions": [
+        {
+          "q": "Solve the first-order linear differential equation $\\frac{dy}{dx} + \\frac{2}{x}y = 4x$ for $x > 0$, given the initial condition $y(1) = 2$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Augmented Matrices and Gaussian Elimination",
+          "answer": "1. Identify $P(x) = \\frac{2}{x}$ and $Q(x) = 4x$. 2. Calculate the integrating factor $\\mu(x)$: $\\mu(x) = \\exp\\left( \\int \\frac{2}{x}\\,dx \\right) = e^{2\\ln x} = e^{\\ln(x^2)} = x^2.$ 3. Multiply through by $x^2$: $x^2\\frac{dy}{dx} + 2x y = 4x^3 \\Rightarrow \\frac{d}{dx}[x^2 y] = 4x^3.$ 4. Integrate both sides: $x^2 y = \\int 4x^3\\,dx = x^4 + C.$ 5. Apply $y(1) = 2$: $(1)^2(2) = 1^4 + C \\Rightarrow 2 = 1 + C \\Rightarrow C = 1.$ 6. Explicit solution: $y = \\frac{x^4 + 1}{x^2} = x^2 + \\frac{1}{x^2}.$",
+          "explanation": "1. Identify $P(x) = \\frac{2}{x}$ and $Q(x) = 4x$. 2. Calculate the integrating factor $\\mu(x)$: $\\mu(x) = \\exp\\left( \\int \\frac{2}{x}\\,dx \\right) = e^{2\\ln x} = e^{\\ln(x^2)} = x^2.$ 3. Multiply through by $x^2$: $x^2\\frac{dy}{dx} + 2x y = 4x^3 \\Rightarrow \\frac{d}{dx}[x^2 y] = 4x^3.$ 4. Integrate both sides: $x^2 y = \\int 4x^3\\,dx = x^4 + C.$ 5. Apply $y(1) = 2$: $(1)^2(2) = 1^4 + C \\Rightarrow 2 = 1 + C \\Rightarrow C = 1.$ 6. Explicit solution: $y = \\frac{x^4 + 1}{x^2} = x^2 + \\frac{1}{x^2}.$"
+        },
+        {
+          "q": "Two independent random variables are normally distributed as $X \\sim N(50, 16)$ and $Y \\sim N(45, 9)$. Find the probability that $X > Y$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Geometric Interpretation of 3 x 3 Systems",
+          "answer": "1. Define the difference variable $W = X - Y$. The condition $X > Y$ is equivalent to $W > 0$. 2. Since $X$ and $Y$ are independent normals, $W$ is normally distributed: Mean: $\\mu_W = E[X] - E[Y] = 50 - 45 = 5$. Variance: $\\sigma_W^2 = \\mathrm{Var}(X) + \\mathrm{Var}(Y) = 16 + 9 = 25 \\Rightarrow \\sigma_W = 5$. Thus $W \\sim N(5, 25)$. 3. Compute $P(W > 0)$: $z = \\frac{0 - 5}{5} = -1.0.$ $P(W > 0) = P(Z > -1.0) = P(Z < 1.0) = \\Phi(1.0) \\approx 0.8413 \\approx 0.841.$",
+          "explanation": "1. Define the difference variable $W = X - Y$. The condition $X > Y$ is equivalent to $W > 0$. 2. Since $X$ and $Y$ are independent normals, $W$ is normally distributed: Mean: $\\mu_W = E[X] - E[Y] = 50 - 45 = 5$. Variance: $\\sigma_W^2 = \\mathrm{Var}(X) + \\mathrm{Var}(Y) = 16 + 9 = 25 \\Rightarrow \\sigma_W = 5$. Thus $W \\sim N(5, 25)$. 3. Compute $P(W > 0)$: $z = \\frac{0 - 5}{5} = -1.0.$ $P(W > 0) = P(Z > -1.0) = P(Z < 1.0) = \\Phi(1.0) \\approx 0.8413 \\approx 0.841.$",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4*exp(-0.5*x**2)"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -0.4,
+            "ymax": 4.6,
+            "shade": {
+              "fn1": "4*exp(-0.5*x**2)",
+              "fn2": "0",
+              "x0": -1.96,
+              "x1": 1.96
+            },
+            "point_labels": [
+              {
+                "x": 1.96,
+                "y": 0.59,
+                "label": "$z=1.96$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Solve the second-order homogeneous linear differential equation $y'' - 5y' + 6y = 0$ satisfying initial conditions $y(0) = 1$ and $y'(0) = 3$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Determinants and Cramer's Rule",
+          "answer": "1. Write the characteristic equation: $m^2 - 5m + 6 = 0 \\Rightarrow (m - 2)(m - 3) = 0 \\Rightarrow m_1 = 2, \\; m_2 = 3.$ 2. General solution: $y(x) = A e^{2x} + B e^{3x}.$ 3. Derivative: $y'(x) = 2A e^{2x} + 3B e^{3x}.$ 4. Apply initial conditions: $y(0) = 1 \\Rightarrow A + B = 1$. $y'(0) = 3 \\Rightarrow 2A + 3B = 3$. Multiply first equation by 2: $2A + 2B = 2$. Subtract from second: $B = 1$. Then $A = 1 - 1 = 0$. Particular Solution: $y(x) = e^{3x}.$",
+          "explanation": "1. Write the characteristic equation: $m^2 - 5m + 6 = 0 \\Rightarrow (m - 2)(m - 3) = 0 \\Rightarrow m_1 = 2, \\; m_2 = 3.$ 2. General solution: $y(x) = A e^{2x} + B e^{3x}.$ 3. Derivative: $y'(x) = 2A e^{2x} + 3B e^{3x}.$ 4. Apply initial conditions: $y(0) = 1 \\Rightarrow A + B = 1$. $y'(0) = 3 \\Rightarrow 2A + 3B = 3$. Multiply first equation by 2: $2A + 2B = 2$. Subtract from second: $B = 1$. Then $A = 1 - 1 = 0$. Particular Solution: $y(x) = e^{3x}.$"
+        },
+        {
+          "q": "Consider the points $A(1, -2, 3)$, $B(4, 0, 5)$, and $C(p, 1, 2)$. If the vectors $\\overrightarrow{AB}$ and $\\overrightarrow{AC}$ are perpendicular, find the value of $p$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Parameterized Solutions and Free Variables",
+          "answer": "First, find the vector $\\overrightarrow{AB}$: $\\overrightarrow{AB} = B - A = (4-1, 0-(-2), 5-3) = (3, 2, 2)$. Next, find the vector $\\overrightarrow{AC}$: $\\overrightarrow{AC} = C - A = (p-1, 1-(-2), 2-3) = (p-1, 3, -1)$. Two vectors are perpendicular if their dot product is zero. Therefore, $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 0$. $(3)(p-1) + (2)(3) + (2)(-1) = 0$ $3p - 3 + 6 - 2 = 0$ $3p + 1 = 0$ $3p = -1$ $p = -\\frac{1}{3}$ Final Answer: $p = 4$",
+          "explanation": "First, find the vector $\\overrightarrow{AB}$: $\\overrightarrow{AB} = B - A = (4-1, 0-(-2), 5-3) = (3, 2, 2)$. Next, find the vector $\\overrightarrow{AC}$: $\\overrightarrow{AC} = C - A = (p-1, 1-(-2), 2-3) = (p-1, 3, -1)$. Two vectors are perpendicular if their dot product is zero. Therefore, $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 0$. $(3)(p-1) + (2)(3) + (2)(-1) = 0$ $3p - 3 + 6 - 2 = 0$ $3p + 1 = 0$ $3p = -1$ $p = -\\frac{1}{3}$ Final Answer: $p = 4$"
+        },
+        {
+          "q": "A fair six-sided die is rolled. What is the probability of rolling a number greater than 4?",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Augmented Matrices and Gaussian Elimination",
+          "answer": "The possible outcomes when rolling a fair six-sided die are {1, 2, 3, 4, 5, 6}. There are 6 equally likely outcomes in total. The outcomes that are greater than 4 are {5, 6}. There are 2 favorable outcomes. The probability of an event is the ratio of the number of favorable outcomes to the total number of possible outcomes. Therefore, the probability of rolling a number greater than 4 is $\\frac{2}{6} = \\frac{1}{3}$. Final Answer: 1/3",
+          "explanation": "The possible outcomes when rolling a fair six-sided die are {1, 2, 3, 4, 5, 6}. There are 6 equally likely outcomes in total. The outcomes that are greater than 4 are {5, 6}. There are 2 favorable outcomes. The probability of an event is the ratio of the number of favorable outcomes to the total number of possible outcomes. Therefore, the probability of rolling a number greater than 4 is $\\frac{2}{6} = \\frac{1}{3}$. Final Answer: 1/3"
+        },
+        {
+          "q": "Phone calls arrive at an emergency center according to a Poisson process with an average rate of 3 calls per minute. Find: (a) the probability that at least 2 calls arrive in a 1-minute period; (b) the probability that exactly 5 calls arrive in a 2-minute period.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Geometric Interpretation of 3 x 3 Systems",
+          "answer": "(a) For 1 minute, $X \\sim \\mathrm{Po}(3)$: $P(X \\geq 2) = 1 - P(X = 0) - P(X = 1) = 1 - e^{-3}\\frac{3^0}{0!} - e^{-3}\\frac{3^1}{1!} = 1 - e^{-3}(1 + 3) = 1 - 4e^{-3} \\approx 1 - 0.19915 = 0.8009 \\approx 0.801.$ (b) For 2 minutes, the rate scales linearly: $\\lambda = 3 \\times 2 = 6$, so $Y \\sim \\mathrm{Po}(6)$: $P(Y = 5) = \\frac{e^{-6} \\cdot 6^5}{5!} = \\frac{e^{-6} \\cdot 7776}{120} = 64.8 e^{-6} \\approx 0.1606 \\approx 0.161.$",
+          "explanation": "(a) For 1 minute, $X \\sim \\mathrm{Po}(3)$: $P(X \\geq 2) = 1 - P(X = 0) - P(X = 1) = 1 - e^{-3}\\frac{3^0}{0!} - e^{-3}\\frac{3^1}{1!} = 1 - e^{-3}(1 + 3) = 1 - 4e^{-3} \\approx 1 - 0.19915 = 0.8009 \\approx 0.801.$ (b) For 2 minutes, the rate scales linearly: $\\lambda = 3 \\times 2 = 6$, so $Y \\sim \\mathrm{Po}(6)$: $P(Y = 5) = \\frac{e^{-6} \\cdot 6^5}{5!} = \\frac{e^{-6} \\cdot 7776}{120} = 64.8 e^{-6} \\approx 0.1606 \\approx 0.161.$",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "3*sin(x)",
+              "cos(x)"
+            ],
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -3.5,
+            "ymax": 3.5,
+            "point_labels": [
+              {
+                "x": 1.57,
+                "y": 3.0,
+                "label": "$( \\frac{\\pi}{2}, 3 )$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A discrete random variable $X$ takes values $0, 3, 4$ with probabilities $\\frac{1}{10}, \\frac{3}{10}, \\frac{3}{5}$ respectively. Find $E(X)$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Determinants and Cramer's Rule",
+          "answer": "Working through this statistics step: $E(X)=\\sum xP(X=x) = 0(\\frac{1}{10})+3(\\frac{3}{10})+4(\\frac{3}{5}) = \\frac{33}{10}$ Final Answer: $\\frac{33}{10}$ Key Mathematical Principle & Verification: In exam revision, always verify that the final value satisfies the domain constraints, units, and original governing equation by direct back-substitution into the prompt.",
+          "explanation": "Working through this statistics step: $E(X)=\\sum xP(X=x) = 0(\\frac{1}{10})+3(\\frac{3}{10})+4(\\frac{3}{5}) = \\frac{33}{10}$ Final Answer: $\\frac{33}{10}$ Key Mathematical Principle & Verification: In exam revision, always verify that the final value satisfies the domain constraints, units, and original governing equation by direct back-substitution into the prompt."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "The region bounded by $y = \\ln x$, the line $y = 0$, the line $y = 1$, and the $y$-axis is rotated $2\\pi$ radians about the $y$-axis. Find the exact volume of the resulting solid.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Parameterized Solutions and Free Variables",
+          "answer": "1. Express $x$ as a function of $y$: $y = \\ln x \\Rightarrow x = e^y$. 2. Apply the volume of revolution about the $y$-axis formula: $V = \\pi \\int_{c}^d [x(y)]^2\\,dy = \\pi \\int_0^1 (e^y)^2\\,dy = \\pi \\int_0^1 e^{2y}\\,dy.$ 3. Integrate: $V = \\pi \\left[ \\frac{e^{2y}}{2} \\right]_0^1 = \\frac{\\pi}{2}(e^2 - e^0) = \\frac{\\pi(e^2 - 1)}{2}.$",
+          "explanation": "1. Express $x$ as a function of $y$: $y = \\ln x \\Rightarrow x = e^y$. 2. Apply the volume of revolution about the $y$-axis formula: $V = \\pi \\int_{c}^d [x(y)]^2\\,dy = \\pi \\int_0^1 (e^y)^2\\,dy = \\pi \\int_0^1 e^{2y}\\,dy.$ 3. Integrate: $V = \\pi \\left[ \\frac{e^{2y}}{2} \\right]_0^1 = \\frac{\\pi}{2}(e^2 - e^0) = \\frac{\\pi(e^2 - 1)}{2}.$"
+        },
+        {
+          "q": "Consider the function $f(x) = \\frac{1}{2}x^2 - 3x + 5$. The graph of $y = f(x)$ is a parabola. Find the x-coordinate of the vertex of the parabola.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Augmented Matrices and Gaussian Elimination",
+          "answer": "The x-coordinate of the vertex of a parabola given by the equation $f(x) = ax^2 + bx + c$ is found using the formula $x = -\\frac{b}{2a}$. In this case, $a = \\frac{1}{2}$ and $b = -3$. Therefore, the x-coordinate of the vertex is $x = -\\frac{-3}{2(\\frac{1}{2})} = -\\frac{-3}{1} = 3$.",
+          "explanation": "The x-coordinate of the vertex of a parabola given by the equation $f(x) = ax^2 + bx + c$ is found using the formula $x = -\\frac{b}{2a}$. In this case, $a = \\frac{1}{2}$ and $b = -3$. Therefore, the x-coordinate of the vertex is $x = -\\frac{-3}{2(\\frac{1}{2})} = -\\frac{-3}{1} = 3$."
+        },
+        {
+          "q": "Find $\\int x e^{2x}\\,dx$ (in terms of $x$, with constant $C$).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Geometric Interpretation of 3 x 3 Systems",
+          "answer": "Working through this calculus step: $u=x,\\,dv=e^{2x}dx \\Rightarrow \\int xe^{2x}dx=\\frac{x}{2}e^{2x}-\\int\\frac{1}{2}e^{2x}dx=\\frac{x}{2}e^{2x}-\\frac{1}{4}e^{2x}+C$ Final Answer: $\\frac{x}{2}e^{2x}-\\frac{1}{4}e^{2x}+C$",
+          "explanation": "Working through this calculus step: $u=x,\\,dv=e^{2x}dx \\Rightarrow \\int xe^{2x}dx=\\frac{x}{2}e^{2x}-\\int\\frac{1}{2}e^{2x}dx=\\frac{x}{2}e^{2x}-\\frac{1}{4}e^{2x}+C$ Final Answer: $\\frac{x}{2}e^{2x}-\\frac{1}{4}e^{2x}+C$",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Find the number of solutions of $\\sin(2\\theta) = \\frac{1}{2}$ in the interval $0^\\circ \\leq \\theta < 360^\\circ$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Determinants and Cramer's Rule",
+          "answer": "Final Answer: $4$. Working through this additional-topics step: $2\\theta=30^\\circ,150^\\circ,390^\\circ,510^\\circ\\mathrm{\\ (within\\ }0^\\circ\\leq2\\theta<720^\\circ\\mathrm{)} \\Rightarrow \\theta=15^\\circ,75^\\circ,195^\\circ,255^\\circ\\mathrm{:\\ 4\\ solutions.}$",
+          "explanation": "Working through this additional-topics step: $2\\theta=30^\\circ,150^\\circ,390^\\circ,510^\\circ\\mathrm{\\ (within\\ }0^\\circ\\leq2\\theta<720^\\circ\\mathrm{)} \\Rightarrow \\theta=15^\\circ,75^\\circ,195^\\circ,255^\\circ\\mathrm{:\\ 4\\ solutions.}$"
+        },
+        {
+          "q": "How many solutions does $\\sin\\theta = \\sin30^\\circ$ have in the interval $0^\\circ \\leq \\theta < 360^\\circ$? Show your complete algebraic work.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Parameterized Solutions and Free Variables",
+          "answer": "Final Answer: $2$. Working through this additional-topics step: $\\theta=30^\\circ\\mathrm{\\ or\\ }\\theta=180^\\circ-30^\\circ=150^\\circ\\mathrm{:\\ 2\\ solutions\\ in\\ }[0^\\circ,360^\\circ).$",
+          "explanation": "Working through this additional-topics step: $\\theta=30^\\circ\\mathrm{\\ or\\ }\\theta=180^\\circ-30^\\circ=150^\\circ\\mathrm{:\\ 2\\ solutions\\ in\\ }[0^\\circ,360^\\circ).$"
+        },
+        {
+          "q": "How many solutions does $\\sin\\theta = \\sin60^\\circ$ have in the interval $0^\\circ \\leq \\theta < 360^\\circ$? Show your complete algebraic work.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Augmented Matrices and Gaussian Elimination",
+          "answer": "Final Answer: $2$. Working through this additional-topics step: $\\theta=60^\\circ\\mathrm{\\ or\\ }\\theta=180^\\circ-60^\\circ=120^\\circ\\mathrm{:\\ 2\\ solutions\\ in\\ }[0^\\circ,360^\\circ).$",
+          "explanation": "Working through this additional-topics step: $\\theta=60^\\circ\\mathrm{\\ or\\ }\\theta=180^\\circ-60^\\circ=120^\\circ\\mathrm{:\\ 2\\ solutions\\ in\\ }[0^\\circ,360^\\circ).$"
+        },
+        {
+          "q": "How many solutions does $\\sin\\theta = \\sin45^\\circ$ have in the interval $0^\\circ \\leq \\theta < 360^\\circ$? Show your complete algebraic work.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Geometric Interpretation of 3 x 3 Systems",
+          "answer": "Final Answer: $2$. Working through this additional-topics step: $\\theta=45^\\circ\\mathrm{\\ or\\ }\\theta=180^\\circ-45^\\circ=135^\\circ\\mathrm{:\\ 2\\ solutions\\ in\\ }[0^\\circ,360^\\circ).$",
+          "explanation": "Working through this additional-topics step: $\\theta=45^\\circ\\mathrm{\\ or\\ }\\theta=180^\\circ-45^\\circ=135^\\circ\\mathrm{:\\ 2\\ solutions\\ in\\ }[0^\\circ,360^\\circ).$"
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "For which value of $m$ does the system $x+my=3,$ $2x+4y=6$ have infinitely many solutions? Show your complete algebraic work.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Determinants and Cramer's Rule",
+          "cross_lesson": "1.02 Complex Numbers: Cartesian Form & Algebra",
+          "answer": "Final Answer: 2. For infinitely many solutions the second equation must be exactly twice the first: $2/1=2$ and $4/m=2\\Rightarrow m=2$ (and $6=2\\times3$, consistent).",
+          "explanation": "For infinitely many solutions the second equation must be exactly twice the first: $2/1=2$ and $4/m=2\\Rightarrow m=2$ (and $6=2\\times3$, consistent)."
+        },
+        {
+          "q": "How many solutions does the system $x+y=4,$ $2x+2y=8$ have? Show your complete algebraic work.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Parameterized Solutions and Free Variables",
+          "cross_lesson": "1.03 Polar Form, De Moivre's Theorem & Roots of Unity",
+          "answer": "Final Answer: Infinitely many. The second equation is exactly twice the first, so both describe the same line — infinitely many solutions.",
+          "explanation": "The second equation is exactly twice the first, so both describe the same line — infinitely many solutions.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "An investment grows by $3\\%, 1\\%, -5\\%$ in three successive years. Find the average annual (geometric mean) growth rate, to 2 decimal places.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Augmented Matrices and Gaussian Elimination",
+          "cross_lesson": "1.04 Partial Fractions",
+          "answer": "Final Answer: -0.39\\%. Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.03\\times1.01\\times0.95}-1\\approx -0.39\\%$",
+          "explanation": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.03\\times1.01\\times0.95}-1\\approx -0.39\\%$"
+        },
+        {
+          "q": "An investment grows by $-6\\%, -10\\%, 4\\%$ in three successive years. Find the average annual (geometric mean) growth rate, to 2 decimal places.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Geometric Interpretation of 3 x 3 Systems",
+          "cross_lesson": "2.01 Modulus Functions & the Factor/Remainder Theorem",
+          "answer": "Final Answer: -4.18\\%. Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{0.94\\times0.90\\times1.04}-1\\approx -4.18\\%$",
+          "explanation": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{0.94\\times0.90\\times1.04}-1\\approx -4.18\\%$"
+        },
+        {
+          "q": "An investment grows by $-3\\%, 2\\%, -8\\%$ in three successive years. Find the average annual (geometric mean) growth rate, to 2 decimal places.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Determinants and Cramer's Rule",
+          "cross_lesson": "3.01 3D Vectors & the Cross Product",
+          "answer": "Final Answer: -3.09\\%. Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{0.97\\times1.02\\times0.92}-1\\approx -3.09\\%$",
+          "explanation": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{0.97\\times1.02\\times0.92}-1\\approx -3.09\\%$"
+        },
+        {
+          "q": "An investment grows by $1\\%, -6\\%, 1\\%$ in three successive years. Find the average annual (geometric mean) growth rate, to 2 decimal places.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Parameterized Solutions and Free Variables",
+          "cross_lesson": "3.02 Lines and Planes in Three Dimensions",
+          "answer": "Final Answer: -1.39\\%. Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.01\\times0.94\\times1.01}-1\\approx -1.39\\%$",
+          "explanation": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.01\\times0.94\\times1.01}-1\\approx -1.39\\%$"
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
           "q": "In row-reducing an augmented matrix, which row operation is NOT permitted?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Augmented Matrices and Gaussian Elimination",
           "choices": [
             "Squaring all elements in a row",
             "Swapping two rows",
@@ -16,10 +282,14 @@
             "Adding a multiple of one row to another row"
           ],
           "correct": 0,
-          "answer": "The three valid elementary row operations are row swaps, multiplying a row by a non-zero constant, and adding a scalar multiple of a row to another row. Squaring entries alters the solution space."
+          "answer": "The three valid elementary row operations are row swaps, multiplying a row by a non-zero constant, and adding a scalar multiple of a row to another row. Squaring entries alters the solution space.",
+          "explanation": "The three valid elementary row operations are row swaps, multiplying a row by a non-zero constant, and adding a scalar multiple of a row to another row. Squaring entries alters the solution space."
         },
         {
           "q": "An augmented matrix in row echelon form has final row $[0, 0, 0 \\mid 5]$. What does this indicate about the system?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Augmented Matrices and Gaussian Elimination",
           "choices": [
             "The system is inconsistent (has no solutions)",
             "The system has infinitely many solutions",
@@ -27,10 +297,14 @@
             "The system has trivial solutions only"
           ],
           "correct": 0,
-          "answer": "The row represents the contradictory equation $0x + 0y + 0z = 5$ (i.e. $0 = 5$), which cannot be satisfied by any real values; hence the system is inconsistent."
+          "answer": "The row represents the contradictory equation $0x + 0y + 0z = 5$ (i.e. $0 = 5$), which cannot be satisfied by any real values; hence the system is inconsistent.",
+          "explanation": "The row represents the contradictory equation $0x + 0y + 0z = 5$ (i.e. $0 = 5$), which cannot be satisfied by any real values; hence the system is inconsistent."
         },
         {
           "q": "An augmented matrix in row echelon form has final row $[0, 0, 0 \\mid 0]$ with 2 leading pivots across 3 variables. What does this signify?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Augmented Matrices and Gaussian Elimination",
           "choices": [
             "The system has infinitely many solutions parameterized by 1 free variable",
             "The system has a unique solution",
@@ -38,15 +312,33 @@
             "The determinant of the matrix is 1"
           ],
           "correct": 0,
-          "answer": "With 3 variables and 2 leading pivot columns, there is $3 - 2 = 1$ free variable, which gives a line of infinitely many solutions."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Geometric Interpretation of 3 x 3 Systems",
-      "questions": [
+          "answer": "With 3 variables and 2 leading pivot columns, there is $3 - 2 = 1$ free variable, which gives a line of infinitely many solutions.",
+          "explanation": "With 3 variables and 2 leading pivot columns, there is $3 - 2 = 1$ free variable, which gives a line of infinitely many solutions.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (0))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -2.0,
+                "label": "$(0,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
         {
           "q": "What is the geometric configuration of three linear equations in three variables that possess a unique solution?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Geometric Interpretation of 3 x 3 Systems",
           "choices": [
             "Three planes intersecting at a single unique point",
             "Three planes intersecting along a common line",
@@ -54,10 +346,14 @@
             "Three planes forming a triangular prism"
           ],
           "correct": 0,
-          "answer": "A unique solution $(x_0, y_0, z_0)$ means all three planes share exactly one point of intersection."
+          "answer": "A unique solution $(x_0, y_0, z_0)$ means all three planes share exactly one point of intersection.",
+          "explanation": "A unique solution $(x_0, y_0, z_0)$ means all three planes share exactly one point of intersection."
         },
         {
           "q": "If three planes intersect along a single straight line, what type of system is this?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Geometric Interpretation of 3 x 3 Systems",
           "choices": [
             "Consistent dependent system with infinitely many solutions",
             "Inconsistent system with no solutions",
@@ -65,10 +361,14 @@
             "Homogeneous system with trivial solution only"
           ],
           "correct": 0,
-          "answer": "Intersection along a line means infinitely many common points exist, parameterized by 1 free variable."
+          "answer": "Intersection along a line means infinitely many common points exist, parameterized by 1 free variable.",
+          "explanation": "Intersection along a line means infinitely many common points exist, parameterized by 1 free variable."
         },
         {
           "q": "Three planes form the faces of an open triangular prism with no common line or point. How is this system classified?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Geometric Interpretation of 3 x 3 Systems",
           "choices": [
             "Inconsistent (no solutions)",
             "Infinitely many solutions",
@@ -76,15 +376,14 @@
             "Singular dependent"
           ],
           "correct": 0,
-          "answer": "Each pair of planes intersects in a line, but all three lines are parallel and distinct, meaning there is no point common to all three planes simultaneously."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Determinants and Cramer's Rule",
-      "questions": [
+          "answer": "Each pair of planes intersects in a line, but all three lines are parallel and distinct, meaning there is no point common to all three planes simultaneously.",
+          "explanation": "Each pair of planes intersects in a line, but all three lines are parallel and distinct, meaning there is no point common to all three planes simultaneously."
+        },
         {
           "q": "Evaluate the $2 \\times 2$ determinant $\\det [[4, -3], [2, 5]]$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Determinants and Cramer's Rule",
           "choices": [
             "$26$",
             "$14$",
@@ -92,21 +391,53 @@
             "$20$"
           ],
           "correct": 0,
-          "answer": "$\\det = ad - bc = 4(5) - (-3)(2) = 20 - (-6) = 26$."
+          "answer": "$\\det = ad - bc = 4(5) - (-3)(2) = 20 - (-6) = 26$.",
+          "explanation": "$\\det = ad - bc = 4(5) - (-3)(2) = 20 - (-6) = 26$."
         },
         {
           "q": "Under what condition does a $3 \\times 3$ system $A \\mathbf{x} = \\mathbf{b}$ have a unique solution?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Determinants and Cramer's Rule",
           "choices": [
             "$\\det(A) \\neq 0$",
             "$\\det(A) = 0$",
             "$\\mathbf{b} = \\mathbf{0}$",
-            "$\\text{Tr}(A) > 0$"
+            "$\\mathrm{Tr}(A) > 0$"
           ],
           "correct": 0,
-          "answer": "A square system $A \\mathbf{x} = \\mathbf{b}$ has a unique solution if and only if the coefficient matrix $A$ is non-singular, meaning $\\det(A) \\neq 0$."
-        },
+          "answer": "A square system $A \\mathbf{x} = \\mathbf{b}$ has a unique solution if and only if the coefficient matrix $A$ is non-singular, meaning $\\det(A) \\neq 0$.",
+          "explanation": "A square system $A \\mathbf{x} = \\mathbf{b}$ has a unique solution if and only if the coefficient matrix $A$ is non-singular, meaning $\\det(A) \\neq 0$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
         {
           "q": "If $\\det(A) = 0$ for a system $A \\mathbf{x} = \\mathbf{b}$, what can be concluded?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Determinants and Cramer's Rule",
           "choices": [
             "The system either has no solutions or infinitely many solutions",
             "The system must have no solutions",
@@ -114,15 +445,14 @@
             "The system has exactly 2 solutions"
           ],
           "correct": 0,
-          "answer": "When $\\det(A) = 0$, $A$ is singular; depending on the consistency of the constant vector $\\mathbf{b}$, the system has either zero solutions or infinitely many solutions."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Parameterized Solutions and Free Variables",
-      "questions": [
+          "answer": "When $\\det(A) = 0$, $A$ is singular; depending on the consistency of the constant vector $\\mathbf{b}$, the system has either zero solutions or infinitely many solutions.",
+          "explanation": "When $\\det(A) = 0$, $A$ is singular; depending on the consistency of the constant vector $\\mathbf{b}$, the system has either zero solutions or infinitely many solutions."
+        },
         {
           "q": "Solve the system: $x + y + z = 6$ and $2x - y + z = 3$. Parameterize the solution line using $z = \\lambda$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Parameterized Solutions and Free Variables",
           "choices": [
             "$x = 3 - \\frac{2}{3}\\lambda, y = 3 - \\frac{1}{3}\\lambda, z = \\lambda$",
             "$x = 3 + \\lambda, y = 3 - \\lambda, z = \\lambda$",
@@ -130,10 +460,14 @@
             "$x = 1, y = 2, z = 3$"
           ],
           "correct": 0,
-          "answer": "Add equations: $3x + 2z = 9 \\Rightarrow 3x = 9 - 2\\lambda \\Rightarrow x = 3 - \\frac{2}{3}\\lambda$. Subtract from first: $y = 6 - x - z = 6 - (3 - \\frac{2}{3}\\lambda) - \\lambda = 3 - \\frac{1}{3}\\lambda$."
+          "answer": "Add equations: $3x + 2z = 9 \\Rightarrow 3x = 9 - 2\\lambda \\Rightarrow x = 3 - \\frac{2}{3}\\lambda$. Subtract from first: $y = 6 - x - z = 6 - (3 - \\frac{2}{3}\\lambda) - \\lambda = 3 - \\frac{1}{3}\\lambda$.",
+          "explanation": "Add equations: $3x + 2z = 9 \\Rightarrow 3x = 9 - 2\\lambda \\Rightarrow x = 3 - \\frac{2}{3}\\lambda$. Subtract from first: $y = 6 - x - z = 6 - (3 - \\frac{2}{3}\\lambda) - \\lambda = 3 - \\frac{1}{3}\\lambda$."
         },
         {
           "q": "For what value of $k$ does the system $x + 2y = 4$ and $3x + 6y = k$ have infinitely many solutions?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Parameterized Solutions and Free Variables",
           "choices": [
             "$k = 12$",
             "$k = 4$",
@@ -141,10 +475,14 @@
             "$k = 6$"
           ],
           "correct": 0,
-          "answer": "Multiply the first equation by 3: $3x + 6y = 12$. For infinitely many solutions, the equations must be identical, so $k = 12$."
+          "answer": "Multiply the first equation by 3: $3x + 6y = 12$. For infinitely many solutions, the equations must be identical, so $k = 12$.",
+          "explanation": "Multiply the first equation by 3: $3x + 6y = 12$. For infinitely many solutions, the equations must be identical, so $k = 12$."
         },
         {
           "q": "If the homogeneous system $A \\mathbf{x} = \\mathbf{0}$ has non-trivial solutions (solutions other than $\\mathbf{x} = \\mathbf{0}$), what must be true about $\\det(A)$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Parameterized Solutions and Free Variables",
           "choices": [
             "$\\det(A) = 0$",
             "$\\det(A) > 0$",
@@ -152,7 +490,289 @@
             "$\\det(A) < 0$"
           ],
           "correct": 0,
-          "answer": "A homogeneous linear system has non-trivial solutions if and only if the coefficient matrix is singular, i.e., $\\det(A) = 0$."
+          "answer": "A homogeneous linear system has non-trivial solutions if and only if the coefficient matrix is singular, i.e., $\\det(A) = 0$.",
+          "explanation": "A homogeneous linear system has non-trivial solutions if and only if the coefficient matrix is singular, i.e., $\\det(A) = 0$."
+        },
+        {
+          "q": "An investment grows by $6\\%, -4\\%, -10\\%$ in three successive years. Find the average annual (geometric mean) growth rate, to 2 decimal places.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Augmented Matrices and Gaussian Elimination",
+          "choices": [
+            "-4.89\\%",
+            "-0.89\\%",
+            "-2.89\\%",
+            "-1.39\\%"
+          ],
+          "correct": 2,
+          "answer": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.06\\times0.96\\times0.90}-1\\approx -2.89\\%$",
+          "explanation": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.06\\times0.96\\times0.90}-1\\approx -2.89\\%$"
+        },
+        {
+          "q": "An investment grows by $3\\%, 2\\%, 18\\%$ in three successive years. Find the average annual (geometric mean) growth rate, to 2 decimal places.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Geometric Interpretation of 3 x 3 Systems",
+          "choices": [
+            "8.93\\%",
+            "5.93\\%",
+            "9.43\\%",
+            "7.43\\%"
+          ],
+          "correct": 3,
+          "answer": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.03\\times1.02\\times1.18}-1\\approx 7.43\\%$",
+          "explanation": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.03\\times1.02\\times1.18}-1\\approx 7.43\\%$"
+        },
+        {
+          "q": "An investment grows by $16\\%, 4\\%, -5\\%$ in three successive years. Find the average annual (geometric mean) growth rate, to 2 decimal places.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Determinants and Cramer's Rule",
+          "choices": [
+            "7.65\\%",
+            "1.65\\%",
+            "4.65\\%",
+            "3.15\\%"
+          ],
+          "correct": 2,
+          "answer": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.16\\times1.04\\times0.95}-1\\approx 4.65\\%$",
+          "explanation": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.16\\times1.04\\times0.95}-1\\approx 4.65\\%$"
+        },
+        {
+          "q": "An investment grows by $13\\%, -7\\%, 6\\%$ in three successive years. Find the average annual (geometric mean) growth rate, to 2 decimal places.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Parameterized Solutions and Free Variables",
+          "choices": [
+            "1.66\\%",
+            "6.66\\%",
+            "2.16\\%",
+            "3.66\\%"
+          ],
+          "correct": 3,
+          "answer": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.13\\times0.93\\times1.06}-1\\approx 3.66\\%$",
+          "explanation": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.13\\times0.93\\times1.06}-1\\approx 3.66\\%$"
+        },
+        {
+          "q": "An investment grows by $1\\%, 12\\%, 0\\%$ in three successive years. Find the average annual (geometric mean) growth rate, to 2 decimal places.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Augmented Matrices and Gaussian Elimination",
+          "choices": [
+            "4.19\\%",
+            "7.19\\%",
+            "5.69\\%",
+            "1.19\\%"
+          ],
+          "correct": 0,
+          "answer": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.01\\times1.12\\times1.00}-1\\approx 4.19\\%$",
+          "explanation": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.01\\times1.12\\times1.00}-1\\approx 4.19\\%$"
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "An investment grows by $6\\%, -1\\%, 8\\%$ in three successive years. Find the average annual (geometric mean) growth rate, to 2 decimal places.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Geometric Interpretation of 3 x 3 Systems",
+          "choices": [
+            "2.76\\%",
+            "4.26\\%",
+            "1.26\\%",
+            "2.26\\%"
+          ],
+          "correct": 1,
+          "answer": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.06\\times0.99\\times1.08}-1\\approx 4.26\\%$",
+          "explanation": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.06\\times0.99\\times1.08}-1\\approx 4.26\\%$",
+          "cross_lesson": "2.01 Modulus Functions & the Factor/Remainder Theorem"
+        },
+        {
+          "q": "An investment grows by $14\\%, 7\\%, -3\\%$ in three successive years. Find the average annual (geometric mean) growth rate, to 2 decimal places.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Determinants and Cramer's Rule",
+          "choices": [
+            "2.77\\%",
+            "5.77\\%",
+            "8.77\\%",
+            "4.27\\%"
+          ],
+          "correct": 1,
+          "answer": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.14\\times1.07\\times0.97}-1\\approx 5.77\\%$",
+          "explanation": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.14\\times1.07\\times0.97}-1\\approx 5.77\\%$",
+          "cross_lesson": "3.01 3D Vectors & the Cross Product"
+        },
+        {
+          "q": "An investment grows by $10\\%, 5\\%, 5\\%$ in three successive years. Find the average annual (geometric mean) growth rate, to 2 decimal places.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Parameterized Solutions and Free Variables",
+          "choices": [
+            "5.14\\%",
+            "8.14\\%",
+            "6.64\\%",
+            "9.64\\%"
+          ],
+          "correct": 2,
+          "answer": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.10\\times1.05\\times1.05}-1\\approx 6.64\\%$",
+          "explanation": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.10\\times1.05\\times1.05}-1\\approx 6.64\\%$",
+          "cross_lesson": "3.02 Lines and Planes in Three Dimensions"
+        },
+        {
+          "q": "An investment grows by $0\\%, 19\\%, -3\\%$ in three successive years. Find the average annual (geometric mean) growth rate, to 2 decimal places.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Augmented Matrices and Gaussian Elimination",
+          "choices": [
+            "6.40\\%",
+            "4.90\\%",
+            "6.90\\%",
+            "7.90\\%"
+          ],
+          "correct": 1,
+          "answer": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.00\\times1.19\\times0.97}-1\\approx 4.90\\%$",
+          "explanation": "Working through this additional-topics step: $\\bar{r}=\\sqrt[3]{1.00\\times1.19\\times0.97}-1\\approx 4.90\\%$",
+          "cross_lesson": "3.03 Compound Angle Identities & Reciprocal Trigonometric Functions (AA HL)"
+        },
+        {
+          "q": "Which value of $k$ makes the system $x+2y=5,$ $2x+4y=k$ have infinitely many solutions?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Geometric Interpretation of 3 x 3 Systems",
+          "choices": [
+            "10",
+            "5",
+            "20",
+            "15"
+          ],
+          "correct": 0,
+          "answer": "The second equation must be exactly twice the first: $k=2(5)=10.$",
+          "explanation": "The second equation must be exactly twice the first: $k=2(5)=10.$",
+          "cross_lesson": "4.01 Unbiased Estimators & Confidence Intervals"
+        },
+        {
+          "q": "The graph of the function $f(x) = ax^2 - 6x + c$ is shown below. The graph has a vertex at the point (3, -9) and passes through the point (0, 0). Determine the values of $a$ and $c$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Determinants and Cramer's Rule",
+          "choices": [
+            "$a=1, c=0$",
+            "$a=2, c=0$",
+            "$a=1, c=3$",
+            "$a=2, c=3$"
+          ],
+          "correct": 1,
+          "answer": "The function is given by $f(x) = ax^2 - 6x + c$. The vertex of a parabola in the form $f(x) = Ax^2 + Bx + C$ is located at $x = -\\frac{B}{2A}$. In this case, $A = a$ and $B = -6$. Therefore, the x-coordinate of the vertex is $x = -\\frac{-6}{2a} = \\frac{6}{2a} = \\frac{3}{a}$. We are given that the vertex is at (3, -9), so the x-coordinate of the vertex is 3. Equating the two expressions for the x-coordinate of the vertex: $\\frac{3}{a} = 3$ Multiplying both sides by $a$ gives $3 = 3a$, so $a = 1$. Now, we use the y-coordinate of the vertex, which is $f(3) = -9$. Substitute $a=1$ into the function: $f(x) = x^2 - 6x + c$. So, $f(3) = (3)^2 - 6(3) + c = 9 - 18 + c = -9 + c$. We are given that $f(3) = -9$, so: $-9 + c = -9$ This implies $c = 0$. Alternatively, we are given that the graph passes through the point (0, 0). This means $f(0) = 0$. Substituting $x=0$ into $f(x) = ax^2 - 6x + c$: $f(0) = a(0)^2 - 6(0) + c = c$. Since $f(0) = 0$, we have $c = 0$. Now use the vertex information with $c=0$. The function is $f(x) = ax^2 - 6x$. The x-coordinate of the vertex is $\\frac{3}{a}$. We are given that the vertex is at x=3. $\\frac{3}{a} = 3 \\Rightarrow a = 1$. Thus, $a=1$ and $c=0$. This corresponds to choice A.",
+          "explanation": "The function is given by $f(x) = ax^2 - 6x + c$. The vertex of a parabola in the form $f(x) = Ax^2 + Bx + C$ is located at $x = -\\frac{B}{2A}$. In this case, $A = a$ and $B = -6$. Therefore, the x-coordinate of the vertex is $x = -\\frac{-6}{2a} = \\frac{6}{2a} = \\frac{3}{a}$. We are given that the vertex is at (3, -9), so the x-coordinate of the vertex is 3. Equating the two expressions for the x-coordinate of the vertex: $\\frac{3}{a} = 3$ Multiplying both sides by $a$ gives $3 = 3a$, so $a = 1$. Now, we use the y-coordinate of the vertex, which is $f(3) = -9$. Substitute $a=1$ into the function: $f(x) = x^2 - 6x + c$. So, $f(3) = (3)^2 - 6(3) + c = 9 - 18 + c = -9 + c$. We are given that $f(3) = -9$, so: $-9 + c = -9$ This implies $c = 0$. Alternatively, we are given that the graph passes through the point (0, 0). This means $f(0) = 0$. Substituting $x=0$ into $f(x) = ax^2 - 6x + c$: $f(0) = a(0)^2 - 6(0) + c = c$. Since $f(0) = 0$, we have $c = 0$. Now use the vertex information with $c=0$. The function is $f(x) = ax^2 - 6x$. The x-coordinate of the vertex is $\\frac{3}{a}$. We are given that the vertex is at x=3. $\\frac{3}{a} = 3 \\Rightarrow a = 1$. Thus, $a=1$ and $c=0$. This corresponds to choice A.",
+          "cross_lesson": "4.02 The Poisson Distribution",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*x - 6*x + 0",
+              "3"
+            ],
+            "xmin": -1.0,
+            "xmax": 7.0,
+            "ymin": -10.0,
+            "ymax": 5.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": 3.0,
+                "y": -9.0,
+                "label": "(3, -9)"
+              },
+              {
+                "x": 0.0,
+                "y": 0.0,
+                "label": "(0, 0)"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "The graph of the function $f(x) = \\frac{x^2 - ax + 6}{x-1}$ is shown below. The graph has a vertical asymptote at $x=1$ and a point of discontinuity at $(2, k)$. Find the value of $a$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Parameterized Solutions and Free Variables",
+          "choices": [
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "correct": 0,
+          "answer": "The function is given by $f(x) = \\frac{x^2 - ax + 6}{x-1}$. $x=1$ is a vertical asymptote, which means that $x-1$ is not a factor of the numerator, and when $x=1$, the numerator is non-zero. The point of discontinuity is at $(2, k)$. This implies that $x=2$ is a root of the numerator, so $f(2)=0$ or the expression is undefined at $x=2$ if $x-2$ were a factor of the denominator. Since the denominator is $x-1$, which is not zero at $x=2$, the function must be zero at $x=2$ for there to be a removable discontinuity (a hole). Therefore, the numerator must be zero when $x=2$. Substitute $x=2$ into the numerator: $2^2 - a(2) + 6 = 0$. $4 - 2a + 6 = 0$. $10 - 2a = 0$. $2a = 10$. $a = 5$. Common algebraic trap: If one incorrectly assumes $x=2$ is a root of the denominator, it would lead to an incorrect calculation. Also, one might confuse a vertical asymptote with a removable discontinuity.",
+          "explanation": "The function is given by $f(x) = \\frac{x^2 - ax + 6}{x-1}$. $x=1$ is a vertical asymptote, which means that $x-1$ is not a factor of the numerator, and when $x=1$, the numerator is non-zero. The point of discontinuity is at $(2, k)$. This implies that $x=2$ is a root of the numerator, so $f(2)=0$ or the expression is undefined at $x=2$ if $x-2$ were a factor of the denominator. Since the denominator is $x-1$, which is not zero at $x=2$, the function must be zero at $x=2$ for there to be a removable discontinuity (a hole). Therefore, the numerator must be zero when $x=2$. Substitute $x=2$ into the numerator: $2^2 - a(2) + 6 = 0$. $4 - 2a + 6 = 0$. $10 - 2a = 0$. $2a = 10$. $a = 5$. Common algebraic trap: If one incorrectly assumes $x=2$ is a root of the denominator, it would lead to an incorrect calculation. Also, one might confuse a vertical asymptote with a removable discontinuity.",
+          "cross_lesson": "5.01 Further Integration Techniques",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "(x*x - 5*x + 6) / (x - 1)"
+            ],
+            "xmin": -2.0,
+            "xmax": 5.0,
+            "ymin": -10.0,
+            "ymax": 10.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": 2.0,
+                "y": 0.0,
+                "label": "(2, k)"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "The graph of the function $y = f(x)$ is shown below. The function is of the form $f(x) = ax^2 + bx + c$. The vertex of the parabola is at $(2, -4)$. The parabola passes through the points $(0, 0)$ and $(4, 0)$. Determine the value of $a$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Augmented Matrices and Gaussian Elimination",
+          "choices": [
+            "-1",
+            "1",
+            "-2",
+            "2"
+          ],
+          "correct": 0,
+          "answer": "The general form of a quadratic function is $f(x) = ax^2 + bx + c$. The vertex form of a quadratic function is $f(x) = a(x-h)^2 + k$, where $(h, k)$ is the vertex. In this case, the vertex is $(2, -4)$, so $h=2$ and $k=-4$. Thus, the function can be written as $f(x) = a(x-2)^2 - 4$. We are given that the parabola passes through the point $(0, 0)$. Substitute these coordinates into the vertex form equation: $0 = a(0-2)^2 - 4$ $0 = a(-2)^2 - 4$ $0 = 4a - 4$ $4a = 4$ $a = 1$. Let's verify with the other given point $(4, 0)$: $0 = a(4-2)^2 - 4$ $0 = a(2)^2 - 4$ $0 = 4a - 4$ $4a = 4$ $a = 1$. Thus, the value of $a$ is 1. Common algebraic trap: Students might try to use $f(x) = ax^2 + bx + c$ and solve a system of equations using the three points. This is more algebraically intensive and prone to errors. Using the vertex form simplifies the problem significantly.",
+          "explanation": "The general form of a quadratic function is $f(x) = ax^2 + bx + c$. The vertex form of a quadratic function is $f(x) = a(x-h)^2 + k$, where $(h, k)$ is the vertex. In this case, the vertex is $(2, -4)$, so $h=2$ and $k=-4$. Thus, the function can be written as $f(x) = a(x-2)^2 - 4$. We are given that the parabola passes through the point $(0, 0)$. Substitute these coordinates into the vertex form equation: $0 = a(0-2)^2 - 4$ $0 = a(-2)^2 - 4$ $0 = 4a - 4$ $4a = 4$ $a = 1$. Let's verify with the other given point $(4, 0)$: $0 = a(4-2)^2 - 4$ $0 = a(2)^2 - 4$ $0 = 4a - 4$ $4a = 4$ $a = 1$. Thus, the value of $a$ is 1. Common algebraic trap: Students might try to use $f(x) = ax^2 + bx + c$ and solve a system of equations using the three points. This is more algebraically intensive and prone to errors. Using the vertex form simplifies the problem significantly.",
+          "cross_lesson": "5.02 Differential Equations",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "1*(x-2)**2 - 4"
+            ],
+            "xmin": -2.0,
+            "xmax": 6.0,
+            "ymin": -5.0,
+            "ymax": 5.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": 0.0,
+                "label": "(0, 0)"
+              },
+              {
+                "x": 4.0,
+                "y": 0.0,
+                "label": "(4, 0)"
+              },
+              {
+                "x": 2.0,
+                "y": -4.0,
+                "label": "Vertex (2, -4)"
+              }
+            ],
+            "width": 230
+          }
         }
       ]
     }

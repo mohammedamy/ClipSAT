@@ -3,12 +3,246 @@
   "num": "3.01",
   "slug": "second-order-linear-homogeneous-equations",
   "title": "Second-Order Linear Homogeneous Equations",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 3.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Distinct Real Roots",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+      "questions": [
+        {
+          "q": "Write the auxiliary (characteristic) equation for $y'' - 5y' + 6y = 0$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "The auxiliary equation",
+          "answer": "$r^2 - 5r + 6 = 0$.",
+          "explanation": "$r^2 - 5r + 6 = 0$."
+        },
+        {
+          "q": "Write and simplify the auxiliary equation for $2y'' + 4y' - 6y = 0$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "The auxiliary equation",
+          "answer": "$2r^2 + 4r - 6 = 0$, which simplifies to $r^2 + 2r - 3 = 0$.",
+          "explanation": "$2r^2 + 4r - 6 = 0$, which simplifies to $r^2 + 2r - 3 = 0$.",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*2",
+            "sol_fn": "1.4*x - 5.2 + 5*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        },
+        {
+          "q": "Explain why substituting $y=e^{rx}$ into $ay''+by'+cy=0$ produces the auxiliary equation $ar^2+br+c=0$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "The auxiliary equation",
+          "answer": "$y=e^{rx}$ gives $y'=re^{rx}$ and $y''=r^2e^{rx}$. Substituting: $ar^2e^{rx}+bre^{rx}+ce^{rx}=0$, i.e., $e^{rx}(ar^2+br+c)=0$. Since $e^{rx}\\neq0$ for all $x$, this forces $ar^2+br+c=0$.",
+          "explanation": "$y=e^{rx}$ gives $y'=re^{rx}$ and $y''=r^2e^{rx}$. Substituting: $ar^2e^{rx}+bre^{rx}+ce^{rx}=0$, i.e., $e^{rx}(ar^2+br+c)=0$. Since $e^{rx}\\neq0$ for all $x$, this forces $ar^2+br+c=0$."
+        },
+        {
+          "q": "Solve $y'' - 5y' + 6y = 0$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Distinct real roots",
+          "answer": "$r^2-5r+6=(r-2)(r-3)=0 \\Rightarrow r = 2, 3$. General solution: $y = C_1e^{2x} + C_2e^{3x}$.",
+          "explanation": "$r^2-5r+6=(r-2)(r-3)=0 \\Rightarrow r = 2, 3$. General solution: $y = C_1e^{2x} + C_2e^{3x}$."
+        },
+        {
+          "q": "Solve $y'' + 2y' - 3y = 0$, $y(0)=1$, $y'(0)=1$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Distinct real roots",
+          "answer": "$r^2+2r-3=(r+3)(r-1)=0 \\Rightarrow r=-3,1$. So $y=C_1e^{-3x}+C_2e^{x}$. From $y(0)=1$: $C_1+C_2=1$. From $y'(0)=1$: $-3C_1+C_2=1$. Subtracting gives $4C_1=0$, so $C_1=0$, $C_2=1$. Thus $y = e^{x}$.",
+          "explanation": "$r^2+2r-3=(r+3)(r-1)=0 \\Rightarrow r=-3,1$. So $y=C_1e^{-3x}+C_2e^{x}$. From $y(0)=1$: $C_1+C_2=1$. From $y'(0)=1$: $-3C_1+C_2=1$. Subtracting gives $4C_1=0$, so $C_1=0$, $C_2=1$. Thus $y = e^{x}$."
+        },
+        {
+          "q": "Solve $y'' - y' - 6y = 0$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Distinct real roots",
+          "answer": "$r^2-r-6=(r-3)(r+2)=0 \\Rightarrow r=3,-2$. General solution: $y=C_1e^{3x}+C_2e^{-2x}$.",
+          "explanation": "$r^2-r-6=(r-3)(r+2)=0 \\Rightarrow r=3,-2$. General solution: $y=C_1e^{3x}+C_2e^{-2x}$.",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*2",
+            "sol_fn": "1.4*x - 5.2 + 5*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        },
+        {
+          "q": "Solve $y'' - 9y = 0$ (note this factors as a difference of squares in $r$).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Distinct real roots",
+          "answer": "$r^2-9=(r-3)(r+3)=0 \\Rightarrow r=\\pm3$. General solution: $y=C_1e^{3x}+C_2e^{-3x}$.",
+          "explanation": "$r^2-9=(r-3)(r+3)=0 \\Rightarrow r=\\pm3$. General solution: $y=C_1e^{3x}+C_2e^{-3x}$."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Solve $y'' - 6y' + 9y = 0$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Repeated roots",
+          "answer": "$r^2-6r+9=(r-3)^2=0 \\Rightarrow r=3$ (repeated). General solution: $y = (C_1+C_2x)e^{3x}$.",
+          "explanation": "$r^2-6r+9=(r-3)^2=0 \\Rightarrow r=3$ (repeated). General solution: $y = (C_1+C_2x)e^{3x}$."
+        },
+        {
+          "q": "Solve $y'' + 4y' + 4y = 0$, $y(0)=2$, $y'(0)=-1$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Repeated roots",
+          "answer": "$r^2+4r+4=(r+2)^2=0 \\Rightarrow r=-2$. So $y=(C_1+C_2x)e^{-2x}$. From $y(0)=2$: $C_1=2$. Differentiating, $y' = C_2e^{-2x} - 2(C_1+C_2x)e^{-2x}$; $y'(0) = C_2 - 2C_1 = -1 \\Rightarrow C_2 = 2(2)-1=3$. Thus $y=(2+3x)e^{-2x}$.",
+          "explanation": "$r^2+4r+4=(r+2)^2=0 \\Rightarrow r=-2$. So $y=(C_1+C_2x)e^{-2x}$. From $y(0)=2$: $C_1=2$. Differentiating, $y' = C_2e^{-2x} - 2(C_1+C_2x)e^{-2x}$; $y'(0) = C_2 - 2C_1 = -1 \\Rightarrow C_2 = 2(2)-1=3$. Thus $y=(2+3x)e^{-2x}$."
+        },
+        {
+          "q": "Explain why, for a repeated root $r$, $y_2=xe^{rx}$ (not just a second copy of $e^{rx}$) is needed to build the general solution.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Repeated roots",
+          "answer": "$y_1=e^{rx}$ and a constant multiple of it, $ce^{rx}$, are linearly dependent — they don't give two independent solutions needed for a second-order equation's two-dimensional solution space. Direct substitution confirms $y_2=xe^{rx}$ also solves the ODE when $r$ is a repeated root, and $y_1,y_2$ are linearly independent (their Wronskian is $e^{2rx}\\neq0$), so together they span the full solution space.",
+          "explanation": "$y_1=e^{rx}$ and a constant multiple of it, $ce^{rx}$, are linearly dependent — they don't give two independent solutions needed for a second-order equation's two-dimensional solution space. Direct substitution confirms $y_2=xe^{rx}$ also solves the ODE when $r$ is a repeated root, and $y_1,y_2$ are linearly independent (their Wronskian is $e^{2rx}\\neq0$), so together they span the full solution space.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Solve $y'' + 4y = 0$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Complex roots",
+          "answer": "$r^2+4=0 \\Rightarrow r=\\pm 2i$. General solution: $y = C_1\\cos 2x + C_2\\sin 2x$.",
+          "explanation": "$r^2+4=0 \\Rightarrow r=\\pm 2i$. General solution: $y = C_1\\cos 2x + C_2\\sin 2x$."
+        },
+        {
+          "q": "Solve $y'' - 2y' + 5y = 0$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Complex roots",
+          "answer": "$r^2-2r+5=0 \\Rightarrow r=\\frac{2\\pm\\sqrt{4-20}}{2}=1\\pm 2i$. General solution: $y = e^{x}(C_1\\cos 2x + C_2\\sin 2x)$.",
+          "explanation": "$r^2-2r+5=0 \\Rightarrow r=\\frac{2\\pm\\sqrt{4-20}}{2}=1\\pm 2i$. General solution: $y = e^{x}(C_1\\cos 2x + C_2\\sin 2x)$."
+        },
+        {
+          "q": "Solve $y'' + 9y = 0$, $y(0)=2$, $y'(0)=3$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Complex roots",
+          "answer": "$r^2+9=0 \\Rightarrow r=\\pm3i$. So $y=C_1\\cos3x+C_2\\sin3x$. $y(0)=C_1=2$. $y'=-3C_1\\sin3x+3C_2\\cos3x$; $y'(0)=3C_2=3 \\Rightarrow C_2=1$. Thus $y=2\\cos3x+\\sin3x$.",
+          "explanation": "$r^2+9=0 \\Rightarrow r=\\pm3i$. So $y=C_1\\cos3x+C_2\\sin3x$. $y(0)=C_1=2$. $y'=-3C_1\\sin3x+3C_2\\cos3x$; $y'(0)=3C_2=3 \\Rightarrow C_2=1$. Thus $y=2\\cos3x+\\sin3x$."
+        },
+        {
+          "q": "Solve $y'' + 2y' + 2y = 0$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Complex roots",
+          "answer": "$r^2+2r+2=0 \\Rightarrow r=\\frac{-2\\pm\\sqrt{4-8}}{2}=-1\\pm i$. General solution: $y=e^{-x}(C_1\\cos x+C_2\\sin x)$.",
+          "explanation": "$r^2+2r+2=0 \\Rightarrow r=\\frac{-2\\pm\\sqrt{4-8}}{2}=-1\\pm i$. General solution: $y=e^{-x}(C_1\\cos x+C_2\\sin x)$."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "Without solving, state whether $y'' + 6y' + 5y = 0$ has real, repeated, or complex roots, using the discriminant $b^2-4ac$ of the auxiliary equation.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Classifying without fully solving",
+          "cross_lesson": "1.01 Separable Equations",
+          "answer": "Discriminant $=36-20=16>0$ and a perfect square, so the roots are real and distinct ($r=-1,-5$).",
+          "explanation": "Discriminant $=36-20=16>0$ and a perfect square, so the roots are real and distinct ($r=-1,-5$)."
+        },
+        {
+          "q": "Without solving, classify the roots of $y'' + 10y' + 25y = 0$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Classifying without fully solving",
+          "cross_lesson": "2.01 Linear First-Order Equations & the Integrating Factor",
+          "answer": "Discriminant $=100-100=0$, so the auxiliary equation has one repeated real root ($r=-5$).",
+          "explanation": "Discriminant $=100-100=0$, so the auxiliary equation has one repeated real root ($r=-5$).",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*4",
+            "sol_fn": "1.4*x - 5.2 + 7*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        },
+        {
+          "q": "Without solving, classify the roots of $y'' + 2y' + 10y = 0$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Classifying without fully solving",
+          "cross_lesson": "4.01 Nonhomogeneous Equations & Undetermined Coefficients",
+          "answer": "Discriminant $=4-40=-36<0$, so the roots are complex conjugates ($r=-1\\pm3i$).",
+          "explanation": "Discriminant $=4-40=-36<0$, so the roots are complex conjugates ($r=-1\\pm3i$)."
+        },
+        {
+          "q": "A mass–spring–damper system satisfies $y'' + 4y' + 5y = 0$. Find the general solution and classify the damping (over/critically/under-damped).",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Application: a damped spring",
+          "cross_lesson": "5.01 Variation of Parameters",
+          "answer": "$r^2+4r+5=0$, discriminant $=16-20=-4<0$, so $r=-2\\pm i$. General solution: $y = e^{-2x}(C_1\\cos x + C_2\\sin x)$ — this is under-damped (complex roots with negative real part give oscillatory decay).",
+          "explanation": "$r^2+4r+5=0$, discriminant $=16-20=-4<0$, so $r=-2\\pm i$. General solution: $y = e^{-2x}(C_1\\cos x + C_2\\sin x)$ — this is under-damped (complex roots with negative real part give oscillatory decay)."
+        },
+        {
+          "q": "Solve $y'' + 6y' + 9y = 0$, $y(0)=1$, $y'(0)=0$, and classify the damping.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Application: a damped spring",
+          "cross_lesson": "1.01 Separable Equations",
+          "answer": "$r^2+6r+9=(r+3)^2=0 \\Rightarrow r=-3$ (repeated) — critically damped. So $y=(C_1+C_2x)e^{-3x}$. From $y(0)=1$: $C_1=1$. $y'=C_2e^{-3x}-3(C_1+C_2x)e^{-3x}$; $y'(0)=C_2-3C_1=0 \\Rightarrow C_2=3$. Thus $y=(1+3x)e^{-3x}$.",
+          "explanation": "$r^2+6r+9=(r+3)^2=0 \\Rightarrow r=-3$ (repeated) — critically damped. So $y=(C_1+C_2x)e^{-3x}$. From $y(0)=1$: $C_1=1$. $y'=C_2e^{-3x}-3(C_1+C_2x)e^{-3x}$; $y'(0)=C_2-3C_1=0 \\Rightarrow C_2=3$. Thus $y=(1+3x)e^{-3x}$."
+        },
+        {
+          "q": "Solve $y'' + 5y' + 6y = 0$, $y(0)=1$, $y'(0)=0$, and classify the damping.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Application: a damped spring",
+          "cross_lesson": "2.01 Linear First-Order Equations & the Integrating Factor",
+          "answer": "$r^2+5r+6=(r+2)(r+3)=0 \\Rightarrow r=-2,-3$ (real, distinct, both negative) — over-damped. So $y=C_1e^{-2x}+C_2e^{-3x}$. $y(0)=C_1+C_2=1$. $y'=-2C_1e^{-2x}-3C_2e^{-3x}$; $y'(0)=-2C_1-3C_2=0 \\Rightarrow C_1=-\\frac{3}{2}C_2$. Substituting: $-\\frac{3}{2}C_2+C_2=1 \\Rightarrow -\\frac{1}{2}C_2=1 \\Rightarrow C_2=-2$, $C_1=3$. Thus $y=3e^{-2x}-2e^{-3x}$.",
+          "explanation": "$r^2+5r+6=(r+2)(r+3)=0 \\Rightarrow r=-2,-3$ (real, distinct, both negative) — over-damped. So $y=C_1e^{-2x}+C_2e^{-3x}$. $y(0)=C_1+C_2=1$. $y'=-2C_1e^{-2x}-3C_2e^{-3x}$; $y'(0)=-2C_1-3C_2=0 \\Rightarrow C_1=-\\frac{3}{2}C_2$. Substituting: $-\\frac{3}{2}C_2+C_2=1 \\Rightarrow -\\frac{1}{2}C_2=1 \\Rightarrow C_2=-2$, $C_1=3$. Thus $y=3e^{-2x}-2e^{-3x}$."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
           "q": "Solve the auxiliary characteristic equation for $y'' - 5y' + 6y = 0$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Distinct Real Roots",
           "choices": [
             "$r = 2$ and $r = 3$",
             "$r = -2$ and $r = -3$",
@@ -16,10 +250,14 @@
             "$r = \\pm \\sqrt{6}$"
           ],
           "correct": 0,
-          "answer": "Characteristic equation: $r^2 - 5r + 6 = 0 \\Rightarrow (r - 2)(r - 3) = 0 \\Rightarrow r = 2, 3$."
+          "answer": "Characteristic equation: $r^2 - 5r + 6 = 0 \\Rightarrow (r - 2)(r - 3) = 0 \\Rightarrow r = 2, 3$.",
+          "explanation": "Characteristic equation: $r^2 - 5r + 6 = 0 \\Rightarrow (r - 2)(r - 3) = 0 \\Rightarrow r = 2, 3$."
         },
         {
           "q": "What is the general solution to $y'' - 5y' + 6y = 0$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Distinct Real Roots",
           "choices": [
             "$y = c_1 e^{2x} + c_2 e^{3x}$",
             "$y = c_1 e^{-2x} + c_2 e^{-3x}$",
@@ -27,10 +265,14 @@
             "$y = c_1 \\cos(2x) + c_2 \\sin(3x)$"
           ],
           "correct": 0,
-          "answer": "For two distinct real roots $r_1, r_2$, the fundamental solution set is $\\{e^{r_1 x}, e^{r_2 x}\\}$, yielding $y = c_1 e^{2x} + c_2 e^{3x}$."
+          "answer": "For two distinct real roots $r_1, r_2$, the fundamental solution set is $\\{e^{r_1 x}, e^{r_2 x}\\}$, yielding $y = c_1 e^{2x} + c_2 e^{3x}$.",
+          "explanation": "For two distinct real roots $r_1, r_2$, the fundamental solution set is $\\{e^{r_1 x}, e^{r_2 x}\\}$, yielding $y = c_1 e^{2x} + c_2 e^{3x}$."
         },
         {
           "q": "Solve the IVP $y'' - y = 0$ with $y(0) = 4$ and $y'(0) = 2$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Distinct Real Roots",
           "choices": [
             "$y = 3e^x + e^{-x}$",
             "$y = 2e^x + 2e^{-x}$",
@@ -38,15 +280,24 @@
             "$y = e^x + 3e^{-x}$"
           ],
           "correct": 0,
-          "answer": "$r^2 - 1 = 0 \\Rightarrow r = \\pm 1 \\Rightarrow y = c_1 e^x + c_2 e^{-x}$. $y'(x) = c_1 e^x - c_2 e^{-x}$. $y(0) = c_1 + c_2 = 4$ and $y'(0) = c_1 - c_2 = 2$. Adding: $2c_1 = 6 \\Rightarrow c_1 = 3, c_2 = 1$. Thus $y = 3e^x + e^{-x}$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Repeated Real Roots",
-      "questions": [
+          "answer": "$r^2 - 1 = 0 \\Rightarrow r = \\pm 1 \\Rightarrow y = c_1 e^x + c_2 e^{-x}$. $y'(x) = c_1 e^x - c_2 e^{-x}$. $y(0) = c_1 + c_2 = 4$ and $y'(0) = c_1 - c_2 = 2$. Adding: $2c_1 = 6 \\Rightarrow c_1 = 3, c_2 = 1$. Thus $y = 3e^x + e^{-x}$.",
+          "explanation": "$r^2 - 1 = 0 \\Rightarrow r = \\pm 1 \\Rightarrow y = c_1 e^x + c_2 e^{-x}$. $y'(x) = c_1 e^x - c_2 e^{-x}$. $y(0) = c_1 + c_2 = 4$ and $y'(0) = c_1 - c_2 = 2$. Adding: $2c_1 = 6 \\Rightarrow c_1 = 3, c_2 = 1$. Thus $y = 3e^x + e^{-x}$.",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*3",
+            "sol_fn": "1.4*x - 5.2 + 6*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        },
         {
           "q": "What is the general solution to $y'' - 6y' + 9y = 0$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Repeated Real Roots",
           "choices": [
             "$y = (c_1 + c_2 x)e^{3x}$",
             "$y = c_1 e^{3x} + c_2 e^{-3x}$",
@@ -54,10 +305,14 @@
             "$y = c_1 \\cos(3x) + c_2 \\sin(3x)$"
           ],
           "correct": 0,
-          "answer": "Characteristic equation: $r^2 - 6r + 9 = (r - 3)^2 = 0 \\Rightarrow r = 3$ (repeated root). The general solution is $y = (c_1 + c_2 x)e^{3x}$."
+          "answer": "Characteristic equation: $r^2 - 6r + 9 = (r - 3)^2 = 0 \\Rightarrow r = 3$ (repeated root). The general solution is $y = (c_1 + c_2 x)e^{3x}$.",
+          "explanation": "Characteristic equation: $r^2 - 6r + 9 = (r - 3)^2 = 0 \\Rightarrow r = 3$ (repeated root). The general solution is $y = (c_1 + c_2 x)e^{3x}$."
         },
         {
           "q": "Why is the factor $x$ introduced into the second solution $x e^{rx}$ for repeated roots?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Repeated Real Roots",
           "choices": [
             "To ensure linear independence from the first solution $e^{rx}$",
             "Because the derivative of $e^{rx}$ contains $x$",
@@ -65,10 +320,14 @@
             "By Euler's identity"
           ],
           "correct": 0,
-          "answer": "Reduction of order proves that $y_2 = x e^{rx}$ is linearly independent of $y_1 = e^{rx}$, giving a non-zero Wronskian."
+          "answer": "Reduction of order proves that $y_2 = x e^{rx}$ is linearly independent of $y_1 = e^{rx}$, giving a non-zero Wronskian.",
+          "explanation": "Reduction of order proves that $y_2 = x e^{rx}$ is linearly independent of $y_1 = e^{rx}$, giving a non-zero Wronskian."
         },
         {
           "q": "Solve $y'' + 4y' + 4y = 0$ with $y(0) = 2$ and $y'(0) = -1$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Repeated Real Roots",
           "choices": [
             "$y = (2 + 3x)e^{-2x}$",
             "$y = (2 - x)e^{-2x}$",
@@ -76,15 +335,14 @@
             "$y = (2 + x)e^{-2x}$"
           ],
           "correct": 0,
-          "answer": "$r = -2$ repeated: $y = (c_1 + c_2 x)e^{-2x}$. $y(0) = c_1 = 2$. $y'(x) = c_2 e^{-2x} - 2(c_1 + c_2 x)e^{-2x}$. $y'(0) = c_2 - 2c_1 = -1 \\Rightarrow c_2 - 4 = -1 \\Rightarrow c_2 = 3$. Thus $y = (2 + 3x)e^{-2x}$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Complex Conjugate Roots",
-      "questions": [
+          "answer": "$r = -2$ repeated: $y = (c_1 + c_2 x)e^{-2x}$. $y(0) = c_1 = 2$. $y'(x) = c_2 e^{-2x} - 2(c_1 + c_2 x)e^{-2x}$. $y'(0) = c_2 - 2c_1 = -1 \\Rightarrow c_2 - 4 = -1 \\Rightarrow c_2 = 3$. Thus $y = (2 + 3x)e^{-2x}$.",
+          "explanation": "$r = -2$ repeated: $y = (c_1 + c_2 x)e^{-2x}$. $y(0) = c_1 = 2$. $y'(x) = c_2 e^{-2x} - 2(c_1 + c_2 x)e^{-2x}$. $y'(0) = c_2 - 2c_1 = -1 \\Rightarrow c_2 - 4 = -1 \\Rightarrow c_2 = 3$. Thus $y = (2 + 3x)e^{-2x}$."
+        },
         {
           "q": "If the characteristic equation has complex roots $r = \\alpha \\pm i\\beta$, what is the real general solution?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Complex Conjugate Roots",
           "choices": [
             "$y = e^{\\alpha x}(c_1 \\cos(\\beta x) + c_2 \\sin(\\beta x))$",
             "$y = c_1 e^{\\alpha x} + c_2 e^{\\beta x}$",
@@ -92,10 +350,14 @@
             "$y = c_1 \\cos((\\alpha + \\beta)x)$"
           ],
           "correct": 0,
-          "answer": "By Euler's formula $e^{(\\alpha \\pm i\\beta)x} = e^{\\alpha x}(\\cos(\\beta x) \\pm i\\sin(\\beta x))$, the real fundamental solution basis is $\\{e^{\\alpha x}\\cos(\\beta x), e^{\\alpha x}\\sin(\\beta x)\\}$."
+          "answer": "By Euler's formula $e^{(\\alpha \\pm i\\beta)x} = e^{\\alpha x}(\\cos(\\beta x) \\pm i\\sin(\\beta x))$, the real fundamental solution basis is $\\{e^{\\alpha x}\\cos(\\beta x), e^{\\alpha x}\\sin(\\beta x)\\}$.",
+          "explanation": "By Euler's formula $e^{(\\alpha \\pm i\\beta)x} = e^{\\alpha x}(\\cos(\\beta x) \\pm i\\sin(\\beta x))$, the real fundamental solution basis is $\\{e^{\\alpha x}\\cos(\\beta x), e^{\\alpha x}\\sin(\\beta x)\\}$."
         },
         {
           "q": "Find the general solution to $y'' + 16y = 0$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Complex Conjugate Roots",
           "choices": [
             "$y = c_1 \\cos(4x) + c_2 \\sin(4x)$",
             "$y = c_1 e^{4x} + c_2 e^{-4x}$",
@@ -103,10 +365,29 @@
             "$y = c_1 \\cos(16x) + c_2 \\sin(16x)$"
           ],
           "correct": 0,
-          "answer": "$r^2 + 16 = 0 \\Rightarrow r = \\pm 4i$ (with $\\alpha = 0, \\beta = 4$). Thus $y = c_1 \\cos(4x) + c_2 \\sin(4x)$."
-        },
+          "answer": "$r^2 + 16 = 0 \\Rightarrow r = \\pm 4i$ (with $\\alpha = 0, \\beta = 4$). Thus $y = c_1 \\cos(4x) + c_2 \\sin(4x)$.",
+          "explanation": "$r^2 + 16 = 0 \\Rightarrow r = \\pm 4i$ (with $\\alpha = 0, \\beta = 4$). Thus $y = c_1 \\cos(4x) + c_2 \\sin(4x)$.",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*4",
+            "sol_fn": "1.4*x - 5.2 + 7*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
         {
           "q": "Solve the characteristic equation for $y'' - 2y' + 5y = 0$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Complex Conjugate Roots",
           "choices": [
             "$r = 1 \\pm 2i$",
             "$r = 2 \\pm 4i$",
@@ -114,15 +395,14 @@
             "$r = 1 \\pm 4i$"
           ],
           "correct": 0,
-          "answer": "Quadratic formula: $r = \\frac{2 \\pm \\sqrt{4 - 20}}{2} = \\frac{2 \\pm \\sqrt{-16}}{2} = \\frac{2 \\pm 4i}{2} = 1 \\pm 2i$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Harmonic Motion and Damping Regimes",
-      "questions": [
+          "answer": "Quadratic formula: $r = \\frac{2 \\pm \\sqrt{4 - 20}}{2} = \\frac{2 \\pm \\sqrt{-16}}{2} = \\frac{2 \\pm 4i}{2} = 1 \\pm 2i$.",
+          "explanation": "Quadratic formula: $r = \\frac{2 \\pm \\sqrt{4 - 20}}{2} = \\frac{2 \\pm \\sqrt{-16}}{2} = \\frac{2 \\pm 4i}{2} = 1 \\pm 2i$."
+        },
         {
           "q": "A mechanical oscillator modeled by $m y'' + c y' + k y = 0$ is underdamped when:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Harmonic Motion and Damping Regimes",
           "choices": [
             "$c^2 - 4mk < 0$ (oscillatory motion with exponentially decaying amplitude)",
             "$c^2 - 4mk = 0$ (critically damped)",
@@ -130,10 +410,14 @@
             "$c = 0$ (undamped simple harmonic motion)"
           ],
           "correct": 0,
-          "answer": "When the discriminant $c^2 - 4mk < 0$, the characteristic roots are complex conjugates, causing oscillatory motion that decays exponentially."
+          "answer": "When the discriminant $c^2 - 4mk < 0$, the characteristic roots are complex conjugates, causing oscillatory motion that decays exponentially.",
+          "explanation": "When the discriminant $c^2 - 4mk < 0$, the characteristic roots are complex conjugates, causing oscillatory motion that decays exponentially."
         },
         {
           "q": "Which damping condition returns a displaced mass to equilibrium in the shortest time without oscillating?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Harmonic Motion and Damping Regimes",
           "choices": [
             "Critical damping ($c^2 = 4mk$)",
             "Overdamping ($c^2 > 4mk$)",
@@ -141,18 +425,261 @@
             "Zero damping"
           ],
           "correct": 0,
-          "answer": "Critical damping provides the most rapid return to equilibrium without experiencing overshoot or oscillation."
+          "answer": "Critical damping provides the most rapid return to equilibrium without experiencing overshoot or oscillation.",
+          "explanation": "Critical damping provides the most rapid return to equilibrium without experiencing overshoot or oscillation."
         },
         {
           "q": "What is the natural frequency $\\omega_0$ of the undamped oscillator $y'' + 25y = 0$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Harmonic Motion and Damping Regimes",
           "choices": [
-            "$\\omega_0 = 5\\text{ rad/s}$",
-            "$\\omega_0 = 25\\text{ rad/s}$",
-            "$\\omega_0 = 10\\text{ rad/s}$",
-            "$\\omega_0 = 2.5\\text{ rad/s}$"
+            "$\\omega_0 = 5\\mathrm{\\ rad/s}$",
+            "$\\omega_0 = 25\\mathrm{\\ rad/s}$",
+            "$\\omega_0 = 10\\mathrm{\\ rad/s}$",
+            "$\\omega_0 = 2.5\\mathrm{\\ rad/s}$"
           ],
           "correct": 0,
-          "answer": "In $y'' + \\omega_0^2 y = 0$, $\\omega_0^2 = 25 \\Rightarrow \\omega_0 = 5\\text{ rad/s}$."
+          "answer": "In $y'' + \\omega_0^2 y = 0$, $\\omega_0^2 = 25 \\Rightarrow \\omega_0 = 5\\mathrm{\\ rad/s}$.",
+          "explanation": "In $y'' + \\omega_0^2 y = 0$, $\\omega_0^2 = 25 \\Rightarrow \\omega_0 = 5\\mathrm{\\ rad/s}$."
+        },
+        {
+          "q": "Consider the second-order linear homogeneous differential equation: $y^{\\prime\\prime}(x) - ky^{\\prime}(x) + 4y(x) = 0$. If the characteristic equation has a repeated real root, and one of the solutions to the differential equation is $y_1(x) = xe^{2x}$, determine the value of the parameter $k$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "The auxiliary equation",
+          "choices": [
+            "2",
+            "4",
+            "3",
+            "1"
+          ],
+          "correct": 1,
+          "answer": "The given differential equation is $y^{\\prime\\prime}(x) - ky^{\\prime}(x) + 4y(x) = 0$. The auxiliary equation is $r^2 - kr + 4 = 0$. For the auxiliary equation to have a repeated real root, the discriminant must be zero: $D = (-k)^2 - 4(1)(4) = 0$. This implies $k^2 - 16 = 0$, so $k = \\pm 4$. If $k=4$, the auxiliary equation is $r^2 - 4r + 4 = 0$, which factors as $(r-2)^2 = 0$, yielding a repeated real root $r=2$. The general solution for a repeated real root $r$ is $y(x) = c_1e^{rx} + c_2xe^{rx}$. In this case, $y(x) = c_1e^{2x} + c_2xe^{2x}$. If $k=-4$, the auxiliary equation is $r^2 + 4r + 4 = 0$, which factors as $(r+2)^2 = 0$, yielding a repeated real root $r=-2$. The general solution would be $y(x) = c_1e^{-2x} + c_2xe^{-2x}$. We are given that one of the solutions is $y_1(x) = xe^{2x}$. This form matches the solution obtained when $k=4$ and the repeated root is $r=2$. Therefore, the value of $k$ must be 4.",
+          "explanation": "The given differential equation is $y^{\\prime\\prime}(x) - ky^{\\prime}(x) + 4y(x) = 0$. The auxiliary equation is $r^2 - kr + 4 = 0$. For the auxiliary equation to have a repeated real root, the discriminant must be zero: $D = (-k)^2 - 4(1)(4) = 0$. This implies $k^2 - 16 = 0$, so $k = \\pm 4$. If $k=4$, the auxiliary equation is $r^2 - 4r + 4 = 0$, which factors as $(r-2)^2 = 0$, yielding a repeated real root $r=2$. The general solution for a repeated real root $r$ is $y(x) = c_1e^{rx} + c_2xe^{rx}$. In this case, $y(x) = c_1e^{2x} + c_2xe^{2x}$. If $k=-4$, the auxiliary equation is $r^2 + 4r + 4 = 0$, which factors as $(r+2)^2 = 0$, yielding a repeated real root $r=-2$. The general solution would be $y(x) = c_1e^{-2x} + c_2xe^{-2x}$. We are given that one of the solutions is $y_1(x) = xe^{2x}$. This form matches the solution obtained when $k=4$ and the repeated root is $r=2$. Therefore, the value of $k$ must be 4.",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*1",
+            "sol_fn": "1.4*x - 5.2 + 4*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        },
+        {
+          "q": "Consider the second-order linear homogeneous differential equation $y'' - 2y' + y = 0$. \\\\ If one of the fundamental solutions is $y_1(x) = e^x$, and the Wronskian of two linearly independent solutions $y_1(x)$ and $y_2(x)$ is given by $W(y_1, y_2)(x) = 5e^{2x}$, find the unknown parameter $k$ in $y_2(x) = kxe^x$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Distinct real roots",
+          "choices": [
+            "$k = 5$",
+            "$k = -5$",
+            "$k = 1$",
+            "$k = -1$"
+          ],
+          "correct": 0,
+          "answer": "The given differential equation is $y'' - 2y' + y = 0$. The characteristic equation is $r^2 - 2r + 1 = 0$, which factors as $(r-1)^2 = 0$. Thus, the roots are repeated: $r_1 = r_2 = 1$. \\\\ One fundamental solution is given as $y_1(x) = e^x$. For a second-order linear homogeneous equation $y'' + p(x)y' + q(x)y = 0$ with a known solution $y_1(x)$, the Wronskian is given by $W(y_1, y_2)(x) = y_1(x)y_2'(x) - y_1'(x)y_2(x) = C e^{-\\int p(x) dx}$. \\\\ In our equation, $p(x) = -2$. So, $-\\int p(x) dx = -\\int (-2) dx = 2x$. Therefore, $W(y_1, y_2)(x) = C e^{2x}$. \\\\ We are given that $W(y_1, y_2)(x) = 5e^{2x}$, which means $C = 5$. \\\\ We are also given $y_1(x) = e^x$ and $y_2(x) = kxe^x$. \\\\ Let's compute the Wronskian using these forms: \\\\ $y_1'(x) = e^x$ \\\\ $y_2'(x) = \\frac{d}{dx}(kxe^x) = k(1 \\cdot e^x + x \\cdot e^x) = ke^x(1+x)$ \\\\ Now, substitute into the Wronskian formula: \\\\ $W(y_1, y_2)(x) = y_1(x)y_2'(x) - y_1'(x)y_2(x)$ $W(y_1, y_2)(x) = e^x \\cdot [ke^x(1+x)] - e^x \\cdot [kxe^x]$ $W(y_1, y_2)(x) = ke^{2x}(1+x) - kxe^{2x}$ $W(y_1, y_2)(x) = ke^{2x} + kxe^{2x} - kxe^{2x}$ $W(y_1, y_2)(x) = ke^{2x}$ \\\\ We equate this to the given Wronskian: \\\\ $ke^{2x} = 5e^{2x}$ \\\\ Therefore, $k = 5$.",
+          "explanation": "The given differential equation is $y'' - 2y' + y = 0$. The characteristic equation is $r^2 - 2r + 1 = 0$, which factors as $(r-1)^2 = 0$. Thus, the roots are repeated: $r_1 = r_2 = 1$. \\\\ One fundamental solution is given as $y_1(x) = e^x$. For a second-order linear homogeneous equation $y'' + p(x)y' + q(x)y = 0$ with a known solution $y_1(x)$, the Wronskian is given by $W(y_1, y_2)(x) = y_1(x)y_2'(x) - y_1'(x)y_2(x) = C e^{-\\int p(x) dx}$. \\\\ In our equation, $p(x) = -2$. So, $-\\int p(x) dx = -\\int (-2) dx = 2x$. Therefore, $W(y_1, y_2)(x) = C e^{2x}$. \\\\ We are given that $W(y_1, y_2)(x) = 5e^{2x}$, which means $C = 5$. \\\\ We are also given $y_1(x) = e^x$ and $y_2(x) = kxe^x$. \\\\ Let's compute the Wronskian using these forms: \\\\ $y_1'(x) = e^x$ \\\\ $y_2'(x) = \\frac{d}{dx}(kxe^x) = k(1 \\cdot e^x + x \\cdot e^x) = ke^x(1+x)$ \\\\ Now, substitute into the Wronskian formula: \\\\ $W(y_1, y_2)(x) = y_1(x)y_2'(x) - y_1'(x)y_2(x)$ $W(y_1, y_2)(x) = e^x \\cdot [ke^x(1+x)] - e^x \\cdot [kxe^x]$ $W(y_1, y_2)(x) = ke^{2x}(1+x) - kxe^{2x}$ $W(y_1, y_2)(x) = ke^{2x} + kxe^{2x} - kxe^{2x}$ $W(y_1, y_2)(x) = ke^{2x}$ \\\\ We equate this to the given Wronskian: \\\\ $ke^{2x} = 5e^{2x}$ \\\\ Therefore, $k = 5$."
+        },
+        {
+          "q": "Consider the second-order linear homogeneous differential equation $y'' - 2y' + ky = 0$. We are given that $y_1(x) = e^{3x}$ is a solution to this equation. \\\\ (a) Find the value of the parameter $k$. \\\\ (b) Find the general solution to the differential equation.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Repeated roots",
+          "choices": [
+            "$k = -3, y(x) = c_1e^{3x} + c_2e^{-x}$",
+            "$k = 3, y(x) = c_1e^{3x} + c_2xe^{3x}$",
+            "$k = -3, y(x) = c_1e^{3x} + c_2e^{x}$",
+            "$k = 9, y(x) = c_1e^{3x} + c_2e^{-3x}$"
+          ],
+          "correct": 0,
+          "answer": "Part (a): \\\\ If $y_1(x) = e^{3x}$ is a solution, then its derivatives must satisfy the equation.\\\\ $y_1'(x) = 3e^{3x}$\\\\ $y_1''(x) = 9e^{3x}$\\\\ Substitute these into the differential equation $y'' - 2y' + ky = 0$:\\\\ $9e^{3x} - 2(3e^{3x}) + k(e^{3x}) = 0$\\\\ $9e^{3x} - 6e^{3x} + ke^{3x} = 0$\\\\ Factor out $e^{3x}$ (which is never zero):\\\\ $e^{3x}(9 - 6 + k) = 0$\\\\ $3 + k = 0$\\\\ So, $k = -3$.\\\\ \\\\ Part (b): \\\\ Now that we know $k = -3$, the differential equation is $y'' - 2y' - 3y = 0$.\\\\ The auxiliary (characteristic) equation is $r^2 - 2r - 3 = 0$.\\\\ Factor the quadratic equation: $(r - 3)(r + 1) = 0$.\\\\ The roots are $r_1 = 3$ and $r_2 = -1$.\\\\ Since the roots are real and distinct, the general solution is of the form $y(x) = c_1e^{r_1x} + c_2e^{r_2x}$.\\\\ Therefore, the general solution is $y(x) = c_1e^{3x} + c_2e^{-x}$. \\\\ This matches choice A.",
+          "explanation": "Part (a): \\\\ If $y_1(x) = e^{3x}$ is a solution, then its derivatives must satisfy the equation.\\\\ $y_1'(x) = 3e^{3x}$\\\\ $y_1''(x) = 9e^{3x}$\\\\ Substitute these into the differential equation $y'' - 2y' + ky = 0$:\\\\ $9e^{3x} - 2(3e^{3x}) + k(e^{3x}) = 0$\\\\ $9e^{3x} - 6e^{3x} + ke^{3x} = 0$\\\\ Factor out $e^{3x}$ (which is never zero):\\\\ $e^{3x}(9 - 6 + k) = 0$\\\\ $3 + k = 0$\\\\ So, $k = -3$.\\\\ \\\\ Part (b): \\\\ Now that we know $k = -3$, the differential equation is $y'' - 2y' - 3y = 0$.\\\\ The auxiliary (characteristic) equation is $r^2 - 2r - 3 = 0$.\\\\ Factor the quadratic equation: $(r - 3)(r + 1) = 0$.\\\\ The roots are $r_1 = 3$ and $r_2 = -1$.\\\\ Since the roots are real and distinct, the general solution is of the form $y(x) = c_1e^{r_1x} + c_2e^{r_2x}$.\\\\ Therefore, the general solution is $y(x) = c_1e^{3x} + c_2e^{-x}$. \\\\ This matches choice A."
+        },
+        {
+          "q": "Consider the second-order linear homogeneous differential equation $y'' - 3y' + 2y = 0.$ Find the general solution to this equation.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Complex roots",
+          "choices": [
+            "$y(x) = c_1 e^x + c_2 e^{2x}$",
+            "$y(x) = c_1 e^{-x} + c_2 e^{-2x}$",
+            "$y(x) = c_1 \\cos(x) + c_2 \\sin(x)$",
+            "$y(x) = c_1 x e^x + c_2 e^x$"
+          ],
+          "correct": 0,
+          "answer": "The characteristic equation for the differential equation $y'' - 3y' + 2y = 0$ is $r^2 - 3r + 2 = 0$. Factoring this quadratic equation gives $(r-1)(r-2) = 0$. The roots are $r_1 = 1$ and $r_2 = 2$. Since the roots are real and distinct, the general solution is of the form $y(x) = c_1 e^{r_1 x} + c_2 e^{r_2 x}$. Substituting the roots, we get $y(x) = c_1 e^x + c_2 e^{2x}$. Choice B is incorrect because it uses negative roots. Choice C is incorrect because it corresponds to complex roots. Choice D is incorrect because it corresponds to a repeated root.",
+          "explanation": "The characteristic equation for the differential equation $y'' - 3y' + 2y = 0$ is $r^2 - 3r + 2 = 0$. Factoring this quadratic equation gives $(r-1)(r-2) = 0$. The roots are $r_1 = 1$ and $r_2 = 2$. Since the roots are real and distinct, the general solution is of the form $y(x) = c_1 e^{r_1 x} + c_2 e^{r_2 x}$. Substituting the roots, we get $y(x) = c_1 e^x + c_2 e^{2x}$. Choice B is incorrect because it uses negative roots. Choice C is incorrect because it corresponds to complex roots. Choice D is incorrect because it corresponds to a repeated root."
+        },
+        {
+          "q": "Consider the second-order linear homogeneous differential equation $y'' + P(x)y' + Q(x)y = 0$. For the equation $x^2 y'' + x y' + (x^2 - u^2)y = 0$ (Bessel's equation of order $u$), the point $x=0$ is a regular singular point. If we assume a series solution of the form $y(x) = \\sum_{n=0}^{\\infty} a_n x^{n+r}$, where $a_0 eq 0$, the indicial equation is given by $r^2 - u^2 = 0$. For this problem, let $u=1$, so the indicial equation is $r^2 - 1 = 0$. This yields two distinct roots, $r_1 = 1$ and $r_2 = -1$. For the larger root $r_1=1$, the power series solution takes the form $y_1(x) = x + \\sum_{n=1}^{\\infty} a_n x^{n+1}$. Substituting this into Bessel's equation of order 1, and after considerable algebraic manipulation, the recurrence relation for the coefficients $a_n$ is found to be $a_n = -\\frac{a_{n-2}}{n(n+2)}$ for $n \\geq 2$. Given $a_0 = 1$, find the value of $a_3$ for the solution corresponding to the larger root $r_1=1$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Classifying without fully solving",
+          "choices": [
+            "0",
+            "1/24",
+            "1/48",
+            "1/12"
+          ],
+          "correct": 0,
+          "answer": "The recurrence relation is $a_n = -\\frac{a_{n-2}}{n(n+2)}$ for $n \\geq 2$, with $a_0 = 1$. We need to find $a_3$. For $n=2$, $a_2 = -\\frac{a_0}{2(2+2)} = -\\frac{1}{2(4)} = -\\frac{1}{8}$. For $n=3$, $a_3 = -\\frac{a_{3-2}}{3(3+2)} = -\\frac{a_1}{3(5)} = -\\frac{a_1}{15}$. Since the recurrence relation only relates terms that are two indices apart, and we are given $a_0$, any odd-indexed coefficients will depend on $a_1$. However, the form of the solution for Bessel's equation of order $u$ is $y(x) = x^r \\sum_{n=0}^{\\infty} a_n x^n$. In this problem, $r=1$, so $y(x) = x \\sum_{n=0}^{\\infty} a_n x^n = x(a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \\dots) = a_0 x + a_1 x^2 + a_2 x^3 + a_3 x^4 + \\dots$. If we substitute this into Bessel's equation, it can be shown that for $u=1$, $a_1=0$. Therefore, $a_3 = -\\frac{a_1}{15} = -\\frac{0}{15} = 0$.",
+          "explanation": "The recurrence relation is $a_n = -\\frac{a_{n-2}}{n(n+2)}$ for $n \\geq 2$, with $a_0 = 1$. We need to find $a_3$. For $n=2$, $a_2 = -\\frac{a_0}{2(2+2)} = -\\frac{1}{2(4)} = -\\frac{1}{8}$. For $n=3$, $a_3 = -\\frac{a_{3-2}}{3(3+2)} = -\\frac{a_1}{3(5)} = -\\frac{a_1}{15}$. Since the recurrence relation only relates terms that are two indices apart, and we are given $a_0$, any odd-indexed coefficients will depend on $a_1$. However, the form of the solution for Bessel's equation of order $u$ is $y(x) = x^r \\sum_{n=0}^{\\infty} a_n x^n$. In this problem, $r=1$, so $y(x) = x \\sum_{n=0}^{\\infty} a_n x^n = x(a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \\dots) = a_0 x + a_1 x^2 + a_2 x^3 + a_3 x^4 + \\dots$. If we substitute this into Bessel's equation, it can be shown that for $u=1$, $a_1=0$. Therefore, $a_3 = -\\frac{a_1}{15} = -\\frac{0}{15} = 0$."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "Consider the second-order linear homogeneous differential equation $y'' - 5y' + 6y = 0$. If the auxiliary equation has roots $r_1$ and $r_2$, find the value of $r_1 + r_2$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Application: a damped spring",
+          "choices": [
+            "5",
+            "-5",
+            "6",
+            "-6"
+          ],
+          "correct": 0,
+          "answer": "The given differential equation is $y'' - 5y' + 6y = 0$. The auxiliary equation for a second-order linear homogeneous differential equation of the form $ay'' + by' + cy = 0$ is $ar^2 + br + c = 0$. In this case, $a=1$, $b=-5$, and $c=6$. So the auxiliary equation is $r^2 - 5r + 6 = 0$. Let the roots of this quadratic equation be $r_1$ and $r_2$. According to Vieta's formulas, for a quadratic equation $ar^2 + br + c = 0$, the sum of the roots $r_1 + r_2$ is equal to $-\\frac{b}{a}$. In our auxiliary equation $r^2 - 5r + 6 = 0$, $a=1$ and $b=-5$. Therefore, the sum of the roots is $r_1 + r_2 = - \\frac{-5}{1} = 5$.",
+          "explanation": "The given differential equation is $y'' - 5y' + 6y = 0$. The auxiliary equation for a second-order linear homogeneous differential equation of the form $ay'' + by' + cy = 0$ is $ar^2 + br + c = 0$. In this case, $a=1$, $b=-5$, and $c=6$. So the auxiliary equation is $r^2 - 5r + 6 = 0$. Let the roots of this quadratic equation be $r_1$ and $r_2$. According to Vieta's formulas, for a quadratic equation $ar^2 + br + c = 0$, the sum of the roots $r_1 + r_2$ is equal to $-\\frac{b}{a}$. In our auxiliary equation $r^2 - 5r + 6 = 0$, $a=1$ and $b=-5$. Therefore, the sum of the roots is $r_1 + r_2 = - \\frac{-5}{1} = 5$.",
+          "cross_lesson": "5.01 Variation of Parameters"
+        },
+        {
+          "q": "Consider the second-order linear homogeneous differential equation $y''(x) + 5y'(x) + 6y(x) = 0$. If the auxiliary equation has roots $r_1$ and $r_2$, what is the value of $r_1 + r_2$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Verifying general solutions and the superposition principle",
+          "choices": [
+            "5",
+            "-5",
+            "6",
+            "-6"
+          ],
+          "correct": 1,
+          "answer": "The general form of a second-order linear homogeneous differential equation with constant coefficients is $ay''(x) + by'(x) + cy(x) = 0$. The associated auxiliary equation is $ar^2 + br + c = 0$. For the given equation $y''(x) + 5y'(x) + 6y(x) = 0$, the auxiliary equation is $r^2 + 5r + 6 = 0$. According to Vieta's formulas, for a quadratic equation of the form $ar^2 + br + c = 0$, the sum of the roots $r_1 + r_2 = -b/a$. In this case, $a=1$, $b=5$, and $c=6$. Therefore, the sum of the roots is $r_1 + r_2 = -5/1 = -5$.",
+          "explanation": "The general form of a second-order linear homogeneous differential equation with constant coefficients is $ay''(x) + by'(x) + cy(x) = 0$. The associated auxiliary equation is $ar^2 + br + c = 0$. For the given equation $y''(x) + 5y'(x) + 6y(x) = 0$, the auxiliary equation is $r^2 + 5r + 6 = 0$. According to Vieta's formulas, for a quadratic equation of the form $ar^2 + br + c = 0$, the sum of the roots $r_1 + r_2 = -b/a$. In this case, $a=1$, $b=5$, and $c=6$. Therefore, the sum of the roots is $r_1 + r_2 = -5/1 = -5$.",
+          "cross_lesson": "1.01 Separable Equations",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*3",
+            "sol_fn": "1.4*x - 5.2 + 6*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        },
+        {
+          "q": "Consider the second-order linear homogeneous differential equation $y'' - 5y' + 6y = 0$. If the characteristic equation has roots $r_1$ and $r_2$ with $r_1 < r_2$, what is the value of $r_1$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Boundary value problems",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "6"
+          ],
+          "correct": 1,
+          "answer": "The characteristic equation for the given differential equation $y'' - 5y' + 6y = 0$ is found by replacing $y''$ with $r^2$, $y'$ with $r$, and $y$ with 1. This gives us the quadratic equation $r^2 - 5r + 6 = 0$. To find the roots, we can factor this quadratic equation: $(r - 2)(r - 3) = 0$. The roots are therefore $r = 2$ and $r = 3$. We are given that $r_1 < r_2$. Thus, $r_1 = 2$ and $r_2 = 3$. The question asks for the value of $r_1$, which is 2.",
+          "explanation": "The characteristic equation for the given differential equation $y'' - 5y' + 6y = 0$ is found by replacing $y''$ with $r^2$, $y'$ with $r$, and $y$ with 1. This gives us the quadratic equation $r^2 - 5r + 6 = 0$. To find the roots, we can factor this quadratic equation: $(r - 2)(r - 3) = 0$. The roots are therefore $r = 2$ and $r = 3$. We are given that $r_1 < r_2$. Thus, $r_1 = 2$ and $r_2 = 3$. The question asks for the value of $r_1$, which is 2.",
+          "cross_lesson": "2.01 Linear First-Order Equations & the Integrating Factor"
+        },
+        {
+          "q": "For which values of $k$ does every nonzero solution of $y''+4y'+ky=0$ genuinely oscillate (the auxiliary equation has non-real roots)?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Distinct Real Roots",
+          "choices": [
+            "$k<4$",
+            "$k=4$",
+            "$k>0$",
+            "$k>4$"
+          ],
+          "correct": 3,
+          "answer": "The auxiliary equation $r^2+4r+k=0$ has discriminant $16-4k$. Non-real roots require $16-4k4$ — exactly the range producing Theorem 3.2's complex-root case.",
+          "explanation": "The auxiliary equation $r^2+4r+k=0$ has discriminant $16-4k$. Non-real roots require $16-4k4$ — exactly the range producing Theorem 3.2's complex-root case.",
+          "cross_lesson": "4.01 Nonhomogeneous Equations & Undetermined Coefficients"
+        },
+        {
+          "q": "Consider the second-order linear homogeneous differential equation: $x^2 y'' + x y' + (x^2 - u^2) y = 0$, where $u$ is a constant. This is Bessel's equation of order $u$. Assume $u = 1/2$ and that $x > 0$. $x$ is a regular singular point. Determine the indicial equation for this differential equation and find its roots.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Repeated Real Roots",
+          "choices": [
+            "Indicial equation: $r^2 - \\frac{1}{4} = 0$; roots: $r = \\pm \\frac{1}{2}$",
+            "Indicial equation: $r^2 - r + \\frac{1}{4} = 0$; roots: $r = \\frac{1}{2}, \\frac{1}{2}$",
+            "Indicial equation: $r^2 - \\frac{1}{4} = 0$; roots: $r = \\pm \\frac{1}{4}$",
+            "Indicial equation: $r^2 + \\frac{1}{4} = 0$; roots: $r = \\pm \\frac{i}{2}$"
+          ],
+          "correct": 0,
+          "answer": "The given differential equation is $x^2 y'' + x y' + (x^2 - u^2) y = 0$. We can rewrite this in the standard form $y'' + P(x)y' + Q(x)y = 0$ by dividing by $x^2$: $y'' + \\frac{1}{x} y' + \\frac{x^2 - u^2}{x^2} y = 0$. Thus, $P(x) = \\frac{1}{x}$ and $Q(x) = \\frac{x^2 - u^2}{x^2} = 1 - \\frac{ u^2}{x^2}$. $x=0$ is a singular point. To determine if it's a regular singular point, we examine $x P(x)$ and $x^2 Q(x)$. $x P(x) = x \\cdot \\frac{1}{x} = 1$, which is analytic at $x=0$. $x^2 Q(x) = x^2 \\cdot \\frac{x^2 - u^2}{x^2} = x^2 - u^2$, which is also analytic at $x=0$. Therefore, $x=0$ is a regular singular point. The method of Frobenius assumes a solution of the form $y(x) = \\sum_{n=0}^{\\infty} c_n x^{n+r}$, where $c_0 eq 0$. Substituting this into the differential equation, we get the indicial equation, which is a quadratic equation in $r$. For Bessel's equation, the indicial equation is given by $r(r-1) + p_0 r + q_0 = 0$, where $p_0 = \\lim_{x \\rightarrow 0} xP(x)$ and $q_0 = \\lim_{x \\rightarrow 0} x^2 Q(x)$. In our case, $p_0 = 1$ and $q_0 = - u^2$. So the indicial equation is $r(r-1) + 1 \\cdot r - u^2 = 0$, which simplifies to $r^2 - r + r - u^2 = 0$, or $r^2 - u^2 = 0$. Given $u = 1/2$, the indicial equation becomes $r^2 - (1/2)^2 = 0$, which is $r^2 - \\frac{1}{4} = 0$. The roots of this equation are $r = \\pm \\sqrt{\\frac{1}{4}} = \\pm \\frac{1}{2}$.",
+          "explanation": "The given differential equation is $x^2 y'' + x y' + (x^2 - u^2) y = 0$. We can rewrite this in the standard form $y'' + P(x)y' + Q(x)y = 0$ by dividing by $x^2$: $y'' + \\frac{1}{x} y' + \\frac{x^2 - u^2}{x^2} y = 0$. Thus, $P(x) = \\frac{1}{x}$ and $Q(x) = \\frac{x^2 - u^2}{x^2} = 1 - \\frac{ u^2}{x^2}$. $x=0$ is a singular point. To determine if it's a regular singular point, we examine $x P(x)$ and $x^2 Q(x)$. $x P(x) = x \\cdot \\frac{1}{x} = 1$, which is analytic at $x=0$. $x^2 Q(x) = x^2 \\cdot \\frac{x^2 - u^2}{x^2} = x^2 - u^2$, which is also analytic at $x=0$. Therefore, $x=0$ is a regular singular point. The method of Frobenius assumes a solution of the form $y(x) = \\sum_{n=0}^{\\infty} c_n x^{n+r}$, where $c_0 eq 0$. Substituting this into the differential equation, we get the indicial equation, which is a quadratic equation in $r$. For Bessel's equation, the indicial equation is given by $r(r-1) + p_0 r + q_0 = 0$, where $p_0 = \\lim_{x \\rightarrow 0} xP(x)$ and $q_0 = \\lim_{x \\rightarrow 0} x^2 Q(x)$. In our case, $p_0 = 1$ and $q_0 = - u^2$. So the indicial equation is $r(r-1) + 1 \\cdot r - u^2 = 0$, which simplifies to $r^2 - r + r - u^2 = 0$, or $r^2 - u^2 = 0$. Given $u = 1/2$, the indicial equation becomes $r^2 - (1/2)^2 = 0$, which is $r^2 - \\frac{1}{4} = 0$. The roots of this equation are $r = \\pm \\sqrt{\\frac{1}{4}} = \\pm \\frac{1}{2}$.",
+          "cross_lesson": "5.01 Variation of Parameters"
+        },
+        {
+          "q": "Consider the second-order linear homogeneous differential equation: $y'' - xy' + y = 0$. The point $x=0$ is an ordinary point. Find the first two non-zero terms of the power series solution around $x=0$, assuming $y(0)=1$ and $y'(0)=0$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Complex Conjugate Roots",
+          "choices": [
+            "$1 + \\frac{1}{2}x^2 + \\dots$",
+            "$1 + \\frac{1}{3}x^3 + \\dots$",
+            "$1 - \\frac{1}{2}x^2 + \\dots$",
+            "$1 - \\frac{1}{3}x^3 + \\dots$"
+          ],
+          "correct": 0,
+          "answer": "Let the power series solution be $y(x) = \\sum_{n=0}^{\\infty} a_n x^n$. Then $y'(x) = \\sum_{n=1}^{\\infty} n a_n x^{n-1}$ and $y''(x) = \\sum_{n=2}^{\\infty} n(n-1) a_n x^{n-2}$. Substituting into the differential equation $y'' - xy' + y = 0$: $\\sum_{n=2}^{\\infty} n(n-1) a_n x^{n-2} - x \\sum_{n=1}^{\\infty} n a_n x^{n-1} + \\sum_{n=0}^{\\infty} a_n x^n = 0$ $\\sum_{n=2}^{\\infty} n(n-1) a_n x^{n-2} - \\sum_{n=1}^{\\infty} n a_n x^{n} + \\sum_{n=0}^{\\infty} a_n x^n = 0$ To combine the series, we shift the index in the first term. Let $k = n-2$, so $n = k+2$. When $n=2$, $k=0$. When $n=\\infty$, $k=\\infty$. $\\sum_{k=0}^{\\infty} (k+2)(k+1) a_{k+2} x^{k} - \\sum_{n=1}^{\\infty} n a_n x^{n} + \\sum_{n=0}^{\\infty} a_n x^n = 0$ Now, let's write out the terms for $x^0$ and $x^1$ separately to handle the different starting indices. For $x^0$ (k=0): $2(1)a_2 + a_0 = 0$. Since $y(0)=1$, we have $a_0=1$. Thus, $2a_2 + 1 = 0 \\Rightarrow a_2 = -1/2$. For $x^1$ (k=1 and n=1): $3(2)a_3 x^1 - 1a_1 x^1 + a_1 x^1 = 0$. This simplifies to $6a_3 = 0$, so $a_3 = 0$. For $x^k$ where $k \\geq 2$: $(k+2)(k+1) a_{k+2} - k a_k + a_k = 0$. Since $y'(0)=0$, we have $a_1 = 0$. We found $a_0 = 1$ and $a_2 = -1/2$. The series starts as $y(x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \\dots = 1 + 0x + (-1/2)x^2 + 0x^3 + \\dots$. Therefore, the first two non-zero terms are $1 - \\frac{1}{2}x^2$.",
+          "explanation": "Let the power series solution be $y(x) = \\sum_{n=0}^{\\infty} a_n x^n$. Then $y'(x) = \\sum_{n=1}^{\\infty} n a_n x^{n-1}$ and $y''(x) = \\sum_{n=2}^{\\infty} n(n-1) a_n x^{n-2}$. Substituting into the differential equation $y'' - xy' + y = 0$: $\\sum_{n=2}^{\\infty} n(n-1) a_n x^{n-2} - x \\sum_{n=1}^{\\infty} n a_n x^{n-1} + \\sum_{n=0}^{\\infty} a_n x^n = 0$ $\\sum_{n=2}^{\\infty} n(n-1) a_n x^{n-2} - \\sum_{n=1}^{\\infty} n a_n x^{n} + \\sum_{n=0}^{\\infty} a_n x^n = 0$ To combine the series, we shift the index in the first term. Let $k = n-2$, so $n = k+2$. When $n=2$, $k=0$. When $n=\\infty$, $k=\\infty$. $\\sum_{k=0}^{\\infty} (k+2)(k+1) a_{k+2} x^{k} - \\sum_{n=1}^{\\infty} n a_n x^{n} + \\sum_{n=0}^{\\infty} a_n x^n = 0$ Now, let's write out the terms for $x^0$ and $x^1$ separately to handle the different starting indices. For $x^0$ (k=0): $2(1)a_2 + a_0 = 0$. Since $y(0)=1$, we have $a_0=1$. Thus, $2a_2 + 1 = 0 \\Rightarrow a_2 = -1/2$. For $x^1$ (k=1 and n=1): $3(2)a_3 x^1 - 1a_1 x^1 + a_1 x^1 = 0$. This simplifies to $6a_3 = 0$, so $a_3 = 0$. For $x^k$ where $k \\geq 2$: $(k+2)(k+1) a_{k+2} - k a_k + a_k = 0$. Since $y'(0)=0$, we have $a_1 = 0$. We found $a_0 = 1$ and $a_2 = -1/2$. The series starts as $y(x) = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \\dots = 1 + 0x + (-1/2)x^2 + 0x^3 + \\dots$. Therefore, the first two non-zero terms are $1 - \\frac{1}{2}x^2$.",
+          "cross_lesson": "1.01 Separable Equations",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*3",
+            "sol_fn": "1.4*x - 5.2 + 6*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        },
+        {
+          "q": "Consider the nonhomogeneous second-order linear differential equation $y'' - y = \\frac{1}{1+e^x}$. If $y_1(x) = e^x$ and $y_2(x) = e^{-x}$ are two linearly independent solutions to the associated homogeneous equation, find the Wronskian of $y_1$ and $y_2$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Harmonic Motion and Damping Regimes",
+          "choices": [
+            "2",
+            "-2",
+            "0",
+            "$e^x - e^{-x}$"
+          ],
+          "correct": 1,
+          "answer": "The Wronskian of two functions $y_1(x)$ and $y_2(x)$ is defined as $W(y_1, y_2)(x) = \\det \\left(y_1(x), y_2(x) \\ y_1'(x), y_2'(x)\\right)$. Given $y_1(x) = e^x$ and $y_2(x) = e^{-x}$, their derivatives are $y_1'(x) = e^x$ and $y_2'(x) = -e^{-x}$. Substituting these into the Wronskian formula: $W(y_1, y_2)(x) = \\det \\left(e^x, e^{-x} \\ e^x, -e^{-x}\\right)$ $W(y_1, y_2)(x) = (e^x)(-e^{-x}) - (e^{-x})(e^x)$ $W(y_1, y_2)(x) = -e^{x-x} - e^{-x+x}$ $W(y_1, y_2)(x) = -e^0 - e^0$ $W(y_1, y_2)(x) = -1 - 1$ $W(y_1, y_2)(x) = -2$.",
+          "explanation": "The Wronskian of two functions $y_1(x)$ and $y_2(x)$ is defined as $W(y_1, y_2)(x) = \\det \\left(y_1(x), y_2(x) \\ y_1'(x), y_2'(x)\\right)$. Given $y_1(x) = e^x$ and $y_2(x) = e^{-x}$, their derivatives are $y_1'(x) = e^x$ and $y_2'(x) = -e^{-x}$. Substituting these into the Wronskian formula: $W(y_1, y_2)(x) = \\det \\left(e^x, e^{-x} \\ e^x, -e^{-x}\\right)$ $W(y_1, y_2)(x) = (e^x)(-e^{-x}) - (e^{-x})(e^x)$ $W(y_1, y_2)(x) = -e^{x-x} - e^{-x+x}$ $W(y_1, y_2)(x) = -e^0 - e^0$ $W(y_1, y_2)(x) = -1 - 1$ $W(y_1, y_2)(x) = -2$.",
+          "cross_lesson": "2.01 Linear First-Order Equations & the Integrating Factor"
+        },
+        {
+          "q": "A damped spring satisfies $y''+2y'+10y=0$, $y(0)=0$, $y'(0)=6$. Find $y(\\pi/6)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "The auxiliary equation",
+          "choices": [
+            "$2e^{\\pi/6}$",
+            "$2e^{-\\pi/6}$",
+            "$-2e^{-\\pi/6}$",
+            "$e^{-\\pi/6}$"
+          ],
+          "correct": 1,
+          "answer": "Auxiliary: $r^2+2r+10=0\\Rightarrow r=\\frac{-2\\pm\\sqrt{4-40}}{2}=-1\\pm3i$ — $\\alpha=-1,\\beta=3$, so $y=e^{-x}(C_1\\cos3x+C_2\\sin3x)$. $y(0)=C_1=0$, so $y=C_2e^{-x}\\sin3x$; $y'=C_2e^{-x}(3\\cos3x-\\sin3x)$, $y'(0)=3C_2=6\\Rightarrow C_2=2$. So $y=2e^{-x}\\sin3x$, and $y(\\pi/6)=2e^{-\\pi/6}\\sin(\\pi/2)=2e^{-\\pi/6}$.",
+          "explanation": "Auxiliary: $r^2+2r+10=0\\Rightarrow r=\\frac{-2\\pm\\sqrt{4-40}}{2}=-1\\pm3i$ — $\\alpha=-1,\\beta=3$, so $y=e^{-x}(C_1\\cos3x+C_2\\sin3x)$. $y(0)=C_1=0$, so $y=C_2e^{-x}\\sin3x$; $y'=C_2e^{-x}(3\\cos3x-\\sin3x)$, $y'(0)=3C_2=6\\Rightarrow C_2=2$. So $y=2e^{-x}\\sin3x$, and $y(\\pi/6)=2e^{-\\pi/6}\\sin(\\pi/2)=2e^{-\\pi/6}$.",
+          "cross_lesson": "4.01 Nonhomogeneous Equations & Undetermined Coefficients"
         }
       ]
     }

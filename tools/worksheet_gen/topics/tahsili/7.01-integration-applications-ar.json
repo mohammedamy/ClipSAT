@@ -1,161 +1,745 @@
 {
   "track": "tahsili",
   "num": "7.01",
-  "lang": "ar",
   "slug": "integration-applications",
   "title": "التكامل وتطبيقاته",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 7.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "القسم 1: التكامل غير المحدد وقاعدة القوى",
+      "heading": "الجزء الأول — أسئلة مقالية (FRQs): المهارات الأساسية (1–7)",
       "questions": [
         {
-          "q": "أوجد التكامل غير المحدد: $\\int (6x^2 - 4x + 3)\\,dx$.",
-          "choices": [
-            "$2x^3 - 2x^2 + 3x + C$",
-            "$3x^3 - 2x^2 + 3x + C$",
-            "$2x^3 - 4x^2 + 3x + C$",
-            "$6x^3 - 2x^2 + 3x + C$"
-          ],
-          "correct": 0,
-          "answer": "تطبيق قاعدة القوى للتكامل: $\\int 6x^2\\,dx = 2x^3$, $\\int -4x\\,dx = -2x^2$, $\\int 3\\,dx = 3x$. الناتج: $2x^3 - 2x^2 + 3x + C$."
+          "q": "أوجد المساحة تحت المنحنى $y=x^2$ من $x=0$ إلى $x=3$، باستخدام تكامل محدود.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "المساحة تحت المنحنى",
+          "answer": "المساحة $=\\int_0^3x^2\\,dx=\\left[\\frac{x^3}{3}\\right]_0^3=\\frac{27}{3}=9$.",
+          "explanation": "المساحة $=\\int_0^3x^2\\,dx=\\left[\\frac{x^3}{3}\\right]_0^3=\\frac{27}{3}=9$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**2"
+            ],
+            "xmin": -1,
+            "xmax": 4,
+            "ymin": -1,
+            "ymax": 10,
+            "width": 210
+          }
         },
         {
-          "q": "أوجد قيمة: $\\int 8x^3\\,dx$.",
-          "choices": [
-            "$2x^4 + C$",
-            "$4x^4 + C$",
-            "$8x^4 + C$",
-            "$x^4 + C$"
-          ],
-          "correct": 0,
-          "answer": "$\\int 8x^3\\,dx = \\frac{8x^4}{4} + C = 2x^4 + C$."
+          "q": "أوجد $\\int x^4\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "التكاملات الأساسية (قاعدة القوة)",
+          "answer": "$\\frac{x^5}{5}+C$.",
+          "explanation": "$\\frac{x^5}{5}+C$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (0))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -1.0,
+                "label": "$(0,-1)$"
+              }
+            ],
+            "width": 230
+          }
         },
         {
-          "q": "ما ناتج: $\\int \\frac{1}{x^2}\\,dx$؟",
-          "choices": [
-            "$-\\frac{1}{x} + C$",
-            "$\\frac{1}{x} + C$",
-            "$-\\frac{2}{x^3} + C$",
-            "$\\ln(x^2) + C$"
-          ],
-          "correct": 0,
-          "answer": "كتابة الكسر بالصورة الأسية $x^{-2}$: $\\int x^{-2}\\,dx = \\frac{x^{-1}}{-1} + C = -\\frac{1}{x} + C$."
+          "q": "أوجد $\\int 3x^2\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "التكاملات الأساسية (قاعدة القوة)",
+          "answer": "$x^3+C$.",
+          "explanation": "$x^3+C$."
+        },
+        {
+          "q": "أوجد $\\int\\sqrt{x}\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "التكاملات الأساسية (قاعدة القوة)",
+          "answer": "$\\int x^{1/2}\\,dx=\\frac{2}{3}x^{3/2}+C$.",
+          "explanation": "$\\int x^{1/2}\\,dx=\\frac{2}{3}x^{3/2}+C$."
+        },
+        {
+          "q": "أوجد $\\int\\frac{1}{x^3}\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "التكاملات الأساسية (قاعدة القوة)",
+          "answer": "$\\int x^{-3}\\,dx=-\\frac{1}{2}x^{-2}+C=-\\frac{1}{2x^2}+C$.",
+          "explanation": "$\\int x^{-3}\\,dx=-\\frac{1}{2}x^{-2}+C=-\\frac{1}{2x^2}+C$."
+        },
+        {
+          "q": "أوجد $\\int(4x^3-6x+5)\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "تكاملات كثيرات الحدود",
+          "answer": "$x^4-3x^2+5x+C$.",
+          "explanation": "$x^4-3x^2+5x+C$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -1.0,
+                "label": "$(1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "أوجد $\\int(2x+7)\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "تكاملات كثيرات الحدود",
+          "answer": "$x^2+7x+C$.",
+          "explanation": "$x^2+7x+C$."
         }
       ]
     },
     {
-      "heading": "القسم 2: التكامل المحدد وحساب القيم",
+      "heading": "الجزء الثاني — أسئلة مقالية (FRQs): تطبيقات متوسطة متعددة الخطوات (8–14)",
       "questions": [
         {
-          "q": "احسب قيمة التكامل المحدد: $\\int_0^3 2x\\,dx$.",
+          "q": "أوجد $\\int(x^2-4x+3)\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "تكاملات كثيرات الحدود",
+          "answer": "$\\frac{x^3}{3}-2x^2+3x+C$.",
+          "explanation": "$\\frac{x^3}{3}-2x^2+3x+C$."
+        },
+        {
+          "q": "أوجد $\\int\\cos x\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "تكاملات الدوال المثلثية والأسية",
+          "answer": "$\\sin x+C$.",
+          "explanation": "$\\sin x+C$."
+        },
+        {
+          "q": "أوجد $\\int\\sin x\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "تكاملات الدوال المثلثية والأسية",
+          "answer": "$-\\cos x+C$.",
+          "explanation": "$-\\cos x+C$.",
+          "figure": {
+            "type": "triangle",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                24.0,
+                0
+              ],
+              [
+                0,
+                7.0
+              ]
+            ],
+            "labels": [
+              "$C$",
+              "$B$",
+              "$A$"
+            ],
+            "side_labels": [
+              "$24$",
+              "$25$",
+              "$7$"
+            ],
+            "right_angle_at": 0,
+            "angle_marks": [
+              {
+                "vertex": 1,
+                "label": "$\\theta$"
+              }
+            ],
+            "fill": true,
+            "width": 220
+          }
+        },
+        {
+          "q": "أوجد $\\int e^x\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "تكاملات الدوال المثلثية والأسية",
+          "answer": "$e^x+C$.",
+          "explanation": "$e^x+C$."
+        },
+        {
+          "q": "أوجد قيمة $\\int_0^2 3x^2\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "حساب التكاملات المحدودة",
+          "answer": "$\\left[x^3\\right]_0^2=8$.",
+          "explanation": "$\\left[x^3\\right]_0^2=8$."
+        },
+        {
+          "q": "أوجد قيمة $\\int_1^3 2x\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "حساب التكاملات المحدودة",
+          "answer": "$\\left[x^2\\right]_1^3=9-1=8$.",
+          "explanation": "$\\left[x^2\\right]_1^3=9-1=8$."
+        },
+        {
+          "q": "أوجد قيمة $\\int_0^4 x\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "حساب التكاملات المحدودة",
+          "answer": "$\\left[\\frac{x^2}{2}\\right]_0^4=8$.",
+          "explanation": "$\\left[\\frac{x^2}{2}\\right]_0^4=8$."
+        }
+      ]
+    },
+    {
+      "heading": "الجزء الثالث — أسئلة مقالية (FRQs): مسائل التحدي والربط بين الدروس (15–20)",
+      "questions": [
+        {
+          "q": "أوجد قيمة $\\int_{-1}^{2}3x^2\\,dx$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "حساب التكاملات المحدودة",
+          "cross_lesson": "3.01 المتتابعات والمتسلسلات",
+          "answer": "$\\left[x^3\\right]_{-1}^2=8-(-1)=9$.",
+          "explanation": "$\\left[x^3\\right]_{-1}^2=8-(-1)=9$."
+        },
+        {
+          "q": "أوجد قيمة $\\int_0^2(x^2+1)\\,dx$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "تكاملات محدودة لكثيرات حدود",
+          "cross_lesson": "4.01 حساب المثلثات",
+          "answer": "$\\left[\\frac{x^3}{3}+x\\right]_0^2=\\frac{8}{3}+2=\\frac{14}{3}$.",
+          "explanation": "$\\left[\\frac{x^3}{3}+x\\right]_0^2=\\frac{8}{3}+2=\\frac{14}{3}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "أوجد قيمة $\\int_1^3(2x^2-3x+1)\\,dx$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "تكاملات محدودة لكثيرات حدود",
+          "cross_lesson": "5.01 الهندسة الإحداثية والقطوع المخروطية",
+          "answer": "$F(x)=\\frac{2x^3}{3}-\\frac{3x^2}{2}+x$. $F(3)=18-13.5+3=7.5$. $F(1)=0.667-1.5+1=0.167$. التكامل $=7.5-0.167=\\frac{22}{3}$.",
+          "explanation": "$F(x)=\\frac{2x^3}{3}-\\frac{3x^2}{2}+x$. $F(3)=18-13.5+3=7.5$. $F(1)=0.667-1.5+1=0.167$. التكامل $=7.5-0.167=\\frac{22}{3}$."
+        },
+        {
+          "q": "أوجد قيمة $\\int_0^1(6x^2-4x+2)\\,dx$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "تكاملات محدودة لكثيرات حدود",
+          "cross_lesson": "6.01 النهايات والاشتقاق",
+          "answer": "$\\left[2x^3-2x^2+2x\\right]_0^1=(2-2+2)-0=2$.",
+          "explanation": "$\\left[2x^3-2x^2+2x\\right]_0^1=(2-2+2)-0=2$."
+        },
+        {
+          "q": "أوجد قيمة $\\int_{-2}^{1}(x^2-x)\\,dx$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "تكاملات محدودة لكثيرات حدود",
+          "cross_lesson": "8.01 الدوال الأسية واللوغاريتمية",
+          "answer": "$F(x)=\\frac{x^3}{3}-\\frac{x^2}{2}$. $F(1)=-\\frac{1}{6}$. $F(-2)=-\\frac{8}{3}-2=-\\frac{14}{3}$. التكامل $=-\\frac{1}{6}+\\frac{14}{3}=\\frac{9}{2}$.",
+          "explanation": "$F(x)=\\frac{x^3}{3}-\\frac{x^2}{2}$. $F(1)=-\\frac{1}{6}$. $F(-2)=-\\frac{8}{3}-2=-\\frac{14}{3}$. التكامل $=-\\frac{1}{6}+\\frac{14}{3}=\\frac{9}{2}$."
+        },
+        {
+          "q": "أوجد قيمة $\\int_0^{\\pi/2}\\cos x\\,dx$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "تكاملات محدودة للدوال المثلثية والأسية",
+          "cross_lesson": "9.01 الإحصاء والاحتمالات",
+          "answer": "$\\left[\\sin x\\right]_0^{\\pi/2}=1-0=1$.",
+          "explanation": "$\\left[\\sin x\\right]_0^{\\pi/2}=1-0=1$."
+        }
+      ]
+    },
+    {
+      "heading": "الجزء الرابع — اختيار من متعدد (MCQs): إتقان المفاهيم الأساسية (21–28)",
+      "questions": [
+        {
+          "q": "يوضح الرسم البياني $y=x^2$. أوجد المساحة تحت المنحنى من $x=0$ إلى $x=3$، باستخدام تكامل محدود.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "التكاملات الأساسية (قاعدة القوة)",
           "choices": [
             "$9$",
-            "$6$",
             "$18$",
-            "$12$"
-          ],
-          "correct": 0,
-          "answer": "الدالة الأصلية هي $x^2$. بالتعويض بحدود التكامل من $0$ إلى $3$: $3^2 - 0^2 = 9$."
-        },
-        {
-          "q": "احسب قيمة: $\\int_1^2 (3x^2 + 1)\\,dx$.",
-          "choices": [
-            "$8$",
-            "$7$",
-            "$9$",
-            "$10$"
-          ],
-          "correct": 0,
-          "answer": "الدالة الأصلية هي $x^3 + x$. بالتعويض: $[2^3 + 2] - [1^3 + 1] = 10 - 2 = 8$."
-        },
-        {
-          "q": "ما قيمة التكامل المحدد لدالة فردية: $\\int_{-2}^2 x^3\\,dx$؟",
-          "choices": [
-            "$0$",
-            "$8$",
-            "$16$",
-            "$-8$"
-          ],
-          "correct": 0,
-          "answer": "تكامل أي دالة فردية على فترة متماثلة حول الصفر $[-a, a]$ يساوي صفراً دائماً."
-        }
-      ]
-    },
-    {
-      "heading": "القسم 3: المساحات تحت المنحنيات",
-      "questions": [
-        {
-          "q": "ما مساحة المنطقة المحصورة بين منحنى $y = x^2$ ومحور $x$ والمستقيمين $x = 0$ و $x = 3$؟",
-          "choices": [
-            "$9$",
-            "$6$",
-            "$12$",
+            "$3$",
             "$27$"
           ],
           "correct": 0,
-          "answer": "المساحة $= \\int_0^3 x^2\\,dx = \\left[ \\frac{x^3}{3} \\right]_0^3 = \\frac{27}{3} = 9$."
+          "answer": "$\\left[\\frac{x^3}{3}\\right]_0^3=9$.",
+          "explanation": "$\\left[\\frac{x^3}{3}\\right]_0^3=9$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**2"
+            ],
+            "xmin": 0,
+            "xmax": 3,
+            "ymin": 0,
+            "ymax": 10,
+            "width": 230
+          }
         },
         {
-          "q": "ما مساحة المنطقة الواقعة تحت الخط المستقيم $y = 4$ من $x = 1$ إلى $x = 5$؟",
+          "q": "يوضح الرسم البياني $y=4-x^2$. أوجد المساحة تحت المنحنى من $x=-2$ إلى $x=2$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "تكاملات كثيرات الحدود",
           "choices": [
+            "$\\frac{16}{3}$",
+            "$32$",
             "$16$",
-            "$20$",
-            "$12$",
-            "$8$"
+            "$\\frac{32}{3}$"
           ],
-          "correct": 0,
-          "answer": "مستطيل قاعدته $5 - 1 = 4$ وارتفاعه $4$: المساحة $= 4 \\times 4 = 16$."
+          "correct": 3,
+          "answer": "$\\left[4x-\\frac{x^3}{3}\\right]_{-2}^{2}=\\frac{16}{3}-\\left(-\\frac{16}{3}\\right)=\\frac{32}{3}$.",
+          "explanation": "$\\left[4x-\\frac{x^3}{3}\\right]_{-2}^{2}=\\frac{16}{3}-\\left(-\\frac{16}{3}\\right)=\\frac{32}{3}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4-x**2"
+            ],
+            "xmin": -2,
+            "xmax": 2,
+            "ymin": 0,
+            "ymax": 5,
+            "width": 230
+          }
         },
         {
-          "q": "أوجد مساحة المنطقة المحصورة بين المنحنى $y = 6x - x^2$ ومحور $x$ من $x = 0$ إلى $x = 6$.",
+          "q": "يوضح الرسم البياني سرعة جسيم $v(t)=8t-2t^2$ لـ$0\\leq t\\leq4$. أوجد إزاحة الجسيم (المساحة تحت المنحنى).",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "تكاملات الدوال المثلثية والأسية",
           "choices": [
-            "$36$",
-            "$18$",
-            "$72$",
-            "$54$"
+            "$\\frac{64}{3}$",
+            "$16$",
+            "$32$",
+            "$64$"
           ],
           "correct": 0,
-          "answer": "$\\int_0^6 (6x - x^2)\\,dx = \\left[ 3x^2 - \\frac{x^3}{3} \\right]_0^6 = 3(36) - \\frac{216}{3} = 108 - 72 = 36$."
+          "answer": "$\\int_0^4(8t-2t^2)\\,dt=\\frac{64}{3}$ م.",
+          "explanation": "$\\int_0^4(8t-2t^2)\\,dt=\\frac{64}{3}$ م.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "8*x-2*x**2"
+            ],
+            "xmin": 0,
+            "xmax": 4,
+            "ymin": 0,
+            "ymax": 9,
+            "width": 230
+          }
+        },
+        {
+          "q": "أوجد $\\int x^6\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "حساب التكاملات المحدودة",
+          "choices": [
+            "$\\frac{x^6}{7}+C$",
+            "$7x^5+C$",
+            "$\\frac{x^7}{6}+C$",
+            "$\\frac{x^7}{7}+C$"
+          ],
+          "correct": 3,
+          "answer": "قاعدة القوة: $\\frac{x^{6+1}}{6+1}+C$.",
+          "explanation": "قاعدة القوة: $\\frac{x^{6+1}}{6+1}+C$."
+        },
+        {
+          "q": "أوجد $\\int7\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "تكاملات محدودة لكثيرات حدود",
+          "choices": [
+            "$C$",
+            "$7x+C$",
+            "$7+C$",
+            "$\\frac{7x^2}{2}+C$"
+          ],
+          "correct": 1,
+          "answer": "المشتقة العكسية لثابت $k$ هي $kx+C$.",
+          "explanation": "المشتقة العكسية لثابت $k$ هي $kx+C$."
+        },
+        {
+          "q": "أوجد $\\int(x^2-6x+5)\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "تكاملات محدودة للدوال المثلثية والأسية",
+          "choices": [
+            "$\\frac{x^3}{3}-3x^2+5x+C$",
+            "$\\frac{x^3}{3}-6x^2+5x+C$",
+            "$\\frac{x^3}{3}-3x^2+C$",
+            "$x^3-3x^2+5x+C$"
+          ],
+          "correct": 0,
+          "answer": "تكامل كل حد.",
+          "explanation": "تكامل كل حد."
+        },
+        {
+          "q": "أوجد $\\int(e^x+2)\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "المساحة تحت المنحنى",
+          "choices": [
+            "$e^x+2+C$",
+            "$e^x+2x+C$",
+            "$xe^x+2x+C$",
+            "$e^x+C$"
+          ],
+          "correct": 1,
+          "answer": "$\\int e^x\\,dx=e^x$؛ $\\int2\\,dx=2x$.",
+          "explanation": "$\\int e^x\\,dx=e^x$؛ $\\int2\\,dx=2x$."
+        },
+        {
+          "q": "أوجد $\\int_{-2}^{1}4x^3\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "المساحة الموجهة والمناطق أسفل المحور",
+          "choices": [
+            "$-17$",
+            "$-15$",
+            "$15$",
+            "$1$"
+          ],
+          "correct": 1,
+          "answer": "$[x^4]_{-2}^1=1-16=-15$.",
+          "explanation": "$[x^4]_{-2}^1=1-16=-15$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
         }
       ]
     },
     {
-      "heading": "القسم 4: النظرية الأساسية للتفاضل والتكامل وخواص الحدود",
+      "heading": "الجزء الخامس — اختيار من متعدد (MCQs): تطبيقات الاختبار المتوسطة (29–37)",
       "questions": [
         {
-          "q": "إذا كانت $F(x) = \\int_1^x (3t^2 - 2)\\,dt$، فما مشتقتها $F'(x)$؟",
+          "q": "أوجد $\\int_1^4(3x^2-2x+1)\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "خصائص التكاملات المحدودة",
           "choices": [
-            "$3x^2 - 2$",
-            "$x^3 - 2x$",
-            "$6x$",
-            "$3x^2$"
+            "$50$",
+            "$52$",
+            "$63$",
+            "$51$"
           ],
-          "correct": 0,
-          "answer": "حسب النظرية الأساسية للتفاضل والتكامل: $\\frac{d}{dx}\\int_a^x f(t)\\,dt = f(x) = 3x^2 - 2$."
+          "correct": 3,
+          "answer": "$[x^3-x^2+x]_1^4=52-1=51$.",
+          "explanation": "$[x^3-x^2+x]_1^4=52-1=51$."
         },
         {
-          "q": "إذا كان $\\int_1^4 f(x)\\,dx = 7$ وكان $\\int_2^4 f(x)\\,dx = 3$، فما قيمة $\\int_1^2 f(x)\\,dx$؟",
+          "q": "أوجد $\\int_0^{\\pi}\\cos x\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "إيجاد دالة من مشتقتها",
           "choices": [
-            "$4$",
-            "$10$",
-            "$2$",
-            "$5$"
-          ],
-          "correct": 0,
-          "answer": "خاصية إضافة فترات التكامل: $\\int_1^2 f(x)\\,dx = \\int_1^4 f(x)\\,dx - \\int_2^4 f(x)\\,dx = 7 - 3 = 4$."
-        },
-        {
-          "q": "ما قيمة التكامل المحدد المتساوي الحدين: $\\int_5^5 (x^4 + 3x + 1)\\,dx$؟",
-          "choices": [
+            "$\\pi$",
+            "$-2$",
             "$0$",
-            "$1$",
-            "$5$",
-            "غير معرف"
+            "$2$"
+          ],
+          "correct": 2,
+          "answer": "$[\\sin x]_0^{\\pi}=0-0=0$.",
+          "explanation": "$[\\sin x]_0^{\\pi}=0-0=0$."
+        },
+        {
+          "q": "أوجد $\\int_0^3(x-3)\\,dx$ ووضّح ماذا تعني إشارة الناتج.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "القيمة المتوسطة لدالة",
+          "choices": [
+            "$4.5$؛ المنطقة تقع أعلى محور $x$",
+            "$-4.5$؛ المنطقة تقع أعلى محور $x$",
+            "$4.5$؛ المنطقة تقع أسفل محور $x$",
+            "$-4.5$؛ المنطقة تقع أسفل محور $x$"
+          ],
+          "correct": 3,
+          "answer": "$\\left[\\frac{x^2}{2}-3x\\right]_0^3=4.5-9=-4.5$؛ السالب يعني أن المنطقة تقع أسفل محور $x$.",
+          "explanation": "$\\left[\\frac{x^2}{2}-3x\\right]_0^3=4.5-9=-4.5$؛ السالب يعني أن المنطقة تقع أسفل محور $x$."
+        },
+        {
+          "q": "بمعلومية $\\int_0^5 f(x)\\,dx=14$، أوجد $\\int_5^0 f(x)\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "مسائل لفظية: التكامل في سياقات تطبيقية",
+          "choices": [
+            "$14$",
+            "$\\frac{1}{14}$",
+            "$0$",
+            "$-14$"
+          ],
+          "correct": 3,
+          "answer": "عكس حدي التكامل ينفي إشارة التكامل: $-14$.",
+          "explanation": "عكس حدي التكامل ينفي إشارة التكامل: $-14$."
+        },
+        {
+          "q": "دالة تحقق $f'(x)=4x^2+3x$ و$f(0)=2$. أوجد $f(x)$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "الجزء الأول — أسئلة مقالية (FRQs): المهارات الأساسية (1–7)",
+          "choices": [
+            "$\\frac{4x^3}{3}+3x^2+2$",
+            "$\\frac{4x^3}{3}+1.5x^2$",
+            "$\\frac{4x^3}{3}+1.5x^2+2$",
+            "$4x^3+1.5x^2+2$"
+          ],
+          "correct": 2,
+          "answer": "$f(x)=\\frac{4x^3}{3}+1.5x^2+C$؛ $f(0)=C=2$.",
+          "explanation": "$f(x)=\\frac{4x^3}{3}+1.5x^2+C$؛ $f(0)=C=2$."
+        },
+        {
+          "q": "أوجد القيمة المتوسطة لـ$f(x)=3x+2$ على $[0,4]$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "الجزء الثاني — أسئلة مقالية (FRQs): تطبيقات متوسطة متعددة الخطوات (8–14)",
+          "choices": [
+            "$32$",
+            "$4$",
+            "$14$",
+            "$8$"
+          ],
+          "correct": 3,
+          "answer": "$\\frac{1}{4}[1.5x^2+2x]_0^4=\\frac{1}{4}(32)=8$.",
+          "explanation": "$\\frac{1}{4}[1.5x^2+2x]_0^4=\\frac{1}{4}(32)=8$."
+        },
+        {
+          "q": "أوجد $\\int -x^4\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "الجزء الثالث — أسئلة مقالية (FRQs): مسائل التحدي والربط بين الدروس (15–20)",
+          "choices": [
+            "$-\\frac{1}{5}x^5+C$",
+            "$-\\frac{1}{4}x^4+C$",
+            "$-x^5+C$",
+            "$-\\frac{1}{6}x^5+C$"
           ],
           "correct": 0,
-          "answer": "إذا تساوى حدا التكامل الأعلى والأدنى، فإن قيمة التكامل تساوي صفراً دائماً."
+          "answer": "$-\\frac{1}{5}x^5+C$.",
+          "explanation": "$-\\frac{1}{5}x^5+C$."
+        },
+        {
+          "q": "أوجد $\\int -x^2\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "الجزء الرابع — اختيار من متعدد (MCQs): إتقان المفاهيم الأساسية (21–28)",
+          "choices": [
+            "$-\\frac{1}{3}x^3+C$",
+            "$-\\frac{1}{4}x^3+C$",
+            "$-\\frac{1}{2}x^2+C$",
+            "$-x^3+C$"
+          ],
+          "correct": 0,
+          "answer": "$-\\frac{1}{3}x^3+C$.",
+          "explanation": "$-\\frac{1}{3}x^3+C$."
+        },
+        {
+          "q": "أوجد $\\int(4x+9)\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "الجزء الخامس — اختيار من متعدد (MCQs): تطبيقات الاختبار المتوسطة (29–37)",
+          "choices": [
+            "$2x^2+9x+C$",
+            "$2x^2-9x+C$",
+            "$4x+9+C$",
+            "$2x^2+11x+C$"
+          ],
+          "correct": 0,
+          "answer": "$2x^2+9x+C$.",
+          "explanation": "$2x^2+9x+C$."
+        }
+      ]
+    },
+    {
+      "heading": "الجزء السادس — اختيار من متعدد (MCQs): مسائل التحدي والربط بين الدروس (38–45)",
+      "questions": [
+        {
+          "q": "أوجد $\\int 5\\cos x\\,dx$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "الجزء السادس — اختيار من متعدد (MCQs): مسائل التحدي والربط بين الدروس (38–45)",
+          "choices": [
+            "$5-\\sin x+C$",
+            "$6\\sin x+C$",
+            "$5\\cos x+C$",
+            "$5\\sin x+C$"
+          ],
+          "correct": 3,
+          "answer": "$5\\sin x+C$.",
+          "explanation": "$5\\sin x+C$.",
+          "cross_lesson": "6.01 النهايات والاشتقاق"
+        },
+        {
+          "q": "أوجد قيمة $\\int_{1}^{3} 6x\\,dx$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "التكاملات الأساسية (قاعدة القوة)",
+          "choices": [
+            "$22$",
+            "$26$",
+            "$24$",
+            "$-24$"
+          ],
+          "correct": 2,
+          "answer": "$\\left[3x^{2}\\right]_{1}^{3}=27-3=24$.",
+          "explanation": "$\\left[3x^{2}\\right]_{1}^{3}=27-3=24$.",
+          "cross_lesson": "8.01 الدوال الأسية واللوغاريتمية"
+        },
+        {
+          "q": "أوجد قيمة $\\int_{0}^{3}(9x^2-1)\\,dx$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "تكاملات كثيرات الحدود",
+          "choices": [
+            "$76$",
+            "$78$",
+            "$80$",
+            "$-78$"
+          ],
+          "correct": 1,
+          "answer": "$\\left[3x^3-x\\right]_{0}^{3}=78$.",
+          "explanation": "$\\left[3x^3-x\\right]_{0}^{3}=78$.",
+          "cross_lesson": "9.01 الإحصاء والاحتمالات"
+        },
+        {
+          "q": "دالة تحقق $f'(x)=-2x+5$ و$f(1)=10$. أوجد $f(x)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "تكاملات الدوال المثلثية والأسية",
+          "choices": [
+            "$f(x)=x^2+5x+6$",
+            "$f(x)=-x^2+5x+9$",
+            "$f(x)=-x^2+5x-6$",
+            "$f(x)=-x^2+5x+6$"
+          ],
+          "correct": 3,
+          "answer": "$f(x)=-x^2+5x+C$. $f(1)=4+C=10\\Rightarrow C=6$. $f(x)=-x^2+5x+6$.",
+          "explanation": "$f(x)=-x^2+5x+C$. $f(1)=4+C=10\\Rightarrow C=6$. $f(x)=-x^2+5x+6$.",
+          "cross_lesson": "1.01 الجبر والمعادلات والمصفوفات"
+        },
+        {
+          "q": "دالة تحقق $f'(x)=-6x$ و$f(1)=-6$. أوجد $f(x)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "حساب التكاملات المحدودة",
+          "choices": [
+            "$f(x)=3x^2-3$",
+            "$f(x)=-3x^2-3$",
+            "$f(x)=-3x^2$",
+            "$f(x)=-3x^2+3$"
+          ],
+          "correct": 1,
+          "answer": "$f(x)=-3x^2+C$. $f(1)=-3+C=-6\\Rightarrow C=-3$. $f(x)=-3x^2-3$.",
+          "explanation": "$f(x)=-3x^2+C$. $f(1)=-3+C=-6\\Rightarrow C=-3$. $f(x)=-3x^2-3$.",
+          "cross_lesson": "2.01 الدوال وخصائصها والتحويلات الهندسية"
+        },
+        {
+          "q": "أوجد المساحة تحت المنحنى $y=3x^2$ من $x=0$ إلى $x=3$ باستخدام تكامل محدد.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "تكاملات محدودة لكثيرات حدود",
+          "choices": [
+            "$25$",
+            "$81$",
+            "$27$",
+            "$29$"
+          ],
+          "correct": 2,
+          "answer": "المساحة $=\\int_0^{3}3x^2\\,dx=\\left[\\frac{3x^3}{3}\\right]_0^{3}=\\frac{81}{3}=27$.",
+          "explanation": "المساحة $=\\int_0^{3}3x^2\\,dx=\\left[\\frac{3x^3}{3}\\right]_0^{3}=\\frac{81}{3}=27$.",
+          "cross_lesson": "3.01 المتتابعات والمتسلسلات"
+        },
+        {
+          "q": "إذا كان $\\int_0^2 f(x)\\,dx=6$ و$\\int_2^6 f(x)\\,dx=5$، أوجد $\\int_0^6 f(x)\\,dx$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "تكاملات محدودة للدوال المثلثية والأسية",
+          "choices": [
+            "$11$",
+            "$13$",
+            "$30$",
+            "$1$"
+          ],
+          "correct": 0,
+          "answer": "بخاصية الجمع على الفترات: $6+5=11$.",
+          "explanation": "بخاصية الجمع على الفترات: $6+5=11$.",
+          "cross_lesson": "4.01 حساب المثلثات"
+        },
+        {
+          "q": "أوجد القيمة المتوسطة لـ $f(x)=2x-4$ على $[1,5]$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "المساحة تحت المنحنى",
+          "choices": [
+            "$3$",
+            "$1$",
+            "$4$",
+            "$2$"
+          ],
+          "correct": 3,
+          "answer": "$\\int_{1}^{5}(2x-4)\\,dx=\\left[\\frac{2x^2}{2}-4x\\right]_{1}^{5}=8$. المتوسط $=\\frac{8}{5-1}=2$.",
+          "explanation": "$\\int_{1}^{5}(2x-4)\\,dx=\\left[\\frac{2x^2}{2}-4x\\right]_{1}^{5}=8$. المتوسط $=\\frac{8}{5-1}=2$.",
+          "cross_lesson": "5.01 الهندسة الإحداثية والقطوع المخروطية"
         }
       ]
     }
-  ]
+  ],
+  "lang": "ar"
 }

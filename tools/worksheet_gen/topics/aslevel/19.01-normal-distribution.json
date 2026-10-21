@@ -3,12 +3,304 @@
   "num": "19.01",
   "slug": "normal-distribution",
   "title": "Normal Distribution",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 19.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: The Standard Normal Distribution $Z \\sim N(0, 1)$",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+      "questions": [
+        {
+          "q": "A random variable $X\\sim N(100,225)$. Find $P(X<115)$, given that $\\Phi(1)\\approx0.8413$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Finding probabilities using the standard normal table",
+          "answer": "$\\sigma=\\sqrt{225}=15$. $z=\\frac{115-100}{15}=1$. $P(X<115)=\\Phi(1)\\approx0.8413$.",
+          "explanation": "$\\sigma=\\sqrt{225}=15$. $z=\\frac{115-100}{15}=1$. $P(X<115)=\\Phi(1)\\approx0.8413$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "exp(-(x-100)**2/(2*225))/18.81"
+            ],
+            "xmin": 55,
+            "xmax": 145,
+            "ymin": 0,
+            "ymax": 0.06,
+            "width": 200
+          }
+        },
+        {
+          "q": "State two key properties of the normal distribution curve.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Properties of the normal distribution",
+          "answer": "The normal distribution curve is symmetric (bell-shaped) about its mean $\\mu$, and the total area under the curve equals 1. (Other valid properties: mean = median = mode; the curve is asymptotic to the horizontal axis.)",
+          "explanation": "The normal distribution curve is symmetric (bell-shaped) about its mean $\\mu$, and the total area under the curve equals 1. (Other valid properties: mean = median = mode; the curve is asymptotic to the horizontal axis.)",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4*exp(-0.5*x**2)"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -0.4,
+            "ymax": 4.6,
+            "shade": {
+              "fn1": "4*exp(-0.5*x**2)",
+              "fn2": "0",
+              "x0": -1.96,
+              "x1": 1.96
+            },
+            "point_labels": [
+              {
+                "x": 1.96,
+                "y": 0.59,
+                "label": "$z=1.96$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Explain what it means for the normal distribution curve to be \"asymptotic\" to the horizontal axis.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Properties of the normal distribution",
+          "answer": "It means the curve approaches the horizontal axis as $x\\rightarrow\\pm\\infty$ but never actually touches or crosses it — the probability density gets arbitrarily close to zero but is never exactly zero for any finite $x$.",
+          "explanation": "It means the curve approaches the horizontal axis as $x\\rightarrow\\pm\\infty$ but never actually touches or crosses it — the probability density gets arbitrarily close to zero but is never exactly zero for any finite $x$."
+        },
+        {
+          "q": "State one similarity and one difference between the normal distribution and the discrete uniform distribution.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Properties of the normal distribution",
+          "answer": "Similarity: both are probability distributions in which the total probability sums (or integrates) to 1. Difference: the normal distribution is continuous and bell-shaped, with values clustering near the mean, while the discrete uniform distribution is discrete and every outcome has equal probability.",
+          "explanation": "Similarity: both are probability distributions in which the total probability sums (or integrates) to 1. Difference: the normal distribution is continuous and bell-shaped, with values clustering near the mean, while the discrete uniform distribution is discrete and every outcome has equal probability."
+        },
+        {
+          "q": "A random variable $X\\sim N(50,64)$. Find the $z$-score corresponding to $x=62$, using $z=\\frac{x-\\mu}{\\sigma}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Standardizing a normal variable",
+          "answer": "$\\sigma=\\sqrt{64}=8$. $z=\\frac{62-50}{8}=\\frac{12}{8}=1.5$.",
+          "explanation": "$\\sigma=\\sqrt{64}=8$. $z=\\frac{62-50}{8}=\\frac{12}{8}=1.5$."
+        },
+        {
+          "q": "A random variable $X\\sim N(30,25)$. Find the $z$-score corresponding to $x=23$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Standardizing a normal variable",
+          "answer": "$\\sigma=\\sqrt{25}=5$. $z=\\frac{23-30}{5}=\\frac{-7}{5}=-1.4$.",
+          "explanation": "$\\sigma=\\sqrt{25}=5$. $z=\\frac{23-30}{5}=\\frac{-7}{5}=-1.4$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4*exp(-0.5*x**2)"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -0.4,
+            "ymax": 4.6,
+            "shade": {
+              "fn1": "4*exp(-0.5*x**2)",
+              "fn2": "0",
+              "x0": -1.96,
+              "x1": 1.96
+            },
+            "point_labels": [
+              {
+                "x": 1.96,
+                "y": 0.59,
+                "label": "$z=1.96$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A random variable $X\\sim N(70,144)$. Find the $z$-score corresponding to $x=88$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Standardizing a normal variable",
+          "answer": "$\\sigma=\\sqrt{144}=12$. $z=\\frac{88-70}{12}=\\frac{18}{12}=1.5$.",
+          "explanation": "$\\sigma=\\sqrt{144}=12$. $z=\\frac{88-70}{12}=\\frac{18}{12}=1.5$."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Using the same distribution $X\\sim N(100,225)$, find $P(X>130)$, given that $\\Phi(2)\\approx0.9772$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Finding probabilities using the standard normal table",
+          "answer": "$z=\\frac{130-100}{15}=2$. $P(X>130)=1-\\Phi(2)\\approx1-0.9772=0.0228$.",
+          "explanation": "$z=\\frac{130-100}{15}=2$. $P(X>130)=1-\\Phi(2)\\approx1-0.9772=0.0228$."
+        },
+        {
+          "q": "A random variable $X\\sim N(50,16)$. Find $P(X<54)$, given that $\\Phi(1)\\approx0.8413$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Finding probabilities using the standard normal table",
+          "answer": "$\\sigma=\\sqrt{16}=4$. $z=\\frac{54-50}{4}=1$. $P(X<54)=\\Phi(1)\\approx0.8413$.",
+          "explanation": "$\\sigma=\\sqrt{16}=4$. $z=\\frac{54-50}{4}=1$. $P(X<54)=\\Phi(1)\\approx0.8413$."
+        },
+        {
+          "q": "A random variable $X\\sim N(80,100)$. Find $P(X>95)$, given that $\\Phi(1.5)\\approx0.9332$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Finding probabilities using the standard normal table",
+          "answer": "$\\sigma=\\sqrt{100}=10$. $z=\\frac{95-80}{10}=1.5$. $P(X>95)=1-\\Phi(1.5)\\approx1-0.9332=0.0668$.",
+          "explanation": "$\\sigma=\\sqrt{100}=10$. $z=\\frac{95-80}{10}=1.5$. $P(X>95)=1-\\Phi(1.5)\\approx1-0.9332=0.0668$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4*exp(-0.5*x**2)"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -0.4,
+            "ymax": 4.6,
+            "shade": {
+              "fn1": "4*exp(-0.5*x**2)",
+              "fn2": "0",
+              "x0": -1.96,
+              "x1": 1.96
+            },
+            "point_labels": [
+              {
+                "x": 1.96,
+                "y": 0.59,
+                "label": "$z=1.96$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A random variable $X\\sim N(60,100)$. Find the value $x$ such that $P(X<x)=0.9332$, given that $\\Phi(1.5)\\approx0.9332$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Finding a value given a probability (inverse normal)",
+          "answer": "Since $\\Phi(1.5)\\approx0.9332$, the corresponding $z$-value is $1.5$. $x=\\mu+z\\sigma=60+1.5(10)=75$.",
+          "explanation": "Since $\\Phi(1.5)\\approx0.9332$, the corresponding $z$-value is $1.5$. $x=\\mu+z\\sigma=60+1.5(10)=75$."
+        },
+        {
+          "q": "A random variable $X\\sim N(80,64)$. Find the value $x$ such that $P(X<x)=0.9772$, given that $\\Phi(2)\\approx0.9772$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Finding a value given a probability (inverse normal)",
+          "answer": "Since $\\Phi(2)\\approx0.9772$, the corresponding $z$-value is $2$. $x=\\mu+z\\sigma=80+2(8)=96$.",
+          "explanation": "Since $\\Phi(2)\\approx0.9772$, the corresponding $z$-value is $2$. $x=\\mu+z\\sigma=80+2(8)=96$."
+        },
+        {
+          "q": "A random variable $X\\sim N(45,49)$. Find the value $x$ such that $P(X<x)=0.8413$, given that $\\Phi(1)\\approx0.8413$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Finding a value given a probability (inverse normal)",
+          "answer": "Since $\\Phi(1)\\approx0.8413$, the corresponding $z$-value is $1$. $x=\\mu+z\\sigma=45+1(7)=52$.",
+          "explanation": "Since $\\Phi(1)\\approx0.8413$, the corresponding $z$-value is $1$. $x=\\mu+z\\sigma=45+1(7)=52$."
+        },
+        {
+          "q": "A random variable $X\\sim N(40,25)$. Find $P(35<X<48)$, given that $\\Phi(1)\\approx0.8413$ and $\\Phi(1.6)\\approx0.9452$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "The probability of a value lying between two bounds",
+          "answer": "$\\sigma=5$. For $x=35$: $z=\\frac{35-40}{5}=-1$. For $x=48$: $z=\\frac{48-40}{5}=1.6$. $P(35<X<48)=\\Phi(1.6)-\\Phi(-1)=\\Phi(1.6)-[1-\\Phi(1)]=0.9452-(1-0.8413)=0.9452-0.1587=0.7865$.",
+          "explanation": "$\\sigma=5$. For $x=35$: $z=\\frac{35-40}{5}=-1$. For $x=48$: $z=\\frac{48-40}{5}=1.6$. $P(35<X<48)=\\Phi(1.6)-\\Phi(-1)=\\Phi(1.6)-[1-\\Phi(1)]=0.9452-(1-0.8413)=0.9452-0.1587=0.7865$."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "A random variable $X\\sim N(20,16)$. Find $P(16<X<26)$, given that $\\Phi(1)\\approx0.8413$ and $\\Phi(1.5)\\approx0.9332$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "The probability of a value lying between two bounds",
+          "cross_lesson": "15.01 Representation of Data",
+          "answer": "$\\sigma=4$. For $x=16$: $z=\\frac{16-20}{4}=-1$. For $x=26$: $z=\\frac{26-20}{4}=1.5$. $P(16<X<26)=\\Phi(1.5)-\\Phi(-1)=\\Phi(1.5)-[1-\\Phi(1)]=0.9332-(1-0.8413)=0.9332-0.1587=0.7745$.",
+          "explanation": "$\\sigma=4$. For $x=16$: $z=\\frac{16-20}{4}=-1$. For $x=26$: $z=\\frac{26-20}{4}=1.5$. $P(16<X<26)=\\Phi(1.5)-\\Phi(-1)=\\Phi(1.5)-[1-\\Phi(1)]=0.9332-(1-0.8413)=0.9332-0.1587=0.7745$."
+        },
+        {
+          "q": "A random variable $X\\sim N(50,100)$. Find $P(35<X<65)$, given that $\\Phi(1.5)\\approx0.9332$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "The probability of a value lying between two bounds",
+          "cross_lesson": "16.01 Permutations & Combinations",
+          "answer": "$\\sigma=10$. For $x=35$: $z=\\frac{35-50}{10}=-1.5$. For $x=65$: $z=\\frac{65-50}{10}=1.5$. Since these bounds are symmetric about the mean: $P(35<X<65)=\\Phi(1.5)-\\Phi(-1.5)=2\\Phi(1.5)-1=2(0.9332)-1=0.8664$.",
+          "explanation": "$\\sigma=10$. For $x=35$: $z=\\frac{35-50}{10}=-1.5$. For $x=65$: $z=\\frac{65-50}{10}=1.5$. Since these bounds are symmetric about the mean: $P(35<X<65)=\\Phi(1.5)-\\Phi(-1.5)=2\\Phi(1.5)-1=2(0.9332)-1=0.8664$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4*exp(-0.5*x**2)"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -0.4,
+            "ymax": 4.6,
+            "shade": {
+              "fn1": "4*exp(-0.5*x**2)",
+              "fn2": "0",
+              "x0": -1.96,
+              "x1": 1.96
+            },
+            "point_labels": [
+              {
+                "x": 1.96,
+                "y": 0.59,
+                "label": "$z=1.96$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A random variable $X\\sim B(200,0.4)$ is to be approximated by a normal distribution. State the mean and variance to use, and check the approximation is valid (both $np$ and $n(1-p)$ should exceed 5).",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "The normal approximation to the binomial distribution",
+          "cross_lesson": "17.01 Discrete Random Variables",
+          "answer": "$np=200(0.4)=80$ and $n(1-p)=200(0.6)=120$, both exceed 5, so the approximation is valid. Use $X\\approx N(80,48)$, since $\\mathrm{Var}(X)=np(1-p)=200(0.4)(0.6)=48$.",
+          "explanation": "$np=200(0.4)=80$ and $n(1-p)=200(0.6)=120$, both exceed 5, so the approximation is valid. Use $X\\approx N(80,48)$, since $\\mathrm{Var}(X)=np(1-p)=200(0.4)(0.6)=48$."
+        },
+        {
+          "q": "A random variable $X\\sim B(150,0.5)$ is to be approximated by a normal distribution. State the mean and variance to use, and check the approximation is valid.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "The normal approximation to the binomial distribution",
+          "cross_lesson": "18.01 Binomial Distribution",
+          "answer": "$np=150(0.5)=75$ and $n(1-p)=150(0.5)=75$, both exceed 5, so the approximation is valid. Use $X\\approx N(75,37.5)$, since $\\mathrm{Var}(X)=np(1-p)=150(0.5)(0.5)=37.5$.",
+          "explanation": "$np=150(0.5)=75$ and $n(1-p)=150(0.5)=75$, both exceed 5, so the approximation is valid. Use $X\\approx N(75,37.5)$, since $\\mathrm{Var}(X)=np(1-p)=150(0.5)(0.5)=37.5$."
+        },
+        {
+          "q": "A random variable $X\\sim B(100,0.3)$ is to be approximated by a normal distribution. State the mean and variance to use, and check the approximation is valid.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "The normal approximation to the binomial distribution",
+          "cross_lesson": "2.01 Simultaneous Equations & Inequalities",
+          "answer": "$np=100(0.3)=30$ and $n(1-p)=100(0.7)=70$, both exceed 5, so the approximation is valid. Use $X\\approx N(30,21)$, since $\\mathrm{Var}(X)=np(1-p)=100(0.3)(0.7)=21$.",
+          "explanation": "$np=100(0.3)=30$ and $n(1-p)=100(0.7)=70$, both exceed 5, so the approximation is valid. Use $X\\approx N(30,21)$, since $\\mathrm{Var}(X)=np(1-p)=100(0.3)(0.7)=21$."
+        },
+        {
+          "q": "A random variable $X\\sim B(250,0.2)$ is to be approximated by a normal distribution. State the mean and variance to use, and check the approximation is valid.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "The normal approximation to the binomial distribution",
+          "cross_lesson": "3.01 Graphs & Transformations",
+          "answer": "$np=250(0.2)=50$ and $n(1-p)=250(0.8)=200$, both exceed 5, so the approximation is valid. Use $X\\approx N(50,40)$, since $\\mathrm{Var}(X)=np(1-p)=250(0.2)(0.8)=40$.",
+          "explanation": "$np=250(0.2)=50$ and $n(1-p)=250(0.8)=200$, both exceed 5, so the approximation is valid. Use $X\\approx N(50,40)$, since $\\mathrm{Var}(X)=np(1-p)=250(0.2)(0.8)=40$."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
           "q": "Find $P(Z < 1.645)$ for the standard normal distribution $Z \\sim N(0, 1)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "The Standard Normal Distribution $Z \\sim N(0, 1)$",
           "choices": [
             "$0.9500$",
             "$0.9750$",
@@ -16,10 +308,14 @@
             "$0.9900$"
           ],
           "correct": 0,
-          "answer": "From the standard normal cumulative distribution tables, $\\Phi(1.645) = 0.9500$."
+          "answer": "From the standard normal cumulative distribution tables, $\\Phi(1.645) = 0.9500$.",
+          "explanation": "From the standard normal cumulative distribution tables, $\\Phi(1.645) = 0.9500$."
         },
         {
           "q": "Find $P(Z > -1.282)$ for $Z \\sim N(0, 1)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "The Standard Normal Distribution $Z \\sim N(0, 1)$",
           "choices": [
             "$0.9000$",
             "$0.1000$",
@@ -27,10 +323,14 @@
             "$0.8500$"
           ],
           "correct": 0,
-          "answer": "By symmetry, $P(Z > -1.282) = P(Z < 1.282) = \\Phi(1.282) = 0.9000$."
+          "answer": "By symmetry, $P(Z > -1.282) = P(Z < 1.282) = \\Phi(1.282) = 0.9000$.",
+          "explanation": "By symmetry, $P(Z > -1.282) = P(Z < 1.282) = \\Phi(1.282) = 0.9000$."
         },
         {
           "q": "Find $P(-1.96 < Z < 1.96)$ for $Z \\sim N(0, 1)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "The Standard Normal Distribution $Z \\sim N(0, 1)$",
           "choices": [
             "$0.9500$",
             "$0.9750$",
@@ -38,15 +338,38 @@
             "$0.9900$"
           ],
           "correct": 0,
-          "answer": "$P(-1.96 < Z < 1.96) = 2\\Phi(1.96) - 1 = 2(0.9750) - 1 = 1.95 - 1 = 0.9500$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Standardization & General Normal Distribution",
-      "questions": [
+          "answer": "$P(-1.96 < Z < 1.96) = 2\\Phi(1.96) - 1 = 2(0.9750) - 1 = 1.95 - 1 = 0.9500$.",
+          "explanation": "$P(-1.96 < Z < 1.96) = 2\\Phi(1.96) - 1 = 2(0.9750) - 1 = 1.95 - 1 = 0.9500$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4*exp(-0.5*x**2)"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -0.4,
+            "ymax": 4.6,
+            "shade": {
+              "fn1": "4*exp(-0.5*x**2)",
+              "fn2": "0",
+              "x0": -1.65,
+              "x1": 1.65
+            },
+            "point_labels": [
+              {
+                "x": 1.65,
+                "y": 1.03,
+                "label": "$z=1.65$"
+              }
+            ],
+            "width": 230
+          }
+        },
         {
           "q": "The random variable $X \\sim N(50, 16)$. Find $P(X < 56)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Standardization & General Normal Distribution",
           "choices": [
             "$0.9332$",
             "$0.8413$",
@@ -54,10 +377,14 @@
             "$0.8849$"
           ],
           "correct": 0,
-          "answer": "Standard deviation $\\sigma = \\sqrt{16} = 4$. $z = \\frac{56 - 50}{4} = 1.5$. $P(X < 56) = \\Phi(1.5) = 0.9332$."
+          "answer": "Standard deviation $\\sigma = \\sqrt{16} = 4$. $z = \\frac{56 - 50}{4} = 1.5$. $P(X < 56) = \\Phi(1.5) = 0.9332$.",
+          "explanation": "Standard deviation $\\sigma = \\sqrt{16} = 4$. $z = \\frac{56 - 50}{4} = 1.5$. $P(X < 56) = \\Phi(1.5) = 0.9332$."
         },
         {
           "q": "Heights of adult females are normally distributed with mean 165 cm and standard deviation 6 cm. What percentage of females are taller than 177 cm?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Standardization & General Normal Distribution",
           "choices": [
             "$2.28\\%$",
             "$5.00\\%$",
@@ -65,10 +392,14 @@
             "$1.14\\%$"
           ],
           "correct": 0,
-          "answer": "$z = \\frac{177 - 165}{6} = 2.0$. $P(X > 177) = 1 - \\Phi(2.0) = 1 - 0.9772 = 0.0228 = 2.28\\%$."
+          "answer": "$z = \\frac{177 - 165}{6} = 2.0$. $P(X > 177) = 1 - \\Phi(2.0) = 1 - 0.9772 = 0.0228 = 2.28\\%$.",
+          "explanation": "$z = \\frac{177 - 165}{6} = 2.0$. $P(X > 177) = 1 - \\Phi(2.0) = 1 - 0.9772 = 0.0228 = 2.28\\%$."
         },
         {
           "q": "If $Y \\sim N(100, 225)$, find $P(85 < Y < 115)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Standardization & General Normal Distribution",
           "choices": [
             "$0.6826$",
             "$0.9544$",
@@ -76,15 +407,14 @@
             "$0.7500$"
           ],
           "correct": 0,
-          "answer": "$\\sigma = \\sqrt{225} = 15$. The interval $85 < Y < 115$ represents $\\mu \\pm 1\\sigma$. $P(-1 < Z < 1) = 2\\Phi(1) - 1 = 2(0.8413) - 1 = 0.6826$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Inverse Normal & Finding $\\mu$ and $\\sigma$",
-      "questions": [
+          "answer": "$\\sigma = \\sqrt{225} = 15$. The interval $85 < Y < 115$ represents $\\mu \\pm 1\\sigma$. $P(-1 < Z < 1) = 2\\Phi(1) - 1 = 2(0.8413) - 1 = 0.6826$.",
+          "explanation": "$\\sigma = \\sqrt{225} = 15$. The interval $85 < Y < 115$ represents $\\mu \\pm 1\\sigma$. $P(-1 < Z < 1) = 2\\Phi(1) - 1 = 2(0.8413) - 1 = 0.6826$."
+        },
         {
           "q": "The random variable $X \\sim N(\\mu, 25)$ has $P(X < 62) = 0.8413$. Find the mean $\\mu$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Inverse Normal & Finding $\\mu$ and $\\sigma$",
           "choices": [
             "57",
             "55",
@@ -92,10 +422,14 @@
             "60"
           ],
           "correct": 0,
-          "answer": "$\\Phi(z) = 0.8413 \\Rightarrow z = 1.0$. Since $\\sigma = 5$: $1.0 = \\frac{62 - \\mu}{5} \\Rightarrow 62 - \\mu = 5 \\Rightarrow \\mu = 57$."
+          "answer": "$\\Phi(z) = 0.8413 \\Rightarrow z = 1.0$. Since $\\sigma = 5$: $1.0 = \\frac{62 - \\mu}{5} \\Rightarrow 62 - \\mu = 5 \\Rightarrow \\mu = 57$.",
+          "explanation": "$\\Phi(z) = 0.8413 \\Rightarrow z = 1.0$. Since $\\sigma = 5$: $1.0 = \\frac{62 - \\mu}{5} \\Rightarrow 62 - \\mu = 5 \\Rightarrow \\mu = 57$."
         },
         {
           "q": "For a normal variable $X$, $P(X < 40) = 0.05$ and $P(X < 70) = 0.95$. Find $\\mu$ and $\\sigma$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Inverse Normal & Finding $\\mu$ and $\\sigma$",
           "choices": [
             "$\\mu = 55, \\sigma = 9.12$",
             "$\\mu = 55, \\sigma = 15.0$",
@@ -103,10 +437,43 @@
             "$\\mu = 55, \\sigma = 5.50$"
           ],
           "correct": 0,
-          "answer": "By symmetry, $\\mu = (40 + 70)/2 = 55$. For 95th percentile, $z = 1.645$: $1.645 = \\frac{70 - 55}{\\sigma} \\Rightarrow \\sigma = \\frac{15}{1.645} \\approx 9.12$."
-        },
+          "answer": "By symmetry, $\\mu = (40 + 70)/2 = 55$. For 95th percentile, $z = 1.645$: $1.645 = \\frac{70 - 55}{\\sigma} \\Rightarrow \\sigma = \\frac{15}{1.645} \\approx 9.12$.",
+          "explanation": "By symmetry, $\\mu = (40 + 70)/2 = 55$. For 95th percentile, $z = 1.645$: $1.645 = \\frac{70 - 55}{\\sigma} \\Rightarrow \\sigma = \\frac{15}{1.645} \\approx 9.12$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4*exp(-0.5*x**2)"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -0.4,
+            "ymax": 4.6,
+            "shade": {
+              "fn1": "4*exp(-0.5*x**2)",
+              "fn2": "0",
+              "x0": -1.96,
+              "x1": 1.96
+            },
+            "point_labels": [
+              {
+                "x": 1.96,
+                "y": 0.59,
+                "label": "$z=1.96$"
+              }
+            ],
+            "width": 230
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
         {
           "q": "Packets of biscuits have nominal weight 200 g. Actual weights are normally distributed with $\\mu = 204$ g and $\\sigma = 2.5$ g. What proportion of packets are underweight ($< 200$ g)?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Inverse Normal & Finding $\\mu$ and $\\sigma$",
           "choices": [
             "$0.0548$",
             "$0.0228$",
@@ -114,15 +481,14 @@
             "$0.0808$"
           ],
           "correct": 0,
-          "answer": "$z = \\frac{200 - 204}{2.5} = -1.6$. $P(X < 200) = \\Phi(-1.6) = 1 - \\Phi(1.6) = 1 - 0.9452 = 0.0548$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Normal Approximation to the Binomial Distribution",
-      "questions": [
+          "answer": "$z = \\frac{200 - 204}{2.5} = -1.6$. $P(X < 200) = \\Phi(-1.6) = 1 - \\Phi(1.6) = 1 - 0.9452 = 0.0548$.",
+          "explanation": "$z = \\frac{200 - 204}{2.5} = -1.6$. $P(X < 200) = \\Phi(-1.6) = 1 - \\Phi(1.6) = 1 - 0.9452 = 0.0548$."
+        },
         {
           "q": "State the two conditions required to approximate a binomial distribution $X \\sim B(n, p)$ by a normal distribution.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Normal Approximation to the Binomial Distribution",
           "choices": [
             "$np > 5$ and $n(1 - p) > 5$",
             "$n > 30$ and $p = 0.5$",
@@ -130,10 +496,14 @@
             "$n(1 - p) > 100$"
           ],
           "correct": 0,
-          "answer": "The standard Cambridge AS Level guideline requires both $np > 5$ and $n(1 - p) > 5$ for an adequate normal approximation."
+          "answer": "The standard Cambridge AS Level guideline requires both $np > 5$ and $n(1 - p) > 5$ for an adequate normal approximation.",
+          "explanation": "The standard Cambridge AS Level guideline requires both $np > 5$ and $n(1 - p) > 5$ for an adequate normal approximation."
         },
         {
           "q": "A fair coin is tossed 100 times. Using the normal approximation with continuity correction, what is the expression for $P(X \\geq 55)$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Normal Approximation to the Binomial Distribution",
           "choices": [
             "$P(Y > 54.5)$ where $Y \\sim N(50, 25)$",
             "$P(Y > 55.5)$ where $Y \\sim N(50, 25)$",
@@ -141,10 +511,14 @@
             "$P(Y > 55.0)$ where $Y \\sim N(50, 25)$"
           ],
           "correct": 0,
-          "answer": "$\\mu = 100(0.5) = 50$, $\\sigma^2 = 100(0.5)(0.5) = 25$. For $X \\geq 55$, the continuity correction shifts to the left boundary: $P(Y > 54.5)$."
+          "answer": "$\\mu = 100(0.5) = 50$, $\\sigma^2 = 100(0.5)(0.5) = 25$. For $X \\geq 55$, the continuity correction shifts to the left boundary: $P(Y > 54.5)$.",
+          "explanation": "$\\mu = 100(0.5) = 50$, $\\sigma^2 = 100(0.5)(0.5) = 25$. For $X \\geq 55$, the continuity correction shifts to the left boundary: $P(Y > 54.5)$."
         },
         {
           "q": "Compute the approximate probability of getting at least 55 heads in 100 tosses using $Y \\sim N(50, 25)$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Normal Approximation to the Binomial Distribution",
           "choices": [
             "$0.1841$",
             "$0.1587$",
@@ -152,7 +526,264 @@
             "$0.1250$"
           ],
           "correct": 0,
-          "answer": "$z = \\frac{54.5 - 50}{5} = 0.90$. $P(Y > 54.5) = 1 - \\Phi(0.90) = 1 - 0.8159 = 0.1841$."
+          "answer": "$z = \\frac{54.5 - 50}{5} = 0.90$. $P(Y > 54.5) = 1 - \\Phi(0.90) = 1 - 0.8159 = 0.1841$.",
+          "explanation": "$z = \\frac{54.5 - 50}{5} = 0.90$. $P(Y > 54.5) = 1 - \\Phi(0.90) = 1 - 0.8159 = 0.1841$."
+        },
+        {
+          "q": "Given $X\\sim N(\\mu,\\sigma^2)$, $P(X<57)=0.9$ and $P(X<27)=0.1$, find $\\mu$, correct to the nearest integer.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Properties of the normal distribution",
+          "choices": [
+            "39",
+            "42",
+            "48",
+            "45"
+          ],
+          "correct": 1,
+          "answer": "Using $z_1=1.2816$, $z_2=-1.2816$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx42$.",
+          "explanation": "Using $z_1=1.2816$, $z_2=-1.2816$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx42$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4*exp(-0.5*x**2)"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -0.4,
+            "ymax": 4.6,
+            "shade": {
+              "fn1": "4*exp(-0.5*x**2)",
+              "fn2": "0",
+              "x0": -1.65,
+              "x1": 1.65
+            },
+            "point_labels": [
+              {
+                "x": 1.65,
+                "y": 1.03,
+                "label": "$z=1.65$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Given $X\\sim N(\\mu,\\sigma^2)$, $P(X<100)=0.95$ and $P(X<80)=0.05$, find $\\mu$, correct to the nearest integer.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Standardizing a normal variable",
+          "choices": [
+            "87",
+            "93",
+            "96",
+            "90"
+          ],
+          "correct": 3,
+          "answer": "Using $z_1=1.6449$, $z_2=-1.6449$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx90$.",
+          "explanation": "Using $z_1=1.6449$, $z_2=-1.6449$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx90$."
+        },
+        {
+          "q": "Given $X\\sim N(\\mu,\\sigma^2)$, $P(X<51)=0.8$ and $P(X<37)=0.2$, find $\\mu$, correct to the nearest integer.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Finding probabilities using the standard normal table",
+          "choices": [
+            "50",
+            "41",
+            "47",
+            "44"
+          ],
+          "correct": 3,
+          "answer": "Using $z_1=0.8416$, $z_2=-0.8416$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx44$.",
+          "explanation": "Using $z_1=0.8416$, $z_2=-0.8416$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx44$."
+        },
+        {
+          "q": "Given $X\\sim N(\\mu,\\sigma^2)$, $P(X<46)=0.8$ and $P(X<32)=0.2$, find $\\mu$, correct to the nearest integer.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Finding a value given a probability (inverse normal)",
+          "choices": [
+            "45",
+            "39",
+            "42",
+            "36"
+          ],
+          "correct": 1,
+          "answer": "Using $z_1=0.8416$, $z_2=-0.8416$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx39$.",
+          "explanation": "Using $z_1=0.8416$, $z_2=-0.8416$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx39$."
+        },
+        {
+          "q": "Given $X\\sim N(\\mu,\\sigma^2)$, $P(X<107)=0.9$ and $P(X<77)=0.1$, find $\\mu$, correct to the nearest integer.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "The probability of a value lying between two bounds",
+          "choices": [
+            "92",
+            "98",
+            "89",
+            "95"
+          ],
+          "correct": 0,
+          "answer": "Using $z_1=1.2816$, $z_2=-1.2816$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx92$.",
+          "explanation": "Using $z_1=1.2816$, $z_2=-1.2816$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx92$."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "Given $X\\sim N(\\mu,\\sigma^2)$, $P(X<55)=0.9$ and $P(X<29)=0.1$, find $\\mu$, correct to the nearest integer.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "The normal approximation to the binomial distribution",
+          "choices": [
+            "45",
+            "42",
+            "39",
+            "48"
+          ],
+          "correct": 1,
+          "answer": "Using $z_1=1.2816$, $z_2=-1.2816$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx42$.",
+          "explanation": "Using $z_1=1.2816$, $z_2=-1.2816$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx42$.",
+          "cross_lesson": "18.01 Binomial Distribution"
+        },
+        {
+          "q": "Given $X\\sim N(\\mu,\\sigma^2)$, $P(X<36)=0.85$ and $P(X<12)=0.15$, find $\\mu$, correct to the nearest integer.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Solving for unknown parameters of a normal distribution",
+          "choices": [
+            "27",
+            "24",
+            "30",
+            "21"
+          ],
+          "correct": 1,
+          "answer": "Using $z_1=1.0364$, $z_2=-1.0364$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx24$.",
+          "explanation": "Using $z_1=1.0364$, $z_2=-1.0364$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx24$.",
+          "cross_lesson": "2.01 Simultaneous Equations & Inequalities",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4*exp(-0.5*x**2)"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -0.4,
+            "ymax": 4.6,
+            "shade": {
+              "fn1": "4*exp(-0.5*x**2)",
+              "fn2": "0",
+              "x0": -1.65,
+              "x1": 1.65
+            },
+            "point_labels": [
+              {
+                "x": 1.65,
+                "y": 1.03,
+                "label": "$z=1.65$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Given $X\\sim N(\\mu,\\sigma^2)$, $P(X<103)=0.9$ and $P(X<77)=0.1$, find $\\mu$, correct to the nearest integer.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "A well-designed word problem: setting a pass mark for an exam",
+          "choices": [
+            "96",
+            "87",
+            "93",
+            "90"
+          ],
+          "correct": 3,
+          "answer": "Using $z_1=1.2816$, $z_2=-1.2816$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx90$.",
+          "explanation": "Using $z_1=1.2816$, $z_2=-1.2816$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx90$.",
+          "cross_lesson": "3.01 Graphs & Transformations"
+        },
+        {
+          "q": "Given $X\\sim N(\\mu,\\sigma^2)$, $P(X<99)=0.8$ and $P(X<83)=0.2$, find $\\mu$, correct to the nearest integer.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "The Standard Normal Distribution $Z \\sim N(0, 1)$",
+          "choices": [
+            "94",
+            "91",
+            "88",
+            "97"
+          ],
+          "correct": 1,
+          "answer": "Using $z_1=0.8416$, $z_2=-0.8416$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx91$.",
+          "explanation": "Using $z_1=0.8416$, $z_2=-0.8416$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx91$.",
+          "cross_lesson": "4.01 Coordinate Geometry"
+        },
+        {
+          "q": "Given $X\\sim N(\\mu,\\sigma^2)$, $P(X<66)=0.9$ and $P(X<36)=0.1$, find $\\mu$, correct to the nearest integer.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Standardization & General Normal Distribution",
+          "choices": [
+            "48",
+            "57",
+            "54",
+            "51"
+          ],
+          "correct": 3,
+          "answer": "Using $z_1=1.2816$, $z_2=-1.2816$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx51$.",
+          "explanation": "Using $z_1=1.2816$, $z_2=-1.2816$ and solving $x_1=\\mu+z_1\\sigma$, $x_2=\\mu+z_2\\sigma$ simultaneously gives $\\mu\\approx51$.",
+          "cross_lesson": "5.01 Trigonometry"
+        },
+        {
+          "q": "A random variable $X\\sim B(201,0.75)$ is approximated by a normal distribution. State the mean of the approximating normal distribution.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Inverse Normal & Finding $\\mu$ and $\\sigma$",
+          "choices": [
+            "148.8",
+            "152.8",
+            "155.8",
+            "150.75"
+          ],
+          "correct": 3,
+          "answer": "Applying Normal Distribution principles, Mean $=np=201\\times0.75=150.75$ Therefore, the verified correct option is 150.75.",
+          "explanation": "Applying Normal Distribution principles, Mean $=np=201\\times0.75=150.75$ Therefore, the verified correct option is 150.75.",
+          "cross_lesson": "6.01 Differentiation & Integration"
+        },
+        {
+          "q": "A random variable $X\\sim B(266,0.7)$ is approximated by a normal distribution. State the mean of the approximating normal distribution.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Normal Approximation to the Binomial Distribution",
+          "choices": [
+            "184.2",
+            "186.2",
+            "188.2",
+            "191.2"
+          ],
+          "correct": 1,
+          "answer": "Applying Normal Distribution principles, Mean $=np=266\\times0.7=186.2$ Therefore, the verified correct option is 186.2.",
+          "explanation": "Applying Normal Distribution principles, Mean $=np=266\\times0.7=186.2$ Therefore, the verified correct option is 186.2.",
+          "cross_lesson": "7.01 Statistics & Probability"
+        },
+        {
+          "q": "A random variable $X\\sim B(170,0.25)$ is approximated by a normal distribution. State the mean of the approximating normal distribution.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Properties of the normal distribution",
+          "choices": [
+            "44.5",
+            "47.5",
+            "42.5",
+            "40.5"
+          ],
+          "correct": 2,
+          "answer": "Applying Normal Distribution principles, Mean $=np=170\\times0.25=42.5$ Therefore, the verified correct option is 42.5.",
+          "explanation": "Applying Normal Distribution principles, Mean $=np=170\\times0.25=42.5$ Therefore, the verified correct option is 42.5.",
+          "cross_lesson": "8.01 Functions: Composite & Inverse"
         }
       ]
     }

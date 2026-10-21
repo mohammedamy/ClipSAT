@@ -3,12 +3,352 @@
   "num": "2.01",
   "slug": "evaluating-limits",
   "title": "Evaluating Limits",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 2.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Direct Substitution and Algebraic Techniques",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "Evaluate $\\lim_{x \\to 3} \\frac{x^2 - 9}{x^2 - 2x - 3}$.",
+          "q": "Evaluate each limit:",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Direct substitution and algebraic techniques",
+          "parts": [
+            "$\\lim_{x \\rightarrow 1} (3x^2 - 2x + 5)$",
+            "$\\lim_{x \\rightarrow 2} \\frac{x^2 - 4}{x - 2}$",
+            "$\\lim_{x \\rightarrow 0} \\frac{\\sqrt{x + 4} - 2}{x}$"
+          ],
+          "cols": 1,
+          "answers": [
+            "$= 6$.",
+            "$= \\lim_{x\\rightarrow 2}(x+2) = 4$.",
+            "Rationalize: $\\frac{(x+4) - 4}{x(\\sqrt{x+4}+2)} = \\frac{1}{\\sqrt{x+4}+2} \\rightarrow \\frac{1}{4}$."
+          ],
+          "answer": "(a) $= 6$.; (b) $= \\lim_{x\\rightarrow 2}(x+2) = 4$.; (c) Rationalize: $\\frac{(x+4) - 4}{x(\\sqrt{x+4}+2)} = \\frac{1}{\\sqrt{x+4}+2} \\rightarrow \\frac{1}{4}$.",
+          "explanation": "(a) $= 6$.; (b) $= \\lim_{x\\rightarrow 2}(x+2) = 4$.; (c) Rationalize: $\\frac{(x+4) - 4}{x(\\sqrt{x+4}+2)} = \\frac{1}{\\sqrt{x+4}+2} \\rightarrow \\frac{1}{4}$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x \\rightarrow 3} \\frac{x^2 - x - 6}{x^2 - 9}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Direct substitution and algebraic techniques",
+          "answer": "Factor: $\\frac{(x-3)(x+2)}{(x-3)(x+3)} = \\frac{x+2}{x+3} \\rightarrow \\frac{5}{6}$.",
+          "explanation": "Factor: $\\frac{(x-3)(x+2)}{(x-3)(x+3)} = \\frac{x+2}{x+3} \\rightarrow \\frac{5}{6}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "1 + 1.5/(x - (-1))"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "asymptotes": {
+              "x": [
+                -1
+              ],
+              "y": [
+                1
+              ]
+            },
+            "point_labels": [
+              {
+                "x": 0.5,
+                "y": 2.0,
+                "label": "$( 0.5, 2 )$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Using $\\lim_{x \\rightarrow 0} \\frac{\\sin x}{x} = 1$, evaluate:",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Trigonometric and special limits",
+          "parts": [
+            "$\\lim_{x \\rightarrow 0} \\frac{\\sin 5x}{x}$",
+            "$\\lim_{x \\rightarrow 0} \\frac{1 - \\cos x}{x}$",
+            "$\\lim_{x \\rightarrow 0} \\frac{\\sin 3x}{\\sin 5x}$"
+          ],
+          "cols": 1,
+          "answers": [
+            "$= 5\\lim_{x\\rightarrow 0}\\frac{\\sin 5x}{5x} = 5$.",
+            "$= 0$ (known result: this limit is $0$, not $\\infty$).",
+            "$= \\frac{3}{5}\\cdot\\lim\\frac{\\sin 3x}{3x}\\cdot\\frac{5x}{\\sin 5x} = \\frac{3}{5}$."
+          ],
+          "answer": "(a) $= 5\\lim_{x\\rightarrow 0}\\frac{\\sin 5x}{5x} = 5$.; (b) $= 0$ (known result: this limit is $0$, not $\\infty$).; (c) $= \\frac{3}{5}\\cdot\\lim\\frac{\\sin 3x}{3x}\\cdot\\frac{5x}{\\sin 5x} = \\frac{3}{5}$.",
+          "explanation": "(a) $= 5\\lim_{x\\rightarrow 0}\\frac{\\sin 5x}{5x} = 5$.; (b) $= 0$ (known result: this limit is $0$, not $\\infty$).; (c) $= \\frac{3}{5}\\cdot\\lim\\frac{\\sin 3x}{3x}\\cdot\\frac{5x}{\\sin 5x} = \\frac{3}{5}$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x \\rightarrow \\infty} \\frac{5x^3 - 2x + 1}{2x^3 + 7}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Trigonometric and special limits",
+          "answer": "Equal degrees: the limit is the ratio of leading coefficients, $\\frac{5}{2}$.",
+          "explanation": "Equal degrees: the limit is the ratio of leading coefficients, $\\frac{5}{2}$."
+        },
+        {
+          "q": "Explain why $\\lim_{x \\rightarrow 0} \\sin\\left(\\frac{1}{x}\\right)$ does not exist.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Limits that fail to exist and the squeeze theorem",
+          "answer": "As $x \\rightarrow 0$, $\\frac{1}{x} \\rightarrow \\pm\\infty$, so $\\sin(1/x)$ oscillates between $-1$ and $1$ infinitely often near $x = 0$ rather than approaching a single value.",
+          "explanation": "As $x \\rightarrow 0$, $\\frac{1}{x} \\rightarrow \\pm\\infty$, so $\\sin(1/x)$ oscillates between $-1$ and $1$ infinitely often near $x = 0$ rather than approaching a single value."
+        },
+        {
+          "q": "Use the squeeze theorem to evaluate $\\lim_{x \\rightarrow 0} x^2\\cos\\left(\\frac{1}{x}\\right)$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Limits that fail to exist and the squeeze theorem",
+          "answer": "Since $-x^2 \\leq x^2\\cos(1/x) \\leq x^2$ and $\\lim_{x\\rightarrow 0}(\\pm x^2) = 0$, the squeeze theorem gives a limit of $0$.",
+          "explanation": "Since $-x^2 \\leq x^2\\cos(1/x) \\leq x^2$ and $\\lim_{x\\rightarrow 0}(\\pm x^2) = 0$, the squeeze theorem gives a limit of $0$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**2",
+              "-x**2",
+              "x**2*cos(1/x)"
+            ],
+            "xmin": -1,
+            "xmax": 1,
+            "ymin": -1,
+            "ymax": 1,
+            "width": 220
+          }
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow3} |x-3|\\cdot\\frac{1}{x}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Limits with absolute value and piecewise functions",
+          "answer": "As $x\\rightarrow3$, $|x-3|\\rightarrow0$ and $\\frac{1}{x}\\rightarrow\\frac{1}{3}$ (a finite value), so the product limit is $0\\cdot\\frac{1}{3}=0$.",
+          "explanation": "As $x\\rightarrow3$, $|x-3|\\rightarrow0$ and $\\frac{1}{x}\\rightarrow\\frac{1}{3}$ (a finite value), so the product limit is $0\\cdot\\frac{1}{3}=0$."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "For $f(x)=2x+1$ if $x<3$, and $f(x)=x^2-2$ if $x\\geq3$, evaluate $\\lim_{x\\rightarrow3^-}f(x)$ and $\\lim_{x\\rightarrow3^+}f(x)$, and state whether $\\lim_{x\\rightarrow3}f(x)$ exists.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Limits with absolute value and piecewise functions",
+          "answer": "$\\lim_{x\\rightarrow3^-}f(x)=2(3)+1=7$. $\\lim_{x\\rightarrow3^+}f(x)=3^2-2=7$. Since both one-sided limits equal $7$, $\\lim_{x\\rightarrow3}f(x)=7$ exists.",
+          "explanation": "$\\lim_{x\\rightarrow3^-}f(x)=2(3)+1=7$. $\\lim_{x\\rightarrow3^+}f(x)=3^2-2=7$. Since both one-sided limits equal $7$, $\\lim_{x\\rightarrow3}f(x)=7$ exists.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "np.where(x < 3, 2*x + 1, x**2 - 2)"
+            ],
+            "xmin": 0,
+            "xmax": 6,
+            "ymin": -2,
+            "ymax": 10,
+            "width": 220
+          }
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow2} \\frac{x^3-8}{x-2}$ by factoring with the difference-of-cubes formula.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "More algebraic limit techniques",
+          "answer": "$x^3-8=(x-2)(x^2+2x+4)$, so the limit is $\\lim_{x\\rightarrow2}(x^2+2x+4) = 4+4+4=12$.",
+          "explanation": "$x^3-8=(x-2)(x^2+2x+4)$, so the limit is $\\lim_{x\\rightarrow2}(x^2+2x+4) = 4+4+4=12$."
+        },
+        {
+          "q": "Evaluate $\\lim_{h\\rightarrow0} \\frac{(2+h)^2-4}{h}$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "More algebraic limit techniques",
+          "answer": "$(2+h)^2-4 = 4+4h+h^2-4=4h+h^2=h(4+h)$, so the limit is $\\lim_{h\\rightarrow0}(4+h)=4$.",
+          "explanation": "$(2+h)^2-4 = 4+4h+h^2-4=4h+h^2=h(4+h)$, so the limit is $\\lim_{h\\rightarrow0}(4+h)=4$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "1 + 1.5/(x - (-1))"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "asymptotes": {
+              "x": [
+                -1
+              ],
+              "y": [
+                1
+              ]
+            },
+            "point_labels": [
+              {
+                "x": 0.5,
+                "y": 2.0,
+                "label": "$( 0.5, 2 )$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "The function $f(x)=\\frac{\\sin x}{x}$ (undefined at $x=0$) is graphed below. Use the graph to estimate $\\lim_{x\\rightarrow0}f(x)$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Visualizing a limit numerically and graphically",
+          "answer": "The graph approaches height $1$ from both sides as $x\\rightarrow0$, even though the function has a hole exactly at $x=0$: $\\lim_{x\\rightarrow0}\\frac{\\sin x}{x}=1$.",
+          "explanation": "The graph approaches height $1$ from both sides as $x\\rightarrow0$, even though the function has a hole exactly at $x=0$: $\\lim_{x\\rightarrow0}\\frac{\\sin x}{x}=1$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "sin(x)/x"
+            ],
+            "xmin": -10,
+            "xmax": 10,
+            "ymin": -0.5,
+            "ymax": 1.3,
+            "width": 250
+          }
+        },
+        {
+          "q": "Evaluate each limit at infinity, based on the relative degrees of numerator and denominator:",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Limits at infinity with different degree relationships",
+          "parts": [
+            "$\\lim_{x\\rightarrow\\infty}\\frac{4x+3}{x^2-1}$ (lower degree numerator)",
+            "$\\lim_{x\\rightarrow\\infty}\\frac{x^3-1}{2x^2+5}$ (higher degree numerator)"
+          ],
+          "cols": 1,
+          "answers": [
+            "$=0$ (denominator grows faster).",
+            "$=\\infty$ (numerator grows faster; the limit does not exist as a finite number)."
+          ],
+          "answer": "(a) $=0$ (denominator grows faster).; (b) $=\\infty$ (numerator grows faster; the limit does not exist as a finite number).",
+          "explanation": "(a) $=0$ (denominator grows faster).; (b) $=\\infty$ (numerator grows faster; the limit does not exist as a finite number).",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "(4*x + 3)/(x**2 - 1)"
+            ],
+            "xmin": 2,
+            "xmax": 60,
+            "ymin": -0.2,
+            "ymax": 1.5,
+            "width": 220
+          }
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow9}\\frac{x-9}{\\sqrt{x}-3}$ by rationalizing the denominator.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Limits requiring conjugate multiplication",
+          "answer": "Multiply by $\\frac{\\sqrt{x}+3}{\\sqrt{x}+3}$: $\\frac{(x-9)(\\sqrt{x}+3)}{x-9}=\\sqrt{x}+3 \\rightarrow \\sqrt{9}+3=6$.",
+          "explanation": "Multiply by $\\frac{\\sqrt{x}+3}{\\sqrt{x}+3}$: $\\frac{(x-9)(\\sqrt{x}+3)}{x-9}=\\sqrt{x}+3 \\rightarrow \\sqrt{9}+3=6$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow\\infty}\\left(\\sqrt{x^2+3x}-x\\right)$ by rationalizing.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Limits requiring conjugate multiplication",
+          "answer": "Multiply by $\\frac{\\sqrt{x^2+3x}+x}{\\sqrt{x^2+3x}+x}$: $\\frac{3x}{\\sqrt{x^2+3x}+x}$. Dividing top and bottom by $x$: $\\frac{3}{\\sqrt{1+3/x}+1}\\rightarrow\\frac{3}{1+1}=\\frac{3}{2}$.",
+          "explanation": "Multiply by $\\frac{\\sqrt{x^2+3x}+x}{\\sqrt{x^2+3x}+x}$: $\\frac{3x}{\\sqrt{x^2+3x}+x}$. Dividing top and bottom by $x$: $\\frac{3}{\\sqrt{1+3/x}+1}\\rightarrow\\frac{3}{1+1}=\\frac{3}{2}$."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "For $f(x)=kx+1$ if $x\\leq2$, and $f(x)=x^2-3$ if $x>2$, find $k$ so that $\\lim_{x\\rightarrow2}f(x)$ exists.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Piecewise limits requiring a parameter",
+          "cross_lesson": "1.01 Precalculus Review for Calculus",
+          "answer": "Need $\\lim_{x\\rightarrow2^-}f(x)=\\lim_{x\\rightarrow2^+}f(x)$: $2k+1=4-3=1$, so $k=0$.",
+          "explanation": "Need $\\lim_{x\\rightarrow2^-}f(x)=\\lim_{x\\rightarrow2^+}f(x)$: $2k+1=4-3=1$, so $k=0$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow1}\\frac{x^4-1}{x-1}$ by factoring the numerator as a difference of squares twice.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Limits involving factorable higher-degree polynomials",
+          "cross_lesson": "10.01 Calculus with Parametric and Polar Curves",
+          "answer": "$x^4-1=(x^2-1)(x^2+1)=(x-1)(x+1)(x^2+1)$, so the limit is $\\lim_{x\\rightarrow1}(x+1)(x^2+1)=(2)(2)=4$.",
+          "explanation": "$x^4-1=(x^2-1)(x^2+1)=(x-1)(x+1)(x^2+1)$, so the limit is $\\lim_{x\\rightarrow1}(x+1)(x^2+1)=(2)(2)=4$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "1 + 1.5/(x - (-1))"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "asymptotes": {
+              "x": [
+                -1
+              ],
+              "y": [
+                1
+              ]
+            },
+            "point_labels": [
+              {
+                "x": 0.5,
+                "y": 2.0,
+                "label": "$( 0.5, 2 )$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow-2}\\frac{x^3+8}{x+2}$ using the sum-of-cubes factoring pattern.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Limits involving factorable higher-degree polynomials",
+          "cross_lesson": "11.01 Sequences and Series",
+          "answer": "$x^3+8=(x+2)(x^2-2x+4)$, so the limit is $\\lim_{x\\rightarrow-2}(x^2-2x+4)=4+4+4=12$.",
+          "explanation": "$x^3+8=(x+2)(x^2-2x+4)$, so the limit is $\\lim_{x\\rightarrow-2}(x^2-2x+4)=4+4+4=12$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow0}\\frac{(3+x)^2-9}{x}$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Limits involving factorable higher-degree polynomials",
+          "cross_lesson": "12.01 Convergence Tests",
+          "answer": "$(3+x)^2-9=9+6x+x^2-9=6x+x^2=x(6+x)$, so the limit is $\\lim_{x\\rightarrow0}(6+x)=6$.",
+          "explanation": "$(3+x)^2-9=9+6x+x^2-9=6x+x^2=x(6+x)$, so the limit is $\\lim_{x\\rightarrow0}(6+x)=6$."
+        },
+        {
+          "q": "The figure shows the graph of a function $f(x)$. What is the value of $\\lim_{x\\rightarrow 2} f(x)$?",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "More algebraic limit techniques",
+          "cross_lesson": "12.02 Power Series and Taylor Series",
+          "answer": "The limit of a function as $x$ approaches a certain value is the $y$-value that the function approaches as $x$ gets arbitrarily close to that value. Looking at the graph, as $x$ approaches 2 from both the left and the right, the $y$-value of the function approaches 2. Therefore, $\\lim_{x\\rightarrow 2} f(x) = 2$.",
+          "explanation": "The limit of a function as $x$ approaches a certain value is the $y$-value that the function approaches as $x$ gets arbitrarily close to that value. Looking at the graph, as $x$ approaches 2 from both the left and the right, the $y$-value of the function approaches 2. Therefore, $\\lim_{x\\rightarrow 2} f(x) = 2$."
+        },
+        {
+          "q": "$\\frac{d}{dx}\\left[(\\ln x)^{\\ln x}\\right] =$",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Visualizing a limit numerically and graphically",
+          "cross_lesson": "13.01 Vectors and Vector-Valued Functions",
+          "answer": "Let $y=(\\ln x)^{\\ln x}=e^{(\\ln x)^2}$. $y'=e^{(\\ln x)^2}\\cdot2\\ln x/x=(\\ln x)^{\\ln x}\\cdot\\frac{2\\ln(\\ln x)}{\\ln x}\\cdot\\frac{\\ln x}{x}$... simpler: $\\ln y=(\\ln x)\\ln(\\ln x)$. $y'/y=\\frac{1}{x}\\ln(\\ln x)+\\frac{\\ln x}{x\\ln x}=\\frac{\\ln(\\ln x)+1}{x}$. So $y'=(\\ln x)^{\\ln x}\\cdot\\frac{1+\\ln(\\ln x)}{x}$.",
+          "explanation": "Let $y=(\\ln x)^{\\ln x}=e^{(\\ln x)^2}$. $y'=e^{(\\ln x)^2}\\cdot2\\ln x/x=(\\ln x)^{\\ln x}\\cdot\\frac{2\\ln(\\ln x)}{\\ln x}\\cdot\\frac{\\ln x}{x}$... simpler: $\\ln y=(\\ln x)\\ln(\\ln x)$. $y'/y=\\frac{1}{x}\\ln(\\ln x)+\\frac{\\ln x}{x\\ln x}=\\frac{\\ln(\\ln x)+1}{x}$. So $y'=(\\ln x)^{\\ln x}\\cdot\\frac{1+\\ln(\\ln x)}{x}$."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+      "questions": [
+        {
+          "q": "Evaluate $\\lim_{x \\rightarrow 3} \\frac{x^2 - 9}{x^2 - 2x - 3}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Direct Substitution and Algebraic Techniques",
           "choices": [
             "$3/2$",
             "$0$",
@@ -16,10 +356,14 @@
             "Does not exist"
           ],
           "correct": 0,
-          "answer": "Indeterminate $0/0$. Factor: $\\frac{(x-3)(x+3)}{(x-3)(x+1)} = \\frac{x+3}{x+1}$. Substitute $x = 3$: $\\frac{3+3}{3+1} = \\frac{6}{4} = \\frac{3}{2}$."
+          "answer": "Indeterminate $0/0$. Factor: $\\frac{(x-3)(x+3)}{(x-3)(x+1)} = \\frac{x+3}{x+1}$. Substitute $x = 3$: $\\frac{3+3}{3+1} = \\frac{6}{4} = \\frac{3}{2}$.",
+          "explanation": "Indeterminate $0/0$. Factor: $\\frac{(x-3)(x+3)}{(x-3)(x+1)} = \\frac{x+3}{x+1}$. Substitute $x = 3$: $\\frac{3+3}{3+1} = \\frac{6}{4} = \\frac{3}{2}$."
         },
         {
-          "q": "Evaluate $\\lim_{x \\to 0} \\frac{\\sqrt{x + 4} - 2}{x}$.",
+          "q": "Evaluate $\\lim_{x \\rightarrow 0} \\frac{\\sqrt{x + 4} - 2}{x}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Direct Substitution and Algebraic Techniques",
           "choices": [
             "$1/4$",
             "$1/2$",
@@ -27,10 +371,14 @@
             "$1/8$"
           ],
           "correct": 0,
-          "answer": "Multiply numerator and denominator by conjugate $(\\sqrt{x+4}+2)$: $\\frac{(x+4)-4}{x(\\sqrt{x+4}+2)} = \\frac{1}{\\sqrt{x+4}+2}$. At $x=0$, $\\frac{1}{2+2} = \\frac{1}{4}$."
+          "answer": "Multiply numerator and denominator by conjugate $(\\sqrt{x+4}+2)$: $\\frac{(x+4)-4}{x(\\sqrt{x+4}+2)} = \\frac{1}{\\sqrt{x+4}+2}$. At $x=0$, $\\frac{1}{2+2} = \\frac{1}{4}$.",
+          "explanation": "Multiply numerator and denominator by conjugate $(\\sqrt{x+4}+2)$: $\\frac{(x+4)-4}{x(\\sqrt{x+4}+2)} = \\frac{1}{\\sqrt{x+4}+2}$. At $x=0$, $\\frac{1}{2+2} = \\frac{1}{4}$."
         },
         {
-          "q": "Evaluate $\\lim_{x \\to 1} \\frac{\\frac{1}{x+1} - \\frac{1}{2}}{x - 1}$.",
+          "q": "Evaluate $\\lim_{x \\rightarrow 1} \\frac{\\frac{1}{x+1} - \\frac{1}{2}}{x - 1}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Direct Substitution and Algebraic Techniques",
           "choices": [
             "$-1/4$",
             "$1/4$",
@@ -38,15 +386,40 @@
             "$0$"
           ],
           "correct": 0,
-          "answer": "Combine fractions: $\\frac{2 - (x+1)}{2(x+1)(x-1)} = \\frac{1-x}{2(x+1)(x-1)} = \\frac{-1}{2(x+1)}$. At $x = 1$, $\\frac{-1}{2(2)} = -\\frac{1}{4}$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Trigonometric Limits and the Squeeze Theorem",
-      "questions": [
+          "answer": "Combine fractions: $\\frac{2 - (x+1)}{2(x+1)(x-1)} = \\frac{1-x}{2(x+1)(x-1)} = \\frac{-1}{2(x+1)}$. At $x = 1$, $\\frac{-1}{2(2)} = -\\frac{1}{4}$.",
+          "explanation": "Combine fractions: $\\frac{2 - (x+1)}{2(x+1)(x-1)} = \\frac{1-x}{2(x+1)(x-1)} = \\frac{-1}{2(x+1)}$. At $x = 1$, $\\frac{-1}{2(2)} = -\\frac{1}{4}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2 + 1.5/(x - (1))"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "asymptotes": {
+              "x": [
+                1
+              ],
+              "y": [
+                2
+              ]
+            },
+            "point_labels": [
+              {
+                "x": 2.5,
+                "y": 3.0,
+                "label": "$( 2.5, 3 )$"
+              }
+            ],
+            "width": 230
+          }
+        },
         {
-          "q": "Evaluate $\\lim_{x \\to 0} \\frac{\\sin(5x)}{3x}$.",
+          "q": "Evaluate $\\lim_{x \\rightarrow 0} \\frac{\\sin(5x)}{3x}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Trigonometric Limits and the Squeeze Theorem",
           "choices": [
             "$5/3$",
             "$3/5$",
@@ -54,10 +427,14 @@
             "$0$"
           ],
           "correct": 0,
-          "answer": "Rewrite as $\\frac{5}{3} \\cdot \\frac{\\sin(5x)}{5x}$. Since $\\lim_{u \\to 0} \\frac{\\sin u}{u} = 1$, the limit is $5/3$."
+          "answer": "Rewrite as $\\frac{5}{3} \\cdot \\frac{\\sin(5x)}{5x}$. Since $\\lim_{u \\rightarrow 0} \\frac{\\sin u}{u} = 1$, the limit is $5/3$.",
+          "explanation": "Rewrite as $\\frac{5}{3} \\cdot \\frac{\\sin(5x)}{5x}$. Since $\\lim_{u \\rightarrow 0} \\frac{\\sin u}{u} = 1$, the limit is $5/3$."
         },
         {
-          "q": "Evaluate $\\lim_{x \\to 0} \\frac{1 - \\cos(x)}{x^2}$.",
+          "q": "Evaluate $\\lim_{x \\rightarrow 0} \\frac{1 - \\cos(x)}{x^2}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Trigonometric Limits and the Squeeze Theorem",
           "choices": [
             "$1/2$",
             "$0$",
@@ -65,10 +442,14 @@
             "Does not exist"
           ],
           "correct": 0,
-          "answer": "Multiply by $(1+\\cos x)/(1+\\cos x)$: $\\frac{\\sin^2 x}{x^2(1+\\cos x)} = \\left(\\frac{\\sin x}{x}\\right)^2 \\frac{1}{1+\\cos x} \\to 1^2 \\cdot \\frac{1}{2} = \\frac{1}{2}$."
+          "answer": "Multiply by $(1+\\cos x)/(1+\\cos x)$: $\\frac{\\sin^2 x}{x^2(1+\\cos x)} = \\left(\\frac{\\sin x}{x}\\right)^2 \\frac{1}{1+\\cos x} \\rightarrow 1^2 \\cdot \\frac{1}{2} = \\frac{1}{2}$.",
+          "explanation": "Multiply by $(1+\\cos x)/(1+\\cos x)$: $\\frac{\\sin^2 x}{x^2(1+\\cos x)} = \\left(\\frac{\\sin x}{x}\\right)^2 \\frac{1}{1+\\cos x} \\rightarrow 1^2 \\cdot \\frac{1}{2} = \\frac{1}{2}$."
         },
         {
-          "q": "If $1 - \\frac{x^2}{6} \\leq g(x) \\leq 1$ for all $x$ near 0, find $\\lim_{x \\to 0} g(x)$.",
+          "q": "If $1 - \\frac{x^2}{6} \\leq g(x) \\leq 1$ for all $x$ near 0, find $\\lim_{x \\rightarrow 0} g(x)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Trigonometric Limits and the Squeeze Theorem",
           "choices": [
             "$1$",
             "$0$",
@@ -76,15 +457,14 @@
             "Cannot be determined"
           ],
           "correct": 0,
-          "answer": "Since $\\lim_{x \\to 0} (1 - x^2/6) = 1$ and $\\lim_{x \\to 0} 1 = 1$, by the Squeeze Theorem, $\\lim_{x \\to 0} g(x) = 1$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Infinite Limits and Limits at Infinity",
-      "questions": [
+          "answer": "Since $\\lim_{x \\rightarrow 0} (1 - x^2/6) = 1$ and $\\lim_{x \\rightarrow 0} 1 = 1$, by the Squeeze Theorem, $\\lim_{x \\rightarrow 0} g(x) = 1$.",
+          "explanation": "Since $\\lim_{x \\rightarrow 0} (1 - x^2/6) = 1$ and $\\lim_{x \\rightarrow 0} 1 = 1$, by the Squeeze Theorem, $\\lim_{x \\rightarrow 0} g(x) = 1$."
+        },
         {
-          "q": "Evaluate $\\lim_{x \\to \\infty} \\frac{4x^3 - 2x + 7}{5x^3 + 3x^2 - 1}$.",
+          "q": "Evaluate $\\lim_{x \\rightarrow \\infty} \\frac{4x^3 - 2x + 7}{5x^3 + 3x^2 - 1}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Infinite Limits and Limits at Infinity",
           "choices": [
             "$4/5$",
             "$0$",
@@ -92,10 +472,14 @@
             "$7/(-1)$"
           ],
           "correct": 0,
-          "answer": "Divide numerator and denominator by $x^3$: $\\frac{4 - 2/x^2 + 7/x^3}{5 + 3/x - 1/x^3} \\to \\frac{4}{5}$ as $x \\to \\infty$."
+          "answer": "Divide numerator and denominator by $x^3$: $\\frac{4 - 2/x^2 + 7/x^3}{5 + 3/x - 1/x^3} \\rightarrow \\frac{4}{5}$ as $x \\rightarrow \\infty$.",
+          "explanation": "Divide numerator and denominator by $x^3$: $\\frac{4 - 2/x^2 + 7/x^3}{5 + 3/x - 1/x^3} \\rightarrow \\frac{4}{5}$ as $x \\rightarrow \\infty$."
         },
         {
-          "q": "Evaluate $\\lim_{x \\to -\\infty} \\frac{\\sqrt{9x^2 + 4}}{2x - 1}$.",
+          "q": "Evaluate $\\lim_{x \\rightarrow -\\infty} \\frac{\\sqrt{9x^2 + 4}}{2x - 1}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Infinite Limits and Limits at Infinity",
           "choices": [
             "$-3/2$",
             "$3/2$",
@@ -103,10 +487,45 @@
             "$-9/2$"
           ],
           "correct": 0,
-          "answer": "For $x < 0$, $\\sqrt{x^2} = |x| = -x$. Thus $\\sqrt{9x^2+4} = -x\\sqrt{9 + 4/x^2}$. Ratio becomes $\\frac{-x\\sqrt{9}}{2x} = -\\frac{3}{2}$."
-        },
+          "answer": "For $x < 0$, $\\sqrt{x^2} = |x| = -x$. Thus $\\sqrt{9x^2+4} = -x\\sqrt{9 + 4/x^2}$. Ratio becomes $\\frac{-x\\sqrt{9}}{2x} = -\\frac{3}{2}$.",
+          "explanation": "For $x < 0$, $\\sqrt{x^2} = |x| = -x$. Thus $\\sqrt{9x^2+4} = -x\\sqrt{9 + 4/x^2}$. Ratio becomes $\\frac{-x\\sqrt{9}}{2x} = -\\frac{3}{2}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "1 + 1.5/(x - (-1))"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "asymptotes": {
+              "x": [
+                -1
+              ],
+              "y": [
+                1
+              ]
+            },
+            "point_labels": [
+              {
+                "x": 0.5,
+                "y": 2.0,
+                "label": "$( 0.5, 2 )$"
+              }
+            ],
+            "width": 230
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
         {
-          "q": "Find $\\lim_{x \\to 2^+} \\frac{3x - 1}{x - 2}$ and $\\lim_{x \\to 2^-} \\frac{3x - 1}{x - 2}$.",
+          "q": "Find $\\lim_{x \\rightarrow 2^+} \\frac{3x - 1}{x - 2}$ and $\\lim_{x \\rightarrow 2^-} \\frac{3x - 1}{x - 2}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Infinite Limits and Limits at Infinity",
           "choices": [
             "$+\\infty$ and $-\\infty$",
             "$+\\infty$ and $+\\infty$",
@@ -114,15 +533,14 @@
             "$5$ and $5$"
           ],
           "correct": 0,
-          "answer": "Numerator approaches $3(2)-1 = 5 > 0$. As $x \\to 2^+$, $x - 2 \\to 0^+$, so ratio $\\to +\\infty$. As $x \\to 2^-$, $x - 2 \\to 0^-$, so ratio $\\to -\\infty$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Piecewise and One-Sided Limits",
-      "questions": [
+          "answer": "Numerator approaches $3(2)-1 = 5 > 0$. As $x \\rightarrow 2^+$, $x - 2 \\rightarrow 0^+$, so ratio $\\rightarrow +\\infty$. As $x \\rightarrow 2^-$, $x - 2 \\rightarrow 0^-$, so ratio $\\rightarrow -\\infty$.",
+          "explanation": "Numerator approaches $3(2)-1 = 5 > 0$. As $x \\rightarrow 2^+$, $x - 2 \\rightarrow 0^+$, so ratio $\\rightarrow +\\infty$. As $x \\rightarrow 2^-$, $x - 2 \\rightarrow 0^-$, so ratio $\\rightarrow -\\infty$."
+        },
         {
-          "q": "Let $f(x)$ be defined as $x^2 + 2$ for $x < 1$ and $4 - x$ for $x \\geq 1$. Evaluate $\\lim_{x \\to 1} f(x)$.",
+          "q": "Let $f(x)$ be defined as $x^2 + 2$ for $x < 1$ and $4 - x$ for $x \\geq 1$. Evaluate $\\lim_{x \\rightarrow 1} f(x)$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Piecewise and One-Sided Limits",
           "choices": [
             "$3$",
             "$1$",
@@ -130,10 +548,14 @@
             "Does not exist"
           ],
           "correct": 0,
-          "answer": "Left limit: $\\lim_{x \\to 1^-} (x^2 + 2) = 3$. Right limit: $\\lim_{x \\to 1^+} (4 - x) = 3$. Since both equal 3, the two-sided limit is 3."
+          "answer": "Left limit: $\\lim_{x \\rightarrow 1^-} (x^2 + 2) = 3$. Right limit: $\\lim_{x \\rightarrow 1^+} (4 - x) = 3$. Since both equal 3, the two-sided limit is 3.",
+          "explanation": "Left limit: $\\lim_{x \\rightarrow 1^-} (x^2 + 2) = 3$. Right limit: $\\lim_{x \\rightarrow 1^+} (4 - x) = 3$. Since both equal 3, the two-sided limit is 3."
         },
         {
-          "q": "Evaluate $\\lim_{x \\to 0^+} \\frac{|x|}{x}$ and $\\lim_{x \\to 0^-} \\frac{|x|}{x}$.",
+          "q": "Evaluate $\\lim_{x \\rightarrow 0^+} \\frac{|x|}{x}$ and $\\lim_{x \\rightarrow 0^-} \\frac{|x|}{x}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Piecewise and One-Sided Limits",
           "choices": [
             "$1$ and $-1$",
             "$1$ and $1$",
@@ -141,10 +563,14 @@
             "$0$ and $0$"
           ],
           "correct": 0,
-          "answer": "For $x > 0$, $|x| = x$, so $x/x = 1$. For $x < 0$, $|x| = -x$, so $-x/x = -1$."
+          "answer": "For $x > 0$, $|x| = x$, so $x/x = 1$. For $x < 0$, $|x| = -x$, so $-x/x = -1$.",
+          "explanation": "For $x > 0$, $|x| = x$, so $x/x = 1$. For $x < 0$, $|x| = -x$, so $-x/x = -1$."
         },
         {
-          "q": "Find the value of $k$ such that $\\lim_{x \\to 2} g(x)$ exists, where $g(x)$ is $kx - 3$ for $x \\leq 2$ and $x^2 + 1$ for $x > 2$.",
+          "q": "Find the value of $k$ such that $\\lim_{x \\rightarrow 2} g(x)$ exists, where $g(x)$ is $kx - 3$ for $x \\leq 2$ and $x^2 + 1$ for $x > 2$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Piecewise and One-Sided Limits",
           "choices": [
             "$4$",
             "$2$",
@@ -152,7 +578,216 @@
             "$3$"
           ],
           "correct": 0,
-          "answer": "Require $\\lim_{x \\to 2^-} g(x) = \\lim_{x \\to 2^+} g(x) \\Rightarrow 2k - 3 = 2^2 + 1 = 5 \\Rightarrow 2k = 8 \\Rightarrow k = 4$."
+          "answer": "Require $\\lim_{x \\rightarrow 2^-} g(x) = \\lim_{x \\rightarrow 2^+} g(x) \\Rightarrow 2k - 3 = 2^2 + 1 = 5 \\Rightarrow 2k = 8 \\Rightarrow k = 4$.",
+          "explanation": "Require $\\lim_{x \\rightarrow 2^-} g(x) = \\lim_{x \\rightarrow 2^+} g(x) \\Rightarrow 2k - 3 = 2^2 + 1 = 5 \\Rightarrow 2k = 8 \\Rightarrow k = 4$."
+        },
+        {
+          "q": "One-sided limit: $f(x)=|x|/x$. $\\lim_{x\\rightarrow0^-}f(x)=$",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Infinite Limits and Limits at Infinity",
+          "choices": [
+            "$1$",
+            "$-1$",
+            "$0$",
+            "DNE"
+          ],
+          "correct": 1,
+          "answer": "Applying Limits and Continuity principles, For $x<0$, $|x|/x=-1$. Therefore, the verified correct option is $-1$.",
+          "explanation": "Applying Limits and Continuity principles, For $x<0$, $|x|/x=-1$. Therefore, the verified correct option is $-1$."
+        },
+        {
+          "q": "Evaluate the one-sided limit $\\lim_{x\\rightarrow -1^-}\\frac{|x+1|}{x+1}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Piecewise and One-Sided Limits",
+          "choices": [
+            "0",
+            "$\\infty$",
+            "-1",
+            "1"
+          ],
+          "correct": 2,
+          "answer": "For $x\\rightarrow -1^-$, $x+1$ is negative, so $\\frac{|x+1|}{x+1}=-1$.",
+          "explanation": "For $x\\rightarrow -1^-$, $x+1$ is negative, so $\\frac{|x+1|}{x+1}=-1$."
+        },
+        {
+          "q": "Evaluate the one-sided limit $\\lim_{x\\rightarrow -2^-}\\frac{|x+2|}{x+2}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Direct substitution and algebraic techniques",
+          "choices": [
+            "0",
+            "$\\infty$",
+            "1",
+            "-1"
+          ],
+          "correct": 3,
+          "answer": "For $x\\rightarrow -2^-$, $x+2$ is negative, so $\\frac{|x+2|}{x+2}=-1$.",
+          "explanation": "For $x\\rightarrow -2^-$, $x+2$ is negative, so $\\frac{|x+2|}{x+2}=-1$."
+        },
+        {
+          "q": "Evaluate the one-sided limit $\\lim_{x\\rightarrow -3^-}\\frac{|x+3|}{x+3}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Trigonometric and special limits",
+          "choices": [
+            "1",
+            "$\\infty$",
+            "-1",
+            "0"
+          ],
+          "correct": 2,
+          "answer": "For $x\\rightarrow -3^-$, $x+3$ is negative, so $\\frac{|x+3|}{x+3}=-1$.",
+          "explanation": "For $x\\rightarrow -3^-$, $x+3$ is negative, so $\\frac{|x+3|}{x+3}=-1$."
+        },
+        {
+          "q": "Evaluate the one-sided limit $\\lim_{x\\rightarrow -4^-}\\frac{|x+4|}{x+4}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Limits that fail to exist and the squeeze theorem",
+          "choices": [
+            "0",
+            "1",
+            "-1",
+            "$\\infty$"
+          ],
+          "correct": 2,
+          "answer": "For $x\\rightarrow -4^-$, $x+4$ is negative, so $\\frac{|x+4|}{x+4}=-1$.",
+          "explanation": "For $x\\rightarrow -4^-$, $x+4$ is negative, so $\\frac{|x+4|}{x+4}=-1$."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "Evaluate the one-sided limit $\\lim_{x\\rightarrow 3^-}\\frac{|x-3|}{x-3}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Limits with absolute value and piecewise functions",
+          "choices": [
+            "0",
+            "$\\infty$",
+            "-1",
+            "1"
+          ],
+          "correct": 2,
+          "answer": "For $x\\rightarrow 3^-$, $x-3$ is negative, so $\\frac{|x-3|}{x-3}=-1$.",
+          "explanation": "For $x\\rightarrow 3^-$, $x-3$ is negative, so $\\frac{|x-3|}{x-3}=-1$.",
+          "cross_lesson": "12.01 Convergence Tests"
+        },
+        {
+          "q": "Evaluate the one-sided limit $\\lim_{x\\rightarrow 2^+}\\frac{|x-2|}{x-2}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "More algebraic limit techniques",
+          "choices": [
+            "1",
+            "-1",
+            "0",
+            "$\\infty$"
+          ],
+          "correct": 0,
+          "answer": "For $x\\rightarrow 2^+$, $x-2$ is positive, so $\\frac{|x-2|}{x-2}=1$.",
+          "explanation": "For $x\\rightarrow 2^+$, $x-2$ is positive, so $\\frac{|x-2|}{x-2}=1$.",
+          "cross_lesson": "12.02 Power Series and Taylor Series"
+        },
+        {
+          "q": "Evaluate the one-sided limit $\\lim_{x\\rightarrow 4^+}\\frac{|x-4|}{x-4}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Visualizing a limit numerically and graphically",
+          "choices": [
+            "1",
+            "$\\infty$",
+            "-1",
+            "0"
+          ],
+          "correct": 0,
+          "answer": "For $x\\rightarrow 4^+$, $x-4$ is positive, so $\\frac{|x-4|}{x-4}=1$.",
+          "explanation": "For $x\\rightarrow 4^+$, $x-4$ is positive, so $\\frac{|x-4|}{x-4}=1$.",
+          "cross_lesson": "13.01 Vectors and Vector-Valued Functions"
+        },
+        {
+          "q": "Evaluate the one-sided limit $\\lim_{x\\rightarrow 5^+}\\frac{|x-5|}{x-5}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Limits at infinity with different degree relationships",
+          "choices": [
+            "0",
+            "-1",
+            "$\\infty$",
+            "1"
+          ],
+          "correct": 3,
+          "answer": "For $x\\rightarrow 5^+$, $x-5$ is positive, so $\\frac{|x-5|}{x-5}=1$.",
+          "explanation": "For $x\\rightarrow 5^+$, $x-5$ is positive, so $\\frac{|x-5|}{x-5}=1$.",
+          "cross_lesson": "14.01 Partial Derivatives and the Gradient"
+        },
+        {
+          "q": "Evaluate the one-sided limit $\\lim_{x\\rightarrow 1^+}\\frac{|x-1|}{x-1}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Limits requiring conjugate multiplication",
+          "choices": [
+            "0",
+            "1",
+            "$\\infty$",
+            "-1"
+          ],
+          "correct": 1,
+          "answer": "For $x\\rightarrow 1^+$, $x-1$ is positive, so $\\frac{|x-1|}{x-1}=1$.",
+          "explanation": "For $x\\rightarrow 1^+$, $x-1$ is positive, so $\\frac{|x-1|}{x-1}=1$.",
+          "cross_lesson": "15.01 Double Integrals"
+        },
+        {
+          "q": "Evaluate the one-sided limit $\\lim_{x\\rightarrow 6^+}\\frac{|x-6|}{x-6}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Piecewise limits requiring a parameter",
+          "choices": [
+            "1",
+            "0",
+            "-1",
+            "$\\infty$"
+          ],
+          "correct": 0,
+          "answer": "For $x\\rightarrow 6^+$, $x-6$ is positive, so $\\frac{|x-6|}{x-6}=1$.",
+          "explanation": "For $x\\rightarrow 6^+$, $x-6$ is positive, so $\\frac{|x-6|}{x-6}=1$.",
+          "cross_lesson": "16.01 Vector Fields and Line Integrals"
+        },
+        {
+          "q": "Consider the function $f(x)$ whose graph is given below. The function is defined piecewise. For $x \\leq 2$, $f(x) = ax+b$. For $x > 2$, $f(x) = cx+d$. The graph of $f(x)$ passes through the point $(0, 3)$. The limit of $f(x)$ as $x$ approaches 2 exists. Find the value of $a$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Limits involving factorable higher-degree polynomials",
+          "choices": [
+            "$-1$",
+            "$1$",
+            "$2$",
+            "$-2$"
+          ],
+          "correct": 0,
+          "answer": "For the limit of $f(x)$ as $x$ approaches 2 to exist, the left-hand limit must equal the right-hand limit. That is, $\\lim_{x \\rightarrow 2^-} f(x) = \\lim_{x \\rightarrow 2^+} f(x)$. For $x \\leq 2$, $f(x) = ax+b$. So, the left-hand limit is $\\lim_{x \\rightarrow 2^-} (ax+b) = 2a+b$. For $x > 2$, $f(x) = cx+d$. So, the right-hand limit is $\\lim_{x \\rightarrow 2^+} (cx+d) = 2c+d$. Therefore, $2a+b = 2c+d$. From the graph, we can see that the function passes through $(0, 3)$. This means $f(0) = 3$. Since $0 \\leq 2$, we use the definition $f(x) = ax+b$. Thus, $a(0)+b = 3$, which implies $b = 3$. Also from the graph, we can see the point $(2, 1)$ is on the graph. Since $2 \\leq 2$, $f(2) = a(2)+b = 2a+b = 1$. Substituting $b=3$, we get $2a+3 = 1$, so $2a = -2$, which means $a = -1$. We also observe from the graph that the line segment for $x>2$ passes through $(2, 1)$ and $(4, 0)$. This means $f(x)=cx+d$ must satisfy these points. For $(2, 1)$: $2c+d = 1$. For $(4, 0)$: $4c+d = 0$. Subtracting the first equation from the second: $(4c+d) - (2c+d) = 0 - 1$, which gives $2c = -1$, so $c = -1/2$. Substituting $c = -1/2$ into $4c+d=0$: $4(-1/2)+d = 0$, so $-2+d=0$, which means $d=2$. Now, let's check the limit condition: $2a+b = 2c+d$. We found $a=-1$, $b=3$, $c=-1/2$, $d=2$. So, $2(-1)+3 = -2+3 = 1$. And $2(-1/2)+2 = -1+2 = 1$. The condition is satisfied. The question asks for the value of $a$, which we found to be $-1$. Common algebraic traps to avoid: 1. Mistaking the point $(2,1)$ as the endpoint of the $cx+d$ segment, which would lead to using $2c+d=1$ for the limit and potentially solving for $c$ and $d$ incorrectly. 2. Assuming continuity at $x=2$ and not just the existence of the limit. While the graph *appears* continuous, the problem only states the limit exists.",
+          "explanation": "For the limit of $f(x)$ as $x$ approaches 2 to exist, the left-hand limit must equal the right-hand limit. That is, $\\lim_{x \\rightarrow 2^-} f(x) = \\lim_{x \\rightarrow 2^+} f(x)$. For $x \\leq 2$, $f(x) = ax+b$. So, the left-hand limit is $\\lim_{x \\rightarrow 2^-} (ax+b) = 2a+b$. For $x > 2$, $f(x) = cx+d$. So, the right-hand limit is $\\lim_{x \\rightarrow 2^+} (cx+d) = 2c+d$. Therefore, $2a+b = 2c+d$. From the graph, we can see that the function passes through $(0, 3)$. This means $f(0) = 3$. Since $0 \\leq 2$, we use the definition $f(x) = ax+b$. Thus, $a(0)+b = 3$, which implies $b = 3$. Also from the graph, we can see the point $(2, 1)$ is on the graph. Since $2 \\leq 2$, $f(2) = a(2)+b = 2a+b = 1$. Substituting $b=3$, we get $2a+3 = 1$, so $2a = -2$, which means $a = -1$. We also observe from the graph that the line segment for $x>2$ passes through $(2, 1)$ and $(4, 0)$. This means $f(x)=cx+d$ must satisfy these points. For $(2, 1)$: $2c+d = 1$. For $(4, 0)$: $4c+d = 0$. Subtracting the first equation from the second: $(4c+d) - (2c+d) = 0 - 1$, which gives $2c = -1$, so $c = -1/2$. Substituting $c = -1/2$ into $4c+d=0$: $4(-1/2)+d = 0$, so $-2+d=0$, which means $d=2$. Now, let's check the limit condition: $2a+b = 2c+d$. We found $a=-1$, $b=3$, $c=-1/2$, $d=2$. So, $2(-1)+3 = -2+3 = 1$. And $2(-1/2)+2 = -1+2 = 1$. The condition is satisfied. The question asks for the value of $a$, which we found to be $-1$. Common algebraic traps to avoid: 1. Mistaking the point $(2,1)$ as the endpoint of the $cx+d$ segment, which would lead to using $2c+d=1$ for the limit and potentially solving for $c$ and $d$ incorrectly. 2. Assuming continuity at $x=2$ and not just the existence of the limit. While the graph *appears* continuous, the problem only states the limit exists.",
+          "cross_lesson": "2.02 Continuity"
+        },
+        {
+          "q": "Squeeze theorem: $-x^2\\leq f(x)\\leq x^2$ near $x=0$ implies $\\lim_{x\\rightarrow0}f(x)=$",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Direct Substitution and Algebraic Techniques",
+          "choices": [
+            "$0$",
+            "$\\pm1$",
+            "DNE",
+            "$1$"
+          ],
+          "correct": 0,
+          "answer": "Applying Limits and Continuity principles, Squeeze: both bounds $\\rightarrow0$. Therefore, the verified correct option is $0$.",
+          "explanation": "Applying Limits and Continuity principles, Squeeze: both bounds $\\rightarrow0$. Therefore, the verified correct option is $0$.",
+          "cross_lesson": "3.01 The Derivative from First Principles"
         }
       ]
     }

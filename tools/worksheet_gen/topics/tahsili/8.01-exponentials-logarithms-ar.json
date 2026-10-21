@@ -1,161 +1,768 @@
 {
   "track": "tahsili",
   "num": "8.01",
-  "lang": "ar",
   "slug": "exponentials-logarithms",
   "title": "الدوال الأسية واللوغاريتمية",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 8.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "القسم 1: المعادلات الأسية وخطوط التقارب",
+      "heading": "الجزء الأول — أسئلة مقالية (FRQs): المهارات الأساسية (1–7)",
       "questions": [
         {
-          "q": "حل المعادلة الأسية: $3^{2x - 1} = 27$.",
-          "choices": [
-            "$x = 2$",
-            "$x = 3$",
-            "$x = 1$",
-            "$x = 4$"
-          ],
-          "correct": 0,
-          "answer": "$27 = 3^3$. بتساوي الأساسات تتساوى الأسس: $2x - 1 = 3 \\Rightarrow 2x = 4 \\Rightarrow x = 2$."
+          "q": "يُمثَّل عدد سكان بلدة بالدالة $P(t)=5000e^{0.03t}$، حيث $t$ بالسنوات. أوجد $P(10)$ لأقرب عدد صحيح.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "نماذج النمو والتحلل الأسي",
+          "answer": "$P(10)=5000e^{0.3}=5000(1.34986)\\approx6749$.",
+          "explanation": "$P(10)=5000e^{0.3}=5000(1.34986)\\approx6749$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "5000*exp(0.03*x)"
+            ],
+            "xmin": 0,
+            "xmax": 30,
+            "ymin": 0,
+            "ymax": 13000,
+            "width": 220
+          }
         },
         {
-          "q": "إذا كان $4^{x+1} = \\left(\\frac{1}{2}\\right)^{x-4}$، فما قيمة $x$؟",
-          "choices": [
-            "$x = 2$",
-            "$x = 1$",
-            "$x = 3$",
-            "$x = -2$"
-          ],
-          "correct": 0,
-          "answer": "التحويل للأساس $2$: $(2^2)^{x+1} = (2^{-1})^{x-4} \\Rightarrow 2x + 2 = -x + 4 \\Rightarrow 3x = 2 \\Rightarrow x = 2$."
+          "q": "أوجد قيمة $2^5$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "حساب المقادير الأسية",
+          "answer": "$2^5=32$.",
+          "explanation": "$2^5=32$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (0))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -1.0,
+                "label": "$(0,-1)$"
+              }
+            ],
+            "width": 230
+          }
         },
         {
-          "q": "ما هو خط التقارب الأفقي للدالة الأسية: $f(x) = 2^x - 5$؟",
-          "choices": [
-            "$y = -5$",
-            "$y = 5$",
-            "$y = 0$",
-            "$x = -5$"
-          ],
-          "correct": 0,
-          "answer": "عندما $x \\to -\\infty$ يقترب $2^x$ من الصفر، إذن خط التقارب الأفقي هو $y = -5$."
+          "q": "أوجد قيمة $3^{-2}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "حساب المقادير الأسية",
+          "answer": "$3^{-2}=\\frac{1}{9}$.",
+          "explanation": "$3^{-2}=\\frac{1}{9}$."
+        },
+        {
+          "q": "أوجد قيمة $16^{1/2}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "حساب المقادير الأسية",
+          "answer": "$16^{1/2}=4$.",
+          "explanation": "$16^{1/2}=4$."
+        },
+        {
+          "q": "أوجد قيمة $27^{2/3}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "حساب المقادير الأسية",
+          "answer": "$27^{2/3}=(27^{1/3})^2=3^2=9$.",
+          "explanation": "$27^{2/3}=(27^{1/3})^2=3^2=9$."
+        },
+        {
+          "q": "أوجد قيمة $\\log_2 32$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "حساب اللوغاريتمات",
+          "answer": "بما أن $2^5=32$، فإن $\\log_2 32=5$.",
+          "explanation": "بما أن $2^5=32$، فإن $\\log_2 32=5$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2**(0.6*x)",
+              "log(x + 3) + 0.5"
+            ],
+            "xmin": -2.5,
+            "xmax": 4.5,
+            "ymin": -2,
+            "ymax": 6.5,
+            "asymptotes": {
+              "x": [
+                -3
+              ],
+              "y": [
+                0
+              ]
+            },
+            "point_labels": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "$(0,1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "أوجد قيمة $\\log_3 81$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "حساب اللوغاريتمات",
+          "answer": "بما أن $3^4=81$، فإن $\\log_3 81=4$.",
+          "explanation": "بما أن $3^4=81$، فإن $\\log_3 81=4$."
         }
       ]
     },
     {
-      "heading": "القسم 2: خصائص اللوغاريتمات وحساب قيمها",
+      "heading": "الجزء الثاني — أسئلة مقالية (FRQs): تطبيقات متوسطة متعددة الخطوات (8–14)",
       "questions": [
         {
-          "q": "ما قيمة المقدار اللوغاريتمي: $\\log_2(32)$؟",
-          "choices": [
-            "$5$",
-            "$4$",
-            "$6$",
-            "$16$"
-          ],
-          "correct": 0,
-          "answer": "بما أن $2^5 = 32$، فإن $\\log_2(32) = 5$."
+          "q": "أوجد قيمة $\\log_5 1$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "حساب اللوغاريتمات",
+          "answer": "$\\log_5 1=0$.",
+          "explanation": "$\\log_5 1=0$."
         },
         {
-          "q": "احسب قيمة: $\\log_3(54) - \\log_3(2)$.",
-          "choices": [
-            "$3$",
-            "$2$",
-            "$4$",
-            "$27$"
-          ],
-          "correct": 0,
-          "answer": "خاصية قسمة اللوغاريتمات: $\\log_3(54) - \\log_3(2) = \\log_3\\left(\\frac{54}{2}\\right) = \\log_3(27) = 3$."
+          "q": "أوجد قيمة $\\log_{10} 0.01$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "حساب اللوغاريتمات",
+          "answer": "بما أن $10^{-2}=0.01$، فإن $\\log_{10}0.01=-2$.",
+          "explanation": "بما أن $10^{-2}=0.01$، فإن $\\log_{10}0.01=-2$."
         },
         {
-          "q": "اكتب في صورة لوغاريتم واحد: $2\\log_5(x) + \\log_5(y)$.",
-          "choices": [
-            "$\\log_5(x^2 y)$",
-            "$\\log_5(2xy)$",
-            "$\\log_5(x^2 + y)$",
-            "$\\log_5(xy^2)$"
-          ],
-          "correct": 0,
-          "answer": "قاعدتا القوة والضرب: $2\\log_5(x) + \\log_5(y) = \\log_5(x^2) + \\log_5(y) = \\log_5(x^2 y)$."
+          "q": "اكتب $\\log_2(8x)$ على صورة مجموع لوغاريتمين.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "قوانين اللوغاريتمات: الضرب والقسمة",
+          "answer": "$\\log_2(8x)=\\log_2 8+\\log_2 x=3+\\log_2 x$.",
+          "explanation": "$\\log_2(8x)=\\log_2 8+\\log_2 x=3+\\log_2 x$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2**(0.6*x)",
+              "log(x + 3) + 0.5"
+            ],
+            "xmin": -2.5,
+            "xmax": 4.5,
+            "ymin": -2,
+            "ymax": 6.5,
+            "asymptotes": {
+              "x": [
+                -3
+              ],
+              "y": [
+                0
+              ]
+            },
+            "point_labels": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "$(0,1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "اكتب $\\log_3\\left(\\frac{x}{9}\\right)$ على صورة فرق لوغاريتمين.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "قوانين اللوغاريتمات: الضرب والقسمة",
+          "answer": "$\\log_3\\left(\\frac{x}{9}\\right)=\\log_3 x-\\log_3 9=\\log_3 x-2$.",
+          "explanation": "$\\log_3\\left(\\frac{x}{9}\\right)=\\log_3 x-\\log_3 9=\\log_3 x-2$."
+        },
+        {
+          "q": "اجمع $\\log_5 5+\\log_5 25$ في لوغاريتم واحد وأوجد قيمته.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "قوانين اللوغاريتمات: الضرب والقسمة",
+          "answer": "$\\log_5(5\\times25)=\\log_5 125=3$ (بما أن $5^3=125$).",
+          "explanation": "$\\log_5(5\\times25)=\\log_5 125=3$ (بما أن $5^3=125$)."
+        },
+        {
+          "q": "اجمع $\\log_2 24-\\log_2 3$ في لوغاريتم واحد وأوجد قيمته.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "قوانين اللوغاريتمات: الضرب والقسمة",
+          "answer": "$\\log_2\\left(\\frac{24}{3}\\right)=\\log_2 8=3$.",
+          "explanation": "$\\log_2\\left(\\frac{24}{3}\\right)=\\log_2 8=3$."
+        },
+        {
+          "q": "اكتب $\\log(x^5)$ باستخدام قاعدة القوة.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "قوانين اللوغاريتمات: قاعدة القوة",
+          "answer": "$\\log(x^5)=5\\log x$.",
+          "explanation": "$\\log(x^5)=5\\log x$."
         }
       ]
     },
     {
-      "heading": "القسم 3: المعادلات اللوغاريتمية ومجال الدالة",
+      "heading": "الجزء الثالث — أسئلة مقالية (FRQs): مسائل التحدي والربط بين الدروس (15–20)",
       "questions": [
         {
-          "q": "حل المعادلة اللوغاريتمية: $\\log_4(2x + 8) = 3$.",
-          "choices": [
-            "$x = 28$",
-            "$x = 24$",
-            "$x = 32$",
-            "$x = 16$"
-          ],
-          "correct": 0,
-          "answer": "التحويل للصورة الأسية: $2x + 8 = 4^3 = 64 \\Rightarrow 2x = 56 \\Rightarrow x = 28$."
+          "q": "أوجد قيمة $\\log_2(4^3)$ باستخدام قاعدة القوة.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "قوانين اللوغاريتمات: قاعدة القوة",
+          "cross_lesson": "5.01 الهندسة الإحداثية والقطوع المخروطية",
+          "answer": "$\\log_2(4^3)=3\\log_2 4=3(2)=6$.",
+          "explanation": "$\\log_2(4^3)=3\\log_2 4=3(2)=6$."
         },
         {
-          "q": "حل المعادلة: $\\log_2(x) + \\log_2(x - 2) = 3$.",
-          "choices": [
-            "$x = 4$",
-            "$x = 2$",
-            "$x = -2$",
-            "$x = 6$"
-          ],
-          "correct": 0,
-          "answer": "$\\log_2[x(x - 2)] = 3 \\Rightarrow x^2 - 2x = 8 \\Rightarrow (x - 4)(x + 2) = 0$. وبما أن مجال اللوغاريتم موجب ($x > 2$)، فالحل هو $x = 4$."
+          "q": "اكتب $2\\log_3 x+\\log_3 y$ على صورة لوغاريتم واحد.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "قوانين اللوغاريتمات: قاعدة القوة",
+          "cross_lesson": "6.01 النهايات والاشتقاق",
+          "answer": "$2\\log_3 x+\\log_3 y=\\log_3(x^2y)$.",
+          "explanation": "$2\\log_3 x+\\log_3 y=\\log_3(x^2y)$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2**(0.6*x)",
+              "log(x + 3) + 0.5"
+            ],
+            "xmin": -2.5,
+            "xmax": 4.5,
+            "ymin": -2,
+            "ymax": 6.5,
+            "asymptotes": {
+              "x": [
+                -3
+              ],
+              "y": [
+                0
+              ]
+            },
+            "point_labels": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "$(0,1)$"
+              }
+            ],
+            "width": 230
+          }
         },
         {
-          "q": "ما مجال الدالة اللوغاريتمية: $f(x) = \\log_3(4 - x)$؟",
-          "choices": [
-            "$(-\\infty, 4)$",
-            "$[4, \\infty)$",
-            "$(4, \\infty)$",
-            "$(-\\infty, 4]$"
-          ],
-          "correct": 0,
-          "answer": "ما بداخل اللوغاريتم يجب أن يكون موجباً تماماً: $4 - x > 0 \\Rightarrow x < 4$، أي الفترة $(-\\infty, 4)$."
+          "q": "وسّع $\\log\\left(\\frac{x^3y}{z^2}\\right)$ بالكامل.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "توسيع وتكثيف المقادير اللوغاريتمية",
+          "cross_lesson": "7.01 التكامل وتطبيقاته",
+          "answer": "$3\\log x+\\log y-2\\log z$.",
+          "explanation": "$3\\log x+\\log y-2\\log z$."
+        },
+        {
+          "q": "كثّف $3\\ln x-2\\ln y$ في لوغاريتم واحد.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "توسيع وتكثيف المقادير اللوغاريتمية",
+          "cross_lesson": "9.01 الإحصاء والاحتمالات",
+          "answer": "$\\ln\\left(\\frac{x^3}{y^2}\\right)$.",
+          "explanation": "$\\ln\\left(\\frac{x^3}{y^2}\\right)$."
+        },
+        {
+          "q": "وسّع $\\log_2\\left(\\sqrt{x}\\cdot y^3\\right)$ بالكامل.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "توسيع وتكثيف المقادير اللوغاريتمية",
+          "cross_lesson": "1.01 الجبر والمعادلات والمصفوفات",
+          "answer": "$\\sqrt{x}=x^{1/2}$، إذن المقدار يساوي $\\frac{1}{2}\\log_2 x+3\\log_2 y$.",
+          "explanation": "$\\sqrt{x}=x^{1/2}$، إذن المقدار يساوي $\\frac{1}{2}\\log_2 x+3\\log_2 y$."
+        },
+        {
+          "q": "حل المعادلة $2^x=32$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "حل المعادلات الأسية (بأساسين متساويين)",
+          "cross_lesson": "2.01 الدوال وخصائصها والتحويلات الهندسية",
+          "answer": "$32=2^5$، إذن $x=5$.",
+          "explanation": "$32=2^5$، إذن $x=5$."
         }
       ]
     },
     {
-      "heading": "القسم 4: اللوغاريتم الطبيعي والأساس النيبيري e",
+      "heading": "الجزء الرابع — اختيار من متعدد (MCQs): إتقان المفاهيم الأساسية (21–28)",
       "questions": [
         {
-          "q": "احسب قيمة اللوغاريتم الطبيعي: $\\ln(e^7)$.",
+          "q": "يوضح الرسم البياني دالة أسية. بناءً على الرسم البياني، هل يمثّل نموًا أم تناقصًا؟",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "حساب المقادير الأسية",
+          "choices": [
+            "لا يمكن تحديد ذلك",
+            "لا هذا ولا ذاك",
+            "تناقص",
+            "نمو"
+          ],
+          "correct": 1,
+          "answer": "يرتفع المنحنى مع زيادة $x$: نمو.",
+          "explanation": "يرتفع المنحنى مع زيادة $x$: نمو.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2**x"
+            ],
+            "xmin": -2,
+            "xmax": 3,
+            "ymin": 0,
+            "ymax": 9,
+            "width": 230
+          }
+        },
+        {
+          "q": "أوجد $3^4$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "حساب اللوغاريتمات",
+          "choices": [
+            "$81$",
+            "$243$",
+            "$12$",
+            "$64$"
+          ],
+          "correct": 0,
+          "answer": "$3^4=81$.",
+          "explanation": "$3^4=81$."
+        },
+        {
+          "q": "أوجد $2^{-3}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "قوانين اللوغاريتمات: الضرب والقسمة",
+          "choices": [
+            "$-8$",
+            "$\\frac{1}{6}$",
+            "$8$",
+            "$\\frac{1}{8}$"
+          ],
+          "correct": 3,
+          "answer": "$2^{-3}=\\frac{1}{2^3}=\\frac{1}{8}$.",
+          "explanation": "$2^{-3}=\\frac{1}{2^3}=\\frac{1}{8}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (0))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -2.0,
+                "label": "$(0,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "أوجد $\\log_7 1$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "قوانين اللوغاريتمات: قاعدة القوة",
+          "choices": [
+            "$1$",
+            "غير معرّف",
+            "$7$",
+            "$0$"
+          ],
+          "correct": 3,
+          "answer": "$7^0=1$.",
+          "explanation": "$7^0=1$."
+        },
+        {
+          "q": "اكتب $\\log_3(9x)$ كمجموع لوغاريتمات.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "توسيع وتكثيف المقادير اللوغاريتمية",
+          "choices": [
+            "$2+\\log_3 x$",
+            "$2\\log_3 x$",
+            "$9+\\log_3 x$",
+            "$\\log_3 9+\\log_3 x$ فقط"
+          ],
+          "correct": 0,
+          "answer": "$\\log_3(9x)=\\log_3 9+\\log_3 x=2+\\log_3 x$.",
+          "explanation": "$\\log_3(9x)=\\log_3 9+\\log_3 x=2+\\log_3 x$."
+        },
+        {
+          "q": "اكتب $\\log(x^7)$ باستخدام قاعدة القوة.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "حل المعادلات الأسية (بأساسين متساويين)",
+          "choices": [
+            "$7\\log x$",
+            "$x^7\\log x$",
+            "$\\log x^7$ دون تغيير",
+            "$\\log(7x)$"
+          ],
+          "correct": 0,
+          "answer": "قاعدة القوة: $\\log(x^n)=n\\log x$.",
+          "explanation": "قاعدة القوة: $\\log(x^n)=n\\log x$."
+        },
+        {
+          "q": "افك $\\log\\left(\\frac{x^2y}{z^3}\\right)$ بالكامل.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "حل المعادلات الأسية باستخدام اللوغاريتمات",
+          "choices": [
+            "$2\\log x+\\log y-3\\log z$",
+            "$2\\log x-\\log y-3\\log z$",
+            "$\\log x^2+\\log y-\\log z^3$ دون تغيير",
+            "$2\\log x+\\log y+3\\log z$"
+          ],
+          "correct": 0,
+          "answer": "بتطبيق قاعدتي القسمة والقوة: $2\\log x+\\log y-3\\log z$.",
+          "explanation": "بتطبيق قاعدتي القسمة والقوة: $2\\log x+\\log y-3\\log z$."
+        },
+        {
+          "q": "حل $2^x=64$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "حل المعادلات اللوغاريتمية",
+          "choices": [
+            "$x=8$",
+            "$x=6$",
+            "$x=32$",
+            "$x=5$"
+          ],
+          "correct": 1,
+          "answer": "$2^6=64$.",
+          "explanation": "$2^6=64$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        }
+      ]
+    },
+    {
+      "heading": "الجزء الخامس — اختيار من متعدد (MCQs): تطبيقات الاختبار المتوسطة (29–37)",
+      "questions": [
+        {
+          "q": "حل $2^{2x-1}=32$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "اللوغاريتم الطبيعي والعدد e",
+          "choices": [
+            "$x=3$",
+            "$x=2.5$",
+            "$x=6$",
+            "$x=5.5$"
+          ],
+          "correct": 0,
+          "answer": "$2^{2x-1}=2^5\\Rightarrow2x-1=5\\Rightarrow x=3$.",
+          "explanation": "$2^{2x-1}=2^5\\Rightarrow2x-1=5\\Rightarrow x=3$."
+        },
+        {
+          "q": "حل $e^x=25$ لـ$x$، مقربًا لثلاث منازل عشرية.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "نماذج النمو والتحلل الأسي",
+          "choices": [
+            "$25.000$",
+            "$2.303$",
+            "$3.219$",
+            "$12.500$"
+          ],
+          "correct": 2,
+          "answer": "$x=\\ln25\\approx3.219$.",
+          "explanation": "$x=\\ln25\\approx3.219$."
+        },
+        {
+          "q": "حل $\\log_2(x+2)+\\log_2(x-2)=5$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "مسائل لفظية: النماذج الأسية في سياقات تطبيقية",
+          "choices": [
+            "$x=6$",
+            "$x=-6$",
+            "$x=34$",
+            "$x=18$"
+          ],
+          "correct": 0,
+          "answer": "$(x+2)(x-2)=2^5=32\\Rightarrow x^2-4=32\\Rightarrow x^2=36$؛ فقط $x=6$ يُبقي اللوغاريتمين معرّفين.",
+          "explanation": "$(x+2)(x-2)=2^5=32\\Rightarrow x^2-4=32\\Rightarrow x^2=36$؛ فقط $x=6$ يُبقي اللوغاريتمين معرّفين."
+        },
+        {
+          "q": "أوجد $e^{\\ln7}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "الجزء الأول — أسئلة مقالية (FRQs): المهارات الأساسية (1–7)",
           "choices": [
             "$7$",
-            "$e$",
+            "$\\ln7$",
             "$1$",
-            "$14$"
+            "$e^7$"
           ],
           "correct": 0,
-          "answer": "اللوغاريتم الطبيعي يلغي الأساس $e$: $\\ln(e^7) = 7$."
+          "answer": "$e^{\\ln x}=x$.",
+          "explanation": "$e^{\\ln x}=x$."
         },
         {
-          "q": "حل المعادلة الأسية الطبيعية: $e^{2x} = 5$.",
+          "q": "حدد ما إذا كانت $M(t)=30e^{0.01t}$ تمثّل نموًا أم تناقصًا.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "الجزء الثاني — أسئلة مقالية (FRQs): تطبيقات متوسطة متعددة الخطوات (8–14)",
           "choices": [
-            "$x = \\frac{\\ln 5}{2}$",
-            "$x = 2\\ln 5$",
-            "$x = \\ln(2.5)$",
-            "$x = \\frac{5}{2e}$"
+            "تناقص",
+            "نمو",
+            "لا يمكن تحديد ذلك",
+            "لا هذا ولا ذاك"
           ],
-          "correct": 0,
-          "answer": "بأخذ $\\ln$ للطرفين: $2x = \\ln 5 \\Rightarrow x = \\frac{\\ln 5}{2}$."
+          "correct": 3,
+          "answer": "معامل الأس موجب: نمو.",
+          "explanation": "معامل الأس موجب: نمو.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -2.0,
+                "label": "$(1,-2)$"
+              }
+            ],
+            "width": 230
+          }
         },
         {
-          "q": "ما قيمة المقدار: $e^{\\ln(12)}$؟",
+          "q": "تنخفض قيمة سيارة وفق $V(t)=25{,}000(0.85)^t$ دولارًا، حيث $t$ بالسنوات. أوجد قيمة السيارة بعد 5 سنوات، مقربًا لأقرب دولار.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "الجزء الثالث — أسئلة مقالية (FRQs): مسائل التحدي والربط بين الدروس (15–20)",
+          "choices": [
+            "$11{,}093$",
+            "$12{,}750$",
+            "$9{,}500$",
+            "$10{,}625$"
+          ],
+          "correct": 0,
+          "answer": "$V(5)=25{,}000(0.85)^5\\approx11{,}093$ دولارًا.",
+          "explanation": "$V(5)=25{,}000(0.85)^5\\approx11{,}093$ دولارًا."
+        },
+        {
+          "q": "أوجد قيمة $5^{2}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "الجزء الرابع — اختيار من متعدد (MCQs): إتقان المفاهيم الأساسية (21–28)",
+          "choices": [
+            "$27$",
+            "$10$",
+            "$23$",
+            "$25$"
+          ],
+          "correct": 3,
+          "answer": "$5^{2}=25$.",
+          "explanation": "$5^{2}=25$."
+        },
+        {
+          "q": "أوجد قيمة $\\log_{10} 0.01$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "الجزء الخامس — اختيار من متعدد (MCQs): تطبيقات الاختبار المتوسطة (29–37)",
+          "choices": [
+            "$2$",
+            "$-2$",
+            "$-3$",
+            "$-1$"
+          ],
+          "correct": 1,
+          "answer": "بما أن $10^{-2}=0.01$، فإن $\\log_{10}0.01=-2$.",
+          "explanation": "بما أن $10^{-2}=0.01$، فإن $\\log_{10}0.01=-2$."
+        },
+        {
+          "q": "حل المعادلة $3^{x+3}=81$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "الجزء السادس — اختيار من متعدد (MCQs): مسائل التحدي والربط بين الدروس (38–45)",
+          "choices": [
+            "$4$",
+            "$1$",
+            "$2$",
+            "$0$"
+          ],
+          "correct": 1,
+          "answer": "$81=3^{4}$, so $x+3=4\\Rightarrow x=1$.",
+          "explanation": "$81=3^{4}$, so $x+3=4\\Rightarrow x=1$."
+        }
+      ]
+    },
+    {
+      "heading": "الجزء السادس — اختيار من متعدد (MCQs): مسائل التحدي والربط بين الدروس (38–45)",
+      "questions": [
+        {
+          "q": "اجمع $\\log_{2} 2+\\log_{2} 2$ في لوغاريتم واحد وأوجد قيمته.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "حساب المقادير الأسية",
+          "choices": [
+            "$3$",
+            "$1$",
+            "$4$",
+            "$2$"
+          ],
+          "correct": 3,
+          "answer": "$\\log_{2}(2\\times2)=\\log_{2} 4=2$ (بما أن $2^{2}=4$).",
+          "explanation": "$\\log_{2}(2\\times2)=\\log_{2} 4=2$ (بما أن $2^{2}=4$).",
+          "cross_lesson": "9.01 الإحصاء والاحتمالات"
+        },
+        {
+          "q": "اجمع $\\log_{5} 125+\\log_{5} 25$ في لوغاريتم واحد وأوجد قيمته.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "حساب اللوغاريتمات",
+          "choices": [
+            "$5$",
+            "$6$",
+            "$3125$",
+            "$4$"
+          ],
+          "correct": 0,
+          "answer": "$\\log_{5}(125\\times25)=\\log_{5} 3125=5$ (بما أن $5^{5}=3125$).",
+          "explanation": "$\\log_{5}(125\\times25)=\\log_{5} 3125=5$ (بما أن $5^{5}=3125$).",
+          "cross_lesson": "1.01 الجبر والمعادلات والمصفوفات"
+        },
+        {
+          "q": "أوجد قيمة $\\log_{3}(27^{3})$ باستخدام قاعدة القوة.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "قوانين اللوغاريتمات: الضرب والقسمة",
           "choices": [
             "$12$",
-            "$1$",
-            "$e$",
-            "$144$"
+            "$9$",
+            "$11$",
+            "$6$"
+          ],
+          "correct": 1,
+          "answer": "$\\log_{3}(27^{3})=3\\log_{3} 27=3(3)=9$.",
+          "explanation": "$\\log_{3}(27^{3})=3\\log_{3} 27=3(3)=9$.",
+          "cross_lesson": "2.01 الدوال وخصائصها والتحويلات الهندسية"
+        },
+        {
+          "q": "حل المعادلة $\\log_{5}(x)=3$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "قوانين اللوغاريتمات: قاعدة القوة",
+          "choices": [
+            "$123$",
+            "$128$",
+            "$125$",
+            "$127$"
+          ],
+          "correct": 2,
+          "answer": "$x=5^{3}=125$.",
+          "explanation": "$x=5^{3}=125$.",
+          "cross_lesson": "3.01 المتتابعات والمتسلسلات"
+        },
+        {
+          "q": "حل المعادلة $2^x=20$ لإيجاد $x$ لأقرب ثلاث منازل عشرية.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "توسيع وتكثيف المقادير اللوغاريتمية",
+          "choices": [
+            "$4.222$",
+            "$4.422$",
+            "$4.322$",
+            "$1.301$"
+          ],
+          "correct": 2,
+          "answer": "$x=\\frac{\\log20}{\\log2}\\approx\\frac{1.301}{0.301}\\approx4.322$.",
+          "explanation": "$x=\\frac{\\log20}{\\log2}\\approx\\frac{1.301}{0.301}\\approx4.322$.",
+          "cross_lesson": "4.01 حساب المثلثات"
+        },
+        {
+          "q": "حل المعادلة $\\ln(x)=3$ لإيجاد $x$ بدلالة $e$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "حل المعادلات الأسية (بأساسين متساويين)",
+          "choices": [
+            "$e^{3}$",
+            "$3e$",
+            "$e^{4}$",
+            "$e^{2}$"
           ],
           "correct": 0,
-          "answer": "دالة الأساس $e$ واللوغاريتم الطبيعي دالتان عكسيتان: $e^{\\ln x} = x$، إذن $e^{\\ln(12)} = 12$."
+          "answer": "$x=e^{3}$.",
+          "explanation": "$x=e^{3}$.",
+          "cross_lesson": "5.01 الهندسة الإحداثية والقطوع المخروطية"
+        },
+        {
+          "q": "أوجد قيمة $\\ln(e^{2})$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "حل المعادلات الأسية باستخدام اللوغاريتمات",
+          "choices": [
+            "$1$",
+            "$e^{2}$",
+            "$2$",
+            "$3$"
+          ],
+          "correct": 2,
+          "answer": "$\\ln(e^{2})=2$.",
+          "explanation": "$\\ln(e^{2})=2$.",
+          "cross_lesson": "6.01 النهايات والاشتقاق"
+        },
+        {
+          "q": "كمية موصوفة بالنموذج $N(t)=1000e^{-0.1t}$. أوجد $N(5)$ لأقرب منزلة عشرية واحدة.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "حل المعادلات اللوغاريتمية",
+          "choices": [
+            "$545.9$",
+            "$606.5$",
+            "$667.1$",
+            "$1000$"
+          ],
+          "correct": 1,
+          "answer": "$N(5)=1000e^{-0.5}=1000(0.60653)\\approx606.5$.",
+          "explanation": "$N(5)=1000e^{-0.5}=1000(0.60653)\\approx606.5$.",
+          "cross_lesson": "7.01 التكامل وتطبيقاته"
         }
       ]
     }
-  ]
+  ],
+  "lang": "ar"
 }

@@ -3,12 +3,326 @@
   "num": "7.02",
   "slug": "integration-by-parts",
   "title": "Integration by Parts",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 7.02 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Standard Products (Polynomial × Exponential / Trig)",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+      "questions": [
+        {
+          "q": "Evaluate $\\int x e^x\\,dx$ using integration by parts.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "The integration by parts formula",
+          "answer": "Let $u = x$, $dv = e^x\\,dx$: $= xe^x - \\int e^x\\,dx = xe^x - e^x + C$.",
+          "explanation": "Let $u = x$, $dv = e^x\\,dx$: $= xe^x - \\int e^x\\,dx = xe^x - e^x + C$."
+        },
+        {
+          "q": "Evaluate $\\int x\\cos x\\,dx$ using integration by parts.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "The integration by parts formula",
+          "answer": "Let $u = x$, $dv = \\cos x\\,dx$: $= x\\sin x - \\int \\sin x\\,dx = x\\sin x + \\cos x + C$.",
+          "explanation": "Let $u = x$, $dv = \\cos x\\,dx$: $= x\\sin x - \\int \\sin x\\,dx = x\\sin x + \\cos x + C$.",
+          "figure": {
+            "type": "triangle",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                12.0,
+                0
+              ],
+              [
+                0,
+                5.0
+              ]
+            ],
+            "labels": [
+              "$C$",
+              "$B$",
+              "$A$"
+            ],
+            "side_labels": [
+              "$12$",
+              "$13$",
+              "$5$"
+            ],
+            "right_angle_at": 0,
+            "angle_marks": [
+              {
+                "vertex": 1,
+                "label": "$\\theta$"
+              }
+            ],
+            "fill": true,
+            "width": 220
+          }
+        },
+        {
+          "q": "Evaluate $\\int \\ln x\\,dx$ using integration by parts (with $dv = dx$).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "The integration by parts formula",
+          "answer": "Let $u = \\ln x$, $dv = dx$: $= x\\ln x - \\int x\\cdot\\frac{1}{x}\\,dx = x\\ln x - x + C$.",
+          "explanation": "Let $u = \\ln x$, $dv = dx$: $= x\\ln x - \\int x\\cdot\\frac{1}{x}\\,dx = x\\ln x - x + C$."
+        },
+        {
+          "q": "Evaluate $\\int x^2 e^x\\,dx$, applying integration by parts twice.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Repeated and definite applications",
+          "answer": "First pass ($u=x^2$): $x^2e^x - 2\\int xe^x\\,dx$. Second pass gives $\\int xe^x\\,dx = xe^x - e^x$. Total: $x^2e^x - 2xe^x + 2e^x + C$.",
+          "explanation": "First pass ($u=x^2$): $x^2e^x - 2\\int xe^x\\,dx$. Second pass gives $\\int xe^x\\,dx = xe^x - e^x$. Total: $x^2e^x - 2xe^x + 2e^x + C$."
+        },
+        {
+          "q": "Evaluate $\\int_0^1 xe^{2x}\\,dx$ exactly.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Repeated and definite applications",
+          "answer": "Let $u=x$, $dv = e^{2x}dx$: $\\left[\\frac{x}{2}e^{2x} - \\frac{1}{4}e^{2x}\\right]_0^1 = \\left(\\frac{e^2}{2} - \\frac{e^2}{4}\\right) - \\left(0 - \\frac{1}{4}\\right) = \\frac{e^2}{4} + \\frac{1}{4}$.",
+          "explanation": "Let $u=x$, $dv = e^{2x}dx$: $\\left[\\frac{x}{2}e^{2x} - \\frac{1}{4}e^{2x}\\right]_0^1 = \\left(\\frac{e^2}{2} - \\frac{e^2}{4}\\right) - \\left(0 - \\frac{1}{4}\\right) = \\frac{e^2}{4} + \\frac{1}{4}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*exp(2*x)"
+            ],
+            "xmin": -0.2,
+            "xmax": 1.3,
+            "ymin": -0.5,
+            "ymax": 8,
+            "width": 200
+          }
+        },
+        {
+          "q": "Evaluate $\\int x\\ln x\\,dx$, choosing $u=\\ln x$ (logarithmic functions are prioritized as $u$ under the LIATE rule).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Choosing u and dv wisely (LIATE)",
+          "answer": "$u=\\ln x$, $dv=x\\,dx$, so $du=\\frac{1}{x}dx$, $v=\\frac{x^2}{2}$: $=\\frac{x^2}{2}\\ln x - \\int\\frac{x^2}{2}\\cdot\\frac{1}{x}\\,dx = \\frac{x^2}{2}\\ln x - \\frac{x^2}{4}+C$.",
+          "explanation": "$u=\\ln x$, $dv=x\\,dx$, so $du=\\frac{1}{x}dx$, $v=\\frac{x^2}{2}$: $=\\frac{x^2}{2}\\ln x - \\int\\frac{x^2}{2}\\cdot\\frac{1}{x}\\,dx = \\frac{x^2}{2}\\ln x - \\frac{x^2}{4}+C$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2**(0.6*x)",
+              "log(x + 3) + 0.5"
+            ],
+            "xmin": -2.5,
+            "xmax": 4.5,
+            "ymin": -2,
+            "ymax": 6.5,
+            "asymptotes": {
+              "x": [
+                -3
+              ],
+              "y": [
+                0
+              ]
+            },
+            "point_labels": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "$(0,1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Evaluate $\\int x^2\\cos x\\,dx$, applying integration by parts twice.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Choosing u and dv wisely (LIATE)",
+          "answer": "First: $u=x^2$, $dv=\\cos x\\,dx$: $x^2\\sin x - 2\\int x\\sin x\\,dx$. Second (on $\\int x\\sin x\\,dx$): $=-x\\cos x+\\sin x$. Total: $x^2\\sin x + 2x\\cos x - 2\\sin x + C$.",
+          "explanation": "First: $u=x^2$, $dv=\\cos x\\,dx$: $x^2\\sin x - 2\\int x\\sin x\\,dx$. Second (on $\\int x\\sin x\\,dx$): $=-x\\cos x+\\sin x$. Total: $x^2\\sin x + 2x\\cos x - 2\\sin x + C$."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Evaluate $\\int e^x\\sin x\\,dx$ using the technique of applying integration by parts twice and solving algebraically for the original integral.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "The recurring-integral trick",
+          "answer": "Let $I=\\int e^x\\sin x\\,dx$. First pass ($u=\\sin x$, $dv=e^x dx$): $I = e^x\\sin x - \\int e^x\\cos x\\,dx$. Second pass on the new integral ($u=\\cos x$): $\\int e^x\\cos x\\,dx = e^x\\cos x + \\int e^x\\sin x\\,dx = e^x\\cos x + I$. So $I = e^x\\sin x - e^x\\cos x - I$, giving $2I = e^x(\\sin x-\\cos x)$, so $I=\\frac{e^x(\\sin x-\\cos x)}{2}+C$.",
+          "explanation": "Let $I=\\int e^x\\sin x\\,dx$. First pass ($u=\\sin x$, $dv=e^x dx$): $I = e^x\\sin x - \\int e^x\\cos x\\,dx$. Second pass on the new integral ($u=\\cos x$): $\\int e^x\\cos x\\,dx = e^x\\cos x + \\int e^x\\sin x\\,dx = e^x\\cos x + I$. So $I = e^x\\sin x - e^x\\cos x - I$, giving $2I = e^x(\\sin x-\\cos x)$, so $I=\\frac{e^x(\\sin x-\\cos x)}{2}+C$."
+        },
+        {
+          "q": "Evaluate $\\int_0^{\\pi} x\\sin x\\,dx$ exactly.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Definite integrals by parts",
+          "answer": "$u=x$, $dv=\\sin x\\,dx$: $\\left[-x\\cos x+\\sin x\\right]_0^{\\pi} = (-\\pi\\cos\\pi+\\sin\\pi)-(0) = \\pi$.",
+          "explanation": "$u=x$, $dv=\\sin x\\,dx$: $\\left[-x\\cos x+\\sin x\\right]_0^{\\pi} = (-\\pi\\cos\\pi+\\sin\\pi)-(0) = \\pi$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*sin(x)"
+            ],
+            "xmin": -0.3,
+            "xmax": 3.5,
+            "ymin": -0.5,
+            "ymax": 3.5,
+            "width": 200
+          }
+        },
+        {
+          "q": "Evaluate $\\int_1^e x^2\\ln x\\,dx$ exactly.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Definite integrals by parts",
+          "answer": "$u=\\ln x$, $dv=x^2dx$: $\\left[\\frac{x^3}{3}\\ln x - \\frac{x^3}{9}\\right]_1^e = \\left(\\frac{e^3}{3}-\\frac{e^3}{9}\\right)-\\left(0-\\frac{1}{9}\\right) = \\frac{2e^3}{9}+\\frac{1}{9} = \\frac{2e^3+1}{9}$.",
+          "explanation": "$u=\\ln x$, $dv=x^2dx$: $\\left[\\frac{x^3}{3}\\ln x - \\frac{x^3}{9}\\right]_1^e = \\left(\\frac{e^3}{3}-\\frac{e^3}{9}\\right)-\\left(0-\\frac{1}{9}\\right) = \\frac{2e^3}{9}+\\frac{1}{9} = \\frac{2e^3+1}{9}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**2*log(x)"
+            ],
+            "xmin": 0.5,
+            "xmax": 3,
+            "ymin": -0.5,
+            "ymax": 12,
+            "width": 200
+          }
+        },
+        {
+          "q": "Use integration by parts with $u=x^n$, $dv=e^x dx$ to derive the reduction formula $\\int x^ne^x\\,dx = x^ne^x - n\\int x^{n-1}e^x\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Reduction formulas",
+          "answer": "$du=nx^{n-1}dx$, $v=e^x$: $\\int x^ne^x\\,dx = x^ne^x - \\int e^x\\cdot nx^{n-1}\\,dx = x^ne^x - n\\int x^{n-1}e^x\\,dx$.",
+          "explanation": "$du=nx^{n-1}dx$, $v=e^x$: $\\int x^ne^x\\,dx = x^ne^x - \\int e^x\\cdot nx^{n-1}\\,dx = x^ne^x - n\\int x^{n-1}e^x\\,dx$."
+        },
+        {
+          "q": "Use the reduction formula above (applied twice) to evaluate $\\int x^2e^x\\,dx$, confirming it matches an earlier result.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Reduction formulas",
+          "answer": "$\\int x^2e^x\\,dx = x^2e^x - 2\\int xe^x\\,dx$. Applying again: $\\int xe^x\\,dx = xe^x - \\int e^x\\,dx = xe^x-e^x$. Total: $x^2e^x-2(xe^x-e^x) = x^2e^x-2xe^x+2e^x+C$, matching the earlier double-integration-by-parts result.",
+          "explanation": "$\\int x^2e^x\\,dx = x^2e^x - 2\\int xe^x\\,dx$. Applying again: $\\int xe^x\\,dx = xe^x - \\int e^x\\,dx = xe^x-e^x$. Total: $x^2e^x-2(xe^x-e^x) = x^2e^x-2xe^x+2e^x+C$, matching the earlier double-integration-by-parts result."
+        },
+        {
+          "q": "Evaluate $\\int \\tan^{-1}x\\,dx$ using integration by parts with $u=\\tan^{-1}x$, $dv=dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Integration by parts with inverse trig functions",
+          "answer": "$du=\\frac{1}{1+x^2}dx$, $v=x$: $=x\\tan^{-1}x-\\int\\frac{x}{1+x^2}\\,dx=x\\tan^{-1}x-\\frac{1}{2}\\ln(1+x^2)+C$.",
+          "explanation": "$du=\\frac{1}{1+x^2}dx$, $v=x$: $=x\\tan^{-1}x-\\int\\frac{x}{1+x^2}\\,dx=x\\tan^{-1}x-\\frac{1}{2}\\ln(1+x^2)+C$."
+        },
+        {
+          "q": "Evaluate $\\int x\\sin^{-1}x\\,dx$ using $u=\\sin^{-1}x$, $dv=x\\,dx$ (the resulting integral can be left in terms of a known antiderivative form).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Integration by parts with inverse trig functions",
+          "answer": "$du=\\frac{1}{\\sqrt{1-x^2}}dx$, $v=\\frac{x^2}{2}$: $=\\frac{x^2}{2}\\sin^{-1}x-\\frac{1}{2}\\int\\frac{x^2}{\\sqrt{1-x^2}}\\,dx$, which requires a further trigonometric substitution to complete.",
+          "explanation": "$du=\\frac{1}{\\sqrt{1-x^2}}dx$, $v=\\frac{x^2}{2}$: $=\\frac{x^2}{2}\\sin^{-1}x-\\frac{1}{2}\\int\\frac{x^2}{\\sqrt{1-x^2}}\\,dx$, which requires a further trigonometric substitution to complete."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "Evaluate $\\int_0^{\\pi/2}x\\cos(2x)\\,dx$ exactly, using integration by parts.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "A capstone mixed-technique problem",
+          "cross_lesson": "2.02 Continuity",
+          "answer": "$u=x$, $dv=\\cos(2x)dx$, $v=\\frac{1}{2}\\sin(2x)$: $\\left[\\frac{x}{2}\\sin(2x)\\right]_0^{\\pi/2}-\\frac{1}{2}\\int_0^{\\pi/2}\\sin(2x)\\,dx=\\left(\\frac{\\pi}{4}\\sin\\pi-0\\right)-\\frac{1}{2}\\left[-\\frac{1}{2}\\cos(2x)\\right]_0^{\\pi/2}=0-\\frac{1}{2}\\left(\\frac{1}{2}+\\frac{1}{2}\\right)=-\\frac{1}{2}$.",
+          "explanation": "$u=x$, $dv=\\cos(2x)dx$, $v=\\frac{1}{2}\\sin(2x)$: $\\left[\\frac{x}{2}\\sin(2x)\\right]_0^{\\pi/2}-\\frac{1}{2}\\int_0^{\\pi/2}\\sin(2x)\\,dx=\\left(\\frac{\\pi}{4}\\sin\\pi-0\\right)-\\frac{1}{2}\\left[-\\frac{1}{2}\\cos(2x)\\right]_0^{\\pi/2}=0-\\frac{1}{2}\\left(\\frac{1}{2}+\\frac{1}{2}\\right)=-\\frac{1}{2}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*cos(2*x)"
+            ],
+            "xmin": -0.2,
+            "xmax": 1.8,
+            "ymin": -1.5,
+            "ymax": 1.5,
+            "width": 200
+          }
+        },
+        {
+          "q": "The graph shows $f(x)=xe^{-x}$ on $[0,3]$. Find the exact area under the curve on this interval using integration by parts.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Visualizing an area found by integration by parts",
+          "cross_lesson": "3.01 The Derivative from First Principles",
+          "answer": "$u=x$, $dv=e^{-x}dx$, $v=-e^{-x}$: $\\left[-xe^{-x}\\right]_0^3+\\int_0^3e^{-x}\\,dx=-3e^{-3}+\\left[-e^{-x}\\right]_0^3=-3e^{-3}+(1-e^{-3})=1-4e^{-3}\\approx0.801$.",
+          "explanation": "$u=x$, $dv=e^{-x}dx$, $v=-e^{-x}$: $\\left[-xe^{-x}\\right]_0^3+\\int_0^3e^{-x}\\,dx=-3e^{-3}+\\left[-e^{-x}\\right]_0^3=-3e^{-3}+(1-e^{-3})=1-4e^{-3}\\approx0.801$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*exp(-x)"
+            ],
+            "xmin": -0.5,
+            "xmax": 4,
+            "ymin": -0.2,
+            "ymax": 0.6,
+            "width": 220
+          }
+        },
+        {
+          "q": "For each integral, state whether substitution or integration by parts is the appropriate technique, and identify the key choice ($u$-substitution variable, or $u$/$dv$ for parts) without fully evaluating: (a) $\\int xe^{x^2}\\,dx$; (b) $\\int xe^{2x}\\,dx$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Choosing between substitution and parts",
+          "cross_lesson": "3.02 Differentiation Rules: Power, Product, Quotient, Chain",
+          "answer": "(a) Substitution — $u=x^2$ makes $du=2x\\,dx$ appear directly, no product rule needed. (b) Integration by parts — $x$ and $e^{2x}$ are genuinely different function types with no simplifying substitution; use $u=x$, $dv=e^{2x}dx$.",
+          "explanation": "(a) Substitution — $u=x^2$ makes $du=2x\\,dx$ appear directly, no product rule needed. (b) Integration by parts — $x$ and $e^{2x}$ are genuinely different function types with no simplifying substitution; use $u=x$, $dv=e^{2x}dx$."
+        },
+        {
+          "q": "Evaluate $\\int \\sec^3x\\,dx$ using integration by parts with $u=\\sec x$, $dv=\\sec^2x\\,dx$, and the identity $\\tan^2x=\\sec^2x-1$ to solve the resulting equation for the original integral.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Choosing between substitution and parts",
+          "cross_lesson": "4.01 Antiderivatives and Indefinite Integrals",
+          "answer": "$du=\\sec x\\tan x\\,dx$, $v=\\tan x$: $I=\\sec x\\tan x-\\int\\sec x\\tan^2x\\,dx=\\sec x\\tan x-\\int\\sec x(\\sec^2x-1)\\,dx=\\sec x\\tan x-\\int\\sec^3x\\,dx+\\int\\sec x\\,dx$. So $2I=\\sec x\\tan x+\\ln|\\sec x+\\tan x|$, giving $I=\\frac{1}{2}\\left(\\sec x\\tan x+\\ln|\\sec x+\\tan x|\\right)+C$.",
+          "explanation": "$du=\\sec x\\tan x\\,dx$, $v=\\tan x$: $I=\\sec x\\tan x-\\int\\sec x\\tan^2x\\,dx=\\sec x\\tan x-\\int\\sec x(\\sec^2x-1)\\,dx=\\sec x\\tan x-\\int\\sec^3x\\,dx+\\int\\sec x\\,dx$. So $2I=\\sec x\\tan x+\\ln|\\sec x+\\tan x|$, giving $I=\\frac{1}{2}\\left(\\sec x\\tan x+\\ln|\\sec x+\\tan x|\\right)+C$."
+        },
+        {
+          "q": "A city's population growth rate is modeled by $r(t)=t\\ln(t+1)$ thousand people per year, for $0\\leq t\\leq5$. Set up and evaluate the definite integral for the total population growth over these 5 years using integration by parts, giving your answer to two decimal places.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Choosing between substitution and parts",
+          "cross_lesson": "4.02 Riemann Sums and Definite Integrals",
+          "answer": "Total growth $=\\int_0^5 t\\ln(t+1)\\,dt$. This does not integrate cleanly with $u=\\ln(t+1)$, $dv=t\\,dt$ alone; using $u=\\ln(t+1)$, $dv=t\\,dt$, $v=\\frac{t^2}{2}$: $\\left[\\frac{t^2}{2}\\ln(t+1)\\right]_0^5-\\frac{1}{2}\\int_0^5\\frac{t^2}{t+1}\\,dt$. Dividing $\\frac{t^2}{t+1}=t-1+\\frac{1}{t+1}$: $\\frac{1}{2}\\int_0^5\\left(t-1+\\frac{1}{t+1}\\right)dt=\\frac{1}{2}\\left[\\frac{t^2}{2}-t+\\ln(t+1)\\right]_0^5=\\frac{1}{2}(12.5-5+\\ln6)\\approx4.65$. So total growth $\\approx\\frac{25}{2}\\ln6-4.65\\approx22.41-4.65\\approx17.76$ thousand people.",
+          "explanation": "Total growth $=\\int_0^5 t\\ln(t+1)\\,dt$. This does not integrate cleanly with $u=\\ln(t+1)$, $dv=t\\,dt$ alone; using $u=\\ln(t+1)$, $dv=t\\,dt$, $v=\\frac{t^2}{2}$: $\\left[\\frac{t^2}{2}\\ln(t+1)\\right]_0^5-\\frac{1}{2}\\int_0^5\\frac{t^2}{t+1}\\,dt$. Dividing $\\frac{t^2}{t+1}=t-1+\\frac{1}{t+1}$: $\\frac{1}{2}\\int_0^5\\left(t-1+\\frac{1}{t+1}\\right)dt=\\frac{1}{2}\\left[\\frac{t^2}{2}-t+\\ln(t+1)\\right]_0^5=\\frac{1}{2}(12.5-5+\\ln6)\\approx4.65$. So total growth $\\approx\\frac{25}{2}\\ln6-4.65\\approx22.41-4.65\\approx17.76$ thousand people.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*log(x+1)"
+            ],
+            "xmin": -0.3,
+            "xmax": 5.3,
+            "ymin": 0,
+            "ymax": 10,
+            "width": 220
+          }
+        },
+        {
+          "q": "Area between $y=x$ and $y=x^2$: intersect at $x=$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Reduction formulas",
+          "cross_lesson": "5.01 The Fundamental Theorem of Calculus",
+          "answer": "Final Answer: $0$ and $1$. Applying Applications of Integration principles, $x=x^2\\Rightarrow x(x-1)=0$. Therefore, the verified correct option is $0$ and $1$.",
+          "explanation": "Applying Applications of Integration principles, $x=x^2\\Rightarrow x(x-1)=0$. Therefore, the verified correct option is $0$ and $1$."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
           "q": "State the formula for integration by parts.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Standard Products (Polynomial × Exponential / Trig)",
           "choices": [
             "$\\int u\\,dv = uv - \\int v\\,du$",
             "$\\int u\\,dv = uv + \\int v\\,du$",
@@ -16,10 +330,14 @@
             "$\\int u\\,dv = \\frac{u}{v} - \\int u'v$"
           ],
           "correct": 0,
-          "answer": "Derived from the product rule: $\\frac{d}{dx}(uv) = u'v + uv' \\Rightarrow \\int u\\,dv = uv - \\int v\\,du$."
+          "answer": "Derived from the product rule: $\\frac{d}{dx}(uv) = u'v + uv' \\Rightarrow \\int u\\,dv = uv - \\int v\\,du$.",
+          "explanation": "Derived from the product rule: $\\frac{d}{dx}(uv) = u'v + uv' \\Rightarrow \\int u\\,dv = uv - \\int v\\,du$."
         },
         {
           "q": "Evaluate $\\int x e^{2x}\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Standard Products (Polynomial × Exponential / Trig)",
           "choices": [
             "$\\frac{1}{2}x e^{2x} - \\frac{1}{4}e^{2x} + C$",
             "$\\frac{1}{2}x e^{2x} - \\frac{1}{2}e^{2x} + C$",
@@ -27,10 +345,14 @@
             "$\\frac{1}{4}x e^{2x} - \\frac{1}{4}e^{2x} + C$"
           ],
           "correct": 0,
-          "answer": "$u = x, dv = e^{2x}dx \\Rightarrow du = dx, v = \\frac{1}{2}e^{2x}$. $\\int x e^{2x}dx = \\frac{1}{2}x e^{2x} - \\frac{1}{2}\\int e^{2x}dx = \\frac{1}{2}x e^{2x} - \\frac{1}{4}e^{2x} + C$."
+          "answer": "$u = x, dv = e^{2x}dx \\Rightarrow du = dx, v = \\frac{1}{2}e^{2x}$. $\\int x e^{2x}dx = \\frac{1}{2}x e^{2x} - \\frac{1}{2}\\int e^{2x}dx = \\frac{1}{2}x e^{2x} - \\frac{1}{4}e^{2x} + C$.",
+          "explanation": "$u = x, dv = e^{2x}dx \\Rightarrow du = dx, v = \\frac{1}{2}e^{2x}$. $\\int x e^{2x}dx = \\frac{1}{2}x e^{2x} - \\frac{1}{2}\\int e^{2x}dx = \\frac{1}{2}x e^{2x} - \\frac{1}{4}e^{2x} + C$."
         },
         {
           "q": "Evaluate $\\int x\\sin(x)\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Standard Products (Polynomial × Exponential / Trig)",
           "choices": [
             "$-x\\cos x + \\sin x + C$",
             "$x\\cos x - \\sin x + C$",
@@ -38,15 +360,33 @@
             "$x\\sin x + \\cos x + C$"
           ],
           "correct": 0,
-          "answer": "$u = x, dv = \\sin x dx \\Rightarrow du = dx, v = -\\cos x$. $uv - \\int v\\,du = -x\\cos x - \\int(-\\cos x)dx = -x\\cos x + \\sin x + C$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Logarithmic and Inverse Trig Integrands",
-      "questions": [
+          "answer": "$u = x, dv = \\sin x dx \\Rightarrow du = dx, v = -\\cos x$. $uv - \\int v\\,du = -x\\cos x - \\int(-\\cos x)dx = -x\\cos x + \\sin x + C$.",
+          "explanation": "$u = x, dv = \\sin x dx \\Rightarrow du = dx, v = -\\cos x$. $uv - \\int v\\,du = -x\\cos x - \\int(-\\cos x)dx = -x\\cos x + \\sin x + C$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (0))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -2.0,
+                "label": "$(0,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
         {
           "q": "Evaluate $\\int \\ln(x)\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Logarithmic and Inverse Trig Integrands",
           "choices": [
             "$x\\ln x - x + C$",
             "$\\frac{1}{x} + C$",
@@ -54,10 +394,14 @@
             "$\\frac{(\\ln x)^2}{2} + C$"
           ],
           "correct": 0,
-          "answer": "$u = \\ln x, dv = dx \\Rightarrow du = \\frac{1}{x}dx, v = x$. $x\\ln x - \\int x\\cdot\\frac{1}{x}dx = x\\ln x - x + C$."
+          "answer": "$u = \\ln x, dv = dx \\Rightarrow du = \\frac{1}{x}dx, v = x$. $x\\ln x - \\int x\\cdot\\frac{1}{x}dx = x\\ln x - x + C$.",
+          "explanation": "$u = \\ln x, dv = dx \\Rightarrow du = \\frac{1}{x}dx, v = x$. $x\\ln x - \\int x\\cdot\\frac{1}{x}dx = x\\ln x - x + C$."
         },
         {
           "q": "Evaluate $\\int \\arctan(x)\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Logarithmic and Inverse Trig Integrands",
           "choices": [
             "$x\\arctan x - \\frac{1}{2}\\ln(1 + x^2) + C$",
             "$x\\arctan x - \\ln(1 + x^2) + C$",
@@ -65,10 +409,14 @@
             "$x\\arctan x + \\frac{1}{2}\\ln(1 + x^2) + C$"
           ],
           "correct": 0,
-          "answer": "$u = \\arctan x, dv = dx \\Rightarrow du = \\frac{dx}{1+x^2}, v = x$. $x\\arctan x - \\int \\frac{x}{1+x^2}dx = x\\arctan x - \\frac{1}{2}\\ln(1+x^2) + C$."
+          "answer": "$u = \\arctan x, dv = dx \\Rightarrow du = \\frac{dx}{1+x^2}, v = x$. $x\\arctan x - \\int \\frac{x}{1+x^2}dx = x\\arctan x - \\frac{1}{2}\\ln(1+x^2) + C$.",
+          "explanation": "$u = \\arctan x, dv = dx \\Rightarrow du = \\frac{dx}{1+x^2}, v = x$. $x\\arctan x - \\int \\frac{x}{1+x^2}dx = x\\arctan x - \\frac{1}{2}\\ln(1+x^2) + C$."
         },
         {
           "q": "Evaluate $\\int x\\ln(x)\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Logarithmic and Inverse Trig Integrands",
           "choices": [
             "$\\frac{x^2}{2}\\ln x - \\frac{x^2}{4} + C$",
             "$\\frac{x^2}{2}\\ln x - \\frac{x^2}{2} + C$",
@@ -76,15 +424,14 @@
             "$\\frac{x^2}{2}\\ln x + \\frac{x^2}{4} + C$"
           ],
           "correct": 0,
-          "answer": "$u = \\ln x, dv = x dx \\Rightarrow du = \\frac{dx}{x}, v = \\frac{x^2}{2}$. $\\frac{x^2}{2}\\ln x - \\int \\frac{x}{2}dx = \\frac{x^2}{2}\\ln x - \\frac{x^2}{4} + C$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Repeated Integration and Tabular Method",
-      "questions": [
+          "answer": "$u = \\ln x, dv = x dx \\Rightarrow du = \\frac{dx}{x}, v = \\frac{x^2}{2}$. $\\frac{x^2}{2}\\ln x - \\int \\frac{x}{2}dx = \\frac{x^2}{2}\\ln x - \\frac{x^2}{4} + C$.",
+          "explanation": "$u = \\ln x, dv = x dx \\Rightarrow du = \\frac{dx}{x}, v = \\frac{x^2}{2}$. $\\frac{x^2}{2}\\ln x - \\int \\frac{x}{2}dx = \\frac{x^2}{2}\\ln x - \\frac{x^2}{4} + C$."
+        },
         {
           "q": "Evaluate $\\int x^2 e^x\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Repeated Integration and Tabular Method",
           "choices": [
             "$x^2 e^x - 2x e^x + 2e^x + C$",
             "$x^2 e^x - 2x e^x + C$",
@@ -92,10 +439,14 @@
             "$\\frac{x^3}{3}e^x + C$"
           ],
           "correct": 0,
-          "answer": "Tabular signs $(+, -, +)$: $(+)(x^2)(e^x) - (2x)(e^x) + (2)(e^x) = e^x(x^2 - 2x + 2) + C$."
+          "answer": "Tabular signs $(+, -, +)$: $(+)(x^2)(e^x) - (2x)(e^x) + (2)(e^x) = e^x(x^2 - 2x + 2) + C$.",
+          "explanation": "Tabular signs $(+, -, +)$: $(+)(x^2)(e^x) - (2x)(e^x) + (2)(e^x) = e^x(x^2 - 2x + 2) + C$."
         },
         {
           "q": "Evaluate $\\int x^2\\cos(x)\\,dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Repeated Integration and Tabular Method",
           "choices": [
             "$x^2\\sin x + 2x\\cos x - 2\\sin x + C$",
             "$x^2\\sin x - 2x\\cos x + 2\\sin x + C$",
@@ -103,10 +454,19 @@
             "$x^2\\sin x + 2x\\cos x + C$"
           ],
           "correct": 0,
-          "answer": "Tabular: $D: x^2, 2x, 2, 0$; $I: \\cos x, \\sin x, -\\cos x, -\\sin x$. Pair with signs: $x^2\\sin x - 2x(-\\cos x) + 2(-\\sin x) = x^2\\sin x + 2x\\cos x - 2\\sin x + C$."
-        },
+          "answer": "Tabular: $D: x^2, 2x, 2, 0$; $I: \\cos x, \\sin x, -\\cos x, -\\sin x$. Pair with signs: $x^2\\sin x - 2x(-\\cos x) + 2(-\\sin x) = x^2\\sin x + 2x\\cos x - 2\\sin x + C$.",
+          "explanation": "Tabular: $D: x^2, 2x, 2, 0$; $I: \\cos x, \\sin x, -\\cos x, -\\sin x$. Pair with signs: $x^2\\sin x - 2x(-\\cos x) + 2(-\\sin x) = x^2\\sin x + 2x\\cos x - 2\\sin x + C$."
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
         {
           "q": "Evaluate $\\int_0^1 x^2 e^{2x}\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Repeated Integration and Tabular Method",
           "choices": [
             "$\\frac{e^2 - 1}{4}$",
             "$\\frac{e^2}{4}$",
@@ -114,15 +474,14 @@
             "$e^2 - 1$"
           ],
           "correct": 0,
-          "answer": "Tabular antiderivative: $e^{2x}\\left(\\frac{x^2}{2} - \\frac{2x}{4} + \\frac{2}{8}\\right) = e^{2x}\\left(\\frac{x^2}{2} - \\frac{x}{2} + \\frac{1}{4}\\right)$. At $x=1$: $e^2(1/2 - 1/2 + 1/4) = \\frac{e^2}{4}$. At $x=0$: $1(1/4) = 1/4$. Difference $= \\frac{e^2 - 1}{4}$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Looping / Cyclic Integrals and Definite Bounds",
-      "questions": [
+          "answer": "Tabular antiderivative: $e^{2x}\\left(\\frac{x^2}{2} - \\frac{2x}{4} + \\frac{2}{8}\\right) = e^{2x}\\left(\\frac{x^2}{2} - \\frac{x}{2} + \\frac{1}{4}\\right)$. At $x=1$: $e^2(1/2 - 1/2 + 1/4) = \\frac{e^2}{4}$. At $x=0$: $1(1/4) = 1/4$. Difference $= \\frac{e^2 - 1}{4}$.",
+          "explanation": "Tabular antiderivative: $e^{2x}\\left(\\frac{x^2}{2} - \\frac{2x}{4} + \\frac{2}{8}\\right) = e^{2x}\\left(\\frac{x^2}{2} - \\frac{x}{2} + \\frac{1}{4}\\right)$. At $x=1$: $e^2(1/2 - 1/2 + 1/4) = \\frac{e^2}{4}$. At $x=0$: $1(1/4) = 1/4$. Difference $= \\frac{e^2 - 1}{4}$."
+        },
         {
           "q": "Evaluate $\\int e^x\\cos(x)\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Looping / Cyclic Integrals and Definite Bounds",
           "choices": [
             "$\\frac{1}{2}e^x(\\cos x + \\sin x) + C$",
             "$\\frac{1}{2}e^x(\\cos x - \\sin x) + C$",
@@ -130,10 +489,14 @@
             "$\\frac{1}{2}e^x\\sin x + C$"
           ],
           "correct": 0,
-          "answer": "Let $I = \\int e^x\\cos x dx$. By parts twice: $I = e^x\\sin x + e^x\\cos x - I \\Rightarrow 2I = e^x(\\sin x + \\cos x) \\Rightarrow I = \\frac{1}{2}e^x(\\sin x + \\cos x) + C$."
+          "answer": "Let $I = \\int e^x\\cos x dx$. By parts twice: $I = e^x\\sin x + e^x\\cos x - I \\Rightarrow 2I = e^x(\\sin x + \\cos x) \\Rightarrow I = \\frac{1}{2}e^x(\\sin x + \\cos x) + C$.",
+          "explanation": "Let $I = \\int e^x\\cos x dx$. By parts twice: $I = e^x\\sin x + e^x\\cos x - I \\Rightarrow 2I = e^x(\\sin x + \\cos x) \\Rightarrow I = \\frac{1}{2}e^x(\\sin x + \\cos x) + C$."
         },
         {
           "q": "Evaluate $\\int_1^e \\ln(x)\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Looping / Cyclic Integrals and Definite Bounds",
           "choices": [
             "$1$",
             "$e - 1$",
@@ -141,10 +504,14 @@
             "$0$"
           ],
           "correct": 0,
-          "answer": "$[x\\ln x - x]_1^e = (e\\ln e - e) - (1\\ln 1 - 1) = (e - e) - (0 - 1) = 0 - (-1) = 1$."
+          "answer": "$[x\\ln x - x]_1^e = (e\\ln e - e) - (1\\ln 1 - 1) = (e - e) - (0 - 1) = 0 - (-1) = 1$.",
+          "explanation": "$[x\\ln x - x]_1^e = (e\\ln e - e) - (1\\ln 1 - 1) = (e - e) - (0 - 1) = 0 - (-1) = 1$."
         },
         {
           "q": "Evaluate $\\int_0^\\pi x\\sin(2x)\\,dx$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Looping / Cyclic Integrals and Definite Bounds",
           "choices": [
             "$-\\pi/2$",
             "$\\pi/2$",
@@ -152,7 +519,216 @@
             "$-\\pi$"
           ],
           "correct": 0,
-          "answer": "Parts: $u = x, dv = \\sin(2x)dx \\Rightarrow v = -\\frac{1}{2}\\cos(2x)$. $[-\\frac{1}{2}x\\cos(2x)]_0^\\pi + \\frac{1}{2}\\int_0^\\pi \\cos(2x)dx = [-\\frac{1}{2}\\pi(1) - 0] + [\\frac{1}{4}\\sin(2x)]_0^\\pi = -\\frac{\\pi}{2} + 0 = -\\frac{\\pi}{2}$."
+          "answer": "Parts: $u = x, dv = \\sin(2x)dx \\Rightarrow v = -\\frac{1}{2}\\cos(2x)$. $[-\\frac{1}{2}x\\cos(2x)]_0^\\pi + \\frac{1}{2}\\int_0^\\pi \\cos(2x)dx = [-\\frac{1}{2}\\pi(1) - 0] + [\\frac{1}{4}\\sin(2x)]_0^\\pi = -\\frac{\\pi}{2} + 0 = -\\frac{\\pi}{2}$.",
+          "explanation": "Parts: $u = x, dv = \\sin(2x)dx \\Rightarrow v = -\\frac{1}{2}\\cos(2x)$. $[-\\frac{1}{2}x\\cos(2x)]_0^\\pi + \\frac{1}{2}\\int_0^\\pi \\cos(2x)dx = [-\\frac{1}{2}\\pi(1) - 0] + [\\frac{1}{4}\\sin(2x)]_0^\\pi = -\\frac{\\pi}{2} + 0 = -\\frac{\\pi}{2}$."
+        },
+        {
+          "q": "Area between $y=e^x$ and $y=e^{-x}$ from $x=-1$ to $x=1$:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Repeated Integration and Tabular Method",
+          "choices": [
+            "$2(e-1/e)$",
+            "$e-1/e$",
+            "$0$",
+            "$e+1/e-2$"
+          ],
+          "correct": 0,
+          "answer": "$\\int_{-1}^1(e^x-e^{-x})dx=2[\\sinh x]_{-1}^1=4\\sinh1=2(e-1/e)$.",
+          "explanation": "$\\int_{-1}^1(e^x-e^{-x})dx=2[\\sinh x]_{-1}^1=4\\sinh1=2(e-1/e)$."
+        },
+        {
+          "q": "Area between $y=x^2$ and $y=x$ equals:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Looping / Cyclic Integrals and Definite Bounds",
+          "choices": [
+            "$1/3$",
+            "$1/6$",
+            "$1/2$",
+            "$1$"
+          ],
+          "correct": 1,
+          "answer": "Intersect at 0,1. $\\int_0^1(x-x^2)dx=1/2-1/3=1/6$.",
+          "explanation": "Intersect at 0,1. $\\int_0^1(x-x^2)dx=1/2-1/3=1/6$."
+        },
+        {
+          "q": "The region between $y=e^x$ and $y=1$ from $x=0$ to $x=1$ has area:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "The integration by parts formula",
+          "choices": [
+            "$1$",
+            "$e-1$",
+            "$e$",
+            "$e-2$"
+          ],
+          "correct": 3,
+          "answer": "$\\int_0^1(e^x-1)dx=[e^x-x]_0^1=(e-1)-1=e-2$.",
+          "explanation": "$\\int_0^1(e^x-1)dx=[e^x-x]_0^1=(e-1)-1=e-2$."
+        },
+        {
+          "q": "Tabular integration (repeated parts): $\\int x^3e^x\\,dx$. Number of IBP steps needed:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Repeated and definite applications",
+          "choices": [
+            "$2$",
+            "$1$",
+            "$4$",
+            "$3$"
+          ],
+          "correct": 3,
+          "answer": "$x^3$ differentiates to 0 in 3 steps.",
+          "explanation": "$x^3$ differentiates to 0 in 3 steps."
+        },
+        {
+          "q": "Area between $y=f(x)$ and x-axis on $[a,b]$ equals:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Choosing u and dv wisely (LIATE)",
+          "choices": [
+            "$\\int_a^b|f(x)|\\,dx$",
+            "$\\int_a^b f(x)\\,dx$ only when $f\\geq0$",
+            "$f(b)-f(a)$",
+            "$\\int_a^bf(x)^2\\,dx$"
+          ],
+          "correct": 0,
+          "answer": "Always use absolute value for area.",
+          "explanation": "Always use absolute value for area."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "Reduction formula: $\\int\\sin^n x\\,dx=-\\frac{\\sin^{n-1}x\\cos x}{n}+\\frac{n-1}{n}\\int\\sin^{n-2}x\\,dx$. Then $\\int_0^{\\pi/2}\\sin^6x\\,dx=$",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "The recurring-integral trick",
+          "choices": [
+            "$5\\pi/16$",
+            "$3\\pi/16$",
+            "$5\\pi/32$",
+            "$15\\pi/48$"
+          ],
+          "correct": 1,
+          "answer": "Wallis: $\\frac{5}{6}\\cdot\\frac{3}{4}\\cdot\\frac{1}{2}\\cdot\\frac{\\pi}{2}=\\frac{5\\pi\\cdot3}{6\\cdot4\\cdot2\\cdot2}=\\frac{15\\pi}{96}=\\frac{5\\pi}{32}$. Actually Wallis: $\\int_0^{\\pi/2}\\sin^{2n}x\\,dx=\\frac{(2n-1)!!}{(2n)!!}\\frac{\\pi}{2}$. For $n=3$: $\\frac{5\\cdot3\\cdot1}{6\\cdot4\\cdot2}\\frac{\\pi}{2}=\\frac{15}{48}\\frac{\\pi}{2}=\\frac{15\\pi}{96}=\\frac{5\\pi}{32}$.",
+          "explanation": "Wallis: $\\frac{5}{6}\\cdot\\frac{3}{4}\\cdot\\frac{1}{2}\\cdot\\frac{\\pi}{2}=\\frac{5\\pi\\cdot3}{6\\cdot4\\cdot2\\cdot2}=\\frac{15\\pi}{96}=\\frac{5\\pi}{32}$. Actually Wallis: $\\int_0^{\\pi/2}\\sin^{2n}x\\,dx=\\frac{(2n-1)!!}{(2n)!!}\\frac{\\pi}{2}$. For $n=3$: $\\frac{5\\cdot3\\cdot1}{6\\cdot4\\cdot2}\\frac{\\pi}{2}=\\frac{15}{48}\\frac{\\pi}{2}=\\frac{15\\pi}{96}=\\frac{5\\pi}{32}$.",
+          "cross_lesson": "4.01 Antiderivatives and Indefinite Integrals"
+        },
+        {
+          "q": "Which formula gives the length of a polar curve $r=f(\\theta)$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Definite integrals by parts",
+          "choices": [
+            "$\\int_\\alpha^\\beta r\\,d\\theta$",
+            "$\\int_\\alpha^\\beta|dr/d\\theta|\\,d\\theta$",
+            "$\\int_\\alpha^\\beta r^2\\,d\\theta$",
+            "$\\int_\\alpha^\\beta\\sqrt{r^2+(dr/d\\theta)^2}\\,d\\theta$"
+          ],
+          "correct": 3,
+          "answer": "Applying Applications of Integration principles, Polar arc length formula. Therefore, the verified correct option is $\\int_\\alpha^\\beta\\sqrt{r^2+(dr/d\\theta)^2}\\,d\\theta$.",
+          "explanation": "Applying Applications of Integration principles, Polar arc length formula. Therefore, the verified correct option is $\\int_\\alpha^\\beta\\sqrt{r^2+(dr/d\\theta)^2}\\,d\\theta$.",
+          "cross_lesson": "4.02 Riemann Sums and Definite Integrals"
+        },
+        {
+          "q": "Trig substitution $\\int\\sqrt{4-x^2}\\,dx$ with $x=2\\sin\\theta$ gives:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Reduction formulas",
+          "choices": [
+            "$\\arcsin(x/2)+C$",
+            "$\\frac{x\\sqrt{4-x^2}}{2}+2\\arcsin(x/2)+C$",
+            "$\\sqrt{4-x^2}+C$",
+            "$-\\sqrt{4-x^2}+C$"
+          ],
+          "correct": 1,
+          "answer": "Result of trig sub for $\\int\\sqrt{a^2-x^2}dx=\\frac{x\\sqrt{a^2-x^2}}{2}+\\frac{a^2}{2}\\arcsin(x/a)+C$. With $a=2$: $\\frac{x\\sqrt{4-x^2}}{2}+2\\arcsin(x/2)+C$.",
+          "explanation": "Result of trig sub for $\\int\\sqrt{a^2-x^2}dx=\\frac{x\\sqrt{a^2-x^2}}{2}+\\frac{a^2}{2}\\arcsin(x/a)+C$. With $a=2$: $\\frac{x\\sqrt{4-x^2}}{2}+2\\arcsin(x/2)+C$.",
+          "cross_lesson": "5.01 The Fundamental Theorem of Calculus"
+        },
+        {
+          "q": "Centroid $\\bar{x}$ of region $R$ with area $A$:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Integration by parts with inverse trig functions",
+          "choices": [
+            "$\\frac{a+b}{2}$",
+            "$\\frac{1}{A}\\int_a^bf(x)\\,dx$",
+            "$\\frac{1}{A}\\int_a^b x[f(x)-g(x)]\\,dx$",
+            "$A/2$"
+          ],
+          "correct": 2,
+          "answer": "Applying Applications of Integration principles, Centroid formula. Therefore, the verified correct option is $\\frac{1}{A}\\int_a^b x[f(x)-g(x)]\\,dx$.",
+          "explanation": "Applying Applications of Integration principles, Centroid formula. Therefore, the verified correct option is $\\frac{1}{A}\\int_a^b x[f(x)-g(x)]\\,dx$.",
+          "cross_lesson": "6.01 Related Rates"
+        },
+        {
+          "q": "Arc length formula: $L=$",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "A capstone mixed-technique problem",
+          "choices": [
+            "$\\int_a^b f(x)dx$",
+            "$\\int_a^b\\sqrt{1+[f'(x)]^2}\\,dx$",
+            "$\\int_a^b|f'(x)|dx$",
+            "$\\int_a^b[1+f'(x)]dx$"
+          ],
+          "correct": 1,
+          "answer": "Applying Applications of Integration principles, Arc length formula. Therefore, the verified correct option is $\\int_a^b\\sqrt{1+[f'(x)]^2}\\,dx$.",
+          "explanation": "Applying Applications of Integration principles, Arc length formula. Therefore, the verified correct option is $\\int_a^b\\sqrt{1+[f'(x)]^2}\\,dx$.",
+          "cross_lesson": "6.02 Optimization and Curve Sketching"
+        },
+        {
+          "q": "Reduction formula: $\\int\\sin^n x\\,dx=-\\frac{\\sin^{n-1}x\\cos x}{n}+\\frac{n-1}{n}\\int\\sin^{n-2}x\\,dx$. For $n=4$:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Visualizing an area found by integration by parts",
+          "choices": [
+            "$-\\sin^3x\\cos x/4+3/4\\int\\sin^2x\\,dx$",
+            "$-\\sin^3x\\cos x$",
+            "$\\sin^4x/4$",
+            "$-\\cos x/4$"
+          ],
+          "correct": 0,
+          "answer": "Applying Integrals principles, Standard reduction with $n=4$. Therefore, the verified correct option is $-\\sin^3x\\cos x/4+3/4\\int\\sin^2x\\,dx$.",
+          "explanation": "Applying Integrals principles, Standard reduction with $n=4$. Therefore, the verified correct option is $-\\sin^3x\\cos x/4+3/4\\int\\sin^2x\\,dx$.",
+          "cross_lesson": "7.01 Integration by Substitution"
+        },
+        {
+          "q": "Shell method: volume when shell radius $=x$, height $=f(x)$:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Choosing between substitution and parts",
+          "choices": [
+            "$2\\pi\\int_a^b xf(x)dx$",
+            "$\\int_a^bf(x)dx$",
+            "$\\pi\\int_a^b x^2f(x)dx$",
+            "$\\pi\\int_a^b f(x)^2dx$"
+          ],
+          "correct": 0,
+          "answer": "Applying Applications of Integration principles, $V=2\\pi\\int_a^b x f(x)dx$. Therefore, the verified correct option is $2\\pi\\int_a^b xf(x)dx$.",
+          "explanation": "Applying Applications of Integration principles, $V=2\\pi\\int_a^b x f(x)dx$. Therefore, the verified correct option is $2\\pi\\int_a^b xf(x)dx$.",
+          "cross_lesson": "8.01 Area Between Curves"
+        },
+        {
+          "q": "Improper integral $\\int_0^1\\frac{\\ln x}{\\sqrt{x}}\\,dx$:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Standard Products (Polynomial × Exponential / Trig)",
+          "choices": [
+            "$-4$",
+            "diverges",
+            "$0$",
+            "$-2$"
+          ],
+          "correct": 0,
+          "answer": "$u=\\ln x, v=2\\sqrt{x}$: IBP gives $[2\\sqrt{x}\\ln x]_0^1-\\int_0^12/\\sqrt{x}\\cdot1/x\\cdot(-1)$... Actually: $\\int_0^1x^{-1/2}\\ln x\\,dx=-4$.",
+          "explanation": "$u=\\ln x, v=2\\sqrt{x}$: IBP gives $[2\\sqrt{x}\\ln x]_0^1-\\int_0^12/\\sqrt{x}\\cdot1/x\\cdot(-1)$... Actually: $\\int_0^1x^{-1/2}\\ln x\\,dx=-4$.",
+          "cross_lesson": "8.02 Volumes of Revolution"
         }
       ]
     }

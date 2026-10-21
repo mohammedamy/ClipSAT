@@ -3,12 +3,453 @@
   "num": "3.01",
   "slug": "gradient-descent-and-optimization",
   "title": "Gradient Descent and Optimization",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 3.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Loss Function Derivatives and Stationary Points",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+      "questions": [
+        {
+          "q": "Consider the following quadratic loss function for a regression problem: $L(y, \\hat{y}) = (y - \\hat{y})^2$. If the predicted value $\\hat{y} = 5$ and the true value $y = 3$, what is the value of the loss function?",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Gradient Descent & Optimization Practice Exercises",
+          "answer": "The quadratic loss function is defined as $L(y, \\hat{y}) = (y - \\hat{y})^2$. Given the true value $y = 3$ and the predicted value $\\hat{y} = 5$, we substitute these values into the loss function: $L(3, 5) = (3 - 5)^2$ $L(3, 5) = (-2)^2$ $L(3, 5) = 4$ Therefore, the value of the loss function is 4.",
+          "explanation": "The quadratic loss function is defined as $L(y, \\hat{y}) = (y - \\hat{y})^2$. Given the true value $y = 3$ and the predicted value $\\hat{y} = 5$, we substitute these values into the loss function: $L(3, 5) = (3 - 5)^2$ $L(3, 5) = (-2)^2$ $L(3, 5) = 4$ Therefore, the value of the loss function is 4."
+        },
+        {
+          "q": "Consider a discrete random variable $X$ with the following probability mass function (PMF): $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. What is the value of $P(X \\leq 2)$?",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Loss Function Derivatives and Stationary Points",
+          "answer": "The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\leq 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\leq 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\leq 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$.",
+          "explanation": "The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\leq 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\leq 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\leq 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (0))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -1.0,
+                "label": "$(0,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "The sigmoid activation function is $\\sigma(z) = \\frac{1}{1 + e^{-z}}$. If $\\sigma(z_0) = 1.20$, what is the value of the derivative $\\sigma'(z_0)$?",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Multivariate Gradients and Directional Derivatives",
+          "answer": "The derivative of sigmoid satisfies $\\sigma'(z) = \\sigma(z)(1 - \\sigma(z))$. Substituting $\\sigma(z_0) = 1.20$: $\\sigma'(z_0) = (1.20)(1 - 1.20) = (1.20)(-0.20) = -0.2400$. Final Answer: $-0.2400$",
+          "explanation": "The derivative of sigmoid satisfies $\\sigma'(z) = \\sigma(z)(1 - \\sigma(z))$. Substituting $\\sigma(z_0) = 1.20$: $\\sigma'(z_0) = (1.20)(1 - 1.20) = (1.20)(-0.20) = -0.2400$. Final Answer: $-0.2400$"
+        },
+        {
+          "q": "A logistic regression model produces a class probability $p = P(y=1|\\mathbf{x}) = 0.30$. Compute the corresponding log-odds (logit) $\\ln\\left(\\frac{p}{1-p}\\right)$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Gradient Descent Step Updates",
+          "answer": "Odds are $\\frac{p}{1-p} = \\frac{0.30}{0.70} = 0.4286$. Taking natural logarithm: $\\ln(0.4286) = -0.847$. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt.",
+          "explanation": "Odds are $\\frac{p}{1-p} = \\frac{0.30}{0.70} = 0.4286$. Taking natural logarithm: $\\ln(0.4286) = -0.847$. Key Mathematical Principle & Verification: In exam revision, always verify that the final result satisfies all domain restrictions, boundary conditions, and the original governing equation by direct substitution into the prompt."
+        },
+        {
+          "q": "For a bivariate feature dataset, $\\mathrm{Cov}(x, y) = 36$, $\\mathrm{Var}(x) = 12$, $\\bar{x} = 5$, and $\\bar{y} = 35$. Compute the OLS regression slope $\\hat{\\beta}_1$ and intercept $\\hat{\\beta}_0$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Momentum and Advanced Optimizers",
+          "answer": "The OLS slope is $\\hat{\\beta}_1 = \\frac{\\mathrm{Cov}(x, y)}{\\mathrm{Var}(x)} = \\frac{36}{12} = 3$. The intercept is $\\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1\\bar{x} = 35 - (3)(5) = 35 - 15 = 20$. Final Answer: $\\hat{\\beta}_1 = 3, \\; \\hat{\\beta}_0 = 20$",
+          "explanation": "The OLS slope is $\\hat{\\beta}_1 = \\frac{\\mathrm{Cov}(x, y)}{\\mathrm{Var}(x)} = \\frac{36}{12} = 3$. The intercept is $\\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1\\bar{x} = 35 - (3)(5) = 35 - 15 = 20$. Final Answer: $\\hat{\\beta}_1 = 3, \\; \\hat{\\beta}_0 = 20$"
+        },
+        {
+          "q": "In training a language model token predictor, a binary token occurs $k = 15$ times across $n = 50$ independent trials. What is the Maximum Likelihood Estimate $\\hat{p}_{\\mathrm{MLE}}$ of the token probability?",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Gradient Descent & Optimization Practice Exercises",
+          "answer": "For a Bernoulli likelihood $L(p) = p^k (1-p)^{n-k}$, the log-likelihood is $\\ln L = k\\ln p + (n-k)\\ln(1-p)$. Setting derivative to zero: $\\frac{k}{p} - \\frac{n-k}{1-p} = 0 \\Rightarrow \\hat{p} = \\frac{k}{n} = \\frac{15}{50} = 0.300$.",
+          "explanation": "For a Bernoulli likelihood $L(p) = p^k (1-p)^{n-k}$, the log-likelihood is $\\ln L = k\\ln p + (n-k)\\ln(1-p)$. Setting derivative to zero: $\\frac{k}{p} - \\frac{n-k}{1-p} = 0 \\Rightarrow \\hat{p} = \\frac{k}{n} = \\frac{15}{50} = 0.300$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -1.0,
+                "label": "$(1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A spam classification model identifies $TP = 120$ genuine spam emails and $FP = 40$ legitimate emails falsely flagged as spam. What is the precision of this model?",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Loss Function Derivatives and Stationary Points",
+          "answer": "Precision is the fraction of predicted positive instances that are truly positive: $\\mathrm{Precision} = \\frac{TP}{TP + FP} = \\frac{120}{120 + 40} = \\frac{120}{160} = 75.0\\%$. Final Answer: $75.0\\%$",
+          "explanation": "Precision is the fraction of predicted positive instances that are truly positive: $\\mathrm{Precision} = \\frac{TP}{TP + FP} = \\frac{120}{120 + 40} = \\frac{120}{160} = 75.0\\%$. Final Answer: $75.0\\%$"
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "A machine learning diagnostic test has sensitivity $P(\\mathrm{Positive} | \\mathrm{Defect}) = 0.90$. If the defect rate in production is $P(\\mathrm{Defect}) = 0.25$, find the joint probability of a defect and a positive test result $P(\\mathrm{Defect} \\cap \\mathrm{Positive})$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Multivariate Gradients and Directional Derivatives",
+          "answer": "By the multiplication rule of conditional probability: $P(\\mathrm{Defect} \\cap \\mathrm{Positive}) = P(\\mathrm{Defect}) \\times P(\\mathrm{Positive} | \\mathrm{Defect}) = 0.25 \\times 0.90 = 0.2250$.",
+          "explanation": "By the multiplication rule of conditional probability: $P(\\mathrm{Defect} \\cap \\mathrm{Positive}) = P(\\mathrm{Defect}) \\times P(\\mathrm{Positive} | \\mathrm{Defect}) = 0.25 \\times 0.90 = 0.2250$."
+        },
+        {
+          "q": "In anomaly detection, anomaly prior $P(A) = 0.02$, detection sensitivity $P(+|A) = 0.95$, and false alarm rate $P(+| eg A) = 0.05$. By Bayes' theorem, what is the posterior probability $P(A|+)$ that an alarm is a true anomaly?",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Gradient Descent Step Updates",
+          "answer": "By Bayes' Rule: $P(A|+) = \\frac{P(+|A)P(A)}{P(+|A)P(A) + P(+| eg A)P( eg A)} = \\frac{0.95 \\times 0.02}{0.95(0.02) + 0.05(0.98)} = \\frac{0.0190}{0.0680} = 0.279$. Final Answer: $0.279$",
+          "explanation": "By Bayes' Rule: $P(A|+) = \\frac{P(+|A)P(A)}{P(+|A)P(A) + P(+| eg A)P( eg A)} = \\frac{0.95 \\times 0.02}{0.95(0.02) + 0.05(0.98)} = \\frac{0.0190}{0.0680} = 0.279$. Final Answer: $0.279$"
+        },
+        {
+          "q": "Compute the Manhattan ($L_1$) norm and Euclidean ($L_2$) norm of the word vector $\\mathbf{w} = [10, -15]^T$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Momentum and Advanced Optimizers",
+          "answer": "$L_1$ norm is the sum of absolute values: $|10| + |-15| = 25$. $L_2$ norm is the square root of sum of squares: $\\sqrt{(10)^2 + (-15)^2} = \\sqrt{100 + 225} = \\sqrt{325}$.",
+          "explanation": "$L_1$ norm is the sum of absolute values: $|10| + |-15| = 25$. $L_2$ norm is the square root of sum of squares: $\\sqrt{(10)^2 + (-15)^2} = \\sqrt{100 + 225} = \\sqrt{325}$.",
+          "figure": {
+            "type": "triangle",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                24.0,
+                0
+              ],
+              [
+                0,
+                7.0
+              ]
+            ],
+            "labels": [
+              "$C$",
+              "$B$",
+              "$A$"
+            ],
+            "side_labels": [
+              "$24$",
+              "$25$",
+              "$7$"
+            ],
+            "right_angle_at": 0,
+            "angle_marks": [
+              {
+                "vertex": 1,
+                "label": "$\\theta$"
+              }
+            ],
+            "fill": true,
+            "width": 220
+          }
+        },
+        {
+          "q": "Consider a simple quadratic loss function $L(w) = (w^2 - 4w + 5)$. We want to find the minimum of this loss function using gradient descent. The gradient of the loss function with respect to $w$ is given by $\\frac{dL}{dw} = 2w - 4$. If we start at an initial weight $w_0 = 5$ and use a learning rate $\\alpha = 0.5$, what will be the value of the weight $w_1$ after the first update step, i.e., $w_1 = w_0 - \\alpha \\frac{dL}{dw}(w_0)$? Show your complete algebraic work.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Gradient Descent & Optimization Practice Exercises",
+          "answer": "Final Answer: $4$. The loss function is $L(w) = w^2 - 4w + 5$. The gradient is $\\frac{dL}{dw} = 2w - 4$. We are given an initial weight $w_0 = 5$ and a learning rate $\\alpha = 0.5$. The gradient at $w_0$ is $\\frac{dL}{dw}(w_0) = 2(5) - 4 = 10 - 4 = 6$. The update rule for gradient descent is $w_1 = w_0 - \\alpha \\frac{dL}{dw}(w_0)$. Substituting the values, we get $w_1 = 5 - 0.5 \\times 6 = 5 - 3 = 2$.",
+          "explanation": "The loss function is $L(w) = w^2 - 4w + 5$. The gradient is $\\frac{dL}{dw} = 2w - 4$. We are given an initial weight $w_0 = 5$ and a learning rate $\\alpha = 0.5$. The gradient at $w_0$ is $\\frac{dL}{dw}(w_0) = 2(5) - 4 = 10 - 4 = 6$. The update rule for gradient descent is $w_1 = w_0 - \\alpha \\frac{dL}{dw}(w_0)$. Substituting the values, we get $w_1 = 5 - 0.5 \\times 6 = 5 - 3 = 2$."
+        },
+        {
+          "q": "Consider a univariate regression model where the predicted output $\\hat{y}$ is given by $\\hat{y} = ax + b$. The loss function is the Mean Squared Error (MSE), defined as $L = \\frac{1}{n} \\sum_{i=1}^{n} (y_i - \\hat{y}_i)^2$. $$For a single data point$(x_1, y_1) = (2, 5)$, the loss is$L = (5 - (2a + b))^2$.$$The gradient of the loss function with respect to$a$is$\\frac{\\partial L}{\\partial a} = -2(5 - (2a + b)) \\cdot 2$.$$If during gradient descent, with a learning rate of$\\eta = 0.1$, the parameters$a$and$b$are updated from$a_{old} = 1$and$b_{old} = 1$, to$a_{new} = 0.8$and$b_{new} = 0.8$, what is the value of$b$that would have resulted in$\\frac{\\partial L}{\\partial b} = 0$for this single data point, assuming$a=1$and$b=1$were the values *before* the gradient calculation that led to the update to$a_{new}=0.8, b_{new}=0.8$? Show your complete algebraic work.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Loss Function Derivatives and Stationary Points",
+          "answer": "Final Answer: $5$. The loss function for a single data point is $L = (y_1 - (ax_1 + b))^2$. $$Given$(x_1, y_1) = (2, 5)$, so$L = (5 - (2a + b))^2$.$$The gradient of the loss with respect to$b$is$\\frac{\\partial L}{\\partial b} = 2(5 - (2a + b)) \\cdot (-1) = -2(5 - 2a - b)$.$$We are asked to find the value of$b$for which$\\frac{\\partial L}{\\partial b} = 0$, assuming$a=1$and$b=1$were the parameters *before* the update step that led to$a_{new}=0.8, b_{new}=0.8$. This means we evaluate the gradient at$a=1$and the *unknown* value of$b$.$$Setting$\\frac{\\partial L}{\\partial b} = 0$:$$$-2(5 - 2(1) - b) = 0$$5 - 2 - b = 0$$3 - b = 0$$b = 3$. $$The provided gradient update information$\\frac{\\partial L}{\\partial a} = -2(5 - (2a + b)) \\cdot 2$and the learning rate$\\eta = 0.1$are distractors. The question specifically asks for the value of$b$that makes$\\frac{\\partial L}{\\partial b} = 0$*at the point where$a=1$*. The update rule to$a_{new}=0.8, b_{new}=0.8$implies that the gradient of$a$was$\\frac{a_{old} - a_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2$, and the gradient of$b$was$\\frac{b_{old} - b_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2$.$$Let's verify: If$a=1$and$b=3$, then$\\frac{\\partial L}{\\partial b} = -2(5 - 2(1) - 3) = -2(5 - 2 - 3) = -2(0) = 0$.$$If$a=1$and$b=3$,$\\frac{\\partial L}{\\partial a} = -2(5 - 2(1) - 3) \\cdot 2 = -2(0) \\cdot 2 = 0$.$$This scenario implies that the point$a=1, b=3$is a minimum for the loss function, but the question is about finding the value of$b$that makes the gradient of$b$zero at$a=1$, which is$b=3$. The provided update$a_{new}=0.8, b_{new}=0.8$from$a_{old}=1, b_{old}=1$is a different step in the optimization process and is not directly used to find the value of$b$that makes the gradient of$b$zero at$a=1$.",
+          "explanation": "The loss function for a single data point is $L = (y_1 - (ax_1 + b))^2$. $$Given$(x_1, y_1) = (2, 5)$, so$L = (5 - (2a + b))^2$.$$The gradient of the loss with respect to$b$is$\\frac{\\partial L}{\\partial b} = 2(5 - (2a + b)) \\cdot (-1) = -2(5 - 2a - b)$.$$We are asked to find the value of$b$for which$\\frac{\\partial L}{\\partial b} = 0$, assuming$a=1$and$b=1$were the parameters *before* the update step that led to$a_{new}=0.8, b_{new}=0.8$. This means we evaluate the gradient at$a=1$and the *unknown* value of$b$.$$Setting$\\frac{\\partial L}{\\partial b} = 0$:$$$-2(5 - 2(1) - b) = 0$$5 - 2 - b = 0$$3 - b = 0$$b = 3$. $$The provided gradient update information$\\frac{\\partial L}{\\partial a} = -2(5 - (2a + b)) \\cdot 2$and the learning rate$\\eta = 0.1$are distractors. The question specifically asks for the value of$b$that makes$\\frac{\\partial L}{\\partial b} = 0$*at the point where$a=1$*. The update rule to$a_{new}=0.8, b_{new}=0.8$implies that the gradient of$a$was$\\frac{a_{old} - a_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2$, and the gradient of$b$was$\\frac{b_{old} - b_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2$.$$Let's verify: If$a=1$and$b=3$, then$\\frac{\\partial L}{\\partial b} = -2(5 - 2(1) - 3) = -2(5 - 2 - 3) = -2(0) = 0$.$$If$a=1$and$b=3$,$\\frac{\\partial L}{\\partial a} = -2(5 - 2(1) - 3) \\cdot 2 = -2(0) \\cdot 2 = 0$.$$This scenario implies that the point$a=1, b=3$is a minimum for the loss function, but the question is about finding the value of$b$that makes the gradient of$b$zero at$a=1$, which is$b=3$. The provided update$a_{new}=0.8, b_{new}=0.8$from$a_{old}=1, b_{old}=1$is a different step in the optimization process and is not directly used to find the value of$b$that makes the gradient of$b$zero at$a=1$."
+        },
+        {
+          "q": "Consider the scalar loss function $L(w) = 6w^2 - 8w + 5$. Find the analytical gradient $abla L(w)$ evaluated at $w = 10$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Multivariate Gradients and Directional Derivatives",
+          "answer": "Final Answer: $abla L(10) = 112$. Differentiate with respect to $w$: $\\frac{dL}{dw} = 2(6)w - 8 = 12w - 8$. At $w = 10$: $abla L = 12(10) - 8 = 120 - 8 = 112$.",
+          "explanation": "Differentiate with respect to $w$: $\\frac{dL}{dw} = 2(6)w - 8 = 12w - 8$. At $w = 10$: $abla L = 12(10) - 8 = 120 - 8 = 112$."
+        },
+        {
+          "q": "Consider the scalar loss function $L(w) = 7w^2 - 8w + 5$. Find the analytical gradient $abla L(w)$ evaluated at $w = 12$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Gradient Descent Step Updates",
+          "answer": "Final Answer: $abla L(12) = 160$. Differentiate with respect to $w$: $\\frac{dL}{dw} = 2(7)w - 8 = 14w - 8$. At $w = 12$: $abla L = 14(12) - 8 = 168 - 8 = 160$.",
+          "explanation": "Differentiate with respect to $w$: $\\frac{dL}{dw} = 2(7)w - 8 = 14w - 8$. At $w = 12$: $abla L = 14(12) - 8 = 168 - 8 = 160$."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "Consider the scalar loss function $L(w) = 5w^2 - 8w + 5$. Find the analytical gradient $abla L(w)$ evaluated at $w = 8$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Momentum and Advanced Optimizers",
+          "cross_lesson": "4.01 Conditional Probability and Bayes Rule",
+          "answer": "Final Answer: $abla L(8) = 72$. Differentiate with respect to $w$: $\\frac{dL}{dw} = 2(5)w - 8 = 10w - 8$. At $w = 8$: $abla L = 10(8) - 8 = 80 - 8 = 72$.",
+          "explanation": "Differentiate with respect to $w$: $\\frac{dL}{dw} = 2(5)w - 8 = 10w - 8$. At $w = 8$: $abla L = 10(8) - 8 = 80 - 8 = 72$."
+        },
+        {
+          "q": "Consider the scalar loss function $L(w) = 3w^2 - 8w + 5$. Find the analytical gradient $abla L(w)$ evaluated at $w = 4$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Gradient Descent & Optimization Practice Exercises",
+          "cross_lesson": "5.01 Distributions and Maximum Likelihood",
+          "answer": "Final Answer: $abla L(4) = 16$. Differentiate with respect to $w$: $\\frac{dL}{dw} = 2(3)w - 8 = 6w - 8$. At $w = 4$: $abla L = 6(4) - 8 = 24 - 8 = 16$.",
+          "explanation": "Differentiate with respect to $w$: $\\frac{dL}{dw} = 2(3)w - 8 = 6w - 8$. At $w = 4$: $abla L = 6(4) - 8 = 24 - 8 = 16$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Consider the scalar loss function $L(w) = 4w^2 - 8w + 5$. Find the analytical gradient $abla L(w)$ evaluated at $w = 6$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Loss Function Derivatives and Stationary Points",
+          "cross_lesson": "6.01 Linear Regression and OLS",
+          "answer": "Final Answer: $abla L(6) = 40$. Differentiate with respect to $w$: $\\frac{dL}{dw} = 2(4)w - 8 = 8w - 8$. At $w = 6$: $abla L = 8(6) - 8 = 48 - 8 = 40$.",
+          "explanation": "Differentiate with respect to $w$: $\\frac{dL}{dw} = 2(4)w - 8 = 8w - 8$. At $w = 6$: $abla L = 8(6) - 8 = 48 - 8 = 40$."
+        },
+        {
+          "q": "Consider the scalar loss function $L(w) = 2w^2 - 8w + 5$. Find the analytical gradient $abla L(w)$ evaluated at $w = 2$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Multivariate Gradients and Directional Derivatives",
+          "cross_lesson": "7.01 Logistic Regression and Classification",
+          "answer": "Final Answer: $abla L(2) = 0$. Differentiate with respect to $w$: $\\frac{dL}{dw} = 2(2)w - 8 = 4w - 8$. At $w = 2$: $abla L = 4(2) - 8 = 8 - 8 = 0$.",
+          "explanation": "Differentiate with respect to $w$: $\\frac{dL}{dw} = 2(2)w - 8 = 4w - 8$. At $w = 2$: $abla L = 4(2) - 8 = 8 - 8 = 0$."
+        },
+        {
+          "q": "Consider the quadratic loss function $L(w) = w^2 - 4w + 3$. Find the value of $w$ where the function reaches its minimum.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Gradient Descent Step Updates",
+          "cross_lesson": "8.01 PCA and Dimensionality Reduction",
+          "answer": "Final Answer: $w = 2$. The given loss function is a quadratic function $L(w) = w^2 - 4w + 3$. This represents a parabola opening upwards. The minimum value of a quadratic function of the form $aw^2 + bw + c$ occurs at $w = -\\frac{b}{2a}$. In this case, $a = 1$ and $b = -4$. Therefore, the minimum occurs at $w = -\\frac{-4}{2(1)} = \\frac{4}{2} = 2$. Alternatively, we can find the minimum by taking the derivative and setting it to zero: $L'(w) = 2w - 4$. Setting $L'(w) = 0$ gives $2w - 4 = 0$, which implies $2w = 4$, so $w = 2$.",
+          "explanation": "The given loss function is a quadratic function $L(w) = w^2 - 4w + 3$. This represents a parabola opening upwards. The minimum value of a quadratic function of the form $aw^2 + bw + c$ occurs at $w = -\\frac{b}{2a}$. In this case, $a = 1$ and $b = -4$. Therefore, the minimum occurs at $w = -\\frac{-4}{2(1)} = \\frac{4}{2} = 2$. Alternatively, we can find the minimum by taking the derivative and setting it to zero: $L'(w) = 2w - 4$. Setting $L'(w) = 0$ gives $2w - 4 = 0$, which implies $2w = 4$, so $w = 2$."
+        },
+        {
+          "q": "Consider the following quadratic loss function: $L(w) = 3w^2 - 12w + 10$. What is the value of $w$ that minimizes this loss function? Show your complete algebraic work.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Momentum and Advanced Optimizers",
+          "cross_lesson": "1.01 Vectors and Embeddings in AI",
+          "answer": "Final Answer: 2. To find the minimum of the quadratic loss function $L(w) = 3w^2 - 12w + 10$, we can find the derivative with respect to $w$ and set it to zero. The derivative of $L(w)$ with respect to $w$ is: $\\frac{dL}{dw} = 6w - 12$. Setting the derivative to zero to find the critical point: $6w - 12 = 0$ $6w = 12$ $w = \\frac{12}{6}$ $w = 2$. The second derivative is $\\frac{d^2L}{dw^2} = 6$, which is positive, confirming that $w=2$ corresponds to a minimum.",
+          "explanation": "To find the minimum of the quadratic loss function $L(w) = 3w^2 - 12w + 10$, we can find the derivative with respect to $w$ and set it to zero. The derivative of $L(w)$ with respect to $w$ is: $\\frac{dL}{dw} = 6w - 12$. Setting the derivative to zero to find the critical point: $6w - 12 = 0$ $6w = 12$ $w = \\frac{12}{6}$ $w = 2$. The second derivative is $\\frac{d^2L}{dw^2} = 6$, which is positive, confirming that $w=2$ corresponds to a minimum."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+      "questions": [
+        {
+          "q": "In gradient descent, a weight currently has value \\( w = 10 \\). If the gradient of the loss is \\( \\frac{\\partial L}{\\partial w} = 4 \\) and the learning rate is \\( \\eta = 0.1 \\), find the updated weight \\( w' \\).",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Gradient Descent & Optimization Practice Exercises",
+          "choices": [
+            "\\( 10.40 \\)",
+            "\\( 9.60 \\)",
+            "\\( 6.00 \\)",
+            "\\( 9.90 \\)"
+          ],
+          "correct": 1,
+          "answer": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 10 - (0.1)(4) = 10 - 0.40 = 9.60 \\).",
+          "explanation": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 10 - (0.1)(4) = 10 - 0.40 = 9.60 \\)."
+        },
+        {
+          "q": "In gradient descent, a weight currently has value \\( w = 20 \\). If the gradient of the loss is \\( \\frac{\\partial L}{\\partial w} = 8 \\) and the learning rate is \\( \\eta = 0.2 \\), find the updated weight \\( w' \\).",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Gradient Descent & Optimization Practice Exercises",
+          "choices": [
+            "\\( 12.00 \\)",
+            "\\( 21.60 \\)",
+            "\\( 18.40 \\)",
+            "\\( 19.80 \\)"
+          ],
+          "correct": 2,
+          "answer": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 20 - (0.2)(8) = 20 - 1.60 = 18.40 \\).",
+          "explanation": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 20 - (0.2)(8) = 20 - 1.60 = 18.40 \\)."
+        },
+        {
+          "q": "In gradient descent, a weight currently has value \\( w = 30 \\). If the gradient of the loss is \\( \\frac{\\partial L}{\\partial w} = 12 \\) and the learning rate is \\( \\eta = 0.3 \\), find the updated weight \\( w' \\).",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Gradient Descent & Optimization Practice Exercises",
+          "choices": [
+            "\\( 18.00 \\)",
+            "\\( 33.60 \\)",
+            "\\( 26.40 \\)",
+            "\\( 29.70 \\)"
+          ],
+          "correct": 2,
+          "answer": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 30 - (0.3)(12) = 30 - 3.60 = 26.40 \\).",
+          "explanation": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 30 - (0.3)(12) = 30 - 3.60 = 26.40 \\).",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (0))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -2.0,
+                "label": "$(0,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "In gradient descent, a weight currently has value \\( w = 40 \\). If the gradient of the loss is \\( \\frac{\\partial L}{\\partial w} = 16 \\) and the learning rate is \\( \\eta = 0.4 \\), find the updated weight \\( w' \\).",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Gradient Descent & Optimization Practice Exercises",
+          "choices": [
+            "\\( 24.00 \\)",
+            "\\( 46.40 \\)",
+            "\\( 33.60 \\)",
+            "\\( 39.60 \\)"
+          ],
+          "correct": 2,
+          "answer": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 40 - (0.4)(16) = 40 - 6.40 = 33.60 \\).",
+          "explanation": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 40 - (0.4)(16) = 40 - 6.40 = 33.60 \\)."
+        },
+        {
+          "q": "In gradient descent, a weight currently has value \\( w = 50 \\). If the gradient of the loss is \\( \\frac{\\partial L}{\\partial w} = 20 \\) and the learning rate is \\( \\eta = 0.5 \\), find the updated weight \\( w' \\).",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Gradient Descent & Optimization Practice Exercises",
+          "choices": [
+            "\\( 30.00 \\)",
+            "\\( 60.00 \\)",
+            "\\( 40.00 \\)",
+            "\\( 49.50 \\)"
+          ],
+          "correct": 2,
+          "answer": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 50 - (0.5)(20) = 50 - 10.00 = 40.00 \\).",
+          "explanation": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 50 - (0.5)(20) = 50 - 10.00 = 40.00 \\)."
+        },
+        {
+          "q": "In gradient descent, a weight currently has value \\( w = 60 \\). If the gradient of the loss is \\( \\frac{\\partial L}{\\partial w} = 24 \\) and the learning rate is \\( \\eta = 0.6 \\), find the updated weight \\( w' \\).",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Gradient Descent & Optimization Practice Exercises",
+          "choices": [
+            "\\( 36.00 \\)",
+            "\\( 74.40 \\)",
+            "\\( 45.60 \\)",
+            "\\( 59.40 \\)"
+          ],
+          "correct": 2,
+          "answer": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 60 - (0.6)(24) = 60 - 14.40 = 45.60 \\).",
+          "explanation": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 60 - (0.6)(24) = 60 - 14.40 = 45.60 \\)."
+        },
+        {
+          "q": "Consider the scalar loss function \\( L(w) = 2w^2 - 8w + 5 \\). Find the analytical gradient \\( \\nabla L(w) \\) evaluated at \\( w = 2 \\).",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Gradient Descent & Optimization Practice Exercises",
+          "choices": [
+            "\\( \\nabla L(2) = 16 \\)",
+            "\\( \\nabla L(2) = 8 \\)",
+            "\\( \\nabla L(2) = 0 \\)",
+            "\\( \\nabla L(2) = -4 \\)"
+          ],
+          "correct": 2,
+          "answer": "Differentiate with respect to \\( w \\): \\( \\frac{dL}{dw} = 2(2)w - 8 = 4w - 8 \\). At \\( w = 2 \\): \\( \\nabla L = 4(2) - 8 = 8 - 8 = 0 \\).",
+          "explanation": "Differentiate with respect to \\( w \\): \\( \\frac{dL}{dw} = 2(2)w - 8 = 4w - 8 \\). At \\( w = 2 \\): \\( \\nabla L = 4(2) - 8 = 8 - 8 = 0 \\)."
+        },
+        {
+          "q": "Consider the scalar loss function \\( L(w) = 3w^2 - 8w + 5 \\). Find the analytical gradient \\( \\nabla L(w) \\) evaluated at \\( w = 4 \\).",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Gradient Descent & Optimization Practice Exercises",
+          "choices": [
+            "\\( \\nabla L(4) = 16 \\)",
+            "\\( \\nabla L(4) = 24 \\)",
+            "\\( \\nabla L(4) = 32 \\)",
+            "\\( \\nabla L(4) = 4 \\)"
+          ],
+          "correct": 0,
+          "answer": "Differentiate with respect to \\( w \\): \\( \\frac{dL}{dw} = 2(3)w - 8 = 6w - 8 \\). At \\( w = 4 \\): \\( \\nabla L = 6(4) - 8 = 24 - 8 = 16 \\).",
+          "explanation": "Differentiate with respect to \\( w \\): \\( \\frac{dL}{dw} = 2(3)w - 8 = 6w - 8 \\). At \\( w = 4 \\): \\( \\nabla L = 6(4) - 8 = 24 - 8 = 16 \\).",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
       "questions": [
         {
           "q": "Find the stationary point (global minimum) of the scalar mean squared error loss $L(w) = 3(w - 4)^2 + 7$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Loss Function Derivatives and Stationary Points",
           "choices": [
             "$w = 4$",
             "$w = 7$",
@@ -16,10 +457,14 @@
             "$w = 0$"
           ],
           "correct": 0,
-          "answer": "$L'(w) = 6(w - 4) = 0 \\Rightarrow w = 4$. $L''(4) = 6 > 0$, so $w = 4$ is the minimum."
+          "answer": "$L'(w) = 6(w - 4) = 0 \\Rightarrow w = 4$. $L''(4) = 6 > 0$, so $w = 4$ is the minimum.",
+          "explanation": "$L'(w) = 6(w - 4) = 0 \\Rightarrow w = 4$. $L''(4) = 6 > 0$, so $w = 4$ is the minimum."
         },
         {
           "q": "For the loss function $L(w) = w^4 - 4w^2 + 6$, find all values of $w$ where the gradient is zero.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Loss Function Derivatives and Stationary Points",
           "choices": [
             "$w = 0, \\pm\\sqrt{2}$",
             "$w = \\pm 2$",
@@ -27,10 +472,14 @@
             "$w = \\pm 1$"
           ],
           "correct": 0,
-          "answer": "$L'(w) = 4w^3 - 8w = 4w(w^2 - 2) = 0 \\Rightarrow w = 0$ or $w = \\pm\\sqrt{2}$."
+          "answer": "$L'(w) = 4w^3 - 8w = 4w(w^2 - 2) = 0 \\Rightarrow w = 0$ or $w = \\pm\\sqrt{2}$.",
+          "explanation": "$L'(w) = 4w^3 - 8w = 4w(w^2 - 2) = 0 \\Rightarrow w = 0$ or $w = \\pm\\sqrt{2}$."
         },
         {
           "q": "In optimization, a critical point has $L'(w) = 0$ and $L''(w) = -8$. What type of point is this?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Loss Function Derivatives and Stationary Points",
           "choices": [
             "Local Maximum",
             "Local Minimum",
@@ -38,15 +487,14 @@
             "Inflection Point"
           ],
           "correct": 0,
-          "answer": "A negative second derivative implies concavity downwards, confirming a local maximum."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Multivariate Gradients and Directional Derivatives",
-      "questions": [
+          "answer": "A negative second derivative implies concavity downwards, confirming a local maximum.",
+          "explanation": "A negative second derivative implies concavity downwards, confirming a local maximum."
+        },
         {
           "q": "Compute the gradient vector $\\nabla L$ of $L(w_1, w_2) = 3w_1^2 + 5w_2^2 - 2w_1 w_2$ evaluated at $(w_1, w_2) = (2, 1)$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Multivariate Gradients and Directional Derivatives",
           "choices": [
             "$[10, 6]^T$",
             "$[12, 10]^T$",
@@ -54,10 +502,14 @@
             "$[14, 4]^T$"
           ],
           "correct": 0,
-          "answer": "$\\frac{\\partial L}{\\partial w_1} = 6w_1 - 2w_2 = 12 - 2 = 10$. $\\frac{\\partial L}{\\partial w_2} = 10w_2 - 2w_1 = 10 - 4 = 6$."
+          "answer": "$\\frac{\\partial L}{\\partial w_1} = 6w_1 - 2w_2 = 12 - 2 = 10$. $\\frac{\\partial L}{\\partial w_2} = 10w_2 - 2w_1 = 10 - 4 = 6$.",
+          "explanation": "$\\frac{\\partial L}{\\partial w_1} = 6w_1 - 2w_2 = 12 - 2 = 10$. $\\frac{\\partial L}{\\partial w_2} = 10w_2 - 2w_1 = 10 - 4 = 6$."
         },
         {
           "q": "In which direction does the negative gradient vector $-\\nabla L(\\mathbf{w})$ point?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Multivariate Gradients and Directional Derivatives",
           "choices": [
             "The direction of steepest decrease of the loss function",
             "The direction of steepest increase of the loss function",
@@ -65,10 +517,33 @@
             "Along the tangent line of the contour"
           ],
           "correct": 0,
-          "answer": "$\\nabla L$ points in the direction of greatest increase; its negation $-\\nabla L$ points in the direction of steepest descent."
+          "answer": "$\\nabla L$ points in the direction of greatest increase; its negation $-\\nabla L$ points in the direction of steepest descent.",
+          "explanation": "$\\nabla L$ points in the direction of greatest increase; its negation $-\\nabla L$ points in the direction of steepest descent.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -2.0,
+                "label": "$(1,-2)$"
+              }
+            ],
+            "width": 230
+          }
         },
         {
           "q": "Compute the directional derivative of $f(x, y) = x^2 y$ at $(1, 2)$ in the unit direction $\\mathbf{u} = [0.8, 0.6]^T$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Multivariate Gradients and Directional Derivatives",
           "choices": [
             "$3.8$",
             "$4.2$",
@@ -76,15 +551,14 @@
             "$5.0$"
           ],
           "correct": 0,
-          "answer": "$\\nabla f = [2xy, x^2]^T = [4, 1]^T$. Directional derivative $= \\nabla f \\cdot \\mathbf{u} = 4(0.8) + 1(0.6) = 3.2 + 0.6 = 3.8$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Gradient Descent Step Updates",
-      "questions": [
+          "answer": "$\\nabla f = [2xy, x^2]^T = [4, 1]^T$. Directional derivative $= \\nabla f \\cdot \\mathbf{u} = 4(0.8) + 1(0.6) = 3.2 + 0.6 = 3.8$.",
+          "explanation": "$\\nabla f = [2xy, x^2]^T = [4, 1]^T$. Directional derivative $= \\nabla f \\cdot \\mathbf{u} = 4(0.8) + 1(0.6) = 3.2 + 0.6 = 3.8$."
+        },
         {
           "q": "A model weight has value $w_0 = 5.0$. If $\\frac{\\partial L}{\\partial w} = 4.0$ and learning rate is $\\eta = 0.1$, find the updated weight $w_1$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Gradient Descent Step Updates",
           "choices": [
             "$4.6$",
             "$5.4$",
@@ -92,10 +566,14 @@
             "$4.9$"
           ],
           "correct": 0,
-          "answer": "Update: $w_1 = w_0 - \\eta \\nabla L = 5.0 - 0.1(4.0) = 5.0 - 0.4 = 4.6$."
+          "answer": "Update: $w_1 = w_0 - \\eta \\nabla L = 5.0 - 0.1(4.0) = 5.0 - 0.4 = 4.6$.",
+          "explanation": "Update: $w_1 = w_0 - \\eta \\nabla L = 5.0 - 0.1(4.0) = 5.0 - 0.4 = 4.6$."
         },
         {
           "q": "Consider the quadratic loss $L(w) = \\frac{1}{2} a w^2$ with $a = 10$. What is the maximum learning rate $\\eta$ before gradient descent diverges?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Gradient Descent Step Updates",
           "choices": [
             "$\\eta < 0.2$",
             "$\\eta < 0.1$",
@@ -103,10 +581,14 @@
             "$\\eta < 1.0$"
           ],
           "correct": 0,
-          "answer": "Update is $w_{t+1} = w_t(1 - \\eta a)$. Stability requires $|1 - \\eta a| < 1 \\Rightarrow -1 < 1 - 10\\eta < 1 \\Rightarrow 0 < \\eta < 2/10 = 0.2$."
+          "answer": "Update is $w_{t+1} = w_t(1 - \\eta a)$. Stability requires $|1 - \\eta a| < 1 \\Rightarrow -1 < 1 - 10\\eta < 1 \\Rightarrow 0 < \\eta < 2/10 = 0.2$.",
+          "explanation": "Update is $w_{t+1} = w_t(1 - \\eta a)$. Stability requires $|1 - \\eta a| < 1 \\Rightarrow -1 < 1 - 10\\eta < 1 \\Rightarrow 0 < \\eta < 2/10 = 0.2$."
         },
         {
           "q": "Perform one vector gradient descent update from $\\mathbf{w}_0 = [1, 2]^T$ with $\\nabla L = [2, -4]^T$ and $\\eta = 0.25$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Gradient Descent Step Updates",
           "choices": [
             "$[0.5, 3.0]^T$",
             "$[1.5, 1.0]^T$",
@@ -114,15 +596,19 @@
             "$[1.0, 3.0]^T$"
           ],
           "correct": 0,
-          "answer": "$\\mathbf{w}_1 = [1, 2]^T - 0.25[2, -4]^T = [1 - 0.5, 2 - (-1)]^T = [0.5, 3.0]^T$."
+          "answer": "$\\mathbf{w}_1 = [1, 2]^T - 0.25[2, -4]^T = [1 - 0.5, 2 - (-1)]^T = [0.5, 3.0]^T$.",
+          "explanation": "$\\mathbf{w}_1 = [1, 2]^T - 0.25[2, -4]^T = [1 - 0.5, 2 - (-1)]^T = [0.5, 3.0]^T$."
         }
       ]
     },
     {
-      "heading": "Section 4: Momentum and Advanced Optimizers",
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
       "questions": [
         {
           "q": "In Polyak momentum, the velocity update is $\\mathbf{v}_{t+1} = \\beta \\mathbf{v}_t + \\eta \\nabla L$. If $\\beta = 0.9$, $\\mathbf{v}_0 = 2.0$, $\\eta = 0.1$, and $\\nabla L = 4.0$, find $\\mathbf{v}_1$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Momentum and Advanced Optimizers",
           "choices": [
             "$2.2$",
             "$2.0$",
@@ -130,10 +616,15 @@
             "$2.6$"
           ],
           "correct": 0,
-          "answer": "$\\mathbf{v}_1 = 0.9(2.0) + 0.1(4.0) = 1.8 + 0.4 = 2.2$."
+          "answer": "$\\mathbf{v}_1 = 0.9(2.0) + 0.1(4.0) = 1.8 + 0.4 = 2.2$.",
+          "explanation": "$\\mathbf{v}_1 = 0.9(2.0) + 0.1(4.0) = 1.8 + 0.4 = 2.2$.",
+          "cross_lesson": "7.01 Logistic Regression and Classification"
         },
         {
           "q": "Why does the Adam optimizer maintain running exponential averages of both first moments (mean) and second raw moments (uncentered variance)?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Momentum and Advanced Optimizers",
           "choices": [
             "To adapt per-parameter learning rates inversely proportional to gradient magnitude",
             "To guarantee convergence to the global minimum in non-convex losses",
@@ -141,10 +632,35 @@
             "To eliminate the need for mini-batch sampling"
           ],
           "correct": 0,
-          "answer": "The second moment scales steps down for parameters with large, frequent gradients and up for sparse gradients."
+          "answer": "The second moment scales steps down for parameters with large, frequent gradients and up for sparse gradients.",
+          "explanation": "The second moment scales steps down for parameters with large, frequent gradients and up for sparse gradients.",
+          "cross_lesson": "8.01 PCA and Dimensionality Reduction",
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "Q1",
+              "Q2",
+              "Q3",
+              "Q4",
+              "Q5"
+            ],
+            "values": [
+              18,
+              24,
+              29,
+              22,
+              27
+            ],
+            "ylabel": "Frequency",
+            "highlight_index": 2,
+            "width": 230
+          }
         },
         {
           "q": "What is the condition on the Hessian matrix $\\mathbf{H} = \\nabla^2 L(\\mathbf{w})$ for a loss function to be strictly convex everywhere?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Momentum and Advanced Optimizers",
           "choices": [
             "$\\mathbf{H}$ is positive definite everywhere (all eigenvalues $> 0$)",
             "$\\mathbf{H}$ has determinant equal to zero",
@@ -152,7 +668,108 @@
             "$\\mathbf{H}$ is skew-symmetric"
           ],
           "correct": 0,
-          "answer": "Strict convexity requires a positive definite Hessian: $\\mathbf{v}^T \\mathbf{H} \\mathbf{v} > 0$ for all non-zero $\\mathbf{v}$."
+          "answer": "Strict convexity requires a positive definite Hessian: $\\mathbf{v}^T \\mathbf{H} \\mathbf{v} > 0$ for all non-zero $\\mathbf{v}$.",
+          "explanation": "Strict convexity requires a positive definite Hessian: $\\mathbf{v}^T \\mathbf{H} \\mathbf{v} > 0$ for all non-zero $\\mathbf{v}$.",
+          "cross_lesson": "1.01 Vectors and Embeddings in AI"
+        },
+        {
+          "q": "A 2D loss surface is defined as $L(w_1, w_2) = 6w_1^2 + 11w_2^2$. Find the gradient vector $abla L$ at the point $(w_1, w_2) = (2, -1)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Gradient Descent & Optimization Practice Exercises",
+          "choices": [
+            "$abla L = [26, -24]^T$",
+            "$abla L = [24, 22]^T$",
+            "$abla L = [12, -11]^T$",
+            "$abla L = [24, -22]^T$"
+          ],
+          "correct": 3,
+          "answer": "Compute partial derivatives: $\\frac{\\partial L}{\\partial w_1} = 2(6)w_1 = 12(2) = 24$; $\\frac{\\partial L}{\\partial w_2} = 2(11)w_2 = 22(-1) = -22$. Therefore, $abla L = [24, -22]^T$.",
+          "explanation": "Compute partial derivatives: $\\frac{\\partial L}{\\partial w_1} = 2(6)w_1 = 12(2) = 24$; $\\frac{\\partial L}{\\partial w_2} = 2(11)w_2 = 22(-1) = -22$. Therefore, $abla L = [24, -22]^T$.",
+          "cross_lesson": "2.01 Neural Layer Matrices and Activations"
+        },
+        {
+          "q": "A 2D loss surface is defined as $L(w_1, w_2) = 7w_1^2 + 13w_2^2$. Find the gradient vector $abla L$ at the point $(w_1, w_2) = (2, -1)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Loss Function Derivatives and Stationary Points",
+          "choices": [
+            "$abla L = [30, -28]^T$",
+            "$abla L = [28, 26]^T$",
+            "$abla L = [14, -13]^T$",
+            "$abla L = [28, -26]^T$"
+          ],
+          "correct": 3,
+          "answer": "Compute partial derivatives: $\\frac{\\partial L}{\\partial w_1} = 2(7)w_1 = 14(2) = 28$; $\\frac{\\partial L}{\\partial w_2} = 2(13)w_2 = 26(-1) = -26$. Therefore, $abla L = [28, -26]^T$.",
+          "explanation": "Compute partial derivatives: $\\frac{\\partial L}{\\partial w_1} = 2(7)w_1 = 14(2) = 28$; $\\frac{\\partial L}{\\partial w_2} = 2(13)w_2 = 26(-1) = -26$. Therefore, $abla L = [28, -26]^T$.",
+          "cross_lesson": "4.01 Conditional Probability and Bayes Rule"
+        },
+        {
+          "q": "A 2D loss surface is defined as $L(w_1, w_2) = 5w_1^2 + 9w_2^2$. Find the gradient vector $abla L$ at the point $(w_1, w_2) = (2, -1)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Multivariate Gradients and Directional Derivatives",
+          "choices": [
+            "$abla L = [22, -20]^T$",
+            "$abla L = [20, 18]^T$",
+            "$abla L = [10, -9]^T$",
+            "$abla L = [20, -18]^T$"
+          ],
+          "correct": 3,
+          "answer": "Compute partial derivatives: $\\frac{\\partial L}{\\partial w_1} = 2(5)w_1 = 10(2) = 20$; $\\frac{\\partial L}{\\partial w_2} = 2(9)w_2 = 18(-1) = -18$. Therefore, $abla L = [20, -18]^T$.",
+          "explanation": "Compute partial derivatives: $\\frac{\\partial L}{\\partial w_1} = 2(5)w_1 = 10(2) = 20$; $\\frac{\\partial L}{\\partial w_2} = 2(9)w_2 = 18(-1) = -18$. Therefore, $abla L = [20, -18]^T$.",
+          "cross_lesson": "5.01 Distributions and Maximum Likelihood",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -2.0,
+                "label": "$(-1,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A 2D loss surface is defined as $L(w_1, w_2) = 3w_1^2 + 5w_2^2$. Find the gradient vector $abla L$ at the point $(w_1, w_2) = (2, -1)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Gradient Descent Step Updates",
+          "choices": [
+            "$abla L = [14, -12]^T$",
+            "$abla L = [12, 10]^T$",
+            "$abla L = [6, -5]^T$",
+            "$abla L = [12, -10]^T$"
+          ],
+          "correct": 3,
+          "answer": "Compute partial derivatives: $\\frac{\\partial L}{\\partial w_1} = 2(3)w_1 = 6(2) = 12$; $\\frac{\\partial L}{\\partial w_2} = 2(5)w_2 = 10(-1) = -10$. Therefore, $abla L = [12, -10]^T$.",
+          "explanation": "Compute partial derivatives: $\\frac{\\partial L}{\\partial w_1} = 2(3)w_1 = 6(2) = 12$; $\\frac{\\partial L}{\\partial w_2} = 2(5)w_2 = 10(-1) = -10$. Therefore, $abla L = [12, -10]^T$.",
+          "cross_lesson": "6.01 Linear Regression and OLS"
+        },
+        {
+          "q": "A 2D loss surface is defined as $L(w_1, w_2) = 4w_1^2 + 7w_2^2$. Find the gradient vector $abla L$ at the point $(w_1, w_2) = (2, -1)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Momentum and Advanced Optimizers",
+          "choices": [
+            "$abla L = [18, -16]^T$",
+            "$abla L = [16, 14]^T$",
+            "$abla L = [8, -7]^T$",
+            "$abla L = [16, -14]^T$"
+          ],
+          "correct": 3,
+          "answer": "Compute partial derivatives: $\\frac{\\partial L}{\\partial w_1} = 2(4)w_1 = 8(2) = 16$; $\\frac{\\partial L}{\\partial w_2} = 2(7)w_2 = 14(-1) = -14$. Therefore, $abla L = [16, -14]^T$.",
+          "explanation": "Compute partial derivatives: $\\frac{\\partial L}{\\partial w_1} = 2(4)w_1 = 8(2) = 16$; $\\frac{\\partial L}{\\partial w_2} = 2(7)w_2 = 14(-1) = -14$. Therefore, $abla L = [16, -14]^T$.",
+          "cross_lesson": "7.01 Logistic Regression and Classification"
         }
       ]
     }

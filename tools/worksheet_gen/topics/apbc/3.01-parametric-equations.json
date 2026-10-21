@@ -3,12 +3,701 @@
   "num": "3.01",
   "slug": "parametric-equations",
   "title": "Parametric Equations",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 3.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: First and Second Derivatives Parametrically",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
+          "q": "Eliminate the parameter from $x(t)=t$, $y(t)=t^2-1$ to find the Cartesian equation, and sketch it.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Eliminating the parameter",
+          "answer": "Since $x=t$, substitute directly: $y=x^2-1$, an upward parabola shifted down $1$ unit.",
+          "explanation": "Since $x=t$, substitute directly: $y=x^2-1$, an upward parabola shifted down $1$ unit.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**2 - 1"
+            ],
+            "xmin": -3,
+            "xmax": 3,
+            "ymin": -2,
+            "ymax": 6,
+            "width": 220
+          }
+        },
+        {
+          "q": "A Ferris wheel of radius $10$ m completes one revolution every $40$ s, centered $12$ m above the ground. Write parametric equations for a rider's height above the ground as a function of time $t$ (seconds), assuming the rider starts at the bottom.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Parametric equations from real motion",
+          "answer": "Angular speed $=\\frac{2\\pi}{40}=\\frac{\\pi}{20}$ rad/s. Starting at the bottom means height $=12-10\\cos\\left(\\frac{\\pi}{20}t\\right)$ (using $x(t)=t$ for time, $y(t)=12-10\\cos\\left(\\frac{\\pi}{20}t\\right)$ for height).",
+          "explanation": "Angular speed $=\\frac{2\\pi}{40}=\\frac{\\pi}{20}$ rad/s. Starting at the bottom means height $=12-10\\cos\\left(\\frac{\\pi}{20}t\\right)$ (using $x(t)=t$ for time, $y(t)=12-10\\cos\\left(\\frac{\\pi}{20}t\\right)$ for height).",
+          "figure": {
+            "type": "circle",
+            "center": [
+              0,
+              0
+            ],
+            "radius": 10.0,
+            "center_label": "$O$",
+            "radius_label": "10 m",
+            "sector": null,
+            "chord": null,
+            "width": 210
+          }
+        },
+        {
+          "q": "For $x(t)=t^2$, $y(t)=t^3$, find $\\frac{dy}{dx}$ in terms of $t$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Derivatives of parametric equations",
+          "answer": "$\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{3t^2}{2t}=\\frac{3t}{2}$.",
+          "explanation": "$\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{3t^2}{2t}=\\frac{3t}{2}$."
+        },
+        {
+          "q": "For $x(t)=\\cos t$, $y(t)=\\sin t$, find $\\frac{dy}{dx}$ and evaluate it at $t=\\frac{\\pi}{4}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Derivatives of parametric equations",
+          "answer": "$\\frac{dy}{dx}=\\frac{\\cos t}{-\\sin t}=-\\cot t$. At $t=\\frac{\\pi}{4}$: $-\\cot\\left(\\frac{\\pi}{4}\\right)=-1$.",
+          "explanation": "$\\frac{dy}{dx}=\\frac{\\cos t}{-\\sin t}=-\\cot t$. At $t=\\frac{\\pi}{4}$: $-\\cot\\left(\\frac{\\pi}{4}\\right)=-1$."
+        },
+        {
+          "q": "For $x(t)=t^2$, $y(t)=t^3$, find $\\frac{d^2y}{dx^2}$ using $\\frac{d^2y}{dx^2}=\\frac{\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)}{\\frac{dx}{dt}}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Second derivatives of parametric equations",
+          "answer": "$\\frac{dy}{dx}=\\frac{3t}{2}$; $\\frac{d}{dt}\\left(\\frac{3t}{2}\\right)=\\frac{3}{2}$. $\\frac{d^2y}{dx^2}=\\frac{3/2}{2t}=\\frac{3}{4t}$.",
+          "explanation": "$\\frac{dy}{dx}=\\frac{3t}{2}$; $\\frac{d}{dt}\\left(\\frac{3t}{2}\\right)=\\frac{3}{2}$. $\\frac{d^2y}{dx^2}=\\frac{3/2}{2t}=\\frac{3}{4t}$."
+        },
+        {
+          "q": "Find the equation of the tangent line to the curve $x(t)=t^2-1$, $y(t)=t^3-t$ at $t=2$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Tangent lines to parametric curves",
+          "answer": "At $t=2$: $x=3$, $y=6$. $\\frac{dx}{dt}=2t=4$; $\\frac{dy}{dt}=3t^2-1=11$. $\\frac{dy}{dx}=\\frac{11}{4}$. Tangent: $y-6=\\frac{11}{4}(x-3)$.",
+          "explanation": "At $t=2$: $x=3$, $y=6$. $\\frac{dx}{dt}=2t=4$; $\\frac{dy}{dt}=3t^2-1=11$. $\\frac{dy}{dx}=\\frac{11}{4}$. Tangent: $y-6=\\frac{11}{4}(x-3)$.",
+          "figure": {
+            "type": "triangle",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                8.0,
+                0
+              ],
+              [
+                0,
+                6.0
+              ]
+            ],
+            "labels": [
+              "$C$",
+              "$B$",
+              "$A$"
+            ],
+            "side_labels": [
+              "$8$",
+              "$10$",
+              "$6$"
+            ],
+            "right_angle_at": 0,
+            "angle_marks": [
+              {
+                "vertex": 1,
+                "label": "$\\theta$"
+              }
+            ],
+            "fill": true,
+            "width": 220
+          }
+        },
+        {
+          "q": "State the arc length formula for a parametric curve $x(t)$, $y(t)$ on $[a,b]$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Arc length of parametric curves",
+          "answer": "$L=\\int_a^b\\sqrt{\\left(\\frac{dx}{dt}\\right)^2+\\left(\\frac{dy}{dt}\\right)^2}\\,dt$.",
+          "explanation": "$L=\\int_a^b\\sqrt{\\left(\\frac{dx}{dt}\\right)^2+\\left(\\frac{dy}{dt}\\right)^2}\\,dt$."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Find the arc length of $x(t)=3t$, $y(t)=4t$ for $t\\in[0,2]$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Arc length of parametric curves",
+          "answer": "$\\frac{dx}{dt}=3$, $\\frac{dy}{dt}=4$. $L=\\int_0^2\\sqrt{9+16}\\,dt=\\int_0^2 5\\,dt=10$.",
+          "explanation": "$\\frac{dx}{dt}=3$, $\\frac{dy}{dt}=4$. $L=\\int_0^2\\sqrt{9+16}\\,dt=\\int_0^2 5\\,dt=10$."
+        },
+        {
+          "q": "Set up (but do not evaluate) the arc length integral for $x(t)=t^2$, $y(t)=t^3$ on $[0,1]$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Arc length of parametric curves",
+          "answer": "$\\frac{dx}{dt}=2t$, $\\frac{dy}{dt}=3t^2$. $L=\\int_0^1\\sqrt{(2t)^2+(3t^2)^2}\\,dt=\\int_0^1\\sqrt{4t^2+9t^4}\\,dt$.",
+          "explanation": "$\\frac{dx}{dt}=2t$, $\\frac{dy}{dt}=3t^2$. $L=\\int_0^1\\sqrt{(2t)^2+(3t^2)^2}\\,dt=\\int_0^1\\sqrt{4t^2+9t^4}\\,dt$."
+        },
+        {
+          "q": "A particle moves with position $x(t)=t^2$, $y(t)=2t$. Find its speed at $t=1$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Speed as a vector quantity",
+          "answer": "$\\frac{dx}{dt}=2t$, $\\frac{dy}{dt}=2$. At $t=1$: $\\frac{dx}{dt}=2$, $\\frac{dy}{dt}=2$. Speed $=\\sqrt{2^2+2^2}=\\sqrt{8}=2\\sqrt{2}$.",
+          "explanation": "$\\frac{dx}{dt}=2t$, $\\frac{dy}{dt}=2$. At $t=1$: $\\frac{dx}{dt}=2$, $\\frac{dy}{dt}=2$. Speed $=\\sqrt{2^2+2^2}=\\sqrt{8}=2\\sqrt{2}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A particle moves with position $x(t)=3\\cos t$, $y(t)=3\\sin t$. Find its speed at any time $t$, and interpret the result.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Speed as a vector quantity",
+          "answer": "$\\frac{dx}{dt}=-3\\sin t$, $\\frac{dy}{dt}=3\\cos t$. Speed $=\\sqrt{9\\sin^2t+9\\cos^2t}=\\sqrt{9}=3$ (constant). The particle traces a circle of radius $3$ at constant speed.",
+          "explanation": "$\\frac{dx}{dt}=-3\\sin t$, $\\frac{dy}{dt}=3\\cos t$. Speed $=\\sqrt{9\\sin^2t+9\\cos^2t}=\\sqrt{9}=3$ (constant). The particle traces a circle of radius $3$ at constant speed."
+        },
+        {
+          "q": "Eliminate the parameter from $x(t)=2t+1$, $y(t)=4t-3$ to find the Cartesian equation.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Eliminating the parameter",
+          "answer": "From $x=2t+1$: $t=\\frac{x-1}{2}$. Substitute: $y=4\\left(\\frac{x-1}{2}\\right)-3=2(x-1)-3=2x-5$. A line with slope $2$.",
+          "explanation": "From $x=2t+1$: $t=\\frac{x-1}{2}$. Substitute: $y=4\\left(\\frac{x-1}{2}\\right)-3=2(x-1)-3=2x-5$. A line with slope $2$."
+        },
+        {
+          "q": "Explain why eliminating the parameter from $x(t)=\\cos t$, $y(t)=\\sin t$ using the identity $\\sin^2t+\\cos^2t=1$ gives a relation that is NOT a function $y=f(x)$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Eliminating the parameter",
+          "answer": "Substituting gives $x^2+y^2=1$, the equation of a unit circle. For most $x$-values in $(-1,1)$, there are two corresponding $y$-values ($\\pm\\sqrt{1-x^2}$), so this relation fails the vertical line test and is not a function of $x$.",
+          "explanation": "Substituting gives $x^2+y^2=1$, the equation of a unit circle. For most $x$-values in $(-1,1)$, there are two corresponding $y$-values ($\\pm\\sqrt{1-x^2}$), so this relation fails the vertical line test and is not a function of $x$."
+        },
+        {
+          "q": "For $x(t)=t^2$, $y(t)=t^3$ (with $\\frac{d^2y}{dx^2}=\\frac{3}{4t}$ found earlier), determine the concavity of the curve for $t>0$ and for $t<0$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Concavity of parametric curves",
+          "answer": "For $t>0$: $\\frac{d^2y}{dx^2}=\\frac{3}{4t}>0$, so the curve is concave up. For $t<0$: $\\frac{3}{4t}<0$, so the curve is concave down.",
+          "explanation": "For $t>0$: $\\frac{d^2y}{dx^2}=\\frac{3}{4t}>0$, so the curve is concave up. For $t<0$: $\\frac{3}{4t}<0$, so the curve is concave down."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "For $x(t)=t^2-4$, $y(t)=t^3-3t$, find the value(s) of $t$ where the tangent line is horizontal (where $\\frac{dy}{dt}=0$, provided $\\frac{dx}{dt}\\neq0$).",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Horizontal and vertical tangents",
+          "cross_lesson": "5.02 Ratio, Root, and Alternating Series Tests",
+          "answer": "$\\frac{dy}{dt}=3t^2-3=0 \\Rightarrow t=\\pm1$. Check $\\frac{dx}{dt}=2t$: at $t=\\pm1$, $\\frac{dx}{dt}=\\pm2\\neq0$, so both give valid horizontal tangents.",
+          "explanation": "$\\frac{dy}{dt}=3t^2-3=0 \\Rightarrow t=\\pm1$. Check $\\frac{dx}{dt}=2t$: at $t=\\pm1$, $\\frac{dx}{dt}=\\pm2\\neq0$, so both give valid horizontal tangents."
+        },
+        {
+          "q": "For the same curve, find the value(s) of $t$ where the tangent line is vertical (where $\\frac{dx}{dt}=0$, provided $\\frac{dy}{dt}\\neq0$).",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Horizontal and vertical tangents",
+          "cross_lesson": "6.01 Power Series and Interval of Convergence",
+          "answer": "$\\frac{dx}{dt}=2t=0 \\Rightarrow t=0$. Check $\\frac{dy}{dt}=3(0)^2-3=-3\\neq0$, so $t=0$ gives a valid vertical tangent, at the point $x(0)=-4$, $y(0)=0$.",
+          "explanation": "$\\frac{dx}{dt}=2t=0 \\Rightarrow t=0$. Check $\\frac{dy}{dt}=3(0)^2-3=-3\\neq0$, so $t=0$ gives a valid vertical tangent, at the point $x(0)=-4$, $y(0)=0$.",
+          "figure": {
+            "type": "triangle",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                8.0,
+                0
+              ],
+              [
+                0,
+                6.0
+              ]
+            ],
+            "labels": [
+              "$C$",
+              "$B$",
+              "$A$"
+            ],
+            "side_labels": [
+              "$8$",
+              "$10$",
+              "$6$"
+            ],
+            "right_angle_at": 0,
+            "angle_marks": [
+              {
+                "vertex": 1,
+                "label": "$\\theta$"
+              }
+            ],
+            "fill": true,
+            "width": 220
+          }
+        },
+        {
+          "q": "A particle's position is $x(t)=t^2$, $y(t)=t^3-3t$ for $t\\in[-2,2]$. Find all times when the particle is moving straight up or down (vertical velocity component only, i.e. $\\frac{dx}{dt}=0$).",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Motion along a parametric path (particle interpretation)",
+          "cross_lesson": "6.02 Taylor and Maclaurin Series",
+          "answer": "$\\frac{dx}{dt}=2t=0 \\Rightarrow t=0$. At $t=0$: position is $(0,0)$, and the particle is momentarily moving purely vertically (since horizontal velocity is $0$ there).",
+          "explanation": "$\\frac{dx}{dt}=2t=0 \\Rightarrow t=0$. At $t=0$: position is $(0,0)$, and the particle is momentarily moving purely vertically (since horizontal velocity is $0$ there)."
+        },
+        {
+          "q": "For the particle above, find the speed at $t=2$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Motion along a parametric path (particle interpretation)",
+          "cross_lesson": "1.01 Integration by Parts",
+          "answer": "$\\frac{dx}{dt}=2t=4$; $\\frac{dy}{dt}=3t^2-3=9$. Speed $=\\sqrt{4^2+9^2}=\\sqrt{16+81}=\\sqrt{97}\\approx9.85$.",
+          "explanation": "$\\frac{dx}{dt}=2t=4$; $\\frac{dy}{dt}=3t^2-3=9$. Speed $=\\sqrt{4^2+9^2}=\\sqrt{16+81}=\\sqrt{97}\\approx9.85$."
+        },
+        {
+          "q": "Use the parametric arc length formula to verify that the circumference of a circle $x(t)=r\\cos t$, $y(t)=r\\sin t$ for $t\\in[0,2\\pi]$ is $2\\pi r$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Arc length of a full circle (verifying the circumference formula)",
+          "cross_lesson": "1.02 Partial Fractions and Improper Integrals",
+          "answer": "$\\frac{dx}{dt}=-r\\sin t$, $\\frac{dy}{dt}=r\\cos t$. $L=\\int_0^{2\\pi}\\sqrt{r^2\\sin^2t+r^2\\cos^2t}\\,dt=\\int_0^{2\\pi}r\\,dt=r(2\\pi)=2\\pi r$, matching the known circumference formula.",
+          "explanation": "$\\frac{dx}{dt}=-r\\sin t$, $\\frac{dy}{dt}=r\\cos t$. $L=\\int_0^{2\\pi}\\sqrt{r^2\\sin^2t+r^2\\cos^2t}\\,dt=\\int_0^{2\\pi}r\\,dt=r(2\\pi)=2\\pi r$, matching the known circumference formula."
+        },
+        {
+          "q": "Find the arc length of the parametric curve $x(t)=e^t\\cos t$, $y(t)=e^t\\sin t$ is a spiral; set up (but do not evaluate) its arc length integral on $[0,\\pi]$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Arc length of a full circle (verifying the circumference formula)",
+          "cross_lesson": "2.01 Euler's Method and Logistic Growth",
+          "answer": "$\\frac{dx}{dt}=e^t\\cos t-e^t\\sin t$, $\\frac{dy}{dt}=e^t\\sin t+e^t\\cos t$. After simplification, $\\left(\\frac{dx}{dt}\\right)^2+\\left(\\frac{dy}{dt}\\right)^2=2e^{2t}$. So $L=\\int_0^{\\pi}\\sqrt{2e^{2t}}\\,dt=\\int_0^{\\pi}e^t\\sqrt{2}\\,dt$.",
+          "explanation": "$\\frac{dx}{dt}=e^t\\cos t-e^t\\sin t$, $\\frac{dy}{dt}=e^t\\sin t+e^t\\cos t$. After simplification, $\\left(\\frac{dx}{dt}\\right)^2+\\left(\\frac{dy}{dt}\\right)^2=2e^{2t}$. So $L=\\int_0^{\\pi}\\sqrt{2e^{2t}}\\,dt=\\int_0^{\\pi}e^t\\sqrt{2}\\,dt$."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+      "questions": [
+        {
+          "q": "For $x(t)=6t^2$, $y(t)=-2t^3$, find $\\frac{dy}{dx}$ at $t=3$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Derivatives of parametric equations",
+          "choices": [
+            "$-\\frac{3}{2}$",
+            "$-6$",
+            "$\\frac{3}{2}$",
+            "$-\\frac{1}{2}$"
+          ],
+          "correct": 0,
+          "answer": "$\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{-6t^2}{12t}=\\frac{-6}{12}t$. At $t=3$: $\\frac{-6}{12}(3)=-\\frac{3}{2}$.",
+          "explanation": "$\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{-6t^2}{12t}=\\frac{-6}{12}t$. At $t=3$: $\\frac{-6}{12}(3)=-\\frac{3}{2}$."
+        },
+        {
+          "q": "For $x(t)=2t^2$, $y(t)=-2t^3$, find $\\frac{dy}{dx}$ at $t=6$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Second derivatives of parametric equations",
+          "choices": [
+            "$-4$",
+            "$9$",
+            "$-9$",
+            "$-8$"
+          ],
+          "correct": 2,
+          "answer": "$\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{-6t^2}{4t}=\\frac{-6}{4}t$. At $t=6$: $\\frac{-6}{4}(6)=-9$.",
+          "explanation": "$\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{-6t^2}{4t}=\\frac{-6}{4}t$. At $t=6$: $\\frac{-6}{4}(6)=-9$."
+        },
+        {
+          "q": "For $x(t)=4t^2$, $y(t)=-2t^3$, find $\\frac{dy}{dx}$ at $t=3$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Tangent lines to parametric curves",
+          "choices": [
+            "$\\frac{9}{4}$",
+            "$-4$",
+            "$-\\frac{9}{4}$",
+            "$-\\frac{5}{4}$"
+          ],
+          "correct": 2,
+          "answer": "$\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{-6t^2}{8t}=\\frac{-6}{8}t$. At $t=3$: $\\frac{-6}{8}(3)=-\\frac{9}{4}$.",
+          "explanation": "$\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{-6t^2}{8t}=\\frac{-6}{8}t$. At $t=3$: $\\frac{-6}{8}(3)=-\\frac{9}{4}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (0))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -2.0,
+                "label": "$(0,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "For $x(t)=4t^2$, $y(t)=t^3$, find $\\frac{dy}{dx}$ at $t=4$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Arc length of parametric curves",
+          "choices": [
+            "$\\frac{5}{2}$",
+            "$\\frac{3}{2}$",
+            "$\\frac{32}{3}$",
+            "$-\\frac{3}{2}$"
+          ],
+          "correct": 1,
+          "answer": "$\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{3t^2}{8t}=\\frac{3}{8}t$. At $t=4$: $\\frac{3}{8}(4)=\\frac{3}{2}$.",
+          "explanation": "$\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{3t^2}{8t}=\\frac{3}{8}t$. At $t=4$: $\\frac{3}{8}(4)=\\frac{3}{2}$."
+        },
+        {
+          "q": "For $x(t)=6t^2$, $y(t)=-3t^3$, find $\\frac{dy}{dx}$ at $t=1$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Speed as a vector quantity",
+          "choices": [
+            "$-\\frac{4}{3}$",
+            "$-\\frac{3}{4}$",
+            "$\\frac{1}{4}$",
+            "$\\frac{3}{4}$"
+          ],
+          "correct": 1,
+          "answer": "$\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{-9t^2}{12t}=\\frac{-9}{12}t$. At $t=1$: $\\frac{-9}{12}(1)=-\\frac{3}{4}$.",
+          "explanation": "$\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{-9t^2}{12t}=\\frac{-9}{12}t$. At $t=1$: $\\frac{-9}{12}(1)=-\\frac{3}{4}$."
+        },
+        {
+          "q": "For $x(t)=t^2$, $y(t)=5t^3$, find $\\frac{dy}{dx}$ at $t=4$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Eliminating the parameter",
+          "choices": [
+            "$\\frac{8}{15}$",
+            "$-30$",
+            "$31$",
+            "$30$"
+          ],
+          "correct": 3,
+          "answer": "$\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{15t^2}{2t}=\\frac{15}{2}t$. At $t=4$: $\\frac{15}{2}(4)=30$.",
+          "explanation": "$\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{15t^2}{2t}=\\frac{15}{2}t$. At $t=4$: $\\frac{15}{2}(4)=30$."
+        },
+        {
+          "q": "For $x(t)=6t^2$, $y(t)=2t^3$, find $\\frac{dy}{dx}$ at $t=5$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Concavity of parametric curves",
+          "choices": [
+            "$-\\frac{5}{2}$",
+            "$\\frac{7}{2}$",
+            "$10$",
+            "$\\frac{5}{2}$"
+          ],
+          "correct": 3,
+          "answer": "$\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{6t^2}{12t}=\\frac{6}{12}t$. At $t=5$: $\\frac{6}{12}(5)=\\frac{5}{2}$.",
+          "explanation": "$\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{6t^2}{12t}=\\frac{6}{12}t$. At $t=5$: $\\frac{6}{12}(5)=\\frac{5}{2}$."
+        },
+        {
+          "q": "Eliminate the parameter from $x(t)=-2t-3$, $y(t)=7t-9$ to find the Cartesian equation, then state its slope.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Horizontal and vertical tangents",
+          "choices": [
+            "$-\\frac{7}{2}$",
+            "$-\\frac{5}{2}$",
+            "$-\\frac{2}{7}$",
+            "$\\frac{7}{2}$"
+          ],
+          "correct": 0,
+          "answer": "From $x=-2t-3$: $t=\\frac{x+3}{-2}$. Substituting into $y=7t-9$ gives a line of slope $\\frac{7}{-2}=-\\frac{7}{2}$.",
+          "explanation": "From $x=-2t-3$: $t=\\frac{x+3}{-2}$. Substituting into $y=7t-9$ gives a line of slope $\\frac{7}{-2}=-\\frac{7}{2}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
+        {
+          "q": "Eliminate the parameter from $x(t)=2t-9$, $y(t)=-t+4$ to find the Cartesian equation, then state its slope.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Motion along a parametric path (particle interpretation)",
+          "choices": [
+            "$-\\frac{1}{2}$",
+            "$-2$",
+            "$\\frac{1}{2}$",
+            "$0$"
+          ],
+          "correct": 0,
+          "answer": "From $x=2t-9$: $t=\\frac{x+9}{2}$. Substituting into $y=-t+4$ gives a line of slope $\\frac{-1}{2}=-\\frac{1}{2}$.",
+          "explanation": "From $x=2t-9$: $t=\\frac{x+9}{2}$. Substituting into $y=-t+4$ gives a line of slope $\\frac{-1}{2}=-\\frac{1}{2}$."
+        },
+        {
+          "q": "Eliminate the parameter from $x(t)=-5t-4$, $y(t)=-4t-7$ to find the Cartesian equation, then state its slope.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Arc length of a full circle (verifying the circumference formula)",
+          "choices": [
+            "$-\\frac{4}{5}$",
+            "$\\frac{5}{4}$",
+            "$\\frac{4}{5}$",
+            "$\\frac{9}{5}$"
+          ],
+          "correct": 2,
+          "answer": "From $x=-5t-4$: $t=\\frac{x+4}{-5}$. Substituting into $y=-4t-7$ gives a line of slope $\\frac{-4}{-5}=\\frac{4}{5}$.",
+          "explanation": "From $x=-5t-4$: $t=\\frac{x+4}{-5}$. Substituting into $y=-4t-7$ gives a line of slope $\\frac{-4}{-5}=\\frac{4}{5}$."
+        },
+        {
+          "q": "Eliminate the parameter from $x(t)=t+1$, $y(t)=2t+5$ to find the Cartesian equation, then state its slope.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Parametric equations from real motion",
+          "choices": [
+            "$3$",
+            "$-2$",
+            "$\\frac{1}{2}$",
+            "$2$"
+          ],
+          "correct": 3,
+          "answer": "From $x=t+1$: $t=\\frac{x-1}{1}$. Substituting into $y=2t+5$ gives a line of slope $\\frac{2}{1}=2$.",
+          "explanation": "From $x=t+1$: $t=\\frac{x-1}{1}$. Substituting into $y=2t+5$ gives a line of slope $\\frac{2}{1}=2$."
+        },
+        {
+          "q": "Eliminate the parameter from $x(t)=-4t+3$, $y(t)=-t+5$ to find the Cartesian equation, then state its slope.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "First and Second Derivatives Parametrically",
+          "choices": [
+            "$-\\frac{1}{4}$",
+            "$\\frac{1}{4}$",
+            "$4$",
+            "$\\frac{5}{4}$"
+          ],
+          "correct": 1,
+          "answer": "From $x=-4t+3$: $t=\\frac{x-3}{-4}$. Substituting into $y=-t+5$ gives a line of slope $\\frac{-1}{-4}=\\frac{1}{4}$.",
+          "explanation": "From $x=-4t+3$: $t=\\frac{x-3}{-4}$. Substituting into $y=-t+5$ gives a line of slope $\\frac{-1}{-4}=\\frac{1}{4}$."
+        },
+        {
+          "q": "Eliminate the parameter from $x(t)=4t+1$, $y(t)=9t+7$ to find the Cartesian equation, then state its slope.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Horizontal and Vertical Tangents",
+          "choices": [
+            "$-\\frac{9}{4}$",
+            "$\\frac{13}{4}$",
+            "$\\frac{9}{4}$",
+            "$\\frac{4}{9}$"
+          ],
+          "correct": 2,
+          "answer": "From $x=4t+1$: $t=\\frac{x-1}{4}$. Substituting into $y=9t+7$ gives a line of slope $\\frac{9}{4}=\\frac{9}{4}$.",
+          "explanation": "From $x=4t+1$: $t=\\frac{x-1}{4}$. Substituting into $y=9t+7$ gives a line of slope $\\frac{9}{4}=\\frac{9}{4}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -2.0,
+                "label": "$(1,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Eliminate the parameter from $x(t)=3t-1$, $y(t)=2t+2$ to find the Cartesian equation, then state its slope.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Arc Length of Parametric Curves",
+          "choices": [
+            "$-\\frac{2}{3}$",
+            "$\\frac{2}{3}$",
+            "$\\frac{5}{3}$",
+            "$\\frac{3}{2}$"
+          ],
+          "correct": 1,
+          "answer": "From $x=3t-1$: $t=\\frac{x+1}{3}$. Substituting into $y=2t+2$ gives a line of slope $\\frac{2}{3}=\\frac{2}{3}$.",
+          "explanation": "From $x=3t-1$: $t=\\frac{x+1}{3}$. Substituting into $y=2t+2$ gives a line of slope $\\frac{2}{3}=\\frac{2}{3}$."
+        },
+        {
+          "q": "For $x(t)=3t^2+5$, $y(t)=t^3-4t$, find $\\frac{dy}{dx}$ at $t=1$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Speed and Total Distance Traveled",
+          "choices": [
+            "$\\frac{1}{6}$",
+            "$\\frac{5}{6}$",
+            "$-6$",
+            "$-\\frac{1}{6}$"
+          ],
+          "correct": 3,
+          "answer": "$\\frac{dx}{dt}=6t$, $\\frac{dy}{dt}=3t^2-4$. At $t=1$: $\\frac{dx}{dt}=6$, $\\frac{dy}{dt}=-1$. $\\frac{dy}{dx}=\\frac{-1}{6}=-\\frac{1}{6}$.",
+          "explanation": "$\\frac{dx}{dt}=6t$, $\\frac{dy}{dt}=3t^2-4$. At $t=1$: $\\frac{dx}{dt}=6$, $\\frac{dy}{dt}=-1$. $\\frac{dy}{dx}=\\frac{-1}{6}=-\\frac{1}{6}$."
+        },
+        {
+          "q": "For $x(t)=3t^2-5$, $y(t)=5t^3+3t$, find $\\frac{dy}{dx}$ at $t=3$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Derivatives of parametric equations",
+          "choices": [
+            "$\\frac{26}{3}$",
+            "$\\frac{3}{23}$",
+            "$-\\frac{23}{3}$",
+            "$\\frac{23}{3}$"
+          ],
+          "correct": 3,
+          "answer": "$\\frac{dx}{dt}=6t$, $\\frac{dy}{dt}=15t^2+3$. At $t=3$: $\\frac{dx}{dt}=18$, $\\frac{dy}{dt}=138$. $\\frac{dy}{dx}=\\frac{138}{18}=\\frac{23}{3}$.",
+          "explanation": "$\\frac{dx}{dt}=6t$, $\\frac{dy}{dt}=15t^2+3$. At $t=3$: $\\frac{dx}{dt}=18$, $\\frac{dy}{dt}=138$. $\\frac{dy}{dx}=\\frac{138}{18}=\\frac{23}{3}$."
+        },
+        {
+          "q": "For $x(t)=t^2$, $y(t)=t^3-9t^2+24t$, find the larger value of $t$ where the tangent line is horizontal.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Second derivatives of parametric equations",
+          "choices": [
+            "$2$",
+            "$4$",
+            "$6$",
+            "$8$"
+          ],
+          "correct": 1,
+          "answer": "$\\frac{dy}{dt}=3t^2-18t+24=3(t-(2))(t-(4))=0$ gives $t=2$ and $t=4$; the larger is $4$.",
+          "explanation": "$\\frac{dy}{dt}=3t^2-18t+24=3(t-(2))(t-(4))=0$ gives $t=2$ and $t=4$; the larger is $4$."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "For $x(t)=t^2-3t$, $y(t)=t^3+3t^2-24t$, find the larger value of $t$ where the tangent line is horizontal.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Tangent lines to parametric curves",
+          "choices": [
+            "$-4$",
+            "$-2$",
+            "$-8$",
+            "$2$"
+          ],
+          "correct": 3,
+          "answer": "$\\frac{dy}{dt}=3t^2+6t-24=3(t-(-4))(t-(2))=0$ gives $t=-4$ and $t=2$; the larger is $2$.",
+          "explanation": "$\\frac{dy}{dt}=3t^2+6t-24=3(t-(-4))(t-(2))=0$ gives $t=-4$ and $t=2$; the larger is $2$.",
+          "cross_lesson": "1.01 Integration by Parts"
+        },
+        {
+          "q": "A particle moves with position $x(t)=t^2$, $y(t)=6t$. Find its speed at $t=4$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Arc length of parametric curves",
+          "choices": [
+            "$12$",
+            "$8$",
+            "$6$",
+            "$10$"
+          ],
+          "correct": 3,
+          "answer": "$\\frac{dx}{dt}=2t$, $\\frac{dy}{dt}=6$. At $t=4$: $\\frac{dx}{dt}=8$. Speed $=\\sqrt{8^2+6^2}=\\sqrt{100}=10$.",
+          "explanation": "$\\frac{dx}{dt}=2t$, $\\frac{dy}{dt}=6$. At $t=4$: $\\frac{dx}{dt}=8$. Speed $=\\sqrt{8^2+6^2}=\\sqrt{100}=10$.",
+          "cross_lesson": "1.02 Partial Fractions and Improper Integrals",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -2.0,
+                "label": "$(1,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A particle moves with position $x(t)=t^2$, $y(t)=8t$. Find its speed at $t=3$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Speed as a vector quantity",
+          "choices": [
+            "$6$",
+            "$10$",
+            "$8$",
+            "$12$"
+          ],
+          "correct": 1,
+          "answer": "$\\frac{dx}{dt}=2t$, $\\frac{dy}{dt}=8$. At $t=3$: $\\frac{dx}{dt}=6$. Speed $=\\sqrt{6^2+8^2}=\\sqrt{100}=10$.",
+          "explanation": "$\\frac{dx}{dt}=2t$, $\\frac{dy}{dt}=8$. At $t=3$: $\\frac{dx}{dt}=6$. Speed $=\\sqrt{6^2+8^2}=\\sqrt{100}=10$.",
+          "cross_lesson": "2.01 Euler's Method and Logistic Growth"
+        },
+        {
           "q": "A curve is defined by $x(t) = t^2 + 1$ and $y(t) = t^3 - 3t$. Find $\\frac{dy}{dx}$ at $t = 2$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "First and Second Derivatives Parametrically",
           "choices": [
             "$\\frac{9}{4}$",
             "$\\frac{3}{2}$",
@@ -16,21 +705,15 @@
             "$9$"
           ],
           "correct": 0,
-          "answer": "$\\frac{dx}{dt} = 2t$, $\\frac{dy}{dt} = 3t^2 - 3$. $\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{3t^2 - 3}{2t}$. At $t = 2$: $\\frac{12 - 3}{4} = \\frac{9}{4}$."
-        },
-        {
-          "q": "Which formula gives the second derivative $\\frac{d^2 y}{dx^2}$ in parametric form?",
-          "choices": [
-            "$\\frac{\\frac{d}{dt}[\\frac{dy}{dx}]}{\\frac{dx}{dt}}$",
-            "$\\frac{d^2 y / dt^2}{d^2 x / dt^2}$",
-            "$\\frac{d}{dt}[\\frac{dy}{dx}]$",
-            "$\\frac{\\frac{dy}{dt}}{\\frac{d^2 x}{dt^2}}$"
-          ],
-          "correct": 0,
-          "answer": "By the chain rule, $\\frac{d^2 y}{dx^2} = \\frac{d}{dx}[\\frac{dy}{dx}] = \\frac{\\frac{d}{dt}[\\frac{dy}{dx}]}{\\frac{dx}{dt}}$."
+          "answer": "$\\frac{dx}{dt} = 2t$, $\\frac{dy}{dt} = 3t^2 - 3$. $\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{3t^2 - 3}{2t}$. At $t = 2$: $\\frac{12 - 3}{4} = \\frac{9}{4}$.",
+          "explanation": "$\\frac{dx}{dt} = 2t$, $\\frac{dy}{dt} = 3t^2 - 3$. $\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt} = \\frac{3t^2 - 3}{2t}$. At $t = 2$: $\\frac{12 - 3}{4} = \\frac{9}{4}$.",
+          "cross_lesson": "3.02 Vector-Valued Functions"
         },
         {
           "q": "For $x(t) = t^2$ and $y(t) = t^3$, find $\\frac{d^2 y}{dx^2}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "First and Second Derivatives Parametrically",
           "choices": [
             "$\\frac{3}{4t}$",
             "$\\frac{3}{2}$",
@@ -38,37 +721,15 @@
             "$\\frac{3}{4t^2}$"
           ],
           "correct": 0,
-          "answer": "$\\frac{dy}{dx} = \\frac{3t^2}{2t} = \\frac{3}{2} t$. Then $\\frac{d}{dt}[\\frac{3}{2} t] = \\frac{3}{2}$. Dividing by $\\frac{dx}{dt} = 2t$ gives $\\frac{3/2}{2t} = \\frac{3}{4t}$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Horizontal and Vertical Tangents",
-      "questions": [
-        {
-          "q": "At what value of $t$ does the parametric curve $x = t^3 - 3t, y = 2t^2$ have a horizontal tangent line?",
-          "choices": [
-            "$t = 0$",
-            "$t = 1$",
-            "$t = -1$",
-            "$t = \\pm 1$"
-          ],
-          "correct": 0,
-          "answer": "A horizontal tangent requires $\\frac{dy}{dt} = 0$ while $\\frac{dx}{dt} \\neq 0$. $\\frac{dy}{dt} = 4t = 0 \\Rightarrow t = 0$. Here $\\frac{dx}{dt}(0) = -3 \\neq 0$."
-        },
-        {
-          "q": "At what values of $t$ does the curve above have vertical tangent lines?",
-          "choices": [
-            "$t = \\pm 1$",
-            "$t = 0$",
-            "$t = 3$",
-            "$t = \\pm \\sqrt{3}$"
-          ],
-          "correct": 0,
-          "answer": "Vertical tangents occur where $\\frac{dx}{dt} = 0$ while $\\frac{dy}{dt} \\neq 0$. $\\frac{dx}{dt} = 3t^2 - 3 = 0 \\Rightarrow t = \\pm 1$. $\\frac{dy}{dt}(\\pm 1) = \\pm 4 \\neq 0$."
+          "answer": "$\\frac{dy}{dx} = \\frac{3t^2}{2t} = \\frac{3}{2} t$. Then $\\frac{d}{dt}[\\frac{3}{2} t] = \\frac{3}{2}$. Dividing by $\\frac{dx}{dt} = 2t$ gives $\\frac{3/2}{2t} = \\frac{3}{4t}$.",
+          "explanation": "$\\frac{dy}{dx} = \\frac{3t^2}{2t} = \\frac{3}{2} t$. Then $\\frac{d}{dt}[\\frac{3}{2} t] = \\frac{3}{2}$. Dividing by $\\frac{dx}{dt} = 2t$ gives $\\frac{3/2}{2t} = \\frac{3}{4t}$.",
+          "cross_lesson": "4.01 Polar Curves and Derivatives"
         },
         {
           "q": "Find the equation of the tangent line at $t = 1$ to the curve $x(t) = e^{2t}, y(t) = 3t^2 - 1$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Horizontal and Vertical Tangents",
           "choices": [
             "$y - 2 = \\frac{3}{e^2}(x - e^2)$",
             "$y - 2 = 3(x - e^2)$",
@@ -76,26 +737,15 @@
             "$y - 1 = \\frac{3}{e^2}(x - e^2)$"
           ],
           "correct": 0,
-          "answer": "At $t = 1$: $x = e^2, y = 2$. $\\frac{dx}{dt} = 2e^{2t} = 2e^2$, $\\frac{dy}{dt} = 6t = 6$. Slope $= \\frac{6}{2e^2} = \\frac{3}{e^2}$. Equation: $y - 2 = \\frac{3}{e^2}(x - e^2)$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Arc Length of Parametric Curves",
-      "questions": [
-        {
-          "q": "Which integral represents the arc length $L$ of a parametric curve from $t = a$ to $t = b$?",
-          "choices": [
-            "$\\int_a^b \\sqrt{(\\frac{dx}{dt})^2 + (\\frac{dy}{dt})^2} dt$",
-            "$\\int_a^b (\\frac{dx}{dt} + \\frac{dy}{dt}) dt$",
-            "$\\int_a^b \\sqrt{1 + (\\frac{dy}{dx})^2} dt$",
-            "$\\int_a^b \\sqrt{x(t)^2 + y(t)^2} dt$"
-          ],
-          "correct": 0,
-          "answer": "By the distance formula differential $ds = \\sqrt{(dx)^2 + (dy)^2} = \\sqrt{(x'(t))^2 + (y'(t))^2} dt$, the arc length is $\\int_a^b \\sqrt{(x')^2 + (y')^2} dt$."
+          "answer": "At $t = 1$: $x = e^2, y = 2$. $\\frac{dx}{dt} = 2e^{2t} = 2e^2$, $\\frac{dy}{dt} = 6t = 6$. Slope $= \\frac{6}{2e^2} = \\frac{3}{e^2}$. Equation: $y - 2 = \\frac{3}{e^2}(x - e^2)$.",
+          "explanation": "At $t = 1$: $x = e^2, y = 2$. $\\frac{dx}{dt} = 2e^{2t} = 2e^2$, $\\frac{dy}{dt} = 6t = 6$. Slope $= \\frac{6}{2e^2} = \\frac{3}{e^2}$. Equation: $y - 2 = \\frac{3}{e^2}(x - e^2)$.",
+          "cross_lesson": "4.02 Area in Polar Coordinates"
         },
         {
           "q": "Find the arc length of the curve $x = 3\\cos t, y = 3\\sin t$ from $t = 0$ to $t = \\pi$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Arc Length of Parametric Curves",
           "choices": [
             "$3\\pi$",
             "$6\\pi$",
@@ -103,26 +753,15 @@
             "$\\frac{3\\pi}{2}$"
           ],
           "correct": 0,
-          "answer": "$x' = -3\\sin t, y' = 3\\cos t$. $\\sqrt{(-3\\sin t)^2 + (3\\cos t)^2} = \\sqrt{9} = 3$. Length $= \\int_0^\\pi 3 dt = 3\\pi$ (semicircle of radius $3$)."
+          "answer": "$x' = -3\\sin t, y' = 3\\cos t$. $\\sqrt{(-3\\sin t)^2 + (3\\cos t)^2} = \\sqrt{9} = 3$. Length $= \\int_0^\\pi 3 dt = 3\\pi$ (semicircle of radius $3$).",
+          "explanation": "$x' = -3\\sin t, y' = 3\\cos t$. $\\sqrt{(-3\\sin t)^2 + (3\\cos t)^2} = \\sqrt{9} = 3$. Length $= \\int_0^\\pi 3 dt = 3\\pi$ (semicircle of radius $3$).",
+          "cross_lesson": "5.01 Sequences and Basic Series Convergence Tests"
         },
         {
-          "q": "Find the arc length of $x = 2t^{3/2}, y = 3t$ from $t = 0$ to $t = 3$.",
-          "choices": [
-            "$14$",
-            "$16$",
-            "$18$",
-            "$12$"
-          ],
-          "correct": 0,
-          "answer": "$x' = 3\\sqrt{t}, y' = 3$. Speed $= \\sqrt{9t + 9} = 3\\sqrt{t + 1}$. $L = \\int_0^3 3\\sqrt{t + 1} dt = [2(t + 1)^{3/2}]_0^3 = 2(4^{3/2} - 1^{3/2}) = 2(8 - 1) = 14$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Speed and Total Distance Traveled",
-      "questions": [
-        {
           "q": "A particle moves in the $xy$-plane with velocity vector $\\mathbf{v}(t) = \\langle 4t, 3 \\rangle$. What is its speed at $t = 1$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Speed and Total Distance Traveled",
           "choices": [
             "$5$",
             "$7$",
@@ -130,29 +769,9 @@
             "$\\sqrt{7}$"
           ],
           "correct": 0,
-          "answer": "Speed is the magnitude of the velocity vector: $\\|\\mathbf{v}(1)\\| = \\sqrt{(4(1))^2 + 3^2} = \\sqrt{16 + 9} = 5$."
-        },
-        {
-          "q": "What is the total distance traveled by the particle with velocity $\\mathbf{v}(t) = \\langle 2t, 2 \\rangle$ from $t = 0$ to $t = 2$?",
-          "choices": [
-            "$\\int_0^2 \\sqrt{4t^2 + 4} dt$",
-            "$\\int_0^2 (2t + 2) dt$",
-            "$\\sqrt{16 + 4}$",
-            "$2\\sqrt{5}$"
-          ],
-          "correct": 0,
-          "answer": "Total distance traveled is the integral of speed: $\\int_0^2 \\sqrt{(2t)^2 + 2^2} dt = \\int_0^2 \\sqrt{4t^2 + 4} dt$."
-        },
-        {
-          "q": "When is a parametric particle at rest in the coordinate plane?",
-          "choices": [
-            "When both $\\frac{dx}{dt} = 0$ and $\\frac{dy}{dt} = 0$ simultaneously",
-            "When $\\frac{dy}{dx} = 0$",
-            "When $\\frac{dx}{dt} = 0$",
-            "When speed is undefined"
-          ],
-          "correct": 0,
-          "answer": "A particle is at rest if and only if both component velocities are simultaneously zero, meaning speed $\\|\\mathbf{v}(t)\\| = 0$."
+          "answer": "Speed is the magnitude of the velocity vector: $||\\mathbf{v}(1)|| = \\sqrt{(4(1))^2 + 3^2} = \\sqrt{16 + 9} = 5$.",
+          "explanation": "Speed is the magnitude of the velocity vector: $||\\mathbf{v}(1)|| = \\sqrt{(4(1))^2 + 3^2} = \\sqrt{16 + 9} = 5$.",
+          "cross_lesson": "5.02 Ratio, Root, and Alternating Series Tests"
         }
       ]
     }

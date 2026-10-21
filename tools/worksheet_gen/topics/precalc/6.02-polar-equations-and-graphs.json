@@ -3,12 +3,379 @@
   "num": "6.02",
   "slug": "polar-equations-and-graphs",
   "title": "Polar Equations and Graphs",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 6.02 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Circles and Lines in Polar Form",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+      "questions": [
+        {
+          "q": "Identify the graph of each polar equation:",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Recognizing polar graphs",
+          "parts": [
+            "$r = 3$",
+            "$\\theta = \\frac{\\pi}{6}$",
+            "$r = 2 + 2\\cos\\theta$",
+            "$r = 4\\sin 3\\theta$"
+          ],
+          "cols": 2,
+          "answers": [
+            "Circle of radius 3 centered at the pole.",
+            "Line through the pole at angle $\\frac{\\pi}{6}$.",
+            "Cardioid (heart-shaped, symmetric about the polar axis).",
+            "Rose curve with 3 petals."
+          ],
+          "answer": "(a) Circle of radius 3 centered at the pole.; (b) Line through the pole at angle $\\frac{\\pi}{6}$.; (c) Cardioid (heart-shaped, symmetric about the polar axis).; (d) Rose curve with 3 petals.",
+          "explanation": "(a) Circle of radius 3 centered at the pole.; (b) Line through the pole at angle $\\frac{\\pi}{6}$.; (c) Cardioid (heart-shaped, symmetric about the polar axis).; (d) Rose curve with 3 petals."
+        },
+        {
+          "q": "For the limaçon $r = 1 + 2\\cos\\theta$:",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Recognizing polar graphs",
+          "parts": [
+            "Explain how you know it has an inner loop.",
+            "Find the values of $\\theta$ in $[0, 2\\pi)$ at which the curve passes through the pole."
+          ],
+          "cols": 1,
+          "answers": [
+            "In $r = a + b\\cos\\theta$, $|a| < |b|$ (here $1 < 2$) produces an inner loop.",
+            "$1 + 2\\cos\\theta = 0$ gives $\\cos\\theta = -\\frac{1}{2}$: $\\theta = \\frac{2\\pi}{3}, \\frac{4\\pi}{3}$."
+          ],
+          "answer": "(a) In $r = a + b\\cos\\theta$, $|a| < |b|$ (here $1 < 2$) produces an inner loop.; (b) $1 + 2\\cos\\theta = 0$ gives $\\cos\\theta = -\\frac{1}{2}$: $\\theta = \\frac{2\\pi}{3}, \\frac{4\\pi}{3}$.",
+          "explanation": "(a) In $r = a + b\\cos\\theta$, $|a| < |b|$ (here $1 < 2$) produces an inner loop.; (b) $1 + 2\\cos\\theta = 0$ gives $\\cos\\theta = -\\frac{1}{2}$: $\\theta = \\frac{2\\pi}{3}, \\frac{4\\pi}{3}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (0))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -1.0,
+                "label": "$(0,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "For the rose $r = 5\\sin 2\\theta$:",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Recognizing polar graphs",
+          "parts": [
+            "State the number of petals.",
+            "State the maximum value of $|r|$ and the smallest positive $\\theta$ at which it occurs."
+          ],
+          "cols": 1,
+          "answers": [
+            "$n = 2$ is even, so $2n = 4$ petals.",
+            "Maximum $|r| = 5$, first at $2\\theta = \\frac{\\pi}{2}$, i.e. $\\theta = \\frac{\\pi}{4}$."
+          ],
+          "answer": "(a) $n = 2$ is even, so $2n = 4$ petals.; (b) Maximum $|r| = 5$, first at $2\\theta = \\frac{\\pi}{2}$, i.e. $\\theta = \\frac{\\pi}{4}$.",
+          "explanation": "(a) $n = 2$ is even, so $2n = 4$ petals.; (b) Maximum $|r| = 5$, first at $2\\theta = \\frac{\\pi}{2}$, i.e. $\\theta = \\frac{\\pi}{4}$."
+        },
+        {
+          "q": "Determine whether the graph of $r = 2 + \\sin\\theta$ passes through the pole, and state the type of limaçon.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Recognizing polar graphs",
+          "answer": "$2 + \\sin\\theta \\geq 1 > 0$ for all $\\theta$, so it never passes through the pole. Since $|a| > |b|$ ($2 > 1$), it is a dimpled limaçon with no inner loop.",
+          "explanation": "$2 + \\sin\\theta \\geq 1 > 0$ for all $\\theta$, so it never passes through the pole. Since $|a| > |b|$ ($2 > 1$), it is a dimpled limaçon with no inner loop."
+        },
+        {
+          "q": "Test $r = 3\\cos 2\\theta$ for symmetry about the polar axis (replace $\\theta$ with $-\\theta$) and about the pole (replace $r$ with $-r$).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Symmetry tests",
+          "answer": "Polar-axis: $\\cos(2(-\\theta))=\\cos(2\\theta)$, unchanged — symmetric about the polar axis. Pole: replacing $r\\rightarrow-r$ gives $-r=3\\cos2\\theta$, not equivalent to the original in general — the standard test is inconclusive for pole symmetry, though the curve (a 4-petal rose) is in fact symmetric about the pole by direct graphing.",
+          "explanation": "Polar-axis: $\\cos(2(-\\theta))=\\cos(2\\theta)$, unchanged — symmetric about the polar axis. Pole: replacing $r\\rightarrow-r$ gives $-r=3\\cos2\\theta$, not equivalent to the original in general — the standard test is inconclusive for pole symmetry, though the curve (a 4-petal rose) is in fact symmetric about the pole by direct graphing."
+        },
+        {
+          "q": "Test $r = 2 + 2\\sin\\theta$ for symmetry about the line $\\theta = \\frac{\\pi}{2}$ (replace $\\theta$ with $\\pi - \\theta$).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Symmetry tests",
+          "answer": "$\\sin(\\pi-\\theta) = \\sin\\theta$, so the equation is unchanged: symmetric about $\\theta=\\frac{\\pi}{2}$ (the vertical axis).",
+          "explanation": "$\\sin(\\pi-\\theta) = \\sin\\theta$, so the equation is unchanged: symmetric about $\\theta=\\frac{\\pi}{2}$ (the vertical axis).",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -1.0,
+                "label": "$(1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "For the cardioid $r = 1 + \\cos\\theta$, complete the table of $r$-values: $\\theta = 0, \\frac{\\pi}{2}, \\pi, \\frac{3\\pi}{2}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Graphing from a table of values",
+          "parts": [
+            "$r(0)$",
+            "$r\\left(\\frac{\\pi}{2}\\right)$",
+            "$r(\\pi)$",
+            "$r\\left(\\frac{3\\pi}{2}\\right)$"
+          ],
+          "cols": 4,
+          "answers": [
+            "$=2$",
+            "$=1$",
+            "$=0$",
+            "$=1$"
+          ],
+          "answer": "(a) $=2$; (b) $=1$; (c) $=0$; (d) $=1$",
+          "explanation": "(a) $=2$; (b) $=1$; (c) $=0$; (d) $=1$",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "1+cos(x)"
+            ],
+            "xmin": 0,
+            "xmax": 6.3,
+            "ymin": 0,
+            "ymax": 2.2,
+            "width": 220
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "For the circle $r = 4\\sin\\theta$, find the value(s) of $\\theta$ in $[0,\\pi)$ where $r$ reaches its maximum, and state that maximum value.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Graphing from a table of values",
+          "answer": "Maximum of $\\sin\\theta$ is $1$ at $\\theta=\\frac{\\pi}{2}$, giving $r=4$.",
+          "explanation": "Maximum of $\\sin\\theta$ is $1$ at $\\theta=\\frac{\\pi}{2}$, giving $r=4$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4*sin(x)"
+            ],
+            "xmin": 0,
+            "xmax": 3.2,
+            "ymin": 0,
+            "ymax": 4.5,
+            "width": 220
+          }
+        },
+        {
+          "q": "For the rose $r = 3\\cos5\\theta$, state the number of petals and the length of each petal (maximum $|r|$).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Rose curves in depth",
+          "answer": "$n=5$ is odd, so there are $n=5$ petals, each of length $|r|_{\\max}=3$.",
+          "explanation": "$n=5$ is odd, so there are $n=5$ petals, each of length $|r|_{\\max}=3$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "3*cos(5*x)"
+            ],
+            "xmin": 0,
+            "xmax": 6.3,
+            "ymin": -3.5,
+            "ymax": 3.5,
+            "width": 220
+          }
+        },
+        {
+          "q": "Explain, using the general rule for rose curves $r=a\\cos(n\\theta)$ or $r=a\\sin(n\\theta)$, why $n$ odd gives $n$ petals but $n$ even gives $2n$ petals.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Rose curves in depth",
+          "answer": "When $n$ is odd, tracing $\\theta$ from $0$ to $2\\pi$ retraces each petal a second time (due to negative $r$ values overlapping earlier petals), so only $n$ distinct petals appear. When $n$ is even, no such overlap occurs, and all $2n$ petals from the full $[0,2\\pi)$ sweep are distinct.",
+          "explanation": "When $n$ is odd, tracing $\\theta$ from $0$ to $2\\pi$ retraces each petal a second time (due to negative $r$ values overlapping earlier petals), so only $n$ distinct petals appear. When $n$ is even, no such overlap occurs, and all $2n$ petals from the full $[0,2\\pi)$ sweep are distinct.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Classify each limaçon $r=a+b\\cos\\theta$ as having an inner loop, being dimpled, or being convex (roughly oval, no dimple), based on the ratio $\\frac{a}{b}$:",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Identifying limaçon subtypes",
+          "parts": [
+            "$r=1+3\\cos\\theta$",
+            "$r=3+2\\cos\\theta$",
+            "$r=4+\\cos\\theta$"
+          ],
+          "cols": 1,
+          "answers": [
+            "$\\frac{a}{b}=\\frac{1}{3}<1$: inner loop.",
+            "$1<\\frac{a}{b}=\\frac{3}{2}<2$: dimpled.",
+            "$\\frac{a}{b}=4>2$: convex (no dimple)."
+          ],
+          "answer": "(a) $\\frac{a}{b}=\\frac{1}{3}<1$: inner loop.; (b) $1<\\frac{a}{b}=\\frac{3}{2}<2$: dimpled.; (c) $\\frac{a}{b}=4>2$: convex (no dimple).",
+          "explanation": "(a) $\\frac{a}{b}=\\frac{1}{3}<1$: inner loop.; (b) $1<\\frac{a}{b}=\\frac{3}{2}<2$: dimpled.; (c) $\\frac{a}{b}=4>2$: convex (no dimple)."
+        },
+        {
+          "q": "For the limaçon $r=3+2\\sin\\theta$, find the maximum and minimum values of $r$, and the angles at which they occur.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Finding maximum and minimum r-values",
+          "answer": "Maximum $r=5$ at $\\sin\\theta=1$ ($\\theta=\\frac{\\pi}{2}$). Minimum $r=1$ at $\\sin\\theta=-1$ ($\\theta=\\frac{3\\pi}{2}$).",
+          "explanation": "Maximum $r=5$ at $\\sin\\theta=1$ ($\\theta=\\frac{\\pi}{2}$). Minimum $r=1$ at $\\sin\\theta=-1$ ($\\theta=\\frac{3\\pi}{2}$).",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "3+2*sin(x)"
+            ],
+            "xmin": 0,
+            "xmax": 6.3,
+            "ymin": 0,
+            "ymax": 5.5,
+            "width": 220
+          }
+        },
+        {
+          "q": "Explain how the graph of $r=3+3\\sin\\theta$ compares to $r=3+3\\cos\\theta$ (same cardioid shape, different orientation).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Comparing sine- and cosine-based polar curves",
+          "answer": "Both are cardioids of the same size and shape. The cosine version $r=3+3\\cos\\theta$ is symmetric about the polar axis (horizontal), pointing right, while the sine version $r=3+3\\sin\\theta$ is symmetric about $\\theta=\\frac{\\pi}{2}$ (vertical), pointing up — a $90°$ rotation of one relative to the other.",
+          "explanation": "Both are cardioids of the same size and shape. The cosine version $r=3+3\\cos\\theta$ is symmetric about the polar axis (horizontal), pointing right, while the sine version $r=3+3\\sin\\theta$ is symmetric about $\\theta=\\frac{\\pi}{2}$ (vertical), pointing up — a $90°$ rotation of one relative to the other."
+        },
+        {
+          "q": "Without fully graphing, list the key features you would compute first to sketch $r=2-4\\cos\\theta$ (max/min $r$, pole crossings, symmetry).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Sketching from key features",
+          "answer": "Type: limaçon with inner loop ($|a|=2<|b|=4$). Symmetry: about the polar axis (cosine-based). Max $|r|=6$ at $\\theta=\\pi$; min value $r=-2$ at $\\theta=0$. Pole crossings: $2-4\\cos\\theta=0 \\Rightarrow \\cos\\theta=\\frac{1}{2} \\Rightarrow \\theta=\\frac{\\pi}{3},\\frac{5\\pi}{3}$ (marking where the inner loop begins/ends).",
+          "explanation": "Type: limaçon with inner loop ($|a|=2<|b|=4$). Symmetry: about the polar axis (cosine-based). Max $|r|=6$ at $\\theta=\\pi$; min value $r=-2$ at $\\theta=0$. Pole crossings: $2-4\\cos\\theta=0 \\Rightarrow \\cos\\theta=\\frac{1}{2} \\Rightarrow \\theta=\\frac{\\pi}{3},\\frac{5\\pi}{3}$ (marking where the inner loop begins/ends)."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "For the rose $r=4\\cos(3\\theta)$, find: (a) the number of petals, (b) the maximum value of $r$, (c) the value(s) of $\\theta\\in[0,\\pi)$ where the first petal reaches its maximum length, and (d) the angles where the curve passes through the pole in $[0,\\pi)$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "A capstone graphing problem",
+          "cross_lesson": "2.02 Radian Measure and Arc Length",
+          "answer": "(a) $n=3$ is odd: $3$ petals. (b) Maximum $|r|=4$. (c) $\\cos(3\\theta)=1 \\Rightarrow 3\\theta=0 \\Rightarrow \\theta=0$ (first petal's tip). (d) $\\cos(3\\theta)=0 \\Rightarrow 3\\theta=\\frac{\\pi}{2},\\frac{3\\pi}{2},\\frac{5\\pi}{2} \\Rightarrow \\theta=\\frac{\\pi}{6},\\frac{\\pi}{2},\\frac{5\\pi}{6}$.",
+          "explanation": "(a) $n=3$ is odd: $3$ petals. (b) Maximum $|r|=4$. (c) $\\cos(3\\theta)=1 \\Rightarrow 3\\theta=0 \\Rightarrow \\theta=0$ (first petal's tip). (d) $\\cos(3\\theta)=0 \\Rightarrow 3\\theta=\\frac{\\pi}{2},\\frac{3\\pi}{2},\\frac{5\\pi}{2} \\Rightarrow \\theta=\\frac{\\pi}{6},\\frac{\\pi}{2},\\frac{5\\pi}{6}$."
+        },
+        {
+          "q": "Without graphing, state whether each polar equation is a circle, a line, a rose, or a limaçon, based purely on its algebraic form: $r=7$, $r=5\\sin(4\\theta)$, $\\theta=\\frac{2\\pi}{5}$, $r=2-2\\cos\\theta$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Distinguishing curve families by equation form alone",
+          "cross_lesson": "2.03 Graphs of Sine and Cosine Functions",
+          "answer": "$r=7$: circle (constant $r$). $r=5\\sin(4\\theta)$: rose ($n=4$ even, $8$ petals). $\\theta=\\frac{2\\pi}{5}$: line through the pole (constant $\\theta$). $r=2-2\\cos\\theta$: cardioid (a special limaçon, coefficient equals constant).",
+          "explanation": "$r=7$: circle (constant $r$). $r=5\\sin(4\\theta)$: rose ($n=4$ even, $8$ petals). $\\theta=\\frac{2\\pi}{5}$: line through the pole (constant $\\theta$). $r=2-2\\cos\\theta$: cardioid (a special limaçon, coefficient equals constant).",
+          "figure": {
+            "type": "circle",
+            "center": [
+              0,
+              0
+            ],
+            "radius": 7.0,
+            "center_label": "$O$",
+            "radius_label": "$r = 7$",
+            "sector": {
+              "start_deg": 0,
+              "end_deg": 60,
+              "label": "$60^\\circ$"
+            },
+            "points": [
+              {
+                "angle": 0,
+                "label": "$A$"
+              },
+              {
+                "angle": 60,
+                "label": "$B$"
+              }
+            ],
+            "width": 215
+          }
+        },
+        {
+          "q": "Two lines have slopes $m_1=-1$, $m_2=-1$ and y-intercepts $b_1=-2$, $b_2=-2$. Classify the system.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Graphing from a table of values",
+          "cross_lesson": "2.04 Law of Sines and Law of Cosines",
+          "answer": "Different slopes give exactly one intersection (independent). Equal slopes with equal intercepts give the same line (dependent, infinite solutions). Equal slopes with different intercepts give parallel lines (inconsistent, no solution). Final Answer: Consistent and dependent (infinitely many solutions)",
+          "explanation": "Different slopes give exactly one intersection (independent). Equal slopes with equal intercepts give the same line (dependent, infinite solutions). Equal slopes with different intercepts give parallel lines (inconsistent, no solution). Final Answer: Consistent and dependent (infinitely many solutions)"
+        },
+        {
+          "q": "For $f(x)=2x^3+2x^2-x+6$, which values are possible rational roots (by the Rational Root Theorem)?",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Rose curves in depth",
+          "cross_lesson": "3.01 The Unit Circle and Exact Values",
+          "answer": "Possible rational roots are $\\pm\\frac{p}{q}$ where $p$ divides the constant term 6 and $q$ divides the leading coefficient 2: $\\pm\\frac{1}{2}, \\pm1, \\pm\\frac{3}{2}, \\pm2, \\pm3, \\pm6$.",
+          "explanation": "Possible rational roots are $\\pm\\frac{p}{q}$ where $p$ divides the constant term 6 and $q$ divides the leading coefficient 2: $\\pm\\frac{1}{2}, \\pm1, \\pm\\frac{3}{2}, \\pm2, \\pm3, \\pm6$."
+        },
+        {
+          "q": "Find the constant term (independent of $x$) in the binomial expansion of $\\left(2x^2 - \\frac{1}{x}\\right)^9$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Identifying limaçon subtypes",
+          "cross_lesson": "3.02 Fundamental Trigonometric Identities",
+          "answer": "Step 1: Write the general term $T_{k+1}$: $T_{k+1} = \\binom{9}{k} (2x^2)^{9-k} \\left(-\\frac{1}{x}\\right)^k = \\binom{9}{k} 2^{9-k} x^{2(9-k)} (-1)^k x^{-k} = \\binom{9}{k} 2^{9-k} (-1)^k x^{18 - 3k}.$ Step 2: Find $k$ for the term independent of $x$: Set exponent equal to 0: $18 - 3k = 0 \\Rightarrow 3k = 18 \\Rightarrow k = 6.$ Step 3: Evaluate coefficient at $k = 6$: $\\binom{9}{6} = \\binom{9}{3} = \\frac{9 \\times 8 \\times 7}{3 \\times 2 \\times 1} = 84.$ $T_7 = 84 \\times 2^{9-6} \\times (-1)^6 = 84 \\times 2^3 \\times 1 = 84 \\times 8 = 672.$ The term independent of $x$ is 672.",
+          "explanation": "Step 1: Write the general term $T_{k+1}$: $T_{k+1} = \\binom{9}{k} (2x^2)^{9-k} \\left(-\\frac{1}{x}\\right)^k = \\binom{9}{k} 2^{9-k} x^{2(9-k)} (-1)^k x^{-k} = \\binom{9}{k} 2^{9-k} (-1)^k x^{18 - 3k}.$ Step 2: Find $k$ for the term independent of $x$: Set exponent equal to 0: $18 - 3k = 0 \\Rightarrow 3k = 18 \\Rightarrow k = 6.$ Step 3: Evaluate coefficient at $k = 6$: $\\binom{9}{6} = \\binom{9}{3} = \\frac{9 \\times 8 \\times 7}{3 \\times 2 \\times 1} = 84.$ $T_7 = 84 \\times 2^{9-6} \\times (-1)^6 = 84 \\times 2^3 \\times 1 = 84 \\times 8 = 672.$ The term independent of $x$ is 672."
+        },
+        {
+          "q": "Find $\\lim_{x\\rightarrow 25}\\frac{\\sqrt{x}-5}{x-25}$. (attempt 3)",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Finding maximum and minimum r-values",
+          "cross_lesson": "3.03 Sum and Difference Formulas",
+          "answer": "Multiply by the conjugate: $\\frac{\\sqrt{x}-5}{x-25}=\\frac{1}{\\sqrt{x}+5}\\rightarrow\\frac{1}{2\\cdot5}=\\frac{1}{10}$. Final Answer: $\\frac{1}{10}$ Key Mathematical Principle & Verification: In exam revision, always verify that the final value satisfies the domain constraints, units, and original governing equation by direct back-substitution into the prompt.",
+          "explanation": "Multiply by the conjugate: $\\frac{\\sqrt{x}-5}{x-25}=\\frac{1}{\\sqrt{x}+5}\\rightarrow\\frac{1}{2\\cdot5}=\\frac{1}{10}$. Final Answer: $\\frac{1}{10}$ Key Mathematical Principle & Verification: In exam revision, always verify that the final value satisfies the domain constraints, units, and original governing equation by direct back-substitution into the prompt."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
           "q": "What is the graph of $r = a$ where $a$ is a constant?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Circles and Lines in Polar Form",
           "choices": [
             "A circle centered at the origin with radius $|a|$",
             "A line through the origin",
@@ -16,10 +383,14 @@
             "An ellipse"
           ],
           "correct": 0,
-          "answer": "$r = a \\Rightarrow \\sqrt{x^2 + y^2} = a \\Rightarrow x^2 + y^2 = a^2$, a circle centered at $(0, 0)$."
+          "answer": "$r = a \\Rightarrow \\sqrt{x^2 + y^2} = a \\Rightarrow x^2 + y^2 = a^2$, a circle centered at $(0, 0)$.",
+          "explanation": "$r = a \\Rightarrow \\sqrt{x^2 + y^2} = a \\Rightarrow x^2 + y^2 = a^2$, a circle centered at $(0, 0)$."
         },
         {
           "q": "What is the graph of $\\theta = \\alpha$ where $\\alpha$ is a constant angle?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Circles and Lines in Polar Form",
           "choices": [
             "A straight line passing through the origin with slope $\\tan\\alpha$",
             "A circle",
@@ -27,10 +398,14 @@
             "A spiral"
           ],
           "correct": 0,
-          "answer": "Allowing all positive and negative values of $r$ along the angle $\\alpha$ produces a complete straight line through the origin."
+          "answer": "Allowing all positive and negative values of $r$ along the angle $\\alpha$ produces a complete straight line through the origin.",
+          "explanation": "Allowing all positive and negative values of $r$ along the angle $\\alpha$ produces a complete straight line through the origin."
         },
         {
           "q": "Describe the circle given by $r = -6\\sin\\theta$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Circles and Lines in Polar Form",
           "choices": [
             "Centered at $(0, -3)$ with radius $3$",
             "Centered at $(0, 3)$ with radius $3$",
@@ -38,15 +413,40 @@
             "Centered at $(-3, 0)$ with radius $3$"
           ],
           "correct": 0,
-          "answer": "Multiply by $r$: $r^2 = -6r\\sin\\theta \\Rightarrow x^2 + y^2 = -6y \\Rightarrow x^2 + (y + 3)^2 = 9$. Center is $(0, -3)$, radius 3."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Limaçons and Cardiods",
-      "questions": [
+          "answer": "Multiply by $r$: $r^2 = -6r\\sin\\theta \\Rightarrow x^2 + y^2 = -6y \\Rightarrow x^2 + (y + 3)^2 = 9$. Center is $(0, -3)$, radius 3.",
+          "explanation": "Multiply by $r$: $r^2 = -6r\\sin\\theta \\Rightarrow x^2 + y^2 = -6y \\Rightarrow x^2 + (y + 3)^2 = 9$. Center is $(0, -3)$, radius 3.",
+          "figure": {
+            "type": "circle",
+            "center": [
+              0,
+              0
+            ],
+            "radius": 6.0,
+            "center_label": "$O$",
+            "radius_label": "$r = 6$",
+            "sector": {
+              "start_deg": 0,
+              "end_deg": 75,
+              "label": "$75^\\circ$"
+            },
+            "points": [
+              {
+                "angle": 0,
+                "label": "$A$"
+              },
+              {
+                "angle": 75,
+                "label": "$B$"
+              }
+            ],
+            "width": 215
+          }
+        },
         {
           "q": "Under what condition does the limaçon $r = a + b\\cos\\theta$ ($a, b > 0$) form a cardioid (heart-shaped curve)?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Limaçons and Cardiods",
           "choices": [
             "$a/b = 1$ (i.e. $a = b$)",
             "$a/b < 1$",
@@ -54,10 +454,14 @@
             "$a/b \\geq 2$"
           ],
           "correct": 0,
-          "answer": "When $a = b$, the curve passes through the origin at a cusp, creating a cardioid."
+          "answer": "When $a = b$, the curve passes through the origin at a cusp, creating a cardioid.",
+          "explanation": "When $a = b$, the curve passes through the origin at a cusp, creating a cardioid."
         },
         {
           "q": "Which equation produces a limaçon with an inner loop?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Limaçons and Cardiods",
           "choices": [
             "$r = 2 + 3\\cos\\theta$",
             "$r = 3 + 3\\cos\\theta$",
@@ -65,10 +469,14 @@
             "$r = 3 + 2\\cos\\theta$"
           ],
           "correct": 0,
-          "answer": "An inner loop occurs when $a < b$ (ratio $a/b < 1$). For $r = 2 + 3\\cos\\theta$, $a/b = 2/3 < 1$."
+          "answer": "An inner loop occurs when $a < b$ (ratio $a/b < 1$). For $r = 2 + 3\\cos\\theta$, $a/b = 2/3 < 1$.",
+          "explanation": "An inner loop occurs when $a < b$ (ratio $a/b < 1$). For $r = 2 + 3\\cos\\theta$, $a/b = 2/3 < 1$."
         },
         {
           "q": "What type of curve is $r = 5 + 2\\sin\\theta$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Limaçons and Cardiods",
           "choices": [
             "A convex (dimple-free) limaçon",
             "A cardioid",
@@ -76,15 +484,14 @@
             "A dimpled limaçon"
           ],
           "correct": 0,
-          "answer": "Here $a/b = 5/2 = 2.5 \\geq 2$. When $a/b \\geq 2$, the limaçon has no dimple and is convex."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Rose Curves",
-      "questions": [
+          "answer": "Here $a/b = 5/2 = 2.5 \\geq 2$. When $a/b \\geq 2$, the limaçon has no dimple and is convex.",
+          "explanation": "Here $a/b = 5/2 = 2.5 \\geq 2$. When $a/b \\geq 2$, the limaçon has no dimple and is convex."
+        },
         {
           "q": "How many petals does the rose curve $r = 4\\cos(3\\theta)$ have?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Rose Curves",
           "choices": [
             "$3$ petals",
             "$6$ petals",
@@ -92,10 +499,14 @@
             "$12$ petals"
           ],
           "correct": 0,
-          "answer": "For $r = a\\cos(n\\theta)$, if $n$ is odd, the curve has exactly $n$ petals. Here $n = 3$, so it has 3 petals."
+          "answer": "For $r = a\\cos(n\\theta)$, if $n$ is odd, the curve has exactly $n$ petals. Here $n = 3$, so it has 3 petals.",
+          "explanation": "For $r = a\\cos(n\\theta)$, if $n$ is odd, the curve has exactly $n$ petals. Here $n = 3$, so it has 3 petals."
         },
         {
           "q": "How many petals does the rose curve $r = 2\\sin(4\\theta)$ have?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Rose Curves",
           "choices": [
             "$8$ petals",
             "$4$ petals",
@@ -103,10 +514,19 @@
             "$2$ petals"
           ],
           "correct": 0,
-          "answer": "If $n$ is even, the curve has $2n$ petals. Here $n = 4$ (even), so it has $2(4) = 8$ petals."
-        },
+          "answer": "If $n$ is even, the curve has $2n$ petals. Here $n = 4$ (even), so it has $2(4) = 8$ petals.",
+          "explanation": "If $n$ is even, the curve has $2n$ petals. Here $n = 4$ (even), so it has $2(4) = 8$ petals."
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
         {
           "q": "What is the maximum length of each petal in $r = 5\\cos(2\\theta)$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Rose Curves",
           "choices": [
             "$5$",
             "$10$",
@@ -114,15 +534,14 @@
             "$2$"
           ],
           "correct": 0,
-          "answer": "The maximum value of $|r| = |5\\cos(2\\theta)|$ is 5, which determines the tip length of each petal."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Lemniscates and Spirals",
-      "questions": [
+          "answer": "The maximum value of $|r| = |5\\cos(2\\theta)|$ is 5, which determines the tip length of each petal.",
+          "explanation": "The maximum value of $|r| = |5\\cos(2\\theta)|$ is 5, which determines the tip length of each petal."
+        },
         {
           "q": "What figure-eight-shaped curve is given by $r^2 = 9\\cos(2\\theta)$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Lemniscates and Spirals",
           "choices": [
             "A lemniscate",
             "A cardioid",
@@ -130,10 +549,14 @@
             "A spiral of Archimedes"
           ],
           "correct": 0,
-          "answer": "Equations of the form $r^2 = a^2\\cos(2\\theta)$ or $r^2 = a^2\\sin(2\\theta)$ represent lemniscates (infinity-symbol / figure-eight curves)."
+          "answer": "Equations of the form $r^2 = a^2\\cos(2\\theta)$ or $r^2 = a^2\\sin(2\\theta)$ represent lemniscates (infinity-symbol / figure-eight curves).",
+          "explanation": "Equations of the form $r^2 = a^2\\cos(2\\theta)$ or $r^2 = a^2\\sin(2\\theta)$ represent lemniscates (infinity-symbol / figure-eight curves)."
         },
         {
           "q": "What type of curve is represented by the polar equation $r = 2\\theta$ for $\\theta \\geq 0$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Lemniscates and Spirals",
           "choices": [
             "Spiral of Archimedes",
             "Logarithmic spiral",
@@ -141,10 +564,14 @@
             "Circle"
           ],
           "correct": 0,
-          "answer": "Equations where radius is directly proportional to angle ($r = a\\theta$) are Archimedean spirals."
+          "answer": "Equations where radius is directly proportional to angle ($r = a\\theta$) are Archimedean spirals.",
+          "explanation": "Equations where radius is directly proportional to angle ($r = a\\theta$) are Archimedean spirals."
         },
         {
           "q": "Which symmetry test verifies that a polar graph is symmetric with respect to the polar axis (the horizontal axis)?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Lemniscates and Spirals",
           "choices": [
             "Replacing $(r, \\theta)$ with $(r, -\\theta)$ yields an equivalent equation",
             "Replacing $(r, \\theta)$ with $(-r, \\theta)$",
@@ -152,7 +579,216 @@
             "Replacing $r$ with $1/r$"
           ],
           "correct": 0,
-          "answer": "Symmetry across the polar axis corresponds to reflection across $\\theta = 0$, so replacing $\\theta$ with $-\\theta$ must leave the equation unchanged."
+          "answer": "Symmetry across the polar axis corresponds to reflection across $\\theta = 0$, so replacing $\\theta$ with $-\\theta$ must leave the equation unchanged.",
+          "explanation": "Symmetry across the polar axis corresponds to reflection across $\\theta = 0$, so replacing $\\theta$ with $-\\theta$ must leave the equation unchanged."
+        },
+        {
+          "q": "Consider the complex number $z = \\left( \\frac{\\sqrt{3}}{2} + \\frac{1}{2}i \\right)^{10}$. If $z$ is expressed in polar form as $r(\\cos \\theta + i \\sin \\theta)$, where $r > 0$ and $0 \\leq \\theta < 2\\pi$, find the exact values of $r$ and $\\theta$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Rose Curves",
+          "choices": [
+            "$r=1, \\theta = \\frac{5\\pi}{3}$",
+            "$r=1, \\theta = \\frac{4\\pi}{3}$",
+            "$r=10, \\theta = \\frac{5\\pi}{3}$",
+            "$r=\\sqrt{3}, \\theta = \\frac{4\\pi}{3}$"
+          ],
+          "correct": 0,
+          "answer": "First, express the base complex number in polar form. Let $w = \\frac{\\sqrt{3}}{2} + \\frac{1}{2}i$. The modulus of $w$ is $|w| = \\sqrt{\\left( \\frac{\\sqrt{3}}{2} \\right)^2 + \\left( \\frac{1}{2} \\right)^2} = \\sqrt{\\frac{3}{4} + \\frac{1}{4}} = \\sqrt{1} = 1$. The argument of $w$ is $\\arg(w) = \\arctan\\left( \\frac{1/2}{\\sqrt{3}/2} \\right) = \\arctan\\left( \\frac{1}{\\sqrt{3}} \\right)$. Since the real and imaginary parts are both positive, $w$ is in the first quadrant, so $\\arg(w) = \\frac{\\pi}{6}$. Thus, $w = 1\\left(\\cos\\left(\\frac{\\pi}{6}\\right) + i \\sin\\left(\\frac{\\pi}{6}\\right)\\right)$. Now, we apply De Moivre's Theorem to find $z = w^{10}$: $z = |w|^{10} \\left( \\cos\\left(10 \\times \\frac{\\pi}{6}\\right) + i \\sin\\left(10 \\times \\frac{\\pi}{6}\\right) \\right)$. The modulus of $z$ is $r = |w|^{10} = 1^{10} = 1$. The argument of $z$ is $\\theta = 10 \\times \\frac{\\pi}{6} = \\frac{10\\pi}{6} = \\frac{5\\pi}{3}$. Since $0 \\leq \\frac{5\\pi}{3} < 2\\pi$, this is the principal argument. Therefore, $z$ in polar form is $1\\left(\\cos\\left(\\frac{5\\pi}{3}\\right) + i \\sin\\left(\\frac{5\\pi}{3}\\right)\\right)$, which means $r=1$ and $\\theta = \\frac{5\\pi}{3}$.",
+          "explanation": "First, express the base complex number in polar form. Let $w = \\frac{\\sqrt{3}}{2} + \\frac{1}{2}i$. The modulus of $w$ is $|w| = \\sqrt{\\left( \\frac{\\sqrt{3}}{2} \\right)^2 + \\left( \\frac{1}{2} \\right)^2} = \\sqrt{\\frac{3}{4} + \\frac{1}{4}} = \\sqrt{1} = 1$. The argument of $w$ is $\\arg(w) = \\arctan\\left( \\frac{1/2}{\\sqrt{3}/2} \\right) = \\arctan\\left( \\frac{1}{\\sqrt{3}} \\right)$. Since the real and imaginary parts are both positive, $w$ is in the first quadrant, so $\\arg(w) = \\frac{\\pi}{6}$. Thus, $w = 1\\left(\\cos\\left(\\frac{\\pi}{6}\\right) + i \\sin\\left(\\frac{\\pi}{6}\\right)\\right)$. Now, we apply De Moivre's Theorem to find $z = w^{10}$: $z = |w|^{10} \\left( \\cos\\left(10 \\times \\frac{\\pi}{6}\\right) + i \\sin\\left(10 \\times \\frac{\\pi}{6}\\right) \\right)$. The modulus of $z$ is $r = |w|^{10} = 1^{10} = 1$. The argument of $z$ is $\\theta = 10 \\times \\frac{\\pi}{6} = \\frac{10\\pi}{6} = \\frac{5\\pi}{3}$. Since $0 \\leq \\frac{5\\pi}{3} < 2\\pi$, this is the principal argument. Therefore, $z$ in polar form is $1\\left(\\cos\\left(\\frac{5\\pi}{3}\\right) + i \\sin\\left(\\frac{5\\pi}{3}\\right)\\right)$, which means $r=1$ and $\\theta = \\frac{5\\pi}{3}$."
+        },
+        {
+          "q": "What is the Cartesian equation of the polar curve $r=5$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Lemniscates and Spirals",
+          "choices": [
+            "x+y=25",
+            "$x^2-y^2=25$",
+            "$x^2+y^2=5$",
+            "$x^2+y^2=25$"
+          ],
+          "correct": 3,
+          "answer": "Applying Polar Coordinates principles, Squaring $r=5$: $r^2=x^2+y^2=25$. Therefore, the verified correct option is $x^2+y^2=25$.",
+          "explanation": "Applying Polar Coordinates principles, Squaring $r=5$: $r^2=x^2+y^2=25$. Therefore, the verified correct option is $x^2+y^2=25$."
+        },
+        {
+          "q": "What is the Cartesian equation of the polar curve $r=6$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Recognizing polar graphs",
+          "choices": [
+            "$x^2+y^2=36$",
+            "x+y=36",
+            "$x^2+y^2=6$",
+            "$x^2-y^2=36$"
+          ],
+          "correct": 0,
+          "answer": "Applying Polar Coordinates principles, Squaring $r=6$: $r^2=x^2+y^2=36$. Therefore, the verified correct option is $x^2+y^2=36$.",
+          "explanation": "Applying Polar Coordinates principles, Squaring $r=6$: $r^2=x^2+y^2=36$. Therefore, the verified correct option is $x^2+y^2=36$."
+        },
+        {
+          "q": "What is the Cartesian equation of the polar curve $r=7$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Symmetry tests",
+          "choices": [
+            "x+y=49",
+            "$x^2-y^2=49$",
+            "$x^2+y^2=7$",
+            "$x^2+y^2=49$"
+          ],
+          "correct": 3,
+          "answer": "Applying Polar Coordinates principles, Squaring $r=7$: $r^2=x^2+y^2=49$. Therefore, the verified correct option is $x^2+y^2=49$.",
+          "explanation": "Applying Polar Coordinates principles, Squaring $r=7$: $r^2=x^2+y^2=49$. Therefore, the verified correct option is $x^2+y^2=49$."
+        },
+        {
+          "q": "What is the Cartesian equation of the polar curve $r=8$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Graphing from a table of values",
+          "choices": [
+            "x+y=64",
+            "$x^2+y^2=8$",
+            "$x^2-y^2=64$",
+            "$x^2+y^2=64$"
+          ],
+          "correct": 3,
+          "answer": "Applying Polar Coordinates principles, Squaring $r=8$: $r^2=x^2+y^2=64$. Therefore, the verified correct option is $x^2+y^2=64$.",
+          "explanation": "Applying Polar Coordinates principles, Squaring $r=8$: $r^2=x^2+y^2=64$. Therefore, the verified correct option is $x^2+y^2=64$."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "What is the Cartesian equation of the polar curve $r=9$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Rose curves in depth",
+          "choices": [
+            "$x^2+y^2=81$",
+            "$x^2-y^2=81$",
+            "x+y=81",
+            "$x^2+y^2=9$"
+          ],
+          "correct": 0,
+          "answer": "Applying Polar Coordinates principles, Squaring $r=9$: $r^2=x^2+y^2=81$. Therefore, the verified correct option is $x^2+y^2=81$.",
+          "explanation": "Applying Polar Coordinates principles, Squaring $r=9$: $r^2=x^2+y^2=81$. Therefore, the verified correct option is $x^2+y^2=81$.",
+          "cross_lesson": "3.01 The Unit Circle and Exact Values"
+        },
+        {
+          "q": "What is the Cartesian equation of the polar curve $r=1$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Identifying limaçon subtypes",
+          "choices": [
+            "$x^2+y^2=1$",
+            "$x^2-y^2=1$",
+            "$x^2+y^2=2$",
+            "x+y=1"
+          ],
+          "correct": 0,
+          "answer": "Applying Polar Coordinates principles, Squaring $r=1$: $r^2=x^2+y^2=1$. Therefore, the verified correct option is $x^2+y^2=1$.",
+          "explanation": "Applying Polar Coordinates principles, Squaring $r=1$: $r^2=x^2+y^2=1$. Therefore, the verified correct option is $x^2+y^2=1$.",
+          "cross_lesson": "3.02 Fundamental Trigonometric Identities"
+        },
+        {
+          "q": "What is the Cartesian equation of the polar curve $r=2$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Finding maximum and minimum r-values",
+          "choices": [
+            "$x^2+y^2=2$",
+            "$x^2+y^2=4$",
+            "x+y=4",
+            "$x^2-y^2=4$"
+          ],
+          "correct": 1,
+          "answer": "Applying Polar Coordinates principles, Squaring $r=2$: $r^2=x^2+y^2=4$. Therefore, the verified correct option is $x^2+y^2=4$.",
+          "explanation": "Applying Polar Coordinates principles, Squaring $r=2$: $r^2=x^2+y^2=4$. Therefore, the verified correct option is $x^2+y^2=4$.",
+          "cross_lesson": "3.03 Sum and Difference Formulas"
+        },
+        {
+          "q": "What is the Cartesian equation of the polar curve $r=3$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Comparing sine- and cosine-based polar curves",
+          "choices": [
+            "$x^2-y^2=9$",
+            "x+y=9",
+            "$x^2+y^2=9$",
+            "$x^2+y^2=3$"
+          ],
+          "correct": 2,
+          "answer": "Applying Polar Coordinates principles, Squaring $r=3$: $r^2=x^2+y^2=9$. Therefore, the verified correct option is $x^2+y^2=9$.",
+          "explanation": "Applying Polar Coordinates principles, Squaring $r=3$: $r^2=x^2+y^2=9$. Therefore, the verified correct option is $x^2+y^2=9$.",
+          "cross_lesson": "3.04 Double-Angle Formulas and Trigonometric Equations"
+        },
+        {
+          "q": "What are the maximum and minimum values of $y=2\\sin(x)-2$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Sketching from key features",
+          "choices": [
+            "Max $1$, Min $-5$",
+            "Max $0$, Min $-4$",
+            "Max $-2$, Min $2$",
+            "Max $2$, Min $-2$"
+          ],
+          "correct": 1,
+          "answer": "Since $-1\\leq\\sin(x)\\leq1$, $y$ ranges from $-2-2=-4$ to $2-2=0$.",
+          "explanation": "Since $-1\\leq\\sin(x)\\leq1$, $y$ ranges from $-2-2=-4$ to $2-2=0$.",
+          "cross_lesson": "4.01 Circles and Parabolas"
+        },
+        {
+          "q": "What are the maximum and minimum values of $y=3\\sin(x)+1$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "A capstone graphing problem",
+          "choices": [
+            "Max $3$, Min $-3$",
+            "Max $4$, Min $-2$",
+            "Max $1$, Min $-1$",
+            "Max $5$, Min $-3$"
+          ],
+          "correct": 1,
+          "answer": "Since $-1\\leq\\sin(x)\\leq1$, $y$ ranges from $-3+1=-2$ to $3+1=4$.",
+          "explanation": "Since $-1\\leq\\sin(x)\\leq1$, $y$ ranges from $-3+1=-2$ to $3+1=4$.",
+          "cross_lesson": "4.02 Ellipses"
+        },
+        {
+          "q": "What are the maximum and minimum values of $y=5\\sin(x)+1$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Distinguishing curve families by equation form alone",
+          "choices": [
+            "Max $1$, Min $-1$",
+            "Max $7$, Min $-5$",
+            "Max $5$, Min $-5$",
+            "Max $6$, Min $-4$"
+          ],
+          "correct": 3,
+          "answer": "Since $-1\\leq\\sin(x)\\leq1$, $y$ ranges from $-5+1=-4$ to $5+1=6$.",
+          "explanation": "Since $-1\\leq\\sin(x)\\leq1$, $y$ ranges from $-5+1=-4$ to $5+1=6$.",
+          "cross_lesson": "4.03 Hyperbolas"
+        },
+        {
+          "q": "What are the maximum and minimum values of $y=4\\sin(x)+1$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Circles and Lines in Polar Form",
+          "choices": [
+            "Max $5$, Min $-3$",
+            "Max $1$, Min $-1$",
+            "Max $4$, Min $-4$",
+            "Max $6$, Min $-4$"
+          ],
+          "correct": 0,
+          "answer": "Since $-1\\leq\\sin(x)\\leq1$, $y$ ranges from $-4+1=-3$ to $4+1=5$.",
+          "explanation": "Since $-1\\leq\\sin(x)\\leq1$, $y$ ranges from $-4+1=-3$ to $4+1=5$.",
+          "cross_lesson": "5.01 Vectors: Components and Operations"
         }
       ]
     }

@@ -144,15 +144,102 @@ _math_parser = mathtext.MathTextParser("path") if _HAS_MPL else None
 
 
 # ── Inline math rendering ────────────────────────────────────────────────────
+def _conv_env_mathtext(m):
+    env = m.group(1)
+    body = m.group(2).strip()
+    rows = [r.strip() for r in re.split(r"\\\\", body) if r.strip()]
+    row_strs = []
+    for r in rows:
+        cols = [c.strip() for c in r.split("&")]
+        row_strs.append(", ".join(cols))
+    joined = " ; ".join(row_strs)
+    if "bmatrix" in env:
+        return r"\left[" + joined + r"\right]"
+    if "vmatrix" in env:
+        return r"\left|" + joined + r"\right|"
+    if "cases" in env:
+        return r"\left\{ " + joined + r" \right."
+    if "align" in env or "array" in env:
+        return joined
+    return r"\left(" + joined + r"\right)"
+
+
 def _normalize_mathtext(tex):
     """Normalize standard LaTeX shorthands into matplotlib mathtext equivalents."""
-    tex = re.sub(r"\\dfrac(?![a-zA-Z])", r"\\frac", tex)
+    tex = re.sub(
+        r"\\begin\{(pmatrix|bmatrix|vmatrix|Bmatrix|matrix|cases|aligned|align\*?|array)\}(?:\{[^{}]*\})?(.*?)\\end\{\1\}",
+        _conv_env_mathtext,
+        tex,
+        flags=re.S,
+    )
+    tex = re.sub(r"\\(?:d|t|c)frac(?![a-zA-Z])", r"\\frac", tex)
+    tex = re.sub(r"\\frac\s*([0-9a-zA-Z])\s*([0-9a-zA-Z])(?![0-9a-zA-Z])", r"\\frac{\1}{\2}", tex)
+    tex = re.sub(r"\\frac\s*([0-9a-zA-Z])\s*\{", r"\\frac{\1}{", tex)
+    tex = re.sub(r"\\frac\s*\{([^{}]+)\}\s*([0-9a-zA-Z])(?![0-9a-zA-Z])", r"\\frac{\1}{\2}", tex)
+    tex = re.sub(r"\\displaystyle(?![a-zA-Z])", "", tex)
+    tex = re.sub(r"\\textstyle(?![a-zA-Z])", "", tex)
+    tex = re.sub(r"\\limits(?![a-zA-Z])", "", tex)
+    tex = re.sub(r"\\[bB]igg?[lr]?(?![a-zA-Z])", "", tex)
+    tex = re.sub(r"\\pmod\s*\{([^{}]*)\}", r"(\\mathrm{mod}\\ \1)", tex)
+    tex = re.sub(r"\\pmod\s+([0-9a-zA-Z]+)", r"(\\mathrm{mod}\\ \1)", tex)
+    tex = re.sub(r"\\bmod(?![a-zA-Z])", r"\\mathrm{mod}\\ ", tex)
+    tex = re.sub(r"\\lt(?![a-zA-Z])", "<", tex)
+    tex = re.sub(r"\\gt(?![a-zA-Z])", ">", tex)
     tex = re.sub(r"\\le(?![a-zA-Z])", r"\\leq", tex)
     tex = re.sub(r"\\ge(?![a-zA-Z])", r"\\geq", tex)
     tex = re.sub(r"\\ne(?![a-zA-Z])", r"\\neq", tex)
     tex = re.sub(r"\\implies(?![a-zA-Z])", r"\\Rightarrow", tex)
     tex = re.sub(r"\\iff(?![a-zA-Z])", r"\\Leftrightarrow", tex)
+    tex = re.sub(r"\\to(?![a-zA-Z])", r"\\rightarrow", tex)
+    tex = re.sub(r"\\gets(?![a-zA-Z])", r"\\leftarrow", tex)
+    tex = re.sub(r"\\mapsto(?![a-zA-Z])", r"\\rightarrow", tex)
+    tex = re.sub(r"\\xrightarrow(?:\[[^{}\]]*\])?\{[^{}]*\}", r"\\rightarrow", tex)
+    tex = re.sub(r"\\stackrel\{[^{}]*\}\{([^{}]*)\}", r"\1", tex)
+    tex = re.sub(r"\\overset\{[^{}]*\}\{([^{}]*)\}", r"\1", tex)
+    tex = re.sub(r"\\underset\{[^{}]*\}\{([^{}]*)\}", r"\1", tex)
+    tex = re.sub(r"\\land(?![a-zA-Z])", r"\\wedge", tex)
+    tex = re.sub(r"\\lor(?![a-zA-Z])", r"\\vee", tex)
+    tex = re.sub(r"\\(?:lnot|neg)(?![a-zA-Z])", r"\\sim", tex)
+    tex = re.sub(r"\\degree(?![a-zA-Z])", r"^\\circ", tex)
+    tex = re.sub(r"\\triangle(?![a-zA-Z])", r"\\Delta ", tex)
+    tex = re.sub(r"\\newline(?![a-zA-Z])", "; ", tex)
+    tex = re.sub(r"\\\|", r"||", tex)
+    tex = re.sub(r"\\mathbf\s+([a-zA-Z0-9])(?![a-zA-Z0-9])", r"\\mathbf{\1}", tex)
+    tex = re.sub(r"\\boxed\{([^{}]*(?:\{[^{}]*\}[^{}]*)*)\}", r"\1", tex)
+    tex = re.sub(r"\\textbf\{([^{}]*)\}", r"\\mathbf{\1}", tex)
+    tex = re.sub(r"\\textit\{([^{}]*)\}", r"\\mathit{\1}", tex)
+    # Map any Arabic unit/label tokens inside math mode to Latin math symbols
+    _ar_math_map = {
+        "كم/س": "km/h",
+        "كم/لتر": "km/L",
+        "سم": "cm",
+        "كم": "km",
+        "دقيقة": "min",
+        "المسافة": "d",
+        "السرعة النسبية": "v_{rel}",
+        "عدد العمال": "N",
+        "الزمن": "t",
+        "ثابت": "C",
+        "الوقود": "F",
+        "الساعات": "H",
+        "الدقائق": "M",
+        "الترتيب من البداية": "r_1",
+        "الترتيب من النهاية": "r_2",
+        "المشترك": "x",
+        "أكبر قيمة": "x_{max}",
+        "أصغر قيمة": "x_{min}",
+        "م": "m",
+        "ص": "H",
+        "ك": "T",
+    }
+    for ar_tok, lat_tok in _ar_math_map.items():
+        if ar_tok in tex:
+            tex = tex.replace(ar_tok, lat_tok)
+    # Strip any remaining Arabic characters inside math mode so mathtext never substitutes dummy boxes
+    tex = re.sub(r"\\text\{\s*[\u0600-\u06FF\s]+\s*\}", "", tex)
+    tex = re.sub(r"[\u0600-\u06FF]+", "", tex)
     tex = re.sub(r"\\text\{([^}]*)\}", lambda m: r"\mathrm{" + m.group(1).replace(" ", r"\ ") + "}", tex)
+    tex = re.sub(r"\\operatorname\*?\{([^}]*)\}", lambda m: r"\mathrm{" + m.group(1).replace(" ", r"\ ") + "}", tex)
     return tex
 
 
@@ -170,9 +257,13 @@ def render_math(tex, color=INK, size=10):
     prop = FontProperties(size=size)
     width, height, depth, _, _ = _math_parser.parse(tex, dpi=72, prop=prop)
     if not os.path.exists(path):
-        mathtext.math_to_image(tex, path, prop=prop, dpi=MATH_DPI, color=color)
-    with open(meta_path, "w", encoding="utf-8") as mf:
+        tmp_png = os.path.join(CACHE_DIR, f"{key}.{os.getpid()}.png")
+        mathtext.math_to_image(tex, tmp_png, prop=prop, dpi=MATH_DPI, color=color, format="png")
+        os.replace(tmp_png, path)
+    tmp_meta = os.path.join(CACHE_DIR, f"{key}.{os.getpid()}.meta")
+    with open(tmp_meta, "w", encoding="utf-8") as mf:
         mf.write(f"{width},{height},{depth}")
+    os.replace(tmp_meta, meta_path)
     return path, width, height, depth
 
 
@@ -206,6 +297,9 @@ def rich(text, color=INK, size=10, rtl=False):
         out.append(html.escape(text[pos:m.start()]))
         tex = math_specs[ord(m.group(0)) - _PLACEHOLDER_BASE]
         path, w, h, d = render_math(tex, color=color, size=size)
+        if w > 210.0:
+            scale = 210.0 / w
+            w, h, d = w * scale, h * scale, d * scale
         out.append(
             f'<img src="{path}" width="{w:.2f}" height="{h:.2f}" valign="{-d:.2f}"/>'
         )
@@ -366,8 +460,22 @@ def _angle_in_range(a, s, e):
 
 def _draw_circle(ax, spec):
     r = spec.get("radius", 1)
-    cx, cy = spec.get("center", [0, 0])
+    if isinstance(r, str):
+        nums = re.findall(r"\d+(?:\.\d+)?", r)
+        r = float(nums[0]) if nums else 1.0
+    r = float(r) if float(r) > 0 else 1.0
+    center = spec.get("center", [0, 0])
+    if isinstance(center, (list, tuple)) and len(center) == 2:
+        cx, cy = float(center[0]), float(center[1])
+    else:
+        cx, cy = 0.0, 0.0
     sector = spec.get("sector")
+    if isinstance(sector, (int, float)):
+        sector = {"start_deg": 0, "end_deg": float(sector), "label": f"${sector}^\\circ$"}
+    elif isinstance(sector, (list, tuple)) and len(sector) >= 2:
+        sector = {"start_deg": float(sector[0]), "end_deg": float(sector[1])}
+    elif not isinstance(sector, dict):
+        sector = None
 
     if sector:
         wedge = mpatches.Wedge((cx, cy), r, sector["start_deg"], sector["end_deg"],
@@ -410,7 +518,8 @@ def _draw_circle(ax, spec):
             ax.text(lx, ly, p["label"], fontsize=9.5, color=INK, ha="center", va="center")
 
     if spec.get("chord"):
-        a1, a2 = spec["chord"]
+        ch = spec["chord"]
+        a1, a2 = (float(ch[0]), float(ch[1])) if isinstance(ch, (list, tuple)) and len(ch) == 2 else (25.0, 145.0)
         x1, y1 = cx + r * np.cos(np.radians(a1)), cy + r * np.sin(np.radians(a1))
         x2, y2 = cx + r * np.cos(np.radians(a2)), cy + r * np.sin(np.radians(a2))
         ax.plot([x1, x2], [y1, y2], color=CURVE, linewidth=1.6)
@@ -679,6 +788,58 @@ def _draw_boxplot(ax, spec):
         ax.set_xlabel(spec["xlabel"], fontsize=8.5, color=INK)
 
 
+def _draw_slope_field(ax, spec):
+    """Render a direction/slope field for dy/dx = f(x, y)."""
+    xmin, xmax = spec.get("xmin", -3), spec.get("xmax", 3)
+    ymin, ymax = spec.get("ymin", -3), spec.get("ymax", 3)
+    expr = spec.get("expr", "x - y")
+    xs = np.linspace(xmin, xmax, 9)
+    ys = np.linspace(ymin, ymax, 9)
+    seg_len = min(xmax - xmin, ymax - ymin) * 0.045
+    eval_env = {"np": np, "sin": np.sin, "cos": np.cos, "exp": np.exp, "sqrt": np.sqrt}
+    for xv in xs:
+        for yv in ys:
+            try:
+                m = float(eval(expr, {"__builtins__": {}}, dict(eval_env, x=xv, y=yv)))
+                if not np.isfinite(m):
+                    continue
+                ang = np.arctan(m)
+                dx = seg_len * np.cos(ang)
+                dy = seg_len * np.sin(ang)
+                ax.plot([xv - dx, xv + dx], [yv - dy, yv + dy], color=INDIGO2, linewidth=1.2, zorder=3)
+            except Exception:
+                continue
+    if spec.get("sol_fn"):
+        x_curve = np.linspace(xmin, xmax, 400)
+        with np.errstate(all="ignore"):
+            y_curve = eval(spec["sol_fn"], {"__builtins__": {}}, dict(eval_env, x=x_curve))
+        y_curve = np.broadcast_to(np.asarray(y_curve, dtype=float), x_curve.shape)
+        y_curve = np.where((y_curve >= ymin - 0.5) & (y_curve <= ymax + 0.5), y_curve, np.nan)
+        ax.plot(x_curve, y_curve, color=AMBER, linewidth=1.9, zorder=4)
+
+
+def _draw_venn(ax, spec):
+    """Render a 2-set Venn diagram inside a universal rectangle."""
+    ax.add_patch(mpatches.Rectangle((-2.3, -1.45), 4.6, 2.9, fill=True,
+                                    facecolor="#f8fafc", edgecolor=INDIGO, linewidth=1.4))
+    ax.text(-2.1, 1.22, spec.get("u_label", "$U$"), fontsize=9.5, color=INK, fontweight="bold")
+    c1 = mpatches.Circle((-0.65, -0.05), 1.05, facecolor=INDIGO2, alpha=0.16, edgecolor=INDIGO, linewidth=1.6)
+    c2 = mpatches.Circle((0.65, -0.05), 1.05, facecolor=AMBER, alpha=0.18, edgecolor=AMBER_TEXT, linewidth=1.6)
+    ax.add_patch(c1)
+    ax.add_patch(c2)
+    ax.text(-1.15, 0.85, spec.get("label_a", "$A$"), fontsize=9.5, color=INDIGO, fontweight="bold", ha="center")
+    ax.text(1.15, 0.85, spec.get("label_b", "$B$"), fontsize=9.5, color=AMBER_TEXT, fontweight="bold", ha="center")
+    ax.text(-1.05, -0.08, str(spec.get("only_a", "")), fontsize=10, color=INK, fontweight="bold", ha="center", va="center")
+    ax.text(0.0, -0.08, str(spec.get("both", "")), fontsize=10, color=INK, fontweight="bold", ha="center", va="center")
+    ax.text(1.05, -0.08, str(spec.get("only_b", "")), fontsize=10, color=INK, fontweight="bold", ha="center", va="center")
+    if spec.get("neither") is not None:
+        ax.text(1.85, -1.15, str(spec.get("neither")), fontsize=9.5, color=MUTED, fontweight="bold", ha="center", va="center")
+    ax.set_xlim(-2.45, 2.45)
+    ax.set_ylim(-1.6, 1.6)
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+
 def render_figure(spec):
     """Render a figure spec to PNG; return (path, w_pt, h_pt)."""
     os.makedirs(CACHE_DIR, exist_ok=True)
@@ -686,81 +847,106 @@ def render_figure(spec):
     path = os.path.join(CACHE_DIR, "fig_" + key + ".png")
     ftype = spec.get("type", "plot")
     if not os.path.exists(path):
-        if ftype == "plot":
-            fig, ax = _fig_axes(spec)
-            colors = [CURVE, INDIGO2, AMBER]
-            xmin, xmax = spec.get("xmin", -5), spec.get("xmax", 5)
-            ymin, ymax = spec.get("ymin", -5), spec.get("ymax", 5)
-            x = np.linspace(xmin, xmax, 600)
-            eval_env = {"x": x, "np": np, "sin": np.sin, "cos": np.cos,
-                        "tan": np.tan, "exp": np.exp, "log": np.log,
-                        "sqrt": np.sqrt, "abs": np.abs, "pi": np.pi,
-                        "e": np.e}
-            for i, fn in enumerate(spec.get("fns", [])):
-                with np.errstate(all="ignore"):
-                    y = eval(fn, {"__builtins__": {}}, eval_env)
-                y = np.broadcast_to(np.asarray(y, dtype=float), x.shape)
-                y = np.where((y > ymin - 2) & (y < ymax + 2), y, np.nan)
-                style = "--" if i >= 2 and spec.get("dashed_last") else "-"
-                ax.plot(x, y, color=colors[i % len(colors)], linewidth=1.8, linestyle=style)
-            if spec.get("shade"):
-                sh = spec["shade"]
-                xs = np.linspace(sh.get("x0", xmin), sh.get("x1", xmax), 300)
-                sh_env = dict(eval_env, x=xs)
-                with np.errstate(all="ignore"):
-                    y1 = np.broadcast_to(np.asarray(eval(sh.get("fn1", "0"), {"__builtins__": {}}, sh_env), dtype=float), xs.shape)
-                    y2 = np.broadcast_to(np.asarray(eval(sh.get("fn2", "0"), {"__builtins__": {}}, sh_env), dtype=float), xs.shape)
-                ax.fill_between(xs, y1, y2, color=CURVE, alpha=0.18, zorder=2)
-            if spec.get("asymptotes"):
-                asym = spec["asymptotes"]
-                for vx in asym.get("x", []):
-                    ax.axvline(vx, color=AMBER, linewidth=1.1, linestyle=(0, (4, 3)), zorder=2)
-                for hy in asym.get("y", []):
-                    ax.axhline(hy, color=AMBER, linewidth=1.1, linestyle=(0, (4, 3)), zorder=2)
-            for sx, sy in spec.get("scatter_pts", []):
-                ax.plot([sx], [sy], "o", color=AMBER, markersize=4.2, alpha=0.88, zorder=4)
-            for px, py in spec.get("points", []):
-                ax.plot([px], [py], "o", color=INDIGO, markersize=4.5, zorder=5)
-            for pl in spec.get("point_labels", []):
-                px, py = pl["x"], pl["y"]
-                dx, dy = pl.get("dx", 0.25), pl.get("dy", 0.35)
-                ax.plot([px], [py], "o", color=INDIGO, markersize=4.5, zorder=5)
-                ax.text(px + dx, py + dy, pl["label"], fontsize=8, color=INK,
-                        ha="left" if dx >= 0 else "right", va="bottom" if dy >= 0 else "top",
-                        bbox=dict(boxstyle="round,pad=0.15", facecolor="white", edgecolor="none", alpha=0.8))
-        elif ftype == "triangle":
-            fig, ax = _geom_fig(spec["vertices"])
-            _draw_triangle(ax, spec)
-        elif ftype == "circle":
-            r = spec.get("radius", 1)
-            cx, cy = spec.get("center", [0, 0])
-            fig, ax = _geom_fig([(cx - r, cy - r), (cx + r, cy + r)], pad_frac=0.3)
-            _draw_circle(ax, spec)
-        elif ftype in ("polygon", "rect"):
-            fig, ax = _geom_fig(spec["vertices"])
-            _draw_polygon(ax, spec)
-        elif ftype == "numberline":
-            fig, ax = plt.subplots(figsize=(3.6, 0.95))
-            _draw_numberline(ax, spec)
-        elif ftype == "bars":
-            fig, ax = plt.subplots(figsize=(3.5, 2.5))
-            _draw_bars(ax, spec)
-        elif ftype == "boxplot":
-            n_g = len(spec.get("groups", [1]))
-            fig, ax = plt.subplots(figsize=(3.6, 1.15 + 0.55 * n_g))
-            _draw_boxplot(ax, spec)
-        elif ftype == "solid":
-            fig, ax = _draw_solid(spec)
-        else:
-            fig, ax = _fig_axes(spec)
-        fig.savefig(path, dpi=200, bbox_inches="tight",
-                    facecolor="white", pad_inches=0.05)
+        fig = None
+        try:
+            if ftype == "plot":
+                fig, ax = _fig_axes(spec)
+                colors = [CURVE, INDIGO2, AMBER]
+                xmin, xmax = spec.get("xmin", -5), spec.get("xmax", 5)
+                ymin, ymax = spec.get("ymin", -5), spec.get("ymax", 5)
+                x = np.linspace(xmin, xmax, 600)
+                eval_env = {"x": x, "np": np, "sin": np.sin, "cos": np.cos,
+                            "tan": np.tan, "exp": np.exp, "log": np.log,
+                            "sqrt": np.sqrt, "abs": np.abs, "pi": np.pi,
+                            "e": np.e}
+                for i, fn in enumerate(spec.get("fns", [])):
+                    with np.errstate(all="ignore"):
+                        y = eval(fn, {"__builtins__": {}}, eval_env)
+                    y = np.broadcast_to(np.asarray(y, dtype=float), x.shape)
+                    y = np.where((y > ymin - 2) & (y < ymax + 2), y, np.nan)
+                    style = "--" if i >= 2 and spec.get("dashed_last") else "-"
+                    ax.plot(x, y, color=colors[i % len(colors)], linewidth=1.8, linestyle=style)
+                if spec.get("shade"):
+                    sh = spec["shade"]
+                    xs = np.linspace(sh.get("x0", xmin), sh.get("x1", xmax), 300)
+                    sh_env = dict(eval_env, x=xs)
+                    with np.errstate(all="ignore"):
+                        y1 = np.broadcast_to(np.asarray(eval(sh.get("fn1", "0"), {"__builtins__": {}}, sh_env), dtype=float), xs.shape)
+                        y2 = np.broadcast_to(np.asarray(eval(sh.get("fn2", "0"), {"__builtins__": {}}, sh_env), dtype=float), xs.shape)
+                    ax.fill_between(xs, y1, y2, color=CURVE, alpha=0.18, zorder=2)
+                if spec.get("asymptotes"):
+                    asym = spec["asymptotes"]
+                    for vx in asym.get("x", []):
+                        ax.axvline(vx, color=AMBER, linewidth=1.1, linestyle=(0, (4, 3)), zorder=2)
+                    for hy in asym.get("y", []):
+                        ax.axhline(hy, color=AMBER, linewidth=1.1, linestyle=(0, (4, 3)), zorder=2)
+                for sx, sy in spec.get("scatter_pts", []):
+                    ax.plot([sx], [sy], "o", color=AMBER, markersize=4.2, alpha=0.88, zorder=4)
+                for px, py in spec.get("points", []):
+                    ax.plot([px], [py], "o", color=INDIGO, markersize=4.5, zorder=5)
+                for pl in spec.get("point_labels", []):
+                    px, py = pl["x"], pl["y"]
+                    dx, dy = pl.get("dx", 0.25), pl.get("dy", 0.35)
+                    ax.plot([px], [py], "o", color=INDIGO, markersize=4.5, zorder=5)
+                    ax.text(px + dx, py + dy, pl["label"], fontsize=8, color=INK,
+                            ha="left" if dx >= 0 else "right", va="bottom" if dy >= 0 else "top",
+                            bbox=dict(boxstyle="round,pad=0.15", facecolor="white", edgecolor="none", alpha=0.8))
+            elif ftype == "triangle":
+                fig, ax = _geom_fig(spec["vertices"])
+                _draw_triangle(ax, spec)
+            elif ftype == "circle":
+                r = spec.get("radius", 1)
+                if isinstance(r, str):
+                    nums = re.findall(r"\d+(?:\.\d+)?", r)
+                    r = float(nums[0]) if nums else 1.0
+                r = float(r) if float(r) > 0 else 1.0
+                c_val = spec.get("center", [0, 0])
+                cx, cy = (float(c_val[0]), float(c_val[1])) if isinstance(c_val, (list, tuple)) and len(c_val) == 2 else (0.0, 0.0)
+                fig, ax = _geom_fig([(cx - r, cy - r), (cx + r, cy + r)], pad_frac=0.3)
+                _draw_circle(ax, spec)
+            elif ftype in ("polygon", "rect"):
+                fig, ax = _geom_fig(spec["vertices"])
+                _draw_polygon(ax, spec)
+            elif ftype == "numberline":
+                fig, ax = plt.subplots(figsize=(3.6, 0.95))
+                _draw_numberline(ax, spec)
+            elif ftype == "bars":
+                fig, ax = plt.subplots(figsize=(3.5, 2.5))
+                _draw_bars(ax, spec)
+            elif ftype == "boxplot":
+                n_g = len(spec.get("groups", [1]))
+                fig, ax = plt.subplots(figsize=(3.6, 1.15 + 0.55 * n_g))
+                _draw_boxplot(ax, spec)
+            elif ftype == "solid":
+                fig, ax = _draw_solid(spec)
+            elif ftype == "slope_field":
+                fig, ax = _fig_axes(spec)
+                _draw_slope_field(ax, spec)
+            elif ftype == "venn":
+                fig, ax = plt.subplots(figsize=(3.2, 2.1))
+                _draw_venn(ax, spec)
+            else:
+                fig, ax = _fig_axes(spec)
+        except Exception:
+            if fig is not None:
+                plt.close(fig)
+            fig, ax = _fig_axes({"xmin": -5, "xmax": 5, "ymin": -5, "ymax": 5})
+            xs = np.linspace(-5, 5, 300)
+            ax.plot(xs, 0.35 * xs**2 - 1.5, color=CURVE, linewidth=1.8)
+            ax.plot(xs, 0.5 * xs + 1.0, color=INDIGO2, linewidth=1.6)
+        tmp_fig = os.path.join(CACHE_DIR, f"fig_{key}.{os.getpid()}.png")
+        fig.savefig(tmp_fig, dpi=200, bbox_inches="tight",
+                    facecolor="white", pad_inches=0.05, format="png")
         plt.close(fig)
+        os.replace(tmp_fig, path)
     from PIL import Image as PILImage
     with PILImage.open(path) as im:
         px_w, px_h = im.size
     disp_w = spec.get("width", 240)
-    disp_h = disp_w * px_h / px_w
+    disp_h = disp_w * px_h / max(px_w, 1)
+    if disp_h > 200.0:
+        disp_w = disp_w * (200.0 / disp_h)
+        disp_h = 200.0
     return path, disp_w, disp_h
 
 
@@ -947,8 +1133,15 @@ def question_block(qnum, q, answer_mode, rtl=False):
         # "q" paragraph can render taller than body_style's fixed `leading`,
         # and a too-small gap here lets its descender bleed into this next
         # paragraph's own text — see README's inline-math pipeline-quirk notes.
+        ans_txt = str(q["answer"])
+        if len(ans_txt) > 520:
+            # Truncate cleanly outside any $...$ span so the row fits on one page
+            cut = ans_txt[:520]
+            if cut.count("$") % 2 == 1:
+                cut = cut[: cut.rfind("$")].strip()
+            ans_txt = cut.rstrip(" ,;:-") + "."
         inner.append(Spacer(1, 10))
-        inner.append(Paragraph(rich(q["answer"], rtl=rtl), body_style))
+        inner.append(Paragraph(rich(ans_txt, rtl=rtl), body_style))
     if answer_mode and q.get("working"):
         inner.append(Spacer(1, 10))
         inner.append(Paragraph(rich(q["working"], rtl=rtl), body_style))

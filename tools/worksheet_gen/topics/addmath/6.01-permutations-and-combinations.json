@@ -3,12 +3,438 @@
   "num": "6.01",
   "slug": "permutations-and-combinations",
   "title": "Permutations and Combinations",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 6.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Fundamental Counting and Linear Permutations",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+      "questions": [
+        {
+          "q": "Find the number of distinct arrangements of the letters of the word $\\mathrm{COMMITTEE}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Permutations & Combinations Practice Exercises",
+          "answer": "Final Answer: 45360. Applying Permutations & Combinations principles, $\\frac{9!}{2!2!2!}=45360$ Therefore, the verified correct option is 45360.",
+          "explanation": "Applying Permutations & Combinations principles, $\\frac{9!}{2!2!2!}=45360$ Therefore, the verified correct option is 45360."
+        },
+        {
+          "q": "A group of $n$ students, which includes Ali and Priya, are to be arranged in a straight line for a photograph. The number of different arrangements in which Ali and Priya are not standing next to each other is $3600$. Find the value of the integer $n$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Fundamental Counting and Linear Permutations",
+          "answer": "Final Answer: 7. We can find the number of arrangements where Ali and Priya do not stand next to each other using the complementary method or the insertion (gap) method. **Method 1: Complementary Counting** 1. The total number of unrestricted arrangements of the $n$ students in a straight line is $n!$. 2. Consider the arrangements in which Ali and Priya *do* stand next to each other: - Treat Ali and Priya as a single block. There are now $(n - 1)$ entities to arrange, which can be done in $(n - 1)!$ ways. - Within the block, Ali and Priya can arrange themselves in $2! = 2$ ways. - So, the number of arrangements where they are together is $2(n - 1)!$. 3. Subtracting this from the total gives the number of arrangements where they are separated: $n! - 2(n - 1)! = n(n - 1)! - 2(n - 1)! = (n - 2)(n - 1)!$ **Method 2: Gap Method** 1. Arrange the other $n - 2$ students first, which gives $(n - 2)!$ ways. 2. This creates $(n - 2) + 1 = n - 1$ available spaces (including the ends). 3. Placing Ali and Priya into two distinct spaces ensures they are not adjacent: ${}^{n-1}\\mathrm{P}_{2} = (n - 1)(n - 2)$ ways. 4. Total arrangements: $(n - 2)! \\times (n - 1)(n - 2) = (n - 2)(n - 1)!$. Equating this to $3600$: $(n - 2)(n - 1)! = 3600$ Testing integer values for $n \\geq 3$: - For $n = 6$: $(6 - 2)(5!) = 4 \\times 120 = 480$ - For $n = 7$: $(7 - 2)(6!) = 5 \\times 720 = 3600$ - For $n = 8$: $(8 - 2)(7!) = 6 \\times 5040 = 30240$ Thus, $n = 7$. *Common Misconception Trap:* Forgetting that Ali and Priya can switch places within their unit gives $n! - (n - 1)! = (n - 1)(n - 1)!$, which fails to produce an integer solution among the options.",
+          "explanation": "We can find the number of arrangements where Ali and Priya do not stand next to each other using the complementary method or the insertion (gap) method. **Method 1: Complementary Counting** 1. The total number of unrestricted arrangements of the $n$ students in a straight line is $n!$. 2. Consider the arrangements in which Ali and Priya *do* stand next to each other: - Treat Ali and Priya as a single block. There are now $(n - 1)$ entities to arrange, which can be done in $(n - 1)!$ ways. - Within the block, Ali and Priya can arrange themselves in $2! = 2$ ways. - So, the number of arrangements where they are together is $2(n - 1)!$. 3. Subtracting this from the total gives the number of arrangements where they are separated: $n! - 2(n - 1)! = n(n - 1)! - 2(n - 1)! = (n - 2)(n - 1)!$ **Method 2: Gap Method** 1. Arrange the other $n - 2$ students first, which gives $(n - 2)!$ ways. 2. This creates $(n - 2) + 1 = n - 1$ available spaces (including the ends). 3. Placing Ali and Priya into two distinct spaces ensures they are not adjacent: ${}^{n-1}\\mathrm{P}_{2} = (n - 1)(n - 2)$ ways. 4. Total arrangements: $(n - 2)! \\times (n - 1)(n - 2) = (n - 2)(n - 1)!$. Equating this to $3600$: $(n - 2)(n - 1)! = 3600$ Testing integer values for $n \\geq 3$: - For $n = 6$: $(6 - 2)(5!) = 4 \\times 120 = 480$ - For $n = 7$: $(7 - 2)(6!) = 5 \\times 720 = 3600$ - For $n = 8$: $(8 - 2)(7!) = 6 \\times 5040 = 30240$ Thus, $n = 7$. *Common Misconception Trap:* Forgetting that Ali and Priya can switch places within their unit gives $n! - (n - 1)! = (n - 1)(n - 1)!$, which fails to produce an integer solution among the options.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (0))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -1.0,
+                "label": "$(0,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A committee of 5 members is to be selected from a group consisting of $n$ men and 6 women, where $n \\geq 4$. Given that the number of possible committees containing exactly 3 men is equal to the number of possible committees containing exactly 4 men, find the value of $n$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Permutations with Repetitions and Identical Items",
+          "answer": "Final Answer: 13. To form a committee of 5 members: 1. **Committees with exactly 3 men:** Since there are 5 members in total, the committee must contain 3 men and $5 - 3 = 2$ women. $\\mathrm{Number\\ of\\ ways} = \\binom{n}{3} \\times \\binom{6}{2} = \\binom{n}{3} \\times \\frac{6 \\times 5}{2} = 15\\binom{n}{3}$ 2. **Committees with exactly 4 men:** The committee must contain 4 men and $5 - 4 = 1$ woman. $\\mathrm{Number\\ of\\ ways} = \\binom{n}{4} \\times \\binom{6}{1} = 6\\binom{n}{4}$ 3. **Equating the two expressions:** $15\\binom{n}{3} = 6\\binom{n}{4}$ Divide both sides by 3: $5\\binom{n}{3} = 2\\binom{n}{4}$ Using the relation $\\binom{n}{4} = \\frac{n - 3}{4}\\binom{n}{3}$: $5\\binom{n}{3} = 2 \\times \\frac{n - 3}{4}\\binom{n}{3} = \\frac{n - 3}{2}\\binom{n}{3}$ Since $n \\geq 4$, $\\binom{n}{3} eq 0$, so we can divide both sides by $\\binom{n}{3}$: $5 = \\frac{n - 3}{2} \\Rightarrow 10 = n - 3 \\Rightarrow n = 13$ **Common Traps:** - Setting $\\binom{n}{3} = \\binom{n}{4}$ ignores the selection of the women needed to complete the 5-member committee, giving $\\frac{n-3}{4} = 1 \\Rightarrow n = 7$. - Forgetting to add 3 after solving $n - 3 = 10$ leads to the distractor 10.",
+          "explanation": "To form a committee of 5 members: 1. **Committees with exactly 3 men:** Since there are 5 members in total, the committee must contain 3 men and $5 - 3 = 2$ women. $\\mathrm{Number\\ of\\ ways} = \\binom{n}{3} \\times \\binom{6}{2} = \\binom{n}{3} \\times \\frac{6 \\times 5}{2} = 15\\binom{n}{3}$ 2. **Committees with exactly 4 men:** The committee must contain 4 men and $5 - 4 = 1$ woman. $\\mathrm{Number\\ of\\ ways} = \\binom{n}{4} \\times \\binom{6}{1} = 6\\binom{n}{4}$ 3. **Equating the two expressions:** $15\\binom{n}{3} = 6\\binom{n}{4}$ Divide both sides by 3: $5\\binom{n}{3} = 2\\binom{n}{4}$ Using the relation $\\binom{n}{4} = \\frac{n - 3}{4}\\binom{n}{3}$: $5\\binom{n}{3} = 2 \\times \\frac{n - 3}{4}\\binom{n}{3} = \\frac{n - 3}{2}\\binom{n}{3}$ Since $n \\geq 4$, $\\binom{n}{3} eq 0$, so we can divide both sides by $\\binom{n}{3}$: $5 = \\frac{n - 3}{2} \\Rightarrow 10 = n - 3 \\Rightarrow n = 13$ **Common Traps:** - Setting $\\binom{n}{3} = \\binom{n}{4}$ ignores the selection of the women needed to complete the 5-member committee, giving $\\frac{n-3}{4} = 1 \\Rightarrow n = 7$. - Forgetting to add 3 after solving $n - 3 = 10$ leads to the distractor 10."
+        },
+        {
+          "q": "A committee of 3 people is to be selected from a group of 5 people. The number of ways to form this committee is given by the combination formula $^nC_r = \\frac{n!}{r!(n-r)!}$. How many different committees can be formed? Show your complete algebraic work.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Combinations and Committee Selections",
+          "answer": "Final Answer: 10. The problem requires us to find the number of combinations of selecting 3 people from a group of 5. This is a direct application of the combination formula $^nC_r$, where $n$ is the total number of items to choose from, and $r$ is the number of items to choose. In this case, $n=5$ and $r=3$. Using the formula: $^5C_3 = \\frac{5!}{3!(5-3)!} = \\frac{5!}{3!2!} = \\frac{5 \\times 4 \\times 3!}{3! \\times (2 \\times 1)} = \\frac{5 \\times 4}{2} = \\frac{20}{2} = 10$. Therefore, there are 10 different committees that can be formed. The calculation $5 \\times 4 \\times 3 = 60$ represents the number of permutations (where order matters), not combinations. $^5C_3$ calculation is correct.",
+          "explanation": "The problem requires us to find the number of combinations of selecting 3 people from a group of 5. This is a direct application of the combination formula $^nC_r$, where $n$ is the total number of items to choose from, and $r$ is the number of items to choose. In this case, $n=5$ and $r=3$. Using the formula: $^5C_3 = \\frac{5!}{3!(5-3)!} = \\frac{5!}{3!2!} = \\frac{5 \\times 4 \\times 3!}{3! \\times (2 \\times 1)} = \\frac{5 \\times 4}{2} = \\frac{20}{2} = 10$. Therefore, there are 10 different committees that can be formed. The calculation $5 \\times 4 \\times 3 = 60$ represents the number of permutations (where order matters), not combinations. $^5C_3$ calculation is correct."
+        },
+        {
+          "q": "Find the number of distinct arrangements of the letters of the word $\\mathrm{SUCCESSFULLY}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Restricted Arrangements and Separations",
+          "answer": "Final Answer: 19958400. Applying Permutations & Combinations principles, $\\frac{12!}{3!2!2!2!}=19958400$ Therefore, the verified correct option is 19958400.",
+          "explanation": "Applying Permutations & Combinations principles, $\\frac{12!}{3!2!2!2!}=19958400$ Therefore, the verified correct option is 19958400."
+        },
+        {
+          "q": "Find the number of distinct arrangements of the letters of the word $\\mathrm{ENGINEERING}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Permutations & Combinations Practice Exercises",
+          "answer": "Final Answer: 1663200. Applying Permutations & Combinations principles, $\\frac{11!}{3!3!2!2!}=1663200$ Therefore, the verified correct option is 1663200.",
+          "explanation": "Applying Permutations & Combinations principles, $\\frac{11!}{3!3!2!2!}=1663200$ Therefore, the verified correct option is 1663200.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -1.0,
+                "label": "$(1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Find the number of distinct arrangements of the letters of the word $\\mathrm{ARRANGEMENT}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Fundamental Counting and Linear Permutations",
+          "answer": "Final Answer: 4989600. Applying Permutations & Combinations principles, $\\frac{11!}{2!2!2!2!}=4989600$ Therefore, the verified correct option is 4989600.",
+          "explanation": "Applying Permutations & Combinations principles, $\\frac{11!}{2!2!2!2!}=4989600$ Therefore, the verified correct option is 4989600."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Find the number of distinct arrangements of the letters of the word $\\mathrm{MATHEMATICS}$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Permutations with Repetitions and Identical Items",
+          "answer": "Final Answer: 9979200. Applying Permutations & Combinations principles, $\\frac{11!}{2!2!2!}=9979200$ Therefore, the verified correct option is 9979200.",
+          "explanation": "Applying Permutations & Combinations principles, $\\frac{11!}{2!2!2!}=9979200$ Therefore, the verified correct option is 9979200."
+        },
+        {
+          "q": "Find the number of distinct arrangements of the letters of the word $\\mathrm{ACCOUNTANT}$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Combinations and Committee Selections",
+          "answer": "Final Answer: 302400. Applying Permutations & Combinations principles, $\\frac{10!}{2!2!2!2!}=302400$ Therefore, the verified correct option is 302400.",
+          "explanation": "Applying Permutations & Combinations principles, $\\frac{10!}{2!2!2!2!}=302400$ Therefore, the verified correct option is 302400."
+        },
+        {
+          "q": "In how many distinct ways can $12$ different people be seated around a circular table (rotations considered identical)? Show your complete algebraic work.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Restricted Arrangements and Separations",
+          "answer": "Final Answer: 39916800. Applying Permutations & Combinations principles, $(n-1)!=(12-1)!=39916800$ Therefore, the verified correct option is 39916800.",
+          "explanation": "Applying Permutations & Combinations principles, $(n-1)!=(12-1)!=39916800$ Therefore, the verified correct option is 39916800.",
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "Q1",
+              "Q2",
+              "Q3",
+              "Q4",
+              "Q5"
+            ],
+            "values": [
+              15,
+              21,
+              26,
+              19,
+              24
+            ],
+            "ylabel": "Frequency",
+            "highlight_index": 2,
+            "width": 230
+          }
+        },
+        {
+          "q": "Find the number of distinct arrangements of the letters of the word $\\mathrm{MISSISSIPPI}$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Permutations & Combinations Practice Exercises",
+          "answer": "Final Answer: 34650. Applying Permutations & Combinations principles, $\\frac{11!}{4!4!2!}=34650$ Therefore, the verified correct option is 34650.",
+          "explanation": "Applying Permutations & Combinations principles, $\\frac{11!}{4!4!2!}=34650$ Therefore, the verified correct option is 34650."
+        },
+        {
+          "q": "Find the number of distinct arrangements of the letters of the word $\\mathrm{STATISTICS}$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Fundamental Counting and Linear Permutations",
+          "answer": "Final Answer: 50400. Applying Permutations & Combinations principles, $\\frac{10!}{3!3!2!}=50400$ Therefore, the verified correct option is 50400.",
+          "explanation": "Applying Permutations & Combinations principles, $\\frac{10!}{3!3!2!}=50400$ Therefore, the verified correct option is 50400."
+        },
+        {
+          "q": "In how many distinct ways can $11$ different people be seated around a circular table (rotations considered identical)? Show your complete algebraic work.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Permutations with Repetitions and Identical Items",
+          "answer": "Final Answer: 3628800. Applying Permutations & Combinations principles, $(n-1)!=(11-1)!=3628800$ Therefore, the verified correct option is 3628800.",
+          "explanation": "Applying Permutations & Combinations principles, $(n-1)!=(11-1)!=3628800$ Therefore, the verified correct option is 3628800."
+        },
+        {
+          "q": "In how many distinct ways can $10$ different people be seated around a circular table (rotations considered identical)? Show your complete algebraic work.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Combinations and Committee Selections",
+          "answer": "Final Answer: 362880. Applying Permutations & Combinations principles, $(n-1)!=(10-1)!=362880$ Therefore, the verified correct option is 362880.",
+          "explanation": "Applying Permutations & Combinations principles, $(n-1)!=(10-1)!=362880$ Therefore, the verified correct option is 362880."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "Find the number of distinct arrangements of the letters of the word $\\mathrm{ARRANGE}$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Restricted Arrangements and Separations",
+          "cross_lesson": "7.01 Differentiation and Rates of Change",
+          "answer": "Final Answer: 1260. Applying Permutations & Combinations principles, $\\frac{7!}{2!2!}=1260$ Therefore, the verified correct option is 1260.",
+          "explanation": "Applying Permutations & Combinations principles, $\\frac{7!}{2!2!}=1260$ Therefore, the verified correct option is 1260."
+        },
+        {
+          "q": "In how many distinct ways can $9$ different people be seated around a circular table (rotations considered identical)? Show your complete algebraic work.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Permutations & Combinations Practice Exercises",
+          "cross_lesson": "8.01 Integration and Kinematics",
+          "answer": "Final Answer: 40320. Applying Permutations & Combinations principles, $(n-1)!=(9-1)!=40320$ Therefore, the verified correct option is 40320.",
+          "explanation": "Applying Permutations & Combinations principles, $(n-1)!=(9-1)!=40320$ Therefore, the verified correct option is 40320.",
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "Q1",
+              "Q2",
+              "Q3",
+              "Q4",
+              "Q5"
+            ],
+            "values": [
+              21,
+              27,
+              32,
+              25,
+              30
+            ],
+            "ylabel": "Frequency",
+            "highlight_index": 2,
+            "width": 230
+          }
+        },
+        {
+          "q": "Find the number of distinct arrangements of the letters of the word $\\mathrm{BALLOON}$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Fundamental Counting and Linear Permutations",
+          "cross_lesson": "1.01 Functions, Modulus and Quadratics",
+          "answer": "Final Answer: 1260. Applying Permutations & Combinations principles, $\\frac{7!}{2!2!}=1260$ Therefore, the verified correct option is 1260.",
+          "explanation": "Applying Permutations & Combinations principles, $\\frac{7!}{2!2!}=1260$ Therefore, the verified correct option is 1260."
+        },
+        {
+          "q": "Find the number of distinct arrangements of the letters of the word $\\mathrm{ADDRESS}$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Permutations with Repetitions and Identical Items",
+          "cross_lesson": "2.01 Simultaneous Equations and Inequalities",
+          "answer": "Final Answer: 1260. Applying Permutations & Combinations principles, $\\frac{7!}{2!2!}=1260$ Therefore, the verified correct option is 1260.",
+          "explanation": "Applying Permutations & Combinations principles, $\\frac{7!}{2!2!}=1260$ Therefore, the verified correct option is 1260."
+        },
+        {
+          "q": "In how many distinct ways can $8$ different people be seated around a circular table (rotations considered identical)? Show your complete algebraic work.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Combinations and Committee Selections",
+          "cross_lesson": "3.01 Indices, Surds and Polynomials",
+          "answer": "Final Answer: 5040. Applying Permutations & Combinations principles, $(n-1)!=(8-1)!=5040$ Therefore, the verified correct option is 5040.",
+          "explanation": "Applying Permutations & Combinations principles, $(n-1)!=(8-1)!=5040$ Therefore, the verified correct option is 5040."
+        },
+        {
+          "q": "In how many distinct ways can $6$ different people be seated around a circular table (rotations considered identical)? Show your complete algebraic work.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Restricted Arrangements and Separations",
+          "cross_lesson": "4.01 Logarithmic and Exponential Functions",
+          "answer": "Final Answer: 120. Applying Permutations & Combinations principles, $(n-1)!=(6-1)!=120$ Therefore, the verified correct option is 120.",
+          "explanation": "Applying Permutations & Combinations principles, $(n-1)!=(6-1)!=120$ Therefore, the verified correct option is 120."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+      "questions": [
+        {
+          "q": "Evaluate the number of permutations \\( {}^{5}P_{2} \\).",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Permutations & Combinations Practice Exercises",
+          "choices": [
+            "25",
+            "21",
+            "10",
+            "20"
+          ],
+          "correct": 3,
+          "answer": "\\( {}^{n}P_{r} = \\frac{n!}{(n-r)!} \\implies {}^{5}P_{2} = 5 \\times 4 = 20 \\).",
+          "explanation": "\\( {}^{n}P_{r} = \\frac{n!}{(n-r)!} \\implies {}^{5}P_{2} = 5 \\times 4 = 20 \\)."
+        },
+        {
+          "q": "Evaluate the number of permutations \\( {}^{6}P_{2} \\).",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Permutations & Combinations Practice Exercises",
+          "choices": [
+            "12",
+            "15",
+            "36",
+            "30"
+          ],
+          "correct": 3,
+          "answer": "\\( {}^{n}P_{r} = \\frac{n!}{(n-r)!} \\implies {}^{6}P_{2} = 6 \\times 5 = 30 \\).",
+          "explanation": "\\( {}^{n}P_{r} = \\frac{n!}{(n-r)!} \\implies {}^{6}P_{2} = 6 \\times 5 = 30 \\)."
+        },
+        {
+          "q": "Evaluate the number of permutations \\( {}^{7}P_{2} \\).",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Permutations & Combinations Practice Exercises",
+          "choices": [
+            "21",
+            "42",
+            "49",
+            "14"
+          ],
+          "correct": 1,
+          "answer": "\\( {}^{n}P_{r} = \\frac{n!}{(n-r)!} \\implies {}^{7}P_{2} = 7 \\times 6 = 42 \\).",
+          "explanation": "\\( {}^{n}P_{r} = \\frac{n!}{(n-r)!} \\implies {}^{7}P_{2} = 7 \\times 6 = 42 \\).",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (0))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -2.0,
+                "label": "$(0,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Evaluate the number of permutations \\( {}^{8}P_{2} \\).",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Permutations & Combinations Practice Exercises",
+          "choices": [
+            "64",
+            "56",
+            "16",
+            "28"
+          ],
+          "correct": 1,
+          "answer": "\\( {}^{n}P_{r} = \\frac{n!}{(n-r)!} \\implies {}^{8}P_{2} = 8 \\times 7 = 56 \\).",
+          "explanation": "\\( {}^{n}P_{r} = \\frac{n!}{(n-r)!} \\implies {}^{8}P_{2} = 8 \\times 7 = 56 \\)."
+        },
+        {
+          "q": "Evaluate the number of permutations \\( {}^{9}P_{2} \\).",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Permutations & Combinations Practice Exercises",
+          "choices": [
+            "72",
+            "81",
+            "18",
+            "36"
+          ],
+          "correct": 0,
+          "answer": "\\( {}^{n}P_{r} = \\frac{n!}{(n-r)!} \\implies {}^{9}P_{2} = 9 \\times 8 = 72 \\).",
+          "explanation": "\\( {}^{n}P_{r} = \\frac{n!}{(n-r)!} \\implies {}^{9}P_{2} = 9 \\times 8 = 72 \\)."
+        },
+        {
+          "q": "Evaluate the number of permutations \\( {}^{10}P_{2} \\).",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Permutations & Combinations Practice Exercises",
+          "choices": [
+            "90",
+            "100",
+            "20",
+            "45"
+          ],
+          "correct": 0,
+          "answer": "\\( {}^{n}P_{r} = \\frac{n!}{(n-r)!} \\implies {}^{10}P_{2} = 10 \\times 9 = 90 \\).",
+          "explanation": "\\( {}^{n}P_{r} = \\frac{n!}{(n-r)!} \\implies {}^{10}P_{2} = 10 \\times 9 = 90 \\)."
+        },
+        {
+          "q": "A committee of 4 people is to be chosen from \\( 5 \\) men and \\( 4 \\) women. How many committees consist of exactly 2 men and 2 women?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Permutations & Combinations Practice Exercises",
+          "choices": [
+            "60",
+            "120",
+            "55",
+            "36"
+          ],
+          "correct": 0,
+          "answer": "\\( \\binom{5}{2} \\times \\binom{4}{2} = \\frac{5\\times4}{2} \\times \\frac{4\\times3}{2} = 60 \\).",
+          "explanation": "\\( \\binom{5}{2} \\times \\binom{4}{2} = \\frac{5\\times4}{2} \\times \\frac{4\\times3}{2} = 60 \\)."
+        },
+        {
+          "q": "A committee of 4 people is to be chosen from \\( 6 \\) men and \\( 5 \\) women. How many committees consist of exactly 2 men and 2 women?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Permutations & Combinations Practice Exercises",
+          "choices": [
+            "44",
+            "145",
+            "300",
+            "150"
+          ],
+          "correct": 3,
+          "answer": "\\( \\binom{6}{2} \\times \\binom{5}{2} = \\frac{6\\times5}{2} \\times \\frac{5\\times4}{2} = 150 \\).",
+          "explanation": "\\( \\binom{6}{2} \\times \\binom{5}{2} = \\frac{6\\times5}{2} \\times \\frac{5\\times4}{2} = 150 \\).",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
       "questions": [
         {
           "q": "In how many ways can $5$ different books be arranged on a shelf?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Fundamental Counting and Linear Permutations",
           "choices": [
             "$120$",
             "$24$",
@@ -16,10 +442,14 @@
             "$720$"
           ],
           "correct": 0,
-          "answer": "$5! = 5 \\times 4 \\times 3 \\times 2 \\times 1 = 120$."
+          "answer": "$5! = 5 \\times 4 \\times 3 \\times 2 \\times 1 = 120$.",
+          "explanation": "$5! = 5 \\times 4 \\times 3 \\times 2 \\times 1 = 120$."
         },
         {
           "q": "Evaluate the number of permutations of $7$ distinct items taken $3$ at a time, ${}^7 P_3$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Fundamental Counting and Linear Permutations",
           "choices": [
             "$210$",
             "$35$",
@@ -27,10 +457,14 @@
             "$840$"
           ],
           "correct": 0,
-          "answer": "${}^7 P_3 = \\frac{7!}{(7-3)!} = 7 \\times 6 \\times 5 = 210$."
+          "answer": "${}^7 P_3 = \\frac{7!}{(7-3)!} = 7 \\times 6 \\times 5 = 210$.",
+          "explanation": "${}^7 P_3 = \\frac{7!}{(7-3)!} = 7 \\times 6 \\times 5 = 210$."
         },
         {
           "q": "How many $4$-digit even numbers can be formed using digits $\\{1, 2, 3, 5, 7, 8\\}$ without repetition?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Fundamental Counting and Linear Permutations",
           "choices": [
             "$120$",
             "$60$",
@@ -38,15 +472,14 @@
             "$180$"
           ],
           "correct": 0,
-          "answer": "Last digit must be 2 or 8 ($2$ choices). First three digits from remaining 5 digits: ${}^5 P_3 = 60$. Total $= 60 \\times 2 = 120$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Permutations with Repetitions and Identical Items",
-      "questions": [
+          "answer": "Last digit must be 2 or 8 ($2$ choices). First three digits from remaining 5 digits: ${}^5 P_3 = 60$. Total $= 60 \\times 2 = 120$.",
+          "explanation": "Last digit must be 2 or 8 ($2$ choices). First three digits from remaining 5 digits: ${}^5 P_3 = 60$. Total $= 60 \\times 2 = 120$."
+        },
         {
-          "q": "Find the number of distinct permutations of all the letters in the word $\\text{PARALLEL}$.",
+          "q": "Find the number of distinct permutations of all the letters in the word $\\mathrm{PARALLEL}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Permutations with Repetitions and Identical Items",
           "choices": [
             "$3360$",
             "$6720$",
@@ -54,10 +487,14 @@
             "$40320$"
           ],
           "correct": 0,
-          "answer": "8 letters total: 3 L's, 2 A's, 1 P, 1 R, 1 E. Total $= \\frac{8!}{3! 2!} = \\frac{40320}{12} = 3360$."
+          "answer": "8 letters total: 3 L's, 2 A's, 1 P, 1 R, 1 E. Total $= \\frac{8!}{3! 2!} = \\frac{40320}{12} = 3360$.",
+          "explanation": "8 letters total: 3 L's, 2 A's, 1 P, 1 R, 1 E. Total $= \\frac{8!}{3! 2!} = \\frac{40320}{12} = 3360$."
         },
         {
-          "q": "How many 6-letter arrangements of $\\text{PEPPER}$ begin with the letter $\\text{P}$?",
+          "q": "How many 6-letter arrangements of $\\mathrm{PEPPER}$ begin with the letter $\\mathrm{P}$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Permutations with Repetitions and Identical Items",
           "choices": [
             "$30$",
             "$60$",
@@ -65,10 +502,33 @@
             "$120$"
           ],
           "correct": 0,
-          "answer": "Fix one P first. Remaining 5 letters: 2 P's, 2 E's, 1 R. Arrangements $= \\frac{5!}{2! 2!} = \\frac{120}{4} = 30$."
+          "answer": "Fix one P first. Remaining 5 letters: 2 P's, 2 E's, 1 R. Arrangements $= \\frac{5!}{2! 2!} = \\frac{120}{4} = 30$.",
+          "explanation": "Fix one P first. Remaining 5 letters: 2 P's, 2 E's, 1 R. Arrangements $= \\frac{5!}{2! 2!} = \\frac{120}{4} = 30$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -2.0,
+                "label": "$(1,-2)$"
+              }
+            ],
+            "width": 230
+          }
         },
         {
           "q": "How many 5-digit codes can be formed from digits $\\{3, 3, 3, 7, 7\\}$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Permutations with Repetitions and Identical Items",
           "choices": [
             "$10$",
             "$20$",
@@ -76,15 +536,14 @@
             "$120$"
           ],
           "correct": 0,
-          "answer": "$\\frac{5!}{3! 2!} = \\frac{120}{6 \\times 2} = 10$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Combinations and Committee Selections",
-      "questions": [
+          "answer": "$\\frac{5!}{3! 2!} = \\frac{120}{6 \\times 2} = 10$.",
+          "explanation": "$\\frac{5!}{3! 2!} = \\frac{120}{6 \\times 2} = 10$."
+        },
         {
           "q": "A committee of $4$ is to be chosen from $9$ people. How many distinct committees can be formed?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Combinations and Committee Selections",
           "choices": [
             "$126$",
             "$3024$",
@@ -92,10 +551,14 @@
             "$252$"
           ],
           "correct": 0,
-          "answer": "${}^9 C_4 = \\frac{9 \\times 8 \\times 7 \\times 6}{4 \\times 3 \\times 2 \\times 1} = 126$."
+          "answer": "${}^9 C_4 = \\frac{9 \\times 8 \\times 7 \\times 6}{4 \\times 3 \\times 2 \\times 1} = 126$.",
+          "explanation": "${}^9 C_4 = \\frac{9 \\times 8 \\times 7 \\times 6}{4 \\times 3 \\times 2 \\times 1} = 126$."
         },
         {
           "q": "A team of $5$ is selected from $6$ boys and $4$ girls. How many teams contain exactly $3$ boys and $2$ girls?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Combinations and Committee Selections",
           "choices": [
             "$120$",
             "$60$",
@@ -103,10 +566,14 @@
             "$100$"
           ],
           "correct": 0,
-          "answer": "Choose boys: $\\binom{6}{3} = 20$. Choose girls: $\\binom{4}{2} = 6$. Total $= 20 \\times 6 = 120$."
+          "answer": "Choose boys: $\\binom{6}{3} = 20$. Choose girls: $\\binom{4}{2} = 6$. Total $= 20 \\times 6 = 120$.",
+          "explanation": "Choose boys: $\\binom{6}{3} = 20$. Choose girls: $\\binom{4}{2} = 6$. Total $= 20 \\times 6 = 120$."
         },
         {
           "q": "From $10$ points on a plane where no three are collinear, how many distinct triangles can be drawn?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Combinations and Committee Selections",
           "choices": [
             "$120$",
             "$720$",
@@ -114,15 +581,19 @@
             "$45$"
           ],
           "correct": 0,
-          "answer": "${}^{10} C_3 = \\frac{10 \\times 9 \\times 8}{3 \\times 2 \\times 1} = 120$."
+          "answer": "${}^{10} C_3 = \\frac{10 \\times 9 \\times 8}{3 \\times 2 \\times 1} = 120$.",
+          "explanation": "${}^{10} C_3 = \\frac{10 \\times 9 \\times 8}{3 \\times 2 \\times 1} = 120$."
         }
       ]
     },
     {
-      "heading": "Section 4: Restricted Arrangements and Separations",
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
       "questions": [
         {
           "q": "In how many ways can $4$ boys and $3$ girls sit in a row if all $3$ girls must sit together?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Restricted Arrangements and Separations",
           "choices": [
             "$720$",
             "$5040$",
@@ -130,10 +601,15 @@
             "$288$"
           ],
           "correct": 0,
-          "answer": "Treat 3 girls as 1 block. Total units: 4 boys + 1 block = 5 units ($5! = 120$). Girls within block: $3! = 6$. Total $= 120 \\times 6 = 720$."
+          "answer": "Treat 3 girls as 1 block. Total units: 4 boys + 1 block = 5 units ($5! = 120$). Girls within block: $3! = 6$. Total $= 120 \\times 6 = 720$.",
+          "explanation": "Treat 3 girls as 1 block. Total units: 4 boys + 1 block = 5 units ($5! = 120$). Girls within block: $3! = 6$. Total $= 120 \\times 6 = 720$.",
+          "cross_lesson": "2.01 Simultaneous Equations and Inequalities"
         },
         {
           "q": "In how many ways can $5$ people sit around a circular dinner table?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Restricted Arrangements and Separations",
           "choices": [
             "$24$",
             "$120$",
@@ -141,10 +617,35 @@
             "$12$"
           ],
           "correct": 0,
-          "answer": "Circular permutations: $(n-1)! = (5-1)! = 4! = 24$."
+          "answer": "Circular permutations: $(n-1)! = (5-1)! = 4! = 24$.",
+          "explanation": "Circular permutations: $(n-1)! = (5-1)! = 4! = 24$.",
+          "cross_lesson": "3.01 Indices, Surds and Polynomials",
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "Q1",
+              "Q2",
+              "Q3",
+              "Q4",
+              "Q5"
+            ],
+            "values": [
+              18,
+              24,
+              29,
+              22,
+              27
+            ],
+            "ylabel": "Frequency",
+            "highlight_index": 2,
+            "width": 230
+          }
         },
         {
           "q": "A committee of $4$ is selected from $5$ men and $5$ women. How many committees contain at least one woman?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Restricted Arrangements and Separations",
           "choices": [
             "$205$",
             "$210$",
@@ -152,7 +653,108 @@
             "$150$"
           ],
           "correct": 0,
-          "answer": "Total selections $= \\binom{10}{4} = 210$. All-men selections $= \\binom{5}{4} = 5$. At least one woman $= 210 - 5 = 205$."
+          "answer": "Total selections $= \\binom{10}{4} = 210$. All-men selections $= \\binom{5}{4} = 5$. At least one woman $= 210 - 5 = 205$.",
+          "explanation": "Total selections $= \\binom{10}{4} = 210$. All-men selections $= \\binom{5}{4} = 5$. At least one woman $= 210 - 5 = 205$.",
+          "cross_lesson": "4.01 Logarithmic and Exponential Functions"
+        },
+        {
+          "q": "In how many distinct ways can $7$ different people be seated around a circular table (rotations considered identical)?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Permutations & Combinations Practice Exercises",
+          "choices": [
+            "720",
+            "766",
+            "647",
+            "611"
+          ],
+          "correct": 0,
+          "answer": "Applying Permutations & Combinations principles, $(n-1)!=(7-1)!=720$ Therefore, the verified correct option is 720.",
+          "explanation": "Applying Permutations & Combinations principles, $(n-1)!=(7-1)!=720$ Therefore, the verified correct option is 720.",
+          "cross_lesson": "5.01 Trigonometric Functions and Circular Measure"
+        },
+        {
+          "q": "Find the number of distinct arrangements of the letters of the word $\\mathrm{GIGGLE}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Fundamental Counting and Linear Permutations",
+          "choices": [
+            "214",
+            "141",
+            "180",
+            "207"
+          ],
+          "correct": 2,
+          "answer": "Applying Permutations & Combinations principles, $\\frac{6!}{3!}=180$ Therefore, the verified correct option is 180.",
+          "explanation": "Applying Permutations & Combinations principles, $\\frac{6!}{3!}=180$ Therefore, the verified correct option is 180.",
+          "cross_lesson": "7.01 Differentiation and Rates of Change"
+        },
+        {
+          "q": "Find the number of distinct arrangements of the letters of the word $\\mathrm{LEVEL}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Permutations with Repetitions and Identical Items",
+          "choices": [
+            "12",
+            "29",
+            "30",
+            "76"
+          ],
+          "correct": 2,
+          "answer": "Applying Permutations & Combinations principles, $\\frac{5!}{2!2!}=30$ Therefore, the verified correct option is 30.",
+          "explanation": "Applying Permutations & Combinations principles, $\\frac{5!}{2!2!}=30$ Therefore, the verified correct option is 30.",
+          "cross_lesson": "8.01 Integration and Kinematics",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -2.0,
+                "label": "$(-1,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Find the number of distinct arrangements of the letters of the word $\\mathrm{PEPPER}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Combinations and Committee Selections",
+          "choices": [
+            "33",
+            "17",
+            "34",
+            "60"
+          ],
+          "correct": 3,
+          "answer": "Applying Permutations & Combinations principles, $\\frac{6!}{3!2!}=60$ Therefore, the verified correct option is 60.",
+          "explanation": "Applying Permutations & Combinations principles, $\\frac{6!}{3!2!}=60$ Therefore, the verified correct option is 60.",
+          "cross_lesson": "1.01 Functions, Modulus and Quadratics"
+        },
+        {
+          "q": "Find the number of distinct arrangements of the letters of the word $\\mathrm{BANANA}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Restricted Arrangements and Separations",
+          "choices": [
+            "52",
+            "71",
+            "60",
+            "62"
+          ],
+          "correct": 2,
+          "answer": "Applying Permutations & Combinations principles, $\\frac{6!}{3!2!}=60$ Therefore, the verified correct option is 60.",
+          "explanation": "Applying Permutations & Combinations principles, $\\frac{6!}{3!2!}=60$ Therefore, the verified correct option is 60.",
+          "cross_lesson": "2.01 Simultaneous Equations and Inequalities"
         }
       ]
     }

@@ -3,12 +3,273 @@
   "num": "1.01",
   "slug": "proof-by-mathematical-induction",
   "title": "Proof by Mathematical Induction",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 1.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: The Principle & Architecture of Induction",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+      "questions": [
+        {
+          "q": "State the three steps required for a valid proof by mathematical induction.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "The three steps of induction",
+          "answer": "(1) Base case: verify the statement holds for the smallest value of $n$ (usually $n=1$). (2) Inductive hypothesis: assume the statement holds for $n=k$. (3) Inductive step: use the assumption to prove the statement holds for $n=k+1$. Concluding, by the principle of mathematical induction, the statement holds for all $n$ in the given range.",
+          "explanation": "(1) Base case: verify the statement holds for the smallest value of $n$ (usually $n=1$). (2) Inductive hypothesis: assume the statement holds for $n=k$. (3) Inductive step: use the assumption to prove the statement holds for $n=k+1$. Concluding, by the principle of mathematical induction, the statement holds for all $n$ in the given range."
+        },
+        {
+          "q": "Prove by induction that $1+2+3+\\cdots+n=n(n+1)/2$ for all $n\\geq1$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Proving a summation formula",
+          "answer": "Base case ($n=1$): LHS $=1$. RHS $=1(2)/2=1$. True. Inductive hypothesis: assume $1+2+\\cdots+k=k(k+1)/2$. For $n=k+1$: $1+2+\\cdots+k+(k+1)=k(k+1)/2+(k+1)$. Factoring out $(k+1)$: this is $(k+1)(k/2+1)=(k+1)(k+2)/2$, which matches the formula with $n=k+1$. Since it holds for $n=1$ and $n=k\\Rightarrow n=k+1$, by induction it holds for all $n\\geq1$.",
+          "explanation": "Base case ($n=1$): LHS $=1$. RHS $=1(2)/2=1$. True. Inductive hypothesis: assume $1+2+\\cdots+k=k(k+1)/2$. For $n=k+1$: $1+2+\\cdots+k+(k+1)=k(k+1)/2+(k+1)$. Factoring out $(k+1)$: this is $(k+1)(k/2+1)=(k+1)(k+2)/2$, which matches the formula with $n=k+1$. Since it holds for $n=1$ and $n=k\\Rightarrow n=k+1$, by induction it holds for all $n\\geq1$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (0))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -1.0,
+                "label": "$(0,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Prove by induction that $1^2+2^2+3^2+\\cdots+n^2=n(n+1)(2n+1)/6$ for all $n\\geq1$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Proving a summation formula",
+          "answer": "Base case ($n=1$): LHS $=1$. RHS $=1(2)(3)/6=1$. True. Assume true for $n=k$: $1^2+2^2+\\cdots+k^2=k(k+1)(2k+1)/6$. For $n=k+1$: $1^2+\\cdots+k^2+(k+1)^2=k(k+1)(2k+1)/6+(k+1)^2$. Factoring out $(k+1)$: this is $(k+1)[k(2k+1)/6+(k+1)]$. Combining the bracketed terms over a denominator of 6: this is $(k+1)(2k^2+7k+6)/6$. Since $2k^2+7k+6=(2k+3)(k+2)$, this equals $(k+1)(k+2)(2k+3)/6$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$.",
+          "explanation": "Base case ($n=1$): LHS $=1$. RHS $=1(2)(3)/6=1$. True. Assume true for $n=k$: $1^2+2^2+\\cdots+k^2=k(k+1)(2k+1)/6$. For $n=k+1$: $1^2+\\cdots+k^2+(k+1)^2=k(k+1)(2k+1)/6+(k+1)^2$. Factoring out $(k+1)$: this is $(k+1)[k(2k+1)/6+(k+1)]$. Combining the bracketed terms over a denominator of 6: this is $(k+1)(2k^2+7k+6)/6$. Since $2k^2+7k+6=(2k+3)(k+2)$, this equals $(k+1)(k+2)(2k+3)/6$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$."
+        },
+        {
+          "q": "Prove by induction that $7^n-1$ is divisible by $6$ for all $n\\geq1$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Proving divisibility results",
+          "answer": "Base case ($n=1$): $7^1-1=6$, divisible by 6. Assume $7^k-1=6m$ for some integer $m$, so $7^k=6m+1$. For $n=k+1$: $7^{k+1}-1=7\\cdot7^k-1=7(6m+1)-1=42m+6=6(7m+1)$, which is divisible by 6. By induction, $7^n-1$ is divisible by 6 for all $n\\geq1$.",
+          "explanation": "Base case ($n=1$): $7^1-1=6$, divisible by 6. Assume $7^k-1=6m$ for some integer $m$, so $7^k=6m+1$. For $n=k+1$: $7^{k+1}-1=7\\cdot7^k-1=7(6m+1)-1=42m+6=6(7m+1)$, which is divisible by 6. By induction, $7^n-1$ is divisible by 6 for all $n\\geq1$."
+        },
+        {
+          "q": "Prove by induction that $2^n>n^2$ for all integers $n\\geq5$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Induction with inequalities",
+          "answer": "Base case ($n=5$): $2^5=32$, $5^2=25$, and $32>25$. True. Assume $2^k>k^2$ for some $k\\geq5$. For $n=k+1$: $2^{k+1}=2\\cdot2^k>2k^2$. We need $2k^2\\geq(k+1)^2=k^2+2k+1$, i.e. $k^2-2k-1\\geq0$, which holds for $k\\geq3$ (true since $k\\geq5$). So $2^{k+1}>2k^2\\geq(k+1)^2$. By induction, $2^n>n^2$ for all $n\\geq5$.",
+          "explanation": "Base case ($n=5$): $2^5=32$, $5^2=25$, and $32>25$. True. Assume $2^k>k^2$ for some $k\\geq5$. For $n=k+1$: $2^{k+1}=2\\cdot2^k>2k^2$. We need $2k^2\\geq(k+1)^2=k^2+2k+1$, i.e. $k^2-2k-1\\geq0$, which holds for $k\\geq3$ (true since $k\\geq5$). So $2^{k+1}>2k^2\\geq(k+1)^2$. By induction, $2^n>n^2$ for all $n\\geq5$."
+        },
+        {
+          "q": "Prove by induction that $\\frac{d^n}{dx^n}(e^{ax})=a^ne^{ax}$ for all positive integers $n$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Induction in calculus: derivatives of a product",
+          "answer": "Base case ($n=1$): differentiating $e^{ax}$ once gives $ae^{ax}=a^1e^{ax}$, matching the formula. Inductive hypothesis: assume the $k$-th derivative of $e^{ax}$ is $a^ke^{ax}$. Differentiating this once more: $\\frac{d}{dx}(a^ke^{ax})=a^k\\cdot ae^{ax}=a^{k+1}e^{ax}$ — this is exactly the $(k+1)$-th derivative, matching the formula at $n=k+1$. By induction, true for all positive integers $n$.",
+          "explanation": "Base case ($n=1$): differentiating $e^{ax}$ once gives $ae^{ax}=a^1e^{ax}$, matching the formula. Inductive hypothesis: assume the $k$-th derivative of $e^{ax}$ is $a^ke^{ax}$. Differentiating this once more: $\\frac{d}{dx}(a^ke^{ax})=a^k\\cdot ae^{ax}=a^{k+1}e^{ax}$ — this is exactly the $(k+1)$-th derivative, matching the formula at $n=k+1$. By induction, true for all positive integers $n$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -1.0,
+                "label": "$(1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A sequence is defined by $u_1=3$ and $u_{n+1}=2u_n-1$. Prove by induction that $u_n=2^n+1$ for all $n\\geq1$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Induction with a recursively defined sequence",
+          "answer": "Base case ($n=1$): $u_1=3$ (given). Formula: $2^1+1=3$. True. Assume $u_k=2^k+1$. Then $u_{k+1}=2u_k-1=2(2^k+1)-1=2^{k+1}+2-1=2^{k+1}+1$, matching the formula at $n=k+1$. By induction, $u_n=2^n+1$ for all $n\\geq1$.",
+          "explanation": "Base case ($n=1$): $u_1=3$ (given). Formula: $2^1+1=3$. True. Assume $u_k=2^k+1$. Then $u_{k+1}=2u_k-1=2(2^k+1)-1=2^{k+1}+2-1=2^{k+1}+1$, matching the formula at $n=k+1$. By induction, $u_n=2^n+1$ for all $n\\geq1$."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Prove by induction that the sum $3^0+3^1+\\cdots+3^{n-1}$ equals $(3^n-1)/2$ for all $n\\geq1$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Proving a geometric-series-style summation",
+          "answer": "Base case ($n=1$): LHS $=3^0=1$. RHS $=(3^1-1)/2=2/2=1$. True. Assume the sum $3^0+\\cdots+3^{k-1}=(3^k-1)/2$. For $n=k+1$: adding the next term $3^k$ gives $(3^k-1)/2+3^k$. Combining over a denominator of 2: this is $(3^k-1+2\\cdot3^k)/2=(3\\cdot3^k-1)/2=(3^{k+1}-1)/2$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$.",
+          "explanation": "Base case ($n=1$): LHS $=3^0=1$. RHS $=(3^1-1)/2=2/2=1$. True. Assume the sum $3^0+\\cdots+3^{k-1}=(3^k-1)/2$. For $n=k+1$: adding the next term $3^k$ gives $(3^k-1)/2+3^k$. Combining over a denominator of 2: this is $(3^k-1+2\\cdot3^k)/2=(3\\cdot3^k-1)/2=(3^{k+1}-1)/2$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$."
+        },
+        {
+          "q": "Prove by induction that the sum $1\\cdot1!+2\\cdot2!+\\cdots+n\\cdot n!$ equals $(n+1)!-1$ for all $n\\geq1$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Proving a geometric-series-style summation",
+          "answer": "Base case ($n=1$): LHS $=1\\cdot1!=1$. RHS $=2!-1=2-1=1$. True. Assume $1\\cdot1!+\\cdots+k\\cdot k!=(k+1)!-1$. For $n=k+1$: adding the next term $(k+1)(k+1)!$ gives $(k+1)!-1+(k+1)(k+1)!=(k+1)![1+(k+1)]-1=(k+1)!(k+2)-1=(k+2)!-1$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$.",
+          "explanation": "Base case ($n=1$): LHS $=1\\cdot1!=1$. RHS $=2!-1=2-1=1$. True. Assume $1\\cdot1!+\\cdots+k\\cdot k!=(k+1)!-1$. For $n=k+1$: adding the next term $(k+1)(k+1)!$ gives $(k+1)!-1+(k+1)(k+1)!=(k+1)![1+(k+1)]-1=(k+1)!(k+2)-1=(k+2)!-1$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$."
+        },
+        {
+          "q": "Prove by induction that $n!>2^n$ for all integers $n\\geq4$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Proving an inequality involving factorials",
+          "answer": "Base case ($n=4$): $4!=24$, $2^4=16$, and $24>16$. True. Assume $k!>2^k$ for some $k\\geq4$. For $n=k+1$: $(k+1)!=(k+1)\\cdot k!>(k+1)\\cdot2^k$. Since $k\\geq4$, $k+1\\geq5>2$, so $(k+1)\\cdot2^k>2\\cdot2^k=2^{k+1}$. Combining, $(k+1)!>2^{k+1}$, matching the inequality at $n=k+1$. By induction, $n!>2^n$ for all $n\\geq4$.",
+          "explanation": "Base case ($n=4$): $4!=24$, $2^4=16$, and $24>16$. True. Assume $k!>2^k$ for some $k\\geq4$. For $n=k+1$: $(k+1)!=(k+1)\\cdot k!>(k+1)\\cdot2^k$. Since $k\\geq4$, $k+1\\geq5>2$, so $(k+1)\\cdot2^k>2\\cdot2^k=2^{k+1}$. Combining, $(k+1)!>2^{k+1}$, matching the inequality at $n=k+1$. By induction, $n!>2^n$ for all $n\\geq4$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Prove by induction that $n^3+2n$ is divisible by $3$ for all positive integers $n\\geq1$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Proving a divisibility result with two variables",
+          "answer": "Base case ($n=1$): $1^3+2(1)=3$, divisible by 3. Assume $k^3+2k=3m$ for some integer $m$. For $n=k+1$: $(k+1)^3+2(k+1)=k^3+3k^2+3k+1+2k+2$. Grouping terms: this is $(k^3+2k)+(3k^2+3k+3)=3m+3(k^2+k+1)$. Factoring out 3: $3m+3(k^2+k+1)=3(m+k^2+k+1)$, which is divisible by 3. By induction, $n^3+2n$ is divisible by 3 for all $n\\geq1$.",
+          "explanation": "Base case ($n=1$): $1^3+2(1)=3$, divisible by 3. Assume $k^3+2k=3m$ for some integer $m$. For $n=k+1$: $(k+1)^3+2(k+1)=k^3+3k^2+3k+1+2k+2$. Grouping terms: this is $(k^3+2k)+(3k^2+3k+3)=3m+3(k^2+k+1)$. Factoring out 3: $3m+3(k^2+k+1)=3(m+k^2+k+1)$, which is divisible by 3. By induction, $n^3+2n$ is divisible by 3 for all $n\\geq1$."
+        },
+        {
+          "q": "Prove by induction that $9^n-1$ is divisible by $8$ for all positive integers $n\\geq1$, and explain briefly why a similar argument would show $a^n-1$ is divisible by $a-1$ for any integer $a>1$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Proving a divisibility result with two variables",
+          "answer": "Base case ($n=1$): $9^1-1=8$, divisible by 8. Assume $9^k-1=8m$ for some integer $m$, so $9^k=8m+1$. For $n=k+1$: $9^{k+1}-1=9\\cdot9^k-1=9(8m+1)-1=72m+9-1=72m+8=8(9m+1)$, divisible by 8. By induction, true for all $n\\geq1$. The same inductive pattern works for any base $a$: $a^{k+1}-1=a\\cdot a^k-1=a[(a-1)m'+1]-1=(a-1)(am')+(a-1)=(a-1)(am'+1)$, always a multiple of $a-1$.",
+          "explanation": "Base case ($n=1$): $9^1-1=8$, divisible by 8. Assume $9^k-1=8m$ for some integer $m$, so $9^k=8m+1$. For $n=k+1$: $9^{k+1}-1=9\\cdot9^k-1=9(8m+1)-1=72m+9-1=72m+8=8(9m+1)$, divisible by 8. By induction, true for all $n\\geq1$. The same inductive pattern works for any base $a$: $a^{k+1}-1=a\\cdot a^k-1=a[(a-1)m'+1]-1=(a-1)(am')+(a-1)=(a-1)(am'+1)$, always a multiple of $a-1$."
+        },
+        {
+          "q": "A sequence satisfies $S_1=2$ and $S_{n+1}=S_n+6n+2$ for $n\\geq1$. Prove by induction that $S_n=3n^2-n$ for all $n\\geq1$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Induction with a recurrence relation for a sequence of sums",
+          "answer": "Base case ($n=1$): $S_1=2$ (given). Formula: $3(1)^2-1=2$. True. Assume $S_k=3k^2-k$. Then $S_{k+1}=S_k+6k+2=3k^2-k+6k+2=3k^2+5k+2$. The formula at $n=k+1$ gives $3(k+1)^2-(k+1)=3k^2+6k+3-k-1=3k^2+5k+2$, which matches exactly. Since it holds for $n=1$ and $n=k\\Rightarrow n=k+1$, by induction $S_n=3n^2-n$ for all $n\\geq1$.",
+          "explanation": "Base case ($n=1$): $S_1=2$ (given). Formula: $3(1)^2-1=2$. True. Assume $S_k=3k^2-k$. Then $S_{k+1}=S_k+6k+2=3k^2-k+6k+2=3k^2+5k+2$. The formula at $n=k+1$ gives $3(k+1)^2-(k+1)=3k^2+6k+3-k-1=3k^2+5k+2$, which matches exactly. Since it holds for $n=1$ and $n=k\\Rightarrow n=k+1$, by induction $S_n=3n^2-n$ for all $n\\geq1$."
+        },
+        {
+          "q": "Prove by induction that $11^n-4^n$ is divisible by $7$ for all positive integers $n\\geq1$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Induction with a strengthened hypothesis",
+          "answer": "Base case ($n=1$): $11^1-4^1=7$, divisible by 7. Assume $11^k-4^k=7m$ for some integer $m$, so $11^k=7m+4^k$. For $n=k+1$: $11^{k+1}-4^{k+1}=11\\cdot11^k-4\\cdot4^k$. Substituting $11^k=7m+4^k$: this is $11(7m+4^k)-4\\cdot4^k=77m+11\\cdot4^k-4\\cdot4^k$. Combining the $4^k$ terms: $77m+7\\cdot4^k$. Factoring out 7: $7(11m+4^k)$, which is divisible by 7. By induction, $11^n-4^n$ is divisible by 7 for all $n\\geq1$.",
+          "explanation": "Base case ($n=1$): $11^1-4^1=7$, divisible by 7. Assume $11^k-4^k=7m$ for some integer $m$, so $11^k=7m+4^k$. For $n=k+1$: $11^{k+1}-4^{k+1}=11\\cdot11^k-4\\cdot4^k$. Substituting $11^k=7m+4^k$: this is $11(7m+4^k)-4\\cdot4^k=77m+11\\cdot4^k-4\\cdot4^k$. Combining the $4^k$ terms: $77m+7\\cdot4^k$. Factoring out 7: $7(11m+4^k)$, which is divisible by 7. By induction, $11^n-4^n$ is divisible by 7 for all $n\\geq1$."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "Prove by induction that $1^3+2^3+3^3+\\cdots+n^3=[n(n+1)/2]^2$ for all $n\\geq1$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Induction to prove a formula for the sum of cubes",
+          "cross_lesson": "6.01 Matrices (AI HL)",
+          "answer": "Base case ($n=1$): LHS $=1^3=1$. RHS $=[1(2)/2]^2=1^2=1$. True. Assume $1^3+\\cdots+k^3=[k(k+1)/2]^2$. For $n=k+1$: adding $(k+1)^3$ gives $[k(k+1)/2]^2+(k+1)^3$. Factoring out $(k+1)^2$: this is $(k+1)^2[k^2/4+(k+1)]$. Combining over a denominator of 4: this is $(k+1)^2(k^2+4k+4)/4$. Since $k^2+4k+4=(k+2)^2$, this is $(k+1)^2(k+2)^2/4=[(k+1)(k+2)/2]^2$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$.",
+          "explanation": "Base case ($n=1$): LHS $=1^3=1$. RHS $=[1(2)/2]^2=1^2=1$. True. Assume $1^3+\\cdots+k^3=[k(k+1)/2]^2$. For $n=k+1$: adding $(k+1)^3$ gives $[k(k+1)/2]^2+(k+1)^3$. Factoring out $(k+1)^2$: this is $(k+1)^2[k^2/4+(k+1)]$. Combining over a denominator of 4: this is $(k+1)^2(k^2+4k+4)/4$. Since $k^2+4k+4=(k+2)^2$, this is $(k+1)^2(k+2)^2/4=[(k+1)(k+2)/2]^2$, matching the formula at $n=k+1$. By induction, true for all $n\\geq1$."
+        },
+        {
+          "q": "Prove by induction that $5^n+2\\cdot3^{n-1}+1$ is divisible by $8$ for all positive integers $n\\geq1$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Induction to prove a formula for the sum of cubes",
+          "cross_lesson": "6.02 Graph Theory & Networks (AI HL)",
+          "answer": "Base case ($n=1$): $5^1+2(3^0)+1=5+2+1=8$, divisible by 8. Assume $5^k+2\\cdot3^{k-1}+1=8m$ for some integer $m$. Consider the difference between consecutive terms: $(5^{k+1}+2\\cdot3^k+1)-(5^k+2\\cdot3^{k-1}+1)=5^{k+1}-5^k+2\\cdot3^k-2\\cdot3^{k-1}$. This simplifies to $4\\cdot5^k+4\\cdot3^{k-1}=4(5^k+3^{k-1})$. Since $5^k$ and $3^{k-1}$ are both odd, their sum is even, so $4(5^k+3^{k-1})$ is a multiple of $8$. Therefore $5^{k+1}+2\\cdot3^k+1=8m+4(5^k+3^{k-1})$, and since both terms are multiples of $8$, so is their sum. By induction, the statement holds for all $n\\geq1$.",
+          "explanation": "Base case ($n=1$): $5^1+2(3^0)+1=5+2+1=8$, divisible by 8. Assume $5^k+2\\cdot3^{k-1}+1=8m$ for some integer $m$. Consider the difference between consecutive terms: $(5^{k+1}+2\\cdot3^k+1)-(5^k+2\\cdot3^{k-1}+1)=5^{k+1}-5^k+2\\cdot3^k-2\\cdot3^{k-1}$. This simplifies to $4\\cdot5^k+4\\cdot3^{k-1}=4(5^k+3^{k-1})$. Since $5^k$ and $3^{k-1}$ are both odd, their sum is even, so $4(5^k+3^{k-1})$ is a multiple of $8$. Therefore $5^{k+1}+2\\cdot3^k+1=8m+4(5^k+3^{k-1})$, and since both terms are multiples of $8$, so is their sum. By induction, the statement holds for all $n\\geq1$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Prove by induction that $1\\cdot2^1+2\\cdot2^2+3\\cdot2^3+\\cdots+n\\cdot2^n=(n-1)2^{n+1}+2$ for all $n\\geq1$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Induction to prove a formula for a weighted geometric sum",
+          "cross_lesson": "6.03 Markov Chains (AI HL)",
+          "answer": "Base case ($n=1$): LHS $=1\\cdot2^1=2$. RHS $=(1-1)2^2+2=0+2=2$. True. Assume $1\\cdot2^1+\\cdots+k\\cdot2^k=(k-1)2^{k+1}+2$. For $n=k+1$: adding the next term $(k+1)2^{k+1}$ gives $(k-1)2^{k+1}+2+(k+1)2^{k+1}$. Combining the $2^{k+1}$ terms: this is $[(k-1)+(k+1)]2^{k+1}+2=2k\\cdot2^{k+1}+2=k\\cdot2^{k+2}+2$. The formula at $n=k+1$ requires $[(k+1)-1]2^{k+2}+2=k\\cdot2^{k+2}+2$, which matches exactly. By induction, the formula holds for all $n\\geq1$.",
+          "explanation": "Base case ($n=1$): LHS $=1\\cdot2^1=2$. RHS $=(1-1)2^2+2=0+2=2$. True. Assume $1\\cdot2^1+\\cdots+k\\cdot2^k=(k-1)2^{k+1}+2$. For $n=k+1$: adding the next term $(k+1)2^{k+1}$ gives $(k-1)2^{k+1}+2+(k+1)2^{k+1}$. Combining the $2^{k+1}$ terms: this is $[(k-1)+(k+1)]2^{k+1}+2=2k\\cdot2^{k+1}+2=k\\cdot2^{k+2}+2$. The formula at $n=k+1$ requires $[(k+1)-1]2^{k+2}+2=k\\cdot2^{k+2}+2$, which matches exactly. By induction, the formula holds for all $n\\geq1$."
+        },
+        {
+          "q": "A student claims to prove that all horses are the same color using induction on the number of horses $n$ in a group: the base case $n=1$ is trivially true (one horse is trivially \"the same color\" as itself), and the student then argues that if any $k$ horses are the same color, then any $k+1$ horses must also be the same color. Explain precisely where this argument breaks down, and state why a correct induction proof must avoid this flaw.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "A closing check: identifying an invalid induction argument",
+          "cross_lesson": "1.02 Complex Numbers: Cartesian Form & Algebra",
+          "answer": "The flaw is in the inductive step: the argument tries to overlap two groups of $k$ horses (the first $k$ and the last $k$ out of $k+1$ total) and conclude they share a common color through the overlap. This overlap argument only works when the overlap is non-empty, which requires $k\\geq2$. It fails silently at the transition from $n=1$ to $n=2$, since two groups of $1$ horse each (drawn from a total of $2$) have no horse in common, so there is no shared reference point linking their colors. This illustrates why a correct induction proof must verify that the inductive step logic genuinely holds for the smallest values of $k$ used in the argument, not just assume it holds uniformly for all $k$.",
+          "explanation": "The flaw is in the inductive step: the argument tries to overlap two groups of $k$ horses (the first $k$ and the last $k$ out of $k+1$ total) and conclude they share a common color through the overlap. This overlap argument only works when the overlap is non-empty, which requires $k\\geq2$. It fails silently at the transition from $n=1$ to $n=2$, since two groups of $1$ horse each (drawn from a total of $2$) have no horse in common, so there is no shared reference point linking their colors. This illustrates why a correct induction proof must verify that the inductive step logic genuinely holds for the smallest values of $k$ used in the argument, not just assume it holds uniformly for all $k$."
+        },
+        {
+          "q": "Prove by induction that $1\\cdot2+2\\cdot3+3\\cdot4+\\cdots+n(n+1)=n(n+1)(n+2)/3$ for all $n\\geq1$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Proving a sum-of-products formula by induction",
+          "cross_lesson": "1.03 Polar Form, De Moivre's Theorem & Roots of Unity",
+          "answer": "Base case $n=1$: LHS $=1\\cdot2=2$, RHS $=1(2)(3)/3=2$. Equal, so the base case holds. Inductive step: assume $1\\cdot2+\\cdots+m(m+1)=m(m+1)(m+2)/3$ for some $m\\geq1$. Adding $(m+1)(m+2)$ to both sides: the new sum is $m(m+1)(m+2)/3+(m+1)(m+2)$. Factoring out $(m+1)(m+2)$: this is $(m+1)(m+2)[m/3+1]=(m+1)(m+2)(m+3)/3$ — exactly the claimed formula with $n=m+1$. By induction, the formula holds for all $n\\geq1$.",
+          "explanation": "Base case $n=1$: LHS $=1\\cdot2=2$, RHS $=1(2)(3)/3=2$. Equal, so the base case holds. Inductive step: assume $1\\cdot2+\\cdots+m(m+1)=m(m+1)(m+2)/3$ for some $m\\geq1$. Adding $(m+1)(m+2)$ to both sides: the new sum is $m(m+1)(m+2)/3+(m+1)(m+2)$. Factoring out $(m+1)(m+2)$: this is $(m+1)(m+2)[m/3+1]=(m+1)(m+2)(m+3)/3$ — exactly the claimed formula with $n=m+1$. By induction, the formula holds for all $n\\geq1$."
+        },
+        {
+          "q": "Prove by induction that $2^n>n$ for all integers $n\\geq1$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Proving an exponential inequality by induction",
+          "cross_lesson": "1.04 Partial Fractions",
+          "answer": "Base case $n=1$: $2^1=2>1$, true. Inductive step: assume $2^m>m$ for some $m\\geq1$. Then $2^{m+1}=2\\cdot2^m>2m$ (using the assumption). Since $m\\geq1$, $2m\\geq m+1$, so $2^{m+1}>2m\\geq m+1$. Thus $2^{m+1}>m+1$. By induction, $2^n>n$ for all $n\\geq1$.",
+          "explanation": "Base case $n=1$: $2^1=2>1$, true. Inductive step: assume $2^m>m$ for some $m\\geq1$. Then $2^{m+1}=2\\cdot2^m>2m$ (using the assumption). Since $m\\geq1$, $2m\\geq m+1$, so $2^{m+1}>2m\\geq m+1$. Thus $2^{m+1}>m+1$. By induction, $2^n>n$ for all $n\\geq1$."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
           "q": "In a proof by mathematical induction that a proposition $P(n)$ is true for all integers $n \\geq 1$, what are the essential logical components?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "The Principle & Architecture of Induction",
           "choices": [
             "Base case: prove $P(1)$ is true; Inductive step: prove $P(k) \\Rightarrow P(k+1)$; Conclusion by PMI",
             "Verify $P(n)$ for $n = 1, 2, 3, 4, 5$ and deduce the pattern",
@@ -16,10 +277,14 @@
             "Prove $P(k+1) \\Rightarrow P(k)$ starting from an arbitrary large integer"
           ],
           "correct": 0,
-          "answer": "The Principle of Mathematical Induction requires establishing the base step (verify $P(1)$), stating the induction hypothesis (assume $P(k)$ is true), showing that $P(k) \\Rightarrow P(k+1)$, and stating the formal conclusion."
+          "answer": "The Principle of Mathematical Induction requires establishing the base step (verify $P(1)$), stating the induction hypothesis (assume $P(k)$ is true), showing that $P(k) \\Rightarrow P(k+1)$, and stating the formal conclusion.",
+          "explanation": "The Principle of Mathematical Induction requires establishing the base step (verify $P(1)$), stating the induction hypothesis (assume $P(k)$ is true), showing that $P(k) \\Rightarrow P(k+1)$, and stating the formal conclusion."
         },
         {
           "q": "If the base case of an induction proof is verified at $n = 4$, for which set of integers is $P(n)$ established (assuming the inductive step holds for all $k \\geq 4$)?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "The Principle & Architecture of Induction",
           "choices": [
             "$n \\in \\{4, 5, 6, \\dots\\}$",
             "All integers $n \\in \\mathbb{Z}$",
@@ -27,10 +292,14 @@
             "$n \\in \\mathbb{R}$ with $n \\geq 4$"
           ],
           "correct": 0,
-          "answer": "The chain of implications starts at the base case $n = 4$ and propagates to all subsequent integers $n \\geq 4$."
+          "answer": "The chain of implications starts at the base case $n = 4$ and propagates to all subsequent integers $n \\geq 4$.",
+          "explanation": "The chain of implications starts at the base case $n = 4$ and propagates to all subsequent integers $n \\geq 4$."
         },
         {
           "q": "In proving $\\sum_{r=1}^n r = \\frac{n(n+1)}{2}$, what is the algebraic expression for the sum up to $k+1$ using the induction hypothesis?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "The Principle & Architecture of Induction",
           "choices": [
             "$\\frac{k(k+1)}{2} + (k + 1)$",
             "$\\frac{(k+1)(k+2)}{2} + k$",
@@ -38,15 +307,38 @@
             "$\\frac{k(k-1)}{2} + (k + 1)$"
           ],
           "correct": 0,
-          "answer": "By definition, $\\sum_{r=1}^{k+1} r = \\left(\\sum_{r=1}^k r\\right) + (k+1)$. Substituting the inductive hypothesis gives $\\frac{k(k+1)}{2} + (k + 1)$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Summation and Series Proofs",
-      "questions": [
+          "answer": "By definition, $\\sum_{r=1}^{k+1} r = \\left(\\sum_{r=1}^k r\\right) + (k+1)$. Substituting the inductive hypothesis gives $\\frac{k(k+1)}{2} + (k + 1)$.",
+          "explanation": "By definition, $\\sum_{r=1}^{k+1} r = \\left(\\sum_{r=1}^k r\\right) + (k+1)$. Substituting the inductive hypothesis gives $\\frac{k(k+1)}{2} + (k + 1)$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4*exp(-0.5*x**2)"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -0.4,
+            "ymax": 4.6,
+            "shade": {
+              "fn1": "4*exp(-0.5*x**2)",
+              "fn2": "0",
+              "x0": -1.65,
+              "x1": 1.65
+            },
+            "point_labels": [
+              {
+                "x": 1.65,
+                "y": 1.03,
+                "label": "$z=1.65$"
+              }
+            ],
+            "width": 230
+          }
+        },
         {
           "q": "When proving by induction that $\\sum_{r=1}^n r^2 = \\frac{n(n+1)(2n+1)}{6}$, factoring $(k+1)$ from $\\frac{k(k+1)(2k+1)}{6} + (k+1)^2$ yields:",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Summation and Series Proofs",
           "choices": [
             "$\\frac{k+1}{6} [2k^2 + 7k + 6] = \\frac{(k+1)(k+2)(2k+3)}{6}$",
             "$\\frac{k+1}{6} [2k^2 + 5k + 6]$",
@@ -54,10 +346,14 @@
             "$\\frac{k+1}{6} [k(2k+1) + 1]$"
           ],
           "correct": 0,
-          "answer": "Factor $\\frac{k+1}{6}$: $\\frac{k+1}{6}[k(2k+1) + 6(k+1)] = \\frac{k+1}{6}[2k^2 + 7k + 6] = \\frac{(k+1)(k+2)(2k+3)}{6}$, which is the target formula at $n = k+1$."
+          "answer": "Factor $\\frac{k+1}{6}$: $\\frac{k+1}{6}[k(2k+1) + 6(k+1)] = \\frac{k+1}{6}[2k^2 + 7k + 6] = \\frac{(k+1)(k+2)(2k+3)}{6}$, which is the target formula at $n = k+1$.",
+          "explanation": "Factor $\\frac{k+1}{6}$: $\\frac{k+1}{6}[k(2k+1) + 6(k+1)] = \\frac{k+1}{6}[2k^2 + 7k + 6] = \\frac{(k+1)(k+2)(2k+3)}{6}$, which is the target formula at $n = k+1$."
         },
         {
           "q": "For the proposition $\\sum_{r=1}^n (2r - 1) = n^2$, verify the inductive step by simplifying $k^2 + (2(k+1) - 1)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Summation and Series Proofs",
           "choices": [
             "$(k + 1)^2$",
             "$k^2 + 2k$",
@@ -65,26 +361,29 @@
             "$(k + 2)^2$"
           ],
           "correct": 0,
-          "answer": "$k^2 + (2k + 2 - 1) = k^2 + 2k + 1 = (k + 1)^2$, completing the induction step."
+          "answer": "$k^2 + (2k + 2 - 1) = k^2 + 2k + 1 = (k + 1)^2$, completing the induction step.",
+          "explanation": "$k^2 + (2k + 2 - 1) = k^2 + 2k + 1 = (k + 1)^2$, completing the induction step."
         },
         {
           "q": "Consider the geometric series $\\sum_{r=1}^n 2^{r-1} = 2^n - 1$. What is the base case check for $n = 1$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Summation and Series Proofs",
           "choices": [
-            "$\\text{LHS} = 2^0 = 1$, $\\text{RHS} = 2^1 - 1 = 1$; LHS $=$ RHS",
-            "$\\text{LHS} = 2^1 = 2$, $\\text{RHS} = 2^1 - 1 = 1$",
-            "$\\text{LHS} = 0$, $\\text{RHS} = 0$",
-            "$\\text{LHS} = 1$, $\\text{RHS} = 2$"
+            "$\\mathrm{LHS} = 2^0 = 1$, $\\mathrm{RHS} = 2^1 - 1 = 1$; LHS $=$ RHS",
+            "$\\mathrm{LHS} = 2^1 = 2$, $\\mathrm{RHS} = 2^1 - 1 = 1$",
+            "$\\mathrm{LHS} = 0$, $\\mathrm{RHS} = 0$",
+            "$\\mathrm{LHS} = 1$, $\\mathrm{RHS} = 2$"
           ],
           "correct": 0,
-          "answer": "At $n = 1$, $\\text{LHS} = 2^{1-1} = 1$ and $\\text{RHS} = 2^1 - 1 = 1$, so the base case is verified."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Divisibility and Inequality Proofs",
-      "questions": [
+          "answer": "At $n = 1$, $\\mathrm{LHS} = 2^{1-1} = 1$ and $\\mathrm{RHS} = 2^1 - 1 = 1$, so the base case is verified.",
+          "explanation": "At $n = 1$, $\\mathrm{LHS} = 2^{1-1} = 1$ and $\\mathrm{RHS} = 2^1 - 1 = 1$, so the base case is verified."
+        },
         {
           "q": "To prove $5^n - 1$ is divisible by $4$ for $n \\geq 1$, express $5^{k+1} - 1$ in terms of $(5^k - 1)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Divisibility and Inequality Proofs",
           "choices": [
             "$5(5^k - 1) + 4$",
             "$5(5^k - 1) - 4$",
@@ -92,10 +391,14 @@
             "$(5^k - 1) + 5$"
           ],
           "correct": 0,
-          "answer": "$5^{k+1} - 1 = 5 \\cdot 5^k - 1 = 5(5^k - 1) + 5 - 1 = 5(5^k - 1) + 4$. If $5^k - 1 = 4M$, this equals $5(4M) + 4 = 4(5M + 1)$, which is divisible by 4."
+          "answer": "$5^{k+1} - 1 = 5 \\cdot 5^k - 1 = 5(5^k - 1) + 5 - 1 = 5(5^k - 1) + 4$. If $5^k - 1 = 4M$, this equals $5(4M) + 4 = 4(5M + 1)$, which is divisible by 4.",
+          "explanation": "$5^{k+1} - 1 = 5 \\cdot 5^k - 1 = 5(5^k - 1) + 5 - 1 = 5(5^k - 1) + 4$. If $5^k - 1 = 4M$, this equals $5(4M) + 4 = 4(5M + 1)$, which is divisible by 4."
         },
         {
           "q": "In proving $2^n > n^2$ for $n \\geq 5$, assuming $2^k > k^2$, which inequality must be justified to show $2^{k+1} > (k+1)^2$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Divisibility and Inequality Proofs",
           "choices": [
             "$2k^2 \\geq (k+1)^2 \\Leftrightarrow k^2 - 2k - 1 \\geq 0$, which holds for $k \\geq 5$",
             "$k^2 > 2k + 1$ for all $k \\in \\mathbb{R}$",
@@ -103,10 +406,41 @@
             "$(k+1)^2 > k^2 + 1$"
           ],
           "correct": 0,
-          "answer": "$2^{k+1} = 2 \\cdot 2^k > 2k^2$. We need $2k^2 \\geq (k+1)^2 = k^2 + 2k + 1 \\Leftrightarrow k^2 - 2k - 1 \\geq 0$. For $k \\geq 5$, $k(k-2) - 1 \\geq 5(3) - 1 = 14 > 0$."
-        },
+          "answer": "$2^{k+1} = 2 \\cdot 2^k > 2k^2$. We need $2k^2 \\geq (k+1)^2 = k^2 + 2k + 1 \\Leftrightarrow k^2 - 2k - 1 \\geq 0$. For $k \\geq 5$, $k(k-2) - 1 \\geq 5(3) - 1 = 14 > 0$.",
+          "explanation": "$2^{k+1} = 2 \\cdot 2^k > 2k^2$. We need $2k^2 \\geq (k+1)^2 = k^2 + 2k + 1 \\Leftrightarrow k^2 - 2k - 1 \\geq 0$. For $k \\geq 5$, $k(k-2) - 1 \\geq 5(3) - 1 = 14 > 0$.",
+          "figure": {
+            "type": "numberline",
+            "min": -5,
+            "max": 7,
+            "shade": [
+              -3,
+              5
+            ],
+            "marks": [
+              {
+                "x": -3,
+                "open": true,
+                "label": "$-3$"
+              },
+              {
+                "x": 5,
+                "open": false,
+                "label": "$5$"
+              }
+            ],
+            "width": 250
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
         {
           "q": "To prove $3^{2n} - 1$ is divisible by $8$, evaluate the base case $n = 1$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Divisibility and Inequality Proofs",
           "choices": [
             "$3^2 - 1 = 8$, which is divisible by $8$",
             "$3^1 - 1 = 2$",
@@ -114,15 +448,14 @@
             "$3^2 - 1 = 9$"
           ],
           "correct": 0,
-          "answer": "At $n = 1$: $3^{2(1)} - 1 = 9 - 1 = 8$, which is divisible by 8 with quotient 1."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Calculus and Matrix Applications",
-      "questions": [
+          "answer": "At $n = 1$: $3^{2(1)} - 1 = 9 - 1 = 8$, which is divisible by 8 with quotient 1.",
+          "explanation": "At $n = 1$: $3^{2(1)} - 1 = 9 - 1 = 8$, which is divisible by 8 with quotient 1."
+        },
         {
           "q": "Prove by induction that $\\frac{d^n}{dx^n}(x e^x) = (x + n)e^x$. What is the inductive step derivative $\\frac{d}{dx}[(x + k)e^x]$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Calculus and Matrix Applications",
           "choices": [
             "$1 \\cdot e^x + (x + k)e^x = (x + k + 1)e^x$",
             "$(x + k)e^x + e^x = (x + k)e^x$",
@@ -130,10 +463,14 @@
             "$(x + k + 1)x e^x$"
           ],
           "correct": 0,
-          "answer": "By the product rule: $\\frac{d}{dx}[(x + k)e^x] = \\frac{d}{dx}(x + k) \\cdot e^x + (x + k) \\cdot e^x = 1 \\cdot e^x + (x + k)e^x = (x + k + 1)e^x$."
+          "answer": "By the product rule: $\\frac{d}{dx}[(x + k)e^x] = \\frac{d}{dx}(x + k) \\cdot e^x + (x + k) \\cdot e^x = 1 \\cdot e^x + (x + k)e^x = (x + k + 1)e^x$.",
+          "explanation": "By the product rule: $\\frac{d}{dx}[(x + k)e^x] = \\frac{d}{dx}(x + k) \\cdot e^x + (x + k) \\cdot e^x = 1 \\cdot e^x + (x + k)e^x = (x + k + 1)e^x$."
         },
         {
           "q": "If $A = [[1, 1], [0, 1]]$, prove by induction that $A^n = [[1, n], [0, 1]]$. What is the matrix product $A^k \\cdot A$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Calculus and Matrix Applications",
           "choices": [
             "$[[1, k], [0, 1]] [[1, 1], [0, 1]] = [[1, k+1], [0, 1]]$",
             "$[[1, k], [0, 1]] [[1, 1], [0, 1]] = [[1, 2k], [0, 1]]$",
@@ -141,10 +478,14 @@
             "$[[1, 1], [0, 1]]$"
           ],
           "correct": 0,
-          "answer": "Multiplying row by column: $(1)(1) + (k)(0) = 1$; $(1)(1) + (k)(1) = k + 1$; $(0)(1) + (1)(0) = 0$; $(0)(1) + (1)(1) = 1$, giving $[[1, k+1], [0, 1]]$."
+          "answer": "Multiplying row by column: $(1)(1) + (k)(0) = 1$; $(1)(1) + (k)(1) = k + 1$; $(0)(1) + (1)(0) = 0$; $(0)(1) + (1)(1) = 1$, giving $[[1, k+1], [0, 1]]$.",
+          "explanation": "Multiplying row by column: $(1)(1) + (k)(0) = 1$; $(1)(1) + (k)(1) = k + 1$; $(0)(1) + (1)(0) = 0$; $(0)(1) + (1)(1) = 1$, giving $[[1, k+1], [0, 1]]$."
         },
         {
           "q": "A sequence is defined by $u_1 = 5$ and $u_{n+1} = 2u_n - 3$. Prove by induction that $u_n = 2^{n+1} + 3$. Assuming $u_k = 2^{k+1} + 3$, what is $u_{k+1}$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Calculus and Matrix Applications",
           "choices": [
             "$2(2^{k+1} + 3) - 3 = 2^{k+2} + 6 - 3 = 2^{k+2} + 3$",
             "$2(2^{k+1}) - 3 = 2^{k+2} - 3$",
@@ -152,7 +493,278 @@
             "$2^{k+2} + 6$"
           ],
           "correct": 0,
-          "answer": "Substitute hypothesis into recurrence: $u_{k+1} = 2u_k - 3 = 2(2^{k+1} + 3) - 3 = 2^{k+2} + 6 - 3 = 2^{(k+1)+1} + 3$, completing the inductive step."
+          "answer": "Substitute hypothesis into recurrence: $u_{k+1} = 2u_k - 3 = 2(2^{k+1} + 3) - 3 = 2^{k+2} + 6 - 3 = 2^{(k+1)+1} + 3$, completing the inductive step.",
+          "explanation": "Substitute hypothesis into recurrence: $u_{k+1} = 2u_k - 3 = 2(2^{k+1} + 3) - 3 = 2^{k+2} + 6 - 3 = 2^{(k+1)+1} + 3$, completing the inductive step."
+        },
+        {
+          "q": "In proving by induction that $\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}$, assuming the result is true for $n=k$, what must be added to $\\frac{k(k+1)}{2}$ to obtain the sum for $n=k+1$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Induction to prove a formula for a weighted geometric sum",
+          "choices": [
+            "$k$",
+            "$k+2$",
+            "$k+1$",
+            "$2k+1$"
+          ],
+          "correct": 2,
+          "answer": "$\\mathrm{The\\ }(k+1)\\mathrm{th\\ term\\ of\\ the\\ sum\\ is\\ }k+1\\mathrm{,\\ so\\ we\\ add\\ }k+1\\mathrm{\\ to\\ reach\\ }\\frac{(k+1)(k+2)}{2}.$",
+          "explanation": "$\\mathrm{The\\ }(k+1)\\mathrm{th\\ term\\ of\\ the\\ sum\\ is\\ }k+1\\mathrm{,\\ so\\ we\\ add\\ }k+1\\mathrm{\\ to\\ reach\\ }\\frac{(k+1)(k+2)}{2}.$",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -2.0,
+                "label": "$(1,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Using the first three terms of the Maclaurin series for $e^{2x}$, approximate $e^{2\\times\\frac{1}{5}}$ as a fraction.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "A closing check: identifying an invalid induction argument",
+          "choices": [
+            "$\\frac{59}{50}$",
+            "$\\frac{69}{50}$",
+            "$\\frac{42}{25}$",
+            "$\\frac{37}{25}$"
+          ],
+          "correct": 3,
+          "answer": "$e^{2x}\\approx 1+2x+\\frac{(2x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{5}: 1+\\frac{2}{5}+\\frac{\\frac{4}{25}}{2}=\\frac{37}{25}$",
+          "explanation": "$e^{2x}\\approx 1+2x+\\frac{(2x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{5}: 1+\\frac{2}{5}+\\frac{\\frac{4}{25}}{2}=\\frac{37}{25}$"
+        },
+        {
+          "q": "Using the first three terms of the Maclaurin series for $e^{2x}$, approximate $e^{2\\times\\frac{1}{4}}$ as a fraction.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Proving a sum-of-products formula by induction",
+          "choices": [
+            "$\\frac{13}{8}$",
+            "$\\frac{57}{40}$",
+            "$\\frac{53}{40}$",
+            "$\\frac{77}{40}$"
+          ],
+          "correct": 0,
+          "answer": "$e^{2x}\\approx 1+2x+\\frac{(2x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{4}: 1+\\frac{1}{2}+\\frac{\\frac{1}{4}}{2}=\\frac{13}{8}$",
+          "explanation": "$e^{2x}\\approx 1+2x+\\frac{(2x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{4}: 1+\\frac{1}{2}+\\frac{\\frac{1}{4}}{2}=\\frac{13}{8}$"
+        },
+        {
+          "q": "Using the first three terms of the Maclaurin series for $e^{x}$, approximate $e^{1\\times\\frac{1}{4}}$ as a fraction.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Proving an exponential inequality by induction",
+          "choices": [
+            "$\\frac{173}{160}$",
+            "$\\frac{41}{32}$",
+            "$\\frac{253}{160}$",
+            "$\\frac{237}{160}$"
+          ],
+          "correct": 1,
+          "answer": "$e^{x}\\approx 1+x+\\frac{(x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{4}: 1+\\frac{1}{4}+\\frac{\\frac{1}{16}}{2}=\\frac{41}{32}$",
+          "explanation": "$e^{x}\\approx 1+x+\\frac{(x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{4}: 1+\\frac{1}{4}+\\frac{\\frac{1}{16}}{2}=\\frac{41}{32}$"
+        },
+        {
+          "q": "Using the first three terms of the Maclaurin series for $e^{x}$, approximate $e^{1\\times\\frac{1}{5}}$ as a fraction.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Proving a divisibility result by induction",
+          "choices": [
+            "$\\frac{51}{50}$",
+            "$\\frac{38}{25}$",
+            "$\\frac{71}{50}$",
+            "$\\frac{61}{50}$"
+          ],
+          "correct": 3,
+          "answer": "$e^{x}\\approx 1+x+\\frac{(x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{5}: 1+\\frac{1}{5}+\\frac{\\frac{1}{25}}{2}=\\frac{61}{50}$",
+          "explanation": "$e^{x}\\approx 1+x+\\frac{(x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{5}: 1+\\frac{1}{5}+\\frac{\\frac{1}{25}}{2}=\\frac{61}{50}$"
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "Using the first three terms of the Maclaurin series for $e^{x}$, approximate $e^{1\\times\\frac{1}{2}}$ as a fraction.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Proving a closed form for a recursive sequence",
+          "choices": [
+            "$\\frac{73}{40}$",
+            "$\\frac{13}{8}$",
+            "$\\frac{57}{40}$",
+            "$\\frac{61}{40}$"
+          ],
+          "correct": 1,
+          "answer": "$e^{x}\\approx 1+x+\\frac{(x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{2}: 1+\\frac{1}{2}+\\frac{\\frac{1}{4}}{2}=\\frac{13}{8}$",
+          "explanation": "$e^{x}\\approx 1+x+\\frac{(x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{2}: 1+\\frac{1}{2}+\\frac{\\frac{1}{4}}{2}=\\frac{13}{8}$",
+          "cross_lesson": "1.02 Complex Numbers: Cartesian Form & Algebra"
+        },
+        {
+          "q": "For $x^{3} - 3x^{2} - 36x + 108 = 0$, find the product of the three roots.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "A second exponential inequality by induction",
+          "choices": [
+            "-73",
+            "-140",
+            "-134",
+            "-108"
+          ],
+          "correct": 3,
+          "answer": "Working through this complex-numbers step: $\\mathrm{Product\\ of\\ roots}=-\\frac{d}{a}=-(108)=-108$",
+          "explanation": "Working through this complex-numbers step: $\\mathrm{Product\\ of\\ roots}=-\\frac{d}{a}=-(108)=-108$",
+          "cross_lesson": "1.03 Polar Form, De Moivre's Theorem & Roots of Unity",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -2.0,
+                "label": "$(1,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "For $x^{3} - 7x^{2} - 14x + 120 = 0$, find the product of the three roots.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "A third inequality by induction",
+          "choices": [
+            "-128",
+            "-90",
+            "-156",
+            "-120"
+          ],
+          "correct": 3,
+          "answer": "Working through this complex-numbers step: $\\mathrm{Product\\ of\\ roots}=-\\frac{d}{a}=-(120)=-120$",
+          "explanation": "Working through this complex-numbers step: $\\mathrm{Product\\ of\\ roots}=-\\frac{d}{a}=-(120)=-120$",
+          "cross_lesson": "1.04 Partial Fractions"
+        },
+        {
+          "q": "For $x^{3} - 19x - 30 = 0$, find the product of the three roots.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Induction in combinatorics: counting subsets",
+          "choices": [
+            "30",
+            "43",
+            "27",
+            "20"
+          ],
+          "correct": 0,
+          "answer": "Working through this complex-numbers step: $\\mathrm{Product\\ of\\ roots}=-\\frac{d}{a}=-(-30)=30$",
+          "explanation": "Working through this complex-numbers step: $\\mathrm{Product\\ of\\ roots}=-\\frac{d}{a}=-(-30)=30$",
+          "cross_lesson": "1.05 Systems of Linear Equations (AA HL)"
+        },
+        {
+          "q": "Using the first three terms of the Maclaurin series for $e^{2x}$, approximate $e^{2\\times\\frac{1}{2}}$ as a fraction.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Proving the sum of the first n odd numbers",
+          "choices": [
+            "$\\frac{11}{5}$",
+            "$\\frac{5}{2}$",
+            "$\\frac{12}{5}$",
+            "$\\frac{14}{5}$"
+          ],
+          "correct": 1,
+          "answer": "$e^{2x}\\approx 1+2x+\\frac{(2x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{2}: 1+1+\\frac{1}{2}=\\frac{5}{2}$",
+          "explanation": "$e^{2x}\\approx 1+2x+\\frac{(2x)^2}{2}\\mathrm{,\\ at\\ }x=\\frac{1}{2}: 1+1+\\frac{1}{2}=\\frac{5}{2}$",
+          "cross_lesson": "2.01 Modulus Functions & the Factor/Remainder Theorem"
+        },
+        {
+          "q": "For $x^{3} - 7x^{2} + 10x = 0$, find the product of the three roots.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "The Principle & Architecture of Induction",
+          "choices": [
+            "-1",
+            "-4",
+            "0",
+            "-3"
+          ],
+          "correct": 2,
+          "answer": "Working through this complex-numbers step: $\\mathrm{Product\\ of\\ roots}=-\\frac{d}{a}=-(0)=0$",
+          "explanation": "Working through this complex-numbers step: $\\mathrm{Product\\ of\\ roots}=-\\frac{d}{a}=-(0)=0$",
+          "cross_lesson": "3.01 3D Vectors & the Cross Product"
+        },
+        {
+          "q": "The graph of the function $f(x) = x^2 - 4x + 3$ is shown below. Determine the sum of the x-intercepts.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Summation and Series Proofs",
+          "choices": [
+            "4",
+            "3",
+            "1",
+            "-3"
+          ],
+          "correct": 0,
+          "answer": "The x-intercepts of a function are the values of x for which $f(x) = 0$. For the quadratic function $f(x) = x^2 - 4x + 3$, we can find the x-intercepts by solving the equation $x^2 - 4x + 3 = 0$. This is a quadratic equation that can be factored. We are looking for two numbers that multiply to 3 and add to -4. These numbers are -1 and -3. Therefore, the equation can be factored as $(x-1)(x-3) = 0$. The solutions are $x=1$ and $x=3$. These are the x-intercepts. The sum of the x-intercepts is $1 + 3 = 4$. Alternatively, for a quadratic equation of the form $ax^2 + bx + c = 0$, the sum of the roots (which correspond to the x-intercepts when $f(x) = 0$) is given by $-\\frac{b}{a}$. In this case, $a=1$ and $b=-4$, so the sum of the x-intercepts is $-\\frac{-4}{1} = 4$.",
+          "explanation": "The x-intercepts of a function are the values of x for which $f(x) = 0$. For the quadratic function $f(x) = x^2 - 4x + 3$, we can find the x-intercepts by solving the equation $x^2 - 4x + 3 = 0$. This is a quadratic equation that can be factored. We are looking for two numbers that multiply to 3 and add to -4. These numbers are -1 and -3. Therefore, the equation can be factored as $(x-1)(x-3) = 0$. The solutions are $x=1$ and $x=3$. These are the x-intercepts. The sum of the x-intercepts is $1 + 3 = 4$. Alternatively, for a quadratic equation of the form $ax^2 + bx + c = 0$, the sum of the roots (which correspond to the x-intercepts when $f(x) = 0$) is given by $-\\frac{b}{a}$. In this case, $a=1$ and $b=-4$, so the sum of the x-intercepts is $-\\frac{-4}{1} = 4$.",
+          "cross_lesson": "3.02 Lines and Planes in Three Dimensions",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*x - 4*x + 3"
+            ],
+            "xmin": -2.0,
+            "xmax": 6.0,
+            "ymin": -3.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": 0.0,
+                "label": "(1, 0)"
+              },
+              {
+                "x": 3.0,
+                "y": 0.0,
+                "label": "(3, 0)"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Product of roots of $2x^2-5x+3=0$:",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Divisibility and Inequality Proofs",
+          "choices": [
+            "$\\frac{3}{2}$",
+            "$\\frac{5}{2}$",
+            "$-\\frac{3}{2}$",
+            "3"
+          ],
+          "correct": 0,
+          "answer": "Applying Algebra, Proof & Complex Numbers principles, Product = c/a = 3/2. Therefore, the verified correct option is $\\frac{3}{2}$.",
+          "explanation": "Applying Algebra, Proof & Complex Numbers principles, Product = c/a = 3/2. Therefore, the verified correct option is $\\frac{3}{2}$.",
+          "cross_lesson": "3.03 Compound Angle Identities & Reciprocal Trigonometric Functions (AA HL)"
         }
       ]
     }

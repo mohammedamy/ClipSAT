@@ -3,12 +3,237 @@
   "num": "1.01",
   "slug": "separable-equations",
   "title": "Separable Equations",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 1.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Separation Form and Integrals",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+      "questions": [
+        {
+          "q": "State the order of the differential equation $y'' + 3y' - 2y = \\sin x$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Order and verifying solutions",
+          "answer": "Second order (the highest derivative appearing is $y''$).",
+          "explanation": "Second order (the highest derivative appearing is $y''$)."
+        },
+        {
+          "q": "State the order of $\\left(\\frac{dy}{dx}\\right)^3 + xy = 0$, and note that order depends only on the highest derivative, not on any power of it.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Order and verifying solutions",
+          "answer": "First order — the equation involves only $y'$ (cubed), no higher derivative.",
+          "explanation": "First order — the equation involves only $y'$ (cubed), no higher derivative.",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*2",
+            "sol_fn": "1.4*x - 5.2 + 5*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        },
+        {
+          "q": "Verify that $y = e^{2x}$ is a solution of $y' - 2y = 0$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Order and verifying solutions",
+          "answer": "$y' = 2e^{2x}$, so $y' - 2y = 2e^{2x} - 2e^{2x} = 0$. Yes, it is a solution.",
+          "explanation": "$y' = 2e^{2x}$, so $y' - 2y = 2e^{2x} - 2e^{2x} = 0$. Yes, it is a solution."
+        },
+        {
+          "q": "Verify that $y = \\frac{1}{x}$ is a solution of $y' + y^2 = 0$ for $x \\neq 0$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Order and verifying solutions",
+          "answer": "$y' = -\\frac{1}{x^2}$ and $y^2 = \\frac{1}{x^2}$, so $y' + y^2 = -\\frac{1}{x^2} + \\frac{1}{x^2} = 0$. Yes, it is a solution.",
+          "explanation": "$y' = -\\frac{1}{x^2}$ and $y^2 = \\frac{1}{x^2}$, so $y' + y^2 = -\\frac{1}{x^2} + \\frac{1}{x^2} = 0$. Yes, it is a solution."
+        },
+        {
+          "q": "Solve $\\frac{dy}{dx} = xy$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Recognizing and solving separable equations",
+          "answer": "Separate: $\\frac{dy}{y} = x\\,dx$. Integrate: $\\ln|y| = \\frac{x^2}{2} + C$. So $y = Ae^{x^2/2}$.",
+          "explanation": "Separate: $\\frac{dy}{y} = x\\,dx$. Integrate: $\\ln|y| = \\frac{x^2}{2} + C$. So $y = Ae^{x^2/2}$."
+        },
+        {
+          "q": "Solve $\\frac{dy}{dx} = \\frac{y^2}{x}$ for $x>0$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Recognizing and solving separable equations",
+          "answer": "Separate: $\\frac{dy}{y^2} = \\frac{dx}{x}$. Integrate: $-\\frac{1}{y} = \\ln x + C$. So $y = \\frac{-1}{\\ln x + C}$.",
+          "explanation": "Separate: $\\frac{dy}{y^2} = \\frac{dx}{x}$. Integrate: $-\\frac{1}{y} = \\ln x + C$. So $y = \\frac{-1}{\\ln x + C}$.",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*2",
+            "sol_fn": "1.4*x - 5.2 + 5*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        },
+        {
+          "q": "Solve $\\frac{dy}{dx} = \\frac{x+1}{y}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Recognizing and solving separable equations",
+          "answer": "Separate: $y\\,dy = (x+1)\\,dx$. Integrate: $\\frac{y^2}{2} = \\frac{x^2}{2}+x+C$. So $y^2 = x^2+2x+C_1$ (renaming $2C$ as $C_1$).",
+          "explanation": "Separate: $y\\,dy = (x+1)\\,dx$. Integrate: $\\frac{y^2}{2} = \\frac{x^2}{2}+x+C$. So $y^2 = x^2+2x+C_1$ (renaming $2C$ as $C_1$)."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Solve $\\frac{dy}{dx} = 6x^2y^2$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Recognizing and solving separable equations",
+          "answer": "Separate: $\\frac{dy}{y^2} = 6x^2\\,dx$. Integrate: $-\\frac{1}{y} = 2x^3+C$. So $y = \\frac{-1}{2x^3+C}$.",
+          "explanation": "Separate: $\\frac{dy}{y^2} = 6x^2\\,dx$. Integrate: $-\\frac{1}{y} = 2x^3+C$. So $y = \\frac{-1}{2x^3+C}$."
+        },
+        {
+          "q": "Find the equilibrium (constant) solutions of $\\frac{dy}{dx} = y(3-y)$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Equilibrium solutions and qualitative behavior",
+          "answer": "Set $y(3-y)=0$: the equilibrium solutions are $y=0$ and $y=3$.",
+          "explanation": "Set $y(3-y)=0$: the equilibrium solutions are $y=0$ and $y=3$."
+        },
+        {
+          "q": "For $\\frac{dy}{dx} = y(3-y)$, determine whether $y=0$ and $y=3$ are stable or unstable by checking the sign of $\\frac{dy}{dx}$ just above and below each.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Equilibrium solutions and qualitative behavior",
+          "answer": "For $0<y<3$: $y(3-y)>0$, so solutions increase away from $y=0$ and toward $y=3$. For $y>3$: $y(3-y)<0$, so solutions decrease back toward $y=3$. Hence $y=0$ is unstable and $y=3$ is stable.",
+          "explanation": "For $0<y<3$: $y(3-y)>0$, so solutions increase away from $y=0$ and toward $y=3$. For $y>3$: $y(3-y)<0$, so solutions decrease back toward $y=3$. Hence $y=0$ is unstable and $y=3$ is stable.",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*2",
+            "sol_fn": "1.4*x - 5.2 + 5*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        },
+        {
+          "q": "Find the equilibrium solutions of $\\frac{dy}{dx} = (y-2)(y+1)$ and classify each as stable or unstable.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Equilibrium solutions and qualitative behavior",
+          "answer": "Equilibria: $y=2$ and $y=-1$. For $-1<y<2$, $(y-2)(y+1)<0$, so solutions decrease toward $y=-1$: $y=-1$ is stable. For $y>2$, the product is positive, pushing solutions away: $y=2$ is unstable.",
+          "explanation": "Equilibria: $y=2$ and $y=-1$. For $-1<y<2$, $(y-2)(y+1)<0$, so solutions decrease toward $y=-1$: $y=-1$ is stable. For $y>2$, the product is positive, pushing solutions away: $y=2$ is unstable."
+        },
+        {
+          "q": "Find the general solution of $\\frac{dy}{dx} = 2x$, then find the particular solution satisfying $y(1)=3$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "General versus particular solutions",
+          "answer": "General solution: $y=x^2+C$ (this one is already separated, with $\\frac{dy}{dx}$ depending only on $x$). Since $y(1)=3$: $1+C=3 \\Rightarrow C=2$. Particular solution: $y=x^2+2$.",
+          "explanation": "General solution: $y=x^2+C$ (this one is already separated, with $\\frac{dy}{dx}$ depending only on $x$). Since $y(1)=3$: $1+C=3 \\Rightarrow C=2$. Particular solution: $y=x^2+2$."
+        },
+        {
+          "q": "Explain, in terms of the arbitrary constant $C$, why a differential equation typically has infinitely many solutions but an initial value problem typically has exactly one.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "General versus particular solutions",
+          "answer": "Integrating introduces one arbitrary constant $C$, so the general solution is really a one-parameter family of curves, all satisfying the ODE. An initial condition $y(x_0)=y_0$ picks out the single curve in that family passing through $(x_0,y_0)$, which (under standard existence/uniqueness conditions) fixes $C$ to exactly one value.",
+          "explanation": "Integrating introduces one arbitrary constant $C$, so the general solution is really a one-parameter family of curves, all satisfying the ODE. An initial condition $y(x_0)=y_0$ picks out the single curve in that family passing through $(x_0,y_0)$, which (under standard existence/uniqueness conditions) fixes $C$ to exactly one value."
+        },
+        {
+          "q": "Solve $\\frac{dy}{dx} = 3x^2y$, $y(0) = 2$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Initial value problems",
+          "answer": "$\\frac{dy}{y} = 3x^2\\,dx \\Rightarrow \\ln|y| = x^3 + C \\Rightarrow y = Ae^{x^3}$. Since $y(0)=2$, $A=2$: $y = 2e^{x^3}$.",
+          "explanation": "$\\frac{dy}{y} = 3x^2\\,dx \\Rightarrow \\ln|y| = x^3 + C \\Rightarrow y = Ae^{x^3}$. Since $y(0)=2$, $A=2$: $y = 2e^{x^3}$."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "Solve $\\frac{dy}{dx} = -2xy$, $y(0) = 5$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Initial value problems",
+          "cross_lesson": "4.01 Nonhomogeneous Equations & Undetermined Coefficients",
+          "answer": "$\\frac{dy}{y} = -2x\\,dx \\Rightarrow \\ln|y| = -x^2 + C \\Rightarrow y = Ae^{-x^2}$. Since $y(0)=5$, $A=5$: $y = 5e^{-x^2}$.",
+          "explanation": "$\\frac{dy}{y} = -2x\\,dx \\Rightarrow \\ln|y| = -x^2 + C \\Rightarrow y = Ae^{-x^2}$. Since $y(0)=5$, $A=5$: $y = 5e^{-x^2}$."
+        },
+        {
+          "q": "Solve $\\frac{dy}{dx} = 4x^3y$, $y(0) = -3$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Initial value problems",
+          "cross_lesson": "5.01 Variation of Parameters",
+          "answer": "$\\frac{dy}{y} = 4x^3\\,dx \\Rightarrow \\ln|y| = x^4+C \\Rightarrow y = Ae^{x^4}$. Since $y(0)=-3$, $A=-3$: $y = -3e^{x^4}$.",
+          "explanation": "$\\frac{dy}{y} = 4x^3\\,dx \\Rightarrow \\ln|y| = x^4+C \\Rightarrow y = Ae^{x^4}$. Since $y(0)=-3$, $A=-3$: $y = -3e^{x^4}$.",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*4",
+            "sol_fn": "1.4*x - 5.2 + 7*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        },
+        {
+          "q": "Solve $y' = -\\frac{1}{2}y$, $y(0) = 8$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Initial value problems",
+          "cross_lesson": "2.01 Linear First-Order Equations & the Integrating Factor",
+          "answer": "$\\frac{dy}{y} = -\\frac{1}{2}\\,dx \\Rightarrow \\ln|y| = -\\frac{x}{2}+C \\Rightarrow y=Ae^{-x/2}$. Since $y(0)=8$, $A=8$: $y = 8e^{-x/2}$.",
+          "explanation": "$\\frac{dy}{y} = -\\frac{1}{2}\\,dx \\Rightarrow \\ln|y| = -\\frac{x}{2}+C \\Rightarrow y=Ae^{-x/2}$. Since $y(0)=8$, $A=8$: $y = 8e^{-x/2}$."
+        },
+        {
+          "q": "A radioactive substance decays according to $\\frac{dA}{dt} = -kA$. If $A(0) = 100$ g and $A(5) = 50$ g, find $k$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Application: radioactive decay and population growth",
+          "cross_lesson": "3.01 Second-Order Linear Homogeneous Equations",
+          "answer": "$A = 100e^{-kt}$. Then $50 = 100e^{-5k} \\Rightarrow e^{-5k} = \\frac{1}{2} \\Rightarrow -5k = \\ln\\frac{1}{2} \\Rightarrow k = \\frac{\\ln 2}{5} \\approx 0.1386$ per unit time.",
+          "explanation": "$A = 100e^{-kt}$. Then $50 = 100e^{-5k} \\Rightarrow e^{-5k} = \\frac{1}{2} \\Rightarrow -5k = \\ln\\frac{1}{2} \\Rightarrow k = \\frac{\\ln 2}{5} \\approx 0.1386$ per unit time."
+        },
+        {
+          "q": "A population grows according to $\\frac{dP}{dt} = 0.03P$, with $P(0) = 200$. Find $P(10)$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Application: radioactive decay and population growth",
+          "cross_lesson": "4.01 Nonhomogeneous Equations & Undetermined Coefficients",
+          "answer": "$P(t) = 200e^{0.03t}$, so $P(10) = 200e^{0.3} \\approx 269.97$.",
+          "explanation": "$P(t) = 200e^{0.03t}$, so $P(10) = 200e^{0.3} \\approx 269.97$."
+        },
+        {
+          "q": "A bank account earns continuously-compounded interest, $\\frac{dA}{dt}=0.05A$, with $A(0)=1000$. Find $A(20)$ and the doubling time.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Application: radioactive decay and population growth",
+          "cross_lesson": "5.01 Variation of Parameters",
+          "answer": "$A(t)=1000e^{0.05t}$, so $A(20)=1000e^{1} \\approx 2718.28$. Doubling time solves $e^{0.05t}=2 \\Rightarrow t=\\frac{\\ln 2}{0.05}\\approx13.86$ years.",
+          "explanation": "$A(t)=1000e^{0.05t}$, so $A(20)=1000e^{1} \\approx 2718.28$. Doubling time solves $e^{0.05t}=2 \\Rightarrow t=\\frac{\\ln 2}{0.05}\\approx13.86$ years."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
           "q": "A first-order differential equation $\\frac{dy}{dx} = f(x, y)$ is separable if it can be factored into:",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Separation Form and Integrals",
           "choices": [
             "$\\frac{dy}{dx} = g(x) h(y)$",
             "$\\frac{dy}{dx} = g(x) + h(y)$",
@@ -16,10 +241,14 @@
             "$\\frac{dy}{dx} = x^n + y^n$"
           ],
           "correct": 0,
-          "answer": "A differential equation is separable if the right-hand side factors into a product of a function of $x$ alone and a function of $y$ alone: $g(x) h(y)$."
+          "answer": "A differential equation is separable if the right-hand side factors into a product of a function of $x$ alone and a function of $y$ alone: $g(x) h(y)$.",
+          "explanation": "A differential equation is separable if the right-hand side factors into a product of a function of $x$ alone and a function of $y$ alone: $g(x) h(y)$."
         },
         {
           "q": "Separate variables for $\\frac{dy}{dx} = 3x^2 y^2$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Separation Form and Integrals",
           "choices": [
             "$\\frac{1}{y^2} dy = 3x^2 dx$",
             "$y^2 dy = 3x^2 dx$",
@@ -27,10 +256,14 @@
             "$dy = 3x^2 y^2 dx$"
           ],
           "correct": 0,
-          "answer": "Divide both sides by $y^2$ and multiply by $dx$: $\\frac{1}{y^2} dy = 3x^2 dx$."
+          "answer": "Divide both sides by $y^2$ and multiply by $dx$: $\\frac{1}{y^2} dy = 3x^2 dx$.",
+          "explanation": "Divide both sides by $y^2$ and multiply by $dx$: $\\frac{1}{y^2} dy = 3x^2 dx$."
         },
         {
           "q": "Solve the general equation $\\frac{1}{y^2} dy = 3x^2 dx$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Separation Form and Integrals",
           "choices": [
             "$y = -\\frac{1}{x^3 + C}$",
             "$y = \\frac{1}{x^3 + C}$",
@@ -38,15 +271,24 @@
             "$y = \\sqrt{x^3 + C}$"
           ],
           "correct": 0,
-          "answer": "Integrate both sides: $-\\frac{1}{y} = x^3 + C \\Rightarrow y = -\\frac{1}{x^3 + C}$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Initial Value Problems (IVPs)",
-      "questions": [
+          "answer": "Integrate both sides: $-\\frac{1}{y} = x^3 + C \\Rightarrow y = -\\frac{1}{x^3 + C}$.",
+          "explanation": "Integrate both sides: $-\\frac{1}{y} = x^3 + C \\Rightarrow y = -\\frac{1}{x^3 + C}$.",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*3",
+            "sol_fn": "1.4*x - 5.2 + 6*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        },
         {
           "q": "Solve the IVP: $\\frac{dy}{dx} = \\frac{x}{y}$ with $y(0) = -3$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Initial Value Problems (IVPs)",
           "choices": [
             "$y = -\\sqrt{x^2 + 9}$",
             "$y = \\sqrt{x^2 + 9}$",
@@ -54,10 +296,14 @@
             "$y = -x - 3$"
           ],
           "correct": 0,
-          "answer": "$y dy = x dx \\Rightarrow \\frac{1}{2}y^2 = \\frac{1}{2}x^2 + C \\Rightarrow y^2 = x^2 + 2C$. Using $y(0) = -3$: $(-3)^2 = 0 + 2C \\Rightarrow 2C = 9$. Thus $y^2 = x^2 + 9$. Since $y(0) = -3 < 0$, we select the negative branch $y = -\\sqrt{x^2 + 9}$."
+          "answer": "$y dy = x dx \\Rightarrow \\frac{1}{2}y^2 = \\frac{1}{2}x^2 + C \\Rightarrow y^2 = x^2 + 2C$. Using $y(0) = -3$: $(-3)^2 = 0 + 2C \\Rightarrow 2C = 9$. Thus $y^2 = x^2 + 9$. Since $y(0) = -3 < 0$, we select the negative branch $y = -\\sqrt{x^2 + 9}$.",
+          "explanation": "$y dy = x dx \\Rightarrow \\frac{1}{2}y^2 = \\frac{1}{2}x^2 + C \\Rightarrow y^2 = x^2 + 2C$. Using $y(0) = -3$: $(-3)^2 = 0 + 2C \\Rightarrow 2C = 9$. Thus $y^2 = x^2 + 9$. Since $y(0) = -3 < 0$, we select the negative branch $y = -\\sqrt{x^2 + 9}$."
         },
         {
           "q": "Solve $\\frac{dy}{dx} = 2y$ with $y(0) = 7$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Initial Value Problems (IVPs)",
           "choices": [
             "$y = 7e^{2x}$",
             "$y = 7e^{-2x}$",
@@ -65,10 +311,14 @@
             "$y = 7 + 2x$"
           ],
           "correct": 0,
-          "answer": "$\\frac{1}{y} dy = 2 dx \\Rightarrow \\ln|y| = 2x + C \\Rightarrow y = A e^{2x}$. Using $y(0) = 7$: $y = 7e^{2x}$."
+          "answer": "$\\frac{1}{y} dy = 2 dx \\Rightarrow \\ln|y| = 2x + C \\Rightarrow y = A e^{2x}$. Using $y(0) = 7$: $y = 7e^{2x}$.",
+          "explanation": "$\\frac{1}{y} dy = 2 dx \\Rightarrow \\ln|y| = 2x + C \\Rightarrow y = A e^{2x}$. Using $y(0) = 7$: $y = 7e^{2x}$."
         },
         {
           "q": "What is a singular solution of a differential equation?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Initial Value Problems (IVPs)",
           "choices": [
             "A solution that cannot be obtained from the general family for any value of the arbitrary constant $C$",
             "A solution that blows up to infinity everywhere",
@@ -76,15 +326,14 @@
             "A solution with no arbitrary constants"
           ],
           "correct": 0,
-          "answer": "A singular solution (often an equilibrium solution where $h(y) = 0$) cannot be generated by tuning the parameter $C$ in the general solution formula."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Exponential and Logistic Growth Models",
-      "questions": [
+          "answer": "A singular solution (often an equilibrium solution where $h(y) = 0$) cannot be generated by tuning the parameter $C$ in the general solution formula.",
+          "explanation": "A singular solution (often an equilibrium solution where $h(y) = 0$) cannot be generated by tuning the parameter $C$ in the general solution formula."
+        },
         {
           "q": "What is the differential equation for logistic population growth with carrying capacity $K$ and growth rate $r$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Exponential and Logistic Growth Models",
           "choices": [
             "$\\frac{dP}{dt} = r P \\left(1 - \\frac{P}{K}\\right)$",
             "$\\frac{dP}{dt} = r(K - P)$",
@@ -92,10 +341,14 @@
             "$\\frac{dP}{dt} = \\frac{r P}{K}$"
           ],
           "correct": 0,
-          "answer": "The logistic differential equation is $\\frac{dP}{dt} = r P(1 - P/K)$, where growth slows down as population $P$ approaches carrying capacity $K$."
+          "answer": "The logistic differential equation is $\\frac{dP}{dt} = r P(1 - P/K)$, where growth slows down as population $P$ approaches carrying capacity $K$.",
+          "explanation": "The logistic differential equation is $\\frac{dP}{dt} = r P(1 - P/K)$, where growth slows down as population $P$ approaches carrying capacity $K$."
         },
         {
           "q": "At what population size does the logistic growth rate $\\frac{dP}{dt}$ reach its maximum?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Exponential and Logistic Growth Models",
           "choices": [
             "$P = \\frac{K}{2}$",
             "$P = K$",
@@ -103,10 +356,29 @@
             "$P = \\frac{K}{4}$"
           ],
           "correct": 0,
-          "answer": "The quadratic $f(P) = rP - \\frac{r}{K}P^2$ reaches its maximum at vertex $P = -\\frac{r}{2(-r/K)} = \\frac{K}{2}$."
-        },
+          "answer": "The quadratic $f(P) = rP - \\frac{r}{K}P^2$ reaches its maximum at vertex $P = -\\frac{r}{2(-r/K)} = \\frac{K}{2}$.",
+          "explanation": "The quadratic $f(P) = rP - \\frac{r}{K}P^2$ reaches its maximum at vertex $P = -\\frac{r}{2(-r/K)} = \\frac{K}{2}$.",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*4",
+            "sol_fn": "1.4*x - 5.2 + 7*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
         {
-          "q": "What is $\\lim_{t \\to \\infty} P(t)$ in a logistic model if $P(0) > 0$?",
+          "q": "What is $\\lim_{t \\rightarrow \\infty} P(t)$ in a logistic model if $P(0) > 0$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Exponential and Logistic Growth Models",
           "choices": [
             "$K$",
             "$\\infty$",
@@ -114,15 +386,14 @@
             "$r K$"
           ],
           "correct": 0,
-          "answer": "For any positive initial population, the population asymptotically approaches the stable equilibrium carrying capacity $K$ as $t \\to \\infty$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Newton's Law of Cooling",
-      "questions": [
+          "answer": "For any positive initial population, the population asymptotically approaches the stable equilibrium carrying capacity $K$ as $t \\rightarrow \\infty$.",
+          "explanation": "For any positive initial population, the population asymptotically approaches the stable equilibrium carrying capacity $K$ as $t \\rightarrow \\infty$."
+        },
         {
           "q": "Newton's Law of Cooling states that the rate of change of temperature $T$ is proportional to the difference between $T$ and the ambient temperature $T_m$:",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Newton's Law of Cooling",
           "choices": [
             "$\\frac{dT}{dt} = -k(T - T_m)$ with $k > 0$",
             "$\\frac{dT}{dt} = -k T$",
@@ -130,10 +401,14 @@
             "$\\frac{dT}{dt} = -k(T - T_m)^2$"
           ],
           "correct": 0,
-          "answer": "The rate of cooling is proportional to the temperature gradient with the surroundings: $\\frac{dT}{dt} = -k(T - T_m)$."
+          "answer": "The rate of cooling is proportional to the temperature gradient with the surroundings: $\\frac{dT}{dt} = -k(T - T_m)$.",
+          "explanation": "The rate of cooling is proportional to the temperature gradient with the surroundings: $\\frac{dT}{dt} = -k(T - T_m)$."
         },
         {
-          "q": "A metal bar at $100^{\\circ}\\text{C}$ is placed in a room at $20^{\\circ}\\text{C}$. If $T(t) = 20 + 80 e^{-kt}$ and cools to $60^{\\circ}\\text{C}$ after $10\\text{ minutes}$, find $e^{-10k}$.",
+          "q": "A metal bar at $100^{\\circ}\\mathrm{C}$ is placed in a room at $20^{\\circ}\\mathrm{C}$. If $T(t) = 20 + 80 e^{-kt}$ and cools to $60^{\\circ}\\mathrm{C}$ after $10\\mathrm{\\ minutes}$, find $e^{-10k}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Newton's Law of Cooling",
           "choices": [
             "$\\frac{1}{2}$",
             "$\\frac{3}{4}$",
@@ -141,18 +416,261 @@
             "$\\frac{2}{3}$"
           ],
           "correct": 0,
-          "answer": "$60 = 20 + 80 e^{-10k} \\Rightarrow 40 = 80 e^{-10k} \\Rightarrow e^{-10k} = \\frac{40}{80} = \\frac{1}{2}$."
+          "answer": "$60 = 20 + 80 e^{-10k} \\Rightarrow 40 = 80 e^{-10k} \\Rightarrow e^{-10k} = \\frac{40}{80} = \\frac{1}{2}$.",
+          "explanation": "$60 = 20 + 80 e^{-10k} \\Rightarrow 40 = 80 e^{-10k} \\Rightarrow e^{-10k} = \\frac{40}{80} = \\frac{1}{2}$."
         },
         {
-          "q": "Using $e^{-10k} = \\frac{1}{2}$ from above, what is the temperature after $20\\text{ minutes}$?",
+          "q": "Using $e^{-10k} = \\frac{1}{2}$ from above, what is the temperature after $20\\mathrm{\\ minutes}$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Newton's Law of Cooling",
           "choices": [
-            "$40^{\\circ}\\text{C}$",
-            "$30^{\\circ}\\text{C}$",
-            "$50^{\\circ}\\text{C}$",
-            "$25^{\\circ}\\text{C}$"
+            "$40^{\\circ}\\mathrm{C}$",
+            "$30^{\\circ}\\mathrm{C}$",
+            "$50^{\\circ}\\mathrm{C}$",
+            "$25^{\\circ}\\mathrm{C}$"
           ],
           "correct": 0,
-          "answer": "After 20 minutes (two 10-minute half-cooling intervals): $e^{-20k} = (e^{-10k})^2 = (1/2)^2 = 1/4$. Temperature $T(20) = 20 + 80(1/4) = 20 + 20 = 40^{\\circ}\\text{C}$."
+          "answer": "After 20 minutes (two 10-minute half-cooling intervals): $e^{-20k} = (e^{-10k})^2 = (1/2)^2 = 1/4$. Temperature $T(20) = 20 + 80(1/4) = 20 + 20 = 40^{\\circ}\\mathrm{C}$.",
+          "explanation": "After 20 minutes (two 10-minute half-cooling intervals): $e^{-20k} = (e^{-10k})^2 = (1/2)^2 = 1/4$. Temperature $T(20) = 20 + 80(1/4) = 20 + 20 = 40^{\\circ}\\mathrm{C}$."
+        },
+        {
+          "q": "A hot object cools from $100^\\circ\\mathrm{C}$ to $80^\\circ\\mathrm{C}$ in $10$ minutes in an environment kept at $20^\\circ\\mathrm{C}$. Under Newton's Law of Cooling, at what time $t$ is the instantaneous rate of cooling $|dT/dt|$ exactly half of its initial value at $t = 0$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Newton's Law of Cooling",
+          "choices": [
+            "$10 \\frac{\\ln 2}{\\ln(4/3)}$",
+            "$10 \\frac{\\ln(4/3)}{\\ln 2}$",
+            "$20\\mathrm{\\ minutes}$",
+            "$5 \\frac{\\ln 2}{\\ln(4/3)}$"
+          ],
+          "correct": 0,
+          "answer": "Separable: $\\frac{dT}{dt} = -k(T - 20) \\Rightarrow |T'(t)| = k(T(t) - 20) = 80k e^{-kt}$. The initial cooling rate is $80k$. The rate is halved when $e^{-kt} = 1/2 \\Rightarrow t = \\frac{\\ln 2}{k}$. From $T(10) - 20 = 60 = 80e^{-10k}$, we find $e^{-10k} = \\frac{3}{4} \\Rightarrow k = \\frac{1}{10}\\ln(4/3)$. Thus $t = 10 \\frac{\\ln 2}{\\ln(4/3)}$.",
+          "explanation": "Separable: $\\frac{dT}{dt} = -k(T - 20) \\Rightarrow |T'(t)| = k(T(t) - 20) = 80k e^{-kt}$. The initial cooling rate is $80k$. The rate is halved when $e^{-kt} = 1/2 \\Rightarrow t = \\frac{\\ln 2}{k}$. From $T(10) - 20 = 60 = 80e^{-10k}$, we find $e^{-10k} = \\frac{3}{4} \\Rightarrow k = \\frac{1}{10}\\ln(4/3)$. Thus $t = 10 \\frac{\\ln 2}{\\ln(4/3)}$.",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*1",
+            "sol_fn": "1.4*x - 5.2 + 4*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        },
+        {
+          "q": "Consider the second-order nonhomogeneous linear differential equation $y'' - 5y' + 6y = 12x + 4$. If a particular solution is of the form $y_p(x) = Ax + B$ and the general solution is $y(x) = C_1e^{2x} + C_2e^{3x} + Ax + B$, find the value of $A$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Order and verifying solutions",
+          "choices": [
+            "1",
+            "2",
+            "6",
+            "12"
+          ],
+          "correct": 1,
+          "answer": "The given differential equation is $y'' - 5y' + 6y = 12x + 4$. \\\\ We are given that a particular solution is of the form $y_p(x) = Ax + B$. \\\\ To find the coefficients $A$ and $B$, we substitute $y_p(x)$ and its derivatives into the differential equation. \\\\ The first derivative is $y_p'(x) = A$. \\\\ The second derivative is $y_p''(x) = 0$. \\\\ Substituting these into the differential equation: \\\\ $x$By comparing the coefficients of $x$ on both sides, we get: \\\\ $6A = 12 \\Rightarrow A = 2$By comparing the constant terms on both sides, we get: \\\\ $x$The question asks for the value of $A$. Therefore, $A = 2$.",
+          "explanation": "The given differential equation is $y'' - 5y' + 6y = 12x + 4$. \\\\ We are given that a particular solution is of the form $y_p(x) = Ax + B$. \\\\ To find the coefficients $A$ and $B$, we substitute $y_p(x)$ and its derivatives into the differential equation. \\\\ The first derivative is $y_p'(x) = A$. \\\\ The second derivative is $y_p''(x) = 0$. \\\\ Substituting these into the differential equation: \\\\ $x$By comparing the coefficients of $x$ on both sides, we get: \\\\ $6A = 12 \\Rightarrow A = 2$By comparing the constant terms on both sides, we get: \\\\ $x$The question asks for the value of $A$. Therefore, $A = 2$."
+        },
+        {
+          "q": "An object cools in a room kept at a constant temperature $T_a$. At $t = 0$, its temperature is $100^\\circ\\mathrm{C}$; at $t = 10\\mathrm{\\ min}$, it is $60^\\circ\\mathrm{C}$; and at $t = 20\\mathrm{\\ min}$, it is $40^\\circ\\mathrm{C}$. Assuming Newton's Law of Cooling, what is the room temperature $T_a$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Recognizing and solving separable equations",
+          "choices": [
+            "$20^\\circ\\mathrm{C}$",
+            "$15^\\circ\\mathrm{C}$",
+            "$25^\\circ\\mathrm{C}$",
+            "$18^\\circ\\mathrm{C}$"
+          ],
+          "correct": 0,
+          "answer": "Separable: $\\frac{dT}{dt} = -k(T - T_a) \\Rightarrow T(t) - T_a = (100 - T_a)e^{-kt}$. At $t = 10$, $60 - T_a = (100 - T_a)e^{-10k}$. At $t = 20$, $40 - T_a = (100 - T_a)e^{-20k} = (100 - T_a)(e^{-10k})^2$. Thus $\\frac{40 - T_a}{60 - T_a} = e^{-10k} = \\frac{60 - T_a}{100 - T_a}$. Cross-multiplying gives $(60 - T_a)^2 = (40 - T_a)(100 - T_a) \\Rightarrow 3600 - 120T_a + T_a^2 = 4000 - 140T_a + T_a^2 \\Rightarrow 20T_a = 400 \\Rightarrow T_a = 20^\\circ\\mathrm{C}$.",
+          "explanation": "Separable: $\\frac{dT}{dt} = -k(T - T_a) \\Rightarrow T(t) - T_a = (100 - T_a)e^{-kt}$. At $t = 10$, $60 - T_a = (100 - T_a)e^{-10k}$. At $t = 20$, $40 - T_a = (100 - T_a)e^{-20k} = (100 - T_a)(e^{-10k})^2$. Thus $\\frac{40 - T_a}{60 - T_a} = e^{-10k} = \\frac{60 - T_a}{100 - T_a}$. Cross-multiplying gives $(60 - T_a)^2 = (40 - T_a)(100 - T_a) \\Rightarrow 3600 - 120T_a + T_a^2 = 4000 - 140T_a + T_a^2 \\Rightarrow 20T_a = 400 \\Rightarrow T_a = 20^\\circ\\mathrm{C}$."
+        },
+        {
+          "q": "Hot tea cools from $95^\\circ\\mathrm{C}$ to $80^\\circ\\mathrm{C}$ in $5$ minutes in a room kept at $20^\\circ\\mathrm{C}$. Under Newton's Law of Cooling, how many additional minutes will it take to cool from $80^\\circ\\mathrm{C}$ to $50^\\circ\\mathrm{C}$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Equilibrium solutions and qualitative behavior",
+          "choices": [
+            "$10 \\frac{\\ln 2}{\\ln(5/4)}$",
+            "$5 \\frac{\\ln(4/5)}{\\ln 2}$",
+            "$5 \\frac{\\ln 2}{\\ln(5/4)}$",
+            "$5 \\frac{\\ln(5/2)}{\\ln(5/4)}$"
+          ],
+          "correct": 2,
+          "answer": "Separable: $T(t) - 20 = 75e^{-kt}$. At $t = 5$, $80 - 20 = 60 = 75e^{-5k} \\Rightarrow e^{-5k} = \\frac{4}{5} \\Rightarrow k = \\frac{1}{5}\\ln(5/4)$. For $T(t) = 50$, $30 = 75e^{-kt} \\Rightarrow e^{-kt} = \\frac{2}{5}$, so $t = \\frac{\\ln(5/2)}{k} = 5\\frac{\\ln(5/2)}{\\ln(5/4)}$. The additional time is $t - 5 = 5\\left(\\frac{\\ln(5/2)}{\\ln(5/4)} - 1\\right) = 5\\frac{\\ln(5/2) - \\ln(5/4)}{\\ln(5/4)} = 5 \\frac{\\ln 2}{\\ln(5/4)}$.",
+          "explanation": "Separable: $T(t) - 20 = 75e^{-kt}$. At $t = 5$, $80 - 20 = 60 = 75e^{-5k} \\Rightarrow e^{-5k} = \\frac{4}{5} \\Rightarrow k = \\frac{1}{5}\\ln(5/4)$. For $T(t) = 50$, $30 = 75e^{-kt} \\Rightarrow e^{-kt} = \\frac{2}{5}$, so $t = \\frac{\\ln(5/2)}{k} = 5\\frac{\\ln(5/2)}{\\ln(5/4)}$. The additional time is $t - 5 = 5\\left(\\frac{\\ln(5/2)}{\\ln(5/4)} - 1\\right) = 5\\frac{\\ln(5/2) - \\ln(5/4)}{\\ln(5/4)} = 5 \\frac{\\ln 2}{\\ln(5/4)}$."
+        },
+        {
+          "q": "A metal ingot at $800^\\circ\\mathrm{C}$ is immersed in a cooling bath kept at $50^\\circ\\mathrm{C}$. After $1$ minute, its temperature drops to $500^\\circ\\mathrm{C}$. Under Newton's Law of Cooling, how many additional minutes will it take to cool to $100^\\circ\\mathrm{C}$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "General versus particular solutions",
+          "choices": [
+            "$\\frac{3\\ln 2}{\\ln(5/3)}$",
+            "$\\frac{\\ln 3}{\\ln(5/3)}$",
+            "$\\frac{2\\ln 3}{\\ln(5/3)}$",
+            "$\\frac{\\ln 15}{\\ln(5/3)}$"
+          ],
+          "correct": 2,
+          "answer": "Separable: $T(t) - 50 = 750e^{-kt}$. At $t = 1$, $450 = 750e^{-k} \\Rightarrow e^{-k} = \\frac{3}{5} \\Rightarrow k = \\ln(5/3)$. For $T(t) = 100$, $50 = 750e^{-kt} \\Rightarrow e^{-kt} = \\frac{1}{15} \\Rightarrow t = \\frac{\\ln 15}{\\ln(5/3)}$. The additional time required is $t - 1 = \\frac{\\ln 15 - \\ln(5/3)}{\\ln(5/3)} = \\frac{\\ln(15 \\cdot 3 / 5)}{\\ln(5/3)} = \\frac{\\ln 9}{\\ln(5/3)} = \\frac{2\\ln 3}{\\ln(5/3)}$.",
+          "explanation": "Separable: $T(t) - 50 = 750e^{-kt}$. At $t = 1$, $450 = 750e^{-k} \\Rightarrow e^{-k} = \\frac{3}{5} \\Rightarrow k = \\ln(5/3)$. For $T(t) = 100$, $50 = 750e^{-kt} \\Rightarrow e^{-kt} = \\frac{1}{15} \\Rightarrow t = \\frac{\\ln 15}{\\ln(5/3)}$. The additional time required is $t - 1 = \\frac{\\ln 15 - \\ln(5/3)}{\\ln(5/3)} = \\frac{\\ln(15 \\cdot 3 / 5)}{\\ln(5/3)} = \\frac{\\ln 9}{\\ln(5/3)} = \\frac{2\\ln 3}{\\ln(5/3)}$."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "An object cools in an environment whose ambient temperature rises linearly according to $T_m(t) = 10 + 2t$ (in $^\\circ\\mathrm{C}$). Newton's Law of Cooling gives $T' = -k(T - T_m(t))$ with $k = 1\\mathrm{\\ hr}^{-1}$. If $T(0) = 50^\\circ\\mathrm{C}$, what is $T(1)$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Initial value problems",
+          "choices": [
+            "$10 + 42e^{-1}$",
+            "$10 + 40e^{-1}$",
+            "$12 + 42e^{-1}$",
+            "$8 + 42e^{-1}$"
+          ],
+          "correct": 0,
+          "answer": "Linear ODE: $T' + T = 10 + 2t$. Integrating factor: $\\mu = e^t$. Multiplying gives $(T e^t)' = (2t + 10)e^t$. Integrating by parts yields $T e^t = (2t + 8)e^t + C \\Rightarrow T(t) = 2t + 8 + C e^{-t}$. Using $T(0) = 50$ yields $50 = 8 + C \\Rightarrow C = 42$. At $t = 1$, $T(1) = 2(1) + 8 + 42e^{-1} = 10 + 42e^{-1}$.",
+          "explanation": "Linear ODE: $T' + T = 10 + 2t$. Integrating factor: $\\mu = e^t$. Multiplying gives $(T e^t)' = (2t + 10)e^t$. Integrating by parts yields $T e^t = (2t + 8)e^t + C \\Rightarrow T(t) = 2t + 8 + C e^{-t}$. Using $T(0) = 50$ yields $50 = 8 + C \\Rightarrow C = 42$. At $t = 1$, $T(1) = 2(1) + 8 + 42e^{-1} = 10 + 42e^{-1}$.",
+          "cross_lesson": "3.01 Second-Order Linear Homogeneous Equations"
+        },
+        {
+          "q": "A cup of coffee at $90^\\circ\\mathrm{C}$ is placed in a room held at $20^\\circ\\mathrm{C}$. After $10$ minutes, the temperature of the coffee is $60^\\circ\\mathrm{C}$. Assuming Newton's Law of Cooling, at what time $t$ (in minutes) will its temperature reach $30^\\circ\\mathrm{C}$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Application: radioactive decay and population growth",
+          "choices": [
+            "$10 \\frac{\\ln 7}{\\ln(4/7)}$",
+            "$20 \\frac{\\ln 7}{\\ln(7/4)}$",
+            "$10 \\frac{\\ln 7}{\\ln(7/4)}$",
+            "$10 \\frac{\\ln 4}{\\ln(7/4)}$"
+          ],
+          "correct": 2,
+          "answer": "Separable: $\\frac{dT}{dt} = -k(T - 20) \\Rightarrow T(t) = 20 + 70e^{-kt}$. At $t = 10$, $60 = 20 + 70e^{-10k} \\Rightarrow e^{-10k} = \\frac{4}{7}$. For $T(t) = 30$, $30 = 20 + 70e^{-kt} \\Rightarrow e^{-kt} = \\frac{1}{7}$. Taking logs: $-kt = -\\frac{t}{10}\\ln(7/4) = -\\ln 7 \\Rightarrow t = 10 \\frac{\\ln 7}{\\ln(7/4)}$.",
+          "explanation": "Separable: $\\frac{dT}{dt} = -k(T - 20) \\Rightarrow T(t) = 20 + 70e^{-kt}$. At $t = 10$, $60 = 20 + 70e^{-10k} \\Rightarrow e^{-10k} = \\frac{4}{7}$. For $T(t) = 30$, $30 = 20 + 70e^{-kt} \\Rightarrow e^{-kt} = \\frac{1}{7}$. Taking logs: $-kt = -\\frac{t}{10}\\ln(7/4) = -\\ln 7 \\Rightarrow t = 10 \\frac{\\ln 7}{\\ln(7/4)}$.",
+          "cross_lesson": "4.01 Nonhomogeneous Equations & Undetermined Coefficients",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*3",
+            "sol_fn": "1.4*x - 5.2 + 6*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        },
+        {
+          "q": "A thermometer initially reading $25^\\circ\\mathrm{C}$ is taken outside into air at constant temperature $T_m$. After $1$ minute it reads $15^\\circ\\mathrm{C}$, and after $2$ minutes it reads $9^\\circ\\mathrm{C}$. Assuming Newton's Law of Cooling, what is the outdoor temperature $T_m$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Application: Newton's Law of Cooling",
+          "choices": [
+            "$-5^\\circ\\mathrm{C}$",
+            "$5^\\circ\\mathrm{C}$",
+            "$3^\\circ\\mathrm{C}$",
+            "$0^\\circ\\mathrm{C}$"
+          ],
+          "correct": 3,
+          "answer": "Separable: $T(t) - T_m = (25 - T_m)e^{-kt}$. At $t = 1$, $15 - T_m = (25 - T_m)e^{-k}$. At $t = 2$, $9 - T_m = (25 - T_m)e^{-2k}$. Squaring the first ratio gives $(15 - T_m)^2 = (25 - T_m)(9 - T_m) \\Rightarrow 225 - 30T_m + T_m^2 = 225 - 34T_m + T_m^2 \\Rightarrow 4T_m = 0 \\Rightarrow T_m = 0^\\circ\\mathrm{C}$.",
+          "explanation": "Separable: $T(t) - T_m = (25 - T_m)e^{-kt}$. At $t = 1$, $15 - T_m = (25 - T_m)e^{-k}$. At $t = 2$, $9 - T_m = (25 - T_m)e^{-2k}$. Squaring the first ratio gives $(15 - T_m)^2 = (25 - T_m)(9 - T_m) \\Rightarrow 225 - 30T_m + T_m^2 = 225 - 34T_m + T_m^2 \\Rightarrow 4T_m = 0 \\Rightarrow T_m = 0^\\circ\\mathrm{C}$.",
+          "cross_lesson": "5.01 Variation of Parameters"
+        },
+        {
+          "q": "Under Newton's Law of Cooling, $\\frac{dT}{dt} = -k(T - T_m)$ with surrounding temperature $T_m = 20^\\circ\\mathrm{C}$. An object starts at $T(0) = 80^\\circ\\mathrm{C}$ and cools to $T(1) = 50^\\circ\\mathrm{C}$ at $t = 1$ hour. What is the cooling constant $k$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Further practice: separable equations",
+          "choices": [
+            "$-\\ln 2$",
+            "$\\ln 2$",
+            "$2\\ln 2$",
+            "$\\ln(5/8)$"
+          ],
+          "correct": 1,
+          "answer": "Separable: $\\frac{dT}{T - 20} = -k\\,dt \\Rightarrow T(t) - 20 = (80 - 20)e^{-kt} = 60e^{-kt}$. At $t = 1$, $50 - 20 = 60e^{-k} \\Rightarrow 30 = 60e^{-k} \\Rightarrow e^{-k} = \\frac{1}{2} \\Rightarrow k = \\ln 2$.",
+          "explanation": "Separable: $\\frac{dT}{T - 20} = -k\\,dt \\Rightarrow T(t) - 20 = (80 - 20)e^{-kt} = 60e^{-kt}$. At $t = 1$, $50 - 20 = 60e^{-k} \\Rightarrow 30 = 60e^{-k} \\Rightarrow e^{-k} = \\frac{1}{2} \\Rightarrow k = \\ln 2$.",
+          "cross_lesson": "2.01 Linear First-Order Equations & the Integrating Factor"
+        },
+        {
+          "q": "Consider the differential equation $\\frac{dy}{dx} = \\frac{x^2 \\cos(y)}{1 - x^3}$ with the initial condition $y(0) = \\frac{\\pi}{2}$. If there exists a unique solution in a neighborhood of $x=0$ and $y=\\frac{\\pi}{2}$, find the value of $y'(0)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Mixed review",
+          "choices": [
+            "0",
+            "1",
+            "$\\frac{\\pi}{2}$",
+            "Undefined"
+          ],
+          "correct": 0,
+          "answer": "The given differential equation is $\\frac{dy}{dx} = \\frac{x^2 \\cos(y)}{1 - x^3}$ with the initial condition $y(0) = \\frac{\\pi}{2}$. We are asked to find $y'(0)$. The differential equation directly gives us the expression for $\\frac{dy}{dx}$, which is $y'(x)$. To find $y'(0)$, we substitute $x=0$ and $y=y(0)=\\frac{\\pi}{2}$ into the differential equation: $y'(0) = \\frac{(0)^2 \\cos(y(0))}{1 - (0)^3}$ Substitute $y(0) = \\frac{\\pi}{2}$: $y'(0) = \\frac{0 \\cdot \\cos(\\frac{\\pi}{2})}{1 - 0}$ We know that $\\cos(\\frac{\\pi}{2}) = 0$. So, $y'(0) = \\frac{0 \\cdot 0}{1}$ $y'(0) = \\frac{0}{1}$ $y'(0) = 0$ The existence and uniqueness theorem for first-order ODEs guarantees that if $f(x, y) = \\frac{x^2 \\cos(y)}{1 - x^3}$ and $\\frac{\\partial f}{\\partial y} = \\frac{x^2 (-\\sin(y))}{1 - x^3}$ are continuous in a rectangular region containing $(0, \\frac{\\pi}{2})$, then a unique solution exists. At $x=0$, both $f(x, y)$ and $\\frac{\\partial f}{\\partial y}$ are continuous since the denominator $1 - x^3$ is non-zero and the numerators are well-defined. Therefore, the condition for a unique solution is met.",
+          "explanation": "The given differential equation is $\\frac{dy}{dx} = \\frac{x^2 \\cos(y)}{1 - x^3}$ with the initial condition $y(0) = \\frac{\\pi}{2}$. We are asked to find $y'(0)$. The differential equation directly gives us the expression for $\\frac{dy}{dx}$, which is $y'(x)$. To find $y'(0)$, we substitute $x=0$ and $y=y(0)=\\frac{\\pi}{2}$ into the differential equation: $y'(0) = \\frac{(0)^2 \\cos(y(0))}{1 - (0)^3}$ Substitute $y(0) = \\frac{\\pi}{2}$: $y'(0) = \\frac{0 \\cdot \\cos(\\frac{\\pi}{2})}{1 - 0}$ We know that $\\cos(\\frac{\\pi}{2}) = 0$. So, $y'(0) = \\frac{0 \\cdot 0}{1}$ $y'(0) = \\frac{0}{1}$ $y'(0) = 0$ The existence and uniqueness theorem for first-order ODEs guarantees that if $f(x, y) = \\frac{x^2 \\cos(y)}{1 - x^3}$ and $\\frac{\\partial f}{\\partial y} = \\frac{x^2 (-\\sin(y))}{1 - x^3}$ are continuous in a rectangular region containing $(0, \\frac{\\pi}{2})$, then a unique solution exists. At $x=0$, both $f(x, y)$ and $\\frac{\\partial f}{\\partial y}$ are continuous since the denominator $1 - x^3$ is non-zero and the numerators are well-defined. Therefore, the condition for a unique solution is met.",
+          "cross_lesson": "3.01 Second-Order Linear Homogeneous Equations"
+        },
+        {
+          "q": "Consider the second-order linear non-homogeneous differential equation: $\\frac{d^2y}{dx^2} + 4y = \\sec(2x)$. Suppose a particular solution is found using the method of variation of parameters. Let the fundamental set of solutions for the associated homogeneous equation be $y_1(x) = \\cos(2x)$ and $y_2(x) = \\sin(2x)$. If the particular solution is expressed in the form $y_p(x) = u_1(x)y_1(x) + u_2(x)y_2(x)$, determine the value of $u_2'(x)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Separation Form and Integrals",
+          "choices": [
+            "$\\frac{1}{2}$",
+            "$\\frac{1}{4}$",
+            "$\\frac{1}{2}\\sin(2x)$",
+            "$\\frac{1}{4}\\cos(2x)$"
+          ],
+          "correct": 0,
+          "answer": "The given differential equation is $\\frac{d^2y}{dx^2} + 4y = \\sec(2x)$. The associated homogeneous equation is $\\frac{d^2y}{dx^2} + 4y = 0$. The characteristic equation is $r^2 + 4 = 0$, which has roots $r = \\pm 2i$. Thus, the fundamental set of solutions for the homogeneous equation is $y_1(x) = \\cos(2x)$ and $y_2(x) = \\sin(2x)$. We use the method of variation of parameters to find a particular solution of the form $y_p(x) = u_1(x)y_1(x) + u_2(x)y_2(x)$. The Wronskian of $y_1$ and $y_2$ is: $W(y_1, y_2)(x) = y_1y_2' - y_1'y_2 = \\cos(2x)(2\\cos(2x)) - (-\\sin(2x))(2\\sin(2x))$ $W(y_1, y_2)(x) = 2\\cos^2(2x) + 2\\sin^2(2x) = 2(\\cos^2(2x) + \\sin^2(2x)) = 2$. The non-homogeneous term is $g(x) = \\sec(2x)$. The formulas for $u_1'(x)$ and $u_2'(x)$ are: $u_1'(x) = -\\frac{y_2(x)g(x)}{W(x)}$ $u_2'(x) = \\frac{y_1(x)g(x)}{W(x)}$ Substituting the given functions: $u_2'(x) = \\frac{\\cos(2x) \\cdot \\sec(2x)}{2}$ $u_2'(x) = \\frac{\\cos(2x)}{2\\cos(2x)}$ $u_2'(x) = \\frac{1}{2}$. The value of $u_2'(x)$ is $\\frac{1}{2}$.",
+          "explanation": "The given differential equation is $\\frac{d^2y}{dx^2} + 4y = \\sec(2x)$. The associated homogeneous equation is $\\frac{d^2y}{dx^2} + 4y = 0$. The characteristic equation is $r^2 + 4 = 0$, which has roots $r = \\pm 2i$. Thus, the fundamental set of solutions for the homogeneous equation is $y_1(x) = \\cos(2x)$ and $y_2(x) = \\sin(2x)$. We use the method of variation of parameters to find a particular solution of the form $y_p(x) = u_1(x)y_1(x) + u_2(x)y_2(x)$. The Wronskian of $y_1$ and $y_2$ is: $W(y_1, y_2)(x) = y_1y_2' - y_1'y_2 = \\cos(2x)(2\\cos(2x)) - (-\\sin(2x))(2\\sin(2x))$ $W(y_1, y_2)(x) = 2\\cos^2(2x) + 2\\sin^2(2x) = 2(\\cos^2(2x) + \\sin^2(2x)) = 2$. The non-homogeneous term is $g(x) = \\sec(2x)$. The formulas for $u_1'(x)$ and $u_2'(x)$ are: $u_1'(x) = -\\frac{y_2(x)g(x)}{W(x)}$ $u_2'(x) = \\frac{y_1(x)g(x)}{W(x)}$ Substituting the given functions: $u_2'(x) = \\frac{\\cos(2x) \\cdot \\sec(2x)}{2}$ $u_2'(x) = \\frac{\\cos(2x)}{2\\cos(2x)}$ $u_2'(x) = \\frac{1}{2}$. The value of $u_2'(x)$ is $\\frac{1}{2}$.",
+          "cross_lesson": "4.01 Nonhomogeneous Equations & Undetermined Coefficients",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*3",
+            "sol_fn": "1.4*x - 5.2 + 6*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        },
+        {
+          "q": "Consider a second-order linear non-homogeneous differential equation of the form $y''(x) + p(x)y'(x) + q(x)y(x) = g(x)$. If $y_1(x)$ and $y_2(x)$ form a fundamental set of solutions to the corresponding homogeneous equation $y''(x) + p(x)y'(x) + q(x)y(x) = 0$, and the Wronskian is $W(y_1, y_2)(x) = y_1(x)y_2'(x) - y_1'(x)y_2(x)$, which of the following expressions represents a particular solution $y_p(x)$ obtained using the method of variation of parameters?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Initial Value Problems (IVPs)",
+          "choices": [
+            "$y_p(x) = -y_1(x)\\int\\frac{y_2(x)g(x)}{W(y_1, y_2)(x)}\\,dx + y_2(x)\\int\\frac{y_1(x)g(x)}{W(y_1, y_2)(x)}\\,dx$",
+            "$y_p(x) = y_1(x)\\int\\frac{y_2(x)g(x)}{W(y_1, y_2)(x)}\\,dx + y_2(x)\\int\\frac{y_1(x)g(x)}{W(y_1, y_2)(x)}\\,dx$",
+            "$y_p(x) = -y_1(x)\\int\\frac{y_2(x)g(x)}{W(y_1, y_2)(x)}\\,dx - y_2(x)\\int\\frac{y_1(x)g(x)}{W(y_1, y_2)(x)}\\,dx$",
+            "$y_p(x) = y_1(x)\\int\\frac{y_2(x)g(x)}{W(y_1, y_2)(x)}\\,dx - y_2(x)\\int\\frac{y_1(x)g(x)}{W(y_1, y_2)(x)}\\,dx$"
+          ],
+          "correct": 0,
+          "answer": "The method of variation of parameters for a second-order linear non-homogeneous differential equation $y''(x) + p(x)y'(x) + q(x)y(x) = g(x)$, where $y_1(x)$ and $y_2(x)$ are linearly independent solutions to the homogeneous equation, seeks a particular solution of the form $y_p(x) = u_1(x)y_1(x) + u_2(x)y_2(x)$. The standard formulas for $u_1'(x)$ and $u_2'(x)$ are derived as follows: $u_1'(x) = -\\frac{y_2(x)g(x)}{W(y_1, y_2)(x)}$ $u_2'(x) = \\frac{y_1(x)g(x)}{W(y_1, y_2)(x)}$ Integrating these expressions gives: $u_1(x) = -\\int\\frac{y_2(x)g(x)}{W(y_1, y_2)(x)}\\,dx$ $u_2(x) = \\int\\frac{y_1(x)g(x)}{W(y_1, y_2)(x)}\\,dx$ Substituting these back into the form of $y_p(x)$ yields: $y_p(x) = \\left(-\\int\\frac{y_2(x)g(x)}{W(y_1, y_2)(x)}\\,dx\\right)y_1(x) + \\left(\\int\\frac{y_1(x)g(x)}{W(y_1, y_2)(x)}\\,dx\\right)y_2(x)$ $y_p(x) = -y_1(x)\\int\\frac{y_2(x)g(x)}{W(y_1, y_2)(x)}\\,dx + y_2(x)\\int\\frac{y_1(x)g(x)}{W(y_1, y_2)(x)}\\,dx$ This matches the first choice.",
+          "explanation": "The method of variation of parameters for a second-order linear non-homogeneous differential equation $y''(x) + p(x)y'(x) + q(x)y(x) = g(x)$, where $y_1(x)$ and $y_2(x)$ are linearly independent solutions to the homogeneous equation, seeks a particular solution of the form $y_p(x) = u_1(x)y_1(x) + u_2(x)y_2(x)$. The standard formulas for $u_1'(x)$ and $u_2'(x)$ are derived as follows: $u_1'(x) = -\\frac{y_2(x)g(x)}{W(y_1, y_2)(x)}$ $u_2'(x) = \\frac{y_1(x)g(x)}{W(y_1, y_2)(x)}$ Integrating these expressions gives: $u_1(x) = -\\int\\frac{y_2(x)g(x)}{W(y_1, y_2)(x)}\\,dx$ $u_2(x) = \\int\\frac{y_1(x)g(x)}{W(y_1, y_2)(x)}\\,dx$ Substituting these back into the form of $y_p(x)$ yields: $y_p(x) = \\left(-\\int\\frac{y_2(x)g(x)}{W(y_1, y_2)(x)}\\,dx\\right)y_1(x) + \\left(\\int\\frac{y_1(x)g(x)}{W(y_1, y_2)(x)}\\,dx\\right)y_2(x)$ $y_p(x) = -y_1(x)\\int\\frac{y_2(x)g(x)}{W(y_1, y_2)(x)}\\,dx + y_2(x)\\int\\frac{y_1(x)g(x)}{W(y_1, y_2)(x)}\\,dx$ This matches the first choice.",
+          "cross_lesson": "5.01 Variation of Parameters"
+        },
+        {
+          "q": "Consider the nonhomogeneous second-order linear differential equation $y'' - 5y' + 6y = 12x + 8$. $y_h(x) = c_1e^{2x} + c_2e^{3x}$ is the general solution to the corresponding homogeneous equation. Find the particular solution $y_p(x)$ using the method of undetermined coefficients, and then determine the value of the constant $A$ such that $y_p(x) = Ax + B$ for some constant $B$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Exponential and Logistic Growth Models",
+          "choices": [
+            "$A = 2$",
+            "$A = 3$",
+            "$A = 6$",
+            "$A = 12$"
+          ],
+          "correct": 0,
+          "answer": "The given nonhomogeneous differential equation is $y'' - 5y' + 6y = 12x + 8$. The form of the nonhomogeneous term is $g(x) = 12x + 8$, which is a polynomial of degree 1. Thus, we assume a particular solution of the form $y_p(x) = Ax + B$. We need to find the first and second derivatives of $y_p(x)$: $y_p'(x) = A$ $y_p''(x) = 0$ Substitute these into the differential equation: $0 - 5(A) + 6(Ax + B) = 12x + 8$ $-5A + 6Ax + 6B = 12x + 8$ $6Ax + (6B - 5A) = 12x + 8$ Equating the coefficients of like powers of $x$: For the $x$ term: $6A = 12$ $\\Rightarrow$ $A = 2$. For the constant term: $6B - 5A = 8$. Substitute $A = 2$ into the second equation: $6B - 5(2) = 8$ $6B - 10 = 8$ $6B = 18$ $B = 3$ Therefore, the particular solution is $y_p(x) = 2x + 3$. The value of the constant $A$ is 2.",
+          "explanation": "The given nonhomogeneous differential equation is $y'' - 5y' + 6y = 12x + 8$. The form of the nonhomogeneous term is $g(x) = 12x + 8$, which is a polynomial of degree 1. Thus, we assume a particular solution of the form $y_p(x) = Ax + B$. We need to find the first and second derivatives of $y_p(x)$: $y_p'(x) = A$ $y_p''(x) = 0$ Substitute these into the differential equation: $0 - 5(A) + 6(Ax + B) = 12x + 8$ $-5A + 6Ax + 6B = 12x + 8$ $6Ax + (6B - 5A) = 12x + 8$ Equating the coefficients of like powers of $x$: For the $x$ term: $6A = 12$ $\\Rightarrow$ $A = 2$. For the constant term: $6B - 5A = 8$. Substitute $A = 2$ into the second equation: $6B - 5(2) = 8$ $6B - 10 = 8$ $6B = 18$ $B = 3$ Therefore, the particular solution is $y_p(x) = 2x + 3$. The value of the constant $A$ is 2.",
+          "cross_lesson": "2.01 Linear First-Order Equations & the Integrating Factor"
         }
       ]
     }

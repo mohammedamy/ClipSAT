@@ -3,12 +3,692 @@
   "num": "2.01",
   "slug": "exponential-functions-and-growth-models",
   "title": "Exponential Functions & Growth Models",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 2.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Exponential Growth and Decay Fundamentals",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
+          "q": "Classify each function as exponential growth or decay, and state the growth/decay factor: $f(x)=5(1.2)^x$ and $g(x)=5(0.8)^x$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Exponential growth and decay basics",
+          "answer": "$f(x)=5(1.2)^x$: growth, since the base $1.2>1$ (growth rate $20\\%$ per unit $x$). $g(x)=5(0.8)^x$: decay, since the base $0.8<1$ (decay rate $20\\%$ per unit $x$).",
+          "explanation": "$f(x)=5(1.2)^x$: growth, since the base $1.2>1$ (growth rate $20\\%$ per unit $x$). $g(x)=5(0.8)^x$: decay, since the base $0.8<1$ (decay rate $20\\%$ per unit $x$)."
+        },
+        {
+          "q": "A population of bacteria is modeled by $P(t)=1000(2)^{t/3}$, where $t$ is in hours. Interpret the meaning of the exponent's structure, and find the population after 9 hours.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Exponential growth and decay basics",
+          "answer": "The form $2^{t/3}$ means the population doubles every 3 hours. After 9 hours (3 doubling periods): $P(9)=1000(2)^{3}=1000(8)=8000$ bacteria.",
+          "explanation": "The form $2^{t/3}$ means the population doubles every 3 hours. After 9 hours (3 doubling periods): $P(9)=1000(2)^{3}=1000(8)=8000$ bacteria.",
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "Q1",
+              "Q2",
+              "Q3",
+              "Q4",
+              "Q5"
+            ],
+            "values": [
+              15,
+              21,
+              26,
+              19,
+              24
+            ],
+            "ylabel": "Frequency",
+            "highlight_index": 2,
+            "width": 230
+          }
+        },
+        {
+          "q": "The graph shows $f(x)=2^x$ and $g(x)=3(0.5)^x$, one growing and one decaying.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Visualizing exponential growth",
+          "parts": [
+            "Identify which curve represents growth and which represents decay.",
+            "State the horizontal asymptote shared by both curves."
+          ],
+          "cols": 1,
+          "answers": [
+            "$f(x)=2^x$ is the growth curve (increasing, base $>1$). $g(x)=3(0.5)^x$ is the decay curve (decreasing, base $<1$).",
+            "Both curves approach the horizontal asymptote $y=0$ (neither ever reaches or crosses it)."
+          ],
+          "answer": "(a) $f(x)=2^x$ is the growth curve (increasing, base $>1$). $g(x)=3(0.5)^x$ is the decay curve (decreasing, base $<1$).; (b) Both curves approach the horizontal asymptote $y=0$ (neither ever reaches or crosses it).",
+          "explanation": "(a) $f(x)=2^x$ is the growth curve (increasing, base $>1$). $g(x)=3(0.5)^x$ is the decay curve (decreasing, base $<1$).; (b) Both curves approach the horizontal asymptote $y=0$ (neither ever reaches or crosses it).",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2**x",
+              "3*0.5**x"
+            ],
+            "xmin": -3,
+            "xmax": 4,
+            "ymin": -1,
+            "ymax": 10,
+            "width": 220
+          }
+        },
+        {
+          "q": "An investment grows from 2000 dollars to 2420 dollars in 2 years under exponential growth $A(t)=A_0(1+r)^t$. Find the annual growth rate $r$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Finding an exponential model from data",
+          "answer": "$2420=2000(1+r)^2$: $(1+r)^2=1.21$, so $1+r=\\sqrt{1.21}=1.1$, giving $r=0.10=10\\%$.",
+          "explanation": "$2420=2000(1+r)^2$: $(1+r)^2=1.21$, so $1+r=\\sqrt{1.21}=1.1$, giving $r=0.10=10\\%$."
+        },
+        {
+          "q": "A radioactive sample decays from 80 g to 45 g over 6 years. Find the annual decay factor $b$ in the model $A(t)=80\\,b^t$, to four decimal places.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Finding an exponential model from data",
+          "answer": "$45=80\\,b^6$: $b^6=\\frac{45}{80}=0.5625$. $b=(0.5625)^{1/6}\\approx0.9128$.",
+          "explanation": "$45=80\\,b^6$: $b^6=\\frac{45}{80}=0.5625$. $b=(0.5625)^{1/6}\\approx0.9128$."
+        },
+        {
+          "q": "A quantity grows continuously according to $A(t)=500e^{0.03t}$. Find the amount after 20 years, to the nearest whole number.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Continuous growth and the number e",
+          "answer": "$A(20)=500e^{0.03(20)}=500e^{0.6}\\approx500(1.8221)\\approx911$.",
+          "explanation": "$A(20)=500e^{0.03(20)}=500e^{0.6}\\approx500(1.8221)\\approx911$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2**(0.6*x)",
+              "log(x + 3) + 0.5"
+            ],
+            "xmin": -2.5,
+            "xmax": 4.5,
+            "ymin": -2,
+            "ymax": 6.5,
+            "asymptotes": {
+              "x": [
+                -3
+              ],
+              "y": [
+                0
+              ]
+            },
+            "point_labels": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "$(0,1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Explain the difference between the discrete growth model $A(t)=A_0(1+r)^t$ and the continuous growth model $A(t)=A_0e^{kt}$, and state how $r$ and $k$ are related when both models describe the same annual growth rate $r$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Continuous growth and the number e",
+          "answer": "The discrete model compounds growth once per period (e.g. once a year), while the continuous model compounds growth constantly at every instant. They're related by $e^k=1+r$, i.e. $k=\\ln(1+r)$ — the continuous rate $k$ is slightly less than the discrete rate $r$ for positive growth, since continuous compounding reaches the same total growth with a slightly lower nominal rate.",
+          "explanation": "The discrete model compounds growth once per period (e.g. once a year), while the continuous model compounds growth constantly at every instant. They're related by $e^k=1+r$, i.e. $k=\\ln(1+r)$ — the continuous rate $k$ is slightly less than the discrete rate $r$ for positive growth, since continuous compounding reaches the same total growth with a slightly lower nominal rate."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Explain why, for large enough $x$, any exponential growth function $f(x)=b^x$ (with $b>1$) will eventually exceed any polynomial function $g(x)=x^n$, no matter how large the exponent $n$ is. Illustrate with $f(x)=1.01^x$ vs. $g(x)=x^{10}$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Comparing growth rates: exponential vs. polynomial",
+          "answer": "Exponential functions grow by repeated multiplication, so their rate of growth itself keeps growing exponentially, while a polynomial's growth rate eventually stabilizes into a fixed power-law pattern. Even a very slowly-growing exponential like $1.01^x$ will eventually overtake $x^{10}$, because exponential growth compounds indefinitely while polynomial growth does not — it just takes an enormous value of $x$ (in this case, extremely large, since $1.01^x$ grows very slowly at first) for the crossover to occur.",
+          "explanation": "Exponential functions grow by repeated multiplication, so their rate of growth itself keeps growing exponentially, while a polynomial's growth rate eventually stabilizes into a fixed power-law pattern. Even a very slowly-growing exponential like $1.01^x$ will eventually overtake $x^{10}$, because exponential growth compounds indefinitely while polynomial growth does not — it just takes an enormous value of $x$ (in this case, extremely large, since $1.01^x$ grows very slowly at first) for the crossover to occur."
+        },
+        {
+          "q": "A substance has a half-life of 8 days. Write its decay model $A(t)=A_0\\left(\\frac{1}{2}\\right)^{t/8}$, then find what fraction of the original amount remains after 20 days.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Applications: half-life and doubling time",
+          "answer": "$\\frac{A(20)}{A_0}=\\left(\\frac{1}{2}\\right)^{20/8}=\\left(\\frac{1}{2}\\right)^{2.5}=2^{-2.5}\\approx0.1768$, so about $17.68\\%$ remains.",
+          "explanation": "$\\frac{A(20)}{A_0}=\\left(\\frac{1}{2}\\right)^{20/8}=\\left(\\frac{1}{2}\\right)^{2.5}=2^{-2.5}\\approx0.1768$, so about $17.68\\%$ remains."
+        },
+        {
+          "q": "A city's population doubles every 15 years and currently stands at 40{,}000. Write an exponential model $P(t)$ and predict the population after 45 years.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Applications: half-life and doubling time",
+          "answer": "$P(t)=40000(2)^{t/15}$. After 45 years ($t/15=3$ doubling periods): $P(45)=40000(2)^3=40000(8)=320{,}000$.",
+          "explanation": "$P(t)=40000(2)^{t/15}$. After 45 years ($t/15=3$ doubling periods): $P(45)=40000(2)^3=40000(8)=320{,}000$.",
+          "figure": {
+            "type": "slope_field",
+            "expr": "0.35*x - 0.25*y + 0.1*2",
+            "sol_fn": "1.4*x - 5.2 + 5*exp(-0.25*x)",
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
+            "width": 225
+          }
+        },
+        {
+          "q": "Describe how the graph of $g(x)=2^{x-3}+4$ is transformed from the parent function $f(x)=2^x$, and state the new horizontal asymptote.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Transformations of exponential functions",
+          "answer": "$g(x)=2^{x-3}+4$ shifts $f(x)=2^x$ right 3 units and up 4 units. The horizontal asymptote shifts from $y=0$ to $y=4$.",
+          "explanation": "$g(x)=2^{x-3}+4$ shifts $f(x)=2^x$ right 3 units and up 4 units. The horizontal asymptote shifts from $y=0$ to $y=4$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2**x",
+              "2**(x-3)+4"
+            ],
+            "xmin": -2,
+            "xmax": 4,
+            "ymin": -1,
+            "ymax": 17,
+            "width": 220
+          }
+        },
+        {
+          "q": "Find the horizontal asymptote and $y$-intercept of $h(x)=-3(2)^x+6$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Transformations of exponential functions",
+          "answer": "The negative coefficient reflects the graph over the horizontal asymptote line; as $x\\rightarrow\\infty$, $-3(2)^x\\rightarrow-\\infty$, so $h(x)\\rightarrow-\\infty$, while as $x\\rightarrow-\\infty$, $-3(2)^x\\rightarrow0$, giving horizontal asymptote $y=6$. $y$-intercept: $h(0)=-3(1)+6=3$, so $(0,3)$.",
+          "explanation": "The negative coefficient reflects the graph over the horizontal asymptote line; as $x\\rightarrow\\infty$, $-3(2)^x\\rightarrow-\\infty$, so $h(x)\\rightarrow-\\infty$, while as $x\\rightarrow-\\infty$, $-3(2)^x\\rightarrow0$, giving horizontal asymptote $y=6$. $y$-intercept: $h(0)=-3(1)+6=3$, so $(0,3)$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-3*(2**x)+6"
+            ],
+            "xmin": -3,
+            "xmax": 3,
+            "ymin": -20,
+            "ymax": 7,
+            "width": 220
+          }
+        },
+        {
+          "q": "A savings account earns 4% annual interest compounded quarterly, modeled by $A(t)=A_0\\left(1+\\frac{0.04}{4}\\right)^{4t}$. If 5000 dollars is deposited, find the balance after 3 years, to the nearest dollar.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Compound interest and financial models",
+          "answer": "$A(3)=5000(1.01)^{12}\\approx5000(1.1268)\\approx5634$ dollars.",
+          "explanation": "$A(3)=5000(1.01)^{12}\\approx5000(1.1268)\\approx5634$ dollars."
+        },
+        {
+          "q": "Explain, without computing exact values, why compounding more frequently (e.g. daily instead of quarterly) at the same nominal annual rate produces a slightly larger balance after the same number of years.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Compound interest and financial models",
+          "answer": "More frequent compounding applies the (smaller) periodic interest rate more often, and interest starts earning interest sooner and more often within each year. This pushes the effective annual growth rate slightly above the nominal rate, so daily compounding yields a marginally larger balance than quarterly compounding at the same stated annual rate.",
+          "explanation": "More frequent compounding applies the (smaller) periodic interest rate more often, and interest starts earning interest sooner and more often within each year. This pushes the effective annual growth rate slightly above the nominal rate, so daily compounding yields a marginally larger balance than quarterly compounding at the same stated annual rate."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "The half-life of Carbon-14 is 5730 years. (a) Write $A(t)$. (b) How much of 200 g remains after 11 460 years? (c) When is only 10% left?",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Finding an exponential model from data",
+          "cross_lesson": "4.03 Parametric Equations & Modeling",
+          "answer": "(a) Exponential Decay Function: $A(t) = 200\\left(\\frac{1}{2}\\right)^{t/5730}.$ (b) Mass Remaining at $t = 11{,}460$ years: Notice that $\\frac{11{,}460}{5730} = 2$ half-lives: $A(11{,}460) = 200\\left(\\frac{1}{2}\\right)^2 = 200\\left(\\frac{1}{4}\\right) = \\mathbf{50\\mathrm{\\ g}}.$ (c) Time to Reach 10% of Initial Mass: Set $\\frac{A(t)}{200} = 0.10$: $\\left(\\frac{1}{2}\\right)^{t/5730} = 0.10 \\Rightarrow \\frac{t}{5730}\\ln(0.5) = \\ln(0.10) \\Rightarrow t = 5730\\frac{\\ln(0.10)}{\\ln(0.5)} \\approx \\mathbf{19{,}035\\mathrm{\\ years}}.$",
+          "explanation": "(a) Exponential Decay Function: $A(t) = 200\\left(\\frac{1}{2}\\right)^{t/5730}.$ (b) Mass Remaining at $t = 11{,}460$ years: Notice that $\\frac{11{,}460}{5730} = 2$ half-lives: $A(11{,}460) = 200\\left(\\frac{1}{2}\\right)^2 = 200\\left(\\frac{1}{4}\\right) = \\mathbf{50\\mathrm{\\ g}}.$ (c) Time to Reach 10% of Initial Mass: Set $\\frac{A(t)}{200} = 0.10$: $\\left(\\frac{1}{2}\\right)^{t/5730} = 0.10 \\Rightarrow \\frac{t}{5730}\\ln(0.5) = \\ln(0.10) \\Rightarrow t = 5730\\frac{\\ln(0.10)}{\\ln(0.5)} \\approx \\mathbf{19{,}035\\mathrm{\\ years}}.$"
+        },
+        {
+          "q": "A cup of coffee at $92^\\circ\\mathrm{C}$ is placed in a room kept at a constant $20^\\circ\\mathrm{C}$. After 10 minutes, the coffee has cooled to $68^\\circ\\mathrm{C}$. Using Newton's Law of Cooling $T(t) = 20 + 72 b^{t/10}$, find the exact temperature after 20 minutes and when the coffee reaches $36^\\circ\\mathrm{C}$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Continuous growth and the number e",
+          "cross_lesson": "1.01 Polynomial End Behavior & Zeros",
+          "answer": "Step 1: Find the 10-minute decay base $b$: $T(10) = 20 + 72b^1 = 68 \\Rightarrow 72b = 48 \\Rightarrow b = \\frac{48}{72} = \\frac{2}{3}.$ Step 2: Temperature at $t = 20$ minutes: $T(20) = 20 + 72\\left(\\frac{2}{3}\\right)^{20/10} = 20 + 72\\left(\\frac{4}{9}\\right) = 20 + 32 = \\mathbf{52^\\circ\\mathrm{C}}.$ Step 3: Solve $T(t) = 36^\\circ\\mathrm{C}$: $20 + 72\\left(\\frac{2}{3}\\right)^{t/10} = 36 \\Rightarrow \\left(\\frac{2}{3}\\right)^{t/10} = \\frac{16}{72} = \\frac{2}{9}.$ $t = 10 \\cdot \\frac{\\ln(2/9)}{\\ln(2/3)} \\approx \\mathbf{37.10\\mathrm{\\ minutes}}.$",
+          "explanation": "Step 1: Find the 10-minute decay base $b$: $T(10) = 20 + 72b^1 = 68 \\Rightarrow 72b = 48 \\Rightarrow b = \\frac{48}{72} = \\frac{2}{3}.$ Step 2: Temperature at $t = 20$ minutes: $T(20) = 20 + 72\\left(\\frac{2}{3}\\right)^{20/10} = 20 + 72\\left(\\frac{4}{9}\\right) = 20 + 32 = \\mathbf{52^\\circ\\mathrm{C}}.$ Step 3: Solve $T(t) = 36^\\circ\\mathrm{C}$: $20 + 72\\left(\\frac{2}{3}\\right)^{t/10} = 36 \\Rightarrow \\left(\\frac{2}{3}\\right)^{t/10} = \\frac{16}{72} = \\frac{2}{9}.$ $t = 10 \\cdot \\frac{\\ln(2/9)}{\\ln(2/3)} \\approx \\mathbf{37.10\\mathrm{\\ minutes}}.$",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2**(0.6*x)",
+              "log(x + 3) + 0.5"
+            ],
+            "xmin": -2.5,
+            "xmax": 4.5,
+            "ymin": -2,
+            "ymax": 6.5,
+            "asymptotes": {
+              "x": [
+                -3
+              ],
+              "y": [
+                0
+              ]
+            },
+            "point_labels": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "$(0,1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Given that $\\cos\\alpha = -\\frac{5}{13}$ with $\\frac{\\pi}{2} < \\alpha < \\pi$, find the exact values of $\\sin(2\\alpha)$, $\\cos(2\\alpha)$, and $\\tan(2\\alpha)$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Comparing growth rates: exponential vs. polynomial",
+          "cross_lesson": "1.02 Rational Functions & Asymptotes",
+          "answer": "Step 1: Find $\\sin\\alpha$ in Quadrant II ($\\sin\\alpha > 0$): $\\sin\\alpha = \\sqrt{1 - \\left(-\\frac{5}{13}\\right)^2} = \\sqrt{1 - \\frac{25}{169}} = \\frac{12}{13}.$ Step 2: Apply double-angle formulas: $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha = 2\\left(\\frac{12}{13}\\right)\\left(-\\frac{5}{13}\\right) = \\mathbf{-\\frac{120}{169}}.$ $\\cos(2\\alpha) = \\cos^2\\alpha - \\sin^2\\alpha = \\frac{25}{169} - \\frac{144}{169} = \\mathbf{-\\frac{119}{169}}.$ $\\tan(2\\alpha) = \\frac{\\sin(2\\alpha)}{\\cos(2\\alpha)} = \\mathbf{\\frac{120}{119}}.$",
+          "explanation": "Step 1: Find $\\sin\\alpha$ in Quadrant II ($\\sin\\alpha > 0$): $\\sin\\alpha = \\sqrt{1 - \\left(-\\frac{5}{13}\\right)^2} = \\sqrt{1 - \\frac{25}{169}} = \\frac{12}{13}.$ Step 2: Apply double-angle formulas: $\\sin(2\\alpha) = 2\\sin\\alpha\\cos\\alpha = 2\\left(\\frac{12}{13}\\right)\\left(-\\frac{5}{13}\\right) = \\mathbf{-\\frac{120}{169}}.$ $\\cos(2\\alpha) = \\cos^2\\alpha - \\sin^2\\alpha = \\frac{25}{169} - \\frac{144}{169} = \\mathbf{-\\frac{119}{169}}.$ $\\tan(2\\alpha) = \\frac{\\sin(2\\alpha)}{\\cos(2\\alpha)} = \\mathbf{\\frac{120}{119}}.$"
+        },
+        {
+          "q": "Evaluate the exact value of $\\sin\\left(\\arccos\\left(-\\frac{3}{5}\\right)\\right)$ and $\\tan\\left(\\arcsin\\left(\\frac{8}{17}\\right)\\right)$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Applications: half-life and doubling time",
+          "cross_lesson": "1.03 Rates of Change & Concavity",
+          "answer": "Step 1: Evaluate $\\sin\\left(\\arccos\\left(-\\frac{3}{5}\\right)\\right)$: Let $\\theta = \\arccos(-3/5) \\in [0, \\pi]$. Since $\\cos\\theta = -3/5 < 0$, $\\theta$ is in Quadrant II where $\\sin\\theta > 0$: $\\sin\\theta = \\sqrt{1 - (-3/5)^2} = \\mathbf{\\frac{4}{5}}.$ Step 2: Evaluate $\\tan\\left(\\arcsin\\left(\\frac{8}{17}\\right)\\right)$: Let $\\phi = \\arcsin(8/17) \\in (0, \\pi/2)$. Then $\\cos\\phi = \\sqrt{1 - (8/17)^2} = \\frac{15}{17}$, so: $\\tan\\phi = \\frac{8/17}{15/17} = \\mathbf{\\frac{8}{15}}.$",
+          "explanation": "Step 1: Evaluate $\\sin\\left(\\arccos\\left(-\\frac{3}{5}\\right)\\right)$: Let $\\theta = \\arccos(-3/5) \\in [0, \\pi]$. Since $\\cos\\theta = -3/5 < 0$, $\\theta$ is in Quadrant II where $\\sin\\theta > 0$: $\\sin\\theta = \\sqrt{1 - (-3/5)^2} = \\mathbf{\\frac{4}{5}}.$ Step 2: Evaluate $\\tan\\left(\\arcsin\\left(\\frac{8}{17}\\right)\\right)$: Let $\\phi = \\arcsin(8/17) \\in (0, \\pi/2)$. Then $\\cos\\phi = \\sqrt{1 - (8/17)^2} = \\frac{15}{17}$, so: $\\tan\\phi = \\frac{8/17}{15/17} = \\mathbf{\\frac{8}{15}}.$"
+        },
+        {
+          "q": "Analyze the polar curve $r(\\theta) = 2 - 4\\cos\\theta$ for $0 \\leq \\theta < 2\\pi$. Identify the curve type, find the maximum distance from the pole, and determine the exact angles $\\theta$ where the curve passes through the pole.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Transformations of exponential functions",
+          "cross_lesson": "2.02 Logarithmic Functions & Properties",
+          "answer": "Step 1: Classify the limaçon $r = a - b\\cos\\theta$: Since $\\frac{a}{b} = \\frac{2}{4} = \\frac{1}{2} < 1$, the curve is a limaçon with an inner loop. Step 2: Maximum distance from the pole: Occurs when $\\cos\\theta = -1$ ($\\theta = \\pi$): $r_{\\max} = 2 - 4(-1) = \\mathbf{6}.$ Step 3: Angles at the pole ($r = 0$): $2 - 4\\cos\\theta = 0 \\Rightarrow \\cos\\theta = \\frac{1}{2} \\Rightarrow \\mathbf{\\theta = \\frac{\\pi}{3}, \\; \\frac{5\\pi}{3}}.$",
+          "explanation": "Step 1: Classify the limaçon $r = a - b\\cos\\theta$: Since $\\frac{a}{b} = \\frac{2}{4} = \\frac{1}{2} < 1$, the curve is a limaçon with an inner loop. Step 2: Maximum distance from the pole: Occurs when $\\cos\\theta = -1$ ($\\theta = \\pi$): $r_{\\max} = 2 - 4(-1) = \\mathbf{6}.$ Step 3: Angles at the pole ($r = 0$): $2 - 4\\cos\\theta = 0 \\Rightarrow \\cos\\theta = \\frac{1}{2} \\Rightarrow \\mathbf{\\theta = \\frac{\\pi}{3}, \\; \\frac{5\\pi}{3}}.$"
+        },
+        {
+          "q": "Solve the trigonometric equation $2\\cos^2 x - \\sin x - 1 = 0$ for all $x$ in the interval $[0, 2\\pi)$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Compound interest and financial models",
+          "cross_lesson": "3.01 Trigonometric Functions & the Unit Circle",
+          "answer": "Step 1: Apply the Pythagorean identity $\\cos^2 x = 1 - \\sin^2 x$: $2(1 - \\sin^2 x) - \\sin x - 1 = 0 \\Rightarrow 2\\sin^2 x + \\sin x - 1 = 0.$ Step 2: Factor the quadratic in $\\sin x$: $(2\\sin x - 1)(\\sin x + 1) = 0 \\Rightarrow \\sin x = \\frac{1}{2} \\quad\\mathrm{or}\\quad \\sin x = -1.$ Step 3: Extract all solutions in $[0, 2\\pi)$: $\\mathbf{x \\in \\left\\{\\frac{\\pi}{6}, \\; \\frac{5\\pi}{6}, \\; \\frac{3\\pi}{2}\\right\\}}.$",
+          "explanation": "Step 1: Apply the Pythagorean identity $\\cos^2 x = 1 - \\sin^2 x$: $2(1 - \\sin^2 x) - \\sin x - 1 = 0 \\Rightarrow 2\\sin^2 x + \\sin x - 1 = 0.$ Step 2: Factor the quadratic in $\\sin x$: $(2\\sin x - 1)(\\sin x + 1) = 0 \\Rightarrow \\sin x = \\frac{1}{2} \\quad\\mathrm{or}\\quad \\sin x = -1.$ Step 3: Extract all solutions in $[0, 2\\pi)$: $\\mathbf{x \\in \\left\\{\\frac{\\pi}{6}, \\; \\frac{5\\pi}{6}, \\; \\frac{3\\pi}{2}\\right\\}}.$"
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+      "questions": [
+        {
+          "q": "A population is modeled by $P(t)=900(3)^{t/3}$, where $t$ is in years. Find $P(6)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Exponential growth and decay basics",
+          "choices": [
+            "$2700$",
+            "$5400$",
+            "$8100$",
+            "$24300$"
+          ],
+          "correct": 2,
+          "answer": "Since $t/3=2$: $P(6)=900(3)^{2}=900(9)=8100$.",
+          "explanation": "Since $t/3=2$: $P(6)=900(3)^{2}=900(9)=8100$."
+        },
+        {
+          "q": "A population is modeled by $P(t)=700(3)^{t/3}$, where $t$ is in years. Find $P(3)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Visualizing exponential growth",
+          "choices": [
+            "$2800$",
+            "$6300$",
+            "$1400$",
+            "$2100$"
+          ],
+          "correct": 3,
+          "answer": "Since $t/3=1$: $P(3)=700(3)^{1}=700(3)=2100$.",
+          "explanation": "Since $t/3=1$: $P(3)=700(3)^{1}=700(3)=2100$."
+        },
+        {
+          "q": "A population is modeled by $P(t)=700(2)^{t/2}$, where $t$ is in years. Find $P(4)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Finding an exponential model from data",
+          "choices": [
+            "$5600$",
+            "$1400$",
+            "$2100$",
+            "$2800$"
+          ],
+          "correct": 3,
+          "answer": "Since $t/2=2$: $P(4)=700(2)^{2}=700(4)=2800$.",
+          "explanation": "Since $t/2=2$: $P(4)=700(2)^{2}=700(4)=2800$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2**(0.6*x)",
+              "log(x + 3) + 0.5"
+            ],
+            "xmin": -2.5,
+            "xmax": 4.5,
+            "ymin": -2,
+            "ymax": 6.5,
+            "asymptotes": {
+              "x": [
+                -3
+              ],
+              "y": [
+                0
+              ]
+            },
+            "point_labels": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "$(0,1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A population is modeled by $P(t)=500(3)^{t/3}$, where $t$ is in years. Find $P(3)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Continuous growth and the number e",
+          "choices": [
+            "$1000$",
+            "$2500$",
+            "$4500$",
+            "$1500$"
+          ],
+          "correct": 3,
+          "answer": "Since $t/3=1$: $P(3)=500(3)^{1}=500(3)=1500$.",
+          "explanation": "Since $t/3=1$: $P(3)=500(3)^{1}=500(3)=1500$."
+        },
+        {
+          "q": "A population is modeled by $P(t)=900(3)^{t/5}$, where $t$ is in years. Find $P(15)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Comparing growth rates: exponential vs. polynomial",
+          "choices": [
+            "$26100$",
+            "$8100$",
+            "$24300$",
+            "$72900$"
+          ],
+          "correct": 2,
+          "answer": "Since $t/5=3$: $P(15)=900(3)^{3}=900(27)=24300$.",
+          "explanation": "Since $t/5=3$: $P(15)=900(3)^{3}=900(27)=24300$."
+        },
+        {
+          "q": "A population is modeled by $P(t)=200(2)^{t/5}$, where $t$ is in years. Find $P(20)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Applications: half-life and doubling time",
+          "choices": [
+            "$3200$",
+            "$6400$",
+            "$1600$",
+            "$3600$"
+          ],
+          "correct": 0,
+          "answer": "Since $t/5=4$: $P(20)=200(2)^{4}=200(16)=3200$.",
+          "explanation": "Since $t/5=4$: $P(20)=200(2)^{4}=200(16)=3200$."
+        },
+        {
+          "q": "A population is modeled by $P(t)=500(2)^{t/5}$, where $t$ is in years. Find $P(20)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Transformations of exponential functions",
+          "choices": [
+            "$8500$",
+            "$8000$",
+            "$4000$",
+            "$16000$"
+          ],
+          "correct": 1,
+          "answer": "Since $t/5=4$: $P(20)=500(2)^{4}=500(16)=8000$.",
+          "explanation": "Since $t/5=4$: $P(20)=500(2)^{4}=500(16)=8000$."
+        },
+        {
+          "q": "A substance has a half-life of $6$ days. What fraction of the original amount remains after $18$ days?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Compound interest and financial models",
+          "choices": [
+            "$\\frac{1}{4}$",
+            "$\\frac{1}{16}$",
+            "$\\frac{3}{8}$",
+            "$\\frac{1}{8}$"
+          ],
+          "correct": 3,
+          "answer": "Since $t/6=3$ half-lives have passed: fraction remaining $=\\left(\\frac{1}{2}\\right)^{3}=\\frac{1}{8}$.",
+          "explanation": "Since $t/6=3$ half-lives have passed: fraction remaining $=\\left(\\frac{1}{2}\\right)^{3}=\\frac{1}{8}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2**(0.6*x)",
+              "log(x + 3) + 0.5"
+            ],
+            "xmin": -2.5,
+            "xmax": 4.5,
+            "ymin": -2,
+            "ymax": 6.5,
+            "asymptotes": {
+              "x": [
+                -3
+              ],
+              "y": [
+                0
+              ]
+            },
+            "point_labels": [
+              {
+                "x": 0,
+                "y": 1,
+                "label": "$(0,1)$"
+              }
+            ],
+            "width": 230
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
+        {
+          "q": "A substance has a half-life of $5$ days. What fraction of the original amount remains after $15$ days?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Exponential Growth and Decay Fundamentals",
+          "choices": [
+            "$\\frac{1}{16}$",
+            "$\\frac{1}{4}$",
+            "$\\frac{1}{8}$",
+            "$\\frac{3}{8}$"
+          ],
+          "correct": 2,
+          "answer": "Since $t/5=3$ half-lives have passed: fraction remaining $=\\left(\\frac{1}{2}\\right)^{3}=\\frac{1}{8}$.",
+          "explanation": "Since $t/5=3$ half-lives have passed: fraction remaining $=\\left(\\frac{1}{2}\\right)^{3}=\\frac{1}{8}$."
+        },
+        {
+          "q": "A substance has a half-life of $6$ days. What fraction of the original amount remains after $12$ days?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Doubling Time & Half-Life Calculations",
+          "choices": [
+            "$\\frac{5}{16}$",
+            "$\\frac{1}{8}$",
+            "$\\frac{1}{4}$",
+            "$\\frac{1}{2}$"
+          ],
+          "correct": 2,
+          "answer": "Since $t/6=2$ half-lives have passed: fraction remaining $=\\left(\\frac{1}{2}\\right)^{2}=\\frac{1}{4}$.",
+          "explanation": "Since $t/6=2$ half-lives have passed: fraction remaining $=\\left(\\frac{1}{2}\\right)^{2}=\\frac{1}{4}$."
+        },
+        {
+          "q": "A substance has a half-life of $7$ days. What fraction of the original amount remains after $21$ days?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Equivalent Exponential Forms & Conversions",
+          "choices": [
+            "$\\frac{1}{8}$",
+            "$\\frac{3}{8}$",
+            "$\\frac{1}{16}$",
+            "$\\frac{1}{4}$"
+          ],
+          "correct": 0,
+          "answer": "Since $t/7=3$ half-lives have passed: fraction remaining $=\\left(\\frac{1}{2}\\right)^{3}=\\frac{1}{8}$.",
+          "explanation": "Since $t/7=3$ half-lives have passed: fraction remaining $=\\left(\\frac{1}{2}\\right)^{3}=\\frac{1}{8}$."
+        },
+        {
+          "q": "A substance has a half-life of $4$ days. What fraction of the original amount remains after $4$ days?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Comparing Linear and Exponential Growth",
+          "choices": [
+            "$\\frac{5}{8}$",
+            "$1$",
+            "$\\frac{1}{4}$",
+            "$\\frac{1}{2}$"
+          ],
+          "correct": 3,
+          "answer": "Since $t/4=1$ half-lives have passed: fraction remaining $=\\left(\\frac{1}{2}\\right)^{1}=\\frac{1}{2}$.",
+          "explanation": "Since $t/4=1$ half-lives have passed: fraction remaining $=\\left(\\frac{1}{2}\\right)^{1}=\\frac{1}{2}$."
+        },
+        {
+          "q": "A substance has a half-life of $5$ days. What fraction of the original amount remains after $25$ days?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Exponential growth and decay basics",
+          "choices": [
+            "$\\frac{5}{32}$",
+            "$\\frac{1}{64}$",
+            "$\\frac{1}{16}$",
+            "$\\frac{1}{32}$"
+          ],
+          "correct": 3,
+          "answer": "Since $t/5=5$ half-lives have passed: fraction remaining $=\\left(\\frac{1}{2}\\right)^{5}=\\frac{1}{32}$.",
+          "explanation": "Since $t/5=5$ half-lives have passed: fraction remaining $=\\left(\\frac{1}{2}\\right)^{5}=\\frac{1}{32}$."
+        },
+        {
+          "q": "A substance has a half-life of $9$ days. What fraction of the original amount remains after $45$ days?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Visualizing exponential growth",
+          "choices": [
+            "$\\frac{1}{64}$",
+            "$\\frac{1}{16}$",
+            "$\\frac{1}{32}$",
+            "$\\frac{5}{32}$"
+          ],
+          "correct": 2,
+          "answer": "Since $t/9=5$ half-lives have passed: fraction remaining $=\\left(\\frac{1}{2}\\right)^{5}=\\frac{1}{32}$.",
+          "explanation": "Since $t/9=5$ half-lives have passed: fraction remaining $=\\left(\\frac{1}{2}\\right)^{5}=\\frac{1}{32}$."
+        },
+        {
+          "q": "An investment grows from 200 dollars to 128 dollars in 2 years under $A(t)=A_0(1+r)^t$. Find the annual growth rate $r$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Finding an exponential model from data",
+          "choices": [
+            "$-\\frac{1}{10}$",
+            "$-\\frac{1}{5}$",
+            "$\\frac{1}{5}$",
+            "$\\frac{4}{5}$"
+          ],
+          "correct": 1,
+          "answer": "$128=200(1+r)^2$: $(1+r)^2=\\frac{128}{200}$, so $1+r=\\frac{4}{5}$, giving $r=-\\frac{1}{5}$.",
+          "explanation": "$128=200(1+r)^2$: $(1+r)^2=\\frac{128}{200}$, so $1+r=\\frac{4}{5}$, giving $r=-\\frac{1}{5}$."
+        },
+        {
+          "q": "An investment grows from 200 dollars to 162 dollars in 2 years under $A(t)=A_0(1+r)^t$. Find the annual growth rate $r$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Continuous growth and the number e",
+          "choices": [
+            "$\\frac{9}{10}$",
+            "$\\frac{1}{10}$",
+            "$0$",
+            "$-\\frac{1}{10}$"
+          ],
+          "correct": 3,
+          "answer": "$162=200(1+r)^2$: $(1+r)^2=\\frac{162}{200}$, so $1+r=\\frac{9}{10}$, giving $r=-\\frac{1}{10}$.",
+          "explanation": "$162=200(1+r)^2$: $(1+r)^2=\\frac{162}{200}$, so $1+r=\\frac{9}{10}$, giving $r=-\\frac{1}{10}$."
+        },
+        {
+          "q": "Find the horizontal asymptote and $y$-intercept of $h(x)=5(2)^x+1$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Comparing growth rates: exponential vs. polynomial",
+          "choices": [
+            "Horizontal asymptote $y=6$; $y$-intercept $(1)$.",
+            "Horizontal asymptote $y=1$; $y$-intercept $(6)$.",
+            "Horizontal asymptote $y=1$; $y$-intercept $(5)$.",
+            "Horizontal asymptote $y=0$; $y$-intercept $(6)$."
+          ],
+          "correct": 1,
+          "answer": "As $x\\rightarrow\\pm\\infty$ (in the direction $2^x\\rightarrow0$), $h(x)\\rightarrow1$, giving horizontal asymptote $y=1$. $y$-intercept: $h(0)=5(1)+1=6$, so $(0,6)$.",
+          "explanation": "As $x\\rightarrow\\pm\\infty$ (in the direction $2^x\\rightarrow0$), $h(x)\\rightarrow1$, giving horizontal asymptote $y=1$. $y$-intercept: $h(0)=5(1)+1=6$, so $(0,6)$."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "Find the horizontal asymptote and $y$-intercept of $h(x)=3(2)^x-4$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Applications: half-life and doubling time",
+          "choices": [
+            "Horizontal asymptote $y=-1$; $y$-intercept $(-4)$.",
+            "Horizontal asymptote $y=-4$; $y$-intercept $(-1)$.",
+            "Horizontal asymptote $y=-4$; $y$-intercept $(3)$.",
+            "Horizontal asymptote $y=0$; $y$-intercept $(-1)$."
+          ],
+          "correct": 1,
+          "answer": "As $x\\rightarrow\\pm\\infty$ (in the direction $2^x\\rightarrow0$), $h(x)\\rightarrow-4$, giving horizontal asymptote $y=-4$. $y$-intercept: $h(0)=3(1)-4=-1$, so $(0,-1)$.",
+          "explanation": "As $x\\rightarrow\\pm\\infty$ (in the direction $2^x\\rightarrow0$), $h(x)\\rightarrow-4$, giving horizontal asymptote $y=-4$. $y$-intercept: $h(0)=3(1)-4=-1$, so $(0,-1)$.",
+          "cross_lesson": "1.03 Rates of Change & Concavity"
+        },
+        {
+          "q": "A savings account earns interest modeled by $A(t)=A_0(1+\\frac{1}{25})^{nt}$, where $nt=9$. If 5000 dollars is deposited, find the balance to the nearest dollar.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Transformations of exponential functions",
+          "choices": [
+            "$7167$",
+            "$7117$",
+            "$5000$",
+            "$7067$"
+          ],
+          "correct": 1,
+          "answer": "$A=5000(1+\\frac{1}{25})^{9}\\approx5000(1.4233)\\approx7117$ dollars.",
+          "explanation": "$A=5000(1+\\frac{1}{25})^{9}\\approx5000(1.4233)\\approx7117$ dollars.",
+          "cross_lesson": "2.02 Logarithmic Functions & Properties"
+        },
+        {
+          "q": "A savings account earns interest modeled by $A(t)=A_0(1+\\frac{1}{25})^{nt}$, where $nt=13$. If 1000 dollars is deposited, find the balance to the nearest dollar.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Compound interest and financial models",
+          "choices": [
+            "$1000$",
+            "$1515$",
+            "$1665$",
+            "$1765$"
+          ],
+          "correct": 2,
+          "answer": "$A=1000(1+\\frac{1}{25})^{13}\\approx1000(1.6651)\\approx1665$ dollars.",
+          "explanation": "$A=1000(1+\\frac{1}{25})^{13}\\approx1000(1.6651)\\approx1665$ dollars.",
+          "cross_lesson": "3.01 Trigonometric Functions & the Unit Circle"
+        },
+        {
           "q": "Which function represents exponential decay with an initial value of $450$ and a decay rate of $8\\%$ per year?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Exponential Growth and Decay Fundamentals",
           "choices": [
             "$f(t) = 450(0.92)^t$",
             "$f(t) = 450(1.08)^t$",
@@ -16,21 +696,15 @@
             "$f(t) = 450 - 0.08t$"
           ],
           "correct": 0,
-          "answer": "In exponential decay, the base is $b = 1 - r$. With $r = 0.08$, $b = 1 - 0.08 = 0.92$. The model is $f(t) = 450(0.92)^t$."
-        },
-        {
-          "q": "An exponential function passes through $(0, 6)$ and $(2, 54)$. If $f(x) = a b^x$ where $b > 0$, what is the value of $b$?",
-          "choices": [
-            "$3$",
-            "$9$",
-            "$6$",
-            "$\\sqrt{3}$"
-          ],
-          "correct": 0,
-          "answer": "From $(0, 6)$, $a = 6$. From $(2, 54)$, $6 b^2 = 54 \\Rightarrow b^2 = 9 \\Rightarrow b = 3$ (since $b > 0$)."
+          "answer": "In exponential decay, the base is $b = 1 - r$. With $r = 0.08$, $b = 1 - 0.08 = 0.92$. The model is $f(t) = 450(0.92)^t$.",
+          "explanation": "In exponential decay, the base is $b = 1 - r$. With $r = 0.08$, $b = 1 - 0.08 = 0.92$. The model is $f(t) = 450(0.92)^t$.",
+          "cross_lesson": "3.02 Polar Coordinates & Polar Graphs"
         },
         {
           "q": "If a quantity grows continuously at an annual rate of $5\\%$, what is the continuous growth model for an initial investment of 1200 dollars?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Exponential Growth and Decay Fundamentals",
           "choices": [
             "$A(t) = 1200 e^{0.05t}$",
             "$A(t) = 1200(1.05)^t$",
@@ -38,37 +712,15 @@
             "$A(t) = 1200 e^{1.05t}$"
           ],
           "correct": 0,
-          "answer": "Continuous compounding or continuous growth is modeled by $A(t) = P e^{rt}$. Here $P = 1200$ and $r = 0.05$, yielding $A(t) = 1200 e^{0.05t}$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Doubling Time & Half-Life Calculations",
-      "questions": [
-        {
-          "q": "A bacterial culture doubles every 4 hours. If there are initially 500 bacteria, which equation models the population after $t$ hours?",
-          "choices": [
-            "$P(t) = 500 \\cdot 2^{t/4}$",
-            "$P(t) = 500 \\cdot 2^{4t}$",
-            "$P(t) = 500 \\cdot 4^{t/2}$",
-            "$P(t) = 500 + 2^{t/4}$"
-          ],
-          "correct": 0,
-          "answer": "The doubling model is $P(t) = P_0 \\cdot 2^{t/d}$, where $d$ is the doubling time. Here $d = 4$, so $P(t) = 500 \\cdot 2^{t/4}$."
-        },
-        {
-          "q": "A radioactive isotope has a half-life of 15 days. If a sample contains 80 grams initially, how much remains after 45 days?",
-          "choices": [
-            "$10\\text{ g}$",
-            "$20\\text{ g}$",
-            "$5\\text{ g}$",
-            "$15\\text{ g}$"
-          ],
-          "correct": 0,
-          "answer": "The number of elapsed half-lives is $\\frac{45}{15} = 3$. Remaining amount: $80 \\cdot \\left(\\frac{1}{2}\\right)^3 = 80 \\cdot \\frac{1}{8} = 10\\text{ g}$."
+          "answer": "Continuous compounding or continuous growth is modeled by $A(t) = P e^{rt}$. Here $P = 1200$ and $r = 0.05$, yielding $A(t) = 1200 e^{0.05t}$.",
+          "explanation": "Continuous compounding or continuous growth is modeled by $A(t) = P e^{rt}$. Here $P = 1200$ and $r = 0.05$, yielding $A(t) = 1200 e^{0.05t}$.",
+          "cross_lesson": "4.01 Inverse & Composite Functions"
         },
         {
           "q": "If the doubling time of an investment is 12 years, what is the annual growth factor $b$ in $A(t) = A_0 b^t$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Doubling Time & Half-Life Calculations",
           "choices": [
             "$2^{1/12}$",
             "$12^{1/2}$",
@@ -76,26 +728,15 @@
             "$\\frac{2}{12}$"
           ],
           "correct": 0,
-          "answer": "Doubling time satisfies $b^{12} = 2$. Taking the 12th root yields $b = 2^{1/12} \\approx 1.0595$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Equivalent Exponential Forms & Conversions",
-      "questions": [
-        {
-          "q": "Rewrite $f(t) = 100(1.21)^{t/2}$ in the form $f(t) = 100 b^t$. What is $b$?",
-          "choices": [
-            "$1.1$",
-            "$1.21$",
-            "$1.4641$",
-            "$0.605$"
-          ],
-          "correct": 0,
-          "answer": "Using exponent laws: $(1.21)^{t/2} = ((1.21)^{1/2})^t = (\\sqrt{1.21})^t = (1.1)^t$. Thus $b = 1.1$."
+          "answer": "Doubling time satisfies $b^{12} = 2$. Taking the 12th root yields $b = 2^{1/12} \\approx 1.0595$.",
+          "explanation": "Doubling time satisfies $b^{12} = 2$. Taking the 12th root yields $b = 2^{1/12} \\approx 1.0595$.",
+          "cross_lesson": "4.02 Piecewise-Defined & Implicit Functions"
         },
         {
           "q": "If $P(t) = 250 e^{0.08 t}$, what is the equivalent discrete annual growth factor rounded to four decimal places?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Equivalent Exponential Forms & Conversions",
           "choices": [
             "$1.0833$",
             "$1.0800$",
@@ -103,26 +744,15 @@
             "$1.1664$"
           ],
           "correct": 0,
-          "answer": "$e^{0.08 t} = (e^{0.08})^t$. Since $e^{0.08} \\approx 1.083287$, the annual factor is approximately $1.0833$."
+          "answer": "$e^{0.08 t} = (e^{0.08})^t$. Since $e^{0.08} \\approx 1.083287$, the annual factor is approximately $1.0833$.",
+          "explanation": "$e^{0.08 t} = (e^{0.08})^t$. Since $e^{0.08} \\approx 1.083287$, the annual factor is approximately $1.0833$.",
+          "cross_lesson": "4.03 Parametric Equations & Modeling"
         },
         {
-          "q": "A medication decreases in the bloodstream by $30\\%$ every 6 hours. By what factor does it decrease per hour?",
-          "choices": [
-            "$(0.70)^{1/6}$",
-            "$(0.30)^{1/6}$",
-            "$0.70 / 6$",
-            "$(0.70)^6$"
-          ],
-          "correct": 0,
-          "answer": "A decrease of $30\\%$ means a 6-hour factor of $1 - 0.30 = 0.70$. The hourly factor $b$ satisfies $b^6 = 0.70 \\Rightarrow b = (0.70)^{1/6}$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Comparing Linear and Exponential Growth",
-      "questions": [
-        {
           "q": "A linear function $L(x) = 50x + 100$ and an exponential function $E(x) = 2^x$ are compared for large $x > 0$. Which statement is true?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Comparing Linear and Exponential Growth",
           "choices": [
             "Eventually $E(x) > L(x)$ for all sufficiently large $x$",
             "Eventually $L(x) > E(x)$ because its initial rate of change is 50",
@@ -130,29 +760,9 @@
             "$L(x)$ and $E(x)$ grow at the same rate asymptotically"
           ],
           "correct": 0,
-          "answer": "Any exponential growth function with base $b > 1$ will eventually exceed any linear or polynomial function for sufficiently large values of $x$."
-        },
-        {
-          "q": "Which data set represents an exponential function rather than a linear function?",
-          "choices": [
-            "$x: 1, 2, 3, 4$ and $y: 6, 18, 54, 162$",
-            "$x: 1, 2, 3, 4$ and $y: 6, 12, 18, 24$",
-            "$x: 1, 2, 3, 4$ and $y: 6, 11, 18, 27$",
-            "$x: 1, 2, 3, 4$ and $y: 6, 8, 12, 20$"
-          ],
-          "correct": 0,
-          "answer": "In an exponential function, consecutive $y$-values over equal intervals have a constant ratio: $\\frac{18}{6} = 3, \\frac{54}{18} = 3, \\frac{162}{54} = 3$. This confirms exponential behavior."
-        },
-        {
-          "q": "What is the domain and range of the function $f(x) = 4 - 3(2)^x$?",
-          "choices": [
-            "Domain: $(-\\infty, \\infty)$; Range: $(-\\infty, 4)$",
-            "Domain: $(0, \\infty)$; Range: $(-\\infty, 4)$",
-            "Domain: $(-\\infty, \\infty)$; Range: $(4, \\infty)$",
-            "Domain: $(-\\infty, 4)$; Range: $(-\\infty, \\infty)$"
-          ],
-          "correct": 0,
-          "answer": "Exponential functions are defined for all real $x$, so domain is $(-\\infty, \\infty)$. Since $2^x > 0$ for all $x$, $-3(2)^x < 0$, which makes $4 - 3(2)^x < 4$. The range is $(-\\infty, 4)$."
+          "answer": "Any exponential growth function with base $b > 1$ will eventually exceed any linear or polynomial function for sufficiently large values of $x$.",
+          "explanation": "Any exponential growth function with base $b > 1$ will eventually exceed any linear or polynomial function for sufficiently large values of $x$.",
+          "cross_lesson": "1.01 Polynomial End Behavior & Zeros"
         }
       ]
     }

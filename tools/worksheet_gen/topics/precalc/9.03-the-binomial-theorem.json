@@ -3,12 +3,303 @@
   "num": "9.03",
   "slug": "the-binomial-theorem",
   "title": "The Binomial Theorem",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 9.03 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Pascal's Triangle and Combinations",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+      "questions": [
+        {
+          "q": "Evaluate each binomial coefficient:",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Binomial coefficients",
+          "parts": [
+            "$\\binom{6}{2}$",
+            "$\\binom{8}{0}$",
+            "$\\binom{5}{5}$",
+            "$\\binom{10}{3}$"
+          ],
+          "cols": 4,
+          "answers": [
+            "$= 15$",
+            "$= 1$",
+            "$= 1$",
+            "$= 120$"
+          ],
+          "answer": "(a) $= 15$; (b) $= 1$; (c) $= 1$; (d) $= 120$",
+          "explanation": "(a) $= 15$; (b) $= 1$; (c) $= 1$; (d) $= 120$"
+        },
+        {
+          "q": "Write down row 4 of Pascal's triangle (the row beginning $1, 4, \\ldots$) and explain how it relates to the expansion of $(a + b)^4$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Binomial coefficients",
+          "answer": "Row 4 is $1, 4, 6, 4, 1$ — these are the coefficients of $a^4, a^3b, a^2b^2, ab^3, b^4$ in the expansion.",
+          "explanation": "Row 4 is $1, 4, 6, 4, 1$ — these are the coefficients of $a^4, a^3b, a^2b^2, ab^3, b^4$ in the expansion.",
+          "figure": {
+            "type": "triangle",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                12.0,
+                0
+              ],
+              [
+                0,
+                5.0
+              ]
+            ],
+            "labels": [
+              "$C$",
+              "$B$",
+              "$A$"
+            ],
+            "side_labels": [
+              "$12$",
+              "$13$",
+              "$5$"
+            ],
+            "right_angle_at": 0,
+            "angle_marks": [
+              {
+                "vertex": 1,
+                "label": "$\\theta$"
+              }
+            ],
+            "fill": true,
+            "width": 220
+          }
+        },
+        {
+          "q": "Expand $(x + 2)^4$ fully.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Expansions and specific terms",
+          "answer": "$x^4 + 8x^3 + 24x^2 + 32x + 16$.",
+          "explanation": "$x^4 + 8x^3 + 24x^2 + 32x + 16$."
+        },
+        {
+          "q": "Find the coefficient of $x^3$ in the expansion of $(2x - 1)^5$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Expansions and specific terms",
+          "answer": "Term: $\\binom{5}{2}(2x)^3(-1)^2 = 10 \\cdot 8x^3 = 80x^3$. Coefficient: $80$.",
+          "explanation": "Term: $\\binom{5}{2}(2x)^3(-1)^2 = 10 \\cdot 8x^3 = 80x^3$. Coefficient: $80$."
+        },
+        {
+          "q": "Find the term containing $y^4$ in the expansion of $(x + y)^7$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Expansions and specific terms",
+          "answer": "$\\binom{7}{4}x^3y^4 = 35x^3y^4$.",
+          "explanation": "$\\binom{7}{4}x^3y^4 = 35x^3y^4$."
+        },
+        {
+          "q": "Use the binomial theorem to expand $(1 + 0.02)^5$ to the $x^2$-style second-order term, and hence estimate $1.02^5$ to four decimal places.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Expansions and specific terms",
+          "answer": "$1 + 5(0.02) + 10(0.02)^2 + \\cdots = 1 + 0.1 + 0.004 + \\cdots \\approx 1.1041$ (true value $1.10408\\ldots$).",
+          "explanation": "$1 + 5(0.02) + 10(0.02)^2 + \\cdots = 1 + 0.1 + 0.004 + \\cdots \\approx 1.1041$ (true value $1.10408\\ldots$).",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -1.0,
+                "label": "$(1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Expand $(2x - y)^3$ fully.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "More expansions and terms",
+          "answer": "$8x^3 - 12x^2y + 6xy^2 - y^3$.",
+          "explanation": "$8x^3 - 12x^2y + 6xy^2 - y^3$."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Find the middle term of the expansion of $(x + 3)^6$ (the term with $x^3$).",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "More expansions and terms",
+          "answer": "Middle term is the 4th term: $\\binom{6}{3}x^3(3)^3 = 20 \\cdot 27 x^3 = 540x^3$.",
+          "explanation": "Middle term is the 4th term: $\\binom{6}{3}x^3(3)^3 = 20 \\cdot 27 x^3 = 540x^3$."
+        },
+        {
+          "q": "Find the constant term in the expansion of $\\left(x^2 + \\frac{1}{x}\\right)^6$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "More expansions and terms",
+          "answer": "General term: $\\binom{6}{k}(x^2)^{6-k}\\left(\\frac{1}{x}\\right)^k = \\binom{6}{k}x^{12-3k}$. Constant term needs $12-3k=0$, so $k=4$: $\\binom{6}{4} = 15$.",
+          "explanation": "General term: $\\binom{6}{k}(x^2)^{6-k}\\left(\\frac{1}{x}\\right)^k = \\binom{6}{k}x^{12-3k}$. Constant term needs $12-3k=0$, so $k=4$: $\\binom{6}{4} = 15$."
+        },
+        {
+          "q": "Evaluate $\\binom{5}{0}+\\binom{5}{1}+\\binom{5}{2}+\\binom{5}{3}+\\binom{5}{4}+\\binom{5}{5}$ without computing each term, using the identity $\\sum_{k=0}^{n}\\binom{n}{k}=2^n$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Sums of binomial coefficients",
+          "answer": "$= 2^5 = 32$.",
+          "explanation": "$= 2^5 = 32$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Use the fact that $\\binom{n}{k} = \\binom{n}{n-k}$ (symmetry of Pascal's triangle) to explain why $\\binom{9}{2} = \\binom{9}{7}$ without computing either value directly.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Sums of binomial coefficients",
+          "answer": "Choosing $2$ items to include from $9$ is equivalent to choosing $7$ items to exclude, so the two counts must be equal — this is the symmetry property $\\binom{n}{k}=\\binom{n}{n-k}$ with $n=9$.",
+          "explanation": "Choosing $2$ items to include from $9$ is equivalent to choosing $7$ items to exclude, so the two counts must be equal — this is the symmetry property $\\binom{n}{k}=\\binom{n}{n-k}$ with $n=9$."
+        },
+        {
+          "q": "Find the coefficient of $x^4y^3$ in the expansion of $(x+2y)^7$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Further expansions",
+          "answer": "Term: $\\binom{7}{3}x^4(2y)^3 = 35\\cdot8\\,x^4y^3 = 280x^4y^3$. Coefficient: $280$.",
+          "explanation": "Term: $\\binom{7}{3}x^4(2y)^3 = 35\\cdot8\\,x^4y^3 = 280x^4y^3$. Coefficient: $280$."
+        },
+        {
+          "q": "Find the first three terms in the expansion of $(1-2x)^6$ in ascending powers of $x$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Further expansions",
+          "answer": "$\\binom{6}{0}1^6 + \\binom{6}{1}1^5(-2x) + \\binom{6}{2}1^4(-2x)^2 + \\cdots = 1 - 12x + 60x^2 - \\cdots$.",
+          "explanation": "$\\binom{6}{0}1^6 + \\binom{6}{1}1^5(-2x) + \\binom{6}{2}1^4(-2x)^2 + \\cdots = 1 - 12x + 60x^2 - \\cdots$."
+        },
+        {
+          "q": "Use the binomial theorem with $(1-0.01)^4$ to approximate $0.99^4$ to four decimal places, using the first three terms.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Further expansions",
+          "answer": "$1 + 4(-0.01) + 6(-0.01)^2 + \\cdots = 1 - 0.04 + 0.0006 = 0.9606$ (true value $0.96059601$).",
+          "explanation": "$1 + 4(-0.01) + 6(-0.01)^2 + \\cdots = 1 - 0.04 + 0.0006 = 0.9606$ (true value $0.96059601$)."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "State Pascal's Rule, $\\binom{n}{k}=\\binom{n-1}{k-1}+\\binom{n-1}{k}$, and use it to compute $\\binom{6}{3}$ from row 5 of Pascal's triangle ($1,5,10,10,5,1$).",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Deriving Pascal's triangle recursively",
+          "cross_lesson": "5.01 Vectors: Components and Operations",
+          "answer": "$\\binom{6}{3}=\\binom{5}{2}+\\binom{5}{3}=10+10=20$.",
+          "explanation": "$\\binom{6}{3}=\\binom{5}{2}+\\binom{5}{3}=10+10=20$."
+        },
+        {
+          "q": "State the general term (the $(k+1)$th term) formula for the expansion of $(a+b)^n$, and use it to find the 5th term of $(x-2)^8$ directly (without expanding the whole thing).",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "The general term formula",
+          "cross_lesson": "5.02 The Dot Product",
+          "answer": "General term: $T_{k+1}=\\binom{n}{k}a^{n-k}b^k$. For the 5th term, $k=4$: $T_5=\\binom{8}{4}x^4(-2)^4=70\\cdot x^4\\cdot16=1120x^4$.",
+          "explanation": "General term: $T_{k+1}=\\binom{n}{k}a^{n-k}b^k$. For the 5th term, $k=4$: $T_5=\\binom{8}{4}x^4(-2)^4=70\\cdot x^4\\cdot16=1120x^4$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Explain the combinatorial meaning of $\\binom{n}{k}$, and use it to explain why $\\binom{n}{0}=\\binom{n}{n}=1$ for any $n$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Combinatorial interpretation of binomial coefficients",
+          "cross_lesson": "5.03 Parametric Equations",
+          "answer": "$\\binom{n}{k}$ counts the number of ways to choose $k$ items from a set of $n$ (order doesn't matter). $\\binom{n}{0}=1$ because there is exactly one way to choose nothing (the empty selection), and $\\binom{n}{n}=1$ because there is exactly one way to choose everything (select the whole set).",
+          "explanation": "$\\binom{n}{k}$ counts the number of ways to choose $k$ items from a set of $n$ (order doesn't matter). $\\binom{n}{0}=1$ because there is exactly one way to choose nothing (the empty selection), and $\\binom{n}{n}=1$ because there is exactly one way to choose everything (select the whole set)."
+        },
+        {
+          "q": "A fair coin is flipped 5 times. Using $\\binom{5}{k}$, find the number of outcomes with exactly 3 heads, and state the total number of possible outcomes (using $2^5$).",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Applying the binomial theorem to probability-style counting",
+          "cross_lesson": "6.01 Polar Coordinates and Conversions",
+          "answer": "Outcomes with exactly 3 heads: $\\binom{5}{3}=10$. Total possible outcomes: $2^5=32$.",
+          "explanation": "Outcomes with exactly 3 heads: $\\binom{5}{3}=10$. Total possible outcomes: $2^5=32$."
+        },
+        {
+          "q": "Find the sum of all the coefficients in the expansion of $(3x-2)^4$, using the fact that setting $x=1$ gives the sum of all coefficients.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "A closing challenge problem",
+          "cross_lesson": "6.02 Polar Equations and Graphs",
+          "answer": "Substituting $x=1$: $(3(1)-2)^4=(1)^4=1$. The sum of all coefficients in the expansion is $1$.",
+          "explanation": "Substituting $x=1$: $(3(1)-2)^4=(1)^4=1$. The sum of all coefficients in the expansion is $1$."
+        },
+        {
+          "q": "Find the coefficient of $x^5$ in the expansion of $(x^2+3)(x-1)^6$, by finding the relevant terms from $(x-1)^6$ first.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "A closing challenge problem",
+          "cross_lesson": "7.01 Exponential Functions and Their Graphs",
+          "answer": "From $(x-1)^6$, the terms of degree $3$ and $5$ are needed (since multiplying by $x^2$ or by the constant $3$ must produce $x^5$). Term with $x^3$: $\\binom{6}{3}x^3(-1)^3=-20x^3$; multiplying by $x^2$ gives $-20x^5$. Term with $x^5$: $\\binom{6}{1}x^5(-1)^1=-6x^5$; multiplying by $3$ gives $-18x^5$. Total coefficient: $-20+(-18)=-38$.",
+          "explanation": "From $(x-1)^6$, the terms of degree $3$ and $5$ are needed (since multiplying by $x^2$ or by the constant $3$ must produce $x^5$). Term with $x^3$: $\\binom{6}{3}x^3(-1)^3=-20x^3$; multiplying by $x^2$ gives $-20x^5$. Term with $x^5$: $\\binom{6}{1}x^5(-1)^1=-6x^5$; multiplying by $3$ gives $-18x^5$. Total coefficient: $-20+(-18)=-38$."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
           "q": "State the formula for the combination $\\binom{n}{r}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Pascal's Triangle and Combinations",
           "choices": [
             "$\\frac{n!}{r!(n - r)!}$",
             "$\\frac{n!}{(n - r)!}$",
@@ -16,10 +307,14 @@
             "$n \\times r$"
           ],
           "correct": 0,
-          "answer": "$\\binom{n}{r} = \\frac{n!}{r!(n - r)!}$ gives the coefficient of the $(r+1)$-th term in $(a + b)^n$."
+          "answer": "$\\binom{n}{r} = \\frac{n!}{r!(n - r)!}$ gives the coefficient of the $(r+1)$-th term in $(a + b)^n$.",
+          "explanation": "$\\binom{n}{r} = \\frac{n!}{r!(n - r)!}$ gives the coefficient of the $(r+1)$-th term in $(a + b)^n$."
         },
         {
           "q": "Evaluate $\\binom{6}{2}$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Pascal's Triangle and Combinations",
           "choices": [
             "$15$",
             "$30$",
@@ -27,10 +322,14 @@
             "$20$"
           ],
           "correct": 0,
-          "answer": "$\\binom{6}{2} = \\frac{6 \\times 5}{2 \\times 1} = 15$."
+          "answer": "$\\binom{6}{2} = \\frac{6 \\times 5}{2 \\times 1} = 15$.",
+          "explanation": "$\\binom{6}{2} = \\frac{6 \\times 5}{2 \\times 1} = 15$."
         },
         {
           "q": "What is row 4 of Pascal's Triangle (corresponding to $n = 4$)?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Pascal's Triangle and Combinations",
           "choices": [
             "$1, 4, 6, 4, 1$",
             "$1, 3, 3, 1$",
@@ -38,15 +337,50 @@
             "$1, 4, 8, 4, 1$"
           ],
           "correct": 0,
-          "answer": "Row 4 is $\\binom{4}{0}=1, \\binom{4}{1}=4, \\binom{4}{2}=6, \\binom{4}{3}=4, \\binom{4}{4}=1$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Expanding Binomials",
-      "questions": [
+          "answer": "Row 4 is $\\binom{4}{0}=1, \\binom{4}{1}=4, \\binom{4}{2}=6, \\binom{4}{3}=4, \\binom{4}{4}=1$.",
+          "explanation": "Row 4 is $\\binom{4}{0}=1, \\binom{4}{1}=4, \\binom{4}{2}=6, \\binom{4}{3}=4, \\binom{4}{4}=1$.",
+          "figure": {
+            "type": "triangle",
+            "vertices": [
+              [
+                0,
+                0
+              ],
+              [
+                15.0,
+                0
+              ],
+              [
+                0,
+                8.0
+              ]
+            ],
+            "labels": [
+              "$C$",
+              "$B$",
+              "$A$"
+            ],
+            "side_labels": [
+              "$15$",
+              "$17$",
+              "$8$"
+            ],
+            "right_angle_at": 0,
+            "angle_marks": [
+              {
+                "vertex": 1,
+                "label": "$\\theta$"
+              }
+            ],
+            "fill": true,
+            "width": 220
+          }
+        },
         {
           "q": "State the Binomial Theorem expansion for $(a + b)^n$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Expanding Binomials",
           "choices": [
             "$\\sum_{r=0}^n \\binom{n}{r} a^{n-r} b^r$",
             "$\\sum_{r=0}^n a^{n-r} b^r$",
@@ -54,10 +388,14 @@
             "$\\sum_{r=0}^n n! a^r b^r$"
           ],
           "correct": 0,
-          "answer": "The Binomial Theorem states $(a + b)^n = \\sum_{r=0}^n \\binom{n}{r} a^{n-r} b^r$."
+          "answer": "The Binomial Theorem states $(a + b)^n = \\sum_{r=0}^n \\binom{n}{r} a^{n-r} b^r$.",
+          "explanation": "The Binomial Theorem states $(a + b)^n = \\sum_{r=0}^n \\binom{n}{r} a^{n-r} b^r$."
         },
         {
           "q": "Expand $(x + 2)^4$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Expanding Binomials",
           "choices": [
             "$x^4 + 8x^3 + 24x^2 + 32x + 16$",
             "$x^4 + 4x^3 + 6x^2 + 4x + 16$",
@@ -65,10 +403,14 @@
             "$x^4 + 8x^3 + 16x^2 + 32x + 16$"
           ],
           "correct": 0,
-          "answer": "$\\binom{4}{0}x^4 + \\binom{4}{1}x^3(2) + \\binom{4}{2}x^2(4) + \\binom{4}{3}x(8) + \\binom{4}{4}(16) = x^4 + 8x^3 + 24x^2 + 32x + 16$."
+          "answer": "$\\binom{4}{0}x^4 + \\binom{4}{1}x^3(2) + \\binom{4}{2}x^2(4) + \\binom{4}{3}x(8) + \\binom{4}{4}(16) = x^4 + 8x^3 + 24x^2 + 32x + 16$.",
+          "explanation": "$\\binom{4}{0}x^4 + \\binom{4}{1}x^3(2) + \\binom{4}{2}x^2(4) + \\binom{4}{3}x(8) + \\binom{4}{4}(16) = x^4 + 8x^3 + 24x^2 + 32x + 16$."
         },
         {
           "q": "Find the first three terms in the expansion of $(2x - 1)^5$ in descending powers of $x$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Expanding Binomials",
           "choices": [
             "$32x^5 - 80x^4 + 80x^3$",
             "$32x^5 - 16x^4 + 8x^3$",
@@ -76,15 +418,14 @@
             "$32x^5 - 40x^4 + 20x^3$"
           ],
           "correct": 0,
-          "answer": "Term 1: $\\binom{5}{0}(2x)^5 = 32x^5$. Term 2: $\\binom{5}{1}(2x)^4(-1) = 5(16x^4)(-1) = -80x^4$. Term 3: $\\binom{5}{2}(2x)^3(-1)^2 = 10(8x^3)(1) = 80x^3$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Finding Specific Terms",
-      "questions": [
+          "answer": "Term 1: $\\binom{5}{0}(2x)^5 = 32x^5$. Term 2: $\\binom{5}{1}(2x)^4(-1) = 5(16x^4)(-1) = -80x^4$. Term 3: $\\binom{5}{2}(2x)^3(-1)^2 = 10(8x^3)(1) = 80x^3$.",
+          "explanation": "Term 1: $\\binom{5}{0}(2x)^5 = 32x^5$. Term 2: $\\binom{5}{1}(2x)^4(-1) = 5(16x^4)(-1) = -80x^4$. Term 3: $\\binom{5}{2}(2x)^3(-1)^2 = 10(8x^3)(1) = 80x^3$."
+        },
         {
           "q": "State the formula for the $(r+1)$-th term in the expansion of $(a + b)^n$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Finding Specific Terms",
           "choices": [
             "$T_{r+1} = \\binom{n}{r} a^{n-r} b^r$",
             "$T_{r+1} = \\binom{n}{r+1} a^{n-r} b^r$",
@@ -92,10 +433,14 @@
             "$T_{r+1} = a^{n-r} b^r$"
           ],
           "correct": 0,
-          "answer": "The general term is given by $T_{r+1} = \\binom{n}{r} a^{n-r} b^r$ where $r$ indexes from $0$ to $n$."
+          "answer": "The general term is given by $T_{r+1} = \\binom{n}{r} a^{n-r} b^r$ where $r$ indexes from $0$ to $n$.",
+          "explanation": "The general term is given by $T_{r+1} = \\binom{n}{r} a^{n-r} b^r$ where $r$ indexes from $0$ to $n$."
         },
         {
           "q": "Find the 4th term in the expansion of $(x + 3)^7$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Finding Specific Terms",
           "choices": [
             "$945x^4$",
             "$315x^4$",
@@ -103,10 +448,38 @@
             "$105x^5$"
           ],
           "correct": 0,
-          "answer": "For the 4th term, $r = 3$. $T_4 = \\binom{7}{3} x^{7-3} (3)^3 = 35 \\cdot x^4 \\cdot 27 = 945x^4$."
-        },
+          "answer": "For the 4th term, $r = 3$. $T_4 = \\binom{7}{3} x^{7-3} (3)^3 = 35 \\cdot x^4 \\cdot 27 = 945x^4$.",
+          "explanation": "For the 4th term, $r = 3$. $T_4 = \\binom{7}{3} x^{7-3} (3)^3 = 35 \\cdot x^4 \\cdot 27 = 945x^4$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
         {
           "q": "Find the coefficient of $x^3$ in the expansion of $(2x - 3)^6$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Finding Specific Terms",
           "choices": [
             "$-4320$",
             "$4320$",
@@ -114,15 +487,14 @@
             "$2160$"
           ],
           "correct": 0,
-          "answer": "We want $x^3$, so power of $(2x)$ is 3, which means $n - r = 3 \\Rightarrow r = 3$. Term is $\\binom{6}{3}(2x)^3(-3)^3 = 20(8x^3)(-27) = -4320x^3$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Term Independent of x and Sum of Coefficients",
-      "questions": [
+          "answer": "We want $x^3$, so power of $(2x)$ is 3, which means $n - r = 3 \\Rightarrow r = 3$. Term is $\\binom{6}{3}(2x)^3(-3)^3 = 20(8x^3)(-27) = -4320x^3$.",
+          "explanation": "We want $x^3$, so power of $(2x)$ is 3, which means $n - r = 3 \\Rightarrow r = 3$. Term is $\\binom{6}{3}(2x)^3(-3)^3 = 20(8x^3)(-27) = -4320x^3$."
+        },
         {
           "q": "Find the term independent of $x$ (the constant term) in the expansion of $\\left(x + \\frac{2}{x}\\right)^6$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Term Independent of x and Sum of Coefficients",
           "choices": [
             "$160$",
             "$80$",
@@ -130,10 +502,14 @@
             "$20$"
           ],
           "correct": 0,
-          "answer": "General term: $\\binom{6}{r} x^{6-r} (2x^{-1})^r = \\binom{6}{r} 2^r x^{6 - 2r}$. Set exponent to 0: $6 - 2r = 0 \\Rightarrow r = 3$. Constant term $= \\binom{6}{3} 2^3 = 20 \\times 8 = 160$."
+          "answer": "General term: $\\binom{6}{r} x^{6-r} (2x^{-1})^r = \\binom{6}{r} 2^r x^{6 - 2r}$. Set exponent to 0: $6 - 2r = 0 \\Rightarrow r = 3$. Constant term $= \\binom{6}{3} 2^3 = 20 \\times 8 = 160$.",
+          "explanation": "General term: $\\binom{6}{r} x^{6-r} (2x^{-1})^r = \\binom{6}{r} 2^r x^{6 - 2r}$. Set exponent to 0: $6 - 2r = 0 \\Rightarrow r = 3$. Constant term $= \\binom{6}{3} 2^3 = 20 \\times 8 = 160$."
         },
         {
           "q": "What is the sum of all coefficients in the expansion of $(2x - 3y)^4$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Term Independent of x and Sum of Coefficients",
           "choices": [
             "$1$",
             "$-1$",
@@ -141,10 +517,14 @@
             "$81$"
           ],
           "correct": 0,
-          "answer": "To find the sum of coefficients, substitute $x = 1$ and $y = 1$: $(2(1) - 3(1))^4 = (-1)^4 = 1$."
+          "answer": "To find the sum of coefficients, substitute $x = 1$ and $y = 1$: $(2(1) - 3(1))^4 = (-1)^4 = 1$.",
+          "explanation": "To find the sum of coefficients, substitute $x = 1$ and $y = 1$: $(2(1) - 3(1))^4 = (-1)^4 = 1$."
         },
         {
           "q": "What is the sum of the elements in row $n$ of Pascal's Triangle (i.e. $\\sum_{r=0}^n \\binom{n}{r}$)?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Term Independent of x and Sum of Coefficients",
           "choices": [
             "$2^n$",
             "$n^2$",
@@ -152,7 +532,273 @@
             "$2^{n-1}$"
           ],
           "correct": 0,
-          "answer": "By the Binomial Theorem with $a = 1, b = 1$: $(1 + 1)^n = 2^n = \\sum_{r=0}^n \\binom{n}{r}$."
+          "answer": "By the Binomial Theorem with $a = 1, b = 1$: $(1 + 1)^n = 2^n = \\sum_{r=0}^n \\binom{n}{r}$.",
+          "explanation": "By the Binomial Theorem with $a = 1, b = 1$: $(1 + 1)^n = 2^n = \\sum_{r=0}^n \\binom{n}{r}$."
+        },
+        {
+          "q": "A sequence is defined by $a_1 = 1$ and $a_{n+1} = a_n + 2n + 1$ for $n \\geq 1$. Prove by induction that $a_n = n^2$ for all positive integers $n$. Then, consider the series $S_N = \\sum_{n=1}^{N} a_n$. Find a closed-form expression for $S_N$ and use it to determine the value of $\\sum_{n=1}^{10} (a_n - a_{n-1})$ where $a_0=0$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Finding Specific Terms",
+          "choices": [
+            "100",
+            "110",
+            "10",
+            "210"
+          ],
+          "correct": 0,
+          "answer": "Proof by Induction: Base Case ($n=1$): $a_1 = 1$. The formula gives $1^2 = 1$. Thus, the base case holds. Inductive Hypothesis: Assume $a_k = k^2$ for some positive integer $k$. Inductive Step: We need to show that $a_{k+1} = (k+1)^2$. From the recurrence relation, $a_{k+1} = a_k + 2k + 1$. Using the inductive hypothesis, $a_{k+1} = k^2 + 2k + 1 = (k+1)^2$. Thus, by induction, $a_n = n^2$ for all positive integers $n$. Closed-form expression for $S_N$: $S_N = \\sum_{n=1}^{N} a_n = \\sum_{n=1}^{N} n^2$. This is the sum of the first $N$ squares, which has a known formula: $S_N = \\frac{N(N+1)(2N+1)}{6}$. Evaluating the sum $\\sum_{n=1}^{10} (a_n - a_{n-1})$: This is a telescoping sum. Let $b_n = a_n - a_{n-1}$. Then the sum is $\\sum_{n=1}^{10} b_n = b_1 + b_2 + \\dots + b_{10}$. $b_1 = a_1 - a_0 = 1 - 0 = 1$. $b_2 = a_2 - a_1 = 4 - 1 = 3$. $b_3 = a_3 - a_2 = 9 - 4 = 5$. In general, $a_n = n^2$ and $a_{n-1} = (n-1)^2$ for $n \\geq 1$, so $a_n - a_{n-1} = n^2 - (n-1)^2 = n^2 - (n^2 - 2n + 1) = 2n - 1$. So, $\\sum_{n=1}^{10} (a_n - a_{n-1}) = \\sum_{n=1}^{10} (2n - 1)$. This is the sum of the first 10 odd numbers, which is $10^2 = 100$. Alternatively, using the telescoping sum property directly: $\\sum_{n=1}^{10} (a_n - a_{n-1}) = (a_1 - a_0) + (a_2 - a_1) + \\dots + (a_{10} - a_9) = a_{10} - a_0$. Since $a_n = n^2$, $a_{10} = 10^2 = 100$. And $a_0 = 0$. So, the sum is $100 - 0 = 100$.",
+          "explanation": "Proof by Induction: Base Case ($n=1$): $a_1 = 1$. The formula gives $1^2 = 1$. Thus, the base case holds. Inductive Hypothesis: Assume $a_k = k^2$ for some positive integer $k$. Inductive Step: We need to show that $a_{k+1} = (k+1)^2$. From the recurrence relation, $a_{k+1} = a_k + 2k + 1$. Using the inductive hypothesis, $a_{k+1} = k^2 + 2k + 1 = (k+1)^2$. Thus, by induction, $a_n = n^2$ for all positive integers $n$. Closed-form expression for $S_N$: $S_N = \\sum_{n=1}^{N} a_n = \\sum_{n=1}^{N} n^2$. This is the sum of the first $N$ squares, which has a known formula: $S_N = \\frac{N(N+1)(2N+1)}{6}$. Evaluating the sum $\\sum_{n=1}^{10} (a_n - a_{n-1})$: This is a telescoping sum. Let $b_n = a_n - a_{n-1}$. Then the sum is $\\sum_{n=1}^{10} b_n = b_1 + b_2 + \\dots + b_{10}$. $b_1 = a_1 - a_0 = 1 - 0 = 1$. $b_2 = a_2 - a_1 = 4 - 1 = 3$. $b_3 = a_3 - a_2 = 9 - 4 = 5$. In general, $a_n = n^2$ and $a_{n-1} = (n-1)^2$ for $n \\geq 1$, so $a_n - a_{n-1} = n^2 - (n-1)^2 = n^2 - (n^2 - 2n + 1) = 2n - 1$. So, $\\sum_{n=1}^{10} (a_n - a_{n-1}) = \\sum_{n=1}^{10} (2n - 1)$. This is the sum of the first 10 odd numbers, which is $10^2 = 100$. Alternatively, using the telescoping sum property directly: $\\sum_{n=1}^{10} (a_n - a_{n-1}) = (a_1 - a_0) + (a_2 - a_1) + \\dots + (a_{10} - a_9) = a_{10} - a_0$. Since $a_n = n^2$, $a_{10} = 10^2 = 100$. And $a_0 = 0$. So, the sum is $100 - 0 = 100$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -2.0,
+                "label": "$(1,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A sequence is defined by the recurrence relation $a_{n+1} = a_n^2 - 2$ for $n \\geq 1$. If $a_1 = 2$, find the value of $a_{2023}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Term Independent of x and Sum of Coefficients",
+          "choices": [
+            "2",
+            "0",
+            "-2",
+            "1"
+          ],
+          "correct": 0,
+          "answer": "Let's compute the first few terms of the sequence: $a_1 = 2$ $a_2 = a_1^2 - 2 = 2^2 - 2 = 4 - 2 = 2$ $a_3 = a_2^2 - 2 = 2^2 - 2 = 4 - 2 = 2$ It appears that for $a_1 = 2$, all subsequent terms of the sequence are also 2. We can prove this by induction. Base case: For $n=1$, $a_1 = 2$, which is true. Inductive step: Assume that for some integer $k \\geq 1$, $a_k = 2$. We need to show that $a_{k+1} = 2$. From the recurrence relation, $a_{k+1} = a_k^2 - 2$. By the inductive hypothesis, $a_k = 2$. Substituting this into the relation: $a_{k+1} = 2^2 - 2 = 4 - 2 = 2$. Thus, by induction, $a_n = 2$ for all $n \\geq 1$. Therefore, $a_{2023} = 2$.",
+          "explanation": "Let's compute the first few terms of the sequence: $a_1 = 2$ $a_2 = a_1^2 - 2 = 2^2 - 2 = 4 - 2 = 2$ $a_3 = a_2^2 - 2 = 2^2 - 2 = 4 - 2 = 2$ It appears that for $a_1 = 2$, all subsequent terms of the sequence are also 2. We can prove this by induction. Base case: For $n=1$, $a_1 = 2$, which is true. Inductive step: Assume that for some integer $k \\geq 1$, $a_k = 2$. We need to show that $a_{k+1} = 2$. From the recurrence relation, $a_{k+1} = a_k^2 - 2$. By the inductive hypothesis, $a_k = 2$. Substituting this into the relation: $a_{k+1} = 2^2 - 2 = 4 - 2 = 2$. Thus, by induction, $a_n = 2$ for all $n \\geq 1$. Therefore, $a_{2023} = 2$."
+        },
+        {
+          "q": "Find the sum of the first 10 terms of the arithmetic series with $a_1=-1$ and $d=3$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Binomial coefficients",
+          "choices": [
+            "128",
+            "135",
+            "115",
+            "125"
+          ],
+          "correct": 3,
+          "answer": "$a_{10}=-1+(10-1)(3)=26$. $S_{10}=\\frac{10}{2}(a_1+a_n)=\\frac{10}{2}(-1+26)=125$.",
+          "explanation": "$a_{10}=-1+(10-1)(3)=26$. $S_{10}=\\frac{10}{2}(a_1+a_n)=\\frac{10}{2}(-1+26)=125$."
+        },
+        {
+          "q": "Find the sum of the first 12 terms of the arithmetic series with $a_1=-4$ and $d=3$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Expansions and specific terms",
+          "choices": [
+            "138",
+            "153",
+            "150",
+            "162"
+          ],
+          "correct": 2,
+          "answer": "$a_{12}=-4+(12-1)(3)=29$. $S_{12}=\\frac{12}{2}(a_1+a_n)=\\frac{12}{2}(-4+29)=150$.",
+          "explanation": "$a_{12}=-4+(12-1)(3)=29$. $S_{12}=\\frac{12}{2}(a_1+a_n)=\\frac{12}{2}(-4+29)=150$."
+        },
+        {
+          "q": "Find the sum of the first 10 terms of the arithmetic series with $a_1=-5$ and $d=5$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "More expansions and terms",
+          "choices": [
+            "185",
+            "175",
+            "180",
+            "165"
+          ],
+          "correct": 1,
+          "answer": "$a_{10}=-5+(10-1)(5)=40$. $S_{10}=\\frac{10}{2}(a_1+a_n)=\\frac{10}{2}(-5+40)=175$.",
+          "explanation": "$a_{10}=-5+(10-1)(5)=40$. $S_{10}=\\frac{10}{2}(a_1+a_n)=\\frac{10}{2}(-5+40)=175$."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "Find the sum of the first 10 terms of the arithmetic series with $a_1=-6$ and $d=2$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Sums of binomial coefficients",
+          "choices": [
+            "32",
+            "20",
+            "30",
+            "40"
+          ],
+          "correct": 2,
+          "answer": "$a_{10}=-6+(10-1)(2)=12$. $S_{10}=\\frac{10}{2}(a_1+a_n)=\\frac{10}{2}(-6+12)=30$.",
+          "explanation": "$a_{10}=-6+(10-1)(2)=12$. $S_{10}=\\frac{10}{2}(a_1+a_n)=\\frac{10}{2}(-6+12)=30$.",
+          "cross_lesson": "6.01 Polar Coordinates and Conversions"
+        },
+        {
+          "q": "Find the sum of the first 12 terms of the arithmetic series with $a_1=-1$ and $d=1$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Further expansions",
+          "choices": [
+            "66",
+            "42",
+            "55",
+            "54"
+          ],
+          "correct": 3,
+          "answer": "$a_{12}=-1+(12-1)(1)=10$. $S_{12}=\\frac{12}{2}(a_1+a_n)=\\frac{12}{2}(-1+10)=54$.",
+          "explanation": "$a_{12}=-1+(12-1)(1)=10$. $S_{12}=\\frac{12}{2}(a_1+a_n)=\\frac{12}{2}(-1+10)=54$.",
+          "cross_lesson": "6.02 Polar Equations and Graphs",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -2.0,
+                "label": "$(1,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Find the sum of the first 10 terms of the arithmetic series with $a_1=-4$ and $d=2$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Deriving Pascal's triangle recursively",
+          "choices": [
+            "40",
+            "50",
+            "60",
+            "52"
+          ],
+          "correct": 1,
+          "answer": "$a_{10}=-4+(10-1)(2)=14$. $S_{10}=\\frac{10}{2}(a_1+a_n)=\\frac{10}{2}(-4+14)=50$.",
+          "explanation": "$a_{10}=-4+(10-1)(2)=14$. $S_{10}=\\frac{10}{2}(a_1+a_n)=\\frac{10}{2}(-4+14)=50$.",
+          "cross_lesson": "7.01 Exponential Functions and Their Graphs"
+        },
+        {
+          "q": "Find the sum of the first 10 terms of the arithmetic series with $a_1=-1$ and $d=2$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "The general term formula",
+          "choices": [
+            "70",
+            "90",
+            "80",
+            "82"
+          ],
+          "correct": 2,
+          "answer": "$a_{10}=-1+(10-1)(2)=17$. $S_{10}=\\frac{10}{2}(a_1+a_n)=\\frac{10}{2}(-1+17)=80$.",
+          "explanation": "$a_{10}=-1+(10-1)(2)=17$. $S_{10}=\\frac{10}{2}(a_1+a_n)=\\frac{10}{2}(-1+17)=80$.",
+          "cross_lesson": "7.02 Logarithms and Their Properties"
+        },
+        {
+          "q": "Find the sum of the first 12 terms of the arithmetic series with $a_1=0$ and $d=4$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Combinatorial interpretation of binomial coefficients",
+          "choices": [
+            "268",
+            "264",
+            "276",
+            "252"
+          ],
+          "correct": 1,
+          "answer": "$a_{12}=0+(12-1)(4)=44$. $S_{12}=\\frac{12}{2}(a_1+a_n)=\\frac{12}{2}(0+44)=264$.",
+          "explanation": "$a_{12}=0+(12-1)(4)=44$. $S_{12}=\\frac{12}{2}(a_1+a_n)=\\frac{12}{2}(0+44)=264$.",
+          "cross_lesson": "7.03 Exponential and Logarithmic Equations"
+        },
+        {
+          "q": "Find the sum of the first 12 terms of the arithmetic series with $a_1=5$ and $d=2$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Applying the binomial theorem to probability-style counting",
+          "choices": [
+            "192",
+            "180",
+            "204",
+            "194"
+          ],
+          "correct": 0,
+          "answer": "$a_{12}=5+(12-1)(2)=27$. $S_{12}=\\frac{12}{2}(a_1+a_n)=\\frac{12}{2}(5+27)=192$.",
+          "explanation": "$a_{12}=5+(12-1)(2)=27$. $S_{12}=\\frac{12}{2}(a_1+a_n)=\\frac{12}{2}(5+27)=192$.",
+          "cross_lesson": "7.04 Applications: Growth and Decay",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -2.0,
+                "label": "$(-1,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Find the sum of the first 10 terms of the arithmetic series with $a_1=1$ and $d=1$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "A closing challenge problem",
+          "choices": [
+            "56",
+            "55",
+            "45",
+            "65"
+          ],
+          "correct": 1,
+          "answer": "$a_{10}=1+(10-1)(1)=10$. $S_{10}=\\frac{10}{2}(a_1+a_n)=\\frac{10}{2}(1+10)=55$.",
+          "explanation": "$a_{10}=1+(10-1)(1)=10$. $S_{10}=\\frac{10}{2}(a_1+a_n)=\\frac{10}{2}(1+10)=55$.",
+          "cross_lesson": "8.01 Rational Functions and Asymptotes"
+        },
+        {
+          "q": "Find the sum of the first 10 terms of the arithmetic series with $a_1=-3$ and $d=1$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Pascal's Triangle and Combinations",
+          "choices": [
+            "16",
+            "15",
+            "5",
+            "25"
+          ],
+          "correct": 1,
+          "answer": "$a_{10}=-3+(10-1)(1)=6$. $S_{10}=\\frac{10}{2}(a_1+a_n)=\\frac{10}{2}(-3+6)=15$.",
+          "explanation": "$a_{10}=-3+(10-1)(1)=6$. $S_{10}=\\frac{10}{2}(a_1+a_n)=\\frac{10}{2}(-3+6)=15$.",
+          "cross_lesson": "8.02 Graphing Rational Functions"
         }
       ]
     }

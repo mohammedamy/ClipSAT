@@ -3,23 +3,368 @@
   "num": "1.01",
   "slug": "polynomial-end-behavior-and-zeros",
   "title": "Polynomial End Behavior & Zeros",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 1.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Leading Term Test and End Behavior",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+      "questions": [
+        {
+          "q": "A polynomial $f(x)$ of degree 4 with real coefficients has leading coefficient $2$ and zeros at $x = -1$ (multiplicity 2) and $x = 2 + i$. Write $f(x)$ in fully expanded standard form.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Leading Term Test and End Behavior",
+          "answer": "Step 1: Apply the Conjugate Root Theorem: Since $f(x)$ has real coefficients, the complex conjugate $2 - i$ must also be a zero. Step 2: Construct the factored form: $f(x) = 2(x + 1)^2((x - 2) - i)((x - 2) + i) = 2(x^2 + 2x + 1)((x - 2)^2 + 1).$ Step 3: Expand and simplify: $(x - 2)^2 + 1 = x^2 - 4x + 5.$ $f(x) = 2(x^2 + 2x + 1)(x^2 - 4x + 5) = 2(x^4 - 2x^3 - 2x^2 + 6x + 5) = \\mathbf{2x^4 - 4x^3 - 4x^2 + 12x + 10}.$",
+          "explanation": "Step 1: Apply the Conjugate Root Theorem: Since $f(x)$ has real coefficients, the complex conjugate $2 - i$ must also be a zero. Step 2: Construct the factored form: $f(x) = 2(x + 1)^2((x - 2) - i)((x - 2) + i) = 2(x^2 + 2x + 1)((x - 2)^2 + 1).$ Step 3: Expand and simplify: $(x - 2)^2 + 1 = x^2 - 4x + 5.$ $f(x) = 2(x^2 + 2x + 1)(x^2 - 4x + 5) = 2(x^4 - 2x^3 - 2x^2 + 6x + 5) = \\mathbf{2x^4 - 4x^3 - 4x^2 + 12x + 10}.$",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.25*x*x*x - 0.75*x*x + 2"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": 2.0,
+                "label": "A"
+              },
+              {
+                "x": 2.0,
+                "y": 1.0,
+                "label": "B"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "When the polynomial $P(x) = 2x^3 + kx^2 - 7x + 6$ is divided by $(x - 2)$, the remainder is $12$. Find the value of $k$, and determine whether $(x + 3)$ is a factor of $P(x)$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Multiplicity of Zeros and Graph Geometry",
+          "answer": "Step 1: Apply the Remainder Theorem $P(2) = 12$: $2(2)^3 + k(2)^2 - 7(2) + 6 = 12 \\Rightarrow 16 + 4k - 14 + 6 = 12 \\Rightarrow 4k + 8 = 12 \\Rightarrow \\mathbf{k = 1}.$ Step 2: Test $(x + 3)$ using the Factor Theorem: With $k = 1$, $P(x) = 2x^3 + x^2 - 7x + 6$. Evaluate $P(-3)$: $P(-3) = 2(-27) + (-3)^2 - 7(-3) + 6 = -54 + 9 + 21 + 6 = -18 eq 0.$ Since $P(-3) = -18 eq 0$, $(x + 3)$ is not a factor.",
+          "explanation": "Step 1: Apply the Remainder Theorem $P(2) = 12$: $2(2)^3 + k(2)^2 - 7(2) + 6 = 12 \\Rightarrow 16 + 4k - 14 + 6 = 12 \\Rightarrow 4k + 8 = 12 \\Rightarrow \\mathbf{k = 1}.$ Step 2: Test $(x + 3)$ using the Factor Theorem: With $k = 1$, $P(x) = 2x^3 + x^2 - 7x + 6$. Evaluate $P(-3)$: $P(-3) = 2(-27) + (-3)^2 - 7(-3) + 6 = -54 + 9 + 21 + 6 = -18 eq 0.$ Since $P(-3) = -18 eq 0$, $(x + 3)$ is not a factor."
+        },
+        {
+          "q": "Determine the end behavior of $P(x) = -4x^5 + 7x^3 - 2x + 9$ as $x \\rightarrow -\\infty$ and as $x \\rightarrow +\\infty$ using limit notation, and state the maximum number of local extrema.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Remainder & Factor Theorems",
+          "answer": "Step 1: Identify leading term: The leading term is $-4x^5$, which has odd degree $n = 5$ and negative leading coefficient $a_5 = -4 < 0$. Step 2: Write limit statements: $\\lim_{x \\rightarrow -\\infty} P(x) = +\\infty, \\qquad \\lim_{x \\rightarrow +\\infty} P(x) = -\\infty.$ Step 3: Bound on local extrema: A polynomial of degree $n = 5$ has at most $n - 1 = \\mathbf{4}$ local extrema (turning points).",
+          "explanation": "Step 1: Identify leading term: The leading term is $-4x^5$, which has odd degree $n = 5$ and negative leading coefficient $a_5 = -4 < 0$. Step 2: Write limit statements: $\\lim_{x \\rightarrow -\\infty} P(x) = +\\infty, \\qquad \\lim_{x \\rightarrow +\\infty} P(x) = -\\infty.$ Step 3: Bound on local extrema: A polynomial of degree $n = 5$ has at most $n - 1 = \\mathbf{4}$ local extrema (turning points)."
+        },
+        {
+          "q": "The graph of the exponential function $f(x) = a \\cdot \\log_3(x-h) + k$ is shown below. The function has a vertical asymptote at $x = 3$ and passes through the points $(4, 5)$ and $(12, 7)$. Determine the value of the parameter $a$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Rational Root Theorem & Complex Conjugates",
+          "answer": "The general form of the logarithmic function is $f(x) = a \\cdot \\log_b(x-h) + k$. The vertical asymptote occurs at $x = h$, so we are given that $h = 3$. Thus, the function can be written as $f(x) = a \\cdot \\log_3(x-3) + k$. We are given two points on the graph: $(4, 5)$ and $(12, 7)$. Substituting these points into the function, we get a system of two equations: 1) $5 = a \\cdot \\log_3(4-3) + k$ $5 = a \\cdot \\log_3(1) + k$ Since $\\log_3(1) = 0$, this simplifies to $5 = k$. 2) $7 = a \\cdot \\log_3(12-3) + k$ $7 = a \\cdot \\log_3(9) + k$ Since $\\log_3(9) = 2$, this becomes $7 = 2a + k$. Now substitute the value of $k$ from the first equation into the second equation: $7 = 2a + 5$ Subtract 5 from both sides: $2 = 2a$ Divide by 2: $a = 1$. Therefore, the value of the parameter $a$ is 1.",
+          "explanation": "The general form of the logarithmic function is $f(x) = a \\cdot \\log_b(x-h) + k$. The vertical asymptote occurs at $x = h$, so we are given that $h = 3$. Thus, the function can be written as $f(x) = a \\cdot \\log_3(x-3) + k$. We are given two points on the graph: $(4, 5)$ and $(12, 7)$. Substituting these points into the function, we get a system of two equations: 1) $5 = a \\cdot \\log_3(4-3) + k$ $5 = a \\cdot \\log_3(1) + k$ Since $\\log_3(1) = 0$, this simplifies to $5 = k$. 2) $7 = a \\cdot \\log_3(12-3) + k$ $7 = a \\cdot \\log_3(9) + k$ Since $\\log_3(9) = 2$, this becomes $7 = 2a + k$. Now substitute the value of $k$ from the first equation into the second equation: $7 = 2a + 5$ Subtract 5 from both sides: $2 = 2a$ Divide by 2: $a = 1$. Therefore, the value of the parameter $a$ is 1.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x - 3"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": 4.0,
+                "y": 5.0,
+                "label": "(4, 5)"
+              },
+              {
+                "x": 12.0,
+                "y": 7.0,
+                "label": "(12, 7)"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "The graph of the quadratic function $f(x) = x^2 - bx + c$ is shown below. The vertex of the parabola is at $(2, -3)$, and it passes through the point $(0, 1)$. Determine the value of the parameter $b$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Leading Term Test and End Behavior",
+          "answer": "The standard form of a quadratic function is $f(x) = ax^2 + bx + c$. In this problem, $a=1$. The vertex form of a quadratic function is $f(x) = a(x-h)^2 + k$, where $(h, k)$ is the vertex. Given the vertex is $(2, -3)$ and $a=1$, the function can be written as $f(x) = 1(x-2)^2 - 3$. Expanding this, we get $f(x) = (x^2 - 4x + 4) - 3 = x^2 - 4x + 1$. We are given that $f(x) = x^2 - bx + c$. By comparing the coefficients, we see that $-b = -4$, which implies $b = 4$, and $c = 1$. We can verify this by checking if the point $(0, 1)$ lies on the graph of $f(x) = x^2 - 4x + 1$. Substituting $x=0$, we get $f(0) = 0^2 - 4(0) + 1 = 1$, which matches the given point. Therefore, the value of $b$ is 4.",
+          "explanation": "The standard form of a quadratic function is $f(x) = ax^2 + bx + c$. In this problem, $a=1$. The vertex form of a quadratic function is $f(x) = a(x-h)^2 + k$, where $(h, k)$ is the vertex. Given the vertex is $(2, -3)$ and $a=1$, the function can be written as $f(x) = 1(x-2)^2 - 3$. Expanding this, we get $f(x) = (x^2 - 4x + 4) - 3 = x^2 - 4x + 1$. We are given that $f(x) = x^2 - bx + c$. By comparing the coefficients, we see that $-b = -4$, which implies $b = 4$, and $c = 1$. We can verify this by checking if the point $(0, 1)$ lies on the graph of $f(x) = x^2 - 4x + 1$. Substituting $x=0$, we get $f(0) = 0^2 - 4(0) + 1 = 1$, which matches the given point. Therefore, the value of $b$ is 4.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**2 - 4*x + 1"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": 1.0,
+                "label": "(0, 1)"
+              },
+              {
+                "x": 2.0,
+                "y": -3.0,
+                "label": "Vertex (2, -3)"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "For the rational function $r(x) = \\frac{2x^2 - 2x - 12}{x^2 - 9}$, find: (a) the domain, (b) the coordinates of any removable discontinuity (hole), (c) the vertical and horizontal asymptotes, and (d) the $x$- and $y$-intercepts.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Multiplicity of Zeros and Graph Geometry",
+          "answer": "Step 1: Factor numerator and denominator completely: $r(x) = \\frac{2(x^2 - x - 6)}{(x - 3)(x + 3)} = \\frac{2(x - 3)(x + 2)}{(x - 3)(x + 3)}.$ Step 2: Answer each part:(a) Domain: $(-\\infty, -3) \\cup (-3, 3) \\cup (3, \\infty)$, i.e. $x eq \\pm 3$.(b) Removable Discontinuity: The factor $(x - 3)$ cancels; for $x eq 3$, $r(x) = \\frac{2(x + 2)}{x + 3}$. Evaluating at $x = 3$ gives $y = \\frac{2(5)}{6} = \\frac{5}{3}$. Hole at $\\mathbf{\\left(3, \\frac{5}{3}\\right)}$.(c) Asymptotes: Vertical asymptote at $\\mathbf{x = -3}$; horizontal asymptote at $\\mathbf{y = 2}$.(d) Intercepts: $x$-intercept at $\\mathbf{(-2, 0)}$; $y$-intercept at $\\mathbf{\\left(0, \\frac{4}{3}\\right)}$.",
+          "explanation": "Step 1: Factor numerator and denominator completely: $r(x) = \\frac{2(x^2 - x - 6)}{(x - 3)(x + 3)} = \\frac{2(x - 3)(x + 2)}{(x - 3)(x + 3)}.$ Step 2: Answer each part:(a) Domain: $(-\\infty, -3) \\cup (-3, 3) \\cup (3, \\infty)$, i.e. $x eq \\pm 3$.(b) Removable Discontinuity: The factor $(x - 3)$ cancels; for $x eq 3$, $r(x) = \\frac{2(x + 2)}{x + 3}$. Evaluating at $x = 3$ gives $y = \\frac{2(5)}{6} = \\frac{5}{3}$. Hole at $\\mathbf{\\left(3, \\frac{5}{3}\\right)}$.(c) Asymptotes: Vertical asymptote at $\\mathbf{x = -3}$; horizontal asymptote at $\\mathbf{y = 2}$.(d) Intercepts: $x$-intercept at $\\mathbf{(-2, 0)}$; $y$-intercept at $\\mathbf{\\left(0, \\frac{4}{3}\\right)}$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2*x*x + (-2)*x + (-12)"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [],
+            "width": 230
+          }
+        },
+        {
+          "q": "Consider the quadratic function $f(x) = x^2 - 4x + 3$. What are the x-intercepts of the graph of this function?",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Remainder & Factor Theorems",
+          "answer": "To find the x-intercepts of the graph of a function, we need to find the values of $x$ for which $f(x) = 0$. For the given function $f(x) = x^2 - 4x + 3$, we set $x^2 - 4x + 3 = 0$. This is a quadratic equation that can be solved by factoring. We look for two numbers that multiply to 3 and add to -4. These numbers are -1 and -3. Thus, we can factor the equation as $(x - 1)(x - 3) = 0$. Setting each factor to zero, we get $x - 1 = 0$ or $x - 3 = 0$. Solving these equations gives $x = 1$ and $x = 3$. Therefore, the x-intercepts are $(1, 0)$ and $(3, 0)$.",
+          "explanation": "To find the x-intercepts of the graph of a function, we need to find the values of $x$ for which $f(x) = 0$. For the given function $f(x) = x^2 - 4x + 3$, we set $x^2 - 4x + 3 = 0$. This is a quadratic equation that can be solved by factoring. We look for two numbers that multiply to 3 and add to -4. These numbers are -1 and -3. Thus, we can factor the equation as $(x - 1)(x - 3) = 0$. Setting each factor to zero, we get $x - 1 = 0$ or $x - 3 = 0$. Solving these equations gives $x = 1$ and $x = 3$. Therefore, the x-intercepts are $(1, 0)$ and $(3, 0)$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*x - 4*x + 3",
+              "0"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [],
+            "width": 230
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Consider the polynomial function $f(x) = x^2 - 5x + 6$. What are the roots of the function $f(x)$?",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Rational Root Theorem & Complex Conjugates",
+          "answer": "To find the roots of the function $f(x) = x^2 - 5x + 6$, we need to solve the equation $f(x) = 0$. This means we need to find the values of $x$ for which $x^2 - 5x + 6 = 0$. This is a quadratic equation that can be solved by factoring. We are looking for two numbers that multiply to 6 and add up to -5. These numbers are -2 and -3. Therefore, we can factor the quadratic as $(x-2)(x-3) = 0$. Setting each factor to zero gives us the roots: $x-2 = 0 \\Rightarrow x = 2$ and $x-3 = 0 \\Rightarrow x = 3$. Thus, the roots of the function $f(x)$ are 2 and 3.",
+          "explanation": "To find the roots of the function $f(x) = x^2 - 5x + 6$, we need to solve the equation $f(x) = 0$. This means we need to find the values of $x$ for which $x^2 - 5x + 6 = 0$. This is a quadratic equation that can be solved by factoring. We are looking for two numbers that multiply to 6 and add up to -5. These numbers are -2 and -3. Therefore, we can factor the quadratic as $(x-2)(x-3) = 0$. Setting each factor to zero gives us the roots: $x-2 = 0 \\Rightarrow x = 2$ and $x-3 = 0 \\Rightarrow x = 3$. Thus, the roots of the function $f(x)$ are 2 and 3.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x*x - 5*x + 6"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [],
+            "width": 230
+          }
+        },
+        {
+          "q": "The graph of the exponential function $f(x) = 2^x$ is given. A point P on the graph has a y-coordinate of 8. What is the x-coordinate of point P?",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Leading Term Test and End Behavior",
+          "answer": "The function is given by $f(x) = 2^x$. We are looking for a point P on the graph where the y-coordinate is 8. This means we need to solve for $x$ when $f(x) = 8$. So, we have the equation $2^x = 8$. Since $8 = 2^3$, we can rewrite the equation as $2^x = 2^3$. By equating the exponents, we find that $x = 3$. Therefore, the x-coordinate of point P is 3.",
+          "explanation": "The function is given by $f(x) = 2^x$. We are looking for a point P on the graph where the y-coordinate is 8. This means we need to solve for $x$ when $f(x) = 8$. So, we have the equation $2^x = 8$. Since $8 = 2^3$, we can rewrite the equation as $2^x = 2^3$. By equating the exponents, we find that $x = 3$. Therefore, the x-coordinate of point P is 3.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2**x"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [],
+            "width": 230
+          }
+        },
+        {
+          "q": "Find the average rate of change of the polynomial function $f(x) = 2x^3 - 5x + 4$ over the closed interval $[-1, 2]$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Multiplicity of Zeros and Graph Geometry",
+          "answer": "Step 1: Evaluate the function at the interval endpoints: $f(-1) = 2(-1)^3 - 5(-1) + 4 = -2 + 5 + 4 = 7.$ $f(2) = 2(2)^3 - 5(2) + 4 = 16 - 10 + 4 = 10.$ Step 2: Compute the difference quotient: $\\mathrm{AROC} = \\frac{f(2) - f(-1)}{2 - (-1)} = \\frac{10 - 7}{3} = \\frac{3}{3} = \\mathbf{1}.$",
+          "explanation": "Step 1: Evaluate the function at the interval endpoints: $f(-1) = 2(-1)^3 - 5(-1) + 4 = -2 + 5 + 4 = 7.$ $f(2) = 2(2)^3 - 5(2) + 4 = 16 - 10 + 4 = 10.$ Step 2: Compute the difference quotient: $\\mathrm{AROC} = \\frac{f(2) - f(-1)}{2 - (-1)} = \\frac{10 - 7}{3} = \\frac{3}{3} = \\mathbf{1}.$",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4 - x*x",
+              "x + 2"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [],
+            "width": 230
+          }
+        },
+        {
+          "q": "Solve the rational inequality $\\frac{x + 4}{x - 2} \\leq 3$ and express the solution set in interval notation.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Remainder & Factor Theorems",
+          "answer": "Step 1: Subtract 3 and combine over a single common denominator: $\\frac{x + 4}{x - 2} - 3 \\leq 0 \\Rightarrow \\frac{(x + 4) - 3(x - 2)}{x - 2} \\leq 0 \\Rightarrow \\frac{-2x + 10}{x - 2} \\leq 0.$ Step 2: Factor and identify critical boundary values: $\\frac{-2(x - 5)}{x - 2} \\leq 0 \\Leftrightarrow \\frac{x - 5}{x - 2} \\geq 0.$ Critical values are $x = 2$ (undefined) and $x = 5$ (zero). Step 3: Sign chart analysis: The quotient $\\frac{x - 5}{x - 2}$ is positive on $(-\\infty, 2)$ and $(5, \\infty)$, and negative on $(2, 5)$. Including the zero at $x = 5$ and excluding $x = 2$: $\\mathbf{(-\\infty, 2) \\cup [5, \\infty)}.$",
+          "explanation": "Step 1: Subtract 3 and combine over a single common denominator: $\\frac{x + 4}{x - 2} - 3 \\leq 0 \\Rightarrow \\frac{(x + 4) - 3(x - 2)}{x - 2} \\leq 0 \\Rightarrow \\frac{-2x + 10}{x - 2} \\leq 0.$ Step 2: Factor and identify critical boundary values: $\\frac{-2(x - 5)}{x - 2} \\leq 0 \\Leftrightarrow \\frac{x - 5}{x - 2} \\geq 0.$ Critical values are $x = 2$ (undefined) and $x = 5$ (zero). Step 3: Sign chart analysis: The quotient $\\frac{x - 5}{x - 2}$ is positive on $(-\\infty, 2)$ and $(5, \\infty)$, and negative on $(2, 5)$. Including the zero at $x = 5$ and excluding $x = 2$: $\\mathbf{(-\\infty, 2) \\cup [5, \\infty)}.$"
+        },
+        {
+          "q": "Find the equation of the slant (oblique) asymptote of the rational function $g(x) = \\frac{3x^2 - 5x + 7}{x - 2}$, and compute $\\lim_{x \\rightarrow 2^+} g(x)$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Rational Root Theorem & Complex Conjugates",
+          "answer": "Step 1: Perform polynomial long division (or synthetic division by $c = 2$): $3x^2 - 5x + 7 = (x - 2)(3x + 1) + 9 \\Rightarrow g(x) = 3x + 1 + \\frac{9}{x - 2}.$ Step 2: Identify the slant asymptote: As $x \\rightarrow \\pm\\infty$, $\\frac{9}{x - 2} \\rightarrow 0$, so the slant asymptote is $\\mathbf{y = 3x + 1}$. Step 3: One-sided limit at $x = 2^+$: As $x \\rightarrow 2^+$, $x - 2 \\rightarrow 0^+$ and numerator $\\rightarrow 9 > 0$, so $\\lim_{x \\rightarrow 2^+} g(x) = \\mathbf{+\\infty}$.",
+          "explanation": "Step 1: Perform polynomial long division (or synthetic division by $c = 2$): $3x^2 - 5x + 7 = (x - 2)(3x + 1) + 9 \\Rightarrow g(x) = 3x + 1 + \\frac{9}{x - 2}.$ Step 2: Identify the slant asymptote: As $x \\rightarrow \\pm\\infty$, $\\frac{9}{x - 2} \\rightarrow 0$, so the slant asymptote is $\\mathbf{y = 3x + 1}$. Step 3: One-sided limit at $x = 2^+$: As $x \\rightarrow 2^+$, $x - 2 \\rightarrow 0^+$ and numerator $\\rightarrow 9 > 0$, so $\\lim_{x \\rightarrow 2^+} g(x) = \\mathbf{+\\infty}$."
+        },
+        {
+          "q": "The graph of $y = f(x)$ is transformed into $y = -2f(3x - 6) + 5$. Describe the exact sequence of geometric transformations applied to $f(x)$, and find the image of the point $(3, -1)$ on $y = f(x)$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Leading Term Test and End Behavior",
+          "answer": "Step 1: Factor the horizontal coefficient: $y = -2f(3(x - 2)) + 5.$ Step 2: Sequence of transformations:Horizontal dilation (compression) by factor $\\frac{1}{3}$.Horizontal translation $2$ units right.Vertical dilation (stretch) by factor $2$ and reflection across the $x$-axis.Vertical translation $5$ units up. Step 3: Map the point $(3, -1)$: Set $3x - 6 = 3 \\Rightarrow x = 3$. Then $y = -2f(3) + 5 = -2(-1) + 5 = 7$. Image point: $\\mathbf{(3, 7)}$.",
+          "explanation": "Step 1: Factor the horizontal coefficient: $y = -2f(3(x - 2)) + 5.$ Step 2: Sequence of transformations:Horizontal dilation (compression) by factor $\\frac{1}{3}$.Horizontal translation $2$ units right.Vertical dilation (stretch) by factor $2$ and reflection across the $x$-axis.Vertical translation $5$ units up. Step 3: Map the point $(3, -1)$: Set $3x - 6 = 3 \\Rightarrow x = 3$. Then $y = -2f(3) + 5 = -2(-1) + 5 = 7$. Image point: $\\mathbf{(3, 7)}$."
+        },
+        {
+          "q": "Let $z_1 = 2\\left(\\cos\\frac{\\pi}{4} + i\\sin\\frac{\\pi}{4}\\right)$ and $z_2 = 3\\left(\\cos\\frac{5\\pi}{12} + i\\sin\\frac{5\\pi}{12}\\right)$. Find the product $z_1 z_2$ in rectangular form $a + bi$, and compute $z_1^6$ using De Moivre's Theorem.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Multiplicity of Zeros and Graph Geometry",
+          "answer": "Step 1: Multiply in polar form: $z_1 z_2 = (2 \\cdot 3)\\left[\\cos\\left(\\frac{\\pi}{4} + \\frac{5\\pi}{12}\\right) + i\\sin\\left(\\frac{\\pi}{4} + \\frac{5\\pi}{12}\\right)\\right] = 6\\left(\\cos\\frac{2\\pi}{3} + i\\sin\\frac{2\\pi}{3}\\right) = \\mathbf{-3 + 3i\\sqrt{3}}.$ Step 2: Compute $z_1^6$ via De Moivre's Theorem: $z_1^6 = 2^6\\left(\\cos\\frac{6\\pi}{4} + i\\sin\\frac{6\\pi}{4}\\right) = 64\\left(\\cos\\frac{3\\pi}{2} + i\\sin\\frac{3\\pi}{2}\\right) = \\mathbf{-64i}.$",
+          "explanation": "Step 1: Multiply in polar form: $z_1 z_2 = (2 \\cdot 3)\\left[\\cos\\left(\\frac{\\pi}{4} + \\frac{5\\pi}{12}\\right) + i\\sin\\left(\\frac{\\pi}{4} + \\frac{5\\pi}{12}\\right)\\right] = 6\\left(\\cos\\frac{2\\pi}{3} + i\\sin\\frac{2\\pi}{3}\\right) = \\mathbf{-3 + 3i\\sqrt{3}}.$ Step 2: Compute $z_1^6$ via De Moivre's Theorem: $z_1^6 = 2^6\\left(\\cos\\frac{6\\pi}{4} + i\\sin\\frac{6\\pi}{4}\\right) = 64\\left(\\cos\\frac{3\\pi}{2} + i\\sin\\frac{3\\pi}{2}\\right) = \\mathbf{-64i}.$"
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "Solve the polynomial inequality $x^3 - 4x^2 + x + 6 \\leq 0$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Remainder & Factor Theorems",
+          "cross_lesson": "3.02 Polar Coordinates & Polar Graphs",
+          "answer": "Step 1: Find rational roots and factor: Testing $x = -1$: $(-1)^3 - 4(-1)^2 + (-1) + 6 = -1 - 4 - 1 + 6 = 0$. Dividing by $(x + 1)$ gives: $x^3 - 4x^2 + x + 6 = (x + 1)(x^2 - 5x + 6) = (x + 1)(x - 2)(x - 3).$ Step 2: Sign analysis across roots $-1, 2, 3$:$x < -1$: $(-)(-)(-) < 0$$-1 < x < 2$: $(+)(-)(-) > 0$$2 < x < 3$: $(+)(+)(-) < 0$$x > 3$: $(+)(+)(+) > 0$Including zeros gives the solution set: $\\mathbf{(-\\infty, -1] \\cup [2, 3]}$.",
+          "explanation": "Step 1: Find rational roots and factor: Testing $x = -1$: $(-1)^3 - 4(-1)^2 + (-1) + 6 = -1 - 4 - 1 + 6 = 0$. Dividing by $(x + 1)$ gives: $x^3 - 4x^2 + x + 6 = (x + 1)(x^2 - 5x + 6) = (x + 1)(x - 2)(x - 3).$ Step 2: Sign analysis across roots $-1, 2, 3$:$x < -1$: $(-)(-)(-) < 0$$-1 < x < 2$: $(+)(-)(-) > 0$$2 < x < 3$: $(+)(+)(-) < 0$$x > 3$: $(+)(+)(+) > 0$Including zeros gives the solution set: $\\mathbf{(-\\infty, -1] \\cup [2, 3]}$."
+        },
+        {
+          "q": "A geometric sequence has third term $g_3 = 18$ and sixth term $g_6 = -\\frac{16}{3}$. Find the common ratio $r$, the first term $g_1$, and the infinite sum $S_\\infty$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Rational Root Theorem & Complex Conjugates",
+          "cross_lesson": "4.01 Inverse & Composite Functions",
+          "answer": "Step 1: Find common ratio $r$: $\\frac{g_6}{g_3} = r^3 = \\frac{-16/3}{18} = -\\frac{8}{27} \\Rightarrow r = \\mathbf{-\\frac{2}{3}}.$ Step 2: Find first term $g_1$: $g_1 r^2 = 18 \\Rightarrow g_1 \\left(\\frac{4}{9}\\right) = 18 \\Rightarrow g_1 = \\mathbf{\\frac{81}{2}}.$ Step 3: Infinite geometric series sum ($|r| = 2/3 < 1$): $S_\\infty = \\frac{g_1}{1 - r} = \\frac{81/2}{1 - (-2/3)} = \\frac{81/2}{5/3} = \\mathbf{\\frac{243}{10} = 24.3}.$",
+          "explanation": "Step 1: Find common ratio $r$: $\\frac{g_6}{g_3} = r^3 = \\frac{-16/3}{18} = -\\frac{8}{27} \\Rightarrow r = \\mathbf{-\\frac{2}{3}}.$ Step 2: Find first term $g_1$: $g_1 r^2 = 18 \\Rightarrow g_1 \\left(\\frac{4}{9}\\right) = 18 \\Rightarrow g_1 = \\mathbf{\\frac{81}{2}}.$ Step 3: Infinite geometric series sum ($|r| = 2/3 < 1$): $S_\\infty = \\frac{g_1}{1 - r} = \\frac{81/2}{1 - (-2/3)} = \\frac{81/2}{5/3} = \\mathbf{\\frac{243}{10} = 24.3}.$"
+        },
+        {
+          "q": "A log-log regression plot of $(\\ln x, \\ln y)$ produces the linear fit $\\ln(\\hat{y}) = \\ln(5) - 2.5\\ln(x)$ for $x > 0$. Write $\\hat{y}$ as an explicit power function of $x$, and find the factor by which $\\hat{y}$ changes when $x$ is multiplied by $4$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Leading Term Test and End Behavior",
+          "cross_lesson": "4.02 Piecewise-Defined & Implicit Functions",
+          "answer": "Step 1: Condense the right-hand side using logarithm power and quotient laws: $\\ln(\\hat{y}) = \\ln(5) + \\ln(x^{-2.5}) = \\ln\\left(5x^{-5/2}\\right) \\Rightarrow \\mathbf{\\hat{y} = 5x^{-5/2} = \\frac{5}{\\sqrt{x^5}}}.$ Step 2: Scaling analysis when $x \\rightarrow 4x$: $\\hat{y}(4x) = 5(4x)^{-5/2} = 4^{-5/2} \\cdot 5x^{-5/2} = \\frac{1}{(\\sqrt{4})^5}\\hat{y}(x) = \\mathbf{\\frac{1}{32}}\\hat{y}(x).$",
+          "explanation": "Step 1: Condense the right-hand side using logarithm power and quotient laws: $\\ln(\\hat{y}) = \\ln(5) + \\ln(x^{-2.5}) = \\ln\\left(5x^{-5/2}\\right) \\Rightarrow \\mathbf{\\hat{y} = 5x^{-5/2} = \\frac{5}{\\sqrt{x^5}}}.$ Step 2: Scaling analysis when $x \\rightarrow 4x$: $\\hat{y}(4x) = 5(4x)^{-5/2} = 4^{-5/2} \\cdot 5x^{-5/2} = \\frac{1}{(\\sqrt{4})^5}\\hat{y}(x) = \\mathbf{\\frac{1}{32}}\\hat{y}(x).$"
+        },
+        {
+          "q": "Use the Binomial Theorem to find the coefficient of $x^3 y^2$ in the expansion of $(2x - 3y)^5$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Multiplicity of Zeros and Graph Geometry",
+          "cross_lesson": "4.03 Parametric Equations & Modeling",
+          "answer": "Step 1: Apply the general binomial term formula $\\binom{n}{k} a^{n-k} b^k$: With $n = 5$, $a = 2x$, $b = -3y$, and $k = 2$: $T_3 = \\binom{5}{2} (2x)^3 (-3y)^2.$ Step 2: Evaluate numerical factors: $\\binom{5}{2} = 10, \\qquad (2x)^3 = 8x^3, \\qquad (-3y)^2 = 9y^2.$ $T_3 = 10 \\cdot 8 \\cdot 9 \\, x^3 y^2 = 720 x^3 y^2.$ The coefficient is $\\mathbf{720}$.",
+          "explanation": "Step 1: Apply the general binomial term formula $\\binom{n}{k} a^{n-k} b^k$: With $n = 5$, $a = 2x$, $b = -3y$, and $k = 2$: $T_3 = \\binom{5}{2} (2x)^3 (-3y)^2.$ Step 2: Evaluate numerical factors: $\\binom{5}{2} = 10, \\qquad (2x)^3 = 8x^3, \\qquad (-3y)^2 = 9y^2.$ $T_3 = 10 \\cdot 8 \\cdot 9 \\, x^3 y^2 = 720 x^3 y^2.$ The coefficient is $\\mathbf{720}$."
+        },
+        {
+          "q": "Find the 12th term and the sum of the first 25 terms of the arithmetic sequence with $a_1 = -7$ and common difference $d = 4$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Remainder & Factor Theorems",
+          "cross_lesson": "1.02 Rational Functions & Asymptotes",
+          "answer": "Step 1: General term formula $a_n = a_1 + (n - 1)d$: $a_{12} = -7 + (12 - 1)(4) = -7 + 44 = \\mathbf{37}.$ Step 2: Arithmetic series sum $S_n = \\frac{n}{2}(2a_1 + (n - 1)d)$: $S_{25} = \\frac{25}{2}(2(-7) + 24(4)) = \\frac{25}{2}(-14 + 96) = \\frac{25}{2}(82) = 25 \\times 41 = \\mathbf{1025}.$",
+          "explanation": "Step 1: General term formula $a_n = a_1 + (n - 1)d$: $a_{12} = -7 + (12 - 1)(4) = -7 + 44 = \\mathbf{37}.$ Step 2: Arithmetic series sum $S_n = \\frac{n}{2}(2a_1 + (n - 1)d)$: $S_{25} = \\frac{25}{2}(2(-7) + 24(4)) = \\frac{25}{2}(-14 + 96) = \\frac{25}{2}(82) = 25 \\times 41 = \\mathbf{1025}.$"
+        },
+        {
+          "q": "A point $P$ is on the unit circle such that its terminal ray makes an angle of $\\theta$ with the positive x-axis. The coordinates of $P$ are $\\left( \\frac{1}{2}, \\frac{\\sqrt{3}}{2} \\right)$. If a point $Q$ on the unit circle has an angle $\\phi$ such that $\\phi = \\theta + \\frac{\\pi}{3}$, what is the y-coordinate of point $Q$?",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Rational Root Theorem & Complex Conjugates",
+          "cross_lesson": "1.03 Rates of Change & Concavity",
+          "answer": "The coordinates of point $P$ on the unit circle are given as $\\left( \\cos \\theta, \\sin \\theta \\right)$. Therefore, $\\cos \\theta = \\frac{1}{2}$ and $\\sin \\theta = \\frac{\\sqrt{3}}{2}$. This implies that $\\theta = \\frac{\\pi}{3}$ (or 60 degrees). The point $Q$ on the unit circle has an angle $\\phi = \\theta + \\frac{\\pi}{3}$. Substituting the value of $\\theta$, we get $\\phi = \\frac{\\pi}{3} + \\frac{\\pi}{3} = \\frac{2\\pi}{3}$ (or 120 degrees). The coordinates of $Q$ are $\\left( \\cos \\phi, \\sin \\phi \\right)$. We need to find the y-coordinate of $Q$, which is $\\sin \\phi$. Therefore, the y-coordinate of $Q$ is $\\sin \\left( \\frac{2\\pi}{3} \\right)$. Using the unit circle or trigonometric identities, $\\sin \\left( \\frac{2\\pi}{3} \\right) = \\frac{\\sqrt{3}}{2}$.",
+          "explanation": "The coordinates of point $P$ on the unit circle are given as $\\left( \\cos \\theta, \\sin \\theta \\right)$. Therefore, $\\cos \\theta = \\frac{1}{2}$ and $\\sin \\theta = \\frac{\\sqrt{3}}{2}$. This implies that $\\theta = \\frac{\\pi}{3}$ (or 60 degrees). The point $Q$ on the unit circle has an angle $\\phi = \\theta + \\frac{\\pi}{3}$. Substituting the value of $\\theta$, we get $\\phi = \\frac{\\pi}{3} + \\frac{\\pi}{3} = \\frac{2\\pi}{3}$ (or 120 degrees). The coordinates of $Q$ are $\\left( \\cos \\phi, \\sin \\phi \\right)$. We need to find the y-coordinate of $Q$, which is $\\sin \\phi$. Therefore, the y-coordinate of $Q$ is $\\sin \\left( \\frac{2\\pi}{3} \\right)$. Using the unit circle or trigonometric identities, $\\sin \\left( \\frac{2\\pi}{3} \\right) = \\frac{\\sqrt{3}}{2}$.",
+          "figure": {
+            "type": "circle",
+            "center": [
+              0,
+              0
+            ],
+            "radius": 1.0,
+            "center_label": "$O$",
+            "radius_label": "$r = 1$",
+            "sector": {
+              "start_deg": 0,
+              "end_deg": 60,
+              "label": "$60^\\circ$"
+            },
+            "chord": null,
+            "width": 210
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
           "q": "Determine the end behavior of the polynomial function $f(x) = -3x^5 + 7x^3 - 2x + 9$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Leading Term Test and End Behavior",
           "choices": [
-            "As $x \\to \\infty$, $f(x) \\to -\\infty$; as $x \\to -\\infty$, $f(x) \\to \\infty$",
-            "As $x \\to \\infty$, $f(x) \\to \\infty$; as $x \\to -\\infty$, $f(x) \\to -\\infty$",
-            "As $x \\to \\infty$, $f(x) \\to -\\infty$; as $x \\to -\\infty$, $f(x) \\to -\\infty$",
-            "As $x \\to \\infty$, $f(x) \\to \\infty$; as $x \\to -\\infty$, $f(x) \\to \\infty$"
+            "As $x \\rightarrow \\infty$, $f(x) \\rightarrow -\\infty$; as $x \\rightarrow -\\infty$, $f(x) \\rightarrow \\infty$",
+            "As $x \\rightarrow \\infty$, $f(x) \\rightarrow \\infty$; as $x \\rightarrow -\\infty$, $f(x) \\rightarrow -\\infty$",
+            "As $x \\rightarrow \\infty$, $f(x) \\rightarrow -\\infty$; as $x \\rightarrow -\\infty$, $f(x) \\rightarrow -\\infty$",
+            "As $x \\rightarrow \\infty$, $f(x) \\rightarrow \\infty$; as $x \\rightarrow -\\infty$, $f(x) \\rightarrow \\infty$"
           ],
           "correct": 0,
-          "answer": "The leading term is $-3x^5$. Because the degree 5 is odd and the leading coefficient $-3$ is negative, $f(x) \\to -\\infty$ as $x \\to \\infty$, and $f(x) \\to \\infty$ as $x \\to -\\infty$."
+          "answer": "The leading term is $-3x^5$. Because the degree 5 is odd and the leading coefficient $-3$ is negative, $f(x) \\rightarrow -\\infty$ as $x \\rightarrow \\infty$, and $f(x) \\rightarrow \\infty$ as $x \\rightarrow -\\infty$.",
+          "explanation": "The leading term is $-3x^5$. Because the degree 5 is odd and the leading coefficient $-3$ is negative, $f(x) \\rightarrow -\\infty$ as $x \\rightarrow \\infty$, and $f(x) \\rightarrow \\infty$ as $x \\rightarrow -\\infty$."
         },
         {
-          "q": "If a polynomial $p(x)$ satisfies $\\lim_{x \\to \\infty} p(x) = -\\infty$ and $\\lim_{x \\to -\\infty} p(x) = -\\infty$, which of the following could be the leading term of $p(x)$?",
+          "q": "If a polynomial $p(x)$ satisfies $\\lim_{x \\rightarrow \\infty} p(x) = -\\infty$ and $\\lim_{x \\rightarrow -\\infty} p(x) = -\\infty$, which of the following could be the leading term of $p(x)$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Leading Term Test and End Behavior",
           "choices": [
             "$-4x^6$",
             "$2x^6$",
@@ -27,10 +372,14 @@
             "$3x^5$"
           ],
           "correct": 0,
-          "answer": "When both ends approach $-\\infty$, the polynomial must have an even degree and a negative leading coefficient. Among the choices, $-4x^6$ has even degree 6 and negative coefficient $-4$."
+          "answer": "When both ends approach $-\\infty$, the polynomial must have an even degree and a negative leading coefficient. Among the choices, $-4x^6$ has even degree 6 and negative coefficient $-4$.",
+          "explanation": "When both ends approach $-\\infty$, the polynomial must have an even degree and a negative leading coefficient. Among the choices, $-4x^6$ has even degree 6 and negative coefficient $-4$."
         },
         {
           "q": "Consider $g(x) = (2 - x)(x + 3)^2(2x - 1)$. What is the leading coefficient of $g(x)$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Leading Term Test and End Behavior",
           "choices": [
             "$-2$",
             "$2$",
@@ -38,15 +387,14 @@
             "$4$"
           ],
           "correct": 0,
-          "answer": "Expanding the highest power terms: $(-x) \\cdot (x)^2 \\cdot (2x) = -2x^4$. Thus, the leading coefficient is $-2$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Multiplicity of Zeros and Graph Geometry",
-      "questions": [
+          "answer": "Expanding the highest power terms: $(-x) \\cdot (x)^2 \\cdot (2x) = -2x^4$. Thus, the leading coefficient is $-2$.",
+          "explanation": "Expanding the highest power terms: $(-x) \\cdot (x)^2 \\cdot (2x) = -2x^4$. Thus, the leading coefficient is $-2$."
+        },
         {
           "q": "Let $f(x) = (x - 4)^3(x + 2)^2(x - 1)$. At which zero does the graph of $f$ touch the $x$-axis and turn around without crossing?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Multiplicity of Zeros and Graph Geometry",
           "choices": [
             "$x = -2$",
             "$x = 4$",
@@ -54,10 +402,14 @@
             "$x = 2$"
           ],
           "correct": 0,
-          "answer": "A graph touches the $x$-axis and turns around at zeros with even multiplicity. Here, $(x + 2)^2$ has multiplicity 2 (even), so $x = -2$ is a turning touch point. At $x = 4$ and $x = 1$, the graph crosses."
+          "answer": "A graph touches the $x$-axis and turns around at zeros with even multiplicity. Here, $(x + 2)^2$ has multiplicity 2 (even), so $x = -2$ is a turning touch point. At $x = 4$ and $x = 1$, the graph crosses.",
+          "explanation": "A graph touches the $x$-axis and turns around at zeros with even multiplicity. Here, $(x + 2)^2$ has multiplicity 2 (even), so $x = -2$ is a turning touch point. At $x = 4$ and $x = 1$, the graph crosses."
         },
         {
           "q": "A polynomial $p(x)$ of degree 4 has a zero at $x = 3$ of multiplicity 2, and no other real zeros. If $p(0) = 18$, which equation represents $p(x)$ if its remaining zeros are non-real complex conjugates $\\pm i$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Multiplicity of Zeros and Graph Geometry",
           "choices": [
             "$p(x) = 2(x - 3)^2(x^2 + 1)$",
             "$p(x) = (x - 3)^2(x^2 + 1)$",
@@ -65,10 +417,14 @@
             "$p(x) = \\frac{1}{2}(x - 3)^2(x^2 + 1)$"
           ],
           "correct": 0,
-          "answer": "Zeros at $\\pm i$ correspond to factor $(x^2 + 1)$. So $p(x) = a(x - 3)^2(x^2 + 1)$. Using $p(0) = a(-3)^2(1) = 9a = 18 \\Rightarrow a = 2$. Thus $p(x) = 2(x - 3)^2(x^2 + 1)$."
+          "answer": "Zeros at $\\pm i$ correspond to factor $(x^2 + 1)$. So $p(x) = a(x - 3)^2(x^2 + 1)$. Using $p(0) = a(-3)^2(1) = 9a = 18 \\Rightarrow a = 2$. Thus $p(x) = 2(x - 3)^2(x^2 + 1)$.",
+          "explanation": "Zeros at $\\pm i$ correspond to factor $(x^2 + 1)$. So $p(x) = a(x - 3)^2(x^2 + 1)$. Using $p(0) = a(-3)^2(1) = 9a = 18 \\Rightarrow a = 2$. Thus $p(x) = 2(x - 3)^2(x^2 + 1)$."
         },
         {
           "q": "At $x = c$, $f(x) = (x - c)^3 g(x)$ where $g(c) \\neq 0$. What is the behavior of the graph of $f$ at $(c, 0)$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Multiplicity of Zeros and Graph Geometry",
           "choices": [
             "The graph crosses the $x$-axis with an inflection/flattening point (horizontal tangent)",
             "The graph touches the $x$-axis and turns around symmetrically",
@@ -76,15 +432,14 @@
             "The graph crosses the $x$-axis linearly without flattening"
           ],
           "correct": 0,
-          "answer": "An odd multiplicity greater than 1 ($m = 3$) causes the graph to cross the $x$-axis while flattening out (creating an inflection point with a horizontal tangent)."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Remainder & Factor Theorems",
-      "questions": [
+          "answer": "An odd multiplicity greater than 1 ($m = 3$) causes the graph to cross the $x$-axis while flattening out (creating an inflection point with a horizontal tangent).",
+          "explanation": "An odd multiplicity greater than 1 ($m = 3$) causes the graph to cross the $x$-axis while flattening out (creating an inflection point with a horizontal tangent)."
+        },
         {
           "q": "When $f(x) = 2x^3 - 5x^2 + kx - 8$ is divided by $(x - 3)$, the remainder is $7$. Find the value of $k$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Remainder & Factor Theorems",
           "choices": [
             "$-4$",
             "$4$",
@@ -92,10 +447,14 @@
             "$5$"
           ],
           "correct": 0,
-          "answer": "By the Remainder Theorem, $f(3) = 7$. $f(3) = 2(27) - 5(9) + 3k - 8 = 54 - 45 + 3k - 8 = 1 + 3k$. Setting $1 + 3k = 7 \\Rightarrow 3k = 6 \\Rightarrow k = 2$."
+          "answer": "By the Remainder Theorem, $f(3) = 7$. $f(3) = 2(27) - 5(9) + 3k - 8 = 54 - 45 + 3k - 8 = 1 + 3k$. Setting $1 + 3k = 7 \\Rightarrow 3k = 6 \\Rightarrow k = 2$.",
+          "explanation": "By the Remainder Theorem, $f(3) = 7$. $f(3) = 2(27) - 5(9) + 3k - 8 = 54 - 45 + 3k - 8 = 1 + 3k$. Setting $1 + 3k = 7 \\Rightarrow 3k = 6 \\Rightarrow k = 2$."
         },
         {
           "q": "Which of the following is a factor of $P(x) = x^3 - 6x^2 + 11x - 6$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Remainder & Factor Theorems",
           "choices": [
             "$x - 2$",
             "$x + 2$",
@@ -103,10 +462,19 @@
             "$x + 1$"
           ],
           "correct": 0,
-          "answer": "Evaluate $P(2) = 2^3 - 6(4) + 11(2) - 6 = 8 - 24 + 22 - 6 = 0$. Since $P(2) = 0$, by the Factor Theorem $(x - 2)$ is a factor."
-        },
+          "answer": "Evaluate $P(2) = 2^3 - 6(4) + 11(2) - 6 = 8 - 24 + 22 - 6 = 0$. Since $P(2) = 0$, by the Factor Theorem $(x - 2)$ is a factor.",
+          "explanation": "Evaluate $P(2) = 2^3 - 6(4) + 11(2) - 6 = 8 - 24 + 22 - 6 = 0$. Since $P(2) = 0$, by the Factor Theorem $(x - 2)$ is a factor."
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
         {
           "q": "A polynomial $q(x)$ satisfies $q(-4) = 0$, $q(1) = 0$, and $q(5) = 12$. Which statement must be true?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Remainder & Factor Theorems",
           "choices": [
             "$(x + 4)$ and $(x - 1)$ are factors of $q(x)$",
             "$(x - 4)$ and $(x + 1)$ are factors of $q(x)$",
@@ -114,15 +482,14 @@
             "$q(x)$ must be a quadratic polynomial"
           ],
           "correct": 0,
-          "answer": "By the Factor Theorem, $q(c) = 0 \\Leftrightarrow (x - c)$ is a factor. Here $q(-4) = 0 \\Rightarrow (x + 4)$ is a factor, and $q(1) = 0 \\Rightarrow (x - 1)$ is a factor."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Rational Root Theorem & Complex Conjugates",
-      "questions": [
+          "answer": "By the Factor Theorem, $q(c) = 0 \\Leftrightarrow (x - c)$ is a factor. Here $q(-4) = 0 \\Rightarrow (x + 4)$ is a factor, and $q(1) = 0 \\Rightarrow (x - 1)$ is a factor.",
+          "explanation": "By the Factor Theorem, $q(c) = 0 \\Leftrightarrow (x - c)$ is a factor. Here $q(-4) = 0 \\Rightarrow (x + 4)$ is a factor, and $q(1) = 0 \\Rightarrow (x - 1)$ is a factor."
+        },
         {
           "q": "According to the Rational Root Theorem, which of the following is NOT a possible rational zero of $f(x) = 3x^3 - 2x^2 + 5x - 4$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Rational Root Theorem & Complex Conjugates",
           "choices": [
             "$\\frac{3}{2}$",
             "$\\frac{4}{3}$",
@@ -130,10 +497,14 @@
             "$\\pm 2$"
           ],
           "correct": 0,
-          "answer": "Factors of constant term $-4$: $\\pm 1, \\pm 2, \\pm 4$. Factors of leading coefficient $3$: $\\pm 1, \\pm 3$. Possible rational roots $p/q$ are $\\pm 1, \\pm 2, \\pm 4, \\pm 1/3, \\pm 2/3, \\pm 4/3$. Thus $\\frac{3}{2}$ is not possible."
+          "answer": "Factors of constant term $-4$: $\\pm 1, \\pm 2, \\pm 4$. Factors of leading coefficient $3$: $\\pm 1, \\pm 3$. Possible rational roots $p/q$ are $\\pm 1, \\pm 2, \\pm 4, \\pm 1/3, \\pm 2/3, \\pm 4/3$. Thus $\\frac{3}{2}$ is not possible.",
+          "explanation": "Factors of constant term $-4$: $\\pm 1, \\pm 2, \\pm 4$. Factors of leading coefficient $3$: $\\pm 1, \\pm 3$. Possible rational roots $p/q$ are $\\pm 1, \\pm 2, \\pm 4, \\pm 1/3, \\pm 2/3, \\pm 4/3$. Thus $\\frac{3}{2}$ is not possible."
         },
         {
           "q": "A polynomial with real coefficients has degree 3. Two of its zeros are $4$ and $2 - 3i$. What is the third zero?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Rational Root Theorem & Complex Conjugates",
           "choices": [
             "$2 + 3i$",
             "$-2 + 3i$",
@@ -141,10 +512,14 @@
             "$-2 - 3i$"
           ],
           "correct": 0,
-          "answer": "By the Complex Conjugate Root Theorem, non-real complex zeros of polynomials with real coefficients must occur in conjugate pairs. Since $2 - 3i$ is a zero, $2 + 3i$ must also be a zero."
+          "answer": "By the Complex Conjugate Root Theorem, non-real complex zeros of polynomials with real coefficients must occur in conjugate pairs. Since $2 - 3i$ is a zero, $2 + 3i$ must also be a zero.",
+          "explanation": "By the Complex Conjugate Root Theorem, non-real complex zeros of polynomials with real coefficients must occur in conjugate pairs. Since $2 - 3i$ is a zero, $2 + 3i$ must also be a zero."
         },
         {
           "q": "What is the total number of complex zeros (counting multiplicity) of $P(x) = (x^2 + 4)^2(x - 5)^3$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Rational Root Theorem & Complex Conjugates",
           "choices": [
             "$7$",
             "$5$",
@@ -152,7 +527,216 @@
             "$3$"
           ],
           "correct": 0,
-          "answer": "The degree of $P(x)$ is $2 \\times 2 + 3 = 7$. By the Fundamental Theorem of Algebra, a polynomial of degree $n$ has exactly $n$ complex zeros counting multiplicity."
+          "answer": "The degree of $P(x)$ is $2 \\times 2 + 3 = 7$. By the Fundamental Theorem of Algebra, a polynomial of degree $n$ has exactly $n$ complex zeros counting multiplicity.",
+          "explanation": "The degree of $P(x)$ is $2 \\times 2 + 3 = 7$. By the Fundamental Theorem of Algebra, a polynomial of degree $n$ has exactly $n$ complex zeros counting multiplicity."
+        },
+        {
+          "q": "Consider a cubic polynomial $P(x) = ax^3 + bx^2 + cx + d$. The graph of $P(x)$ has a y-intercept at $(0, 12)$. It is known that $P(x)$ has a local maximum at $x = -1$ and a local minimum at $x = 3$. If the value of the local maximum is 20, determine the value of the constant term $d$ of the polynomial.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Leading Term Test and End Behavior",
+          "choices": [
+            "12",
+            "10",
+            "8",
+            "6"
+          ],
+          "correct": 0,
+          "answer": "Let the cubic polynomial be $P(x) = ax^3 + bx^2 + cx + d$. \\\\ We are given that the y-intercept is at $(0, 12)$, so $P(0) = 12$. \\\\ Substituting $x=0$ into the polynomial, we get $P(0) = a(0)^3 + b(0)^2 + c(0) + d = d$. \\\\ Therefore, $d = 12$. \\\\ The problem statement asks for the value of the constant term $d$, which is directly given by the y-intercept.",
+          "explanation": "Let the cubic polynomial be $P(x) = ax^3 + bx^2 + cx + d$. \\\\ We are given that the y-intercept is at $(0, 12)$, so $P(0) = 12$. \\\\ Substituting $x=0$ into the polynomial, we get $P(0) = a(0)^3 + b(0)^2 + c(0) + d = d$. \\\\ Therefore, $d = 12$. \\\\ The problem statement asks for the value of the constant term $d$, which is directly given by the y-intercept."
+        },
+        {
+          "q": "For the polynomial $f(x)=-1x^{3}+3x-1$, describe the end behavior of $f$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Multiplicity of Zeros and Graph Geometry",
+          "choices": [
+            "down on the left, up on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)",
+            "down on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)",
+            "up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)",
+            "up on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)"
+          ],
+          "correct": 2,
+          "answer": "The leading term is $-1x^{3}$, degree odd, leading coefficient negative, so the end behavior is: up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$).",
+          "explanation": "The leading term is $-1x^{3}$, degree odd, leading coefficient negative, so the end behavior is: up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)."
+        },
+        {
+          "q": "For the polynomial $f(x)=-2x^{3}+3x-1$, describe the end behavior of $f$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Remainder & Factor Theorems",
+          "choices": [
+            "up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)",
+            "down on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)",
+            "up on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)",
+            "down on the left, up on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)"
+          ],
+          "correct": 0,
+          "answer": "The leading term is $-2x^{3}$, degree odd, leading coefficient negative, so the end behavior is: up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$).",
+          "explanation": "The leading term is $-2x^{3}$, degree odd, leading coefficient negative, so the end behavior is: up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)."
+        },
+        {
+          "q": "For the polynomial $f(x)=-3x^{5}+3x-1$, describe the end behavior of $f$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Rational Root Theorem & Complex Conjugates",
+          "choices": [
+            "up on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)",
+            "up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)",
+            "down on the left, up on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)",
+            "down on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)"
+          ],
+          "correct": 1,
+          "answer": "The leading term is $-3x^{5}$, degree odd, leading coefficient negative, so the end behavior is: up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$).",
+          "explanation": "The leading term is $-3x^{5}$, degree odd, leading coefficient negative, so the end behavior is: up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)."
+        },
+        {
+          "q": "For the polynomial $f(x)=-1x^{5}+3x-1$, describe the end behavior of $f$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Leading Term Test and End Behavior",
+          "choices": [
+            "up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)",
+            "up on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)",
+            "down on the left, up on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)",
+            "down on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)"
+          ],
+          "correct": 0,
+          "answer": "The leading term is $-1x^{5}$, degree odd, leading coefficient negative, so the end behavior is: up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$).",
+          "explanation": "The leading term is $-1x^{5}$, degree odd, leading coefficient negative, so the end behavior is: up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "For the polynomial $f(x)=-2x^{5}+3x-1$, describe the end behavior of $f$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Multiplicity of Zeros and Graph Geometry",
+          "choices": [
+            "up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)",
+            "down on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)",
+            "up on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)",
+            "down on the left, up on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)"
+          ],
+          "correct": 0,
+          "answer": "The leading term is $-2x^{5}$, degree odd, leading coefficient negative, so the end behavior is: up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$).",
+          "explanation": "The leading term is $-2x^{5}$, degree odd, leading coefficient negative, so the end behavior is: up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$).",
+          "cross_lesson": "4.03 Parametric Equations & Modeling"
+        },
+        {
+          "q": "For the polynomial $f(x)=2x^{3}+3x-1$, describe the end behavior of $f$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Remainder & Factor Theorems",
+          "choices": [
+            "down on the left, up on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)",
+            "up on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)",
+            "up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)",
+            "down on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)"
+          ],
+          "correct": 0,
+          "answer": "The leading term is $2x^{3}$, degree odd, leading coefficient positive, so the end behavior is: down on the left, up on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$).",
+          "explanation": "The leading term is $2x^{3}$, degree odd, leading coefficient positive, so the end behavior is: down on the left, up on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$).",
+          "cross_lesson": "1.02 Rational Functions & Asymptotes"
+        },
+        {
+          "q": "For the polynomial $f(x)=3x^{5}+3x-1$, describe the end behavior of $f$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Rational Root Theorem & Complex Conjugates",
+          "choices": [
+            "down on the left, up on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)",
+            "down on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)",
+            "up on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)",
+            "up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)"
+          ],
+          "correct": 0,
+          "answer": "The leading term is $3x^{5}$, degree odd, leading coefficient positive, so the end behavior is: down on the left, up on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$).",
+          "explanation": "The leading term is $3x^{5}$, degree odd, leading coefficient positive, so the end behavior is: down on the left, up on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$).",
+          "cross_lesson": "1.03 Rates of Change & Concavity"
+        },
+        {
+          "q": "For the polynomial $f(x)=2x^{5}+3x-1$, describe the end behavior of $f$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Leading Term Test and End Behavior",
+          "choices": [
+            "up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)",
+            "down on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)",
+            "up on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)",
+            "down on the left, up on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)"
+          ],
+          "correct": 3,
+          "answer": "The leading term is $2x^{5}$, degree odd, leading coefficient positive, so the end behavior is: down on the left, up on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$).",
+          "explanation": "The leading term is $2x^{5}$, degree odd, leading coefficient positive, so the end behavior is: down on the left, up on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$).",
+          "cross_lesson": "2.01 Exponential Functions & Growth Models"
+        },
+        {
+          "q": "For the polynomial $f(x)=1x^{5}+3x-1$, describe the end behavior of $f$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Multiplicity of Zeros and Graph Geometry",
+          "choices": [
+            "up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)",
+            "down on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)",
+            "up on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)",
+            "down on the left, up on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)"
+          ],
+          "correct": 3,
+          "answer": "The leading term is $1x^{5}$, degree odd, leading coefficient positive, so the end behavior is: down on the left, up on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$).",
+          "explanation": "The leading term is $1x^{5}$, degree odd, leading coefficient positive, so the end behavior is: down on the left, up on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$).",
+          "cross_lesson": "2.02 Logarithmic Functions & Properties"
+        },
+        {
+          "q": "For the polynomial $f(x)=-1x^{2}+2x-1$, describe the end behavior of $f$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Remainder & Factor Theorems",
+          "choices": [
+            "up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)",
+            "up on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)",
+            "down on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)",
+            "down on the left, up on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)"
+          ],
+          "correct": 2,
+          "answer": "The leading term is $-1x^{2}$, degree even, leading coefficient negative, so the end behavior is: down on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$).",
+          "explanation": "The leading term is $-1x^{2}$, degree even, leading coefficient negative, so the end behavior is: down on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$).",
+          "cross_lesson": "3.01 Trigonometric Functions & the Unit Circle"
+        },
+        {
+          "q": "For the polynomial $f(x)=-3x^{2}+2x-1$, describe the end behavior of $f$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Rational Root Theorem & Complex Conjugates",
+          "choices": [
+            "up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)",
+            "up on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)",
+            "down on the left, up on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)",
+            "down on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)"
+          ],
+          "correct": 3,
+          "answer": "The leading term is $-3x^{2}$, degree even, leading coefficient negative, so the end behavior is: down on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$).",
+          "explanation": "The leading term is $-3x^{2}$, degree even, leading coefficient negative, so the end behavior is: down on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$).",
+          "cross_lesson": "3.02 Polar Coordinates & Polar Graphs"
+        },
+        {
+          "q": "For the polynomial $f(x)=-2x^{2}+2x-1$, describe the end behavior of $f$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Leading Term Test and End Behavior",
+          "choices": [
+            "down on the left, up on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)",
+            "down on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)",
+            "up on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow+\\infty$)",
+            "up on the left, down on the right (as $x\\rightarrow-\\infty, f(x)\\rightarrow+\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$)"
+          ],
+          "correct": 1,
+          "answer": "The leading term is $-2x^{2}$, degree even, leading coefficient negative, so the end behavior is: down on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$).",
+          "explanation": "The leading term is $-2x^{2}$, degree even, leading coefficient negative, so the end behavior is: down on both ends (as $x\\rightarrow-\\infty, f(x)\\rightarrow-\\infty$; as $x\\rightarrow+\\infty, f(x)\\rightarrow-\\infty$).",
+          "cross_lesson": "4.01 Inverse & Composite Functions"
         }
       ]
     }

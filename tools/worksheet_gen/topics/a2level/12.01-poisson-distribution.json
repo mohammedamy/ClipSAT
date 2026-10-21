@@ -3,12 +3,283 @@
   "num": "12.01",
   "slug": "poisson-distribution",
   "title": "Poisson Distribution",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 12.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Poisson Probability Formula & Conditions",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "Which of the following is NOT an essential assumption for modeling a random variable with a Poisson distribution $\\text{Po}(\\lambda)$?",
+          "q": "State the key conditions required for a random variable to be modeled by a Poisson distribution.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Conditions for a Poisson distribution",
+          "answer": "Events occur independently of one another; events occur at a constant average rate over the given interval of time or space; two events cannot occur at exactly the same instant; the number of events in non-overlapping intervals is independent.",
+          "explanation": "Events occur independently of one another; events occur at a constant average rate over the given interval of time or space; two events cannot occur at exactly the same instant; the number of events in non-overlapping intervals is independent."
+        },
+        {
+          "q": "Explain why the number of texts a person receives in a randomly chosen hour might reasonably be modeled by a Poisson distribution, but the number of texts received right around a pre-arranged deadline might not.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Conditions for a Poisson distribution",
+          "answer": "Texts received during a typical hour occur independently and at a roughly constant average rate, satisfying the Poisson conditions. Texts clustered around a pre-arranged deadline (e.g. everyone replying just before a cutoff) violate the constant-rate and independence assumptions, since there is a systematic surge rather than random, uniform occurrence.",
+          "explanation": "Texts received during a typical hour occur independently and at a roughly constant average rate, satisfying the Poisson conditions. Texts clustered around a pre-arranged deadline (e.g. everyone replying just before a cutoff) violate the constant-rate and independence assumptions, since there is a systematic surge rather than random, uniform occurrence.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (0))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -1.0,
+                "label": "$(0,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A shop receives an average of $3$ customers per minute, modeled by $X\\sim\\mathrm{Po}(3)$. Find $P(X=5)$, to three decimal places.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Computing Poisson probabilities",
+          "answer": "$P(X=5)=\\frac{e^{-3}3^5}{5!}=\\frac{(0.049787)(243)}{120}\\approx0.101$.",
+          "explanation": "$P(X=5)=\\frac{e^{-3}3^5}{5!}=\\frac{(0.049787)(243)}{120}\\approx0.101$."
+        },
+        {
+          "q": "Using the same shop, find $P(X=1)$, to three decimal places.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Computing Poisson probabilities",
+          "answer": "$P(X=1)=3e^{-3}\\approx3(0.049787)\\approx0.149$.",
+          "explanation": "$P(X=1)=3e^{-3}\\approx3(0.049787)\\approx0.149$."
+        },
+        {
+          "q": "Using the same shop, find $P(X\\leq2)$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Computing Poisson probabilities",
+          "answer": "$P(X=0)=e^{-3}\\approx0.0498$. $P(X=1)\\approx0.1494$. $P(X=2)=\\frac{9e^{-3}}{2}\\approx0.2240$. Sum: $P(X\\leq2)\\approx0.423$.",
+          "explanation": "$P(X=0)=e^{-3}\\approx0.0498$. $P(X=1)\\approx0.1494$. $P(X=2)=\\frac{9e^{-3}}{2}\\approx0.2240$. Sum: $P(X\\leq2)\\approx0.423$."
+        },
+        {
+          "q": "State the mean and variance of $X\\sim\\mathrm{Po}(\\lambda)$, and find the standard deviation when $\\lambda=9$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Mean and variance of a Poisson distribution",
+          "answer": "$E(X)=\\lambda$ and $\\mathrm{Var}(X)=\\lambda$ — both equal $\\lambda$, unlike most other distributions where mean and variance are independent parameters. When $\\lambda=9$: standard deviation $=\\sqrt{9}=3$.",
+          "explanation": "$E(X)=\\lambda$ and $\\mathrm{Var}(X)=\\lambda$ — both equal $\\lambda$, unlike most other distributions where mean and variance are independent parameters. When $\\lambda=9$: standard deviation $=\\sqrt{9}=3$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4*exp(-0.5*x**2)"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -0.4,
+            "ymax": 4.6,
+            "shade": {
+              "fn1": "4*exp(-0.5*x**2)",
+              "fn2": "0",
+              "x0": -1.96,
+              "x1": 1.96
+            },
+            "point_labels": [
+              {
+                "x": 1.96,
+                "y": 0.59,
+                "label": "$z=1.96$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A random variable $X\\sim\\mathrm{Po}(7)$. State $E(X)$, $\\mathrm{Var}(X)$, and the standard deviation, to three decimal places.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Mean and variance of a Poisson distribution",
+          "answer": "$E(X)=7$, $\\mathrm{Var}(X)=7$, standard deviation $=\\sqrt{7}\\approx2.646$.",
+          "explanation": "$E(X)=7$, $\\mathrm{Var}(X)=7$, standard deviation $=\\sqrt{7}\\approx2.646$."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Two independent Poisson processes have rates $\\lambda_1=4$ and $\\lambda_2=6$ per hour. State the distribution of the total number of events, and find its mean and variance.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Sums of independent Poisson variables",
+          "answer": "The sum of independent Poisson variables is itself Poisson: total $\\sim\\mathrm{Po}(4+6)=\\mathrm{Po}(10)$. Mean $=10$; variance $=10$.",
+          "explanation": "The sum of independent Poisson variables is itself Poisson: total $\\sim\\mathrm{Po}(4+6)=\\mathrm{Po}(10)$. Mean $=10$; variance $=10$."
+        },
+        {
+          "q": "Three independent Poisson processes have rates $\\lambda_1=2$, $\\lambda_2=4$, $\\lambda_3=5$ per hour. Find the mean and variance of the total number of events across all three processes in one hour.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Sums of independent Poisson variables",
+          "answer": "Total $\\sim\\mathrm{Po}(2+4+5)=\\mathrm{Po}(11)$. Mean $=11$; variance $=11$.",
+          "explanation": "Total $\\sim\\mathrm{Po}(2+4+5)=\\mathrm{Po}(11)$. Mean $=11$; variance $=11$."
+        },
+        {
+          "q": "Explain the conditions under which a binomial distribution $X\\sim B(n,p)$ can be well-approximated by a Poisson distribution, and state the value of $\\lambda$ to use.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Poisson as an approximation to the binomial",
+          "answer": "The approximation is appropriate when $n$ is large and $p$ is small (a common guideline: $n>50$ and $np<5$), so events are rare relative to the number of trials. Then $X$ is approximately $\\mathrm{Po}(\\lambda)$ with $\\lambda=np$.",
+          "explanation": "The approximation is appropriate when $n$ is large and $p$ is small (a common guideline: $n>50$ and $np<5$), so events are rare relative to the number of trials. Then $X$ is approximately $\\mathrm{Po}(\\lambda)$ with $\\lambda=np$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A factory produces $2000$ items, each independently defective with probability $0.0025$. Using the Poisson approximation, find the probability that exactly $2$ items are defective, to three decimal places.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Poisson as an approximation to the binomial",
+          "answer": "$\\lambda=np=2000(0.0025)=5$. $P(X=2)=\\frac{e^{-5}5^2}{2!}=\\frac{(0.006738)(25)}{2}\\approx0.084$.",
+          "explanation": "$\\lambda=np=2000(0.0025)=5$. $P(X=2)=\\frac{e^{-5}5^2}{2!}=\\frac{(0.006738)(25)}{2}\\approx0.084$."
+        },
+        {
+          "q": "A survey mails $5000$ questionnaires, each independently containing a printing error with probability $0.0006$. Using the Poisson approximation, find the probability that no questionnaires contain an error, to four decimal places.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Poisson as an approximation to the binomial",
+          "answer": "$\\lambda=np=5000(0.0006)=3$. $P(X=0)=e^{-3}\\approx0.0498$.",
+          "explanation": "$\\lambda=np=5000(0.0006)=3$. $P(X=0)=e^{-3}\\approx0.0498$."
+        },
+        {
+          "q": "A call center receives calls at $\\lambda=6$ per 10-minute interval. Find the probability of receiving more than $3$ calls, given $P(X=0)\\approx0.00248$, $P(X=1)\\approx0.01487$, $P(X=2)\\approx0.04462$, $P(X=3)\\approx0.08924$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Using cumulative Poisson probabilities",
+          "answer": "$P(X>3)=1-\\left[P(X=0)+P(X=1)+P(X=2)+P(X=3)\\right]=1-0.15121\\approx0.849$.",
+          "explanation": "$P(X>3)=1-\\left[P(X=0)+P(X=1)+P(X=2)+P(X=3)\\right]=1-0.15121\\approx0.849$."
+        },
+        {
+          "q": "A website receives visitors at $\\lambda=4$ per minute. Find $P(1\\leq X\\leq3)$, given $P(X=0)\\approx0.0183$, $P(X=1)\\approx0.0733$, $P(X=2)\\approx0.1465$, $P(X=3)\\approx0.1954$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Using cumulative Poisson probabilities",
+          "answer": "$P(1\\leq X\\leq3)=P(X=1)+P(X=2)+P(X=3)=0.0733+0.1465+0.1954\\approx0.415$.",
+          "explanation": "$P(1\\leq X\\leq3)=P(X=1)+P(X=2)+P(X=3)=0.0733+0.1465+0.1954\\approx0.415$."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "A random variable $X\\sim\\mathrm{Po}(\\lambda)$ satisfies $P(X=0)=0.0498$. Find $\\lambda$, to the nearest whole number.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Finding an unknown parameter",
+          "cross_lesson": "13.01 Continuous Random Variables",
+          "answer": "$e^{-\\lambda}=0.0498\\Rightarrow-\\lambda=\\ln(0.0498)\\approx-3.00\\Rightarrow\\lambda\\approx3$.",
+          "explanation": "$e^{-\\lambda}=0.0498\\Rightarrow-\\lambda=\\ln(0.0498)\\approx-3.00\\Rightarrow\\lambda\\approx3$."
+        },
+        {
+          "q": "A random variable $X\\sim\\mathrm{Po}(\\lambda)$ has standard deviation $2$. Find $\\lambda$, and then find $P(X=\\lambda)$, to three decimal places.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Finding an unknown parameter",
+          "cross_lesson": "14.01 Sampling & Estimation",
+          "answer": "Since variance $=\\lambda$ and standard deviation $=\\sqrt{\\lambda}=2$, $\\lambda=4$. $P(X=4)=\\frac{e^{-4}4^4}{4!}=\\frac{(0.018316)(256)}{24}\\approx0.195$.",
+          "explanation": "Since variance $=\\lambda$ and standard deviation $=\\sqrt{\\lambda}=2$, $\\lambda=4$. $P(X=4)=\\frac{e^{-4}4^4}{4!}=\\frac{(0.018316)(256)}{24}\\approx0.195$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4*exp(-0.5*x**2)"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -0.4,
+            "ymax": 4.6,
+            "shade": {
+              "fn1": "4*exp(-0.5*x**2)",
+              "fn2": "0",
+              "x0": -1.96,
+              "x1": 1.96
+            },
+            "point_labels": [
+              {
+                "x": 1.96,
+                "y": 0.59,
+                "label": "$z=1.96$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A random variable $X\\sim\\mathrm{Po}(\\lambda)$ satisfies $P(X=1)=0.1494$, where $\\lambda$ is a whole number less than $5$. Using $P(X=1)=\\lambda e^{-\\lambda}$, determine $\\lambda$ by trial.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Finding an unknown parameter",
+          "cross_lesson": "15.01 Hypothesis Testing",
+          "answer": "Testing $\\lambda=3$: $3e^{-3}=3(0.049787)\\approx0.1494$ ✓, matching the given probability. So $\\lambda=3$.",
+          "explanation": "Testing $\\lambda=3$: $3e^{-3}=3(0.049787)\\approx0.1494$ ✓, matching the given probability. So $\\lambda=3$."
+        },
+        {
+          "q": "Machine faults occur at an average rate of $\\lambda=2$ per day. Find the probability that exactly $2$ faults occur today, given that at least one fault occurs today, to three decimal places, using $P(X=0)\\approx0.1353$ and $P(X=2)\\approx0.2707$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Poisson processes over different intervals and conditional probability",
+          "cross_lesson": "2.01 Exponentials & Logarithms",
+          "answer": "$P(X\\geq1)=1-P(X=0)=1-0.1353=0.8647$. Conditional probability: $P(X=2\\mid X\\geq1)=\\frac{0.2707}{0.8647}\\approx0.313$.",
+          "explanation": "$P(X\\geq1)=1-P(X=0)=1-0.1353=0.8647$. Conditional probability: $P(X=2\\mid X\\geq1)=\\frac{0.2707}{0.8647}\\approx0.313$."
+        },
+        {
+          "q": "A radioactive source emits particles at a rate of $\\lambda=1.2$ per second, modeled by a Poisson distribution. Find $P(X=2)$ for a 3-second interval, to three decimal places, using the fact that the parameter scales with the length of the interval.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Poisson processes over different intervals and conditional probability",
+          "cross_lesson": "3.01 Advanced Trigonometry",
+          "answer": "For a $3$-second interval, $\\lambda=1.2\\times3=3.6$. $P(X=2)=\\frac{e^{-3.6}(3.6)^2}{2!}=\\frac{(0.027324)(12.96)}{2}\\approx0.177$.",
+          "explanation": "For a $3$-second interval, $\\lambda=1.2\\times3=3.6$. $P(X=2)=\\frac{e^{-3.6}(3.6)^2}{2!}=\\frac{(0.027324)(12.96)}{2}\\approx0.177$."
+        },
+        {
+          "q": "This question has four parts. Faulty caps occur at random in bottling cases with an average rate of $\\lambda=1.5$ per case. (a) Find $P(X=0)$ and $P(X=1)$ for a randomly selected case, to four decimal places. (b) Find the probability that a case has at least $2$ faulty caps. (c) The plant inspects $40$ cases per day. Using the fact that a sum of independent Poisson variables is itself Poisson, state the distribution of the total number of faulty caps found across all $40$ cases in a day, and find its mean. (d) Since this total has a large $\\lambda$, it can be approximated by $N(\\lambda,\\lambda)$. Using a continuity correction and $\\Phi(1.36)\\approx0.9131$, estimate the probability that more than $70$ faulty caps are found in a day.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "A well-designed word problem: quality control at a bottling plant",
+          "cross_lesson": "4.01 Differentiation",
+          "answer": "(a) $P(X=0)=e^{-1.5}\\approx0.2231$. $P(X=1)=1.5e^{-1.5}\\approx0.3347$. (b) $P(X\\geq2)=1-0.2231-0.3347\\approx0.4422$. (c) Total $\\sim\\mathrm{Po}(40\\times1.5)=\\mathrm{Po}(60)$, with mean $60$. (d) Using $N(60,60)$ with $\\sigma=\\sqrt{60}\\approx7.746$, and a continuity correction for \"more than $70$\" (i.e. $\\geq71$): $z=\\frac{70.5-60}{7.746}\\approx1.36$. $P(\\mathrm{total}>70)\\approx1-\\Phi(1.36)\\approx1-0.9131\\approx0.087$.",
+          "explanation": "(a) $P(X=0)=e^{-1.5}\\approx0.2231$. $P(X=1)=1.5e^{-1.5}\\approx0.3347$. (b) $P(X\\geq2)=1-0.2231-0.3347\\approx0.4422$. (c) Total $\\sim\\mathrm{Po}(40\\times1.5)=\\mathrm{Po}(60)$, with mean $60$. (d) Using $N(60,60)$ with $\\sigma=\\sqrt{60}\\approx7.746$, and a continuity correction for \"more than $70$\" (i.e. $\\geq71$): $z=\\frac{70.5-60}{7.746}\\approx1.36$. $P(\\mathrm{total}>70)\\approx1-\\Phi(1.36)\\approx1-0.9131\\approx0.087$."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+      "questions": [
+        {
+          "q": "Which of the following is NOT an essential assumption for modeling a random variable with a Poisson distribution $\\mathrm{Po}(\\lambda)$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Poisson Probability Formula & Conditions",
           "choices": [
             "Events occur at a variable rate over time",
             "Events occur singly and independently",
@@ -16,10 +287,14 @@
             "Two events cannot occur at the exact same instant"
           ],
           "correct": 0,
-          "answer": "In a Poisson process, events must occur at a constant average rate, independently, at random, and singly."
+          "answer": "In a Poisson process, events must occur at a constant average rate, independently, at random, and singly.",
+          "explanation": "In a Poisson process, events must occur at a constant average rate, independently, at random, and singly."
         },
         {
-          "q": "The random variable $X \\sim \\text{Po}(3.2)$. Find $P(X = 2)$ correct to 4 decimal places.",
+          "q": "The random variable $X \\sim \\mathrm{Po}(3.2)$. Find $P(X = 2)$ correct to 4 decimal places.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Poisson Probability Formula & Conditions",
           "choices": [
             "$0.2087$",
             "$0.2226$",
@@ -27,10 +302,14 @@
             "$0.1450$"
           ],
           "correct": 0,
-          "answer": "$P(X = 2) = \\frac{e^{-3.2} (3.2)^2}{2!} = \\frac{0.0407622 \\times 10.24}{2} = 0.2087$."
+          "answer": "$P(X = 2) = \\frac{e^{-3.2} (3.2)^2}{2!} = \\frac{0.0407622 \\times 10.24}{2} = 0.2087$.",
+          "explanation": "$P(X = 2) = \\frac{e^{-3.2} (3.2)^2}{2!} = \\frac{0.0407622 \\times 10.24}{2} = 0.2087$."
         },
         {
-          "q": "If $X \\sim \\text{Po}(\\lambda)$ and $P(X = 0) = 0.05$, find the value of $\\lambda$.",
+          "q": "If $X \\sim \\mathrm{Po}(\\lambda)$ and $P(X = 0) = 0.05$, find the value of $\\lambda$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Poisson Probability Formula & Conditions",
           "choices": [
             "$\\lambda = -\\ln(0.05) \\approx 2.996$",
             "$\\lambda = 0.05$",
@@ -38,37 +317,63 @@
             "$\\lambda = 20$"
           ],
           "correct": 0,
-          "answer": "$P(X = 0) = e^{-\\lambda} = 0.05 \\Rightarrow -\\lambda = \\ln(0.05) \\Rightarrow \\lambda = -\\ln(0.05) \\approx 2.996$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Mean, Variance & Linear Combinations",
-      "questions": [
-        {
-          "q": "What is the theoretical relationship between the mean and variance of a Poisson distribution $X \\sim \\text{Po}(\\lambda)$?",
-          "choices": [
-            "Mean $= \\text{Variance} = \\lambda$",
-            "Mean $= \\lambda, \\text{Variance} = \\lambda^2$",
-            "Mean $= \\lambda, \\text{Variance} = \\sqrt{\\lambda}$",
-            "Mean $= \\lambda, \\text{Variance} = \\lambda(1 - p)$"
-          ],
-          "correct": 0,
-          "answer": "A defining property of the Poisson distribution is that its mean and variance are equal: $E(X) = \\text{Var}(X) = \\lambda$."
+          "answer": "$P(X = 0) = e^{-\\lambda} = 0.05 \\Rightarrow -\\lambda = \\ln(0.05) \\Rightarrow \\lambda = -\\ln(0.05) \\approx 2.996$.",
+          "explanation": "$P(X = 0) = e^{-\\lambda} = 0.05 \\Rightarrow -\\lambda = \\ln(0.05) \\Rightarrow \\lambda = -\\ln(0.05) \\approx 2.996$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (0))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -2.0,
+                "label": "$(0,-2)$"
+              }
+            ],
+            "width": 230
+          }
         },
         {
-          "q": "Independent random variables $X \\sim \\text{Po}(2)$ and $Y \\sim \\text{Po}(3)$ represent customer arrivals. What distribution does $X + Y$ follow?",
+          "q": "What is the theoretical relationship between the mean and variance of a Poisson distribution $X \\sim \\mathrm{Po}(\\lambda)$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Mean, Variance & Linear Combinations",
           "choices": [
-            "$\\text{Po}(5)$",
-            "$\\text{Po}(6)$",
-            "$\\text{Po}(2.5)$",
+            "Mean $= \\mathrm{Variance} = \\lambda$",
+            "Mean $= \\lambda, \\mathrm{Variance} = \\lambda^2$",
+            "Mean $= \\lambda, \\mathrm{Variance} = \\sqrt{\\lambda}$",
+            "Mean $= \\lambda, \\mathrm{Variance} = \\lambda(1 - p)$"
+          ],
+          "correct": 0,
+          "answer": "A defining property of the Poisson distribution is that its mean and variance are equal: $E(X) = \\mathrm{Var}(X) = \\lambda$.",
+          "explanation": "A defining property of the Poisson distribution is that its mean and variance are equal: $E(X) = \\mathrm{Var}(X) = \\lambda$."
+        },
+        {
+          "q": "Independent random variables $X \\sim \\mathrm{Po}(2)$ and $Y \\sim \\mathrm{Po}(3)$ represent customer arrivals. What distribution does $X + Y$ follow?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Mean, Variance & Linear Combinations",
+          "choices": [
+            "$\\mathrm{Po}(5)$",
+            "$\\mathrm{Po}(6)$",
+            "$\\mathrm{Po}(2.5)$",
             "$N(5, 5)$"
           ],
           "correct": 0,
-          "answer": "The sum of independent Poisson variables is also Poisson: $X + Y \\sim \\text{Po}(\\lambda_X + \\lambda_Y) = \\text{Po}(2 + 3) = \\text{Po}(5)$."
+          "answer": "The sum of independent Poisson variables is also Poisson: $X + Y \\sim \\mathrm{Po}(\\lambda_X + \\lambda_Y) = \\mathrm{Po}(2 + 3) = \\mathrm{Po}(5)$.",
+          "explanation": "The sum of independent Poisson variables is also Poisson: $X + Y \\sim \\mathrm{Po}(\\lambda_X + \\lambda_Y) = \\mathrm{Po}(2 + 3) = \\mathrm{Po}(5)$."
         },
         {
           "q": "Faults on a fiber optic cable occur at an average rate of 0.4 per kilometer. What is the probability of finding exactly 1 fault in a 5-kilometer section?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Mean, Variance & Linear Combinations",
           "choices": [
             "$0.2707$",
             "$0.4000$",
@@ -76,15 +381,14 @@
             "$0.3250$"
           ],
           "correct": 0,
-          "answer": "Rate for 5 km is $\\lambda = 0.4 \\times 5 = 2.0$. Then $P(X = 1) = \\frac{e^{-2} (2)^1}{1!} = 2e^{-2} = 2(0.135335) \\approx 0.2707$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Poisson Approximation to the Binomial",
-      "questions": [
+          "answer": "Rate for 5 km is $\\lambda = 0.4 \\times 5 = 2.0$. Then $P(X = 1) = \\frac{e^{-2} (2)^1}{1!} = 2e^{-2} = 2(0.135335) \\approx 0.2707$.",
+          "explanation": "Rate for 5 km is $\\lambda = 0.4 \\times 5 = 2.0$. Then $P(X = 1) = \\frac{e^{-2} (2)^1}{1!} = 2e^{-2} = 2(0.135335) \\approx 0.2707$."
+        },
         {
           "q": "Under which conditions can a binomial distribution $B(n, p)$ be well approximated by a Poisson distribution?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Poisson Approximation to the Binomial",
           "choices": [
             "$n > 50$ and $np < 5$",
             "$n > 30$ and $p = 0.5$",
@@ -92,10 +396,14 @@
             "$n < 20$ and $p > 0.1$"
           ],
           "correct": 0,
-          "answer": "The Poisson approximation to the binomial is appropriate when the number of trials $n$ is large ($n > 50$) and the probability of success $p$ is small ($np < 5$), with parameter $\\lambda = np$."
+          "answer": "The Poisson approximation to the binomial is appropriate when the number of trials $n$ is large ($n > 50$) and the probability of success $p$ is small ($np < 5$), with parameter $\\lambda = np$.",
+          "explanation": "The Poisson approximation to the binomial is appropriate when the number of trials $n$ is large ($n > 50$) and the probability of success $p$ is small ($np < 5$), with parameter $\\lambda = np$."
         },
         {
           "q": "A book of 400 pages contains 200 typographical errors distributed at random. Use a Poisson approximation to find the probability that a randomly chosen page contains no errors.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Poisson Approximation to the Binomial",
           "choices": [
             "$e^{-0.5} \\approx 0.6065$",
             "$0.5000$",
@@ -103,10 +411,38 @@
             "$0.7500$"
           ],
           "correct": 0,
-          "answer": "Average errors per page $\\lambda = 200/400 = 0.5$. $P(X = 0) = e^{-0.5} \\approx 0.6065$."
-        },
+          "answer": "Average errors per page $\\lambda = 200/400 = 0.5$. $P(X = 0) = e^{-0.5} \\approx 0.6065$.",
+          "explanation": "Average errors per page $\\lambda = 200/400 = 0.5$. $P(X = 0) = e^{-0.5} \\approx 0.6065$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
         {
           "q": "A factory produces screws, of which 1% are defective. In a random sample of 250 screws, what is the Poisson parameter $\\lambda$ to model defective screws?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Poisson Approximation to the Binomial",
           "choices": [
             "$\\lambda = 2.5$",
             "$\\lambda = 0.01$",
@@ -114,15 +450,14 @@
             "$\\lambda = 5$"
           ],
           "correct": 0,
-          "answer": "$\\lambda = np = 250 \\times 0.01 = 2.5$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Normal Approximation to the Poisson Distribution",
-      "questions": [
+          "answer": "$\\lambda = np = 250 \\times 0.01 = 2.5$.",
+          "explanation": "$\\lambda = np = 250 \\times 0.01 = 2.5$."
+        },
         {
-          "q": "Under what condition can a Poisson distribution $X \\sim \\text{Po}(\\lambda)$ be approximated by a normal distribution?",
+          "q": "Under what condition can a Poisson distribution $X \\sim \\mathrm{Po}(\\lambda)$ be approximated by a normal distribution?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Normal Approximation to the Poisson Distribution",
           "choices": [
             "$\\lambda > 15$",
             "$\\lambda < 5$",
@@ -130,10 +465,14 @@
             "$\\lambda > 100$ only"
           ],
           "correct": 0,
-          "answer": "When $\\lambda > 15$, the distribution is sufficiently symmetric to be approximated by $N(\\lambda, \\lambda)$."
+          "answer": "When $\\lambda > 15$, the distribution is sufficiently symmetric to be approximated by $N(\\lambda, \\lambda)$.",
+          "explanation": "When $\\lambda > 15$, the distribution is sufficiently symmetric to be approximated by $N(\\lambda, \\lambda)$."
         },
         {
-          "q": "If $X \\sim \\text{Po}(36)$, which normal distribution provides the best approximation?",
+          "q": "If $X \\sim \\mathrm{Po}(36)$, which normal distribution provides the best approximation?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Normal Approximation to the Poisson Distribution",
           "choices": [
             "$N(36, 36)$ with mean 36 and variance 36",
             "$N(36, 6)$",
@@ -141,10 +480,14 @@
             "$N(36, 18)$"
           ],
           "correct": 0,
-          "answer": "Since mean and variance of $\\text{Po}(\\lambda)$ are both $\\lambda$, the approximating normal distribution is $N(\\lambda, \\lambda) = N(36, 36)$."
+          "answer": "Since mean and variance of $\\mathrm{Po}(\\lambda)$ are both $\\lambda$, the approximating normal distribution is $N(\\lambda, \\lambda) = N(36, 36)$.",
+          "explanation": "Since mean and variance of $\\mathrm{Po}(\\lambda)$ are both $\\lambda$, the approximating normal distribution is $N(\\lambda, \\lambda) = N(36, 36)$."
         },
         {
-          "q": "For $X \\sim \\text{Po}(36)$, use the normal approximation with continuity correction to state the calculation for $P(X \\leq 40)$.",
+          "q": "For $X \\sim \\mathrm{Po}(36)$, use the normal approximation with continuity correction to state the calculation for $P(X \\leq 40)$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Normal Approximation to the Poisson Distribution",
           "choices": [
             "$P(Y < 40.5)$ where $Y \\sim N(36, 36)$",
             "$P(Y < 40)$ where $Y \\sim N(36, 36)$",
@@ -152,7 +495,278 @@
             "$P(Y < 41)$ where $Y \\sim N(36, 6)$"
           ],
           "correct": 0,
-          "answer": "For discrete $X \\leq 40$, the continuity correction extends to the upper boundary $40.5$: $P(Y < 40.5)$."
+          "answer": "For discrete $X \\leq 40$, the continuity correction extends to the upper boundary $40.5$: $P(Y < 40.5)$.",
+          "explanation": "For discrete $X \\leq 40$, the continuity correction extends to the upper boundary $40.5$: $P(Y < 40.5)$."
+        },
+        {
+          "q": "Two independent random samples, each of size $n$, are taken from a normal population with mean $\\mu$ and known standard deviation $\\sigma$. From each sample, a symmetric $90\\%$ confidence interval for $\\mu$ is constructed. Given that $\\Phi(1.645) = 0.9500$ and $\\Phi(2.326) = 0.9900$, where $\\Phi$ denotes the standard normal cumulative distribution function, find the probability that these two confidence intervals overlap.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Normal Approximation to the Poisson Distribution",
+          "choices": [
+            "0.980",
+            "0.900",
+            "0.810",
+            "0.990"
+          ],
+          "correct": 0,
+          "answer": "1. **Margin of error for each confidence interval:** For a symmetric $90\\%$ confidence interval with known $\\sigma$, the critical value is $z = 1.645$. Each interval has half-width: $E = 1.645\\frac{\\sigma}{\\sqrt{n}}$ The two intervals are $I_1 = [\\bar{X}_1 - E, \\bar{X}_1 + E]$ and $I_2 = [\\bar{X}_2 - E, \\bar{X}_2 + E]$. 2. **Condition for interval overlap:** Two intervals of identical half-width $E$ overlap if and only if the distance between their centres does not exceed the sum of their half-widths: $|\\bar{X}_1 - \\bar{X}_2| \\leq 2E = 2(1.645)\\frac{\\sigma}{\\sqrt{n}}$ 3. **Distribution of the difference between sample means:** Since $\\bar{X}_1 \\sim N\\left(\\mu, \\frac{\\sigma^2}{n}\\right)$ and $\\bar{X}_2 \\sim N\\left(\\mu, \\frac{\\sigma^2}{n}\\right)$ are independent: $D = \\bar{X}_1 - \\bar{X}_2 \\sim N\\left(0, \\frac{\\sigma^2}{n} + \\frac{\\sigma^2}{n}\\right) = N\\left(0, \\frac{2\\sigma^2}{n}\\right)$ The standard deviation of $D$ is $\\sigma_D = \\sqrt{\\frac{2\\sigma^2}{n}} = \\frac{\\sigma\\sqrt{2}}{\\sqrt{n}}$. 4. **Standardization and probability calculation:** $P(|D| \\leq 2E) = P\\left(|Z| \\leq \\frac{2(1.645)\\frac{\\sigma}{\\sqrt{n}}}{\\sqrt{2}\\frac{\\sigma}{\\sqrt{n}}}\\right) = P(|Z| \\leq 1.645\\sqrt{2})$ Evaluating the boundary: $1.645\\sqrt{2} \\approx 1.645 \\times 1.41421 \\approx 2.326$ Using the symmetry of the standard normal distribution: $P(|Z| \\leq 2.326) = 2\\Phi(2.326) - 1 = 2(0.9900) - 1 = 1.9800 - 1 = 0.980$ **Common Misconceptions:** - **0.900:** Mistakenly assuming the probability of overlap equals the confidence level of a single interval. - **0.810:** Assuming the intervals overlap only when both contain $\\mu$, giving $0.90 \\times 0.90 = 0.810$. While both containing $\\mu$ is sufficient, intervals can also overlap without containing $\\mu$. - **0.990:** Computing the probability that at least one interval contains $\\mu$ ($1 - 0.10^2 = 0.990$) or reading $\\Phi(2.326)$ without subtracting the lower tail.",
+          "explanation": "1. **Margin of error for each confidence interval:** For a symmetric $90\\%$ confidence interval with known $\\sigma$, the critical value is $z = 1.645$. Each interval has half-width: $E = 1.645\\frac{\\sigma}{\\sqrt{n}}$ The two intervals are $I_1 = [\\bar{X}_1 - E, \\bar{X}_1 + E]$ and $I_2 = [\\bar{X}_2 - E, \\bar{X}_2 + E]$. 2. **Condition for interval overlap:** Two intervals of identical half-width $E$ overlap if and only if the distance between their centres does not exceed the sum of their half-widths: $|\\bar{X}_1 - \\bar{X}_2| \\leq 2E = 2(1.645)\\frac{\\sigma}{\\sqrt{n}}$ 3. **Distribution of the difference between sample means:** Since $\\bar{X}_1 \\sim N\\left(\\mu, \\frac{\\sigma^2}{n}\\right)$ and $\\bar{X}_2 \\sim N\\left(\\mu, \\frac{\\sigma^2}{n}\\right)$ are independent: $D = \\bar{X}_1 - \\bar{X}_2 \\sim N\\left(0, \\frac{\\sigma^2}{n} + \\frac{\\sigma^2}{n}\\right) = N\\left(0, \\frac{2\\sigma^2}{n}\\right)$ The standard deviation of $D$ is $\\sigma_D = \\sqrt{\\frac{2\\sigma^2}{n}} = \\frac{\\sigma\\sqrt{2}}{\\sqrt{n}}$. 4. **Standardization and probability calculation:** $P(|D| \\leq 2E) = P\\left(|Z| \\leq \\frac{2(1.645)\\frac{\\sigma}{\\sqrt{n}}}{\\sqrt{2}\\frac{\\sigma}{\\sqrt{n}}}\\right) = P(|Z| \\leq 1.645\\sqrt{2})$ Evaluating the boundary: $1.645\\sqrt{2} \\approx 1.645 \\times 1.41421 \\approx 2.326$ Using the symmetry of the standard normal distribution: $P(|Z| \\leq 2.326) = 2\\Phi(2.326) - 1 = 2(0.9900) - 1 = 1.9800 - 1 = 0.980$ **Common Misconceptions:** - **0.900:** Mistakenly assuming the probability of overlap equals the confidence level of a single interval. - **0.810:** Assuming the intervals overlap only when both contain $\\mu$, giving $0.90 \\times 0.90 = 0.810$. While both containing $\\mu$ is sufficient, intervals can also overlap without containing $\\mu$. - **0.990:** Computing the probability that at least one interval contains $\\mu$ ($1 - 0.10^2 = 0.990$) or reading $\\Phi(2.326)$ without subtracting the lower tail.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "4*exp(-0.5*x**2)"
+            ],
+            "xmin": -3.5,
+            "xmax": 3.5,
+            "ymin": -0.4,
+            "ymax": 4.6,
+            "shade": {
+              "fn1": "4*exp(-0.5*x**2)",
+              "fn2": "0",
+              "x0": -1.65,
+              "x1": 1.65
+            },
+            "point_labels": [
+              {
+                "x": 1.65,
+                "y": 1.03,
+                "label": "$z=1.65$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Flaws in an optical fiber occur according to a Poisson process with a constant mean rate of $\\lambda$ flaws per kilometer. An automated quality-assurance test inspects two independent sections of fiber. The first section has length $1\\mathrm{\\ km}$ and the second section has length $2\\mathrm{\\ km}$. Let $X$ and $Y$ denote the number of flaws observed in the first and second sections, respectively. Given that the total number of flaws observed across both sections is $X + Y = 3$, find the conditional probability $\\mathrm{P}(X \\geq 1 \\mid X + Y = 3)$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Conditions for a Poisson distribution",
+          "choices": [
+            "$\\frac{19}{27}$",
+            "$\\frac{8}{27}$",
+            "$\\frac{7}{8}$",
+            "$\\frac{2}{3}$"
+          ],
+          "correct": 0,
+          "answer": "Let $X \\sim \\mathrm{Po}(\\lambda)$ and $Y \\sim \\mathrm{Po}(2\\lambda)$ be independent Poisson random variables. The sum $T = X + Y$ follows a Poisson distribution with parameter $\\lambda + 2\\lambda = 3\\lambda$. The conditional distribution of $X$ given $X + Y = n$ is binomial $\\mathrm{B}\\left(n, \\frac{\\lambda}{\\lambda + 2\\lambda}\\right) = \\mathrm{B}\\left(n, \\frac{1}{3}\\right)$. Here, $n = 3$, so $X \\mid (X + Y = 3) \\sim \\mathrm{B}\\left(3, \\frac{1}{3}\\right)$. We want to find: $\\mathrm{P}(X \\geq 1 \\mid X + Y = 3) = 1 - \\mathrm{P}(X = 0 \\mid X + Y = 3)$ Using the conditional formula directly: $\\mathrm{P}(X = 0 \\mid X + Y = 3) = \\frac{\\mathrm{P}(X = 0 \\cap Y = 3)}{\\mathrm{P}(X + Y = 3)} = \\frac{\\left(e^{-\\lambda}\\right) \\left(\\frac{(2\\lambda)^3 e^{-2\\lambda}}{3!}\\right)}{\\frac{(3\\lambda)^3 e^{-3\\lambda}}{3!}} = \\frac{2^3}{3^3} = \\frac{8}{27}$ Therefore: $\\mathrm{P}(X \\geq 1 \\mid X + Y = 3) = 1 - \\frac{8}{27} = \\frac{19}{27}$ Common errors: - Calculating $\\mathrm{P}(X = 0 \\mid X+Y=3) = \\frac{8}{27}$ and forgetting to subtract from 1. - Assuming equal lengths, which gives $1 - \\left(\\frac{1}{2}\\right)^3 = \\frac{7}{8}$. - Taking the proportion of length $\\frac{1}{1+2} = \\frac{1}{3}$ and subtracting from 1 to obtain $\\frac{2}{3}$.",
+          "explanation": "Let $X \\sim \\mathrm{Po}(\\lambda)$ and $Y \\sim \\mathrm{Po}(2\\lambda)$ be independent Poisson random variables. The sum $T = X + Y$ follows a Poisson distribution with parameter $\\lambda + 2\\lambda = 3\\lambda$. The conditional distribution of $X$ given $X + Y = n$ is binomial $\\mathrm{B}\\left(n, \\frac{\\lambda}{\\lambda + 2\\lambda}\\right) = \\mathrm{B}\\left(n, \\frac{1}{3}\\right)$. Here, $n = 3$, so $X \\mid (X + Y = 3) \\sim \\mathrm{B}\\left(3, \\frac{1}{3}\\right)$. We want to find: $\\mathrm{P}(X \\geq 1 \\mid X + Y = 3) = 1 - \\mathrm{P}(X = 0 \\mid X + Y = 3)$ Using the conditional formula directly: $\\mathrm{P}(X = 0 \\mid X + Y = 3) = \\frac{\\mathrm{P}(X = 0 \\cap Y = 3)}{\\mathrm{P}(X + Y = 3)} = \\frac{\\left(e^{-\\lambda}\\right) \\left(\\frac{(2\\lambda)^3 e^{-2\\lambda}}{3!}\\right)}{\\frac{(3\\lambda)^3 e^{-3\\lambda}}{3!}} = \\frac{2^3}{3^3} = \\frac{8}{27}$ Therefore: $\\mathrm{P}(X \\geq 1 \\mid X + Y = 3) = 1 - \\frac{8}{27} = \\frac{19}{27}$ Common errors: - Calculating $\\mathrm{P}(X = 0 \\mid X+Y=3) = \\frac{8}{27}$ and forgetting to subtract from 1. - Assuming equal lengths, which gives $1 - \\left(\\frac{1}{2}\\right)^3 = \\frac{7}{8}$. - Taking the proportion of length $\\frac{1}{1+2} = \\frac{1}{3}$ and subtracting from 1 to obtain $\\frac{2}{3}$."
+        },
+        {
+          "q": "A quality control protocol uses a two-stage hypothesis test to monitor the rate of flaws, $\\lambda$ per metre, in the production of high-grade optical fibre. The number of flaws in a length of fibre follows a Poisson distribution. The manufacturer tests: $H_0: \\lambda = 1 \\quad \\mathrm{against} \\quad H_1: \\lambda > 1.$ The two-stage procedure operates as follows: - **Stage 1:** A $1\\mathrm{-metre}$ sample is inspected, and the number of flaws $X_1$ is recorded. If $X_1 \\geq 3$, $H_0$ is rejected immediately. If $X_1 = 0$, $H_0$ is accepted immediately. If $X_1 \\in \\{1, 2\\}$, the test proceeds to Stage 2. - **Stage 2:** A second, independent $1\\mathrm{-metre}$ sample is inspected, and the number of flaws $X_2$ is recorded. If $X_1 + X_2 \\geq 4$, $H_0$ is rejected; otherwise, $H_0$ is accepted. Given that the true flaw rate is $\\lambda = 2$ per metre, find the probability that a Type II error is committed.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Computing Poisson probabilities",
+          "choices": [
+            "$\\mathrm{e}^{-2} + 16\\mathrm{e}^{-4} \\approx 0.428$",
+            "$16\\mathrm{e}^{-4} \\approx 0.293$",
+            "$4\\mathrm{e}^{-2} \\approx 0.541$",
+            "$1 - \\mathrm{e}^{-1} - \\frac{7}{2}\\mathrm{e}^{-2} \\approx 0.158$"
+          ],
+          "correct": 0,
+          "answer": "A Type II error occurs when $H_0$ is accepted despite the true parameter value being $\\lambda = 2$ (i.e. $H_1$ is true). Under $\\lambda = 2$, the independent counts $X_1, X_2 \\sim \\mathrm{Po}(2)$. The probability mass function is: $P(X = k) = \\frac{2^k \\mathrm{e}^{-2}}{k!}$ Specifically: $P(X = 0) = \\mathrm{e}^{-2}, \\quad P(X = 1) = 2\\mathrm{e}^{-2}, \\quad P(X = 2) = 2\\mathrm{e}^{-2}$ $H_0$ can be accepted in two mutually exclusive ways: 1. **In Stage 1:** $H_0$ is accepted immediately if $X_1 = 0$: $P(\\mathrm{Accept\\ in\\ Stage\\ 1}) = P(X_1 = 0) = \\mathrm{e}^{-2}$ 2. **In Stage 2:** The test enters Stage 2 if $X_1 \\in \\{1, 2\\}$. $H_0$ is then accepted if $X_1 + X_2 \\leq 3$: - If $X_1 = 1$, $H_0$ is accepted if $X_2 \\leq 2$: $P(X_2 \\leq 2) = P(X_2 = 0) + P(X_2 = 1) + P(X_2 = 2) = \\mathrm{e}^{-2} + 2\\mathrm{e}^{-2} + 2\\mathrm{e}^{-2} = 5\\mathrm{e}^{-2}$ $P(X_1 = 1 \\cap X_2 \\leq 2) = (2\\mathrm{e}^{-2})(5\\mathrm{e}^{-2}) = 10\\mathrm{e}^{-4}$ - If $X_1 = 2$, $H_0$ is accepted if $X_2 \\leq 1$: $P(X_2 \\leq 1) = P(X_2 = 0) + P(X_2 = 1) = \\mathrm{e}^{-2} + 2\\mathrm{e}^{-2} = 3\\mathrm{e}^{-2}$ $P(X_1 = 2 \\cap X_2 \\leq 1) = (2\\mathrm{e}^{-2})(3\\mathrm{e}^{-2}) = 6\\mathrm{e}^{-4}$ Combining these cases: $P(\\mathrm{Accept\\ in\\ Stage\\ 2}) = 10\\mathrm{e}^{-4} + 6\\mathrm{e}^{-4} = 16\\mathrm{e}^{-4}$ Therefore, the overall probability of a Type II error is: $P(\\mathrm{Type\\ II\\ error}) = \\mathrm{e}^{-2} + 16\\mathrm{e}^{-4} \\approx 0.135335 + 0.293050 = 0.428385 \\approx 0.428$ **Common Misconceptions:** - Choice B ($16\\mathrm{e}^{-4}$) accounts only for accepting $H_0$ at Stage 2 and omits immediate acceptance at Stage 1 ($X_1 = 0$). - Choice C ($4\\mathrm{e}^{-2}$) computes the conditional probability $P(\\mathrm{Accept\\ } H_0 \\mid \\mathrm{Stage\\ 2\\ is\\ reached}) = \\frac{16\\mathrm{e}^{-4}}{4\\mathrm{e}^{-2}} = 4\\mathrm{e}^{-2}$ instead of the unconditional probability of a Type II error. - Choice D computes the probability of a Type I error under $H_0$ (where $\\lambda = 1$).",
+          "explanation": "A Type II error occurs when $H_0$ is accepted despite the true parameter value being $\\lambda = 2$ (i.e. $H_1$ is true). Under $\\lambda = 2$, the independent counts $X_1, X_2 \\sim \\mathrm{Po}(2)$. The probability mass function is: $P(X = k) = \\frac{2^k \\mathrm{e}^{-2}}{k!}$ Specifically: $P(X = 0) = \\mathrm{e}^{-2}, \\quad P(X = 1) = 2\\mathrm{e}^{-2}, \\quad P(X = 2) = 2\\mathrm{e}^{-2}$ $H_0$ can be accepted in two mutually exclusive ways: 1. **In Stage 1:** $H_0$ is accepted immediately if $X_1 = 0$: $P(\\mathrm{Accept\\ in\\ Stage\\ 1}) = P(X_1 = 0) = \\mathrm{e}^{-2}$ 2. **In Stage 2:** The test enters Stage 2 if $X_1 \\in \\{1, 2\\}$. $H_0$ is then accepted if $X_1 + X_2 \\leq 3$: - If $X_1 = 1$, $H_0$ is accepted if $X_2 \\leq 2$: $P(X_2 \\leq 2) = P(X_2 = 0) + P(X_2 = 1) + P(X_2 = 2) = \\mathrm{e}^{-2} + 2\\mathrm{e}^{-2} + 2\\mathrm{e}^{-2} = 5\\mathrm{e}^{-2}$ $P(X_1 = 1 \\cap X_2 \\leq 2) = (2\\mathrm{e}^{-2})(5\\mathrm{e}^{-2}) = 10\\mathrm{e}^{-4}$ - If $X_1 = 2$, $H_0$ is accepted if $X_2 \\leq 1$: $P(X_2 \\leq 1) = P(X_2 = 0) + P(X_2 = 1) = \\mathrm{e}^{-2} + 2\\mathrm{e}^{-2} = 3\\mathrm{e}^{-2}$ $P(X_1 = 2 \\cap X_2 \\leq 1) = (2\\mathrm{e}^{-2})(3\\mathrm{e}^{-2}) = 6\\mathrm{e}^{-4}$ Combining these cases: $P(\\mathrm{Accept\\ in\\ Stage\\ 2}) = 10\\mathrm{e}^{-4} + 6\\mathrm{e}^{-4} = 16\\mathrm{e}^{-4}$ Therefore, the overall probability of a Type II error is: $P(\\mathrm{Type\\ II\\ error}) = \\mathrm{e}^{-2} + 16\\mathrm{e}^{-4} \\approx 0.135335 + 0.293050 = 0.428385 \\approx 0.428$ **Common Misconceptions:** - Choice B ($16\\mathrm{e}^{-4}$) accounts only for accepting $H_0$ at Stage 2 and omits immediate acceptance at Stage 1 ($X_1 = 0$). - Choice C ($4\\mathrm{e}^{-2}$) computes the conditional probability $P(\\mathrm{Accept\\ } H_0 \\mid \\mathrm{Stage\\ 2\\ is\\ reached}) = \\frac{16\\mathrm{e}^{-4}}{4\\mathrm{e}^{-2}} = 4\\mathrm{e}^{-2}$ instead of the unconditional probability of a Type II error. - Choice D computes the probability of a Type I error under $H_0$ (where $\\lambda = 1$)."
+        },
+        {
+          "q": "The length, $X\\mathrm{\\ mm}$, of components manufactured by an industrial process is normally distributed with mean $\\mu\\mathrm{\\ mm}$ and standard deviation $\\sigma\\mathrm{\\ mm}$. A quality assurance engineer tests the null hypothesis $H_0: \\mu = 20.0$ against the alternative hypothesis $H_1: \\mu > 20.0$ at the $5\\%$ significance level using an initial random sample of size $n = 25$. The critical region for the sample mean $\\bar{X}$ is found to be $\\bar{X} \\geq 20.658$. Using the standard normal critical value $z_{0.05} = 1.645$: 1. Find the value of $\\sigma$. 2. Hence, determine the minimum sample size, $m$, required so that in a subsequent test of $H_0: \\mu = 20.0$ against $H_1: \\mu > 20.0$ at the same $5\\%$ significance level, the probability of committing a Type II error when the true mean is $\\mu = 21.0$ is at most $0.05$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Mean and variance of a Poisson distribution",
+          "choices": [
+            "44",
+            "43",
+            "11",
+            "22"
+          ],
+          "correct": 0,
+          "answer": "We solve the problem in two stages: **Step 1: Determine $\\sigma$** Under $H_0$, the distribution of the sample mean is $\\bar{X} \\sim N\\left(20.0, \\frac{\\sigma^2}{25}\\right)$. The critical value for a upper one-tailed test at the $5\\%$ level corresponds to $z = 1.645$: $\\frac{20.658 - 20.0}{\\frac{\\sigma}{\\sqrt{25}}} = 1.645$ $\\frac{0.658}{\\frac{\\sigma}{5}} = 1.645 \\Rightarrow \\frac{3.29}{\\sigma} = 1.645 \\Rightarrow \\sigma = \\frac{3.29}{1.645} = 2.0\\mathrm{\\ mm}$ **Step 2: Determine the minimum sample size $m$** For a new sample of size $m$, the rejection rule at the $5\\%$ level requires rejecting $H_0$ if $\\bar{X} \\geq c$, where: $c = 20.0 + 1.645 \\left(\\frac{2.0}{\\sqrt{m}}\\right) = 20.0 + \\frac{3.29}{\\sqrt{m}}$ A Type II error occurs when $H_0$ is not rejected (i.e. $\\bar{X} < c$) given that the true mean is $\\mu = 21.0$. We require: $P(\\bar{X} < c \\mid \\mu = 21.0) \\leq 0.05$ Standardising under $\\mu = 21.0$: $\\frac{c - 21.0}{\\frac{2.0}{\\sqrt{m}}} \\leq -1.645 \\Rightarrow c \\leq 21.0 - 1.645 \\left(\\frac{2.0}{\\sqrt{m}}\\right) = 21.0 - \\frac{3.29}{\\sqrt{m}}$ Equating both conditions for $c$: $20.0 + \\frac{3.29}{\\sqrt{m}} \\leq 21.0 - \\frac{3.29}{\\sqrt{m}}$ $\\frac{6.58}{\\sqrt{m}} \\leq 1.0 \\Rightarrow \\sqrt{m} \\geq 6.58$ $m \\geq 6.58^2 = 43.2964$ Since $m$ must be an integer, the minimum sample size is $m = 44$. **Common traps:** - Rounding down to $43$ yields a Type II error probability greater than $0.05$. - Omitting the calculation of $\\sigma$ and erroneously assuming $\\sigma = 1$ yields $m = 11$. - Omitting the critical value shift from one of the two tails leads to $m = 22$.",
+          "explanation": "We solve the problem in two stages: **Step 1: Determine $\\sigma$** Under $H_0$, the distribution of the sample mean is $\\bar{X} \\sim N\\left(20.0, \\frac{\\sigma^2}{25}\\right)$. The critical value for a upper one-tailed test at the $5\\%$ level corresponds to $z = 1.645$: $\\frac{20.658 - 20.0}{\\frac{\\sigma}{\\sqrt{25}}} = 1.645$ $\\frac{0.658}{\\frac{\\sigma}{5}} = 1.645 \\Rightarrow \\frac{3.29}{\\sigma} = 1.645 \\Rightarrow \\sigma = \\frac{3.29}{1.645} = 2.0\\mathrm{\\ mm}$ **Step 2: Determine the minimum sample size $m$** For a new sample of size $m$, the rejection rule at the $5\\%$ level requires rejecting $H_0$ if $\\bar{X} \\geq c$, where: $c = 20.0 + 1.645 \\left(\\frac{2.0}{\\sqrt{m}}\\right) = 20.0 + \\frac{3.29}{\\sqrt{m}}$ A Type II error occurs when $H_0$ is not rejected (i.e. $\\bar{X} < c$) given that the true mean is $\\mu = 21.0$. We require: $P(\\bar{X} < c \\mid \\mu = 21.0) \\leq 0.05$ Standardising under $\\mu = 21.0$: $\\frac{c - 21.0}{\\frac{2.0}{\\sqrt{m}}} \\leq -1.645 \\Rightarrow c \\leq 21.0 - 1.645 \\left(\\frac{2.0}{\\sqrt{m}}\\right) = 21.0 - \\frac{3.29}{\\sqrt{m}}$ Equating both conditions for $c$: $20.0 + \\frac{3.29}{\\sqrt{m}} \\leq 21.0 - \\frac{3.29}{\\sqrt{m}}$ $\\frac{6.58}{\\sqrt{m}} \\leq 1.0 \\Rightarrow \\sqrt{m} \\geq 6.58$ $m \\geq 6.58^2 = 43.2964$ Since $m$ must be an integer, the minimum sample size is $m = 44$. **Common traps:** - Rounding down to $43$ yields a Type II error probability greater than $0.05$. - Omitting the calculation of $\\sigma$ and erroneously assuming $\\sigma = 1$ yields $m = 11$. - Omitting the critical value shift from one of the two tails leads to $m = 22$."
+        },
+        {
+          "q": "A machine produces metal rods whose lengths are normally distributed with unknown mean $\\mu \\mathrm{\\ cm}$ and known standard deviation $\\sigma = 0.8\\mathrm{\\ cm}$. A quality control manager tests the hypotheses $H_0: \\mu = 25.0 \\quad \\mathrm{against} \\quad H_1: \\mu < 25.0$ at the $5\\%$ level of significance. A random sample of $16$ rods yields a sample mean length of $\\bar{x} = 24.6\\mathrm{\\ cm}$. Given that the critical value for this test is $z_{\\mathrm{crit}} = -1.645$, which of the following gives the correct test statistic $z$ and the corresponding conclusion?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Sums of independent Poisson variables",
+          "choices": [
+            "$z = -2.0$; reject $H_0$ because $-2.0 < -1.645$",
+            "$z = -2.0$; do not reject $H_0$ because $-2.0 < -1.645$",
+            "$z = -0.5$; do not reject $H_0$ because $-0.5 > -1.645$",
+            "$z = -8.0$; reject $H_0$ because $-8.0 < -1.645$"
+          ],
+          "correct": 0,
+          "answer": "1. Under the null hypothesis $H_0: \\mu = 25.0$, the sample mean $\\bar{X}$ of a random sample of size $n = 16$ from $\\mathrm{N}(\\mu, \\sigma^2)$ has standard error: $\\sigma_{\\bar{X}} = \\frac{\\sigma}{\\sqrt{n}} = \\frac{0.8}{\\sqrt{16}} = \\frac{0.8}{4} = 0.2$ 2. The standardized test statistic $z$ is: $z = \\frac{\\bar{x} - \\mu_0}{\\sigma / \\sqrt{n}} = \\frac{24.6 - 25.0}{0.2} = \\frac{-0.4}{0.2} = -2.0$ 3. Since this is a lower-tail test at the $5\\%$ level with critical value $z_{\\mathrm{crit}} = -1.645$, the critical (rejection) region is $z < -1.645$. 4. Because $z = -2.0 < -1.645$, the test statistic falls in the critical region. Therefore, we reject $H_0$. Common errors: - Omitting $\\sqrt{n}$ gives $z = \\frac{24.6 - 25.0}{0.8} = -0.5$, which leads to incorrectly failing to reject $H_0$. - Dividing by $n$ rather than $\\sqrt{n}$ gives $z = \\frac{-0.4}{0.8/16} = -8.0$. - Inverting the decision rule leads to falsely accepting $H_0$ despite the test statistic falling in the critical region.",
+          "explanation": "1. Under the null hypothesis $H_0: \\mu = 25.0$, the sample mean $\\bar{X}$ of a random sample of size $n = 16$ from $\\mathrm{N}(\\mu, \\sigma^2)$ has standard error: $\\sigma_{\\bar{X}} = \\frac{\\sigma}{\\sqrt{n}} = \\frac{0.8}{\\sqrt{16}} = \\frac{0.8}{4} = 0.2$ 2. The standardized test statistic $z$ is: $z = \\frac{\\bar{x} - \\mu_0}{\\sigma / \\sqrt{n}} = \\frac{24.6 - 25.0}{0.2} = \\frac{-0.4}{0.2} = -2.0$ 3. Since this is a lower-tail test at the $5\\%$ level with critical value $z_{\\mathrm{crit}} = -1.645$, the critical (rejection) region is $z < -1.645$. 4. Because $z = -2.0 < -1.645$, the test statistic falls in the critical region. Therefore, we reject $H_0$. Common errors: - Omitting $\\sqrt{n}$ gives $z = \\frac{24.6 - 25.0}{0.8} = -0.5$, which leads to incorrectly failing to reject $H_0$. - Dividing by $n$ rather than $\\sqrt{n}$ gives $z = \\frac{-0.4}{0.8/16} = -8.0$. - Inverting the decision rule leads to falsely accepting $H_0$ despite the test statistic falling in the critical region."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "$X\\sim Po(13)$ and $Y\\sim Po(13)$ are independent. Find the parameter of the distribution of $X+Y$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Poisson as an approximation to the binomial",
+          "choices": [
+            "26",
+            "27",
+            "169",
+            "0"
+          ],
+          "correct": 0,
+          "answer": "Since X and Y are independent Poisson variables, $X+Y\\sim Po(13+13)=Po(26)$.",
+          "explanation": "Since X and Y are independent Poisson variables, $X+Y\\sim Po(13+13)=Po(26)$.",
+          "cross_lesson": "2.01 Exponentials & Logarithms"
+        },
+        {
+          "q": "$X\\sim Po(15)$ and $Y\\sim Po(11)$ are independent. Find the parameter of the distribution of $X+Y$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Using cumulative Poisson probabilities",
+          "choices": [
+            "27",
+            "165",
+            "4",
+            "26"
+          ],
+          "correct": 3,
+          "answer": "Since X and Y are independent Poisson variables, $X+Y\\sim Po(15+11)=Po(26)$.",
+          "explanation": "Since X and Y are independent Poisson variables, $X+Y\\sim Po(15+11)=Po(26)$.",
+          "cross_lesson": "3.01 Advanced Trigonometry",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -2.0,
+                "label": "$(1,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "$X\\sim Po(18)$ and $Y\\sim Po(19)$ are independent. Find the parameter of the distribution of $X+Y$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Finding an unknown parameter",
+          "choices": [
+            "342",
+            "38",
+            "1",
+            "37"
+          ],
+          "correct": 3,
+          "answer": "Since X and Y are independent Poisson variables, $X+Y\\sim Po(18+19)=Po(37)$.",
+          "explanation": "Since X and Y are independent Poisson variables, $X+Y\\sim Po(18+19)=Po(37)$.",
+          "cross_lesson": "4.01 Differentiation"
+        },
+        {
+          "q": "$X\\sim Po(19)$ and $Y\\sim Po(25)$ are independent. Find the parameter of the distribution of $X+Y$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Poisson processes over different intervals and conditional probability",
+          "choices": [
+            "475",
+            "45",
+            "44",
+            "6"
+          ],
+          "correct": 2,
+          "answer": "Since X and Y are independent Poisson variables, $X+Y\\sim Po(19+25)=Po(44)$.",
+          "explanation": "Since X and Y are independent Poisson variables, $X+Y\\sim Po(19+25)=Po(44)$.",
+          "cross_lesson": "5.01 Integration"
+        },
+        {
+          "q": "$X\\sim Po(18)$ and $Y\\sim Po(22)$ are independent. Find the parameter of the distribution of $X+Y$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "A well-designed word problem: quality control at a bottling plant",
+          "choices": [
+            "396",
+            "4",
+            "40",
+            "41"
+          ],
+          "correct": 2,
+          "answer": "Since X and Y are independent Poisson variables, $X+Y\\sim Po(18+22)=Po(40)$.",
+          "explanation": "Since X and Y are independent Poisson variables, $X+Y\\sim Po(18+22)=Po(40)$.",
+          "cross_lesson": "6.01 Sequences & Series"
+        },
+        {
+          "q": "$X\\sim Po(2)$ and $Y\\sim Po(14)$ are independent. Find the parameter of the distribution of $X+Y$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Poisson Probability Formula & Conditions",
+          "choices": [
+            "17",
+            "16",
+            "28",
+            "12"
+          ],
+          "correct": 1,
+          "answer": "Since X and Y are independent Poisson variables, $X+Y\\sim Po(2+14)=Po(16)$.",
+          "explanation": "Since X and Y are independent Poisson variables, $X+Y\\sim Po(2+14)=Po(16)$.",
+          "cross_lesson": "7.01 Vectors",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -2.0,
+                "label": "$(-1,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "$X\\sim Po(7)$ and $Y\\sim Po(14)$ are independent. Find the parameter of the distribution of $X+Y$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Mean, Variance & Linear Combinations",
+          "choices": [
+            "21",
+            "22",
+            "7",
+            "98"
+          ],
+          "correct": 0,
+          "answer": "Since X and Y are independent Poisson variables, $X+Y\\sim Po(7+14)=Po(21)$.",
+          "explanation": "Since X and Y are independent Poisson variables, $X+Y\\sim Po(7+14)=Po(21)$.",
+          "cross_lesson": "8.01 Algebra: Partial Fractions & Division"
+        },
+        {
+          "q": "$X\\sim Po(7)$ and $Y\\sim Po(15)$ are independent. Find the parameter of the distribution of $X+Y$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Poisson Approximation to the Binomial",
+          "choices": [
+            "105",
+            "22",
+            "23",
+            "8"
+          ],
+          "correct": 1,
+          "answer": "Since X and Y are independent Poisson variables, $X+Y\\sim Po(7+15)=Po(22)$.",
+          "explanation": "Since X and Y are independent Poisson variables, $X+Y\\sim Po(7+15)=Po(22)$.",
+          "cross_lesson": "9.01 Complex Numbers"
         }
       ]
     }

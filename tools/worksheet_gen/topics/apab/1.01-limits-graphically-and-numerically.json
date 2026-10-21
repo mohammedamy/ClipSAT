@@ -3,12 +3,733 @@
   "num": "1.01",
   "slug": "limits-graphically-and-numerically",
   "title": "Limits Graphically and Numerically",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 1.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Estimating Limits Numerically & Tables",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
       "questions": [
         {
-          "q": "A function $g$ satisfies $g(1.9) = 3.81, g(1.99) = 3.98, g(2.01) = 4.02,$ and $g(2.1) = 4.19$. What is the estimated value of $\\lim_{x \\to 2} g(x)$?",
+          "q": "A function $g$ satisfies $g(2.9)=6.7$, $g(2.99)=6.97$, $g(2.999)=6.997$, $g(3.1)=7.3$, $g(3.01)=7.03$, $g(3.001)=7.003$. Estimate $\\lim_{x\\rightarrow3}g(x)$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Estimating limits from a table",
+          "answer": "Both sides approach $7$: $\\lim_{x\\rightarrow3}g(x)=7$.",
+          "explanation": "Both sides approach $7$: $\\lim_{x\\rightarrow3}g(x)=7$."
+        },
+        {
+          "q": "Using a table of values with $x$ near $0$ (radians), estimate $\\lim_{x\\rightarrow0}\\frac{1-\\cos x}{x^2}$ to two decimal places (the known exact value is $\\frac{1}{2}$).",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Estimating limits from a table",
+          "answer": "Values approach $0.50$ from both sides, consistent with the exact limit $\\frac{1}{2}$.",
+          "explanation": "Values approach $0.50$ from both sides, consistent with the exact limit $\\frac{1}{2}$."
+        },
+        {
+          "q": "The graph below shows $f(x) = \\frac{x^2-1}{x-1}$, which is undefined at $x=1$. Based on the simplified form $f(x)=x+1$ ($x\\neq1$), state $\\lim_{x\\rightarrow1}f(x)$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Reading limits from a graph",
+          "answer": "$\\lim_{x\\rightarrow1}f(x)=2$ (even though $f(1)$ itself is undefined — a removable discontinuity).",
+          "explanation": "$\\lim_{x\\rightarrow1}f(x)=2$ (even though $f(1)$ itself is undefined — a removable discontinuity).",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x + 1"
+            ],
+            "xmin": -2,
+            "xmax": 4,
+            "ymin": -1,
+            "ymax": 5,
+            "width": 220
+          }
+        },
+        {
+          "q": "A function $h$ has $\\lim_{x\\rightarrow2^-}h(x)=5$ and $\\lim_{x\\rightarrow2^+}h(x)=5$, but $h(2)=8$. State $\\lim_{x\\rightarrow2}h(x)$ and explain whether $h$ is continuous at $x=2$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Reading limits from a graph",
+          "answer": "$\\lim_{x\\rightarrow2}h(x)=5$, since both one-sided limits agree. But $h$ is NOT continuous at $x=2$, since $\\lim_{x\\rightarrow2}h(x)=5\\neq h(2)=8$ — this is a removable discontinuity.",
+          "explanation": "$\\lim_{x\\rightarrow2}h(x)=5$, since both one-sided limits agree. But $h$ is NOT continuous at $x=2$, since $\\lim_{x\\rightarrow2}h(x)=5\\neq h(2)=8$ — this is a removable discontinuity."
+        },
+        {
+          "q": "For $f(x)=\\frac{x}{|x|}$, find:",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "One-sided limits and limits that fail to exist",
+          "parts": [
+            "$\\lim_{x\\rightarrow0^+}f(x)$",
+            "$\\lim_{x\\rightarrow0^-}f(x)$",
+            "$\\lim_{x\\rightarrow0}f(x)$"
+          ],
+          "cols": 3,
+          "answers": [
+            "$=1$",
+            "$=-1$",
+            "does not exist"
+          ],
+          "answer": "(a) $=1$; (b) $=-1$; (c) does not exist",
+          "explanation": "(a) $=1$; (b) $=-1$; (c) does not exist",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x/abs(x)"
+            ],
+            "xmin": -3,
+            "xmax": 3,
+            "ymin": -2,
+            "ymax": 2,
+            "width": 200
+          }
+        },
+        {
+          "q": "A piecewise function is defined by $f(x)=x^2$ for $x<1$, and $f(x)=3-x$ for $x\\geq1$. Find $\\lim_{x\\rightarrow1^-}f(x)$, $\\lim_{x\\rightarrow1^+}f(x)$, and state whether $\\lim_{x\\rightarrow1}f(x)$ exists.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "One-sided limits and limits that fail to exist",
+          "answer": "$\\lim_{x\\rightarrow1^-}f(x)=1^2=1$. $\\lim_{x\\rightarrow1^+}f(x)=3-1=2$. Since the one-sided limits disagree ($1\\neq2$), $\\lim_{x\\rightarrow1}f(x)$ does not exist.",
+          "explanation": "$\\lim_{x\\rightarrow1^-}f(x)=1^2=1$. $\\lim_{x\\rightarrow1^+}f(x)=3-1=2$. Since the one-sided limits disagree ($1\\neq2$), $\\lim_{x\\rightarrow1}f(x)$ does not exist."
+        },
+        {
+          "q": "Evaluate each limit by direct substitution or factoring:",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Algebraic evaluation",
+          "parts": [
+            "$\\lim_{x\\rightarrow4}(3x^2-5x+1)$",
+            "$\\lim_{x\\rightarrow3}\\frac{x^2-9}{x-3}$",
+            "$\\lim_{x\\rightarrow-2}\\frac{x^2+5x+6}{x+2}$"
+          ],
+          "cols": 1,
+          "answers": [
+            "$=3(16)-20+1=29$",
+            "$=\\lim_{x\\rightarrow3}(x+3)=6$",
+            "$=\\lim_{x\\rightarrow-2}(x+3)=1$"
+          ],
+          "answer": "(a) $=3(16)-20+1=29$; (b) $=\\lim_{x\\rightarrow3}(x+3)=6$; (c) $=\\lim_{x\\rightarrow-2}(x+3)=1$",
+          "explanation": "(a) $=3(16)-20+1=29$; (b) $=\\lim_{x\\rightarrow3}(x+3)=6$; (c) $=\\lim_{x\\rightarrow-2}(x+3)=1$"
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow0}\\frac{\\sqrt{x+9}-3}{x}$ by rationalizing the numerator.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Algebraic evaluation",
+          "answer": "Multiply by $\\frac{\\sqrt{x+9}+3}{\\sqrt{x+9}+3}$: $\\frac{x}{x(\\sqrt{x+9}+3)}=\\frac{1}{\\sqrt{x+9}+3}\\rightarrow\\frac{1}{6}$.",
+          "explanation": "Multiply by $\\frac{\\sqrt{x+9}+3}{\\sqrt{x+9}+3}$: $\\frac{x}{x(\\sqrt{x+9}+3)}=\\frac{1}{\\sqrt{x+9}+3}\\rightarrow\\frac{1}{6}$."
+        },
+        {
+          "q": "The graph shows $f(x)=\\frac{2x}{x+1}$, which has a horizontal asymptote. Use the graph to estimate $\\lim_{x\\rightarrow\\infty}f(x)$, then confirm algebraically by dividing numerator and denominator by $x$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Limits at infinity from a graph",
+          "answer": "The graph flattens toward height $2$ as $x\\rightarrow\\infty$. Algebraically: $\\frac{2x}{x+1}=\\frac{2}{1+1/x}\\rightarrow\\frac{2}{1+0}=2$.",
+          "explanation": "The graph flattens toward height $2$ as $x\\rightarrow\\infty$. Algebraically: $\\frac{2x}{x+1}=\\frac{2}{1+1/x}\\rightarrow\\frac{2}{1+0}=2$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "2*x/(x+1)"
+            ],
+            "xmin": -8,
+            "xmax": 15,
+            "ymin": -6,
+            "ymax": 6,
+            "width": 220
+          }
+        },
+        {
+          "q": "For $f(x)=\\frac{1}{x-3}$, find $\\lim_{x\\rightarrow3^-}f(x)$ and $\\lim_{x\\rightarrow3^+}f(x)$, and state whether $\\lim_{x\\rightarrow3}f(x)$ exists.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Limits involving infinite discontinuities",
+          "answer": "As $x\\rightarrow3^-$, $x-3\\rightarrow0^-$, so $f(x)\\rightarrow-\\infty$. As $x\\rightarrow3^+$, $x-3\\rightarrow0^+$, so $f(x)\\rightarrow+\\infty$. Since the one-sided limits are not equal (in fact neither is finite), $\\lim_{x\\rightarrow3}f(x)$ does not exist.",
+          "explanation": "As $x\\rightarrow3^-$, $x-3\\rightarrow0^-$, so $f(x)\\rightarrow-\\infty$. As $x\\rightarrow3^+$, $x-3\\rightarrow0^+$, so $f(x)\\rightarrow+\\infty$. Since the one-sided limits are not equal (in fact neither is finite), $\\lim_{x\\rightarrow3}f(x)$ does not exist."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow\\infty}\\frac{3x^2+1}{x^2-4}$, using the fact that the numerator and denominator have the same degree.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Limits involving infinite discontinuities",
+          "answer": "For equal-degree rational functions, the limit is the ratio of leading coefficients: $\\lim_{x\\rightarrow\\infty}\\frac{3x^2+1}{x^2-4}=\\frac{3}{1}=3$.",
+          "explanation": "For equal-degree rational functions, the limit is the ratio of leading coefficients: $\\lim_{x\\rightarrow\\infty}\\frac{3x^2+1}{x^2-4}=\\frac{3}{1}=3$."
+        },
+        {
+          "q": "Construct a mental table of values for $f(x)=\\frac{e^x-1}{x}$ at $x=-0.1,-0.01,0.01,0.1$ (all close to $1$), and use it to estimate $\\lim_{x\\rightarrow0}\\frac{e^x-1}{x}$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Estimating limits with a calculator-style table",
+          "answer": "The values all cluster near $1$ (e.g. $f(0.1)\\approx1.052$, $f(-0.1)\\approx0.952$, both approaching $1$ as $x\\rightarrow0$): $\\lim_{x\\rightarrow0}\\frac{e^x-1}{x}=1$ (a standard limit related to the derivative of $e^x$ at $0$).",
+          "explanation": "The values all cluster near $1$ (e.g. $f(0.1)\\approx1.052$, $f(-0.1)\\approx0.952$, both approaching $1$ as $x\\rightarrow0$): $\\lim_{x\\rightarrow0}\\frac{e^x-1}{x}=1$ (a standard limit related to the derivative of $e^x$ at $0$)."
+        },
+        {
+          "q": "A graph shows $f(x)=2$ for $x<0$, $f(x)=x+2$ for $0\\leq x<3$, and $f(x)=8-x$ for $x\\geq3$. Find $\\lim_{x\\rightarrow0}f(x)$ and $\\lim_{x\\rightarrow3}f(x)$, stating whether each exists.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Limits with piecewise graphical behavior",
+          "answer": "At $x=0$: $\\lim_{x\\rightarrow0^-}f(x)=2$, $\\lim_{x\\rightarrow0^+}f(x)=0+2=2$: limit exists, equals $2$. At $x=3$: $\\lim_{x\\rightarrow3^-}f(x)=3+2=5$, $\\lim_{x\\rightarrow3^+}f(x)=8-3=5$: limit exists, equals $5$.",
+          "explanation": "At $x=0$: $\\lim_{x\\rightarrow0^-}f(x)=2$, $\\lim_{x\\rightarrow0^+}f(x)=0+2=2$: limit exists, equals $2$. At $x=3$: $\\lim_{x\\rightarrow3^-}f(x)=3+2=5$, $\\lim_{x\\rightarrow3^+}f(x)=8-3=5$: limit exists, equals $5$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "np.where(x<0, 2, np.where(x<3, x+2, 8-x))"
+            ],
+            "xmin": -3,
+            "xmax": 6,
+            "ymin": -1,
+            "ymax": 6,
+            "width": 220
+          }
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow2}\\frac{x^2-5x+6}{x^2-4}$ by factoring both the numerator and denominator.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Limits with piecewise graphical behavior",
+          "answer": "$\\frac{(x-2)(x-3)}{(x-2)(x+2)}=\\frac{x-3}{x+2}\\rightarrow\\frac{2-3}{2+2}=-\\frac{1}{4}$.",
+          "explanation": "$\\frac{(x-2)(x-3)}{(x-2)(x+2)}=\\frac{x-3}{x+2}\\rightarrow\\frac{2-3}{2+2}=-\\frac{1}{4}$."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "Consider the function $f(x)$ whose graph is shown below. The graph consists of a line segment and a quarter circle. The line segment connects the points $(2, 4)$ and $(4, 0)$. The quarter circle is in the second quadrant and is centered at $(0, 0)$ with radius 2. Let $A(x)$ be the area of the region bounded by the graph of $f(t)$, the $t$-axis, and the lines $t = 0$ and $t = x$. (a) Find $A(3)$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "One-sided limits and limits that fail to exist",
+          "cross_lesson": "1.02 Continuity and the Intermediate Value Theorem",
+          "answer": "The function $f(x)$ is defined piecewise. For $0 \\leq t \\leq 2$, $f(t)$ is the upper part of a circle centered at the origin with radius 2, so $f(t) = \\sqrt{4 - t^2}$. For $2 < t \\leq 4$, $f(t)$ is a line segment connecting $(2, 4)$ and $(4, 0)$. The equation of this line can be found using the two-point form: $y - 0 = \\frac{4 - 0}{2 - 4}(x - 4)$, which simplifies to $y = -2(x - 4)$, so $f(t) = -2(t - 4)$. To find $A(3)$, we need to calculate the definite integral $\\int_{0}^{3} f(t) \\, dt$. We split this integral into two parts based on the definition of $f(t)$: $A(3) = \\int_{0}^{2} f(t) \\, dt + \\int_{2}^{3} f(t) \\, dt$ For the first part, $\\int_{0}^{2} \\sqrt{4 - t^2} \\, dt$, this represents the area of a quarter circle of radius 2, which is $\\frac{1}{4}\\pi r^2 = \\frac{1}{4}\\pi (2^2) = \\pi$. For the second part, $\\int_{2}^{3} (-2(t - 4)) \\, dt$, we can evaluate this integral: $\\int_{2}^{3} (-2t + 8) \\, dt = [-t^2 + 8t]_{2}^{3}$ Evaluating at the limits: $(-3^2 + 8 \\cdot 3) - (-2^2 + 8 \\cdot 2)$ $(-9 + 24) - (-4 + 16)$ $15 - 12 = 3$. Therefore, $A(3) = \\pi + 3$. *Common Misconceptions:* Students might incorrectly assume the function is a single simple shape or miscalculate the line segment's equation. They might also forget that the first part of the integral represents a quarter circle's area and attempt to integrate $\\sqrt{4-t^2}$ directly, which is more complex.",
+          "explanation": "The function $f(x)$ is defined piecewise. For $0 \\leq t \\leq 2$, $f(t)$ is the upper part of a circle centered at the origin with radius 2, so $f(t) = \\sqrt{4 - t^2}$. For $2 < t \\leq 4$, $f(t)$ is a line segment connecting $(2, 4)$ and $(4, 0)$. The equation of this line can be found using the two-point form: $y - 0 = \\frac{4 - 0}{2 - 4}(x - 4)$, which simplifies to $y = -2(x - 4)$, so $f(t) = -2(t - 4)$. To find $A(3)$, we need to calculate the definite integral $\\int_{0}^{3} f(t) \\, dt$. We split this integral into two parts based on the definition of $f(t)$: $A(3) = \\int_{0}^{2} f(t) \\, dt + \\int_{2}^{3} f(t) \\, dt$ For the first part, $\\int_{0}^{2} \\sqrt{4 - t^2} \\, dt$, this represents the area of a quarter circle of radius 2, which is $\\frac{1}{4}\\pi r^2 = \\frac{1}{4}\\pi (2^2) = \\pi$. For the second part, $\\int_{2}^{3} (-2(t - 4)) \\, dt$, we can evaluate this integral: $\\int_{2}^{3} (-2t + 8) \\, dt = [-t^2 + 8t]_{2}^{3}$ Evaluating at the limits: $(-3^2 + 8 \\cdot 3) - (-2^2 + 8 \\cdot 2)$ $(-9 + 24) - (-4 + 16)$ $15 - 12 = 3$. Therefore, $A(3) = \\pi + 3$. *Common Misconceptions:* Students might incorrectly assume the function is a single simple shape or miscalculate the line segment's equation. They might also forget that the first part of the integral represents a quarter circle's area and attempt to integrate $\\sqrt{4-t^2}$ directly, which is more complex.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "sqrt(4 - x*x)",
+              "-2*(x - 4)"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": 2.0,
+                "y": 4.0,
+                "label": "(2, 4)"
+              },
+              {
+                "x": 4.0,
+                "y": 0.0,
+                "label": "(4, 0)"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "The graph of the derivative of a function $f(x)$, denoted by $f'(x)$, is shown in the figure above. The function $f(x)$ is continuous, and it is known that $f(1) = 5$. Determine the value of $f(5)$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Algebraic evaluation",
+          "cross_lesson": "2.01 The Definition of the Derivative",
+          "answer": "The Fundamental Theorem of Calculus states that $\\int_{a}^{b} f'(x) \\, dx = f(b) - f(a)$. Rearranging this, we get $f(b) = f(a) + \\int_{a}^{b} f'(x) \\, dx$. In this problem, we are given $f(1) = 5$ and we need to find $f(5)$. Thus, we have $a = 1$ and $b = 5$. We need to calculate the definite integral $\\int_{1}^{5} f'(x) \\, dx$, which represents the area under the curve of $f'(x)$ from $x=1$ to $x=5$. From the graph, $f'(x)$ is a straight line. The area from $x=1$ to $x=5$ can be split into two parts: a triangle and a rectangle. Part 1: Area from $x=1$ to $x=3$. This is a triangle with base $3 - 1 = 2$ and height $f'(1) = 3$. The area of this triangle is $\\frac{1}{2} \\times \\mathrm{base} \\times \\mathrm{height} = \\frac{1}{2} \\times 2 \\times 3 = 3$. Part 2: Area from $x=3$ to $x=5$. This is a rectangle with base $5 - 3 = 2$ and height $f'(3) = 3$. The area of this rectangle is $\\mathrm{base} \\times \\mathrm{height} = 2 \\times 3 = 6$. Therefore, the total area under the curve from $x=1$ to $x=5$ is $\\int_{1}^{5} f'(x) \\, dx = 3 + 6 = 9$. Now, we can find $f(5)$: $f(5) = f(1) + \\int_{1}^{5} f'(x) \\, dx = 5 + 9 = 14$. Common traps: Students might misinterpret the graph and assume $f'(x)$ is constant or linear over the entire interval without splitting it. They might also make calculation errors with the area of the triangle or rectangle.",
+          "explanation": "The Fundamental Theorem of Calculus states that $\\int_{a}^{b} f'(x) \\, dx = f(b) - f(a)$. Rearranging this, we get $f(b) = f(a) + \\int_{a}^{b} f'(x) \\, dx$. In this problem, we are given $f(1) = 5$ and we need to find $f(5)$. Thus, we have $a = 1$ and $b = 5$. We need to calculate the definite integral $\\int_{1}^{5} f'(x) \\, dx$, which represents the area under the curve of $f'(x)$ from $x=1$ to $x=5$. From the graph, $f'(x)$ is a straight line. The area from $x=1$ to $x=5$ can be split into two parts: a triangle and a rectangle. Part 1: Area from $x=1$ to $x=3$. This is a triangle with base $3 - 1 = 2$ and height $f'(1) = 3$. The area of this triangle is $\\frac{1}{2} \\times \\mathrm{base} \\times \\mathrm{height} = \\frac{1}{2} \\times 2 \\times 3 = 3$. Part 2: Area from $x=3$ to $x=5$. This is a rectangle with base $5 - 3 = 2$ and height $f'(3) = 3$. The area of this rectangle is $\\mathrm{base} \\times \\mathrm{height} = 2 \\times 3 = 6$. Therefore, the total area under the curve from $x=1$ to $x=5$ is $\\int_{1}^{5} f'(x) \\, dx = 3 + 6 = 9$. Now, we can find $f(5)$: $f(5) = f(1) + \\int_{1}^{5} f'(x) \\, dx = 5 + 9 = 14$. Common traps: Students might misinterpret the graph and assume $f'(x)$ is constant or linear over the entire interval without splitting it. They might also make calculation errors with the area of the triangle or rectangle.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "(3/2)*x + 3/2",
+              "3"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": 3.0,
+                "label": "(1, 3)"
+              },
+              {
+                "x": 3.0,
+                "y": 3.0,
+                "label": "(3, 3)"
+              },
+              {
+                "x": 5.0,
+                "y": 3.0,
+                "label": "(5, 3)"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "The graph of the derivative of a function $f(x)$ is shown below. Given that $f(2) = 5$, determine the value of $f(6)$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Limits at infinity from a graph",
+          "cross_lesson": "2.02 Product, Quotient, and Trigonometric Derivatives",
+          "answer": "The graph shows $f'(x)$. By the Fundamental Theorem of Calculus, $f(6) - f(2) = \\int_{2}^{6} f'(x) \\, dx$. The integral $\\int_{2}^{6} f'(x) \\, dx$ represents the area under the curve of $f'(x)$ from $x = 2$ to $x = 6$. This area is a trapezoid with parallel sides of length $4$ (from $x=2$ to $x=4$) and $6$ (from $x=4$ to $x=6$), and a height of $2$ (the difference in x-values from 2 to 4 and 4 to 6, but looking at the graph the height from y=1 to y=5 is 4 and from y=1 to y=6 is 5, the vertical distance represents the change in y for the integral, which is the change in x on the graph. The area is a trapezoid with heights of 4 and 5 at x=2 and x=6 respectively, and a base of 4. The area under the curve from x=2 to x=6 is the area of a trapezoid with parallel sides of length 4 (at x=2, f'(2)=4) and 5 (at x=6, f'(6)=5), and a height (width along x-axis) of 6-2=4. The area is $\\frac{1}{2}(4+5) \\times 4 = \\frac{1}{2}(9) \\times 4 = 18$. Therefore, $f(6) - f(2) = 18$. Given $f(2) = 5$, we have $f(6) - 5 = 18$, which means $f(6) = 18 + 5 = 23$. Common algebraic trap: Students might misinterpret the y-axis values as the length of the parallel sides of the trapezoid and the x-axis values as the height, or vice versa. They might also forget to add the initial value of $f(2)$.",
+          "explanation": "The graph shows $f'(x)$. By the Fundamental Theorem of Calculus, $f(6) - f(2) = \\int_{2}^{6} f'(x) \\, dx$. The integral $\\int_{2}^{6} f'(x) \\, dx$ represents the area under the curve of $f'(x)$ from $x = 2$ to $x = 6$. This area is a trapezoid with parallel sides of length $4$ (from $x=2$ to $x=4$) and $6$ (from $x=4$ to $x=6$), and a height of $2$ (the difference in x-values from 2 to 4 and 4 to 6, but looking at the graph the height from y=1 to y=5 is 4 and from y=1 to y=6 is 5, the vertical distance represents the change in y for the integral, which is the change in x on the graph. The area is a trapezoid with heights of 4 and 5 at x=2 and x=6 respectively, and a base of 4. The area under the curve from x=2 to x=6 is the area of a trapezoid with parallel sides of length 4 (at x=2, f'(2)=4) and 5 (at x=6, f'(6)=5), and a height (width along x-axis) of 6-2=4. The area is $\\frac{1}{2}(4+5) \\times 4 = \\frac{1}{2}(9) \\times 4 = 18$. Therefore, $f(6) - f(2) = 18$. Given $f(2) = 5$, we have $f(6) - 5 = 18$, which means $f(6) = 18 + 5 = 23$. Common algebraic trap: Students might misinterpret the y-axis values as the length of the parallel sides of the trapezoid and the x-axis values as the height, or vice versa. They might also forget to add the initial value of $f(2)$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "-x + 6",
+              "x + 2"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": 2.0,
+                "y": 4.0,
+                "label": "(2, 4)"
+              },
+              {
+                "x": 6.0,
+                "y": 0.0,
+                "label": "(6, 0)"
+              },
+              {
+                "x": 4.0,
+                "y": 2.0,
+                "label": "(4, 2)"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Consider a function $f(x)$ whose derivative is given by $f'(x) = 6x^2 - 12x + 6$. The graph of the function $g(x) = x^3 - 6x^2 + 9x - 2$ is shown below. If $f(x)$ and $g(x)$ have the same tangent line at $x=1$, determine the value of $f''(0)$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Limits involving infinite discontinuities",
+          "cross_lesson": "3.01 The Chain Rule",
+          "answer": "First, let's find the derivative of $g(x)$: $g'(x) = 3x^2 - 12x + 9$. At $x=1$, the slope of the tangent line to $g(x)$ is $g'(1) = 3(1)^2 - 12(1) + 9 = 3 - 12 + 9 = 0$. The problem states that $f(x)$ and $g(x)$ have the same tangent line at $x=1$. This means $f'(1) = g'(1) = 0$. We are given $f'(x) = 6x^2 - 12x + 6$. Let's check: $f'(1) = 6(1)^2 - 12(1) + 6 = 6 - 12 + 6 = 0$. This confirms consistency. To find the value of $f''(0)$, we first need to find the second derivative of $f(x)$. We are given $f'(x) = 6x^2 - 12x + 6$. Therefore, $f''(x) = \\frac{d}{dx}(6x^2 - 12x + 6) = 12x - 12$. Now, we can evaluate $f''(0)$: $f''(0) = 12(0) - 12 = -12$. Common misconception: Students might try to integrate $f'(x)$ to find $f(x)$ and then differentiate, or they might confuse the derivative of $f(x)$ with the derivative of $g(x)$ when calculating the second derivative. The value of $g(x)$ at $x=1$ is $g(1) = 1^3 - 6(1)^2 + 9(1) - 2 = 1 - 6 + 9 - 2 = 2$. This information is not directly needed to find $f''(0)$ given the provided information about the tangent line slope.",
+          "explanation": "First, let's find the derivative of $g(x)$: $g'(x) = 3x^2 - 12x + 9$. At $x=1$, the slope of the tangent line to $g(x)$ is $g'(1) = 3(1)^2 - 12(1) + 9 = 3 - 12 + 9 = 0$. The problem states that $f(x)$ and $g(x)$ have the same tangent line at $x=1$. This means $f'(1) = g'(1) = 0$. We are given $f'(x) = 6x^2 - 12x + 6$. Let's check: $f'(1) = 6(1)^2 - 12(1) + 6 = 6 - 12 + 6 = 0$. This confirms consistency. To find the value of $f''(0)$, we first need to find the second derivative of $f(x)$. We are given $f'(x) = 6x^2 - 12x + 6$. Therefore, $f''(x) = \\frac{d}{dx}(6x^2 - 12x + 6) = 12x - 12$. Now, we can evaluate $f''(0)$: $f''(0) = 12(0) - 12 = -12$. Common misconception: Students might try to integrate $f'(x)$ to find $f(x)$ and then differentiate, or they might confuse the derivative of $f(x)$ with the derivative of $g(x)$ when calculating the second derivative. The value of $g(x)$ at $x=1$ is $g(1) = 1^3 - 6(1)^2 + 9(1) - 2 = 1 - 6 + 9 - 2 = 2$. This information is not directly needed to find $f''(0)$ given the provided information about the tangent line slope.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "x**3 - 6*x**2 + 9*x - 2"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [],
+            "width": 230
+          }
+        },
+        {
+          "q": "Consider a function $f(x)$ such that its derivative is given by $f'(x) = 3x^2 - 12x + 10$. The graph of the second derivative, $f''(x)$, is shown below. Given that $f(0) = 5$, find the value of $f(2)$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Estimating limits with a calculator-style table",
+          "cross_lesson": "3.02 Implicit Differentiation and Inverse Functions",
+          "answer": "The derivative of $f'(x)$ is $f''(x)$. From the graph, we can observe that $f''(x)$ is a parabola opening upwards with its vertex at $(2, -2)$. The equation of a parabola with vertex $(h, k)$ is $a(x-h)^2 + k$. Thus, $f''(x) = a(x-2)^2 - 2$. We can also see that the parabola passes through $(0, 10)$, so $10 = a(0-2)^2 - 2$, which gives $12 = 4a$, so $a=3$. Therefore, $f''(x) = 3(x-2)^2 - 2 = 3(x^2 - 4x + 4) - 2 = 3x^2 - 12x + 12 - 2 = 3x^2 - 12x + 10$. This matches the given $f'(x)$, confirming our observation of $f''(x)$. Now we need to find $f(x)$ from $f'(x)$. We integrate $f'(x)$ with respect to $x$: $f(x) = \\int (3x^2 - 12x + 10) \\, dx$ $f(x) = x^3 - 6x^2 + 10x + C$ We are given that $f(0) = 5$. Substituting $x=0$ into the equation for $f(x)$: $f(0) = (0)^3 - 6(0)^2 + 10(0) + C$ $5 = C$ So, the function is $f(x) = x^3 - 6x^2 + 10x + 5$. Finally, we need to find $f(2)$: $f(2) = (2)^3 - 6(2)^2 + 10(2) + 5$ $f(2) = 8 - 6(4) + 20 + 5$ $f(2) = 8 - 24 + 20 + 5$ $f(2) = -16 + 25$ $f(2) = 9$.",
+          "explanation": "The derivative of $f'(x)$ is $f''(x)$. From the graph, we can observe that $f''(x)$ is a parabola opening upwards with its vertex at $(2, -2)$. The equation of a parabola with vertex $(h, k)$ is $a(x-h)^2 + k$. Thus, $f''(x) = a(x-2)^2 - 2$. We can also see that the parabola passes through $(0, 10)$, so $10 = a(0-2)^2 - 2$, which gives $12 = 4a$, so $a=3$. Therefore, $f''(x) = 3(x-2)^2 - 2 = 3(x^2 - 4x + 4) - 2 = 3x^2 - 12x + 12 - 2 = 3x^2 - 12x + 10$. This matches the given $f'(x)$, confirming our observation of $f''(x)$. Now we need to find $f(x)$ from $f'(x)$. We integrate $f'(x)$ with respect to $x$: $f(x) = \\int (3x^2 - 12x + 10) \\, dx$ $f(x) = x^3 - 6x^2 + 10x + C$ We are given that $f(0) = 5$. Substituting $x=0$ into the equation for $f(x)$: $f(0) = (0)^3 - 6(0)^2 + 10(0) + C$ $5 = C$ So, the function is $f(x) = x^3 - 6x^2 + 10x + 5$. Finally, we need to find $f(2)$: $f(2) = (2)^3 - 6(2)^2 + 10(2) + 5$ $f(2) = 8 - 6(4) + 20 + 5$ $f(2) = 8 - 24 + 20 + 5$ $f(2) = -16 + 25$ $f(2) = 9$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "3*(x-2)**2 - 2"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": 10.0,
+                "label": "(0, 10)"
+              },
+              {
+                "x": 2.0,
+                "y": -2.0,
+                "label": "(2, -2)"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "The graph of a differentiable function $f$ is shown in the figure above. The function $f$ has a local maximum at $x = c$ and a local minimum at $x = e$. The point $(c, f(c))$ is approximately $(1, 4)$ and the point $(e, f(e))$ is approximately $(4, -2)$. The shaded region, bounded by the graph of $f$, the x-axis, and the lines $x = 0$ and $x = 5$, has area 12. If $\\int_{0}^{c} f(x) \\, dx = k$, what is the value of $\\int_{c}^{5} f(x) \\, dx$ in terms of $k$?",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Limits with piecewise graphical behavior",
+          "cross_lesson": "4.01 Rates of Change and Rectilinear Motion",
+          "answer": "The total area of the shaded region from $x = 0$ to $x = 5$ is given as 12. This total area can be expressed as the sum of the areas of two sub-regions: the area from $x = 0$ to $x = c$ and the area from $x = c$ to $x = 5$. Mathematically, this can be written using definite integrals: $\\int_{0}^{5} f(x) \\, dx = \\int_{0}^{c} f(x) \\, dx + \\int_{c}^{5} f(x) \\, dx$. We are given that the total area is 12, so $\\int_{0}^{5} f(x) \\, dx = 12$. We are also given that $\\int_{0}^{c} f(x) \\, dx = k$. Substituting these values into the equation: $12 = k + \\int_{c}^{5} f(x) \\, dx$. To find the value of $\\int_{c}^{5} f(x) \\, dx$, we can rearrange the equation: $\\int_{c}^{5} f(x) \\, dx = 12 - k$. Therefore, the value of $\\int_{c}^{5} f(x) \\, dx$ in terms of $k$ is $12 - k$.",
+          "explanation": "The total area of the shaded region from $x = 0$ to $x = 5$ is given as 12. This total area can be expressed as the sum of the areas of two sub-regions: the area from $x = 0$ to $x = c$ and the area from $x = c$ to $x = 5$. Mathematically, this can be written using definite integrals: $\\int_{0}^{5} f(x) \\, dx = \\int_{0}^{c} f(x) \\, dx + \\int_{c}^{5} f(x) \\, dx$. We are given that the total area is 12, so $\\int_{0}^{5} f(x) \\, dx = 12$. We are also given that $\\int_{0}^{c} f(x) \\, dx = k$. Substituting these values into the equation: $12 = k + \\int_{c}^{5} f(x) \\, dx$. To find the value of $\\int_{c}^{5} f(x) \\, dx$, we can rearrange the equation: $\\int_{c}^{5} f(x) \\, dx = 12 - k$. Therefore, the value of $\\int_{c}^{5} f(x) \\, dx$ in terms of $k$ is $12 - k$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "- (x-1)**2 + 4",
+              "(x-4)**2 - 2"
+            ],
+            "xmin": -6.0,
+            "xmax": 6.0,
+            "ymin": -6.0,
+            "ymax": 6.0,
+            "points": [],
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": 3.0,
+                "label": "(0, 3)"
+              },
+              {
+                "x": 1.0,
+                "y": 4.0,
+                "label": "(c, f(c))"
+              },
+              {
+                "x": 4.0,
+                "y": -2.0,
+                "label": "(e, f(e))"
+              },
+              {
+                "x": 5.0,
+                "y": 1.0,
+                "label": "(5, f(5))"
+              }
+            ],
+            "width": 230
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
+      "questions": [
+        {
+          "q": "Find $\\lim_{x\\rightarrow-3}\\left(x^2+3x-4\\right)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Estimating limits from a table",
+          "choices": [
+            "$-3$",
+            "$-4$",
+            "$4$",
+            "$-5$"
+          ],
+          "correct": 1,
+          "answer": "Direct substitution: $1(-3)^2+3(-3)-4=-4$.",
+          "explanation": "Direct substitution: $1(-3)^2+3(-3)-4=-4$."
+        },
+        {
+          "q": "Find $\\lim_{x\\rightarrow3}\\left(4x^2-x+8\\right)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Reading limits from a graph",
+          "choices": [
+            "$41$",
+            "$42$",
+            "$40$",
+            "$-41$"
+          ],
+          "correct": 0,
+          "answer": "Direct substitution: $4(3)^2-(3)+8=41$.",
+          "explanation": "Direct substitution: $4(3)^2-(3)+8=41$."
+        },
+        {
+          "q": "Find $\\lim_{x\\rightarrow3}\\left(5x^2+7\\right)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "One-sided limits and limits that fail to exist",
+          "choices": [
+            "$-52$",
+            "$51$",
+            "$52$",
+            "$53$"
+          ],
+          "correct": 2,
+          "answer": "Direct substitution: $5(3)^2+7=52$.",
+          "explanation": "Direct substitution: $5(3)^2+7=52$."
+        },
+        {
+          "q": "Find $\\lim_{x\\rightarrow4}\\left(5x^2-8x+5\\right)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Algebraic evaluation",
+          "choices": [
+            "$54$",
+            "$53$",
+            "$-53$",
+            "$52$"
+          ],
+          "correct": 1,
+          "answer": "Direct substitution: $5(4)^2-8(4)+5=53$.",
+          "explanation": "Direct substitution: $5(4)^2-8(4)+5=53$."
+        },
+        {
+          "q": "Find $\\lim_{x\\rightarrow-2}\\left(x^2-4x+6\\right)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Limits at infinity from a graph",
+          "choices": [
+            "$17$",
+            "$19$",
+            "$-18$",
+            "$18$"
+          ],
+          "correct": 3,
+          "answer": "Direct substitution: $1(-2)^2-4(-2)+6=18$.",
+          "explanation": "Direct substitution: $1(-2)^2-4(-2)+6=18$."
+        },
+        {
+          "q": "Find $\\lim_{x\\rightarrow3}\\left(4x^2+3x-5\\right)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Limits involving infinite discontinuities",
+          "choices": [
+            "$39$",
+            "$40$",
+            "$41$",
+            "$-40$"
+          ],
+          "correct": 1,
+          "answer": "Direct substitution: $4(3)^2+3(3)-5=40$.",
+          "explanation": "Direct substitution: $4(3)^2+3(3)-5=40$."
+        },
+        {
+          "q": "Find $\\lim_{x\\rightarrow1}\\left(2x^2-x-3\\right)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Estimating limits with a calculator-style table",
+          "choices": [
+            "$2$",
+            "$-3$",
+            "$-2$",
+            "$-1$"
+          ],
+          "correct": 2,
+          "answer": "Direct substitution: $2(1)^2-(1)-3=-2$.",
+          "explanation": "Direct substitution: $2(1)^2-(1)-3=-2$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow0}\\frac{(x)(x-1)}{x}$ by factoring and cancelling.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Limits with piecewise graphical behavior",
+          "choices": [
+            "$-3$",
+            "$1$",
+            "$-1$",
+            "$3$"
+          ],
+          "correct": 2,
+          "answer": "Cancel the common factor: $\\frac{(x)(x-1)}{x}=x-1$ for $x\\neq0$, so the limit is $0-(1)=-1$.",
+          "explanation": "Cancel the common factor: $\\frac{(x)(x-1)}{x}=x-1$ for $x\\neq0$, so the limit is $0-(1)=-1$."
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow5}\\frac{(x-5)(x-6)}{x-5}$ by factoring and cancelling.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Estimating Limits Numerically & Tables",
+          "choices": [
+            "$-1$",
+            "$1$",
+            "$11$",
+            "$-3$"
+          ],
+          "correct": 0,
+          "answer": "Cancel the common factor: $\\frac{(x-5)(x-6)}{x-5}=x-6$ for $x\\neq5$, so the limit is $5-(6)=-1$.",
+          "explanation": "Cancel the common factor: $\\frac{(x-5)(x-6)}{x-5}=x-6$ for $x\\neq5$, so the limit is $5-(6)=-1$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow-4}\\frac{(x+4)(x-5)}{x+4}$ by factoring and cancelling.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Graphical Analysis & Removable Discontinuities",
+          "choices": [
+            "$-11$",
+            "$-7$",
+            "$-9$",
+            "$9$"
+          ],
+          "correct": 2,
+          "answer": "Cancel the common factor: $\\frac{(x+4)(x-5)}{x+4}=x-5$ for $x\\neq-4$, so the limit is $-4-(5)=-9$.",
+          "explanation": "Cancel the common factor: $\\frac{(x+4)(x-5)}{x+4}=x-5$ for $x\\neq-4$, so the limit is $-4-(5)=-9$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow-1}\\frac{(x+1)(x-6)}{x+1}$ by factoring and cancelling.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "One-Sided Limits & Absolute Value Quotients",
+          "choices": [
+            "$-9$",
+            "$-5$",
+            "$7$",
+            "$-7$"
+          ],
+          "correct": 3,
+          "answer": "Cancel the common factor: $\\frac{(x+1)(x-6)}{x+1}=x-6$ for $x\\neq-1$, so the limit is $-1-(6)=-7$.",
+          "explanation": "Cancel the common factor: $\\frac{(x+1)(x-6)}{x+1}=x-6$ for $x\\neq-1$, so the limit is $-1-(6)=-7$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow6}\\frac{(x-6)(x-3)}{x-6}$ by factoring and cancelling.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Infinite Limits & Horizontal Asymptotes",
+          "choices": [
+            "$1$",
+            "$-3$",
+            "$3$",
+            "$5$"
+          ],
+          "correct": 2,
+          "answer": "Cancel the common factor: $\\frac{(x-6)(x-3)}{x-6}=x-3$ for $x\\neq6$, so the limit is $6-(3)=3$.",
+          "explanation": "Cancel the common factor: $\\frac{(x-6)(x-3)}{x-6}=x-3$ for $x\\neq6$, so the limit is $6-(3)=3$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow3}\\frac{(x-3)(x+3)}{x-3}$ by factoring and cancelling.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Estimating limits from a table",
+          "choices": [
+            "$4$",
+            "$-6$",
+            "$8$",
+            "$6$"
+          ],
+          "correct": 3,
+          "answer": "Cancel the common factor: $\\frac{(x-3)(x+3)}{x-3}=x+3$ for $x\\neq3$, so the limit is $3-(-3)=6$.",
+          "explanation": "Cancel the common factor: $\\frac{(x-3)(x+3)}{x-3}=x+3$ for $x\\neq3$, so the limit is $3-(-3)=6$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow-5}\\frac{(x+5)(x+1)}{x+5}$ by factoring and cancelling.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Reading limits from a graph",
+          "choices": [
+            "$-4$",
+            "$-6$",
+            "$-2$",
+            "$4$"
+          ],
+          "correct": 0,
+          "answer": "Cancel the common factor: $\\frac{(x+5)(x+1)}{x+5}=x+1$ for $x\\neq-5$, so the limit is $-5-(-1)=-4$.",
+          "explanation": "Cancel the common factor: $\\frac{(x+5)(x+1)}{x+5}=x+1$ for $x\\neq-5$, so the limit is $-5-(-1)=-4$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow\\infty}\\frac{6x^2+3x}{8x^2+8x}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "One-sided limits and limits that fail to exist",
+          "choices": [
+            "$\\frac{4}{3}$",
+            "$\\frac{3}{4}$",
+            "$\\frac{7}{8}$",
+            "$\\frac{2}{3}$"
+          ],
+          "correct": 1,
+          "answer": "Numerator and denominator have equal degree ($2$), so the limit is the ratio of leading coefficients: $\\frac{6}{8}=\\frac{3}{4}$.",
+          "explanation": "Numerator and denominator have equal degree ($2$), so the limit is the ratio of leading coefficients: $\\frac{6}{8}=\\frac{3}{4}$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow\\infty}\\frac{5x^2+6x}{9x^2-3x}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Algebraic evaluation",
+          "choices": [
+            "$\\frac{5}{9}$",
+            "$\\frac{1}{2}$",
+            "$\\frac{9}{5}$",
+            "$\\frac{2}{3}$"
+          ],
+          "correct": 0,
+          "answer": "Numerator and denominator have equal degree ($2$), so the limit is the ratio of leading coefficients: $\\frac{5}{9}=\\frac{5}{9}$.",
+          "explanation": "Numerator and denominator have equal degree ($2$), so the limit is the ratio of leading coefficients: $\\frac{5}{9}=\\frac{5}{9}$."
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow\\infty}\\frac{6x+3}{7x^2-1}$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Limits at infinity from a graph",
+          "choices": [
+            "does not exist",
+            "$0$",
+            "$\\frac{6}{7}$",
+            "$1$"
+          ],
+          "correct": 1,
+          "answer": "The denominator's degree ($2$) exceeds the numerator's ($1$), so the quotient shrinks to $0$ as $x\\rightarrow\\infty$.",
+          "explanation": "The denominator's degree ($2$) exceeds the numerator's ($1$), so the quotient shrinks to $0$ as $x\\rightarrow\\infty$."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "For $f(x)=\\frac{-1}{x-2}$, find $\\lim_{x\\rightarrow2^-}f(x)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Limits involving infinite discontinuities",
+          "choices": [
+            "$2$",
+            "$0$",
+            "$-\\infty$",
+            "$+\\infty$"
+          ],
+          "correct": 3,
+          "answer": "As $x\\rightarrow2^-$, the denominator $\\rightarrow0^-$, so $f(x)\\rightarrow+\\infty$.",
+          "explanation": "As $x\\rightarrow2^-$, the denominator $\\rightarrow0^-$, so $f(x)\\rightarrow+\\infty$.",
+          "cross_lesson": "3.01 The Chain Rule"
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow\\infty}\\frac{8x+3}{x^2-1}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Estimating limits with a calculator-style table",
+          "choices": [
+            "does not exist",
+            "$8$",
+            "$0$",
+            "$1$"
+          ],
+          "correct": 2,
+          "answer": "The denominator's degree ($2$) exceeds the numerator's ($1$), so the quotient shrinks to $0$ as $x\\rightarrow\\infty$.",
+          "explanation": "The denominator's degree ($2$) exceeds the numerator's ($1$), so the quotient shrinks to $0$ as $x\\rightarrow\\infty$.",
+          "cross_lesson": "3.02 Implicit Differentiation and Inverse Functions"
+        },
+        {
+          "q": "Evaluate $\\lim_{x\\rightarrow\\infty}\\frac{8x^3+2x}{2x^2+1}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Limits with piecewise graphical behavior",
+          "choices": [
+            "$0$",
+            "$1$",
+            "does not exist ($+\\infty$)",
+            "$4$"
+          ],
+          "correct": 2,
+          "answer": "The numerator's degree ($3$) exceeds the denominator's ($2$), so the quotient grows without bound: the limit does not exist (diverges to $+\\infty$).",
+          "explanation": "The numerator's degree ($3$) exceeds the denominator's ($2$), so the quotient grows without bound: the limit does not exist (diverges to $+\\infty$).",
+          "cross_lesson": "4.01 Rates of Change and Rectilinear Motion"
+        },
+        {
+          "q": "A function $g$ satisfies $g(1.9) = 3.81, g(1.99) = 3.98, g(2.01) = 4.02,$ and $g(2.1) = 4.19$. What is the estimated value of $\\lim_{x \\rightarrow 2} g(x)$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Estimating Limits Numerically & Tables",
           "choices": [
             "$3.9$",
             "$4.0$",
@@ -16,21 +737,15 @@
             "Does not exist"
           ],
           "correct": 1,
-          "answer": "As $x$ approaches $2$ from both the left ($1.9, 1.99$) and right ($2.1, 2.01$), the values of $g(x)$ consistently approach $4.0$."
+          "answer": "As $x$ approaches $2$ from both the left ($1.9, 1.99$) and right ($2.1, 2.01$), the values of $g(x)$ consistently approach $4.0$.",
+          "explanation": "As $x$ approaches $2$ from both the left ($1.9, 1.99$) and right ($2.1, 2.01$), the values of $g(x)$ consistently approach $4.0$.",
+          "cross_lesson": "4.02 Linear Approximation and L'Hôpital's Rule"
         },
         {
-          "q": "Based on table values of $f(x) = \\frac{\\sin(3x)}{x}$ as $x \\to 0$ ($x$ in radians), what is the estimated value of $\\lim_{x \\to 0} f(x)$?",
-          "choices": [
-            "$0$",
-            "$1$",
-            "$3$",
-            "$\\infty$"
-          ],
-          "correct": 2,
-          "answer": "For $x = 0.01, f(0.01) = \\frac{\\sin(0.03)}{0.01} \\approx 2.99955$. The numerical values approach $3$."
-        },
-        {
-          "q": "Values of a function $h(x)$ near $x = 3$ are $h(2.99) = 5.01$ and $h(3.01) = -4.99$. What does this suggest about $\\lim_{x \\to 3} h(x)$?",
+          "q": "Values of a function $h(x)$ near $x = 3$ are $h(2.99) = 5.01$ and $h(3.01) = -4.99$. What does this suggest about $\\lim_{x \\rightarrow 3} h(x)$?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Estimating Limits Numerically & Tables",
           "choices": [
             "The limit is $0$",
             "The limit does not exist because left and right limits disagree",
@@ -38,37 +753,15 @@
             "The function is continuous at $x = 3$"
           ],
           "correct": 1,
-          "answer": "Because the left-hand limit approaches $+5$ while the right-hand limit approaches $-5$, the two-sided limit does not exist."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Graphical Analysis & Removable Discontinuities",
-      "questions": [
-        {
-          "q": "The graph of $f(x) = \\frac{x^2 - 1}{x - 1}$ has a hole at $(1, 2)$. What is the value of $\\lim_{x \\to 1} f(x)$?",
-          "choices": [
-            "$1$",
-            "$2$",
-            "$0$",
-            "Undefined"
-          ],
-          "correct": 1,
-          "answer": "Limits describe the behavior near $x = 1$, not at $x = 1$. Since $f(x) = x + 1$ for $x \\neq 1$, $\\lim_{x \\to 1} (x + 1) = 2$."
-        },
-        {
-          "q": "A function $f$ satisfies $\\lim_{x \\to 4^-} f(x) = 7, \\lim_{x \\to 4^+} f(x) = 7,$ and $f(4) = 2$. What is $\\lim_{x \\to 4} f(x)$?",
-          "choices": [
-            "$2$",
-            "$7$",
-            "$4.5$",
-            "Does not exist"
-          ],
-          "correct": 1,
-          "answer": "Since both one-sided limits are equal to $7$, the two-sided limit is $7$, regardless of the defined value $f(4) = 2$."
+          "answer": "Because the left-hand limit approaches $+5$ while the right-hand limit approaches $-5$, the two-sided limit does not exist.",
+          "explanation": "Because the left-hand limit approaches $+5$ while the right-hand limit approaches $-5$, the two-sided limit does not exist.",
+          "cross_lesson": "5.01 Extrema and the Mean Value Theorem"
         },
         {
           "q": "Which of the following functions has a vertical asymptote at $x = 2$ and NOT a removable hole?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Graphical Analysis & Removable Discontinuities",
           "choices": [
             "$f(x) = \\frac{x - 2}{x^2 - 4}$",
             "$f(x) = \\frac{x + 1}{(x - 2)^2}$",
@@ -76,26 +769,15 @@
             "$f(x) = \\frac{2x - 4}{x - 2}$"
           ],
           "correct": 1,
-          "answer": "In $f(x) = \\frac{x + 1}{(x - 2)^2}$, the factor $(x - 2)$ does not cancel with the numerator, creating a vertical asymptote at $x = 2$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: One-Sided Limits & Absolute Value Quotients",
-      "questions": [
-        {
-          "q": "Evaluate the one-sided limit: $\\lim_{x \\to 0^+} \\frac{x}{|x|}$.",
-          "choices": [
-            "$1$",
-            "$-1$",
-            "$0$",
-            "Does not exist"
-          ],
-          "correct": 0,
-          "answer": "For $x > 0$, $|x| = x$, so $\\frac{x}{|x|} = \\frac{x}{x} = 1$. The limit is $1$."
+          "answer": "In $f(x) = \\frac{x + 1}{(x - 2)^2}$, the factor $(x - 2)$ does not cancel with the numerator, creating a vertical asymptote at $x = 2$.",
+          "explanation": "In $f(x) = \\frac{x + 1}{(x - 2)^2}$, the factor $(x - 2)$ does not cancel with the numerator, creating a vertical asymptote at $x = 2$.",
+          "cross_lesson": "5.02 Concavity, Curve Sketching, and Optimization"
         },
         {
-          "q": "Evaluate: $\\lim_{x \\to 5^-} \\frac{x - 5}{|x - 5|}$.",
+          "q": "Evaluate: $\\lim_{x \\rightarrow 5^-} \\frac{x - 5}{|x - 5|}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "One-Sided Limits & Absolute Value Quotients",
           "choices": [
             "$1$",
             "$-1$",
@@ -103,26 +785,15 @@
             "Does not exist"
           ],
           "correct": 1,
-          "answer": "For $x < 5$, $x - 5 < 0$, which means $|x - 5| = -(x - 5)$. Thus $\\frac{x - 5}{-(x - 5)} = -1$."
+          "answer": "For $x < 5$, $x - 5 < 0$, which means $|x - 5| = -(x - 5)$. Thus $\\frac{x - 5}{-(x - 5)} = -1$.",
+          "explanation": "For $x < 5$, $x - 5 < 0$, which means $|x - 5| = -(x - 5)$. Thus $\\frac{x - 5}{-(x - 5)} = -1$.",
+          "cross_lesson": "6.01 Antiderivatives and Riemann Sums"
         },
         {
-          "q": "What is $\\lim_{x \\to 2} \\frac{|x - 2|}{x - 2}$?",
-          "choices": [
-            "$1$",
-            "$-1$",
-            "$0$",
-            "Does not exist"
-          ],
-          "correct": 3,
-          "answer": "The left-hand limit is $-1$ and the right-hand limit is $1$. Because they are unequal, the two-sided limit does not exist."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Infinite Limits & Horizontal Asymptotes",
-      "questions": [
-        {
-          "q": "Evaluate: $\\lim_{x \\to 3^+} \\frac{1}{x - 3}$.",
+          "q": "Evaluate: $\\lim_{x \\rightarrow 3^+} \\frac{1}{x - 3}$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Infinite Limits & Horizontal Asymptotes",
           "choices": [
             "$\\infty$",
             "$-\\infty$",
@@ -130,29 +801,9 @@
             "$1$"
           ],
           "correct": 0,
-          "answer": "As $x \\to 3$ from the right, the denominator is positive and approaches $0$, so the quotient grows without bound toward $\\infty$."
-        },
-        {
-          "q": "Evaluate the limit at infinity: $\\lim_{x \\to \\infty} \\frac{7x^3 - 4x + 1}{2x^3 + 5x^2 - 3}$.",
-          "choices": [
-            "$\\frac{7}{2}$",
-            "$0$",
-            "$\\infty$",
-            "$-\\frac{1}{3}$"
-          ],
-          "correct": 0,
-          "answer": "Divide all terms by $x^3$: $\\lim_{x \\to \\infty} \\frac{7 - 4/x^2 + 1/x^3}{2 + 5/x - 3/x^3} = \\frac{7}{2}$."
-        },
-        {
-          "q": "What are all horizontal asymptotes of the function $f(x) = \\frac{3x}{\\sqrt{x^2 + 4}}$?",
-          "choices": [
-            "$y = 3$ and $y = -3$",
-            "$y = 3$ only",
-            "$y = 0$",
-            "No horizontal asymptotes"
-          ],
-          "correct": 0,
-          "answer": "As $x \\to \\infty$, $\\sqrt{x^2} = x$, so $f(x) \\to 3$. As $x \\to -\\infty$, $\\sqrt{x^2} = -x$, so $f(x) \\to -3$. The asymptotes are $y = \\pm 3$."
+          "answer": "As $x \\rightarrow 3$ from the right, the denominator is positive and approaches $0$, so the quotient grows without bound toward $\\infty$.",
+          "explanation": "As $x \\rightarrow 3$ from the right, the denominator is positive and approaches $0$, so the quotient grows without bound toward $\\infty$.",
+          "cross_lesson": "6.02 The Fundamental Theorem of Calculus"
         }
       ]
     }

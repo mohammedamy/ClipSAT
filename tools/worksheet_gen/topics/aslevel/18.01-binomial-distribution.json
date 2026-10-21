@@ -3,12 +3,275 @@
   "num": "18.01",
   "slug": "binomial-distribution",
   "title": "Binomial Distribution",
+  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 18.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
   "sections": [
     {
-      "heading": "Section 1: Binomial Criteria & Single Probabilities",
+      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+      "questions": [
+        {
+          "q": "State the four conditions required for a random variable to follow a binomial distribution.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Conditions for a binomial distribution",
+          "answer": "(1) A fixed number of trials $n$. (2) Each trial has only two outcomes (success or failure). (3) The probability of success $p$ is constant for every trial. (4) The trials are independent of each other.",
+          "explanation": "(1) A fixed number of trials $n$. (2) Each trial has only two outcomes (success or failure). (3) The probability of success $p$ is constant for every trial. (4) The trials are independent of each other."
+        },
+        {
+          "q": "A survey asks 50 people whether they support a new policy, and $X$ is the number who say yes, assuming each person's response is independent with the same probability of support. Explain why $X$ follows a binomial distribution.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Conditions for a binomial distribution",
+          "answer": "$X$ follows a binomial distribution because there is a fixed number of trials ($n=50$), each trial (person) has two outcomes (yes or no), the probability of a 'yes' response is constant across all people, and the responses are independent of each other — satisfying all four binomial conditions.",
+          "explanation": "$X$ follows a binomial distribution because there is a fixed number of trials ($n=50$), each trial (person) has two outcomes (yes or no), the probability of a 'yes' response is constant across all people, and the responses are independent of each other — satisfying all four binomial conditions.",
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "Q1",
+              "Q2",
+              "Q3",
+              "Q4",
+              "Q5"
+            ],
+            "values": [
+              15,
+              21,
+              26,
+              19,
+              24
+            ],
+            "ylabel": "Frequency",
+            "highlight_index": 2,
+            "width": 230
+          }
+        },
+        {
+          "q": "A researcher rolls a die 15 times and counts the number of times a 3 appears. Explain why this count follows a binomial distribution.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Conditions for a binomial distribution",
+          "answer": "This count follows a binomial distribution because there is a fixed number of trials ($n=15$), each roll has two outcomes (rolling a 3 or not), the probability of rolling a 3 is constant ($\\frac{1}{6}$) on every roll, and the rolls are independent of each other — satisfying all four binomial conditions.",
+          "explanation": "This count follows a binomial distribution because there is a fixed number of trials ($n=15$), each roll has two outcomes (rolling a 3 or not), the probability of rolling a 3 is constant ($\\frac{1}{6}$) on every roll, and the rolls are independent of each other — satisfying all four binomial conditions."
+        },
+        {
+          "q": "A fair coin is tossed 8 times. Find the probability of getting exactly 5 heads, using $P(X=r)=\\binom{n}{r}p^r(1-p)^{n-r}$.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Calculating binomial probabilities",
+          "answer": "$X\\sim B(8,0.5)$. $P(X=5)=\\binom{8}{5}(0.5)^5(0.5)^3=56(0.03125)(0.125)=56(0.00390625)\\approx0.2188$.",
+          "explanation": "$X\\sim B(8,0.5)$. $P(X=5)=\\binom{8}{5}(0.5)^5(0.5)^3=56(0.03125)(0.125)=56(0.00390625)\\approx0.2188$."
+        },
+        {
+          "q": "A factory produces items with a defect rate of 10%. In a sample of 6 items, find the probability that exactly 2 are defective.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Calculating binomial probabilities",
+          "answer": "$X\\sim B(6,0.1)$. $P(X=2)=\\binom{6}{2}(0.1)^2(0.9)^4=15(0.01)(0.6561)\\approx0.0984$.",
+          "explanation": "$X\\sim B(6,0.1)$. $P(X=2)=\\binom{6}{2}(0.1)^2(0.9)^4=15(0.01)(0.6561)\\approx0.0984$."
+        },
+        {
+          "q": "A fair coin is tossed 6 times. Find the probability of getting exactly 4 heads.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Calculating binomial probabilities",
+          "answer": "$X\\sim B(6,0.5)$. $P(X=4)=\\binom{6}{4}(0.5)^4(0.5)^2=15(0.0625)(0.25)=0.234375$.",
+          "explanation": "$X\\sim B(6,0.5)$. $P(X=4)=\\binom{6}{4}(0.5)^4(0.5)^2=15(0.0625)(0.25)=0.234375$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -1.0,
+                "label": "$(1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A factory produces items with a defect rate of 20%. In a sample of 5 items, find the probability that exactly 1 is defective.",
+          "difficulty": "Foundational",
+          "question_type": "FRQ",
+          "target": "Calculating binomial probabilities",
+          "answer": "$X\\sim B(5,0.2)$. $P(X=1)=\\binom{5}{1}(0.2)^1(0.8)^4=5(0.2)(0.4096)=0.4096$.",
+          "explanation": "$X\\sim B(5,0.2)$. $P(X=1)=\\binom{5}{1}(0.2)^1(0.8)^4=5(0.2)(0.4096)=0.4096$."
+        }
+      ]
+    },
+    {
+      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
+      "questions": [
+        {
+          "q": "A biased coin has $P(\\mathrm{heads})=0.3$. It is tossed 5 times. Find $P(X\\leq1)$, where $X$ is the number of heads.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Cumulative binomial probabilities",
+          "answer": "$P(X=0)=\\binom{5}{0}(0.3)^0(0.7)^5=0.16807$. $P(X=1)=\\binom{5}{1}(0.3)^1(0.7)^4=5(0.3)(0.2401)=0.36015$. $P(X\\leq1)=0.16807+0.36015\\approx0.5282$.",
+          "explanation": "$P(X=0)=\\binom{5}{0}(0.3)^0(0.7)^5=0.16807$. $P(X=1)=\\binom{5}{1}(0.3)^1(0.7)^4=5(0.3)(0.2401)=0.36015$. $P(X\\leq1)=0.16807+0.36015\\approx0.5282$."
+        },
+        {
+          "q": "Using the same distribution $X\\sim B(5,0.3)$, find $P(X\\geq2)$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Cumulative binomial probabilities",
+          "answer": "$P(X\\geq2)=1-P(X\\leq1)=1-0.5282\\approx0.4718$.",
+          "explanation": "$P(X\\geq2)=1-P(X\\leq1)=1-0.5282\\approx0.4718$."
+        },
+        {
+          "q": "A biased coin has $P(\\mathrm{heads})=0.2$. It is tossed 4 times. Find $P(X\\leq1)$, where $X$ is the number of heads.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Cumulative binomial probabilities",
+          "answer": "$P(X=0)=\\binom{4}{0}(0.2)^0(0.8)^4=0.4096$. $P(X=1)=\\binom{4}{1}(0.2)^1(0.8)^3=4(0.2)(0.512)=0.4096$. $P(X\\leq1)=0.4096+0.4096=0.8192$.",
+          "explanation": "$P(X=0)=\\binom{4}{0}(0.2)^0(0.8)^4=0.4096$. $P(X=1)=\\binom{4}{1}(0.2)^1(0.8)^3=4(0.2)(0.512)=0.4096$. $P(X\\leq1)=0.4096+0.4096=0.8192$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-1)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -1.0,
+                "label": "$(-1,-1)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A random variable $X\\sim B(40,0.25)$. Find the mean and variance, using $E(X)=np$ and $\\mathrm{Var}(X)=np(1-p)$.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Mean and variance of a binomial distribution",
+          "answer": "$E(X)=np=40(0.25)=10$. $\\mathrm{Var}(X)=np(1-p)=40(0.25)(0.75)=7.5$.",
+          "explanation": "$E(X)=np=40(0.25)=10$. $\\mathrm{Var}(X)=np(1-p)=40(0.25)(0.75)=7.5$."
+        },
+        {
+          "q": "A random variable $X\\sim B(60,0.2)$. Find the mean and variance.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Mean and variance of a binomial distribution",
+          "answer": "$E(X)=np=60(0.2)=12$. $\\mathrm{Var}(X)=np(1-p)=60(0.2)(0.8)=9.6$.",
+          "explanation": "$E(X)=np=60(0.2)=12$. $\\mathrm{Var}(X)=np(1-p)=60(0.2)(0.8)=9.6$."
+        },
+        {
+          "q": "A random variable $X\\sim B(80,0.1)$. Find the mean and variance.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Mean and variance of a binomial distribution",
+          "answer": "$E(X)=np=80(0.1)=8$. $\\mathrm{Var}(X)=np(1-p)=80(0.1)(0.9)=7.2$.",
+          "explanation": "$E(X)=np=80(0.1)=8$. $\\mathrm{Var}(X)=np(1-p)=80(0.1)(0.9)=7.2$."
+        },
+        {
+          "q": "A random variable $X\\sim B(50,0.6)$. Find the mean and variance.",
+          "difficulty": "Intermediate",
+          "question_type": "FRQ",
+          "target": "Mean and variance of a binomial distribution",
+          "answer": "$E(X)=np=50(0.6)=30$. $\\mathrm{Var}(X)=np(1-p)=50(0.6)(0.4)=12$.",
+          "explanation": "$E(X)=np=50(0.6)=30$. $\\mathrm{Var}(X)=np(1-p)=50(0.6)(0.4)=12$."
+        }
+      ]
+    },
+    {
+      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
+      "questions": [
+        {
+          "q": "A random variable $X\\sim B(n,0.4)$ has mean $E(X)=20$. Find $n$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Finding an unknown parameter",
+          "cross_lesson": "14.01 Energy, Work & Power",
+          "answer": "$E(X)=np$: $20=n(0.4)$, so $n=50$.",
+          "explanation": "$E(X)=np$: $20=n(0.4)$, so $n=50$."
+        },
+        {
+          "q": "A random variable $X\\sim B(25,p)$ has mean $E(X)=10$. Find $p$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Finding an unknown parameter",
+          "cross_lesson": "15.01 Representation of Data",
+          "answer": "$E(X)=np$: $10=25p$, so $p=0.4$.",
+          "explanation": "$E(X)=np$: $10=25p$, so $p=0.4$.",
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "Q1",
+              "Q2",
+              "Q3",
+              "Q4",
+              "Q5"
+            ],
+            "values": [
+              21,
+              27,
+              32,
+              25,
+              30
+            ],
+            "ylabel": "Frequency",
+            "highlight_index": 2,
+            "width": 230
+          }
+        },
+        {
+          "q": "A random variable $X\\sim B(n,0.25)$ has variance $\\mathrm{Var}(X)=9$. Find $n$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Finding an unknown parameter",
+          "cross_lesson": "16.01 Permutations & Combinations",
+          "answer": "$\\mathrm{Var}(X)=np(1-p)$: $9=n(0.25)(0.75)=0.1875n$, so $n=\\frac{9}{0.1875}=48$.",
+          "explanation": "$\\mathrm{Var}(X)=np(1-p)$: $9=n(0.25)(0.75)=0.1875n$, so $n=\\frac{9}{0.1875}=48$."
+        },
+        {
+          "q": "A random variable $X\\sim B(n,0.5)$ has variance $\\mathrm{Var}(X)=12.5$. Find $n$.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Finding an unknown parameter",
+          "cross_lesson": "17.01 Discrete Random Variables",
+          "answer": "$\\mathrm{Var}(X)=np(1-p)$: $12.5=n(0.5)(0.5)=0.25n$, so $n=\\frac{12.5}{0.25}=50$.",
+          "explanation": "$\\mathrm{Var}(X)=np(1-p)$: $12.5=n(0.5)(0.5)=0.25n$, so $n=\\frac{12.5}{0.25}=50$."
+        },
+        {
+          "q": "A multiple-choice quiz has 10 questions, each with 4 options, only one of which is correct. A student guesses randomly on every question. Find the probability the student gets at least 8 questions correct.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Using the binomial distribution to model a real scenario",
+          "cross_lesson": "19.01 Normal Distribution",
+          "answer": "$X\\sim B(10,0.25)$. $P(X=8)=\\binom{10}{8}(0.25)^8(0.75)^2\\approx45(0.0000153)(0.5625)\\approx0.000387$. $P(X=9)=\\binom{10}{9}(0.25)^9(0.75)^1\\approx10(0.00000381)(0.75)\\approx0.0000286$. $P(X=10)=(0.25)^{10}\\approx0.00000095$. $P(X\\geq8)\\approx0.000387+0.0000286+0.00000095\\approx0.000417$.",
+          "explanation": "$X\\sim B(10,0.25)$. $P(X=8)=\\binom{10}{8}(0.25)^8(0.75)^2\\approx45(0.0000153)(0.5625)\\approx0.000387$. $P(X=9)=\\binom{10}{9}(0.25)^9(0.75)^1\\approx10(0.00000381)(0.75)\\approx0.0000286$. $P(X=10)=(0.25)^{10}\\approx0.00000095$. $P(X\\geq8)\\approx0.000387+0.0000286+0.00000095\\approx0.000417$."
+        },
+        {
+          "q": "A basketball player has a 70% free-throw success rate. Find the probability that the player makes exactly 3 out of 5 free throws.",
+          "difficulty": "Challenging",
+          "question_type": "FRQ",
+          "target": "Using the binomial distribution to model a real scenario",
+          "cross_lesson": "2.01 Simultaneous Equations & Inequalities",
+          "answer": "$X\\sim B(5,0.7)$. $P(X=3)=\\binom{5}{3}(0.7)^3(0.3)^2=10(0.343)(0.09)=0.3087$.",
+          "explanation": "$X\\sim B(5,0.7)$. $P(X=3)=\\binom{5}{3}(0.7)^3(0.3)^2=10(0.343)(0.09)=0.3087$."
+        }
+      ]
+    },
+    {
+      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
           "q": "Which of the following is NOT a required condition for a variable $X$ to have a binomial distribution $B(n, p)$?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Binomial Criteria & Single Probabilities",
           "choices": [
             "The probability of success changes with each trial",
             "There is a fixed number of trials $n$",
@@ -16,10 +279,14 @@
             "Trials are independent of one another"
           ],
           "correct": 0,
-          "answer": "In a binomial distribution, the probability of success $p$ must remain strictly constant across all trials."
+          "answer": "In a binomial distribution, the probability of success $p$ must remain strictly constant across all trials.",
+          "explanation": "In a binomial distribution, the probability of success $p$ must remain strictly constant across all trials."
         },
         {
           "q": "If $X \\sim B(6, 0.3)$, calculate $P(X = 3)$ correct to 4 decimal places.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Binomial Criteria & Single Probabilities",
           "choices": [
             "$0.1852$",
             "$0.2541$",
@@ -27,10 +294,14 @@
             "$0.1176$"
           ],
           "correct": 0,
-          "answer": "$P(X = 3) = \\binom{6}{3}(0.3)^3(0.7)^3 = 20 \\times 0.027 \\times 0.343 = 0.18522 \\approx 0.1852$."
+          "answer": "$P(X = 3) = \\binom{6}{3}(0.3)^3(0.7)^3 = 20 \\times 0.027 \\times 0.343 = 0.18522 \\approx 0.1852$.",
+          "explanation": "$P(X = 3) = \\binom{6}{3}(0.3)^3(0.7)^3 = 20 \\times 0.027 \\times 0.343 = 0.18522 \\approx 0.1852$."
         },
         {
           "q": "If $X \\sim B(5, 0.4)$, find $P(X = 0)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Binomial Criteria & Single Probabilities",
           "choices": [
             "$0.0778$",
             "$0.0102$",
@@ -38,26 +309,48 @@
             "$0.1000$"
           ],
           "correct": 0,
-          "answer": "$P(X = 0) = (1 - 0.4)^5 = (0.6)^5 = 0.07776 \\approx 0.0778$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 2: Cumulative Binomial Probabilities",
-      "questions": [
+          "answer": "$P(X = 0) = (1 - 0.4)^5 = (0.6)^5 = 0.07776 \\approx 0.0778$.",
+          "explanation": "$P(X = 0) = (1 - 0.4)^5 = (0.6)^5 = 0.07776 \\approx 0.0778$.",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (0))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 0.0,
+                "y": -2.0,
+                "label": "$(0,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
         {
           "q": "If $X \\sim B(4, 0.5)$, find $P(X \\geq 2)$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Cumulative Binomial Probabilities",
           "choices": [
-            "$\\dfrac{11}{16} = 0.6875$",
-            "$\\dfrac{1}{2} = 0.5000$",
-            "$\\dfrac{5}{16} = 0.3125$",
-            "$\\dfrac{3}{8} = 0.3750$"
+            "$\\frac{11}{16} = 0.6875$",
+            "$\\frac{1}{2} = 0.5000$",
+            "$\\frac{5}{16} = 0.3125$",
+            "$\\frac{3}{8} = 0.3750$"
           ],
           "correct": 0,
-          "answer": "$P(X < 2) = P(0) + P(1) = \\frac{1}{16} + \\frac{4}{16} = \\frac{5}{16}$. Then $P(X \\geq 2) = 1 - 5/16 = 11/16 = 0.6875$."
+          "answer": "$P(X < 2) = P(0) + P(1) = \\frac{1}{16} + \\frac{4}{16} = \\frac{5}{16}$. Then $P(X \\geq 2) = 1 - 5/16 = 11/16 = 0.6875$.",
+          "explanation": "$P(X < 2) = P(0) + P(1) = \\frac{1}{16} + \\frac{4}{16} = \\frac{5}{16}$. Then $P(X \\geq 2) = 1 - 5/16 = 11/16 = 0.6875$."
         },
         {
           "q": "A manufacturer knows that 5% of lightbulbs are defective. In a random sample of 20 bulbs, what is the probability that at most 1 is defective?",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Cumulative Binomial Probabilities",
           "choices": [
             "$0.7358$",
             "$0.6824$",
@@ -65,26 +358,29 @@
             "$0.9128$"
           ],
           "correct": 0,
-          "answer": "$X \\sim B(20, 0.05)$. $P(X \\leq 1) = P(0) + P(1) = (0.95)^{20} + 20(0.05)(0.95)^{19} = 0.358486 + 0.377354 = 0.73584 \\approx 0.7358$."
+          "answer": "$X \\sim B(20, 0.05)$. $P(X \\leq 1) = P(0) + P(1) = (0.95)^{20} + 20(0.05)(0.95)^{19} = 0.358486 + 0.377354 = 0.73584 \\approx 0.7358$.",
+          "explanation": "$X \\sim B(20, 0.05)$. $P(X \\leq 1) = P(0) + P(1) = (0.95)^{20} + 20(0.05)(0.95)^{19} = 0.358486 + 0.377354 = 0.73584 \\approx 0.7358$."
         },
         {
           "q": "A fair coin is tossed 6 times. Find the probability of obtaining at least 5 heads.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Cumulative Binomial Probabilities",
           "choices": [
-            "$\\dfrac{7}{64} \\approx 0.1094$",
-            "$\\dfrac{6}{64} \\approx 0.0938$",
-            "$\\dfrac{1}{64} \\approx 0.0156$",
-            "$\\dfrac{11}{64} \\approx 0.1719$"
+            "$\\frac{7}{64} \\approx 0.1094$",
+            "$\\frac{6}{64} \\approx 0.0938$",
+            "$\\frac{1}{64} \\approx 0.0156$",
+            "$\\frac{11}{64} \\approx 0.1719$"
           ],
           "correct": 0,
-          "answer": "$P(X \\geq 5) = P(5) + P(6) = \\binom{6}{5}(1/2)^6 + \\binom{6}{6}(1/2)^6 = \\frac{6 + 1}{64} = \\frac{7}{64} \\approx 0.1094$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 3: Mean & Variance of the Binomial Distribution",
-      "questions": [
+          "answer": "$P(X \\geq 5) = P(5) + P(6) = \\binom{6}{5}(1/2)^6 + \\binom{6}{6}(1/2)^6 = \\frac{6 + 1}{64} = \\frac{7}{64} \\approx 0.1094$.",
+          "explanation": "$P(X \\geq 5) = P(5) + P(6) = \\binom{6}{5}(1/2)^6 + \\binom{6}{6}(1/2)^6 = \\frac{6 + 1}{64} = \\frac{7}{64} \\approx 0.1094$."
+        },
         {
           "q": "A random variable $X \\sim B(48, 0.25)$. Find its mean and standard deviation.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Mean & Variance of the Binomial Distribution",
           "choices": [
             "Mean $= 12$, $\\sigma = 3$",
             "Mean $= 12$, $\\sigma = 9$",
@@ -92,10 +388,14 @@
             "Mean $= 12$, $\\sigma = \\sqrt{3}$"
           ],
           "correct": 0,
-          "answer": "Mean $\\mu = np = 48(0.25) = 12$. Variance $\\sigma^2 = np(1 - p) = 48(0.25)(0.75) = 9$. Standard deviation $\\sigma = \\sqrt{9} = 3$."
+          "answer": "Mean $\\mu = np = 48(0.25) = 12$. Variance $\\sigma^2 = np(1 - p) = 48(0.25)(0.75) = 9$. Standard deviation $\\sigma = \\sqrt{9} = 3$.",
+          "explanation": "Mean $\\mu = np = 48(0.25) = 12$. Variance $\\sigma^2 = np(1 - p) = 48(0.25)(0.75) = 9$. Standard deviation $\\sigma = \\sqrt{9} = 3$."
         },
         {
           "q": "For a binomial distribution $X \\sim B(n, p)$, the mean is 6 and the variance is 3.6. Find $n$ and $p$.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Mean & Variance of the Binomial Distribution",
           "choices": [
             "$n = 15, p = 0.4$",
             "$n = 20, p = 0.3$",
@@ -103,10 +403,39 @@
             "$n = 24, p = 0.25$"
           ],
           "correct": 0,
-          "answer": "$\\sigma^2 = \\mu(1 - p) \\Rightarrow 3.6 = 6(1 - p) \\Rightarrow 1 - p = 0.6 \\Rightarrow p = 0.4$. Then $n = 6/0.4 = 15$."
-        },
+          "answer": "$\\sigma^2 = \\mu(1 - p) \\Rightarrow 3.6 = 6(1 - p) \\Rightarrow 1 - p = 0.6 \\Rightarrow p = 0.4$. Then $n = 6/0.4 = 15$.",
+          "explanation": "$\\sigma^2 = \\mu(1 - p) \\Rightarrow 3.6 = 6(1 - p) \\Rightarrow 1 - p = 0.6 \\Rightarrow p = 0.4$. Then $n = 6/0.4 = 15$.",
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "Q1",
+              "Q2",
+              "Q3",
+              "Q4",
+              "Q5"
+            ],
+            "values": [
+              21,
+              27,
+              32,
+              25,
+              30
+            ],
+            "ylabel": "Frequency",
+            "highlight_index": 2,
+            "width": 230
+          }
+        }
+      ]
+    },
+    {
+      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
+      "questions": [
         {
           "q": "What is the maximum possible variance of a binomial distribution with $n = 40$ trials?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Mean & Variance of the Binomial Distribution",
           "choices": [
             "10",
             "20",
@@ -114,15 +443,14 @@
             "40"
           ],
           "correct": 0,
-          "answer": "Variance $= np(1 - p)$. The quadratic $p(1 - p)$ is maximized at $p = 0.5$, giving maximum variance $= 40(0.5)(0.5) = 10$."
-        }
-      ]
-    },
-    {
-      "heading": "Section 4: Contextual Modeling & Problem Solving",
-      "questions": [
+          "answer": "Variance $= np(1 - p)$. The quadratic $p(1 - p)$ is maximized at $p = 0.5$, giving maximum variance $= 40(0.5)(0.5) = 10$.",
+          "explanation": "Variance $= np(1 - p)$. The quadratic $p(1 - p)$ is maximized at $p = 0.5$, giving maximum variance $= 40(0.5)(0.5) = 10$."
+        },
         {
           "q": "A treatment is successful for 80% of patients. If 10 patients are treated, what is the most likely number of successful outcomes (the mode)?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Contextual Modeling & Problem Solving",
           "choices": [
             "8",
             "7",
@@ -130,10 +458,14 @@
             "10"
           ],
           "correct": 0,
-          "answer": "The mean is $np = 10(0.8) = 8$. For integer $(n+1)p = 11(0.8) = 8.8$, the mode is the integer part $\\lfloor 8.8 \\rfloor = 8$."
+          "answer": "The mean is $np = 10(0.8) = 8$. For integer $(n+1)p = 11(0.8) = 8.8$, the mode is the integer part $\\lfloor 8.8 \\rfloor = 8$.",
+          "explanation": "The mean is $np = 10(0.8) = 8$. For integer $(n+1)p = 11(0.8) = 8.8$, the mode is the integer part $\\lfloor 8.8 \\rfloor = 8$."
         },
         {
           "q": "How many times must a fair die be rolled so that the probability of getting at least one 6 is greater than $0.9$?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Contextual Modeling & Problem Solving",
           "choices": [
             "At least 13 rolls",
             "At least 10 rolls",
@@ -141,10 +473,14 @@
             "At least 18 rolls"
           ],
           "correct": 0,
-          "answer": "$P(X \\geq 1) = 1 - (5/6)^n > 0.9 \\Rightarrow (5/6)^n < 0.1 \\Rightarrow n\\ln(5/6) < \\ln(0.1) \\Rightarrow n > \\frac{\\ln(0.1)}{\\ln(5/6)} = \\frac{-2.3026}{-0.1823} \\approx 12.63$. Least integer is 13."
+          "answer": "$P(X \\geq 1) = 1 - (5/6)^n > 0.9 \\Rightarrow (5/6)^n < 0.1 \\Rightarrow n\\ln(5/6) < \\ln(0.1) \\Rightarrow n > \\frac{\\ln(0.1)}{\\ln(5/6)} = \\frac{-2.3026}{-0.1823} \\approx 12.63$. Least integer is 13.",
+          "explanation": "$P(X \\geq 1) = 1 - (5/6)^n > 0.9 \\Rightarrow (5/6)^n < 0.1 \\Rightarrow n\\ln(5/6) < \\ln(0.1) \\Rightarrow n > \\frac{\\ln(0.1)}{\\ln(5/6)} = \\frac{-2.3026}{-0.1823} \\approx 12.63$. Least integer is 13."
         },
         {
           "q": "In an exam, 70% of candidates pass. Out of 8 randomly chosen candidates, what is the probability that exactly 6 pass, given that at least 5 pass?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Contextual Modeling & Problem Solving",
           "choices": [
             "$\\approx 0.380$",
             "$\\approx 0.520$",
@@ -152,7 +488,274 @@
             "$\\approx 0.420$"
           ],
           "correct": 0,
-          "answer": "$P(6 \\mid \\geq 5) = \\frac{P(X=6)}{P(X \\geq 5)}$. Calculating with $B(8, 0.7)$: $P(5) = 0.2541, P(6) = 0.2965, P(7) = 0.1977, P(8) = 0.0576$. Sum $= 0.8059$. Ratio $= 0.2965 / 0.8059 \\approx 0.368$ (approx 0.38)."
+          "answer": "$P(6 \\mid \\geq 5) = \\frac{P(X=6)}{P(X \\geq 5)}$. Calculating with $B(8, 0.7)$: $P(5) = 0.2541, P(6) = 0.2965, P(7) = 0.1977, P(8) = 0.0576$. Sum $= 0.8059$. Ratio $= 0.2965 / 0.8059 \\approx 0.368$ (approx 0.38).",
+          "explanation": "$P(6 \\mid \\geq 5) = \\frac{P(X=6)}{P(X \\geq 5)}$. Calculating with $B(8, 0.7)$: $P(5) = 0.2541, P(6) = 0.2965, P(7) = 0.1977, P(8) = 0.0576$. Sum $= 0.8059$. Ratio $= 0.2965 / 0.8059 \\approx 0.368$ (approx 0.38)."
+        },
+        {
+          "q": "A factory produces light bulbs. The probability that a randomly selected light bulb is defective is $p$. The number of defective light bulbs in a random sample of $n$ bulbs follows a binomial distribution $X \\sim B(n, p)$. It is known that the mean number of defective bulbs in a sample of $n=25$ is $2$. \\\\ (i) Calculate the value of $p$. \\\\ (ii) For a sample of $n=50$ bulbs, calculate the probability of finding exactly $k$ defective bulbs, where $k$ is the smallest integer such that $P(X \\leq k) > 0.9$. \\\\ (iii) If a sample of $n=50$ bulbs is taken, find the smallest value of $n'$ such that the probability of observing at least one defective bulb is greater than $0.999$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Conditions for a binomial distribution",
+          "choices": [
+            "0.04",
+            "0.08",
+            "0.12",
+            "0.16"
+          ],
+          "correct": 1,
+          "answer": "Part (i): For a binomial distribution $X \\sim B(n, p)$, the mean is given by $E(X) = np$. \\\\ We are given $n=25$ and $E(X)=2$. \\\\ So, $25p = 2$, which gives $p = \\frac{2}{25} = 0.08$. \\\\ Part (ii): Now, $n=50$ and $p=0.08$. The number of defective bulbs follows $X \\sim B(50, 0.08)$. \\\\ We need to find the smallest integer $k$ such that $P(X \\leq k) > 0.9$. \\\\ We can use a binomial cumulative distribution table or a calculator. \\\\ Let's calculate a few values: $P(X \\leq 3) = P(X=0) + P(X=1) + P(X=2) + P(X=3)$ Using a binomial CDF calculator or table for $B(50, 0.08)$: \\\\ $P(X \\leq 3) \\approx 0.4503$ $P(X \\leq 4) \\approx 0.6333$ $P(X \\leq 5) \\approx 0.7918$ $P(X \\leq 6) \\approx 0.8941$ $P(X \\leq 7) \\approx 0.9575$ The smallest integer $k$ for which $P(X \\leq k) > 0.9$ is $k=7$. \\\\ Part (iii): We have $n=50$ and $p=0.08$. We want to find the smallest value of $n'$ such that the probability of observing at least one defective bulb is greater than $0.999$. \\\\ The probability of observing at least one defective bulb is $P(X \\geq 1) = 1 - P(X=0)$. \\\\ For a binomial distribution, $P(X=0) = \\binom{n'}{0} p^0 (1-p)^{n'} = (1-p)^{n'}$. \\\\ So we need $1 - (1-p)^{n'} > 0.999$. \\\\ Substituting $p=0.08$, we get $1 - (0.92)^{n'} > 0.999$. \\\\ This means $(0.92)^{n'} \\frac{\\ln(0.001)}{\\ln(0.92)}$. \\\\ $n' > \\frac{-6.907755...}{-0.083381...}$ $n' > 82.847...$ The smallest integer value of $n'$ is $83$. \\\\ The question asks for the smallest value of $n'$ for a sample of size $n=50$. This part of the question seems to imply a re-sampling or a different scenario for $n'$. Assuming $n'$ refers to the sample size for a new calculation of the probability of at least one defective bulb.",
+          "explanation": "Part (i): For a binomial distribution $X \\sim B(n, p)$, the mean is given by $E(X) = np$. \\\\ We are given $n=25$ and $E(X)=2$. \\\\ So, $25p = 2$, which gives $p = \\frac{2}{25} = 0.08$. \\\\ Part (ii): Now, $n=50$ and $p=0.08$. The number of defective bulbs follows $X \\sim B(50, 0.08)$. \\\\ We need to find the smallest integer $k$ such that $P(X \\leq k) > 0.9$. \\\\ We can use a binomial cumulative distribution table or a calculator. \\\\ Let's calculate a few values: $P(X \\leq 3) = P(X=0) + P(X=1) + P(X=2) + P(X=3)$ Using a binomial CDF calculator or table for $B(50, 0.08)$: \\\\ $P(X \\leq 3) \\approx 0.4503$ $P(X \\leq 4) \\approx 0.6333$ $P(X \\leq 5) \\approx 0.7918$ $P(X \\leq 6) \\approx 0.8941$ $P(X \\leq 7) \\approx 0.9575$ The smallest integer $k$ for which $P(X \\leq k) > 0.9$ is $k=7$. \\\\ Part (iii): We have $n=50$ and $p=0.08$. We want to find the smallest value of $n'$ such that the probability of observing at least one defective bulb is greater than $0.999$. \\\\ The probability of observing at least one defective bulb is $P(X \\geq 1) = 1 - P(X=0)$. \\\\ For a binomial distribution, $P(X=0) = \\binom{n'}{0} p^0 (1-p)^{n'} = (1-p)^{n'}$. \\\\ So we need $1 - (1-p)^{n'} > 0.999$. \\\\ Substituting $p=0.08$, we get $1 - (0.92)^{n'} > 0.999$. \\\\ This means $(0.92)^{n'} \\frac{\\ln(0.001)}{\\ln(0.92)}$. \\\\ $n' > \\frac{-6.907755...}{-0.083381...}$ $n' > 82.847...$ The smallest integer value of $n'$ is $83$. \\\\ The question asks for the smallest value of $n'$ for a sample of size $n=50$. This part of the question seems to imply a re-sampling or a different scenario for $n'$. Assuming $n'$ refers to the sample size for a new calculation of the probability of at least one defective bulb.",
+          "figure": {
+            "type": "bars",
+            "categories": [
+              "Q1",
+              "Q2",
+              "Q3",
+              "Q4",
+              "Q5"
+            ],
+            "values": [
+              12,
+              18,
+              23,
+              16,
+              21
+            ],
+            "ylabel": "Frequency",
+            "highlight_index": 2,
+            "width": 230
+          }
+        },
+        {
+          "q": "The scores on a standardized test are normally distributed with a mean of 100 and a standard deviation of 15. A new scoring algorithm is implemented, and the scores are transformed using the rule $Y = aX + b$, where $X$ is the original score and $Y$ is the new score. The new distribution of scores, $Y$, also follows a normal distribution with a mean of 120 and a standard deviation of 22.5. Calculate the value of $a$ and the value of $b$.",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Calculating binomial probabilities",
+          "choices": [
+            "a = 1.5, b = -30",
+            "a = -1.5, b = 270",
+            "a = 1.5, b = 30",
+            "a = 0.67, b = 53"
+          ],
+          "correct": 0,
+          "answer": "Let $X \\sim N(\\mu_X, \\sigma_X^2)$ and $Y \\sim N(\\mu_Y, \\sigma_Y^2)$. We are given $\\mu_X = 100$, $\\sigma_X = 15$, $\\mu_Y = 120$, and $\\sigma_Y = 22.5$. The linear transformation is given by $Y = aX + b$. We know that for a linear transformation $Y = aX + b$, the mean of $Y$ is $\\mu_Y = a\\mu_X + b$ and the standard deviation of $Y$ is $\\sigma_Y = |a|\\sigma_X$. From the standard deviation relationship: $\\sigma_Y = |a|\\sigma_X$ $22.5 = |a| \\times 15$ $|a| = \\frac{22.5}{15} = 1.5$ Now consider the mean relationship: $\\mu_Y = a\\mu_X + b$ $120 = a \\times 100 + b$ We need to consider two cases for $a$: $a=1.5$ or $a=-1.5$. Case 1: $a = 1.5$ $120 = 1.5 \\times 100 + b$ $120 = 150 + b$ $b = 120 - 150 = -30$ This gives $a=1.5$ and $b=-30$. Case 2: $a = -1.5$ $120 = -1.5 \\times 100 + b$ $120 = -150 + b$ $b = 120 + 150 = 270$ This gives $a=-1.5$ and $b=270$. Looking at the choices, option A matches Case 1: $a = 1.5, b = -30$. Option B matches Case 2: $a = -1.5, b = 270$. Without further information or context (e.g., that the transformation should stretch the score range or map it in a specific direction), both could be mathematically valid based on the provided information. However, in most practical scenarios of score transformation for standardization or scaling, the coefficient $a$ is positive unless explicitly stated otherwise for a reflection or inversion. Assuming a standard scaling transformation where the order of scores is preserved, $a$ would be positive. If we consider the common practice of scaling where higher original scores map to higher new scores, we would assume $a>0$, which leads to $a=1.5$.",
+          "explanation": "Let $X \\sim N(\\mu_X, \\sigma_X^2)$ and $Y \\sim N(\\mu_Y, \\sigma_Y^2)$. We are given $\\mu_X = 100$, $\\sigma_X = 15$, $\\mu_Y = 120$, and $\\sigma_Y = 22.5$. The linear transformation is given by $Y = aX + b$. We know that for a linear transformation $Y = aX + b$, the mean of $Y$ is $\\mu_Y = a\\mu_X + b$ and the standard deviation of $Y$ is $\\sigma_Y = |a|\\sigma_X$. From the standard deviation relationship: $\\sigma_Y = |a|\\sigma_X$ $22.5 = |a| \\times 15$ $|a| = \\frac{22.5}{15} = 1.5$ Now consider the mean relationship: $\\mu_Y = a\\mu_X + b$ $120 = a \\times 100 + b$ We need to consider two cases for $a$: $a=1.5$ or $a=-1.5$. Case 1: $a = 1.5$ $120 = 1.5 \\times 100 + b$ $120 = 150 + b$ $b = 120 - 150 = -30$ This gives $a=1.5$ and $b=-30$. Case 2: $a = -1.5$ $120 = -1.5 \\times 100 + b$ $120 = -150 + b$ $b = 120 + 150 = 270$ This gives $a=-1.5$ and $b=270$. Looking at the choices, option A matches Case 1: $a = 1.5, b = -30$. Option B matches Case 2: $a = -1.5, b = 270$. Without further information or context (e.g., that the transformation should stretch the score range or map it in a specific direction), both could be mathematically valid based on the provided information. However, in most practical scenarios of score transformation for standardization or scaling, the coefficient $a$ is positive unless explicitly stated otherwise for a reflection or inversion. Assuming a standard scaling transformation where the order of scores is preserved, $a$ would be positive. If we consider the common practice of scaling where higher original scores map to higher new scores, we would assume $a>0$, which leads to $a=1.5$."
+        },
+        {
+          "q": "A fair six-sided die is rolled 4 times. Let X be the number of times a 6 is obtained. The possible values for X are 0, 1, 2, 3, and 4. The probability of obtaining a 6 on any given roll is $p = \\frac{1}{6}$. The number of trials is $n=4$. This scenario can be modelled by a binomial distribution, denoted as $X \\sim B(n, p)$. Which of the following represents the correct parameters for this binomial distribution?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Cumulative binomial probabilities",
+          "choices": [
+            "$B(4, 1/6)$",
+            "$B(6, 1/4)$",
+            "$B(1, 4/6)$",
+            "$B(4, 4/6)$"
+          ],
+          "correct": 0,
+          "answer": "The problem describes a situation with a fixed number of independent trials (rolling a die 4 times), where each trial has only two possible outcomes (obtaining a 6 or not obtaining a 6), and the probability of success (obtaining a 6) is constant for each trial. In a binomial distribution, denoted as $X \\sim B(n, p)$, $n$ represents the number of trials, and $p$ represents the probability of success on a single trial. From the question: - The number of times the die is rolled is 4, so $n = 4$. - The probability of obtaining a 6 on any given roll is $p = \\frac{1}{6}$. Therefore, the binomial distribution is correctly represented as $X \\sim B(4, \\frac{1}{6})$.",
+          "explanation": "The problem describes a situation with a fixed number of independent trials (rolling a die 4 times), where each trial has only two possible outcomes (obtaining a 6 or not obtaining a 6), and the probability of success (obtaining a 6) is constant for each trial. In a binomial distribution, denoted as $X \\sim B(n, p)$, $n$ represents the number of trials, and $p$ represents the probability of success on a single trial. From the question: - The number of times the die is rolled is 4, so $n = 4$. - The probability of obtaining a 6 on any given roll is $p = \\frac{1}{6}$. Therefore, the binomial distribution is correctly represented as $X \\sim B(4, \\frac{1}{6})$."
+        },
+        {
+          "q": "Cards are dealt from a single shuffled deck without replacement; $X$ is the number of aces dealt. Is $X$ binomially distributed?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Mean and variance of a binomial distribution",
+          "choices": [
+            "No — trials are not independent / probability is not constant",
+            "Yes — but only if $n>30$",
+            "Yes — fixed, independent trials with constant success probability",
+            "No — the number of trials is not fixed"
+          ],
+          "correct": 0,
+          "answer": "The conditions for a binomial distribution (fixed independent trials with constant probability) are not satisfied here.",
+          "explanation": "The conditions for a binomial distribution (fixed independent trials with constant probability) are not satisfied here."
+        },
+        {
+          "q": "A fair coin is tossed 3 times. Let X be the number of heads obtained. What is the probability that X = 2?",
+          "difficulty": "Intermediate",
+          "question_type": "MCQ",
+          "target": "Finding an unknown parameter",
+          "choices": [
+            "$\\frac{1}{8}$",
+            "$\\frac{3}{8}$",
+            "$\\frac{1}{2}$",
+            "$\\frac{7}{8}$"
+          ],
+          "correct": 1,
+          "answer": "This is a binomial distribution scenario. The number of trials is $n=3$ (the number of coin tosses). The probability of success (getting a head) in a single trial is $p = \\frac{1}{2}$, and the probability of failure (getting a tail) is $q = 1-p = \\frac{1}{2}$. We want to find the probability of getting exactly $k=2$ heads. The binomial probability formula is $P(X=k) = \\binom{n}{k} p^k q^{n-k}$. Substituting the values: $P(X=2) = \\binom{3}{2} (\\frac{1}{2})^2 (\\frac{1}{2})^{3-2}$ $P(X=2) = \\binom{3}{2} (\\frac{1}{2})^2 (\\frac{1}{2})^1$ First, calculate the binomial coefficient $\\binom{3}{2}$. This represents the number of ways to choose 2 heads from 3 tosses: $\\binom{3}{2} = \\frac{3!}{2!(3-2)!} = \\frac{3!}{2!1!} = \\frac{3 \\times 2 \\times 1}{(2 \\times 1) \\times 1} = 3$. Now, substitute this back into the probability formula: $P(X=2) = 3 \\times (\\frac{1}{4}) \\times (\\frac{1}{2})$ $P(X=2) = 3 \\times \\frac{1}{8}$ $P(X=2) = \\frac{3}{8}$. Alternatively, we can list all possible outcomes for 3 coin tosses (H for heads, T for tails): HHH, HHT, HTH, THH, HTT, THT, TTH, TTT. There are $2^3 = 8$ total possible outcomes. The outcomes with exactly 2 heads are: HHT, HTH, THH. There are 3 such outcomes. Therefore, the probability of getting exactly 2 heads is $\\frac{\\mathrm{Number\\ of\\ favorable\\ outcomes}}{\\mathrm{Total\\ number\\ of\\ outcomes}} = \\frac{3}{8}$.",
+          "explanation": "This is a binomial distribution scenario. The number of trials is $n=3$ (the number of coin tosses). The probability of success (getting a head) in a single trial is $p = \\frac{1}{2}$, and the probability of failure (getting a tail) is $q = 1-p = \\frac{1}{2}$. We want to find the probability of getting exactly $k=2$ heads. The binomial probability formula is $P(X=k) = \\binom{n}{k} p^k q^{n-k}$. Substituting the values: $P(X=2) = \\binom{3}{2} (\\frac{1}{2})^2 (\\frac{1}{2})^{3-2}$ $P(X=2) = \\binom{3}{2} (\\frac{1}{2})^2 (\\frac{1}{2})^1$ First, calculate the binomial coefficient $\\binom{3}{2}$. This represents the number of ways to choose 2 heads from 3 tosses: $\\binom{3}{2} = \\frac{3!}{2!(3-2)!} = \\frac{3!}{2!1!} = \\frac{3 \\times 2 \\times 1}{(2 \\times 1) \\times 1} = 3$. Now, substitute this back into the probability formula: $P(X=2) = 3 \\times (\\frac{1}{4}) \\times (\\frac{1}{2})$ $P(X=2) = 3 \\times \\frac{1}{8}$ $P(X=2) = \\frac{3}{8}$. Alternatively, we can list all possible outcomes for 3 coin tosses (H for heads, T for tails): HHH, HHT, HTH, THH, HTT, THT, TTH, TTT. There are $2^3 = 8$ total possible outcomes. The outcomes with exactly 2 heads are: HHT, HTH, THH. There are 3 such outcomes. Therefore, the probability of getting exactly 2 heads is $\\frac{\\mathrm{Number\\ of\\ favorable\\ outcomes}}{\\mathrm{Total\\ number\\ of\\ outcomes}} = \\frac{3}{8}$."
+        }
+      ]
+    },
+    {
+      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+      "questions": [
+        {
+          "q": "The weights of bags of sugar are normally distributed with a mean of 1000 g and a standard deviation of 5 g. Let $X$ be the weight of a randomly selected bag of sugar. Calculate the probability that a bag of sugar weighs between 990 g and 1010 g.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Using the binomial distribution to model a real scenario",
+          "choices": [
+            "0.9545",
+            "0.6827",
+            "0.9772",
+            "0.0228"
+          ],
+          "correct": 0,
+          "answer": "Let $X$ be the weight of a randomly selected bag of sugar. We are given that $X \\sim N(\\mu=1000, \\sigma^2=5^2)$. We want to find $P(990 < X < 1010)$. First, we convert the weights to z-scores: For $X=990$, $z = \\frac{990 - 1000}{5} = \\frac{-10}{5} = -2$. For $X=1010$, $z = \\frac{1010 - 1000}{5} = \\frac{10}{5} = 2$. So we need to find $P(-2 < Z < 2)$, where $Z$ is the standard normal distribution. This probability can be found using a standard normal distribution table or calculator. The area to the left of $z=2$ is approximately $0.9772$, and the area to the left of $z=-2$ is approximately $0.0228$. Therefore, $P(-2 < Z < 2) = P(Z < 2) - P(Z < -2) \\approx 0.9772 - 0.0228 = 0.9544$. Alternatively, using the empirical rule (68-95-99.7 rule), approximately 95% of the data falls within 2 standard deviations of the mean. Thus, $P(\\mu - 2\\sigma < X < \\mu + 2\\sigma) \\approx 0.95$. Comparing this with the options, 0.9545 is the closest value.",
+          "explanation": "Let $X$ be the weight of a randomly selected bag of sugar. We are given that $X \\sim N(\\mu=1000, \\sigma^2=5^2)$. We want to find $P(990 < X < 1010)$. First, we convert the weights to z-scores: For $X=990$, $z = \\frac{990 - 1000}{5} = \\frac{-10}{5} = -2$. For $X=1010$, $z = \\frac{1010 - 1000}{5} = \\frac{10}{5} = 2$. So we need to find $P(-2 < Z < 2)$, where $Z$ is the standard normal distribution. This probability can be found using a standard normal distribution table or calculator. The area to the left of $z=2$ is approximately $0.9772$, and the area to the left of $z=-2$ is approximately $0.0228$. Therefore, $P(-2 < Z < 2) = P(Z < 2) - P(Z < -2) \\approx 0.9772 - 0.0228 = 0.9544$. Alternatively, using the empirical rule (68-95-99.7 rule), approximately 95% of the data falls within 2 standard deviations of the mean. Thus, $P(\\mu - 2\\sigma < X < \\mu + 2\\sigma) \\approx 0.95$. Comparing this with the options, 0.9545 is the closest value.",
+          "cross_lesson": "17.01 Discrete Random Variables"
+        },
+        {
+          "q": "A factory tests 30 independent components, each with a fixed probability of being defective; $X$ is the number of defective components. Is $X$ binomially distributed?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Distinguishing binomial situations from non-binomial situations",
+          "choices": [
+            "Yes — fixed, independent trials with constant success probability",
+            "No — the number of trials is not fixed",
+            "No — trials are not independent / probability is not constant",
+            "Yes — but only if $n>30$"
+          ],
+          "correct": 0,
+          "answer": "The trials are fixed in number, independent, and each has the same probability of success, so the conditions for a binomial distribution are satisfied.",
+          "explanation": "The trials are fixed in number, independent, and each has the same probability of success, so the conditions for a binomial distribution are satisfied.",
+          "cross_lesson": "19.01 Normal Distribution",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (1))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": 1.0,
+                "y": -2.0,
+                "label": "$(1,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "A die is rolled 15 times; $X$ is the number of sixes. Is $X$ binomially distributed?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "A well-designed word problem: quality control sampling",
+          "choices": [
+            "No — trials are not independent / probability is not constant",
+            "Yes — but only if $n>30$",
+            "Yes — fixed, independent trials with constant success probability",
+            "No — the number of trials is not fixed"
+          ],
+          "correct": 2,
+          "answer": "The trials are fixed in number, independent, and each has the same probability of success, so the conditions for a binomial distribution are satisfied.",
+          "explanation": "The trials are fixed in number, independent, and each has the same probability of success, so the conditions for a binomial distribution are satisfied.",
+          "cross_lesson": "2.01 Simultaneous Equations & Inequalities"
+        },
+        {
+          "q": "A fair coin is tossed 20 times; $X$ is the number of heads. Is $X$ binomially distributed?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Binomial Criteria & Single Probabilities",
+          "choices": [
+            "No — trials are not independent / probability is not constant",
+            "Yes — but only if $n>30$",
+            "Yes — fixed, independent trials with constant success probability",
+            "No — the number of trials is not fixed"
+          ],
+          "correct": 2,
+          "answer": "The trials are fixed in number, independent, and each has the same probability of success, so the conditions for a binomial distribution are satisfied.",
+          "explanation": "The trials are fixed in number, independent, and each has the same probability of success, so the conditions for a binomial distribution are satisfied.",
+          "cross_lesson": "3.01 Graphs & Transformations"
+        },
+        {
+          "q": "A survey asks 50 randomly and independently selected people the same yes/no question; $X$ is the number who say yes. Is $X$ binomially distributed?",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Cumulative Binomial Probabilities",
+          "choices": [
+            "No — trials are not independent / probability is not constant",
+            "No — the number of trials is not fixed",
+            "Yes — fixed, independent trials with constant success probability",
+            "Yes — but only if $n>30$"
+          ],
+          "correct": 2,
+          "answer": "The trials are fixed in number, independent, and each has the same probability of success, so the conditions for a binomial distribution are satisfied.",
+          "explanation": "The trials are fixed in number, independent, and each has the same probability of success, so the conditions for a binomial distribution are satisfied.",
+          "cross_lesson": "4.01 Coordinate Geometry"
+        },
+        {
+          "q": "Given $X\\sim B(73,17/20)$, find $E(X)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Mean & Variance of the Binomial Distribution",
+          "choices": [
+            "1221/20",
+            "1251/20",
+            "1261/20",
+            "1241/20"
+          ],
+          "correct": 3,
+          "answer": "Applying Binomial Distribution principles, $E(X)=np=73\\times17/20=1241/20$ Therefore, the verified correct option is 1241/20.",
+          "explanation": "Applying Binomial Distribution principles, $E(X)=np=73\\times17/20=1241/20$ Therefore, the verified correct option is 1241/20.",
+          "cross_lesson": "5.01 Trigonometry",
+          "figure": {
+            "type": "plot",
+            "fns": [
+              "0.5*(x - (-1))**2 + (-2)",
+              "0.5*x + 1"
+            ],
+            "xmin": -5,
+            "xmax": 5,
+            "ymin": -4,
+            "ymax": 6,
+            "point_labels": [
+              {
+                "x": -1.0,
+                "y": -2.0,
+                "label": "$(-1,-2)$"
+              }
+            ],
+            "width": 230
+          }
+        },
+        {
+          "q": "Given $X\\sim B(39,11/20)$, find $E(X)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Contextual Modeling & Problem Solving",
+          "choices": [
+            "409/20",
+            "429/20",
+            "439/20",
+            "449/20"
+          ],
+          "correct": 1,
+          "answer": "Applying Binomial Distribution principles, $E(X)=np=39\\times11/20=429/20$ Therefore, the verified correct option is 429/20.",
+          "explanation": "Applying Binomial Distribution principles, $E(X)=np=39\\times11/20=429/20$ Therefore, the verified correct option is 429/20.",
+          "cross_lesson": "6.01 Differentiation & Integration"
+        },
+        {
+          "q": "Given $X\\sim B(38,13/20)$, find $E(X)$.",
+          "difficulty": "Challenging",
+          "question_type": "MCQ",
+          "target": "Conditions for a binomial distribution",
+          "choices": [
+            "247/10",
+            "257/10",
+            "237/10",
+            "126/5"
+          ],
+          "correct": 0,
+          "answer": "Applying Binomial Distribution principles, $E(X)=np=38\\times13/20=247/10$ Therefore, the verified correct option is 247/10.",
+          "explanation": "Applying Binomial Distribution principles, $E(X)=np=38\\times13/20=247/10$ Therefore, the verified correct option is 247/10.",
+          "cross_lesson": "7.01 Statistics & Probability"
         }
       ]
     }
