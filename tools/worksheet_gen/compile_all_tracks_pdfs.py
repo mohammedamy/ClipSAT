@@ -99,9 +99,7 @@ def main():
     tracks = [args.track] if args.track else ALL_TRACKS
     tot_pdfs = 0
     already_done = {
-        "sat", "act", "act2", "act2l2", "est", "est2", "est2l2",
-        "qudrat", "tahsili", "apab", "apbc", "appc", "apstats",
-        "calculus", "precalc", "linalg",
+        "sat",
     }
     for t in tracks:
         if args.skip_done and t in already_done:
