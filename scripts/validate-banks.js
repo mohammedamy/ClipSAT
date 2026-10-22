@@ -110,13 +110,13 @@ function checkItem(q, push) {
       }
       // Circle center or radius/diameter leak
       if (fig.type === 'circle') {
-        if (/center|المركز/i.test(stem) && fig.center && fig.center.includes(cleanAns)) {
+        if (/center|المركز/i.test(stem) && fig.center && String(fig.center).includes(cleanAns)) {
           push('error', `circle figure leaks center answer "${cleanAns}"`);
         }
-        if (/radius|نصف القطر/i.test(stem) && fig.radius && fig.radius.includes(cleanAns)) {
+        if (/radius|نصف القطر/i.test(stem) && fig.radius && String(fig.radius).includes(cleanAns)) {
           push('error', `circle figure leaks radius answer "${cleanAns}"`);
         }
-        if (/diameter|القطر/i.test(stem) && fig.diameter && fig.diameter.includes(cleanAns)) {
+        if (/diameter|القطر/i.test(stem) && fig.diameter && String(fig.diameter).includes(cleanAns)) {
           push('error', `circle figure leaks diameter answer "${cleanAns}"`);
         }
       }
