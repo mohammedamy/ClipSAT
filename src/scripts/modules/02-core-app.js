@@ -219,10 +219,12 @@
   Plot.prototype.areaUnder=function(f,a,b,fill){
     var c=this.ctx,p=this.pad; c.save();
     c.beginPath(); c.rect(p.l,p.t,this.w-p.l-p.r,this.h-p.t-p.b); c.clip();
-    c.beginPath(); var y0=this.Y(0), N=200; c.moveTo(this.X(a),y0);
-    for(var i=0;i<=N;i++){ var x=a+(b-a)*i/N; c.lineTo(this.X(x),this.Y(Math.max(0,f(x)>=0?f(x):f(x)))); }
-    c.lineTo(this.X(b),y0); c.closePath(); c.fillStyle=fill; c.fill(); c.restore();
+    var x0=Math.min(a,b), x1=Math.max(a,b);
+    c.beginPath(); var y0=this.Y(0), N=200; c.moveTo(this.X(x0),y0);
+    for(var i=0;i<=N;i++){ var x=x0+(x1-x0)*i/N, y=f(x); if(isFinite(y)) c.lineTo(this.X(x),this.Y(y)); }
+    c.lineTo(this.X(x1),y0); c.closePath(); c.fillStyle=fill||'rgba(30,58,110,0.16)'; c.fill(); c.restore();
   };
+  Plot.prototype.shadedArea=Plot.prototype.areaUnder;
   Plot.prototype.segment=function(x1,y1,x2,y2,color,width,dash){
     var c=this.ctx; c.save(); c.beginPath(); c.moveTo(this.X(x1),this.Y(y1)); c.lineTo(this.X(x2),this.Y(y2));
     c.lineWidth=width||2; c.strokeStyle=color; if(dash) c.setLineDash(dash); c.stroke(); c.restore();
@@ -235,9 +237,49 @@
     var c=this.ctx; c.beginPath(); c.arc(this.X(x),this.Y(y),r||5,0,2*Math.PI);
     c.fillStyle=WHITE; c.fill(); c.lineWidth=2; c.strokeStyle=color; c.stroke();
   };
-  Plot.prototype.vline=function(x,color,dash){
+  Plot.prototype.vline=function(x,color,dash,width){
     var c=this.ctx,p=this.pad; c.save(); c.beginPath(); c.moveTo(this.X(x),p.t); c.lineTo(this.X(x),this.h-p.b);
-    c.lineWidth=1.4; c.strokeStyle=color; if(dash) c.setLineDash(dash); c.stroke(); c.restore();
+    c.lineWidth=width||1.4; c.strokeStyle=color; if(dash) c.setLineDash(dash); c.stroke(); c.restore();
+  };
+  Plot.prototype.hline=function(y,color,dash,width){
+    var c=this.ctx,p=this.pad; c.save(); var py=this.Y(y); c.beginPath(); c.moveTo(p.l,py); c.lineTo(this.w-p.r,py);
+    c.lineWidth=width||1.4; c.strokeStyle=color; if(dash) c.setLineDash(dash); c.stroke(); c.restore();
+  };
+  Plot.prototype.parametric=function(fx,fy,tmin,tmax,color,width,dash){
+    var c=this.ctx,p=this.pad; c.save(); c.beginPath();
+    c.rect(p.l,p.t,this.w-p.l-p.r,this.h-p.t-p.b); c.clip();
+    c.beginPath(); var started=false, N=320;
+    for(var i=0;i<=N;i++){
+      var t=tmin+(tmax-tmin)*i/N, x=fx(t), y=fy(t);
+      if(!isFinite(x)||!isFinite(y)){ started=false; continue; }
+      var px=this.X(x), py=this.Y(y);
+      if(!started){ c.moveTo(px,py); started=true; } else c.lineTo(px,py);
+    }
+    c.lineWidth=width||2.4; c.strokeStyle=color||INDIGO; c.lineJoin='round';
+    if(dash) c.setLineDash(dash); c.stroke(); c.restore();
+  };
+  Plot.prototype.label=function(x,y,str,color,align){
+    var c=this.ctx; c.save();
+    c.font='600 11.5px ui-sans-serif, system-ui, sans-serif';
+    c.textAlign=align||'left'; c.textBaseline='middle';
+    var px=this.X(x), py=this.Y(y);
+    c.lineWidth=3; c.strokeStyle=PAPER||WHITE; c.strokeText(String(str),px,py);
+    c.fillStyle=color||INK; c.fillText(String(str),px,py);
+    c.restore();
+  };
+  Plot.prototype.polygon=function(pts,fill,stroke,width){
+    if(!pts||!pts.length) return;
+    var c=this.ctx,p=this.pad; c.save();
+    c.beginPath(); c.rect(p.l,p.t,this.w-p.l-p.r,this.h-p.t-p.b); c.clip();
+    c.beginPath();
+    for(var i=0;i<pts.length;i++){
+      var px=this.X(pts[i][0]), py=this.Y(pts[i][1]);
+      if(i===0) c.moveTo(px,py); else c.lineTo(px,py);
+    }
+    c.closePath();
+    if(fill){ c.fillStyle=fill; c.fill(); }
+    if(stroke){ c.strokeStyle=stroke; c.lineWidth=width||2; c.lineJoin='round'; c.stroke(); }
+    c.restore();
   };
 
   /* ---------- canvas registry & sizing ---------- */
@@ -250,10 +292,15 @@
     return {ctx:ctx, w:rect.width, h:rect.height};
   }
   function drawWidget(wd){
-    if(wd.canvas.offsetParent===null) return false; // hidden
+    if(!wd || !wd.canvas || wd.canvas.offsetParent===null) return false; // hidden
     var s=sizeOf(wd.canvas); if(!s) return false;
-    wd.draw(s.ctx, s.w, s.h);
+    try {
+      wd.draw(s.ctx, s.w, s.h);
+    } catch(err) {
+      if(window.console && console.warn) console.warn('Explorer draw error:', wd.canvas.id, err);
+    }
     wd.seen=true;
+    if(_io){ try { _io.unobserve(wd.canvas); } catch(_){} }
     return true;
   }
   /* Explorers scattered down a long lesson page shouldn't all pay their draw
@@ -261,13 +308,13 @@
      already in the initial viewport draw immediately (no flash of blank
      canvas, e.g. the hero); everything else waits for IntersectionObserver
      to report it scrolling into view before its first draw. Once a widget
-     has drawn once ("seen"), redrawAll() keeps redrawing it on every future
-     call exactly as before — this only defers the *first* paint. */
+     is in the active chapter (offsetParent !== null), redrawAll() draws it
+     whenever a slider moves or goChapter() switches chapters. */
   var _io = ('IntersectionObserver' in window) ? new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
       if(!entry.isIntersecting) return;
       var wd=entry.target._cswd;
-      if(wd && !wd.seen && drawWidget(wd)) _io.unobserve(entry.target); // one-shot once drawn — redrawAll() covers it from here on
+      if(wd && !wd.seen) drawWidget(wd);
     });
   }, {rootMargin:'200px 0px'}) : null;
   function register(canvas, drawFn){
@@ -284,7 +331,6 @@
   }
   function redrawAll(){
     widgets.forEach(function(wd){
-      if(!wd.seen) return; // not yet on screen — the observer will draw it when it is
       drawWidget(wd);
     });
   }
@@ -646,7 +692,7 @@
   window.CS_loadTrackBank = function(trackId){
     if(!trackId||trackId==='home') return Promise.resolve(null); // no question bank for the home page — skip the guaranteed-404 fetch
     if(window.CS_BANK_LOADED[trackId]) return window.CS_BANK_LOADED[trackId];
-    var p = fetch('/bank-data/'+trackId+'.json?v=20261022c')
+    var p = fetch('/bank-data/'+trackId+'.json?v=20261022d')
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(data){
         if(data){
@@ -906,7 +952,7 @@
     if(_figuresPromise) return _figuresPromise;
     _figuresPromise=new Promise(function(resolve,reject){
       var s=document.createElement('script');
-      s.src='/js/figures.js?v=20261022c';
+      s.src='/js/figures.js?v=20261022d';
       s.onload=function(){ window._renderFig&&window.renderMathFigure?resolve():reject(new Error('figures.js did not register')); };
       s.onerror=function(){ _figuresPromise=null; reject(new Error('The figures could not load. Check your connection and try again.')); };
       document.head.appendChild(s);
@@ -964,7 +1010,7 @@
     if(_bankExamPromise) return _bankExamPromise;
     _bankExamPromise=new Promise(function(resolve,reject){
       var s=document.createElement('script');
-      s.src='/js/bank-exam.js?v=20261022c';
+      s.src='/js/bank-exam.js?v=20261022d';
       s.onload=function(){ window.CSBankExam?resolve():reject(new Error('bank-exam.js did not register')); };
       s.onerror=function(){ _bankExamPromise=null; reject(new Error('The exam generator could not load. Check your connection and try again.')); };
       document.head.appendChild(s);
@@ -1067,6 +1113,7 @@
 
   /* ===== arrow helper (pixel coords) for Calc III explorers ===== */
   function arrow(ctx,x1,y1,x2,y2,color,lw){
+    if(typeof color==='number' && typeof lw==='string'){ var _tmp=color; color=lw; lw=2.2; }
     ctx.save(); ctx.strokeStyle=color; ctx.fillStyle=color; ctx.lineWidth=lw||2;
     ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
     var ang=Math.atan2(y2-y1,x2-x1), s=Math.max(5,(lw||2)*2.6);
@@ -1222,6 +1269,9 @@
         a.classList.toggle('active', a.getAttribute('data-target')===id);
       });
       if(history.replaceState) history.replaceState(null,'','#view/'+vn+'/'+id);
+      _wireAutoExplorers();
+      redrawAll();
+      setTimeout(redrawAll, 60);
     }
   };
   window.goCatalog=function(){
@@ -1269,7 +1319,15 @@
      Plot/register/redrawAll/fmt/wireDataToggle/renderDataRows/arrow
      helpers as every explorer above.
      ══════════════════════════════════════════════════════════════════ */
-  function _slider(id,fn){ var el=document.getElementById(id); if(el) el.addEventListener('input',fn); return el; }
+  function _slider(id,fn){
+    var el=document.getElementById(id);
+    if(el){
+      var h=function(e){ fn(parseFloat(el.value), e); redrawAll(); };
+      el.addEventListener('input',h);
+      el.addEventListener('change',h);
+    }
+    return el;
+  }
   function _set(id,txt){ var el=document.getElementById(id); if(el) el.textContent=txt; }
   function _deg(r){ return r*180/Math.PI; }
   function _num(k){ return k%1===0 ? String(k) : fmt(k,1); }
@@ -1502,7 +1560,10 @@
           if(dRows) renderDataRows(dRows,rows);
         }
         register(canvas,draw);
-        for(var j=0;j<sliders.length;j++){ sliders[j].addEventListener('input',redrawAll); }
+        for(var j=0;j<sliders.length;j++){
+          sliders[j].addEventListener('input',redrawAll);
+          sliders[j].addEventListener('change',redrawAll);
+        }
       })(canvases[i]);
     }
 

@@ -57,8 +57,8 @@
 
     function refreshReadout(){
       var v=[v1,-1,v3], w=cross(u,v);
-      document.getElementById('ibhlW').textContent='⟨'+fmt(w[0],0)+', '+fmt(w[1],0)+', '+fmt(w[2],2)+'⟩';
-      document.getElementById('ibhlWmag').textContent=fmt(Math.sqrt(w[0]*w[0]+w[1]*w[1]+w[2]*w[2]),3);
+      _set('ibhlW', '⟨'+fmt(w[0],0)+', '+fmt(w[1],0)+', '+fmt(w[2],2)+'⟩');
+      _set('ibhlWmag', fmt(Math.sqrt(w[0]*w[0]+w[1]*w[1]+w[2]*w[2]),3));
       updateDataView(v,w);
     }
 
@@ -108,15 +108,19 @@
 
     btn.addEventListener('click',function(){ if(wrap.hidden) open3d(); else close3d(); });
     slider.addEventListener('input',function(){
-      v3=parseInt(slider.value,10)/10;
-      document.getElementById('ibhlV3lab').textContent=fmt(v3,1);
+      var raw=parseFloat(slider.value);
+      v3=Math.abs(raw)>5 ? raw/10 : raw;
+      _set('ibhlV3lab', fmt(v3,1));
+      _set('ibhlV3Val', fmt(v3,1));
       refreshReadout();
       if(built){ updateScene(); H.render(); }
     });
     if(slider1){
       slider1.addEventListener('input',function(){
-        v1=parseInt(slider1.value,10)/10;
-        document.getElementById('ibhlV1lab').textContent=fmt(v1,1);
+        var raw1=parseFloat(slider1.value);
+        v1=Math.abs(raw1)>5 ? raw1/10 : raw1;
+        _set('ibhlV1lab', fmt(v1,1));
+        _set('ibhlV1Val', fmt(v1,1));
         refreshReadout();
         if(built){ updateScene(); H.render(); }
       });
@@ -432,8 +436,9 @@
       P.curve(fn,INDIGO,2.4);
       P.vline(st.lo,AMBER2,[5,4]); P.vline(st.hi,AMBER2,[5,4]);
       P.vline(xbar,'#AEB8C7',[3,3]);
-      document.getElementById('ibhlCIMargin').textContent=fmt(st.margin,3);
-      document.getElementById('ibhlCIBounds').textContent='('+fmt(st.lo,2)+', '+fmt(st.hi,2)+')';
+      _set('ibhlCIMargin', fmt(st.margin,3));
+      _set('ibhlCIBounds', '('+fmt(st.lo,2)+', '+fmt(st.hi,2)+')');
+      _set('ibhlCIInterval', '('+fmt(st.lo,2)+', '+fmt(st.hi,2)+')');
       updateDataView(st);
     }
     register(canvas,draw);
@@ -441,9 +446,9 @@
     function upd(){
       xbar=parseFloat(sX.value); s=parseFloat(sS.value); n=parseInt(sN.value,10);
       if(sL){ level=parseInt(sL.value,10); }
-      document.getElementById('ibhlCIXbarVal').textContent=fmt(xbar,1);
-      document.getElementById('ibhlCISVal').textContent=fmt(s,1);
-      document.getElementById('ibhlCINVal').textContent=n;
+      _set('ibhlCIXbarVal', fmt(xbar,1));
+      _set('ibhlCISVal', fmt(s,1));
+      _set('ibhlCINVal', n);
       redrawAll();
     }
     sX.addEventListener('input',upd); sS.addEventListener('input',upd); sN.addEventListener('input',upd);
@@ -481,8 +486,11 @@
         c.fillStyle = k===kSel ? 'rgba(200,144,42,0.85)' : 'rgba(30,58,110,0.65)';
         c.fillRect(x0, y1, x1-x0, y0-y1);
       }
-      document.getElementById('ibhlMeanLam').textContent=fmt(lambda,1);
-      document.getElementById('ibhlPX5').textContent=fmt(pmf(kSel,lambda),4);
+      _set('ibhlMeanLam', fmt(lambda,1));
+      _set('ibhlPX5', fmt(pmf(kSel,lambda),4));
+      _set('ibhlPoisPk', fmt(pmf(kSel,lambda),4));
+      _set('ibhlPoisMode', (Math.floor(lambda)===lambda && lambda>=1) ? (lambda-1)+' & '+lambda : String(Math.floor(lambda)));
+      _set('ibhlPoisMeanVar', 'E[X] = Var(X) = '+fmt(lambda,1));
       updateDataView();
     }
     register(canvas,draw);
@@ -490,8 +498,8 @@
     function upd(){
       lambda=parseInt(s.value,10)/10;
       if(sk){ kSel=parseInt(sk.value,10); }
-      document.getElementById('ibhlLambdaLab').textContent=fmt(lambda,1);
-      if(sk){ document.getElementById('ibhlPoisKlab').textContent=kSel; }
+      _set('ibhlLambdaLab', fmt(lambda,1));
+      if(sk){ _set('ibhlPoisKlab', kSel); }
       redrawAll();
     }
     s.addEventListener('input',upd);
@@ -1046,6 +1054,7 @@
       if(elLeftLim) elLeftLim.textContent = cur.leftLim;
       if(elRightLim) elRightLim.textContent = cur.rightLim;
       if(elStatus) elStatus.textContent = cur.status;
+      _set(pfx+'Probe', 'x = '+fmt(xVal,2)+', f(x) = '+(cur.y === null ? 'undefined' : fmt(cur.y,2)));
 
       updateDataView();
     }

@@ -102,17 +102,19 @@
       if(st>=view.ymin && st<=view.ymax) P.segment(view.xmin,st,view.xmax,st,'rgba(86,97,115,.55)',1.4,[5,4]);
       P.curve(yOf,INDIGO,2.6);
       P.dot(0,y0,AMBER,5.5);
-      document.getElementById('odeLinearSteady').textContent=fmt(st,3);
-      document.getElementById('odeLinearY3').textContent=fmt(yOf(3),3);
+      _set('odeLinearSteady', fmt(st,3));
+      _set('odeLinearAsymptote', 'y = '+fmt(st,2));
+      _set('odeLinearY3', fmt(yOf(3),3));
+      _set('odeLinearY1', fmt(yOf(1),3));
       updateDataView();
     }
     register(canvas,draw);
     var kSlider=document.getElementById('odeLinearK'), bSlider=document.getElementById('odeLinearB'), y0Slider=document.getElementById('odeLinearY0');
     function upd(){
       k=parseFloat(kSlider.value); b=parseFloat(bSlider.value); y0=parseFloat(y0Slider.value);
-      document.getElementById('odeLinearKVal').textContent=fmt(k,1);
-      document.getElementById('odeLinearBVal').textContent=fmt(b,1);
-      document.getElementById('odeLinearY0Val').textContent=fmt(y0,1);
+      _set('odeLinearKVal', fmt(k,1));
+      _set('odeLinearBVal', fmt(b,1));
+      _set('odeLinearY0Val', fmt(y0,1));
       redrawAll();
     }
     kSlider.addEventListener('input',upd); bSlider.addEventListener('input',upd); y0Slider.addEventListener('input',upd); upd();
@@ -178,16 +180,20 @@
       P.dot(0,1,AMBER,5.5);
       P.vline(2,'rgba(184,128,31,.5)',[4,4]);
       P.dot(2,yOf(2),AMBER2,5);
-      document.getElementById('odeAuxRoots').textContent=caseLabel();
-      document.getElementById('odeAuxY2').textContent=fmt(yOf(2),3);
+      var D=disc();
+      var regime = D>1e-9 ? 'Overdamped (2 real roots)' : (D<-1e-9 ? 'Underdamped (oscillatory)' : 'Critically damped (repeated root)');
+      _set('odeAuxRoots', caseLabel());
+      _set('odeAuxDisc', fmt(D,2));
+      _set('odeAuxRegime', regime);
+      _set('odeAuxY2', fmt(yOf(2),3));
       updateDataView();
     }
     register(canvas,draw);
     var bSlider=document.getElementById('odeAuxB'), cSlider=document.getElementById('odeAuxC');
     function upd(){
       b=parseFloat(bSlider.value); c=parseFloat(cSlider.value);
-      document.getElementById('odeAuxBVal').textContent=fmt(b,1);
-      document.getElementById('odeAuxCVal').textContent=fmt(c,1);
+      _set('odeAuxBVal', fmt(b,1));
+      _set('odeAuxCVal', fmt(c,1));
       redrawAll();
     }
     bSlider.addEventListener('input',upd); cSlider.addEventListener('input',upd); upd();

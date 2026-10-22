@@ -89,13 +89,13 @@
       document.getElementById('tanAv').textContent=fmt(a);
       updateDataView(f,v,fa,m,tangent);
     }
+    a=aFromSlider();
     register(canvas,draw);
     function upd(){ a=aFromSlider(); draw_safe(); }
     function draw_safe(){ document.getElementById('tanAv').textContent=fmt(aFromSlider()); redrawAll(); }
     sel.addEventListener('change',function(){ key=sel.value; a=aFromSlider(); redrawAll(); });
     slider.addEventListener('input',function(){ a=aFromSlider(); redrawAll(); });
     trace.addEventListener('change',redrawAll);
-    a=aFromSlider();
   })();
 
   /* ===================== RIEMANN EXPLORER ===================== */
@@ -196,10 +196,10 @@
       document.getElementById('accXv').textContent=fmt(x);
       updateDataView();
     }
-    register(top,drawTop); register(bot,drawBot);
     Amax=A(b0);
-    slider.addEventListener('input',function(){ x=a0+(parseInt(slider.value,10)/100)*(b0-a0); x=Math.max(0.05,x); redrawAll(); });
     x=a0+0.35*(b0-a0);
+    register(top,drawTop); register(bot,drawBot);
+    slider.addEventListener('input',function(){ x=a0+(parseInt(slider.value,10)/100)*(b0-a0); x=Math.max(0.05,x); redrawAll(); });
   })();
 
   /* ===================== OPTIMIZATION (Calculus) ===================== */

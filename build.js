@@ -1313,11 +1313,11 @@ const baseNjk = `<!DOCTYPE html>
   <script defer src="${BASE_PATH}/js/quiz-capture-ui.js"></script>
 
   <!-- Engine JS (src/scripts/engine.js — the site's application logic) -->
-  <script src="${BASE_PATH}/js/engine.js?v=20261022c"></script>
+  <script src="${BASE_PATH}/js/engine.js?v=20261022d"></script>
   <!-- This track's canvas explorers (src/scripts/explorers/{track}.js, ADR 0039): loaded only
        where they are used, right after engine.js so they register before init() runs.
        The dev content preview renders every track, so it loads them all. -->
-  {% if trackId == 'dev-content-preview' %}{% for t in explorerTracks %}<script src="${BASE_PATH}/js/ex/{{ t }}.js?v=20261022c"></script>{% endfor %}{% elif trackId in explorerTracks %}<script src="${BASE_PATH}/js/ex/{{ trackId }}.js?v=20261022c"></script>{% endif %}
+  {% if trackId == 'dev-content-preview' %}{% for t in explorerTracks %}<script src="${BASE_PATH}/js/ex/{{ t }}.js?v=20261022d"></script>{% endfor %}{% elif trackId in explorerTracks %}<script src="${BASE_PATH}/js/ex/{{ trackId }}.js?v=20261022d"></script>{% endif %}
 
   <!-- Post-engine shim: override showView() for multi-page navigation.
        ROOT CAUSE FIX (two layers):
@@ -1343,10 +1343,15 @@ const baseNjk = `<!DOCTYPE html>
     window._clipsatNavReady = false;
     setTimeout(function(){ window._clipsatNavReady = true; }, 0);
 
-    // Override showView so card clicks navigate to the right page
+    // Override showView so card clicks navigate to the right page, while
+    // preserving the in-page showView chain when activating CURRENT.
+    var _origShowView = window.showView;
     window.showView = function(name){
+      if(name === CURRENT){
+        if(_origShowView) _origShowView(name);
+        return;
+      }
       if(!window._clipsatNavReady) return; // suppress any residual DOMContentLoaded calls
-      if(name === CURRENT) return;
       var dest = URLS[name];
       if(dest !== undefined){ window.location.href = BASE + (dest ? '/'+dest+'/' : '/'); }
     };
