@@ -824,10 +824,39 @@
       "number": 39,
       "difficulty": "Basic",
       "question": {
-        "en": "The table below shows the number of students in a school who play soccer or basketball, and whether they are in 9th grade or 10th grade.\n\n|             | Soccer | Basketball | Total |\n| :---------- | :----: | :--------: | :---: |\n| 9th Grade   |   45   |      30    |   75  |\n| 10th Grade  |   60   |      45    |  105  |\n| Total       |  105   |      75    |  180  |\n\nWhat is the probability that a randomly selected student is a 10th grader, given that they play basketball?"
+        "en": "The table below shows the number of students in a school who play soccer or basketball, and whether they are in 9th grade or 10th grade.\n\nWhat is the probability that a randomly selected student is a 10th grader, given that they play basketball?"
       },
       "solution": {
         "en": "<p>Let B be the event that a student plays basketball, and let T be the event that a student is in 10th grade. We are looking for the conditional probability P(T|B), which can be calculated as P(T and B) / P(B).</p><p>From the table, the number of students who are in 10th grade and play basketball is 45.</p><p>The total number of students who play basketball is 75.</p><p>Therefore, the probability that a randomly selected student plays basketball is 75/180.</p><p>The probability that a randomly selected student is a 10th grader and plays basketball is 45/180.</p><p>The conditional probability P(T|B) = P(T and B) / P(B) = (45/180) / (75/180) = 45/75.</p><p>Simplifying the fraction 45/75 by dividing both numerator and denominator by their greatest common divisor, which is 15, we get 3/5.</p><p>Alternatively, we can directly use the information from the table. Given that a student plays basketball, we look at the 'Basketball' column. The total number of students who play basketball is 75. Out of these 75 students, 45 are in 10th grade. So, the probability is 45/75, which simplifies to 3/5.</p>"
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "",
+          "Soccer",
+          "Basketball",
+          "Total"
+        ],
+        "rows": [
+          [
+            "9th Grade",
+            "45",
+            "30",
+            "75"
+          ],
+          [
+            "10th Grade",
+            "60",
+            "45",
+            "105"
+          ],
+          [
+            "Total",
+            "105",
+            "75",
+            "180"
+          ]
+        ]
       }
     },
     {
@@ -1061,10 +1090,43 @@
       "number": 47,
       "difficulty": "Intermediate",
       "question": {
-        "en": "A school surveyed its students about their preferred extracurricular activities. The results are summarized in the two-way table below. The total number of students surveyed is 200.\n\n|               | Sports | Arts | Debate | Total |\n|---------------|--------|------|--------|-------|\n| Freshman      | 45     | 30   | x      | 85    |\n| Sophomore     | 50     | 25   | 40     | 115   |\n| Total         | 95     | 55   | y      | 200   |\n\nIf the probability that a randomly selected student is a Freshman who prefers Debate is \\(\\frac{3}{40}\\), what is the value of \\(x\\) ?"
+        "en": "A school surveyed its students about their preferred extracurricular activities. The results are summarized in the two-way table below. The total number of students surveyed is 200.\n\nIf the probability that a randomly selected student is a Freshman who prefers Debate is \\(\\frac{3}{40}\\), what is the value of \\(x\\) ?"
       },
       "solution": {
-        "en": "<p>Let \\(x\\) be the number of Freshmen who prefer Debate and \\(y\\) be the total number of students who prefer Debate.<br>From the table, we know that the total number of Freshmen is 85. Therefore, \\(45 + 30 + x = 85\\). Solving for \\(x\\), we get \\(x = 85 - 75 = 10\\). This is not the value we need to find directly, but it's important to understand the table structure.</p><p>The total number of students is 200.<br>The number of Freshmen who prefer Debate is given as \\(x\\).<br>The probability that a randomly selected student is a Freshman who prefers Debate is \\(\\frac{\\text{Number of Freshmen who prefer Debate}}{\\text{Total number of students}}\\).<br>We are given that this probability is \\(\\frac{3}{40}\\).<br>So, we have the equation: \\(\\frac{x}{200} = \\frac{3}{40}\\).<br>To solve for \\(x\\), we can multiply both sides of the equation by 200:<br>\\(x = \\frac{3}{40} \\times 200\\)<br>\\(x = 3 \\times \\frac{200}{40}\\)<br>\\(x = 3 \\times 5\\)<br>\\(x = 15\\).<br>Therefore, the value of \\(x\\) representing the number of Freshmen who prefer Debate is 15.</p><p>Common algebraic trap: Students might mistakenly use the total for Freshmen (85) as the denominator, or confuse the number of Freshmen preferring Debate with the total number of students preferring Debate (y). Using the given probability directly with the total number of students surveyed is the correct approach.</p>"
+        "en": "<p>The total number of students surveyed is 200, and the number of Freshmen who prefer Debate is \\(x\\).<br>We are given that the probability of selecting a Freshman who prefers Debate at random is \\(\\frac{3}{40}\\):<br>\\[\\frac{x}{200} = \\frac{3}{40}\\]<br>Multiplying both sides by 200:<br>\\[x = \\frac{3}{40} \\times 200 = 3 \\times 5 = 15\\]<br>(Notice this also satisfies the Freshman row sum: \\(45 + 30 + 15 = 90\\).)</p>"
+      },
+      "fig": {
+        "type": "table",
+        "headers": [
+          "",
+          "Sports",
+          "Arts",
+          "Debate",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Freshman",
+            "45",
+            "30",
+            "x",
+            "90"
+          ],
+          [
+            "Sophomore",
+            "50",
+            "25",
+            "35",
+            "110"
+          ],
+          [
+            "Total",
+            "95",
+            "55",
+            "y",
+            "200"
+          ]
+        ]
       }
     },
     {

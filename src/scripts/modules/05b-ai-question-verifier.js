@@ -214,9 +214,17 @@
     return null;
   }
 
+  var _NEEDS_FIG_RE=/\b(the diagram|in the diagram|the figure|in the figure|shown below|shown above|graph below|table below|chart below|histogram below|في الشكل|الرسم أدناه|الشكل المقابل)\b/i;
+
   function structural(q){
     if(!q||typeof q.text!=='string'||!q.text.trim()) return 'no question text';
-    var fp=figureProblem(q.figure, q);
+    var qFig = q.figure || q.fig || q.table || (q.svg ? {type:'svg', svg:q.svg} : null);
+    if(_NEEDS_FIG_RE.test(q.text) && !qFig) return 'question references a diagram or figure that is missing';
+    if(qFig && typeof qFig === 'object' && qFig.type !== 'table' && !qFig.headers && !qFig.rows && !qFig.svg){
+      var testSvg = (typeof window._renderFig === 'function' ? window._renderFig(qFig) : '') || (typeof window.renderMathFigure === 'function' ? window.renderMathFigure(qFig) : '');
+      if((typeof window._renderFig === 'function' || typeof window.renderMathFigure === 'function') && !testSvg) return 'figure could not be rendered';
+    }
+    var fp=figureProblem(qFig, q);
     if(fp) return fp;
     if(q.type==='frq') return null;
     if(!Array.isArray(q.choices)||q.choices.length<3) return 'fewer than 3 options';

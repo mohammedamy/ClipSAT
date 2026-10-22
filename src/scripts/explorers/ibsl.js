@@ -99,6 +99,13 @@
       P.segment(Px,Py,Qx,Qy,AMBER2,2.4);
       P.dot(Ax,Ay,INK,4.5); P.dot(Px,Py,INK,4.5); P.dot(Qx,Qy,INK,4.5);
       var s=solve();
+      var c=P.ctx; c.font='bold 11px sans-serif'; c.fillStyle=INK;
+      c.fillText('A', P.X(Ax)-12, P.Y(Ay)+12);
+      c.fillText('B', P.X(Px)+6, P.Y(Py)+12);
+      c.fillText('C', P.X(Qx), P.Y(Qy)-8);
+      c.fillStyle=INDIGO; c.fillText('p = '+fmt(p,1), P.X(Px/2)-14, P.Y(0)+15);
+      c.fillText('q = '+fmt(q,1), P.X(Qx/2)-28, P.Y(Qy/2)-4);
+      c.fillStyle=AMBER2; c.fillText('r = '+fmt(s.r,2), P.X((Px+Qx)/2)+8, P.Y(Qy/2));
       document.getElementById('ibslTriR').textContent=fmt(s.r,3);
       document.getElementById('ibslTriAngles').textContent=fmt(s.angC,2)+'°, '+fmt(s.angB,2)+'°';
       updateDataView(s);
@@ -466,9 +473,16 @@
           c.fillRect(Math.min(x0,x1), Math.min(y1,y0), Math.abs(x1-x0), Math.abs(y0-y1));
         }
       }
-      for(var s=0;s<sites.length;s++){ P.dot(sites[s][0],sites[s][1],cols[s],6); }
-      P.ring(qx,qy,INK,5);
+      for(var s=0;s<sites.length;s++){
+        P.dot(sites[s][0],sites[s][1],cols[s],6);
+        c.font='bold 11px sans-serif'; c.fillStyle=INK;
+        c.fillText('S'+(s+1)+'('+sites[s][0]+','+sites[s][1]+')', P.X(sites[s][0])+8, P.Y(sites[s][1])-6);
+      }
       var qk=nearest(qx,qy), dist=Math.sqrt(Math.pow(qx-sites[qk][0],2)+Math.pow(qy-sites[qk][1],2));
+      P.segment(qx,qy,sites[qk][0],sites[qk][1],cols[qk],1.8,[4,3]);
+      P.ring(qx,qy,INK,5.5);
+      c.font='bold 11px sans-serif'; c.fillStyle=INK;
+      c.fillText('P('+fmt(qx,1)+','+fmt(qy,1)+')', P.X(qx)+8, P.Y(qy)+12);
       document.getElementById('ibslVorSite').textContent='Site '+(qk+1);
       document.getElementById('ibslVorDist').textContent=fmt(dist,2);
       updateDataView(qk,dist);
@@ -482,5 +496,79 @@
       redrawAll();
     }
     sX.addEventListener('input',upd); sY.addEventListener('input',upd); upd();
+  })();
+
+  /* IB SL OVERVIEW — Cumulative Frequency Ogive, Quartiles & Outlier Fence Explorer */
+  (function(){
+    var canvas=document.getElementById('ibslOgiveCanvas'); if(!canvas) return;
+    var view={xmin:0,xmax:100,ymin:0,ymax:88};
+    var pct=50, skew=0;
+    var dataBtn=document.getElementById('ibslOgiveDataBtn'), dataPanel=document.getElementById('ibslOgiveDataPanel'),
+        dataDesc=document.getElementById('ibslOgiveDataDesc'), dataRows=document.getElementById('ibslOgiveDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+
+    function invOgive(cumFreq){
+      var u = Math.max(0.001, Math.min(0.999, cumFreq / 80));
+      var base = 50 + 16 * Math.log(u / (1 - u));
+      var shifted = base + skew * 12 * (u - 0.5);
+      return Math.max(5, Math.min(95, shifted));
+    }
+    function ogiveY(x){
+      var lo=0, hi=80;
+      for(var it=0;it<24;it++){
+        var mid=(lo+hi)/2;
+        if(invOgive(mid)<x) lo=mid; else hi=mid;
+      }
+      return (lo+hi)/2;
+    }
+
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:36,r:16,t:16,b:28}); P.clear(); P.grid();
+      var q1=invOgive(20), med=invOgive(40), q3=invOgive(60), iqr=q3-q1;
+      var targetCF = 80 * (pct / 100);
+      var xPct = invOgive(targetCF);
+
+      P.curve(ogiveY, INDIGO, 2.6);
+      // Quartile guide lines
+      P.segment(0, 20, q1, 20, '#94a3b8', 1.2, [4,3]);
+      P.segment(q1, 20, q1, 0, '#94a3b8', 1.2, [4,3]);
+      P.segment(0, 40, med, 40, '#0e9f8f', 1.5, [4,3]);
+      P.segment(med, 40, med, 0, '#0e9f8f', 1.5, [4,3]);
+      P.segment(0, 60, q3, 60, '#94a3b8', 1.2, [4,3]);
+      P.segment(q3, 60, q3, 0, '#94a3b8', 1.2, [4,3]);
+
+      // Selected percentile probe
+      P.segment(0, targetCF, xPct, targetCF, AMBER2, 2.0, [5,3]);
+      P.segment(xPct, targetCF, xPct, 0, AMBER2, 2.0, [5,3]);
+      P.dot(xPct, targetCF, AMBER2, 5.5);
+
+      var elQ1=document.getElementById('ibslOgiveQ1'); if(elQ1) elQ1.textContent=fmt(q1,1);
+      var elMed=document.getElementById('ibslOgiveMed'); if(elMed) elMed.textContent=fmt(med,1);
+      var elQ3=document.getElementById('ibslOgiveQ3'); if(elQ3) elQ3.textContent=fmt(q3,1);
+      var elIQR=document.getElementById('ibslOgiveIQR'); if(elIQR) elIQR.textContent=fmt(iqr,1);
+      var elVal=document.getElementById('ibslOgiveVal'); if(elVal) elVal.textContent=fmt(xPct,1)+' (CF = '+fmt(targetCF,1)+')';
+
+      if(dataDesc){
+        dataDesc.textContent='Cumulative Frequency Ogive (N = 80 candidates). Q1 = '+fmt(q1,1)+', Median = '+fmt(med,1)+', Q3 = '+fmt(q3,1)+', IQR = '+fmt(iqr,1)+'. Upper outlier fence Q3 + 1.5×IQR = '+fmt(q3+1.5*iqr,1)+'.';
+      }
+      renderDataRows(dataRows,[
+        ['25th Percentile (Q1, CF=20)', fmt(q1,1)],
+        ['50th Percentile (Median, CF=40)', fmt(med,1)],
+        ['75th Percentile (Q3, CF=60)', fmt(q3,1)],
+        ['Interquartile Range (IQR)', fmt(iqr,1)],
+        ['Outlier Fences [Q1−1.5·IQR, Q3+1.5·IQR]', '['+fmt(q1-1.5*iqr,1)+', '+fmt(q3+1.5*iqr,1)+']'],
+        ['Selected '+pct+'th Percentile', fmt(xPct,1)]
+      ]);
+    }
+    register(canvas,draw);
+    var sPct=document.getElementById('ibslOgivePct'), sSkew=document.getElementById('ibslOgiveSkew');
+    function upd(){
+      if(sPct){ pct=parseInt(sPct.value,10); var l1=document.getElementById('ibslOgivePctVal'); if(l1) l1.textContent=pct+'%'; }
+      if(sSkew){ skew=parseFloat(sSkew.value); var l2=document.getElementById('ibslOgiveSkewVal'); if(l2) l2.textContent=fmt(skew,1); }
+      redrawAll();
+    }
+    if(sPct) sPct.addEventListener('input',upd);
+    if(sSkew) sSkew.addEventListener('input',upd);
+    upd();
   })();
 })(window.CSExplorerKit);

@@ -55,8 +55,8 @@
         "1",
         "2"
       ],
-      "answer": 0,
-      "correct": 0,
+      "answer": 1,
+      "correct": 1,
       "sol": "To find the limit of the polynomial function \\( f(x) = x^2 - 5x + 6 \\) as \\( x \\) approaches 2, we can directly substitute \\( x = 2 \\) into the function because polynomials are continuous everywhere.\n\n\\( \\lim_{x \\to 2} (x^2 - 5x + 6) = (2)^2 - 5(2) + 6 \\)\n\\( = 4 - 10 + 6 \\)\n\\( = 0 \\)\n\nTherefore, the limit is 0.",
       "solution": "To find the limit of the polynomial function \\( f(x) = x^2 - 5x + 6 \\) as \\( x \\) approaches 2, we can directly substitute \\( x = 2 \\) into the function because polynomials are continuous everywhere.\n\n\\( \\lim_{x \\to 2} (x^2 - 5x + 6) = (2)^2 - 5(2) + 6 \\)\n\\( = 4 - 10 + 6 \\)\n\\( = 0 \\)\n\nTherefore, the limit is 0.",
       "sympy_verified": true,
@@ -400,8 +400,8 @@
         "23",
         "28"
       ],
-      "answer": 1,
-      "correct": 1,
+      "answer": 2,
+      "correct": 2,
       "sol": "The graph shows \\( f'(x) \\). By the Fundamental Theorem of Calculus, \\( f(6) - f(2) = \\int_{2}^{6} f'(x) \\, dx \\). The integral \\( \\int_{2}^{6} f'(x) \\, dx \\) represents the area under the curve of \\( f'(x) \\) from \\( x = 2 \\) to \\( x = 6 \\). This area is a trapezoid with parallel sides of length \\( 4 \\) (from \\( x=2 \\) to \\( x=4 \\)) and \\( 6 \\) (from \\( x=4 \\) to \\( x=6 \\)), and a height of \\( 2 \\) (the difference in x-values from 2 to 4 and 4 to 6, but looking at the graph the height from y=1 to y=5 is 4 and from y=1 to y=6 is 5, the vertical distance represents the change in y for the integral, which is the change in x on the graph.  The area is a trapezoid with heights of 4 and 5 at x=2 and x=6 respectively, and a base of 4. The area under the curve from x=2 to x=6 is the area of a trapezoid with parallel sides of length 4 (at x=2, f'(2)=4) and 5 (at x=6, f'(6)=5), and a height (width along x-axis) of 6-2=4.  The area is \\( \\frac{1}{2}(4+5) \\times 4 = \\frac{1}{2}(9) \\times 4 = 18 \\). Therefore, \\( f(6) - f(2) = 18 \\). Given \\( f(2) = 5 \\), we have \\( f(6) - 5 = 18 \\), which means \\( f(6) = 18 + 5 = 23 \\). \n\nCommon algebraic trap: Students might misinterpret the y-axis values as the length of the parallel sides of the trapezoid and the x-axis values as the height, or vice versa. They might also forget to add the initial value of \\( f(2) \\).",
       "solution": "The graph shows \\( f'(x) \\). By the Fundamental Theorem of Calculus, \\( f(6) - f(2) = \\int_{2}^{6} f'(x) \\, dx \\). The integral \\( \\int_{2}^{6} f'(x) \\, dx \\) represents the area under the curve of \\( f'(x) \\) from \\( x = 2 \\) to \\( x = 6 \\). This area is a trapezoid with parallel sides of length \\( 4 \\) (from \\( x=2 \\) to \\( x=4 \\)) and \\( 6 \\) (from \\( x=4 \\) to \\( x=6 \\)), and a height of \\( 2 \\) (the difference in x-values from 2 to 4 and 4 to 6, but looking at the graph the height from y=1 to y=5 is 4 and from y=1 to y=6 is 5, the vertical distance represents the change in y for the integral, which is the change in x on the graph.  The area is a trapezoid with heights of 4 and 5 at x=2 and x=6 respectively, and a base of 4. The area under the curve from x=2 to x=6 is the area of a trapezoid with parallel sides of length 4 (at x=2, f'(2)=4) and 5 (at x=6, f'(6)=5), and a height (width along x-axis) of 6-2=4.  The area is \\( \\frac{1}{2}(4+5) \\times 4 = \\frac{1}{2}(9) \\times 4 = 18 \\). Therefore, \\( f(6) - f(2) = 18 \\). Given \\( f(2) = 5 \\), we have \\( f(6) - 5 = 18 \\), which means \\( f(6) = 18 + 5 = 23 \\). \n\nCommon algebraic trap: Students might misinterpret the y-axis values as the length of the parallel sides of the trapezoid and the x-axis values as the height, or vice versa. They might also forget to add the initial value of \\( f(2) \\).",
       "sympy_verified": true,
@@ -635,7 +635,25 @@
       "correct": 0,
       "sol": "The differential equation is given by \\( \\frac{dy}{dx} = ky \\). This is a separable differential equation. We can rewrite it as \\( \\frac{dy}{y} = k \\, dx \\). Integrating both sides, we get \\( \\int \\frac{dy}{y} = \\int k \\, dx \\), which yields \\( \\ln|y| = kx + C_1 \\). Exponentiating both sides, we have \\( |y| = e^{kx + C_1} = e^{C_1} e^{kx} \\). Let \\( C = \\pm e^{C_1} \\), so \\( y = Ce^{kx} \\).\n\nWe are given that the solution curve passes through the point \\( (0, 1) \\). Substituting these values into the general solution:\n\\( 1 = Ce^{k(0)} \\)\n\\( 1 = C e^0 \\)\n\\( 1 = C \\cdot 1 \\)\n\\( C = 1 \\).\n\nSo the particular solution is \\( y = e^{kx} \\).\n\nWe are also given that the solution curve passes through the point \\( (1, 2) \\). Substituting these values into the particular solution:\n\\( 2 = e^{k(1)} \\)\n\\( 2 = e^k \\).\n\nTo solve for \\( k \\), we take the natural logarithm of both sides:\n\\( \\ln 2 = \\ln(e^k) \\)\n\\( \\ln 2 = k \\).\n\nTherefore, the value of \\( k \\) is \\( \\ln 2 \\).",
       "solution": "The differential equation is given by \\( \\frac{dy}{dx} = ky \\). This is a separable differential equation. We can rewrite it as \\( \\frac{dy}{y} = k \\, dx \\). Integrating both sides, we get \\( \\int \\frac{dy}{y} = \\int k \\, dx \\), which yields \\( \\ln|y| = kx + C_1 \\). Exponentiating both sides, we have \\( |y| = e^{kx + C_1} = e^{C_1} e^{kx} \\). Let \\( C = \\pm e^{C_1} \\), so \\( y = Ce^{kx} \\).\n\nWe are given that the solution curve passes through the point \\( (0, 1) \\). Substituting these values into the general solution:\n\\( 1 = Ce^{k(0)} \\)\n\\( 1 = C e^0 \\)\n\\( 1 = C \\cdot 1 \\)\n\\( C = 1 \\).\n\nSo the particular solution is \\( y = e^{kx} \\).\n\nWe are also given that the solution curve passes through the point \\( (1, 2) \\). Substituting these values into the particular solution:\n\\( 2 = e^{k(1)} \\)\n\\( 2 = e^k \\).\n\nTo solve for \\( k \\), we take the natural logarithm of both sides:\n\\( \\ln 2 = \\ln(e^k) \\)\n\\( \\ln 2 = k \\).\n\nTherefore, the value of \\( k \\) is \\( \\ln 2 \\).",
-      "sympy_verified": true
+      "sympy_verified": true,
+      "fig": {
+        "type": "slope_field",
+        "fn": "0.5*y",
+        "xmin": -3,
+        "xmax": 3,
+        "ymin": -3,
+        "ymax": 3,
+        "title": "Slope Field for dy/dx = ky"
+      },
+      "figure": {
+        "type": "slope_field",
+        "fn": "0.5*y",
+        "xmin": -3,
+        "xmax": 3,
+        "ymin": -3,
+        "ymax": 3,
+        "title": "Slope Field for dy/dx = ky"
+      }
     },
     {
       "id": "apab-0018",
@@ -749,8 +767,8 @@
         "\\(0\\)",
         "\\(6\\)"
       ],
-      "answer": 0,
-      "correct": 0,
+      "answer": 1,
+      "correct": 1,
       "sol": "First, let's find the derivative of \\(g(x)\\): \\(g'(x) = 3x^2 - 12x + 9\\). At \\(x=1\\), the slope of the tangent line to \\(g(x)\\) is \\(g'(1) = 3(1)^2 - 12(1) + 9 = 3 - 12 + 9 = 0\\). \n\nThe problem states that \\(f(x)\\) and \\(g(x)\\) have the same tangent line at \\(x=1\\). This means \\(f'(1) = g'(1) = 0\\). We are given \\(f'(x) = 6x^2 - 12x + 6\\). Let's check: \\(f'(1) = 6(1)^2 - 12(1) + 6 = 6 - 12 + 6 = 0\\). This confirms consistency.\n\nTo find the value of $f''(0)$, we first need to find the second derivative of \\(f(x)\\). We are given \\(f'(x) = 6x^2 - 12x + 6\\). Therefore, \\(f''(x) = \\frac{d}{dx}(6x^2 - 12x + 6) = 12x - 12\\).\n\nNow, we can evaluate $f''(0)$: \\(f''(0) = 12(0) - 12 = -12\\).\n\nCommon misconception: Students might try to integrate $f'(x)$ to find \\(f(x)\\) and then differentiate, or they might confuse the derivative of \\(f(x)\\) with the derivative of \\(g(x)\\) when calculating the second derivative. The value of \\(g(x)\\) at \\(x=1\\) is \\(g(1) = 1^3 - 6(1)^2 + 9(1) - 2 = 1 - 6 + 9 - 2 = 2\\). This information is not directly needed to find $f''(0)$ given the provided information about the tangent line slope.",
       "solution": "First, let's find the derivative of \\(g(x)\\): \\(g'(x) = 3x^2 - 12x + 9\\). At \\(x=1\\), the slope of the tangent line to \\(g(x)\\) is \\(g'(1) = 3(1)^2 - 12(1) + 9 = 3 - 12 + 9 = 0\\). \n\nThe problem states that \\(f(x)\\) and \\(g(x)\\) have the same tangent line at \\(x=1\\). This means \\(f'(1) = g'(1) = 0\\). We are given \\(f'(x) = 6x^2 - 12x + 6\\). Let's check: \\(f'(1) = 6(1)^2 - 12(1) + 6 = 6 - 12 + 6 = 0\\). This confirms consistency.\n\nTo find the value of $f''(0)$, we first need to find the second derivative of \\(f(x)\\). We are given \\(f'(x) = 6x^2 - 12x + 6\\). Therefore, \\(f''(x) = \\frac{d}{dx}(6x^2 - 12x + 6) = 12x - 12\\).\n\nNow, we can evaluate $f''(0)$: \\(f''(0) = 12(0) - 12 = -12\\).\n\nCommon misconception: Students might try to integrate $f'(x)$ to find \\(f(x)\\) and then differentiate, or they might confuse the derivative of \\(f(x)\\) with the derivative of \\(g(x)\\) when calculating the second derivative. The value of \\(g(x)\\) at \\(x=1\\) is \\(g(1) = 1^3 - 6(1)^2 + 9(1) - 2 = 1 - 6 + 9 - 2 = 2\\). This information is not directly needed to find $f''(0)$ given the provided information about the tangent line slope.",
       "sympy_verified": true,
@@ -895,8 +913,8 @@
         "81000",
         "9000"
       ],
-      "answer": 2,
-      "correct": 2,
+      "answer": 1,
+      "correct": 1,
       "sol": "The given differential equation is \\(\\frac{dP}{dt} = kP\\). This is a first-order linear separable differential equation. We can solve it by separating variables:\n\\(\\frac{dP}{P} = k dt\\)\nIntegrating both sides gives:\n\\(\\int \\frac{dP}{P} = \\int k dt\\)\n\\(\\ln|P| = kt + C_1\\)\nExponentiating both sides:\n\\(|P| = e^{kt + C_1} = e^{C_1} e^{kt}\\)\nLet \\(C = \\pm e^{C_1}\\). Since population must be positive, \\(P(t) = Ce^{kt}\\).\nGiven that the initial population at \\(t=0\\) is \\(P_0 = 1000\\), we have \\(P(0) = C e^{k(0)} = C\\). Thus, \\(C = 1000\\), and the population function is \\(P(t) = 1000e^{kt}\\).\nWe are told that the population triples every 4 hours. This means \\(P(t+4) = 3P(t)\\) for any \\(t\\). Using \\(t=0\\), we have \\(P(4) = 3P(0) = 3 \\times 1000 = 3000\\).\nNow we can use this to find \\(k\\): \\(P(4) = 1000e^{k(4)} = 3000\\).\n\\(e^{4k} = 3\\)\nTaking the natural logarithm of both sides:\n\\(4k = \\ln(3)\\)\n\\(k = \\frac{\\ln(3)}{4}\\)\nSo the population function is \\(P(t) = 1000e^{\\frac{\\ln(3)}{4}t}\\).\nWe need to find the population after 12 hours, i.e., \\(P(12)\\).\n\\(P(12) = 1000e^{\\frac{\\ln(3)}{4} \\times 12}\\)\n\\(P(12) = 1000e^{\\ln(3) \\times 3}\\)\n\\(P(12) = 1000e^{\\ln(3^3)}\\)\n\\(P(12) = 1000 \\times 3^3\\)\n\\(P(12) = 1000 \\times 27\\)\n\\(P(12) = 27000\\)\n\nAlternatively, since the population triples every 4 hours, and we want to find the population after 12 hours, which is \\(12/4 = 3\\) periods of tripling.\nInitial population: \\(P_0 = 1000\\)\nAfter 4 hours: \\(P(4) = 1000 \\times 3 = 3000\\)\nAfter 8 hours: \\(P(8) = 3000 \\times 3 = 9000\\)\nAfter 12 hours: \\(P(12) = 9000 \\times 3 = 27000\\)\n\nChoice A (10000) represents no growth or incorrect interpretation of initial conditions.\nChoice C (81000) would be the population after 16 hours (\\(1000 \\times 3^4\\)).\nChoice D (9000) represents the population after 8 hours.",
       "solution": "The given differential equation is \\(\\frac{dP}{dt} = kP\\). This is a first-order linear separable differential equation. We can solve it by separating variables:\n\\(\\frac{dP}{P} = k dt\\)\nIntegrating both sides gives:\n\\(\\int \\frac{dP}{P} = \\int k dt\\)\n\\(\\ln|P| = kt + C_1\\)\nExponentiating both sides:\n\\(|P| = e^{kt + C_1} = e^{C_1} e^{kt}\\)\nLet \\(C = \\pm e^{C_1}\\). Since population must be positive, \\(P(t) = Ce^{kt}\\).\nGiven that the initial population at \\(t=0\\) is \\(P_0 = 1000\\), we have \\(P(0) = C e^{k(0)} = C\\). Thus, \\(C = 1000\\), and the population function is \\(P(t) = 1000e^{kt}\\).\nWe are told that the population triples every 4 hours. This means \\(P(t+4) = 3P(t)\\) for any \\(t\\). Using \\(t=0\\), we have \\(P(4) = 3P(0) = 3 \\times 1000 = 3000\\).\nNow we can use this to find \\(k\\): \\(P(4) = 1000e^{k(4)} = 3000\\).\n\\(e^{4k} = 3\\)\nTaking the natural logarithm of both sides:\n\\(4k = \\ln(3)\\)\n\\(k = \\frac{\\ln(3)}{4}\\)\nSo the population function is \\(P(t) = 1000e^{\\frac{\\ln(3)}{4}t}\\).\nWe need to find the population after 12 hours, i.e., \\(P(12)\\).\n\\(P(12) = 1000e^{\\frac{\\ln(3)}{4} \\times 12}\\)\n\\(P(12) = 1000e^{\\ln(3) \\times 3}\\)\n\\(P(12) = 1000e^{\\ln(3^3)}\\)\n\\(P(12) = 1000 \\times 3^3\\)\n\\(P(12) = 1000 \\times 27\\)\n\\(P(12) = 27000\\)\n\nAlternatively, since the population triples every 4 hours, and we want to find the population after 12 hours, which is \\(12/4 = 3\\) periods of tripling.\nInitial population: \\(P_0 = 1000\\)\nAfter 4 hours: \\(P(4) = 1000 \\times 3 = 3000\\)\nAfter 8 hours: \\(P(8) = 3000 \\times 3 = 9000\\)\nAfter 12 hours: \\(P(12) = 9000 \\times 3 = 27000\\)\n\nChoice A (10000) represents no growth or incorrect interpretation of initial conditions.\nChoice C (81000) would be the population after 16 hours (\\(1000 \\times 3^4\\)).\nChoice D (9000) represents the population after 8 hours.",
       "sympy_verified": true
@@ -1181,8 +1199,8 @@
         "15",
         "17"
       ],
-      "answer": 2,
-      "correct": 2,
+      "answer": 1,
+      "correct": 1,
       "sol": "The given differential equation is \\( \\frac{dy}{dx} = 3x - 2 \\). To find \\( f(x) \\), we need to integrate \\( \\frac{dy}{dx} \\) with respect to \\( x \\). \\( y = f(x) = \\int (3x - 2) \\, dx \\). \\( f(x) = \\frac{3}{2}x^2 - 2x + C \\), where \\( C \\) is the constant of integration. We are given that \\( f(1) = 5 \\). Substituting \\( x=1 \\) into the equation for \\( f(x) \\): \\( 5 = \\frac{3}{2}(1)^2 - 2(1) + C \\). \\( 5 = \\frac{3}{2} - 2 + C \\). \\( 5 = \\frac{3}{2} - \\frac{4}{2} + C \\). \\( 5 = -\\frac{1}{2} + C \\). \\( C = 5 + \\frac{1}{2} = \\frac{10}{2} + \\frac{1}{2} = \\frac{11}{2} \\). So, the function is \\( f(x) = \\frac{3}{2}x^2 - 2x + \\frac{11}{2} \\). Now we need to find \\( f(3) \\). \\( f(3) = \\frac{3}{2}(3)^2 - 2(3) + \\frac{11}{2} \\). \\( f(3) = \\frac{3}{2}(9) - 6 + \\frac{11}{2} \\). \\( f(3) = \\frac{27}{2} - \\frac{12}{2} + \\frac{11}{2} \\). \\( f(3) = \\frac{27 - 12 + 11}{2} = \\frac{15 + 11}{2} = \\frac{26}{2} = 13 \\).",
       "solution": "The given differential equation is \\( \\frac{dy}{dx} = 3x - 2 \\). To find \\( f(x) \\), we need to integrate \\( \\frac{dy}{dx} \\) with respect to \\( x \\). \\( y = f(x) = \\int (3x - 2) \\, dx \\). \\( f(x) = \\frac{3}{2}x^2 - 2x + C \\), where \\( C \\) is the constant of integration. We are given that \\( f(1) = 5 \\). Substituting \\( x=1 \\) into the equation for \\( f(x) \\): \\( 5 = \\frac{3}{2}(1)^2 - 2(1) + C \\). \\( 5 = \\frac{3}{2} - 2 + C \\). \\( 5 = \\frac{3}{2} - \\frac{4}{2} + C \\). \\( 5 = -\\frac{1}{2} + C \\). \\( C = 5 + \\frac{1}{2} = \\frac{10}{2} + \\frac{1}{2} = \\frac{11}{2} \\). So, the function is \\( f(x) = \\frac{3}{2}x^2 - 2x + \\frac{11}{2} \\). Now we need to find \\( f(3) \\). \\( f(3) = \\frac{3}{2}(3)^2 - 2(3) + \\frac{11}{2} \\). \\( f(3) = \\frac{3}{2}(9) - 6 + \\frac{11}{2} \\). \\( f(3) = \\frac{27}{2} - \\frac{12}{2} + \\frac{11}{2} \\). \\( f(3) = \\frac{27 - 12 + 11}{2} = \\frac{15 + 11}{2} = \\frac{26}{2} = 13 \\).",
       "sympy_verified": true
@@ -1252,7 +1270,7 @@
         "fns": [
           "-(x+2) for x in [-4,-2]",
           "2 for x in [-2,2]",
-          "sp.sqrt(4 - (x-2)**2) for x in [2,4]"
+          "sqrt(4 - (x-2)**2) for x in [2,4]"
         ],
         "xlim": [
           -4,
@@ -1323,8 +1341,8 @@
         "3",
         "4"
       ],
-      "answer": 1,
-      "correct": 1,
+      "answer": 0,
+      "correct": 0,
       "sol": "The equation of a tangent line to a function \\(f(x)\\) at a point $(a, f(a))$ is given by \\(y - f(a) = f'(a)(x - a)\\). We are given that the tangent line at \\(x=1\\) has the equation \\(y = 2x + k\\). The slope of this tangent line is $2$, which means \\(f'(1) = 2\\). We are also given that \\(f(1) = 3\\). Substituting these values into the point-slope form of the tangent line equation:\n\\(y - 3 = 2(x - 1)\\)\n\\(y - 3 = 2x - 2\\)\n\\(y = 2x - 2 + 3\\)\n\\(y = 2x + 1\\)\nComparing this to the given tangent line equation \\(y = 2x + k\\), we can see that \\(k=1\\).\n\nAlternatively, since the point $(1, f(1))$ lies on the tangent line, we can substitute \\(x=1\\) and \\(y=f(1)=3\\) into the equation of the tangent line:\n\\(3 = 2(1) + k\\)\n\\(3 = 2 + k\\)\n\\(k = 3 - 2\\)\n\\(k = 1\\).",
       "solution": "The equation of a tangent line to a function \\(f(x)\\) at a point $(a, f(a))$ is given by \\(y - f(a) = f'(a)(x - a)\\). We are given that the tangent line at \\(x=1\\) has the equation \\(y = 2x + k\\). The slope of this tangent line is $2$, which means \\(f'(1) = 2\\). We are also given that \\(f(1) = 3\\). Substituting these values into the point-slope form of the tangent line equation:\n\\(y - 3 = 2(x - 1)\\)\n\\(y - 3 = 2x - 2\\)\n\\(y = 2x - 2 + 3\\)\n\\(y = 2x + 1\\)\nComparing this to the given tangent line equation \\(y = 2x + k\\), we can see that \\(k=1\\).\n\nAlternatively, since the point $(1, f(1))$ lies on the tangent line, we can substitute \\(x=1\\) and \\(y=f(1)=3\\) into the equation of the tangent line:\n\\(3 = 2(1) + k\\)\n\\(3 = 2 + k\\)\n\\(k = 3 - 2\\)\n\\(k = 1\\).",
       "sympy_verified": true,
@@ -1972,8 +1990,8 @@
         "\\( 1 \\) m/s\\(^2\\)",
         "\\( -2 \\) m/s\\(^2\\)"
       ],
-      "answer": 3,
-      "correct": 3,
+      "answer": 1,
+      "correct": 1,
       "sol": "The velocity of the particle is given by \\( v(t) = t^2 - 6t + 8 \\). Acceleration is the rate of change of velocity with respect to time, which means acceleration is the derivative of the velocity function, \\( a(t) = v'(t) \\). Differentiating \\( v(t) \\) with respect to \\( t \\), we get: \\( a(t) = \\frac{d}{dt}(t^2 - 6t + 8) = 2t - 6 \\). We need to find the instantaneous acceleration at time \\( t = 3 \\) seconds. Substituting \\( t = 3 \\) into the acceleration function: \\( a(3) = 2(3) - 6 = 6 - 6 = 0 \\) m/s\\(^2\\). Therefore, the instantaneous acceleration of the particle at time \\( t = 3 \\) seconds is \\( 0 \\) m/s\\(^2\\).",
       "solution": "The velocity of the particle is given by \\( v(t) = t^2 - 6t + 8 \\). Acceleration is the rate of change of velocity with respect to time, which means acceleration is the derivative of the velocity function, \\( a(t) = v'(t) \\). Differentiating \\( v(t) \\) with respect to \\( t \\), we get: \\( a(t) = \\frac{d}{dt}(t^2 - 6t + 8) = 2t - 6 \\). We need to find the instantaneous acceleration at time \\( t = 3 \\) seconds. Substituting \\( t = 3 \\) into the acceleration function: \\( a(3) = 2(3) - 6 = 6 - 6 = 0 \\) m/s\\(^2\\). Therefore, the instantaneous acceleration of the particle at time \\( t = 3 \\) seconds is \\( 0 \\) m/s\\(^2\\).",
       "sympy_verified": true

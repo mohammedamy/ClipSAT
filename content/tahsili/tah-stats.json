@@ -42,120 +42,115 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "Statistics & Probability — Frequency Distribution (2)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
-            {
-              "label": "Q1",
-              "value": 22
-            },
-            {
-              "label": "Q2",
-              "value": 35,
-              "highlight": true
-            },
-            {
-              "label": "Q3",
-              "value": 28
-            },
-            {
-              "label": "Q4",
-              "value": 19
-            }
-          ]
+          "type": "normal_curve",
+          "mean": 50,
+          "sd": 10,
+          "shadeFrom": 40,
+          "shadeTo": 60,
+          "title": "Empirical Rule (68%–95%–99.7%) on Normal Distribution N(50, 10²)"
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for Statistics & Probability.",
-          "ar": "توزيع تكراري يقارن القيم والفئة المنوالية في Statistics & Probability."
+          "en": "Normal distribution with μ = 50, σ = 10: 68% of values lie in [40, 60], 95% in [30, 70], 99.7% in [20, 80], and 16% exceed μ + σ = 60.",
+          "ar": "التوزيع الطبيعي بمتوسط μ = 50 وانحراف معياري σ = 10: يقع 68% من البيانات في [40, 60]، و95% في [30, 70]، و99.7% في [20, 80]، بينما 16% أكبر من 60."
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Statistics & Probability Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Statistics & Probability"
+          "en": "⊙ Explorer · Normal Distribution & Empirical Rule (68–95–99.7%)",
+          "ar": "⊙ مستكشف تفاعلي · التوزيع الطبيعي والقاعدة التجريبية (٦٨–٩٥–٩٩٫٧٪)"
         },
-        "canvasId": "exAuto_stats_tahstats",
+        "canvasId": "tahNormalCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Statistics & Probability",
-          "ar": "مستكشف رياضي تفاعلي لدرس Statistics & Probability"
+          "en": "Interactive normal distribution curve showing 1, 2, and 3 standard deviation intervals around the mean",
+          "ar": "منحنى التوزيع الطبيعي التفاعلي يوضح فترات الانحراف المعياري حول المتوسط الحسابي"
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_tahstats_dataBtn",
-          "panelId": "exAuto_stats_tahstats_dataPanel",
-          "descId": "exAuto_stats_tahstats_dataDesc",
-          "rowsId": "exAuto_stats_tahstats_dataRows",
+          "btnId": "tahNormalDataBtn",
+          "panelId": "tahNormalDataPanel",
+          "descId": "tahNormalDataDesc",
+          "rowsId": "tahNormalDataRows",
           "caption": {
-            "en": "Numerical table for Statistics & Probability",
-            "ar": "جدول القيم العددية لدرس Statistics & Probability"
+            "en": "Empirical Rule intervals for mean μ and standard deviation σ",
+            "ar": "فترات القاعدة التجريبية للمتوسط الحسابي μ والانحراف المعياري σ"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Interval / Band",
+              "ar": "الفترة / النطاق"
             },
             {
-              "en": "Value",
-              "ar": "القيمة"
+              "en": "Range",
+              "ar": "المدى العددي"
             }
           ]
         },
         "controls": [
           {
-            "id": "exAuto_stats_tahstats_s0",
+            "id": "tahNormMu",
+            "valueDisplayId": "tahNormMuV",
             "label": {
-              "en": "Parameter <b>a =</b>",
-              "ar": "المعامل <b>a =</b>"
+              "en": "Mean <b>μ =</b>",
+              "ar": "المتوسط <b>μ =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_tahstats_v0",
             "ariaLabel": {
-              "en": "Primary parameter a",
-              "ar": "المعامل الأول a"
-            }
+              "en": "Mean mu",
+              "ar": "المتوسط الحسابي"
+            },
+            "min": 40,
+            "max": 100,
+            "value": 70,
+            "step": 5
           },
           {
-            "id": "exAuto_stats_tahstats_s1",
+            "id": "tahNormSig",
+            "valueDisplayId": "tahNormSigV",
             "label": {
-              "en": "Parameter <b>b =</b>",
-              "ar": "المعامل <b>b =</b>"
+              "en": "Std Dev <b>σ =</b>",
+              "ar": "الانحراف المعياري <b>σ =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_tahstats_v1",
             "ariaLabel": {
-              "en": "Secondary parameter b",
-              "ar": "المعامل الثاني b"
-            }
+              "en": "Standard deviation sigma",
+              "ar": "الانحراف المعياري"
+            },
+            "min": 2,
+            "max": 20,
+            "value": 10,
+            "step": 2
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_tahstats_r0",
+            "id": "tahNorm68",
             "label": {
-              "en": "Primary Metric",
-              "ar": "المقدار الأساسي"
+              "en": "68% Interval (μ ± σ)",
+              "ar": "نطاق ٦٨٪ (μ ± σ)"
             },
             "colorClass": "indigo",
-            "value": "2.00"
+            "value": "[60, 80]"
           },
           {
-            "id": "exAuto_stats_tahstats_r1",
+            "id": "tahNorm95",
             "label": {
-              "en": "Secondary Metric",
-              "ar": "المقدار الثانوي"
+              "en": "95% Interval (μ ± 2σ)",
+              "ar": "نطاق ٩٥٪ (μ ± 2σ)"
             },
             "colorClass": "amber",
-            "value": "1.00"
+            "value": "[50, 90]"
+          },
+          {
+            "id": "tahNorm99",
+            "label": {
+              "en": "99.7% Interval (μ ± 3σ)",
+              "ar": "نطاق ٩٩٫٧٪ (μ ± 3σ)"
+            },
+            "value": "[40, 100]"
           }
-        ]
+        ],
+        "note": {
+          "en": "Sub-interval breakdown memorized for Tahsili: 34% in \\( [\\mu,\\mu+\\sigma] \\), 13.5% in \\( [\\mu+\\sigma,\\mu+2\\sigma] \\), 2.35% in \\( [\\mu+2\\sigma,\\mu+3\\sigma] \\), and 0.15% in each tail beyond \\( \\mu\\pm 3\\sigma \\).",
+          "ar": "تقسيم النسب المحفوظة في التحصيلي: ٣٤٪ بين \\( \\mu \\) و \\( \\mu+\\sigma \\)، و ١٣٫٥٪ بين \\( \\mu+\\sigma \\) و \\( \\mu+2\\sigma \\)، و ٢٫٣٥٪ بين \\( \\mu+2\\sigma \\) و \\( \\mu+3\\sigma \\)، و ٠٫١٥٪ في كل ذيل بعد \\( \\mu\\pm 3\\sigma \\)."
+        }
       },
       {
         "kind": "cards",
@@ -283,12 +278,12 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول D — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example 9.D — Tajmeeat Shortcut: Circular Permutations & Distinguishable Word Permutations",
+          "ar": "مثال محلول 9.د — التباديل الدائرية (مع وبدون مرجع) والتباديل مع التكرار"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 10x + 25 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ أو } x = 5 \\).</li><li>المجموع \\( = \\mathbf{10} \\) وحاصل الضرب \\( = \\mathbf{25} \\).</li></ol>"
+          "en": "<ul><li><strong>Circular Permutation WITHOUT fixed reference (تباديل دائرية بدون نقطة مرجعية):</strong> \\( (n - 1)! \\). (5 people around a round table: \\( (5-1)! = 4! = \\mathbf{24} \\) ways.)</li><li><strong>Circular Permutation WITH fixed landmark/door/window (بوجود نقطة مرجعية ثابتة):</strong> Turns into a linear permutation \\( n! \\). (5 people around a table where the seat next to the window is fixed: \\( 5! = \\mathbf{120} \\) ways.)</li><li><strong>Permutations with Repetition (التباديل مع التكرار):</strong> Number of arrangements of the letters in \\( \\text{«الدمام»} \\) (6 letters, \\( \\text{ا} \\) repeated twice, \\( \\text{م} \\) repeated twice) = \\( \\frac{6!}{2!\\,2!} = \\frac{720}{4} = \\mathbf{180} \\).</li></ul>",
+          "ar": "<ul><li><strong>التباديل الدائرية بدون نقطة مرجعية:</strong> عدد طرق ترتيب \\( n \\) عناصر على دائرة = \\( (n - 1)! \\) (مثال: 5 أشخاص حول طاولة دائرية = \\( 4! = \\mathbf{24} \\) طريقة).</li><li><strong>التباديل الدائرية مع وجود نقطة مرجعية ثابتة (نافذة / باب / مقعد محدد):</strong> تتحول إلى تباديل خطية \\( n! \\) (لـ 5 أشخاص = \\( 5! = \\mathbf{120} \\) طريقة).</li><li><strong>التباديل مع التكرار:</strong> عدد طرق ترتيب حروف كلمة «الدمام» (6 حروف، الألف مكرر مرتين والميم مرتين) = \\( \\frac{6!}{2!\\times 2!} = \\frac{720}{4} = \\mathbf{180} \\) طريقة.</li></ul>"
         }
       },
       {
@@ -343,7 +338,8 @@
   },
   "quizWidget": {
     "domains": [
-      "Statistics & Probability"
+      "Statistics & Probability",
+      "Probability & Normal Distribution"
     ],
     "enabled": true
   }

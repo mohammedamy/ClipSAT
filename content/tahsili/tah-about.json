@@ -42,132 +42,114 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Test format & strategy — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
-          ]
+          "type": "conic_section",
+          "subtype": "ellipse",
+          "a": 5,
+          "b": 3,
+          "title": "SAAT Tahsili Pathways Focus (50% Year 3 · 30% Year 2 · 20% Year 1)"
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
-          "ar": "التمثيل البياني للدالة f(x) = x² − 2 ومماسها عند x = 1."
+          "en": "Year 3 Secondary topics (Conic Sections, Vectors, Polar Coordinates, Normal Distribution & Calculus) represent 50% of the SAAT Tahsili exam.",
+          "ar": "تمثل موضوعات الصف الثالث الثانوي (القطوع المخروطية، المتجهات، الإحداثيات القطبية، التوزيع الطبيعي، والتفاضل والتكامل) ٥٠٪ من أسئلة الاختبار التحصيلي."
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Test format & strategy Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Test format & strategy"
+          "en": "⊙ Explorer · Mathematical Logic & Conditionals Truth Lab (مختبر المنطق الرياضي والعبارات الشرطية)",
+          "ar": "⊙ مستكشف تفاعلي · مختبر المنطق الرياضي والعبارات الشرطية المترابطة (رياضيات ١)"
         },
-        "canvasId": "exAuto_quad_tahabout",
+        "canvasId": "tahLogicCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Test format & strategy",
-          "ar": "مستكشف رياضي تفاعلي لدرس Test format & strategy"
+          "en": "Interactive truth table explorer for conditional, converse, inverse, and contrapositive statements",
+          "ar": "مستكشف تفاعلي لقيم الصواب للعبارة الشرطية والعكس والمعكوس والمعاكس الإيجابي"
         },
         "dataPanel": {
-          "btnId": "exAuto_quad_tahabout_dataBtn",
-          "panelId": "exAuto_quad_tahabout_dataPanel",
-          "descId": "exAuto_quad_tahabout_dataDesc",
-          "rowsId": "exAuto_quad_tahabout_dataRows",
+          "btnId": "tahLogDataBtn",
+          "panelId": "tahLogDataPanel",
+          "descId": "tahLogDataDesc",
+          "rowsId": "tahLogDataRows",
           "caption": {
-            "en": "Numerical table for Test format & strategy",
-            "ar": "جدول القيم العددية لدرس Test format & strategy"
+            "en": "Logical equivalence between Conditional (p → q) and Contrapositive (~q → ~p), and between Converse (q → p) and Inverse (~p → ~q)",
+            "ar": "التكافؤ المنطقي بين الشرطية (p → q) والمعاكس الإيجابي (~q → ~p)، وبين العكس (q → p) والمعكوس (~p → ~q)"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Statement Type",
+              "ar": "نوع العبارة المنطقية"
             },
             {
-              "en": "Value",
-              "ar": "القيمة"
+              "en": "Truth Value",
+              "ar": "قيمة الصواب"
             }
           ]
         },
         "controls": [
           {
-            "id": "exAuto_quad_tahabout_s0",
+            "id": "tahLogP",
+            "valueDisplayId": "tahLogPV",
             "label": {
-              "en": "Parameter <b>a =</b>",
-              "ar": "المعامل <b>a =</b>"
+              "en": "Hypothesis <b>p (0/1) =</b>",
+              "ar": "الفرض <b>p (0/1) =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_tahabout_v0",
             "ariaLabel": {
-              "en": "Primary parameter a",
-              "ar": "المعامل الأول a"
-            }
+              "en": "Truth value of hypothesis p",
+              "ar": "قيمة صواب الفرض p"
+            },
+            "min": 0,
+            "max": 1,
+            "value": 1,
+            "step": 1
           },
           {
-            "id": "exAuto_quad_tahabout_s1",
+            "id": "tahLogQ",
+            "valueDisplayId": "tahLogQV",
             "label": {
-              "en": "Parameter <b>b =</b>",
-              "ar": "المعامل <b>b =</b>"
+              "en": "Conclusion <b>q (0/1) =</b>",
+              "ar": "النتيجة <b>q (0/1) =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_tahabout_v1",
             "ariaLabel": {
-              "en": "Secondary parameter b",
-              "ar": "المعامل الثاني b"
-            }
+              "en": "Truth value of conclusion q",
+              "ar": "قيمة صواب النتيجة q"
+            },
+            "min": 0,
+            "max": 1,
+            "value": 0,
+            "step": 1
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_quad_tahabout_r0",
+            "id": "tahLogCond",
             "label": {
-              "en": "Primary Metric",
-              "ar": "المقدار الأساسي"
+              "en": "Conditional (p → q)",
+              "ar": "العبارة الشرطية (p → q)"
             },
             "colorClass": "indigo",
-            "value": "2.00"
+            "value": "F (خاطئة)"
           },
           {
-            "id": "exAuto_quad_tahabout_r1",
+            "id": "tahLogCont",
             "label": {
-              "en": "Secondary Metric",
-              "ar": "المقدار الثانوي"
+              "en": "Contrapositive (~q → ~p)",
+              "ar": "المعاكس الإيجابي (~q → ~p)"
             },
             "colorClass": "amber",
-            "value": "1.00"
+            "value": "F (خاطئة)"
+          },
+          {
+            "id": "tahLogConv",
+            "label": {
+              "en": "Converse (q → p) ≡ Inverse",
+              "ar": "العكس (q → p) ≡ المعكوس"
+            },
+            "value": "T (صائبة)"
           }
-        ]
+        ],
+        "note": {
+          "en": "High-Frequency Tahsili Rule (Year 1): A conditional (p \to q) is FALSE only when (p) is True and (q) is False. The Conditional (p \to q) and its Contrapositive (sim q \to sim p) are always logically equivalent.",
+          "ar": "قاعدة متكررة جداً في التحصيلي (أول ثانوي): العبارة الشرطية (p \to q) تكون خاطئة في حالة واحدة فقط هي عندما يكون الفرض (p) صائباً والنتيجة (q) خاطئة. والعبارة الشرطية (p \to q) تكافئ منطقياً معاكسها الإيجابي (sim q \to sim p) دائماً."
+        }
       },
       {
         "kind": "figure",
@@ -407,50 +389,50 @@
       },
       {
         "kind": "callout",
-        "style": "example",
+        "style": "def",
         "label": {
-          "en": "Worked Example A — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول A — البنية الجبرية وعلاقات الجذور"
+          "en": "Official ETEC / Qiyas SAAT Tahsili Syllabus — Saudi Secondary Pathways (نظام المسارات ١-٢-٣)",
+          "ar": "التوصيف الرسمي للاختبار التحصيلي العلمي (نظام المسارات: رياضيات ١، ٢، ٣)"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 5x + 6 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 2)(x - 3) = 0 \\implies x = 2 \\text{ or } x = 3 \\).</li><li>Check Vieta's formulas: sum \\( = 2 + 3 = \\mathbf{5} \\) and product \\( = (2)(3) = \\mathbf{6} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 5x + 6 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 2)(x - 3) = 0 \\implies x = 2 \\text{ أو } x = 3 \\).</li><li>المجموع \\( = \\mathbf{5} \\) وحاصل الضرب \\( = \\mathbf{6} \\).</li></ol>"
+          "en": "<ul><li><strong>Year 1 Secondary (أول ثانوي — 20% Weight):</strong> Mathematical Logic & Conditional Statements (converse, inverse, contrapositive \\( \\sim q \\to \\sim p \\)), Parallel Lines, Triangle Congruence/Similarity, Polygons & Quadrilaterals, Geometric Transformations, and Circle Angle/Segment Theorems.</li><li><strong>Year 2 Secondary (ثاني ثانوي — 30% Weight):</strong> Matrices, Determinants & Multiplicative Inverse \\( A^{-1} \\), Complex Numbers \\( i^n \\), Polynomials & Remainder/Factor Theorems, Rational Functions & Asymptotes, Arithmetic/Geometric Sequences & Infinite Series, Combinatorics, Binomial Theorem, and Trigonometry.</li><li><strong>Year 3 Secondary (ثالث ثانوي — 50% Weight):</strong> Function Analysis (Parity, Extrema, Average Rate of Change), Exponentials & Logarithms, Trigonometric Identities, <strong>Conic Sections (Parabola, Ellipse, Hyperbola & Eccentricity)</strong>, <strong>2D/3D Vectors & Dot/Cross Products</strong>, <strong>Polar Coordinates & De Moivre’s Theorem</strong>, Normal Distribution \\( (68\\text{–}95\\text{–}99.7\\%) \\), and <strong>Limits, Derivatives & Definite/Indefinite Integrals</strong>.</li></ul>",
+          "ar": "<ul><li><strong>الصف الأول الثانوي (رياضيات ١ — ٢٠٪ من الاختبار):</strong> التبرير والبرهان والمنطق الرياضي (العبارة الشرطية، العكس، المعكوس، المعاكس الإيجابي \\( \\sim q \\to \\sim p \\))، التوازي والتعامد، تطابق وتشابه المثلثات، المضلعات والأشكال الرباعية، التحويلات الهندسية، والدائرة.</li><li><strong>الصف الثاني الثانوي (رياضيات ٢ — ٣٠٪ من الاختبار):</strong> المصفوفات والمحددات والنظير الضربي، الأعداد المركبة وقوى \\( i \\)، كثيرات الحدود ونظريتا الباقي والعوامل، الدوال النسبية وخطوط التقارب، المتتابعات والمتسلسلات، نظرية ذات الحدين، وحساب المثلثات.</li><li><strong>الصف الثالث الثانوي (رياضيات ٣ — ٥٠٪ من الاختبار):</strong> تحليل الدوال، الأسس واللوغاريتمات، المتطابقات المثلثية، <strong>القطوع المخروطية (المكافئ، الناقص، الزائد، الاختلاف المركزي)</strong>، <strong>المتجهات في المستوى والفضاء</strong>، <strong>الإحداثيات القطبية ونظرية ديموافر</strong>، التوزيع الطبيعي، و<strong>النهايات والاشتقاق والتكامل</strong>.</li></ul>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example B — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول B — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example A — Year 1 Secondary (20%): Mathematical Logic & Contrapositive (المنطق الرياضي)",
+          "ar": "مثال محلول أ — أول ثانوي (٢٠٪): العبارة الشرطية والمعاكس الإيجابي المكافئ منطقياً"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 9x + 18 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 3)(x - 6) = 0 \\implies x = 3 \\text{ or } x = 6 \\).</li><li>Check Vieta's formulas: sum \\( = 3 + 6 = \\mathbf{9} \\) and product \\( = (3)(6) = \\mathbf{18} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 9x + 18 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 3)(x - 6) = 0 \\implies x = 3 \\text{ أو } x = 6 \\).</li><li>المجموع \\( = \\mathbf{9} \\) وحاصل الضرب \\( = \\mathbf{18} \\).</li></ol>"
+          "en": "<p><strong>Problem:</strong> Which statement is logically equivalent to the conditional statement \\( p \\to q \\): <em>\"If a polygon is a square, then it is a rectangle\"</em>?</p><p><strong>Tahsili Rule:</strong> A conditional \\( p \\to q \\) is logically equivalent ONLY to its <strong>Contrapositive (المعاكس الإيجابي)</strong> \\( \\sim q \\to \\sim p \\) (negate and swap both hypothesis and conclusion): <em>\"If a polygon is NOT a rectangle, then it is NOT a square.\"</em> Meanwhile, the Converse (العكس \\( q \\to p \\)) and Inverse (المعكوس \\( \\sim p \\to \\sim q \\)) are equivalent to each other.</p>",
+          "ar": "<p><strong>المسألة:</strong> ما العبارة المكافئة منطقياً للعبارة الشرطية \\( p \\to q \\): <em>«إذا كان الشكل مربعاً فإنه مستطيل»</em>؟</p><p><strong>قاعدة التحصيلي:</strong> العبارة الشرطية \\( p \\to q \\) تكافئ منطقياً <strong>معاكسها الإيجابي (Contrapositive)</strong> \\( \\sim q \\to \\sim p \\) (نفي الفرض والنتيجة مع تبديلهما): <em>«إذا لم يكن الشكل مستطيلاً فإنه ليس مربعاً»</em>. أما العكس \\( (q \\to p) \\) والمعكوس \\( (\\sim p \\to \\sim q) \\) فهما متكافئان فيما بينهما.</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول C — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example B — Year 2 Secondary (30%): Singular Matrix & Complex Powers (المصفوفات والأعداد المركبة)",
+          "ar": "مثال محلول ب — ثاني ثانوي (٣٠٪): المصفوفة المنفردة وقوى الوحدة التخيلية"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 13x + 36 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ أو } x = 9 \\).</li><li>المجموع \\( = \\mathbf{13} \\) وحاصل الضرب \\( = \\mathbf{36} \\).</li></ol>"
+          "en": "<p><strong>Problem:</strong> For what value of \\( k \\) does the matrix \\( A = \\begin{pmatrix} k & 6 \\\\ 2 & 3 \\end{pmatrix} \\) have NO multiplicative inverse, and what is \\( i^{2027} \\)?</p><p><strong>Solution:</strong><br>1. A matrix has no inverse when \\( |A| = ad - bc = 0 \\implies 3k - 12 = 0 \\implies k = \\mathbf{4} \\).<br>2. Divide the exponent of \\( i \\) by 4: \\( 2027 = 4(506) + 3 \\) (remainder 3), so \\( i^{2027} = i^3 = \\mathbf{-i} \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> ما قيمة \\( k \\) التي تجعل المصفوفة \\( A = \\begin{pmatrix} k & 6 \\\\ 2 & 3 \\end{pmatrix} \\) ليس لها نظير ضربي؟ وما قيمة \\( i^{2027} \\)؟</p><p><strong>الحل:</strong><br>1. تنعدم قابلية الانعكاس عندما \\( |A| = ad - bc = 0 \\implies 3k - 12 = 0 \\implies k = \\mathbf{4} \\).<br>2. باقي قسمة الأس \\( 2027 \\) على 4 هو 3، وبالتالي \\( i^{2027} = i^3 = \\mathbf{-i} \\).</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول D — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example C — Year 3 Secondary (50%): Conics, Vectors & Calculus (القطوع والمتجهات والتفاضل)",
+          "ar": "مثال محلول ج — ثالث ثانوي (٥٠٪): القطوع المخروطية والمتجهات والتكامل"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 10x + 25 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ أو } x = 5 \\).</li><li>المجموع \\( = \\mathbf{10} \\) وحاصل الضرب \\( = \\mathbf{25} \\).</li></ol>"
+          "en": "<p><strong>Problem:</strong> Find (1) the eccentricity of \\( \\frac{(x-1)^2}{25} + \\frac{(y+2)^2}{9} = 1 \\), (2) the value of \\( m \\) making \\( \\mathbf{u} = \\langle 3, -6 \\rangle \\perp \\mathbf{v} = \\langle m, 4 \\rangle \\), and (3) \\( \\int_0^2 (3x^2 - 2x)\\,dx \\).</p><p><strong>Solution:</strong><br>1. Ellipse with \\( a = 5, b = 3 \\implies c = \\sqrt{25-9} = 4 \\implies e = \\frac{c}{a} = \\mathbf{\\frac{4}{5} = 0.8} \\).<br>2. Orthogonal vectors satisfy \\( \\mathbf{u}\\cdot\\mathbf{v} = 0 \\implies 3m - 24 = 0 \\implies m = \\mathbf{8} \\).<br>3. \\( [x^3 - x^2]_0^2 = 8 - 4 = \\mathbf{4} \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد (١) الاختلاف المركزي للقطع \\( \\frac{(x-1)^2}{25} + \\frac{(y+2)^2}{9} = 1 \\)، و(٢) قيمة \\( m \\) التي تجعل المتجهين \\( \\mathbf{u} = \\langle 3, -6 \\rangle \\) و \\( \\mathbf{v} = \\langle m, 4 \\rangle \\) متعامدين، و(٣) \\( \\int_0^2 (3x^2 - 2x)\\,dx \\).</p><p><strong>الحل:</strong><br>1. قطع ناقص فيه \\( a = 5, b = 3 \\implies c = \\sqrt{25-9} = 4 \\implies e = \\frac{c}{a} = \\mathbf{\\frac{4}{5} = 0.8} \\).<br>2. شرط التعامد \\( \\mathbf{u}\\cdot\\mathbf{v} = 0 \\implies 3m - 24 = 0 \\implies m = \\mathbf{8} \\).<br>3. \\( [x^3 - x^2]_0^2 = 8 - 4 = \\mathbf{4} \\).</p>"
         }
       },
       {
@@ -503,7 +485,8 @@
   },
   "quizWidget": {
     "domains": [
-      "Test Format & Strategy"
+      "Mathematical Logic & Reasoning",
+      "Geometry & Coordinate Geometry"
     ],
     "enabled": true
   }

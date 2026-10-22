@@ -43,44 +43,34 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Limits & Derivatives — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
+          "title": "Critical Points, Local Extrema & Inflection of f(x) = x³ − 3x",
+          "xmin": -2.6,
+          "xmax": 2.6,
+          "ymin": -4,
+          "ymax": 4,
+          "fn": "x*x*x - 3*x",
+          "fn2": "3*x*x - 3",
           "points": [
             {
+              "x": -1,
+              "y": 2,
+              "label": "Max (-1, 2)"
+            },
+            {
               "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
+              "y": -2,
+              "label": "Min (1, -2)"
             },
             {
               "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "y": 0,
+              "label": "Inflection (0, 0)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
-          "ar": "التمثيل البياني للدالة f(x) = x² − 2 ومماسها عند x = 1."
+          "en": "Cubic f(x) = x³ − 3x (indigo) and its derivative f′(x) = 3x² − 3 (amber): critical points occur where f′(x) = 0 at x = −1 (local max 2) and x = 1 (local min −2).",
+          "ar": "الدالة التكعيبية f(x) = x³ − 3x ومشتقتها f′(x) = 3x² − 3: النقاط الحرجة عند f′(x) = 0 هي x = −1 (عظمى محلية 2) و x = 1 (صغرى محلية −2)."
         }
       },
       {
@@ -290,12 +280,12 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
-          "ar": "مثال محلول D — معدل التغير اللحظي ومعادلة المماس"
+          "en": "Worked Example 6.D — Tajmeeat Shortcut: Rational Limits at Infinity & Instantaneous Velocity",
+          "ar": "مثال محلول 6.د — اختصارات النهايات عند المالانهاية والسرعة اللحظية"
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
-          "ar": "لتكن \\( f(x) = 5x^3 - x^2 + 4 \\). أوجد معدل التغير اللحظي \\( f'(5) \\).<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>نشتق حداً بحداّ: \\( f'(x) = 15x^2 - 2x \\).</li><li>نعوض \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = \\mathbf{365} \\).</li></ol>"
+          "en": "<p><strong>1. Limits at Infinity \\( \\lim_{x\\to\\infty} \\frac{a_n x^n + \\dots}{b_m x^m + \\dots} \\):</strong><ul><li>If \\( n < m \\) (bottom degree larger) \\( \\implies \\mathbf{0} \\).</li><li>If \\( n = m \\) (degrees equal) \\( \\implies \\mathbf{\\frac{a_n}{b_m}} \\).</li><li>If \\( n > m \\) (top degree larger) \\( \\implies \\pm\\infty \\).</li></ul><strong>2. Instantaneous Velocity & Max Height:</strong> Given height \\( h(t) = 40t - 5t^2 \\), velocity is \\( v(t) = h'(t) = 40 - 10t \\). Maximum height occurs when \\( v(t) = 0 \\implies t = 4\\text{ s} \\), giving \\( h(4) = 40(4) - 5(16) = \\mathbf{80\\text{ m}} \\).</p>",
+          "ar": "<p><strong>١. قوانين النهايات عند المالانهاية للدوال النسبية:</strong><ul><li>درجة البسط &lt; درجة المقام \\( \\leftarrow \\) النهاية = \\( \\mathbf{0} \\).</li><li>درجة البسط = درجة المقام \\( \\leftarrow \\) النهاية = <strong>المعامل الرئيس للبسط ÷ المعامل الرئيس للمقام</strong>.</li><li>درجة البسط &gt; درجة المقام \\( \\leftarrow \\pm\\infty \\).</li></ul><strong>٢. السرعة اللحظية وأقصى ارتفاع:</strong> إذا كانت المسافة \\( h(t) = 40t - 5t^2 \\)، فالسرعة اللحظية \\( v(t) = h'(t) = 40 - 10t \\). عند أقصى ارتفاع تنعدم السرعة \\( v(t) = 0 \\implies t = 4 \\) ثوانٍ، ويكون أقصى ارتفاع \\( h(4) = \\mathbf{80\\text{ m}} \\).</p>"
         }
       },
       {
@@ -350,7 +340,8 @@
   },
   "quizWidget": {
     "domains": [
-      "Limits & Derivatives"
+      "Limits & Derivatives",
+      "Limits & Differential Calculus"
     ],
     "enabled": true
   }

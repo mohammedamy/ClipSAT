@@ -42,132 +42,114 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Sequences & Patterns — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
-          ]
+          "type": "circle",
+          "radius": 6,
+          "labelR": "Clock |30H − 5.5M|",
+          "chordAngle": 80,
+          "title": "Clock Hands Angle at 3:20 → |30(3) − 5.5(20)| = 20°"
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
-          "ar": "التمثيل البياني للدالة f(x) = x² − 2 ومماسها عند x = 1."
+          "en": "Clock angle formula: θ = |30H − 5.5M|. Every minute the minute hand advances 6° while the hour hand advances 0.5°.",
+          "ar": "قانون زاوية الساعة في قياس: الزاوية = |٣٠ × الساعات − ٥٫٥ × الدقائق|. يتحرك عقرب الدقائق ٦ درجات في الدقيقة وعقرب الساعات نصف درجة."
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Sequences & Patterns Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Sequences & Patterns"
+          "en": "⊙ Explorer · Clock Hands Angle Lab |30H − 5.5M|",
+          "ar": "⊙ مستكشف تفاعلي · مختبر زاوية عقربي الساعة |30H − 5.5M|"
         },
-        "canvasId": "exAuto_quad_qudpatterns",
+        "canvasId": "qudClockCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Sequences & Patterns",
-          "ar": "مستكشف رياضي تفاعلي لدرس Sequences & Patterns"
+          "en": "Interactive clock face calculating the minor and reflex angles between the hour and minute hands",
+          "ar": "ساعة تفاعلية لحساب الزاوية الصغرى والكبرى بين عقربي الساعات والدقائق"
         },
         "dataPanel": {
-          "btnId": "exAuto_quad_qudpatterns_dataBtn",
-          "panelId": "exAuto_quad_qudpatterns_dataPanel",
-          "descId": "exAuto_quad_qudpatterns_dataDesc",
-          "rowsId": "exAuto_quad_qudpatterns_dataRows",
+          "btnId": "qudClockDataBtn",
+          "panelId": "qudClockDataPanel",
+          "descId": "qudClockDataDesc",
+          "rowsId": "qudClockDataRows",
           "caption": {
-            "en": "Numerical table for Sequences & Patterns",
-            "ar": "جدول القيم العددية لدرس Sequences & Patterns"
+            "en": "Clock hand positions and angles for the selected hour H and minute M",
+            "ar": "مواقع العقارب والزوايا عند الساعة H والدقيقة M"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Quantity",
+              "ar": "المقدار"
             },
             {
-              "en": "Value",
-              "ar": "القيمة"
+              "en": "Angle / Value",
+              "ar": "القيمة / الزاوية"
             }
           ]
         },
         "controls": [
           {
-            "id": "exAuto_quad_qudpatterns_s0",
+            "id": "qudClkH",
+            "valueDisplayId": "qudClkHV",
             "label": {
-              "en": "Parameter <b>a =</b>",
-              "ar": "المعامل <b>a =</b>"
+              "en": "Hour <b>H =</b>",
+              "ar": "الساعات <b>H =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_qudpatterns_v0",
             "ariaLabel": {
-              "en": "Primary parameter a",
-              "ar": "المعامل الأول a"
-            }
+              "en": "Hour H",
+              "ar": "الساعة H"
+            },
+            "min": 1,
+            "max": 12,
+            "value": 3,
+            "step": 1
           },
           {
-            "id": "exAuto_quad_qudpatterns_s1",
+            "id": "qudClkM",
+            "valueDisplayId": "qudClkMV",
             "label": {
-              "en": "Parameter <b>b =</b>",
-              "ar": "المعامل <b>b =</b>"
+              "en": "Minute <b>M =</b>",
+              "ar": "الدقائق <b>M =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_qudpatterns_v1",
             "ariaLabel": {
-              "en": "Secondary parameter b",
-              "ar": "المعامل الثاني b"
-            }
+              "en": "Minute M",
+              "ar": "الدقائق M"
+            },
+            "min": 0,
+            "max": 55,
+            "value": 20,
+            "step": 5
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_quad_qudpatterns_r0",
+            "id": "qudClkTime",
             "label": {
-              "en": "Primary Metric",
-              "ar": "المقدار الأساسي"
+              "en": "Time",
+              "ar": "الوقت"
             },
-            "colorClass": "indigo",
-            "value": "2.00"
+            "value": "3:20"
           },
           {
-            "id": "exAuto_quad_qudpatterns_r1",
+            "id": "qudClkAngle",
             "label": {
-              "en": "Secondary Metric",
-              "ar": "المقدار الثانوي"
+              "en": "Minor Angle",
+              "ar": "الزاوية الصغرى"
+            },
+            "colorClass": "indigo",
+            "value": "20.0°"
+          },
+          {
+            "id": "qudClkReflex",
+            "label": {
+              "en": "Major (Reflex) Angle",
+              "ar": "الزاوية الكبرى"
             },
             "colorClass": "amber",
-            "value": "1.00"
+            "value": "340.0°"
           }
-        ]
+        ],
+        "note": {
+          "en": "Qiyas Rule: \\( \\theta = |30H - 5.5M| \\). If the result exceeds \\( 180^\\circ \\), subtract from \\( 360^\\circ \\) to obtain the minor angle.",
+          "ar": "قانون قياس السريع: \\( \\theta = |30H - 5.5M| \\). إذا زاد الناتج عن \\( 180^\\circ \\) نطرحه من \\( 360^\\circ \\) لإيجاد الزاوية الصغرى."
+        }
       },
       {
         "kind": "callout",
@@ -296,12 +278,12 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول D — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example 6.D — Tajmeeat Shortcut: Handshakes, Page Counts, Queue Rank & Embedded Squares",
+          "ar": "مثال محلول 6.د — القوانين السريعة: المصافحات، الصفحات، الطابور، وعدّ المربعات"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 10x + 25 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ أو } x = 5 \\).</li><li>المجموع \\( = \\mathbf{10} \\) وحاصل الضرب \\( = \\mathbf{25} \\).</li></ol>"
+          "en": "<ul><li><strong>Handshakes / Matches (المصافحات):</strong> Among \\( n \\) people, total handshakes = \\( \\frac{n(n-1)}{2} \\). (For \\( n=10 \\): \\( \\frac{10 \\times 9}{2} = 45 \\)).</li><li><strong>Inclusive Page Count (عدد الصفحات من أ إلى ب):</strong> \\( \\text{Pages} = b - a + 1 \\). (From page 15 to 42: \\( 42 - 15 + 1 = 28 \\) pages).</li><li><strong>Queue Position (الترتيب في الصف):</strong> Total people = \\( \\text{Front rank} + \\text{Back rank} - 1 \\).</li><li><strong>Squares in an \\( n \\times n \\) Grid (عدد المربعات في شبكة):</strong> \\( \\sum_{k=1}^n k^2 = \\frac{n(n+1)(2n+1)}{6} \\) (for \\( 3\\times 3 \\): \\( 1+4+9 = 14 \\); for \\( 4\\times 4 \\): \\( 30 \\)).</li></ul>",
+          "ar": "<ul><li><strong>قانون المصافحات والمباريات:</strong> لعدد \\( n \\) من الأشخاص، عدد المصافحات = \\( \\frac{n(n-1)}{2} \\) (لـ 10 أشخاص: \\( 45 \\) مصافحة).</li><li><strong>عدد الصفحات المحصورة من \\( a \\) إلى \\( b \\):</strong> \\( b - a + 1 \\) (من صفحة 15 إلى 42: \\( 42 - 15 + 1 = 28 \\) صفحة).</li><li><strong>عدد الأشخاص في طابور:</strong> الترتيب من البداية + الترتيب من النهاية \\( - 1 \\).</li><li><strong>عدد المربعات في شبكة \\( n \\times n \\):</strong> \\( 1^2 + 2^2 + \\dots + n^2 \\) (في شبكة \\( 3\\times 3 \\) يوجد \\( 14 \\) مربعاً، وفي \\( 4\\times 4 \\) يوجد \\( 30 \\) مربعاً).</li></ul>"
         }
       },
       {
@@ -356,7 +338,8 @@
   },
   "quizWidget": {
     "domains": [
-      "Sequences & Patterns"
+      "Sequences & Patterns",
+      "Number Patterns & Sequences"
     ],
     "enabled": true
   },

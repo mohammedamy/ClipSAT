@@ -34,132 +34,145 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Overview — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
+          "type": "argand",
+          "title": "IB HL — Complex Roots of Unity & De Moivre Spiral on the Argand Plane",
+          "xmin": -2,
+          "xmax": 2,
+          "ymin": -2,
+          "ymax": 2,
+          "circles": [
             {
               "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "y": 0,
+              "r": 1.5,
+              "label": "|z| = 1.5",
+              "dashed": true
+            }
+          ],
+          "polygon": true,
+          "points": [
+            {
+              "re": 1.5,
+              "im": 0,
+              "label": "z₀ = 1.5"
+            },
+            {
+              "re": 0.46,
+              "im": 1.43,
+              "label": "z₁ = 1.5e^(i2π/5)",
+              "arcLabel": "2π/5"
+            },
+            {
+              "re": -1.21,
+              "im": 0.88,
+              "label": "z₂"
+            },
+            {
+              "re": -1.21,
+              "im": -0.88,
+              "label": "z₃"
+            },
+            {
+              "re": 0.46,
+              "im": -1.43,
+              "label": "z₄"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Regular pentagon formed by the 5th roots of z⁵ = (1.5)⁵ on the Argand plane — illustrating the geometric synthesis of Algebra, Trigonometry, and Complex Analysis tested across IB HL Papers 1, 2, and 3.",
           "ar": null
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Overview Lab",
+          "en": "⊙ Explorer · IB HL Coupled Linear Systems X' = AX & Phase Portrait Lab",
           "ar": null
         },
-        "canvasId": "exAuto_quad_ibhloverview",
+        "canvasId": "ibhlPhaseCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Overview",
+          "en": "Interactive IB HL phase portrait explorer for coupled linear differential equations showing eigenvalues and equilibrium trajectories",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_quad_ibhloverview_dataBtn",
-          "panelId": "exAuto_quad_ibhloverview_dataPanel",
-          "descId": "exAuto_quad_ibhloverview_dataDesc",
-          "rowsId": "exAuto_quad_ibhloverview_dataRows",
+          "btnId": "ibhlPhaseDataBtn",
+          "panelId": "ibhlPhaseDataPanel",
+          "descId": "ibhlPhaseDataDesc",
+          "rowsId": "ibhlPhaseDataRows",
           "caption": {
-            "en": "Numerical table for Overview",
+            "en": "Eigenvalue and phase-plane classification for X' = AX",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Matrix Invariant / Metric",
               "ar": null
             },
             {
-              "en": "Value",
+              "en": "Value / Classification",
               "ar": null
             }
           ]
         },
         "controls": [
           {
-            "id": "exAuto_quad_ibhloverview_s0",
+            "id": "ibhlPhaseTr",
             "label": {
-              "en": "Parameter <b>a =</b>",
+              "en": "Trace <b>tr(A) = λ₁ + λ₂ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": -3,
+            "max": 3,
+            "value": -1,
             "step": 0.5,
-            "valueDisplayId": "exAuto_quad_ibhloverview_v0",
+            "valueDisplayId": "ibhlPhaseTrVal",
             "ariaLabel": {
-              "en": "Primary parameter a",
+              "en": "Matrix trace tr(A)",
               "ar": null
             }
           },
           {
-            "id": "exAuto_quad_ibhloverview_s1",
+            "id": "ibhlPhaseDet",
             "label": {
-              "en": "Parameter <b>b =</b>",
+              "en": "Determinant <b>det(A) = λ₁λ₂ =</b>",
               "ar": null
             },
-            "min": -4,
+            "min": -3,
             "max": 4,
-            "value": 1,
+            "value": 2,
             "step": 0.5,
-            "valueDisplayId": "exAuto_quad_ibhloverview_v1",
+            "valueDisplayId": "ibhlPhaseDetVal",
             "ariaLabel": {
-              "en": "Secondary parameter b",
+              "en": "Matrix determinant det(A)",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_quad_ibhloverview_r0",
+            "id": "ibhlPhaseEig",
             "label": {
-              "en": "Primary Metric",
+              "en": "Eigenvalues λ₁, λ₂",
               "ar": null
             },
-            "colorClass": "indigo",
-            "value": "2.00"
+            "value": "−0.50 ± 1.32i",
+            "colorClass": "indigo"
           },
           {
-            "id": "exAuto_quad_ibhloverview_r1",
+            "id": "ibhlPhaseType",
             "label": {
-              "en": "Secondary Metric",
+              "en": "Equilibrium Type at (0,0)",
               "ar": null
             },
-            "colorClass": "amber",
-            "value": "1.00"
+            "value": "Stable Spiral (Sink)",
+            "colorClass": "amber"
           }
-        ]
+        ],
+        "note": {
+          "en": "Vary tr(A) and det(A) to transition across all IB HL phase portrait regimes: Saddle Point (det(A) < 0), Stable/Unstable Node (Δ > 0, det(A) > 0), Stable/Unstable Spiral (Δ < 0, tr(A) ≠ 0), and Centre (tr(A) = 0, det(A) > 0).",
+          "ar": null
+        }
       },
       {
         "kind": "callout",
@@ -249,42 +262,54 @@
       },
       {
         "kind": "figure",
-        "caption": {
-          "en": "IB Mathematics HL assessment component weighting: Paper 1 (30%), Paper 2 (30%), Paper 3 (20%), and Internal Assessment (20%).",
-          "ar": null
-        },
         "figure": {
-          "type": "bar",
-          "title": "IB Mathematics HL Assessment Weighting (%)",
-          "data": [
+          "type": "argand",
+          "title": "IB HL — Complex Roots of Unity & De Moivre Spiral on the Argand Plane",
+          "xmin": -2,
+          "xmax": 2,
+          "ymin": -2,
+          "ymax": 2,
+          "circles": [
             {
-              "label": "Paper 1 (non-calc)",
-              "val": 30
+              "x": 0,
+              "y": 0,
+              "r": 1.5,
+              "label": "|z| = 1.5",
+              "dashed": true
+            }
+          ],
+          "polygon": true,
+          "points": [
+            {
+              "re": 1.5,
+              "im": 0,
+              "label": "z₀ = 1.5"
             },
             {
-              "label": "Paper 2 (calc)",
-              "val": 30
+              "re": 0.46,
+              "im": 1.43,
+              "label": "z₁ = 1.5e^(i2π/5)",
+              "arcLabel": "2π/5"
             },
             {
-              "label": "Paper 3 (investigation)",
-              "val": 20
+              "re": -1.21,
+              "im": 0.88,
+              "label": "z₂"
             },
             {
-              "label": "Internal Assessment",
-              "val": 20
+              "re": -1.21,
+              "im": -0.88,
+              "label": "z₃"
+            },
+            {
+              "re": 0.46,
+              "im": -1.43,
+              "label": "z₄"
             }
           ]
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked Example A — Algebraic Structure & Vieta's Root Relations",
-          "ar": null
         },
-        "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 5x + 6 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 2)(x - 3) = 0 \\implies x = 2 \\text{ or } x = 3 \\).</li><li>Check Vieta's formulas: sum \\( = 2 + 3 = \\mathbf{5} \\) and product \\( = (2)(3) = \\mathbf{6} \\).</li></ol>",
+        "caption": {
+          "en": "Regular pentagon formed by the 5th roots of z⁵ = (1.5)⁵ on the Argand plane — illustrating the geometric synthesis of Algebra, Trigonometry, and Complex Analysis tested across IB HL Papers 1, 2, and 3.",
           "ar": null
         }
       },
@@ -292,11 +317,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example B — Algebraic Structure & Vieta's Root Relations",
+          "en": "IB Mathematics HL Architecture: Papers 1, 2 & Paper 3 (75-Min Extended Investigation)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 9x + 18 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 3)(x - 6) = 0 \\implies x = 3 \\text{ or } x = 6 \\).</li><li>Check Vieta's formulas: sum \\( = 3 + 6 = \\mathbf{9} \\) and product \\( = (3)(6) = \\mathbf{18} \\).</li></ol>",
+          "en": "<p><strong>1. Official IB DP Mathematics HL Assessment Matrix (AA HL &amp; AI HL):</strong></p>\n<table class=\"exam-table\" style=\"margin:8px 0\">\n<thead><tr><th>Paper</th><th>AA HL Specification</th><th>AI HL Specification</th><th>Weight</th></tr></thead>\n<tbody>\n<tr><td><strong>Paper 1</strong><br>(120 min · 110 marks)</td><td><strong>NO GDC Allowed.</strong><br>Section A: 9–10 short-response questions (~55m)<br>Section B: 3 extended-response questions (~55m)</td><td><strong>GDC Required.</strong><br>13–16 compulsory short-response questions (~5–9m each) spanning all 5 topics</td><td><strong>30%</strong></td></tr>\n<tr><td><strong>Paper 2</strong><br>(120 min · 110 marks)</td><td><strong>GDC Required.</strong><br>Section A: 9–10 short-response questions (~55m)<br>Section B: 3 extended-response questions (~55m)</td><td><strong>GDC Required.</strong><br>6–7 compulsory extended-response multi-part questions (~14–20m each)</td><td><strong>30%</strong></td></tr>\n<tr><td><strong>Paper 3</strong><br>(75 min · 55 marks)</td><td><strong>GDC Required.</strong><br>2 compulsory extended investigation problems (25–30 marks each) testing pattern discovery, conjecture, proof, and generalization</td><td><strong>GDC Required.</strong><br>2 compulsory extended modelling &amp; inquiry problems (25–30 marks each) testing matrices, differential equations, statistics, or graph theory</td><td><strong>20%</strong></td></tr>\n<tr><td><strong>Internal Assessment (IA)</strong></td><td colspan=\"2\">Individual mathematical exploration report (12–20 pages) assessed on Criteria A–E</td><td><strong>20%</strong></td></tr>\n</tbody></table>\n<p><strong>2. Mastering HL Paper 3 (75 Minutes, 55 Marks):</strong><br>\nEach Paper 3 question is a guided mathematical research journey (parts (a) through (g)/(h)). Early parts ask you to compute specific cases ($n = 1, 2, 3$) to build intuition; middle parts ask you to <strong>conjecture</strong> a general formula and <strong>prove</strong> it (often via mathematical induction, De Moivre's theorem, or differential equations); final parts extend the model to a novel context. Because parts are tightly scaffolded with <strong>Show that [AG]</strong> checkpoints, even if you cannot complete part (c), you can use the given result from part (c) to earn full marks on parts (d)–(g)!</p>",
           "ar": null
         }
       },
@@ -304,11 +329,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "en": "IB Mathematics HL Architecture: Papers 1, 2 & Paper 3 (75-Min Extended Investigation)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "en": "<p><strong>1. Official IB DP Mathematics HL Assessment Matrix (AA HL &amp; AI HL):</strong></p>\n<table class=\"exam-table\" style=\"margin:8px 0\">\n<thead><tr><th>Paper</th><th>AA HL Specification</th><th>AI HL Specification</th><th>Weight</th></tr></thead>\n<tbody>\n<tr><td><strong>Paper 1</strong><br>(120 min · 110 marks)</td><td><strong>NO GDC Allowed.</strong><br>Section A: 9–10 short-response questions (~55m)<br>Section B: 3 extended-response questions (~55m)</td><td><strong>GDC Required.</strong><br>13–16 compulsory short-response questions (~5–9m each) spanning all 5 topics</td><td><strong>30%</strong></td></tr>\n<tr><td><strong>Paper 2</strong><br>(120 min · 110 marks)</td><td><strong>GDC Required.</strong><br>Section A: 9–10 short-response questions (~55m)<br>Section B: 3 extended-response questions (~55m)</td><td><strong>GDC Required.</strong><br>6–7 compulsory extended-response multi-part questions (~14–20m each)</td><td><strong>30%</strong></td></tr>\n<tr><td><strong>Paper 3</strong><br>(75 min · 55 marks)</td><td><strong>GDC Required.</strong><br>2 compulsory extended investigation problems (25–30 marks each) testing pattern discovery, conjecture, proof, and generalization</td><td><strong>GDC Required.</strong><br>2 compulsory extended modelling &amp; inquiry problems (25–30 marks each) testing matrices, differential equations, statistics, or graph theory</td><td><strong>20%</strong></td></tr>\n<tr><td><strong>Internal Assessment (IA)</strong></td><td colspan=\"2\">Individual mathematical exploration report (12–20 pages) assessed on Criteria A–E</td><td><strong>20%</strong></td></tr>\n</tbody></table>\n<p><strong>2. Mastering HL Paper 3 (75 Minutes, 55 Marks):</strong><br>\nEach Paper 3 question is a guided mathematical research journey (parts (a) through (g)/(h)). Early parts ask you to compute specific cases ($n = 1, 2, 3$) to build intuition; middle parts ask you to <strong>conjecture</strong> a general formula and <strong>prove</strong> it (often via mathematical induction, De Moivre's theorem, or differential equations); final parts extend the model to a novel context. Because parts are tightly scaffolded with <strong>Show that [AG]</strong> checkpoints, even if you cannot complete part (c), you can use the given result from part (c) to earn full marks on parts (d)–(g)!</p>",
           "ar": null
         }
       },
@@ -316,11 +341,23 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "IB Mathematics HL Architecture: Papers 1, 2 & Paper 3 (75-Min Extended Investigation)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>1. Official IB DP Mathematics HL Assessment Matrix (AA HL &amp; AI HL):</strong></p>\n<table class=\"exam-table\" style=\"margin:8px 0\">\n<thead><tr><th>Paper</th><th>AA HL Specification</th><th>AI HL Specification</th><th>Weight</th></tr></thead>\n<tbody>\n<tr><td><strong>Paper 1</strong><br>(120 min · 110 marks)</td><td><strong>NO GDC Allowed.</strong><br>Section A: 9–10 short-response questions (~55m)<br>Section B: 3 extended-response questions (~55m)</td><td><strong>GDC Required.</strong><br>13–16 compulsory short-response questions (~5–9m each) spanning all 5 topics</td><td><strong>30%</strong></td></tr>\n<tr><td><strong>Paper 2</strong><br>(120 min · 110 marks)</td><td><strong>GDC Required.</strong><br>Section A: 9–10 short-response questions (~55m)<br>Section B: 3 extended-response questions (~55m)</td><td><strong>GDC Required.</strong><br>6–7 compulsory extended-response multi-part questions (~14–20m each)</td><td><strong>30%</strong></td></tr>\n<tr><td><strong>Paper 3</strong><br>(75 min · 55 marks)</td><td><strong>GDC Required.</strong><br>2 compulsory extended investigation problems (25–30 marks each) testing pattern discovery, conjecture, proof, and generalization</td><td><strong>GDC Required.</strong><br>2 compulsory extended modelling &amp; inquiry problems (25–30 marks each) testing matrices, differential equations, statistics, or graph theory</td><td><strong>20%</strong></td></tr>\n<tr><td><strong>Internal Assessment (IA)</strong></td><td colspan=\"2\">Individual mathematical exploration report (12–20 pages) assessed on Criteria A–E</td><td><strong>20%</strong></td></tr>\n</tbody></table>\n<p><strong>2. Mastering HL Paper 3 (75 Minutes, 55 Marks):</strong><br>\nEach Paper 3 question is a guided mathematical research journey (parts (a) through (g)/(h)). Early parts ask you to compute specific cases ($n = 1, 2, 3$) to build intuition; middle parts ask you to <strong>conjecture</strong> a general formula and <strong>prove</strong> it (often via mathematical induction, De Moivre's theorem, or differential equations); final parts extend the model to a novel context. Because parts are tightly scaffolded with <strong>Show that [AG]</strong> checkpoints, even if you cannot complete part (c), you can use the given result from part (c) to earn full marks on parts (d)–(g)!</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "IB Mathematics HL Architecture: Papers 1, 2 & Paper 3 (75-Min Extended Investigation)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. Official IB DP Mathematics HL Assessment Matrix (AA HL &amp; AI HL):</strong></p>\n<table class=\"exam-table\" style=\"margin:8px 0\">\n<thead><tr><th>Paper</th><th>AA HL Specification</th><th>AI HL Specification</th><th>Weight</th></tr></thead>\n<tbody>\n<tr><td><strong>Paper 1</strong><br>(120 min · 110 marks)</td><td><strong>NO GDC Allowed.</strong><br>Section A: 9–10 short-response questions (~55m)<br>Section B: 3 extended-response questions (~55m)</td><td><strong>GDC Required.</strong><br>13–16 compulsory short-response questions (~5–9m each) spanning all 5 topics</td><td><strong>30%</strong></td></tr>\n<tr><td><strong>Paper 2</strong><br>(120 min · 110 marks)</td><td><strong>GDC Required.</strong><br>Section A: 9–10 short-response questions (~55m)<br>Section B: 3 extended-response questions (~55m)</td><td><strong>GDC Required.</strong><br>6–7 compulsory extended-response multi-part questions (~14–20m each)</td><td><strong>30%</strong></td></tr>\n<tr><td><strong>Paper 3</strong><br>(75 min · 55 marks)</td><td><strong>GDC Required.</strong><br>2 compulsory extended investigation problems (25–30 marks each) testing pattern discovery, conjecture, proof, and generalization</td><td><strong>GDC Required.</strong><br>2 compulsory extended modelling &amp; inquiry problems (25–30 marks each) testing matrices, differential equations, statistics, or graph theory</td><td><strong>20%</strong></td></tr>\n<tr><td><strong>Internal Assessment (IA)</strong></td><td colspan=\"2\">Individual mathematical exploration report (12–20 pages) assessed on Criteria A–E</td><td><strong>20%</strong></td></tr>\n</tbody></table>\n<p><strong>2. Mastering HL Paper 3 (75 Minutes, 55 Marks):</strong><br>\nEach Paper 3 question is a guided mathematical research journey (parts (a) through (g)/(h)). Early parts ask you to compute specific cases ($n = 1, 2, 3$) to build intuition; middle parts ask you to <strong>conjecture</strong> a general formula and <strong>prove</strong> it (often via mathematical induction, De Moivre's theorem, or differential equations); final parts extend the model to a novel context. Because parts are tightly scaffolded with <strong>Show that [AG]</strong> checkpoints, even if you cannot complete part (c), you can use the given result from part (c) to earn full marks on parts (d)–(g)!</p>",
           "ar": null
         }
       },

@@ -49,43 +49,55 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Functions (HL Extensions) — Coordinate Curve & Tangent Analysis (2)",
+          "title": "Topic 2 HL — Modulus Graph y = |x² − 4x + 3| vs Reciprocal y = 1/(x² − 4x + 3)",
           "xrange": [
-            -4,
-            4
+            -0.5,
+            4.5
           ],
           "yrange": [
             -3,
-            9
+            4
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "abs(x*x - 4*x + 3)",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "label": "y = |f(x)|"
             },
             {
-              "fn": "2*x - 3",
+              "fn": "1/(x*x - 4*x + 3)",
               "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "dash": "4,3",
+              "label": "y = 1/f(x)"
+            }
+          ],
+          "vlines": [
+            {
+              "x": 1,
+              "color": "var(--fig-teal)",
+              "label": "x = 1"
+            },
+            {
+              "x": 3,
+              "color": "var(--fig-teal)",
+              "label": "x = 3"
             }
           ],
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
+              "x": 2,
+              "y": 1,
+              "label": "Cusp Max (2, 1)"
             },
             {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "x": 2,
+              "y": -1,
+              "label": "Recip Max (2, −1)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Simultaneous comparison of y = |f(x)| and y = 1/f(x) for f(x) = (x − 1)(x − 3): zeros of f(x) at x = 1, 3 become sharp cusps on |f(x)| and vertical asymptotes on 1/f(x).",
           "ar": null
         }
       },
@@ -287,38 +299,58 @@
       },
       {
         "kind": "figure",
-        "caption": {
-          "en": "Graph of modulus function f(x) = |2x - 3| showing vertex cusp at x = 1.5 and reflection of negative values across the x-axis.",
-          "ar": null
-        },
         "figure": {
           "type": "fn",
+          "title": "Topic 2 HL — Modulus Graph y = |x² − 4x + 3| vs Reciprocal y = 1/(x² − 4x + 3)",
+          "xrange": [
+            -0.5,
+            4.5
+          ],
+          "yrange": [
+            -3,
+            4
+          ],
           "fns": [
             {
-              "fn": "abs(2*x - 3)",
-              "label": "f(x) = |2x - 3|"
+              "fn": "abs(x*x - 4*x + 3)",
+              "color": "var(--fig-indigo)",
+              "label": "y = |f(x)|"
+            },
+            {
+              "fn": "1/(x*x - 4*x + 3)",
+              "color": "var(--fig-amber)",
+              "dash": "4,3",
+              "label": "y = 1/f(x)"
+            }
+          ],
+          "vlines": [
+            {
+              "x": 1,
+              "color": "var(--fig-teal)",
+              "label": "x = 1"
+            },
+            {
+              "x": 3,
+              "color": "var(--fig-teal)",
+              "label": "x = 3"
             }
           ],
           "points": [
             {
-              "x": 1.5,
-              "y": 0,
-              "label": "Vertex (1.5, 0)"
+              "x": 2,
+              "y": 1,
+              "label": "Cusp Max (2, 1)"
             },
             {
-              "x": 0,
-              "y": 3,
-              "label": "y-int (0, 3)"
+              "x": 2,
+              "y": -1,
+              "label": "Recip Max (2, −1)"
             }
-          ],
-          "xrange": [
-            -2,
-            5
-          ],
-          "yrange": [
-            -1,
-            7
           ]
+        },
+        "caption": {
+          "en": "Simultaneous comparison of y = |f(x)| and y = 1/f(x) for f(x) = (x − 1)(x − 3): zeros of f(x) at x = 1, 3 become sharp cusps on |f(x)| and vertical asymptotes on 1/f(x).",
+          "ar": null
         }
       },
       {
@@ -337,11 +369,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Past-Paper Idea Matrix & Official Markscheme Worked Example — Topic 2 HL (Polynomials, Rational & Modulus Functions)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>High-Frequency IB HL Past-Paper Ideas (AHL 2.12–2.16):</strong></p>\n<table class=\"exam-table\" style=\"margin:6px 0\">\n<thead><tr><th>Subtopic</th><th>Classic Past-Paper Question Pattern</th><th>Examiner Trap to Avoid</th></tr></thead>\n<tbody>\n<tr><td><strong>AHL 2.12 Vieta's Formulas &amp; Conjugate Roots</strong></td><td>Given one complex root $2 - 3i$ of a real polynomial $P(z)$, deducing $2 + 3i$ is a root, forming the quadratic factor $(z^2 - 4z + 13)$, and using $\\sum \\alpha_i = -a_{n-1}/a_n$, $\\prod \\alpha_i = (-1)^n a_0/a_n$.</td><td>Forgetting the alternating sign $(-1)^k$ on Vieta's product of roots ($+c/a$ for quadratics, $-d/a$ for cubics, $+e/a$ for quartics).</td></tr>\n<tr><td><strong>AHL 2.13 Rational Functions $\\frac{ax^2+bx+c}{dx+e}$</strong></td><td>Performing polynomial long division to find the oblique asymptote $y = mx + k$ and finding the stationary points to determine the excluded vertical interval in the range.</td><td>Assuming a rational function cannot cross its horizontal or oblique asymptote! Always check if $f(x) = mx + k$ has finite solutions.</td></tr>\n<tr><td><strong>AHL 2.14–2.16 Odd/Even, $|f(x)|$, $f(|x|)$ &amp; $1/f(x)$</strong></td><td>Sketching $y = |f(x)|$, $y = f(|x|)$, and $y = 1/f(x)$ on the same axes; solving $|2x - 3| < |x + 1|$ algebraically or graphically.</td><td>For $y = f(|x|)$, forgetting to erase the original left-hand branch ($x < 0$) before reflecting the $x \\ge 0$ branch across the $y$-axis.</td></tr>\n</tbody></table>\n<p><strong>Worked Example (AA HL Paper 1 — 8 marks):</strong><br>\nConsider $f(x) = \\frac{x^2 - 3x + 6}{x - 1}$ for $x \\ne 1$.<br>\n(a) Express $f(x)$ in the form $x + a + \\frac{b}{x - 1}$ and hence state the equation of the oblique asymptote. <strong>[3]</strong><br>\n(b) Find the coordinates of the local maximum and local minimum points on the graph of $f$, and hence state the range of $f$. <strong>[5]</strong></p>\n<p><strong>Official IB Markscheme Solution:</strong><br>\n(a) $x^2 - 3x + 6 = (x - 1)(x - 2) + 4 \\implies f(x) = x - 2 + \\frac{4}{x - 1}$ ($a = -2, b = 4$) <strong>[M1] [A1]</strong><br>\nOblique asymptote is $y = x - 2$ <strong>[A1]</strong><br>\n(b) $f'(x) = 1 - \\frac{4}{(x-1)^2} = 0 \\implies (x-1)^2 = 4 \\implies x - 1 = \\pm 2 \\implies x = 3$ or $x = -1$ <strong>[M1] [A1]</strong><br>\nAt $x = -1$, $f(-1) = -1 - 2 - 2 = -5$ (Local Max $(-1, -5)$); at $x = 3$, $f(3) = 3 - 2 + 2 = 3$ (Local Min $(3, 3)$) <strong>[A1] [A1]</strong><br>\nRange of $f$: $(-\\infty, -5] \\cup [3, \\infty)$ (or $y \\le -5$ or $y \\ge 3$) <strong>[A1]</strong></p>",
           "ar": null
         }
       },

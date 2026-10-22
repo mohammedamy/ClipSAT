@@ -48,44 +48,42 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Calculus (HL) — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
+          "type": "slope_field",
+          "title": "Topic 5 HL — Slope Field & Solution Curve for dy/dx = x − y/2",
+          "fn": "x - 0.5*y",
+          "xmin": -2,
+          "xmax": 3,
+          "ymin": -2,
+          "ymax": 3,
+          "curvePts": [
+            [
+              -2,
+              -2.56
+            ],
+            [
+              -1,
+              -1.7
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1.03
+            ],
+            [
+              2,
+              1.84
+            ],
+            [
+              3,
+              3.12
+            ]
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Slope field (isoclines) and integral curve passing through (0, 1) for the first-order linear differential equation dy/dx + 0.5y = x.",
           "ar": null
         }
       },
@@ -214,109 +212,122 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "▲ Precise (ε, δ) Definition of Limits &amp; Formal Analytical Proofs",
+          "en": "▲ First-Order Differential Equations: Euler's Method, Homogeneous & Integrating Factor (AHL 5.18)",
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Precise Definition (Limit at a Point):</strong> \\(\\displaystyle\\lim_{x \\to c} f(x) = L\\) means: for every \\(\\varepsilon > 0\\), there exists \\(\\delta > 0\\) such that \\(0 < |x - c| < \\delta \\implies |f(x) - L| < \\varepsilon\\).</p><p><strong>Rigorous Proof (Linear):</strong> Prove that \\(\\lim_{x\\to 3} (4x - 5) = 7\\).<br><em>Scratchwork:</em> \\(|(4x - 5) - 7| = 4|x - 3| < \\varepsilon \\iff |x - 3| < \\frac{\\varepsilon}{4}\\).<br><em>Proof:</em> Let \\(\\varepsilon > 0\\). Choose \\(\\delta = \\frac{\\varepsilon}{4}\\). If \\(0 < |x - 3| < \\delta\\), then \\(|(4x - 5) - 7| = 4|x - 3| < 4\\left(\\frac{\\varepsilon}{4}\\right) = \\varepsilon\\). Thus \\(\\lim_{x\\to 3}(4x - 5) = 7\\). \\(\\blacksquare\\)</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Rigorous Proof (Quadratic with Bounding):</strong> Prove that \\(\\lim_{x\\to 2} x^2 = 4\\).<br><em>Scratchwork:</em> \\(|x^2 - 4| = |x - 2||x + 2|\\). Restrict \\(\\delta \\le 1 \\implies 1 < x < 3 \\implies |x + 2| < 5\\). Then \\(|x^2 - 4| < 5|x - 2|\\). Set \\(5|x - 2| < \\varepsilon \\iff |x - 2| < \\frac{\\varepsilon}{5}\\). Choose \\(\\delta = \\min\\left(1, \\frac{\\varepsilon}{5}\\right)\\).<br><em>Proof:</em> Let \\(\\varepsilon > 0\\). Set \\(\\delta = \\min\\left(1, \\frac{\\varepsilon}{5}\\right)\\). If \\(0 < |x - 2| < \\delta\\), then \\(|x + 2| < 5\\) and \\(|x - 2| < \\frac{\\varepsilon}{5}\\). Thus \\(|x^2 - 4| = |x - 2||x + 2| < \\left(\\frac{\\varepsilon}{5}\\right)(5) = \\varepsilon\\). Hence \\(\\lim_{x\\to 2} x^2 = 4\\). \\(\\blacksquare\\)</p>",
+          "en": "<p><strong>1. Numerical Approximation — Euler's Method (AA HL 5.18 &amp; AI HL 5.16):</strong><br>\nFor the initial-value problem $\\frac{dy}{dx} = f(x, y)$ with $y(x_0) = y_0$ and step size $h$, successive approximations are generated iteratively via the formula in the IB Formula Booklet:\n$$y_{n+1} = y_n + h \\cdot f(x_n, y_n), \\qquad x_{n+1} = x_n + h$$\nHalving the step size $h$ reduces the local truncation error at each step and keeps the polygonal trajectory closer to the true integral curve.</p>\n<hr style=\"margin:12px 0;border:0;border-top:1px solid var(--line)\">\n<p><strong>2. Analytical Solution Methods (AA HL 5.18):</strong></p>\n<ul>\n<li><strong>Variables Separable:</strong> $\\frac{dy}{dx} = f(x)g(y) \\implies \\int \\frac{1}{g(y)}\\,dy = \\int f(x)\\,dx$.</li>\n<li><strong>Homogeneous ODEs:</strong> $\\frac{dy}{dx} = F\\!\\left(\\frac{y}{x}\\right)$. Substitute $y = vx \\implies \\frac{dy}{dx} = v + x\\frac{dv}{dx}$ to reduce to a separable equation in $v$ and $x$.</li>\n<li><strong>Linear First-Order ODEs (Integrating Factor):</strong> Standardize to $\\frac{dy}{dx} + P(x)y = Q(x)$, compute $I(x) = e^{\\int P(x)\\,dx}$, and integrate $\\frac{d}{dx}[I(x)y] = I(x)Q(x) \\implies y = \\frac{1}{I(x)}\\left(\\int I(x)Q(x)\\,dx + C\\right)$.</li>\n</ul>",
           "ar": null
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Precise (ε, δ) limit definition",
+          "en": "⊙ Explorer · IB HL Euler's Method Step-by-Step & Slope Field Lab (dy/dx = x − 0.5y)",
           "ar": null
         },
-        "canvasId": "ibhlEpsCanvas",
+        "canvasId": "ibhlEulerCanvas",
         "ariaLabel": {
-          "en": "Interactive visualization of the epsilon-delta limit definition showing horizontal error band and vertical delta strip",
+          "en": "Interactive IB HL Euler method and slope field explorer comparing numerical step size h against exact analytical solution",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "ibhlEpsDataBtn",
-          "panelId": "ibhlEpsDataPanel",
-          "descId": "ibhlEpsDataDesc",
-          "rowsId": "ibhlEpsDataRows",
+          "btnId": "ibhlEulerDataBtn",
+          "panelId": "ibhlEulerDataPanel",
+          "descId": "ibhlEulerDataDesc",
+          "rowsId": "ibhlEulerDataRows",
           "caption": {
-            "en": "Epsilon-delta tolerance test across domain interval",
+            "en": "Step-by-step Euler table (x_n, y_n, exact y(x_n), and absolute error)",
             "ar": null
           },
           "columns": [
             {
-              "en": "x",
+              "en": "Step n",
               "ar": null
             },
             {
-              "en": "f(x)",
+              "en": "xₙ",
               "ar": null
             },
             {
-              "en": "|f(x) − L|",
+              "en": "Euler yₙ",
               "ar": null
             },
             {
-              "en": "Tolerance status",
+              "en": "Exact y(xₙ)",
+              "ar": null
+            },
+            {
+              "en": "|Error|",
               "ar": null
             }
           ]
         },
         "controls": [
           {
-            "id": "ibhlEpsEps",
+            "id": "ibhlEulerH",
             "label": {
-              "en": "Target error tolerance ε:",
+              "en": "Step size <b>h =</b>",
               "ar": null
             },
             "min": 0.1,
             "max": 1,
             "value": 0.5,
             "step": 0.05,
-            "valueDisplayId": "ibhlEpsEpsV",
+            "valueDisplayId": "ibhlEulerHVal",
             "ariaLabel": {
-              "en": "Epsilon tolerance",
+              "en": "Euler step size h",
               "ar": null
             }
           },
           {
-            "id": "ibhlEpsDelta",
+            "id": "ibhlEulerY0",
             "label": {
-              "en": "Domain radius δ:",
+              "en": "Initial value <b>y(0) =</b>",
               "ar": null
             },
-            "min": 0.05,
-            "max": 1,
-            "value": 0.25,
-            "step": 0.05,
-            "valueDisplayId": "ibhlEpsDeltaV",
+            "min": 0.2,
+            "max": 3,
+            "value": 1,
+            "step": 0.2,
+            "valueDisplayId": "ibhlEulerY0Val",
             "ariaLabel": {
-              "en": "Delta radius",
+              "en": "Initial value y(0)",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "ibhlEpsStatus",
+            "id": "ibhlEulerApprox",
             "label": {
-              "en": "Status: f((c-δ, c+δ)) ⊂ (L-ε, L+ε)",
+              "en": "Euler y(3.0)",
               "ar": null
             },
-            "value": "Valid (Inside Band)",
+            "value": "2.990",
+            "colorClass": "amber"
+          },
+          {
+            "id": "ibhlEulerExact",
+            "label": {
+              "en": "Exact y(3.0)",
+              "ar": null
+            },
+            "value": "3.116",
             "colorClass": "indigo"
           },
           {
-            "id": "ibhlEpsMaxErr",
+            "id": "ibhlEulerErr",
             "label": {
-              "en": "Max |f(x) − L| on strip",
+              "en": "Global Error at x = 3",
               "ar": null
             },
-            "value": "0.450",
-            "colorClass": "amber"
+            "value": "0.126",
+            "colorClass": "teal"
           }
         ],
         "note": {
-          "en": "The horizontal band [L − ε, L + ε] is the challenge issued by ε. The goal is to choose a delta δ small enough so that the function curve over (c − δ, c + δ) remains entirely trapped inside the horizontal band. If the curve escapes the top or bottom of the band, δ is too large.",
+          "en": "Decrease step size h from 1.0 down to 0.10 to watch the dashed amber Euler polygon converge onto the solid indigo exact integral curve y(x) = 2x − 4 + (y₀ + 4)e^(−0.5x) across the slope field.",
           "ar": null
         }
       },
@@ -533,38 +544,44 @@
       },
       {
         "kind": "figure",
-        "caption": {
-          "en": "Curve f(x) = x e^(-x) integrated using integration by parts, showing local maximum at (1, 1/e) and horizontal asymptote y = 0.",
-          "ar": null
-        },
         "figure": {
-          "type": "fn",
-          "fns": [
-            {
-              "fn": "x*exp(-x)",
-              "label": "f(x) = x e^(-x)"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": 0.368,
-              "label": "Max (1, 1/e)"
-            },
-            {
-              "x": 0,
-              "y": 0,
-              "label": "Root (0, 0)"
-            }
-          ],
-          "xrange": [
-            -1,
-            5
-          ],
-          "yrange": [
-            -1,
-            1
+          "type": "slope_field",
+          "title": "Topic 5 HL — Slope Field & Solution Curve for dy/dx = x − y/2",
+          "fn": "x - 0.5*y",
+          "xmin": -2,
+          "xmax": 3,
+          "ymin": -2,
+          "ymax": 3,
+          "curvePts": [
+            [
+              -2,
+              -2.56
+            ],
+            [
+              -1,
+              -1.7
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1.03
+            ],
+            [
+              2,
+              1.84
+            ],
+            [
+              3,
+              3.12
+            ]
           ]
+        },
+        "caption": {
+          "en": "Slope field (isoclines) and integral curve passing through (0, 1) for the first-order linear differential equation dy/dx + 0.5y = x.",
+          "ar": null
         }
       },
       {

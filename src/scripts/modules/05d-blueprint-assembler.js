@@ -141,7 +141,9 @@
                   text: q.text || q.q || '',
                   choices: q.choices || [],
                   answer: q.answer,
-                  sol: q.sol || q.expl || ''
+                  sol: q.sol || q.exp || q.expl || '',
+                  figure: q.figure || q.fig,
+                  fig: q.fig || q.figure
                 });
               });
             };

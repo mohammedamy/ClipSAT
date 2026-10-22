@@ -421,7 +421,7 @@
       "educational_aim": "Calculate conditional probabilities from two-way frequency tables and Venn diagrams, and test whether two events A and B are statistically independent.",
       "exam_archetype": "Conditional Probability P(A|B), Two-Way Tables & Independence Tests",
       "difficulty": "medium",
-      "text": "A random sample of 200 high school students was surveyed regarding their grade level and whether they participate in school sports. The results are summarized in the two-way frequency table below:\n\n| | Participates in Sports (\\(S\\)) | Does Not Participate in Sports | Total |\n| :--- | :---: | :---: | :---: |\n| Grade 10 (\\(T\\)) | 48 | 32 | 80 |\n| Grade 11 | 42 | 78 | 120 |\n| Total | 90 | 110 | 200 |\n\nA student is selected at random from this sample. Let \\(S\\) be the event that the student participates in sports, and let \\(T\\) be the event that the student is in Grade 10. Which of the following statements is correct regarding the conditional probability \\(P(S \\mid T)\\) and the statistical independence of events \\(S\\) and \\(T\\)?",
+      "text": "A random sample of 200 high school students was surveyed regarding their grade level and whether they participate in school sports. The results are summarized in the two-way frequency table below:\n\nA student is selected at random from this sample. Let \\(S\\) be the event that the student participates in sports, and let \\(T\\) be the event that the student is in Grade 10. Which of the following statements is correct regarding the conditional probability \\(P(S \\mid T)\\) and the statistical independence of events \\(S\\) and \\(T\\)?",
       "choices": [
         "\\(P(S \\mid T) = 0.60\\), and the events are not independent because \\(P(S \\mid T) \\neq P(S)\\).",
         "\\(P(S \\mid T) = 0.60\\), and the events are independent because \\(P(S \\mid T) > P(S)\\).",
@@ -432,7 +432,66 @@
       "solution": "1. **Calculate the conditional probability \\(P(S \\mid T)\\):**\n   The condition restricts the sample space to students in Grade 10 (row \\(T\\)), which contains a total of 80 students. Among these, 48 participate in sports:\n   \\[\n   P(S \\mid T) = \\frac{n(S \\cap T)}{n(T)} = \\frac{48}{80} = 0.60\n   \\]\n\n2. **Calculate the unconditional probability \\(P(S)\\):**\n   Across all 200 surveyed students, 90 participate in sports:\n   \\[\n   P(S) = \\frac{n(S)}{N} = \\frac{90}{200} = 0.45\n   \\]\n\n3. **Test for statistical independence:**\n   Two events \\(A\\) and \\(B\\) are statistically independent if and only if \\(P(A \\mid B) = P(A)\\), or equivalently \\(P(A \\cap B) = P(A) \\cdot P(B)\\).\n   Here:\n   \\[\n   P(S \\mid T) = 0.60 \\quad \\text{and} \\quad P(S) = 0.45\n   \\]\n   Since \\(P(S \\mid T) \\neq P(S)\\), the events \\(S\\) and \\(T\\) are not independent.\n\n4. **Analysis of distractors:**\n   - **Choice B** correctly calculates \\(P(S \\mid T) = 0.60\\), but misidentifies an inequality between conditional and unconditional probability as evidence of independence rather than dependence.\n   - **Choice C** confuses the conditional probability \\(P(S \\mid T)\\) with the joint probability \\(P(S \\cap T) = \\frac{48}{200} = 0.24\\).\n   - **Choice D** evaluates the proportion not participating in Grade 10 (\\(\\frac{32}{80} = 0.40\\)) or \\(P(T) = \\frac{80}{200} = 0.40\\) and applies a false criterion comparing \\(P(S \\mid T)\\) to \\(P(T)\\) instead of \\(P(S)\\).",
       "sympy_verified": true,
       "answer": 0,
-      "sol": "1. **Calculate the conditional probability \\(P(S \\mid T)\\):**\n   The condition restricts the sample space to students in Grade 10 (row \\(T\\)), which contains a total of 80 students. Among these, 48 participate in sports:\n   \\[\n   P(S \\mid T) = \\frac{n(S \\cap T)}{n(T)} = \\frac{48}{80} = 0.60\n   \\]\n\n2. **Calculate the unconditional probability \\(P(S)\\):**\n   Across all 200 surveyed students, 90 participate in sports:\n   \\[\n   P(S) = \\frac{n(S)}{N} = \\frac{90}{200} = 0.45\n   \\]\n\n3. **Test for statistical independence:**\n   Two events \\(A\\) and \\(B\\) are statistically independent if and only if \\(P(A \\mid B) = P(A)\\), or equivalently \\(P(A \\cap B) = P(A) \\cdot P(B)\\).\n   Here:\n   \\[\n   P(S \\mid T) = 0.60 \\quad \\text{and} \\quad P(S) = 0.45\n   \\]\n   Since \\(P(S \\mid T) \\neq P(S)\\), the events \\(S\\) and \\(T\\) are not independent.\n\n4. **Analysis of distractors:**\n   - **Choice B** correctly calculates \\(P(S \\mid T) = 0.60\\), but misidentifies an inequality between conditional and unconditional probability as evidence of independence rather than dependence.\n   - **Choice C** confuses the conditional probability \\(P(S \\mid T)\\) with the joint probability \\(P(S \\cap T) = \\frac{48}{200} = 0.24\\).\n   - **Choice D** evaluates the proportion not participating in Grade 10 (\\(\\frac{32}{80} = 0.40\\)) or \\(P(T) = \\frac{80}{200} = 0.40\\) and applies a false criterion comparing \\(P(S \\mid T)\\) to \\(P(T)\\) instead of \\(P(S)\\)."
+      "sol": "1. **Calculate the conditional probability \\(P(S \\mid T)\\):**\n   The condition restricts the sample space to students in Grade 10 (row \\(T\\)), which contains a total of 80 students. Among these, 48 participate in sports:\n   \\[\n   P(S \\mid T) = \\frac{n(S \\cap T)}{n(T)} = \\frac{48}{80} = 0.60\n   \\]\n\n2. **Calculate the unconditional probability \\(P(S)\\):**\n   Across all 200 surveyed students, 90 participate in sports:\n   \\[\n   P(S) = \\frac{n(S)}{N} = \\frac{90}{200} = 0.45\n   \\]\n\n3. **Test for statistical independence:**\n   Two events \\(A\\) and \\(B\\) are statistically independent if and only if \\(P(A \\mid B) = P(A)\\), or equivalently \\(P(A \\cap B) = P(A) \\cdot P(B)\\).\n   Here:\n   \\[\n   P(S \\mid T) = 0.60 \\quad \\text{and} \\quad P(S) = 0.45\n   \\]\n   Since \\(P(S \\mid T) \\neq P(S)\\), the events \\(S\\) and \\(T\\) are not independent.\n\n4. **Analysis of distractors:**\n   - **Choice B** correctly calculates \\(P(S \\mid T) = 0.60\\), but misidentifies an inequality between conditional and unconditional probability as evidence of independence rather than dependence.\n   - **Choice C** confuses the conditional probability \\(P(S \\mid T)\\) with the joint probability \\(P(S \\cap T) = \\frac{48}{200} = 0.24\\).\n   - **Choice D** evaluates the proportion not participating in Grade 10 (\\(\\frac{32}{80} = 0.40\\)) or \\(P(T) = \\frac{80}{200} = 0.40\\) and applies a false criterion comparing \\(P(S \\mid T)\\) to \\(P(T)\\) instead of \\(P(S)\\).",
+      "fig": {
+        "type": "table",
+        "headers": [
+          "",
+          "Participates in Sports (\\(S\\))",
+          "Does Not Participate in Sports",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Grade 10 (\\(T\\))",
+            "48",
+            "32",
+            "80"
+          ],
+          [
+            "Grade 11",
+            "42",
+            "78",
+            "120"
+          ],
+          [
+            "Total",
+            "90",
+            "110",
+            "200"
+          ]
+        ]
+      },
+      "figure": {
+        "type": "table",
+        "headers": [
+          "",
+          "Participates in Sports (\\(S\\))",
+          "Does Not Participate in Sports",
+          "Total"
+        ],
+        "rows": [
+          [
+            "Grade 10 (\\(T\\))",
+            "48",
+            "32",
+            "80"
+          ],
+          [
+            "Grade 11",
+            "42",
+            "78",
+            "120"
+          ],
+          [
+            "Total",
+            "90",
+            "110",
+            "200"
+          ]
+        ]
+      },
+      "q": "A random sample of 200 high school students was surveyed regarding their grade level and whether they participate in school sports. The results are summarized in the two-way frequency table below:\n\nA student is selected at random from this sample. Let \\(S\\) be the event that the student participates in sports, and let \\(T\\) be the event that the student is in Grade 10. Which of the following statements is correct regarding the conditional probability \\(P(S \\mid T)\\) and the statistical independence of events \\(S\\) and \\(T\\)?"
     },
     {
       "id": "geo-quads-2-001",
@@ -840,16 +899,7 @@
           30,
           150
         ],
-        "points": [
-          {
-            "angle": 30,
-            "label": "A"
-          },
-          {
-            "angle": 150,
-            "label": "B"
-          }
-        ],
+        "points": [],
         "w": 180
       },
       "difficulty": "easy",
@@ -972,8 +1022,8 @@
         "4",
         "3"
       ],
-      "answer": 2,
-      "correct": 2,
+      "answer": 0,
+      "correct": 0,
       "sol": "The midpoint \\( M \\) of a segment with endpoints \\( A \\) and \\( B \\) on a number line is found using the formula: \\[ M = \\frac{A + B}{2} \\]. Given that \\( A = -3 \\) and \\( B = 7 \\), we substitute these values into the formula:\n\\[ M = \\frac{-3 + 7}{2} = \\frac{4}{2} = 2 \\]. Therefore, the coordinate of point \\( M \\) is \\( 2 \\).",
       "solution": "The midpoint \\( M \\) of a segment with endpoints \\( A \\) and \\( B \\) on a number line is found using the formula: \\[ M = \\frac{A + B}{2} \\]. Given that \\( A = -3 \\) and \\( B = 7 \\), we substitute these values into the formula:\n\\[ M = \\frac{-3 + 7}{2} = \\frac{4}{2} = 2 \\]. Therefore, the coordinate of point \\( M \\) is \\( 2 \\).",
       "sympy_verified": true,
@@ -1127,8 +1177,8 @@
         "13.5 cm",
         "54 cm"
       ],
-      "answer": 2,
-      "correct": 2,
+      "answer": 0,
+      "correct": 0,
       "sol": "Because line segment \\( DE \\) is parallel to line segment \\( BC \\), by the Side-Splitter Theorem (also known as Thales's Theorem), triangle \\( ADE \\) is similar to triangle \\( ABC \\). This similarity implies that the ratios of corresponding sides are equal.\n\nSpecifically, we have the proportion:\n\\[ \\frac{AD}{DB} = \\frac{AE}{EC} \\]\n\nWe are given \\( AD = 6 \\) cm, \\( DB = 4 \\) cm, and \\( AE = 9 \\) cm. Let \\( EC = x \\).\n\nSubstituting the given values into the proportion:\n\\[ \\frac{6}{4} = \\frac{9}{x} \\]\n\nTo solve for \\( x \\), we can cross-multiply:\n\\[ 6x = 4 \\times 9 \\]\n\\[ 6x = 36 \\]\n\nNow, divide by 6:\n\\[ x = \\frac{36}{6} \\]\n\\[ x = 6 \\]\n\nTherefore, the length of \\( EC \\) is 6 cm.\n\n*Common misconception check: Some might incorrectly set up the ratio as \\( \\frac{AD}{AB} = \\frac{AE}{AC} \\), which would lead to \\( \\frac{6}{10} = \\frac{9}{9+x} \\), and solving for x would give 6. Another error could be to mix up the segments, for instance \\( \\frac{AD}{AE} = \\frac{DB}{EC} \\), giving \\( \\frac{6}{9} = \\frac{4}{x} \\) which solves to x=6.",
       "solution": "Because line segment \\( DE \\) is parallel to line segment \\( BC \\), by the Side-Splitter Theorem (also known as Thales's Theorem), triangle \\( ADE \\) is similar to triangle \\( ABC \\). This similarity implies that the ratios of corresponding sides are equal.\n\nSpecifically, we have the proportion:\n\\[ \\frac{AD}{DB} = \\frac{AE}{EC} \\]\n\nWe are given \\( AD = 6 \\) cm, \\( DB = 4 \\) cm, and \\( AE = 9 \\) cm. Let \\( EC = x \\).\n\nSubstituting the given values into the proportion:\n\\[ \\frac{6}{4} = \\frac{9}{x} \\]\n\nTo solve for \\( x \\), we can cross-multiply:\n\\[ 6x = 4 \\times 9 \\]\n\\[ 6x = 36 \\]\n\nNow, divide by 6:\n\\[ x = \\frac{36}{6} \\]\n\\[ x = 6 \\]\n\nTherefore, the length of \\( EC \\) is 6 cm.\n\n*Common misconception check: Some might incorrectly set up the ratio as \\( \\frac{AD}{AB} = \\frac{AE}{AC} \\), which would lead to \\( \\frac{6}{10} = \\frac{9}{9+x} \\), and solving for x would give 6. Another error could be to mix up the segments, for instance \\( \\frac{AD}{AE} = \\frac{DB}{EC} \\), giving \\( \\frac{6}{9} = \\frac{4}{x} \\) which solves to x=6.",
       "sympy_verified": true,
@@ -1504,7 +1554,63 @@
       "correct": 0,
       "sol": "A rhombus is a quadrilateral with all four sides equal in length. Its diagonals bisect each other at right angles. Let the side length of the rhombus be 's'. The perimeter of the rhombus is given by 4s. We are given that the perimeter is 52 units, so \\(4s = 52\\). Dividing by 4, we get \\(s = 13\\) units. Therefore, the length of side AB is 13 units. The lengths of the diagonals are not needed to find the side length when the perimeter is given.",
       "solution": "A rhombus is a quadrilateral with all four sides equal in length. Its diagonals bisect each other at right angles. Let the side length of the rhombus be 's'. The perimeter of the rhombus is given by 4s. We are given that the perimeter is 52 units, so \\(4s = 52\\). Dividing by 4, we get \\(s = 13\\) units. Therefore, the length of side AB is 13 units. The lengths of the diagonals are not needed to find the side length when the perimeter is given.",
-      "sympy_verified": true
+      "sympy_verified": true,
+      "fig": {
+        "type": "polygon",
+        "vertices": [
+          [
+            160,
+            30
+          ],
+          [
+            260,
+            100
+          ],
+          [
+            160,
+            170
+          ],
+          [
+            60,
+            100
+          ]
+        ],
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "title": "Rhombus ABCD with Diagonals AC and BD"
+      },
+      "figure": {
+        "type": "polygon",
+        "vertices": [
+          [
+            160,
+            30
+          ],
+          [
+            260,
+            100
+          ],
+          [
+            160,
+            170
+          ],
+          [
+            60,
+            100
+          ]
+        ],
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "title": "Rhombus ABCD with Diagonals AC and BD"
+      }
     },
     {
       "type": "mcq",
@@ -30669,20 +30775,7 @@
           "end_deg": 162,
           "label": "144°"
         },
-        "points": [
-          {
-            "angle": 18,
-            "label": "B"
-          },
-          {
-            "angle": 162,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -30724,20 +30817,7 @@
           "end_deg": 147,
           "label": "114°"
         },
-        "points": [
-          {
-            "angle": 33,
-            "label": "B"
-          },
-          {
-            "angle": 147,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -30815,20 +30895,7 @@
           "end_deg": 207,
           "label": "234°"
         },
-        "points": [
-          {
-            "angle": -27,
-            "label": "B"
-          },
-          {
-            "angle": 207,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -30906,20 +30973,7 @@
           "end_deg": 102,
           "label": "24°"
         },
-        "points": [
-          {
-            "angle": 78,
-            "label": "B"
-          },
-          {
-            "angle": 102,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -30961,20 +31015,7 @@
           "end_deg": 234,
           "label": "288°"
         },
-        "points": [
-          {
-            "angle": -54,
-            "label": "B"
-          },
-          {
-            "angle": 234,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -31052,20 +31093,7 @@
           "end_deg": 243,
           "label": "306°"
         },
-        "points": [
-          {
-            "angle": -63,
-            "label": "B"
-          },
-          {
-            "angle": 243,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -31107,20 +31135,7 @@
           "end_deg": 123,
           "label": "66°"
         },
-        "points": [
-          {
-            "angle": 57,
-            "label": "B"
-          },
-          {
-            "angle": 123,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -31198,20 +31213,7 @@
           "end_deg": 129,
           "label": "78°"
         },
-        "points": [
-          {
-            "angle": 51,
-            "label": "B"
-          },
-          {
-            "angle": 129,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -31253,20 +31255,7 @@
           "end_deg": 114,
           "label": "48°"
         },
-        "points": [
-          {
-            "angle": 66,
-            "label": "B"
-          },
-          {
-            "angle": 114,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -31344,20 +31333,7 @@
           "end_deg": 171,
           "label": "162°"
         },
-        "points": [
-          {
-            "angle": 9,
-            "label": "B"
-          },
-          {
-            "angle": 171,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -31399,20 +31375,7 @@
           "end_deg": 246,
           "label": "312°"
         },
-        "points": [
-          {
-            "angle": -66,
-            "label": "B"
-          },
-          {
-            "angle": 246,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -31454,20 +31417,7 @@
           "end_deg": 249,
           "label": "318°"
         },
-        "points": [
-          {
-            "angle": -69,
-            "label": "B"
-          },
-          {
-            "angle": 249,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -31581,20 +31531,7 @@
           "end_deg": 189,
           "label": "198°"
         },
-        "points": [
-          {
-            "angle": -9,
-            "label": "B"
-          },
-          {
-            "angle": 189,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -31708,20 +31645,7 @@
           "end_deg": 252,
           "label": "324°"
         },
-        "points": [
-          {
-            "angle": -72,
-            "label": "B"
-          },
-          {
-            "angle": 252,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -31799,20 +31723,7 @@
           "end_deg": 174,
           "label": "168°"
         },
-        "points": [
-          {
-            "angle": 6,
-            "label": "B"
-          },
-          {
-            "angle": 174,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -31890,20 +31801,7 @@
           "end_deg": 222,
           "label": "264°"
         },
-        "points": [
-          {
-            "angle": -42,
-            "label": "B"
-          },
-          {
-            "angle": 222,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -32053,20 +31951,7 @@
           "end_deg": 141,
           "label": "102°"
         },
-        "points": [
-          {
-            "angle": 39,
-            "label": "B"
-          },
-          {
-            "angle": 141,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -32108,20 +31993,7 @@
           "end_deg": 219,
           "label": "258°"
         },
-        "points": [
-          {
-            "angle": -39,
-            "label": "B"
-          },
-          {
-            "angle": 219,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -32235,20 +32107,7 @@
           "end_deg": 111,
           "label": "42°"
         },
-        "points": [
-          {
-            "angle": 69,
-            "label": "B"
-          },
-          {
-            "angle": 111,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -32470,20 +32329,7 @@
           "end_deg": 213,
           "label": "246°"
         },
-        "points": [
-          {
-            "angle": -33,
-            "label": "B"
-          },
-          {
-            "angle": 213,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -32669,20 +32515,7 @@
           "end_deg": 165,
           "label": "150°"
         },
-        "points": [
-          {
-            "angle": 15,
-            "label": "B"
-          },
-          {
-            "angle": 165,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -32724,20 +32557,7 @@
           "end_deg": 99,
           "label": "18°"
         },
-        "points": [
-          {
-            "angle": 81,
-            "label": "B"
-          },
-          {
-            "angle": 99,
-            "label": "A"
-          },
-          {
-            "angle": 270,
-            "label": "P"
-          }
-        ],
+        "points": [],
         "chords": [
           [
             270,
@@ -34626,20 +34446,7 @@
       "sol": "Angle formed by two secants from an external point \\(=\\frac{1}{2}(\\text{far arc}-\\text{near arc})=\\frac{1}{2}(100-40)=30^\\circ\\).",
       "fig": {
         "type": "circle",
-        "points": [
-          {
-            "angle": 250
-          },
-          {
-            "angle": 290
-          },
-          {
-            "angle": 140
-          },
-          {
-            "angle": 40
-          }
-        ],
+        "points": [],
         "arc": [
           {
             "start_deg": 250,
@@ -34826,20 +34633,7 @@
       "sol": "Angle formed by two secants from an external point \\(=\\frac{1}{2}(\\text{far arc}-\\text{near arc})=\\frac{1}{2}(220-136)=42^\\circ\\).",
       "fig": {
         "type": "circle",
-        "points": [
-          {
-            "angle": 202
-          },
-          {
-            "angle": 338
-          },
-          {
-            "angle": 200
-          },
-          {
-            "angle": 340
-          }
-        ],
+        "points": [],
         "arc": [
           {
             "start_deg": 202,
@@ -34936,20 +34730,7 @@
       "sol": "Angle formed by two secants from an external point \\(=\\frac{1}{2}(\\text{far arc}-\\text{near arc})=\\frac{1}{2}(210-124)=43^\\circ\\).",
       "fig": {
         "type": "circle",
-        "points": [
-          {
-            "angle": 208
-          },
-          {
-            "angle": 332
-          },
-          {
-            "angle": 195
-          },
-          {
-            "angle": 345
-          }
-        ],
+        "points": [],
         "arc": [
           {
             "start_deg": 208,
@@ -35142,20 +34923,7 @@
       "sol": "Angle formed by two secants from an external point \\(=\\frac{1}{2}(\\text{far arc}-\\text{near arc})=\\frac{1}{2}(60-10)=25^\\circ\\).",
       "fig": {
         "type": "circle",
-        "points": [
-          {
-            "angle": 265
-          },
-          {
-            "angle": 275
-          },
-          {
-            "angle": 120
-          },
-          {
-            "angle": 60
-          }
-        ],
+        "points": [],
         "arc": [
           {
             "start_deg": 265,
@@ -35386,20 +35154,7 @@
       "sol": "Angle formed by two secants from an external point \\(=\\frac{1}{2}(\\text{far arc}-\\text{near arc})=\\frac{1}{2}(110-70)=20^\\circ\\).",
       "fig": {
         "type": "circle",
-        "points": [
-          {
-            "angle": 235
-          },
-          {
-            "angle": 305
-          },
-          {
-            "angle": 145
-          },
-          {
-            "angle": 35
-          }
-        ],
+        "points": [],
         "arc": [
           {
             "start_deg": 235,
@@ -35746,20 +35501,7 @@
       "sol": "Angle formed by two secants from an external point \\(=\\frac{1}{2}(\\text{far arc}-\\text{near arc})=\\frac{1}{2}(190-52)=69^\\circ\\).",
       "fig": {
         "type": "circle",
-        "points": [
-          {
-            "angle": 244
-          },
-          {
-            "angle": 296
-          },
-          {
-            "angle": 185
-          },
-          {
-            "angle": 355
-          }
-        ],
+        "points": [],
         "arc": [
           {
             "start_deg": 244,
@@ -35830,20 +35572,7 @@
       "sol": "Angle formed by two secants from an external point \\(=\\frac{1}{2}(\\text{far arc}-\\text{near arc})=\\frac{1}{2}(190-16)=87^\\circ\\).",
       "fig": {
         "type": "circle",
-        "points": [
-          {
-            "angle": 262
-          },
-          {
-            "angle": 278
-          },
-          {
-            "angle": 185
-          },
-          {
-            "angle": 355
-          }
-        ],
+        "points": [],
         "arc": [
           {
             "start_deg": 262,
@@ -36216,20 +35945,7 @@
       "sol": "Angle formed by two secants from an external point \\(=\\frac{1}{2}(\\text{far arc}-\\text{near arc})=\\frac{1}{2}(140-4)=68^\\circ\\).",
       "fig": {
         "type": "circle",
-        "points": [
-          {
-            "angle": 268
-          },
-          {
-            "angle": 272
-          },
-          {
-            "angle": 160
-          },
-          {
-            "angle": 20
-          }
-        ],
+        "points": [],
         "arc": [
           {
             "start_deg": 268,
@@ -36326,20 +36042,7 @@
       "sol": "Angle formed by two secants from an external point \\(=\\frac{1}{2}(\\text{far arc}-\\text{near arc})=\\frac{1}{2}(80-64)=8^\\circ\\).",
       "fig": {
         "type": "circle",
-        "points": [
-          {
-            "angle": 238
-          },
-          {
-            "angle": 302
-          },
-          {
-            "angle": 130
-          },
-          {
-            "angle": 50
-          }
-        ],
+        "points": [],
         "arc": [
           {
             "start_deg": 238,
@@ -36388,20 +36091,7 @@
       "sol": "Angle formed by two secants from an external point \\(=\\frac{1}{2}(\\text{far arc}-\\text{near arc})=\\frac{1}{2}(90-28)=31^\\circ\\).",
       "fig": {
         "type": "circle",
-        "points": [
-          {
-            "angle": 256
-          },
-          {
-            "angle": 284
-          },
-          {
-            "angle": 135
-          },
-          {
-            "angle": 45
-          }
-        ],
+        "points": [],
         "arc": [
           {
             "start_deg": 256,
@@ -36472,20 +36162,7 @@
       "sol": "Angle formed by two secants from an external point \\(=\\frac{1}{2}(\\text{far arc}-\\text{near arc})=\\frac{1}{2}(110-58)=26^\\circ\\).",
       "fig": {
         "type": "circle",
-        "points": [
-          {
-            "angle": 241
-          },
-          {
-            "angle": 299
-          },
-          {
-            "angle": 145
-          },
-          {
-            "angle": 35
-          }
-        ],
+        "points": [],
         "arc": [
           {
             "start_deg": 241,
@@ -36582,20 +36259,7 @@
       "sol": "Angle formed by two secants from an external point \\(=\\frac{1}{2}(\\text{far arc}-\\text{near arc})=\\frac{1}{2}(100-16)=42^\\circ\\).",
       "fig": {
         "type": "circle",
-        "points": [
-          {
-            "angle": 262
-          },
-          {
-            "angle": 278
-          },
-          {
-            "angle": 140
-          },
-          {
-            "angle": 40
-          }
-        ],
+        "points": [],
         "arc": [
           {
             "start_deg": 262,
@@ -36644,20 +36308,7 @@
       "sol": "Angle formed by two secants from an external point \\(=\\frac{1}{2}(\\text{far arc}-\\text{near arc})=\\frac{1}{2}(190-34)=78^\\circ\\).",
       "fig": {
         "type": "circle",
-        "points": [
-          {
-            "angle": 253
-          },
-          {
-            "angle": 287
-          },
-          {
-            "angle": 185
-          },
-          {
-            "angle": 355
-          }
-        ],
+        "points": [],
         "arc": [
           {
             "start_deg": 253,
@@ -36754,20 +36405,7 @@
       "sol": "Angle formed by two secants from an external point \\(=\\frac{1}{2}(\\text{far arc}-\\text{near arc})=\\frac{1}{2}(250-88)=81^\\circ\\).",
       "fig": {
         "type": "circle",
-        "points": [
-          {
-            "angle": 226
-          },
-          {
-            "angle": 314
-          },
-          {
-            "angle": 215
-          },
-          {
-            "angle": 325
-          }
-        ],
+        "points": [],
         "arc": [
           {
             "start_deg": 226,
@@ -36864,20 +36502,7 @@
       "sol": "Angle formed by two secants from an external point \\(=\\frac{1}{2}(\\text{far arc}-\\text{near arc})=\\frac{1}{2}(190-40)=75^\\circ\\).",
       "fig": {
         "type": "circle",
-        "points": [
-          {
-            "angle": 250
-          },
-          {
-            "angle": 290
-          },
-          {
-            "angle": 185
-          },
-          {
-            "angle": 355
-          }
-        ],
+        "points": [],
         "arc": [
           {
             "start_deg": 250,

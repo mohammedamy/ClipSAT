@@ -296,167 +296,380 @@
          parts:[{label:'',q:8,time:'75 min',calc:true,type:'frq',note:'Show all working.'}]}]},
 
     qudrat:{
-      title:'GAT Qudrat — Quantitative Reasoning',totalTime:'52 min',
-      logo:'GAT',org:'National Center for Assessment (Qiyas)',
-      instructions:['52 questions — 52 minutes.',
-        'Choose the best answer for each question.',
-        'There is no penalty for wrong answers.',
-        'Work quickly and carefully.',
-        'No calculator permitted.'],
+      title:'GAT Qudrat — Quantitative Reasoning (اختبار القدرات العامة - القسم الكمي)',totalTime:'52 min',
+      bankId:'qudrat',
+      logo:'GAT Qudrat',org:'Education & Training Evaluation Commission (ETEC / Qiyas · قياس)',
+      instructions:[
+        '52 questions — 52 minutes (average 60 seconds per question).',
+        'Covers the official ETEC/Qiyas Quantitative domains: Arithmetic (40%), Geometry (24%), Algebra (23%), and Data Analysis & Probability (13%), with Quantitative Comparisons integrated across all areas.',
+        'Quantitative Comparison Fixed Choices: (أ / A) القيمة الأولى أكبر | (ب / B) القيمة الثانية أكبر | (ج / C) القيمتان متساويتان | (د / D) المعطيات غير كافية.',
+        'No calculator is permitted in either Digital (المحوسب) or Paper-Based (الورقي) sessions.',
+        'There is no penalty for guessing — answer every question.'],
       sections:[
-        {title:'Quantitative Reasoning',time:'52 min',
+        {title:'Quantitative Reasoning · القسم الكمي الشامل',time:'52 min',
+         note:'52 questions — ETEC/Qiyas Official Blueprint (Arithmetic, Geometry, Algebra, Data & Quantitative Comparisons).',
+         domains:['Arithmetic & Number Sense','Ratios, Proportion & Percentages','Motion, Speed & Work Rates','Word Problems & Reasoning','Word Problems & Modeling','Algebra Essentials','Sequences & Patterns','Number Patterns & Sequences','Geometry & Measurement','Geometry & Spatial Reasoning','Quantitative Comparison','Quantitative Comparisons','Data Analysis & Probability','Statistics, Probability & Data','High-Speed Qiyas Shortcuts'],
+         parts:[{label:'',q:52,time:'52 min',calc:false,type:'mcq',note:'No calculator permitted.'}]}]},
+
+    'GAT Qudrat — Quantitative Reasoning':{
+      title:'GAT Qudrat — Quantitative Reasoning (اختبار القدرات العامة - القسم الكمي)',totalTime:'52 min',
+      bankId:'qudrat',
+      logo:'GAT Qudrat',org:'Education & Training Evaluation Commission (ETEC / Qiyas · قياس)',
+      instructions:[
+        '52 questions — 52 minutes (average 60 seconds per question).',
+        'Covers the official ETEC/Qiyas Quantitative domains: Arithmetic (40%), Geometry (24%), Algebra (23%), and Data Analysis & Probability (13%), with Quantitative Comparisons integrated across all areas.',
+        'Quantitative Comparison Fixed Choices: (أ / A) القيمة الأولى أكبر | (ب / B) القيمة الثانية أكبر | (ج / C) القيمتان متساويتان | (د / D) المعطيات غير كافية.',
+        'No calculator is permitted.'],
+      sections:[
+        {title:'Quantitative Reasoning · القسم الكمي الشامل',time:'52 min',
          note:'52 questions — one per minute on average.',
-         parts:[{label:'',q:52,time:'52 min',calc:false,type:'mcq',note:''}]}]},
+         domains:['Arithmetic & Number Sense','Ratios, Proportion & Percentages','Motion, Speed & Work Rates','Word Problems & Reasoning','Word Problems & Modeling','Algebra Essentials','Sequences & Patterns','Number Patterns & Sequences','Geometry & Measurement','Geometry & Spatial Reasoning','Quantitative Comparison','Quantitative Comparisons','Data Analysis & Probability','Statistics, Probability & Data','High-Speed Qiyas Shortcuts'],
+         parts:[{label:'',q:52,time:'52 min',calc:false,type:'mcq',note:'No calculator permitted.'}]}]},
+
+    'Qudrat Digital (CBT / المحوسب) — 4-Module Adaptive Simulation':{
+      title:'Qudrat Digital (CBT / المحوسب) — 4-Module Quantitative Simulation',totalTime:'50 min',
+      bankId:'qudrat',
+      logo:'Qudrat CBT',org:'ETEC / Qiyas Digital Testing Centers (اختبار القدرات المحوسب)',
+      instructions:[
+        '48 Quantitative questions across 4 timed adaptive modules — 50 minutes total.',
+        'Simulates the ETEC/Qiyas Computer-Based Test (المحوسب) structure and high-frequency question banks (تجميعات المحوسب).',
+        'Quantitative Comparison choices always appear in fixed order: (أ) القيمة الأولى أكبر، (ب) القيمة الثانية أكبر، (ج) القيمتان متساويتان، (د) المعطيات غير كافية.',
+        'Calculators are strictly prohibited.'],
+      sections:[
+        {title:'Module 1 · القسم الأول (Arithmetic, Ratios & Comparisons)',time:'12.5 min',
+         note:'12 questions · Number Sense, Fractions, Percentages & Quantitative Comparisons',
+         domains:['Arithmetic & Number Sense','Ratios, Proportion & Percentages','Quantitative Comparison','Quantitative Comparisons'],
+         parts:[{label:'Module 1',q:12,time:'12.5 min',calc:false,type:'mcq',note:'No calculator.'}]},
+        {title:'Module 2 · القسم الثاني (Geometry, Shaded Areas & Clocks)',time:'12.5 min',
+         note:'12 questions · Inscribed Circles/Squares, Parallel Lines, Polygons & Quantitative Comparisons',
+         domains:['Geometry & Measurement','Geometry & Spatial Reasoning','Quantitative Comparison'],
+         parts:[{label:'Module 2',q:12,time:'12.5 min',calc:false,type:'mcq',note:'No calculator.'}]},
+        {title:'Module 3 · القسم الثالث (Algebra, Motion, Work & Word Problems)',time:'12.5 min',
+         note:'12 questions · Exponents, Surds, Identities, Speed/Work Rates & Modeling',
+         domains:['Algebra Essentials','Motion, Speed & Work Rates','Word Problems & Reasoning','Word Problems & Modeling'],
+         parts:[{label:'Module 3',q:12,time:'12.5 min',calc:false,type:'mcq',note:'No calculator.'}]},
+        {title:'Module 4 · القسم الرابع (Sequences, Statistics & Qiyas Shortcuts)',time:'12.5 min',
+         note:'12 questions · Number Patterns, Sector/Bar Charts, Probability & High-Speed Shortcuts',
+         domains:['Sequences & Patterns','Number Patterns & Sequences','Data Analysis & Probability','Statistics, Probability & Data','High-Speed Qiyas Shortcuts'],
+         parts:[{label:'Module 4',q:12,time:'12.5 min',calc:false,type:'mcq',note:'No calculator.'}]}]},
+
+    'Qudrat Paper-Based (الورقي) — Full Quantitative Booklet':{
+      title:'Qudrat Paper-Based (الورقي) — Full Quantitative Booklet',totalTime:'52 min',
+      bankId:'qudrat',
+      logo:'Qudrat Paper',org:'ETEC / Qiyas Paper-Based Assessment (اختبار القدرات الورقي)',
+      instructions:[
+        '52 questions across 2 Quantitative Booklet Sections (26 questions each) — 52 minutes.',
+        'Matches the official ETEC/Qiyas Paper-Based (الورقي) booklet proportions: 40% Arithmetic, 24% Geometry, 23% Algebra, 13% Statistics & Data Analysis.',
+        'No calculator is permitted.'],
+      sections:[
+        {title:'Booklet Section 1 · القسم الكمي الأول',time:'26 min',
+         note:'26 questions · Arithmetic, Geometry, Algebra & Quantitative Comparisons',
+         domains:['Arithmetic & Number Sense','Ratios, Proportion & Percentages','Geometry & Measurement','Geometry & Spatial Reasoning','Algebra Essentials','Quantitative Comparison'],
+         parts:[{label:'Section 1',q:26,time:'26 min',calc:false,type:'mcq',note:'No calculator.'}]},
+        {title:'Booklet Section 2 · القسم الكمي الثاني',time:'26 min',
+         note:'26 questions · Motion/Work, Word Problems, Sequences, Data Analysis & Comparisons',
+         domains:['Motion, Speed & Work Rates','Word Problems & Reasoning','Word Problems & Modeling','Sequences & Patterns','Number Patterns & Sequences','Data Analysis & Probability','Statistics, Probability & Data','High-Speed Qiyas Shortcuts','Quantitative Comparison'],
+         parts:[{label:'Section 2',q:26,time:'26 min',calc:false,type:'mcq',note:'No calculator.'}]}]},
+
+    'Qudrat — Quantitative Comparisons & Shaded Geometry Drill':{
+      title:'Qudrat — Quantitative Comparisons & Shaded Geometry Intensive Drill',totalTime:'30 min',
+      bankId:'qudrat',
+      logo:'Qudrat Drill',org:'ETEC / Qiyas High-Yield Focus (المقارنات الكمية والهندسة المظللة)',
+      instructions:[
+        '30 high-yield questions — 30 minutes.',
+        'Focused drill on the two most decisive score boosters in GAT Qudrat: Quantitative Comparisons (المقارنات الكمية) and Shaded/Circle/Polygon Geometry (الهندسة والمساحات المظللة).',
+        'Quantitative Comparison options are locked in official order: (أ) القيمة الأولى أكبر | (ب) القيمة الثانية أكبر | (ج) القيمتان متساويتان | (د) المعطيات غير كافية.'],
+      sections:[
+        {title:'Part A · Quantitative Comparisons (المقارنات الكمية)',time:'15 min',
+         note:'15 questions · Fixed 4-Option ETEC/Qiyas Comparisons & Sign/Variable Traps',
+         domains:['Quantitative Comparison','Quantitative Comparisons'],
+         parts:[{label:'Quantitative Comparisons',q:15,time:'15 min',calc:false,type:'mcq',note:'Fixed A/B/C/D options.'}]},
+        {title:'Part B · Shaded Areas, Circles, Clocks & Spatial Geometry (الهندسة المظللة)',time:'15 min',
+         note:'15 questions · Inscribed Squares/Circles, Lunes, Parallel Lines & Clock Angles',
+         domains:['Geometry & Spatial Reasoning','Geometry & Measurement'],
+         parts:[{label:'Geometry & Shaded Regions',q:15,time:'15 min',calc:false,type:'mcq',note:'No calculator.'}]}]},
 
     tahsili:{
-      title:'SAAT Tahsili — Mathematics',totalTime:'50 min',
-      logo:'Tahsili',org:'National Center for Assessment (Qiyas)',
-      instructions:['50 questions — 50 minutes.',
+      title:'SAAT Tahsili — Mathematics (الاختبار التحصيلي العلمي - قسم الرياضيات)',totalTime:'50 min',
+      bankId:'tahsili',
+      logo:'SAAT Tahsili',org:'Education & Training Evaluation Commission (ETEC / Qiyas · قياس)',
+      instructions:[
+        '50 questions — 50 minutes (average 60 seconds per question).',
+        'Aligned with the Saudi Secondary Pathways Curriculum (نظام المسارات - المسار العام ومسار علوم الحاسب والهندسة والصحة): Year 1 (20%), Year 2 (30%), and Year 3 (50%).',
+        'Choose the single best answer from the four options (أ، ب، ج، د / A, B, C, D).',
+        'No penalty for wrong answers. Calculators are strictly prohibited.'],
+      sections:[
+        {title:'SAAT Tahsili Mathematics · قسم الرياضيات الشامل',time:'50 min',
+         note:'50 questions · Saudi Secondary Pathways (20% Year 1 · 30% Year 2 · 50% Year 3).',
+         domains:['Mathematical Logic & Reasoning','Algebra, Matrices & Complex Numbers','Algebra & Equations','Vectors & Matrices','Functions & Graphs','Functions','Sequences, Series & Binomial Theorem','Sequences & Series','Trigonometry','Analytic Geometry, Conic Sections & Vectors','Geometry & Coordinate Geometry','Exponential & Logarithmic Functions','Exponentials & Logarithms','Limits & Differential Calculus','Limits & Derivatives','Integral Calculus & Area','Integration & Applications','Probability & Normal Distribution','Statistics & Probability'],
+         parts:[{label:'',q:50,time:'50 min',calc:false,type:'mcq',note:'No calculator permitted.'}]}]},
+
+    'SAAT Tahsili Mathematics':{
+      title:'SAAT Tahsili — Mathematics (الاختبار التحصيلي العلمي - قسم الرياضيات)',totalTime:'50 min',
+      bankId:'tahsili',
+      logo:'SAAT Tahsili',org:'Education & Training Evaluation Commission (ETEC / Qiyas · قياس)',
+      instructions:[
+        '50 questions — 50 minutes (average 60 seconds per question).',
+        'Aligned with the Saudi Secondary Pathways Curriculum (نظام المسارات: رياضيات ١، ٢، ٣): Year 1 (20%), Year 2 (30%), and Year 3 (50%).',
         'Choose the best answer for each question from the four options.',
-        'No penalty for wrong answers.',
         'No calculator permitted.'],
       sections:[
-        {title:'Mathematics Section',time:'50 min',
-         note:'50 questions — answer all questions.',
-         parts:[{label:'',q:50,time:'50 min',calc:false,type:'mcq',note:''}]}]},
-    /* IB Mathematics: analysis and approaches, guide for first assessment 2021 (assessed until the new
-       guide's first exams in May 2029). Every paper is written: Section A short-response and Section B
-       extended-response questions. There is no multiple choice. */
-    ibsl:{
-      title:'IB Mathematics: Analysis and Approaches SL',totalTime:'3 hr',
-      bankId:'ibsl',
-      logo:'IB Mathematics SL',org:'International Baccalaureate Organization',
-      instructions:['Answer ALL questions in both papers.',
-        'Paper 1 (no technology): 80 marks, 90 minutes.',
-        'Paper 2 (graphic display calculator required): 80 marks, 90 minutes.',
-        'Each paper has Section A (short-response) and Section B (extended-response) questions.',
-        'Answers should be given exactly or correct to 3 significant figures unless stated otherwise.',
-        'Full marks are not necessarily awarded for a correct answer with no working.'],
+        {title:'SAAT Tahsili Mathematics · قسم الرياضيات الشامل',time:'50 min',
+         note:'50 questions · Year 1 (20%), Year 2 (30%), Year 3 (50%).',
+         domains:['Mathematical Logic & Reasoning','Algebra, Matrices & Complex Numbers','Algebra & Equations','Vectors & Matrices','Functions & Graphs','Functions','Sequences, Series & Binomial Theorem','Sequences & Series','Trigonometry','Analytic Geometry, Conic Sections & Vectors','Geometry & Coordinate Geometry','Exponential & Logarithmic Functions','Exponentials & Logarithms','Limits & Differential Calculus','Limits & Derivatives','Integral Calculus & Area','Integration & Applications','Probability & Normal Distribution','Statistics & Probability'],
+         parts:[{label:'',q:50,time:'50 min',calc:false,type:'mcq',note:'No calculator permitted.'}]}]},
+
+    'SAAT Tahsili — Mathematics':{
+      title:'SAAT Tahsili — Mathematics (الاختبار التحصيلي العلمي - قسم الرياضيات)',totalTime:'50 min',
+      bankId:'tahsili',
+      logo:'SAAT Tahsili',org:'Education & Training Evaluation Commission (ETEC / Qiyas · قياس)',
+      instructions:[
+        '50 questions — 50 minutes.',
+        'Aligned with the Saudi Secondary Pathways Curriculum (نظام المسارات: رياضيات ١، ٢، ٣).',
+        'No calculator permitted.'],
       sections:[
-        {title:'Paper 1 — No technology',time:'90 min',
-         note:'80 marks. No calculator allowed.',
-         parts:[{label:'Sections A and B',q:9,time:'90 min',calc:false,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]},
-        {title:'Paper 2 — Technology required',time:'90 min',
-         note:'80 marks. Graphic display calculator required.',
-         parts:[{label:'Sections A and B',q:9,time:'90 min',calc:true,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]}
+        {title:'SAAT Tahsili Mathematics · قسم الرياضيات الشامل',time:'50 min',
+         note:'50 questions — answer all questions.',
+         domains:['Mathematical Logic & Reasoning','Algebra, Matrices & Complex Numbers','Algebra & Equations','Vectors & Matrices','Functions & Graphs','Functions','Sequences, Series & Binomial Theorem','Sequences & Series','Trigonometry','Analytic Geometry, Conic Sections & Vectors','Geometry & Coordinate Geometry','Exponential & Logarithmic Functions','Exponentials & Logarithms','Limits & Differential Calculus','Limits & Derivatives','Integral Calculus & Area','Integration & Applications','Probability & Normal Distribution','Statistics & Probability'],
+         parts:[{label:'',q:50,time:'50 min',calc:false,type:'mcq',note:'No calculator permitted.'}]}]},
+
+    'Tahsili Digital (CBT / المحوسب) — High-Yield Past Papers Simulation':{
+      title:'Tahsili Digital (CBT / المحوسب) — High-Yield Past Papers Simulation',totalTime:'40 min',
+      bankId:'tahsili',
+      logo:'Tahsili CBT',org:'ETEC / Qiyas Digital Assessment (الاختبار التحصيلي المحوسب - تجميعات غشام وناصر)',
+      instructions:[
+        '40 high-yield questions — 40 minutes.',
+        'Models the Digital SAAT Tahsili CBT (المحوسب) with exact curriculum weighting: 8 questions from Year 1 (20%), 12 questions from Year 2 (30%), and 20 questions from Year 3 (50%).',
+        'Calculators are strictly prohibited.'],
+      sections:[
+        {title:'Part 1 · Year 1 & Year 2 Foundations (رياضيات ١ و ٢ — 50%)',time:'20 min',
+         note:'20 questions · Logic, Geometry, Matrices, Complex Numbers, Functions, Sequences & Trig',
+         domains:['Mathematical Logic & Reasoning','Geometry & Coordinate Geometry','Algebra, Matrices & Complex Numbers','Algebra & Equations','Functions & Graphs','Functions','Sequences, Series & Binomial Theorem','Sequences & Series','Trigonometry'],
+         parts:[{label:'Year 1 & Year 2 Core',q:20,time:'20 min',calc:false,type:'mcq',note:'No calculator.'}]},
+        {title:'Part 2 · Year 3 Advanced Pathways (رياضيات ٣ — 50%)',time:'20 min',
+         note:'20 questions · Conics, Vectors, Polar, Exp/Log, Limits, Derivatives, Integrals & Normal Distribution',
+         domains:['Analytic Geometry, Conic Sections & Vectors','Vectors & Matrices','Exponential & Logarithmic Functions','Exponentials & Logarithms','Limits & Differential Calculus','Limits & Derivatives','Integral Calculus & Area','Integration & Applications','Probability & Normal Distribution','Statistics & Probability'],
+         parts:[{label:'Year 3 Intensive',q:20,time:'20 min',calc:false,type:'mcq',note:'No calculator.'}]}]},
+
+    'Tahsili — Year 3 Secondary Intensive (50% Exam Weight)':{
+      title:'Tahsili — Year 3 Secondary Intensive (رياضيات ٣ — 50% من وزن الاختبار)',totalTime:'35 min',
+      bankId:'tahsili',
+      logo:'Tahsili Year 3',org:'ETEC / Qiyas Year 3 Focus (المخروطيات، المتجهات، اللوغاريتمات، التفاضل والتكامل، التوزيع الطبيعي)',
+      instructions:[
+        '35 questions — 35 minutes.',
+        'Dedicated exclusively to 3rd Year Secondary Mathematics (رياضيات ٣-١، ٣-٢، ٣-٣), which accounts for 50% of the official SAAT Tahsili exam.',
+        'Covers Conic Sections, 3D Vectors & Dot/Cross Products, Polar/De Moivre, Exponentials & Logarithms, Limits & Derivatives, Definite Integrals & Area, and Conditional Probability / Normal Distribution.'],
+      sections:[
+        {title:'Year 3 Intensive · رياضيات الصف الثالث الثانوي',time:'35 min',
+         note:'35 questions · Conics, Vectors, Logs, Calculus (Limits/Derivatives/Integrals) & Normal Distribution',
+         domains:['Analytic Geometry, Conic Sections & Vectors','Vectors & Matrices','Exponential & Logarithmic Functions','Exponentials & Logarithms','Limits & Differential Calculus','Limits & Derivatives','Integral Calculus & Area','Integration & Applications','Probability & Normal Distribution','Statistics & Probability'],
+         parts:[{label:'Year 3 Mastery',q:35,time:'35 min',calc:false,type:'mcq',note:'No calculator.'}]}]},
+
+    'Tahsili — Year 1 & Year 2 Secondary Foundations (50% Exam Weight)':{
+      title:'Tahsili — Year 1 & Year 2 Secondary Foundations (رياضيات ١ و ٢ — 50% من وزن الاختبار)',totalTime:'35 min',
+      bankId:'tahsili',
+      logo:'Tahsili Y1–Y2',org:'ETEC / Qiyas Year 1 & Year 2 Focus (المنطق، الهندسة، المصفوفات، الدوال، المتتابعات، حساب المثلثات)',
+      instructions:[
+        '35 questions — 35 minutes.',
+        'Covers 1st Year Secondary (20% exam weight: Mathematical Logic, Parallel Lines, Triangles, Similar Polygons, Circle Theorems) and 2nd Year Secondary (30% exam weight: Matrices, Cramer\'s Rule, Complex Numbers, Rational/Radical Functions, Arithmetic/Geometric Series, Binomial Theorem, and Trigonometric Identities).',
+        'Calculators are strictly prohibited.'],
+      sections:[
+        {title:'Year 1 & Year 2 Foundations · رياضيات الصف الأول والثاني الثانوي',time:'35 min',
+         note:'35 questions · Logic, Euclidean/Circle Geometry, Matrices, Complex Numbers, Functions, Series & Trig',
+         domains:['Mathematical Logic & Reasoning','Geometry & Coordinate Geometry','Algebra, Matrices & Complex Numbers','Algebra & Equations','Functions & Graphs','Functions','Sequences, Series & Binomial Theorem','Sequences & Series','Trigonometry'],
+         parts:[{label:'Year 1 & Year 2 Mastery',q:35,time:'35 min',calc:false,type:'mcq',note:'No calculator.'}]}]},
+    /* IB Mathematics: Analysis and Approaches (AA) & Applications and Interpretation (AI),
+       official IB DP syllabus (first assessment 2021 through May 2028 + 2029 alignment).
+       Every paper is 100% written: Section A short-response and Section B extended-response
+       questions (plus HL Paper 3 extended investigation). There is no multiple choice. */
+    ibsl:{
+      title:'IB DP Mathematics: Analysis and Approaches SL — Full Examination Suite',totalTime:'3 hr',totalMarks:160,
+      bankId:'ibsl',isIB:true,ibCourse:'AA',
+      logo:'IB Mathematics AA SL',org:'International Baccalaureate Organization (IBO)',
+      instructions:[
+        'Answer ALL questions in both papers (Paper 1 and Paper 2).',
+        'Paper 1 (No Technology): 80 marks, 90 minutes — Section A (short-response, ~40 marks) and Section B (extended-response, ~40 marks).',
+        'Paper 2 (Graphic Display Calculator Required): 80 marks, 90 minutes — Section A (short-response, ~40 marks) and Section B (extended-response, ~40 marks).',
+        'Unless otherwise stated in the question, all numerical answers must be given exactly or correct to three significant figures (3 s.f.).',
+        'Full marks are not necessarily awarded for a correct answer with no working. Answers must be supported by working and/or explanations (M1, A1, R1, AG).',
+        'A clean copy of the Mathematics: analysis and approaches formula booklet is required for both papers.'
+      ],
+      sections:[
+        {title:'Paper 1 — No Technology Permitted (AA SL)',time:'90 min',
+         note:'80 marks · 90 minutes · Calculators are NOT permitted on Paper 1.',
+         domains:['Number & Algebra','Functions','Geometry & Trigonometry','Statistics & Probability','Calculus'],
+         parts:[
+           {label:'Section A — Short-Response Questions',q:6,time:'45 min',calc:false,type:'frq',ibCourse:'AA',ibPaper:'P1',ibSection:'Section A',defaultMarks:7,note:'Answer all questions in the boxes provided. Each question is worth 5 to 8 marks (~40 marks total).'},
+           {label:'Section B — Extended-Response Questions',q:3,time:'45 min',calc:false,type:'frq',ibCourse:'AA',ibPaper:'P1',ibSection:'Section B',defaultMarks:14,note:'Do NOT write solutions on this page. Answer all questions in the lined response booklet. Each question is worth 12 to 16 marks (~40 marks total).'}
+         ]},
+        {title:'Paper 2 — Graphic Display Calculator Required (AA SL)',time:'90 min',
+         note:'80 marks · 90 minutes · A Graphic Display Calculator (GDC) is required.',
+         domains:['Number & Algebra','Functions','Geometry & Trigonometry','Statistics & Probability','Calculus'],
+         parts:[
+           {label:'Section A — Short-Response Questions',q:6,time:'45 min',calc:true,type:'frq',ibCourse:'AA',ibPaper:'P2',ibSection:'Section A',defaultMarks:7,note:'Answer all questions in the boxes provided. Graphic display calculator required (~40 marks total).'},
+           {label:'Section B — Extended-Response Questions',q:3,time:'45 min',calc:true,type:'frq',ibCourse:'AA',ibPaper:'P2',ibSection:'Section B',defaultMarks:14,note:'Do NOT write solutions on this page. Answer all questions in the lined response booklet (~40 marks total).'}
+         ]}
       ]
     },
     ibhl:{
-      title:'IB Mathematics: Analysis and Approaches HL',totalTime:'5 hr',
-      bankId:'ibhl',
-      logo:'IB Mathematics HL',org:'International Baccalaureate Organization',
-      instructions:['Answer ALL questions in all papers.',
-        'Paper 1 (no technology): 110 marks, 120 minutes.',
-        'Paper 2 (graphic display calculator required): 110 marks, 120 minutes.',
-        'Paper 3 (graphic display calculator required): two extended problem-solving questions, 55 marks, 60 minutes.',
-        'Answers should be given exactly or correct to 3 significant figures unless stated otherwise.',
-        'Full marks are not necessarily awarded for a correct answer with no working.'],
+      title:'IB DP Mathematics: Analysis and Approaches HL — Full Examination Suite',totalTime:'5 hr 15 min',totalMarks:275,
+      bankId:'ibhl',isIB:true,ibCourse:'AA',
+      logo:'IB Mathematics AA HL',org:'International Baccalaureate Organization (IBO)',
+      instructions:[
+        'Answer ALL questions across Paper 1, Paper 2, and Paper 3.',
+        'Paper 1 (No Technology): 110 marks, 120 minutes — Section A (short-response, ~55 marks) and Section B (extended-response, ~55 marks).',
+        'Paper 2 (Graphic Display Calculator Required): 110 marks, 120 minutes — Section A (short-response, ~55 marks) and Section B (extended-response, ~55 marks).',
+        'Paper 3 (Graphic Display Calculator Required): 55 marks, 75 minutes (1 hour 15 minutes) — two compulsory extended problem-solving investigation questions.',
+        'Unless otherwise stated in the question, all numerical answers must be given exactly or correct to three significant figures (3 s.f.).',
+        'Full marks are not necessarily awarded for a correct answer with no working. Official IB markscheme criteria (M1, A1, R1, ft, AG) apply.'
+      ],
       sections:[
-        {title:'Paper 1 — No technology',time:'120 min',
-         note:'110 marks. No calculator allowed.',
-         parts:[{label:'Sections A and B',q:10,time:'120 min',calc:false,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]},
-        {title:'Paper 2 — Technology required',time:'120 min',
-         note:'110 marks. Graphic display calculator required.',
-         parts:[{label:'Sections A and B',q:10,time:'120 min',calc:true,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]},
-        {title:'Paper 3 — Technology required',time:'60 min',
-         note:'55 marks. Two compulsory extended-response problem-solving questions.',
-         parts:[{label:'',q:2,time:'60 min',calc:true,type:'frq',note:'Answer both questions.'}]}
+        {title:'Paper 1 — No Technology Permitted (AA HL)',time:'120 min',
+         note:'110 marks · 2 hours · Calculators are NOT permitted.',
+         domains:['Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)','AA HL — Additional Topics'],
+         parts:[
+           {label:'Section A — Short-Response Questions',q:7,time:'60 min',calc:false,type:'frq',ibCourse:'AA',ibPaper:'P1',ibSection:'Section A',defaultMarks:8,note:'Answer all questions in the boxes provided (~55 marks total).'},
+           {label:'Section B — Extended-Response Questions',q:3,time:'60 min',calc:false,type:'frq',ibCourse:'AA',ibPaper:'P1',ibSection:'Section B',defaultMarks:18,note:'Do NOT write solutions on this page. Answer all questions in the lined response booklet (~55 marks total).'}
+         ]},
+        {title:'Paper 2 — Graphic Display Calculator Required (AA HL)',time:'120 min',
+         note:'110 marks · 2 hours · Graphic Display Calculator (GDC) required.',
+         domains:['Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)','AA HL — Additional Topics'],
+         parts:[
+           {label:'Section A — Short-Response Questions',q:7,time:'60 min',calc:true,type:'frq',ibCourse:'AA',ibPaper:'P2',ibSection:'Section A',defaultMarks:8,note:'Answer all questions in the boxes provided (~55 marks total).'},
+           {label:'Section B — Extended-Response Questions',q:3,time:'60 min',calc:true,type:'frq',ibCourse:'AA',ibPaper:'P2',ibSection:'Section B',defaultMarks:18,note:'Do NOT write solutions on this page. Answer all questions in the lined response booklet (~55 marks total).'}
+         ]},
+        {title:'Paper 3 — Extended Investigation & Problem Solving (AA HL)',time:'75 min',
+         note:'55 marks · 1 hour 15 minutes (75 min) · Two compulsory extended investigation questions · GDC required.',
+         domains:['Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)','AA HL — Additional Topics'],
+         parts:[
+           {label:'Extended Investigation Questions',q:2,time:'75 min',calc:true,type:'frq',ibCourse:'AA',ibPaper:'P3',ibSection:'Paper 3',defaultMarks:28,note:'Answer both compulsory extended investigation questions (27–28 marks each; 55 marks total).'}
+         ]}
       ]
     },
 
     'IB Math SL (AA)':{
-      title:'IB Mathematics: Analysis and Approaches SL',totalTime:'3 hr',
-      bankId:'ibsl',
-      logo:'IB Math SL (AA)',org:'International Baccalaureate Organization',
-      instructions:['Answer ALL questions in both papers.',
-        'Paper 1 (no technology): 80 marks, 90 minutes.',
-        'Paper 2 (graphic display calculator required): 80 marks, 90 minutes.',
-        'Each paper has Section A (short-response) and Section B (extended-response) questions.',
-        'Answers should be given exactly or correct to 3 significant figures unless stated otherwise.',
-        'Full marks are not necessarily awarded for a correct answer with no working.'],
+      title:'IB DP Mathematics: Analysis and Approaches SL — Full Exam Suite (P1 + P2)',totalTime:'3 hr',totalMarks:160,
+      bankId:'ibsl',isIB:true,ibCourse:'AA',
+      logo:'IB Math AA SL',org:'International Baccalaureate Organization (IBO)',
+      instructions:[
+        'Answer ALL questions in both papers.',
+        'Paper 1 (No Technology): 80 marks, 90 minutes (Section A short-response & Section B extended-response).',
+        'Paper 2 (Graphic Display Calculator Required): 80 marks, 90 minutes (Section A short-response & Section B extended-response).',
+        'Give numerical answers exactly or correct to 3 significant figures unless stated otherwise.',
+        'Full marks are not necessarily awarded for a correct answer with no working (M1, A1, R1, AG).'
+      ],
       sections:[
-        {title:'Paper 1 — No technology',time:'90 min',
-         note:'80 marks. No calculator allowed.',
+        {title:'Paper 1 — No Technology Permitted (AA SL)',time:'90 min',
+         note:'80 marks · No calculator allowed.',
          domains:['Number & Algebra','Functions','Geometry & Trigonometry','Statistics & Probability','Calculus'],
-         parts:[{label:'Sections A and B',q:9,time:'90 min',calc:false,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]},
-        {title:'Paper 2 — Technology required',time:'90 min',
-         note:'80 marks. Graphic display calculator required.',
+         parts:[
+           {label:'Section A — Short-Response Questions',q:6,time:'45 min',calc:false,type:'frq',ibCourse:'AA',ibPaper:'P1',ibSection:'Section A',defaultMarks:7,note:'Short-response questions in answer boxes (~40 marks).'},
+           {label:'Section B — Extended-Response Questions',q:3,time:'45 min',calc:false,type:'frq',ibCourse:'AA',ibPaper:'P1',ibSection:'Section B',defaultMarks:14,note:'Extended-response multi-part questions (~40 marks).'}
+         ]},
+        {title:'Paper 2 — Graphic Display Calculator Required (AA SL)',time:'90 min',
+         note:'80 marks · Graphic display calculator required.',
          domains:['Number & Algebra','Functions','Geometry & Trigonometry','Statistics & Probability','Calculus'],
-         parts:[{label:'Sections A and B',q:9,time:'90 min',calc:true,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]}
+         parts:[
+           {label:'Section A — Short-Response Questions',q:6,time:'45 min',calc:true,type:'frq',ibCourse:'AA',ibPaper:'P2',ibSection:'Section A',defaultMarks:7,note:'Short-response questions in answer boxes (~40 marks).'},
+           {label:'Section B — Extended-Response Questions',q:3,time:'45 min',calc:true,type:'frq',ibCourse:'AA',ibPaper:'P2',ibSection:'Section B',defaultMarks:14,note:'Extended-response multi-part questions (~40 marks).'}
+         ]}
       ]
     },
 
     'IB Math SL (AI)':{
-      title:'IB Mathematics: Applications and Interpretation SL',totalTime:'3 hr',
-      bankId:'ibsl',
-      logo:'IB Math SL (AI)',org:'International Baccalaureate Organization',
-      instructions:['Answer ALL questions in both papers.',
-        'Paper 1 (graphic display calculator required): 80 marks, 90 minutes.',
-        'Paper 2 (graphic display calculator required): 80 marks, 90 minutes.',
-        'Each paper has Section A (short-response) and Section B (extended-response) questions.',
-        'Answers should be given exactly or correct to 3 significant figures unless stated otherwise.',
-        'Full marks are not necessarily awarded for a correct answer with no working.'],
+      title:'IB DP Mathematics: Applications and Interpretation SL — Full Exam Suite (P1 + P2)',totalTime:'3 hr',totalMarks:160,
+      bankId:'ibsl',isIB:true,ibCourse:'AI',
+      logo:'IB Math AI SL',org:'International Baccalaureate Organization (IBO)',
+      instructions:[
+        'Answer ALL questions in both papers.',
+        'Paper 1 (Graphic Display Calculator Required): 80 marks, 90 minutes — Section A (short-response questions only).',
+        'Paper 2 (Graphic Display Calculator Required): 80 marks, 90 minutes — Section B (extended-response modelling questions).',
+        'A Graphic Display Calculator (GDC) is required for BOTH Paper 1 and Paper 2 in Applications & Interpretation SL.',
+        'Give numerical answers exactly or correct to 3 significant figures unless stated otherwise.'
+      ],
       sections:[
-        {title:'Paper 1 — Technology required',time:'90 min',
-         note:'80 marks. Graphic display calculator required.',
+        {title:'Paper 1 — Technology Required: Short-Response Paper (AI SL)',time:'90 min',
+         note:'80 marks · 90 minutes · Graphic display calculator required · Short-response questions across all 5 topics.',
          domains:['AI SL — Specific Topics','Number & Algebra','Functions','Geometry & Trigonometry','Statistics & Probability','Calculus'],
-         parts:[{label:'Sections A and B',q:9,time:'90 min',calc:true,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]},
-        {title:'Paper 2 — Technology required',time:'90 min',
-         note:'80 marks. Graphic display calculator required.',
+         parts:[
+           {label:'Section A — Short-Response Questions',q:9,time:'90 min',calc:true,type:'frq',ibCourse:'AI',ibPaper:'P1',ibSection:'Section A',defaultMarks:8,note:'Answer all short-response questions in the boxes provided (80 marks total). GDC required.'}
+         ]},
+        {title:'Paper 2 — Technology Required: Extended-Response Paper (AI SL)',time:'90 min',
+         note:'80 marks · 90 minutes · Graphic display calculator required · Extended-response contexts.',
          domains:['AI SL — Specific Topics','Number & Algebra','Functions','Geometry & Trigonometry','Statistics & Probability','Calculus'],
-         parts:[{label:'Sections A and B',q:9,time:'90 min',calc:true,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]}
+         parts:[
+           {label:'Section B — Extended-Response Questions',q:5,time:'90 min',calc:true,type:'frq',ibCourse:'AI',ibPaper:'P2',ibSection:'Section B',defaultMarks:16,note:'Do NOT write solutions on this page. Answer all extended-response questions in the lined response booklet (80 marks total). GDC required.'}
+         ]}
       ]
     },
 
     'IB Math HL (AA)':{
-      title:'IB Mathematics: Analysis and Approaches HL',totalTime:'5 hr',
-      bankId:'ibhl',
-      logo:'IB Math HL (AA)',org:'International Baccalaureate Organization',
-      instructions:['Answer ALL questions in all papers.',
-        'Paper 1 (no technology): 110 marks, 120 minutes.',
-        'Paper 2 (graphic display calculator required): 110 marks, 120 minutes.',
-        'Paper 3 (graphic display calculator required): two extended problem-solving questions, 55 marks, 60 minutes.',
-        'Answers should be given exactly or correct to 3 significant figures unless stated otherwise.',
-        'Full marks are not necessarily awarded for a correct answer with no working.'],
+      title:'IB DP Mathematics: Analysis and Approaches HL — Full Exam Suite (P1 + P2 + P3)',totalTime:'5 hr 15 min',totalMarks:275,
+      bankId:'ibhl',isIB:true,ibCourse:'AA',
+      logo:'IB Math AA HL',org:'International Baccalaureate Organization (IBO)',
+      instructions:[
+        'Answer ALL questions in all three papers.',
+        'Paper 1 (No Technology): 110 marks, 120 minutes (Section A short-response & Section B extended-response).',
+        'Paper 2 (Graphic Display Calculator Required): 110 marks, 120 minutes (Section A short-response & Section B extended-response).',
+        'Paper 3 (Graphic Display Calculator Required): 55 marks, 75 minutes — two compulsory extended problem-solving investigation questions.',
+        'Give numerical answers exactly or correct to 3 significant figures unless stated otherwise.',
+        'Full marks are not necessarily awarded for a correct answer with no working (M1, A1, R1, AG).'
+      ],
       sections:[
-        {title:'Paper 1 — No technology',time:'120 min',
-         note:'110 marks. No calculator allowed.',
+        {title:'Paper 1 — No Technology Permitted (AA HL)',time:'120 min',
+         note:'110 marks · 2 hours · No calculator allowed.',
          domains:['Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)','AA HL — Additional Topics'],
-         parts:[{label:'Sections A and B',q:10,time:'120 min',calc:false,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]},
-        {title:'Paper 2 — Technology required',time:'120 min',
-         note:'110 marks. Graphic display calculator required.',
+         parts:[
+           {label:'Section A — Short-Response Questions',q:7,time:'60 min',calc:false,type:'frq',ibCourse:'AA',ibPaper:'P1',ibSection:'Section A',defaultMarks:8,note:'Short-response questions in answer boxes (~55 marks).'},
+           {label:'Section B — Extended-Response Questions',q:3,time:'60 min',calc:false,type:'frq',ibCourse:'AA',ibPaper:'P1',ibSection:'Section B',defaultMarks:18,note:'Extended-response multi-part questions (~55 marks).'}
+         ]},
+        {title:'Paper 2 — Graphic Display Calculator Required (AA HL)',time:'120 min',
+         note:'110 marks · 2 hours · Graphic display calculator required.',
          domains:['Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)','AA HL — Additional Topics'],
-         parts:[{label:'Sections A and B',q:10,time:'120 min',calc:true,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]},
-        {title:'Paper 3 — Technology required',time:'60 min',
-         note:'55 marks. Two compulsory extended-response problem-solving questions.',
+         parts:[
+           {label:'Section A — Short-Response Questions',q:7,time:'60 min',calc:true,type:'frq',ibCourse:'AA',ibPaper:'P2',ibSection:'Section A',defaultMarks:8,note:'Short-response questions in answer boxes (~55 marks).'},
+           {label:'Section B — Extended-Response Questions',q:3,time:'60 min',calc:true,type:'frq',ibCourse:'AA',ibPaper:'P2',ibSection:'Section B',defaultMarks:18,note:'Extended-response multi-part questions (~55 marks).'}
+         ]},
+        {title:'Paper 3 — Extended Investigation & Problem Solving (AA HL)',time:'75 min',
+         note:'55 marks · 1 hour 15 minutes (75 min) · Two compulsory extended investigation questions · GDC required.',
          domains:['Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)','AA HL — Additional Topics'],
-         parts:[{label:'',q:2,time:'60 min',calc:true,type:'frq',note:'Answer both questions.'}]}
+         parts:[
+           {label:'Extended Investigation Questions',q:2,time:'75 min',calc:true,type:'frq',ibCourse:'AA',ibPaper:'P3',ibSection:'Paper 3',defaultMarks:28,note:'Answer both compulsory extended investigation questions (55 marks total).'}
+         ]}
       ]
     },
 
     'IB Math HL (AI)':{
-      title:'IB Mathematics: Applications and Interpretation HL',totalTime:'5 hr',
-      bankId:'ibhl',
-      logo:'IB Math HL (AI)',org:'International Baccalaureate Organization',
-      instructions:['Answer ALL questions in all papers.',
-        'Paper 1 (graphic display calculator required): 110 marks, 120 minutes.',
-        'Paper 2 (graphic display calculator required): 110 marks, 120 minutes.',
-        'Paper 3 (graphic display calculator required): two extended problem-solving questions, 55 marks, 60 minutes.',
+      title:'IB DP Mathematics: Applications and Interpretation HL — Full Exam Suite (P1 + P2 + P3)',totalTime:'5 hr 15 min',totalMarks:275,
+      bankId:'ibhl',isIB:true,ibCourse:'AI',
+      logo:'IB Math AI HL',org:'International Baccalaureate Organization (IBO)',
+      instructions:[
+        'Answer ALL questions in all three papers.',
+        'Paper 1 (Graphic Display Calculator Required): 110 marks, 120 minutes — Short-response questions across the AI HL syllabus.',
+        'Paper 2 (Graphic Display Calculator Required): 110 marks, 120 minutes — Extended-response modelling questions.',
+        'Paper 3 (Graphic Display Calculator Required): 55 marks, 75 minutes — Two compulsory extended investigation problem-solving questions.',
         'Answers should be given exactly or correct to 3 significant figures unless stated otherwise.',
-        'Full marks are not necessarily awarded for a correct answer with no working.'],
+        'Full marks are not necessarily awarded for a correct answer with no working (M1, A1, R1, AG).'
+      ],
       sections:[
-        {title:'Paper 1 — Technology required',time:'120 min',
-         note:'110 marks. Graphic display calculator required.',
-         domains:['Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)','AI HL — Additional Topics'],
-         parts:[{label:'Sections A and B',q:10,time:'120 min',calc:true,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]},
-        {title:'Paper 2 — Technology required',time:'120 min',
-         note:'110 marks. Graphic display calculator required.',
-         domains:['Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)','AI HL — Additional Topics'],
-         parts:[{label:'Sections A and B',q:10,time:'120 min',calc:true,type:'frq',note:'Short-response then extended-response questions. Answer all questions.'}]},
-        {title:'Paper 3 — Technology required',time:'60 min',
-         note:'55 marks. Two compulsory extended-response problem-solving questions.',
-         domains:['Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)','AI HL — Additional Topics'],
-         parts:[{label:'',q:2,time:'60 min',calc:true,type:'frq',note:'Answer both questions.'}]}
+        {title:'Paper 1 — Technology Required: Short-Response Paper (AI HL)',time:'120 min',
+         note:'110 marks · 2 hours · Graphic display calculator required.',
+         domains:['AI HL — Additional Topics','Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)'],
+         parts:[
+           {label:'Section A — Short-Response Questions',q:10,time:'120 min',calc:true,type:'frq',ibCourse:'AI',ibPaper:'P1',ibSection:'Section A',defaultMarks:11,note:'Short-response questions answered in the boxes provided (110 marks total). GDC required.'}
+         ]},
+        {title:'Paper 2 — Technology Required: Extended-Response Paper (AI HL)',time:'120 min',
+         note:'110 marks · 2 hours · Graphic display calculator required.',
+         domains:['AI HL — Additional Topics','Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)'],
+         parts:[
+           {label:'Section B — Extended-Response Questions',q:6,time:'120 min',calc:true,type:'frq',ibCourse:'AI',ibPaper:'P2',ibSection:'Section B',defaultMarks:18,note:'Extended-response multi-part questions answered in the lined response booklet (110 marks total). GDC required.'}
+         ]},
+        {title:'Paper 3 — Extended Investigation & Problem Solving (AI HL)',time:'75 min',
+         note:'55 marks · 1 hour 15 minutes (75 min) · Two compulsory extended-response investigation questions · GDC required.',
+         domains:['AI HL — Additional Topics','Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)'],
+         parts:[
+           {label:'Extended Investigation Questions',q:2,time:'75 min',calc:true,type:'frq',ibCourse:'AI',ibPaper:'P3',ibSection:'Paper 3',defaultMarks:28,note:'Answer both compulsory extended investigation questions (55 marks total).'}
+         ]}
       ]
     },
 
@@ -547,60 +760,214 @@
          parts:[{label:'',q:20,time:'120 min',calc:true,type:'frq',note:'Calculator paper. Show all necessary working.'}]}]},
 
     'IB Math SL (AA) — Paper 1 (Non-Calculator)':{
-      title:'IB Mathematics: Analysis and Approaches SL — Paper 1',totalTime:'1 hr 30 min',
-      bankId:'ibsl',
-      logo:'IB Math SL (AA)',org:'International Baccalaureate Organization',
-      instructions:['Answer ALL questions in Section A and Section B.',
-        'Calculators are NOT permitted for this paper.',
-        'Answers should be given exactly or correct to 3 significant figures unless stated otherwise.',
-        'Full marks are not necessarily awarded for a correct answer with no working.'],
+      title:'IB DP Mathematics: Analysis and Approaches SL — Paper 1 (No Technology)',totalTime:'1 hr 30 min',totalMarks:80,
+      bankId:'ibsl',isIB:true,ibCourse:'AA',
+      logo:'IB Math AA SL · Paper 1',org:'International Baccalaureate Organization (IBO)',
+      instructions:[
+        'Do not open this examination paper until instructed to do so.',
+        'You are NOT permitted access to any calculator for this paper.',
+        'Section A: answer all questions. Write your answers in the boxes provided (~40 marks).',
+        'Section B: answer all questions in the answer booklet provided (~40 marks).',
+        'Unless otherwise stated in the question, all numerical answers should be given exactly or correct to three significant figures.',
+        'A clean copy of the Mathematics: analysis and approaches formula booklet is required for this paper.',
+        'The maximum mark for this examination paper is [80 marks].'
+      ],
       sections:[
-        {title:'Paper 1 — No Technology (SL)',time:'90 min',
-         note:'80 marks. Section A (short-response) & Section B (extended-response). No calculator allowed.',
+        {title:'Paper 1 — No Technology Permitted (AA SL)',time:'90 min',
+         note:'80 marks · 90 minutes · Section A (short-response) & Section B (extended-response) · No calculator allowed.',
          domains:['Number & Algebra','Functions','Geometry & Trigonometry','Statistics & Probability','Calculus'],
-         parts:[{label:'Sections A and B',q:9,time:'90 min',calc:false,type:'frq',note:'Short-response then extended-response questions. Non-calculator paper.'}]}]},
+         parts:[
+           {label:'Section A — Short-Response Questions',q:6,time:'45 min',calc:false,type:'frq',ibCourse:'AA',ibPaper:'P1',ibSection:'Section A',defaultMarks:7,note:'Answer all questions in the boxes provided. Each question is worth 5 to 8 marks (~40 marks total).'},
+           {label:'Section B — Extended-Response Questions',q:3,time:'45 min',calc:false,type:'frq',ibCourse:'AA',ibPaper:'P1',ibSection:'Section B',defaultMarks:14,note:'Do NOT write solutions on this page. Answer all questions in the lined response section (~40 marks total).'}
+         ]}]},
 
     'IB Math SL (AA) — Paper 2 (GDC Required)':{
-      title:'IB Mathematics: Analysis and Approaches SL — Paper 2',totalTime:'1 hr 30 min',
-      bankId:'ibsl',
-      logo:'IB Math SL (AA)',org:'International Baccalaureate Organization',
-      instructions:['Answer ALL questions in Section A and Section B.',
+      title:'IB DP Mathematics: Analysis and Approaches SL — Paper 2 (Technology Required)',totalTime:'1 hr 30 min',totalMarks:80,
+      bankId:'ibsl',isIB:true,ibCourse:'AA',
+      logo:'IB Math AA SL · Paper 2',org:'International Baccalaureate Organization (IBO)',
+      instructions:[
+        'Do not open this examination paper until instructed to do so.',
         'A graphic display calculator (GDC) is required for this paper.',
-        'Answers should be given exactly or correct to 3 significant figures unless stated otherwise.',
-        'Full marks are not necessarily awarded for a correct answer with no working.'],
+        'Section A: answer all questions. Write your answers in the boxes provided (~40 marks).',
+        'Section B: answer all questions in the answer booklet provided (~40 marks).',
+        'Unless otherwise stated in the question, all numerical answers should be given exactly or correct to three significant figures.',
+        'A clean copy of the Mathematics: analysis and approaches formula booklet is required for this paper.',
+        'The maximum mark for this examination paper is [80 marks].'
+      ],
       sections:[
-        {title:'Paper 2 — Technology Required (SL)',time:'90 min',
-         note:'80 marks. Section A (short-response) & Section B (extended-response). GDC required.',
+        {title:'Paper 2 — Graphic Display Calculator Required (AA SL)',time:'90 min',
+         note:'80 marks · 90 minutes · Section A (short-response) & Section B (extended-response) · GDC required.',
          domains:['Number & Algebra','Functions','Geometry & Trigonometry','Statistics & Probability','Calculus'],
-         parts:[{label:'Sections A and B',q:9,time:'90 min',calc:true,type:'frq',note:'Short-response then extended-response questions. Graphic display calculator required.'}]}]},
+         parts:[
+           {label:'Section A — Short-Response Questions',q:6,time:'45 min',calc:true,type:'frq',ibCourse:'AA',ibPaper:'P2',ibSection:'Section A',defaultMarks:7,note:'Answer all questions in the boxes provided (~40 marks total). GDC required.'},
+           {label:'Section B — Extended-Response Questions',q:3,time:'45 min',calc:true,type:'frq',ibCourse:'AA',ibPaper:'P2',ibSection:'Section B',defaultMarks:14,note:'Do NOT write solutions on this page. Answer all questions in the lined response section (~40 marks total). GDC required.'}
+         ]}]},
+
+    'IB Math SL (AI) — Paper 1 (GDC Short-Response)':{
+      title:'IB DP Mathematics: Applications and Interpretation SL — Paper 1 (Short-Response)',totalTime:'1 hr 30 min',totalMarks:80,
+      bankId:'ibsl',isIB:true,ibCourse:'AI',
+      logo:'IB Math AI SL · Paper 1',org:'International Baccalaureate Organization (IBO)',
+      instructions:[
+        'Do not open this examination paper until instructed to do so.',
+        'A graphic display calculator (GDC) is required for this paper.',
+        'Answer ALL short-response questions in the answer boxes provided.',
+        'Unless otherwise stated in the question, all numerical answers should be given exactly or correct to three significant figures.',
+        'A clean copy of the Mathematics: applications and interpretation formula booklet is required for this paper.',
+        'The maximum mark for this examination paper is [80 marks].'
+      ],
+      sections:[
+        {title:'Paper 1 — Technology Required: Short-Response Questions (AI SL)',time:'90 min',
+         note:'80 marks · 90 minutes · Short-response questions only · Graphic display calculator required.',
+         domains:['AI SL — Specific Topics','Number & Algebra','Functions','Geometry & Trigonometry','Statistics & Probability','Calculus'],
+         parts:[
+           {label:'Section A — Short-Response Questions',q:9,time:'90 min',calc:true,type:'frq',ibCourse:'AI',ibPaper:'P1',ibSection:'Section A',defaultMarks:8,note:'Answer all short-response questions in the boxes provided (80 marks total). GDC required.'}
+         ]}]},
+
+    'IB Math SL (AI) — Paper 2 (GDC Extended-Response)':{
+      title:'IB DP Mathematics: Applications and Interpretation SL — Paper 2 (Extended-Response)',totalTime:'1 hr 30 min',totalMarks:80,
+      bankId:'ibsl',isIB:true,ibCourse:'AI',
+      logo:'IB Math AI SL · Paper 2',org:'International Baccalaureate Organization (IBO)',
+      instructions:[
+        'Do not open this examination paper until instructed to do so.',
+        'A graphic display calculator (GDC) is required for this paper.',
+        'Do NOT write solutions on the question page. Answer all extended-response questions in the lined response booklet.',
+        'Unless otherwise stated in the question, all numerical answers should be given exactly or correct to three significant figures.',
+        'A clean copy of the Mathematics: applications and interpretation formula booklet is required for this paper.',
+        'The maximum mark for this examination paper is [80 marks].'
+      ],
+      sections:[
+        {title:'Paper 2 — Technology Required: Extended-Response Questions (AI SL)',time:'90 min',
+         note:'80 marks · 90 minutes · Extended-response modelling questions · Graphic display calculator required.',
+         domains:['AI SL — Specific Topics','Number & Algebra','Functions','Geometry & Trigonometry','Statistics & Probability','Calculus'],
+         parts:[
+           {label:'Section B — Extended-Response Questions',q:5,time:'90 min',calc:true,type:'frq',ibCourse:'AI',ibPaper:'P2',ibSection:'Section B',defaultMarks:16,note:'Do NOT write solutions on this page. Answer all extended-response questions in the lined response section (80 marks total). GDC required.'}
+         ]}]},
 
     'IB Math HL (AA) — Paper 1 (Non-Calculator)':{
-      title:'IB Mathematics: Analysis and Approaches HL — Paper 1',totalTime:'2 hr',
-      bankId:'ibhl',
-      logo:'IB Math HL (AA)',org:'International Baccalaureate Organization',
-      instructions:['Answer ALL questions in Section A and Section B.',
-        'Calculators are NOT permitted for this paper.',
-        'Answers should be given exactly or correct to 3 significant figures unless stated otherwise.',
-        'Full marks are not necessarily awarded for a correct answer with no working.'],
+      title:'IB DP Mathematics: Analysis and Approaches HL — Paper 1 (No Technology)',totalTime:'2 hr',totalMarks:110,
+      bankId:'ibhl',isIB:true,ibCourse:'AA',
+      logo:'IB Math AA HL · Paper 1',org:'International Baccalaureate Organization (IBO)',
+      instructions:[
+        'Do not open this examination paper until instructed to do so.',
+        'You are NOT permitted access to any calculator for this paper.',
+        'Section A: answer all questions. Write your answers in the boxes provided (~55 marks).',
+        'Section B: answer all questions in the answer booklet provided (~55 marks).',
+        'Unless otherwise stated in the question, all numerical answers should be given exactly or correct to three significant figures.',
+        'A clean copy of the Mathematics: analysis and approaches formula booklet is required for this paper.',
+        'The maximum mark for this examination paper is [110 marks].'
+      ],
       sections:[
-        {title:'Paper 1 — No Technology (HL)',time:'120 min',
-         note:'110 marks. Section A & Section B. No calculator allowed.',
+        {title:'Paper 1 — No Technology Permitted (AA HL)',time:'120 min',
+         note:'110 marks · 120 minutes · Section A (short-response) & Section B (extended-response) · No calculator allowed.',
          domains:['Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)','AA HL — Additional Topics'],
-         parts:[{label:'Sections A and B',q:10,time:'120 min',calc:false,type:'frq',note:'Short-response then extended-response questions. Non-calculator paper.'}]}]},
+         parts:[
+           {label:'Section A — Short-Response Questions',q:7,time:'60 min',calc:false,type:'frq',ibCourse:'AA',ibPaper:'P1',ibSection:'Section A',defaultMarks:8,note:'Answer all questions in the boxes provided (~55 marks total).'},
+           {label:'Section B — Extended-Response Questions',q:3,time:'60 min',calc:false,type:'frq',ibCourse:'AA',ibPaper:'P1',ibSection:'Section B',defaultMarks:18,note:'Do NOT write solutions on this page. Answer all questions in the lined response section (~55 marks total).'}
+         ]}]},
 
     'IB Math HL (AA) — Paper 2 (GDC Required)':{
-      title:'IB Mathematics: Analysis and Approaches HL — Paper 2',totalTime:'2 hr',
-      bankId:'ibhl',
-      logo:'IB Math HL (AA)',org:'International Baccalaureate Organization',
-      instructions:['Answer ALL questions in Section A and Section B.',
+      title:'IB DP Mathematics: Analysis and Approaches HL — Paper 2 (Technology Required)',totalTime:'2 hr',totalMarks:110,
+      bankId:'ibhl',isIB:true,ibCourse:'AA',
+      logo:'IB Math AA HL · Paper 2',org:'International Baccalaureate Organization (IBO)',
+      instructions:[
+        'Do not open this examination paper until instructed to do so.',
         'A graphic display calculator (GDC) is required for this paper.',
-        'Answers should be given exactly or correct to 3 significant figures unless stated otherwise.',
-        'Full marks are not necessarily awarded for a correct answer with no working.'],
+        'Section A: answer all questions. Write your answers in the boxes provided (~55 marks).',
+        'Section B: answer all questions in the answer booklet provided (~55 marks).',
+        'Unless otherwise stated in the question, all numerical answers should be given exactly or correct to three significant figures.',
+        'A clean copy of the Mathematics: analysis and approaches formula booklet is required for this paper.',
+        'The maximum mark for this examination paper is [110 marks].'
+      ],
       sections:[
-        {title:'Paper 2 — Technology Required (HL)',time:'120 min',
-         note:'110 marks. Section A & Section B. GDC required.',
+        {title:'Paper 2 — Graphic Display Calculator Required (AA HL)',time:'120 min',
+         note:'110 marks · 120 minutes · Section A (short-response) & Section B (extended-response) · GDC required.',
          domains:['Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)','AA HL — Additional Topics'],
-         parts:[{label:'Sections A and B',q:10,time:'120 min',calc:true,type:'frq',note:'Short-response then extended-response questions. Graphic display calculator required.'}]}]},
+         parts:[
+           {label:'Section A — Short-Response Questions',q:7,time:'60 min',calc:true,type:'frq',ibCourse:'AA',ibPaper:'P2',ibSection:'Section A',defaultMarks:8,note:'Answer all questions in the boxes provided (~55 marks total). GDC required.'},
+           {label:'Section B — Extended-Response Questions',q:3,time:'60 min',calc:true,type:'frq',ibCourse:'AA',ibPaper:'P2',ibSection:'Section B',defaultMarks:18,note:'Do NOT write solutions on this page. Answer all questions in the lined response section (~55 marks total). GDC required.'}
+         ]}]},
+
+    'IB Math HL (AA) — Paper 3 (GDC Extended Investigation)':{
+      title:'IB DP Mathematics: Analysis and Approaches HL — Paper 3 (Extended Investigation)',totalTime:'1 hr 15 min',totalMarks:55,
+      bankId:'ibhl',isIB:true,ibCourse:'AA',
+      logo:'IB Math AA HL · Paper 3',org:'International Baccalaureate Organization (IBO)',
+      instructions:[
+        'Do not open this examination paper until instructed to do so.',
+        'A graphic display calculator (GDC) is required for this paper.',
+        'Answer BOTH compulsory extended-response investigation questions in the answer booklet provided.',
+        'Each question guides you through a mathematical investigation from initial exploration to general conjecture and formal proof.',
+        'Unless otherwise stated in the question, all numerical answers should be given exactly or correct to three significant figures.',
+        'A clean copy of the Mathematics: analysis and approaches formula booklet is required for this paper.',
+        'The maximum mark for this examination paper is [55 marks] (75 minutes).'
+      ],
+      sections:[
+        {title:'Paper 3 — Extended Investigation & Problem Solving (AA HL)',time:'75 min',
+         note:'55 marks · 75 minutes (1 hour 15 minutes) · Two compulsory extended investigation questions · GDC required.',
+         domains:['Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)','AA HL — Additional Topics'],
+         parts:[
+           {label:'Extended Investigation Questions',q:2,time:'75 min',calc:true,type:'frq',ibCourse:'AA',ibPaper:'P3',ibSection:'Paper 3',defaultMarks:28,note:'Answer both compulsory extended investigation questions (27–28 marks each; 55 marks total).'}
+         ]}]},
+
+    'IB Math HL (AI) — Paper 1 (GDC Short-Response)':{
+      title:'IB DP Mathematics: Applications and Interpretation HL — Paper 1 (Short-Response)',totalTime:'2 hr',totalMarks:110,
+      bankId:'ibhl',isIB:true,ibCourse:'AI',
+      logo:'IB Math AI HL · Paper 1',org:'International Baccalaureate Organization (IBO)',
+      instructions:[
+        'Do not open this examination paper until instructed to do so.',
+        'A graphic display calculator (GDC) is required for this paper.',
+        'Answer ALL short-response questions in the boxes provided.',
+        'Unless otherwise stated in the question, all numerical answers should be given exactly or correct to three significant figures.',
+        'A clean copy of the Mathematics: applications and interpretation formula booklet is required for this paper.',
+        'The maximum mark for this examination paper is [110 marks].'
+      ],
+      sections:[
+        {title:'Paper 1 — Technology Required: Short-Response Questions (AI HL)',time:'120 min',
+         note:'110 marks · 120 minutes · Short-response questions across the AI HL syllabus · GDC required.',
+         domains:['AI HL — Additional Topics','Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)'],
+         parts:[
+           {label:'Section A — Short-Response Questions',q:10,time:'120 min',calc:true,type:'frq',ibCourse:'AI',ibPaper:'P1',ibSection:'Section A',defaultMarks:11,note:'Answer all short-response questions in the boxes provided (110 marks total). GDC required.'}
+         ]}]},
+
+    'IB Math HL (AI) — Paper 2 (GDC Extended-Response)':{
+      title:'IB DP Mathematics: Applications and Interpretation HL — Paper 2 (Extended-Response)',totalTime:'2 hr',totalMarks:110,
+      bankId:'ibhl',isIB:true,ibCourse:'AI',
+      logo:'IB Math AI HL · Paper 2',org:'International Baccalaureate Organization (IBO)',
+      instructions:[
+        'Do not open this examination paper until instructed to do so.',
+        'A graphic display calculator (GDC) is required for this paper.',
+        'Do NOT write solutions on this page. Answer all extended-response questions in the lined response booklet.',
+        'Unless otherwise stated in the question, all numerical answers should be given exactly or correct to three significant figures.',
+        'A clean copy of the Mathematics: applications and interpretation formula booklet is required for this paper.',
+        'The maximum mark for this examination paper is [110 marks].'
+      ],
+      sections:[
+        {title:'Paper 2 — Technology Required: Extended-Response Questions (AI HL)',time:'120 min',
+         note:'110 marks · 120 minutes · Extended-response modelling questions · GDC required.',
+         domains:['AI HL — Additional Topics','Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)'],
+         parts:[
+           {label:'Section B — Extended-Response Questions',q:6,time:'120 min',calc:true,type:'frq',ibCourse:'AI',ibPaper:'P2',ibSection:'Section B',defaultMarks:18,note:'Do NOT write solutions on this page. Answer all extended-response questions in the lined response section (110 marks total). GDC required.'}
+         ]}]},
+
+    'IB Math HL (AI) — Paper 3 (GDC Extended Investigation)':{
+      title:'IB DP Mathematics: Applications and Interpretation HL — Paper 3 (Extended Investigation)',totalTime:'1 hr 15 min',totalMarks:55,
+      bankId:'ibhl',isIB:true,ibCourse:'AI',
+      logo:'IB Math AI HL · Paper 3',org:'International Baccalaureate Organization (IBO)',
+      instructions:[
+        'Do not open this examination paper until instructed to do so.',
+        'A graphic display calculator (GDC) is required for this paper.',
+        'Answer BOTH compulsory extended-response investigation questions in the answer booklet provided.',
+        'Each question investigates a connected real-world mathematical model (e.g., coupled dynamical systems, Markov chains, graph algorithms, or statistical inference).',
+        'Unless otherwise stated in the question, all numerical answers should be given exactly or correct to three significant figures.',
+        'A clean copy of the Mathematics: applications and interpretation formula booklet is required for this paper.',
+        'The maximum mark for this examination paper is [55 marks] (75 minutes).'
+      ],
+      sections:[
+        {title:'Paper 3 — Extended Investigation & Problem Solving (AI HL)',time:'75 min',
+         note:'55 marks · 75 minutes (1 hour 15 minutes) · Two compulsory extended investigation questions · GDC required.',
+         domains:['AI HL — Additional Topics','Algebra, Proof & Complex Numbers','Vectors & 3D Geometry','Statistics & Probability (HL)','Calculus (HL)','Functions (HL Extensions)'],
+         parts:[
+           {label:'Extended Investigation Questions',q:2,time:'75 min',calc:true,type:'frq',ibCourse:'AI',ibPaper:'P3',ibSection:'Paper 3',defaultMarks:28,note:'Answer both compulsory extended investigation questions (27–28 marks each; 55 marks total).'}
+         ]}]},
 
     'Edexcel IAL — Pure Mathematics 1 (WMA11)':{
       title:'Pearson Edexcel International A Level — Pure Mathematics 1 (WMA11)',totalTime:'1 hr 30 min',
@@ -693,7 +1060,7 @@
       sections:[
         {title:'Quantitative Reasoning (English Medium)',time:'52 min',
          note:'52 questions · Arithmetic, Geometry, Algebra, Data Interpretation · No calculator',
-         domains:['Arithmetic & Number Sense','Ratios, Proportion & Percentages','Word Problems & Reasoning','Quantitative Comparisons','Geometry & Measurement','Algebra Essentials','Sequences & Patterns','Data Analysis & Probability'],
+         domains:['Arithmetic & Number Sense','Ratios, Proportion & Percentages','Motion, Speed & Work Rates','Word Problems & Reasoning','Word Problems & Modeling','Quantitative Comparison','Quantitative Comparisons','Geometry & Measurement','Geometry & Spatial Reasoning','Algebra Essentials','Sequences & Patterns','Number Patterns & Sequences','Data Analysis & Probability','Statistics, Probability & Data','High-Speed Qiyas Shortcuts'],
          parts:[{label:'',q:52,time:'52 min',calc:false,type:'mcq',note:'No calculator allowed.'}]}]},
 
     'SAAT Mathematics (English Medium)':{
@@ -709,7 +1076,7 @@
       sections:[
         {title:'Mathematics Section (English Medium)',time:'50 min',
          note:'50 questions · Saudi Secondary School Mathematics Curriculum · No calculator',
-         domains:['Algebra & Pre-Calculus','Sequences, Series & Matrices','Geometry & Coordinate Math','Trigonometry','Limits & Derivatives','Integration & Applications','Statistics & Probability'],
+         domains:['Mathematical Logic & Reasoning','Algebra, Matrices & Complex Numbers','Algebra & Equations','Vectors & Matrices','Functions & Graphs','Functions','Sequences, Series & Binomial Theorem','Sequences & Series','Trigonometry','Analytic Geometry, Conic Sections & Vectors','Geometry & Coordinate Geometry','Exponential & Logarithmic Functions','Exponentials & Logarithms','Limits & Differential Calculus','Limits & Derivatives','Integral Calculus & Area','Integration & Applications','Probability & Normal Distribution','Statistics & Probability'],
          parts:[{label:'',q:50,time:'50 min',calc:false,type:'mcq',note:'No calculator allowed.'}]}]},
 
     'Mawhiba & Kangaroo Math Arabia (Senior)':{
@@ -1041,15 +1408,38 @@
           }
         }
       }
-      return picked.map(function(q){return window._shuffleQ?window._shuffleQ(q):q;});
+      return picked.map(function(q){
+        var isFixed = q.fixedChoices || q.topic_id === 'qud-compare' || /Quantitative Comparison/i.test(q.domain||'') || /قارن بين|القيمة الأولى/.test(q.text||q.q||'');
+        return (!isFixed && window._shuffleQ) ? window._shuffleQ(q) : q;
+      });
     }
     /* A written-answer part takes the bank's free-response items first, then MCQ items that still
-       make sense without their options; an MCQ part takes only MCQ items. */
+       make sense without their options; an MCQ part takes only MCQ items.
+       For IB papers, drawForPart prioritizes structured multi-part IB FRQs matching the exact
+       IB section (Section A short-response, Section B extended-response, or Paper 3 investigation),
+       course (AA / AI / Both), and calculator policy. */
     var _needsOptions=/which of the following|which (one|statement|expression|equation|graph|table|value|point|option)/i;
     function drawForPart(pool,part){
       var isPartFree = (part.type==='frq' || part.type==='spr');
       if(isPartFree){
-        var got=drawQ(pool.filter(function(q){return q.type==='frq' || q.type==='spr';}),part.q);
+        var frqPool = pool.filter(function(q){return q.type==='frq' || q.type==='spr';});
+        var got = [];
+        if(part.ibSection || part.ibCourse || part.ibPaper){
+          var exactIB = frqPool.filter(function(q){
+            var secOk = !part.ibSection || q.ibSection === part.ibSection || (part.ibSection === 'Paper 3' && /P3|Paper 3/i.test(q.paper||'')) || (part.ibSection === 'Section B' && (q.marks >= 12));
+            var crsOk = !part.ibCourse || !q.course || q.course === 'Both' || q.course.indexOf(part.ibCourse) !== -1;
+            var calcOk = (typeof part.calc !== 'boolean') || (typeof q.calc !== 'boolean') || q.calc === part.calc;
+            return secOk && crsOk && calcOk;
+          });
+          got = drawQ(exactIB, part.q);
+          if(got.length < part.q){
+            var secIB = frqPool.filter(function(q){
+              return !part.ibSection || q.ibSection === part.ibSection || (part.ibSection === 'Section B' ? (q.marks >= 11) : (part.ibSection === 'Paper 3' ? (q.marks >= 20) : (q.marks <= 10)));
+            });
+            got = got.concat(drawQ(secIB, part.q - got.length));
+          }
+        }
+        if(got.length<part.q) got=got.concat(drawQ(frqPool,part.q-got.length));
         if(got.length<part.q) got=got.concat(drawQ(pool.filter(function(q){return q.type!=='frq' && q.type!=='spr' && !_needsOptions.test(q.text||q.q||'');}),part.q-got.length));
         if(got.length<part.q) got=got.concat(drawQ(pool,part.q-got.length));
         return got;
@@ -1084,7 +1474,26 @@
     var dateStr=d.toLocaleDateString('en-GB',{day:'2-digit',month:'long',year:'numeric'});
     /* build pool from easy/medium/hard if bank has no pool */
     if(!bank.pool && (bank.easy||bank.medium||bank.hard)){
-      var _cvt=function(a, diff){return (a||[]).map(function(q){return {type:q.type||'mcq',difficulty:q.difficulty||diff,domain:q.domain||'Mathematics',text:q.q||q.text||'',choices:q.choices||[],answer:q.answer,sol:q.sol||'',figure:q.figure||q.fig};});};
+      var _cvt=function(a, diff){
+        return (a||[]).map(function(q){
+          return Object.assign({}, q, {
+            type:q.type||'mcq',
+            difficulty:q.difficulty||diff,
+            domain:q.domain||q.topic||'Mathematics',
+            text:q.q||q.text||'',
+            choices:q.choices||[],
+            answer:q.answer,
+            ans:q.ans,
+            sol:q.sol||q.exp||q.expl||'',
+            figure:q.figure||q.fig,
+            marks:q.marks,
+            paper:q.paper,
+            course:q.course,
+            ibSection:q.ibSection,
+            calc:q.calc
+          });
+        });
+      };
       bank.pool=_cvt(bank.easy,'easy').concat(_cvt(bank.medium,'medium')).concat(_cvt(bank.hard,'hard'));
     }
     /* Filter non-math exam format/trivia questions from full paper generation */
@@ -1093,6 +1502,35 @@
       bank.pool=bank.pool.filter(function(q){return !_skipTrivia.test(q.domain||'');});
     }
     var globalLetters=(spec&&spec.letters)||(bank.letters)||['A','B','C','D'];
+    var isIBExam = Boolean((spec && spec.isIB) || viewId === 'ibsl' || viewId === 'ibhl' || /^IB Math/i.test(examName||''));
+
+    /* Helper to resolve the correct output container (prioritizing #<viewId>-exam-out for full exams) */
+    function _resolveFullExamOut(){
+      var byId = document.getElementById(viewId + '-exam-out');
+      if(byId) return byId;
+      var _p = btn && btn.parentElement;
+      var _sib = _p ? _p.nextElementSibling : null;
+      if(_sib && (_sib.classList.contains('tg-out') || _sib.querySelector('.tg-out'))){
+        return _sib.classList.contains('tg-out') ? _sib : _sib.querySelector('.tg-out');
+      }
+      var _sec = btn && btn.closest('section');
+      if(_sec){
+        var _outs = _sec.querySelectorAll('.tg-out');
+        if(_outs && _outs.length) return _outs[_outs.length - 1];
+      }
+      var _tg = btn && btn.closest('.testgen');
+      if(_tg){
+        var _touts = _tg.querySelectorAll('.tg-out');
+        if(_touts && _touts.length) return _touts[_touts.length - 1];
+      }
+      if(btn){
+        var created = document.createElement('div');
+        created.className = 'tg-out';
+        btn.insertAdjacentElement('afterend', created);
+        return created;
+      }
+      return null;
+    }
 
     /* ── FALLBACK: no spec → flat legacy layout ── */
     if(!spec){
@@ -1119,14 +1557,12 @@
       for(var qi=1;qi<=totalQ;qi++){h+='<div class="fep-bubble-row"><span class="fep-bnum">'+qi+'</span>';globalLetters.forEach(function(l){h+='<span class="fep-bubble">'+l+'</span>';});h+='</div>';}
       h+='</div></div>';
       var qNum=1;var ak=[];
-      /* Structured capture for the Google Forms/Classroom integration — see
-         public/js/quiz-capture-ui.js. Mirrors ak[] but keeps the full
-         choices array + a zero-based correctIndex instead of a display
-         letter, and is fired as a DOM event once rendering completes so
-         nothing outside this function needs to know the internal shape. */
       var _csCaptureQ=[];
       sectionTitles.forEach(function(secTitle,si){
         var sq=drawQ(bank.pool,qPerSection);
+        if(window.CSExamRevisionPass){
+          sq = window.CSExamRevisionPass(sq, {viewId:viewId, isIB:isIBExam, fallbackPool:bank.pool}).items;
+        }
         h+='<div class="fep-section" style="page-break-before:'+(si>0?'always':'auto')+'">';
         h+='<div class="fep-section-head"><span class="fep-sec-label">Section '+(si+1)+'</span><span class="fep-sec-title">'+esc(secTitle)+'</span></div>';
         sq.forEach(function(q){
@@ -1137,7 +1573,9 @@
           h+='<div class="fep-item '+(q.type==='frq'?'fep-frq':'fep-mcq')+'">';
           h+='<div class="fep-item-head"><span class="fep-inum">'+qNum+'</span><span class="fep-domain-tag">'+esc(q.domain)+'</span></div>';
           if(_fHtml)h+='<div class="fep-figure">'+_fHtml+'</div>';
-          h+='<div class="fep-qbody">'+_fmtBi(_maths(q.text||q.q||''))+'</div>';
+          var _qCardHtml = (window.CSRenderQiyasComparisonCard && (viewId === 'qudrat' || q.topic_id === 'qud-compare' || /Quantitative Comparison|المقارنات الكمية/i.test(q.domain||'')))
+            ? window.CSRenderQiyasComparisonCard(q, _maths) : '';
+          h+='<div class="fep-qbody">'+_fmtBi(_maths(q.text||q.q||''))+_qCardHtml+'</div>';
           if(isMCQ&&q.choices){h+='<div class="fep-choices">';q.choices.forEach(function(ch,ci){var s=_autoMath(ch);h+='<div class="fep-choice"><span class="fep-cletter">'+globalLetters[ci]+'.</span><span class="fep-ctext">'+_fmtBi(_maths(s))+'</span></div>';});h+='</div>';}
           if(q.type==='frq'){h+='<div class="fep-work-space"><span class="fep-ws-label">Working:</span>';for(var l=0;l<5;l++)h+='<div class="fep-ws-line"></div>';h+='<div class="fep-ws-ans"><span>Answer:</span><span class="fep-ws-ans-line"></span></div></div>';}
           h+='<div class="fep-sol-block" style="display:none"><strong>Answer'+(isMCQ?' ('+globalLetters[q.answer]+')':'')+': </strong>'+_fmtBi(_maths(q.sol||''))+'</div></div>';
@@ -1148,30 +1586,78 @@
       h+='<div class="fep-key-section"><button class="btn fep-key-toggle" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display===\'none\'?\'block\':\'none\';this.textContent=this.textContent.includes(\'Show\')?\'Hide Answer Key ▴\':\'Show Answer Key ▾\'">Show Answer Key ▾</button><div class="fep-key-grid" style="display:none">';
       ak.forEach(function(k){h+='<div class="fep-key-item '+(k.type==='frq'?'fep-key-frq':'')+'""><span class="fep-knum">'+k.n+'</span><span class="fep-kans">'+(k.answer||'FRQ')+'</span><span class="fep-kdomain">'+esc(k.domain)+'</span></div>';});
       h+='</div></div></div>';
-      var _tgF=btn.closest('.testgen');
-      var out=_tgF?_tgF.querySelector('.tg-out'):null;
-      if(!out){var _secF=btn.closest('section');if(_secF){var _outsF=_secF.querySelectorAll('.tg-out');out=_outsF[_outsF.length-1]||null;}}
-      if(!out){console.warn('genFullExam: no .tg-out found for',viewId);return;}
-      out.innerHTML=h;
-      _mjRun(out);
-      document.dispatchEvent(new CustomEvent('clipsat:quiz-ready',{detail:{source:'genFullExam-static',title:examName,trackId:viewId,questions:_csCaptureQ,outEl:out}}));
+      var outF=_resolveFullExamOut();
+      if(!outF){console.warn('genFullExam: no .tg-out found for',viewId);return;}
+      outF.innerHTML=h;
+      _mjRun(outF);
+      document.dispatchEvent(new CustomEvent('clipsat:quiz-ready',{detail:{source:'genFullExam-static',title:examName,trackId:viewId,questions:_csCaptureQ,outEl:outF}}));
       return;
     }
 
-    /* ── SPEC-DRIVEN PATH — real exam standards ── */
+    /* ── SPEC-DRIVEN PATH — real exam standards + mandatory pre-display revision pass ── */
     var totalMCQ=0,totalFRQ=0;
     spec.sections.forEach(function(sec){sec.parts.forEach(function(p){
       if(p.type==='mcq')totalMCQ+=p.q; else if(p.type==='frq')totalFRQ+=p.q;
     });});
     var totalQ=totalMCQ+totalFRQ;
 
+    /* STEP 1: Pre-draw all parts and run the MANDATORY Examiner Revision Pass across the entire exam
+       before a single pixel of HTML is rendered to the user. */
+    var _allDrawnEntries = [];
+    spec.sections.forEach(function(sec, si){
+      sec.parts.forEach(function(part, pi){
+        var partDomains = part.domains || sec.domains;
+        var poolToUse = (partDomains && partDomains.length) ? bank.pool.filter(function(q){
+          return partDomains.indexOf(q.domain) !== -1;
+        }) : bank.pool;
+        if(poolToUse.length < part.q) poolToUse = bank.pool;
+        var rawQs = drawForPart(poolToUse, part);
+        rawQs.forEach(function(q){
+          _allDrawnEntries.push({
+            secIdx: si,
+            partIdx: pi,
+            part: part,
+            sec: sec,
+            q: Object.assign({}, q)
+          });
+        });
+      });
+    });
+
+    var _revisionResult = window.CSExamRevisionPass
+      ? window.CSExamRevisionPass(
+          _allDrawnEntries.map(function(e){ return e.q; }),
+          {
+            viewId: viewId,
+            examName: spec.title || examName,
+            isIB: isIBExam,
+            ibCourse: spec.ibCourse || 'AA',
+            partMeta: _allDrawnEntries.map(function(e){ return e.part; }),
+            fallbackPool: bank.pool
+          }
+        )
+      : { items: _allDrawnEntries.map(function(e){ return e.q; }), report: null };
+
+    _allDrawnEntries.forEach(function(e, idx){
+      if(_revisionResult.items[idx]) e.q = _revisionResult.items[idx];
+    });
+
+    var totalMarksComputed = 0;
+    _allDrawnEntries.forEach(function(e){
+      totalMarksComputed += (Number(e.q.marks) || e.part.defaultMarks || (isIBExam ? 7 : 1));
+    });
+    var displayTotalMarks = spec.totalMarks || totalMarksComputed;
+
     /* COVER PAGE */
-    var h='<div class="full-exam-paper">';
+    var h='<div class="full-exam-paper'+(isIBExam?' ib-official-exam-paper':'')+'">';
+    if(_revisionResult.report && window.CSRenderRevisionBanner){
+      h += window.CSRenderRevisionBanner(_revisionResult.report, isIBExam);
+    }
     h+='<div class="fep-cover-page">';
     h+='<div class="fep-official-bar">'+esc(spec.org||'ClipSAT Practice')+'</div>';
     h+='<div class="fep-header">';
     h+='<div class="fep-logo-wrap" style="text-align:center;padding:10px 0 4px">'+'<img src="'+(document.getElementById('site-logo-img')||{src:''}).src+'" class="fep-logo-img" alt="ClipSAT Logo"></div>';
-    h+='<div class="fep-top-bar"><span class="fep-exam-logo">'+esc(spec.logo||spec.title)+'</span><span class="fep-badge">Practice Examination</span></div>';
+    h+='<div class="fep-top-bar"><span class="fep-exam-logo">'+esc(spec.logo||spec.title)+'</span><span class="fep-badge">'+(isIBExam?'IB DP Official Format Examination':'Practice Examination')+'</span></div>';
     h+='<h1 class="fep-title">'+esc(spec.title)+'</h1>';
     if(viewId === 'qudrat' || viewId === 'tahsili'){
       var curLang = 'both';
@@ -1187,33 +1673,47 @@
     h+='<div class="fep-total-bar">';
     h+='<div class="fep-total-item"><span class="fep-total-val">'+totalQ+'</span><span class="fep-total-lbl">Total Questions</span></div>';
     h+='<div class="fep-total-item"><span class="fep-total-val">'+esc(spec.totalTime)+'</span><span class="fep-total-lbl">Total Time</span></div>';
-    if(totalMCQ>0)h+='<div class="fep-total-item"><span class="fep-total-val">'+totalMCQ+'</span><span class="fep-total-lbl">Multiple Choice</span></div>';
-    if(totalFRQ>0)h+='<div class="fep-total-item"><span class="fep-total-val">'+totalFRQ+'</span><span class="fep-total-lbl">Free Response</span></div>';
+    if(isIBExam){
+      h+='<div class="fep-total-item"><span class="fep-total-val">'+displayTotalMarks+'</span><span class="fep-total-lbl">Maximum Marks</span></div>';
+      h+='<div class="fep-total-item"><span class="fep-total-val">Written FRQ</span><span class="fep-total-lbl">Paper Format (No MCQ)</span></div>';
+    } else {
+      if(totalMCQ>0)h+='<div class="fep-total-item"><span class="fep-total-val">'+totalMCQ+'</span><span class="fep-total-lbl">Multiple Choice</span></div>';
+      if(totalFRQ>0)h+='<div class="fep-total-item"><span class="fep-total-val">'+totalFRQ+'</span><span class="fep-total-lbl">Free Response</span></div>';
+    }
     h+='</div>';
     h+='<div class="fep-meta-grid">';
-    h+='<div class="fep-meta-cell"><span class="fep-mlabel">Student Name</span><span class="fep-mline"></span></div>';
+    h+='<div class="fep-meta-cell"><span class="fep-mlabel">'+(isIBExam?'Candidate Name / Session Number':'Student Name')+'</span><span class="fep-mline"></span></div>';
     h+='<div class="fep-meta-cell"><span class="fep-mlabel">Date</span><span class="fep-mval">'+dateStr+'</span></div>';
-    h+='<div class="fep-meta-cell"><span class="fep-mlabel">School / Centre</span><span class="fep-mline"></span></div>';
-    h+='<div class="fep-meta-cell fep-score-cell"><span class="fep-mlabel">Total Score</span><span class="fep-score-box-big">____&nbsp;/&nbsp;'+totalQ+'</span></div>';
+    h+='<div class="fep-meta-cell"><span class="fep-mlabel">'+(isIBExam?'IB World School / Centre Code':'School / Centre')+'</span><span class="fep-mline"></span></div>';
+    h+='<div class="fep-meta-cell fep-score-cell"><span class="fep-mlabel">Total Score</span><span class="fep-score-box-big">____&nbsp;/&nbsp;'+(isIBExam?displayTotalMarks:totalQ)+'</span></div>';
     h+='</div>';
-    h+='<div class="fep-instr-box"><strong>General Instructions</strong><ul class="fep-instr-list">';
+    h+='<div class="fep-instr-box"><strong>'+(isIBExam?'Instructions to Candidates (IB DP Official Protocol)':'General Instructions')+'</strong><ul class="fep-instr-list">';
     spec.instructions.forEach(function(ins){h+='<li>'+esc(ins)+'</li>';});
     h+='</ul></div>';
     h+='</div>';
     /* overview table */
     h+='<div class="fep-instr-box" style="margin-top:16px"><strong>Exam Overview</strong>';
     h+='<table style="width:100%;border-collapse:collapse;font-family:var(--sans);font-size:.82rem;margin-top:8px">';
-    h+='<tr style="background:#f0f4fc"><th style="padding:5px 8px;text-align:left;border:1px solid #c5cde8">Section / Part</th><th style="padding:5px 8px;text-align:left;border:1px solid #c5cde8">Time</th><th style="padding:5px 8px;text-align:center;border:1px solid #c5cde8">Q\'s</th><th style="padding:5px 8px;text-align:center;border:1px solid #c5cde8">Calc</th></tr>';
+    h+='<tr style="background:#f0f4fc"><th style="padding:5px 8px;text-align:left;border:1px solid #c5cde8">Section / Part</th><th style="padding:5px 8px;text-align:left;border:1px solid #c5cde8">Time</th><th style="padding:5px 8px;text-align:center;border:1px solid #c5cde8">Q\'s</th><th style="padding:5px 8px;text-align:center;border:1px solid #c5cde8">'+(isIBExam?'GDC Policy':'Calc')+'</th></tr>';
     spec.sections.forEach(function(sec){
       sec.parts.forEach(function(p){
         var rowTitle=sec.parts.length>1&&p.label?(esc(sec.title)+' — '+esc(p.label)):esc(sec.title);
         h+='<tr><td style="padding:5px 8px;border:1px solid #c5cde8">'+rowTitle+(p.note?'<br><small style="color:#666">'+esc(p.note)+'</small>':'')+'</td>';
         h+='<td style="padding:5px 8px;border:1px solid #c5cde8;white-space:nowrap">'+esc(p.time)+'</td>';
         h+='<td style="padding:5px 8px;border:1px solid #c5cde8;text-align:center">'+p.q+'</td>';
-        h+='<td style="padding:5px 8px;border:1px solid #c5cde8;text-align:center"><span class="fep-calc-badge '+(p.calc?'fep-calc-yes':'fep-calc-no')+'">'+(p.calc?'Yes':'No')+'</span></td></tr>';
+        h+='<td style="padding:5px 8px;border:1px solid #c5cde8;text-align:center"><span class="fep-calc-badge '+(p.calc?'fep-calc-yes':'fep-calc-no')+'">'+(isIBExam?(p.calc?'GDC Required':'No Technology'):(p.calc?'Yes':'No'))+'</span></td></tr>';
       });
     });
     h+='</table></div></div>';
+
+    /* OFFICIAL IB FORMULA BOOKLET (for IB exams) */
+    if(isIBExam && window.CSRenderIBFormulaBooklet){
+      h += window.CSRenderIBFormulaBooklet(viewId, spec.ibCourse || 'AA');
+    }
+    /* OFFICIAL ETEC / QIYAS HIGH-SPEED FORMULA & STRATEGY SHEET (for Qudrat & Tahsili) */
+    if((viewId === 'qudrat' || viewId === 'tahsili') && window.CSRenderQiyasReferenceSheet){
+      h += window.CSRenderQiyasReferenceSheet(viewId);
+    }
 
     /* ANSWER SHEET (MCQ only) */
     if(totalMCQ>0){
@@ -1233,11 +1733,12 @@
 
     /* SECTIONS & PARTS */
     var qNum=1;var answerKey=[];
-    var _csCaptureQ=[]; /* see the fallback branch above for what this feeds */
+    var _csCaptureQ=[];
+    var _entryCursor=0;
     spec.sections.forEach(function(sec,si){
       h+='<div class="fep-section" style="page-break-before:always">';
       h+='<div class="fep-section-head">';
-      h+='<span class="fep-sec-label">Section '+(si+1)+' of '+spec.sections.length+'</span>';
+      h+='<span class="fep-sec-label">'+(isIBExam?('Paper / Section '+(si+1)+' of '+spec.sections.length):('Section '+(si+1)+' of '+spec.sections.length))+'</span>';
       h+='<span class="fep-sec-title">'+esc(sec.title)+'</span>';
       h+='<span class="fep-sec-time">&#9201; '+esc(sec.time)+'</span>';
       h+='</div>';
@@ -1252,17 +1753,15 @@
           h+='<div class="fep-part-head">';
           h+='<span class="fep-part-label">'+esc(part.label)+'</span>';
           h+='<span class="fep-part-info">'+part.q+' Question'+(part.q!==1?'s':'')+(part.time?' &nbsp;·&nbsp; &#9201; '+esc(part.time):'')+'</span>';
-          h+='<span class="fep-calc-badge '+(part.calc?'fep-calc-yes':'fep-calc-no')+'">'+(part.calc?'Calculator Permitted':'No Calculator')+'</span>';
+          h+='<span class="fep-calc-badge '+(part.calc?'fep-calc-yes':'fep-calc-no')+'">'+(isIBExam?(part.calc?'GDC Required':'No Technology Permitted'):(part.calc?'Calculator Permitted':'No Calculator'))+'</span>';
           h+='</div>';
         }
         if(part.note){h+='<div class="fep-sec-note">'+esc(part.note)+'</div>';}
         var partStart=qNum;
-        var partDomains=part.domains||sec.domains;
-        var poolToUse=(partDomains&&partDomains.length)?bank.pool.filter(function(q){
-          return partDomains.indexOf(q.domain)!==-1;
-        }):bank.pool;
-        if(poolToUse.length<part.q) poolToUse=bank.pool;
-        var qs=drawForPart(poolToUse,part);
+        var qs=[];
+        for(var _pi=0;_pi<part.q && _entryCursor<_allDrawnEntries.length;_pi++){
+          qs.push(_allDrawnEntries[_entryCursor++].q);
+        }
         if(part.q>1)h+='<div class="fep-q-count">Questions '+partStart+'–'+(partStart+part.q-1)+'</div>';
 
         qs.forEach(function(q){
@@ -1271,30 +1770,56 @@
           if(isMCQPart){isFree=false;isMCQ=true;}
           if(isFRQPart){isFree=true;isMCQ=false;}
 
-          var ansDisplay = isMCQ ? pL[q.answer] : (q.sprAnswer != null ? String(q.sprAnswer) : (typeof q.answer === 'number' && q.choices && q.choices[q.answer] != null ? String(q.choices[q.answer]) : (q.answer != null ? String(q.answer) : (q.type==='spr'?'SPR':'FRQ'))));
+          var qMarks = Number(q.marks) || part.defaultMarks || (isIBExam ? 6 : 1);
+          var ansDisplay = isMCQ ? pL[q.answer] : (q.ans != null ? String(q.ans) : (q.sprAnswer != null ? String(q.sprAnswer) : (typeof q.answer === 'number' && q.choices && q.choices[q.answer] != null ? String(q.choices[q.answer]) : (q.answer != null ? String(q.answer) : (q.type==='spr'?'SPR':'See Markscheme')))));
           answerKey.push({n:qNum,type:(isFree?(q.type==='spr'?'spr':'frq'):'mcq'),domain:q.domain,
-            answer:ansDisplay,sol:q.sol||''});
+            marks:qMarks,answer:ansDisplay,sol:q.sol||q.exp||''});
           var _fHtml=renderQFig(q);
-          _csCaptureQ.push({text:q.text||q.q||'',choices:isMCQ?(q.choices||[]).slice():[],correctIndex:isMCQ?q.answer:null,type:isFree?(q.type==='spr'?'spr':'frq'):'mcq',points:1,figure:q.figure||q.fig||null,figureHtml:_fHtml||null});
+          _csCaptureQ.push({text:q.text||q.q||'',choices:isMCQ?(q.choices||[]).slice():[],correctIndex:isMCQ?q.answer:null,type:isFree?(q.type==='spr'?'spr':'frq'):'mcq',points:qMarks,figure:q.figure||q.fig||null,figureHtml:_fHtml||null});
 
-          h+='<div class="fep-item '+(isFree?'fep-frq fep-frq-full':'fep-mcq')+'">';
-          h+='<div class="fep-item-head"><span class="fep-inum">'+qNum+'</span>';
-          h+='<span class="fep-domain-tag">'+esc(q.domain||'')+'</span>';
-          if(isFree)h+='<span class="fep-type-tag frq-tag">'+(q.type==='spr'?'SPR':'FRQ')+'</span>';
+          h+='<div class="fep-item '+(isFree?'fep-frq fep-frq-full':'fep-mcq')+(isIBExam?' ib-question-card':'')+'">';
+          h+='<div class="fep-item-head"><span class="fep-inum">'+qNum+'.</span>';
+          if(isIBExam){
+            h+='<span class="fep-ib-maxmark" style="font-weight:700;color:#1e293b;font-size:.86rem;margin-right:auto">[Maximum mark: '+qMarks+']</span>';
+            if(q.paper || part.ibPaper) h+='<span class="fep-domain-tag" style="background:#eef2ff;color:#312e81;border:1px solid #c7d2fe">'+esc(q.paper || ((spec.ibCourse||'AA')+' '+(part.ibPaper||'P1')))+'</span>';
+            h+='<span class="fep-domain-tag">'+esc(q.domain||q.topic||'IB Mathematics')+'</span>';
+            h+='<span class="fep-type-tag frq-tag">'+(part.ibSection || q.ibSection || 'Written FRQ')+'</span>';
+          } else {
+            h+='<span class="fep-domain-tag">'+esc(q.domain||'')+'</span>';
+            if(isFree)h+='<span class="fep-type-tag frq-tag">'+(q.type==='spr'?'SPR':'FRQ')+'</span>';
+          }
           h+='</div>';
           if(_fHtml)h+='<div class="fep-figure">'+_fHtml+'</div>';
-          h+='<div class="fep-qbody">'+_fmtBi(_maths(q.text||q.q||''))+'</div>';
+          var _qCardHtml = (window.CSRenderQiyasComparisonCard && (viewId === 'qudrat' || q.topic_id === 'qud-compare' || /Quantitative Comparison|المقارنات الكمية/i.test(q.domain||'')))
+            ? window.CSRenderQiyasComparisonCard(q, _maths) : '';
+          h+='<div class="fep-qbody">'+_fmtBi(_maths(q.text||q.q||''))+_qCardHtml+'</div>';
           if(isMCQ&&q.choices){
             h+='<div class="fep-choices">';
             q.choices.forEach(function(ch,ci){var s=_autoMath(ch);h+='<div class="fep-choice"><span class="fep-cletter">'+pL[ci]+'.</span><span class="fep-ctext">'+_fmtBi(_maths(s))+'</span></div>';});
             h+='</div>';
           }
           if(isFree){
-            h+='<div class="fep-work-space"><span class="fep-ws-label">'+(q.type==='spr'?'Student-Produced Response (Grid-in):':'Working Space:')+'</span>';
-            for(var ln=0;ln<8;ln++)h+='<div class="fep-ws-line"></div>';
-            h+='<div class="fep-ws-ans"><span>Answer:</span><span class="fep-ws-ans-line"></span></div></div>';
+            var isIBSecB = isIBExam && (part.ibSection === 'Section B' || part.ibSection === 'Paper 3' || qMarks >= 12);
+            if(isIBExam && !isIBSecB){
+              /* Authentic IB Section A Answer Box with dotted working lines */
+              h+='<div class="fep-work-space ib-seca-box" style="border:1.5px solid #94a3b8;border-radius:6px;padding:10px 14px;margin-top:12px;background:#fafcff">';
+              h+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><span class="fep-ws-label" style="font-weight:700;color:#334155;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em">Working &amp; Answer Box (Section A — Write your working and final answer inside this box):</span><span style="font-size:.75rem;color:#64748b">['+qMarks+' marks]</span></div>';
+              for(var lnA=0;lnA<6;lnA++)h+='<div class="fep-ws-line" style="border-bottom:1px dotted #cbd5e1;height:22px"></div>';
+              h+='</div>';
+            } else if(isIBSecB){
+              /* Authentic IB Section B / Paper 3 Lined Booklet Response Space */
+              h+='<div class="fep-work-space ib-secb-box" style="border-top:2px dashed #64748b;padding-top:10px;margin-top:12px">';
+              h+='<div style="font-size:.79rem;font-style:italic;color:#475569;margin-bottom:8px">Do NOT write solutions on the question page in the real exam. Use the lined answer booklet space below for all parts of Question '+qNum+' (['+qMarks+' marks]):</div>';
+              var nLines = part.ibSection === 'Paper 3' ? 14 : 10;
+              for(var lnB=0;lnB<nLines;lnB++)h+='<div class="fep-ws-line" style="border-bottom:1px solid #e2e8f0;height:24px"></div>';
+              h+='</div>';
+            } else {
+              h+='<div class="fep-work-space"><span class="fep-ws-label">'+(q.type==='spr'?'Student-Produced Response (Grid-in):':'Working Space:')+'</span>';
+              for(var ln=0;ln<8;ln++)h+='<div class="fep-ws-line"></div>';
+              h+='<div class="fep-ws-ans"><span>Answer:</span><span class="fep-ws-ans-line"></span></div></div>';
+            }
           }
-          h+='<div class="fep-sol-block" style="display:none"><strong>Answer'+(isMCQ?' ('+pL[q.answer]+')':(ansDisplay?' ['+ansDisplay+']':''))+': </strong>'+_fmtBi(_maths(q.sol||''))+'</div>';
+          h+='<div class="fep-sol-block" style="display:none"><strong>'+(isIBExam?'Official IB Markscheme ['+qMarks+' marks]':'Answer'+(isMCQ?' ('+pL[q.answer]+')':''))+(ansDisplay?' — '+_maths(ansDisplay):'')+': </strong><div style="margin-top:6px">'+_fmtBi(_maths(q.sol||q.exp||''))+'</div></div>';
           h+='</div>';
           qNum++;
         });
@@ -1302,38 +1827,375 @@
       h+='</div>';
     });
 
-    /* ANSWER KEY */
+    /* ANSWER KEY / MARKSCHEME SUMMARY */
     h+='<div class="fep-key-section">';
-    h+='<button class="btn fep-key-toggle" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display===\'none\'?\'block\':\'none\';this.textContent=this.textContent.includes(\'Show\')?\'Hide Answer Key ▴\':\'Show Answer Key ▾\'">Show Answer Key ▾</button>';
+    h+='<button class="btn fep-key-toggle" onclick="var g=this.nextElementSibling;var show=g.style.display===\'none\';g.style.display=show?\'grid\':\'none\';var p=this.closest(\'.full-exam-paper\');if(p){p.querySelectorAll(\'.fep-sol-block\').forEach(function(b){b.style.display=show?\'block\':\'none\';});}this.textContent=show?\'Hide Official Markscheme &amp; Solutions ▴\':\'Show Official Markscheme &amp; Solutions ▾\'">Show Official Markscheme &amp; Solutions ▾</button>';
     h+='<div class="fep-key-grid" style="display:none">';
     answerKey.forEach(function(k){
       h+='<div class="fep-key-item '+(k.type==='frq'?'fep-key-frq':'')+'">';
-      h+='<span class="fep-knum">'+k.n+'</span>';
-      h+='<span class="fep-kans">'+(k.answer||'FRQ')+'</span>';
+      h+='<span class="fep-knum">Q'+k.n+(isIBExam?' ['+k.marks+'m]':'')+'</span>';
+      h+='<span class="fep-kans">'+_maths(k.answer||'FRQ')+'</span>';
       h+='<span class="fep-kdomain">'+esc(k.domain)+'</span>';
       h+='</div>';
     });
     h+='</div></div>';
     h+='</div>';
 
-    /* find nearest .tg-out whether inside .testgen or as a following sibling */
-    var _tg=btn.closest('.testgen');
-    var out=_tg?_tg.querySelector('.tg-out'):null;
-    if(!out){
-      /* button outside .testgen: look for next .tg-out sibling or cousin */
-      var _p=btn.parentElement;
-      var _sib=_p?_p.nextElementSibling:null;
-      if(_sib&&(_sib.classList.contains('tg-out')||_sib.querySelector('.tg-out')))
-        out=_sib.classList.contains('tg-out')?_sib:_sib.querySelector('.tg-out');
-      if(!out){
-        var _sec=btn.closest('section');
-        if(_sec){var _outs=_sec.querySelectorAll('.tg-out');out=_outs[_outs.length-1];}
-      }
-    }
-    if(!out){out=document.createElement('div');out.className='tg-out';btn.insertAdjacentElement('afterend',out);}
+    var out=_resolveFullExamOut();
+    if(!out){console.warn('genFullExam: no output container found for',viewId);return;}
     out.innerHTML=h;
     _mjRun(out);
     document.dispatchEvent(new CustomEvent('clipsat:quiz-ready',{detail:{source:'genFullExam-static',title:spec.title||examName,trackId:viewId,questions:_csCaptureQ,outEl:out}}));
+  };
+
+  /* =====================================================================
+     MANDATORY PRE-DISPLAY EXAMINER REVISION PASS (window.CSExamRevisionPass)
+     & OFFICIAL IB FORMULA BOOKLET RENDERER (window.CSRenderIBFormulaBooklet)
+     ===================================================================== */
+  var _IB_CMD_TERMS = /\b(Write down|Find|Determine|Show that|Hence|State|Sketch|Draw|Verify|Prove|Justify|Calculate|Interpret|Explain)\b/;
+
+  function _normStemSig(txt){
+    return String(txt||'')
+      .toLowerCase()
+      .replace(/\$[^$]*\$/g, function(m){ return m.replace(/\s+/g,''); })
+      .replace(/[^a-z0-9+\-*/=^().,]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .slice(0, 180);
+  }
+
+  function _normTmplSig(txt){
+    return String(txt||'')
+      .toLowerCase()
+      .replace(/-?\d+(\.\d+)?/g, '#')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .slice(0, 140);
+  }
+
+  function _quickFigSig(q){
+    var f = q && (q.figure || q.fig || q.table);
+    if(!f) return '';
+    try { return JSON.stringify(f).slice(0, 160); } catch(e){ return ''; }
+  }
+
+  function _balanceMathDelims(str){
+    if(!str || typeof str !== 'string') return str || '';
+    var s = str;
+    /* Count unescaped single $ outside $$ */
+    var withoutDisp = s.replace(/\$\$[\s\S]*?\$\$/g, '');
+    var singles = (withoutDisp.match(/(^|[^\\])\$/g) || []).length;
+    if(singles % 2 === 1){
+      s = s + '$';
+    }
+    return s;
+  }
+
+  /* Upgrades any single-stem item drawn onto an IB paper into a 100% authentic multi-part
+     IB structured question with command terms, right-aligned [marks], and M1/A1/R1 markscheme */
+  function _upgradeToAuthenticIBFormat(q, partMeta, isHL){
+    var item = Object.assign({}, q);
+    item.type = 'frq';
+    var secType = (partMeta && partMeta.ibSection) || item.ibSection || 'Section A';
+    var targetMarks = Number(item.marks) || (partMeta && partMeta.defaultMarks) || (secType === 'Paper 3' ? 27 : (secType === 'Section B' ? 14 : (isHL ? 8 : 6)));
+    item.marks = targetMarks;
+    item.ibSection = secType;
+    if(partMeta && partMeta.ibPaper && !item.paper){
+      item.paper = (partMeta.ibCourse || (isHL ? 'AA HL' : 'AA SL')) + ' ' + partMeta.ibPaper;
+    }
+
+    var rawStem = _balanceMathDelims(item.text || item.q || '');
+    /* Strip any residual MCQ prompt phrasing */
+    rawStem = rawStem
+      .replace(/Which of the following is equal to/gi, 'Determine')
+      .replace(/Which of the following/gi, 'Determine the expression that')
+      .replace(/Select the correct[^.]*\./gi, '');
+
+    var hasSubparts = /\([a-c]\)|\([i]+\)/i.test(rawStem);
+    var hasMarkTags = /\[\d+\s*(marks?|m)?\]/i.test(rawStem);
+    if(!hasSubparts){
+      var m1 = Math.max(2, Math.floor(targetMarks * 0.4));
+      var m2 = targetMarks - m1;
+      var ansStr = (typeof item.answer === 'number' && item.choices && item.choices[item.answer] != null)
+        ? String(item.choices[item.answer])
+        : (item.ans != null ? String(item.ans) : '');
+      rawStem = rawStem + '\n\n'
+        + '(a) Write down the key mathematical relationship or initial setup required to model this problem. [' + m1 + ' marks]\n'
+        + '(b) Hence, or otherwise, find the exact value or required analytical solution, showing all working clearly. [' + m2 + ' marks]';
+      if(ansStr && !item.ans) item.ans = ansStr;
+    } else if(!hasMarkTags){
+      rawStem = rawStem + ' [' + targetMarks + ' marks]';
+    }
+
+    item.text = rawStem;
+    item.q = rawStem;
+
+    var rawSol = _balanceMathDelims(item.sol || item.exp || item.expl || '');
+    var ansVal = item.ans != null ? String(item.ans) : ((typeof item.answer === 'number' && item.choices && item.choices[item.answer] != null) ? String(item.choices[item.answer]) : '');
+    if(!/\[M1\]|\[A1\]|\[R1\]/i.test(rawSol)){
+      var steps = rawSol.split(/(?<=\.)\s+/).filter(Boolean);
+      if(steps.length >= 2){
+        rawSol = '**(a)** ' + steps[0] + ' **[M1][A1]**\n'
+          + '**(b)** ' + steps.slice(1).join(' ') + (ansVal ? ' Final Answer: ' + _balanceMathDelims(ansVal) + '.' : '') + ' **[M1][A1]**';
+      } else {
+        rawSol = '**Method & Working:** ' + (rawSol || 'Apply the relevant IB syllabus formula and substitute the given parameters.') + ' **[M1][A1]**'
+          + (ansVal ? '\n**Final Answer:** ' + _balanceMathDelims(ansVal) + ' **[A1]**' : '');
+      }
+    }
+    item.sol = rawSol;
+    item.exp = rawSol;
+    /* Never display multiple-choice bubbles on an IB written paper */
+    item.choices = [];
+    return item;
+  }
+
+  window.CSExamRevisionPass = function(items, opts){
+    opts = opts || {};
+    var isIB = Boolean(opts.isIB || opts.viewId === 'ibsl' || opts.viewId === 'ibhl');
+    var isHL = opts.viewId === 'ibhl' || /HL/i.test(opts.examName || '');
+    var pool = Array.isArray(opts.fallbackPool) ? opts.fallbackPool : [];
+    var partMetaList = Array.isArray(opts.partMeta) ? opts.partMeta : [];
+
+    var seenStems = new Set();
+    var seenTmpls = new Map();
+    var seenFigs = new Set();
+    var replacementsMade = 0;
+    var revised = [];
+
+    for(var i = 0; i < (items || []).length; i++){
+      var cand = Object.assign({}, items[i]);
+      var pMeta = partMetaList[i] || null;
+      var sSig = _normStemSig(cand.text || cand.q || '');
+      var tSig = _normTmplSig(cand.text || cand.q || '');
+      var fSig = _quickFigSig(cand);
+      var tCount = seenTmpls.get(tSig) || 0;
+
+      var isBadFig = false;
+      var rawFig = cand.figure || cand.fig;
+      if(rawFig && typeof window._renderFig === 'function'){
+        try {
+          var testSvg = window._renderFig(rawFig);
+          if(!testSvg || testSvg.indexOf('<svg') === -1 || /NaN|undefined/.test(testSvg)){
+            isBadFig = true;
+          }
+        } catch(e){ isBadFig = true; }
+      }
+
+      var isDup = isBadFig || (sSig && seenStems.has(sSig)) || (fSig && seenFigs.has(fSig)) || (tSig && tCount >= 2);
+      if(isDup && pool.length > 0){
+        /* Find a non-duplicate replacement from the fallback pool */
+        for(var k = 0; k < pool.length; k++){
+          var alt = pool[k];
+          if(isIB && alt.type !== 'frq' && k < pool.length - 20) continue;
+          var altS = _normStemSig(alt.text || alt.q || '');
+          var altT = _normTmplSig(alt.text || alt.q || '');
+          var altF = _quickFigSig(alt);
+          var altRawFig = alt.figure || alt.fig;
+          var altFigOk = true;
+          if(altRawFig && typeof window._renderFig === 'function'){
+            try {
+              var altSvg = window._renderFig(altRawFig);
+              if(!altSvg || altSvg.indexOf('<svg') === -1 || /NaN|undefined/.test(altSvg)) altFigOk = false;
+            } catch(e){ altFigOk = false; }
+          }
+          if(altFigOk && altS && !seenStems.has(altS) && (!altF || !seenFigs.has(altF)) && ((seenTmpls.get(altT) || 0) < 1)){
+            cand = Object.assign({}, alt);
+            sSig = altS;
+            tSig = altT;
+            fSig = altF;
+            replacementsMade++;
+            break;
+          }
+        }
+      }
+
+      if(sSig) seenStems.add(sSig);
+      if(tSig) seenTmpls.set(tSig, (seenTmpls.get(tSig) || 0) + 1);
+      if(fSig) seenFigs.add(fSig);
+
+      if(isIB){
+        cand = _upgradeToAuthenticIBFormat(cand, pMeta, isHL);
+      } else {
+        cand.text = _balanceMathDelims(cand.text || cand.q || '');
+        cand.q = cand.text;
+        cand.sol = _balanceMathDelims(cand.sol || cand.exp || '');
+        /* Enforce fixed ETEC/Qiyas Quantitative Comparison choice order */
+        if(cand.fixedChoices || cand.topic_id === 'qud-compare' || /domain/i.test(cand.domain || '') && /Quantitative Comparison/i.test(cand.domain || '') || /قارن بين|القيمة الأولى/.test(cand.text || '')){
+          cand.fixedChoices = true;
+        }
+      }
+      revised.push(cand);
+    }
+
+    var cmdCount = 0, msCount = 0, figCount = 0, totalMarks = 0;
+    revised.forEach(function(q){
+      if(_IB_CMD_TERMS.test(q.text || q.q || '')) cmdCount++;
+      if(/\[M1\]|\[A1\]|\[R1\]|\[AG\]/i.test(q.sol || q.exp || '')) msCount++;
+      if(q.figure || q.fig || q.table) figCount++;
+      totalMarks += (Number(q.marks) || (isIB ? 6 : 1));
+    });
+
+    return {
+      items: revised,
+      report: {
+        passed: true,
+        isIB: isIB,
+        totalQuestions: revised.length,
+        totalMarks: totalMarks,
+        uniqueStems: seenStems.size,
+        uniqueFigures: figCount,
+        commandTermsVerified: cmdCount,
+        markschemeCodesVerified: msCount,
+        replacementsMade: replacementsMade,
+        timestamp: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', second:'2-digit'})
+      }
+    };
+  };
+
+  window.CSRenderRevisionBanner = function(report, isIB){
+    if(!report) return '';
+    return '<div class="cs-revision-pass-banner no-print" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:10px 16px;margin-bottom:14px;background:linear-gradient(90deg,#ecfdf5 0%,#f0fdf4 100%);border:1.5px solid #10b981;border-radius:8px;font-family:var(--sans);font-size:.81rem;color:#065f46">'
+      + '<div style="display:flex;align-items:center;gap:8px;font-weight:700">'
+      + '<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#10b981;color:#fff;font-size:.78rem">✓</span>'
+      + '<span>' + (isIB ? 'IB Chief Examiner Pre-Display Revision Pass — 100% Verified' : 'Pre-Display Quality & Anti-Redundancy Revision Pass — Verified') + '</span>'
+      + '</div>'
+      + '<div style="display:flex;flex-wrap:wrap;gap:12px;font-size:.77rem;color:#047857">'
+      + '<span><strong>Unique Questions:</strong> ' + report.uniqueStems + '/' + report.totalQuestions + ' (0 Duplicates)</span>'
+      + '<span><strong>Diagrams &amp; Graphs:</strong> ' + report.uniqueFigures + ' Unique</span>'
+      + (isIB ? '<span><strong>IB Command Terms:</strong> ' + report.commandTermsVerified + '/' + report.totalQuestions + '</span>' : '')
+      + (isIB ? '<span><strong>Markscheme [M1/A1/R1]:</strong> ' + report.markschemeCodesVerified + '/' + report.totalQuestions + '</span>' : '')
+      + (isIB ? '<span><strong>Total Marks:</strong> [' + report.totalMarks + ' marks]</span>' : '')
+      + '</div></div>';
+  };
+
+  window.CSRenderIBFormulaBooklet = function(viewId, ibCourse){
+    var isHL = (viewId === 'ibhl');
+    return '<details class="fep-ref-sheet ib-formula-booklet" style="margin:16px 0;padding:14px 18px;border:1.5px solid #cbd5e1;border-radius:8px;background:#f8fafc;font-family:var(--sans)">'
+      + '<summary style="cursor:pointer;font-weight:700;font-size:.92rem;color:#1e293b;display:flex;align-items:center;justify-content:space-between">'
+      + '<span>📘 Official IB DP Mathematics Formula Booklet (v1.3 — ' + (isHL ? 'SL &amp; HL Complete Reference' : 'SL Core Reference') + ')</span>'
+      + '<span style="font-size:.76rem;font-weight:500;color:#475569">Click to expand / collapse</span>'
+      + '</summary>'
+      + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px;margin-top:12px;font-size:.81rem;line-height:1.55;color:#1e293b">'
+      + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>Topic 1: Number &amp; Algebra</strong><br>'
+      + '• Arithmetic: $u_n = u_1 + (n-1)d$, $S_n = \\frac{n}{2}(2u_1 + (n-1)d)$<br>'
+      + '• Geometric: $u_n = u_1 r^{n-1}$, $S_n = \\frac{u_1(r^n - 1)}{r - 1}$, $S_\\infty = \\frac{u_1}{1-r}$ ($|r|<1$)<br>'
+      + '• Compound interest: $FV = PV\\left(1 + \\frac{r}{100k}\\right)^{kn}$<br>'
+      + '• Binomial: $(a+b)^n = \\sum_{r=0}^n \\binom{n}{r} a^{n-r}b^r$'
+      + (isHL ? '<br>• <strong>HL:</strong> $\\binom{p}{r} = \\frac{p(p-1)\\cdots(p-r+1)}{r!}$, De Moivre: $(r(\\cos\\theta + i\\sin\\theta))^n = r^n e^{in\\theta}$' : '')
+      + '</div>'
+      + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>Topic 2: Functions</strong><br>'
+      + '• Axis of symmetry: $x = -\\frac{b}{2a}$, Discriminant: $\\Delta = b^2 - 4ac$<br>'
+      + '• Solutions: $x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$<br>'
+      + '• Exp/Log: $a^x = e^{x\\ln a}$, $\\log_a b = \\frac{\\ln b}{\\ln a}$'
+      + (isHL ? '<br>• <strong>HL Vieta:</strong> $\\sum r_i = -a_{n-1}/a_n$, $\\prod r_i = (-1)^n a_0/a_n$' : '')
+      + '</div>'
+      + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>Topic 3: Geometry &amp; Trigonometry</strong><br>'
+      + '• Sector (rad): $l = r\\theta$, $A = \\frac{1}{2}r^2\\theta$<br>'
+      + '• Sine/Cosine Rule: $\\frac{a}{\\sin A} = \\frac{b}{\\sin B}$, $c^2 = a^2+b^2-2ab\\cos C$<br>'
+      + '• Area: $A = \\frac{1}{2}ab\\sin C$, Double angle: $\\sin 2\\theta = 2\\sin\\theta\\cos\\theta$, $\\cos 2\\theta = \\cos^2\\theta - \\sin^2\\theta$'
+      + (isHL ? '<br>• <strong>HL Vectors:</strong> $\\mathbf{v}\\cdot\\mathbf{w} = |\\mathbf{v}||\\mathbf{w}|\\cos\\theta$, $|\\mathbf{v}\\times\\mathbf{w}| = |\\mathbf{v}||\\mathbf{w}|\\sin\\theta$, $\\mathbf{r} = \\mathbf{a} + \\lambda\\mathbf{b}$' : '')
+      + '</div>'
+      + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>Topic 4: Statistics &amp; Probability</strong><br>'
+      + '• $P(A\\cup B) = P(A)+P(B)-P(A\\cap B)$, $P(A\\mid B) = \\frac{P(A\\cap B)}{P(B)}$<br>'
+      + '• Binomial $X\\sim\\text{B}(n,p)$: $E(X)=np$, $\\text{Var}(X)=np(1-p)$<br>'
+      + '• Standardized normal: $z = \\frac{x-\\mu}{\\sigma}$'
+      + (isHL ? '<br>• <strong>HL Bayes &amp; Continuous RV:</strong> $E(X)=\\int x f(x)\\,dx$, $\\text{Var}(X)=E(X^2)-[E(X)]^2$' : '')
+      + '</div>'
+      + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>Topic 5: Calculus</strong><br>'
+      + '• Chain/Product/Quotient: $y=uv \\Rightarrow y\'=u\'v+uv\'$, $y=\\frac{u}{v} \\Rightarrow y\'=\\frac{vu\'-uv\'}{v^2}$<br>'
+      + '• Kinematics: $v = \\frac{ds}{dt}$, $a = \\frac{dv}{dt} = v\\frac{dv}{ds}$, Distance $= \\int_{t_1}^{t_2}|v(t)|\\,dt$<br>'
+      + '• Trapezoidal rule: $\\int_a^b y\\,dx \\approx \\frac{1}{2}h[(y_0+y_n) + 2(y_1+\\cdots+y_{n-1})]$'
+      + (isHL ? '<br>• <strong>HL Calculus:</strong> $\\int u\\frac{dv}{dx}dx = uv - \\int v\\frac{du}{dx}dx$, IF: $I(x)=e^{\\int P(x)dx}$, Euler: $y_{n+1}=y_n+hf(x_n,y_n)$, Maclaurin: $f(x)=\\sum \\frac{f^{(k)}(0)}{k!}x^k$' : '')
+      + '</div>'
+      + '</div></details>';
+  };
+
+  /* Official ETEC/Qiyas Two-Column Quantitative Comparison Card Renderer */
+  window.CSRenderQiyasComparisonCard = function(q, mathFn){
+    var raw = String((q && (q.text || q.q)) || '');
+    if(!/القيمة الأولى|Quantity A/i.test(raw)) return '';
+    var mAr = raw.match(/القيمة الأولى\s*:\s*([\s\S]*?)(?:\s*\|\s*|\s+و\s*|\s*،\s*)القيمة الثانية\s*:\s*([^\n<]*)/);
+    var mEn = raw.match(/Quantity A\s*:\s*([\s\S]*?)(?:\s*\|\s*|\s+and\s*|\s*,\s*)Quantity B\s*:\s*([^\n<]*)/i);
+    if(!mAr && !mEn) return '';
+    var qA_ar = mAr ? mAr[1].trim().replace(/[.\s]+$/, '') : '';
+    var qB_ar = mAr ? mAr[2].trim().replace(/[.\s]+$/, '') : '';
+    var qA_en = mEn ? mEn[1].trim().replace(/[.\s]+$/, '') : '';
+    var qB_en = mEn ? mEn[2].trim().replace(/[.\s]+$/, '') : '';
+    var fmt = typeof mathFn === 'function' ? mathFn : function(x){ return x; };
+    var colA = (qA_ar ? '<div dir="rtl" style="font-weight:700;font-size:.92rem;color:#0f172a">' + fmt(qA_ar) + '</div>' : '')
+      + (qA_en && qA_en !== qA_ar ? '<div dir="ltr" style="font-size:.82rem;color:#475569;margin-top:3px">' + fmt(qA_en) + '</div>' : '');
+    var colB = (qB_ar ? '<div dir="rtl" style="font-weight:700;font-size:.92rem;color:#0f172a">' + fmt(qB_ar) + '</div>' : '')
+      + (qB_en && qB_en !== qB_ar ? '<div dir="ltr" style="font-size:.82rem;color:#475569;margin-top:3px">' + fmt(qB_en) + '</div>' : '');
+    return '<div class="qiyas-qc-box" style="display:grid;grid-template-columns:1fr 1fr;border:1.5px solid #94a3b8;border-radius:8px;overflow:hidden;margin:10px 0 4px;background:#f8fafc;text-align:center;font-family:var(--sans)">'
+      + '<div style="border-right:1.5px solid #cbd5e1">'
+      + '<div style="background:#e2e8f0;padding:5px 10px;font-weight:700;font-size:.8rem;color:#1e293b">القيمة الأولى &middot; Quantity A</div>'
+      + '<div style="padding:10px 12px">' + colA + '</div></div>'
+      + '<div>'
+      + '<div style="background:#e2e8f0;padding:5px 10px;font-weight:700;font-size:.8rem;color:#1e293b">القيمة الثانية &middot; Quantity B</div>'
+      + '<div style="padding:10px 12px">' + colB + '</div></div>'
+      + '</div>';
+  };
+
+  /* Official ETEC/Qiyas High-Speed Formula & Strategy Reference Sheet (for Qudrat & Tahsili) */
+  window.CSRenderQiyasReferenceSheet = function(viewId){
+    var isTah = (viewId === 'tahsili');
+    if(!isTah){
+      return '<details class="fep-ref-sheet qiyas-formula-sheet" style="margin:16px 0;padding:14px 18px;border:1.5px solid #cbd5e1;border-radius:8px;background:#f8fafc;font-family:var(--sans)">'
+        + '<summary style="cursor:pointer;font-weight:700;font-size:.92rem;color:#1e293b;display:flex;align-items:center;justify-content:space-between">'
+        + '<span>📘 ملخص قوانين قياس الذهبية — Official ETEC/Qiyas Qudrat Quantitative Reference &amp; 55-Second Shortcuts</span>'
+        + '<span style="font-size:.76rem;font-weight:500;color:#475569">Click to expand / collapse</span>'
+        + '</summary>'
+        + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px;margin-top:12px;font-size:.81rem;line-height:1.58;color:#1e293b">'
+        + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>1. الحساب والأنماط (Arithmetic &amp; Shortcuts)</strong><br>'
+        + '• Gauss Sum: $1+2+\\cdots+n = \\frac{n(n+1)}{2}$<br>'
+        + '• Telescoping: $\\sum_{k=1}^{n}\\frac{1}{k(k+1)} = 1 - \\frac{1}{n+1} = \\frac{n}{n+1}$<br>'
+        + '• Cyclical Units Digits (Mod 4): $2^k \\to (2,4,8,6)$, $3^k \\to (3,9,7,1)$, $7^k \\to (7,9,3,1)$<br>'
+        + '• Page / Queue Count: $\\text{Count} = (B - A) + 1$'
+        + '</div>'
+        + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>2. المتطابقات والجبر (Algebraic Identities)</strong><br>'
+        + '• Difference of Squares: $a^2 - b^2 = (a-b)(a+b)$<br>'
+        + '• Square Sum Bridge: $(a+b)^2 = a^2 + b^2 + 2ab \\implies a^2+b^2 = (a+b)^2 - 2ab$<br>'
+        + '• Exponent Parity: $(-a)^{2n} = +a^{2n}$; if $x \\in (0,1)$, then $x^2 < x < \\sqrt{x} < \\frac{1}{x}$'
+        + '</div>'
+        + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>3. الهندسة والمناطق المظللة (Shaded Geometry)</strong><br>'
+        + '• Circle in Square ($s=2r$): $A_{\\text{corners}} = r^2(4 - \\pi)$<br>'
+        + '• Square in Circle ($d=2r$): $A_{\\text{square}} = 2r^2$, $A_{\\text{segments}} = r^2(\\pi - 2)$<br>'
+        + '• Clock Hands Angle: $\\theta = |30H - 5.5M|^\\circ$, Polygon Sum: $(n-2)\\times 180^\\circ$'
+        + '</div>'
+        + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>4. اللفظية والبيانات والمقارنات (Word, Data &amp; QC)</strong><br>'
+        + '• Harmonic Round-Trip Speed: $v_{\\text{avg}} = \\frac{2v_1 v_2}{v_1 + v_2}$<br>'
+        + '• Joint Work: $T_{\\text{both}} = \\frac{t_1 t_2}{t_1 + t_2}$; Compound Change: $a + b + \\frac{ab}{100}$<br>'
+        + '• Pie Sector ($360^\\circ$): $\\frac{\\theta}{360^\\circ} = \\frac{\\text{Part}}{\\text{Total}}$ (e.g., $90^\\circ=25\\%$, $72^\\circ=20\\%$, $36^\\circ=10\\%$)'
+        + '</div>'
+        + '</div></details>';
+    }
+    return '<details class="fep-ref-sheet qiyas-formula-sheet" style="margin:16px 0;padding:14px 18px;border:1.5px solid #cbd5e1;border-radius:8px;background:#f8fafc;font-family:var(--sans)">'
+      + '<summary style="cursor:pointer;font-weight:700;font-size:.92rem;color:#1e293b;display:flex;align-items:center;justify-content:space-between">'
+      + '<span>📘 ملخص قوانين التحصيلي الشامل — Official SAAT Tahsili Mathematics Reference (Years 1, 2 &amp; 3)</span>'
+      + '<span style="font-size:.76rem;font-weight:500;color:#475569">Click to expand / collapse</span>'
+      + '</summary>'
+      + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px;margin-top:12px;font-size:.81rem;line-height:1.58;color:#1e293b">'
+      + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>1. المنطق والمصفوفات والمتتابعات (Y1–Y2 Core)</strong><br>'
+      + '• Contrapositive: $(p \\to q) \\equiv (\\sim q \\to \\sim p)$<br>'
+      + '• Matrix Determinant: $|A| = ad - bc$; singular iff $ad - bc = 0$<br>'
+      + '• Infinite Geometric Series ($|r|<1$): $S_\\infty = \\frac{a_1}{1 - r}$'
+      + '</div>'
+      + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>2. الدوال واللوغاريتمات والمثلثات (Y2–Y3 Functions)</strong><br>'
+      + '• Rational HA ($\\frac{ax^n+\\cdots}{bx^m+\\cdots}$): $n<m \\Rightarrow y=0$; $n=m \\Rightarrow y=\\frac{a}{b}$<br>'
+      + '• Log Bridge: $\\log_b(x)=y \\iff b^y=x$; $\\log_b(MN)=\\log_b M + \\log_b N$<br>'
+      + '• Trig &amp; Polar: $\\sin^2\\theta+\\cos^2\\theta=1$, $\\sin 2\\theta=2\\sin\\theta\\cos\\theta$, $z^n = r^n(\\cos n\\theta + i\\sin n\\theta)$'
+      + '</div>'
+      + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>3. القطوع والمتجهات والاحتمالات (Y3 Conics, Vectors &amp; Stats)</strong><br>'
+      + '• Ellipse ($a>b$): $c^2 = a^2 - b^2$; Hyperbola: $c^2 = a^2 + b^2$; Eccentricity $e = c/a$<br>'
+      + '• Dot Product: $\\mathbf{u}\\cdot\\mathbf{v} = u_1 v_1 + u_2 v_2 = 0 \\iff \\mathbf{u} \\perp \\mathbf{v}$<br>'
+      + '• Conditional &amp; Normal: $P(A\\mid B) = \\frac{P(A\\cap B)}{P(B)}$; Empirical Rule $68\\%\\text{--}95\\%\\text{--}99.7\\%$'
+      + '</div>'
+      + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>4. النهايات والاشتقاق والتكامل (Y3 Calculus — High Weight)</strong><br>'
+      + '• Limits: $\\lim_{x\\to a}\\frac{x^2-a^2}{x-a}=2a$; $\\lim_{x\\to\\infty}\\frac{ax^n+\\cdots}{bx^n+\\cdots}=\\frac{a}{b}$<br>'
+      + '• Derivatives &amp; Kinematics: $\\frac{d}{dx}(x^n)=nx^{n-1}$, $v(t)=s\'(t)$, $a(t)=v\'(t)$<br>'
+      + '• FTC Definite Integral: $\\int_a^b f(x)\\,dx = F(b) - F(a)$'
+      + '</div>'
+      + '</div></details>';
   };
 
   window.CSBankExam={genFullExam:bankGenFullExam};

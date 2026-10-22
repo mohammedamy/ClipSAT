@@ -43,70 +43,65 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Sequences & Series — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
+          "title": "Convergent Infinite Geometric Series (|r| = 1/2 < 1, S∞ = a₁/(1 − r))",
+          "xmin": 1,
+          "xmax": 7,
+          "ymin": 0,
+          "ymax": 17,
+          "fn": "16*(1 - Math.pow(0.5, x))",
+          "fn2": "16",
           "points": [
             {
               "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
+              "y": 8,
+              "label": "S₁ = 8"
             },
             {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "x": 2,
+              "y": 12,
+              "label": "S₂ = 12"
+            },
+            {
+              "x": 3,
+              "y": 14,
+              "label": "S₃ = 14"
+            },
+            {
+              "x": 4,
+              "y": 15,
+              "label": "S₄ = 15 → S∞ = 16"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
-          "ar": "التمثيل البياني للدالة f(x) = x² − 2 ومماسها عند x = 1."
+          "en": "Partial sums Sₙ of 8 + 4 + 2 + 1 + ⋯ approaching the infinite geometric sum S∞ = 8 / (1 − 1/2) = 16.",
+          "ar": "المجاميع الجزئية للمتسلسلة الهندسية اللانهائية المتقاربة 8 + 4 + 2 + 1 + ⋯ تقترب من المجموع اللانهائي S∞ = 8 / (1 − 1/2) = 16."
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Sequences & Series Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Sequences & Series"
+          "en": "⊙ Explorer · Infinite Geometric Series & Convergence Lab (مختبر المتسلسلات الهندسية اللانهائية)",
+          "ar": "⊙ مستكشف تفاعلي · مختبر تقارب المتسلسلات الهندسية اللانهائية والمجاميع الجزئية (رياضيات ٢)"
         },
-        "canvasId": "exAuto_calc_tahsequences",
+        "canvasId": "tahSeriesCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Sequences & Series",
-          "ar": "مستكشف رياضي تفاعلي لدرس Sequences & Series"
+          "en": "Interactive geometric series convergence explorer showing terms a_n, partial sums S_n, and infinite sum S_infinity",
+          "ar": "مستكشف تفاعلي يوضح حدود المتتابعة الهندسية والمجاميع الجزئية والمجموع اللانهائي عند |r| < 1"
         },
         "dataPanel": {
-          "btnId": "exAuto_calc_tahsequences_dataBtn",
-          "panelId": "exAuto_calc_tahsequences_dataPanel",
-          "descId": "exAuto_calc_tahsequences_dataDesc",
-          "rowsId": "exAuto_calc_tahsequences_dataRows",
+          "btnId": "tahSerDataBtn",
+          "panelId": "tahSerDataPanel",
+          "descId": "tahSerDataDesc",
+          "rowsId": "tahSerDataRows",
           "caption": {
-            "en": "Numerical table for Sequences & Series",
-            "ar": "جدول القيم العددية لدرس Sequences & Series"
+            "en": "Terms and partial sums of a convergent geometric series with |r| < 1",
+            "ar": "حدود ومجاميع المتسلسلة الهندسية المتقاربة عندما |r| < 1"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Series Quantity",
+              "ar": "المعيار الرياضي"
             },
             {
               "en": "Value",
@@ -116,58 +111,70 @@
         },
         "controls": [
           {
-            "id": "exAuto_calc_tahsequences_s0",
+            "id": "tahSerA1",
+            "valueDisplayId": "tahSerA1V",
             "label": {
-              "en": "Parameter <b>a =</b>",
-              "ar": "المعامل <b>a =</b>"
+              "en": "First Term <b>a₁ =</b>",
+              "ar": "الحد الأول <b>a₁ =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_tahsequences_v0",
             "ariaLabel": {
-              "en": "Primary parameter a",
-              "ar": "المعامل الأول a"
-            }
+              "en": "First term a1",
+              "ar": "الحد الأول a1"
+            },
+            "min": 4,
+            "max": 24,
+            "value": 12,
+            "step": 2
           },
           {
-            "id": "exAuto_calc_tahsequences_s1",
+            "id": "tahSerR",
+            "valueDisplayId": "tahSerRV",
             "label": {
-              "en": "Parameter <b>b =</b>",
-              "ar": "المعامل <b>b =</b>"
+              "en": "Ratio <b>r (%) =</b>",
+              "ar": "الأساس <b>r (%) =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_tahsequences_v1",
             "ariaLabel": {
-              "en": "Secondary parameter b",
-              "ar": "المعامل الثاني b"
-            }
+              "en": "Common ratio r in percent",
+              "ar": "الأساس r"
+            },
+            "min": 20,
+            "max": 80,
+            "value": 50,
+            "step": 5
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_calc_tahsequences_r0",
+            "id": "tahSerSinf",
             "label": {
-              "en": "Primary Metric",
-              "ar": "المقدار الأساسي"
-            },
-            "colorClass": "indigo",
-            "value": "2.00"
-          },
-          {
-            "id": "exAuto_calc_tahsequences_r1",
-            "label": {
-              "en": "Secondary Metric",
-              "ar": "المقدار الثانوي"
+              "en": "Infinite Sum S∞ = a₁/(1−r)",
+              "ar": "المجموع اللانهائي S∞ = a₁/(1−r)"
             },
             "colorClass": "amber",
-            "value": "1.00"
+            "value": "24.00"
+          },
+          {
+            "id": "tahSerS4",
+            "label": {
+              "en": "Partial Sum S₄",
+              "ar": "المجموع الجزئي S₄"
+            },
+            "colorClass": "indigo",
+            "value": "22.50"
+          },
+          {
+            "id": "tahSerA4",
+            "label": {
+              "en": "4th Term a₄ = a₁r³",
+              "ar": "الحد الرابع a₄ = a₁r³"
+            },
+            "value": "1.50"
           }
-        ]
+        ],
+        "note": {
+          "en": "An infinite geometric series (sum_{k=1}^infty a_1 r^{k-1}) converges if and only if (|r| < 1), with sum (S_infty = \frac{a_1}{1 - r}). If (|r| ge 1), the series diverges (متباعدة وليس لها مجموع).",
+          "ar": "تكون المتسلسلة الهندسية اللانهائية (sum_{k=1}^infty a_1 r^{k-1}) متقاربة إذا وفقط إذا كان (|r| < 1)، ويكون مجموعها (S_infty = \frac{a_1}{1 - r}). أما إذا كان (|r| ge 1) فهي متباعدة وليس لها مجموع."
+        }
       },
       {
         "kind": "cards",
@@ -306,12 +313,12 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
-          "ar": "مثال محلول D — معدل التغير اللحظي ومعادلة المماس"
+          "en": "Worked Example 3.D — Tajmeeat Shortcut: Binomial Theorem General Term & Coefficient Sum",
+          "ar": "مثال محلول 3.د — نظرية ذات الحدين: الحد العام وعدد الحدود ومجموع المعاملات"
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
-          "ar": "لتكن \\( f(x) = 5x^3 - x^2 + 4 \\). أوجد معدل التغير اللحظي \\( f'(5) \\).<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>نشتق حداً بحداّ: \\( f'(x) = 15x^2 - 2x \\).</li><li>نعوض \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = \\mathbf{365} \\).</li></ol>"
+          "en": "<p><strong>Binomial Expansion \\( (a + b)^n \\) Rules:</strong><ul><li><strong>Number of terms:</strong> \\( n + 1 \\).</li><li><strong>Term \\( T_{k+1} \\):</strong> \\( T_{k+1} = \\binom{n}{k} a^{n-k} b^k \\).</li><li><strong>Sum of all binomial coefficients:</strong> Set \\( a=1, b=1 \\implies 2^n \\).</li></ul><strong>Example:</strong> Find the 4th term in \\( (x + 2)^6 \\). Here \\( n = 6, k = 3 \\): \\( T_4 = \\binom{6}{3} x^{6-3} (2)^3 = 20 \\cdot 8 x^3 = \\mathbf{160x^3} \\).</p>",
+          "ar": "<p><strong>قوانين مفكوك ذات الحدين \\( (a + b)^n \\) في التحصيلي:</strong><ul><li><strong>عدد الحدود:</strong> \\( n + 1 \\).</li><li><strong>الحد العام \\( T_{k+1} \\):</strong> \\( T_{k+1} = \\binom{n}{k} a^{n-k} b^k \\) (حيث \\( k \\) أقل من رتبة الحد بواحد).</li><li><strong>مجموع معاملات المفكوك:</strong> بالتعويض بـ 1 يساوي \\( 2^n \\).</li></ul><strong>مثال:</strong> أوجد الحد الرابع في مفكوك \\( (x + 2)^6 \\). نضع \\( n = 6, k = 3 \\): \\( T_4 = \\binom{6}{3} x^3 (2)^3 = 20 \\times 8 x^3 = \\mathbf{160x^3} \\).</p>"
         }
       },
       {
@@ -366,7 +373,8 @@
   },
   "quizWidget": {
     "domains": [
-      "Sequences & Series"
+      "Sequences & Series",
+      "Sequences, Series & Binomial Theorem"
     ],
     "enabled": true
   }

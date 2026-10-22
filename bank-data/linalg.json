@@ -289,8 +289,8 @@
         "4",
         "6"
       ],
-      "answer": 2,
-      "correct": 2,
+      "answer": 0,
+      "correct": 0,
       "sol": "The volume of a parallelepiped formed by three vectors \\( \\mathbf{u}, \\mathbf{v}, \\mathbf{w} \\) is given by the absolute value of their scalar triple product, which can be computed as the absolute value of the determinant of the matrix formed by these vectors as columns (or rows).\n\nLet the matrix be \\( M = \\begin{pmatrix} 2 & 1 & 0 \\ 1 & 3 & 2 \\ k & 0 & 4 \\end{pmatrix} \\).\n\nThe determinant of \\( M \\) is calculated as:\n\\( \\det(M) = 2 \\begin{vmatrix} 3 & 2 \\ 0 & 4 \\end{vmatrix} - 1 \\begin{vmatrix} 1 & 2 \\ k & 4 \\end{vmatrix} + 0 \\begin{vmatrix} 1 & 3 \\ k & 0 \\end{vmatrix} \\)\n\\( \\det(M) = 2((3)(4) - (2)(0)) - 1((1)(4) - (2)(k)) + 0 \\)\n\\( \\det(M) = 2(12) - (4 - 2k) \\)\n\\( \\det(M) = 24 - 4 + 2k \\)\n\\( \\det(M) = 20 + 2k \\)\n\nThe volume of the parallelepiped is given as 24 cubic units. Therefore, \\( |\\det(M)| = 24 \\).\n\\( |20 + 2k| = 24 \\).\n\nThis gives two possibilities:\n1. \\( 20 + 2k = 24 \\)\n   \\( 2k = 4 \\)\n   \\( k = 2 \\)\n\n2. \\( 20 + 2k = -24 \\)\n   \\( 2k = -44 \\)\n   \\( k = -22 \\)\n\nSince the problem states that \\( k > 0 \\), the correct value for \\( k \\) is 2.\n\nCommon Algebraic Trap: Students might forget to take the absolute value of the determinant, or they might make errors in the cofactor expansion. If \\( k=-22 \\) was chosen, it would be incorrect due to the condition \\( k>0 \\).",
       "solution": "The volume of a parallelepiped formed by three vectors \\( \\mathbf{u}, \\mathbf{v}, \\mathbf{w} \\) is given by the absolute value of their scalar triple product, which can be computed as the absolute value of the determinant of the matrix formed by these vectors as columns (or rows).\n\nLet the matrix be \\( M = \\begin{pmatrix} 2 & 1 & 0 \\ 1 & 3 & 2 \\ k & 0 & 4 \\end{pmatrix} \\).\n\nThe determinant of \\( M \\) is calculated as:\n\\( \\det(M) = 2 \\begin{vmatrix} 3 & 2 \\ 0 & 4 \\end{vmatrix} - 1 \\begin{vmatrix} 1 & 2 \\ k & 4 \\end{vmatrix} + 0 \\begin{vmatrix} 1 & 3 \\ k & 0 \\end{vmatrix} \\)\n\\( \\det(M) = 2((3)(4) - (2)(0)) - 1((1)(4) - (2)(k)) + 0 \\)\n\\( \\det(M) = 2(12) - (4 - 2k) \\)\n\\( \\det(M) = 24 - 4 + 2k \\)\n\\( \\det(M) = 20 + 2k \\)\n\nThe volume of the parallelepiped is given as 24 cubic units. Therefore, \\( |\\det(M)| = 24 \\).\n\\( |20 + 2k| = 24 \\).\n\nThis gives two possibilities:\n1. \\( 20 + 2k = 24 \\)\n   \\( 2k = 4 \\)\n   \\( k = 2 \\)\n\n2. \\( 20 + 2k = -24 \\)\n   \\( 2k = -44 \\)\n   \\( k = -22 \\)\n\nSince the problem states that \\( k > 0 \\), the correct value for \\( k \\) is 2.\n\nCommon Algebraic Trap: Students might forget to take the absolute value of the determinant, or they might make errors in the cofactor expansion. If \\( k=-22 \\) was chosen, it would be incorrect due to the condition \\( k>0 \\).",
       "sympy_verified": true
@@ -742,8 +742,8 @@
         "3",
         "4"
       ],
-      "answer": 1,
-      "correct": 1,
+      "answer": 0,
+      "correct": 0,
       "sol": "The transformation is given by \\( \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} 2 & 1 \\\\ 1 & -2 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} \\). We can express \\( \\begin{pmatrix} x \\\\ y \\end{pmatrix} \\) in terms of \\( \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} \\) by finding the inverse of matrix \\( A \\). The determinant of \\( A \\) is \\( \\det(A) = (2)(-2) - (1)(1) = -4 - 1 = -5 \\). The inverse matrix is \\( A^{-1} = \\frac{1}{-5} \\begin{pmatrix} -2 & -1 \\\\ -1 & 2 \\end{pmatrix} = \\begin{pmatrix} 2/5 & 1/5 \\\\ 1/5 & -2/5 \\end{pmatrix} \\). Therefore, \\( \\begin{pmatrix} x \\\\ y \\end{pmatrix} = A^{-1} \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} 2/5 & 1/5 \\\\ 1/5 & -2/5 \\end{pmatrix} \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} \\). This gives us \\( x = \\frac{2}{5}x' + \\frac{1}{5}y' \\) and \\( y = \\frac{1}{5}x' - \\frac{2}{5}y' \\). We are given the transformed equation \\( x'^2 + y'^2 = 5 \\). We need to substitute \\( x' \\) and \\( y' \\) in terms of \\( x \\) and \\( y \\) into this equation. From the transformation equations, we can write \\( x' = 2x + y \\) and \\( y' = x - 2y \\). Substituting these into \\( x'^2 + y'^2 = 5 \\): \\( (2x+y)^2 + (x-2y)^2 = 5 \\). Expanding this: \\( (4x^2 + 4xy + y^2) + (x^2 - 4xy + 4y^2) = 5 \\). Simplifying, we get \\( 5x^2 + 5y^2 = 5 \\). Dividing by 5, we have \\( x^2 + y^2 = 1 \\). Thus, the original curve is \\( x^2 + y^2 = k \\) where \\( k=1 \\).",
       "solution": "The transformation is given by \\( \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} 2 & 1 \\\\ 1 & -2 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix} \\). We can express \\( \\begin{pmatrix} x \\\\ y \\end{pmatrix} \\) in terms of \\( \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} \\) by finding the inverse of matrix \\( A \\). The determinant of \\( A \\) is \\( \\det(A) = (2)(-2) - (1)(1) = -4 - 1 = -5 \\). The inverse matrix is \\( A^{-1} = \\frac{1}{-5} \\begin{pmatrix} -2 & -1 \\\\ -1 & 2 \\end{pmatrix} = \\begin{pmatrix} 2/5 & 1/5 \\\\ 1/5 & -2/5 \\end{pmatrix} \\). Therefore, \\( \\begin{pmatrix} x \\\\ y \\end{pmatrix} = A^{-1} \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} 2/5 & 1/5 \\\\ 1/5 & -2/5 \\end{pmatrix} \\begin{pmatrix} x' \\\\ y' \\end{pmatrix} \\). This gives us \\( x = \\frac{2}{5}x' + \\frac{1}{5}y' \\) and \\( y = \\frac{1}{5}x' - \\frac{2}{5}y' \\). We are given the transformed equation \\( x'^2 + y'^2 = 5 \\). We need to substitute \\( x' \\) and \\( y' \\) in terms of \\( x \\) and \\( y \\) into this equation. From the transformation equations, we can write \\( x' = 2x + y \\) and \\( y' = x - 2y \\). Substituting these into \\( x'^2 + y'^2 = 5 \\): \\( (2x+y)^2 + (x-2y)^2 = 5 \\). Expanding this: \\( (4x^2 + 4xy + y^2) + (x^2 - 4xy + 4y^2) = 5 \\). Simplifying, we get \\( 5x^2 + 5y^2 = 5 \\). Dividing by 5, we have \\( x^2 + y^2 = 1 \\). Thus, the original curve is \\( x^2 + y^2 = k \\) where \\( k=1 \\).",
       "sympy_verified": true
@@ -1095,8 +1095,8 @@
         "3",
         "4"
       ],
-      "answer": 2,
-      "correct": 2,
+      "answer": 0,
+      "correct": 0,
       "sol": "The augmented matrix represents the system of equations: \\( x + 2y = 5 \\) and \\( y = 2 \\). We are asked to find the value of \\( x \\). We can use substitution to solve for \\( x \\). Substitute the value of \\( y \\) from the second equation into the first equation: \\( x + 2(2) = 5 \\). This simplifies to \\( x + 4 = 5 \\). Subtracting 4 from both sides gives \\( x = 1 \\). Therefore, the value of \\( x \\) in the first equation is 1.",
       "solution": "The augmented matrix represents the system of equations: \\( x + 2y = 5 \\) and \\( y = 2 \\). We are asked to find the value of \\( x \\). We can use substitution to solve for \\( x \\). Substitute the value of \\( y \\) from the second equation into the first equation: \\( x + 2(2) = 5 \\). This simplifies to \\( x + 4 = 5 \\). Subtracting 4 from both sides gives \\( x = 1 \\). Therefore, the value of \\( x \\) in the first equation is 1.",
       "sympy_verified": true
@@ -1826,8 +1826,8 @@
         "15",
         "17"
       ],
-      "answer": 1,
-      "correct": 1,
+      "answer": 0,
+      "correct": 0,
       "sol": "The area of a parallelogram formed by vectors \\( \\mathbf{u} = (u_1, u_2) \\) and \\( \\mathbf{v} = (v_1, v_2) \\) originating from the same point is given by the absolute value of the determinant of the matrix formed by these vectors: \\( |\\det(\\begin{bmatrix} u_1 & v_1 \\ u_2 & v_2 \\end{bmatrix})| \\). \\n\\nIn this case, we can take the vectors originating from \\( (0,0) \\) to be \\( \\mathbf{u} = (3,1) \\) and \\( \\mathbf{v} = (1,4) \\). \\n\\nThe area is \\( |\\det(\\begin{bmatrix} 3 & 1 \\ 1 & 4 \\end{bmatrix})| = |(3 \\times 4) - (1 \\times 1)| = |12 - 1| = |11| = 11 \\).",
       "solution": "The area of a parallelogram formed by vectors \\( \\mathbf{u} = (u_1, u_2) \\) and \\( \\mathbf{v} = (v_1, v_2) \\) originating from the same point is given by the absolute value of the determinant of the matrix formed by these vectors: \\( |\\det(\\begin{bmatrix} u_1 & v_1 \\ u_2 & v_2 \\end{bmatrix})| \\). \\n\\nIn this case, we can take the vectors originating from \\( (0,0) \\) to be \\( \\mathbf{u} = (3,1) \\) and \\( \\mathbf{v} = (1,4) \\). \\n\\nThe area is \\( |\\det(\\begin{bmatrix} 3 & 1 \\ 1 & 4 \\end{bmatrix})| = |(3 \\times 4) - (1 \\times 1)| = |12 - 1| = |11| = 11 \\).",
       "sympy_verified": true,
@@ -1994,8 +1994,8 @@
         "4",
         "11"
       ],
-      "answer": 2,
-      "correct": 2,
+      "answer": 0,
+      "correct": 0,
       "sol": "The dot product of two vectors \\( \\mathbf{u} = (u_1, u_2) \\) and \\( \\mathbf{v} = (v_1, v_2) \\) in \\( \\mathbb{R}^2 \\) is given by \\( \\mathbf{u} \\cdot \\mathbf{v} = u_1 v_1 + u_2 v_2 \\). For the given vectors, \\( \\mathbf{u} = (2, -3) \\) and \\( \\mathbf{v} = (4, 1) \\), the dot product is calculated as: \\( \\mathbf{u} \\cdot \\mathbf{v} = (2)(4) + (-3)(1) = 8 - 3 = 5 \\).",
       "solution": "The dot product of two vectors \\( \\mathbf{u} = (u_1, u_2) \\) and \\( \\mathbf{v} = (v_1, v_2) \\) in \\( \\mathbb{R}^2 \\) is given by \\( \\mathbf{u} \\cdot \\mathbf{v} = u_1 v_1 + u_2 v_2 \\). For the given vectors, \\( \\mathbf{u} = (2, -3) \\) and \\( \\mathbf{v} = (4, 1) \\), the dot product is calculated as: \\( \\mathbf{u} \\cdot \\mathbf{v} = (2)(4) + (-3)(1) = 8 - 3 = 5 \\).",
       "sympy_verified": true

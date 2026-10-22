@@ -42,71 +42,64 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Algebra & Equations — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
+          "type": "argand",
+          "title": "Complex Plane (Argand Diagram) & Powers of i",
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
+              "re": 3,
+              "im": 4,
+              "label": "z = 3 + 4i (|z| = 5)",
+              "color": "#2b5ba8"
             },
             {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "re": 3,
+              "im": -4,
+              "label": "z̄ = 3 − 4i",
+              "color": "#c8902a"
+            },
+            {
+              "re": 0,
+              "im": 1,
+              "label": "i (90°)",
+              "color": "#10b981"
+            },
+            {
+              "re": -1,
+              "im": 0,
+              "label": "i² = −1",
+              "color": "#dc2626"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
-          "ar": "التمثيل البياني للدالة f(x) = x² − 2 ومماسها عند x = 1."
+          "en": "Complex conjugate pair z = 3 + 4i and z̄ = 3 − 4i with modulus |z| = 5, z·z̄ = 25, and the 4-cycle of imaginary powers i, −1, −i, 1.",
+          "ar": "العددان المركبان المترافقان z = 3 + 4i و z̄ = 3 − 4i بمقياس |z| = 5 وحاصل ضرب z·z̄ = 25، ودورة قوى الوحدة التخيلية (i, −1, −i, 1)."
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Algebra & Equations Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Algebra & Equations"
+          "en": "⊙ Explorer · 2×2 Matrix Determinant & Singularity Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر المصفوفات والمحددات والنظير الضربي"
         },
-        "canvasId": "exAuto_quad_tahalgebra",
+        "canvasId": "tahMatDetCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Algebra & Equations",
-          "ar": "مستكشف رياضي تفاعلي لدرس Algebra & Equations"
+          "en": "Interactive 2x2 matrix column vector parallelogram showing determinant area and invertibility condition",
+          "ar": "مستكشف تفاعلي لمحددة المصفوفة ٢×٢ ومساحة متوازي الأضلاع وشرط وجود النظير الضربي"
         },
         "dataPanel": {
-          "btnId": "exAuto_quad_tahalgebra_dataBtn",
-          "panelId": "exAuto_quad_tahalgebra_dataPanel",
-          "descId": "exAuto_quad_tahalgebra_dataDesc",
-          "rowsId": "exAuto_quad_tahalgebra_dataRows",
+          "btnId": "tahMatDetDataBtn",
+          "panelId": "tahMatDetDataPanel",
+          "descId": "tahMatDetDataDesc",
+          "rowsId": "tahMatDetDataRows",
           "caption": {
-            "en": "Numerical table for Algebra & Equations",
-            "ar": "جدول القيم العددية لدرس Algebra & Equations"
+            "en": "Matrix determinant det(A) = ad − bc and invertibility status for A = [[a, 2], [1, d]]",
+            "ar": "قيمة المحددة det(A) = ad − bc وحالة النظير الضربي للمصفوفة A = [[a, 2], [1, d]]"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Matrix Property",
+              "ar": "الخاصية"
             },
             {
               "en": "Value",
@@ -116,58 +109,70 @@
         },
         "controls": [
           {
-            "id": "exAuto_quad_tahalgebra_s0",
+            "id": "tahMatA",
+            "valueDisplayId": "tahMatAV",
             "label": {
-              "en": "Parameter <b>a =</b>",
-              "ar": "المعامل <b>a =</b>"
+              "en": "Entry <b>a₁₁ =</b>",
+              "ar": "العنصر <b>a₁₁ =</b>"
+            },
+            "ariaLabel": {
+              "en": "Matrix entry a",
+              "ar": "العنصر a"
             },
             "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_tahalgebra_v0",
-            "ariaLabel": {
-              "en": "Primary parameter a",
-              "ar": "المعامل الأول a"
-            }
+            "max": 5,
+            "value": 3,
+            "step": 1
           },
           {
-            "id": "exAuto_quad_tahalgebra_s1",
+            "id": "tahMatD",
+            "valueDisplayId": "tahMatDV",
             "label": {
-              "en": "Parameter <b>b =</b>",
-              "ar": "المعامل <b>b =</b>"
+              "en": "Entry <b>a₂₂ =</b>",
+              "ar": "العنصر <b>a₂₂ =</b>"
+            },
+            "ariaLabel": {
+              "en": "Matrix entry d",
+              "ar": "العنصر d"
             },
             "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_tahalgebra_v1",
-            "ariaLabel": {
-              "en": "Secondary parameter b",
-              "ar": "المعامل الثاني b"
-            }
+            "max": 5,
+            "value": 2,
+            "step": 1
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_quad_tahalgebra_r0",
+            "id": "tahMatDet",
             "label": {
-              "en": "Primary Metric",
-              "ar": "المقدار الأساسي"
+              "en": "Determinant |A| = ad − bc",
+              "ar": "المحددة |A| = ad − bc"
             },
             "colorClass": "indigo",
-            "value": "2.00"
+            "value": "4"
           },
           {
-            "id": "exAuto_quad_tahalgebra_r1",
+            "id": "tahMatArea",
             "label": {
-              "en": "Secondary Metric",
-              "ar": "المقدار الثانوي"
+              "en": "Parallelogram Area",
+              "ar": "مساحة متوازي الأضلاع"
             },
             "colorClass": "amber",
-            "value": "1.00"
+            "value": "4"
+          },
+          {
+            "id": "tahMatInv",
+            "label": {
+              "en": "Inverse Status",
+              "ar": "حالة النظير الضربي"
+            },
+            "value": "لها نظير ضربي A⁻¹"
           }
-        ]
+        ],
+        "note": {
+          "en": "Tahsili High-Yield Rule: A 2×2 matrix \\( A = \\begin{pmatrix}a & b\\\\c & d\\end{pmatrix} \\) has no multiplicative inverse (is singular) if and only if \\( |A| = ad - bc = 0 \\) (try setting \\( a_{11}=1, a_{22}=2 \\)).",
+          "ar": "قاعدة ذهبية في التحصيلي: المصفوفة \\( A = \\begin{pmatrix}a & b\\\\c & d\\end{pmatrix} \\) ليس لها نظير ضربي (منفردة) إذا وفقط إذا كان \\( |A| = ad - bc = 0 \\) (جرّب ضبط \\( a_{11}=1, a_{22}=2 \\))."
+        }
       },
       {
         "kind": "cards",
@@ -304,12 +309,12 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول D — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example 1.D — Year 1 & 2 Pathways: Mathematical Logic, Complex Numbers & Cramer’s Rule",
+          "ar": "مثال محلول 1.د — المنطق الرياضي (أول ثانوي) والأعداد المركبة والمصفوفات (ثاني ثانوي)"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 10x + 25 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ أو } x = 5 \\).</li><li>المجموع \\( = \\mathbf{10} \\) وحاصل الضرب \\( = \\mathbf{25} \\).</li></ol>"
+          "en": "<ul><li><strong>Mathematical Logic (المنطق الرياضي):</strong> Conjunction \\( p \\land q \\) is true ONLY when both are true; Disjunction \\( p \\lor q \\) is false ONLY when both are false; Conditional \\( p \\to q \\) is false ONLY when \\( p \\) is True and \\( q \\) is False (T \\( \\to \\) F is F). Its contrapositive \\( \\sim q \\to \\sim p \\) has the exact same truth table.</li><li><strong>Complex Numbers (الأعداد المركبة):</strong> \\( i = \\sqrt{-1},\\ i^2 = -1,\\ i^3 = -i,\\ i^4 = 1 \\). Also \\( (1+i)^2 = 2i \\) and \\( (1-i)^2 = -2i \\), so \\( (1+i)^8 = ((1+i)^2)^4 = (2i)^4 = \\mathbf{16} \\).</li><li><strong>2×2 Inverse Matrix Formula:</strong> For \\( A = \\begin{pmatrix}a & b\\\\c & d\\end{pmatrix} \\) with \\( \\Delta = ad-bc \\neq 0 \\), \\( A^{-1} = \\frac{1}{\\Delta}\\begin{pmatrix}d & -b\\\\-c & a\\end{pmatrix} \\) (swap main diagonal, negate off-diagonal).</li></ul>",
+          "ar": "<ul><li><strong>المنطق الرياضي والعبارات الشرطية:</strong> عبارة الوصل \\( p \\land q \\) صائبة فقط إذا كانتا صائبتين معاً؛ وعبارة الفصل \\( p \\lor q \\) خاطئة فقط إذا كانتا خاطئتين معاً؛ والعبارة الشرطية \\( p \\to q \\) تكون خاطئة في حالة واحدة فقط (الفرض صائب T والنتيجة خاطئة F)، وتكافئ منطقياً معاكسها الإيجابي \\( \\sim q \\to \\sim p \\).</li><li><strong>اختصارات الأعداد المركبة في التحصيلي:</strong> \\( (1+i)^2 = 2i \\) و \\( (1-i)^2 = -2i \\). ومنه \\( (1+i)^8 = (2i)^4 = \\mathbf{16} \\).</li><li><strong>النظير الضربي للمصفوفة:</strong> \\( A^{-1} = \\frac{1}{ad-bc}\\begin{pmatrix}d & -b\\\\-c & a\\end{pmatrix} \\) (نبدل عناصر القطر الرئيس ونغير إشارات القطر الآخر).</li></ul>"
         }
       },
       {
@@ -364,7 +369,9 @@
   },
   "quizWidget": {
     "domains": [
-      "Algebra & Equations"
+      "Algebra & Equations",
+      "Algebra, Matrices & Complex Numbers",
+      "Vectors & Matrices"
     ],
     "enabled": true
   }

@@ -148,24 +148,27 @@
         T('Plane and Solid Shapes',10,'surface area and volume of solids, similar figures, three-dimensional coordinates',[]),
         T('Trigonometry',10,'trigonometric functions and graphs, identities, equations, inverse functions, laws of sines and cosines',[]),
         T('Data Analysis, Statistics and Probability',10,'probability, counting, expected value, statistics, regression',['Probability'])]},
-    /* SAAT Tahsili mathematics: Qiyas publishes no topic distribution. The topic list and weights
-       follow the syllabus coverage of the maintainer-supplied "Excellence in SAAT" book (lessons per
-       part: algebra 24, geometry 14, trigonometry 4, calculus 3, statistics 5) — provisional. */
-    tahsili:{source:'Qiyas publishes no topic distribution for SAAT Tahsili mathematics. Weights follow the lessons per part of the "Excellence in SAAT" syllabus book supplied by the maintainer (algebra 24, geometry 14, trigonometry 4, limits/derivatives/integrals 3, statistics and probability 5 of 50 lessons).',
-      provisional:true, difficulty:MIX, order:'mixed',
-      topics:[
-        T('Algebra',48,'logic and sets, relations and functions, domain, even/odd functions, limits and continuity, increasing/decreasing and extreme values, rate of change, parent functions and transformations, exponential and logarithmic functions, polynomials, rational and radical expressions, variation, matrices and determinants, complex numbers, sequences and series, binomial theorem, vectors, polar coordinates and De Moivre',['Algebra & Equations','Functions','Sequences & Series','Exponentials & Logarithms','Vectors & Matrices']),
-        T('Geometry',28,'angles and parallel lines, triangles, quadrilaterals, polygon angles, transformations (reflection, translation, rotation, dilation), circles, slope and linear equations, similarity, parabolas, ellipses, hyperbolas',['Geometry & Coordinate Geometry']),
-        T('Trigonometry',8,'right-triangle trigonometry, laws of sines and cosines, area of a triangle, identities and equations',['Trigonometry']),
-        T('Limits, derivatives and integrals',6,'limits, derivatives, integrals',['Limits & Derivatives','Integration & Applications']),
-        T('Statistics and probability',10,'counting principle, permutations and combinations, geometric probability, expected value, probability, statistics, normal distribution',['Statistics & Probability'])]},
-    qudrat:{source:'National Center for Assessment (Qiyas), General Aptitude Test — quantitative section content: arithmetic 40%, geometry 24%, algebra 23%, statistics and analysis 13%. Quantitative-comparison items appear across these areas.',
+    /* SAAT Tahsili mathematics: Official ETEC/Qiyas Saudi Secondary Pathways weighting:
+       20% Year 1 (Logic, Parallel Lines, Triangles, Similar Polygons, Circle Theorems),
+       30% Year 2 (Matrices, Complex Numbers, Functions, Sequences/Series, Trigonometry),
+       50% Year 3 (Conic Sections, 3D Vectors & Polar, Exponentials & Logarithms, Limits & Derivatives, Definite Integrals, Normal Distribution & Probability). */
+    tahsili:{source:'ETEC / Qiyas Official SAAT Tahsili Mathematics Blueprint (Saudi Secondary Pathways نظام المسارات: 20% Year 1, 30% Year 2, 50% Year 3).',
       difficulty:MIX, order:'mixed',
       topics:[
-        T('Arithmetic',40,'number sense, operations, fractions and decimals, ratio and proportion, percentages, rates, word problems; some items in quantitative-comparison format',['Arithmetic & Number Sense','Ratios, Proportion & Percentages','Word Problems & Reasoning','Quantitative Comparisons','Motion, Speed & Work Rates']),
-        T('Geometry',24,'angles, triangles, polygons, circles, perimeter, area and volume, coordinate basics',['Geometry & Measurement']),
-        T('Algebra',23,'expressions, linear and quadratic equations, inequalities, sequences and patterns',['Algebra Essentials','Sequences & Patterns']),
-        T('Statistics and analysis',13,'reading tables and charts, averages, simple probability, data interpretation',['Data Analysis & Probability'])]},
+        T('Year 1: Mathematical Logic & Euclidean/Circle Geometry',20,'truth tables, conditionals, contrapositive, parallel lines, triangle congruence/similarity, circle chords, tangents, inscribed angles',['Mathematical Logic & Reasoning','Geometry & Coordinate Geometry']),
+        T('Year 2: Matrices, Complex Numbers, Functions, Sequences & Trig',30,'matrix operations, determinants, Cramer\'s rule, complex numbers, polynomials, rational/radical functions, arithmetic/geometric series, binomial theorem, trigonometric identities and laws of sines/cosines',['Algebra, Matrices & Complex Numbers','Algebra & Equations','Functions & Graphs','Functions','Sequences, Series & Binomial Theorem','Sequences & Series','Trigonometry']),
+        T('Year 3: Conic Sections, Vectors, Polar Coordinates & De Moivre',14,'parabolas, ellipses, hyperbolas, eccentricity, 3D vectors, dot and cross products, polar coordinates, De Moivre\'s theorem',['Analytic Geometry, Conic Sections & Vectors','Vectors & Matrices']),
+        T('Year 3: Exponential & Logarithmic Functions',10,'exponential growth/decay, properties of logarithms, change of base, logarithmic equations',['Exponential & Logarithmic Functions','Exponentials & Logarithms']),
+        T('Year 3: Limits, Differential & Integral Calculus',16,'limits at infinity, removable discontinuities, derivative rules, critical points, optimization, Riemann sums, Fundamental Theorem of Calculus, area between curves',['Limits & Differential Calculus','Limits & Derivatives','Integral Calculus & Area','Integration & Applications']),
+        T('Year 3: Probability & Normal Distribution',10,'conditional probability, Bayes, binomial distribution, normal distribution empirical rule (68-95-99.7%), Z-scores',['Probability & Normal Distribution','Statistics & Probability'])]},
+    qudrat:{source:'Education & Training Evaluation Commission (ETEC / Qiyas), GAT Qudrat Quantitative Section: Arithmetic 40%, Geometry 24%, Algebra 23%, Statistics & Data Analysis 13%, with Quantitative Comparisons across all domains.',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Arithmetic, Ratios, Rates & Word Problems',32,'number sense, fractions, decimals, divisibility, percentages, ratios, direct/inverse proportion, speed/motion, work/pipes, ages, mixtures',['Arithmetic & Number Sense','Ratios, Proportion & Percentages','Motion, Speed & Work Rates','Word Problems & Reasoning','Word Problems & Modeling','High-Speed Qiyas Shortcuts']),
+        T('Geometry & Shaded Regions',24,'parallel lines, triangles, polygons, inscribed squares and circles, shaded areas, clock angles, 3D solids, coordinates',['Geometry & Measurement','Geometry & Spatial Reasoning']),
+        T('Algebra, Exponents, Surds & Sequences',20,'algebraic identities, difference of squares, exponents, surds, equations, arithmetic/geometric sequences, shape/number patterns',['Algebra Essentials','Sequences & Patterns','Number Patterns & Sequences']),
+        T('Quantitative Comparisons (المقارنات الكمية)',12,'two-column quantitative comparisons across arithmetic, geometry, and algebra with fixed 4-option ETEC/Qiyas choices',['Quantitative Comparison','Quantitative Comparisons']),
+        T('Statistics, Probability & Data Interpretation',12,'circular pie charts (360°), bar/line graphs, two-way tables, arithmetic mean, median, counting principles, probability',['Data Analysis & Probability','Statistics, Probability & Data'])]},
     /* Cambridge International AS & A Level Mathematics 9709, syllabus 2026–2027 (content unchanged in
        2028–2030). Cambridge publishes no topic weighting, so each topic is weighted by its number of
        learning outcomes in the syllabus (Paper 1: 34, Paper 3: 41). AO balance is the published
@@ -400,18 +403,44 @@
     'GAT Quantitative (English Medium)':{source:'National Center for Assessment (Qiyas), GAT General Aptitude Test — Quantitative Section (English version).',
       difficulty:MIX, order:'mixed',
       topics:[
-        T('Arithmetic',40,'arithmetic operations, fractions, decimals, percentages, ratios, rates, word problems, quantitative comparison',['Arithmetic & Number Sense','Ratios, Proportion & Percentages','Word Problems & Reasoning','Quantitative Comparisons']),
-        T('Geometry',24,'angles, triangles, polygons, circles, perimeter, area, volume, coordinate geometry',['Geometry & Measurement']),
-        T('Algebra',23,'linear and quadratic equations, expressions, inequalities, sequences and patterns',['Algebra Essentials','Sequences & Patterns']),
-        T('Data Analysis & Probability',13,'tables, charts, averages, simple probability, statistical reasoning',['Data Analysis & Probability'])]},
+        T('Arithmetic & Word Problems',35,'arithmetic operations, fractions, decimals, percentages, ratios, rates, word problems',['Arithmetic & Number Sense','Ratios, Proportion & Percentages','Motion, Speed & Work Rates','Word Problems & Reasoning','Word Problems & Modeling','High-Speed Qiyas Shortcuts']),
+        T('Geometry & Shaded Regions',24,'angles, triangles, polygons, circles, perimeter, area, volume, coordinate geometry',['Geometry & Measurement','Geometry & Spatial Reasoning']),
+        T('Algebra & Sequences',20,'linear and quadratic equations, expressions, inequalities, sequences and patterns',['Algebra Essentials','Sequences & Patterns','Number Patterns & Sequences']),
+        T('Quantitative Comparisons',9,'two-column quantitative comparison across arithmetic, algebra, and geometry',['Quantitative Comparison','Quantitative Comparisons']),
+        T('Data Analysis & Probability',12,'tables, charts, averages, simple probability, statistical reasoning',['Data Analysis & Probability','Statistics, Probability & Data'])]},
 
     'SAAT Mathematics (English Medium)':{source:'National Center for Assessment (Qiyas), SAAT Standardized Achievement Admission Test — Mathematics (English version).',
       difficulty:MIX, order:'mixed',
       topics:[
-        T('Algebra & Functions',35,'polynomials, rational expressions, exponential and logarithmic functions, sequences, matrices, complex numbers',['Algebra & Pre-Calculus','Sequences, Series & Matrices']),
-        T('Geometry',30,'angles, parallel lines, triangles, quadrilaterals, circles, coordinate geometry, transformations, conics',['Geometry & Coordinate Math']),
-        T('Trigonometry',20,'unit circle, trig identities, laws of sines and cosines, trig equations',['Trigonometry']),
-        T('Calculus & Statistics',15,'limits, derivatives, integrals, permutations, probability, normal distribution',['Limits & Derivatives','Integration & Applications','Statistics & Probability'])]},
+        T('Algebra, Matrices & Functions',30,'logic, polynomials, rational expressions, exponential and logarithmic functions, sequences, matrices, complex numbers',['Mathematical Logic & Reasoning','Algebra, Matrices & Complex Numbers','Algebra & Equations','Functions & Graphs','Functions','Sequences, Series & Binomial Theorem','Sequences & Series','Exponential & Logarithmic Functions','Exponentials & Logarithms']),
+        T('Geometry, Conics & Vectors',25,'angles, parallel lines, triangles, quadrilaterals, circles, coordinate geometry, transformations, conics, 3D vectors',['Geometry & Coordinate Geometry','Analytic Geometry, Conic Sections & Vectors','Vectors & Matrices']),
+        T('Trigonometry',15,'unit circle, trig identities, laws of sines and cosines, trig equations',['Trigonometry']),
+        T('Calculus & Statistics',30,'limits, derivatives, integrals, permutations, probability, normal distribution',['Limits & Differential Calculus','Limits & Derivatives','Integral Calculus & Area','Integration & Applications','Probability & Normal Distribution','Statistics & Probability'])]},
+
+    'Qudrat — Quantitative Comparisons & Shaded Geometry Drill':{source:'ETEC / Qiyas High-Yield Quantitative Comparisons & Shaded Geometry Intensive.',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Quantitative Comparisons (المقارنات الكمية)',50,'two-column quantitative comparisons across arithmetic, algebra, and geometry with fixed 4-option ETEC/Qiyas choices',['Quantitative Comparison','Quantitative Comparisons']),
+        T('Shaded Areas, Circles, Clocks & Spatial Geometry',50,'inscribed circles and squares, lunes, parallel lines, polygons, clock angles, 3D solids',['Geometry & Spatial Reasoning','Geometry & Measurement'])]},
+
+    'Tahsili — Year 3 Secondary Intensive (50% Exam Weight)':{source:'ETEC / Qiyas Year 3 Secondary Pathways Intensive (رياضيات ٣ — 50% of Official SAAT Tahsili).',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Analytic Geometry, Conic Sections, Vectors & Polar',28,'parabolas, ellipses, hyperbolas, eccentricity, 3D vectors, dot/cross product, polar coordinates, De Moivre',['Analytic Geometry, Conic Sections & Vectors','Vectors & Matrices']),
+        T('Exponential & Logarithmic Functions',20,'exponential equations, logarithmic laws, change of base, growth/decay models',['Exponential & Logarithmic Functions','Exponentials & Logarithms']),
+        T('Limits & Differential Calculus',20,'limits at infinity, algebraic limits, derivative rules, tangent lines, critical points, extrema',['Limits & Differential Calculus','Limits & Derivatives']),
+        T('Integral Calculus & Area',16,'antiderivatives, Fundamental Theorem of Calculus, definite integrals, area between curves',['Integral Calculus & Area','Integration & Applications']),
+        T('Probability & Normal Distribution',16,'conditional probability, binomial distribution, normal distribution empirical rule (68-95-99.7%), Z-scores',['Probability & Normal Distribution','Statistics & Probability'])]},
+
+    'Tahsili — Year 1 & Year 2 Secondary Foundations (50% Exam Weight)':{source:'ETEC / Qiyas Year 1 (20%) & Year 2 (30%) Secondary Pathways Foundations (رياضيات ١ و ٢).',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Year 1: Mathematical Logic & Reasoning',14,'truth tables, conditionals, converse, inverse, contrapositive, deductive reasoning',['Mathematical Logic & Reasoning']),
+        T('Year 1: Euclidean, Triangle & Circle Geometry',26,'parallel lines, triangle congruence and similarity, polygon angles, circle chords, tangents, inscribed angles',['Geometry & Coordinate Geometry']),
+        T('Year 2: Matrices, Determinants & Complex Numbers',16,'matrix operations, 2x2 and 3x3 determinants, multiplicative inverse, Cramer\'s rule, powers of i, complex algebra',['Algebra, Matrices & Complex Numbers','Algebra & Equations']),
+        T('Year 2: Functions, Variations & Radicals',16,'domain and range, inverse and composite functions, vertical/horizontal asymptotes, joint/inverse variation, radical equations',['Functions & Graphs','Functions']),
+        T('Year 2: Sequences, Series & Binomial Theorem',14,'arithmetic and geometric progressions, infinite geometric series, sigma notation, binomial theorem',['Sequences, Series & Binomial Theorem','Sequences & Series']),
+        T('Year 2: Trigonometric Functions & Identities',14,'radian measure, Pythagorean/double-angle/half-angle identities, law of sines, law of cosines',['Trigonometry'])]},
 
     'Mawhiba & Kangaroo Math Arabia (Senior)':{source:'Mawhiba / Association Kangourou sans Frontières (AKSF) Mathematics Competition — Student / Senior Level.',
       difficulty:MIX, order:'mixed',
@@ -467,17 +496,29 @@
         T('Principal Component Analysis (PCA)',25,'covariance matrix, eigenvalues, eigenvectors, dimensionality reduction, variance retention',['Principal Component Analysis (PCA)'])]}
   };
 
-  // Modular Cambridge IGCSE 0580 and IB AA Paper 1 / Paper 2 mappings
+  // Modular Cambridge IGCSE 0580 and IB AA / AI Paper 1 / Paper 2 / Paper 3 mappings
   B['Cambridge IGCSE 0580 — Paper 2 (Extended Non-Calculator)'] = B['igcse'];
   B['Cambridge IGCSE 0580 — Paper 4 (Extended Calculator)'] = B['igcse'];
   B['IB Math SL (AA) — Paper 1 (Non-Calculator)'] = B['IB Math SL (AA)'];
   B['IB Math SL (AA) — Paper 2 (GDC Required)'] = B['IB Math SL (AA)'];
+  B['IB Math SL (AI) — Paper 1 (GDC Short-Response)'] = B['IB Math SL (AI)'];
+  B['IB Math SL (AI) — Paper 2 (GDC Extended-Response)'] = B['IB Math SL (AI)'];
   B['IB Math HL (AA) — Paper 1 (Non-Calculator)'] = B['IB Math HL (AA)'];
   B['IB Math HL (AA) — Paper 2 (GDC Required)'] = B['IB Math HL (AA)'];
+  B['IB Math HL (AA) — Paper 3 (GDC Extended Investigation)'] = B['IB Math HL (AA)'];
+  B['IB Math HL (AI) — Paper 1 (GDC Short-Response)'] = B['IB Math HL (AI)'];
+  B['IB Math HL (AI) — Paper 2 (GDC Extended-Response)'] = B['IB Math HL (AI)'];
+  B['IB Math HL (AI) — Paper 3 (GDC Extended Investigation)'] = B['IB Math HL (AI)'];
   B['Cambridge IGCSE 0606 — Paper 1'] = B['addmath'];
   B['Cambridge IGCSE 0606 — Paper 2'] = B['addmath'];
   B['Edexcel Further Pure 4PM1 — Paper 1'] = B['addmath'];
   B['Edexcel Further Pure 4PM1 — Paper 2'] = B['addmath'];
+  B['GAT Qudrat — Quantitative Reasoning'] = B['qudrat'];
+  B['Qudrat Digital (CBT / المحوسب) — 4-Module Adaptive Simulation'] = B['qudrat'];
+  B['Qudrat Paper-Based (الورقي) — Full Quantitative Booklet'] = B['qudrat'];
+  B['SAAT Tahsili Mathematics'] = B['tahsili'];
+  B['SAAT Tahsili — Mathematics'] = B['tahsili'];
+  B['Tahsili Digital (CBT / المحوسب) — High-Yield Past Papers Simulation'] = B['tahsili'];
   /* Every other exam (precalc, …) has no
      published topic weighting: provisional even split over its bank domains. */
   var SKIP=/test format|strategy|mixed review|overview|exam format/i;
@@ -543,10 +584,16 @@
     'gat qudrat — quantitative reasoning':'qudrat',
     'gat qudrat quantitative':'qudrat',
     'gat qudrat':'qudrat',
+    'qudrat digital (cbt / المحوسب) — 4-module adaptive simulation':'Qudrat Digital (CBT / المحوسب) — 4-Module Adaptive Simulation',
+    'qudrat paper-based (الورقي) — full quantitative booklet':'Qudrat Paper-Based (الورقي) — Full Quantitative Booklet',
+    'qudrat — quantitative comparisons & shaded geometry drill':'Qudrat — Quantitative Comparisons & Shaded Geometry Drill',
     'tahsili':'tahsili',
     'saat tahsili — mathematics':'tahsili',
     'saat tahsili mathematics':'tahsili',
     'saat tahsili':'tahsili',
+    'tahsili digital (cbt / المحوسب) — high-yield past papers simulation':'Tahsili Digital (CBT / المحوسب) — High-Yield Past Papers Simulation',
+    'tahsili — year 3 secondary intensive (50% exam weight)':'Tahsili — Year 3 Secondary Intensive (50% Exam Weight)',
+    'tahsili — year 1 & year 2 secondary foundations (50% exam weight)':'Tahsili — Year 1 & Year 2 Secondary Foundations (50% Exam Weight)',
     'aslevel':'aslevel',
     'cambridge as level mathematics 9709':'aslevel',
     'cambridge as level':'aslevel',

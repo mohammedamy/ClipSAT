@@ -48,44 +48,101 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "AI HL — Additional Topics — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
+          "type": "network_graph",
+          "title": "AI HL — Weighted Network Graph & Minimum Spanning Tree (MST Weight = 14)",
+          "nodes": [
             {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "id": "A",
+              "x": 45,
+              "y": 120,
+              "highlight": true
             },
             {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "id": "B",
+              "x": 135,
+              "y": 50,
+              "highlight": true
+            },
+            {
+              "id": "C",
+              "x": 135,
+              "y": 190,
+              "highlight": true
+            },
+            {
+              "id": "D",
+              "x": 225,
+              "y": 50,
+              "highlight": true
+            },
+            {
+              "id": "E",
+              "x": 225,
+              "y": 190,
+              "highlight": true
+            },
+            {
+              "id": "F",
+              "x": 285,
+              "y": 120,
+              "highlight": true
             }
           ],
-          "points": [
+          "edges": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
+              "from": "A",
+              "to": "B",
+              "weight": 3,
+              "highlight": true
             },
             {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "from": "A",
+              "to": "C",
+              "weight": 5
+            },
+            {
+              "from": "B",
+              "to": "C",
+              "weight": 2,
+              "highlight": true
+            },
+            {
+              "from": "B",
+              "to": "D",
+              "weight": 6
+            },
+            {
+              "from": "C",
+              "to": "E",
+              "weight": 4,
+              "highlight": true
+            },
+            {
+              "from": "B",
+              "to": "E",
+              "weight": 5
+            },
+            {
+              "from": "D",
+              "to": "E",
+              "weight": 3,
+              "highlight": true
+            },
+            {
+              "from": "D",
+              "to": "F",
+              "weight": 2,
+              "highlight": true
+            },
+            {
+              "from": "E",
+              "to": "F",
+              "weight": 6
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Weighted undirected network graph for AI HL Topic 3 showing the Minimum Spanning Tree (highlighted in amber: BC=2, DF=2, AB=3, DE=3, CE=4; total weight = 14) obtained via Kruskal's or Prim's algorithm.",
           "ar": null
         }
       },
@@ -389,24 +446,103 @@
       },
       {
         "kind": "figure",
-        "caption": {
-          "en": "Markov chain two-state stationary probability distribution showing 57% in state A and 43% in state B.",
-          "ar": null
-        },
         "figure": {
-          "type": "bar",
-          "title": "Markov Steady State Distribution (%)",
-          "data": [
+          "type": "network_graph",
+          "title": "AI HL — Weighted Network Graph & Minimum Spanning Tree (MST Weight = 14)",
+          "nodes": [
             {
-              "label": "State A",
-              "val": 57
+              "id": "A",
+              "x": 45,
+              "y": 120,
+              "highlight": true
             },
             {
-              "label": "State B",
-              "val": 43
+              "id": "B",
+              "x": 135,
+              "y": 50,
+              "highlight": true
+            },
+            {
+              "id": "C",
+              "x": 135,
+              "y": 190,
+              "highlight": true
+            },
+            {
+              "id": "D",
+              "x": 225,
+              "y": 50,
+              "highlight": true
+            },
+            {
+              "id": "E",
+              "x": 225,
+              "y": 190,
+              "highlight": true
+            },
+            {
+              "id": "F",
+              "x": 285,
+              "y": 120,
+              "highlight": true
             }
           ],
-          "ylabel": "Probability (%)"
+          "edges": [
+            {
+              "from": "A",
+              "to": "B",
+              "weight": 3,
+              "highlight": true
+            },
+            {
+              "from": "A",
+              "to": "C",
+              "weight": 5
+            },
+            {
+              "from": "B",
+              "to": "C",
+              "weight": 2,
+              "highlight": true
+            },
+            {
+              "from": "B",
+              "to": "D",
+              "weight": 6
+            },
+            {
+              "from": "C",
+              "to": "E",
+              "weight": 4,
+              "highlight": true
+            },
+            {
+              "from": "B",
+              "to": "E",
+              "weight": 5
+            },
+            {
+              "from": "D",
+              "to": "E",
+              "weight": 3,
+              "highlight": true
+            },
+            {
+              "from": "D",
+              "to": "F",
+              "weight": 2,
+              "highlight": true
+            },
+            {
+              "from": "E",
+              "to": "F",
+              "weight": 6
+            }
+          ]
+        },
+        "caption": {
+          "en": "Weighted undirected network graph for AI HL Topic 3 showing the Minimum Spanning Tree (highlighted in amber: BC=2, DF=2, AB=3, DE=3, CE=4; total weight = 14) obtained via Kruskal's or Prim's algorithm.",
+          "ar": null
         }
       },
       {
@@ -425,11 +561,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Past-Paper Idea Matrix & Official Markscheme Worked Example — AI HL (Matrices, Coupled ODEs & Graph Theory)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>High-Frequency IB AI HL Past-Paper Ideas (Topics 1, 3, 4, 5):</strong></p>\n<table class=\"exam-table\" style=\"margin:6px 0\">\n<thead><tr><th>AI HL Domain</th><th>Classic Past-Paper Question Pattern</th><th>Examiner Trap to Avoid</th></tr></thead>\n<tbody>\n<tr><td><strong>AHL 1.9 Matrices, Eigenvalues &amp; Markov Chains</strong></td><td>Finding characteristic polynomial $\\det(\\mathbf{A} - \\lambda\\mathbf{I}) = 0$, diagonalizing $\\mathbf{A}^n = \\mathbf{P}\\mathbf{D}^n\\mathbf{P}^{-1}$, and solving $\\mathbf{T}\\mathbf{p} = \\mathbf{p}$ with $\\sum p_i = 1$ for steady-state probabilities.</td><td>In IB AI HL, Markov transition matrices $\\mathbf{T}$ have columns summing to $1$ ($T_{ij} = P(j \\to i)$) and act on column state vectors $\\mathbf{x}_{n+1} = \\mathbf{T}\\mathbf{x}_n$.</td></tr>\n<tr><td><strong>AHL 3.9–3.13 Graph Theory (MST, CPP, TSP)</strong></td><td>Adjacency matrix $\\mathbf{A}^k$ counting walks of length $k$; Kruskal/Prim MST; Chinese Postman Problem (pairing odd-degree vertices); TSP upper bound (Nearest Neighbour) &amp; lower bound (Deleted Vertex MST + 2 shortest edges).</td><td>In the Deleted Vertex TSP lower bound, you must delete vertex $V$ <em>first</em>, find the MST of the remaining $n-1$ vertices, and then add the <strong>two</strong> shortest edges from $V$.</td></tr>\n<tr><td><strong>AHL 5.17 Coupled Linear ODEs &amp; Phase Portraits</strong></td><td>Solving $\\dot{\\mathbf{x}} = \\mathbf{A}\\mathbf{x}$ via $\\mathbf{x}(t) = c_1 e^{\\lambda_1 t}\\mathbf{v}_1 + c_2 e^{\\lambda_2 t}\\mathbf{v}_2$; classifying origin as saddle ($\\lambda_1 < 0 < \\lambda_2$), stable/unstable node, spiral, or centre.</td><td>Confusing clockwise vs anticlockwise spiral direction — always test the velocity vector $\\dot{\\mathbf{x}} = \\mathbf{A}\\binom{1}{0}$ at $(1, 0)$!</td></tr>\n</tbody></table>\n<p><strong>Worked Example (AI HL Paper 2 — 9 marks):</strong><br>\nA coupled predator-prey deviation model satisfies $\\begin{pmatrix}\\dot{x}\\\\\\dot{y}\\end{pmatrix} = \\begin{pmatrix}1 & 2\\\\2 & 1\\end{pmatrix}\\begin{pmatrix}x\\\\y\\end{pmatrix}$ with initial state $x(0) = 4, y(0) = 2$.<br>\n(a) Find the eigenvalues and corresponding eigenvectors of $\\mathbf{A} = \\begin{pmatrix}1 & 2\\\\2 & 1\\end{pmatrix}$. <strong>[4]</strong><br>\n(b) State the nature of the equilibrium point at $(0, 0)$ and find the particular solution for $x(t)$ and $y(t)$. <strong>[5]</strong></p>\n<p><strong>Official IB Markscheme Solution:</strong><br>\n(a) $\\det(\\mathbf{A} - \\lambda\\mathbf{I}) = (1-\\lambda)^2 - 4 = \\lambda^2 - 2\\lambda - 3 = (\\lambda - 3)(\\lambda + 1) = 0 \\implies \\lambda_1 = 3, \\lambda_2 = -1$ <strong>[M1] [A1]</strong><br>\nFor $\\lambda_1 = 3$: $-2x + 2y = 0 \\implies \\mathbf{v}_1 = \\binom{1}{1}$ <strong>[A1]</strong>; for $\\lambda_2 = -1$: $2x + 2y = 0 \\implies \\mathbf{v}_2 = \\binom{1}{-1}$ <strong>[A1]</strong><br>\n(b) Since $\\lambda_1 = 3 > 0$ and $\\lambda_2 = -1 < 0$ have opposite signs, $(0, 0)$ is an unstable <strong>saddle point</strong> <strong>[R1]</strong><br>\nGeneral solution: $\\binom{x}{y} = c_1 e^{3t}\\binom{1}{1} + c_2 e^{-t}\\binom{1}{-1}$ <strong>[M1]</strong><br>\nAt $t = 0$: $c_1 + c_2 = 4$ and $c_1 - c_2 = 2 \\implies c_1 = 3, c_2 = 1$ <strong>[M1] [A1]</strong><br>\nHence $x(t) = 3e^{3t} + e^{-t}$ and $y(t) = 3e^{3t} - e^{-t}$ <strong>[A1]</strong></p>",
           "ar": null
         }
       },

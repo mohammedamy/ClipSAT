@@ -31,12 +31,13 @@ function aiSourceChosen(btn){
    (Plan 5 Phase 5.015, ADR 0037). Touching a test generator warms the load. */
 var _aiExamPromise=null;
 window._ensureAIExam=function(){
-  if(window.CSAITest&&window.ClipSATAssembler&&window.ClipSATBlueprints&&window.ClipSATVerifyAI&&window.CSBankExam) return Promise.resolve();
-  if(_aiExamPromise) return _aiExamPromise;
+  var figsReady = (typeof window._ensureFigures === 'function') ? window._ensureFigures().catch(function(){}) : Promise.resolve();
+  if(window.CSAITest&&window.ClipSATAssembler&&window.ClipSATBlueprints&&window.ClipSATVerifyAI&&window.CSBankExam) return figsReady;
+  if(_aiExamPromise) return Promise.all([_aiExamPromise, figsReady]);
   /* the AI pipeline reads window.examSpecs, which ships in bank-exam.js (ADR 0042) */
-  _aiExamPromise=window._ensureBankExam().then(function(){ return new Promise(function(resolve,reject){
+  _aiExamPromise=Promise.all([window._ensureBankExam(), figsReady]).then(function(){ return new Promise(function(resolve,reject){
     var s=document.createElement('script');
-    s.src='/js/ai-exam.js';
+    s.src='/js/ai-exam.js?v=20261022c';
     s.onload=function(){ (window.ClipSATAssembler&&window.CSAITest)?resolve():reject(new Error('ai-exam.js did not register')); };
     s.onerror=function(){ reject(new Error('The exam generator could not load. Check your connection and try again.')); };
     document.head.appendChild(s);
@@ -54,8 +55,8 @@ window._ensureAIExam=function(){
 
 /* ── genTest: the question bank here; the AI path lives in 05a-ai-test.js, which ships
    inside public/js/ai-exam.js and loads the first time an AI test is generated (ADR 0041). ── */
-function _runAI(btn,run){
-  var out=btn.closest('.testgen')&&btn.closest('.testgen').querySelector('.tg-out');
+function _runAI(btn,run,optViewId){
+  var out=(optViewId&&document.getElementById(optViewId+'-exam-out'))||(btn&&btn.closest('.testgen')&&btn.closest('.testgen').querySelector('.tg-out'));
   if(out&&!window.CSAITest) out.innerHTML='<div class="ai-gen-loading"><div class="ai-spinner"></div><p>Loading the exam generator…</p></div>';
   return window._ensureAIExam().then(run).catch(function(err){
     if(out) out.innerHTML='<p class="tg-empty" style="color:#dc2626">Error: '+esc(err.message)+'</p>';
@@ -118,9 +119,13 @@ function _genTestOriginal(btn, optTrackId){
   var loadFigs=(typeof window._ensureFigures==='function')
     ? window._ensureFigures().catch(function(){})
     : Promise.resolve();
+  var loadBankExam=(typeof window._ensureBankExam==='function')
+    ? window._ensureBankExam().catch(function(){})
+    : Promise.resolve();
 
-  Promise.all([loadBank, loadFigs]).then(function(res){
+  Promise.all([loadBank, loadFigs, loadBankExam]).then(function(res){
     var bank=res[0];
+    var isIBTrack=(trackId==='ibsl'||trackId==='ibhl');
     if(bank && (bank.pool || bank.easy || bank.medium || bank.hard)){
       var allPool=[];
       if(Array.isArray(bank.pool) && bank.pool.length){
@@ -130,13 +135,19 @@ function _genTestOriginal(btn, optTrackId){
           return (a||[]).map(function(q){
             return Object.assign({}, q, {
               type: q.type || 'mcq',
-              difficulty: diff,
-              domain: q.domain || 'Mathematics',
+              difficulty: q.difficulty || diff,
+              domain: q.domain || q.topic || 'Mathematics',
               text: q.text || q.q || '',
               choices: q.choices || [],
               answer: q.answer,
-              sol: q.sol || q.expl || '',
-              figure: q.figure || q.fig
+              ans: q.ans,
+              sol: q.sol || q.exp || q.expl || '',
+              figure: q.figure || q.fig,
+              marks: q.marks,
+              paper: q.paper,
+              course: q.course,
+              ibSection: q.ibSection,
+              calc: q.calc
             });
           });
         };
@@ -145,7 +156,7 @@ function _genTestOriginal(btn, optTrackId){
 
       // Filter out meta trivia
       allPool=allPool.filter(function(q){
-        var d=(q.domain||'').toLowerCase();
+        var d=(q.domain||q.topic||'').toLowerCase();
         return d.indexOf('format')===-1 && d.indexOf('strategy')===-1 && d.indexOf('overview')===-1;
       });
 
@@ -154,14 +165,30 @@ function _genTestOriginal(btn, optTrackId){
       });
       if(!pool.length) pool=allPool.slice();
 
+      /* For IB tracks (ibsl / ibhl), prioritize authentic multi-part FRQ items first */
+      if(isIBTrack){
+        var ibFrqPool = pool.filter(function(q){ return q.type === 'frq'; });
+        var ibOtherPool = pool.filter(function(q){ return q.type !== 'frq'; });
+        pool = ibFrqPool.concat(ibOtherPool);
+      }
+
       // Guarantee healthy presence of diagrams and graphs (target ~25%-35% diagrams)
       var withFig=pool.filter(function(q){ return !!(q.figure || q.fig || q.table); });
       var noFig=pool.filter(function(q){ return !(q.figure || q.fig || q.table); });
 
-      for(var wf=withFig.length-1;wf>0;wf--){var rwf=Math.floor(Math.random()*(wf+1));var twf=withFig[wf];withFig[wf]=withFig[rwf];withFig[rwf]=twf;}
-      for(var nf=noFig.length-1;nf>0;nf--){var rnf=Math.floor(Math.random()*(nf+1));var tnf=noFig[nf];noFig[nf]=noFig[rnf];noFig[rnf]=tnf;}
+      if(isIBTrack){
+        /* Shuffle within FRQ and non-FRQ buckets so structured IB FRQs always take priority */
+        var wfFrq=withFig.filter(function(q){return q.type==='frq';}), wfOth=withFig.filter(function(q){return q.type!=='frq';});
+        var nfFrq=noFig.filter(function(q){return q.type==='frq';}), nfOth=noFig.filter(function(q){return q.type!=='frq';});
+        var _shuf=function(arr){for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t;}return arr;};
+        withFig=_shuf(wfFrq).concat(_shuf(wfOth));
+        noFig=_shuf(nfFrq).concat(_shuf(nfOth));
+      } else {
+        for(var wf=withFig.length-1;wf>0;wf--){var rwf=Math.floor(Math.random()*(wf+1));var twf=withFig[wf];withFig[wf]=withFig[rwf];withFig[rwf]=twf;}
+        for(var nf=noFig.length-1;nf>0;nf--){var rnf=Math.floor(Math.random()*(nf+1));var tnf=noFig[nf];noFig[nf]=noFig[rnf];noFig[rnf]=tnf;}
+      }
 
-      var targetFigs=Math.min(withFig.length, Math.max(1, Math.ceil(n * 0.30)));
+      var targetFigs=Math.min(withFig.length, Math.max(1, Math.ceil(n * (isIBTrack ? 0.45 : 0.30))));
       var pick=[];
       var tracker=window.ClipSATRedundancy ? window.ClipSATRedundancy.tracker() : null;
       var seenStems=new Set();
@@ -207,11 +234,26 @@ function _genTestOriginal(btn, optTrackId){
       // Shuffle picked so diagram questions are distributed naturally
       for(var s=pick.length-1;s>0;s--){var js=Math.floor(Math.random()*(s+1));var ts=pick[s];pick[s]=pick[js];pick[js]=ts;}
 
+      /* MANDATORY PRE-DISPLAY EXAMINER REVISION PASS */
+      var revReport=null;
+      if(window.CSExamRevisionPass){
+        var revRes=window.CSExamRevisionPass(pick, {
+          viewId: trackId,
+          isIB: isIBTrack,
+          fallbackPool: allPool
+        });
+        pick = revRes.items;
+        revReport = revRes.report;
+      }
+
       if(out){
         out.innerHTML='';
+        if(revReport && window.CSRenderRevisionBanner){
+          out.insertAdjacentHTML('beforeend', window.CSRenderRevisionBanner(revReport, isIBTrack));
+        }
         var head=document.createElement('div'); head.className='tg-head';
         var lvlLabel=(lvl==='all'?'all levels':lvl);
-        head.innerHTML='<span class="tg-title">Generated test ('+trackId.toUpperCase()+')</span><span class="tg-meta">'+pick.length+' question'+(pick.length===1?'':'s')+' · '+lvlLabel+'</span>';
+        head.innerHTML='<span class="tg-title">'+(isIBTrack?'IB DP Written Practice Paper ('+trackId.toUpperCase()+')':'Generated test ('+trackId.toUpperCase()+')')+'</span><span class="tg-meta">'+pick.length+' question'+(pick.length===1?'':'s')+(revReport&&isIBTrack?' · ['+revReport.totalMarks+' marks]':'')+' · '+lvlLabel+'</span>';
         out.appendChild(head);
 
         var _csCaptureQ=[];
@@ -220,11 +262,12 @@ function _genTestOriginal(btn, optTrackId){
         var _autoMath=window.CSAutoMath || function(str){ return str; };
 
         pick.forEach(function(q, idx){
-          var isMCQ=(q.type==='mcq'||(!q.type && q.choices && q.choices.length));
+          var isMCQ=!isIBTrack && (q.type==='mcq'||(!q.type && q.choices && q.choices.length));
           var _fHtml=_renderQFig(q);
           var qText=(q.text||q.q||'').trim();
           var qDiff=q.difficulty||lvlNorm;
           if(qDiff==='all') qDiff='medium';
+          var qMarks=Number(q.marks)||(isIBTrack?6:1);
 
           var chHtml='';
           if(isMCQ && q.choices && q.choices.length){
@@ -239,22 +282,25 @@ function _genTestOriginal(btn, optTrackId){
             chHtml+='</div>';
           }
 
-          var ansLabel=(isMCQ && q.answer!=null && letters[q.answer])?(' ('+letters[q.answer]+')'):'';
-          var solText=q.sol||q.expl||('Answer: '+(q.answer!=null?q.answer:'N/A'));
+          var ansLabel=(isMCQ && q.answer!=null && letters[q.answer])?(' ('+letters[q.answer]+')'):(q.ans?(' ['+q.ans+']'):'');
+          var solText=q.sol||q.exp||q.expl||('Answer: '+(q.ans||q.answer||'N/A'));
 
           var probHtml='<div class="problem bank-problem" data-qid="'+(idx+1)+'">'
-            + '<div class="problem-head" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">'
-            + '  <div><span class="pn">'+(idx+1)+'</span>'
-            + '  <span class="lvl '+qDiff+'" style="margin-left:6px">'+qDiff.charAt(0).toUpperCase()+qDiff.slice(1)+'</span></div>'
-            + '  <span class="p-domain" style="font-size:.76rem;color:var(--muted,#64748b);background:var(--paper-2,#f1f5f9);padding:2px 8px;border-radius:4px">'+esc(q.domain||'Mathematics')+'</span>'
+            + '<div class="problem-head" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px;margin-bottom:8px">'
+            + '  <div style="display:flex;align-items:center;gap:6px"><span class="pn">'+(idx+1)+'</span>'
+            + '  <span class="lvl '+qDiff+'">'+qDiff.charAt(0).toUpperCase()+qDiff.slice(1)+'</span>'
+            + (isIBTrack?'<span style="font-weight:700;font-size:.82rem;color:#1e293b">[Maximum mark: '+qMarks+']</span>':'')
+            + (isIBTrack&&q.paper?'<span style="font-size:.74rem;background:#eef2ff;color:#312e81;padding:2px 7px;border-radius:4px;border:1px solid #c7d2fe">'+esc(q.paper)+(q.ibSection?' · '+esc(q.ibSection):'')+'</span>':'')
+            + '  </div>'
+            + '  <span class="p-domain" style="font-size:.76rem;color:var(--muted,#64748b);background:var(--paper-2,#f1f5f9);padding:2px 8px;border-radius:4px">'+esc(q.domain||q.topic||'Mathematics')+'</span>'
             + '</div>'
             + '<div class="pq">'
             + (_fHtml?'<div class="mfig" style="margin:10px auto 14px;text-align:center">'+_fHtml+'</div>':'')
-            + '<div class="pq-stem" style="font-size:1rem;line-height:1.6">'+_fmtBi(_autoMath(qText))+'</div>'
+            + '<div class="pq-stem" style="font-size:1rem;line-height:1.6;white-space:pre-line">'+_fmtBi(_autoMath(qText))+'</div>'
             + chHtml
             + '</div>'
-            + '<button type="button" class="sol-toggle" onclick="this.parentElement.classList.toggle(\'open\')"><span class="tw">▸</span> Show solution</button>'
-            + '<div class="sol"><div class="sol-inner" style="padding:10px 14px;background:var(--paper-2,#f8fafc);border-radius:6px;border-left:3px solid var(--indigo,#1e3e70);margin-top:8px"><strong>Answer'+ansLabel+':</strong> '+_fmtBi(_autoMath(solText))+'</div></div>'
+            + '<button type="button" class="sol-toggle" onclick="this.parentElement.classList.toggle(\'open\')"><span class="tw">▸</span> '+(isIBTrack?'Show Official IB Markscheme':'Show solution')+'</button>'
+            + '<div class="sol"><div class="sol-inner" style="padding:10px 14px;background:var(--paper-2,#f8fafc);border-radius:6px;border-left:3px solid var(--indigo,#1e3e70);margin-top:8px;white-space:pre-line"><strong>'+(isIBTrack?'Official IB Markscheme ['+qMarks+' marks]':'Answer')+ansLabel+':</strong><br>'+_fmtBi(_autoMath(solText))+'</div></div>'
             + '</div>';
 
           out.insertAdjacentHTML('beforeend', probHtml);
@@ -264,7 +310,7 @@ function _genTestOriginal(btn, optTrackId){
             choices: isMCQ && q.choices ? q.choices.slice() : [],
             correctIndex: isMCQ && q.answer!=null ? q.answer : null,
             type: isMCQ ? 'mcq' : 'frq',
-            points: 1,
+            points: qMarks,
             figure: q.figure || q.fig || null,
             figureHtml: _fHtml || null
           });
@@ -393,7 +439,7 @@ window.tgReveal=function(btn){
 var _origGenFullExam=window.genFullExam;
 window.genFullExam=function(btn,examName,viewId,sectionTitles,qPerSection){
   if(!aiSourceChosen(btn)) return _origGenFullExam&&_origGenFullExam(btn,examName,viewId,sectionTitles,qPerSection);
-  return _runAI(btn,function(){ return window.CSAITest.genFullExam(btn,examName,viewId,sectionTitles,qPerSection); });
+  return _runAI(btn,function(){ return window.CSAITest.genFullExam(btn,examName,viewId,sectionTitles,qPerSection); }, viewId);
 };
 
 /* ── Show AI badge in nav when enabled ───────────────── */

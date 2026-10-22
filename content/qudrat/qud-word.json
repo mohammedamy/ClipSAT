@@ -42,59 +42,56 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "Word Problems & Reasoning — Frequency Distribution (2)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
+          "type": "fn",
+          "title": "Uniform Motion: Catch-Up & Opposite-Direction Meeting",
+          "xmin": 0,
+          "xmax": 4,
+          "ymin": 0,
+          "ymax": 240,
+          "fn": "60*x + 60",
+          "fn2": "90*x",
+          "points": [
             {
-              "label": "Q1",
-              "value": 22
+              "x": 0,
+              "y": 60,
+              "label": "Head start 60 km"
             },
             {
-              "label": "Q2",
-              "value": 35,
-              "highlight": true
-            },
-            {
-              "label": "Q3",
-              "value": 28
-            },
-            {
-              "label": "Q4",
-              "value": 19
+              "x": 2,
+              "y": 180,
+              "label": "Catch-up (2 h, 180 km)"
             }
           ]
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for Word Problems & Reasoning.",
-          "ar": "توزيع تكراري يقارن القيم والفئة المنوالية في Word Problems & Reasoning."
+          "en": "Catch-up geometry: Car 1 starts 60 km ahead at 60 km/h; Car 2 chases at 90 km/h and catches up at t = Δd / (v₂ − v₁) = 60 / 30 = 2 hours.",
+          "ar": "تمثيل زمن اللحاق: السيارة الأولى متقدمة ٦٠ كم بسرعة ٦٠ كم/س، والثانية تطاردها بسرعة ٩٠ كم/س فتلحق بها بعد زمن = المسافة ÷ فرق السرعتين = ٦٠ ÷ ٣٠ = ساعتين."
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Word Problems & Reasoning Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Word Problems & Reasoning"
+          "en": "⊙ Explorer · Speed, Catch-Up & Harmonic Mean Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر السرعة وزمن الالتقاء واللحاق"
         },
-        "canvasId": "exAuto_stats_qudword",
+        "canvasId": "qudMotionCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Word Problems & Reasoning",
-          "ar": "مستكشف رياضي تفاعلي لدرس Word Problems & Reasoning"
+          "en": "Interactive uniform motion explorer showing meeting time, catch-up time, and round-trip harmonic average speed",
+          "ar": "مستكشف تفاعلي لحساب متوسط السرعة ذهاباً وإياباً وزمن الالتقاء وزمن اللحاق"
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_qudword_dataBtn",
-          "panelId": "exAuto_stats_qudword_dataPanel",
-          "descId": "exAuto_stats_qudword_dataDesc",
-          "rowsId": "exAuto_stats_qudword_dataRows",
+          "btnId": "qudMotionDataBtn",
+          "panelId": "qudMotionDataPanel",
+          "descId": "qudMotionDataDesc",
+          "rowsId": "qudMotionDataRows",
           "caption": {
-            "en": "Numerical table for Word Problems & Reasoning",
-            "ar": "جدول القيم العددية لدرس Word Problems & Reasoning"
+            "en": "Uniform motion metrics for speeds v₁ and v₂ over a 180 km road",
+            "ar": "مقاييس الحركة المنتظمة للسرعتين ع١ و ع٢ على طريق طوله ١٨٠ كم"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Motion Metric",
+              "ar": "المعيار الحركي"
             },
             {
               "en": "Value",
@@ -104,58 +101,70 @@
         },
         "controls": [
           {
-            "id": "exAuto_stats_qudword_s0",
+            "id": "qudMotV1",
+            "valueDisplayId": "qudMotV1V",
             "label": {
-              "en": "Parameter <b>a =</b>",
-              "ar": "المعامل <b>a =</b>"
+              "en": "Speed <b>v₁ =</b>",
+              "ar": "السرعة الأولى <b>ع₁ =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_qudword_v0",
             "ariaLabel": {
-              "en": "Primary parameter a",
-              "ar": "المعامل الأول a"
-            }
+              "en": "First vehicle speed v1",
+              "ar": "السرعة الأولى"
+            },
+            "min": 30,
+            "max": 120,
+            "value": 60,
+            "step": 10
           },
           {
-            "id": "exAuto_stats_qudword_s1",
+            "id": "qudMotV2",
+            "valueDisplayId": "qudMotV2V",
             "label": {
-              "en": "Parameter <b>b =</b>",
-              "ar": "المعامل <b>b =</b>"
+              "en": "Speed <b>v₂ =</b>",
+              "ar": "السرعة الثانية <b>ع₂ =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_qudword_v1",
             "ariaLabel": {
-              "en": "Secondary parameter b",
-              "ar": "المعامل الثاني b"
-            }
+              "en": "Second vehicle speed v2",
+              "ar": "السرعة الثانية"
+            },
+            "min": 40,
+            "max": 150,
+            "value": 90,
+            "step": 10
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_qudword_r0",
+            "id": "qudMotHarm",
             "label": {
-              "en": "Primary Metric",
-              "ar": "المقدار الأساسي"
+              "en": "Round-Trip Avg Speed",
+              "ar": "متوسط السرعة ذهاباً وإياباً"
             },
             "colorClass": "indigo",
-            "value": "2.00"
+            "value": "72.0 كم/س"
           },
           {
-            "id": "exAuto_stats_qudword_r1",
+            "id": "qudMotMeet",
             "label": {
-              "en": "Secondary Metric",
-              "ar": "المقدار الثانوي"
+              "en": "Opposite Meeting (180 km)",
+              "ar": "زمن الالتقاء (١٨٠ كم)"
             },
             "colorClass": "amber",
-            "value": "1.00"
+            "value": "1.20 ساعة"
+          },
+          {
+            "id": "qudMotCatch",
+            "label": {
+              "en": "Catch-Up (1h head start)",
+              "ar": "زمن اللحاق (تقدم ساعة)"
+            },
+            "value": "2.00 ساعة"
           }
-        ]
+        ],
+        "note": {
+          "en": "Never average two speeds using \\( (v_1+v_2)/2 \\)! For an equal-distance round trip, average speed is the harmonic mean \\( \\frac{2v_1v_2}{v_1+v_2} \\).",
+          "ar": "احذر من فخ حساب متوسط السرعة بالوسط الحسابي \\( (v_1+v_2)/2 \\)! القانون الصحيح ذهاباً وإياباً هو \\( \\frac{2v_1v_2}{v_1+v_2} \\)."
+        }
       },
       {
         "kind": "callout",
@@ -290,12 +299,12 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول D — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example 8.D — Tajmeeat Shortcut: Combined Work / Pipes & Fence Trees",
+          "ar": "مثال محلول 8.د — قوانين العمل المشترك (الحنفيات) والأشجار والأعمدة"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 10x + 25 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ أو } x = 5 \\).</li><li>المجموع \\( = \\mathbf{10} \\) وحاصل الضرب \\( = \\mathbf{25} \\).</li></ol>"
+          "en": "<p><strong>1. Combined Work / Two Pipes Formula:</strong> If Pipe A fills a tank in \\( t_1 \\) hours and Pipe B fills it in \\( t_2 \\) hours, together they take \\( T = \\frac{t_1 \\times t_2}{t_1 + t_2} \\). (Example: \\( 6\\text{ h} \\) and \\( 3\\text{ h} \\implies \\frac{6 \\times 3}{6+3} = \\mathbf{2\\text{ hours}} \\).)<br><strong>2. Trees & Poles Along a Straight Road:</strong> Number of trees = \\( \\frac{\\text{Total Length}}{\\text{Spacing}} + 1 \\). (On a closed perimeter/circle, trees = \\( \\frac{\\text{Perimeter}}{\\text{Spacing}} \\).)</p>",
+          "ar": "<p><strong>١. قانون العمل المشترك والحنفيات:</strong> إذا كانت الحنفية الأولى تملأ الخزان في \\( t_1 \\) ساعات والثانية في \\( t_2 \\) ساعات، فإنهما معاً تملآنه في زمن \\( T = \\frac{t_1 \\times t_2}{t_1 + t_2} \\) (مثال: 6 ساعات و3 ساعات \\( \\implies \\frac{18}{9} = \\mathbf{2} \\) ساعتان).<br><strong>٢. قانون الأشجار والأعمدة على طريق مستقيم:</strong> عدد الأشجار = \\( \\frac{\\text{المسافة الكلية}}{\\text{المسافة بين كل شجرتين}} + 1 \\).</p>"
         }
       },
       {
@@ -350,7 +359,9 @@
   },
   "quizWidget": {
     "domains": [
-      "Word Problems & Reasoning"
+      "Word Problems & Reasoning",
+      "Motion, Speed & Work Rates",
+      "Word Problems & Modeling"
     ],
     "enabled": true
   },

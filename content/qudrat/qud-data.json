@@ -42,59 +42,65 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "Data Analysis & Probability — Frequency Distribution (2)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
+          "type": "pie",
+          "title": "Circular Sector Chart (Total = 360° = 100%)",
+          "slices": [
             {
-              "label": "Q1",
-              "value": 22
+              "label": "90° (25%)",
+              "value": 25,
+              "color": "#2b5ba8"
             },
             {
-              "label": "Q2",
-              "value": 35,
-              "highlight": true
+              "label": "108° (30%)",
+              "value": 30,
+              "color": "#c8902a"
             },
             {
-              "label": "Q3",
-              "value": 28
+              "label": "72° (20%)",
+              "value": 20,
+              "color": "#10b981"
             },
             {
-              "label": "Q4",
-              "value": 19
+              "label": "54° (15%)",
+              "value": 15,
+              "color": "#6366f1"
+            },
+            {
+              "label": "36° (10%)",
+              "value": 10,
+              "color": "#ec4899"
             }
           ]
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for Data Analysis & Probability.",
-          "ar": "توزيع تكراري يقارن القيم والفئة المنوالية في Data Analysis & Probability."
+          "en": "Qiyas Pie Sector Conversion: 90° = 1/4 (25%), 72° = 1/5 (20%), 60° = 1/6, 54° = 15%, and 36° = 1/10 (10%).",
+          "ar": "تحويلات القطاعات الدائرية في قياس: ٩٠° = الربع (٢٥٪)، ٧٢° = الخُمس (٢٠٪)، ٦٠° = السُدس، ٥٤° = ١٥٪، و ٣٦° = العُشر (١٠٪)."
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Data Analysis & Probability Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Data Analysis & Probability"
+          "en": "⊙ Explorer · 360° Circular Pie-Sector & Headcount Lab (مختبر القطاعات الدائرية ٣٦٠°)",
+          "ar": "⊙ مستكشف تفاعلي · مختبر القطاعات الدائرية (٣٦٠° ↔ ١٠٠٪) وحساب الأعداد في القدرات"
         },
-        "canvasId": "exAuto_stats_quddata",
+        "canvasId": "qudPieSectorCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Data Analysis & Probability",
-          "ar": "مستكشف رياضي تفاعلي لدرس Data Analysis & Probability"
+          "en": "Interactive 360-degree circular pie chart explorer converting between percentages, central angles, and counts",
+          "ar": "مستكشف تفاعلي للقطاعات الدائرية يحول بين النسبة المئوية والزاوية المركزية من ٣٦٠ درجة والعدد الفعلي"
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_quddata_dataBtn",
-          "panelId": "exAuto_stats_quddata_dataPanel",
-          "descId": "exAuto_stats_quddata_dataDesc",
-          "rowsId": "exAuto_stats_quddata_dataRows",
+          "btnId": "qudPieDataBtn",
+          "panelId": "qudPieDataPanel",
+          "descId": "qudPieDataDesc",
+          "rowsId": "qudPieDataRows",
           "caption": {
-            "en": "Numerical table for Data Analysis & Probability",
-            "ar": "جدول القيم العددية لدرس Data Analysis & Probability"
+            "en": "Conversion between sector percentage, central angle in degrees, and population count",
+            "ar": "التحويل بين النسبة المئوية للقطاع والزاوية المركزية بالدرجات والعدد الفعلي"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Metric",
+              "ar": "المعيار الإحصائي"
             },
             {
               "en": "Value",
@@ -104,58 +110,70 @@
         },
         "controls": [
           {
-            "id": "exAuto_stats_quddata_s0",
+            "id": "qudPiePct",
+            "valueDisplayId": "qudPiePctV",
             "label": {
-              "en": "Parameter <b>a =</b>",
-              "ar": "المعامل <b>a =</b>"
+              "en": "Sector <b>% =</b>",
+              "ar": "نسبة القطاع <b>% =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_quddata_v0",
             "ariaLabel": {
-              "en": "Primary parameter a",
-              "ar": "المعامل الأول a"
-            }
+              "en": "Sector percentage",
+              "ar": "نسبة القطاع المئوية"
+            },
+            "min": 5,
+            "max": 90,
+            "value": 30,
+            "step": 5
           },
           {
-            "id": "exAuto_stats_quddata_s1",
+            "id": "qudPieTotal",
+            "valueDisplayId": "qudPieTotalV",
             "label": {
-              "en": "Parameter <b>b =</b>",
-              "ar": "المعامل <b>b =</b>"
+              "en": "Total <b>N =</b>",
+              "ar": "الإجمالي الكلي <b>N =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_quddata_v1",
             "ariaLabel": {
-              "en": "Secondary parameter b",
-              "ar": "المعامل الثاني b"
-            }
+              "en": "Total population N",
+              "ar": "الإجمالي الكلي N"
+            },
+            "min": 180,
+            "max": 1800,
+            "value": 720,
+            "step": 180
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_quddata_r0",
+            "id": "qudPieAngle",
             "label": {
-              "en": "Primary Metric",
-              "ar": "المقدار الأساسي"
-            },
-            "colorClass": "indigo",
-            "value": "2.00"
-          },
-          {
-            "id": "exAuto_stats_quddata_r1",
-            "label": {
-              "en": "Secondary Metric",
-              "ar": "المقدار الثانوي"
+              "en": "Central Angle θ",
+              "ar": "الزاوية المركزية θ"
             },
             "colorClass": "amber",
-            "value": "1.00"
+            "value": "108.0°"
+          },
+          {
+            "id": "qudPieCount",
+            "label": {
+              "en": "Sector Headcount",
+              "ar": "عدد عناصر القطاع"
+            },
+            "colorClass": "indigo",
+            "value": "216"
+          },
+          {
+            "id": "qudPieRem",
+            "label": {
+              "en": "Remaining Count",
+              "ar": "العدد المتبقي"
+            },
+            "value": "504"
           }
-        ]
+        ],
+        "note": {
+          "en": "Golden Qudrat Pie-Chart Conversions: (100% = 360^circ), (50% = 180^circ), (25% = 90^circ), (20% = 72^circ), (15% = 54^circ), (10% = 36^circ), and (5% = 18^circ).",
+          "ar": "التحويلات الذهبية للقطاعات الدائرية في القدرات: (100% = 360^circ)، (50% = 180^circ)، (25% = 90^circ)، (20% = 72^circ)، (15% = 54^circ)، (10% = 36^circ)، و(5% = 18^circ)."
+        }
       },
       {
         "kind": "callout",
@@ -292,12 +310,12 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول D — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example 7.D — Tajmeeat Shortcut: Consecutive Arithmetic Mean & Pie Angles",
+          "ar": "مثال محلول 7.د — قوانين الإحصاء في قياس: متوسط الأعداد المتتالية والقطاعات الدائرية"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 10x + 25 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ أو } x = 5 \\).</li><li>المجموع \\( = \\mathbf{10} \\) وحاصل الضرب \\( = \\mathbf{25} \\).</li></ol>"
+          "en": "<p><strong>Consecutive Integers / Even / Odd Rule:</strong> In any evenly spaced sequence, <strong>Mean = Median = Middle Term = \\( \\frac{\\text{First} + \\text{Last}}{2} \\)</strong>.<br><strong>Example:</strong> The sum of 7 consecutive odd integers is 105. What is the largest integer?<br><strong>Shortcut:</strong> Middle (4th) term = \\( \\frac{105}{7} = 15 \\). The 3 odd integers after 15 are \\( 17, 19, \\mathbf{21} \\)!</p>",
+          "ar": "<p><strong>القاعدة الذهبية للأعداد المتتالية:</strong> في أي متتابعة منتظمة (أعداد متتالية أو زوجية متتالية أو فردية متتالية)، <strong>المتوسط الحسابي = الوسيط = الحد الأوسط = (الأول + الأخير) ÷ ٢</strong>.<br><strong>مثال:</strong> سبعة أعداد فردية متتالية مجموعها 105، فما أكبرها؟<br><strong>الحل الذهني:</strong> الحد الأوسط (الرابع) = \\( 105 \\div 7 = 15 \\). الأعداد الفردية الثلاثة التي تليه هي \\( 17, 19, \\mathbf{21} \\).</p>"
         }
       },
       {
@@ -352,7 +370,8 @@
   },
   "quizWidget": {
     "domains": [
-      "Data Analysis & Probability"
+      "Data Analysis & Probability",
+      "Statistics, Probability & Data"
     ],
     "enabled": true
   },

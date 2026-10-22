@@ -239,15 +239,27 @@ function examRefSheet(viewId){
   var isSatEst=/^(sat|est|est2|act|act2|geo|algebra|alg2)/.test(id);
   var isCambridge=/^(igcse|aslevel|a2level)/.test(id);
   var isArabic=/^(qudrat|tahsili)/.test(id);
-  var isAP=/^(apab|apbc|calculus|apstats|appc|precalc|ibsl|ibhl|mvc|linalg)/.test(id);
+  var isIB=/^(ibsl|ibhl|ib)/.test(id);
+  var isAP=/^(apab|apbc|calculus|apstats|appc|precalc|mvc|linalg)/.test(id);
 
-  if(!isSatEst&&!isCambridge&&!isArabic&&!isAP) return '';
+  if(!isSatEst&&!isCambridge&&!isArabic&&!isIB&&!isAP) return '';
 
   var title='Official Reference & Formula Sheet';
   var subtitle='Authorized formulas and geometric reference for this examination';
   var cards=[];
 
-  if(isArabic){
+  if(isIB){
+    var isIBHL=(id.indexOf('hl')!==-1);
+    title=isIBHL?'Official IB DP Mathematics HL Formula Booklet (v1.3 — SL & HL Complete Reference)':'Official IB DP Mathematics SL Formula Booklet (v1.3 — Core Reference)';
+    subtitle='Authorized International Baccalaureate formula reference for Paper 1, Paper 2'+(isIBHL?', and Paper 3':'');
+    cards=[
+      {title:'Topic 1: Number & Algebra',content:'Arithmetic: \\(u_n = u_1 + (n-1)d\\), \\(S_n = \\frac{n}{2}(2u_1 + (n-1)d)\\)<br>Geometric: \\(u_n = u_1 r^{n-1}\\), \\(S_n = \\frac{u_1(r^n-1)}{r-1}\\), \\(S_\\infty = \\frac{u_1}{1-r}\\) (\\(|r|<1\\))<br>Compound interest: \\(FV = PV\\left(1 + \\frac{r}{100k}\\right)^{kn}\\)<br>Binomial: \\((a+b)^n = \\sum_{r=0}^n \\binom{n}{r}a^{n-r}b^r\\)'+(isIBHL?'<br><strong>HL:</strong> De Moivre \\((r(\\cos\\theta+i\\sin\\theta))^n = r^n e^{in\\theta}\\), Rational binomial \\(\\binom{p}{r}=\\frac{p(p-1)\\cdots(p-r+1)}{r!}\\)':'')},
+      {title:'Topic 2: Functions',content:'Axis of symmetry: \\(x = -\\frac{b}{2a}\\), Discriminant: \\(\\Delta = b^2 - 4ac\\)<br>Quadratic formula: \\(x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}\\)<br>Exponentials & logs: \\(a^x = e^{x\\ln a}\\), \\(\\log_a b = \\frac{\\ln b}{\\ln a}\\)'+(isIBHL?'<br><strong>HL Vieta:</strong> Sum of roots \\(= -a_{n-1}/a_n\\), Product of roots \\(= (-1)^n a_0/a_n\\)':'')},
+      {title:'Topic 3: Geometry & Trigonometry',content:'Arc & Sector (rad): \\(l = r\\theta\\), \\(A = \\frac{1}{2}r^2\\theta\\)<br>Sine & Cosine Rules: \\(\\frac{a}{\\sin A} = \\frac{b}{\\sin B}\\), \\(c^2 = a^2+b^2-2ab\\cos C\\), \\(A = \\frac{1}{2}ab\\sin C\\)<br>Identities: \\(\\sin 2\\theta = 2\\sin\\theta\\cos\\theta\\), \\(\\cos 2\\theta = \\cos^2\\theta - \\sin^2\\theta\\)'+(isIBHL?'<br><strong>HL 3D Vectors:</strong> \\(\\mathbf{v}\\cdot\\mathbf{w}=|\\mathbf{v}||\\mathbf{w}|\\cos\\theta\\), \\(|\\mathbf{v}\\times\\mathbf{w}|=|\\mathbf{v}||\\mathbf{w}|\\sin\\theta\\), Line \\(\\mathbf{r}=\\mathbf{a}+\\lambda\\mathbf{b}\\)':'')},
+      {title:'Topic 4: Statistics & Probability',content:'\\(P(A\\cup B) = P(A)+P(B)-P(A\\cap B)\\), \\(P(A\\mid B) = \\frac{P(A\\cap B)}{P(B)}\\)<br>Binomial \\(X\\sim\\text{B}(n,p)\\): \\(E(X)=np\\), \\(\\text{Var}(X)=np(1-p)\\)<br>Standardized normal: \\(z = \\frac{x-\\mu}{\\sigma}\\)'+(isIBHL?'<br><strong>HL Bayes & Continuous RV:</strong> \\(P(B_i|A)=\\frac{P(B_i)P(A|B_i)}{\\sum P(B_j)P(A|B_j)}\\), \\(E(X)=\\int x f(x)dx\\), \\(\\text{Var}(X)=E(X^2)-[E(X)]^2\\)':'')},
+      {title:'Topic 5: Calculus',content:'Product & Quotient: \\((uv)\' = u\'v+uv\'\\), \\(\\left(\\frac{u}{v}\\right)\' = \\frac{vu\'-uv\'}{v^2}\\)<br>Kinematics: \\(v = \\frac{ds}{dt}\\), \\(a = \\frac{dv}{dt}\\), Distance \\(= \\int_{t_1}^{t_2}|v(t)|dt\\)<br>Trapezoidal rule: \\(\\int_a^b y\\,dx \\approx \\frac{1}{2}h[(y_0+y_n)+2(y_1+\\cdots+y_{n-1})]\\)'+(isIBHL?'<br><strong>HL Calculus:</strong> By parts \\(\\int u\\,dv = uv - \\int v\\,du\\), IF \\(I(x)=e^{\\int P(x)dx}\\), Euler \\(y_{n+1}=y_n+hf(x_n,y_n)\\), Maclaurin \\(f(x)=\\sum \\frac{f^{(k)}(0)}{k!}x^k\\)':'')}
+    ];
+  } else if(isArabic){
     title=(id==='qudrat')?'ورقة القوانين والمفاهيم الرياضية الأساسية (القدرات العامة)':'ورقة القوانين والمفاهيم الرياضية (التحصيلي)';
     subtitle='قوانين معتمدة ومفاهيم أساسية للاختبار — لا يُسمح باستخدام الآلة الحاسبة';
     if(id==='qudrat'){
@@ -433,12 +445,12 @@ function renderAIQuestion(q,idx,totalLetters,viewId){
   }
 
   // Figure or Data Table
-  var _aiFig = q.figure || q.fig || q.table;
+  var _aiFig = q.figure || q.fig || q.table || (q.svg ? {type:'svg', svg:q.svg} : null);
   if(_aiFig){
     if(typeof _aiFig === 'string'){
       html+='<div class="mfig">'+_aiFig+'</div>';
     } else {
-      var fig=typeof renderMathFigure==='function'?renderMathFigure(_aiFig):(window._renderFig?window._renderFig(_aiFig):'');
+      var fig=(typeof window._renderFig==='function'?window._renderFig(_aiFig):'')||(typeof renderMathFigure==='function'?renderMathFigure(_aiFig):'');
       if(fig){
         html+='<div class="mfig">'+fig+'</div>';
       } else if((_aiFig.type==='table'||_aiFig.headers||_aiFig.rows||_aiFig.data)&&(_aiFig.rows||_aiFig.data)){
@@ -730,7 +742,8 @@ function aiGenTest(btn){
   var _loadFigs=(typeof window._ensureFigures==='function')?window._ensureFigures().catch(function(){}):Promise.resolve();
   Promise.all([window._ensureAIExam(), _loadFigs]).then(function(){
   _bp=examBlueprint(viewId);
-  var _slots=window.ClipSATAssembler.plan(_bp,[{q:n,type:'mcq'}],lvl);
+  var _isIBTest=(viewId==='ibsl'||viewId==='ibhl');
+  var _slots=window.ClipSATAssembler.plan(_bp,[{q:n,type:_isIBTest?'frq':'mcq'}],lvl);
   return window.ClipSATAssembler.fill({viewId:viewId,blueprint:_bp,slots:_slots,system:examSystemPrompt(viewId),syllabus:examSyllabus(viewId),
     options:examLetters(viewId).length,generate:callAI,review:callAISolver,progress:assemblerProgress(out,'Building a '+n+'-question '+viewId.toUpperCase()+' test')
   });
@@ -753,6 +766,10 @@ function aiGenTest(btn){
       out.innerHTML='<p class="tg-empty" style="color:#dc2626">'+(_verifyRes&&_verifyRes.total?'None of the AI-generated questions passed review, so none are shown. Please try again, or choose Question bank.':'AI returned no questions. Please try again.')+'</p>';
       return;
     }
+    var _revTest = window.CSExamRevisionPass
+      ? window.CSExamRevisionPass(data, {viewId:viewId, isIB:(viewId==='ibsl'||viewId==='ibhl')})
+      : {items:data, report:null};
+    data = _revTest.items;
     // Get letter set from fullExamBank if available
     var letters=examLetters(viewId);
     var lvlLabel=(lvl==='all'?'all levels':lvl);
@@ -761,7 +778,8 @@ function aiGenTest(btn){
     var spec=window.examSpecs&&window.examSpecs[viewId];
     var examTitle=(spec&&spec.title)||viewId.toUpperCase();
 
-    var headHtml='<div class="tg-head">' +
+    var headHtml=(_revTest.report && window.CSRenderRevisionBanner ? window.CSRenderRevisionBanner(_revTest.report, viewId==='ibsl'||viewId==='ibhl') : '') +
+      '<div class="tg-head">' +
       '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">' +
         '<span class="tg-title">' + esc(examTitle) + ' Practice Test</span>' +
         '<span class="tg-ai-badge">✦ AI Real-Paper Standard</span>' +
@@ -868,8 +886,7 @@ function _maths(s){
   return typeof window.CSRenderMathString === 'function' ? window.CSRenderMathString(o) : o;
 }
 function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
-  var _tg=btn&&btn.closest&&btn.closest('.testgen');
-  var out=_tg?_tg.querySelector('.tg-out'):null;
+  var out=document.getElementById(viewId+'-exam-out');
   if(!out){
     var _p=btn&&btn.parentElement;
     var _sib=_p?_p.nextElementSibling:null;
@@ -878,6 +895,10 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
     if(!out&&btn&&btn.closest){
       var _sec=btn.closest('section');
       if(_sec){var _outs=_sec.querySelectorAll('.tg-out');out=_outs[_outs.length-1];}
+    }
+    if(!out){
+      var _tg=btn&&btn.closest&&btn.closest('.testgen');
+      out=_tg?_tg.querySelector('.tg-out'):null;
     }
   }
   if(!out&&btn&&btn.insertAdjacentElement){out=document.createElement('div');out.className='tg-out';btn.insertAdjacentElement('afterend',out);}
@@ -929,6 +950,11 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
     /* AI-authored MCQs conventionally list the correct choice first —
        randomize each question's choice order/answer index before rendering. */
     qs=qs.map(function(q){return window._shuffleQ?window._shuffleQ(q):q;});
+    var _isIBFull=(viewId==='ibsl'||viewId==='ibhl'||/^IB Math/i.test(examName||''));
+    var _revFull=window.CSExamRevisionPass
+      ? window.CSExamRevisionPass(qs, {viewId:viewId, examName:examName, isIB:_isIBFull})
+      : {items:qs, report:null};
+    qs=_revFull.items;
     /* Google Forms/Classroom capture — see public/js/quiz-capture-ui.js. */
     var _csCaptureQ=qs.map(function(q){
       var _fHtml = null;
@@ -962,6 +988,9 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
     var logoTag=(spec&&spec.logo)||examTitle;
 
     var html='<div class="full-exam-paper">';
+    if(_revFull && _revFull.report && window.CSRenderRevisionBanner){
+      html += window.CSRenderRevisionBanner(_revFull.report, _isIBFull);
+    }
 
     // Action bar (Print + Help)
     html+='<div class="fep-actions-bar no-print">' +
@@ -1086,8 +1115,7 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
         if(_pFig){
           var pfig = '';
           if(typeof _pFig === 'string') pfig = _pFig;
-          else if(typeof renderMathFigure === 'function') pfig = renderMathFigure(_pFig);
-          else if(window._renderFig) pfig = window._renderFig(_pFig);
+          else pfig = (typeof window._renderFig === 'function' ? window._renderFig(_pFig) : '') || (typeof renderMathFigure === 'function' ? renderMathFigure(_pFig) : '');
           if(!pfig && (_pFig.type === 'table' || _pFig.headers || _pFig.rows || _pFig.data)){
             pfig = '<table class="exam-table"><thead><tr>'+
               (_pFig.headers||[]).map(function(h){return h?'<th>'+_maths(String(h))+'</th>':'<th><span class="sr-only">Row label</span></th>';}).join('')+'</tr></thead><tbody>'+

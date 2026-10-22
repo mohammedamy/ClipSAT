@@ -89,7 +89,7 @@
     if(window.CS_loadTrackBank){
       return window.CS_loadTrackBank(viewId);
     }
-    return fetch('/bank-data/' + viewId + '.json')
+    return fetch('/bank-data/' + viewId + '.json?v=20261022c')
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(d){
         if(d){

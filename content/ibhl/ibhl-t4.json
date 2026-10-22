@@ -48,64 +48,86 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "Statistics &amp; Probability (HL) — Frequency Distribution (2)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
+          "type": "tree_diagram",
+          "title": "Topic 4 HL — Bayes' Theorem Diagnostic Screening Tree",
+          "firstLabel": "Prevalence",
+          "secondLabel": "Test Outcome",
+          "branches": [
             {
-              "label": "Q1",
-              "value": 22
+              "label": "D (Disease)",
+              "prob": "0.02",
+              "children": [
+                {
+                  "label": "+ (True Pos)",
+                  "prob": "0.95"
+                },
+                {
+                  "label": "− (False Neg)",
+                  "prob": "0.05"
+                }
+              ]
             },
             {
-              "label": "Q2",
-              "value": 35,
-              "highlight": true
-            },
-            {
-              "label": "Q3",
-              "value": 28
-            },
-            {
-              "label": "Q4",
-              "value": 19
+              "label": "D' (Healthy)",
+              "prob": "0.98",
+              "children": [
+                {
+                  "label": "+ (False Pos)",
+                  "prob": "0.04"
+                },
+                {
+                  "label": "− (True Neg)",
+                  "prob": "0.96"
+                }
+              ]
             }
           ]
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for Statistics &amp; Probability (HL).",
+          "en": "Conditional probability tree diagram for Bayes' Theorem P(D | +) = (0.02 × 0.95) / (0.02 × 0.95 + 0.98 × 0.04) = 19/58 ≈ 0.328.",
           "ar": null
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "Statistics &amp; Probability (HL) — Frequency Distribution (1)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
+          "type": "tree_diagram",
+          "title": "Topic 4 HL — Bayes' Theorem Diagnostic Screening Tree",
+          "firstLabel": "Prevalence",
+          "secondLabel": "Test Outcome",
+          "branches": [
             {
-              "label": "Q1",
-              "value": 18
+              "label": "D (Disease)",
+              "prob": "0.02",
+              "children": [
+                {
+                  "label": "+ (True Pos)",
+                  "prob": "0.95"
+                },
+                {
+                  "label": "− (False Neg)",
+                  "prob": "0.05"
+                }
+              ]
             },
             {
-              "label": "Q2",
-              "value": 32,
-              "highlight": true
-            },
-            {
-              "label": "Q3",
-              "value": 26
-            },
-            {
-              "label": "Q4",
-              "value": 14
+              "label": "D' (Healthy)",
+              "prob": "0.98",
+              "children": [
+                {
+                  "label": "+ (False Pos)",
+                  "prob": "0.04"
+                },
+                {
+                  "label": "− (True Neg)",
+                  "prob": "0.96"
+                }
+              ]
             }
           ]
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for Statistics &amp; Probability (HL).",
+          "en": "Conditional probability tree diagram for Bayes' Theorem P(D | +) = (0.02 × 0.95) / (0.02 × 0.95 + 0.98 × 0.04) = 19/58 ≈ 0.328.",
           "ar": null
         }
       },
@@ -466,11 +488,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Past-Paper Idea Matrix & Official Markscheme Worked Example — Topic 4 HL (Bayes, Continuous RVs & Hypothesis Testing)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>High-Frequency IB HL Past-Paper Ideas (AHL 4.13–4.19):</strong></p>\n<table class=\"exam-table\" style=\"margin:6px 0\">\n<thead><tr><th>Subtopic</th><th>Classic Past-Paper Question Pattern</th><th>Examiner Trap to Avoid</th></tr></thead>\n<tbody>\n<tr><td><strong>AHL 4.13 Bayes' Theorem</strong></td><td>Three-branch partition $B_1, B_2, B_3$ with conditional event $A$: $P(B_1|A) = \\frac{P(B_1)P(A|B_1)}{\\sum_i P(B_i)P(A|B_i)}$.</td><td>Confusing $P(A|B)$ (\"given $B$\") with $P(A \\cap B)$ (\"both $A$ and $B$\").</td></tr>\n<tr><td><strong>AHL 4.14 Continuous Random Variables (AA HL)</strong></td><td>Finding constant $k$ via $\\int_a^b f(x)\\,dx = 1$; median $m$ via $\\int_a^m f(x)\\,dx = 0.5$; mode at max of $f(x)$; $\\text{Var}(X) = \\int x^2 f(x)\\,dx - \\mu^2$.</td><td>Setting $f'(m) = 0$ to find the <em>median</em>! $f'(x)=0$ checks for a local maximum (mode); the median always solves $\\int_a^m f(x)\\,dx = 0.5$.</td></tr>\n<tr><td><strong>AHL 4.17–4.19 Poisson &amp; Linear Combinations (AI HL)</strong></td><td>Scaling Poisson rate $\\lambda$ proportionally to time/area; for independent $X_1, X_2$: $\\text{Var}(aX_1 - bX_2) = a^2\\text{Var}(X_1) + b^2\\text{Var}(X_2)$.</td><td>Subtracting variances when finding $\\text{Var}(X - Y)$ — variances of independent random variables <strong>always add</strong> ($+b^2\\text{Var}(Y)$), and distinguishing $2X$ ($\\text{Var}=4\\sigma^2$) from $X_1 + X_2$ ($\\text{Var}=2\\sigma^2$).</td></tr>\n</tbody></table>\n<p><strong>Worked Example (AA HL Paper 1 — 8 marks):</strong><br>\nA continuous random variable $X$ has probability density function $f(x) = kx(2 - x)$ for $0 \\le x \\le 2$, and $f(x) = 0$ otherwise.<br>\n(a) Show that $k = \\frac{3}{4}$. <strong>[3]</strong><br>\n(b) Find $\\text{E}(X)$ and $\\text{Var}(X)$. <strong>[5]</strong></p>\n<p><strong>Official IB Markscheme Solution:</strong><br>\n(a) Total probability $= 1$: $\\int_0^2 k(2x - x^2)\\,dx = 1 \\implies k\\left[x^2 - \\frac{x^3}{3}\\right]_0^2 = 1$ <strong>[M1] [A1]</strong><br>\n$k\\left(4 - \\frac{8}{3}\\right) = \\frac{4}{3}k = 1 \\implies k = \\frac{3}{4}$ <strong>[A1] [AG]</strong><br>\n(b) By symmetry of $f(x) = \\frac{3}{4}x(2-x)$ about $x = 1$ (or integration), $\\text{E}(X) = 1$ <strong>[A1]</strong><br>\n$\\text{E}(X^2) = \\frac{3}{4}\\int_0^2 (2x^3 - x^4)\\,dx = \\frac{3}{4}\\left[\\frac{x^4}{2} - \\frac{x^5}{5}\\right]_0^2 = \\frac{3}{4}\\left(8 - \\frac{32}{5}\\right) = \\frac{3}{4}\\left(\\frac{8}{5}\\right) = \\frac{6}{5}$ <strong>[M1] [A1]</strong><br>\n$\\text{Var}(X) = \\text{E}(X^2) - [\\text{E}(X)]^2 = \\frac{6}{5} - 1^2 = \\frac{1}{5} = 0.2$ <strong>[M1] [A1]</strong></p>",
           "ar": null
         }
       },

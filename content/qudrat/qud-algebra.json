@@ -39,70 +39,60 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Algebra Essentials — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
+          "title": "Difference of Squares & Quadratic Identities: f(x) = x² − 4",
+          "xmin": -4,
+          "xmax": 4,
+          "ymin": -5,
+          "ymax": 6,
+          "fn": "x*x - 4",
+          "fn2": "x + 2",
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
+              "x": -2,
+              "y": 0,
+              "label": "(-2, 0)"
+            },
+            {
+              "x": 2,
+              "y": 0,
+              "label": "(2, 0)"
             },
             {
               "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "y": -4,
+              "label": "Vertex (0, -4)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
-          "ar": "التمثيل البياني للدالة f(x) = x² − 2 ومماسها عند x = 1."
+          "en": "Geometric meaning of the golden identity x² − y² = (x − y)(x + y) and intersection of y = x² − 4 with y = x + 2 at x = −2 and x = 3.",
+          "ar": "المعنى الهندسي لمتطابقة الفرق بين مربعين س² − ص² = (س − ص)(س + ص) وتقاطع المنحنى ص = س² − ٤ مع المستقيم ص = س + ٢."
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Algebra Essentials Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Algebra Essentials"
+          "en": "⊙ Explorer · Geometric Algebraic Identities Lab (مختبر المتطابقات الجبرية التربيعية)",
+          "ar": "⊙ مستكشف تفاعلي · مختبر المتطابقات الجبرية التربيعية وفرق المربعين"
         },
-        "canvasId": "exAuto_quad_qudalgebra",
+        "canvasId": "qudIdentitiesCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Algebra Essentials",
-          "ar": "مستكشف رياضي تفاعلي لدرس Algebra Essentials"
+          "en": "Interactive geometric area model for (a+b)^2 = a^2 + 2ab + b^2 and a^2 - b^2",
+          "ar": "نموذج هندسي تفاعلي للمتطابقات الجبرية (a+b)² = a² + 2ab + b² والفرق بين مربعين"
         },
         "dataPanel": {
-          "btnId": "exAuto_quad_qudalgebra_dataBtn",
-          "panelId": "exAuto_quad_qudalgebra_dataPanel",
-          "descId": "exAuto_quad_qudalgebra_dataDesc",
-          "rowsId": "exAuto_quad_qudalgebra_dataRows",
+          "btnId": "qudIdDataBtn",
+          "panelId": "qudIdDataPanel",
+          "descId": "qudIdDataDesc",
+          "rowsId": "qudIdDataRows",
           "caption": {
-            "en": "Numerical table for Algebra Essentials",
-            "ar": "جدول القيم العددية لدرس Algebra Essentials"
+            "en": "Comparison of (a+b)², a²+b², 2ab, (a−b)², and a²−b²",
+            "ar": "مقارنة قيم (a+b)² و a²+b² و 2ab و (a−b)² و a²−b²"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Identity Expression",
+              "ar": "المقدار الجبري"
             },
             {
               "en": "Value",
@@ -112,58 +102,70 @@
         },
         "controls": [
           {
-            "id": "exAuto_quad_qudalgebra_s0",
+            "id": "qudIdA",
+            "valueDisplayId": "qudIdAV",
             "label": {
-              "en": "Parameter <b>a =</b>",
-              "ar": "المعامل <b>a =</b>"
+              "en": "Length <b>a =</b>",
+              "ar": "الطول <b>a =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_qudalgebra_v0",
             "ariaLabel": {
-              "en": "Primary parameter a",
-              "ar": "المعامل الأول a"
-            }
+              "en": "Length a",
+              "ar": "الطول a"
+            },
+            "min": 2,
+            "max": 10,
+            "value": 6,
+            "step": 1
           },
           {
-            "id": "exAuto_quad_qudalgebra_s1",
+            "id": "qudIdB",
+            "valueDisplayId": "qudIdBV",
             "label": {
-              "en": "Parameter <b>b =</b>",
-              "ar": "المعامل <b>b =</b>"
+              "en": "Length <b>b =</b>",
+              "ar": "الطول <b>b =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_qudalgebra_v1",
             "ariaLabel": {
-              "en": "Secondary parameter b",
-              "ar": "المعامل الثاني b"
-            }
+              "en": "Length b",
+              "ar": "الطول b"
+            },
+            "min": 1,
+            "max": 8,
+            "value": 3,
+            "step": 1
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_quad_qudalgebra_r0",
+            "id": "qudIdSqSum",
             "label": {
-              "en": "Primary Metric",
-              "ar": "المقدار الأساسي"
+              "en": "(a + b)² = a² + 2ab + b²",
+              "ar": "مربع المجموع (a + b)²"
             },
             "colorClass": "indigo",
-            "value": "2.00"
+            "value": "81"
           },
           {
-            "id": "exAuto_quad_qudalgebra_r1",
+            "id": "qudIdSumSq",
             "label": {
-              "en": "Secondary Metric",
-              "ar": "المقدار الثانوي"
+              "en": "a² + b² (Sum of Squares)",
+              "ar": "مجموع المربعين a² + b²"
             },
             "colorClass": "amber",
-            "value": "1.00"
+            "value": "45"
+          },
+          {
+            "id": "qudIdDiffSq",
+            "label": {
+              "en": "a² − b² = (a−b)(a+b)",
+              "ar": "الفرق بين مربعين a² − b²"
+            },
+            "value": "27"
           }
-        ]
+        ],
+        "note": {
+          "en": "Classic Qudrat Trap: ((a+b)^2 \neq a^2 + b^2) for non-zero (a,b). They differ by the two amber rectangles (2ab). Also note ((a+b)^2 - (a-b)^2 = 4ab).",
+          "ar": "فخ شهير في القدرات: ((a+b)^2 \neq a^2 + b^2) عندما يكون العددان غير صفريين، بل يزيد مربع المجموع بمقدار المستطيلين (2ab). وكذلك ((a+b)^2 - (a-b)^2 = 4ab)."
+        }
       },
       {
         "kind": "callout",
@@ -312,12 +314,12 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول D — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example 3.D — Tajmeeat Shortcut: Reciprocal Sum Identity (x + 1/x)²",
+          "ar": "مثال محلول 3.د — متطابقات التجميعات الشهيرة: (س + ١/س) وفرق المربعين"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 10x + 25 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ أو } x = 5 \\).</li><li>المجموع \\( = \\mathbf{10} \\) وحاصل الضرب \\( = \\mathbf{25} \\).</li></ol>"
+          "en": "<p><strong>Problem:</strong> If \\( x + \\frac{1}{x} = 5 \\), find the value of \\( x^2 + \\frac{1}{x^2} \\).<br><strong>Qiyas Identity Shortcut:</strong> Square both sides:<br>\\[ \\left(x + \\frac{1}{x}\\right)^2 = x^2 + 2(x)\\left(\\frac{1}{x}\\right) + \\frac{1}{x^2} = x^2 + \\frac{1}{x^2} + 2 \\]<br>Therefore, \\( x^2 + \\frac{1}{x^2} = 5^2 - 2 = 25 - 2 = \\mathbf{23} \\). (If given \\( x - \\frac{1}{x} = k \\), then \\( x^2 + \\frac{1}{x^2} = k^2 + 2 \\).)</p>",
+          "ar": "<p><strong>المسألة:</strong> إذا كان \\( x + \\frac{1}{x} = 5 \\)، فأوجد قيمة \\( x^2 + \\frac{1}{x^2} \\).<br><strong>قانون قياس السريع:</strong> بتربيع الطرفين:<br>\\[ \\left(x + \\frac{1}{x}\\right)^2 = x^2 + \\frac{1}{x^2} + 2 \\implies x^2 + \\frac{1}{x^2} = 5^2 - 2 = \\mathbf{23} \\]<br>(وإذا كان المعطى بالناقص \\( x - \\frac{1}{x} = k \\) فإن \\( x^2 + \\frac{1}{x^2} = k^2 + 2 \\)).</p>"
         }
       },
       {

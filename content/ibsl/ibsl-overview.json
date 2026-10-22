@@ -27,139 +27,172 @@
           "ar": null
         },
         "body": {
-          "en": "<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Topic</th><th>AA SL content</th><th>AI SL content</th><th>~Marks</th></tr></thead><tbody><tr><td>1 &mdash; Number &amp; Algebra</td><td>Sequences, logs, binomial theorem</td><td>Financial maths, TVM</td><td>16</td></tr><tr><td>2 &mdash; Functions</td><td>Domain/range, transformations, inverse</td><td>Modelling, regression</td><td>21</td></tr><tr><td>3 &mdash; Geometry &amp; Trig</td><td>Circle, triangles, vectors 2D</td><td>Voronoi, 3D trig</td><td>25</td></tr><tr><td>4 &mdash; Statistics &amp; Probability</td><td>Binomial, Normal, prob</td><td>Chi-squared, Spearman</td><td>27</td></tr><tr><td>5 &mdash; Calculus</td><td>Differentiation, integration</td><td>Slope fields, Euler method</td><td>28</td></tr></tbody></table><p style=\"margin-top:8px\"><strong>Exam:</strong> Paper 1 (no GDC, 80 marks, 90 min) + Paper 2 (GDC, 80 marks, 90 min). External 80% + Internal Assessment 20%.</p>",
+          "en": "<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Topic</th><th>AA SL content</th><th>AI SL content</th><th>~Marks</th></tr></thead><tbody><tr><td>1 &mdash; Number &amp; Algebra</td><td>Sequences, logs, binomial theorem</td><td>Financial maths, TVM</td><td>16</td></tr><tr><td>2 &mdash; Functions</td><td>Domain/range, transformations, inverse</td><td>Modelling, regression</td><td>21</td></tr><tr><td>3 &mdash; Geometry &amp; Trig</td><td>Circle, triangles, vectors 2D</td><td>Voronoi, 3D trig</td><td>25</td></tr><tr><td>4 &mdash; Statistics &amp; Probability</td><td>Binomial, Normal, prob</td><td>Chi-squared, Spearman</td><td>27</td></tr><tr><td>5 &mdash; Calculus</td><td>Differentiation, integration</td><td>Slope fields, Euler method</td><td>28</td></tr></tbody></table><p style=\"margin-top:8px\"><strong>Exam:</strong> <strong>AA SL:</strong> Paper 1 (No GDC, 80 marks, 90 min) + Paper 2 (GDC required, 80 marks, 90 min). <strong>AI SL:</strong> Paper 1 (GDC required, short-response, 80 marks, 90 min) + Paper 2 (GDC required, extended-response, 80 marks, 90 min). External 80% + Internal Assessment 20%.</p>",
           "ar": null
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Overview — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
+          "type": "cumulative_frequency",
+          "title": "IB SL Paper 1 — Cumulative Frequency Ogive & Quartile Readout (N = 80)",
           "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
-          ]
+            [
+              10,
+              0
+            ],
+            [
+              20,
+              6
+            ],
+            [
+              30,
+              18
+            ],
+            [
+              40,
+              40
+            ],
+            [
+              50,
+              62
+            ],
+            [
+              60,
+              74
+            ],
+            [
+              70,
+              80
+            ]
+          ],
+          "q1": 31,
+          "median": 40,
+          "q3": 49,
+          "xlabel": "Examination Score (marks)",
+          "ylabel": "Cumulative Frequency"
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Official IB-style cumulative frequency curve (ogive) for N = 80 candidates, showing dashed interpolation lines for Q₁ = 31, Median = 40, and Q₃ = 49 (IQR = 18).",
           "ar": null
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Overview Lab",
+          "en": "⊙ Explorer · IB Cumulative Frequency Ogive, Quartiles & Outlier Fence Lab",
           "ar": null
         },
-        "canvasId": "exAuto_quad_ibsloverview",
+        "canvasId": "ibslOgiveCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Overview",
+          "en": "Interactive IB cumulative frequency ogive explorer showing quartiles Q1, median, Q3, IQR, and percentile interpolation",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_quad_ibsloverview_dataBtn",
-          "panelId": "exAuto_quad_ibsloverview_dataPanel",
-          "descId": "exAuto_quad_ibsloverview_dataDesc",
-          "rowsId": "exAuto_quad_ibsloverview_dataRows",
+          "btnId": "ibslOgiveDataBtn",
+          "panelId": "ibslOgiveDataPanel",
+          "descId": "ibslOgiveDataDesc",
+          "rowsId": "ibslOgiveDataRows",
           "caption": {
-            "en": "Numerical table for Overview",
+            "en": "Cumulative frequency quartile and outlier fence summary (N = 80)",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Statistic / Percentile",
               "ar": null
             },
             {
-              "en": "Value",
+              "en": "Interpolated Value",
               "ar": null
             }
           ]
         },
         "controls": [
           {
-            "id": "exAuto_quad_ibsloverview_s0",
+            "id": "ibslOgivePct",
             "label": {
-              "en": "Parameter <b>a =</b>",
+              "en": "Target Percentile <b>p =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_ibsloverview_v0",
+            "min": 5,
+            "max": 95,
+            "value": 50,
+            "step": 5,
+            "valueDisplayId": "ibslOgivePctVal",
             "ariaLabel": {
-              "en": "Primary parameter a",
+              "en": "Target percentile p",
               "ar": null
             }
           },
           {
-            "id": "exAuto_quad_ibsloverview_s1",
+            "id": "ibslOgiveSkew",
             "label": {
-              "en": "Parameter <b>b =</b>",
+              "en": "Distribution Skew <b>s =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_ibsloverview_v1",
+            "min": -1,
+            "max": 1,
+            "value": 0,
+            "step": 0.2,
+            "valueDisplayId": "ibslOgiveSkewVal",
             "ariaLabel": {
-              "en": "Secondary parameter b",
+              "en": "Distribution skew parameter",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_quad_ibsloverview_r0",
+            "id": "ibslOgiveQ1",
             "label": {
-              "en": "Primary Metric",
+              "en": "Q₁ (25%)",
               "ar": null
             },
-            "colorClass": "indigo",
-            "value": "2.00"
+            "value": "32.4",
+            "colorClass": "indigo"
           },
           {
-            "id": "exAuto_quad_ibsloverview_r1",
+            "id": "ibslOgiveMed",
             "label": {
-              "en": "Secondary Metric",
+              "en": "Median (50%)",
               "ar": null
             },
-            "colorClass": "amber",
-            "value": "1.00"
+            "value": "50.0",
+            "colorClass": "teal"
+          },
+          {
+            "id": "ibslOgiveQ3",
+            "label": {
+              "en": "Q₃ (75%)",
+              "ar": null
+            },
+            "value": "67.6",
+            "colorClass": "indigo"
+          },
+          {
+            "id": "ibslOgiveIQR",
+            "label": {
+              "en": "IQR (Q₃ − Q₁)",
+              "ar": null
+            },
+            "value": "35.2",
+            "colorClass": "amber"
+          },
+          {
+            "id": "ibslOgiveVal",
+            "label": {
+              "en": "Selected Percentile",
+              "ar": null
+            },
+            "value": "50.0 (CF = 40.0)",
+            "colorClass": "amber"
           }
-        ]
+        ],
+        "note": {
+          "en": "Drag the percentile slider to read off any percentile from the cumulative frequency axis (N = 80) across to the ogive curve and down to the score axis — the exact geometric interpolation method awarded [M1][A1] on IB SL Paper 1 & Paper 2.",
+          "ar": null
+        }
       },
       {
         "kind": "callout",
@@ -249,51 +282,47 @@
       },
       {
         "kind": "figure",
-        "caption": {
-          "en": "IB Mathematics SL assessment component weighting: Paper 1 (40%), Paper 2 (40%), and Internal Assessment exploration (20%).",
-          "ar": null
-        },
         "figure": {
-          "type": "bar",
-          "title": "IB Mathematics SL Assessment Weighting (%)",
-          "data": [
-            {
-              "label": "Paper 1 (non-calc)",
-              "val": 40
-            },
-            {
-              "label": "Paper 2 (calc)",
-              "val": 40
-            },
-            {
-              "label": "Internal Assessment",
-              "val": 20
-            }
+          "type": "cumulative_frequency",
+          "title": "IB SL Paper 1 — Cumulative Frequency Ogive & Quartile Readout (N = 80)",
+          "points": [
+            [
+              10,
+              0
+            ],
+            [
+              20,
+              6
+            ],
+            [
+              30,
+              18
+            ],
+            [
+              40,
+              40
+            ],
+            [
+              50,
+              62
+            ],
+            [
+              60,
+              74
+            ],
+            [
+              70,
+              80
+            ]
           ],
-          "ylabel": "Weighting (%)"
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked Example A — Algebraic Structure & Vieta's Root Relations",
-          "ar": null
+          "q1": 31,
+          "median": 40,
+          "q3": 49,
+          "xlabel": "Examination Score (marks)",
+          "ylabel": "Cumulative Frequency"
         },
-        "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 5x + 6 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 2)(x - 3) = 0 \\implies x = 2 \\text{ or } x = 3 \\).</li><li>Check Vieta's formulas: sum \\( = 2 + 3 = \\mathbf{5} \\) and product \\( = (2)(3) = \\mathbf{6} \\).</li></ol>",
-          "ar": null
-        }
-      },
-      {
-        "kind": "callout",
-        "style": "example",
-        "label": {
-          "en": "Worked Example B — Algebraic Structure & Vieta's Root Relations",
-          "ar": null
-        },
-        "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 9x + 18 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 3)(x - 6) = 0 \\implies x = 3 \\text{ or } x = 6 \\).</li><li>Check Vieta's formulas: sum \\( = 3 + 6 = \\mathbf{9} \\) and product \\( = (3)(6) = \\mathbf{18} \\).</li></ol>",
+        "caption": {
+          "en": "Official IB-style cumulative frequency curve (ogive) for N = 80 candidates, showing dashed interpolation lines for Q₁ = 31, Median = 40, and Q₃ = 49 (IQR = 18).",
           "ar": null
         }
       },
@@ -301,11 +330,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "en": "Official IB Command Terms, Markscheme Codes (M1/A1/R1/AG) & 2021–2029 Syllabus Alignment",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "en": "<p><strong>1. Critical Calculator Distinction (AA vs AI Paper 1):</strong></p>\n<table class=\"exam-table\" style=\"margin:8px 0\">\n<thead><tr><th>Course &amp; Paper</th><th>Duration &amp; Marks</th><th>GDC Policy</th><th>Paper Format &amp; Structure</th></tr></thead>\n<tbody>\n<tr><td><strong>AA SL Paper 1</strong></td><td>90 min · 80 marks (40%)</td><td><strong>NO GDC Allowed</strong></td><td><strong>Section A:</strong> 6–7 compulsory short-response questions in answer boxes (~40m)<br><strong>Section B:</strong> 3 compulsory extended-response multi-part questions (~40m)</td></tr>\n<tr><td><strong>AA SL Paper 2</strong></td><td>90 min · 80 marks (40%)</td><td><strong>GDC Required</strong></td><td><strong>Section A:</strong> 6–7 compulsory short-response questions (~40m)<br><strong>Section B:</strong> 3 compulsory extended-response questions (~40m)</td></tr>\n<tr><td><strong>AI SL Paper 1</strong></td><td>90 min · 80 marks (40%)</td><td><strong>GDC Required</strong></td><td><strong>100% Short-Response:</strong> 11–14 compulsory short-response questions (~5–8m each) testing all 5 syllabus topics with technology</td></tr>\n<tr><td><strong>AI SL Paper 2</strong></td><td>90 min · 80 marks (40%)</td><td><strong>GDC Required</strong></td><td><strong>100% Extended-Response:</strong> 5–6 compulsory multi-part modelling &amp; statistics questions (~13–18m each)</td></tr>\n</tbody></table>\n<p><strong>2. Decoding IB Command Terms &amp; Markscheme Codes:</strong></p>\n<ul>\n<li><strong>Write down</strong> (1–2 marks): Obtain the answer directly (from a graph, GDC, or inspection); little or no working is required.</li>\n<li><strong>Find / Determine / Calculate</strong>: Full algebraic or GDC method setup must be shown to earn <strong>M1</strong> (Method) and <strong>A1</strong> (Accuracy) marks.</li>\n<li><strong>Show that ... [AG]</strong>: The final result is <em>Answer Given (AG)</em> on the paper. You <strong>cannot</strong> work backwards from the given answer; every intermediate step must be explicitly written to earn the final reasoning mark <strong>R1</strong> before stating the given result.</li>\n<li><strong>Hence / Hence or otherwise</strong>: <em>\"Hence\"</em> mandates using the preceding part's result (other methods score 0); <em>\"Hence or otherwise\"</em> strongly recommends using the preceding result.</li>\n<li><strong>Follow-Through (ft)</strong>: If an arithmetic slip occurs in part (a), full <strong>M1 A1ft</strong> marks can still be earned in part (b) if your method is correctly applied to your part (a) value.</li>\n</ul>",
           "ar": null
         }
       },
@@ -313,11 +342,35 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Official IB Command Terms, Markscheme Codes (M1/A1/R1/AG) & 2021–2029 Syllabus Alignment",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>1. Critical Calculator Distinction (AA vs AI Paper 1):</strong></p>\n<table class=\"exam-table\" style=\"margin:8px 0\">\n<thead><tr><th>Course &amp; Paper</th><th>Duration &amp; Marks</th><th>GDC Policy</th><th>Paper Format &amp; Structure</th></tr></thead>\n<tbody>\n<tr><td><strong>AA SL Paper 1</strong></td><td>90 min · 80 marks (40%)</td><td><strong>NO GDC Allowed</strong></td><td><strong>Section A:</strong> 6–7 compulsory short-response questions in answer boxes (~40m)<br><strong>Section B:</strong> 3 compulsory extended-response multi-part questions (~40m)</td></tr>\n<tr><td><strong>AA SL Paper 2</strong></td><td>90 min · 80 marks (40%)</td><td><strong>GDC Required</strong></td><td><strong>Section A:</strong> 6–7 compulsory short-response questions (~40m)<br><strong>Section B:</strong> 3 compulsory extended-response questions (~40m)</td></tr>\n<tr><td><strong>AI SL Paper 1</strong></td><td>90 min · 80 marks (40%)</td><td><strong>GDC Required</strong></td><td><strong>100% Short-Response:</strong> 11–14 compulsory short-response questions (~5–8m each) testing all 5 syllabus topics with technology</td></tr>\n<tr><td><strong>AI SL Paper 2</strong></td><td>90 min · 80 marks (40%)</td><td><strong>GDC Required</strong></td><td><strong>100% Extended-Response:</strong> 5–6 compulsory multi-part modelling &amp; statistics questions (~13–18m each)</td></tr>\n</tbody></table>\n<p><strong>2. Decoding IB Command Terms &amp; Markscheme Codes:</strong></p>\n<ul>\n<li><strong>Write down</strong> (1–2 marks): Obtain the answer directly (from a graph, GDC, or inspection); little or no working is required.</li>\n<li><strong>Find / Determine / Calculate</strong>: Full algebraic or GDC method setup must be shown to earn <strong>M1</strong> (Method) and <strong>A1</strong> (Accuracy) marks.</li>\n<li><strong>Show that ... [AG]</strong>: The final result is <em>Answer Given (AG)</em> on the paper. You <strong>cannot</strong> work backwards from the given answer; every intermediate step must be explicitly written to earn the final reasoning mark <strong>R1</strong> before stating the given result.</li>\n<li><strong>Hence / Hence or otherwise</strong>: <em>\"Hence\"</em> mandates using the preceding part's result (other methods score 0); <em>\"Hence or otherwise\"</em> strongly recommends using the preceding result.</li>\n<li><strong>Follow-Through (ft)</strong>: If an arithmetic slip occurs in part (a), full <strong>M1 A1ft</strong> marks can still be earned in part (b) if your method is correctly applied to your part (a) value.</li>\n</ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Official IB Command Terms, Markscheme Codes (M1/A1/R1/AG) & 2021–2029 Syllabus Alignment",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. Critical Calculator Distinction (AA vs AI Paper 1):</strong></p>\n<table class=\"exam-table\" style=\"margin:8px 0\">\n<thead><tr><th>Course &amp; Paper</th><th>Duration &amp; Marks</th><th>GDC Policy</th><th>Paper Format &amp; Structure</th></tr></thead>\n<tbody>\n<tr><td><strong>AA SL Paper 1</strong></td><td>90 min · 80 marks (40%)</td><td><strong>NO GDC Allowed</strong></td><td><strong>Section A:</strong> 6–7 compulsory short-response questions in answer boxes (~40m)<br><strong>Section B:</strong> 3 compulsory extended-response multi-part questions (~40m)</td></tr>\n<tr><td><strong>AA SL Paper 2</strong></td><td>90 min · 80 marks (40%)</td><td><strong>GDC Required</strong></td><td><strong>Section A:</strong> 6–7 compulsory short-response questions (~40m)<br><strong>Section B:</strong> 3 compulsory extended-response questions (~40m)</td></tr>\n<tr><td><strong>AI SL Paper 1</strong></td><td>90 min · 80 marks (40%)</td><td><strong>GDC Required</strong></td><td><strong>100% Short-Response:</strong> 11–14 compulsory short-response questions (~5–8m each) testing all 5 syllabus topics with technology</td></tr>\n<tr><td><strong>AI SL Paper 2</strong></td><td>90 min · 80 marks (40%)</td><td><strong>GDC Required</strong></td><td><strong>100% Extended-Response:</strong> 5–6 compulsory multi-part modelling &amp; statistics questions (~13–18m each)</td></tr>\n</tbody></table>\n<p><strong>2. Decoding IB Command Terms &amp; Markscheme Codes:</strong></p>\n<ul>\n<li><strong>Write down</strong> (1–2 marks): Obtain the answer directly (from a graph, GDC, or inspection); little or no working is required.</li>\n<li><strong>Find / Determine / Calculate</strong>: Full algebraic or GDC method setup must be shown to earn <strong>M1</strong> (Method) and <strong>A1</strong> (Accuracy) marks.</li>\n<li><strong>Show that ... [AG]</strong>: The final result is <em>Answer Given (AG)</em> on the paper. You <strong>cannot</strong> work backwards from the given answer; every intermediate step must be explicitly written to earn the final reasoning mark <strong>R1</strong> before stating the given result.</li>\n<li><strong>Hence / Hence or otherwise</strong>: <em>\"Hence\"</em> mandates using the preceding part's result (other methods score 0); <em>\"Hence or otherwise\"</em> strongly recommends using the preceding result.</li>\n<li><strong>Follow-Through (ft)</strong>: If an arithmetic slip occurs in part (a), full <strong>M1 A1ft</strong> marks can still be earned in part (b) if your method is correctly applied to your part (a) value.</li>\n</ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Official IB Command Terms, Markscheme Codes (M1/A1/R1/AG) & 2021–2029 Syllabus Alignment",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. Critical Calculator Distinction (AA vs AI Paper 1):</strong></p>\n<table class=\"exam-table\" style=\"margin:8px 0\">\n<thead><tr><th>Course &amp; Paper</th><th>Duration &amp; Marks</th><th>GDC Policy</th><th>Paper Format &amp; Structure</th></tr></thead>\n<tbody>\n<tr><td><strong>AA SL Paper 1</strong></td><td>90 min · 80 marks (40%)</td><td><strong>NO GDC Allowed</strong></td><td><strong>Section A:</strong> 6–7 compulsory short-response questions in answer boxes (~40m)<br><strong>Section B:</strong> 3 compulsory extended-response multi-part questions (~40m)</td></tr>\n<tr><td><strong>AA SL Paper 2</strong></td><td>90 min · 80 marks (40%)</td><td><strong>GDC Required</strong></td><td><strong>Section A:</strong> 6–7 compulsory short-response questions (~40m)<br><strong>Section B:</strong> 3 compulsory extended-response questions (~40m)</td></tr>\n<tr><td><strong>AI SL Paper 1</strong></td><td>90 min · 80 marks (40%)</td><td><strong>GDC Required</strong></td><td><strong>100% Short-Response:</strong> 11–14 compulsory short-response questions (~5–8m each) testing all 5 syllabus topics with technology</td></tr>\n<tr><td><strong>AI SL Paper 2</strong></td><td>90 min · 80 marks (40%)</td><td><strong>GDC Required</strong></td><td><strong>100% Extended-Response:</strong> 5–6 compulsory multi-part modelling &amp; statistics questions (~13–18m each)</td></tr>\n</tbody></table>\n<p><strong>2. Decoding IB Command Terms &amp; Markscheme Codes:</strong></p>\n<ul>\n<li><strong>Write down</strong> (1–2 marks): Obtain the answer directly (from a graph, GDC, or inspection); little or no working is required.</li>\n<li><strong>Find / Determine / Calculate</strong>: Full algebraic or GDC method setup must be shown to earn <strong>M1</strong> (Method) and <strong>A1</strong> (Accuracy) marks.</li>\n<li><strong>Show that ... [AG]</strong>: The final result is <em>Answer Given (AG)</em> on the paper. You <strong>cannot</strong> work backwards from the given answer; every intermediate step must be explicitly written to earn the final reasoning mark <strong>R1</strong> before stating the given result.</li>\n<li><strong>Hence / Hence or otherwise</strong>: <em>\"Hence\"</em> mandates using the preceding part's result (other methods score 0); <em>\"Hence or otherwise\"</em> strongly recommends using the preceding result.</li>\n<li><strong>Follow-Through (ft)</strong>: If an arithmetic slip occurs in part (a), full <strong>M1 A1ft</strong> marks can still be earned in part (b) if your method is correctly applied to your part (a) value.</li>\n</ul>",
           "ar": null
         }
       },

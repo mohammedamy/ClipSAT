@@ -43,70 +43,63 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Integration & Applications — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
+          "title": "Definite Integral & Area Enclosed: ∫₀³ (3x − x²) dx = 9/2",
+          "xmin": -0.5,
+          "xmax": 3.5,
+          "ymin": -1,
+          "ymax": 3,
+          "fn": "3*x - x*x",
+          "shade": {
+            "from": 0,
+            "to": 3
+          },
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
+              "x": 0,
+              "y": 0,
+              "label": "(0, 0)"
             },
             {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "x": 1.5,
+              "y": 2.25,
+              "label": "Vertex (1.5, 2.25)"
+            },
+            {
+              "x": 3,
+              "y": 0,
+              "label": "(3, 0)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
-          "ar": "التمثيل البياني للدالة f(x) = x² − 2 ومماسها عند x = 1."
+          "en": "Area under y = 3x − x² from x = 0 to x = 3: by the Fundamental Theorem of Calculus, A = [3x²/2 − x³/3]₀³ = 27/2 − 9 = 9/2 = 4.5.",
+          "ar": "المساحة المحصورة تحت المنحنى y = 3x − x² من x = 0 إلى x = 3: بالتكامل المحدد A = [3x²/2 − x³/3]₀³ = 27/2 − 9 = 4.5 وحدة مربعة."
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Integration & Applications Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Integration & Applications"
+          "en": "⊙ Explorer · Fundamental Theorem of Calculus & Area Lab (مختبر التكامل المحدد والمساحة)",
+          "ar": "⊙ مستكشف تفاعلي · مختبر النظرية الأساسية للتفاضل والتكامل ومجاميع ريمان (رياضيات ٣)"
         },
-        "canvasId": "exAuto_calc_tahcalc2",
+        "canvasId": "tahIntegralCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Integration & Applications",
-          "ar": "مستكشف رياضي تفاعلي لدرس Integration & Applications"
+          "en": "Interactive definite integral and Riemann sum explorer for f(x) = 0.5x^2 + 1 on [0, b]",
+          "ar": "مستكشف تفاعلي للتكامل المحدد ومجاميع ريمان للدالة f(x) = 0.5x² + 1 على الفترة [0, b]"
         },
         "dataPanel": {
-          "btnId": "exAuto_calc_tahcalc2_dataBtn",
-          "panelId": "exAuto_calc_tahcalc2_dataPanel",
-          "descId": "exAuto_calc_tahcalc2_dataDesc",
-          "rowsId": "exAuto_calc_tahcalc2_dataRows",
+          "btnId": "tahIntDataBtn",
+          "panelId": "tahIntDataPanel",
+          "descId": "tahIntDataDesc",
+          "rowsId": "tahIntDataRows",
           "caption": {
-            "en": "Numerical table for Integration & Applications",
-            "ar": "جدول القيم العددية لدرس Integration & Applications"
+            "en": "Exact FTC definite integral vs. midpoint Riemann sum approximation",
+            "ar": "مقارنة المساحة الدقيقة بالتكامل المحدد مع تقريب مستطيلات ريمان"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Calculus Metric",
+              "ar": "المعيار التفاضلي/التكاملي"
             },
             {
               "en": "Value",
@@ -116,67 +109,69 @@
         },
         "controls": [
           {
-            "id": "exAuto_calc_tahcalc2_s0",
+            "id": "tahIntB",
+            "valueDisplayId": "tahIntBV",
             "label": {
-              "en": "Parameter <b>a =</b>",
-              "ar": "المعامل <b>a =</b>"
+              "en": "Upper Bound <b>b =</b>",
+              "ar": "الحد العلوي <b>b =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_tahcalc2_v0",
             "ariaLabel": {
-              "en": "Primary parameter a",
-              "ar": "المعامل الأول a"
-            }
+              "en": "Upper bound b",
+              "ar": "الحد العلوي b"
+            },
+            "min": 1,
+            "max": 4,
+            "value": 3,
+            "step": 1
           },
           {
-            "id": "exAuto_calc_tahcalc2_s1",
+            "id": "tahIntN",
+            "valueDisplayId": "tahIntNV",
             "label": {
-              "en": "Parameter <b>b =</b>",
-              "ar": "المعامل <b>b =</b>"
+              "en": "Rectangles <b>n =</b>",
+              "ar": "عدد المستطيلات <b>n =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_tahcalc2_v1",
             "ariaLabel": {
-              "en": "Secondary parameter b",
-              "ar": "المعامل الثاني b"
-            }
+              "en": "Number of Riemann rectangles n",
+              "ar": "عدد المستطيلات n"
+            },
+            "min": 2,
+            "max": 20,
+            "value": 6,
+            "step": 2
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_calc_tahcalc2_r0",
+            "id": "tahIntExact",
             "label": {
-              "en": "Primary Metric",
-              "ar": "المقدار الأساسي"
+              "en": "Exact Area ∫₀ᵇ f(x)dx",
+              "ar": "المساحة الدقيقة ∫₀ᵇ f(x)dx"
             },
             "colorClass": "indigo",
-            "value": "2.00"
+            "value": "7.50"
           },
           {
-            "id": "exAuto_calc_tahcalc2_r1",
+            "id": "tahIntRiem",
             "label": {
-              "en": "Secondary Metric",
-              "ar": "المقدار الثانوي"
+              "en": "Riemann Approximation",
+              "ar": "تقريب ريمان"
             },
             "colorClass": "amber",
-            "value": "1.00"
+            "value": "7.47"
+          },
+          {
+            "id": "tahIntAnti",
+            "label": {
+              "en": "Antiderivative F(x)",
+              "ar": "الدالة الأصلية F(x)"
+            },
+            "value": "F(x) = x³/6 + x"
           }
         ],
-        "canvas3d": {
-          "btnId": "exAuto3dBtn_surf_tahcalc2",
-          "wrapId": "exAuto3dWrap_tahcalc2",
-          "hintId": "exAuto3dHint_tahcalc2",
-          "btnLabel": "🧊 View Interactive 3D Model",
-          "ariaLabel": {
-            "en": "Interactive 3D visualization for Integration & Applications. Drag to rotate.",
-            "ar": "عرض ثلاثي الأبعاد تفاعلي لدرس Integration & Applications. اسحب للتدوير."
-          }
+        "note": {
+          "en": "By the Fundamental Theorem of Calculus (النظرية الأساسية للتفاضل والتكامل), if (F'(x) = f(x)), then (int_a^b f(x),dx = F(b) - F(a)). As the number of rectangles (n \to infty), the Riemann sum converges to the exact area.",
+          "ar": "بموجب النظرية الأساسية للتفاضل والتكامل، إذا كانت (F'(x) = f(x)) فإن (int_a^b f(x),dx = F(b) - F(a)). وكلما زاد عدد المستطيلات (n) اقترب مجموع ريمان من المساحة الدقيقة."
         }
       },
       {
@@ -314,12 +309,12 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
-          "ar": "مثال محلول D — معدل التغير اللحظي ومعادلة المماس"
+          "en": "Worked Example 7.D — Tajmeeat Shortcut: Solving for Unknown Upper Limit in Definite Integrals",
+          "ar": "مثال محلول 7.د — إيجاد الحد العلوي المجهول في التكامل المحدد (سؤال تجميعات متكرر)"
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
-          "ar": "لتكن \\( f(x) = 5x^3 - x^2 + 4 \\). أوجد معدل التغير اللحظي \\( f'(5) \\).<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>نشتق حداً بحداّ: \\( f'(x) = 15x^2 - 2x \\).</li><li>نعوض \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = \\mathbf{365} \\).</li></ol>"
+          "en": "<p><strong>Problem:</strong> Find the positive constant \\( k \\) such that \\( \\int_0^k (2x + 1)\\,dx = 12 \\).<br><strong>Solution:</strong> Antiderivative is \\( [x^2 + x]_0^k = k^2 + k \\). Setting \\( k^2 + k = 12 \\implies (k+4)(k-3) = 0 \\). Since \\( k > 0 \\), \\( k = \\mathbf{3} \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد قيمة الثابت الموجب \\( k \\) إذا كان \\( \\int_0^k (2x + 1)\\,dx = 12 \\).<br><strong>الحل:</strong> الدالة الأصلية هي \\( [x^2 + x]_0^k = k^2 + k \\). بمساواتها بـ 12: \\( k^2 + k - 12 = 0 \\implies (k+4)(k-3) = 0 \\)، وبما أن \\( k > 0 \\) فإن \\( k = \\mathbf{3} \\).</p>"
         }
       },
       {
@@ -374,7 +369,8 @@
   },
   "quizWidget": {
     "domains": [
-      "Integration & Applications"
+      "Integration & Applications",
+      "Integral Calculus & Area"
     ],
     "enabled": true
   }

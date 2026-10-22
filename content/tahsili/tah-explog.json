@@ -43,70 +43,65 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Exponentials & Logarithms — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
+          "title": "Exponential Growth y = 2ˣ & Logarithmic Inverse y = log₂(x)",
+          "xmin": -3,
+          "xmax": 5,
+          "ymin": -3,
+          "ymax": 5,
+          "fn": "Math.pow(2, x)",
+          "fn2": "x > 0 ? Math.log2(x) : NaN",
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
+              "x": 0,
+              "y": 1,
+              "label": "(0, 1)"
             },
             {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "x": 1,
+              "y": 0,
+              "label": "(1, 0)"
+            },
+            {
+              "x": 2,
+              "y": 4,
+              "label": "(2, 4)"
+            },
+            {
+              "x": 4,
+              "y": 2,
+              "label": "(4, 2)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
-          "ar": "التمثيل البياني للدالة f(x) = x² − 2 ومماسها عند x = 1."
+          "en": "Symmetry of y = 2ˣ (horizontal asymptote y = 0, domain ℝ) and y = log₂(x) (vertical asymptote x = 0, domain (0, ∞)) across y = x.",
+          "ar": "تناظر الدالة الأسية y = 2ˣ (خط تقارب أفقي y = 0) والدالة اللوغاريتمية العكسية y = log₂(x) (خط تقارب رأسي x = 0 ومجالها x > 0) حول المستقيم y = x."
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Exponentials & Logarithms Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Exponentials & Logarithms"
+          "en": "⊙ Explorer · Exponential & Logarithmic Inverse Reflection Lab (مختبر الدوال الأسية واللوغاريتمية)",
+          "ar": "⊙ مستكشف تفاعلي · مختبر التناظر العكسي بين الدالة الأسية واللوغاريتمية حول y = x (رياضيات ٣)"
         },
-        "canvasId": "exAuto_exp_tahexplog",
+        "canvasId": "tahExpLogCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Exponentials & Logarithms",
-          "ar": "مستكشف رياضي تفاعلي لدرس Exponentials & Logarithms"
+          "en": "Interactive coordinate plot showing f(x) = b^x and its inverse log_b(x) reflected across y = x",
+          "ar": "مستكشف تفاعلي لمنحنى الدالة الأسية f(x) = b^x ودالتها العكسية اللوغاريتمية log_b(x) بالانعكاس حول y = x"
         },
         "dataPanel": {
-          "btnId": "exAuto_exp_tahexplog_dataBtn",
-          "panelId": "exAuto_exp_tahexplog_dataPanel",
-          "descId": "exAuto_exp_tahexplog_dataDesc",
-          "rowsId": "exAuto_exp_tahexplog_dataRows",
+          "btnId": "tahExpDataBtn",
+          "panelId": "tahExpDataPanel",
+          "descId": "tahExpDataDesc",
+          "rowsId": "tahExpDataRows",
           "caption": {
-            "en": "Numerical table for Exponentials & Logarithms",
-            "ar": "جدول القيم العددية لدرس Exponentials & Logarithms"
+            "en": "Mirror points (x, b^x) and (b^x, x), domains, ranges, and asymptotes",
+            "ar": "النقاط المتناظرة (x, b^x) و (b^x, x) والمجال والمدى وخطوط التقارب"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Property",
+              "ar": "الخاصية"
             },
             {
               "en": "Value",
@@ -116,58 +111,70 @@
         },
         "controls": [
           {
-            "id": "exAuto_exp_tahexplog_s0",
+            "id": "tahExpBase",
+            "valueDisplayId": "tahExpBaseV",
             "label": {
-              "en": "Parameter <b>a =</b>",
-              "ar": "المعامل <b>a =</b>"
+              "en": "Base <b>b =</b>",
+              "ar": "الأساس <b>b =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_exp_tahexplog_v0",
             "ariaLabel": {
-              "en": "Primary parameter a",
-              "ar": "المعامل الأول a"
-            }
+              "en": "Base b",
+              "ar": "الأساس b"
+            },
+            "min": 2,
+            "max": 5,
+            "value": 2,
+            "step": 1
           },
           {
-            "id": "exAuto_exp_tahexplog_s1",
+            "id": "tahExpX",
+            "valueDisplayId": "tahExpXV",
             "label": {
-              "en": "Parameter <b>b =</b>",
-              "ar": "المعامل <b>b =</b>"
+              "en": "Exponent <b>x =</b>",
+              "ar": "الأس <b>x =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_exp_tahexplog_v1",
             "ariaLabel": {
-              "en": "Secondary parameter b",
-              "ar": "المعامل الثاني b"
-            }
+              "en": "Input x",
+              "ar": "القيمة x"
+            },
+            "min": 0,
+            "max": 3,
+            "value": 2,
+            "step": 1
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_exp_tahexplog_r0",
+            "id": "tahExpVal",
             "label": {
-              "en": "Primary Metric",
-              "ar": "المقدار الأساسي"
+              "en": "Exponential Form",
+              "ar": "الصورة الأسية"
             },
             "colorClass": "indigo",
-            "value": "2.00"
+            "value": "2^2 = 4"
           },
           {
-            "id": "exAuto_exp_tahexplog_r1",
+            "id": "tahLogVal",
             "label": {
-              "en": "Secondary Metric",
-              "ar": "المقدار الثانوي"
+              "en": "Logarithmic Form",
+              "ar": "الصورة اللوغاريتمية"
             },
             "colorClass": "amber",
-            "value": "1.00"
+            "value": "log_2(4) = 2"
+          },
+          {
+            "id": "tahExpAsym",
+            "label": {
+              "en": "Asymptotes",
+              "ar": "خطوط التقارب"
+            },
+            "value": "y = 0 (أسي) | x = 0 (لوغاريتمي)"
           }
-        ]
+        ],
+        "note": {
+          "en": "Because (f(x) = b^x) and (f^{-1}(x) = log_b(x)) are inverse functions, the domain of (log_b(x)) is ((0, infty)) (equal to the range of (b^x)), its vertical asymptote is (x = 0), and its x-intercept is ((1, 0)).",
+          "ar": "بما أن (f(x) = b^x) و (f^{-1}(x) = log_b(x)) دالتان متعاكستان، فإن مجال الدالة اللوغاريتمية هو ((0, infty)) ومداها (mathbb{R})، وخط تقاربها الرأسي (x = 0)، ومقطعها السيني دائماً ((1, 0))."
+        }
       },
       {
         "kind": "cards",
@@ -304,12 +311,12 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول D — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example 8.D — Tajmeeat Shortcut: Telescoping Logarithms & Change of Base",
+          "ar": "مثال محلول 8.د — اختصار اللوغاريتمات المتسلسلة وتغيير الأساس"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 10x + 25 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ أو } x = 5 \\).</li><li>المجموع \\( = \\mathbf{10} \\) وحاصل الضرب \\( = \\mathbf{25} \\).</li></ol>"
+          "en": "<p><strong>Problem:</strong> Evaluate \\( \\log_2 5 \\cdot \\log_5 8 \\) and find the domain of \\( f(x) = \\log_3(x - 4) \\).<br><strong>Solution:</strong><br>1. By the change-of-base chain rule \\( \\log_a b \\cdot \\log_b c = \\log_a c \\), we get \\( \\log_2 8 = \\log_2(2^3) = \\mathbf{3} \\).<br>2. The argument of a logarithm must be strictly positive: \\( x - 4 > 0 \\implies x > 4 \\), so the domain is \\( \\mathbf{(4, \\infty)} \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد قيمة \\( \\log_2 5 \\cdot \\log_5 8 \\)، وحدد مجال الدالة \\( f(x) = \\log_3(x - 4) \\).<br><strong>الحل:</strong><br>1. بقاعدة سلسلة تغيير الأساس \\( \\log_a b \\cdot \\log_b c = \\log_a c \\) نحصل على \\( \\log_2 8 = \\log_2(2^3) = \\mathbf{3} \\).<br>2. يشترط أن يكون ما بداخل اللوغاريتم موجباً تماماً: \\( x - 4 > 0 \\implies x > 4 \\)، فالمجال هو \\( \\mathbf{(4, \\infty)} \\).</p>"
         }
       },
       {
@@ -364,7 +371,8 @@
   },
   "quizWidget": {
     "domains": [
-      "Exponentials & Logarithms"
+      "Exponentials & Logarithms",
+      "Exponential & Logarithmic Functions"
     ],
     "enabled": true
   }

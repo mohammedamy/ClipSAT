@@ -42,40 +42,20 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Trigonometry — Harmonic Wave & Phase Profile (2)",
-          "xrange": [
-            0,
-            6.28
-          ],
-          "yrange": [
-            -3.5,
-            3.5
-          ],
-          "fns": [
-            {
-              "fn": "3*Math.sin(x)",
-              "color": "var(--fig-indigo)",
-              "label": "y = 3 sin(x)"
-            },
-            {
-              "fn": "2*Math.cos(x)",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "y = 2 cos(x)"
-            }
-          ],
-          "points": [
-            {
-              "x": 1.57,
-              "y": 3,
-              "label": "Peak (π/2, 3)"
-            }
-          ]
+          "type": "triangle",
+          "a": 5,
+          "b": 12,
+          "c": 13,
+          "angleA": "θ",
+          "angleC": "90°",
+          "labelA": "Opp = 5",
+          "labelB": "Adj = 12",
+          "labelC": "Hyp = 13",
+          "title": "Pythagorean Trigonometric Triple (5-12-13) & ASTC Signs"
         },
         "caption": {
-          "en": "Periodic sine and cosine waveforms showing amplitude and quarter-period phase shift.",
-          "ar": "منحنيات الجيب وجيب التمام الدورية وتوضح السعة وإزاحة الطور."
+          "en": "Classic Tahsili right-triangle ratio setup: if sin θ = 5/13 in Quadrant II, then cos θ = −12/13, tan θ = −5/12, and sin(2θ) = 2 sin θ cos θ = −120/169.",
+          "ar": "مثلث النسب المثلثية الشهير (5-12-13) في التحصيلي: إذا كان sin θ = 5/13 في الربع الثاني فإن cos θ = −12/13 و sin(2θ) = 2 sin θ cos θ = −120/169."
         }
       },
       {
@@ -297,12 +277,12 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول D — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example 4.D — Year 3 Pathways: Polar Coordinates & De Moivre’s Theorem",
+          "ar": "مثال محلول 4.د — الإحداثيات القطبية والصورة القطبية للأعداد المركبة ونظرية ديموافر"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 10x + 25 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ أو } x = 5 \\).</li><li>المجموع \\( = \\mathbf{10} \\) وحاصل الضرب \\( = \\mathbf{25} \\).</li></ol>"
+          "en": "<p><strong>1. Polar-Cartesian Conversion (الإحداثيات القطبية):</strong> \\( x = r\\cos\\theta,\\ y = r\\sin\\theta,\\ r^2 = x^2 + y^2,\\ \\tan\\theta = \\frac{y}{x} \\).<ul><li>Equation \\( r = 5 \\iff x^2 + y^2 = 25 \\) (circle of radius 5).</li><li>Equation \\( r = 4\\cos\\theta \\implies r^2 = 4r\\cos\\theta \\iff x^2 + y^2 = 4x \\iff (x-2)^2 + y^2 = 4 \\).</li><li>Distance between polar points \\( P_1(r_1,\\theta_1) \\) and \\( P_2(r_2,\\theta_2) \\): \\( d = \\sqrt{r_1^2 + r_2^2 - 2r_1r_2\\cos(\\theta_2 - \\theta_1)} \\).</li></ul><strong>2. De Moivre’s Theorem (نظرية ديموافر):</strong> \\( [r(\\cos\\theta + i\\sin\\theta)]^n = r^n(\\cos(n\\theta) + i\\sin(n\\theta)) \\).<br><strong>Example:</strong> \\( [2(\\cos 15^\\circ + i\\sin 15^\\circ)]^4 = 2^4(\\cos 60^\\circ + i\\sin 60^\\circ) = 16\\left(\\frac{1}{2} + i\\frac{\\sqrt{3}}{2}\\right) = \\mathbf{8 + 8\\sqrt{3}\\,i} \\).</p>",
+          "ar": "<p><strong>١. التحويل بين الإحداثيات القطبية والديكارتية:</strong> \\( x = r\\cos\\theta,\\ y = r\\sin\\theta,\\ x^2 + y^2 = r^2 \\).<ul><li>المعادلة القطبية \\( r = 5 \\) تمثل دائرة معادلتها الديكارتية \\( x^2 + y^2 = 25 \\).</li><li>المسافة بين نقطتين قطبيتين \\( (r_1,\\theta_1) \\) و \\( (r_2,\\theta_2) \\): \\( d = \\sqrt{r_1^2 + r_2^2 - 2r_1r_2\\cos(\\theta_2 - \\theta_1)} \\).</li></ul><strong>٢. نظرية ديموافر (De Moivre):</strong> نرفع المقياس للقوة \\( n \\) ونضرب الزاوية في \\( n \\):<br>\\[ [2(\\cos 15^\\circ + i\\sin 15^\\circ)]^4 = 16(\\cos 60^\\circ + i\\sin 60^\\circ) = \\mathbf{8 + 8\\sqrt{3}\\,i} \\]</p>"
         }
       },
       {

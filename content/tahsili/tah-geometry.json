@@ -42,40 +42,41 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "circle",
-          "radius": 6,
-          "labelR": "r = 6",
-          "chordAngle": 120
+          "type": "conic_section",
+          "subtype": "hyperbola",
+          "a": 4,
+          "b": 3,
+          "title": "Conic Sections: Hyperbola x²/16 − y²/9 = 1 (Foci c = 5, Asymptotes y = ±¾x)"
         },
         "caption": {
-          "en": "Circle sector and chord geometry with radius r = 6 and central angle 120°.",
-          "ar": "هندسة القطاع الدائري والوتر بنصف قطر r = 6 وزاوية مركزية 120°."
+          "en": "Hyperbola x²/16 − y²/9 = 1 with vertices (±4, 0), foci (±5, 0) where c² = a² + b² = 25, eccentricity e = 5/4, and asymptotes y = ±(3/4)x.",
+          "ar": "القطع الزائد x²/16 − y²/9 = 1 برأسيه (±4, 0) وبؤرتيه (±5, 0) حيث c² = a² + b² = 25، واختلافه المركزي e = 5/4، وخطا تقاربه y = ±(3/4)x."
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Geometry & Coordinate Geometry Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Geometry & Coordinate Geometry"
+          "en": "⊙ Explorer · Conic Sections, Foci & Eccentricity Lab (القطوع المخروطية)",
+          "ar": "⊙ مستكشف تفاعلي · مختبر القطوع المخروطية والبؤر والاختلاف المركزي"
         },
-        "canvasId": "exAuto_geo_tahgeometry",
+        "canvasId": "tahConicCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Geometry & Coordinate Geometry",
-          "ar": "مستكشف رياضي تفاعلي لدرس Geometry & Coordinate Geometry"
+          "en": "Interactive conic section explorer showing ellipse and hyperbola foci, vertices, asymptotes, and eccentricity e = c/a",
+          "ar": "مستكشف تفاعلي للقطع الناقص والقطع الزائد يوضح البؤرتين والرأسين وخطي التقارب والاختلاف المركزي e = c/a"
         },
         "dataPanel": {
-          "btnId": "exAuto_geo_tahgeometry_dataBtn",
-          "panelId": "exAuto_geo_tahgeometry_dataPanel",
-          "descId": "exAuto_geo_tahgeometry_dataDesc",
-          "rowsId": "exAuto_geo_tahgeometry_dataRows",
+          "btnId": "tahConicDataBtn",
+          "panelId": "tahConicDataPanel",
+          "descId": "tahConicDataDesc",
+          "rowsId": "tahConicDataRows",
           "caption": {
-            "en": "Numerical table for Geometry & Coordinate Geometry",
-            "ar": "جدول القيم العددية لدرس Geometry & Coordinate Geometry"
+            "en": "Semi-axes a, b, focal distance c, and eccentricity e = c/a",
+            "ar": "نصفا المحورين a و b، البعد البؤري c، والاختلاف المركزي e = c/a"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Conic Parameter",
+              "ar": "المعامل الهندسي"
             },
             {
               "en": "Value",
@@ -85,67 +86,85 @@
         },
         "controls": [
           {
-            "id": "exAuto_geo_tahgeometry_s0",
+            "id": "tahConicA",
+            "valueDisplayId": "tahConicAV",
             "label": {
-              "en": "Parameter <b>a =</b>",
-              "ar": "المعامل <b>a =</b>"
+              "en": "Semi-axis <b>a =</b>",
+              "ar": "نصف المحور <b>a =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_geo_tahgeometry_v0",
             "ariaLabel": {
-              "en": "Primary parameter a",
-              "ar": "المعامل الأول a"
-            }
+              "en": "Semi-axis a",
+              "ar": "نصف المحور a"
+            },
+            "min": 2,
+            "max": 6,
+            "value": 4,
+            "step": 1
           },
           {
-            "id": "exAuto_geo_tahgeometry_s1",
+            "id": "tahConicB",
+            "valueDisplayId": "tahConicBV",
             "label": {
-              "en": "Parameter <b>b =</b>",
-              "ar": "المعامل <b>b =</b>"
+              "en": "Semi-axis <b>b =</b>",
+              "ar": "نصف المحور <b>b =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_geo_tahgeometry_v1",
             "ariaLabel": {
-              "en": "Secondary parameter b",
-              "ar": "المعامل الثاني b"
-            }
+              "en": "Semi-axis b",
+              "ar": "نصف المحور b"
+            },
+            "min": 1,
+            "max": 5,
+            "value": 3,
+            "step": 1
+          },
+          {
+            "id": "tahConicMode",
+            "valueDisplayId": "tahConicModeV",
+            "label": {
+              "en": "Type <b>(1=Ellipse, 2=Hyperbola)</b>",
+              "ar": "النوع <b>(١=ناقص، ٢=زائد)</b>"
+            },
+            "ariaLabel": {
+              "en": "Conic type",
+              "ar": "نوع القطع المخروطي"
+            },
+            "min": 1,
+            "max": 2,
+            "value": 1,
+            "step": 1
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_geo_tahgeometry_r0",
+            "id": "tahConicC",
             "label": {
-              "en": "Primary Metric",
-              "ar": "المقدار الأساسي"
+              "en": "Focal Distance c",
+              "ar": "البعد البؤري c"
             },
             "colorClass": "indigo",
-            "value": "2.00"
+            "value": "2.65"
           },
           {
-            "id": "exAuto_geo_tahgeometry_r1",
+            "id": "tahConicEcc",
             "label": {
-              "en": "Secondary Metric",
-              "ar": "المقدار الثانوي"
+              "en": "Eccentricity e = c/a",
+              "ar": "الاختلاف المركزي e = c/a"
             },
             "colorClass": "amber",
-            "value": "1.00"
+            "value": "0.66"
+          },
+          {
+            "id": "tahConicType",
+            "label": {
+              "en": "Classification",
+              "ar": "تصنيف القطع"
+            },
+            "value": "قطع ناقص (0 < e < 1)"
           }
         ],
-        "canvas3d": {
-          "btnId": "exAuto3dBtn_solid_tahgeometry",
-          "wrapId": "exAuto3dWrap_tahgeometry",
-          "hintId": "exAuto3dHint_tahgeometry",
-          "btnLabel": "🧊 View Interactive 3D Model",
-          "ariaLabel": {
-            "en": "Interactive 3D visualization for Geometry & Coordinate Geometry. Drag to rotate.",
-            "ar": "عرض ثلاثي الأبعاد تفاعلي لدرس Geometry & Coordinate Geometry. اسحب للتدوير."
-          }
+        "note": {
+          "en": "For an ellipse, \\( c^2 = a^2 - b^2 \\) and \\( 0 \\le e \\lt 1 \\) (circle when \\( a=b \\implies e=0 \\)). For a hyperbola, \\( c^2 = a^2 + b^2 \\), \\( e \\gt 1 \\), and asymptotes are \\( y = \\pm\\frac{b}{a}x \\).",
+          "ar": "في القطع الناقص \\( c^2 = a^2 - b^2 \\) ويكون \\( 0 \\le e \\lt 1 \\) (ويتحول إلى دائرة عندما \\( a=b \\implies e=0 \\)). وفي القطع الزائد \\( c^2 = a^2 + b^2 \\) ويكون \\( e \\gt 1 \\) وخطا التقارب \\( y = \\pm\\frac{b}{a}x \\)."
         }
       },
       {
@@ -298,12 +317,12 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
-          "ar": "مثال محلول D — المسافة الإقليدية والمركبات المتعامدة"
+          "en": "Worked Example 5.D — Year 3 Pathways (High-Yield): Conic Sections & 2D/3D Vectors Master Reference",
+          "ar": "مثال محلول 5.د — مرجع ثالث ثانوي الذهبي: القطوع المخروطية والمتجهات في المستوى والفضاء"
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
-          "ar": "إزاحة مركبتها الأفقية \\( \\Delta x = 5 \\) والعمودية \\( \\Delta y = 5 \\). أوجد مربع الطول \\( d^2 \\) ومساحة المثلث القائم المتكون.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>بحسب نظرية فيثاغورس: \\( d^2 = (5)^2 + (5)^2 = \\mathbf{50} \\).</li><li>مساحة المثلث القائم: \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>"
+          "en": "<p><strong>1. Conic Sections (القطوع المخروطية):</strong><ul><li><strong>Parabola (القطع المكافئ):</strong> \\( (x-h)^2 = 4c(y-k) \\) opens up/down with vertex \\( (h,k) \\), focus \\( (h, k+c) \\), directrix \\( y = k-c \\), and latus rectum length (طول الوتر البؤري) \\( = |4c| \\).</li><li><strong>Ellipse (القطع الناقص):</strong> \\( \\frac{(x-h)^2}{a^2} + \\frac{(y-k)^2}{b^2} = 1 \\) with \\( a > b \\), major axis length \\( 2a \\), minor axis \\( 2b \\), \\( c^2 = a^2 - b^2 \\), and eccentricity \\( e = \\frac{c}{a} \\in (0,1) \\).</li><li><strong>Hyperbola (القطع الزائد):</strong> \\( \\frac{(x-h)^2}{a^2} - \\frac{(y-k)^2}{b^2} = 1 \\), \\( c^2 = a^2 + b^2 \\), \\( e = \\frac{c}{a} > 1 \\), asymptotes \\( y - k = \\pm\\frac{b}{a}(x - h) \\).</li><li><strong>Discriminant \\( B^2 - 4AC \\):</strong> Circle if \\( B=0, A=C \\); Ellipse if \\( < 0 \\); Parabola if \\( = 0 \\); Hyperbola if \\( > 0 \\).</li></ul><strong>2. 2D & 3D Vectors (المتجهات):</strong><ul><li><strong>Unit Vector (متجه الوحدة):</strong> \\( \\mathbf{u} = \\frac{\\mathbf{v}}{|\\mathbf{v}|} \\). For \\( \\mathbf{v} = \\langle 3, 4 \\rangle \\), \\( \\mathbf{u} = \\langle \\frac{3}{5}, \\frac{4}{5} \\rangle \\).</li><li><strong>Dot Product & Orthogonality (الضرب الداخلي والتعامد):</strong> \\( \\mathbf{u}\\cdot\\mathbf{v} = u_1v_1 + u_2v_2 + u_3v_3 = |\\mathbf{u}||\\mathbf{v}|\\cos\\theta \\). Orthogonal \\( \\iff \\mathbf{u}\\cdot\\mathbf{v} = 0 \\).</li></ul></p>",
+          "ar": "<p><strong>١. خلاصة القطوع المخروطية (ثالث ثانوي):</strong><ul><li><strong>القطع المكافئ:</strong> \\( (x-h)^2 = 4c(y-k) \\) رأسه \\( (h,k) \\)، وطول وتره البؤري \\( |4c| \\)، والبعد بين الرأس والبؤرة \\( |c| \\).</li><li><strong>القطع الناقص:</strong> \\( c^2 = a^2 - b^2 \\)، طول المحور الأكبر \\( 2a \\) والأصغر \\( 2b \\)، والاختلاف المركزي \\( e = \\frac{c}{a} < 1 \\) (وللدائرة \\( e = 0 \\)).</li><li><strong>القطع الزائد:</strong> \\( c^2 = a^2 + b^2 \\)، والاختلاف المركزي \\( e = \\frac{c}{a} > 1 \\)، وخطا التقارب الأفقي \\( y - k = \\pm\\frac{b}{a}(x - h) \\).</li><li><strong>المميز \\( B^2 - 4AC \\):</strong> مكافئ إذا ساوى \\( 0 \\)، ناقص إذا كان \\( < 0 \\) (ودائرة إذا \\( A=C, B=0 \\))، وزائد إذا كان \\( > 0 \\).</li></ul><strong>٢. المتجهات في المستوى والفضاء الثلاثي:</strong><ul><li><strong>متجه الوحدة باتجاه \\( \\mathbf{v} \\):</strong> \\( \\mathbf{u} = \\frac{\\mathbf{v}}{|\\mathbf{v}|} \\).</li><li><strong>الضرب الداخلي والتعامد:</strong> يتعامد المتجهان إذا وفقط إذا كان \\( \\mathbf{u}\\cdot\\mathbf{v} = u_1v_1 + u_2v_2 + u_3v_3 = 0 \\).</li></ul></p>"
         }
       },
       {
@@ -358,7 +377,9 @@
   },
   "quizWidget": {
     "domains": [
-      "Geometry & Coordinate Geometry"
+      "Geometry & Coordinate Geometry",
+      "Analytic Geometry, Conic Sections & Vectors",
+      "Vectors & Matrices"
     ],
     "enabled": true
   }

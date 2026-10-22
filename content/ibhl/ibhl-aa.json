@@ -49,43 +49,49 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "AA HL — Additional Topics — Coordinate Curve & Tangent Analysis (2)",
+          "title": "AA HL — Maclaurin Series Approximations P₁(x), P₃(x), P₅(x) to sin(x)",
           "xrange": [
-            -4,
-            4
+            -4.5,
+            4.5
           ],
           "yrange": [
-            -3,
-            9
+            -2,
+            2
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "sin(x)",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "label": "f(x) = sin(x)"
             },
             {
-              "fn": "2*x - 3",
+              "fn": "x - pow(x,3)/6",
               "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "dash": "5,3",
+              "label": "P₃(x) = x − x³/6"
+            },
+            {
+              "fn": "x - pow(x,3)/6 + pow(x,5)/120",
+              "color": "var(--fig-teal)",
+              "dash": "3,3",
+              "label": "P₅(x) = x − x³/6 + x⁵/120"
             }
           ],
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
+              "x": 0,
+              "y": 0,
+              "label": "Origin (0, 0)"
             },
             {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "x": 1.57,
+              "y": 1,
+              "label": "(π/2, 1)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Convergence of odd-degree Maclaurin polynomials P₃(x) and P₅(x) to sin(x), a classic IB AA HL Paper 3 investigation theme.",
           "ar": null
         }
       },
@@ -291,43 +297,52 @@
       },
       {
         "kind": "figure",
-        "caption": {
-          "en": "Derivative curve f'(x) = 1/(1+x^2) of arctan(x), showing peak at (0, 1) and symmetry about the y-axis.",
-          "ar": null
-        },
         "figure": {
           "type": "fn",
+          "title": "AA HL — Maclaurin Series Approximations P₁(x), P₃(x), P₅(x) to sin(x)",
+          "xrange": [
+            -4.5,
+            4.5
+          ],
+          "yrange": [
+            -2,
+            2
+          ],
           "fns": [
             {
-              "fn": "1/(1 + x^2)",
-              "label": "f'(x) = 1/(1+x^2)"
+              "fn": "sin(x)",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = sin(x)"
+            },
+            {
+              "fn": "x - pow(x,3)/6",
+              "color": "var(--fig-amber)",
+              "dash": "5,3",
+              "label": "P₃(x) = x − x³/6"
+            },
+            {
+              "fn": "x - pow(x,3)/6 + pow(x,5)/120",
+              "color": "var(--fig-teal)",
+              "dash": "3,3",
+              "label": "P₅(x) = x − x³/6 + x⁵/120"
             }
           ],
           "points": [
             {
               "x": 0,
+              "y": 0,
+              "label": "Origin (0, 0)"
+            },
+            {
+              "x": 1.57,
               "y": 1,
-              "label": "Peak (0, 1)"
-            },
-            {
-              "x": 1,
-              "y": 0.5,
-              "label": "(1, 0.5)"
-            },
-            {
-              "x": -1,
-              "y": 0.5,
-              "label": "(-1, 0.5)"
+              "label": "(π/2, 1)"
             }
-          ],
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -0.2,
-            1.4
           ]
+        },
+        "caption": {
+          "en": "Convergence of odd-degree Maclaurin polynomials P₃(x) and P₅(x) to sin(x), a classic IB AA HL Paper 3 investigation theme.",
+          "ar": null
         }
       },
       {
@@ -346,11 +361,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "en": "Past-Paper Idea Matrix & Official Markscheme Worked Example — AA HL Synthesis & Paper 3 Investigations",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "en": "<p><strong>High-Frequency IB AA HL Paper 3 &amp; Section B Synthesis Themes:</strong></p>\n<table class=\"exam-table\" style=\"margin:6px 0\">\n<thead><tr><th>AA HL Synthesis Theme</th><th>Classic Past-Paper Investigation Pattern</th><th>Key Formula / Strategy</th></tr></thead>\n<tbody>\n<tr><td><strong>Maclaurin Series from ODEs (AHL 5.19)</strong></td><td>Given $\\frac{dy}{dx} = 1 + y^2$ with $y(0) = 0$, differentiating implicitly to find $y''(0), y'''(0), y^{(4)}(0)$ and deriving the Maclaurin series of $\\tan x$ up to $x^5$.</td><td>Use Leibniz's rule or repeated implicit differentiation at $x = 0$ rather than differentiating quotient expressions explicitly.</td></tr>\n<tr><td><strong>De Moivre &amp; Trig Power/Multiple Sums</strong></td><td>Using $z + z^{-1} = 2\\cos\\theta$ and $z^n + z^{-n} = 2\\cos(n\\theta)$ to linearize $\\cos^5\\theta$ and integrate $\\int_0^{\\pi/2} \\cos^5\\theta\\,d\\theta$.</td><td>Pair conjugate powers $(z^k + z^{-k})$ immediately before expanding coefficients.</td></tr>\n<tr><td><strong>Integrating Factor &amp; Homogeneous ODEs</strong></td><td>Substituting $y = vx$ into $\\frac{dy}{dx} = \\frac{x^2 + xy + y^2}{x^2}$ to obtain $x\\frac{dv}{dx} = v^2 + 1 \\implies \\arctan(y/x) = \\ln|x| + C$.</td><td>Always replace $\\frac{dy}{dx}$ with $v + x\\frac{dv}{dx}$ (product rule on $y = vx$).</td></tr>\n</tbody></table>\n<p><strong>Worked Example (AA HL Paper 3 Mini-Investigation — 9 marks):</strong><br>\nLet $y = f(x)$ satisfy the differential equation $(1 + x^2)\\frac{dy}{dx} = 1$ with $f(0) = 0$.<br>\n(a) By differentiating both sides repeatedly with respect to $x$, show that $(1+x^2)y'' + 2xy' = 0$ and $(1+x^2)y''' + 4xy'' + 2y' = 0$. <strong>[4]</strong><br>\n(b) Hence find the Maclaurin series for $f(x) = \\arctan x$ up to and including the term in $x^3$, and use it to approximate $\\int_0^{0.5} \\frac{\\arctan x}{x}\\,dx$. <strong>[5]</strong></p>\n<p><strong>Official IB Markscheme Solution:</strong><br>\n(a) Differentiating $(1+x^2)y' = 1$ by product rule: $(1+x^2)y'' + 2xy' = 0$ <strong>[M1] [A1] [AG]</strong><br>\nDifferentiating again: $(1+x^2)y''' + 2xy'' + 2xy'' + 2y' = 0 \\implies (1+x^2)y''' + 4xy'' + 2y' = 0$ <strong>[M1] [A1] [AG]</strong><br>\n(b) At $x = 0$: $y(0) = 0$, $y'(0) = 1$, $y''(0) = 0$, and $y'''(0) = -2y'(0) = -2$ <strong>[A1] [A1]</strong><br>\nMaclaurin series: $\\arctan x = x - \\frac{2}{3!}x^3 + \\dots = x - \\frac{x^3}{3} + \\dots$ <strong>[A1]</strong><br>\nHence $\\int_0^{0.5} \\frac{\\arctan x}{x}\\,dx \\approx \\int_0^{0.5} \\left(1 - \\frac{x^2}{3}\\right)dx = \\left[x - \\frac{x^3}{9}\\right]_0^{0.5} = 0.5 - \\frac{0.125}{9} = \\frac{35}{72} \\approx 0.486$ <strong>[M1] [A1]</strong></p>",
           "ar": null
         }
       },
@@ -358,11 +373,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Past-Paper Idea Matrix & Official Markscheme Worked Example — AA HL Synthesis & Paper 3 Investigations",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>High-Frequency IB AA HL Paper 3 &amp; Section B Synthesis Themes:</strong></p>\n<table class=\"exam-table\" style=\"margin:6px 0\">\n<thead><tr><th>AA HL Synthesis Theme</th><th>Classic Past-Paper Investigation Pattern</th><th>Key Formula / Strategy</th></tr></thead>\n<tbody>\n<tr><td><strong>Maclaurin Series from ODEs (AHL 5.19)</strong></td><td>Given $\\frac{dy}{dx} = 1 + y^2$ with $y(0) = 0$, differentiating implicitly to find $y''(0), y'''(0), y^{(4)}(0)$ and deriving the Maclaurin series of $\\tan x$ up to $x^5$.</td><td>Use Leibniz's rule or repeated implicit differentiation at $x = 0$ rather than differentiating quotient expressions explicitly.</td></tr>\n<tr><td><strong>De Moivre &amp; Trig Power/Multiple Sums</strong></td><td>Using $z + z^{-1} = 2\\cos\\theta$ and $z^n + z^{-n} = 2\\cos(n\\theta)$ to linearize $\\cos^5\\theta$ and integrate $\\int_0^{\\pi/2} \\cos^5\\theta\\,d\\theta$.</td><td>Pair conjugate powers $(z^k + z^{-k})$ immediately before expanding coefficients.</td></tr>\n<tr><td><strong>Integrating Factor &amp; Homogeneous ODEs</strong></td><td>Substituting $y = vx$ into $\\frac{dy}{dx} = \\frac{x^2 + xy + y^2}{x^2}$ to obtain $x\\frac{dv}{dx} = v^2 + 1 \\implies \\arctan(y/x) = \\ln|x| + C$.</td><td>Always replace $\\frac{dy}{dx}$ with $v + x\\frac{dv}{dx}$ (product rule on $y = vx$).</td></tr>\n</tbody></table>\n<p><strong>Worked Example (AA HL Paper 3 Mini-Investigation — 9 marks):</strong><br>\nLet $y = f(x)$ satisfy the differential equation $(1 + x^2)\\frac{dy}{dx} = 1$ with $f(0) = 0$.<br>\n(a) By differentiating both sides repeatedly with respect to $x$, show that $(1+x^2)y'' + 2xy' = 0$ and $(1+x^2)y''' + 4xy'' + 2y' = 0$. <strong>[4]</strong><br>\n(b) Hence find the Maclaurin series for $f(x) = \\arctan x$ up to and including the term in $x^3$, and use it to approximate $\\int_0^{0.5} \\frac{\\arctan x}{x}\\,dx$. <strong>[5]</strong></p>\n<p><strong>Official IB Markscheme Solution:</strong><br>\n(a) Differentiating $(1+x^2)y' = 1$ by product rule: $(1+x^2)y'' + 2xy' = 0$ <strong>[M1] [A1] [AG]</strong><br>\nDifferentiating again: $(1+x^2)y''' + 2xy'' + 2xy'' + 2y' = 0 \\implies (1+x^2)y''' + 4xy'' + 2y' = 0$ <strong>[M1] [A1] [AG]</strong><br>\n(b) At $x = 0$: $y(0) = 0$, $y'(0) = 1$, $y''(0) = 0$, and $y'''(0) = -2y'(0) = -2$ <strong>[A1] [A1]</strong><br>\nMaclaurin series: $\\arctan x = x - \\frac{2}{3!}x^3 + \\dots = x - \\frac{x^3}{3} + \\dots$ <strong>[A1]</strong><br>\nHence $\\int_0^{0.5} \\frac{\\arctan x}{x}\\,dx \\approx \\int_0^{0.5} \\left(1 - \\frac{x^2}{3}\\right)dx = \\left[x - \\frac{x^3}{9}\\right]_0^{0.5} = 0.5 - \\frac{0.125}{9} = \\frac{35}{72} \\approx 0.486$ <strong>[M1] [A1]</strong></p>",
           "ar": null
         }
       },

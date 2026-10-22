@@ -48,64 +48,36 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "Statistics &amp; Probability — Frequency Distribution (2)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
-            {
-              "label": "Q1",
-              "value": 22
-            },
-            {
-              "label": "Q2",
-              "value": 35,
-              "highlight": true
-            },
-            {
-              "label": "Q3",
-              "value": 28
-            },
-            {
-              "label": "Q4",
-              "value": 19
-            }
-          ]
+          "type": "normal_curve",
+          "title": "Topic 4 — Normal Distribution X ~ N(168, 6.5²) & Inverse Normal Quantile",
+          "mean": 168,
+          "sd": 6.5,
+          "shade": [
+            175,
+            190
+          ],
+          "label": "P(X > 175) = 0.141"
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for Statistics &amp; Probability.",
+          "en": "Normal distribution X ~ N(168, 6.5²) showing the upper tail region X > 175 used in IB Paper 2 GDC normcdf and invNorm quantile problems.",
           "ar": null
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "Statistics &amp; Probability — Frequency Distribution (1)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
-            {
-              "label": "Q1",
-              "value": 18
-            },
-            {
-              "label": "Q2",
-              "value": 32,
-              "highlight": true
-            },
-            {
-              "label": "Q3",
-              "value": 26
-            },
-            {
-              "label": "Q4",
-              "value": 14
-            }
-          ]
+          "type": "normal_curve",
+          "title": "Topic 4 — Normal Distribution X ~ N(168, 6.5²) & Inverse Normal Quantile",
+          "mean": 168,
+          "sd": 6.5,
+          "shade": [
+            175,
+            190
+          ],
+          "label": "P(X > 175) = 0.141"
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for Statistics &amp; Probability.",
+          "en": "Normal distribution X ~ N(168, 6.5²) showing the upper tail region X > 175 used in IB Paper 2 GDC normcdf and invNorm quantile problems.",
           "ar": null
         }
       },
@@ -395,11 +367,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "en": "Past-Paper Idea Matrix & Official Markscheme Worked Example — Topic 4 (Statistics & Probability)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "en": "<p><strong>High-Frequency IB Past-Paper Ideas (SL 4.1–4.9):</strong></p>\n<table class=\"exam-table\" style=\"margin:6px 0\">\n<thead><tr><th>Subtopic</th><th>Classic Past-Paper Question Pattern</th><th>Examiner Trap to Avoid</th></tr></thead>\n<tbody>\n<tr><td><strong>SL 4.2–4.3 Cumulative Frequency &amp; Linear Scaling</strong></td><td>Reading percentiles, IQR, and outlier fences $[Q_1 - 1.5\\text{IQR}, Q_3 + 1.5\\text{IQR}]$; transforming data $y = ax + b \\implies \\bar{y} = a\\bar{x} + b$, $s_y = |a|s_x$, $s_y^2 = a^2 s_x^2$.</td><td>Adding $+b$ to standard deviation or variance! Translation $b$ shifts only measures of position, never spread.</td></tr>\n<tr><td><strong>SL 4.4 Linear Regression</strong></td><td>Using $y$-on-$x$ line to estimate $y$ given $x$, and $x$-on-$y$ line to estimate $x$ given $y$; passing through $(\\bar{x}, \\bar{y})$.</td><td>Extrapolating outside the sample domain without noting it is unreliable.</td></tr>\n<tr><td><strong>SL 4.7–4.9 Binomial &amp; Normal</strong></td><td>Two-stage probability: finding $p = P(X > c)$ from a Normal distribution, then substituting $p$ into a Binomial $Y \\sim \\text{B}(n, p)$ (\"at least 2 out of 5 items\").</td><td>Rounding the intermediate probability $p$ to 2 s.f. before running <code>binomcdf</code> (always keep 5+ digits internally!).</td></tr>\n</tbody></table>\n<p><strong>Worked Example (AA/AI SL Paper 2 — 7 marks):</strong><br>\nThe masses of apples from an orchard follow $M \\sim \\text{N}(180, \\sigma^2)$ grams. Given that $15\\%$ of apples have mass greater than $195\\text{ g}$:<br>\n(a) Find the value of $\\sigma$. <strong>[3]</strong><br>\n(b) Twelve apples are chosen at random. Find the probability that at least three of them have a mass greater than $195\\text{ g}$. <strong>[4]</strong></p>\n<p><strong>Official IB Markscheme Solution:</strong><br>\n(a) $P(M > 195) = 0.15 \\implies P(Z < z) = 0.85 \\implies z = \\text{invNorm}(0.85) = 1.03643$ <strong>[M1] [A1]</strong><br>\n$\\frac{195 - 180}{\\sigma} = 1.03643 \\implies \\sigma = \\frac{15}{1.03643} = 14.5\\text{ g}$ (3 s.f.) <strong>[A1]</strong><br>\n(b) Let $Y \\sim \\text{B}(12, 0.15)$ be the number of apples heavier than $195\\text{ g}$ <strong>[M1]</strong><br>\n$P(Y \\ge 3) = 1 - P(Y \\le 2) = 1 - \\text{binomcdf}(12, 0.15, 2)$ <strong>[M1]</strong><br>\n$= 1 - 0.7358 = 0.264$ (3 s.f.) <strong>[A1] [A1]</strong></p>",
           "ar": null
         }
       },
@@ -407,11 +379,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Past-Paper Idea Matrix & Official Markscheme Worked Example — Topic 4 (Statistics & Probability)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>High-Frequency IB Past-Paper Ideas (SL 4.1–4.9):</strong></p>\n<table class=\"exam-table\" style=\"margin:6px 0\">\n<thead><tr><th>Subtopic</th><th>Classic Past-Paper Question Pattern</th><th>Examiner Trap to Avoid</th></tr></thead>\n<tbody>\n<tr><td><strong>SL 4.2–4.3 Cumulative Frequency &amp; Linear Scaling</strong></td><td>Reading percentiles, IQR, and outlier fences $[Q_1 - 1.5\\text{IQR}, Q_3 + 1.5\\text{IQR}]$; transforming data $y = ax + b \\implies \\bar{y} = a\\bar{x} + b$, $s_y = |a|s_x$, $s_y^2 = a^2 s_x^2$.</td><td>Adding $+b$ to standard deviation or variance! Translation $b$ shifts only measures of position, never spread.</td></tr>\n<tr><td><strong>SL 4.4 Linear Regression</strong></td><td>Using $y$-on-$x$ line to estimate $y$ given $x$, and $x$-on-$y$ line to estimate $x$ given $y$; passing through $(\\bar{x}, \\bar{y})$.</td><td>Extrapolating outside the sample domain without noting it is unreliable.</td></tr>\n<tr><td><strong>SL 4.7–4.9 Binomial &amp; Normal</strong></td><td>Two-stage probability: finding $p = P(X > c)$ from a Normal distribution, then substituting $p$ into a Binomial $Y \\sim \\text{B}(n, p)$ (\"at least 2 out of 5 items\").</td><td>Rounding the intermediate probability $p$ to 2 s.f. before running <code>binomcdf</code> (always keep 5+ digits internally!).</td></tr>\n</tbody></table>\n<p><strong>Worked Example (AA/AI SL Paper 2 — 7 marks):</strong><br>\nThe masses of apples from an orchard follow $M \\sim \\text{N}(180, \\sigma^2)$ grams. Given that $15\\%$ of apples have mass greater than $195\\text{ g}$:<br>\n(a) Find the value of $\\sigma$. <strong>[3]</strong><br>\n(b) Twelve apples are chosen at random. Find the probability that at least three of them have a mass greater than $195\\text{ g}$. <strong>[4]</strong></p>\n<p><strong>Official IB Markscheme Solution:</strong><br>\n(a) $P(M > 195) = 0.15 \\implies P(Z < z) = 0.85 \\implies z = \\text{invNorm}(0.85) = 1.03643$ <strong>[M1] [A1]</strong><br>\n$\\frac{195 - 180}{\\sigma} = 1.03643 \\implies \\sigma = \\frac{15}{1.03643} = 14.5\\text{ g}$ (3 s.f.) <strong>[A1]</strong><br>\n(b) Let $Y \\sim \\text{B}(12, 0.15)$ be the number of apples heavier than $195\\text{ g}$ <strong>[M1]</strong><br>\n$P(Y \\ge 3) = 1 - P(Y \\le 2) = 1 - \\text{binomcdf}(12, 0.15, 2)$ <strong>[M1]</strong><br>\n$= 1 - 0.7358 = 0.264$ (3 s.f.) <strong>[A1] [A1]</strong></p>",
           "ar": null
         }
       },

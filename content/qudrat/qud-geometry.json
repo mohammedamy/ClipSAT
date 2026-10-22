@@ -38,40 +38,40 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "circle",
+          "type": "shaded_region",
+          "subtype": "four_tangent_circles",
           "radius": 6,
-          "labelR": "r = 6",
-          "chordAngle": 120
+          "title": "Shaded Area Between Four Congruent Tangent Circles in a Square"
         },
         "caption": {
-          "en": "Circle sector and chord geometry with radius r = 6 and central angle 120°.",
-          "ar": "هندسة القطاع الدائري والوتر بنصف قطر r = 6 وزاوية مركزية 120°."
+          "en": "Four congruent tangent circles (each r = 3) inside a square of side 12: Shaded Area = 144 − 4(9π) = 144 − 36π = 36(4 − π) cm².",
+          "ar": "أربع دوائر متطابقة ومتماسة (نصف قطر كل منها ٣) داخل مربع طول ضلعه ١٢: المساحة المظللة = ١٤٤ − ٣٦ط = ٣٦(٤ − ط) سم²."
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Geometry & Measurement Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Geometry & Measurement"
+          "en": "⊙ Explorer · Shaded Region Geometry Lab (مساحة الجزء المظلل)",
+          "ar": "⊙ مستكشف تفاعلي · مختبر مساحة الجزء المظلل في قياس"
         },
-        "canvasId": "exAuto_geo_qudgeometry",
+        "canvasId": "qudShadedCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Geometry & Measurement",
-          "ar": "مستكشف رياضي تفاعلي لدرس Geometry & Measurement"
+          "en": "Interactive Qiyas shaded region explorer comparing square with inscribed circle, circle with inscribed square, and four tangent circles",
+          "ar": "مستكشف تفاعلي لمساحات الأجزاء المظللة في اختبار القدرات (مربع بداخله دائرة، دائرة بداخلها مربع، وأربع دوائر متماسة)"
         },
         "dataPanel": {
-          "btnId": "exAuto_geo_qudgeometry_dataBtn",
-          "panelId": "exAuto_geo_qudgeometry_dataPanel",
-          "descId": "exAuto_geo_qudgeometry_dataDesc",
-          "rowsId": "exAuto_geo_qudgeometry_dataRows",
+          "btnId": "qudShadedDataBtn",
+          "panelId": "qudShadedDataPanel",
+          "descId": "qudShadedDataDesc",
+          "rowsId": "qudShadedDataRows",
           "caption": {
-            "en": "Numerical table for Geometry & Measurement",
-            "ar": "جدول القيم العددية لدرس Geometry & Measurement"
+            "en": "Exact and approximate (π ≈ 3.14) areas for the selected Qudrat shaded figure",
+            "ar": "القيم الدقيقة والتقريبية (ط ≈ ٣٫١٤) لمساحة الجزء المظلل"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Metric",
+              "ar": "المعيار الهندسي"
             },
             {
               "en": "Value",
@@ -81,67 +81,69 @@
         },
         "controls": [
           {
-            "id": "exAuto_geo_qudgeometry_s0",
+            "id": "qudShadedR",
+            "valueDisplayId": "qudShadedRV",
             "label": {
-              "en": "Parameter <b>a =</b>",
-              "ar": "المعامل <b>a =</b>"
+              "en": "Radius <b>r =</b>",
+              "ar": "نصف القطر <b>نق =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_geo_qudgeometry_v0",
             "ariaLabel": {
-              "en": "Primary parameter a",
-              "ar": "المعامل الأول a"
-            }
+              "en": "Radius r",
+              "ar": "نصف القطر نق"
+            },
+            "min": 2,
+            "max": 12,
+            "value": 6,
+            "step": 1
           },
           {
-            "id": "exAuto_geo_qudgeometry_s1",
+            "id": "qudShadedMode",
+            "valueDisplayId": "qudShadedModeV",
             "label": {
-              "en": "Parameter <b>b =</b>",
-              "ar": "المعامل <b>b =</b>"
+              "en": "Pattern <b>(1–3) =</b>",
+              "ar": "الشكل الهندسي <b>(١–٣) =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_geo_qudgeometry_v1",
             "ariaLabel": {
-              "en": "Secondary parameter b",
-              "ar": "المعامل الثاني b"
-            }
+              "en": "Shaded configuration mode",
+              "ar": "نمط الشكل الهندسي"
+            },
+            "min": 1,
+            "max": 3,
+            "value": 1,
+            "step": 1
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_geo_qudgeometry_r0",
+            "id": "qudShadedExact",
             "label": {
-              "en": "Primary Metric",
-              "ar": "المقدار الأساسي"
+              "en": "Exact Formula",
+              "ar": "الصيغة الدقيقة"
             },
             "colorClass": "indigo",
-            "value": "2.00"
+            "value": "36(4 − π)"
           },
           {
-            "id": "exAuto_geo_qudgeometry_r1",
+            "id": "qudShadedApprox",
             "label": {
-              "en": "Secondary Metric",
-              "ar": "المقدار الثانوي"
+              "en": "Shaded Area (π ≈ 3.14)",
+              "ar": "المساحة المظللة (ط ≈ ٣٫١٤)"
             },
             "colorClass": "amber",
-            "value": "1.00"
+            "value": "30.96"
+          },
+          {
+            "id": "qudShadedOuter",
+            "label": {
+              "en": "Outer Area",
+              "ar": "المساحة الكلية الخارجية"
+            },
+            "value": "144.0"
           }
         ],
-        "canvas3d": {
-          "btnId": "exAuto3dBtn_solid_qudgeometry",
-          "wrapId": "exAuto3dWrap_qudgeometry",
-          "hintId": "exAuto3dHint_qudgeometry",
-          "btnLabel": "🧊 View Interactive 3D Model",
-          "ariaLabel": {
-            "en": "Interactive 3D visualization for Geometry & Measurement. Drag to rotate.",
-            "ar": "عرض ثلاثي الأبعاد تفاعلي لدرس Geometry & Measurement. اسحب للتدوير."
-          }
+        "note": {
+          "en": "Mode 1 (Square − Circle) and Mode 3 (Square − 4 Tangent Circles) both have shaded area \\( r^2(4-\\pi) \\approx 0.86\\,r^2 \\); Mode 2 (Circle − Inscribed Square) has shaded area \\( r^2(\\pi-2) \\approx 1.14\\,r^2 \\).",
+          "ar": "النمط ١ (مربع بداخله دائرة) والنمط ٣ (مربع بداخله ٤ دوائر متماسة) كلاهما يعطي مساحة مظللة \\( r^2(4-\\pi) \\approx 0.86\\,r^2 \\)؛ أما النمط ٢ (دائرة بداخلها مربع) فيعطي \\( r^2(\\pi-2) \\approx 1.14\\,r^2 \\)."
         }
       },
       {
@@ -299,12 +301,12 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
-          "ar": "مثال محلول D — المسافة الإقليدية والمركبات المتعامدة"
+          "en": "Worked Example 4.D — Tajmeeat Atlas: The 5 Famous Shaded-Region Shortcuts",
+          "ar": "مثال محلول 4.د — أطلس قوانين الجزء المظلل الخمسة الأكثر تكراراً في القدرات"
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
-          "ar": "إزاحة مركبتها الأفقية \\( \\Delta x = 5 \\) والعمودية \\( \\Delta y = 5 \\). أوجد مربع الطول \\( d^2 \\) ومساحة المثلث القائم المتكون.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>بحسب نظرية فيثاغورس: \\( d^2 = (5)^2 + (5)^2 = \\mathbf{50} \\).</li><li>مساحة المثلث القائم: \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>"
+          "en": "<ul><li><strong>1. Square (side \\( 2r \\)) minus Inscribed Circle (radius \\( r \\)):</strong> \\( A_{\\text{shaded}} = r^2(4 - \\pi) \\).</li><li><strong>2. Circle (radius \\( r \\)) minus Inscribed Square (diagonal \\( 2r \\)):</strong> Since \\( A_{\\text{square}} = \\frac{d^2}{2} = 2r^2 \\), \\( A_{\\text{shaded}} = r^2(\\pi - 2) \\).</li><li><strong>3. Three Tangent Circles of radius \\( r \\):</strong> Area enclosed between their arcs = \\( r^2\\left(\\sqrt{3} - \\frac{\\pi}{2}\\right) \\) (equilateral triangle of side \\( 2r \\) minus three \\( 60^\\circ \\) sectors).</li><li><strong>4. Triangle Inscribed in a Semicircle:</strong> Any angle inscribed in a semicircle is \\( 90^\\circ \\); for legs \\( 6, 8 \\), diameter \\( 2r = 10 \\implies r = 5 \\) and \\( A_{\\text{shaded}} = \\frac{25\\pi}{2} - 24 \\).</li><li><strong>5. Triangle Sharing Base & Height with Rectangle/Parallelogram:</strong> \\( A_{\\triangle} = \\frac{1}{2} A_{\\text{rect}} \\), so the unshaded remainder also equals \\( \\frac{1}{2} A_{\\text{rect}} \\).</li></ul>",
+          "ar": "<ul><li><strong>١. مربع طول ضلعه \\( 2r \\) بداخله دائرة مماسة نصف قطرها \\( r \\):</strong> المساحة المظللة = \\( r^2(4 - \\pi) \\).</li><li><strong>٢. دائرة نصف قطرها \\( r \\) بداخلها مربع رؤوسه على الدائرة:</strong> قطر المربع \\( 2r \\) ومساحته \\( 2r^2 \\)، فالمساحة المظللة = \\( r^2(\\pi - 2) \\).</li><li><strong>٣. ثلاث دوائر متطابقة ومتماسة نصف قطرها \\( r \\):</strong> مساحة الجزء المحصور بينها = مساحة المثلث المتطابق الأضلاع \\( (r^2\\sqrt{3}) \\) ناقص نصف دائرة \\( (\\frac{1}{2}\\pi r^2) \\).</li><li><strong>٤. مثلث مرسوم في نصف دائرة:</strong> زاويته المحيطية قائمة \\( 90^\\circ \\) دائماً، ووتره هو قطر الدائرة \\( 2r \\).</li><li><strong>٥. مثلث رأسه على ضلع مستطيل وقاعدته الضلع المقابل:</strong> مساحته = نصف مساحة المستطيل، والمنطقة المتبقية = النصف الآخر تماماً.</li></ul>"
         }
       },
       {
@@ -359,7 +361,8 @@
   },
   "quizWidget": {
     "domains": [
-      "Geometry & Measurement"
+      "Geometry & Measurement",
+      "Geometry & Spatial Reasoning"
     ],
     "enabled": true
   },

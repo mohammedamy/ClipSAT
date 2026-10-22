@@ -104,4 +104,444 @@
     register(canvas,draw);
     s.addEventListener('input',function(){ dh=parseFloat(s.value); document.getElementById('tahDhV').textContent=dh.toFixed(2); redrawAll(); });
   })();
+
+  /* ===================== TAHSILI · CONIC SECTIONS & ECCENTRICITY (القطوع المخروطية) ===================== */
+  (function(){
+    var canvas=document.getElementById('tahConicCanvas'); if(!canvas) return;
+    var a=4, b=3, mode=1;
+    var sa=document.getElementById('tahConicA'), sb=document.getElementById('tahConicB'), sm=document.getElementById('tahConicMode');
+    var view={xmin:-7.5,xmax:7.5,ymin:-5.5,ymax:5.5,square:true,step:1};
+    var dataBtn=document.getElementById('tahConicDataBtn'), dataPanel=document.getElementById('tahConicDataPanel'),
+        dataDesc=document.getElementById('tahConicDataDesc'), dataRows=document.getElementById('tahConicDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:24,r:14,t:18,b:20}); P.clear(); P.grid();
+      var cVal=0, ecc=0, typeStr='';
+      if(mode===1){
+        /* Ellipse: x^2/a^2 + y^2/b^2 = 1 */
+        var maj = Math.max(a,b), min = Math.min(a,b);
+        cVal = Math.sqrt(Math.max(0, maj*maj - min*min));
+        ecc = cVal / maj;
+        typeStr = (a===b) ? 'دائرة (Circle, e = 0)' : 'قطع ناقص (Ellipse, 0 < e < 1)';
+        P.curve(function(x){ return Math.abs(x)<=a ? b*Math.sqrt(Math.max(0,1 - (x*x)/(a*a))) : NaN; }, INDIGO, 2.5);
+        P.curve(function(x){ return Math.abs(x)<=a ? -b*Math.sqrt(Math.max(0,1 - (x*x)/(a*a))) : NaN; }, INDIGO, 2.5);
+        if(a>=b){
+          P.dot(-cVal,0,AMBER2,4.5); P.dot(cVal,0,AMBER2,4.5);
+          P.label(cVal,0.4,'F₂('+cVal.toFixed(1)+',0)',AMBER2);
+        } else {
+          P.dot(0,-cVal,AMBER2,4.5); P.dot(0,cVal,AMBER2,4.5);
+          P.label(0.3,cVal,'F₂(0,'+cVal.toFixed(1)+')',AMBER2);
+        }
+        P.dot(a,0,INDIGO,4); P.dot(-a,0,INDIGO,4); P.dot(0,b,INDIGO,4); P.dot(0,-b,INDIGO,4);
+      } else {
+        /* Hyperbola: x^2/a^2 - y^2/b^2 = 1 */
+        cVal = Math.sqrt(a*a + b*b);
+        ecc = cVal / a;
+        typeStr = 'قطع زائد (Hyperbola, e > 1)';
+        /* Asymptotes y = ±(b/a)x */
+        P.segment(view.xmin, (b/a)*view.xmin, view.xmax, (b/a)*view.xmax, AMBER2, 1.3, [5,4]);
+        P.segment(view.xmin, -(b/a)*view.xmin, view.xmax, -(b/a)*view.xmax, AMBER2, 1.3, [5,4]);
+        P.curve(function(x){ return Math.abs(x)>=a ? b*Math.sqrt(Math.max(0,(x*x)/(a*a) - 1)) : NaN; }, INDIGO, 2.5);
+        P.curve(function(x){ return Math.abs(x)>=a ? -b*Math.sqrt(Math.max(0,(x*x)/(a*a) - 1)) : NaN; }, INDIGO, 2.5);
+        P.dot(-cVal,0,AMBER2,4.5); P.dot(cVal,0,AMBER2,4.5);
+        P.dot(-a,0,INDIGO,4); P.dot(a,0,INDIGO,4);
+        P.label(cVal,0.45,'F('+cVal.toFixed(1)+',0)',AMBER2);
+      }
+      _set('tahConicC', cVal.toFixed(2));
+      _set('tahConicEcc', ecc.toFixed(2));
+      _set('tahConicType', typeStr);
+      if(dataDesc){
+        dataDesc.textContent = typeStr + ' — البعد البؤري c = ' + cVal.toFixed(2) + '، الاختلاف المركزي e = c/a = ' + ecc.toFixed(2) + '.';
+        renderDataRows(dataRows, [
+          ['نوع القطع (Conic Type)', typeStr],
+          ['نصف المحور a', a],
+          ['نصف المحور b', b],
+          ['البعد البؤري c', cVal.toFixed(2)],
+          ['الاختلاف المركزي e = c/a', ecc.toFixed(2)]
+        ]);
+      }
+    }
+    function upd(){
+      if(sa){ a=parseInt(sa.value,10)||4; _set('tahConicAV', a); }
+      if(sb){ b=parseInt(sb.value,10)||3; _set('tahConicBV', b); }
+      if(sm){ mode=parseInt(sm.value,10)||1; _set('tahConicModeV', mode===1?'قطع ناقص (Ellipse)':'قطع زائد (Hyperbola)'); }
+      redrawAll();
+    }
+    register(canvas,draw);
+    if(sa) sa.addEventListener('input',upd);
+    if(sb) sb.addEventListener('input',upd);
+    if(sm) sm.addEventListener('input',upd);
+  })();
+
+  /* ===================== TAHSILI · 2x2 MATRIX DETERMINANT & SINGULARITY (المصفوفات والمحددات) ===================== */
+  (function(){
+    var canvas=document.getElementById('tahMatDetCanvas'); if(!canvas) return;
+    var a=3, d=2, b=2, c=1;
+    var sa=document.getElementById('tahMatA'), sd=document.getElementById('tahMatD');
+    var view={xmin:-5.5,xmax:6.5,ymin:-4.5,ymax:5.5,square:true,step:1};
+    var dataBtn=document.getElementById('tahMatDetDataBtn'), dataPanel=document.getElementById('tahMatDetDataPanel'),
+        dataDesc=document.getElementById('tahMatDetDataDesc'), dataRows=document.getElementById('tahMatDetDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:24,r:14,t:18,b:20}); P.clear(); P.grid();
+      var det = a*d - b*c;
+      /* Draw parallelogram spanned by u=(a,c) and v=(b,d) */
+      P.polygon([[0,0],[a,c],[a+b,c+d],[b,d]], det===0?'rgba(220,38,38,0.18)':'rgba(43,91,168,0.16)', det===0?'#dc2626':INDIGO, 2);
+      P.arrow(0,0,a,c,INDIGO,2.4);
+      P.arrow(0,0,b,d,AMBER2,2.4);
+      P.label(a,c+0.35,'col₁('+a+','+c+')',INDIGO);
+      P.label(b,d+0.35,'col₂('+b+','+d+')',AMBER2);
+      var invStatus = det===0 ? 'ليس لها نظير ضربي (مصفوفة منفردة det = 0)' : 'لها نظير ضربي A⁻¹ (det = '+det+')';
+      _set('tahMatDet', String(det));
+      _set('tahMatArea', String(Math.abs(det)));
+      _set('tahMatInv', invStatus);
+      if(dataDesc){
+        dataDesc.textContent = 'المصفوفة A = [['+a+', '+b+'], ['+c+', '+d+']] — المحددة |A| = ad − bc = ('+a+')('+d+') − ('+b+')('+c+') = '+det+'. '+invStatus;
+        renderDataRows(dataRows, [
+          ['المصفوفة A', '[['+a+', '+b+'], ['+c+', '+d+']]'],
+          ['المحددة det(A) = ad − bc', det],
+          ['مساحة متوازي الأضلاع |det(A)|', Math.abs(det)],
+          ['حالة النظير الضربي A⁻¹', invStatus]
+        ]);
+      }
+    }
+    function upd(){
+      if(sa){ a=parseInt(sa.value,10); _set('tahMatAV', a); }
+      if(sd){ d=parseInt(sd.value,10); _set('tahMatDV', d); }
+      redrawAll();
+    }
+    register(canvas,draw);
+    if(sa) sa.addEventListener('input',upd);
+    if(sd) sd.addEventListener('input',upd);
+  })();
+
+  /* ===================== TAHSILI · NORMAL DISTRIBUTION & EMPIRICAL RULE (التوزيع الطبيعي 68-95-99.7%) ===================== */
+  (function(){
+    var canvas=document.getElementById('tahNormalCanvas'); if(!canvas) return;
+    var mu=70, sig=10;
+    var smu=document.getElementById('tahNormMu'), ssig=document.getElementById('tahNormSig');
+    var dataBtn=document.getElementById('tahNormalDataBtn'), dataPanel=document.getElementById('tahNormalDataPanel'),
+        dataDesc=document.getElementById('tahNormalDataDesc'), dataRows=document.getElementById('tahNormalDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+    function draw(ctx,w,h){
+      ctx.clearRect(0,0,w,h);
+      var padL=28, padR=28, bot=h-32, top=22, pw=w-padL-padR, ph=bot-top;
+      function zToX(z){ return padL + (z + 3.5)/7 * pw; }
+      function zToY(z){ return bot - Math.exp(-0.5*z*z)*ph*0.86; }
+      /* Shade 1-sigma (68%) in indigo fill, 2-sigma (95%) in amber fill */
+      function shadeBand(z1,z2,col){
+        ctx.fillStyle=col; ctx.beginPath(); ctx.moveTo(zToX(z1),bot);
+        for(var z=z1;z<=z2;z+=0.05) ctx.lineTo(zToX(z),zToY(z));
+        ctx.lineTo(zToX(z2),bot); ctx.closePath(); ctx.fill();
+      }
+      shadeBand(-2,2,'rgba(200,144,42,0.18)');
+      shadeBand(-1,1,'rgba(43,91,168,0.22)');
+      /* Bell curve */
+      ctx.strokeStyle=INDIGO; ctx.lineWidth=2.5; ctx.beginPath();
+      for(var z=-3.4;z<=3.4;z+=0.05){
+        var px=zToX(z), py=zToY(z);
+        if(z===-3.4) ctx.moveTo(px,py); else ctx.lineTo(px,py);
+      }
+      ctx.stroke();
+      ctx.strokeStyle=INK; ctx.lineWidth=1.4;
+      ctx.beginPath(); ctx.moveTo(padL,bot); ctx.lineTo(w-padR,bot); ctx.stroke();
+      /* Tick marks at mu + k*sigma */
+      ctx.textAlign='center'; ctx.font='600 11px ui-sans-serif, system-ui, sans-serif';
+      for(var k=-3;k<=3;k++){
+        var tx=zToX(k), ty=zToY(k);
+        ctx.strokeStyle=GRID||'#cbd5e1'; ctx.setLineDash([3,3]);
+        ctx.beginPath(); ctx.moveTo(tx,bot); ctx.lineTo(tx,ty); ctx.stroke(); ctx.setLineDash([]);
+        ctx.fillStyle=INK; ctx.fillText(String(mu + k*sig), tx, bot+15);
+      }
+      /* Band percentages */
+      ctx.fillStyle=INDIGO; ctx.font='700 11px ui-sans-serif, system-ui, sans-serif';
+      ctx.fillText('34%', zToX(-0.5), bot-ph*0.36);
+      ctx.fillText('34%', zToX(0.5), bot-ph*0.36);
+      ctx.fillStyle=AMBER2;
+      ctx.fillText('13.5%', zToX(-1.5), bot-ph*0.14);
+      ctx.fillText('13.5%', zToX(1.5), bot-ph*0.14);
+      ctx.fillStyle=MUTED; ctx.font='600 10px ui-sans-serif, system-ui, sans-serif';
+      ctx.fillText('2.35%', zToX(-2.45), bot-10);
+      ctx.fillText('2.35%', zToX(2.45), bot-10);
+      ctx.textAlign='left';
+
+      var r68 = '['+(mu-sig)+', '+(mu+sig)+']';
+      var r95 = '['+(mu-2*sig)+', '+(mu+2*sig)+']';
+      var r99 = '['+(mu-3*sig)+', '+(mu+3*sig)+']';
+      _set('tahNorm68', r68);
+      _set('tahNorm95', r95);
+      _set('tahNorm99', r99);
+      if(dataDesc){
+        dataDesc.textContent = 'التوزيع الطبيعي بمتوسط μ = '+mu+' وانحراف معياري σ = '+sig+': 68% في '+r68+'، و95% في '+r95+'، و99.7% في '+r99+'.';
+        renderDataRows(dataRows, [
+          ['المتوسط الحسابي μ', mu],
+          ['الانحراف المعياري σ', sig],
+          ['نطاق 68% (μ ± σ)', r68],
+          ['نطاق 95% (μ ± 2σ)', r95],
+          ['نطاق 99.7% (μ ± 3σ)', r99],
+          ['نسبة القيم الأكبر من μ + σ (16%)', 'X > '+(mu+sig)]
+        ]);
+      }
+    }
+    function upd(){
+      if(smu){ mu=parseInt(smu.value,10)||70; _set('tahNormMuV', mu); }
+      if(ssig){ sig=parseInt(ssig.value,10)||10; _set('tahNormSigV', sig); }
+      redrawAll();
+    }
+    register(canvas,draw);
+    if(smu) smu.addEventListener('input',upd);
+    if(ssig) ssig.addEventListener('input',upd);
+  })();
+
+  /* ===================== TAHSILI · MATHEMATICAL LOGIC & CONDITIONALS LAB ===================== */
+  (function(){
+    var canvas=document.getElementById('tahLogicCanvas'); if(!canvas) return;
+    var pVal=1, qVal=0;
+    var sp=document.getElementById('tahLogP'), sq=document.getElementById('tahLogQ');
+    var dataBtn=document.getElementById('tahLogDataBtn'), dataPanel=document.getElementById('tahLogDataPanel'),
+        dataDesc=document.getElementById('tahLogDataDesc'), dataRows=document.getElementById('tahLogDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+
+    function imp(a,b){ return (!a || b) ? 1 : 0; }
+    function tf(v){ return v ? 'T (صائبة)' : 'F (خاطئة)'; }
+
+    function draw(ctx,w,h){
+      ctx.clearRect(0,0,w,h);
+      var cond = imp(pVal, qVal);
+      var conv = imp(qVal, pVal);
+      var inv  = imp(1-pVal, 1-qVal);
+      var cont = imp(1-qVal, 1-pVal);
+
+      ctx.fillStyle = INK; ctx.font='700 13px ui-sans-serif, system-ui, sans-serif'; ctx.textAlign='center';
+      ctx.fillText('العبارات الشرطية المترابطة عند p = '+(pVal?'T':'F')+' ، q = '+(qVal?'T':'F'), w/2, 22);
+
+      var cards = [
+        {title:'الشرطية (Conditional)', expr:'p → q', val:cond, note:'تكافئ المعاكس الإيجابي'},
+        {title:'المعاكس الإيجابي (Contrapositive)', expr:'~q → ~p', val:cont, note:'يكافئ الشرطية دائماً'},
+        {title:'العكس (Converse)', expr:'q → p', val:conv, note:'يكافئ المعكوس دائماً'},
+        {title:'المعكوس (Inverse)', expr:'~p → ~q', val:inv, note:'يكافئ العكس دائماً'}
+      ];
+      var cw = (w - 54)/2, ch = (h - 76)/2;
+      for(var i=0;i<4;i++){
+        var r = Math.floor(i/2), c = i%2;
+        var bx = 18 + c*(cw+18), by = 36 + r*(ch+14);
+        var ok = cards[i].val === 1;
+        ctx.fillStyle = ok ? 'rgba(16,185,129,0.16)' : 'rgba(239,68,68,0.16)';
+        ctx.strokeStyle = ok ? '#10b981' : '#ef4444';
+        ctx.lineWidth = 2;
+        ctx.fillRect(bx, by, cw, ch);
+        ctx.strokeRect(bx, by, cw, ch);
+        ctx.fillStyle = INK; ctx.font='700 11.5px ui-sans-serif, system-ui, sans-serif';
+        ctx.fillText(cards[i].title, bx+cw/2, by+18);
+        ctx.fillStyle = ok ? '#047857' : '#b91c1c'; ctx.font='700 14px ui-sans-serif, system-ui, sans-serif';
+        ctx.fillText(cards[i].expr+' : '+tf(cards[i].val), bx+cw/2, by+ch/2+6);
+        ctx.fillStyle = MUTED; ctx.font='500 10.5px ui-sans-serif, system-ui, sans-serif';
+        ctx.fillText(cards[i].note, bx+cw/2, by+ch-8);
+      }
+      ctx.textAlign='left';
+
+      _set('tahLogCond', tf(cond));
+      _set('tahLogCont', tf(cont));
+      _set('tahLogConv', tf(conv));
+      if(dataDesc){
+        dataDesc.textContent = 'عند p = '+tf(pVal)+' و q = '+tf(qVal)+': الشرطية (p→q) والمعاكس الإيجابي (~q→~p) قيمتهما '+tf(cond)+'، والعكس (q→p) والمعكوس (~p→~q) قيمتهما '+tf(conv)+'.';
+        renderDataRows(dataRows, [
+          ['الفرض p والنتيجة q', 'p = '+tf(pVal)+' ، q = '+tf(qVal)],
+          ['العبارة الشرطية (p → q)', tf(cond)],
+          ['المعاكس الإيجابي (~q → ~p)', tf(cont)],
+          ['العكس (q → p)', tf(conv)],
+          ['المعكوس (~p → ~q)', tf(inv)]
+        ]);
+      }
+    }
+    function upd(){
+      if(sp){ pVal=parseInt(sp.value,10)?1:0; _set('tahLogPV', pVal?'T':'F'); }
+      if(sq){ qVal=parseInt(sq.value,10)?1:0; _set('tahLogQV', qVal?'T':'F'); }
+      redrawAll();
+    }
+    register(canvas,draw);
+    if(sp) sp.addEventListener('input',upd);
+    if(sq) sq.addEventListener('input',upd);
+  })();
+
+  /* ===================== TAHSILI · GEOMETRIC SERIES & CONVERGENCE LAB ===================== */
+  (function(){
+    var canvas=document.getElementById('tahSeriesCanvas'); if(!canvas) return;
+    var a1=12, rPct=50;
+    var sa=document.getElementById('tahSerA1'), sr=document.getElementById('tahSerR');
+    var dataBtn=document.getElementById('tahSerDataBtn'), dataPanel=document.getElementById('tahSerDataPanel'),
+        dataDesc=document.getElementById('tahSerDataDesc'), dataRows=document.getElementById('tahSerDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+
+    function draw(ctx,w,h){
+      ctx.clearRect(0,0,w,h);
+      var r = rPct / 100;
+      var sInf = a1 / (1 - r);
+      var padL=36, padR=20, top=28, bot=h-30, pw=w-padL-padR, ph=bot-top;
+
+      ctx.fillStyle = INK; ctx.font='700 12.5px ui-sans-serif, system-ui, sans-serif'; ctx.textAlign='center';
+      ctx.fillText('المتسلسلة الهندسية اللانهائية: a₁ = '+a1+' ، r = '+r.toFixed(2)+' ← المجموع S∞ = a₁/(1−r) = '+sInf.toFixed(2), w/2, 18);
+
+      /* Horizontal asymptote for S_inf */
+      var yAsym = top + 10;
+      ctx.strokeStyle = AMBER2; ctx.lineWidth = 1.8; ctx.setLineDash([5,4]);
+      ctx.beginPath(); ctx.moveTo(padL, yAsym); ctx.lineTo(w-padR, yAsym); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = AMBER2; ctx.font='600 11px ui-sans-serif, system-ui, sans-serif'; ctx.textAlign='right';
+      ctx.fillText('S∞ = '+sInf.toFixed(2), w-padR-4, yAsym-5);
+
+      /* Partial sums S_1 .. S_8 and terms a_1 .. a_8 */
+      var N = 8, bw = Math.min(34, pw/N - 8);
+      var cum = 0;
+      ctx.beginPath();
+      for(var k=1;k<=N;k++){
+        var term = a1 * Math.pow(r, k-1);
+        cum += term;
+        var cx = padL + (k-0.5)*(pw/N);
+        var th = (term / sInf) * (ph - 10);
+        var sh = (cum / sInf) * (ph - 10);
+        /* Term bar */
+        ctx.fillStyle = 'rgba(43,91,168,0.28)';
+        ctx.fillRect(cx-bw/2, bot-th, bw, th);
+        ctx.strokeStyle = INDIGO; ctx.lineWidth=1.4;
+        ctx.strokeRect(cx-bw/2, bot-th, bw, th);
+        /* Partial sum point */
+        var py = bot - sh;
+        ctx.fillStyle = AMBER2;
+        ctx.beginPath(); ctx.arc(cx, py, 4, 0, 2*Math.PI); ctx.fill();
+        ctx.fillStyle = INK; ctx.font='600 10px ui-sans-serif, system-ui, sans-serif'; ctx.textAlign='center';
+        ctx.fillText('n='+k, cx, bot+14);
+      }
+      ctx.strokeStyle = INK; ctx.lineWidth=1.4;
+      ctx.beginPath(); ctx.moveTo(padL, bot); ctx.lineTo(w-padR, bot); ctx.stroke();
+      ctx.textAlign='left';
+
+      var s4 = a1*(1 - Math.pow(r,4))/(1 - r);
+      _set('tahSerSinf', sInf.toFixed(2));
+      _set('tahSerS4', s4.toFixed(2));
+      _set('tahSerA4', (a1*Math.pow(r,3)).toFixed(2));
+      if(dataDesc){
+        dataDesc.textContent = 'متسلسلة هندسية متقاربة (|r| = '+r.toFixed(2)+' < 1): المجموع اللانهائي S∞ = '+sInf.toFixed(2)+'، ومجموع أول 4 حدود S₄ = '+s4.toFixed(2)+'.';
+        renderDataRows(dataRows, [
+          ['الحد الأول a₁', a1],
+          ['الأساس r (حيث |r| < 1)', r.toFixed(2)],
+          ['الحد الرابع a₄ = a₁·r³', (a1*Math.pow(r,3)).toFixed(3)],
+          ['مجموع أول 4 حدود S₄', s4.toFixed(3)],
+          ['المجموع اللانهائي S∞ = a₁/(1−r)', sInf.toFixed(3)]
+        ]);
+      }
+    }
+    function upd(){
+      if(sa){ a1=parseInt(sa.value,10)||12; _set('tahSerA1V', a1); }
+      if(sr){ rPct=parseInt(sr.value,10)||50; _set('tahSerRV', (rPct/100).toFixed(2)); }
+      redrawAll();
+    }
+    register(canvas,draw);
+    if(sa) sa.addEventListener('input',upd);
+    if(sr) sr.addEventListener('input',upd);
+  })();
+
+  /* ===================== TAHSILI · EXPONENTIAL & LOGARITHMIC INVERSE LAB ===================== */
+  (function(){
+    var canvas=document.getElementById('tahExpLogCanvas'); if(!canvas) return;
+    var base=2, xVal=2;
+    var sb=document.getElementById('tahExpBase'), sx=document.getElementById('tahExpX');
+    var view={xmin:-4,xmax:9,ymin:-4,ymax:9,square:true,step:1};
+    var dataBtn=document.getElementById('tahExpDataBtn'), dataPanel=document.getElementById('tahExpDataPanel'),
+        dataDesc=document.getElementById('tahExpDataDesc'), dataRows=document.getElementById('tahExpDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:24,r:14,t:18,b:20}); P.clear(); P.grid();
+      /* y = x symmetry line */
+      P.segment(-4,-4,9,9,GRID||'#94a3b8',1.4,[5,4]);
+      /* f(x) = b^x */
+      P.curve(function(t){ return Math.pow(base,t); }, INDIGO, 2.5);
+      /* f^-1(x) = log_b(x) */
+      P.curve(function(t){ return t>0.03 ? Math.log(t)/Math.log(base) : NaN; }, AMBER2, 2.5);
+
+      var yExp = Math.pow(base, xVal);
+      if(yExp <= 9){
+        P.dot(xVal, yExp, INDIGO, 5);
+        P.label(xVal-0.3, yExp+0.45, '('+xVal+', '+yExp+')', INDIGO);
+        P.dot(yExp, xVal, AMBER2, 5);
+        P.label(yExp+0.25, xVal-0.45, '('+yExp+', '+xVal+')', AMBER2);
+      }
+
+      _set('tahExpVal', base+'^'+xVal+' = '+yExp);
+      _set('tahLogVal', 'log_'+base+'('+yExp+') = '+xVal);
+      _set('tahExpAsym', 'y = 0 (أسي) | x = 0 (لوغاريتمي)');
+      if(dataDesc){
+        dataDesc.textContent = 'عند الأساس b = '+base+' والقيمة x = '+xVal+': النقطة ('+xVal+', '+yExp+') تقع على منحنى الدالة الأسية، وانعكاسها ('+yExp+', '+xVal+') يقع على منحنى الدالة اللوغاريتمية.';
+        renderDataRows(dataRows, [
+          ['الأساس b', base],
+          ['قيمة الدالة الأسية f('+xVal+') = '+base+'^'+xVal, yExp],
+          ['الصورة اللوغاريتمية المكافئة', 'log_'+base+'('+yExp+') = '+xVal],
+          ['مجال ومدى الدالة الأسية', 'المجال R ، المدى (0, ∞)'],
+          ['مجال ومدى الدالة اللوغاريتمية', 'المجال (0, ∞) ، المدى R']
+        ]);
+      }
+    }
+    function upd(){
+      if(sb){ base=parseInt(sb.value,10)||2; _set('tahExpBaseV', base); }
+      if(sx){ xVal=parseInt(sx.value,10)||2; _set('tahExpXV', xVal); }
+      redrawAll();
+    }
+    register(canvas,draw);
+    if(sb) sb.addEventListener('input',upd);
+    if(sx) sx.addEventListener('input',upd);
+  })();
+
+  /* ===================== TAHSILI · DEFINITE INTEGRAL & FTC AREA LAB ===================== */
+  (function(){
+    var canvas=document.getElementById('tahIntegralCanvas'); if(!canvas) return;
+    var bLim=3, nRect=6;
+    var sb=document.getElementById('tahIntB'), sn=document.getElementById('tahIntN');
+    var view={xmin:-0.5,xmax:4.5,ymin:-1,ymax:10.5};
+    var dataBtn=document.getElementById('tahIntDataBtn'), dataPanel=document.getElementById('tahIntDataPanel'),
+        dataDesc=document.getElementById('tahIntDataDesc'), dataRows=document.getElementById('tahIntDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+
+    function f(x){ return 0.5*x*x + 1; }
+    function F(x){ return (x*x*x)/6 + x; }
+
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:26,r:14,t:18,b:20}); P.clear(); P.grid();
+      /* Exact shaded area under f(x) from 0 to bLim */
+      P.shadedArea(f, 0, bLim, 'rgba(43,91,168,0.18)');
+
+      /* Riemann rectangles using P.polygon */
+      var dx = bLim / nRect, rSum = 0;
+      for(var i=0;i<nRect;i++){
+        var x0 = i*dx, x1 = (i+1)*dx, xm = (i+0.5)*dx, ym = f(xm);
+        rSum += ym * dx;
+        P.polygon([[x0,0],[x1,0],[x1,ym],[x0,ym]], 'rgba(200,144,42,0.12)', AMBER2, 1.3);
+      }
+
+      P.curve(f, INDIGO, 2.6);
+      P.dot(bLim, f(bLim), INDIGO, 5);
+      P.label(bLim-0.3, f(bLim)+0.6, 'b = '+bLim, INDIGO);
+      var exact = F(bLim) - F(0);
+
+      _set('tahIntExact', exact.toFixed(2));
+      _set('tahIntRiem', rSum.toFixed(2));
+      _set('tahIntAnti', 'F(x) = x³/6 + x');
+      if(dataDesc){
+        dataDesc.textContent = 'التكامل المحدد من x = 0 إلى x = '+bLim+': المساحة الدقيقة = '+exact.toFixed(2)+'، ومجموع ريمان بـ '+nRect+' مستطيلات = '+rSum.toFixed(2)+'.';
+        renderDataRows(dataRows, [
+          ['الفترة [0, b]', '[0, '+bLim+']'],
+          ['الدالة الأصلية F(x)', 'x³/6 + x'],
+          ['المساحة الدقيقة F(b) − F(0)', exact.toFixed(3)],
+          ['تقريب ريمان ('+nRect+' مستطيلات)', rSum.toFixed(3)]
+        ]);
+      }
+    }
+    function upd(){
+      if(sb){ bLim=parseInt(sb.value,10)||3; _set('tahIntBV', bLim); }
+      if(sn){ nRect=parseInt(sn.value,10)||6; _set('tahIntNV', nRect); }
+      redrawAll();
+    }
+    register(canvas,draw);
+    if(sb) sb.addEventListener('input',upd);
+    if(sn) sn.addEventListener('input',upd);
+  })();
 })(window.CSExplorerKit);

@@ -1155,5 +1155,159 @@
   // Initialize ibhl track explorers
   initContExplorer('ibhlCont');
   initEpsDeltaExplorer('ibhlEps');
+
+  /* ===================== IB HL TOPIC 5 · EULER'S METHOD & SLOPE FIELD EXPLORER ===================== */
+  (function(){
+    var canvas=document.getElementById('ibhlEulerCanvas'); if(!canvas) return;
+    var view={xmin:0,xmax:3.2,ymin:0,ymax:4.2};
+    var hStep=0.5, y0=1.0;
+    var dataBtn=document.getElementById('ibhlEulerDataBtn'), dataPanel=document.getElementById('ibhlEulerDataPanel'),
+        dataDesc=document.getElementById('ibhlEulerDataDesc'), dataRows=document.getElementById('ibhlEulerDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+
+    // dy/dx = x - 0.5*y, exact solution: y(x) = 2x - 4 + (y0 + 4)*e^(-0.5x)
+    function fSlope(x,y){ return x - 0.5*y; }
+    function exactY(x){ return 2*x - 4 + (y0 + 4)*Math.exp(-0.5*x); }
+
+    function runEuler(){
+      var pts=[[0, y0]];
+      var x=0, y=y0;
+      var steps=Math.round(3.0 / hStep);
+      for(var i=0;i<steps;i++){
+        var m=fSlope(x,y);
+        y = y + hStep * m;
+        x = +(x + hStep).toFixed(4);
+        pts.push([x, y]);
+      }
+      return pts;
+    }
+
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:34,r:14,t:16,b:26}); P.clear(); P.grid();
+      // Draw slope field segments
+      for(var gx=0.2; gx<=3.0; gx+=0.4){
+        for(var gy=0.4; gy<=3.8; gy+=0.45){
+          var m=fSlope(gx,gy);
+          var dl=0.11 / Math.sqrt(1+m*m);
+          P.segment(gx-dl, gy-m*dl, gx+dl, gy+m*dl, '#CBD5E1', 1.2);
+        }
+      }
+      // Exact curve
+      P.curve(exactY, INDIGO, 2.5);
+      // Euler polygonal path
+      var pts=runEuler();
+      for(var i=0;i<pts.length-1;i++){
+        P.segment(pts[i][0], pts[i][1], pts[i+1][0], pts[i+1][1], AMBER2, 2.4, [5,3]);
+      }
+      for(var j=0;j<pts.length;j++){
+        P.dot(pts[j][0], pts[j][1], AMBER2, 4.5);
+      }
+      var last=pts[pts.length-1];
+      var ex3=exactY(3.0);
+      var err=Math.abs(ex3 - last[1]);
+      var elApprox=document.getElementById('ibhlEulerApprox'); if(elApprox) elApprox.textContent=fmt(last[1],4);
+      var elExact=document.getElementById('ibhlEulerExact'); if(elExact) elExact.textContent=fmt(ex3,4);
+      var elErr=document.getElementById('ibhlEulerErr'); if(elErr) elErr.textContent=fmt(err,4)+' ('+fmt(err/Math.abs(ex3)*100,2)+'%)';
+
+      if(dataDesc){
+        dataDesc.textContent='Euler\'s Method for dy/dx = x − 0.5y with y(0) = '+fmt(y0,2)+' and step size h = '+fmt(hStep,2)+'. At x = 3.0: Euler y_n ≈ '+fmt(last[1],4)+' vs Exact y(3) = '+fmt(ex3,4)+' (Error = '+fmt(err,4)+').';
+      }
+      var rows=pts.map(function(pt,idx){
+        var ex=exactY(pt[0]);
+        return ['n = '+idx, fmt(pt[0],2), fmt(pt[1],4), fmt(ex,4), fmt(Math.abs(ex-pt[1]),4)];
+      });
+      renderDataRows(dataRows,rows);
+    }
+    register(canvas,draw);
+    var sH=document.getElementById('ibhlEulerH'), sY0=document.getElementById('ibhlEulerY0');
+    function upd(){
+      if(sH){ hStep=parseFloat(sH.value); var lH=document.getElementById('ibhlEulerHVal'); if(lH) lH.textContent=fmt(hStep,2); }
+      if(sY0){ y0=parseFloat(sY0.value); var lY=document.getElementById('ibhlEulerY0Val'); if(lY) lY.textContent=fmt(y0,1); }
+      redrawAll();
+    }
+    if(sH) sH.addEventListener('input',upd);
+    if(sY0) sY0.addEventListener('input',upd);
+    upd();
+  })();
+
+  /* ===================== IB HL OVERVIEW · COUPLED LINEAR ODE PHASE PORTRAIT EXPLORER ===================== */
+  (function(){
+    var canvas=document.getElementById('ibhlPhaseCanvas'); if(!canvas) return;
+    var view={xmin:-4,xmax:4,ymin:-4,ymax:4,square:true};
+    var tr=-1.0, det=2.0;
+    var dataBtn=document.getElementById('ibhlPhaseDataBtn'), dataPanel=document.getElementById('ibhlPhaseDataPanel'),
+        dataDesc=document.getElementById('ibhlPhaseDataDesc'), dataRows=document.getElementById('ibhlPhaseDataRows');
+    wireDataToggle(dataBtn,dataPanel);
+
+    function classify(t, d){
+      var disc = t*t - 4*d;
+      if(d < -0.05) return {type:'Saddle Point (Unstable)', eig:'Real, opposite signs (λ₁ < 0 < λ₂)', disc:disc};
+      if(Math.abs(disc) < 0.08) return {type: t<0?'Stable Degenerate Node':'Unstable Degenerate Node', eig:'Repeated real λ = '+fmt(t/2,2), disc:disc};
+      if(disc > 0){
+        return {type: t<0?'Stable Node (Sink)':(t>0?'Unstable Node (Source)':'Neutral Line'), eig:'Real: λ₁,₂ = '+fmt((t-Math.sqrt(disc))/2,2)+', '+fmt((t+Math.sqrt(disc))/2,2), disc:disc};
+      }
+      var re = t/2, im = Math.sqrt(-disc)/2;
+      var cType = Math.abs(t)<0.08 ? 'Centre (Closed Orbits)' : (t<0 ? 'Stable Spiral (Sink)' : 'Unstable Spiral (Source)');
+      return {type:cType, eig:fmt(re,2)+' ± '+fmt(im,2)+'i', disc:disc};
+    }
+
+    function draw(ctx,w,h){
+      var P=new Plot(ctx,w,h,view,{l:32,r:14,t:14,b:24}); P.clear(); P.grid();
+      // Matrix A = [[0, 1], [-det, tr]] has trace = tr and determinant = det
+      var a11=0, a12=1, a21=-det, a22=tr;
+      // Vector field arrows
+      for(var gx=-3.2; gx<=3.2; gx+=0.8){
+        for(var gy=-3.2; gy<=3.2; gy+=0.8){
+          if(Math.abs(gx)<0.1 && Math.abs(gy)<0.1) continue;
+          var vx = a11*gx + a12*gy, vy = a21*gx + a22*gy;
+          var mag = Math.hypot(vx, vy) || 1;
+          var sc = 0.28 / mag;
+          P.segment(gx, gy, gx+vx*sc, gy+vy*sc, '#94A3B8', 1.3);
+        }
+      }
+      // Sample trajectories via RK2 steps
+      var seeds = [[2.8, 0.5], [-2.8, -0.5], [0.5, 2.8], [-0.5, -2.8]];
+      var cols = [INDIGO, AMBER2, '#0e9f8f', '#8B5CF6'];
+      seeds.forEach(function(sd, idx){
+        var x=sd[0], y=sd[1], dt=0.04;
+        for(var step=0; step<95; step++){
+          var dx1=a11*x+a12*y, dy1=a21*x+a22*y;
+          var xm=x+0.5*dt*dx1, ym=y+0.5*dt*dy1;
+          var dx2=a11*xm+a12*ym, dy2=a21*xm+a22*ym;
+          var nx=x+dt*dx2, ny=y+dt*dy2;
+          if(Math.abs(nx)>4.2 || Math.abs(ny)>4.2) break;
+          P.segment(x, y, nx, ny, cols[idx], 2.1);
+          x=nx; y=ny;
+        }
+        P.dot(sd[0], sd[1], cols[idx], 4.2);
+      });
+      P.dot(0, 0, INK, 5);
+
+      var info = classify(tr, det);
+      var elEig=document.getElementById('ibhlPhaseEig'); if(elEig) elEig.textContent=info.eig;
+      var elType=document.getElementById('ibhlPhaseType'); if(elType) elType.textContent=info.type;
+
+      if(dataDesc){
+        dataDesc.textContent='Coupled System X\' = AX with tr(A) = '+fmt(tr,1)+', det(A) = '+fmt(det,1)+'. Characteristic equation λ² − ('+fmt(tr,1)+')λ + ('+fmt(det,1)+') = 0. Eigenvalues: '+info.eig+'. Equilibrium at origin: '+info.type+'.';
+      }
+      renderDataRows(dataRows,[
+        ['Trace tr(A) = λ₁ + λ₂', fmt(tr,2)],
+        ['Determinant det(A) = λ₁λ₂', fmt(det,2)],
+        ['Discriminant Δ = tr(A)² − 4det(A)', fmt(info.disc,2)],
+        ['Eigenvalues λ₁, λ₂', info.eig],
+        ['Equilibrium Classification', info.type]
+      ]);
+    }
+    register(canvas,draw);
+    var sTr=document.getElementById('ibhlPhaseTr'), sDet=document.getElementById('ibhlPhaseDet');
+    function upd(){
+      if(sTr){ tr=parseFloat(sTr.value); var l1=document.getElementById('ibhlPhaseTrVal'); if(l1) l1.textContent=fmt(tr,1); }
+      if(sDet){ det=parseFloat(sDet.value); var l2=document.getElementById('ibhlPhaseDetVal'); if(l2) l2.textContent=fmt(det,1); }
+      redrawAll();
+    }
+    if(sTr) sTr.addEventListener('input',upd);
+    if(sDet) sDet.addEventListener('input',upd);
+    upd();
+  })();
 })(window.CSExplorerKit);
 

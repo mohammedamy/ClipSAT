@@ -84,6 +84,7 @@
     'ibslVorCanvas': true,
     'ibhlArgandCanvas': true,
     'ibhlDeMoivreCanvas': true,
+    'ibhlPhaseCanvas': true,
     'act2LawCanvas': true,
     'act2IncCanvas': true,
     'act2l2DetCanvas': true,
@@ -104,7 +105,13 @@
     'satLineCanvas': true,
     'actLineCanvas': true,
     'asLineCanvas': true,
-    'tahTransCanvas': true
+    'tahTransCanvas': true,
+    'qudShadedCanvas': true,
+    'qudClockCanvas': true,
+    'qudIdentitiesCanvas': true,
+    'tahConicCanvas': true,
+    'tahMatDetCanvas': true,
+    'tahExpLogCanvas': true
   };
 
   /* ---------- Plot helper (works in CSS pixels) ---------- */
@@ -403,7 +410,7 @@
   function _formatBilingualText(s){
     if(!s && s !== 0) return '';
     var str = String(s).trim();
-    var m = /^(.*?)\s*<br\s*\/?>\s*<em>(.*?)<\/em>$/is.exec(str);
+    var m = /^(.*?)\s*<br\s*\/?>\s*(?:<em>|<span\s+class=["']en-trans["']>)(.*?)(?:<\/em>|<\/span>)$/is.exec(str);
     if(m){
       var ar = m[1].trim();
       var en = m[2].trim();
@@ -639,7 +646,7 @@
   window.CS_loadTrackBank = function(trackId){
     if(!trackId||trackId==='home') return Promise.resolve(null); // no question bank for the home page — skip the guaranteed-404 fetch
     if(window.CS_BANK_LOADED[trackId]) return window.CS_BANK_LOADED[trackId];
-    var p = fetch('/bank-data/'+trackId+'.json')
+    var p = fetch('/bank-data/'+trackId+'.json?v=20261022c')
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(data){
         if(data){
@@ -648,12 +655,19 @@
               return(a||[]).map(function(q){
                 return Object.assign({}, q, {
                   type: q.type || 'mcq',
-                  difficulty: diff,
-                  domain: q.domain || 'Mathematics',
+                  difficulty: q.difficulty || diff,
+                  domain: q.domain || q.topic || 'Mathematics',
                   text: q.text || q.q || '',
                   choices: q.choices || [],
                   answer: q.answer,
-                  sol: q.sol || q.expl || ''
+                  ans: q.ans,
+                  sol: q.sol || q.exp || q.expl || '',
+                  figure: q.figure || q.fig,
+                  marks: q.marks,
+                  paper: q.paper,
+                  course: q.course,
+                  ibSection: q.ibSection,
+                  calc: q.calc
                 });
               });
             };
@@ -800,20 +814,23 @@
       {id:'a2-stats',      label:'Statistics',                 tags:['poisson','hypothesis','chi','regression'],             examWeight:30, chapterId:'a2-ch-stats'}
     ]});
 
-    R({viewId:'ibsl', name:'IB SL Mathematics', topics:[
-      {id:'ibsl-t1',       label:'Numbers & Algebra',          tags:['sequences','binomial','logarithm'],                    examWeight:16, chapterId:'ibsl-ch-t1'},
-      {id:'ibsl-t2',       label:'Functions',                  tags:['function','inverse','exponential'],                    examWeight:16, chapterId:'ibsl-ch-t2'},
-      {id:'ibsl-t3',       label:'Geometry & Trigonometry',    tags:['circle','vector','trig'],                              examWeight:16, chapterId:'ibsl-ch-t3'},
-      {id:'ibsl-t4',       label:'Statistics & Probability',   tags:['statistics','normal','binomial','regression'],         examWeight:16, chapterId:'ibsl-ch-t4'},
-      {id:'ibsl-t5',       label:'Calculus',                   tags:['derivative','integral','kinematics'],                  examWeight:36, chapterId:'ibsl-ch-t5'}
+    R({viewId:'ibsl', name:'IB DP Mathematics SL (AA & AI)', topics:[
+      {id:'ibsl-t1',       label:'Topic 1: Number & Algebra',          tags:['sequences','binomial','logarithm','amortization','proof'],      examWeight:15, chapterId:'ibsl-t1'},
+      {id:'ibsl-t2',       label:'Topic 2: Functions',                 tags:['function','inverse','exponential','quadratic','modelling'],     examWeight:18, chapterId:'ibsl-t2'},
+      {id:'ibsl-t3',       label:'Topic 3: Geometry & Trigonometry',   tags:['circle','trig','sine-rule','cosine-rule','voronoi'],            examWeight:17, chapterId:'ibsl-t3'},
+      {id:'ibsl-t4',       label:'Topic 4: Statistics & Probability',  tags:['statistics','normal','binomial','regression','conditional'],    examWeight:20, chapterId:'ibsl-t4'},
+      {id:'ibsl-t5',       label:'Topic 5: Calculus',                  tags:['derivative','integral','kinematics','optimization','trapezoid'],examWeight:20, chapterId:'ibsl-t5'},
+      {id:'ibsl-ai',       label:'AI SL Extensions (Voronoi, Chi-Sq & t-Test)', tags:['voronoi','chi-squared','t-test','spearman'],          examWeight:10, chapterId:'ibsl-ai'}
     ]});
 
-    R({viewId:'ibhl', name:'IB HL Mathematics', topics:[
-      {id:'ibhl-t1',       label:'Numbers & Algebra',          tags:['complex','induction','matrix'],                        examWeight:15, chapterId:'ibhl-ch-t1'},
-      {id:'ibhl-t2',       label:'Functions',                  tags:['rational','odd-even','transformation'],                examWeight:15, chapterId:'ibhl-ch-t2'},
-      {id:'ibhl-t3',       label:'Geometry & Trigonometry',    tags:['vector3d','planes','trig-identities'],                 examWeight:15, chapterId:'ibhl-ch-t3'},
-      {id:'ibhl-t4',       label:'Statistics & Probability',   tags:['chi-squared','hypothesis','poisson'],                  examWeight:15, chapterId:'ibhl-ch-t4'},
-      {id:'ibhl-t5',       label:'Calculus',                   tags:['limits','differential-equations','maclaurin'],         examWeight:40, chapterId:'ibhl-ch-t5'}
+    R({viewId:'ibhl', name:'IB DP Mathematics HL (AA & AI)', topics:[
+      {id:'ibhl-t1',       label:'Topic 1: Number & Algebra (Complex & Matrices)', tags:['complex','induction','de-moivre','matrix','eigenvalue'], examWeight:15, chapterId:'ibhl-t1'},
+      {id:'ibhl-t2',       label:'Topic 2: Functions (Polynomials & Rational)',    tags:['rational','odd-even','transformation','vieta','modulus'],examWeight:13, chapterId:'ibhl-t2'},
+      {id:'ibhl-t3',       label:'Topic 3: Geometry, Trig & 3D Vectors',           tags:['vector3d','planes','cross-product','trig-identities'],  examWeight:15, chapterId:'ibhl-t3'},
+      {id:'ibhl-t4',       label:'Topic 4: Statistics & Probability Distributions',tags:['bayes','continuous-rv','poisson','chi-squared'],        examWeight:15, chapterId:'ibhl-t4'},
+      {id:'ibhl-t5',       label:'Topic 5: HL Calculus & Differential Equations',  tags:['limits','differential-equations','maclaurin','euler'],  examWeight:22, chapterId:'ibhl-t5'},
+      {id:'ibhl-aa',       label:'AA HL Deep Dive (Proofs, Series & ODEs)',        tags:['induction','maclaurin','integrating-factor'],           examWeight:10, chapterId:'ibhl-aa'},
+      {id:'ibhl-aihl',     label:'AI HL Extensions (Graph Theory, Phase Portraits & Markov)', tags:['graph-theory','markov','coupled-ode','phase-portrait'], examWeight:10, chapterId:'ibhl-aihl'}
     ]});
 
     R({viewId:'appc', name:'AP Precalculus', topics:[
@@ -830,18 +847,29 @@
       {id:'aps-inference', label:'Statistical Inference',      tags:['confidence','hypothesis','chi','regression'],          examWeight:33, chapterId:'aps-ch-inference'}
     ]});
 
-    R({viewId:'qudrat', name:'Qudrat (GAT)', topics:[
-      {id:'qud-arith',     label:'Arithmetic',                 tags:['number','fraction','percent','ratio'],                 examWeight:25, chapterId:'qud-ch-arith'},
-      {id:'qud-algebra',   label:'Algebra',                    tags:['equation','inequality','polynomial'],                  examWeight:35, chapterId:'qud-ch-algebra'},
-      {id:'qud-geometry',  label:'Geometry',                   tags:['geometry','angle','area','triangle'],                  examWeight:25, chapterId:'qud-ch-geometry'},
-      {id:'qud-stats',     label:'Statistics & Probability',   tags:['statistics','probability','data'],                     examWeight:15, chapterId:'qud-ch-stats'}
+    R({viewId:'qudrat', name:'Qudrat (GAT — قدرات كمي)', topics:[
+      {id:'qud-arithmetic', label:'Arithmetic & Number Sense',         tags:['number','fraction','divisibility','lcm'],        examWeight:14, chapterId:'qud-arithmetic'},
+      {id:'qud-ratio',      label:'Ratios, Proportions & Percentages', tags:['ratio','percent','zakat','discount'],            examWeight:12, chapterId:'qud-ratio'},
+      {id:'qud-algebra',    label:'Algebra, Exponents & Radicals',     tags:['equation','inequality','exponent','radical'],    examWeight:14, chapterId:'qud-algebra'},
+      {id:'qud-geometry',   label:'Geometry & Shaded Regions',         tags:['geometry','shaded','circle','triangle','area'],  examWeight:18, chapterId:'qud-geometry'},
+      {id:'qud-word',       label:'Word Problems, Motion & Work',      tags:['motion','speed','work','age','mixture'],         examWeight:12, chapterId:'qud-word'},
+      {id:'qud-compare',    label:'Quantitative Comparison (المقارنات)', tags:['comparison','compare','quantity'],              examWeight:12, chapterId:'qud-compare'},
+      {id:'qud-patterns',   label:'Sequences, Clock Angles & Cycles',  tags:['pattern','sequence','clock','calendar'],         examWeight:6,  chapterId:'qud-patterns'},
+      {id:'qud-data',       label:'Statistics, Pie/Bar Charts & Prob', tags:['statistics','probability','pie','bar','mean'],   examWeight:6,  chapterId:'qud-data'},
+      {id:'qud-strategy',   label:'High-Speed Qiyas Shortcuts',        tags:['shortcut','backsolve','plug-in','mental'],       examWeight:6,  chapterId:'qud-about'}
     ]});
 
-    R({viewId:'tahsili', name:'Tahsili (SAAT)', topics:[
-      {id:'tah-algebra',   label:'Algebra',                    tags:['equation','quadratic','system'],                       examWeight:35, chapterId:'tah-ch-algebra'},
-      {id:'tah-geometry',  label:'Geometry',                   tags:['geometry','circle','area','volume'],                   examWeight:30, chapterId:'tah-ch-geometry'},
-      {id:'tah-trig',      label:'Trigonometry',               tags:['trig','angle','sine','cosine'],                        examWeight:20, chapterId:'tah-ch-trig'},
-      {id:'tah-stats',     label:'Statistics',                 tags:['statistics','probability','mean'],                     examWeight:15, chapterId:'tah-ch-stats'}
+    R({viewId:'tahsili', name:'Tahsili (SAAT — تحصيلي رياضيات)', topics:[
+      {id:'tah-logic',      label:'Y1: Logic, Reasoning & Proof',      tags:['logic','contrapositive','polygon','similarity'], examWeight:8,  chapterId:'tah-about'},
+      {id:'tah-algebra',    label:'Y2: Matrices, Determinants & Complex', tags:['matrix','determinant','cramer','complex'],    examWeight:12, chapterId:'tah-algebra'},
+      {id:'tah-functions',  label:'Y2/Y3: Polynomial, Rational & Inverse', tags:['polynomial','rational','asymptote','domain'],examWeight:10, chapterId:'tah-functions'},
+      {id:'tah-sequences',  label:'Y2: Sequences, Series & Binomial',  tags:['arithmetic','geometric','infinite','binomial'],  examWeight:8,  chapterId:'tah-sequences'},
+      {id:'tah-trig',       label:'Y2/Y3: Trigonometry & Identities',  tags:['trig','sine-law','cosine-law','double-angle'],   examWeight:10, chapterId:'tah-trig'},
+      {id:'tah-geometry',   label:'Y1/Y3: Conic Sections, Vectors & Polar', tags:['conic','ellipse','hyperbola','vector','polar'],examWeight:14, chapterId:'tah-geometry'},
+      {id:'tah-explog',     label:'Y3: Exponential & Logarithmic',     tags:['exponential','logarithm','change-of-base'],      examWeight:8,  chapterId:'tah-explog'},
+      {id:'tah-calc1',      label:'Y3: Limits & Differential Calculus',tags:['limit','derivative','tangent','critical-point'], examWeight:12, chapterId:'tah-calc1'},
+      {id:'tah-calc2',      label:'Y3: Integral Calculus & Area',      tags:['integral','antiderivative','area','ftc'],        examWeight:10, chapterId:'tah-calc2'},
+      {id:'tah-stats',      label:'Y2/Y3: Probability & Normal Dist',  tags:['probability','conditional','binomial','normal'], examWeight:8,  chapterId:'tah-stats'}
     ]});
 
     R({viewId:'precalc', name:'Precalculus', topics:[
@@ -878,7 +906,7 @@
     if(_figuresPromise) return _figuresPromise;
     _figuresPromise=new Promise(function(resolve,reject){
       var s=document.createElement('script');
-      s.src='/js/figures.js';
+      s.src='/js/figures.js?v=20261022c';
       s.onload=function(){ window._renderFig&&window.renderMathFigure?resolve():reject(new Error('figures.js did not register')); };
       s.onerror=function(){ _figuresPromise=null; reject(new Error('The figures could not load. Check your connection and try again.')); };
       document.head.appendChild(s);
@@ -907,6 +935,11 @@
     if(!q) return q;
     var choicesKey = q.choices ? 'choices' : (q.options ? 'options' : null);
     if(!choicesKey || !q[choicesKey] || q[choicesKey].length < 2) return q;
+    /* Never shuffle Quantitative Comparison choices (A: Quantity A > B, B: Quantity B > A, C: Equal, D: Insufficient) */
+    var chArr = q[choicesKey];
+    if(q.fixedChoices || q.topic_id === 'qud-compare' || /القيمة الأولى أكبر|Quantity A is greater|Column A is greater/i.test(String(chArr[0]||''))){
+      return Object.assign({}, q);
+    }
     var answerKey = (typeof q.answer!=='undefined') ? 'answer' : (typeof q.ans!=='undefined' ? 'ans' : (typeof q.correct!=='undefined' ? 'correct' : null));
     var origAns = answerKey ? q[answerKey] : 0;
     if(typeof origAns !== 'number') return q; /* non-index answer format — leave untouched */
@@ -931,7 +964,7 @@
     if(_bankExamPromise) return _bankExamPromise;
     _bankExamPromise=new Promise(function(resolve,reject){
       var s=document.createElement('script');
-      s.src='/js/bank-exam.js';
+      s.src='/js/bank-exam.js?v=20261022c';
       s.onload=function(){ window.CSBankExam?resolve():reject(new Error('bank-exam.js did not register')); };
       s.onerror=function(){ _bankExamPromise=null; reject(new Error('The exam generator could not load. Check your connection and try again.')); };
       document.head.appendChild(s);
