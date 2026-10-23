@@ -51,11 +51,346 @@
         "kind": "callout",
         "style": "thm",
         "label": {
-          "en": "● Radian Measure, Arc Length & Sector Area",
+          "en": "● Radian Measure, Arc Length, Sector Area & Exact Values of All 6 Trigonometric Ratios",
           "ar": null
         },
         "body": {
-          "en": "<p>One radian is the measure of a central angle that subtends an arc equal in length to the circle's radius \\(r\\). The fundamental equivalence is \\[ \\pi \\text{ radians} = 180^\\circ \\implies 1 \\text{ rad} = \\frac{180^\\circ}{\\pi} \\approx 57.296^\\circ, \\quad 1^\\circ = \\frac{\\pi}{180} \\text{ rad}. \\]</p><p>For a central angle \\(\\theta\\) measured strictly in <strong>radians</strong> on a circle of radius \\(r\\):</p>\\[\\text{Arc Length: } s = r\\theta, \\qquad \\text{Sector Area: } A = \\frac{1}{2}r^2\\theta.\\]<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Degrees</th><th>Radians</th><th>\\(\\sin\\theta\\)</th><th>\\(\\cos\\theta\\)</th><th>\\(\\tan\\theta\\)</th></tr></thead><tbody><tr><td>\\(0^\\circ\\)</td><td>\\(0\\)</td><td>\\(0\\)</td><td>\\(1\\)</td><td>\\(0\\)</td></tr><tr><td>\\(30^\\circ\\)</td><td>\\(\\pi/6\\)</td><td>\\(1/2\\)</td><td>\\(\\sqrt{3}/2\\)</td><td>\\(\\sqrt{3}/3\\)</td></tr><tr><td>\\(45^\\circ\\)</td><td>\\(\\pi/4\\)</td><td>\\(\\sqrt{2}/2\\)</td><td>\\(\\sqrt{2}/2\\)</td><td>\\(1\\)</td></tr><tr><td>\\(60^\\circ\\)</td><td>\\(\\pi/3\\)</td><td>\\(\\sqrt{3}/2\\)</td><td>\\(1/2\\)</td><td>\\(\\sqrt{3}\\)</td></tr><tr><td>\\(90^\\circ\\)</td><td>\\(\\pi/2\\)</td><td>\\(1\\)</td><td>\\(0\\)</td><td>undefined</td></tr></tbody></table>",
+          "en": "<p>One radian is the measure of a central angle that subtends an arc equal in length to the circle's radius \\(r\\). The fundamental equivalence is \\[ \\pi \\text{ radians} = 180^\\circ \\implies 1 \\text{ rad} = \\frac{180^\\circ}{\\pi} \\approx 57.296^\\circ, \\quad 1^\\circ = \\frac{\\pi}{180} \\text{ rad}. \\]</p><p>For a central angle \\(\\theta\\) measured strictly in <strong>radians</strong> on a circle of radius \\(r\\):</p>\\[\\text{Arc Length: } s = r\\theta, \\qquad \\text{Sector Area: } A = \\frac{1}{2}r^2\\theta.\\]<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Degrees</th><th>Radians</th><th>\\(\\sin\\theta\\)</th><th>\\(\\cos\\theta\\)</th><th>\\(\\tan\\theta\\)</th><th>\\(\\csc\\theta\\)</th><th>\\(\\sec\\theta\\)</th><th>\\(\\cot\\theta\\)</th></tr></thead><tbody><tr><td>\\(0^\\circ\\)</td><td>\\(0\\)</td><td>\\(0\\)</td><td>\\(1\\)</td><td>\\(0\\)</td><td>undefined</td><td>\\(1\\)</td><td>undefined</td></tr><tr><td>\\(30^\\circ\\)</td><td>\\(\\pi/6\\)</td><td>\\(1/2\\)</td><td>\\(\\sqrt{3}/2\\)</td><td>\\(\\sqrt{3}/3\\)</td><td>\\(2\\)</td><td>\\(2\\sqrt{3}/3\\)</td><td>\\(\\sqrt{3}\\)</td></tr><tr><td>\\(45^\\circ\\)</td><td>\\(\\pi/4\\)</td><td>\\(\\sqrt{2}/2\\)</td><td>\\(\\sqrt{2}/2\\)</td><td>\\(1\\)</td><td>\\(\\sqrt{2}\\)</td><td>\\(\\sqrt{2}\\)</td><td>\\(1\\)</td></tr><tr><td>\\(60^\\circ\\)</td><td>\\(\\pi/3\\)</td><td>\\(\\sqrt{3}/2\\)</td><td>\\(1/2\\)</td><td>\\(\\sqrt{3}\\)</td><td>\\(2\\sqrt{3}/3\\)</td><td>\\(2\\)</td><td>\\(\\sqrt{3}/3\\)</td></tr><tr><td>\\(90^\\circ\\)</td><td>\\(\\pi/2\\)</td><td>\\(1\\)</td><td>\\(0\\)</td><td>undefined</td><td>\\(1\\)</td><td>undefined</td><td>\\(0\\)</td></tr></tbody></table>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · All 6 Trigonometric Ratios (Unit Circle & Wave Graph)",
+          "ar": null
+        },
+        "canvasId": "pcTrig6Canvas",
+        "ariaLabel": {
+          "en": "Interactive split-view canvas showing the unit circle geometry on the left and the Cartesian wave graph of any of the 6 trigonometric ratios (sin, cos, tan, csc, sec, cot) on the right.",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "pcTrig6DataBtn",
+          "panelId": "pcTrig6DataPanel",
+          "descId": "pcTrig6DataDesc",
+          "rowsId": "pcTrig6DataRows",
+          "caption": {
+            "en": "All 6 trigonometric ratios evaluated across standard benchmark angles and the active angle θ.",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "θ",
+              "ar": null
+            },
+            {
+              "en": "sin θ",
+              "ar": null
+            },
+            {
+              "en": "cos θ",
+              "ar": null
+            },
+            {
+              "en": "tan θ",
+              "ar": null
+            },
+            {
+              "en": "csc θ",
+              "ar": null
+            },
+            {
+              "en": "sec θ",
+              "ar": null
+            },
+            {
+              "en": "cot θ",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "pcTrig6Fn",
+            "label": {
+              "en": "Select trig ratio:",
+              "ar": null
+            },
+            "value": "sin",
+            "options": [
+              {
+                "value": "sin",
+                "label": "sin θ = y (Opposite / Hypotenuse)",
+                "selected": true
+              },
+              {
+                "value": "cos",
+                "label": "cos θ = x (Adjacent / Hypotenuse)"
+              },
+              {
+                "value": "tan",
+                "label": "tan θ = sin θ / cos θ (Opposite / Adjacent)"
+              },
+              {
+                "value": "csc",
+                "label": "csc θ = 1 / sin θ (Hypotenuse / Opposite)"
+              },
+              {
+                "value": "sec",
+                "label": "sec θ = 1 / cos θ (Hypotenuse / Adjacent)"
+              },
+              {
+                "value": "cot",
+                "label": "cot θ = cos θ / sin θ (Adjacent / Opposite)"
+              }
+            ],
+            "ariaLabel": {
+              "en": "Select trigonometric function to graph",
+              "ar": null
+            }
+          },
+          {
+            "id": "pcTrig6Theta",
+            "label": {
+              "en": "Angle <b>θ</b>:",
+              "ar": null
+            },
+            "min": -360,
+            "max": 360,
+            "value": 60,
+            "step": 5,
+            "valueDisplayId": "pcTrig6ThetaV",
+            "valueDisplay": "60°",
+            "ariaLabel": {
+              "en": "Angle theta in degrees",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "pcTrig6Sin",
+            "label": {
+              "en": "sin θ",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "0.866"
+          },
+          {
+            "id": "pcTrig6Cos",
+            "label": {
+              "en": "cos θ",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "0.500"
+          },
+          {
+            "id": "pcTrig6Tan",
+            "label": {
+              "en": "tan θ",
+              "ar": null
+            },
+            "value": "1.732"
+          },
+          {
+            "id": "pcTrig6Csc",
+            "label": {
+              "en": "csc θ (1/sin θ)",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "1.155"
+          },
+          {
+            "id": "pcTrig6Sec",
+            "label": {
+              "en": "sec θ (1/cos θ)",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "2.000"
+          },
+          {
+            "id": "pcTrig6Cot",
+            "label": {
+              "en": "cot θ (cos θ/sin θ)",
+              "ar": null
+            },
+            "value": "0.577"
+          }
+        ],
+        "note": {
+          "en": "Switch among all 6 trigonometric functions — sin θ, cos θ, tan θ, csc θ, sec θ, and cot θ — and sweep θ from −360° (−2π) to +360° (+2π). Left: unit circle projections and tangent/secant/cotangent geometric segments. Right: Cartesian wave graph with vertical asymptotes where the denominator equals zero.",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "thm",
+        "label": {
+          "en": "● All 6 Inverse Trigonometric Functions — Restricted Domains & Principal Ranges",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>Because the six circular trigonometric functions are periodic and fail the Horizontal Line Test on \\(\\mathbb{R}\\), each function's domain is restricted to a canonical one-to-one <strong>principal branch</strong> so that a unique inverse exists:</p><table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Inverse Function</th><th>Definition</th><th>Domain of \\(f^{-1}(x)\\)</th><th>Principal Range (Radians)</th><th>Principal Range (Degrees)</th><th>Unit Circle Quadrants</th></tr></thead><tbody><tr><td>\\(y = \\arcsin x = \\sin^{-1} x\\)</td><td>\\(\\sin y = x\\)</td><td>\\([-1, 1]\\)</td><td>\\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\)</td><td>\\([-90^\\circ, 90^\\circ]\\)</td><td>Quadrants IV &amp; I</td></tr><tr><td>\\(y = \\arccos x = \\cos^{-1} x\\)</td><td>\\(\\cos y = x\\)</td><td>\\([-1, 1]\\)</td><td>\\([0, \\pi]\\)</td><td>\\([0^\\circ, 180^\\circ]\\)</td><td>Quadrants I &amp; II</td></tr><tr><td>\\(y = \\arctan x = \\tan^{-1} x\\)</td><td>\\(\\tan y = x\\)</td><td>\\((-\\infty, \\infty)\\)</td><td>\\(\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\)</td><td>\\((-90^\\circ, 90^\\circ)\\)</td><td>Quadrants IV &amp; I</td></tr><tr><td>\\(y = \\operatorname{arccsc} x = \\csc^{-1} x\\)</td><td>\\(\\csc y = x\\)</td><td>\\((-\\infty, -1] \\cup [1, \\infty)\\)</td><td>\\(\\left[-\\frac{\\pi}{2}, 0\\right) \\cup \\left(0, \\frac{\\pi}{2}\\right]\\)</td><td>\\([-90^\\circ, 90^\\circ] \\setminus \\{0^\\circ\\}\\)</td><td>Quadrants IV &amp; I</td></tr><tr><td>\\(y = \\operatorname{arcsec} x = \\sec^{-1} x\\)</td><td>\\(\\sec y = x\\)</td><td>\\((-\\infty, -1] \\cup [1, \\infty)\\)</td><td>\\(\\left[0, \\frac{\\pi}{2}\\right) \\cup \\left(\\frac{\\pi}{2}, \\pi\\right]\\)</td><td>\\([0^\\circ, 180^\\circ] \\setminus \\{90^\\circ\\}\\)</td><td>Quadrants I &amp; II</td></tr><tr><td>\\(y = \\operatorname{arccot} x = \\cot^{-1} x\\)</td><td>\\(\\cot y = x\\)</td><td>\\((-\\infty, \\infty)\\)</td><td>\\((0, \\pi)\\)</td><td>\\((0^\\circ, 180^\\circ)\\)</td><td>Quadrants I &amp; II</td></tr></tbody></table><p><strong>Reciprocal Inverse Identities (for valid \\(x\\)):</strong> \\[ \\operatorname{arccsc}(x) = \\arcsin\\!\\left(\\frac{1}{x}\\right), \\qquad \\operatorname{arcsec}(x) = \\arccos\\!\\left(\\frac{1}{x}\\right) \\quad (|x| \\ge 1). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · All 6 Inverse Trigonometric Functions (Principal Branches & Reflection Across y = x)",
+          "ar": null
+        },
+        "canvasId": "pcInvTrig6Canvas",
+        "ariaLabel": {
+          "en": "Interactive graph showing any of the 6 inverse trigonometric functions (arcsin, arccos, arctan, arccsc, arcsec, arccot) alongside the restricted principal branch of the original function and reflection line y = x.",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "pcInvTrig6DataBtn",
+          "panelId": "pcInvTrig6DataPanel",
+          "descId": "pcInvTrig6DataDesc",
+          "rowsId": "pcInvTrig6DataRows",
+          "caption": {
+            "en": "Principal branch evaluations for the selected inverse trigonometric function.",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "Input x",
+              "ar": null
+            },
+            {
+              "en": "θ = f⁻¹(x) (rad)",
+              "ar": null
+            },
+            {
+              "en": "θ = f⁻¹(x) (deg)",
+              "ar": null
+            },
+            {
+              "en": "Reflected Point on f",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "pcInvTrig6Fn",
+            "label": {
+              "en": "Select inverse function:",
+              "ar": null
+            },
+            "value": "arcsin",
+            "options": [
+              {
+                "value": "arcsin",
+                "label": "y = arcsin(x) = sin⁻¹(x)  |  Domain [−1, 1], Range [−π/2, π/2]",
+                "selected": true
+              },
+              {
+                "value": "arccos",
+                "label": "y = arccos(x) = cos⁻¹(x)  |  Domain [−1, 1], Range [0, π]"
+              },
+              {
+                "value": "arctan",
+                "label": "y = arctan(x) = tan⁻¹(x)  |  Domain (−∞, ∞), Range (−π/2, π/2)"
+              },
+              {
+                "value": "arccsc",
+                "label": "y = arccsc(x) = csc⁻¹(x)  |  Domain |x| ≥ 1, Range [−π/2, π/2] \\ {0}"
+              },
+              {
+                "value": "arcsec",
+                "label": "y = arcsec(x) = sec⁻¹(x)  |  Domain |x| ≥ 1, Range [0, π] \\ {π/2}"
+              },
+              {
+                "value": "arccot",
+                "label": "y = arccot(x) = cot⁻¹(x)  |  Domain (−∞, ∞), Range (0, π)"
+              }
+            ],
+            "ariaLabel": {
+              "en": "Select inverse trigonometric function",
+              "ar": null
+            }
+          },
+          {
+            "id": "pcInvTrig6X",
+            "label": {
+              "en": "Input value <b>x</b>:",
+              "ar": null
+            },
+            "min": -3,
+            "max": 3,
+            "value": 0.5,
+            "step": 0.05,
+            "valueDisplayId": "pcInvTrig6XV",
+            "valueDisplay": "0.50",
+            "ariaLabel": {
+              "en": "Input value x for inverse trigonometric function",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "pcInvTrig6XOut",
+            "label": {
+              "en": "Input x",
+              "ar": null
+            },
+            "value": "0.500"
+          },
+          {
+            "id": "pcInvTrig6RadOut",
+            "label": {
+              "en": "θ = f⁻¹(x) (rad)",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "0.524 rad (π/6)"
+          },
+          {
+            "id": "pcInvTrig6DegOut",
+            "label": {
+              "en": "θ = f⁻¹(x) (deg)",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "30.0°"
+          },
+          {
+            "id": "pcInvTrig6DomOut",
+            "label": {
+              "en": "Domain of f⁻¹",
+              "ar": null
+            },
+            "value": "[−1, 1]"
+          },
+          {
+            "id": "pcInvTrig6RangeOut",
+            "label": {
+              "en": "Principal Range",
+              "ar": null
+            },
+            "value": "[−π/2, π/2]"
+          },
+          {
+            "id": "pcInvTrig6CheckOut",
+            "label": {
+              "en": "Identity Check f(f⁻¹(x))",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "sin(0.524) = 0.500"
+          }
+        ],
+        "note": {
+          "en": "Select any of the 6 inverse trigonometric functions (arcsin, arccos, arctan, arccsc, arcsec, arccot). The dashed indigo curve is the restricted one-to-one branch of f(θ); the solid amber curve is its reflection y = f⁻¹(x) across the mirror line y = x. The unit-circle inset highlights the allowed principal range quadrants.",
           "ar": null
         }
       },

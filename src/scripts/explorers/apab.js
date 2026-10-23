@@ -220,7 +220,7 @@
           cond1: false, cond2: false, cond3: false,
           status: 'Infinite Discontinuity ❌ (Vertical asymptote x = 1)'
         };
-      } else {
+      } else if(tCase === 'osc'){
         var isOsc = Math.abs(x - cVal) < eps;
         var yOsc = isOsc ? 0 : Math.sin(2 / (x - cVal));
         return {
@@ -228,6 +228,15 @@
           name: 'Case 6 · Oscillating Discontinuity',
           cond1: true, cond2: false, cond3: false,
           status: 'Essential Discontinuity ❌ (Infinitely oscillates in [−1, 1])'
+        };
+      } else if(tCase === 'endpoint'){
+        var isLeft = x < cVal;
+        var yEnd = isLeft ? null : (Math.sqrt(Math.max(0, x - cVal)) + 1.5);
+        return {
+          y: yEnd, leftLim: 'DNE (x < 1 outside domain)', rightLim: '1.500', fAtC: 1.5,
+          name: 'Case 7 · Endpoint / One-Sided Continuity',
+          cond1: true, cond2: false, cond3: false,
+          status: 'One-Sided Continuity ✔ (Continuous from right: lim x→1⁺ = f(1) = 1.5)'
         };
       }
     }
@@ -292,6 +301,12 @@
           return Math.sin(2 / (x - cVal));
         }, INDIGO, 1.8);
         P.dot(cVal, 0, AMBER2, 4.5);
+      } else if(currCase === 'endpoint'){
+        var cEnd = ctx; cEnd.save(); cEnd.beginPath();
+        cEnd.rect(P.X(cVal), P.pad.t, P.w - P.pad.r - P.X(cVal), P.h - P.pad.t - P.pad.b); cEnd.clip();
+        P.curve(function(x){ return x >= cVal ? (Math.sqrt(x - cVal) + 1.5) : null; }, INDIGO, 2.6);
+        cEnd.restore();
+        P.dot(cVal, 1.5, INDIGO, 5.5);
       }
 
       P.vline(xVal, 'rgba(184,128,31,.45)', [4, 4]);

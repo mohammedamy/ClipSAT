@@ -28,7 +28,7 @@
     var dataBtn=document.getElementById('ucDataBtn'), dataPanel=document.getElementById('ucDataPanel'),
         dataDesc=document.getElementById('ucDataDesc'), dataRows=document.getElementById('ucDataRows');
     wireDataToggle(dataBtn,dataPanel);
-    function updateDataView(cx,cy,tanv,quad){
+    function updateDataView(cx,cy,tanv,secv,cscv,cotv,quad){
       if(!dataDesc) return;
       dataDesc.textContent='Point on the unit circle at θ = '+thetaDeg+'°, coordinates ('+fmt(cx,3)+', '+fmt(cy,3)+'), quadrant '+quad+'.';
       renderDataRows(dataRows,[
@@ -36,6 +36,9 @@
         ['x = cos θ',fmt(cx,3)],
         ['y = sin θ',fmt(cy,3)],
         ['tan θ',isNaN(tanv)?'undefined':fmt(tanv,3)],
+        ['sec θ = 1/cos θ',isNaN(secv)?'undefined':fmt(secv,3)],
+        ['csc θ = 1/sin θ',isNaN(cscv)?'undefined':fmt(cscv,3)],
+        ['cot θ = cos θ/sin θ',isNaN(cotv)?'undefined':fmt(cotv,3)],
         ['quadrant',quad]
       ]);
     }
@@ -53,14 +56,20 @@
       P.segment(cx,0,cx,cy,AMBER2,2.4,[4,3]);
       P.segment(0,0,cx,cy,INK,2);
       P.dot(cx,cy,INK,5.5);
-      document.getElementById('ucCos').textContent=fmt(cx,3);
-      document.getElementById('ucSin').textContent=fmt(cy,3);
+      _set('ucCos', fmt(cx,3));
+      _set('ucSin', fmt(cy,3));
       var tanv = Math.abs(cx)<1e-6 ? NaN : cy/cx;
-      document.getElementById('ucTan').textContent = isNaN(tanv) ? 'undefined' : fmt(tanv,3);
+      var secv = Math.abs(cx)<1e-6 ? NaN : 1/cx;
+      var cscv = Math.abs(cy)<1e-6 ? NaN : 1/cy;
+      var cotv = Math.abs(cy)<1e-6 ? NaN : cx/cy;
+      _set('ucTan', isNaN(tanv) ? 'undefined' : fmt(tanv,3));
+      _set('ucSec', isNaN(secv) ? 'undefined' : fmt(secv,3));
+      _set('ucCsc', isNaN(cscv) ? 'undefined' : fmt(cscv,3));
+      _set('ucCot', isNaN(cotv) ? 'undefined' : fmt(cotv,3));
       var d=((thetaDeg%360)+360)%360;
       var quad = (d%90===0) ? '—' : ['I','II','III','IV'][Math.floor(d/90)];
-      document.getElementById('ucQuad').textContent = quad;
-      updateDataView(cx,cy,tanv,quad);
+      _set('ucQuad', quad);
+      updateDataView(cx,cy,tanv,secv,cscv,cotv,quad);
     }
     register(canvas,draw);
     var s=document.getElementById('ucT');
@@ -699,8 +708,507 @@
     syncState();
   }
 
+  /* ===================== ALL 6 TRIGONOMETRIC RATIOS EXPLORER ===================== */
+  function initSixTrigExplorer(pfx){
+    var canvas = document.getElementById(pfx + 'Canvas'); if(!canvas) return;
+    var sFn = document.getElementById(pfx + 'Fn'), sTheta = document.getElementById(pfx + 'Theta');
+    var dataBtn = document.getElementById(pfx + 'DataBtn'), dataPanel = document.getElementById(pfx + 'DataPanel'),
+        dataDesc = document.getElementById(pfx + 'DataDesc'), dataRows = document.getElementById(pfx + 'DataRows');
+    wireDataToggle(dataBtn, dataPanel);
+
+    var fnKey = 'sin', thetaDeg = 60;
+    var TEAL = '#0d9488', ROSE = '#e11d48';
+
+    function evalSix(rad){
+      var s = Math.sin(rad), c = Math.cos(rad);
+      var zSin = Math.abs(s) < 1e-5, zCos = Math.abs(c) < 1e-5;
+      return {
+        sin: zSin ? 0 : s,
+        cos: zCos ? 0 : c,
+        tan: zCos ? NaN : (zSin ? 0 : s / c),
+        csc: zSin ? NaN : 1 / s,
+        sec: zCos ? NaN : 1 / c,
+        cot: zSin ? NaN : (zCos ? 0 : c / s)
+      };
+    }
+
+    function fmtRatio(v){
+      return (v === null || isNaN(v) || !isFinite(v)) ? 'undefined' : fmt(v, 3);
+    }
+
+    function updateDataView(){
+      var rad = thetaDeg * Math.PI / 180;
+      var cur = evalSix(rad);
+      if(dataDesc){
+        dataDesc.textContent = 'Active angle θ = ' + thetaDeg + '° (' + fmt(rad, 3) + ' rad). ' +
+          'sin θ = ' + fmtRatio(cur.sin) + ', cos θ = ' + fmtRatio(cur.cos) + ', tan θ = ' + fmtRatio(cur.tan) +
+          ', csc θ = ' + fmtRatio(cur.csc) + ', sec θ = ' + fmtRatio(cur.sec) + ', cot θ = ' + fmtRatio(cur.cot) + '.';
+      }
+      if(dataRows){
+        var samples = [0, 30, 45, 60, 90, 120, 135, 150, 180, 270, 360];
+        if(samples.indexOf(thetaDeg) === -1) samples.unshift(thetaDeg);
+        var rows = [];
+        for(var i = 0; i < samples.length; i++){
+          var d = samples[i], r = d * Math.PI / 180, v = evalSix(r);
+          rows.push([
+            d + '° (' + fmt(r, 2) + ' rad)',
+            fmtRatio(v.sin), fmtRatio(v.cos), fmtRatio(v.tan),
+            fmtRatio(v.csc), fmtRatio(v.sec), fmtRatio(v.cot)
+          ]);
+        }
+        renderDataRows(dataRows, rows);
+      }
+    }
+
+    function draw(ctx, w, h){
+      ctx.clearRect(0, 0, w, h);
+      var splitX = Math.round(w * 0.38);
+
+      /* --- LEFT PANE: UNIT CIRCLE GEOMETRY --- */
+      var padL = {l: 18, r: Math.max(12, w - splitX + 6), t: 22, b: 24};
+      var viewUC = _fitView(-1.55, 1.55, -1.55, 1.55, w, h, padL);
+      var Puc = new Plot(ctx, w, h, viewUC, padL);
+
+      var c = ctx;
+      c.save();
+      c.beginPath();
+      c.rect(padL.l, padL.t, w - padL.l - padL.r, h - padL.t - padL.b);
+      c.clip();
+
+      /* Axes */
+      Puc.segment(viewUC.xmin, 0, viewUC.xmax, 0, AXIS, 1);
+      Puc.segment(0, viewUC.ymin, 0, viewUC.ymax, AXIS, 1);
+
+      /* Unit Circle x^2 + y^2 = 1 */
+      c.beginPath();
+      for(var i = 0; i <= 120; i++){
+        var a = 2 * Math.PI * i / 120;
+        var ux = Puc.X(Math.cos(a)), uy = Puc.Y(Math.sin(a));
+        if(i === 0) c.moveTo(ux, uy); else c.lineTo(ux, uy);
+      }
+      c.closePath();
+      c.lineWidth = 1.6;
+      c.strokeStyle = '#94a3b8';
+      c.stroke();
+
+      var rad = thetaDeg * Math.PI / 180;
+      var vals = evalSix(rad);
+      var cx = vals.cos, cy = vals.sin;
+
+      /* Reference triangle legs: cos(theta) and sin(theta) */
+      Puc.segment(0, 0, cx, 0, INDIGO, 2.8);
+      Puc.segment(cx, 0, cx, cy, AMBER2, 2.8);
+      Puc.segment(0, 0, cx, cy, INK, 2.2);
+
+      /* Geometric tangent/secant or cotangent/cosecant segment on unit circle */
+      if((fnKey === 'tan' || fnKey === 'sec') && isFinite(vals.tan)){
+        var sgnX = cx >= 0 ? 1 : -1;
+        var ty = vals.tan * sgnX;
+        Puc.segment(sgnX, -3, sgnX, 3, LINE, 1, [3, 3]);
+        Puc.segment(sgnX, 0, sgnX, ty, TEAL, 3.0);
+        Puc.segment(0, 0, sgnX, ty, INDIGO2, 1.8, [4, 3]);
+        Puc.dot(sgnX, ty, TEAL, 4.5);
+      } else if((fnKey === 'cot' || fnKey === 'csc') && isFinite(vals.cot)){
+        var sgnY = cy >= 0 ? 1 : -1;
+        var cotX = vals.cot * sgnY;
+        Puc.segment(-3, sgnY, 3, sgnY, LINE, 1, [3, 3]);
+        Puc.segment(0, sgnY, cotX, sgnY, TEAL, 3.0);
+        Puc.segment(0, 0, cotX, sgnY, AMBER2, 1.8, [4, 3]);
+        Puc.dot(cotX, sgnY, TEAL, 4.5);
+      }
+
+      Puc.dot(cx, cy, INK, 5.2);
+      c.restore();
+
+      c.font = FONT;
+      c.fillStyle = MUTED;
+      c.textAlign = 'left';
+      c.textBaseline = 'top';
+      c.fillText('Unit Circle P(cos θ, sin θ)', padL.l + 2, 4);
+
+      /* Divider line between panes */
+      c.save();
+      c.strokeStyle = LINE;
+      c.lineWidth = 1;
+      c.beginPath();
+      c.moveTo(splitX, 8);
+      c.lineTo(splitX, h - 8);
+      c.stroke();
+      c.restore();
+
+      /* --- RIGHT PANE: CARTESIAN WAVE GRAPH y = f(θ) --- */
+      var padR = {l: splitX + 32, r: 14, t: 22, b: 24};
+      var viewW = {xmin: -2 * Math.PI, xmax: 2 * Math.PI, ymin: -3.5, ymax: 3.5};
+      var Pw = new Plot(ctx, w, h, viewW, padR);
+
+      c.save();
+      c.beginPath();
+      c.rect(padR.l, padR.t, w - padR.l - padR.r, h - padR.t - padR.b);
+      c.clip();
+
+      /* Horizontal grid lines */
+      for(var gy = -3; gy <= 3; gy++){
+        Pw.segment(viewW.xmin, gy, viewW.xmax, gy, gy === 0 ? AXIS : GRID, gy === 0 ? 1.2 : 1);
+      }
+      /* Vertical grid lines at multiples of pi/2 */
+      for(var k = -4; k <= 4; k++){
+        var gx = k * Math.PI / 2;
+        Pw.segment(gx, viewW.ymin, gx, viewW.ymax, k === 0 ? AXIS : GRID, k === 0 ? 1.2 : 1);
+      }
+
+      /* Reciprocal guide curve for csc (sin) or sec (cos) */
+      if(fnKey === 'csc'){
+        Pw.curve(function(x){ return Math.sin(x); }, '#94a3b8', 1.4, [4, 4]);
+      } else if(fnKey === 'sec'){
+        Pw.curve(function(x){ return Math.cos(x); }, '#94a3b8', 1.4, [4, 4]);
+      }
+
+      /* Vertical asymptotes for tan, sec, csc, cot */
+      var asymK = [];
+      if(fnKey === 'tan' || fnKey === 'sec'){
+        asymK = [-3, -1, 1, 3]; /* (k * pi / 2) where cos = 0 */
+      } else if(fnKey === 'csc' || fnKey === 'cot'){
+        asymK = [-4, -2, 0, 2, 4]; /* (k * pi / 2) where sin = 0 */
+      }
+      for(var ai = 0; ai < asymK.length; ai++){
+        Pw.vline(asymK[ai] * Math.PI / 2, ROSE, [5, 4]);
+      }
+
+      /* Active function curve y = f(x) */
+      var fWave = function(x){
+        var s = Math.sin(x), co = Math.cos(x);
+        if(fnKey === 'sin') return s;
+        if(fnKey === 'cos') return co;
+        if(fnKey === 'tan') return Math.abs(co) < 0.06 ? NaN : s / co;
+        if(fnKey === 'csc') return Math.abs(s) < 0.06 ? NaN : 1 / s;
+        if(fnKey === 'sec') return Math.abs(co) < 0.06 ? NaN : 1 / co;
+        if(fnKey === 'cot') return Math.abs(s) < 0.06 ? NaN : co / s;
+        return s;
+      };
+      Pw.curve(fWave, INDIGO, 2.6);
+
+      /* Active angle probe on wave graph */
+      Pw.vline(rad, 'rgba(200,144,42,0.55)', [4, 3]);
+      var activeY = vals[fnKey];
+      if(isFinite(activeY) && activeY >= viewW.ymin && activeY <= viewW.ymax){
+        Pw.segment(rad, 0, rad, activeY, AMBER2, 2.2);
+        Pw.dot(rad, activeY, AMBER2, 5.8);
+      }
+      c.restore();
+
+      /* Axis labels on wave graph */
+      c.font = FONT;
+      c.fillStyle = MUTED;
+      c.textAlign = 'center';
+      c.textBaseline = 'top';
+      var piTicks = [
+        {x: -2*Math.PI, lbl: '−2π'},
+        {x: -Math.PI, lbl: '−π'},
+        {x: 0, lbl: '0'},
+        {x: Math.PI, lbl: 'π'},
+        {x: 2*Math.PI, lbl: '2π'}
+      ];
+      for(var ti = 0; ti < piTicks.length; ti++){
+        c.fillText(piTicks[ti].lbl, Pw.X(piTicks[ti].x), h - padR.b + 5);
+      }
+      c.textAlign = 'left';
+      c.fillStyle = INDIGO;
+      var fnTitleMap = {
+        sin: 'Wave: y = sin(θ)  [Period 2π, Range [−1, 1]]',
+        cos: 'Wave: y = cos(θ)  [Period 2π, Range [−1, 1]]',
+        tan: 'Wave: y = tan(θ) = sin θ/cos θ  [Period π, Asymptotes cos θ = 0]',
+        csc: 'Wave: y = csc(θ) = 1/sin θ  [Period 2π, Range |y| ≥ 1]',
+        sec: 'Wave: y = sec(θ) = 1/cos θ  [Period 2π, Range |y| ≥ 1]',
+        cot: 'Wave: y = cot(θ) = cos θ/sin θ  [Period π, Asymptotes sin θ = 0]'
+      };
+      c.fillText(fnTitleMap[fnKey] || '', padR.l, 4);
+
+      /* Update all 6 readouts */
+      _set(pfx + 'ThetaV', thetaDeg + '°');
+      _set(pfx + 'Sin', fmtRatio(vals.sin));
+      _set(pfx + 'Cos', fmtRatio(vals.cos));
+      _set(pfx + 'Tan', fmtRatio(vals.tan));
+      _set(pfx + 'Csc', fmtRatio(vals.csc));
+      _set(pfx + 'Sec', fmtRatio(vals.sec));
+      _set(pfx + 'Cot', fmtRatio(vals.cot));
+      updateDataView();
+    }
+
+    register(canvas, draw);
+
+    function sync(){
+      if(sFn) fnKey = sFn.value;
+      if(sTheta) thetaDeg = parseInt(sTheta.value, 10);
+      updateDataView();
+      redrawAll();
+    }
+    if(sFn) sFn.addEventListener('change', sync);
+    if(sTheta){ sTheta.addEventListener('input', sync); sTheta.addEventListener('change', sync); }
+    sync();
+  }
+
+  /* ===================== ALL 6 INVERSE TRIGONOMETRIC FUNCTIONS EXPLORER ===================== */
+  function initSixInvTrigExplorer(pfx){
+    var canvas = document.getElementById(pfx + 'Canvas'); if(!canvas) return;
+    var sFn = document.getElementById(pfx + 'Fn'), sX = document.getElementById(pfx + 'X');
+    var dataBtn = document.getElementById(pfx + 'DataBtn'), dataPanel = document.getElementById(pfx + 'DataPanel'),
+        dataDesc = document.getElementById(pfx + 'DataDesc'), dataRows = document.getElementById(pfx + 'DataRows');
+    wireDataToggle(dataBtn, dataPanel);
+
+    var fnKey = 'arcsin', xVal = 0.5;
+    var TEAL = '#0d9488', ROSE = '#e11d48';
+
+    var SPECS = {
+      arcsin: {
+        name: 'arcsin(x) = sin⁻¹(x)',
+        fwdName: 'sin(θ)',
+        domTxt: '[−1, 1]',
+        rangeTxt: '[−π/2, π/2] (−90° to 90°)',
+        arcType: 'right', /* [-pi/2, pi/2] */
+        inDom: function(x){ return Math.abs(x) <= 1; },
+        evalInv: function(x){ return Math.abs(x) <= 1 ? Math.asin(x) : NaN; },
+        evalFwd: function(t){ return (t >= -Math.PI/2 && t <= Math.PI/2) ? Math.sin(t) : NaN; },
+        samples: [-1, -0.866, -0.707, -0.5, 0, 0.5, 0.707, 0.866, 1]
+      },
+      arccos: {
+        name: 'arccos(x) = cos⁻¹(x)',
+        fwdName: 'cos(θ)',
+        domTxt: '[−1, 1]',
+        rangeTxt: '[0, π] (0° to 180°)',
+        arcType: 'top', /* [0, pi] */
+        inDom: function(x){ return Math.abs(x) <= 1; },
+        evalInv: function(x){ return Math.abs(x) <= 1 ? Math.acos(x) : NaN; },
+        evalFwd: function(t){ return (t >= 0 && t <= Math.PI) ? Math.cos(t) : NaN; },
+        samples: [-1, -0.866, -0.707, -0.5, 0, 0.5, 0.707, 0.866, 1]
+      },
+      arctan: {
+        name: 'arctan(x) = tan⁻¹(x)',
+        fwdName: 'tan(θ)',
+        domTxt: '(−∞, ∞)',
+        rangeTxt: '(−π/2, π/2) (−90° to 90°)',
+        arcType: 'right',
+        inDom: function(){ return true; },
+        evalInv: function(x){ return Math.atan(x); },
+        evalFwd: function(t){ return (t > -Math.PI/2 + 0.05 && t < Math.PI/2 - 0.05) ? Math.tan(t) : NaN; },
+        samples: [-3, -1.732, -1, -0.577, 0, 0.577, 1, 1.732, 3]
+      },
+      arccsc: {
+        name: 'arccsc(x) = csc⁻¹(x)',
+        fwdName: 'csc(θ)',
+        domTxt: '(−∞, −1] ∪ [1, ∞)',
+        rangeTxt: '[−π/2, 0) ∪ (0, π/2]',
+        arcType: 'right_no_zero',
+        inDom: function(x){ return Math.abs(x) >= 1; },
+        evalInv: function(x){ return Math.abs(x) >= 1 ? Math.asin(1 / x) : NaN; },
+        evalFwd: function(t){ return (t >= -Math.PI/2 && t <= Math.PI/2 && Math.abs(t) > 0.08) ? 1 / Math.sin(t) : NaN; },
+        samples: [-3, -2, -1.414, -1.155, -1, 1, 1.155, 1.414, 2, 3]
+      },
+      arcsec: {
+        name: 'arcsec(x) = sec⁻¹(x)',
+        fwdName: 'sec(θ)',
+        domTxt: '(−∞, −1] ∪ [1, ∞)',
+        rangeTxt: '[0, π/2) ∪ (π/2, π]',
+        arcType: 'top_no_halfpi',
+        inDom: function(x){ return Math.abs(x) >= 1; },
+        evalInv: function(x){ return Math.abs(x) >= 1 ? Math.acos(1 / x) : NaN; },
+        evalFwd: function(t){ return (t >= 0 && t <= Math.PI && Math.abs(t - Math.PI/2) > 0.08) ? 1 / Math.cos(t) : NaN; },
+        samples: [-3, -2, -1.414, -1.155, -1, 1, 1.155, 1.414, 2, 3]
+      },
+      arccot: {
+        name: 'arccot(x) = cot⁻¹(x)',
+        fwdName: 'cot(θ)',
+        domTxt: '(−∞, ∞)',
+        rangeTxt: '(0, π) (0° to 180°)',
+        arcType: 'top',
+        inDom: function(){ return true; },
+        evalInv: function(x){ return Math.PI / 2 - Math.atan(x); },
+        evalFwd: function(t){ return (t > 0.08 && t < Math.PI - 0.08) ? Math.cos(t) / Math.sin(t) : NaN; },
+        samples: [-3, -1.732, -1, -0.577, 0, 0.577, 1, 1.732, 3]
+      }
+    };
+
+    function updateDataView(){
+      var S = SPECS[fnKey] || SPECS.arcsin;
+      var y = S.evalInv(xVal);
+      var ok = isFinite(y);
+      if(dataDesc){
+        dataDesc.textContent = S.name + ' with Domain ' + S.domTxt + ' and Principal Range ' + S.rangeTxt + '. ' +
+          (ok ? 'At x = ' + fmt(xVal, 2) + ', principal angle θ = ' + fmt(y, 3) + ' rad (' + fmt(y * 180 / Math.PI, 1) + '°).'
+              : 'Input x = ' + fmt(xVal, 2) + ' is outside the domain ' + S.domTxt + '.');
+      }
+      if(dataRows){
+        var rows = [];
+        for(var i = 0; i < S.samples.length; i++){
+          var sx = S.samples[i], sy = S.evalInv(sx);
+          rows.push([
+            fmt(sx, 3),
+            isFinite(sy) ? fmt(sy, 3) + ' rad' : 'undefined',
+            isFinite(sy) ? fmt(sy * 180 / Math.PI, 1) + '°' : 'undefined',
+            isFinite(sy) ? '(' + fmt(sy, 2) + ', ' + fmt(sx, 2) + ')' : '—'
+          ]);
+        }
+        renderDataRows(dataRows, rows);
+      }
+    }
+
+    function draw(ctx, w, h){
+      ctx.clearRect(0, 0, w, h);
+      var S = SPECS[fnKey] || SPECS.arcsin;
+      var splitX = Math.round(w * 0.64);
+
+      /* --- LEFT PANE: CARTESIAN GRAPH OF f^-1(x) & RESTRICTED f(θ) --- */
+      var padL = {l: 30, r: Math.max(14, w - splitX + 8), t: 22, b: 24};
+      var viewG = _fitView(-3.4, 3.4, -3.4, 3.4, w, h, padL);
+      var Pg = new Plot(ctx, w, h, viewG, padL);
+      Pg.grid();
+
+      var c = ctx;
+      c.save();
+      c.beginPath();
+      c.rect(padL.l, padL.t, w - padL.l - padL.r, h - padL.t - padL.b);
+      c.clip();
+
+      /* Mirror line y = x */
+      Pg.segment(-5, -5, 5, 5, '#94a3b8', 1.3, [5, 4]);
+
+      /* Horizontal asymptotes / principal range bounds for f^-1(x) */
+      if(fnKey === 'arctan'){
+        Pg.hline(Math.PI / 2, ROSE, [4, 4]);
+        Pg.hline(-Math.PI / 2, ROSE, [4, 4]);
+      } else if(fnKey === 'arccot'){
+        Pg.hline(Math.PI, ROSE, [4, 4]);
+        Pg.hline(0, ROSE, [4, 4]);
+      } else if(fnKey === 'arccsc'){
+        Pg.hline(0, ROSE, [4, 4]);
+      } else if(fnKey === 'arcsec'){
+        Pg.hline(Math.PI / 2, ROSE, [4, 4]);
+      }
+
+      /* Restricted forward branch y = f(x) in dashed indigo */
+      Pg.curve(S.evalFwd, 'rgba(30,58,110,0.45)', 2.0, [4, 3]);
+
+      /* Inverse function y = f^-1(x) in bold amber */
+      if(fnKey === 'arccsc' || fnKey === 'arcsec'){
+        Pg.curve(function(x){ return x <= -1 ? S.evalInv(x) : NaN; }, AMBER2, 2.8);
+        Pg.curve(function(x){ return x >= 1 ? S.evalInv(x) : NaN; }, AMBER2, 2.8);
+      } else {
+        Pg.curve(S.evalInv, AMBER2, 2.8);
+      }
+
+      /* Active point (x, y) on f^-1 and reflected point (y, x) on restricted f */
+      var yVal = S.evalInv(xVal);
+      var ok = isFinite(yVal);
+      Pg.vline(xVal, ok ? 'rgba(200,144,42,0.45)' : 'rgba(225,29,72,0.55)', [3, 3]);
+      if(ok){
+        Pg.segment(xVal, yVal, yVal, xVal, TEAL, 1.5, [3, 3]);
+        Pg.dot(yVal, xVal, INDIGO, 4.8);
+        Pg.dot(xVal, yVal, AMBER2, 5.8);
+      }
+      c.restore();
+
+      c.font = FONT;
+      c.fillStyle = INDIGO;
+      c.textAlign = 'left';
+      c.textBaseline = 'top';
+      c.fillText('Amber: y = ' + S.name + '   |   Dashed Indigo: restricted ' + S.fwdName, padL.l, 4);
+
+      /* Divider */
+      c.save();
+      c.strokeStyle = LINE;
+      c.lineWidth = 1;
+      c.beginPath();
+      c.moveTo(splitX, 8);
+      c.lineTo(splitX, h - 8);
+      c.stroke();
+      c.restore();
+
+      /* --- RIGHT PANE: UNIT CIRCLE PRINCIPAL RANGE ARC --- */
+      var padR = {l: splitX + 12, r: 12, t: 24, b: 24};
+      var viewUC = _fitView(-1.35, 1.35, -1.35, 1.35, w, h, padR);
+      var Puc = new Plot(ctx, w, h, viewUC, padR);
+
+      Puc.segment(-1.25, 0, 1.25, 0, AXIS, 1);
+      Puc.segment(0, -1.25, 0, 1.25, AXIS, 1);
+
+      /* Full faint unit circle */
+      c.beginPath();
+      for(var i = 0; i <= 100; i++){
+        var a = 2 * Math.PI * i / 100;
+        var ux = Puc.X(Math.cos(a)), uy = Puc.Y(Math.sin(a));
+        if(i === 0) c.moveTo(ux, uy); else c.lineTo(ux, uy);
+      }
+      c.closePath();
+      c.lineWidth = 1.3;
+      c.strokeStyle = '#cbd5e1';
+      c.stroke();
+
+      /* Highlight Principal Range Arc on Unit Circle */
+      var aStart = (S.arcType.indexOf('right') === 0) ? -Math.PI / 2 : 0;
+      var aEnd = (S.arcType.indexOf('right') === 0) ? Math.PI / 2 : Math.PI;
+      c.beginPath();
+      for(var j = 0; j <= 60; j++){
+        var ang = aStart + (aEnd - aStart) * j / 60;
+        var ax = Puc.X(Math.cos(ang)), ay = Puc.Y(Math.sin(ang));
+        if(j === 0) c.moveTo(ax, ay); else c.lineTo(ax, ay);
+      }
+      c.lineWidth = 3.5;
+      c.strokeStyle = AMBER2;
+      c.stroke();
+
+      /* Active angle ray on Unit Circle if in domain */
+      if(ok){
+        var rcx = Math.cos(yVal), rcy = Math.sin(yVal);
+        Puc.segment(0, 0, rcx, rcy, INDIGO, 2.4);
+        Puc.dot(rcx, rcy, AMBER2, 5.2);
+      }
+
+      c.font = FONT;
+      c.fillStyle = MUTED;
+      c.textAlign = 'center';
+      c.textBaseline = 'top';
+      c.fillText('Principal Range Arc', (splitX + w) / 2, 4);
+      c.fillStyle = ok ? INDIGO : ROSE;
+      c.fillText(ok ? ('θ = ' + fmt(yVal * 180 / Math.PI, 1) + '°') : 'Outside Domain ' + S.domTxt, (splitX + w) / 2, h - 20);
+
+      /* Readouts */
+      _set(pfx + 'XV', fmt(xVal, 2));
+      _set(pfx + 'XOut', fmt(xVal, 3));
+      _set(pfx + 'RadOut', ok ? (fmt(yVal, 3) + ' rad') : 'undefined (outside domain)');
+      _set(pfx + 'DegOut', ok ? (fmt(yVal * 180 / Math.PI, 1) + '°') : 'undefined');
+      _set(pfx + 'DomOut', S.domTxt);
+      _set(pfx + 'RangeOut', S.rangeTxt);
+      _set(pfx + 'CheckOut', ok ? (S.fwdName.replace('θ', fmt(yVal, 2)) + ' = ' + fmt(xVal, 3)) : 'Requires x ∈ ' + S.domTxt);
+      updateDataView();
+    }
+
+    register(canvas, draw);
+
+    function sync(){
+      if(sFn){
+        var newFn = sFn.value;
+        /* Automatically snap xVal into valid domain when switching to arccsc/arcsec or arcsin/arccos */
+        if((newFn === 'arccsc' || newFn === 'arcsec') && Math.abs(xVal) < 1){
+          xVal = xVal >= 0 ? 1.5 : -1.5;
+          if(sX) sX.value = xVal;
+        } else if((newFn === 'arcsin' || newFn === 'arccos') && Math.abs(xVal) > 1){
+          xVal = xVal >= 0 ? 0.5 : -0.5;
+          if(sX) sX.value = xVal;
+        }
+        fnKey = newFn;
+      }
+      if(sX) xVal = parseFloat(sX.value);
+      updateDataView();
+      redrawAll();
+    }
+    if(sFn) sFn.addEventListener('change', sync);
+    if(sX){ sX.addEventListener('input', sync); sX.addEventListener('change', sync); }
+    sync();
+  }
+
   // Initialize precalc track explorers
   initContExplorer('pcCont');
   initSeqLimExplorer('pcSeq');
+  initSixTrigExplorer('pcTrig6');
+  initSixInvTrigExplorer('pcInvTrig6');
 })(window.CSExplorerKit);
 

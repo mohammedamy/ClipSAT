@@ -37,68 +37,307 @@
         }
       },
       {
-        "kind": "figure",
-        "figure": {
-          "type": "sign_chart",
-          "title": "Unit 1 · Limits & Continuity — First Derivative Sign Chart & Extrema",
-          "ticks": [
-            {
-              "x": -3,
-              "label": "x = -3"
-            },
-            {
-              "x": 3,
-              "label": "x = 3"
-            }
-          ],
-          "signs": [
-            "+",
-            "−",
-            "+"
-          ],
-          "behaviors": [
-            "↗ Increasing",
-            "↘ Decreasing",
-            "↗ Increasing"
-          ]
-        },
-        "caption": {
-          "en": "Derivative sign chart for f'(x) showing local maximum at x = −3 (+ to −) and local minimum at x = 3 (− to +).",
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 1.2 — The Three-Part Continuity Checklist",
           "ar": null
-        }
-      },
-      {
-        "kind": "figure",
-        "figure": {
-          "type": "fn",
-          "fns": [
-            "x*x - 5*x + 6"
-          ],
-          "xlim": [
-            -2,
-            6
-          ],
-          "ylim": [
-            -3,
-            6
-          ],
-          "points": []
         },
-        "caption": {
-          "en": "Unit 1 · Limits & Continuity — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Unit 1 · Limits & Continuity.",
+        "body": {
+          "en": "<p>A function \\( f \\) is <strong>continuous at a point \\( x = c \\)</strong> if and only if all three conditions are satisfied:</p><ol><li><strong>\\( f(c) \\) is defined:</strong> \\( c \\) is in the domain of \\( f \\).</li><li><strong>\\( \\displaystyle \\lim_{x \\to c} f(x) \\) exists:</strong> \\( \\displaystyle \\lim_{x \\to c^-} f(x) = \\lim_{x \\to c^+} f(x) = L \\), where \\( L \\) is finite.</li><li><strong>\\( \\displaystyle \\lim_{x \\to c} f(x) = f(c) \\):</strong> The limit value equals the function output.</li></ol>",
           "ar": null
         }
       },
       {
         "kind": "callout",
-        "style": "def",
+        "style": "thm",
         "label": {
-          "en": "● The 3-Part Definition of Continuity at a Point & Complete Taxonomy of Graph Cases",
+          "en": "● Complete Taxonomy of Continuity & Discontinuity Graphs",
           "ar": null
         },
         "body": {
-          "en": "<p>A function \\(f\\) is continuous at \\(x = c\\) if and only if all three conditions of the <strong>Continuity Checklist</strong> are satisfied:</p><ol><li><strong>Condition 1:</strong> \\(f(c)\\) is defined (meaning \\(c\\) is in the domain of \\(f\\)).</li><li><strong>Condition 2:</strong> \\(\\lim_{x\\to c} f(x)\\) exists (meaning left and right limits are finite and agree: \\(\\lim_{x\\to c^-} f(x) = \\lim_{x\\to c^+} f(x) = L\\)).</li><li><strong>Condition 3:</strong> \\(\\lim_{x\\to c} f(x) = f(c)\\) (the limiting trend matches the actual output).</li></ol><p>Failure of any condition produces a specific discontinuity geometry on the Cartesian plane:</p><ul><li><strong>Case 1 · Continuous:</strong> All 3 conditions hold. The curve passes unbroken through \\((c, f(c))\\).</li><li><strong>Case 2 · Removable (Hole):</strong> Condition 1 fails (undefined at \\(c\\)), but Condition 2 holds (limit \\(L\\) exists). The graph has an open ring at \\((c, L)\\).</li><li><strong>Case 3 · Removable (Displaced Point):</strong> Conditions 1 and 2 hold, but Condition 3 fails (\\(f(c) \\neq L\\)). An open ring sits at \\((c, L)\\) while a solid dot sits at \\((c, f(c))\\).</li><li><strong>Case 4 · Jump Discontinuity:</strong> Condition 2 fails because one-sided limits are finite but unequal (\\(\\lim_{x\\to c^-} f(x) \\neq \\lim_{x\\to c^+} f(x)\\)). A step break occurs in the graph.</li><li><strong>Case 5 · Infinite Discontinuity (Vertical Asymptote):</strong> Condition 2 fails because one or both one-sided limits grow without bound to \\(\\pm\\infty\\).</li><li><strong>Case 6 · Essential / Oscillating Discontinuity:</strong> Condition 2 fails because function values oscillate infinitely rapidly between bounds as \\(x\\) approaches \\(c\\).</li></ul>",
+          "en": "<p>Depending on which conditions of the continuity checklist fail, graphs display one of seven geometric cases:</p><ul><li><strong>Case 1 · Continuous everywhere at \\(c\\):</strong> All 3 conditions hold without interruption: \\(f(c)\\) is defined, \\(\\lim_{x\\to c} f(x) = L\\) exists, and \\(\\lim_{x\\to c} f(x) = f(c)\\).</li><li><strong>Case 2 · Removable Discontinuity (Hole):</strong> Condition 1 fails (\\(f(c)\\) undefined), while Condition 2 passes (\\(\\lim_{x\\to c} f(x)\\) exists).</li><li><strong>Case 3 · Removable Discontinuity (Displaced Point):</strong> Conditions 1 & 2 pass, but Condition 3 fails (\\(\\lim_{x\\to c} f(x) \\neq f(c)\\)).</li><li><strong>Case 4 · Jump Discontinuity:</strong> Condition 2 fails because one-sided limits are finite but unequal: \\(\\lim_{x\\to c^-} f(x) \\neq \\lim_{x\\to c^+} f(x)\\).</li><li><strong>Case 5 · Infinite Discontinuity (Vertical Asymptote):</strong> Condition 2 fails because one or both one-sided limits grow without bound (\\(\\pm\\infty\\)).</li><li><strong>Case 6 · Oscillating Discontinuity:</strong> Condition 2 fails because outputs oscillate infinitely many times between bounds (e.g., \\(\\sin(2/(x-c))\\)).</li><li><strong>Case 7 · One-Sided / Endpoint Continuity:</strong> The function is defined on a closed or half-closed interval such as \\([a, b]\\); the two-sided limit does not exist at boundary point \\(c = a\\) because values outside \\([a, b]\\) are undefined, but the one-sided limit matches the endpoint value: \\(\\lim_{x\\to a^+} f(x) = f(a)\\).</li></ul>",
           "ar": null
+        }
+      },
+      {
+        "kind": "figure",
+        "id": "fig-apab-continuity-case-1",
+        "title": {
+          "en": "Case 1 · Continuous at an Interior Point (c = 1)",
+          "ar": null
+        },
+        "caption": {
+          "en": "All three conditions hold: (1) \\(f(1) = 1.5\\) is defined; (2) \\(\\lim_{x\\to 1} f(x) = 1.5\\) exists; (3) \\(\\lim_{x\\to 1} f(x) = f(1)\\). The parabola \\(f(x) = 0.5(x-1)^2 + 1.5\\) passes through \\((1, 1.5)\\) unbroken.",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "xrange": [
+            -0.5,
+            2.5
+          ],
+          "yrange": [
+            -0.5,
+            4.5
+          ],
+          "fns": [
+            {
+              "fn": "0.5 * (x - 1)^2 + 1.5",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = 0.5(x-1)^2 + 1.5"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 1.5,
+              "label": "f(1) = 1.5"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "figure",
+        "id": "fig-apab-continuity-case-2",
+        "title": {
+          "en": "Case 2 · Removable Discontinuity — Missing Point (Hole)",
+          "ar": null
+        },
+        "caption": {
+          "en": "Condition 1 fails because \\(f(1)\\) is undefined (a hole at \\((1, 2)\\)). However, Condition 2 passes because \\(\\lim_{x\\to 1^-} f(x) = \\lim_{x\\to 1^+} f(x) = 2.0\\). The discontinuity is 'removable' by defining \\(f(1) = 2\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "xrange": [
+            -0.5,
+            2.5
+          ],
+          "yrange": [
+            -0.5,
+            4.5
+          ],
+          "fns": [
+            {
+              "fn": "x + 1",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = (x^2 - 1)/(x - 1)"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 2,
+              "open": true,
+              "label": "Hole at (1, 2)"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "figure",
+        "id": "fig-apab-continuity-case-3",
+        "title": {
+          "en": "Case 3 · Removable Discontinuity — Displaced Point",
+          "ar": null
+        },
+        "caption": {
+          "en": "Conditions 1 & 2 pass (\\(f(1) = 3.5\\) is defined and \\(\\lim_{x\\to 1} f(x) = 2.0\\) exists), but Condition 3 fails because \\(\\lim_{x\\to 1} f(x) \\neq f(1)\\). The isolated point at \\((1, 3.5)\\) is detached from the continuous line.",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "xrange": [
+            -0.5,
+            2.5
+          ],
+          "yrange": [
+            -0.5,
+            4.5
+          ],
+          "fns": [
+            {
+              "fn": "x + 1",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) for x != 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 2,
+              "open": true,
+              "label": "Hole (1, 2)"
+            },
+            {
+              "x": 1,
+              "y": 3.5,
+              "color": "var(--fig-amber)",
+              "label": "f(1) = 3.5"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "figure",
+        "id": "fig-apab-continuity-case-4",
+        "title": {
+          "en": "Case 4 · Jump Discontinuity (Finite Jump)",
+          "ar": null
+        },
+        "caption": {
+          "en": "Condition 2 fails because the one-sided limits are finite but unequal: \\(\\lim_{x\\to 1^-} f(x) = 1.5\\) while \\(\\lim_{x\\to 1^+} f(x) = 3.0\\). The branches fail to meet, leaving an unavoidable jump gap of \\(|3.0 - 1.5| = 1.5\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "xrange": [
+            -0.5,
+            2.5
+          ],
+          "yrange": [
+            -0.5,
+            4.5
+          ],
+          "fns": [
+            {
+              "fn": "x < 1 ? x + 0.5 : NaN",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x + 0.5 (x < 1)"
+            },
+            {
+              "fn": "x > 1 ? x + 2 : NaN",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = x + 2 (x >= 1)"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 1.5,
+              "open": true,
+              "label": "Left lim = 1.5"
+            },
+            {
+              "x": 1,
+              "y": 3,
+              "label": "Right lim = f(1) = 3.0"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "figure",
+        "id": "fig-apab-continuity-case-5",
+        "title": {
+          "en": "Case 5 · Infinite Discontinuity (Vertical Asymptote)",
+          "ar": null
+        },
+        "caption": {
+          "en": "Condition 2 fails because outputs grow without bound: \\(\\lim_{x\\to 1^-} f(x) = -\\infty\\) and \\(\\lim_{x\\to 1^+} f(x) = +\\infty\\). The line \\(x = 1\\) is a vertical asymptote that the curve approaches indefinitely without ever crossing.",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "xrange": [
+            -1,
+            3
+          ],
+          "yrange": [
+            -5,
+            5
+          ],
+          "fns": [
+            {
+              "fn": "1 / (x - 1)",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = 1/(x - 1)"
+            }
+          ],
+          "vlines": [
+            {
+              "x": 1,
+              "color": "var(--fig-rose)",
+              "dash": "4,3",
+              "label": "Asymptote x = 1"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "figure",
+        "id": "fig-apab-continuity-case-6",
+        "title": {
+          "en": "Case 6 · Essential / Oscillating Discontinuity",
+          "ar": null
+        },
+        "caption": {
+          "en": "Condition 2 fails because \\(f(x) = \\sin(2/(x-1))\\) oscillates infinitely many times between \\(-1\\) and \\(+1\\) as \\(x \\to 1\\). Because the function values never settle upon any single finite value, no two-sided limit exists.",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "xrange": [
+            -0.5,
+            2.5
+          ],
+          "yrange": [
+            -1.5,
+            1.5
+          ],
+          "fns": [
+            {
+              "fn": "Math.abs(x - 1) < 0.02 ? NaN : sin(2 / (x - 1))",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = sin(2/(x-1))"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 0,
+              "color": "var(--fig-amber)",
+              "label": "Oscillation Center (1, 0)"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "figure",
+        "id": "fig-apab-continuity-case-7",
+        "title": {
+          "en": "Case 7 · One-Sided / Endpoint Continuity (Domain Boundary)",
+          "ar": null
+        },
+        "caption": {
+          "en": "For \\(f(x) = \\sqrt{x - 1} + 1.5\\) on domain \\([1, \\infty)\\), the two-sided limit at \\(x = 1\\) does not exist because \\(x < 1\\) is outside the domain. However, \\(f\\) is continuous from the right because \\(\\lim_{x\\to 1^+} f(x) = f(1) = 1.5\\). By standard mathematical definition, \\(f\\) is continuous on \\([1, \\infty)\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "xrange": [
+            -0.5,
+            3.5
+          ],
+          "yrange": [
+            0,
+            4
+          ],
+          "fns": [
+            {
+              "fn": "x >= 1 ? sqrt(x - 1) + 1.5 : NaN",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = sqrt(x-1) + 1.5"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": 1.5,
+              "label": "Endpoint f(1) = 1.5"
+            }
+          ]
         }
       },
       {
@@ -109,7 +348,7 @@
         },
         "canvasId": "apabContCanvas",
         "ariaLabel": {
-          "en": "Interactive graph visualizing all six cases of continuity and discontinuity with adjustable input probe x",
+          "en": "Interactive graph visualizing all seven cases of continuity and discontinuity with adjustable input probe x",
           "ar": null
         },
         "dataPanel": {
@@ -193,6 +432,10 @@
               {
                 "value": "osc",
                 "label": "Case 6 · Oscillating discontinuity (sin(2/(x-1)))"
+              },
+              {
+                "value": "endpoint",
+                "label": "Case 7 · Endpoint / One-sided continuity (x ≥ 1)"
               }
             ],
             "ariaLabel": {
@@ -246,7 +489,7 @@
           }
         ],
         "note": {
-          "en": "Switch between all 6 continuity graph cases and move x to inspect how the 3-part continuity checklist (f(c) defined, lim x→c exists, lim = f(c)) succeeds or fails.",
+          "en": "Switch between all 7 continuity graph cases and move x to inspect how the 3-part continuity checklist (f(c) defined, lim x→c exists, lim = f(c)) succeeds or fails.",
           "ar": null
         }
       },
