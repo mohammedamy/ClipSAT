@@ -46,47 +46,54 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Loss Functions, Gradients & Optimization",
+          "ar": "● الفهم المفاهيمي العميق — دوال الخسارة والانحدار التدريجي والتحسين الرياضي"
+        },
+        "body": {
+          "en": "<p><strong>Proportional Invariance, Linear Structure &amp; Quantitative Modeling:</strong> Across Mathematics for Artificial Intelligence & Machine Learning, multi-step problems reduce to identifying invariant quantities—constant rates of change \\(m = \\dfrac{\\Delta y}{\\Delta x}\\), conservation of total work/mass, or linear system rank conditions. A two-variable linear system \\(a_1 x + b_1 y = c_1\\), \\(a_2 x + b_2 y = c_2\\) has a unique intersection if \\(\\dfrac{a_1}{a_2} \\ne \\dfrac{b_1}{b_2}\\), no solution (parallel lines) if \\(\\dfrac{a_1}{a_2} = \\dfrac{b_1}{b_2} \\ne \\dfrac{c_1}{c_2}\\), and infinitely many solutions if all three ratios coincide.</p>",
+          "ar": "<p><strong>البنية الخطية والنمذجة الكمية:</strong> يعتمد حل الأنظمة والمعادلات على ثبات معدل التغير \\(m = \\frac{\\Delta y}{\\Delta x}\\) وتحليل نسب المعاملات لتحديد عدد الحلول بدقة.</p>"
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Loss Functions, Gradients & Optimization — Coordinate Curve & Tangent Analysis (2)",
+          "title": "Loss Functions, Gradients & Optimization — Linear System Intersection & Equilibrium",
           "xrange": [
-            -4,
-            4
+            -2,
+            6
           ],
           "yrange": [
-            -3,
-            9
+            -2,
+            10
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "2*x + 1",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "label": "y = 2x + 1"
             },
             {
-              "fn": "2*x - 3",
+              "fn": "-x + 7",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "label": "y = −x + 7"
             }
           ],
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "x": 2,
+              "y": 5,
+              "label": "Intersection (2, 5)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
-          "ar": "التمثيل البياني للدالة f(x) = x² − 2 ومماسها عند x = 1."
+          "en": "Coordinate intersection of linear system y = 2x + 1 and y = −x + 7 at unique equilibrium point (2, 5).",
+          "ar": "تمثيل هندسي وبياني يوضح العلاقات الأساسية في درس دوال الخسارة والانحدار التدريجي والتحسين الرياضي."
         }
       },
       {
@@ -192,44 +199,23 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Loss Functions, Gradients & Optimization — Coordinate Curve & Tangent Analysis (1)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
           "fns": [
             {
-              "fn": "x*x - 1",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 1"
-            },
-            {
-              "fn": "2*x - 2",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "fn": "0.5*(x-22)^2 + 2"
             }
           ],
-          "points": [
-            {
-              "x": 1,
-              "y": 0,
-              "label": "(1, 0)"
-            },
-            {
-              "x": 0,
-              "y": -1,
-              "label": "(0, -1)"
-            }
+          "xlim": [
+            18,
+            36
+          ],
+          "ylim": [
+            0,
+            20
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 1 and its instantaneous tangent line at x = 1.",
-          "ar": "التمثيل البياني للدالة f(x) = x² − 1 ومماسها عند x = 1."
+          "en": "Loss Functions, Gradients & Optimization — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Loss Functions, Gradients & Optimization.",
+          "ar": "رسم توضيحي يبيّن العلاقات الرياضية والهندسية في درس دوال الخسارة والانحدار التدريجي والتحسين الرياضي."
         }
       },
       {
@@ -279,6 +265,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Loss Functions, Gradients & Optimization)",
+          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (دوال الخسارة والانحدار التدريجي والتحسين الرياضي)"
+        },
+        "body": {
+          "en": "<p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>",
+          "ar": "<p><strong>برهان النسب المتتالية والسرعة المتوسطة التوافقية:</strong> عند زيادة مقدار بنسبة \\(p\\%\\) ثم خفضه بنسبة \\(p\\%\\) يكون الناتج \\(Q_0(1 - (p/100)^2) < Q_0\\)، والسرعة المتوسطة لرحلتين متساويتين في المسافة هي الوسط التوافقي \\(\\frac{2v_1 v_2}{v_1 + v_2}\\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 3.A — Single Step of Gradient Descent",
@@ -293,80 +291,250 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example B — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول B — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example B — Loss Functions, Gradients & Optimization (Medium Application)",
+          "ar": "مثال محلول B — دوال الخسارة والانحدار التدريجي والتحسين الرياضي (تطبيق Medium)"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 9x + 18 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 3)(x - 6) = 0 \\implies x = 3 \\text{ or } x = 6 \\).</li><li>Check Vieta's formulas: sum \\( = 3 + 6 = \\mathbf{9} \\) and product \\( = (3)(6) = \\mathbf{18} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 9x + 18 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 3)(x - 6) = 0 \\implies x = 3 \\text{ أو } x = 6 \\).</li><li>المجموع \\( = \\mathbf{9} \\) وحاصل الضرب \\( = \\mathbf{18} \\).</li></ol>"
+          "en": "<p><strong>Problem (Medium):</strong> Principal Component Analysis on covariance matrix \\( \\Sigma_{M} \\) yields eigenvalues \\( \\lambda_1 = 57 \\) and \\( \\lambda_2 = 43 \\). Determine the percentage of variance \\( R_{m} \\) explained by the first principal component.</p><p><strong>Step-by-Step Solution:</strong> The percentage explained is \\( \\frac{57}{57+43} \\times 100\\% = 57\\% \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Medium):</strong> Principal Component Analysis on covariance matrix \\( \\Sigma_{M} \\) yields eigenvalues \\( \\lambda_1 = 57 \\) and \\( \\lambda_2 = 43 \\). Determine the percentage of variance \\( R_{m} \\) explained by the first principal component.</p><p><strong>الحل خطوة بخطوة:</strong> The percentage explained is \\( \\frac{57}{57+43} \\times 100\\% = 57\\% \\).</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول C — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example C — Loss Functions, Gradients & Optimization (Hard Application)",
+          "ar": "مثال محلول C — دوال الخسارة والانحدار التدريجي والتحسين الرياضي (تطبيق Hard)"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 13x + 36 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ أو } x = 9 \\).</li><li>المجموع \\( = \\mathbf{13} \\) وحاصل الضرب \\( = \\mathbf{36} \\).</li></ol>"
+          "en": "<p><strong>Problem (Hard):</strong> A binary classifier \\( R(m) \\) produces the confusion matrix below with \\( \\text{TP} = 92 \\), \\( \\text{FP} = 14 \\), \\( \\text{FN} = 57 \\), and \\( \\text{TN} = 35 \\). Determine the total number of correct classifications \\( S = \\text{TP} + \\text{TN} \\).</p><p><strong>Step-by-Step Solution:</strong> Summing \\( \\text{TP} + \\text{TN} = 92 + 35 = 127 \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Hard):</strong> A binary classifier \\( R(m) \\) produces the confusion matrix below with \\( \\text{TP} = 92 \\), \\( \\text{FP} = 14 \\), \\( \\text{FN} = 57 \\), and \\( \\text{TN} = 35 \\). Determine the total number of correct classifications \\( S = \\text{TP} + \\text{TN} \\).</p><p><strong>الحل خطوة بخطوة:</strong> Summing \\( \\text{TP} + \\text{TN} = 92 + 35 = 127 \\).</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول D — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example D — Loss Functions, Gradients & Optimization (Easy Application)",
+          "ar": "مثال محلول D — دوال الخسارة والانحدار التدريجي والتحسين الرياضي (تطبيق Easy)"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 10x + 25 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ أو } x = 5 \\).</li><li>المجموع \\( = \\mathbf{10} \\) وحاصل الضرب \\( = \\mathbf{25} \\).</li></ol>"
+          "en": "<p><strong>Problem (Easy):</strong> A 2D loss surface is defined as \\( L(w_1, w_2) = 2w_1^2 + 3w_2^2 \\). Find the gradient vector \\( \\nabla L \\) at the point \\( (w_1, w_2) = (2, -1) \\).</p><p><strong>Step-by-Step Solution:</strong> Compute partial derivatives: \\( \\frac{\\partial L}{\\partial w_1} = 2(2)w_1 = 4(2) = 8 \\); \\( \\frac{\\partial L}{\\partial w_2} = 2(3)w_2 = 6(-1) = -6 \\). Therefore, \\( \\nabla L = [8, -6]^T \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Easy):</strong> A 2D loss surface is defined as \\( L(w_1, w_2) = 2w_1^2 + 3w_2^2 \\). Find the gradient vector \\( \\nabla L \\) at the point \\( (w_1, w_2) = (2, -1) \\).</p><p><strong>الحل خطوة بخطوة:</strong> Compute partial derivatives: \\( \\frac{\\partial L}{\\partial w_1} = 2(2)w_1 = 4(2) = 8 \\); \\( \\frac{\\partial L}{\\partial w_2} = 2(3)w_2 = 6(-1) = -6 \\). Therefore, \\( \\nabla L = [8, -6]^T \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Exam Traps — Loss Functions, Gradients & Optimization",
+          "ar": "⚠️ أخطاء شائعة في الاختبار — دوال الخسارة والانحدار التدريجي والتحسين الرياضي"
+        },
+        "body": {
+          "en": "<p><strong>1. Adding Successive Percentages or Averaging Speeds Arithmetically:</strong> On Mathematics for Artificial Intelligence & Machine Learning, a \\(20\\%\\) discount followed by a \\(20\\%\\) increase gives \\(0.80 \\times 1.20 = 0.96\\) (a net \\(4\\%\\) loss, not \\(0\\%\\)). Likewise, average speed for a round trip at \\(40\\) and \\(60\\text{ km/h}\\) is \\(\\dfrac{2(40)(60)}{100} = 48\\text{ km/h}\\), never \\(50\\text{ km/h}\\).</p><p><strong>2. Failing to Flip the Inequality Sign When Multiplying/Dividing by a Negative:</strong> In \\(-3x + 5 \\le 8\\), dividing by \\(-3\\) strictly reverses \\(\\le\\) to \\(\\ge\\).</p>",
+          "ar": "<p><strong>1. جمع النسب المئوية المتتالية أو حساب المتوسط الحسابي للسرعات:</strong> الزيادة ثم الخصم بنفس النسبة تنقص القيمة الأصلية دائماً، وعند القسمة على عدد سالب في المتباينات يجب قلب رمز المتباينة فوراً.</p>"
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Loss Functions, Gradients & Optimization)",
+          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (دوال الخسارة والانحدار التدريجي والتحسين الرياضي)"
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع للطالب"
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": "السبب الرياضي للخطأ"
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Claiming \\(+25\\%\\) followed by \\(-25\\%\\) returns to \\(100\\%\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "The \\(25\\%\\) reduction applies to the larger base \\(1.25 Q_0\\), not \\(Q_0\\).",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Multiply scale factors: \\(1.25 \\times 0.75 = 0.9375\\) (a \\(6.25\\%\\) net decrease).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Solving \\(-3x > 12\\) as \\(x > -4\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Dividing by a negative number reverses order on the real number line.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Flip the inequality symbol whenever multiplying or dividing by a negative: \\(x < -4\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Computing round-trip average speed as \\(\\frac{v_1 + v_2}{2}\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Time spent at the slower speed is longer than time spent at the faster speed.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Use total distance over total time: \\(v_{\\text{avg}} = \\frac{2v_1 v_2}{v_1 + v_2}\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Loss Functions, Gradients & Optimization",
+          "ar": "▲ استراتيجية الحل السريع والتحقق — دوال الخسارة والانحدار التدريجي والتحسين الرياضي"
+        },
+        "body": {
+          "en": "<p><strong>High-Speed Exam Shortcut (Mathematics for Artificial Intelligence & Machine Learning):</strong> When a linear system asks for a combined expression like \\(3x + 3y\\) rather than \\(x\\) and \\(y\\) individually, add or subtract the two equations directly before isolating either variable—this often yields the target expression in a single step.</p>",
+          "ar": "<p><strong>اختصار ذهني سريع:</strong> عندما يطلب السؤال مقداراً مركباً مثل \\(x+y\\) في نظام معادلتين، اجمع المعادلتين أو اطرحهما مباشرةً بدلاً من إيجاد كل متغير على حدة.</p>"
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Loss Functions, Gradients & Optimization · Practice 1] If the governing relation for this system is \\( g(t) = 3t + 3 \\), evaluate \\( g(4) \\) and find the inverse input \\( t \\) when \\( g(t) = 18 \\).",
-          "ar": "[Loss Functions, Gradients & Optimization · تدريب 1] إذا كانت العلاقة الحاكمة هي \\( g(t) = 3t + 3 \\)، فأوجد \\( g(4) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 18 \\)."
+          "en": "<strong>[Practice 1 · Medium]</strong> An Ordinary Least Squares linear model \\( \\hat{R}(m) = 7m + 21 \\) is evaluated at \\( m = 4 \\). Determine the predicted response \\( \\hat{R}(4) \\).",
+          "ar": "<strong>[تدريب 1 · Medium]</strong> An Ordinary Least Squares linear model \\( \\hat{R}(m) = 7m + 21 \\) is evaluated at \\( m = 4 \\). Determine the predicted response \\( \\hat{R}(4) \\)."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Loss Functions, Gradients & Optimization</em> and start from \\( \\hat{R}(m) = 7m + 21 \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( \\hat{R}(m) = 7m + 21 \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 7(4) + 21 = 49 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( 7(4) + 21 = 49 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 4 \\): \\( g(4) = 3(4) + 3 = \\mathbf{15} \\). Setting \\( 3t + 3 = 18 \\) gives \\( 3t = 15 \\implies t = \\mathbf{5} \\).",
-          "ar": "بالتعويض عن \\( t = 4 \\): \\( g(4) = 3(4) + 3 = \\mathbf{15} \\). وعندما \\( 3t + 3 = 18 \\) فإن \\( t = \\mathbf{5} \\)."
+          "en": "Evaluating \\( 7(4) + 21 = 49 \\).",
+          "ar": "Evaluating \\( 7(4) + 21 = 49 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Loss Functions, Gradients & Optimization · Practice 2] If the governing relation for this system is \\( g(t) = 4t + 4 \\), evaluate \\( g(6) \\) and find the inverse input \\( t \\) when \\( g(t) = 32 \\).",
-          "ar": "[Loss Functions, Gradients & Optimization · تدريب 2] إذا كانت العلاقة الحاكمة هي \\( g(t) = 4t + 4 \\)، فأوجد \\( g(6) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 32 \\)."
+          "en": "<strong>[Practice 2 · Hard]</strong> In gradient descent on loss \\( A(n) \\), parameter \\( n_0 = 28 \\) is updated with learning rate \\( \\eta = 0.1 \\) and gradient \\( \\nabla A(n_0) = 90 \\). Determine the updated parameter \\( n_1 = n_0 - \\eta \\nabla A(n_0) \\).",
+          "ar": "<strong>[تدريب 2 · Hard]</strong> In gradient descent on loss \\( A(n) \\), parameter \\( n_0 = 28 \\) is updated with learning rate \\( \\eta = 0.1 \\) and gradient \\( \\nabla A(n_0) = 90 \\). Determine the updated parameter \\( n_1 = n_0 - \\eta \\nabla A(n_0) \\)."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Loss Functions, Gradients & Optimization</em> and start from \\( A(n) \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( A(n) \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( n_1 = 28 - 0.1(90) = 19 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( n_1 = 28 - 0.1(90) = 19 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). Setting \\( 4t + 4 = 32 \\) gives \\( 4t = 28 \\implies t = \\mathbf{7} \\).",
-          "ar": "بالتعويض عن \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). وعندما \\( 4t + 4 = 32 \\) فإن \\( t = \\mathbf{7} \\)."
+          "en": "Computing \\( n_1 = 28 - 0.1(90) = 19 \\).",
+          "ar": "Computing \\( n_1 = 28 - 0.1(90) = 19 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Loss Functions, Gradients & Optimization · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
-          "ar": "[Loss Functions, Gradients & Optimization · تدريب 3] إذا كانت العلاقة الحاكمة هي \\( g(t) = 5t + 5 \\)، فأوجد \\( g(8) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 50 \\)."
+          "en": "<strong>[Practice 3 · Easy]</strong> Principal Component Analysis on covariance matrix \\( \\Sigma_{R} \\) yields eigenvalues \\( \\lambda_1 = 73 \\) and \\( \\lambda_2 = 27 \\). Determine the percentage of variance \\( A_{n} \\) explained by the first principal component.",
+          "ar": "<strong>[تدريب 3 · Easy]</strong> Principal Component Analysis on covariance matrix \\( \\Sigma_{R} \\) yields eigenvalues \\( \\lambda_1 = 73 \\) and \\( \\lambda_2 = 27 \\). Determine the percentage of variance \\( A_{n} \\) explained by the first principal component."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Loss Functions, Gradients & Optimization</em> and start from \\( \\Sigma_{R} \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( \\Sigma_{R} \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\frac{73}{73+27} \\times 100\\% = 73\\% \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( \\frac{73}{73+27} \\times 100\\% = 73\\% \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": "بالتعويض عن \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). وعندما \\( 5t + 5 = 50 \\) فإن \\( t = \\mathbf{9} \\)."
+          "en": "The percentage explained is \\( \\frac{73}{73+27} \\times 100\\% = 73\\% \\).",
+          "ar": "The percentage explained is \\( \\frac{73}{73+27} \\times 100\\% = 73\\% \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Loss Functions, Gradients & Optimization · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": "[Loss Functions, Gradients & Optimization · تدريب 4] إذا كانت العلاقة الحاكمة هي \\( g(t) = 6t + 6 \\)، فأوجد \\( g(10) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 72 \\)."
+          "en": "<strong>[Practice 4 · Medium]</strong> A binary classifier \\( A(n) \\) produces the confusion matrix below with \\( \\text{TP} = 80 \\), \\( \\text{FP} = 18 \\), \\( \\text{FN} = 9 \\), and \\( \\text{TN} = 50 \\). Determine the total number of correct classifications \\( B = \\text{TP} + \\text{TN} \\).",
+          "ar": "<strong>[تدريب 4 · Medium]</strong> A binary classifier \\( A(n) \\) produces the confusion matrix below with \\( \\text{TP} = 80 \\), \\( \\text{FP} = 18 \\), \\( \\text{FN} = 9 \\), and \\( \\text{TN} = 50 \\). Determine the total number of correct classifications \\( B = \\text{TP} + \\text{TN} \\)."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Loss Functions, Gradients & Optimization</em> and start from \\( A(n) \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( A(n) \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\text{TP} + \\text{TN} = 80 + 50 = 130 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( \\text{TP} + \\text{TN} = 80 + 50 = 130 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
-          "ar": "بالتعويض عن \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). وعندما \\( 6t + 6 = 72 \\) فإن \\( t = \\mathbf{11} \\)."
+          "en": "Summing \\( \\text{TP} + \\text{TN} = 80 + 50 = 130 \\).",
+          "ar": "Summing \\( \\text{TP} + \\text{TN} = 80 + 50 = 130 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 5 · Hard]</strong> An Ordinary Least Squares linear model \\( \\hat{A}(n) = 4n + 22 \\) is evaluated at \\( n = 8 \\). Determine the predicted response \\( \\hat{A}(8) \\).",
+          "ar": "<strong>[تدريب 5 · Hard]</strong> An Ordinary Least Squares linear model \\( \\hat{A}(n) = 4n + 22 \\) is evaluated at \\( n = 8 \\). Determine the predicted response \\( \\hat{A}(8) \\)."
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Loss Functions, Gradients & Optimization</em> and start from \\( \\hat{A}(n) = 4n + 22 \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( \\hat{A}(n) = 4n + 22 \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 4(8) + 22 = 54 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( 4(8) + 22 = 54 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
+        "solution": {
+          "en": "Evaluating \\( 4(8) + 22 = 54 \\).",
+          "ar": "Evaluating \\( 4(8) + 22 = 54 \\)."
         }
       }
     ]

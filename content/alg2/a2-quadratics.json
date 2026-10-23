@@ -40,46 +40,45 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Quadratics &amp; Complex Numbers",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Algebraic &amp; Geometric Duality of \\(\\mathbb{C}\\):</strong> Every complex number \\(z = x + iy\\) corresponds bijectively to a point \\((x, y)\\) in the Argand plane with modulus \\(r = |z| = \\sqrt{x^2 + y^2}\\) and principal argument \\(\\theta = \\arg(z) \\in (-\\pi, \\pi]\\). In exponential Euler form, \\(z = re^{i\\theta} = r(\\cos\\theta + i\\sin\\theta)\\), multiplication scales moduli and adds arguments: \\(z_1 z_2 = r_1 r_2 e^{i(\\theta_1 + \\theta_2)}\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Quadratics &amp; Complex Numbers — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
+          "type": "argand",
+          "title": "Quadratics &amp; Complex Numbers — Argand Plane & Conjugate Pair",
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
+              "re": 2,
+              "im": 4,
+              "label": "z = 2 + 4i",
+              "vector": true
             },
             {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "re": 2,
+              "im": -4,
+              "label": "z* = 2 - 4i",
+              "vector": true,
+              "color": "amber"
             }
-          ]
+          ],
+          "circle": {
+            "re": 0,
+            "im": 0,
+            "r": 4.47
+          }
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Argand diagram showing complex vector z = 2 + 4i, its conjugate z* = 2 − 4i, and modulus circle |z| = √20.",
           "ar": null
         }
       },
@@ -127,6 +126,18 @@
             }
           }
         ]
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Quadratics &amp; Complex Numbers)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why De Moivre's Theorem &amp; Conjugate Root Pairing Hold:</strong> By Euler's identity \\(e^{i\\theta} = \\cos\\theta + i\\sin\\theta\\), raising \\(z = re^{i\\theta}\\) to the \\(n\\)-th power gives:</p>\\[ z^n = \\left(re^{i\\theta}\\right)^n = r^n e^{in\\theta} = r^n(\\cos(n\\theta) + i\\sin(n\\theta)) \\]<p>Furthermore, if \\(P(z) = \\sum_{k=0}^n a_k z^k\\) has real coefficients (\\(a_k \\in \\mathbb{R}\\)), taking complex conjugates across \\(P(z_0) = 0\\) uses \\(\\overline{z_1 + z_2} = \\bar{z}_1 + \\bar{z}_2\\) and \\(\\bar{a}_k = a_k\\) to prove \\(P(\\bar{z}_0) = \\overline{P(z_0)} = 0\\). Thus non-real roots of real polynomials always occur in conjugate pairs \\(\\alpha \\pm i\\beta\\).</p>",
+          "ar": null
+        }
       },
       {
         "kind": "callout",
@@ -320,11 +331,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example C — Quadratics &amp; Complex Numbers (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 4 \\) and vertical component \\( \\Delta y = 9 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (4)^2 + (9)^2 = 16 + 81 = \\mathbf{97} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(4)(9) = \\mathbf{18} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> Show that \\(\\cos3\\theta=4\\cos^3\\theta-3\\cos\\theta\\) using De Moivre.</p><p><strong>Step-by-Step Solution:</strong> \\((\\cos\\theta+i\\sin\\theta)^3=\\cos3\\theta+i\\sin3\\theta\\). Real part: \\(\\cos^3\\theta-3\\cos\\theta\\sin^2\\theta=\\cos^3\\theta-3\\cos\\theta(1-\\cos^2\\theta)=4\\cos^3\\theta-3\\cos\\theta\\). <strong>Final Answer:</strong> Expand \\((\\cos\\theta+i\\sin\\theta)^3\\) and take real part.</p>",
           "ar": null
         }
       },
@@ -332,11 +343,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example D — Quadratics &amp; Complex Numbers (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> The Fundamental Theorem of Algebra states that every polynomial of degree \\(n\\geq1\\) with complex coefficients:</p><p><strong>Step-by-Step Solution:</strong> FTA: every non-constant polynomial has exactly \\(n\\) complex roots (with multiplicity). <strong>Final Answer:</strong> Has exactly \\(n\\) roots in \\(\\mathbb{C}\\) (counting multiplicity).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Quadratics &amp; Complex Numbers)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Taking \\(\\arg(-2 + 2i) = \\tan^{-1}(-1) = -\\pi/4\\)",
+              "ar": null
+            },
+            {
+              "en": "Places a 2nd-quadrant complex number in the 4th quadrant.",
+              "ar": null
+            },
+            {
+              "en": "Plot in Argand plane first: \\(\\arg(-{p} + {p}i) = \\pi - \\pi/4 = 3\\pi/4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Simplifying \\(i^2 = 1\\) in \\((a+bi)(c+di)\\)",
+              "ar": null
+            },
+            {
+              "en": "Forgets \\(i^2 = -1\\), flipping the sign of \\(bd\\) in the real part.",
+              "ar": null
+            },
+            {
+              "en": "Group real and imaginary parts carefully: \\((ac - bd) + (ad + bc)i\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Reading center of \\(|z + 2 - 4i| = 4\\) as \\((2, -4)\\)",
+              "ar": null
+            },
+            {
+              "en": "Fails to rewrite in standard form \\(|z - z_0| = r\\).",
+              "ar": null
+            },
+            {
+              "en": "Factor out the minus sign: \\(|z - (-2 + 4i)| = 4 \\implies z_0 = (-2, 4)\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Quadratics &amp; Complex Numbers",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Verification Tip (Honors Algebra 2 & Functions):</strong> Always check complex division \\(\\dfrac{z_1}{z_2}\\) by verifying that \\(|z_1 / z_2| = |z_1| / |z_2|\\). If the moduli ratio does not match, you multiplied the denominator by \\(a + bi\\) instead of the conjugate \\(a - bi\\).</p>",
           "ar": null
         }
       },
@@ -349,7 +437,21 @@
         "solution": {
           "en": "Discriminant \\(=16-52=-36\\). \\(x=\\dfrac{4\\pm\\sqrt{-36}}{2}=\\dfrac{4\\pm6i}{2}=2\\pm3i\\).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Quadratics &amp; Complex Numbers</em> and start from \\(x^2-4x+13=0\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(=16-52=-36\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -360,27 +462,94 @@
         "solution": {
           "en": "<p>Divide by the leading coefficient 2 or factor it out from the variable terms:</p>\\[2(x^2 - 3x) = -5 \\implies x^2 - 3x = -\\frac{5}{2}.\\]<p>Add \\(\\left(-\\frac{3}{2}\\right)^2 = \\frac{9}{4}\\) to both sides:</p>\\[x^2 - 3x + \\frac{9}{4} = -\\frac{5}{2} + \\frac{9}{4} = -\\frac{10}{4} + \\frac{9}{4} = -\\frac{1}{4}.\\]<p>Write as a perfect square and take the square root of both sides:</p>\\[\\left(x - \\frac{3}{2}\\right)^2 = -\\frac{1}{4} \\implies x - \\frac{3}{2} = \\pm\\sqrt{-\\frac{1}{4}} = \\pm\\frac{i}{2}.\\]\\[x = \\frac{3}{2} \\pm \\frac{1}{2}i.\\]",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Quadratics &amp; Complex Numbers</em> and start from \\(2x^2 - 6x + 5 = 0\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(2(x^2 - 3x) = -5 \\implies x^2 - 3x = -\\frac{5}{2}.\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Hard]</strong> Find all solutions to \\(z^4=-1\\) in \\(\\mathbb{C}\\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Quadratics &amp; Complex Numbers</em> and start from \\(z^4=-1\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(-1=e^{i\\pi}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "\\(-1=e^{i\\pi}\\). 4th roots: \\(e^{i(\\pi+2k\\pi)/4}=e^{i(1+2k)\\pi/4}\\), giving \\(k=0,1,2,3\\). <strong>Answer:</strong> \\(e^{i\\pi(2k+1)/4}\\) for \\(k=0,1,2,3\\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Quadratics &amp; Complex Numbers · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> If \\(\\omega=e^{2\\pi i/3}\\), find \\(1+\\omega+\\omega^2\\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Quadratics &amp; Complex Numbers</em> and start from \\(\\omega=e^{2\\pi i/3}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(1+\\omega+\\omega^2=0\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "en": "Sum of all cube roots of unity: \\(1+\\omega+\\omega^2=0\\). <strong>Answer:</strong> \\(0\\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Quadratics &amp; Complex Numbers · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 5 · Medium]</strong> For \\(z=re^{i\\theta}\\), express \\(\\text{Re}(z^3)\\) using triple angle formula.",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Quadratics &amp; Complex Numbers</em> and start from \\(z=re^{i\\theta}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(z^3=r^3e^{3i\\theta}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "\\(z^3=r^3e^{3i\\theta}\\). \\(\\text{Re}(z^3)=r^3\\cos3\\theta\\). <strong>Answer:</strong> \\(r^3\\cos3\\theta\\).",
           "ar": null
         }
       }

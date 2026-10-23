@@ -38,44 +38,44 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Unit 9 · Parametric Equations & Vector-Valued Functions — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
+          "type": "transformation_grid",
+          "title": "Unit 9 · Parametric Equations & Vector-Valued Functions — Linear Transformation & Basis Action",
+          "original": [
+            [
+              1,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              3
+            ]
           ],
-          "yrange": [
-            -3,
-            9
+          "transformed": [
+            [
+              -1,
+              1
+            ],
+            [
+              -1,
+              3
+            ],
+            [
+              -3,
+              2
+            ]
           ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
+          "labels": [
+            "A",
+            "B",
+            "C"
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
           "ar": null
         }
       },
@@ -83,43 +83,26 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Unit 9 · Parametric Equations & Vector-Valued Functions — Coordinate Curve & Tangent Analysis (1)",
           "xrange": [
-            -4,
-            4
+            -0.5,
+            5
           ],
           "yrange": [
-            -3,
-            9
+            -5,
+            10
           ],
           "fns": [
             {
-              "fn": "x*x - 1",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 1"
-            },
-            {
-              "fn": "2*x - 2",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": 0,
-              "label": "(1, 0)"
-            },
-            {
-              "x": 0,
-              "y": -1,
-              "label": "(0, -1)"
+              "fn": "Math.pow(Math.max(0,(x)),1.5)",
+              "label": "y∝x^{3/2}",
+              "color": "#3b5bdb",
+              "lx": 4,
+              "ly": 7
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 1 and its instantaneous tangent line at x = 1.",
+          "en": "Unit 9 · Parametric Equations & Vector-Valued Functions — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Unit 9 · Parametric Equations & Vector-Valued Functions.",
           "ar": null
         }
       },
@@ -132,6 +115,18 @@
         },
         "body": {
           "en": "<p><strong>Theorem:</strong> Let a smooth curve be defined by \\(x = x(t)\\) and \\(y = y(t)\\), where \\(x'(t) \\neq 0\\).<br>1. First Derivative (Tangent Slope): \\[ \\frac{dy}{dx} = \\frac{y'(t)}{x'(t)} = \\frac{dy/dt}{dx/dt}. \\]<br>2. Second Derivative (Concavity): \\[ \\frac{d^2y}{dx^2} = \\frac{\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)}{\\frac{dx}{dt}}. \\]</p><p><em>Proof of First Derivative:</em> By the Chain Rule, \\(y\\) is a composite function of \\(t\\) through \\(x\\): \\[ \\frac{dy}{dt} = \\frac{dy}{dx} \\cdot \\frac{dx}{dt}. \\] Dividing both sides by \\(\\frac{dx}{dt}\\) (valid since \\(x'(t) \\neq 0\\)): \\[ \\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}. \\quad \\blacksquare \\]</p><p><em>Proof of Second Derivative:</em> By definition, \\(\\frac{d^2y}{dx^2} = \\frac{d}{dx}\\left( \\frac{dy}{dx} \\right)\\). Let \\(u = \\frac{dy}{dx}\\). Applying the first derivative theorem to \\(u\\): \\[ \\frac{du}{dx} = \\frac{du/dt}{dx/dt} = \\frac{\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)}{\\frac{dx}{dt}}. \\quad \\blacksquare \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>The Fatal AP Trap:</strong> \\(\\displaystyle\\frac{d^2y}{dx^2} \\neq \\frac{y''(t)}{x''(t)}\\)! Differentiating the numerator and denominator independently is a severe mathematical fallacy that earns 0 points.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Unit 9 · Parametric Equations & Vector-Valued Functions)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
           "ar": null
         }
       },
@@ -151,11 +146,100 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example B — Unit 9 · Parametric Equations & Vector-Valued Functions (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> Consider the \\( 2 \\times 2 \\) matrix \\( M_{m} = \\begin{pmatrix} 5 & 19 \\\\ 2 & 7 \\end{pmatrix} \\). Find the determinant \\( R = \\det(M_{m}) \\).</p><p><strong>Step-by-Step Solution:</strong> The determinant is \\( (5)(7) - (19)(2) = -3 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Exam Traps — Unit 9 · Parametric Equations & Vector-Valued Functions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. Non-Commutativity of Matrix Multiplication &amp; Cross Products:</strong> On College Board AP Calculus BC, assuming \\(AB = BA\\) (so expanding \\((A+B)^2\\) as \\(A^2 + 2AB + B^2\\) instead of \\(A^2 + AB + BA + B^2\\)) or forgetting \\(\\mathbf{u}\\times\\mathbf{v} = -(\\mathbf{v}\\times\\mathbf{u})\\) invalidates matrix proofs.</p><p><strong>2. Using Position Vectors Instead of Direction Vectors for Angles:</strong> To find the angle at vertex \\(B\\) of triangle \\(ABC\\), you must use tail-to-tail vectors \\(\\overrightarrow{BA}\\) and \\(\\overrightarrow{BC}\\), never \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\) (which finds the exterior supplementary angle \\(180^\\circ - B\\)).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 9 · Parametric Equations & Vector-Valued Functions)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Computing angle at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)",
+              "ar": null
+            },
+            {
+              "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
+              "ar": null
+            },
+            {
+              "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
+              "ar": null
+            },
+            {
+              "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
+              "ar": null
+            },
+            {
+              "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Assuming \\((AB)^{-1} = A^{-1}B^{-1}\\)",
+              "ar": null
+            },
+            {
+              "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
+              "ar": null
+            },
+            {
+              "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Unit 9 · Parametric Equations & Vector-Valued Functions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Matrix &amp; Vector Verification (College Board AP Calculus BC):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -168,7 +252,21 @@
         "solution": {
           "en": "<p>A vertical tangent occurs when \\(\\frac{dx}{dt} = 0\\) and \\(\\frac{dy}{dt} \\neq 0\\). Compute \\(x'(t) = -\\sin(t) = 0 \\implies t = 0, \\pi\\). Check \\(y'(t) = 2\\cos(2t)\\):<br>• At \\(t = 0\\): \\(y'(0) = 2\\cos(0) = 2 \\neq 0\\).<br>• At \\(t = \\pi\\): \\(y'(\\pi) = 2\\cos(2\\pi) = 2 \\neq 0\\).<br>Therefore, vertical tangents occur at \\(\\mathbf{t = 0}\\) and \\(\\mathbf{t = \\pi}\\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 9 · Parametric Equations & Vector-Valued Functions</em> and start from \\(x(t) = \\cos(t)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\frac{dx}{dt} = 0\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -323,7 +421,21 @@
         "solution": {
           "en": "<p>A particle is at rest if and only if its velocity vector is \\(\\vec{0}\\) (both components are simultaneously 0).<br>• \\(x'(t) = 2t - 4 = 0 \\implies t = 2\\).<br>• \\(y'(t) = t^2 - 4 = 0 \\implies t = \\pm 2\\).<br>Since \\(t > 0\\), both components are zero simultaneously at \\(\\mathbf{t = 2}\\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 9 · Parametric Equations & Vector-Valued Functions</em> and start from \\(\\vec{r}(t) = \\langle t^2 - 4t, \\frac{1}{3}t^3 - 4t \\rangle\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\vec{0}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -366,16 +478,44 @@
         "solution": {
           "en": "<p><strong>Written Setup:</strong> \\[ \\text{Total Distance} = \\mathbf{\\int_0^3 \\sqrt{\\sin^2(t^2) + \\cos^2(t^3)}\\,dt}. \\]</p><p><strong>Numerical Evaluation:</strong> Entering this into a graphing calculator yields: \\[ \\text{Total Distance} \\approx \\mathbf{2.874} \\quad (\\text{or } 2.873). \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 9 · Parametric Equations & Vector-Valued Functions</em> and start from \\(\\vec{v}(t) = \\langle \\sin(t^2), \\cos(t^3) \\rangle\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Unit 9 · Parametric Equations & Vector-Valued Functions · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> Let \\( \\mathbf{R} = \\langle 13, 26 \\rangle \\) and \\( \\mathbf{S} = \\langle 10, 18 \\rangle \\) be vectors in \\( \\mathbb{R}^2 \\). Find the dot product \\( m = \\mathbf{R} \\cdot \\mathbf{S} \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 9 · Parametric Equations & Vector-Valued Functions</em> and start from \\( \\mathbf{R} = \\langle 13, 26 \\rangle \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( (13)(10) + (26)(18) = 598 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "The dot product is \\( (13)(10) + (26)(18) = 598 \\).",
           "ar": null
         }
       }

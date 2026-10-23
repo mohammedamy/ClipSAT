@@ -29,32 +29,17 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "Probability — Frequency Distribution (2)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
-            {
-              "label": "Q1",
-              "value": 22
-            },
-            {
-              "label": "Q2",
-              "value": 35,
-              "highlight": true
-            },
-            {
-              "label": "Q3",
-              "value": 28
-            },
-            {
-              "label": "Q4",
-              "value": 19
-            }
-          ]
+          "type": "venn",
+          "title": "Probability — Set Intersection & Conditional Sample Space",
+          "onlyA": 20,
+          "both": 14,
+          "onlyB": 5,
+          "neither": 4,
+          "labelA": "Event A",
+          "labelB": "Event B"
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for Probability.",
+          "en": "Venn diagram partitioning sample space into |A only| = 20, |A ∩ B| = 14, |B only| = 5, and |(A ∪ B)'| = 4.",
           "ar": null
         }
       },
@@ -330,11 +315,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example D — Probability (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> For finite sets \\( P \\) and \\( Q \\), \\( |P| = 51 \\), \\( |Q| = 49 \\), and \\( |P \\cap Q| = 35 \\). What is the union cardinality \\( t = |P \\cup Q| \\)?</p><p><strong>Step-by-Step Solution:</strong> By Inclusion-Exclusion, \\( |P \\cup Q| = 51 + 49 - 35 = 65 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Probability)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Using \\(P(A \\cap B) = 0\\) when told \\(A\\) and \\(B\\) are independent",
+              "ar": null
+            },
+            {
+              "en": "Confuses disjoint (mutually exclusive) events with statistically independent events.",
+              "ar": null
+            },
+            {
+              "en": "For independent events, multiply probabilities: \\(P(A \\cap B) = P(A)\\cdot P(B)\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Dividing by the grand total \\(N\\) when computing \\(P(A \\mid B)\\) from a table",
+              "ar": null
+            },
+            {
+              "en": "Computes the joint probability \\(P(A \\cap B)\\) instead of conditioning on subset \\(B\\).",
+              "ar": null
+            },
+            {
+              "en": "Restrict the denominator strictly to the row/column total of the given condition \\(B\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using permutations \\({}^nP_r\\) when selecting a committee with no distinct roles",
+              "ar": null
+            },
+            {
+              "en": "Overcounts every group of size \\(r\\) by \\(r!\\) internal orderings.",
+              "ar": null
+            },
+            {
+              "en": "Divide by \\(r!\\) to use combinations: \\(\\binom{n}{r} = \\frac{n!}{r!(n-r)!}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Probability",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Strategy (Egyptian Scholastic Test (EST II — Math Level 2)):</strong> Whenever a probability problem involves \"at least one\" success across multiple trials, immediately use the Complement Rule: \\(P(\\text{at least one}) = 1 - P(\\text{none})\\). It turns a multi-case sum into a single calculation.</p>",
           "ar": null
         }
       },
@@ -347,38 +409,94 @@
         "solution": {
           "en": "1. Find the total number of ways to choose 4 people from 11: \\[ \\binom{11}{4} = \\frac{11 \\times 10 \\times 9 \\times 8}{4 \\times 3 \\times 2 \\times 1} = 330. \\]<br>2. Find the number of ways to choose 2 men from 6 and 2 women from 5: \\[ \\binom{6}{2} \\times \\binom{5}{2} = 15 \\times 10 = 150. \\]<br>3. Compute the probability: \\[ P = \\frac{150}{330} = \\frac{15}{33} = \\frac{5}{11} \\approx 0.4545. \\]",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Probability</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 2 · Hard]</strong> A normal random variable \\( p \\sim \\mathcal{N}(\\mu = 46, \\sigma^2 = 4) \\) is observed at \\( t = 48 \\). What is the standardized score \\( z = (t - \\mu)/\\sigma \\)?",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Probability</em> and start from \\( p \\sim \\mathcal{N}(\\mu = 46, \\sigma^2 = 4) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( z \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "The \\( z \\)-score is \\( \\frac{48 - 46}{2} = 1 \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Probability · Practice 2] If the governing relation for this system is \\( g(t) = 4t + 4 \\), evaluate \\( g(6) \\) and find the inverse input \\( t \\) when \\( g(t) = 32 \\).",
+          "en": "<strong>[Practice 3 · Easy]</strong> A cumulative frequency distribution \\( p(t) \\) has \\( Q_1 = 18 \\), median \\( 26 \\), and \\( Q_3 = 35 \\). What is the spread \\( \\text{IQR}(p) = Q_3 - Q_1 \\)?",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Probability</em> and start from \\( p(t) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( Q_3 - Q_1 = 35 - 18 = 17 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). Setting \\( 4t + 4 = 32 \\) gives \\( 4t = 28 \\implies t = \\mathbf{7} \\).",
+          "en": "From the cumulative frequency curve, \\( Q_3 - Q_1 = 35 - 18 = 17 \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Probability · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> In a two-stage probability tree for events \\( P \\) and \\( Q \\), \\( P(P) = 0.5 \\) and \\( P(Q \\mid P) = 0.3 \\). What is the expected frequency \\( t = 100 \\cdot P(P \\cap Q) \\) in \\( 100 \\) independent trials?",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Probability</em> and start from \\( P \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( P(P \\cap Q) = 0.5 \\times 0.3 = 0.15 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Probability · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Since \\( P(P \\cap Q) = 0.5 \\times 0.3 = 0.15 \\), the expected count in 100 trials is \\( 15 \\).",
           "ar": null
         }
       }

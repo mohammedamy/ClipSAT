@@ -30,43 +30,38 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Systems &amp; Inequalities — Coordinate Curve & Tangent Analysis (2)",
+          "title": "Systems &amp; Inequalities — Linear System Intersection & Equilibrium",
           "xrange": [
-            -4,
-            4
+            -2,
+            6
           ],
           "yrange": [
-            -3,
-            9
+            -2,
+            10
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "2*x + 1",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "label": "y = 2x + 1"
             },
             {
-              "fn": "2*x - 3",
+              "fn": "-x + 7",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "label": "y = −x + 7"
             }
           ],
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "x": 2,
+              "y": 5,
+              "label": "Intersection (2, 5)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Coordinate intersection of linear system y = 2x + 1 and y = −x + 7 at unique equilibrium point (2, 5).",
           "ar": null
         }
       },
@@ -198,6 +193,18 @@
             "en": "Interactive 3D visualization of two intersecting linear planes z = m1 x + b1 and z = m2 x + b2 in 3D coordinate space. Drag to rotate.",
             "ar": null
           }
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Systems &amp; Inequalities)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>",
+          "ar": null
         }
       },
       {
@@ -347,11 +354,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example D — Systems &amp; Inequalities (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> The real number \\( v \\) satisfies \\( \\frac{17v + 4}{2} = 272 + \\frac{4}{2} \\). Determine the linear expression \\( U = 17v - 4 \\).</p><p><strong>Step-by-Step Solution:</strong> Multiplying by 2 gives \\( 17v = 544 \\), so \\( 17v - 4 = 544 - 4 = 540 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Systems &amp; Inequalities)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Claiming \\(+25\\%\\) followed by \\(-25\\%\\) returns to \\(100\\%\\)",
+              "ar": null
+            },
+            {
+              "en": "The \\(25\\%\\) reduction applies to the larger base \\(1.25 Q_0\\), not \\(Q_0\\).",
+              "ar": null
+            },
+            {
+              "en": "Multiply scale factors: \\(1.25 \\times 0.75 = 0.9375\\) (a \\(6.25\\%\\) net decrease).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Solving \\(-3x > 12\\) as \\(x > -4\\)",
+              "ar": null
+            },
+            {
+              "en": "Dividing by a negative number reverses order on the real number line.",
+              "ar": null
+            },
+            {
+              "en": "Flip the inequality symbol whenever multiplying or dividing by a negative: \\(x < -4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing round-trip average speed as \\(\\frac{v_1 + v_2}{2}\\)",
+              "ar": null
+            },
+            {
+              "en": "Time spent at the slower speed is longer than time spent at the faster speed.",
+              "ar": null
+            },
+            {
+              "en": "Use total distance over total time: \\(v_{\\text{avg}} = \\frac{2v_1 v_2}{v_1 + v_2}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Systems &amp; Inequalities",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>High-Speed Exam Shortcut (Honors Algebra 1 & Foundations):</strong> When a linear system asks for a combined expression like \\(3x + 3y\\) rather than \\(x\\) and \\(y\\) individually, add or subtract the two equations directly before isolating either variable—this often yields the target expression in a single step.</p>",
           "ar": null
         }
       },
@@ -364,7 +448,21 @@
         "solution": {
           "en": "\\[ \\begin{cases} 3x - 2y = 8 \\\\ 6x + ky = 5 \\end{cases} \\]<p><strong>Solution:</strong></p><p>1. A linear system has no solution if the lines are parallel (identical slopes, different \\( y \\)-intercepts).</p><p>2. Express the first line in slope-intercept form:</p>\\[ -2y = -3x + 8 \\implies y = \\frac{3}{2}x - 4 \\quad\\implies m_1 = \\frac{3}{2}. \\]<p>3. Express the second line in slope-intercept form:</p>\\[ ky = -6x + 5 \\implies y = -\\frac{6}{k}x + \\frac{5}{k} \\quad\\implies m_2 = -\\frac{6}{k}. \\]<p>4. Equate slopes to make lines parallel:</p>\\[ \\frac{3}{2} = -\\frac{6}{k} \\implies 3k = -12 \\implies k = -4. \\]<p>When \\( k = -4 \\), the intercepts differ (\\( -4 \\neq -\\frac{5}{4} \\)), so the lines are strictly parallel with <strong>no solution</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Systems &amp; Inequalities</em> and start from \\( k \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\begin{cases} 3x - 2y = 8 \\\\ 6x + ky = 5 \\end{cases} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -375,27 +473,69 @@
         "solution": {
           "en": "<p>Equate the expressions for \\(y\\): \\[x^2 - 3x + 2 = 2x - 4 \\implies x^2 - 5x + 6 = 0.\\] Factor the quadratic: \\[(x - 2)(x - 3) = 0 \\implies x = 2 \\text{ or } x = 3.\\] Find corresponding \\(y\\)-values using \\(y = 2x - 4\\):</p><ul><li>For \\(x = 2\\): \\(y = 2(2) - 4 = 0\\), yielding intersection point \\((2, 0)\\).</li><li>For \\(x = 3\\): \\(y = 2(3) - 4 = 2\\), yielding intersection point \\((3, 2)\\).</li></ul><p>The system intersects at \\((2, 0)\\) and \\((3, 2)\\).</p>",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Systems &amp; Inequalities</em> and start from \\(y = x^2 - 3x + 2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(y\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Hard]</strong> A linear function \\( U(v) \\) satisfies \\( U(0) = 19 \\) and \\( U(4) = 115 \\). Determine the input \\( v \\) for which \\( U(v) = 235 \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Systems &amp; Inequalities</em> and start from \\( U(v) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( m = 24 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "The slope is \\( m = 24 \\), so \\( U(v) = 24v + 19 \\). Setting \\( 24v + 19 = 235 \\) gives \\( v = 9 \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Systems &amp; Inequalities · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> In the plane, the line \\( 10v + 2y = 20 \\) intersects the axes at points \\( H \\) and \\( J \\). Determine the sum of intercepts \\( U \\) of \\( 10v + 2y = 20 \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Systems &amp; Inequalities</em> and start from \\( 10v + 2y = 20 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 2 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Systems &amp; Inequalities · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "The intercepts are \\( 2 \\) and \\( 10 \\), whose sum is \\( 2 + 10 = 12 \\).",
           "ar": null
         }
       }

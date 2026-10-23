@@ -41,34 +41,31 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Statistics &amp; Probability",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Conditional Probability, Bayes' Theorem &amp; Robust Summary Statistics:</strong> For any two events \\(A\\) and \\(B\\) with \\(P(B) > 0\\), conditional probability restricts the sample space to \\(B\\): \\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)}\\). In descriptive statistics, the median and interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)) are resistant to extreme outliers, whereas the mean \\(\\bar{x}\\) and standard deviation \\(s\\) are pulled strongly in the direction of skewness.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "Statistics &amp; Probability — Frequency Distribution (2)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
-            {
-              "label": "Q1",
-              "value": 22
-            },
-            {
-              "label": "Q2",
-              "value": 35,
-              "highlight": true
-            },
-            {
-              "label": "Q3",
-              "value": 28
-            },
-            {
-              "label": "Q4",
-              "value": 19
-            }
-          ]
+          "type": "venn",
+          "title": "Statistics &amp; Probability — Set Intersection & Conditional Sample Space",
+          "onlyA": 16,
+          "both": 6,
+          "onlyB": 15,
+          "neither": 4,
+          "labelA": "Event A",
+          "labelB": "Event B"
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for Statistics &amp; Probability.",
+          "en": "Venn diagram partitioning sample space into |A only| = 16, |A ∩ B| = 6, |B only| = 15, and |(A ∪ B)'| = 4.",
           "ar": null
         }
       },
@@ -246,6 +243,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Statistics &amp; Probability)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Bayes' Theorem &amp; Principle of Inclusion-Exclusion Work:</strong> Any event \\(B\\) can be partitioned into disjoint intersections \\(B = (B \\cap A) \\cup (B \\cap A')\\). By additivity of mutually exclusive events and the multiplication rule \\(P(A \\cap B) = P(B \\mid A)P(A)\\):</p>\\[ P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{P(B \\mid A)P(A)}{P(B \\mid A)P(A) + P(B \\mid A')P(A')} \\]<p>Similarly, in counting \\(|A \\cup B|\\), summing \\(|A| + |B|\\) counts every element in \\(A \\cap B\\) twice; subtracting \\(|A \\cap B|\\) once restores exact cardinality: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example 7.A",
@@ -272,11 +281,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example C — Statistics &amp; Probability (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> For finite sets \\( U \\) and \\( V \\), \\( |U| = 54 \\), \\( |V| = 68 \\), and \\( |U \\cap V| = 26 \\). Work out the union cardinality \\( r = |U \\cup V| \\).</p><p><strong>Step-by-Step Solution:</strong> By Inclusion-Exclusion, \\( |U \\cup V| = 54 + 68 - 26 = 96 \\).</p>",
           "ar": null
         }
       },
@@ -284,11 +293,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example D — Statistics &amp; Probability (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> Find the median of the data set: \\( 8, 9, 11, 20, 27, 29, 31, 39, 40, 55 \\).</p><p><strong>Step-by-Step Solution:</strong> With \\( n=10 \\) values sorted, the median is \\( 28 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Statistics &amp; Probability)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Using \\(P(A \\cap B) = 0\\) when told \\(A\\) and \\(B\\) are independent",
+              "ar": null
+            },
+            {
+              "en": "Confuses disjoint (mutually exclusive) events with statistically independent events.",
+              "ar": null
+            },
+            {
+              "en": "For independent events, multiply probabilities: \\(P(A \\cap B) = P(A)\\cdot P(B)\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Dividing by the grand total \\(N\\) when computing \\(P(A \\mid B)\\) from a table",
+              "ar": null
+            },
+            {
+              "en": "Computes the joint probability \\(P(A \\cap B)\\) instead of conditioning on subset \\(B\\).",
+              "ar": null
+            },
+            {
+              "en": "Restrict the denominator strictly to the row/column total of the given condition \\(B\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using permutations \\({}^nP_r\\) when selecting a committee with no distinct roles",
+              "ar": null
+            },
+            {
+              "en": "Overcounts every group of size \\(r\\) by \\(r!\\) internal orderings.",
+              "ar": null
+            },
+            {
+              "en": "Divide by \\(r!\\) to use combinations: \\(\\binom{n}{r} = \\frac{n!}{r!(n-r)!}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Statistics &amp; Probability",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Strategy (Cambridge International AS Level (9709 Paper 1 / Paper 4 / Paper 5)):</strong> Whenever a probability problem involves \"at least one\" success across multiple trials, immediately use the Complement Rule: \\(P(\\text{at least one}) = 1 - P(\\text{none})\\). It turns a multi-case sum into a single calculation.</p>",
           "ar": null
         }
       },
@@ -301,7 +387,21 @@
         "solution": {
           "en": "1. Use the addition rule: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B) \\Rightarrow 0.8 = 0.6 + 0.5 - P(A \\cap B) \\Rightarrow P(A \\cap B) = 1.1 - 0.8 = 0.3\\).<br>2. Conditional probability: \\[P(A|B) = \\dfrac{P(A \\cap B)}{P(B)} = \\dfrac{0.3}{0.5} = 0.6\\] 3. Check for independence: \\(P(A \\cap B) = 0.3\\) and \\(P(A) \\times P(B) = 0.6 \\times 0.5 = 0.30\\). Since \\(P(A \\cap B) = P(A)P(B)\\) (or equivalently \\(P(A|B) = P(A) = 0.6\\)), events \\(A\\) and \\(B\\) are independent.",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics &amp; Probability</em> and start from \\(A\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -312,27 +412,94 @@
         "solution": {
           "en": "Total marbles = 9. Number of ways to choose 3 marbles = \\(\\binom{9}{3} = \\tfrac{9 \\times 8 \\times 7}{3 \\times 2 \\times 1} = 84\\).<br>(a) All 3 are red: \\(\\binom{5}{3} = 10\\). Probability: \\[P(\\text{all red}) = \\dfrac{10}{84} = \\dfrac{5}{42} \\approx 0.119\\] (b) 'At least two red' means exactly 2 red and 1 green, or exactly 3 red:<br>Ways for 2 red, 1 green: \\(\\binom{5}{2} \\times \\binom{4}{1} = 10 \\times 4 = 40\\).<br>Ways for 3 red: \\(\\binom{5}{3} = 10\\).<br>Total favorable outcomes: \\(40 + 10 = 50\\).<br>Probability: \\[P(\\ge 2 \\text{ red}) = \\dfrac{50}{84} = \\dfrac{25}{42} \\approx 0.595\\]",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics &amp; Probability</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\binom{9}{3} = \\tfrac{9 \\times 8 \\times 7}{3 \\times 2 \\times 1} = 84\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Hard]</strong> A normal random variable \\( P \\sim \\mathcal{N}(\\mu = 44, \\sigma^2 = 64) \\) is observed at \\( r = 68 \\). Work out the standardized score \\( z = (r - \\mu)/\\sigma \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics &amp; Probability</em> and start from \\( P \\sim \\mathcal{N}(\\mu = 44, \\sigma^2 = 64) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( z \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "The \\( z \\)-score is \\( \\frac{68 - 44}{8} = 3 \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Statistics &amp; Probability · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> A cumulative frequency distribution \\( P(r) \\) has \\( Q_1 = 26 \\), median \\( 41 \\), and \\( Q_3 = 56 \\). Work out the spread \\( \\text{IQR}(P) = Q_3 - Q_1 \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics &amp; Probability</em> and start from \\( P(r) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( Q_3 - Q_1 = 56 - 26 = 30 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "en": "From the cumulative frequency curve, \\( Q_3 - Q_1 = 56 - 26 = 30 \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Statistics &amp; Probability · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 5 · Medium]</strong> Find the median of the data set: \\( 7, 8, 13, 15, 16, 17, 21, 23, 24, 28, 30 \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics &amp; Probability</em> and start from \\( 7, 8, 13, 15, 16, 17, 21, 23, 24, 28, 30 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( n=11 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "With \\( n=11 \\) values sorted, the median is \\( 17 \\).",
           "ar": null
         }
       }

@@ -29,13 +29,13 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "circle",
-          "radius": 6,
-          "labelR": "r = 6",
-          "chordAngle": 120
+          "type": "unit_circle",
+          "title": "Trigonometry & Polar Coordinates — Unit Circle Reference Angle & Quadrant Projections",
+          "angle": 120,
+          "label": "θ = 2π/3 (120°)"
         },
         "caption": {
-          "en": "Circle sector and chord geometry with radius r = 6 and central angle 120°.",
+          "en": "Unit circle showing terminal ray at θ = 2π/3 (120°) with exact coordinates (−1/2, √3/2).",
           "ar": null
         }
       },
@@ -336,6 +336,83 @@
         }
       },
       {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Trigonometry & Polar Coordinates)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Dividing \\(\\sin 2\\theta = \\sin\\theta\\) by \\(\\sin\\theta\\)",
+              "ar": null
+            },
+            {
+              "en": "Eliminates valid solutions where \\(\\sin\\theta = 0\\).",
+              "ar": null
+            },
+            {
+              "en": "Expand \\(2\\sin\\theta\\cos\\theta - \\sin\\theta = 0\\) and factor \\(\\sin\\theta(2\\cos\\theta - 1) = 0\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using \\(A = \\frac{1}{2}r^2\\theta\\) with \\(\\theta = 60^\\circ\\)",
+              "ar": null
+            },
+            {
+              "en": "Overestimates sector area by a factor of \\(180/\\pi \\approx 57.3\\).",
+              "ar": null
+            },
+            {
+              "en": "Convert to radians first: \\(\\theta = 60^\\circ \\times \\frac{\\pi}{180^\\circ} = \\frac{\\pi}{3}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Finding only one solution to \\(\\sin(2x) = 1/2\\) on \\([0, 2\\pi]\\)",
+              "ar": null
+            },
+            {
+              "en": "Forgets that if \\(x \\in [0, 2\\pi]\\), the transformed angle \\(u = 2x\\) spans \\([0, 4\\pi]\\) (4 roots).",
+              "ar": null
+            },
+            {
+              "en": "Transform the interval to \\(u \\in [0, 4\\pi]\\) before dividing by 2.",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Trigonometry & Polar Coordinates",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>All-Solutions Checklist (ACT International Subject Test — Math 2):</strong> When solving \\(\\trig(kx + \\phi) = c\\) on \\([0, 2\\pi]\\), immediately write down the transformed interval \\(\\phi \\le u \\le 2k\\pi + \\phi\\), list all ASTC quadrant angles in that range, and only divide by \\(k\\) at the very last step.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "id": "act2l2-trig-polar-p1",
         "question": {
@@ -345,7 +422,21 @@
         "solution": {
           "en": "<p><strong>Part (a): Find side \\( c \\) using Law of Cosines:</strong><br>\\[ c^2 = a^2 + b^2 - 2ab\\cos C \\] \\[ c^2 = 7^2 + 5^2 - 2(7)(5)\\left(\\frac{1}{5}\\right) = 49 + 25 - 14 = 60 \\implies \\mathbf{c = \\sqrt{60} = 2\\sqrt{15}}. \\]</p><p><strong>Part (b): Find \\( \\sin^2 C \\) and Area:</strong><br>1. Pythagorean identity: \\[ \\sin^2 C = 1 - \\cos^2 C = 1 - \\left(\\frac{1}{5}\\right)^2 = 1 - \\frac{1}{25} = \\mathbf{\\frac{24}{25}}. \\]<br>2. Since \\( C \\) is an angle of a triangle, \\( \\sin C > 0 \\implies \\sin C = \\frac{\\sqrt{24}}{5} = \\frac{2\\sqrt{6}}{5} \\).<br>3. Area formula: \\[ \\text{Area} = \\frac{1}{2}ab\\sin C = \\frac{1}{2}(7)(5)\\left(\\frac{2\\sqrt{6}}{5}\\right) = \\mathbf{7\\sqrt{6}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Trigonometry & Polar Coordinates</em> and start from \\( ABC \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( c \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -357,7 +448,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Set up the Law of Sines for angle \\( B \\):</strong><br>\\[ \\frac{\\sin B}{b} = \\frac{\\sin A}{a} \\implies \\sin B = \\frac{b\\sin A}{a} = \\frac{16\\sin 30^\\circ}{10} = \\frac{16(0.5)}{10} = \\frac{8}{10} = 0.8. \\]</p><p><strong>Step 2: Find the acute angle solution \\( B_1 \\):</strong><br>\\[ B_1 = \\sin^{-1}(0.8) \\approx \\mathbf{53.1^\\circ}. \\]</p><p><strong>Step 3: Test the obtuse supplementary angle \\( B_2 \\):</strong><br>\\[ B_2 = 180^\\circ - 53.1^\\circ = 126.9^\\circ. \\]<br>Check triangle sum with given \\( A = 30^\\circ \\):<br>\\[ A + B_2 = 30^\\circ + 126.9^\\circ = 156.9^\\circ < 180^\\circ. \\]<br>Since the sum is strictly less than \\( 180^\\circ \\), a valid third angle \\( C_2 = 180^\\circ - 156.9^\\circ = 23.1^\\circ \\) exists.</p><p><strong>Conclusion:</strong> Exactly \\( \\mathbf{2} \\) distinct triangles exist, with \\( \\mathbf{B \\approx 53.1^\\circ} \\) or \\( \\mathbf{B \\approx 126.9^\\circ} \\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Trigonometry & Polar Coordinates</em> and start from \\( ABC \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( B \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -369,7 +474,21 @@
         "solution": {
           "en": "<p><strong>Part 1: Exact value of \\( \\cos(75^\\circ) \\):</strong><br>Express \\( 75^\\circ = 45^\\circ + 30^\\circ \\) and apply the cosine sum identity:<br>\\[ \\cos(45^\\circ + 30^\\circ) = \\cos 45^\\circ\\cos 30^\\circ - \\sin 45^\\circ\\sin 30^\\circ \\] \\[ = \\left(\\frac{\\sqrt{2}}{2}\\right)\\left(\\frac{\\sqrt{3}}{2}\\right) - \\left(\\frac{\\sqrt{2}}{2}\\right)\\left(\\frac{1}{2}\\right) = \\frac{\\sqrt{6} - \\sqrt{2}}{4} = \\mathbf{\\frac{\\sqrt{6} - \\sqrt{2}}{4}}. \\]</p><p><strong>Part 2: Evaluate \\( \\tan(2\\theta) \\):</strong><br>Apply the double-angle identity for tangent:<br>\\[ \\tan(2\\theta) = \\frac{2\\tan\\theta}{1 - \\tan^2\\theta} = \\frac{2(2/3)}{1 - (2/3)^2} = \\frac{4/3}{1 - 4/9} = \\frac{4/3}{5/9} = \\frac{4}{3} \\times \\frac{9}{5} = \\mathbf{\\frac{12}{5}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Trigonometry & Polar Coordinates</em> and start from \\( \\cos(75^\\circ) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\cos(75^\\circ) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -381,7 +500,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Multiply both sides by \\( r \\):</strong><br>\\[ r^2 = 6r\\cos\\theta \\]</p><p><strong>Step 2: Substitute Cartesian conversion formulas \\( r^2 = x^2 + y^2 \\) and \\( x = r\\cos\\theta \\):</strong><br>\\[ x^2 + y^2 = 6x \\]</p><p><strong>Step 3: Move all terms to one side and complete the square in \\( x \\):</strong><br>\\[ (x^2 - 6x) + y^2 = 0 \\] \\[ (x - 3)^2 - 9 + y^2 = 0 \\implies \\mathbf{(x - 3)^2 + y^2 = 9}. \\]</p><p><strong>Conclusion:</strong> The equation represents a <strong>circle</strong> with center \\( \\mathbf{(3, 0)} \\) and radius \\( \\mathbf{r = 3} \\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Trigonometry & Polar Coordinates</em> and start from \\( r = 6\\cos\\theta \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( r \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

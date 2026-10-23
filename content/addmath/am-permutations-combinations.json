@@ -79,35 +79,32 @@
         ]
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Permutations & Combinations",
+          "ar": "● الفهم المفاهيمي العميق — التباديل والتوافيق"
+        },
+        "body": {
+          "en": "<p><strong>Conditional Probability, Bayes' Theorem &amp; Robust Summary Statistics:</strong> For any two events \\(A\\) and \\(B\\) with \\(P(B) > 0\\), conditional probability restricts the sample space to \\(B\\): \\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)}\\). In descriptive statistics, the median and interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)) are resistant to extreme outliers, whereas the mean \\(\\bar{x}\\) and standard deviation \\(s\\) are pulled strongly in the direction of skewness.</p>",
+          "ar": "<p><strong>الاحتمال الشرطي والإحصاء الوصفي:</strong> يُختزل فضاء العينة في الاحتمال الشرطي إلى \\(P(A\\mid B) = \\frac{P(A\\cap B)}{P(B)}\\)، ويتميز الوسيط والمدى الربيعي \\(\\text{IQR}\\) بمقاومتهما للقيم المتطرفة.</p>"
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "Permutations & Combinations — Frequency Distribution (2)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
-            {
-              "label": "Q1",
-              "value": 22
-            },
-            {
-              "label": "Q2",
-              "value": 35,
-              "highlight": true
-            },
-            {
-              "label": "Q3",
-              "value": 28
-            },
-            {
-              "label": "Q4",
-              "value": 19
-            }
-          ]
+          "type": "venn",
+          "title": "Permutations & Combinations — Set Intersection & Conditional Sample Space",
+          "onlyA": 8,
+          "both": 10,
+          "onlyB": 10,
+          "neither": 4,
+          "labelA": "Event A",
+          "labelB": "Event B"
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for Permutations & Combinations.",
-          "ar": "توزيع تكراري يقارن القيم والفئة المنوالية في Permutations & Combinations."
+          "en": "Venn diagram partitioning sample space into |A only| = 8, |A ∩ B| = 10, |B only| = 10, and |(A ∪ B)'| = 4.",
+          "ar": "تمثيل هندسي وبياني يوضح العلاقات الأساسية في درس التباديل والتوافيق."
         }
       },
       {
@@ -212,33 +209,31 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "Permutations & Combinations — Frequency Distribution (1)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
-            {
-              "label": "Q1",
-              "value": 18
-            },
-            {
-              "label": "Q2",
-              "value": 32,
-              "highlight": true
-            },
-            {
-              "label": "Q3",
-              "value": 26
-            },
-            {
-              "label": "Q4",
-              "value": 14
-            }
+          "type": "numberline",
+          "min": 0,
+          "max": 31,
+          "marks": [
+            17,
+            21,
+            25,
+            29
           ]
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for Permutations & Combinations.",
-          "ar": "توزيع تكراري يقارن القيم والفئة المنوالية في Permutations & Combinations."
+          "en": "Permutations & Combinations — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Permutations & Combinations.",
+          "ar": "رسم توضيحي يبيّن العلاقات الرياضية والهندسية في درس التباديل والتوافيق."
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Permutations & Combinations)",
+          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (التباديل والتوافيق)"
+        },
+        "body": {
+          "en": "<p><strong>Why Bayes' Theorem &amp; Principle of Inclusion-Exclusion Work:</strong> Any event \\(B\\) can be partitioned into disjoint intersections \\(B = (B \\cap A) \\cup (B \\cap A')\\). By additivity of mutually exclusive events and the multiplication rule \\(P(A \\cap B) = P(B \\mid A)P(A)\\):</p>\\[ P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{P(B \\mid A)P(A)}{P(B \\mid A)P(A) + P(B \\mid A')P(A')} \\]<p>Similarly, in counting \\(|A \\cup B|\\), summing \\(|A| + |B|\\) counts every element in \\(A \\cap B\\) twice; subtracting \\(|A \\cap B|\\) once restores exact cardinality: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\).</p>",
+          "ar": "<p><strong>برهان قانون بايز ومبدأ الشمول والإقصاء:</strong> بتجزئة الحدث \\(B\\) إلى \\((B\\cap A) \\cup (B\\cap A')\\) ينتج قانون الاحتمال الكلي وقانون بايز، وعند حساب الاتحاد نطرح التقاطع \\(P(A\\cap B)\\) لمنع التكرار المزدوج.</p>"
         }
       },
       {
@@ -257,80 +252,262 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example B — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول B — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example B — Permutations & Combinations (Medium Application)",
+          "ar": "مثال محلول B — التباديل والتوافيق (تطبيق Medium)"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 9x + 18 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 3)(x - 6) = 0 \\implies x = 3 \\text{ or } x = 6 \\).</li><li>Check Vieta's formulas: sum \\( = 3 + 6 = \\mathbf{9} \\) and product \\( = (3)(6) = \\mathbf{18} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 9x + 18 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 3)(x - 6) = 0 \\implies x = 3 \\text{ أو } x = 6 \\).</li><li>المجموع \\( = \\mathbf{9} \\) وحاصل الضرب \\( = \\mathbf{18} \\).</li></ol>"
+          "en": "<p><strong>Problem (Medium):</strong> A committee of 5 members is to be selected from a group consisting of \\( n \\) men and 6 women, where \\( n \\ge 4 \\).\n\nGiven that the number of possible committees containing exactly 3 men is equal to the number of possible committees containing exactly 4 men, find the value of \\( n \\).</p><p><strong>Step-by-Step Solution:</strong> To form a committee of 5 members:\n\n1. **Committees with exactly 3 men:**\nSince there are 5 members in total, the committee must contain 3 men and \\( 5 - 3 = 2 \\) women.\n\\[\n\\text{Number of ways} = \\binom{n}{3} \\times \\binom{6}{2} = \\binom{n}{3} \\times \\frac{6 \\times 5}{2} = 15\\binom{n}{3}\n\\]\n\n2. **Committees with exactly 4 men:**\nThe committee must contain 4 men and \\( 5 - 4 = 1 \\) woman.\n\\[\n\\text{Number of ways} = \\binom{n}{4} \\times \\binom{6}{1} = 6\\binom{n}{4}\n\\]\n\n3. **Equating the two expressions:**\n\\[\n15\\binom{n}{3} = 6\\binom{n}{4}\n\\]\nDivide both sides by 3:\n\\[\n5\\binom{n}{3} = 2\\binom{n}{4}\n\\]\nUsing the relation \\( \\binom{n}{4} = \\frac{n - 3}{4}\\binom{n}{3} \\):\n\\[\n5\\binom{n}{3} = 2 \\times \\frac{n - 3}{4}\\binom{n}{3} = \\frac{n - 3}{2}\\binom{n}{3}\n\\]\nSince \\( n \\ge 4 \\), \\( \\binom{n}{3} \\neq 0 \\), so we can divide both sides by \\( \\binom{n}{3} \\):\n\\[\n5 = \\frac{n - 3}{2} \\implies 10 = n - 3 \\implies n = 13\n\\]\n\n**Common Traps:**\n- Setting \\( \\binom{n}{3} = \\binom{n}{4} \\) ignores the selection of the women needed to complete the 5-member committee, giving \\( \\frac{n-3}{4} = 1 \\implies n = 7 \\).\n- Forgetting to add 3 after solving \\( n - 3 = 10 \\) leads to the distractor 10.</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Medium):</strong> A committee of 5 members is to be selected from a group consisting of \\( n \\) men and 6 women, where \\( n \\ge 4 \\).\n\nGiven that the number of possible committees containing exactly 3 men is equal to the number of possible committees containing exactly 4 men, find the value of \\( n \\).</p><p><strong>الحل خطوة بخطوة:</strong> To form a committee of 5 members:\n\n1. **Committees with exactly 3 men:**\nSince there are 5 members in total, the committee must contain 3 men and \\( 5 - 3 = 2 \\) women.\n\\[\n\\text{Number of ways} = \\binom{n}{3} \\times \\binom{6}{2} = \\binom{n}{3} \\times \\frac{6 \\times 5}{2} = 15\\binom{n}{3}\n\\]\n\n2. **Committees with exactly 4 men:**\nThe committee must contain 4 men and \\( 5 - 4 = 1 \\) woman.\n\\[\n\\text{Number of ways} = \\binom{n}{4} \\times \\binom{6}{1} = 6\\binom{n}{4}\n\\]\n\n3. **Equating the two expressions:**\n\\[\n15\\binom{n}{3} = 6\\binom{n}{4}\n\\]\nDivide both sides by 3:\n\\[\n5\\binom{n}{3} = 2\\binom{n}{4}\n\\]\nUsing the relation \\( \\binom{n}{4} = \\frac{n - 3}{4}\\binom{n}{3} \\):\n\\[\n5\\binom{n}{3} = 2 \\times \\frac{n - 3}{4}\\binom{n}{3} = \\frac{n - 3}{2}\\binom{n}{3}\n\\]\nSince \\( n \\ge 4 \\), \\( \\binom{n}{3} \\neq 0 \\), so we can divide both sides by \\( \\binom{n}{3} \\):\n\\[\n5 = \\frac{n - 3}{2} \\implies 10 = n - 3 \\implies n = 13\n\\]\n\n**Common Traps:**\n- Setting \\( \\binom{n}{3} = \\binom{n}{4} \\) ignores the selection of the women needed to complete the 5-member committee, giving \\( \\frac{n-3}{4} = 1 \\implies n = 7 \\).\n- Forgetting to add 3 after solving \\( n - 3 = 10 \\) leads to the distractor 10.</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول C — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example C — Permutations & Combinations (Hard Application)",
+          "ar": "مثال محلول C — التباديل والتوافيق (تطبيق Hard)"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 13x + 36 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ أو } x = 9 \\).</li><li>المجموع \\( = \\mathbf{13} \\) وحاصل الضرب \\( = \\mathbf{36} \\).</li></ol>"
+          "en": "<p><strong>Problem (Hard):</strong> Six-digit numbers are formed using digits chosen from the set \\(\\{1, 2, 3, 4, 5, 6, 7, 8\\}\\), with no digit repeated in any number.\n\nFind the number of different six-digit odd numbers that can be formed such that the digits \\(2\\) and \\(4\\) are not adjacent.</p><p><strong>Step-by-Step Solution:</strong> We use complementary counting: \\(\\text{Number of valid arrangements} = \\text{Total odd 6-digit numbers} - \\text{Odd 6-digit numbers where } 2 \\text{ and } 4 \\text{ are adjacent}\\).\n\n**Step 1: Total number of 6-digit odd numbers**\n- For the number to be odd, the last digit (units place) must be chosen from the odd digits \\(\\{1, 3, 5, 7\\}\\), giving \\(4\\) choices.\n- The remaining \\(5\\) positions are filled by selecting and arranging \\(5\\) digits from the remaining \\(7\\) digits in the set:\n\\[\nP(7, 5) = 7 \\times 6 \\times 5 \\times 4 \\times 3 = 2520\n\\]\n- Total odd 6-digit numbers \\(= 4 \\times 2520 = 10080\\).\n\n**Step 2: Number of 6-digit odd numbers where \\(2\\) and \\(4\\) are adjacent**\n- Treat the pair of digits \\(2\\) and \\(4\\) as a single block \\(B\\), which can be ordered as \\((2, 4)\\) or \\((4, 2)\\) (\\(2\\) internal arrangements).\n- Since the number must be odd, the units digit must be odd (\\(4\\) choices from \\(\\{1, 3, 5, 7\\}\\)). Because both \\(2\\) and \\(4\\) are even, the block \\(B\\) cannot occupy the final position.\n- Thus, the block \\(B\\) must occupy two adjacent positions entirely within the first \\(5\\) digits. The possible adjacent pairs for \\(B\\) are positions \\((1, 2)\\), \\((2, 3)\\), \\((3, 4)\\), and \\((4, 5)\\), giving \\(4\\) possible positions.\n- The remaining \\(3\\) unfilled positions among the first \\(5\\) places are filled from the remaining \\(8 - 1 - 2 = 5\\) available digits:\n\\[\nP(5, 3) = 5 \\times 4 \\times 3 = 60\n\\]\n- Number of odd numbers with \\(2\\) and \\(4\\) adjacent:\n\\[\n4 \\text{ (choices for units digit)} \\times 4 \\text{ (positions for block } B) \\times 2 \\text{ (internal orders of } B) \\times 60 = 1920\n\\]\n\n**Step 3: Subtract adjacent cases from the total**\n\\[\n10080 - 1920 = 8160\n\\]\n\n**Common Misconceptions:**\n- **7680**: Incorrectly allows the block \\(B\\) to occupy positions \\((5, 6)\\), forgetting that the units digit cannot be even, leading to \\(10080 - 4 \\times 5 \\times 2 \\times 60 = 7680\\).\n- **9120**: Forgets the internal order of the pair \\((2, 4)\\) and \\((4, 2)\\), calculating \\(10080 - 960 = 9120\\).\n- **2880**: Erroneously assumes that both digits \\(2\\) and \\(4\\) must be present in the number, omitting numbers where only one or neither of \\(2\\) and \\(4\\) is selected.</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Hard):</strong> Six-digit numbers are formed using digits chosen from the set \\(\\{1, 2, 3, 4, 5, 6, 7, 8\\}\\), with no digit repeated in any number.\n\nFind the number of different six-digit odd numbers that can be formed such that the digits \\(2\\) and \\(4\\) are not adjacent.</p><p><strong>الحل خطوة بخطوة:</strong> We use complementary counting: \\(\\text{Number of valid arrangements} = \\text{Total odd 6-digit numbers} - \\text{Odd 6-digit numbers where } 2 \\text{ and } 4 \\text{ are adjacent}\\).\n\n**Step 1: Total number of 6-digit odd numbers**\n- For the number to be odd, the last digit (units place) must be chosen from the odd digits \\(\\{1, 3, 5, 7\\}\\), giving \\(4\\) choices.\n- The remaining \\(5\\) positions are filled by selecting and arranging \\(5\\) digits from the remaining \\(7\\) digits in the set:\n\\[\nP(7, 5) = 7 \\times 6 \\times 5 \\times 4 \\times 3 = 2520\n\\]\n- Total odd 6-digit numbers \\(= 4 \\times 2520 = 10080\\).\n\n**Step 2: Number of 6-digit odd numbers where \\(2\\) and \\(4\\) are adjacent**\n- Treat the pair of digits \\(2\\) and \\(4\\) as a single block \\(B\\), which can be ordered as \\((2, 4)\\) or \\((4, 2)\\) (\\(2\\) internal arrangements).\n- Since the number must be odd, the units digit must be odd (\\(4\\) choices from \\(\\{1, 3, 5, 7\\}\\)). Because both \\(2\\) and \\(4\\) are even, the block \\(B\\) cannot occupy the final position.\n- Thus, the block \\(B\\) must occupy two adjacent positions entirely within the first \\(5\\) digits. The possible adjacent pairs for \\(B\\) are positions \\((1, 2)\\), \\((2, 3)\\), \\((3, 4)\\), and \\((4, 5)\\), giving \\(4\\) possible positions.\n- The remaining \\(3\\) unfilled positions among the first \\(5\\) places are filled from the remaining \\(8 - 1 - 2 = 5\\) available digits:\n\\[\nP(5, 3) = 5 \\times 4 \\times 3 = 60\n\\]\n- Number of odd numbers with \\(2\\) and \\(4\\) adjacent:\n\\[\n4 \\text{ (choices for units digit)} \\times 4 \\text{ (positions for block } B) \\times 2 \\text{ (internal orders of } B) \\times 60 = 1920\n\\]\n\n**Step 3: Subtract adjacent cases from the total**\n\\[\n10080 - 1920 = 8160\n\\]\n\n**Common Misconceptions:**\n- **7680**: Incorrectly allows the block \\(B\\) to occupy positions \\((5, 6)\\), forgetting that the units digit cannot be even, leading to \\(10080 - 4 \\times 5 \\times 2 \\times 60 = 7680\\).\n- **9120**: Forgets the internal order of the pair \\((2, 4)\\) and \\((4, 2)\\), calculating \\(10080 - 960 = 9120\\).\n- **2880**: Erroneously assumes that both digits \\(2\\) and \\(4\\) must be present in the number, omitting numbers where only one or neither of \\(2\\) and \\(4\\) is selected.</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول D — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example D — Permutations & Combinations (Easy Application)",
+          "ar": "مثال محلول D — التباديل والتوافيق (تطبيق Easy)"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 10x + 25 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ أو } x = 5 \\).</li><li>المجموع \\( = \\mathbf{10} \\) وحاصل الضرب \\( = \\mathbf{25} \\).</li></ol>"
+          "en": "<p><strong>Problem (Easy):</strong> Given that\n\\[\n{}^{n}\\mathrm{P}_{3} = 8\\,{}^{n}\\mathrm{C}_{2},\n\\]\nfind the value of the integer \\( n \\), where \\( n \\ge 3 \\).</p><p><strong>Step-by-Step Solution:</strong> By definition of permutations and combinations:\n\\[\n{}^{n}\\mathrm{P}_{3} = \\frac{n!}{(n-3)!} = n(n-1)(n-2)\n\\]\nand\n\\[\n{}^{n}\\mathrm{C}_{2} = \\frac{n!}{2!(n-2)!} = \\frac{n(n-1)}{2}.\n\\]\n\nSubstitute these expressions into the given equation:\n\\[\nn(n-1)(n-2) = 8 \\left(\\frac{n(n-1)}{2}\\right) = 4n(n-1).\n\\]\n\nSince \\( n \\ge 3 \\), \\( n(n-1) \\neq 0 \\). Dividing both sides by \\( n(n-1) \\) gives:\n\\[\nn - 2 = 4 \\implies n = 6.\n\\]\n\nCommon error:\nOmitting the factor of \\( 2! \\) in the denominator of \\( {}^{n}\\mathrm{C}_{2} \\) leads to \\( n - 2 = 8 \\implies n = 10 \\). <strong>Final Answer:</strong> \\( 6 \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Easy):</strong> Given that\n\\[\n{}^{n}\\mathrm{P}_{3} = 8\\,{}^{n}\\mathrm{C}_{2},\n\\]\nfind the value of the integer \\( n \\), where \\( n \\ge 3 \\).</p><p><strong>الحل خطوة بخطوة:</strong> By definition of permutations and combinations:\n\\[\n{}^{n}\\mathrm{P}_{3} = \\frac{n!}{(n-3)!} = n(n-1)(n-2)\n\\]\nand\n\\[\n{}^{n}\\mathrm{C}_{2} = \\frac{n!}{2!(n-2)!} = \\frac{n(n-1)}{2}.\n\\]\n\nSubstitute these expressions into the given equation:\n\\[\nn(n-1)(n-2) = 8 \\left(\\frac{n(n-1)}{2}\\right) = 4n(n-1).\n\\]\n\nSince \\( n \\ge 3 \\), \\( n(n-1) \\neq 0 \\). Dividing both sides by \\( n(n-1) \\) gives:\n\\[\nn - 2 = 4 \\implies n = 6.\n\\]\n\nCommon error:\nOmitting the factor of \\( 2! \\) in the denominator of \\( {}^{n}\\mathrm{C}_{2} \\) leads to \\( n - 2 = 8 \\implies n = 10 \\). <strong>الناتج النهائي:</strong> \\( 6 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Exam Traps — Permutations & Combinations",
+          "ar": "⚠️ أخطاء شائعة في الاختبار — التباديل والتوافيق"
+        },
+        "body": {
+          "en": "<p><strong>1. Confusing Mutually Exclusive with Independent Events:</strong> On Cambridge IGCSE Additional Mathematics (0606), if \\(A\\) and \\(B\\) have positive probabilities and are mutually exclusive (\\(P(A \\cap B) = 0\\)), they can <em>never</em> be independent (where \\(P(A \\cap B) = P(A)P(B) > 0\\)).</p><p><strong>2. Wrong Denominator in Two-Way Table Conditional Probability:</strong> In \"find the probability that a student who passed is a junior,\" the denominator is the total number of students who <em>passed</em>, not the grand total.</p>",
+          "ar": "<p><strong>1. الخلط بين الحدثين المتنافيين والحدثين المستقلين:</strong> الحدثان المتنافيان يحققان \\(P(A\\cap B)=0\\) بينما الحدثان المستقلان يحققان \\(P(A\\cap B)=P(A)P(B)\\).</p>"
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Permutations & Combinations)",
+          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (التباديل والتوافيق)"
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع للطالب"
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": "السبب الرياضي للخطأ"
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Using \\(P(A \\cap B) = 0\\) when told \\(A\\) and \\(B\\) are independent",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Confuses disjoint (mutually exclusive) events with statistically independent events.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "For independent events, multiply probabilities: \\(P(A \\cap B) = P(A)\\cdot P(B)\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Dividing by the grand total \\(N\\) when computing \\(P(A \\mid B)\\) from a table",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Computes the joint probability \\(P(A \\cap B)\\) instead of conditioning on subset \\(B\\).",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Restrict the denominator strictly to the row/column total of the given condition \\(B\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Using permutations \\({}^nP_r\\) when selecting a committee with no distinct roles",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Overcounts every group of size \\(r\\) by \\(r!\\) internal orderings.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Divide by \\(r!\\) to use combinations: \\(\\binom{n}{r} = \\frac{n!}{r!(n-r)!}\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Permutations & Combinations",
+          "ar": "▲ استراتيجية الحل السريع والتحقق — التباديل والتوافيق"
+        },
+        "body": {
+          "en": "<p><strong>Exam Strategy (Cambridge IGCSE Additional Mathematics (0606)):</strong> Whenever a probability problem involves \"at least one\" success across multiple trials, immediately use the Complement Rule: \\(P(\\text{at least one}) = 1 - P(\\text{none})\\). It turns a multi-case sum into a single calculation.</p>",
+          "ar": "<p><strong>مهارة الحل السريع:</strong> عند طلب احتمال «واحد على الأقل»، استخدم فوراً متممة الحدث: \\(P(\\text{واحد على الأقل}) = 1 - P(\\text{عدم وقوع أي منها})\\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example E — Permutations & Combinations (Hard Application)",
+          "ar": "مثال محلول E — التباديل والتوافيق (تطبيق Hard)"
+        },
+        "body": {
+          "en": "<p><strong>Problem (Hard):</strong> An arithmetic series \\( \\sum_{k=1}^{x} f_k \\) has first term \\( f_1 = 7 \\) and common difference \\( d = 18 \\). Find the partial sum \\( S_{8} \\) for \\( x = 8 \\).</p><p><strong>Step-by-Step Solution:</strong> Using \\( S_n = \\frac{n}{2}(2a_1 + (n - 1)d) \\), \\( S_{8} = \\frac{8}{2}(2(7) + 7(18)) = 560 \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Hard):</strong> An arithmetic series \\( \\sum_{k=1}^{x} f_k \\) has first term \\( f_1 = 7 \\) and common difference \\( d = 18 \\). Find the partial sum \\( S_{8} \\) for \\( x = 8 \\).</p><p><strong>الحل خطوة بخطوة:</strong> Using \\( S_n = \\frac{n}{2}(2a_1 + (n - 1)d) \\), \\( S_{8} = \\frac{8}{2}(2(7) + 7(18)) = 560 \\).</p>"
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Permutations & Combinations · Practice 1] If the governing relation for this system is \\( g(t) = 3t + 3 \\), evaluate \\( g(4) \\) and find the inverse input \\( t \\) when \\( g(t) = 18 \\).",
-          "ar": "[Permutations & Combinations · تدريب 1] إذا كانت العلاقة الحاكمة هي \\( g(t) = 3t + 3 \\)، فأوجد \\( g(4) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 18 \\)."
+          "en": "<strong>[Practice 1 · Medium]</strong> A group of \\( n \\) students, which includes Ali and Priya, are to be arranged in a straight line for a photograph. The number of different arrangements in which Ali and Priya are not standing next to each other is \\( 3600 \\). Find the value of the integer \\( n \\).",
+          "ar": "<strong>[تدريب 1 · Medium]</strong> A group of \\( n \\) students, which includes Ali and Priya, are to be arranged in a straight line for a photograph. The number of different arrangements in which Ali and Priya are not standing next to each other is \\( 3600 \\). Find the value of the integer \\( n \\)."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Permutations & Combinations</em> and start from \\( n \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( n \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( n \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( n \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 4 \\): \\( g(4) = 3(4) + 3 = \\mathbf{15} \\). Setting \\( 3t + 3 = 18 \\) gives \\( 3t = 15 \\implies t = \\mathbf{5} \\).",
-          "ar": "بالتعويض عن \\( t = 4 \\): \\( g(4) = 3(4) + 3 = \\mathbf{15} \\). وعندما \\( 3t + 3 = 18 \\) فإن \\( t = \\mathbf{5} \\)."
+          "en": "We can find the number of arrangements where Ali and Priya do not stand next to each other using the complementary method or the insertion (gap) method.\n\n**Method 1: Complementary Counting**\n1. The total number of unrestricted arrangements of the \\( n \\) students in a straight line is \\( n! \\).\n2. Consider the arrangements in which Ali and Priya *do* stand next to each other:\n   - Treat Ali and Priya as a single block. There are now \\( (n - 1) \\) entities to arrange, which can be done in \\( (n - 1)! \\) ways.\n   - Within the block, Ali and Priya can arrange themselves in \\( 2! = 2 \\) ways.\n   - So, the number of arrangements where they are together is \\( 2(n - 1)! \\).\n3. Subtracting this from the total gives the number of arrangements where they are separated:\n   \\[\n   n! - 2(n - 1)! = n(n - 1)! - 2(n - 1)! = (n - 2)(n - 1)!\n   \\]\n\n**Method 2: Gap Method**\n1. Arrange the other \\( n - 2 \\) students first, which gives \\( (n - 2)! \\) ways.\n2. This creates \\( (n - 2) + 1 = n - 1 \\) available spaces (including the ends).\n3. Placing Ali and Priya into two distinct spaces ensures they are not adjacent: \\( {}^{n-1}\\mathrm{P}_{2} = (n - 1)(n - 2) \\) ways.\n4. Total arrangements: \\( (n - 2)! \\times (n - 1)(n - 2) = (n - 2)(n - 1)! \\).\n\nEquating this to \\( 3600 \\):\n\\[\n(n - 2)(n - 1)! = 3600\n\\]\nTesting integer values for \\( n \\ge 3 \\):\n- For \\( n = 6 \\): \\( (6 - 2)(5!) = 4 \\times 120 = 480 \\)\n- For \\( n = 7 \\): \\( (7 - 2)(6!) = 5 \\times 720 = 3600 \\)\n- For \\( n = 8 \\): \\( (8 - 2)(7!) = 6 \\times 5040 = 30240 \\)\n\nThus, \\( n = 7 \\).\n\n*Common Misconception Trap:* Forgetting that Ali and Priya can switch places within their unit gives \\( n! - (n - 1)! = (n - 1)(n - 1)! \\), which fails to produce an integer solution among the options.",
+          "ar": "We can find the number of arrangements where Ali and Priya do not stand next to each other using the complementary method or the insertion (gap) method.\n\n**Method 1: Complementary Counting**\n1. The total number of unrestricted arrangements of the \\( n \\) students in a straight line is \\( n! \\).\n2. Consider the arrangements in which Ali and Priya *do* stand next to each other:\n   - Treat Ali and Priya as a single block. There are now \\( (n - 1) \\) entities to arrange, which can be done in \\( (n - 1)! \\) ways.\n   - Within the block, Ali and Priya can arrange themselves in \\( 2! = 2 \\) ways.\n   - So, the number of arrangements where they are together is \\( 2(n - 1)! \\).\n3. Subtracting this from the total gives the number of arrangements where they are separated:\n   \\[\n   n! - 2(n - 1)! = n(n - 1)! - 2(n - 1)! = (n - 2)(n - 1)!\n   \\]\n\n**Method 2: Gap Method**\n1. Arrange the other \\( n - 2 \\) students first, which gives \\( (n - 2)! \\) ways.\n2. This creates \\( (n - 2) + 1 = n - 1 \\) available spaces (including the ends).\n3. Placing Ali and Priya into two distinct spaces ensures they are not adjacent: \\( {}^{n-1}\\mathrm{P}_{2} = (n - 1)(n - 2) \\) ways.\n4. Total arrangements: \\( (n - 2)! \\times (n - 1)(n - 2) = (n - 2)(n - 1)! \\).\n\nEquating this to \\( 3600 \\):\n\\[\n(n - 2)(n - 1)! = 3600\n\\]\nTesting integer values for \\( n \\ge 3 \\):\n- For \\( n = 6 \\): \\( (6 - 2)(5!) = 4 \\times 120 = 480 \\)\n- For \\( n = 7 \\): \\( (7 - 2)(6!) = 5 \\times 720 = 3600 \\)\n- For \\( n = 8 \\): \\( (8 - 2)(7!) = 6 \\times 5040 = 30240 \\)\n\nThus, \\( n = 7 \\).\n\n*Common Misconception Trap:* Forgetting that Ali and Priya can switch places within their unit gives \\( n! - (n - 1)! = (n - 1)(n - 1)! \\), which fails to produce an integer solution among the options."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Permutations & Combinations · Practice 2] If the governing relation for this system is \\( g(t) = 4t + 4 \\), evaluate \\( g(6) \\) and find the inverse input \\( t \\) when \\( g(t) = 32 \\).",
-          "ar": "[Permutations & Combinations · تدريب 2] إذا كانت العلاقة الحاكمة هي \\( g(t) = 4t + 4 \\)، فأوجد \\( g(6) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 32 \\)."
+          "en": "<strong>[Practice 2 · Hard]</strong> Two parallel lines, \\( L_1 \\) and \\( L_2 \\), have \\( n \\) and \\( n + 2 \\) distinct points marked on them respectively, where \\( n \\) is an integer with \\( n \\ge 2 \\).\n\nTriangles are formed by choosing 3 of these points as vertices such that they are not collinear. Quadrilaterals are formed by choosing 4 of these points as vertices such that no three are collinear.\n\nGiven that the ratio of the number of quadrilaterals to the number of triangles that can be formed is \\( 6 : 5 \\), find the total number of triangles that can be formed.",
+          "ar": "<strong>[تدريب 2 · Hard]</strong> Two parallel lines, \\( L_1 \\) and \\( L_2 \\), have \\( n \\) and \\( n + 2 \\) distinct points marked on them respectively, where \\( n \\) is an integer with \\( n \\ge 2 \\).\n\nTriangles are formed by choosing 3 of these points as vertices such that they are not collinear. Quadrilaterals are formed by choosing 4 of these points as vertices such that no three are collinear.\n\nGiven that the ratio of the number of quadrilaterals to the number of triangles that can be formed is \\( 6 : 5 \\), find the total number of triangles that can be formed."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Permutations & Combinations</em> and start from \\( L_1 \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( L_1 \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( T \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( T \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). Setting \\( 4t + 4 = 32 \\) gives \\( 4t = 28 \\implies t = \\mathbf{7} \\).",
-          "ar": "بالتعويض عن \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). وعندما \\( 4t + 4 = 32 \\) فإن \\( t = \\mathbf{7} \\)."
+          "en": "1. **Determine the number of triangles, \\( T \\):**\nThree points form a triangle if and only if they are not all on the same straight line.\n- Case 1: 1 point from \\( L_1 \\) and 2 points from \\( L_2 \\):\n  \\[\n  \\binom{n}{1} \\binom{n+2}{2} = n \\cdot \\frac{(n+2)(n+1)}{2}\n  \\]\n- Case 2: 2 points from \\( L_1 \\) and 1 point from \\( L_2 \\):\n  \\[\n  \\binom{n}{2} \\binom{n+2}{1} = \\frac{n(n-1)}{2} \\cdot (n+2)\n  \\]\nSumming both cases:\n\\[\nT = \\frac{n(n+2)}{2} \\left[ (n+1) + (n-1) \\right] = \\frac{n(n+2)}{2} (2n) = n^2(n+2)\n\\]\n\n2. **Determine the number of quadrilaterals, \\( Q \\):**\nTo ensure no three vertices are collinear, exactly 2 points must be chosen from \\( L_1 \\) and 2 points from \\( L_2 \\):\n\\[\nQ = \\binom{n}{2} \\binom{n+2}{2} = \\frac{n(n-1)}{2} \\cdot \\frac{(n+2)(n+1)}{2} = \\frac{n(n-1)(n+1)(n+2)}{4}\n\\]\n\n3. **Use the given ratio to find \\( n \\):**\n\\[\n\\frac{Q}{T} = \\frac{\\frac{n(n-1)(n+1)(n+2)}{4}}{n^2(n+2)} = \\frac{(n-1)(n+1)}{4n} = \\frac{n^2 - 1}{4n}\n\\]\nSetting this equal to \\( \\frac{6}{5} \\):\n\\[\n\\frac{n^2 - 1}{4n} = \\frac{6}{5} \\implies 5(n^2 - 1) = 24n \\implies 5n^2 - 24n - 5 = 0\n\\]\nFactoring the quadratic:\n\\[\n(5n + 1)(n - 5) = 0\n\\]\nSince \\( n \\) must be a positive integer, \\( n = 5 \\).\n\n4. **Calculate the total number of triangles:**\n\\[\nT = 5^2(5 + 2) = 25 \\times 7 = 175\n\\]\n\n**Distractor Analysis:**\n- \\( 210 \\) is the number of quadrilaterals, \\( Q = \\frac{6}{5} \\times 175 = 210 \\).\n- \\( 220 \\) is \\( \\binom{12}{3} \\), which erroneously counts sets of 3 collinear points.\n- \\( 96 \\) is obtained from substituting \\( n = 4 \\) into \\( T \\). <strong>Answer:</strong> \\( 175 \\).",
+          "ar": "1. **Determine the number of triangles, \\( T \\):**\nThree points form a triangle if and only if they are not all on the same straight line.\n- Case 1: 1 point from \\( L_1 \\) and 2 points from \\( L_2 \\):\n  \\[\n  \\binom{n}{1} \\binom{n+2}{2} = n \\cdot \\frac{(n+2)(n+1)}{2}\n  \\]\n- Case 2: 2 points from \\( L_1 \\) and 1 point from \\( L_2 \\):\n  \\[\n  \\binom{n}{2} \\binom{n+2}{1} = \\frac{n(n-1)}{2} \\cdot (n+2)\n  \\]\nSumming both cases:\n\\[\nT = \\frac{n(n+2)}{2} \\left[ (n+1) + (n-1) \\right] = \\frac{n(n+2)}{2} (2n) = n^2(n+2)\n\\]\n\n2. **Determine the number of quadrilaterals, \\( Q \\):**\nTo ensure no three vertices are collinear, exactly 2 points must be chosen from \\( L_1 \\) and 2 points from \\( L_2 \\):\n\\[\nQ = \\binom{n}{2} \\binom{n+2}{2} = \\frac{n(n-1)}{2} \\cdot \\frac{(n+2)(n+1)}{2} = \\frac{n(n-1)(n+1)(n+2)}{4}\n\\]\n\n3. **Use the given ratio to find \\( n \\):**\n\\[\n\\frac{Q}{T} = \\frac{\\frac{n(n-1)(n+1)(n+2)}{4}}{n^2(n+2)} = \\frac{(n-1)(n+1)}{4n} = \\frac{n^2 - 1}{4n}\n\\]\nSetting this equal to \\( \\frac{6}{5} \\):\n\\[\n\\frac{n^2 - 1}{4n} = \\frac{6}{5} \\implies 5(n^2 - 1) = 24n \\implies 5n^2 - 24n - 5 = 0\n\\]\nFactoring the quadratic:\n\\[\n(5n + 1)(n - 5) = 0\n\\]\nSince \\( n \\) must be a positive integer, \\( n = 5 \\).\n\n4. **Calculate the total number of triangles:**\n\\[\nT = 5^2(5 + 2) = 25 \\times 7 = 175\n\\]\n\n**Distractor Analysis:**\n- \\( 210 \\) is the number of quadrilaterals, \\( Q = \\frac{6}{5} \\times 175 = 210 \\).\n- \\( 220 \\) is \\( \\binom{12}{3} \\), which erroneously counts sets of 3 collinear points.\n- \\( 96 \\) is obtained from substituting \\( n = 4 \\) into \\( T \\). <strong>الإجابة:</strong> \\( 175 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Permutations & Combinations · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
-          "ar": "[Permutations & Combinations · تدريب 3] إذا كانت العلاقة الحاكمة هي \\( g(t) = 5t + 5 \\)، فأوجد \\( g(8) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 50 \\)."
+          "en": "<strong>[Practice 3 · Easy]</strong> Given that \\({}^n\\text{P}_2 = \\dbinom{n}{3}\\), where \\(n\\) is an integer such that \\(n \\ge 3\\), find the value of \\(n\\).",
+          "ar": "<strong>[تدريب 3 · Easy]</strong> Given that \\({}^n\\text{P}_2 = \\dbinom{n}{3}\\), where \\(n\\) is an integer such that \\(n \\ge 3\\), find the value of \\(n\\)."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Permutations & Combinations</em> and start from \\({}^n\\text{P}_2 = \\dbinom{n}{3}\\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\({}^n\\text{P}_2 = \\dbinom{n}{3}\\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(n \\ge 3\\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\(n \\ge 3\\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": "بالتعويض عن \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). وعندما \\( 5t + 5 = 50 \\) فإن \\( t = \\mathbf{9} \\)."
+          "en": "Using the algebraic definitions of permutations and combinations:\n\\[\n{}^n\\text{P}_2 = \\frac{n!}{(n-2)!} = n(n-1)\n\\]\nand\n\\[\n\\binom{n}{3} = \\frac{n!}{3!(n-3)!} = \\frac{n(n-1)(n-2)}{3!} = \\frac{n(n-1)(n-2)}{6}\n\\]\nSetting them equal gives:\n\\[\nn(n-1) = \\frac{n(n-1)(n-2)}{6}\n\\]\nSince \\(n \\ge 3\\), \\(n(n-1) \\ne 0\\). Dividing both sides by \\(n(n-1)\\):\n\\[\n1 = \\frac{n-2}{6}\n\\]\nMultiplying by \\(6\\):\n\\[\n6 = n - 2 \\implies n = 8\n\\]\n\nCommon misconceptions:\n- Confusing \\(3!\\) with \\(3\\) leads to \\(n - 2 = 3 \\implies n = 5\\).\n- Forgetting the division by \\(3!\\) entirely treats the combination as a permutation \\({}^n\\text{P}_3\\), yielding \\(n - 2 = 1 \\implies n = 3\\).\n- Misinterpreting \\(n - 2 = 6\\) by taking the coefficient directly yields \\(n = 6\\). <strong>Answer:</strong> \\(8\\).",
+          "ar": "Using the algebraic definitions of permutations and combinations:\n\\[\n{}^n\\text{P}_2 = \\frac{n!}{(n-2)!} = n(n-1)\n\\]\nand\n\\[\n\\binom{n}{3} = \\frac{n!}{3!(n-3)!} = \\frac{n(n-1)(n-2)}{3!} = \\frac{n(n-1)(n-2)}{6}\n\\]\nSetting them equal gives:\n\\[\nn(n-1) = \\frac{n(n-1)(n-2)}{6}\n\\]\nSince \\(n \\ge 3\\), \\(n(n-1) \\ne 0\\). Dividing both sides by \\(n(n-1)\\):\n\\[\n1 = \\frac{n-2}{6}\n\\]\nMultiplying by \\(6\\):\n\\[\n6 = n - 2 \\implies n = 8\n\\]\n\nCommon misconceptions:\n- Confusing \\(3!\\) with \\(3\\) leads to \\(n - 2 = 3 \\implies n = 5\\).\n- Forgetting the division by \\(3!\\) entirely treats the combination as a permutation \\({}^n\\text{P}_3\\), yielding \\(n - 2 = 1 \\implies n = 3\\).\n- Misinterpreting \\(n - 2 = 6\\) by taking the coefficient directly yields \\(n = 6\\). <strong>الإجابة:</strong> \\(8\\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Permutations & Combinations · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": "[Permutations & Combinations · تدريب 4] إذا كانت العلاقة الحاكمة هي \\( g(t) = 6t + 6 \\)، فأوجد \\( g(10) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 72 \\)."
+          "en": "<strong>[Practice 4 · Medium]</strong> A committee of 4 people is to be chosen from \\( 5 \\) men and \\( 4 \\) women. How many committees consist of exactly 2 men and 2 women?",
+          "ar": "<strong>[تدريب 4 · Medium]</strong> A committee of 4 people is to be chosen from \\( 5 \\) men and \\( 4 \\) women. How many committees consist of exactly 2 men and 2 women?"
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Permutations & Combinations</em> and start from \\( 5 \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( 5 \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> اعزل المتغير المطلوب خطوة بخطوة وبسّط الحدود المتشابهة قبل التعويض النهائي."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
-          "ar": "بالتعويض عن \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). وعندما \\( 6t + 6 = 72 \\) فإن \\( t = \\mathbf{11} \\)."
+          "en": "\\( \\binom{5}{2} \\times \\binom{4}{2} = \\frac{5\\times4}{2} \\times \\frac{4\\times3}{2} = 60 \\).",
+          "ar": "\\( \\binom{5}{2} \\times \\binom{4}{2} = \\frac{5\\times4}{2} \\times \\frac{4\\times3}{2} = 60 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 5 · Easy]</strong> A geometric progression \\( (f_{x}) \\) has initial term \\( f_1 = 12 \\) and common ratio \\( r = 2 \\). Find the fifth term \\( f_5 \\).",
+          "ar": "<strong>[تدريب 5 · Easy]</strong> A geometric progression \\( (f_{x}) \\) has initial term \\( f_1 = 12 \\) and common ratio \\( r = 2 \\). Find the fifth term \\( f_5 \\)."
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Permutations & Combinations</em> and start from \\( (f_{x}) \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( (f_{x}) \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( f_5 = f_1 r^4 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( f_5 = f_1 r^4 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
+        "solution": {
+          "en": "Using \\( f_5 = f_1 r^4 \\), we get \\( 12 \\times 16 = 192 \\).",
+          "ar": "Using \\( f_5 = f_1 r^4 \\), we get \\( 12 \\times 16 = 192 \\)."
         }
       }
     ]

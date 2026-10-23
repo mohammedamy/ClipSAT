@@ -78,47 +78,54 @@
         ]
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Logarithms, Exponentials & Straight-Line Reduction",
+          "ar": "● الفهم المفاهيمي العميق — اللوغاريتمات والدوال الأسية والتحويل للخط المستقيم"
+        },
+        "body": {
+          "en": "<p><strong>Domain Restrictions, Invertibility &amp; Asymptotic Behavior:</strong> An algebraic or transcendental function \\(f: D \\to R\\) possesses an inverse \\(f^{-1}: R \\to D\\) if and only if \\(f\\) is strictly one-to-one (bijective) on \\(D\\), guaranteeing that \\(\\text{dom}(f^{-1}) = \\text{ran}(f)\\) and \\(\\text{ran}(f^{-1}) = \\text{dom}(f)\\). For logarithmic and radical equations, every algebraic step that squares both sides or combines logs (\\(\\log_b u + \\log_b v = \\log_b(uv)\\)) can enlarge the solution set, requiring a final domain check against the original equation.</p>",
+          "ar": "<p><strong>قيود المجال والدالة العكسية:</strong> تمتلك الدالة \\(f\\) معكوساً \\(f^{-1}\\) إذا وفقط إذا كانت متباينة (واحد لواحد)، ويكون مجال \\(f^{-1}\\) هو مدى \\(f\\) تماماً.</p>"
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Logarithms, Exponentials & Straight-Line Reduction — Coordinate Curve & Tangent Analysis (2)",
+          "title": "Logarithms, Exponentials & Straight-Line Reduction — Function Curve & Symmetry Analysis",
           "xrange": [
             -4,
-            4
+            6
           ],
           "yrange": [
-            -3,
-            9
+            -4,
+            6
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "(x - 1)*(x - 1) - 3",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "label": "f(x) = (x-1)² - 3"
             },
             {
-              "fn": "2*x - 3",
+              "fn": "x",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "label": "y = x"
             }
           ],
           "points": [
             {
               "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "y": -3,
+              "label": "Vertex (1, -3)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
-          "ar": "التمثيل البياني للدالة f(x) = x² − 2 ومماسها عند x = 1."
+          "en": "Parabola f(x) = (x − 1)² − 3 with vertex at (1, −3) and symmetry reference line y = x.",
+          "ar": "تمثيل هندسي وبياني يوضح العلاقات الأساسية في درس اللوغاريتمات والدوال الأسية والتحويل للخط المستقيم."
         }
       },
       {
@@ -224,44 +231,23 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Logarithms, Exponentials & Straight-Line Reduction — Coordinate Curve & Tangent Analysis (1)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
           "fns": [
             {
-              "fn": "x*x - 1",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 1"
-            },
-            {
-              "fn": "2*x - 2",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "fn": "-x^2 + 4*x - 2"
             }
           ],
-          "points": [
-            {
-              "x": 1,
-              "y": 0,
-              "label": "(1, 0)"
-            },
-            {
-              "x": 0,
-              "y": -1,
-              "label": "(0, -1)"
-            }
+          "xlim": [
+            0,
+            4
+          ],
+          "ylim": [
+            -4,
+            5
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 1 and its instantaneous tangent line at x = 1.",
-          "ar": "التمثيل البياني للدالة f(x) = x² − 1 ومماسها عند x = 1."
+          "en": "Logarithms, Exponentials & Straight-Line Reduction — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Logarithms, Exponentials & Straight-Line Reduction.",
+          "ar": "رسم توضيحي يبيّن العلاقات الرياضية والهندسية في درس اللوغاريتمات والدوال الأسية والتحويل للخط المستقيم."
         }
       },
       {
@@ -274,6 +260,18 @@
         "body": {
           "en": "1. <strong>Exponential Relationship \\( y = ab^x \\):</strong><br>Take natural logs of both sides: \\( \\ln y = \\ln(a \\cdot b^x) = \\ln a + x \\ln b \\).<br>In \\( Y = mX + c \\) form: \\( Y = \\ln y \\), \\( X = x \\), gradient \\( m = \\ln b \\implies b = e^m \\), and intercept \\( c = \\ln a \\implies a = e^c \\).<br><br>2. <strong>Power Relationship \\( y = Ax^n \\):</strong><br>\\( \\ln y = \\ln A + n \\ln x \\).<br>Here: \\( Y = \\ln y \\), \\( X = \\ln x \\), gradient \\( m = n \\), and intercept \\( c = \\ln A \\implies A = e^c \\).",
           "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Logarithms, Exponentials & Straight-Line Reduction)",
+          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (اللوغاريتمات والدوال الأسية والتحويل للخط المستقيم)"
+        },
+        "body": {
+          "en": "<p><strong>Why Completing the Square &amp; Log-Linearization Work:</strong> Any quadratic \\(f(x) = ax^2 + bx + c\\) (\\(a \\ne 0\\)) can be rewritten by factoring \\(a\\) from the first two terms and adding/subtracting \\((b/2a)^2\\):</p>\\[ ax^2 + bx + c = a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\]<p>Because \\(\\left(x + \\frac{b}{2a}\\right)^2 \\ge 0\\) for all \\(x \\in \\mathbb{R}\\), the extreme value \\(k = c - \\frac{b^2}{4a}\\) is attained uniquely at the axis of symmetry \\(x = -\\frac{b}{2a}\\), restricting the range to \\([k, \\infty)\\) (if \\(a > 0\\)) and making \\(f\\) invertible on \\(x \\ge -\\frac{b}{2a}\\). Similarly, applying \\(\\ln\\) to power laws \\(y = ax^n\\) yields \\(\\ln y = n\\ln x + \\ln a\\), transforming a nonlinear curve into a straight line of gradient \\(n\\).</p>",
+          "ar": "<p><strong>برهان إكمال المربع وتحديد المدى:</strong> بكتابة \\(ax^2+bx+c = a(x+\\frac{b}{2a})^2 + (c-\\frac{b^2}{4a})\\) وبما أن المربع الكامل غير سالب دائماً، يتحدد رأس القطع ومدى الدالة بدقة.</p>"
         }
       },
       {
@@ -292,80 +290,250 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example B — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول B — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example B — Logarithms, Exponentials & Straight-Line Reduction (Hard Application)",
+          "ar": "مثال محلول B — اللوغاريتمات والدوال الأسية والتحويل للخط المستقيم (تطبيق Hard)"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 9x + 18 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 3)(x - 6) = 0 \\implies x = 3 \\text{ or } x = 6 \\).</li><li>Check Vieta's formulas: sum \\( = 3 + 6 = \\mathbf{9} \\) and product \\( = (3)(6) = \\mathbf{18} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 9x + 18 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 3)(x - 6) = 0 \\implies x = 3 \\text{ أو } x = 6 \\).</li><li>المجموع \\( = \\mathbf{9} \\) وحاصل الضرب \\( = \\mathbf{18} \\).</li></ol>"
+          "en": "<p><strong>Problem (Hard):</strong> The polynomial identity \\( (6x + 1)(x + 10) = 6x^2 + fx + 10 \\) holds for all \\( x \\). Find the linear coefficient \\( f \\).</p><p><strong>Step-by-Step Solution:</strong> Expanding the product gives \\( f = 6\\cdot 10 + 1 = 61 \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Hard):</strong> The polynomial identity \\( (6x + 1)(x + 10) = 6x^2 + fx + 10 \\) holds for all \\( x \\). Find the linear coefficient \\( f \\).</p><p><strong>الحل خطوة بخطوة:</strong> Expanding the product gives \\( f = 6\\cdot 10 + 1 = 61 \\).</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول C — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example C — Logarithms, Exponentials & Straight-Line Reduction (Easy Application)",
+          "ar": "مثال محلول C — اللوغاريتمات والدوال الأسية والتحويل للخط المستقيم (تطبيق Easy)"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 13x + 36 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ أو } x = 9 \\).</li><li>المجموع \\( = \\mathbf{13} \\) وحاصل الضرب \\( = \\mathbf{36} \\).</li></ol>"
+          "en": "<p><strong>Problem (Easy):</strong> The graph of the quadratic function \\( f(x) = (x - 5)(x + 8) \\) intersects the horizontal axis at two points. Find the distance \\( d_{AB} \\) between the two intercepts of \\( f(x) \\).</p><p><strong>Step-by-Step Solution:</strong> The intercepts are at \\( 5 \\) and \\( -8 \\), separated by distance \\( 5 - (-8) = 13 \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Easy):</strong> The graph of the quadratic function \\( f(x) = (x - 5)(x + 8) \\) intersects the horizontal axis at two points. Find the distance \\( d_{AB} \\) between the two intercepts of \\( f(x) \\).</p><p><strong>الحل خطوة بخطوة:</strong> The intercepts are at \\( 5 \\) and \\( -8 \\), separated by distance \\( 5 - (-8) = 13 \\).</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول D — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example D — Logarithms, Exponentials & Straight-Line Reduction (Medium Application)",
+          "ar": "مثال محلول D — اللوغاريتمات والدوال الأسية والتحويل للخط المستقيم (تطبيق Medium)"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 10x + 25 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ أو } x = 5 \\).</li><li>المجموع \\( = \\mathbf{10} \\) وحاصل الضرب \\( = \\mathbf{25} \\).</li></ol>"
+          "en": "<p><strong>Problem (Medium):</strong> Solve the simultaneous system: \\( \\log_2(x) - \\log_2(y) = 2 \\) and \\( x - 3y = 3 \\). What is the value of \\( x \\)?</p><p><strong>Step-by-Step Solution:</strong> From the first equation: \\( \\log_2(x/y) = 2 \\implies x/y = 2^2 = 4 \\implies x = 4y \\). Substitute into second: \\( 4y - 3y = 3 \\implies y = 3 \\). Thus \\( x = 4(3) = 12 \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Medium):</strong> Solve the simultaneous system: \\( \\log_2(x) - \\log_2(y) = 2 \\) and \\( x - 3y = 3 \\). What is the value of \\( x \\)?</p><p><strong>الحل خطوة بخطوة:</strong> From the first equation: \\( \\log_2(x/y) = 2 \\implies x/y = 2^2 = 4 \\implies x = 4y \\). Substitute into second: \\( 4y - 3y = 3 \\implies y = 3 \\). Thus \\( x = 4(3) = 12 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Exam Traps — Logarithms, Exponentials & Straight-Line Reduction",
+          "ar": "⚠️ أخطاء شائعة في الاختبار — اللوغاريتمات والدوال الأسية والتحويل للخط المستقيم"
+        },
+        "body": {
+          "en": "<p><strong>1. Extraneous Roots in Logarithmic &amp; Radical Equations:</strong> On Cambridge IGCSE Additional Mathematics (0606), solving \\(\\log_2(x) + \\log_2(x - 3) = 6\\) or \\(\\sqrt{x + 6} = x - 1\\) produces two quadratic roots, one of which makes the original log argument \\(\\le 0\\) or the RHS of the square root negative. Failing to reject the extraneous root costs the final accuracy mark.</p><p><strong>2. Confusing Removable Holes with Vertical Asymptotes:</strong> If \\((x - 3)\\) cancels from both numerator and denominator of \\(R(x)\\), then \\(x = 3\\) is a <em>removable hole</em> (point discontinuity), not a vertical asymptote.</p>",
+          "ar": "<p><strong>1. الجذور الدخيلة في المعادلات اللوغاريتمية والجذرية:</strong> يجب دائماً التعويض بالجذور الناتجة في المعادلة الأصلية واستبعاد أي جذر يجعل ما داخل اللوغاريتم سالباً أو صفراً.</p>"
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Logarithms, Exponentials & Straight-Line Reduction)",
+          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (اللوغاريتمات والدوال الأسية والتحويل للخط المستقيم)"
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع للطالب"
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": "السبب الرياضي للخطأ"
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Expanding \\(\\ln(x + y)\\) as \\(\\ln x + \\ln y\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Confuses the product law \\(\\ln(xy) = \\ln x + \\ln y\\) with a non-existent sum rule.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Only factor products, quotients, and powers inside logarithms: \\(\\ln(xy) = \\ln x + \\ln y\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Keeping both roots of \\(\\sqrt{2x+6} = x - 1\\) without checking \\(x - 1 \\ge 0\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Squaring both sides loses the sign of \\(x - {r}\\), introducing roots where \\(\\sqrt{\\cdot} = -\\text{number}\\).",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Enforce the range condition \\(x \\ge 1\\) before or after squaring.",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Restricting domain of \\(f(x) = (x-3)^2 + 1\\) to \\(x \\ge 0\\) for invertibility",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "The vertex is at \\(x = 3\\), so \\(f(2) = f(4) = 2\\) fails the horizontal line test on \\(x \\ge 0\\).",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Restrict the domain at the vertex axis of symmetry: \\(x \\ge 3\\) (or \\(x \\le 3\\)).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Logarithms, Exponentials & Straight-Line Reduction",
+          "ar": "▲ استراتيجية الحل السريع والتحقق — اللوغاريتمات والدوال الأسية والتحويل للخط المستقيم"
+        },
+        "body": {
+          "en": "<p><strong>Fast Exam Check (Cambridge IGCSE Additional Mathematics (0606)):</strong> To verify an inverse function \\(f^{-1}(x)\\) in 5 seconds, pick a simple input \\(x_0\\), compute \\(y_0 = f(x_0)\\), and check that \\(f^{-1}(y_0) = x_0\\). Also verify that the graph of \\(y = f^{-1}(x)\\) reflects \\(y = f(x)\\) across \\(y = x\\).</p>",
+          "ar": "<p><strong>فحص سريع للدالة العكسية:</strong> اختر عدداً بسيطاً \\(x_0\\) واحسب \\(y_0 = f(x_0)\\) ثم تأكد من أن تعويض \\(y_0\\) في \\(f^{-1}\\) يعيد \\(x_0\\) نفسه.</p>"
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Logarithms, Exponentials & Straight-Line Reduction · Practice 1] If the governing relation for this system is \\( g(t) = 3t + 3 \\), evaluate \\( g(4) \\) and find the inverse input \\( t \\) when \\( g(t) = 18 \\).",
-          "ar": "[Logarithms, Exponentials & Straight-Line Reduction · تدريب 1] إذا كانت العلاقة الحاكمة هي \\( g(t) = 3t + 3 \\)، فأوجد \\( g(4) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 18 \\)."
+          "en": "<strong>[Practice 1 · Hard]</strong> Real numbers \\( x \\) and \\( y \\) satisfy \\( x + y = 22 \\) and \\( xy = 105 \\). Find the squared difference \\( f = (x - y)^2 \\).",
+          "ar": "<strong>[تدريب 1 · Hard]</strong> Real numbers \\( x \\) and \\( y \\) satisfy \\( x + y = 22 \\) and \\( xy = 105 \\). Find the squared difference \\( f = (x - y)^2 \\)."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Logarithms, Exponentials & Straight-Line Reduction</em> and start from \\( x \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( x \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( (x - y)^2 = (x + y)^2 - 4xy \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( (x - y)^2 = (x + y)^2 - 4xy \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 4 \\): \\( g(4) = 3(4) + 3 = \\mathbf{15} \\). Setting \\( 3t + 3 = 18 \\) gives \\( 3t = 15 \\implies t = \\mathbf{5} \\).",
-          "ar": "بالتعويض عن \\( t = 4 \\): \\( g(4) = 3(4) + 3 = \\mathbf{15} \\). وعندما \\( 3t + 3 = 18 \\) فإن \\( t = \\mathbf{5} \\)."
+          "en": "Using \\( (x - y)^2 = (x + y)^2 - 4xy \\), we get \\( 484 - 4(105) = 64 \\).",
+          "ar": "Using \\( (x - y)^2 = (x + y)^2 - 4xy \\), we get \\( 484 - 4(105) = 64 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Logarithms, Exponentials & Straight-Line Reduction · Practice 2] If the governing relation for this system is \\( g(t) = 4t + 4 \\), evaluate \\( g(6) \\) and find the inverse input \\( t \\) when \\( g(t) = 32 \\).",
-          "ar": "[Logarithms, Exponentials & Straight-Line Reduction · تدريب 2] إذا كانت العلاقة الحاكمة هي \\( g(t) = 4t + 4 \\)، فأوجد \\( g(6) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 32 \\)."
+          "en": "<strong>[Practice 2 · Easy]</strong> In the partial fraction identity \\( \\dfrac{3}{(x - 10)(x - 11)} = \\dfrac{f}{x - 11} - \\dfrac{g}{x - 10} \\), \\( f \\) and \\( g \\) are constants. Find the sum \\( f + g \\).",
+          "ar": "<strong>[تدريب 2 · Easy]</strong> In the partial fraction identity \\( \\dfrac{3}{(x - 10)(x - 11)} = \\dfrac{f}{x - 11} - \\dfrac{g}{x - 10} \\), \\( f \\) and \\( g \\) are constants. Find the sum \\( f + g \\)."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Logarithms, Exponentials & Straight-Line Reduction</em> and start from \\( \\dfrac{3}{(x - 10)(x - 11)} = \\dfrac{f}{x - 11} - \\dfrac{g}{x - 10} \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( \\dfrac{3}{(x - 10)(x - 11)} = \\dfrac{f}{x - 11} - \\dfrac{g}{x - 10} \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( f = 3 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( f = 3 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). Setting \\( 4t + 4 = 32 \\) gives \\( 4t = 28 \\implies t = \\mathbf{7} \\).",
-          "ar": "بالتعويض عن \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). وعندما \\( 4t + 4 = 32 \\) فإن \\( t = \\mathbf{7} \\)."
+          "en": "Matching numerators gives \\( f = 3 \\) and \\( g = 3 \\), so \\( f + g = 6 \\).",
+          "ar": "Matching numerators gives \\( f = 3 \\) and \\( g = 3 \\), so \\( f + g = 6 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Logarithms, Exponentials & Straight-Line Reduction · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
-          "ar": "[Logarithms, Exponentials & Straight-Line Reduction · تدريب 3] إذا كانت العلاقة الحاكمة هي \\( g(t) = 5t + 5 \\)، فأوجد \\( g(8) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 50 \\)."
+          "en": "<strong>[Practice 3 · Medium]</strong> A discrete exponential function satisfies \\( f(x) = 30 \\cdot 3^{x} \\) for non-negative integers \\( x \\). Find the value \\( f(3) \\).",
+          "ar": "<strong>[تدريب 3 · Medium]</strong> A discrete exponential function satisfies \\( f(x) = 30 \\cdot 3^{x} \\) for non-negative integers \\( x \\). Find the value \\( f(3) \\)."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Logarithms, Exponentials & Straight-Line Reduction</em> and start from \\( f(x) = 30 \\cdot 3^{x} \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( f(x) = 30 \\cdot 3^{x} \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( x = 3 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( x = 3 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": "بالتعويض عن \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). وعندما \\( 5t + 5 = 50 \\) فإن \\( t = \\mathbf{9} \\)."
+          "en": "At \\( x = 3 \\), \\( f(3) = 30 \\times 27 = 810 \\).",
+          "ar": "At \\( x = 3 \\), \\( f(3) = 30 \\times 27 = 810 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Logarithms, Exponentials & Straight-Line Reduction · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": "[Logarithms, Exponentials & Straight-Line Reduction · تدريب 4] إذا كانت العلاقة الحاكمة هي \\( g(t) = 6t + 6 \\)، فأوجد \\( g(10) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 72 \\)."
+          "en": "<strong>[Practice 4 · Hard]</strong> The quadratic equation \\( t^2 - 23t + 102 = 0 \\) has roots \\( \\alpha \\) and \\( \\beta \\). Find the symmetric sum \\( p = \\alpha^2 + \\beta^2 \\).",
+          "ar": "<strong>[تدريب 4 · Hard]</strong> The quadratic equation \\( t^2 - 23t + 102 = 0 \\) has roots \\( \\alpha \\) and \\( \\beta \\). Find the symmetric sum \\( p = \\alpha^2 + \\beta^2 \\)."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Logarithms, Exponentials & Straight-Line Reduction</em> and start from \\( t^2 - 23t + 102 = 0 \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( t^2 - 23t + 102 = 0 \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\alpha + \\beta = 23 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( \\alpha + \\beta = 23 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
-          "ar": "بالتعويض عن \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). وعندما \\( 6t + 6 = 72 \\) فإن \\( t = \\mathbf{11} \\)."
+          "en": "By Vieta's formulas, \\( \\alpha + \\beta = 23 \\) and \\( \\alpha\\beta = 102 \\). Thus \\( \\alpha^2 + \\beta^2 = 529 - 2(102) = 325 \\).",
+          "ar": "By Vieta's formulas, \\( \\alpha + \\beta = 23 \\) and \\( \\alpha\\beta = 102 \\). Thus \\( \\alpha^2 + \\beta^2 = 529 - 2(102) = 325 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 5 · Easy]</strong> In the plane, a parabola is given by \\( p(t) = 5(t - 10)^2 + 15 \\). Find the vertical intercept \\( p(0) \\).",
+          "ar": "<strong>[تدريب 5 · Easy]</strong> In the plane, a parabola is given by \\( p(t) = 5(t - 10)^2 + 15 \\). Find the vertical intercept \\( p(0) \\)."
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Logarithms, Exponentials & Straight-Line Reduction</em> and start from \\( p(t) = 5(t - 10)^2 + 15 \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( p(t) = 5(t - 10)^2 + 15 \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( t = 0 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( t = 0 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
+        "solution": {
+          "en": "Setting \\( t = 0 \\) gives \\( p(0) = 5(-10)^2 + 15 = 515 \\).",
+          "ar": "Setting \\( t = 0 \\) gives \\( p(0) = 5(-10)^2 + 15 = 515 \\)."
         }
       }
     ]

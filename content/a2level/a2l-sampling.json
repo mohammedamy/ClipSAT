@@ -63,46 +63,37 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Sampling &amp; Estimation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Probabilistic Normalization &amp; Moment Structure:</strong> Every probability model is governed by total probability conservation: \\(\\sum_x P(X=x) = 1\\) for discrete random variables and \\(\\int_{-\\infty}^{\\infty} f(x)\\,dx = 1\\) (with \\(f(x) \\ge 0\\)) for continuous density functions. Expected value \\(\\mathbb{E}[X]\\) acts as a linear operator (\\(\\mathbb{E}[aX + bY] = a\\mathbb{E}[X] + b\\mathbb{E}[Y]\\)), whereas variance scales quadratically and adds for independent variables: \\(\\operatorname{Var}(aX \\pm bY) = a^2\\operatorname{Var}(X) + b^2\\operatorname{Var}(Y)\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Sampling &amp; Estimation — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
+          "type": "normal_curve",
+          "title": "Sampling &amp; Estimation — Standardized Normal Density & Tail Area",
+          "mean": 0,
+          "sd": 1,
+          "shade": {
+            "from": 1.28,
+            "to": 3.5
+          },
+          "vlines": [
             {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "x": 1.28,
+              "label": "z = 1.28"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Standard normal density curve N(0, 1) highlighting critical upper-tail probability region P(Z ≥ 1.28) ≈ 0.1003.",
           "ar": null
         }
       },
@@ -252,6 +243,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Sampling &amp; Estimation)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Variance Scales as \\(a^2\\) and Independent Variances Always Add:</strong> By definition, \\(\\operatorname{Var}(Y) = \\mathbb{E}[(Y - \\mu_Y)^2]\\). For \\(Y = aX - bW\\) with independent \\(X, W\\), subtracting its mean \\(\\mu_Y = a\\mu_X - b\\mu_W\\) gives:</p>\\[ \\operatorname{Var}(aX - bW) = \\mathbb{E}\\!\\left[(a(X - \\mu_X) - b(W - \\mu_W))^2\\right] = a^2\\mathbb{E}[(X-\\mu_X)^2] - 2ab\\,\\operatorname{Cov}(X,W) + b^2\\mathbb{E}[(W-\\mu_W)^2] \\]<p>Because independence implies \\(\\operatorname{Cov}(X, W) = 0\\), the cross term vanishes and \\((-b)^2 = +b^2\\), proving \\(\\operatorname{Var}(aX - bW) = a^2\\operatorname{Var}(X) + b^2\\operatorname{Var}(W)\\). Uncertainty compounds whether random variables are added or subtracted.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example — Confidence interval",
@@ -278,11 +281,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example C — Sampling &amp; Estimation (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> The box plot for dataset \\( H \\) has quartiles \\( Q_1 = 19 \\), median \\( M = 33 \\), and \\( Q_3 = 46 \\). Work out the interquartile range \\( y = Q_3 - Q_1 \\) of \\( H \\).</p><p><strong>Step-by-Step Solution:</strong> The interquartile range is \\( Q_3 - Q_1 = 46 - 19 = 27 \\).</p>",
           "ar": null
         }
       },
@@ -290,11 +293,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example D — Sampling &amp; Estimation (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> For finite sets \\( E \\) and \\( F \\), \\( |E| = 52 \\), \\( |F| = 58 \\), and \\( |E \\cap F| = 28 \\). Work out the union cardinality \\( y = |E \\cup F| \\).</p><p><strong>Step-by-Step Solution:</strong> By Inclusion-Exclusion, \\( |E \\cup F| = 52 + 58 - 28 = 82 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Sampling &amp; Estimation)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Writing \\(\\operatorname{Var}(X - Y) = \\sigma_X^2 - \\sigma_Y^2\\)",
+              "ar": null
+            },
+            {
+              "en": "Produces smaller or even negative variance for the difference of independent variables.",
+              "ar": null
+            },
+            {
+              "en": "Always add variances of independent variables: \\(\\sigma_{X-Y}^2 = \\sigma_X^2 + \\sigma_Y^2\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using \\(\\sigma / n\\) instead of \\(\\sigma / \\sqrt{n}\\) for \\(\\bar{X}\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses the variance of the sample mean \\(\\sigma^2/n\\) with its standard error.",
+              "ar": null
+            },
+            {
+              "en": "Take the square root: \\(\\text{SE}(\\bar{X}) = \\sigma / \\sqrt{n}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Accepting \\(H_0\\) with certainty when \\(p > \\alpha\\)",
+              "ar": null
+            },
+            {
+              "en": "Absence of sufficient evidence against \\(H_0\\) does not prove \\(H_0\\) is true.",
+              "ar": null
+            },
+            {
+              "en": "Write in context: \"There is insufficient evidence at the \\(\\alpha\\) level to reject \\(H_0\\).\"",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Sampling &amp; Estimation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Marking Tip (Cambridge International A Level (9709 Paper 3 / Paper 6)):</strong> Always state the distribution parameters explicitly (e.g., \\(X \\sim \\operatorname{N}(\\mu, \\sigma^2)\\) or \\(\\bar{X} \\sim \\operatorname{N}(\\mu, \\sigma^2/n)\\)) and sketch a quick shaded bell curve before standardizing to \\(z = \\dfrac{x - \\mu}{\\sigma}\\). This secures the method mark even if a rounding slip occurs later.</p>",
           "ar": null
         }
       },
@@ -307,7 +387,21 @@
         "solution": {
           "en": "\\(142\\pm2.576\\cdot\\dfrac{20}{\\sqrt{100}}=142\\pm5.15=(136.85,\\,147.15)\\). \"99% confidence\" means: if this process were repeated many times, 99% of the intervals produced would contain the true \\(\\mu\\).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sampling &amp; Estimation</em> and start from \\(\\sigma=20\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(142\\pm2.576\\cdot\\dfrac{20}{\\sqrt{100}}=142\\pm5.15=(136.85,\\,147.15)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "figure",
@@ -347,6 +441,70 @@
         "solution": {
           "en": "<p>(a) Sample mean:</p>\\[\\bar{x} = \\frac{5090}{50} = 101.8\\text{ g}\\]<p>Unbiased sample variance:</p>\\[s^2 = \\frac{1}{50 - 1}\\left(518380 - 50(101.8)^2\\right) = \\frac{1}{49}(518380 - 518162) = \\frac{218}{49} \\approx 4.449\\text{ g}^2\\]<p>(b) Standard error: \\(\\text{SE} = \\sqrt{\\frac{s^2}{n}} = \\sqrt{\\frac{4.449}{50}} \\approx 0.2983\\).</p>\\[\\bar{x} \\pm 1.96(0.2983) = 101.8 \\pm 0.585 = (101.2,\\; 102.4)\\text{ g (1 d.p.)}\\]",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sampling &amp; Estimation</em> and start from \\(x\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\bar{x} = \\frac{5090}{50} = 101.8\\text{ g}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Hard]</strong> A sample of size 7 gives values: 1, 12, 27, 22, 29, 3, 21. Find the sample mean \\( \\bar{x} \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sampling &amp; Estimation</em> and start from \\( \\bar{x} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\bar{x}=\\dfrac{\\sum x}{n}=\\dfrac{115}{7}=\\dfrac{115}{7} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "\\( \\bar{x}=\\dfrac{\\sum x}{n}=\\dfrac{115}{7}=\\dfrac{115}{7} \\). <strong>Answer:</strong> \\(\\dfrac{115}{7}\\).",
+          "ar": null
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 4 · Easy]</strong> A normal random variable \\( H \\sim \\mathcal{N}(\\mu = 48, \\sigma^2 = 64) \\) is observed at \\( y = 72 \\). Work out the standardized score \\( z = (y - \\mu)/\\sigma \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sampling &amp; Estimation</em> and start from \\( H \\sim \\mathcal{N}(\\mu = 48, \\sigma^2 = 64) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( z \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "The \\( z \\)-score is \\( \\frac{72 - 48}{8} = 3 \\).",
+          "ar": null
         }
       },
       {
@@ -358,28 +516,6 @@
             "trackId": "a2level"
           }
         ]
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Sampling &amp; Estimation · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Sampling &amp; Estimation · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
-          "ar": null
-        }
       }
     ]
   },

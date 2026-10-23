@@ -41,46 +41,53 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Functions & Graphs",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Domain Restrictions, Invertibility &amp; Asymptotic Behavior:</strong> An algebraic or transcendental function \\(f: D \\to R\\) possesses an inverse \\(f^{-1}: R \\to D\\) if and only if \\(f\\) is strictly one-to-one (bijective) on \\(D\\), guaranteeing that \\(\\text{dom}(f^{-1}) = \\text{ran}(f)\\) and \\(\\text{ran}(f^{-1}) = \\text{dom}(f)\\). For logarithmic and radical equations, every algebraic step that squares both sides or combines logs (\\(\\log_b u + \\log_b v = \\log_b(uv)\\)) can enlarge the solution set, requiring a final domain check against the original equation.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Functions & Graphs — Coordinate Curve & Tangent Analysis (2)",
+          "title": "Functions & Graphs — Function Curve & Symmetry Analysis",
           "xrange": [
             -4,
-            4
+            6
           ],
           "yrange": [
-            -3,
-            9
+            -4,
+            6
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "(x - 3)*(x - 3) - 5",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "label": "f(x) = (x-3)² - 5"
             },
             {
-              "fn": "2*x - 3",
+              "fn": "x",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "label": "y = x"
             }
           ],
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "x": 3,
+              "y": -5,
+              "label": "Vertex (3, -5)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Parabola f(x) = (x − 3)² − 5 with vertex at (3, −5) and symmetry reference line y = x.",
           "ar": null
         }
       },
@@ -285,6 +292,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Functions & Graphs)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Completing the Square &amp; Log-Linearization Work:</strong> Any quadratic \\(f(x) = ax^2 + bx + c\\) (\\(a \\ne 0\\)) can be rewritten by factoring \\(a\\) from the first two terms and adding/subtracting \\((b/2a)^2\\):</p>\\[ ax^2 + bx + c = a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\]<p>Because \\(\\left(x + \\frac{b}{2a}\\right)^2 \\ge 0\\) for all \\(x \\in \\mathbb{R}\\), the extreme value \\(k = c - \\frac{b^2}{4a}\\) is attained uniquely at the axis of symmetry \\(x = -\\frac{b}{2a}\\), restricting the range to \\([k, \\infty)\\) (if \\(a > 0\\)) and making \\(f\\) invertible on \\(x \\ge -\\frac{b}{2a}\\). Similarly, applying \\(\\ln\\) to power laws \\(y = ax^n\\) yields \\(\\ln y = n\\ln x + \\ln a\\), transforming a nonlinear curve into a straight line of gradient \\(n\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 3.A — Multi-Level Function Composition & Evaluation",
@@ -323,11 +342,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example D — Functions & Graphs (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> Let \\( U(v) = 6v + 2 \\) be an invertible linear function on \\( \\mathbb{R} \\). What is the inverse value \\( U^{-1}(68) \\)?</p><p><strong>Step-by-Step Solution:</strong> Solving \\( 6v + 2 = 68 \\) gives \\( v = 11 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Functions & Graphs)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Expanding \\(\\ln(x + y)\\) as \\(\\ln x + \\ln y\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses the product law \\(\\ln(xy) = \\ln x + \\ln y\\) with a non-existent sum rule.",
+              "ar": null
+            },
+            {
+              "en": "Only factor products, quotients, and powers inside logarithms: \\(\\ln(xy) = \\ln x + \\ln y\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Keeping both roots of \\(\\sqrt{2x+3} = x - 3\\) without checking \\(x - 3 \\ge 0\\)",
+              "ar": null
+            },
+            {
+              "en": "Squaring both sides loses the sign of \\(x - {r}\\), introducing roots where \\(\\sqrt{\\cdot} = -\\text{number}\\).",
+              "ar": null
+            },
+            {
+              "en": "Enforce the range condition \\(x \\ge 3\\) before or after squaring.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Restricting domain of \\(f(x) = (x-3)^2 + 1\\) to \\(x \\ge 0\\) for invertibility",
+              "ar": null
+            },
+            {
+              "en": "The vertex is at \\(x = 3\\), so \\(f(2) = f(4) = 2\\) fails the horizontal line test on \\(x \\ge 0\\).",
+              "ar": null
+            },
+            {
+              "en": "Restrict the domain at the vertex axis of symmetry: \\(x \\ge 3\\) (or \\(x \\le 3\\)).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Functions & Graphs",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Exam Check (Egyptian Scholastic Test (EST I — Literacy & Math)):</strong> To verify an inverse function \\(f^{-1}(x)\\) in 5 seconds, pick a simple input \\(x_0\\), compute \\(y_0 = f(x_0)\\), and check that \\(f^{-1}(y_0) = x_0\\). Also verify that the graph of \\(y = f^{-1}(x)\\) reflects \\(y = f(x)\\) across \\(y = x\\).</p>",
           "ar": null
         }
       },
@@ -340,7 +436,21 @@
         "solution": {
           "en": "<p><strong>Step 1:</strong> For the square root in the numerator to be defined over the reals, the radicand must be non-negative: \\[ 3x - 12 \\ge 0 \\implies 3x \\ge 12 \\implies x \\ge 4. \\]</p><p><strong>Step 2:</strong> For the denominator to be non-zero: \\[ x^2 - 25 \\neq 0 \\implies x \\neq 5 \\quad \\text{and} \\quad x \\neq -5. \\]</p><p><strong>Step 3:</strong> Intersect the conditions \\(x \\ge 4\\) and \\(x \\neq 5\\) (note that \\(x = -5\\) is already outside \\(x \\ge 4\\)): \\[ [4, 5) \\cup (5, \\infty). \\]</p><p>The maximal real domain is \\(\\mathbf{[4, 5) \\cup (5, \\infty)}\\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Functions & Graphs</em> and start from \\(f(x) = \\dfrac{\\sqrt{3x - 12}}{x^2 - 25}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 3x - 12 \\ge 0 \\implies 3x \\ge 12 \\implies x \\ge 4. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -351,7 +461,21 @@
         "solution": {
           "en": "<p><strong>(a) Find \\(f^{-1}(x)\\):</strong> Let \\(y = \\frac{2x - 7}{5}\\). Swap \\(x\\) and \\(y\\): \\[ x = \\frac{2y - 7}{5} \\implies 5x = 2y - 7 \\implies 2y = 5x + 7 \\implies \\mathbf{f^{-1}(x) = \\frac{5x + 7}{2}}. \\]</p><p><strong>(b) Composition identity:</strong> By definition, for all \\(x\\) in the domain of \\(f^{-1}\\), \\(f(f^{-1}(x)) = x\\). Therefore, \\(f(f^{-1}(x)) = 9 \\implies \\mathbf{x = 9}\\).</p><p><strong>(c) Point on line \\(y = x\\):</strong> If \\(f(k) = f^{-1}(k)\\), the intersection must lie on the line of reflection \\(y = x\\). Setting \\(f(k) = k\\): \\[ \\frac{2k - 7}{5} = k \\implies 2k - 7 = 5k \\implies 3k = -7 \\implies \\mathbf{k = -\\frac{7}{3}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Functions & Graphs</em> and start from \\(f(x) = \\dfrac{2x - 7}{5}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(f^{-1}(x)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -362,7 +486,21 @@
         "solution": {
           "en": "<p><strong>Step 1:</strong> Complete the square to isolate \\(x\\): \\[ y = (x^2 - 4x + 4) + 3 = (x - 2)^2 + 3. \\]</p><p><strong>Step 2:</strong> Swap \\(x\\) and \\(y\\) (with \\(y \\ge 2\\)): \\[ x = (y - 2)^2 + 3 \\implies (y - 2)^2 = x - 3. \\]</p><p><strong>Step 3:</strong> Take the principal square root (since \\(y \\ge 2 \\implies y - 2 \\ge 0\\)): \\[ y - 2 = +\\sqrt{x - 3} \\implies y = 2 + \\sqrt{x - 3}. \\]</p><p>Therefore, \\(\\mathbf{f^{-1}(x) = 2 + \\sqrt{x - 3}}\\), defined for domain \\(\\mathbf{x \\ge 3}\\) (which matches the range of \\(f\\)).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Functions & Graphs</em> and start from \\(f(x) = x^2 - 4x + 7\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -373,7 +511,21 @@
         "solution": {
           "en": "<p><strong>Transformation Mapping:</strong> For any point \\((x, y)\\) on \\(f\\), the corresponding point on \\(g(x) = 3f(x - 5) + 2\\) has coordinates: \\[ (x', y') = (x + 5, 3y + 2). \\]</p><p><strong>For point 1:</strong> \\((-2, 8)\\): \\[ x'_1 = -2 + 5 = 3, \\qquad y'_1 = 3(8) + 2 = 24 + 2 = 26 \\implies \\mathbf{(3, 26)}. \\]</p><p><strong>For point 2:</strong> \\((4, -6)\\): \\[ x'_2 = 4 + 5 = 9, \\qquad y'_2 = 3(-6) + 2 = -18 + 2 = -16 \\implies \\mathbf{(9, -16)}. \\]</p><p>The corresponding points on \\(g(x)\\) are \\(\\mathbf{(3, 26)}\\) and \\(\\mathbf{(9, -16)}\\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Functions & Graphs</em> and start from \\(y = f(x)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\((x, y)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

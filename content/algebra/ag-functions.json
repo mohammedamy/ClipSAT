@@ -30,43 +30,38 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Functions &amp; Transformations — Coordinate Curve & Tangent Analysis (2)",
+          "title": "Functions &amp; Transformations — Function Curve & Symmetry Analysis",
           "xrange": [
             -4,
-            4
+            6
           ],
           "yrange": [
-            -3,
-            9
+            -4,
+            6
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "(x - 1)*(x - 1) - 3",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "label": "f(x) = (x-1)² - 3"
             },
             {
-              "fn": "2*x - 3",
+              "fn": "x",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "label": "y = x"
             }
           ],
           "points": [
             {
               "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "y": -3,
+              "label": "Vertex (1, -3)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Parabola f(x) = (x − 1)² − 3 with vertex at (1, −3) and symmetry reference line y = x.",
           "ar": null
         }
       },
@@ -210,6 +205,18 @@
           "id": "tfEq",
           "value": "g(x) = (x)²",
           "style": "font-size:.84rem; padding:9px 11px; background:var(--paper-2); border-radius:8px"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Functions &amp; Transformations)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Completing the Square &amp; Log-Linearization Work:</strong> Any quadratic \\(f(x) = ax^2 + bx + c\\) (\\(a \\ne 0\\)) can be rewritten by factoring \\(a\\) from the first two terms and adding/subtracting \\((b/2a)^2\\):</p>\\[ ax^2 + bx + c = a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\]<p>Because \\(\\left(x + \\frac{b}{2a}\\right)^2 \\ge 0\\) for all \\(x \\in \\mathbb{R}\\), the extreme value \\(k = c - \\frac{b^2}{4a}\\) is attained uniquely at the axis of symmetry \\(x = -\\frac{b}{2a}\\), restricting the range to \\([k, \\infty)\\) (if \\(a > 0\\)) and making \\(f\\) invertible on \\(x \\ge -\\frac{b}{2a}\\). Similarly, applying \\(\\ln\\) to power laws \\(y = ax^n\\) yields \\(\\ln y = n\\ln x + \\ln a\\), transforming a nonlinear curve into a straight line of gradient \\(n\\).</p>",
+          "ar": null
         }
       },
       {
@@ -365,11 +372,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example D — Functions &amp; Transformations (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> In the coordinate plane shown, triangle \\(A'B'C'\\) is obtained by first reflecting triangle \\(ABC\\) across the line \\(y = x\\), and then translating the resulting image by \\(h\\) units horizontally and \\(k\\) units vertically. What is the ordered pair \\((h, k)\\)?</p><p><strong>Step-by-Step Solution:</strong> 1. Identify the coordinates of original triangle \\(ABC\\) from the grid:\n   \\(A(1, 2)\\), \\(B(4, 2)\\), and \\(C(2, 5)\\).\n\n2. Identify the coordinates of the final image triangle \\(A'B'C'\\):\n   \\(A'(-2, -1)\\), \\(B'(-2, 2)\\), and \\(C'(1, 0)\\).\n\n3. Apply the reflection across the line \\(y = x\\). The rule for reflection across \\(y = x\\) maps each point \\((x, y)\\) to \\((y, x)\\). Applying this to \\(\\triangle ABC\\) yields the intermediate vertices \\(A_0, B_0, C_0\\):\n   - \\(A(1, 2) \\to A_0(2, 1)\\)\n   - \\(B(4, 2) \\to B_0(2, 4)\\)\n   - \\(C(2, 5) \\to C_0(5, 2)\\)\n\n4. Apply the translation of \\(h\\) units horizontally and \\(k\\) units vertically:\n   \\((x', y') = (x_0 + h, y_0 + k)\\).\n   Using vertex \\(A_0(2, 1)\\) and \\(A'(-2, -1)\\):\n   \\(-2 = 2 + h \\implies h = -4\\)\n   \\(-1 = 1 + k \\implies k = -2\\)\n\n5. Verify with \\(B_0\\) and \\(C_0\\):\n   - For \\(B\\): \\((2 + (-4), 4 + (-2)) = (-2, 2) = B'\\)\n   - For \\(C\\): \\((5 + (-4), 2 + (-2)) = (1, 0) = C'\\)\n   Both match the coordinates in the figure. Hence, \\((h, k) = (-4, -2)\\).\n\nCommon Misconceptions:\n- \\((-3, -3)\\) assumes a direct translation from \\(A(1, 2)\\) to \\(A'(-2, -1)\\), ignoring the required reflection across \\(y = x\\).\n- \\((-2, -4)\\) confuses the horizontal and vertical shift components \\(h\\) and \\(k\\).\n- \\((4, 2)\\) results from computing the difference in reverse order (intermediate minus image rather than image minus intermediate). <strong>Final Answer:</strong> \\((-4, -2)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Functions &amp; Transformations)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Expanding \\(\\ln(x + y)\\) as \\(\\ln x + \\ln y\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses the product law \\(\\ln(xy) = \\ln x + \\ln y\\) with a non-existent sum rule.",
+              "ar": null
+            },
+            {
+              "en": "Only factor products, quotients, and powers inside logarithms: \\(\\ln(xy) = \\ln x + \\ln y\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Keeping both roots of \\(\\sqrt{2x+5} = x - 1\\) without checking \\(x - 1 \\ge 0\\)",
+              "ar": null
+            },
+            {
+              "en": "Squaring both sides loses the sign of \\(x - {r}\\), introducing roots where \\(\\sqrt{\\cdot} = -\\text{number}\\).",
+              "ar": null
+            },
+            {
+              "en": "Enforce the range condition \\(x \\ge 1\\) before or after squaring.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Restricting domain of \\(f(x) = (x-3)^2 + 1\\) to \\(x \\ge 0\\) for invertibility",
+              "ar": null
+            },
+            {
+              "en": "The vertex is at \\(x = 3\\), so \\(f(2) = f(4) = 2\\) fails the horizontal line test on \\(x \\ge 0\\).",
+              "ar": null
+            },
+            {
+              "en": "Restrict the domain at the vertex axis of symmetry: \\(x \\ge 3\\) (or \\(x \\le 3\\)).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Functions &amp; Transformations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Exam Check (Honors Algebra 1 & Foundations):</strong> To verify an inverse function \\(f^{-1}(x)\\) in 5 seconds, pick a simple input \\(x_0\\), compute \\(y_0 = f(x_0)\\), and check that \\(f^{-1}(y_0) = x_0\\). Also verify that the graph of \\(y = f^{-1}(x)\\) reflects \\(y = f(x)\\) across \\(y = x\\).</p>",
           "ar": null
         }
       },
@@ -382,7 +466,21 @@
         "solution": {
           "en": "<p>1. Evaluate the inner function first: \\( g(4) = \\sqrt{4 + 5} = \\sqrt{9} = 3 \\).</p><p>2. Substitute into \\( f \\):</p>\\[ (f \\circ g)(4) = f(g(4)) = f(3) = \\frac{2}{3 - 1} = \\frac{2}{2} = 1. \\]<p>3. Domain of \\( g(x) = \\sqrt{x + 5} \\): The radicand must be non-negative:</p>\\[ x + 5 \\ge 0 \\implies x \\ge -5 \\quad\\text{or in interval notation } [-5, \\infty). \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Functions &amp; Transformations</em> and start from \\( f(x) = \\dfrac{2}{x - 1} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( g(4) = \\sqrt{4 + 5} = \\sqrt{9} = 3 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -393,27 +491,69 @@
         "solution": {
           "en": "<p>Let \\(y = \\dfrac{3x + 4}{2x - 5}\\). Swap variables: \\[x = \\frac{3y + 4}{2y - 5}.\\] Multiply both sides by \\(2y - 5\\): \\[x(2y - 5) = 3y + 4 \\implies 2xy - 5x = 3y + 4.\\] Group all \\(y\\)-terms on one side: \\[2xy - 3y = 5x + 4 \\implies y(2x - 3) = 5x + 4.\\] Divide to isolate \\(y\\): \\[f^{-1}(x) = \\frac{5x + 4}{2x - 3}.\\] Domain of \\(f^{-1}\\): \\(x \\neq \\frac{3}{2}\\) (all real numbers except \\(x = 1.5\\)).</p>",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Functions &amp; Transformations</em> and start from \\(f^{-1}(x)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(y = \\dfrac{3x + 4}{2x - 5}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Hard]</strong> A function \\(f: \\mathbb{R} \\to \\mathbb{R}\\) satisfies the following properties:\n1. The graph of \\(y = f(x)\\) is symmetric with respect to the line \\(x = 2\\).\n2. The graph of \\(y = f(x)\\) is symmetric with respect to the line \\(x = 5\\).\n3. For all \\(x \\in [2, 5]\\), \\(f(x) = -(x - 3)^2 + 4\\).\n\nLet \\(g(x) = f(x - 1) + 1\\). How many real solutions does the equation \\(g(x) = \\frac{1}{3}x\\) have for \\(x > 0\\)?",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Functions &amp; Transformations</em> and start from \\(f: \\mathbb{R} \\to \\mathbb{R}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(f(x)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "We first analyze the symmetry and periodicity of \\(f(x)\\):\n1. Reflection across \\(x = 2\\) means \\(f(x) = f(4 - x)\\).\n2. Reflection across \\(x = 5\\) means \\(f(x) = f(10 - x)\\).\n\nCombining these two reflections yields a translation:\n\\[ f(x + 6) = f(10 - (4 - x)) = f(4 - x) = f(x) \\]\nThus, \\(f\\) is periodic with fundamental period \\(T = 2(5 - 2) = 6\\).\n\nOn the interval \\([2, 5]\\), \\(f(x) = -(x - 3)^2 + 4\\). Using the symmetry about \\(x = 2\\), for \\(x \\in [-1, 2]\\):\n\\[ f(x) = f(4 - x) = -(4 - x - 3)^2 + 4 = -(x - 1)^2 + 4 \\]\nTherefore, over one full period of length 6 (such as \\([-1, 5]\\)), the function has a maximum value of \\(4\\) (at \\(x = 1\\) and \\(x = 3\\)) and a minimum value of \\(0\\) (at \\(x = -1\\) and \\(x = 5\\)).\n\nThe transformed function \\(g(x) = f(x - 1) + 1\\) shifts \\(f\\) horizontally to the right by \\(1\\) unit and vertically upwards by \\(1\\) unit. Hence, \\(g(x)\\) is also periodic with period 6, with maximum value \\(4 + 1 = 5\\) and minimum value \\(0 + 1 = 1\\).\n\nFor \\(x > 0\\), we look for intersections with the line \\(L(x) = \\frac{1}{3}x\\):\n- If \\(x > 15\\), \\(L(x) > 5 \\ge g(x)\\), so there are no solutions for \\(x > 15\\).\n- At \\(x = 15\\), \\(g(15) = f(14) + 1 = f(2) + 1 = 3 + 1 = 4 < L(15) = 5\\), so no solution at \\(x = 15\\).\n\nWe partition \\([0, 15]\\) into intervals of length 3 where \\(g(x)\\) is explicitly quadratic:\n1. On \\([0, 3]\\): \\(g(x) = -(x - 2)^2 + 5\\). Setting this equal to \\(\\frac{1}{3}x\\) yields \\(3x^2 - 11x - 3 = 0\\), with roots \\(x \\approx -0.26\\) and \\(x \\approx 3.92\\). Neither lies in \\([0, 3]\\) (0 solutions).\n2. On \\([3, 6]\\): \\(g(x) = -(x - 4)^2 + 5\\). Setting this equal to \\(\\frac{1}{3}x\\) yields \\(3x^2 - 23x + 33 = 0\\), with roots \\(x \\approx 1.91\\) and \\(x \\approx 5.76\\). Exactly \\(x \\approx 5.76 \\in [3, 6]\\) (1 solution).\n3. On \\([6, 9]\\): \\(g(x) = -(x - 8)^2 + 5\\). Setting this equal to \\(\\frac{1}{3}x\\) yields \\(3x^2 - 47x + 177 = 0\\), with roots \\(x \\approx 6.30\\) and \\(x \\approx 9.37\\). Exactly \\(x \\approx 6.30 \\in [6, 9]\\) (1 solution).\n4. On \\([9, 12]\\): \\(g(x) = -(x - 10)^2 + 5\\). Setting this equal to \\(\\frac{1}{3}x\\) yields \\(3x^2 - 59x + 285 = 0\\), with roots \\(x \\approx 8.53\\) and \\(x \\approx 11.14\\). Exactly \\(x \\approx 11.14 \\in [9, 12]\\) (1 solution).\n5. On \\([12, 15]\\): \\(g(x) = -(x - 14)^2 + 5\\). Setting this equal to \\(\\frac{1}{3}x\\) yields \\(3x^2 - 83x + 573 = 0\\), with roots \\(x = \\frac{83 \\pm \\sqrt{13}}{6} \\approx 13.23\\) and \\(14.43\\). Both roots lie in \\([12, 15]\\) (2 solutions).\n\nAdding these together, the total number of real solutions for \\(x > 0\\) is \\(0 + 1 + 1 + 1 + 2 = 5\\). <strong>Answer:</strong> \\(5\\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Functions &amp; Transformations · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> The graph of the function \\(f(x) = x^2\\) is shown below. It is transformed to the graph of \\(g(x) = (x-3)^2 + 2\\). Which transformation maps \\(f(x)\\) to \\(g(x)\\)?",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Functions &amp; Transformations</em> and start from \\(f(x) = x^2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(g(x) = (x-3)^2 + 2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Functions &amp; Transformations · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "The function \\(g(x) = (x-3)^2 + 2\\) is a transformation of the base function \\(f(x) = x^2\\). In the general form of a quadratic transformation, \\(h(x) = a(x-h)^2 + k\\), a value of \\(h\\) represents a horizontal translation, and a value of \\(k\\) represents a vertical translation. If \\(h\\) is positive, the translation is to the right. If \\(h\\) is negative, the translation is to the left. If \\(k\\) is positive, the translation is upwards. If \\(k\\) is negative, the translation is downwards. In \\(g(x) = (x-3)^2 + 2\\), we have \\(h = 3\\) and \\(k = 2\\). Therefore, the transformation involves a translation of 3 units to the right (because \\(h\\) is positive) and 2 units up (because \\(k\\) is positive). <strong>Answer:</strong> A translation of 3 units to the right and 2 units up.",
           "ar": null
         }
       }

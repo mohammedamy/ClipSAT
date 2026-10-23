@@ -40,6 +40,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Integration & Applications",
+          "ar": "● الفهم المفاهيمي العميق — التكامل وتطبيقاته"
+        },
+        "body": {
+          "en": "<p><strong>Accumulation, Antiderivatives &amp; Differential Flows:</strong> By the Fundamental Theorem of Calculus, the accumulation function \\(A(x) = \\int_a^x f(t)\\,dt\\) satisfies \\(A'(x) = f(x)\\), linking instantaneous rates of change to net signed area. In first-order differential equations \\(\\dfrac{dy}{dx} = g(x)h(y)\\), separation of variables \\(\\int \\dfrac{1}{h(y)}\\,dy = \\int g(x)\\,dx + C\\) reconstructs the family of integral curves across the slope field.</p>",
+          "ar": "<p><strong>التراكم والتكامل والمعادلات التفاضلية:</strong> تربط النظرية الأساسية للتفاضل والتكامل بين المشتقة والمساحة الموجهة \\(\\frac{d}{dx}\\int_a^x f(t)\\,dt = f(x)\\).</p>"
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
           "type": "fn",
@@ -271,6 +283,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Integration & Applications)",
+          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (التكامل وتطبيقاته)"
+        },
+        "body": {
+          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
+          "ar": "<p><strong>برهان التكامل بالتجزيء وعامل التكامل:</strong> من قاعدة مشتقة الضرب \\((uv)' = u'v + uv'\\) نحصل بتكامل الطرفين على \\(\\int u\\,dv = uv - \\int v\\,du\\). وبضرب المعادلة الخطية في \\(\\mu(x)=e^{\\int P(x)dx}\\) يتحول الطرف الأيسر إلى \\(\\frac{d}{dx}[\\mu(x)y]\\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 7.A — Indefinite Integration of Polynomial and Trig Terms",
@@ -318,6 +342,83 @@
         }
       },
       {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Integration & Applications)",
+          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (التكامل وتطبيقاته)"
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع للطالب"
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": "السبب الرياضي للخطأ"
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Writing \\(\\ln|y| = x^2 + C \\implies y = e^{x^2} + C\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Exponentiation distributes over addition as multiplication (\\(e^{a+b} = e^a e^b\\)), not addition.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Write \\(y = e^{x^2 + C} = Ae^{x^2}\\) and solve for \\(A\\) using the initial condition.",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Leaving original \\(x\\)-limits on a \\(u\\)-substituted definite integral",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Evaluates the antiderivative \\(F(u)\\) at \\(x\\)-values instead of \\(u(x)\\)-values.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Convert bounds immediately: \\(u_{\\text{low}} = u(a)\\) and \\(u_{\\text{high}} = u(b)\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Computing total distance as \\(\\left|\\int_{t_1}^{t_2} v(t)\\,dt\\right|\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Cancels forward and backward motion (net displacement) instead of accumulating total path length.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Split the integral at every root where \\(v(t) = 0\\) and integrate \\(|v(t)|\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Integration & Applications",
+          "ar": "▲ استراتيجية الحل السريع والتحقق — التكامل وتطبيقاته"
+        },
+        "body": {
+          "en": "<p><strong>Quick Verification Trick (Qiyas Scholastic Achievement Admission Test (SAAT / التحصيلي)):</strong> For any indefinite integral \\(\\int f(x)\\,dx = F(x) + C\\), differentiate your answer \\(F'(x)\\) mentally—especially the coefficient \\(1/k\\) from chain-rule reversal \\(\\int e^{kx}\\,dx = \\tfrac{1}{k}e^{kx} + C\\)—before moving on.</p>",
+          "ar": "<p><strong>فحص سريع للتكامل:</strong> اشتق الناتج النهائي ذهنياً للتأكد من صحة المعامل العكسي \\(1/k\\) الناتج عن قاعدة السلسلة.</p>"
+        }
+      },
+      {
         "kind": "practiceProblem",
         "id": "tah-calc2-p1",
         "question": {
@@ -327,7 +428,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Find the antiderivative:</strong> \\[ \\int (2x + 1)\\,dx = x^2 + x. \\]</p><p><strong>Step 2: Evaluate at the limits \\(0\\) and \\(3\\):</strong> \\[ \\big[x^2 + x\\big]_0^3 = (3^2 + 3) - (0^2 + 0) = (9 + 3) - 0 = \\mathbf{12}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: إيجاد الدالة الأصلية:</strong> \\[ \\int (2x + 1)\\,dx = x^2 + x. \\]</p><p><strong>الخطوة 2: التعويض بحدود التكامل:</strong> \\[ \\big[x^2 + x\\big]_0^3 = (3^2 + 3) - 0 = 9 + 3 = \\mathbf{12}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Integration & Applications</em> and start from \\( \\int_0^3 (2x + 1)\\,dx \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( \\int_0^3 (2x + 1)\\,dx \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\int (2x + 1)\\,dx = x^2 + x. \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( \\int (2x + 1)\\,dx = x^2 + x. \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -339,7 +454,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Set up the area integral:</strong> \\[ A = \\int_1^2 3x^2\\,dx. \\]</p><p><strong>Step 2: Integrate and substitute:</strong> \\[ A = \\big[x^3\\big]_1^2 = 2^3 - 1^3 = 8 - 1 = \\mathbf{7}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: كتابة تكامل المساحة:</strong> \\[ A = \\int_1^2 3x^2\\,dx. \\]</p><p><strong>الخطوة 2: حساب التكامل والتعويض:</strong> \\[ A = \\big[x^3\\big]_1^2 = 2^3 - 1^3 = 8 - 1 = \\mathbf{7}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Integration & Applications</em> and start from \\(y = 3x^2\\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\(y = 3x^2\\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( A = \\int_1^2 3x^2\\,dx. \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( A = \\int_1^2 3x^2\\,dx. \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -351,7 +480,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Integrate term-by-term using the power rule:</strong> \\[ \\int 4x^3\\,dx = x^4, \\quad \\int -6x\\,dx = -3x^2, \\quad \\int 5\\,dx = 5x. \\]</p><p><strong>Step 2: Append the constant of integration \\(C\\):</strong> \\[ \\mathbf{x^4 - 3x^2 + 5x + C}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: تكامل كل حد بقاعدة القوة:</strong> \\[ \\int 4x^3\\,dx = x^4, \\quad \\int -6x\\,dx = -3x^2, \\quad \\int 5\\,dx = 5x. \\]</p><p><strong>الخطوة 2: إضافة ثابت التكامل \\(C\\):</strong> \\[ \\mathbf{x^4 - 3x^2 + 5x + C}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Integration & Applications</em> and start from \\( \\int (4x^3 - 6x + 5)\\,dx \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( \\int (4x^3 - 6x + 5)\\,dx \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\int 4x^3\\,dx = x^4, \\quad \\int -6x\\,dx = -3x^2, \\quad \\int 5\\,dx = 5x. \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( \\int 4x^3\\,dx = x^4, \\quad \\int -6x\\,dx = -3x^2, \\quad \\int 5\\,dx = 5x. \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -363,7 +506,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Apply the interval additivity property:</strong> \\[ \\int_1^4 f(x)\\,dx = \\int_1^2 f(x)\\,dx + \\int_2^4 f(x)\\,dx. \\]</p><p><strong>Step 2: Substitute given values and solve:</strong> \\[ 7 = \\int_1^2 f(x)\\,dx + 3 \\implies \\int_1^2 f(x)\\,dx = 7 - 3 = \\mathbf{4}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: تطبيق خاصية تجزئة فترات التكامل:</strong> \\[ \\int_1^4 f(x)\\,dx = \\int_1^2 f(x)\\,dx + \\int_2^4 f(x)\\,dx. \\]</p><p><strong>الخطوة 2: التعويض وحساب الناتج:</strong> \\[ 7 = \\int_1^2 f(x)\\,dx + 3 \\implies \\int_1^2 f(x)\\,dx = 7 - 3 = \\mathbf{4}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Integration & Applications</em> and start from \\(\\int_1^4 f(x)\\,dx = 7\\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\(\\int_1^4 f(x)\\,dx = 7\\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\int_1^4 f(x)\\,dx = \\int_1^2 f(x)\\,dx + \\int_2^4 f(x)\\,dx. \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( \\int_1^4 f(x)\\,dx = \\int_1^2 f(x)\\,dx + \\int_2^4 f(x)\\,dx. \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       }
     ]
   },

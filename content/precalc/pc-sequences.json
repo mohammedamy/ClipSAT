@@ -26,43 +26,48 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Sequences, Series, Induction & the Binomial Theorem — Coordinate Curve & Tangent Analysis (2)",
+          "title": "Sequences, Series, Induction & the Binomial Theorem — Geometric Partial Sums & Asymptotic Limit",
           "xrange": [
-            -4,
-            4
+            0,
+            6
           ],
           "yrange": [
-            -3,
-            9
+            0,
+            5
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "4*(1 - Math.pow(0.5, x))",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "label": "S(x) = 4(1 − 0.5ˣ)"
             },
             {
-              "fn": "2*x - 3",
+              "fn": "4",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "label": "Limit S∞ = 4"
             }
           ],
           "points": [
             {
               "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
+              "y": 2,
+              "label": "S₁ = 2"
             },
             {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "x": 2,
+              "y": 3,
+              "label": "S₂ = 3"
+            },
+            {
+              "x": 3,
+              "y": 3.5,
+              "label": "S₃ = 3.5"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Convergence of geometric partial sums Sₙ = 4(1 − (1/2)ⁿ) toward the horizontal asymptote S∞ = 4.",
           "ar": null
         }
       },
@@ -75,6 +80,18 @@
         },
         "body": {
           "en": "<p><strong>Arithmetic Progression:</strong> A sequence with constant difference \\(d = a_{n} - a_{n-1}\\):</p>\\[ a_n = a_1 + (n - 1)d, \\qquad S_n = \\sum_{k=1}^n a_k = \\frac{n}{2}(a_1 + a_n) = \\frac{n}{2}[2a_1 + (n - 1)d]. \\]<p><strong>Geometric Progression:</strong> A sequence with constant ratio \\(r = \\frac{a_n}{a_{n-1}}\\):</p>\\[ a_n = a_1 r^{n-1}, \\qquad S_n = \\sum_{k=1}^n a_1 r^{k-1} = \\frac{a_1(1 - r^n)}{1 - r} \\quad (r \\ne 1). \\]<p><strong>Fundamental Summation Rules:</strong> \\[ \\sum_{k=1}^n c = nc, \\qquad \\sum_{k=1}^n k = \\frac{n(n+1)}{2}, \\qquad \\sum_{k=1}^n (c a_k + b_k) = c\\sum_{k=1}^n a_k + \\sum_{k=1}^n b_k. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Sequences, Series, Induction & the Binomial Theorem)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why the Geometric Sum Formula &amp; \\(S_\\infty\\) Work:</strong> Write \\(S_n = a + ar + ar^2 + \\dots + ar^{n-1}\\). Multiplying through by \\(r\\) shifts every power up by one:</p>\\[ S_n - rS_n = (a + ar + \\dots + ar^{n-1}) - (ar + ar^2 + \\dots + ar^n) = a - ar^n \\]<p>Factoring \\(S_n(1 - r) = a(1 - r^n)\\) gives \\(S_n = \\dfrac{a(1 - r^n)}{1 - r}\\) for \\(r \\ne 1\\). Taking \\(n \\to \\infty\\), \\(\\lim_{n \\to \\infty} r^n = 0\\) holds if and only if \\(|r| < 1\\), yielding \\(S_\\infty = \\dfrac{a}{1 - r}\\).</p>",
           "ar": null
         }
       },
@@ -453,11 +470,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example A — Sequences, Series, Induction & the Binomial Theorem (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> A geometric progression \\( (f_{x}) \\) has initial term \\( f_1 = 11 \\) and common ratio \\( r = 2 \\). Find the fifth term \\( f_5 \\).</p><p><strong>Step-by-Step Solution:</strong> Using \\( f_5 = f_1 r^4 \\), we get \\( 11 \\times 16 = 176 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Sequences, Series, Induction & the Binomial Theorem)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Applying \\(1 + nx + \\dots\\) directly to \\((3 + x)^{-1}\\)",
+              "ar": null
+            },
+            {
+              "en": "The general binomial series is centered at \\(1 + u\\), not \\(a + u\\).",
+              "ar": null
+            },
+            {
+              "en": "Factor out \\(3^{-1}\\) first: \\(\\frac{1}{3}\\left(1 + \\frac{x}{3}\\right)^{-1}\\) valid for \\(|x| < 3\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Assuming \\(\\lim_{n\\to\\infty} a_n = 0\\) guarantees \\(\\sum a_n\\) converges",
+              "ar": null
+            },
+            {
+              "en": "The harmonic series \\(\\sum \\frac{1}{n}\\) has \\(1/n \\to 0\\) yet diverges to \\(\\infty\\).",
+              "ar": null
+            },
+            {
+              "en": "Use the \\(p\\)-series test (\\(p > 1\\)), Ratio Test, or Integral Test to prove convergence.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Counting terms in \\(\\sum_{k=0}^{n} a_k\\) as \\(n\\) terms",
+              "ar": null
+            },
+            {
+              "en": "Overlooks the \\(k = 0\\) initial index.",
+              "ar": null
+            },
+            {
+              "en": "Use \\(\\text{count} = \\text{upper} - \\text{lower} + 1 = n - 0 + 1 = n + 1\\) terms.",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Sequences, Series, Induction & the Binomial Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Binomial Validity Shortcut (Honors Precalculus & Trigonometric Analysis):</strong> When asked for the range of \\(x\\) for which the expansion of \\((a + bx)^n\\) is valid, write \\(\\left|\\dfrac{bx}{a}\\right| < 1 \\implies |x| < \\left|\\dfrac{a}{b}\\right|\\). If multiplying two expansions, take the <em>intersection</em> (smaller radius) of the two validity intervals.</p>",
           "ar": null
         }
       },
@@ -470,7 +564,21 @@
         "solution": {
           "en": "<p>In the binomial theorem expansion \\(\\sum_{k=0}^n \\binom{n}{k} A^{n-k} B^k\\), the 1st term has \\(k = 0\\), so the 6th term has \\(k = 5\\).</p><p>Identify terms: \\(n = 8\\), \\(A = 3x\\), \\(B = -2y^2\\):</p>\\[T_6 = \\binom{8}{5} (3x)^{8-5} (-2y^2)^5 = \\binom{8}{3} (3x)^3 (-2y^2)^5.\\]<p>Compute each factor:</p><ul><li>\\(\\binom{8}{3} = \\frac{8 \\times 7 \\times 6}{3 \\times 2 \\times 1} = 56\\)</li><li>\\((3x)^3 = 27x^3\\)</li><li>\\((-2y^2)^5 = -32y^{10}\\)</li></ul><p>Multiply the coefficients:</p>\\[T_6 = 56 \\times 27 \\times (-32) x^3 y^{10} = 56 \\times (-864) x^3 y^{10} = -48384 x^3 y^{10}.\\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences, Series, Induction & the Binomial Theorem</em> and start from \\((3x - 2y^2)^8\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\sum_{k=0}^n \\binom{n}{k} A^{n-k} B^k\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -481,27 +589,69 @@
         "solution": {
           "en": "<p>Use the infinite sum formula \\(S_\\infty = \\frac{a_1}{1 - r}\\):</p>\\[25 = \\frac{a_1}{1 - (-0.4)} = \\frac{a_1}{1.4} \\implies a_1 = 25 \\times 1.4 = 35.\\]<p>Compute the 4th partial sum \\(S_4 = \\frac{a_1(1 - r^4)}{1 - r}\\):</p>\\[(-0.4)^4 = 0.0256.\\]\\[S_4 = \\frac{35(1 - 0.0256)}{1.4} = \\frac{35(0.9744)}{1.4} = 25 \\times 0.9744 = 24.36.\\]",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences, Series, Induction & the Binomial Theorem</em> and start from \\(r = -0.4\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(S_\\infty = \\frac{a_1}{1 - r}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Easy]</strong> An arithmetic progression \\( (p_{t}) \\) has first term \\( p_1 = 12 \\) and common difference \\( d = 18 \\). Find the term \\( p_{5} \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences, Series, Induction & the Binomial Theorem</em> and start from \\( (p_{t}) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( p_n = p_1 + (n - 1)d \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "Using \\( p_n = p_1 + (n - 1)d \\), we have \\( p_{5} = 12 + (5 - 1)(18) = 84 \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Sequences, Series, Induction & the Binomial Theorem · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> An arithmetic series \\( \\sum_{k=1}^{t} p_k \\) has first term \\( p_1 = 17 \\) and common difference \\( d = 12 \\). Find the partial sum \\( S_{8} \\) for \\( t = 8 \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences, Series, Induction & the Binomial Theorem</em> and start from \\( \\sum_{k=1}^{t} p_k \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( S_n = \\frac{n}{2}(2a_1 + (n - 1)d) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Sequences, Series, Induction & the Binomial Theorem · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Using \\( S_n = \\frac{n}{2}(2a_1 + (n - 1)d) \\), \\( S_{8} = \\frac{8}{2}(2(17) + 7(12)) = 472 \\).",
           "ar": null
         }
       }

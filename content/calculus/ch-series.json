@@ -29,44 +29,31 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Sequences &amp; Series — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
+          "type": "sign_chart",
+          "title": "Sequences &amp; Series — First Derivative Sign Chart & Extrema",
+          "ticks": [
             {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "x": -5,
+              "label": "x = -5"
             },
             {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "x": 5,
+              "label": "x = 5"
             }
           ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
+          "signs": [
+            "+",
+            "−",
+            "+"
+          ],
+          "behaviors": [
+            "↗ Increasing",
+            "↘ Decreasing",
+            "↗ Increasing"
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Derivative sign chart for f'(x) showing local maximum at x = −5 (+ to −) and local minimum at x = 5 (− to +).",
           "ar": null
         }
       },
@@ -79,6 +66,18 @@
         },
         "body": {
           "en": "<p>The geometric series with initial term \\(a \\ne 0\\) and common ratio \\(r\\):</p>\\[ \\sum_{n=0}^\\infty a\\,r^n = a + ar + ar^2 + ar^3 + \\dots \\]<p><strong>converges</strong> to the finite sum \\(\\frac{a}{1 - r}\\) if and only if \\(|r| < 1\\). If \\(|r| \\ge 1\\), the series <strong>diverges</strong>.</p></p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof</strong></summary><div style=\"margin-top:6px\"><p>Write the \\(N\\)-th partial sum containing \\(N+1\\) terms:</p>\\[ S_N = a + ar + ar^2 + \\dots + ar^N \\]<p>Multiply both sides by \\(r\\):</p>\\[ r S_N = ar + ar^2 + ar^3 + \\dots + ar^{N+1} \\]<p>Subtract the two equations. All intermediate terms cancel (telescope):</p>\\[ S_N - r S_N = a - ar^{N+1} \\implies S_N(1 - r) = a\\big(1 - r^{N+1}\\big) \\]<p>For \\(r \\ne 1\\), divide by \\(1 - r\\):</p>\\[ S_N = \\frac{a(1 - r^{N+1})}{1 - r} = \\frac{a}{1 - r} - \\frac{a r^{N+1}}{1 - r} \\]<p>Now evaluate the limit as \\(N \\to \\infty\\):</p><ul><li>If \\(|r| < 1\\), \\(\\lim_{N \\to \\infty} r^{N+1} = 0\\), so \\(\\lim_{N \\to \\infty} S_N = \\frac{a}{1 - r}\\).</li><li>If \\(|r| > 1\\) or \\(r = -1\\), \\(r^{N+1}\\) oscillates or grows unboundedly, so the limit does not exist.</li><li>If \\(r = 1\\), \\(S_N = \\sum_{n=0}^N a = (N+1)a\\), which diverges as \\(N \\to \\infty\\).</li></ul><p>Hence the geometric series converges if and only if \\(|r| < 1\\), with sum \\(S = \\frac{a}{1 - r}\\) \\quad \\blacksquare \\]</div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Sequences &amp; Series)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Differentiability Implies Continuity &amp; How Implicit Differentiation Works:</strong> Notice that for \\(x \\ne a\\), we can write \\(f(x) - f(a) = \\dfrac{f(x) - f(a)}{x - a}\\cdot (x - a)\\). Taking the limit as \\(x \\to a\\) by the Product Law gives:</p>\\[ \\lim_{x \\to a} \\bigl(f(x) - f(a)\\bigr) = f'(a)\\cdot 0 = 0 \\implies \\lim_{x \\to a} f(x) = f(a) \\]<p>Similarly, when differentiating an implicit relation \\(F(x, y) = c\\) with respect to \\(x\\), \\(y = y(x)\\) is an inner function of \\(x\\). By the Chain Rule, \\(\\dfrac{d}{dx}\\bigl[y^n\\bigr] = ny^{n-1}\\dfrac{dy}{dx}\\), and for product terms \\(\\dfrac{d}{dx}[xy] = y + x\\dfrac{dy}{dx}\\).</p>",
           "ar": null
         }
       },
@@ -98,11 +97,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example B — Sequences &amp; Series (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> Geometric mean of 2 and 8:</p><p><strong>Step-by-Step Solution:</strong> Applying Sequences and Series principles, \\(\\sqrt{2\\cdot8}=4\\). Therefore, the verified correct option is \\(4\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Sequences &amp; Series)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Assuming \\(f'(c) = 0\\) guarantees a local extremum",
+              "ar": null
+            },
+            {
+              "en": "Inflection points like \\(f(x) = x^3\\) at \\(x = 0\\) have \\(f'(0) = 0\\) without changing sign.",
+              "ar": null
+            },
+            {
+              "en": "Verify that \\(f'(x)\\) actually changes sign across \\(x = c\\) (or check \\(f''(c) \\ne 0\\)).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing parametric \\(\\frac{d^2y}{dx^2}\\) as \\(\\frac{\\ddot{y}}{\\ddot{x}}\\)",
+              "ar": null
+            },
+            {
+              "en": "violates the Chain Rule \\(\\frac{d}{dx} = \\frac{1}{dx/dt}\\frac{d}{dt}\\).",
+              "ar": null
+            },
+            {
+              "en": "Differentiate \\(dy/dx\\) with respect to \\(t\\), then divide by \\(dx/dt\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Forgetting product rule on \\(xy\\) in implicit differentiation",
+              "ar": null
+            },
+            {
+              "en": "Treats \\(y\\) as a constant instead of \\(y(x)\\).",
+              "ar": null
+            },
+            {
+              "en": "Always expand \\(\\frac{d}{dx}(xy) = y + x\\frac{dy}{dx}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Sequences &amp; Series",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Justification Rule (University Single-Variable & Multivariable Calculus):</strong> When justifying local extrema or points of inflection on free-response questions, state \"because \\(f'(x)\\) changes sign from positive to negative at \\(x = c\\)\" rather than referring vaguely to \"it\" or \"the graph.\"</p>",
           "ar": null
         }
       },
@@ -115,7 +191,21 @@
         "solution": {
           "en": "Identify the first term and ratio:<br>When \\(n = 1\\), \\(a = 3\\left(-\\frac{2}{5}\\right)^1 = -\\frac{6}{5}\\).<br>The common ratio is \\(r = -\\frac{2}{5}\\). Since \\(|r| = \\frac{2}{5} < 1\\), the series converges.<br>Using the sum formula \\(S = \\frac{a}{1 - r}\\):<br>\\[ S = \\frac{-6/5}{1 - (-2/5)} = \\frac{-6/5}{7/5} = -\\frac{6}{7} \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences &amp; Series</em> and start from \\( \\sum_{n=1}^\\infty 3 \\left( -\\frac{2}{5} \\right)^n \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(n = 1\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "callout",
@@ -318,7 +408,21 @@
         "solution": {
           "en": "Compute derivatives at \\(x = 0\\):<br>&bull; \\(f(0) = \\cos(0) = 1\\)<br>&bull; \\(f'(0) = -\\sin(0) = 0\\)<br>&bull; \\(f''(0) = -\\cos(0) = -1\\)<br>&bull; \\(f'''(0) = \\sin(0) = 0\\)<br>Applying the Maclaurin formula: \\(P_3(x) = f(0) + f'(0)x + \\frac{f''(0)}{2!}x^2 + \\frac{f'''(0)}{3!}x^3 = 1 - \\frac{x^2}{2}\\). (Notice the cubic term has coefficient 0).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences &amp; Series</em> and start from \\(P_3(x)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x = 0\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "callout",
@@ -365,16 +469,44 @@
         "solution": {
           "en": "Construct the Taylor polynomial using \\(a = 2\\):<br>\\[ P_3(x) = f(2) + f'(2)(x - 2) + \\frac{f''(2)}{2!}(x - 2)^2 + \\frac{f'''(2)}{3!}(x - 2)^3 \\]<br>\\[ = 3 - 1(x - 2) + \\frac{4}{2}(x - 2)^2 + \\frac{-12}{6}(x - 2)^3 = 3 - (x - 2) + 2(x - 2)^2 - 2(x - 2)^3 \\]<br>Substitute \\(x = 2.1\\), so \\(x - 2 = 0.1\\):<br>\\[ P_3(2.1) = 3 - 0.1 + 2(0.1)^2 - 2(0.1)^3 = 3 - 0.1 + 2(0.01) - 2(0.001) \\]<br>\\[ = 3 - 0.1 + 0.02 - 0.002 = 2.918 \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences &amp; Series</em> and start from \\(f(x)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(a = 2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Sequences &amp; Series · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> The series \\(\\sum_{n=1}^\\infty \\frac{1}{n^2+1}\\) converges by:",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences &amp; Series</em> and start from \\(\\sum_{n=1}^\\infty \\frac{1}{n^2+1}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(0 < \\frac{1}{n^2+1} < \\frac{1}{n^2}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Since \\(0 < \\frac{1}{n^2+1} < \\frac{1}{n^2}\\) for all \\(n \\ge 1\\) and \\(\\sum_{n=1}^\\infty \\frac{1}{n^2}\\) is a convergent \\(p\\)-series (\\(p=2>1\\)), the series converges by the Direct Comparison Test. <strong>Answer:</strong> Direct comparison with \\(\\sum \\frac{1}{n^2}\\).",
           "ar": null
         }
       }

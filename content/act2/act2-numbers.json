@@ -41,46 +41,53 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Advanced Number Theory",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Proportional Invariance, Linear Structure &amp; Quantitative Modeling:</strong> Across ACT International Subject Test — Math 1, multi-step problems reduce to identifying invariant quantities—constant rates of change \\(m = \\dfrac{\\Delta y}{\\Delta x}\\), conservation of total work/mass, or linear system rank conditions. A two-variable linear system \\(a_1 x + b_1 y = c_1\\), \\(a_2 x + b_2 y = c_2\\) has a unique intersection if \\(\\dfrac{a_1}{a_2} \\ne \\dfrac{b_1}{b_2}\\), no solution (parallel lines) if \\(\\dfrac{a_1}{a_2} = \\dfrac{b_1}{b_2} \\ne \\dfrac{c_1}{c_2}\\), and infinitely many solutions if all three ratios coincide.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Advanced Number Theory — Coordinate Curve & Tangent Analysis (2)",
+          "title": "Advanced Number Theory — Linear System Intersection & Equilibrium",
           "xrange": [
-            -4,
-            4
+            -2,
+            6
           ],
           "yrange": [
-            -3,
-            9
+            -2,
+            10
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "2*x + 1",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "label": "y = 2x + 1"
             },
             {
-              "fn": "2*x - 3",
+              "fn": "-x + 7",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "label": "y = −x + 7"
             }
           ],
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "x": 2,
+              "y": 5,
+              "label": "Intersection (2, 5)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Coordinate intersection of linear system y = 2x + 1 and y = −x + 7 at unique equilibrium point (2, 5).",
           "ar": null
         }
       },
@@ -288,6 +295,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Advanced Number Theory)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 1.A — Euclidean Algorithm and LCM Computation",
@@ -314,11 +333,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example C — Advanced Number Theory (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> Two positive quantities \\( P \\) and \\( Q \\) are in the ratio \\( 4 : 6 \\), and the smaller quantity equals \\( 28 \\). Which of the following is equal to the combined total \\( r = P + Q \\)?</p><p><strong>Step-by-Step Solution:</strong> With multiplier \\( k = 7 \\), \\( P + Q = (4 + 6) \\times 7 = 70 \\).</p>",
           "ar": null
         }
       },
@@ -326,11 +345,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example D — Advanced Number Theory (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> A quantity \\( P_0 = 1600 \\) increases by \\( 20\\% \\) to \\( P_1 \\) and then decreases by \\( 35\\% \\) to \\( P_2 \\). Which of the following is equal to the final quantity \\( r = P_2 \\)?</p><p><strong>Step-by-Step Solution:</strong> Computing \\( 1600 \\times (1 + 0.20) \\times (1 - 0.35) = 1248 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Advanced Number Theory)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Claiming \\(+25\\%\\) followed by \\(-25\\%\\) returns to \\(100\\%\\)",
+              "ar": null
+            },
+            {
+              "en": "The \\(25\\%\\) reduction applies to the larger base \\(1.25 Q_0\\), not \\(Q_0\\).",
+              "ar": null
+            },
+            {
+              "en": "Multiply scale factors: \\(1.25 \\times 0.75 = 0.9375\\) (a \\(6.25\\%\\) net decrease).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Solving \\(-3x > 12\\) as \\(x > -4\\)",
+              "ar": null
+            },
+            {
+              "en": "Dividing by a negative number reverses order on the real number line.",
+              "ar": null
+            },
+            {
+              "en": "Flip the inequality symbol whenever multiplying or dividing by a negative: \\(x < -4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing round-trip average speed as \\(\\frac{v_1 + v_2}{2}\\)",
+              "ar": null
+            },
+            {
+              "en": "Time spent at the slower speed is longer than time spent at the faster speed.",
+              "ar": null
+            },
+            {
+              "en": "Use total distance over total time: \\(v_{\\text{avg}} = \\frac{2v_1 v_2}{v_1 + v_2}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Advanced Number Theory",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>High-Speed Exam Shortcut (ACT International Subject Test — Math 1):</strong> When a linear system asks for a combined expression like \\(3x + 3y\\) rather than \\(x\\) and \\(y\\) individually, add or subtract the two equations directly before isolating either variable—this often yields the target expression in a single step.</p>",
           "ar": null
         }
       },
@@ -343,7 +439,21 @@
         "solution": {
           "en": "<p><strong>Step 1 (Find \\(n\\)):</strong> Use the arithmetic series sum formula:<br>\\[ S_n = \\frac{n}{2}(a_1 + a_n) \\implies 150 = \\frac{n}{2}(5 + 25) = 15n \\implies n = \\frac{150}{15} = \\mathbf{10} \\]</p><p><strong>Step 2 (Find \\(d\\)):</strong> Use the \\(n\\)-th term formula with \\(n = 10\\):<br>\\[ a_{10} = a_1 + 9d \\implies 25 = 5 + 9d \\implies 9d = 20 \\implies d = \\mathbf{\\frac{20}{9}} \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Advanced Number Theory</em> and start from \\(a_1 = 5\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(n\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -354,7 +464,21 @@
         "solution": {
           "en": "<p><strong>(a) Standard form \\(a + bi\\):</strong> Multiply numerator and denominator by the complex conjugate \\(3 + 4i\\):<br>\\[ z = \\dfrac{(5 + 2i)(3 + 4i)}{(3 - 4i)(3 + 4i)} = \\dfrac{15 + 20i + 6i + 8i^2}{3^2 - (4i)^2} = \\dfrac{15 + 26i - 8}{9 - (-16)} = \\dfrac{7 + 26i}{25} = \\mathbf{\\frac{7}{25} + \\frac{26}{25}i} \\]</p><p><strong>(b) Modulus \\(|z|\\):</strong> Using the quotient property \\(|z_1/z_2| = |z_1|/|z_2|\\):<br>\\[ |5 + 2i| = \\sqrt{5^2 + 2^2} = \\sqrt{29}, \\qquad |3 - 4i| = \\sqrt{3^2 + (-4)^2} = \\sqrt{25} = 5 \\]\\[ |z| = \\mathbf{\\frac{\\sqrt{29}}{5}} \\approx 1.077 \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Advanced Number Theory</em> and start from \\(z = \\dfrac{5 + 2i}{3 - 4i}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(a + bi\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -365,7 +489,21 @@
         "solution": {
           "en": "Let \\(x = 0.4\\overline{36}\\). Multiply by powers of 10 to shift the non-repeating and repeating parts:<br>\\[ 10x = 4.\\overline{36} \\]\\[ 1000x = 436.\\overline{36} \\]<br>Subtract the first equation from the second to eliminate the repeating tails:<br>\\[ 1000x - 10x = 436.\\overline{36} - 4.\\overline{36} \\implies 990x = 432 \\]\\[ x = \\frac{432}{990} \\]<br>Divide numerator and denominator by their greatest common factor (18):<br>\\[ 432 \\div 18 = 24, \\qquad 990 \\div 18 = 55 \\implies x = \\mathbf{\\frac{24}{55}} \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Advanced Number Theory</em> and start from \\(x = 0.4\\overline{36} = 0.4363636\\dots\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x = 0.4\\overline{36}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -376,7 +514,21 @@
         "solution": {
           "en": "Using the infinite geometric sum formula \\(S_\\infty = \\frac{a_1}{1 - r}\\):<br>\\[ 48 = \\frac{36}{1 - r} \\implies 1 - r = \\frac{36}{48} = \\frac{3}{4} \\implies r = 1 - \\frac{3}{4} = \\mathbf{\\frac{1}{4}} \\]<br>Since \\(|r| = \\frac{1}{4} < 1\\), the convergence condition holds.<br>Find the third term \\(a_3 = a_1 r^2\\):<br>\\[ a_3 = 36 \\left(\\frac{1}{4}\\right)^2 = 36 \\times \\frac{1}{16} = \\mathbf{\\frac{9}{4}} = 2.25 \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Advanced Number Theory</em> and start from \\(a_1 = 36\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(S_\\infty = \\frac{a_1}{1 - r}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

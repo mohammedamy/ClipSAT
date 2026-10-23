@@ -29,13 +29,44 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "circle",
-          "radius": 6,
-          "labelR": "r = 6",
-          "chordAngle": 120
+          "type": "transformation_grid",
+          "title": "Triple Integrals & Cylindrical/Spherical Coordinates — Linear Transformation & Basis Action",
+          "original": [
+            [
+              1,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "transformed": [
+            [
+              -1,
+              1
+            ],
+            [
+              -1,
+              3
+            ],
+            [
+              -3,
+              2
+            ]
+          ],
+          "labels": [
+            "A",
+            "B",
+            "C"
+          ]
         },
         "caption": {
-          "en": "Circle sector and chord geometry with radius r = 6 and central angle 120°.",
+          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
           "ar": null
         }
       },
@@ -169,6 +200,18 @@
         },
         "body": {
           "en": "<p><strong>Statement:</strong> If \\( f(x,y,z) \\) is continuous on the rectangular box \\( B = [a,b] \\times [c,d] \\times [p,q] \\), then the triple integral is equal to the iterated integral evaluated in any of the \\( 3! = 6 \\) possible integration orders: \\[ \\iiint_B f(x,y,z)\\,dV = \\int_a^b \\int_c^d \\int_p^q f(x,y,z)\\,dz\\,dy\\,dx = \\int_p^q \\int_c^d \\int_a^b f(x,y,z)\\,dx\\,dy\\,dz = \\dots \\] For a general bounded solid \\( E \\subset \\mathbb{R}^3 \\) of <em>Type I</em> (projectable onto a region \\( D \\subset \\mathbb{R}^2 \\) in the \\( xy \\)-plane between surfaces \\( z = u_1(x,y) \\) and \\( z = u_2(x,y) \\)): \\[ \\iiint_E f(x,y,z)\\,dV = \\iint_D \\left[ \\int_{u_1(x,y)}^{u_2(x,y)} f(x,y,z)\\,dz \\right] dA. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Triple Integrals & Cylindrical/Spherical Coordinates)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
           "ar": null
         }
       },
@@ -353,11 +396,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example D — Triple Integrals & Cylindrical/Spherical Coordinates (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> Given that consider the vector field \\( \\mathbf{h}(u, y, z) = \\langle 7u,\\, 8y,\\, 9z \\rangle \\) on \\( \\mathbb{R}^3 \\), compute the scalar divergence \\( \\nabla \\cdot \\mathbf{h} \\).</p><p><strong>Step-by-Step Solution:</strong> The divergence is \\( 7 + 8 + 9 = 24 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Triple Integrals & Cylindrical/Spherical Coordinates)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Computing angle at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)",
+              "ar": null
+            },
+            {
+              "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
+              "ar": null
+            },
+            {
+              "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
+              "ar": null
+            },
+            {
+              "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
+              "ar": null
+            },
+            {
+              "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Assuming \\((AB)^{-1} = A^{-1}B^{-1}\\)",
+              "ar": null
+            },
+            {
+              "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
+              "ar": null
+            },
+            {
+              "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Triple Integrals & Cylindrical/Spherical Coordinates",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Multivariable & Vector Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -370,7 +490,21 @@
         "solution": {
           "en": "<p>In spherical coordinates, \\( x^2+y^2+z^2 = \\rho^2 \\) and \\( dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta \\). The ball \\( E \\) is defined by \\( 0 \\le \\rho \\le a \\), \\( 0 \\le \\phi \\le \\pi \\), \\( 0 \\le \\theta \\le 2\\pi \\). \\[ \\iiint_E \\rho^2 \\cdot (\\rho^2\\sin\\phi)\\,d\\rho\\,d\\phi\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^\\pi \\sin\\phi\\,d\\phi \\right) \\left( \\int_0^a \\rho^4\\,d\\rho \\right). \\] Evaluating each integral: \\[ 2\\pi \\times 2 \\times \\frac{a^5}{5} = \\frac{4\\pi a^5}{5}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Triple Integrals & Cylindrical/Spherical Coordinates</em> and start from \\( \\iiint_E (x^2+y^2+z^2)\\,dV \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( x^2+y^2+z^2 = \\rho^2 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -381,27 +515,69 @@
         "solution": {
           "en": "<p>Using cylindrical coordinates, the cylinder \\( E \\) is bounded by \\( 0 \\le r \\le R \\), \\( 0 \\le \\theta \\le 2\\pi \\), \\( 0 \\le z \\le h \\). The differential volume is \\( dV = r\\,dz\\,dr\\,d\\theta \\). The total mass is: \\[ M = \\iiint_E \\delta\\,dV = \\int_0^{2\\pi} \\!\\! \\int_0^R \\!\\! \\int_0^h (k r) \\cdot r\\,dz\\,dr\\,d\\theta = k \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^h dz \\right) \\left( \\int_0^R r^2\\,dr \\right). \\] \\[ M = k (2\\pi)(h)\\left( \\frac{R^3}{3} \\right) = \\frac{2\\pi k h R^3}{3}. \\]</p>",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Triple Integrals & Cylindrical/Spherical Coordinates</em> and start from \\( R \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( E \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Medium]</strong> Given that let \\( X = [0, 14] \\times [0, 13] \\) be a rectangle in the \\( (u, y) \\)-plane, compute the double integral \\( \\displaystyle\\iint_{X} 72uy\\,dA \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Triple Integrals & Cylindrical/Spherical Coordinates</em> and start from \\( X = [0, 14] \\times [0, 13] \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 18(14^2)(13^2) = 596232 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "Integrating gives \\( 18(14^2)(13^2) = 596232 \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Triple Integrals & Cylindrical/Spherical Coordinates · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> Given that let the linear scalar potential be \\( h(u, y) = 2u + 24y - 19 \\), compute the squared gradient norm \\( \\|\\nabla h\\|^2 \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Triple Integrals & Cylindrical/Spherical Coordinates</em> and start from \\( h(u, y) = 2u + 24y - 19 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\nabla h = \\langle 2, 24 \\rangle \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Triple Integrals & Cylindrical/Spherical Coordinates · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Since \\( \\nabla h = \\langle 2, 24 \\rangle \\), \\( \\|\\nabla h\\|^2 = 2^2 + 24^2 = 580 \\).",
           "ar": null
         }
       }

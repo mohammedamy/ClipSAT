@@ -41,46 +41,45 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Complex Numbers",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Algebraic &amp; Geometric Duality of \\(\\mathbb{C}\\):</strong> Every complex number \\(z = x + iy\\) corresponds bijectively to a point \\((x, y)\\) in the Argand plane with modulus \\(r = |z| = \\sqrt{x^2 + y^2}\\) and principal argument \\(\\theta = \\arg(z) \\in (-\\pi, \\pi]\\). In exponential Euler form, \\(z = re^{i\\theta} = r(\\cos\\theta + i\\sin\\theta)\\), multiplication scales moduli and adds arguments: \\(z_1 z_2 = r_1 r_2 e^{i(\\theta_1 + \\theta_2)}\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Complex Numbers — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
+          "type": "argand",
+          "title": "Complex Numbers — Argand Plane & Conjugate Pair",
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
+              "re": 3,
+              "im": 6,
+              "label": "z = 3 + 6i",
+              "vector": true
             },
             {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "re": 3,
+              "im": -6,
+              "label": "z* = 3 - 6i",
+              "vector": true,
+              "color": "amber"
             }
-          ]
+          ],
+          "circle": {
+            "re": 0,
+            "im": 0,
+            "r": 6.71
+          }
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Argand diagram showing complex vector z = 3 + 6i, its conjugate z* = 3 − 6i, and modulus circle |z| = √45.",
           "ar": null
         }
       },
@@ -240,6 +239,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Complex Numbers)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why De Moivre's Theorem &amp; Conjugate Root Pairing Hold:</strong> By Euler's identity \\(e^{i\\theta} = \\cos\\theta + i\\sin\\theta\\), raising \\(z = re^{i\\theta}\\) to the \\(n\\)-th power gives:</p>\\[ z^n = \\left(re^{i\\theta}\\right)^n = r^n e^{in\\theta} = r^n(\\cos(n\\theta) + i\\sin(n\\theta)) \\]<p>Furthermore, if \\(P(z) = \\sum_{k=0}^n a_k z^k\\) has real coefficients (\\(a_k \\in \\mathbb{R}\\)), taking complex conjugates across \\(P(z_0) = 0\\) uses \\(\\overline{z_1 + z_2} = \\bar{z}_1 + \\bar{z}_2\\) and \\(\\bar{a}_k = a_k\\) to prove \\(P(\\bar{z}_0) = \\overline{P(z_0)} = 0\\). Thus non-real roots of real polynomials always occur in conjugate pairs \\(\\alpha \\pm i\\beta\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example 9.A",
@@ -266,11 +277,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example C — Complex Numbers (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 4 \\) and vertical component \\( \\Delta y = 9 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (4)^2 + (9)^2 = 16 + 81 = \\mathbf{97} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(4)(9) = \\mathbf{18} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> Find the Cartesian equation of the locus \\(\\arg(z-(-2))=45^\\circ\\).</p><p><strong>Step-by-Step Solution:</strong> \\(\\arg(z-(-2))=45^\\circ\\) is the ray from \\((-2,0)\\) with slope \\(\\tan45^\\circ=1\\): \\(y=x-(-2)\\).</p>",
           "ar": null
         }
       },
@@ -278,11 +289,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example D — Complex Numbers (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> In the plane, the line \\( 2s + 13y = 26 \\) intersects the axes at points \\( K \\) and \\( L \\). Calculate the sum of intercepts \\( u \\) of \\( 2s + 13y = 26 \\).</p><p><strong>Step-by-Step Solution:</strong> The intercepts are \\( 13 \\) and \\( 2 \\), whose sum is \\( 13 + 2 = 15 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Complex Numbers)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Taking \\(\\arg(-3 + 3i) = \\tan^{-1}(-1) = -\\pi/4\\)",
+              "ar": null
+            },
+            {
+              "en": "Places a 2nd-quadrant complex number in the 4th quadrant.",
+              "ar": null
+            },
+            {
+              "en": "Plot in Argand plane first: \\(\\arg(-{p} + {p}i) = \\pi - \\pi/4 = 3\\pi/4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Simplifying \\(i^2 = 1\\) in \\((a+bi)(c+di)\\)",
+              "ar": null
+            },
+            {
+              "en": "Forgets \\(i^2 = -1\\), flipping the sign of \\(bd\\) in the real part.",
+              "ar": null
+            },
+            {
+              "en": "Group real and imaginary parts carefully: \\((ac - bd) + (ad + bc)i\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Reading center of \\(|z + 3 - 6i| = 4\\) as \\((3, -6)\\)",
+              "ar": null
+            },
+            {
+              "en": "Fails to rewrite in standard form \\(|z - z_0| = r\\).",
+              "ar": null
+            },
+            {
+              "en": "Factor out the minus sign: \\(|z - (-3 + 6i)| = 4 \\implies z_0 = (-3, 6)\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Complex Numbers",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Verification Tip (Cambridge International A Level (9709 Paper 3 / Paper 6)):</strong> Always check complex division \\(\\dfrac{z_1}{z_2}\\) by verifying that \\(|z_1 / z_2| = |z_1| / |z_2|\\). If the moduli ratio does not match, you multiplied the denominator by \\(a + bi\\) instead of the conjugate \\(a - bi\\).</p>",
           "ar": null
         }
       },
@@ -295,7 +383,21 @@
         "solution": {
           "en": "Multiply by conjugate: \\(\\dfrac{(3+4i)(1+2i)}{(1-2i)(1+2i)}=\\dfrac{3+6i+4i-8}{1+4}=\\dfrac{-5+10i}{5}=-1+2i\\).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Complex Numbers</em> and start from \\(z_1=3+4i\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "figure",
@@ -349,27 +451,94 @@
         "solution": {
           "en": "<p>The locus \\(|z - (2 + 3i)| \\le 2\\) represents a circular disc of radius \\(R = 2\\) with center at \\(C(2, 3)\\).</p><p>The distance from the origin \\(O(0, 0)\\) to the center \\(C\\) is:</p>\\[|C| = \\sqrt{2^2 + 3^2} = \\sqrt{4 + 9} = \\sqrt{13} \\approx 3.6055\\]<p>The point on the disc farthest from the origin lies on the line passing through \\(O\\) and \\(C\\), on the far boundary of the circle:</p>\\[|z|_{\\max} = |C| + R = \\sqrt{13} + 2 \\approx 3.606 + 2 = 5.61\\text{ (3 s.f.)}\\]",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Complex Numbers</em> and start from \\(P\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(|z - (2 + 3i)| \\le 2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Easy]</strong> The ordered pair \\( (s, y) \\) satisfies \\( s + y = 21 \\) and \\( 10s + 20y = 310 \\). Calculate the coordinate \\( s \\) in \\( u(s, y) \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Complex Numbers</em> and start from \\( (s, y) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( y = 21 - s \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "Substituting \\( y = 21 - s \\) into \\( 10s + 20y = 310 \\) yields \\( s = 11 \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Complex Numbers · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> In the coordinate plane, consider the lines \\( u(s) = 20s - 10 \\) and \\( v(s) = 290 \\). Calculate the intersection coordinate \\( s \\) where \\( u(s) = v(s) \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Complex Numbers</em> and start from \\( u(s) = 20s - 10 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 20s - 10 = 290 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "en": "Setting \\( 20s - 10 = 290 \\) yields \\( 20s = 300 \\implies s = 15 \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Complex Numbers · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 5 · Hard]</strong> The point \\( K(20, 5) \\) lies on the line \\( us - 20y = -20 \\). Calculate the coefficient \\( u \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Complex Numbers</em> and start from \\( K(20, 5) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( (20, 5) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Substituting \\( (20, 5) \\) gives \\( 20u = 80 \\implies u = 4 \\).",
           "ar": null
         }
       }

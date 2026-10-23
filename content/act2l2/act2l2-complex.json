@@ -29,44 +29,31 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Complex Numbers — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
+          "type": "argand",
+          "title": "Complex Numbers — Argand Plane & Conjugate Pair",
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
+              "re": 5,
+              "im": 6,
+              "label": "z = 5 + 6i",
+              "vector": true
             },
             {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "re": 5,
+              "im": -6,
+              "label": "z* = 5 - 6i",
+              "vector": true,
+              "color": "amber"
             }
-          ]
+          ],
+          "circle": {
+            "re": 0,
+            "im": 0,
+            "r": 7.81
+          }
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Argand diagram showing complex vector z = 5 + 6i, its conjugate z* = 5 − 6i, and modulus circle |z| = √61.",
           "ar": null
         }
       },
@@ -406,11 +393,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example D — Complex Numbers (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> For the imaginary unit \\( i \\) such that \\( i^2 = -1 \\), what is the product \\( (4 - 3i)(2 + 5i) \\)?</p><p><strong>Step-by-Step Solution:</strong> To find the product of the two complex numbers, expand using the distributive property (FOIL):\n\\[\n(4 - 3i)(2 + 5i) = 4(2) + 4(5i) - 3i(2) - 3i(5i)\n\\]\nMultiply the individual terms:\n\\[\n= 8 + 20i - 6i - 15i^2\n\\]\nSubstitute \\( i^2 = -1 \\):\n\\[\n= 8 + 14i - 15(-1) = 8 + 14i + 15 = 23 + 14i\n\\]\nCommon errors:\n- \\( -7 + 14i \\) results from forgetting that \\( i^2 = -1 \\) changes the sign of \\( -15i^2 \\), incorrectly computing \\( 8 - 15 = -7 \\).\n- \\( 8 - 15i \\) results from only multiplying the first terms and last terms, omitting the cross terms. <strong>Final Answer:</strong> \\( 23 + 14i \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Complex Numbers)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Taking \\(\\arg(-5 + 5i) = \\tan^{-1}(-1) = -\\pi/4\\)",
+              "ar": null
+            },
+            {
+              "en": "Places a 2nd-quadrant complex number in the 4th quadrant.",
+              "ar": null
+            },
+            {
+              "en": "Plot in Argand plane first: \\(\\arg(-{p} + {p}i) = \\pi - \\pi/4 = 3\\pi/4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Simplifying \\(i^2 = 1\\) in \\((a+bi)(c+di)\\)",
+              "ar": null
+            },
+            {
+              "en": "Forgets \\(i^2 = -1\\), flipping the sign of \\(bd\\) in the real part.",
+              "ar": null
+            },
+            {
+              "en": "Group real and imaginary parts carefully: \\((ac - bd) + (ad + bc)i\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Reading center of \\(|z + 5 - 6i| = 4\\) as \\((5, -6)\\)",
+              "ar": null
+            },
+            {
+              "en": "Fails to rewrite in standard form \\(|z - z_0| = r\\).",
+              "ar": null
+            },
+            {
+              "en": "Factor out the minus sign: \\(|z - (-5 + 6i)| = 4 \\implies z_0 = (-5, 6)\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Complex Numbers",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Verification Tip (ACT International Subject Test — Math 2):</strong> Always check complex division \\(\\dfrac{z_1}{z_2}\\) by verifying that \\(|z_1 / z_2| = |z_1| / |z_2|\\). If the moduli ratio does not match, you multiplied the denominator by \\(a + bi\\) instead of the conjugate \\(a - bi\\).</p>",
           "ar": null
         }
       },
@@ -424,7 +488,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Multiply numerator and denominator by the conjugate \\( 1 + 2i \\):</strong><br>\\[ z = \\frac{(4+7i)(1+2i)}{(1-2i)(1+2i)} = \\frac{4(1) - 7(2) + [4(2) + 7(1)]i}{1^2 + (-2)^2} \\]</p><p><strong>Step 2: Simplify numerator and denominator:</strong><br>\\[ z = \\frac{4 - 14 + (8 + 7)i}{1 + 4} = \\frac{-10 + 15i}{5} = \\mathbf{-2 + 3i}. \\]</p><p><strong>Step 3: Compute modulus squared:</strong><br>\\[ |z|^2 = (-2)^2 + 3^2 = 4 + 9 = \\mathbf{13}. \\]<br>(Verification via quotient property: \\( |z|^2 = \\frac{|4+7i|^2}{|1-2i|^2} = \\frac{4^2+7^2}{1^2+(-2)^2} = \\frac{16+49}{1+4} = \\frac{65}{5} = 13 \\) ✓).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Complex Numbers</em> and start from \\( z = \\dfrac{4 + 7i}{1 - 2i} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 1 + 2i \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -436,7 +514,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Compute the discriminant:</strong><br>\\[ \\Delta = b^2 - 4ac = (-6)^2 - 4(2)(9) = 36 - 72 = -36. \\]</p><p><strong>Step 2: Apply the quadratic formula:</strong><br>\\[ x = \\frac{-b \\pm \\sqrt{\\Delta}}{2a} = \\frac{6 \\pm \\sqrt{-36}}{2(2)} = \\frac{6 \\pm 6i}{4} = \\mathbf{\\frac{3}{2} \\pm \\frac{3}{2}i}. \\]</p><p><strong>Step 3: Verify using Vieta's formulas:</strong><br>Sum of roots: \\( \\left(\\frac{3}{2} + \\frac{3}{2}i\\right) + \\left(\\frac{3}{2} - \\frac{3}{2}i\\right) = 3 = -\\frac{b}{a} = -\\frac{-6}{2} = 3 \\) ✓.<br>Product of roots: \\( \\left(\\frac{3}{2}\\right)^2 + \\left(\\frac{3}{2}\\right)^2 = \\frac{9}{4} + \\frac{9}{4} = \\frac{18}{4} = \\frac{9}{2} = \\frac{c}{a} = \\frac{9}{2} \\) ✓.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Complex Numbers</em> and start from \\( 2x^2 - 6x + 9 = 0 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\Delta = b^2 - 4ac = (-6)^2 - 4(2)(9) = 36 - 72 = -36. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -448,7 +540,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Convert \\( 1 - i \\) to polar form:</strong><br>Modulus: \\( r = \\sqrt{1^2 + (-1)^2} = \\sqrt{2} \\).<br>Argument: \\( a = 1 > 0, b = -1 < 0 \\implies \\theta = -\\frac{\\pi}{4} \\) (or \\( 315^\\circ \\)).<br>Thus \\( 1 - i = \\sqrt{2}\\left(\\cos\\left(-\\frac{\\pi}{4}\\right) + i\\sin\\left(-\\frac{\\pi}{4}\\right)\\right) \\).</p><p><strong>Step 2: Apply De Moivre's Theorem:</strong><br>\\[ (1 - i)^{10} = (\\sqrt{2})^{10} \\left[\\cos\\left(-\\frac{10\\pi}{4}\\right) + i\\sin\\left(-\\frac{10\\pi}{4}\\right)\\right] = 2^5 \\left[\\cos\\left(-\\frac{5\\pi}{2}\\right) + i\\sin\\left(-\\frac{5\\pi}{2}\\right)\\right]. \\]</p><p><strong>Step 3: Simplify the trigonometric terms:</strong><br>\\( -\\frac{5\\pi}{2} = -2\\pi - \\frac{\\pi}{2} \\equiv -\\frac{\\pi}{2} \\).<br>\\( \\cos\\left(-\\frac{\\pi}{2}\\right) = 0 \\) and \\( \\sin\\left(-\\frac{\\pi}{2}\\right) = -1 \\).<br>\\[ (1 - i)^{10} = 32(0 - i) = \\mathbf{-32i}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Complex Numbers</em> and start from \\( (1 - i)^{10} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 1 - i \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -460,7 +566,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Substitute \\( z = x + yi \\):</strong><br>\\[ |(x - 3) + yi| = |x + (y + 3)i| \\]</p><p><strong>Step 2: Square both sides using modulus definition:</strong><br>\\[ (x - 3)^2 + y^2 = x^2 + (y + 3)^2 \\]</p><p><strong>Step 3: Expand the squares:</strong><br>\\[ x^2 - 6x + 9 + y^2 = x^2 + y^2 + 6y + 9 \\]</p><p><strong>Step 4: Cancel common terms \\( x^2, y^2, 9 \\):</strong><br>\\[ -6x = 6y \\implies \\mathbf{y = -x}. \\]</p><p><strong>Geometric description:</strong> This locus is a straight line through the origin with slope \\( -1 \\), representing the perpendicular bisector of the segment connecting \\( (3, 0) \\) and \\( (0, -3) \\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Complex Numbers</em> and start from \\( x \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( z = x + yi \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

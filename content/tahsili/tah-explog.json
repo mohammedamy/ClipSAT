@@ -40,6 +40,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Exponentials & Logarithms",
+          "ar": "● الفهم المفاهيمي العميق — الأسس واللوغاريتمات"
+        },
+        "body": {
+          "en": "<p><strong>Domain Restrictions, Invertibility &amp; Asymptotic Behavior:</strong> An algebraic or transcendental function \\(f: D \\to R\\) possesses an inverse \\(f^{-1}: R \\to D\\) if and only if \\(f\\) is strictly one-to-one (bijective) on \\(D\\), guaranteeing that \\(\\text{dom}(f^{-1}) = \\text{ran}(f)\\) and \\(\\text{ran}(f^{-1}) = \\text{dom}(f)\\). For logarithmic and radical equations, every algebraic step that squares both sides or combines logs (\\(\\log_b u + \\log_b v = \\log_b(uv)\\)) can enlarge the solution set, requiring a final domain check against the original equation.</p>",
+          "ar": "<p><strong>قيود المجال والدالة العكسية:</strong> تمتلك الدالة \\(f\\) معكوساً \\(f^{-1}\\) إذا وفقط إذا كانت متباينة (واحد لواحد)، ويكون مجال \\(f^{-1}\\) هو مدى \\(f\\) تماماً.</p>"
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
           "type": "fn",
@@ -273,6 +285,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Exponentials & Logarithms)",
+          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (الأسس واللوغاريتمات)"
+        },
+        "body": {
+          "en": "<p><strong>Why Completing the Square &amp; Log-Linearization Work:</strong> Any quadratic \\(f(x) = ax^2 + bx + c\\) (\\(a \\ne 0\\)) can be rewritten by factoring \\(a\\) from the first two terms and adding/subtracting \\((b/2a)^2\\):</p>\\[ ax^2 + bx + c = a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\]<p>Because \\(\\left(x + \\frac{b}{2a}\\right)^2 \\ge 0\\) for all \\(x \\in \\mathbb{R}\\), the extreme value \\(k = c - \\frac{b^2}{4a}\\) is attained uniquely at the axis of symmetry \\(x = -\\frac{b}{2a}\\), restricting the range to \\([k, \\infty)\\) (if \\(a > 0\\)) and making \\(f\\) invertible on \\(x \\ge -\\frac{b}{2a}\\). Similarly, applying \\(\\ln\\) to power laws \\(y = ax^n\\) yields \\(\\ln y = n\\ln x + \\ln a\\), transforming a nonlinear curve into a straight line of gradient \\(n\\).</p>",
+          "ar": "<p><strong>برهان إكمال المربع وتحديد المدى:</strong> بكتابة \\(ax^2+bx+c = a(x+\\frac{b}{2a})^2 + (c-\\frac{b^2}{4a})\\) وبما أن المربع الكامل غير سالب دائماً، يتحدد رأس القطع ومدى الدالة بدقة.</p>"
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 8.A — Solving Exponential Equations by Equating Bases",
@@ -320,6 +344,83 @@
         }
       },
       {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Exponentials & Logarithms)",
+          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (الأسس واللوغاريتمات)"
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع للطالب"
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": "السبب الرياضي للخطأ"
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Expanding \\(\\ln(x + y)\\) as \\(\\ln x + \\ln y\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Confuses the product law \\(\\ln(xy) = \\ln x + \\ln y\\) with a non-existent sum rule.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Only factor products, quotients, and powers inside logarithms: \\(\\ln(xy) = \\ln x + \\ln y\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Keeping both roots of \\(\\sqrt{2x+3} = x - 3\\) without checking \\(x - 3 \\ge 0\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Squaring both sides loses the sign of \\(x - {r}\\), introducing roots where \\(\\sqrt{\\cdot} = -\\text{number}\\).",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Enforce the range condition \\(x \\ge 3\\) before or after squaring.",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Restricting domain of \\(f(x) = (x-3)^2 + 1\\) to \\(x \\ge 0\\) for invertibility",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "The vertex is at \\(x = 3\\), so \\(f(2) = f(4) = 2\\) fails the horizontal line test on \\(x \\ge 0\\).",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Restrict the domain at the vertex axis of symmetry: \\(x \\ge 3\\) (or \\(x \\le 3\\)).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Exponentials & Logarithms",
+          "ar": "▲ استراتيجية الحل السريع والتحقق — الأسس واللوغاريتمات"
+        },
+        "body": {
+          "en": "<p><strong>Fast Exam Check (Qiyas Scholastic Achievement Admission Test (SAAT / التحصيلي)):</strong> To verify an inverse function \\(f^{-1}(x)\\) in 5 seconds, pick a simple input \\(x_0\\), compute \\(y_0 = f(x_0)\\), and check that \\(f^{-1}(y_0) = x_0\\). Also verify that the graph of \\(y = f^{-1}(x)\\) reflects \\(y = f(x)\\) across \\(y = x\\).</p>",
+          "ar": "<p><strong>فحص سريع للدالة العكسية:</strong> اختر عدداً بسيطاً \\(x_0\\) واحسب \\(y_0 = f(x_0)\\) ثم تأكد من أن تعويض \\(y_0\\) في \\(f^{-1}\\) يعيد \\(x_0\\) نفسه.</p>"
+        }
+      },
+      {
         "kind": "practiceProblem",
         "id": "tah-explog-p1",
         "question": {
@@ -329,7 +430,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Unify bases:</strong> Write 27 as a power of 3: \\(27 = 3^3\\).</p><p><strong>Step 2: Equate exponents and solve:</strong> \\[ 2x - 1 = 3 \\implies 2x = 4 \\implies \\mathbf{x = 2}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: توحيد الأساس:</strong> كتابة 27 في صورة قوة للأساس 3: \\(27 = 3^3\\).</p><p><strong>الخطوة 2: مساواة الأسس وحل المعادلة:</strong> \\[ 2x - 1 = 3 \\implies 2x = 4 \\implies \\mathbf{x = 2}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Exponentials & Logarithms</em> and start from \\(x\\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\(x\\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(27 = 3^3\\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\(27 = 3^3\\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -341,7 +456,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Evaluate each logarithm:</strong> Since \\(32 = 2^5\\), \\(\\log_2(32) = 5\\). Since \\(81 = 3^4\\), \\(\\log_3(81) = 4\\).</p><p><strong>Step 2: Subtract:</strong> \\[ 5 - 4 = \\mathbf{1}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: حساب قيمة كل لوغاريتم:</strong> بما أن \\(32 = 2^5\\)، فإن \\(\\log_2(32) = 5\\). وبما أن \\(81 = 3^4\\)، فإن \\(\\log_3(81) = 4\\).</p><p><strong>الخطوة 2: الطرح:</strong> \\[ 5 - 4 = \\mathbf{1}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Exponentials & Logarithms</em> and start from \\( \\log_2(32) - \\log_3(81) \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( \\log_2(32) - \\log_3(81) \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(32 = 2^5\\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\(32 = 2^5\\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -353,7 +482,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Rewrite right side with base 2:</strong> \\(32 = 2^5\\), so \\[ 2^{3x - 1} \\ge 2^5. \\]</p><p><strong>Step 2: Since base \\(2 > 1\\), preserve inequality direction:</strong> \\[ 3x - 1 \\ge 5 \\implies 3x \\ge 6 \\implies \\mathbf{x \\ge 2}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: توحيد الأساس:</strong> \\(32 = 2^5\\)، فتصبح المتباينة: \\[ 2^{3x - 1} \\ge 2^5. \\]</p><p><strong>الخطوة 2: بما أن الأساس 2 أكبر من الواحد، يبقى اتجاه المتباينة كما هو:</strong> \\[ 3x - 1 \\ge 5 \\implies 3x \\ge 6 \\implies \\mathbf{x \\ge 2}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Exponentials & Logarithms</em> and start from \\( 2^{3x - 1} \\ge 32 \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( 2^{3x - 1} \\ge 32 \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(32 = 2^5\\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\(32 = 2^5\\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -365,7 +508,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Apply inverse property \\(b^{\\log_b x} = x\\):</strong> \\[ 5^{\\log_5(12)} = 12. \\]</p><p><strong>Step 2: Apply zero property \\(\\log_b(1) = 0\\):</strong> \\[ \\log_7(1) = 0. \\]</p><p><strong>Step 3: Sum the terms:</strong> \\[ 12 + 0 = \\mathbf{12}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: تطبيق خاصية المعكوس \\(b^{\\log_b x} = x\\):</strong> \\[ 5^{\\log_5(12)} = 12. \\]</p><p><strong>الخطوة 2: تطبيق خاصية لوغاريتم الواحد:</strong> \\[ \\log_7(1) = 0. \\]</p><p><strong>الخطوة 3: الجمع:</strong> \\[ 12 + 0 = \\mathbf{12}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Exponentials & Logarithms</em> and start from \\( 5^{\\log_5(12)} + \\log_7(1) \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( 5^{\\log_5(12)} + \\log_7(1) \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(b^{\\log_b x} = x\\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\(b^{\\log_b x} = x\\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       }
     ]
   },

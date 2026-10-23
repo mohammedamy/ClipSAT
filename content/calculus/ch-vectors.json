@@ -30,44 +30,31 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Vectors &amp; Vector-Valued Functions — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
+          "type": "sign_chart",
+          "title": "Vectors &amp; Vector-Valued Functions — First Derivative Sign Chart & Extrema",
+          "ticks": [
             {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "x": -3,
+              "label": "x = -3"
             },
             {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "x": 7,
+              "label": "x = 7"
             }
           ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
+          "signs": [
+            "+",
+            "−",
+            "+"
+          ],
+          "behaviors": [
+            "↗ Increasing",
+            "↘ Decreasing",
+            "↗ Increasing"
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Derivative sign chart for f'(x) showing local maximum at x = −3 (+ to −) and local minimum at x = 7 (− to +).",
           "ar": null
         }
       },
@@ -80,6 +67,18 @@
         },
         "body": {
           "en": "<p>The <strong>dot product</strong> (scalar product) of vectors \\(\\mathbf{u} = \\langle u_1, u_2, u_3 \\rangle\\) and \\(\\mathbf{v} = \\langle v_1, v_2, v_3 \\rangle\\) is defined algebraically by:</p>\\[ \\mathbf{u} \\cdot \\mathbf{v} = u_1 v_1 + u_2 v_2 + u_3 v_3 \\]<p>and geometrically satisfies:</p>\\[ \\mathbf{u} \\cdot \\mathbf{v} = |\\mathbf{u}|\\,|\\mathbf{v}|\\cos\\theta \\]<p>where \\(\\theta \\in [0, \\pi]\\) is the angle between \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\). Consequently, non-zero vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) are <strong>orthogonal</strong> (perpendicular) if and only if \\(\\mathbf{u} \\cdot \\mathbf{v} = 0\\).</p></p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof via the Law of Cosines</strong></summary><div style=\"margin-top:6px\"><p>Consider the triangle in \\(\\mathbb{R}^3\\) formed by the vectors \\(\\mathbf{u}\\), \\(\\mathbf{v}\\), and the displacement vector \\(\\mathbf{w} = \\mathbf{u} - \\mathbf{v}\\). By the geometric Law of Cosines:</p>\\[ |\\mathbf{u} - \\mathbf{v}|^2 = |\\mathbf{u}|^2 + |\\mathbf{v}|^2 - 2|\\mathbf{u}|\\,|\\mathbf{v}|\\cos\\theta \\]<p>Expanding the left-hand side using algebraic dot product properties:</p>\\[ |\\mathbf{u} - \\mathbf{v}|^2 = (\\mathbf{u} - \\mathbf{v}) \\cdot (\\mathbf{u} - \\mathbf{v}) = \\mathbf{u} \\cdot \\mathbf{u} - 2\\mathbf{u} \\cdot \\mathbf{v} + \\mathbf{v} \\cdot \\mathbf{v} = |\\mathbf{u}|^2 - 2(\\mathbf{u} \\cdot \\mathbf{v}) + |\\mathbf{v}|^2 \\]<p>Equating the two expressions:</p>\\[ |\\mathbf{u}|^2 - 2(\\mathbf{u} \\cdot \\mathbf{v}) + |\\mathbf{v}|^2 = |\\mathbf{u}|^2 + |\\mathbf{v}|^2 - 2|\\mathbf{u}|\\,|\\mathbf{v}|\\cos\\theta \\]\\[ -2(\\mathbf{u} \\cdot \\mathbf{v}) = -2|\\mathbf{u}|\\,|\\mathbf{v}|\\cos\\theta \\implies \\mathbf{u} \\cdot \\mathbf{v} = |\\mathbf{u}|\\,|\\mathbf{v}|\\cos\\theta \\quad \\blacksquare \\]</div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Vectors &amp; Vector-Valued Functions)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Differentiability Implies Continuity &amp; How Implicit Differentiation Works:</strong> Notice that for \\(x \\ne a\\), we can write \\(f(x) - f(a) = \\dfrac{f(x) - f(a)}{x - a}\\cdot (x - a)\\). Taking the limit as \\(x \\to a\\) by the Product Law gives:</p>\\[ \\lim_{x \\to a} \\bigl(f(x) - f(a)\\bigr) = f'(a)\\cdot 0 = 0 \\implies \\lim_{x \\to a} f(x) = f(a) \\]<p>Similarly, when differentiating an implicit relation \\(F(x, y) = c\\) with respect to \\(x\\), \\(y = y(x)\\) is an inner function of \\(x\\). By the Chain Rule, \\(\\dfrac{d}{dx}\\bigl[y^n\\bigr] = ny^{n-1}\\dfrac{dy}{dx}\\), and for product terms \\(\\dfrac{d}{dx}[xy] = y + x\\dfrac{dy}{dx}\\).</p>",
           "ar": null
         }
       },
@@ -99,11 +98,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example B — Vectors &amp; Vector-Valued Functions (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> Velocity of curve \\(\\mathbf{r}(t)=(t^2,\\sin t, e^t)\\) at \\(t=0\\):</p><p><strong>Step-by-Step Solution:</strong> \\(\\mathbf{r}'(t)=(2t,\\cos t,e^t)\\), so \\(\\mathbf{r}'(0)=(0,1,1)\\). <strong>Final Answer:</strong> \\((0,1,1)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Vectors &amp; Vector-Valued Functions)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Assuming \\(f'(c) = 0\\) guarantees a local extremum",
+              "ar": null
+            },
+            {
+              "en": "Inflection points like \\(f(x) = x^3\\) at \\(x = 0\\) have \\(f'(0) = 0\\) without changing sign.",
+              "ar": null
+            },
+            {
+              "en": "Verify that \\(f'(x)\\) actually changes sign across \\(x = c\\) (or check \\(f''(c) \\ne 0\\)).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing parametric \\(\\frac{d^2y}{dx^2}\\) as \\(\\frac{\\ddot{y}}{\\ddot{x}}\\)",
+              "ar": null
+            },
+            {
+              "en": "violates the Chain Rule \\(\\frac{d}{dx} = \\frac{1}{dx/dt}\\frac{d}{dt}\\).",
+              "ar": null
+            },
+            {
+              "en": "Differentiate \\(dy/dx\\) with respect to \\(t\\), then divide by \\(dx/dt\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Forgetting product rule on \\(xy\\) in implicit differentiation",
+              "ar": null
+            },
+            {
+              "en": "Treats \\(y\\) as a constant instead of \\(y(x)\\).",
+              "ar": null
+            },
+            {
+              "en": "Always expand \\(\\frac{d}{dx}(xy) = y + x\\frac{dy}{dx}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Vectors &amp; Vector-Valued Functions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Justification Rule (University Single-Variable & Multivariable Calculus):</strong> When justifying local extrema or points of inflection on free-response questions, state \"because \\(f'(x)\\) changes sign from positive to negative at \\(x = c\\)\" rather than referring vaguely to \"it\" or \"the graph.\"</p>",
           "ar": null
         }
       },
@@ -116,7 +192,21 @@
         "solution": {
           "en": "Compute the dot product:<br>\\[ \\mathbf{u} \\cdot \\mathbf{v} = (2)(6) + (-3)(8) + (4)(3) = 12 - 24 + 12 = 0 \\]<br>Since the dot product is exactly 0 and neither vector is the zero vector, \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) are strictly <strong>orthogonal</strong> (perpendicular).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Vectors &amp; Vector-Valued Functions</em> and start from \\(\\mathbf{u} = \\langle 2, -3, 4 \\rangle\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\mathbf{u} \\cdot \\mathbf{v} = (2)(6) + (-3)(8) + (4)(3) = 12 - 24 + 12 = 0 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "explorer",
@@ -370,7 +460,21 @@
         "solution": {
           "en": "Find vectors \\(\\vec{AB}\\) and \\(\\vec{AC}\\):<br>\\(\\vec{AB} = \\langle 2, -1, 2 \\rangle\\)<br>\\(\\vec{AC} = \\langle -1, 1, 4 \\rangle\\)<br>Compute the cross product:<br>\\[ \\vec{AB} \\times \\vec{AC} = \\begin{vmatrix} \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ 2 & -1 & 2 \\\\ -1 & 1 & 4 \\end{vmatrix} = \\mathbf{i}(-4 - 2) - \\mathbf{j}(8 - (-2)) + \\mathbf{k}(2 - 1) = \\langle -6, -10, 1 \\rangle \\]<br>Magnitude of cross product:<br>\\[ |\\vec{AB} \\times \\vec{AC}| = \\sqrt{(-6)^2 + (-10)^2 + 1^2} = \\sqrt{36 + 100 + 1} = \\sqrt{137} \\]<br>The triangle area is half the parallelogram area: \\(\\text{Area} = \\frac{1}{2}\\sqrt{137}\\).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Vectors &amp; Vector-Valued Functions</em> and start from \\(A(1, 1, 0)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\vec{AB}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "callout",
@@ -417,16 +521,44 @@
         "solution": {
           "en": "Compute derivatives:<br>\\(\\mathbf{r}'(t) = \\langle 1, 2t, 2t^2 \\rangle\\)<br>\\(\\mathbf{r}''(t) = \\langle 0, 2, 4t \\rangle\\)<br>At \\(t = 1\\):<br>\\(\\mathbf{r}'(1) = \\langle 1, 2, 2 \\rangle \\implies |\\mathbf{r}'(1)| = \\sqrt{1 + 4 + 4} = 3\\)<br>\\(\\mathbf{r}''(1) = \\langle 0, 2, 4 \\rangle\\)<br><strong>Tangential acceleration \\(a_T\\):</strong><br>\\[ a_T = \\frac{\\mathbf{r}' \\cdot \\mathbf{r}''}{|\\mathbf{r}'|} = \\frac{(1)(0) + (2)(2) + (2)(4)}{3} = \\frac{0 + 4 + 8}{3} = \\frac{12}{3} = 4 \\]<br><strong>Normal acceleration \\(a_N\\):</strong><br>Compute cross product at \\(t = 1\\):<br>\\[ \\mathbf{r}'(1) \\times \\mathbf{r}''(1) = \\begin{vmatrix} \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ 1 & 2 & 2 \\\\ 0 & 2 & 4 \\end{vmatrix} = \\mathbf{i}(8 - 4) - \\mathbf{j}(4 - 0) + \\mathbf{k}(2 - 0) = \\langle 4, -4, 2 \\rangle \\]\\[ |\\mathbf{r}'(1) \\times \\mathbf{r}''(1)| = \\sqrt{4^2 + (-4)^2 + 2^2} = \\sqrt{16 + 16 + 4} = \\sqrt{36} = 6 \\]\\[ a_N = \\frac{|\\mathbf{r}' \\times \\mathbf{r}''|}{|\\mathbf{r}'|} = \\frac{6}{3} = 2 \\]<br><em>Verification:</em> \\(|\\mathbf{a}|^2 = a_T^2 + a_N^2 = 4^2 + 2^2 = 20\\). Magnitude of \\(\\mathbf{r}''(1) = \\sqrt{0^2 + 2^2 + 4^2} = \\sqrt{20}\\). Matches exactly.",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Vectors &amp; Vector-Valued Functions</em> and start from \\(\\mathbf{r}(t) = \\langle t, t^2, \\frac{2}{3}t^3 \\rangle\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\mathbf{r}'(t) = \\langle 1, 2t, 2t^2 \\rangle\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Vectors &amp; Vector-Valued Functions · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> Consider the \\( 2 \\times 2 \\) matrix \\( A_{x} = \\begin{pmatrix} 4 & 25 \\\\ 13 & 4 \\end{pmatrix} \\). Compute the determinant \\( f = \\det(A_{x}) \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Vectors &amp; Vector-Valued Functions</em> and start from \\( 2 \\times 2 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( (4)(4) - (25)(13) = -309 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "The determinant is \\( (4)(4) - (25)(13) = -309 \\).",
           "ar": null
         }
       }

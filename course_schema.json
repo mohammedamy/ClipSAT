@@ -428,12 +428,17 @@
 
     "practiceProblemBlock": {
       "type": "object",
-      "description": "The in-chapter <div class=\"problem\"> pattern (act2, WP12): a question, a 'Show solution' toggle button (identical chevron-SVG markup and toggleSol(this) handler on every real instance — not parameterized here, the partial emits it verbatim), and a solution revealed on click. Distinct from calloutBlock (no style/label variants) and from the end-of-course practice-set's own numbered-problem shape.",
+      "description": "The in-chapter <div class=\"problem\"> pattern (act2, WP12): a question, optional progressive hints, a 'Show solution' toggle button (identical chevron-SVG markup and toggleSol(this) handler on every real instance — not parameterized here, the partial emits it verbatim), and a solution revealed on click. Distinct from calloutBlock (no style/label variants) and from the end-of-course practice-set's own numbered-problem shape.",
       "required": ["kind", "question", "solution"],
       "properties": {
         "kind":     { "const": "practiceProblem" },
         "id":       { "type": "string" },
         "question": { "$ref": "#/definitions/bilingualText" },
+        "hints":    {
+          "type": "array",
+          "items": { "$ref": "#/definitions/bilingualText" },
+          "description": "Optional progressive 3-tier hints revealed one by one before the full solution."
+        },
         "solution": { "$ref": "#/definitions/bilingualText" }
       },
       "additionalProperties": false

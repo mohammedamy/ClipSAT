@@ -27,46 +27,53 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Radicals &amp; Exponents",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Domain Restrictions, Invertibility &amp; Asymptotic Behavior:</strong> An algebraic or transcendental function \\(f: D \\to R\\) possesses an inverse \\(f^{-1}: R \\to D\\) if and only if \\(f\\) is strictly one-to-one (bijective) on \\(D\\), guaranteeing that \\(\\text{dom}(f^{-1}) = \\text{ran}(f)\\) and \\(\\text{ran}(f^{-1}) = \\text{dom}(f)\\). For logarithmic and radical equations, every algebraic step that squares both sides or combines logs (\\(\\log_b u + \\log_b v = \\log_b(uv)\\)) can enlarge the solution set, requiring a final domain check against the original equation.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Radicals &amp; Exponents — Coordinate Curve & Tangent Analysis (2)",
+          "title": "Radicals &amp; Exponents — Function Curve & Symmetry Analysis",
           "xrange": [
             -4,
-            4
+            6
           ],
           "yrange": [
-            -3,
-            9
+            -4,
+            6
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "(x - 2)*(x - 2) - 5",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "label": "f(x) = (x-2)² - 5"
             },
             {
-              "fn": "2*x - 3",
+              "fn": "x",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "label": "y = x"
             }
           ],
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "x": 2,
+              "y": -5,
+              "label": "Vertex (2, -5)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Parabola f(x) = (x − 2)² − 5 with vertex at (2, −5) and symmetry reference line y = x.",
           "ar": null
         }
       },
@@ -262,6 +269,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Radicals &amp; Exponents)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Completing the Square &amp; Log-Linearization Work:</strong> Any quadratic \\(f(x) = ax^2 + bx + c\\) (\\(a \\ne 0\\)) can be rewritten by factoring \\(a\\) from the first two terms and adding/subtracting \\((b/2a)^2\\):</p>\\[ ax^2 + bx + c = a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\]<p>Because \\(\\left(x + \\frac{b}{2a}\\right)^2 \\ge 0\\) for all \\(x \\in \\mathbb{R}\\), the extreme value \\(k = c - \\frac{b^2}{4a}\\) is attained uniquely at the axis of symmetry \\(x = -\\frac{b}{2a}\\), restricting the range to \\([k, \\infty)\\) (if \\(a > 0\\)) and making \\(f\\) invertible on \\(x \\ge -\\frac{b}{2a}\\). Similarly, applying \\(\\ln\\) to power laws \\(y = ax^n\\) yields \\(\\ln y = n\\ln x + \\ln a\\), transforming a nonlinear curve into a straight line of gradient \\(n\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example 9.A",
@@ -300,11 +319,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example C — Radicals &amp; Exponents (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> The positive variables \\( A \\) and \\( B \\) are inversely proportional such that \\( B = 160 \\) when \\( A = 6 \\). Compute the value of \\( B(n) \\) when \\( A = 8 \\).</p><p><strong>Step-by-Step Solution:</strong> Since \\( AB = 960 \\), when \\( A = 8 \\) we have \\( B = 120 \\).</p>",
           "ar": null
         }
       },
@@ -312,11 +331,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example D — Radicals &amp; Exponents (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> A scatterplot has least-squares regression line \\( \\hat{A}(n) = 18n + 5 \\). Compute the predicted value \\( \\hat{A}(10) \\).</p><p><strong>Step-by-Step Solution:</strong> Substituting \\( n = 10 \\) gives \\( 18(10) + 5 = 185 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Radicals &amp; Exponents)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Expanding \\(\\ln(x + y)\\) as \\(\\ln x + \\ln y\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses the product law \\(\\ln(xy) = \\ln x + \\ln y\\) with a non-existent sum rule.",
+              "ar": null
+            },
+            {
+              "en": "Only factor products, quotients, and powers inside logarithms: \\(\\ln(xy) = \\ln x + \\ln y\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Keeping both roots of \\(\\sqrt{2x+5} = x - 2\\) without checking \\(x - 2 \\ge 0\\)",
+              "ar": null
+            },
+            {
+              "en": "Squaring both sides loses the sign of \\(x - {r}\\), introducing roots where \\(\\sqrt{\\cdot} = -\\text{number}\\).",
+              "ar": null
+            },
+            {
+              "en": "Enforce the range condition \\(x \\ge 2\\) before or after squaring.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Restricting domain of \\(f(x) = (x-3)^2 + 1\\) to \\(x \\ge 0\\) for invertibility",
+              "ar": null
+            },
+            {
+              "en": "The vertex is at \\(x = 3\\), so \\(f(2) = f(4) = 2\\) fails the horizontal line test on \\(x \\ge 0\\).",
+              "ar": null
+            },
+            {
+              "en": "Restrict the domain at the vertex axis of symmetry: \\(x \\ge 3\\) (or \\(x \\le 3\\)).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Radicals &amp; Exponents",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Exam Check (Honors Algebra 1 & Foundations):</strong> To verify an inverse function \\(f^{-1}(x)\\) in 5 seconds, pick a simple input \\(x_0\\), compute \\(y_0 = f(x_0)\\), and check that \\(f^{-1}(y_0) = x_0\\). Also verify that the graph of \\(y = f^{-1}(x)\\) reflects \\(y = f(x)\\) across \\(y = x\\).</p>",
           "ar": null
         }
       },
@@ -329,7 +425,21 @@
         "solution": {
           "en": "<p> Square both sides of the equation:</p>\\[ (\\sqrt{2x + 7})^2 = (x + 2)^2 \\implies 2x + 7 = x^2 + 4x + 4. \\]<p>Rearrange into standard quadratic form:</p>\\[ x^2 + 2x - 3 = 0 \\implies (x + 3)(x - 1) = 0 \\implies x = 1 \\quad \\text{or} \\quad x = -3. \\]<p>Now check both candidate roots in the original equation:</p><ul><li>For \\( x = 1 \\): LHS = \\( \\sqrt{2(1) + 7} = \\sqrt{9} = 3 \\); RHS = \\( 1 + 2 = 3 \\). (Valid ✓)</li><li>For \\( x = -3 \\): LHS = \\( \\sqrt{2(-3) + 7} = \\sqrt{1} = 1 \\); RHS = \\( -3 + 2 = -1 \\). Since \\( 1 \\neq -1 \\), \\( x = -3 \\) is <strong>extraneous</strong>.</li></ul><p>The only real solution is \\( x = 1 \\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Radicals &amp; Exponents</em> and start from \\( \\sqrt{2x + 7} = x + 2 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( (\\sqrt{2x + 7})^2 = (x + 2)^2 \\implies 2x + 7 = x^2 + 4x + 4. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -340,27 +450,94 @@
         "solution": {
           "en": "<p>Multiply numerator and denominator by the conjugate \\(\\sqrt{5} + \\sqrt{2}\\):</p>\\[\\frac{\\sqrt{3}(\\sqrt{5} + \\sqrt{2})}{(\\sqrt{5} - \\sqrt{2})(\\sqrt{5} + \\sqrt{2})}.\\]<p>Expand denominator using difference of squares \\((a-b)(a+b) = a^2 - b^2\\):</p>\\[(\\sqrt{5})^2 - (\\sqrt{2})^2 = 5 - 2 = 3.\\]<p>Expand numerator and simplify:</p>\\[\\frac{\\sqrt{15} + \\sqrt{6}}{3}.\\]</p>",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Radicals &amp; Exponents</em> and start from \\(\\dfrac{\\sqrt{3}}{\\sqrt{5} - \\sqrt{2}}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\sqrt{5} + \\sqrt{2}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Hard]</strong> Two positive quantities \\( P \\) and \\( Q \\) are in the ratio \\( 2 : 8 \\), and the smaller quantity equals \\( 10 \\). Compute the combined total \\( r = P + Q \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Radicals &amp; Exponents</em> and start from \\( P \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( k = 5 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "With multiplier \\( k = 5 \\), \\( P + Q = (2 + 8) \\times 5 = 50 \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Radicals &amp; Exponents · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> A quantity \\( P_0 = 1400 \\) increases by \\( 50\\% \\) to \\( P_1 \\) and then decreases by \\( 40\\% \\) to \\( P_2 \\). Compute the final quantity \\( r = P_2 \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Radicals &amp; Exponents</em> and start from \\( P_0 = 1400 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 1400 \\times (1 + 0.50) \\times (1 - 0.40) = 1260 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "en": "Computing \\( 1400 \\times (1 + 0.50) \\times (1 - 0.40) = 1260 \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Radicals &amp; Exponents · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 5 · Medium]</strong> Consider the positive integers \\( P = 143 \\) and \\( Q = 165 \\). Compute the least common multiple \\( r = \\text{lcm}(P, Q) \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Radicals &amp; Exponents</em> and start from \\( P = 143 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\text{lcm}(143, 165) = \\frac{143 \\times 165}{11} = 2145 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Using \\( \\text{lcm}(143, 165) = \\frac{143 \\times 165}{11} = 2145 \\).",
           "ar": null
         }
       }

@@ -29,44 +29,31 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Limits — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
+          "type": "sign_chart",
+          "title": "Limits — First Derivative Sign Chart & Extrema",
+          "ticks": [
             {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "x": -4,
+              "label": "x = -4"
             },
             {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "x": 5,
+              "label": "x = 5"
             }
           ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
+          "signs": [
+            "+",
+            "−",
+            "+"
+          ],
+          "behaviors": [
+            "↗ Increasing",
+            "↘ Decreasing",
+            "↗ Increasing"
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Derivative sign chart for f'(x) showing local maximum at x = −4 (+ to −) and local minimum at x = 5 (− to +).",
           "ar": null
         }
       },
@@ -368,6 +355,83 @@
         }
       },
       {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Limits)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Assuming \\(f'(c) = 0\\) guarantees a local extremum",
+              "ar": null
+            },
+            {
+              "en": "Inflection points like \\(f(x) = x^3\\) at \\(x = 0\\) have \\(f'(0) = 0\\) without changing sign.",
+              "ar": null
+            },
+            {
+              "en": "Verify that \\(f'(x)\\) actually changes sign across \\(x = c\\) (or check \\(f''(c) \\ne 0\\)).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing parametric \\(\\frac{d^2y}{dx^2}\\) as \\(\\frac{\\ddot{y}}{\\ddot{x}}\\)",
+              "ar": null
+            },
+            {
+              "en": "violates the Chain Rule \\(\\frac{d}{dx} = \\frac{1}{dx/dt}\\frac{d}{dt}\\).",
+              "ar": null
+            },
+            {
+              "en": "Differentiate \\(dy/dx\\) with respect to \\(t\\), then divide by \\(dx/dt\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Forgetting product rule on \\(xy\\) in implicit differentiation",
+              "ar": null
+            },
+            {
+              "en": "Treats \\(y\\) as a constant instead of \\(y(x)\\).",
+              "ar": null
+            },
+            {
+              "en": "Always expand \\(\\frac{d}{dx}(xy) = y + x\\frac{dy}{dx}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Limits",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Justification Rule (ACT International Subject Test — Math 2):</strong> When justifying local extrema or points of inflection on free-response questions, state \"because \\(f'(x)\\) changes sign from positive to negative at \\(x = c\\)\" rather than referring vaguely to \"it\" or \"the graph.\"</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "id": "act2l2-limits-p1",
         "question": {
@@ -377,7 +441,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Check form upon direct substitution:</strong><br>\\[ \\frac{\\sqrt{4} - 2}{4 - 4} = \\frac{0}{0} \\quad (\\text{indeterminate form}). \\]</p><p><strong>Step 2: Multiply by the conjugate of the numerator:</strong><br>\\[ \\lim_{x\\to 4}\\frac{(\\sqrt{x}-2)(\\sqrt{x}+2)}{(x-4)(\\sqrt{x}+2)} = \\lim_{x\\to 4}\\frac{(\\sqrt{x})^2 - 2^2}{(x-4)(\\sqrt{x}+2)} = \\lim_{x\\to 4}\\frac{x - 4}{(x-4)(\\sqrt{x}+2)}. \\]</p><p><strong>Step 3: Cancel the common factor \\( (x - 4) \\) for \\( x \\neq 4 \\):</strong><br>\\[ \\lim_{x\\to 4}\\frac{1}{\\sqrt{x}+2} = \\frac{1}{\\sqrt{4}+2} = \\frac{1}{2 + 2} = \\mathbf{\\frac{1}{4}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Limits</em> and start from \\( \\lim_{x\\to 4} \\frac{\\sqrt{x} - 2}{x - 4} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\frac{\\sqrt{4} - 2}{4 - 4} = \\frac{0}{0} \\quad (\\text{indeterminate form}). \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -389,7 +467,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Direct substitution check:</strong><br>\\[ \\frac{3^3 - 27}{3^2 - 2(3) - 3} = \\frac{27 - 27}{9 - 6 - 3} = \\frac{0}{0} \\quad (\\text{indeterminate}). \\]</p><p><strong>Step 2: Factor numerator using difference of cubes:</strong><br>\\[ x^3 - 27 = (x - 3)(x^2 + 3x + 9) \\]</p><p><strong>Step 3: Factor denominator:</strong><br>\\[ x^2 - 2x - 3 = (x - 3)(x + 1) \\]</p><p><strong>Step 4: Cancel the common factor \\( (x - 3) \\) and evaluate:</strong><br>\\[ \\lim_{x\\to 3}\\frac{(x-3)(x^2 + 3x + 9)}{(x-3)(x+1)} = \\lim_{x\\to 3}\\frac{x^2 + 3x + 9}{x + 1} = \\frac{3^2 + 3(3) + 9}{3 + 1} = \\frac{9 + 9 + 9}{4} = \\mathbf{\\frac{27}{4}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Limits</em> and start from \\( \\lim_{x\\to 3} \\frac{x^3 - 27}{x^2 - 2x - 3} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -401,7 +493,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Apply the definition of continuity at a point (Definition 6.4):</strong><br>Continuity requires \\( \\lim_{x\\to 2^-} f(x) = \\lim_{x\\to 2^+} f(x) = f(2) \\).</p><p><strong>Step 2: Evaluate the one-sided limits:</strong><br>Left-hand limit and function value: \\[ \\lim_{x\\to 2^-} f(x) = f(2) = k(2)^2 + 2(2) = 4k + 4. \\]<br>Right-hand limit: \\[ \\lim_{x\\to 2^+} f(x) = 3(2) + k = 6 + k. \\]</p><p><strong>Step 3: Set them equal and solve for \\( k \\):</strong><br>\\[ 4k + 4 = 6 + k \\implies 3k = 2 \\implies \\mathbf{k = \\frac{2}{3}}. \\]</p><p>Check: For \\( k = 2/3 \\), \\( 4(2/3) + 4 = \\frac{8}{3} + \\frac{12}{3} = \\frac{20}{3} \\) and \\( 6 + 2/3 = \\frac{20}{3} \\) ✓.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Limits</em> and start from \\( k \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\lim_{x\\to 2^-} f(x) = \\lim_{x\\to 2^+} f(x) = f(2) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -413,7 +519,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Divide numerator and denominator by \\( x \\) (for \\( x > 0 \\), \\( x = \\sqrt{x^2} \\)):</strong><br>\\[ \\frac{\\sqrt{9x^2 + 4x}}{2x - 1} = \\frac{\\frac{\\sqrt{9x^2 + 4x}}{\\sqrt{x^2}}}{\\frac{2x - 1}{x}} = \\frac{\\sqrt{\\frac{9x^2}{x^2} + \\frac{4x}{x^2}}}{2 - \\frac{1}{x}} = \\frac{\\sqrt{9 + \\frac{4}{x}}}{2 - \\frac{1}{x}}. \\]</p><p><strong>Step 2: Take the limit as \\( x\\to\\infty \\):</strong><br>Since \\( \\frac{4}{x}\\to 0 \\) and \\( \\frac{1}{x}\\to 0 \\):<br>\\[ \\lim_{x\\to\\infty} \\frac{\\sqrt{9 + \\frac{4}{x}}}{2 - \\frac{1}{x}} = \\frac{\\sqrt{9 + 0}}{2 - 0} = \\frac{3}{2} = \\mathbf{\\frac{3}{2}}. \\]</p><p>(Note: This also confirms that \\( y = \\frac{3}{2} \\) is the horizontal asymptote of the function as \\( x \\to \\infty \\)).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Limits</em> and start from \\( \\lim_{x\\to\\infty} \\frac{\\sqrt{9x^2 + 4x}}{2x - 1} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( x \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

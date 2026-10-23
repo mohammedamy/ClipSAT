@@ -29,13 +29,44 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "circle",
-          "radius": 6,
-          "labelR": "r = 6",
-          "chordAngle": 120
+          "type": "transformation_grid",
+          "title": "Green's Theorem — Linear Transformation & Basis Action",
+          "original": [
+            [
+              1,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "transformed": [
+            [
+              -1,
+              1
+            ],
+            [
+              -1,
+              3
+            ],
+            [
+              -3,
+              2
+            ]
+          ],
+          "labels": [
+            "A",
+            "B",
+            "C"
+          ]
         },
         "caption": {
-          "en": "Circle sector and chord geometry with radius r = 6 and central angle 120°.",
+          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
           "ar": null
         }
       },
@@ -181,6 +212,18 @@
         },
         "body": {
           "en": "<p><strong>Proof Strategy:</strong> It suffices to prove two independent identities and sum them: \\[ \\text{(I)} \\quad \\oint_C P\\,dx = -\\iint_D \\frac{\\partial P}{\\partial y}\\,dA, \\qquad \\text{(II)} \\quad \\oint_C Q\\,dy = \\iint_D \\frac{\\partial Q}{\\partial x}\\,dA. \\]</p><p><strong>Step 1: Prove Identity (I) for a Type I Region:</strong> Suppose \\( D = \\{ (x,y) \\in \\mathbb{R}^2 \\mid a \\le x \\le b, \\; g_1(x) \\le y \\le g_2(x) \\} \\), where \\( g_1, g_2 \\) are continuous and piecewise smooth. The boundary \\( C \\) consists of four curves: the bottom curve \\( C_1: y = g_1(x) \\) (from \\( x=a \\) to \\( x=b \\)), vertical segment \\( C_2 \\) (\\( x=b \\)), the top curve \\( C_3: y = g_2(x) \\) (from \\( x=b \\) down to \\( x=a \\)), and vertical segment \\( C_4 \\) (\\( x=a \\)).</p><p>Evaluate the double integral on the right of (I): \\[ \\iint_D \\frac{\\partial P}{\\partial y}\\,dA = \\int_a^b \\int_{g_1(x)}^{g_2(x)} \\frac{\\partial P}{\\partial y}(x,y)\\,dy\\,dx. \\] By the Fundamental Theorem of Calculus applied to the inner integral: \\[ \\int_{g_1(x)}^{g_2(x)} \\frac{\\partial P}{\\partial y}(x,y)\\,dy = P(x, g_2(x)) - P(x, g_1(x)). \\] Thus: \\[ \\iint_D \\frac{\\partial P}{\\partial y}\\,dA = \\int_a^b \\Big[ P(x, g_2(x)) - P(x, g_1(x)) \\Big] dx. \\]</p><p>Now evaluate the line integral \\( \\oint_C P\\,dx \\): On vertical segments \\( C_2 \\) and \\( C_4 \\), \\( x \\) is constant, so \\( dx = 0 \\) and their contributions vanish. On \\( C_1 \\), \\( x \\) runs from \\( a \\) to \\( b \\); on \\( C_3 \\), \\( x \\) runs from \\( b \\) to \\( a \\): \\[ \\oint_C P\\,dx = \\int_{C_1} P\\,dx + \\int_{C_3} P\\,dx = \\int_a^b P(x, g_1(x))\\,dx + \\int_b^a P(x, g_2(x))\\,dx. \\] Reversing the bounds on the second integral: \\[ \\oint_C P\\,dx = \\int_a^b P(x, g_1(x))\\,dx - \\int_a^b P(x, g_2(x))\\,dx = -\\int_a^b \\Big[ P(x, g_2(x)) - P(x, g_1(x)) \\Big] dx = -\\iint_D \\frac{\\partial P}{\\partial y}\\,dA. \\]</p><p><strong>Step 2: Prove Identity (II) for a Type II Region:</strong> By an identical argument on \\( D = \\{ (x,y) \\mid c \\le y \\le d, \\; h_1(y) \\le x \\le h_2(y) \\} \\), integrating \\( \\frac{\\partial Q}{\\partial x} \\) with respect to \\( x \\) first yields \\( \\oint_C Q\\,dy = \\iint_D \\frac{\\partial Q}{\\partial x}\\,dA \\). Summing (I) and (II) proves Green's Theorem for any region that is simultaneously Type I and Type II. Any standard elementary domain can be partitioned into finitely many such subregions; interior boundary line integrals cancel pairwise in opposite directions, yielding the global result. \\( \\blacksquare \\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Green's Theorem)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
           "ar": null
         }
       },
@@ -341,11 +384,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example C — Green's Theorem (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 4 \\) and vertical component \\( \\Delta y = 9 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (4)^2 + (9)^2 = 16 + 81 = \\mathbf{97} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(4)(9) = \\mathbf{18} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> Let \\( G = [0, 17] \\times [0, 3] \\) be a rectangle in the \\( (z, y) \\)-plane. Find the double integral \\( \\displaystyle\\iint_{G} 76zy\\,dA \\).</p><p><strong>Step-by-Step Solution:</strong> Integrating gives \\( 19(17^2)(3^2) = 49419 \\).</p>",
           "ar": null
         }
       },
@@ -353,11 +396,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example D — Green's Theorem (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> Let the linear scalar potential be \\( M(z, y) = 7z + 18y - 2 \\). Find the squared gradient norm \\( \\|\\nabla M\\|^2 \\).</p><p><strong>Step-by-Step Solution:</strong> Since \\( \\nabla M = \\langle 7, 18 \\rangle \\), \\( \\|\\nabla M\\|^2 = 7^2 + 18^2 = 373 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Green's Theorem)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Computing angle at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)",
+              "ar": null
+            },
+            {
+              "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
+              "ar": null
+            },
+            {
+              "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
+              "ar": null
+            },
+            {
+              "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
+              "ar": null
+            },
+            {
+              "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Assuming \\((AB)^{-1} = A^{-1}B^{-1}\\)",
+              "ar": null
+            },
+            {
+              "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
+              "ar": null
+            },
+            {
+              "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Green's Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Multivariable & Vector Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -370,7 +490,21 @@
         "solution": {
           "en": "<p>Identify \\( P = y^3 - \\ln(x^2+1) \\) and \\( Q = x^3 + e^{y^2} \\). Notice that direct line integration would be intractable due to the transcendental terms.</p><p>Compute the 2D curl: \\[ \\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y} = 3x^2 - 3y^2 = 3(x^2 - y^2). \\] Notice that both complicated transcendental terms vanish upon differentiation.</p><p>Apply Green's Theorem over the disk \\( D = \\{ (x,y) \\mid x^2+y^2 \\le 4 \\} \\): \\[ \\oint_C P\\,dx + Q\\,dy = \\iint_D 3(x^2 - y^2)\\,dA. \\] In polar coordinates: \\( x^2 - y^2 = r^2\\cos(2\\theta) \\), \\( dA = r\\,dr\\,d\\theta \\): \\[ \\int_0^{2\\pi} \\int_0^2 3r^2\\cos(2\\theta) \\cdot r\\,dr\\,d\\theta = 3 \\left( \\int_0^2 r^3\\,dr \\right) \\left( \\int_0^{2\\pi} \\cos(2\\theta)\\,d\\theta \\right). \\] Since \\( \\int_0^{2\\pi} \\cos(2\\theta)\\,d\\theta = \\Big[ \\frac{\\sin(2\\theta)}{2} \\Big]_0^{2\\pi} = 0 \\), the integral evaluates to \\( 0 \\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Green's Theorem</em> and start from \\( \\oint_C (y^3 - \\ln(x^2+1))\\,dx + (x^3 + e^{y^2})\\,dy \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( P = y^3 - \\ln(x^2+1) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -381,27 +515,69 @@
         "solution": {
           "en": "<p>The curve \\( C \\) is open. Close the loop by defining \\( L \\) as the line segment along the \\( x \\)-axis from \\( (-1,0) \\) to \\( (1,0) \\). The composite curve \\( \\Gamma = C + L \\) forms a positively oriented boundary enclosing the upper half-disk \\( D \\).</p><p>By Green's Theorem: \\[ \\oint_\\Gamma P\\,dx + Q\\,dy = \\iint_D (Q_x - P_y)\\,dA = \\iint_D (5 - 2)\\,dA = 3\\,\\mathrm{Area}(D) = 3\\left(\\frac{\\pi(1)^2}{2}\\right) = \\frac{3\\pi}{2}. \\] Along \\( L \\): \\( y = 0 \\implies dy = 0 \\), and \\( x \\) runs from \\( -1 \\) to \\( 1 \\): \\[ \\int_L P\\,dx + Q\\,dy = \\int_{-1}^1 (2(0) + \\cos x)\\,dx = \\Big[ \\sin x \\Big]_{-1}^1 = 2\\sin(1). \\] Since \\( \\oint_\\Gamma = \\int_C + \\int_L \\): \\[ \\int_C P\\,dx + Q\\,dy = \\frac{3\\pi}{2} - \\int_L = \\frac{3\\pi}{2} - 2\\sin(1). \\]</p>",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Green's Theorem</em> and start from \\( \\int_C (2y + \\cos x)\\,dx + (5x + \\sin y)\\,dy \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( C \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Easy]</strong> Let the multivariable function \\( R \\) be defined by \\( R(m, y) = 2m^2 y + 7y^2 \\). Find the partial derivative \\( \\dfrac{\\partial R}{\\partial m}(13, 17) \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Green's Theorem</em> and start from \\( R \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( m \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "Differentiating with respect to \\( m \\) gives \\( 4my \\), which equals \\( 884 \\) at \\( (13, 17) \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Green's Theorem · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> Consider the vector field \\( \\mathbf{R}(m, y, z) = \\langle 10m,\\, 21y,\\, 14z \\rangle \\) on \\( \\mathbb{R}^3 \\). Find the scalar divergence \\( \\nabla \\cdot \\mathbf{R} \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Green's Theorem</em> and start from \\( \\mathbf{R}(m, y, z) = \\langle 10m,\\, 21y,\\, 14z \\rangle \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 10 + 21 + 14 = 45 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Green's Theorem · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "The divergence is \\( 10 + 21 + 14 = 45 \\).",
           "ar": null
         }
       }

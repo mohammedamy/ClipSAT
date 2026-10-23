@@ -250,6 +250,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Trigonometry)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why the Harmonic \\(R\\)-Formula &amp; Cosine Rule Hold:</strong> Expanding \\(R\\cos(\\theta - \\alpha)\\) via the compound-angle identity gives:</p>\\[ R\\cos(\\theta - \\alpha) = (R\\cos\\alpha)\\cos\\theta + (R\\sin\\alpha)\\sin\\theta \\]<p>Matching coefficients with \\(a\\cos\\theta + b\\sin\\theta\\) requires \\(R\\cos\\alpha = a\\) and \\(R\\sin\\alpha = b\\). Squaring and adding yields \\(R^2(\\cos^2\\alpha + \\sin^2\\alpha) = a^2 + b^2 \\implies R = \\sqrt{a^2 + b^2}\\), and dividing gives \\(\\tan\\alpha = \\dfrac{b}{a}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 6.A — ASTC Signs and Reciprocal Trig Evaluation",
@@ -297,6 +309,83 @@
         }
       },
       {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Trigonometry)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Dividing \\(\\sin 2\\theta = \\sin\\theta\\) by \\(\\sin\\theta\\)",
+              "ar": null
+            },
+            {
+              "en": "Eliminates valid solutions where \\(\\sin\\theta = 0\\).",
+              "ar": null
+            },
+            {
+              "en": "Expand \\(2\\sin\\theta\\cos\\theta - \\sin\\theta = 0\\) and factor \\(\\sin\\theta(2\\cos\\theta - 1) = 0\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using \\(A = \\frac{1}{2}r^2\\theta\\) with \\(\\theta = 60^\\circ\\)",
+              "ar": null
+            },
+            {
+              "en": "Overestimates sector area by a factor of \\(180/\\pi \\approx 57.3\\).",
+              "ar": null
+            },
+            {
+              "en": "Convert to radians first: \\(\\theta = 60^\\circ \\times \\frac{\\pi}{180^\\circ} = \\frac{\\pi}{3}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Finding only one solution to \\(\\sin(2x) = 1/2\\) on \\([0, 2\\pi]\\)",
+              "ar": null
+            },
+            {
+              "en": "Forgets that if \\(x \\in [0, 2\\pi]\\), the transformed angle \\(u = 2x\\) spans \\([0, 4\\pi]\\) (4 roots).",
+              "ar": null
+            },
+            {
+              "en": "Transform the interval to \\(u \\in [0, 4\\pi]\\) before dividing by 2.",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Trigonometry",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>All-Solutions Checklist (ACT Mathematics Test):</strong> When solving \\(\\trig(kx + \\phi) = c\\) on \\([0, 2\\pi]\\), immediately write down the transformed interval \\(\\phi \\le u \\le 2k\\pi + \\phi\\), list all ASTC quadrant angles in that range, and only divide by \\(k\\) at the very last step.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "In right triangle \\(ABC\\) with \\(C = 90^\\circ\\), \\(a = 5\\), and \\(c = 13\\). What is the value of \\(\\sin A + \\cos A\\)?",
@@ -305,7 +394,21 @@
         "solution": {
           "en": "By the Pythagorean theorem, the adjacent leg is \\(b = \\sqrt{13^2 - 5^2} = \\sqrt{169 - 25} = 12\\).<br>Then \\(\\sin A = \\frac{a}{c} = \\frac{5}{13}\\) and \\(\\cos A = \\frac{b}{c} = \\frac{12}{13}\\).<br>Adding them together: \\(\\sin A + \\cos A = \\frac{5 + 12}{13} = \\mathbf{\\frac{17}{13}}\\).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Trigonometry</em> and start from \\(ABC\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(b = \\sqrt{13^2 - 5^2} = \\sqrt{169 - 25} = 12\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -316,7 +419,21 @@
         "solution": {
           "en": "In Quadrant II, \\(x = -4\\) and hypotenuse \\(r = 5\\). Using \\(x^2 + y^2 = r^2\\):<br>\\[ (-4)^2 + y^2 = 5^2 \\implies 16 + y^2 = 25 \\implies y = 3 \\quad (\\text{positive in QII}) \\]Therefore: \\(\\tan\\theta = \\frac{y}{x} = \\frac{3}{-4} = \\mathbf{-\\frac{3}{4}}\\).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Trigonometry</em> and start from \\(\\cos\\theta = -\\frac{4}{5}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x = -4\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -327,7 +444,21 @@
         "solution": {
           "en": "For any function in standard form \\(f(x) = A\\cos(Bx - C) + D\\):<br><ul><li><strong>Amplitude:</strong> \\(|A| = |-6| = \\mathbf{6}\\).</li><li><strong>Period:</strong> \\(T = \\frac{2\\pi}{B} = \\frac{2\\pi}{4} = \\mathbf{\\frac{\\pi}{2}}\\).</li><li><strong>Midline:</strong> \\(y = D = 3\\).</li></ul>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Trigonometry</em> and start from \\(f(x) = -6\\cos(4x - \\pi) + 3\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(f(x) = A\\cos(Bx - C) + D\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -338,7 +469,21 @@
         "solution": {
           "en": "Using the fundamental Pythagorean identity \\(\\sin^2\\theta + \\cos^2\\theta = 1\\), we have \\(1 - \\sin^2\\theta = \\cos^2\\theta\\).<br>Substituting this into the numerator:<br>\\[ \\frac{1 - \\sin^2\\theta}{\\cos\\theta} = \\frac{\\cos^2\\theta}{\\cos\\theta} = \\mathbf{\\cos\\theta} \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Trigonometry</em> and start from \\(\\dfrac{1 - \\sin^2\\theta}{\\cos\\theta}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\sin^2\\theta + \\cos^2\\theta = 1\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

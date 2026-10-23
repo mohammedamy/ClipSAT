@@ -38,44 +38,44 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Eigenvalues, Eigenvectors & Diagonalization — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
+          "type": "transformation_grid",
+          "title": "Eigenvalues, Eigenvectors & Diagonalization — Linear Transformation & Basis Action",
+          "original": [
+            [
+              1,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              3
+            ]
           ],
-          "yrange": [
-            -3,
-            9
+          "transformed": [
+            [
+              -1,
+              1
+            ],
+            [
+              -1,
+              3
+            ],
+            [
+              -3,
+              2
+            ]
           ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
+          "labels": [
+            "A",
+            "B",
+            "C"
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
           "ar": null
         }
       },
@@ -88,6 +88,18 @@
         },
         "body": {
           "en": "<p><strong>1. Eigenspace:</strong> For a given eigenvalue \\( \\lambda \\), the set of all eigenvectors along with the zero vector forms a subspace of \\( \\mathbb{R}^n \\), the <strong>eigenspace</strong> \\( E_\\lambda \\): \\[ E_\\lambda = \\operatorname{Null}(A - \\lambda I) = \\{ \\mathbf{v} \\in \\mathbb{R}^n : (A - \\lambda I)\\mathbf{v} = \\mathbf{0} \\}. \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>2. The Characteristic Equation:</strong> The homogeneous system \\( (A - \\lambda I)\\mathbf{v} = \\mathbf{0} \\) has a non-trivial solution \\( \\mathbf{v} \\neq \\mathbf{0} \\) if and only if \\( A - \\lambda I \\) is singular (non-invertible): \\[ p(\\lambda) = \\det(A - \\lambda I) = 0. \\] Expanding the determinant yields a degree-\\( n \\) polynomial in \\( \\lambda \\), the <strong>characteristic polynomial</strong>.</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>3. Trace & Determinant Invariants:</strong> If \\( \\lambda_1, \\dots, \\lambda_n \\) are the eigenvalues of \\( A \\) counted with multiplicity: \\[ \\sum_{i=1}^n \\lambda_i = \\operatorname{tr}(A) = \\sum_{i=1}^n a_{ii}, \\qquad \\prod_{i=1}^n \\lambda_i = \\det(A). \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Eigenvalues, Eigenvectors & Diagonalization)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
           "ar": null
         }
       },
@@ -107,11 +119,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example B — Eigenvalues, Eigenvectors & Diagonalization (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> Find the eigenvalues of \\( \\left[\\begin{matrix}6 & 0 & 0\\\\-1 & -4 & 0\\\\-3 & 2 & 6\\end{matrix}\\right] \\).</p><p><strong>Step-by-Step Solution:</strong> The matrix is triangular, so its eigenvalues are its diagonal entries: \\( -4, 6 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Eigenvalues, Eigenvectors & Diagonalization)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Computing angle at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)",
+              "ar": null
+            },
+            {
+              "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
+              "ar": null
+            },
+            {
+              "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
+              "ar": null
+            },
+            {
+              "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
+              "ar": null
+            },
+            {
+              "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Assuming \\((AB)^{-1} = A^{-1}B^{-1}\\)",
+              "ar": null
+            },
+            {
+              "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
+              "ar": null
+            },
+            {
+              "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Eigenvalues, Eigenvectors & Diagonalization",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Linear Algebra & Matrix Theory):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -124,7 +213,21 @@
         "solution": {
           "en": "<p>The characteristic matrix is: \\[ T - \\lambda I = \\begin{pmatrix} 6 - \\lambda & -2 & 5 \\\\ 0 & -3 - \\lambda & 1 \\\\ 0 & 0 & 4 - \\lambda \\end{pmatrix}. \\] Since \\( T - \\lambda I \\) is upper-triangular, its determinant is the product of its diagonal entries: \\[ \\det(T - \\lambda I) = (6 - \\lambda)(-3 - \\lambda)(4 - \\lambda) = 0. \\] Thus the eigenvalues are the diagonal entries themselves: \\[ \\mathbf{\\lambda_1 = 6, \\quad \\lambda_2 = -3, \\quad \\lambda_3 = 4}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Eigenvalues, Eigenvectors & Diagonalization</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -354,7 +457,21 @@
         "solution": {
           "en": "<p><strong>Step 1 · Algebraic Multiplicity:</strong> \\( A \\) is upper-triangular, so its characteristic polynomial is \\( p(\\lambda) = (3 - \\lambda)^2 = 0 \\). The only eigenvalue is \\( \\lambda = 3 \\) with algebraic multiplicity \\( m_a(3) = 2 \\).</p><p><strong>Step 2 · Geometric Multiplicity:</strong> Compute the eigenspace \\( E_3 = \\operatorname{Null}(A - 3I) \\): \\[ A - 3I = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}. \\] This matrix has pivot in column 2, with only one free variable \\( x_1 = t \\). The eigenvectors are \\( \\mathbf{v} = t \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} \\), so \\( \\dim(E_3) = 1 \\).</p><p><strong>Conclusion:</strong> Since the geometric multiplicity \\( m_g(3) = 1 \\) is strictly less than the algebraic multiplicity \\( m_a(3) = 2 \\), \\( A \\) fails to possess 2 linearly independent eigenvectors. Therefore, <strong>\\( A \\) is defective and NOT diagonalizable</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Eigenvalues, Eigenvectors & Diagonalization</em> and start from \\( A = \\begin{pmatrix} 3 & 1 \\\\ 0 & 3 \\end{pmatrix} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( A \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -409,16 +526,44 @@
         "solution": {
           "en": "<p><strong>Step 1 · Find Characteristic Polynomial:</strong> \\[ p(\\lambda) = (2 - \\lambda)(3 - \\lambda) - 0 = \\lambda^2 - 5\\lambda + 6. \\]</p><p><strong>Step 2 · Apply Cayley–Hamilton: \\( A^2 - 5A + 6I = 0 \\):</strong><br>From this: \\( A^2 = 5A - 6I \\). Multiply by \\( A \\): \\[ A^3 = 5A^2 - 6A = 5(5A - 6I) - 6A = 25A - 30I - 6A = 19A - 30I. \\] Multiply by \\( A \\) again: \\[ A^4 = 19A^2 - 30A = 19(5A - 6I) - 30A = 95A - 114I - 30A = \\mathbf{65A - 114I}. \\]</p><p><strong>Step 3 · Express \\( A^{-1} \\):</strong> Multiply \\( A^2 - 5A + 6I = 0 \\) by \\( A^{-1} \\): \\[ A - 5I + 6A^{-1} = 0 \\implies 6A^{-1} = 5I - A \\implies \\mathbf{A^{-1} = -\\frac{1}{6}A + \\frac{5}{6}I}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Eigenvalues, Eigenvectors & Diagonalization</em> and start from \\( A = \\begin{pmatrix} 2 & 1 \\\\ 0 & 3 \\end{pmatrix} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( p(\\lambda) = (2 - \\lambda)(3 - \\lambda) - 0 = \\lambda^2 - 5\\lambda + 6. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Eigenvalues, Eigenvectors & Diagonalization · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> A 3×3 matrix has eigenvalues \\( 0, 1, 4 \\). Find its determinant.",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Eigenvalues, Eigenvectors & Diagonalization</em> and start from \\( 0, 1, 4 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 0 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "The determinant is the product of the eigenvalues (with multiplicity): \\( 0 \\).",
           "ar": null
         }
       }

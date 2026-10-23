@@ -38,44 +38,44 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Determinants & Geometric Volume — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
+          "type": "transformation_grid",
+          "title": "Determinants & Geometric Volume — Linear Transformation & Basis Action",
+          "original": [
+            [
+              1,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              3
+            ]
           ],
-          "yrange": [
-            -3,
-            9
+          "transformed": [
+            [
+              -1,
+              1
+            ],
+            [
+              -1,
+              3
+            ],
+            [
+              -3,
+              2
+            ]
           ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
+          "labels": [
+            "A",
+            "B",
+            "C"
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
           "ar": null
         }
       },
@@ -88,6 +88,18 @@
         },
         "body": {
           "en": "<p><strong>1. The Three Axioms of the Determinant:</strong> The determinant \\( \\det: \\mathbb{R}^{n \\times n} \\to \\mathbb{R} \\) is the unique function satisfying:<br>• <strong>Multilinearity in Rows:</strong> \\( \\det \\) is linear with respect to each individual row when all other rows are held fixed.<br>• <strong>Alternating Property:</strong> Swapping any two rows negates the determinant: \\( \\det(R_1, \\dots, R_j, \\dots, R_i, \\dots, R_n) = -\\det(R_1, \\dots, R_i, \\dots, R_j, \\dots, R_n) \\). If two rows are identical, \\( \\det(A) = 0 \\).<br>• <strong>Normalization:</strong> \\( \\det(I_n) = 1 \\).</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>2. Laplace Cofactor Expansion:</strong> For any chosen row \\( i \\) (or column \\( j \\)): \\[ \\det(A) = \\sum_{j=1}^n a_{ij} C_{ij} = \\sum_{j=1}^n (-1)^{i+j} a_{ij} \\det(M_{ij}), \\] where \\( M_{ij} \\) is the \\( (n-1) \\times (n-1) \\) minor submatrix formed by deleting row \\( i \\) and column \\( j \\), and \\( C_{ij} = (-1)^{i+j} \\det(M_{ij}) \\) is the <strong>cofactor</strong>.</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>3. Triangular Matrices:</strong> If \\( A \\) is upper-triangular, lower-triangular, or diagonal, its determinant is simply the product of its main diagonal entries: \\[ \\det(A) = a_{11} a_{22} \\dots a_{nn} = \\prod_{i=1}^n a_{ii}. \\]</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Determinants & Geometric Volume)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
           "ar": null
         }
       },
@@ -107,11 +119,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example B — Determinants & Geometric Volume (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> Consider the upper-triangular matrix \\( C = \\begin{pmatrix} 4 & 9 \\\\ 0 & 3 \\end{pmatrix} \\). Calculate the eigenvalue product \\( \\det(C) = \\lambda_1 \\lambda_2 \\).</p><p><strong>Step-by-Step Solution:</strong> The eigenvalues are \\( 4 \\) and \\( 3 \\), with product \\( 12 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Determinants & Geometric Volume)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Computing angle at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)",
+              "ar": null
+            },
+            {
+              "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
+              "ar": null
+            },
+            {
+              "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
+              "ar": null
+            },
+            {
+              "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
+              "ar": null
+            },
+            {
+              "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Assuming \\((AB)^{-1} = A^{-1}B^{-1}\\)",
+              "ar": null
+            },
+            {
+              "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
+              "ar": null
+            },
+            {
+              "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Determinants & Geometric Volume",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Linear Algebra & Matrix Theory):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -124,7 +213,21 @@
         "solution": {
           "en": "<p>Since \\( T \\) is upper-triangular, its determinant is the product of its diagonal entries: \\[ \\det(T) = (3)(-1)(2)(5) = \\mathbf{-30}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Determinants & Geometric Volume</em> and start from \\( 4 \\times 4 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( T \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -361,7 +464,21 @@
         "solution": {
           "en": "<p>Apply determinant algebraic properties for \\( 3 \\times 3 \\) matrices: \\[ \\det(2 M) = 2^3 \\det(M) = 8 \\det(M). \\] Using the multiplicative, power, transpose, and inverse properties: \\[ \\det(A^2 B^{-1} A^T) = [\\det(A)]^2 \\cdot \\frac{1}{\\det(B)} \\cdot \\det(A) = \\frac{[\\det(A)]^3}{\\det(B)}. \\] Substitute \\( \\det(A) = 3 \\) and \\( \\det(B) = -2 \\): \\[ \\det\\left( 2 A^2 B^{-1} A^T \\right) = 8 \\cdot \\frac{3^3}{-2} = 8 \\cdot \\frac{27}{-2} = 8(-13.5) = \\mathbf{-108}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Determinants & Geometric Volume</em> and start from \\( A \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 3 \\times 3 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -416,16 +533,44 @@
         "solution": {
           "en": "<p><strong>Step 1 · Use the Fundamental Adjugate Identity:</strong> \\[ A \\operatorname{adj}(A) = \\det(A) I_n. \\]</p><p><strong>Step 2 · Take determinants of both sides:</strong> Using the multiplicative property \\( \\det(M_1 M_2) = \\det(M_1) \\det(M_2) \\): \\[ \\det(A \\operatorname{adj}(A)) = \\det(\\det(A) I_n). \\] \\[ \\det(A) \\cdot \\det(\\operatorname{adj}(A)) = [\\det(A)]^n \\det(I_n) = [\\det(A)]^n (1) = [\\det(A)]^n. \\]</p><p><strong>Step 3 · Divide by \\( \\det(A) \\):</strong> Since \\( A \\) is invertible, \\( \\det(A) \\neq 0 \\). Dividing both sides by \\( \\det(A) \\) yields: \\[ \\mathbf{\\det(\\operatorname{adj}(A)) = [\\det(A)]^{n-1}}. \\quad \\blacksquare \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Determinants & Geometric Volume</em> and start from \\( A \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( A \\operatorname{adj}(A) = \\det(A) I_n. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Determinants & Geometric Volume · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> A linear map \\( E: \\mathbb{R}^{31} \\to \\mathbb{R}^{23} \\) has rank \\( \\text{rank}(E) = 16 \\). Calculate the nullity \\( \\dim(\\ker E) \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Determinants & Geometric Volume</em> and start from \\( E: \\mathbb{R}^{31} \\to \\mathbb{R}^{23} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\dim(\\ker E) = 31 - 16 = 15 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "By Rank-Nullity, \\( \\dim(\\ker E) = 31 - 16 = 15 \\).",
           "ar": null
         }
       }

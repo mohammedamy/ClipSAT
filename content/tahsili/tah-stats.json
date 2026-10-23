@@ -40,6 +40,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Statistics & Probability",
+          "ar": "● الفهم المفاهيمي العميق — الإحصاء والاحتمالات"
+        },
+        "body": {
+          "en": "<p><strong>Conditional Probability, Bayes' Theorem &amp; Robust Summary Statistics:</strong> For any two events \\(A\\) and \\(B\\) with \\(P(B) > 0\\), conditional probability restricts the sample space to \\(B\\): \\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)}\\). In descriptive statistics, the median and interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)) are resistant to extreme outliers, whereas the mean \\(\\bar{x}\\) and standard deviation \\(s\\) are pulled strongly in the direction of skewness.</p>",
+          "ar": "<p><strong>الاحتمال الشرطي والإحصاء الوصفي:</strong> يُختزل فضاء العينة في الاحتمال الشرطي إلى \\(P(A\\mid B) = \\frac{P(A\\cap B)}{P(B)}\\)، ويتميز الوسيط والمدى الربيعي \\(\\text{IQR}\\) بمقاومتهما للقيم المتطرفة.</p>"
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
           "type": "normal_curve",
@@ -240,6 +252,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Statistics & Probability)",
+          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (الإحصاء والاحتمالات)"
+        },
+        "body": {
+          "en": "<p><strong>Why Bayes' Theorem &amp; Principle of Inclusion-Exclusion Work:</strong> Any event \\(B\\) can be partitioned into disjoint intersections \\(B = (B \\cap A) \\cup (B \\cap A')\\). By additivity of mutually exclusive events and the multiplication rule \\(P(A \\cap B) = P(B \\mid A)P(A)\\):</p>\\[ P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{P(B \\mid A)P(A)}{P(B \\mid A)P(A) + P(B \\mid A')P(A')} \\]<p>Similarly, in counting \\(|A \\cup B|\\), summing \\(|A| + |B|\\) counts every element in \\(A \\cap B\\) twice; subtracting \\(|A \\cap B|\\) once restores exact cardinality: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\).</p>",
+          "ar": "<p><strong>برهان قانون بايز ومبدأ الشمول والإقصاء:</strong> بتجزئة الحدث \\(B\\) إلى \\((B\\cap A) \\cup (B\\cap A')\\) ينتج قانون الاحتمال الكلي وقانون بايز، وعند حساب الاتحاد نطرح التقاطع \\(P(A\\cap B)\\) لمنع التكرار المزدوج.</p>"
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 9.A — Permutations vs. Combinations Selection",
@@ -287,6 +311,83 @@
         }
       },
       {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Statistics & Probability)",
+          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (الإحصاء والاحتمالات)"
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع للطالب"
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": "السبب الرياضي للخطأ"
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Using \\(P(A \\cap B) = 0\\) when told \\(A\\) and \\(B\\) are independent",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Confuses disjoint (mutually exclusive) events with statistically independent events.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "For independent events, multiply probabilities: \\(P(A \\cap B) = P(A)\\cdot P(B)\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Dividing by the grand total \\(N\\) when computing \\(P(A \\mid B)\\) from a table",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Computes the joint probability \\(P(A \\cap B)\\) instead of conditioning on subset \\(B\\).",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Restrict the denominator strictly to the row/column total of the given condition \\(B\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Using permutations \\({}^nP_r\\) when selecting a committee with no distinct roles",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Overcounts every group of size \\(r\\) by \\(r!\\) internal orderings.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Divide by \\(r!\\) to use combinations: \\(\\binom{n}{r} = \\frac{n!}{r!(n-r)!}\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Statistics & Probability",
+          "ar": "▲ استراتيجية الحل السريع والتحقق — الإحصاء والاحتمالات"
+        },
+        "body": {
+          "en": "<p><strong>Exam Strategy (Qiyas Scholastic Achievement Admission Test (SAAT / التحصيلي)):</strong> Whenever a probability problem involves \"at least one\" success across multiple trials, immediately use the Complement Rule: \\(P(\\text{at least one}) = 1 - P(\\text{none})\\). It turns a multi-case sum into a single calculation.</p>",
+          "ar": "<p><strong>مهارة الحل السريع:</strong> عند طلب احتمال «واحد على الأقل»، استخدم فوراً متممة الحدث: \\(P(\\text{واحد على الأقل}) = 1 - P(\\text{عدم وقوع أي منها})\\).</p>"
+        }
+      },
+      {
         "kind": "practiceProblem",
         "id": "tah-stats-p1",
         "question": {
@@ -296,7 +397,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Express interval in terms of standard deviations:</strong> \\(75 = 80 - 5 = \\mu - \\sigma\\) and \\(85 = 80 + 5 = \\mu + \\sigma\\).</p><p><strong>Step 2: Apply the Empirical Rule:</strong> Approximately \\(68.2\\%\\) (or \\(\\mathbf{68\\%}\\)) of all observations fall within one standard deviation of the mean.</p>",
           "ar": "<p><strong>الخطوة 1: كتابة الفترة بدلالة الانحراف المعياري:</strong> \\(75 = 80 - 5 = \\mu - \\sigma\\) و \\(85 = 80 + 5 = \\mu + \\sigma\\).</p><p><strong>الخطوة 2: تطبيق القاعدة التجريبية:</strong> تقع حوالي \\(\\mathbf{68\\%}\\) من الدرجات ضمن انحراف معياري واحد عن المتوسط الحسابي.</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics & Probability</em> and start from \\(\\mu = 80\\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\(\\mu = 80\\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(75 = 80 - 5 = \\mu - \\sigma\\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\(75 = 80 - 5 = \\mu - \\sigma\\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -308,7 +423,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Identify selection type:</strong> Order of members on a committee does not matter, so use combinations.</p><p><strong>Step 2: Compute \\(\\binom{7}{3}\\):</strong> \\[ \\binom{7}{3} = \\frac{7 \\times 6 \\times 5}{3 \\times 2 \\times 1} = \\frac{210}{6} = \\mathbf{35\\text{ ways}}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: نوع الاختيار:</strong> الترتيب غير مهم في اختيار لجان بدون مناصب محددة، لذا نستخدم التوافيق.</p><p><strong>الخطوة 2: حساب قيمة \\(\\binom{7}{3}\\):</strong> \\[ \\binom{7}{3} = \\frac{7 \\times 6 \\times 5}{3 \\times 2 \\times 1} = \\frac{210}{6} = \\mathbf{35\\text{ طريقة}}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics & Probability</em> and write down the target quantity and domain conditions.",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال واكتب المعطيات والمطلوب بوضوح."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\binom{7}{3}\\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\(\\binom{7}{3}\\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -320,7 +449,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Find intersection using independence:</strong> \\[ P(A \\cap B) = P(A) \\cdot P(B) = 0.5 \\times 0.4 = 0.20. \\]</p><p><strong>Step 2: Apply the general addition rule:</strong> \\[ P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0.5 + 0.4 - 0.20 = \\mathbf{0.70}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: حساب التقاطع باستقلال الحادثتين:</strong> \\[ P(A \\cap B) = P(A) \\cdot P(B) = 0.5 \\times 0.4 = 0.20. \\]</p><p><strong>الخطوة 2: تطبيق قاعدة الجمع العامة:</strong> \\[ P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0.5 + 0.4 - 0.20 = \\mathbf{0.70}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics & Probability</em> and start from \\(A\\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\(A\\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( P(A \\cap B) = P(A) \\cdot P(B) = 0.5 \\times 0.4 = 0.20. \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( P(A \\cap B) = P(A) \\cdot P(B) = 0.5 \\times 0.4 = 0.20. \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -332,7 +475,21 @@
         "solution": {
           "en": "<p><strong>Step 1: State circular permutation formula:</strong> For \\(n\\) objects arranged in a circle without a reference point: \\[ P = (n - 1)!. \\]</p><p><strong>Step 2: Calculate for \\(n = 5\\):</strong> \\[ (5 - 1)! = 4! = 4 \\times 3 \\times 2 \\times 1 = \\mathbf{24\\text{ ways}}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: قانون التباديل الدائرية بدون نقطة مرجع:</strong> \\[ P = (n - 1)!. \\]</p><p><strong>الخطوة 2: التعويض بـ \\(n = 5\\):</strong> \\[ (5 - 1)! = 4! = 4 \\times 3 \\times 2 \\times 1 = \\mathbf{24\\text{ طريقة}}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics & Probability</em> and write down the target quantity and domain conditions.",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال واكتب المعطيات والمطلوب بوضوح."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(n\\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\(n\\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       }
     ]
   },

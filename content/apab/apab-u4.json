@@ -39,88 +39,59 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Unit 4 · Contextual Applications of Differentiation — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
+          "type": "sign_chart",
+          "title": "Unit 4 · Contextual Applications of Differentiation — First Derivative Sign Chart & Extrema",
+          "ticks": [
             {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "x": -4,
+              "label": "x = -4"
             },
             {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "x": 6,
+              "label": "x = 6"
             }
           ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
+          "signs": [
+            "+",
+            "−",
+            "+"
+          ],
+          "behaviors": [
+            "↗ Increasing",
+            "↘ Decreasing",
+            "↗ Increasing"
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Derivative sign chart for f'(x) showing local maximum at x = −4 (+ to −) and local minimum at x = 6 (− to +).",
           "ar": null
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Unit 4 · Contextual Applications of Differentiation — Coordinate Curve & Tangent Analysis (1)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 1",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 1"
-            },
-            {
-              "fn": "2*x - 2",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
+          "type": "sign_chart",
           "points": [
-            {
-              "x": 1,
-              "y": 0,
-              "label": "(1, 0)"
-            },
-            {
-              "x": 0,
-              "y": -1,
-              "label": "(0, -1)"
-            }
+            -23,
+            26
+          ],
+          "signs": [
+            "+",
+            "0",
+            "-",
+            "0",
+            "+"
+          ],
+          "behavior": [
+            "↗",
+            "Max",
+            "↘",
+            "Min",
+            "↗"
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 1 and its instantaneous tangent line at x = 1.",
+          "en": "Unit 4 · Contextual Applications of Differentiation — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Unit 4 · Contextual Applications of Differentiation.",
           "ar": null
         }
       },
@@ -150,6 +121,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Unit 4 · Contextual Applications of Differentiation)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Differentiability Implies Continuity &amp; How Implicit Differentiation Works:</strong> Notice that for \\(x \\ne a\\), we can write \\(f(x) - f(a) = \\dfrac{f(x) - f(a)}{x - a}\\cdot (x - a)\\). Taking the limit as \\(x \\to a\\) by the Product Law gives:</p>\\[ \\lim_{x \\to a} \\bigl(f(x) - f(a)\\bigr) = f'(a)\\cdot 0 = 0 \\implies \\lim_{x \\to a} f(x) = f(a) \\]<p>Similarly, when differentiating an implicit relation \\(F(x, y) = c\\) with respect to \\(x\\), \\(y = y(x)\\) is an inner function of \\(x\\). By the Chain Rule, \\(\\dfrac{d}{dx}\\bigl[y^n\\bigr] = ny^{n-1}\\dfrac{dy}{dx}\\), and for product terms \\(\\dfrac{d}{dx}[xy] = y + x\\dfrac{dy}{dx}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example · Complete Kinematic Analysis",
@@ -164,11 +147,100 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example B — Unit 4 · Contextual Applications of Differentiation (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> The derivative sign chart for a smooth function \\( C(q) \\) has critical points at \\( q_1 = -10 \\) and \\( q_2 = 25 \\), with \\( C'(q) < 0 \\) on \\( (-10, 25) \\). Determine the length \\( q_2 - q_1 \\) of the interval on which \\( C(q) \\) is strictly decreasing.</p><p><strong>Step-by-Step Solution:</strong> The length of the interval \\( (-10, 25) \\) is \\( 25 - (-10) = 35 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Exam Traps — Unit 4 · Contextual Applications of Differentiation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. Premature L'Hôpital's Rule Application:</strong> On College Board AP Calculus AB, applying L'Hôpital's Rule to \\(\\lim_{x \\to 4} \\dfrac{g(x)}{h(x)}\\) when the fraction is <em>not</em> an indeterminate form \\(0/0\\) or \\(\\infty/\\infty\\) produces completely false limits. Always verify \\(g(4) = 0\\) and \\(h(4) = 0\\) explicitly first.</p><p><strong>2. Parametric Second Derivative Trap:</strong> For parametric curves \\((x(t), y(t))\\), \\(\\dfrac{d^2y}{dx^2} = \\dfrac{\\frac{d}{dt}(dy/dx)}{dx/dt}\\), <em>never</em> \\(\\dfrac{d^2y/dt^2}{d^2x/dt^2}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 4 · Contextual Applications of Differentiation)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Assuming \\(f'(c) = 0\\) guarantees a local extremum",
+              "ar": null
+            },
+            {
+              "en": "Inflection points like \\(f(x) = x^3\\) at \\(x = 0\\) have \\(f'(0) = 0\\) without changing sign.",
+              "ar": null
+            },
+            {
+              "en": "Verify that \\(f'(x)\\) actually changes sign across \\(x = c\\) (or check \\(f''(c) \\ne 0\\)).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing parametric \\(\\frac{d^2y}{dx^2}\\) as \\(\\frac{\\ddot{y}}{\\ddot{x}}\\)",
+              "ar": null
+            },
+            {
+              "en": "violates the Chain Rule \\(\\frac{d}{dx} = \\frac{1}{dx/dt}\\frac{d}{dt}\\).",
+              "ar": null
+            },
+            {
+              "en": "Differentiate \\(dy/dx\\) with respect to \\(t\\), then divide by \\(dx/dt\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Forgetting product rule on \\(xy\\) in implicit differentiation",
+              "ar": null
+            },
+            {
+              "en": "Treats \\(y\\) as a constant instead of \\(y(x)\\).",
+              "ar": null
+            },
+            {
+              "en": "Always expand \\(\\frac{d}{dx}(xy) = y + x\\frac{dy}{dx}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Unit 4 · Contextual Applications of Differentiation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Justification Rule (College Board AP Calculus AB):</strong> When justifying local extrema or points of inflection on free-response questions, state \"because \\(f'(x)\\) changes sign from positive to negative at \\(x = c\\)\" rather than referring vaguely to \"it\" or \"the graph.\"</p>",
           "ar": null
         }
       },
@@ -181,7 +253,21 @@
         "solution": {
           "en": "<p>Find \\(v(t)\\) and \\(a(t)\\): \\[ v(t) = 6t^2 - 30t + 24 = 6(t^2 - 5t + 4) = 6(t - 1)(t - 4) \\] \\[ a(t) = 12t - 30 = 6(2t - 5) \\] Critical time points: \\(t = 1\\), \\(t = 2.5\\), \\(t = 4\\). Construct sign chart:</p><ul><li>On \\((0, 1)\\): \\(v(t) > 0\\), \\(a(t) < 0\\) (opposite signs \\(\\implies\\) slowing down).</li><li>On \\((1, 2.5)\\): \\(v(t) < 0\\), \\(a(t) < 0\\) (same sign \\(\\implies\\) <strong>speeding up</strong>).</li><li>On \\((2.5, 4)\\): \\(v(t) < 0\\), \\(a(t) > 0\\) (opposite signs \\(\\implies\\) slowing down).</li><li>On \\((4, \\infty)\\): \\(v(t) > 0\\), \\(a(t) > 0\\) (same sign \\(\\implies\\) <strong>speeding up</strong>).</li></ul><p>The particle is speeding up on <strong>\\((1, 2.5) \\cup (4, \\infty)\\)</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 4 · Contextual Applications of Differentiation</em> and start from \\(s(t) = 2t^3 - 15t^2 + 24t + 10\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(v(t)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -224,7 +310,21 @@
         "solution": {
           "en": "<p>Let \\(x\\) be the distance from the base to the wall and \\(y\\) be the height on the wall. By the Pythagorean theorem: \\[ x^2 + y^2 = 13^2 = 169 \\] At the instant \\(x = 5\\): \\(y = \\sqrt{169 - 25} = \\sqrt{144} = 12\\text{ ft}\\).<br>Differentiating implicitly with respect to time \\(t\\): \\[ 2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0 \\implies x\\frac{dx}{dt} + y\\frac{dy}{dt} = 0 \\] Substitute \\(x = 5\\), \\(y = 12\\), and \\(\\frac{dx}{dt} = 2\\text{ ft/s}\\): \\[ (5)(2) + (12)\\frac{dy}{dt} = 0 \\implies 10 + 12\\frac{dy}{dt} = 0 \\implies \\frac{dy}{dt} = -\\frac{10}{12} = -\\mathbf{\\frac{5}{6}\\text{ ft/s}}. \\] The top of the ladder is sliding down at a rate of <strong>\\(\\frac{5}{6}\\text{ ft/s}\\)</strong> (approx. 0.833 ft/s).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 4 · Contextual Applications of Differentiation</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -407,16 +507,44 @@
         "solution": {
           "en": "<p>This is an indeterminate power form of type \\(1^\\infty\\). Let \\(y = (\\cos x)^{1/x^2}\\). Take the natural logarithm: \\[ \\ln y = \\ln\\left((\\cos x)^{1/x^2}\\right) = \\frac{\\ln(\\cos x)}{x^2} \\] Evaluate \\(\\lim_{x\\to 0^+} \\ln y = \\lim_{x\\to 0^+} \\frac{\\ln(\\cos x)}{x^2}\\). Check limits separately: \\(\\lim_{x\\to 0^+}\\ln(\\cos x) = \\ln 1 = 0\\) and \\(\\lim_{x\\to 0^+} x^2 = 0\\). Apply L'Hôpital's Rule: \\[ \\lim_{x\\to 0^+} \\frac{\\frac{-\\sin x}{\\cos x}}{2x} = \\lim_{x\\to 0^+} \\frac{-\\tan x}{2x} = -\\frac{1}{2}\\lim_{x\\to 0^+}\\frac{\\tan x}{x} = -\\frac{1}{2}(1) = -\\frac{1}{2}. \\] Since \\(\\lim_{x\\to 0^+} \\ln y = -\\frac{1}{2}\\), exponentiate to obtain the original limit: \\[ \\lim_{x\\to 0^+} y = e^{-1/2} = \\mathbf{\\frac{1}{\\sqrt{e}}} \\approx 0.6065. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 4 · Contextual Applications of Differentiation</em> and start from \\( \\lim_{x \\to 0^+} (\\cos x)^{1/x^2} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(1^\\infty\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Unit 4 · Contextual Applications of Differentiation · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> Consider the composite power function \\( C(q) = (16q + 10)^2 \\). Determine the instantaneous rate of change \\( C'(13) \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 4 · Contextual Applications of Differentiation</em> and start from \\( C(q) = (16q + 10)^2 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( C'(q) = 32(16q + 10) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "By the Chain Rule, \\( C'(q) = 32(16q + 10) \\), which equals \\( 6976 \\) at \\( q = 13 \\).",
           "ar": null
         }
       }

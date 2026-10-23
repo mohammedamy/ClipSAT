@@ -36,78 +36,25 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Unit 3 · Trigonometric and Polar Functions — Harmonic Wave & Phase Profile (2)",
-          "xrange": [
-            0,
-            6.28
-          ],
-          "yrange": [
-            -3.5,
-            3.5
-          ],
-          "fns": [
-            {
-              "fn": "3*Math.sin(x)",
-              "color": "var(--fig-indigo)",
-              "label": "y = 3 sin(x)"
-            },
-            {
-              "fn": "2*Math.cos(x)",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "y = 2 cos(x)"
-            }
-          ],
-          "points": [
-            {
-              "x": 1.57,
-              "y": 3,
-              "label": "Peak (π/2, 3)"
-            }
-          ]
+          "type": "unit_circle",
+          "title": "Unit 3 · Trigonometric and Polar Functions — Unit Circle Reference Angle & Quadrant Projections",
+          "angle": 120,
+          "label": "θ = 2π/3 (120°)"
         },
         "caption": {
-          "en": "Periodic sine and cosine waveforms showing amplitude and quarter-period phase shift.",
+          "en": "Unit circle showing terminal ray at θ = 2π/3 (120°) with exact coordinates (−1/2, √3/2).",
           "ar": null
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Unit 3 · Trigonometric and Polar Functions — Harmonic Wave & Phase Profile (1)",
-          "xrange": [
-            0,
-            6.28
-          ],
-          "yrange": [
-            -3.5,
-            3.5
-          ],
-          "fns": [
-            {
-              "fn": "2*Math.sin(x)",
-              "color": "var(--fig-indigo)",
-              "label": "y = 2 sin(x)"
-            },
-            {
-              "fn": "2*Math.cos(x)",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "y = 2 cos(x)"
-            }
-          ],
-          "points": [
-            {
-              "x": 1.57,
-              "y": 2,
-              "label": "Peak (π/2, 2)"
-            }
-          ]
+          "type": "unit_circle",
+          "r": 1,
+          "points": []
         },
         "caption": {
-          "en": "Periodic sine and cosine waveforms showing amplitude and quarter-period phase shift.",
+          "en": "Unit 3 · Trigonometric and Polar Functions — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Unit 3 · Trigonometric and Polar Functions.",
           "ar": null
         }
       },
@@ -137,6 +84,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Unit 3 · Trigonometric and Polar Functions)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why the Harmonic \\(R\\)-Formula &amp; Cosine Rule Hold:</strong> Expanding \\(R\\cos(\\theta - \\alpha)\\) via the compound-angle identity gives:</p>\\[ R\\cos(\\theta - \\alpha) = (R\\cos\\alpha)\\cos\\theta + (R\\sin\\alpha)\\sin\\theta \\]<p>Matching coefficients with \\(a\\cos\\theta + b\\sin\\theta\\) requires \\(R\\cos\\alpha = a\\) and \\(R\\sin\\alpha = b\\). Squaring and adding yields \\(R^2(\\cos^2\\alpha + \\sin^2\\alpha) = a^2 + b^2 \\implies R = \\sqrt{a^2 + b^2}\\), and dividing gives \\(\\tan\\alpha = \\dfrac{b}{a}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example",
@@ -151,11 +110,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example B — Unit 3 · Trigonometric and Polar Functions (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> For real angle \\( k \\), suppose \\( \\sin(k) + \\cos(k) = \\dfrac{\\sqrt{43}}{\\sqrt{21}} \\). What is the trigonometric expression \\( W = 21\\sin(2k) \\)?</p><p><strong>Step-by-Step Solution:</strong> Squaring both sides gives \\( 1 + \\sin(2k) = \\frac{43}{21} \\implies 21\\sin(2k) = 22 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 3 · Trigonometric and Polar Functions)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Dividing \\(\\sin 2\\theta = \\sin\\theta\\) by \\(\\sin\\theta\\)",
+              "ar": null
+            },
+            {
+              "en": "Eliminates valid solutions where \\(\\sin\\theta = 0\\).",
+              "ar": null
+            },
+            {
+              "en": "Expand \\(2\\sin\\theta\\cos\\theta - \\sin\\theta = 0\\) and factor \\(\\sin\\theta(2\\cos\\theta - 1) = 0\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using \\(A = \\frac{1}{2}r^2\\theta\\) with \\(\\theta = 60^\\circ\\)",
+              "ar": null
+            },
+            {
+              "en": "Overestimates sector area by a factor of \\(180/\\pi \\approx 57.3\\).",
+              "ar": null
+            },
+            {
+              "en": "Convert to radians first: \\(\\theta = 60^\\circ \\times \\frac{\\pi}{180^\\circ} = \\frac{\\pi}{3}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Finding only one solution to \\(\\sin(2x) = 1/2\\) on \\([0, 2\\pi]\\)",
+              "ar": null
+            },
+            {
+              "en": "Forgets that if \\(x \\in [0, 2\\pi]\\), the transformed angle \\(u = 2x\\) spans \\([0, 4\\pi]\\) (4 roots).",
+              "ar": null
+            },
+            {
+              "en": "Transform the interval to \\(u \\in [0, 4\\pi]\\) before dividing by 2.",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Unit 3 · Trigonometric and Polar Functions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>All-Solutions Checklist (College Board AP Precalculus):</strong> When solving \\(\\trig(kx + \\phi) = c\\) on \\([0, 2\\pi]\\), immediately write down the transformed interval \\(\\phi \\le u \\le 2k\\pi + \\phi\\), list all ASTC quadrant angles in that range, and only divide by \\(k\\) at the very last step.</p>",
           "ar": null
         }
       },
@@ -168,7 +204,21 @@
         "solution": {
           "en": "<p><strong>Quadrant & Reference Angle:</strong> \\(\\frac{11\\pi}{6}\\) lies in Quadrant IV because \\(\\frac{3\\pi}{2} < \\frac{11\\pi}{6} < 2\\pi\\). The reference angle is:</p>\\[ \\theta_{\\text{ref}} = 2\\pi - \\frac{11\\pi}{6} = \\frac{\\pi}{6}. \\]<p><strong>Unit Circle Coordinates:</strong> In Quadrant IV, \\(x > 0\\) and \\(y < 0\\):</p>\\[ \\cos\\left(\\frac{11\\pi}{6}\\right) = +\\cos\\left(\\frac{\\pi}{6}\\right) = \\frac{\\sqrt{3}}{2}, \\quad \\sin\\left(\\frac{11\\pi}{6}\\right) = -\\sin\\left(\\frac{\\pi}{6}\\right) = -\\frac{1}{2}. \\]<p><strong>Calculate Ratios:</strong></p>\\[ \\tan\\left(\\frac{11\\pi}{6}\\right) = \\frac{-1/2}{\\sqrt{3}/2} = -\\frac{1}{\\sqrt{3}} = -\\frac{\\sqrt{3}}{3}. \\]\\[ \\sec\\left(\\frac{11\\pi}{6}\\right) = \\frac{1}{\\cos(11\\pi/6)} = \\frac{2}{\\sqrt{3}} = \\frac{2\\sqrt{3}}{3}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 3 · Trigonometric and Polar Functions</em> and start from \\(\\tan\\left(\\frac{11\\pi}{6}\\right)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\frac{11\\pi}{6}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -383,7 +433,21 @@
         "solution": {
           "en": "<p><strong>Step 1 (Convert to Single Trig Ratio):</strong> Substitute \\(\\cos^2\\theta = 1 - \\sin^2\\theta\\):</p>\\[ 2(1 - \\sin^2\\theta) + 3\\sin\\theta - 3 = 0 \\implies 2 - 2\\sin^2\\theta + 3\\sin\\theta - 3 = 0. \\]\\[ -2\\sin^2\\theta + 3\\sin\\theta - 1 = 0 \\implies 2\\sin^2\\theta - 3\\sin\\theta + 1 = 0. \\]<p><strong>Step 2 (Factor the Quadratic in \\(\\sin\\theta\\)):</strong></p>\\[ (2\\sin\\theta - 1)(\\sin\\theta - 1) = 0. \\]<p><strong>Step 3 (Solve the Linear Factors):</strong></p><ul><li>\\(\\sin\\theta = 1 \\implies \\theta = \\dfrac{\\pi}{2}\\).</li><li>\\(2\\sin\\theta - 1 = 0 \\implies \\sin\\theta = \\dfrac{1}{2}\\). In \\([0, 2\\pi)\\), sine is positive in Quadrants I and II with reference angle \\(\\frac{\\pi}{6}\\): \\[ \\theta = \\frac{\\pi}{6} \\quad \\text{and} \\quad \\theta = \\pi - \\frac{\\pi}{6} = \\frac{5\\pi}{6}. \\]</li></ul><p>The solution set is <strong>\\(\\left\\{ \\dfrac{\\pi}{6}, \\dfrac{\\pi}{2}, \\dfrac{5\\pi}{6} \\right\\}\\)</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 3 · Trigonometric and Polar Functions</em> and start from \\(2\\cos^2\\theta + 3\\sin\\theta - 3 = 0\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\cos^2\\theta = 1 - \\sin^2\\theta\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -507,16 +571,44 @@
         "solution": {
           "en": "<p><strong>Step 1 (Find Pole Crossings where r = 0):</strong></p>\\[ 4\\sin(3\\theta) = 0 \\implies \\sin(3\\theta) = 0. \\]<p>For \\(\\theta \\in [0, 2\\pi)\\), the argument \\(3\\theta \\in [0, 6\\pi)\\). The sine function equals zero at integer multiples of \\(\\pi\\):</p>\\[ 3\\theta = 0, \\pi, 2\\pi, 3\\pi, 4\\pi, 5\\pi. \\]\\[ \\theta = 0, \\frac{\\pi}{3}, \\frac{2\\pi}{3}, \\pi, \\frac{4\\pi}{3}, \\frac{5\\pi}{3}. \\]<p><strong>Step 2 (Find Maximum Distance from Pole):</strong></p><p>Distance from pole is \\(|r| = |4\\sin(3\\theta)|\\). The maximum value of \\(|\\sin(3\\theta)|\\) is 1. Therefore, the maximum distance from the origin is <strong>\\(|r| = 4\\)</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 3 · Trigonometric and Polar Functions</em> and start from \\(\\theta\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 4\\sin(3\\theta) = 0 \\implies \\sin(3\\theta) = 0. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Unit 3 · Trigonometric and Polar Functions · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> Write a sinusoidal function with amplitude 2, period \\(2\\pi\\), midline \\(y=3\\), using \\(\\sin\\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 3 · Trigonometric and Polar Functions</em> and start from \\(2\\pi\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(=A=2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Amplitude \\(=A=2\\); period \\(=2\\pi/B=2\\pi\\Rightarrow B=1\\); midline \\(D=3\\). So \\(f(x)=2\\sin(1x)+3.\\) <strong>Answer:</strong> \\(f(x)=2\\sin\\left(1x\\right)+3\\).",
           "ar": null
         }
       }

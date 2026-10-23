@@ -25,44 +25,20 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Exponential, Logarithmic & Logistic Dynamics — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
-          ]
+          "type": "slope_field",
+          "title": "Exponential, Logarithmic & Logistic Dynamics — Slope Field & Particular Solution Trajectory",
+          "fn": "x - y",
+          "xmin": -3,
+          "xmax": 3,
+          "ymin": -3,
+          "ymax": 3,
+          "solution": {
+            "x0": 0,
+            "y0": 1
+          }
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Slope field for dy/dx = x − y with the integral curve passing through initial condition (0, 1).",
           "ar": null
         }
       },
@@ -87,6 +63,18 @@
         },
         "body": {
           "en": "<p><strong>Definition of Logarithm:</strong> For \\(b > 0, b \\ne 1\\), and \\(x > 0\\): \\[ y = \\log_b x \\iff b^y = x. \\] The logarithmic curve has domain \\((0, \\infty)\\), range \\(\\mathbb{R}\\), and vertical asymptote \\(x = 0\\).</p><p><strong>Fundamental Logarithmic Laws:</strong></p>\\[\\log_b(uv) = \\log_b u + \\log_b v, \\quad \\log_b\\left(\\frac{u}{v}\\right) = \\log_b u - \\log_b v, \\quad \\log_b(u^p) = p\\log_b u.\\]\\[b^{\\log_b x} = x, \\quad \\log_b(b^x) = x, \\quad \\log_b 1 = 0, \\quad \\log_b b = 1.\\]<p><strong>Change-of-Base Theorem:</strong> For any valid bases \\(b\\) and \\(c\\): \\[ \\log_b x = \\frac{\\log_c x}{\\log_c b} = \\frac{\\ln x}{\\ln b}. \\] <em>Proof:</em> Let \\(y = \\log_b x\\). Then \\(b^y = x\\). Taking the natural logarithm of both sides: \\(\\ln(b^y) = \\ln x \\implies y\\ln b = \\ln x \\implies y = \\frac{\\ln x}{\\ln b}\\). \\(\\blacksquare\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Exponential, Logarithmic & Logistic Dynamics)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
           "ar": null
         }
       },
@@ -310,11 +298,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example A — Exponential, Logarithmic & Logistic Dynamics (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> Consider the cubic polynomial \\( S(b) = b^3 - 7b^2 + 13b - 78 \\). Determine the remainder \\( S(6) \\) upon division by \\( (b - 6) \\).</p><p><strong>Step-by-Step Solution:</strong> By the Remainder Theorem, \\( S(6) = 6^3 - 7(6^2) + 13(6) - 78 = -36 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Exponential, Logarithmic & Logistic Dynamics)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Writing \\(\\ln|y| = x^2 + C \\implies y = e^{x^2} + C\\)",
+              "ar": null
+            },
+            {
+              "en": "Exponentiation distributes over addition as multiplication (\\(e^{a+b} = e^a e^b\\)), not addition.",
+              "ar": null
+            },
+            {
+              "en": "Write \\(y = e^{x^2 + C} = Ae^{x^2}\\) and solve for \\(A\\) using the initial condition.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Leaving original \\(x\\)-limits on a \\(u\\)-substituted definite integral",
+              "ar": null
+            },
+            {
+              "en": "Evaluates the antiderivative \\(F(u)\\) at \\(x\\)-values instead of \\(u(x)\\)-values.",
+              "ar": null
+            },
+            {
+              "en": "Convert bounds immediately: \\(u_{\\text{low}} = u(a)\\) and \\(u_{\\text{high}} = u(b)\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing total distance as \\(\\left|\\int_{t_1}^{t_2} v(t)\\,dt\\right|\\)",
+              "ar": null
+            },
+            {
+              "en": "Cancels forward and backward motion (net displacement) instead of accumulating total path length.",
+              "ar": null
+            },
+            {
+              "en": "Split the integral at every root where \\(v(t) = 0\\) and integrate \\(|v(t)|\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Exponential, Logarithmic & Logistic Dynamics",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Quick Verification Trick (Honors Precalculus & Trigonometric Analysis):</strong> For any indefinite integral \\(\\int f(x)\\,dx = F(x) + C\\), differentiate your answer \\(F'(x)\\) mentally—especially the coefficient \\(1/k\\) from chain-rule reversal \\(\\int e^{kx}\\,dx = \\tfrac{1}{k}e^{kx} + C\\)—before moving on.</p>",
           "ar": null
         }
       },
@@ -327,7 +392,21 @@
         "solution": {
           "en": "<p>Combine the logarithms on the left-hand side using the product rule:</p>\\[\\log_3[x(x + 6)] = 3.\\]<p>Convert to exponential form:</p>\\[x(x + 6) = 3^3 = 27 \\implies x^2 + 6x - 27 = 0.\\]<p>Factor the quadratic:</p>\\[(x + 9)(x - 3) = 0 \\implies x = -9 \\text{ or } x = 3.\\]<p>Check the domain restrictions in the original equation:</p><ul><li>For \\(x = -9\\): \\(\\log_3(-9)\\) is undefined, so \\(x = -9\\) is an <strong>extraneous solution</strong>.</li><li>For \\(x = 3\\): \\(\\log_3(9) + \\log_3(3) = 2 + 1 = 3\\). Valid \\(\\checkmark\\).</li></ul><p>Therefore, the unique solution is <strong>\\(x = 3\\)</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Exponential, Logarithmic & Logistic Dynamics</em> and start from \\(\\log_3(x + 6) + \\log_3(x) = 3\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\log_3[x(x + 6)] = 3.\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -338,27 +417,69 @@
         "solution": {
           "en": "<p>If 20% decays in 15 days, then 80% remains at \\(t = 15\\):</p>\\[0.80 M_0 = M_0 e^{-15k} \\implies e^{-15k} = 0.80.\\]<p>Take the natural logarithm of both sides:</p>\\[-15k = \\ln(0.80) \\implies k = -\\frac{\\ln(0.80)}{15} = \\frac{\\ln(1.25)}{15} \\approx 0.01488\\text{ day}^{-1}.\\]<p>The half-life \\(t_{1/2}\\) satisfies \\(e^{-k t_{1/2}} = 0.5\\):</p>\\[t_{1/2} = \\frac{\\ln 2}{k} = \\frac{15\\ln 2}{-\\ln(0.80)} \\approx \\frac{15(0.6931)}{0.2231} \\approx 46.6\\text{ days}.\\]",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Exponential, Logarithmic & Logistic Dynamics</em> and start from \\(M(t) = M_0 e^{-kt}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(t = 15\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Easy]</strong> Given \\(\\log_a(b)=\\dfrac{2}{3}\\), find \\(\\log_a(b^{4})\\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Exponential, Logarithmic & Logistic Dynamics</em> and start from \\(\\log_a(b)=\\dfrac{2}{3}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\log_a(b^{4})=4\\log_a(b)=4\\left(\\dfrac{2}{3}\\right)=\\dfrac{8}{3}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "\\(\\log_a(b^{4})=4\\log_a(b)=4\\left(\\dfrac{2}{3}\\right)=\\dfrac{8}{3}\\). <strong>Answer:</strong> \\(\\dfrac{8}{3}\\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Exponential, Logarithmic & Logistic Dynamics · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> The exponential equation \\( 8^{2b - 1} = 8^{10 + 22} \\) holds for real \\( b \\). Determine the quantity \\( S = 2b \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Exponential, Logarithmic & Logistic Dynamics</em> and start from \\( 8^{2b - 1} = 8^{10 + 22} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 2b - 1 = 32 \\implies 2b = 33 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Exponential, Logarithmic & Logistic Dynamics · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Equating exponents gives \\( 2b - 1 = 32 \\implies 2b = 33 \\).",
           "ar": null
         }
       }

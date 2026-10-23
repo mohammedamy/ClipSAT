@@ -41,41 +41,27 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Circular Measure",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Unit Circle Periodicity, Harmonic Synthesis &amp; Triangle Laws:</strong> Every angle \\(\\theta\\) on the unit circle defines \\((\\cos\\theta, \\sin\\theta)\\) with fundamental Pythagorean invariance \\(\\cos^2\\theta + \\sin^2\\theta \\equiv 1\\). Linear combinations of同-frequency waves \\(a\\cos\\theta \\pm b\\sin\\theta\\) collapse into a single phase-shifted sinusoid \\(R\\cos(\\theta \\mp \\alpha)\\) where \\(R = \\sqrt{a^2 + b^2}\\) and \\(\\tan\\alpha = b/a\\), immediately revealing the exact maximum \\(+R\\) and minimum \\(-R\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Circular Measure — Harmonic Wave & Phase Profile (2)",
-          "xrange": [
-            0,
-            6.28
-          ],
-          "yrange": [
-            -3.5,
-            3.5
-          ],
-          "fns": [
-            {
-              "fn": "3*Math.sin(x)",
-              "color": "var(--fig-indigo)",
-              "label": "y = 3 sin(x)"
-            },
-            {
-              "fn": "2*Math.cos(x)",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "y = 2 cos(x)"
-            }
-          ],
-          "points": [
-            {
-              "x": 1.57,
-              "y": 3,
-              "label": "Peak (π/2, 3)"
-            }
-          ]
+          "type": "unit_circle",
+          "title": "Circular Measure — Unit Circle Reference Angle & Quadrant Projections",
+          "angle": 120,
+          "label": "θ = 2π/3 (120°)"
         },
         "caption": {
-          "en": "Periodic sine and cosine waveforms showing amplitude and quarter-period phase shift.",
+          "en": "Unit circle showing terminal ray at θ = 2π/3 (120°) with exact coordinates (−1/2, √3/2).",
           "ar": null
         }
       },
@@ -263,6 +249,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Circular Measure)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why the Harmonic \\(R\\)-Formula &amp; Cosine Rule Hold:</strong> Expanding \\(R\\cos(\\theta - \\alpha)\\) via the compound-angle identity gives:</p>\\[ R\\cos(\\theta - \\alpha) = (R\\cos\\alpha)\\cos\\theta + (R\\sin\\alpha)\\sin\\theta \\]<p>Matching coefficients with \\(a\\cos\\theta + b\\sin\\theta\\) requires \\(R\\cos\\alpha = a\\) and \\(R\\sin\\alpha = b\\). Squaring and adding yields \\(R^2(\\cos^2\\alpha + \\sin^2\\alpha) = a^2 + b^2 \\implies R = \\sqrt{a^2 + b^2}\\), and dividing gives \\(\\tan\\alpha = \\dfrac{b}{a}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example 9.A",
@@ -289,11 +287,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example C — Circular Measure (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> In the plane, the ellipse \\( u: \\dfrac{s^2}{2401} + \\dfrac{y^2}{529} = 1 \\) has foci at \\( (\\pm c, 0) \\). Find the squared focal distance \\( c^2 \\) of \\( u \\).</p><p><strong>Step-by-Step Solution:</strong> For an ellipse, \\( c^2 = a^2 - b^2 = 2401 - 529 = 1872 \\).</p>",
           "ar": null
         }
       },
@@ -301,11 +299,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example D — Circular Measure (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> For real angle \\( s \\), suppose \\( \\sin(s) + \\cos(s) = \\dfrac{\\sqrt{20}}{\\sqrt{7}} \\). Find the trigonometric expression \\( u = 7\\sin(2s) \\).</p><p><strong>Step-by-Step Solution:</strong> Squaring both sides gives \\( 1 + \\sin(2s) = \\frac{20}{7} \\implies 7\\sin(2s) = 13 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Circular Measure)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Dividing \\(\\sin 2\\theta = \\sin\\theta\\) by \\(\\sin\\theta\\)",
+              "ar": null
+            },
+            {
+              "en": "Eliminates valid solutions where \\(\\sin\\theta = 0\\).",
+              "ar": null
+            },
+            {
+              "en": "Expand \\(2\\sin\\theta\\cos\\theta - \\sin\\theta = 0\\) and factor \\(\\sin\\theta(2\\cos\\theta - 1) = 0\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using \\(A = \\frac{1}{2}r^2\\theta\\) with \\(\\theta = 60^\\circ\\)",
+              "ar": null
+            },
+            {
+              "en": "Overestimates sector area by a factor of \\(180/\\pi \\approx 57.3\\).",
+              "ar": null
+            },
+            {
+              "en": "Convert to radians first: \\(\\theta = 60^\\circ \\times \\frac{\\pi}{180^\\circ} = \\frac{\\pi}{3}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Finding only one solution to \\(\\sin(2x) = 1/2\\) on \\([0, 2\\pi]\\)",
+              "ar": null
+            },
+            {
+              "en": "Forgets that if \\(x \\in [0, 2\\pi]\\), the transformed angle \\(u = 2x\\) spans \\([0, 4\\pi]\\) (4 roots).",
+              "ar": null
+            },
+            {
+              "en": "Transform the interval to \\(u \\in [0, 4\\pi]\\) before dividing by 2.",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Circular Measure",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>All-Solutions Checklist (Cambridge International AS Level (9709 Paper 1 / Paper 4 / Paper 5)):</strong> When solving \\(\\trig(kx + \\phi) = c\\) on \\([0, 2\\pi]\\), immediately write down the transformed interval \\(\\phi \\le u \\le 2k\\pi + \\phi\\), list all ASTC quadrant angles in that range, and only divide by \\(k\\) at the very last step.</p>",
           "ar": null
         }
       },
@@ -318,7 +393,21 @@
         "solution": {
           "en": "The perimeter of a sector is given by \\(P = s + 2r = r\\theta + 2r\\).<br>Substitute \\(P = 28\\) and \\(r = 8\\): \\[28 = 8\\theta + 2(8) \\Rightarrow 28 = 8\\theta + 16 \\Rightarrow 8\\theta = 12 \\Rightarrow \\theta = \\dfrac{12}{8} = 1.5\\text{ radians}\\] The area of the sector is: \\[A = \\dfrac{1}{2}r^2\\theta = \\dfrac{1}{2}(8^2)(1.5) = \\dfrac{1}{2}(64)(1.5) = 32 \\times 1.5 = 48\\text{ cm}^2\\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Circular Measure</em> and start from \\(8\\text{ cm}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(P = s + 2r = r\\theta + 2r\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -329,27 +418,94 @@
         "solution": {
           "en": "(a) Use the cosine rule in triangle \\(OAB\\) with \\(OA = OB = 10\\) and \\(\\angle AOB = \\tfrac{2\\pi}{3} = 120^\\circ\\): \\[AB^2 = 10^2 + 10^2 - 2(10)(10)\\cos\\left(\\tfrac{2\\pi}{3}\\right) = 100 + 100 - 200\\left(-\\tfrac{1}{2}\\right) = 200 + 100 = 300\\] Thus \\(AB = \\sqrt{300} = 10\\sqrt{3}\\text{ cm}\\).<br>(b) Area of sector \\(OAB\\): \\[A_{\\text{sector}} = \\dfrac{1}{2}r^2\\theta = \\dfrac{1}{2}(10^2)\\left(\\tfrac{2\\pi}{3}\\right) = \\dfrac{100\\pi}{3}\\text{ cm}^2\\] Area of triangle \\(OAB\\): \\[A_{\\Delta} = \\dfrac{1}{2}r^2\\sin\\theta = \\dfrac{1}{2}(10^2)\\sin\\left(\\tfrac{2\\pi}{3}\\right) = 50\\left(\\dfrac{\\sqrt{3}}{2}\\right) = 25\\sqrt{3}\\text{ cm}^2\\] Area of minor segment: \\[A_{\\text{segment}} = A_{\\text{sector}} - A_{\\Delta} = \\dfrac{100\\pi}{3} - 25\\sqrt{3} = \\dfrac{100\\pi - 75\\sqrt{3}}{3}\\text{ cm}^2\\]",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Circular Measure</em> and start from \\(10\\text{ cm}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(OAB\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Hard]</strong> The sinusoidal function \\( F(w) = 17\\sin(7w) + 24 \\) is defined for all real \\( w \\). Find the maximum value \\( M_{F} \\) of \\( F(w) \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Circular Measure</em> and start from \\( F(w) = 17\\sin(7w) + 24 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\max(\\sin(7w)) = 1 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "Since \\( \\max(\\sin(7w)) = 1 \\), the maximum value is \\( 17(1) + 24 = 41 \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Circular Measure · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> An angle \\( \\theta_{D} = 315^\\circ \\) is drawn in standard position on the unit circle. Find its acute reference angle \\( w \\) (in degrees).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Circular Measure</em> and start from \\( \\theta_{D} = 315^\\circ \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\theta = 315^\\circ \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "en": "For \\( \\theta = 315^\\circ \\), the acute angle with the horizontal axis is \\( 45^\\circ \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Circular Measure · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 5 · Medium]</strong> In \\( \\triangle DEF \\), sides of lengths \\( 16 \\) and \\( 10 \\) meet at an included angle of \\( 60^\\circ \\) opposite side \\( w \\). Find the squared length \\( F = w^2 \\) by the Law of Cosines.",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Circular Measure</em> and start from \\( \\triangle DEF \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( w^2 = 16^2 + 10^2 - 2(16)(10)\\cos(60^\\circ) = 196 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "By the Law of Cosines, \\( w^2 = 16^2 + 10^2 - 2(16)(10)\\cos(60^\\circ) = 196 \\).",
           "ar": null
         }
       }

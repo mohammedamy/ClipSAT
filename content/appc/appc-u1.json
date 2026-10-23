@@ -36,43 +36,38 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Unit 1 · Polynomial and Rational Functions — Coordinate Curve & Tangent Analysis (2)",
+          "title": "Unit 1 · Polynomial and Rational Functions — Function Curve & Symmetry Analysis",
           "xrange": [
             -4,
-            4
+            6
           ],
           "yrange": [
-            -3,
-            9
+            -4,
+            6
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "(x - 3)*(x - 3) - 4",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "label": "f(x) = (x-3)² - 4"
             },
             {
-              "fn": "2*x - 3",
+              "fn": "x",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "label": "y = x"
             }
           ],
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "x": 3,
+              "y": -4,
+              "label": "Vertex (3, -4)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Parabola f(x) = (x − 3)² − 4 with vertex at (3, −4) and symmetry reference line y = x.",
           "ar": null
         }
       },
@@ -128,11 +123,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example B — Unit 1 · Polynomial and Rational Functions (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> When the integer \\( P = 31 \\) is divided by \\( Q = 7 \\), the division algorithm gives \\( P = Qq + r \\) with \\( 0 \\le r < Q \\). What is the remainder \\( r \\)?</p><p><strong>Step-by-Step Solution:</strong> Since \\( 31 = 7 \\times 4 + 3 \\), the remainder is \\( r = 3 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 1 · Polynomial and Rational Functions)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Expanding \\(\\ln(x + y)\\) as \\(\\ln x + \\ln y\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses the product law \\(\\ln(xy) = \\ln x + \\ln y\\) with a non-existent sum rule.",
+              "ar": null
+            },
+            {
+              "en": "Only factor products, quotients, and powers inside logarithms: \\(\\ln(xy) = \\ln x + \\ln y\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Keeping both roots of \\(\\sqrt{2x+3} = x - 3\\) without checking \\(x - 3 \\ge 0\\)",
+              "ar": null
+            },
+            {
+              "en": "Squaring both sides loses the sign of \\(x - {r}\\), introducing roots where \\(\\sqrt{\\cdot} = -\\text{number}\\).",
+              "ar": null
+            },
+            {
+              "en": "Enforce the range condition \\(x \\ge 3\\) before or after squaring.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Restricting domain of \\(f(x) = (x-3)^2 + 1\\) to \\(x \\ge 0\\) for invertibility",
+              "ar": null
+            },
+            {
+              "en": "The vertex is at \\(x = 3\\), so \\(f(2) = f(4) = 2\\) fails the horizontal line test on \\(x \\ge 0\\).",
+              "ar": null
+            },
+            {
+              "en": "Restrict the domain at the vertex axis of symmetry: \\(x \\ge 3\\) (or \\(x \\le 3\\)).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Unit 1 · Polynomial and Rational Functions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Exam Check (College Board AP Precalculus):</strong> To verify an inverse function \\(f^{-1}(x)\\) in 5 seconds, pick a simple input \\(x_0\\), compute \\(y_0 = f(x_0)\\), and check that \\(f^{-1}(y_0) = x_0\\). Also verify that the graph of \\(y = f^{-1}(x)\\) reflects \\(y = f(x)\\) across \\(y = x\\).</p>",
           "ar": null
         }
       },
@@ -145,7 +217,21 @@
         "solution": {
           "en": "<p>Sum the exponents of the linear factors to find the degree: \\[ 2 + 1 + 3 = 6 \\implies \\text{degree } 6. \\]</p><p>At \\(x = -2\\), the multiplicity is 2 (even), so the graph <strong>touches the \\(x\\)-axis and turns around</strong> without crossing.</p><p>The degree is even (6) and the leading coefficient is negative (\\(-1\\)), so \\[ \\lim_{x \\to \\infty} q(x) = -\\infty. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 1 · Polynomial and Rational Functions</em> and start from \\(q(x) = -(x+2)^2(x-1)(x-4)^3\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 2 + 1 + 3 = 6 \\implies \\text{degree } 6. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -349,7 +435,21 @@
         "solution": {
           "en": "<p>The rate of change switches from decreasing to increasing at the inflection point. Taking the second derivative (or analyzing symmetric rates of change): \\[ f'(x) = 3x^2 - 6x - 9, \\quad f''(x) = 6x - 6 = 0 \\implies x = 1. \\]</p><p>For \\(x < 1\\), \\(f''(x) < 0\\), so \\(f\\) is <strong>concave down</strong> on \\((-\\infty, 1)\\).</p><p>For \\(x > 1\\), \\(f''(x) > 0\\), so \\(f\\) is <strong>concave up</strong> on \\((1, \\infty)\\).</p><p>The inflection point is \\((1, f(1)) = (1, 1 - 3 - 9 + 2) = \\mathbf{(1, -9)}\\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 1 · Polynomial and Rational Functions</em> and start from \\(f(x) = x^3 - 3x^2 - 9x + 2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( f'(x) = 3x^2 - 6x - 9, \\quad f''(x) = 6x - 6 = 0 \\implies x = 1. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -573,16 +673,44 @@
         "solution": {
           "en": "<p><strong>(a) Domain:</strong> Factor the denominator: \\(x^2 - 5x + 6 = (x - 2)(x - 3)\\). Thus the domain is all real numbers except \\(x \\neq 2\\) and \\(x \\neq 3\\), or \\((-\\infty, 2) \\cup (2, 3) \\cup (3, \\infty)\\).</p><p><strong>(b) Holes:</strong> Factor the numerator: \\(2(x^2 - 4) = 2(x - 2)(x + 2)\\). The factor \\((x - 2)\\) cancels: \\[ R(x) = \\frac{2(x + 2)}{x - 3} \\quad (x \\neq 2). \\] Evaluating at \\(x = 2\\): \\[ y = \\frac{2(2 + 2)}{2 - 3} = \\frac{8}{-1} = -8. \\] Hole coordinates: <strong>\\((2, -8)\\)</strong>.</p><p><strong>(c) Asymptotes:</strong> Vertical asymptote at the remaining denominator zero: <strong>\\(x = 3\\)</strong>. Degrees of numerator and denominator are both 2, so the horizontal asymptote is <strong>\\(y = 2\\)</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 1 · Polynomial and Rational Functions</em> and start from \\(R(x) = \\dfrac{2x^2 - 8}{x^2 - 5x + 6}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x^2 - 5x + 6 = (x - 2)(x - 3)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Unit 1 · Polynomial and Rational Functions · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> The positive variables \\( P \\) and \\( Q \\) are inversely proportional such that \\( Q = 50 \\) when \\( P = 4 \\). What is the value of \\( Q(r) \\) when \\( P = 10 \\)?",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 1 · Polynomial and Rational Functions</em> and start from \\( P \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( PQ = 200 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Since \\( PQ = 200 \\), when \\( P = 10 \\) we have \\( Q = 20 \\).",
           "ar": null
         }
       }

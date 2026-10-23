@@ -40,46 +40,63 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Sequences &amp; Series",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Arithmetic, Geometric &amp; Power Series Convergence:</strong> An arithmetic progression grows additively (\\(u_n = a + (n-1)d\\), \\(S_n = \\tfrac{n}{2}[2a + (n-1)d]\\)), whereas a geometric progression scales multiplicatively (\\(u_n = ar^{n-1}\\), \\(S_n = \\dfrac{a(1-r^n)}{1-r}\\)). An infinite geometric series \\(\\sum_{n=1}^\\infty ar^{n-1}\\) converges to \\(S_\\infty = \\dfrac{a}{1-r}\\) if and only if \\(|r| < 1\\). Similarly, the general binomial expansion \\((1 + kx)^n = 1 + n(kx) + \\dfrac{n(n-1)}{2!}(kx)^2 + \\cdots\\) for negative or fractional \\(n\\) converges if and only if \\(|kx| < 1 \\iff |x| < 1/|k|\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Sequences &amp; Series — Coordinate Curve & Tangent Analysis (2)",
+          "title": "Sequences &amp; Series — Geometric Partial Sums & Asymptotic Limit",
           "xrange": [
-            -4,
-            4
+            0,
+            6
           ],
           "yrange": [
-            -3,
-            9
+            0,
+            5
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "4*(1 - Math.pow(0.5, x))",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "label": "S(x) = 4(1 − 0.5ˣ)"
             },
             {
-              "fn": "2*x - 3",
+              "fn": "4",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "label": "Limit S∞ = 4"
             }
           ],
           "points": [
             {
               "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
+              "y": 2,
+              "label": "S₁ = 2"
             },
             {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "x": 2,
+              "y": 3,
+              "label": "S₂ = 3"
+            },
+            {
+              "x": 3,
+              "y": 3.5,
+              "label": "S₃ = 3.5"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Convergence of geometric partial sums Sₙ = 4(1 − (1/2)ⁿ) toward the horizontal asymptote S∞ = 4.",
           "ar": null
         }
       },
@@ -229,6 +246,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Sequences &amp; Series)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why the Geometric Sum Formula &amp; \\(S_\\infty\\) Work:</strong> Write \\(S_n = a + ar + ar^2 + \\dots + ar^{n-1}\\). Multiplying through by \\(r\\) shifts every power up by one:</p>\\[ S_n - rS_n = (a + ar + \\dots + ar^{n-1}) - (ar + ar^2 + \\dots + ar^n) = a - ar^n \\]<p>Factoring \\(S_n(1 - r) = a(1 - r^n)\\) gives \\(S_n = \\dfrac{a(1 - r^n)}{1 - r}\\) for \\(r \\ne 1\\). Taking \\(n \\to \\infty\\), \\(\\lim_{n \\to \\infty} r^n = 0\\) holds if and only if \\(|r| < 1\\), yielding \\(S_\\infty = \\dfrac{a}{1 - r}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example 6.A",
@@ -255,11 +284,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example C — Sequences &amp; Series (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 4x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(9) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 12x^2 - 2x \\).</li><li>Substitute \\( x = 9 \\): \\( f'(9) = 12(9)^2 - 2(9) = 972 - 18 = \\mathbf{954} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> An arithmetic progression \\( (f_{x}) \\) has first term \\( f_1 = 9 \\) and common difference \\( d = 14 \\). Work out the term \\( f_{5} \\).</p><p><strong>Step-by-Step Solution:</strong> Using \\( f_n = f_1 + (n - 1)d \\), we have \\( f_{5} = 9 + (5 - 1)(14) = 65 \\).</p>",
           "ar": null
         }
       },
@@ -267,11 +296,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example D — Sequences &amp; Series (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> An arithmetic series \\( \\sum_{k=1}^{x} f_k \\) has first term \\( f_1 = 14 \\) and common difference \\( d = 4 \\). Work out the partial sum \\( S_{8} \\) for \\( x = 8 \\).</p><p><strong>Step-by-Step Solution:</strong> Using \\( S_n = \\frac{n}{2}(2a_1 + (n - 1)d) \\), \\( S_{8} = \\frac{8}{2}(2(14) + 7(4)) = 224 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Sequences &amp; Series)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Applying \\(1 + nx + \\dots\\) directly to \\((5 + x)^{-1}\\)",
+              "ar": null
+            },
+            {
+              "en": "The general binomial series is centered at \\(1 + u\\), not \\(a + u\\).",
+              "ar": null
+            },
+            {
+              "en": "Factor out \\(5^{-1}\\) first: \\(\\frac{1}{5}\\left(1 + \\frac{x}{5}\\right)^{-1}\\) valid for \\(|x| < 5\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Assuming \\(\\lim_{n\\to\\infty} a_n = 0\\) guarantees \\(\\sum a_n\\) converges",
+              "ar": null
+            },
+            {
+              "en": "The harmonic series \\(\\sum \\frac{1}{n}\\) has \\(1/n \\to 0\\) yet diverges to \\(\\infty\\).",
+              "ar": null
+            },
+            {
+              "en": "Use the \\(p\\)-series test (\\(p > 1\\)), Ratio Test, or Integral Test to prove convergence.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Counting terms in \\(\\sum_{k=0}^{n} a_k\\) as \\(n\\) terms",
+              "ar": null
+            },
+            {
+              "en": "Overlooks the \\(k = 0\\) initial index.",
+              "ar": null
+            },
+            {
+              "en": "Use \\(\\text{count} = \\text{upper} - \\text{lower} + 1 = n - 0 + 1 = n + 1\\) terms.",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Sequences &amp; Series",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Binomial Validity Shortcut (Cambridge International A Level (9709 Paper 3 / Paper 6)):</strong> When asked for the range of \\(x\\) for which the expansion of \\((a + bx)^n\\) is valid, write \\(\\left|\\dfrac{bx}{a}\\right| < 1 \\implies |x| < \\left|\\dfrac{a}{b}\\right|\\). If multiplying two expansions, take the <em>intersection</em> (smaller radius) of the two validity intervals.</p>",
           "ar": null
         }
       },
@@ -284,7 +390,21 @@
         "solution": {
           "en": "\\(e^{2x}=1+2x+\\dfrac{(2x)^2}{2!}+\\cdots=1+2x+2x^2+\\cdots\\). Valid for all \\(x\\in\\mathbb{R}\\).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences &amp; Series</em> and start from \\(e^{2x}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(e^{2x}=1+2x+\\dfrac{(2x)^2}{2!}+\\cdots=1+2x+2x^2+\\cdots\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "figure",
@@ -339,27 +459,94 @@
         "solution": {
           "en": "<p>Rewrite with negative fractional index and factor out 4:</p>\\[(4 - x)^{-1/2} = 4^{-1/2}\\left(1 - \\frac{x}{4}\\right)^{-1/2} = \\frac{1}{2}\\left(1 - \\frac{x}{4}\\right)^{-1/2}\\]<p>Apply \\((1 + y)^n = 1 + ny + \\frac{n(n-1)}{2}y^2 + \\cdots\\) with \\(n = -\\frac{1}{2}\\) and \\(y = -\\frac{x}{4}\\):</p>\\[\\left(1 - \\frac{x}{4}\\right)^{-1/2} = 1 + \\left(-\\frac{1}{2}\\right)\\left(-\\frac{x}{4}\\right) + \\frac{\\left(-\\frac{1}{2}\\right)\\left(-\\frac{3}{2}\\right)}{2}\\left(-\\frac{x}{4}\\right)^2 + \\cdots\\]\\[= 1 + \\frac{x}{8} + \\frac{3}{8}\\left(\\frac{x^2}{16}\\right) = 1 + \\frac{x}{8} + \\frac{3x^2}{128}\\]<p>Multiply by \\(\\frac{1}{2}\\):</p>\\[\\frac{1}{\\sqrt{4 - x}} = \\frac{1}{2} + \\frac{x}{16} + \\frac{3x^2}{256}\\]<p>Validity condition: \\(\\left|-\\frac{x}{4}\\right| < 1 \\implies |x| < 4\\).</p>",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences &amp; Series</em> and start from \\(\\frac{1}{\\sqrt{4 - x}}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Easy]</strong> A geometric progression \\( (f_{x}) \\) has initial term \\( f_1 = 19 \\) and common ratio \\( r = 2 \\). Work out the fifth term \\( f_5 \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences &amp; Series</em> and start from \\( (f_{x}) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( f_5 = f_1 r^4 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "Using \\( f_5 = f_1 r^4 \\), we get \\( 19 \\times 16 = 304 \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Sequences &amp; Series · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> An arithmetic progression \\( (p_{t}) \\) has first term \\( p_1 = 20 \\) and common difference \\( d = 12 \\). Work out the term \\( p_{5} \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences &amp; Series</em> and start from \\( (p_{t}) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( p_n = p_1 + (n - 1)d \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "en": "Using \\( p_n = p_1 + (n - 1)d \\), we have \\( p_{5} = 20 + (5 - 1)(12) = 68 \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Sequences &amp; Series · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 5 · Hard]</strong> An arithmetic series \\( \\sum_{k=1}^{t} p_k \\) has first term \\( p_1 = 2 \\) and common difference \\( d = 38 \\). Work out the partial sum \\( S_{8} \\) for \\( t = 8 \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences &amp; Series</em> and start from \\( \\sum_{k=1}^{t} p_k \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( S_n = \\frac{n}{2}(2a_1 + (n - 1)d) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Using \\( S_n = \\frac{n}{2}(2a_1 + (n - 1)d) \\), \\( S_{8} = \\frac{8}{2}(2(2) + 7(38)) = 1080 \\).",
           "ar": null
         }
       }

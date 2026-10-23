@@ -29,44 +29,44 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Multiple Integrals — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
+          "type": "transformation_grid",
+          "title": "Multiple Integrals — Linear Transformation & Basis Action",
+          "original": [
+            [
+              1,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              3
+            ]
           ],
-          "yrange": [
-            -3,
-            9
+          "transformed": [
+            [
+              -1,
+              1
+            ],
+            [
+              -1,
+              3
+            ],
+            [
+              -3,
+              2
+            ]
           ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
+          "labels": [
+            "A",
+            "B",
+            "C"
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
           "ar": null
         }
       },
@@ -79,6 +79,18 @@
         },
         "body": {
           "en": "<p>Let \\(f(x, y)\\) be continuous on the closed rectangle \\(R = [a, b] \\times [c, d]\\). Then the double integral equals the iterated single-variable integrals in either order:</p>\\[ \\iint_R f(x, y)\\,dA = \\int_a^b \\left( \\int_c^d f(x, y)\\,dy \\right) dx = \\int_c^d \\left( \\int_a^b f(x, y)\\,dx \\right) dy \\]<p>Furthermore, if the integrand factors into single-variable components \\(f(x, y) = g(x)\\,h(y)\\), the double integral factors into the product of two independent single integrals:</p>\\[ \\iint_R g(x)h(y)\\,dA = \\left( \\int_a^b g(x)\\,dx \\right) \\left( \\int_c^d h(y)\\,dy \\right) \\]</p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof via Cavalieri's Principle & Slicing</strong></summary><div style=\"margin-top:6px\"><p>Let \\(V\\) be the volume beneath \\(z = f(x, y) \\ge 0\\) over \\(R = [a, b] \\times [c, d]\\). Slicing the solid by a vertical plane perpendicular to the \\(x\\)-axis at a fixed position \\(x\\) produces a planar cross-section running from \\(y = c\\) to \\(y = d\\).</p><p>By the Fundamental Theorem of Calculus for single-variable functions, the cross-sectional area is:</p>\\[ A(x) = \\int_c^d f(x, y)\\,dy \\]<p>By Cavalieri's Principle and single-variable volume accumulation, the total volume is the integral of cross-sectional area across \\([a, b]\\):</p>\\[ V = \\int_a^b A(x)\\,dx = \\int_a^b \\left( \\int_c^d f(x, y)\\,dy \\right) dx \\]<p>Similarly, slicing by planes perpendicular to the \\(y\\)-axis at a fixed \\(y\\) yields cross-sectional area \\(B(y) = \\int_a^b f(x, y)\\,dx\\), and integrating over \\([c, d]\\) gives:</p>\\[ V = \\int_c^d B(y)\\,dy = \\int_c^d \\left( \\int_a^b f(x, y)\\,dx \\right) dy \\]<p>Because \\(f\\) is continuous on a compact set, it is uniformly continuous, ensuring both iterated integrals converge to the exact same double Riemann integral \\(\\iint_R f\\,dA\\) \\quad \\blacksquare \\]</div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Multiple Integrals)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
           "ar": null
         }
       },
@@ -98,11 +110,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example B — Multiple Integrals (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> Volume of unit ball by spherical coordinates: \\(\\int_0^\\pi\\int_0^{2\\pi}\\int_0^1\\rho^2\\sin\\phi\\,d\\rho\\,d\\theta\\,d\\phi=\\)</p><p><strong>Step-by-Step Solution:</strong> \\(=\\frac{1}{3}\\cdot2\\pi\\cdot2=4\\pi/3\\). <strong>Final Answer:</strong> \\(4\\pi/3\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Multiple Integrals)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Computing angle at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)",
+              "ar": null
+            },
+            {
+              "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
+              "ar": null
+            },
+            {
+              "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
+              "ar": null
+            },
+            {
+              "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
+              "ar": null
+            },
+            {
+              "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Assuming \\((AB)^{-1} = A^{-1}B^{-1}\\)",
+              "ar": null
+            },
+            {
+              "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
+              "ar": null
+            },
+            {
+              "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Multiple Integrals",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Single-Variable & Multivariable Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -115,7 +204,21 @@
         "solution": {
           "en": "Set up iterated integral:<br>\\[ \\int_1^2 \\int_0^3 (2x + y)\\,dx\\,dy = \\int_1^2 \\left[ x^2 + xy \\right]_0^3 dy = \\int_1^2 (9 + 3y)\\,dy \\]<br>Integrate with respect to \\(y\\):<br>\\[ \\left[ 9y + \\frac{3y^2}{2} \\right]_1^2 = \\left(18 + \\frac{12}{2}\\right) - \\left(9 + \\frac{3}{2}\\right) = 24 - 10.5 = 13.5 = \\frac{27}{2} \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Multiple Integrals</em> and start from \\(\\displaystyle \\iint_R (2x + y)\\,dA\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "explorer",
@@ -327,7 +430,21 @@
         "solution": {
           "en": "The domain is \\(0 \\le y \\le \\pi\\) and \\(y \\le x \\le \\pi\\).<br>This is the triangular region bounded by \\(y = 0\\), \\(x = \\pi\\), and \\(y = x\\).<br>Reversing order to Type I: \\(x\\) ranges from \\(0\\) to \\(\\pi\\), while \\(y\\) ranges from \\(0\\) to \\(x\\):<br>\\[ \\int_0^{\\pi} \\int_0^x \\frac{\\sin x}{x}\\,dy\\,dx = \\int_0^{\\pi} \\left[ y \\frac{\\sin x}{x} \\right]_{y=0}^{y=x} dx = \\int_0^{\\pi} x \\frac{\\sin x}{x}\\,dx = \\int_0^{\\pi} \\sin x\\,dx \\]<br>\\[ = \\big[ -\\cos x \\big]_0^{\\pi} = -\\cos(\\pi) - (-\\cos 0) = -(-1) - (-1) = 1 + 1 = 2 \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Multiple Integrals</em> and start from \\( \\int_0^{\\pi} \\int_y^{\\pi} \\frac{\\sin x}{x}\\,dx\\,dy \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(0 \\le y \\le \\pi\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "callout",
@@ -374,16 +491,44 @@
         "solution": {
           "en": "Convert the semi-annulus to polar coordinates:<br>Radius bounds: \\(1 \\le r^2 \\le 4 \\implies 1 \\le r \\le 2\\).<br>Angle bounds (since \\(y \\ge 0\\), upper half-plane): \\(0 \\le \\theta \\le \\pi\\).<br>Area element: \\(dA = r\\,dr\\,d\\theta\\).<br>Set up the integral:<br>\\[ \\iint_D e^{x^2 + y^2}\\,dA = \\int_0^{\\pi} \\int_1^2 e^{r^2}\\,r\\,dr\\,d\\theta = \\left( \\int_0^\\pi d\\theta \\right) \\left( \\int_1^2 r e^{r^2}\\,dr \\right) \\]<br>Substitute \\(u = r^2 \\implies du = 2r\\,dr\\):<br>\\[ = \\pi \\left[ \\frac{1}{2}e^{r^2} \\right]_1^2 = \\frac{\\pi}{2}(e^4 - e^1) = \\frac{\\pi e(e^3 - 1)}{2} \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Multiple Integrals</em> and start from \\(\\displaystyle \\iint_D e^{x^2 + y^2}\\,dA\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(1 \\le r^2 \\le 4 \\implies 1 \\le r \\le 2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Multiple Integrals · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> The average value of \\(f\\) over \\(D\\) is:",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Multiple Integrals</em> and start from \\(f\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\frac{1}{A(D)}\\iint_D f\\,dA\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Applying Multiple Integrals principles, Average = integral / area. Therefore, the verified correct option is \\(\\frac{1}{A(D)}\\iint_D f\\,dA\\).",
           "ar": null
         }
       }

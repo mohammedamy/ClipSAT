@@ -79,47 +79,35 @@
         ]
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Integration, Areas & Kinematics",
+          "ar": "● الفهم المفاهيمي العميق — التكامل والمساحات المستوية وعلم الحركة (الميكانيكا)"
+        },
+        "body": {
+          "en": "<p><strong>Accumulation, Antiderivatives &amp; Differential Flows:</strong> By the Fundamental Theorem of Calculus, the accumulation function \\(A(x) = \\int_a^x f(t)\\,dt\\) satisfies \\(A'(x) = f(x)\\), linking instantaneous rates of change to net signed area. In first-order differential equations \\(\\dfrac{dy}{dx} = g(x)h(y)\\), separation of variables \\(\\int \\dfrac{1}{h(y)}\\,dy = \\int g(x)\\,dx + C\\) reconstructs the family of integral curves across the slope field.</p>",
+          "ar": "<p><strong>التراكم والتكامل والمعادلات التفاضلية:</strong> تربط النظرية الأساسية للتفاضل والتكامل بين المشتقة والمساحة الموجهة \\(\\frac{d}{dx}\\int_a^x f(t)\\,dt = f(x)\\).</p>"
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Integration, Areas & Kinematics — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
-          ]
+          "type": "slope_field",
+          "title": "Integration, Areas & Kinematics — Slope Field & Particular Solution Trajectory",
+          "fn": "x - y",
+          "xmin": -3,
+          "xmax": 3,
+          "ymin": -3,
+          "ymax": 3,
+          "solution": {
+            "x0": 0,
+            "y0": 1
+          }
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
-          "ar": "التمثيل البياني للدالة f(x) = x² − 2 ومماسها عند x = 1."
+          "en": "Slope field for dy/dx = x − y with the integral curve passing through initial condition (0, 1).",
+          "ar": "تمثيل هندسي وبياني يوضح العلاقات الأساسية في درس التكامل والمساحات المستوية وعلم الحركة (الميكانيكا)."
         }
       },
       {
@@ -235,44 +223,35 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Integration, Areas & Kinematics — Coordinate Curve & Tangent Analysis (1)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
           "fns": [
             {
-              "fn": "x*x - 1",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 1"
-            },
-            {
-              "fn": "2*x - 2",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "fn": "10*x + 16*x^2"
             }
           ],
-          "points": [
-            {
-              "x": 1,
-              "y": 0,
-              "label": "(1, 0)"
-            },
-            {
-              "x": 0,
-              "y": -1,
-              "label": "(0, -1)"
-            }
+          "xlim": [
+            0,
+            10
+          ],
+          "ylim": [
+            0,
+            1391
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 1 and its instantaneous tangent line at x = 1.",
-          "ar": "التمثيل البياني للدالة f(x) = x² − 1 ومماسها عند x = 1."
+          "en": "Integration, Areas & Kinematics — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Integration, Areas & Kinematics.",
+          "ar": "رسم توضيحي يبيّن العلاقات الرياضية والهندسية في درس التكامل والمساحات المستوية وعلم الحركة (الميكانيكا)."
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Integration, Areas & Kinematics)",
+          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (التكامل والمساحات المستوية وعلم الحركة (الميكانيكا))"
+        },
+        "body": {
+          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
+          "ar": "<p><strong>برهان التكامل بالتجزيء وعامل التكامل:</strong> من قاعدة مشتقة الضرب \\((uv)' = u'v + uv'\\) نحصل بتكامل الطرفين على \\(\\int u\\,dv = uv - \\int v\\,du\\). وبضرب المعادلة الخطية في \\(\\mu(x)=e^{\\int P(x)dx}\\) يتحول الطرف الأيسر إلى \\(\\frac{d}{dx}[\\mu(x)y]\\).</p>"
         }
       },
       {
@@ -291,80 +270,262 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example B — Instantaneous Rate of Change & Tangent Line",
-          "ar": "مثال محلول B — معدل التغير اللحظي ومعادلة المماس"
+          "en": "Worked Example B — Integration, Areas & Kinematics (Hard Application)",
+          "ar": "مثال محلول B — التكامل والمساحات المستوية وعلم الحركة (الميكانيكا) (تطبيق Hard)"
         },
         "body": {
-          "en": "Let \\( f(x) = 3x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(6) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 9x^2 - 2x \\).</li><li>Substitute \\( x = 6 \\): \\( f'(6) = 9(6)^2 - 2(6) = 324 - 12 = \\mathbf{312} \\).</li></ol>",
-          "ar": "لتكن \\( f(x) = 3x^3 - x^2 + 4 \\). أوجد معدل التغير اللحظي \\( f'(6) \\).<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>نشتق حداً بحداّ: \\( f'(x) = 9x^2 - 2x \\).</li><li>نعوض \\( x = 6 \\): \\( f'(6) = 9(6)^2 - 2(6) = \\mathbf{312} \\).</li></ol>"
+          "en": "<p><strong>Problem (Hard):</strong> A particle \\( K \\) moves in a straight line with initial velocity \\( u = 16\\text{ m s}^{-1} \\) and constant acceleration \\( a = 9\\text{ m s}^{-2} \\) over time \\( s = 16\\text{ s} \\). Find the final velocity \\( u(s) = u + as \\).</p><p><strong>Step-by-Step Solution:</strong> Using \\( v = u + at = 16 + (9)(16) = 160 \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Hard):</strong> A particle \\( K \\) moves in a straight line with initial velocity \\( u = 16\\text{ m s}^{-1} \\) and constant acceleration \\( a = 9\\text{ m s}^{-2} \\) over time \\( s = 16\\text{ s} \\). Find the final velocity \\( u(s) = u + as \\).</p><p><strong>الحل خطوة بخطوة:</strong> Using \\( v = u + at = 16 + (9)(16) = 160 \\).</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Instantaneous Rate of Change & Tangent Line",
-          "ar": "مثال محلول C — معدل التغير اللحظي ومعادلة المماس"
+          "en": "Worked Example C — Integration, Areas & Kinematics (Easy Application)",
+          "ar": "مثال محلول C — التكامل والمساحات المستوية وعلم الحركة (الميكانيكا) (تطبيق Easy)"
         },
         "body": {
-          "en": "Let \\( f(x) = 4x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(9) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 12x^2 - 2x \\).</li><li>Substitute \\( x = 9 \\): \\( f'(9) = 12(9)^2 - 2(9) = 972 - 18 = \\mathbf{954} \\).</li></ol>",
-          "ar": "لتكن \\( f(x) = 4x^3 - x^2 + 4 \\). أوجد معدل التغير اللحظي \\( f'(9) \\).<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>نشتق حداً بحداّ: \\( f'(x) = 12x^2 - 2x \\).</li><li>نعوض \\( x = 9 \\): \\( f'(9) = 12(9)^2 - 2(9) = \\mathbf{954} \\).</li></ol>"
+          "en": "<p><strong>Problem (Easy):</strong> A particle \\( K \\) starts with speed \\( u = 23\\text{ m s}^{-1} \\) and constant acceleration \\( a = 32\\text{ m s}^{-2} \\) for \\( s = 4\\text{ s} \\). Find the displacement \\( u(s) = us + \\frac{1}{2}as^2 \\).</p><p><strong>Step-by-Step Solution:</strong> Using \\( s = (23)(4) + (16)(4^2) = 348 \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Easy):</strong> A particle \\( K \\) starts with speed \\( u = 23\\text{ m s}^{-1} \\) and constant acceleration \\( a = 32\\text{ m s}^{-2} \\) for \\( s = 4\\text{ s} \\). Find the displacement \\( u(s) = us + \\frac{1}{2}as^2 \\).</p><p><strong>الحل خطوة بخطوة:</strong> Using \\( s = (23)(4) + (16)(4^2) = 348 \\).</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
-          "ar": "مثال محلول D — معدل التغير اللحظي ومعادلة المماس"
+          "en": "Worked Example D — Integration, Areas & Kinematics (Medium Application)",
+          "ar": "مثال محلول D — التكامل والمساحات المستوية وعلم الحركة (الميكانيكا) (تطبيق Medium)"
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
-          "ar": "لتكن \\( f(x) = 5x^3 - x^2 + 4 \\). أوجد معدل التغير اللحظي \\( f'(5) \\).<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>نشتق حداً بحداّ: \\( f'(x) = 15x^2 - 2x \\).</li><li>نعوض \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = \\mathbf{365} \\).</li></ol>"
+          "en": "<p><strong>Problem (Medium):</strong> A constant force \\( F_{K} = 96\\text{ N} \\) acts through a collinear displacement \\( s = 6\\text{ m} \\). Find the work done \\( u = F_{K} \\cdot s \\) (in joules).</p><p><strong>Step-by-Step Solution:</strong> Work done is \\( 96 \\times 6 = 576\\text{ J} \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Medium):</strong> A constant force \\( F_{K} = 96\\text{ N} \\) acts through a collinear displacement \\( s = 6\\text{ m} \\). Find the work done \\( u = F_{K} \\cdot s \\) (in joules).</p><p><strong>الحل خطوة بخطوة:</strong> Work done is \\( 96 \\times 6 = 576\\text{ J} \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Exam Traps — Integration, Areas & Kinematics",
+          "ar": "⚠️ أخطاء شائعة في الاختبار — التكامل والمساحات المستوية وعلم الحركة (الميكانيكا)"
+        },
+        "body": {
+          "en": "<p><strong>1. Adding \\(+C\\) Only After Exponentiating in Separable ODEs:</strong> In \\(\\dfrac{dy}{dx} = 5xy\\), integrating gives \\(\\ln|y| = \\tfrac{5}{2}x^2 + C \\implies y = Ae^{5x^2/2}\\) where \\(A = \\pm e^C\\). Writing \\(y = e^{5x^2/2} + C\\) is a fatal algebraic error that forfeits all follow-up marks on Cambridge IGCSE Additional Mathematics (0606).</p><p><strong>2. Forgetting to Transform Limits in \\(u\\)-Substitution:</strong> In definite integrals \\(\\int_a^b f(g(x))g'(x)\\,dx\\), you must replace the limits \\(x = a, b\\) with \\(u = g(a), g(b)\\) immediately.</p>",
+          "ar": "<p><strong>1. خطأ إضافة ثابت التكامل بعد أخذ الدالة الأسية:</strong> في المعادلة \\(\\ln|y| = g(x) + C\\) يصبح الحل \\(y = Ae^{g(x)}\\) وليس \\(y = e^{g(x)} + C\\).</p>"
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Integration, Areas & Kinematics)",
+          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (التكامل والمساحات المستوية وعلم الحركة (الميكانيكا))"
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع للطالب"
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": "السبب الرياضي للخطأ"
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Writing \\(\\ln|y| = x^2 + C \\implies y = e^{x^2} + C\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Exponentiation distributes over addition as multiplication (\\(e^{a+b} = e^a e^b\\)), not addition.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Write \\(y = e^{x^2 + C} = Ae^{x^2}\\) and solve for \\(A\\) using the initial condition.",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Leaving original \\(x\\)-limits on a \\(u\\)-substituted definite integral",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Evaluates the antiderivative \\(F(u)\\) at \\(x\\)-values instead of \\(u(x)\\)-values.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Convert bounds immediately: \\(u_{\\text{low}} = u(a)\\) and \\(u_{\\text{high}} = u(b)\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Computing total distance as \\(\\left|\\int_{t_1}^{t_2} v(t)\\,dt\\right|\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Cancels forward and backward motion (net displacement) instead of accumulating total path length.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Split the integral at every root where \\(v(t) = 0\\) and integrate \\(|v(t)|\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Integration, Areas & Kinematics",
+          "ar": "▲ استراتيجية الحل السريع والتحقق — التكامل والمساحات المستوية وعلم الحركة (الميكانيكا)"
+        },
+        "body": {
+          "en": "<p><strong>Quick Verification Trick (Cambridge IGCSE Additional Mathematics (0606)):</strong> For any indefinite integral \\(\\int f(x)\\,dx = F(x) + C\\), differentiate your answer \\(F'(x)\\) mentally—especially the coefficient \\(1/k\\) from chain-rule reversal \\(\\int e^{kx}\\,dx = \\tfrac{1}{k}e^{kx} + C\\)—before moving on.</p>",
+          "ar": "<p><strong>فحص سريع للتكامل:</strong> اشتق الناتج النهائي ذهنياً للتأكد من صحة المعامل العكسي \\(1/k\\) الناتج عن قاعدة السلسلة.</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example E — Integration, Areas & Kinematics (Hard Application)",
+          "ar": "مثال محلول E — التكامل والمساحات المستوية وعلم الحركة (الميكانيكا) (تطبيق Hard)"
+        },
+        "body": {
+          "en": "<p><strong>Problem (Hard):</strong> A constant force \\( F_{A} = 76\\text{ N} \\) acts through a collinear displacement \\( x = 15\\text{ m} \\). Find the work done \\( f = F_{A} \\cdot x \\) (in joules).</p><p><strong>Step-by-Step Solution:</strong> Work done is \\( 76 \\times 15 = 1140\\text{ J} \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Hard):</strong> A constant force \\( F_{A} = 76\\text{ N} \\) acts through a collinear displacement \\( x = 15\\text{ m} \\). Find the work done \\( f = F_{A} \\cdot x \\) (in joules).</p><p><strong>الحل خطوة بخطوة:</strong> Work done is \\( 76 \\times 15 = 1140\\text{ J} \\).</p>"
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Integration, Areas & Kinematics · Practice 1] If the governing relation for this system is \\( g(t) = 3t + 3 \\), evaluate \\( g(4) \\) and find the inverse input \\( t \\) when \\( g(t) = 18 \\).",
-          "ar": "[Integration, Areas & Kinematics · تدريب 1] إذا كانت العلاقة الحاكمة هي \\( g(t) = 3t + 3 \\)، فأوجد \\( g(4) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 18 \\)."
+          "en": "<strong>[Practice 1 · Hard]</strong> A particle \\( D \\) moves in a straight line with initial velocity \\( u = 13\\text{ m s}^{-1} \\) and constant acceleration \\( a = 9\\text{ m s}^{-2} \\) over time \\( w = 3\\text{ s} \\). Find the final velocity \\( F(w) = u + aw \\).",
+          "ar": "<strong>[تدريب 1 · Hard]</strong> A particle \\( D \\) moves in a straight line with initial velocity \\( u = 13\\text{ m s}^{-1} \\) and constant acceleration \\( a = 9\\text{ m s}^{-2} \\) over time \\( w = 3\\text{ s} \\). Find the final velocity \\( F(w) = u + aw \\)."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Integration, Areas & Kinematics</em> and start from \\( D \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( D \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( v = u + at = 13 + (9)(3) = 40 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( v = u + at = 13 + (9)(3) = 40 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 4 \\): \\( g(4) = 3(4) + 3 = \\mathbf{15} \\). Setting \\( 3t + 3 = 18 \\) gives \\( 3t = 15 \\implies t = \\mathbf{5} \\).",
-          "ar": "بالتعويض عن \\( t = 4 \\): \\( g(4) = 3(4) + 3 = \\mathbf{15} \\). وعندما \\( 3t + 3 = 18 \\) فإن \\( t = \\mathbf{5} \\)."
+          "en": "Using \\( v = u + at = 13 + (9)(3) = 40 \\).",
+          "ar": "Using \\( v = u + at = 13 + (9)(3) = 40 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Integration, Areas & Kinematics · Practice 2] If the governing relation for this system is \\( g(t) = 4t + 4 \\), evaluate \\( g(6) \\) and find the inverse input \\( t \\) when \\( g(t) = 32 \\).",
-          "ar": "[Integration, Areas & Kinematics · تدريب 2] إذا كانت العلاقة الحاكمة هي \\( g(t) = 4t + 4 \\)، فأوجد \\( g(6) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 32 \\)."
+          "en": "<strong>[Practice 2 · Easy]</strong> A particle \\( D \\) starts with speed \\( u = 23\\text{ m s}^{-1} \\) and constant acceleration \\( a = 42\\text{ m s}^{-2} \\) for \\( w = 8\\text{ s} \\). Find the displacement \\( F(w) = uw + \\frac{1}{2}aw^2 \\).",
+          "ar": "<strong>[تدريب 2 · Easy]</strong> A particle \\( D \\) starts with speed \\( u = 23\\text{ m s}^{-1} \\) and constant acceleration \\( a = 42\\text{ m s}^{-2} \\) for \\( w = 8\\text{ s} \\). Find the displacement \\( F(w) = uw + \\frac{1}{2}aw^2 \\)."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Integration, Areas & Kinematics</em> and start from \\( D \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( D \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( s = (23)(8) + (21)(8^2) = 1528 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( s = (23)(8) + (21)(8^2) = 1528 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). Setting \\( 4t + 4 = 32 \\) gives \\( 4t = 28 \\implies t = \\mathbf{7} \\).",
-          "ar": "بالتعويض عن \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). وعندما \\( 4t + 4 = 32 \\) فإن \\( t = \\mathbf{7} \\)."
+          "en": "Using \\( s = (23)(8) + (21)(8^2) = 1528 \\).",
+          "ar": "Using \\( s = (23)(8) + (21)(8^2) = 1528 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Integration, Areas & Kinematics · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
-          "ar": "[Integration, Areas & Kinematics · تدريب 3] إذا كانت العلاقة الحاكمة هي \\( g(t) = 5t + 5 \\)، فأوجد \\( g(8) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 50 \\)."
+          "en": "<strong>[Practice 3 · Easy]</strong> Evaluate the definite integral: \\( \\int_0^1 (2x + 1)^3 \\, dx \\).",
+          "ar": "<strong>[تدريب 3 · Easy]</strong> Evaluate the definite integral: \\( \\int_0^1 (2x + 1)^3 \\, dx \\)."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Integration, Areas & Kinematics</em> and start from \\( \\int_0^1 (2x + 1)^3 \\, dx \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( \\int_0^1 (2x + 1)^3 \\, dx \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( u = 2x + 1 \\implies du = 2\\,dx \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( u = 2x + 1 \\implies du = 2\\,dx \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": "بالتعويض عن \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). وعندما \\( 5t + 5 = 50 \\) فإن \\( t = \\mathbf{9} \\)."
+          "en": "Substitute \\( u = 2x + 1 \\implies du = 2\\,dx \\). Integral: \\( \\frac{1}{2}\\left[\\frac{u^4}{4}\\right]_1^{3} = \\frac{(3)^4 - 1^{4}}{8} = \\frac{80}{8} \\). <strong>Answer:</strong> \\( \\frac{80}{8} \\).",
+          "ar": "Substitute \\( u = 2x + 1 \\implies du = 2\\,dx \\). Integral: \\( \\frac{1}{2}\\left[\\frac{u^4}{4}\\right]_1^{3} = \\frac{(3)^4 - 1^{4}}{8} = \\frac{80}{8} \\). <strong>الإجابة:</strong> \\( \\frac{80}{8} \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Integration, Areas & Kinematics · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": "[Integration, Areas & Kinematics · تدريب 4] إذا كانت العلاقة الحاكمة هي \\( g(t) = 6t + 6 \\)، فأوجد \\( g(10) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 72 \\)."
+          "en": "<strong>[Practice 4 · Medium]</strong> A particle \\( A \\) starts with speed \\( u = 10\\text{ m s}^{-1} \\) and constant acceleration \\( a = 32\\text{ m s}^{-2} \\) for \\( x = 9\\text{ s} \\). Find the displacement \\( f(x) = ux + \\frac{1}{2}ax^2 \\).",
+          "ar": "<strong>[تدريب 4 · Medium]</strong> A particle \\( A \\) starts with speed \\( u = 10\\text{ m s}^{-1} \\) and constant acceleration \\( a = 32\\text{ m s}^{-2} \\) for \\( x = 9\\text{ s} \\). Find the displacement \\( f(x) = ux + \\frac{1}{2}ax^2 \\)."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Integration, Areas & Kinematics</em> and start from \\( A \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( A \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( s = (10)(9) + (16)(9^2) = 1386 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( s = (10)(9) + (16)(9^2) = 1386 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
-          "ar": "بالتعويض عن \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). وعندما \\( 6t + 6 = 72 \\) فإن \\( t = \\mathbf{11} \\)."
+          "en": "Using \\( s = (10)(9) + (16)(9^2) = 1386 \\).",
+          "ar": "Using \\( s = (10)(9) + (16)(9^2) = 1386 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 5 · Easy]</strong> A particle \\( A \\) moves in a straight line with initial velocity \\( u = 3\\text{ m s}^{-1} \\) and constant acceleration \\( a = 17\\text{ m s}^{-2} \\) over time \\( x = 18\\text{ s} \\). Find the final velocity \\( f(x) = u + ax \\).",
+          "ar": "<strong>[تدريب 5 · Easy]</strong> A particle \\( A \\) moves in a straight line with initial velocity \\( u = 3\\text{ m s}^{-1} \\) and constant acceleration \\( a = 17\\text{ m s}^{-2} \\) over time \\( x = 18\\text{ s} \\). Find the final velocity \\( f(x) = u + ax \\)."
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Integration, Areas & Kinematics</em> and start from \\( A \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( A \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( v = u + at = 3 + (17)(18) = 309 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( v = u + at = 3 + (17)(18) = 309 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
+        "solution": {
+          "en": "Using \\( v = u + at = 3 + (17)(18) = 309 \\).",
+          "ar": "Using \\( v = u + at = 3 + (17)(18) = 309 \\)."
         }
       }
     ]

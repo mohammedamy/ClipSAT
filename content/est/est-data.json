@@ -41,34 +41,31 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Ratios, Rates & Data",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Conditional Probability, Bayes' Theorem &amp; Robust Summary Statistics:</strong> For any two events \\(A\\) and \\(B\\) with \\(P(B) > 0\\), conditional probability restricts the sample space to \\(B\\): \\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)}\\). In descriptive statistics, the median and interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)) are resistant to extreme outliers, whereas the mean \\(\\bar{x}\\) and standard deviation \\(s\\) are pulled strongly in the direction of skewness.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "Ratios, Rates & Data — Frequency Distribution (2)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
-            {
-              "label": "Q1",
-              "value": 22
-            },
-            {
-              "label": "Q2",
-              "value": 35,
-              "highlight": true
-            },
-            {
-              "label": "Q3",
-              "value": 28
-            },
-            {
-              "label": "Q4",
-              "value": 19
-            }
-          ]
+          "type": "venn",
+          "title": "Ratios, Rates & Data — Set Intersection & Conditional Sample Space",
+          "onlyA": 20,
+          "both": 6,
+          "onlyB": 20,
+          "neither": 4,
+          "labelA": "Event A",
+          "labelB": "Event B"
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for Ratios, Rates & Data.",
+          "en": "Venn diagram partitioning sample space into |A only| = 20, |A ∩ B| = 6, |B only| = 20, and |(A ∪ B)'| = 4.",
           "ar": null
         }
       },
@@ -271,6 +268,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Ratios, Rates & Data)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Bayes' Theorem &amp; Principle of Inclusion-Exclusion Work:</strong> Any event \\(B\\) can be partitioned into disjoint intersections \\(B = (B \\cap A) \\cup (B \\cap A')\\). By additivity of mutually exclusive events and the multiplication rule \\(P(A \\cap B) = P(B \\mid A)P(A)\\):</p>\\[ P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{P(B \\mid A)P(A)}{P(B \\mid A)P(A) + P(B \\mid A')P(A')} \\]<p>Similarly, in counting \\(|A \\cup B|\\), summing \\(|A| + |B|\\) counts every element in \\(A \\cap B\\) twice; subtracting \\(|A \\cap B|\\) once restores exact cardinality: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 4.A — Chained Percentage Adjustments & Net Change",
@@ -309,11 +318,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example D — Ratios, Rates & Data (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> A quantity \\( F_0 = 4000 \\) increases by \\( 20\\% \\) to \\( F_1 \\) and then decreases by \\( 10\\% \\) to \\( F_2 \\). What is the final quantity \\( w = F_2 \\)?</p><p><strong>Step-by-Step Solution:</strong> Computing \\( 4000 \\times (1 + 0.20) \\times (1 - 0.10) = 4320 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Ratios, Rates & Data)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Using \\(P(A \\cap B) = 0\\) when told \\(A\\) and \\(B\\) are independent",
+              "ar": null
+            },
+            {
+              "en": "Confuses disjoint (mutually exclusive) events with statistically independent events.",
+              "ar": null
+            },
+            {
+              "en": "For independent events, multiply probabilities: \\(P(A \\cap B) = P(A)\\cdot P(B)\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Dividing by the grand total \\(N\\) when computing \\(P(A \\mid B)\\) from a table",
+              "ar": null
+            },
+            {
+              "en": "Computes the joint probability \\(P(A \\cap B)\\) instead of conditioning on subset \\(B\\).",
+              "ar": null
+            },
+            {
+              "en": "Restrict the denominator strictly to the row/column total of the given condition \\(B\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using permutations \\({}^nP_r\\) when selecting a committee with no distinct roles",
+              "ar": null
+            },
+            {
+              "en": "Overcounts every group of size \\(r\\) by \\(r!\\) internal orderings.",
+              "ar": null
+            },
+            {
+              "en": "Divide by \\(r!\\) to use combinations: \\(\\binom{n}{r} = \\frac{n!}{r!(n-r)!}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Ratios, Rates & Data",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Strategy (Egyptian Scholastic Test (EST I — Literacy & Math)):</strong> Whenever a probability problem involves \"at least one\" success across multiple trials, immediately use the Complement Rule: \\(P(\\text{at least one}) = 1 - P(\\text{none})\\). It turns a multi-case sum into a single calculation.</p>",
           "ar": null
         }
       },
@@ -326,7 +412,21 @@
         "solution": {
           "en": "<p><strong>Step 1:</strong> Formulate the joint variation equation: \\[ y = k \\frac{x^2}{z} \\]</p><p><strong>Step 2:</strong> Solve for constant \\(k\\) using the given initial condition: \\[ 18 = k \\frac{3^2}{4} = k \\frac{9}{4} \\implies k = 18 \\times \\frac{4}{9} = 2 \\times 4 = 8. \\]</p><p><strong>Step 3:</strong> Calculate \\(y\\) for \\(x = 5\\) and \\(z = 10\\): \\[ y = 8 \\frac{5^2}{10} = 8 \\frac{25}{10} = 8 \\times 2.5 = \\mathbf{20}. \\]</p><p>The value of \\(y\\) is \\(\\mathbf{20}\\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Ratios, Rates & Data</em> and start from \\(y\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( y = k \\frac{x^2}{z} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -337,7 +437,21 @@
         "solution": {
           "en": "<p><strong>Step 1:</strong> Express each yearly change as a decimal multiplier:<ul><li>Year 1 (+30%): \\(1 + 0.30 = 1.30\\)</li><li>Year 2 (-20%): \\(1 - 0.20 = 0.80\\)</li><li>Year 3 (+10%): \\(1 + 0.10 = 1.10\\)</li></ul></p><p><strong>Step 2:</strong> Multiply the factors sequentially: \\[ M_{\\text{net}} = 1.30 \\times 0.80 \\times 1.10 = 1.04 \\times 1.10 = 1.144. \\]</p><p><strong>Step 3:</strong> Convert to net percentage change: \\[ \\text{Net Percent Change} = (1.144 - 1) \\times 100\\% = \\mathbf{+14.4\\%}. \\]</p><p>The investment gained an overall <strong>14.4%</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Ratios, Rates & Data</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(1 + 0.30 = 1.30\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -348,7 +462,21 @@
         "solution": {
           "en": "<p><strong>Step 1:</strong> Find the reservoir volume in cubic meters: \\[ V = 2.5 \\times 3.0 \\times 1.2 = 9.0\\text{ m}^3. \\]</p><p><strong>Step 2:</strong> Convert volume to liters: \\[ V = 9.0\\text{ m}^3 \\times 1000\\text{ L/m}^3 = 9000\\text{ liters}. \\]</p><p><strong>Step 3:</strong> Compute drainage time in minutes: \\[ t_{\\text{min}} = \\frac{9000\\text{ L}}{75\\text{ L/min}} = 120\\text{ minutes}. \\]</p><p><strong>Step 4:</strong> Convert to hours: \\[ t = \\frac{120\\text{ min}}{60\\text{ min/h}} = \\mathbf{2\\text{ hours}}. \\]</p><p>It takes exactly <strong>2 hours</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Ratios, Rates & Data</em> and start from \\(1\\text{ m}^3 = 1000\\text{ liters}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( V = 2.5 \\times 3.0 \\times 1.2 = 9.0\\text{ m}^3. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -359,7 +487,21 @@
         "solution": {
           "en": "<p><strong>Step 1:</strong> Set up the weighted average inequality with final exam score \\(F\\): \\[ 0.20(92) + 0.35(76) + 0.45(F) \\ge 84. \\]</p><p><strong>Step 2:</strong> Compute the accumulated points: \\[ 0.20(92) = 18.4, \\qquad 0.35(76) = 26.6 \\implies 18.4 + 26.6 = 45.0. \\]</p><p><strong>Step 3:</strong> Isolate \\(F\\): \\[ 45.0 + 0.45 F \\ge 84 \\implies 0.45 F \\ge 84 - 45 = 39 \\implies F \\ge \\frac{39}{0.45} = \\frac{3900}{45} = \\frac{260}{3} \\approx 86.67. \\]</p><p>The student must score at least \\(\\mathbf{86.7}\\) (or \\(\\mathbf{\\frac{260}{3}}\\)) on the Final Exam.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Ratios, Rates & Data</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(F\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

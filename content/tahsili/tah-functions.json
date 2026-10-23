@@ -258,6 +258,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Functions)",
+          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (الدوال)"
+        },
+        "body": {
+          "en": "<p><strong>Why Completing the Square &amp; Log-Linearization Work:</strong> Any quadratic \\(f(x) = ax^2 + bx + c\\) (\\(a \\ne 0\\)) can be rewritten by factoring \\(a\\) from the first two terms and adding/subtracting \\((b/2a)^2\\):</p>\\[ ax^2 + bx + c = a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\]<p>Because \\(\\left(x + \\frac{b}{2a}\\right)^2 \\ge 0\\) for all \\(x \\in \\mathbb{R}\\), the extreme value \\(k = c - \\frac{b^2}{4a}\\) is attained uniquely at the axis of symmetry \\(x = -\\frac{b}{2a}\\), restricting the range to \\([k, \\infty)\\) (if \\(a > 0\\)) and making \\(f\\) invertible on \\(x \\ge -\\frac{b}{2a}\\). Similarly, applying \\(\\ln\\) to power laws \\(y = ax^n\\) yields \\(\\ln y = n\\ln x + \\ln a\\), transforming a nonlinear curve into a straight line of gradient \\(n\\).</p>",
+          "ar": "<p><strong>برهان إكمال المربع وتحديد المدى:</strong> بكتابة \\(ax^2+bx+c = a(x+\\frac{b}{2a})^2 + (c-\\frac{b^2}{4a})\\) وبما أن المربع الكامل غير سالب دائماً، يتحدد رأس القطع ومدى الدالة بدقة.</p>"
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 2.A — Domain and Range of Radical Functions",
@@ -305,6 +317,83 @@
         }
       },
       {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Functions)",
+          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (الدوال)"
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع للطالب"
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": "السبب الرياضي للخطأ"
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Expanding \\(\\ln(x + y)\\) as \\(\\ln x + \\ln y\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Confuses the product law \\(\\ln(xy) = \\ln x + \\ln y\\) with a non-existent sum rule.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Only factor products, quotients, and powers inside logarithms: \\(\\ln(xy) = \\ln x + \\ln y\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Keeping both roots of \\(\\sqrt{2x+3} = x - 3\\) without checking \\(x - 3 \\ge 0\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Squaring both sides loses the sign of \\(x - {r}\\), introducing roots where \\(\\sqrt{\\cdot} = -\\text{number}\\).",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Enforce the range condition \\(x \\ge 3\\) before or after squaring.",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Restricting domain of \\(f(x) = (x-3)^2 + 1\\) to \\(x \\ge 0\\) for invertibility",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "The vertex is at \\(x = 3\\), so \\(f(2) = f(4) = 2\\) fails the horizontal line test on \\(x \\ge 0\\).",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Restrict the domain at the vertex axis of symmetry: \\(x \\ge 3\\) (or \\(x \\le 3\\)).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Functions",
+          "ar": "▲ استراتيجية الحل السريع والتحقق — الدوال"
+        },
+        "body": {
+          "en": "<p><strong>Fast Exam Check (Qiyas Scholastic Achievement Admission Test (SAAT / التحصيلي)):</strong> To verify an inverse function \\(f^{-1}(x)\\) in 5 seconds, pick a simple input \\(x_0\\), compute \\(y_0 = f(x_0)\\), and check that \\(f^{-1}(y_0) = x_0\\). Also verify that the graph of \\(y = f^{-1}(x)\\) reflects \\(y = f(x)\\) across \\(y = x\\).</p>",
+          "ar": "<p><strong>فحص سريع للدالة العكسية:</strong> اختر عدداً بسيطاً \\(x_0\\) واحسب \\(y_0 = f(x_0)\\) ثم تأكد من أن تعويض \\(y_0\\) في \\(f^{-1}\\) يعيد \\(x_0\\) نفسه.</p>"
+        }
+      },
+      {
         "kind": "practiceProblem",
         "id": "tah-functions-p1",
         "question": {
@@ -314,7 +403,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Set \\(y = f(x)\\) and swap variables:</strong> \\[ y = \\frac{2x - 5}{3} \\implies x = \\frac{2y - 5}{3}. \\]</p><p><strong>Step 2: Solve for \\(y\\):</strong> \\[ 3x = 2y - 5 \\implies 2y = 3x + 5 \\implies y = \\frac{3x + 5}{2}. \\]</p><p>Therefore: \\[ \\mathbf{f^{-1}(x) = \\frac{3x + 5}{2}}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: وضع \\(y = f(x)\\) وتبديل المتغيرات:</strong> \\[ y = \\frac{2x - 5}{3} \\implies x = \\frac{2y - 5}{3}. \\]</p><p><strong>الخطوة 2: عزل المتغير \\(y\\):</strong> \\[ 3x = 2y - 5 \\implies 2y = 3x + 5 \\implies y = \\frac{3x + 5}{2}. \\]</p><p>إذن الدالة العكسية هي: \\[ \\mathbf{f^{-1}(x) = \\frac{3x + 5}{2}}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Functions</em> and start from \\(f^{-1}(x)\\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\(f^{-1}(x)\\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(y = f(x)\\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\(y = f(x)\\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -326,7 +429,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Vertical asymptote:</strong> Set the denominator to zero: \\[ 2x + 6 = 0 \\implies 2x = -6 \\implies \\mathbf{x = -3}. \\]</p><p><strong>Step 2: Horizontal asymptote:</strong> Since the degree of numerator (1) equals the degree of denominator (1), take the ratio of leading coefficients: \\[ y = \\frac{4}{2} = \\mathbf{2}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: خط التقارب الرأسي:</strong> نساوي المقام بالصفر: \\[ 2x + 6 = 0 \\implies 2x = -6 \\implies \\mathbf{x = -3}. \\]</p><p><strong>الخطوة 2: خط التقارب الأفقي:</strong> بما أن درجة البسط (1) تساوي درجة المقام (1)، فإن خط التقارب الأفقي هو نسبة المعاملين الرئيسيين: \\[ y = \\frac{4}{2} = \\mathbf{2}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Functions</em> and start from \\(g(x) = \\dfrac{4x - 1}{2x + 6}\\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\(g(x) = \\dfrac{4x - 1}{2x + 6}\\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 2x + 6 = 0 \\implies 2x = -6 \\implies \\mathbf{x = -3}. \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( 2x + 6 = 0 \\implies 2x = -6 \\implies \\mathbf{x = -3}. \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -338,7 +455,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Compute composite formula:</strong> \\[ (f \\circ g)(x) = f(g(x)) = f(\\sqrt{x}) = (\\sqrt{x})^2 + 1 = x + 1. \\]</p><p><strong>Step 2: Determine domain:</strong> Although \\(x + 1\\) is defined for all real numbers, the inner function \\(g(x) = \\sqrt{x}\\) requires \\(x \\ge 0\\). Therefore, the domain of the composite function is: \\[ \\mathbf{[0, \\infty)}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: إيجاد قاعدة الدالة المركبة:</strong> \\[ (f \\circ g)(x) = f(g(x)) = f(\\sqrt{x}) = (\\sqrt{x})^2 + 1 = x + 1. \\]</p><p><strong>الخطوة 2: تحديد المجال:</strong> على الرغم من أن \\(x + 1\\) معرّفة لجميع الأعداد الحقيقية، إلا أن الدالة الداخلية \\(g(x) = \\sqrt{x}\\) تشترط \\(x \\ge 0\\). وبالتالي فإن مجال الدالة المركبة هو: \\[ \\mathbf{[0, \\infty)}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Functions</em> and start from \\(f(x) = x^2 + 1\\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\(f(x) = x^2 + 1\\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( (f \\circ g)(x) = f(g(x)) = f(\\sqrt{x}) = (\\sqrt{x})^2 + 1 = x + 1. \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( (f \\circ g)(x) = f(g(x)) = f(\\sqrt{x}) = (\\sqrt{x})^2 + 1 = x + 1. \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -350,7 +481,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Identify domain restrictions:</strong> Two conditions apply: the expression under the square root must be non-negative (\\(x - 4 \\ge 0\\)), and the denominator cannot be zero (\\(\\sqrt{x - 4} \\neq 0\\)).</p><p><strong>Step 2: Combine restrictions:</strong> Combining both conditions requires the radicand to be strictly positive: \\[ x - 4 > 0 \\implies x > 4. \\]</p><p>In interval notation: \\[ \\mathbf{(4, \\infty)}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: شروط المجال:</strong> ينطبق هنا شرطان معاً: ما بداخل الجذر التربيعي غير سالب (\\(x - 4 \\ge 0\\))، والمقام لا يساوي صفراً (\\(\\sqrt{x - 4} \\neq 0\\)).</p><p><strong>الخطوة 2: دمج الشرطين:</strong> يقتضي دمج الشرطين أن يكون ما تحت الجذر موجباً تماماً: \\[ x - 4 > 0 \\implies x > 4. \\]</p><p>على صورة فترة مفتوحة: \\[ \\mathbf{(4, \\infty)}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Functions</em> and start from \\(h(x) = \\dfrac{1}{\\sqrt{x - 4}}\\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\(h(x) = \\dfrac{1}{\\sqrt{x - 4}}\\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x - 4 \\ge 0\\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\(x - 4 \\ge 0\\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       }
     ]
   },

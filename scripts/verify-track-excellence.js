@@ -77,10 +77,13 @@ function auditTrack(trackId) {
   for (const lf of lessonFiles) {
     const d = JSON.parse(fs.readFileSync(path.join(contentDir, lf), 'utf8'));
     const blocks = (d.content && d.content.blocks) || [];
-    let examples = 0, practices = 0, figures = 0, explorers = 0, has3D = false;
+    let examples = 0, practices = 0, figures = 0, explorers = 0, traps = 0, derivations = 0, tables = 0, has3D = false;
     for (const b of blocks) {
       if (b.kind === 'callout' && b.style === 'example') examples++;
       if (b.kind === 'workedExample' || b.kind === 'workedExampleCard') examples++;
+      if (b.kind === 'callout' && b.style === 'warn') traps++;
+      if (b.kind === 'callout' && b.style === 'pf') derivations++;
+      if (b.kind === 'table') tables++;
       if (b.kind === 'practiceProblem') practices++;
       if (b.kind === 'figure') figures++;
       if (b.kind === 'explorer') {
@@ -94,6 +97,9 @@ function auditTrack(trackId) {
       examples,
       practices,
       figures,
+      traps,
+      derivations,
+      tables,
       explorers,
       has3D: has3D ? 'Yes' : 'No'
     });

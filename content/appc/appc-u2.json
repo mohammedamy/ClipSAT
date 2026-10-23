@@ -37,43 +37,38 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Unit 2 · Exponential and Logarithmic Functions — Coordinate Curve & Tangent Analysis (2)",
+          "title": "Unit 2 · Exponential and Logarithmic Functions — Function Curve & Symmetry Analysis",
           "xrange": [
             -4,
-            4
+            6
           ],
           "yrange": [
-            -3,
-            9
+            -4,
+            6
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "(x - 1)*(x - 1) - 3",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "label": "f(x) = (x-1)² - 3"
             },
             {
-              "fn": "2*x - 3",
+              "fn": "x",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "label": "y = x"
             }
           ],
           "points": [
             {
               "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "y": -3,
+              "label": "Vertex (1, -3)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Parabola f(x) = (x − 1)² − 3 with vertex at (1, −3) and symmetry reference line y = x.",
           "ar": null
         }
       },
@@ -81,43 +76,21 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Unit 2 · Exponential and Logarithmic Functions — Coordinate Curve & Tangent Analysis (1)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
           "fns": [
-            {
-              "fn": "x*x - 1",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 1"
-            },
-            {
-              "fn": "2*x - 2",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
+            "2**x"
           ],
-          "points": [
-            {
-              "x": 1,
-              "y": 0,
-              "label": "(1, 0)"
-            },
-            {
-              "x": 0,
-              "y": -1,
-              "label": "(0, -1)"
-            }
-          ]
+          "xlim": [
+            -2,
+            5
+          ],
+          "ylim": [
+            -1,
+            10
+          ],
+          "points": []
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 1 and its instantaneous tangent line at x = 1.",
+          "en": "Unit 2 · Exponential and Logarithmic Functions — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Unit 2 · Exponential and Logarithmic Functions.",
           "ar": null
         }
       },
@@ -147,6 +120,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Unit 2 · Exponential and Logarithmic Functions)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Completing the Square &amp; Log-Linearization Work:</strong> Any quadratic \\(f(x) = ax^2 + bx + c\\) (\\(a \\ne 0\\)) can be rewritten by factoring \\(a\\) from the first two terms and adding/subtracting \\((b/2a)^2\\):</p>\\[ ax^2 + bx + c = a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\]<p>Because \\(\\left(x + \\frac{b}{2a}\\right)^2 \\ge 0\\) for all \\(x \\in \\mathbb{R}\\), the extreme value \\(k = c - \\frac{b^2}{4a}\\) is attained uniquely at the axis of symmetry \\(x = -\\frac{b}{2a}\\), restricting the range to \\([k, \\infty)\\) (if \\(a > 0\\)) and making \\(f\\) invertible on \\(x \\ge -\\frac{b}{2a}\\). Similarly, applying \\(\\ln\\) to power laws \\(y = ax^n\\) yields \\(\\ln y = n\\ln x + \\ln a\\), transforming a nonlinear curve into a straight line of gradient \\(n\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example",
@@ -161,11 +146,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example B — Unit 2 · Exponential and Logarithmic Functions (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> The exponential equation \\( 8^{2t - 1} = 8^{6 + 13} \\) holds for real \\( t \\). What is the quantity \\( p = 2t \\)?</p><p><strong>Step-by-Step Solution:</strong> Equating exponents gives \\( 2t - 1 = 19 \\implies 2t = 20 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 2 · Exponential and Logarithmic Functions)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Expanding \\(\\ln(x + y)\\) as \\(\\ln x + \\ln y\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses the product law \\(\\ln(xy) = \\ln x + \\ln y\\) with a non-existent sum rule.",
+              "ar": null
+            },
+            {
+              "en": "Only factor products, quotients, and powers inside logarithms: \\(\\ln(xy) = \\ln x + \\ln y\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Keeping both roots of \\(\\sqrt{2x+3} = x - 1\\) without checking \\(x - 1 \\ge 0\\)",
+              "ar": null
+            },
+            {
+              "en": "Squaring both sides loses the sign of \\(x - {r}\\), introducing roots where \\(\\sqrt{\\cdot} = -\\text{number}\\).",
+              "ar": null
+            },
+            {
+              "en": "Enforce the range condition \\(x \\ge 1\\) before or after squaring.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Restricting domain of \\(f(x) = (x-3)^2 + 1\\) to \\(x \\ge 0\\) for invertibility",
+              "ar": null
+            },
+            {
+              "en": "The vertex is at \\(x = 3\\), so \\(f(2) = f(4) = 2\\) fails the horizontal line test on \\(x \\ge 0\\).",
+              "ar": null
+            },
+            {
+              "en": "Restrict the domain at the vertex axis of symmetry: \\(x \\ge 3\\) (or \\(x \\le 3\\)).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Unit 2 · Exponential and Logarithmic Functions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Exam Check (College Board AP Precalculus):</strong> To verify an inverse function \\(f^{-1}(x)\\) in 5 seconds, pick a simple input \\(x_0\\), compute \\(y_0 = f(x_0)\\), and check that \\(f^{-1}(y_0) = x_0\\). Also verify that the graph of \\(y = f^{-1}(x)\\) reflects \\(y = f(x)\\) across \\(y = x\\).</p>",
           "ar": null
         }
       },
@@ -178,7 +240,21 @@
         "solution": {
           "en": "<p><strong>Multiplicative Base:</strong> Rewrite \\(e^{-0.048 t} = (e^{-0.048})^t\\):</p>\\[ b = e^{-0.048} \\approx 0.953134. \\]<p>The exact base is <strong>\\(b = e^{-0.048}\\)</strong> (or approximately <strong>0.9531</strong>).</p><p><strong>Daily Percentage Loss:</strong> The percentage decay rate per day is \\(1 - b\\):</p>\\[ 1 - 0.953134 = 0.046866 \\implies 4.69\\%. \\]<p>The daily percentage loss is <strong>4.69%</strong> (distinguished from the continuous rate of 4.80%).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 2 · Exponential and Logarithmic Functions</em> and start from \\(M(t) = 250 e^{-0.048 t}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(e^{-0.048 t} = (e^{-0.048})^t\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -328,7 +404,21 @@
         "solution": {
           "en": "<p><strong>Step 1 (Apply Product Property):</strong></p>\\[ \\log_2((x + 3)(x - 1)) = 5. \\]<p><strong>Step 2 (Convert to Exponential Form):</strong></p>\\[ (x + 3)(x - 1) = 2^5 = 32. \\]<p><strong>Step 3 (Solve the Quadratic Equation):</strong></p>\\[ x^2 + 2x - 3 = 32 \\implies x^2 + 2x - 35 = 0. \\]\\[ (x + 7)(x - 5) = 0 \\implies x = -7 \\quad \\text{or} \\quad x = 5. \\]<p><strong>Step 4 (Domain Verification):</strong></p><p>For \\(x = -7\\): \\(x - 1 = -8 \\le 0\\), and \\(\\log_2(-8)\\) is undefined in the real numbers. Hence \\(x = -7\\) is an <strong>extraneous solution</strong>.</p><p>For \\(x = 5\\): \\(5 + 3 = 8 > 0\\) and \\(5 - 1 = 4 > 0\\). Checking: \\(\\log_2(8) + \\log_2(4) = 3 + 2 = 5\\). Valid!</p><p>The unique real solution is <strong>\\(x = 5\\)</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 2 · Exponential and Logarithmic Functions</em> and start from \\(\\log_2(x + 3) + \\log_2(x - 1) = 5\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\log_2((x + 3)(x - 1)) = 5. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -383,16 +473,44 @@
         "solution": {
           "en": "<p><strong>Step 1 (Exponentiate the Linear Equation):</strong></p>\\[ \\ln(y) = -0.42 x + 2.85 \\implies y = e^{-0.42 x + 2.85} = e^{2.85} \\cdot e^{-0.42 x} = e^{2.85} \\cdot (e^{-0.42})^x. \\]<p><strong>Step 2 (Compute Parameters):</strong></p>\\[ a = e^{2.85} \\approx 17.28775 \\approx 17.288, \\]\\[ b = e^{-0.42} \\approx 0.65705 \\approx 0.657. \\]<p>The exponential model is <strong>\\(y = 17.288(0.657)^x\\)</strong> (or \\(y = 17.288 e^{-0.42 x}\\)).</p><p><strong>Step 3 (Predict for x = 5):</strong></p>\\[ y(5) = 17.288 \\cdot e^{-0.42 \\times 5} = 17.288 \\cdot e^{-2.1} \\approx 17.288 \\cdot 0.122456 \\approx \\mathbf{2.117}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 2 · Exponential and Logarithmic Functions</em> and start from \\((x, y)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Unit 2 · Exponential and Logarithmic Functions · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> The radical function \\( p(t) = \\sqrt{2t + 11} \\) is defined for \\( 2t + 11 \\ge 0 \\). What is the product \\( 2t \\) when \\( p(t) = 11 \\)?",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 2 · Exponential and Logarithmic Functions</em> and start from \\( p(t) = \\sqrt{2t + 11} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 2t + 11 = 121 \\implies 2t = 110 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Squaring both sides yields \\( 2t + 11 = 121 \\implies 2t = 110 \\).",
           "ar": null
         }
       }

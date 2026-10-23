@@ -46,6 +46,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — AI SL — Specific Topics",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Proportional Invariance, Linear Structure &amp; Quantitative Modeling:</strong> Across IB Diploma Mathematics: Analysis & Approaches / Applications & Interpretation SL, multi-step problems reduce to identifying invariant quantities—constant rates of change \\(m = \\dfrac{\\Delta y}{\\Delta x}\\), conservation of total work/mass, or linear system rank conditions. A two-variable linear system \\(a_1 x + b_1 y = c_1\\), \\(a_2 x + b_2 y = c_2\\) has a unique intersection if \\(\\dfrac{a_1}{a_2} \\ne \\dfrac{b_1}{b_2}\\), no solution (parallel lines) if \\(\\dfrac{a_1}{a_2} = \\dfrac{b_1}{b_2} \\ne \\dfrac{c_1}{c_2}\\), and infinitely many solutions if all three ratios coincide.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
           "type": "voronoi",
@@ -246,6 +258,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (AI SL — Specific Topics)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example AI.1 — Spearman's Rank Correlation with Tied Ranks",
@@ -312,6 +336,83 @@
         }
       },
       {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (AI SL — Specific Topics)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Claiming \\(+25\\%\\) followed by \\(-25\\%\\) returns to \\(100\\%\\)",
+              "ar": null
+            },
+            {
+              "en": "The \\(25\\%\\) reduction applies to the larger base \\(1.25 Q_0\\), not \\(Q_0\\).",
+              "ar": null
+            },
+            {
+              "en": "Multiply scale factors: \\(1.25 \\times 0.75 = 0.9375\\) (a \\(6.25\\%\\) net decrease).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Solving \\(-3x > 12\\) as \\(x > -4\\)",
+              "ar": null
+            },
+            {
+              "en": "Dividing by a negative number reverses order on the real number line.",
+              "ar": null
+            },
+            {
+              "en": "Flip the inequality symbol whenever multiplying or dividing by a negative: \\(x < -4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing round-trip average speed as \\(\\frac{v_1 + v_2}{2}\\)",
+              "ar": null
+            },
+            {
+              "en": "Time spent at the slower speed is longer than time spent at the faster speed.",
+              "ar": null
+            },
+            {
+              "en": "Use total distance over total time: \\(v_{\\text{avg}} = \\frac{2v_1 v_2}{v_1 + v_2}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — AI SL — Specific Topics",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>High-Speed Exam Shortcut (IB Diploma Mathematics: Analysis & Approaches / Applications & Interpretation SL):</strong> When a linear system asks for a combined expression like \\(3x + 3y\\) rather than \\(x\\) and \\(y\\) individually, add or subtract the two equations directly before isolating either variable—this often yields the target expression in a single step.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>Practice AI.1:</strong> Use the trapezoidal rule with 4 subintervals to estimate \\(\\int_1^3 \\sqrt{1 + x^3}\\,dx\\).",
@@ -320,7 +421,21 @@
         "solution": {
           "en": "1. Subinterval width: \\(h = \\frac{b - a}{n} = \\frac{3 - 1}{4} = 0.5\\).<br>2. Evaluation grid points: \\(x_0 = 1, x_1 = 1.5, x_2 = 2.0, x_3 = 2.5, x_4 = 3.0\\).<br>3. Compute function values \\(y_i = \\sqrt{1 + x_i^3}\\):<br>\\(y_0 = \\sqrt{1 + 1} = \\sqrt{2} \\approx 1.4142\\)<br>\\(y_1 = \\sqrt{1 + 1.5^3} = \\sqrt{1 + 3.375} = \\sqrt{4.375} \\approx 2.0917\\)<br>\\(y_2 = \\sqrt{1 + 2^3} = \\sqrt{9} = 3.0000\\)<br>\\(y_3 = \\sqrt{1 + 2.5^3} = \\sqrt{1 + 15.625} = \\sqrt{16.625} \\approx 4.0774\\)<br>\\(y_4 = \\sqrt{1 + 3^3} = \\sqrt{28} \\approx 5.2915\\)<br>4. Apply the trapezoidal rule:<br>\\[ \\text{Area} \\approx \\frac{0.5}{2} [1.4142 + 2(2.0917 + 3.0000 + 4.0774) + 5.2915] \\] \\[ = 0.25 [1.4142 + 2(9.1691) + 5.2915] = 0.25 [1.4142 + 18.3382 + 5.2915] = 0.25(25.0439) \\approx 6.261. \\]<br>Estimated integral: <strong>6.26</strong> (to 3 s.f.).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>AI SL — Specific Topics</em> and start from \\(\\int_1^3 \\sqrt{1 + x^3}\\,dx\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(h = \\frac{b - a}{n} = \\frac{3 - 1}{4} = 0.5\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -331,27 +446,69 @@
         "solution": {
           "en": "(a) Use the annuity formula or TVM solver:<br>Number of payments \\(N = 10 \\times 12 = 120\\).<br>Monthly interest rate \\(r = \\frac{0.06}{12} = 0.005\\).<br>\\[ PV = PMT \\left[ \\frac{1 - (1 + r)^{-N}}{r} \\right] \\implies 120,000 = PMT \\left[ \\frac{1 - (1.005)^{-120}}{0.005} \\right]. \\]<br>Compute discount factor: \\(1 - (1.005)^{-120} = 1 - 0.549633 = 0.450367\\).<br>Factor / 0.005 \\(= 90.07345\\).<br>\\[ PMT = \\frac{120,000}{90.07345} \\approx \\$1,332.25. \\]<br><br>(b) Total amount paid: \\(120 \\times 1332.25 = \\$159,870\\).<br>Total interest: \\(\\$159,870 - \\$120,000 = \\$39,870\\).",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>AI SL — Specific Topics</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(N = 10 \\times 12 = 120\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Easy]</strong> Find the midpoint of \\( A(5, -3) \\) and \\( B(15, 1) \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>AI SL — Specific Topics</em> and start from \\( A(5, -3) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "Working through this modelling step: \\( M=\\left(\\dfrac{x_1+x_2}{2},\\dfrac{y_1+y_2}{2}\\right)=\\left(\\dfrac{5+15}{2},\\dfrac{-3+1}{2}\\right)=(10, -1) \\). <strong>[M1] [A1]</strong> <strong>Answer:</strong> \\( (10, -1) \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[AI SL — Specific Topics · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> The absolute value equation \\( |x - 12| = 10 \\) has two real roots \\( x_1 \\) and \\( x_2 \\). Find the sum of roots \\( f = x_1 + x_2 \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>AI SL — Specific Topics</em> and start from \\( |x - 12| = 10 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( x_1 = 22 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[AI SL — Specific Topics · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "The two solutions are \\( x_1 = 22 \\) and \\( x_2 = 2 \\), whose sum is \\( 24 \\). <strong>[M1] [A1]</strong>",
           "ar": null
         }
       }

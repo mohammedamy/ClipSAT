@@ -41,46 +41,45 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Differentiation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Local Linearization &amp; Differentiability:</strong> A function \\(f\\) is differentiable at \\(x = a\\) if and only if the difference quotient \\(\\lim_{h \\to 0} \\dfrac{f(a+h) - f(a)}{h}\\) exists as a finite real number. Differentiability at \\(x = a\\) strictly implies continuity at \\(x = a\\), but the converse fails at sharp corners (e.g. \\(|x - 4|\\)), vertical tangents, or jump discontinuities.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Differentiation — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
+          "type": "sign_chart",
+          "title": "Differentiation — First Derivative Sign Chart & Extrema",
+          "ticks": [
             {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "x": -4,
+              "label": "x = -4"
             },
             {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "x": 7,
+              "label": "x = 7"
             }
           ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
+          "signs": [
+            "+",
+            "−",
+            "+"
+          ],
+          "behaviors": [
+            "↗ Increasing",
+            "↘ Decreasing",
+            "↗ Increasing"
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Derivative sign chart for f'(x) showing local maximum at x = −4 (+ to −) and local minimum at x = 7 (− to +).",
           "ar": null
         }
       },
@@ -207,6 +206,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Differentiation)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Differentiability Implies Continuity &amp; How Implicit Differentiation Works:</strong> Notice that for \\(x \\ne a\\), we can write \\(f(x) - f(a) = \\dfrac{f(x) - f(a)}{x - a}\\cdot (x - a)\\). Taking the limit as \\(x \\to a\\) by the Product Law gives:</p>\\[ \\lim_{x \\to a} \\bigl(f(x) - f(a)\\bigr) = f'(a)\\cdot 0 = 0 \\implies \\lim_{x \\to a} f(x) = f(a) \\]<p>Similarly, when differentiating an implicit relation \\(F(x, y) = c\\) with respect to \\(x\\), \\(y = y(x)\\) is an inner function of \\(x\\). By the Chain Rule, \\(\\dfrac{d}{dx}\\bigl[y^n\\bigr] = ny^{n-1}\\dfrac{dy}{dx}\\), and for product terms \\(\\dfrac{d}{dx}[xy] = y + x\\dfrac{dy}{dx}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example 4.A",
@@ -233,11 +244,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example C — Differentiation (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 4x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(9) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 12x^2 - 2x \\).</li><li>Substitute \\( x = 9 \\): \\( f'(9) = 12(9)^2 - 2(9) = 972 - 18 = \\mathbf{954} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> Given \\( y=(x-4)(3x+14) \\), find \\( \\dfrac{dy}{dx} \\) at \\( x=4 \\).</p><p><strong>Step-by-Step Solution:</strong> By the product rule: \\( \\dfrac{dy}{dx}=(3x+14)+3(x-4) \\). At \\( x=4 \\): 26.</p>",
           "ar": null
         }
       },
@@ -245,11 +256,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example D — Differentiation (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> Let \\( E(p) = \\dfrac{154p^2 + 22p - 19}{p^2 + 7} \\) for \\( p > 0 \\). Find the limit at infinity \\( \\displaystyle\\lim_{p \\to \\infty} E(p) \\).</p><p><strong>Step-by-Step Solution:</strong> Dividing numerator and denominator by \\( p^2 \\) gives \\( 154 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Differentiation)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Assuming \\(f'(c) = 0\\) guarantees a local extremum",
+              "ar": null
+            },
+            {
+              "en": "Inflection points like \\(f(x) = x^3\\) at \\(x = 0\\) have \\(f'(0) = 0\\) without changing sign.",
+              "ar": null
+            },
+            {
+              "en": "Verify that \\(f'(x)\\) actually changes sign across \\(x = c\\) (or check \\(f''(c) \\ne 0\\)).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing parametric \\(\\frac{d^2y}{dx^2}\\) as \\(\\frac{\\ddot{y}}{\\ddot{x}}\\)",
+              "ar": null
+            },
+            {
+              "en": "violates the Chain Rule \\(\\frac{d}{dx} = \\frac{1}{dx/dt}\\frac{d}{dt}\\).",
+              "ar": null
+            },
+            {
+              "en": "Differentiate \\(dy/dx\\) with respect to \\(t\\), then divide by \\(dx/dt\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Forgetting product rule on \\(xy\\) in implicit differentiation",
+              "ar": null
+            },
+            {
+              "en": "Treats \\(y\\) as a constant instead of \\(y(x)\\).",
+              "ar": null
+            },
+            {
+              "en": "Always expand \\(\\frac{d}{dx}(xy) = y + x\\frac{dy}{dx}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Differentiation",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Justification Rule (Cambridge International A Level (9709 Paper 3 / Paper 6)):</strong> When justifying local extrema or points of inflection on free-response questions, state \"because \\(f'(x)\\) changes sign from positive to negative at \\(x = c\\)\" rather than referring vaguely to \"it\" or \"the graph.\"</p>",
           "ar": null
         }
       },
@@ -262,7 +350,21 @@
         "solution": {
           "en": "\\(\\dfrac{dx}{dt}=2t\\), \\(\\dfrac{dy}{dt}=6t^2-3\\). \\(\\dfrac{dy}{dx}=\\dfrac{6t^2-3}{2t}\\). At \\(t=1\\): \\(\\dfrac{3}{2}\\).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differentiation</em> and start from \\(x=t^2+1\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\dfrac{dx}{dt}=2t\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "figure",
@@ -326,27 +428,69 @@
         "solution": {
           "en": "<p>Differentiate implicitly with respect to \\(x\\):</p>\\[3x^2 - 2\\left(y + x\\frac{dy}{dx}\\right) + 2y\\frac{dy}{dx} = 0\\]\\[3x^2 - 2y + (2y - 2x)\\frac{dy}{dx} = 0 \\implies \\frac{dy}{dx} = \\frac{2y - 3x^2}{2y - 2x}\\]<p>A vertical tangent occurs when the denominator is zero (and numerator non-zero):</p>\\[2y - 2x = 0 \\implies y = x\\]<p>Substitute \\(y = x\\) into the original curve equation:</p>\\[x^3 - 2x(x) + x^2 = 4 \\implies x^3 - x^2 - 4 = 0\\]<p>Test integer factors: \\(x = 2\\) gives \\(8 - 4 - 4 = 0\\). Factoring gives \\((x - 2)(x^2 + x + 2) = 0\\). Since \\(x^2 + x + 2 = 0\\) has no real roots (\\(1 - 8 < 0\\)), \\(x = 2\\) is the only real root.</p><p>Since \\(y = x\\), the point with vertical tangent is \\((2, 2)\\).</p>",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differentiation</em> and start from \\(C\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Hard]</strong> Let the differentiable function \\( E \\) be given by \\( E(p) = 5p^2 + 17p - 6 \\). Find the derivative \\( E'(6) \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differentiation</em> and start from \\( E \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( E'(p) = 10p + 17 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "Differentiating gives \\( E'(p) = 10p + 17 \\), so \\( E'(6) = 77 \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Differentiation · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> Given \\( y=(5x+13)(5x-13) \\), find \\( \\dfrac{dy}{dx} \\) at \\( x=-2 \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differentiation</em> and start from \\( y=(5x+13)(5x-13) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\dfrac{dy}{dx}=5(5x-13)+5(5x+13) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Differentiation · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "By the product rule: \\( \\dfrac{dy}{dx}=5(5x-13)+5(5x+13) \\). At \\( x=-2 \\): -100.",
           "ar": null
         }
       }

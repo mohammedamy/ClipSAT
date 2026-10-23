@@ -38,44 +38,20 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Unit 6BC · Advanced Integration Techniques — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
-          ]
+          "type": "slope_field",
+          "title": "Unit 6BC · Advanced Integration Techniques — Slope Field & Particular Solution Trajectory",
+          "fn": "x - y",
+          "xmin": -3,
+          "xmax": 3,
+          "ymin": -3,
+          "ymax": 3,
+          "solution": {
+            "x0": 0,
+            "y0": 1
+          }
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Slope field for dy/dx = x − y with the integral curve passing through initial condition (0, 1).",
           "ar": null
         }
       },
@@ -83,43 +59,32 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Unit 6BC · Advanced Integration Techniques — Coordinate Curve & Tangent Analysis (1)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
           "fns": [
-            {
-              "fn": "x*x - 1",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 1"
-            },
-            {
-              "fn": "2*x - 2",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
+            "3 * (x <= 0) + (4 - x) * (x > 0 and x < 4) + (x >= 4)"
+          ],
+          "xlim": [
+            -2,
+            6
+          ],
+          "ylim": [
+            -1,
+            7
           ],
           "points": [
             {
-              "x": 1,
-              "y": 0,
-              "label": "(1, 0)"
+              "x": 0,
+              "y": 3,
+              "label": "(0, 3)"
             },
             {
-              "x": 0,
-              "y": -1,
-              "label": "(0, -1)"
+              "x": 4,
+              "y": 0,
+              "label": "(4, 0)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 1 and its instantaneous tangent line at x = 1.",
+          "en": "Unit 6BC · Advanced Integration Techniques — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Unit 6BC · Advanced Integration Techniques.",
           "ar": null
         }
       },
@@ -132,6 +97,18 @@
         },
         "body": {
           "en": "<p><strong>Theorem:</strong> Let \\(u(x)\\) and \\(v(x)\\) be continuously differentiable functions on an interval. Then: \\[ \\int u(x) v'(x)\\,dx = u(x)v(x) - \\int v(x)u'(x)\\,dx, \\] or equivalently in differential notation: \\[ \\int u\\,dv = uv - \\int v\\,du. \\]</p><p><em>Proof:</em> By the Product Rule for differentiation: \\[ \\frac{d}{dx}[u(x)v(x)] = u'(x)v(x) + u(x)v'(x). \\] Integrating both sides with respect to \\(x\\): \\[ \\int \\frac{d}{dx}[u(x)v(x)]\\,dx = \\int u'(x)v(x)\\,dx + \\int u(x)v'(x)\\,dx. \\] By the Fundamental Theorem of Calculus, the left-hand side is \\(u(x)v(x)\\): \\[ u(x)v(x) = \\int v(x)u'(x)\\,dx + \\int u(x)v'(x)\\,dx. \\] Subtracting \\(\\int v(x)u'(x)\\,dx\\) from both sides: \\[ \\int u(x)v'(x)\\,dx = u(x)v(x) - \\int v(x)u'(x)\\,dx. \\quad \\blacksquare \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>The LIATE Strategy:</strong> To choose \\(u\\), select the function that appears earliest in the list: <strong>L</strong>ogarithmic (\\(\\ln x\\)), <strong>I</strong>nverse trigonometric (\\(\\arctan x\\)), <strong>A</strong>lgebraic (\\(x^n\\)), <strong>T</strong>rigonometric (\\(\\sin x\\)), <strong>E</strong>xponential (\\(e^x\\)). The remaining factor becomes \\(dv\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Unit 6BC · Advanced Integration Techniques)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
           "ar": null
         }
       },
@@ -151,11 +128,100 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example B — Unit 6BC · Advanced Integration Techniques (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> Consider the region \\(R\\) in the first quadrant bounded by the curve \\( y = e^{-x^2} \\), the x-axis, and the line \\( x = a \\), where \\( a > 0 \\). A solid is generated by revolving this region \\(R\\) about the y-axis. If the volume of this solid is \\( \\frac{\\pi}{2} \\), determine the value of \\( a \\).</p><p><strong>Step-by-Step Solution:</strong> The volume of the solid generated by revolving the region bounded by \\( y = f(x) \\), the x-axis, and the lines \\( x = a \\) and \\( x = b \\) about the y-axis can be found using the shell method. The formula for the volume \\( V \\) is given by \\( V = \\int_{a}^{b} 2\\pi x f(x) dx \\).\n\nIn this problem, \\( f(x) = e^{-x^2} \\), and the region is bounded by \\( y = e^{-x^2} \\), the x-axis, and the line \\( x = a \\) in the first quadrant. Thus, the limits of integration are from \\( x = 0 \\) to \\( x = a \\).\n\nThe volume of the solid is given by:\n\n\\( V = \\int_{0}^{a} 2\\pi x e^{-x^2} dx \\)\n\nWe are given that the volume \\( V = \\frac{\\pi}{2} \\).\n\nLet's evaluate the integral. We can use a substitution: let \\( u = -x^2 \\). Then \\( du = -2x dx \\), so \\( x dx = -\\frac{1}{2} du \\).\n\nWhen \\( x = 0 \\), \\( u = -(0)^2 = 0 \\).\nWhen \\( x = a \\), \\( u = -(a)^2 = -a^2 \\).\n\nSubstituting these into the integral:\n\n\\( V = \\int_{0}^{-a^2} 2\\pi e^{u} \\left( -\\frac{1}{2} du \\right) \\)\n\n\\( V = -\\pi \\int_{0}^{-a^2} e^{u} du \\)\n\nNow, we can switch the limits of integration by changing the sign:\n\n\\( V = \\pi \\int_{-a^2}^{0} e^{u} du \\)\n\nEvaluating the integral:\n\n\\( V = \\pi [e^{u}]_{-a^2}^{0} \\)\n\n\\( V = \\pi (e^{0} - e^{-a^2}) \\)\n\n\\( V = \\pi (1 - e^{-a^2}) \\)\n\nWe are given that \\( V = \\frac{\\pi}{2} \\). So, we set the two expressions for \\( V \\) equal:\n\n\\( \\pi (1 - e^{-a^2}) = \\frac{\\pi}{2} \\)\n\nDivide both sides by \\( \\pi \\):\n\n\\( 1 - e^{-a^2} = \\frac{1}{2} \\)\n\nNow, solve for \\( a \\):\n\n\\( e^{-a^2} = 1 - \\frac{1}{2} \\)\n\n\\( e^{-a^2} = \\frac{1}{2} \\)\n\nTake the natural logarithm of both sides:\n\n\\( -a^2 = \\ln\\left(\\frac{1}{2}\\right) \\)\n\n\\( -a^2 = -\\ln(2) \\)\n\n\\( a^2 = \\ln(2) \\)\n\nSince \\( a > 0 \\), we take the positive square root:\n\n\\( a = \\sqrt{\\ln(2)} \\) <strong>Final Answer:</strong> \\( \\sqrt{\\ln(2)} \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Exam Traps — Unit 6BC · Advanced Integration Techniques",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. Adding \\(+C\\) Only After Exponentiating in Separable ODEs:</strong> In \\(\\dfrac{dy}{dx} = 5xy\\), integrating gives \\(\\ln|y| = \\tfrac{5}{2}x^2 + C \\implies y = Ae^{5x^2/2}\\) where \\(A = \\pm e^C\\). Writing \\(y = e^{5x^2/2} + C\\) is a fatal algebraic error that forfeits all follow-up marks on College Board AP Calculus BC.</p><p><strong>2. Forgetting to Transform Limits in \\(u\\)-Substitution:</strong> In definite integrals \\(\\int_a^b f(g(x))g'(x)\\,dx\\), you must replace the limits \\(x = a, b\\) with \\(u = g(a), g(b)\\) immediately.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 6BC · Advanced Integration Techniques)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Writing \\(\\ln|y| = x^2 + C \\implies y = e^{x^2} + C\\)",
+              "ar": null
+            },
+            {
+              "en": "Exponentiation distributes over addition as multiplication (\\(e^{a+b} = e^a e^b\\)), not addition.",
+              "ar": null
+            },
+            {
+              "en": "Write \\(y = e^{x^2 + C} = Ae^{x^2}\\) and solve for \\(A\\) using the initial condition.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Leaving original \\(x\\)-limits on a \\(u\\)-substituted definite integral",
+              "ar": null
+            },
+            {
+              "en": "Evaluates the antiderivative \\(F(u)\\) at \\(x\\)-values instead of \\(u(x)\\)-values.",
+              "ar": null
+            },
+            {
+              "en": "Convert bounds immediately: \\(u_{\\text{low}} = u(a)\\) and \\(u_{\\text{high}} = u(b)\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing total distance as \\(\\left|\\int_{t_1}^{t_2} v(t)\\,dt\\right|\\)",
+              "ar": null
+            },
+            {
+              "en": "Cancels forward and backward motion (net displacement) instead of accumulating total path length.",
+              "ar": null
+            },
+            {
+              "en": "Split the integral at every root where \\(v(t) = 0\\) and integrate \\(|v(t)|\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Unit 6BC · Advanced Integration Techniques",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Quick Verification Trick (College Board AP Calculus BC):</strong> For any indefinite integral \\(\\int f(x)\\,dx = F(x) + C\\), differentiate your answer \\(F'(x)\\) mentally—especially the coefficient \\(1/k\\) from chain-rule reversal \\(\\int e^{kx}\\,dx = \\tfrac{1}{k}e^{kx} + C\\)—before moving on.</p>",
           "ar": null
         }
       },
@@ -168,7 +234,21 @@
         "solution": {
           "en": "<p>Use LIATE: \\(u = \\arctan(x) \\implies du = \\frac{1}{1+x^2}\\,dx\\), and \\(dv = dx \\implies v = x\\). Applying parts: \\[ \\int \\arctan(x)\\,dx = x\\arctan(x) - \\int \\frac{x}{1+x^2}\\,dx. \\] For the second integral, let \\(w = 1+x^2 \\implies dw = 2x\\,dx\\): \\[ \\int \\frac{x}{1+x^2}\\,dx = \\frac{1}{2}\\ln(1+x^2). \\] Thus: \\[ \\mathbf{x\\arctan(x) - \\frac{1}{2}\\ln(1+x^2) + C}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 6BC · Advanced Integration Techniques</em> and start from \\(\\int \\arctan(x)\\,dx\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(u = \\arctan(x) \\implies du = \\frac{1}{1+x^2}\\,dx\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -211,7 +291,21 @@
         "solution": {
           "en": "<p>Tabulate signs, derivatives of \\(x^3\\), and antiderivatives of \\(\\sin(2x)\\):<br>• \\((+) \\quad x^3 \\qquad\\qquad -\\frac{1}{2}\\cos(2x)\\)<br>• \\((-) \\quad 3x^2 \\qquad\\quad -\\frac{1}{4}\\sin(2x)\\)<br>• \\((+) \\quad 6x \\qquad\\qquad \\frac{1}{8}\\cos(2x)\\)<br>• \\((-) \\quad 6 \\qquad\\qquad\\quad \\frac{1}{16}\\sin(2x)\\)<br>• \\((+) \\quad 0 \\qquad\\qquad -\\frac{1}{32}\\cos(2x)\\)</p><p>Sum the diagonal products: \\[ = -\\frac{1}{2}x^3\\cos(2x) + \\frac{3}{4}x^2\\sin(2x) + \\frac{3}{4}x\\cos(2x) - \\frac{3}{8}\\sin(2x) + C. \\] Group terms: \\[ = \\mathbf{\\left(-\\frac{1}{2}x^3 + \\frac{3}{4}x\\right)\\cos(2x) + \\left(\\frac{3}{4}x^2 - \\frac{3}{8}\\right)\\sin(2x) + C}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 6BC · Advanced Integration Techniques</em> and start from \\(\\int x^3 \\sin(2x)\\,dx\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x^3\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -413,16 +507,44 @@
         "solution": {
           "en": "<p>Rewrite with limit notation: \\[ \\lim_{b \\to \\infty} \\int_0^b x e^{-2x}\\,dx. \\] Use integration by parts: \\(u = x \\implies du = dx\\), \\(dv = e^{-2x}\\,dx \\implies v = -\\frac{1}{2}e^{-2x}\\). \\[ \\int x e^{-2x}\\,dx = -\\frac{1}{2}x e^{-2x} - \\int \\left(-\\frac{1}{2}e^{-2x}\\right)dx = -\\frac{1}{2}x e^{-2x} - \\frac{1}{4}e^{-2x}. \\] Evaluate from 0 to \\(b\\): \\[ \\lim_{b \\to \\infty} \\left[ -\\frac{1}{2}b e^{-2b} - \\frac{1}{4}e^{-2b} - \\left(0 - \\frac{1}{4}e^0\\right) \\right]. \\] By L'Hôpital's Rule, \\(\\lim_{b\\to\\infty} \\frac{b}{e^{2b}} = \\lim_{b\\to\\infty} \\frac{1}{2e^{2b}} = 0\\), and \\(\\lim_{b\\to\\infty} e^{-2b} = 0\\). Therefore: \\[ 0 - 0 - \\left(-\\frac{1}{4}\\right) = \\mathbf{\\frac{1}{4}}. \\] The improper integral converges to <strong>\\(\\frac{1}{4}\\)</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 6BC · Advanced Integration Techniques</em> and start from \\(\\int_0^\\infty x e^{-2x}\\,dx\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\lim_{b \\to \\infty} \\int_0^b x e^{-2x}\\,dx. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Unit 6BC · Advanced Integration Techniques · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> \\( \\displaystyle\\int x\\cos x\\,dx \\) equals",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 6BC · Advanced Integration Techniques</em> and start from \\( \\displaystyle\\int x\\cos x\\,dx \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "IBP: \\( u=x, dv=\\cos x\\,dx \\Rightarrow x\\sin x - \\int\\sin x\\,dx = x\\sin x + \\cos x + C \\) <strong>Answer:</strong> \\( x\\sin x + \\cos x + C \\).",
           "ar": null
         }
       }

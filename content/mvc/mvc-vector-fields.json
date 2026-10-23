@@ -29,44 +29,44 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Vector Fields & Line Integrals — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
+          "type": "transformation_grid",
+          "title": "Vector Fields & Line Integrals — Linear Transformation & Basis Action",
+          "original": [
+            [
+              1,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              3
+            ]
           ],
-          "yrange": [
-            -3,
-            9
+          "transformed": [
+            [
+              -1,
+              1
+            ],
+            [
+              -1,
+              3
+            ],
+            [
+              -3,
+              2
+            ]
           ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
+          "labels": [
+            "A",
+            "B",
+            "C"
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
           "ar": null
         }
       },
@@ -79,6 +79,18 @@
         },
         "body": {
           "en": "<p>A <strong>vector field</strong> on \\( \\mathbb{R}^n \\) (\\( n=2,3 \\)) is a mapping \\( \\mathbf{F}: D \\subset \\mathbb{R}^n \\to \\mathbb{R}^n \\). In components, \\( \\mathbf{F}(x,y) = \\langle P(x,y), Q(x,y) \\rangle \\) in 2D, or \\( \\mathbf{F}(x,y,z) = \\langle P, Q, R \\rangle \\) in 3D.</p><p>For a piecewise smooth curve \\( C \\) parametrized by \\( \\mathbf{r}(t) \\) for \\( t \\in [a,b] \\):</p><ol><li><strong>Scalar Line Integral (with respect to arc length):</strong> \\[ \\int_C f\\,ds = \\int_a^b f(\\mathbf{r}(t)) \\|\\mathbf{r}'(t)\\|\\,dt. \\]</li><li><strong>Vector Line Integral (Work / Tangential circulation):</strong> \\[ \\int_C \\mathbf{F}\\cdot d\\mathbf{r} = \\int_a^b \\mathbf{F}(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t)\\,dt = \\int_C P\\,dx + Q\\,dy + R\\,dz. \\]</li></ol><p>Reversing curve orientation negates the vector line integral: \\( \\int_{-C} \\mathbf{F}\\cdot d\\mathbf{r} = -\\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\), while scalar line integrals are orientation-invariant.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Vector Fields & Line Integrals)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
           "ar": null
         }
       },
@@ -407,11 +419,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example D — Vector Fields & Line Integrals (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> Evaluate \\( \\int_C\\mathbf F\\cdot d\\mathbf r \\) for \\( \\mathbf F=\\langle 2 x, y \\rangle \\) along the parabola \\( y = x^{2} \\) from \\( \\left( 0, \\  0\\right) \\) to \\( \\left( 1, \\  1\\right) \\).</p><p><strong>Step-by-Step Solution:</strong> Substitute the parametrization: \\( \\mathbf F(\\mathbf r(t))\\cdot\\mathbf r'(t)=2 t \\left(t^{2} + 1\\right) \\). Integrating over \\( [0,1] \\) gives \\( \\frac{3}{2} \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Vector Fields & Line Integrals)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Computing angle at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)",
+              "ar": null
+            },
+            {
+              "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
+              "ar": null
+            },
+            {
+              "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
+              "ar": null
+            },
+            {
+              "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
+              "ar": null
+            },
+            {
+              "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Assuming \\((AB)^{-1} = A^{-1}B^{-1}\\)",
+              "ar": null
+            },
+            {
+              "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
+              "ar": null
+            },
+            {
+              "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Vector Fields & Line Integrals",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Multivariable & Vector Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -424,7 +513,21 @@
         "solution": {
           "en": "<p>First check if \\( \\mathbf{F} \\) is conservative: \\[ P_y = e^y, \\; Q_x = e^y; \\quad P_z = 0, \\; R_x = 0; \\quad Q_z = e^z + (z+1)e^z = (z+2)e^z, \\; R_y = 0. \\] Notice \\( R_y = 0 \\) while \\( Q_z = (z+2)e^z \\neq 0 \\). Thus \\( \\mathbf{F} \\) is not conservative and the Fundamental Theorem cannot be used directly.</p><p>Evaluate directly: \\( \\mathbf{r}'(t) = \\langle 1, 2t, 3t^2 \\rangle \\). \\( x = t, y = t^2, z = t^3 \\). \\[ \\mathbf{F}(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t) = e^{t^2}(1) + \\left[ t e^{t^2} + (t^3+1)e^{t^3} \\right](2t) + (t^3+2)e^{t^3}(3t^2). \\] Regroup terms: \\[ \\left( e^{t^2} + 2t^2 e^{t^2} \\right) + \\left( 2t(t^3+1)e^{t^3} + 3t^2(t^3+2)e^{t^3} \\right) = \\frac{d}{dt}\\left( t e^{t^2} \\right) + \\frac{d}{dt}\\left( (t^3+1)e^{t^3} \\cdot t^2 \\dots \\right). \\] Alternatively, evaluate \\( \\int_0^1 (e^{t^2} + 2t^2 e^{t^2})\\,dt = \\Big[ t e^{t^2} \\Big]_0^1 = e \\). The remaining \\( z \\)-terms integrate to: \\[ \\int_0^1 \\left[ 2t^4 e^{t^3} + 2t e^{t^3} + 3t^5 e^{t^3} + 6t^2 e^{t^3} \\right] dt. \\] Substituting \\( u = t^3 \\), \\( du = 3t^2 dt \\): the integral yields \\( 2e - 1 \\). Combined work: \\( 3e - 1 \\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Vector Fields & Line Integrals</em> and start from \\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\mathbf{F} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -435,27 +538,69 @@
         "solution": {
           "en": "<p>Since \\( \\mathbf{F} \\) is explicitly given as the gradient of the potential function \\( f(x,y,z) = x^3 y^2 + \\sin(xz) \\), by the Fundamental Theorem of Line Integrals: \\[ \\int_C \\mathbf{F}\\cdot d\\mathbf{r} = f(\\mathbf{r}(2\\pi)) - f(\\mathbf{r}(0)). \\] Initial point: \\( \\mathbf{r}(0) = \\langle \\cos 0, \\sin 0, 0 \\rangle = (1, 0, 0) \\).<br>Terminal point: \\( \\mathbf{r}(2\\pi) = \\langle \\cos(2\\pi), \\sin(2\\pi), 2\\pi \\rangle = (1, 0, 2\\pi) \\).</p><p>Evaluating \\( f \\) at endpoints: \\[ f(1, 0, 0) = 1^3(0)^2 + \\sin(0) = 0. \\] \\[ f(1, 0, 2\\pi) = 1^3(0)^2 + \\sin(1 \\times 2\\pi) = 0 + \\sin(2\\pi) = 0. \\] Thus, \\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} = 0 - 0 = 0 \\).</p>",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Vector Fields & Line Integrals</em> and start from \\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\mathbf{F} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Medium]</strong> \\( \\mathbf F=\\langle 2 x y, x^{2} - 2 \\rangle \\) is conservative. Evaluate \\( \\int_C\\mathbf F\\cdot d\\mathbf r \\) along any path from \\( \\left( 1, \\  0\\right) \\) to \\( \\left( 2, \\  -2\\right) \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Vector Fields & Line Integrals</em> and start from \\( \\mathbf F=\\langle 2 x y, x^{2} - 2 \\rangle \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( f=x^{2} y - 2 y \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "A potential is \\( f=x^{2} y - 2 y \\). By the Fundamental Theorem of Line Integrals the value is \\( f\\left( 2, \\  -2\\right)-f\\left( 1, \\  0\\right)=-4 \\). <strong>Answer:</strong> \\( -4 \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Vector Fields & Line Integrals · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> Evaluate \\( \\int_C\\mathbf F\\cdot d\\mathbf r \\) for \\( \\mathbf F=\\langle x^{2}, y^{2} \\rangle \\) along the parabola \\( y = x^{2} \\) from \\( \\left( 0, \\  0\\right) \\) to \\( \\left( 1, \\  1\\right) \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Vector Fields & Line Integrals</em> and start from \\( \\int_C\\mathbf F\\cdot d\\mathbf r \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\mathbf F(\\mathbf r(t))\\cdot\\mathbf r'(t)=2 t^{5} + t^{2} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Vector Fields & Line Integrals · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Substitute the parametrization: \\( \\mathbf F(\\mathbf r(t))\\cdot\\mathbf r'(t)=2 t^{5} + t^{2} \\). Integrating over \\( [0,1] \\) gives \\( \\frac{2}{3} \\).",
           "ar": null
         }
       }

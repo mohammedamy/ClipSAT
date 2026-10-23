@@ -40,41 +40,53 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Simultaneous Equations &amp; Inequalities",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Proportional Invariance, Linear Structure &amp; Quantitative Modeling:</strong> Across Cambridge International AS Level (9709 Paper 1 / Paper 4 / Paper 5), multi-step problems reduce to identifying invariant quantities—constant rates of change \\(m = \\dfrac{\\Delta y}{\\Delta x}\\), conservation of total work/mass, or linear system rank conditions. A two-variable linear system \\(a_1 x + b_1 y = c_1\\), \\(a_2 x + b_2 y = c_2\\) has a unique intersection if \\(\\dfrac{a_1}{a_2} \\ne \\dfrac{b_1}{b_2}\\), no solution (parallel lines) if \\(\\dfrac{a_1}{a_2} = \\dfrac{b_1}{b_2} \\ne \\dfrac{c_1}{c_2}\\), and infinitely many solutions if all three ratios coincide.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Simultaneous Equations &amp; Inequalities — Harmonic Wave & Phase Profile (2)",
+          "title": "Simultaneous Equations &amp; Inequalities — Linear System Intersection & Equilibrium",
           "xrange": [
-            0,
-            6.28
+            -2,
+            6
           ],
           "yrange": [
-            -3.5,
-            3.5
+            -2,
+            10
           ],
           "fns": [
             {
-              "fn": "3*Math.sin(x)",
+              "fn": "2*x + 1",
               "color": "var(--fig-indigo)",
-              "label": "y = 3 sin(x)"
+              "label": "y = 2x + 1"
             },
             {
-              "fn": "2*Math.cos(x)",
+              "fn": "-x + 7",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "y = 2 cos(x)"
+              "label": "y = −x + 7"
             }
           ],
           "points": [
             {
-              "x": 1.57,
-              "y": 3,
-              "label": "Peak (π/2, 3)"
+              "x": 2,
+              "y": 5,
+              "label": "Intersection (2, 5)"
             }
           ]
         },
         "caption": {
-          "en": "Periodic sine and cosine waveforms showing amplitude and quarter-period phase shift.",
+          "en": "Coordinate intersection of linear system y = 2x + 1 and y = −x + 7 at unique equilibrium point (2, 5).",
           "ar": null
         }
       },
@@ -267,6 +279,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Simultaneous Equations &amp; Inequalities)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example 2.A",
@@ -293,11 +317,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example C — Simultaneous Equations &amp; Inequalities (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> The absolute value equation \\( |u - 19| = 10 \\) has two real roots \\( u_1 \\) and \\( u_2 \\). Find the sum of roots \\( h = u_1 + u_2 \\).</p><p><strong>Step-by-Step Solution:</strong> The two solutions are \\( u_1 = 29 \\) and \\( u_2 = 9 \\), whose sum is \\( 38 \\).</p>",
           "ar": null
         }
       },
@@ -305,11 +329,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example D — Simultaneous Equations &amp; Inequalities (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> The real number \\( u \\) satisfies \\( \\frac{15u + 22}{2} = 45 + \\frac{22}{2} \\). Find the linear expression \\( h = 15u - 22 \\).</p><p><strong>Step-by-Step Solution:</strong> Multiplying by 2 gives \\( 15u = 90 \\), so \\( 15u - 22 = 90 - 22 = 68 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Simultaneous Equations &amp; Inequalities)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Claiming \\(+25\\%\\) followed by \\(-25\\%\\) returns to \\(100\\%\\)",
+              "ar": null
+            },
+            {
+              "en": "The \\(25\\%\\) reduction applies to the larger base \\(1.25 Q_0\\), not \\(Q_0\\).",
+              "ar": null
+            },
+            {
+              "en": "Multiply scale factors: \\(1.25 \\times 0.75 = 0.9375\\) (a \\(6.25\\%\\) net decrease).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Solving \\(-3x > 12\\) as \\(x > -4\\)",
+              "ar": null
+            },
+            {
+              "en": "Dividing by a negative number reverses order on the real number line.",
+              "ar": null
+            },
+            {
+              "en": "Flip the inequality symbol whenever multiplying or dividing by a negative: \\(x < -4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing round-trip average speed as \\(\\frac{v_1 + v_2}{2}\\)",
+              "ar": null
+            },
+            {
+              "en": "Time spent at the slower speed is longer than time spent at the faster speed.",
+              "ar": null
+            },
+            {
+              "en": "Use total distance over total time: \\(v_{\\text{avg}} = \\frac{2v_1 v_2}{v_1 + v_2}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Simultaneous Equations &amp; Inequalities",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>High-Speed Exam Shortcut (Cambridge International AS Level (9709 Paper 1 / Paper 4 / Paper 5)):</strong> When a linear system asks for a combined expression like \\(3x + 3y\\) rather than \\(x\\) and \\(y\\) individually, add or subtract the two equations directly before isolating either variable—this often yields the target expression in a single step.</p>",
           "ar": null
         }
       },
@@ -322,7 +423,21 @@
         "solution": {
           "en": "From the linear equation, express \\(y\\) in terms of \\(x\\): \\(y = 7 - 2x\\). Substitute into the second equation: \\[x^2 + x(7 - 2x) = 12 \\Rightarrow x^2 + 7x - 2x^2 = 12 \\Rightarrow -x^2 + 7x - 12 = 0\\] Multiply by \\(-1\\): \\(x^2 - 7x + 12 = 0\\). Factor: \\((x - 3)(x - 4) = 0\\), giving \\(x = 3\\) or \\(x = 4\\). For \\(x = 3\\): \\(y = 7 - 2(3) = 1\\). For \\(x = 4\\): \\(y = 7 - 2(4) = -1\\). The solutions are \\((3, 1)\\) and \\((4, -1)\\).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Simultaneous Equations &amp; Inequalities</em> and start from \\(2x + y = 7\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(y\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -333,7 +448,21 @@
         "solution": {
           "en": "Find the critical values where \\(2x^2 - 7x + 3 = 0\\). Factor the quadratic: \\((2x - 1)(x - 3) = 0\\), so the roots are \\(x = \\tfrac{1}{2}\\) and \\(x = 3\\). Since the coefficient of \\(x^2\\) is positive (\\(a = 2 > 0\\)), the parabola opens upward. The quadratic is less than or equal to zero between and including the roots. Therefore, the solution set is \\(\\tfrac{1}{2} \\le x \\le 3\\).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Simultaneous Equations &amp; Inequalities</em> and start from \\(x\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(2x^2 - 7x + 3 = 0\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -344,16 +473,69 @@
         "solution": {
           "en": "Both sides are non-negative, so we can square both sides: \\[|3x - 5|^2 < 4|x + 1|^2 \\Rightarrow 9x^2 - 30x + 25 < 4(x^2 + 2x + 1)\\] Expand and simplify: \\[9x^2 - 30x + 25 < 4x^2 + 8x + 4 \\Rightarrow 5x^2 - 38x + 21 < 0\\] Factor: \\((5x - 3)(x - 7) < 0\\). The critical values are \\(x = \\tfrac{3}{5}\\) and \\(x = 7\\). Since the parabola opens upward, the expression is strictly negative between the roots: \\(\\tfrac{3}{5} < x < 7\\).",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Simultaneous Equations &amp; Inequalities</em> and start from \\(|3x - 5| < 2|x + 1|\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(|3x - 5|^2 < 4|x + 1|^2 \\Rightarrow 9x^2 - 30x + 25 < 4(x^2 + 2x + 1)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 4 · Hard]</strong> A linear function \\( h(u) \\) satisfies \\( h(0) = 11 \\) and \\( h(8) = 27 \\). Find the input \\( u \\) for which \\( h(u) = 41 \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Simultaneous Equations &amp; Inequalities</em> and start from \\( h(u) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( m = 2 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "The slope is \\( m = 2 \\), so \\( h(u) = 2u + 11 \\). Setting \\( 2u + 11 = 41 \\) gives \\( u = 15 \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Simultaneous Equations &amp; Inequalities · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 5 · Easy]</strong> Solve the inequality \\( x^2+x-20>0 \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Simultaneous Equations &amp; Inequalities</em> and start from \\( x^2+x-20>0 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( (x-4)(x+5) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "The quadratic factorises as \\( (x-4)(x+5) \\) with roots \\(-5\\) and \\(4\\); since the parabola opens upward, the expression is > 0 outside the roots, giving \\( x<-5 \\text{ or } x>4 \\). <strong>Answer:</strong> \\(x<-5 \\text{ or } x>4\\).",
           "ar": null
         }
       }

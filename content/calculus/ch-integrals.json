@@ -25,44 +25,20 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Integrals — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
-          ]
+          "type": "slope_field",
+          "title": "Integrals — Slope Field & Particular Solution Trajectory",
+          "fn": "x - y",
+          "xmin": -3,
+          "xmax": 3,
+          "ymin": -3,
+          "ymax": 3,
+          "solution": {
+            "x0": 0,
+            "y0": 1
+          }
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Slope field for dy/dx = x − y with the integral curve passing through initial condition (0, 1).",
           "ar": null
         }
       },
@@ -291,6 +267,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Integrals)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example · Computing an Integral Directly via Riemann Sum Limit",
@@ -305,11 +293,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example B — Integrals (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> \\( \\int_1^e \\frac{1}{x}\\,dx = \\)</p><p><strong>Step-by-Step Solution:</strong> Applying Integrals principles, \\([\\ln x]_1^e=\\ln e-\\ln 1=1-0=1\\). Therefore, the verified correct option is 1.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Integrals)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Writing \\(\\ln|y| = x^2 + C \\implies y = e^{x^2} + C\\)",
+              "ar": null
+            },
+            {
+              "en": "Exponentiation distributes over addition as multiplication (\\(e^{a+b} = e^a e^b\\)), not addition.",
+              "ar": null
+            },
+            {
+              "en": "Write \\(y = e^{x^2 + C} = Ae^{x^2}\\) and solve for \\(A\\) using the initial condition.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Leaving original \\(x\\)-limits on a \\(u\\)-substituted definite integral",
+              "ar": null
+            },
+            {
+              "en": "Evaluates the antiderivative \\(F(u)\\) at \\(x\\)-values instead of \\(u(x)\\)-values.",
+              "ar": null
+            },
+            {
+              "en": "Convert bounds immediately: \\(u_{\\text{low}} = u(a)\\) and \\(u_{\\text{high}} = u(b)\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing total distance as \\(\\left|\\int_{t_1}^{t_2} v(t)\\,dt\\right|\\)",
+              "ar": null
+            },
+            {
+              "en": "Cancels forward and backward motion (net displacement) instead of accumulating total path length.",
+              "ar": null
+            },
+            {
+              "en": "Split the integral at every root where \\(v(t) = 0\\) and integrate \\(|v(t)|\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Integrals",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Quick Verification Trick (University Single-Variable & Multivariable Calculus):</strong> For any indefinite integral \\(\\int f(x)\\,dx = F(x) + C\\), differentiate your answer \\(F'(x)\\) mentally—especially the coefficient \\(1/k\\) from chain-rule reversal \\(\\int e^{kx}\\,dx = \\tfrac{1}{k}e^{kx} + C\\)—before moving on.</p>",
           "ar": null
         }
       },
@@ -322,7 +387,21 @@
         "solution": {
           "en": "<p>Factor \\( \\frac{1}{n} = \\Delta x \\): \\[ \\sum_{i=1}^n \\frac{i^3}{n^4} = \\sum_{i=1}^n \\left(\\frac{i}{n}\\right)^3 \\cdot \\frac{1}{n}. \\] Here \\( x_i = \\frac{i}{n} = 0 + i\\Delta x \\) with \\( \\Delta x = \\frac{1}{n} \\), matching the right Riemann sum of \\( f(x) = x^3 \\) on \\( [0, 1] \\): \\[ \\lim_{n\\to\\infty} \\sum_{i=1}^n \\left(\\frac{i}{n}\\right)^3 \\frac{1}{n} = \\int_0^1 x^3\\,dx = \\left[ \\frac{x^4}{4} \\right]_0^1 = \\frac{1^4}{4} - 0 = \\mathbf{\\frac{1}{4}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Integrals</em> and start from \\( [0, 1] \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\frac{1}{n} = \\Delta x \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -365,7 +444,21 @@
         "solution": {
           "en": "<p>Compute second derivative: \\( f(x) = x^{-1} \\implies f'(x) = -x^{-2} \\implies f''(x) = 2x^{-3} = \\frac{2}{x^3} \\).<br>On \\( [1, 3] \\), \\( |f''(x)| = \\frac{2}{x^3} \\) is decreasing, so its maximum occurs at \\( x = 1 \\): \\( K = \\frac{2}{1^3} = 2 \\).<br>Using the Trapezoidal error bound with \\( a = 1, b = 3 \\): \\[ |E_T| \\le \\frac{K(b-a)^3}{12n^2} = \\frac{2(3-1)^3}{12n^2} = \\frac{2(8)}{12n^2} = \\frac{16}{12n^2} = \\frac{4}{3n^2}. \\] Require: \\[ \\frac{4}{3n^2} < 10^{-4} \\implies n^2 > \\frac{4 \\times 10^4}{3} = \\frac{40000}{3} \\approx 13333.33 \\implies n > \\sqrt{13333.33} \\approx 115.47. \\] Since \\( n \\) must be an integer, we require at least \\( \\mathbf{n = 116} \\) subintervals.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Integrals</em> and start from \\( n \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -444,7 +537,21 @@
         "solution": {
           "en": "<p>Split the integral using linearity: \\[ \\int_{-3}^3 x^5 \\sqrt{9 - x^2}\\,dx + \\int_{-3}^3 \\sqrt{9 - x^2}\\,dx. \\] <strong>Part 1 · Symmetry Analysis:</strong> Let \\( g(x) = x^5 \\sqrt{9 - x^2} \\). Then \\( g(-x) = (-x)^5 \\sqrt{9 - (-x)^2} = -x^5 \\sqrt{9 - x^2} = -g(x) \\). Because \\( g \\) is an odd function integrated over symmetric limits \\([-3, 3]\\): \\[ \\int_{-3}^3 x^5 \\sqrt{9 - x^2}\\,dx = 0. \\] <strong>Part 2 · Geometric Area:</strong> The integrand \\( y = \\sqrt{9 - x^2} \\ge 0 \\) represents the upper half of the circle \\( x^2 + y^2 = 9 \\) with radius \\( r = 3 \\). The integral from \\( -3 \\) to \\( 3 \\) is the area of a semicircle: \\[ \\int_{-3}^3 \\sqrt{9 - x^2}\\,dx = \\frac{1}{2}\\pi r^2 = \\frac{1}{2}\\pi (3^2) = \\frac{9\\pi}{2}. \\] Summing both parts: \\[ 0 + \\frac{9\\pi}{2} = \\mathbf{\\frac{9\\pi}{2}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Integrals</em> and start from \\( \\int_{-3}^3 \\left( x^5 \\sqrt{9 - x^2} + \\sqrt{9 - x^2} \\right) dx. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\int_{-3}^3 x^5 \\sqrt{9 - x^2}\\,dx + \\int_{-3}^3 \\sqrt{9 - x^2}\\,dx. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "callout",
@@ -461,11 +568,25 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Integrals · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> In the plane, region \\( M \\) is bounded by \\( R(m) = 3m^2 + 25 \\), the horizontal axis, \\( m = 0 \\), and \\( m = 12 \\). Determine the exact area of region \\( M \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Integrals</em> and start from \\( M \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\int_0^{12} (3m^2 + 25)\\,dm = 12^3 + 25(12) = 2028 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Integrating \\( \\int_0^{12} (3m^2 + 25)\\,dm = 12^3 + 25(12) = 2028 \\).",
           "ar": null
         }
       }

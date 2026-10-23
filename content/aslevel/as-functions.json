@@ -40,46 +40,53 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Graphs &amp; Transformations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Domain Restrictions, Invertibility &amp; Asymptotic Behavior:</strong> An algebraic or transcendental function \\(f: D \\to R\\) possesses an inverse \\(f^{-1}: R \\to D\\) if and only if \\(f\\) is strictly one-to-one (bijective) on \\(D\\), guaranteeing that \\(\\text{dom}(f^{-1}) = \\text{ran}(f)\\) and \\(\\text{ran}(f^{-1}) = \\text{dom}(f)\\). For logarithmic and radical equations, every algebraic step that squares both sides or combines logs (\\(\\log_b u + \\log_b v = \\log_b(uv)\\)) can enlarge the solution set, requiring a final domain check against the original equation.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Graphs &amp; Transformations — Coordinate Curve & Tangent Analysis (2)",
+          "title": "Graphs &amp; Transformations — Function Curve & Symmetry Analysis",
           "xrange": [
             -4,
-            4
+            6
           ],
           "yrange": [
-            -3,
-            9
+            -4,
+            6
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "(x - 1)*(x - 1) - 3",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "label": "f(x) = (x-1)² - 3"
             },
             {
-              "fn": "2*x - 3",
+              "fn": "x",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "label": "y = x"
             }
           ],
           "points": [
             {
               "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "y": -3,
+              "label": "Vertex (1, -3)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Parabola f(x) = (x − 1)² − 3 with vertex at (1, −3) and symmetry reference line y = x.",
           "ar": null
         }
       },
@@ -270,6 +277,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Graphs &amp; Transformations)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Completing the Square &amp; Log-Linearization Work:</strong> Any quadratic \\(f(x) = ax^2 + bx + c\\) (\\(a \\ne 0\\)) can be rewritten by factoring \\(a\\) from the first two terms and adding/subtracting \\((b/2a)^2\\):</p>\\[ ax^2 + bx + c = a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\]<p>Because \\(\\left(x + \\frac{b}{2a}\\right)^2 \\ge 0\\) for all \\(x \\in \\mathbb{R}\\), the extreme value \\(k = c - \\frac{b^2}{4a}\\) is attained uniquely at the axis of symmetry \\(x = -\\frac{b}{2a}\\), restricting the range to \\([k, \\infty)\\) (if \\(a > 0\\)) and making \\(f\\) invertible on \\(x \\ge -\\frac{b}{2a}\\). Similarly, applying \\(\\ln\\) to power laws \\(y = ax^n\\) yields \\(\\ln y = n\\ln x + \\ln a\\), transforming a nonlinear curve into a straight line of gradient \\(n\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example 3.A",
@@ -296,11 +315,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example C — Graphs &amp; Transformations (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> A connected weighted graph \\( E \\) on vertices \\( C, D, E, D \\) has a minimum spanning tree with edge weights \\( 7, 11, \\) and \\( 5 \\). Find the total spanning tree weight \\( W(E_{p}) \\).</p><p><strong>Step-by-Step Solution:</strong> Summing the tree edges gives \\( 7 + 11 + 5 = 23 \\).</p>",
           "ar": null
         }
       },
@@ -308,11 +327,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example D — Graphs &amp; Transformations (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> In the plane, vertex \\( C(1, 1) \\) is translated by vector \\( \\mathbf{p} = \\begin{pmatrix} 12 \\\\ 25 \\end{pmatrix} \\) to \\( C'(13, 26) \\). Find the coordinate sum \\( E(C') \\).</p><p><strong>Step-by-Step Solution:</strong> The image point is \\( (13, 26) \\), with coordinate sum \\( 13 + 26 = 39 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Graphs &amp; Transformations)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Expanding \\(\\ln(x + y)\\) as \\(\\ln x + \\ln y\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses the product law \\(\\ln(xy) = \\ln x + \\ln y\\) with a non-existent sum rule.",
+              "ar": null
+            },
+            {
+              "en": "Only factor products, quotients, and powers inside logarithms: \\(\\ln(xy) = \\ln x + \\ln y\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Keeping both roots of \\(\\sqrt{2x+7} = x - 1\\) without checking \\(x - 1 \\ge 0\\)",
+              "ar": null
+            },
+            {
+              "en": "Squaring both sides loses the sign of \\(x - {r}\\), introducing roots where \\(\\sqrt{\\cdot} = -\\text{number}\\).",
+              "ar": null
+            },
+            {
+              "en": "Enforce the range condition \\(x \\ge 1\\) before or after squaring.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Restricting domain of \\(f(x) = (x-3)^2 + 1\\) to \\(x \\ge 0\\) for invertibility",
+              "ar": null
+            },
+            {
+              "en": "The vertex is at \\(x = 3\\), so \\(f(2) = f(4) = 2\\) fails the horizontal line test on \\(x \\ge 0\\).",
+              "ar": null
+            },
+            {
+              "en": "Restrict the domain at the vertex axis of symmetry: \\(x \\ge 3\\) (or \\(x \\le 3\\)).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Graphs &amp; Transformations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Exam Check (Cambridge International AS Level (9709 Paper 1 / Paper 4 / Paper 5)):</strong> To verify an inverse function \\(f^{-1}(x)\\) in 5 seconds, pick a simple input \\(x_0\\), compute \\(y_0 = f(x_0)\\), and check that \\(f^{-1}(y_0) = x_0\\). Also verify that the graph of \\(y = f^{-1}(x)\\) reflects \\(y = f(x)\\) across \\(y = x\\).</p>",
           "ar": null
         }
       },
@@ -325,7 +421,21 @@
         "solution": {
           "en": "(a) \\(y = f(x+3)+2\\) translates 3 units left and 2 units up: \\((4-3, -6+2) = (1, -4)\\).<br>(b) \\(y = 3f(2x)\\) stretches horizontally by \\(\\tfrac{1}{2}\\) and vertically by 3: \\(\\left(4 \\times \\tfrac{1}{2}, -6 \\times 3\\right) = (2, -18)\\).<br>(c) \\(y = -f(-x)\\) reflects in both axes (point reflection through the origin): \\((-4, -(-6)) = (-4, 6)\\).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Graphs &amp; Transformations</em> and start from \\(y = f(x)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(y = f(x+3)+2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -336,27 +446,69 @@
         "solution": {
           "en": "Complete the square: \\(y = (x-3)^2 - 9 + 5 = (x-3)^2 - 4\\). The vertex of the parabola is \\((3, -4)\\). To map \\(y = (x-3)^2 - 4\\) back to \\(y = x^2\\), we must translate the graph 3 units to the left and 4 units upwards. In vector notation, this is a single translation by \\(\\begin{pmatrix}-3\\\\4\\end{pmatrix}\\), or two sequential transformations: (1) Translation by vector \\(\\begin{pmatrix}-3\\\\0\\end{pmatrix}\\) (3 units left), and (2) Translation by vector \\(\\begin{pmatrix}0\\\\4\\end{pmatrix}\\) (4 units up).",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Graphs &amp; Transformations</em> and start from \\(y = x^2 - 6x + 5\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(y = (x-3)^2 - 9 + 5 = (x-3)^2 - 4\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Easy]</strong> In a Voronoi diagram, site \\( Q(20, 22) \\) and site \\( R(38, 22) \\) are separated by the vertical perpendicular bisector \\( k = W \\). Find the coordinate constant \\( W \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Graphs &amp; Transformations</em> and start from \\( Q(20, 22) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\frac{20 + 38}{2} = 29 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "The midpoint has horizontal coordinate \\( \\frac{20 + 38}{2} = 29 \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Graphs &amp; Transformations · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> Point \\( R \\) lies on a three-figure compass bearing of \\( 067^\\circ \\) from point \\( Q \\). Find the back-bearing \\( \\theta_{QR} \\) of \\( Q \\) from \\( R \\) (in degrees).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Graphs &amp; Transformations</em> and start from \\( R \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 67^\\circ < 180^\\circ \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Graphs &amp; Transformations · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Since \\( 67^\\circ < 180^\\circ \\), the back-bearing is \\( 67 + 180 = 247^\\circ \\).",
           "ar": null
         }
       }

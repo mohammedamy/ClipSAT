@@ -1,9 +1,10 @@
 /* Interactive Practice data for /mathai/ - one entry per chapter section id.
    Shipped as public/js/ix/mathai.js and loaded only on that track's page by the
    engine in src/scripts/modules/19-interactive-activities-engine-v1.js
-   (Plan 5 Phase 5.015, ADR 0033). */
+   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn/num/ord/cat/gp/se/ms) are
+   documented there. */
 (window.__ixData = window.__ixData || []).push(function (D) {
-D['ai-vectors-embeddings'] = [
+D["ai-vectors-embeddings"] = [
   {
     "t": "qc",
     "ti": "Quick Check: Cosine Similarity Properties",
@@ -66,10 +67,132 @@ D['ai-vectors-embeddings'] = [
         "r": "متجه تمت قسمته على معياره ليصبح طوله 1 تماماً"
       }
     ]
+  },
+  {
+    "t": "se",
+    "ti": "Spot the Error: Algebraic & Domain Verification (Vectors, Norms & High-Dimensional Embeddings)",
+    "q": "A student solves the equation \\(\\sqrt{2x + 9} = x - 3\\) step by step. Which step introduces an invalid conclusion?",
+    "steps": [
+      "Square both sides to eliminate the radical: \\(2x + 9 = (x - 3)^2\\).",
+      "Expand the right-hand side: \\(2x + 9 = x^2 - 6x + 9\\).",
+      "Rearrange and factor: \\(x^2 - 8x = 0 \\implies x(x - 8) = 0\\).",
+      "Conclude that both \\(x = 0\\) and \\(x = 8\\) are valid real solutions."
+    ],
+    "errorStep": 4,
+    "reasons": [
+      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{9} = -3\\) (\\(3 = -3\\)), which is false because the principal square root is non-negative (\\(x - 3 \\ge 0\\) requires \\(x \\ge 3\\)).",
+      "Expanding \\((x - 3)^2\\) should give \\(x^2 - 9\\) with no middle term.",
+      "Factoring \\(x^2 - 8x = 0\\) only yields \\(x = 8\\)."
+    ],
+    "correctReason": 0,
+    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 9} = x - 3\\).",
+    "sol": "Squaring both sides is a non-reversible step unless \\(x - 3 \\ge 0 \\iff x \\ge 3\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 8\\) is the unique solution.",
+    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (المتجهات والمسافات المعيارية والتمثيل الشعاعي (Embeddings))",
+    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 9} = x - 3\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "steps_ar": [
+      "تربيع الطرفين للتخلص من الجذر: \\(2x + 9 = (x - 3)^2\\).",
+      "فك المربع الكامل: \\(2x + 9 = x^2 - 6x + 9\\).",
+      "الترتيب والتحليل: \\(x^2 - 8x = 0 \\implies x(x - 8) = 0\\).",
+      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 8\\) حلان صحيحان للمعادلة الأصلية."
+    ],
+    "reasons_ar": [
+      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(3 = -3\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 3\\)).",
+      "فك التربيع غير صحيح.",
+      "التحليل بإخراج العامل المشترك غير صحيح."
+    ],
+    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
+    "sol_ar": "الشرط اللازم هو \\(x - 3 \\ge 0 \\implies x \\ge 3\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 8\\) فقط."
+  },
+  {
+    "t": "ms",
+    "ti": "Examiner Mode: Multi-Step Structured Problem (Vectors, Norms & High-Dimensional Embeddings)",
+    "q": "Let \\(f(x) = x^2 - 6x + 10\\) for \\(x \\ge 3\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "parts": [
+      {
+        "label": "Part (a) — Vertex Form & Range",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Complete the square: \\(f(x) = (x - 3)^2 - 9 + 10 = (x - 3)^2 + 1\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State exact range: \\(f(x) \\ge 1\\) (or \\([1, \\infty)\\))."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Function & Domain",
+        "marks": 3,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Set \\(y = (x - 3)^2 + 1 \\implies (x - 3)^2 = y - 1\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Select positive branch (since \\(x \\ge 3\\)): \\(f^{-1}(x) = 3 + \\sqrt{x - 1}\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 1\\) (matching the range of \\(f\\))."
+          }
+        ]
+      }
+    ],
+    "examinerTip": "Writing \\(\\pm\\sqrt{x - 1}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 3\\) to choose the \\(+\\) sign.",
+    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (المتجهات والمسافات المعيارية والتمثيل الشعاعي (Embeddings))",
+    "q_ar": "لتكن \\(f(x) = x^2 - 6x + 10\\) حيث \\(x \\ge 3\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
+    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(3 + \\sqrt{x - 1}\\) لأن \\(x \\ge 3\\)."
+  },
+  {
+    "t": "sb",
+    "ti": "Step Builder: Completing the Square & Vertex Analysis (Vectors, Norms & High-Dimensional Embeddings)",
+    "steps": [
+      {
+        "l": "In \\(y = x^2 - 6x + 10\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
+        "a": "3",
+        "h": "Take half of 6."
+      },
+      {
+        "l": "Compute the minimum value \\(k = 10 - 3^2 =\\)",
+        "a": "1",
+        "h": "Subtract 9 from 10."
+      },
+      {
+        "l": "Evaluate \\(y\\) when \\(x = 5\\): \\(y =\\)",
+        "a": "5",
+        "h": "Compute (2)^2 + 1."
+      }
+    ],
+    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (المتجهات والمسافات المعيارية والتمثيل الشعاعي (Embeddings))",
+    "steps_ar": [
+      {
+        "l": "في الدالة \\(y = x^2 - 6x + 10\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
+        "a": "3",
+        "h": "اقسم معامل x وهو 6 على 2."
+      },
+      {
+        "l": "احسب القيمة الصغرى \\(k = 10 - 3^2 =\\)",
+        "a": "1",
+        "h": "اطرح 9 من 10."
+      },
+      {
+        "l": "احسب قيمة \\(y\\) عندما \\(x = 5\\):",
+        "a": "5",
+        "h": "احسب 4 + 1."
+      }
+    ]
   }
 ];
 
-D['ai-matrices-linear-layers'] = [
+D["ai-matrices-linear-layers"] = [
   {
     "t": "qc",
     "ti": "Quick Check: Neural Layer Weight Matrix Dimensions",
@@ -132,10 +255,132 @@ D['ai-matrices-linear-layers'] = [
         "r": "f(z) = z؛ تُستخدم في طبقة المخرجات لمهام الانحدار"
       }
     ]
+  },
+  {
+    "t": "se",
+    "ti": "Spot the Error: Algebraic & Domain Verification (Matrices, Linear Layers & Activation Functions)",
+    "q": "A student solves the equation \\(\\sqrt{2x + 16} = x - 4\\) step by step. Which step introduces an invalid conclusion?",
+    "steps": [
+      "Square both sides to eliminate the radical: \\(2x + 16 = (x - 4)^2\\).",
+      "Expand the right-hand side: \\(2x + 16 = x^2 - 8x + 16\\).",
+      "Rearrange and factor: \\(x^2 - 10x = 0 \\implies x(x - 10) = 0\\).",
+      "Conclude that both \\(x = 0\\) and \\(x = 10\\) are valid real solutions."
+    ],
+    "errorStep": 4,
+    "reasons": [
+      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{16} = -4\\) (\\(4 = -4\\)), which is false because the principal square root is non-negative (\\(x - 4 \\ge 0\\) requires \\(x \\ge 4\\)).",
+      "Expanding \\((x - 4)^2\\) should give \\(x^2 - 16\\) with no middle term.",
+      "Factoring \\(x^2 - 10x = 0\\) only yields \\(x = 10\\)."
+    ],
+    "correctReason": 0,
+    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 16} = x - 4\\).",
+    "sol": "Squaring both sides is a non-reversible step unless \\(x - 4 \\ge 0 \\iff x \\ge 4\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 10\\) is the unique solution.",
+    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (المصفوفات والطبقات الخطية في الشبكات العصبية ودوال التنشيط)",
+    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 16} = x - 4\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "steps_ar": [
+      "تربيع الطرفين للتخلص من الجذر: \\(2x + 16 = (x - 4)^2\\).",
+      "فك المربع الكامل: \\(2x + 16 = x^2 - 8x + 16\\).",
+      "الترتيب والتحليل: \\(x^2 - 10x = 0 \\implies x(x - 10) = 0\\).",
+      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 10\\) حلان صحيحان للمعادلة الأصلية."
+    ],
+    "reasons_ar": [
+      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(4 = -4\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 4\\)).",
+      "فك التربيع غير صحيح.",
+      "التحليل بإخراج العامل المشترك غير صحيح."
+    ],
+    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
+    "sol_ar": "الشرط اللازم هو \\(x - 4 \\ge 0 \\implies x \\ge 4\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 10\\) فقط."
+  },
+  {
+    "t": "ms",
+    "ti": "Examiner Mode: Multi-Step Structured Problem (Matrices, Linear Layers & Activation Functions)",
+    "q": "Let \\(f(x) = x^2 - 8x + 20\\) for \\(x \\ge 4\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "parts": [
+      {
+        "label": "Part (a) — Vertex Form & Range",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Complete the square: \\(f(x) = (x - 4)^2 - 16 + 20 = (x - 4)^2 + 4\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State exact range: \\(f(x) \\ge 4\\) (or \\([4, \\infty)\\))."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Function & Domain",
+        "marks": 3,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Set \\(y = (x - 4)^2 + 4 \\implies (x - 4)^2 = y - 4\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Select positive branch (since \\(x \\ge 4\\)): \\(f^{-1}(x) = 4 + \\sqrt{x - 4}\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 4\\) (matching the range of \\(f\\))."
+          }
+        ]
+      }
+    ],
+    "examinerTip": "Writing \\(\\pm\\sqrt{x - 4}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 4\\) to choose the \\(+\\) sign.",
+    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (المصفوفات والطبقات الخطية في الشبكات العصبية ودوال التنشيط)",
+    "q_ar": "لتكن \\(f(x) = x^2 - 8x + 20\\) حيث \\(x \\ge 4\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
+    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(4 + \\sqrt{x - 4}\\) لأن \\(x \\ge 4\\)."
+  },
+  {
+    "t": "sb",
+    "ti": "Step Builder: Completing the Square & Vertex Analysis (Matrices, Linear Layers & Activation Functions)",
+    "steps": [
+      {
+        "l": "In \\(y = x^2 - 8x + 20\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
+        "a": "4",
+        "h": "Take half of 8."
+      },
+      {
+        "l": "Compute the minimum value \\(k = 20 - 4^2 =\\)",
+        "a": "4",
+        "h": "Subtract 16 from 20."
+      },
+      {
+        "l": "Evaluate \\(y\\) when \\(x = 6\\): \\(y =\\)",
+        "a": "8",
+        "h": "Compute (2)^2 + 4."
+      }
+    ],
+    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (المصفوفات والطبقات الخطية في الشبكات العصبية ودوال التنشيط)",
+    "steps_ar": [
+      {
+        "l": "في الدالة \\(y = x^2 - 8x + 20\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
+        "a": "4",
+        "h": "اقسم معامل x وهو 8 على 2."
+      },
+      {
+        "l": "احسب القيمة الصغرى \\(k = 20 - 4^2 =\\)",
+        "a": "4",
+        "h": "اطرح 16 من 20."
+      },
+      {
+        "l": "احسب قيمة \\(y\\) عندما \\(x = 6\\):",
+        "a": "8",
+        "h": "احسب 4 + 4."
+      }
+    ]
   }
 ];
 
-D['ai-gradient-descent'] = [
+D["ai-gradient-descent"] = [
   {
     "t": "qc",
     "ti": "Quick Check: Direction of the Gradient Vector",
@@ -190,10 +435,173 @@ D['ai-gradient-descent'] = [
         "a": false
       }
     ]
+  },
+  {
+    "t": "se",
+    "ti": "Spot the Error: Algebraic & Domain Verification (Loss Functions, Gradients & Optimization)",
+    "q": "A student solves the equation \\(\\sqrt{2x + 9} = x - 3\\) step by step. Which step introduces an invalid conclusion?",
+    "steps": [
+      "Square both sides to eliminate the radical: \\(2x + 9 = (x - 3)^2\\).",
+      "Expand the right-hand side: \\(2x + 9 = x^2 - 6x + 9\\).",
+      "Rearrange and factor: \\(x^2 - 8x = 0 \\implies x(x - 8) = 0\\).",
+      "Conclude that both \\(x = 0\\) and \\(x = 8\\) are valid real solutions."
+    ],
+    "errorStep": 4,
+    "reasons": [
+      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{9} = -3\\) (\\(3 = -3\\)), which is false because the principal square root is non-negative (\\(x - 3 \\ge 0\\) requires \\(x \\ge 3\\)).",
+      "Expanding \\((x - 3)^2\\) should give \\(x^2 - 9\\) with no middle term.",
+      "Factoring \\(x^2 - 8x = 0\\) only yields \\(x = 8\\)."
+    ],
+    "correctReason": 0,
+    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 9} = x - 3\\).",
+    "sol": "Squaring both sides is a non-reversible step unless \\(x - 3 \\ge 0 \\iff x \\ge 3\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 8\\) is the unique solution.",
+    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (دوال الخسارة والانحدار التدريجي والتحسين الرياضي)",
+    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 9} = x - 3\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "steps_ar": [
+      "تربيع الطرفين للتخلص من الجذر: \\(2x + 9 = (x - 3)^2\\).",
+      "فك المربع الكامل: \\(2x + 9 = x^2 - 6x + 9\\).",
+      "الترتيب والتحليل: \\(x^2 - 8x = 0 \\implies x(x - 8) = 0\\).",
+      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 8\\) حلان صحيحان للمعادلة الأصلية."
+    ],
+    "reasons_ar": [
+      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(3 = -3\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 3\\)).",
+      "فك التربيع غير صحيح.",
+      "التحليل بإخراج العامل المشترك غير صحيح."
+    ],
+    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
+    "sol_ar": "الشرط اللازم هو \\(x - 3 \\ge 0 \\implies x \\ge 3\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 8\\) فقط."
+  },
+  {
+    "t": "ms",
+    "ti": "Examiner Mode: Multi-Step Structured Problem (Loss Functions, Gradients & Optimization)",
+    "q": "Let \\(f(x) = x^2 - 6x + 16\\) for \\(x \\ge 3\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "parts": [
+      {
+        "label": "Part (a) — Vertex Form & Range",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Complete the square: \\(f(x) = (x - 3)^2 - 9 + 16 = (x - 3)^2 + 7\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State exact range: \\(f(x) \\ge 7\\) (or \\([7, \\infty)\\))."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Function & Domain",
+        "marks": 3,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Set \\(y = (x - 3)^2 + 7 \\implies (x - 3)^2 = y - 7\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Select positive branch (since \\(x \\ge 3\\)): \\(f^{-1}(x) = 3 + \\sqrt{x - 7}\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 7\\) (matching the range of \\(f\\))."
+          }
+        ]
+      }
+    ],
+    "examinerTip": "Writing \\(\\pm\\sqrt{x - 7}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 3\\) to choose the \\(+\\) sign.",
+    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (دوال الخسارة والانحدار التدريجي والتحسين الرياضي)",
+    "q_ar": "لتكن \\(f(x) = x^2 - 6x + 16\\) حيث \\(x \\ge 3\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
+    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(3 + \\sqrt{x - 7}\\) لأن \\(x \\ge 3\\)."
+  },
+  {
+    "t": "sb",
+    "ti": "Step Builder: Completing the Square & Vertex Analysis (Loss Functions, Gradients & Optimization)",
+    "steps": [
+      {
+        "l": "In \\(y = x^2 - 6x + 16\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
+        "a": "3",
+        "h": "Take half of 6."
+      },
+      {
+        "l": "Compute the minimum value \\(k = 16 - 3^2 =\\)",
+        "a": "7",
+        "h": "Subtract 9 from 16."
+      },
+      {
+        "l": "Evaluate \\(y\\) when \\(x = 5\\): \\(y =\\)",
+        "a": "11",
+        "h": "Compute (2)^2 + 7."
+      }
+    ],
+    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (دوال الخسارة والانحدار التدريجي والتحسين الرياضي)",
+    "steps_ar": [
+      {
+        "l": "في الدالة \\(y = x^2 - 6x + 16\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
+        "a": "3",
+        "h": "اقسم معامل x وهو 6 على 2."
+      },
+      {
+        "l": "احسب القيمة الصغرى \\(k = 16 - 3^2 =\\)",
+        "a": "7",
+        "h": "اطرح 9 من 16."
+      },
+      {
+        "l": "احسب قيمة \\(y\\) عندما \\(x = 5\\):",
+        "a": "11",
+        "h": "احسب 4 + 7."
+      }
+    ]
+  },
+  {
+    "t": "mt",
+    "ti": "Matching: Core Algebraic & Analytic Principles (Loss Functions, Gradients & Optimization)",
+    "p": [
+      {
+        "l": "\\(b^2 - 4ac = 0\\)",
+        "r": "Line is tangent to the quadratic curve (1 repeated root)"
+      },
+      {
+        "l": "\\(\\text{dom}(f^{-1})\\)",
+        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+      },
+      {
+        "l": "\\(f(x - h) + k\\)",
+        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+      },
+      {
+        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
+        "r": "Vieta's root-coefficient relations"
+      }
+    ],
+    "ti_ar": "مطابقة: المبادئ الجبرية والتحليلية الأساسية (دوال الخسارة والانحدار التدريجي والتحسين الرياضي)",
+    "p_ar": [
+      {
+        "l": "\\(b^2 - 4ac = 0\\)",
+        "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
+      },
+      {
+        "l": "\\(\\text{dom}(f^{-1})\\)",
+        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+      },
+      {
+        "l": "\\(f(x - h) + k\\)",
+        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+      },
+      {
+        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
+        "r": "علاقات فييت بين الجذور والمعاملات"
+      }
+    ]
   }
 ];
 
-D['ai-probability-bayes'] = [
+D["ai-probability-bayes"] = [
   {
     "t": "qc",
     "ti": "Quick Check: Components of Bayes' Theorem",
@@ -256,10 +664,132 @@ D['ai-probability-bayes'] = [
         "r": "المجموع الكلي لاحتمال ظهور الخصائص عبر جميع الفئات"
       }
     ]
+  },
+  {
+    "t": "se",
+    "ti": "Spot the Error: Algebraic & Domain Verification (Conditional Probability, Bayes' Rule & Classifiers)",
+    "q": "A student solves the equation \\(\\sqrt{2x + 25} = x - 5\\) step by step. Which step introduces an invalid conclusion?",
+    "steps": [
+      "Square both sides to eliminate the radical: \\(2x + 25 = (x - 5)^2\\).",
+      "Expand the right-hand side: \\(2x + 25 = x^2 - 10x + 25\\).",
+      "Rearrange and factor: \\(x^2 - 12x = 0 \\implies x(x - 12) = 0\\).",
+      "Conclude that both \\(x = 0\\) and \\(x = 12\\) are valid real solutions."
+    ],
+    "errorStep": 4,
+    "reasons": [
+      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{25} = -5\\) (\\(5 = -5\\)), which is false because the principal square root is non-negative (\\(x - 5 \\ge 0\\) requires \\(x \\ge 5\\)).",
+      "Expanding \\((x - 5)^2\\) should give \\(x^2 - 25\\) with no middle term.",
+      "Factoring \\(x^2 - 12x = 0\\) only yields \\(x = 12\\)."
+    ],
+    "correctReason": 0,
+    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 25} = x - 5\\).",
+    "sol": "Squaring both sides is a non-reversible step unless \\(x - 5 \\ge 0 \\iff x \\ge 5\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 12\\) is the unique solution.",
+    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (الاحتمال الشرطي وقاعدة بايز ومصنفات الذكاء الاصطناعي)",
+    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 25} = x - 5\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "steps_ar": [
+      "تربيع الطرفين للتخلص من الجذر: \\(2x + 25 = (x - 5)^2\\).",
+      "فك المربع الكامل: \\(2x + 25 = x^2 - 10x + 25\\).",
+      "الترتيب والتحليل: \\(x^2 - 12x = 0 \\implies x(x - 12) = 0\\).",
+      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 12\\) حلان صحيحان للمعادلة الأصلية."
+    ],
+    "reasons_ar": [
+      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(5 = -5\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 5\\)).",
+      "فك التربيع غير صحيح.",
+      "التحليل بإخراج العامل المشترك غير صحيح."
+    ],
+    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
+    "sol_ar": "الشرط اللازم هو \\(x - 5 \\ge 0 \\implies x \\ge 5\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 12\\) فقط."
+  },
+  {
+    "t": "ms",
+    "ti": "Examiner Mode: Multi-Step Structured Problem (Conditional Probability, Bayes' Rule & Classifiers)",
+    "q": "Let \\(f(x) = x^2 - 10x + 28\\) for \\(x \\ge 5\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "parts": [
+      {
+        "label": "Part (a) — Vertex Form & Range",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Complete the square: \\(f(x) = (x - 5)^2 - 25 + 28 = (x - 5)^2 + 3\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State exact range: \\(f(x) \\ge 3\\) (or \\([3, \\infty)\\))."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Function & Domain",
+        "marks": 3,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Set \\(y = (x - 5)^2 + 3 \\implies (x - 5)^2 = y - 3\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Select positive branch (since \\(x \\ge 5\\)): \\(f^{-1}(x) = 5 + \\sqrt{x - 3}\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 3\\) (matching the range of \\(f\\))."
+          }
+        ]
+      }
+    ],
+    "examinerTip": "Writing \\(\\pm\\sqrt{x - 3}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 5\\) to choose the \\(+\\) sign.",
+    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (الاحتمال الشرطي وقاعدة بايز ومصنفات الذكاء الاصطناعي)",
+    "q_ar": "لتكن \\(f(x) = x^2 - 10x + 28\\) حيث \\(x \\ge 5\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
+    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(5 + \\sqrt{x - 3}\\) لأن \\(x \\ge 5\\)."
+  },
+  {
+    "t": "sb",
+    "ti": "Step Builder: Completing the Square & Vertex Analysis (Conditional Probability, Bayes' Rule & Classifiers)",
+    "steps": [
+      {
+        "l": "In \\(y = x^2 - 10x + 28\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
+        "a": "5",
+        "h": "Take half of 10."
+      },
+      {
+        "l": "Compute the minimum value \\(k = 28 - 5^2 =\\)",
+        "a": "3",
+        "h": "Subtract 25 from 28."
+      },
+      {
+        "l": "Evaluate \\(y\\) when \\(x = 7\\): \\(y =\\)",
+        "a": "7",
+        "h": "Compute (2)^2 + 3."
+      }
+    ],
+    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (الاحتمال الشرطي وقاعدة بايز ومصنفات الذكاء الاصطناعي)",
+    "steps_ar": [
+      {
+        "l": "في الدالة \\(y = x^2 - 10x + 28\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
+        "a": "5",
+        "h": "اقسم معامل x وهو 10 على 2."
+      },
+      {
+        "l": "احسب القيمة الصغرى \\(k = 28 - 5^2 =\\)",
+        "a": "3",
+        "h": "اطرح 25 من 28."
+      },
+      {
+        "l": "احسب قيمة \\(y\\) عندما \\(x = 7\\):",
+        "a": "7",
+        "h": "احسب 4 + 3."
+      }
+    ]
   }
 ];
 
-D['ai-distributions-mle'] = [
+D["ai-distributions-mle"] = [
   {
     "t": "qc",
     "ti": "Quick Check: Log-Likelihood vs Likelihood",
@@ -314,10 +844,173 @@ D['ai-distributions-mle'] = [
         "a": true
       }
     ]
+  },
+  {
+    "t": "se",
+    "ti": "Spot the Error: Algebraic & Domain Verification (Probability Distributions & Maximum Likelihood (MLE))",
+    "q": "A student solves the equation \\(\\sqrt{2x + 9} = x - 3\\) step by step. Which step introduces an invalid conclusion?",
+    "steps": [
+      "Square both sides to eliminate the radical: \\(2x + 9 = (x - 3)^2\\).",
+      "Expand the right-hand side: \\(2x + 9 = x^2 - 6x + 9\\).",
+      "Rearrange and factor: \\(x^2 - 8x = 0 \\implies x(x - 8) = 0\\).",
+      "Conclude that both \\(x = 0\\) and \\(x = 8\\) are valid real solutions."
+    ],
+    "errorStep": 4,
+    "reasons": [
+      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{9} = -3\\) (\\(3 = -3\\)), which is false because the principal square root is non-negative (\\(x - 3 \\ge 0\\) requires \\(x \\ge 3\\)).",
+      "Expanding \\((x - 3)^2\\) should give \\(x^2 - 9\\) with no middle term.",
+      "Factoring \\(x^2 - 8x = 0\\) only yields \\(x = 8\\)."
+    ],
+    "correctReason": 0,
+    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 9} = x - 3\\).",
+    "sol": "Squaring both sides is a non-reversible step unless \\(x - 3 \\ge 0 \\iff x \\ge 3\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 8\\) is the unique solution.",
+    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (التوزيعات الاحتمالية وتقدير الاحتمال الأقصى (MLE))",
+    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 9} = x - 3\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "steps_ar": [
+      "تربيع الطرفين للتخلص من الجذر: \\(2x + 9 = (x - 3)^2\\).",
+      "فك المربع الكامل: \\(2x + 9 = x^2 - 6x + 9\\).",
+      "الترتيب والتحليل: \\(x^2 - 8x = 0 \\implies x(x - 8) = 0\\).",
+      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 8\\) حلان صحيحان للمعادلة الأصلية."
+    ],
+    "reasons_ar": [
+      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(3 = -3\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 3\\)).",
+      "فك التربيع غير صحيح.",
+      "التحليل بإخراج العامل المشترك غير صحيح."
+    ],
+    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
+    "sol_ar": "الشرط اللازم هو \\(x - 3 \\ge 0 \\implies x \\ge 3\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 8\\) فقط."
+  },
+  {
+    "t": "ms",
+    "ti": "Examiner Mode: Multi-Step Structured Problem (Probability Distributions & Maximum Likelihood (MLE))",
+    "q": "Let \\(f(x) = x^2 - 6x + 14\\) for \\(x \\ge 3\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "parts": [
+      {
+        "label": "Part (a) — Vertex Form & Range",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Complete the square: \\(f(x) = (x - 3)^2 - 9 + 14 = (x - 3)^2 + 5\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State exact range: \\(f(x) \\ge 5\\) (or \\([5, \\infty)\\))."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Function & Domain",
+        "marks": 3,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Set \\(y = (x - 3)^2 + 5 \\implies (x - 3)^2 = y - 5\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Select positive branch (since \\(x \\ge 3\\)): \\(f^{-1}(x) = 3 + \\sqrt{x - 5}\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 5\\) (matching the range of \\(f\\))."
+          }
+        ]
+      }
+    ],
+    "examinerTip": "Writing \\(\\pm\\sqrt{x - 5}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 3\\) to choose the \\(+\\) sign.",
+    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (التوزيعات الاحتمالية وتقدير الاحتمال الأقصى (MLE))",
+    "q_ar": "لتكن \\(f(x) = x^2 - 6x + 14\\) حيث \\(x \\ge 3\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
+    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(3 + \\sqrt{x - 5}\\) لأن \\(x \\ge 3\\)."
+  },
+  {
+    "t": "sb",
+    "ti": "Step Builder: Completing the Square & Vertex Analysis (Probability Distributions & Maximum Likelihood (MLE))",
+    "steps": [
+      {
+        "l": "In \\(y = x^2 - 6x + 14\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
+        "a": "3",
+        "h": "Take half of 6."
+      },
+      {
+        "l": "Compute the minimum value \\(k = 14 - 3^2 =\\)",
+        "a": "5",
+        "h": "Subtract 9 from 14."
+      },
+      {
+        "l": "Evaluate \\(y\\) when \\(x = 5\\): \\(y =\\)",
+        "a": "9",
+        "h": "Compute (2)^2 + 5."
+      }
+    ],
+    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (التوزيعات الاحتمالية وتقدير الاحتمال الأقصى (MLE))",
+    "steps_ar": [
+      {
+        "l": "في الدالة \\(y = x^2 - 6x + 14\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
+        "a": "3",
+        "h": "اقسم معامل x وهو 6 على 2."
+      },
+      {
+        "l": "احسب القيمة الصغرى \\(k = 14 - 3^2 =\\)",
+        "a": "5",
+        "h": "اطرح 9 من 14."
+      },
+      {
+        "l": "احسب قيمة \\(y\\) عندما \\(x = 5\\):",
+        "a": "9",
+        "h": "احسب 4 + 5."
+      }
+    ]
+  },
+  {
+    "t": "mt",
+    "ti": "Matching: Core Algebraic & Analytic Principles (Probability Distributions & Maximum Likelihood (MLE))",
+    "p": [
+      {
+        "l": "\\(b^2 - 4ac = 0\\)",
+        "r": "Line is tangent to the quadratic curve (1 repeated root)"
+      },
+      {
+        "l": "\\(\\text{dom}(f^{-1})\\)",
+        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+      },
+      {
+        "l": "\\(f(x - h) + k\\)",
+        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+      },
+      {
+        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
+        "r": "Vieta's root-coefficient relations"
+      }
+    ],
+    "ti_ar": "مطابقة: المبادئ الجبرية والتحليلية الأساسية (التوزيعات الاحتمالية وتقدير الاحتمال الأقصى (MLE))",
+    "p_ar": [
+      {
+        "l": "\\(b^2 - 4ac = 0\\)",
+        "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
+      },
+      {
+        "l": "\\(\\text{dom}(f^{-1})\\)",
+        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+      },
+      {
+        "l": "\\(f(x - h) + k\\)",
+        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+      },
+      {
+        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
+        "r": "علاقات فييت بين الجذور والمعاملات"
+      }
+    ]
   }
 ];
 
-D['ai-linear-regression'] = [
+D["ai-linear-regression"] = [
   {
     "t": "qc",
     "ti": "Quick Check: The Normal Equation",
@@ -380,10 +1073,132 @@ D['ai-linear-regression'] = [
         "r": "حفظ النموذج للضوضاء في بيانات التدريب وفشله في التعميم"
       }
     ]
+  },
+  {
+    "t": "se",
+    "ti": "Spot the Error: Algebraic & Domain Verification (Linear Regression & Ordinary Least Squares)",
+    "q": "A student solves the equation \\(\\sqrt{2x + 4} = x - 2\\) step by step. Which step introduces an invalid conclusion?",
+    "steps": [
+      "Square both sides to eliminate the radical: \\(2x + 4 = (x - 2)^2\\).",
+      "Expand the right-hand side: \\(2x + 4 = x^2 - 4x + 4\\).",
+      "Rearrange and factor: \\(x^2 - 6x = 0 \\implies x(x - 6) = 0\\).",
+      "Conclude that both \\(x = 0\\) and \\(x = 6\\) are valid real solutions."
+    ],
+    "errorStep": 4,
+    "reasons": [
+      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{4} = -2\\) (\\(2 = -2\\)), which is false because the principal square root is non-negative (\\(x - 2 \\ge 0\\) requires \\(x \\ge 2\\)).",
+      "Expanding \\((x - 2)^2\\) should give \\(x^2 - 4\\) with no middle term.",
+      "Factoring \\(x^2 - 6x = 0\\) only yields \\(x = 6\\)."
+    ],
+    "correctReason": 0,
+    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 4} = x - 2\\).",
+    "sol": "Squaring both sides is a non-reversible step unless \\(x - 2 \\ge 0 \\iff x \\ge 2\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 6\\) is the unique solution.",
+    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (الانحدار الخطي وطريقة المربعات الصغرى (OLS))",
+    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 4} = x - 2\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "steps_ar": [
+      "تربيع الطرفين للتخلص من الجذر: \\(2x + 4 = (x - 2)^2\\).",
+      "فك المربع الكامل: \\(2x + 4 = x^2 - 4x + 4\\).",
+      "الترتيب والتحليل: \\(x^2 - 6x = 0 \\implies x(x - 6) = 0\\).",
+      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 6\\) حلان صحيحان للمعادلة الأصلية."
+    ],
+    "reasons_ar": [
+      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(2 = -2\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 2\\)).",
+      "فك التربيع غير صحيح.",
+      "التحليل بإخراج العامل المشترك غير صحيح."
+    ],
+    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
+    "sol_ar": "الشرط اللازم هو \\(x - 2 \\ge 0 \\implies x \\ge 2\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 6\\) فقط."
+  },
+  {
+    "t": "ms",
+    "ti": "Examiner Mode: Multi-Step Structured Problem (Linear Regression & Ordinary Least Squares)",
+    "q": "Let \\(f(x) = x^2 - 4x + 8\\) for \\(x \\ge 2\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "parts": [
+      {
+        "label": "Part (a) — Vertex Form & Range",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Complete the square: \\(f(x) = (x - 2)^2 - 4 + 8 = (x - 2)^2 + 4\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State exact range: \\(f(x) \\ge 4\\) (or \\([4, \\infty)\\))."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Function & Domain",
+        "marks": 3,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Set \\(y = (x - 2)^2 + 4 \\implies (x - 2)^2 = y - 4\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Select positive branch (since \\(x \\ge 2\\)): \\(f^{-1}(x) = 2 + \\sqrt{x - 4}\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 4\\) (matching the range of \\(f\\))."
+          }
+        ]
+      }
+    ],
+    "examinerTip": "Writing \\(\\pm\\sqrt{x - 4}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 2\\) to choose the \\(+\\) sign.",
+    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (الانحدار الخطي وطريقة المربعات الصغرى (OLS))",
+    "q_ar": "لتكن \\(f(x) = x^2 - 4x + 8\\) حيث \\(x \\ge 2\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
+    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(2 + \\sqrt{x - 4}\\) لأن \\(x \\ge 2\\)."
+  },
+  {
+    "t": "sb",
+    "ti": "Step Builder: Completing the Square & Vertex Analysis (Linear Regression & Ordinary Least Squares)",
+    "steps": [
+      {
+        "l": "In \\(y = x^2 - 4x + 8\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
+        "a": "2",
+        "h": "Take half of 4."
+      },
+      {
+        "l": "Compute the minimum value \\(k = 8 - 2^2 =\\)",
+        "a": "4",
+        "h": "Subtract 4 from 8."
+      },
+      {
+        "l": "Evaluate \\(y\\) when \\(x = 4\\): \\(y =\\)",
+        "a": "8",
+        "h": "Compute (2)^2 + 4."
+      }
+    ],
+    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (الانحدار الخطي وطريقة المربعات الصغرى (OLS))",
+    "steps_ar": [
+      {
+        "l": "في الدالة \\(y = x^2 - 4x + 8\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
+        "a": "2",
+        "h": "اقسم معامل x وهو 4 على 2."
+      },
+      {
+        "l": "احسب القيمة الصغرى \\(k = 8 - 2^2 =\\)",
+        "a": "4",
+        "h": "اطرح 4 من 8."
+      },
+      {
+        "l": "احسب قيمة \\(y\\) عندما \\(x = 4\\):",
+        "a": "8",
+        "h": "احسب 4 + 4."
+      }
+    ]
   }
 ];
 
-D['ai-logistic-regression'] = [
+D["ai-logistic-regression"] = [
   {
     "t": "qc",
     "ti": "Quick Check: Sigmoid Activation Function",
@@ -438,10 +1253,173 @@ D['ai-logistic-regression'] = [
         "a": false
       }
     ]
+  },
+  {
+    "t": "se",
+    "ti": "Spot the Error: Algebraic & Domain Verification (Logistic Regression & Classification Boundaries)",
+    "q": "A student solves the equation \\(\\sqrt{2x + 9} = x - 3\\) step by step. Which step introduces an invalid conclusion?",
+    "steps": [
+      "Square both sides to eliminate the radical: \\(2x + 9 = (x - 3)^2\\).",
+      "Expand the right-hand side: \\(2x + 9 = x^2 - 6x + 9\\).",
+      "Rearrange and factor: \\(x^2 - 8x = 0 \\implies x(x - 8) = 0\\).",
+      "Conclude that both \\(x = 0\\) and \\(x = 8\\) are valid real solutions."
+    ],
+    "errorStep": 4,
+    "reasons": [
+      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{9} = -3\\) (\\(3 = -3\\)), which is false because the principal square root is non-negative (\\(x - 3 \\ge 0\\) requires \\(x \\ge 3\\)).",
+      "Expanding \\((x - 3)^2\\) should give \\(x^2 - 9\\) with no middle term.",
+      "Factoring \\(x^2 - 8x = 0\\) only yields \\(x = 8\\)."
+    ],
+    "correctReason": 0,
+    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 9} = x - 3\\).",
+    "sol": "Squaring both sides is a non-reversible step unless \\(x - 3 \\ge 0 \\iff x \\ge 3\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 8\\) is the unique solution.",
+    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (الانحدار اللوجستي والحدود الفاصلة للتصنيف)",
+    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 9} = x - 3\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "steps_ar": [
+      "تربيع الطرفين للتخلص من الجذر: \\(2x + 9 = (x - 3)^2\\).",
+      "فك المربع الكامل: \\(2x + 9 = x^2 - 6x + 9\\).",
+      "الترتيب والتحليل: \\(x^2 - 8x = 0 \\implies x(x - 8) = 0\\).",
+      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 8\\) حلان صحيحان للمعادلة الأصلية."
+    ],
+    "reasons_ar": [
+      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(3 = -3\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 3\\)).",
+      "فك التربيع غير صحيح.",
+      "التحليل بإخراج العامل المشترك غير صحيح."
+    ],
+    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
+    "sol_ar": "الشرط اللازم هو \\(x - 3 \\ge 0 \\implies x \\ge 3\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 8\\) فقط."
+  },
+  {
+    "t": "ms",
+    "ti": "Examiner Mode: Multi-Step Structured Problem (Logistic Regression & Classification Boundaries)",
+    "q": "Let \\(f(x) = x^2 - 6x + 14\\) for \\(x \\ge 3\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "parts": [
+      {
+        "label": "Part (a) — Vertex Form & Range",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Complete the square: \\(f(x) = (x - 3)^2 - 9 + 14 = (x - 3)^2 + 5\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State exact range: \\(f(x) \\ge 5\\) (or \\([5, \\infty)\\))."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Function & Domain",
+        "marks": 3,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Set \\(y = (x - 3)^2 + 5 \\implies (x - 3)^2 = y - 5\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Select positive branch (since \\(x \\ge 3\\)): \\(f^{-1}(x) = 3 + \\sqrt{x - 5}\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 5\\) (matching the range of \\(f\\))."
+          }
+        ]
+      }
+    ],
+    "examinerTip": "Writing \\(\\pm\\sqrt{x - 5}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 3\\) to choose the \\(+\\) sign.",
+    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (الانحدار اللوجستي والحدود الفاصلة للتصنيف)",
+    "q_ar": "لتكن \\(f(x) = x^2 - 6x + 14\\) حيث \\(x \\ge 3\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
+    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(3 + \\sqrt{x - 5}\\) لأن \\(x \\ge 3\\)."
+  },
+  {
+    "t": "sb",
+    "ti": "Step Builder: Completing the Square & Vertex Analysis (Logistic Regression & Classification Boundaries)",
+    "steps": [
+      {
+        "l": "In \\(y = x^2 - 6x + 14\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
+        "a": "3",
+        "h": "Take half of 6."
+      },
+      {
+        "l": "Compute the minimum value \\(k = 14 - 3^2 =\\)",
+        "a": "5",
+        "h": "Subtract 9 from 14."
+      },
+      {
+        "l": "Evaluate \\(y\\) when \\(x = 5\\): \\(y =\\)",
+        "a": "9",
+        "h": "Compute (2)^2 + 5."
+      }
+    ],
+    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (الانحدار اللوجستي والحدود الفاصلة للتصنيف)",
+    "steps_ar": [
+      {
+        "l": "في الدالة \\(y = x^2 - 6x + 14\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
+        "a": "3",
+        "h": "اقسم معامل x وهو 6 على 2."
+      },
+      {
+        "l": "احسب القيمة الصغرى \\(k = 14 - 3^2 =\\)",
+        "a": "5",
+        "h": "اطرح 9 من 14."
+      },
+      {
+        "l": "احسب قيمة \\(y\\) عندما \\(x = 5\\):",
+        "a": "9",
+        "h": "احسب 4 + 5."
+      }
+    ]
+  },
+  {
+    "t": "mt",
+    "ti": "Matching: Core Algebraic & Analytic Principles (Logistic Regression & Classification Boundaries)",
+    "p": [
+      {
+        "l": "\\(b^2 - 4ac = 0\\)",
+        "r": "Line is tangent to the quadratic curve (1 repeated root)"
+      },
+      {
+        "l": "\\(\\text{dom}(f^{-1})\\)",
+        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+      },
+      {
+        "l": "\\(f(x - h) + k\\)",
+        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+      },
+      {
+        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
+        "r": "Vieta's root-coefficient relations"
+      }
+    ],
+    "ti_ar": "مطابقة: المبادئ الجبرية والتحليلية الأساسية (الانحدار اللوجستي والحدود الفاصلة للتصنيف)",
+    "p_ar": [
+      {
+        "l": "\\(b^2 - 4ac = 0\\)",
+        "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
+      },
+      {
+        "l": "\\(\\text{dom}(f^{-1})\\)",
+        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+      },
+      {
+        "l": "\\(f(x - h) + k\\)",
+        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+      },
+      {
+        "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
+        "r": "علاقات فييت بين الجذور والمعاملات"
+      }
+    ]
   }
 ];
 
-D['ai-pca-dimensionality'] = [
+D["ai-pca-dimensionality"] = [
   {
     "t": "qc",
     "ti": "Quick Check: Principal Component Analysis (PCA)",
@@ -504,6 +1482,129 @@ D['ai-pca-dimensionality'] = [
         "r": "λᵢ / ∑ λ؛ نسبة المعلومات الكلية المحفوظة بواسطة المكون i"
       }
     ]
+  },
+  {
+    "t": "se",
+    "ti": "Spot the Error: Algebraic & Domain Verification (Dimensionality Reduction, Covariance & PCA)",
+    "q": "A student solves the equation \\(\\sqrt{2x + 16} = x - 4\\) step by step. Which step introduces an invalid conclusion?",
+    "steps": [
+      "Square both sides to eliminate the radical: \\(2x + 16 = (x - 4)^2\\).",
+      "Expand the right-hand side: \\(2x + 16 = x^2 - 8x + 16\\).",
+      "Rearrange and factor: \\(x^2 - 10x = 0 \\implies x(x - 10) = 0\\).",
+      "Conclude that both \\(x = 0\\) and \\(x = 10\\) are valid real solutions."
+    ],
+    "errorStep": 4,
+    "reasons": [
+      "Substituting \\(x = 0\\) into the original equation gives \\(\\sqrt{16} = -4\\) (\\(4 = -4\\)), which is false because the principal square root is non-negative (\\(x - 4 \\ge 0\\) requires \\(x \\ge 4\\)).",
+      "Expanding \\((x - 4)^2\\) should give \\(x^2 - 16\\) with no middle term.",
+      "Factoring \\(x^2 - 10x = 0\\) only yields \\(x = 10\\)."
+    ],
+    "correctReason": 0,
+    "h": "Test \\(x = 0\\) in the original equation \\(\\sqrt{2x + 16} = x - 4\\).",
+    "sol": "Squaring both sides is a non-reversible step unless \\(x - 4 \\ge 0 \\iff x \\ge 4\\). Therefore \\(x = 0\\) is an extraneous root and \\(x = 10\\) is the unique solution.",
+    "ti_ar": "اكتشف الخطأ: الجذور الدخيلة والتحقق من المجال (تقليل الأبعاد ومصفوفة التباين المشترك وتحليل المكونات الرئيسية (PCA))",
+    "q_ar": "يحل طالب المعادلة \\(\\sqrt{2x + 16} = x - 4\\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "steps_ar": [
+      "تربيع الطرفين للتخلص من الجذر: \\(2x + 16 = (x - 4)^2\\).",
+      "فك المربع الكامل: \\(2x + 16 = x^2 - 8x + 16\\).",
+      "الترتيب والتحليل: \\(x^2 - 10x = 0 \\implies x(x - 10) = 0\\).",
+      "استنتاج أن كلاً من \\(x = 0\\) و \\(x = 10\\) حلان صحيحان للمعادلة الأصلية."
+    ],
+    "reasons_ar": [
+      "التعويض عن \\(x = 0\\) في المعادلة الأصلية يعطي \\(4 = -4\\) وهو مستحيل لأن الجذر التربيعي الأساسي غير سالب (يجب أن يتحقق \\(x \\ge 4\\)).",
+      "فك التربيع غير صحيح.",
+      "التحليل بإخراج العامل المشترك غير صحيح."
+    ],
+    "h_ar": "عوّض عن \\(x = 0\\) في المعادلة الأصلية للتحقق من إشارة الطرف الأيمن.",
+    "sol_ar": "الشرط اللازم هو \\(x - 4 \\ge 0 \\implies x \\ge 4\\)، لذا يُرفض الجذر الدخيل \\(x = 0\\) ويبقى \\(x = 10\\) فقط."
+  },
+  {
+    "t": "ms",
+    "ti": "Examiner Mode: Multi-Step Structured Problem (Dimensionality Reduction, Covariance & PCA)",
+    "q": "Let \\(f(x) = x^2 - 8x + 19\\) for \\(x \\ge 4\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "parts": [
+      {
+        "label": "Part (a) — Vertex Form & Range",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Complete the square: \\(f(x) = (x - 4)^2 - 16 + 19 = (x - 4)^2 + 3\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State exact range: \\(f(x) \\ge 3\\) (or \\([3, \\infty)\\))."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Function & Domain",
+        "marks": 3,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Set \\(y = (x - 4)^2 + 3 \\implies (x - 4)^2 = y - 3\\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Select positive branch (since \\(x \\ge 4\\)): \\(f^{-1}(x) = 4 + \\sqrt{x - 3}\\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 3\\) (matching the range of \\(f\\))."
+          }
+        ]
+      }
+    ],
+    "examinerTip": "Writing \\(\\pm\\sqrt{x - 3}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 4\\) to choose the \\(+\\) sign.",
+    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (تقليل الأبعاد ومصفوفة التباين المشترك وتحليل المكونات الرئيسية (PCA))",
+    "q_ar": "لتكن \\(f(x) = x^2 - 8x + 19\\) حيث \\(x \\ge 4\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
+    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(4 + \\sqrt{x - 3}\\) لأن \\(x \\ge 4\\)."
+  },
+  {
+    "t": "sb",
+    "ti": "Step Builder: Completing the Square & Vertex Analysis (Dimensionality Reduction, Covariance & PCA)",
+    "steps": [
+      {
+        "l": "In \\(y = x^2 - 8x + 19\\), halve the \\(x\\)-coefficient to write \\((x - h)^2\\) where \\(h =\\)",
+        "a": "4",
+        "h": "Take half of 8."
+      },
+      {
+        "l": "Compute the minimum value \\(k = 19 - 4^2 =\\)",
+        "a": "3",
+        "h": "Subtract 16 from 19."
+      },
+      {
+        "l": "Evaluate \\(y\\) when \\(x = 6\\): \\(y =\\)",
+        "a": "7",
+        "h": "Compute (2)^2 + 3."
+      }
+    ],
+    "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (تقليل الأبعاد ومصفوفة التباين المشترك وتحليل المكونات الرئيسية (PCA))",
+    "steps_ar": [
+      {
+        "l": "في الدالة \\(y = x^2 - 8x + 19\\): قيمة \\(h\\) في \\((x - h)^2\\) تساوي:",
+        "a": "4",
+        "h": "اقسم معامل x وهو 8 على 2."
+      },
+      {
+        "l": "احسب القيمة الصغرى \\(k = 19 - 4^2 =\\)",
+        "a": "3",
+        "h": "اطرح 16 من 19."
+      },
+      {
+        "l": "احسب قيمة \\(y\\) عندما \\(x = 6\\):",
+        "a": "7",
+        "h": "احسب 4 + 3."
+      }
+    ]
   }
 ];
+
 });

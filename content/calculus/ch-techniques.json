@@ -29,44 +29,20 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Techniques of Integration — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
-          ]
+          "type": "slope_field",
+          "title": "Techniques of Integration — Slope Field & Particular Solution Trajectory",
+          "fn": "x - y",
+          "xmin": -3,
+          "xmax": 3,
+          "ymin": -3,
+          "ymax": 3,
+          "solution": {
+            "x0": 0,
+            "y0": 1
+          }
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Slope field for dy/dx = x − y with the integral curve passing through initial condition (0, 1).",
           "ar": null
         }
       },
@@ -193,6 +169,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Techniques of Integration)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 6.1 — Foundations: Definite Substitution & Limit Transformation",
@@ -207,11 +195,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example B — Techniques of Integration (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> In the plane, region \\( L \\) is bounded by \\( C(q) = 3q^2 + 16 \\), the horizontal axis, \\( q = 0 \\), and \\( q = 5 \\). Compute the exact area of region \\( L \\).</p><p><strong>Step-by-Step Solution:</strong> Integrating \\( \\int_0^{5} (3q^2 + 16)\\,dq = 5^3 + 16(5) = 205 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Techniques of Integration)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Writing \\(\\ln|y| = x^2 + C \\implies y = e^{x^2} + C\\)",
+              "ar": null
+            },
+            {
+              "en": "Exponentiation distributes over addition as multiplication (\\(e^{a+b} = e^a e^b\\)), not addition.",
+              "ar": null
+            },
+            {
+              "en": "Write \\(y = e^{x^2 + C} = Ae^{x^2}\\) and solve for \\(A\\) using the initial condition.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Leaving original \\(x\\)-limits on a \\(u\\)-substituted definite integral",
+              "ar": null
+            },
+            {
+              "en": "Evaluates the antiderivative \\(F(u)\\) at \\(x\\)-values instead of \\(u(x)\\)-values.",
+              "ar": null
+            },
+            {
+              "en": "Convert bounds immediately: \\(u_{\\text{low}} = u(a)\\) and \\(u_{\\text{high}} = u(b)\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing total distance as \\(\\left|\\int_{t_1}^{t_2} v(t)\\,dt\\right|\\)",
+              "ar": null
+            },
+            {
+              "en": "Cancels forward and backward motion (net displacement) instead of accumulating total path length.",
+              "ar": null
+            },
+            {
+              "en": "Split the integral at every root where \\(v(t) = 0\\) and integrate \\(|v(t)|\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Techniques of Integration",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Quick Verification Trick (University Single-Variable & Multivariable Calculus):</strong> For any indefinite integral \\(\\int f(x)\\,dx = F(x) + C\\), differentiate your answer \\(F'(x)\\) mentally—especially the coefficient \\(1/k\\) from chain-rule reversal \\(\\int e^{kx}\\,dx = \\tfrac{1}{k}e^{kx} + C\\)—before moving on.</p>",
           "ar": null
         }
       },
@@ -224,7 +289,21 @@
         "solution": {
           "en": "Substitute \\(u = \\ln x\\). The derivative is \\(du = \\frac{1}{x}\\,dx\\).<br>The integral simplifies directly to:<br>\\[ \\int \\cos(u)\\,du = \\sin(u) + C = \\sin(\\ln x) + C \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Techniques of Integration</em> and start from \\(\\displaystyle \\int \\frac{\\cos(\\ln x)}{x}\\,dx\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(u = \\ln x\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "callout",
@@ -352,7 +431,21 @@
         "solution": {
           "en": "Factor the denominator: \\(x^2 - 2x - 3 = (x - 3)(x + 1)\\).<br>Set up partial fractions:<br>\\[ \\frac{5x - 3}{(x - 3)(x + 1)} = \\frac{A}{x - 3} + \\frac{B}{x + 1} \\implies 5x - 3 = A(x + 1) + B(x - 3) \\]<br>Using Heaviside cover-up:<br>Set \\(x = 3\\): \\(5(3) - 3 = A(3 + 1) \\implies 12 = 4A \\implies A = 3\\).<br>Set \\(x = -1\\): \\(5(-1) - 3 = B(-1 - 3) \\implies -8 = -4B \\implies B = 2\\).<br>Integrate term-by-term:<br>\\[ \\int \\left( \\frac{3}{x - 3} + \\frac{2}{x + 1} \\right)dx = 3\\ln|x - 3| + 2\\ln|x + 1| + C = \\ln\\left(|x - 3|^3 (x + 1)^2\\right) + C \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Techniques of Integration</em> and start from \\( \\int \\frac{5x - 3}{x^2 - 2x - 3}\\,dx \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x^2 - 2x - 3 = (x - 3)(x + 1)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "callout",
@@ -399,16 +492,44 @@
         "solution": {
           "en": "Express as a limit of a definite integral:<br>\\[ \\int_0^\\infty x e^{-x/2}\\,dx = \\lim_{t \\to \\infty} \\int_0^t x e^{-x/2}\\,dx \\]<br>Integrate by parts on \\([0, t]\\):<br>Let \\(u = x \\implies du = dx\\), and \\(dv = e^{-x/2}dx \\implies v = -2e^{-x/2}\\).<br>\\[ \\int_0^t x e^{-x/2}\\,dx = \\left[ -2x e^{-x/2} \\right]_0^t - \\int_0^t (-2e^{-x/2})\\,dx = -2t e^{-t/2} + 0 + 2 \\left[ -2e^{-x/2} \\right]_0^t \\]<br>\\[ = -2t e^{-t/2} - 4\\big(e^{-t/2} - 1\\big) = 4 - e^{-t/2}(2t + 4) \\]<br>Take the limit as \\(t \\to \\infty\\):<br>By L'Hôpital's Rule, \\(\\lim_{t \\to \\infty} \\frac{2t+4}{e^{t/2}} = \\lim_{t \\to \\infty} \\frac{2}{\\frac{1}{2}e^{t/2}} = 0\\).<br>Therefore:<br>\\[ \\lim_{t \\to \\infty} \\big[4 - e^{-t/2}(2t + 4)\\big] = 4 - 0 = 4 \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Techniques of Integration</em> and start from \\( \\int_0^\\infty x e^{-x/2}\\,dx \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\int_0^\\infty x e^{-x/2}\\,dx = \\lim_{t \\to \\infty} \\int_0^t x e^{-x/2}\\,dx \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Techniques of Integration · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> Trig substitution for \\(\\sqrt{a^2-x^2}\\): use \\(x=\\)",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Techniques of Integration</em> and start from \\(\\sqrt{a^2-x^2}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x=a\\sin\\theta\\Rightarrow\\sqrt{a^2-x^2}=a\\cos\\theta\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "\\(x=a\\sin\\theta\\Rightarrow\\sqrt{a^2-x^2}=a\\cos\\theta\\). <strong>Answer:</strong> \\(a\\sin\\theta\\).",
           "ar": null
         }
       }

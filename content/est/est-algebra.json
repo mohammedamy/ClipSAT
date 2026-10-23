@@ -41,46 +41,53 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Heart of Algebra",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Proportional Invariance, Linear Structure &amp; Quantitative Modeling:</strong> Across Egyptian Scholastic Test (EST I — Literacy & Math), multi-step problems reduce to identifying invariant quantities—constant rates of change \\(m = \\dfrac{\\Delta y}{\\Delta x}\\), conservation of total work/mass, or linear system rank conditions. A two-variable linear system \\(a_1 x + b_1 y = c_1\\), \\(a_2 x + b_2 y = c_2\\) has a unique intersection if \\(\\dfrac{a_1}{a_2} \\ne \\dfrac{b_1}{b_2}\\), no solution (parallel lines) if \\(\\dfrac{a_1}{a_2} = \\dfrac{b_1}{b_2} \\ne \\dfrac{c_1}{c_2}\\), and infinitely many solutions if all three ratios coincide.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Heart of Algebra — Coordinate Curve & Tangent Analysis (2)",
+          "title": "Heart of Algebra — Linear System Intersection & Equilibrium",
           "xrange": [
-            -4,
-            4
+            -2,
+            6
           ],
           "yrange": [
-            -3,
-            9
+            -2,
+            10
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "2*x + 1",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "label": "y = 2x + 1"
             },
             {
-              "fn": "2*x - 3",
+              "fn": "-x + 7",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "label": "y = −x + 7"
             }
           ],
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "x": 2,
+              "y": 5,
+              "label": "Intersection (2, 5)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Coordinate intersection of linear system y = 2x + 1 and y = −x + 7 at unique equilibrium point (2, 5).",
           "ar": null
         }
       },
@@ -285,6 +292,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Heart of Algebra)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 1.A — Multi-Step Linear Equation with Grouping",
@@ -323,11 +342,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example D — Heart of Algebra (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> If 5x +2y =12 000, what is the value of -0.625x- 0.25y?</p><p><strong>Step-by-Step Solution:</strong> \\( -0.625x-0.25y = -\\tfrac{1}{8}(5x+2y) = -\\tfrac{1}{8}(12000) = -1500 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Heart of Algebra)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Claiming \\(+25\\%\\) followed by \\(-25\\%\\) returns to \\(100\\%\\)",
+              "ar": null
+            },
+            {
+              "en": "The \\(25\\%\\) reduction applies to the larger base \\(1.25 Q_0\\), not \\(Q_0\\).",
+              "ar": null
+            },
+            {
+              "en": "Multiply scale factors: \\(1.25 \\times 0.75 = 0.9375\\) (a \\(6.25\\%\\) net decrease).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Solving \\(-3x > 12\\) as \\(x > -4\\)",
+              "ar": null
+            },
+            {
+              "en": "Dividing by a negative number reverses order on the real number line.",
+              "ar": null
+            },
+            {
+              "en": "Flip the inequality symbol whenever multiplying or dividing by a negative: \\(x < -4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing round-trip average speed as \\(\\frac{v_1 + v_2}{2}\\)",
+              "ar": null
+            },
+            {
+              "en": "Time spent at the slower speed is longer than time spent at the faster speed.",
+              "ar": null
+            },
+            {
+              "en": "Use total distance over total time: \\(v_{\\text{avg}} = \\frac{2v_1 v_2}{v_1 + v_2}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Heart of Algebra",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>High-Speed Exam Shortcut (Egyptian Scholastic Test (EST I — Literacy & Math)):</strong> When a linear system asks for a combined expression like \\(3x + 3y\\) rather than \\(x\\) and \\(y\\) individually, add or subtract the two equations directly before isolating either variable—this often yields the target expression in a single step.</p>",
           "ar": null
         }
       },
@@ -340,7 +436,21 @@
         "solution": {
           "en": "<p><strong>Step 1:</strong> From the second equation, isolate \\(x\\): \\[ x = y + 2 \\]</p><p><strong>Step 2:</strong> Substitute into the first equation: \\[ 3(y + 2) + 2y = 16 \\implies 3y + 6 + 2y = 16 \\implies 5y + 6 = 16 \\implies 5y = 10 \\implies \\mathbf{y = 2} \\]</p><p><strong>Step 3:</strong> Substitute back to find \\(x\\): \\[ x = 2 + 2 = \\mathbf{4} \\]</p><p>The unique solution is \\(\\mathbf{(4, 2)}\\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Heart of Algebra</em> and start from \\(3x + 2y = 16\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -351,7 +461,21 @@
         "solution": {
           "en": "<p><strong>Set up system of equations:</strong> Let \\(a\\) be the number of adult tickets and \\(s\\) be student tickets: \\[ \\begin{cases} a + s = 250 \\\\ 9a + 5s = 1750 \\end{cases} \\]</p><p><strong>Elimination method:</strong> Multiply the first equation by 5: \\[ 5a + 5s = 1250. \\] Subtract from the second equation: \\[ (9a + 5s) - (5a + 5s) = 1750 - 1250 \\implies 4a = 500 \\implies \\mathbf{a = 125}. \\]</p><p>Exactly <strong>125</strong> adult tickets were sold (and \\(s = 250 - 125 = 125\\) student tickets).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Heart of Algebra</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(a\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -362,7 +486,21 @@
         "solution": {
           "en": "<p><strong>Step 1:</strong> A linear system has no solution when the lines are parallel and distinct (slopes are equal, \\(y\\)-intercepts differ). In standard form, this requires: \\[ \\frac{a}{3} = \\frac{4}{2} \\neq \\frac{7}{5} \\]</p><p><strong>Step 2:</strong> Solve the slope equality: \\[ \\frac{a}{3} = 2 \\implies a = 2 \\times 3 = \\mathbf{6} \\]</p><p><strong>Check:</strong> When \\(a = 6\\), the ratio of coefficients is \\(\\frac{6}{3} = \\frac{4}{2} = 2\\), while the constant ratio is \\(\\frac{7}{5} = 1.4 \\neq 2\\). Therefore, the lines are strictly parallel with <strong>no solution</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Heart of Algebra</em> and start from \\(a\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(y\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -373,7 +511,21 @@
         "solution": {
           "en": "<p><strong>Step 1:</strong> Split into two cases based on the definition of absolute value:<br><strong>Case 1:</strong> \\(2x - 7 = 3x - 1 \\implies -7 + 1 = 3x - 2x \\implies x = -6\\).<br>Check Case 1: \\(|2(-6) - 7| = |-19| = 19\\), but the right side is \\(3(-6) - 1 = -19\\). Since \\(19 \\neq -19\\), \\(x = -6\\) is an <strong>extraneous solution</strong>.<br><strong>Case 2:</strong> \\(2x - 7 = -(3x - 1) = -3x + 1 \\implies 2x + 3x = 1 + 7 \\implies 5x = 8 \\implies x = \\frac{8}{5} = 1.6\\).<br>Check Case 2: \\(|2(1.6) - 7| = |3.2 - 7| = |-3.8| = 3.8\\). Right side: \\(3(1.6) - 1 = 4.8 - 1 = 3.8\\) (Valid &#10003;).</p><p>The only valid real solution is \\(\\mathbf{x = \\frac{8}{5} = 1.6}\\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Heart of Algebra</em> and start from \\(|2x - 7| = 3x - 1\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(2x - 7 = 3x - 1 \\implies -7 + 1 = 3x - 2x \\implies x = -6\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

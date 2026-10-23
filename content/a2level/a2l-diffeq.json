@@ -40,46 +40,34 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Differential Equations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Accumulation, Antiderivatives &amp; Differential Flows:</strong> By the Fundamental Theorem of Calculus, the accumulation function \\(A(x) = \\int_a^x f(t)\\,dt\\) satisfies \\(A'(x) = f(x)\\), linking instantaneous rates of change to net signed area. In first-order differential equations \\(\\dfrac{dy}{dx} = g(x)h(y)\\), separation of variables \\(\\int \\dfrac{1}{h(y)}\\,dy = \\int g(x)\\,dx + C\\) reconstructs the family of integral curves across the slope field.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Differential Equations — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
-          ]
+          "type": "slope_field",
+          "title": "Differential Equations — Slope Field & Particular Solution Trajectory",
+          "fn": "x - y",
+          "xmin": -3,
+          "xmax": 3,
+          "ymin": -3,
+          "ymax": 3,
+          "solution": {
+            "x0": 0,
+            "y0": 1
+          }
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Slope field for dy/dx = x − y with the integral curve passing through initial condition (0, 1).",
           "ar": null
         }
       },
@@ -229,6 +217,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Differential Equations)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example 11.A",
@@ -255,11 +255,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example C — Differential Equations (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 4x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(9) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 12x^2 - 2x \\).</li><li>Substitute \\( x = 9 \\): \\( f'(9) = 12(9)^2 - 2(9) = 972 - 18 = \\mathbf{954} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> The separable initial value problem \\( \\dfrac{df}{dx} = 34x \\) satisfies \\( f(0) = 15 \\). Calculate the solution value \\( f(3) \\).</p><p><strong>Step-by-Step Solution:</strong> Integrating gives \\( f(x) = 17x^2 + 15 \\), so \\( f(3) = 168 \\).</p>",
           "ar": null
         }
       },
@@ -267,11 +267,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example D — Differential Equations (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> The Laplace transform of \\( f(x) = 216e^{4x} \\) is \\( g(s) = \\dfrac{216}{s - 4} \\) for \\( s > 4 \\). Calculate the evaluated transform \\( g(5) \\).</p><p><strong>Step-by-Step Solution:</strong> Substituting \\( s = 5 \\) gives \\( \\frac{216}{5 - 4} = 216 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Differential Equations)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Writing \\(\\ln|y| = x^2 + C \\implies y = e^{x^2} + C\\)",
+              "ar": null
+            },
+            {
+              "en": "Exponentiation distributes over addition as multiplication (\\(e^{a+b} = e^a e^b\\)), not addition.",
+              "ar": null
+            },
+            {
+              "en": "Write \\(y = e^{x^2 + C} = Ae^{x^2}\\) and solve for \\(A\\) using the initial condition.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Leaving original \\(x\\)-limits on a \\(u\\)-substituted definite integral",
+              "ar": null
+            },
+            {
+              "en": "Evaluates the antiderivative \\(F(u)\\) at \\(x\\)-values instead of \\(u(x)\\)-values.",
+              "ar": null
+            },
+            {
+              "en": "Convert bounds immediately: \\(u_{\\text{low}} = u(a)\\) and \\(u_{\\text{high}} = u(b)\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing total distance as \\(\\left|\\int_{t_1}^{t_2} v(t)\\,dt\\right|\\)",
+              "ar": null
+            },
+            {
+              "en": "Cancels forward and backward motion (net displacement) instead of accumulating total path length.",
+              "ar": null
+            },
+            {
+              "en": "Split the integral at every root where \\(v(t) = 0\\) and integrate \\(|v(t)|\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Differential Equations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Quick Verification Trick (Cambridge International A Level (9709 Paper 3 / Paper 6)):</strong> For any indefinite integral \\(\\int f(x)\\,dx = F(x) + C\\), differentiate your answer \\(F'(x)\\) mentally—especially the coefficient \\(1/k\\) from chain-rule reversal \\(\\int e^{kx}\\,dx = \\tfrac{1}{k}e^{kx} + C\\)—before moving on.</p>",
           "ar": null
         }
       },
@@ -284,7 +361,21 @@
         "solution": {
           "en": "Separate: \\(y\\,dy=(x+1)\\,dx\\). Integrate: \\(\\tfrac{y^2}{2}=\\tfrac{x^2}{2}+x+c\\). At \\((0,2)\\): \\(2=c\\). So \\(y^2=x^2+2x+4\\).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differential Equations</em> and start from \\(\\dfrac{dy}{dx}=\\dfrac{x+1}{y}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(y\\,dy=(x+1)\\,dx\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "figure",
@@ -331,27 +422,94 @@
         "solution": {
           "en": "<p>Separate variables and integrate:</p>\\[\\int \\frac{1}{\\theta - 20}\\,d\\theta = -\\int k\\,dt \\implies \\ln(\\theta - 20) = -kt + C\\]<p>Apply initial condition \\(t = 0, \\theta = 80\\):</p>\\[\\ln(60) = C \\implies \\ln\\left(\\frac{\\theta - 20}{60}\\right) = -kt \\implies \\theta - 20 = 60e^{-kt}\\]<p>Apply condition \\(t = 10, \\theta = 50\\):</p>\\[30 = 60e^{-10k} \\implies e^{-10k} = \\frac{1}{2} \\implies k = \\frac{\\ln 2}{10} \\approx 0.06931\\]<p>Set \\(\\theta = 30\\):</p>\\[10 = 60e^{-kt} \\implies e^{-kt} = \\frac{1}{6} \\implies t = \\frac{\\ln 6}{k} = \\frac{10\\ln 6}{\\ln 2} \\approx 25.8\\text{ minutes}\\]",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differential Equations</em> and start from \\(\\theta\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Hard]</strong> Which differential equation correctly models the statement: \"The rate of increase of the volume V of a balloon is proportional to the square of its radius r.\"?",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differential Equations</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\dfrac{dV}{dt}=kr^2 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "The correct model is \\( \\dfrac{dV}{dt}=kr^2 \\), where \\( k>0 \\) is a constant of proportionality. <strong>Answer:</strong> \\(\\dfrac{dV}{dt}=kr^2\\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Differential Equations · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> Given \\( \\dfrac{dy}{dx}=4x+10 \\) and \\( y(-1)=9 \\), find \\( y(-4) \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differential Equations</em> and start from \\( \\dfrac{dy}{dx}=4x+10 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( y=\\dfrac{4}{2}x^2+10x+C \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "en": "\\( y=\\dfrac{4}{2}x^2+10x+C \\). Using \\( y(-1)=9 \\): \\( C=17 \\). Then \\( y(-4)=9 \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Differential Equations · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 5 · Medium]</strong> The first-order differential equation \\( \\dfrac{dp}{dt} = 23t - 6p \\) has its slope field plotted below. Calculate the slope \\( \\dfrac{dp}{dt} \\) at the point \\( P(17, 26) \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differential Equations</em> and start from \\( \\dfrac{dp}{dt} = 23t - 6p \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( (17, 26) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Evaluating at \\( (17, 26) \\) gives \\( 23(17) - 6(26) = 235 \\).",
           "ar": null
         }
       }

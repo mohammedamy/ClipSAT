@@ -40,6 +40,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Sequences & Patterns",
+          "ar": "● الفهم المفاهيمي العميق — المتتاليات والأنماط"
+        },
+        "body": {
+          "en": "<p><strong>Arithmetic, Geometric &amp; Power Series Convergence:</strong> An arithmetic progression grows additively (\\(u_n = a + (n-1)d\\), \\(S_n = \\tfrac{n}{2}[2a + (n-1)d]\\)), whereas a geometric progression scales multiplicatively (\\(u_n = ar^{n-1}\\), \\(S_n = \\dfrac{a(1-r^n)}{1-r}\\)). An infinite geometric series \\(\\sum_{n=1}^\\infty ar^{n-1}\\) converges to \\(S_\\infty = \\dfrac{a}{1-r}\\) if and only if \\(|r| < 1\\). Similarly, the general binomial expansion \\((1 + kx)^n = 1 + n(kx) + \\dfrac{n(n-1)}{2!}(kx)^2 + \\cdots\\) for negative or fractional \\(n\\) converges if and only if \\(|kx| < 1 \\iff |x| < 1/|k|\\).</p>",
+          "ar": "<p><strong>المتتابعات الحسابية والهندسية ومتسلسلات القوى:</strong> تتقارب المتسلسلة الهندسية اللانهائية \\(\\sum ar^{n-1}\\) إلى \\(\\frac{a}{1-r}\\) إذا وفقط إذا كان \\(|r| < 1\\).</p>"
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
           "type": "circle",
@@ -210,6 +222,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Sequences & Patterns)",
+          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (المتتاليات والأنماط)"
+        },
+        "body": {
+          "en": "<p><strong>Why the Geometric Sum Formula &amp; \\(S_\\infty\\) Work:</strong> Write \\(S_n = a + ar + ar^2 + \\dots + ar^{n-1}\\). Multiplying through by \\(r\\) shifts every power up by one:</p>\\[ S_n - rS_n = (a + ar + \\dots + ar^{n-1}) - (ar + ar^2 + \\dots + ar^n) = a - ar^n \\]<p>Factoring \\(S_n(1 - r) = a(1 - r^n)\\) gives \\(S_n = \\dfrac{a(1 - r^n)}{1 - r}\\) for \\(r \\ne 1\\). Taking \\(n \\to \\infty\\), \\(\\lim_{n \\to \\infty} r^n = 0\\) holds if and only if \\(|r| < 1\\), yielding \\(S_\\infty = \\dfrac{a}{1 - r}\\).</p>",
+          "ar": "<p><strong>برهان مجموع المتسلسلة الهندسية:</strong> بطرح \\(rS_n\\) من \\(S_n\\) تختزل جميع الحدود الوسطى ويبقى \\((1-r)S_n = a(1-r^n)\\)، وعندما \\(|r|<1\\) فإن \\(r^n \\to 0\\) فيصبح \\(S_\\infty = \\frac{a}{1-r}\\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 6.A — Foundations: Arithmetic Progression Term Finding",
@@ -287,6 +311,83 @@
         }
       },
       {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Sequences & Patterns)",
+          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (المتتاليات والأنماط)"
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع للطالب"
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": "السبب الرياضي للخطأ"
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Applying \\(1 + nx + \\dots\\) directly to \\((3 + x)^{-1}\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "The general binomial series is centered at \\(1 + u\\), not \\(a + u\\).",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Factor out \\(3^{-1}\\) first: \\(\\frac{1}{3}\\left(1 + \\frac{x}{3}\\right)^{-1}\\) valid for \\(|x| < 3\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Assuming \\(\\lim_{n\\to\\infty} a_n = 0\\) guarantees \\(\\sum a_n\\) converges",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "The harmonic series \\(\\sum \\frac{1}{n}\\) has \\(1/n \\to 0\\) yet diverges to \\(\\infty\\).",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Use the \\(p\\)-series test (\\(p > 1\\)), Ratio Test, or Integral Test to prove convergence.",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Counting terms in \\(\\sum_{k=0}^{n} a_k\\) as \\(n\\) terms",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Overlooks the \\(k = 0\\) initial index.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Use \\(\\text{count} = \\text{upper} - \\text{lower} + 1 = n - 0 + 1 = n + 1\\) terms.",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Sequences & Patterns",
+          "ar": "▲ استراتيجية الحل السريع والتحقق — المتتاليات والأنماط"
+        },
+        "body": {
+          "en": "<p><strong>Binomial Validity Shortcut (Qiyas General Aptitude Test (GAT / القدرات العامة)):</strong> When asked for the range of \\(x\\) for which the expansion of \\((a + bx)^n\\) is valid, write \\(\\left|\\dfrac{bx}{a}\\right| < 1 \\implies |x| < \\left|\\dfrac{a}{b}\\right|\\). If multiplying two expansions, take the <em>intersection</em> (smaller radius) of the two validity intervals.</p>",
+          "ar": "<p><strong>شرط صحة مفكوك ذات الحدين:</strong> ليكون المفكوك \\((a+bx)^n\\) صحيحاً عندما \\(n\\) سالب أو كسر يجب أن يتحقق \\(|x| < |a/b|\\).</p>"
+        }
+      },
+      {
         "kind": "practiceProblem",
         "id": "qud-patterns-p1",
         "question": {
@@ -296,7 +397,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Apply Gauss summation formula \\(S = \\frac{n(n+1)}{2}\\):</strong> For \\(n = 50\\):<br>\\[ S = \\frac{50(51)}{2} = 25 \\times 51 = \\mathbf{1275}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: تطبيق صيغة جاوس \\(S = \\frac{n(n+1)}{2}\\):</strong> بتعويض \\(n = 50\\):<br>\\[ S = \\frac{50 \\times 51}{2} = 25 \\times 51 = \\mathbf{1275}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences & Patterns</em> and start from \\( 1 + 2 + 3 + \\cdots + 50 \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( 1 + 2 + 3 + \\cdots + 50 \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(S = \\frac{n(n+1)}{2}\\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\(S = \\frac{n(n+1)}{2}\\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -308,7 +423,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Apply the inclusive counting formula:</strong> Count = \\(\\text{Last} - \\text{First} + 1\\):<br>\\[ 135 - 25 + 1 = 110 + 1 = \\mathbf{111}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: تطبيق قانون العد الشامل:</strong> العدد = \\(a_n - a_1 + 1\\):<br>\\[ 135 - 25 + 1 = 110 + 1 = \\mathbf{111}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences & Patterns</em> and write down the target quantity and domain conditions.",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال واكتب المعطيات والمطلوب بوضوح."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\text{Last} - \\text{First} + 1\\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\(\\text{Last} - \\text{First} + 1\\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -320,7 +449,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Determine the common ratio \\(r\\):</strong> \\[ r = \\frac{6}{3} = \\frac{12}{6} = 2. \\]</p><p><strong>Step 2: Multiply the last term by the ratio:</strong> \\[ 24 \\times 2 = \\mathbf{48}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: إيجاد أساس المتتالية الهندسية \\(r\\):</strong> \\[ r = \\frac{6}{3} = 2. \\]</p><p><strong>الخطوة 2: ضرب الحد الأخير في الأساس:</strong> \\[ 24 \\times 2 = \\mathbf{48}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences & Patterns</em> and start from \\( 3, 6, 12, 24, \\ldots \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( 3, 6, 12, 24, \\ldots \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(r\\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\(r\\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -332,7 +475,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Days of the week repeat every 7 days:</strong> Divide 100 by 7 to find remainder:<br>\\[ 100 \\div 7 = 14 \\quad\\text{with remainder } 2. \\]</p><p><strong>Step 2: Advance by remainder:</strong> Two days after Tuesday is Wednesday (+1) then <strong>Thursday</strong> (+2).</p>",
           "ar": "<p><strong>الخطوة 1: أيام الأسبوع تتكرر كل 7 أيام:</strong> نقسم 100 على 7 لإيجاد الباقي:<br>\\[ 100 \\div 7 = 14 \\] (والباقي 2)</p><p><strong>الخطوة 2: إضافة يومين بعد الثلاثاء:</strong> الأربعاء (+1) ثم <strong>الخميس</strong> (+2).</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences & Patterns</em> and write down the target quantity and domain conditions.",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال واكتب المعطيات والمطلوب بوضوح."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 100 \\div 7 = 14 \\quad\\text{with remainder } 2. \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( 100 \\div 7 = 14 \\quad\\text{with remainder } 2. \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       }
     ]
   },

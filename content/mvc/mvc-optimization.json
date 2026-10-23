@@ -29,13 +29,44 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "circle",
-          "radius": 6,
-          "labelR": "r = 6",
-          "chordAngle": 120
+          "type": "transformation_grid",
+          "title": "Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers — Linear Transformation & Basis Action",
+          "original": [
+            [
+              1,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "transformed": [
+            [
+              -1,
+              1
+            ],
+            [
+              -1,
+              3
+            ],
+            [
+              -3,
+              2
+            ]
+          ],
+          "labels": [
+            "A",
+            "B",
+            "C"
+          ]
         },
         "caption": {
-          "en": "Circle sector and chord geometry with radius r = 6 and central angle 120°.",
+          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
           "ar": null
         }
       },
@@ -351,11 +382,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example C — Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 4 \\) and vertical component \\( \\Delta y = 9 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (4)^2 + (9)^2 = 16 + 81 = \\mathbf{97} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(4)(9) = \\mathbf{18} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> Consider the vector field \\( \\mathbf{B}(a, y, z) = \\langle 6a,\\, 26y,\\, 11z \\rangle \\) on \\( \\mathbb{R}^3 \\). Find the exact value of the scalar divergence \\( \\nabla \\cdot \\mathbf{B} \\).</p><p><strong>Step-by-Step Solution:</strong> The divergence is \\( 6 + 26 + 11 = 43 \\).</p>",
           "ar": null
         }
       },
@@ -363,11 +394,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example D — Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> Maximize \\( f(x,y)=4 x y \\) subject to \\( x+y=-2 \\). Find the maximum value.</p><p><strong>Step-by-Step Solution:</strong> \\( g(x,y)=x+y \\), \\( \\nabla g=(1,1) \\). \\( \\nabla f=(4y,4x) \\); setting \\( \\nabla f=\\lambda\\nabla g \\) gives \\( 4y=\\lambda=4x\\Rightarrow x=y \\). With \\( x+y=-2 \\): \\( x=y=-1 \\), so \\( f=4 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Computing angle at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)",
+              "ar": null
+            },
+            {
+              "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
+              "ar": null
+            },
+            {
+              "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
+              "ar": null
+            },
+            {
+              "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
+              "ar": null
+            },
+            {
+              "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Assuming \\((AB)^{-1} = A^{-1}B^{-1}\\)",
+              "ar": null
+            },
+            {
+              "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
+              "ar": null
+            },
+            {
+              "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Multivariable & Vector Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -380,7 +488,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Set first partial derivatives equal to zero:</strong> \\[ f_x = 6x^2 + y^2 + 10x = 0, \\qquad f_y = 2xy + 2y = 2y(x + 1) = 0. \\]</p><p><strong>Step 2: Solve the system:</strong> From \\( f_y = 0 \\), either \\( y = 0 \\) or \\( x = -1 \\).</p><ul><li>If \\( y = 0 \\): \\( 6x^2 + 10x = 2x(3x + 5) = 0 \\implies x = 0 \\) or \\( x = -5/3 \\). Critical points: \\( (0, 0) \\) and \\( (-5/3, 0) \\).</li><li>If \\( x = -1 \\): \\( 6(-1)^2 + y^2 + 10(-1) = 0 \\implies 6 + y^2 - 10 = 0 \\implies y^2 = 4 \\implies y = \\pm 2 \\). Critical points: \\( (-1, 2) \\) and \\( (-1, -2) \\).</li></ul><p><strong>Step 3: Compute second-order partials:</strong> \\[ f_{xx} = 12x + 10, \\quad f_{yy} = 2x + 2, \\quad f_{xy} = 2y. \\] \\[ D = f_{xx}f_{yy} - (f_{xy})^2 = (12x + 10)(2x + 2) - 4y^2. \\]</p><p><strong>Step 4: Classify each point:</strong></p><ul><li>At \\( (0, 0) \\): \\( D = (10)(2) - 0 = 20 > 0 \\) and \\( f_{xx} = 10 > 0 \\implies \\mathbf{Local\\ Minimum} \\).</li><li>At \\( (-5/3, 0) \\): \\( f_{xx} = -10 \\), \\( f_{yy} = -4/3 \\implies D = (-10)(-4/3) - 0 = 40/3 > 0 \\) and \\( f_{xx} = -10 < 0 \\implies \\mathbf{Local\\ Maximum} \\).</li><li>At \\( (-1, 2) \\): \\( f_{xx} = -2 \\), \\( f_{yy} = 0 \\implies D = 0 - 4(4) = -16 < 0 \\implies \\mathbf{Saddle\\ Point} \\).</li><li>At \\( (-1, -2) \\): \\( D = 0 - 4(4) = -16 < 0 \\implies \\mathbf{Saddle\\ Point} \\).</li></ul>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers</em> and start from \\( f(x, y) = 2x^3 + xy^2 + 5x^2 + y^2 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( f_x = 6x^2 + y^2 + 10x = 0, \\qquad f_y = 2xy + 2y = 2y(x + 1) = 0. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -391,27 +513,69 @@
         "solution": {
           "en": "<p><strong>Step 1: Set up the Lagrange equations:</strong> Constraint \\( g(x, y) = x^2 + y^2 = 25 \\). \\[ \\nabla f = \\lambda \\nabla g \\implies \\langle 3, 4 \\rangle = \\lambda \\langle 2x, 2y \\rangle. \\] This gives: \\[ 3 = 2\\lambda x \\implies x = \\frac{3}{2\\lambda}, \\qquad 4 = 2\\lambda y \\implies y = \\frac{2}{\\lambda}. \\]</p><p><strong>Step 2: Substitute into constraint:</strong> \\[ \\left(\\frac{3}{2\\lambda}\\right)^2 + \\left(\\frac{2}{\\lambda}\\right)^2 = 25 \\implies \\frac{9}{4\\lambda^2} + \\frac{16}{4\\lambda^2} = 25 \\implies \\frac{25}{4\\lambda^2} = 25. \\] \\[ 4\\lambda^2 = 1 \\implies \\lambda^2 = \\frac{1}{4} \\implies \\lambda = \\pm \\frac{1}{2}. \\]</p><p><strong>Step 3: Find corresponding points:</strong></p><ul><li>For \\( \\lambda = 1/2 \\): \\( x = \\frac{3}{2(1/2)} = 3 \\), \\( y = \\frac{2}{1/2} = 4 \\implies (3, 4) \\).</li><li>For \\( \\lambda = -1/2 \\): \\( x = -3 \\), \\( y = -4 \\implies (-3, -4) \\).</li></ul><p><strong>Step 4: Evaluate \\( f \\):</strong> \\[ f(3, 4) = 3(3) + 4(4) = 9 + 16 = 25 \\quad (\\text{Maximum}), \\] \\[ f(-3, -4) = 3(-3) + 4(-4) = -9 - 16 = -25 \\quad (\\text{Minimum}). \\]</p>",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers</em> and start from \\( f(x, y) = 3x + 4y \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( g(x, y) = x^2 + y^2 = 25 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Easy]</strong> Let \\( T = [0, 19] \\times [0, 10] \\) be a rectangle in the \\( (a, y) \\)-plane. Find the exact value of the double integral \\( \\displaystyle\\iint_{T} 36ay\\,dA \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers</em> and start from \\( T = [0, 19] \\times [0, 10] \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 9(19^2)(10^2) = 324900 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "Integrating gives \\( 9(19^2)(10^2) = 324900 \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> Let the linear scalar potential be \\( B(a, y) = 18a + 20y - 2 \\). Find the exact value of the squared gradient norm \\( \\|\\nabla B\\|^2 \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers</em> and start from \\( B(a, y) = 18a + 20y - 2 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\nabla B = \\langle 18, 20 \\rangle \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Since \\( \\nabla B = \\langle 18, 20 \\rangle \\), \\( \\|\\nabla B\\|^2 = 18^2 + 20^2 = 724 \\).",
           "ar": null
         }
       }

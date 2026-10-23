@@ -30,43 +30,48 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Sequences & Series — Coordinate Curve & Tangent Analysis (2)",
+          "title": "Sequences & Series — Geometric Partial Sums & Asymptotic Limit",
           "xrange": [
-            -4,
-            4
+            0,
+            6
           ],
           "yrange": [
-            -3,
-            9
+            0,
+            5
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "4*(1 - Math.pow(0.5, x))",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "label": "S(x) = 4(1 − 0.5ˣ)"
             },
             {
-              "fn": "2*x - 3",
+              "fn": "4",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "label": "Limit S∞ = 4"
             }
           ],
           "points": [
             {
               "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
+              "y": 2,
+              "label": "S₁ = 2"
             },
             {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "x": 2,
+              "y": 3,
+              "label": "S₂ = 3"
+            },
+            {
+              "x": 3,
+              "y": 3.5,
+              "label": "S₃ = 3.5"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Convergence of geometric partial sums Sₙ = 4(1 − (1/2)ⁿ) toward the horizontal asymptote S∞ = 4.",
           "ar": null
         }
       },
@@ -383,6 +388,83 @@
         }
       },
       {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Sequences & Series)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Applying \\(1 + nx + \\dots\\) directly to \\((5 + x)^{-1}\\)",
+              "ar": null
+            },
+            {
+              "en": "The general binomial series is centered at \\(1 + u\\), not \\(a + u\\).",
+              "ar": null
+            },
+            {
+              "en": "Factor out \\(5^{-1}\\) first: \\(\\frac{1}{5}\\left(1 + \\frac{x}{5}\\right)^{-1}\\) valid for \\(|x| < 5\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Assuming \\(\\lim_{n\\to\\infty} a_n = 0\\) guarantees \\(\\sum a_n\\) converges",
+              "ar": null
+            },
+            {
+              "en": "The harmonic series \\(\\sum \\frac{1}{n}\\) has \\(1/n \\to 0\\) yet diverges to \\(\\infty\\).",
+              "ar": null
+            },
+            {
+              "en": "Use the \\(p\\)-series test (\\(p > 1\\)), Ratio Test, or Integral Test to prove convergence.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Counting terms in \\(\\sum_{k=0}^{n} a_k\\) as \\(n\\) terms",
+              "ar": null
+            },
+            {
+              "en": "Overlooks the \\(k = 0\\) initial index.",
+              "ar": null
+            },
+            {
+              "en": "Use \\(\\text{count} = \\text{upper} - \\text{lower} + 1 = n - 0 + 1 = n + 1\\) terms.",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Sequences & Series",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Binomial Validity Shortcut (ACT International Subject Test — Math 2):</strong> When asked for the range of \\(x\\) for which the expansion of \\((a + bx)^n\\) is valid, write \\(\\left|\\dfrac{bx}{a}\\right| < 1 \\implies |x| < \\left|\\dfrac{a}{b}\\right|\\). If multiplying two expansions, take the <em>intersection</em> (smaller radius) of the two validity intervals.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "id": "act2l2-sequences-series-p1",
         "question": {
@@ -392,7 +474,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Express terms in terms of \\( a_1 \\) and \\( r \\):</strong><br>\\[ a_2 = a_1 r = 12 \\] \\[ a_5 = a_1 r^4 = \\frac{32}{9} \\]</p><p><strong>Step 2: Divide \\( a_5 \\) by \\( a_2 \\):</strong><br>\\[ \\frac{a_1 r^4}{a_1 r} = r^3 = \\frac{32/9}{12} = \\frac{32}{108} = \\frac{8}{27} \\]</p><p><strong>Step 3: Extract the common ratio \\( r \\):</strong><br>\\[ r = \\sqrt[3]{\\frac{8}{27}} = \\mathbf{\\frac{2}{3}}. \\]</p><p><strong>Step 4: Find \\( a_1 \\):</strong><br>\\[ a_1\\left(\\frac{2}{3}\\right) = 12 \\implies a_1 = 12 \\times \\frac{3}{2} = \\mathbf{18}. \\]</p><p><strong>Step 5: Compute the infinite sum \\( S_\\infty \\):</strong><br>Since \\( |r| = \\frac{2}{3} < 1 \\), Theorem 3.2 guarantees convergence:<br>\\[ S_\\infty = \\frac{a_1}{1 - r} = \\frac{18}{1 - 2/3} = \\frac{18}{1/3} = \\mathbf{54}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences & Series</em> and start from \\( 12 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( a_1 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -404,7 +500,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Solve for common difference \\( d \\):</strong><br>\\[ a_{10} - a_4 = (10 - 4)d = 6d \\] \\[ 41 - 17 = 24 \\implies 6d = 24 \\implies \\mathbf{d = 4}. \\]</p><p><strong>Step 2: Solve for the first term \\( a_1 \\):</strong><br>\\[ a_4 = a_1 + 3d \\implies 17 = a_1 + 3(4) \\implies a_1 = 17 - 12 = \\mathbf{5}. \\]</p><p><strong>Step 3: Find boundary terms for the range \\( n = 11 \\) to \\( 25 \\):</strong><br>Number of terms: \\( N = 25 - 11 + 1 = 15 \\).<br>Term \\( a_{11} = a_1 + 10d = 5 + 10(4) = 45 \\).<br>Term \\( a_{25} = a_1 + 24d = 5 + 24(4) = 5 + 96 = 101 \\).</p><p><strong>Step 4: Compute the sum:</strong><br>\\[ \\sum_{k=11}^{25} a_k = \\frac{N}{2}\\big(a_{11} + a_{25}\\big) = \\frac{15}{2}(45 + 101) = \\frac{15}{2}(146) = 15 \\times 73 = \\mathbf{1095}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences & Series</em> and start from \\( 17 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( d \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -416,7 +526,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Separate the non-repeating and repeating components:</strong><br>\\[ 0.3\\overline{18} = \\frac{3}{10} + 0.0181818\\dots \\]</p><p><strong>Step 2: Represent the repeating part as an infinite geometric series:</strong><br>\\[ 0.0181818\\dots = \\frac{18}{1000} + \\frac{18}{100000} + \\cdots \\]<br>Here the initial term is \\( a_1 = \\frac{18}{1000} \\) and the common ratio is \\( r = \\frac{1}{100} \\).</p><p><strong>Step 3: Sum the geometric series:</strong><br>\\[ S_\\infty = \\frac{a_1}{1 - r} = \\frac{\\frac{18}{1000}}{1 - \\frac{1}{100}} = \\frac{\\frac{18}{1000}}{\\frac{99}{100}} = \\frac{18}{1000} \\times \\frac{100}{99} = \\frac{18}{990} = \\frac{2}{110} = \\frac{1}{55}. \\]</p><p><strong>Step 4: Combine with the initial non-repeating term:</strong><br>\\[ 0.3\\overline{18} = \\frac{3}{10} + \\frac{1}{55} = \\frac{33}{110} + \\frac{2}{110} = \\frac{35}{110} = \\mathbf{\\frac{7}{22}}. \\]<br>(Verification: \\( 7 \\div 22 = 0.3181818\\dots \\) ✓).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences & Series</em> and start from \\( 0.3\\overline{18} = 0.3181818\\dots \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 0.3\\overline{18} = \\frac{3}{10} + 0.0181818\\dots \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -428,7 +552,21 @@
         "solution": {
           "en": "<p><strong>Part 1: Telescoping sum:</strong><br>Write out the first few and last terms:<br>\\[ \\left(1 - \\frac{1}{2}\\right) + \\left(\\frac{1}{2} - \\frac{1}{3}\\right) + \\cdots + \\left(\\frac{1}{50} - \\frac{1}{51}\\right) \\]<br>All intermediate terms cancel pairwise, leaving:<br>\\[ 1 - \\frac{1}{51} = \\mathbf{\\frac{50}{51}}. \\]</p><p><strong>Part 2: Infinite series:</strong><br>Factor the numerator and identify initial term and ratio:<br>\\[ \\sum_{n=1}^{\\infty} \\frac{3}{4^n} = \\frac{3}{4} + \\frac{3}{16} + \\frac{3}{64} + \\cdots \\]<br>Initial term \\( a_1 = \\frac{3}{4} \\), ratio \\( r = \\frac{1}{4} \\).<br>\\[ S_\\infty = \\frac{a_1}{1 - r} = \\frac{3/4}{1 - 1/4} = \\frac{3/4}{3/4} = \\mathbf{1}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences & Series</em> and start from \\( \\sum_{k=1}^{50} \\left( \\frac{1}{k} - \\frac{1}{k+1} \\right) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

@@ -26,43 +26,38 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "AP Calculus AB Free-Response Questions (FRQs) — Coordinate Curve & Tangent Analysis (2)",
+          "title": "AP Calculus AB Free-Response Questions (FRQs) — Linear System Intersection & Equilibrium",
           "xrange": [
-            -4,
-            4
+            -2,
+            6
           ],
           "yrange": [
-            -3,
-            9
+            -2,
+            10
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "2*x + 1",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "label": "y = 2x + 1"
             },
             {
-              "fn": "2*x - 3",
+              "fn": "-x + 7",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "label": "y = −x + 7"
             }
           ],
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "x": 2,
+              "y": 5,
+              "label": "Intersection (2, 5)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Coordinate intersection of linear system y = 2x + 1 and y = −x + 7 at unique equilibrium point (2, 5).",
           "ar": null
         }
       },
@@ -169,43 +164,81 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "AP Calculus AB Free-Response Questions (FRQs) — Coordinate Curve & Tangent Analysis (1)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
           "fns": [
-            {
-              "fn": "x*x - 1",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 1"
-            },
-            {
-              "fn": "2*x - 2",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
+            "- (x-1)**2 + 4",
+            "(x-4)**2 - 2"
+          ],
+          "xlim": [
+            -1,
+            6
+          ],
+          "ylim": [
+            -3,
+            6
           ],
           "points": [
             {
-              "x": 1,
-              "y": 0,
-              "label": "(1, 0)"
+              "x": 0,
+              "y": 3,
+              "label": "(0, 3)"
             },
             {
-              "x": 0,
-              "y": -1,
-              "label": "(0, -1)"
+              "x": 1,
+              "y": 4,
+              "label": "(c, f(c))"
+            },
+            {
+              "x": 4,
+              "y": -2,
+              "label": "(e, f(e))"
+            },
+            {
+              "x": 5,
+              "y": 1,
+              "label": "(5, f(5))"
+            }
+          ],
+          "shaded": [
+            {
+              "type": "fill_between",
+              "f": "0",
+              "g": "- (x-1)**2 + 4",
+              "xlim": [
+                0,
+                1
+              ]
+            },
+            {
+              "type": "fill_between",
+              "f": "- (x-1)**2 + 4",
+              "g": "0",
+              "xlim": [
+                1,
+                3
+              ]
+            },
+            {
+              "type": "fill_between",
+              "f": "0",
+              "g": "(x-4)**2 - 2",
+              "xlim": [
+                3,
+                4
+              ]
+            },
+            {
+              "type": "fill_between",
+              "f": "(x-4)**2 - 2",
+              "g": "0",
+              "xlim": [
+                4,
+                5
+              ]
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 1 and its instantaneous tangent line at x = 1.",
+          "en": "AP Calculus AB Free-Response Questions (FRQs) — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in AP Calculus AB Free-Response Questions (FRQs).",
           "ar": null
         }
       },
@@ -256,13 +289,13 @@
       },
       {
         "kind": "callout",
-        "style": "example",
+        "style": "pf",
         "label": {
-          "en": "Worked Example A — Instantaneous Rate of Change & Tangent Line",
+          "en": "◆ Why It Works — First-Principles Derivation (AP Calculus AB Free-Response Questions (FRQs))",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 2x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(3) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 6x^2 - 2x \\).</li><li>Substitute \\( x = 3 \\): \\( f'(3) = 6(3)^2 - 2(3) = 54 - 6 = \\mathbf{48} \\).</li></ol>",
+          "en": "<p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>",
           "ar": null
         }
       },
@@ -270,11 +303,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example B — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example A — AP Calculus AB Free-Response Questions (FRQs) (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 3x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(6) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 9x^2 - 2x \\).</li><li>Substitute \\( x = 6 \\): \\( f'(6) = 9(6)^2 - 2(6) = 324 - 12 = \\mathbf{312} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> A differentiable function \\( f \\) is defined on the interval \\( [-4, 4] \\). The graph of \\( f' \\), the derivative of \\( f \\), is shown in the figure above. The graph of \\( f' \\) consists of two line segments and a semicircle.\n\n(a) Find the value of \\( f(2) - f(-2) \\). Show the setup for your answer.\n\n(b) For how many values of \\( c \\) in the interval \\( (-4, 4) \\) does \\( f'(c) = 0 \\)? Explain your reasoning.\n\n(c) The function \\( f \\) has a local maximum at \\( x = k \\). Find the value of \\( k \\). Explain your reasoning.\n\n(d) The function \\( f \\) has an inflection point at \\( x = p \\). Find the value of \\( p \\). Explain your reasoning.</p><p><strong>Step-by-Step Solution:</strong> **(a)** By the Fundamental Theorem of Calculus, \\( f(2) - f(-2) = \\int_{-2}^{2} f'(x) \\, dx \\). The region from \\( x = -2 \\) to \\( x = 2 \\) is a semicircle with radius 2. The area of this semicircle is \\( \\frac{1}{2} \\pi (2)^2 = 2\\pi \\). Therefore, \\( f(2) - f(-2) = 2\\pi \\).\n\n**(b)** The graph of \\( f'(x) \\) is shown. \\( f'(c) = 0 \\) when the graph of \\( f' \\) intersects the x-axis. This occurs at \\( x = -4 \\) and \\( x = 2 \\). Since we are looking for values of \\( c \\) in the open interval \\( (-4, 4) \\), there is one such value, \\( c = 2 \\).\n\n**(c)** A local maximum of \\( f \\) occurs when \\( f' \\) changes from positive to negative. Looking at the graph of \\( f' \\), this occurs at \\( x = 2 \\), where \\( f' \\) changes from positive to negative. Therefore, \\( k = 2 \\).\n\n**(d)** An inflection point of \\( f \\) occurs when \\( f'' \\) changes sign. This means that \\( f' \\) changes from increasing to decreasing or vice versa. Looking at the graph of \\( f' \\), the slope of \\( f' \\) (which is \\( f'' \\)) changes at \\( x = -2 \\) and \\( x = 2 \\). At \\( x = -2 \\), \\( f' \\) changes from decreasing to increasing. At \\( x = 2 \\), \\( f' \\) changes from increasing to decreasing. Inflection points occur where the concavity of \\( f \\) changes, which is where \\( f'' \\) changes sign. The sign of \\( f'' \\) changes at \\( x = -2 \\) (from negative to positive) and at \\( x = 2 \\) (from positive to negative). However, the question asks for *an* inflection point. The graph of \\( f' \\) has a corner at \\( x = -2 \\), indicating a change in concavity of \\( f \\). The graph also has a point where the slope changes drastically at \\( x=2 \\) (from positive slope to zero slope for the semicircle). Looking closely at the graph, the derivative \\( f' \\) itself changes behavior at \\( x = -2 \\) and \\( x = 2 \\). The concavity of \\( f \\) changes where \\( f'' \\) changes sign.  \\( f'' \\) is the slope of \\( f' \\). The slope of \\( f' \\) is negative for \\( x < -2 \\), zero for \\( -2 < x < 2 \\), and positive for \\( x > 2 \\).  This means \\( f'' \\) changes sign at \\( x = -2 \\) (negative to zero, then zero to positive if we consider the end of the semicircle).  The graph of \\( f' \\) has a corner at \\( x = -2 \\) and the slope of \\( f' \\) is 0 for \\( x > 2 \\). The concavity of \\( f \\) changes at \\( x = -2 \\).  The rate of change of \\( f' \\) (which is \\( f'' \\)) changes from negative to positive at \\( x=-2 \\). Thus, \\( p = -2 \\). <strong>Final Answer:</strong> There are two values of \\( c \\) for which \\( f'(c)=0 \\)..</p>",
           "ar": null
         }
       },
@@ -282,11 +315,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example B — AP Calculus AB Free-Response Questions (FRQs) (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 4x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(9) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 12x^2 - 2x \\).</li><li>Substitute \\( x = 9 \\): \\( f'(9) = 12(9)^2 - 2(9) = 972 - 18 = \\mathbf{954} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> Consider the function \\( f(x) \\) whose graph is shown below. The graph consists of a line segment and a quarter circle. The line segment connects the points \\( (2, 4) \\) and \\( (4, 0) \\). The quarter circle is in the second quadrant and is centered at \\( (0, 0) \\) with radius 2. Let \\( A(x) \\) be the area of the region bounded by the graph of \\( f(t) \\), the \\( t \\)-axis, and the lines \\( t = 0 \\) and \\( t = x \\).\n\n(a) Find \\( A(3) \\).</p><p><strong>Step-by-Step Solution:</strong> The function \\( f(x) \\) is defined piecewise. For \\( 0 \\le t \\le 2 \\), \\( f(t) \\) is the upper part of a circle centered at the origin with radius 2, so \\( f(t) = \\sqrt{4 - t^2} \\). For \\( 2 < t \\le 4 \\), \\( f(t) \\) is a line segment connecting \\( (2, 4) \\) and \\( (4, 0) \\). The equation of this line can be found using the two-point form: \\( y - 0 = \\frac{4 - 0}{2 - 4}(x - 4) \\), which simplifies to \\( y = -2(x - 4) \\), so \\( f(t) = -2(t - 4) \\).\n\nTo find \\( A(3) \\), we need to calculate the definite integral \\( \\int_{0}^{3} f(t) \\, dt \\). We split this integral into two parts based on the definition of \\( f(t) \\):\n\n\\( A(3) = \\int_{0}^{2} f(t) \\, dt + \\int_{2}^{3} f(t) \\, dt \\)\n\nFor the first part, \\( \\int_{0}^{2} \\sqrt{4 - t^2} \\, dt \\), this represents the area of a quarter circle of radius 2, which is \\( \\frac{1}{4}\\pi r^2 = \\frac{1}{4}\\pi (2^2) = \\pi \\).\n\nFor the second part, \\( \\int_{2}^{3} (-2(t - 4)) \\, dt \\), we can evaluate this integral:\n\n\\( \\int_{2}^{3} (-2t + 8) \\, dt = [-t^2 + 8t]_{2}^{3} \\)\n\nEvaluating at the limits:\n\n\\( (-3^2 + 8 \\cdot 3) - (-2^2 + 8 \\cdot 2) \\)\n\n\\( (-9 + 24) - (-4 + 16) \\)\n\n\\( 15 - 12 = 3 \\).\n\nTherefore, \\( A(3) = \\pi + 3 \\).\n\n*Common Misconceptions:* Students might incorrectly assume the function is a single simple shape or miscalculate the line segment's equation. They might also forget that the first part of the integral represents a quarter circle's area and attempt to integrate \\( \\sqrt{4-t^2} \\) directly, which is more complex.</p>",
           "ar": null
         }
       },
@@ -294,11 +327,112 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example C — AP Calculus AB Free-Response Questions (FRQs) (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> Consider the function \\( f(x) \\) whose graph is shown above. The graph of \\( f(x) \\) consists of line segments and a quarter circle. Let \\( g(x) = \\int_{0}^{x} f(t) \\, dt \\).</p><p><strong>Step-by-Step Solution:</strong> By the Fundamental Theorem of Calculus Part 1, \\( g'(x) = f(x) \\). We need to find \\( g'(2) \\), which means we need to evaluate \\( f(2) \\). From the graph, at \\( x=2 \\), the function \\( f(x) \\) is on a line segment connecting \\( (0, 4) \\) and \\( (4, 0) \\). The equation of this line segment can be found. The slope is \\( m = \\frac{0 - 4}{4 - 0} = -1 \\). Using the point-slope form with \\( (4, 0) \\), we get \\( y - 0 = -1(x - 4) \\), which simplifies to \\( y = -x + 4 \\). Therefore, \\( f(x) = -x + 4 \\) for \\( 0 \\le x \\le 4 \\). Evaluating \\( f(2) \\) gives \\( f(2) = -2 + 4 = 2 \\). Thus, \\( g'(2) = f(2) = 2 \\). <strong>Final Answer:</strong> g'(2) = 2.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — AP Calculus AB Free-Response Questions (FRQs) (Medium Application)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem (Medium):</strong> Using a right Riemann sum with 4 subintervals of equal width, approximate \\(\\displaystyle\\int_{0}^{4} (x+2)\\,dx\\).</p><p><strong>Step-by-Step Solution:</strong> With \\(\\Delta x=1\\), the right sum is \\(1(3+4+5+6) = 18\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Exam Traps — AP Calculus AB Free-Response Questions (FRQs)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. Adding Successive Percentages or Averaging Speeds Arithmetically:</strong> On College Board AP Calculus AB, a \\(20\\%\\) discount followed by a \\(20\\%\\) increase gives \\(0.80 \\times 1.20 = 0.96\\) (a net \\(4\\%\\) loss, not \\(0\\%\\)). Likewise, average speed for a round trip at \\(40\\) and \\(60\\text{ km/h}\\) is \\(\\dfrac{2(40)(60)}{100} = 48\\text{ km/h}\\), never \\(50\\text{ km/h}\\).</p><p><strong>2. Failing to Flip the Inequality Sign When Multiplying/Dividing by a Negative:</strong> In \\(-4x + 6 \\le 10\\), dividing by \\(-4\\) strictly reverses \\(\\le\\) to \\(\\ge\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (AP Calculus AB Free-Response Questions (FRQs))",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Claiming \\(+25\\%\\) followed by \\(-25\\%\\) returns to \\(100\\%\\)",
+              "ar": null
+            },
+            {
+              "en": "The \\(25\\%\\) reduction applies to the larger base \\(1.25 Q_0\\), not \\(Q_0\\).",
+              "ar": null
+            },
+            {
+              "en": "Multiply scale factors: \\(1.25 \\times 0.75 = 0.9375\\) (a \\(6.25\\%\\) net decrease).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Solving \\(-3x > 12\\) as \\(x > -4\\)",
+              "ar": null
+            },
+            {
+              "en": "Dividing by a negative number reverses order on the real number line.",
+              "ar": null
+            },
+            {
+              "en": "Flip the inequality symbol whenever multiplying or dividing by a negative: \\(x < -4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing round-trip average speed as \\(\\frac{v_1 + v_2}{2}\\)",
+              "ar": null
+            },
+            {
+              "en": "Time spent at the slower speed is longer than time spent at the faster speed.",
+              "ar": null
+            },
+            {
+              "en": "Use total distance over total time: \\(v_{\\text{avg}} = \\frac{2v_1 v_2}{v_1 + v_2}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — AP Calculus AB Free-Response Questions (FRQs)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>High-Speed Exam Shortcut (College Board AP Calculus AB):</strong> When a linear system asks for a combined expression like \\(3x + 3y\\) rather than \\(x\\) and \\(y\\) individually, add or subtract the two equations directly before isolating either variable—this often yields the target expression in a single step.</p>",
           "ar": null
         }
       },
@@ -311,7 +445,21 @@
         "solution": {
           "en": "<p>Let \\(W(t)\\) be the amount of water. \\(W'(t) = R(t) - P(t)\\). A relative maximum occurs when \\(W'(t) = 0\\) and changes from positive to negative, which occurs when <strong>\\(R(t) = P(t)\\) and \\(R(t)\\) crosses below \\(P(t)\\)</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>AP Calculus AB Free-Response Questions (FRQs)</em> and start from \\(R(t)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(W(t)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -330,7 +478,21 @@
         "solution": {
           "en": "<p>By the Fundamental Theorem of Calculus: \\[ f(2) = f(0) + \\int_0^2 f'(x)\\,dx. \\] The region under \\(f'\\) from \\(x = 0\\) to \\(x = 2\\) is a quarter-circle of radius 2: \\[ \\int_0^2 f'(x)\\,dx = \\frac{1}{4}\\pi(2^2) = \\pi. \\] Therefore, \\[ f(2) = 5 + \\pi \\approx \\mathbf{8.142}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>AP Calculus AB Free-Response Questions (FRQs)</em> and start from \\(f'\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( f(2) = f(0) + \\int_0^2 f'(x)\\,dx. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -349,16 +511,44 @@
         "solution": {
           "en": "<p>Separate variables: \\[ \\frac{dy}{(y-1)^2} = \\cos(x)\\,dx. \\] Integrate both sides: \\[ -\\frac{1}{y - 1} = \\sin(x) + C. \\] Apply initial condition \\(x = 0, y = 2\\): \\[ -\\frac{1}{2 - 1} = \\sin(0) + C \\implies -1 = C. \\] Substitute \\(C = -1\\): \\[ -\\frac{1}{y - 1} = \\sin(x) - 1 \\implies \\frac{1}{y - 1} = 1 - \\sin(x) \\implies y - 1 = \\frac{1}{1 - \\sin(x)} \\implies \\mathbf{y = 1 + \\frac{1}{1 - \\sin(x)}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>AP Calculus AB Free-Response Questions (FRQs)</em> and start from \\(\\frac{dy}{dx} = (y - 1)^2 \\cos(x)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\frac{dy}{(y-1)^2} = \\cos(x)\\,dx. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[AP Calculus AB Free-Response Questions (FRQs) · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> Using a left Riemann sum with 4 subintervals of equal width on \\([0,4]\\), approximate \\(\\displaystyle\\int_{0}^{4} (-x^2+x+4)\\,dx\\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>AP Calculus AB Free-Response Questions (FRQs)</em> and start from \\([0,4]\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\Delta x=1\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "\\(\\Delta x=1\\); heights at the left endpoints give \\(1(4+4+2-2) = 8\\).",
           "ar": null
         }
       }

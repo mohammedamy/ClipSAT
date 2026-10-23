@@ -38,44 +38,44 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Vectors in \\( \\mathbb{R}^n \\) & Inner Product Spaces — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
+          "type": "transformation_grid",
+          "title": "Vectors in \\( \\mathbb{R}^n \\) & Inner Product Spaces — Linear Transformation & Basis Action",
+          "original": [
+            [
+              1,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              3
+            ]
           ],
-          "yrange": [
-            -3,
-            9
+          "transformed": [
+            [
+              -1,
+              1
+            ],
+            [
+              -1,
+              3
+            ],
+            [
+              -3,
+              2
+            ]
           ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
+          "labels": [
+            "A",
+            "B",
+            "C"
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
           "ar": null
         }
       },
@@ -139,6 +139,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Vectors in \\( \\mathbb{R}^n \\) & Inner Product Spaces)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example · Componentwise Calculus & Normalization",
@@ -153,11 +165,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example B — Vectors in \\( \\mathbb{R}^n \\) & Inner Product Spaces (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> Find \\( \\mathbf{u}\\cdot\\mathbf{v} \\) for \\( \\mathbf{u}=(1,4,1) \\), \\( \\mathbf{v}=(3,4,-5) \\).</p><p><strong>Step-by-Step Solution:</strong> \\( \\mathbf{u}\\cdot\\mathbf{v}=1(3)+(4)(4)+(1)(-5)=14 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Vectors in \\( \\mathbb{R}^n \\) & Inner Product Spaces)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Computing angle at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)",
+              "ar": null
+            },
+            {
+              "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
+              "ar": null
+            },
+            {
+              "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
+              "ar": null
+            },
+            {
+              "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
+              "ar": null
+            },
+            {
+              "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Assuming \\((AB)^{-1} = A^{-1}B^{-1}\\)",
+              "ar": null
+            },
+            {
+              "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
+              "ar": null
+            },
+            {
+              "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Vectors in \\( \\mathbb{R}^n \\) & Inner Product Spaces",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Linear Algebra & Matrix Theory):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -170,7 +259,21 @@
         "solution": {
           "en": "<p>Two non-zero vectors are orthogonal if and only if their inner product is zero: \\[ \\mathbf{a} \\cdot \\mathbf{b} = 0. \\] Compute the dot product: \\[ (1)(k) + (2)(4) + (-2)(1) = 0 \\implies k + 8 - 2 = 0 \\implies k + 6 = 0 \\implies \\mathbf{k = -6}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Vectors in \\( \\mathbb{R}^n \\) & Inner Product Spaces</em> and start from \\( \\mathbf{a} = \\begin{pmatrix} 1 \\\\ 2 \\\\ -2 \\end{pmatrix} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\mathbf{a} \\cdot \\mathbf{b} = 0. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -361,7 +464,21 @@
         "solution": {
           "en": "<p>Let \\( \\mathbf{p} = \\begin{pmatrix} 3 \\\\ -1 \\\\ 4 \\end{pmatrix} \\). The orthogonal distance from \\( P \\) to the line \\( \\text{span}(\\mathbf{d}) \\) is \\( \\|\\mathbf{p}_\\perp\\| = \\|\\mathbf{p} - \\text{proj}_\\mathbf{d}(\\mathbf{p})\\| \\).</p><p><strong>Step 1:</strong> Compute projection of \\( \\mathbf{p} \\) onto \\( \\mathbf{d} \\): \\[ \\mathbf{p} \\cdot \\mathbf{d} = 3(2) + (-1)(1) + 4(-2) = 6 - 1 - 8 = -3. \\] \\[ \\|\\mathbf{d}\\|^2 = 2^2 + 1^2 + (-2)^2 = 4 + 1 + 4 = 9. \\] \\[ \\text{proj}_\\mathbf{d}(\\mathbf{p}) = \\frac{-3}{9}\\mathbf{d} = -\\frac{1}{3}\\begin{pmatrix} 2 \\\\ 1 \\\\ -2 \\end{pmatrix} = \\begin{pmatrix} -2/3 \\\\ -1/3 \\\\ 2/3 \\end{pmatrix}. \\]</p><p><strong>Step 2:</strong> Compute orthogonal error vector: \\[ \\mathbf{p}_\\perp = \\begin{pmatrix} 3 - (-2/3) \\\\ -1 - (-1/3) \\\\ 4 - 2/3 \\end{pmatrix} = \\begin{pmatrix} 11/3 \\\\ -2/3 \\\\ 10/3 \\end{pmatrix} = \\frac{1}{3}\\begin{pmatrix} 11 \\\\ -2 \\\\ 10 \\end{pmatrix}. \\]</p><p><strong>Step 3:</strong> Compute distance: \\[ \\text{Distance} = \\|\\mathbf{p}_\\perp\\| = \\frac{1}{3}\\sqrt{11^2 + (-2)^2 + 10^2} = \\frac{1}{3}\\sqrt{121 + 4 + 100} = \\frac{\\sqrt{225}}{3} = \\frac{15}{3} = \\mathbf{5}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Vectors in \\( \\mathbb{R}^n \\) & Inner Product Spaces</em> and start from \\( P(3, -1, 4) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\mathbf{p} = \\begin{pmatrix} 3 \\\\ -1 \\\\ 4 \\end{pmatrix} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -416,16 +533,44 @@
         "solution": {
           "en": "<p><strong>Step 1 · Apply the Parallelogram Law:</strong> \\[ \\|\\mathbf{u} + \\mathbf{v}\\|^2 + \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 2\\|\\mathbf{u}\\|^2 + 2\\|\\mathbf{v}\\|^2. \\] Substitute known values: \\[ 7^2 + \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 2(4^2) + 2(5^2) \\implies 49 + \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 2(16) + 2(25) = 32 + 50 = 82. \\] \\[ \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 82 - 49 = 33 \\implies \\mathbf{\\|\\mathbf{u} - \\mathbf{v}\\| = \\sqrt{33}}. \\]</p><p><strong>Step 2 · Determine the angle \\( \\theta \\):</strong><br>Using the Polarization Identity: \\[ \\mathbf{u} \\cdot \\mathbf{v} = \\frac{1}{4}\\left( \\|\\mathbf{u} + \\mathbf{v}\\|^2 - \\|\\mathbf{u} - \\mathbf{v}\\|^2 \\right) = \\frac{1}{4}(49 - 33) = \\frac{16}{4} = 4. \\] Now compute \\( \\cos\\theta \\): \\[ \\cos\\theta = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|} = \\frac{4}{(4)(5)} = \\frac{1}{5} = 0.2 \\implies \\mathbf{\\theta = \\arccos(0.2) \\approx 78.46^\\circ}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Vectors in \\( \\mathbb{R}^n \\) & Inner Product Spaces</em> and start from \\( \\mathbf{u}, \\mathbf{v} \\in \\mathbb{R}^n \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Vectors in \\( \\mathbb{R}^n \\) & Inner Product Spaces · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> A \\( 3 \\times 3 \\) symmetric matrix \\( C_{p} \\) has eigenvalues \\( \\lambda_1 = 15 \\), \\( \\lambda_2 = 24 \\), and \\( \\lambda_3 = 12 \\). Determine the trace \\( \\text{tr}(C_{p}) \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Vectors in \\( \\mathbb{R}^n \\) & Inner Product Spaces</em> and start from \\( 3 \\times 3 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\lambda_1 + \\lambda_2 + \\lambda_3 = 51 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "The trace equals \\( \\lambda_1 + \\lambda_2 + \\lambda_3 = 51 \\).",
           "ar": null
         }
       }

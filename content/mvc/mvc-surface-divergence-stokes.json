@@ -29,13 +29,44 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "circle",
-          "radius": 6,
-          "labelR": "r = 6",
-          "chordAngle": 120
+          "type": "transformation_grid",
+          "title": "Surface Integrals, the Divergence Theorem & Stokes' Theorem — Linear Transformation & Basis Action",
+          "original": [
+            [
+              1,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "transformed": [
+            [
+              -1,
+              1
+            ],
+            [
+              -1,
+              3
+            ],
+            [
+              -3,
+              2
+            ]
+          ],
+          "labels": [
+            "A",
+            "B",
+            "C"
+          ]
         },
         "caption": {
-          "en": "Circle sector and chord geometry with radius r = 6 and central angle 120°.",
+          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
           "ar": null
         }
       },
@@ -210,6 +241,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Surface Integrals, the Divergence Theorem & Stokes' Theorem)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 8.1 — Level 2: Stokes' Theorem via Surface Replacement",
@@ -341,11 +384,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example B — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example B — Surface Integrals, the Divergence Theorem & Stokes' Theorem (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 3 \\) and vertical component \\( \\Delta y = 6 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (3)^2 + (6)^2 = 9 + 36 = \\mathbf{45} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(3)(6) = \\mathbf{9} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> Suppose consider the vector field \\( \\mathbf{R}(m, y, z) = \\langle 15m,\\, 12y,\\, 4z \\rangle \\) on \\( \\mathbb{R}^3 \\). Evaluate the scalar divergence \\( \\nabla \\cdot \\mathbf{R} \\).</p><p><strong>Step-by-Step Solution:</strong> The divergence is \\( 15 + 12 + 4 = 31 \\).</p>",
           "ar": null
         }
       },
@@ -353,11 +396,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example C — Surface Integrals, the Divergence Theorem & Stokes' Theorem (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 4 \\) and vertical component \\( \\Delta y = 9 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (4)^2 + (9)^2 = 16 + 81 = \\mathbf{97} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(4)(9) = \\mathbf{18} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> Suppose let \\( M = [0, 8] \\times [0, 4] \\) be a rectangle in the \\( (m, y) \\)-plane. Evaluate the double integral \\( \\displaystyle\\iint_{M} 96my\\,dA \\).</p><p><strong>Step-by-Step Solution:</strong> Integrating gives \\( 24(8^2)(4^2) = 24576 \\).</p>",
           "ar": null
         }
       },
@@ -365,11 +408,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example D — Surface Integrals, the Divergence Theorem & Stokes' Theorem (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> Suppose let the linear scalar potential be \\( R(m, y) = 8m + 9y - 14 \\). Evaluate the squared gradient norm \\( \\|\\nabla R\\|^2 \\).</p><p><strong>Step-by-Step Solution:</strong> Since \\( \\nabla R = \\langle 8, 9 \\rangle \\), \\( \\|\\nabla R\\|^2 = 8^2 + 9^2 = 145 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Surface Integrals, the Divergence Theorem & Stokes' Theorem)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Computing angle at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)",
+              "ar": null
+            },
+            {
+              "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
+              "ar": null
+            },
+            {
+              "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
+              "ar": null
+            },
+            {
+              "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
+              "ar": null
+            },
+            {
+              "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Assuming \\((AB)^{-1} = A^{-1}B^{-1}\\)",
+              "ar": null
+            },
+            {
+              "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
+              "ar": null
+            },
+            {
+              "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Surface Integrals, the Divergence Theorem & Stokes' Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Multivariable & Vector Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -382,7 +502,21 @@
         "solution": {
           "en": "<p>Direct surface integration is prohibitive due to cross-coupling transcendental terms.</p><p>Compute the divergence: \\[ \\nabla \\cdot \\mathbf{F} = \\frac{\\partial}{\\partial x}(x^3 + \\sin(yz)) + \\frac{\\partial}{\\partial y}(y^3 + \\cos(xz)) + \\frac{\\partial}{\\partial z}(z^3 + e^{xy}) = 3x^2 + 3y^2 + 3z^2 = 3(x^2+y^2+z^2). \\] Notice that all transcendental cross-terms vanish identically.</p><p>Apply the Divergence Theorem: \\[ \\iint_{\\partial E} \\mathbf{F}\\cdot d\\mathbf{S} = \\iiint_E 3(x^2+y^2+z^2)\\,dV. \\] Convert to spherical coordinates where \\( x^2+y^2+z^2 = \\rho^2 \\) and \\( dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta \\) over the ball of radius \\( R=2 \\): \\[ \\int_0^{2\\pi} \\!\\! \\int_0^\\pi \\!\\! \\int_0^2 3\\rho^2 \\cdot (\\rho^2\\sin\\phi)\\,d\\rho\\,d\\phi\\,d\\theta = 3 \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^\\pi \\sin\\phi\\,d\\phi \\right) \\left( \\int_0^2 \\rho^4\\,d\\rho \\right). \\] \\[ = 3 (2\\pi)(2)\\left( \\frac{2^5}{5} \\right) = 12\\pi \\left( \\frac{32}{5} \\right) = \\frac{384\\pi}{5}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Surface Integrals, the Divergence Theorem & Stokes' Theorem</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -393,27 +527,69 @@
         "solution": {
           "en": "<p>Compute \\( \\nabla \\times \\mathbf{F} \\): \\[ \\nabla \\times \\mathbf{F} = \\begin{vmatrix} \\mathbf{i} & \\mathbf{j} & \\mathbf{k} \\\\ \\partial_x & \\partial_y & \\partial_z \\\\ -y & 2x & (x+y)e^z \\end{vmatrix} = \\langle e^z - 0, \\; 0 - e^z, \\; 2 - (-1) \\rangle = \\langle e^z, -e^z, 3 \\rangle. \\] Choose the planar surface \\( S \\) bounded by \\( C \\) on the plane \\( z = y + 1 \\). Here \\( z = g(x,y) = y + 1 \\). Upward normal vector: \\[ \\mathbf{n}\\,dS = \\langle -g_x, -g_y, 1 \\rangle\\,dA = \\langle 0, -1, 1 \\rangle\\,dA. \\] Dot product: \\[ (\\nabla \\times \\mathbf{F}) \\cdot (\\mathbf{n}\\,dS) = \\langle e^z, -e^z, 3 \\rangle \\cdot \\langle 0, -1, 1 \\rangle\\,dA = (e^z + 3)\\,dA. \\] On the plane \\( z = y+1 \\), this is \\( (e^{y+1} + 3)\\,dA \\). By symmetry over the unit disk \\( D = \\{ x^2+y^2 \\le 1 \\} \\), \\( \\iint_D e^{y+1}\\,dA = e \\iint_D e^y\\,dA \\). In polar coordinates \\( y = r\\sin\\theta \\): \\( \\int_0^{2\\pi} e^{r\\sin\\theta}\\,d\\theta = 2\\pi I_0(r) \\). Alternatively, notice that \\( \\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\int_0^{2\\pi} \\mathbf{F}(\\mathbf{r}(t))\\cdot \\mathbf{r}'(t) dt \\) where \\( \\mathbf{r}(t) = \\langle \\cos t, \\sin t, 1+\\sin t \\rangle \\). Velocity: \\( \\mathbf{r}'(t) = \\langle -\\sin t, \\cos t, \\cos t \\rangle \\). \\[ \\mathbf{F}\\cdot \\mathbf{r}'(t) = (-\\sin t)(-\\sin t) + 2\\cos^2 t + (\\cos t+\\sin t)e^{1+\\sin t}\\cos t. \\] The first two terms give \\( \\sin^2 t + 2\\cos^2 t = 1 + \\cos^2 t \\), integrating to \\( 2\\pi + \\pi = 3\\pi \\). For the third term, \\( \\int_0^{2\\pi} \\cos t e^{\\sin t} \\dots dt = 0 \\) by substitution \\( u = \\sin t \\). Total circulation = \\( 3\\pi \\).</p>",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Surface Integrals, the Divergence Theorem & Stokes' Theorem</em> and start from \\( \\oint_C \\mathbf{F}\\cdot d\\mathbf{r} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\nabla \\times \\mathbf{F} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Medium]</strong> Suppose let the multivariable function \\( A \\) be defined by \\( A(n, y) = 7n^2 y + 3y^2 \\). Evaluate the partial derivative \\( \\dfrac{\\partial A}{\\partial n}(19, 3) \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Surface Integrals, the Divergence Theorem & Stokes' Theorem</em> and start from \\( A \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( n \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "Differentiating with respect to \\( n \\) gives \\( 14ny \\), which equals \\( 798 \\) at \\( (19, 3) \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Surface Integrals, the Divergence Theorem & Stokes' Theorem · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> Suppose consider the vector field \\( \\mathbf{A}(n, y, z) = \\langle 14n,\\, 13y,\\, 7z \\rangle \\) on \\( \\mathbb{R}^3 \\). Evaluate the scalar divergence \\( \\nabla \\cdot \\mathbf{A} \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Surface Integrals, the Divergence Theorem & Stokes' Theorem</em> and start from \\( \\mathbf{A}(n, y, z) = \\langle 14n,\\, 13y,\\, 7z \\rangle \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 14 + 13 + 7 = 34 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Surface Integrals, the Divergence Theorem & Stokes' Theorem · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "The divergence is \\( 14 + 13 + 7 = 34 \\).",
           "ar": null
         }
       }

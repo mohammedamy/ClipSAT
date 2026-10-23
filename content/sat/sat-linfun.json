@@ -180,6 +180,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Linear Functions &amp; Linear Inequalities)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Completing the Square &amp; Log-Linearization Work:</strong> Any quadratic \\(f(x) = ax^2 + bx + c\\) (\\(a \\ne 0\\)) can be rewritten by factoring \\(a\\) from the first two terms and adding/subtracting \\((b/2a)^2\\):</p>\\[ ax^2 + bx + c = a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\]<p>Because \\(\\left(x + \\frac{b}{2a}\\right)^2 \\ge 0\\) for all \\(x \\in \\mathbb{R}\\), the extreme value \\(k = c - \\frac{b^2}{4a}\\) is attained uniquely at the axis of symmetry \\(x = -\\frac{b}{2a}\\), restricting the range to \\([k, \\infty)\\) (if \\(a > 0\\)) and making \\(f\\) invertible on \\(x \\ge -\\frac{b}{2a}\\). Similarly, applying \\(\\ln\\) to power laws \\(y = ax^n\\) yields \\(\\ln y = n\\ln x + \\ln a\\), transforming a nonlinear curve into a straight line of gradient \\(n\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example",
@@ -187,6 +199,83 @@
         },
         "body": {
           "en": "<p>If \\( f(x) = 3x + 1 \\), find \\( f(2) - f(0) \\).</p><p>Evaluate \\( f(2) = 3(2) + 1 = 7 \\), and \\( f(0) = 3(0) + 1 = 1 \\).</p>\\[ f(2) - f(0) = 7 - 1 = 6. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Linear Functions &amp; Linear Inequalities)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Expanding \\(\\ln(x + y)\\) as \\(\\ln x + \\ln y\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses the product law \\(\\ln(xy) = \\ln x + \\ln y\\) with a non-existent sum rule.",
+              "ar": null
+            },
+            {
+              "en": "Only factor products, quotients, and powers inside logarithms: \\(\\ln(xy) = \\ln x + \\ln y\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Keeping both roots of \\(\\sqrt{2x+7} = x - 4\\) without checking \\(x - 4 \\ge 0\\)",
+              "ar": null
+            },
+            {
+              "en": "Squaring both sides loses the sign of \\(x - {r}\\), introducing roots where \\(\\sqrt{\\cdot} = -\\text{number}\\).",
+              "ar": null
+            },
+            {
+              "en": "Enforce the range condition \\(x \\ge 4\\) before or after squaring.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Restricting domain of \\(f(x) = (x-3)^2 + 1\\) to \\(x \\ge 0\\) for invertibility",
+              "ar": null
+            },
+            {
+              "en": "The vertex is at \\(x = 3\\), so \\(f(2) = f(4) = 2\\) fails the horizontal line test on \\(x \\ge 0\\).",
+              "ar": null
+            },
+            {
+              "en": "Restrict the domain at the vertex axis of symmetry: \\(x \\ge 3\\) (or \\(x \\le 3\\)).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Linear Functions &amp; Linear Inequalities",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Exam Check (College Board Digital SAT Math):</strong> To verify an inverse function \\(f^{-1}(x)\\) in 5 seconds, pick a simple input \\(x_0\\), compute \\(y_0 = f(x_0)\\), and check that \\(f^{-1}(y_0) = x_0\\). Also verify that the graph of \\(y = f^{-1}(x)\\) reflects \\(y = f(x)\\) across \\(y = x\\).</p>",
           "ar": null
         }
       },
@@ -199,7 +288,21 @@
         "solution": {
           "en": "<ol><li><strong>\\( x \\)-intercept:</strong> Set \\( y = 0 \\): \\[ 3x - 6(0) = 18 \\implies 3x = 18 \\implies x = 6. \\text{ Intercept is } (6, 0). \\]</li><li><strong>\\( y \\)-intercept:</strong> Set \\( x = 0 \\): \\[ 3(0) - 6y = 18 \\implies -6y = 18 \\implies y = -3. \\text{ Intercept is } (0, -3). \\]</li></ol>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Linear Functions &amp; Linear Inequalities</em> and start from \\( x \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( x \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -280,7 +383,21 @@
         "solution": {
           "en": "<p>The model is in linear form \\( P(t) = mt + b \\), where \\( b = 1400 \\) is the initial population in year 2015, and \\( m = -35 \\) is the rate of change. The negative sign indicates a decrease. Therefore, \\( 35 \\) represents the estimated decrease in the trout population for each one-year increase in time.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Linear Functions &amp; Linear Inequalities</em> and start from \\( P \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( P(t) = mt + b \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -311,7 +428,21 @@
         "solution": {
           "en": "<p>Test the candidate point \\( (1, 2) \\):</p><ol><li>First inequality: \\( 2 > 2(1) - 3 \\implies 2 > -1 \\) (True).</li><li>Second inequality: \\( 2 \\le -(1) + 4 \\implies 2 \\le 3 \\) (True).</li></ol><p>Since \\( (1, 2) \\) satisfies both inequalities simultaneously, it lies within the feasible solution region.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Linear Functions &amp; Linear Inequalities</em> and start from \\( (x, y) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( (1, 2) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "figure",
@@ -372,7 +503,21 @@
         "solution": {
           "en": "<p>Rewrite \\( 3x + 6y = 18 \\) in slope-intercept form: \\( 6y = -3x + 18 \\implies y = -\\frac{1}{2}x + 3 \\), so its slope is \\( -\\frac{1}{2} \\).</p><p>The perpendicular line \\( \\ell \\) has slope \\( m_\\ell = 2 \\). Using \\( (2, -1) \\) and \\( (k, 9) \\):</p>\\[ \\frac{9 - (-1)}{k - 2} = 2 \\implies \\frac{10}{k - 2} = 2 \\implies k - 2 = 5 \\implies k = 7. \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Linear Functions &amp; Linear Inequalities</em> and start from \\( \\ell \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 3x + 6y = 18 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

@@ -39,88 +39,36 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Unit 7 · Differential Equations — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
-          ]
+          "type": "slope_field",
+          "title": "Unit 7 · Differential Equations — Slope Field & Particular Solution Trajectory",
+          "fn": "x - y",
+          "xmin": -3,
+          "xmax": 3,
+          "ymin": -3,
+          "ymax": 3,
+          "solution": {
+            "x0": 0,
+            "y0": 1
+          }
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Slope field for dy/dx = x − y with the integral curve passing through initial condition (0, 1).",
           "ar": null
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Unit 7 · Differential Equations — Coordinate Curve & Tangent Analysis (1)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 1",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 1"
-            },
-            {
-              "fn": "2*x - 2",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": 0,
-              "label": "(1, 0)"
-            },
-            {
-              "x": 0,
-              "y": -1,
-              "label": "(0, -1)"
-            }
-          ]
+          "type": "slope_field",
+          "fn": "0.5*y",
+          "xmin": -3,
+          "xmax": 3,
+          "ymin": -3,
+          "ymax": 3,
+          "title": "Slope Field for dy/dx = ky"
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 1 and its instantaneous tangent line at x = 1.",
+          "en": "Slope Field for dy/dx = ky — illustrating key geometric and analytical relationships in Unit 7 · Differential Equations.",
           "ar": null
         }
       },
@@ -254,6 +202,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Unit 7 · Differential Equations)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example · Slope Field Construction & Solution Verification",
@@ -268,11 +228,100 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example B — Unit 7 · Differential Equations (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> For the differential equation \\(\\dfrac{dy}{dx} = 1x -5y\\), find the slope of the solution curve at the point \\((-2, -1)\\).</p><p><strong>Step-by-Step Solution:</strong> Substitute \\(x=-2\\), \\(y=-1\\): \\(\\dfrac{dy}{dx} = 1(-2) -5(-1) = 3\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Exam Traps — Unit 7 · Differential Equations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. Adding \\(+C\\) Only After Exponentiating in Separable ODEs:</strong> In \\(\\dfrac{dy}{dx} = 5xy\\), integrating gives \\(\\ln|y| = \\tfrac{5}{2}x^2 + C \\implies y = Ae^{5x^2/2}\\) where \\(A = \\pm e^C\\). Writing \\(y = e^{5x^2/2} + C\\) is a fatal algebraic error that forfeits all follow-up marks on College Board AP Calculus AB.</p><p><strong>2. Forgetting to Transform Limits in \\(u\\)-Substitution:</strong> In definite integrals \\(\\int_a^b f(g(x))g'(x)\\,dx\\), you must replace the limits \\(x = a, b\\) with \\(u = g(a), g(b)\\) immediately.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 7 · Differential Equations)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Writing \\(\\ln|y| = x^2 + C \\implies y = e^{x^2} + C\\)",
+              "ar": null
+            },
+            {
+              "en": "Exponentiation distributes over addition as multiplication (\\(e^{a+b} = e^a e^b\\)), not addition.",
+              "ar": null
+            },
+            {
+              "en": "Write \\(y = e^{x^2 + C} = Ae^{x^2}\\) and solve for \\(A\\) using the initial condition.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Leaving original \\(x\\)-limits on a \\(u\\)-substituted definite integral",
+              "ar": null
+            },
+            {
+              "en": "Evaluates the antiderivative \\(F(u)\\) at \\(x\\)-values instead of \\(u(x)\\)-values.",
+              "ar": null
+            },
+            {
+              "en": "Convert bounds immediately: \\(u_{\\text{low}} = u(a)\\) and \\(u_{\\text{high}} = u(b)\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing total distance as \\(\\left|\\int_{t_1}^{t_2} v(t)\\,dt\\right|\\)",
+              "ar": null
+            },
+            {
+              "en": "Cancels forward and backward motion (net displacement) instead of accumulating total path length.",
+              "ar": null
+            },
+            {
+              "en": "Split the integral at every root where \\(v(t) = 0\\) and integrate \\(|v(t)|\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Unit 7 · Differential Equations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Quick Verification Trick (College Board AP Calculus AB):</strong> For any indefinite integral \\(\\int f(x)\\,dx = F(x) + C\\), differentiate your answer \\(F'(x)\\) mentally—especially the coefficient \\(1/k\\) from chain-rule reversal \\(\\int e^{kx}\\,dx = \\tfrac{1}{k}e^{kx} + C\\)—before moving on.</p>",
           "ar": null
         }
       },
@@ -285,7 +334,21 @@
         "solution": {
           "en": "<p>Test (B): \\(y = \\sin(2x) - 3\\cos(2x)\\).<br>First derivative: \\[ y' = 2\\cos(2x) + 6\\sin(2x) \\] Second derivative: \\[ y'' = -4\\sin(2x) + 12\\cos(2x) = -4\\left(\\sin(2x) - 3\\cos(2x)\\right) = -4y \\] Substitute into the differential equation: \\[ y'' + 4y = -4y + 4y = 0 \\] The equation is satisfied identically. Correct answer is <strong>(B)</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 7 · Differential Equations</em> and start from \\(y'' + 4y = 0\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(y = \\sin(2x) - 3\\cos(2x)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -328,7 +391,21 @@
         "solution": {
           "en": "<p>1. Separate variables: \\[ y\\,dy = x\\,dx \\] 2. Integrate both sides: \\[ \\int y\\,dy = \\int x\\,dx \\implies \\frac{y^2}{2} = \\frac{x^2}{2} + C_1 \\implies y^2 = x^2 + C \\] 3. Substitute initial condition \\(x = 0, y = -4\\): \\[ (-4)^2 = 0^2 + C \\implies C = 16 \\implies y^2 = x^2 + 16 \\] 4. Solve for \\(y\\): Since \\(y(0) = -4 < 0\\), choose the negative square root branch: \\[ \\mathbf{y = -\\sqrt{x^2 + 16}} \\] Domain: Since \\(x^2 + 16 > 0\\) for all \\(x\\), \\(y\\) is strictly negative and never zero. The domain is <strong>\\((-\\infty, \\infty)\\)</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 7 · Differential Equations</em> and start from \\(\\frac{dy}{dx} = \\frac{x}{y}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( y\\,dy = x\\,dx \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -371,16 +448,44 @@
         "solution": {
           "en": "<p>General solution: \\(P(t) = P_0 e^{kt}\\).<br>From given data: \\[ P(2) = P_0 e^{2k} = 400 \\] \\[ P(6) = P_0 e^{6k} = 1600 \\] Divide the two equations: \\[ \\frac{P_0 e^{6k}}{P_0 e^{2k}} = \\frac{1600}{400} \\implies e^{4k} = 4 \\implies e^{2k} = \\sqrt{4} = 2 \\] Since \\(e^{2k} = 2\\), the population doubles every 2 hours: <strong>Doubling time is 2 hours</strong>.<br>To find \\(P_0\\): \\[ P_0 e^{2k} = P_0 (2) = 400 \\implies \\mathbf{P_0 = 200}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 7 · Differential Equations</em> and start from \\(\\frac{dP}{dt} = kP\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(P(t) = P_0 e^{kt}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Unit 7 · Differential Equations · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> For the differential equation \\(\\dfrac{dy}{dx} = 1x -5y\\), find the slope of the solution curve at the point \\((2, -3)\\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 7 · Differential Equations</em> and start from \\(\\dfrac{dy}{dx} = 1x -5y\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x=2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Substitute \\(x=2\\), \\(y=-3\\): \\(\\dfrac{dy}{dx} = 1(2) -5(-3) = 17\\).",
           "ar": null
         }
       }

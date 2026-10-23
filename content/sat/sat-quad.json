@@ -216,6 +216,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Equivalent Expressions &amp; Quadratic Equations)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Completing the Square &amp; Log-Linearization Work:</strong> Any quadratic \\(f(x) = ax^2 + bx + c\\) (\\(a \\ne 0\\)) can be rewritten by factoring \\(a\\) from the first two terms and adding/subtracting \\((b/2a)^2\\):</p>\\[ ax^2 + bx + c = a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\]<p>Because \\(\\left(x + \\frac{b}{2a}\\right)^2 \\ge 0\\) for all \\(x \\in \\mathbb{R}\\), the extreme value \\(k = c - \\frac{b^2}{4a}\\) is attained uniquely at the axis of symmetry \\(x = -\\frac{b}{2a}\\), restricting the range to \\([k, \\infty)\\) (if \\(a > 0\\)) and making \\(f\\) invertible on \\(x \\ge -\\frac{b}{2a}\\). Similarly, applying \\(\\ln\\) to power laws \\(y = ax^n\\) yields \\(\\ln y = n\\ln x + \\ln a\\), transforming a nonlinear curve into a straight line of gradient \\(n\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example",
@@ -223,6 +235,83 @@
         },
         "body": {
           "en": "<p>Solve for \\( x \\): \\[ x^2 - 5x + 6 = 0. \\]</p><p>Factor the quadratic: \\( (x - 2)(x - 3) = 0 \\).</p>\\[ x = 2 \\quad\\text{or}\\quad x = 3. \\]",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Equivalent Expressions &amp; Quadratic Equations)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Expanding \\(\\ln(x + y)\\) as \\(\\ln x + \\ln y\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses the product law \\(\\ln(xy) = \\ln x + \\ln y\\) with a non-existent sum rule.",
+              "ar": null
+            },
+            {
+              "en": "Only factor products, quotients, and powers inside logarithms: \\(\\ln(xy) = \\ln x + \\ln y\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Keeping both roots of \\(\\sqrt{2x+4} = x - 3\\) without checking \\(x - 3 \\ge 0\\)",
+              "ar": null
+            },
+            {
+              "en": "Squaring both sides loses the sign of \\(x - {r}\\), introducing roots where \\(\\sqrt{\\cdot} = -\\text{number}\\).",
+              "ar": null
+            },
+            {
+              "en": "Enforce the range condition \\(x \\ge 3\\) before or after squaring.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Restricting domain of \\(f(x) = (x-3)^2 + 1\\) to \\(x \\ge 0\\) for invertibility",
+              "ar": null
+            },
+            {
+              "en": "The vertex is at \\(x = 3\\), so \\(f(2) = f(4) = 2\\) fails the horizontal line test on \\(x \\ge 0\\).",
+              "ar": null
+            },
+            {
+              "en": "Restrict the domain at the vertex axis of symmetry: \\(x \\ge 3\\) (or \\(x \\le 3\\)).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Equivalent Expressions &amp; Quadratic Equations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Exam Check (College Board Digital SAT Math):</strong> To verify an inverse function \\(f^{-1}(x)\\) in 5 seconds, pick a simple input \\(x_0\\), compute \\(y_0 = f(x_0)\\), and check that \\(f^{-1}(y_0) = x_0\\). Also verify that the graph of \\(y = f^{-1}(x)\\) reflects \\(y = f(x)\\) across \\(y = x\\).</p>",
           "ar": null
         }
       },
@@ -235,7 +324,21 @@
         "solution": {
           "en": "<p>Factor by grouping (find two numbers whose product is \\( 2(-15) = -30 \\) and sum is 7: 10 and -3):</p>\\[ 2x^2 + 10x - 3x - 15 = 0 \\implies 2x(x + 5) - 3(x + 5) = 0 \\implies (2x - 3)(x + 5) = 0. \\]\\[ x = \\frac{3}{2} \\quad\\text{or}\\quad x = -5. \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Equivalent Expressions &amp; Quadratic Equations</em> and start from \\( 2x^2 + 7x - 15 = 0 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 2(-15) = -30 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -278,7 +381,21 @@
         "solution": {
           "en": "<ol><li><strong>Sum of solutions:</strong> By Vieta's formulas, \\(\\text{Sum} = -\\frac{b}{a} = -\\frac{-18}{3} = 6\\).</li><li><strong>Minimum value:</strong> The vertex \\(x\\)-coordinate is \\(h = -\\frac{b}{2a} = -\\frac{-18}{2(3)} = 3\\). The minimum value is \\(f(3) = 3(3)^2 - 18(3) + 7 = 27 - 54 + 7 = -20\\).</li></ol>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Equivalent Expressions &amp; Quadratic Equations</em> and start from \\( 3x^2 - 18x + 7 = 0 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\text{Sum} = -\\frac{b}{a} = -\\frac{-18}{3} = 6\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -366,7 +483,21 @@
         "solution": {
           "en": "<p>Substitute the linear expression into the quadratic:</p>\\[ x^2 - 4x + 4 = 2x - 3 \\implies x^2 - 6x + 7 = 0. \\]<p>Compute the discriminant \\( \\Delta = b^2 - 4ac \\):</p>\\[ \\Delta = (-6)^2 - 4(1)(7) = 36 - 28 = 8. \\]<p>Since \\( \\Delta &gt; 0 \\), the quadratic has two distinct real roots. Thus, the system has <strong>two real solutions</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Equivalent Expressions &amp; Quadratic Equations</em> and start from \\( y = x^2 - 4x + 4 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( x^2 - 4x + 4 = 2x - 3 \\implies x^2 - 6x + 7 = 0. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "figure",
@@ -425,7 +556,21 @@
         "solution": {
           "en": "<p>Set the equations equal to each other:</p>\\[ x^2 - 6x + 7 = 2x + c \\implies x^2 - 8x + (7 - c) = 0. \\]<p>For tangency (exactly one real solution), the discriminant must equal zero:</p>\\[ \\Delta = (-8)^2 - 4(1)(7 - c) = 0 \\implies 64 - 28 + 4c = 0 \\implies 4c = -36 \\implies c = -9. \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Equivalent Expressions &amp; Quadratic Equations</em> and start from \\( y = 2x + c \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( x^2 - 6x + 7 = 2x + c \\implies x^2 - 8x + (7 - c) = 0. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

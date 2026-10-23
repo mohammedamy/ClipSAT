@@ -307,6 +307,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Similarity & Proportional Reasoning)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Inscribed Angles Equal Half the Central Angle &amp; Circle Completion Works:</strong> Given \\(x^2 + y^2 + 2gx + 2fy + c = 0\\), completing the square in \\(x\\) and \\(y\\) simultaneously yields:</p>\\[ (x + g)^2 - g^2 + (y + f)^2 - f^2 + c = 0 \\implies (x + g)^2 + (y + f)^2 = g^2 + f^2 - c \\]<p>Thus the center is \\((-g, -f)\\) and the radius is \\(r = \\sqrt{g^2 + f^2 - c}\\) (requiring \\(g^2 + f^2 > c\\)). In any circle, drawing diameter \\(POQ\\) splits an inscribed angle \\(\\angle APB\\) into two isosceles triangles \\(\\triangle OAP\\) and \\(\\triangle OBP\\) (since \\(OA = OB = OP = r\\)); by the exterior angle theorem, \\(\\angle AOB = 2\\angle APB\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 4.1 — Parallel Transversal with Unknown Length",
@@ -563,11 +575,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example C — Similarity & Proportional Reasoning (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 4 \\) and vertical component \\( \\Delta y = 9 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (4)^2 + (9)^2 = 16 + 81 = \\mathbf{97} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(4)(9) = \\mathbf{18} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> Two similar solid cones have base radii of \\(6\\text{ cm}\\) and \\(10\\text{ cm}\\). What is the ratio of their volumes?</p><p><strong>Step-by-Step Solution:</strong> The linear scale factor is \\(k = \\frac{6}{10} = \\frac{3}{5}\\). The ratio of volumes of similar 3D solids equals the cube of the linear scale factor: \\(k^3 = \\left(\\frac{3}{5}\\right)^3 = \\frac{27}{125}\\). Therefore, the ratio of their volumes is \\(27 : 125\\).</p>",
           "ar": null
         }
       },
@@ -575,11 +587,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example D — Similarity & Proportional Reasoning (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> A solid bronze statue \\(12\\text{ cm}\\) tall has a mass of \\(1.5\\text{ kg}\\). A geometrically similar statue made of the exact same solid bronze alloy is \\(36\\text{ cm}\\) tall. What is the mass of the larger statue?</p><p><strong>Step-by-Step Solution:</strong> Because both statues are made of the same material (uniform density), mass is directly proportional to volume. The linear scale factor is \\(k = \\frac{36}{12} = 3\\). Volumes scale by \\(k^3 = 3^3 = 27\\). Therefore, the mass of the larger statue is \\(1.5 \\times 27 = 40.5\\text{ kg}\\). <strong>Final Answer:</strong> 40.5 kg.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Similarity & Proportional Reasoning)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Reading radius of \\((x-4)^2 + (y+7)^2 = 16\\) as \\(r = 16\\) or center as \\((-4, 7)\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses \\(r^2\\) with \\(r\\) and forgets to flip the signs inside \\((x-h)\\) and \\((y-k)\\).",
+              "ar": null
+            },
+            {
+              "en": "Take the square root and negate the constants: center \\((4, -7)\\), radius \\(r = \\sqrt{16} = 4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using SSA (two sides and a non-included angle) to claim triangle congruence",
+              "ar": null
+            },
+            {
+              "en": "The ambiguous case of the Sine Rule allows two distinct triangles (\\(\\theta\\) and \\(180^\\circ - \\theta\\)).",
+              "ar": null
+            },
+            {
+              "en": "Use valid congruence criteria only: SSS, SAS (included angle), ASA, AAS, or HL/RHS.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Cubing the area ratio \\((A_1/A_2)^3\\) to find the volume ratio of similar solids",
+              "ar": null
+            },
+            {
+              "en": "Area ratio is already \\(k^2\\), so cubing it gives \\(k^6\\) instead of \\(k^3\\).",
+              "ar": null
+            },
+            {
+              "en": "First take the square root to get linear scale factor \\(k = \\sqrt{A_1/A_2}\\), then cube \\(k^3\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Similarity & Proportional Reasoning",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Geometric Auxiliary-Line Strategy (Honors Euclidean & Analytic Geometry):</strong> Whenever a circle problem includes a tangent line, draw the radius to the point of tangency and mark \\(90^\\circ\\) immediately; whenever it includes a chord, drop the perpendicular bisector from the center to form a right triangle.</p>",
           "ar": null
         }
       },
@@ -592,7 +681,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Compute total hypotenuse \\( AB \\):</strong></p>\\[ AB = AD + DB = 4 + 9 = 13 \\]<p><strong>Step 2: Apply the Geometric Mean Leg Rule:</strong> The leg \\( BC \\) is the geometric mean of the hypotenuse \\( AB \\) and the adjacent segment \\( DB \\):</p>\\[ BC^2 = AB \\cdot DB = 13 \\cdot 9 = 117 \\]<p><strong>Step 3: Simplify the radical:</strong></p>\\[ BC = \\sqrt{117} = \\sqrt{9 \\times 13} = 3\\sqrt{13} \\approx 10.82 \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Similarity & Proportional Reasoning</em> and start from \\( \\triangle ABC \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( AB \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -603,7 +706,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Find the area ratio and linear scale factor \\( k \\):</strong></p>\\[ \\frac{\\text{Area}_2}{\\text{Area}_1} = \\frac{144\\pi}{64\\pi} = \\frac{9}{4} = k^2 \\implies k = \\sqrt{\\frac{9}{4}} = \\frac{3}{2} \\]<p><strong>Step 2: Compute the volume ratio \\( k^3 \\):</strong></p>\\[ \\frac{\\text{Volume}_2}{\\text{Volume}_1} = k^3 = \\left(\\frac{3}{2}\\right)^3 = \\frac{27}{8} \\]<p><strong>Step 3: Calculate the volume of the larger cylinder:</strong></p>\\[ \\text{Volume}_2 = 96\\pi \\times \\frac{27}{8} = 12\\pi \\times 27 = 324\\pi\\ \\text{cm}^3 \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Similarity & Proportional Reasoning</em> and start from \\( 64\\pi\\ \\text{cm}^2 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( k \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -614,16 +731,44 @@
         "solution": {
           "en": "<p><strong>Step 1: Apply the Angle Bisector Theorem:</strong> The bisector divides side \\( PR \\) into segments proportional to the adjacent sides:</p>\\[ \\frac{PS}{SR} = \\frac{PQ}{QR} = \\frac{14}{21} = \\frac{2}{3} \\]<p><strong>Step 2: Express \\( SR \\) in terms of \\( PS \\):</strong> Since \\( PS + SR = 25 \\), we have \\( SR = 25 - PS \\):</p>\\[ \\frac{PS}{25 - PS} = \\frac{2}{3} \\implies 3PS = 2(25 - PS) = 50 - 2PS \\]<p><strong>Step 3: Solve for \\( PS \\):</strong></p>\\[ 5PS = 50 \\implies PS = 10 \\quad (\\text{and } SR = 15). \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Similarity & Proportional Reasoning</em> and start from \\( \\triangle PQR \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( PR \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Similarity & Proportional Reasoning · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> Two similar spherical storage tanks: Tank B has a surface area \\(9\\) times that of Tank A. If Tank A holds \\(250\\text{ liters}\\), how many liters does Tank B hold?",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Similarity & Proportional Reasoning</em> and start from \\(9\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(k^2 = 9 \\implies k = \\sqrt{9} = 3\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Surface area scales by \\(k^2 = 9 \\implies k = \\sqrt{9} = 3\\). Volume (capacity) scales by \\(k^3 = 3^3 = 27\\). Therefore, Tank B holds \\(250 \\times 27 = 6,750\\text{ liters}\\). <strong>Answer:</strong> 6,750 liters.",
           "ar": null
         }
       }

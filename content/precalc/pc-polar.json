@@ -25,44 +25,31 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Polar Coordinates, Complex Numbers & De Moivre's Theorem — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
+          "type": "argand",
+          "title": "Polar Coordinates, Complex Numbers & De Moivre's Theorem — Argand Plane & Conjugate Pair",
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
+              "re": 2,
+              "im": 7,
+              "label": "z = 2 + 7i",
+              "vector": true
             },
             {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "re": 2,
+              "im": -7,
+              "label": "z* = 2 - 7i",
+              "vector": true,
+              "color": "amber"
             }
-          ]
+          ],
+          "circle": {
+            "re": 0,
+            "im": 0,
+            "r": 7.28
+          }
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Argand diagram showing complex vector z = 2 + 7i, its conjugate z* = 2 − 7i, and modulus circle |z| = √53.",
           "ar": null
         }
       },
@@ -75,6 +62,18 @@
         },
         "body": {
           "en": "<p>A point \\(P\\) is located by ordered pair \\((r, \\theta)\\), where \\(r\\) is directed distance from the origin (pole) and \\(\\theta\\) is angle of rotation from the positive \\(x\\)-axis (polar axis).</p><p><strong>Conversion Formulas:</strong></p>\\[x = r\\cos\\theta, \\quad y = r\\sin\\theta, \\quad r^2 = x^2 + y^2, \\quad \\tan\\theta = \\frac{y}{x} \\; (x \\ne 0). \\]<p><strong>Non-Uniqueness of Representation:</strong> Any point \\((r, \\theta)\\) has infinitely many coordinate aliases: \\[ (r, \\theta) \\equiv (r, \\theta + 2\\pi k) \\equiv (-r, \\theta + (2k+1)\\pi) \\quad (k \\in \\mathbb{Z}). \\] A negative radius \\(-r\\) indicates traveling in the direction opposite to the terminal ray (a \\(180^\\circ\\) phase reversal through the pole).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Polar Coordinates, Complex Numbers & De Moivre's Theorem)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why De Moivre's Theorem &amp; Conjugate Root Pairing Hold:</strong> By Euler's identity \\(e^{i\\theta} = \\cos\\theta + i\\sin\\theta\\), raising \\(z = re^{i\\theta}\\) to the \\(n\\)-th power gives:</p>\\[ z^n = \\left(re^{i\\theta}\\right)^n = r^n e^{in\\theta} = r^n(\\cos(n\\theta) + i\\sin(n\\theta)) \\]<p>Furthermore, if \\(P(z) = \\sum_{k=0}^n a_k z^k\\) has real coefficients (\\(a_k \\in \\mathbb{R}\\)), taking complex conjugates across \\(P(z_0) = 0\\) uses \\(\\overline{z_1 + z_2} = \\bar{z}_1 + \\bar{z}_2\\) and \\(\\bar{a}_k = a_k\\) to prove \\(P(\\bar{z}_0) = \\overline{P(z_0)} = 0\\). Thus non-real roots of real polynomials always occur in conjugate pairs \\(\\alpha \\pm i\\beta\\).</p>",
           "ar": null
         }
       },
@@ -343,11 +342,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example A — Polar Coordinates, Complex Numbers & De Moivre's Theorem (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> Given that an angle \\( \\theta_{U} = 300^\\circ \\) is drawn in standard position on the unit circle, determine its acute reference angle \\( r \\) (in degrees).</p><p><strong>Step-by-Step Solution:</strong> For \\( \\theta = 300^\\circ \\), the acute angle with the horizontal axis is \\( 60^\\circ \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Polar Coordinates, Complex Numbers & De Moivre's Theorem)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Taking \\(\\arg(-2 + 2i) = \\tan^{-1}(-1) = -\\pi/4\\)",
+              "ar": null
+            },
+            {
+              "en": "Places a 2nd-quadrant complex number in the 4th quadrant.",
+              "ar": null
+            },
+            {
+              "en": "Plot in Argand plane first: \\(\\arg(-{p} + {p}i) = \\pi - \\pi/4 = 3\\pi/4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Simplifying \\(i^2 = 1\\) in \\((a+bi)(c+di)\\)",
+              "ar": null
+            },
+            {
+              "en": "Forgets \\(i^2 = -1\\), flipping the sign of \\(bd\\) in the real part.",
+              "ar": null
+            },
+            {
+              "en": "Group real and imaginary parts carefully: \\((ac - bd) + (ad + bc)i\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Reading center of \\(|z + 2 - 7i| = 4\\) as \\((2, -7)\\)",
+              "ar": null
+            },
+            {
+              "en": "Fails to rewrite in standard form \\(|z - z_0| = r\\).",
+              "ar": null
+            },
+            {
+              "en": "Factor out the minus sign: \\(|z - (-2 + 7i)| = 4 \\implies z_0 = (-2, 7)\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Polar Coordinates, Complex Numbers & De Moivre's Theorem",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Verification Tip (Honors Precalculus & Trigonometric Analysis):</strong> Always check complex division \\(\\dfrac{z_1}{z_2}\\) by verifying that \\(|z_1 / z_2| = |z_1| / |z_2|\\). If the moduli ratio does not match, you multiplied the denominator by \\(a + bi\\) instead of the conjugate \\(a - bi\\).</p>",
           "ar": null
         }
       },
@@ -360,7 +436,21 @@
         "solution": {
           "en": "<p>Substitute standard Cartesian-to-polar relations \\(x^2 + y^2 = r^2\\), \\(x = r\\cos\\theta\\), and \\(y = r\\sin\\theta\\):</p>\\[(r^2)^2 = 4(r^2\\cos^2\\theta - r^2\\sin^2\\theta) \\implies r^4 = 4r^2(\\cos^2\\theta - \\sin^2\\theta).\\]<p>Apply the double-angle identity \\(\\cos^2\\theta - \\sin^2\\theta = \\cos(2\\theta)\\):</p>\\[r^4 = 4r^2\\cos(2\\theta).\\]<p>Divide through by \\(r^2\\) (for \\(r \\neq 0\\)):</p>\\[r^2 = 4\\cos(2\\theta).\\]<p>This is a <strong>lemniscate</strong> (figure-eight curve) centered at the pole with loops oriented along the polar axis and maximum reach \\(r = 2\\) at \\(\\theta = 0\\) and \\(\\theta = \\pi\\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Polar Coordinates, Complex Numbers & De Moivre's Theorem</em> and start from \\((x^2 + y^2)^2 = 4(x^2 - y^2)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x^2 + y^2 = r^2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -371,27 +461,69 @@
         "solution": {
           "en": "<p>Equate the two equations:</p>\\[2\\sin\\theta = 2\\cos\\theta \\implies \\tan\\theta = 1.\\]<p>On \\([0, 2\\pi)\\), \\(\\theta = \\frac{\\pi}{4}\\) or \\(\\theta = \\frac{5\\pi}{4}\\).</p><ul><li>For \\(\\theta = \\frac{\\pi}{4}\\): \\(r = 2\\sin\\left(\\frac{\\pi}{4}\\right) = \\sqrt{2}\\), giving point \\(\\left(\\sqrt{2}, \\frac{\\pi}{4}\\right)\\).</li><li>For \\(\\theta = \\frac{5\\pi}{4}\\): \\(r = 2\\sin\\left(\\frac{5\\pi}{4}\\right) = -\\sqrt{2}\\). However, \\(\\left(-\\sqrt{2}, \\frac{5\\pi}{4}\\right)\\) represents the identical geometric point as \\(\\left(\\sqrt{2}, \\frac{\\pi}{4}\\right)\\).</li></ul><p>Next, check the pole (origin):</p><ul><li>\\(r = 2\\sin\\theta = 0\\) when \\(\\theta = 0\\) or \\(\\pi\\).</li><li>\\(r = 2\\cos\\theta = 0\\) when \\(\\theta = \\frac{\\pi}{2}\\) or \\(\\frac{3\\pi}{2}\\).</li></ul><p>Because both curves pass through the origin, the pole \\((0, 0)\\) is a valid intersection point.</p><p>Therefore, the distinct intersection points are the <strong>pole \\((0, 0)\\)</strong> and <strong>\\(\\left(\\sqrt{2}, \\frac{\\pi}{4}\\right)\\)</strong>.</p>",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Polar Coordinates, Complex Numbers & De Moivre's Theorem</em> and start from \\(r = 2\\sin\\theta\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(2\\sin\\theta = 2\\cos\\theta \\implies \\tan\\theta = 1.\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Hard]</strong> Given that in \\( \\triangle UVW \\), sides of lengths \\( 48 \\) and \\( 14 \\) meet at an included angle of \\( 60^\\circ \\) opposite side \\( r \\), determine the squared length \\( P = r^2 \\) by the Law of Cosines.",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Polar Coordinates, Complex Numbers & De Moivre's Theorem</em> and start from \\( \\triangle UVW \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( r^2 = 48^2 + 14^2 - 2(48)(14)\\cos(60^\\circ) = 1828 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "By the Law of Cosines, \\( r^2 = 48^2 + 14^2 - 2(48)(14)\\cos(60^\\circ) = 1828 \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Polar Coordinates, Complex Numbers & De Moivre's Theorem · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> What is the Cartesian equation of the polar curve \\(r=1\\)?",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Polar Coordinates, Complex Numbers & De Moivre's Theorem</em> and start from \\(r=1\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(r=1\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Polar Coordinates, Complex Numbers & De Moivre's Theorem · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Applying Polar Coordinates principles, Squaring \\(r=1\\): \\(r^2=x^2+y^2=1\\). Therefore, the verified correct option is \\(x^2+y^2=1\\).",
           "ar": null
         }
       }

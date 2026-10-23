@@ -208,6 +208,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Functions (HL Extensions))",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Completing the Square &amp; Log-Linearization Work:</strong> Any quadratic \\(f(x) = ax^2 + bx + c\\) (\\(a \\ne 0\\)) can be rewritten by factoring \\(a\\) from the first two terms and adding/subtracting \\((b/2a)^2\\):</p>\\[ ax^2 + bx + c = a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\]<p>Because \\(\\left(x + \\frac{b}{2a}\\right)^2 \\ge 0\\) for all \\(x \\in \\mathbb{R}\\), the extreme value \\(k = c - \\frac{b^2}{4a}\\) is attained uniquely at the axis of symmetry \\(x = -\\frac{b}{2a}\\), restricting the range to \\([k, \\infty)\\) (if \\(a > 0\\)) and making \\(f\\) invertible on \\(x \\ge -\\frac{b}{2a}\\). Similarly, applying \\(\\ln\\) to power laws \\(y = ax^n\\) yields \\(\\ln y = n\\ln x + \\ln a\\), transforming a nonlinear curve into a straight line of gradient \\(n\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 2.1 — Analytical Solution of Modulus Equation",
@@ -378,6 +390,83 @@
         }
       },
       {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Functions (HL Extensions))",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Expanding \\(\\ln(x + y)\\) as \\(\\ln x + \\ln y\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses the product law \\(\\ln(xy) = \\ln x + \\ln y\\) with a non-existent sum rule.",
+              "ar": null
+            },
+            {
+              "en": "Only factor products, quotients, and powers inside logarithms: \\(\\ln(xy) = \\ln x + \\ln y\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Keeping both roots of \\(\\sqrt{2x+6} = x - 2\\) without checking \\(x - 2 \\ge 0\\)",
+              "ar": null
+            },
+            {
+              "en": "Squaring both sides loses the sign of \\(x - {r}\\), introducing roots where \\(\\sqrt{\\cdot} = -\\text{number}\\).",
+              "ar": null
+            },
+            {
+              "en": "Enforce the range condition \\(x \\ge 2\\) before or after squaring.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Restricting domain of \\(f(x) = (x-3)^2 + 1\\) to \\(x \\ge 0\\) for invertibility",
+              "ar": null
+            },
+            {
+              "en": "The vertex is at \\(x = 3\\), so \\(f(2) = f(4) = 2\\) fails the horizontal line test on \\(x \\ge 0\\).",
+              "ar": null
+            },
+            {
+              "en": "Restrict the domain at the vertex axis of symmetry: \\(x \\ge 3\\) (or \\(x \\le 3\\)).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Functions (HL Extensions)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Exam Check (IB Diploma Mathematics: AA / AI Higher Level (Papers 1, 2 & 3)):</strong> To verify an inverse function \\(f^{-1}(x)\\) in 5 seconds, pick a simple input \\(x_0\\), compute \\(y_0 = f(x_0)\\), and check that \\(f^{-1}(y_0) = x_0\\). Also verify that the graph of \\(y = f^{-1}(x)\\) reflects \\(y = f(x)\\) across \\(y = x\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "Find the exact range of \\(f(x) = \\dfrac{x}{x^2 + 1}\\) for \\(x \\in \\mathbb{R}\\).",
@@ -386,38 +475,94 @@
         "solution": {
           "en": "Let \\(y = \\frac{x}{x^2 + 1}\\). Multiply both sides by \\(x^2 + 1\\) (valid since \\(x^2 + 1 > 0\\) for all \\(x \\in \\mathbb{R}\\)): \\[ y(x^2 + 1) = x \\implies yx^2 - x + y = 0. \\] If \\(y = 0\\), \\(-x = 0 \\implies x = 0\\), so \\(0\\) is in the range.<br>For \\(y \\neq 0\\), this is a quadratic equation in \\(x\\). For real \\(x\\) to exist, the discriminant \\(\\Delta\\) must be non-negative: \\[ \\Delta = (-1)^2 - 4(y)(y) = 1 - 4y^2 \\ge 0. \\] Solve the inequality: \\[ 4y^2 \\le 1 \\implies y^2 \\le \\frac{1}{4} \\implies -\\frac{1}{2} \\le y \\le \\frac{1}{2}. \\] Thus the range of \\(f(x)\\) is \\(\\left[-\\frac{1}{2}, \\frac{1}{2}\\right]\\).",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Functions (HL Extensions)</em> and start from \\(f(x) = \\dfrac{x}{x^2 + 1}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(y = \\frac{x}{x^2 + 1}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 2 · Medium]</strong> The diagram shows the graph of the function \\( y = f(x) \\). The equation of the function is given by \\( f(x) = ax^2 + bx + c \\). Given that the vertex of the parabola is at \\( (-1, 8) \\) and the graph passes through the point \\( (1, 0) \\), find the values of \\( a \\) and \\( b \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Functions (HL Extensions)</em> and start from \\( y = f(x) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( f(x) = ax^2 + bx + c \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "The vertex of a parabola given by \\( f(x) = ax^2 + bx + c \\) is at \\( \\left( -\\frac{b}{2a}, f\\left(-\\frac{b}{2a}\\right) \\right) \\). We are given that the vertex is at \\( (-1, 8) \\). Therefore, \\( -\\frac{b}{2a} = -1 \\), which implies \\( b = 2a \\). \n\nWe are also given that the vertex is at \\( y=8 \\), so \\( f(-1) = 8 \\). Substituting \\( x = -1 \\) into the function: \\( a(-1)^2 + b(-1) + c = 8 \\implies a - b + c = 8 \\). \n\nSince \\( b = 2a \\), we have \\( a - 2a + c = 8 \\implies -a + c = 8 \\). \n\nThe graph also passes through the point \\( (1, 0) \\). So, \\( f(1) = 0 \\). Substituting \\( x = 1 \\) into the function: \\( a(1)^2 + b(1) + c = 0 \\implies a + b + c = 0 \\). \n\nNow we have a system of equations:\n1) \\( b = 2a \\)\n2) \\( -a + c = 8 \\)\n3) \\( a + b + c = 0 \\)\n\nSubstitute (1) into (3): \\( a + 2a + c = 0 \\implies 3a + c = 0 \\). \n\nNow we have a system with \\( a \\) and \\( c \\):\n-a + c = 8\n3a + c = 0\n\nSubtract the first equation from the second: \\( (3a + c) - (-a + c) = 0 - 8 \\implies 4a = -8 \\implies a = -2 \\). \n\nSubstitute \\( a = -2 \\) into \\( b = 2a \\): \\( b = 2(-2) = -4 \\). \n\nSo, \\( a = -2 \\) and \\( b = -4 \\). \n\nCommon algebraic traps include: \n- Incorrectly applying the vertex formula. \n- Errors in solving the system of linear equations. \n- Confusing the x and y coordinates of the vertex. <strong>[M1] [A1]</strong> <strong>Answer:</strong> a = -2, b = -4.",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Functions (HL Extensions) · Practice 2] If the governing relation for this system is \\( g(t) = 4t + 4 \\), evaluate \\( g(6) \\) and find the inverse input \\( t \\) when \\( g(t) = 32 \\).",
+          "en": "<strong>[Practice 3 · Medium]</strong> Find the oblique asymptote of \\( f(x) = \\dfrac{4x^{2} + 3x - 14}{(x + 2)} \\), in the form \\(y=mx+c\\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Functions (HL Extensions)</em> and start from \\( f(x) = \\dfrac{4x^{2} + 3x - 14}{(x + 2)} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). Setting \\( 4t + 4 = 32 \\) gives \\( 4t = 28 \\implies t = \\mathbf{7} \\).",
+          "en": "Working through this functions step: \\( \\text{Dividing: }\\dfrac{4x^{2} + 3x - 14}{(x + 2)} = 4x - 5 + \\dfrac{-4}{(x + 2)}\\text{, so the asymptote is }y=4x - 5. \\) <strong>[M1] [A1]</strong> <strong>Answer:</strong> \\(y=4x - 5\\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Functions (HL Extensions) · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> Find \\( f^{-1}(x) \\) if \\( f(x) = \\dfrac{6}{x} \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Functions (HL Extensions)</em> and start from \\( f^{-1}(x) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Functions (HL Extensions) · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Working through this functions step: \\( y=\\dfrac{6}{x} \\Rightarrow x=\\dfrac{6}{y} \\Rightarrow f^{-1}(x)=\\dfrac{6}{x}\\text{ (self-inverse)} \\) <strong>[M1] [A1]</strong> <strong>Answer:</strong> \\(\\dfrac{6}{x}\\).",
           "ar": null
         }
       }

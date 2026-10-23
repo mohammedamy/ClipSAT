@@ -29,44 +29,31 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Complex Numbers — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
+          "type": "argand",
+          "title": "Complex Numbers — Argand Plane & Conjugate Pair",
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
+              "re": 3,
+              "im": 3,
+              "label": "z = 3 + 3i",
+              "vector": true
             },
             {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "re": 3,
+              "im": -3,
+              "label": "z* = 3 - 3i",
+              "vector": true,
+              "color": "amber"
             }
-          ]
+          ],
+          "circle": {
+            "re": 0,
+            "im": 0,
+            "r": 4.24
+          }
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Argand diagram showing complex vector z = 3 + 3i, its conjugate z* = 3 − 3i, and modulus circle |z| = √18.",
           "ar": null
         }
       },
@@ -338,11 +325,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example C — Complex Numbers (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 4 \\) and vertical component \\( \\Delta y = 9 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (4)^2 + (9)^2 = 16 + 81 = \\mathbf{97} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(4)(9) = \\mathbf{18} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> Consider the complex numbers \\( m_1 = 14 + 20i \\) and \\( m_2 = 12 + 9i \\). What is the real part \\( R = \\text{Re}(m_1 m_2) \\)?</p><p><strong>Step-by-Step Solution:</strong> The real part is \\( 14(12) - 20(9) = -12 \\).</p>",
           "ar": null
         }
       },
@@ -350,11 +337,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example D — Complex Numbers (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> Find the complex conjugate of \\( 12+i \\).</p><p><strong>Step-by-Step Solution:</strong> Flip the sign of the imaginary part only: \\( 12+i\\to12-i \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Complex Numbers)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Taking \\(\\arg(-3 + 3i) = \\tan^{-1}(-1) = -\\pi/4\\)",
+              "ar": null
+            },
+            {
+              "en": "Places a 2nd-quadrant complex number in the 4th quadrant.",
+              "ar": null
+            },
+            {
+              "en": "Plot in Argand plane first: \\(\\arg(-{p} + {p}i) = \\pi - \\pi/4 = 3\\pi/4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Simplifying \\(i^2 = 1\\) in \\((a+bi)(c+di)\\)",
+              "ar": null
+            },
+            {
+              "en": "Forgets \\(i^2 = -1\\), flipping the sign of \\(bd\\) in the real part.",
+              "ar": null
+            },
+            {
+              "en": "Group real and imaginary parts carefully: \\((ac - bd) + (ad + bc)i\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Reading center of \\(|z + 3 - 3i| = 4\\) as \\((3, -3)\\)",
+              "ar": null
+            },
+            {
+              "en": "Fails to rewrite in standard form \\(|z - z_0| = r\\).",
+              "ar": null
+            },
+            {
+              "en": "Factor out the minus sign: \\(|z - (-3 + 3i)| = 4 \\implies z_0 = (-3, 3)\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Complex Numbers",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Verification Tip (Egyptian Scholastic Test (EST II — Math Level 2)):</strong> Always check complex division \\(\\dfrac{z_1}{z_2}\\) by verifying that \\(|z_1 / z_2| = |z_1| / |z_2|\\). If the moduli ratio does not match, you multiplied the denominator by \\(a + bi\\) instead of the conjugate \\(a - bi\\).</p>",
           "ar": null
         }
       },
@@ -367,38 +431,94 @@
         "solution": {
           "en": "1. Expand the numerator: \\((3+2i)^2 = 3^2 + 2(3)(2i) + (2i)^2 = 9 + 12i - 4 = 5 + 12i\\).<br>2. Divide by \\(i\\) by multiplying numerator and denominator by \\(-i\\) (or using \\(1/i = -i\\)):<br>\\[ \\frac{5 + 12i}{i} = (5 + 12i)(-i) = -5i - 12i^2 = -5i + 12 = 12 - 5i. \\]<br>In standard form \\(a + bi\\), the answer is \\(12 - 5i\\).",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Complex Numbers</em> and start from \\(\\dfrac{(3 + 2i)^2}{i}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\((3+2i)^2 = 3^2 + 2(3)(2i) + (2i)^2 = 9 + 12i - 4 = 5 + 12i\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 2 · Medium]</strong> Find the complex conjugate of \\( -5-8i \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Complex Numbers</em> and start from \\( -5-8i \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( -5-8i\\to-5+8i \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "Flip the sign of the imaginary part only: \\( -5-8i\\to-5+8i \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Complex Numbers · Practice 2] If the governing relation for this system is \\( g(t) = 4t + 4 \\), evaluate \\( g(6) \\) and find the inverse input \\( t \\) when \\( g(t) = 32 \\).",
+          "en": "<strong>[Practice 3 · Hard]</strong> Let \\( m_1 = 23 + 11i \\) and \\( m_2 = 2 + 3i \\) be complex numbers. What is the imaginary part \\( S = \\text{Im}(m_1 m_2) \\)?",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Complex Numbers</em> and start from \\( m_1 = 23 + 11i \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 23(3) + 11(2) = 91 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). Setting \\( 4t + 4 = 32 \\) gives \\( 4t = 28 \\implies t = \\mathbf{7} \\).",
+          "en": "The imaginary part is \\( 23(3) + 11(2) = 91 \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Complex Numbers · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> Let the complex number \\( n = 5 + 11i \\) have complex conjugate \\( \\bar{n} \\) on the Argand diagram. What is the squared modulus \\( A = n\\bar{n} = |n|^2 \\)?",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Complex Numbers</em> and start from \\( n = 5 + 11i \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( n \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Complex Numbers · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Multiplying \\( n \\) by \\( \\bar{n} \\) gives \\( 5^2 + 11^2 = 146 \\).",
           "ar": null
         }
       }

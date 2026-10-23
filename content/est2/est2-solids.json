@@ -41,15 +41,30 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Solid Geometry & Similarity",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Euclidean Invariants, Locus Equations &amp; Scaling Laws:</strong> In analytic geometry, geometric loci translate into algebraic constraints via Euclidean distance \\(d = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}\\). A circle of center \\((h, k)\\) and radius \\(r\\) satisfies \\((x-h)^2 + (y-k)^2 = r^2\\), and a tangent line at point \\(P\\) is strictly perpendicular to the radius \\(CP\\) (\\(m_{\\text{tan}} \\cdot m_{\\text{rad}} = -1\\)). Under a similarity scale factor \\(k\\), all linear lengths scale by \\(k\\), surface areas scale by \\(k^2\\), and volumes scale by \\(k^3\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "circle",
-          "radius": 6,
-          "labelR": "r = 6",
-          "chordAngle": 120
+          "type": "conic_section",
+          "conic": "ellipse",
+          "title": "Solid Geometry & Similarity — Analytic Locus & Focal Geometry",
+          "h": 0,
+          "k": 0,
+          "a": 4,
+          "b": 3
         },
         "caption": {
-          "en": "Circle sector and chord geometry with radius r = 6 and central angle 120°.",
+          "en": "Analytic ellipse x²/16 + y²/9 = 1 showing semi-major axis a = 4, semi-minor axis b = 3, and foci F₁, F₂.",
           "ar": null
         }
       },
@@ -250,6 +265,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Solid Geometry & Similarity)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Inscribed Angles Equal Half the Central Angle &amp; Circle Completion Works:</strong> Given \\(x^2 + y^2 + 2gx + 2fy + c = 0\\), completing the square in \\(x\\) and \\(y\\) simultaneously yields:</p>\\[ (x + g)^2 - g^2 + (y + f)^2 - f^2 + c = 0 \\implies (x + g)^2 + (y + f)^2 = g^2 + f^2 - c \\]<p>Thus the center is \\((-g, -f)\\) and the radius is \\(r = \\sqrt{g^2 + f^2 - c}\\) (requiring \\(g^2 + f^2 > c\\)). In any circle, drawing diameter \\(POQ\\) splits an inscribed angle \\(\\angle APB\\) into two isosceles triangles \\(\\triangle OAP\\) and \\(\\triangle OBP\\) (since \\(OA = OB = OP = r\\)); by the exterior angle theorem, \\(\\angle AOB = 2\\angle APB\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 7.A — Cone Slant Height vs. Altitude & Volume",
@@ -288,11 +315,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example D — Solid Geometry & Similarity (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> In right triangle \\( \\triangle RST \\) with right angle at \\( T \\), the altitude \\( TD \\) to hypotenuse \\( RS \\) forms segments \\( RD = 3 \\) and \\( DS = 75 \\). Which of the following is equal to the altitude length \\( n = TD \\)?</p><p><strong>Step-by-Step Solution:</strong> By the Right Triangle Altitude Theorem, \\( TD = \\sqrt{3 \\times 75} = 15 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Solid Geometry & Similarity)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Reading radius of \\((x-5)^2 + (y+5)^2 = 16\\) as \\(r = 16\\) or center as \\((-5, 5)\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses \\(r^2\\) with \\(r\\) and forgets to flip the signs inside \\((x-h)\\) and \\((y-k)\\).",
+              "ar": null
+            },
+            {
+              "en": "Take the square root and negate the constants: center \\((5, -5)\\), radius \\(r = \\sqrt{16} = 4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using SSA (two sides and a non-included angle) to claim triangle congruence",
+              "ar": null
+            },
+            {
+              "en": "The ambiguous case of the Sine Rule allows two distinct triangles (\\(\\theta\\) and \\(180^\\circ - \\theta\\)).",
+              "ar": null
+            },
+            {
+              "en": "Use valid congruence criteria only: SSS, SAS (included angle), ASA, AAS, or HL/RHS.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Cubing the area ratio \\((A_1/A_2)^3\\) to find the volume ratio of similar solids",
+              "ar": null
+            },
+            {
+              "en": "Area ratio is already \\(k^2\\), so cubing it gives \\(k^6\\) instead of \\(k^3\\).",
+              "ar": null
+            },
+            {
+              "en": "First take the square root to get linear scale factor \\(k = \\sqrt{A_1/A_2}\\), then cube \\(k^3\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Solid Geometry & Similarity",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Geometric Auxiliary-Line Strategy (Egyptian Scholastic Test (EST II — Math Level 1)):</strong> Whenever a circle problem includes a tangent line, draw the radius to the point of tangency and mark \\(90^\\circ\\) immediately; whenever it includes a chord, drop the perpendicular bisector from the center to form a right triangle.</p>",
           "ar": null
         }
       },
@@ -305,7 +409,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Determine linear scale factor \\(k\\):</strong> The ratio of surface areas is \\(k^2 = \\frac{4}{9} \\implies k = \\frac{2}{3}\\).</p><p><strong>Step 2: Determine volume ratio:</strong> Volumes scale as the cube: \\[ \\frac{V_{\\text{small}}}{V_{\\text{large}}} = k^3 = \\left(\\frac{2}{3}\\right)^3 = \\frac{8}{27}. \\]</p><p><strong>Step 3: Calculate larger volume:</strong> \\[ V_{\\text{large}} = 16\\pi \\times \\frac{27}{8} = 2\\pi \\times 27 = \\mathbf{54\\pi\\text{ cm}^3}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Solid Geometry & Similarity</em> and start from \\(4 : 9\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(k\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -316,7 +434,21 @@
         "solution": {
           "en": "<p><strong>(a) Height and Volume:</strong> The radius, vertical height, and slant height form a right triangle: \\[ h = \\sqrt{l^2 - r^2} = \\sqrt{10^2 - 6^2} = \\sqrt{100 - 36} = \\sqrt{64} = 8\\text{ cm}. \\] The volume is: \\[ V = \\dfrac{1}{3}\\pi r^2 h = \\dfrac{1}{3}\\pi (36)(8) = \\mathbf{96\\pi\\text{ cm}^3}. \\]</p><p><strong>(b) Total Surface Area:</strong> Sum of base area and lateral area: \\[ A = \\pi r^2 + \\pi r l = \\pi(6^2) + \\pi(6)(10) = 36\\pi + 60\\pi = \\mathbf{96\\pi\\text{ cm}^2}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Solid Geometry & Similarity</em> and start from \\(r = 6\\text{ cm}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -327,7 +459,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Compute volume of sphere:</strong> \\[ V_{\\text{sphere}} = \\frac{4}{3}\\pi r^3 = \\frac{4}{3}\\pi(3^3) = \\frac{4}{3}\\pi(27) = 36\\pi\\text{ cm}^3. \\]</p><p><strong>Step 2: Equate to cylinder volume and solve for \\(h\\):</strong> \\[ V_{\\text{cylinder}} = \\pi R^2 h = \\pi(2^2) h = 4\\pi h \\implies 4\\pi h = 36\\pi \\implies h = \\frac{36\\pi}{4\\pi} = \\mathbf{9\\text{ cm}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Solid Geometry & Similarity</em> and start from \\(3\\text{ cm}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -338,7 +484,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Find linear scaling factor:</strong> New volume is \\(V' = 2.197 V\\). Since all spheres are similar: \\[ k^3 = 2.197 \\implies k = \\sqrt[3]{2.197} = 1.3. \\]</p><p><strong>Step 2: Compute surface area multiplier:</strong> \\[ k^2 = (1.3)^2 = 1.69. \\]</p><p><strong>Step 3: Convert to percentage increase:</strong> \\[ \\text{Percent Increase} = (1.69 - 1) \\times 100\\% = \\mathbf{69\\%}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Solid Geometry & Similarity</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(V' = 2.197 V\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

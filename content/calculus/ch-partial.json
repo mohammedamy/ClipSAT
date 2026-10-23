@@ -29,13 +29,44 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "circle",
-          "radius": 6,
-          "labelR": "r = 6",
-          "chordAngle": 120
+          "type": "transformation_grid",
+          "title": "Partial Derivatives &amp; the Gradient — Linear Transformation & Basis Action",
+          "original": [
+            [
+              1,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              3
+            ]
+          ],
+          "transformed": [
+            [
+              -1,
+              1
+            ],
+            [
+              -1,
+              3
+            ],
+            [
+              -3,
+              2
+            ]
+          ],
+          "labels": [
+            "A",
+            "B",
+            "C"
+          ]
         },
         "caption": {
-          "en": "Circle sector and chord geometry with radius r = 6 and central angle 120°.",
+          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
           "ar": null
         }
       },
@@ -48,6 +79,18 @@
         },
         "body": {
           "en": "<p>Let \\(f(x, y)\\) be defined on an open disk \\(D\\) containing \\((a, b)\\). If the mixed second-order partial derivatives \\(f_{xy} = \\frac{\\partial^2 f}{\\partial y \\partial x}\\) and \\(f_{yx} = \\frac{\\partial^2 f}{\\partial x \\partial y}\\) are continuous throughout \\(D\\), then:</p>\\[ f_{xy}(a, b) = f_{yx}(a, b) \\]<p>Consequently, the order of differentiation across independent spatial variables can be interchanged freely for all smooth functions.</p></p><details style=\"margin-top:8px\"><summary><strong>Analytical Proof via Double Mean Value Theorem</strong></summary><div style=\"margin-top:6px\"><p>Choose small non-zero \\(h, k\\) such that the rectangle with vertices \\((a, b)\\), \\((a+h, b)\\), \\((a, b+k)\\), and \\((a+h, b+k)\\) lies inside \\(D\\). Define the double-difference quantity:</p>\\[ \\Delta(h, k) = f(a+h, b+k) - f(a+h, b) - f(a, b+k) + f(a, b) \\]<p>Define the single-variable auxiliary function \\(g(t) = f(t, b+k) - f(t, b)\\). Then \\(\\Delta(h, k) = g(a+h) - g(a)\\).</p><p>By the single-variable Mean Value Theorem, there exists \\(c_1\\) between \\(a\\) and \\(a+h\\) such that:</p>\\[ \\Delta(h, k) = h g'(c_1) = h\\big[ f_x(c_1, b+k) - f_x(c_1, b) \\big] \\]<p>Applying the Mean Value Theorem again to the function \\(y \\mapsto f_x(c_1, y)\\) on \\([b, b+k]\\), there exists \\(c_2\\) between \\(b\\) and \\(b+k\\) such that:</p>\\[ f_x(c_1, b+k) - f_x(c_1, b) = k f_{xy}(c_1, c_2) \\implies \\frac{\\Delta(h, k)}{hk} = f_{xy}(c_1, c_2) \\]<p>By exact symmetry, defining \\(w(s) = f(a+h, s) - f(a, s)\\) and repeating the argument yields numbers \\(d_1\\) between \\(a\\) and \\(a+h\\) and \\(d_2\\) between \\(b\\) and \\(b+k\\) such that:</p>\\[ \\frac{\\Delta(h, k)}{hk} = f_{yx}(d_1, d_2) \\]<p>Equating both expressions gives \\(f_{xy}(c_1, c_2) = f_{yx}(d_1, d_2)\\). Taking the limit as \\((h, k) \\to (0, 0)\\), \\((c_1, c_2) \\to (a, b)\\) and \\((d_1, d_2) \\to (a, b)\\). By the continuity of \\(f_{xy}\\) and \\(f_{yx}\\):</p>\\[ f_{xy}(a, b) = f_{yx}(a, b) \\quad \\blacksquare \\]</div></details>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Partial Derivatives &amp; the Gradient)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
           "ar": null
         }
       },
@@ -67,11 +110,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example B — Partial Derivatives &amp; the Gradient (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> Let the linear scalar potential be \\( p(t, y) = 23t + 3y - 12 \\). Compute the squared gradient norm \\( \\|\\nabla p\\|^2 \\).</p><p><strong>Step-by-Step Solution:</strong> Since \\( \\nabla p = \\langle 23, 3 \\rangle \\), \\( \\|\\nabla p\\|^2 = 23^2 + 3^2 = 538 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Partial Derivatives &amp; the Gradient)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Computing angle at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)",
+              "ar": null
+            },
+            {
+              "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
+              "ar": null
+            },
+            {
+              "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
+              "ar": null
+            },
+            {
+              "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
+              "ar": null
+            },
+            {
+              "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Assuming \\((AB)^{-1} = A^{-1}B^{-1}\\)",
+              "ar": null
+            },
+            {
+              "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
+              "ar": null
+            },
+            {
+              "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Partial Derivatives &amp; the Gradient",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Single-Variable & Multivariable Calculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -84,7 +204,21 @@
         "solution": {
           "en": "Compute partial derivatives via Chain Rule:<br>\\[ f_x = \\frac{2x}{x^2 + 3y^2}, \\qquad f_y = \\frac{6y}{x^2 + 3y^2} \\]<br>Substitute \\(x = 2\\) and \\(y = 1\\):<br>\\[ x^2 + 3y^2 = 2^2 + 3(1^2) = 4 + 3 = 7 \\]\\[ f_x(2, 1) = \\frac{2(2)}{7} = \\frac{4}{7}, \\qquad f_y(2, 1) = \\frac{6(1)}{7} = \\frac{6}{7} \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Partial Derivatives &amp; the Gradient</em> and start from \\(f_x(2, 1)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( f_x = \\frac{2x}{x^2 + 3y^2}, \\qquad f_y = \\frac{6y}{x^2 + 3y^2} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "explorer",
@@ -269,7 +403,21 @@
         "solution": {
           "en": "Compute gradient: \\(\\nabla f = \\langle 6xy, 3x^2 - 3y^2 \\rangle\\).<br>At \\((1, 2)\\): \\(\\nabla f(1, 2) = \\langle 6(1)(2), 3(1)^2 - 3(2)^2 \\rangle = \\langle 12, 3 - 12 \\rangle = \\langle 12, -9 \\rangle\\).<br>Maximum rate of change is the gradient magnitude:<br>\\[ |\\nabla f(1, 2)| = \\sqrt{12^2 + (-9)^2} = \\sqrt{144 + 81} = \\sqrt{225} = 15 \\]<br>The direction of maximum increase is the normalized gradient:<br>\\[ \\mathbf{u} = \\frac{\\nabla f}{|\\nabla f|} = \\frac{1}{15}\\langle 12, -9 \\rangle = \\left\\langle \\frac{4}{5}, -\\frac{3}{5} \\right\\rangle \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Partial Derivatives &amp; the Gradient</em> and start from \\(f(x, y) = 3x^2y - y^3\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\nabla f = \\langle 6xy, 3x^2 - 3y^2 \\rangle\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "callout",
@@ -316,16 +464,44 @@
         "solution": {
           "en": "Set up Lagrange system \\(\\nabla f = \\lambda \\nabla g\\):<br>\\(\\nabla f = \\langle 2x, 4y \\rangle\\), \\(\\nabla g = \\langle 2x, 2y \\rangle\\).<br>1) \\(2x = 2\\lambda x \\implies 2x(1 - \\lambda) = 0\\)<br>2) \\(4y = 2\\lambda y \\implies 2y(2 - \\lambda) = 0\\)<br>3) \\(x^2 + y^2 = 1\\)<br>From (1), either \\(x = 0\\) or \\(\\lambda = 1\\):<br>&bull; If \\(x = 0\\): from constraint (3), \\(y^2 = 1 \\implies y = \\pm 1\\). Points: \\((0, 1)\\) and \\((0, -1)\\).<br>Value: \\(f(0, \\pm 1) = 0 + 2(1)^2 = 2\\).<br>&bull; If \\(\\lambda = 1\\): from (2), \\(2y(2 - 1) = 2y = 0 \\implies y = 0\\).<br>From constraint (3), \\(x^2 = 1 \\implies x = \\pm 1\\). Points: \\((1, 0)\\) and \\((-1, 0)\\).<br>Value: \\(f(\\pm 1, 0) = (\\pm 1)^2 + 0 = 1\\).<br>Conclusion:<br>The <strong>maximum value</strong> is \\(2\\) at \\((0, \\pm 1)\\), and the <strong>minimum value</strong> is \\(1\\) at \\((\\pm 1, 0)\\).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Partial Derivatives &amp; the Gradient</em> and start from \\(f(x, y) = x^2 + 2y^2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\nabla f = \\lambda \\nabla g\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Partial Derivatives &amp; the Gradient · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> Normal equations for least squares \\(\\min\\|Xw-y\\|^2\\): solution \\(w=\\)",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Partial Derivatives &amp; the Gradient</em> and start from \\(\\min\\|Xw-y\\|^2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(X^TXw=X^Ty\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Applying Partial Derivatives and Gradient principles, Normal equations: \\(X^TXw=X^Ty\\). Therefore, the verified correct option is \\((X^TX)^{-1}X^Ty\\).",
           "ar": null
         }
       }

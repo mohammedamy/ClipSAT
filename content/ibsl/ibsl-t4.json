@@ -322,6 +322,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Statistics &amp; Probability)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Bayes' Theorem &amp; Principle of Inclusion-Exclusion Work:</strong> Any event \\(B\\) can be partitioned into disjoint intersections \\(B = (B \\cap A) \\cup (B \\cap A')\\). By additivity of mutually exclusive events and the multiplication rule \\(P(A \\cap B) = P(B \\mid A)P(A)\\):</p>\\[ P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{P(B \\mid A)P(A)}{P(B \\mid A)P(A) + P(B \\mid A')P(A')} \\]<p>Similarly, in counting \\(|A \\cup B|\\), summing \\(|A| + |B|\\) counts every element in \\(A \\cap B\\) twice; subtracting \\(|A \\cap B|\\) once restores exact cardinality: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 4.1 — Permutations & Combinations in Probability",
@@ -388,6 +400,83 @@
         }
       },
       {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Statistics &amp; Probability)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Using \\(P(A \\cap B) = 0\\) when told \\(A\\) and \\(B\\) are independent",
+              "ar": null
+            },
+            {
+              "en": "Confuses disjoint (mutually exclusive) events with statistically independent events.",
+              "ar": null
+            },
+            {
+              "en": "For independent events, multiply probabilities: \\(P(A \\cap B) = P(A)\\cdot P(B)\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Dividing by the grand total \\(N\\) when computing \\(P(A \\mid B)\\) from a table",
+              "ar": null
+            },
+            {
+              "en": "Computes the joint probability \\(P(A \\cap B)\\) instead of conditioning on subset \\(B\\).",
+              "ar": null
+            },
+            {
+              "en": "Restrict the denominator strictly to the row/column total of the given condition \\(B\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using permutations \\({}^nP_r\\) when selecting a committee with no distinct roles",
+              "ar": null
+            },
+            {
+              "en": "Overcounts every group of size \\(r\\) by \\(r!\\) internal orderings.",
+              "ar": null
+            },
+            {
+              "en": "Divide by \\(r!\\) to use combinations: \\(\\binom{n}{r} = \\frac{n!}{r!(n-r)!}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Statistics &amp; Probability",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Strategy (IB Diploma Mathematics: Analysis & Approaches / Applications & Interpretation SL):</strong> Whenever a probability problem involves \"at least one\" success across multiple trials, immediately use the Complement Rule: \\(P(\\text{at least one}) = 1 - P(\\text{none})\\). It turns a multi-case sum into a single calculation.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>Practice 4.1:</strong> A multiple-choice examination consists of 20 independent questions, each having 4 options of which only one is correct. A student guesses randomly on all questions. Let \\(X\\) be the number of correct answers.<br>(a) State the distribution of \\(X\\) including its parameters.<br>(b) Find the probability that the student passes by scoring at least 10 correct answers.<br>(c) Calculate the mean and standard deviation of \\(X\\).",
@@ -396,7 +485,21 @@
         "solution": {
           "en": "(a) \\(X \\sim B(n, p)\\) with \\(n = 20\\) and \\(p = 0.25\\).<br>(b) \\(P(X \\ge 10) = 1 - P(X \\le 9)\\).<br>Using GDC `binomcdf(20, 0.25, 9)`: \\(P(X \\le 9) \\approx 0.9861\\).<br>\\[ P(X \\ge 10) = 1 - 0.9861 = 0.0139 \\quad (1.39\\%). \\]<br>(c) Mean: \\(\\mu = np = 20 \\times 0.25 = 5\\).<br>Standard deviation: \\(\\sigma = \\sqrt{np(1 - p)} = \\sqrt{20 \\times 0.25 \\times 0.75} = \\sqrt{3.75} \\approx 1.936 \\approx 1.94\\).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics &amp; Probability</em> and start from \\(X\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(X \\sim B(n, p)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -407,27 +510,69 @@
         "solution": {
           "en": "(a) The regression line must pass through the mean point \\((\\bar{x}, \\bar{y}) = (14.5, 72.0)\\):<br>\\[ 72.0 = 2.4(14.5) + c \\implies 72.0 = 34.8 + c \\implies c = 72.0 - 34.8 = 37.2. \\]<br>Thus \\(y = 2.4x + 37.2\\).<br><br>(b) The slope \\(2.4\\) indicates that for each additional hour of study, a student's predicted exam mark increases by 2.4 marks.<br><br>(c) For \\(x = 18\\):<br>\\[ \\hat{y} = 2.4(18) + 37.2 = 43.2 + 37.2 = 80.4\\text{ marks}. \\]",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics &amp; Probability</em> and start from \\(x\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\((\\bar{x}, \\bar{y}) = (14.5, 72.0)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Medium]</strong> Find the median of the data set: \\( 8, 30, 32, 34, 48, 53, 54 \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics &amp; Probability</em> and start from \\( 8, 30, 32, 34, 48, 53, 54 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 8, 30, 32, 34, 48, 53, 54 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "Working through this statistics step: Sorted data: \\( 8, 30, 32, 34, 48, 53, 54 \\). The middle value is 34. <strong>[M1] [A1]</strong>",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Statistics &amp; Probability · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> Find the median of the data set: \\( 8, 15, 27, 29, 31, 33, 36, 37, 43 \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics &amp; Probability</em> and start from \\( 8, 15, 27, 29, 31, 33, 36, 37, 43 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 8, 15, 27, 29, 31, 33, 36, 37, 43 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Statistics &amp; Probability · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Working through this statistics step: Sorted data: \\( 8, 15, 27, 29, 31, 33, 36, 37, 43 \\). The middle value is 31. <strong>[M1] [A1]</strong>",
           "ar": null
         }
       }

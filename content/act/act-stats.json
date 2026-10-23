@@ -41,6 +41,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Statistics & Probability",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Conditional Probability, Bayes' Theorem &amp; Robust Summary Statistics:</strong> For any two events \\(A\\) and \\(B\\) with \\(P(B) > 0\\), conditional probability restricts the sample space to \\(B\\): \\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)}\\). In descriptive statistics, the median and interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)) are resistant to extreme outliers, whereas the mean \\(\\bar{x}\\) and standard deviation \\(s\\) are pulled strongly in the direction of skewness.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
           "type": "bars",
@@ -238,6 +250,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Statistics & Probability)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Bayes' Theorem &amp; Principle of Inclusion-Exclusion Work:</strong> Any event \\(B\\) can be partitioned into disjoint intersections \\(B = (B \\cap A) \\cup (B \\cap A')\\). By additivity of mutually exclusive events and the multiplication rule \\(P(A \\cap B) = P(B \\mid A)P(A)\\):</p>\\[ P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{P(B \\mid A)P(A)}{P(B \\mid A)P(A) + P(B \\mid A')P(A')} \\]<p>Similarly, in counting \\(|A \\cup B|\\), summing \\(|A| + |B|\\) counts every element in \\(A \\cap B\\) twice; subtracting \\(|A \\cap B|\\) once restores exact cardinality: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 7.A — Target Average & Total Points Strategy",
@@ -285,6 +309,83 @@
         }
       },
       {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Statistics & Probability)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Using \\(P(A \\cap B) = 0\\) when told \\(A\\) and \\(B\\) are independent",
+              "ar": null
+            },
+            {
+              "en": "Confuses disjoint (mutually exclusive) events with statistically independent events.",
+              "ar": null
+            },
+            {
+              "en": "For independent events, multiply probabilities: \\(P(A \\cap B) = P(A)\\cdot P(B)\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Dividing by the grand total \\(N\\) when computing \\(P(A \\mid B)\\) from a table",
+              "ar": null
+            },
+            {
+              "en": "Computes the joint probability \\(P(A \\cap B)\\) instead of conditioning on subset \\(B\\).",
+              "ar": null
+            },
+            {
+              "en": "Restrict the denominator strictly to the row/column total of the given condition \\(B\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using permutations \\({}^nP_r\\) when selecting a committee with no distinct roles",
+              "ar": null
+            },
+            {
+              "en": "Overcounts every group of size \\(r\\) by \\(r!\\) internal orderings.",
+              "ar": null
+            },
+            {
+              "en": "Divide by \\(r!\\) to use combinations: \\(\\binom{n}{r} = \\frac{n!}{r!(n-r)!}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Statistics & Probability",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Strategy (ACT Mathematics Test):</strong> Whenever a probability problem involves \"at least one\" success across multiple trials, immediately use the Complement Rule: \\(P(\\text{at least one}) = 1 - P(\\text{none})\\). It turns a multi-case sum into a single calculation.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "A data set contains the values: 4, 7, 7, 9, 12, 15. What are the mean, median, and range of this data set?",
@@ -293,7 +394,21 @@
         "solution": {
           "en": "<ul><li><strong>Sum:</strong> \\(4 + 7 + 7 + 9 + 12 + 15 = 54\\).</li><li><strong>Mean:</strong> \\(\\bar{x} = \\frac{54}{6} = \\mathbf{9}\\).</li><li><strong>Median:</strong> The two middle values are \\(7\\) and \\(9\\), so \\(\\text{Median} = \\frac{7 + 9}{2} = \\mathbf{8}\\).</li><li><strong>Range:</strong> \\(\\text{Max} - \\text{Min} = 15 - 4 = \\mathbf{11}\\).</li></ul>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics & Probability</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(4 + 7 + 7 + 9 + 12 + 15 = 54\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -304,7 +419,21 @@
         "solution": {
           "en": "Because the order of committee members does not matter, this is a combination:<br>\\[ {}_8C_3 = \\binom{8}{3} = \\frac{8!}{3!(8 - 3)!} = \\frac{8 \\times 7 \\times 6}{3 \\times 2 \\times 1} = \\mathbf{56} \\text{ different committees} \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics & Probability</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -315,7 +444,21 @@
         "solution": {
           "en": "Total number of marbles initially: \\(5 + 4 + 3 = 12\\).<br>Probability that the first marble is red: \\(P(R_1) = \\frac{5}{12}\\).<br>Since it is drawn without replacement, 11 marbles remain, 4 of which are red.<br>Probability that the second marble is red: \\(P(R_2 | R_1) = \\frac{4}{11}\\).<br>Using the multiplication rule:<br>\\[ P(R_1 \\cap R_2) = \\frac{5}{12} \\times \\frac{4}{11} = \\frac{20}{132} = \\mathbf{\\frac{5}{33}} \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics & Probability</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(5 + 4 + 3 = 12\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -326,7 +469,21 @@
         "solution": {
           "en": "Express the boundaries in terms of standard deviations from the mean:<br>\\(400 = \\mu - 1\\sigma\\)<br>\\(700 = \\mu + 2\\sigma\\)<br>Using the Empirical Rule:<br>Between \\(\\mu - 1\\sigma\\) and \\(\\mu\\): \\(34.1\\%\\).<br>Between \\(\\mu\\) and \\(\\mu + 1\\sigma\\): \\(34.1\\%\\).<br>Between \\(\\mu + 1\\sigma\\) and \\(\\mu + 2\\sigma\\): \\(13.6\\%\\).<br>Total percentage: \\(34.1\\% + 34.1\\% + 13.6\\% = \\mathbf{81.8\\%}\\) (or approximately \\(\\mathbf{81.5\\% - 82\\%}\\)).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics & Probability</em> and start from \\(\\mu = 500\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(400 = \\mu - 1\\sigma\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

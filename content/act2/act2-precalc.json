@@ -41,46 +41,45 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Pre-Calculus Concepts",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Local Linearization &amp; Differentiability:</strong> A function \\(f\\) is differentiable at \\(x = a\\) if and only if the difference quotient \\(\\lim_{h \\to 0} \\dfrac{f(a+h) - f(a)}{h}\\) exists as a finite real number. Differentiability at \\(x = a\\) strictly implies continuity at \\(x = a\\), but the converse fails at sharp corners (e.g. \\(|x - 2|\\)), vertical tangents, or jump discontinuities.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Pre-Calculus Concepts — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
+          "type": "sign_chart",
+          "title": "Pre-Calculus Concepts — First Derivative Sign Chart & Extrema",
+          "ticks": [
             {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "x": -2,
+              "label": "x = -2"
             },
             {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "x": 7,
+              "label": "x = 7"
             }
           ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
+          "signs": [
+            "+",
+            "−",
+            "+"
+          ],
+          "behaviors": [
+            "↗ Increasing",
+            "↘ Decreasing",
+            "↗ Increasing"
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Derivative sign chart for f'(x) showing local maximum at x = −2 (+ to −) and local minimum at x = 7 (− to +).",
           "ar": null
         }
       },
@@ -307,6 +306,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Pre-Calculus Concepts)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Differentiability Implies Continuity &amp; How Implicit Differentiation Works:</strong> Notice that for \\(x \\ne a\\), we can write \\(f(x) - f(a) = \\dfrac{f(x) - f(a)}{x - a}\\cdot (x - a)\\). Taking the limit as \\(x \\to a\\) by the Product Law gives:</p>\\[ \\lim_{x \\to a} \\bigl(f(x) - f(a)\\bigr) = f'(a)\\cdot 0 = 0 \\implies \\lim_{x \\to a} f(x) = f(a) \\]<p>Similarly, when differentiating an implicit relation \\(F(x, y) = c\\) with respect to \\(x\\), \\(y = y(x)\\) is an inner function of \\(x\\). By the Chain Rule, \\(\\dfrac{d}{dx}\\bigl[y^n\\bigr] = ny^{n-1}\\dfrac{dy}{dx}\\), and for product terms \\(\\dfrac{d}{dx}[xy] = y + x\\dfrac{dy}{dx}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 5.A — Evaluating Limits via Conjugate Rationalization",
@@ -345,11 +356,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example D — Pre-Calculus Concepts (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> \\( \\displaystyle\\lim_{x \\to \\infty} \\dfrac{-2x^3 + 4x}{3x^2-2x+2} = \\)</p><p><strong>Step-by-Step Solution:</strong> The numerator has a higher degree than the denominator, so the ratio grows without bound — the limit does not exist (diverges to \\(\\pm\\infty\\)). <strong>Final Answer:</strong> Does not exist.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Pre-Calculus Concepts)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Assuming \\(f'(c) = 0\\) guarantees a local extremum",
+              "ar": null
+            },
+            {
+              "en": "Inflection points like \\(f(x) = x^3\\) at \\(x = 0\\) have \\(f'(0) = 0\\) without changing sign.",
+              "ar": null
+            },
+            {
+              "en": "Verify that \\(f'(x)\\) actually changes sign across \\(x = c\\) (or check \\(f''(c) \\ne 0\\)).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing parametric \\(\\frac{d^2y}{dx^2}\\) as \\(\\frac{\\ddot{y}}{\\ddot{x}}\\)",
+              "ar": null
+            },
+            {
+              "en": "violates the Chain Rule \\(\\frac{d}{dx} = \\frac{1}{dx/dt}\\frac{d}{dt}\\).",
+              "ar": null
+            },
+            {
+              "en": "Differentiate \\(dy/dx\\) with respect to \\(t\\), then divide by \\(dx/dt\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Forgetting product rule on \\(xy\\) in implicit differentiation",
+              "ar": null
+            },
+            {
+              "en": "Treats \\(y\\) as a constant instead of \\(y(x)\\).",
+              "ar": null
+            },
+            {
+              "en": "Always expand \\(\\frac{d}{dx}(xy) = y + x\\frac{dy}{dx}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Pre-Calculus Concepts",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Justification Rule (ACT International Subject Test — Math 1):</strong> When justifying local extrema or points of inflection on free-response questions, state \"because \\(f'(x)\\) changes sign from positive to negative at \\(x = c\\)\" rather than referring vaguely to \"it\" or \"the graph.\"</p>",
           "ar": null
         }
       },
@@ -362,7 +450,21 @@
         "solution": {
           "en": "<p><strong>Step 1 (Factor and Cancel):</strong> Direct substitution gives \\(\\frac{0}{0}\\). Factor the numerator as a difference of squares:<br>\\[ \\lim_{x \\to 3} \\frac{(x - 3)(x + 3)}{x - 3} = \\lim_{x \\to 3} (x + 3) \\]</p><p><strong>Step 2 (Evaluate Limit):</strong> Substitute \\(x = 3\\):<br>\\[ 3 + 3 = \\mathbf{6} \\]</p><p><strong>Geometric Interpretation:</strong> At \\(x = 3\\), the graph of \\(f(x)\\) has a removable discontinuity (a hole) at point \\(\\mathbf{(3, 6)}\\); for all other points, the graph is the straight line \\(y = x + 3\\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Pre-Calculus Concepts</em> and start from \\(\\lim_{x \\to 3} \\dfrac{x^2 - 9}{x - 3}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\frac{0}{0}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -373,7 +475,21 @@
         "solution": {
           "en": "<p>Using the binomial theorem general term formula \\(T_{k+1} = \\binom{n}{k} a^{n-k} b^k\\) with \\(n = 6\\), \\(a = 2x\\), \\(b = -3\\), and \\(k = 3\\) (for the 4th term): \\[ T_4 = \\binom{6}{3} (2x)^{6-3} (-3)^3. \\] Compute the binomial coefficient: \\(\\binom{6}{3} = \\dfrac{6 \\times 5 \\times 4}{3 \\times 2 \\times 1} = 20\\). \\[ T_4 = 20 \\cdot (2x)^3 \\cdot (-27) = 20 \\cdot (8x^3) \\cdot (-27) = \\mathbf{-4320x^3}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Pre-Calculus Concepts</em> and start from \\((2x - 3)^6\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(T_{k+1} = \\binom{n}{k} a^{n-k} b^k\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -384,7 +500,21 @@
         "solution": {
           "en": "<p>Multiply both sides by \\(r\\):<br>\\[ r^2 = 8r\\sin\\theta \\]<br>Substitute \\(r^2 = x^2 + y^2\\) and \\(y = r\\sin\\theta\\):<br>\\[ x^2 + y^2 = 8y \\implies x^2 + (y^2 - 8y + 16) = 16 \\implies \\mathbf{x^2 + (y - 4)^2 = 16} \\]<br>This is a circle with center \\(\\mathbf{(0, 4)}\\) and radius \\(\\mathbf{r = 4}\\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Pre-Calculus Concepts</em> and start from \\(r = 8\\sin\\theta\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(r\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -395,7 +525,21 @@
         "solution": {
           "en": "<p>Two non-zero vectors are orthogonal if and only if their dot product equals zero:<br>\\[ \\vec{u} \\cdot \\vec{v} = 0 \\]\\[ (3)(2) + (-4)(1) + (2)(k) = 0 \\]\\[ 6 - 4 + 2k = 0 \\implies 2 + 2k = 0 \\implies 2k = -2 \\implies \\mathbf{k = -1} \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Pre-Calculus Concepts</em> and start from \\(\\vec{u} = \\langle 3, -4, 2 \\rangle\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\vec{u} \\cdot \\vec{v} = 0 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

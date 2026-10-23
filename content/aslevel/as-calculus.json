@@ -40,46 +40,34 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Differentiation &amp; Integration",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Accumulation, Antiderivatives &amp; Differential Flows:</strong> By the Fundamental Theorem of Calculus, the accumulation function \\(A(x) = \\int_a^x f(t)\\,dt\\) satisfies \\(A'(x) = f(x)\\), linking instantaneous rates of change to net signed area. In first-order differential equations \\(\\dfrac{dy}{dx} = g(x)h(y)\\), separation of variables \\(\\int \\dfrac{1}{h(y)}\\,dy = \\int g(x)\\,dx + C\\) reconstructs the family of integral curves across the slope field.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Differentiation &amp; Integration — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
-          ]
+          "type": "slope_field",
+          "title": "Differentiation &amp; Integration — Slope Field & Particular Solution Trajectory",
+          "fn": "x - y",
+          "xmin": -3,
+          "xmax": 3,
+          "ymin": -3,
+          "ymax": 3,
+          "solution": {
+            "x0": 0,
+            "y0": 1
+          }
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Slope field for dy/dx = x − y with the integral curve passing through initial condition (0, 1).",
           "ar": null
         }
       },
@@ -260,6 +248,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Differentiation &amp; Integration)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example 6.A",
@@ -286,11 +286,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example C — Differentiation &amp; Integration (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 4x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(9) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 12x^2 - 2x \\).</li><li>Substitute \\( x = 9 \\): \\( f'(9) = 12(9)^2 - 2(9) = 972 - 18 = \\mathbf{954} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> Find \\( \\displaystyle\\int \\left(12x^{3}-12x^{2}+8x-1\\right)\\,dx \\).</p><p><strong>Step-by-Step Solution:</strong> Integrating term by term: \\( 3x^{4}-4x^{3}+4x^{2}-x+C \\) <strong>Final Answer:</strong> \\(3x^{4}-4x^{3}+4x^{2}-x+C\\).</p>",
           "ar": null
         }
       },
@@ -298,11 +298,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example D — Differentiation &amp; Integration (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> Find the gradient of the tangent to \\( y=x^{2}+6x+3 \\) at \\( x=-3 \\).</p><p><strong>Step-by-Step Solution:</strong> \\( \\dfrac{dy}{dx}=2x+6 \\). At \\( x=-3 \\): gradient \\( =0 \\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Differentiation &amp; Integration)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Writing \\(\\ln|y| = x^2 + C \\implies y = e^{x^2} + C\\)",
+              "ar": null
+            },
+            {
+              "en": "Exponentiation distributes over addition as multiplication (\\(e^{a+b} = e^a e^b\\)), not addition.",
+              "ar": null
+            },
+            {
+              "en": "Write \\(y = e^{x^2 + C} = Ae^{x^2}\\) and solve for \\(A\\) using the initial condition.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Leaving original \\(x\\)-limits on a \\(u\\)-substituted definite integral",
+              "ar": null
+            },
+            {
+              "en": "Evaluates the antiderivative \\(F(u)\\) at \\(x\\)-values instead of \\(u(x)\\)-values.",
+              "ar": null
+            },
+            {
+              "en": "Convert bounds immediately: \\(u_{\\text{low}} = u(a)\\) and \\(u_{\\text{high}} = u(b)\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing total distance as \\(\\left|\\int_{t_1}^{t_2} v(t)\\,dt\\right|\\)",
+              "ar": null
+            },
+            {
+              "en": "Cancels forward and backward motion (net displacement) instead of accumulating total path length.",
+              "ar": null
+            },
+            {
+              "en": "Split the integral at every root where \\(v(t) = 0\\) and integrate \\(|v(t)|\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Differentiation &amp; Integration",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Quick Verification Trick (Cambridge International AS Level (9709 Paper 1 / Paper 4 / Paper 5)):</strong> For any indefinite integral \\(\\int f(x)\\,dx = F(x) + C\\), differentiate your answer \\(F'(x)\\) mentally—especially the coefficient \\(1/k\\) from chain-rule reversal \\(\\int e^{kx}\\,dx = \\tfrac{1}{k}e^{kx} + C\\)—before moving on.</p>",
           "ar": null
         }
       },
@@ -315,7 +392,21 @@
         "solution": {
           "en": "(a) Find \\(\\frac{dy}{dx}\\): \\[\\dfrac{dy}{dx} = 6x^2 - 18x + 12\\] Set \\(\\frac{dy}{dx} = 0\\): \\(6(x^2 - 3x + 2) = 0 \\Rightarrow 6(x - 1)(x - 2) = 0\\), giving \\(x = 1\\) and \\(x = 2\\).<br>When \\(x = 1\\): \\(y = 2(1) - 9(1) + 12(1) + 1 = 6\\). Point is \\((1, 6)\\).<br>When \\(x = 2\\): \\(y = 2(8) - 9(4) + 12(2) + 1 = 16 - 36 + 24 + 1 = 5\\). Point is \\((2, 5)\\).<br>(b) Second derivative: \\[\\dfrac{d^2y}{dx^2} = 12x - 18\\] At \\(x = 1\\): \\(\\frac{d^2y}{dx^2} = 12(1) - 18 = -6 < 0\\), so \\((1, 6)\\) is a local maximum.<br>At \\(x = 2\\): \\(\\frac{d^2y}{dx^2} = 12(2) - 18 = +6 > 0\\), so \\((2, 5)\\) is a local minimum.",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differentiation &amp; Integration</em> and start from \\(y = 2x^3 - 9x^2 + 12x + 1\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\frac{dy}{dx}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -326,7 +417,21 @@
         "solution": {
           "en": "Find points of intersection: \\[4x - x^2 = x \\Rightarrow 3x - x^2 = 0 \\Rightarrow x(3 - x) = 0\\] The curves intersect at \\(x = 0\\) and \\(x = 3\\). Between \\(0\\) and \\(3\\), the curve \\(y = 4x - x^2\\) lies above the line \\(y = x\\).<br>The enclosed area is: \\[A = \\int_0^3 \\left[(4x - x^2) - x\\right]\\,dx = \\int_0^3 (3x - x^2)\\,dx\\] Integrate: \\[A = \\left[\\dfrac{3x^2}{2} - \\dfrac{x^3}{3}\\right]_0^3 = \\left(\\dfrac{3(9)}{2} - \\dfrac{27}{3}\\right) - 0 = \\dfrac{27}{2} - 9 = \\dfrac{27 - 18}{2} = \\dfrac{9}{2} = 4.5\\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differentiation &amp; Integration</em> and start from \\(y = 4x - x^2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(4x - x^2 = x \\Rightarrow 3x - x^2 = 0 \\Rightarrow x(3 - x) = 0\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -337,16 +442,44 @@
         "solution": {
           "en": "Rewrite in index form: \\(y = 4x^{-1/2} + 2x\\).<br>At \\(x = 4\\): \\(y = 4(4^{-1/2}) + 2(4) = 4\\left(\\tfrac{1}{2}\\right) + 8 = 2 + 8 = 10\\). Point of contact is \\((4, 10)\\).<br>Differentiate: \\[\\dfrac{dy}{dx} = 4\\left(-\\tfrac{1}{2}x^{-3/2}\\right) + 2 = -2x^{-3/2} + 2 = -\\dfrac{2}{x^{3/2}} + 2\\] At \\(x = 4\\): \\(x^{3/2} = (\\sqrt{4})^3 = 8\\). Thus: \\[m_{\\text{tan}} = -\\dfrac{2}{8} + 2 = -\\dfrac{1}{4} + 2 = \\dfrac{7}{4}\\] The normal has gradient \\(m_{\\text{norm}} = -\\dfrac{1}{7/4} = -\\dfrac{4}{7}\\).<br>Using point \\((4, 10)\\): \\[y - 10 = -\\dfrac{4}{7}(x - 4) \\Rightarrow 7(y - 10) = -4(x - 4) \\Rightarrow 7y - 70 = -4x + 16 \\Rightarrow 4x + 7y - 86 = 0\\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differentiation &amp; Integration</em> and start from \\(y = \\dfrac{4}{\\sqrt{x}} + 2x\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(y = 4x^{-1/2} + 2x\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Differentiation &amp; Integration · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> Find the gradient of the normal to \\( y=2x^{2}+6x+4 \\) at \\( x=-1 \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differentiation &amp; Integration</em> and start from \\( y=2x^{2}+6x+4 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( =\\left.\\dfrac{dy}{dx}\\right|_{x=-1}=2 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Tangent gradient \\( =\\left.\\dfrac{dy}{dx}\\right|_{x=-1}=2 \\). Normal gradient \\( =-\\dfrac{1}{2}=-1/2 \\)",
           "ar": null
         }
       }

@@ -41,15 +41,30 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Geometry",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Euclidean Invariants, Locus Equations &amp; Scaling Laws:</strong> In analytic geometry, geometric loci translate into algebraic constraints via Euclidean distance \\(d = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}\\). A circle of center \\((h, k)\\) and radius \\(r\\) satisfies \\((x-h)^2 + (y-k)^2 = r^2\\), and a tangent line at point \\(P\\) is strictly perpendicular to the radius \\(CP\\) (\\(m_{\\text{tan}} \\cdot m_{\\text{rad}} = -1\\)). Under a similarity scale factor \\(k\\), all linear lengths scale by \\(k\\), surface areas scale by \\(k^2\\), and volumes scale by \\(k^3\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "circle",
-          "radius": 6,
-          "labelR": "r = 6",
-          "chordAngle": 120
+          "type": "conic_section",
+          "conic": "ellipse",
+          "title": "Geometry — Analytic Locus & Focal Geometry",
+          "h": 0,
+          "k": 0,
+          "a": 4,
+          "b": 3
         },
         "caption": {
-          "en": "Circle sector and chord geometry with radius r = 6 and central angle 120°.",
+          "en": "Analytic ellipse x²/16 + y²/9 = 1 showing semi-major axis a = 4, semi-minor axis b = 3, and foci F₁, F₂.",
           "ar": null
         }
       },
@@ -262,6 +277,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Geometry)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Inscribed Angles Equal Half the Central Angle &amp; Circle Completion Works:</strong> Given \\(x^2 + y^2 + 2gx + 2fy + c = 0\\), completing the square in \\(x\\) and \\(y\\) simultaneously yields:</p>\\[ (x + g)^2 - g^2 + (y + f)^2 - f^2 + c = 0 \\implies (x + g)^2 + (y + f)^2 = g^2 + f^2 - c \\]<p>Thus the center is \\((-g, -f)\\) and the radius is \\(r = \\sqrt{g^2 + f^2 - c}\\) (requiring \\(g^2 + f^2 > c\\)). In any circle, drawing diameter \\(POQ\\) splits an inscribed angle \\(\\angle APB\\) into two isosceles triangles \\(\\triangle OAP\\) and \\(\\triangle OBP\\) (since \\(OA = OB = OP = r\\)); by the exterior angle theorem, \\(\\angle AOB = 2\\angle APB\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 6.A — Circle Equation by Completing the Square",
@@ -300,11 +327,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example D — Geometry (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> In the \\( xy \\)-plane, what are the coordinates of the midpoint of the line segment connecting \\( (-6, -6) \\) and \\( (-2, -2) \\)?</p><p><strong>Step-by-Step Solution:</strong> The midpoint formula for two points \\((x_1, y_1)\\) and \\((x_2, y_2)\\) is:\n\\[ M = \\left( \\frac{x_1 + x_2}{2}, \\frac{y_1 + y_2}{2} \\right) \\]\nSubstitute the coordinates:\n\\[ M = \\left( \\frac{-6 + -2}{2}, \\frac{-6 + -2}{2} \\right) = \\left( \\frac{-8}{2}, \\frac{-8}{2} \\right) = (-4, -4) \\]. <strong>Final Answer:</strong> \\( (-4, -4) \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Geometry)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Reading radius of \\((x-2)^2 + (y+7)^2 = 16\\) as \\(r = 16\\) or center as \\((-2, 7)\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses \\(r^2\\) with \\(r\\) and forgets to flip the signs inside \\((x-h)\\) and \\((y-k)\\).",
+              "ar": null
+            },
+            {
+              "en": "Take the square root and negate the constants: center \\((2, -7)\\), radius \\(r = \\sqrt{16} = 4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using SSA (two sides and a non-included angle) to claim triangle congruence",
+              "ar": null
+            },
+            {
+              "en": "The ambiguous case of the Sine Rule allows two distinct triangles (\\(\\theta\\) and \\(180^\\circ - \\theta\\)).",
+              "ar": null
+            },
+            {
+              "en": "Use valid congruence criteria only: SSS, SAS (included angle), ASA, AAS, or HL/RHS.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Cubing the area ratio \\((A_1/A_2)^3\\) to find the volume ratio of similar solids",
+              "ar": null
+            },
+            {
+              "en": "Area ratio is already \\(k^2\\), so cubing it gives \\(k^6\\) instead of \\(k^3\\).",
+              "ar": null
+            },
+            {
+              "en": "First take the square root to get linear scale factor \\(k = \\sqrt{A_1/A_2}\\), then cube \\(k^3\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Geometry",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Geometric Auxiliary-Line Strategy (Egyptian Scholastic Test (EST I — Literacy & Math)):</strong> Whenever a circle problem includes a tangent line, draw the radius to the point of tangency and mark \\(90^\\circ\\) immediately; whenever it includes a chord, drop the perpendicular bisector from the center to form a right triangle.</p>",
           "ar": null
         }
       },
@@ -317,7 +421,21 @@
         "solution": {
           "en": "<p><strong>(a) Distance formula:</strong> \\[ PQ = \\sqrt{(5 - (-3))^2 + (-1 - 7)^2} = \\sqrt{8^2 + (-8)^2} = \\sqrt{64 + 64} = \\sqrt{128} = \\mathbf{8\\sqrt{2}}. \\]</p><p><strong>(b) Midpoint formula:</strong> \\[ M = \\left(\\frac{-3 + 5}{2}, \\frac{7 + (-1)}{2}\\right) = \\left(\\frac{2}{2}, \\frac{6}{2}\\right) = \\mathbf{(1, 3)}. \\]</p><p><strong>(c) Perpendicular slope:</strong> Slope of \\(PQ\\) is \\(m = \\frac{-1 - 7}{5 - (-3)} = \\frac{-8}{8} = -1\\). The perpendicular bisector has negative reciprocal slope: \\[ m_\\perp = -\\frac{1}{-1} = \\mathbf{+1}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Geometry</em> and start from \\(P(-3, 7)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -328,7 +446,21 @@
         "solution": {
           "en": "<p><strong>(a) Altitude using \\(30^\\circ-60^\\circ-90^\\circ\\) triangle:</strong> Dropping an altitude splits the equilateral triangle into two congruent \\(30^\\circ-60^\\circ-90^\\circ\\) right triangles with short leg \\(b/2 = 6\\text{ cm}\\) and hypotenuse \\(12\\text{ cm}\\). The altitude is opposite the \\(60^\\circ\\) angle: \\[ h = 6\\sqrt{3}\\text{ cm}. \\]</p><p><strong>(b) Area formula:</strong> \\[ A = \\frac{1}{2} b h = \\frac{1}{2}(12)(6\\sqrt{3}) = \\mathbf{36\\sqrt{3}\\text{ cm}^2}. \\] (Alternatively: \\(A = \\frac{\\sqrt{3}}{4} s^2 = \\frac{\\sqrt{3}}{4}(144) = 36\\sqrt{3}\\text{ cm}^2\\)).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Geometry</em> and start from \\(12\\text{ cm}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(30^\\circ-60^\\circ-90^\\circ\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -339,7 +471,21 @@
         "solution": {
           "en": "<p><strong>Step 1:</strong> The center \\((h, k)\\) is the midpoint of diameter \\(AB\\): \\[ (h, k) = \\left(\\frac{2 + 8}{2}, \\frac{-3 + 5}{2}\\right) = \\left(\\frac{10}{2}, \\frac{2}{2}\\right) = \\mathbf{(5, 1)}. \\]</p><p><strong>Step 2:</strong> Compute radius \\(r\\) as the distance from center \\((5, 1)\\) to \\(B(8, 5)\\): \\[ r^2 = (8 - 5)^2 + (5 - 1)^2 = 3^2 + 4^2 = 9 + 16 = 25 \\implies r = 5. \\]</p><p><strong>Step 3:</strong> Write standard equation: \\[ \\mathbf{(x - 5)^2 + (y - 1)^2 = 25}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Geometry</em> and start from \\(xy\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\((h, k)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -350,7 +496,21 @@
         "solution": {
           "en": "<p><strong>Step 1:</strong> Compute the volume of the submerged cone: \\[ V_{\\text{cone}} = \\frac{1}{3} \\pi r_{\\text{cone}}^2 h_{\\text{cone}} = \\frac{1}{3} \\pi (4^2)(9) = \\frac{1}{3} \\pi (16)(9) = 48\\pi\\text{ cm}^3. \\]</p><p><strong>Step 2:</strong> The volume of water displaced forms a cylinder with radius \\(R = 6\\text{ cm}\\) and height \\(\\Delta h\\): \\[ V_{\\text{displaced}} = \\pi R^2 (\\Delta h) = \\pi (6^2) \\Delta h = 36\\pi \\Delta h. \\]</p><p><strong>Step 3:</strong> Equate volumes and solve for \\(\\Delta h\\): \\[ 36\\pi \\Delta h = 48\\pi \\implies \\Delta h = \\frac{48\\pi}{36\\pi} = \\frac{4}{3} \\approx 1.33\\text{ cm}. \\]</p><p>The water level rises by exactly \\(\\mathbf{\\frac{4}{3}\\text{ cm}}\\) (or \\(\\mathbf{1.33\\text{ cm}}\\)).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Geometry</em> and start from \\(4\\text{ cm}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

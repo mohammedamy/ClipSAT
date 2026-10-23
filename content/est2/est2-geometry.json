@@ -41,15 +41,30 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Lines, Triangles & Polygons",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Euclidean Invariants, Locus Equations &amp; Scaling Laws:</strong> In analytic geometry, geometric loci translate into algebraic constraints via Euclidean distance \\(d = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}\\). A circle of center \\((h, k)\\) and radius \\(r\\) satisfies \\((x-h)^2 + (y-k)^2 = r^2\\), and a tangent line at point \\(P\\) is strictly perpendicular to the radius \\(CP\\) (\\(m_{\\text{tan}} \\cdot m_{\\text{rad}} = -1\\)). Under a similarity scale factor \\(k\\), all linear lengths scale by \\(k\\), surface areas scale by \\(k^2\\), and volumes scale by \\(k^3\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "circle",
-          "radius": 6,
-          "labelR": "r = 6",
-          "chordAngle": 120
+          "type": "conic_section",
+          "conic": "ellipse",
+          "title": "Lines, Triangles & Polygons — Analytic Locus & Focal Geometry",
+          "h": 0,
+          "k": 0,
+          "a": 4,
+          "b": 3
         },
         "caption": {
-          "en": "Circle sector and chord geometry with radius r = 6 and central angle 120°.",
+          "en": "Analytic ellipse x²/16 + y²/9 = 1 showing semi-major axis a = 4, semi-minor axis b = 3, and foci F₁, F₂.",
           "ar": null
         }
       },
@@ -263,6 +278,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Lines, Triangles & Polygons)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Inscribed Angles Equal Half the Central Angle &amp; Circle Completion Works:</strong> Given \\(x^2 + y^2 + 2gx + 2fy + c = 0\\), completing the square in \\(x\\) and \\(y\\) simultaneously yields:</p>\\[ (x + g)^2 - g^2 + (y + f)^2 - f^2 + c = 0 \\implies (x + g)^2 + (y + f)^2 = g^2 + f^2 - c \\]<p>Thus the center is \\((-g, -f)\\) and the radius is \\(r = \\sqrt{g^2 + f^2 - c}\\) (requiring \\(g^2 + f^2 > c\\)). In any circle, drawing diameter \\(POQ\\) splits an inscribed angle \\(\\angle APB\\) into two isosceles triangles \\(\\triangle OAP\\) and \\(\\triangle OBP\\) (since \\(OA = OB = OP = r\\)); by the exterior angle theorem, \\(\\angle AOB = 2\\angle APB\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 4.A — Oblique Triangle Solution via Law of Cosines",
@@ -301,11 +328,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example D — Lines, Triangles & Polygons (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> Two parallel lines \\( \\ell_1 \\parallel \\ell_2 \\) are intersected by transversal \\( E \\), forming an acute interior angle of \\( 49^\\circ \\) and supplementary consecutive interior angle \\( p^\\circ \\). What is the angle measure \\( p \\) (in degrees)?</p><p><strong>Step-by-Step Solution:</strong> Consecutive interior angles sum to \\( 180^\\circ \\), so \\( p = 180 - 49 = 131 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Lines, Triangles & Polygons)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Reading radius of \\((x-2)^2 + (y+4)^2 = 16\\) as \\(r = 16\\) or center as \\((-2, 4)\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses \\(r^2\\) with \\(r\\) and forgets to flip the signs inside \\((x-h)\\) and \\((y-k)\\).",
+              "ar": null
+            },
+            {
+              "en": "Take the square root and negate the constants: center \\((2, -4)\\), radius \\(r = \\sqrt{16} = 4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using SSA (two sides and a non-included angle) to claim triangle congruence",
+              "ar": null
+            },
+            {
+              "en": "The ambiguous case of the Sine Rule allows two distinct triangles (\\(\\theta\\) and \\(180^\\circ - \\theta\\)).",
+              "ar": null
+            },
+            {
+              "en": "Use valid congruence criteria only: SSS, SAS (included angle), ASA, AAS, or HL/RHS.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Cubing the area ratio \\((A_1/A_2)^3\\) to find the volume ratio of similar solids",
+              "ar": null
+            },
+            {
+              "en": "Area ratio is already \\(k^2\\), so cubing it gives \\(k^6\\) instead of \\(k^3\\).",
+              "ar": null
+            },
+            {
+              "en": "First take the square root to get linear scale factor \\(k = \\sqrt{A_1/A_2}\\), then cube \\(k^3\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Lines, Triangles & Polygons",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Geometric Auxiliary-Line Strategy (Egyptian Scholastic Test (EST II — Math Level 1)):</strong> Whenever a circle problem includes a tangent line, draw the radius to the point of tangency and mark \\(90^\\circ\\) immediately; whenever it includes a chord, drop the perpendicular bisector from the center to form a right triangle.</p>",
           "ar": null
         }
       },
@@ -318,7 +422,21 @@
         "solution": {
           "en": "<p><strong>(a) Exact hypotenuse:</strong> \\[ c = \\sqrt{7^2 + 10^2} = \\sqrt{49 + 100} = \\mathbf{\\sqrt{149}\\text{ cm}} \\approx 12.21\\text{ cm}. \\]</p><p><strong>(b) Smaller acute angle:</strong> The smaller angle is opposite the shorter leg (7 cm): \\[ \\tan\\theta = \\frac{7}{10} = 0.7 \\implies \\theta = \\arctan(0.7) \\approx \\mathbf{35.0^\\circ}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Lines, Triangles & Polygons</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -329,7 +447,21 @@
         "solution": {
           "en": "<p><strong>(a) Exact area:</strong> A regular hexagon is composed of 6 congruent equilateral triangles of side length \\(s = 6\\). The area of one equilateral triangle is \\(\\dfrac{\\sqrt{3}}{4}s^2 = \\dfrac{\\sqrt{3}}{4}(36) = 9\\sqrt{3}\\). Total area is: \\[ A = 6 \\times 9\\sqrt{3} = \\mathbf{54\\sqrt{3}\\text{ cm}^2} \\approx 93.53\\text{ cm}^2. \\]</p><p><strong>(b) Long diagonal:</strong> The long diagonal passes through the center of the circumscribed circle and equals twice the side length: \\[ d = 2s = 2(6) = \\mathbf{12\\text{ cm}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Lines, Triangles & Polygons</em> and start from \\(s = 6\\text{ cm}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(s = 6\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -340,7 +472,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Apply the Law of Cosines for angle \\(P\\):</strong> \\[ p^2 = q^2 + r^2 - 2qr\\cos P \\implies \\cos P = \\frac{q^2 + r^2 - p^2}{2qr}. \\]</p><p><strong>Step 2: Substitute given side lengths:</strong> \\[ \\cos P = \\frac{11^2 + 13^2 - 8^2}{2(11)(13)} = \\frac{121 + 169 - 64}{286} = \\frac{226}{286} = \\mathbf{\\frac{113}{143}} \\approx 0.7902. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Lines, Triangles & Polygons</em> and start from \\(PQR\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(P\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -351,7 +497,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Compute semi-perimeter \\(s\\):</strong> \\[ s = \\frac{a + b + c}{2} = \\frac{5 + 6 + 7}{2} = \\frac{18}{2} = 9. \\]</p><p><strong>Step 2: Apply Heron's formula:</strong> \\[ \\text{Area} = \\sqrt{s(s - a)(s - b)(s - c)} = \\sqrt{9(9 - 5)(9 - 6)(9 - 7)} = \\sqrt{9(4)(3)(2)} = \\sqrt{216} = \\mathbf{6\\sqrt{6}} \\approx 14.70. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Lines, Triangles & Polygons</em> and start from \\(a = 5\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(s\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

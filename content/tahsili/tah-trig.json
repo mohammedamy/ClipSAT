@@ -239,6 +239,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Trigonometry)",
+          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (المثلثات)"
+        },
+        "body": {
+          "en": "<p><strong>Why the Harmonic \\(R\\)-Formula &amp; Cosine Rule Hold:</strong> Expanding \\(R\\cos(\\theta - \\alpha)\\) via the compound-angle identity gives:</p>\\[ R\\cos(\\theta - \\alpha) = (R\\cos\\alpha)\\cos\\theta + (R\\sin\\alpha)\\sin\\theta \\]<p>Matching coefficients with \\(a\\cos\\theta + b\\sin\\theta\\) requires \\(R\\cos\\alpha = a\\) and \\(R\\sin\\alpha = b\\). Squaring and adding yields \\(R^2(\\cos^2\\alpha + \\sin^2\\alpha) = a^2 + b^2 \\implies R = \\sqrt{a^2 + b^2}\\), and dividing gives \\(\\tan\\alpha = \\dfrac{b}{a}\\).</p>",
+          "ar": "<p><strong>برهان الصيغة التوافقية \\(R\\cos(\\theta-\\alpha)\\):</strong> بفك \\(R\\cos(\\theta-\\alpha) = R\\cos\\alpha\\cos\\theta + R\\sin\\alpha\\sin\\theta\\) ومساواة المعاملات مع \\(a\\cos\\theta + b\\sin\\theta\\) نجد \\(R = \\sqrt{a^2+b^2}\\) و \\(\\tan\\alpha = b/a\\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 4.A — Reference Angles and Exact Values across Quadrants",
@@ -286,6 +298,83 @@
         }
       },
       {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Trigonometry)",
+          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (المثلثات)"
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع للطالب"
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": "السبب الرياضي للخطأ"
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Dividing \\(\\sin 2\\theta = \\sin\\theta\\) by \\(\\sin\\theta\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Eliminates valid solutions where \\(\\sin\\theta = 0\\).",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Expand \\(2\\sin\\theta\\cos\\theta - \\sin\\theta = 0\\) and factor \\(\\sin\\theta(2\\cos\\theta - 1) = 0\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Using \\(A = \\frac{1}{2}r^2\\theta\\) with \\(\\theta = 60^\\circ\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Overestimates sector area by a factor of \\(180/\\pi \\approx 57.3\\).",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Convert to radians first: \\(\\theta = 60^\\circ \\times \\frac{\\pi}{180^\\circ} = \\frac{\\pi}{3}\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Finding only one solution to \\(\\sin(2x) = 1/2\\) on \\([0, 2\\pi]\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Forgets that if \\(x \\in [0, 2\\pi]\\), the transformed angle \\(u = 2x\\) spans \\([0, 4\\pi]\\) (4 roots).",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Transform the interval to \\(u \\in [0, 4\\pi]\\) before dividing by 2.",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Trigonometry",
+          "ar": "▲ استراتيجية الحل السريع والتحقق — المثلثات"
+        },
+        "body": {
+          "en": "<p><strong>All-Solutions Checklist (Qiyas Scholastic Achievement Admission Test (SAAT / التحصيلي)):</strong> When solving \\(\\trig(kx + \\phi) = c\\) on \\([0, 2\\pi]\\), immediately write down the transformed interval \\(\\phi \\le u \\le 2k\\pi + \\phi\\), list all ASTC quadrant angles in that range, and only divide by \\(k\\) at the very last step.</p>",
+          "ar": "<p><strong>قاعدة ذهبية للمعادلات المثلثية:</strong> عند حل معادلة تحوي زاوية مركبة \\(u = kx + \\phi\\)، عدّل فترة البحث لتناسب \\(u\\) أولاً ثم اقسم على \\(k\\) في الخطوة الأخيرة.</p>"
+        }
+      },
+      {
         "kind": "practiceProblem",
         "id": "tah-trig-p1",
         "question": {
@@ -295,7 +384,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Find reference angle:</strong> \\(150^\\circ\\) is in Quadrant II, so \\(\\theta' = 180^\\circ - 150^\\circ = 30^\\circ\\).</p><p><strong>Step 2: Apply ASTC signs:</strong> In Quadrant II, sine is positive and cosine is negative: \\[ \\sin(150^\\circ) = \\sin(30^\\circ) = \\mathbf{\\frac{1}{2}}, \\qquad \\cos(150^\\circ) = -\\cos(30^\\circ) = -\\mathbf{\\frac{\\sqrt{3}}{2}}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: حساب الزاوية المرجعية:</strong> \\(150^\\circ\\) تقع في الربع الثاني، إذن \\(\\theta' = 180^\\circ - 150^\\circ = 30^\\circ\\).</p><p><strong>الخطوة 2: تطبيق قاعدة الإشارات:</strong> في الربع الثاني الجيب موجب وجيب التمام سالب: \\[ \\sin(150^\\circ) = \\sin(30^\\circ) = \\mathbf{\\frac{1}{2}}, \\qquad \\cos(150^\\circ) = -\\cos(30^\\circ) = -\\mathbf{\\frac{\\sqrt{3}}{2}}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Trigonometry</em> and start from \\(\\sin(150^\\circ)\\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\(\\sin(150^\\circ)\\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(150^\\circ\\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\(150^\\circ\\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -307,7 +410,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Apply the Law of Sines:</strong> \\[ \\frac{\\sin A}{a} = \\frac{\\sin B}{b} \\]</p><p><strong>Step 2: Substitute known values:</strong> \\[ \\frac{\\sin 30^\\circ}{6} = \\frac{\\sin B}{6\\sqrt{3}} \\implies \\frac{1/2}{6} = \\frac{\\sin B}{6\\sqrt{3}} \\implies \\frac{1}{12} = \\frac{\\sin B}{6\\sqrt{3}} \\]</p><p><strong>Step 3: Solve for \\(\\sin B\\):</strong> \\[ \\sin B = \\frac{6\\sqrt{3}}{12} = \\mathbf{\\frac{\\sqrt{3}}{2}}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: تطبيق قانون الجيوب:</strong> \\[ \\frac{\\sin A}{a} = \\frac{\\sin B}{b} \\]</p><p><strong>الخطوة 2: التعويض بالقيم المعطاة:</strong> \\[ \\frac{\\sin 30^\\circ}{6} = \\frac{\\sin B}{6\\sqrt{3}} \\implies \\frac{1/2}{6} = \\frac{\\sin B}{6\\sqrt{3}} \\implies \\frac{1}{12} = \\frac{\\sin B}{6\\sqrt{3}} \\]</p><p><strong>الخطوة 3: حساب قيمة \\(\\sin B\\):</strong> \\[ \\sin B = \\frac{6\\sqrt{3}}{12} = \\mathbf{\\frac{\\sqrt{3}}{2}}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Trigonometry</em> and start from \\(ABC\\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\(ABC\\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\frac{\\sin A}{a} = \\frac{\\sin B}{b} \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( \\frac{\\sin A}{a} = \\frac{\\sin B}{b} \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -319,7 +436,21 @@
         "solution": {
           "en": "<p><strong>Step 1: State the trigonometric area formula:</strong> \\[ \\text{Area} = \\frac{1}{2} a b \\sin C \\]</p><p><strong>Step 2: Substitute values:</strong> \\[ \\text{Area} = \\frac{1}{2} (8)(10) \\sin(30^\\circ) = 40 \\times \\frac{1}{2} = \\mathbf{20\\text{ cm}^2}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: كتابة قانون مساحة المثلث:</strong> \\[ \\text{المساحة} = \\frac{1}{2} a b \\sin C \\]</p><p><strong>الخطوة 2: التعويض وحساب الناتج:</strong> \\[ \\text{المساحة} = \\frac{1}{2} (8)(10) \\sin(30^\\circ) = 40 \\times \\frac{1}{2} = \\mathbf{20\\text{ cm}^2}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Trigonometry</em> and start from \\(30^\\circ\\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\(30^\\circ\\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\text{Area} = \\frac{1}{2} a b \\sin C \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( \\text{Area} = \\frac{1}{2} a b \\sin C \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -331,7 +462,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Recall the period of the tangent function:</strong> The fundamental period of tangent is \\(\\pi\\) (or \\(180^\\circ\\)), so for \\(\\tan(Bx)\\), the period is \\(\\frac{\\pi}{|B|}\\).</p><p><strong>Step 2: Substitute \\(B = 4\\):</strong> \\[ \\text{Period} = \\mathbf{\\frac{\\pi}{4}} = \\mathbf{45^\\circ}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: قانون دورة دالة الظل:</strong> الدورة الأساسية لدالة الظل هي \\(\\pi\\) (أو \\(180^\\circ\\))، وبالتالي دورة \\(\\tan(Bx)\\) هي \\(\\frac{\\pi}{|B|}\\).</p><p><strong>الخطوة 2: التعويض بـ \\(B = 4\\):</strong> \\[ \\text{طول الدورة} = \\mathbf{\\frac{\\pi}{4}} = \\mathbf{45^\\circ}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Trigonometry</em> and start from \\(g(x) = 5\\tan(4x)\\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\(g(x) = 5\\tan(4x)\\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\pi\\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\(\\pi\\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       }
     ]
   },

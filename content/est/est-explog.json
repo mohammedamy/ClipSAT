@@ -41,46 +41,53 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Exponentials & Logarithms",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Domain Restrictions, Invertibility &amp; Asymptotic Behavior:</strong> An algebraic or transcendental function \\(f: D \\to R\\) possesses an inverse \\(f^{-1}: R \\to D\\) if and only if \\(f\\) is strictly one-to-one (bijective) on \\(D\\), guaranteeing that \\(\\text{dom}(f^{-1}) = \\text{ran}(f)\\) and \\(\\text{ran}(f^{-1}) = \\text{dom}(f)\\). For logarithmic and radical equations, every algebraic step that squares both sides or combines logs (\\(\\log_b u + \\log_b v = \\log_b(uv)\\)) can enlarge the solution set, requiring a final domain check against the original equation.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Exponentials & Logarithms — Coordinate Curve & Tangent Analysis (2)",
+          "title": "Exponentials & Logarithms — Function Curve & Symmetry Analysis",
           "xrange": [
             -4,
-            4
+            6
           ],
           "yrange": [
-            -3,
-            9
+            -4,
+            6
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "(x - 1)*(x - 1) - 2",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "label": "f(x) = (x-1)² - 2"
             },
             {
-              "fn": "2*x - 3",
+              "fn": "x",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "label": "y = x"
             }
           ],
           "points": [
             {
               "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
               "y": -2,
-              "label": "(0, -2)"
+              "label": "Vertex (1, -2)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Parabola f(x) = (x − 1)² − 2 with vertex at (1, −2) and symmetry reference line y = x.",
           "ar": null
         }
       },
@@ -285,6 +292,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Exponentials & Logarithms)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Completing the Square &amp; Log-Linearization Work:</strong> Any quadratic \\(f(x) = ax^2 + bx + c\\) (\\(a \\ne 0\\)) can be rewritten by factoring \\(a\\) from the first two terms and adding/subtracting \\((b/2a)^2\\):</p>\\[ ax^2 + bx + c = a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\]<p>Because \\(\\left(x + \\frac{b}{2a}\\right)^2 \\ge 0\\) for all \\(x \\in \\mathbb{R}\\), the extreme value \\(k = c - \\frac{b^2}{4a}\\) is attained uniquely at the axis of symmetry \\(x = -\\frac{b}{2a}\\), restricting the range to \\([k, \\infty)\\) (if \\(a > 0\\)) and making \\(f\\) invertible on \\(x \\ge -\\frac{b}{2a}\\). Similarly, applying \\(\\ln\\) to power laws \\(y = ax^n\\) yields \\(\\ln y = n\\ln x + \\ln a\\), transforming a nonlinear curve into a straight line of gradient \\(n\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 8.A — Exponential Equation with Common Base Transformation",
@@ -323,11 +342,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example D — Exponentials & Logarithms (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> Consider the factored quartic polynomial \\( u(s) = (s^2 - 100)(s^2 - 225) \\). What is the constant term \\( u(0) \\)?</p><p><strong>Step-by-Step Solution:</strong> Evaluating at \\( s = 0 \\) gives \\( u(0) = (-100)(-225) = 22500 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Exponentials & Logarithms)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Expanding \\(\\ln(x + y)\\) as \\(\\ln x + \\ln y\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses the product law \\(\\ln(xy) = \\ln x + \\ln y\\) with a non-existent sum rule.",
+              "ar": null
+            },
+            {
+              "en": "Only factor products, quotients, and powers inside logarithms: \\(\\ln(xy) = \\ln x + \\ln y\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Keeping both roots of \\(\\sqrt{2x+7} = x - 1\\) without checking \\(x - 1 \\ge 0\\)",
+              "ar": null
+            },
+            {
+              "en": "Squaring both sides loses the sign of \\(x - {r}\\), introducing roots where \\(\\sqrt{\\cdot} = -\\text{number}\\).",
+              "ar": null
+            },
+            {
+              "en": "Enforce the range condition \\(x \\ge 1\\) before or after squaring.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Restricting domain of \\(f(x) = (x-3)^2 + 1\\) to \\(x \\ge 0\\) for invertibility",
+              "ar": null
+            },
+            {
+              "en": "The vertex is at \\(x = 3\\), so \\(f(2) = f(4) = 2\\) fails the horizontal line test on \\(x \\ge 0\\).",
+              "ar": null
+            },
+            {
+              "en": "Restrict the domain at the vertex axis of symmetry: \\(x \\ge 3\\) (or \\(x \\le 3\\)).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Exponentials & Logarithms",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Exam Check (Egyptian Scholastic Test (EST I — Literacy & Math)):</strong> To verify an inverse function \\(f^{-1}(x)\\) in 5 seconds, pick a simple input \\(x_0\\), compute \\(y_0 = f(x_0)\\), and check that \\(f^{-1}(y_0) = x_0\\). Also verify that the graph of \\(y = f^{-1}(x)\\) reflects \\(y = f(x)\\) across \\(y = x\\).</p>",
           "ar": null
         }
       },
@@ -340,7 +436,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Invert the fraction to remove the negative exponent:</strong> \\[ \\left(\\frac{16 x^8 y^{-4}}{81 z^{12}}\\right)^{-3/4} = \\left(\\frac{81 z^{12}}{16 x^8 y^{-4}}\\right)^{3/4} = \\left(\\frac{81 y^4 z^{12}}{16 x^8}\\right)^{3/4}. \\]</p><p><strong>Step 2: Take the 4th root of each factor:</strong> \\[ \\left(\\frac{81 y^4 z^{12}}{16 x^8}\\right)^{1/4} = \\frac{81^{1/4} (y^4)^{1/4} (z^{12})^{1/4}}{16^{1/4} (x^8)^{1/4}} = \\frac{3 y z^3}{2 x^2}. \\]</p><p><strong>Step 3: Cube the result:</strong> \\[ \\left(\\frac{3 y z^3}{2 x^2}\\right)^3 = \\frac{3^3 y^3 (z^3)^3}{2^3 (x^2)^3} = \\mathbf{\\frac{27 y^3 z^9}{8 x^6}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Exponentials & Logarithms</em> and start from \\(\\left(\\dfrac{16 x^8 y^{-4}}{81 z^{12}}\\right)^{-3/4}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -351,7 +461,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Set up the exponential growth equation:</strong> \\[ P(t) = 250 \\times 4^{t/5} = 16000. \\]</p><p><strong>Step 2: Divide both sides by 250:</strong> \\[ 4^{t/5} = \\frac{16000}{250} = \\frac{1600}{25} = 64. \\]</p><p><strong>Step 3: Express 64 as a power of 4:</strong> \\[ 64 = 4^3 \\implies 4^{t/5} = 4^3 \\implies \\frac{t}{5} = 3 \\implies t = 15\\text{ hours}. \\]</p><p>It will take exactly <strong>15 hours</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Exponentials & Logarithms</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( P(t) = 250 \\times 4^{t/5} = 16000. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -362,7 +486,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Isolate the exponential expression:</strong> \\[ e^{0.04 t} = \\frac{45}{5} = 9. \\]</p><p><strong>Step 2: Take the natural logarithm of both sides:</strong> \\[ \\ln(e^{0.04 t}) = \\ln(9) \\implies 0.04 t = \\ln(9). \\]</p><p><strong>Step 3: Solve for \\(t\\):</strong> \\[ t = \\frac{\\ln(9)}{0.04} = 25 \\ln(9) = 25 \\ln(3^2) = 50 \\ln(3) \\approx 50(1.0986) = \\mathbf{54.93}. \\]</p><p>The exact solution is \\(\\mathbf{50\\ln(3)}\\) (approximately <strong>54.93</strong>).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Exponentials & Logarithms</em> and start from \\(5 e^{0.04 t} = 45\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( e^{0.04 t} = \\frac{45}{5} = 9. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -373,7 +511,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Convert to exponential form:</strong> \\[ x^2 - 7 = 3^2 = 9. \\]</p><p><strong>Step 2: Solve the quadratic equation:</strong> \\[ x^2 = 9 + 7 = 16 \\implies x = \\pm 4. \\]</p><p><strong>Step 3: Verify the domain \\(x^2 - 7 > 0\\):</strong> For both \\(x = 4\\) and \\(x = -4\\): \\[ x^2 - 7 = 16 - 7 = 9 > 0. \\] Both roots are valid.</p><p>The solutions are \\(\\mathbf{x = 4}\\) and \\(\\mathbf{x = -4}\\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Exponentials & Logarithms</em> and start from \\(\\log_3(x^2 - 7) = 2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( x^2 - 7 = 3^2 = 9. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

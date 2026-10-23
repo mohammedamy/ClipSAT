@@ -25,44 +25,31 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Foundations &amp; Precalculus Review — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
+          "type": "sign_chart",
+          "title": "Foundations &amp; Precalculus Review — First Derivative Sign Chart & Extrema",
+          "ticks": [
             {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "x": -3,
+              "label": "x = -3"
             },
             {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "x": 4,
+              "label": "x = 4"
             }
           ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
+          "signs": [
+            "+",
+            "−",
+            "+"
+          ],
+          "behaviors": [
+            "↗ Increasing",
+            "↘ Decreasing",
+            "↗ Increasing"
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Derivative sign chart for f'(x) showing local maximum at x = −3 (+ to −) and local minimum at x = 4 (− to +).",
           "ar": null
         }
       },
@@ -138,6 +125,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Foundations &amp; Precalculus Review)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Differentiability Implies Continuity &amp; How Implicit Differentiation Works:</strong> Notice that for \\(x \\ne a\\), we can write \\(f(x) - f(a) = \\dfrac{f(x) - f(a)}{x - a}\\cdot (x - a)\\). Taking the limit as \\(x \\to a\\) by the Product Law gives:</p>\\[ \\lim_{x \\to a} \\bigl(f(x) - f(a)\\bigr) = f'(a)\\cdot 0 = 0 \\implies \\lim_{x \\to a} f(x) = f(a) \\]<p>Similarly, when differentiating an implicit relation \\(F(x, y) = c\\) with respect to \\(x\\), \\(y = y(x)\\) is an inner function of \\(x\\). By the Chain Rule, \\(\\dfrac{d}{dx}\\bigl[y^n\\bigr] = ny^{n-1}\\dfrac{dy}{dx}\\), and for product terms \\(\\dfrac{d}{dx}[xy] = y + x\\dfrac{dy}{dx}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example · Domain and Invertibility Analysis",
@@ -152,11 +151,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example B — Foundations &amp; Precalculus Review (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> First step in proving \\(\\sqrt{3}\\) is irrational by contradiction:</p><p><strong>Step-by-Step Solution:</strong> A proof by contradiction begins by assuming the opposite (rational) in lowest terms, then derives a contradiction. <strong>Final Answer:</strong> \\(\\text{assume }\\sqrt{3}=p/q\\text{ in lowest terms}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Foundations &amp; Precalculus Review)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Assuming \\(f'(c) = 0\\) guarantees a local extremum",
+              "ar": null
+            },
+            {
+              "en": "Inflection points like \\(f(x) = x^3\\) at \\(x = 0\\) have \\(f'(0) = 0\\) without changing sign.",
+              "ar": null
+            },
+            {
+              "en": "Verify that \\(f'(x)\\) actually changes sign across \\(x = c\\) (or check \\(f''(c) \\ne 0\\)).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing parametric \\(\\frac{d^2y}{dx^2}\\) as \\(\\frac{\\ddot{y}}{\\ddot{x}}\\)",
+              "ar": null
+            },
+            {
+              "en": "violates the Chain Rule \\(\\frac{d}{dx} = \\frac{1}{dx/dt}\\frac{d}{dt}\\).",
+              "ar": null
+            },
+            {
+              "en": "Differentiate \\(dy/dx\\) with respect to \\(t\\), then divide by \\(dx/dt\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Forgetting product rule on \\(xy\\) in implicit differentiation",
+              "ar": null
+            },
+            {
+              "en": "Treats \\(y\\) as a constant instead of \\(y(x)\\).",
+              "ar": null
+            },
+            {
+              "en": "Always expand \\(\\frac{d}{dx}(xy) = y + x\\frac{dy}{dx}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Foundations &amp; Precalculus Review",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Justification Rule (University Single-Variable & Multivariable Calculus):</strong> When justifying local extrema or points of inflection on free-response questions, state \"because \\(f'(x)\\) changes sign from positive to negative at \\(x = c\\)\" rather than referring vaguely to \"it\" or \"the graph.\"</p>",
           "ar": null
         }
       },
@@ -169,7 +245,21 @@
         "solution": {
           "en": "<p>We must evaluate two simultaneous restrictions:</p><ol><li><strong>Square root radicand must be non-negative and denominator non-zero:</strong> \\[ \\frac{x - 1}{x + 3} \\ge 0 \\quad \\text{and} \\quad x + 3 \\neq 0. \\] Sign analysis of the quotient with critical numbers \\( x = -3 \\) and \\( x = 1 \\):<br>• For \\( x < -3 \\): numerator \\( (-) \\), denominator \\( (-) \\implies (+) \\ge 0 \\).<br>• For \\( -3 < x < 1 \\): numerator \\( (-) \\), denominator \\( (+) \\implies (-) < 0 \\) (excluded).<br>• For \\( x \\ge 1 \\): numerator \\( (+) \\), denominator \\( (+) \\implies (+) \\ge 0 \\).<br>Hence, \\( x \\in (-\\infty, -3) \\cup [1, \\infty) \\).</li><li><strong>Logarithm argument must be strictly positive:</strong> \\[ 5 - x > 0 \\implies x < 5 \\implies x \\in (-\\infty, 5). \\]</li></ol><p>Intersecting both solution sets gives: \\[ (-\\infty, 5) \\cap \\big((-\\infty, -3) \\cup [1, \\infty)\\big) = \\mathbf{(-\\infty, -3) \\cup [1, 5)}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Foundations &amp; Precalculus Review</em> and start from \\( g(x) = \\sqrt{\\dfrac{x - 1}{x + 3}} - \\ln(5 - x) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\frac{x - 1}{x + 3} \\ge 0 \\quad \\text{and} \\quad x + 3 \\neq 0. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -358,7 +448,21 @@
         "solution": {
           "en": "<p>Take the natural logarithm of both sides: \\[ \\ln(3^{2x+1}) = \\ln(5^{x-2}). \\] Apply the power law of logarithms: \\[ (2x + 1)\\ln 3 = (x - 2)\\ln 5. \\] Distribute: \\[ 2x\\ln 3 + \\ln 3 = x\\ln 5 - 2\\ln 5. \\] Collect all terms containing \\( x \\) on one side: \\[ 2x\\ln 3 - x\\ln 5 = -\\ln 3 - 2\\ln 5 \\implies x(2\\ln 3 - \\ln 5) = -(\\ln 3 + 2\\ln 5). \\] Simplify logarithmic coefficients: \\( 2\\ln 3 = \\ln 9 \\) and \\( 2\\ln 5 = \\ln 25 \\): \\[ x(\\ln 9 - \\ln 5) = -(\\ln 3 + \\ln 25) \\implies x\\ln\\left(\\frac{9}{5}\\right) = -\\ln(75). \\] Solve for \\( x \\): \\[ x = \\mathbf{\\frac{-\\ln(75)}{\\ln(9/5)}} = \\mathbf{\\frac{\\ln(1/75)}{\\ln(1.8)}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Foundations &amp; Precalculus Review</em> and start from \\( x \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\ln(3^{2x+1}) = \\ln(5^{x-2}). \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -401,7 +505,21 @@
         "solution": {
           "en": "<p><strong>Step 1 · Algebraic Monotonicity:</strong> Rewrite \\( h(x) \\) by dividing numerator and denominator by \\( e^x \\): \\[ h(x) = \\frac{1 - e^{-2x}}{1 + e^{-2x}} = \\frac{(1 + e^{-2x}) - 2e^{-2x}}{1 + e^{-2x}} = 1 - \\frac{2}{e^{2x} + 1}. \\] As \\( x_1 < x_2 \\), \\( e^{2x_1} < e^{2x_2} \\implies e^{2x_1} + 1 < e^{2x_2} + 1 \\implies \\frac{2}{e^{2x_1} + 1} > \\frac{2}{e^{2x_2} + 1} \\implies -\\frac{2}{e^{2x_1} + 1} < -\\frac{2}{e^{2x_2} + 1} \\implies h(x_1) < h(x_2) \\). Hence \\( h \\) is strictly increasing across \\( \\mathbb{R} \\), which directly implies \\( h \\) is strictly injective.</p><p><strong>Step 2 · Range & Inversion:</strong> Since \\( e^{2x} \\in (0, \\infty) \\), \\( \\frac{2}{e^{2x} + 1} \\in (0, 2) \\implies h(x) = 1 - \\frac{2}{e^{2x} + 1} \\in (-1, 1) \\). The domain of \\( h^{-1} \\) is \\( (-1, 1) \\). Set \\( y = \\frac{e^{2x} - 1}{e^{2x} + 1} \\): \\[ y(e^{2x} + 1) = e^{2x} - 1 \\implies y e^{2x} + y = e^{2x} - 1 \\implies e^{2x}(1 - y) = 1 + y. \\] For \\( y \\in (-1, 1) \\), \\( 1 - y > 0 \\): \\[ e^{2x} = \\frac{1 + y}{1 - y} \\implies 2x = \\ln\\left(\\frac{1 + y}{1 - y}\\right) \\implies x = \\frac{1}{2}\\ln\\left(\\frac{1 + y}{1 - y}\\right). \\] Thus: \\[ h^{-1}(x) = \\operatorname{artanh}(x) = \\mathbf{\\frac{1}{2}\\ln\\left(\\frac{1 + x}{1 - x}\\right)}, \\quad \\text{Domain: } \\mathbf{(-1, 1)}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Foundations &amp; Precalculus Review</em> and start from \\( h(x) = \\tanh(x) = \\dfrac{e^x - e^{-x}}{e^x + e^{-x}} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( h(x) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "callout",
@@ -418,11 +536,25 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Foundations &amp; Precalculus Review · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> A function \\(f:A\\to B\\) is one-to-one (injective) means:",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Foundations &amp; Precalculus Review</em> and start from \\(f:A\\to B\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(f(a_1)=f(a_2)\\Rightarrow a_1=a_2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Injective means distinct inputs never share an output; equivalently \\(f(a_1)=f(a_2)\\Rightarrow a_1=a_2\\).",
           "ar": null
         }
       }

@@ -501,6 +501,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Geometry &amp; Trigonometry)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why the Harmonic \\(R\\)-Formula &amp; Cosine Rule Hold:</strong> Expanding \\(R\\cos(\\theta - \\alpha)\\) via the compound-angle identity gives:</p>\\[ R\\cos(\\theta - \\alpha) = (R\\cos\\alpha)\\cos\\theta + (R\\sin\\alpha)\\sin\\theta \\]<p>Matching coefficients with \\(a\\cos\\theta + b\\sin\\theta\\) requires \\(R\\cos\\alpha = a\\) and \\(R\\sin\\alpha = b\\). Squaring and adding yields \\(R^2(\\cos^2\\alpha + \\sin^2\\alpha) = a^2 + b^2 \\implies R = \\sqrt{a^2 + b^2}\\), and dividing gives \\(\\tan\\alpha = \\dfrac{b}{a}\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 3.1 — Exact Sector & Segment Area",
@@ -561,11 +573,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example A — Geometry &amp; Trigonometry (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> In the plane, the ellipse \\( p: \\dfrac{t^2}{961} + \\dfrac{y^2}{16} = 1 \\) has foci at \\( (\\pm c, 0) \\). Find the squared focal distance \\( c^2 \\) of \\( p \\).</p><p><strong>Step-by-Step Solution:</strong> For an ellipse, \\( c^2 = a^2 - b^2 = 961 - 16 = 945 \\). <strong>[M1] [A1]</strong></p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Geometry &amp; Trigonometry)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Dividing \\(\\sin 2\\theta = \\sin\\theta\\) by \\(\\sin\\theta\\)",
+              "ar": null
+            },
+            {
+              "en": "Eliminates valid solutions where \\(\\sin\\theta = 0\\).",
+              "ar": null
+            },
+            {
+              "en": "Expand \\(2\\sin\\theta\\cos\\theta - \\sin\\theta = 0\\) and factor \\(\\sin\\theta(2\\cos\\theta - 1) = 0\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using \\(A = \\frac{1}{2}r^2\\theta\\) with \\(\\theta = 60^\\circ\\)",
+              "ar": null
+            },
+            {
+              "en": "Overestimates sector area by a factor of \\(180/\\pi \\approx 57.3\\).",
+              "ar": null
+            },
+            {
+              "en": "Convert to radians first: \\(\\theta = 60^\\circ \\times \\frac{\\pi}{180^\\circ} = \\frac{\\pi}{3}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Finding only one solution to \\(\\sin(2x) = 1/2\\) on \\([0, 2\\pi]\\)",
+              "ar": null
+            },
+            {
+              "en": "Forgets that if \\(x \\in [0, 2\\pi]\\), the transformed angle \\(u = 2x\\) spans \\([0, 4\\pi]\\) (4 roots).",
+              "ar": null
+            },
+            {
+              "en": "Transform the interval to \\(u \\in [0, 4\\pi]\\) before dividing by 2.",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Geometry &amp; Trigonometry",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>All-Solutions Checklist (IB Diploma Mathematics: Analysis & Approaches / Applications & Interpretation SL):</strong> When solving \\(\\trig(kx + \\phi) = c\\) on \\([0, 2\\pi]\\), immediately write down the transformed interval \\(\\phi \\le u \\le 2k\\pi + \\phi\\), list all ASTC quadrant angles in that range, and only divide by \\(k\\) at the very last step.</p>",
           "ar": null
         }
       },
@@ -578,7 +667,21 @@
         "solution": {
           "en": "1. Substitute the double angle identity \\(\\cos 2x = 2\\cos^2 x - 1\\):<br>\\[ 2(2\\cos^2 x - 1) = 4\\cos x - 3 \\implies 4\\cos^2 x - 2 = 4\\cos x - 3 \\implies 4\\cos^2 x - 4\\cos x + 1 = 0. \\]<br>2. Recognize the perfect square: \\((2\\cos x - 1)^2 = 0 \\implies 2\\cos x - 1 = 0 \\implies \\cos x = \\frac{1}{2}\\).<br>3. Reference angle: \\(\\alpha = \\arccos(1/2) = \\frac{\\pi}{3}\\).<br>Cosine is positive in Quadrants I and IV:<br>In Q1: \\(x = \\frac{\\pi}{3}\\).<br>In Q4: \\(x = 2\\pi - \\frac{\\pi}{3} = \\frac{5\\pi}{3}\\).<br>Exact solutions: \\(x \\in \\left\\{ \\frac{\\pi}{3}, \\frac{5\\pi}{3} \\right\\}\\).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Geometry &amp; Trigonometry</em> and start from \\(2\\cos 2x = 4\\cos x - 3\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\cos 2x = 2\\cos^2 x - 1\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -589,27 +692,69 @@
         "solution": {
           "en": "1. Distance travelled by ship \\(A\\): \\(d_A = 15 \\times 2 = 30\\text{ km}\\).<br>2. Distance travelled by ship \\(B\\): \\(d_B = 20 \\times 2 = 40\\text{ km}\\).<br>3. The angle between their paths is the difference in bearings: \\(\\theta = 130^\\circ - 40^\\circ = 90^\\circ\\).<br>4. Since the triangle is right-angled at \\(P\\), apply the Pythagorean theorem (or Cosine Rule with \\(\\cos 90^\\circ = 0\\)):<br>\\[ d = \\sqrt{30^2 + 40^2} = \\sqrt{900 + 1600} = \\sqrt{2500} = 50\\text{ km}. \\]<br>The distance between the ships after 2 hours is exactly <strong>50 km</strong>.",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Geometry &amp; Trigonometry</em> and start from \\(A\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(A\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Easy]</strong> For real angle \\( t \\), suppose \\( \\sin(t) + \\cos(t) = \\dfrac{\\sqrt{23}}{\\sqrt{15}} \\). Find the trigonometric expression \\( p = 15\\sin(2t) \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Geometry &amp; Trigonometry</em> and start from \\( t \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 1 + \\sin(2t) = \\frac{23}{15} \\implies 15\\sin(2t) = 8 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "Squaring both sides gives \\( 1 + \\sin(2t) = \\frac{23}{15} \\implies 15\\sin(2t) = 8 \\). <strong>[M1] [A1]</strong>",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Geometry &amp; Trigonometry · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> The sinusoidal function \\( h(u) = 19\\sin(8u) + 27 \\) is defined for all real \\( u \\). Find the maximum value \\( M_{h} \\) of \\( h(u) \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Geometry &amp; Trigonometry</em> and start from \\( h(u) = 19\\sin(8u) + 27 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\max(\\sin(8u)) = 1 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Geometry &amp; Trigonometry · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Since \\( \\max(\\sin(8u)) = 1 \\), the maximum value is \\( 19(1) + 27 = 46 \\). <strong>[M1] [A1]</strong>",
           "ar": null
         }
       }

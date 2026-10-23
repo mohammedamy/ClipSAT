@@ -46,35 +46,54 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Linear Regression & Ordinary Least Squares",
+          "ar": "● الفهم المفاهيمي العميق — الانحدار الخطي وطريقة المربعات الصغرى (OLS)"
+        },
+        "body": {
+          "en": "<p><strong>Proportional Invariance, Linear Structure &amp; Quantitative Modeling:</strong> Across Mathematics for Artificial Intelligence & Machine Learning, multi-step problems reduce to identifying invariant quantities—constant rates of change \\(m = \\dfrac{\\Delta y}{\\Delta x}\\), conservation of total work/mass, or linear system rank conditions. A two-variable linear system \\(a_1 x + b_1 y = c_1\\), \\(a_2 x + b_2 y = c_2\\) has a unique intersection if \\(\\dfrac{a_1}{a_2} \\ne \\dfrac{b_1}{b_2}\\), no solution (parallel lines) if \\(\\dfrac{a_1}{a_2} = \\dfrac{b_1}{b_2} \\ne \\dfrac{c_1}{c_2}\\), and infinitely many solutions if all three ratios coincide.</p>",
+          "ar": "<p><strong>البنية الخطية والنمذجة الكمية:</strong> يعتمد حل الأنظمة والمعادلات على ثبات معدل التغير \\(m = \\frac{\\Delta y}{\\Delta x}\\) وتحليل نسب المعاملات لتحديد عدد الحلول بدقة.</p>"
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "Linear Regression & Ordinary Least Squares — Frequency Distribution (2)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
+          "type": "fn",
+          "title": "Linear Regression & Ordinary Least Squares — Linear System Intersection & Equilibrium",
+          "xrange": [
+            -2,
+            6
+          ],
+          "yrange": [
+            -2,
+            10
+          ],
+          "fns": [
             {
-              "label": "Q1",
-              "value": 22
+              "fn": "2*x + 1",
+              "color": "var(--fig-indigo)",
+              "label": "y = 2x + 1"
             },
             {
-              "label": "Q2",
-              "value": 35,
-              "highlight": true
-            },
+              "fn": "-x + 7",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "y = −x + 7"
+            }
+          ],
+          "points": [
             {
-              "label": "Q3",
-              "value": 28
-            },
-            {
-              "label": "Q4",
-              "value": 19
+              "x": 2,
+              "y": 5,
+              "label": "Intersection (2, 5)"
             }
           ]
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for Linear Regression & Ordinary Least Squares.",
-          "ar": "توزيع تكراري يقارن القيم والفئة المنوالية في Linear Regression & Ordinary Least Squares."
+          "en": "Coordinate intersection of linear system y = 2x + 1 and y = −x + 7 at unique equilibrium point (2, 5).",
+          "ar": "تمثيل هندسي وبياني يوضح العلاقات الأساسية في درس الانحدار الخطي وطريقة المربعات الصغرى (OLS)."
         }
       },
       {
@@ -179,33 +198,33 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "Linear Regression & Ordinary Least Squares — Frequency Distribution (1)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
-            {
-              "label": "Q1",
-              "value": 18
-            },
-            {
-              "label": "Q2",
-              "value": 32,
-              "highlight": true
-            },
-            {
-              "label": "Q3",
-              "value": 26
-            },
-            {
-              "label": "Q4",
-              "value": 14
-            }
-          ]
+          "type": "scatter",
+          "pts": [
+            [
+              1,
+              25
+            ],
+            [
+              2,
+              32
+            ],
+            [
+              3,
+              39
+            ],
+            [
+              5,
+              53
+            ]
+          ],
+          "title": "Regression Line and Observations",
+          "trendline": true,
+          "xlabel": "Feature x",
+          "ylabel": "Target y"
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for Linear Regression & Ordinary Least Squares.",
-          "ar": "توزيع تكراري يقارن القيم والفئة المنوالية في Linear Regression & Ordinary Least Squares."
+          "en": "Regression Line and Observations — illustrating key geometric and analytical relationships in Linear Regression & Ordinary Least Squares.",
+          "ar": "رسم توضيحي يبيّن العلاقات الرياضية والهندسية في درس الانحدار الخطي وطريقة المربعات الصغرى (OLS)."
         }
       },
       {
@@ -255,6 +274,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Linear Regression & Ordinary Least Squares)",
+          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (الانحدار الخطي وطريقة المربعات الصغرى (OLS))"
+        },
+        "body": {
+          "en": "<p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>",
+          "ar": "<p><strong>برهان النسب المتتالية والسرعة المتوسطة التوافقية:</strong> عند زيادة مقدار بنسبة \\(p\\%\\) ثم خفضه بنسبة \\(p\\%\\) يكون الناتج \\(Q_0(1 - (p/100)^2) < Q_0\\)، والسرعة المتوسطة لرحلتين متساويتين في المسافة هي الوسط التوافقي \\(\\frac{2v_1 v_2}{v_1 + v_2}\\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 6.A — Closed-Form Matrix Normal Equation",
@@ -269,80 +300,250 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example B — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول B — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example B — Linear Regression & Ordinary Least Squares (Hard Application)",
+          "ar": "مثال محلول B — الانحدار الخطي وطريقة المربعات الصغرى (OLS) (تطبيق Hard)"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 9x + 18 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 3)(x - 6) = 0 \\implies x = 3 \\text{ or } x = 6 \\).</li><li>Check Vieta's formulas: sum \\( = 3 + 6 = \\mathbf{9} \\) and product \\( = (3)(6) = \\mathbf{18} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 9x + 18 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 3)(x - 6) = 0 \\implies x = 3 \\text{ أو } x = 6 \\).</li><li>المجموع \\( = \\mathbf{9} \\) وحاصل الضرب \\( = \\mathbf{18} \\).</li></ol>"
+          "en": "<p><strong>Problem (Hard):</strong> An Ordinary Least Squares linear model \\( \\hat{B}(a) = 7a + 24 \\) is evaluated at \\( a = 16 \\). Determine the predicted response \\( \\hat{B}(16) \\).</p><p><strong>Step-by-Step Solution:</strong> Evaluating \\( 7(16) + 24 = 136 \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Hard):</strong> An Ordinary Least Squares linear model \\( \\hat{B}(a) = 7a + 24 \\) is evaluated at \\( a = 16 \\). Determine the predicted response \\( \\hat{B}(16) \\).</p><p><strong>الحل خطوة بخطوة:</strong> Evaluating \\( 7(16) + 24 = 136 \\).</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول C — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example C — Linear Regression & Ordinary Least Squares (Easy Application)",
+          "ar": "مثال محلول C — الانحدار الخطي وطريقة المربعات الصغرى (OLS) (تطبيق Easy)"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 13x + 36 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ أو } x = 9 \\).</li><li>المجموع \\( = \\mathbf{13} \\) وحاصل الضرب \\( = \\mathbf{36} \\).</li></ol>"
+          "en": "<p><strong>Problem (Easy):</strong> In gradient descent on loss \\( S(b) \\), parameter \\( b_0 = 23 \\) is updated with learning rate \\( \\eta = 0.1 \\) and gradient \\( \\nabla S(b_0) = 220 \\). Determine the updated parameter \\( b_1 = b_0 - \\eta \\nabla S(b_0) \\).</p><p><strong>Step-by-Step Solution:</strong> Computing \\( b_1 = 23 - 0.1(220) = 1 \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Easy):</strong> In gradient descent on loss \\( S(b) \\), parameter \\( b_0 = 23 \\) is updated with learning rate \\( \\eta = 0.1 \\) and gradient \\( \\nabla S(b_0) = 220 \\). Determine the updated parameter \\( b_1 = b_0 - \\eta \\nabla S(b_0) \\).</p><p><strong>الحل خطوة بخطوة:</strong> Computing \\( b_1 = 23 - 0.1(220) = 1 \\).</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول D — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example D — Linear Regression & Ordinary Least Squares (Medium Application)",
+          "ar": "مثال محلول D — الانحدار الخطي وطريقة المربعات الصغرى (OLS) (تطبيق Medium)"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 10x + 25 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ أو } x = 5 \\).</li><li>المجموع \\( = \\mathbf{10} \\) وحاصل الضرب \\( = \\mathbf{25} \\).</li></ol>"
+          "en": "<p><strong>Problem (Medium):</strong> Principal Component Analysis on covariance matrix \\( \\Sigma_{W} \\) yields eigenvalues \\( \\lambda_1 = 66 \\) and \\( \\lambda_2 = 34 \\). Determine the percentage of variance \\( S_{b} \\) explained by the first principal component.</p><p><strong>Step-by-Step Solution:</strong> The percentage explained is \\( \\frac{66}{66+34} \\times 100\\% = 66\\% \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Medium):</strong> Principal Component Analysis on covariance matrix \\( \\Sigma_{W} \\) yields eigenvalues \\( \\lambda_1 = 66 \\) and \\( \\lambda_2 = 34 \\). Determine the percentage of variance \\( S_{b} \\) explained by the first principal component.</p><p><strong>الحل خطوة بخطوة:</strong> The percentage explained is \\( \\frac{66}{66+34} \\times 100\\% = 66\\% \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Exam Traps — Linear Regression & Ordinary Least Squares",
+          "ar": "⚠️ أخطاء شائعة في الاختبار — الانحدار الخطي وطريقة المربعات الصغرى (OLS)"
+        },
+        "body": {
+          "en": "<p><strong>1. Adding Successive Percentages or Averaging Speeds Arithmetically:</strong> On Mathematics for Artificial Intelligence & Machine Learning, a \\(20\\%\\) discount followed by a \\(20\\%\\) increase gives \\(0.80 \\times 1.20 = 0.96\\) (a net \\(4\\%\\) loss, not \\(0\\%\\)). Likewise, average speed for a round trip at \\(40\\) and \\(60\\text{ km/h}\\) is \\(\\dfrac{2(40)(60)}{100} = 48\\text{ km/h}\\), never \\(50\\text{ km/h}\\).</p><p><strong>2. Failing to Flip the Inequality Sign When Multiplying/Dividing by a Negative:</strong> In \\(-2x + 5 \\le 7\\), dividing by \\(-2\\) strictly reverses \\(\\le\\) to \\(\\ge\\).</p>",
+          "ar": "<p><strong>1. جمع النسب المئوية المتتالية أو حساب المتوسط الحسابي للسرعات:</strong> الزيادة ثم الخصم بنفس النسبة تنقص القيمة الأصلية دائماً، وعند القسمة على عدد سالب في المتباينات يجب قلب رمز المتباينة فوراً.</p>"
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Linear Regression & Ordinary Least Squares)",
+          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (الانحدار الخطي وطريقة المربعات الصغرى (OLS))"
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع للطالب"
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": "السبب الرياضي للخطأ"
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Claiming \\(+25\\%\\) followed by \\(-25\\%\\) returns to \\(100\\%\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "The \\(25\\%\\) reduction applies to the larger base \\(1.25 Q_0\\), not \\(Q_0\\).",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Multiply scale factors: \\(1.25 \\times 0.75 = 0.9375\\) (a \\(6.25\\%\\) net decrease).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Solving \\(-3x > 12\\) as \\(x > -4\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Dividing by a negative number reverses order on the real number line.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Flip the inequality symbol whenever multiplying or dividing by a negative: \\(x < -4\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Computing round-trip average speed as \\(\\frac{v_1 + v_2}{2}\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Time spent at the slower speed is longer than time spent at the faster speed.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Use total distance over total time: \\(v_{\\text{avg}} = \\frac{2v_1 v_2}{v_1 + v_2}\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Linear Regression & Ordinary Least Squares",
+          "ar": "▲ استراتيجية الحل السريع والتحقق — الانحدار الخطي وطريقة المربعات الصغرى (OLS)"
+        },
+        "body": {
+          "en": "<p><strong>High-Speed Exam Shortcut (Mathematics for Artificial Intelligence & Machine Learning):</strong> When a linear system asks for a combined expression like \\(3x + 3y\\) rather than \\(x\\) and \\(y\\) individually, add or subtract the two equations directly before isolating either variable—this often yields the target expression in a single step.</p>",
+          "ar": "<p><strong>اختصار ذهني سريع:</strong> عندما يطلب السؤال مقداراً مركباً مثل \\(x+y\\) في نظام معادلتين، اجمع المعادلتين أو اطرحهما مباشرةً بدلاً من إيجاد كل متغير على حدة.</p>"
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Linear Regression & Ordinary Least Squares · Practice 1] If the governing relation for this system is \\( g(t) = 3t + 3 \\), evaluate \\( g(4) \\) and find the inverse input \\( t \\) when \\( g(t) = 18 \\).",
-          "ar": "[Linear Regression & Ordinary Least Squares · تدريب 1] إذا كانت العلاقة الحاكمة هي \\( g(t) = 3t + 3 \\)، فأوجد \\( g(4) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 18 \\)."
+          "en": "<strong>[Practice 1 · Hard]</strong> A binary classifier \\( S(b) \\) produces the confusion matrix below with \\( \\text{TP} = 68 \\), \\( \\text{FP} = 28 \\), \\( \\text{FN} = 45 \\), and \\( \\text{TN} = 30 \\). Determine the total number of correct classifications \\( T = \\text{TP} + \\text{TN} \\).",
+          "ar": "<strong>[تدريب 1 · Hard]</strong> A binary classifier \\( S(b) \\) produces the confusion matrix below with \\( \\text{TP} = 68 \\), \\( \\text{FP} = 28 \\), \\( \\text{FN} = 45 \\), and \\( \\text{TN} = 30 \\). Determine the total number of correct classifications \\( T = \\text{TP} + \\text{TN} \\)."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Linear Regression & Ordinary Least Squares</em> and start from \\( S(b) \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( S(b) \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\text{TP} + \\text{TN} = 68 + 30 = 98 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( \\text{TP} + \\text{TN} = 68 + 30 = 98 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 4 \\): \\( g(4) = 3(4) + 3 = \\mathbf{15} \\). Setting \\( 3t + 3 = 18 \\) gives \\( 3t = 15 \\implies t = \\mathbf{5} \\).",
-          "ar": "بالتعويض عن \\( t = 4 \\): \\( g(4) = 3(4) + 3 = \\mathbf{15} \\). وعندما \\( 3t + 3 = 18 \\) فإن \\( t = \\mathbf{5} \\)."
+          "en": "Summing \\( \\text{TP} + \\text{TN} = 68 + 30 = 98 \\).",
+          "ar": "Summing \\( \\text{TP} + \\text{TN} = 68 + 30 = 98 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Linear Regression & Ordinary Least Squares · Practice 2] If the governing relation for this system is \\( g(t) = 4t + 4 \\), evaluate \\( g(6) \\) and find the inverse input \\( t \\) when \\( g(t) = 32 \\).",
-          "ar": "[Linear Regression & Ordinary Least Squares · تدريب 2] إذا كانت العلاقة الحاكمة هي \\( g(t) = 4t + 4 \\)، فأوجد \\( g(6) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 32 \\)."
+          "en": "<strong>[Practice 2 · Easy]</strong> An Ordinary Least Squares linear model \\( \\hat{S}(b) = 3b + 2 \\) is evaluated at \\( b = 20 \\). Determine the predicted response \\( \\hat{S}(20) \\).",
+          "ar": "<strong>[تدريب 2 · Easy]</strong> An Ordinary Least Squares linear model \\( \\hat{S}(b) = 3b + 2 \\) is evaluated at \\( b = 20 \\). Determine the predicted response \\( \\hat{S}(20) \\)."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Linear Regression & Ordinary Least Squares</em> and start from \\( \\hat{S}(b) = 3b + 2 \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( \\hat{S}(b) = 3b + 2 \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 3(20) + 2 = 62 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( 3(20) + 2 = 62 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). Setting \\( 4t + 4 = 32 \\) gives \\( 4t = 28 \\implies t = \\mathbf{7} \\).",
-          "ar": "بالتعويض عن \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). وعندما \\( 4t + 4 = 32 \\) فإن \\( t = \\mathbf{7} \\)."
+          "en": "Evaluating \\( 3(20) + 2 = 62 \\).",
+          "ar": "Evaluating \\( 3(20) + 2 = 62 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Linear Regression & Ordinary Least Squares · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
-          "ar": "[Linear Regression & Ordinary Least Squares · تدريب 3] إذا كانت العلاقة الحاكمة هي \\( g(t) = 5t + 5 \\)، فأوجد \\( g(8) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 50 \\)."
+          "en": "<strong>[Practice 3 · Easy]</strong> A fitted simple linear regression model is \\( \\hat{y} = 7x + 18 \\). What is the predicted target value \\( \\hat{y} \\) when the input feature is \\( x = 4 \\)?",
+          "ar": "<strong>[تدريب 3 · Easy]</strong> A fitted simple linear regression model is \\( \\hat{y} = 7x + 18 \\). What is the predicted target value \\( \\hat{y} \\) when the input feature is \\( x = 4 \\)?"
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Linear Regression & Ordinary Least Squares</em> and start from \\( \\hat{y} = 7x + 18 \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( \\hat{y} = 7x + 18 \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( x = 4 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( x = 4 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": "بالتعويض عن \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). وعندما \\( 5t + 5 = 50 \\) فإن \\( t = \\mathbf{9} \\)."
+          "en": "Substitute \\( x = 4 \\) into the regression equation: \\( \\hat{y} = 7(4) + 18 = 28 + 18 = 46 \\). <strong>Answer:</strong> \\( 46 \\).",
+          "ar": "Substitute \\( x = 4 \\) into the regression equation: \\( \\hat{y} = 7(4) + 18 = 28 + 18 = 46 \\). <strong>الإجابة:</strong> \\( 46 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Linear Regression & Ordinary Least Squares · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": "[Linear Regression & Ordinary Least Squares · تدريب 4] إذا كانت العلاقة الحاكمة هي \\( g(t) = 6t + 6 \\)، فأوجد \\( g(10) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 72 \\)."
+          "en": "<strong>[Practice 4 · Medium]</strong> In a multiple linear regression model, the Sum of Squared Errors is \\( \\text{SSE} = 20 \\) and the Total Sum of Squares is \\( \\text{SST} = 100 \\). What is the coefficient of determination \\( R^2 \\)?",
+          "ar": "<strong>[تدريب 4 · Medium]</strong> In a multiple linear regression model, the Sum of Squared Errors is \\( \\text{SSE} = 20 \\) and the Total Sum of Squares is \\( \\text{SST} = 100 \\). What is the coefficient of determination \\( R^2 \\)?"
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Linear Regression & Ordinary Least Squares</em> and start from \\( \\text{SSE} = 20 \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( \\text{SSE} = 20 \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> اعزل المتغير المطلوب خطوة بخطوة وبسّط الحدود المتشابهة قبل التعويض النهائي."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
-          "ar": "بالتعويض عن \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). وعندما \\( 6t + 6 = 72 \\) فإن \\( t = \\mathbf{11} \\)."
+          "en": "The coefficient of determination measures the proportion of variance explained: \\( R^2 = 1 - \\frac{\\text{SSE}}{\\text{SST}} = 1 - \\frac{20}{100} = 1 - 0.20 = 0.80 \\). <strong>Answer:</strong> \\( R^2 = 0.80 \\).",
+          "ar": "The coefficient of determination measures the proportion of variance explained: \\( R^2 = 1 - \\frac{\\text{SSE}}{\\text{SST}} = 1 - \\frac{20}{100} = 1 - 0.20 = 0.80 \\). <strong>الإجابة:</strong> \\( R^2 = 0.80 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 5 · Hard]</strong> A binary classifier \\( W(k) \\) produces the confusion matrix below with \\( \\text{TP} = 96 \\), \\( \\text{FP} = 24 \\), \\( \\text{FN} = 27 \\), and \\( \\text{TN} = 60 \\). Determine the total number of correct classifications \\( Z = \\text{TP} + \\text{TN} \\).",
+          "ar": "<strong>[تدريب 5 · Hard]</strong> A binary classifier \\( W(k) \\) produces the confusion matrix below with \\( \\text{TP} = 96 \\), \\( \\text{FP} = 24 \\), \\( \\text{FN} = 27 \\), and \\( \\text{TN} = 60 \\). Determine the total number of correct classifications \\( Z = \\text{TP} + \\text{TN} \\)."
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Linear Regression & Ordinary Least Squares</em> and start from \\( W(k) \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( W(k) \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\text{TP} + \\text{TN} = 96 + 60 = 156 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( \\text{TP} + \\text{TN} = 96 + 60 = 156 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
+        "solution": {
+          "en": "Summing \\( \\text{TP} + \\text{TN} = 96 + 60 = 156 \\).",
+          "ar": "Summing \\( \\text{TP} + \\text{TN} = 96 + 60 = 156 \\)."
         }
       }
     ]

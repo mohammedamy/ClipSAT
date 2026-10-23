@@ -29,44 +29,20 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Power Series Solutions, Ordinary Points &amp; the Method of Frobenius — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
-          ]
+          "type": "slope_field",
+          "title": "Power Series Solutions, Ordinary Points &amp; the Method of Frobenius — Slope Field & Particular Solution Trajectory",
+          "fn": "x - y",
+          "xmin": -3,
+          "xmax": 3,
+          "ymin": -3,
+          "ymax": 3,
+          "solution": {
+            "x0": 0,
+            "y0": 1
+          }
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Slope field for dy/dx = x − y with the integral curve passing through initial condition (0, 1).",
           "ar": null
         }
       },
@@ -225,6 +201,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Power Series Solutions, Ordinary Points &amp; the Method of Frobenius)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example 8.A — Airy's Differential Equation",
@@ -330,11 +318,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example C — Power Series Solutions, Ordinary Points &amp; the Method of Frobenius (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 4x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(9) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 12x^2 - 2x \\).</li><li>Substitute \\( x = 9 \\): \\( f'(9) = 12(9)^2 - 2(9) = 972 - 18 = \\mathbf{954} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> The second-order linear homogeneous ODE \\( F''(w) - 35F'(w) + 124F(w) = 0 \\) has characteristic roots \\( \\lambda_1, \\lambda_2 \\). Compute the exact value of the trace sum \\( \\lambda_1 + \\lambda_2 \\).</p><p><strong>Step-by-Step Solution:</strong> From \\( \\lambda^2 - 35\\lambda + 124 = 0 \\), the sum of roots is \\( 35 \\).</p>",
           "ar": null
         }
       },
@@ -342,11 +330,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example D — Power Series Solutions, Ordinary Points &amp; the Method of Frobenius (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> The separable initial value problem \\( \\dfrac{dF}{dw} = 30w \\) satisfies \\( F(0) = 13 \\). Compute the exact value of the solution value \\( F(9) \\).</p><p><strong>Step-by-Step Solution:</strong> Integrating gives \\( F(w) = 15w^2 + 13 \\), so \\( F(9) = 1228 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Power Series Solutions, Ordinary Points &amp; the Method of Frobenius)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Writing \\(\\ln|y| = x^2 + C \\implies y = e^{x^2} + C\\)",
+              "ar": null
+            },
+            {
+              "en": "Exponentiation distributes over addition as multiplication (\\(e^{a+b} = e^a e^b\\)), not addition.",
+              "ar": null
+            },
+            {
+              "en": "Write \\(y = e^{x^2 + C} = Ae^{x^2}\\) and solve for \\(A\\) using the initial condition.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Leaving original \\(x\\)-limits on a \\(u\\)-substituted definite integral",
+              "ar": null
+            },
+            {
+              "en": "Evaluates the antiderivative \\(F(u)\\) at \\(x\\)-values instead of \\(u(x)\\)-values.",
+              "ar": null
+            },
+            {
+              "en": "Convert bounds immediately: \\(u_{\\text{low}} = u(a)\\) and \\(u_{\\text{high}} = u(b)\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing total distance as \\(\\left|\\int_{t_1}^{t_2} v(t)\\,dt\\right|\\)",
+              "ar": null
+            },
+            {
+              "en": "Cancels forward and backward motion (net displacement) instead of accumulating total path length.",
+              "ar": null
+            },
+            {
+              "en": "Split the integral at every root where \\(v(t) = 0\\) and integrate \\(|v(t)|\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Power Series Solutions, Ordinary Points &amp; the Method of Frobenius",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Quick Verification Trick (University Ordinary Differential Equations):</strong> For any indefinite integral \\(\\int f(x)\\,dx = F(x) + C\\), differentiate your answer \\(F'(x)\\) mentally—especially the coefficient \\(1/k\\) from chain-rule reversal \\(\\int e^{kx}\\,dx = \\tfrac{1}{k}e^{kx} + C\\)—before moving on.</p>",
           "ar": null
         }
       },
@@ -359,7 +424,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Series substitution:</strong> \\[ \\sum_{n=2}^\\infty n(n-1)a_n x^{n-2} + \\sum_{n=1}^\\infty n a_n x^n + 2\\sum_{n=0}^\\infty a_n x^n = 0. \\] Shift first sum \\( k = n - 2 \\): \\[ \\sum_{k=0}^\\infty (k+2)(k+1)a_{k+2} x^k + \\sum_{k=1}^\\infty k a_k x^k + \\sum_{k=0}^\\infty 2a_k x^k = 0. \\]</p><p><strong>Step 2: Recurrence relation:</strong> For \\( k = 0 \\): \\( 2(1)a_2 + 2a_0 = 0 \\implies a_2 = -a_0 \\).<br>For \\( k \\ge 1 \\): \\[ (k+2)(k+1)a_{k+2} + (k + 2)a_k = 0 \\implies a_{k+2} = -\\frac{a_k}{k + 1}. \\]</p><p><strong>Step 3: Initial conditions:</strong> \\( a_0 = y(0) = 1 \\), \\( a_1 = y'(0) = 0 \\).<br>Since \\( a_1 = 0 \\), all odd coefficients vanish: \\( a_3 = a_5 = a_7 = 0 \\).<br>For even coefficients:<br>\\( k = 0 \\implies a_2 = -a_0 = -1 \\).<br>\\( k = 2 \\implies a_4 = -\\frac{a_2}{2 + 1} = -\\frac{-1}{3} = \\frac{1}{3} \\).<br>\\( k = 4 \\implies a_6 = -\\frac{a_4}{4 + 1} = -\\frac{1/3}{5} = -\\frac{1}{15} \\).</p><p><strong>Step 4: Particular solution:</strong> \\[ y(x) = 1 - x^2 + \\frac{1}{3}x^4 - \\frac{1}{15}x^6 + \\dots \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Power Series Solutions, Ordinary Points &amp; the Method of Frobenius</em> and start from \\( x_0 = 0 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -370,27 +449,69 @@
         "solution": {
           "en": "<p><strong>Step 1: Check regular singularity at \\( x_0 = 0 \\):</strong> \\[ P(x) = -\\frac{1}{2x}, \\quad Q(x) = \\frac{x - 5}{2x^2}. \\] \\[ p_0 = \\lim_{x\\to 0} x P(x) = -\\frac{1}{2}, \\qquad q_0 = \\lim_{x\\to 0} x^2 Q(x) = -\\frac{5}{2}. \\] Both limits are finite, confirming \\( x = 0 \\) is a regular singular point.</p><p><strong>Step 2: Indicial equation:</strong> \\[ r(r - 1) + p_0 r + q_0 = r^2 - r - \\frac{1}{2}r - \\frac{5}{2} = 0 \\implies 2r^2 - 3r - 5 = 0. \\] Factoring: \\[ (2r - 5)(r + 1) = 0 \\implies r_1 = \\frac{5}{2}, \\quad r_2 = -1. \\]</p><p><strong>Step 3: Root difference:</strong> \\[ r_1 - r_2 = \\frac{5}{2} - (-1) = \\frac{7}{2} \\notin \\mathbb{Z}. \\] Because the roots do not differ by an integer, Case 1 of Frobenius' Theorem applies. Two linearly independent Frobenius series solutions exist without any logarithmic terms: \\[ y_1(x) = x^{5/2}\\sum_{n=0}^\\infty a_n x^n, \\qquad y_2(x) = x^{-1}\\sum_{n=0}^\\infty b_n x^n \\quad (a_0, b_0 \\neq 0). \\]</p>",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Power Series Solutions, Ordinary Points &amp; the Method of Frobenius</em> and start from \\( x = 0 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( x_0 = 0 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Medium]</strong> Near \\( x_0=-1 \\), the power series solutions of \\( (x^{2} - 2 x - 8)y''+xy'+y=0 \\) are guaranteed to converge at least for \\( |x-x_0|<R \\) with \\( R= \\)",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Power Series Solutions, Ordinary Points &amp; the Method of Frobenius</em> and start from \\( x_0=-1 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( x^{2} - 2 x - 8 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "The singular points are the zeros of \\( x^{2} - 2 x - 8 \\): \\( -2, 4 \\) (complex ones count). The nearest is at distance \\( 1 \\) from \\( -1 \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Power Series Solutions, Ordinary Points &amp; the Method of Frobenius · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> The Laplace transform of \\( F(w) = 266e^{20w} \\) is \\( G(s) = \\dfrac{266}{s - 20} \\) for \\( s > 20 \\). Compute the exact value of the evaluated transform \\( G(21) \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Power Series Solutions, Ordinary Points &amp; the Method of Frobenius</em> and start from \\( F(w) = 266e^{20w} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( s = 21 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Power Series Solutions, Ordinary Points &amp; the Method of Frobenius · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Substituting \\( s = 21 \\) gives \\( \\frac{266}{21 - 20} = 266 \\).",
           "ar": null
         }
       }

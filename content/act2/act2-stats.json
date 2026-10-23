@@ -41,34 +41,31 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Statistics, Counting & Probability",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Conditional Probability, Bayes' Theorem &amp; Robust Summary Statistics:</strong> For any two events \\(A\\) and \\(B\\) with \\(P(B) > 0\\), conditional probability restricts the sample space to \\(B\\): \\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)}\\). In descriptive statistics, the median and interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)) are resistant to extreme outliers, whereas the mean \\(\\bar{x}\\) and standard deviation \\(s\\) are pulled strongly in the direction of skewness.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "Statistics, Counting & Probability — Frequency Distribution (2)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
-            {
-              "label": "Q1",
-              "value": 22
-            },
-            {
-              "label": "Q2",
-              "value": 35,
-              "highlight": true
-            },
-            {
-              "label": "Q3",
-              "value": 28
-            },
-            {
-              "label": "Q4",
-              "value": 19
-            }
-          ]
+          "type": "venn",
+          "title": "Statistics, Counting & Probability — Set Intersection & Conditional Sample Space",
+          "onlyA": 16,
+          "both": 8,
+          "onlyB": 20,
+          "neither": 4,
+          "labelA": "Event A",
+          "labelB": "Event B"
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for Statistics, Counting & Probability.",
+          "en": "Venn diagram partitioning sample space into |A only| = 16, |A ∩ B| = 8, |B only| = 20, and |(A ∪ B)'| = 4.",
           "ar": null
         }
       },
@@ -259,6 +256,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Statistics, Counting & Probability)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Bayes' Theorem &amp; Principle of Inclusion-Exclusion Work:</strong> Any event \\(B\\) can be partitioned into disjoint intersections \\(B = (B \\cap A) \\cup (B \\cap A')\\). By additivity of mutually exclusive events and the multiplication rule \\(P(A \\cap B) = P(B \\mid A)P(A)\\):</p>\\[ P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{P(B \\mid A)P(A)}{P(B \\mid A)P(A) + P(B \\mid A')P(A')} \\]<p>Similarly, in counting \\(|A \\cup B|\\), summing \\(|A| + |B|\\) counts every element in \\(A \\cap B\\) twice; subtracting \\(|A \\cap B|\\) once restores exact cardinality: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 8.A — Permutations with Indistinguishable Items",
@@ -285,11 +294,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example C — Statistics, Counting & Probability (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> A two-way table of \\( N = 86 \\) observations on varsity club records cell counts \\( p_1 = 26 \\) for (Morning, Track) and \\( q_2 = 19 \\) for (Afternoon, Swimming). Which of the following is equal to the diagonal sum \\( t = p_1 + q_2 \\)?</p><p><strong>Step-by-Step Solution:</strong> Summing the two frequencies gives \\( 26 + 19 = 45 \\).</p>",
           "ar": null
         }
       },
@@ -297,11 +306,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example D — Statistics, Counting & Probability (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> The box plot for dataset \\( p \\) has quartiles \\( Q_1 = 30 \\), median \\( M = 44 \\), and \\( Q_3 = 53 \\). Which of the following is equal to the interquartile range \\( t = Q_3 - Q_1 \\) of \\( p \\)?</p><p><strong>Step-by-Step Solution:</strong> The interquartile range is \\( Q_3 - Q_1 = 53 - 30 = 23 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Statistics, Counting & Probability)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Using \\(P(A \\cap B) = 0\\) when told \\(A\\) and \\(B\\) are independent",
+              "ar": null
+            },
+            {
+              "en": "Confuses disjoint (mutually exclusive) events with statistically independent events.",
+              "ar": null
+            },
+            {
+              "en": "For independent events, multiply probabilities: \\(P(A \\cap B) = P(A)\\cdot P(B)\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Dividing by the grand total \\(N\\) when computing \\(P(A \\mid B)\\) from a table",
+              "ar": null
+            },
+            {
+              "en": "Computes the joint probability \\(P(A \\cap B)\\) instead of conditioning on subset \\(B\\).",
+              "ar": null
+            },
+            {
+              "en": "Restrict the denominator strictly to the row/column total of the given condition \\(B\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using permutations \\({}^nP_r\\) when selecting a committee with no distinct roles",
+              "ar": null
+            },
+            {
+              "en": "Overcounts every group of size \\(r\\) by \\(r!\\) internal orderings.",
+              "ar": null
+            },
+            {
+              "en": "Divide by \\(r!\\) to use combinations: \\(\\binom{n}{r} = \\frac{n!}{r!(n-r)!}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Statistics, Counting & Probability",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Strategy (ACT International Subject Test — Math 1):</strong> Whenever a probability problem involves \"at least one\" success across multiple trials, immediately use the Complement Rule: \\(P(\\text{at least one}) = 1 - P(\\text{none})\\). It turns a multi-case sum into a single calculation.</p>",
           "ar": null
         }
       },
@@ -314,7 +400,21 @@
         "solution": {
           "en": "<p><strong>Step 1 (Inclusion-Exclusion Principle):</strong><br>\\[ |F \\cup B| = |F| + |B| - |F \\cap B| = 18 + 14 - 6 = 32 - 6 = 26 \\]</p><p><strong>Step 2 (Neither Sport):</strong> Subtract the union from the total class size:<br>\\[ \\text{Neither} = 30 - |F \\cup B| = 30 - 26 = \\mathbf{4} \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics, Counting & Probability</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( |F \\cup B| = |F| + |B| - |F \\cap B| = 18 + 14 - 6 = 32 - 6 = 26 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -325,7 +425,21 @@
         "solution": {
           "en": "<p><strong>(a) Unrestricted selection:</strong> Total students \\(= 6 + 5 = 11\\). Choosing 4 where order does not matter: \\[ \\binom{11}{4} = \\dfrac{11 \\times 10 \\times 9 \\times 8}{4 \\times 3 \\times 2 \\times 1} = 11 \\times 10 \\times 3 = \\mathbf{330 \\text{ ways}}. \\]</p><p><strong>(b) Exactly 2 juniors and 2 seniors:</strong> Select 2 juniors from 6, AND 2 seniors from 5: \\[ \\binom{6}{2} \\times \\binom{5}{2} = \\left( \\dfrac{6 \\times 5}{2} \\right) \\times \\left( \\dfrac{5 \\times 4}{2} \\right) = 15 \\times 10 = \\mathbf{150 \\text{ ways}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics, Counting & Probability</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(= 6 + 5 = 11\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -336,7 +450,21 @@
         "solution": {
           "en": "<p><strong>Step 1 (Probability Breakdown):</strong><br>\\(P(\\text{roll } 6) = 1/6\\) with gain \\(+\\$15\\).<br>\\(P(\\text{roll } 5) = 1/6\\) with gain \\(+\\$6\\).<br>\\(P(\\text{roll } 1, 2, 3, \\text{ or } 4) = 4/6\\) with loss \\(-\\$3\\).</p><p><strong>Step 2 (Expected Value):</strong><br>\\[ E(X) = 15\\left(\\frac{1}{6}\\right) + 6\\left(\\frac{1}{6}\\right) + (-3)\\left(\\frac{4}{6}\\right) = \\frac{15 + 6 - 12}{6} = \\frac{9}{6} = \\mathbf{+\\$1.50} \\]</p><p>Since \\(E(X) > 0\\), the game is <strong>favorable to the player</strong> with an average expected profit of \\(\\mathbf{\\$1.50}\\) per roll.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics, Counting & Probability</em> and start from \\(\\$15\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(P(\\text{roll } 6) = 1/6\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -347,7 +475,21 @@
         "solution": {
           "en": "<p>Apply the binomial probability formula \\(P(X = k) = \\binom{n}{k} p^k (1 - p)^{n - k}\\) with \\(n = 6\\), \\(k = 4\\), and \\(p = 1/2\\):<br>\\[ P(X = 4) = \\binom{6}{4} \\left(\\frac{1}{2}\\right)^4 \\left(\\frac{1}{2}\\right)^2 = \\binom{6}{2} \\left(\\frac{1}{2}\\right)^6 \\]\\[ \\binom{6}{2} = \\frac{6 \\times 5}{2} = 15 \\]\\[ P(X = 4) = 15 \\times \\frac{1}{64} = \\mathbf{\\frac{15}{64}} \\approx 0.2344 \\quad (23.44\\%) \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics, Counting & Probability</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(P(X = k) = \\binom{n}{k} p^k (1 - p)^{n - k}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

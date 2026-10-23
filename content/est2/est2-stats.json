@@ -41,34 +41,31 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Statistics & Probability",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Conditional Probability, Bayes' Theorem &amp; Robust Summary Statistics:</strong> For any two events \\(A\\) and \\(B\\) with \\(P(B) > 0\\), conditional probability restricts the sample space to \\(B\\): \\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)}\\). In descriptive statistics, the median and interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)) are resistant to extreme outliers, whereas the mean \\(\\bar{x}\\) and standard deviation \\(s\\) are pulled strongly in the direction of skewness.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "Statistics & Probability — Frequency Distribution (2)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
-            {
-              "label": "Q1",
-              "value": 22
-            },
-            {
-              "label": "Q2",
-              "value": 35,
-              "highlight": true
-            },
-            {
-              "label": "Q3",
-              "value": 28
-            },
-            {
-              "label": "Q4",
-              "value": 19
-            }
-          ]
+          "type": "venn",
+          "title": "Statistics & Probability — Set Intersection & Conditional Sample Space",
+          "onlyA": 16,
+          "both": 12,
+          "onlyB": 15,
+          "neither": 4,
+          "labelA": "Event A",
+          "labelB": "Event B"
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for Statistics & Probability.",
+          "en": "Venn diagram partitioning sample space into |A only| = 16, |A ∩ B| = 12, |B only| = 15, and |(A ∪ B)'| = 4.",
           "ar": null
         }
       },
@@ -259,6 +256,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Statistics & Probability)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Bayes' Theorem &amp; Principle of Inclusion-Exclusion Work:</strong> Any event \\(B\\) can be partitioned into disjoint intersections \\(B = (B \\cap A) \\cup (B \\cap A')\\). By additivity of mutually exclusive events and the multiplication rule \\(P(A \\cap B) = P(B \\mid A)P(A)\\):</p>\\[ P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{P(B \\mid A)P(A)}{P(B \\mid A)P(A) + P(B \\mid A')P(A')} \\]<p>Similarly, in counting \\(|A \\cup B|\\), summing \\(|A| + |B|\\) counts every element in \\(A \\cap B\\) twice; subtracting \\(|A \\cap B|\\) once restores exact cardinality: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 8.A — Combinations with Group Restrictions & Complementary Counting",
@@ -297,11 +306,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example D — Statistics & Probability (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> A two-way table of \\( N = 115 \\) observations on device preference records cell counts \\( C_1 = 22 \\) for (STEM, Tablet) and \\( D_2 = 25 \\) for (Arts, Laptop). What is the diagonal sum \\( q = C_1 + D_2 \\)?</p><p><strong>Step-by-Step Solution:</strong> Summing the two frequencies gives \\( 22 + 25 = 47 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Statistics & Probability)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Using \\(P(A \\cap B) = 0\\) when told \\(A\\) and \\(B\\) are independent",
+              "ar": null
+            },
+            {
+              "en": "Confuses disjoint (mutually exclusive) events with statistically independent events.",
+              "ar": null
+            },
+            {
+              "en": "For independent events, multiply probabilities: \\(P(A \\cap B) = P(A)\\cdot P(B)\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Dividing by the grand total \\(N\\) when computing \\(P(A \\mid B)\\) from a table",
+              "ar": null
+            },
+            {
+              "en": "Computes the joint probability \\(P(A \\cap B)\\) instead of conditioning on subset \\(B\\).",
+              "ar": null
+            },
+            {
+              "en": "Restrict the denominator strictly to the row/column total of the given condition \\(B\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using permutations \\({}^nP_r\\) when selecting a committee with no distinct roles",
+              "ar": null
+            },
+            {
+              "en": "Overcounts every group of size \\(r\\) by \\(r!\\) internal orderings.",
+              "ar": null
+            },
+            {
+              "en": "Divide by \\(r!\\) to use combinations: \\(\\binom{n}{r} = \\frac{n!}{r!(n-r)!}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Statistics & Probability",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Strategy (Egyptian Scholastic Test (EST II — Math Level 1)):</strong> Whenever a probability problem involves \"at least one\" success across multiple trials, immediately use the Complement Rule: \\(P(\\text{at least one}) = 1 - P(\\text{none})\\). It turns a multi-case sum into a single calculation.</p>",
           "ar": null
         }
       },
@@ -314,7 +400,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Compute intersection \\(P(A \\cap B)\\):</strong> Using the conditional probability multiplication rule: \\[ P(A \\cap B) = P(A|B) \\cdot P(B) = 0.40 \\times 0.50 = 0.20. \\]</p><p><strong>Step 2: Apply the general addition rule:</strong> \\[ P(A \\cup B) = P(A) + P(B) - P(A \\cap B) = 0.60 + 0.50 - 0.20 = \\mathbf{0.90}. \\]</p><p><strong>Step 3: Test for independence:</strong> \\(P(A|B) = 0.40\\) while \\(P(A) = 0.60\\). Since \\(P(A|B) \\neq P(A)\\), events \\(A\\) and \\(B\\) are <strong>not independent</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics & Probability</em> and start from \\(A\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(P(A \\cap B)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -325,7 +425,21 @@
         "solution": {
           "en": "<p><strong>(a) Exactly 3 women:</strong> Choose 3 women from 8 and 2 men from 6: \\[ \\binom{8}{3} \\times \\binom{6}{2} = \\frac{8 \\times 7 \\times 6}{6} \\times \\frac{6 \\times 5}{2} = 56 \\times 15 = \\mathbf{840\\text{ ways}}. \\]</p><p><strong>(b) Probability of at least 4 women:</strong></p><ul><li>Total possible 5-delegate committees from all 14 people: \\[ \\binom{14}{5} = \\frac{14 \\times 13 \\times 12 \\times 11 \\times 10}{5 \\times 4 \\times 3 \\times 2 \\times 1} = 2002. \\]</li><li>Case 1 (4 women, 1 man): \\(\\binom{8}{4}\\binom{6}{1} = 70 \\times 6 = 420\\).</li><li>Case 2 (5 women, 0 men): \\(\\binom{8}{5}\\binom{6}{0} = 56 \\times 1 = 56\\).</li><li>Total favorable committees: \\(420 + 56 = 476\\).</li><li>Exact probability: \\[ P(\\ge 4\\text{ women}) = \\frac{476}{2002} = \\mathbf{\\frac{34}{143}} \\approx 0.2378\\, (23.8\\%). \\]</li></ul>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics & Probability</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -336,7 +450,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Compute transformed mean:</strong> For a linear transformation \\(y = ax + b\\), the mean transforms identically: \\[ \\bar{y} = 1.25\\bar{x} - 10 = 1.25(72) - 10 = 90 - 10 = \\mathbf{80}. \\]</p><p><strong>Step 2: Compute transformed standard deviation:</strong> The additive constant \\(-10\\) shifts the entire distribution without changing spread. Only the multiplicative factor scales dispersion: \\[ s_y = |a| \\cdot s_x = 1.25 \\times 8 = \\mathbf{10}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics & Probability</em> and start from \\(\\bar{x} = 72\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(y = ax + b\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -347,7 +475,21 @@
         "solution": {
           "en": "<p><strong>(a) Exactly 2 defective components:</strong> Apply the binomial probability formula \\(P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k}\\) with \\(n = 5\\), \\(k = 2\\), \\(p = 0.10\\): \\[ P(X = 2) = \\binom{5}{2} (0.10)^2 (0.90)^3 = 10 \\times 0.01 \\times 0.729 = \\mathbf{0.0729\\, (7.29\\%)}. \\]</p><p><strong>(b) At least 1 defective component:</strong> Use complementary probability: \\[ P(X \\ge 1) = 1 - P(X = 0) = 1 - \\binom{5}{0}(0.10)^0(0.90)^5 = 1 - (1)(1)(0.59049) = 1 - 0.59049 = \\mathbf{0.40951\\, (40.95\\%)}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics & Probability</em> and start from \\(p = 0.10\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

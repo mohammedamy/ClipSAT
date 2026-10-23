@@ -79,47 +79,46 @@
         ]
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Differentiation, Rules & Rates of Change",
+          "ar": "● الفهم المفاهيمي العميق — التفاضل وقواعد الاشتقاق ومعدلات التغير المرتبطة"
+        },
+        "body": {
+          "en": "<p><strong>Local Linearization &amp; Differentiability:</strong> A function \\(f\\) is differentiable at \\(x = a\\) if and only if the difference quotient \\(\\lim_{h \\to 0} \\dfrac{f(a+h) - f(a)}{h}\\) exists as a finite real number. Differentiability at \\(x = a\\) strictly implies continuity at \\(x = a\\), but the converse fails at sharp corners (e.g. \\(|x - 3|\\)), vertical tangents, or jump discontinuities.</p>",
+          "ar": "<p><strong>الاشتقاق والتقريب الخطي المحلي:</strong> تكون الدالة قابلة للاشتقاق عند \\(x = a\\) إذا وفقط إذا كانت النهاية \\(\\lim_{h\\to 0}\\frac{f(a+h)-f(a)}{h}\\) موجودة ومحدودة، وكل دالة قابلة للاشتقاق متصلة بالضرورة.</p>"
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Differentiation, Rules & Rates of Change — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
+          "type": "sign_chart",
+          "title": "Differentiation, Rules & Rates of Change — First Derivative Sign Chart & Extrema",
+          "ticks": [
             {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "x": -3,
+              "label": "x = -3"
             },
             {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "x": 7,
+              "label": "x = 7"
             }
           ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
+          "signs": [
+            "+",
+            "−",
+            "+"
+          ],
+          "behaviors": [
+            "↗ Increasing",
+            "↘ Decreasing",
+            "↗ Increasing"
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
-          "ar": "التمثيل البياني للدالة f(x) = x² − 2 ومماسها عند x = 1."
+          "en": "Derivative sign chart for f'(x) showing local maximum at x = −3 (+ to −) and local minimum at x = 7 (− to +).",
+          "ar": "تمثيل هندسي وبياني يوضح العلاقات الأساسية في درس التفاضل وقواعد الاشتقاق ومعدلات التغير المرتبطة."
         }
       },
       {
@@ -225,44 +224,44 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Differentiation, Rules & Rates of Change — Coordinate Curve & Tangent Analysis (1)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
           "fns": [
             {
-              "fn": "x*x - 1",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 1"
+              "fn": "(2*x + 1)**3",
+              "label": "y = f(x)"
             },
             {
-              "fn": "2*x - 2",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "fn": "6*x + 1",
+              "label": "Tangent"
             }
           ],
           "points": [
             {
-              "x": 1,
-              "y": 0,
-              "label": "(1, 0)"
-            },
-            {
               "x": 0,
-              "y": -1,
-              "label": "(0, -1)"
+              "y": 1,
+              "label": "(0,1)"
             }
-          ]
+          ],
+          "xmin": -1,
+          "xmax": 1,
+          "ymin": -2,
+          "ymax": 5,
+          "title": "Tangent at (0, 1): y = 6x + 1"
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 1 and its instantaneous tangent line at x = 1.",
-          "ar": "التمثيل البياني للدالة f(x) = x² − 1 ومماسها عند x = 1."
+          "en": "Tangent at (0, 1): y = 6x + 1 — illustrating key geometric and analytical relationships in Differentiation, Rules & Rates of Change.",
+          "ar": "رسم توضيحي يبيّن العلاقات الرياضية والهندسية في درس التفاضل وقواعد الاشتقاق ومعدلات التغير المرتبطة."
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Differentiation, Rules & Rates of Change)",
+          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (التفاضل وقواعد الاشتقاق ومعدلات التغير المرتبطة)"
+        },
+        "body": {
+          "en": "<p><strong>Why Differentiability Implies Continuity &amp; How Implicit Differentiation Works:</strong> Notice that for \\(x \\ne a\\), we can write \\(f(x) - f(a) = \\dfrac{f(x) - f(a)}{x - a}\\cdot (x - a)\\). Taking the limit as \\(x \\to a\\) by the Product Law gives:</p>\\[ \\lim_{x \\to a} \\bigl(f(x) - f(a)\\bigr) = f'(a)\\cdot 0 = 0 \\implies \\lim_{x \\to a} f(x) = f(a) \\]<p>Similarly, when differentiating an implicit relation \\(F(x, y) = c\\) with respect to \\(x\\), \\(y = y(x)\\) is an inner function of \\(x\\). By the Chain Rule, \\(\\dfrac{d}{dx}\\bigl[y^n\\bigr] = ny^{n-1}\\dfrac{dy}{dx}\\), and for product terms \\(\\dfrac{d}{dx}[xy] = y + x\\dfrac{dy}{dx}\\).</p>",
+          "ar": "<p><strong>لماذا يؤدي الاشتقاق إلى الاتصال وكيف تعمل قاعدة السلسلة الضمنية:</strong> بما أن \\(\\lim_{x\\to a}(f(x)-f(a)) = f'(a)\\cdot 0 = 0\\) فإن \\(\\lim_{x\\to a}f(x) = f(a)\\). وعند اشتقاق \\(y^n\\) بالنسبة لـ \\(x\\) نطبق قاعدة السلسلة: \\(ny^{n-1}\\frac{dy}{dx}\\).</p>"
         }
       },
       {
@@ -281,80 +280,262 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example B — Instantaneous Rate of Change & Tangent Line",
-          "ar": "مثال محلول B — معدل التغير اللحظي ومعادلة المماس"
+          "en": "Worked Example B — Differentiation, Rules & Rates of Change (Easy Application)",
+          "ar": "مثال محلول B — التفاضل وقواعد الاشتقاق ومعدلات التغير المرتبطة (تطبيق Easy)"
         },
         "body": {
-          "en": "Let \\( f(x) = 3x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(6) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 9x^2 - 2x \\).</li><li>Substitute \\( x = 6 \\): \\( f'(6) = 9(6)^2 - 2(6) = 324 - 12 = \\mathbf{312} \\).</li></ol>",
-          "ar": "لتكن \\( f(x) = 3x^3 - x^2 + 4 \\). أوجد معدل التغير اللحظي \\( f'(6) \\).<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>نشتق حداً بحداّ: \\( f'(x) = 9x^2 - 2x \\).</li><li>نعوض \\( x = 6 \\): \\( f'(6) = 9(6)^2 - 2(6) = \\mathbf{312} \\).</li></ol>"
+          "en": "<p><strong>Problem (Easy):</strong> A smooth curve \\( f \\) is defined implicitly by \\( 18x^2 + y^2 = 1602 \\). Find the quantity \\( -y\\dfrac{dy}{dx} \\) at \\( (9, 12) \\).</p><p><strong>Step-by-Step Solution:</strong> Implicit differentiation gives \\( 36x + 2y\\frac{dy}{dx} = 0 \\implies -y\\frac{dy}{dx} = 18x = 162 \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Easy):</strong> A smooth curve \\( f \\) is defined implicitly by \\( 18x^2 + y^2 = 1602 \\). Find the quantity \\( -y\\dfrac{dy}{dx} \\) at \\( (9, 12) \\).</p><p><strong>الحل خطوة بخطوة:</strong> Implicit differentiation gives \\( 36x + 2y\\frac{dy}{dx} = 0 \\implies -y\\frac{dy}{dx} = 18x = 162 \\).</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Instantaneous Rate of Change & Tangent Line",
-          "ar": "مثال محلول C — معدل التغير اللحظي ومعادلة المماس"
+          "en": "Worked Example C — Differentiation, Rules & Rates of Change (Medium Application)",
+          "ar": "مثال محلول C — التفاضل وقواعد الاشتقاق ومعدلات التغير المرتبطة (تطبيق Medium)"
         },
         "body": {
-          "en": "Let \\( f(x) = 4x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(9) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 12x^2 - 2x \\).</li><li>Substitute \\( x = 9 \\): \\( f'(9) = 12(9)^2 - 2(9) = 972 - 18 = \\mathbf{954} \\).</li></ol>",
-          "ar": "لتكن \\( f(x) = 4x^3 - x^2 + 4 \\). أوجد معدل التغير اللحظي \\( f'(9) \\).<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>نشتق حداً بحداّ: \\( f'(x) = 12x^2 - 2x \\).</li><li>نعوض \\( x = 9 \\): \\( f'(9) = 12(9)^2 - 2(9) = \\mathbf{954} \\).</li></ol>"
+          "en": "<p><strong>Problem (Medium):</strong> Consider the function \\( f(x) = \\dfrac{2(x^2 - 196)}{x - 14} \\) for \\( x \\neq 14 \\). Find the limit \\( \\displaystyle\\lim_{x \\to 14} f(x) \\).</p><p><strong>Step-by-Step Solution:</strong> Factoring gives \\( \\lim_{x \\to 14} 2(x + 14) = 56 \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Medium):</strong> Consider the function \\( f(x) = \\dfrac{2(x^2 - 196)}{x - 14} \\) for \\( x \\neq 14 \\). Find the limit \\( \\displaystyle\\lim_{x \\to 14} f(x) \\).</p><p><strong>الحل خطوة بخطوة:</strong> Factoring gives \\( \\lim_{x \\to 14} 2(x + 14) = 56 \\).</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
-          "ar": "مثال محلول D — معدل التغير اللحظي ومعادلة المماس"
+          "en": "Worked Example D — Differentiation, Rules & Rates of Change (Hard Application)",
+          "ar": "مثال محلول D — التفاضل وقواعد الاشتقاق ومعدلات التغير المرتبطة (تطبيق Hard)"
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
-          "ar": "لتكن \\( f(x) = 5x^3 - x^2 + 4 \\). أوجد معدل التغير اللحظي \\( f'(5) \\).<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>نشتق حداً بحداّ: \\( f'(x) = 15x^2 - 2x \\).</li><li>نعوض \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = \\mathbf{365} \\).</li></ol>"
+          "en": "<p><strong>Problem (Hard):</strong> Consider the function \\( p(t) = \\dfrac{3(t^2 - 100)}{t - 10} \\) for \\( t \\neq 10 \\). Find the limit \\( \\displaystyle\\lim_{t \\to 10} p(t) \\).</p><p><strong>Step-by-Step Solution:</strong> Factoring gives \\( \\lim_{t \\to 10} 3(t + 10) = 60 \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Hard):</strong> Consider the function \\( p(t) = \\dfrac{3(t^2 - 100)}{t - 10} \\) for \\( t \\neq 10 \\). Find the limit \\( \\displaystyle\\lim_{t \\to 10} p(t) \\).</p><p><strong>الحل خطوة بخطوة:</strong> Factoring gives \\( \\lim_{t \\to 10} 3(t + 10) = 60 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Exam Traps — Differentiation, Rules & Rates of Change",
+          "ar": "⚠️ أخطاء شائعة في الاختبار — التفاضل وقواعد الاشتقاق ومعدلات التغير المرتبطة"
+        },
+        "body": {
+          "en": "<p><strong>1. Premature L'Hôpital's Rule Application:</strong> On Cambridge IGCSE Additional Mathematics (0606), applying L'Hôpital's Rule to \\(\\lim_{x \\to 3} \\dfrac{g(x)}{h(x)}\\) when the fraction is <em>not</em> an indeterminate form \\(0/0\\) or \\(\\infty/\\infty\\) produces completely false limits. Always verify \\(g(3) = 0\\) and \\(h(3) = 0\\) explicitly first.</p><p><strong>2. Parametric Second Derivative Trap:</strong> For parametric curves \\((x(t), y(t))\\), \\(\\dfrac{d^2y}{dx^2} = \\dfrac{\\frac{d}{dt}(dy/dx)}{dx/dt}\\), <em>never</em> \\(\\dfrac{d^2y/dt^2}{d^2x/dt^2}\\).</p>",
+          "ar": "<p><strong>1. تطبيق قاعدة لوبيتال دون التحقق من عدم التعيين:</strong> يجب التأكد أولاً من أن التعويض المباشر يعطي \\(0/0\\) أو \\(\\infty/\\infty\\) قبل اشتقاق البسط والمقام.</p>"
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Differentiation, Rules & Rates of Change)",
+          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (التفاضل وقواعد الاشتقاق ومعدلات التغير المرتبطة)"
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع للطالب"
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": "السبب الرياضي للخطأ"
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Assuming \\(f'(c) = 0\\) guarantees a local extremum",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Inflection points like \\(f(x) = x^3\\) at \\(x = 0\\) have \\(f'(0) = 0\\) without changing sign.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Verify that \\(f'(x)\\) actually changes sign across \\(x = c\\) (or check \\(f''(c) \\ne 0\\)).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Computing parametric \\(\\frac{d^2y}{dx^2}\\) as \\(\\frac{\\ddot{y}}{\\ddot{x}}\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "violates the Chain Rule \\(\\frac{d}{dx} = \\frac{1}{dx/dt}\\frac{d}{dt}\\).",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Differentiate \\(dy/dx\\) with respect to \\(t\\), then divide by \\(dx/dt\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Forgetting product rule on \\(xy\\) in implicit differentiation",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Treats \\(y\\) as a constant instead of \\(y(x)\\).",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Always expand \\(\\frac{d}{dx}(xy) = y + x\\frac{dy}{dx}\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Differentiation, Rules & Rates of Change",
+          "ar": "▲ استراتيجية الحل السريع والتحقق — التفاضل وقواعد الاشتقاق ومعدلات التغير المرتبطة"
+        },
+        "body": {
+          "en": "<p><strong>Exam Justification Rule (Cambridge IGCSE Additional Mathematics (0606)):</strong> When justifying local extrema or points of inflection on free-response questions, state \"because \\(f'(x)\\) changes sign from positive to negative at \\(x = c\\)\" rather than referring vaguely to \"it\" or \"the graph.\"</p>",
+          "ar": "<p><strong>نصيحة لصياغة الإجابة النموذجية:</strong> عند تبرير القيم القصوى المحلية، اذكر صراحةً تغير إشارة المشتقة الأولى \\(f'(x)\\) حول النقطة الحرجة.</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example E — Differentiation, Rules & Rates of Change (Medium Application)",
+          "ar": "مثال محلول E — التفاضل وقواعد الاشتقاق ومعدلات التغير المرتبطة (تطبيق Medium)"
+        },
+        "body": {
+          "en": "<p><strong>Problem (Medium):</strong> Consider the composite power function \\( p(t) = (8t + 23)^2 \\). Find the instantaneous rate of change \\( p'(8) \\).</p><p><strong>Step-by-Step Solution:</strong> By the Chain Rule, \\( p'(t) = 16(8t + 23) \\), which equals \\( 1392 \\) at \\( t = 8 \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Medium):</strong> Consider the composite power function \\( p(t) = (8t + 23)^2 \\). Find the instantaneous rate of change \\( p'(8) \\).</p><p><strong>الحل خطوة بخطوة:</strong> By the Chain Rule, \\( p'(t) = 16(8t + 23) \\), which equals \\( 1392 \\) at \\( t = 8 \\).</p>"
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Differentiation, Rules & Rates of Change · Practice 1] If the governing relation for this system is \\( g(t) = 3t + 3 \\), evaluate \\( g(4) \\) and find the inverse input \\( t \\) when \\( g(t) = 18 \\).",
-          "ar": "[Differentiation, Rules & Rates of Change · تدريب 1] إذا كانت العلاقة الحاكمة هي \\( g(t) = 3t + 3 \\)، فأوجد \\( g(4) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 18 \\)."
+          "en": "<strong>[Practice 1 · Easy]</strong> Let \\( p(t) = \\dfrac{162t^2 + 9t - 15}{t^2 + 18} \\) for \\( t > 0 \\). Find the limit at infinity \\( \\displaystyle\\lim_{t \\to \\infty} p(t) \\).",
+          "ar": "<strong>[تدريب 1 · Easy]</strong> Let \\( p(t) = \\dfrac{162t^2 + 9t - 15}{t^2 + 18} \\) for \\( t > 0 \\). Find the limit at infinity \\( \\displaystyle\\lim_{t \\to \\infty} p(t) \\)."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differentiation, Rules & Rates of Change</em> and start from \\( p(t) = \\dfrac{162t^2 + 9t - 15}{t^2 + 18} \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( p(t) = \\dfrac{162t^2 + 9t - 15}{t^2 + 18} \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( t^2 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( t^2 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 4 \\): \\( g(4) = 3(4) + 3 = \\mathbf{15} \\). Setting \\( 3t + 3 = 18 \\) gives \\( 3t = 15 \\implies t = \\mathbf{5} \\).",
-          "ar": "بالتعويض عن \\( t = 4 \\): \\( g(4) = 3(4) + 3 = \\mathbf{15} \\). وعندما \\( 3t + 3 = 18 \\) فإن \\( t = \\mathbf{5} \\)."
+          "en": "Dividing numerator and denominator by \\( t^2 \\) gives \\( 162 \\).",
+          "ar": "Dividing numerator and denominator by \\( t^2 \\) gives \\( 162 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Differentiation, Rules & Rates of Change · Practice 2] If the governing relation for this system is \\( g(t) = 4t + 4 \\), evaluate \\( g(6) \\) and find the inverse input \\( t \\) when \\( g(t) = 32 \\).",
-          "ar": "[Differentiation, Rules & Rates of Change · تدريب 2] إذا كانت العلاقة الحاكمة هي \\( g(t) = 4t + 4 \\)، فأوجد \\( g(6) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 32 \\)."
+          "en": "<strong>[Practice 2 · Medium]</strong> Air is pumped into a spherical balloon such that its radius increases at a constant rate of \\( 0.5 \\text{ cm/s} \\). What is the rate of change of volume \\( \\frac{dV}{dt} \\) when the radius is \\( r = 3 \\text{ cm} \\)?",
+          "ar": "<strong>[تدريب 2 · Medium]</strong> Air is pumped into a spherical balloon such that its radius increases at a constant rate of \\( 0.5 \\text{ cm/s} \\). What is the rate of change of volume \\( \\frac{dV}{dt} \\) when the radius is \\( r = 3 \\text{ cm} \\)?"
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differentiation, Rules & Rates of Change</em> and start from \\( 0.5 \\text{ cm/s} \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( 0.5 \\text{ cm/s} \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( V = \\frac{4}{3}\\pi r^3 \\implies \\frac{dV}{dt} = 4\\pi r^2 \\frac{dr}{dt} \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( V = \\frac{4}{3}\\pi r^3 \\implies \\frac{dV}{dt} = 4\\pi r^2 \\frac{dr}{dt} \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). Setting \\( 4t + 4 = 32 \\) gives \\( 4t = 28 \\implies t = \\mathbf{7} \\).",
-          "ar": "بالتعويض عن \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). وعندما \\( 4t + 4 = 32 \\) فإن \\( t = \\mathbf{7} \\)."
+          "en": "\\( V = \\frac{4}{3}\\pi r^3 \\implies \\frac{dV}{dt} = 4\\pi r^2 \\frac{dr}{dt} \\). At \\( r = 3 \\), \\( \\frac{dV}{dt} = 4\\pi (3)^2 (0.5) = 2\\pi (9) = 18\\pi \\text{ cm}^3/\\text{s} \\). <strong>Answer:</strong> \\( 18\\pi \\text{ cm}^3/\\text{s} \\).",
+          "ar": "\\( V = \\frac{4}{3}\\pi r^3 \\implies \\frac{dV}{dt} = 4\\pi r^2 \\frac{dr}{dt} \\). At \\( r = 3 \\), \\( \\frac{dV}{dt} = 4\\pi (3)^2 (0.5) = 2\\pi (9) = 18\\pi \\text{ cm}^3/\\text{s} \\). <strong>الإجابة:</strong> \\( 18\\pi \\text{ cm}^3/\\text{s} \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Differentiation, Rules & Rates of Change · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
-          "ar": "[Differentiation, Rules & Rates of Change · تدريب 3] إذا كانت العلاقة الحاكمة هي \\( g(t) = 5t + 5 \\)، فأوجد \\( g(8) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 50 \\)."
+          "en": "<strong>[Practice 3 · Hard]</strong> Let the differentiable function \\( p \\) be given by \\( p(t) = 17t^2 + 2t - 20 \\). Find the derivative \\( p'(20) \\).",
+          "ar": "<strong>[تدريب 3 · Hard]</strong> Let the differentiable function \\( p \\) be given by \\( p(t) = 17t^2 + 2t - 20 \\). Find the derivative \\( p'(20) \\)."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differentiation, Rules & Rates of Change</em> and start from \\( p \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( p \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( p'(t) = 34t + 2 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( p'(t) = 34t + 2 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": "بالتعويض عن \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). وعندما \\( 5t + 5 = 50 \\) فإن \\( t = \\mathbf{9} \\)."
+          "en": "Differentiating gives \\( p'(t) = 34t + 2 \\), so \\( p'(20) = 682 \\).",
+          "ar": "Differentiating gives \\( p'(t) = 34t + 2 \\), so \\( p'(20) = 682 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Differentiation, Rules & Rates of Change · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": "[Differentiation, Rules & Rates of Change · تدريب 4] إذا كانت العلاقة الحاكمة هي \\( g(t) = 6t + 6 \\)، فأوجد \\( g(10) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 72 \\)."
+          "en": "<strong>[Practice 4 · Easy]</strong> The derivative sign chart for a smooth function \\( p(t) \\) has critical points at \\( t_1 = -23 \\) and \\( t_2 = 23 \\), with \\( p'(t) < 0 \\) on \\( (-23, 23) \\). Find the length \\( t_2 - t_1 \\) of the interval on which \\( p(t) \\) is strictly decreasing.",
+          "ar": "<strong>[تدريب 4 · Easy]</strong> The derivative sign chart for a smooth function \\( p(t) \\) has critical points at \\( t_1 = -23 \\) and \\( t_2 = 23 \\), with \\( p'(t) < 0 \\) on \\( (-23, 23) \\). Find the length \\( t_2 - t_1 \\) of the interval on which \\( p(t) \\) is strictly decreasing."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differentiation, Rules & Rates of Change</em> and start from \\( p(t) \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( p(t) \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( (-23, 23) \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( (-23, 23) \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
-          "ar": "بالتعويض عن \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). وعندما \\( 6t + 6 = 72 \\) فإن \\( t = \\mathbf{11} \\)."
+          "en": "The length of the interval \\( (-23, 23) \\) is \\( 23 - (-23) = 46 \\).",
+          "ar": "The length of the interval \\( (-23, 23) \\) is \\( 23 - (-23) = 46 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 5 · Hard]</strong> A smooth curve \\( p \\) is defined implicitly by \\( 15t^2 + y^2 = 2635 \\). Find the quantity \\( -y\\dfrac{dy}{dt} \\) at \\( (13, 10) \\).",
+          "ar": "<strong>[تدريب 5 · Hard]</strong> A smooth curve \\( p \\) is defined implicitly by \\( 15t^2 + y^2 = 2635 \\). Find the quantity \\( -y\\dfrac{dy}{dt} \\) at \\( (13, 10) \\)."
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differentiation, Rules & Rates of Change</em> and start from \\( p \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( p \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 30t + 2y\\frac{dy}{dt} = 0 \\implies -y\\frac{dy}{dt} = 15t = 195 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( 30t + 2y\\frac{dy}{dt} = 0 \\implies -y\\frac{dy}{dt} = 15t = 195 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
+        "solution": {
+          "en": "Implicit differentiation gives \\( 30t + 2y\\frac{dy}{dt} = 0 \\implies -y\\frac{dy}{dt} = 15t = 195 \\).",
+          "ar": "Implicit differentiation gives \\( 30t + 2y\\frac{dy}{dt} = 0 \\implies -y\\frac{dy}{dt} = 15t = 195 \\)."
         }
       }
     ]

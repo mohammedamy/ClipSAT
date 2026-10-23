@@ -41,6 +41,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Plane Geometry",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Euclidean Invariants, Locus Equations &amp; Scaling Laws:</strong> In analytic geometry, geometric loci translate into algebraic constraints via Euclidean distance \\(d = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}\\). A circle of center \\((h, k)\\) and radius \\(r\\) satisfies \\((x-h)^2 + (y-k)^2 = r^2\\), and a tangent line at point \\(P\\) is strictly perpendicular to the radius \\(CP\\) (\\(m_{\\text{tan}} \\cdot m_{\\text{rad}} = -1\\)). Under a similarity scale factor \\(k\\), all linear lengths scale by \\(k\\), surface areas scale by \\(k^2\\), and volumes scale by \\(k^3\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
           "type": "triangle",
@@ -281,6 +293,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Plane Geometry)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Inscribed Angles Equal Half the Central Angle &amp; Circle Completion Works:</strong> Given \\(x^2 + y^2 + 2gx + 2fy + c = 0\\), completing the square in \\(x\\) and \\(y\\) simultaneously yields:</p>\\[ (x + g)^2 - g^2 + (y + f)^2 - f^2 + c = 0 \\implies (x + g)^2 + (y + f)^2 = g^2 + f^2 - c \\]<p>Thus the center is \\((-g, -f)\\) and the radius is \\(r = \\sqrt{g^2 + f^2 - c}\\) (requiring \\(g^2 + f^2 > c\\)). In any circle, drawing diameter \\(POQ\\) splits an inscribed angle \\(\\angle APB\\) into two isosceles triangles \\(\\triangle OAP\\) and \\(\\triangle OBP\\) (since \\(OA = OB = OP = r\\)); by the exterior angle theorem, \\(\\angle AOB = 2\\angle APB\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 5.A — Special Right Triangle & Trapezoid Area",
@@ -328,6 +352,83 @@
         }
       },
       {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Plane Geometry)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Reading radius of \\((x-5)^2 + (y+5)^2 = 16\\) as \\(r = 16\\) or center as \\((-5, 5)\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses \\(r^2\\) with \\(r\\) and forgets to flip the signs inside \\((x-h)\\) and \\((y-k)\\).",
+              "ar": null
+            },
+            {
+              "en": "Take the square root and negate the constants: center \\((5, -5)\\), radius \\(r = \\sqrt{16} = 4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using SSA (two sides and a non-included angle) to claim triangle congruence",
+              "ar": null
+            },
+            {
+              "en": "The ambiguous case of the Sine Rule allows two distinct triangles (\\(\\theta\\) and \\(180^\\circ - \\theta\\)).",
+              "ar": null
+            },
+            {
+              "en": "Use valid congruence criteria only: SSS, SAS (included angle), ASA, AAS, or HL/RHS.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Cubing the area ratio \\((A_1/A_2)^3\\) to find the volume ratio of similar solids",
+              "ar": null
+            },
+            {
+              "en": "Area ratio is already \\(k^2\\), so cubing it gives \\(k^6\\) instead of \\(k^3\\).",
+              "ar": null
+            },
+            {
+              "en": "First take the square root to get linear scale factor \\(k = \\sqrt{A_1/A_2}\\), then cube \\(k^3\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Plane Geometry",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Geometric Auxiliary-Line Strategy (ACT Mathematics Test):</strong> Whenever a circle problem includes a tangent line, draw the radius to the point of tangency and mark \\(90^\\circ\\) immediately; whenever it includes a chord, drop the perpendicular bisector from the center to form a right triangle.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "A right circular cylinder has radius 3 cm and height 8 cm. What is its total surface area in terms of \\(\\pi\\)?",
@@ -336,7 +437,21 @@
         "solution": {
           "en": "The total surface area includes the two circular bases and the lateral curved surface:<br>\\[ \\text{TSA} = 2\\pi r^2 + 2\\pi r h = 2\\pi(3^2) + 2\\pi(3)(8) = 18\\pi + 48\\pi = \\mathbf{66\\pi} \\text{ cm}^2 \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Plane Geometry</em> and start from \\(\\pi\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -347,7 +462,21 @@
         "solution": {
           "en": "Let \\(x\\) be the third side. By the Triangle Inequality Theorem, \\(11 - 7 < x < 11 + 7 \\implies 4 < x < 18\\).<br>The perimeter is \\(P = 7 + 11 + x = 18 + x\\).<br>Substituting the strict bounds for \\(x\\):<br>\\[ 18 + 4 < P < 18 + 18 \\implies \\mathbf{22 < P < 36} \\text{ inches} \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Plane Geometry</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -358,7 +487,21 @@
         "solution": {
           "en": "Using the exterior angle method (much faster on the ACT than interior angles):<br>Each exterior angle is supplementary to the interior angle: \\(180^\\circ - 150^\\circ = 30^\\circ\\).<br>Since the exterior angles of any regular polygon sum to \\(360^\\circ\\):<br>\\[ n = \\frac{360^\\circ}{30^\\circ} = \\mathbf{12} \\text{ sides (dodecagon)} \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Plane Geometry</em> and start from \\(150^\\circ\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(180^\\circ - 150^\\circ = 30^\\circ\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -369,7 +512,21 @@
         "solution": {
           "en": "The formula for the area of a circle sector is:<br>\\[ A = \\frac{\\theta}{360^\\circ} \\pi r^2 = \\frac{75}{360} \\pi (12^2) = \\frac{5}{24} \\cdot 144\\pi = 5 \\cdot 6\\pi = \\mathbf{30\\pi} \\text{ cm}^2 \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Plane Geometry</em> and start from \\(75^\\circ\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

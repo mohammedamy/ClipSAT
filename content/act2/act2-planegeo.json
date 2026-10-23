@@ -41,46 +41,30 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Advanced Plane Geometry",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Euclidean Invariants, Locus Equations &amp; Scaling Laws:</strong> In analytic geometry, geometric loci translate into algebraic constraints via Euclidean distance \\(d = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}\\). A circle of center \\((h, k)\\) and radius \\(r\\) satisfies \\((x-h)^2 + (y-k)^2 = r^2\\), and a tangent line at point \\(P\\) is strictly perpendicular to the radius \\(CP\\) (\\(m_{\\text{tan}} \\cdot m_{\\text{rad}} = -1\\)). Under a similarity scale factor \\(k\\), all linear lengths scale by \\(k\\), surface areas scale by \\(k^2\\), and volumes scale by \\(k^3\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Advanced Plane Geometry — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
-          ]
+          "type": "conic_section",
+          "conic": "ellipse",
+          "title": "Advanced Plane Geometry — Analytic Locus & Focal Geometry",
+          "h": 0,
+          "k": 0,
+          "a": 4,
+          "b": 3
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Analytic ellipse x²/16 + y²/9 = 1 showing semi-major axis a = 4, semi-minor axis b = 3, and foci F₁, F₂.",
           "ar": null
         }
       },
@@ -278,6 +262,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Advanced Plane Geometry)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Inscribed Angles Equal Half the Central Angle &amp; Circle Completion Works:</strong> Given \\(x^2 + y^2 + 2gx + 2fy + c = 0\\), completing the square in \\(x\\) and \\(y\\) simultaneously yields:</p>\\[ (x + g)^2 - g^2 + (y + f)^2 - f^2 + c = 0 \\implies (x + g)^2 + (y + f)^2 = g^2 + f^2 - c \\]<p>Thus the center is \\((-g, -f)\\) and the radius is \\(r = \\sqrt{g^2 + f^2 - c}\\) (requiring \\(g^2 + f^2 > c\\)). In any circle, drawing diameter \\(POQ\\) splits an inscribed angle \\(\\angle APB\\) into two isosceles triangles \\(\\triangle OAP\\) and \\(\\triangle OBP\\) (since \\(OA = OB = OP = r\\)); by the exterior angle theorem, \\(\\angle AOB = 2\\angle APB\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 7.A — Area of a Scalene Triangle via Heron's Formula",
@@ -304,11 +300,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example C — Advanced Plane Geometry (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 4 \\) and vertical component \\( \\Delta y = 9 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (4)^2 + (9)^2 = 16 + 81 = \\mathbf{97} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(4)(9) = \\mathbf{18} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> In a circle with center \\( K \\) and radius \\( r = 24 \\), a sector has central angle \\( 60^\\circ \\) and area \\( u\\pi \\). Which of the following is equal to the exact coefficient \\( u(s) \\)?</p><p><strong>Step-by-Step Solution:</strong> The sector area is \\( \\frac{60}{360}\\pi (24^2) = 96\\pi \\), so \\( u = 96 \\).</p>",
           "ar": null
         }
       },
@@ -316,11 +312,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example D — Advanced Plane Geometry (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> A convex pentagon \\( u_{5} \\) has \\( n = 5 \\) sides. Which of the following is equal to the interior angle sum \\( s = (5 - 2) \\times 180 \\)?</p><p><strong>Step-by-Step Solution:</strong> The sum of interior angles is \\( (5 - 2) \\times 180^\\circ = 540^\\circ \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Advanced Plane Geometry)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Reading radius of \\((x-3)^2 + (y+5)^2 = 16\\) as \\(r = 16\\) or center as \\((-3, 5)\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses \\(r^2\\) with \\(r\\) and forgets to flip the signs inside \\((x-h)\\) and \\((y-k)\\).",
+              "ar": null
+            },
+            {
+              "en": "Take the square root and negate the constants: center \\((3, -5)\\), radius \\(r = \\sqrt{16} = 4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using SSA (two sides and a non-included angle) to claim triangle congruence",
+              "ar": null
+            },
+            {
+              "en": "The ambiguous case of the Sine Rule allows two distinct triangles (\\(\\theta\\) and \\(180^\\circ - \\theta\\)).",
+              "ar": null
+            },
+            {
+              "en": "Use valid congruence criteria only: SSS, SAS (included angle), ASA, AAS, or HL/RHS.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Cubing the area ratio \\((A_1/A_2)^3\\) to find the volume ratio of similar solids",
+              "ar": null
+            },
+            {
+              "en": "Area ratio is already \\(k^2\\), so cubing it gives \\(k^6\\) instead of \\(k^3\\).",
+              "ar": null
+            },
+            {
+              "en": "First take the square root to get linear scale factor \\(k = \\sqrt{A_1/A_2}\\), then cube \\(k^3\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Advanced Plane Geometry",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Geometric Auxiliary-Line Strategy (ACT International Subject Test — Math 1):</strong> Whenever a circle problem includes a tangent line, draw the radius to the point of tangency and mark \\(90^\\circ\\) immediately; whenever it includes a chord, drop the perpendicular bisector from the center to form a right triangle.</p>",
           "ar": null
         }
       },
@@ -333,7 +406,21 @@
         "solution": {
           "en": "<p><strong>(a) Vertical height:</strong> Using the Pythagorean relation \\(l^2 = r^2 + h^2\\):<br>\\[ h = \\sqrt{10^2 - 6^2} = \\sqrt{100 - 36} = \\sqrt{64} = \\mathbf{8\\text{ cm}} \\]</p><p><strong>(b) Volume:</strong><br>\\[ V = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi (6^2)(8) = \\frac{1}{3}\\pi (36)(8) = 12 \\times 8\\pi = \\mathbf{96\\pi\\text{ cm}^3} \\approx 301.59\\text{ cm}^3 \\]</p><p><strong>(c) Total surface area:</strong><br>\\[ \\text{TSA} = \\pi r^2 + \\pi r l = \\pi (6^2) + \\pi(6)(10) = 36\\pi + 60\\pi = \\mathbf{96\\pi\\text{ cm}^2} \\approx 301.59\\text{ cm}^2 \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Advanced Plane Geometry</em> and start from \\(h\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(l^2 = r^2 + h^2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -344,7 +431,21 @@
         "solution": {
           "en": "<p><strong>(a) Supplementary property:</strong> Opposite angles of any cyclic quadrilateral sum to \\(180^\\circ\\): \\[ (2x + 15) + (3x - 10) = 180 \\implies 5x + 5 = 180 \\implies 5x = 175 \\implies \\mathbf{x = 35}. \\]</p><p><strong>(b) Angle measure:</strong> Substitute \\(x = 35\\) into \\(\\angle DAB\\): \\[ \\angle DAB = 2(35) + 15 = 70 + 15 = \\mathbf{85^\\circ}. \\] (Check: \\(\\angle DCB = 3(35) - 10 = 105 - 10 = 95^\\circ\\), and \\(85^\\circ + 95^\\circ = 180^\\circ\\)).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Advanced Plane Geometry</em> and start from \\(ABCD\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(180^\\circ\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -355,7 +456,21 @@
         "solution": {
           "en": "<p><strong>Step 1 (Intersecting Chords Theorem):</strong><br>\\[ AX \\cdot XB = CX \\cdot XD \\]\\[ 4 \\times 9 = 3 \\times XD \\implies 36 = 3 \\cdot XD \\implies XD = \\frac{36}{3} = \\mathbf{12\\text{ cm}} \\]</p><p><strong>Step 2 (Chord Length):</strong><br>\\[ CD = CX + XD = 3 + 12 = \\mathbf{15\\text{ cm}} \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Advanced Plane Geometry</em> and start from \\(AB\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( AX \\cdot XB = CX \\cdot XD \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -366,7 +481,21 @@
         "solution": {
           "en": "<p><strong>Step 1 (Apothem):</strong> A regular hexagon is composed of 6 equilateral triangles of side length \\(s = 8\\). The apothem is the altitude of one equilateral triangle:<br>\\[ a = s \\cos(30^\\circ) = 8 \\left(\\frac{\\sqrt{3}}{2}\\right) = \\mathbf{4\\sqrt{3}\\text{ cm}} \\approx 6.928\\text{ cm} \\]</p><p><strong>Step 2 (Area):</strong> Using the perimeter \\(P = 6 \\times 8 = 48\\text{ cm}\\):<br>\\[ A = \\frac{1}{2} a P = \\frac{1}{2} (4\\sqrt{3})(48) = 24 \\times 4\\sqrt{3} = \\mathbf{96\\sqrt{3}\\text{ cm}^2} \\approx 166.28\\text{ cm}^2 \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Advanced Plane Geometry</em> and start from \\(s = 8\\text{ cm}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(s = 8\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

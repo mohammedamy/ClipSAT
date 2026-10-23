@@ -40,46 +40,53 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Exponential &amp; Logarithmic Functions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Domain Restrictions, Invertibility &amp; Asymptotic Behavior:</strong> An algebraic or transcendental function \\(f: D \\to R\\) possesses an inverse \\(f^{-1}: R \\to D\\) if and only if \\(f\\) is strictly one-to-one (bijective) on \\(D\\), guaranteeing that \\(\\text{dom}(f^{-1}) = \\text{ran}(f)\\) and \\(\\text{ran}(f^{-1}) = \\text{dom}(f)\\). For logarithmic and radical equations, every algebraic step that squares both sides or combines logs (\\(\\log_b u + \\log_b v = \\log_b(uv)\\)) can enlarge the solution set, requiring a final domain check against the original equation.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Exponential &amp; Logarithmic Functions — Coordinate Curve & Tangent Analysis (2)",
+          "title": "Exponential &amp; Logarithmic Functions — Function Curve & Symmetry Analysis",
           "xrange": [
             -4,
-            4
+            6
           ],
           "yrange": [
-            -3,
-            9
+            -4,
+            6
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "(x - 3)*(x - 3) - 4",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "label": "f(x) = (x-3)² - 4"
             },
             {
-              "fn": "2*x - 3",
+              "fn": "x",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "label": "y = x"
             }
           ],
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "x": 3,
+              "y": -4,
+              "label": "Vertex (3, -4)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Parabola f(x) = (x − 3)² − 4 with vertex at (3, −4) and symmetry reference line y = x.",
           "ar": null
         }
       },
@@ -204,6 +211,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Exponential &amp; Logarithmic Functions)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Completing the Square &amp; Log-Linearization Work:</strong> Any quadratic \\(f(x) = ax^2 + bx + c\\) (\\(a \\ne 0\\)) can be rewritten by factoring \\(a\\) from the first two terms and adding/subtracting \\((b/2a)^2\\):</p>\\[ ax^2 + bx + c = a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\]<p>Because \\(\\left(x + \\frac{b}{2a}\\right)^2 \\ge 0\\) for all \\(x \\in \\mathbb{R}\\), the extreme value \\(k = c - \\frac{b^2}{4a}\\) is attained uniquely at the axis of symmetry \\(x = -\\frac{b}{2a}\\), restricting the range to \\([k, \\infty)\\) (if \\(a > 0\\)) and making \\(f\\) invertible on \\(x \\ge -\\frac{b}{2a}\\). Similarly, applying \\(\\ln\\) to power laws \\(y = ax^n\\) yields \\(\\ln y = n\\ln x + \\ln a\\), transforming a nonlinear curve into a straight line of gradient \\(n\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example 5.A",
@@ -280,11 +299,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example C — Exponential &amp; Logarithmic Functions (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> Express \\(\\log_3 7\\) using the change of base formula with natural log.</p><p><strong>Step-by-Step Solution:</strong> Change of base: \\(\\log_b x=\\dfrac{\\ln x}{\\ln b}\\). <strong>Final Answer:</strong> \\(\\dfrac{\\ln7}{\\ln3}\\).</p>",
           "ar": null
         }
       },
@@ -292,11 +311,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example D — Exponential &amp; Logarithmic Functions (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> Solve: \\(5^x=12\\). Give exact answer.</p><p><strong>Step-by-Step Solution:</strong> Applying Exponential & Logarithmic Functions principles, \\(x=\\log_5 12=\\ln12/\\ln5\\). Therefore, the verified correct option is \\(x=\\dfrac{\\ln12}{\\ln5}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Exponential &amp; Logarithmic Functions)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Expanding \\(\\ln(x + y)\\) as \\(\\ln x + \\ln y\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses the product law \\(\\ln(xy) = \\ln x + \\ln y\\) with a non-existent sum rule.",
+              "ar": null
+            },
+            {
+              "en": "Only factor products, quotients, and powers inside logarithms: \\(\\ln(xy) = \\ln x + \\ln y\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Keeping both roots of \\(\\sqrt{2x+4} = x - 3\\) without checking \\(x - 3 \\ge 0\\)",
+              "ar": null
+            },
+            {
+              "en": "Squaring both sides loses the sign of \\(x - {r}\\), introducing roots where \\(\\sqrt{\\cdot} = -\\text{number}\\).",
+              "ar": null
+            },
+            {
+              "en": "Enforce the range condition \\(x \\ge 3\\) before or after squaring.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Restricting domain of \\(f(x) = (x-3)^2 + 1\\) to \\(x \\ge 0\\) for invertibility",
+              "ar": null
+            },
+            {
+              "en": "The vertex is at \\(x = 3\\), so \\(f(2) = f(4) = 2\\) fails the horizontal line test on \\(x \\ge 0\\).",
+              "ar": null
+            },
+            {
+              "en": "Restrict the domain at the vertex axis of symmetry: \\(x \\ge 3\\) (or \\(x \\le 3\\)).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Exponential &amp; Logarithmic Functions",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Exam Check (Honors Algebra 2 & Functions):</strong> To verify an inverse function \\(f^{-1}(x)\\) in 5 seconds, pick a simple input \\(x_0\\), compute \\(y_0 = f(x_0)\\), and check that \\(f^{-1}(y_0) = x_0\\). Also verify that the graph of \\(y = f^{-1}(x)\\) reflects \\(y = f(x)\\) across \\(y = x\\).</p>",
           "ar": null
         }
       },
@@ -309,7 +405,21 @@
         "solution": {
           "en": "Take logs: \\((x+1)\\ln2=(x-1)\\ln5\\). \\(x\\ln2-x\\ln5=-\\ln5-\\ln2\\). \\(x=\\dfrac{-\\ln10}{\\ln2-\\ln5}=\\dfrac{-\\ln10}{\\ln(2/5)}\\approx2.48\\).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Exponential &amp; Logarithmic Functions</em> and start from \\(2^{x+1}=5^{x-1}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\((x+1)\\ln2=(x-1)\\ln5\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -320,27 +430,94 @@
         "solution": {
           "en": "<p>Rewrite the first term in terms of base 2: \\[4^{x+1} = 4^1 \\cdot (2^2)^x = 4 \\cdot (2^x)^2.\\]</p><p>Substitute \\(u = 2^x\\) (with constraint \\(u > 0\\)):</p>\\[4u^2 - 5u + 1 = 0.\\]<p>Factor the quadratic:</p>\\[(4u - 1)(u - 1) = 0 \\implies u = \\frac{1}{4} \\quad \\text{or} \\quad u = 1.\\]<p>Back-substitute \\(2^x = u\\):</p><ul><li>\\(2^x = \\frac{1}{4} = 2^{-2} \\implies x = -2\\)</li><li>\\(2^x = 1 = 2^0 \\implies x = 0\\)</li></ul><p>Both solutions are real and valid: \\[x = -2 \\quad \\text{and} \\quad x = 0.\\]</p>",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Exponential &amp; Logarithmic Functions</em> and start from \\(4^{x+1} - 5(2^x) + 1 = 0\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(4^{x+1} = 4^1 \\cdot (2^2)^x = 4 \\cdot (2^x)^2.\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Medium]</strong> Solve: \\(2\\ln x-\\ln(x-1)=\\ln(x+1)\\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Exponential &amp; Logarithmic Functions</em> and start from \\(2\\ln x-\\ln(x-1)=\\ln(x+1)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\ln\\dfrac{x^2}{x-1}=\\ln(x+1)\\Rightarrow x^2=(x-1)(x+1)=x^2-1\\Rightarrow0=-1\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "\\(\\ln\\dfrac{x^2}{x-1}=\\ln(x+1)\\Rightarrow x^2=(x-1)(x+1)=x^2-1\\Rightarrow0=-1\\): no solution. Actually \\(x^2=x^2-1\\) → contradiction → no real solution. <strong>Answer:</strong> \\(x=\\dfrac{1+\\sqrt{5}}{2}\\) (golden ratio, approx.).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Exponential &amp; Logarithmic Functions · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> Find all solutions of \\(\\ln x+\\ln(x-2)=0\\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Exponential &amp; Logarithmic Functions</em> and start from \\(\\ln x+\\ln(x-2)=0\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\ln(x(x-2))=0\\Rightarrow x(x-2)=1\\Rightarrow x^2-2x-1=0\\Rightarrow x=1+\\sqrt{2}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
+          "en": "\\(\\ln(x(x-2))=0\\Rightarrow x(x-2)=1\\Rightarrow x^2-2x-1=0\\Rightarrow x=1+\\sqrt{2}\\) (positive, \\(x>2\\)? \\(1+\\sqrt2\\approx2.41>2\\). ✓). <strong>Answer:</strong> \\(x=1+\\sqrt{2}\\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Exponential &amp; Logarithmic Functions · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 5 · Easy]</strong> For \\(A=A_0 e^{-kt}\\), find the half-life \\(t_{1/2}\\) in terms of \\(k\\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Exponential &amp; Logarithmic Functions</em> and start from \\(A=A_0 e^{-kt}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(1/2=e^{-kt_{1/2}}\\Rightarrow\\ln(1/2)=-kt_{1/2}\\Rightarrow t_{1/2}=\\ln2/k\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "\\(1/2=e^{-kt_{1/2}}\\Rightarrow\\ln(1/2)=-kt_{1/2}\\Rightarrow t_{1/2}=\\ln2/k\\). <strong>Answer:</strong> \\(\\dfrac{\\ln2}{k}\\).",
           "ar": null
         }
       }

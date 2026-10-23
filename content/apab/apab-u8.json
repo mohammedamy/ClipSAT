@@ -39,44 +39,20 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Unit 8 · Applications of Integration — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
-          ]
+          "type": "slope_field",
+          "title": "Unit 8 · Applications of Integration — Slope Field & Particular Solution Trajectory",
+          "fn": "x - y",
+          "xmin": -3,
+          "xmax": 3,
+          "ymin": -3,
+          "ymax": 3,
+          "solution": {
+            "x0": 0,
+            "y0": 1
+          }
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Slope field for dy/dx = x − y with the integral curve passing through initial condition (0, 1).",
           "ar": null
         }
       },
@@ -84,43 +60,21 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Unit 8 · Applications of Integration — Coordinate Curve & Tangent Analysis (1)",
-          "xrange": [
-            -4,
+          "fns": [
+            "x**2 + 2"
+          ],
+          "xlim": [
+            -1,
             4
           ],
-          "yrange": [
-            -3,
-            9
+          "ylim": [
+            0,
+            12
           ],
-          "fns": [
-            {
-              "fn": "x*x - 1",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 1"
-            },
-            {
-              "fn": "2*x - 2",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": 0,
-              "label": "(1, 0)"
-            },
-            {
-              "x": 0,
-              "y": -1,
-              "label": "(0, -1)"
-            }
-          ]
+          "points": []
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 1 and its instantaneous tangent line at x = 1.",
+          "en": "Unit 8 · Applications of Integration — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Unit 8 · Applications of Integration.",
           "ar": null
         }
       },
@@ -279,6 +233,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Unit 8 · Applications of Integration)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example · MVT for Integrals & Curve Intersections",
@@ -293,11 +259,100 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example B — Unit 8 · Applications of Integration (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> Let the accumulation function \\( p(t) \\) be defined by \\( p(t) = \\displaystyle\\int_0^{t} (6t^2 + 7)\\,dt \\). Which of the following equals the derivative \\( p'(14) \\)?</p><p><strong>Step-by-Step Solution:</strong> By the Fundamental Theorem of Calculus, \\( p'(t) = 6t^2 + 7 \\), giving \\( p'(14) = 1183 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Exam Traps — Unit 8 · Applications of Integration",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. Adding \\(+C\\) Only After Exponentiating in Separable ODEs:</strong> In \\(\\dfrac{dy}{dx} = 3xy\\), integrating gives \\(\\ln|y| = \\tfrac{3}{2}x^2 + C \\implies y = Ae^{3x^2/2}\\) where \\(A = \\pm e^C\\). Writing \\(y = e^{3x^2/2} + C\\) is a fatal algebraic error that forfeits all follow-up marks on College Board AP Calculus AB.</p><p><strong>2. Forgetting to Transform Limits in \\(u\\)-Substitution:</strong> In definite integrals \\(\\int_a^b f(g(x))g'(x)\\,dx\\), you must replace the limits \\(x = a, b\\) with \\(u = g(a), g(b)\\) immediately.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 8 · Applications of Integration)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Writing \\(\\ln|y| = x^2 + C \\implies y = e^{x^2} + C\\)",
+              "ar": null
+            },
+            {
+              "en": "Exponentiation distributes over addition as multiplication (\\(e^{a+b} = e^a e^b\\)), not addition.",
+              "ar": null
+            },
+            {
+              "en": "Write \\(y = e^{x^2 + C} = Ae^{x^2}\\) and solve for \\(A\\) using the initial condition.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Leaving original \\(x\\)-limits on a \\(u\\)-substituted definite integral",
+              "ar": null
+            },
+            {
+              "en": "Evaluates the antiderivative \\(F(u)\\) at \\(x\\)-values instead of \\(u(x)\\)-values.",
+              "ar": null
+            },
+            {
+              "en": "Convert bounds immediately: \\(u_{\\text{low}} = u(a)\\) and \\(u_{\\text{high}} = u(b)\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing total distance as \\(\\left|\\int_{t_1}^{t_2} v(t)\\,dt\\right|\\)",
+              "ar": null
+            },
+            {
+              "en": "Cancels forward and backward motion (net displacement) instead of accumulating total path length.",
+              "ar": null
+            },
+            {
+              "en": "Split the integral at every root where \\(v(t) = 0\\) and integrate \\(|v(t)|\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Unit 8 · Applications of Integration",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Quick Verification Trick (College Board AP Calculus AB):</strong> For any indefinite integral \\(\\int f(x)\\,dx = F(x) + C\\), differentiate your answer \\(F'(x)\\) mentally—especially the coefficient \\(1/k\\) from chain-rule reversal \\(\\int e^{kx}\\,dx = \\tfrac{1}{k}e^{kx} + C\\)—before moving on.</p>",
           "ar": null
         }
       },
@@ -310,7 +365,21 @@
         "solution": {
           "en": "<p>Find intersections in terms of \\(y\\): \\[ y^2 = y + 2 \\implies y^2 - y - 2 = 0 \\implies (y - 2)(y + 1) = 0 \\implies y = -1, \\; y = 2 \\] For \\(y \\in (-1, 2)\\), test \\(y = 0\\): \\(x_{\\text{line}} = 2 > x_{\\text{parabola}} = 0\\). The right curve is \\(x = y + 2\\) and the left curve is \\(x = y^2\\). Integrate with respect to \\(y\\): \\[ A = \\int_{-1}^2 \\left[ (y + 2) - y^2 \\right]\\,dy = \\left[ \\frac{y^2}{2} + 2y - \\frac{y^3}{3} \\right]_{-1}^2 \\] At \\(y = 2\\): \\(2 + 4 - \\frac{8}{3} = 6 - \\frac{8}{3} = \\frac{10}{3}\\).<br>At \\(y = -1\\): \\(\\frac{1}{2} - 2 + \\frac{1}{3} = -\\frac{3}{2} + \\frac{1}{3} = -\\frac{7}{6}\\).<br>Subtracting: \\[ A = \\frac{10}{3} - \\left(-\\frac{7}{6}\\right) = \\frac{20}{6} + \\frac{7}{6} = \\mathbf{\\frac{27}{6} = \\frac{9}{2}} = 4.5. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 8 · Applications of Integration</em> and start from \\(x = y^2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(y\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -353,7 +422,21 @@
         "solution": {
           "en": "<p>Base side length: \\(s(x) = \\sqrt{x} - 0 = \\sqrt{x}\\).<br>Equilateral triangle area formula: \\[ A(x) = \\frac{\\sqrt{3}}{4}[s(x)]^2 = \\frac{\\sqrt{3}}{4}(\\sqrt{x})^2 = \\frac{\\sqrt{3}}{4}x \\] Integrate from \\(x = 0\\) to \\(x = 9\\): \\[ V = \\int_0^9 \\frac{\\sqrt{3}}{4}x\\,dx = \\frac{\\sqrt{3}}{4} \\left[ \\frac{x^2}{2} \\right]_0^9 = \\frac{\\sqrt{3}}{4} \\cdot \\frac{81}{2} = \\mathbf{\\frac{81\\sqrt{3}}{8}} \\approx 17.537. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 8 · Applications of Integration</em> and start from \\(y = \\sqrt{x}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(s(x) = \\sqrt{x} - 0 = \\sqrt{x}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -396,16 +479,44 @@
         "solution": {
           "en": "<p>1. The region has boundaries \\(x = y^2\\) (right boundary), \\(x = 0\\) (left boundary / y-axis), and \\(y\\) runs from \\(y = 0\\) to \\(y = 2\\).<br>2. The axis of rotation is the vertical line \\(x = -1\\). Slicing perpendicular to the axis of rotation requires integration with respect to \\(y\\) (horizontal washers).<br>3. Determine outer and inner radii:<ul><li>Outer radius (distance from \\(x = -1\\) to furthest curve \\(x = y^2\\)): \\[ R(y) = y^2 - (-1) = y^2 + 1 \\]</li><li>Inner radius (distance from \\(x = -1\\) to closer curve \\(x = 0\\)): \\[ r(y) = 0 - (-1) = 1 \\]</li></ul>4. Set up the washer volume integral: \\[ V = \\mathbf{\\pi \\int_0^2 \\left( (y^2 + 1)^2 - 1 \\right)\\,dy} = \\pi \\int_0^2 (y^4 + 2y^2)\\,dy. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 8 · Applications of Integration</em> and start from \\(R\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x = y^2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Unit 8 · Applications of Integration · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> Selected values of a continuous function \\( p(t) \\) on \\( [0, 4] \\) are shown in the table below. Which of the following equals the trapezoidal sum approximation of \\( \\displaystyle\\int_0^{4} p(t)\\,dt \\) with \\( n = 2 \\) equal subintervals?",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 8 · Applications of Integration</em> and start from \\( p(t) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\Delta t = 2 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "With step \\( \\Delta t = 2 \\), the trapezoidal sum is \\( \\frac{2}{2}(19 + 2(47) + 103) = 216 \\).",
           "ar": null
         }
       }

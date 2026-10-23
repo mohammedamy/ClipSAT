@@ -38,44 +38,20 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Unit 7BC · Logistic Models & Euler's Method — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
-          ]
+          "type": "slope_field",
+          "title": "Unit 7BC · Logistic Models & Euler's Method — Slope Field & Particular Solution Trajectory",
+          "fn": "x - y",
+          "xmin": -3,
+          "xmax": 3,
+          "ymin": -3,
+          "ymax": 3,
+          "solution": {
+            "x0": 0,
+            "y0": 1
+          }
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Slope field for dy/dx = x − y with the integral curve passing through initial condition (0, 1).",
           "ar": null
         }
       },
@@ -83,43 +59,25 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Unit 7BC · Logistic Models & Euler's Method — Coordinate Curve & Tangent Analysis (1)",
           "xrange": [
-            -4,
-            4
+            0,
+            10
           ],
           "yrange": [
-            -3,
-            9
+            0,
+            1000
           ],
           "fns": [
             {
-              "fn": "x*x - 1",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 1"
-            },
-            {
-              "fn": "2*x - 2",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": 0,
-              "label": "(1, 0)"
-            },
-            {
-              "x": 0,
-              "y": -1,
-              "label": "(0, -1)"
+              "fn": "100*Math.exp(0.3*(x))",
+              "color": "#2f9e44",
+              "lx": 8,
+              "ly": 850
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 1 and its instantaneous tangent line at x = 1.",
+          "en": "Unit 7BC · Logistic Models & Euler's Method — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Unit 7BC · Logistic Models & Euler's Method.",
           "ar": null
         }
       },
@@ -132,6 +90,18 @@
         },
         "body": {
           "en": "<p><strong>Theorem 1 · General Solution:</strong> The logistic differential equation: \\[ \\frac{dP}{dt} = kP\\left(1 - \\frac{P}{L}\\right) = \\frac{k}{L}P(L - P) \\] has the exact particular solution: \\[ P(t) = \\frac{L}{1 + C e^{-kt}}, \\qquad \\text{where } C = \\frac{L - P_0}{P_0}. \\]</p><p><em>Proof via Separation of Variables:</em> \\[ \\frac{1}{P(L - P)}\\,dP = \\frac{k}{L}\\,dt. \\] Decompose using partial fractions: \\(\\frac{1}{P(L-P)} = \\frac{1/L}{P} + \\frac{1/L}{L-P}\\). Multiply by \\(L\\): \\[ \\left( \\frac{1}{P} + \\frac{1}{L - P} \\right) dP = k\\,dt. \\] Integrate both sides: \\[ \\ln|P| - \\ln|L - P| = kt + C_1 \\implies \\ln\\left|\\frac{P}{L - P}\\right| = kt + C_1. \\] Exponentiate: \\[ \\frac{P}{L - P} = A e^{kt} \\implies P = (L - P)Ae^{kt} = L A e^{kt} - P A e^{kt}. \\] \\[ P(1 + A e^{kt}) = L A e^{kt} \\implies P(t) = \\frac{L A e^{kt}}{1 + A e^{kt}} = \\frac{L}{1 + C e^{-kt}}, \\quad \\text{where } C = \\frac{1}{A}. \\quad \\blacksquare \\]</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>Theorem 2 · Inflection Point Proof:</strong> The growth rate \\(\\frac{dP}{dt}\\) is maximized, and the population curve has a point of inflection, strictly when \\(P = \\frac{L}{2}\\).</p><p><em>Proof:</em> Differentiate \\(\\frac{dP}{dt} = kP - \\frac{k}{L}P^2\\) with respect to \\(t\\) using the Chain Rule: \\[ \\frac{d^2P}{dt^2} = \\left( k - \\frac{2k}{L}P \\right) \\frac{dP}{dt} = k\\left( 1 - \\frac{2P}{L} \\right) \\frac{dP}{dt}. \\] Set \\(\\frac{d^2P}{dt^2} = 0\\). Assuming ongoing growth (\\(\\frac{dP}{dt} \\neq 0\\)): \\[ 1 - \\frac{2P}{L} = 0 \\implies 2P = L \\implies \\mathbf{P = \\frac{L}{2}}. \\] For \\(P < L/2\\), \\(1 - 2P/L > 0 \\implies P'' > 0\\) (concave up). For \\(P > L/2\\), \\(1 - 2P/L < 0 \\implies P'' < 0\\) (concave down). The second derivative changes sign, confirming an inflection point at \\(P = L/2\\). \\(\\blacksquare\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Unit 7BC · Logistic Models & Euler's Method)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
           "ar": null
         }
       },
@@ -151,11 +121,100 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example B — Unit 7BC · Logistic Models & Euler's Method (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> In gradient descent on loss \\( C(q) \\), parameter \\( q_0 = 38 \\) is updated with learning rate \\( \\eta = 0.1 \\) and gradient \\( \\nabla C(q_0) = 60 \\). Which of the following is the updated parameter \\( q_1 = q_0 - \\eta \\nabla C(q_0) \\)?</p><p><strong>Step-by-Step Solution:</strong> Computing \\( q_1 = 38 - 0.1(60) = 32 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Exam Traps — Unit 7BC · Logistic Models & Euler's Method",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. Adding \\(+C\\) Only After Exponentiating in Separable ODEs:</strong> In \\(\\dfrac{dy}{dx} = 3xy\\), integrating gives \\(\\ln|y| = \\tfrac{3}{2}x^2 + C \\implies y = Ae^{3x^2/2}\\) where \\(A = \\pm e^C\\). Writing \\(y = e^{3x^2/2} + C\\) is a fatal algebraic error that forfeits all follow-up marks on College Board AP Calculus BC.</p><p><strong>2. Forgetting to Transform Limits in \\(u\\)-Substitution:</strong> In definite integrals \\(\\int_a^b f(g(x))g'(x)\\,dx\\), you must replace the limits \\(x = a, b\\) with \\(u = g(a), g(b)\\) immediately.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 7BC · Logistic Models & Euler's Method)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Writing \\(\\ln|y| = x^2 + C \\implies y = e^{x^2} + C\\)",
+              "ar": null
+            },
+            {
+              "en": "Exponentiation distributes over addition as multiplication (\\(e^{a+b} = e^a e^b\\)), not addition.",
+              "ar": null
+            },
+            {
+              "en": "Write \\(y = e^{x^2 + C} = Ae^{x^2}\\) and solve for \\(A\\) using the initial condition.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Leaving original \\(x\\)-limits on a \\(u\\)-substituted definite integral",
+              "ar": null
+            },
+            {
+              "en": "Evaluates the antiderivative \\(F(u)\\) at \\(x\\)-values instead of \\(u(x)\\)-values.",
+              "ar": null
+            },
+            {
+              "en": "Convert bounds immediately: \\(u_{\\text{low}} = u(a)\\) and \\(u_{\\text{high}} = u(b)\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing total distance as \\(\\left|\\int_{t_1}^{t_2} v(t)\\,dt\\right|\\)",
+              "ar": null
+            },
+            {
+              "en": "Cancels forward and backward motion (net displacement) instead of accumulating total path length.",
+              "ar": null
+            },
+            {
+              "en": "Split the integral at every root where \\(v(t) = 0\\) and integrate \\(|v(t)|\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Unit 7BC · Logistic Models & Euler's Method",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Quick Verification Trick (College Board AP Calculus BC):</strong> For any indefinite integral \\(\\int f(x)\\,dx = F(x) + C\\), differentiate your answer \\(F'(x)\\) mentally—especially the coefficient \\(1/k\\) from chain-rule reversal \\(\\int e^{kx}\\,dx = \\tfrac{1}{k}e^{kx} + C\\)—before moving on.</p>",
           "ar": null
         }
       },
@@ -168,7 +227,21 @@
         "solution": {
           "en": "<p>Factor the differential equation: \\[ \\frac{dP}{dt} = 0.0001 P (500 - P). \\] The carrying capacity is \\(L = 500\\). Since \\(P_0 = 150 > 0\\), as \\(t \\to \\infty\\), the population approaches its carrying capacity asymptotically: \\[ \\lim_{t\\to\\infty} P(t) = \\mathbf{500}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 7BC · Logistic Models & Euler's Method</em> and start from \\(\\frac{dP}{dt} = 0.05 P - 0.0001 P^2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\frac{dP}{dt} = 0.0001 P (500 - P). \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -211,7 +284,21 @@
         "solution": {
           "en": "<p><strong>Step 1 (from \\(x=0\\) to \\(0.2\\)):</strong> \\(x_0 = 0, y_0 = 1\\). Slope \\(m_0 = 0 + 2(1) = 2\\). \\[ y_1 = 1 + (2)(0.2) = 1 + 0.4 = 1.4. \\]</p><p><strong>Step 2 (from \\(x=0.2\\) to \\(0.4\\)):</strong> \\(x_1 = 0.2, y_1 = 1.4\\). Slope \\(m_1 = 0.2 + 2(1.4) = 0.2 + 2.8 = 3.0\\). \\[ y_2 = 1.4 + (3.0)(0.2) = 1.4 + 0.6 = \\mathbf{2.0}. \\] Approximate value \\(y(0.4) \\approx \\mathbf{2.0}\\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 7BC · Logistic Models & Euler's Method</em> and start from \\(\\frac{dy}{dx} = x + 2y\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x=0\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -372,16 +459,44 @@
         "solution": {
           "en": "<p><strong>Step 1 · Euler Iteration:</strong><br>• \\((x_0, y_0) = (1, -1)\\). Slope \\(m_0 = (1)(-1)^2 = 1\\).<br>\\(y_1 = -1 + (1)(0.5) = -0.5\\). Point \\((1.5, -0.5)\\).<br>• \\((x_1, y_1) = (1.5, -0.5)\\). Slope \\(m_1 = (1.5)(-0.5)^2 = 1.5(0.25) = 0.375\\).<br>\\(y_2 = -0.5 + (0.375)(0.5) = -0.5 + 0.1875 = \\mathbf{-0.3125}\\).</p><p><strong>Step 2 · Second Derivative Evaluation:</strong> \\[ \\frac{d^2y}{dx^2} = \\frac{d}{dx}[x y^2] = (1)y^2 + x(2y y') = y^2 + 2xy(x y^2) = y^2 + 2x^2 y^3. \\] At \\((1, -1)\\): \\[ \\left. \\frac{d^2y}{dx^2} \\right|_{(1, -1)} = (-1)^2 + 2(1)^2(-1)^3 = 1 + 2(-1) = 1 - 2 = -1 < 0. \\] Since \\(\\frac{d^2y}{dx^2} < 0\\), the curve is locally <strong>concave down</strong>, so the approximation is an <strong>overestimate</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 7BC · Logistic Models & Euler's Method</em> and start from \\(y = f(x)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\((x_0, y_0) = (1, -1)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Unit 7BC · Logistic Models & Euler's Method · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> Principal Component Analysis on covariance matrix \\( \\Sigma_{L} \\) yields eigenvalues \\( \\lambda_1 = 78 \\) and \\( \\lambda_2 = 22 \\). Which of the following is the percentage of variance \\( C_{q} \\) explained by the first principal component?",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 7BC · Logistic Models & Euler's Method</em> and start from \\( \\Sigma_{L} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\frac{78}{78+22} \\times 100\\% = 78\\% \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "The percentage explained is \\( \\frac{78}{78+22} \\times 100\\% = 78\\% \\).",
           "ar": null
         }
       }

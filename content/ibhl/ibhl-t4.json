@@ -383,6 +383,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Statistics &amp; Probability (HL))",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Variance Scales as \\(a^2\\) and Independent Variances Always Add:</strong> By definition, \\(\\operatorname{Var}(Y) = \\mathbb{E}[(Y - \\mu_Y)^2]\\). For \\(Y = aX - bW\\) with independent \\(X, W\\), subtracting its mean \\(\\mu_Y = a\\mu_X - b\\mu_W\\) gives:</p>\\[ \\operatorname{Var}(aX - bW) = \\mathbb{E}\\!\\left[(a(X - \\mu_X) - b(W - \\mu_W))^2\\right] = a^2\\mathbb{E}[(X-\\mu_X)^2] - 2ab\\,\\operatorname{Cov}(X,W) + b^2\\mathbb{E}[(W-\\mu_W)^2] \\]<p>Because independence implies \\(\\operatorname{Cov}(X, W) = 0\\), the cross term vanishes and \\((-b)^2 = +b^2\\), proving \\(\\operatorname{Var}(aX - bW) = a^2\\operatorname{Var}(X) + b^2\\operatorname{Var}(W)\\). Uncertainty compounds whether random variables are added or subtracted.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example 4.1 — Continuous Random Variable Calculus",
@@ -497,6 +509,83 @@
         }
       },
       {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Statistics &amp; Probability (HL))",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Writing \\(\\operatorname{Var}(X - Y) = \\sigma_X^2 - \\sigma_Y^2\\)",
+              "ar": null
+            },
+            {
+              "en": "Produces smaller or even negative variance for the difference of independent variables.",
+              "ar": null
+            },
+            {
+              "en": "Always add variances of independent variables: \\(\\sigma_{X-Y}^2 = \\sigma_X^2 + \\sigma_Y^2\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using \\(\\sigma / n\\) instead of \\(\\sigma / \\sqrt{n}\\) for \\(\\bar{X}\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses the variance of the sample mean \\(\\sigma^2/n\\) with its standard error.",
+              "ar": null
+            },
+            {
+              "en": "Take the square root: \\(\\text{SE}(\\bar{X}) = \\sigma / \\sqrt{n}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Accepting \\(H_0\\) with certainty when \\(p > \\alpha\\)",
+              "ar": null
+            },
+            {
+              "en": "Absence of sufficient evidence against \\(H_0\\) does not prove \\(H_0\\) is true.",
+              "ar": null
+            },
+            {
+              "en": "Write in context: \"There is insufficient evidence at the \\(\\alpha\\) level to reject \\(H_0\\).\"",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Statistics &amp; Probability (HL)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Marking Tip (IB Diploma Mathematics: AA / AI Higher Level (Papers 1, 2 & 3)):</strong> Always state the distribution parameters explicitly (e.g., \\(X \\sim \\operatorname{N}(\\mu, \\sigma^2)\\) or \\(\\bar{X} \\sim \\operatorname{N}(\\mu, \\sigma^2/n)\\)) and sketch a quick shaded bell curve before standardizing to \\(z = \\dfrac{x - \\mu}{\\sigma}\\). This secures the method mark even if a rounding slip occurs later.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "A continuous random variable \\(X\\) has probability density function \\(f(x) = 2e^{-2x}\\) for \\(x \\ge 0\\) and \\(0\\) elsewhere. Find the cumulative distribution function \\(F(x)\\) and determine the exact median of \\(X\\).",
@@ -505,38 +594,94 @@
         "solution": {
           "en": "1. Find CDF for \\(x \\ge 0\\): \\[ F(x) = \\int_0^x 2e^{-2t}\\,dt = \\left[ -e^{-2t} \\right]_0^x = 1 - e^{-2x}. \\] 2. Set \\(F(m) = 0.5\\) to find the median \\(m\\): \\[ 1 - e^{-2m} = 0.5 \\implies e^{-2m} = 0.5 \\implies -2m = \\ln(0.5) = -\\ln 2 \\implies m = \\frac{\\ln 2}{2}. \\]",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics &amp; Probability (HL)</em> and start from \\(X\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x \\ge 0\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 2 · Hard]</strong> A two-way table of \\( N = 82 \\) observations on energy source records cell counts \\( E_1 = 20 \\) for (Region 1, Solar) and \\( L_2 = 14 \\) for (Region 2, Wind). Find the diagonal sum \\( p = E_1 + L_2 \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics &amp; Probability (HL)</em> and start from \\( N = 82 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 20 + 14 = 34 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "Summing the two frequencies gives \\( 20 + 14 = 34 \\). <strong>[M1] [A1]</strong>",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Statistics &amp; Probability (HL) · Practice 2] If the governing relation for this system is \\( g(t) = 4t + 4 \\), evaluate \\( g(6) \\) and find the inverse input \\( t \\) when \\( g(t) = 32 \\).",
+          "en": "<strong>[Practice 3 · Hard]</strong> If \\(\\text{Var}(X)=\\dfrac{5}{2}\\), find \\(\\text{Var}(4X - 5)\\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics &amp; Probability (HL)</em> and start from \\(\\text{Var}(X)=\\dfrac{5}{2}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\text{Var}(4X - 5)=4^2\\text{Var}(X)=16\\times\\dfrac{5}{2}=40 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). Setting \\( 4t + 4 = 32 \\) gives \\( 4t = 28 \\implies t = \\mathbf{7} \\).",
+          "en": "Working through this statistics step: \\( \\text{Var}(4X - 5)=4^2\\text{Var}(X)=16\\times\\dfrac{5}{2}=40 \\) <strong>[M1] [A1]</strong> <strong>Answer:</strong> \\(40\\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Statistics &amp; Probability (HL) · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> A two-way table of \\( N = 84 \\) observations on programming course records cell counts \\( E_1 = 22 \\) for (Year 1, Python) and \\( L_2 = 26 \\) for (Year 2, Java). Find the diagonal sum \\( p = E_1 + L_2 \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics &amp; Probability (HL)</em> and start from \\( N = 84 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 22 + 26 = 48 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Statistics &amp; Probability (HL) · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Summing the two frequencies gives \\( 22 + 26 = 48 \\). <strong>[M1] [A1]</strong>",
           "ar": null
         }
       }

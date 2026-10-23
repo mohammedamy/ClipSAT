@@ -586,6 +586,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Limits &amp; Continuity)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Differentiability Implies Continuity &amp; How Implicit Differentiation Works:</strong> Notice that for \\(x \\ne a\\), we can write \\(f(x) - f(a) = \\dfrac{f(x) - f(a)}{x - a}\\cdot (x - a)\\). Taking the limit as \\(x \\to a\\) by the Product Law gives:</p>\\[ \\lim_{x \\to a} \\bigl(f(x) - f(a)\\bigr) = f'(a)\\cdot 0 = 0 \\implies \\lim_{x \\to a} f(x) = f(a) \\]<p>Similarly, when differentiating an implicit relation \\(F(x, y) = c\\) with respect to \\(x\\), \\(y = y(x)\\) is an inner function of \\(x\\). By the Chain Rule, \\(\\dfrac{d}{dx}\\bigl[y^n\\bigr] = ny^{n-1}\\dfrac{dy}{dx}\\), and for product terms \\(\\dfrac{d}{dx}[xy] = y + x\\dfrac{dy}{dx}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example · Resolving 0/0 Indeterminate Forms",
@@ -600,11 +612,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example B — Limits &amp; Continuity (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> The function \\( f(x)=2x^{2}-6x+3 \\) is continuous on:</p><p><strong>Step-by-Step Solution:</strong> Every polynomial is continuous everywhere on \\((-\\infty,\\infty)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Limits &amp; Continuity)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Assuming \\(f'(c) = 0\\) guarantees a local extremum",
+              "ar": null
+            },
+            {
+              "en": "Inflection points like \\(f(x) = x^3\\) at \\(x = 0\\) have \\(f'(0) = 0\\) without changing sign.",
+              "ar": null
+            },
+            {
+              "en": "Verify that \\(f'(x)\\) actually changes sign across \\(x = c\\) (or check \\(f''(c) \\ne 0\\)).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing parametric \\(\\frac{d^2y}{dx^2}\\) as \\(\\frac{\\ddot{y}}{\\ddot{x}}\\)",
+              "ar": null
+            },
+            {
+              "en": "violates the Chain Rule \\(\\frac{d}{dx} = \\frac{1}{dx/dt}\\frac{d}{dt}\\).",
+              "ar": null
+            },
+            {
+              "en": "Differentiate \\(dy/dx\\) with respect to \\(t\\), then divide by \\(dx/dt\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Forgetting product rule on \\(xy\\) in implicit differentiation",
+              "ar": null
+            },
+            {
+              "en": "Treats \\(y\\) as a constant instead of \\(y(x)\\).",
+              "ar": null
+            },
+            {
+              "en": "Always expand \\(\\frac{d}{dx}(xy) = y + x\\frac{dy}{dx}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Limits &amp; Continuity",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Justification Rule (University Single-Variable & Multivariable Calculus):</strong> When justifying local extrema or points of inflection on free-response questions, state \"because \\(f'(x)\\) changes sign from positive to negative at \\(x = c\\)\" rather than referring vaguely to \"it\" or \"the graph.\"</p>",
           "ar": null
         }
       },
@@ -617,7 +706,21 @@
         "solution": {
           "en": "<p>When \\( x \\to 2^- \\), \\( x < 2 \\), so \\( x - 2 < 0 \\implies |x - 2| = -(x - 2) \\). Factor the denominator: \\( x^2 - 4 = (x - 2)(x + 2) \\). Substitute: \\[ \\lim_{x\\to 2^-} \\frac{-(x - 2)}{(x - 2)(x + 2)} = \\lim_{x\\to 2^-} \\frac{-1}{x + 2} = \\frac{-1}{2 + 2} = \\mathbf{-\\frac{1}{4}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Limits &amp; Continuity</em> and start from \\( \\displaystyle \\lim_{x\\to 2^-} \\frac{|x - 2|}{x^2 - 4} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( x \\to 2^- \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -781,7 +884,21 @@
         "solution": {
           "en": "<p>Multiply numerator and denominator by the conjugate \\( 1 + \\cos(3x) \\): \\[ \\lim_{x \\to 0} \\frac{(1 - \\cos(3x))(1 + \\cos(3x))}{x^2(1 + \\cos(3x))} = \\lim_{x \\to 0} \\frac{1 - \\cos^2(3x)}{x^2(1 + \\cos(3x))} = \\lim_{x \\to 0} \\frac{\\sin^2(3x)}{x^2(1 + \\cos(3x))}. \\] Re-group terms to leverage \\( \\lim_{u\\to 0}\\frac{\\sin u}{u} = 1 \\): \\[ = \\lim_{x \\to 0} \\left[ \\left(\\frac{\\sin(3x)}{3x}\\right)^2 \\cdot 3^2 \\cdot \\frac{1}{1 + \\cos(3x)} \\right]. \\] Evaluating individual limits: \\[ = (1)^2 \\cdot 9 \\cdot \\frac{1}{1 + \\cos(0)} = 9 \\cdot \\frac{1}{1 + 1} = \\mathbf{\\frac{9}{2}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Limits &amp; Continuity</em> and start from \\( \\lim_{x \\to 0} \\frac{1 - \\cos(3x)}{x^2}. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 1 + \\cos(3x) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -894,7 +1011,21 @@
         "solution": {
           "en": "<p><strong>Step 1 · Rationalize the Numerator:</strong> Multiply by \\( \\sqrt{1 + \\tan x} + \\sqrt{1 + \\sin x} \\): \\[ \\lim_{x\\to 0} \\frac{(1 + \\tan x) - (1 + \\sin x)}{x^3(\\sqrt{1 + \\tan x} + \\sqrt{1 + \\sin x})} = \\lim_{x\\to 0} \\frac{\\tan x - \\sin x}{x^3(\\sqrt{1 + \\tan x} + \\sqrt{1 + \\sin x})}. \\]</p><p><strong>Step 2 · Factor Trigonometric Terms:</strong> \\[ \\tan x - \\sin x = \\frac{\\sin x}{\\cos x} - \\sin x = \\sin x\\left(\\frac{1 - \\cos x}{\\cos x}\\right). \\] Multiply numerator and denominator by \\( 1 + \\cos x \\): \\[ = \\sin x \\cdot \\frac{1 - \\cos^2 x}{\\cos x(1 + \\cos x)} = \\frac{\\sin^3 x}{\\cos x(1 + \\cos x)}. \\]</p><p><strong>Step 3 · Decompose Limit:</strong> \\[ = \\lim_{x\\to 0} \\left[ \\left(\\frac{\\sin x}{x}\\right)^3 \\cdot \\frac{1}{\\cos x(1 + \\cos x)} \\cdot \\frac{1}{\\sqrt{1 + \\tan x} + \\sqrt{1 + \\sin x}} \\right]. \\] As \\( x \\to 0 \\):<br>• \\( \\left(\\frac{\\sin x}{x}\\right)^3 \\to 1^3 = 1 \\)<br>• \\( \\frac{1}{\\cos(0)(1 + \\cos 0)} = \\frac{1}{1(1 + 1)} = \\frac{1}{2} \\)<br>• \\( \\frac{1}{\\sqrt{1 + 0} + \\sqrt{1 + 0}} = \\frac{1}{1 + 1} = \\frac{1}{2} \\).<br>Multiplying: \\[ = 1 \\cdot \\frac{1}{2} \\cdot \\frac{1}{2} = \\mathbf{\\frac{1}{4}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Limits &amp; Continuity</em> and start from \\( \\lim_{x \\to 0} \\frac{\\sqrt{1 + \\tan x} - \\sqrt{1 + \\sin x}}{x^3}. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\sqrt{1 + \\tan x} + \\sqrt{1 + \\sin x} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "callout",
@@ -911,11 +1042,25 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Limits &amp; Continuity · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> The function \\( f(x)=-2x^{2}+x+3 \\) is continuous on:",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Limits &amp; Continuity</em> and start from \\( f(x)=-2x^{2}+x+3 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\((-\\infty,\\infty)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Every polynomial is continuous everywhere on \\((-\\infty,\\infty)\\).",
           "ar": null
         }
       }

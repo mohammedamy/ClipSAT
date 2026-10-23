@@ -36,88 +36,88 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Unit 4 · Parameters, Vectors, and Matrices — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
+          "type": "transformation_grid",
+          "title": "Unit 4 · Parameters, Vectors, and Matrices — Linear Transformation & Basis Action",
+          "original": [
+            [
+              1,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              3
+            ]
           ],
-          "yrange": [
-            -3,
-            9
+          "transformed": [
+            [
+              -1,
+              1
+            ],
+            [
+              -1,
+              3
+            ],
+            [
+              -3,
+              2
+            ]
           ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
+          "labels": [
+            "A",
+            "B",
+            "C"
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
           "ar": null
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Unit 4 · Parameters, Vectors, and Matrices — Coordinate Curve & Tangent Analysis (1)",
-          "xrange": [
-            -4,
-            4
+          "type": "transformation_grid",
+          "title": "Unit 4 · Parameters, Vectors, and Matrices — Linear Transformation & Basis Action",
+          "original": [
+            [
+              1,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              3
+            ]
           ],
-          "yrange": [
-            -3,
-            9
+          "transformed": [
+            [
+              -1,
+              1
+            ],
+            [
+              -1,
+              3
+            ],
+            [
+              -3,
+              2
+            ]
           ],
-          "fns": [
-            {
-              "fn": "x*x - 1",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 1"
-            },
-            {
-              "fn": "2*x - 2",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": 0,
-              "label": "(1, 0)"
-            },
-            {
-              "x": 0,
-              "y": -1,
-              "label": "(0, -1)"
-            }
+          "labels": [
+            "A",
+            "B",
+            "C"
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 1 and its instantaneous tangent line at x = 1.",
+          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
           "ar": null
         }
       },
@@ -259,6 +259,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Unit 4 · Parameters, Vectors, and Matrices)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example",
@@ -273,11 +285,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example B — Unit 4 · Parameters, Vectors, and Matrices (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> Find \\(\\begin{pmatrix}-4&2\\\\1&0\\end{pmatrix}\\begin{pmatrix}-4&2\\\\-4&-1\\end{pmatrix}\\).</p><p><strong>Step-by-Step Solution:</strong> Multiply row by column: each entry is a sum of products. <strong>Final Answer:</strong> \\(\\begin{pmatrix}8&-10\\\\-4&2\\end{pmatrix}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 4 · Parameters, Vectors, and Matrices)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Computing angle at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)",
+              "ar": null
+            },
+            {
+              "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
+              "ar": null
+            },
+            {
+              "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
+              "ar": null
+            },
+            {
+              "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
+              "ar": null
+            },
+            {
+              "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Assuming \\((AB)^{-1} = A^{-1}B^{-1}\\)",
+              "ar": null
+            },
+            {
+              "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
+              "ar": null
+            },
+            {
+              "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Unit 4 · Parameters, Vectors, and Matrices",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Matrix &amp; Vector Verification (College Board AP Precalculus):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -290,7 +379,21 @@
         "solution": {
           "en": "<p><strong>Invertibility Justification:</strong> The vertex of the parabola is at \\((3, 5)\\). On \\([3, \\infty)\\), \\(g(x)\\) is strictly increasing and therefore one-to-one, satisfying the horizontal line test.</p><p><strong>Find Inverse Formula:</strong> Set \\(y = 2(x - 3)^2 + 5\\) for \\(x \\ge 3\\):</p>\\[ x = 2(y - 3)^2 + 5 \\implies x - 5 = 2(y - 3)^2 \\implies (y - 3)^2 = \\frac{x - 5}{2}. \\]<p>Taking the positive square root because \\(y \\ge 3\\):</p>\\[ y - 3 = \\sqrt{\\frac{x - 5}{2}} \\implies g^{-1}(x) = 3 + \\sqrt{\\frac{x - 5}{2}}. \\]<p><strong>Domain of \\(g^{-1}\\):</strong> The range of \\(g\\) is \\([5, \\infty)\\), so the domain of \\(g^{-1}\\) is <strong>\\([5, \\infty)\\)</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 4 · Parameters, Vectors, and Matrices</em> and start from \\(g(x) = 2(x - 3)^2 + 5\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\((3, 5)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -493,7 +596,21 @@
         "solution": {
           "en": "<p><strong>Magnitudes:</strong></p>\\[ |\\vec{u}| = \\sqrt{4^2 + (-3)^2} = \\sqrt{16 + 9} = \\sqrt{25} = 5. \\]\\[ |\\vec{v}| = \\sqrt{1^2 + 7^2} = \\sqrt{1 + 49} = \\sqrt{50} = 5\\sqrt{2}. \\]<p><strong>Dot Product:</strong></p>\\[ \\vec{u} \\cdot \\vec{v} = (4)(1) + (-3)(7) = 4 - 21 = -17. \\]<p><strong>Angle Between Vectors:</strong> Use \\(\\cos\\theta = \\frac{\\vec{u} \\cdot \\vec{v}}{|\\vec{u}||\\vec{v}|}\\):</p>\\[ \\cos\\theta = \\frac{-17}{(5)(5\\sqrt{2})} = \\frac{-17}{25\\sqrt{2}} = \\frac{-17\\sqrt{2}}{50} \\approx -0.48083. \\]\\[ \\theta = \\arccos\\left(\\frac{-17\\sqrt{2}}{50}\\right) \\approx \\mathbf{2.072}\\text{ radians} \\quad (\\approx 118.7^\\circ). \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 4 · Parameters, Vectors, and Matrices</em> and start from \\(\\vec{u} = \\langle 4, -3 \\rangle\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( |\\vec{u}| = \\sqrt{4^2 + (-3)^2} = \\sqrt{16 + 9} = \\sqrt{25} = 5. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -548,16 +665,44 @@
         "solution": {
           "en": "<p><strong>Step 1 (Formulate Rotation Matrix):</strong> For \\(\\theta = \\frac{2\\pi}{3}\\): \\(\\cos(2\\pi/3) = -\\frac{1}{2}\\) and \\(\\sin(2\\pi/3) = \\frac{\\sqrt{3}}{2}\\):</p>\\[ R = \\begin{pmatrix} -1/2 & -\\sqrt{3}/2 \\\\ \\sqrt{3}/2 & -1/2 \\end{pmatrix}. \\]<p><strong>Step 2 (Transform \\(\\vec{w}\\)):</strong></p>\\[ R \\vec{w} = \\begin{pmatrix} -1/2 & -\\sqrt{3}/2 \\\\ \\sqrt{3}/2 & -1/2 \\end{pmatrix} \\begin{pmatrix} 4 \\\\ -2 \\end{pmatrix} = \\begin{pmatrix} (-1/2)(4) + (-\\sqrt{3}/2)(-2) \\\\ (\\sqrt{3}/2)(4) + (-1/2)(-2) \\end{pmatrix} = \\begin{pmatrix} -2 + \\sqrt{3} \\\\ 2\\sqrt{3} + 1 \\end{pmatrix}. \\]<p><strong>Step 3 (Verify Magnitude Preservation):</strong></p>\\[ |\\vec{w}|^2 = 4^2 + (-2)^2 = 16 + 4 = 20. \\]\\[ |R\\vec{w}|^2 = (-2 + \\sqrt{3})^2 + (2\\sqrt{3} + 1)^2 = (4 - 4\\sqrt{3} + 3) + (12 + 4\\sqrt{3} + 1) = 7 + 13 = 20. \\]<p>Since \\(|R\\vec{w}|^2 = |\\vec{w}|^2 = 20\\), the magnitude is <strong>\\(|\\vec{w}| = \\sqrt{20} = 2\\sqrt{5}\\)</strong> and is preserved identically.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 4 · Parameters, Vectors, and Matrices</em> and start from \\(R\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\theta = \\frac{2\\pi}{3}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Unit 4 · Parameters, Vectors, and Matrices · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> Find \\(\\begin{pmatrix}-3&1\\\\1&-2\\end{pmatrix}\\begin{pmatrix}-2&-2\\\\3&3\\end{pmatrix}\\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 4 · Parameters, Vectors, and Matrices</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\begin{pmatrix}9&9\\\\-8&-8\\end{pmatrix}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Multiply row by column: each entry is a sum of products. <strong>Answer:</strong> \\(\\begin{pmatrix}9&9\\\\-8&-8\\end{pmatrix}\\).",
           "ar": null
         }
       }

@@ -40,32 +40,39 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "AP Statistics Exam Format & Study Design — Frequency Distribution (2)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
+          "type": "fn",
+          "title": "AP Statistics Exam Format & Study Design — Linear System Intersection & Equilibrium",
+          "xrange": [
+            -2,
+            6
+          ],
+          "yrange": [
+            -2,
+            10
+          ],
+          "fns": [
             {
-              "label": "Q1",
-              "value": 22
+              "fn": "2*x + 1",
+              "color": "var(--fig-indigo)",
+              "label": "y = 2x + 1"
             },
             {
-              "label": "Q2",
-              "value": 35,
-              "highlight": true
-            },
+              "fn": "-x + 7",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "y = −x + 7"
+            }
+          ],
+          "points": [
             {
-              "label": "Q3",
-              "value": 28
-            },
-            {
-              "label": "Q4",
-              "value": 19
+              "x": 2,
+              "y": 5,
+              "label": "Intersection (2, 5)"
             }
           ]
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for AP Statistics Exam Format & Study Design.",
+          "en": "Coordinate intersection of linear system y = 2x + 1 and y = −x + 7 at unique equilibrium point (2, 5).",
           "ar": null
         }
       },
@@ -227,6 +234,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (AP Statistics Exam Format & Study Design)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example",
@@ -241,13 +260,78 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example B — AP Statistics Exam Format & Study Design (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> In a two-stage probability tree for events \\( U \\) and \\( V \\), \\( P(U) = 0.3 \\) and \\( P(V \\mid U) = 0.6 \\). What is the expected frequency \\( r = 100 \\cdot P(U \\cap V) \\) in \\( 100 \\) independent trials?</p><p><strong>Step-by-Step Solution:</strong> Since \\( P(U \\cap V) = 0.3 \\times 0.6 = 0.18 \\), the expected count in 100 trials is \\( 18 \\).</p>",
           "ar": null
         }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (AP Statistics Exam Format & Study Design)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Claiming \\(+25\\%\\) followed by \\(-25\\%\\) returns to \\(100\\%\\)",
+              "ar": null
+            },
+            {
+              "en": "The \\(25\\%\\) reduction applies to the larger base \\(1.25 Q_0\\), not \\(Q_0\\).",
+              "ar": null
+            },
+            {
+              "en": "Multiply scale factors: \\(1.25 \\times 0.75 = 0.9375\\) (a \\(6.25\\%\\) net decrease).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Solving \\(-3x > 12\\) as \\(x > -4\\)",
+              "ar": null
+            },
+            {
+              "en": "Dividing by a negative number reverses order on the real number line.",
+              "ar": null
+            },
+            {
+              "en": "Flip the inequality symbol whenever multiplying or dividing by a negative: \\(x < -4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing round-trip average speed as \\(\\frac{v_1 + v_2}{2}\\)",
+              "ar": null
+            },
+            {
+              "en": "Time spent at the slower speed is longer than time spent at the faster speed.",
+              "ar": null
+            },
+            {
+              "en": "Use total distance over total time: \\(v_{\\text{avg}} = \\frac{2v_1 v_2}{v_1 + v_2}\\).",
+              "ar": null
+            }
+          ]
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -258,7 +342,21 @@
         "solution": {
           "en": "<p>Calculate the remaining time for Questions 1 through 5: \\[ 90 - 25 = 65\\text{ minutes}. \\]</p><p>Divide by 5 questions: \\[ \\frac{65\\text{ minutes}}{5\\text{ questions}} = \\mathbf{13\\text{ minutes per question}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>AP Statistics Exam Format & Study Design</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 90 - 25 = 65\\text{ minutes}. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -343,7 +441,21 @@
         "solution": {
           "en": "<p>For a 98% confidence interval, the central area is 0.98, leaving 0.02 split equally between both tails (0.01 in each tail). The area to the left of the upper critical value is: \\[ 1 - 0.01 = 0.99. \\]</p><p>Using the inverse normal function: \\[ z^* = \\text{invNorm}(\\text{area} = 0.99, \\mu = 0, \\sigma = 1) \\approx \\mathbf{2.326}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>AP Statistics Exam Format & Study Design</em> and start from \\(z^*\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 1 - 0.01 = 0.99. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -398,16 +510,44 @@
         "solution": {
           "en": "<p><strong>1. Increase the sample size \\(n\\):</strong> A larger sample size reduces the standard error of the sample statistic (\\(\\sigma / \\sqrt{n}\\)), making the sampling distributions of \\(H_0\\) and \\(H_a\\) narrower, which increases the probability of rejecting a false null hypothesis (power = \\(1 - \\beta\\)).</p><p><strong>2. Increase the significance level \\(\\alpha\\) (e.g., from 0.05 to 0.10):</strong> A larger \\(\\alpha\\) moves the critical rejection boundary closer to the center of \\(H_0\\), making it easier to reject \\(H_0\\) and thereby increasing power (at the expense of increasing the risk of a Type I error).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>AP Statistics Exam Format & Study Design</em> and start from \\(\\alpha = 0.05\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(n\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[AP Statistics Exam Format & Study Design · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> A two-way table of \\( N = 131 \\) observations on science track records cell counts \\( P_1 = 36 \\) for (Section A, Physics) and \\( Q_2 = 40 \\) for (Section B, Biology). What is the diagonal sum \\( r = P_1 + Q_2 \\)?",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>AP Statistics Exam Format & Study Design</em> and start from \\( N = 131 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 36 + 40 = 76 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Summing the two frequencies gives \\( 36 + 40 = 76 \\).",
           "ar": null
         }
       }

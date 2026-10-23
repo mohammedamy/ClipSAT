@@ -38,44 +38,44 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Systems of Linear Equations & Row Reduction — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
+          "type": "transformation_grid",
+          "title": "Systems of Linear Equations & Row Reduction — Linear Transformation & Basis Action",
+          "original": [
+            [
+              1,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              3
+            ]
           ],
-          "yrange": [
-            -3,
-            9
+          "transformed": [
+            [
+              -1,
+              1
+            ],
+            [
+              -1,
+              3
+            ],
+            [
+              -3,
+              2
+            ]
           ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
+          "labels": [
+            "A",
+            "B",
+            "C"
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
           "ar": null
         }
       },
@@ -129,6 +129,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Systems of Linear Equations & Row Reduction)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example · Gauss–Jordan Elimination to RREF",
@@ -143,11 +155,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example B — Systems of Linear Equations & Row Reduction (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> Consider the upper-triangular matrix \\( X = \\begin{pmatrix} 20 & 26 \\\\ 0 & 19 \\end{pmatrix} \\). Compute the eigenvalue product \\( \\det(X) = \\lambda_1 \\lambda_2 \\).</p><p><strong>Step-by-Step Solution:</strong> The eigenvalues are \\( 20 \\) and \\( 19 \\), with product \\( 380 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Systems of Linear Equations & Row Reduction)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Computing angle at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)",
+              "ar": null
+            },
+            {
+              "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
+              "ar": null
+            },
+            {
+              "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
+              "ar": null
+            },
+            {
+              "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
+              "ar": null
+            },
+            {
+              "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Assuming \\((AB)^{-1} = A^{-1}B^{-1}\\)",
+              "ar": null
+            },
+            {
+              "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
+              "ar": null
+            },
+            {
+              "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Systems of Linear Equations & Row Reduction",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Linear Algebra & Matrix Theory):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -160,7 +249,21 @@
         "solution": {
           "en": "<p><strong>Step 1 · Eliminate below pivot 1:</strong> Perform \\( R_2 \\leftarrow R_2 - 2R_1 \\): \\[ \\begin{pmatrix} 1 & -2 & 1 \\\\ 0 & 0 & 3 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Scale pivot 2 to 1:</strong> Perform \\( R_2 \\leftarrow \\frac{1}{3}R_2 \\): \\[ \\begin{pmatrix} 1 & -2 & 1 \\\\ 0 & 0 & 1 \\end{pmatrix}. \\]</p><p><strong>Step 3 · Eliminate above pivot 2:</strong> Perform \\( R_1 \\leftarrow R_1 - R_2 \\): \\[ \\mathbf{\\begin{pmatrix} 1 & -2 & 0 \\\\ 0 & 0 & 1 \\end{pmatrix}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Systems of Linear Equations & Row Reduction</em> and start from \\( M = \\begin{pmatrix} 1 & -2 & 1 \\\\ 2 & -4 & 5 \\end{pmatrix}. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( R_2 \\leftarrow R_2 - 2R_1 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -353,7 +456,21 @@
         "solution": {
           "en": "<p><strong>Step 1:</strong> Set up and row reduce the coefficient matrix: \\[ \\begin{pmatrix} 1 & 3 & -2 \\\\ 2 & 6 & -4 \\end{pmatrix} \\xrightarrow{R_2 \\leftarrow R_2 - 2R_1} \\begin{pmatrix} 1 & 3 & -2 \\\\ 0 & 0 & 0 \\end{pmatrix}. \\]</p><p><strong>Step 2:</strong> Pivot is in column 1 (\\(x_1\\) basic); columns 2 and 3 have no pivots (\\(x_2 = s, x_3 = t\\) free).</p><p><strong>Step 3:</strong> Solve for \\(x_1 = -3s + 2t\\). Write in parametric vector form: \\[ \\mathbf{x} = \\begin{pmatrix} x_1 \\\\ x_2 \\\\ x_3 \\end{pmatrix} = \\mathbf{s\\begin{pmatrix} -3 \\\\ 1 \\\\ 0 \\end{pmatrix} + t\\begin{pmatrix} 2 \\\\ 0 \\\\ 1 \\end{pmatrix}, \\quad s, t \\in \\mathbb{R}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Systems of Linear Equations & Row Reduction</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -408,16 +525,44 @@
         "solution": {
           "en": "<p><strong>Step 1 · Set up Augmented Matrix and Eliminate:</strong> \\[ \\begin{pmatrix} 1 & 2 & -3 & 1 & 2 & | & 3 \\\\ -1 & -2 & 4 & -2 & -1 & | & -2 \\\\ 2 & 4 & -5 & 1 & 5 & | & 7 \\end{pmatrix} \\xrightarrow{\\substack{R_2 \\leftarrow R_2 + R_1 \\\\ R_3 \\leftarrow R_3 - 2R_1}} \\begin{pmatrix} 1 & 2 & -3 & 1 & 2 & | & 3 \\\\ 0 & 0 & 1 & -1 & 1 & | & 1 \\\\ 0 & 0 & 1 & -1 & 1 & | & 1 \\end{pmatrix}. \\] Perform \\( R_3 \\leftarrow R_3 - R_2 \\) and \\( R_1 \\leftarrow R_1 + 3R_2 \\) to reach RREF: \\[ \\begin{pmatrix} 1 & 2 & 0 & -2 & 5 & | & 6 \\\\ 0 & 0 & 1 & -1 & 1 & | & 1 \\\\ 0 & 0 & 0 & 0 & 0 & | & 0 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Identify Basic and Free Variables:</strong><br>Pivots in columns 1 and 3 \\(\\implies x_1, x_3\\) are basic.<br>Columns 2, 4, 5 lack pivots \\(\\implies x_2 = r, x_4 = s, x_5 = t\\) are free parameters.</p><p><strong>Step 3 · Express Basic Variables:</strong> \\[ x_1 = 6 - 2r + 2s - 5t, \\qquad x_3 = 1 + s - t. \\]</p><p><strong>Step 4 · Parametric Vector Form:</strong> \\[ \\mathbf{x} = \\mathbf{\\begin{pmatrix} 6 \\\\ 0 \\\\ 1 \\\\ 0 \\\\ 0 \\end{pmatrix} + r\\begin{pmatrix} -2 \\\\ 1 \\\\ 0 \\\\ 0 \\\\ 0 \\end{pmatrix} + s\\begin{pmatrix} 2 \\\\ 0 \\\\ 1 \\\\ 1 \\\\ 0 \\end{pmatrix} + t\\begin{pmatrix} -5 \\\\ 0 \\\\ -1 \\\\ 0 \\\\ 1 \\end{pmatrix}, \\quad r, s, t \\in \\mathbb{R}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Systems of Linear Equations & Row Reduction</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Systems of Linear Equations & Row Reduction · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> A linear map \\( h: \\mathbb{R}^{11} \\to \\mathbb{R}^{8} \\) has rank \\( \\text{rank}(h) = 3 \\). Compute the nullity \\( \\dim(\\ker h) \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Systems of Linear Equations & Row Reduction</em> and start from \\( h: \\mathbb{R}^{11} \\to \\mathbb{R}^{8} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\dim(\\ker h) = 11 - 3 = 8 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "By Rank-Nullity, \\( \\dim(\\ker h) = 11 - 3 = 8 \\).",
           "ar": null
         }
       }

@@ -29,44 +29,20 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Differential Equations — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
-          ]
+          "type": "slope_field",
+          "title": "Differential Equations — Slope Field & Particular Solution Trajectory",
+          "fn": "x - y",
+          "xmin": -3,
+          "xmax": 3,
+          "ymin": -3,
+          "ymax": 3,
+          "solution": {
+            "x0": 0,
+            "y0": 1
+          }
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Slope field for dy/dx = x − y with the integral curve passing through initial condition (0, 1).",
           "ar": null
         }
       },
@@ -96,6 +72,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Differential Equations)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 8.1 — Foundations: Separable IVP & Domain of Definition",
@@ -110,11 +98,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example B — Differential Equations (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> The second-order linear homogeneous ODE \\( M''(z) - 53M'(z) + 660M(z) = 0 \\) has characteristic roots \\( \\lambda_1, \\lambda_2 \\). Determine the trace sum \\( \\lambda_1 + \\lambda_2 \\).</p><p><strong>Step-by-Step Solution:</strong> From \\( \\lambda^2 - 53\\lambda + 660 = 0 \\), the sum of roots is \\( 53 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Differential Equations)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Writing \\(\\ln|y| = x^2 + C \\implies y = e^{x^2} + C\\)",
+              "ar": null
+            },
+            {
+              "en": "Exponentiation distributes over addition as multiplication (\\(e^{a+b} = e^a e^b\\)), not addition.",
+              "ar": null
+            },
+            {
+              "en": "Write \\(y = e^{x^2 + C} = Ae^{x^2}\\) and solve for \\(A\\) using the initial condition.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Leaving original \\(x\\)-limits on a \\(u\\)-substituted definite integral",
+              "ar": null
+            },
+            {
+              "en": "Evaluates the antiderivative \\(F(u)\\) at \\(x\\)-values instead of \\(u(x)\\)-values.",
+              "ar": null
+            },
+            {
+              "en": "Convert bounds immediately: \\(u_{\\text{low}} = u(a)\\) and \\(u_{\\text{high}} = u(b)\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing total distance as \\(\\left|\\int_{t_1}^{t_2} v(t)\\,dt\\right|\\)",
+              "ar": null
+            },
+            {
+              "en": "Cancels forward and backward motion (net displacement) instead of accumulating total path length.",
+              "ar": null
+            },
+            {
+              "en": "Split the integral at every root where \\(v(t) = 0\\) and integrate \\(|v(t)|\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Differential Equations",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Quick Verification Trick (University Single-Variable & Multivariable Calculus):</strong> For any indefinite integral \\(\\int f(x)\\,dx = F(x) + C\\), differentiate your answer \\(F'(x)\\) mentally—especially the coefficient \\(1/k\\) from chain-rule reversal \\(\\int e^{kx}\\,dx = \\tfrac{1}{k}e^{kx} + C\\)—before moving on.</p>",
           "ar": null
         }
       },
@@ -127,7 +192,21 @@
         "solution": {
           "en": "Separate variables: \\(y\\,dy = 3x^2\\,dx\\).<br>Integrate both sides: \\(\\int y\\,dy = \\int 3x^2\\,dx \\implies \\frac{1}{2}y^2 = x^3 + C\\).<br>Apply initial condition \\(y(0) = 4\\): \\(\\frac{1}{2}(4)^2 = 0 + C \\implies C = 8\\).<br>Multiply by 2: \\(y^2 = 2x^3 + 16\\).<br>Since \\(y(0) = 4 > 0\\), choose the positive root: \\(y = \\sqrt{2x^3 + 16}\\).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differential Equations</em> and start from \\(\\displaystyle \\frac{dy}{dx} = \\frac{3x^2}{y}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(y\\,dy = 3x^2\\,dx\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -346,7 +425,21 @@
         "solution": {
           "en": "Identify \\(P(x) = -1\\) and \\(Q(x) = e^{3x}\\).<br>Compute integrating factor: \\(\\mu(x) = e^{\\int -1\\,dx} = e^{-x}\\).<br>Multiply through:<br>\\[ \\frac{d}{dx}\\big[e^{-x}y\\big] = e^{-x}e^{3x} = e^{2x} \\]<br>Integrate both sides:<br>\\[ e^{-x}y = \\int e^{2x}\\,dx = \\frac{1}{2}e^{2x} + C \\implies y(x) = \\frac{1}{2}e^{3x} + C e^x \\]<br>Apply initial condition \\(y(0) = 2\\):<br>\\[ 2 = \\frac{1}{2}(1) + C(1) \\implies C = \\frac{3}{2} \\]<br>Thus, \\(y(x) = \\frac{1}{2}e^{3x} + \\frac{3}{2}e^x\\).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differential Equations</em> and start from \\(\\displaystyle \\frac{dy}{dx} - y = e^{3x}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(P(x) = -1\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "callout",
@@ -393,16 +486,44 @@
         "solution": {
           "en": "Rate of change of salt: \\(\\frac{dS}{dt} = \\text{Rate In} - \\text{Rate Out}\\).<br>\\(\\text{Rate In} = (0.5\\text{ kg/L}) \\times (4\\text{ L/min}) = 2\\text{ kg/min}\\).<br>Since volume remains constant at 100 L, salt concentration is \\(S(t)/100\\).<br>\\(\\text{Rate Out} = \\left(\\frac{S(t)}{100}\\text{ kg/L}\\right) \\times (4\\text{ L/min}) = \\frac{4S}{100} = 0.04S\\text{ kg/min}\\).<br>Set up the linear ODE:<br>\\[ \\frac{dS}{dt} = 2 - 0.04S = -0.04(S - 50) \\]<br>Separate variables:<br>\\[ \\frac{dS}{S - 50} = -0.04\\,dt \\implies \\ln|S - 50| = -0.04t + C \\implies S - 50 = A e^{-0.04t} \\]<br>Initial condition: initially pure water, so \\(S(0) = 0\\):<br>\\[ 0 - 50 = A e^0 \\implies A = -50 \\]<br>Thus, \\(S(t) = 50(1 - e^{-0.04t})\\) kg.",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differential Equations</em> and start from \\(S(t)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\frac{dS}{dt} = \\text{Rate In} - \\text{Rate Out}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Differential Equations · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> The separable initial value problem \\( \\dfrac{dM}{dz} = 4z \\) satisfies \\( M(0) = 4 \\). Determine the solution value \\( M(14) \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differential Equations</em> and start from \\( \\dfrac{dM}{dz} = 4z \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( M(z) = 2z^2 + 4 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Integrating gives \\( M(z) = 2z^2 + 4 \\), so \\( M(14) = 396 \\).",
           "ar": null
         }
       }

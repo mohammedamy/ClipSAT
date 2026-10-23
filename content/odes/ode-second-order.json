@@ -29,44 +29,20 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
-          ]
+          "type": "slope_field",
+          "title": "Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory — Slope Field & Particular Solution Trajectory",
+          "fn": "x - y",
+          "xmin": -3,
+          "xmax": 3,
+          "ymin": -3,
+          "ymax": 3,
+          "solution": {
+            "x0": 0,
+            "y0": 1
+          }
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Slope field for dy/dx = x − y with the integral curve passing through initial condition (0, 1).",
           "ar": null
         }
       },
@@ -371,11 +347,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example D — Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> The second-order linear homogeneous ODE \\( S''(b) - 32S'(b) + 220S(b) = 0 \\) has characteristic roots \\( \\lambda_1, \\lambda_2 \\). Evaluate the trace sum \\( \\lambda_1 + \\lambda_2 \\).</p><p><strong>Step-by-Step Solution:</strong> From \\( \\lambda^2 - 32\\lambda + 220 = 0 \\), the sum of roots is \\( 32 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Writing \\(\\ln|y| = x^2 + C \\implies y = e^{x^2} + C\\)",
+              "ar": null
+            },
+            {
+              "en": "Exponentiation distributes over addition as multiplication (\\(e^{a+b} = e^a e^b\\)), not addition.",
+              "ar": null
+            },
+            {
+              "en": "Write \\(y = e^{x^2 + C} = Ae^{x^2}\\) and solve for \\(A\\) using the initial condition.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Leaving original \\(x\\)-limits on a \\(u\\)-substituted definite integral",
+              "ar": null
+            },
+            {
+              "en": "Evaluates the antiderivative \\(F(u)\\) at \\(x\\)-values instead of \\(u(x)\\)-values.",
+              "ar": null
+            },
+            {
+              "en": "Convert bounds immediately: \\(u_{\\text{low}} = u(a)\\) and \\(u_{\\text{high}} = u(b)\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing total distance as \\(\\left|\\int_{t_1}^{t_2} v(t)\\,dt\\right|\\)",
+              "ar": null
+            },
+            {
+              "en": "Cancels forward and backward motion (net displacement) instead of accumulating total path length.",
+              "ar": null
+            },
+            {
+              "en": "Split the integral at every root where \\(v(t) = 0\\) and integrate \\(|v(t)|\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Quick Verification Trick (University Ordinary Differential Equations):</strong> For any indefinite integral \\(\\int f(x)\\,dx = F(x) + C\\), differentiate your answer \\(F'(x)\\) mentally—especially the coefficient \\(1/k\\) from chain-rule reversal \\(\\int e^{kx}\\,dx = \\tfrac{1}{k}e^{kx} + C\\)—before moving on.</p>",
           "ar": null
         }
       },
@@ -388,7 +441,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Characteristic roots:</strong> \\[ r^2 + 4r + 13 = 0 \\implies r = \\frac{-4 \\pm \\sqrt{16 - 52}}{2} = -2 \\pm 3i. \\] Thus \\( \\alpha = -2 \\), \\( \\beta = 3 \\). General solution: \\[ y(x) = e^{-2x}\\big(C_1 \\cos 3x + C_2 \\sin 3x\\big). \\]</p><p><strong>Step 2: Apply \\( y(0) = 2 \\):</strong> \\[ y(0) = e^0(C_1 \\cos 0 + C_2 \\sin 0) = C_1 = 2. \\]</p><p><strong>Step 3: Differentiate:</strong> \\[ y'(x) = -2e^{-2x}(C_1 \\cos 3x + C_2 \\sin 3x) + e^{-2x}(-3C_1 \\sin 3x + 3C_2 \\cos 3x) \\] \\[ y'(0) = -2C_1 + 3C_2 = -2(2) + 3C_2 = -4 + 3C_2. \\] Setting \\( y'(0) = -1 \\): \\( -4 + 3C_2 = -1 \\implies 3C_2 = 3 \\implies C_2 = 1 \\).</p><p><strong>Step 4: Particular solution:</strong> \\[ y(x) = e^{-2x}\\big(2\\cos 3x + \\sin 3x\\big). \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory</em> and start from \\( y'' + 4y' + 13y = 0 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( r^2 + 4r + 13 = 0 \\implies r = \\frac{-4 \\pm \\sqrt{16 - 52}}{2} = -2 \\pm 3i. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -399,27 +466,69 @@
         "solution": {
           "en": "<p><strong>Step 1: Substitute Cauchy-Euler ansatz \\( y = x^m \\):</strong> \\( y' = m x^{m-1} \\), \\( y'' = m(m-1)x^{m-2} \\). \\[ x^2\\big(m(m-1)x^{m-2}\\big) - 3x\\big(m x^{m-1}\\big) + 4x^m = 0 \\implies x^m\\big[m(m-1) - 3m + 4\\big] = 0. \\] Auxiliary equation: \\[ m^2 - 4m + 4 = (m - 2)^2 = 0 \\implies m = 2 \\quad \\text{(repeated root)}. \\]</p><p><strong>Step 2: Second solution via reduction of order or variable change \\( x = e^t \\):</strong> For repeated root \\( m \\) in Cauchy-Euler equations, the fundamental basis is \\( \\{x^m, x^m \\ln x\\} \\). Thus: \\[ y(x) = x^2\\big(C_1 + C_2 \\ln x\\big). \\]</p><p><strong>Step 3: Initial conditions at \\( x = 1 \\):</strong> \\[ y(1) = 1^2(C_1 + C_2 \\ln 1) = C_1 = 3. \\] Differentiating: \\[ y'(x) = 2x(C_1 + C_2 \\ln x) + x^2\\left(\\frac{C_2}{x}\\right) = 2x(C_1 + C_2 \\ln x) + C_2 x. \\] \\[ y'(1) = 2(C_1 + 0) + C_2 = 2(3) + C_2 = 6 + C_2. \\] Setting \\( y'(1) = 8 \\implies 6 + C_2 = 8 \\implies C_2 = 2 \\).</p><p><strong>Step 4: Particular solution:</strong> \\[ y(x) = x^2(3 + 2\\ln x). \\]</p>",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory</em> and start from \\( x^2 y'' - 3x y' + 4y = 0 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( y = x^m \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Medium]</strong> The separable initial value problem \\( \\dfrac{dS}{db} = 34b \\) satisfies \\( S(0) = 25 \\). Evaluate the solution value \\( S(12) \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory</em> and start from \\( \\dfrac{dS}{db} = 34b \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( S(b) = 17b^2 + 25 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "Integrating gives \\( S(b) = 17b^2 + 25 \\), so \\( S(12) = 2473 \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> The Laplace transform of \\( S(b) = 378e^{8b} \\) is \\( T(s) = \\dfrac{378}{s - 8} \\) for \\( s > 8 \\). Evaluate the evaluated transform \\( T(9) \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory</em> and start from \\( S(b) = 378e^{8b} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( s = 9 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Substituting \\( s = 9 \\) gives \\( \\frac{378}{9 - 8} = 378 \\).",
           "ar": null
         }
       }

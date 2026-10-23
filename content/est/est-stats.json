@@ -41,34 +41,31 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Statistics & Probability",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Conditional Probability, Bayes' Theorem &amp; Robust Summary Statistics:</strong> For any two events \\(A\\) and \\(B\\) with \\(P(B) > 0\\), conditional probability restricts the sample space to \\(B\\): \\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)}\\). In descriptive statistics, the median and interquartile range (\\(\\text{IQR} = Q_3 - Q_1\\)) are resistant to extreme outliers, whereas the mean \\(\\bar{x}\\) and standard deviation \\(s\\) are pulled strongly in the direction of skewness.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "Statistics & Probability — Frequency Distribution (2)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
-            {
-              "label": "Q1",
-              "value": 22
-            },
-            {
-              "label": "Q2",
-              "value": 35,
-              "highlight": true
-            },
-            {
-              "label": "Q3",
-              "value": 28
-            },
-            {
-              "label": "Q4",
-              "value": 19
-            }
-          ]
+          "type": "venn",
+          "title": "Statistics & Probability — Set Intersection & Conditional Sample Space",
+          "onlyA": 8,
+          "both": 12,
+          "onlyB": 10,
+          "neither": 4,
+          "labelA": "Event A",
+          "labelB": "Event B"
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for Statistics & Probability.",
+          "en": "Venn diagram partitioning sample space into |A only| = 8, |A ∩ B| = 12, |B only| = 10, and |(A ∪ B)'| = 4.",
           "ar": null
         }
       },
@@ -258,6 +255,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Statistics & Probability)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Bayes' Theorem &amp; Principle of Inclusion-Exclusion Work:</strong> Any event \\(B\\) can be partitioned into disjoint intersections \\(B = (B \\cap A) \\cup (B \\cap A')\\). By additivity of mutually exclusive events and the multiplication rule \\(P(A \\cap B) = P(B \\mid A)P(A)\\):</p>\\[ P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{P(B \\mid A)P(A)}{P(B \\mid A)P(A) + P(B \\mid A')P(A')} \\]<p>Similarly, in counting \\(|A \\cup B|\\), summing \\(|A| + |B|\\) counts every element in \\(A \\cap B\\) twice; subtracting \\(|A \\cap B|\\) once restores exact cardinality: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 5.A — Outlier Impact on Central Tendency",
@@ -296,11 +305,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example D — Statistics & Probability (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> A normal random variable \\( F \\sim \\mathcal{N}(\\mu = 62, \\sigma^2 = 9) \\) is observed at \\( w = 65 \\). What is the standardized score \\( z = (w - \\mu)/\\sigma \\)?</p><p><strong>Step-by-Step Solution:</strong> The \\( z \\)-score is \\( \\frac{65 - 62}{3} = 1 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Statistics & Probability)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Using \\(P(A \\cap B) = 0\\) when told \\(A\\) and \\(B\\) are independent",
+              "ar": null
+            },
+            {
+              "en": "Confuses disjoint (mutually exclusive) events with statistically independent events.",
+              "ar": null
+            },
+            {
+              "en": "For independent events, multiply probabilities: \\(P(A \\cap B) = P(A)\\cdot P(B)\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Dividing by the grand total \\(N\\) when computing \\(P(A \\mid B)\\) from a table",
+              "ar": null
+            },
+            {
+              "en": "Computes the joint probability \\(P(A \\cap B)\\) instead of conditioning on subset \\(B\\).",
+              "ar": null
+            },
+            {
+              "en": "Restrict the denominator strictly to the row/column total of the given condition \\(B\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using permutations \\({}^nP_r\\) when selecting a committee with no distinct roles",
+              "ar": null
+            },
+            {
+              "en": "Overcounts every group of size \\(r\\) by \\(r!\\) internal orderings.",
+              "ar": null
+            },
+            {
+              "en": "Divide by \\(r!\\) to use combinations: \\(\\binom{n}{r} = \\frac{n!}{r!(n-r)!}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Statistics & Probability",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Strategy (Egyptian Scholastic Test (EST I — Literacy & Math)):</strong> Whenever a probability problem involves \"at least one\" success across multiple trials, immediately use the Complement Rule: \\(P(\\text{at least one}) = 1 - P(\\text{none})\\). It turns a multi-case sum into a single calculation.</p>",
           "ar": null
         }
       },
@@ -313,7 +399,21 @@
         "solution": {
           "en": "<p><strong>Step 1:</strong> Determine the required sum of all 5 exam scores: \\[ \\sum x = 5 \\times 85 = 425. \\]</p><p><strong>Step 2:</strong> Sum the first four exam scores: \\[ 78 + 85 + 92 + 81 = 336. \\]</p><p><strong>Step 3:</strong> Subtract the accumulated total from the required total to find the 5th score \\(x_5\\): \\[ x_5 = 425 - 336 = \\mathbf{89}. \\]</p><p>The student must score <strong>89</strong> on the fifth exam.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics & Probability</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\sum x = 5 \\times 85 = 425. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -324,7 +424,21 @@
         "solution": {
           "en": "<p><strong>(a) Five-Number Summary Calculations:</strong><ul><li>Lower half (first 6 values): 14, 16, 18, 20, 22, 24 \\(\\implies Q_1 = \\frac{18 + 20}{2} = \\mathbf{19}\\).</li><li>Median of all 12 values: \\(\\frac{24 + 26}{2} = \\mathbf{25}\\).</li><li>Upper half (last 6 values): 26, 28, 30, 34, 38, 72 \\(\\implies Q_3 = \\frac{30 + 34}{2} = \\mathbf{32}\\).</li><li>\\(\\text{IQR} = Q_3 - Q_1 = 32 - 19 = \\mathbf{13}\\).</li></ul></p><p><strong>(b) Outlier Boundary Check:</strong> \\[ \\text{Upper Outlier Boundary} = Q_3 + 1.5 \\times \\text{IQR} = 32 + 1.5(13) = 32 + 19.5 = \\mathbf{51.5}. \\] Since \\(72 > 51.5\\), the value <strong>72 is a confirmed outlier</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics & Probability</em> and start from \\(Q_1\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\implies Q_1 = \\frac{18 + 20}{2} = \\mathbf{19}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -335,7 +449,21 @@
         "solution": {
           "en": "<p><strong>Step 1:</strong> Use the complement rule. The event \"at least one fails\" is the exact complement of \"both components function properly\": \\[ P(\\ge 1\\text{ fails}) = 1 - P(\\text{both function}). \\]</p><p><strong>Step 2:</strong> Since the components operate independently: \\[ P(\\text{both function}) = P(A) \\times P(B) = 0.95 \\times 0.90 = 0.855. \\]</p><p><strong>Step 3:</strong> Calculate the complement: \\[ P(\\ge 1\\text{ fails}) = 1 - 0.855 = \\mathbf{0.145\\, (14.5\\%)}. \\]</p><p>The probability that at least one component fails is <strong>0.145</strong> (or <strong>14.5%</strong>).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics & Probability</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( P(\\ge 1\\text{ fails}) = 1 - P(\\text{both function}). \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -346,7 +474,21 @@
         "solution": {
           "en": "<p><strong>(a) Predicted Score \\(\\hat{y}\\):</strong> Substitute \\(x = 8\\) into the regression equation: \\[ \\hat{y} = 4.8(8) + 52 = 38.4 + 52 = \\mathbf{90.4}. \\]</p><p><strong>(b) Residual Calculation & Interpretation:</strong> \\[ \\text{Residual} = y - \\hat{y} = 94 - 90.4 = \\mathbf{+3.6}. \\] Because the residual is positive (+3.6), the student's actual score was <strong>3.6 points higher</strong> than the score predicted by the regression line (the model underestimated the student's performance).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Statistics & Probability</em> and start from \\(x\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\hat{y}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

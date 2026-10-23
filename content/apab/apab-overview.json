@@ -26,43 +26,38 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "AP Calculus AB Exam Format & Units Overview — Coordinate Curve & Tangent Analysis (2)",
+          "title": "AP Calculus AB Exam Format & Units Overview — Linear System Intersection & Equilibrium",
           "xrange": [
-            -4,
-            4
+            -2,
+            6
           ],
           "yrange": [
-            -3,
-            9
+            -2,
+            10
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "2*x + 1",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "label": "y = 2x + 1"
             },
             {
-              "fn": "2*x - 3",
+              "fn": "-x + 7",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "label": "y = −x + 7"
             }
           ],
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "x": 2,
+              "y": 5,
+              "label": "Intersection (2, 5)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Coordinate intersection of linear system y = 2x + 1 and y = −x + 7 at unique equilibrium point (2, 5).",
           "ar": null
         }
       },
@@ -169,43 +164,81 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "AP Calculus AB Exam Format & Units Overview — Coordinate Curve & Tangent Analysis (1)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
           "fns": [
-            {
-              "fn": "x*x - 1",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 1"
-            },
-            {
-              "fn": "2*x - 2",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
+            "- (x-1)**2 + 4",
+            "(x-4)**2 - 2"
+          ],
+          "xlim": [
+            -1,
+            6
+          ],
+          "ylim": [
+            -3,
+            6
           ],
           "points": [
             {
-              "x": 1,
-              "y": 0,
-              "label": "(1, 0)"
+              "x": 0,
+              "y": 3,
+              "label": "(0, 3)"
             },
             {
-              "x": 0,
-              "y": -1,
-              "label": "(0, -1)"
+              "x": 1,
+              "y": 4,
+              "label": "(c, f(c))"
+            },
+            {
+              "x": 4,
+              "y": -2,
+              "label": "(e, f(e))"
+            },
+            {
+              "x": 5,
+              "y": 1,
+              "label": "(5, f(5))"
+            }
+          ],
+          "shaded": [
+            {
+              "type": "fill_between",
+              "f": "0",
+              "g": "- (x-1)**2 + 4",
+              "xlim": [
+                0,
+                1
+              ]
+            },
+            {
+              "type": "fill_between",
+              "f": "- (x-1)**2 + 4",
+              "g": "0",
+              "xlim": [
+                1,
+                3
+              ]
+            },
+            {
+              "type": "fill_between",
+              "f": "0",
+              "g": "(x-4)**2 - 2",
+              "xlim": [
+                3,
+                4
+              ]
+            },
+            {
+              "type": "fill_between",
+              "f": "(x-4)**2 - 2",
+              "g": "0",
+              "xlim": [
+                4,
+                5
+              ]
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 1 and its instantaneous tangent line at x = 1.",
+          "en": "AP Calculus AB Exam Format & Units Overview — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in AP Calculus AB Exam Format & Units Overview.",
           "ar": null
         }
       },
@@ -256,13 +289,13 @@
       },
       {
         "kind": "callout",
-        "style": "example",
+        "style": "pf",
         "label": {
-          "en": "Worked Example A — Instantaneous Rate of Change & Tangent Line",
+          "en": "◆ Why It Works — First-Principles Derivation (AP Calculus AB Exam Format & Units Overview)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 2x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(3) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 6x^2 - 2x \\).</li><li>Substitute \\( x = 3 \\): \\( f'(3) = 6(3)^2 - 2(3) = 54 - 6 = \\mathbf{48} \\).</li></ol>",
+          "en": "<p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>",
           "ar": null
         }
       },
@@ -270,11 +303,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example B — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example A — AP Calculus AB Exam Format & Units Overview (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 3x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(6) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 9x^2 - 2x \\).</li><li>Substitute \\( x = 6 \\): \\( f'(6) = 9(6)^2 - 2(6) = 324 - 12 = \\mathbf{312} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> Using the Trapezoidal Rule with 2 subintervals on \\([0,6]\\), approximate \\(\\displaystyle\\int_{0}^{6} (-x^2+2x+4)\\,dx\\).</p><p><strong>Step-by-Step Solution:</strong> \\(T=\\dfrac{\\Delta x}{2}\\left[f(x_0)+2f(x_1)+f(x_2)\\right] = \\dfrac{3}{2}\\left[4+2(1)-20\\right] = -21\\)</p>",
           "ar": null
         }
       },
@@ -282,11 +315,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example B — AP Calculus AB Exam Format & Units Overview (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 4x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(9) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 12x^2 - 2x \\).</li><li>Substitute \\( x = 9 \\): \\( f'(9) = 12(9)^2 - 2(9) = 972 - 18 = \\mathbf{954} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> Using a midpoint Riemann sum with 2 subintervals on \\([0,6]\\), approximate \\(\\displaystyle\\int_{0}^{6} (-2x^2-2x+4)\\,dx\\).</p><p><strong>Step-by-Step Solution:</strong> Midpoints at \\(\\Delta x=3\\) intervals give \\(3(-\\frac{7}{2}-\\frac{91}{2}) = -147\\).</p>",
           "ar": null
         }
       },
@@ -294,11 +327,112 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example C — AP Calculus AB Exam Format & Units Overview (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> Using the Trapezoidal Rule with 2 subintervals on \\([0,6]\\), approximate \\(\\displaystyle\\int_{0}^{6} (x^2-3x+4)\\,dx\\).</p><p><strong>Step-by-Step Solution:</strong> \\(T=\\dfrac{\\Delta x}{2}\\left[f(x_0)+2f(x_1)+f(x_2)\\right] = \\dfrac{3}{2}\\left[4+2(4)+22\\right] = 51\\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example D — AP Calculus AB Exam Format & Units Overview (Hard Application)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Problem (Hard):</strong> In the coordinate plane, the graph of the linear function \\( p(t) = mt + b \\) passes through \\( (4, 60) \\) and \\( (8, 100) \\). What is the rate of change \\( m \\) of \\( p(t) \\)?</p><p><strong>Step-by-Step Solution:</strong> The rate of change is \\( m = \\frac{100 - 60}{8 - 4} = \\frac{40}{4} = 10 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Exam Traps — AP Calculus AB Exam Format & Units Overview",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. Adding Successive Percentages or Averaging Speeds Arithmetically:</strong> On College Board AP Calculus AB, a \\(20\\%\\) discount followed by a \\(20\\%\\) increase gives \\(0.80 \\times 1.20 = 0.96\\) (a net \\(4\\%\\) loss, not \\(0\\%\\)). Likewise, average speed for a round trip at \\(40\\) and \\(60\\text{ km/h}\\) is \\(\\dfrac{2(40)(60)}{100} = 48\\text{ km/h}\\), never \\(50\\text{ km/h}\\).</p><p><strong>2. Failing to Flip the Inequality Sign When Multiplying/Dividing by a Negative:</strong> In \\(-4x + 5 \\le 9\\), dividing by \\(-4\\) strictly reverses \\(\\le\\) to \\(\\ge\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (AP Calculus AB Exam Format & Units Overview)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Claiming \\(+25\\%\\) followed by \\(-25\\%\\) returns to \\(100\\%\\)",
+              "ar": null
+            },
+            {
+              "en": "The \\(25\\%\\) reduction applies to the larger base \\(1.25 Q_0\\), not \\(Q_0\\).",
+              "ar": null
+            },
+            {
+              "en": "Multiply scale factors: \\(1.25 \\times 0.75 = 0.9375\\) (a \\(6.25\\%\\) net decrease).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Solving \\(-3x > 12\\) as \\(x > -4\\)",
+              "ar": null
+            },
+            {
+              "en": "Dividing by a negative number reverses order on the real number line.",
+              "ar": null
+            },
+            {
+              "en": "Flip the inequality symbol whenever multiplying or dividing by a negative: \\(x < -4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing round-trip average speed as \\(\\frac{v_1 + v_2}{2}\\)",
+              "ar": null
+            },
+            {
+              "en": "Time spent at the slower speed is longer than time spent at the faster speed.",
+              "ar": null
+            },
+            {
+              "en": "Use total distance over total time: \\(v_{\\text{avg}} = \\frac{2v_1 v_2}{v_1 + v_2}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — AP Calculus AB Exam Format & Units Overview",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>High-Speed Exam Shortcut (College Board AP Calculus AB):</strong> When a linear system asks for a combined expression like \\(3x + 3y\\) rather than \\(x\\) and \\(y\\) individually, add or subtract the two equations directly before isolating either variable—this often yields the target expression in a single step.</p>",
           "ar": null
         }
       },
@@ -311,7 +445,21 @@
         "solution": {
           "en": "<p>The exam consists of 45 Multiple-Choice Questions and 6 Free-Response Questions (51 total). Free Response accounts for exactly <strong>50% of the composite score</strong> (54 out of 108 scaled points).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>AP Calculus AB Exam Format & Units Overview</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -330,7 +478,21 @@
         "solution": {
           "en": "<p>The four required graphing calculator capabilities are: 1. Graphing a function within an arbitrary viewing window; 2. Finding the zeros (roots) of a function; 3. Computing the numerical derivative of a function; 4. Computing the numerical definite integral of a function.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>AP Calculus AB Exam Format & Units Overview</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -349,16 +511,44 @@
         "solution": {
           "en": "<p>Multiple Choice is scaled by 1.2: \\(32 \\times 1.2 = 38.4\\). Free Response points count 1:1: \\(34 \\times 1 = 34\\). Total composite score: \\[ 38.4 + 34 = \\mathbf{72.4\\text{ out of 108 points}}, \\] which safely earns an AP score of <strong>5</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>AP Calculus AB Exam Format & Units Overview</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(32 \\times 1.2 = 38.4\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[AP Calculus AB Exam Format & Units Overview · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> Using a midpoint Riemann sum with 4 subintervals on \\([0,4]\\), approximate \\(\\displaystyle\\int_{0}^{4} (2x^2-2x+2)\\,dx\\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>AP Calculus AB Exam Format & Units Overview</em> and start from \\([0,4]\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\Delta x=1\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Midpoints at \\(\\Delta x=1\\) intervals give \\(1(\\frac{3}{2}+\\frac{7}{2}+\\frac{19}{2}+\\frac{39}{2}) = 34\\).",
           "ar": null
         }
       }

@@ -39,87 +39,66 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Unit 10 · Power Series, Taylor & Maclaurin Series — Coordinate Curve & Tangent Analysis (2)",
+          "title": "Unit 10 · Power Series, Taylor & Maclaurin Series — Geometric Partial Sums & Asymptotic Limit",
           "xrange": [
-            -4,
-            4
+            0,
+            6
           ],
           "yrange": [
-            -3,
-            9
+            0,
+            5
           ],
           "fns": [
             {
-              "fn": "x*x - 2",
+              "fn": "4*(1 - Math.pow(0.5, x))",
               "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "label": "S(x) = 4(1 − 0.5ˣ)"
             },
             {
-              "fn": "2*x - 3",
+              "fn": "4",
               "color": "var(--fig-amber)",
               "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "label": "Limit S∞ = 4"
             }
           ],
           "points": [
             {
               "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
+              "y": 2,
+              "label": "S₁ = 2"
             },
             {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "x": 2,
+              "y": 3,
+              "label": "S₂ = 3"
+            },
+            {
+              "x": 3,
+              "y": 3.5,
+              "label": "S₃ = 3.5"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Convergence of geometric partial sums Sₙ = 4(1 − (1/2)ⁿ) toward the horizontal asymptote S∞ = 4.",
           "ar": null
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Unit 10 · Power Series, Taylor & Maclaurin Series — Coordinate Curve & Tangent Analysis (1)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 1",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 1"
-            },
-            {
-              "fn": "2*x - 2",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": 0,
-              "label": "(1, 0)"
-            },
-            {
-              "x": 0,
-              "y": -1,
-              "label": "(0, -1)"
-            }
+          "type": "numberline",
+          "min": 0,
+          "max": 50,
+          "marks": [
+            15,
+            26,
+            37,
+            48
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 1 and its instantaneous tangent line at x = 1.",
+          "en": "Unit 10 · Power Series, Taylor & Maclaurin Series — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Unit 10 · Power Series, Taylor & Maclaurin Series.",
           "ar": null
         }
       },
@@ -132,6 +111,18 @@
         },
         "body": {
           "en": "<p><strong>Theorem:</strong> For any power series \\(\\sum_{n=0}^\\infty a_n (x - c)^n\\), exactly one of three cases holds:<br>1. The series converges only at the center \\(x = c\\) (\\(R = 0\\)).<br>2. The series converges absolutely for all real numbers \\(x\\) (\\(R = \\infty\\)).<br>3. There exists a real number \\(R > 0\\) (the <strong>radius of convergence</strong>) such that the series converges absolutely for \\(|x - c| < R\\) and diverges for \\(|x - c| > R\\).</p><hr style=\"margin:14px 0;border:0;border-top:1px solid var(--line)\"><p><strong>The Mandatory 3-Step Protocol for Finding the Interval of Convergence:</strong><br>• <strong>Step 1 (Find Radius \\(R\\)):</strong> Apply the Ratio Test: \\[ L = \\lim_{n\\to\\infty} \\left| \\frac{a_{n+1}(x - c)^{n+1}}{a_n(x - c)^n} \\right| = |x - c| \\lim_{n\\to\\infty} \\left| \\frac{a_{n+1}}{a_n} \\right|. \\] Set \\(L < 1\\) to solve for \\(|x - c| < R\\).<br>• <strong>Step 2 (Establish Open Interval):</strong> \\(c - R < x < c + R\\).<br>• <strong>Step 3 (Test Endpoints Individually):</strong> Substitute \\(x = c - R\\) and \\(x = c + R\\) separately into the original series. The Ratio Test is always inconclusive (\\(L = 1\\)) at endpoints, so use the \\(p\\)-series test, Alternating Series Test, or comparison tests to decide whether to include brackets \\([\\dots]\\) or parentheses \\((\\dots)\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Unit 10 · Power Series, Taylor & Maclaurin Series)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why the Geometric Sum Formula &amp; \\(S_\\infty\\) Work:</strong> Write \\(S_n = a + ar + ar^2 + \\dots + ar^{n-1}\\). Multiplying through by \\(r\\) shifts every power up by one:</p>\\[ S_n - rS_n = (a + ar + \\dots + ar^{n-1}) - (ar + ar^2 + \\dots + ar^n) = a - ar^n \\]<p>Factoring \\(S_n(1 - r) = a(1 - r^n)\\) gives \\(S_n = \\dfrac{a(1 - r^n)}{1 - r}\\) for \\(r \\ne 1\\). Taking \\(n \\to \\infty\\), \\(\\lim_{n \\to \\infty} r^n = 0\\) holds if and only if \\(|r| < 1\\), yielding \\(S_\\infty = \\dfrac{a}{1 - r}\\).</p>",
           "ar": null
         }
       },
@@ -151,11 +142,100 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example B — Unit 10 · Power Series, Taylor & Maclaurin Series (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> An arithmetic series \\( \\sum_{k=1}^{s} u_k \\) has first term \\( u_1 = 15 \\) and common difference \\( d = 40 \\). Calculate the partial sum \\( S_{8} \\) for \\( s = 8 \\).</p><p><strong>Step-by-Step Solution:</strong> Using \\( S_n = \\frac{n}{2}(2a_1 + (n - 1)d) \\), \\( S_{8} = \\frac{8}{2}(2(15) + 7(40)) = 1240 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Exam Traps — Unit 10 · Power Series, Taylor & Maclaurin Series",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. Expanding \\((a + bx)^n\\) Without Factoring Out \\(a^n\\):</strong> For negative or fractional \\(n\\) on College Board AP Calculus BC, the formula \\(1 + nu + \\tfrac{n(n-1)}{2!}u^2 + \\dots\\) requires the first term inside the bracket to be <strong>1</strong>: \\((a + bx)^n = a^n\\bigl(1 + \\tfrac{b}{a}x\\bigr)^n\\). Omitting \\(a^n\\) loses almost all marks.</p><p><strong>2. Confusing the \\(n\\)-th Term \\(u_n\\) with the Partial Sum \\(S_n\\):</strong> When given a formula for \\(S_n\\), extract \\(u_n = S_n - S_{n-1}\\) for \\(n \\ge 2\\) and \\(u_1 = S_1\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 10 · Power Series, Taylor & Maclaurin Series)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Applying \\(1 + nx + \\dots\\) directly to \\((3 + x)^{-1}\\)",
+              "ar": null
+            },
+            {
+              "en": "The general binomial series is centered at \\(1 + u\\), not \\(a + u\\).",
+              "ar": null
+            },
+            {
+              "en": "Factor out \\(3^{-1}\\) first: \\(\\frac{1}{3}\\left(1 + \\frac{x}{3}\\right)^{-1}\\) valid for \\(|x| < 3\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Assuming \\(\\lim_{n\\to\\infty} a_n = 0\\) guarantees \\(\\sum a_n\\) converges",
+              "ar": null
+            },
+            {
+              "en": "The harmonic series \\(\\sum \\frac{1}{n}\\) has \\(1/n \\to 0\\) yet diverges to \\(\\infty\\).",
+              "ar": null
+            },
+            {
+              "en": "Use the \\(p\\)-series test (\\(p > 1\\)), Ratio Test, or Integral Test to prove convergence.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Counting terms in \\(\\sum_{k=0}^{n} a_k\\) as \\(n\\) terms",
+              "ar": null
+            },
+            {
+              "en": "Overlooks the \\(k = 0\\) initial index.",
+              "ar": null
+            },
+            {
+              "en": "Use \\(\\text{count} = \\text{upper} - \\text{lower} + 1 = n - 0 + 1 = n + 1\\) terms.",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Unit 10 · Power Series, Taylor & Maclaurin Series",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Binomial Validity Shortcut (College Board AP Calculus BC):</strong> When asked for the range of \\(x\\) for which the expansion of \\((a + bx)^n\\) is valid, write \\(\\left|\\dfrac{bx}{a}\\right| < 1 \\implies |x| < \\left|\\dfrac{a}{b}\\right|\\). If multiplying two expansions, take the <em>intersection</em> (smaller radius) of the two validity intervals.</p>",
           "ar": null
         }
       },
@@ -168,7 +248,21 @@
         "solution": {
           "en": "<p>Apply the Ratio Test: \\[ L = \\lim_{n\\to\\infty} \\left| \\frac{(n+1)! (2x - 1)^{n+1}}{n! (2x - 1)^n} \\right| = |2x - 1| \\lim_{n\\to\\infty} (n+1). \\] For any \\(x \\neq \\frac{1}{2}\\), this limit is \\(\\infty\\). The series converges only at its center \\(x = \\frac{1}{2}\\). Thus, the radius of convergence is \\(\\mathbf{R = 0}\\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 10 · Power Series, Taylor & Maclaurin Series</em> and start from \\(R\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -280,7 +374,21 @@
         "solution": {
           "en": "<p>Evaluate derivatives at \\(c = 4\\):<br>• \\(f(x) = x^{1/2} \\implies f(4) = 2\\).<br>• \\(f'(x) = \\frac{1}{2}x^{-1/2} \\implies f'(4) = \\frac{1}{2(2)} = \\frac{1}{4}\\).<br>• \\(f''(x) = -\\frac{1}{4}x^{-3/2} \\implies f''(4) = -\\frac{1}{4(8)} = -\\frac{1}{32}\\).<br>• \\(f'''(x) = \\frac{3}{8}x^{-5/2} \\implies f'''(4) = \\frac{3}{8(32)} = \\frac{3}{256}\\).</p><p>Assemble the Taylor polynomial: \\[ P_3(x) = 2 + \\frac{1}{4}(x - 4) + \\frac{-1/32}{2!}(x - 4)^2 + \\frac{3/256}{3!}(x - 4)^3 \\] \\[ = \\mathbf{2 + \\frac{1}{4}(x - 4) - \\frac{1}{64}(x - 4)^2 + \\frac{1}{512}(x - 4)^3}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 10 · Power Series, Taylor & Maclaurin Series</em> and start from \\(P_3(x)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(c = 4\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -323,16 +431,44 @@
         "solution": {
           "en": "<p>For \\(f(x) = \\cos(x)\\), \\(f^{(5)}(x) = -\\sin(x)\\). Since \\(|-\\sin(t)| \\le 1\\) for all \\(t\\), we take \\(M = 1\\). Apply the Lagrange Error Bound formula with \\(n = 4, c = 0, x = 0.5\\): \\[ |R_4(0.5)| \\le \\frac{M}{(4+1)!}|0.5 - 0|^{4+1} = \\frac{1}{5!} (0.5)^5 = \\frac{1}{120} \\left(\\frac{1}{32}\\right) = \\frac{1}{3840}. \\] Because \\(3840 > 3000\\), it follows that: \\[ \\frac{1}{3840} < \\frac{1}{3000} \\implies \\mathbf{|\\cos(0.5) - P_4(0.5)| < \\frac{1}{3000}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 10 · Power Series, Taylor & Maclaurin Series</em> and start from \\(P_4(x)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(f(x) = \\cos(x)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Unit 10 · Power Series, Taylor & Maclaurin Series · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> A geometric progression \\( (u_{s}) \\) has initial term \\( u_1 = 20 \\) and common ratio \\( r = 2 \\). Calculate the fifth term \\( u_5 \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 10 · Power Series, Taylor & Maclaurin Series</em> and start from \\( (u_{s}) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( u_5 = u_1 r^4 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Using \\( u_5 = u_1 r^4 \\), we get \\( 20 \\times 16 = 320 \\).",
           "ar": null
         }
       }

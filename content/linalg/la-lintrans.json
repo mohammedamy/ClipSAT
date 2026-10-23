@@ -29,44 +29,44 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Linear Transformations, Matrix Representations & Change of Basis — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
+          "type": "transformation_grid",
+          "title": "Linear Transformations, Matrix Representations & Change of Basis — Linear Transformation & Basis Action",
+          "original": [
+            [
+              1,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              3
+            ]
           ],
-          "yrange": [
-            -3,
-            9
+          "transformed": [
+            [
+              -1,
+              1
+            ],
+            [
+              -1,
+              3
+            ],
+            [
+              -3,
+              2
+            ]
           ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
+          "labels": [
+            "A",
+            "B",
+            "C"
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
           "ar": null
         }
       },
@@ -480,11 +480,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example D — Linear Transformations, Matrix Representations & Change of Basis (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> Find the standard matrix of \\( T(x,y)=\\langle - 3 x - y, - 2 x - y, - x - 2 y \\rangle \\).</p><p><strong>Step-by-Step Solution:</strong> The columns are \\( T(\\mathbf e_1)=\\langle -3, -2, -1 \\rangle \\) and \\( T(\\mathbf e_2)=\\langle -1, -1, -2 \\rangle \\). <strong>Final Answer:</strong> \\( \\left[\\begin{matrix}-3 & -1\\\\-2 & -1\\\\-1 & -2\\end{matrix}\\right] \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Linear Transformations, Matrix Representations & Change of Basis)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Computing angle at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)",
+              "ar": null
+            },
+            {
+              "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
+              "ar": null
+            },
+            {
+              "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
+              "ar": null
+            },
+            {
+              "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
+              "ar": null
+            },
+            {
+              "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Assuming \\((AB)^{-1} = A^{-1}B^{-1}\\)",
+              "ar": null
+            },
+            {
+              "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
+              "ar": null
+            },
+            {
+              "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Linear Transformations, Matrix Representations & Change of Basis",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Linear Algebra & Matrix Theory):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -497,7 +574,21 @@
         "solution": {
           "en": "<p>By the Dimension Theorem, \\( \\operatorname{nullity}(T) + \\operatorname{rank}(T) = \\dim(\\text{domain}) \\). Here: \\[ 3 + \\operatorname{rank}(T) = 7 \\implies \\operatorname{rank}(T) = \\dim(\\operatorname{im} T) = 4. \\] Since \\( \\operatorname{dim}(\\operatorname{im} T) = 4 = \\dim(\\mathbb{R}^4) \\), the range spans the entire codomain, so \\( T \\) is <strong>surjective (onto)</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Linear Transformations, Matrix Representations & Change of Basis</em> and start from \\( T: \\mathbb{R}^7 \\to \\mathbb{R}^4 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\operatorname{nullity}(T) + \\operatorname{rank}(T) = \\dim(\\text{domain}) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -508,27 +599,69 @@
         "solution": {
           "en": "<p><strong>Step 1: Track images of standard basis vectors:</strong><br>For \\( \\mathbf{e}_1 = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} \\): Rotation by \\( 90^\\circ \\) CCW sends \\( \\mathbf{e}_1 \\) to \\( \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} \\). Reflection across \\( y = x \\) swaps coordinates: \\( \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} \\longrightarrow \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} \\).<br>For \\( \\mathbf{e}_2 = \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix} \\): Rotation by \\( 90^\\circ \\) CCW sends \\( \\mathbf{e}_2 \\) to \\( \\begin{pmatrix} -1 \\\\ 0 \\end{pmatrix} \\). Reflection across \\( y = x \\) swaps coordinates: \\( \\begin{pmatrix} -1 \\\\ 0 \\end{pmatrix} \\longrightarrow \\begin{pmatrix} 0 \\\\ -1 \\end{pmatrix} \\).</p><p><strong>Step 2: Assemble standard matrix:</strong> The columns of \\( [T] \\) are \\( T(\\mathbf{e}_1) \\) and \\( T(\\mathbf{e}_2) \\): \\[ [T] = \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}. \\] Alternatively, via matrix multiplication of standard operators: \\[ [T] = [M_{\\pi/4}] [R_{\\pi/2}] = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix} \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix} = \\begin{pmatrix} 1 & 0 \\\\ 0 & -1 \\end{pmatrix}. \\] This composite operator is geometrically equivalent to reflection across the x-axis!</p>",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Linear Transformations, Matrix Representations & Change of Basis</em> and start from \\( [T] \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\mathbf{e}_1 = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Easy]</strong> \\( S \\) has matrix \\( \\left[\\begin{matrix}1 & -3\\\\2 & -1\\end{matrix}\\right] \\) and \\( T \\) has matrix \\( \\left[\\begin{matrix}2 & 1\\\\-1 & 1\\end{matrix}\\right] \\). Find the matrix of \\( S\\circ T \\) (apply \\( T \\) first).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Linear Transformations, Matrix Representations & Change of Basis</em> and start from \\( S \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( (S\\circ T)(\\mathbf x)=A(B\\mathbf x) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "\\( (S\\circ T)(\\mathbf x)=A(B\\mathbf x) \\), so the matrix is \\( AB=\\left[\\begin{matrix}5 & -2\\\\5 & 1\\end{matrix}\\right] \\). <strong>Answer:</strong> \\( \\left[\\begin{matrix}5 & -2\\\\5 & 1\\end{matrix}\\right] \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Linear Transformations, Matrix Representations & Change of Basis · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> A \\( 3 \\times 3 \\) symmetric matrix \\( E_{y} \\) has eigenvalues \\( \\lambda_1 = 12 \\), \\( \\lambda_2 = 19 \\), and \\( \\lambda_3 = 2 \\). Find the exact value of the trace \\( \\text{tr}(E_{y}) \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Linear Transformations, Matrix Representations & Change of Basis</em> and start from \\( 3 \\times 3 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\lambda_1 + \\lambda_2 + \\lambda_3 = 33 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Linear Transformations, Matrix Representations & Change of Basis · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "The trace equals \\( \\lambda_1 + \\lambda_2 + \\lambda_3 = 33 \\).",
           "ar": null
         }
       }

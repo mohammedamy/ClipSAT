@@ -41,46 +41,45 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Sequences, Series & Complex Numbers",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Algebraic &amp; Geometric Duality of \\(\\mathbb{C}\\):</strong> Every complex number \\(z = x + iy\\) corresponds bijectively to a point \\((x, y)\\) in the Argand plane with modulus \\(r = |z| = \\sqrt{x^2 + y^2}\\) and principal argument \\(\\theta = \\arg(z) \\in (-\\pi, \\pi]\\). In exponential Euler form, \\(z = re^{i\\theta} = r(\\cos\\theta + i\\sin\\theta)\\), multiplication scales moduli and adds arguments: \\(z_1 z_2 = r_1 r_2 e^{i(\\theta_1 + \\theta_2)}\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Sequences, Series & Complex Numbers — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
+          "type": "argand",
+          "title": "Sequences, Series & Complex Numbers — Argand Plane & Conjugate Pair",
           "points": [
             {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
+              "re": 5,
+              "im": 7,
+              "label": "z = 5 + 7i",
+              "vector": true
             },
             {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
+              "re": 5,
+              "im": -7,
+              "label": "z* = 5 - 7i",
+              "vector": true,
+              "color": "amber"
             }
-          ]
+          ],
+          "circle": {
+            "re": 0,
+            "im": 0,
+            "r": 8.6
+          }
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Argand diagram showing complex vector z = 5 + 7i, its conjugate z* = 5 − 7i, and modulus circle |z| = √74.",
           "ar": null
         }
       },
@@ -296,6 +295,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Sequences, Series & Complex Numbers)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why De Moivre's Theorem &amp; Conjugate Root Pairing Hold:</strong> By Euler's identity \\(e^{i\\theta} = \\cos\\theta + i\\sin\\theta\\), raising \\(z = re^{i\\theta}\\) to the \\(n\\)-th power gives:</p>\\[ z^n = \\left(re^{i\\theta}\\right)^n = r^n e^{in\\theta} = r^n(\\cos(n\\theta) + i\\sin(n\\theta)) \\]<p>Furthermore, if \\(P(z) = \\sum_{k=0}^n a_k z^k\\) has real coefficients (\\(a_k \\in \\mathbb{R}\\)), taking complex conjugates across \\(P(z_0) = 0\\) uses \\(\\overline{z_1 + z_2} = \\bar{z}_1 + \\bar{z}_2\\) and \\(\\bar{a}_k = a_k\\) to prove \\(P(\\bar{z}_0) = \\overline{P(z_0)} = 0\\). Thus non-real roots of real polynomials always occur in conjugate pairs \\(\\alpha \\pm i\\beta\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 3.A — Arithmetic Progression Term & Sum Determination",
@@ -334,11 +345,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example D — Sequences, Series & Complex Numbers (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> Consider the arithmetic sequence where the first term is \\( a_1 = 5 \\) and the common difference is \\( d = 3 \\). What is the fifth term of this sequence?</p><p><strong>Step-by-Step Solution:</strong> The formula for the \\(n\\)-th term of an arithmetic sequence is given by \\( a_n = a_1 + (n-1)d \\), where \\( a_1 \\) is the first term and \\( d \\) is the common difference.\nIn this case, \\( a_1 = 5 \\) and \\( d = 3 \\). We want to find the fifth term, so \\( n = 5 \\).\nSubstituting these values into the formula:\n\\( a_5 = 5 + (5-1) \\times 3 \\)\n\\( a_5 = 5 + (4) \\times 3 \\)\n\\( a_5 = 5 + 12 \\)\n\\( a_5 = 17 \\)</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Sequences, Series & Complex Numbers)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Taking \\(\\arg(-5 + 5i) = \\tan^{-1}(-1) = -\\pi/4\\)",
+              "ar": null
+            },
+            {
+              "en": "Places a 2nd-quadrant complex number in the 4th quadrant.",
+              "ar": null
+            },
+            {
+              "en": "Plot in Argand plane first: \\(\\arg(-{p} + {p}i) = \\pi - \\pi/4 = 3\\pi/4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Simplifying \\(i^2 = 1\\) in \\((a+bi)(c+di)\\)",
+              "ar": null
+            },
+            {
+              "en": "Forgets \\(i^2 = -1\\), flipping the sign of \\(bd\\) in the real part.",
+              "ar": null
+            },
+            {
+              "en": "Group real and imaginary parts carefully: \\((ac - bd) + (ad + bc)i\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Reading center of \\(|z + 5 - 7i| = 4\\) as \\((5, -7)\\)",
+              "ar": null
+            },
+            {
+              "en": "Fails to rewrite in standard form \\(|z - z_0| = r\\).",
+              "ar": null
+            },
+            {
+              "en": "Factor out the minus sign: \\(|z - (-5 + 7i)| = 4 \\implies z_0 = (-5, 7)\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Sequences, Series & Complex Numbers",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Verification Tip (Egyptian Scholastic Test (EST II — Math Level 1)):</strong> Always check complex division \\(\\dfrac{z_1}{z_2}\\) by verifying that \\(|z_1 / z_2| = |z_1| / |z_2|\\). If the moduli ratio does not match, you multiplied the denominator by \\(a + bi\\) instead of the conjugate \\(a - bi\\).</p>",
           "ar": null
         }
       },
@@ -351,7 +439,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Use relationship between \\(S_n\\) and \\(a_n\\):</strong> \\[ a_n = S_n - S_{n-1} \\]</p><p><strong>Step 2: Method 1 (Direct evaluation):</strong> \\[ S_{10} = 2(10^2) + 3(10) = 2(100) + 30 = 230 \\] \\[ S_9 = 2(9^2) + 3(9) = 2(81) + 27 = 162 + 27 = 189 \\] \\[ a_{10} = S_{10} - S_9 = 230 - 189 = \\mathbf{41}. \\]</p><p><strong>Method 2 (General \\(n\\)th term formula):</strong> \\[ a_n = (2n^2 + 3n) - [2(n-1)^2 + 3(n-1)] = (2n^2 + 3n) - (2n^2 - 4n + 2 + 3n - 3) = 4n + 1 \\] For \\(n = 10\\): \\(a_{10} = 4(10) + 1 = \\mathbf{41}\\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences, Series & Complex Numbers</em> and start from \\(n\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(S_n\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -362,7 +464,21 @@
         "solution": {
           "en": "<p><strong>(a) Simplify the quotient and power of \\(i\\):</strong></p><ul><li>First evaluate \\(\\dfrac{5+2i}{2-3i}\\): multiply numerator and denominator by the conjugate \\(2+3i\\): \\[ \\dfrac{(5+2i)(2+3i)}{(2-3i)(2+3i)} = \\dfrac{10 + 15i + 4i + 6i^2}{4 - 9i^2} = \\dfrac{10 - 6 + 19i}{4 + 9} = \\dfrac{4 + 19i}{13}. \\]</li><li>Now evaluate \\(i^{43}\\): \\(43 = 4(10) + 3\\), remainder 3, so \\(i^{43} = i^3 = -i = -\\dfrac{13i}{13}\\).</li><li>Combine terms: \\[ z = \\dfrac{4 + 19i}{13} - i = \\dfrac{4 + 19i - 13i}{13} = \\dfrac{4 + 6i}{13} = \\mathbf{\\dfrac{4}{13} + \\dfrac{6}{13}i}. \\]</li></ul><p><strong>(b) Modulus \\(|z|\\):</strong> \\[ |z| = \\sqrt{\\left(\\frac{4}{13}\\right)^2 + \\left(\\frac{6}{13}\\right)^2} = \\sqrt{\\frac{16 + 36}{169}} = \\sqrt{\\frac{52}{169}} = \\dfrac{\\sqrt{52}}{13} = \\mathbf{\\dfrac{2\\sqrt{13}}{13}} \\approx 0.555. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences, Series & Complex Numbers</em> and start from \\(z = \\dfrac{5 + 2i}{2 - 3i} + i^{43}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(i\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -373,7 +489,21 @@
         "solution": {
           "en": "<p><strong>(a) Find common ratio \\(r\\):</strong> \\[ S_\\infty = \\frac{a_1}{1 - r} \\implies 24 = \\frac{18}{1 - r} \\implies 1 - r = \\frac{18}{24} = \\frac{3}{4} \\implies r = 1 - \\frac{3}{4} = \\mathbf{\\frac{1}{4}}. \\]</p><p><strong>(b) Calculate 3rd term \\(a_3\\):</strong> \\[ a_3 = a_1 \\cdot r^2 = 18 \\cdot \\left(\\frac{1}{4}\\right)^2 = 18 \\cdot \\frac{1}{16} = \\mathbf{\\frac{9}{8} = 1.125}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences, Series & Complex Numbers</em> and start from \\(a_1 = 18\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(r\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -384,7 +514,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Identify geometric series parameters:</strong> For \\(k = 1\\), \\(a_1 = 3(2)^0 = 3\\). The common ratio is \\(r = 2\\) and the number of terms is \\(n = 6\\).</p><p><strong>Step 2: Apply finite geometric sum formula:</strong> \\[ S_6 = \\frac{a_1(1 - r^6)}{1 - r} = \\frac{3(1 - 2^6)}{1 - 2} = \\frac{3(1 - 64)}{-1} = \\frac{3(-63)}{-1} = 3 \\times 63 = \\mathbf{189}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences, Series & Complex Numbers</em> and start from \\( \\sum_{k=1}^{6} 3(2)^{k-1} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(k = 1\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

@@ -355,6 +355,18 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (AI HL — Additional Topics)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Successive Multipliers &amp; Harmonic Average Speed Work:</strong> If a quantity \\(Q_0\\) undergoes a percentage change \\(p\\%\\) followed by \\(q\\%\\), the compound multiplier is the product of individual scale factors:</p>\\[ Q_{\\text{final}} = Q_0\\left(1 + \\frac{p}{100}\\right)\\!\\left(1 + \\frac{q}{100}\\right) = Q_0\\left(1 + \\frac{p + q}{100} + \\frac{pq}{10000}\\right) \\]<p>Notice the cross term \\(\\dfrac{pq}{10000}\\): an increase of \\(p\\%\\) followed by a decrease of \\(p\\%\\) yields \\(Q_0\\bigl(1 - (p/100)^2\\bigr) < Q_0\\). Similarly, traveling equal distance \\(d\\) at speeds \\(v_1\\) and \\(v_2\\) takes total time \\(T = \\frac{d}{v_1} + \\frac{d}{v_2}\\), so average speed is the harmonic mean \\(v_{\\text{avg}} = \\dfrac{2d}{d/v_1 + d/v_2} = \\dfrac{2v_1 v_2}{v_1 + v_2}\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "workedExampleCard",
         "label": {
           "en": "Worked Example AI.1 — Matrix Inversion &amp; System Solving",
@@ -570,6 +582,83 @@
         }
       },
       {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (AI HL — Additional Topics)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Claiming \\(+25\\%\\) followed by \\(-25\\%\\) returns to \\(100\\%\\)",
+              "ar": null
+            },
+            {
+              "en": "The \\(25\\%\\) reduction applies to the larger base \\(1.25 Q_0\\), not \\(Q_0\\).",
+              "ar": null
+            },
+            {
+              "en": "Multiply scale factors: \\(1.25 \\times 0.75 = 0.9375\\) (a \\(6.25\\%\\) net decrease).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Solving \\(-3x > 12\\) as \\(x > -4\\)",
+              "ar": null
+            },
+            {
+              "en": "Dividing by a negative number reverses order on the real number line.",
+              "ar": null
+            },
+            {
+              "en": "Flip the inequality symbol whenever multiplying or dividing by a negative: \\(x < -4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing round-trip average speed as \\(\\frac{v_1 + v_2}{2}\\)",
+              "ar": null
+            },
+            {
+              "en": "Time spent at the slower speed is longer than time spent at the faster speed.",
+              "ar": null
+            },
+            {
+              "en": "Use total distance over total time: \\(v_{\\text{avg}} = \\frac{2v_1 v_2}{v_1 + v_2}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — AI HL — Additional Topics",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>High-Speed Exam Shortcut (IB Diploma Mathematics: AA / AI Higher Level (Papers 1, 2 & 3)):</strong> When a linear system asks for a combined expression like \\(3x + 3y\\) rather than \\(x\\) and \\(y\\) individually, add or subtract the two equations directly before isolating either variable—this often yields the target expression in a single step.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "A weighted network has edges: DE = 1, BC = 2, AB = 3, CD = 4, BD = 5, CE = 6, AC = 7, AD = 8. Use Kruskal's algorithm to determine the minimum spanning tree and compute its total weight.",
@@ -578,7 +667,21 @@
         "solution": {
           "en": "1. Sort all edges in non-decreasing order of weight:<br>DE (1), BC (2), AB (3), CD (4), BD (5), CE (6), AC (7), AD (8).<br>2. Select edges avoiding cycles:<br>- Add DE (weight 1) [Vertices connected: {D, E}]<br>- Add BC (weight 2) [Vertices connected: {D, E}, {B, C}]<br>- Add AB (weight 3) [Vertices connected: {D, E}, {A, B, C}]<br>- Add CD (weight 4) [Merges components: {A, B, C, D, E} - all 5 vertices connected!]<br>3. Check edge count: \\(V - 1 = 5 - 1 = 4\\) edges selected.<br>4. Total MST Weight: \\[ 1 + 2 + 3 + 4 = 10. \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>AI HL — Additional Topics</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(V - 1 = 5 - 1 = 4\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -589,27 +692,69 @@
         "solution": {
           "en": "Kruskal's algorithm finds a global minimum spanning tree that connects all vertices in the graph with minimum total edge weight, without reference to any single starting vertex. Dijkstra's algorithm finds the shortest path routes from a designated single source vertex to all other individual vertices. A minimum spanning tree does not necessarily contain the shortest paths between arbitrary pairs of vertices.",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>AI HL — Additional Topics</em> and start from \\(W\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Medium]</strong> The graph of the function \\( f(x) = ax^2 - 6x + c \\) is shown below. The graph has a vertex at the point (3, -9) and passes through the point (0, 0). Determine the values of \\(a\\) and \\(c\\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>AI HL — Additional Topics</em> and start from \\( f(x) = ax^2 - 6x + c \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( f(x) = ax^2 - 6x + c \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "The function is given by \\( f(x) = ax^2 - 6x + c \\). \n\nThe vertex of a parabola in the form \\( f(x) = Ax^2 + Bx + C \\) is located at \\( x = -\\frac{B}{2A} \\). In this case, \\( A = a \\) and \\( B = -6 \\). \nTherefore, the x-coordinate of the vertex is \\( x = -\\frac{-6}{2a} = \\frac{6}{2a} = \\frac{3}{a} \\). \nWe are given that the vertex is at (3, -9), so the x-coordinate of the vertex is 3. \nEquating the two expressions for the x-coordinate of the vertex: \n\\( \\frac{3}{a} = 3 \\)\nMultiplying both sides by \\( a \\) gives \\( 3 = 3a \\), so \\( a = 1 \\). \n\nNow, we use the y-coordinate of the vertex, which is \\( f(3) = -9 \\). Substitute \\( a=1 \\) into the function: \\( f(x) = x^2 - 6x + c \\). \nSo, \\( f(3) = (3)^2 - 6(3) + c = 9 - 18 + c = -9 + c \\). \nWe are given that \\( f(3) = -9 \\), so: \n\\( -9 + c = -9 \\)\nThis implies \\( c = 0 \\). \n\nAlternatively, we are given that the graph passes through the point (0, 0). This means \\( f(0) = 0 \\). \nSubstituting \\( x=0 \\) into \\( f(x) = ax^2 - 6x + c \\): \n\\( f(0) = a(0)^2 - 6(0) + c = c \\). \nSince \\( f(0) = 0 \\), we have \\( c = 0 \\). \n\nNow use the vertex information with \\( c=0 \\). The function is \\( f(x) = ax^2 - 6x \\). \nThe x-coordinate of the vertex is \\( \\frac{3}{a} \\). We are given that the vertex is at x=3. \n\\( \\frac{3}{a} = 3 \\implies a = 1 \\). \n\nThus, \\( a=1 \\) and \\( c=0 \\). This corresponds to choice A. <strong>[M1] [A1]</strong> <strong>Answer:</strong> \\(a=2, c=0\\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[AI HL — Additional Topics · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> The diagram shows the graph of the function \\(f(x) = x^2 - 4x + 3\\) and a line \\(y = g(x)\\). The line \\(y = g(x)\\) intersects the parabola \\(y = f(x)\\) at points A and B. Point A is given as \\((1, 0)\\). Find the x-coordinate of point B.",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>AI HL — Additional Topics</em> and start from \\(f(x) = x^2 - 4x + 3\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(f(x) = g(x)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[AI HL — Additional Topics · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "The points of intersection A and B are found by setting the two functions equal to each other: \\(f(x) = g(x)\\). We are given \\(f(x) = x^2 - 4x + 3\\) and from the diagram, the line is \\(y = x - 1\\), so \\(g(x) = x - 1\\). \n\nSetting them equal: \\(x^2 - 4x + 3 = x - 1\\).\nRearranging the equation to form a quadratic equation: \\(x^2 - 4x - x + 3 + 1 = 0\\), which simplifies to \\(x^2 - 5x + 4 = 0\\). \n\nWe can factor this quadratic equation: \\((x - 1)(x - 4) = 0\\). \n\nThe solutions for x are \\(x = 1\\) and \\(x = 4\\). \n\nWe are given that point A has an x-coordinate of 1. Therefore, point B must have the other x-coordinate, which is 4. \n\nCommon algebraic trap: Students might forget to rearrange the equation into the standard quadratic form \\(ax^2 + bx + c = 0\\) before solving, or make sign errors during rearrangement. <strong>[M1] [A1]</strong>",
           "ar": null
         }
       }

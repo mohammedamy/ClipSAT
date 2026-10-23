@@ -40,41 +40,27 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Trigonometry",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Unit Circle Periodicity, Harmonic Synthesis &amp; Triangle Laws:</strong> Every angle \\(\\theta\\) on the unit circle defines \\((\\cos\\theta, \\sin\\theta)\\) with fundamental Pythagorean invariance \\(\\cos^2\\theta + \\sin^2\\theta \\equiv 1\\). Linear combinations of同-frequency waves \\(a\\cos\\theta \\pm b\\sin\\theta\\) collapse into a single phase-shifted sinusoid \\(R\\cos(\\theta \\mp \\alpha)\\) where \\(R = \\sqrt{a^2 + b^2}\\) and \\(\\tan\\alpha = b/a\\), immediately revealing the exact maximum \\(+R\\) and minimum \\(-R\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Trigonometry — Harmonic Wave & Phase Profile (2)",
-          "xrange": [
-            0,
-            6.28
-          ],
-          "yrange": [
-            -3.5,
-            3.5
-          ],
-          "fns": [
-            {
-              "fn": "3*Math.sin(x)",
-              "color": "var(--fig-indigo)",
-              "label": "y = 3 sin(x)"
-            },
-            {
-              "fn": "2*Math.cos(x)",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "y = 2 cos(x)"
-            }
-          ],
-          "points": [
-            {
-              "x": 1.57,
-              "y": 3,
-              "label": "Peak (π/2, 3)"
-            }
-          ]
+          "type": "unit_circle",
+          "title": "Trigonometry — Unit Circle Reference Angle & Quadrant Projections",
+          "angle": 120,
+          "label": "θ = 2π/3 (120°)"
         },
         "caption": {
-          "en": "Periodic sine and cosine waveforms showing amplitude and quarter-period phase shift.",
+          "en": "Unit circle showing terminal ray at θ = 2π/3 (120°) with exact coordinates (−1/2, √3/2).",
           "ar": null
         }
       },
@@ -249,6 +235,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Trigonometry)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why the Harmonic \\(R\\)-Formula &amp; Cosine Rule Hold:</strong> Expanding \\(R\\cos(\\theta - \\alpha)\\) via the compound-angle identity gives:</p>\\[ R\\cos(\\theta - \\alpha) = (R\\cos\\alpha)\\cos\\theta + (R\\sin\\alpha)\\sin\\theta \\]<p>Matching coefficients with \\(a\\cos\\theta + b\\sin\\theta\\) requires \\(R\\cos\\alpha = a\\) and \\(R\\sin\\alpha = b\\). Squaring and adding yields \\(R^2(\\cos^2\\alpha + \\sin^2\\alpha) = a^2 + b^2 \\implies R = \\sqrt{a^2 + b^2}\\), and dividing gives \\(\\tan\\alpha = \\dfrac{b}{a}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked example 5.A",
@@ -275,11 +273,11 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example C — Trigonometry (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> Simplify \\( \\sin^2(\\theta)+\\cos^2(\\theta) \\).</p><p><strong>Step-by-Step Solution:</strong> By the Pythagorean identity, \\( \\sin^2(\\theta)+\\cos^2(\\theta)=1 \\).</p>",
           "ar": null
         }
       },
@@ -287,11 +285,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example D — Trigonometry (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> Point \\( U \\) has polar coordinates \\( (r, \\theta) = (46, 60^\\circ) \\) in the plane. Calculate its Cartesian coordinate \\( r = r\\cos\\theta \\).</p><p><strong>Step-by-Step Solution:</strong> Using \\( r = 46\\cos(60^\\circ) = 46 \\times \\frac{1}{2} = 23 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Trigonometry)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Dividing \\(\\sin 2\\theta = \\sin\\theta\\) by \\(\\sin\\theta\\)",
+              "ar": null
+            },
+            {
+              "en": "Eliminates valid solutions where \\(\\sin\\theta = 0\\).",
+              "ar": null
+            },
+            {
+              "en": "Expand \\(2\\sin\\theta\\cos\\theta - \\sin\\theta = 0\\) and factor \\(\\sin\\theta(2\\cos\\theta - 1) = 0\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using \\(A = \\frac{1}{2}r^2\\theta\\) with \\(\\theta = 60^\\circ\\)",
+              "ar": null
+            },
+            {
+              "en": "Overestimates sector area by a factor of \\(180/\\pi \\approx 57.3\\).",
+              "ar": null
+            },
+            {
+              "en": "Convert to radians first: \\(\\theta = 60^\\circ \\times \\frac{\\pi}{180^\\circ} = \\frac{\\pi}{3}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Finding only one solution to \\(\\sin(2x) = 1/2\\) on \\([0, 2\\pi]\\)",
+              "ar": null
+            },
+            {
+              "en": "Forgets that if \\(x \\in [0, 2\\pi]\\), the transformed angle \\(u = 2x\\) spans \\([0, 4\\pi]\\) (4 roots).",
+              "ar": null
+            },
+            {
+              "en": "Transform the interval to \\(u \\in [0, 4\\pi]\\) before dividing by 2.",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Trigonometry",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>All-Solutions Checklist (Cambridge International AS Level (9709 Paper 1 / Paper 4 / Paper 5)):</strong> When solving \\(\\trig(kx + \\phi) = c\\) on \\([0, 2\\pi]\\), immediately write down the transformed interval \\(\\phi \\le u \\le 2k\\pi + \\phi\\), list all ASTC quadrant angles in that range, and only divide by \\(k\\) at the very last step.</p>",
           "ar": null
         }
       },
@@ -304,7 +379,21 @@
         "solution": {
           "en": "Use the Pythagorean identity \\(\\cos^2\\theta = 1 - \\sin^2\\theta\\): \\[2(1 - \\sin^2\\theta) - \\sin\\theta - 1 = 0 \\Rightarrow 2 - 2\\sin^2\\theta - \\sin\\theta - 1 = 0 \\Rightarrow -2\\sin^2\\theta - \\sin\\theta + 1 = 0\\] Multiply by \\(-1\\): \\(2\\sin^2\\theta + \\sin\\theta - 1 = 0\\). Factor: \\((2\\sin\\theta - 1)(\\sin\\theta + 1) = 0\\).<br>1. \\(2\\sin\\theta - 1 = 0 \\Rightarrow \\sin\\theta = \\tfrac{1}{2}\\). In \\([0^\\circ, 360^\\circ]\\), \\(\\theta = 30^\\circ\\) or \\(180^\\circ - 30^\\circ = 150^\\circ\\).<br>2. \\(\\sin\\theta + 1 = 0 \\Rightarrow \\sin\\theta = -1\\). In \\([0^\\circ, 360^\\circ]\\), \\(\\theta = 270^\\circ\\).<br>The complete solution set is \\(\\theta = 30^\\circ, 150^\\circ, 270^\\circ\\).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Trigonometry</em> and start from \\(2\\cos^2\\theta - \\sin\\theta - 1 = 0\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\cos^2\\theta = 1 - \\sin^2\\theta\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -315,7 +404,21 @@
         "solution": {
           "en": "Start with the left-hand side and write over a common denominator: \\[\\text{LHS} = \\dfrac{\\cos\\theta(1 + \\sin\\theta) - \\cos\\theta(1 - \\sin\\theta)}{(1 - \\sin\\theta)(1 + \\sin\\theta)}\\] Expand the numerator: \\(\\cos\\theta + \\cos\\theta\\sin\\theta - \\cos\\theta + \\cos\\theta\\sin\\theta = 2\\cos\\theta\\sin\\theta\\).<br>Expand the denominator: \\(1 - \\sin^2\\theta = \\cos^2\\theta\\).<br>Substitute both back: \\[\\text{LHS} = \\dfrac{2\\cos\\theta\\sin\\theta}{\\cos^2\\theta} = \\dfrac{2\\sin\\theta}{\\cos\\theta} = 2\\tan\\theta = \\text{RHS}\\] Q.E.D.",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Trigonometry</em> and write down the target quantity and domain conditions.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -326,16 +429,69 @@
         "solution": {
           "en": "Let \\(u = 2x - 20^\\circ\\). As \\(0^\\circ \\le x \\le 180^\\circ\\), the domain for \\(u\\) is \\(-20^\\circ \\le u \\le 340^\\circ\\).<br>Since \\(\\tan 60^\\circ = \\sqrt{3}\\), the principal solution is \\(u = 60^\\circ\\). Tangent has a period of \\(180^\\circ\\), so the solutions for \\(u\\) within \\([-20^\\circ, 340^\\circ]\\) are: \\[u = 60^\\circ, \\quad u = 60^\\circ + 180^\\circ = 240^\\circ\\] Now solve for \\(x = \\tfrac{u + 20^\\circ}{2}\\):<br>1. For \\(u = 60^\\circ\\): \\(x = \\tfrac{60^\\circ + 20^\\circ}{2} = 40^\\circ\\).<br>2. For \\(u = 240^\\circ\\): \\(x = \\tfrac{240^\\circ + 20^\\circ}{2} = 130^\\circ\\).<br>Both solutions lie within \\([0^\\circ, 180^\\circ]\\). Thus \\(x = 40^\\circ\\) or \\(x = 130^\\circ\\).",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Trigonometry</em> and start from \\(\\tan(2x - 20^\\circ) = \\sqrt{3}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(u = 2x - 20^\\circ\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 4 · Hard]</strong> In the plane, the ellipse \\( P: \\dfrac{r^2}{1369} + \\dfrac{y^2}{81} = 1 \\) has foci at \\( (\\pm c, 0) \\). Calculate the squared focal distance \\( c^2 \\) of \\( P \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Trigonometry</em> and start from \\( P: \\dfrac{r^2}{1369} + \\dfrac{y^2}{81} = 1 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( c^2 = a^2 - b^2 = 1369 - 81 = 1288 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "For an ellipse, \\( c^2 = a^2 - b^2 = 1369 - 81 = 1288 \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Trigonometry · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 5 · Easy]</strong> Simplify \\( \\dfrac{\\sin(x)}{\\cos(x)} \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Trigonometry</em> and start from \\( \\dfrac{\\sin(x)}{\\cos(x)} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\dfrac{\\sin(x)}{\\cos(x)}=\\tan(x) \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "By definition, \\( \\dfrac{\\sin(x)}{\\cos(x)}=\\tan(x) \\). <strong>Answer:</strong> \\(\\tan(x)\\).",
           "ar": null
         }
       }

@@ -25,13 +25,13 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "circle",
-          "radius": 6,
-          "labelR": "r = 6",
-          "chordAngle": 120
+          "type": "unit_circle",
+          "title": "Trigonometry & Triangle Laws — Unit Circle Reference Angle & Quadrant Projections",
+          "angle": 120,
+          "label": "θ = 2π/3 (120°)"
         },
         "caption": {
-          "en": "Circle sector and chord geometry with radius r = 6 and central angle 120°.",
+          "en": "Unit circle showing terminal ray at θ = 2π/3 (120°) with exact coordinates (−1/2, √3/2).",
           "ar": null
         }
       },
@@ -56,6 +56,18 @@
         },
         "body": {
           "en": "<p>One radian is the measure of a central angle that subtends an arc equal in length to the circle's radius \\(r\\). The fundamental equivalence is \\[ \\pi \\text{ radians} = 180^\\circ \\implies 1 \\text{ rad} = \\frac{180^\\circ}{\\pi} \\approx 57.296^\\circ, \\quad 1^\\circ = \\frac{\\pi}{180} \\text{ rad}. \\]</p><p>For a central angle \\(\\theta\\) measured strictly in <strong>radians</strong> on a circle of radius \\(r\\):</p>\\[\\text{Arc Length: } s = r\\theta, \\qquad \\text{Sector Area: } A = \\frac{1}{2}r^2\\theta.\\]<table class=\"exam-table\" style=\"margin-top:6px\"><thead><tr><th>Degrees</th><th>Radians</th><th>\\(\\sin\\theta\\)</th><th>\\(\\cos\\theta\\)</th><th>\\(\\tan\\theta\\)</th></tr></thead><tbody><tr><td>\\(0^\\circ\\)</td><td>\\(0\\)</td><td>\\(0\\)</td><td>\\(1\\)</td><td>\\(0\\)</td></tr><tr><td>\\(30^\\circ\\)</td><td>\\(\\pi/6\\)</td><td>\\(1/2\\)</td><td>\\(\\sqrt{3}/2\\)</td><td>\\(\\sqrt{3}/3\\)</td></tr><tr><td>\\(45^\\circ\\)</td><td>\\(\\pi/4\\)</td><td>\\(\\sqrt{2}/2\\)</td><td>\\(\\sqrt{2}/2\\)</td><td>\\(1\\)</td></tr><tr><td>\\(60^\\circ\\)</td><td>\\(\\pi/3\\)</td><td>\\(\\sqrt{3}/2\\)</td><td>\\(1/2\\)</td><td>\\(\\sqrt{3}\\)</td></tr><tr><td>\\(90^\\circ\\)</td><td>\\(\\pi/2\\)</td><td>\\(1\\)</td><td>\\(0\\)</td><td>undefined</td></tr></tbody></table>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Trigonometry & Triangle Laws)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why the Harmonic \\(R\\)-Formula &amp; Cosine Rule Hold:</strong> Expanding \\(R\\cos(\\theta - \\alpha)\\) via the compound-angle identity gives:</p>\\[ R\\cos(\\theta - \\alpha) = (R\\cos\\alpha)\\cos\\theta + (R\\sin\\alpha)\\sin\\theta \\]<p>Matching coefficients with \\(a\\cos\\theta + b\\sin\\theta\\) requires \\(R\\cos\\alpha = a\\) and \\(R\\sin\\alpha = b\\). Squaring and adding yields \\(R^2(\\cos^2\\alpha + \\sin^2\\alpha) = a^2 + b^2 \\implies R = \\sqrt{a^2 + b^2}\\), and dividing gives \\(\\tan\\alpha = \\dfrac{b}{a}\\).</p>",
           "ar": null
         }
       },
@@ -371,11 +383,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example A — Trigonometry & Triangle Laws (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> In the plane, the ellipse \\( u: \\dfrac{s^2}{2025} + \\dfrac{y^2}{441} = 1 \\) has foci at \\( (\\pm c, 0) \\). Compute the squared focal distance \\( c^2 \\) of \\( u \\).</p><p><strong>Step-by-Step Solution:</strong> For an ellipse, \\( c^2 = a^2 - b^2 = 2025 - 441 = 1584 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Trigonometry & Triangle Laws)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Dividing \\(\\sin 2\\theta = \\sin\\theta\\) by \\(\\sin\\theta\\)",
+              "ar": null
+            },
+            {
+              "en": "Eliminates valid solutions where \\(\\sin\\theta = 0\\).",
+              "ar": null
+            },
+            {
+              "en": "Expand \\(2\\sin\\theta\\cos\\theta - \\sin\\theta = 0\\) and factor \\(\\sin\\theta(2\\cos\\theta - 1) = 0\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using \\(A = \\frac{1}{2}r^2\\theta\\) with \\(\\theta = 60^\\circ\\)",
+              "ar": null
+            },
+            {
+              "en": "Overestimates sector area by a factor of \\(180/\\pi \\approx 57.3\\).",
+              "ar": null
+            },
+            {
+              "en": "Convert to radians first: \\(\\theta = 60^\\circ \\times \\frac{\\pi}{180^\\circ} = \\frac{\\pi}{3}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Finding only one solution to \\(\\sin(2x) = 1/2\\) on \\([0, 2\\pi]\\)",
+              "ar": null
+            },
+            {
+              "en": "Forgets that if \\(x \\in [0, 2\\pi]\\), the transformed angle \\(u = 2x\\) spans \\([0, 4\\pi]\\) (4 roots).",
+              "ar": null
+            },
+            {
+              "en": "Transform the interval to \\(u \\in [0, 4\\pi]\\) before dividing by 2.",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Trigonometry & Triangle Laws",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>All-Solutions Checklist (Honors Precalculus & Trigonometric Analysis):</strong> When solving \\(\\trig(kx + \\phi) = c\\) on \\([0, 2\\pi]\\), immediately write down the transformed interval \\(\\phi \\le u \\le 2k\\pi + \\phi\\), list all ASTC quadrant angles in that range, and only divide by \\(k\\) at the very last step.</p>",
           "ar": null
         }
       },
@@ -388,7 +477,21 @@
         "solution": {
           "en": "<p>Calculate the altitude \\(h = b\\sin A = 11\\sin 35^\\circ \\approx 11(0.5736) = 6.31\\).</p><p>Since \\(h < a < b\\) (\\(6.31 < 8 < 11\\)), there are <strong>two possible triangles</strong>.</p><p>By the Law of Sines: \\[\\sin B = \\frac{b\\sin A}{a} = \\frac{6.31}{8} \\approx 0.7887.\\]</p><p>First solution (acute): \\(B_1 = \\arcsin(0.7887) \\approx 52.1^\\circ\\).</p><p>Second solution (obtuse): \\(B_2 = 180^\\circ - 52.1^\\circ = 127.9^\\circ\\).</p><p>Check validity: \\(A + B_2 = 35^\\circ + 127.9^\\circ = 162.9^\\circ < 180^\\circ\\), which allows \\(C_2 = 17.1^\\circ > 0\\). Both \\(B_1 \\approx 52.1^\\circ\\) and \\(B_2 \\approx 127.9^\\circ\\) are valid.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Trigonometry & Triangle Laws</em> and start from \\(\\triangle ABC\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(h = b\\sin A = 11\\sin 35^\\circ \\approx 11(0.5736) = 6.31\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -399,27 +502,69 @@
         "solution": {
           "en": "<p>Apply the Law of Cosines to find side \\(c = AB\\):</p>\\[c^2 = a^2 + b^2 - 2ab\\cos C = 210^2 + 140^2 - 2(210)(140)\\cos 78^\\circ.\\]\\[c^2 = 44100 + 19600 - 58800(0.2079) = 63700 - 12225 = 51475.\\]\\[c = \\sqrt{51475} \\approx 226.9\\text{ m}.\\]<p>Compute the area:</p>\\[\\text{Area} = \\frac{1}{2}ab\\sin C = \\frac{1}{2}(210)(140)\\sin 78^\\circ = 14700(0.9781) \\approx 14379\\text{ m}^2.\\]",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Trigonometry & Triangle Laws</em> and start from \\(C\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(c = AB\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Easy]</strong> For real angle \\( s \\), suppose \\( \\sin(s) + \\cos(s) = \\dfrac{\\sqrt{11}}{\\sqrt{6}} \\). Compute the trigonometric expression \\( u = 6\\sin(2s) \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Trigonometry & Triangle Laws</em> and start from \\( s \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 1 + \\sin(2s) = \\frac{11}{6} \\implies 6\\sin(2s) = 5 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "Squaring both sides gives \\( 1 + \\sin(2s) = \\frac{11}{6} \\implies 6\\sin(2s) = 5 \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Trigonometry & Triangle Laws · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> The sinusoidal function \\( F(w) = 16\\sin(2w) + 18 \\) is defined for all real \\( w \\). Compute the maximum value \\( M_{F} \\) of \\( F(w) \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Trigonometry & Triangle Laws</em> and start from \\( F(w) = 16\\sin(2w) + 18 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\max(\\sin(2w)) = 1 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Trigonometry & Triangle Laws · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Since \\( \\max(\\sin(2w)) = 1 \\), the maximum value is \\( 16(1) + 18 = 34 \\).",
           "ar": null
         }
       }

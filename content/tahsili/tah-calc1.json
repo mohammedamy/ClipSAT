@@ -242,6 +242,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Limits & Derivatives)",
+          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (النهايات والمشتقات)"
+        },
+        "body": {
+          "en": "<p><strong>Why Differentiability Implies Continuity &amp; How Implicit Differentiation Works:</strong> Notice that for \\(x \\ne a\\), we can write \\(f(x) - f(a) = \\dfrac{f(x) - f(a)}{x - a}\\cdot (x - a)\\). Taking the limit as \\(x \\to a\\) by the Product Law gives:</p>\\[ \\lim_{x \\to a} \\bigl(f(x) - f(a)\\bigr) = f'(a)\\cdot 0 = 0 \\implies \\lim_{x \\to a} f(x) = f(a) \\]<p>Similarly, when differentiating an implicit relation \\(F(x, y) = c\\) with respect to \\(x\\), \\(y = y(x)\\) is an inner function of \\(x\\). By the Chain Rule, \\(\\dfrac{d}{dx}\\bigl[y^n\\bigr] = ny^{n-1}\\dfrac{dy}{dx}\\), and for product terms \\(\\dfrac{d}{dx}[xy] = y + x\\dfrac{dy}{dx}\\).</p>",
+          "ar": "<p><strong>لماذا يؤدي الاشتقاق إلى الاتصال وكيف تعمل قاعدة السلسلة الضمنية:</strong> بما أن \\(\\lim_{x\\to a}(f(x)-f(a)) = f'(a)\\cdot 0 = 0\\) فإن \\(\\lim_{x\\to a}f(x) = f(a)\\). وعند اشتقاق \\(y^n\\) بالنسبة لـ \\(x\\) نطبق قاعدة السلسلة: \\(ny^{n-1}\\frac{dy}{dx}\\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 6.A — Limits at Indeterminate Form 0/0",
@@ -289,6 +301,83 @@
         }
       },
       {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Limits & Derivatives)",
+          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (النهايات والمشتقات)"
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع للطالب"
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": "السبب الرياضي للخطأ"
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Assuming \\(f'(c) = 0\\) guarantees a local extremum",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Inflection points like \\(f(x) = x^3\\) at \\(x = 0\\) have \\(f'(0) = 0\\) without changing sign.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Verify that \\(f'(x)\\) actually changes sign across \\(x = c\\) (or check \\(f''(c) \\ne 0\\)).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Computing parametric \\(\\frac{d^2y}{dx^2}\\) as \\(\\frac{\\ddot{y}}{\\ddot{x}}\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "violates the Chain Rule \\(\\frac{d}{dx} = \\frac{1}{dx/dt}\\frac{d}{dt}\\).",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Differentiate \\(dy/dx\\) with respect to \\(t\\), then divide by \\(dx/dt\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Forgetting product rule on \\(xy\\) in implicit differentiation",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Treats \\(y\\) as a constant instead of \\(y(x)\\).",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Always expand \\(\\frac{d}{dx}(xy) = y + x\\frac{dy}{dx}\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Limits & Derivatives",
+          "ar": "▲ استراتيجية الحل السريع والتحقق — النهايات والمشتقات"
+        },
+        "body": {
+          "en": "<p><strong>Exam Justification Rule (Qiyas Scholastic Achievement Admission Test (SAAT / التحصيلي)):</strong> When justifying local extrema or points of inflection on free-response questions, state \"because \\(f'(x)\\) changes sign from positive to negative at \\(x = c\\)\" rather than referring vaguely to \"it\" or \"the graph.\"</p>",
+          "ar": "<p><strong>نصيحة لصياغة الإجابة النموذجية:</strong> عند تبرير القيم القصوى المحلية، اذكر صراحةً تغير إشارة المشتقة الأولى \\(f'(x)\\) حول النقطة الحرجة.</p>"
+        }
+      },
+      {
         "kind": "practiceProblem",
         "id": "tah-calc1-p1",
         "question": {
@@ -298,7 +387,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Check direct substitution:</strong> \\(\\frac{3^2 - 9}{3 - 3} = \\frac{0}{0}\\) (indeterminate form).</p><p><strong>Step 2: Factor difference of squares:</strong> \\[ \\lim_{x \\to 3} \\frac{(x - 3)(x + 3)}{x - 3} = \\lim_{x \\to 3} (x + 3) = 3 + 3 = \\mathbf{6}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: فحص التعويض المباشر:</strong> \\(\\frac{3^2 - 9}{3 - 3} = \\frac{0}{0}\\) (صيغة عدم تعيين).</p><p><strong>الخطوة 2: تحليل فرق المربعين واختصار العامل المشترك:</strong> \\[ \\lim_{x \\to 3} \\frac{(x - 3)(x + 3)}{x - 3} = \\lim_{x \\to 3} (x + 3) = 3 + 3 = \\mathbf{6}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Limits & Derivatives</em> and start from \\( \\lim_{x \\to 3} \\frac{x^2 - 9}{x - 3} \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( \\lim_{x \\to 3} \\frac{x^2 - 9}{x - 3} \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\frac{3^2 - 9}{3 - 3} = \\frac{0}{0}\\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\(\\frac{3^2 - 9}{3 - 3} = \\frac{0}{0}\\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -310,7 +413,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Differentiate using the power rule:</strong> \\[ y' = \\frac{d}{dx}(2x^3 - 5x + 1) = 6x^2 - 5. \\]</p><p><strong>Step 2: Evaluate at \\(x = 2\\):</strong> \\[ m = 6(2)^2 - 5 = 6(4) - 5 = 24 - 5 = \\mathbf{19}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: الاشتقاق بقاعدة القوة:</strong> \\[ y' = \\frac{d}{dx}(2x^3 - 5x + 1) = 6x^2 - 5. \\]</p><p><strong>الخطوة 2: التعويض بـ \\(x = 2\\):</strong> \\[ m = 6(2)^2 - 5 = 6(4) - 5 = 24 - 5 = \\mathbf{19}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Limits & Derivatives</em> and start from \\(y = 2x^3 - 5x + 1\\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\(y = 2x^3 - 5x + 1\\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( y' = \\frac{d}{dx}(2x^3 - 5x + 1) = 6x^2 - 5. \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( y' = \\frac{d}{dx}(2x^3 - 5x + 1) = 6x^2 - 5. \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -322,7 +439,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Apply Chain Rule:</strong> \\(\\frac{d}{dx}[u(x)^n] = n u(x)^{n-1} \\cdot u'(x)\\).</p><p><strong>Step 2: Differentiate:</strong> Here \\(u(x) = 2x + 1\\) and \\(u'(x) = 2\\): \\[ f'(x) = 4(2x + 1)^3 \\cdot (2) = \\mathbf{8(2x + 1)^3}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: تطبيق قاعدة السلسلة:</strong> \\(\\frac{d}{dx}[u(x)^n] = n u(x)^{n-1} \\cdot u'(x)\\).</p><p><strong>الخطوة 2: حساب المشتقة:</strong> هنا \\(u(x) = 2x + 1\\) ومشتقته \\(u'(x) = 2\\): \\[ f'(x) = 4(2x + 1)^3 \\cdot (2) = \\mathbf{8(2x + 1)^3}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Limits & Derivatives</em> and start from \\(f(x) = (2x + 1)^4\\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\(f(x) = (2x + 1)^4\\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\frac{d}{dx}[u(x)^n] = n u(x)^{n-1} \\cdot u'(x)\\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\(\\frac{d}{dx}[u(x)^n] = n u(x)^{n-1} \\cdot u'(x)\\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -334,7 +465,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Compare degrees of polynomials:</strong> Both numerator and denominator have degree 2.</p><p><strong>Step 2: Apply the leading coefficient rule:</strong> \\[ \\lim_{x \\to \\infty} \\frac{6x^2 - 5}{2x^2 + 7x} = \\frac{6}{2} = \\mathbf{3}. \\]</p>",
           "ar": "<p><strong>الخطوة 1: مقارنة درجتي البسط والمقام:</strong> درجتا البسط والمقام متساويتان وتساويان 2.</p><p><strong>الخطوة 2: أخذ نسبة المعاملين الرئيسيين:</strong> \\[ \\lim_{x \\to \\infty} \\frac{6x^2 - 5}{2x^2 + 7x} = \\frac{6}{2} = \\mathbf{3}. \\]</p>"
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Limits & Derivatives</em> and start from \\( \\lim_{x \\to \\infty} \\frac{6x^2 - 5}{2x^2 + 7x} \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( \\lim_{x \\to \\infty} \\frac{6x^2 - 5}{2x^2 + 7x} \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\lim_{x \\to \\infty} \\frac{6x^2 - 5}{2x^2 + 7x} = \\frac{6}{2} = \\mathbf{3}. \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( \\lim_{x \\to \\infty} \\frac{6x^2 - 5}{2x^2 + 7x} = \\frac{6}{2} = \\mathbf{3}. \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ]
       }
     ]
   },

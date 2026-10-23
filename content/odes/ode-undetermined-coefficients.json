@@ -29,44 +29,20 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
-          ]
+          "type": "slope_field",
+          "title": "Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance — Slope Field & Particular Solution Trajectory",
+          "fn": "x - y",
+          "xmin": -3,
+          "xmax": 3,
+          "ymin": -3,
+          "ymax": 3,
+          "solution": {
+            "x0": 0,
+            "y0": 1
+          }
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Slope field for dy/dx = x − y with the integral curve passing through initial condition (0, 1).",
           "ar": null
         }
       },
@@ -425,11 +401,23 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example D — Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> The separable initial value problem \\( \\dfrac{dp}{dt} = 16t \\) satisfies \\( p(0) = 23 \\). Find the solution value \\( p(18) \\).</p><p><strong>Step-by-Step Solution:</strong> Integrating gives \\( p(t) = 8t^2 + 23 \\), so \\( p(18) = 2615 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Quick Verification Trick (University Ordinary Differential Equations):</strong> For any indefinite integral \\(\\int f(x)\\,dx = F(x) + C\\), differentiate your answer \\(F'(x)\\) mentally—especially the coefficient \\(1/k\\) from chain-rule reversal \\(\\int e^{kx}\\,dx = \\tfrac{1}{k}e^{kx} + C\\)—before moving on.</p>",
           "ar": null
         }
       },
@@ -442,7 +430,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Complementary function:</strong> \\[ r^2 + 1 = 0 \\implies r = \\pm i \\implies y_c(x) = C_1 \\cos x + C_2 \\sin x. \\]</p><p><strong>Step 2: Particular solution trial form:</strong><br>For \\( 4\\sin x \\): roots \\( \\pm i \\) match \\( y_c \\) (multiplicity \\( s=1 \\)), so trial is \\( y_{p1} = x(A\\cos x + B\\sin x) \\).<br>For \\( 2e^{-x} \\): \\( r = -1 \\) is not a root of \\( r^2 + 1 = 0 \\), so trial is \\( y_{p2} = C e^{-x} \\).<br>Total trial: \\( y_p = x(A\\cos x + B\\sin x) + C e^{-x} \\).</p><p><strong>Step 3: Solve for \\( y_{p1} \\):</strong> \\( y_{p1}'' + y_{p1} = -2A\\sin x + 2B\\cos x = 4\\sin x \\implies -2A = 4 \\implies A = -2 \\), and \\( 2B = 0 \\implies B = 0 \\). Thus \\( y_{p1} = -2x\\cos x \\).</p><p><strong>Step 4: Solve for \\( y_{p2} \\):</strong> \\( y_{p2}'' + y_{p2} = C e^{-x} + C e^{-x} = 2C e^{-x} = 2e^{-x} \\implies C = 1 \\). Thus \\( y_{p2} = e^{-x} \\).</p><p><strong>Step 5: General solution:</strong> \\[ y(x) = C_1 \\cos x + C_2 \\sin x - 2x\\cos x + e^{-x}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance</em> and start from \\( y'' + y = 4\\sin x + 2e^{-x} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( r^2 + 1 = 0 \\implies r = \\pm i \\implies y_c(x) = C_1 \\cos x + C_2 \\sin x. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -453,27 +455,69 @@
         "solution": {
           "en": "<p><strong>Step 1: Complementary function:</strong> \\[ r^2 - 2r + 1 = (r - 1)^2 = 0 \\implies y_c(x) = (C_1 + C_2 x)e^x. \\]</p><p><strong>Step 2: Particular trial form:</strong> Basic trial for \\( (x + 1)e^x \\) is \\( (A x + B)e^x \\). Both \\( x e^x \\) and \\( e^x \\) are in \\( y_c \\) (multiplicity \\( s = 2 \\)). Multiply by \\( x^2 \\): \\[ y_p(x) = x^2(Ax + B)e^x = (A x^3 + B x^2)e^x. \\]</p><p><strong>Step 3: Derivatives and substitution:</strong> Using operator \\( (D - 1)^2[u e^x] = e^x D^2[u] \\): \\[ (D - 1)^2\\big[(Ax^3 + Bx^2)e^x\\big] = e^x \\frac{d^2}{dx^2}[Ax^3 + Bx^2] = e^x(6Ax + 2B). \\] Match with \\( (x + 1)e^x \\): \\[ 6Ax + 2B = x + 1 \\implies 6A = 1 \\implies A = 1/6, \\quad 2B = 1 \\implies B = 1/2. \\] Thus \\( y_p(x) = \\left(\\frac{x^3}{6} + \\frac{x^2}{2}\\right)e^x \\).</p><p><strong>Step 4: General solution and initial conditions:</strong> \\[ y(x) = \\left(C_1 + C_2 x + \\frac{x^2}{2} + \\frac{x^3}{6}\\right)e^x. \\] \\( y(0) = C_1 = 1 \\).<br>\\( y'(x) = \\left(C_2 + x + \\frac{x^2}{2}\\right)e^x + \\left(1 + C_2 x + \\frac{x^2}{2} + \\frac{x^3}{6}\\right)e^x \\implies y'(0) = C_2 + 1 = 0 \\implies C_2 = -1 \\).<br>Particular solution: \\[ y(x) = \\left(1 - x + \\frac{x^2}{2} + \\frac{x^3}{6}\\right)e^x. \\]</p>",
           "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance</em> and start from \\( y'' - 2y' + y = (x + 1)e^x \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( r^2 - 2r + 1 = (r - 1)^2 = 0 \\implies y_c(x) = (C_1 + C_2 x)e^x. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Easy]</strong> Solve \\( y''+y'-6y=6e^{-4x} \\), \\( y(0)=6 \\), \\( y'(0)=-4 \\). Find \\( y(1) \\).",
+          "ar": null
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance</em> and start from \\( y''+y'-6y=6e^{-4x} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( r^2+r-6=0 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
+        "solution": {
+          "en": "Homogeneous: \\( r^2+r-6=0 \\) has roots \\( r=2,-3 \\), so \\( y_c=C_1e^{2x}+C_2e^{-3x} \\). Forcing \\( 6e^{-4x} \\), and \\( -4 \\) isn't a root (no resonance): trial \\( y_p=Ae^{-4x} \\) gives \\( y_p=e^{-4x} \\). With \\( C_1=3 \\), \\( C_2=2 \\) (matching the stated initial conditions), \\( y=y_c+y_p \\), and \\( y(1) \\) follows by substitution. <strong>Answer:</strong> \\( e^{-4}+\\frac{2}{e^{3}}+3e^{2} \\).",
+          "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> Solve \\( y''-5y'+6y=42e^{-4x} \\), \\( y(0)=2 \\), \\( y'(0)=0 \\). Find \\( y(1) \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance</em> and start from \\( y''-5y'+6y=42e^{-4x} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( r^2-5r+6=0 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": null
-        }
-      },
-      {
-        "kind": "practiceProblem",
-        "question": {
-          "en": "[Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": null
-        },
-        "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Homogeneous: \\( r^2-5r+6=0 \\) has roots \\( r=2,3 \\), so \\( y_c=C_1e^{2x}+C_2e^{3x} \\). Forcing \\( 42e^{-4x} \\), and \\( -4 \\) isn't a root (no resonance): trial \\( y_p=Ae^{-4x} \\) gives \\( y_p=e^{-4x} \\). With \\( C_1=-1 \\), \\( C_2=2 \\) (matching the stated initial conditions), \\( y=y_c+y_p \\), and \\( y(1) \\) follows by substitution. <strong>Answer:</strong> \\( -e^{2}+e^{-4}+2e^{3} \\).",
           "ar": null
         }
       }

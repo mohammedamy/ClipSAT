@@ -38,44 +38,44 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Vector Spaces, Subspaces & The Four Fundamental Subspaces — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
+          "type": "transformation_grid",
+          "title": "Vector Spaces, Subspaces & The Four Fundamental Subspaces — Linear Transformation & Basis Action",
+          "original": [
+            [
+              1,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              3
+            ]
           ],
-          "yrange": [
-            -3,
-            9
+          "transformed": [
+            [
+              -1,
+              1
+            ],
+            [
+              -1,
+              3
+            ],
+            [
+              -3,
+              2
+            ]
           ],
-          "fns": [
-            {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
-            },
-            {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
-          ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
+          "labels": [
+            "A",
+            "B",
+            "C"
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Coordinate grid showing geometric action of a linear transformation mapping △ABC to its image △A'B'C'.",
           "ar": null
         }
       },
@@ -105,6 +105,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Vector Spaces, Subspaces & The Four Fundamental Subspaces)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Orthogonal Projection &amp; Eigenvalue Characteristic Equations Work:</strong> Decompose \\(\\mathbf{u} = c\\mathbf{v} + \\mathbf{w}\\) where \\(\\mathbf{w} \\perp \\mathbf{v}\\). Taking the dot product with \\(\\mathbf{v}\\) uses \\(\\mathbf{w}\\cdot\\mathbf{v} = 0\\) to isolate \\(c\\):</p>\\[ \\mathbf{u}\\cdot\\mathbf{v} = c(\\mathbf{v}\\cdot\\mathbf{v}) + 0 \\implies c = \\frac{\\mathbf{u}\\cdot\\mathbf{v}}{\\|\\mathbf{v}\\|^2} \\]<p>For eigenvalues, \\(A\\mathbf{v} = \\lambda\\mathbf{v}\\) with \\(\\mathbf{v} \\ne \\mathbf{0}\\) is equivalent to \\((A - \\lambda I)\\mathbf{v} = \\mathbf{0}\\). A homogeneous linear system has a non-trivial nullspace vector \\(\\mathbf{v} \\ne \\mathbf{0}\\) if and only if the matrix \\(A - \\lambda I\\) is singular, yielding the characteristic polynomial \\(\\det(A - \\lambda I) = 0\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example · Applying the Subspace Test",
@@ -119,11 +131,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example B — Vector Spaces, Subspaces & The Four Fundamental Subspaces (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> For which \\( k \\) are \\( \\langle -3, 3, -3 \\rangle \\), \\( \\langle 2, 0, 0 \\rangle \\), \\( \\langle -3, -3, k \\rangle \\) linearly dependent?</p><p><strong>Step-by-Step Solution:</strong> They are dependent exactly when \\( \\det=18 - 6 k=0 \\), i.e. \\( k = 3 \\). <strong>Final Answer:</strong> \\( 3 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Vector Spaces, Subspaces & The Four Fundamental Subspaces)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Computing angle at \\(B\\) using \\(\\overrightarrow{AB}\\cdot\\overrightarrow{BC}\\)",
+              "ar": null
+            },
+            {
+              "en": "Vectors are head-to-tail instead of tail-to-tail, giving \\(180^\\circ - \\theta\\).",
+              "ar": null
+            },
+            {
+              "en": "Reverse \\(\\overrightarrow{AB}\\) so both emanate from \\(B\\): use \\(\\overrightarrow{BA}\\cdot\\overrightarrow{BC}\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using the same parameter \\(t\\) for two intersecting 3D lines \\(\\mathbf{r}_1(t) = \\mathbf{r}_2(t)\\)",
+              "ar": null
+            },
+            {
+              "en": "Tests for a simultaneous collision at time \\(t\\) rather than geometric intersection of paths.",
+              "ar": null
+            },
+            {
+              "en": "Assign distinct parameters \\(\\lambda\\) and \\(\\mu\\) to the two lines before equating components.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Assuming \\((AB)^{-1} = A^{-1}B^{-1}\\)",
+              "ar": null
+            },
+            {
+              "en": "Multiplying \\((AB)(A^{-1}B^{-1})\\) does not cancel inner factors when \\(AB \\ne BA\\).",
+              "ar": null
+            },
+            {
+              "en": "Use the shoe-sock reversal law: \\((AB)^{-1} = B^{-1}A^{-1}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Vector Spaces, Subspaces & The Four Fundamental Subspaces",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Matrix &amp; Vector Verification (University Linear Algebra & Matrix Theory):</strong> Check every \\(2\\times 2\\) or \\(3\\times 3\\) eigenvalue computation using the trace and determinant invariants: \\(\\sum \\lambda_i = \\operatorname{tr}(A)\\) (sum of diagonal entries) and \\(\\prod \\lambda_i = \\det(A)\\).</p>",
           "ar": null
         }
       },
@@ -136,7 +225,21 @@
         "solution": {
           "en": "<p><strong>Step 1 · Zero vector:</strong> The \\( 2 \\times 2 \\) zero matrix satisfies \\( 0^T = 0 \\), so \\( 0 \\in W \\).</p><p><strong>Step 2 · Closed under addition:</strong> Let \\( A, B \\in W \\). Then \\( A^T = A \\) and \\( B^T = B \\). Using transpose properties: \\[ (A + B)^T = A^T + B^T = A + B \\implies A + B \\in W. \\]</p><p><strong>Step 3 · Closed under scalar multiplication:</strong> Let \\( A \\in W \\) and \\( c \\in \\mathbb{R} \\): \\[ (cA)^T = c A^T = c A \\implies cA \\in W. \\] All three conditions hold, so \\( W \\) is a subspace of \\( M_{2 \\times 2} \\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Vector Spaces, Subspaces & The Four Fundamental Subspaces</em> and start from \\( M_{2 \\times 2} \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 2 \\times 2 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -350,7 +453,21 @@
         "solution": {
           "en": "<p><strong>Step 1 · Coordinate vectors:</strong> The standard basis for \\( \\mathcal{P}_2 \\) is \\( \\mathcal{E} = \\{ 1, x, x^2 \\} \\), so \\( \\dim(\\mathcal{P}_2) = 3 \\). The coordinate vectors are: \\[ [p_1]_\\mathcal{E} = \\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}, \\quad [p_2]_\\mathcal{E} = \\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}, \\quad [p_3]_\\mathcal{E} = \\begin{pmatrix} 1 \\\\ 0 \\\\ 1 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Test independence via determinant:</strong> \\[ \\det\\begin{pmatrix} 1 & 0 & 1 \\\\ 1 & 1 & 0 \\\\ 0 & 1 & 1 \\end{pmatrix} = 1(1 - 0) - 0 + 1(1 - 0) = 1 + 1 = 2 \\neq 0. \\] Since the determinant is non-zero, the three coordinate vectors are linearly independent. Because \\( \\dim(\\mathcal{P}_2) = 3 \\), any three linearly independent vectors form a basis. <strong>Yes, \\( \\{ p_1, p_2, p_3 \\} \\) is a basis for \\( \\mathcal{P}_2 \\)</strong>.</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Vector Spaces, Subspaces & The Four Fundamental Subspaces</em> and start from \\( p_1(x) = 1 + x \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\mathcal{P}_2 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -417,16 +534,44 @@
         "solution": {
           "en": "<p><strong>(a) Null Space Dimension:</strong> By the Rank-Nullity Theorem, \\( \\operatorname{rank}(A) + \\operatorname{nullity}(A) = n \\). Here \\( n = 8 \\) and \\( \\operatorname{rank}(A) = 4 \\): \\[ \\operatorname{nullity}(A) = 8 - 4 = \\mathbf{4}. \\]</p><p><strong>(b) Consistency for all \\( \\mathbf{b} \\):</strong> <strong>No.</strong> \\( \\operatorname{Col}(A) \\) has dimension 4, which is a proper subspace of \\( \\mathbb{R}^5 \\) (dimension 5). Therefore, there exist vectors \\( \\mathbf{b} \\in \\mathbb{R}^5 \\) that do not lie in \\( \\operatorname{Col}(A) \\), making \\( A\\mathbf{x} = \\mathbf{b} \\) inconsistent.</p><p><strong>(c) Left Null Space Dimension:</strong> The left null space \\( \\operatorname{Null}(A^T) \\) is the orthogonal complement of \\( \\operatorname{Col}(A) \\) in \\( \\mathbb{R}^m = \\mathbb{R}^5 \\). Its dimension is: \\[ \\dim(\\operatorname{Null}(A^T)) = m - \\operatorname{rank}(A) = 5 - 4 = \\mathbf{1}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Vector Spaces, Subspaces & The Four Fundamental Subspaces</em> and start from \\( A \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\operatorname{rank}(A) + \\operatorname{nullity}(A) = n \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Vector Spaces, Subspaces & The Four Fundamental Subspaces · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> Find \\( c_1,c_2 \\) with \\( c_1\\langle 3, -3, -3 \\rangle+c_2\\langle -3, 3, -1 \\rangle=\\langle -9, 9, -3 \\rangle \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Vector Spaces, Subspaces & The Four Fundamental Subspaces</em> and start from \\( c_1,c_2 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 3 c_{1} - 3 c_{2}=-9 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Solve the linear system entry by entry: \\( 3 c_{1} - 3 c_{2}=-9 \\), \\( - 3 c_{1} + 3 c_{2}=9 \\), \\( - 3 c_{1} - c_{2}=-3 \\). It gives \\( c_1=0,\\ c_2=3 \\).",
           "ar": null
         }
       }

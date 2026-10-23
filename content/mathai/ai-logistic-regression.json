@@ -46,35 +46,35 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Logistic Regression & Classification Boundaries",
+          "ar": "● الفهم المفاهيمي العميق — الانحدار اللوجستي والحدود الفاصلة للتصنيف"
+        },
+        "body": {
+          "en": "<p><strong>Accumulation, Antiderivatives &amp; Differential Flows:</strong> By the Fundamental Theorem of Calculus, the accumulation function \\(A(x) = \\int_a^x f(t)\\,dt\\) satisfies \\(A'(x) = f(x)\\), linking instantaneous rates of change to net signed area. In first-order differential equations \\(\\dfrac{dy}{dx} = g(x)h(y)\\), separation of variables \\(\\int \\dfrac{1}{h(y)}\\,dy = \\int g(x)\\,dx + C\\) reconstructs the family of integral curves across the slope field.</p>",
+          "ar": "<p><strong>التراكم والتكامل والمعادلات التفاضلية:</strong> تربط النظرية الأساسية للتفاضل والتكامل بين المشتقة والمساحة الموجهة \\(\\frac{d}{dx}\\int_a^x f(t)\\,dt = f(x)\\).</p>"
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "Logistic Regression & Classification Boundaries — Frequency Distribution (2)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
-            {
-              "label": "Q1",
-              "value": 22
-            },
-            {
-              "label": "Q2",
-              "value": 35,
-              "highlight": true
-            },
-            {
-              "label": "Q3",
-              "value": 28
-            },
-            {
-              "label": "Q4",
-              "value": 19
-            }
-          ]
+          "type": "slope_field",
+          "title": "Logistic Regression & Classification Boundaries — Slope Field & Particular Solution Trajectory",
+          "fn": "x - y",
+          "xmin": -3,
+          "xmax": 3,
+          "ymin": -3,
+          "ymax": 3,
+          "solution": {
+            "x0": 0,
+            "y0": 1
+          }
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for Logistic Regression & Classification Boundaries.",
-          "ar": "توزيع تكراري يقارن القيم والفئة المنوالية في Logistic Regression & Classification Boundaries."
+          "en": "Slope field for dy/dx = x − y with the integral curve passing through initial condition (0, 1).",
+          "ar": "تمثيل هندسي وبياني يوضح العلاقات الأساسية في درس الانحدار اللوجستي والحدود الفاصلة للتصنيف."
         }
       },
       {
@@ -179,33 +179,30 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "Logistic Regression & Classification Boundaries — Frequency Distribution (1)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
-            {
-              "label": "Q1",
-              "value": 18
-            },
-            {
-              "label": "Q2",
-              "value": 32,
-              "highlight": true
-            },
-            {
-              "label": "Q3",
-              "value": 26
-            },
-            {
-              "label": "Q4",
-              "value": 14
-            }
+          "type": "two_way_table",
+          "title": "Binary Classification Contingency Table",
+          "rows": [
+            "Actual Positive",
+            "Actual Negative"
+          ],
+          "cols": [
+            "Pred Positive",
+            "Pred Negative"
+          ],
+          "data": [
+            [
+              45,
+              10
+            ],
+            [
+              10,
+              40
+            ]
           ]
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for Logistic Regression & Classification Boundaries.",
-          "ar": "توزيع تكراري يقارن القيم والفئة المنوالية في Logistic Regression & Classification Boundaries."
+          "en": "Binary Classification Contingency Table — illustrating key geometric and analytical relationships in Logistic Regression & Classification Boundaries.",
+          "ar": "رسم توضيحي يبيّن العلاقات الرياضية والهندسية في درس الانحدار اللوجستي والحدود الفاصلة للتصنيف."
         }
       },
       {
@@ -255,6 +252,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Logistic Regression & Classification Boundaries)",
+          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (الانحدار اللوجستي والحدود الفاصلة للتصنيف)"
+        },
+        "body": {
+          "en": "<p><strong>Why Integration by Parts &amp; Integrating Factors Work:</strong> Differentiating a product \\(u(x)v(x)\\) gives \\((uv)' = u'v + uv'\\). Integrating both sides and rearranging yields the Integration by Parts formula:</p>\\[ \\int u\\,\\frac{dv}{dx}\\,dx = u v - \\int v\\,\\frac{du}{dx}\\,dx \\]<p>Similarly, for a linear first-order ODE \\(y' + P(x)y = Q(x)\\), multiplying by the integrating factor \\(\\mu(x) = e^{\\int P(x)\\,dx}\\) (which satisfies \\(\\mu'(x) = P(x)\\mu(x)\\)) collapses the left-hand side into an exact product derivative: \\(\\dfrac{d}{dx}\\bigl[\\mu(x)y\\bigr] = \\mu(x)Q(x)\\).</p>",
+          "ar": "<p><strong>برهان التكامل بالتجزيء وعامل التكامل:</strong> من قاعدة مشتقة الضرب \\((uv)' = u'v + uv'\\) نحصل بتكامل الطرفين على \\(\\int u\\,dv = uv - \\int v\\,du\\). وبضرب المعادلة الخطية في \\(\\mu(x)=e^{\\int P(x)dx}\\) يتحول الطرف الأيسر إلى \\(\\frac{d}{dx}[\\mu(x)y]\\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 7.A — Probability & Cross-Entropy Calculation",
@@ -269,80 +278,250 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example B — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول B — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example B — Logistic Regression & Classification Boundaries (Hard Application)",
+          "ar": "مثال محلول B — الانحدار اللوجستي والحدود الفاصلة للتصنيف (تطبيق Hard)"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 9x + 18 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 3)(x - 6) = 0 \\implies x = 3 \\text{ or } x = 6 \\).</li><li>Check Vieta's formulas: sum \\( = 3 + 6 = \\mathbf{9} \\) and product \\( = (3)(6) = \\mathbf{18} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 9x + 18 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 3)(x - 6) = 0 \\implies x = 3 \\text{ أو } x = 6 \\).</li><li>المجموع \\( = \\mathbf{9} \\) وحاصل الضرب \\( = \\mathbf{18} \\).</li></ol>"
+          "en": "<p><strong>Problem (Hard):</strong> An Ordinary Least Squares linear model \\( \\hat{f}(x) = 21x + 26 \\) is evaluated at \\( x = 9 \\). Compute the predicted response \\( \\hat{f}(9) \\).</p><p><strong>Step-by-Step Solution:</strong> Evaluating \\( 21(9) + 26 = 215 \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Hard):</strong> An Ordinary Least Squares linear model \\( \\hat{f}(x) = 21x + 26 \\) is evaluated at \\( x = 9 \\). Compute the predicted response \\( \\hat{f}(9) \\).</p><p><strong>الحل خطوة بخطوة:</strong> Evaluating \\( 21(9) + 26 = 215 \\).</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example C — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول C — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example C — Logistic Regression & Classification Boundaries (Easy Application)",
+          "ar": "مثال محلول C — الانحدار اللوجستي والحدود الفاصلة للتصنيف (تطبيق Easy)"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 13x + 36 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ or } x = 9 \\).</li><li>Check Vieta's formulas: sum \\( = 4 + 9 = \\mathbf{13} \\) and product \\( = (4)(9) = \\mathbf{36} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 13x + 36 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 4)(x - 9) = 0 \\implies x = 4 \\text{ أو } x = 9 \\).</li><li>المجموع \\( = \\mathbf{13} \\) وحاصل الضرب \\( = \\mathbf{36} \\).</li></ol>"
+          "en": "<p><strong>Problem (Easy):</strong> In gradient descent on loss \\( p(t) \\), parameter \\( t_0 = 42 \\) is updated with learning rate \\( \\eta = 0.1 \\) and gradient \\( \\nabla p(t_0) = 240 \\). Compute the updated parameter \\( t_1 = t_0 - \\eta \\nabla p(t_0) \\).</p><p><strong>Step-by-Step Solution:</strong> Computing \\( t_1 = 42 - 0.1(240) = 18 \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Easy):</strong> In gradient descent on loss \\( p(t) \\), parameter \\( t_0 = 42 \\) is updated with learning rate \\( \\eta = 0.1 \\) and gradient \\( \\nabla p(t_0) = 240 \\). Compute the updated parameter \\( t_1 = t_0 - \\eta \\nabla p(t_0) \\).</p><p><strong>الحل خطوة بخطوة:</strong> Computing \\( t_1 = 42 - 0.1(240) = 18 \\).</p>"
         }
       },
       {
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
-          "ar": "مثال محلول D — البنية الجبرية وعلاقات الجذور"
+          "en": "Worked Example D — Logistic Regression & Classification Boundaries (Medium Application)",
+          "ar": "مثال محلول D — الانحدار اللوجستي والحدود الفاصلة للتصنيف (تطبيق Medium)"
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
-          "ar": "حل المعادلة التربيعية \\( x^2 - 10x + 25 = 0 \\) وتحقق من مجموع وحاصل ضرب الجذرين.<br><br><strong>الحل بالتفصيل:</strong><br><ol><li>التحليل إلى عوامل: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ أو } x = 5 \\).</li><li>المجموع \\( = \\mathbf{10} \\) وحاصل الضرب \\( = \\mathbf{25} \\).</li></ol>"
+          "en": "<p><strong>Problem (Medium):</strong> Principal Component Analysis on covariance matrix \\( \\Sigma_{P} \\) yields eigenvalues \\( \\lambda_1 = 53 \\) and \\( \\lambda_2 = 47 \\). Compute the percentage of variance \\( p_{t} \\) explained by the first principal component.</p><p><strong>Step-by-Step Solution:</strong> The percentage explained is \\( \\frac{53}{53+47} \\times 100\\% = 53\\% \\).</p>",
+          "ar": "<p><strong>مسألة تطبيقية (Medium):</strong> Principal Component Analysis on covariance matrix \\( \\Sigma_{P} \\) yields eigenvalues \\( \\lambda_1 = 53 \\) and \\( \\lambda_2 = 47 \\). Compute the percentage of variance \\( p_{t} \\) explained by the first principal component.</p><p><strong>الحل خطوة بخطوة:</strong> The percentage explained is \\( \\frac{53}{53+47} \\times 100\\% = 53\\% \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Exam Traps — Logistic Regression & Classification Boundaries",
+          "ar": "⚠️ أخطاء شائعة في الاختبار — الانحدار اللوجستي والحدود الفاصلة للتصنيف"
+        },
+        "body": {
+          "en": "<p><strong>1. Adding \\(+C\\) Only After Exponentiating in Separable ODEs:</strong> In \\(\\dfrac{dy}{dx} = 3xy\\), integrating gives \\(\\ln|y| = \\tfrac{3}{2}x^2 + C \\implies y = Ae^{3x^2/2}\\) where \\(A = \\pm e^C\\). Writing \\(y = e^{3x^2/2} + C\\) is a fatal algebraic error that forfeits all follow-up marks on Mathematics for Artificial Intelligence & Machine Learning.</p><p><strong>2. Forgetting to Transform Limits in \\(u\\)-Substitution:</strong> In definite integrals \\(\\int_a^b f(g(x))g'(x)\\,dx\\), you must replace the limits \\(x = a, b\\) with \\(u = g(a), g(b)\\) immediately.</p>",
+          "ar": "<p><strong>1. خطأ إضافة ثابت التكامل بعد أخذ الدالة الأسية:</strong> في المعادلة \\(\\ln|y| = g(x) + C\\) يصبح الحل \\(y = Ae^{g(x)}\\) وليس \\(y = e^{g(x)} + C\\).</p>"
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Logistic Regression & Classification Boundaries)",
+          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (الانحدار اللوجستي والحدود الفاصلة للتصنيف)"
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع للطالب"
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": "السبب الرياضي للخطأ"
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Writing \\(\\ln|y| = x^2 + C \\implies y = e^{x^2} + C\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Exponentiation distributes over addition as multiplication (\\(e^{a+b} = e^a e^b\\)), not addition.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Write \\(y = e^{x^2 + C} = Ae^{x^2}\\) and solve for \\(A\\) using the initial condition.",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Leaving original \\(x\\)-limits on a \\(u\\)-substituted definite integral",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Evaluates the antiderivative \\(F(u)\\) at \\(x\\)-values instead of \\(u(x)\\)-values.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Convert bounds immediately: \\(u_{\\text{low}} = u(a)\\) and \\(u_{\\text{high}} = u(b)\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ],
+          [
+            {
+              "en": "Computing total distance as \\(\\left|\\int_{t_1}^{t_2} v(t)\\,dt\\right|\\)",
+              "ar": "الخطأ الشائع في تطبيق القاعدة الجبرية أو الهندسية دون التحقق من شروط المجال."
+            },
+            {
+              "en": "Cancels forward and backward motion (net displacement) instead of accumulating total path length.",
+              "ar": "يؤدي إلى فقدان جذور صحيحة أو إدخال جذور دخيلة لا تحقق المعادلة الأصلية."
+            },
+            {
+              "en": "Split the integral at every root where \\(v(t) = 0\\) and integrate \\(|v(t)|\\).",
+              "ar": "تطبيق القانون الأساسي خطوة بخطوة مع التحقق من القيود والإشارات."
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Logistic Regression & Classification Boundaries",
+          "ar": "▲ استراتيجية الحل السريع والتحقق — الانحدار اللوجستي والحدود الفاصلة للتصنيف"
+        },
+        "body": {
+          "en": "<p><strong>Quick Verification Trick (Mathematics for Artificial Intelligence & Machine Learning):</strong> For any indefinite integral \\(\\int f(x)\\,dx = F(x) + C\\), differentiate your answer \\(F'(x)\\) mentally—especially the coefficient \\(1/k\\) from chain-rule reversal \\(\\int e^{kx}\\,dx = \\tfrac{1}{k}e^{kx} + C\\)—before moving on.</p>",
+          "ar": "<p><strong>فحص سريع للتكامل:</strong> اشتق الناتج النهائي ذهنياً للتأكد من صحة المعامل العكسي \\(1/k\\) الناتج عن قاعدة السلسلة.</p>"
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Logistic Regression & Classification Boundaries · Practice 1] If the governing relation for this system is \\( g(t) = 3t + 3 \\), evaluate \\( g(4) \\) and find the inverse input \\( t \\) when \\( g(t) = 18 \\).",
-          "ar": "[Logistic Regression & Classification Boundaries · تدريب 1] إذا كانت العلاقة الحاكمة هي \\( g(t) = 3t + 3 \\)، فأوجد \\( g(4) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 18 \\)."
+          "en": "<strong>[Practice 1 · Hard]</strong> A binary classifier \\( p(t) \\) produces the confusion matrix below with \\( \\text{TP} = 60 \\), \\( \\text{FP} = 32 \\), \\( \\text{FN} = 24 \\), and \\( \\text{TN} = 80 \\). Compute the total number of correct classifications \\( q = \\text{TP} + \\text{TN} \\).",
+          "ar": "<strong>[تدريب 1 · Hard]</strong> A binary classifier \\( p(t) \\) produces the confusion matrix below with \\( \\text{TP} = 60 \\), \\( \\text{FP} = 32 \\), \\( \\text{FN} = 24 \\), and \\( \\text{TN} = 80 \\). Compute the total number of correct classifications \\( q = \\text{TP} + \\text{TN} \\)."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Logistic Regression & Classification Boundaries</em> and start from \\( p(t) \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( p(t) \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\text{TP} + \\text{TN} = 60 + 80 = 140 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( \\text{TP} + \\text{TN} = 60 + 80 = 140 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 4 \\): \\( g(4) = 3(4) + 3 = \\mathbf{15} \\). Setting \\( 3t + 3 = 18 \\) gives \\( 3t = 15 \\implies t = \\mathbf{5} \\).",
-          "ar": "بالتعويض عن \\( t = 4 \\): \\( g(4) = 3(4) + 3 = \\mathbf{15} \\). وعندما \\( 3t + 3 = 18 \\) فإن \\( t = \\mathbf{5} \\)."
+          "en": "Summing \\( \\text{TP} + \\text{TN} = 60 + 80 = 140 \\).",
+          "ar": "Summing \\( \\text{TP} + \\text{TN} = 60 + 80 = 140 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Logistic Regression & Classification Boundaries · Practice 2] If the governing relation for this system is \\( g(t) = 4t + 4 \\), evaluate \\( g(6) \\) and find the inverse input \\( t \\) when \\( g(t) = 32 \\).",
-          "ar": "[Logistic Regression & Classification Boundaries · تدريب 2] إذا كانت العلاقة الحاكمة هي \\( g(t) = 4t + 4 \\)، فأوجد \\( g(6) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 32 \\)."
+          "en": "<strong>[Practice 2 · Easy]</strong> An Ordinary Least Squares linear model \\( \\hat{p}(t) = 19t + 2 \\) is evaluated at \\( t = 11 \\). Compute the predicted response \\( \\hat{p}(11) \\).",
+          "ar": "<strong>[تدريب 2 · Easy]</strong> An Ordinary Least Squares linear model \\( \\hat{p}(t) = 19t + 2 \\) is evaluated at \\( t = 11 \\). Compute the predicted response \\( \\hat{p}(11) \\)."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Logistic Regression & Classification Boundaries</em> and start from \\( \\hat{p}(t) = 19t + 2 \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( \\hat{p}(t) = 19t + 2 \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 19(11) + 2 = 211 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( 19(11) + 2 = 211 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). Setting \\( 4t + 4 = 32 \\) gives \\( 4t = 28 \\implies t = \\mathbf{7} \\).",
-          "ar": "بالتعويض عن \\( t = 6 \\): \\( g(6) = 4(6) + 4 = \\mathbf{28} \\). وعندما \\( 4t + 4 = 32 \\) فإن \\( t = \\mathbf{7} \\)."
+          "en": "Evaluating \\( 19(11) + 2 = 211 \\).",
+          "ar": "Evaluating \\( 19(11) + 2 = 211 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Logistic Regression & Classification Boundaries · Practice 3] If the governing relation for this system is \\( g(t) = 5t + 5 \\), evaluate \\( g(8) \\) and find the inverse input \\( t \\) when \\( g(t) = 50 \\).",
-          "ar": "[Logistic Regression & Classification Boundaries · تدريب 3] إذا كانت العلاقة الحاكمة هي \\( g(t) = 5t + 5 \\)، فأوجد \\( g(8) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 50 \\)."
+          "en": "<strong>[Practice 3 · Medium]</strong> A logistic regression model produces a class probability \\( p = P(y=1|\\mathbf{x}) = 0.30 \\). Compute the corresponding log-odds (logit) \\( \\ln\\left(\\frac{p}{1-p}\\right) \\).",
+          "ar": "<strong>[تدريب 3 · Medium]</strong> A logistic regression model produces a class probability \\( p = P(y=1|\\mathbf{x}) = 0.30 \\). Compute the corresponding log-odds (logit) \\( \\ln\\left(\\frac{p}{1-p}\\right) \\)."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Logistic Regression & Classification Boundaries</em> and start from \\( p = P(y=1|\\mathbf{x}) = 0.30 \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( p = P(y=1|\\mathbf{x}) = 0.30 \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\frac{p}{1-p} = \\frac{0.30}{0.70} = 0.4286 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( \\frac{p}{1-p} = \\frac{0.30}{0.70} = 0.4286 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). Setting \\( 5t + 5 = 50 \\) gives \\( 5t = 45 \\implies t = \\mathbf{9} \\).",
-          "ar": "بالتعويض عن \\( t = 8 \\): \\( g(8) = 5(8) + 5 = \\mathbf{45} \\). وعندما \\( 5t + 5 = 50 \\) فإن \\( t = \\mathbf{9} \\)."
+          "en": "Odds are \\( \\frac{p}{1-p} = \\frac{0.30}{0.70} = 0.4286 \\). Taking natural logarithm: \\( \\ln(0.4286) = -0.847 \\). <strong>Answer:</strong> \\( -0.847 \\).",
+          "ar": "Odds are \\( \\frac{p}{1-p} = \\frac{0.30}{0.70} = 0.4286 \\). Taking natural logarithm: \\( \\ln(0.4286) = -0.847 \\). <strong>الإجابة:</strong> \\( -0.847 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Logistic Regression & Classification Boundaries · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
-          "ar": "[Logistic Regression & Classification Boundaries · تدريب 4] إذا كانت العلاقة الحاكمة هي \\( g(t) = 6t + 6 \\)، فأوجد \\( g(10) \\) وكذلك قيمة \\( t \\) عندما \\( g(t) = 72 \\)."
+          "en": "<strong>[Practice 4 · Hard]</strong> In gradient descent on loss \\( h(u) \\), parameter \\( u_0 = 37 \\) is updated with learning rate \\( \\eta = 0.1 \\) and gradient \\( \\nabla h(u_0) = 20 \\). Compute the updated parameter \\( u_1 = u_0 - \\eta \\nabla h(u_0) \\).",
+          "ar": "<strong>[تدريب 4 · Hard]</strong> In gradient descent on loss \\( h(u) \\), parameter \\( u_0 = 37 \\) is updated with learning rate \\( \\eta = 0.1 \\) and gradient \\( \\nabla h(u_0) = 20 \\). Compute the updated parameter \\( u_1 = u_0 - \\eta \\nabla h(u_0) \\)."
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Logistic Regression & Classification Boundaries</em> and start from \\( h(u) \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( h(u) \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( u_1 = 37 - 0.1(20) = 35 \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( u_1 = 37 - 0.1(20) = 35 \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
-          "ar": "بالتعويض عن \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). وعندما \\( 6t + 6 = 72 \\) فإن \\( t = \\mathbf{11} \\)."
+          "en": "Computing \\( u_1 = 37 - 0.1(20) = 35 \\).",
+          "ar": "Computing \\( u_1 = 37 - 0.1(20) = 35 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 5 · Easy]</strong> Principal Component Analysis on covariance matrix \\( \\Sigma_{X} \\) yields eigenvalues \\( \\lambda_1 = 69 \\) and \\( \\lambda_2 = 31 \\). Compute the percentage of variance \\( h_{u} \\) explained by the first principal component.",
+          "ar": "<strong>[تدريب 5 · Easy]</strong> Principal Component Analysis on covariance matrix \\( \\Sigma_{X} \\) yields eigenvalues \\( \\lambda_1 = 69 \\) and \\( \\lambda_2 = 31 \\). Compute the percentage of variance \\( h_{u} \\) explained by the first principal component."
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Logistic Regression & Classification Boundaries</em> and start from \\( \\Sigma_{X} \\).",
+            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( \\Sigma_{X} \\)."
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\frac{69}{69+31} \\times 100\\% = 69\\% \\).",
+            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( \\frac{69}{69+31} \\times 100\\% = 69\\% \\)."
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+          }
+        ],
+        "solution": {
+          "en": "The percentage explained is \\( \\frac{69}{69+31} \\times 100\\% = 69\\% \\).",
+          "ar": "The percentage explained is \\( \\frac{69}{69+31} \\times 100\\% = 69\\% \\)."
         }
       }
     ]

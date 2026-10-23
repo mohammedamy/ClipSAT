@@ -39,64 +39,99 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "Unit 1 · Exploring One-Variable & Two-Variable Data — Frequency Distribution (2)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
+          "type": "fn",
+          "title": "Unit 1 · Exploring One-Variable & Two-Variable Data — Function Curve & Symmetry Analysis",
+          "xrange": [
+            -4,
+            6
+          ],
+          "yrange": [
+            -4,
+            6
+          ],
+          "fns": [
             {
-              "label": "Q1",
-              "value": 22
+              "fn": "(x - 2)*(x - 2) - 5",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = (x-2)² - 5"
             },
             {
-              "label": "Q2",
-              "value": 35,
-              "highlight": true
-            },
+              "fn": "x",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "y = x"
+            }
+          ],
+          "points": [
             {
-              "label": "Q3",
-              "value": 28
-            },
-            {
-              "label": "Q4",
-              "value": 19
+              "x": 2,
+              "y": -5,
+              "label": "Vertex (2, -5)"
             }
           ]
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for Unit 1 · Exploring One-Variable & Two-Variable Data.",
+          "en": "Parabola f(x) = (x − 2)² − 5 with vertex at (2, −5) and symmetry reference line y = x.",
           "ar": null
         }
       },
       {
         "kind": "figure",
         "figure": {
-          "type": "bars",
-          "title": "Unit 1 · Exploring One-Variable & Two-Variable Data — Frequency Distribution (1)",
-          "xlabel": "Category / Outcome",
-          "ylabel": "Frequency",
-          "bars": [
-            {
-              "label": "Q1",
-              "value": 18
-            },
-            {
-              "label": "Q2",
-              "value": 32,
-              "highlight": true
-            },
-            {
-              "label": "Q3",
-              "value": 26
-            },
-            {
-              "label": "Q4",
-              "value": 14
-            }
+          "type": "scatter",
+          "xlim": [
+            0,
+            10
+          ],
+          "ylim": [
+            0,
+            10
+          ],
+          "data": [
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              5,
+              6
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              7,
+              8
+            ],
+            [
+              8,
+              9
+            ],
+            [
+              9,
+              9.5
+            ]
+          ],
+          "labels": [
+            "x",
+            "y"
           ]
         },
         "caption": {
-          "en": "Distribution summary comparing category frequencies and modal peak for Unit 1 · Exploring One-Variable & Two-Variable Data.",
+          "en": "Unit 1 · Exploring One-Variable & Two-Variable Data — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Unit 1 · Exploring One-Variable & Two-Variable Data.",
           "ar": null
         }
       },
@@ -126,6 +161,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Unit 1 · Exploring One-Variable & Two-Variable Data)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Completing the Square &amp; Log-Linearization Work:</strong> Any quadratic \\(f(x) = ax^2 + bx + c\\) (\\(a \\ne 0\\)) can be rewritten by factoring \\(a\\) from the first two terms and adding/subtracting \\((b/2a)^2\\):</p>\\[ ax^2 + bx + c = a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\]<p>Because \\(\\left(x + \\frac{b}{2a}\\right)^2 \\ge 0\\) for all \\(x \\in \\mathbb{R}\\), the extreme value \\(k = c - \\frac{b^2}{4a}\\) is attained uniquely at the axis of symmetry \\(x = -\\frac{b}{2a}\\), restricting the range to \\([k, \\infty)\\) (if \\(a > 0\\)) and making \\(f\\) invertible on \\(x \\ge -\\frac{b}{2a}\\). Similarly, applying \\(\\ln\\) to power laws \\(y = ax^n\\) yields \\(\\ln y = n\\ln x + \\ln a\\), transforming a nonlinear curve into a straight line of gradient \\(n\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example",
@@ -140,11 +187,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Algebraic Structure & Vieta's Root Relations",
+          "en": "Worked Example B — Unit 1 · Exploring One-Variable & Two-Variable Data (Hard Application)",
           "ar": null
         },
         "body": {
-          "en": "Solve the quadratic equation \\( x^2 - 10x + 25 = 0 \\) and verify the sum and product of its roots.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Factor into binomials: \\( (x - 5)(x - 5) = 0 \\implies x = 5 \\text{ or } x = 5 \\).</li><li>Check Vieta's formulas: sum \\( = 5 + 5 = \\mathbf{10} \\) and product \\( = (5)(5) = \\mathbf{25} \\).</li></ol>",
+          "en": "<p><strong>Problem (Hard):</strong> The correlation coefficient between two variables is \\(r = 0.08\\). What percent of the variation in \\(y\\) is explained by the linear relationship with \\(x\\)?</p><p><strong>Step-by-Step Solution:</strong> \\(r^2 = (0.08)^2 = 0.0064\\), so about 0.6\\% of the variation in y is explained by x.</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 1 · Exploring One-Variable & Two-Variable Data)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Expanding \\(\\ln(x + y)\\) as \\(\\ln x + \\ln y\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses the product law \\(\\ln(xy) = \\ln x + \\ln y\\) with a non-existent sum rule.",
+              "ar": null
+            },
+            {
+              "en": "Only factor products, quotients, and powers inside logarithms: \\(\\ln(xy) = \\ln x + \\ln y\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Keeping both roots of \\(\\sqrt{2x+7} = x - 2\\) without checking \\(x - 2 \\ge 0\\)",
+              "ar": null
+            },
+            {
+              "en": "Squaring both sides loses the sign of \\(x - {r}\\), introducing roots where \\(\\sqrt{\\cdot} = -\\text{number}\\).",
+              "ar": null
+            },
+            {
+              "en": "Enforce the range condition \\(x \\ge 2\\) before or after squaring.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Restricting domain of \\(f(x) = (x-3)^2 + 1\\) to \\(x \\ge 0\\) for invertibility",
+              "ar": null
+            },
+            {
+              "en": "The vertex is at \\(x = 3\\), so \\(f(2) = f(4) = 2\\) fails the horizontal line test on \\(x \\ge 0\\).",
+              "ar": null
+            },
+            {
+              "en": "Restrict the domain at the vertex axis of symmetry: \\(x \\ge 3\\) (or \\(x \\le 3\\)).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Unit 1 · Exploring One-Variable & Two-Variable Data",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Fast Exam Check (College Board AP Statistics):</strong> To verify an inverse function \\(f^{-1}(x)\\) in 5 seconds, pick a simple input \\(x_0\\), compute \\(y_0 = f(x_0)\\), and check that \\(f^{-1}(y_0) = x_0\\). Also verify that the graph of \\(y = f^{-1}(x)\\) reflects \\(y = f(x)\\) across \\(y = x\\).</p>",
           "ar": null
         }
       },
@@ -157,7 +281,21 @@
         "solution": {
           "en": "<p><strong>Median in °F:</strong> Scaled by 1.8 and shifted by 32: \\[ M_F = 1.8(22.0) + 32 = 39.6 + 32 = \\mathbf{71.6^{\\circ}\\text{F}}. \\]</p><p><strong>IQR in °F:</strong> Spread is affected ONLY by the multiplicative factor 1.8, not the addition of 32: \\[ \\text{IQR}_F = 1.8(\\text{IQR}_C) = 1.8(4.5) = \\mathbf{8.1^{\\circ}\\text{F}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 1 · Exploring One-Variable & Two-Variable Data</em> and start from \\(M = 22.0^{\\circ}\\text{C}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( M_F = 1.8(22.0) + 32 = 39.6 + 32 = \\mathbf{71.6^{\\circ}\\text{F}}. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -286,7 +424,21 @@
         "solution": {
           "en": "<p>Compute the z-score: \\[ z = \\frac{x - \\mu}{\\sigma} = \\frac{76 - 70}{3} = \\frac{6}{3} = \\mathbf{2.00}. \\]</p><p>By the Empirical Rule (68-95-99.7%), approximately 95% of data lies within 2 standard deviations of the mean, leaving 5% split between both tails. The upper tail is: \\[ P(Z > 2.00) = \\frac{1 - 0.95}{2} = 0.025 = \\mathbf{2.5\\%} \\quad (\\text{or } 0.0228 \\text{ using exact normal tables}). \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 1 · Exploring One-Variable & Two-Variable Data</em> and start from \\(\\mu = 70\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( z = \\frac{x - \\mu}{\\sigma} = \\frac{76 - 70}{3} = \\frac{6}{3} = \\mathbf{2.00}. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -353,16 +505,44 @@
         "solution": {
           "en": "<p><strong>(a) Leverage:</strong> The point has <strong>high leverage</strong> because its \\(x\\)-value (18) is substantially far from the mean \\(\\bar{x}\\) of the remaining data.</p><p><strong>(b) Residual:</strong> The point has a <strong>very small residual</strong> because it falls directly on the linear trajectory established by the other data points.</p><p><strong>(c) Correlation \\(r\\):</strong> Because the point has an extreme \\(x\\)-value and small residual in line with the trend, it substantially <strong>strengthens (increases) the correlation coefficient \\(r\\)</strong> toward 1.</p><p><strong>(d) Slope \\(b_1\\):</strong> The point is <strong>not influential on the slope</strong>; because it already lies on the established trajectory, removing it would cause very little change to the slope \\(b_1\\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 1 · Exploring One-Variable & Two-Variable Data</em> and start from \\(x = 18\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Unit 1 · Exploring One-Variable & Two-Variable Data · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> When the integer \\( p = 80 \\) is divided by \\( q = 25 \\), the division algorithm gives \\( p = qq + t \\) with \\( 0 \\le t < q \\). Which of the following is the remainder \\( t \\)?",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 1 · Exploring One-Variable & Two-Variable Data</em> and start from \\( p = 80 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 80 = 25 \\times 3 + 5 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Since \\( 80 = 25 \\times 3 + 5 \\), the remainder is \\( t = 5 \\).",
           "ar": null
         }
       }

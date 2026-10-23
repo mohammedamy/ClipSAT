@@ -39,44 +39,31 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "fn",
-          "title": "Unit 2 · Differentiation — Definition and Fundamental Properties — Coordinate Curve & Tangent Analysis (2)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
-          "fns": [
+          "type": "sign_chart",
+          "title": "Unit 2 · Differentiation — Definition and Fundamental Properties — First Derivative Sign Chart & Extrema",
+          "ticks": [
             {
-              "fn": "x*x - 2",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 2"
+              "x": -4,
+              "label": "x = -4"
             },
             {
-              "fn": "2*x - 3",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
+              "x": 7,
+              "label": "x = 7"
             }
           ],
-          "points": [
-            {
-              "x": 1,
-              "y": -1,
-              "label": "(1, -1)"
-            },
-            {
-              "x": 0,
-              "y": -2,
-              "label": "(0, -2)"
-            }
+          "signs": [
+            "+",
+            "−",
+            "+"
+          ],
+          "behaviors": [
+            "↗ Increasing",
+            "↘ Decreasing",
+            "↗ Increasing"
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 2 and its instantaneous tangent line at x = 1.",
+          "en": "Derivative sign chart for f'(x) showing local maximum at x = −4 (+ to −) and local minimum at x = 7 (− to +).",
           "ar": null
         }
       },
@@ -84,43 +71,38 @@
         "kind": "figure",
         "figure": {
           "type": "fn",
-          "title": "Unit 2 · Differentiation — Definition and Fundamental Properties — Coordinate Curve & Tangent Analysis (1)",
-          "xrange": [
-            -4,
-            4
-          ],
-          "yrange": [
-            -3,
-            9
-          ],
           "fns": [
-            {
-              "fn": "x*x - 1",
-              "color": "var(--fig-indigo)",
-              "label": "f(x) = x² - 1"
-            },
-            {
-              "fn": "2*x - 2",
-              "color": "var(--fig-amber)",
-              "dash": "4,4",
-              "label": "Tangent at x = 1"
-            }
+            "-x + 6",
+            "x + 2"
+          ],
+          "xlim": [
+            0,
+            7
+          ],
+          "ylim": [
+            0,
+            7
           ],
           "points": [
             {
-              "x": 1,
-              "y": 0,
-              "label": "(1, 0)"
+              "x": 2,
+              "y": 4,
+              "label": "(2, 4)"
             },
             {
-              "x": 0,
-              "y": -1,
-              "label": "(0, -1)"
+              "x": 6,
+              "y": 0,
+              "label": "(6, 0)"
+            },
+            {
+              "x": 4,
+              "y": 2,
+              "label": "(4, 2)"
             }
           ]
         },
         "caption": {
-          "en": "Coordinate graph of f(x) = x² − 1 and its instantaneous tangent line at x = 1.",
+          "en": "Unit 2 · Differentiation — Definition and Fundamental Properties — Mathematical Diagram (2) — illustrating key geometric and analytical relationships in Unit 2 · Differentiation — Definition and Fundamental Properties.",
           "ar": null
         }
       },
@@ -150,6 +132,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Unit 2 · Differentiation — Definition and Fundamental Properties)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Differentiability Implies Continuity &amp; How Implicit Differentiation Works:</strong> Notice that for \\(x \\ne a\\), we can write \\(f(x) - f(a) = \\dfrac{f(x) - f(a)}{x - a}\\cdot (x - a)\\). Taking the limit as \\(x \\to a\\) by the Product Law gives:</p>\\[ \\lim_{x \\to a} \\bigl(f(x) - f(a)\\bigr) = f'(a)\\cdot 0 = 0 \\implies \\lim_{x \\to a} f(x) = f(a) \\]<p>Similarly, when differentiating an implicit relation \\(F(x, y) = c\\) with respect to \\(x\\), \\(y = y(x)\\) is an inner function of \\(x\\). By the Chain Rule, \\(\\dfrac{d}{dx}\\bigl[y^n\\bigr] = ny^{n-1}\\dfrac{dy}{dx}\\), and for product terms \\(\\dfrac{d}{dx}[xy] = y + x\\dfrac{dy}{dx}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Level 1 (Foundations) — Worked Example · Recognizing Derivative Limits",
@@ -164,11 +158,100 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Instantaneous Rate of Change & Tangent Line",
+          "en": "Worked Example B — Unit 2 · Differentiation — Definition and Fundamental Properties (Easy Application)",
           "ar": null
         },
         "body": {
-          "en": "Let \\( f(x) = 5x^3 - x^2 + 4 \\). Find the instantaneous rate of change \\( f'(5) \\).<br><br><strong>Step-by-step Solution:</strong><br><ol><li>Differentiate term-by-term using the power rule: \\( f'(x) = 15x^2 - 2x \\).</li><li>Substitute \\( x = 5 \\): \\( f'(5) = 15(5)^2 - 2(5) = 375 - 10 = \\mathbf{365} \\).</li></ol>",
+          "en": "<p><strong>Problem (Easy):</strong> Let \\( u(s) = \\dfrac{552s^2 + 23s - 17}{s^2 + 24} \\) for \\( s > 0 \\). Find the limit at infinity \\( \\displaystyle\\lim_{s \\to \\infty} u(s) \\).</p><p><strong>Step-by-Step Solution:</strong> Dividing numerator and denominator by \\( s^2 \\) gives \\( 552 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Exam Traps — Unit 2 · Differentiation — Definition and Fundamental Properties",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>1. Premature L'Hôpital's Rule Application:</strong> On College Board AP Calculus AB, applying L'Hôpital's Rule to \\(\\lim_{x \\to 4} \\dfrac{g(x)}{h(x)}\\) when the fraction is <em>not</em> an indeterminate form \\(0/0\\) or \\(\\infty/\\infty\\) produces completely false limits. Always verify \\(g(4) = 0\\) and \\(h(4) = 0\\) explicitly first.</p><p><strong>2. Parametric Second Derivative Trap:</strong> For parametric curves \\((x(t), y(t))\\), \\(\\dfrac{d^2y}{dx^2} = \\dfrac{\\frac{d}{dt}(dy/dx)}{dx/dt}\\), <em>never</em> \\(\\dfrac{d^2y/dt^2}{d^2x/dt^2}\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 2 · Differentiation — Definition and Fundamental Properties)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Assuming \\(f'(c) = 0\\) guarantees a local extremum",
+              "ar": null
+            },
+            {
+              "en": "Inflection points like \\(f(x) = x^3\\) at \\(x = 0\\) have \\(f'(0) = 0\\) without changing sign.",
+              "ar": null
+            },
+            {
+              "en": "Verify that \\(f'(x)\\) actually changes sign across \\(x = c\\) (or check \\(f''(c) \\ne 0\\)).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Computing parametric \\(\\frac{d^2y}{dx^2}\\) as \\(\\frac{\\ddot{y}}{\\ddot{x}}\\)",
+              "ar": null
+            },
+            {
+              "en": "violates the Chain Rule \\(\\frac{d}{dx} = \\frac{1}{dx/dt}\\frac{d}{dt}\\).",
+              "ar": null
+            },
+            {
+              "en": "Differentiate \\(dy/dx\\) with respect to \\(t\\), then divide by \\(dx/dt\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Forgetting product rule on \\(xy\\) in implicit differentiation",
+              "ar": null
+            },
+            {
+              "en": "Treats \\(y\\) as a constant instead of \\(y(x)\\).",
+              "ar": null
+            },
+            {
+              "en": "Always expand \\(\\frac{d}{dx}(xy) = y + x\\frac{dy}{dx}\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Unit 2 · Differentiation — Definition and Fundamental Properties",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Exam Justification Rule (College Board AP Calculus AB):</strong> When justifying local extrema or points of inflection on free-response questions, state \"because \\(f'(x)\\) changes sign from positive to negative at \\(x = c\\)\" rather than referring vaguely to \"it\" or \"the graph.\"</p>",
           "ar": null
         }
       },
@@ -181,7 +264,21 @@
         "solution": {
           "en": "<p>Apply Product Rule to \\(x^4 e^x\\) and Quotient Rule to \\(\\frac{\\sin x}{x^2+1}\\): \\[ \\frac{d}{dx}[x^4 e^x] = 4x^3 e^x + x^4 e^x = x^3 e^x(4 + x). \\] \\[ \\frac{d}{dx}\\left[\\frac{\\sin x}{x^2+1}\\right] = \\frac{(\\cos x)(x^2+1) - (\\sin x)(2x)}{(x^2+1)^2} = \\frac{(x^2+1)\\cos x - 2x\\sin x}{(x^2+1)^2}. \\] Combining the results: \\[ f'(x) = \\mathbf{x^3 e^x (4 + x) - \\frac{(x^2 + 1)\\cos x - 2x\\sin x}{(x^2 + 1)^2}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 2 · Differentiation — Definition and Fundamental Properties</em> and start from \\(f(x) = x^4 e^x - \\frac{\\sin x}{x^2 + 1}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x^4 e^x\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -302,7 +399,21 @@
         "solution": {
           "en": "<p>1. <strong>Value match at \\(x = 1\\):</strong> The tangent line gives \\(y(1) = 4(1) - 1 = 3\\). Thus \\(f(1) = a(1)^2 + b(1) = 3 \\implies a + b = 3\\).<br>2. <strong>Slope match at \\(x = 1\\):</strong> The tangent line has slope \\(m = 4\\). Derivative: \\(f'(x) = 2ax + b\\). Thus \\(f'(1) = 2a + b = 4\\).<br>3. <strong>Solve system:</strong> Subtract equations: \\((2a + b) - (a + b) = 4 - 3 \\implies \\mathbf{a = 1}\\). Then \\(b = 3 - a = \\mathbf{2}\\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 2 · Differentiation — Definition and Fundamental Properties</em> and start from \\(a\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x = 1\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "text",
@@ -333,16 +444,44 @@
         "solution": {
           "en": "<p>Each differentiation introduces a factor of 2 by the Chain Rule and cycles through sine and cosine with period 4:<br>\\(f'(x) = 2\\cos(2x)\\)<br>\\(f''(x) = -2^2\\sin(2x)\\)<br>\\(f'''(x) = -2^3\\cos(2x)\\)<br>\\(f^{(4)}(x) = 2^4\\sin(2x)\\)<br>Divide order by 4: \\(42 = 4(10) + 2\\), so \\(f^{(42)}\\) has the same trigonometric phase as \\(f''(x)\\): \\[ f^{(42)}(x) = -2^{42}\\sin(2x) = \\mathbf{-4{,}398{,}046{,}511{,}104\\sin(2x)}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 2 · Differentiation — Definition and Fundamental Properties</em> and start from \\(f^{(42)}(x)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(f'(x) = 2\\cos(2x)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "[Unit 2 · Differentiation — Definition and Fundamental Properties · Practice 4] If the governing relation for this system is \\( g(t) = 6t + 6 \\), evaluate \\( g(10) \\) and find the inverse input \\( t \\) when \\( g(t) = 72 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> Let the differentiable function \\( u \\) be given by \\( u(s) = 4s^2 + 15s - 4 \\). Find the derivative \\( u'(4) \\).",
           "ar": null
         },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 2 · Differentiation — Definition and Fundamental Properties</em> and start from \\( u \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( u'(s) = 8s + 15 \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ],
         "solution": {
-          "en": "Substitute \\( t = 10 \\): \\( g(10) = 6(10) + 6 = \\mathbf{66} \\). Setting \\( 6t + 6 = 72 \\) gives \\( 6t = 66 \\implies t = \\mathbf{11} \\).",
+          "en": "Differentiating gives \\( u'(s) = 8s + 15 \\), so \\( u'(4) = 47 \\).",
           "ar": null
         }
       }

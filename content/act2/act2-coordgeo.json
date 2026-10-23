@@ -41,15 +41,30 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Advanced Coordinate Geometry",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Euclidean Invariants, Locus Equations &amp; Scaling Laws:</strong> In analytic geometry, geometric loci translate into algebraic constraints via Euclidean distance \\(d = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}\\). A circle of center \\((h, k)\\) and radius \\(r\\) satisfies \\((x-h)^2 + (y-k)^2 = r^2\\), and a tangent line at point \\(P\\) is strictly perpendicular to the radius \\(CP\\) (\\(m_{\\text{tan}} \\cdot m_{\\text{rad}} = -1\\)). Under a similarity scale factor \\(k\\), all linear lengths scale by \\(k\\), surface areas scale by \\(k^2\\), and volumes scale by \\(k^3\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "circle",
-          "radius": 6,
-          "labelR": "r = 6",
-          "chordAngle": 120
+          "type": "conic_section",
+          "conic": "ellipse",
+          "title": "Advanced Coordinate Geometry — Analytic Locus & Focal Geometry",
+          "h": 0,
+          "k": 0,
+          "a": 4,
+          "b": 3
         },
         "caption": {
-          "en": "Circle sector and chord geometry with radius r = 6 and central angle 120°.",
+          "en": "Analytic ellipse x²/16 + y²/9 = 1 showing semi-major axis a = 4, semi-minor axis b = 3, and foci F₁, F₂.",
           "ar": null
         }
       },
@@ -297,6 +312,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Advanced Coordinate Geometry)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Inscribed Angles Equal Half the Central Angle &amp; Circle Completion Works:</strong> Given \\(x^2 + y^2 + 2gx + 2fy + c = 0\\), completing the square in \\(x\\) and \\(y\\) simultaneously yields:</p>\\[ (x + g)^2 - g^2 + (y + f)^2 - f^2 + c = 0 \\implies (x + g)^2 + (y + f)^2 = g^2 + f^2 - c \\]<p>Thus the center is \\((-g, -f)\\) and the radius is \\(r = \\sqrt{g^2 + f^2 - c}\\) (requiring \\(g^2 + f^2 > c\\)). In any circle, drawing diameter \\(POQ\\) splits an inscribed angle \\(\\angle APB\\) into two isosceles triangles \\(\\triangle OAP\\) and \\(\\triangle OBP\\) (since \\(OA = OB = OP = r\\)); by the exterior angle theorem, \\(\\angle AOB = 2\\angle APB\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 6.A — Completing the Square to Determine Center and Radius",
@@ -335,11 +362,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example D — Advanced Coordinate Geometry (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> In right triangle \\( \\triangle HJK \\) with right angle at \\( K \\), the altitude \\( KD \\) to hypotenuse \\( HJ \\) forms segments \\( HD = 7 \\) and \\( DJ = 63 \\). What is the altitude length \\( v = KD \\)?</p><p><strong>Step-by-Step Solution:</strong> By the Right Triangle Altitude Theorem, \\( KD = \\sqrt{7 \\times 63} = 21 \\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Advanced Coordinate Geometry)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Reading radius of \\((x-3)^2 + (y+7)^2 = 16\\) as \\(r = 16\\) or center as \\((-3, 7)\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses \\(r^2\\) with \\(r\\) and forgets to flip the signs inside \\((x-h)\\) and \\((y-k)\\).",
+              "ar": null
+            },
+            {
+              "en": "Take the square root and negate the constants: center \\((3, -7)\\), radius \\(r = \\sqrt{16} = 4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using SSA (two sides and a non-included angle) to claim triangle congruence",
+              "ar": null
+            },
+            {
+              "en": "The ambiguous case of the Sine Rule allows two distinct triangles (\\(\\theta\\) and \\(180^\\circ - \\theta\\)).",
+              "ar": null
+            },
+            {
+              "en": "Use valid congruence criteria only: SSS, SAS (included angle), ASA, AAS, or HL/RHS.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Cubing the area ratio \\((A_1/A_2)^3\\) to find the volume ratio of similar solids",
+              "ar": null
+            },
+            {
+              "en": "Area ratio is already \\(k^2\\), so cubing it gives \\(k^6\\) instead of \\(k^3\\).",
+              "ar": null
+            },
+            {
+              "en": "First take the square root to get linear scale factor \\(k = \\sqrt{A_1/A_2}\\), then cube \\(k^3\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Advanced Coordinate Geometry",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Geometric Auxiliary-Line Strategy (ACT International Subject Test — Math 1):</strong> Whenever a circle problem includes a tangent line, draw the radius to the point of tangency and mark \\(90^\\circ\\) immediately; whenever it includes a chord, drop the perpendicular bisector from the center to form a right triangle.</p>",
           "ar": null
         }
       },
@@ -352,7 +456,21 @@
         "solution": {
           "en": "<p><strong>(a) Distance in 3D:</strong><br>\\[ d = \\sqrt{(4-1)^2+(6-2)^2+(3-3)^2} = \\sqrt{3^2 + 4^2 + 0^2} = \\sqrt{9+16+0} = \\sqrt{25} = \\mathbf{5} \\]</p><p><strong>(b) Midpoint:</strong><br>\\[ M = \\left( \\frac{1+4}{2}, \\frac{2+6}{2}, \\frac{3+3}{2} \\right) = \\mathbf{\\left( \\frac{5}{2}, 4, 3 \\right)} \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Advanced Coordinate Geometry</em> and start from \\(A(1,2,3)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -363,7 +481,21 @@
         "solution": {
           "en": "<p><strong>(a) Midpoint \\(M\\):</strong> \\[ M = \\left( \\dfrac{-2 + 6}{2}, \\dfrac{7 + 1}{2} \\right) = \\left( \\dfrac{4}{2}, \\dfrac{8}{2} \\right) = (2, 4). \\]</p><p><strong>(b) Perpendicular slope:</strong> Rewrite the given line in slope-intercept form: \\(4y = 3x - 12 \\Rightarrow y = \\dfrac{3}{4}x - 3\\). The slope is \\(m = \\dfrac{3}{4}\\). The perpendicular slope is the negative reciprocal: \\(m_\\perp = -\\dfrac{4}{3}\\).</p><p><strong>(c) Line equation:</strong> Using point-slope form with point \\((2, 4)\\): \\[ y - 4 = -\\dfrac{4}{3}(x - 2) \\implies 3(y - 4) = -4(x - 2) \\implies 3y - 12 = -4x + 8 \\implies \\mathbf{4x + 3y = 20}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Advanced Coordinate Geometry</em> and start from \\(Ax + By = C\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(M\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -374,7 +506,21 @@
         "solution": {
           "en": "<p><strong>Step 1 (Standard Form):</strong> Divide both sides by 225:<br>\\[ \\frac{9x^2}{225} + \\frac{25y^2}{225} = 1 \\implies \\frac{x^2}{25} + \\frac{y^2}{9} = 1 \\]</p><p><strong>Step 2 (Axes and Foci):</strong> Since the denominator of \\(x^2\\) is larger, the major axis is horizontal:<br>\\(a^2 = 25 \\implies a = \\mathbf{5}\\)<br>\\(b^2 = 9 \\implies b = \\mathbf{3}\\)<br>Focal distance: \\(c = \\sqrt{a^2 - b^2} = \\sqrt{25 - 9} = \\sqrt{16} = \\mathbf{4}\\).<br>Foci coordinates: \\((\\pm c, 0) = \\mathbf{(\\pm 4, 0)}\\).</p><p><strong>Step 3 (Eccentricity):</strong> \\(e = \\frac{c}{a} = \\frac{4}{5} = \\mathbf{0.8}\\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Advanced Coordinate Geometry</em> and start from \\(9x^2 + 25y^2 = 225\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -385,7 +531,21 @@
         "solution": {
           "en": "<p>Apply the point-to-line perpendicular distance formula \\(d = \\dfrac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}\\) with \\(A = 3\\), \\(B = -4\\), \\(C = 7\\), and \\((x_0, y_0) = (2, -3)\\):<br>\\[ d = \\frac{|3(2) + (-4)(-3) + 7|}{\\sqrt{3^2 + (-4)^2}} = \\frac{|6 + 12 + 7|}{\\sqrt{9 + 16}} = \\frac{|25|}{\\sqrt{25}} = \\frac{25}{5} = \\mathbf{5} \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Advanced Coordinate Geometry</em> and start from \\(P(2, -3)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(d = \\dfrac{|Ax_0 + By_0 + C|}{\\sqrt{A^2 + B^2}}\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

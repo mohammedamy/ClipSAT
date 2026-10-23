@@ -41,15 +41,30 @@
         }
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Circles & Conic Sections",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Euclidean Invariants, Locus Equations &amp; Scaling Laws:</strong> In analytic geometry, geometric loci translate into algebraic constraints via Euclidean distance \\(d = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}\\). A circle of center \\((h, k)\\) and radius \\(r\\) satisfies \\((x-h)^2 + (y-k)^2 = r^2\\), and a tangent line at point \\(P\\) is strictly perpendicular to the radius \\(CP\\) (\\(m_{\\text{tan}} \\cdot m_{\\text{rad}} = -1\\)). Under a similarity scale factor \\(k\\), all linear lengths scale by \\(k\\), surface areas scale by \\(k^2\\), and volumes scale by \\(k^3\\).</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "figure",
         "figure": {
-          "type": "circle",
-          "radius": 6,
-          "labelR": "r = 6",
-          "chordAngle": 120
+          "type": "conic_section",
+          "conic": "ellipse",
+          "title": "Circles & Conic Sections — Analytic Locus & Focal Geometry",
+          "h": 0,
+          "k": 0,
+          "a": 4,
+          "b": 3
         },
         "caption": {
-          "en": "Circle sector and chord geometry with radius r = 6 and central angle 120°.",
+          "en": "Analytic ellipse x²/16 + y²/9 = 1 showing semi-major axis a = 4, semi-minor axis b = 3, and foci F₁, F₂.",
           "ar": null
         }
       },
@@ -258,6 +273,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Circles & Conic Sections)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Inscribed Angles Equal Half the Central Angle &amp; Circle Completion Works:</strong> Given \\(x^2 + y^2 + 2gx + 2fy + c = 0\\), completing the square in \\(x\\) and \\(y\\) simultaneously yields:</p>\\[ (x + g)^2 - g^2 + (y + f)^2 - f^2 + c = 0 \\implies (x + g)^2 + (y + f)^2 = g^2 + f^2 - c \\]<p>Thus the center is \\((-g, -f)\\) and the radius is \\(r = \\sqrt{g^2 + f^2 - c}\\) (requiring \\(g^2 + f^2 > c\\)). In any circle, drawing diameter \\(POQ\\) splits an inscribed angle \\(\\angle APB\\) into two isosceles triangles \\(\\triangle OAP\\) and \\(\\triangle OBP\\) (since \\(OA = OB = OP = r\\)); by the exterior angle theorem, \\(\\angle AOB = 2\\angle APB\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 6.A — General to Standard Circle Form & Tangent Equation",
@@ -296,11 +323,88 @@
         "kind": "callout",
         "style": "example",
         "label": {
-          "en": "Worked Example D — Euclidean Distance & Orthogonal Projection",
+          "en": "Worked Example D — Circles & Conic Sections (Medium Application)",
           "ar": null
         },
         "body": {
-          "en": "A displacement has horizontal component \\( \\Delta x = 5 \\) and vertical component \\( \\Delta y = 5 \\). Find the squared magnitude \\( d^2 \\) and the area of the right triangle formed with the axes.<br><br><strong>Step-by-step Solution:</strong><br><ol><li>By the Pythagorean theorem, \\( d^2 = (5)^2 + (5)^2 = 25 + 25 = \\mathbf{50} \\).</li><li>The enclosed right-triangle area is \\( A = \\frac{1}{2}(5)(5) = \\mathbf{12.5} \\).</li></ol>",
+          "en": "<p><strong>Problem (Medium):</strong> The point \\( (17, y) \\) lies on the circle \\( (x + 3)^2+(x - 5)^2=841 \\) with \\( y > 5 \\). Find \\( y \\).</p><p><strong>Step-by-Step Solution:</strong> \\( (17 + 3)^2+(y - 5)^2=841 \\Rightarrow 20^2+(y - 5)^2=841 \\Rightarrow y - 5=\\pm21 \\Rightarrow y=26 \\) (taking \\( y>5 \\)).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Circles & Conic Sections)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Reading radius of \\((x-2)^2 + (y+6)^2 = 16\\) as \\(r = 16\\) or center as \\((-2, 6)\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses \\(r^2\\) with \\(r\\) and forgets to flip the signs inside \\((x-h)\\) and \\((y-k)\\).",
+              "ar": null
+            },
+            {
+              "en": "Take the square root and negate the constants: center \\((2, -6)\\), radius \\(r = \\sqrt{16} = 4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using SSA (two sides and a non-included angle) to claim triangle congruence",
+              "ar": null
+            },
+            {
+              "en": "The ambiguous case of the Sine Rule allows two distinct triangles (\\(\\theta\\) and \\(180^\\circ - \\theta\\)).",
+              "ar": null
+            },
+            {
+              "en": "Use valid congruence criteria only: SSS, SAS (included angle), ASA, AAS, or HL/RHS.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Cubing the area ratio \\((A_1/A_2)^3\\) to find the volume ratio of similar solids",
+              "ar": null
+            },
+            {
+              "en": "Area ratio is already \\(k^2\\), so cubing it gives \\(k^6\\) instead of \\(k^3\\).",
+              "ar": null
+            },
+            {
+              "en": "First take the square root to get linear scale factor \\(k = \\sqrt{A_1/A_2}\\), then cube \\(k^3\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Circles & Conic Sections",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Geometric Auxiliary-Line Strategy (Egyptian Scholastic Test (EST II — Math Level 1)):</strong> Whenever a circle problem includes a tangent line, draw the radius to the point of tangency and mark \\(90^\\circ\\) immediately; whenever it includes a chord, drop the perpendicular bisector from the center to form a right triangle.</p>",
           "ar": null
         }
       },
@@ -313,7 +417,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Recognize right triangle:</strong> Points \\((6, 0)\\), \\((0, 0)\\), and \\((0, 8)\\) form a right triangle with right angle at \\((0, 0)\\). By Thales's theorem, the hypotenuse connecting \\((6, 0)\\) and \\((0, 8)\\) is the circle's diameter.</p><p><strong>Step 2: Find center:</strong> The center \\((h, k)\\) is the midpoint of the diameter: \\[ (h, k) = \\left(\\frac{6 + 0}{2}, \\frac{0 + 8}{2}\\right) = \\mathbf{(3, 4)}. \\]</p><p><strong>Step 3: Find radius:</strong> The radius squared is the distance from center \\((3, 4)\\) to the origin \\((0, 0)\\): \\[ r^2 = 3^2 + 4^2 = 9 + 16 = 25. \\]</p><p>The standard equation is \\(\\mathbf{(x - 3)^2 + (y - 4)^2 = 25}\\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Circles & Conic Sections</em> and start from \\((0, 0)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\((6, 0)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -324,7 +442,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Radius slope:</strong> The center is the origin \\(O(0, 0)\\). The slope of the radius connecting \\((0, 0)\\) and \\((3, 4)\\) is: \\[ m_{\\text{radius}} = \\frac{4 - 0}{3 - 0} = \\frac{4}{3}. \\]</p><p><strong>Step 2: Tangent line slope:</strong> Since the tangent is perpendicular to the radius: \\[ m_{\\text{tangent}} = -\\frac{3}{4}. \\]</p><p><strong>Step 3: Point-slope equation:</strong> Using point \\(P(3, 4)\\): \\[ y - 4 = -\\frac{3}{4}(x - 3) \\implies 4(y - 4) = -3(x - 3) \\implies 4y - 16 = -3x + 9 \\implies \\mathbf{3x + 4y = 25}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Circles & Conic Sections</em> and start from \\(x^2 + y^2 = 25\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(O(0, 0)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -335,7 +467,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Apply the Intersecting Chords Theorem:</strong> \\[ AM \\cdot MB = CM \\cdot MD. \\]</p><p><strong>Step 2: Substitute given lengths:</strong> \\[ 4 \\times 9 = 6 \\times MD \\implies 36 = 6 \\cdot MD. \\]</p><p><strong>Step 3: Solve for \\(MD\\):</strong> \\[ MD = \\frac{36}{6} = \\mathbf{6\\text{ cm}}. \\]</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Circles & Conic Sections</em> and start from \\(AB\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( AM \\cdot MB = CM \\cdot MD. \\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -346,7 +492,21 @@
         "solution": {
           "en": "<p><strong>Step 1: Identify conic type:</strong> The coefficients of \\(x^2\\) (\\(+4\\)) and \\(y^2\\) (\\(-9\\)) have opposite signs (\\(A \\cdot C = 4(-9) = -36 < 0\\)). Therefore, the equation represents a <strong>hyperbola</strong>.</p><p><strong>Step 2: Complete the square to locate center:</strong> \\[ 4(x^2 + 4x + 4) - 9(y^2 - 6y + 9) = 101 + 4(4) - 9(9) \\] \\[ 4(x + 2)^2 - 9(y - 3)^2 = 101 + 16 - 81 = 36 \\] Divide through by 36: \\[ \\frac{(x + 2)^2}{9} - \\frac{(y - 3)^2}{4} = 1. \\]</p><p>The center is \\(\\mathbf{(-2, 3)}\\).</p>",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Circles & Conic Sections</em> and start from \\(4x^2 - 9y^2 + 16x + 54y - 101 = 0\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x^2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },

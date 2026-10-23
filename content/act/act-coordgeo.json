@@ -333,6 +333,18 @@
       },
       {
         "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Coordinate Geometry)",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Why Inscribed Angles Equal Half the Central Angle &amp; Circle Completion Works:</strong> Given \\(x^2 + y^2 + 2gx + 2fy + c = 0\\), completing the square in \\(x\\) and \\(y\\) simultaneously yields:</p>\\[ (x + g)^2 - g^2 + (y + f)^2 - f^2 + c = 0 \\implies (x + g)^2 + (y + f)^2 = g^2 + f^2 - c \\]<p>Thus the center is \\((-g, -f)\\) and the radius is \\(r = \\sqrt{g^2 + f^2 - c}\\) (requiring \\(g^2 + f^2 > c\\)). In any circle, drawing diameter \\(POQ\\) splits an inscribed angle \\(\\angle APB\\) into two isosceles triangles \\(\\triangle OAP\\) and \\(\\triangle OBP\\) (since \\(OA = OB = OP = r\\)); by the exterior angle theorem, \\(\\angle AOB = 2\\angle APB\\).</p>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "callout",
         "style": "example",
         "label": {
           "en": "Worked Example 4.A — Perpendicular Line Passing Through a Point",
@@ -380,6 +392,83 @@
         }
       },
       {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Coordinate Geometry)",
+          "ar": null
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": null
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": null
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": null
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Reading radius of \\((x-2)^2 + (y+4)^2 = 16\\) as \\(r = 16\\) or center as \\((-2, 4)\\)",
+              "ar": null
+            },
+            {
+              "en": "Confuses \\(r^2\\) with \\(r\\) and forgets to flip the signs inside \\((x-h)\\) and \\((y-k)\\).",
+              "ar": null
+            },
+            {
+              "en": "Take the square root and negate the constants: center \\((2, -4)\\), radius \\(r = \\sqrt{16} = 4\\).",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Using SSA (two sides and a non-included angle) to claim triangle congruence",
+              "ar": null
+            },
+            {
+              "en": "The ambiguous case of the Sine Rule allows two distinct triangles (\\(\\theta\\) and \\(180^\\circ - \\theta\\)).",
+              "ar": null
+            },
+            {
+              "en": "Use valid congruence criteria only: SSS, SAS (included angle), ASA, AAS, or HL/RHS.",
+              "ar": null
+            }
+          ],
+          [
+            {
+              "en": "Cubing the area ratio \\((A_1/A_2)^3\\) to find the volume ratio of similar solids",
+              "ar": null
+            },
+            {
+              "en": "Area ratio is already \\(k^2\\), so cubing it gives \\(k^6\\) instead of \\(k^3\\).",
+              "ar": null
+            },
+            {
+              "en": "First take the square root to get linear scale factor \\(k = \\sqrt{A_1/A_2}\\), then cube \\(k^3\\).",
+              "ar": null
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Coordinate Geometry",
+          "ar": null
+        },
+        "body": {
+          "en": "<p><strong>Geometric Auxiliary-Line Strategy (ACT Mathematics Test):</strong> Whenever a circle problem includes a tangent line, draw the radius to the point of tangency and mark \\(90^\\circ\\) immediately; whenever it includes a chord, drop the perpendicular bisector from the center to form a right triangle.</p>",
+          "ar": null
+        }
+      },
+      {
         "kind": "practiceProblem",
         "question": {
           "en": "What is the equation of the circle with centre \\((-2, 4)\\) and radius \\(5\\)?",
@@ -388,7 +477,21 @@
         "solution": {
           "en": "Using the standard equation \\((x - h)^2 + (y - k)^2 = r^2\\) with center \\((h, k) = (-2, 4)\\) and \\(r = 5\\):<br>\\[ (x - (-2))^2 + (y - 4)^2 = 5^2 \\implies (x + 2)^2 + (y - 4)^2 = 25 \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Coordinate Geometry</em> and start from \\((-2, 4)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\((x - h)^2 + (y - k)^2 = r^2\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -399,7 +502,21 @@
         "solution": {
           "en": "Using the midpoint formula for each coordinate:<br>\\(x_M = \\frac{x_A + x_B}{2} \\implies 3 = \\frac{-1 + x_B}{2} \\implies 6 = -1 + x_B \\implies x_B = 7\\).<br>\\(y_M = \\frac{y_A + y_B}{2} \\implies -2 = \\frac{4 + y_B}{2} \\implies -4 = 4 + y_B \\implies y_B = -8\\).<br>Therefore, the coordinates of \\(B\\) are <strong>(7, -8)</strong>.",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Coordinate Geometry</em> and start from \\(M(3, -2)\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -410,7 +527,21 @@
         "solution": {
           "en": "First calculate the slope of line \\(K\\):<br>\\[ m_K = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{-3 - 5}{1 - (-3)} = \\frac{-8}{4} = -2 \\]A line perpendicular to \\(K\\) has slope \\(m_{\\perp} = -\\frac{1}{m_K}\\):<br>\\[ m_{\\perp} = -\\frac{1}{-2} = \\mathbf{\\frac{1}{2}} \\]",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Coordinate Geometry</em> and start from \\(K\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(K\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       },
       {
         "kind": "practiceProblem",
@@ -421,7 +552,21 @@
         "solution": {
           "en": "Group terms and complete the square for \\(x\\) and \\(y\\):<br>\\[ (x^2 + 10x) + (y^2 - 4y) = -20 \\]Half the coefficients squared: \\((10/2)^2 = 25\\), \\((-4/2)^2 = 4\\). Add \\(25 + 4 = 29\\) to both sides:<br>\\[ (x^2 + 10x + 25) + (y^2 - 4y + 4) = -20 + 25 + 4 = 9 \\]\\[ (x + 5)^2 + (y - 2)^2 = 9 \\]Since \\(r^2 = 9\\), the radius is \\(r = \\sqrt{9} = \\mathbf{3}\\).",
           "ar": null
-        }
+        },
+        "hints": [
+          {
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Coordinate Geometry</em> and start from \\(x^2 + y^2 + 10x - 4y + 20 = 0\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x\\).",
+            "ar": null
+          },
+          {
+            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "ar": null
+          }
+        ]
       }
     ]
   },
