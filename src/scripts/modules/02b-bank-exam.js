@@ -1458,9 +1458,10 @@
       var f = q.figure || q.fig || q.table || (q.svg ? {type:'svg', svg:q.svg} : null);
       if(!f) return '';
       if(typeof f === 'string') return f;
-      if(f.type === 'table' || f.headers || f.rows){
-        var hdrs = (f.headers||[]).map(function(th){return '<th>'+_maths(th!=null?String(th):'')+'</th>';}).join('');
-        var rws = (f.rows||f.data||[]).map(function(r){
+      if(f.type === 'table' || Array.isArray(f.headers) || Array.isArray(f.rows)){
+        var hdrs = (Array.isArray(f.headers)?f.headers:[]).map(function(th){return '<th>'+_maths(th!=null?String(th):'')+'</th>';}).join('');
+        var rawRows = Array.isArray(f.rows) ? f.rows : (Array.isArray(f.data) ? f.data : []);
+        var rws = rawRows.map(function(r){
           return '<tr>'+(Array.isArray(r)?r.map(function(c){return '<td>'+_maths(c!=null?String(c):'')+'</td>';}).join(''):'<td>'+_maths(r!=null?String(r):'')+'</td>')+'</tr>';
         }).join('');
         return '<table class="exam-table">'+(hdrs?'<thead><tr>'+hdrs+'</tr></thead>':'')+'<tbody>'+rws+'</tbody></table>';
@@ -1507,7 +1508,7 @@
     /* Helper to resolve the correct output container (prioritizing #<viewId>-exam-out for full exams) */
     function _resolveFullExamOut(){
       var byId = document.getElementById(viewId + '-exam-out');
-      if(byId) return byId;
+      if(byId && (byId.id === viewId + '-exam-out' || (!byId.src && typeof byId.innerHTML !== 'undefined'))) return byId;
       var _p = btn && btn.parentElement;
       var _sib = _p ? _p.nextElementSibling : null;
       if(_sib && (_sib.classList.contains('tg-out') || _sib.querySelector('.tg-out'))){
@@ -1515,15 +1516,27 @@
       }
       var _sec = btn && btn.closest('section');
       if(_sec){
-        var _outs = _sec.querySelectorAll('.tg-out');
-        if(_outs && _outs.length) return _outs[_outs.length - 1];
+        if(typeof _sec.querySelectorAll === 'function'){
+          var _outs = _sec.querySelectorAll('.tg-out');
+          if(_outs && _outs.length) return _outs[_outs.length - 1];
+        }
+        if(typeof _sec.querySelector === 'function'){
+          var _qout = _sec.querySelector('.tg-out');
+          if(_qout) return _qout;
+        }
       }
       var _tg = btn && btn.closest('.testgen');
       if(_tg){
-        var _touts = _tg.querySelectorAll('.tg-out');
-        if(_touts && _touts.length) return _touts[_touts.length - 1];
+        if(typeof _tg.querySelectorAll === 'function'){
+          var _touts = _tg.querySelectorAll('.tg-out');
+          if(_touts && _touts.length) return _touts[_touts.length - 1];
+        }
+        if(typeof _tg.querySelector === 'function'){
+          var _tqout = _tg.querySelector('.tg-out');
+          if(_tqout) return _tqout;
+        }
       }
-      if(btn){
+      if(btn && typeof btn.insertAdjacentElement === 'function'){
         var created = document.createElement('div');
         created.className = 'tg-out';
         btn.insertAdjacentElement('afterend', created);
@@ -1575,9 +1588,16 @@
           if(_fHtml)h+='<div class="fep-figure">'+_fHtml+'</div>';
           var _qCardHtml = (window.CSRenderQiyasComparisonCard && (viewId === 'qudrat' || q.topic_id === 'qud-compare' || /Quantitative Comparison|المقارنات الكمية/i.test(q.domain||'')))
             ? window.CSRenderQiyasComparisonCard(q, _maths) : '';
-          h+='<div class="fep-qbody">'+_fmtBi(_maths(q.text||q.q||''))+_qCardHtml+'</div>';
+          var _qBodyHtml = _fmtBi(_maths(q.text||q.q||''));
+          if(spec && spec.defaultLang === 'en' && _qBodyHtml.indexOf('q-lang-en') === -1){
+            _qBodyHtml = '<span class="q-lang-en" dir="ltr">' + _qBodyHtml + '</span>';
+          }
+          h+='<div class="fep-qbody">'+_qBodyHtml+_qCardHtml+'</div>';
           if(isMCQ&&q.choices){h+='<div class="fep-choices">';q.choices.forEach(function(ch,ci){var s=_autoMath(ch);h+='<div class="fep-choice"><span class="fep-cletter">'+globalLetters[ci]+'.</span><span class="fep-ctext">'+_fmtBi(_maths(s))+'</span></div>';});h+='</div>';}
           if(q.type==='frq'){h+='<div class="fep-work-space"><span class="fep-ws-label">Working:</span>';for(var l=0;l<5;l++)h+='<div class="fep-ws-line"></div>';h+='<div class="fep-ws-ans"><span>Answer:</span><span class="fep-ws-ans-line"></span></div></div>';}
+          if(window.CSHintEngine && typeof window.CSHintEngine.renderHintWidget === 'function'){
+            h+='<div style="margin-left:28pt">' + window.CSHintEngine.renderHintWidget(q, 'fep-fb-' + qNum) + '</div>';
+          }
           h+='<div class="fep-sol-block" style="display:none"><strong>Answer'+(isMCQ?' ('+globalLetters[q.answer]+')':'')+': </strong>'+_fmtBi(_maths(q.sol||''))+'</div></div>';
           qNum++;
         });
@@ -1792,7 +1812,11 @@
           if(_fHtml)h+='<div class="fep-figure">'+_fHtml+'</div>';
           var _qCardHtml = (window.CSRenderQiyasComparisonCard && (viewId === 'qudrat' || q.topic_id === 'qud-compare' || /Quantitative Comparison|المقارنات الكمية/i.test(q.domain||'')))
             ? window.CSRenderQiyasComparisonCard(q, _maths) : '';
-          h+='<div class="fep-qbody">'+_fmtBi(_maths(q.text||q.q||''))+_qCardHtml+'</div>';
+          var _qBodyHtml = _fmtBi(_maths(q.text||q.q||''));
+          if(spec && spec.defaultLang === 'en' && _qBodyHtml.indexOf('q-lang-en') === -1){
+            _qBodyHtml = '<span class="q-lang-en" dir="ltr">' + _qBodyHtml + '</span>';
+          }
+          h+='<div class="fep-qbody">'+_qBodyHtml+_qCardHtml+'</div>';
           if(isMCQ&&q.choices){
             h+='<div class="fep-choices">';
             q.choices.forEach(function(ch,ci){var s=_autoMath(ch);h+='<div class="fep-choice"><span class="fep-cletter">'+pL[ci]+'.</span><span class="fep-ctext">'+_fmtBi(_maths(s))+'</span></div>';});
@@ -1818,6 +1842,9 @@
               for(var ln=0;ln<8;ln++)h+='<div class="fep-ws-line"></div>';
               h+='<div class="fep-ws-ans"><span>Answer:</span><span class="fep-ws-ans-line"></span></div></div>';
             }
+          }
+          if(window.CSHintEngine && typeof window.CSHintEngine.renderHintWidget === 'function'){
+            h+='<div style="margin-left:28pt">' + window.CSHintEngine.renderHintWidget(q, 'fep-sp-' + qNum) + '</div>';
           }
           h+='<div class="fep-sol-block" style="display:none"><strong>'+(isIBExam?'Official IB Markscheme ['+qMarks+' marks]':'Answer'+(isMCQ?' ('+pL[q.answer]+')':''))+(ansDisplay?' — '+_maths(ansDisplay):'')+': </strong><div style="margin-top:6px">'+_fmtBi(_maths(q.sol||q.exp||''))+'</div></div>';
           h+='</div>';

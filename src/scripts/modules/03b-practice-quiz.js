@@ -145,8 +145,17 @@ function showPracticeQuiz(ov, questions, origMistake){
       return;
     }
     var qo = questions[current];
+      var pct = Math.round(((current+1)/total)*100);
       var _fmtBi = window.CSFormatBilingual || function(s){ return s; };
       var qRendered = typeof window.CSQuizMath==='function'?window.CSQuizMath(qo.q):escHtml(qo.q);
+      var pqHintHtml = (window.CSHintEngine && typeof window.CSHintEngine.renderHintWidget === 'function')
+        ? window.CSHintEngine.renderHintWidget({
+            text: qo.q,
+            domain: (origMistake && (origMistake.domain || origMistake.src)) || 'Mathematics',
+            sol: qo.sol || qo.explanation || '',
+            hints: qo.hints
+          }, 'pq-' + current)
+        : '';
       ov.innerHTML = '<div style="background:var(--panel);border-radius:16px;padding:24px 28px;max-width:580px;width:90%;margin:auto;position:relative">'
       + '<button onclick="document.getElementById(\'pq-overlay\').remove()" style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:1.4rem;line-height:1;cursor:pointer;color:var(--muted);padding:2px 6px;border-radius:4px" title="Close">&times;</button>'
       + '<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">'
@@ -166,6 +175,7 @@ function showPracticeQuiz(ov, questions, origMistake){
             + 'color:var(--ink);cursor:pointer;font-size:.9rem;transition:background .15s">'+_fmtBi(m)+'</button>';
         }).join('')
       + '</div>'
+      + pqHintHtml
       + '<div id="pq-feedback" style="min-height:24px"></div>'
       + '</div>';
     /* Run MathJax twice: 80ms for DOM settle, 700ms safety net for slow init */

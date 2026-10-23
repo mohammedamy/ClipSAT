@@ -67,10 +67,11 @@ function _renderQFig(q){
   if(!f) return '';
   if(typeof f === 'string') return f;
   if(f.type === 'table' || f.headers || f.rows){
-    var hdrs = (f.headers||[]).map(function(th){
+    var hdrs = (Array.isArray(f.headers)?f.headers:[]).map(function(th){
       return '<th>' + (typeof window._autoMath === 'function' ? window._autoMath(th != null ? String(th) : '') : th) + '</th>';
     }).join('');
-    var rws = (f.rows || f.data || []).map(function(r){
+    var rawRows = Array.isArray(f.rows) ? f.rows : (Array.isArray(f.data) ? f.data : []);
+    var rws = rawRows.map(function(r){
       return '<tr>' + (Array.isArray(r) ? r.map(function(c){
         return '<td>' + (typeof window._autoMath === 'function' ? window._autoMath(c != null ? String(c) : '') : c) + '</td>';
       }).join('') : '<td>' + String(r) + '</td>') + '</tr>';
@@ -188,7 +189,8 @@ function _genTestOriginal(btn, optTrackId){
         for(var nf=noFig.length-1;nf>0;nf--){var rnf=Math.floor(Math.random()*(nf+1));var tnf=noFig[nf];noFig[nf]=noFig[rnf];noFig[rnf]=tnf;}
       }
 
-      var targetFigs=Math.min(withFig.length, Math.max(1, Math.ceil(n * (isIBTrack ? 0.45 : 0.30))));
+      var targetFigs=Math.min(withFig.length, Math.max(1, Math.ceil(n * 0.30)));
+      if(isIBTrack) targetFigs=Math.min(withFig.length, Math.max(1, Math.ceil(n * 0.45)));
       var pick=[];
       var tracker=window.ClipSATRedundancy ? window.ClipSATRedundancy.tracker() : null;
       var seenStems=new Set();
@@ -285,6 +287,10 @@ function _genTestOriginal(btn, optTrackId){
           var ansLabel=(isMCQ && q.answer!=null && letters[q.answer])?(' ('+letters[q.answer]+')'):(q.ans?(' ['+q.ans+']'):'');
           var solText=q.sol||q.exp||q.expl||('Answer: '+(q.ans||q.answer||'N/A'));
 
+          var hintHtml = (window.CSHintEngine && typeof window.CSHintEngine.renderHintWidget === 'function')
+            ? window.CSHintEngine.renderHintWidget(q, 'tg-' + (idx + 1))
+            : '';
+
           var probHtml='<div class="problem bank-problem" data-qid="'+(idx+1)+'">'
             + '<div class="problem-head" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px;margin-bottom:8px">'
             + '  <div style="display:flex;align-items:center;gap:6px"><span class="pn">'+(idx+1)+'</span>'
@@ -299,6 +305,7 @@ function _genTestOriginal(btn, optTrackId){
             + '<div class="pq-stem" style="font-size:1rem;line-height:1.6;white-space:pre-line">'+_fmtBi(_autoMath(qText))+'</div>'
             + chHtml
             + '</div>'
+            + hintHtml
             + '<button type="button" class="sol-toggle" onclick="this.parentElement.classList.toggle(\'open\')"><span class="tw">▸</span> '+(isIBTrack?'Show Official IB Markscheme':'Show solution')+'</button>'
             + '<div class="sol"><div class="sol-inner" style="padding:10px 14px;background:var(--paper-2,#f8fafc);border-radius:6px;border-left:3px solid var(--indigo,#1e3e70);margin-top:8px;white-space:pre-line"><strong>'+(isIBTrack?'Official IB Markscheme ['+qMarks+' marks]':'Answer')+ansLabel+':</strong><br>'+_fmtBi(_autoMath(solText))+'</div></div>'
             + '</div>';

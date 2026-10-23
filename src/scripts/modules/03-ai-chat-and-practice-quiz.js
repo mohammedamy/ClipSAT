@@ -772,7 +772,11 @@ window.launchPracticeQuiz=function(mistake){
       }
       /* Google Forms/Classroom capture — see public/js/quiz-capture-ui.js */
       _csCaptureQ.push({text:q.text||q.q||'',choices:(q.choices||[]).slice(),correctIndex:ans,type:'mcq',points:1,figure:_f||null,figureHtml:_fHtml||null});
-      h+='<div class="cq-item" data-ans="'+ans+'" data-raw="'+(q.text||q.q||'').replace(/"/g,'&quot;').replace(/\n/g,' ')+'">';
+      var _qDom=(q.domain||q.topic||'').replace(/"/g,'&quot;');
+      var _qId=(q.id||(viewId||'tr')+'-cq-'+(i+1)).replace(/"/g,'&quot;');
+      var _choicesJson='';
+      try{ _choicesJson=encodeURIComponent(JSON.stringify(q.choices||[])); }catch(e){}
+      h+='<div class="cq-item" data-id="'+_qId+'" data-domain="'+_qDom+'" data-src="'+(chTitle||'Chapter Quiz').replace(/"/g,'&quot;')+'" data-choices="'+_choicesJson+'" data-ans="'+ans+'" data-raw="'+(q.text||q.q||'').replace(/"/g,'&quot;').replace(/\n/g,' ')+'">';
       if(_fHtml){
         h+='<div class="cq-figure">'+_fHtml+'</div>';
       } else if(_f){
@@ -785,6 +789,9 @@ window.launchPracticeQuiz=function(mistake){
         h+='<li class="cq-opt" onclick="cqPick(this)" data-raw="'+rawC+'"><span class="cq-lt">'+LTR[ci]+'.</span><span class="cq-ct">'+c+'</span></li>';
       });
       h+='</ul>';
+      if(window.CSHintEngine && typeof window.CSHintEngine.renderHintWidget === 'function'){
+        h+=window.CSHintEngine.renderHintWidget(q, _qId);
+      }
       var _solRaw=(q.sol||q.explanation||'').replace(/"/g,'&quot;').replace(/\n/g,' ');
       if(q.sol||q.explanation) h+='<div class="cq-sol-box" data-raw="'+_solRaw+'"><strong>Solution:</strong> '+_maths(q.sol||q.explanation||'')+'</div>';
       h+='</div>';

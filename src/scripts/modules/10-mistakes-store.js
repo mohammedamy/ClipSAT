@@ -1,14 +1,14 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   10-mistakes-store.js — AccuracyLog, cqPick Mistake Capture & Adaptive Deck
+   Dashboard inside #mistake-overlay.
+   ═══════════════════════════════════════════════════════════════════════════ */
 var _mistakes = window.ML.getAll();
-function _saveMistakes(){ /* no-op: ML.add() handles persistence */ }
+function _saveMistakes(){ /* no-op: ML handles persistence */ }
 
-/* ── AccuracyLog: right+wrong attempt counts, bucketed by track/domain/day ──
-   ML only ever logs mistakes (no denominator), so there was no way to
-   compute an accuracy trend or a per-chapter mastery heatmap (Pillar 3
-   MVP). This is the missing piece — compact aggregates, not a raw event
-   log, so it stays small in localStorage and in the cloud sync payload. */
+/* ── AccuracyLog: right+wrong attempt counts, bucketed by track/domain/day ── */
 window.AccuracyLog = (function(){
   var STORAGE_KEY = 'clipsat_accuracy_v1';
-  var MAX_BUCKETS = 1500; // prune oldest days first if this is ever exceeded
+  var MAX_BUCKETS = 1500;
 
   function _load(){
     try{ var raw = localStorage.getItem(STORAGE_KEY); return raw ? JSON.parse(raw) : {}; }
@@ -49,7 +49,6 @@ window.AccuracyLog = (function(){
     _save(_prune(data));
   }
 
-  /* Per-domain mastery within one track, weakest first — feeds the heatmap. */
   function chapterMastery(track){
     var data = _load();
     var domains = data[track] || {};
@@ -60,8 +59,6 @@ window.AccuracyLog = (function(){
     }).sort(function(a,b){ return a.pct-b.pct; });
   }
 
-  /* Overall accuracy per track (all domains/days combined) — feeds the
-     existing per-track Progress rows alongside review%/mastery%. */
   function trackAccuracy(){
     var data = _load();
     var out = {};
@@ -75,8 +72,6 @@ window.AccuracyLog = (function(){
     return out;
   }
 
-  /* Last N days, across every track — feeds the trend row. Days with no
-     activity come back with total:0 (rendered as a gap, not a 0%). */
   function dailyTrend(days){
     days = days || 14;
     var data = _load();
@@ -102,64 +97,94 @@ window.AccuracyLog = (function(){
   return {record:record, chapterMastery:chapterMastery, trackAccuracy:trackAccuracy, dailyTrend:dailyTrend};
 }());
 
-/* Patch cqPick — record wrong answers into ML with stable IDs, and every
-   attempt (right or wrong) into AccuracyLog for the mastery heatmap/trend */
+/* Patch cqPick — record wrong answers into ML with full choices + solution for Adaptive Mistake Deck */
 (function(){
   var _orig = window.cqPick;
   window.cqPick = function(el){
     var item = el.closest('.cq-item');
     if(!item || item.classList.contains('cq-done')){ if(_orig) _orig(el); return; }
     var ans    = parseInt(item.getAttribute('data-ans'),10);
-    var opts   = Array.prototype.indexOf.call ? Array.prototype.slice.call(item.querySelectorAll('.cq-opt')) : [];
+    var opts   = Array.prototype.slice.call(item.querySelectorAll('.cq-opt'));
     var chosen = opts.indexOf(el);
     if(_orig) _orig(el);
     var main    = item.closest('main[id^="view-"]');
-    var viewId  = main ? main.id.replace('view-','') : '';
+    var viewId  = main ? main.id.replace('view-','') : (window.CLIPSAT_TRACK || '');
     var isRight = chosen === ans;
     if(window.AccuracyLog) window.AccuracyLog.record(viewId, item.getAttribute('data-domain') || '', isRight);
     if(!isRight){
       var qEl = item.querySelector('.cq-stem,.cq-q,.cq-qt');
+      var solEl = item.querySelector('.cq-sol-box,.cq-sol');
+      var rawChoices = [];
+      var chAttr = item.getAttribute('data-choices');
+      if(chAttr){
+        try{ rawChoices = JSON.parse(decodeURIComponent(chAttr)); }catch(e){}
+      }
+      if(!rawChoices.length){
+        rawChoices = opts.map(function(o){
+          return o.getAttribute('data-raw') || (o.querySelector('.cq-ct') ? o.querySelector('.cq-ct').textContent : o.textContent);
+        });
+      }
       window.ML.add({
-        id:     item.getAttribute('data-id') || ('q-'+Date.now()),
-        viewId: viewId,
-        q:      item.getAttribute('data-raw') || (qEl ? qEl.textContent.slice(0,200) : 'Question'),
-        wrong:  el.getAttribute('data-raw') || (el.querySelector('.cq-ct') ? el.querySelector('.cq-ct').textContent : String.fromCharCode(65+chosen)),
-        right:  opts[ans] ? (opts[ans].getAttribute('data-raw') || (opts[ans].querySelector('.cq-ct') ? opts[ans].querySelector('.cq-ct').textContent : String.fromCharCode(65+ans))) : String.fromCharCode(65+ans),
-        domain: item.getAttribute('data-domain') || '',
-        src:    item.getAttribute('data-src') || ''
+        id:      item.getAttribute('data-id') || ('q-' + Date.now()),
+        viewId:  viewId,
+        q:       item.getAttribute('data-raw') || (qEl ? qEl.textContent.slice(0,300) : 'Question'),
+        wrong:   el.getAttribute('data-raw') || (el.querySelector('.cq-ct') ? el.querySelector('.cq-ct').textContent : String.fromCharCode(65+chosen)),
+        right:   opts[ans] ? (opts[ans].getAttribute('data-raw') || (opts[ans].querySelector('.cq-ct') ? opts[ans].querySelector('.cq-ct').textContent : String.fromCharCode(65+ans))) : String.fromCharCode(65+ans),
+        domain:  item.getAttribute('data-domain') || '',
+        src:     item.getAttribute('data-src') || '',
+        sol:     solEl ? (solEl.getAttribute('data-raw') || solEl.textContent.replace(/^Solution:\s*/i,'')) : '',
+        choices: rawChoices
       });
-      /* keep legacy array in sync for openMistakes() display */
       _mistakes = window.ML.getAll();
+    } else {
+      /* If this question was in the Mistake Log, record a successful review! */
+      var qId = item.getAttribute('data-id');
+      var hintsUsed = parseInt(item.getAttribute('data-hints-used') || '0', 10);
+      if(qId && window.ML && typeof window.ML.recordReview === 'function'){
+        window.ML.recordReview(qId, true, hintsUsed);
+        _mistakes = window.ML.getAll();
+      }
     }
   };
 }());
 
-/* Bulletproof Mistakes panel — assigned to window to guarantee global scope */
+var _activeMistakeBoxFilter = 0; /* 0 = All, 1..4 = Leitner Box 1..4 */
+
+window.filterMistakesByBox = function(boxNum){
+  _activeMistakeBoxFilter = (_activeMistakeBoxFilter === boxNum) ? 0 : boxNum;
+  window.openMistakes();
+};
+
+window.tagMistakeError = function(id, tag){
+  if(window.ML && typeof window.ML.setErrorTag === 'function'){
+    window.ML.setErrorTag(id, tag);
+    window.openMistakes();
+  }
+};
+
+/* Bulletproof Mistakes panel — renders Leitner 4-Box Adaptive Deck summary & error tags */
 window.openMistakes = function(){
   try {
     var ov   = document.getElementById('mistake-overlay');
     if(!ov){ console.warn('ClipSAT: #mistake-overlay not found'); return; }
     var list = document.getElementById('mistake-list');
     var cnt  = document.getElementById('mistake-count');
-    /* Always fetch fresh data from ML module */
     var mistakes = (window.ML && typeof window.ML.getAll === 'function') ? window.ML.getAll() : (_mistakes || []);
-    _mistakes = mistakes; /* keep legacy array in sync */
-    if(cnt) cnt.textContent = mistakes.length + ' mistake' + (mistakes.length !== 1 ? 's' : '') + ' recorded';
+    _mistakes = mistakes;
+    var stats = (window.ML && typeof window.ML.getDeckStats === 'function')
+      ? window.ML.getDeckStats()
+      : { total: mistakes.length, dueNow: mistakes.length, boxCounts: {1:mistakes.length, 2:0, 3:0, 4:0} };
+
+    if(cnt){
+      cnt.textContent = mistakes.length + ' mistake' + (mistakes.length !== 1 ? 's' : '')
+        + ' recorded' + (stats.dueNow > 0 ? (' · ⚡ ' + stats.dueNow + ' due for review') : '');
+    }
+
     if(list){
       if(mistakes.length === 0){
         list.innerHTML = '<div id="mistake-empty">🎉 No mistakes yet! Keep it up.</div>';
       } else {
         var _esc = (typeof escHtml === 'function') ? escHtml : function(s){ return s ? String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') : ''; };
-        /* auto-wrap raw LaTeX (no delimiters), then HTML-escape — but tag-aware:
-           quantitative-comparison mistakes (qudrat/tahsili) store real <strong>/
-           <br>/<em> markup for bilingual formatting, which must render as actual
-           tags, while bare "<"/">" used as math comparison operators (e.g.
-           "0 < 5 < 11") in the SAME string must be entity-escaped so they don't
-           get parsed as bogus tags and swallow the text after them. Blindly
-           escaping every "<"/">" (the old behavior) broke the former case —
-           same bug class as the inline-math angle-bracket fix (PR #54), but a
-           4th sanitizer copy that sweep didn't reach since it's named _wm, not
-           _maths(). Mirrors _maths()'s tag-detection algorithm exactly. */
         var _wm = function(s){
           if(!s) return '';
           s = typeof window.CSAutoMath==='function' ? window.CSAutoMath(s) : String(s);
@@ -186,21 +211,84 @@ window.openMistakes = function(){
           }
           return out;
         };
-        var visible = mistakes.slice().reverse().slice(0, 50);
-        list.innerHTML = visible.map(function(m, i){
-          var realIdx  = mistakes.length - 1 - i;
+
+        var BOX_META = [
+          { box: 1, label: 'Box 1 · Due Now', color: '#dc2626', bg: '#fef2f2', border: '#fecaca' },
+          { box: 2, label: 'Box 2 · 1d Review', color: '#d97706', bg: '#fffbeb', border: '#fde68a' },
+          { box: 3, label: 'Box 3 · 3d Review', color: '#2563eb', bg: '#eff6ff', border: '#bfdbfe' },
+          { box: 4, label: 'Box 4 · Mastered', color: '#16a34a', bg: '#f0fdf4', border: '#bbf7d0' }
+        ];
+
+        var deckHeaderHtml = '<div class="cs-adaptive-deck-banner" style="background:var(--paper-2,#f8fafc);border:1.5px solid var(--line,#e2e8f0);border-radius:12px;padding:12px 14px;margin-bottom:14px">'
+          + '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px">'
+          + '  <div>'
+          + '    <div style="font-weight:800;font-size:.9rem;color:var(--indigo,#1e3a6e)">🧠 Leitner Spaced-Repetition Mistake Deck</div>'
+          + '    <div style="font-size:.76rem;color:var(--muted,#64748b)">Active recall with 3-tier progressive hints &amp; error root-cause tagging</div>'
+          + '  </div>'
+          + '  <button type="button" onclick="window.launchAdaptiveMistakeDeck&&window.launchAdaptiveMistakeDeck({dueOnly:true})" '
+          + '    style="padding:7px 14px;border-radius:8px;border:none;background:linear-gradient(135deg,#1e3a6e,#2b5ba8);color:#fff;font-weight:700;font-size:.8rem;cursor:pointer;box-shadow:0 2px 8px rgba(30,58,110,.2)">'
+          + '    ⚡ Practice Adaptive Deck (' + (stats.dueNow || mistakes.length) + ')'
+          + '  </button>'
+          + '</div>'
+          + '<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px">'
+          + BOX_META.map(function(bm){
+              var active = (_activeMistakeBoxFilter === bm.box);
+              var count = (stats.boxCounts && stats.boxCounts[bm.box]) || 0;
+              return '<button type="button" onclick="window.filterMistakesByBox(' + bm.box + ')" '
+                + 'style="padding:6px 8px;border-radius:8px;border:' + (active ? ('2px solid ' + bm.color) : ('1px solid ' + bm.border)) + ';background:' + bm.bg + ';color:' + bm.color + ';cursor:pointer;text-align:center;font-family:inherit">'
+                + '<div style="font-size:.95rem;font-weight:800">' + count + '</div>'
+                + '<div style="font-size:.68rem;font-weight:700">' + bm.label + '</div>'
+                + '</button>';
+            }).join('')
+          + '</div>'
+          + '</div>';
+
+        var filtered = mistakes.slice().reverse().filter(function(m){
+          if(!_activeMistakeBoxFilter) return true;
+          return (m.box || 1) === _activeMistakeBoxFilter;
+        }).slice(0, 50);
+
+        var ERROR_TAGS = [
+          { key: 'concept', label: '🧠 Concept Gap' },
+          { key: 'algebra', label: '➕ Sign/Algebra' },
+          { key: 'trap',    label: '🪤 Exam Trap' },
+          { key: 'time',    label: '⏱️ Time Rush' }
+        ];
+
+        var itemsHtml = filtered.map(function(m){
+          var realIdx = mistakes.indexOf(m);
+          var b = (m.box >= 1 && m.box <= 4) ? m.box : 1;
+          var bm = BOX_META[b - 1];
+          var safeId = String(m.id || '').replace(/'/g, "\\'");
           var aiPrompt = 'I got this question wrong. Please explain it step by step.\n\nQuestion: ' + m.q + '\n\nI answered: ' + m.wrong + '\nCorrect answer: ' + m.right;
+          var tagPills = ERROR_TAGS.map(function(et){
+            var isSel = (m.errorTag === et.key);
+            return '<button type="button" onclick="window.tagMistakeError(\'' + safeId + '\',\'' + (isSel ? '' : et.key) + '\')" '
+              + 'style="padding:2px 8px;border-radius:999px;font-size:.7rem;font-weight:600;cursor:pointer;border:1px solid '
+              + (isSel ? '#1e3a6e;background:#1e3a6e;color:#fff' : 'var(--line,#cbd5e1);background:var(--paper,#fff);color:var(--muted,#64748b)') + '">'
+              + et.label + '</button>';
+          }).join('');
+
           return '<div class="m-item">'
+            + '<div style="display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:6px;flex-wrap:wrap">'
+            + '  <span style="font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:999px;background:' + bm.bg + ';color:' + bm.color + ';border:1px solid ' + bm.border + '">' + bm.label + '</span>'
+            + (m.domain ? '<span style="font-size:.72rem;color:var(--muted,#64748b);font-weight:600">' + _esc(m.domain) + '</span>' : '')
+            + '</div>'
             + '<div class="mq">'  + _wm(m.q)     + '</div>'
             + '<div class="mw">&#x2717; Your answer: ' + _wm(m.wrong) + '</div>'
             + '<div class="mr">&#x2713; Correct: '    + _wm(m.right) + '</div>'
             + (m.src ? '<div class="ms">' + _esc(m.src) + '</div>' : '')
+            + '<div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;margin:8px 0">'
+            + '  <span style="font-size:.7rem;color:var(--muted,#64748b);margin-right:2px">Why missed:</span>'
+            + tagPills
+            + '</div>'
             + '<div class="m-btns">'
             + '<button class="m-explain-btn" onclick="closeMistakes();window.openChatWith(this.dataset.p)" data-p="' + aiPrompt.replace(/"/g, '&quot;') + '">&#129302; Explain this</button>'
-            + '<button class="m-quiz-btn" onclick="reviewMistakeAt(' + realIdx + ')">&#128260; Quiz me on this</button>'
+            + '<button class="m-quiz-btn" onclick="reviewMistakeAt(' + realIdx + ')">⚡ Re-test with Hints</button>'
             + '</div></div>';
         }).join('');
-        /* typeset LaTeX in the freshly rendered mistake list */
+
+        list.innerHTML = deckHeaderHtml + (itemsHtml || '<div style="text-align:center;padding:18px;color:var(--muted)">No mistakes in this Leitner box filter.</div>');
         if(window.MathJax && MathJax.typesetPromise){
           setTimeout(function(){ MathJax.typesetPromise([list]).catch(function(){}); }, 60);
           setTimeout(function(){ MathJax.typesetPromise([list]).catch(function(){}); }, 700);
@@ -209,7 +297,6 @@ window.openMistakes = function(){
     }
     ov.classList.add('show');
   } catch(e) {
-    /* Last-resort fallback: force the overlay open */
     var ov2 = document.getElementById('mistake-overlay');
     if(ov2) ov2.classList.add('show');
     console.error('openMistakes error:', e);
@@ -217,10 +304,3 @@ window.openMistakes = function(){
 };
 function openMistakes(){ window.openMistakes(); }
 function closeMistakes(){ document.getElementById('mistake-overlay').classList.remove('show'); }
-
-/* ── PROGRESS DASHBOARD ──
-   Rolls up existing data into a per-track view — adds no new tracking.
-   Sources: clipsat_mistakes_v2 (via window.ML — wrong-answer log, includes
-   reviewedAt), clipsat_srs_state (flashcard SM-2-lite state, id "track:slug"),
-   clipsat_visited (per-track visit counter). "Mastered" flashcard = interval
-   >=6 days, i.e. survived at least two consecutive correct reviews. */
