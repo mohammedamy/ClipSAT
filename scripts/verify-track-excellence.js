@@ -20,15 +20,48 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const targetTrack = process.argv[2] || null;
 
+function parseMathAst(tex) {
+  let s = String(tex || '').trim();
+  s = s.replace(/\\(?:displaystyle|textstyle|scriptstyle|left|right|,|;|:|!|quad|qquad)/g, '');
+  s = s.replace(/\\(?:d|t)?frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}/g, 'FRAC($1,$2)');
+  s = s.replace(/\\(?:d|t)?binom\s*\{([^{}]*)\}\s*\{([^{}]*)\}/g, 'BINOM($1,$2)');
+  s = s.replace(/\\sqrt\s*\[([^\[\]]*)\]\s*\{([^{}]*)\}/g, 'ROOT($1,$2)');
+  s = s.replace(/\\sqrt\s*\{([^{}]*)\}/g, 'SQRT($1)');
+  s = s.replace(/\\begin\{([a-zA-Z0-9*]+)\}([\s\S]*?)\\end\{\1\}/g, (_, env, body) =>
+    `ENV:${env}(${body.replace(/\\\\/g, ';').replace(/&/g, ',')})`
+  );
+  const powTokens = [];
+  s = s.replace(/\^\{\s*([^{}]*)\s*\}/g, (_, exp) => {
+    powTokens.push(exp.replace(/\s+/g, ''));
+    return `__POW${powTokens.length - 1}__`;
+  });
+  s = s.replace(/\^([a-zA-Z0-9])/g, (_, exp) => {
+    powTokens.push(exp);
+    return `__POW${powTokens.length - 1}__`;
+  });
+  s = s.replace(/_\{\s*([^{}]*)\s*\}/g, 'SUB($1)').replace(/_([a-zA-Z0-9])/g, 'SUB($1)');
+  s = s.replace(/\d+(\.\d+)?/g, 'N');
+  s = s.replace(/__POW(\d+)__/g, (_, idx) => `POW(${powTokens[Number(idx)]})`);
+  s = s.replace(/\s+/g, '');
+  return `AST[${s}]`;
+}
+
 function getSkeleton(text) {
-  return String(text || '')
-    .replace(/\\\([\s\S]*?\\\)/g, '$M$')
-    .replace(/\\\[[\s\S]*?\\\]/g, '$M$')
-    .replace(/\$[^$]+\$/g, '$M$')
-    .replace(/\d+(\.\d+)?/g, 'N')
-    .replace(/\s+/g, ' ')
-    .trim()
-    .slice(0, 95);
+  const raw = String(text || '').replace(/<[^>]+>/g, ' ');
+  const parts = raw.split(/(\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]|\$\$[\s\S]*?\$\$|\$[^$]+\$)/g);
+  const out = parts.map((part) => {
+    if (
+      (part.startsWith('\\(') && part.endsWith('\\)')) ||
+      (part.startsWith('\\[') && part.endsWith('\\]')) ||
+      (part.startsWith('$$') && part.endsWith('$$')) ||
+      (part.startsWith('$') && part.endsWith('$'))
+    ) {
+      const inner = part.replace(/^(\\\(|\\\[|\$\$?)|(\\\)|\\\]|\$\$?)$/g, '');
+      return parseMathAst(inner);
+    }
+    return part.replace(/\d+(\.\d+)?/g, 'N');
+  });
+  return out.join('').replace(/\s+/g, ' ').trim();
 }
 
 function auditTrack(trackId) {
