@@ -84,26 +84,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive AP Precalculus Exam Format & Modeling Framework Lab",
+          "en": "⊙ Explorer · AP Precalculus Rate-of-Change & Concavity Secant Analyzer",
           "ar": null
         },
-        "canvasId": "exAuto_calc_appcoverview",
+        "canvasId": "appcoverviewExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for AP Precalculus Exam Format & Modeling Framework",
+          "en": "AP Precalculus Rate-of-Change & Concavity Secant Analyzer interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_calc_appcoverview_dataBtn",
-          "panelId": "exAuto_calc_appcoverview_dataPanel",
-          "descId": "exAuto_calc_appcoverview_dataDesc",
-          "rowsId": "exAuto_calc_appcoverview_dataRows",
+          "btnId": "appcoverviewExCanvas_dataBtn",
+          "panelId": "appcoverviewExCanvas_dataPanel",
+          "descId": "appcoverviewExCanvas_dataDesc",
+          "rowsId": "appcoverviewExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for AP Precalculus Exam Format & Modeling Framework",
+            "en": "Live numerical table for AP Precalculus Rate-of-Change & Concavity Secant Analyzer",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -114,58 +114,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_calc_appcoverview_s0",
+            "id": "appcoverviewExCanvas_s0",
             "label": {
-              "en": "Tangent point <b>a =</b>",
+              "en": "Interval Center <b>x₀ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_appcoverview_v0",
+            "min": -2.0,
+            "max": 2.0,
+            "value": 0.5,
+            "step": 0.25,
+            "valueDisplayId": "appcoverviewExCanvas_v0",
             "ariaLabel": {
-              "en": "Tangent parameter a",
+              "en": "Interval Center x₀ =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_calc_appcoverview_s1",
+            "id": "appcoverviewExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>c =</b>",
+              "en": "Step Width <b>Δx =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_appcoverview_v1",
+            "min": 0.4,
+            "max": 1.6,
+            "value": 1.0,
+            "step": 0.2,
+            "valueDisplayId": "appcoverviewExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift c",
+              "en": "Step Width Δx =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_calc_appcoverview_r0",
+            "id": "appcoverviewExCanvas_r0",
             "label": {
-              "en": "Derivative f'(x₀)",
+              "en": "Left Secant Slope Δy₁/Δx",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "f'(1.2) = 0.33"
+            "value": "-0.438"
           },
           {
-            "id": "exAuto_calc_appcoverview_r1",
+            "id": "appcoverviewExCanvas_r1",
             "label": {
-              "en": "Definite Integral ∫₀ˣ f(t)dt",
+              "en": "Right Secant Slope Δy₂/Δx",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "∫₀ˣ f(t)dt = 0.19"
+            "value": "0.312"
+          },
+          {
+            "id": "appcoverviewExCanvas_r2",
+            "label": {
+              "en": "Concavity (Δ²y Sign)",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "Concave Up (Δ²y > 0)"
           }
-        ]
+        ],
+        "note": {
+          "en": "Compare consecutive equal-width secant slopes over [x₀ − Δx, x₀] and [x₀, x₀ + Δx]. Increasing slopes indicate Concave Up; decreasing slopes indicate Concave Down.",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

@@ -73,26 +73,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Limits Lab",
+          "en": "⊙ Explorer · Limit Definition: ε–δ Neighborhood Corridor Lab",
           "ar": null
         },
-        "canvasId": "exAuto_calc_act2l2limits",
+        "canvasId": "act2l2limitsExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Limits",
+          "en": "Limit Definition: ε–δ Neighborhood Corridor Lab interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_calc_act2l2limits_dataBtn",
-          "panelId": "exAuto_calc_act2l2limits_dataPanel",
-          "descId": "exAuto_calc_act2l2limits_dataDesc",
-          "rowsId": "exAuto_calc_act2l2limits_dataRows",
+          "btnId": "act2l2limitsExCanvas_dataBtn",
+          "panelId": "act2l2limitsExCanvas_dataPanel",
+          "descId": "act2l2limitsExCanvas_dataDesc",
+          "rowsId": "act2l2limitsExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Limits",
+            "en": "Live numerical table for Limit Definition: ε–δ Neighborhood Corridor Lab",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -103,58 +103,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_calc_act2l2limits_s0",
+            "id": "act2l2limitsExCanvas_s0",
             "label": {
-              "en": "Tangent point <b>a =</b>",
+              "en": "Approach Point <b>a =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_act2l2limits_v0",
+            "min": -2.0,
+            "max": 2.5,
+            "value": 1.0,
+            "step": 0.25,
+            "valueDisplayId": "act2l2limitsExCanvas_v0",
             "ariaLabel": {
-              "en": "Tangent parameter a",
+              "en": "Approach Point a =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_calc_act2l2limits_s1",
+            "id": "act2l2limitsExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>c =</b>",
+              "en": "Tolerance Band <b>ε =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_act2l2limits_v1",
+            "min": 0.2,
+            "max": 1.5,
+            "value": 0.6,
+            "step": 0.1,
+            "valueDisplayId": "act2l2limitsExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift c",
+              "en": "Tolerance Band ε =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_calc_act2l2limits_r0",
+            "id": "act2l2limitsExCanvas_r0",
             "label": {
-              "en": "Derivative f'(x₀)",
+              "en": "Limit Value L = lim_{x→a} f(x)",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "f'(1.2) = 0.33"
+            "value": "L = 1.00"
           },
           {
-            "id": "exAuto_calc_act2l2limits_r1",
+            "id": "act2l2limitsExCanvas_r1",
             "label": {
-              "en": "Definite Integral ∫₀ˣ f(t)dt",
+              "en": "Required Width δ",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "∫₀ˣ f(t)dt = 0.19"
+            "value": "δ ≈ 0.60"
+          },
+          {
+            "id": "act2l2limitsExCanvas_r2",
+            "label": {
+              "en": "Corridor (L − ε, L + ε)",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "(0.40, 1.60)"
           }
-        ]
+        ],
+        "note": {
+          "en": "Shrink the horizontal tolerance band L ± ε around the limit L to see how the corresponding vertical input interval (a − δ, a + δ) tightens.",
+          "ar": null
+        }
       },
       {
         "kind": "callout",

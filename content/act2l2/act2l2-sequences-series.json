@@ -73,26 +73,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Sequences & Series Lab",
+          "en": "⊙ Explorer · Infinite Geometric Series Partial Sums S_n & Limit S_∞",
           "ar": null
         },
-        "canvasId": "exAuto_calc_act2l2sequencesseries",
+        "canvasId": "act2l2sequencesseriesExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Sequences & Series",
+          "en": "Infinite Geometric Series Partial Sums S_n & Limit S_∞ interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_calc_act2l2sequencesseries_dataBtn",
-          "panelId": "exAuto_calc_act2l2sequencesseries_dataPanel",
-          "descId": "exAuto_calc_act2l2sequencesseries_dataDesc",
-          "rowsId": "exAuto_calc_act2l2sequencesseries_dataRows",
+          "btnId": "act2l2sequencesseriesExCanvas_dataBtn",
+          "panelId": "act2l2sequencesseriesExCanvas_dataPanel",
+          "descId": "act2l2sequencesseriesExCanvas_dataDesc",
+          "rowsId": "act2l2sequencesseriesExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Sequences & Series",
+            "en": "Live numerical table for Infinite Geometric Series Partial Sums S_n & Limit S_∞",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -103,58 +103,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_calc_act2l2sequencesseries_s0",
+            "id": "act2l2sequencesseriesExCanvas_s0",
             "label": {
-              "en": "Tangent point <b>a =</b>",
+              "en": "First Term <b>a₁ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": 1.0,
+            "max": 4.0,
+            "value": 2.5,
             "step": 0.5,
-            "valueDisplayId": "exAuto_calc_act2l2sequencesseries_v0",
+            "valueDisplayId": "act2l2sequencesseriesExCanvas_v0",
             "ariaLabel": {
-              "en": "Tangent parameter a",
+              "en": "First Term a₁ =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_calc_act2l2sequencesseries_s1",
+            "id": "act2l2sequencesseriesExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>c =</b>",
+              "en": "Common Ratio <b>r =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_act2l2sequencesseries_v1",
+            "min": -0.8,
+            "max": 0.85,
+            "value": 0.6,
+            "step": 0.05,
+            "valueDisplayId": "act2l2sequencesseriesExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift c",
+              "en": "Common Ratio r =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_calc_act2l2sequencesseries_r0",
+            "id": "act2l2sequencesseriesExCanvas_r0",
             "label": {
-              "en": "Derivative f'(x₀)",
+              "en": "Partial Sum S₈",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "f'(1.2) = 0.33"
+            "value": "S₈ = 6.145"
           },
           {
-            "id": "exAuto_calc_act2l2sequencesseries_r1",
+            "id": "act2l2sequencesseriesExCanvas_r1",
             "label": {
-              "en": "Definite Integral ∫₀ˣ f(t)dt",
+              "en": "Infinite Sum S_∞ = a₁/(1−r)",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "∫₀ˣ f(t)dt = 0.19"
+            "value": "S_∞ = 6.250"
+          },
+          {
+            "id": "act2l2sequencesseriesExCanvas_r2",
+            "label": {
+              "en": "Tail Gap |S_∞ − S₈|",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "0.1050"
           }
-        ]
+        ],
+        "note": {
+          "en": "Bars show individual geometric terms a_n = a₁·r^(n−1); connected amber dots show cumulative partial sums S_n approaching the dashed asymptote S_∞.",
+          "ar": null
+        }
       },
       {
         "kind": "callout",

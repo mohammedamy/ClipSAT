@@ -97,26 +97,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Representation of Data Lab",
+          "en": "⊙ Explorer · Cumulative Frequency Ogive, Median & Interquartile Range",
           "ar": null
         },
-        "canvasId": "exAuto_stats_asdatarepresent",
+        "canvasId": "asdatarepresentExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Representation of Data",
+          "en": "Cumulative Frequency Ogive, Median & Interquartile Range interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_asdatarepresent_dataBtn",
-          "panelId": "exAuto_stats_asdatarepresent_dataPanel",
-          "descId": "exAuto_stats_asdatarepresent_dataDesc",
-          "rowsId": "exAuto_stats_asdatarepresent_dataRows",
+          "btnId": "asdatarepresentExCanvas_dataBtn",
+          "panelId": "asdatarepresentExCanvas_dataPanel",
+          "descId": "asdatarepresentExCanvas_dataDesc",
+          "rowsId": "asdatarepresentExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Representation of Data",
+            "en": "Live numerical table for Cumulative Frequency Ogive, Median & Interquartile Range",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -127,58 +127,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_stats_asdatarepresent_s0",
+            "id": "asdatarepresentExCanvas_s0",
             "label": {
-              "en": "Sample shift <b>Δ₁ =</b>",
+              "en": "Median Center <b>M =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_asdatarepresent_v0",
+            "min": 2.0,
+            "max": 5.0,
+            "value": 3.5,
+            "step": 0.25,
+            "valueDisplayId": "asdatarepresentExCanvas_v0",
             "ariaLabel": {
-              "en": "Sample shift delta 1",
+              "en": "Median Center M =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_stats_asdatarepresent_s1",
+            "id": "asdatarepresentExCanvas_s1",
             "label": {
-              "en": "Tail shift <b>Δ₂ =</b>",
+              "en": "Spread Parameter <b>s =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_asdatarepresent_v1",
+            "min": 0.5,
+            "max": 1.8,
+            "value": 1.0,
+            "step": 0.1,
+            "valueDisplayId": "asdatarepresentExCanvas_v1",
             "ariaLabel": {
-              "en": "Tail shift delta 2",
+              "en": "Spread Parameter s =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_asdatarepresent_r0",
+            "id": "asdatarepresentExCanvas_r0",
             "label": {
-              "en": "Sample Mean x̄",
+              "en": "Lower Quartile Q₁ (25%)",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "13.57"
+            "value": "Q₁ = 2.83"
           },
           {
-            "id": "exAuto_stats_asdatarepresent_r1",
+            "id": "asdatarepresentExCanvas_r1",
             "label": {
-              "en": "Sample Median M",
+              "en": "Median Q₂ (50%)",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "14.0"
+            "value": "Median = 3.50"
+          },
+          {
+            "id": "asdatarepresentExCanvas_r2",
+            "label": {
+              "en": "Upper Quartile Q₃ & IQR",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "Q₃ = 4.17 (IQR = 1.34)"
           }
-        ]
+        ],
+        "note": {
+          "en": "Read quartiles off the S-shaped cumulative frequency curve by projecting horizontally from 25%, 50%, and 75% of N = 100 down to the data axis.",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

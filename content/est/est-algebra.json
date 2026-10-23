@@ -87,26 +87,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Heart of Algebra Lab",
+          "en": "⊙ Explorer · Parallel (m₁ = m₂) & Perpendicular (m₁·m₂ = −1) Lines Lab",
           "ar": null
         },
-        "canvasId": "exAuto_quad_estalgebra",
+        "canvasId": "estalgebraExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Heart of Algebra",
+          "en": "Parallel (m₁ = m₂) & Perpendicular (m₁·m₂ = −1) Lines Lab interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_quad_estalgebra_dataBtn",
-          "panelId": "exAuto_quad_estalgebra_dataPanel",
-          "descId": "exAuto_quad_estalgebra_dataDesc",
-          "rowsId": "exAuto_quad_estalgebra_dataRows",
+          "btnId": "estalgebraExCanvas_dataBtn",
+          "panelId": "estalgebraExCanvas_dataPanel",
+          "descId": "estalgebraExCanvas_dataDesc",
+          "rowsId": "estalgebraExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Heart of Algebra",
+            "en": "Live numerical table for Parallel (m₁ = m₂) & Perpendicular (m₁·m₂ = −1) Lines Lab",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -117,58 +117,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_quad_estalgebra_s0",
+            "id": "estalgebraExCanvas_s0",
             "label": {
-              "en": "Vertex parameter <b>a =</b>",
+              "en": "Reference Slope <b>m₁ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": -3.0,
+            "max": 3.0,
+            "value": 1.5,
             "step": 0.5,
-            "valueDisplayId": "exAuto_quad_estalgebra_v0",
+            "valueDisplayId": "estalgebraExCanvas_v0",
             "ariaLabel": {
-              "en": "Vertex parameter a",
+              "en": "Reference Slope m₁ =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_quad_estalgebra_s1",
+            "id": "estalgebraExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>b =</b>",
+              "en": "Pass-Through Point <b>x₀ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
+            "min": -3.0,
+            "max": 3.0,
+            "value": 1.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_quad_estalgebra_v1",
+            "valueDisplayId": "estalgebraExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift parameter b",
+              "en": "Pass-Through Point x₀ =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_quad_estalgebra_r0",
+            "id": "estalgebraExCanvas_r0",
             "label": {
-              "en": "Vertex (h, k)",
+              "en": "Reference Line y = m₁x + 1",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "(1.0, -1.0)"
+            "value": "y = 1.5x + 1"
           },
           {
-            "id": "exAuto_quad_estalgebra_r1",
+            "id": "estalgebraExCanvas_r1",
             "label": {
-              "en": "Axis of Symmetry",
+              "en": "Perpendicular Slope m_⊥ = −1/m₁",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "x = 1.0"
+            "value": "m_⊥ = -0.67"
+          },
+          {
+            "id": "estalgebraExCanvas_r2",
+            "label": {
+              "en": "Intersection Foot on L₁",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "m₁·m_⊥ = −1.00"
           }
-        ]
+        ],
+        "note": {
+          "en": "On a 1:1 square grid, the indigo line has slope m₁ and the amber perpendicular line through (x₀, 1) has negative-reciprocal slope m₂ = −1/m₁, meeting at 90°.",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

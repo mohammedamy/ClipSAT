@@ -73,26 +73,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Factoring Polynomials Lab",
+          "en": "⊙ Explorer · Factored Quadratic y = (x − r₁)(x − r₂) & Roots Lab",
           "ar": null
         },
-        "canvasId": "exAuto_quad_agfactoring",
+        "canvasId": "agfactoringExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Factoring Polynomials",
+          "en": "Factored Quadratic y = (x − r₁)(x − r₂) & Roots Lab interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_quad_agfactoring_dataBtn",
-          "panelId": "exAuto_quad_agfactoring_dataPanel",
-          "descId": "exAuto_quad_agfactoring_dataDesc",
-          "rowsId": "exAuto_quad_agfactoring_dataRows",
+          "btnId": "agfactoringExCanvas_dataBtn",
+          "panelId": "agfactoringExCanvas_dataPanel",
+          "descId": "agfactoringExCanvas_dataDesc",
+          "rowsId": "agfactoringExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Factoring Polynomials",
+            "en": "Live numerical table for Factored Quadratic y = (x − r₁)(x − r₂) & Roots Lab",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -103,58 +103,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_quad_agfactoring_s0",
+            "id": "agfactoringExCanvas_s0",
             "label": {
-              "en": "Vertex parameter <b>a =</b>",
+              "en": "First Root <b>r₁ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": -4.0,
+            "max": 4.0,
+            "value": -2.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_quad_agfactoring_v0",
+            "valueDisplayId": "agfactoringExCanvas_v0",
             "ariaLabel": {
-              "en": "Vertex parameter a",
+              "en": "First Root r₁ =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_quad_agfactoring_s1",
+            "id": "agfactoringExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>b =</b>",
+              "en": "Second Root <b>r₂ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
+            "min": -4.0,
+            "max": 4.0,
+            "value": 3.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_quad_agfactoring_v1",
+            "valueDisplayId": "agfactoringExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift parameter b",
+              "en": "Second Root r₂ =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_quad_agfactoring_r0",
+            "id": "agfactoringExCanvas_r0",
             "label": {
-              "en": "Vertex (h, k)",
+              "en": "Expanded Form x² + bx + c",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "(1.0, -1.0)"
+            "value": "x² + (-1.0)x + (-6.0)"
           },
           {
-            "id": "exAuto_quad_agfactoring_r1",
+            "id": "agfactoringExCanvas_r1",
             "label": {
-              "en": "Axis of Symmetry",
+              "en": "Axis of Symmetry x_v = (r₁+r₂)/2",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "x = 1.0"
+            "value": "x = 0.50"
+          },
+          {
+            "id": "agfactoringExCanvas_r2",
+            "label": {
+              "en": "Vertex Minimum (x_v, y_v)",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "(0.50, -6.25)"
           }
-        ]
+        ],
+        "note": {
+          "en": "Drag roots r₁ and r₂ along the x-axis to see how the sum −(r₁ + r₂) sets coefficient b and the product r₁·r₂ sets the y-intercept c.",
+          "ar": null
+        }
       },
       {
         "kind": "figure",

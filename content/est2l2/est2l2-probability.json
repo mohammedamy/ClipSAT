@@ -61,26 +61,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Probability Lab",
+          "en": "⊙ Explorer · Geometric Waiting-Time Distribution P(X = k) = (1−p)^(k−1)·p",
           "ar": null
         },
-        "canvasId": "exAuto_stats_est2l2probability",
+        "canvasId": "est2l2probabilityExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Probability",
+          "en": "Geometric Waiting-Time Distribution P(X = k) = (1−p)^(k−1)·p interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_est2l2probability_dataBtn",
-          "panelId": "exAuto_stats_est2l2probability_dataPanel",
-          "descId": "exAuto_stats_est2l2probability_dataDesc",
-          "rowsId": "exAuto_stats_est2l2probability_dataRows",
+          "btnId": "est2l2probabilityExCanvas_dataBtn",
+          "panelId": "est2l2probabilityExCanvas_dataPanel",
+          "descId": "est2l2probabilityExCanvas_dataDesc",
+          "rowsId": "est2l2probabilityExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Probability",
+            "en": "Live numerical table for Geometric Waiting-Time Distribution P(X = k) = (1−p)^(k−1)·p",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -91,58 +91,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_stats_est2l2probability_s0",
+            "id": "est2l2probabilityExCanvas_s0",
             "label": {
-              "en": "Sample shift <b>Δ₁ =</b>",
+              "en": "Trial Success Prob <b>p =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_est2l2probability_v0",
+            "min": 0.15,
+            "max": 0.75,
+            "value": 0.35,
+            "step": 0.05,
+            "valueDisplayId": "est2l2probabilityExCanvas_v0",
             "ariaLabel": {
-              "en": "Sample shift delta 1",
+              "en": "Trial Success Prob p =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_stats_est2l2probability_s1",
+            "id": "est2l2probabilityExCanvas_s1",
             "label": {
-              "en": "Tail shift <b>Δ₂ =</b>",
+              "en": "Target Trial <b>k =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_est2l2probability_v1",
+            "min": 1,
+            "max": 10,
+            "value": 3,
+            "step": 1,
+            "valueDisplayId": "est2l2probabilityExCanvas_v1",
             "ariaLabel": {
-              "en": "Tail shift delta 2",
+              "en": "Target Trial k =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_est2l2probability_r0",
+            "id": "est2l2probabilityExCanvas_r0",
             "label": {
-              "en": "Sample Mean x̄",
+              "en": "First Success at Trial k: P(X=k)",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "13.57"
+            "value": "P(X=3) = 0.1479"
           },
           {
-            "id": "exAuto_stats_est2l2probability_r1",
+            "id": "est2l2probabilityExCanvas_r1",
             "label": {
-              "en": "Sample Median M",
+              "en": "Cumulative P(X ≤ k) = 1 − (1−p)ᵏ",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "14.0"
+            "value": "P(X≤3) = 0.7254"
+          },
+          {
+            "id": "est2l2probabilityExCanvas_r2",
+            "label": {
+              "en": "Expected Trials E(X) = 1/p",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "E(X) = 2.86"
           }
-        ]
+        ],
+        "note": {
+          "en": "Plot the decaying geometric probability bars P(X = r) = (1−p)^(r−1)p for waiting until the first success, along with mean waiting time E(X) = 1/p.",
+          "ar": null
+        }
       },
       {
         "kind": "callout",

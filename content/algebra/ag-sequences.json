@@ -73,26 +73,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Sequences &amp; Series Lab",
+          "en": "⊙ Explorer · Sequence Progression & Cumulative Partial Sums",
           "ar": null
         },
-        "canvasId": "exAuto_calc_agsequences",
+        "canvasId": "agsequencesExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Sequences &amp; Series",
+          "en": "Sequence Progression & Cumulative Partial Sums interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_calc_agsequences_dataBtn",
-          "panelId": "exAuto_calc_agsequences_dataPanel",
-          "descId": "exAuto_calc_agsequences_dataDesc",
-          "rowsId": "exAuto_calc_agsequences_dataRows",
+          "btnId": "agsequencesExCanvas_dataBtn",
+          "panelId": "agsequencesExCanvas_dataPanel",
+          "descId": "agsequencesExCanvas_dataDesc",
+          "rowsId": "agsequencesExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Sequences &amp; Series",
+            "en": "Live numerical table for Sequence Progression & Cumulative Partial Sums",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -103,58 +103,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_calc_agsequences_s0",
+            "id": "agsequencesExCanvas_s0",
             "label": {
-              "en": "Tangent point <b>a =</b>",
+              "en": "Initial Term <b>a₁ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": 0.5,
+            "max": 4.0,
+            "value": 1.5,
             "step": 0.5,
-            "valueDisplayId": "exAuto_calc_agsequences_v0",
+            "valueDisplayId": "agsequencesExCanvas_v0",
             "ariaLabel": {
-              "en": "Tangent parameter a",
+              "en": "Initial Term a₁ =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_calc_agsequences_s1",
+            "id": "agsequencesExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>c =</b>",
+              "en": "Ratio / Step Factor <b>r =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_agsequences_v1",
+            "min": 0.2,
+            "max": 0.9,
+            "value": 0.7,
+            "step": 0.05,
+            "valueDisplayId": "agsequencesExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift c",
+              "en": "Ratio / Step Factor r =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_calc_agsequences_r0",
+            "id": "agsequencesExCanvas_r0",
             "label": {
-              "en": "Derivative f'(x₀)",
+              "en": "8th Partial Sum S₈",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "f'(1.2) = 0.33"
+            "value": "S₈ = 4.712"
           },
           {
-            "id": "exAuto_calc_agsequences_r1",
+            "id": "agsequencesExCanvas_r1",
             "label": {
-              "en": "Definite Integral ∫₀ˣ f(t)dt",
+              "en": "Asymptotic Limit S_∞",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "∫₀ˣ f(t)dt = 0.19"
+            "value": "S_∞ = 5.000"
+          },
+          {
+            "id": "agsequencesExCanvas_r2",
+            "label": {
+              "en": "Convergence Gap",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "0.2882"
           }
-        ]
+        ],
+        "note": {
+          "en": "Observe how each term a_n adds to the running cumulative sum S_n.",
+          "ar": null
+        }
       },
       {
         "kind": "callout",

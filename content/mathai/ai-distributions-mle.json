@@ -80,27 +80,27 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Probability Distributions & Maximum Likelihood (MLE) Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Probability Distributions & Maximum Likelihood (MLE)"
+          "en": "⊙ Explorer · Maximum Likelihood Estimation (MLE): Gaussian Log-Likelihood ℓ(μ)",
+          "ar": "⊙ مستكشف تفاعلي · تقدير الإمكان الأعظم (MLE) ودالة الإمكان اللوغاريتمية ℓ(μ)"
         },
-        "canvasId": "exAuto_stats_aidistributionsmle",
+        "canvasId": "aidistributionsmleExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Probability Distributions & Maximum Likelihood (MLE)",
-          "ar": "مستكشف رياضي تفاعلي لدرس Probability Distributions & Maximum Likelihood (MLE)"
+          "en": "Maximum Likelihood Estimation (MLE): Gaussian Log-Likelihood ℓ(μ) interactive mathematical canvas",
+          "ar": "⊙ مستكشف تفاعلي · تقدير الإمكان الأعظم (MLE) ودالة الإمكان اللوغاريتمية ℓ(μ) لوحة تفاعلية"
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_aidistributionsmle_dataBtn",
-          "panelId": "exAuto_stats_aidistributionsmle_dataPanel",
-          "descId": "exAuto_stats_aidistributionsmle_dataDesc",
-          "rowsId": "exAuto_stats_aidistributionsmle_dataRows",
+          "btnId": "aidistributionsmleExCanvas_dataBtn",
+          "panelId": "aidistributionsmleExCanvas_dataPanel",
+          "descId": "aidistributionsmleExCanvas_dataDesc",
+          "rowsId": "aidistributionsmleExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Probability Distributions & Maximum Likelihood (MLE)",
-            "ar": "جدول القيم العددية لدرس Probability Distributions & Maximum Likelihood (MLE)"
+            "en": "Live numerical table for Maximum Likelihood Estimation (MLE): Gaussian Log-Likelihood ℓ(μ)",
+            "ar": "جدول القيم العددية لـ ⊙ مستكشف تفاعلي · تقدير الإمكان الأعظم (MLE) ودالة الإمكان اللوغاريتمية ℓ(μ)"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Parameter / Metric",
+              "ar": "المتغير / المعيار"
             },
             {
               "en": "Value",
@@ -110,58 +110,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_stats_aidistributionsmle_s0",
+            "id": "aidistributionsmleExCanvas_s0",
             "label": {
-              "en": "Sample shift <b>Δ₁ =</b>",
-              "ar": "إزاحة العينة <b>Δ₁ =</b>"
+              "en": "Candidate Mean <b>μ =</b>",
+              "ar": "Candidate Mean <b>μ =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_aidistributionsmle_v0",
+            "min": -2.5,
+            "max": 3.5,
+            "value": 0.5,
+            "step": 0.25,
+            "valueDisplayId": "aidistributionsmleExCanvas_v0",
             "ariaLabel": {
-              "en": "Sample shift delta 1",
-              "ar": "إزاحة العينة 1"
+              "en": "Candidate Mean μ =",
+              "ar": "Candidate Mean μ ="
             }
           },
           {
-            "id": "exAuto_stats_aidistributionsmle_s1",
+            "id": "aidistributionsmleExCanvas_s1",
             "label": {
-              "en": "Tail shift <b>Δ₂ =</b>",
-              "ar": "إزاحة الطرف <b>Δ₂ =</b>"
+              "en": "Candidate Std Dev <b>σ =</b>",
+              "ar": "Candidate Std Dev <b>σ =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_aidistributionsmle_v1",
+            "min": 0.6,
+            "max": 2.2,
+            "value": 1.2,
+            "step": 0.2,
+            "valueDisplayId": "aidistributionsmleExCanvas_v1",
             "ariaLabel": {
-              "en": "Tail shift delta 2",
-              "ar": "إزاحة الطرف 2"
+              "en": "Candidate Std Dev σ =",
+              "ar": "Candidate Std Dev σ ="
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_aidistributionsmle_r0",
+            "id": "aidistributionsmleExCanvas_r0",
             "label": {
-              "en": "Sample Mean x̄",
-              "ar": "المتوسط الحسابي x̄"
+              "en": "Log-Likelihood ℓ(μ, σ)",
+              "ar": "Log-Likelihood ℓ(μ, σ)"
             },
             "colorClass": "indigo",
-            "value": "13.57"
+            "value": "ℓ = -10.36"
           },
           {
-            "id": "exAuto_stats_aidistributionsmle_r1",
+            "id": "aidistributionsmleExCanvas_r1",
             "label": {
-              "en": "Sample Median M",
-              "ar": "الوسيط M"
+              "en": "True Sample Mean μ̂_MLE = x̄",
+              "ar": "True Sample Mean μ̂_MLE = x̄"
             },
             "colorClass": "amber",
-            "value": "14.0"
+            "value": "μ̂_MLE = 1.50"
+          },
+          {
+            "id": "aidistributionsmleExCanvas_r2",
+            "label": {
+              "en": "Score Gradient ∂ℓ/∂μ",
+              "ar": "Score Gradient ∂ℓ/∂μ"
+            },
+            "colorClass": "teal",
+            "value": "∂ℓ/∂μ = 3.47"
           }
-        ]
+        ],
+        "note": {
+          "en": "Given 5 observed data points on the horizontal axis, slide candidate mean μ to align the Gaussian bell (indigo) with the data and maximize the log-likelihood curve ℓ(μ) (amber).",
+          "ar": "حرك المتوسط المرشح μ لمحاذاة منحنى جاوس مع نقاط البيانات المرصودة وتعظيم دالة الإمكان اللوغاريتمية ℓ(μ)."
+        }
       },
       {
         "kind": "figure",

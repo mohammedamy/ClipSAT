@@ -73,26 +73,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory Lab",
+          "en": "⊙ Explorer · Laplace Transform: Heaviside Step Forcing u(t − a) & Delayed Response",
           "ar": null
         },
-        "canvasId": "exAuto_calc_odelaplacetransforms",
+        "canvasId": "odelaplacetransformsExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory",
+          "en": "Laplace Transform: Heaviside Step Forcing u(t − a) & Delayed Response interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_calc_odelaplacetransforms_dataBtn",
-          "panelId": "exAuto_calc_odelaplacetransforms_dataPanel",
-          "descId": "exAuto_calc_odelaplacetransforms_dataDesc",
-          "rowsId": "exAuto_calc_odelaplacetransforms_dataRows",
+          "btnId": "odelaplacetransformsExCanvas_dataBtn",
+          "panelId": "odelaplacetransformsExCanvas_dataPanel",
+          "descId": "odelaplacetransformsExCanvas_dataDesc",
+          "rowsId": "odelaplacetransformsExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory",
+            "en": "Live numerical table for Laplace Transform: Heaviside Step Forcing u(t − a) & Delayed Response",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -103,58 +103,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_calc_odelaplacetransforms_s0",
+            "id": "odelaplacetransformsExCanvas_s0",
             "label": {
-              "en": "Tangent point <b>a =</b>",
+              "en": "Step Switch-On Time <b>a =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_odelaplacetransforms_v0",
+            "min": 0.5,
+            "max": 4.0,
+            "value": 2.0,
+            "step": 0.25,
+            "valueDisplayId": "odelaplacetransformsExCanvas_v0",
             "ariaLabel": {
-              "en": "Tangent parameter a",
+              "en": "Step Switch-On Time a =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_calc_odelaplacetransforms_s1",
+            "id": "odelaplacetransformsExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>c =</b>",
+              "en": "Damping Ratio <b>ζ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_odelaplacetransforms_v1",
+            "min": 0.1,
+            "max": 0.8,
+            "value": 0.25,
+            "step": 0.05,
+            "valueDisplayId": "odelaplacetransformsExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift c",
+              "en": "Damping Ratio ζ =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_calc_odelaplacetransforms_r0",
+            "id": "odelaplacetransformsExCanvas_r0",
             "label": {
-              "en": "Derivative f'(x₀)",
+              "en": "Laplace Factor e^(−as)/s",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "f'(1.2) = 0.33"
+            "value": "e^(−2.00s)/s"
           },
           {
-            "id": "exAuto_calc_odelaplacetransforms_r1",
+            "id": "odelaplacetransformsExCanvas_r1",
             "label": {
-              "en": "Definite Integral ∫₀ˣ f(t)dt",
+              "en": "Peak Response Overshoot",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "∫₀ˣ f(t)dt = 0.19"
+            "value": "y_max = 1.44"
+          },
+          {
+            "id": "odelaplacetransformsExCanvas_r2",
+            "label": {
+              "en": "Steady-State Limit y(∞)",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "y(∞) = 1.00"
           }
-        ]
+        ],
+        "note": {
+          "en": "By the Second Shifting Theorem ℒ⁻¹{e^(−as)F(s)} = u(t − a)f(t − a), the system remains quiescent (y = 0) until forcing u(t − a) activates at t = a.",
+          "ar": null
+        }
       },
       {
         "kind": "callout",

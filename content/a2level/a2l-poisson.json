@@ -97,26 +97,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Poisson Distribution Lab",
+          "en": "⊙ Explorer · Poisson Distribution X ~ Po(λ) PMF & Tail Probability",
           "ar": null
         },
-        "canvasId": "exAuto_stats_a2lpoisson",
+        "canvasId": "a2lpoissonExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Poisson Distribution",
+          "en": "Poisson Distribution X ~ Po(λ) PMF & Tail Probability interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_a2lpoisson_dataBtn",
-          "panelId": "exAuto_stats_a2lpoisson_dataPanel",
-          "descId": "exAuto_stats_a2lpoisson_dataDesc",
-          "rowsId": "exAuto_stats_a2lpoisson_dataRows",
+          "btnId": "a2lpoissonExCanvas_dataBtn",
+          "panelId": "a2lpoissonExCanvas_dataPanel",
+          "descId": "a2lpoissonExCanvas_dataDesc",
+          "rowsId": "a2lpoissonExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Poisson Distribution",
+            "en": "Live numerical table for Poisson Distribution X ~ Po(λ) PMF & Tail Probability",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -127,58 +127,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_stats_a2lpoisson_s0",
+            "id": "a2lpoissonExCanvas_s0",
             "label": {
-              "en": "Sample shift <b>Δ₁ =</b>",
+              "en": "Mean Rate <b>λ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": 0.5,
+            "max": 9.0,
+            "value": 3.5,
             "step": 0.5,
-            "valueDisplayId": "exAuto_stats_a2lpoisson_v0",
+            "valueDisplayId": "a2lpoissonExCanvas_v0",
             "ariaLabel": {
-              "en": "Sample shift delta 1",
+              "en": "Mean Rate λ =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_stats_a2lpoisson_s1",
+            "id": "a2lpoissonExCanvas_s1",
             "label": {
-              "en": "Tail shift <b>Δ₂ =</b>",
+              "en": "Cutoff Event Count <b>k =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_a2lpoisson_v1",
+            "min": 0,
+            "max": 12,
+            "value": 4,
+            "step": 1,
+            "valueDisplayId": "a2lpoissonExCanvas_v1",
             "ariaLabel": {
-              "en": "Tail shift delta 2",
+              "en": "Cutoff Event Count k =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_a2lpoisson_r0",
+            "id": "a2lpoissonExCanvas_r0",
             "label": {
-              "en": "Sample Mean x̄",
+              "en": "Point Mass P(X = k)",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "13.57"
+            "value": "0.1888"
           },
           {
-            "id": "exAuto_stats_a2lpoisson_r1",
+            "id": "a2lpoissonExCanvas_r1",
             "label": {
-              "en": "Sample Median M",
+              "en": "Cumulative P(X ≤ k)",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "14.0"
+            "value": "0.7254"
+          },
+          {
+            "id": "a2lpoissonExCanvas_r2",
+            "label": {
+              "en": "Mean = Variance = λ",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "λ = 3.5"
           }
-        ]
+        ],
+        "note": {
+          "en": "Each bar represents P(X = r) = e^(−λ)·λʳ / r!. Bars up to r = k are highlighted in amber to represent the cumulative probability P(X ≤ k).",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

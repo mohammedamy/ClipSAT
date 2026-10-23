@@ -82,26 +82,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Circular Measure Lab",
+          "en": "⊙ Explorer · Circular Measure: Arc Length s = rθ & Sector Area ½r²θ",
           "ar": null
         },
-        "canvasId": "exAuto_trig_asradians",
+        "canvasId": "asradiansExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Circular Measure",
+          "en": "Circular Measure: Arc Length s = rθ & Sector Area ½r²θ interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_trig_asradians_dataBtn",
-          "panelId": "exAuto_trig_asradians_dataPanel",
-          "descId": "exAuto_trig_asradians_dataDesc",
-          "rowsId": "exAuto_trig_asradians_dataRows",
+          "btnId": "asradiansExCanvas_dataBtn",
+          "panelId": "asradiansExCanvas_dataPanel",
+          "descId": "asradiansExCanvas_dataDesc",
+          "rowsId": "asradiansExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Circular Measure",
+            "en": "Live numerical table for Circular Measure: Arc Length s = rθ & Sector Area ½r²θ",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -112,58 +112,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_trig_asradians_s0",
+            "id": "asradiansExCanvas_s0",
             "label": {
-              "en": "Amplitude <b>A =</b>",
+              "en": "Radius <b>r =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": 1.5,
+            "max": 4.5,
+            "value": 3.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_trig_asradians_v0",
+            "valueDisplayId": "asradiansExCanvas_v0",
             "ariaLabel": {
-              "en": "Amplitude A",
+              "en": "Radius r =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_trig_asradians_s1",
+            "id": "asradiansExCanvas_s1",
             "label": {
-              "en": "Frequency <b>b =</b>",
+              "en": "Angle <b>θ (rad) =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_trig_asradians_v1",
+            "min": 0.4,
+            "max": 3.0,
+            "value": 1.5,
+            "step": 0.1,
+            "valueDisplayId": "asradiansExCanvas_v1",
             "ariaLabel": {
-              "en": "Frequency b",
+              "en": "Angle θ (rad) =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_trig_asradians_r0",
+            "id": "asradiansExCanvas_r0",
             "label": {
-              "en": "Amplitude |A|",
+              "en": "Arc Length s = rθ",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "2.00"
+            "value": "s = 4.50"
           },
           {
-            "id": "exAuto_trig_asradians_r1",
+            "id": "asradiansExCanvas_r1",
             "label": {
-              "en": "Period 2π/|b|",
+              "en": "Sector Area A = ½r²θ",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "6.28"
+            "value": "A = 6.75"
+          },
+          {
+            "id": "asradiansExCanvas_r2",
+            "label": {
+              "en": "Segment Area ½r²(θ − sin θ)",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "A_seg = 2.26"
           }
-        ]
+        ],
+        "note": {
+          "en": "When angle θ is measured in radians, arc length simplifies to s = rθ and sector area to A = ½r²θ.",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

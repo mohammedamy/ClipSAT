@@ -84,26 +84,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Probability &amp; Statistics Lab",
+          "en": "⊙ Explorer · Unequal-Width Histogram: Frequency Density = Frequency / Width",
           "ar": null
         },
-        "canvasId": "exAuto_stats_igstats",
+        "canvasId": "igstatsExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Probability &amp; Statistics",
+          "en": "Unequal-Width Histogram: Frequency Density = Frequency / Width interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_igstats_dataBtn",
-          "panelId": "exAuto_stats_igstats_dataPanel",
-          "descId": "exAuto_stats_igstats_dataDesc",
-          "rowsId": "exAuto_stats_igstats_dataRows",
+          "btnId": "igstatsExCanvas_dataBtn",
+          "panelId": "igstatsExCanvas_dataPanel",
+          "descId": "igstatsExCanvas_dataDesc",
+          "rowsId": "igstatsExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Probability &amp; Statistics",
+            "en": "Live numerical table for Unequal-Width Histogram: Frequency Density = Frequency / Width",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -114,58 +114,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_stats_igstats_s0",
+            "id": "igstatsExCanvas_s0",
             "label": {
-              "en": "Sample shift <b>Δ₁ =</b>",
+              "en": "Wide-Class Frequency <b>F₃ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_igstats_v0",
+            "min": 10,
+            "max": 50,
+            "value": 28,
+            "step": 2,
+            "valueDisplayId": "igstatsExCanvas_v0",
             "ariaLabel": {
-              "en": "Sample shift delta 1",
+              "en": "Wide-Class Frequency F₃ =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_stats_igstats_s1",
+            "id": "igstatsExCanvas_s1",
             "label": {
-              "en": "Tail shift <b>Δ₂ =</b>",
+              "en": "Narrow-Class Frequency <b>F₂ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_igstats_v1",
+            "min": 5,
+            "max": 30,
+            "value": 16,
+            "step": 2,
+            "valueDisplayId": "igstatsExCanvas_v1",
             "ariaLabel": {
-              "en": "Tail shift delta 2",
+              "en": "Narrow-Class Frequency F₂ =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_igstats_r0",
+            "id": "igstatsExCanvas_r0",
             "label": {
-              "en": "Sample Mean x̄",
+              "en": "Class 2 Density (width 1)",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "13.57"
+            "value": "FD₂ = 16.0"
           },
           {
-            "id": "exAuto_stats_igstats_r1",
+            "id": "igstatsExCanvas_r1",
             "label": {
-              "en": "Sample Median M",
+              "en": "Class 3 Density (width 2)",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "14.0"
+            "value": "FD₃ = 14.0"
+          },
+          {
+            "id": "igstatsExCanvas_r2",
+            "label": {
+              "en": "Estimated Mean x̄",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "x̄ ≈ 3.45"
           }
-        ]
+        ],
+        "note": {
+          "en": "In IGCSE histograms with unequal class widths, bar height is Frequency Density = Frequency ÷ Class Width so that bar AREA equals Frequency!",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

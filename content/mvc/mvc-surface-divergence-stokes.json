@@ -42,26 +42,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Surface Integrals, the Divergence Theorem & Stokes' Theorem Lab",
+          "en": "⊙ Explorer · Divergence / Flux Theorem: Outward Flux ∮ F·n ds = ∬ (∇·F) dA",
           "ar": null
         },
-        "canvasId": "exAuto_geo_mvcsurfacedivergencestokes",
+        "canvasId": "mvcsurfacedivergencestokesExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Surface Integrals, the Divergence Theorem & Stokes' Theorem",
+          "en": "Divergence / Flux Theorem: Outward Flux ∮ F·n ds = ∬ (∇·F) dA interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_geo_mvcsurfacedivergencestokes_dataBtn",
-          "panelId": "exAuto_geo_mvcsurfacedivergencestokes_dataPanel",
-          "descId": "exAuto_geo_mvcsurfacedivergencestokes_dataDesc",
-          "rowsId": "exAuto_geo_mvcsurfacedivergencestokes_dataRows",
+          "btnId": "mvcsurfacedivergencestokesExCanvas_dataBtn",
+          "panelId": "mvcsurfacedivergencestokesExCanvas_dataPanel",
+          "descId": "mvcsurfacedivergencestokesExCanvas_dataDesc",
+          "rowsId": "mvcsurfacedivergencestokesExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Surface Integrals, the Divergence Theorem & Stokes' Theorem",
+            "en": "Live numerical table for Divergence / Flux Theorem: Outward Flux ∮ F·n ds = ∬ (∇·F) dA",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -72,65 +72,78 @@
         },
         "controls": [
           {
-            "id": "exAuto_geo_mvcsurfacedivergencestokes_s0",
+            "id": "mvcsurfacedivergencestokesExCanvas_s0",
             "label": {
-              "en": "Radius <b>r =</b>",
+              "en": "Boundary Radius <b>R =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_geo_mvcsurfacedivergencestokes_v0",
+            "min": 1.0,
+            "max": 3.5,
+            "value": 2.4,
+            "step": 0.2,
+            "valueDisplayId": "mvcsurfacedivergencestokesExCanvas_v0",
             "ariaLabel": {
-              "en": "Circle radius r",
+              "en": "Boundary Radius R =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_geo_mvcsurfacedivergencestokes_s1",
+            "id": "mvcsurfacedivergencestokesExCanvas_s1",
             "label": {
-              "en": "Angle scale <b>k =</b>",
+              "en": "Source Divergence <b>div F =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_geo_mvcsurfacedivergencestokes_v1",
+            "min": -2.0,
+            "max": 2.5,
+            "value": 1.5,
+            "step": 0.25,
+            "valueDisplayId": "mvcsurfacedivergencestokesExCanvas_v1",
             "ariaLabel": {
-              "en": "Central angle factor k",
+              "en": "Source Divergence div F =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_geo_mvcsurfacedivergencestokes_r0",
+            "id": "mvcsurfacedivergencestokesExCanvas_r0",
             "label": {
-              "en": "Arc Length s = rθ",
+              "en": "Divergence ∇·F = ∂P/∂x + ∂Q/∂y",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "1.05"
+            "value": "∇·F = 1.50"
           },
           {
-            "id": "exAuto_geo_mvcsurfacedivergencestokes_r1",
+            "id": "mvcsurfacedivergencestokesExCanvas_r1",
             "label": {
-              "en": "Sector Area ½r²θ",
+              "en": "Outward Normal Flux ∮ F·n ds",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "1.05"
+            "value": "Flux = 27.14"
+          },
+          {
+            "id": "mvcsurfacedivergencestokesExCanvas_r2",
+            "label": {
+              "en": "Source / Sink Classification",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "Outward Source (div > 0)"
           }
         ],
+        "note": {
+          "en": "Arrows along the boundary circle show outward unit normals n and radial field vectors F. Total outward flux equals (∇·F) times the enclosed region volume/area.",
+          "ar": null
+        },
         "canvas3d": {
-          "btnId": "exAuto3dBtn_solid_mvcsurfacedivergencestokes",
-          "wrapId": "exAuto3dWrap_mvcsurfacedivergencestokes",
-          "hintId": "exAuto3dHint_mvcsurfacedivergencestokes",
-          "btnLabel": "🧊 View Interactive 3D Model",
+          "btnId": "mvcsurfacedivergencestokesExCanvas_3dBtn",
+          "wrapId": "mvcsurfacedivergencestokesExCanvas_3dWrap",
+          "hintId": "mvcsurfacedivergencestokesExCanvas_3dHint",
+          "btnLabel": "🧊 View Divergence / Flux Theorem in 3D",
           "ariaLabel": {
-            "en": "Interactive 3D visualization for Surface Integrals, the Divergence Theorem & Stokes' Theorem. Drag to rotate.",
+            "en": "Interactive 3D visualization for Divergence / Flux Theorem: Outward Flux ∮ F·n ds = ∬ (∇·F) dA. Drag to rotate.",
             "ar": null
           }
         }

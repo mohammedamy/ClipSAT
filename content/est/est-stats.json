@@ -75,26 +75,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Statistics & Probability Lab",
+          "en": "⊙ Explorer · Two-Way Table Marginal vs. Conditional Probability Lab",
           "ar": null
         },
-        "canvasId": "exAuto_stats_eststats",
+        "canvasId": "eststatsExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Statistics & Probability",
+          "en": "Two-Way Table Marginal vs. Conditional Probability Lab interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_eststats_dataBtn",
-          "panelId": "exAuto_stats_eststats_dataPanel",
-          "descId": "exAuto_stats_eststats_dataDesc",
-          "rowsId": "exAuto_stats_eststats_dataRows",
+          "btnId": "eststatsExCanvas_dataBtn",
+          "panelId": "eststatsExCanvas_dataPanel",
+          "descId": "eststatsExCanvas_dataDesc",
+          "rowsId": "eststatsExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Statistics & Probability",
+            "en": "Live numerical table for Two-Way Table Marginal vs. Conditional Probability Lab",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -105,58 +105,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_stats_eststats_s0",
+            "id": "eststatsExCanvas_s0",
             "label": {
-              "en": "Sample shift <b>Δ₁ =</b>",
+              "en": "Group A Success % <b>P(S|A) =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_eststats_v0",
+            "min": 0.1,
+            "max": 0.9,
+            "value": 0.7,
+            "step": 0.05,
+            "valueDisplayId": "eststatsExCanvas_v0",
             "ariaLabel": {
-              "en": "Sample shift delta 1",
+              "en": "Group A Success % P(S|A) =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_stats_eststats_s1",
+            "id": "eststatsExCanvas_s1",
             "label": {
-              "en": "Tail shift <b>Δ₂ =</b>",
+              "en": "Group B Success % <b>P(S|B) =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_eststats_v1",
+            "min": 0.1,
+            "max": 0.9,
+            "value": 0.35,
+            "step": 0.05,
+            "valueDisplayId": "eststatsExCanvas_v1",
             "ariaLabel": {
-              "en": "Tail shift delta 2",
+              "en": "Group B Success % P(S|B) =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_eststats_r0",
+            "id": "eststatsExCanvas_r0",
             "label": {
-              "en": "Sample Mean x̄",
+              "en": "Overall Marginal P(S)",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "13.57"
+            "value": "P(S) = 0.52"
           },
           {
-            "id": "exAuto_stats_eststats_r1",
+            "id": "eststatsExCanvas_r1",
             "label": {
-              "en": "Sample Median M",
+              "en": "Reverse Bayes P(A | S)",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "14.0"
+            "value": "P(A|S) = 0.67"
+          },
+          {
+            "id": "eststatsExCanvas_r2",
+            "label": {
+              "en": "Relative Risk Ratio",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "RR = 2.00×"
           }
-        ]
+        ],
+        "note": {
+          "en": "Visualize a 2×2 contingency table as stacked proportion bars for Group A and Group B, comparing conditional rates P(S|A) vs. P(A|S).",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

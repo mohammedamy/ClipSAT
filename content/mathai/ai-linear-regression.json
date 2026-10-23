@@ -80,27 +80,27 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Linear Regression & Ordinary Least Squares Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Linear Regression & Ordinary Least Squares"
+          "en": "⊙ Explorer · Ordinary Least Squares (OLS) Regression Line & Residual MSE",
+          "ar": "⊙ مستكشف تفاعلي · الانحدار الخطي والمربعات الصغرى الاعتيادية (OLS) ومربعات البواقي"
         },
-        "canvasId": "exAuto_stats_ailinearregression",
+        "canvasId": "ailinearregressionExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Linear Regression & Ordinary Least Squares",
-          "ar": "مستكشف رياضي تفاعلي لدرس Linear Regression & Ordinary Least Squares"
+          "en": "Ordinary Least Squares (OLS) Regression Line & Residual MSE interactive mathematical canvas",
+          "ar": "⊙ مستكشف تفاعلي · الانحدار الخطي والمربعات الصغرى الاعتيادية (OLS) ومربعات البواقي لوحة تفاعلية"
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_ailinearregression_dataBtn",
-          "panelId": "exAuto_stats_ailinearregression_dataPanel",
-          "descId": "exAuto_stats_ailinearregression_dataDesc",
-          "rowsId": "exAuto_stats_ailinearregression_dataRows",
+          "btnId": "ailinearregressionExCanvas_dataBtn",
+          "panelId": "ailinearregressionExCanvas_dataPanel",
+          "descId": "ailinearregressionExCanvas_dataDesc",
+          "rowsId": "ailinearregressionExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Linear Regression & Ordinary Least Squares",
-            "ar": "جدول القيم العددية لدرس Linear Regression & Ordinary Least Squares"
+            "en": "Live numerical table for Ordinary Least Squares (OLS) Regression Line & Residual MSE",
+            "ar": "جدول القيم العددية لـ ⊙ مستكشف تفاعلي · الانحدار الخطي والمربعات الصغرى الاعتيادية (OLS) ومربعات البواقي"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Parameter / Metric",
+              "ar": "المتغير / المعيار"
             },
             {
               "en": "Value",
@@ -110,58 +110,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_stats_ailinearregression_s0",
+            "id": "ailinearregressionExCanvas_s0",
             "label": {
-              "en": "Sample shift <b>Δ₁ =</b>",
-              "ar": "إزاحة العينة <b>Δ₁ =</b>"
+              "en": "Candidate Weight (Slope) <b>w =</b>",
+              "ar": "Candidate Weight (Slope) <b>w =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_ailinearregression_v0",
+            "min": -0.5,
+            "max": 2.5,
+            "value": 0.8,
+            "step": 0.1,
+            "valueDisplayId": "ailinearregressionExCanvas_v0",
             "ariaLabel": {
-              "en": "Sample shift delta 1",
-              "ar": "إزاحة العينة 1"
+              "en": "Candidate Weight (Slope) w =",
+              "ar": "Candidate Weight (Slope) w ="
             }
           },
           {
-            "id": "exAuto_stats_ailinearregression_s1",
+            "id": "ailinearregressionExCanvas_s1",
             "label": {
-              "en": "Tail shift <b>Δ₂ =</b>",
-              "ar": "إزاحة الطرف <b>Δ₂ =</b>"
+              "en": "Candidate Bias (Intercept) <b>b =</b>",
+              "ar": "Candidate Bias (Intercept) <b>b =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_ailinearregression_v1",
+            "min": -2.0,
+            "max": 3.0,
+            "value": 0.5,
+            "step": 0.25,
+            "valueDisplayId": "ailinearregressionExCanvas_v1",
             "ariaLabel": {
-              "en": "Tail shift delta 2",
-              "ar": "إزاحة الطرف 2"
+              "en": "Candidate Bias (Intercept) b =",
+              "ar": "Candidate Bias (Intercept) b ="
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_ailinearregression_r0",
+            "id": "ailinearregressionExCanvas_r0",
             "label": {
-              "en": "Sample Mean x̄",
-              "ar": "المتوسط الحسابي x̄"
+              "en": "Mean Squared Error MSE(w, b)",
+              "ar": "Mean Squared Error MSE(w, b)"
             },
             "colorClass": "indigo",
-            "value": "13.57"
+            "value": "MSE = 0.124"
           },
           {
-            "id": "exAuto_stats_ailinearregression_r1",
+            "id": "ailinearregressionExCanvas_r1",
             "label": {
-              "en": "Sample Median M",
-              "ar": "الوسيط M"
+              "en": "Optimal Normal-Eq (w*, b*)",
+              "ar": "Optimal Normal-Eq (w*, b*)"
             },
             "colorClass": "amber",
-            "value": "14.0"
+            "value": "w* = 1.04, b* = 0.50"
+          },
+          {
+            "id": "ailinearregressionExCanvas_r2",
+            "label": {
+              "en": "Coefficient of Determination R²",
+              "ar": "Coefficient of Determination R²"
+            },
+            "colorClass": "teal",
+            "value": "R² = 0.943"
           }
-        ]
+        ],
+        "note": {
+          "en": "Vertical amber segments show the residuals e_i = y_i − (w·x_i + b) for each training point. Minimizing Σ e_i² yields the dashed ordinary least squares line.",
+          "ar": "القطع الرأسية الكهرمانية تمثل البواقي e_i = y_i − (w·x_i + b)؛ تقليل مجموع مربعاتها يعطي خط المربعات الصغرى الأمثل."
+        }
       },
       {
         "kind": "figure",

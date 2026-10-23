@@ -98,26 +98,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Number Lab",
+          "en": "⊙ Explorer · Upper & Lower Bounds: Rounded Rectangle Area [A_min, A_max)",
           "ar": null
         },
-        "canvasId": "exAuto_quad_ignumber",
+        "canvasId": "ignumberExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Number",
+          "en": "Upper & Lower Bounds: Rounded Rectangle Area [A_min, A_max) interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_quad_ignumber_dataBtn",
-          "panelId": "exAuto_quad_ignumber_dataPanel",
-          "descId": "exAuto_quad_ignumber_dataDesc",
-          "rowsId": "exAuto_quad_ignumber_dataRows",
+          "btnId": "ignumberExCanvas_dataBtn",
+          "panelId": "ignumberExCanvas_dataPanel",
+          "descId": "ignumberExCanvas_dataDesc",
+          "rowsId": "ignumberExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Number",
+            "en": "Live numerical table for Upper & Lower Bounds: Rounded Rectangle Area [A_min, A_max)",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -128,58 +128,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_quad_ignumber_s0",
+            "id": "ignumberExCanvas_s0",
             "label": {
-              "en": "Vertex parameter <b>a =</b>",
+              "en": "Measured Length <b>L =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": 3.0,
+            "max": 8.0,
+            "value": 5.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_quad_ignumber_v0",
+            "valueDisplayId": "ignumberExCanvas_v0",
             "ariaLabel": {
-              "en": "Vertex parameter a",
+              "en": "Measured Length L =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_quad_ignumber_s1",
+            "id": "ignumberExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>b =</b>",
+              "en": "Rounding Unit <b>Δ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_ignumber_v1",
+            "min": 0.2,
+            "max": 1.0,
+            "value": 0.5,
+            "step": 0.2,
+            "valueDisplayId": "ignumberExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift parameter b",
+              "en": "Rounding Unit Δ =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_quad_ignumber_r0",
+            "id": "ignumberExCanvas_r0",
             "label": {
-              "en": "Vertex (h, k)",
+              "en": "Length Bounds [L − Δ/2, L + Δ/2)",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "(1.0, -1.0)"
+            "value": "[4.75, 5.25)"
           },
           {
-            "id": "exAuto_quad_ignumber_r1",
+            "id": "ignumberExCanvas_r1",
             "label": {
-              "en": "Axis of Symmetry",
+              "en": "Lower Bound Area A_LB",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "x = 1.0"
+            "value": "A_LB = 17.81"
+          },
+          {
+            "id": "ignumberExCanvas_r2",
+            "label": {
+              "en": "Upper Bound Area A_UB",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "A_UB = 22.31"
           }
-        ]
+        ],
+        "note": {
+          "en": "When length L and width W = 4 are rounded to nearest unit Δ, the true rectangle lies between the dashed inner lower-bound rectangle and outer amber upper-bound rectangle.",
+          "ar": null
+        }
       },
       {
         "kind": "callout",

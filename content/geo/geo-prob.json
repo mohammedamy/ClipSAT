@@ -42,26 +42,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Probability Lab",
+          "en": "⊙ Explorer · Geometric Probability: Inscribed Target Area Ratio P = A_target / A_total",
           "ar": null
         },
-        "canvasId": "exAuto_geo_geoprob",
+        "canvasId": "geoprobExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Probability",
+          "en": "Geometric Probability: Inscribed Target Area Ratio P = A_target / A_total interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_geo_geoprob_dataBtn",
-          "panelId": "exAuto_geo_geoprob_dataPanel",
-          "descId": "exAuto_geo_geoprob_dataDesc",
-          "rowsId": "exAuto_geo_geoprob_dataRows",
+          "btnId": "geoprobExCanvas_dataBtn",
+          "panelId": "geoprobExCanvas_dataPanel",
+          "descId": "geoprobExCanvas_dataDesc",
+          "rowsId": "geoprobExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Probability",
+            "en": "Live numerical table for Geometric Probability: Inscribed Target Area Ratio P = A_target / A_total",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -72,65 +72,78 @@
         },
         "controls": [
           {
-            "id": "exAuto_geo_geoprob_s0",
+            "id": "geoprobExCanvas_s0",
             "label": {
-              "en": "Radius <b>r =</b>",
+              "en": "Target Circle Radius <b>r =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_geo_geoprob_v0",
+            "min": 0.8,
+            "max": 3.8,
+            "value": 2.5,
+            "step": 0.2,
+            "valueDisplayId": "geoprobExCanvas_v0",
             "ariaLabel": {
-              "en": "Circle radius r",
+              "en": "Target Circle Radius r =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_geo_geoprob_s1",
+            "id": "geoprobExCanvas_s1",
             "label": {
-              "en": "Angle scale <b>k =</b>",
+              "en": "Bounding Half-Side <b>R =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
+            "min": 3.0,
+            "max": 4.5,
+            "value": 4.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_geo_geoprob_v1",
+            "valueDisplayId": "geoprobExCanvas_v1",
             "ariaLabel": {
-              "en": "Central angle factor k",
+              "en": "Bounding Half-Side R =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_geo_geoprob_r0",
+            "id": "geoprobExCanvas_r0",
             "label": {
-              "en": "Arc Length s = rθ",
+              "en": "Target Circle Area πr²",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "1.05"
+            "value": "19.63"
           },
           {
-            "id": "exAuto_geo_geoprob_r1",
+            "id": "geoprobExCanvas_r1",
             "label": {
-              "en": "Sector Area ½r²θ",
+              "en": "Bounding Square Area (2R)²",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "1.05"
+            "value": "64.00"
+          },
+          {
+            "id": "geoprobExCanvas_r2",
+            "label": {
+              "en": "Geometric Probability P = πr²/(4R²)",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "P = 0.3068 (30.7%)"
           }
         ],
+        "note": {
+          "en": "A point is chosen uniformly at random inside the 2R × 2R square. The probability that it lands inside the shaded circle of radius r is the area ratio πr² / (2R)².",
+          "ar": null
+        },
         "canvas3d": {
-          "btnId": "exAuto3dBtn_solid_geoprob",
-          "wrapId": "exAuto3dWrap_geoprob",
-          "hintId": "exAuto3dHint_geoprob",
-          "btnLabel": "🧊 View Interactive 3D Model",
+          "btnId": "geoprobExCanvas_3dBtn",
+          "wrapId": "geoprobExCanvas_3dWrap",
+          "hintId": "geoprobExCanvas_3dHint",
+          "btnLabel": "🧊 View Geometric Probability in 3D",
           "ariaLabel": {
-            "en": "Interactive 3D visualization for Probability. Drag to rotate.",
+            "en": "Interactive 3D visualization for Geometric Probability: Inscribed Target Area Ratio P = A_target / A_total. Drag to rotate.",
             "ar": null
           }
         }

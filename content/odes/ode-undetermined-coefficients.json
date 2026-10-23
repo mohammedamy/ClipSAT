@@ -73,26 +73,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance Lab",
+          "en": "⊙ Explorer · Undetermined Coefficients: Beats vs. Pure Resonance (ω → ω₀)",
           "ar": null
         },
-        "canvasId": "exAuto_calc_odeundeterminedcoefficients",
+        "canvasId": "odeundeterminedcoefficientsExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance",
+          "en": "Undetermined Coefficients: Beats vs. Pure Resonance (ω → ω₀) interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_calc_odeundeterminedcoefficients_dataBtn",
-          "panelId": "exAuto_calc_odeundeterminedcoefficients_dataPanel",
-          "descId": "exAuto_calc_odeundeterminedcoefficients_dataDesc",
-          "rowsId": "exAuto_calc_odeundeterminedcoefficients_dataRows",
+          "btnId": "odeundeterminedcoefficientsExCanvas_dataBtn",
+          "panelId": "odeundeterminedcoefficientsExCanvas_dataPanel",
+          "descId": "odeundeterminedcoefficientsExCanvas_dataDesc",
+          "rowsId": "odeundeterminedcoefficientsExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance",
+            "en": "Live numerical table for Undetermined Coefficients: Beats vs. Pure Resonance (ω → ω₀)",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -103,58 +103,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_calc_odeundeterminedcoefficients_s0",
+            "id": "odeundeterminedcoefficientsExCanvas_s0",
             "label": {
-              "en": "Tangent point <b>a =</b>",
+              "en": "Driving Frequency <b>ω =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_odeundeterminedcoefficients_v0",
+            "min": 1.2,
+            "max": 3.0,
+            "value": 2.4,
+            "step": 0.1,
+            "valueDisplayId": "odeundeterminedcoefficientsExCanvas_v0",
             "ariaLabel": {
-              "en": "Tangent parameter a",
+              "en": "Driving Frequency ω =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_calc_odeundeterminedcoefficients_s1",
+            "id": "odeundeterminedcoefficientsExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>c =</b>",
+              "en": "Natural Frequency <b>ω₀ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_odeundeterminedcoefficients_v1",
+            "min": 1.5,
+            "max": 3.0,
+            "value": 2.0,
+            "step": 0.1,
+            "valueDisplayId": "odeundeterminedcoefficientsExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift c",
+              "en": "Natural Frequency ω₀ =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_calc_odeundeterminedcoefficients_r0",
+            "id": "odeundeterminedcoefficientsExCanvas_r0",
             "label": {
-              "en": "Derivative f'(x₀)",
+              "en": "Detuning |ω − ω₀|",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "f'(1.2) = 0.33"
+            "value": "|ω−ω₀| = 0.40"
           },
           {
-            "id": "exAuto_calc_odeundeterminedcoefficients_r1",
+            "id": "odeundeterminedcoefficientsExCanvas_r1",
             "label": {
-              "en": "Definite Integral ∫₀ˣ f(t)dt",
+              "en": "Amplitude Gain 1/|ω₀² − ω²|",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "∫₀ˣ f(t)dt = 0.19"
+            "value": "Gain = 0.57"
+          },
+          {
+            "id": "odeundeterminedcoefficientsExCanvas_r2",
+            "label": {
+              "en": "Regime (Beats vs. Resonance)",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "Periodic Beats Envelope"
           }
-        ]
+        ],
+        "note": {
+          "en": "For y'' + ω₀²y = cos(ωt), when ω ≠ ω₀ the response exhibits periodic beats with envelope ±1/|ω₀² − ω²|. When ω = ω₀, undetermined coefficients requires the secular term t·sin(ω₀t) (pure resonance!).",
+          "ar": null
+        }
       },
       {
         "kind": "callout",

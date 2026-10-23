@@ -65,26 +65,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Statistics &amp; Data Analysis Lab",
+          "en": "⊙ Explorer · Five-Number Summary Boxplot, IQR & Outlier Sensitivity",
           "ar": null
         },
-        "canvasId": "exAuto_stats_agstats",
+        "canvasId": "agstatsExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Statistics &amp; Data Analysis",
+          "en": "Five-Number Summary Boxplot, IQR & Outlier Sensitivity interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_agstats_dataBtn",
-          "panelId": "exAuto_stats_agstats_dataPanel",
-          "descId": "exAuto_stats_agstats_dataDesc",
-          "rowsId": "exAuto_stats_agstats_dataRows",
+          "btnId": "agstatsExCanvas_dataBtn",
+          "panelId": "agstatsExCanvas_dataPanel",
+          "descId": "agstatsExCanvas_dataDesc",
+          "rowsId": "agstatsExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Statistics &amp; Data Analysis",
+            "en": "Live numerical table for Five-Number Summary Boxplot, IQR & Outlier Sensitivity",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -95,58 +95,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_stats_agstats_s0",
+            "id": "agstatsExCanvas_s0",
             "label": {
-              "en": "Sample shift <b>Δ₁ =</b>",
+              "en": "Outlier Value <b>x₇ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_agstats_v0",
+            "min": 10,
+            "max": 30,
+            "value": 18,
+            "step": 1,
+            "valueDisplayId": "agstatsExCanvas_v0",
             "ariaLabel": {
-              "en": "Sample shift delta 1",
+              "en": "Outlier Value x₇ =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_stats_agstats_s1",
+            "id": "agstatsExCanvas_s1",
             "label": {
-              "en": "Tail shift <b>Δ₂ =</b>",
+              "en": "Lower Cluster Shift <b>δ =</b>",
               "ar": null
             },
             "min": -4,
             "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_agstats_v1",
+            "value": 0,
+            "step": 1,
+            "valueDisplayId": "agstatsExCanvas_v1",
             "ariaLabel": {
-              "en": "Tail shift delta 2",
+              "en": "Lower Cluster Shift δ =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_agstats_r0",
+            "id": "agstatsExCanvas_r0",
             "label": {
-              "en": "Sample Mean x̄",
+              "en": "Mean x̄ (Sensitive)",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "13.57"
+            "value": "x̄ = 13.43"
           },
           {
-            "id": "exAuto_stats_agstats_r1",
+            "id": "agstatsExCanvas_r1",
             "label": {
-              "en": "Sample Median M",
+              "en": "Median M (Robust)",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "14.0"
+            "value": "M = 14.0"
+          },
+          {
+            "id": "agstatsExCanvas_r2",
+            "label": {
+              "en": "Interquartile Range IQR = Q₃ − Q₁",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "IQR = 7.0"
           }
-        ]
+        ],
+        "note": {
+          "en": "Drag the extreme value x₇ upward to see the sample Mean x̄ get pulled toward the outlier while the Median and boxplot IQR remain stable.",
+          "ar": null
+        }
       },
       {
         "kind": "figure",

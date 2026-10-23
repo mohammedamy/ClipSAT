@@ -73,26 +73,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Linear Transformations, Matrix Representations & Change of Basis Lab",
+          "en": "⊙ Explorer · Linear Transformation Grid T(x) = Ax, Basis Columns & Determinant",
           "ar": null
         },
-        "canvasId": "exAuto_vec_lalintrans",
+        "canvasId": "lalintransExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Linear Transformations, Matrix Representations & Change of Basis",
+          "en": "Linear Transformation Grid T(x) = Ax, Basis Columns & Determinant interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_vec_lalintrans_dataBtn",
-          "panelId": "exAuto_vec_lalintrans_dataPanel",
-          "descId": "exAuto_vec_lalintrans_dataDesc",
-          "rowsId": "exAuto_vec_lalintrans_dataRows",
+          "btnId": "lalintransExCanvas_dataBtn",
+          "panelId": "lalintransExCanvas_dataPanel",
+          "descId": "lalintransExCanvas_dataDesc",
+          "rowsId": "lalintransExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Linear Transformations, Matrix Representations & Change of Basis",
+            "en": "Live numerical table for Linear Transformation Grid T(x) = Ax, Basis Columns & Determinant",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -103,65 +103,78 @@
         },
         "controls": [
           {
-            "id": "exAuto_vec_lalintrans_s0",
+            "id": "lalintransExCanvas_s0",
             "label": {
-              "en": "Component <b>uₓ =</b>",
+              "en": "Column 1 x-Comp <b>a₁₁ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": -2.5,
+            "max": 2.5,
+            "value": 1.5,
             "step": 0.5,
-            "valueDisplayId": "exAuto_vec_lalintrans_v0",
+            "valueDisplayId": "lalintransExCanvas_v0",
             "ariaLabel": {
-              "en": "Horizontal component ux",
+              "en": "Column 1 x-Comp a₁₁ =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_vec_lalintrans_s1",
+            "id": "lalintransExCanvas_s1",
             "label": {
-              "en": "Component <b>uᵧ =</b>",
+              "en": "Column 2 x-Comp <b>a₁₂ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
+            "min": -2.5,
+            "max": 2.5,
+            "value": 1.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_vec_lalintrans_v1",
+            "valueDisplayId": "lalintransExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical component uy",
+              "en": "Column 2 x-Comp a₁₂ =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_vec_lalintrans_r0",
+            "id": "lalintransExCanvas_r0",
             "label": {
-              "en": "Magnitude |u|",
+              "en": "Transformed Basis T(e₁), T(e₂)",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "2.24"
+            "value": "⟨1.5, 0.5⟩ & ⟨1.0, 1.5⟩"
           },
           {
-            "id": "exAuto_vec_lalintrans_r1",
+            "id": "lalintransExCanvas_r1",
             "label": {
-              "en": "Orthogonal Vector v⊥",
+              "en": "Area Scale Factor det(A)",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "⟨-1.0, 2.0⟩"
+            "value": "det(A) = 1.75"
+          },
+          {
+            "id": "lalintransExCanvas_r2",
+            "label": {
+              "en": "Image of v = ⟨1, 1⟩",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "T(1,1) = ⟨2.5, 2.0⟩"
           }
         ],
+        "note": {
+          "en": "See how the linear map T(x) = Ax deforms the entire 2D coordinate grid so standard basis vectors e₁, e₂ land on the matrix columns a₁, a₂.",
+          "ar": null
+        },
         "canvas3d": {
-          "btnId": "exAuto3dBtn_vec3_lalintrans",
-          "wrapId": "exAuto3dWrap_lalintrans",
-          "hintId": "exAuto3dHint_lalintrans",
-          "btnLabel": "🧊 View Interactive 3D Model",
+          "btnId": "lalintransExCanvas_3dBtn",
+          "wrapId": "lalintransExCanvas_3dWrap",
+          "hintId": "lalintransExCanvas_3dHint",
+          "btnLabel": "🧊 View Linear Transformation Grid T(x) = Ax, Basis Columns & Determinant in 3D",
           "ariaLabel": {
-            "en": "Interactive 3D visualization for Linear Transformations, Matrix Representations & Change of Basis. Drag to rotate.",
+            "en": "Interactive 3D visualization for Linear Transformation Grid T(x) = Ax, Basis Columns & Determinant. Drag to rotate.",
             "ar": null
           }
         }

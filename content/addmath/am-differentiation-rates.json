@@ -125,27 +125,27 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Differentiation, Rules & Rates of Change Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Differentiation, Rules & Rates of Change"
+          "en": "⊙ Explorer · Curve Tangent, Normal Line & Connected Rate dy/dt",
+          "ar": "⊙ مستكشف تفاعلي · المماس والعمودي ومعدلات التغير المرتبطة dy/dt"
         },
-        "canvasId": "exAuto_calc_amdifferentiationrates",
+        "canvasId": "amdifferentiationratesExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Differentiation, Rules & Rates of Change",
-          "ar": "مستكشف رياضي تفاعلي لدرس Differentiation, Rules & Rates of Change"
+          "en": "Curve Tangent, Normal Line & Connected Rate dy/dt interactive mathematical canvas",
+          "ar": "⊙ مستكشف تفاعلي · المماس والعمودي ومعدلات التغير المرتبطة dy/dt لوحة تفاعلية"
         },
         "dataPanel": {
-          "btnId": "exAuto_calc_amdifferentiationrates_dataBtn",
-          "panelId": "exAuto_calc_amdifferentiationrates_dataPanel",
-          "descId": "exAuto_calc_amdifferentiationrates_dataDesc",
-          "rowsId": "exAuto_calc_amdifferentiationrates_dataRows",
+          "btnId": "amdifferentiationratesExCanvas_dataBtn",
+          "panelId": "amdifferentiationratesExCanvas_dataPanel",
+          "descId": "amdifferentiationratesExCanvas_dataDesc",
+          "rowsId": "amdifferentiationratesExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Differentiation, Rules & Rates of Change",
-            "ar": "جدول القيم العددية لدرس Differentiation, Rules & Rates of Change"
+            "en": "Live numerical table for Curve Tangent, Normal Line & Connected Rate dy/dt",
+            "ar": "جدول القيم العددية لـ ⊙ مستكشف تفاعلي · المماس والعمودي ومعدلات التغير المرتبطة dy/dt"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Parameter / Metric",
+              "ar": "المتغير / المعيار"
             },
             {
               "en": "Value",
@@ -155,58 +155,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_calc_amdifferentiationrates_s0",
+            "id": "amdifferentiationratesExCanvas_s0",
             "label": {
-              "en": "Tangent point <b>a =</b>",
-              "ar": "نقطة المماس <b>a =</b>"
+              "en": "Point of Tangency <b>x₀ =</b>",
+              "ar": "Point of Tangency <b>x₀ =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_amdifferentiationrates_v0",
+            "min": -2.5,
+            "max": 2.5,
+            "value": 1.2,
+            "step": 0.2,
+            "valueDisplayId": "amdifferentiationratesExCanvas_v0",
             "ariaLabel": {
-              "en": "Tangent parameter a",
-              "ar": "معامل المماس a"
+              "en": "Point of Tangency x₀ =",
+              "ar": "Point of Tangency x₀ ="
             }
           },
           {
-            "id": "exAuto_calc_amdifferentiationrates_s1",
+            "id": "amdifferentiationratesExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>c =</b>",
-              "ar": "الإزاحة الرأسية <b>c =</b>"
+              "en": "Input Rate <b>dx/dt =</b>",
+              "ar": "Input Rate <b>dx/dt =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
+            "min": 0.5,
+            "max": 4.0,
+            "value": 2.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_calc_amdifferentiationrates_v1",
+            "valueDisplayId": "amdifferentiationratesExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift c",
-              "ar": "الإزاحة الرأسية c"
+              "en": "Input Rate dx/dt =",
+              "ar": "Input Rate dx/dt ="
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_calc_amdifferentiationrates_r0",
+            "id": "amdifferentiationratesExCanvas_r0",
             "label": {
-              "en": "Derivative f'(x₀)",
-              "ar": "المشتقة f'(x₀)"
+              "en": "Tangent Gradient m_T = f'(x₀)",
+              "ar": "Tangent Gradient m_T = f'(x₀)"
             },
             "colorClass": "indigo",
-            "value": "f'(1.2) = 0.33"
+            "value": "m_T = 0.66"
           },
           {
-            "id": "exAuto_calc_amdifferentiationrates_r1",
+            "id": "amdifferentiationratesExCanvas_r1",
             "label": {
-              "en": "Definite Integral ∫₀ˣ f(t)dt",
-              "ar": "التكامل المحدد ∫₀ˣ f(t)dt"
+              "en": "Normal Gradient m_N = −1/m_T",
+              "ar": "Normal Gradient m_N = −1/m_T"
             },
             "colorClass": "amber",
-            "value": "∫₀ˣ f(t)dt = 0.19"
+            "value": "m_N = -1.52"
+          },
+          {
+            "id": "amdifferentiationratesExCanvas_r2",
+            "label": {
+              "en": "Connected Rate dy/dt = m_T·(dx/dt)",
+              "ar": "Connected Rate dy/dt = m_T·(dx/dt)"
+            },
+            "colorClass": "teal",
+            "value": "dy/dt = 1.32"
           }
-        ]
+        ],
+        "note": {
+          "en": "Inspect the instantaneous tangent line (amber) and perpendicular normal line (teal) at x₀ on y = 0.5x³ − 1.5x, along with the chain-rule rate dy/dt.",
+          "ar": "حرك نقطة التماس x₀ أو اسحب النقطة مباشرة على المنحنى لملاحظة تغير ميل المماس وميل العمودي ومعدل التغير المرتبط dy/dt."
+        }
       },
       {
         "kind": "figure",

@@ -92,27 +92,27 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Vectors, Norms & High-Dimensional Embeddings Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Vectors, Norms & High-Dimensional Embeddings"
+          "en": "⊙ Explorer · Embedding Space: Cosine Similarity cos θ & L₁ vs. L₂ Norm Balls",
+          "ar": "⊙ مستكشف تفاعلي · فضاء التضمينات: تشابه جيب التمام cos θ وكرات معيار L₁ و L₂"
         },
-        "canvasId": "exAuto_vec_aivectorsembeddings",
+        "canvasId": "aivectorsembeddingsExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Vectors, Norms & High-Dimensional Embeddings",
-          "ar": "مستكشف رياضي تفاعلي لدرس Vectors, Norms & High-Dimensional Embeddings"
+          "en": "Embedding Space: Cosine Similarity cos θ & L₁ vs. L₂ Norm Balls interactive mathematical canvas",
+          "ar": "⊙ مستكشف تفاعلي · فضاء التضمينات: تشابه جيب التمام cos θ وكرات معيار L₁ و L₂ لوحة تفاعلية"
         },
         "dataPanel": {
-          "btnId": "exAuto_vec_aivectorsembeddings_dataBtn",
-          "panelId": "exAuto_vec_aivectorsembeddings_dataPanel",
-          "descId": "exAuto_vec_aivectorsembeddings_dataDesc",
-          "rowsId": "exAuto_vec_aivectorsembeddings_dataRows",
+          "btnId": "aivectorsembeddingsExCanvas_dataBtn",
+          "panelId": "aivectorsembeddingsExCanvas_dataPanel",
+          "descId": "aivectorsembeddingsExCanvas_dataDesc",
+          "rowsId": "aivectorsembeddingsExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Vectors, Norms & High-Dimensional Embeddings",
-            "ar": "جدول القيم العددية لدرس Vectors, Norms & High-Dimensional Embeddings"
+            "en": "Live numerical table for Embedding Space: Cosine Similarity cos θ & L₁ vs. L₂ Norm Balls",
+            "ar": "جدول القيم العددية لـ ⊙ مستكشف تفاعلي · فضاء التضمينات: تشابه جيب التمام cos θ وكرات معيار L₁ و L₂"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Parameter / Metric",
+              "ar": "المتغير / المعيار"
             },
             {
               "en": "Value",
@@ -122,66 +122,79 @@
         },
         "controls": [
           {
-            "id": "exAuto_vec_aivectorsembeddings_s0",
+            "id": "aivectorsembeddingsExCanvas_s0",
             "label": {
-              "en": "Component <b>uₓ =</b>",
-              "ar": "المركبة الأفقية <b>uₓ =</b>"
+              "en": "Embedding u Angle <b>θ_u (°) =</b>",
+              "ar": "Embedding u Angle <b>θ_u (°) =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_vec_aivectorsembeddings_v0",
+            "min": 0,
+            "max": 180,
+            "value": 30,
+            "step": 10,
+            "valueDisplayId": "aivectorsembeddingsExCanvas_v0",
             "ariaLabel": {
-              "en": "Horizontal component ux",
-              "ar": "المركبة الأفقية ux"
+              "en": "Embedding u Angle θ_u (°) =",
+              "ar": "Embedding u Angle θ_u (°) ="
             }
           },
           {
-            "id": "exAuto_vec_aivectorsembeddings_s1",
+            "id": "aivectorsembeddingsExCanvas_s1",
             "label": {
-              "en": "Component <b>uᵧ =</b>",
-              "ar": "المركبة الرأسية <b>uᵧ =</b>"
+              "en": "Embedding v Angle <b>θ_v (°) =</b>",
+              "ar": "Embedding v Angle <b>θ_v (°) =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_vec_aivectorsembeddings_v1",
+            "min": 0,
+            "max": 180,
+            "value": 75,
+            "step": 10,
+            "valueDisplayId": "aivectorsembeddingsExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical component uy",
-              "ar": "المركبة الرأسية uy"
+              "en": "Embedding v Angle θ_v (°) =",
+              "ar": "Embedding v Angle θ_v (°) ="
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_vec_aivectorsembeddings_r0",
+            "id": "aivectorsembeddingsExCanvas_r0",
             "label": {
-              "en": "Magnitude |u|",
-              "ar": "المقدار |u|"
+              "en": "Cosine Similarity cos(Δθ)",
+              "ar": "Cosine Similarity cos(Δθ)"
             },
             "colorClass": "indigo",
-            "value": "2.24"
+            "value": "cos Δθ = 0.707"
           },
           {
-            "id": "exAuto_vec_aivectorsembeddings_r1",
+            "id": "aivectorsembeddingsExCanvas_r1",
             "label": {
-              "en": "Orthogonal Vector v⊥",
-              "ar": "المتجه المتعامد v⊥"
+              "en": "Euclidean Distance ‖u − v‖₂",
+              "ar": "Euclidean Distance ‖u − v‖₂"
             },
             "colorClass": "amber",
-            "value": "⟨-1.0, 2.0⟩"
+            "value": "‖u−v‖₂ = 0.765"
+          },
+          {
+            "id": "aivectorsembeddingsExCanvas_r2",
+            "label": {
+              "en": "Manhattan Distance ‖u − v‖₁",
+              "ar": "Manhattan Distance ‖u − v‖₁"
+            },
+            "colorClass": "teal",
+            "value": "‖u−v‖₁ = 1.073"
           }
         ],
+        "note": {
+          "en": "Compare two embedding vectors u and v on the unit L₂ circle (indigo) and unit L₁ diamond (dashed gray), tracking their dot-product cosine similarity cos(θ_u − θ_v).",
+          "ar": "قارن بين متجهي التضمين u و v على دائرة معيار L₂ ومعين معيار L₁ مع حساب تشابه جيب التمام cos(θ_u − θ_v)."
+        },
         "canvas3d": {
-          "btnId": "exAuto3dBtn_vec3_aivectorsembeddings",
-          "wrapId": "exAuto3dWrap_aivectorsembeddings",
-          "hintId": "exAuto3dHint_aivectorsembeddings",
-          "btnLabel": "🧊 View Interactive 3D Model",
+          "btnId": "aivectorsembeddingsExCanvas_3dBtn",
+          "wrapId": "aivectorsembeddingsExCanvas_3dWrap",
+          "hintId": "aivectorsembeddingsExCanvas_3dHint",
+          "btnLabel": "🧊 View Embedding Space in 3D",
           "ariaLabel": {
-            "en": "Interactive 3D visualization for Vectors, Norms & High-Dimensional Embeddings. Drag to rotate.",
-            "ar": "عرض ثلاثي الأبعاد تفاعلي لدرس Vectors, Norms & High-Dimensional Embeddings. اسحب للتدوير."
+            "en": "Interactive 3D visualization for Embedding Space: Cosine Similarity cos θ & L₁ vs. L₂ Norm Balls. Drag to rotate.",
+            "ar": "عرض ثلاثي الأبعاد تفاعلي لـ ⊙ مستكشف تفاعلي · فضاء التضمينات: تشابه جيب التمام cos θ وكرات معيار L₁ و L₂. اسحب للتدوير."
           }
         }
       },

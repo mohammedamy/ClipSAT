@@ -75,26 +75,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Ratios, Rates & Data Lab",
+          "en": "⊙ Explorer · Direct Proportion y = kx vs. Inverse Variation y = k/x",
           "ar": null
         },
-        "canvasId": "exAuto_stats_estdata",
+        "canvasId": "estdataExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Ratios, Rates & Data",
+          "en": "Direct Proportion y = kx vs. Inverse Variation y = k/x interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_estdata_dataBtn",
-          "panelId": "exAuto_stats_estdata_dataPanel",
-          "descId": "exAuto_stats_estdata_dataDesc",
-          "rowsId": "exAuto_stats_estdata_dataRows",
+          "btnId": "estdataExCanvas_dataBtn",
+          "panelId": "estdataExCanvas_dataPanel",
+          "descId": "estdataExCanvas_dataDesc",
+          "rowsId": "estdataExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Ratios, Rates & Data",
+            "en": "Live numerical table for Direct Proportion y = kx vs. Inverse Variation y = k/x",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -105,58 +105,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_stats_estdata_s0",
+            "id": "estdataExCanvas_s0",
             "label": {
-              "en": "Sample shift <b>Δ₁ =</b>",
+              "en": "Proportionality Constant <b>k =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": 0.5,
+            "max": 4.0,
+            "value": 2.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_stats_estdata_v0",
+            "valueDisplayId": "estdataExCanvas_v0",
             "ariaLabel": {
-              "en": "Sample shift delta 1",
+              "en": "Proportionality Constant k =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_stats_estdata_s1",
+            "id": "estdataExCanvas_s1",
             "label": {
-              "en": "Tail shift <b>Δ₂ =</b>",
+              "en": "Evaluation Input <b>x₀ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
+            "min": 0.5,
+            "max": 4.0,
+            "value": 2.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_stats_estdata_v1",
+            "valueDisplayId": "estdataExCanvas_v1",
             "ariaLabel": {
-              "en": "Tail shift delta 2",
+              "en": "Evaluation Input x₀ =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_estdata_r0",
+            "id": "estdataExCanvas_r0",
             "label": {
-              "en": "Sample Mean x̄",
+              "en": "Direct Value y_dir = k·x₀",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "13.57"
+            "value": "y_dir = 4.00"
           },
           {
-            "id": "exAuto_stats_estdata_r1",
+            "id": "estdataExCanvas_r1",
             "label": {
-              "en": "Sample Median M",
+              "en": "Inverse Value y_inv = k / x₀",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "14.0"
+            "value": "y_inv = 1.00"
+          },
+          {
+            "id": "estdataExCanvas_r2",
+            "label": {
+              "en": "Product Check x₀·y_inv = k",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "x₀·y_inv = 2.00"
           }
-        ]
+        ],
+        "note": {
+          "en": "Compare the linear direct-variation ray y = kx (constant ratio y/x = k) against the inverse-variation hyperbola y = k/x (constant product x·y = k).",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

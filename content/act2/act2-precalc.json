@@ -87,26 +87,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Pre-Calculus Concepts Lab",
+          "en": "⊙ Explorer · Rational Function Asymptotes & Removable Discontinuity",
           "ar": null
         },
-        "canvasId": "exAuto_calc_act2precalc",
+        "canvasId": "act2precalcExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Pre-Calculus Concepts",
+          "en": "Rational Function Asymptotes & Removable Discontinuity interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_calc_act2precalc_dataBtn",
-          "panelId": "exAuto_calc_act2precalc_dataPanel",
-          "descId": "exAuto_calc_act2precalc_dataDesc",
-          "rowsId": "exAuto_calc_act2precalc_dataRows",
+          "btnId": "act2precalcExCanvas_dataBtn",
+          "panelId": "act2precalcExCanvas_dataPanel",
+          "descId": "act2precalcExCanvas_dataDesc",
+          "rowsId": "act2precalcExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Pre-Calculus Concepts",
+            "en": "Live numerical table for Rational Function Asymptotes & Removable Discontinuity",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -117,58 +117,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_calc_act2precalc_s0",
+            "id": "act2precalcExCanvas_s0",
             "label": {
-              "en": "Tangent point <b>a =</b>",
+              "en": "Vertical Asymptote <b>x = v =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": -3.0,
+            "max": 3.0,
+            "value": -1.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_calc_act2precalc_v0",
+            "valueDisplayId": "act2precalcExCanvas_v0",
             "ariaLabel": {
-              "en": "Tangent parameter a",
+              "en": "Vertical Asymptote x = v =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_calc_act2precalc_s1",
+            "id": "act2precalcExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>c =</b>",
+              "en": "Removable Hole <b>x = h =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
+            "min": -3.0,
+            "max": 3.0,
+            "value": 2.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_calc_act2precalc_v1",
+            "valueDisplayId": "act2precalcExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift c",
+              "en": "Removable Hole x = h =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_calc_act2precalc_r0",
+            "id": "act2precalcExCanvas_r0",
             "label": {
-              "en": "Derivative f'(x₀)",
+              "en": "Vertical Asymptote x = v",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "f'(1.2) = 0.33"
+            "value": "x = -1.0"
           },
           {
-            "id": "exAuto_calc_act2precalc_r1",
+            "id": "act2precalcExCanvas_r1",
             "label": {
-              "en": "Definite Integral ∫₀ˣ f(t)dt",
+              "en": "Hole Coordinates (h, y_h)",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "∫₀ˣ f(t)dt = 0.19"
+            "value": "(2.0, 0.33)"
+          },
+          {
+            "id": "act2precalcExCanvas_r2",
+            "label": {
+              "en": "Horizontal Asymptote y = 1",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "y = 1.00"
           }
-        ]
+        ],
+        "note": {
+          "en": "Inspect f(x) = ((x − 1)(x − h)) / ((x − v)(x − h)). Canceling (x − h) leaves an open-circle removable discontinuity at x = h, while x = v stays a vertical asymptote.",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

@@ -86,26 +86,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Sequences &amp; Series Lab",
+          "en": "⊙ Explorer · Generalized Binomial Expansion (1 + x)^p Convergence",
           "ar": null
         },
-        "canvasId": "exAuto_calc_a2lseries",
+        "canvasId": "a2lseriesExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Sequences &amp; Series",
+          "en": "Generalized Binomial Expansion (1 + x)^p Convergence interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_calc_a2lseries_dataBtn",
-          "panelId": "exAuto_calc_a2lseries_dataPanel",
-          "descId": "exAuto_calc_a2lseries_dataDesc",
-          "rowsId": "exAuto_calc_a2lseries_dataRows",
+          "btnId": "a2lseriesExCanvas_dataBtn",
+          "panelId": "a2lseriesExCanvas_dataPanel",
+          "descId": "a2lseriesExCanvas_dataDesc",
+          "rowsId": "a2lseriesExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Sequences &amp; Series",
+            "en": "Live numerical table for Generalized Binomial Expansion (1 + x)^p Convergence",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -116,58 +116,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_calc_a2lseries_s0",
+            "id": "a2lseriesExCanvas_s0",
             "label": {
-              "en": "Tangent point <b>a =</b>",
+              "en": "Power Exponent <b>p =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": -2.0,
+            "max": 2.5,
+            "value": -1.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_calc_a2lseries_v0",
+            "valueDisplayId": "a2lseriesExCanvas_v0",
             "ariaLabel": {
-              "en": "Tangent parameter a",
+              "en": "Power Exponent p =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_calc_a2lseries_s1",
+            "id": "a2lseriesExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>c =</b>",
+              "en": "Expansion Degree <b>N =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_a2lseries_v1",
+            "min": 1,
+            "max": 6,
+            "value": 3,
+            "step": 1,
+            "valueDisplayId": "a2lseriesExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift c",
+              "en": "Expansion Degree N =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_calc_a2lseries_r0",
+            "id": "a2lseriesExCanvas_r0",
             "label": {
-              "en": "Derivative f'(x₀)",
+              "en": "Series Approx at x = 0.5",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "f'(1.2) = 0.33"
+            "value": "0.6250"
           },
           {
-            "id": "exAuto_calc_a2lseries_r1",
+            "id": "a2lseriesExCanvas_r1",
             "label": {
-              "en": "Definite Integral ∫₀ˣ f(t)dt",
+              "en": "Exact (1 + 0.5)^p",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "∫₀ˣ f(t)dt = 0.19"
+            "value": "0.6667"
+          },
+          {
+            "id": "a2lseriesExCanvas_r2",
+            "label": {
+              "en": "Valid Radius |x| < 1",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "|x| < 1.00"
           }
-        ]
+        ],
+        "note": {
+          "en": "Compare the exact curve f(x) = (1 + x)^p (indigo) against its degree-N binomial series expansion (amber) inside the convergence interval (−1, 1).",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

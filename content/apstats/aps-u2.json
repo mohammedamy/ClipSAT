@@ -71,26 +71,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Unit 2 · Collecting Data, Sampling & Experimental Design Lab",
+          "en": "⊙ Explorer · Sampling Design: Sample Size n vs. Margin of Error",
           "ar": null
         },
-        "canvasId": "exAuto_stats_apsu2",
+        "canvasId": "apsu2ExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Unit 2 · Collecting Data, Sampling & Experimental Design",
+          "en": "Sampling Design: Sample Size n vs. Margin of Error interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_apsu2_dataBtn",
-          "panelId": "exAuto_stats_apsu2_dataPanel",
-          "descId": "exAuto_stats_apsu2_dataDesc",
-          "rowsId": "exAuto_stats_apsu2_dataRows",
+          "btnId": "apsu2ExCanvas_dataBtn",
+          "panelId": "apsu2ExCanvas_dataPanel",
+          "descId": "apsu2ExCanvas_dataDesc",
+          "rowsId": "apsu2ExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Unit 2 · Collecting Data, Sampling & Experimental Design",
+            "en": "Live numerical table for Sampling Design: Sample Size n vs. Margin of Error",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -101,58 +101,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_stats_apsu2_s0",
+            "id": "apsu2ExCanvas_s0",
             "label": {
-              "en": "Sample shift <b>Δ₁ =</b>",
+              "en": "Sample Size <b>n =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_apsu2_v0",
+            "min": 8,
+            "max": 80,
+            "value": 24,
+            "step": 4,
+            "valueDisplayId": "apsu2ExCanvas_v0",
             "ariaLabel": {
-              "en": "Sample shift delta 1",
+              "en": "Sample Size n =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_stats_apsu2_s1",
+            "id": "apsu2ExCanvas_s1",
             "label": {
-              "en": "Tail shift <b>Δ₂ =</b>",
+              "en": "Estimator Bias <b>b =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_apsu2_v1",
+            "min": -1.5,
+            "max": 1.5,
+            "value": 0.0,
+            "step": 0.25,
+            "valueDisplayId": "apsu2ExCanvas_v1",
             "ariaLabel": {
-              "en": "Tail shift delta 2",
+              "en": "Estimator Bias b =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_apsu2_r0",
+            "id": "apsu2ExCanvas_r0",
             "label": {
-              "en": "Sample Mean x̄",
+              "en": "Sampling Std Error SE = σ/√n",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "13.57"
+            "value": "SE = 0.408"
           },
           {
-            "id": "exAuto_stats_apsu2_r1",
+            "id": "apsu2ExCanvas_r1",
             "label": {
-              "en": "Sample Median M",
+              "en": "95% Capture Interval",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "14.0"
+            "value": "[-0.80, 0.80]"
+          },
+          {
+            "id": "apsu2ExCanvas_r2",
+            "label": {
+              "en": "Bias Shift from True μ = 0",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "±0.800"
           }
-        ]
+        ],
+        "note": {
+          "en": "Unbiased random sampling centers the distribution at true parameter μ = 0 (bias b = 0), while quadrupling sample size n halves the standard error.",
+          "ar": null
+        }
       },
       {
         "kind": "figure",

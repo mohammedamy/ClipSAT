@@ -42,26 +42,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Polygons &amp; Quadrilaterals Lab",
+          "en": "⊙ Explorer · Regular n-Gon Interior Angles, Exterior Angles & Diagonals",
           "ar": null
         },
-        "canvasId": "exAuto_geo_geoquads",
+        "canvasId": "geoquadsExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Polygons &amp; Quadrilaterals",
+          "en": "Regular n-Gon Interior Angles, Exterior Angles & Diagonals interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_geo_geoquads_dataBtn",
-          "panelId": "exAuto_geo_geoquads_dataPanel",
-          "descId": "exAuto_geo_geoquads_dataDesc",
-          "rowsId": "exAuto_geo_geoquads_dataRows",
+          "btnId": "geoquadsExCanvas_dataBtn",
+          "panelId": "geoquadsExCanvas_dataPanel",
+          "descId": "geoquadsExCanvas_dataDesc",
+          "rowsId": "geoquadsExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Polygons &amp; Quadrilaterals",
+            "en": "Live numerical table for Regular n-Gon Interior Angles, Exterior Angles & Diagonals",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -72,65 +72,78 @@
         },
         "controls": [
           {
-            "id": "exAuto_geo_geoquads_s0",
+            "id": "geoquadsExCanvas_s0",
             "label": {
-              "en": "Radius <b>r =</b>",
+              "en": "Number of Sides <b>n =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_geo_geoquads_v0",
+            "min": 3,
+            "max": 10,
+            "value": 6,
+            "step": 1,
+            "valueDisplayId": "geoquadsExCanvas_v0",
             "ariaLabel": {
-              "en": "Circle radius r",
+              "en": "Number of Sides n =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_geo_geoquads_s1",
+            "id": "geoquadsExCanvas_s1",
             "label": {
-              "en": "Angle scale <b>k =</b>",
+              "en": "Circumradius <b>R =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_geo_geoquads_v1",
+            "min": 2.0,
+            "max": 4.2,
+            "value": 3.5,
+            "step": 0.2,
+            "valueDisplayId": "geoquadsExCanvas_v1",
             "ariaLabel": {
-              "en": "Central angle factor k",
+              "en": "Circumradius R =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_geo_geoquads_r0",
+            "id": "geoquadsExCanvas_r0",
             "label": {
-              "en": "Arc Length s = rθ",
+              "en": "Interior Angle (n−2)·180°/n",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "1.05"
+            "value": "120.0°"
           },
           {
-            "id": "exAuto_geo_geoquads_r1",
+            "id": "geoquadsExCanvas_r1",
             "label": {
-              "en": "Sector Area ½r²θ",
+              "en": "Exterior Angle 360°/n",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "1.05"
+            "value": "60.0°"
+          },
+          {
+            "id": "geoquadsExCanvas_r2",
+            "label": {
+              "en": "Polygon Area ½nR² sin(2π/n)",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "Area = 31.83"
           }
         ],
+        "note": {
+          "en": "Decompose a regular n-gon into n congruent isosceles triangles from the center to verify the interior angle sum (n − 2)×180° and exterior angle 360°/n.",
+          "ar": null
+        },
         "canvas3d": {
-          "btnId": "exAuto3dBtn_solid_geoquads",
-          "wrapId": "exAuto3dWrap_geoquads",
-          "hintId": "exAuto3dHint_geoquads",
-          "btnLabel": "🧊 View Interactive 3D Model",
+          "btnId": "geoquadsExCanvas_3dBtn",
+          "wrapId": "geoquadsExCanvas_3dWrap",
+          "hintId": "geoquadsExCanvas_3dHint",
+          "btnLabel": "🧊 View Regular n-Gon Interior Angles, Exterior Angles & Diagonals in 3D",
           "ariaLabel": {
-            "en": "Interactive 3D visualization for Polygons &amp; Quadrilaterals. Drag to rotate.",
+            "en": "Interactive 3D visualization for Regular n-Gon Interior Angles, Exterior Angles & Diagonals. Drag to rotate.",
             "ar": null
           }
         }

@@ -81,26 +81,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Trigonometry Lab",
+          "en": "⊙ Explorer · Unit Circle CAST Quadrants & Solutions to sin θ = c",
           "ar": null
         },
-        "canvasId": "exAuto_trig_astrig",
+        "canvasId": "astrigExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Trigonometry",
+          "en": "Unit Circle CAST Quadrants & Solutions to sin θ = c interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_trig_astrig_dataBtn",
-          "panelId": "exAuto_trig_astrig_dataPanel",
-          "descId": "exAuto_trig_astrig_dataDesc",
-          "rowsId": "exAuto_trig_astrig_dataRows",
+          "btnId": "astrigExCanvas_dataBtn",
+          "panelId": "astrigExCanvas_dataPanel",
+          "descId": "astrigExCanvas_dataDesc",
+          "rowsId": "astrigExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Trigonometry",
+            "en": "Live numerical table for Unit Circle CAST Quadrants & Solutions to sin θ = c",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -111,58 +111,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_trig_astrig_s0",
+            "id": "astrigExCanvas_s0",
             "label": {
-              "en": "Amplitude <b>A =</b>",
+              "en": "Angle <b>θ (°) =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_trig_astrig_v0",
+            "min": 0,
+            "max": 360,
+            "value": 40,
+            "step": 5,
+            "valueDisplayId": "astrigExCanvas_v0",
             "ariaLabel": {
-              "en": "Amplitude A",
+              "en": "Angle θ (°) =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_trig_astrig_s1",
+            "id": "astrigExCanvas_s1",
             "label": {
-              "en": "Frequency <b>b =</b>",
+              "en": "Target Sine <b>c =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_trig_astrig_v1",
+            "min": -0.9,
+            "max": 0.9,
+            "value": 0.64,
+            "step": 0.05,
+            "valueDisplayId": "astrigExCanvas_v1",
             "ariaLabel": {
-              "en": "Frequency b",
+              "en": "Target Sine c =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_trig_astrig_r0",
+            "id": "astrigExCanvas_r0",
             "label": {
-              "en": "Amplitude |A|",
+              "en": "cos θ & sin θ",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "2.00"
+            "value": "(0.77, 0.64)"
           },
           {
-            "id": "exAuto_trig_astrig_r1",
+            "id": "astrigExCanvas_r1",
             "label": {
-              "en": "Period 2π/|b|",
+              "en": "Principal & Secondary Roots",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "6.28"
+            "value": "θ₁ ≈ 39.8°"
+          },
+          {
+            "id": "astrigExCanvas_r2",
+            "label": {
+              "en": "Active CAST Quadrant",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "Q I (All +)"
           }
-        ]
+        ],
+        "note": {
+          "en": "Rotate angle θ around the unit circle (left) while tracking its projection onto the sine wave y = sin θ (right) and finding both roots of sin θ = c in [0°, 360°].",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

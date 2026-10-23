@@ -63,26 +63,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Mensuration Lab",
+          "en": "⊙ Explorer · Mensuration: Sector Arc Length, Area & Chord Explorer",
           "ar": null
         },
-        "canvasId": "exAuto_geo_igmensuration",
+        "canvasId": "igmensurationExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Mensuration",
+          "en": "Mensuration: Sector Arc Length, Area & Chord Explorer interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_geo_igmensuration_dataBtn",
-          "panelId": "exAuto_geo_igmensuration_dataPanel",
-          "descId": "exAuto_geo_igmensuration_dataDesc",
-          "rowsId": "exAuto_geo_igmensuration_dataRows",
+          "btnId": "igmensurationExCanvas_dataBtn",
+          "panelId": "igmensurationExCanvas_dataPanel",
+          "descId": "igmensurationExCanvas_dataDesc",
+          "rowsId": "igmensurationExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Mensuration",
+            "en": "Live numerical table for Mensuration: Sector Arc Length, Area & Chord Explorer",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -93,65 +93,78 @@
         },
         "controls": [
           {
-            "id": "exAuto_geo_igmensuration_s0",
+            "id": "igmensurationExCanvas_s0",
             "label": {
-              "en": "Radius <b>r =</b>",
+              "en": "Circle Radius <b>r =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": 1.5,
+            "max": 4.5,
+            "value": 3.5,
             "step": 0.5,
-            "valueDisplayId": "exAuto_geo_igmensuration_v0",
+            "valueDisplayId": "igmensurationExCanvas_v0",
             "ariaLabel": {
-              "en": "Circle radius r",
+              "en": "Circle Radius r =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_geo_igmensuration_s1",
+            "id": "igmensurationExCanvas_s1",
             "label": {
-              "en": "Angle scale <b>k =</b>",
+              "en": "Sector Angle <b>θ (rad) =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_geo_igmensuration_v1",
+            "min": 0.5,
+            "max": 3.0,
+            "value": 1.8,
+            "step": 0.1,
+            "valueDisplayId": "igmensurationExCanvas_v1",
             "ariaLabel": {
-              "en": "Central angle factor k",
+              "en": "Sector Angle θ (rad) =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_geo_igmensuration_r0",
+            "id": "igmensurationExCanvas_r0",
             "label": {
               "en": "Arc Length s = rθ",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "1.05"
+            "value": "s = 6.30"
           },
           {
-            "id": "exAuto_geo_igmensuration_r1",
+            "id": "igmensurationExCanvas_r1",
             "label": {
-              "en": "Sector Area ½r²θ",
+              "en": "Sector Area A = ½r²θ",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "1.05"
+            "value": "A = 11.03"
+          },
+          {
+            "id": "igmensurationExCanvas_r2",
+            "label": {
+              "en": "Major vs. Minor Sector",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "A_seg = 5.06"
           }
         ],
+        "note": {
+          "en": "Explore how sector arc length and area scale with radius r and central angle θ on a 1:1 square coordinate grid.",
+          "ar": null
+        },
         "canvas3d": {
-          "btnId": "exAuto3dBtn_solid_igmensuration",
-          "wrapId": "exAuto3dWrap_igmensuration",
-          "hintId": "exAuto3dHint_igmensuration",
-          "btnLabel": "🧊 View Interactive 3D Model",
+          "btnId": "igmensurationExCanvas_3dBtn",
+          "wrapId": "igmensurationExCanvas_3dWrap",
+          "hintId": "igmensurationExCanvas_3dHint",
+          "btnLabel": "🧊 View Mensuration in 3D",
           "ariaLabel": {
-            "en": "Interactive 3D visualization for Mensuration. Drag to rotate.",
+            "en": "Interactive 3D visualization for Mensuration: Sector Arc Length, Area & Chord Explorer. Drag to rotate.",
             "ar": null
           }
         }

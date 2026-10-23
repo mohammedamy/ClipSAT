@@ -72,26 +72,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive AP Statistics Exam Format & Study Design Lab",
+          "en": "⊙ Explorer · AP Statistics Inference: Sampling Null Distribution & p-Value",
           "ar": null
         },
-        "canvasId": "exAuto_stats_apsoverview",
+        "canvasId": "apsoverviewExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for AP Statistics Exam Format & Study Design",
+          "en": "AP Statistics Inference: Sampling Null Distribution & p-Value interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_apsoverview_dataBtn",
-          "panelId": "exAuto_stats_apsoverview_dataPanel",
-          "descId": "exAuto_stats_apsoverview_dataDesc",
-          "rowsId": "exAuto_stats_apsoverview_dataRows",
+          "btnId": "apsoverviewExCanvas_dataBtn",
+          "panelId": "apsoverviewExCanvas_dataPanel",
+          "descId": "apsoverviewExCanvas_dataDesc",
+          "rowsId": "apsoverviewExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for AP Statistics Exam Format & Study Design",
+            "en": "Live numerical table for AP Statistics Inference: Sampling Null Distribution & p-Value",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -102,58 +102,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_stats_apsoverview_s0",
+            "id": "apsoverviewExCanvas_s0",
             "label": {
-              "en": "Sample shift <b>Δ₁ =</b>",
+              "en": "Observed Statistic <b>z =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_apsoverview_v0",
+            "min": -3.0,
+            "max": 3.0,
+            "value": 1.8,
+            "step": 0.1,
+            "valueDisplayId": "apsoverviewExCanvas_v0",
             "ariaLabel": {
-              "en": "Sample shift delta 1",
+              "en": "Observed Statistic z =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_stats_apsoverview_s1",
+            "id": "apsoverviewExCanvas_s1",
             "label": {
-              "en": "Tail shift <b>Δ₂ =</b>",
+              "en": "Alpha Cutoff <b>z* =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_apsoverview_v1",
+            "min": 1.28,
+            "max": 2.58,
+            "value": 1.96,
+            "step": 0.02,
+            "valueDisplayId": "apsoverviewExCanvas_v1",
             "ariaLabel": {
-              "en": "Tail shift delta 2",
+              "en": "Alpha Cutoff z* =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_apsoverview_r0",
+            "id": "apsoverviewExCanvas_r0",
             "label": {
-              "en": "Sample Mean x̄",
+              "en": "Two-Sided p-Value",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "13.57"
+            "value": "p = 0.0719"
           },
           {
-            "id": "exAuto_stats_apsoverview_r1",
+            "id": "apsoverviewExCanvas_r1",
             "label": {
-              "en": "Sample Median M",
+              "en": "Significance Threshold α",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "14.0"
+            "value": "α = 0.0500"
+          },
+          {
+            "id": "apsoverviewExCanvas_r2",
+            "label": {
+              "en": "Inference Conclusion",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "Fail to Reject H₀"
           }
-        ]
+        ],
+        "note": {
+          "en": "Simulate how far a sample statistic lies from the null parameter in standard error units, and compare the shaded tail area (p-value) against α.",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

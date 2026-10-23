@@ -86,26 +86,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Kinematics Lab",
+          "en": "⊙ Explorer · SUVAT Velocity–Time Graph: Gradient = a & Area = Displacement s",
           "ar": null
         },
-        "canvasId": "exAuto_calc_asmechanics",
+        "canvasId": "asmechanicsExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Kinematics",
+          "en": "SUVAT Velocity–Time Graph: Gradient = a & Area = Displacement s interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_calc_asmechanics_dataBtn",
-          "panelId": "exAuto_calc_asmechanics_dataPanel",
-          "descId": "exAuto_calc_asmechanics_dataDesc",
-          "rowsId": "exAuto_calc_asmechanics_dataRows",
+          "btnId": "asmechanicsExCanvas_dataBtn",
+          "panelId": "asmechanicsExCanvas_dataPanel",
+          "descId": "asmechanicsExCanvas_dataDesc",
+          "rowsId": "asmechanicsExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Kinematics",
+            "en": "Live numerical table for SUVAT Velocity–Time Graph: Gradient = a & Area = Displacement s",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -116,58 +116,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_calc_asmechanics_s0",
+            "id": "asmechanicsExCanvas_s0",
             "label": {
-              "en": "Tangent point <b>a =</b>",
+              "en": "Initial Velocity <b>u (m/s) =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": 0.0,
+            "max": 6.0,
+            "value": 2.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_calc_asmechanics_v0",
+            "valueDisplayId": "asmechanicsExCanvas_v0",
             "ariaLabel": {
-              "en": "Tangent parameter a",
+              "en": "Initial Velocity u (m/s) =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_calc_asmechanics_s1",
+            "id": "asmechanicsExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>c =</b>",
+              "en": "Acceleration <b>a (m/s²) =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_asmechanics_v1",
+            "min": -1.5,
+            "max": 2.5,
+            "value": 1.2,
+            "step": 0.2,
+            "valueDisplayId": "asmechanicsExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift c",
+              "en": "Acceleration a (m/s²) =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_calc_asmechanics_r0",
+            "id": "asmechanicsExCanvas_r0",
             "label": {
-              "en": "Derivative f'(x₀)",
+              "en": "Final Velocity v = u + aT (T=4s)",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "f'(1.2) = 0.33"
+            "value": "v = 6.80 m/s"
           },
           {
-            "id": "exAuto_calc_asmechanics_r1",
+            "id": "asmechanicsExCanvas_r1",
             "label": {
-              "en": "Definite Integral ∫₀ˣ f(t)dt",
+              "en": "Displacement s = ut + ½at²",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "∫₀ˣ f(t)dt = 0.19"
+            "value": "s = 17.60 m"
+          },
+          {
+            "id": "asmechanicsExCanvas_r2",
+            "label": {
+              "en": "Trapezium Area ½(u+v)T",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "Area = 17.60 m"
           }
-        ]
+        ],
+        "note": {
+          "en": "On a velocity–time graph over T = 4 s, the line gradient equals acceleration a and the shaded area under v(t) equals displacement s.",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

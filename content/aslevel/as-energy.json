@@ -109,26 +109,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Energy, Work &amp; Power Lab",
+          "en": "⊙ Explorer · Work–Energy Principle on an Inclined Plane (PE, KE & Friction)",
           "ar": null
         },
-        "canvasId": "exAuto_quad_asenergy",
+        "canvasId": "asenergyExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Energy, Work &amp; Power",
+          "en": "Work–Energy Principle on an Inclined Plane (PE, KE & Friction) interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_quad_asenergy_dataBtn",
-          "panelId": "exAuto_quad_asenergy_dataPanel",
-          "descId": "exAuto_quad_asenergy_dataDesc",
-          "rowsId": "exAuto_quad_asenergy_dataRows",
+          "btnId": "asenergyExCanvas_dataBtn",
+          "panelId": "asenergyExCanvas_dataPanel",
+          "descId": "asenergyExCanvas_dataDesc",
+          "rowsId": "asenergyExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Energy, Work &amp; Power",
+            "en": "Live numerical table for Work–Energy Principle on an Inclined Plane (PE, KE & Friction)",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -139,58 +139,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_quad_asenergy_s0",
+            "id": "asenergyExCanvas_s0",
             "label": {
-              "en": "Vertex parameter <b>a =</b>",
+              "en": "Slope Angle <b>θ (°) =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_asenergy_v0",
+            "min": 10,
+            "max": 50,
+            "value": 25,
+            "step": 5,
+            "valueDisplayId": "asenergyExCanvas_v0",
             "ariaLabel": {
-              "en": "Vertex parameter a",
+              "en": "Slope Angle θ (°) =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_quad_asenergy_s1",
+            "id": "asenergyExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>b =</b>",
+              "en": "Friction Coefficient <b>μ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_asenergy_v1",
+            "min": 0.0,
+            "max": 0.5,
+            "value": 0.15,
+            "step": 0.05,
+            "valueDisplayId": "asenergyExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift parameter b",
+              "en": "Friction Coefficient μ =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_quad_asenergy_r0",
+            "id": "asenergyExCanvas_r0",
             "label": {
-              "en": "Vertex (h, k)",
+              "en": "Potential Loss ΔPE = mg·d·sin θ",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "(1.0, -1.0)"
+            "value": "ΔPE = 33.8 J"
           },
           {
-            "id": "exAuto_quad_asenergy_r1",
+            "id": "asenergyExCanvas_r1",
             "label": {
-              "en": "Axis of Symmetry",
+              "en": "Thermal Work W_f = μmg·d·cos θ",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "x = 1.0"
+            "value": "W_f = 10.9 J"
+          },
+          {
+            "id": "asenergyExCanvas_r2",
+            "label": {
+              "en": "Final Kinetic Energy KE",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "KE = 22.9 J"
           }
-        ]
+        ],
+        "note": {
+          "en": "As the 2 kg block slides distance d = 4 m down the rough incline, initial gravitational PE converts into kinetic energy KE plus work done against friction W_f.",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

@@ -92,27 +92,27 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Matrices, Linear Layers & Activation Functions Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Matrices, Linear Layers & Activation Functions"
+          "en": "⊙ Explorer · Dense Layer & Two-Neuron ReLU Universal Function Approximator",
+          "ar": "⊙ مستكشف تفاعلي · الطبقات الخطية الكثيفة وتقريب الدوال بتفعيل ReLU"
         },
-        "canvasId": "exAuto_vec_aimatriceslinearlayers",
+        "canvasId": "aimatriceslinearlayersExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Matrices, Linear Layers & Activation Functions",
-          "ar": "مستكشف رياضي تفاعلي لدرس Matrices, Linear Layers & Activation Functions"
+          "en": "Dense Layer & Two-Neuron ReLU Universal Function Approximator interactive mathematical canvas",
+          "ar": "⊙ مستكشف تفاعلي · الطبقات الخطية الكثيفة وتقريب الدوال بتفعيل ReLU لوحة تفاعلية"
         },
         "dataPanel": {
-          "btnId": "exAuto_vec_aimatriceslinearlayers_dataBtn",
-          "panelId": "exAuto_vec_aimatriceslinearlayers_dataPanel",
-          "descId": "exAuto_vec_aimatriceslinearlayers_dataDesc",
-          "rowsId": "exAuto_vec_aimatriceslinearlayers_dataRows",
+          "btnId": "aimatriceslinearlayersExCanvas_dataBtn",
+          "panelId": "aimatriceslinearlayersExCanvas_dataPanel",
+          "descId": "aimatriceslinearlayersExCanvas_dataDesc",
+          "rowsId": "aimatriceslinearlayersExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Matrices, Linear Layers & Activation Functions",
-            "ar": "جدول القيم العددية لدرس Matrices, Linear Layers & Activation Functions"
+            "en": "Live numerical table for Dense Layer & Two-Neuron ReLU Universal Function Approximator",
+            "ar": "جدول القيم العددية لـ ⊙ مستكشف تفاعلي · الطبقات الخطية الكثيفة وتقريب الدوال بتفعيل ReLU"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Parameter / Metric",
+              "ar": "المتغير / المعيار"
             },
             {
               "en": "Value",
@@ -122,66 +122,79 @@
         },
         "controls": [
           {
-            "id": "exAuto_vec_aimatriceslinearlayers_s0",
+            "id": "aimatriceslinearlayersExCanvas_s0",
             "label": {
-              "en": "Component <b>uₓ =</b>",
-              "ar": "المركبة الأفقية <b>uₓ =</b>"
+              "en": "Neuron 1 Slope <b>w₁ =</b>",
+              "ar": "Neuron 1 Slope <b>w₁ =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_vec_aimatriceslinearlayers_v0",
+            "min": 0.5,
+            "max": 3.0,
+            "value": 1.5,
+            "step": 0.25,
+            "valueDisplayId": "aimatriceslinearlayersExCanvas_v0",
             "ariaLabel": {
-              "en": "Horizontal component ux",
-              "ar": "المركبة الأفقية ux"
+              "en": "Neuron 1 Slope w₁ =",
+              "ar": "Neuron 1 Slope w₁ ="
             }
           },
           {
-            "id": "exAuto_vec_aimatriceslinearlayers_s1",
+            "id": "aimatriceslinearlayersExCanvas_s1",
             "label": {
-              "en": "Component <b>uᵧ =</b>",
-              "ar": "المركبة الرأسية <b>uᵧ =</b>"
+              "en": "Neuron 2 Hinge Shift <b>b₂ =</b>",
+              "ar": "Neuron 2 Hinge Shift <b>b₂ =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_vec_aimatriceslinearlayers_v1",
+            "min": -2.5,
+            "max": 2.5,
+            "value": 1.0,
+            "step": 0.25,
+            "valueDisplayId": "aimatriceslinearlayersExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical component uy",
-              "ar": "المركبة الرأسية uy"
+              "en": "Neuron 2 Hinge Shift b₂ =",
+              "ar": "Neuron 2 Hinge Shift b₂ ="
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_vec_aimatriceslinearlayers_r0",
+            "id": "aimatriceslinearlayersExCanvas_r0",
             "label": {
-              "en": "Magnitude |u|",
-              "ar": "المقدار |u|"
+              "en": "Hinge Activation Kinks",
+              "ar": "Hinge Activation Kinks"
             },
             "colorClass": "indigo",
-            "value": "2.24"
+            "value": "x₁ = -0.67, x₂ = 1.00"
           },
           {
-            "id": "exAuto_vec_aimatriceslinearlayers_r1",
+            "id": "aimatriceslinearlayersExCanvas_r1",
             "label": {
-              "en": "Orthogonal Vector v⊥",
-              "ar": "المتجه المتعامد v⊥"
+              "en": "Output h(2) = ReLU(z₁) − ReLU(z₂)",
+              "ar": "Output h(2) = ReLU(z₁) − ReLU(z₂)"
             },
             "colorClass": "amber",
-            "value": "⟨-1.0, 2.0⟩"
+            "value": "h(2) = 2.50"
+          },
+          {
+            "id": "aimatriceslinearlayersExCanvas_r2",
+            "label": {
+              "en": "Active Linear Regime",
+              "ar": "Active Linear Regime"
+            },
+            "colorClass": "teal",
+            "value": "2 Active Hinges"
           }
         ],
+        "note": {
+          "en": "See how a hidden layer combining piecewise-linear ReLU activations max(0, w_i·x + b_i) creates hinged bends capable of approximating nonlinear functions.",
+          "ar": "شاهد كيف تشكل وحدات تفعيل ReLU المتعددة انكسارات خطية قادرة على تقريب الدوال غير الخطية."
+        },
         "canvas3d": {
-          "btnId": "exAuto3dBtn_vec3_aimatriceslinearlayers",
-          "wrapId": "exAuto3dWrap_aimatriceslinearlayers",
-          "hintId": "exAuto3dHint_aimatriceslinearlayers",
-          "btnLabel": "🧊 View Interactive 3D Model",
+          "btnId": "aimatriceslinearlayersExCanvas_3dBtn",
+          "wrapId": "aimatriceslinearlayersExCanvas_3dWrap",
+          "hintId": "aimatriceslinearlayersExCanvas_3dHint",
+          "btnLabel": "🧊 View Dense Layer & Two-Neuron ReLU Universal Function Approximator in 3D",
           "ariaLabel": {
-            "en": "Interactive 3D visualization for Matrices, Linear Layers & Activation Functions. Drag to rotate.",
-            "ar": "عرض ثلاثي الأبعاد تفاعلي لدرس Matrices, Linear Layers & Activation Functions. اسحب للتدوير."
+            "en": "Interactive 3D visualization for Dense Layer & Two-Neuron ReLU Universal Function Approximator. Drag to rotate.",
+            "ar": "عرض ثلاثي الأبعاد تفاعلي لـ ⊙ مستكشف تفاعلي · الطبقات الخطية الكثيفة وتقريب الدوال بتفعيل ReLU. اسحب للتدوير."
           }
         }
       },

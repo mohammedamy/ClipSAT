@@ -92,27 +92,27 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Functions, Modulus & Quadratic Theory Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Functions, Modulus & Quadratic Theory"
+          "en": "⊙ Explorer · Quadratic Discriminant b² − 4ac & Line Tangency Lab",
+          "ar": "⊙ مستكشف تفاعلي · مميز المعادلة التربيعية b² − 4ac وتماس المستقيم والمنحنى"
         },
-        "canvasId": "exAuto_quad_amfunctionsquadratics",
+        "canvasId": "amfunctionsquadraticsExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Functions, Modulus & Quadratic Theory",
-          "ar": "مستكشف رياضي تفاعلي لدرس Functions, Modulus & Quadratic Theory"
+          "en": "Quadratic Discriminant b² − 4ac & Line Tangency Lab interactive mathematical canvas",
+          "ar": "⊙ مستكشف تفاعلي · مميز المعادلة التربيعية b² − 4ac وتماس المستقيم والمنحنى لوحة تفاعلية"
         },
         "dataPanel": {
-          "btnId": "exAuto_quad_amfunctionsquadratics_dataBtn",
-          "panelId": "exAuto_quad_amfunctionsquadratics_dataPanel",
-          "descId": "exAuto_quad_amfunctionsquadratics_dataDesc",
-          "rowsId": "exAuto_quad_amfunctionsquadratics_dataRows",
+          "btnId": "amfunctionsquadraticsExCanvas_dataBtn",
+          "panelId": "amfunctionsquadraticsExCanvas_dataPanel",
+          "descId": "amfunctionsquadraticsExCanvas_dataDesc",
+          "rowsId": "amfunctionsquadraticsExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Functions, Modulus & Quadratic Theory",
-            "ar": "جدول القيم العددية لدرس Functions, Modulus & Quadratic Theory"
+            "en": "Live numerical table for Quadratic Discriminant b² − 4ac & Line Tangency Lab",
+            "ar": "جدول القيم العددية لـ ⊙ مستكشف تفاعلي · مميز المعادلة التربيعية b² − 4ac وتماس المستقيم والمنحنى"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Parameter / Metric",
+              "ar": "المتغير / المعيار"
             },
             {
               "en": "Value",
@@ -122,58 +122,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_quad_amfunctionsquadratics_s0",
+            "id": "amfunctionsquadraticsExCanvas_s0",
             "label": {
-              "en": "Vertex parameter <b>a =</b>",
-              "ar": "معامل الرأس <b>a =</b>"
+              "en": "Line Gradient <b>m =</b>",
+              "ar": "Line Gradient <b>m =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": -3.0,
+            "max": 3.0,
+            "value": 1.5,
             "step": 0.5,
-            "valueDisplayId": "exAuto_quad_amfunctionsquadratics_v0",
+            "valueDisplayId": "amfunctionsquadraticsExCanvas_v0",
             "ariaLabel": {
-              "en": "Vertex parameter a",
-              "ar": "معامل الرأس a"
+              "en": "Line Gradient m =",
+              "ar": "Line Gradient m ="
             }
           },
           {
-            "id": "exAuto_quad_amfunctionsquadratics_s1",
+            "id": "amfunctionsquadraticsExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>b =</b>",
-              "ar": "الإزاحة الرأسية <b>b =</b>"
+              "en": "Line Intercept <b>k =</b>",
+              "ar": "Line Intercept <b>k =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
+            "min": -4.0,
+            "max": 4.0,
+            "value": 0.5,
             "step": 0.5,
-            "valueDisplayId": "exAuto_quad_amfunctionsquadratics_v1",
+            "valueDisplayId": "amfunctionsquadraticsExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift parameter b",
-              "ar": "معامل الإزاحة الرأسية b"
+              "en": "Line Intercept k =",
+              "ar": "Line Intercept k ="
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_quad_amfunctionsquadratics_r0",
+            "id": "amfunctionsquadraticsExCanvas_r0",
             "label": {
-              "en": "Vertex (h, k)",
-              "ar": "رأس القطع (h, k)"
+              "en": "Discriminant Δ of f(x) = mx + k",
+              "ar": "Discriminant Δ of f(x) = mx + k"
             },
             "colorClass": "indigo",
-            "value": "(1.0, -1.0)"
+            "value": "Δ = 12.25"
           },
           {
-            "id": "exAuto_quad_amfunctionsquadratics_r1",
+            "id": "amfunctionsquadraticsExCanvas_r1",
             "label": {
-              "en": "Axis of Symmetry",
-              "ar": "محور التماثل"
+              "en": "Root Nature",
+              "ar": "Root Nature"
             },
             "colorClass": "amber",
-            "value": "x = 1.0"
+            "value": "2 Real Secant Roots"
+          },
+          {
+            "id": "amfunctionsquadraticsExCanvas_r2",
+            "label": {
+              "en": "Intersection Points",
+              "ar": "Intersection Points"
+            },
+            "colorClass": "teal",
+            "value": "x = -1.00, 2.50"
           }
-        ]
+        ],
+        "note": {
+          "en": "Test whether the line y = mx + k intersects y = x² − 2 in two distinct points (Δ > 0), touches as a tangent (Δ = 0), or misses completely (Δ < 0).",
+          "ar": "اختبر تقاطع المستقيم y = mx + k مع القطع المكافئ y = x² − 2 في نقطتين (Δ > 0) أو التماس (Δ = 0) أو عدم التقاطع (Δ < 0)."
+        }
       },
       {
         "kind": "figure",

@@ -125,27 +125,27 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Vectors in Two Dimensions & Relative Motion Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Vectors in Two Dimensions & Relative Motion"
+          "en": "⊙ Explorer · Relative Velocity & River Crossing Vector Triangle",
+          "ar": "⊙ مستكشف تفاعلي · السرعة النسبية ومثلث متجهات عبور النهر"
         },
-        "canvasId": "exAuto_vec_amvectors2d",
+        "canvasId": "amvectors2dExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Vectors in Two Dimensions & Relative Motion",
-          "ar": "مستكشف رياضي تفاعلي لدرس Vectors in Two Dimensions & Relative Motion"
+          "en": "Relative Velocity & River Crossing Vector Triangle interactive mathematical canvas",
+          "ar": "⊙ مستكشف تفاعلي · السرعة النسبية ومثلث متجهات عبور النهر لوحة تفاعلية"
         },
         "dataPanel": {
-          "btnId": "exAuto_vec_amvectors2d_dataBtn",
-          "panelId": "exAuto_vec_amvectors2d_dataPanel",
-          "descId": "exAuto_vec_amvectors2d_dataDesc",
-          "rowsId": "exAuto_vec_amvectors2d_dataRows",
+          "btnId": "amvectors2dExCanvas_dataBtn",
+          "panelId": "amvectors2dExCanvas_dataPanel",
+          "descId": "amvectors2dExCanvas_dataDesc",
+          "rowsId": "amvectors2dExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Vectors in Two Dimensions & Relative Motion",
-            "ar": "جدول القيم العددية لدرس Vectors in Two Dimensions & Relative Motion"
+            "en": "Live numerical table for Relative Velocity & River Crossing Vector Triangle",
+            "ar": "جدول القيم العددية لـ ⊙ مستكشف تفاعلي · السرعة النسبية ومثلث متجهات عبور النهر"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Parameter / Metric",
+              "ar": "المتغير / المعيار"
             },
             {
               "en": "Value",
@@ -155,66 +155,79 @@
         },
         "controls": [
           {
-            "id": "exAuto_vec_amvectors2d_s0",
+            "id": "amvectors2dExCanvas_s0",
             "label": {
-              "en": "Component <b>uₓ =</b>",
-              "ar": "المركبة الأفقية <b>uₓ =</b>"
+              "en": "Boat Speed <b>v_b =</b>",
+              "ar": "Boat Speed <b>v_b =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": 2.0,
+            "max": 6.0,
+            "value": 4.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_vec_amvectors2d_v0",
+            "valueDisplayId": "amvectors2dExCanvas_v0",
             "ariaLabel": {
-              "en": "Horizontal component ux",
-              "ar": "المركبة الأفقية ux"
+              "en": "Boat Speed v_b =",
+              "ar": "Boat Speed v_b ="
             }
           },
           {
-            "id": "exAuto_vec_amvectors2d_s1",
+            "id": "amvectors2dExCanvas_s1",
             "label": {
-              "en": "Component <b>uᵧ =</b>",
-              "ar": "المركبة الرأسية <b>uᵧ =</b>"
+              "en": "River Current <b>v_c =</b>",
+              "ar": "River Current <b>v_c =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
+            "min": -3.0,
+            "max": 3.0,
+            "value": 2.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_vec_amvectors2d_v1",
+            "valueDisplayId": "amvectors2dExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical component uy",
-              "ar": "المركبة الرأسية uy"
+              "en": "River Current v_c =",
+              "ar": "River Current v_c ="
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_vec_amvectors2d_r0",
+            "id": "amvectors2dExCanvas_r0",
             "label": {
-              "en": "Magnitude |u|",
-              "ar": "المقدار |u|"
+              "en": "Resultant Speed |v_res|",
+              "ar": "Resultant Speed |v_res|"
             },
             "colorClass": "indigo",
-            "value": "2.24"
+            "value": "4.47 m/s"
           },
           {
-            "id": "exAuto_vec_amvectors2d_r1",
+            "id": "amvectors2dExCanvas_r1",
             "label": {
-              "en": "Orthogonal Vector v⊥",
-              "ar": "المتجه المتعامد v⊥"
+              "en": "Drift Angle θ",
+              "ar": "Drift Angle θ"
             },
             "colorClass": "amber",
-            "value": "⟨-1.0, 2.0⟩"
+            "value": "26.6°"
+          },
+          {
+            "id": "amvectors2dExCanvas_r2",
+            "label": {
+              "en": "Resultant Vector ⟨v_c, v_b⟩",
+              "ar": "Resultant Vector ⟨v_c, v_b⟩"
+            },
+            "colorClass": "teal",
+            "value": "⟨2.0, 4.0⟩"
           }
         ],
+        "note": {
+          "en": "The boat heads perpendicular to the bank at v_b (indigo) while the river current pushes horizontally at v_c (amber), producing the resultant ground velocity v_res.",
+          "ar": "يتجه القارب عمودياً بسرعة v_b بينما يدفع تيار النهر أفقياً بسرعة v_c لتكوين متجه السرعة المحصلة v_res."
+        },
         "canvas3d": {
-          "btnId": "exAuto3dBtn_vec3_amvectors2d",
-          "wrapId": "exAuto3dWrap_amvectors2d",
-          "hintId": "exAuto3dHint_amvectors2d",
-          "btnLabel": "🧊 View Interactive 3D Model",
+          "btnId": "amvectors2dExCanvas_3dBtn",
+          "wrapId": "amvectors2dExCanvas_3dWrap",
+          "hintId": "amvectors2dExCanvas_3dHint",
+          "btnLabel": "🧊 View Relative Velocity & River Crossing Vector Triangle in 3D",
           "ariaLabel": {
-            "en": "Interactive 3D visualization for Vectors in Two Dimensions & Relative Motion. Drag to rotate.",
-            "ar": "عرض ثلاثي الأبعاد تفاعلي لدرس Vectors in Two Dimensions & Relative Motion. اسحب للتدوير."
+            "en": "Interactive 3D visualization for Relative Velocity & River Crossing Vector Triangle. Drag to rotate.",
+            "ar": "عرض ثلاثي الأبعاد تفاعلي لـ ⊙ مستكشف تفاعلي · السرعة النسبية ومثلث متجهات عبور النهر. اسحب للتدوير."
           }
         }
       },

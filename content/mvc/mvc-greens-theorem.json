@@ -42,26 +42,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Green's Theorem Lab",
+          "en": "⊙ Explorer · Green's Theorem: Boundary Circulation ∮ F·dr = ∬ (∂Q/∂x − ∂P/∂y) dA",
           "ar": null
         },
-        "canvasId": "exAuto_geo_mvcgreenstheorem",
+        "canvasId": "mvcgreenstheoremExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Green's Theorem",
+          "en": "Green's Theorem: Boundary Circulation ∮ F·dr = ∬ (∂Q/∂x − ∂P/∂y) dA interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_geo_mvcgreenstheorem_dataBtn",
-          "panelId": "exAuto_geo_mvcgreenstheorem_dataPanel",
-          "descId": "exAuto_geo_mvcgreenstheorem_dataDesc",
-          "rowsId": "exAuto_geo_mvcgreenstheorem_dataRows",
+          "btnId": "mvcgreenstheoremExCanvas_dataBtn",
+          "panelId": "mvcgreenstheoremExCanvas_dataPanel",
+          "descId": "mvcgreenstheoremExCanvas_dataDesc",
+          "rowsId": "mvcgreenstheoremExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Green's Theorem",
+            "en": "Live numerical table for Green's Theorem: Boundary Circulation ∮ F·dr = ∬ (∂Q/∂x − ∂P/∂y) dA",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -72,65 +72,78 @@
         },
         "controls": [
           {
-            "id": "exAuto_geo_mvcgreenstheorem_s0",
+            "id": "mvcgreenstheoremExCanvas_s0",
             "label": {
-              "en": "Radius <b>r =</b>",
+              "en": "Region Radius <b>R =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_geo_mvcgreenstheorem_v0",
+            "min": 1.0,
+            "max": 3.5,
+            "value": 2.5,
+            "step": 0.25,
+            "valueDisplayId": "mvcgreenstheoremExCanvas_v0",
             "ariaLabel": {
-              "en": "Circle radius r",
+              "en": "Region Radius R =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_geo_mvcgreenstheorem_s1",
+            "id": "mvcgreenstheoremExCanvas_s1",
             "label": {
-              "en": "Angle scale <b>k =</b>",
+              "en": "Vorticity Shear <b>ω =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_geo_mvcgreenstheorem_v1",
+            "min": 0.5,
+            "max": 2.5,
+            "value": 1.2,
+            "step": 0.25,
+            "valueDisplayId": "mvcgreenstheoremExCanvas_v1",
             "ariaLabel": {
-              "en": "Central angle factor k",
+              "en": "Vorticity Shear ω =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_geo_mvcgreenstheorem_r0",
+            "id": "mvcgreenstheoremExCanvas_r0",
             "label": {
-              "en": "Arc Length s = rθ",
+              "en": "Scalar Curl ∂Q/∂x − ∂P/∂y = 2ω",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "1.05"
+            "value": "2ω = 2.40"
           },
           {
-            "id": "exAuto_geo_mvcgreenstheorem_r1",
+            "id": "mvcgreenstheoremExCanvas_r1",
             "label": {
-              "en": "Sector Area ½r²θ",
+              "en": "Disk Area πR²",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "1.05"
+            "value": "πR² = 19.63"
+          },
+          {
+            "id": "mvcgreenstheoremExCanvas_r2",
+            "label": {
+              "en": "Total Circulation ∮_C F·dr = 2ωπR²",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "∮ F·dr = 47.12"
           }
         ],
+        "note": {
+          "en": "For vector field F(x, y) = ⟨−ωy, ωx⟩ on disk D of radius R, integrating microscopic curl 2ω over the interior equals the counterclockwise line integral ∮_C F·dr around ∂D.",
+          "ar": null
+        },
         "canvas3d": {
-          "btnId": "exAuto3dBtn_solid_mvcgreenstheorem",
-          "wrapId": "exAuto3dWrap_mvcgreenstheorem",
-          "hintId": "exAuto3dHint_mvcgreenstheorem",
-          "btnLabel": "🧊 View Interactive 3D Model",
+          "btnId": "mvcgreenstheoremExCanvas_3dBtn",
+          "wrapId": "mvcgreenstheoremExCanvas_3dWrap",
+          "hintId": "mvcgreenstheoremExCanvas_3dHint",
+          "btnLabel": "🧊 View Green's Theorem in 3D",
           "ariaLabel": {
-            "en": "Interactive 3D visualization for Green's Theorem. Drag to rotate.",
+            "en": "Interactive 3D visualization for Green's Theorem: Boundary Circulation ∮ F·dr = ∬ (∂Q/∂x − ∂P/∂y) dA. Drag to rotate.",
             "ar": null
           }
         }

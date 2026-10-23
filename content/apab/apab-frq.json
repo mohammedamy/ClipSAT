@@ -69,26 +69,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive AP Calculus AB Free-Response Questions (FRQs) Lab",
+          "en": "⊙ Explorer · Rate-In / Rate-Out Accumulation FRQ Lab ∫(R_in − R_out)dt",
           "ar": null
         },
-        "canvasId": "exAuto_calc_apabfrq",
+        "canvasId": "apabfrqExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for AP Calculus AB Free-Response Questions (FRQs)",
+          "en": "Rate-In / Rate-Out Accumulation FRQ Lab ∫(R_in − R_out)dt interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_calc_apabfrq_dataBtn",
-          "panelId": "exAuto_calc_apabfrq_dataPanel",
-          "descId": "exAuto_calc_apabfrq_dataDesc",
-          "rowsId": "exAuto_calc_apabfrq_dataRows",
+          "btnId": "apabfrqExCanvas_dataBtn",
+          "panelId": "apabfrqExCanvas_dataPanel",
+          "descId": "apabfrqExCanvas_dataDesc",
+          "rowsId": "apabfrqExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for AP Calculus AB Free-Response Questions (FRQs)",
+            "en": "Live numerical table for Rate-In / Rate-Out Accumulation FRQ Lab ∫(R_in − R_out)dt",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -99,58 +99,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_calc_apabfrq_s0",
+            "id": "apabfrqExCanvas_s0",
             "label": {
-              "en": "Tangent point <b>a =</b>",
+              "en": "Peak Inflow Rate <b>A =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": 2.0,
+            "max": 6.0,
+            "value": 4.5,
             "step": 0.5,
-            "valueDisplayId": "exAuto_calc_apabfrq_v0",
+            "valueDisplayId": "apabfrqExCanvas_v0",
             "ariaLabel": {
-              "en": "Tangent parameter a",
+              "en": "Peak Inflow Rate A =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_calc_apabfrq_s1",
+            "id": "apabfrqExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>c =</b>",
+              "en": "Constant Outflow <b>R_out =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_apabfrq_v1",
+            "min": 1.0,
+            "max": 4.5,
+            "value": 2.5,
+            "step": 0.25,
+            "valueDisplayId": "apabfrqExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift c",
+              "en": "Constant Outflow R_out =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_calc_apabfrq_r0",
+            "id": "apabfrqExCanvas_r0",
             "label": {
-              "en": "Derivative f'(x₀)",
+              "en": "Net Change ∫₀⁶ (R_in − R_out) dt",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "f'(1.2) = 0.33"
+            "value": "2.19 units"
           },
           {
-            "id": "exAuto_calc_apabfrq_r1",
+            "id": "apabfrqExCanvas_r1",
             "label": {
-              "en": "Definite Integral ∫₀ˣ f(t)dt",
+              "en": "Critical Time R_in(t) = R_out",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "∫₀ˣ f(t)dt = 0.19"
+            "value": "t = 4.88 hr"
+          },
+          {
+            "id": "apabfrqExCanvas_r2",
+            "label": {
+              "en": "Max Accumulation Amount",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "Peak at t = 4.88"
           }
-        ]
+        ],
+        "note": {
+          "en": "In AP FRQ #1, total amount A(t) increases while inflow R_in(t) > R_out (indigo shaded) and decreases when R_in(t) < R_out (amber shaded), peaking where R_in = R_out.",
+          "ar": null
+        }
       },
       {
         "kind": "figure",

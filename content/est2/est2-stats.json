@@ -75,26 +75,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Statistics & Probability Lab",
+          "en": "⊙ Explorer · Linear Data Transformation Y = aX + b: Mean & Std Dev",
           "ar": null
         },
-        "canvasId": "exAuto_stats_est2stats",
+        "canvasId": "est2statsExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Statistics & Probability",
+          "en": "Linear Data Transformation Y = aX + b: Mean & Std Dev interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_est2stats_dataBtn",
-          "panelId": "exAuto_stats_est2stats_dataPanel",
-          "descId": "exAuto_stats_est2stats_dataDesc",
-          "rowsId": "exAuto_stats_est2stats_dataRows",
+          "btnId": "est2statsExCanvas_dataBtn",
+          "panelId": "est2statsExCanvas_dataPanel",
+          "descId": "est2statsExCanvas_dataDesc",
+          "rowsId": "est2statsExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Statistics & Probability",
+            "en": "Live numerical table for Linear Data Transformation Y = aX + b: Mean & Std Dev",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -105,58 +105,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_stats_est2stats_s0",
+            "id": "est2statsExCanvas_s0",
             "label": {
-              "en": "Sample shift <b>Δ₁ =</b>",
+              "en": "Scale Multiplier <b>a =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_est2stats_v0",
+            "min": 0.5,
+            "max": 2.5,
+            "value": 1.5,
+            "step": 0.25,
+            "valueDisplayId": "est2statsExCanvas_v0",
             "ariaLabel": {
-              "en": "Sample shift delta 1",
+              "en": "Scale Multiplier a =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_stats_est2stats_s1",
+            "id": "est2statsExCanvas_s1",
             "label": {
-              "en": "Tail shift <b>Δ₂ =</b>",
+              "en": "Shift Constant <b>b =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
+            "min": -3.0,
+            "max": 3.0,
+            "value": 2.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_stats_est2stats_v1",
+            "valueDisplayId": "est2statsExCanvas_v1",
             "ariaLabel": {
-              "en": "Tail shift delta 2",
+              "en": "Shift Constant b =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_est2stats_r0",
+            "id": "est2statsExCanvas_r0",
             "label": {
-              "en": "Sample Mean x̄",
+              "en": "Transformed Mean μ_Y = a·μ_X + b",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "13.57"
+            "value": "μ_Y = 2.00"
           },
           {
-            "id": "exAuto_stats_est2stats_r1",
+            "id": "est2statsExCanvas_r1",
             "label": {
-              "en": "Sample Median M",
+              "en": "Transformed Std Dev σ_Y = |a|·σ_X",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "14.0"
+            "value": "σ_Y = 2.25"
+          },
+          {
+            "id": "est2statsExCanvas_r2",
+            "label": {
+              "en": "Transformed Range",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "Span = 6.00"
           }
-        ]
+        ],
+        "note": {
+          "en": "Compare original data points X (top row) with transformed data Y = aX + b (bottom row). Shifting by b moves the mean μ_Y but leaves spread σ_Y unchanged; scaling by a multiplies both!",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

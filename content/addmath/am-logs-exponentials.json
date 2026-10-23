@@ -124,27 +124,27 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Logarithms, Exponentials & Straight-Line Reduction Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Logarithms, Exponentials & Straight-Line Reduction"
+          "en": "⊙ Explorer · Straight-Line Law: Transforming y = a·b^x to lg y = x·lg b + lg a",
+          "ar": "⊙ مستكشف تفاعلي · تحويل العلاقات الأسية y = a·b^x إلى خط مستقيم lg y = x·lg b + lg a"
         },
-        "canvasId": "exAuto_exp_amlogsexponentials",
+        "canvasId": "amlogsexponentialsExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Logarithms, Exponentials & Straight-Line Reduction",
-          "ar": "مستكشف رياضي تفاعلي لدرس Logarithms, Exponentials & Straight-Line Reduction"
+          "en": "Straight-Line Law: Transforming y = a·b^x to lg y = x·lg b + lg a interactive mathematical canvas",
+          "ar": "⊙ مستكشف تفاعلي · تحويل العلاقات الأسية y = a·b^x إلى خط مستقيم lg y = x·lg b + lg a لوحة تفاعلية"
         },
         "dataPanel": {
-          "btnId": "exAuto_exp_amlogsexponentials_dataBtn",
-          "panelId": "exAuto_exp_amlogsexponentials_dataPanel",
-          "descId": "exAuto_exp_amlogsexponentials_dataDesc",
-          "rowsId": "exAuto_exp_amlogsexponentials_dataRows",
+          "btnId": "amlogsexponentialsExCanvas_dataBtn",
+          "panelId": "amlogsexponentialsExCanvas_dataPanel",
+          "descId": "amlogsexponentialsExCanvas_dataDesc",
+          "rowsId": "amlogsexponentialsExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Logarithms, Exponentials & Straight-Line Reduction",
-            "ar": "جدول القيم العددية لدرس Logarithms, Exponentials & Straight-Line Reduction"
+            "en": "Live numerical table for Straight-Line Law: Transforming y = a·b^x to lg y = x·lg b + lg a",
+            "ar": "جدول القيم العددية لـ ⊙ مستكشف تفاعلي · تحويل العلاقات الأسية y = a·b^x إلى خط مستقيم lg y = x·lg b + lg a"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Parameter / Metric",
+              "ar": "المتغير / المعيار"
             },
             {
               "en": "Value",
@@ -154,58 +154,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_exp_amlogsexponentials_s0",
+            "id": "amlogsexponentialsExCanvas_s0",
             "label": {
-              "en": "Growth factor <b>a =</b>",
-              "ar": "معامل النمو <b>a =</b>"
+              "en": "Initial Coefficient <b>a =</b>",
+              "ar": "Initial Coefficient <b>a =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": 1.0,
+            "max": 5.0,
+            "value": 2.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_exp_amlogsexponentials_v0",
+            "valueDisplayId": "amlogsexponentialsExCanvas_v0",
             "ariaLabel": {
-              "en": "Growth parameter a",
-              "ar": "معامل النمو a"
+              "en": "Initial Coefficient a =",
+              "ar": "Initial Coefficient a ="
             }
           },
           {
-            "id": "exAuto_exp_amlogsexponentials_s1",
+            "id": "amlogsexponentialsExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>k =</b>",
-              "ar": "الإزاحة الرأسية <b>k =</b>"
+              "en": "Base Factor <b>b =</b>",
+              "ar": "Base Factor <b>b =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_exp_amlogsexponentials_v1",
+            "min": 1.2,
+            "max": 2.6,
+            "value": 1.8,
+            "step": 0.2,
+            "valueDisplayId": "amlogsexponentialsExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift k",
-              "ar": "الإزاحة الرأسية k"
+              "en": "Base Factor b =",
+              "ar": "Base Factor b ="
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_exp_amlogsexponentials_r0",
+            "id": "amlogsexponentialsExCanvas_r0",
             "label": {
-              "en": "Effective Base b",
-              "ar": "الأساس الفعلي b"
+              "en": "Linearized Intercept c = lg a",
+              "ar": "Linearized Intercept c = lg a"
             },
             "colorClass": "indigo",
-            "value": "b = 2.00"
+            "value": "c = 0.301"
           },
           {
-            "id": "exAuto_exp_amlogsexponentials_r1",
+            "id": "amlogsexponentialsExCanvas_r1",
             "label": {
-              "en": "y-Intercept (0, y₀)",
-              "ar": "المقطع الصادي (0, y₀)"
+              "en": "Linearized Gradient m = lg b",
+              "ar": "Linearized Gradient m = lg b"
             },
             "colorClass": "amber",
-            "value": "(0, 0.50)"
+            "value": "m = 0.255"
+          },
+          {
+            "id": "amlogsexponentialsExCanvas_r2",
+            "label": {
+              "en": "Value y(3) = a·b³",
+              "ar": "Value y(3) = a·b³"
+            },
+            "colorClass": "teal",
+            "value": "y(3) = 11.66"
           }
-        ]
+        ],
+        "note": {
+          "en": "Compare the curved exponential graph y = a·b^x (indigo) with its straight-line reduction Y = mX + c (amber), where Y = ln(y), gradient m = ln(b), and intercept c = ln(a).",
+          "ar": "قارن بين المنحنى الأسي y = a·b^x (باللون النيلي) والصورة الخطية المختزلة Y = mX + c (باللون الكهرماني)."
+        }
       },
       {
         "kind": "figure",

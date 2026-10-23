@@ -42,26 +42,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Triple Integrals & Cylindrical/Spherical Coordinates Lab",
+          "en": "⊙ Explorer · Spherical Coordinates (ρ, φ, θ) Cone Wedge & Jacobian ρ² sin φ",
           "ar": null
         },
-        "canvasId": "exAuto_geo_mvctripleintegrals",
+        "canvasId": "mvctripleintegralsExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Triple Integrals & Cylindrical/Spherical Coordinates",
+          "en": "Spherical Coordinates (ρ, φ, θ) Cone Wedge & Jacobian ρ² sin φ interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_geo_mvctripleintegrals_dataBtn",
-          "panelId": "exAuto_geo_mvctripleintegrals_dataPanel",
-          "descId": "exAuto_geo_mvctripleintegrals_dataDesc",
-          "rowsId": "exAuto_geo_mvctripleintegrals_dataRows",
+          "btnId": "mvctripleintegralsExCanvas_dataBtn",
+          "panelId": "mvctripleintegralsExCanvas_dataPanel",
+          "descId": "mvctripleintegralsExCanvas_dataDesc",
+          "rowsId": "mvctripleintegralsExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Triple Integrals & Cylindrical/Spherical Coordinates",
+            "en": "Live numerical table for Spherical Coordinates (ρ, φ, θ) Cone Wedge & Jacobian ρ² sin φ",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -72,65 +72,78 @@
         },
         "controls": [
           {
-            "id": "exAuto_geo_mvctripleintegrals_s0",
+            "id": "mvctripleintegralsExCanvas_s0",
             "label": {
-              "en": "Radius <b>r =</b>",
+              "en": "Spherical Radius <b>ρ₀ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_geo_mvctripleintegrals_v0",
+            "min": 1.5,
+            "max": 4.0,
+            "value": 3.0,
+            "step": 0.25,
+            "valueDisplayId": "mvctripleintegralsExCanvas_v0",
             "ariaLabel": {
-              "en": "Circle radius r",
+              "en": "Spherical Radius ρ₀ =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_geo_mvctripleintegrals_s1",
+            "id": "mvctripleintegralsExCanvas_s1",
             "label": {
-              "en": "Angle scale <b>k =</b>",
+              "en": "Cone Half-Angle <b>φ₀ (°) =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_geo_mvctripleintegrals_v1",
+            "min": 15,
+            "max": 90,
+            "value": 45,
+            "step": 5,
+            "valueDisplayId": "mvctripleintegralsExCanvas_v1",
             "ariaLabel": {
-              "en": "Central angle factor k",
+              "en": "Cone Half-Angle φ₀ (°) =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_geo_mvctripleintegrals_r0",
+            "id": "mvctripleintegralsExCanvas_r0",
             "label": {
-              "en": "Arc Length s = rθ",
+              "en": "Spherical Cap Height z = ρ₀ cos φ₀",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "1.05"
+            "value": "z = 2.12"
           },
           {
-            "id": "exAuto_geo_mvctripleintegrals_r1",
+            "id": "mvctripleintegralsExCanvas_r1",
             "label": {
-              "en": "Sector Area ½r²θ",
+              "en": "Jacobian Factor ρ₀² sin φ₀",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "1.05"
+            "value": "J = 6.36"
+          },
+          {
+            "id": "mvctripleintegralsExCanvas_r2",
+            "label": {
+              "en": "Ice-Cream Cone Volume ⅔πρ₀³(1−cos φ₀)",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "V = 16.56"
           }
         ],
+        "note": {
+          "en": "Visualize the meridional (r, z) cross-section of a spherical ice-cream cone 0 ≤ ρ ≤ ρ₀, 0 ≤ φ ≤ φ₀, whose triple integral uses dV = ρ² sin φ dρ dφ dθ.",
+          "ar": null
+        },
         "canvas3d": {
-          "btnId": "exAuto3dBtn_solid_mvctripleintegrals",
-          "wrapId": "exAuto3dWrap_mvctripleintegrals",
-          "hintId": "exAuto3dHint_mvctripleintegrals",
-          "btnLabel": "🧊 View Interactive 3D Model",
+          "btnId": "mvctripleintegralsExCanvas_3dBtn",
+          "wrapId": "mvctripleintegralsExCanvas_3dWrap",
+          "hintId": "mvctripleintegralsExCanvas_3dHint",
+          "btnLabel": "🧊 View Spherical Coordinates (ρ, φ, θ) Cone Wedge & Jacobian ρ² sin φ in 3D",
           "ariaLabel": {
-            "en": "Interactive 3D visualization for Triple Integrals & Cylindrical/Spherical Coordinates. Drag to rotate.",
+            "en": "Interactive 3D visualization for Spherical Coordinates (ρ, φ, θ) Cone Wedge & Jacobian ρ² sin φ. Drag to rotate.",
             "ar": null
           }
         }

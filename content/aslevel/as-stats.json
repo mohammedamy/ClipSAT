@@ -75,26 +75,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Statistics &amp; Probability Lab",
+          "en": "⊙ Explorer · Two-Event Probability Venn Diagram & Conditional P(A | B)",
           "ar": null
         },
-        "canvasId": "exAuto_stats_asstats",
+        "canvasId": "asstatsExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Statistics &amp; Probability",
+          "en": "Two-Event Probability Venn Diagram & Conditional P(A | B) interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_asstats_dataBtn",
-          "panelId": "exAuto_stats_asstats_dataPanel",
-          "descId": "exAuto_stats_asstats_dataDesc",
-          "rowsId": "exAuto_stats_asstats_dataRows",
+          "btnId": "asstatsExCanvas_dataBtn",
+          "panelId": "asstatsExCanvas_dataPanel",
+          "descId": "asstatsExCanvas_dataDesc",
+          "rowsId": "asstatsExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Statistics &amp; Probability",
+            "en": "Live numerical table for Two-Event Probability Venn Diagram & Conditional P(A | B)",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -105,58 +105,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_stats_asstats_s0",
+            "id": "asstatsExCanvas_s0",
             "label": {
-              "en": "Sample shift <b>Δ₁ =</b>",
+              "en": "Probability <b>P(A) =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_asstats_v0",
+            "min": 0.2,
+            "max": 0.7,
+            "value": 0.45,
+            "step": 0.05,
+            "valueDisplayId": "asstatsExCanvas_v0",
             "ariaLabel": {
-              "en": "Sample shift delta 1",
+              "en": "Probability P(A) =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_stats_asstats_s1",
+            "id": "asstatsExCanvas_s1",
             "label": {
-              "en": "Tail shift <b>Δ₂ =</b>",
+              "en": "Overlap <b>P(A ∩ B) =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_asstats_v1",
+            "min": 0.05,
+            "max": 0.4,
+            "value": 0.18,
+            "step": 0.05,
+            "valueDisplayId": "asstatsExCanvas_v1",
             "ariaLabel": {
-              "en": "Tail shift delta 2",
+              "en": "Overlap P(A ∩ B) =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_asstats_r0",
+            "id": "asstatsExCanvas_r0",
             "label": {
-              "en": "Sample Mean x̄",
+              "en": "Union P(A ∪ B) = P(A)+P(B)−P(A∩B)",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "13.57"
+            "value": "0.67"
           },
           {
-            "id": "exAuto_stats_asstats_r1",
+            "id": "asstatsExCanvas_r1",
             "label": {
-              "en": "Sample Median M",
+              "en": "Conditional P(A | B) = P(A∩B)/P(B)",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "14.0"
+            "value": "0.45"
+          },
+          {
+            "id": "asstatsExCanvas_r2",
+            "label": {
+              "en": "Independence Check P(A)·P(B)",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "P(A)P(B) = 0.18"
           }
-        ]
+        ],
+        "note": {
+          "en": "Explore the addition law P(A ∪ B) = P(A) + P(B) − P(A ∩ B) (with fixed P(B) = 0.40) and check whether P(A ∩ B) = P(A)P(B).",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

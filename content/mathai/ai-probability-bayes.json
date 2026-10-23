@@ -80,27 +80,27 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Conditional Probability, Bayes' Rule & Classifiers Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Conditional Probability, Bayes' Rule & Classifiers"
+          "en": "⊙ Explorer · Bayes' Theorem Classifier: Prior Base Rate vs. Posterior P(C₁ | +)",
+          "ar": "⊙ مستكشف تفاعلي · مصنف نظرية بايز: الاحتمال القبلي مقابل الاحتمال البعدي P(C₁ | +)"
         },
-        "canvasId": "exAuto_stats_aiprobabilitybayes",
+        "canvasId": "aiprobabilitybayesExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Conditional Probability, Bayes' Rule & Classifiers",
-          "ar": "مستكشف رياضي تفاعلي لدرس Conditional Probability, Bayes' Rule & Classifiers"
+          "en": "Bayes' Theorem Classifier: Prior Base Rate vs. Posterior P(C₁ | +) interactive mathematical canvas",
+          "ar": "⊙ مستكشف تفاعلي · مصنف نظرية بايز: الاحتمال القبلي مقابل الاحتمال البعدي P(C₁ | +) لوحة تفاعلية"
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_aiprobabilitybayes_dataBtn",
-          "panelId": "exAuto_stats_aiprobabilitybayes_dataPanel",
-          "descId": "exAuto_stats_aiprobabilitybayes_dataDesc",
-          "rowsId": "exAuto_stats_aiprobabilitybayes_dataRows",
+          "btnId": "aiprobabilitybayesExCanvas_dataBtn",
+          "panelId": "aiprobabilitybayesExCanvas_dataPanel",
+          "descId": "aiprobabilitybayesExCanvas_dataDesc",
+          "rowsId": "aiprobabilitybayesExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Conditional Probability, Bayes' Rule & Classifiers",
-            "ar": "جدول القيم العددية لدرس Conditional Probability, Bayes' Rule & Classifiers"
+            "en": "Live numerical table for Bayes' Theorem Classifier: Prior Base Rate vs. Posterior P(C₁ | +)",
+            "ar": "جدول القيم العددية لـ ⊙ مستكشف تفاعلي · مصنف نظرية بايز: الاحتمال القبلي مقابل الاحتمال البعدي P(C₁ | +)"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Parameter / Metric",
+              "ar": "المتغير / المعيار"
             },
             {
               "en": "Value",
@@ -110,58 +110,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_stats_aiprobabilitybayes_s0",
+            "id": "aiprobabilitybayesExCanvas_s0",
             "label": {
-              "en": "Sample shift <b>Δ₁ =</b>",
-              "ar": "إزاحة العينة <b>Δ₁ =</b>"
+              "en": "Prior Base Rate <b>P(C₁) =</b>",
+              "ar": "Prior Base Rate <b>P(C₁) =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_aiprobabilitybayes_v0",
+            "min": 0.05,
+            "max": 0.8,
+            "value": 0.2,
+            "step": 0.05,
+            "valueDisplayId": "aiprobabilitybayesExCanvas_v0",
             "ariaLabel": {
-              "en": "Sample shift delta 1",
-              "ar": "إزاحة العينة 1"
+              "en": "Prior Base Rate P(C₁) =",
+              "ar": "Prior Base Rate P(C₁) ="
             }
           },
           {
-            "id": "exAuto_stats_aiprobabilitybayes_s1",
+            "id": "aiprobabilitybayesExCanvas_s1",
             "label": {
-              "en": "Tail shift <b>Δ₂ =</b>",
-              "ar": "إزاحة الطرف <b>Δ₂ =</b>"
+              "en": "False Positive Rate <b>P(+ | C₀) =</b>",
+              "ar": "False Positive Rate <b>P(+ | C₀) =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_aiprobabilitybayes_v1",
+            "min": 0.05,
+            "max": 0.4,
+            "value": 0.15,
+            "step": 0.05,
+            "valueDisplayId": "aiprobabilitybayesExCanvas_v1",
             "ariaLabel": {
-              "en": "Tail shift delta 2",
-              "ar": "إزاحة الطرف 2"
+              "en": "False Positive Rate P(+ | C₀) =",
+              "ar": "False Positive Rate P(+ | C₀) ="
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_aiprobabilitybayes_r0",
+            "id": "aiprobabilitybayesExCanvas_r0",
             "label": {
-              "en": "Sample Mean x̄",
-              "ar": "المتوسط الحسابي x̄"
+              "en": "Evidence Marginal P(+)",
+              "ar": "Evidence Marginal P(+)"
             },
             "colorClass": "indigo",
-            "value": "13.57"
+            "value": "P(+) = 0.300"
           },
           {
-            "id": "exAuto_stats_aiprobabilitybayes_r1",
+            "id": "aiprobabilitybayesExCanvas_r1",
             "label": {
-              "en": "Sample Median M",
-              "ar": "الوسيط M"
+              "en": "Posterior Precision P(C₁ | +)",
+              "ar": "Posterior Precision P(C₁ | +)"
             },
             "colorClass": "amber",
-            "value": "14.0"
+            "value": "P(C₁|+) = 60.0%"
+          },
+          {
+            "id": "aiprobabilitybayesExCanvas_r2",
+            "label": {
+              "en": "Bayes Lift P(C₁|+) / P(C₁)",
+              "ar": "Bayes Lift P(C₁|+) / P(C₁)"
+            },
+            "colorClass": "teal",
+            "value": "3.00× Lift"
           }
-        ]
+        ],
+        "note": {
+          "en": "With fixed sensitivity P(+ | C₁) = 0.90, see how a low base rate P(C₁) or high false-positive rate P(+ | C₀) dramatically reduces the posterior probability P(C₁ | +).",
+          "ar": "لاحظ كيف يؤثر معدل الانتشار الأساسي P(C₁) ومعدل الإيجابيات الكاذبة P(+ | C₀) على الدقة البعدية P(C₁ | +)."
+        }
       },
       {
         "kind": "figure",

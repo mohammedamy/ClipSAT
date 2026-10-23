@@ -87,26 +87,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Advanced Number Theory Lab",
+          "en": "⊙ Explorer · Euclidean GCD Tile Decomposition & LCM Visualizer",
           "ar": null
         },
-        "canvasId": "exAuto_quad_act2numbers",
+        "canvasId": "act2numbersExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Advanced Number Theory",
+          "en": "Euclidean GCD Tile Decomposition & LCM Visualizer interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_quad_act2numbers_dataBtn",
-          "panelId": "exAuto_quad_act2numbers_dataPanel",
-          "descId": "exAuto_quad_act2numbers_dataDesc",
-          "rowsId": "exAuto_quad_act2numbers_dataRows",
+          "btnId": "act2numbersExCanvas_dataBtn",
+          "panelId": "act2numbersExCanvas_dataPanel",
+          "descId": "act2numbersExCanvas_dataDesc",
+          "rowsId": "act2numbersExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Advanced Number Theory",
+            "en": "Live numerical table for Euclidean GCD Tile Decomposition & LCM Visualizer",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -117,58 +117,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_quad_act2numbers_s0",
+            "id": "act2numbersExCanvas_s0",
             "label": {
-              "en": "Vertex parameter <b>a =</b>",
+              "en": "First Integer <b>a =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_act2numbers_v0",
+            "min": 6,
+            "max": 48,
+            "value": 36,
+            "step": 2,
+            "valueDisplayId": "act2numbersExCanvas_v0",
             "ariaLabel": {
-              "en": "Vertex parameter a",
+              "en": "First Integer a =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_quad_act2numbers_s1",
+            "id": "act2numbersExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>b =</b>",
+              "en": "Second Integer <b>b =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_act2numbers_v1",
+            "min": 6,
+            "max": 48,
+            "value": 24,
+            "step": 2,
+            "valueDisplayId": "act2numbersExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift parameter b",
+              "en": "Second Integer b =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_quad_act2numbers_r0",
+            "id": "act2numbersExCanvas_r0",
             "label": {
-              "en": "Vertex (h, k)",
+              "en": "Greatest Common Divisor gcd(a,b)",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "(1.0, -1.0)"
+            "value": "gcd = 12"
           },
           {
-            "id": "exAuto_quad_act2numbers_r1",
+            "id": "act2numbersExCanvas_r1",
             "label": {
-              "en": "Axis of Symmetry",
+              "en": "Least Common Multiple lcm(a,b)",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "x = 1.0"
+            "value": "lcm = 72"
+          },
+          {
+            "id": "act2numbersExCanvas_r2",
+            "label": {
+              "en": "Euclidean Tile Squares",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "Side = 12 units"
           }
-        ]
+        ],
+        "note": {
+          "en": "The a × b rectangle is partitioned into largest possible squares via Euclid's algorithm; the side length of the final square is gcd(a, b).",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

@@ -82,26 +82,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Advanced Trigonometry Lab",
+          "en": "⊙ Explorer · Harmonic Form a·cos θ + b·sin θ = R·cos(θ − α)",
           "ar": null
         },
-        "canvasId": "exAuto_trig_a2ltrig",
+        "canvasId": "a2ltrigExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Advanced Trigonometry",
+          "en": "Harmonic Form a·cos θ + b·sin θ = R·cos(θ − α) interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_trig_a2ltrig_dataBtn",
-          "panelId": "exAuto_trig_a2ltrig_dataPanel",
-          "descId": "exAuto_trig_a2ltrig_dataDesc",
-          "rowsId": "exAuto_trig_a2ltrig_dataRows",
+          "btnId": "a2ltrigExCanvas_dataBtn",
+          "panelId": "a2ltrigExCanvas_dataPanel",
+          "descId": "a2ltrigExCanvas_dataDesc",
+          "rowsId": "a2ltrigExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Advanced Trigonometry",
+            "en": "Live numerical table for Harmonic Form a·cos θ + b·sin θ = R·cos(θ − α)",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -112,58 +112,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_trig_a2ltrig_s0",
+            "id": "a2ltrigExCanvas_s0",
             "label": {
-              "en": "Amplitude <b>A =</b>",
+              "en": "Cosine Weight <b>a =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": 0.5,
+            "max": 4.0,
+            "value": 3.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_trig_a2ltrig_v0",
+            "valueDisplayId": "a2ltrigExCanvas_v0",
             "ariaLabel": {
-              "en": "Amplitude A",
+              "en": "Cosine Weight a =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_trig_a2ltrig_s1",
+            "id": "a2ltrigExCanvas_s1",
             "label": {
-              "en": "Frequency <b>b =</b>",
+              "en": "Sine Weight <b>b =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
+            "min": 0.5,
+            "max": 4.0,
+            "value": 4.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_trig_a2ltrig_v1",
+            "valueDisplayId": "a2ltrigExCanvas_v1",
             "ariaLabel": {
-              "en": "Frequency b",
+              "en": "Sine Weight b =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_trig_a2ltrig_r0",
+            "id": "a2ltrigExCanvas_r0",
             "label": {
-              "en": "Amplitude |A|",
+              "en": "Resultant Amplitude R = √(a²+b²)",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "2.00"
+            "value": "R = 5.00"
           },
           {
-            "id": "exAuto_trig_a2ltrig_r1",
+            "id": "a2ltrigExCanvas_r1",
             "label": {
-              "en": "Period 2π/|b|",
+              "en": "Phase Lag α = arctan(b/a)",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "6.28"
+            "value": "α = 53.1°"
+          },
+          {
+            "id": "a2ltrigExCanvas_r2",
+            "label": {
+              "en": "Global Maximum R at θ = α",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "Max = 5.00 at 53.1°"
           }
-        ]
+        ],
+        "note": {
+          "en": "Dashed curves show a·cos θ and b·sin θ separately; the solid amber wave shows their superposition R·cos(θ − α) peaking at (α, R).",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

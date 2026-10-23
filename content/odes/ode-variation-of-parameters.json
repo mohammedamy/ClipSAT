@@ -73,26 +73,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Variation of Parameters, Wronskian Systems &amp; Green's Kernel Lab",
+          "en": "⊙ Explorer · Variation of Parameters: Wronskian W(y₁, y₂) & Causal Green's Kernel G(t, s)",
           "ar": null
         },
-        "canvasId": "exAuto_calc_odevariationofparameters",
+        "canvasId": "odevariationofparametersExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Variation of Parameters, Wronskian Systems &amp; Green's Kernel",
+          "en": "Variation of Parameters: Wronskian W(y₁, y₂) & Causal Green's Kernel G(t, s) interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_calc_odevariationofparameters_dataBtn",
-          "panelId": "exAuto_calc_odevariationofparameters_dataPanel",
-          "descId": "exAuto_calc_odevariationofparameters_dataDesc",
-          "rowsId": "exAuto_calc_odevariationofparameters_dataRows",
+          "btnId": "odevariationofparametersExCanvas_dataBtn",
+          "panelId": "odevariationofparametersExCanvas_dataPanel",
+          "descId": "odevariationofparametersExCanvas_dataDesc",
+          "rowsId": "odevariationofparametersExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Variation of Parameters, Wronskian Systems &amp; Green's Kernel",
+            "en": "Live numerical table for Variation of Parameters: Wronskian W(y₁, y₂) & Causal Green's Kernel G(t, s)",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -103,58 +103,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_calc_odevariationofparameters_s0",
+            "id": "odevariationofparametersExCanvas_s0",
             "label": {
-              "en": "Tangent point <b>a =</b>",
+              "en": "Impulse Time <b>s =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_odevariationofparameters_v0",
+            "min": 0.5,
+            "max": 4.0,
+            "value": 1.5,
+            "step": 0.25,
+            "valueDisplayId": "odevariationofparametersExCanvas_v0",
             "ariaLabel": {
-              "en": "Tangent parameter a",
+              "en": "Impulse Time s =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_calc_odevariationofparameters_s1",
+            "id": "odevariationofparametersExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>c =</b>",
+              "en": "Frequency <b>ω =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_odevariationofparameters_v1",
+            "min": 0.8,
+            "max": 2.5,
+            "value": 1.5,
+            "step": 0.1,
+            "valueDisplayId": "odevariationofparametersExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift c",
+              "en": "Frequency ω =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_calc_odevariationofparameters_r0",
+            "id": "odevariationofparametersExCanvas_r0",
             "label": {
-              "en": "Derivative f'(x₀)",
+              "en": "Wronskian W(cos ωt, sin ωt) = ω",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "f'(1.2) = 0.33"
+            "value": "W = 1.50"
           },
           {
-            "id": "exAuto_calc_odevariationofparameters_r1",
+            "id": "odevariationofparametersExCanvas_r1",
             "label": {
-              "en": "Definite Integral ∫₀ˣ f(t)dt",
+              "en": "Green's Kernel Max 1/ω",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "∫₀ˣ f(t)dt = 0.19"
+            "value": "1/ω = 0.667"
+          },
+          {
+            "id": "odevariationofparametersExCanvas_r2",
+            "label": {
+              "en": "Causal Response G(4.0, s)",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "G(4, s) = -0.381"
           }
-        ]
+        ],
+        "note": {
+          "en": "Plot fundamental solutions y₁(t) = cos(ωt), y₂(t) = sin(ωt) (dashed) and the causal Green's kernel G(t, s) = (y₁(s)y₂(t) − y₂(s)y₁(t))/W(s) = sin(ω(t − s))/ω for t ≥ s (solid amber).",
+          "ar": null
+        }
       },
       {
         "kind": "callout",

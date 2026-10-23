@@ -80,27 +80,27 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Polynomials, Remainder Theorem & Binomial Theorem Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Polynomials, Remainder Theorem & Binomial Theorem"
+          "en": "⊙ Explorer · Cubic Polynomial Roots & Remainder Theorem P(a) Lab",
+          "ar": "⊙ مستكشف تفاعلي · كثيرات الحدود من الدرجة الثالثة ونظرية الباقي P(a)"
         },
-        "canvasId": "exAuto_stats_ampolynomialsbinomial",
+        "canvasId": "ampolynomialsbinomialExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Polynomials, Remainder Theorem & Binomial Theorem",
-          "ar": "مستكشف رياضي تفاعلي لدرس Polynomials, Remainder Theorem & Binomial Theorem"
+          "en": "Cubic Polynomial Roots & Remainder Theorem P(a) Lab interactive mathematical canvas",
+          "ar": "⊙ مستكشف تفاعلي · كثيرات الحدود من الدرجة الثالثة ونظرية الباقي P(a) لوحة تفاعلية"
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_ampolynomialsbinomial_dataBtn",
-          "panelId": "exAuto_stats_ampolynomialsbinomial_dataPanel",
-          "descId": "exAuto_stats_ampolynomialsbinomial_dataDesc",
-          "rowsId": "exAuto_stats_ampolynomialsbinomial_dataRows",
+          "btnId": "ampolynomialsbinomialExCanvas_dataBtn",
+          "panelId": "ampolynomialsbinomialExCanvas_dataPanel",
+          "descId": "ampolynomialsbinomialExCanvas_dataDesc",
+          "rowsId": "ampolynomialsbinomialExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Polynomials, Remainder Theorem & Binomial Theorem",
-            "ar": "جدول القيم العددية لدرس Polynomials, Remainder Theorem & Binomial Theorem"
+            "en": "Live numerical table for Cubic Polynomial Roots & Remainder Theorem P(a) Lab",
+            "ar": "جدول القيم العددية لـ ⊙ مستكشف تفاعلي · كثيرات الحدود من الدرجة الثالثة ونظرية الباقي P(a)"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Parameter / Metric",
+              "ar": "المتغير / المعيار"
             },
             {
               "en": "Value",
@@ -110,58 +110,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_stats_ampolynomialsbinomial_s0",
+            "id": "ampolynomialsbinomialExCanvas_s0",
             "label": {
-              "en": "Sample shift <b>Δ₁ =</b>",
-              "ar": "إزاحة العينة <b>Δ₁ =</b>"
+              "en": "Divisor Value <b>x = a =</b>",
+              "ar": "Divisor Value <b>x = a =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": -3.0,
+            "max": 3.0,
+            "value": 1.5,
             "step": 0.5,
-            "valueDisplayId": "exAuto_stats_ampolynomialsbinomial_v0",
+            "valueDisplayId": "ampolynomialsbinomialExCanvas_v0",
             "ariaLabel": {
-              "en": "Sample shift delta 1",
-              "ar": "إزاحة العينة 1"
+              "en": "Divisor Value x = a =",
+              "ar": "Divisor Value x = a ="
             }
           },
           {
-            "id": "exAuto_stats_ampolynomialsbinomial_s1",
+            "id": "ampolynomialsbinomialExCanvas_s1",
             "label": {
-              "en": "Tail shift <b>Δ₂ =</b>",
-              "ar": "إزاحة الطرف <b>Δ₂ =</b>"
+              "en": "Constant Shift <b>d =</b>",
+              "ar": "Constant Shift <b>d =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
+            "min": -3.0,
+            "max": 3.0,
+            "value": 0.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_stats_ampolynomialsbinomial_v1",
+            "valueDisplayId": "ampolynomialsbinomialExCanvas_v1",
             "ariaLabel": {
-              "en": "Tail shift delta 2",
-              "ar": "إزاحة الطرف 2"
+              "en": "Constant Shift d =",
+              "ar": "Constant Shift d ="
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_ampolynomialsbinomial_r0",
+            "id": "ampolynomialsbinomialExCanvas_r0",
             "label": {
-              "en": "Sample Mean x̄",
-              "ar": "المتوسط الحسابي x̄"
+              "en": "Remainder R = P(a)",
+              "ar": "Remainder R = P(a)"
             },
             "colorClass": "indigo",
-            "value": "13.57"
+            "value": "R = -1.12"
           },
           {
-            "id": "exAuto_stats_ampolynomialsbinomial_r1",
+            "id": "ampolynomialsbinomialExCanvas_r1",
             "label": {
-              "en": "Sample Median M",
-              "ar": "الوسيط M"
+              "en": "Factor Status (x − a)",
+              "ar": "Factor Status (x − a)"
             },
             "colorClass": "amber",
-            "value": "14.0"
+            "value": "Non-Zero Remainder"
+          },
+          {
+            "id": "ampolynomialsbinomialExCanvas_r2",
+            "label": {
+              "en": "Derivative Slope P'(a)",
+              "ar": "Derivative Slope P'(a)"
+            },
+            "colorClass": "teal",
+            "value": "P'(a) = 3.75"
           }
-        ]
+        ],
+        "note": {
+          "en": "When dividing P(x) = x³ − 3x + d by (x − a), the Remainder Theorem states that the remainder R equals the vertical height P(a) (shown in amber).",
+          "ar": "عند قسمة P(x) = x³ − 3x + d على (x − a)، فإن الباقي R يساوي الارتفاع الرأسي P(a)."
+        }
       },
       {
         "kind": "figure",

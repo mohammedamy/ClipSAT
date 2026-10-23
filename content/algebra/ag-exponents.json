@@ -73,26 +73,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Exponents &amp; Polynomials Lab",
+          "en": "⊙ Explorer · Polynomial Degree, Leading Coefficient & End Behavior",
           "ar": null
         },
-        "canvasId": "exAuto_exp_agexponents",
+        "canvasId": "agexponentsExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Exponents &amp; Polynomials",
+          "en": "Polynomial Degree, Leading Coefficient & End Behavior interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_exp_agexponents_dataBtn",
-          "panelId": "exAuto_exp_agexponents_dataPanel",
-          "descId": "exAuto_exp_agexponents_dataDesc",
-          "rowsId": "exAuto_exp_agexponents_dataRows",
+          "btnId": "agexponentsExCanvas_dataBtn",
+          "panelId": "agexponentsExCanvas_dataPanel",
+          "descId": "agexponentsExCanvas_dataDesc",
+          "rowsId": "agexponentsExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Exponents &amp; Polynomials",
+            "en": "Live numerical table for Polynomial Degree, Leading Coefficient & End Behavior",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -103,58 +103,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_exp_agexponents_s0",
+            "id": "agexponentsExCanvas_s0",
             "label": {
-              "en": "Growth factor <b>a =</b>",
+              "en": "Leading Coefficient <b>a =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": -2.5,
+            "max": 2.5,
+            "value": 1.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_exp_agexponents_v0",
+            "valueDisplayId": "agexponentsExCanvas_v0",
             "ariaLabel": {
-              "en": "Growth parameter a",
+              "en": "Leading Coefficient a =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_exp_agexponents_s1",
+            "id": "agexponentsExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>k =</b>",
+              "en": "Polynomial Degree <b>n =</b>",
               "ar": null
             },
-            "min": -4,
+            "min": 1,
             "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_exp_agexponents_v1",
+            "value": 3,
+            "step": 1,
+            "valueDisplayId": "agexponentsExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift k",
+              "en": "Polynomial Degree n =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_exp_agexponents_r0",
+            "id": "agexponentsExCanvas_r0",
             "label": {
-              "en": "Effective Base b",
+              "en": "Left End (x → −∞)",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "b = 2.00"
+            "value": "y → −∞"
           },
           {
-            "id": "exAuto_exp_agexponents_r1",
+            "id": "agexponentsExCanvas_r1",
             "label": {
-              "en": "y-Intercept (0, y₀)",
+              "en": "Right End (x → +∞)",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "(0, 0.50)"
+            "value": "y → +∞"
+          },
+          {
+            "id": "agexponentsExCanvas_r2",
+            "label": {
+              "en": "Turning Points Count",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "Max 2 turning pts"
           }
-        ]
+        ],
+        "note": {
+          "en": "Vary leading coefficient a and degree n (even vs. odd) of P(x) = a·xⁿ − 2x to see how degree parity and sign of a govern end behavior.",
+          "ar": null
+        }
       },
       {
         "kind": "figure",

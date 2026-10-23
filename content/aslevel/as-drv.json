@@ -97,26 +97,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Discrete Random Variables Lab",
+          "en": "⊙ Explorer · Discrete Random Variable PDF Table, E(X) Fulcrum & Var(X)",
           "ar": null
         },
-        "canvasId": "exAuto_stats_asdrv",
+        "canvasId": "asdrvExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Discrete Random Variables",
+          "en": "Discrete Random Variable PDF Table, E(X) Fulcrum & Var(X) interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_asdrv_dataBtn",
-          "panelId": "exAuto_stats_asdrv_dataPanel",
-          "descId": "exAuto_stats_asdrv_dataDesc",
-          "rowsId": "exAuto_stats_asdrv_dataRows",
+          "btnId": "asdrvExCanvas_dataBtn",
+          "panelId": "asdrvExCanvas_dataPanel",
+          "descId": "asdrvExCanvas_dataDesc",
+          "rowsId": "asdrvExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Discrete Random Variables",
+            "en": "Live numerical table for Discrete Random Variable PDF Table, E(X) Fulcrum & Var(X)",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -127,58 +127,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_stats_asdrv_s0",
+            "id": "asdrvExCanvas_s0",
             "label": {
-              "en": "Sample shift <b>Δ₁ =</b>",
+              "en": "Skew Tilt <b>t =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_asdrv_v0",
+            "min": -0.8,
+            "max": 0.8,
+            "value": 0.2,
+            "step": 0.1,
+            "valueDisplayId": "asdrvExCanvas_v0",
             "ariaLabel": {
-              "en": "Sample shift delta 1",
+              "en": "Skew Tilt t =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_stats_asdrv_s1",
+            "id": "asdrvExCanvas_s1",
             "label": {
-              "en": "Tail shift <b>Δ₂ =</b>",
+              "en": "Spread Weight <b>w =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_asdrv_v1",
+            "min": 0.1,
+            "max": 0.9,
+            "value": 0.5,
+            "step": 0.1,
+            "valueDisplayId": "asdrvExCanvas_v1",
             "ariaLabel": {
-              "en": "Tail shift delta 2",
+              "en": "Spread Weight w =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_asdrv_r0",
+            "id": "asdrvExCanvas_r0",
             "label": {
-              "en": "Sample Mean x̄",
+              "en": "Expectation μ = Σ x·P(X=x)",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "13.57"
+            "value": "E(X) = 3.10"
           },
           {
-            "id": "exAuto_stats_asdrv_r1",
+            "id": "asdrvExCanvas_r1",
             "label": {
-              "en": "Sample Median M",
+              "en": "Variance σ² = Σ x²P − μ²",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "14.0"
+            "value": "Var(X) = 1.99"
+          },
+          {
+            "id": "asdrvExCanvas_r2",
+            "label": {
+              "en": "Normalization Σ P(X=x)",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "Σ P = 1.000"
           }
-        ]
+        ],
+        "note": {
+          "en": "The vertical probability spikes at X ∈ {1, 2, 3, 4, 5} always sum to 1.00. The amber triangle marks the center-of-mass balance point E(X).",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

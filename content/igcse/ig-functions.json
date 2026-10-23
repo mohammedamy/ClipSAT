@@ -91,26 +91,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Functions Lab",
+          "en": "⊙ Explorer · Composite Functions fg(x) vs. gf(x) & Inverse Evaluator",
           "ar": null
         },
-        "canvasId": "exAuto_quad_igfunctions",
+        "canvasId": "igfunctionsExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Functions",
+          "en": "Composite Functions fg(x) vs. gf(x) & Inverse Evaluator interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_quad_igfunctions_dataBtn",
-          "panelId": "exAuto_quad_igfunctions_dataPanel",
-          "descId": "exAuto_quad_igfunctions_dataDesc",
-          "rowsId": "exAuto_quad_igfunctions_dataRows",
+          "btnId": "igfunctionsExCanvas_dataBtn",
+          "panelId": "igfunctionsExCanvas_dataPanel",
+          "descId": "igfunctionsExCanvas_dataDesc",
+          "rowsId": "igfunctionsExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Functions",
+            "en": "Live numerical table for Composite Functions fg(x) vs. gf(x) & Inverse Evaluator",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -121,58 +121,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_quad_igfunctions_s0",
+            "id": "igfunctionsExCanvas_s0",
             "label": {
-              "en": "Vertex parameter <b>a =</b>",
+              "en": "Linear Slope <b>m =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": 0.5,
+            "max": 2.5,
+            "value": 1.5,
             "step": 0.5,
-            "valueDisplayId": "exAuto_quad_igfunctions_v0",
+            "valueDisplayId": "igfunctionsExCanvas_v0",
             "ariaLabel": {
-              "en": "Vertex parameter a",
+              "en": "Linear Slope m =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_quad_igfunctions_s1",
+            "id": "igfunctionsExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>b =</b>",
+              "en": "Linear Shift <b>c =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
+            "min": -2.0,
+            "max": 3.0,
+            "value": 1.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_quad_igfunctions_v1",
+            "valueDisplayId": "igfunctionsExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift parameter b",
+              "en": "Linear Shift c =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_quad_igfunctions_r0",
+            "id": "igfunctionsExCanvas_r0",
             "label": {
-              "en": "Vertex (h, k)",
+              "en": "f(g(1)) where g(x) = x² − 1",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "(1.0, -1.0)"
+            "value": "fg(1) = 0.25"
           },
           {
-            "id": "exAuto_quad_igfunctions_r1",
+            "id": "igfunctionsExCanvas_r1",
             "label": {
-              "en": "Axis of Symmetry",
+              "en": "g(f(1)) (Order Matters!)",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "x = 1.0"
+            "value": "gf(1) = 2.12"
+          },
+          {
+            "id": "igfunctionsExCanvas_r2",
+            "label": {
+              "en": "Inverse Value f⁻¹(4)",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "f⁻¹(4) = 2.00"
           }
-        ]
+        ],
+        "note": {
+          "en": "Compare f(x) = mx + c, g(x) = 0.5x² − 1, and their composition fg(x) = f(g(x)) to see graphically why fg(x) ≠ gf(x).",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

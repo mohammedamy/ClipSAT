@@ -73,26 +73,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Beyond AB — Core BC Topics Overview Lab",
+          "en": "⊙ Explorer · Maclaurin Polynomial Convergence & Lagrange Error Bound",
           "ar": null
         },
-        "canvasId": "exAuto_quad_apbcbeyond",
+        "canvasId": "apbcbeyondExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Beyond AB — Core BC Topics Overview",
+          "en": "Maclaurin Polynomial Convergence & Lagrange Error Bound interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_quad_apbcbeyond_dataBtn",
-          "panelId": "exAuto_quad_apbcbeyond_dataPanel",
-          "descId": "exAuto_quad_apbcbeyond_dataDesc",
-          "rowsId": "exAuto_quad_apbcbeyond_dataRows",
+          "btnId": "apbcbeyondExCanvas_dataBtn",
+          "panelId": "apbcbeyondExCanvas_dataPanel",
+          "descId": "apbcbeyondExCanvas_dataDesc",
+          "rowsId": "apbcbeyondExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Beyond AB — Core BC Topics Overview",
+            "en": "Live numerical table for Maclaurin Polynomial Convergence & Lagrange Error Bound",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -103,58 +103,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_quad_apbcbeyond_s0",
+            "id": "apbcbeyondExCanvas_s0",
             "label": {
-              "en": "Vertex parameter <b>a =</b>",
+              "en": "Evaluation Point <b>x₀ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_apbcbeyond_v0",
+            "min": -2.5,
+            "max": 2.5,
+            "value": 1.5,
+            "step": 0.25,
+            "valueDisplayId": "apbcbeyondExCanvas_v0",
             "ariaLabel": {
-              "en": "Vertex parameter a",
+              "en": "Evaluation Point x₀ =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_quad_apbcbeyond_s1",
+            "id": "apbcbeyondExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>b =</b>",
+              "en": "Polynomial Order <b>N =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_apbcbeyond_v1",
+            "min": 1,
+            "max": 7,
+            "value": 3,
+            "step": 2,
+            "valueDisplayId": "apbcbeyondExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift parameter b",
+              "en": "Polynomial Order N =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_quad_apbcbeyond_r0",
+            "id": "apbcbeyondExCanvas_r0",
             "label": {
-              "en": "Vertex (h, k)",
+              "en": "Taylor Approx P_N(x₀)",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "(1.0, -1.0)"
+            "value": "1.8359"
           },
           {
-            "id": "exAuto_quad_apbcbeyond_r1",
+            "id": "apbcbeyondExCanvas_r1",
             "label": {
-              "en": "Axis of Symmetry",
+              "en": "Exact Value f(x₀)",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "x = 1.0"
+            "value": "1.8371"
+          },
+          {
+            "id": "apbcbeyondExCanvas_r2",
+            "label": {
+              "en": "Truncation Error |f(x₀) − P_N(x₀)|",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "|x| < 1.00"
           }
-        ]
+        ],
+        "note": {
+          "en": "Watch higher-degree Taylor polynomials hug the target curve across a wider interval around the center x = 0.",
+          "ar": null
+        }
       },
       {
         "kind": "figure",

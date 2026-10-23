@@ -125,27 +125,27 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Integration, Areas & Kinematics Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Integration, Areas & Kinematics"
+          "en": "⊙ Explorer · Kinematics Velocity v(t), Displacement & Total Distance",
+          "ar": "⊙ مستكشف تفاعلي · الحركة في خط مستقيم: السرعة v(t) والإزاحة والمسافة الكلية"
         },
-        "canvasId": "exAuto_calc_amintegrationkinematics",
+        "canvasId": "amintegrationkinematicsExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Integration, Areas & Kinematics",
-          "ar": "مستكشف رياضي تفاعلي لدرس Integration, Areas & Kinematics"
+          "en": "Kinematics Velocity v(t), Displacement & Total Distance interactive mathematical canvas",
+          "ar": "⊙ مستكشف تفاعلي · الحركة في خط مستقيم: السرعة v(t) والإزاحة والمسافة الكلية لوحة تفاعلية"
         },
         "dataPanel": {
-          "btnId": "exAuto_calc_amintegrationkinematics_dataBtn",
-          "panelId": "exAuto_calc_amintegrationkinematics_dataPanel",
-          "descId": "exAuto_calc_amintegrationkinematics_dataDesc",
-          "rowsId": "exAuto_calc_amintegrationkinematics_dataRows",
+          "btnId": "amintegrationkinematicsExCanvas_dataBtn",
+          "panelId": "amintegrationkinematicsExCanvas_dataPanel",
+          "descId": "amintegrationkinematicsExCanvas_dataDesc",
+          "rowsId": "amintegrationkinematicsExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Integration, Areas & Kinematics",
-            "ar": "جدول القيم العددية لدرس Integration, Areas & Kinematics"
+            "en": "Live numerical table for Kinematics Velocity v(t), Displacement & Total Distance",
+            "ar": "جدول القيم العددية لـ ⊙ مستكشف تفاعلي · الحركة في خط مستقيم: السرعة v(t) والإزاحة والمسافة الكلية"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Parameter / Metric",
+              "ar": "المتغير / المعيار"
             },
             {
               "en": "Value",
@@ -155,66 +155,79 @@
         },
         "controls": [
           {
-            "id": "exAuto_calc_amintegrationkinematics_s0",
+            "id": "amintegrationkinematicsExCanvas_s0",
             "label": {
-              "en": "Tangent point <b>a =</b>",
-              "ar": "نقطة المماس <b>a =</b>"
+              "en": "Initial Velocity <b>u =</b>",
+              "ar": "Initial Velocity <b>u =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": 2.0,
+            "max": 8.0,
+            "value": 5.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_calc_amintegrationkinematics_v0",
+            "valueDisplayId": "amintegrationkinematicsExCanvas_v0",
             "ariaLabel": {
-              "en": "Tangent parameter a",
-              "ar": "معامل المماس a"
+              "en": "Initial Velocity u =",
+              "ar": "Initial Velocity u ="
             }
           },
           {
-            "id": "exAuto_calc_amintegrationkinematics_s1",
+            "id": "amintegrationkinematicsExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>c =</b>",
-              "ar": "الإزاحة الرأسية <b>c =</b>"
+              "en": "Time Horizon <b>T =</b>",
+              "ar": "Time Horizon <b>T =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
+            "min": 1.0,
+            "max": 5.0,
+            "value": 4.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_calc_amintegrationkinematics_v1",
+            "valueDisplayId": "amintegrationkinematicsExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift c",
-              "ar": "الإزاحة الرأسية c"
+              "en": "Time Horizon T =",
+              "ar": "Time Horizon T ="
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_calc_amintegrationkinematics_r0",
+            "id": "amintegrationkinematicsExCanvas_r0",
             "label": {
-              "en": "Derivative f'(x₀)",
-              "ar": "المشتقة f'(x₀)"
+              "en": "Net Displacement ∫₀ᵀ v(t) dt",
+              "ar": "Net Displacement ∫₀ᵀ v(t) dt"
             },
             "colorClass": "indigo",
-            "value": "f'(1.2) = 0.33"
+            "value": "4.00 m"
           },
           {
-            "id": "exAuto_calc_amintegrationkinematics_r1",
+            "id": "amintegrationkinematicsExCanvas_r1",
             "label": {
-              "en": "Definite Integral ∫₀ˣ f(t)dt",
-              "ar": "التكامل المحدد ∫₀ˣ f(t)dt"
+              "en": "Total Distance ∫₀ᵀ |v(t)| dt",
+              "ar": "Total Distance ∫₀ᵀ |v(t)| dt"
             },
             "colorClass": "amber",
-            "value": "∫₀ˣ f(t)dt = 0.19"
+            "value": "8.50 m"
+          },
+          {
+            "id": "amintegrationkinematicsExCanvas_r2",
+            "label": {
+              "en": "Turning Time (v = 0)",
+              "ar": "Turning Time (v = 0)"
+            },
+            "colorClass": "teal",
+            "value": "t = 2.50 s"
           }
         ],
+        "note": {
+          "en": "Positive velocity area above the t-axis adds forward displacement; negative velocity area below the t-axis reverses displacement but adds to total distance travelled.",
+          "ar": "المساحة الموجبة فوق محور الزمن تمثل الإزاحة للأمام، والمساحة السالبة تحت المحور تعكس الإزاحة ولكنها تُضاف إلى المسافة الكلية المقطوعة."
+        },
         "canvas3d": {
-          "btnId": "exAuto3dBtn_surf_amintegrationkinematics",
-          "wrapId": "exAuto3dWrap_amintegrationkinematics",
-          "hintId": "exAuto3dHint_amintegrationkinematics",
-          "btnLabel": "🧊 View Interactive 3D Model",
+          "btnId": "amintegrationkinematicsExCanvas_3dBtn",
+          "wrapId": "amintegrationkinematicsExCanvas_3dWrap",
+          "hintId": "amintegrationkinematicsExCanvas_3dHint",
+          "btnLabel": "🧊 View Kinematics Velocity v(t), Displacement & Total Distance in 3D",
           "ariaLabel": {
-            "en": "Interactive 3D visualization for Integration, Areas & Kinematics. Drag to rotate.",
-            "ar": "عرض ثلاثي الأبعاد تفاعلي لدرس Integration, Areas & Kinematics. اسحب للتدوير."
+            "en": "Interactive 3D visualization for Kinematics Velocity v(t), Displacement & Total Distance. Drag to rotate.",
+            "ar": "عرض ثلاثي الأبعاد تفاعلي لـ ⊙ مستكشف تفاعلي · الحركة في خط مستقيم: السرعة v(t) والإزاحة والمسافة الكلية. اسحب للتدوير."
           }
         }
       },

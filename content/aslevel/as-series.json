@@ -87,26 +87,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Series &amp; the Binomial Theorem Lab",
+          "en": "⊙ Explorer · Geometric Progression Terms ar^(n−1) & Sum to Infinity S_∞",
           "ar": null
         },
-        "canvasId": "exAuto_calc_asseries",
+        "canvasId": "asseriesExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Series &amp; the Binomial Theorem",
+          "en": "Geometric Progression Terms ar^(n−1) & Sum to Infinity S_∞ interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_calc_asseries_dataBtn",
-          "panelId": "exAuto_calc_asseries_dataPanel",
-          "descId": "exAuto_calc_asseries_dataDesc",
-          "rowsId": "exAuto_calc_asseries_dataRows",
+          "btnId": "asseriesExCanvas_dataBtn",
+          "panelId": "asseriesExCanvas_dataPanel",
+          "descId": "asseriesExCanvas_dataDesc",
+          "rowsId": "asseriesExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Series &amp; the Binomial Theorem",
+            "en": "Live numerical table for Geometric Progression Terms ar^(n−1) & Sum to Infinity S_∞",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -117,58 +117,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_calc_asseries_s0",
+            "id": "asseriesExCanvas_s0",
             "label": {
-              "en": "Tangent point <b>a =</b>",
+              "en": "First Term <b>a =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": 1.0,
+            "max": 4.0,
+            "value": 3.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_calc_asseries_v0",
+            "valueDisplayId": "asseriesExCanvas_v0",
             "ariaLabel": {
-              "en": "Tangent parameter a",
+              "en": "First Term a =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_calc_asseries_s1",
+            "id": "asseriesExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>c =</b>",
+              "en": "Common Ratio <b>r =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_asseries_v1",
+            "min": -0.8,
+            "max": 0.85,
+            "value": 0.5,
+            "step": 0.05,
+            "valueDisplayId": "asseriesExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift c",
+              "en": "Common Ratio r =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_calc_asseries_r0",
+            "id": "asseriesExCanvas_r0",
             "label": {
-              "en": "Derivative f'(x₀)",
+              "en": "Partial Sum S₈",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "f'(1.2) = 0.33"
+            "value": "S₈ = 5.977"
           },
           {
-            "id": "exAuto_calc_asseries_r1",
+            "id": "asseriesExCanvas_r1",
             "label": {
-              "en": "Definite Integral ∫₀ˣ f(t)dt",
+              "en": "Sum to Infinity S_∞ = a/(1−r)",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "∫₀ˣ f(t)dt = 0.19"
+            "value": "S_∞ = 6.000"
+          },
+          {
+            "id": "asseriesExCanvas_r2",
+            "label": {
+              "en": "Truncation Residual",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "0.0234"
           }
-        ]
+        ],
+        "note": {
+          "en": "A geometric progression converges to S_∞ = a / (1 − r) if and only if |r| < 1.",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

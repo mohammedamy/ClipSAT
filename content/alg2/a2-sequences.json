@@ -86,26 +86,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Sequences &amp; Series Lab",
+          "en": "⊙ Explorer · Geometric Sequence Terms a_n & Partial Sums S_n",
           "ar": null
         },
-        "canvasId": "exAuto_calc_a2sequences",
+        "canvasId": "a2sequencesExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Sequences &amp; Series",
+          "en": "Geometric Sequence Terms a_n & Partial Sums S_n interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_calc_a2sequences_dataBtn",
-          "panelId": "exAuto_calc_a2sequences_dataPanel",
-          "descId": "exAuto_calc_a2sequences_dataDesc",
-          "rowsId": "exAuto_calc_a2sequences_dataRows",
+          "btnId": "a2sequencesExCanvas_dataBtn",
+          "panelId": "a2sequencesExCanvas_dataPanel",
+          "descId": "a2sequencesExCanvas_dataDesc",
+          "rowsId": "a2sequencesExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Sequences &amp; Series",
+            "en": "Live numerical table for Geometric Sequence Terms a_n & Partial Sums S_n",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -116,58 +116,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_calc_a2sequences_s0",
+            "id": "a2sequencesExCanvas_s0",
             "label": {
-              "en": "Tangent point <b>a =</b>",
+              "en": "Initial Term <b>a₁ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": 1.0,
+            "max": 4.0,
+            "value": 2.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_calc_a2sequences_v0",
+            "valueDisplayId": "a2sequencesExCanvas_v0",
             "ariaLabel": {
-              "en": "Tangent parameter a",
+              "en": "Initial Term a₁ =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_calc_a2sequences_s1",
+            "id": "a2sequencesExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>c =</b>",
+              "en": "Common Ratio <b>r =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_a2sequences_v1",
+            "min": 0.2,
+            "max": 0.85,
+            "value": 0.5,
+            "step": 0.05,
+            "valueDisplayId": "a2sequencesExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift c",
+              "en": "Common Ratio r =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_calc_a2sequences_r0",
+            "id": "a2sequencesExCanvas_r0",
             "label": {
-              "en": "Derivative f'(x₀)",
+              "en": "Partial Sum S₈",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "f'(1.2) = 0.33"
+            "value": "S₈ = 3.984"
           },
           {
-            "id": "exAuto_calc_a2sequences_r1",
+            "id": "a2sequencesExCanvas_r1",
             "label": {
-              "en": "Definite Integral ∫₀ˣ f(t)dt",
+              "en": "Infinite Sum S_∞",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "∫₀ˣ f(t)dt = 0.19"
+            "value": "S_∞ = 4.000"
+          },
+          {
+            "id": "a2sequencesExCanvas_r2",
+            "label": {
+              "en": "Remaining Tail S_∞ − S₈",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "0.0156"
           }
-        ]
+        ],
+        "note": {
+          "en": "Compare the decaying geometric terms a_n = a₁r^(n−1) against the rising partial sum curve S_n approaching S_∞ = a₁/(1−r).",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

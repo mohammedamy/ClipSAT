@@ -109,26 +109,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Forces &amp; Equilibrium Lab",
+          "en": "⊙ Explorer · Forces & Equilibrium on an Inclined Plane (R, F & Weight mg)",
           "ar": null
         },
-        "canvasId": "exAuto_quad_asforces",
+        "canvasId": "asforcesExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Forces &amp; Equilibrium",
+          "en": "Forces & Equilibrium on an Inclined Plane (R, F & Weight mg) interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_quad_asforces_dataBtn",
-          "panelId": "exAuto_quad_asforces_dataPanel",
-          "descId": "exAuto_quad_asforces_dataDesc",
-          "rowsId": "exAuto_quad_asforces_dataRows",
+          "btnId": "asforcesExCanvas_dataBtn",
+          "panelId": "asforcesExCanvas_dataPanel",
+          "descId": "asforcesExCanvas_dataDesc",
+          "rowsId": "asforcesExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Forces &amp; Equilibrium",
+            "en": "Live numerical table for Forces & Equilibrium on an Inclined Plane (R, F & Weight mg)",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -139,58 +139,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_quad_asforces_s0",
+            "id": "asforcesExCanvas_s0",
             "label": {
-              "en": "Vertex parameter <b>a =</b>",
+              "en": "Incline Angle <b>θ (°) =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_asforces_v0",
+            "min": 10,
+            "max": 60,
+            "value": 30,
+            "step": 5,
+            "valueDisplayId": "asforcesExCanvas_v0",
             "ariaLabel": {
-              "en": "Vertex parameter a",
+              "en": "Incline Angle θ (°) =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_quad_asforces_s1",
+            "id": "asforcesExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>b =</b>",
+              "en": "Mass <b>m (kg) =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
+            "min": 1.0,
+            "max": 5.0,
+            "value": 2.5,
             "step": 0.5,
-            "valueDisplayId": "exAuto_quad_asforces_v1",
+            "valueDisplayId": "asforcesExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift parameter b",
+              "en": "Mass m (kg) =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_quad_asforces_r0",
+            "id": "asforcesExCanvas_r0",
             "label": {
-              "en": "Vertex (h, k)",
+              "en": "Normal Reaction R = mg cos θ",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "(1.0, -1.0)"
+            "value": "R = 21.7 N"
           },
           {
-            "id": "exAuto_quad_asforces_r1",
+            "id": "asforcesExCanvas_r1",
             "label": {
-              "en": "Axis of Symmetry",
+              "en": "Downslope Component mg sin θ",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "x = 1.0"
+            "value": "mg sin θ = 12.5 N"
+          },
+          {
+            "id": "asforcesExCanvas_r2",
+            "label": {
+              "en": "Limiting Friction Ratio tan θ",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "μ_min = 0.58"
           }
-        ]
+        ],
+        "note": {
+          "en": "Resolve weight W = mg (g = 10 m/s²) into components perpendicular to the slope (balanced by normal reaction R) and parallel to the slope (balanced by friction F).",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

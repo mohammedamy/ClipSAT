@@ -120,27 +120,27 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Trigonometry & Circular Measure Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Trigonometry & Circular Measure"
+          "en": "⊙ Explorer · Circular Measure: Sector Arc s = rθ & Shaded Segment Area",
+          "ar": "⊙ مستكشف تفاعلي · القياس الدائري: طول القوس s = rθ ومساحة القطعة الدائرية المظللة"
         },
-        "canvasId": "exAuto_trig_amtrigonometrycircular",
+        "canvasId": "amtrigonometrycircularExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Trigonometry & Circular Measure",
-          "ar": "مستكشف رياضي تفاعلي لدرس Trigonometry & Circular Measure"
+          "en": "Circular Measure: Sector Arc s = rθ & Shaded Segment Area interactive mathematical canvas",
+          "ar": "⊙ مستكشف تفاعلي · القياس الدائري: طول القوس s = rθ ومساحة القطعة الدائرية المظللة لوحة تفاعلية"
         },
         "dataPanel": {
-          "btnId": "exAuto_trig_amtrigonometrycircular_dataBtn",
-          "panelId": "exAuto_trig_amtrigonometrycircular_dataPanel",
-          "descId": "exAuto_trig_amtrigonometrycircular_dataDesc",
-          "rowsId": "exAuto_trig_amtrigonometrycircular_dataRows",
+          "btnId": "amtrigonometrycircularExCanvas_dataBtn",
+          "panelId": "amtrigonometrycircularExCanvas_dataPanel",
+          "descId": "amtrigonometrycircularExCanvas_dataDesc",
+          "rowsId": "amtrigonometrycircularExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Trigonometry & Circular Measure",
-            "ar": "جدول القيم العددية لدرس Trigonometry & Circular Measure"
+            "en": "Live numerical table for Circular Measure: Sector Arc s = rθ & Shaded Segment Area",
+            "ar": "جدول القيم العددية لـ ⊙ مستكشف تفاعلي · القياس الدائري: طول القوس s = rθ ومساحة القطعة الدائرية المظللة"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Parameter / Metric",
+              "ar": "المتغير / المعيار"
             },
             {
               "en": "Value",
@@ -150,58 +150,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_trig_amtrigonometrycircular_s0",
+            "id": "amtrigonometrycircularExCanvas_s0",
             "label": {
-              "en": "Amplitude <b>A =</b>",
-              "ar": "السعة <b>A =</b>"
+              "en": "Circle Radius <b>r =</b>",
+              "ar": "Circle Radius <b>r =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": 1.5,
+            "max": 4.5,
+            "value": 3.5,
             "step": 0.5,
-            "valueDisplayId": "exAuto_trig_amtrigonometrycircular_v0",
+            "valueDisplayId": "amtrigonometrycircularExCanvas_v0",
             "ariaLabel": {
-              "en": "Amplitude A",
-              "ar": "السعة A"
+              "en": "Circle Radius r =",
+              "ar": "Circle Radius r ="
             }
           },
           {
-            "id": "exAuto_trig_amtrigonometrycircular_s1",
+            "id": "amtrigonometrycircularExCanvas_s1",
             "label": {
-              "en": "Frequency <b>b =</b>",
-              "ar": "التردد <b>b =</b>"
+              "en": "Central Angle <b>θ (rad) =</b>",
+              "ar": "Central Angle <b>θ (rad) =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_trig_amtrigonometrycircular_v1",
+            "min": 0.5,
+            "max": 3.0,
+            "value": 1.6,
+            "step": 0.1,
+            "valueDisplayId": "amtrigonometrycircularExCanvas_v1",
             "ariaLabel": {
-              "en": "Frequency b",
-              "ar": "التردد b"
+              "en": "Central Angle θ (rad) =",
+              "ar": "Central Angle θ (rad) ="
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_trig_amtrigonometrycircular_r0",
+            "id": "amtrigonometrycircularExCanvas_r0",
             "label": {
-              "en": "Amplitude |A|",
-              "ar": "السعة |A|"
+              "en": "Arc Length s = rθ",
+              "ar": "Arc Length s = rθ"
             },
             "colorClass": "indigo",
-            "value": "2.00"
+            "value": "s = 5.60"
           },
           {
-            "id": "exAuto_trig_amtrigonometrycircular_r1",
+            "id": "amtrigonometrycircularExCanvas_r1",
             "label": {
-              "en": "Period 2π/|b|",
-              "ar": "الدورة 2π/|b|"
+              "en": "Sector Area ½r²θ",
+              "ar": "Sector Area ½r²θ"
             },
             "colorClass": "amber",
-            "value": "6.28"
+            "value": "A = 9.80"
+          },
+          {
+            "id": "amtrigonometrycircularExCanvas_r2",
+            "label": {
+              "en": "Shaded Segment ½r²(θ − sin θ)",
+              "ar": "Shaded Segment ½r²(θ − sin θ)"
+            },
+            "colorClass": "teal",
+            "value": "A_seg = 3.68"
           }
-        ]
+        ],
+        "note": {
+          "en": "On a 1:1 square grid, the shaded amber region between chord AB and arc AB has area ½r²(θ − sin θ) = Sector Area − Triangle OAB Area.",
+          "ar": "المنطقة المظللة بين الوتر AB والقوس AB مساحتها ½r²(θ − sin θ) = مساحة القطاع − مساحة المثلث OAB."
+        }
       },
       {
         "kind": "figure",

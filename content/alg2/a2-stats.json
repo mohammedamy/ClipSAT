@@ -75,26 +75,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Probability &amp; Statistics Lab",
+          "en": "⊙ Explorer · Normal Distribution Empirical Rule (68–95–99.7%) & Z-Score",
           "ar": null
         },
-        "canvasId": "exAuto_stats_a2stats",
+        "canvasId": "a2statsExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Probability &amp; Statistics",
+          "en": "Normal Distribution Empirical Rule (68–95–99.7%) & Z-Score interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_a2stats_dataBtn",
-          "panelId": "exAuto_stats_a2stats_dataPanel",
-          "descId": "exAuto_stats_a2stats_dataDesc",
-          "rowsId": "exAuto_stats_a2stats_dataRows",
+          "btnId": "a2statsExCanvas_dataBtn",
+          "panelId": "a2statsExCanvas_dataPanel",
+          "descId": "a2statsExCanvas_dataDesc",
+          "rowsId": "a2statsExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Probability &amp; Statistics",
+            "en": "Live numerical table for Normal Distribution Empirical Rule (68–95–99.7%) & Z-Score",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -105,58 +105,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_stats_a2stats_s0",
+            "id": "a2statsExCanvas_s0",
             "label": {
-              "en": "Sample shift <b>Δ₁ =</b>",
+              "en": "Observation Z-Score <b>z =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_a2stats_v0",
+            "min": -3.0,
+            "max": 3.0,
+            "value": 1.5,
+            "step": 0.25,
+            "valueDisplayId": "a2statsExCanvas_v0",
             "ariaLabel": {
-              "en": "Sample shift delta 1",
+              "en": "Observation Z-Score z =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_stats_a2stats_s1",
+            "id": "a2statsExCanvas_s1",
             "label": {
-              "en": "Tail shift <b>Δ₂ =</b>",
+              "en": "Distribution Spread <b>σ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_a2stats_v1",
+            "min": 0.6,
+            "max": 2.0,
+            "value": 1.0,
+            "step": 0.2,
+            "valueDisplayId": "a2statsExCanvas_v1",
             "ariaLabel": {
-              "en": "Tail shift delta 2",
+              "en": "Distribution Spread σ =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_a2stats_r0",
+            "id": "a2statsExCanvas_r0",
             "label": {
-              "en": "Sample Mean x̄",
+              "en": "Cumulative Percentile Φ(z)",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "13.57"
+            "value": "Φ(z) = 0.9332"
           },
           {
-            "id": "exAuto_stats_a2stats_r1",
+            "id": "a2statsExCanvas_r1",
             "label": {
-              "en": "Sample Median M",
+              "en": "Symmetric Band P(|Z| ≤ |z|)",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "14.0"
+            "value": "86.64%"
+          },
+          {
+            "id": "a2statsExCanvas_r2",
+            "label": {
+              "en": "Value x = μ + zσ",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "x = 1.50"
           }
-        ]
+        ],
+        "note": {
+          "en": "Shade the normal bell curve up to z standard deviations from the mean μ = 0 and verify the 68% (±1σ), 95% (±2σ), and 99.7% (±3σ) empirical benchmarks.",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

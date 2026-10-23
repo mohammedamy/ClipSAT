@@ -109,26 +109,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Sampling &amp; Estimation Lab",
+          "en": "⊙ Explorer · Sampling Distribution of X̄ & 95% Confidence Interval",
           "ar": null
         },
-        "canvasId": "exAuto_quad_a2lsampling",
+        "canvasId": "a2lsamplingExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Sampling &amp; Estimation",
+          "en": "Sampling Distribution of X̄ & 95% Confidence Interval interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_quad_a2lsampling_dataBtn",
-          "panelId": "exAuto_quad_a2lsampling_dataPanel",
-          "descId": "exAuto_quad_a2lsampling_dataDesc",
-          "rowsId": "exAuto_quad_a2lsampling_dataRows",
+          "btnId": "a2lsamplingExCanvas_dataBtn",
+          "panelId": "a2lsamplingExCanvas_dataPanel",
+          "descId": "a2lsamplingExCanvas_dataDesc",
+          "rowsId": "a2lsamplingExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Sampling &amp; Estimation",
+            "en": "Live numerical table for Sampling Distribution of X̄ & 95% Confidence Interval",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -139,58 +139,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_quad_a2lsampling_s0",
+            "id": "a2lsamplingExCanvas_s0",
             "label": {
-              "en": "Vertex parameter <b>a =</b>",
+              "en": "Sample Size <b>n =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_a2lsampling_v0",
+            "min": 4,
+            "max": 64,
+            "value": 16,
+            "step": 4,
+            "valueDisplayId": "a2lsamplingExCanvas_v0",
             "ariaLabel": {
-              "en": "Vertex parameter a",
+              "en": "Sample Size n =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_quad_a2lsampling_s1",
+            "id": "a2lsamplingExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>b =</b>",
+              "en": "Sample Mean <b>x̄ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_a2lsampling_v1",
+            "min": -2.0,
+            "max": 2.0,
+            "value": 0.4,
+            "step": 0.2,
+            "valueDisplayId": "a2lsamplingExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift parameter b",
+              "en": "Sample Mean x̄ =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_quad_a2lsampling_r0",
+            "id": "a2lsamplingExCanvas_r0",
             "label": {
-              "en": "Vertex (h, k)",
+              "en": "Standard Error σ/√n",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "(1.0, -1.0)"
+            "value": "SE = 0.500"
           },
           {
-            "id": "exAuto_quad_a2lsampling_r1",
+            "id": "a2lsamplingExCanvas_r1",
             "label": {
-              "en": "Axis of Symmetry",
+              "en": "95% Confidence Interval",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "x = 1.0"
+            "value": "[-0.58, 1.38]"
+          },
+          {
+            "id": "a2lsamplingExCanvas_r2",
+            "label": {
+              "en": "Interval Half-Width ME",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "±0.980"
           }
-        ]
+        ],
+        "note": {
+          "en": "As sample size n increases, the sampling distribution N(μ, σ²/n) narrows and the 95% confidence interval x̄ ± 1.96·(σ/√n) tightens.",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

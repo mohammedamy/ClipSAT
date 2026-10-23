@@ -86,26 +86,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Numerical Methods Lab",
+          "en": "⊙ Explorer · Fixed-Point Iteration x_{n+1} = g(x_n) Cobweb Diagram",
           "ar": null
         },
-        "canvasId": "exAuto_quad_a2lnumerical",
+        "canvasId": "a2lnumericalExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Numerical Methods",
+          "en": "Fixed-Point Iteration x_{n+1} = g(x_n) Cobweb Diagram interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_quad_a2lnumerical_dataBtn",
-          "panelId": "exAuto_quad_a2lnumerical_dataPanel",
-          "descId": "exAuto_quad_a2lnumerical_dataDesc",
-          "rowsId": "exAuto_quad_a2lnumerical_dataRows",
+          "btnId": "a2lnumericalExCanvas_dataBtn",
+          "panelId": "a2lnumericalExCanvas_dataPanel",
+          "descId": "a2lnumericalExCanvas_dataDesc",
+          "rowsId": "a2lnumericalExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Numerical Methods",
+            "en": "Live numerical table for Fixed-Point Iteration x_{n+1} = g(x_n) Cobweb Diagram",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -116,58 +116,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_quad_a2lnumerical_s0",
+            "id": "a2lnumericalExCanvas_s0",
             "label": {
-              "en": "Vertex parameter <b>a =</b>",
+              "en": "Starting Guess <b>x₀ =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_a2lnumerical_v0",
+            "min": 0.2,
+            "max": 4.8,
+            "value": 0.5,
+            "step": 0.2,
+            "valueDisplayId": "a2lnumericalExCanvas_v0",
             "ariaLabel": {
-              "en": "Vertex parameter a",
+              "en": "Starting Guess x₀ =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_quad_a2lnumerical_s1",
+            "id": "a2lnumericalExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>b =</b>",
+              "en": "Parameter <b>c =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
+            "min": 1.0,
+            "max": 5.0,
+            "value": 3.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_quad_a2lnumerical_v1",
+            "valueDisplayId": "a2lnumericalExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift parameter b",
+              "en": "Parameter c =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_quad_a2lnumerical_r0",
+            "id": "a2lnumericalExCanvas_r0",
             "label": {
-              "en": "Vertex (h, k)",
+              "en": "Fixed-Point Root α",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "(1.0, -1.0)"
+            "value": "α = 2.303"
           },
           {
-            "id": "exAuto_quad_a2lnumerical_r1",
+            "id": "a2lnumericalExCanvas_r1",
             "label": {
-              "en": "Axis of Symmetry",
+              "en": "Iterate x₄ after 4 steps",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "x = 1.0"
+            "value": "x₄ = 2.298"
+          },
+          {
+            "id": "a2lnumericalExCanvas_r2",
+            "label": {
+              "en": "Convergence |g'(α)| < 1",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "|g'(α)| = 0.217 < 1"
           }
-        ]
+        ],
+        "note": {
+          "en": "The staircase/cobweb path alternates vertically to y = g(x) = √(x + c) and horizontally to the line y = x, converging to the root α where g(α) = α.",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

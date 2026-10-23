@@ -80,27 +80,27 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Logistic Regression & Classification Boundaries Lab",
-          "ar": "⊙ مستكشف تفاعلي · مختبر Logistic Regression & Classification Boundaries"
+          "en": "⊙ Explorer · Logistic Regression Sigmoid σ(wx + b) & Decision Boundary",
+          "ar": "⊙ مستكشف تفاعلي · الانحدار اللوجستي ودالة السيجمويد σ(wx + b) وحد القرار"
         },
-        "canvasId": "exAuto_stats_ailogisticregression",
+        "canvasId": "ailogisticregressionExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Logistic Regression & Classification Boundaries",
-          "ar": "مستكشف رياضي تفاعلي لدرس Logistic Regression & Classification Boundaries"
+          "en": "Logistic Regression Sigmoid σ(wx + b) & Decision Boundary interactive mathematical canvas",
+          "ar": "⊙ مستكشف تفاعلي · الانحدار اللوجستي ودالة السيجمويد σ(wx + b) وحد القرار لوحة تفاعلية"
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_ailogisticregression_dataBtn",
-          "panelId": "exAuto_stats_ailogisticregression_dataPanel",
-          "descId": "exAuto_stats_ailogisticregression_dataDesc",
-          "rowsId": "exAuto_stats_ailogisticregression_dataRows",
+          "btnId": "ailogisticregressionExCanvas_dataBtn",
+          "panelId": "ailogisticregressionExCanvas_dataPanel",
+          "descId": "ailogisticregressionExCanvas_dataDesc",
+          "rowsId": "ailogisticregressionExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Logistic Regression & Classification Boundaries",
-            "ar": "جدول القيم العددية لدرس Logistic Regression & Classification Boundaries"
+            "en": "Live numerical table for Logistic Regression Sigmoid σ(wx + b) & Decision Boundary",
+            "ar": "جدول القيم العددية لـ ⊙ مستكشف تفاعلي · الانحدار اللوجستي ودالة السيجمويد σ(wx + b) وحد القرار"
           },
           "columns": [
             {
-              "en": "Input / Metric",
-              "ar": "المدخل / المعيار"
+              "en": "Parameter / Metric",
+              "ar": "المتغير / المعيار"
             },
             {
               "en": "Value",
@@ -110,58 +110,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_stats_ailogisticregression_s0",
+            "id": "ailogisticregressionExCanvas_s0",
             "label": {
-              "en": "Sample shift <b>Δ₁ =</b>",
-              "ar": "إزاحة العينة <b>Δ₁ =</b>"
+              "en": "Weight Steepness <b>w =</b>",
+              "ar": "Weight Steepness <b>w =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_ailogisticregression_v0",
+            "min": 0.5,
+            "max": 4.0,
+            "value": 1.8,
+            "step": 0.25,
+            "valueDisplayId": "ailogisticregressionExCanvas_v0",
             "ariaLabel": {
-              "en": "Sample shift delta 1",
-              "ar": "إزاحة العينة 1"
+              "en": "Weight Steepness w =",
+              "ar": "Weight Steepness w ="
             }
           },
           {
-            "id": "exAuto_stats_ailogisticregression_s1",
+            "id": "ailogisticregressionExCanvas_s1",
             "label": {
-              "en": "Tail shift <b>Δ₂ =</b>",
-              "ar": "إزاحة الطرف <b>Δ₂ =</b>"
+              "en": "Bias Shift <b>b =</b>",
+              "ar": "Bias Shift <b>b =</b>"
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_ailogisticregression_v1",
+            "min": -3.0,
+            "max": 3.0,
+            "value": -0.9,
+            "step": 0.3,
+            "valueDisplayId": "ailogisticregressionExCanvas_v1",
             "ariaLabel": {
-              "en": "Tail shift delta 2",
-              "ar": "إزاحة الطرف 2"
+              "en": "Bias Shift b =",
+              "ar": "Bias Shift b ="
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_ailogisticregression_r0",
+            "id": "ailogisticregressionExCanvas_r0",
             "label": {
-              "en": "Sample Mean x̄",
-              "ar": "المتوسط الحسابي x̄"
+              "en": "Decision Boundary x* = −b/w",
+              "ar": "Decision Boundary x* = −b/w"
             },
             "colorClass": "indigo",
-            "value": "13.57"
+            "value": "x* = 0.50"
           },
           {
-            "id": "exAuto_stats_ailogisticregression_r1",
+            "id": "ailogisticregressionExCanvas_r1",
             "label": {
-              "en": "Sample Median M",
-              "ar": "الوسيط M"
+              "en": "Probability σ(w·1 + b)",
+              "ar": "Probability σ(w·1 + b)"
             },
             "colorClass": "amber",
-            "value": "14.0"
+            "value": "σ(z) = 0.711"
+          },
+          {
+            "id": "ailogisticregressionExCanvas_r2",
+            "label": {
+              "en": "Binary Cross-Entropy Loss",
+              "ar": "Binary Cross-Entropy Loss"
+            },
+            "colorClass": "teal",
+            "value": "BCE ≈ 0.389"
           }
-        ]
+        ],
+        "note": {
+          "en": "Class 0 (indigo dots at y=0) and Class 1 (amber dots at y=1) are separated by the sigmoid curve P(y=1|x) = 1/(1 + e^(−(wx+b))), which crosses 0.5 at x* = −b/w.",
+          "ar": "يفصل منحنى السيجمويد P(y=1|x) = 1/(1 + e^(−(wx+b))) بين الفئة 0 والفئة 1 عند حد القرار الرأسي x* = −b/w."
+        }
       },
       {
         "kind": "figure",

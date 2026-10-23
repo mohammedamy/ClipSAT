@@ -87,26 +87,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Integration Lab",
+          "en": "⊙ Explorer · Integration by Parts & Trapezium Rule Approximator",
           "ar": null
         },
-        "canvasId": "exAuto_calc_a2linteg",
+        "canvasId": "a2lintegExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Integration",
+          "en": "Integration by Parts & Trapezium Rule Approximator interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_calc_a2linteg_dataBtn",
-          "panelId": "exAuto_calc_a2linteg_dataPanel",
-          "descId": "exAuto_calc_a2linteg_dataDesc",
-          "rowsId": "exAuto_calc_a2linteg_dataRows",
+          "btnId": "a2lintegExCanvas_dataBtn",
+          "panelId": "a2lintegExCanvas_dataPanel",
+          "descId": "a2lintegExCanvas_dataDesc",
+          "rowsId": "a2lintegExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Integration",
+            "en": "Live numerical table for Integration by Parts & Trapezium Rule Approximator",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -117,65 +117,78 @@
         },
         "controls": [
           {
-            "id": "exAuto_calc_a2linteg_s0",
+            "id": "a2lintegExCanvas_s0",
             "label": {
-              "en": "Tangent point <b>a =</b>",
+              "en": "Upper Limit <b>b =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
+            "min": 1.0,
+            "max": 5.0,
+            "value": 4.0,
             "step": 0.5,
-            "valueDisplayId": "exAuto_calc_a2linteg_v0",
+            "valueDisplayId": "a2lintegExCanvas_v0",
             "ariaLabel": {
-              "en": "Tangent parameter a",
+              "en": "Upper Limit b =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_calc_a2linteg_s1",
+            "id": "a2lintegExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>c =</b>",
+              "en": "Trapezium Strips <b>n =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_calc_a2linteg_v1",
+            "min": 2,
+            "max": 12,
+            "value": 4,
+            "step": 1,
+            "valueDisplayId": "a2lintegExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift c",
+              "en": "Trapezium Strips n =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_calc_a2linteg_r0",
+            "id": "a2lintegExCanvas_r0",
             "label": {
-              "en": "Derivative f'(x₀)",
+              "en": "Exact ∫₀ᵇ x·e^(−0.4x) dx",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "f'(1.2) = 0.33"
+            "value": "2.9692"
           },
           {
-            "id": "exAuto_calc_a2linteg_r1",
+            "id": "a2lintegExCanvas_r1",
             "label": {
-              "en": "Definite Integral ∫₀ˣ f(t)dt",
+              "en": "Trapezium Estimate T_n",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "∫₀ˣ f(t)dt = 0.19"
+            "value": "2.8764"
+          },
+          {
+            "id": "a2lintegExCanvas_r2",
+            "label": {
+              "en": "Relative Error",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "3.13%"
           }
         ],
+        "note": {
+          "en": "Compare the exact integral ∫₀ᵇ x·e^(−0.4x)dx (found via integration by parts) with the n-strip trapezium rule approximation.",
+          "ar": null
+        },
         "canvas3d": {
-          "btnId": "exAuto3dBtn_surf_a2linteg",
-          "wrapId": "exAuto3dWrap_a2linteg",
-          "hintId": "exAuto3dHint_a2linteg",
-          "btnLabel": "🧊 View Interactive 3D Model",
+          "btnId": "a2lintegExCanvas_3dBtn",
+          "wrapId": "a2lintegExCanvas_3dWrap",
+          "hintId": "a2lintegExCanvas_3dHint",
+          "btnLabel": "🧊 View Integration by Parts & Trapezium Rule Approximator in 3D",
           "ariaLabel": {
-            "en": "Interactive 3D visualization for Integration. Drag to rotate.",
+            "en": "Interactive 3D visualization for Integration by Parts & Trapezium Rule Approximator. Drag to rotate.",
             "ar": null
           }
         }

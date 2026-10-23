@@ -97,26 +97,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Permutations &amp; Combinations Lab",
+          "en": "⊙ Explorer · Selections nCr & Arrangements nPr Explorer",
           "ar": null
         },
-        "canvasId": "exAuto_stats_aspermcomb",
+        "canvasId": "aspermcombExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Permutations &amp; Combinations",
+          "en": "Selections nCr & Arrangements nPr Explorer interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_stats_aspermcomb_dataBtn",
-          "panelId": "exAuto_stats_aspermcomb_dataPanel",
-          "descId": "exAuto_stats_aspermcomb_dataDesc",
-          "rowsId": "exAuto_stats_aspermcomb_dataRows",
+          "btnId": "aspermcombExCanvas_dataBtn",
+          "panelId": "aspermcombExCanvas_dataPanel",
+          "descId": "aspermcombExCanvas_dataDesc",
+          "rowsId": "aspermcombExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Permutations &amp; Combinations",
+            "en": "Live numerical table for Selections nCr & Arrangements nPr Explorer",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -127,58 +127,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_stats_aspermcomb_s0",
+            "id": "aspermcombExCanvas_s0",
             "label": {
-              "en": "Sample shift <b>Δ₁ =</b>",
+              "en": "Total Objects <b>n =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_aspermcomb_v0",
+            "min": 4,
+            "max": 10,
+            "value": 6,
+            "step": 1,
+            "valueDisplayId": "aspermcombExCanvas_v0",
             "ariaLabel": {
-              "en": "Sample shift delta 1",
+              "en": "Total Objects n =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_stats_aspermcomb_s1",
+            "id": "aspermcombExCanvas_s1",
             "label": {
-              "en": "Tail shift <b>Δ₂ =</b>",
+              "en": "Chosen Count <b>r =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_stats_aspermcomb_v1",
+            "min": 1,
+            "max": 6,
+            "value": 3,
+            "step": 1,
+            "valueDisplayId": "aspermcombExCanvas_v1",
             "ariaLabel": {
-              "en": "Tail shift delta 2",
+              "en": "Chosen Count r =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_stats_aspermcomb_r0",
+            "id": "aspermcombExCanvas_r0",
             "label": {
-              "en": "Sample Mean x̄",
+              "en": "Unordered Teams nCr",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "13.57"
+            "value": "6C3 = 20"
           },
           {
-            "id": "exAuto_stats_aspermcomb_r1",
+            "id": "aspermcombExCanvas_r1",
             "label": {
-              "en": "Sample Median M",
+              "en": "Ordered Lineups nPr",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "14.0"
+            "value": "6P3 = 120"
+          },
+          {
+            "id": "aspermcombExCanvas_r2",
+            "label": {
+              "en": "Ratio nPr / nCr = r!",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "6C3 = 20"
           }
-        ]
+        ],
+        "note": {
+          "en": "Compare unordered selections nCr = n! / (r!(n−r)!) against ordered permutations nPr = n! / (n−r)!.",
+          "ar": null
+        }
       },
       {
         "kind": "cards",

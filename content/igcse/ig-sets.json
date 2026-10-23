@@ -95,26 +95,26 @@
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Interactive Sets &amp; Venn Diagrams Lab",
+          "en": "⊙ Explorer · Venn Diagram Set Cardinality n(A ∪ B) = n(A) + n(B) − n(A ∩ B)",
           "ar": null
         },
-        "canvasId": "exAuto_quad_igsets",
+        "canvasId": "igsetsExCanvas",
         "ariaLabel": {
-          "en": "Interactive square-lattice mathematical explorer for Sets &amp; Venn Diagrams",
+          "en": "Venn Diagram Set Cardinality n(A ∪ B) = n(A) + n(B) − n(A ∩ B) interactive mathematical canvas",
           "ar": null
         },
         "dataPanel": {
-          "btnId": "exAuto_quad_igsets_dataBtn",
-          "panelId": "exAuto_quad_igsets_dataPanel",
-          "descId": "exAuto_quad_igsets_dataDesc",
-          "rowsId": "exAuto_quad_igsets_dataRows",
+          "btnId": "igsetsExCanvas_dataBtn",
+          "panelId": "igsetsExCanvas_dataPanel",
+          "descId": "igsetsExCanvas_dataDesc",
+          "rowsId": "igsetsExCanvas_dataRows",
           "caption": {
-            "en": "Numerical table for Sets &amp; Venn Diagrams",
+            "en": "Live numerical table for Venn Diagram Set Cardinality n(A ∪ B) = n(A) + n(B) − n(A ∩ B)",
             "ar": null
           },
           "columns": [
             {
-              "en": "Input / Metric",
+              "en": "Parameter / Metric",
               "ar": null
             },
             {
@@ -125,58 +125,71 @@
         },
         "controls": [
           {
-            "id": "exAuto_quad_igsets_s0",
+            "id": "igsetsExCanvas_s0",
             "label": {
-              "en": "Vertex parameter <b>a =</b>",
+              "en": "Set A Proportion <b>n(A)/N =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 2,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_igsets_v0",
+            "min": 0.2,
+            "max": 0.7,
+            "value": 0.5,
+            "step": 0.05,
+            "valueDisplayId": "igsetsExCanvas_v0",
             "ariaLabel": {
-              "en": "Vertex parameter a",
+              "en": "Set A Proportion n(A)/N =",
               "ar": null
             }
           },
           {
-            "id": "exAuto_quad_igsets_s1",
+            "id": "igsetsExCanvas_s1",
             "label": {
-              "en": "Vertical shift <b>b =</b>",
+              "en": "Intersection <b>n(A ∩ B)/N =</b>",
               "ar": null
             },
-            "min": -4,
-            "max": 4,
-            "value": 1,
-            "step": 0.5,
-            "valueDisplayId": "exAuto_quad_igsets_v1",
+            "min": 0.05,
+            "max": 0.4,
+            "value": 0.2,
+            "step": 0.05,
+            "valueDisplayId": "igsetsExCanvas_v1",
             "ariaLabel": {
-              "en": "Vertical shift parameter b",
+              "en": "Intersection n(A ∩ B)/N =",
               "ar": null
             }
           }
         ],
         "readouts": [
           {
-            "id": "exAuto_quad_igsets_r0",
+            "id": "igsetsExCanvas_r0",
             "label": {
-              "en": "Vertex (h, k)",
+              "en": "Union n(A ∪ B) (out of N=100)",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "(1.0, -1.0)"
+            "value": "0.70"
           },
           {
-            "id": "exAuto_quad_igsets_r1",
+            "id": "igsetsExCanvas_r1",
             "label": {
-              "en": "Axis of Symmetry",
+              "en": "Only A: n(A ∩ B') & Only B",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "x = 1.0"
+            "value": "0.50"
+          },
+          {
+            "id": "igsetsExCanvas_r2",
+            "label": {
+              "en": "Complement Outside n((A ∪ B)')",
+              "ar": null
+            },
+            "colorClass": "teal",
+            "value": "P(A)P(B) = 0.20"
           }
-        ]
+        ],
+        "note": {
+          "en": "Visualize universal set ℰ (N = 100 students) partitioned into A only, intersection A ∩ B, B only (with n(B) = 40), and outside (A ∪ B)'.",
+          "ar": null
+        }
       },
       {
         "kind": "cards",
