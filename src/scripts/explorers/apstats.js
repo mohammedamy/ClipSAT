@@ -146,4 +146,41 @@
     function upd(){ n=parseInt(sn.value,10); _set('apsNlab', n); updateDataView(); redrawAll(); }
     sn.addEventListener('input',upd); upd();
   })();
+
+  /* 3D Bivariate Normal Density Surface (AP Statistics) */
+  (function(){
+    var btn=document.getElementById("apsNorm3dBtn"), wrap=document.getElementById("apsNorm3dWrap"), hint=document.getElementById("apsNorm3dHint");
+    if(!btn||!wrap) return;
+    var sZ=document.getElementById("apsZ");
+    var built=false, H=null, cutPlane=null;
+    function build(mods){
+      var T=mods.THREE, COLOR=ClipSAT3D.COLOR;
+      H=ClipSAT3D.setup(wrap, mods, {az:0.8, el:0.5, dist:10, target:new T.Vector3(0,1.2,0),
+        axisSegs:[[[-4,0,0],[4,0,0]],[[0,0,0],[0,4,0]],[[0,0,-4],[0,0,4]]]});
+      var coneGeo=new T.ConeGeometry(3.2, 3.2, 40, 12, true);
+      var bellMat=new T.MeshLambertMaterial({color:COLOR.INDIGO, transparent:true, opacity:0.48, side:T.DoubleSide});
+      var bell=new T.Mesh(coneGeo, bellMat);
+      bell.position.set(0, 1.6, 0);
+      H.scene.add(bell);
+      var pGeo=new T.PlaneGeometry(5, 3.5);
+      cutPlane=new T.Mesh(pGeo, new T.MeshLambertMaterial({color:COLOR.AMBER, transparent:true, opacity:0.65, side:T.DoubleSide}));
+      cutPlane.rotation.y = Math.PI/2;
+      H.scene.add(cutPlane);
+      update();
+    }
+    function update(){
+      if(!H) return;
+      var z=sZ?parseFloat(sZ.value):1.0;
+      cutPlane.position.set(z, 1.6, 0);
+      H.render();
+    }
+    btn.addEventListener("click",function(){
+      if(!wrap.hidden){ wrap.hidden=true; if(hint) hint.hidden=true; btn.setAttribute("aria-expanded","false"); btn.textContent="🧊 View 3D Bivariate Normal Bell Surface"; return; }
+      wrap.hidden=false; if(hint) hint.hidden=false; btn.setAttribute("aria-expanded","true");
+      if(built){ update(); return; }
+      built=true; btn.disabled=true; btn.textContent="Loading 3D…";
+      ClipSAT3D.load().then(function(mods){ btn.disabled=false; btn.textContent="🧊 Hide 3D Bell Surface"; build(mods); });
+    });
+    if(sZ) sZ.addEventListener("input",update);
+  })();
 })(window.CSExplorerKit);

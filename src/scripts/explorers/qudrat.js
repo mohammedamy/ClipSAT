@@ -685,4 +685,36 @@
     if(sp) sp.addEventListener('input',upd);
     if(sn) sn.addEventListener('input',upd);
   })();
+
+  /* 3D Cylinder & Inscribed Cone Visualizer (Qudrat Spatial Geometry) */
+  (function(){
+    var btn=document.getElementById("qudGeo3dBtn"), wrap=document.getElementById("qudGeo3dWrap"), hint=document.getElementById("qudGeo3dHint");
+    if(!btn||!wrap) return;
+    var sR=document.getElementById("qudShadedR");
+    var built=false, H=null, cylMesh=null, coneMesh=null;
+    function build(mods){
+      var T=mods.THREE, COLOR=ClipSAT3D.COLOR;
+      H=ClipSAT3D.setup(wrap, mods, {az:0.8, el:0.45, dist:12, target:new T.Vector3(0,2,0),
+        axisSegs:[[[-5,0,0],[5,0,0]],[[0,0,0],[0,6,0]],[[0,0,-5],[0,0,5]]]});
+      cylMesh=new T.Mesh(new T.CylinderGeometry(1,1,1,36,1,true), new T.MeshLambertMaterial({color:COLOR.INDIGO, transparent:true, opacity:0.3, side:T.DoubleSide}));
+      coneMesh=new T.Mesh(new T.ConeGeometry(1,1,36), new T.MeshLambertMaterial({color:COLOR.AMBER, transparent:true, opacity:0.68, side:T.DoubleSide}));
+      H.scene.add(cylMesh); H.scene.add(coneMesh);
+      update();
+    }
+    function update(){
+      if(!H) return;
+      var r=sR?(parseFloat(sR.value)/2.5):3, h=4;
+      cylMesh.scale.set(r,h,r); cylMesh.position.set(0,h/2,0);
+      coneMesh.scale.set(r,h,r); coneMesh.position.set(0,h/2,0);
+      H.render();
+    }
+    btn.addEventListener("click",function(){
+      if(!wrap.hidden){ wrap.hidden=true; if(hint) hint.hidden=true; btn.setAttribute("aria-expanded","false"); btn.textContent="🧊 عرض المجسمات الهندسية (أسطوانة ومخروط) ثلاثية الأبعاد · View in 3D"; return; }
+      wrap.hidden=false; if(hint) hint.hidden=false; btn.setAttribute("aria-expanded","true");
+      if(built){ update(); return; }
+      built=true; btn.disabled=true; btn.textContent="Loading 3D…";
+      ClipSAT3D.load().then(function(mods){ btn.disabled=false; btn.textContent="🧊 إخفاء العرض ثلاثي الأبعاد · Hide 3D View"; build(mods); });
+    });
+    if(sR) sR.addEventListener("input",update);
+  })();
 })(window.CSExplorerKit);

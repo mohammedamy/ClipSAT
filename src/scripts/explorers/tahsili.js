@@ -544,4 +544,42 @@
     if(sb) sb.addEventListener('input',upd);
     if(sn) sn.addEventListener('input',upd);
   })();
+
+  /* 3D Double-Napped Cone & Conic Slicing Plane (Tahsili Conic Sections) */
+  (function(){
+    var btn=document.getElementById("tahConic3dBtn"), wrap=document.getElementById("tahConic3dWrap"), hint=document.getElementById("tahConic3dHint");
+    if(!btn||!wrap) return;
+    var sA=document.getElementById("tahConicA"), sB=document.getElementById("tahConicB");
+    var built=false, H=null, slicePlane=null;
+    function build(mods){
+      var T=mods.THREE, COLOR=ClipSAT3D.COLOR;
+      H=ClipSAT3D.setup(wrap, mods, {az:0.75, el:0.42, dist:12, target:new T.Vector3(0,0,0),
+        axisSegs:[[[-5,0,0],[5,0,0]],[[0,-5,0],[0,5,0]],[[0,0,-5],[0,0,5]]]});
+      var cMat=new T.MeshLambertMaterial({color:COLOR.INDIGO, transparent:true, opacity:0.32, side:T.DoubleSide});
+      var topCone=new T.Mesh(new T.ConeGeometry(2.8, 3.5, 36, 1, true), cMat);
+      topCone.position.set(0, 1.75, 0); topCone.rotation.x = Math.PI;
+      var botCone=new T.Mesh(new T.ConeGeometry(2.8, 3.5, 36, 1, true), cMat);
+      botCone.position.set(0, -1.75, 0);
+      H.scene.add(topCone); H.scene.add(botCone);
+      slicePlane=new T.Mesh(new T.PlaneGeometry(6.5, 6.5), new T.MeshLambertMaterial({color:COLOR.AMBER, transparent:true, opacity:0.65, side:T.DoubleSide}));
+      H.scene.add(slicePlane);
+      update();
+    }
+    function update(){
+      if(!H) return;
+      var a=sA?parseFloat(sA.value):4, b=sB?parseFloat(sB.value):3;
+      slicePlane.rotation.set(Math.PI/2 - (a-b)*0.12, 0, 0);
+      slicePlane.position.set(0, 1.2, 0);
+      H.render();
+    }
+    btn.addEventListener("click",function(){
+      if(!wrap.hidden){ wrap.hidden=true; if(hint) hint.hidden=true; btn.setAttribute("aria-expanded","false"); btn.textContent="🧊 عرض القطوع المخروطية في الفضاء ثلاثي الأبعاد · View 3D Cone Section"; return; }
+      wrap.hidden=false; if(hint) hint.hidden=false; btn.setAttribute("aria-expanded","true");
+      if(built){ update(); return; }
+      built=true; btn.disabled=true; btn.textContent="Loading 3D…";
+      ClipSAT3D.load().then(function(mods){ btn.disabled=false; btn.textContent="🧊 إخفاء العرض ثلاثي الأبعاد · Hide 3D View"; build(mods); });
+    });
+    if(sA) sA.addEventListener("input",update);
+    if(sB) sB.addEventListener("input",update);
+  })();
 })(window.CSExplorerKit);

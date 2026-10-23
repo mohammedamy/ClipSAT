@@ -305,4 +305,38 @@
     document.getElementById('sysM2').addEventListener('input',function(e){ m2=parseFloat(e.target.value); redrawAll(); });
     document.getElementById('sysB2').addEventListener('input',function(e){ b2=parseFloat(e.target.value); redrawAll(); });
   })();
+
+  /* 3D Intersecting Linear Planes (Algebra Systems) */
+  (function(){
+    var btn=document.getElementById("agSys3dBtn"), wrap=document.getElementById("agSys3dWrap"), hint=document.getElementById("agSys3dHint");
+    if(!btn||!wrap) return;
+    var sM1=document.getElementById("sysM1"), sB1=document.getElementById("sysB1"), sM2=document.getElementById("sysM2"), sB2=document.getElementById("sysB2");
+    var built=false, H=null, p1=null, p2=null;
+    function build(mods){
+      var T=mods.THREE, COLOR=ClipSAT3D.COLOR;
+      H=ClipSAT3D.setup(wrap, mods, {az:0.75, el:0.45, dist:12, target:new T.Vector3(0,0,0),
+        axisSegs:[[[-5,0,0],[5,0,0]],[[0,-5,0],[0,5,0]],[[0,0,-5],[0,0,5]]]});
+      var geo=new T.PlaneGeometry(8,8,10,10);
+      p1=new T.Mesh(geo, new T.MeshLambertMaterial({color:COLOR.INDIGO, transparent:true, opacity:0.55, side:T.DoubleSide}));
+      p2=new T.Mesh(geo, new T.MeshLambertMaterial({color:COLOR.AMBER, transparent:true, opacity:0.55, side:T.DoubleSide}));
+      H.scene.add(p1); H.scene.add(p2);
+      update();
+    }
+    function update(){
+      if(!H) return;
+      var m1=sM1?parseFloat(sM1.value):1, b1=sB1?parseFloat(sB1.value):1;
+      var m2=sM2?parseFloat(sM2.value):-1, b2=sB2?parseFloat(sB2.value):2;
+      p1.rotation.set(Math.atan(m1)*0.5, 0, 0); p1.position.set(0, b1*0.4, 0);
+      p2.rotation.set(0, 0, Math.atan(m2)*0.5); p2.position.set(0, b2*0.4, 0);
+      H.render();
+    }
+    btn.addEventListener("click",function(){
+      if(!wrap.hidden){ wrap.hidden=true; if(hint) hint.hidden=true; btn.setAttribute("aria-expanded","false"); btn.textContent="🧊 View Intersecting Planes in 3D"; return; }
+      wrap.hidden=false; if(hint) hint.hidden=false; btn.setAttribute("aria-expanded","true");
+      if(built){ update(); return; }
+      built=true; btn.disabled=true; btn.textContent="Loading 3D…";
+      ClipSAT3D.load().then(function(mods){ btn.disabled=false; btn.textContent="🧊 Hide 3D Planes View"; build(mods); });
+    });
+    [sM1,sB1,sM2,sB2].forEach(function(el){ if(el) el.addEventListener("input",update); });
+  })();
 })(window.CSExplorerKit);
