@@ -541,6 +541,7 @@ const baseNjk = `<!DOCTYPE html>
       if(!moTimer) moTimer = setTimeout(flushPending, 30);
     }
     whenReady(function(){
+      if(typeof window.CSRenderAllExplorers === 'function') window.CSRenderAllExplorers();
       var initTargets = document.querySelectorAll('.chapter.ch-active, .deep-card, .ch-link, .cq-paper, .fep-body, .ix-sec, #pq-overlay');
       for(var i=0;i<initTargets.length;i++) queueNode(initTargets[i]);
       if(typeof MutationObserver !== 'undefined' && document.body){
@@ -1313,11 +1314,11 @@ const baseNjk = `<!DOCTYPE html>
   <script defer src="${BASE_PATH}/js/quiz-capture-ui.js"></script>
 
   <!-- Engine JS (src/scripts/engine.js — the site's application logic) -->
-  <script src="${BASE_PATH}/js/engine.js?v=20261022d"></script>
+  <script src="${BASE_PATH}/js/engine.js?v=20261024b"></script>
   <!-- This track's canvas explorers (src/scripts/explorers/{track}.js, ADR 0039): loaded only
        where they are used, right after engine.js so they register before init() runs.
        The dev content preview renders every track, so it loads them all. -->
-  {% if trackId == 'dev-content-preview' %}{% for t in explorerTracks %}<script src="${BASE_PATH}/js/ex/{{ t }}.js?v=20261022d"></script>{% endfor %}{% elif trackId in explorerTracks %}<script src="${BASE_PATH}/js/ex/{{ trackId }}.js?v=20261022d"></script>{% endif %}
+  {% if trackId == 'dev-content-preview' %}{% for t in explorerTracks %}<script src="${BASE_PATH}/js/ex/{{ t }}.js?v=20261024b"></script>{% endfor %}{% elif trackId in explorerTracks %}<script src="${BASE_PATH}/js/ex/{{ trackId }}.js?v=20261024b"></script>{% endif %}
 
   <!-- Post-engine shim: override showView() for multi-page navigation.
        ROOT CAUSE FIX (two layers):

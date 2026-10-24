@@ -180,11 +180,11 @@
           },
           "columns": [
             {
-              "en": "step n",
+              "en": "step \\(n\\)",
               "ar": null
             },
             {
-              "en": "P(A)",
+              "en": "\\(P(A)\\)",
               "ar": null
             }
           ]
@@ -193,7 +193,7 @@
           {
             "id": "ibhlMarkovP",
             "label": {
-              "en": "P(A→A):",
+              "en": "\\(P(A \\to A)\\):",
               "ar": null
             },
             "min": 0,
@@ -209,7 +209,7 @@
           {
             "id": "ibhlMarkovQ",
             "label": {
-              "en": "P(B→B):",
+              "en": "\\(P(B \\to B)\\):",
               "ar": null
             },
             "min": 0,
@@ -225,7 +225,7 @@
           {
             "id": "ibhlMarkovX0",
             "label": {
-              "en": "starting P(A):",
+              "en": "starting \\(P(A)\\):",
               "ar": null
             },
             "min": 0,
@@ -243,31 +243,31 @@
           {
             "id": "ibhlMarkovSteady",
             "label": {
-              "en": "steady state πA",
+              "en": "steady state \\(\\pi\\)A",
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "0.571"
+            "value": "\\(0.571\\)"
           },
           {
             "id": "ibhlMarkovX15",
             "label": {
-              "en": "P(A) after 15 steps",
+              "en": "\\(P(A)\\) after 15 steps",
               "ar": null
             },
             "colorClass": "amber",
-            "value": "0.571"
+            "value": "\\(0.571\\)"
           }
         ],
         "note": {
-          "en": "The transition matrix is T = [[P(A→A), 1−P(B→B)], [1−P(A→A), P(B→B)]]. For a regular chain (not both P(A→A) and P(B→B) at the same extreme), whatever starting P(A) you choose, the curve settles onto the dashed steady-state line πA = (1−P(B→B)) / [(1−P(A→A))+(1−P(B→B))] — an eigenvector of T for eigenvalue 1, exactly as defined above. Try starting P(A) = 0 vs 1 with the same P(A→A), P(B→B): different paths, same destination. Push both sliders to the same edge and that regularity breaks: at P(A→A) = P(B→B) = 1 every state is absorbing, so the chain never moves at all and 'steady state' is just wherever you started; at P(A→A) = P(B→B) = 0 the chain swaps states every single step and never settles — it oscillates between P(A) and 1−P(A) forever.",
+          "en": "The transition matrix is \\(T\\) = [\\([P(A \\to A), 1-P(B \\to B)]\\), \\([1-P(A \\to A), P(B \\to B)]\\)]. For a regular chain (not both \\(P(A \\to A)\\) and \\(P(B \\to B)\\) at the same extreme), whatever starting \\(P(A)\\) you choose, the curve settles onto the dashed steady-state line \\(\\pi\\)A = \\((1-P(B \\to B))\\) / [\\((1-P(A \\to A)) + (1-P(B \\to B))\\)] — an eigenvector of \\(T\\) for eigenvalue 1, exactly as defined above. Try starting \\(P(A) = 0\\) vs 1 with the same \\(P(A \\to A)\\), \\(P(B \\to B)\\): different paths, same destination. Push both sliders to the same edge and that regularity breaks: at \\(P(A \\to A) = P(B \\to B) = 1\\) every state is absorbing, so the chain never moves at all and 'steady state' is just wherever you started; at \\(P(A \\to A) = P(B \\to B) = 0\\) the chain swaps states every single step and never settles — it oscillates between \\(P(A)\\) and \\(1 - P(A)\\) forever.",
           "ar": null
         }
       },
       {
         "kind": "explorer",
         "title": {
-          "en": "⊙ Explorer · Kruskal's algorithm, step by step",
+          "en": "⊙ Explorer · Kruskal's algorithm, step \\(by\\) step",
           "ar": null
         },
         "canvasId": "ibhlKruskalCanvas",
@@ -325,7 +325,7 @@
               "ar": null
             },
             "colorClass": "indigo",
-            "value": "10"
+            "value": "\\(10\\)"
           },
           {
             "id": "ibhlKruskalCount",
@@ -338,7 +338,7 @@
           }
         ],
         "note": {
-          "en": "This is exactly the graph from the Practice Problem below (AB=3, BC=2, CD=4, DE=1, AC=7, BD=5, CE=6, AD=8), sorted by weight: DE, BC, AB, CD, BD, CE, AC, AD. Drag the slider to the right one step at a time — green solid edges were added (they connected two previously-separate pieces of the tree), grey dashed edges were skipped (both endpoints were already connected, so adding one would create a cycle). A spanning tree on 5 vertices always needs exactly 4 edges — once the count reaches 4, every later edge in the list is necessarily skipped, whatever weight it has.",
+          "en": "This is exactly the graph from the Practice Problem below (AB=3, BC=2, CD=4, DE=1, AC=7, BD=5, CE=6, AD=8), sorted \\(by\\) weight: DE, BC, AB, CD, BD, CE, AC, AD. Drag the slider to the right one step at a time — green solid edges were added (they connected two previously-separate pieces of the tree), grey dashed edges were skipped (both endpoints were already connected, so adding one would create a cycle). A spanning tree on 5 vertices always needs exactly 4 edges — once the count reaches 4, every later edge in the list is necessarily skipped, whatever weight it has.",
           "ar": null
         }
       },

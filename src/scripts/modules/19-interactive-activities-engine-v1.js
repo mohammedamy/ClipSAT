@@ -39,7 +39,9 @@ function _tex(s){
     out = out.replace(/\$([^\$\n]+)\$/g, '\\($1\\)');
   }
   if(typeof window.CSAutoMath === 'function') out = window.CSAutoMath(out);
-  else if(out.indexOf('\\(') === -1 && out.indexOf('\\[') === -1 && out.indexOf('\\') !== -1){
+  else if(typeof window.CSFormatExplorerMath === 'function' && out.indexOf('\\(') === -1 && out.indexOf('\\[') === -1 && out.indexOf('katex') === -1){
+    out = window.CSFormatExplorerMath(out, false);
+  } else if(out.indexOf('\\(') === -1 && out.indexOf('\\[') === -1 && out.indexOf('\\') !== -1){
     out = '\\(' + out + '\\)';
   }
   return typeof window.CSRenderMathString === 'function' ? window.CSRenderMathString(out) : out;
@@ -52,6 +54,7 @@ function _tex(s){
 function _loc(cfg,key){
   var loc=window.i18n?window.i18n.getLocale():'en';
   var val=(loc==='ar'&&cfg[key+'_ar']!=null)?cfg[key+'_ar']:cfg[key];
+  if(key==='a') return val;
   if(typeof val==='string') return _tex(val);
   if(Array.isArray(val)){
     return val.map(function(v){
@@ -61,6 +64,8 @@ function _loc(cfg,key){
         if(typeof copy.s==='string') copy.s=_tex(copy.s);
         if(typeof copy.l==='string') copy.l=_tex(copy.l);
         if(typeof copy.r==='string') copy.r=_tex(copy.r);
+        if(typeof copy.h==='string') copy.h=_tex(copy.h);
+        if(typeof copy.label==='string') copy.label=_tex(copy.label);
         if(typeof copy.text==='string') copy.text=_tex(copy.text);
         if(typeof copy.ex==='string') copy.ex=_tex(copy.ex);
         return copy;
@@ -136,7 +141,7 @@ function _buildQC(cfg,box){
       var isCorrect=(item.origIdx===cfg.a);
       var fb=document.createElement('div');fb.className='ix-fb '+(isCorrect?'ok':'no');
       fb.setAttribute('role','status');fb.setAttribute('aria-live','polite');
-      var whyText=(cfg.why&&cfg.why[item.origIdx])?('<em>'+cfg.why[item.origIdx]+'</em><br>'):'';
+      var whyText=(cfg.why&&cfg.why[item.origIdx])?('<em>'+_tex(cfg.why[item.origIdx])+'</em><br>'):'';
       fb.innerHTML=(isCorrect?_t('ix.correct'):_t('ix.incorrect'))+whyText+_loc(cfg,'ex');
       box.appendChild(fb);
       var rb=document.createElement('button');rb.type='button';rb.className='ix-again';rb.textContent=_t('ix.tryAgain');
@@ -1349,7 +1354,7 @@ function _buildFN(cfg,box){
     cfg.params.forEach(function(p){
       params[p.name]=p.default;
       var row=document.createElement('div');row.className='ix-fn-ctrl';
-      var lab=document.createElement('label');lab.innerHTML=p.label+': <b class="ix-fn-val">'+p.default+'</b>';
+      var lab=document.createElement('label');lab.innerHTML=_tex(p.label)+': <b class="ix-fn-val">'+p.default+'</b>';
       var slider=document.createElement('input');slider.type='range';
       slider.min=p.min;slider.max=p.max;slider.step=p.step||1;slider.value=p.default;
       slider.setAttribute('aria-label',String(p.label).replace(/<[^>]*>/g,'').trim()||'Value');
@@ -1410,7 +1415,7 @@ function _buildGP(cfg,box){
   var targetPills=[];
   targets.forEach(function(tgt){
     var pill=document.createElement('span');pill.className='ix-gp-target-pill';
-    pill.textContent='• '+tgt.label;
+    pill.innerHTML='• '+_tex(tgt.label);
     pill.setAttribute('data-tgt-idx',String(tgt.idx));
     targetsWrap.appendChild(pill);
     targetPills.push(pill);
@@ -1946,7 +1951,7 @@ function _buildMS(cfg,box){
   rawParts.forEach(function(pt,ptIdx){
     var partEl=document.createElement('div');partEl.className='ix-ms-part';
     var head=document.createElement('div');head.className='ix-ms-part-head';
-    head.innerHTML='<b>'+(pt.label||('Part '+(ptIdx+1)))+'</b> <span class="ix-ms-part-marks">['+(pt.marks||(pt.rubric?pt.rubric.length:0))+' marks]</span>';
+    head.innerHTML='<b>'+_tex(pt.label||('Part '+(ptIdx+1)))+'</b> <span class="ix-ms-part-marks">['+(pt.marks||(pt.rubric?pt.rubric.length:0))+' marks]</span>';
     partEl.appendChild(head);
 
     var itemList=document.createElement('div');itemList.className='ix-ms-rubric-items';
