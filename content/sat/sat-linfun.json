@@ -80,6 +80,379 @@
         ]
       },
       {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● The 4 Essential Forms of a Linear Equation — Interpretation & Instant Graphing Guide",
+          "ar": null
+        },
+        "body": {
+          "en": "<p>On the Digital SAT, linear equations appear in four distinct algebraic structures. Recognizing which geometric feature is exposed directly by each form saves 30–45 seconds per question:</p><table class=\"exam-table\" style=\"margin-top:8px\"><thead><tr><th>Form Name &amp; Equation</th><th>What It Reveals Immediately</th><th>Slope \\(m\\)</th><th>\\(y\\)-Intercept</th><th>\\(x\\)-Intercept (Root)</th><th>How to Quickly Graph (2-Second Method)</th></tr></thead><tbody><tr><td><strong>1. Slope–\\(y\\)-Intercept Form</strong><br>\\(y = mx + c\\)</td><td>Rate of change \\(m\\) and starting value \\((0, c)\\) at \\(x = 0\\).</td><td>\\(m\\)</td><td>\\((0, c)\\)</td><td>\\(\\left(-\\dfrac{c}{m},\\; 0\\right)\\)</td><td><strong>Plot \\((0, c)\\) on the \\(y\\)-axis first</strong>; then move right \\(1\\) unit and up/down \\(m\\) units to place the second point.</td></tr><tr><td><strong>2. Slope–\\(x\\)-Intercept (Root) Form</strong><br>\\(y = m(x - b)\\)</td><td>Rate of change \\(m\\) and the horizontal root \\((b, 0)\\) where \\(y = 0\\).</td><td>\\(m\\)</td><td>\\((0, -mb)\\)</td><td>\\((b, 0)\\)</td><td><strong>Plot \\((b, 0)\\) on the \\(x\\)-axis first</strong> (note the opposite sign inside \\(x - b\\)); then use slope \\(m\\) or connect to \\((0, -mb)\\).</td></tr><tr><td><strong>3. Double-Intercept Form</strong><br>\\(\\dfrac{x}{a} + \\dfrac{y}{b} = 1\\)</td><td>Both axis intercepts \\((a, 0)\\) and \\((0, b)\\) directly from the denominators.</td><td>\\(-\\dfrac{b}{a}\\)</td><td>\\((0, b)\\)</td><td>\\((a, 0)\\)</td><td><strong>Mark \\((a, 0)\\) on the \\(x\\)-axis and \\((0, b)\\) on the \\(y\\)-axis</strong> and draw the straight line connecting them—zero algebra needed!</td></tr><tr><td><strong>4. General / Standard Form</strong><br>\\(ax + by + c = 0\\)</td><td>Linear combination of \\(x\\) and \\(y\\); normal vector \\(\\langle a, b \\rangle\\).</td><td>\\(-\\dfrac{a}{b}\\)</td><td>\\(\\left(0,\\; -\\dfrac{c}{b}\\right)\\)</td><td>\\(\\left(-\\dfrac{c}{a},\\; 0\\right)\\)</td><td><strong>Use the Cover-Up Method:</strong> cover \\(by\\) (set \\(y=0\\)) to plot \\(x = -c/a\\); cover \\(ax\\) (set \\(x=0\\)) to plot \\(y = -c/b\\); connect both intercepts!</td></tr></tbody></table><p style=\"margin-top:8px\"><strong>Contextual SAT Word-Problem Interpretation:</strong></p><ul><li>In \\(y = mx + c\\): \\(c\\) is the <strong>fixed initial amount / flat fee</strong> when \\(x = 0\\), and \\(m\\) is the <strong>change in \\(y\\) per \\(1\\)-unit increase in \\(x\\)</strong>.</li><li>In \\(y = m(x - b)\\): \\(b\\) is the <strong>break-even / threshold input \\(x\\)</strong> where the output \\(y\\) equals zero (or the horizontal shift of \\(y = mx\\) by \\(b\\) units right).</li><li>In \\(\\dfrac{x}{a} + \\dfrac{y}{b} = 1\\): \\(a\\) is the <strong>maximum possible \\(x\\)</strong> when \\(y = 0\\), and \\(b\\) is the <strong>maximum possible \\(y\\)</strong> when \\(x = 0\\) (ideal for resource-allocation problems).</li><li>In \\(ax + by + c = 0\\) (or \\(Ax + By = C\\)): \\(a\\) and \\(b\\) are the <strong>unit rates/weights of two separate items</strong> contributing to a fixed total \\(-c\\).</li></ul>",
+          "ar": null
+        }
+      },
+      {
+        "kind": "figure",
+        "id": "fig-sat-lin-form-1",
+        "title": {
+          "en": "Form 1 · Slope–y-Intercept Form: y = mx + c (Example: y = 1.5x + 3)",
+          "ar": null
+        },
+        "caption": {
+          "en": "Quick-Graphing Recipe for \\(y = mx + c\\): Start at the \\(y\\)-intercept \\((0, c) = (0, 3)\\), then step right \\(\\Delta x = 2\\) and up \\(\\Delta y = 3\\) (since \\(m = 1.5 = 3/2\\)) to reach \\((2, 6)\\). The \\(x\\)-intercept is \\((-c/m, 0) = (-2, 0)\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "xrange": [
+            -4,
+            4
+          ],
+          "yrange": [
+            -3,
+            7
+          ],
+          "fns": [
+            {
+              "fn": "1.5 * x + 3",
+              "color": "var(--fig-indigo)",
+              "label": "y = 1.5x + 3 (m = 1.5, c = 3)"
+            }
+          ],
+          "points": [
+            {
+              "x": 0,
+              "y": 3,
+              "label": "1. Start at y-int (0, c) = (0, 3)"
+            },
+            {
+              "x": 2,
+              "y": 6,
+              "color": "var(--fig-amber)",
+              "label": "2. Slope step (2, 6)"
+            },
+            {
+              "x": -2,
+              "y": 0,
+              "label": "x-int (-c/m, 0) = (-2, 0)"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "figure",
+        "id": "fig-sat-lin-form-2",
+        "title": {
+          "en": "Form 2 · Slope–x-Intercept (Factored) Form: y = m(x − b) (Example: y = 1.5(x − 2))",
+          "ar": null
+        },
+        "caption": {
+          "en": "Quick-Graphing Recipe for \\(y = m(x - b)\\): Plot the \\(x\\)-intercept \\((b, 0) = (2, 0)\\) directly on the \\(x\\)-axis (where \\(x - 2 = 0\\)), then step right \\(2\\) and up \\(3\\) to \\((4, 3)\\), or plot the \\(y\\)-intercept \\((0, -mb) = (0, -3)\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "xrange": [
+            -2,
+            6
+          ],
+          "yrange": [
+            -5,
+            5
+          ],
+          "fns": [
+            {
+              "fn": "1.5 * (x - 2)",
+              "color": "var(--fig-indigo)",
+              "label": "y = 1.5(x - 2) (m = 1.5, b = 2)"
+            }
+          ],
+          "points": [
+            {
+              "x": 2,
+              "y": 0,
+              "color": "var(--fig-amber)",
+              "label": "1. Start at x-int (b, 0) = (2, 0)"
+            },
+            {
+              "x": 4,
+              "y": 3,
+              "label": "2. Slope step (4, 3)"
+            },
+            {
+              "x": 0,
+              "y": -3,
+              "label": "y-int (0, -mb) = (0, -3)"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "figure",
+        "id": "fig-sat-lin-form-3",
+        "title": {
+          "en": "Form 3 · Double-Intercept Form: x/a + y/b = 1 (Example: x/4 + y/3 = 1)",
+          "ar": null
+        },
+        "caption": {
+          "en": "Quick-Graphing Recipe for \\(\\frac{x}{a} + \\frac{y}{b} = 1\\): Read the \\(x\\)-intercept \\((a, 0) = (4, 0)\\) and \\(y\\)-intercept \\((0, b) = (0, 3)\\) straight from the denominators and connect them! The slope is automatically \\(m = -b/a = -3/4 = -0.75\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "xrange": [
+            -2,
+            6
+          ],
+          "yrange": [
+            -2,
+            5
+          ],
+          "fns": [
+            {
+              "fn": "-0.75 * x + 3",
+              "color": "var(--fig-indigo)",
+              "label": "x/4 + y/3 = 1 (m = -3/4)"
+            }
+          ],
+          "points": [
+            {
+              "x": 4,
+              "y": 0,
+              "color": "var(--fig-amber)",
+              "label": "x-int (a, 0) = (4, 0)"
+            },
+            {
+              "x": 0,
+              "y": 3,
+              "color": "var(--fig-amber)",
+              "label": "y-int (0, b) = (0, 3)"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "figure",
+        "id": "fig-sat-lin-form-4",
+        "title": {
+          "en": "Form 4 · General Form: ax + by + c = 0 (Example: 2x + 3y − 6 = 0)",
+          "ar": null
+        },
+        "caption": {
+          "en": "Quick-Graphing Recipe for \\(ax + by + c = 0\\) (Cover-Up Method): Setting \\(y = 0\\) gives \\(2x - 6 = 0 \\implies x = -c/a = 3\\), so plot \\((3, 0)\\). Setting \\(x = 0\\) gives \\(3y - 6 = 0 \\implies y = -c/b = 2\\), so plot \\((0, 2)\\). The slope is \\(m = -a/b = -2/3\\).",
+          "ar": null
+        },
+        "figure": {
+          "type": "fn",
+          "xrange": [
+            -2,
+            5
+          ],
+          "yrange": [
+            -2,
+            4
+          ],
+          "fns": [
+            {
+              "fn": "-0.6667 * x + 2",
+              "color": "var(--fig-indigo)",
+              "label": "2x + 3y - 6 = 0 (m = -2/3)"
+            }
+          ],
+          "points": [
+            {
+              "x": 3,
+              "y": 0,
+              "color": "var(--fig-amber)",
+              "label": "Cover y: (-c/a, 0) = (3, 0)"
+            },
+            {
+              "x": 0,
+              "y": 2,
+              "color": "var(--fig-amber)",
+              "label": "Cover x: (0, -c/b) = (0, 2)"
+            }
+          ]
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · All 4 Forms of a Linear Equation & Instant Graphing",
+          "ar": null
+        },
+        "canvasId": "satLinFormsCanvas",
+        "ariaLabel": {
+          "en": "Interactive graph demonstrating all four forms of a linear equation (y = mx + c, y = m(x - b), x/a + y/b = 1, and ax + by + c = 0) with live anchor points, slope triangle, and equivalent conversions.",
+          "ar": null
+        },
+        "dataPanel": {
+          "btnId": "satLinFormsDataBtn",
+          "panelId": "satLinFormsDataPanel",
+          "descId": "satLinFormsDataDesc",
+          "rowsId": "satLinFormsDataRows",
+          "caption": {
+            "en": "All 4 equivalent linear forms and key graphing anchor coordinates",
+            "ar": null
+          },
+          "columns": [
+            {
+              "en": "Feature / Form",
+              "ar": null
+            },
+            {
+              "en": "Expression / Coordinate",
+              "ar": null
+            },
+            {
+              "en": "Quick-Graphing Role",
+              "ar": null
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "satLinFormsMode",
+            "label": {
+              "en": "Select Linear Form:",
+              "ar": null
+            },
+            "value": "ymxc",
+            "options": [
+              {
+                "value": "ymxc",
+                "label": "Form 1 · y = mx + c  (Slope m & y-intercept c)",
+                "selected": true
+              },
+              {
+                "value": "ymxb",
+                "label": "Form 2 · y = m(x − b)  (Slope m & x-intercept b)"
+              },
+              {
+                "value": "xayb",
+                "label": "Form 3 · x/a + y/b = 1  (Double-Intercepts a & b)"
+              },
+              {
+                "value": "axbyc",
+                "label": "Form 4 · ax + by + c = 0  (General Form Coefficients)"
+              }
+            ],
+            "ariaLabel": {
+              "en": "Select linear equation form",
+              "ar": null
+            }
+          },
+          {
+            "id": "satLinFormsP1",
+            "label": {
+              "en": "Parameter 1 (<b>m</b> or <b>a</b>):",
+              "ar": null
+            },
+            "min": -4,
+            "max": 4,
+            "value": 1.5,
+            "step": 0.5,
+            "valueDisplayId": "satLinFormsP1V",
+            "valueDisplay": "1.5",
+            "ariaLabel": {
+              "en": "First parameter m or a",
+              "ar": null
+            }
+          },
+          {
+            "id": "satLinFormsP2",
+            "label": {
+              "en": "Parameter 2 (<b>c</b> or <b>b</b>):",
+              "ar": null
+            },
+            "min": -5,
+            "max": 5,
+            "value": 3,
+            "step": 0.5,
+            "valueDisplayId": "satLinFormsP2V",
+            "valueDisplay": "3.0",
+            "ariaLabel": {
+              "en": "Second parameter c or b",
+              "ar": null
+            }
+          },
+          {
+            "id": "satLinFormsP3",
+            "label": {
+              "en": "Constant <b>c</b> (Form 4 only):",
+              "ar": null
+            },
+            "min": -8,
+            "max": 8,
+            "value": -6,
+            "step": 1,
+            "valueDisplayId": "satLinFormsP3V",
+            "valueDisplay": "-6",
+            "ariaLabel": {
+              "en": "Constant c for ax + by + c = 0",
+              "ar": null
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "satLinFormsActiveEq",
+            "label": {
+              "en": "Active Form Equation",
+              "ar": null
+            },
+            "colorClass": "indigo",
+            "value": "y = 1.5x + 3"
+          },
+          {
+            "id": "satLinFormsSlopeOut",
+            "label": {
+              "en": "Slope m = Δy/Δx",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "1.50"
+          },
+          {
+            "id": "satLinFormsYIntOut",
+            "label": {
+              "en": "y-intercept (0, y₀)",
+              "ar": null
+            },
+            "value": "(0, 3.00)"
+          },
+          {
+            "id": "satLinFormsXIntOut",
+            "label": {
+              "en": "x-intercept (x₀, 0)",
+              "ar": null
+            },
+            "value": "(−2.00, 0)"
+          },
+          {
+            "id": "satLinFormsGuideOut",
+            "label": {
+              "en": "2-Second Graphing Step",
+              "ar": null
+            },
+            "colorClass": "amber",
+            "value": "Plot (0, 3), then step +1 right, +1.5 up"
+          },
+          {
+            "id": "satLinFormsEquivOut",
+            "label": {
+              "en": "All Equivalent Forms",
+              "ar": null
+            },
+            "value": "y = 1.5(x + 2)  |  x/(−2) + y/3 = 1  |  3x − 2y + 6 = 0"
+          }
+        ],
+        "note": {
+          "en": "Switch among y = mx + c, y = m(x − b), x/a + y/b = 1, and ax + by + c = 0. Amber dots highlight the exact anchor points revealed by the active form, and the dashed rise/run triangle shows how slope m connects them.",
+          "ar": null
+        }
+      },
+      {
         "kind": "explorer",
         "title": {
           "en": "⊙ Explorer · Slope &amp; intercepts",

@@ -564,5 +564,477 @@
     _slider('satAdaptM1',function(v){ m1=v; _set('satAdaptM1V',fmt(v,0)); });
     _slider('satAdaptM2',function(v){ m2=v; _set('satAdaptM2V',fmt(v,0)); });
   })();
+
+  /* ===================== SAT · ALL 4 FORMS OF A LINEAR EQUATION EXPLORER ===================== */
+  (function(){
+    var canvas = document.getElementById('satLinFormsCanvas'); if(!canvas) return;
+    var sMode = document.getElementById('satLinFormsMode');
+    var sP1 = document.getElementById('satLinFormsP1'),
+        sP2 = document.getElementById('satLinFormsP2'),
+        sP3 = document.getElementById('satLinFormsP3');
+    var dataBtn = document.getElementById('satLinFormsDataBtn'),
+        dataPanel = document.getElementById('satLinFormsDataPanel'),
+        dataDesc = document.getElementById('satLinFormsDataDesc'),
+        dataRows = document.getElementById('satLinFormsDataRows');
+    wireDataToggle(dataBtn, dataPanel);
+
+    var mode = 'ymxc', p1 = 1.5, p2 = 3.0, p3 = -6.0;
+    var TEAL = '#0d9488', ROSE = '#e11d48';
+
+    function sgnTerm(v){
+      return v >= 0 ? (' + ' + fmt(v, 2)) : (' − ' + fmt(Math.abs(v), 2));
+    }
+
+    function solveLine(){
+      var m = 1, y0 = 0, x0 = 0, eq = '', guide = '', a1 = [0, 0], a2 = [1, 1], a1Lbl = '', a2Lbl = '';
+      if(mode === 'ymxc'){
+        m = p1; y0 = p2;
+        x0 = Math.abs(m) > 1e-6 ? -y0 / m : NaN;
+        eq = 'y = ' + fmt(m, 2) + 'x' + sgnTerm(y0);
+        a1 = [0, y0]; a2 = [2, y0 + 2 * m];
+        a1Lbl = '1. y-int (0, ' + fmt(y0, 1) + ')';
+        a2Lbl = '2. Step (2, ' + fmt(y0 + 2 * m, 1) + ')';
+        guide = 'Plot (0, ' + fmt(y0, 1) + ') on y-axis; step +2 right, ' + (2*m >= 0 ? '+' : '') + fmt(2*m, 1) + ' vertically';
+      } else if(mode === 'ymxb'){
+        m = p1; x0 = p2;
+        y0 = -m * x0;
+        eq = 'y = ' + fmt(m, 2) + '(x ' + (x0 >= 0 ? '− ' + fmt(x0, 2) : '+ ' + fmt(-x0, 2)) + ')';
+        a1 = [x0, 0]; a2 = [x0 + 2, 2 * m];
+        a1Lbl = '1. x-int (' + fmt(x0, 1) + ', 0)';
+        a2Lbl = '2. Step (' + fmt(x0 + 2, 1) + ', ' + fmt(2 * m, 1) + ')';
+        guide = 'Plot x-intercept (' + fmt(x0, 1) + ', 0) on x-axis; step +2 right, ' + (2*m >= 0 ? '+' : '') + fmt(2*m, 1) + ' vertically';
+      } else if(mode === 'xayb'){
+        var a = Math.abs(p1) < 0.25 ? (p1 >= 0 ? 0.5 : -0.5) : p1;
+        var b = Math.abs(p2) < 0.25 ? (p2 >= 0 ? 0.5 : -0.5) : p2;
+        x0 = a; y0 = b;
+        m = -b / a;
+        eq = 'x/(' + fmt(a, 1) + ') + y/(' + fmt(b, 1) + ') = 1';
+        a1 = [x0, 0]; a2 = [0, y0];
+        a1Lbl = 'x-int (' + fmt(x0, 1) + ', 0)';
+        a2Lbl = 'y-int (0, ' + fmt(y0, 1) + ')';
+        guide = 'Plot (' + fmt(x0, 1) + ', 0) on x-axis & (0, ' + fmt(y0, 1) + ') on y-axis; connect directly!';
+      } else {
+        var A = Math.abs(p1) < 0.25 ? 1.0 : p1;
+        var B = Math.abs(p2) < 0.25 ? 1.0 : p2;
+        var C = p3;
+        m = -A / B;
+        y0 = -C / B;
+        x0 = -C / A;
+        eq = fmt(A, 1) + 'x' + sgnTerm(B) + 'y' + sgnTerm(C) + ' = 0';
+        a1 = [x0, 0]; a2 = [0, y0];
+        a1Lbl = 'Cover y: (' + fmt(x0, 1) + ', 0)';
+        a2Lbl = 'Cover x: (0, ' + fmt(y0, 1) + ')';
+        guide = 'Cover-Up: set y=0 → (' + fmt(x0, 2) + ', 0); set x=0 → (0, ' + fmt(y0, 2) + '); connect!';
+      }
+
+      var eqYmxc = 'y = ' + fmt(m, 2) + 'x' + sgnTerm(y0);
+      var eqYmxb = isFinite(x0) ? ('y = ' + fmt(m, 2) + '(x ' + (x0 >= 0 ? '− ' + fmt(x0, 2) : '+ ' + fmt(-x0, 2)) + ')') : 'No x-intercept (m = 0)';
+      var eqXayb = (isFinite(x0) && Math.abs(x0) > 1e-4 && Math.abs(y0) > 1e-4) ? ('x/' + fmt(x0, 2) + ' + y/' + fmt(y0, 2) + ' = 1') : 'Undefined (passes through origin or horizontal)';
+      var eqGen  = fmt(-m, 2) + 'x + 1y' + sgnTerm(-y0) + ' = 0';
+
+      return {
+        m: m, y0: y0, x0: x0, eq: eq, guide: guide,
+        a1: a1, a2: a2, a1Lbl: a1Lbl, a2Lbl: a2Lbl,
+        eqYmxc: eqYmxc, eqYmxb: eqYmxb, eqXayb: eqXayb, eqGen: eqGen
+      };
+    }
+
+    function draw(ctx, w, h){
+      var L = solveLine();
+      var pad = {l: 34, r: 16, t: 24, b: 26};
+      var view = _fitView(-6.5, 6.5, -6.5, 6.5, w, h, pad);
+      var P = new Plot(ctx, w, h, view, pad);
+      P.clear(); P.grid();
+
+      /* Line y = m*x + y0 */
+      P.curve(function(x){ return L.m * x + L.y0; }, INDIGO, 2.7);
+
+      /* Rise/Run slope triangle between a1 and a2 */
+      P.segment(L.a1[0], L.a1[1], L.a2[0], L.a1[1], TEAL, 1.8, [4, 3]);
+      P.segment(L.a2[0], L.a1[1], L.a2[0], L.a2[1], AMBER2, 1.8, [4, 3]);
+
+      /* Anchor points */
+      P.dot(L.a1[0], L.a1[1], AMBER2, 6.0);
+      P.dot(L.a2[0], L.a2[1], TEAL, 5.5);
+      P.label(L.a1[0] + 0.2, L.a1[1] + 0.35, L.a1Lbl, AMBER2);
+      P.label(L.a2[0] + 0.2, L.a2[1] - 0.35, L.a2Lbl, TEAL);
+
+      var c = ctx;
+      c.font = FONT;
+      c.fillStyle = INDIGO;
+      c.textAlign = 'left';
+      c.textBaseline = 'top';
+      c.fillText('Active Form: ' + L.eq + '   |   Slope m = ' + fmt(L.m, 2), pad.l, 4);
+
+      _set('satLinFormsP1V', fmt(p1, 1));
+      _set('satLinFormsP2V', fmt(p2, 1));
+      _set('satLinFormsP3V', fmt(p3, 0));
+      _set('satLinFormsActiveEq', L.eq);
+      _set('satLinFormsSlopeOut', fmt(L.m, 2));
+      _set('satLinFormsYIntOut', '(0, ' + fmt(L.y0, 2) + ')');
+      _set('satLinFormsXIntOut', isFinite(L.x0) ? ('(' + fmt(L.x0, 2) + ', 0)') : 'None (m = 0)');
+      _set('satLinFormsGuideOut', L.guide);
+      _set('satLinFormsEquivOut', L.eqYmxc + '  |  ' + L.eqYmxb + '  |  ' + L.eqXayb);
+
+      if(dataDesc){
+        dataDesc.textContent = 'Active Linear Form: ' + L.eq + '. ' + L.guide;
+      }
+      if(dataRows){
+        renderDataRows(dataRows, [
+          ['Form 1 (Slope–y-Int)', L.eqYmxc, 'Start at (0, ' + fmt(L.y0, 2) + ')'],
+          ['Form 2 (Slope–x-Int)', L.eqYmxb, isFinite(L.x0) ? ('Start at (' + fmt(L.x0, 2) + ', 0)') : 'Horizontal'],
+          ['Form 3 (Double-Intercept)', L.eqXayb, 'Connect both axis intercepts'],
+          ['Form 4 (General Form)', L.eqGen, 'Cover-up x=0 and y=0']
+        ]);
+      }
+    }
+
+    register(canvas, draw);
+    function sync(){
+      if(sMode) mode = sMode.value;
+      if(sP1) p1 = parseFloat(sP1.value);
+      if(sP2) p2 = parseFloat(sP2.value);
+      if(sP3) p3 = parseFloat(sP3.value);
+      redrawAll();
+    }
+    if(sMode) sMode.addEventListener('change', sync);
+    if(sP1) sP1.addEventListener('input', sync);
+    if(sP2) sP2.addEventListener('input', sync);
+    if(sP3) sP3.addEventListener('input', sync);
+    sync();
+  })();
+
+  /* ===================== SAT · ALL 4 FORMS OF A QUADRATIC FUNCTION EXPLORER ===================== */
+  (function(){
+    var canvas = document.getElementById('satQuadFormsCanvas'); if(!canvas) return;
+    var sMode = document.getElementById('satQuadFormsMode');
+    var sA = document.getElementById('satQuadFormsA'),
+        sP1 = document.getElementById('satQuadFormsP1'),
+        sP2 = document.getElementById('satQuadFormsP2'),
+        sP3 = document.getElementById('satQuadFormsP3');
+    var dataBtn = document.getElementById('satQuadFormsDataBtn'),
+        dataPanel = document.getElementById('satQuadFormsDataPanel'),
+        dataDesc = document.getElementById('satQuadFormsDataDesc'),
+        dataRows = document.getElementById('satQuadFormsDataRows');
+    wireDataToggle(dataBtn, dataPanel);
+
+    var mode = 'std', a = 1.0, p1 = -4.0, p2 = 3.0, p3 = 2.0;
+    var TEAL = '#0d9488', ROSE = '#e11d48';
+
+    function sgnTerm(v){
+      return v >= 0 ? (' + ' + fmt(v, 2)) : (' − ' + fmt(Math.abs(v), 2));
+    }
+    function factorStr(r){
+      if(Math.abs(r) < 1e-6) return 'x';
+      return '(x ' + (r >= 0 ? '− ' + fmt(r, 1) : '+ ' + fmt(-r, 1)) + ')';
+    }
+
+    function solveQuad(){
+      var aa = Math.abs(a) < 0.1 ? 0.5 : a;
+      var B = 0, C = 0, h = 0, k = 0, eq = '', anchorsTxt = '', chordY = null, pts = [];
+
+      if(mode === 'std'){
+        B = p1; C = p2;
+        h = -B / (2 * aa);
+        k = aa * h * h + B * h + C;
+        eq = 'f(x) = ' + fmt(aa, 1) + 'x²' + sgnTerm(B) + 'x' + sgnTerm(C);
+        var symX = -B / aa;
+        pts = [
+          {x: 0, y: C, lbl: '(0, c)=(' + 0 + ',' + fmt(C, 1) + ')', col: AMBER2},
+          {x: symX, y: C, lbl: '(−b/a, c)=(' + fmt(symX, 1) + ',' + fmt(C, 1) + ')', col: AMBER2}
+        ];
+        chordY = C;
+        anchorsTxt = '(0, ' + fmt(C, 2) + ') & (' + fmt(symX, 2) + ', ' + fmt(C, 2) + ')';
+      } else if(mode === 'fac'){
+        var m = p1, n = p2;
+        B = -aa * (m + n);
+        C = aa * m * n;
+        h = 0.5 * (m + n);
+        k = aa * (h - m) * (h - n);
+        eq = 'f(x) = ' + fmt(aa, 1) + factorStr(m) + factorStr(n);
+        pts = [
+          {x: m, y: 0, lbl: 'Root (' + fmt(m, 1) + ', 0)', col: AMBER2},
+          {x: n, y: 0, lbl: 'Root (' + fmt(n, 1) + ', 0)', col: AMBER2}
+        ];
+        chordY = 0;
+        anchorsTxt = 'Roots (' + fmt(m, 2) + ', 0) & (' + fmt(n, 2) + ', 0)';
+      } else if(mode === 'vtx'){
+        h = p1; k = p2;
+        B = -2 * aa * h;
+        C = aa * h * h + k;
+        eq = 'f(x) = ' + fmt(aa, 1) + factorStr(h) + '²' + sgnTerm(k);
+        pts = [
+          {x: h - 1, y: k + aa, lbl: '(h−1, k+a)', col: TEAL},
+          {x: h + 1, y: k + aa, lbl: '(h+1, k+a)', col: TEAL}
+        ];
+        anchorsTxt = 'Vertex (' + fmt(h, 2) + ', ' + fmt(k, 2) + ') & ±1 step (' + fmt(h + 1, 1) + ', ' + fmt(k + aa, 1) + ')';
+      } else {
+        var p = p1, q = p2, l = p3;
+        B = -aa * (p + q);
+        C = aa * p * q + l;
+        h = 0.5 * (p + q);
+        k = aa * (h - p) * (h - q) + l;
+        eq = 'f(x) = ' + fmt(aa, 1) + factorStr(p) + factorStr(q) + sgnTerm(l);
+        pts = [
+          {x: p, y: l, lbl: '(p, l)=(' + fmt(p, 1) + ',' + fmt(l, 1) + ')', col: AMBER2},
+          {x: q, y: l, lbl: '(q, l)=(' + fmt(q, 1) + ',' + fmt(l, 1) + ')', col: AMBER2}
+        ];
+        chordY = l;
+        anchorsTxt = 'Chord pts (' + fmt(p, 2) + ', ' + fmt(l, 2) + ') & (' + fmt(q, 2) + ', ' + fmt(l, 2) + ') on y = ' + fmt(l, 1);
+      }
+
+      var disc = B * B - 4 * aa * C;
+      var rootsTxt = 'No real x-intercepts (Δ < 0)';
+      if(disc >= 0){
+        var r1 = (-B - Math.sqrt(disc)) / (2 * aa);
+        var r2 = (-B + Math.sqrt(disc)) / (2 * aa);
+        rootsTxt = '(' + fmt(r1, 2) + ', 0) & (' + fmt(r2, 2) + ', 0)';
+      }
+
+      var eqStd = 'f(x) = ' + fmt(aa, 1) + 'x²' + sgnTerm(B) + 'x' + sgnTerm(C);
+      var eqVtx = 'f(x) = ' + fmt(aa, 1) + factorStr(h) + '²' + sgnTerm(k);
+
+      return {
+        a: aa, B: B, C: C, h: h, k: k, eq: eq,
+        anchorsTxt: anchorsTxt, chordY: chordY, pts: pts,
+        rootsTxt: rootsTxt, eqStd: eqStd, eqVtx: eqVtx
+      };
+    }
+
+    function draw(ctx, w, h){
+      var Q = solveQuad();
+      var pad = {l: 34, r: 16, t: 24, b: 26};
+      var view = _fitView(-6.5, 6.5, -6.5, 7.5, w, h, pad);
+      var P = new Plot(ctx, w, h, view, pad);
+      P.clear(); P.grid();
+
+      /* Axis of symmetry x = h */
+      P.vline(Q.h, ROSE, [5, 4]);
+
+      /* Horizontal chord line if applicable */
+      if(Q.chordY !== null){
+        P.hline(Q.chordY, 'rgba(200,144,42,0.55)', [4, 3]);
+      }
+
+      /* Parabola curve */
+      P.curve(function(x){ return Q.a * (x - Q.h) * (x - Q.h) + Q.k; }, INDIGO, 2.7);
+
+      /* Vertex dot */
+      P.dot(Q.h, Q.k, INDIGO, 6.0);
+      P.label(Q.h + 0.2, Q.k + (Q.a > 0 ? -0.45 : 0.45), 'Vertex (' + fmt(Q.h, 1) + ', ' + fmt(Q.k, 1) + ')', INDIGO);
+
+      /* Form-specific anchor dots */
+      for(var i = 0; i < Q.pts.length; i++){
+        var pt = Q.pts[i];
+        P.dot(pt.x, pt.y, pt.col, 5.8);
+        P.label(pt.x + 0.18, pt.y + 0.35, pt.lbl, pt.col);
+      }
+
+      var c = ctx;
+      c.font = FONT;
+      c.fillStyle = INDIGO;
+      c.textAlign = 'left';
+      c.textBaseline = 'top';
+      c.fillText('Active Form: ' + Q.eq + '   |   Axis of Symmetry: x = ' + fmt(Q.h, 2), pad.l, 4);
+
+      _set('satQuadFormsAV', fmt(Q.a, 1));
+      _set('satQuadFormsP1V', fmt(p1, 1));
+      _set('satQuadFormsP2V', fmt(p2, 1));
+      _set('satQuadFormsP3V', fmt(p3, 1));
+      _set('satQuadFormsActiveEq', Q.eq);
+      _set('satQuadFormsVtxOut', '(' + fmt(Q.h, 2) + ', ' + fmt(Q.k, 2) + ')  |  x = ' + fmt(Q.h, 2));
+      _set('satQuadFormsAnchorsOut', Q.anchorsTxt);
+      _set('satQuadFormsRootsOut', Q.rootsTxt);
+      _set('satQuadFormsYIntOut', '(0, ' + fmt(Q.C, 2) + ')');
+      _set('satQuadFormsEquivOut', Q.eqVtx + '  =  ' + Q.eqStd);
+
+      if(dataDesc){
+        dataDesc.textContent = Q.eq + ' — Vertex (' + fmt(Q.h, 2) + ', ' + fmt(Q.k, 2) + '), Axis x = ' + fmt(Q.h, 2) + ', Anchors: ' + Q.anchorsTxt + '.';
+      }
+      if(dataRows){
+        renderDataRows(dataRows, [
+          ['Active Form', Q.eq, Q.anchorsTxt],
+          ['Vertex Form', Q.eqVtx, 'Vertex (' + fmt(Q.h, 2) + ', ' + fmt(Q.k, 2) + ')'],
+          ['Standard Form', Q.eqStd, 'y-intercept (0, ' + fmt(Q.C, 2) + ')'],
+          ['x-Intercepts (Roots)', Q.rootsTxt, 'Where f(x) = 0']
+        ]);
+      }
+    }
+
+    register(canvas, draw);
+    function sync(){
+      if(sMode){
+        var newMode = sMode.value;
+        if(newMode !== mode){
+          mode = newMode;
+          if(mode === 'std'){ p1 = -4; p2 = 3; }
+          else if(mode === 'fac'){ p1 = 1; p2 = 5; }
+          else if(mode === 'vtx'){ p1 = 2; p2 = -3; }
+          else if(mode === 'chd'){ p1 = 1; p2 = 5; p3 = 2; }
+          if(sP1) sP1.value = p1;
+          if(sP2) sP2.value = p2;
+          if(sP3) sP3.value = p3;
+        }
+      }
+      if(sA){
+        a = parseFloat(sA.value);
+        if(Math.abs(a) < 0.1){ a = 0.5; sA.value = 0.5; }
+      }
+      if(sP1) p1 = parseFloat(sP1.value);
+      if(sP2) p2 = parseFloat(sP2.value);
+      if(sP3) p3 = parseFloat(sP3.value);
+      redrawAll();
+    }
+    if(sMode) sMode.addEventListener('change', sync);
+    if(sA) sA.addEventListener('input', sync);
+    if(sP1) sP1.addEventListener('input', sync);
+    if(sP2) sP2.addEventListener('input', sync);
+    if(sP3) sP3.addEventListener('input', sync);
+    sync();
+  })();
+
+  /* ===================== SAT · ALL 4 FORMS OF AN EXPONENTIAL FUNCTION EXPLORER ===================== */
+  (function(){
+    var canvas = document.getElementById('satExpFormsCanvas'); if(!canvas) return;
+    var sMode = document.getElementById('satExpFormsMode');
+    var sA = document.getElementById('satExpFormsA'),
+        sB = document.getElementById('satExpFormsB'),
+        sKH = document.getElementById('satExpFormsKH'),
+        sD = document.getElementById('satExpFormsD');
+    var dataBtn = document.getElementById('satExpFormsDataBtn'),
+        dataPanel = document.getElementById('satExpFormsDataPanel'),
+        dataDesc = document.getElementById('satExpFormsDataDesc'),
+        dataRows = document.getElementById('satExpFormsDataRows');
+    wireDataToggle(dataBtn, dataPanel);
+
+    var mode = 'std', a = 2.0, b = 1.5, kh = 2.0, d = 1.0;
+    var TEAL = '#0d9488', ROSE = '#e11d48';
+
+    function solveExp(){
+      var aa = Math.abs(a) < 0.1 ? 1.0 : a;
+      var bb = Math.max(0.2, b);
+      var asym = 0, eq = '', guide = '', p1 = [0, aa], p2 = [1, aa * bb], fn = null;
+      var ratePct = (bb - 1) * 100;
+
+      if(mode === 'std'){
+        asym = 0;
+        fn = function(x){ return aa * Math.pow(bb, x); };
+        p1 = [0, aa];
+        p2 = [1, aa * bb];
+        eq = 'f(x) = ' + fmt(aa, 1) + ' · (' + fmt(bb, 2) + ')ˣ';
+        guide = 'Draw y = 0; plot (0, ' + fmt(aa, 1) + ') and step +1 right to (1, ' + fmt(aa * bb, 2) + ')';
+      } else if(mode === 'rate'){
+        asym = 0;
+        fn = function(x){ return aa * Math.pow(bb, x); };
+        p1 = [0, aa];
+        p2 = [1, aa * bb];
+        var rSign = ratePct >= 0 ? ('1 + ' + fmt(ratePct/100, 2)) : ('1 − ' + fmt(Math.abs(ratePct)/100, 2));
+        eq = 'f(t) = ' + fmt(aa, 1) + '(' + rSign + ')ᵗ   [' + (ratePct >= 0 ? '+' : '') + fmt(ratePct, 0) + '% per unit t]';
+        guide = 'Rate r = ' + (ratePct >= 0 ? '+' : '') + fmt(ratePct, 0) + '% → base b = ' + fmt(bb, 2) + '; plot (0, ' + fmt(aa, 1) + ') & (1, ' + fmt(aa * bb, 2) + ')';
+      } else if(mode === 'period'){
+        var kPer = Math.abs(kh) < 0.5 ? 2.0 : Math.abs(kh);
+        asym = 0;
+        fn = function(x){ return aa * Math.pow(bb, x / kPer); };
+        p1 = [0, aa];
+        p2 = [kPer, aa * bb];
+        eq = 'f(t) = ' + fmt(aa, 1) + ' · (' + fmt(bb, 2) + ')^(t/' + fmt(kPer, 1) + ')';
+        guide = 'Plot (0, ' + fmt(aa, 1) + '); step horizontally by period k = ' + fmt(kPer, 1) + ' to (' + fmt(kPer, 1) + ', ' + fmt(aa * bb, 2) + ')!';
+        ratePct = (Math.pow(bb, 1 / kPer) - 1) * 100;
+      } else {
+        var hShift = kh;
+        asym = d;
+        fn = function(x){ return aa * Math.pow(bb, x - hShift) + d; };
+        p1 = [hShift, aa + d];
+        p2 = [hShift + 1, aa * bb + d];
+        var hTxt = hShift >= 0 ? ('x − ' + fmt(hShift, 1)) : ('x + ' + fmt(-hShift, 1));
+        var dTxt = d >= 0 ? (' + ' + fmt(d, 1)) : (' − ' + fmt(-d, 1));
+        eq = 'f(x) = ' + fmt(aa, 1) + ' · (' + fmt(bb, 2) + ')^(' + hTxt + ')' + dTxt;
+        guide = 'Draw asymptote y = ' + fmt(d, 1) + '; plot anchor (' + fmt(hShift, 1) + ', ' + fmt(aa + d, 2) + ') & (' + fmt(hShift + 1, 1) + ', ' + fmt(aa * bb + d, 2) + ')';
+      }
+
+      var yInt = fn(0);
+      var rateTxt = (ratePct >= 0 ? '+' : '') + fmt(ratePct, 1) + '% ' + (ratePct > 0.05 ? 'Growth' : (ratePct < -0.05 ? 'Decay' : 'Constant'));
+
+      return {
+        a: aa, b: bb, asym: asym, eq: eq, guide: guide,
+        p1: p1, p2: p2, fn: fn, yInt: yInt, rateTxt: rateTxt
+      };
+    }
+
+    function draw(ctx, w, h){
+      var E = solveExp();
+      var pad = {l: 34, r: 16, t: 24, b: 26};
+      var view = _fitView(-4.5, 6.5, -3.5, 9.5, w, h, pad);
+      var P = new Plot(ctx, w, h, view, pad);
+      P.clear(); P.grid();
+
+      /* Horizontal asymptote y = d */
+      P.hline(E.asym, ROSE, [5, 4]);
+      P.label(view.xmin + 0.3, E.asym + 0.35, 'Asymptote y = ' + fmt(E.asym, 1), ROSE);
+
+      /* Exponential curve */
+      P.curve(E.fn, INDIGO, 2.7);
+
+      /* Step guide between anchor p1 and p2 */
+      P.segment(E.p1[0], E.p1[1], E.p2[0], E.p1[1], TEAL, 1.6, [4, 3]);
+      P.segment(E.p2[0], E.p1[1], E.p2[0], E.p2[1], AMBER2, 1.6, [4, 3]);
+
+      /* Anchor dots */
+      P.dot(E.p1[0], E.p1[1], AMBER2, 6.0);
+      P.dot(E.p2[0], E.p2[1], TEAL, 5.5);
+      P.label(E.p1[0] + 0.18, E.p1[1] + 0.4, 'Anchor (' + fmt(E.p1[0], 1) + ', ' + fmt(E.p1[1], 2) + ')', AMBER2);
+      P.label(E.p2[0] + 0.18, E.p2[1] - 0.35, 'Step (' + fmt(E.p2[0], 1) + ', ' + fmt(E.p2[1], 2) + ')', TEAL);
+
+      var c = ctx;
+      c.font = FONT;
+      c.fillStyle = INDIGO;
+      c.textAlign = 'left';
+      c.textBaseline = 'top';
+      c.fillText('Active Form: ' + E.eq, pad.l, 4);
+
+      _set('satExpFormsAV', fmt(E.a, 1));
+      _set('satExpFormsBV', fmt(E.b, 2));
+      _set('satExpFormsKHV', fmt(kh, 1));
+      _set('satExpFormsDV', fmt(d, 1));
+      _set('satExpFormsActiveEq', E.eq);
+      _set('satExpFormsAsymOut', 'y = ' + fmt(E.asym, 2));
+      _set('satExpFormsAnchorOut', '(' + fmt(E.p1[0], 1) + ', ' + fmt(E.p1[1], 2) + ') → (' + fmt(E.p2[0], 1) + ', ' + fmt(E.p2[1], 2) + ')');
+      _set('satExpFormsRateOut', E.rateTxt);
+      _set('satExpFormsYIntOut', '(0, ' + fmt(E.yInt, 2) + ')');
+      _set('satExpFormsGuideOut', E.guide);
+
+      if(dataDesc){
+        dataDesc.textContent = E.eq + ' — Asymptote y = ' + fmt(E.asym, 2) + ', ' + E.guide;
+      }
+      if(dataRows){
+        renderDataRows(dataRows, [
+          ['Active Equation', E.eq, E.rateTxt],
+          ['Horizontal Asymptote', 'y = ' + fmt(E.asym, 2), 'Baseline approached as x → ±∞'],
+          ['Primary Anchor Point', '(' + fmt(E.p1[0], 2) + ', ' + fmt(E.p1[1], 2) + ')', 'Where exponent = 0'],
+          ['Multiplier Step Point', '(' + fmt(E.p2[0], 2) + ', ' + fmt(E.p2[1], 2) + ')', 'After 1 period step'],
+          ['y-Intercept', '(0, ' + fmt(E.yInt, 2) + ')', 'Value at x = 0']
+        ]);
+      }
+    }
+
+    register(canvas, draw);
+    function sync(){
+      if(sMode) mode = sMode.value;
+      if(sA){
+        a = parseFloat(sA.value);
+        if(Math.abs(a) < 0.1){ a = 0.5; sA.value = 0.5; }
+      }
+      if(sB) b = parseFloat(sB.value);
+      if(sKH) kh = parseFloat(sKH.value);
+      if(sD) d = parseFloat(sD.value);
+      redrawAll();
+    }
+    if(sMode) sMode.addEventListener('change', sync);
+    if(sA) sA.addEventListener('input', sync);
+    if(sB) sB.addEventListener('input', sync);
+    if(sKH) sKH.addEventListener('input', sync);
+    if(sD) sD.addEventListener('input', sync);
+    sync();
+  })();
 })(window.CSExplorerKit);
 
