@@ -827,26 +827,43 @@
       normFns.forEach(function(f,fi){
         var col=f.color||COLS[fi%COLS.length];
         var fDash=f.dashed||f.dash;
-        var pts=[],steps=320,prevYy=null;
+        var pts=[],steps=320,prevYy=null,prevXx=null;
         for(var si=0;si<=steps;si++){
           var xx=xl[0]+(xl[1]-xl[0])*si/steps;
           var yy=_safeEval(f.fn, xx);
           var isJump = (prevYy !== null && isFinite(yy) && Math.abs(yy - prevYy) > ySpan * 0.65);
-          if(!isFinite(yy)||isNaN(yy)||yy<yl[0]-0.35*ySpan||yy>yl[1]+0.35*ySpan||isJump){
+          var inBounds = isFinite(yy) && !isNaN(yy) && yy >= yl[0] - 0.04*ySpan && yy <= yl[1] + 0.04*ySpan;
+          if(!inBounds || isJump){
+            if(pts.length >= 1 && prevYy !== null && isFinite(yy) && !isJump){
+              var targetY = yy > yl[1] ? yl[1] + 0.02*ySpan : yl[0] - 0.02*ySpan;
+              var tInterp = (targetY - prevYy) / ((yy - prevYy) || 1e-9);
+              if(tInterp > 0 && tInterp <= 1){
+                var xEdge = prevXx + tInterp * (xx - prevXx);
+                pts.push((padL+(xEdge-xl[0])*sx).toFixed(1)+','+(padT+(yl[1]-targetY)*sy).toFixed(1));
+              }
+            }
             if(pts.length>1){
               s+='<polyline points="'+pts.join(' ')+'" fill="none" stroke="'+col+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"'+(fDash?' stroke-dasharray="'+(typeof fDash==='string'?fDash:'4,3')+'"':'')+'/>';
             }
             pts=[];
-            prevYy = (!isFinite(yy)||isNaN(yy)||yy<yl[0]-0.35*ySpan||yy>yl[1]+0.35*ySpan) ? null : yy;
-            if(prevYy !== null){
-              var cyClamp0 = Math.max(yl[0]-0.05*ySpan, Math.min(yl[1]+0.05*ySpan, yy));
-              pts.push((padL+(xx-xl[0])*sx).toFixed(1)+','+(padT+(yl[1]-cyClamp0)*sy).toFixed(1));
+            prevYy = (!isFinite(yy)||isNaN(yy)||isJump) ? null : yy;
+            prevXx = xx;
+            if(inBounds && !isJump){
+              pts.push((padL+(xx-xl[0])*sx).toFixed(1)+','+(padT+(yl[1]-yy)*sy).toFixed(1));
             }
             continue;
           }
+          if(pts.length === 0 && prevYy !== null && isFinite(prevYy) && (prevYy < yl[0] - 0.04*ySpan || prevYy > yl[1] + 0.04*ySpan)){
+            var entryY = prevYy > yl[1] ? yl[1] + 0.02*ySpan : yl[0] - 0.02*ySpan;
+            var tEntry = (entryY - prevYy) / ((yy - prevYy) || 1e-9);
+            if(tEntry >= 0 && tEntry < 1){
+              var xEntry = prevXx + tEntry * (xx - prevXx);
+              pts.push((padL+(xEntry-xl[0])*sx).toFixed(1)+','+(padT+(yl[1]-entryY)*sy).toFixed(1));
+            }
+          }
           prevYy = yy;
-          var cyClamp = Math.max(yl[0]-0.05*ySpan, Math.min(yl[1]+0.05*ySpan, yy));
-          pts.push((padL+(xx-xl[0])*sx).toFixed(1)+','+(padT+(yl[1]-cyClamp)*sy).toFixed(1));
+          prevXx = xx;
+          pts.push((padL+(xx-xl[0])*sx).toFixed(1)+','+(padT+(yl[1]-yy)*sy).toFixed(1));
         }
         if(pts.length>1)s+='<polyline points="'+pts.join(' ')+'" fill="none" stroke="'+col+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"'+(fDash?' stroke-dasharray="'+(typeof fDash==='string'?fDash:'4,3')+'"':'')+'/>';
       });
@@ -3610,21 +3627,51 @@ function renderCumulativeFrequency(s){
     svg += '<text x="12" y="'+(mt+ph/2)+'" font-size="10" font-weight="600" fill="'+FIG_INK+'" text-anchor="middle" transform="rotate(-90 12 '+(mt+ph/2)+')">'+esc(s.ylabel || s.yLabel)+'</text>';
   }
 
-  // S-Curve points & curve
-  if(pts.length > 1){
-    var pathData = 'M ' + sx(pts[0][0]).toFixed(1) + ' ' + sy(pts[0][1]).toFixed(1);
-    for(var i = 1; i < pts.length; i++){
-      var pPrev = pts[i-1], pCur = pts[i];
-      var cx1 = sx(pPrev[0] + (pCur[0] - pPrev[0]) * 0.5);
-      var cy1 = sy(pPrev[1]);
-      var cx2 = sx(pPrev[0] + (pCur[0] - pPrev[0]) * 0.5);
-      var cy2 = sy(pCur[1]);
-      pathData += ' C ' + cx1.toFixed(1) + ' ' + cy1.toFixed(1) + ', ' + cx2.toFixed(1) + ' ' + cy2.toFixed(1) + ', ' + sx(pCur[0]).toFixed(1) + ' ' + sy(pCur[1]).toFixed(1);
+  // S-Curve points & monotone cubic Hermite spline (Fritsch-Carlson ogive)
+  var sortedPts = pts.slice().sort(function(a, b){ return a[0] - b[0]; });
+  if(sortedPts.length > 1){
+    var nPts = sortedPts.length;
+    var dxArr = [], dyArr = [], deltaArr = [], mArr = new Array(nPts);
+    for(var i = 0; i < nPts - 1; i++){
+      var dxi = (sortedPts[i+1][0] - sortedPts[i][0]) || 1e-6;
+      var dyi = sortedPts[i+1][1] - sortedPts[i][1];
+      dxArr.push(dxi);
+      dyArr.push(dyi);
+      deltaArr.push(dyi / dxi);
+    }
+    mArr[0] = deltaArr[0] * 0.5;
+    mArr[nPts - 1] = deltaArr[nPts - 2] * 0.5;
+    for(var j = 1; j < nPts - 1; j++){
+      if(deltaArr[j - 1] * deltaArr[j] <= 0) mArr[j] = 0;
+      else mArr[j] = 0.5 * (deltaArr[j - 1] + deltaArr[j]);
+    }
+    for(var k = 0; k < nPts - 1; k++){
+      if(deltaArr[k] === 0){
+        mArr[k] = 0;
+        mArr[k + 1] = 0;
+      } else {
+        var ak = mArr[k] / deltaArr[k], bk = mArr[k + 1] / deltaArr[k];
+        var hk = Math.hypot(ak, bk);
+        if(hk > 3){
+          var tk = 3 / hk;
+          mArr[k] = tk * ak * deltaArr[k];
+          mArr[k + 1] = tk * bk * deltaArr[k];
+        }
+      }
+    }
+    var pathData = 'M ' + sx(sortedPts[0][0]).toFixed(1) + ' ' + sy(sortedPts[0][1]).toFixed(1);
+    for(var seg = 0; seg < nPts - 1; seg++){
+      var p0 = sortedPts[seg], p1 = sortedPts[seg + 1], hSeg = dxArr[seg];
+      var cx1 = sx(p0[0] + hSeg / 3);
+      var cy1 = sy(p0[1] + (hSeg * mArr[seg]) / 3);
+      var cx2 = sx(p1[0] - hSeg / 3);
+      var cy2 = sy(p1[1] - (hSeg * mArr[seg + 1]) / 3);
+      pathData += ' C ' + cx1.toFixed(1) + ' ' + cy1.toFixed(1) + ', ' + cx2.toFixed(1) + ' ' + cy2.toFixed(1) + ', ' + sx(p1[0]).toFixed(1) + ' ' + sy(p1[1]).toFixed(1);
     }
     svg += '<path d="'+pathData+'" fill="none" stroke="'+FIG_INDIGO2+'" stroke-width="2.6" stroke-linecap="round"/>';
 
     // Points markers
-    pts.forEach(function(pt){
+    sortedPts.forEach(function(pt){
       var ptLabel = '(' + pt[0] + ', ' + pt[1] + ')';
       svg += '<circle cx="'+sx(pt[0]).toFixed(1)+'" cy="'+sy(pt[1]).toFixed(1)+'" r="3.5" fill="'+FIG_BG+'" stroke="'+FIG_INDIGO2+'" stroke-width="1.8" class="mfig-inspect-pt" data-inspect="'+esc(ptLabel)+'" data-x="'+pt[0]+'" data-y="'+pt[1]+'"><title>'+esc(ptLabel)+'</title></circle>';
     });
