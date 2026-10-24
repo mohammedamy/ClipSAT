@@ -703,7 +703,7 @@
       if(legendRows.length > 0) H = baseH + legendRows.length * 18 + 10;
     }
     var a11y=_figA11yLabel(fig);
-    var s='<svg class="mfig-svg" role="img" aria-label="'+esc(a11y)+'" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:var(--font-sans, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif);background:'+FIG_BG+';border-radius:8px;border:1px solid '+FIG_BORDER+';box-shadow:0 1px 3px rgba(0,0,0,0.04);">';
+    var s='<svg class="mfig-svg" shape-rendering="geometricPrecision" role="img" aria-label="'+esc(a11y)+'" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:var(--font-sans, -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, sans-serif);background:'+FIG_BG+';border-radius:8px;border:1px solid '+FIG_BORDER+';box-shadow:0 1px 3px rgba(0,0,0,0.04);">';
     s+='<title>'+esc(a11y)+'</title>';
     /* ── coordinate axes + function plots ── */
     if(isCoordGraph){
@@ -729,6 +729,46 @@
         var lbl = (p.label && p.label !== 'undefined' && p.label !== 'null') ? String(p.label) : '';
         cleanPts.push({ x: pxVal, y: pyVal, label: lbl, open: p.open, color: p.color, r: p.r, dx: p.dx, dy: p.dy, anchor: p.anchor });
       });
+      if((cleanPts.length === 0 || fig.showKeyPoints) && normFns.length > 0 && normFns[0].fn){
+        var fn0Expr = normFns[0].fn;
+        var hasNearPt = function(x0, y0){
+          return cleanPts.some(function(cp){ return Math.abs(cp.x - x0) < (xl[1]-xl[0])*0.04 && Math.abs(cp.y - y0) < (yl[1]-yl[0])*0.04; });
+        };
+        if(xl[0] <= 0 && xl[1] >= 0){
+          var yInt = _safeEval(fn0Expr, 0);
+          if(isFinite(yInt) && yInt >= yl[0] && yInt <= yl[1] && !hasNearPt(0, yInt)){
+            cleanPts.push({ x: 0, y: Math.round(yInt*100)/100, label: fig.showKeyPoints ? ('(0, ' + (Math.round(yInt*100)/100) + ')') : '', color: FIG_INDIGO2, r: 3.4 });
+          }
+        }
+        var nScan = 200, dxScan = (xl[1] - xl[0]) / nScan;
+        var prevY = _safeEval(fn0Expr, xl[0]), prevSlope = null;
+        for(var ks = 1; ks <= nScan; ks++){
+          var curX = xl[0] + ks * dxScan;
+          var curY = _safeEval(fn0Expr, curX);
+          if(isFinite(prevY) && isFinite(curY) && Math.abs(curY - prevY) < (yl[1] - yl[0]) * 0.4){
+            if((prevY <= 0 && curY >= 0) || (prevY >= 0 && curY <= 0)){
+              var rX = Math.abs(curY - prevY) > 1e-9 ? (curX - dxScan + (-prevY / (curY - prevY)) * dxScan) : (curX - 0.5*dxScan);
+              var rXRound = Math.round(rX * 100) / 100;
+              if(Math.abs(_safeEval(fn0Expr, rXRound)) < (yl[1]-yl[0])*0.05 && !hasNearPt(rXRound, 0)){
+                cleanPts.push({ x: rXRound, y: 0, label: fig.showKeyPoints ? ('(' + rXRound + ', 0)') : '', color: FIG_INDIGO2, r: 3.4 });
+              }
+            }
+            var curSlope = (curY - prevY) / dxScan;
+            if(prevSlope !== null && ((prevSlope > 1e-4 && curSlope < -1e-4) || (prevSlope < -1e-4 && curSlope > 1e-4))){
+              var extX = Math.round((curX - 0.5 * dxScan) * 100) / 100;
+              var extY = Math.round(_safeEval(fn0Expr, extX) * 100) / 100;
+              if(isFinite(extY) && extY >= yl[0] && extY <= yl[1] && !hasNearPt(extX, extY)){
+                var isMax = prevSlope > 0 && curSlope < 0;
+                cleanPts.push({ x: extX, y: extY, label: fig.showKeyPoints ? ((isMax ? 'Max (' : 'Min (') + extX + ', ' + extY + ')') : '', color: FIG_AMBER, r: 3.8 });
+              }
+            }
+            prevSlope = curSlope;
+          } else {
+            prevSlope = null;
+          }
+          prevY = curY;
+        }
+      }
       if(fig.title){
         s+=_svgTitle(fig.title, W, 16, 10.5, FIG_INK);
       }
