@@ -40,14 +40,14 @@
         "figure": {
           "type": "slope_field",
           "title": "Unit 6BC · Advanced Integration Techniques — Slope Field & Particular Solution Trajectory",
-          "fn": "x - y",
+          "fn": "-0.8*y + 0.3*x",
           "xmin": -3,
           "xmax": 3,
           "ymin": -3,
           "ymax": 3,
           "solution": {
-            "x0": 0,
-            "y0": 1
+            "x0": -1.5,
+            "y0": 2
           }
         },
         "caption": {
@@ -60,7 +60,16 @@
         "figure": {
           "type": "fn",
           "fns": [
-            "3 * (x <= 0) + (4 - x) * (x > 0 and x < 4) + (x >= 4)"
+            {
+              "fn": "x + 4",
+              "color": "var(--fig-indigo)",
+              "label": "y = x + 4"
+            },
+            {
+              "fn": "-2*x + 7",
+              "color": "var(--fig-amber)",
+              "label": "y = −2x + 7"
+            }
           ],
           "xlim": [
             -2,
@@ -72,15 +81,18 @@
           ],
           "points": [
             {
-              "x": 0,
-              "y": 3,
-              "label": "(0, 3)"
-            },
-            {
-              "x": 4,
-              "y": 0,
-              "label": "(4, 0)"
+              "x": 1,
+              "y": 5,
+              "label": "(1, 5)"
             }
+          ],
+          "xrange": [
+            -4,
+            5
+          ],
+          "yrange": [
+            -3,
+            8
           ]
         },
         "caption": {
