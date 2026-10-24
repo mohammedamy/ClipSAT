@@ -2516,8 +2516,8 @@ D["ig-functions"] = [
       "قسمة الطرفين على 4: \\(x = \\frac{y + 7}{4}\\).",
       "استبدال y بـ x لكتابة الدالة العكسية: \\(f^{-1}(x) = \\frac{x + 7}{4}\\)."
     ],
-    "ex": "Set y = f(x), rearrange to isolate x, and write f^-1(x).",
-    "ex_ar": "ضع y = f(x)، وأعد الترتيب لعزل x، ثم اكتب f^-1(x)."
+    "ex": "Set y = f(x), rearrange to isolate x, and write f^-(x).",
+    "ex_ar": "ضع y = f(x)، وأعد الترتيب لعزل x، ثم اكتب f^-(x)."
   },
   {
     "t": "cat",

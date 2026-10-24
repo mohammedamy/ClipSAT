@@ -688,8 +688,8 @@
       ],
       "answer": 0,
       "correct": 0,
-      "sol": "We solve the problem in three main stages:\n\n1. **Determine the parameter \\(k\\):**\nFor the system to have infinitely many solutions, the coefficient matrix must be singular (its determinant must be zero):\n\\[\n\\det \\begin{pmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 3 \\\\ 3 & 5 & k \\end{pmatrix} = 1(2k - 15) - 1(k - 9) + 1(5 - 6) = k - 7\n\\]\nSetting \\(k - 7 = 0\\) yields \\(k = 7\\).\n\n2. **Determine the parameter \\(m\\):**\nSet up the augmented matrix with \\(k = 7\\) and perform Gaussian elimination:\n\\[\n\\left(\\begin{array}{ccc|c}\n1 & 1 & 1 & 6 \\\\\n1 & 2 & 3 & 14 \\\\\n3 & 5 & 7 & m\n\\end{array}\\right)\n\\xrightarrow{R_2 - R_1,\\; R_3 - 3R_1}\n\\left(\\begin{array}{ccc|c}\n1 & 1 & 1 & 6 \\\\\n0 & 1 & 2 & 8 \\\\\n0 & 2 & 4 & m - 18\n\\end{array}\\right)\n\\xrightarrow{R_3 - 2R_2}\n\\left(\\begin{array}{ccc|c}\n1 & 1 & 1 & 6 \\\\\n0 & 1 & 2 & 8 \\\\\n0 & 0 & 0 & m - 34\n\\end{array}\\right)\n\\]\nFor the system to be consistent, the bottom row must be all zeros, which requires \\(m - 34 = 0 \\implies m = 34\\).\n\n3. **Parametrize the solution and minimize \\(d^2\\):**\nFrom row 2: \\(y + 2z = 8 \\implies y = 8 - 2z\\).\nFrom row 1: \\(x + (8 - 2z) + z = 6 \\implies x = z - 2\\).\nLetting \\(z = t\\), any solution has the form \\((x, y, z) = (t - 2, 8 - 2t, t)\\).\n\nThe squared distance to the origin is:\n\\[\nd^2(t) = (t - 2)^2 + (8 - 2t)^2 + t^2 = (t^2 - 4t + 4) + (4t^2 - 32t + 64) + t^2 = 6t^2 - 36t + 68\n\\]\nThis quadratic reaches its minimum at the vertex:\n\\[\nt = -\\frac{-36}{2(6)} = 3\n\\]\nEvaluating \\(d^2\\) at \\(t = 3\\):\n\\[\nd^2(3) = 6(3)^2 - 36(3) + 68 = 54 - 108 + 68 = 14\n\\]\n(Corresponding to the point \\((1, 2, 3)\\), where \\(1^2 + 2^2 + 3^2 = 14\\)).\n\n4. **Calculate \\(k + m + d^2\\):**\n\\[\nk + m + d^2 = 7 + 34 + 14 = 55\n\\]\n\n**Common Misconceptions:**\n- Choice B (47) adds \\(x_0 + y_0 + z_0 = 6\\) instead of \\(d^2 = 14\\).\n- Choice C (38) mistakenly assumes row 3 is the direct sum of row 1 and row 2, yielding \\(k = 4, m = 20\\).\n- Choice D (109) miscalculates the vertex using \\(t = -b/a = 6\\), which gives \\(d^2 = 68\\).",
-      "solution": "We solve the problem in three main stages:\n\n1. **Determine the parameter \\(k\\):**\nFor the system to have infinitely many solutions, the coefficient matrix must be singular (its determinant must be zero):\n\\[\n\\det \\begin{pmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 3 \\\\ 3 & 5 & k \\end{pmatrix} = 1(2k - 15) - 1(k - 9) + 1(5 - 6) = k - 7\n\\]\nSetting \\(k - 7 = 0\\) yields \\(k = 7\\).\n\n2. **Determine the parameter \\(m\\):**\nSet up the augmented matrix with \\(k = 7\\) and perform Gaussian elimination:\n\\[\n\\left(\\begin{array}{ccc|c}\n1 & 1 & 1 & 6 \\\\\n1 & 2 & 3 & 14 \\\\\n3 & 5 & 7 & m\n\\end{array}\\right)\n\\xrightarrow{R_2 - R_1,\\; R_3 - 3R_1}\n\\left(\\begin{array}{ccc|c}\n1 & 1 & 1 & 6 \\\\\n0 & 1 & 2 & 8 \\\\\n0 & 2 & 4 & m - 18\n\\end{array}\\right)\n\\xrightarrow{R_3 - 2R_2}\n\\left(\\begin{array}{ccc|c}\n1 & 1 & 1 & 6 \\\\\n0 & 1 & 2 & 8 \\\\\n0 & 0 & 0 & m - 34\n\\end{array}\\right)\n\\]\nFor the system to be consistent, the bottom row must be all zeros, which requires \\(m - 34 = 0 \\implies m = 34\\).\n\n3. **Parametrize the solution and minimize \\(d^2\\):**\nFrom row 2: \\(y + 2z = 8 \\implies y = 8 - 2z\\).\nFrom row 1: \\(x + (8 - 2z) + z = 6 \\implies x = z - 2\\).\nLetting \\(z = t\\), any solution has the form \\((x, y, z) = (t - 2, 8 - 2t, t)\\).\n\nThe squared distance to the origin is:\n\\[\nd^2(t) = (t - 2)^2 + (8 - 2t)^2 + t^2 = (t^2 - 4t + 4) + (4t^2 - 32t + 64) + t^2 = 6t^2 - 36t + 68\n\\]\nThis quadratic reaches its minimum at the vertex:\n\\[\nt = -\\frac{-36}{2(6)} = 3\n\\]\nEvaluating \\(d^2\\) at \\(t = 3\\):\n\\[\nd^2(3) = 6(3)^2 - 36(3) + 68 = 54 - 108 + 68 = 14\n\\]\n(Corresponding to the point \\((1, 2, 3)\\), where \\(1^2 + 2^2 + 3^2 = 14\\)).\n\n4. **Calculate \\(k + m + d^2\\):**\n\\[\nk + m + d^2 = 7 + 34 + 14 = 55\n\\]\n\n**Common Misconceptions:**\n- Choice B (47) adds \\(x_0 + y_0 + z_0 = 6\\) instead of \\(d^2 = 14\\).\n- Choice C (38) mistakenly assumes row 3 is the direct sum of row 1 and row 2, yielding \\(k = 4, m = 20\\).\n- Choice D (109) miscalculates the vertex using \\(t = -b/a = 6\\), which gives \\(d^2 = 68\\).",
+      "sol": "We solve the problem in three main stages:\n\n1. **Determine the parameter \\(k\\):**\nFor the system to have infinitely many solutions, the coefficient matrix must be singular (its determinant must be zero):\n\\[\n\\det \\begin{pmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 3 \\\\ 3 & 5 & k \\end{pmatrix} = 1(2k - 15) - (k - 9) + 1(5 - 6) = k - 7\n\\]\nSetting \\(k - 7 = 0\\) yields \\(k = 7\\).\n\n2. **Determine the parameter \\(m\\):**\nSet up the augmented matrix with \\(k = 7\\) and perform Gaussian elimination:\n\\[\n\\left(\\begin{array}{ccc|c}\n1 & 1 & 1 & 6 \\\\\n1 & 2 & 3 & 14 \\\\\n3 & 5 & 7 & m\n\\end{array}\\right)\n\\xrightarrow{R_2 - R_1,\\; R_3 - 3R_1}\n\\left(\\begin{array}{ccc|c}\n1 & 1 & 1 & 6 \\\\\n0 & 1 & 2 & 8 \\\\\n0 & 2 & 4 & m - 18\n\\end{array}\\right)\n\\xrightarrow{R_3 - 2R_2}\n\\left(\\begin{array}{ccc|c}\n1 & 1 & 1 & 6 \\\\\n0 & 1 & 2 & 8 \\\\\n0 & 0 & 0 & m - 34\n\\end{array}\\right)\n\\]\nFor the system to be consistent, the bottom row must be all zeros, which requires \\(m - 34 = 0 \\implies m = 34\\).\n\n3. **Parametrize the solution and minimize \\(d^2\\):**\nFrom row 2: \\(y + 2z = 8 \\implies y = 8 - 2z\\).\nFrom row 1: \\(x + (8 - 2z) + z = 6 \\implies x = z - 2\\).\nLetting \\(z = t\\), any solution has the form \\((x, y, z) = (t - 2, 8 - 2t, t)\\).\n\nThe squared distance to the origin is:\n\\[\nd^2(t) = (t - 2)^2 + (8 - 2t)^2 + t^2 = (t^2 - 4t + 4) + (4t^2 - 32t + 64) + t^2 = 6t^2 - 36t + 68\n\\]\nThis quadratic reaches its minimum at the vertex:\n\\[\nt = -\\frac{-36}{2(6)} = 3\n\\]\nEvaluating \\(d^2\\) at \\(t = 3\\):\n\\[\nd^2(3) = 6(3)^2 - 36(3) + 68 = 54 - 108 + 68 = 14\n\\]\n(Corresponding to the point \\((1, 2, 3)\\), where \\(1^2 + 2^2 + 3^2 = 14\\)).\n\n4. **Calculate \\(k + m + d^2\\):**\n\\[\nk + m + d^2 = 7 + 34 + 14 = 55\n\\]\n\n**Common Misconceptions:**\n- Choice B (47) adds \\(x_0 + y_0 + z_0 = 6\\) instead of \\(d^2 = 14\\).\n- Choice C (38) mistakenly assumes row 3 is the direct sum of row 1 and row 2, yielding \\(k = 4, m = 20\\).\n- Choice D (109) miscalculates the vertex using \\(t = -b/a = 6\\), which gives \\(d^2 = 68\\).",
+      "solution": "We solve the problem in three main stages:\n\n1. **Determine the parameter \\(k\\):**\nFor the system to have infinitely many solutions, the coefficient matrix must be singular (its determinant must be zero):\n\\[\n\\det \\begin{pmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 3 \\\\ 3 & 5 & k \\end{pmatrix} = 1(2k - 15) - (k - 9) + 1(5 - 6) = k - 7\n\\]\nSetting \\(k - 7 = 0\\) yields \\(k = 7\\).\n\n2. **Determine the parameter \\(m\\):**\nSet up the augmented matrix with \\(k = 7\\) and perform Gaussian elimination:\n\\[\n\\left(\\begin{array}{ccc|c}\n1 & 1 & 1 & 6 \\\\\n1 & 2 & 3 & 14 \\\\\n3 & 5 & 7 & m\n\\end{array}\\right)\n\\xrightarrow{R_2 - R_1,\\; R_3 - 3R_1}\n\\left(\\begin{array}{ccc|c}\n1 & 1 & 1 & 6 \\\\\n0 & 1 & 2 & 8 \\\\\n0 & 2 & 4 & m - 18\n\\end{array}\\right)\n\\xrightarrow{R_3 - 2R_2}\n\\left(\\begin{array}{ccc|c}\n1 & 1 & 1 & 6 \\\\\n0 & 1 & 2 & 8 \\\\\n0 & 0 & 0 & m - 34\n\\end{array}\\right)\n\\]\nFor the system to be consistent, the bottom row must be all zeros, which requires \\(m - 34 = 0 \\implies m = 34\\).\n\n3. **Parametrize the solution and minimize \\(d^2\\):**\nFrom row 2: \\(y + 2z = 8 \\implies y = 8 - 2z\\).\nFrom row 1: \\(x + (8 - 2z) + z = 6 \\implies x = z - 2\\).\nLetting \\(z = t\\), any solution has the form \\((x, y, z) = (t - 2, 8 - 2t, t)\\).\n\nThe squared distance to the origin is:\n\\[\nd^2(t) = (t - 2)^2 + (8 - 2t)^2 + t^2 = (t^2 - 4t + 4) + (4t^2 - 32t + 64) + t^2 = 6t^2 - 36t + 68\n\\]\nThis quadratic reaches its minimum at the vertex:\n\\[\nt = -\\frac{-36}{2(6)} = 3\n\\]\nEvaluating \\(d^2\\) at \\(t = 3\\):\n\\[\nd^2(3) = 6(3)^2 - 36(3) + 68 = 54 - 108 + 68 = 14\n\\]\n(Corresponding to the point \\((1, 2, 3)\\), where \\(1^2 + 2^2 + 3^2 = 14\\)).\n\n4. **Calculate \\(k + m + d^2\\):**\n\\[\nk + m + d^2 = 7 + 34 + 14 = 55\n\\]\n\n**Common Misconceptions:**\n- Choice B (47) adds \\(x_0 + y_0 + z_0 = 6\\) instead of \\(d^2 = 14\\).\n- Choice C (38) mistakenly assumes row 3 is the direct sum of row 1 and row 2, yielding \\(k = 4, m = 20\\).\n- Choice D (109) miscalculates the vertex using \\(t = -b/a = 6\\), which gives \\(d^2 = 68\\).",
       "sympy_verified": true,
       "ans": 0
     },
@@ -14966,7 +14966,7 @@
       "type": "mcq",
       "difficulty": "easy",
       "domain": "Rational Expressions & Functions",
-      "text": "Simplify \\(\\dfrac{x^2-1}{x^2+1x}\\) for \\(x\\neq0,-1\\).",
+      "text": "Simplify \\(\\dfrac{x^2-1}{x^2+x}\\) for \\(x\\neq0,-1\\).",
       "choices": [
         "\\(\\dfrac{x-1}{x}\\)",
         "\\(\\dfrac{x+1}{x}\\)",
@@ -29628,7 +29628,7 @@
             0
           ],
           [
-            7.0,
+            7,
             12.124
           ]
         ],
@@ -30070,7 +30070,7 @@
             0
           ],
           [
-            6.0,
+            6,
             10.392
           ]
         ],
@@ -30512,7 +30512,7 @@
             0
           ],
           [
-            26.0,
+            26,
             45.032
           ]
         ],
@@ -30869,7 +30869,7 @@
             0
           ],
           [
-            9.0,
+            9,
             15.588
           ]
         ],
@@ -32193,7 +32193,7 @@
             0
           ],
           [
-            9.0,
+            9,
             15.588
           ]
         ],
@@ -32512,7 +32512,7 @@
             0
           ],
           [
-            7.0,
+            7,
             12.124
           ]
         ],
@@ -32729,7 +32729,7 @@
             0
           ],
           [
-            2.0,
+            2,
             3.464
           ]
         ],
@@ -33617,7 +33617,7 @@
             0
           ],
           [
-            10.0,
+            10,
             17.32
           ]
         ],
@@ -34159,7 +34159,7 @@
             0
           ],
           [
-            13.0,
+            13,
             22.516
           ]
         ],
@@ -34605,7 +34605,7 @@
             0
           ],
           [
-            11.0,
+            11,
             19.052
           ]
         ],
@@ -34997,7 +34997,7 @@
             0
           ],
           [
-            18.0,
+            18,
             31.176
           ]
         ],
@@ -35547,7 +35547,7 @@
             0
           ],
           [
-            13.0,
+            13,
             22.516
           ]
         ],
@@ -36119,7 +36119,7 @@
             0
           ],
           [
-            13.0,
+            13,
             22.516
           ]
         ],
@@ -36169,7 +36169,7 @@
             0
           ],
           [
-            12.0,
+            12,
             20.784
           ]
         ],

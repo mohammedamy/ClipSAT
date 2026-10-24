@@ -189,7 +189,7 @@ D["apbc-overview"] = [
   {
     "t": "ms",
     "ti": "Examiner Mode: Tangent, Normal & Stationary Points (AP Calculus BC Exam Format & Units Overview)",
-    "q": "Consider the curve \\(y = 5x^3 - 1x^2 + 4\\). (a) Find \\(\\dfrac{dy}{dx}\\) and the gradient of the tangent at \\(x = 0\\). (b) Find the \\(x\\)-coordinates of the stationary points.",
+    "q": "Consider the curve \\(y = 5x^3 - x^2 + 4\\). (a) Find \\(\\dfrac{dy}{dx}\\) and the gradient of the tangent at \\(x = 0\\). (b) Find the \\(x\\)-coordinates of the stationary points.",
     "parts": [
       {
         "label": "Part (a) — First Derivative & Tangent Gradient",
@@ -231,7 +231,7 @@ D["apbc-overview"] = [
     ],
     "examinerTip": "Always show the explicit equation \\(\\dfrac{dy}{dx} = 0\\) before solving for stationary points—this earns the M1 method mark even if an arithmetic slip occurs.",
     "ti_ar": "وضع المصحح: المماس والنقاط الحرجة (AP Calculus BC Exam Format & Units Overview)",
-    "q_ar": "لمنحنى الدالة \\(y = 5x^3 - 1x^2 + 4\\): (أ) أوجد \\(\\dfrac{dy}{dx}\\) وميل المماس عند \\(x = 0\\). (ب) أوجد الإحداثيات السينية للنقاط الحرجة.",
+    "q_ar": "لمنحنى الدالة \\(y = 5x^3 - x^2 + 4\\): (أ) أوجد \\(\\dfrac{dy}{dx}\\) وميل المماس عند \\(x = 0\\). (ب) أوجد الإحداثيات السينية للنقاط الحرجة.",
     "examinerTip_ar": "اكتب دائماً شرط النقطة الحرجة \\(\\dfrac{dy}{dx} = 0\\) صراحةً لضمان الحصول على درجة الطريقة (M1)."
   },
   {
@@ -239,14 +239,14 @@ D["apbc-overview"] = [
     "ti": "Step Builder: Instantaneous Rate of Change (AP Calculus BC Exam Format & Units Overview)",
     "steps": [
       {
-        "l": "Given \\(f(x) = 5x^2 + 1x - 5\\), find the coefficient of \\(x\\) in \\(f'(x)\\):",
+        "l": "Given \\(f(x) = 5x^2 + x - 5\\), find the coefficient of \\(x\\) in \\(f'(x)\\):",
         "a": "10",
         "h": "Multiply power 2 by 5."
       },
       {
         "l": "Find the constant term in \\(f'(x)\\):",
         "a": "1",
-        "h": "The derivative of 1x is 1."
+        "h": "The derivative of x is 1."
       },
       {
         "l": "Evaluate the instantaneous rate of change \\(f'(0) =\\)",
@@ -257,14 +257,14 @@ D["apbc-overview"] = [
     "ti_ar": "بناء الخطوات: حساب المشتقة ومعدل التغير اللحظي (AP Calculus BC Exam Format & Units Overview)",
     "steps_ar": [
       {
-        "l": "للدالة \\(f(x) = 5x^2 + 1x - 5\\)، معامل \\(x\\) في \\(f'(x)\\) يساوي:",
+        "l": "للدالة \\(f(x) = 5x^2 + x - 5\\)، معامل \\(x\\) في \\(f'(x)\\) يساوي:",
         "a": "10",
         "h": "اضرب الأس 2 في 5."
       },
       {
         "l": "الحد الثابت في المشتقة \\(f'(x)\\) يساوي:",
         "a": "1",
-        "h": "مشتقة 1x هي 1."
+        "h": "مشتقة x هي 1."
       },
       {
         "l": "احسب قيمة المشتقة \\(f'(0) =\\)",

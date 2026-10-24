@@ -690,8 +690,8 @@
       ],
       "answer": 0,
       "correct": 0,
-      "sol": "To find the series expansion of \\( f(x) \\), we first decompose \\( f(x) \\) into partial fractions.\n\n**Step 1: Algebraic Division**\nThe degree of the numerator is \\( 4 \\) and the degree of the denominator is \\( 1 + 2 = 3 \\). Because the numerator has a higher degree than the denominator, \\( f(x) \\) is an improper algebraic fraction and polynomial division must be carried out first.\n\nExpanding the denominator:\n\\[ (x - 2)(x^2 + 1) = x^3 - 2x^2 + x - 2. \\]\n\nDividing \\( 2x^4 - 3x^3 + kx^2 - 8x + 3 \\) by \\( x^3 - 2x^2 + x - 2 \\):\n\\[ 2x(x^3 - 2x^2 + x - 2) = 2x^4 - 4x^3 + 2x^2 - 4x. \\]\nSubtracting this gives:\n\\[ (2x^4 - 3x^3 + kx^2 - 8x + 3) - (2x^4 - 4x^3 + 2x^2 - 4x) = x^3 + (k - 2)x^2 - 4x + 3. \\]\nNext, dividing the leading term:\n\\[ 1(x^3 - 2x^2 + x - 2) = x^3 - 2x^2 + x - 2. \\]\nSubtracting this gives the remainder:\n\\[ [x^3 + (k - 2)x^2 - 4x + 3] - [x^3 - 2x^2 + x - 2] = kx^2 - 5x + 5. \\]\n\nHence, the quotient is \\( 2x + 1 \\), and the fraction can be written as:\n\\[ f(x) = 2x + 1 + \\frac{kx^2 - 5x + 5}{(x - 2)(x^2 + 1)}. \\]\n\n**Step 2: Partial Fractions**\nExpress the remainder over the denominator in partial fractions:\n\\[ \\frac{kx^2 - 5x + 5}{(x - 2)(x^2 + 1)} = \\frac{A}{x - 2} + \\frac{Bx + C}{x^2 + 1}. \\]\nMultiplying through by \\( (x - 2)(x^2 + 1) \\):\n\\[ kx^2 - 5x + 5 = A(x^2 + 1) + (Bx + C)(x - 2). \\]\n- Substitute \\( x = 2 \\):\n  \\[ 4k - 10 + 5 = A(4 + 1) \\implies 4k - 5 = 5A \\implies A = \\frac{4k - 5}{5}. \\]\n- Substitute \\( x = 0 \\):\n  \\[ 5 = A(1) + C(-2) \\implies 2C = A - 5 = \\frac{4k - 5}{5} - 5 = \\frac{4k - 30}{5} \\implies C = \\frac{2k - 15}{5}. \\]\n- Equating coefficients of \\( x^2 \\):\n  \\[ k = A + B \\implies B = k - \\frac{4k - 5}{5} = \\frac{k + 5}{5}. \\]\n\n**Step 3: Binomial Series Expansion**\nWe expand each component for small \\( |x| \\):\n1. The polynomial part \\( 2x + 1 \\) has degree 1 and contributes \\( 0 \\) to the coefficient of \\( x^2 \\).\n2. For the term \\( \\frac{A}{x - 2} \\):\n   \\[ \\frac{A}{x - 2} = -\\frac{A}{2}\\left(1 - \\frac{x}{2}\\right)^{-1} = -\\frac{A}{2}\\left(1 + \\frac{x}{2} + \\frac{x^2}{4} + \\dots\\right). \\]\n   The coefficient of \\( x^2 \\) from this term is:\n   \\[ -\\frac{A}{2} \\cdot \\frac{1}{4} = -\\frac{A}{8} = -\\frac{4k - 5}{40}. \\]\n3. For the term \\( \\frac{Bx + C}{x^2 + 1} \\):\n   \\[ \\frac{Bx + C}{x^2 + 1} = (Bx + C)(1 + x^2)^{-1} = (Bx + C)(1 - x^2 + x^4 - \\dots). \\]\n   The \\( x^2 \\) term comes from \\( C(-x^2) = -C x^2 \\). Its coefficient is:\n   \\[ -C = -\\frac{2k - 15}{5} = \\frac{15 - 2k}{5} = \\frac{120 - 16k}{40}. \\]\n\n**Step 4: Setting the Total \\( x^2 \\) Coefficient to Zero**\nCombining the contributions to the \\( x^2 \\) term:\n\\[ c_2 = -\\frac{4k - 5}{40} + \\frac{120 - 16k}{40} = \\frac{125 - 20k}{40} = \\frac{25 - 4k}{8}. \\]\nSince the expansion has no term in \\( x^2 \\):\n\\[ \\frac{25 - 4k}{8} = 0 \\implies 4k = 25 \\implies k = \\frac{25}{4}. \\]\n\n**Common Misconceptions:**\n- **Choice B (\\(\\frac{17}{4}\\)):** Occurs if algebraic division is omitted and the improper fraction is decomposed directly as \\( \\frac{A}{x-2} + \\frac{Bx+C}{x^2+1} \\), yielding \\( C = \\frac{2k-10}{5} \\) and \\( k = \\frac{17}{4} \\).\n- **Choice C (\\(-\\frac{25}{4}\\)):** Results from an overall sign error when expanding \\( (x - 2)^{-1} \\) or in solving \\( 25 - 4k = 0 \\).\n- **Choice D (\\(\\frac{115}{12}\\)):** Results from a sign error in expanding \\( (1 + x^2)^{-1} \\) as \\( 1 + x^2 \\) rather than \\( 1 - x^2 \\).",
-      "solution": "To find the series expansion of \\( f(x) \\), we first decompose \\( f(x) \\) into partial fractions.\n\n**Step 1: Algebraic Division**\nThe degree of the numerator is \\( 4 \\) and the degree of the denominator is \\( 1 + 2 = 3 \\). Because the numerator has a higher degree than the denominator, \\( f(x) \\) is an improper algebraic fraction and polynomial division must be carried out first.\n\nExpanding the denominator:\n\\[ (x - 2)(x^2 + 1) = x^3 - 2x^2 + x - 2. \\]\n\nDividing \\( 2x^4 - 3x^3 + kx^2 - 8x + 3 \\) by \\( x^3 - 2x^2 + x - 2 \\):\n\\[ 2x(x^3 - 2x^2 + x - 2) = 2x^4 - 4x^3 + 2x^2 - 4x. \\]\nSubtracting this gives:\n\\[ (2x^4 - 3x^3 + kx^2 - 8x + 3) - (2x^4 - 4x^3 + 2x^2 - 4x) = x^3 + (k - 2)x^2 - 4x + 3. \\]\nNext, dividing the leading term:\n\\[ 1(x^3 - 2x^2 + x - 2) = x^3 - 2x^2 + x - 2. \\]\nSubtracting this gives the remainder:\n\\[ [x^3 + (k - 2)x^2 - 4x + 3] - [x^3 - 2x^2 + x - 2] = kx^2 - 5x + 5. \\]\n\nHence, the quotient is \\( 2x + 1 \\), and the fraction can be written as:\n\\[ f(x) = 2x + 1 + \\frac{kx^2 - 5x + 5}{(x - 2)(x^2 + 1)}. \\]\n\n**Step 2: Partial Fractions**\nExpress the remainder over the denominator in partial fractions:\n\\[ \\frac{kx^2 - 5x + 5}{(x - 2)(x^2 + 1)} = \\frac{A}{x - 2} + \\frac{Bx + C}{x^2 + 1}. \\]\nMultiplying through by \\( (x - 2)(x^2 + 1) \\):\n\\[ kx^2 - 5x + 5 = A(x^2 + 1) + (Bx + C)(x - 2). \\]\n- Substitute \\( x = 2 \\):\n  \\[ 4k - 10 + 5 = A(4 + 1) \\implies 4k - 5 = 5A \\implies A = \\frac{4k - 5}{5}. \\]\n- Substitute \\( x = 0 \\):\n  \\[ 5 = A(1) + C(-2) \\implies 2C = A - 5 = \\frac{4k - 5}{5} - 5 = \\frac{4k - 30}{5} \\implies C = \\frac{2k - 15}{5}. \\]\n- Equating coefficients of \\( x^2 \\):\n  \\[ k = A + B \\implies B = k - \\frac{4k - 5}{5} = \\frac{k + 5}{5}. \\]\n\n**Step 3: Binomial Series Expansion**\nWe expand each component for small \\( |x| \\):\n1. The polynomial part \\( 2x + 1 \\) has degree 1 and contributes \\( 0 \\) to the coefficient of \\( x^2 \\).\n2. For the term \\( \\frac{A}{x - 2} \\):\n   \\[ \\frac{A}{x - 2} = -\\frac{A}{2}\\left(1 - \\frac{x}{2}\\right)^{-1} = -\\frac{A}{2}\\left(1 + \\frac{x}{2} + \\frac{x^2}{4} + \\dots\\right). \\]\n   The coefficient of \\( x^2 \\) from this term is:\n   \\[ -\\frac{A}{2} \\cdot \\frac{1}{4} = -\\frac{A}{8} = -\\frac{4k - 5}{40}. \\]\n3. For the term \\( \\frac{Bx + C}{x^2 + 1} \\):\n   \\[ \\frac{Bx + C}{x^2 + 1} = (Bx + C)(1 + x^2)^{-1} = (Bx + C)(1 - x^2 + x^4 - \\dots). \\]\n   The \\( x^2 \\) term comes from \\( C(-x^2) = -C x^2 \\). Its coefficient is:\n   \\[ -C = -\\frac{2k - 15}{5} = \\frac{15 - 2k}{5} = \\frac{120 - 16k}{40}. \\]\n\n**Step 4: Setting the Total \\( x^2 \\) Coefficient to Zero**\nCombining the contributions to the \\( x^2 \\) term:\n\\[ c_2 = -\\frac{4k - 5}{40} + \\frac{120 - 16k}{40} = \\frac{125 - 20k}{40} = \\frac{25 - 4k}{8}. \\]\nSince the expansion has no term in \\( x^2 \\):\n\\[ \\frac{25 - 4k}{8} = 0 \\implies 4k = 25 \\implies k = \\frac{25}{4}. \\]\n\n**Common Misconceptions:**\n- **Choice B (\\(\\frac{17}{4}\\)):** Occurs if algebraic division is omitted and the improper fraction is decomposed directly as \\( \\frac{A}{x-2} + \\frac{Bx+C}{x^2+1} \\), yielding \\( C = \\frac{2k-10}{5} \\) and \\( k = \\frac{17}{4} \\).\n- **Choice C (\\(-\\frac{25}{4}\\)):** Results from an overall sign error when expanding \\( (x - 2)^{-1} \\) or in solving \\( 25 - 4k = 0 \\).\n- **Choice D (\\(\\frac{115}{12}\\)):** Results from a sign error in expanding \\( (1 + x^2)^{-1} \\) as \\( 1 + x^2 \\) rather than \\( 1 - x^2 \\).",
+      "sol": "To find the series expansion of \\( f(x) \\), we first decompose \\( f(x) \\) into partial fractions.\n\n**Step 1: Algebraic Division**\nThe degree of the numerator is \\( 4 \\) and the degree of the denominator is \\( 1 + 2 = 3 \\). Because the numerator has a higher degree than the denominator, \\( f(x) \\) is an improper algebraic fraction and polynomial division must be carried out first.\n\nExpanding the denominator:\n\\[ (x - 2)(x^2 + 1) = x^3 - 2x^2 + x - 2. \\]\n\nDividing \\( 2x^4 - 3x^3 + kx^2 - 8x + 3 \\) by \\( x^3 - 2x^2 + x - 2 \\):\n\\[ 2x(x^3 - 2x^2 + x - 2) = 2x^4 - 4x^3 + 2x^2 - 4x. \\]\nSubtracting this gives:\n\\[ (2x^4 - 3x^3 + kx^2 - 8x + 3) - (2x^4 - 4x^3 + 2x^2 - 4x) = x^3 + (k - 2)x^2 - 4x + 3. \\]\nNext, dividing the leading term:\n\\[ (x^3 - 2x^2 + x - 2) = x^3 - 2x^2 + x - 2. \\]\nSubtracting this gives the remainder:\n\\[ [x^3 + (k - 2)x^2 - 4x + 3] - [x^3 - 2x^2 + x - 2] = kx^2 - 5x + 5. \\]\n\nHence, the quotient is \\( 2x + 1 \\), and the fraction can be written as:\n\\[ f(x) = 2x + 1 + \\frac{kx^2 - 5x + 5}{(x - 2)(x^2 + 1)}. \\]\n\n**Step 2: Partial Fractions**\nExpress the remainder over the denominator in partial fractions:\n\\[ \\frac{kx^2 - 5x + 5}{(x - 2)(x^2 + 1)} = \\frac{A}{x - 2} + \\frac{Bx + C}{x^2 + 1}. \\]\nMultiplying through by \\( (x - 2)(x^2 + 1) \\):\n\\[ kx^2 - 5x + 5 = A(x^2 + 1) + (Bx + C)(x - 2). \\]\n- Substitute \\( x = 2 \\):\n  \\[ 4k - 10 + 5 = A(4 + 1) \\implies 4k - 5 = 5A \\implies A = \\frac{4k - 5}{5}. \\]\n- Substitute \\( x = 0 \\):\n  \\[ 5 = A(1) + C(-2) \\implies 2C = A - 5 = \\frac{4k - 5}{5} - 5 = \\frac{4k - 30}{5} \\implies C = \\frac{2k - 15}{5}. \\]\n- Equating coefficients of \\( x^2 \\):\n  \\[ k = A + B \\implies B = k - \\frac{4k - 5}{5} = \\frac{k + 5}{5}. \\]\n\n**Step 3: Binomial Series Expansion**\nWe expand each component for small \\( |x| \\):\n1. The polynomial part \\( 2x + 1 \\) has degree 1 and contributes \\( 0 \\) to the coefficient of \\( x^2 \\).\n2. For the term \\( \\frac{A}{x - 2} \\):\n   \\[ \\frac{A}{x - 2} = -\\frac{A}{2}\\left(1 - \\frac{x}{2}\\right)^{-1} = -\\frac{A}{2}\\left(1 + \\frac{x}{2} + \\frac{x^2}{4} + \\dots\\right). \\]\n   The coefficient of \\( x^2 \\) from this term is:\n   \\[ -\\frac{A}{2} \\cdot \\frac{1}{4} = -\\frac{A}{8} = -\\frac{4k - 5}{40}. \\]\n3. For the term \\( \\frac{Bx + C}{x^2 + 1} \\):\n   \\[ \\frac{Bx + C}{x^2 + 1} = (Bx + C)(1 + x^2)^{-1} = (Bx + C)(1 - x^2 + x^4 - \\dots). \\]\n   The \\( x^2 \\) term comes from \\( C(-x^2) = -C x^2 \\). Its coefficient is:\n   \\[ -C = -\\frac{2k - 15}{5} = \\frac{15 - 2k}{5} = \\frac{120 - 16k}{40}. \\]\n\n**Step 4: Setting the Total \\( x^2 \\) Coefficient to Zero**\nCombining the contributions to the \\( x^2 \\) term:\n\\[ c_2 = -\\frac{4k - 5}{40} + \\frac{120 - 16k}{40} = \\frac{125 - 20k}{40} = \\frac{25 - 4k}{8}. \\]\nSince the expansion has no term in \\( x^2 \\):\n\\[ \\frac{25 - 4k}{8} = 0 \\implies 4k = 25 \\implies k = \\frac{25}{4}. \\]\n\n**Common Misconceptions:**\n- **Choice B (\\(\\frac{17}{4}\\)):** Occurs if algebraic division is omitted and the improper fraction is decomposed directly as \\( \\frac{A}{x-2} + \\frac{Bx+C}{x^2+1} \\), yielding \\( C = \\frac{2k-10}{5} \\) and \\( k = \\frac{17}{4} \\).\n- **Choice C (\\(-\\frac{25}{4}\\)):** Results from an overall sign error when expanding \\( (x - 2)^{-1} \\) or in solving \\( 25 - 4k = 0 \\).\n- **Choice D (\\(\\frac{115}{12}\\)):** Results from a sign error in expanding \\( (1 + x^2)^{-1} \\) as \\( 1 + x^2 \\) rather than \\( 1 - x^2 \\).",
+      "solution": "To find the series expansion of \\( f(x) \\), we first decompose \\( f(x) \\) into partial fractions.\n\n**Step 1: Algebraic Division**\nThe degree of the numerator is \\( 4 \\) and the degree of the denominator is \\( 1 + 2 = 3 \\). Because the numerator has a higher degree than the denominator, \\( f(x) \\) is an improper algebraic fraction and polynomial division must be carried out first.\n\nExpanding the denominator:\n\\[ (x - 2)(x^2 + 1) = x^3 - 2x^2 + x - 2. \\]\n\nDividing \\( 2x^4 - 3x^3 + kx^2 - 8x + 3 \\) by \\( x^3 - 2x^2 + x - 2 \\):\n\\[ 2x(x^3 - 2x^2 + x - 2) = 2x^4 - 4x^3 + 2x^2 - 4x. \\]\nSubtracting this gives:\n\\[ (2x^4 - 3x^3 + kx^2 - 8x + 3) - (2x^4 - 4x^3 + 2x^2 - 4x) = x^3 + (k - 2)x^2 - 4x + 3. \\]\nNext, dividing the leading term:\n\\[ (x^3 - 2x^2 + x - 2) = x^3 - 2x^2 + x - 2. \\]\nSubtracting this gives the remainder:\n\\[ [x^3 + (k - 2)x^2 - 4x + 3] - [x^3 - 2x^2 + x - 2] = kx^2 - 5x + 5. \\]\n\nHence, the quotient is \\( 2x + 1 \\), and the fraction can be written as:\n\\[ f(x) = 2x + 1 + \\frac{kx^2 - 5x + 5}{(x - 2)(x^2 + 1)}. \\]\n\n**Step 2: Partial Fractions**\nExpress the remainder over the denominator in partial fractions:\n\\[ \\frac{kx^2 - 5x + 5}{(x - 2)(x^2 + 1)} = \\frac{A}{x - 2} + \\frac{Bx + C}{x^2 + 1}. \\]\nMultiplying through by \\( (x - 2)(x^2 + 1) \\):\n\\[ kx^2 - 5x + 5 = A(x^2 + 1) + (Bx + C)(x - 2). \\]\n- Substitute \\( x = 2 \\):\n  \\[ 4k - 10 + 5 = A(4 + 1) \\implies 4k - 5 = 5A \\implies A = \\frac{4k - 5}{5}. \\]\n- Substitute \\( x = 0 \\):\n  \\[ 5 = A(1) + C(-2) \\implies 2C = A - 5 = \\frac{4k - 5}{5} - 5 = \\frac{4k - 30}{5} \\implies C = \\frac{2k - 15}{5}. \\]\n- Equating coefficients of \\( x^2 \\):\n  \\[ k = A + B \\implies B = k - \\frac{4k - 5}{5} = \\frac{k + 5}{5}. \\]\n\n**Step 3: Binomial Series Expansion**\nWe expand each component for small \\( |x| \\):\n1. The polynomial part \\( 2x + 1 \\) has degree 1 and contributes \\( 0 \\) to the coefficient of \\( x^2 \\).\n2. For the term \\( \\frac{A}{x - 2} \\):\n   \\[ \\frac{A}{x - 2} = -\\frac{A}{2}\\left(1 - \\frac{x}{2}\\right)^{-1} = -\\frac{A}{2}\\left(1 + \\frac{x}{2} + \\frac{x^2}{4} + \\dots\\right). \\]\n   The coefficient of \\( x^2 \\) from this term is:\n   \\[ -\\frac{A}{2} \\cdot \\frac{1}{4} = -\\frac{A}{8} = -\\frac{4k - 5}{40}. \\]\n3. For the term \\( \\frac{Bx + C}{x^2 + 1} \\):\n   \\[ \\frac{Bx + C}{x^2 + 1} = (Bx + C)(1 + x^2)^{-1} = (Bx + C)(1 - x^2 + x^4 - \\dots). \\]\n   The \\( x^2 \\) term comes from \\( C(-x^2) = -C x^2 \\). Its coefficient is:\n   \\[ -C = -\\frac{2k - 15}{5} = \\frac{15 - 2k}{5} = \\frac{120 - 16k}{40}. \\]\n\n**Step 4: Setting the Total \\( x^2 \\) Coefficient to Zero**\nCombining the contributions to the \\( x^2 \\) term:\n\\[ c_2 = -\\frac{4k - 5}{40} + \\frac{120 - 16k}{40} = \\frac{125 - 20k}{40} = \\frac{25 - 4k}{8}. \\]\nSince the expansion has no term in \\( x^2 \\):\n\\[ \\frac{25 - 4k}{8} = 0 \\implies 4k = 25 \\implies k = \\frac{25}{4}. \\]\n\n**Common Misconceptions:**\n- **Choice B (\\(\\frac{17}{4}\\)):** Occurs if algebraic division is omitted and the improper fraction is decomposed directly as \\( \\frac{A}{x-2} + \\frac{Bx+C}{x^2+1} \\), yielding \\( C = \\frac{2k-10}{5} \\) and \\( k = \\frac{17}{4} \\).\n- **Choice C (\\(-\\frac{25}{4}\\)):** Results from an overall sign error when expanding \\( (x - 2)^{-1} \\) or in solving \\( 25 - 4k = 0 \\).\n- **Choice D (\\(\\frac{115}{12}\\)):** Results from a sign error in expanding \\( (1 + x^2)^{-1} \\) as \\( 1 + x^2 \\) rather than \\( 1 - x^2 \\).",
       "sympy_verified": true,
       "ans": 0
     },
@@ -9809,7 +9809,7 @@
             0
           ],
           [
-            24.0,
+            24,
             41.568
           ]
         ],
@@ -10238,7 +10238,7 @@
             0
           ],
           [
-            6.0,
+            6,
             10.392
           ]
         ],
@@ -10546,7 +10546,7 @@
             0
           ],
           [
-            3.0,
+            3,
             5.196
           ]
         ],
@@ -10785,7 +10785,7 @@
             0
           ],
           [
-            7.0,
+            7,
             12.124
           ]
         ],
@@ -11047,7 +11047,7 @@
             0
           ],
           [
-            4.0,
+            4,
             6.928
           ]
         ],
@@ -11263,7 +11263,7 @@
             0
           ],
           [
-            4.0,
+            4,
             6.928
           ]
         ],
@@ -11525,7 +11525,7 @@
             0
           ],
           [
-            10.0,
+            10,
             17.32
           ]
         ],
@@ -16211,7 +16211,7 @@
     {
       "type": "mcq",
       "domain": "Differentiation",
-      "text": "Consider the function \\( A(n) = \\dfrac{1(n^2 - 144)}{n - 12} \\) for \\( n \\neq 12 \\). Find the limit \\( \\displaystyle\\lim_{n \\to 12} A(n) \\).",
+      "text": "Consider the function \\( A(n) = \\dfrac{(n^2 - 144)}{n - 12} \\) for \\( n \\neq 12 \\). Find the limit \\( \\displaystyle\\lim_{n \\to 12} A(n) \\).",
       "choices": [
         "27",
         "31",
@@ -16220,14 +16220,14 @@
       ],
       "answer": 2,
       "difficulty": "easy",
-      "sol": "Factoring gives \\( \\lim_{n \\to 12} 1(n + 12) = 24 \\).",
+      "sol": "Factoring gives \\( \\lim_{n \\to 12} (n + 12) = 24 \\).",
       "id": "a2level-0581",
       "topic_id": "a2l-poisson",
       "subskill_id": "a2l-poisson-3",
       "educational_aim": "Synthesize Poisson Distribution with related mathematical concepts to solve high-difficulty past-paper synthesis, optimization, proof, or modeling problems.",
       "exam_archetype": "Poisson Distribution — Non-Routine Synthesis & Past-Paper Challenge",
       "correct": 2,
-      "solution": "Factoring gives \\( \\lim_{n \\to 12} 1(n + 12) = 24 \\).",
+      "solution": "Factoring gives \\( \\lim_{n \\to 12} (n + 12) = 24 \\).",
       "sympy_verified": true,
       "ans": 2,
       "fig": {
@@ -76432,7 +76432,7 @@
       "domain": "Argand Diagram",
       "text": "Find the Cartesian equation of the locus \\(\\arg(z-2)=45^\\circ\\).",
       "choices": [
-        "\\(y=1\\left(x+(2)\\right)\\)",
+        "\\(y=\\left(x+(2)\\right)\\)",
         "y=x-(2)",
         "y=2",
         "x=2"
@@ -76482,7 +76482,7 @@
         "y=x-(-2)",
         "y=-2",
         "x=-2",
-        "\\(y=1\\left(x+(-2)\\right)\\)"
+        "\\(y=\\left(x+(-2)\\right)\\)"
       ],
       "answer": 0,
       "sol": "\\(\\arg(z-(-2))=45^\\circ\\) is the ray from \\((-2,0)\\) with slope \\(\\tan45^\\circ=1\\): \\(y=x-(-2)\\).",

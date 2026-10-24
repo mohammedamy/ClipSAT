@@ -314,14 +314,14 @@ D["est2-algebra"] = [
     "items": [
       "Factor all denominators: x² - 4 = (x - 2)(x + 2).",
       "Multiply both sides by the LCD (x - 2)(x + 2) to eliminate fractions.",
-      "Expand and collect terms: x(x + 2) + 1(x - 2) = 8 ⇒ x² + 3x - 10 = 0.",
+      "Expand and collect terms: x(x + 2) + (x - 2) = 8 ⇒ x² + 3x - 10 = 0.",
       "Factor the quadratic equation: (x + 5)(x - 2) = 0.",
       "Reject extraneous solution x = 2 (denominator zero) and conclude x = -5."
     ],
     "items_ar": [
       "تحليل جميع المقامات إلى عوامل: x² - 4 = (x - 2)(x + 2).",
       "ضرب كلا الطرفين في المضاعف المشترك الأصغر (x - 2)(x + 2) للتخلص من المقامات.",
-      "فك الأقواس وتجميع الحدود: x(x + 2) + 1(x - 2) = 8 ⇒ x² + 3x - 10 = 0.",
+      "فك الأقواس وتجميع الحدود: x(x + 2) + (x - 2) = 8 ⇒ x² + 3x - 10 = 0.",
       "تحليل المعادلة التربيعية: (x + 5)(x - 2) = 0.",
       "استبعاد الحل الدخيل x = 2 (يجعل المقام صفراً) واعتماد الحل الوحيد الصحيح x = -5."
     ],

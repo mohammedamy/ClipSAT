@@ -265,8 +265,18 @@
   };
   var _MATH_NOUN_BEFORE_A = /\b(?:coefficient|parameter|constant|base|slope|radius|side|semi-ax[ie]s|bound|point|vertex|angle|vector|matrix|Residue|event|set|line|curve|function|variable|term|factor|root|value|origin)\s*$/i;
 
+  function _stripUnitCoeffs(str){
+    var out = String(str || '');
+    out = out.replace(/-\s*-\s*(?=1(?:\.0+)?(?=[xXyYtTzZnNkK(]))/g, '+ ');
+    out = out.replace(/\+\s*-\s*(?=1(?:\.0+)?(?=[xXyYtTzZnNkK(]))/g, '- ');
+    out = out.replace(/(f\(x\)\s*=\s*[^=]+=\s*)f\(x\)\s*=\s*/g, '$1');
+    out = out.replace(/(^|[^\^])([-−+]\s*)1(?:\.0+)?(?:\s*\\cdot\s*)?(?=[xXyYtTzZnNkK](?:\b|[\^_²³⁴0-9({])|(?:\\left)?\(\s*[-−+]?[xXyYtTzZnNkK]\b)/g, '$1$2');
+    out = out.replace(/(^|[^0-9.\\^_a-zA-Z])1(?:\.0+)?(?:\s*\\cdot\s*)?(?=[xXyYtTzZnNkK](?:\b|[\^_²³⁴0-9({])|(?:\\left)?\(\s*[-−+]?[xXyYtTzZnNkK]\b)/g, '$1');
+    return out;
+  }
+
   function _exprToLatex(s){
-    var out = String(s || '');
+    var out = _stripUnitCoeffs(s);
     out = out.replace(/([a-zA-Zα-ωΓ-Ω])\u0304/g, '\\bar{$1}');
     out = out.replace(/([a-zA-Zα-ωΓ-Ω])\u0302/g, '\\hat{$1}');
     out = out.replace(/([a-zA-Zα-ωΓ-Ω])\u20D7/g, '\\vec{$1}');
@@ -365,7 +375,7 @@
           var res = '';
           for(var k=0;k<sepParts.length;k++){
             if(k % 2 === 0) res += '\\(' + _exprToLatex(sepParts[k]) + '\\)';
-            else res += (sepParts[k] === '|' ? ' \\;|\\; ' : ' & ');
+            else res += (sepParts[k] === '|' ? ' | ' : ' & ');
           }
           return res;
         }
@@ -444,7 +454,7 @@
       var pre = m.slice(0, m.length - mon.length);
       return pre + save(mon);
     });
-    s = s.replace(/\b(?:iz|ai|bi|ax|bx|by|cx|cy|dx|dy|dt|du|dv|dr|ds|dz|mx|nx|kx|ab|bc|ac|ad|bd|cd|pq|mn|xy|xz|yz)\b/g, function(m){ return save(m); });
+    s = s.replace(/\b(?:iz|ai|bi|ax|bx|cx|cy|dx|dy|dt|du|dv|dr|ds|dz|mx|nx|kx|ab|bc|ac|bd|cd|pq|mn|xy|xz|yz)\b/g, function(m){ return save(m); });
     s = s.replace(/[α-ωΓΔΘΛΠΣΦΨΩ][a-zA-Z0-9]*/g, function(m){ return save(m); });
     s = s.replace(/(^|[\s(,;:[<>=≤≥≠±·+\-−/])([b-hj-zB-HJ-Z])(?=$|[\s).,;:\]!?<>=≤≥≠±·+\-−/])/g, function(m, pre, ch){
       return pre + save(ch);
@@ -478,8 +488,10 @@
 
   function CSFormatExplorerMath(str, isValueMode){
     if(!str || typeof str !== 'string') return str;
-    if(str.indexOf('\\(') !== -1 || str.indexOf('\\[') !== -1 || str.indexOf('$$') !== -1 || str.indexOf('katex') !== -1) return str;
-    var pre = str.replace(/<b>\s*([a-zA-Z])\s*(=\s*)?<\/b>/g, function(_, v, eq){ return '<b>\\(' + v + (eq ? ' =' : '') + '\\)</b>'; });
+    if(str.indexOf('katex') !== -1) return str;
+    var cleaned = _stripUnitCoeffs(str);
+    if(cleaned.indexOf('\\(') !== -1 || cleaned.indexOf('\\[') !== -1 || cleaned.indexOf('$$') !== -1) return cleaned;
+    var pre = cleaned.replace(/<b>\s*([a-zA-Z])\s*(=\s*)?<\/b>/g, function(_, v, eq){ return '<b>\\(' + v + (eq ? ' =' : '') + '\\)</b>'; });
     var parts = pre.split(/(<b>\\\(.*?\\\)<\/b>|<[^>]+>)/g);
     return parts.map(function(p){ return (p.charAt(0) === '<' && p.charAt(p.length - 1) === '>') ? p : _wrapChunkMath(p, isValueMode); }).join('');
   }
@@ -527,7 +539,7 @@
     var origFill = ctx.fillText;
     var origStroke = ctx.strokeText;
     function drawSegmented(origFn, str, x, y, maxW){
-      var s = String(str == null ? '' : str);
+      var s = _stripUnitCoeffs(String(str == null ? '' : str));
       if(s.indexOf('^') === -1 && s.indexOf('_') === -1){
         if(maxW !== undefined) origFn.call(ctx, s, x, y, maxW);
         else origFn.call(ctx, s, x, y);

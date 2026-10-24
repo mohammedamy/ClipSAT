@@ -595,9 +595,9 @@
   /* Rendering was switched from MathJax to KaTeX (see base.njk) — KaTeX emits
      .katex/.katex-display, not mjx-container, so every overflow guard above
      needs a KaTeX equivalent or long equations blow out the page width. */
-  .katex{max-width:100%}
+  .katex, .katex-html{white-space:nowrap; max-width:100%}
   .katex-display{overflow-x:auto; overflow-y:hidden; margin:1.05rem 0 !important; display:block; max-width:100%}
-  .katex-display>.katex{white-space:normal}
+  .katex-display>.katex{white-space:nowrap}
 
   .callout{border:1px solid var(--line); border-radius:12px; padding:22px 24px; margin:1.6rem 0; overflow:hidden; word-break:break-word; overflow-wrap:break-word;
     background:var(--panel); box-shadow:var(--shadow-sm); position:relative}
@@ -688,11 +688,12 @@
     color:var(--muted); padding:7px 12px; border-radius:8px; cursor:pointer}
   .radios button.on{background:var(--amber); color:#fff; border-color:var(--amber)}
   .readout{display:flex; flex-direction:column; gap:8px; margin-top:2px; font-family:var(--mono); font-size:.86rem}
-  .readrow{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:7px 11px;
+  .readrow{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:4px 12px; padding:7px 11px;
     border-radius:8px; background:var(--paper-2)}
   .readrow.indigo{background:var(--indigo-soft); color:var(--indigo)}
   .readrow.amber{background:var(--amber-soft); color:var(--amber-text)}
-  .readrow .v{font-weight:650}
+  .readrow>span:first-child{flex:0 1 auto}
+  .readrow .v{font-weight:650; flex:0 1 auto; margin-left:auto; text-align:right; max-width:100%; overflow-x:auto; white-space:nowrap}
   .chk{display:flex; align-items:center; gap:8px; font-family:var(--sans); font-size:.84rem; color:var(--muted); cursor:pointer}
   .chk input{width:16px; height:16px; accent-color:var(--amber)}
 
@@ -1853,7 +1854,7 @@
 .problem .pq{min-width:0;}.ex-canvas{min-width:0;}.ex-controls{min-width:0;}
 .fep-ctext{flex:1;min-width:0;}
 .fep-cletter{flex-shrink:0;}
-.readrow>span:last-child{flex:1;min-width:0;}
+.readrow>span:last-child{flex:0 1 auto;margin-left:auto;text-align:right;max-width:100%;overflow-x:auto;white-space:nowrap;}
 .chk>span:last-child{flex:1;min-width:0;}
 .theme-btn>span:last-child{flex:1;min-width:0;}
 .chat-msg{min-width:0;word-break:break-word;}

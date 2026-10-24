@@ -991,7 +991,7 @@ D["apab-u1"] = [
   {
     "t": "ms",
     "ti": "Examiner Mode: Tangent, Normal & Stationary Points (Unit 1 · Limits & Continuity)",
-    "q": "Consider the curve \\(y = 3x^3 - 1x^2 + 4\\). (a) Find \\(\\dfrac{dy}{dx}\\) and the gradient of the tangent at \\(x = 2\\). (b) Find the \\(x\\)-coordinates of the stationary points.",
+    "q": "Consider the curve \\(y = 3x^3 - x^2 + 4\\). (a) Find \\(\\dfrac{dy}{dx}\\) and the gradient of the tangent at \\(x = 2\\). (b) Find the \\(x\\)-coordinates of the stationary points.",
     "parts": [
       {
         "label": "Part (a) — First Derivative & Tangent Gradient",
@@ -1033,7 +1033,7 @@ D["apab-u1"] = [
     ],
     "examinerTip": "Always show the explicit equation \\(\\dfrac{dy}{dx} = 0\\) before solving for stationary points—this earns the M1 method mark even if an arithmetic slip occurs.",
     "ti_ar": "وضع المصحح: المماس والنقاط الحرجة (Unit 1 · Limits & Continuity)",
-    "q_ar": "لمنحنى الدالة \\(y = 3x^3 - 1x^2 + 4\\): (أ) أوجد \\(\\dfrac{dy}{dx}\\) وميل المماس عند \\(x = 2\\). (ب) أوجد الإحداثيات السينية للنقاط الحرجة.",
+    "q_ar": "لمنحنى الدالة \\(y = 3x^3 - x^2 + 4\\): (أ) أوجد \\(\\dfrac{dy}{dx}\\) وميل المماس عند \\(x = 2\\). (ب) أوجد الإحداثيات السينية للنقاط الحرجة.",
     "examinerTip_ar": "اكتب دائماً شرط النقطة الحرجة \\(\\dfrac{dy}{dx} = 0\\) صراحةً لضمان الحصول على درجة الطريقة (M1)."
   },
   {
@@ -1041,14 +1041,14 @@ D["apab-u1"] = [
     "ti": "Step Builder: Instantaneous Rate of Change (Unit 1 · Limits & Continuity)",
     "steps": [
       {
-        "l": "Given \\(f(x) = 3x^2 + 1x - 5\\), find the coefficient of \\(x\\) in \\(f'(x)\\):",
+        "l": "Given \\(f(x) = 3x^2 + x - 5\\), find the coefficient of \\(x\\) in \\(f'(x)\\):",
         "a": "6",
         "h": "Multiply power 2 by 3."
       },
       {
         "l": "Find the constant term in \\(f'(x)\\):",
         "a": "1",
-        "h": "The derivative of 1x is 1."
+        "h": "The derivative of x is 1."
       },
       {
         "l": "Evaluate the instantaneous rate of change \\(f'(2) =\\)",
@@ -1059,14 +1059,14 @@ D["apab-u1"] = [
     "ti_ar": "بناء الخطوات: حساب المشتقة ومعدل التغير اللحظي (Unit 1 · Limits & Continuity)",
     "steps_ar": [
       {
-        "l": "للدالة \\(f(x) = 3x^2 + 1x - 5\\)، معامل \\(x\\) في \\(f'(x)\\) يساوي:",
+        "l": "للدالة \\(f(x) = 3x^2 + x - 5\\)، معامل \\(x\\) في \\(f'(x)\\) يساوي:",
         "a": "6",
         "h": "اضرب الأس 2 في 3."
       },
       {
         "l": "الحد الثابت في المشتقة \\(f'(x)\\) يساوي:",
         "a": "1",
-        "h": "مشتقة 1x هي 1."
+        "h": "مشتقة x هي 1."
       },
       {
         "l": "احسب قيمة المشتقة \\(f'(2) =\\)",
@@ -1293,7 +1293,7 @@ D["apab-u2"] = [
   {
     "t": "ms",
     "ti": "Examiner Mode: Tangent, Normal & Stationary Points (Unit 2 · Differentiation — Definition and Fundamental Properties)",
-    "q": "Consider the curve \\(y = 4x^3 - 1x^2 + 4\\). (a) Find \\(\\dfrac{dy}{dx}\\) and the gradient of the tangent at \\(x = 2\\). (b) Find the \\(x\\)-coordinates of the stationary points.",
+    "q": "Consider the curve \\(y = 4x^3 - x^2 + 4\\). (a) Find \\(\\dfrac{dy}{dx}\\) and the gradient of the tangent at \\(x = 2\\). (b) Find the \\(x\\)-coordinates of the stationary points.",
     "parts": [
       {
         "label": "Part (a) — First Derivative & Tangent Gradient",
@@ -1335,7 +1335,7 @@ D["apab-u2"] = [
     ],
     "examinerTip": "Always show the explicit equation \\(\\dfrac{dy}{dx} = 0\\) before solving for stationary points—this earns the M1 method mark even if an arithmetic slip occurs.",
     "ti_ar": "وضع المصحح: المماس والنقاط الحرجة (Unit 2 · Differentiation — Definition and Fundamental Properties)",
-    "q_ar": "لمنحنى الدالة \\(y = 4x^3 - 1x^2 + 4\\): (أ) أوجد \\(\\dfrac{dy}{dx}\\) وميل المماس عند \\(x = 2\\). (ب) أوجد الإحداثيات السينية للنقاط الحرجة.",
+    "q_ar": "لمنحنى الدالة \\(y = 4x^3 - x^2 + 4\\): (أ) أوجد \\(\\dfrac{dy}{dx}\\) وميل المماس عند \\(x = 2\\). (ب) أوجد الإحداثيات السينية للنقاط الحرجة.",
     "examinerTip_ar": "اكتب دائماً شرط النقطة الحرجة \\(\\dfrac{dy}{dx} = 0\\) صراحةً لضمان الحصول على درجة الطريقة (M1)."
   },
   {
@@ -1343,14 +1343,14 @@ D["apab-u2"] = [
     "ti": "Step Builder: Instantaneous Rate of Change (Unit 2 · Differentiation — Definition and Fundamental Properties)",
     "steps": [
       {
-        "l": "Given \\(f(x) = 4x^2 + 1x - 5\\), find the coefficient of \\(x\\) in \\(f'(x)\\):",
+        "l": "Given \\(f(x) = 4x^2 + x - 5\\), find the coefficient of \\(x\\) in \\(f'(x)\\):",
         "a": "8",
         "h": "Multiply power 2 by 4."
       },
       {
         "l": "Find the constant term in \\(f'(x)\\):",
         "a": "1",
-        "h": "The derivative of 1x is 1."
+        "h": "The derivative of x is 1."
       },
       {
         "l": "Evaluate the instantaneous rate of change \\(f'(2) =\\)",
@@ -1361,14 +1361,14 @@ D["apab-u2"] = [
     "ti_ar": "بناء الخطوات: حساب المشتقة ومعدل التغير اللحظي (Unit 2 · Differentiation — Definition and Fundamental Properties)",
     "steps_ar": [
       {
-        "l": "للدالة \\(f(x) = 4x^2 + 1x - 5\\)، معامل \\(x\\) في \\(f'(x)\\) يساوي:",
+        "l": "للدالة \\(f(x) = 4x^2 + x - 5\\)، معامل \\(x\\) في \\(f'(x)\\) يساوي:",
         "a": "8",
         "h": "اضرب الأس 2 في 4."
       },
       {
         "l": "الحد الثابت في المشتقة \\(f'(x)\\) يساوي:",
         "a": "1",
-        "h": "مشتقة 1x هي 1."
+        "h": "مشتقة x هي 1."
       },
       {
         "l": "احسب قيمة المشتقة \\(f'(2) =\\)",
@@ -1539,7 +1539,7 @@ D["apab-u3"] = [
   {
     "t": "ms",
     "ti": "Examiner Mode: Tangent, Normal & Stationary Points (Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions)",
-    "q": "Consider the curve \\(y = 2x^3 - -1x^2 + 4\\). (a) Find \\(\\dfrac{dy}{dx}\\) and the gradient of the tangent at \\(x = 0\\). (b) Find the \\(x\\)-coordinates of the stationary points.",
+    "q": "Consider the curve \\(y = 2x^3 + x^2 + 4\\). (a) Find \\(\\dfrac{dy}{dx}\\) and the gradient of the tangent at \\(x = 0\\). (b) Find the \\(x\\)-coordinates of the stationary points.",
     "parts": [
       {
         "label": "Part (a) — First Derivative & Tangent Gradient",
@@ -1581,7 +1581,7 @@ D["apab-u3"] = [
     ],
     "examinerTip": "Always show the explicit equation \\(\\dfrac{dy}{dx} = 0\\) before solving for stationary points—this earns the M1 method mark even if an arithmetic slip occurs.",
     "ti_ar": "وضع المصحح: المماس والنقاط الحرجة (Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions)",
-    "q_ar": "لمنحنى الدالة \\(y = 2x^3 - -1x^2 + 4\\): (أ) أوجد \\(\\dfrac{dy}{dx}\\) وميل المماس عند \\(x = 0\\). (ب) أوجد الإحداثيات السينية للنقاط الحرجة.",
+    "q_ar": "لمنحنى الدالة \\(y = 2x^3 + x^2 + 4\\): (أ) أوجد \\(\\dfrac{dy}{dx}\\) وميل المماس عند \\(x = 0\\). (ب) أوجد الإحداثيات السينية للنقاط الحرجة.",
     "examinerTip_ar": "اكتب دائماً شرط النقطة الحرجة \\(\\dfrac{dy}{dx} = 0\\) صراحةً لضمان الحصول على درجة الطريقة (M1)."
   },
   {
@@ -1589,14 +1589,14 @@ D["apab-u3"] = [
     "ti": "Step Builder: Instantaneous Rate of Change (Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions)",
     "steps": [
       {
-        "l": "Given \\(f(x) = 2x^2 + -1x - 5\\), find the coefficient of \\(x\\) in \\(f'(x)\\):",
+        "l": "Given \\(f(x) = 2x^2 - x - 5\\), find the coefficient of \\(x\\) in \\(f'(x)\\):",
         "a": "4",
         "h": "Multiply power 2 by 2."
       },
       {
         "l": "Find the constant term in \\(f'(x)\\):",
         "a": "-1",
-        "h": "The derivative of -1x is -1."
+        "h": "The derivative of -x is -1."
       },
       {
         "l": "Evaluate the instantaneous rate of change \\(f'(0) =\\)",
@@ -1607,14 +1607,14 @@ D["apab-u3"] = [
     "ti_ar": "بناء الخطوات: حساب المشتقة ومعدل التغير اللحظي (Unit 3 · Differentiation — Composite, Implicit, and Inverse Functions)",
     "steps_ar": [
       {
-        "l": "للدالة \\(f(x) = 2x^2 + -1x - 5\\)، معامل \\(x\\) في \\(f'(x)\\) يساوي:",
+        "l": "للدالة \\(f(x) = 2x^2 - x - 5\\)، معامل \\(x\\) في \\(f'(x)\\) يساوي:",
         "a": "4",
         "h": "اضرب الأس 2 في 2."
       },
       {
         "l": "الحد الثابت في المشتقة \\(f'(x)\\) يساوي:",
         "a": "-1",
-        "h": "مشتقة -1x هي -1."
+        "h": "مشتقة -x هي -1."
       },
       {
         "l": "احسب قيمة المشتقة \\(f'(0) =\\)",

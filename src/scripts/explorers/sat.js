@@ -582,7 +582,17 @@
     var TEAL = '#0d9488', ROSE = '#e11d48';
 
     function sgnTerm(v){
-      return v >= 0 ? (' + ' + fmt(v, 2)) : (' − ' + fmt(Math.abs(v), 2));
+      return v >= 0 ? (' + ' + _num(v)) : (' − ' + _num(Math.abs(v)));
+    }
+    function leadCoeff(v){
+      if(Math.abs(v - 1) < 1e-6) return '';
+      if(Math.abs(v + 1) < 1e-6) return '−';
+      return _num(v);
+    }
+    function midCoeffVar(v, vr){
+      if(Math.abs(v - 1) < 1e-6) return ' + ' + vr;
+      if(Math.abs(v + 1) < 1e-6) return ' − ' + vr;
+      return (v >= 0 ? ' + ' + _num(v) : ' − ' + _num(Math.abs(v))) + vr;
     }
 
     function solveLine(){
@@ -590,7 +600,7 @@
       if(mode === 'ymxc'){
         m = p1; y0 = p2;
         x0 = Math.abs(m) > 1e-6 ? -y0 / m : NaN;
-        eq = 'y = ' + fmt(m, 2) + 'x' + sgnTerm(y0);
+        eq = 'y = ' + leadCoeff(m) + 'x' + sgnTerm(y0);
         a1 = [0, y0]; a2 = [2, y0 + 2 * m];
         a1Lbl = '1. y-int (0, ' + fmt(y0, 1) + ')';
         a2Lbl = '2. Step (2, ' + fmt(y0 + 2 * m, 1) + ')';
@@ -598,7 +608,7 @@
       } else if(mode === 'ymxb'){
         m = p1; x0 = p2;
         y0 = -m * x0;
-        eq = 'y = ' + fmt(m, 2) + '(x ' + (x0 >= 0 ? '− ' + fmt(x0, 2) : '+ ' + fmt(-x0, 2)) + ')';
+        eq = 'y = ' + leadCoeff(m) + '(x ' + (x0 >= 0 ? '− ' + _num(x0) : '+ ' + _num(-x0)) + ')';
         a1 = [x0, 0]; a2 = [x0 + 2, 2 * m];
         a1Lbl = '1. x-int (' + fmt(x0, 1) + ', 0)';
         a2Lbl = '2. Step (' + fmt(x0 + 2, 1) + ', ' + fmt(2 * m, 1) + ')';
@@ -608,7 +618,7 @@
         var b = Math.abs(p2) < 0.25 ? (p2 >= 0 ? 0.5 : -0.5) : p2;
         x0 = a; y0 = b;
         m = -b / a;
-        eq = 'x/(' + fmt(a, 1) + ') + y/(' + fmt(b, 1) + ') = 1';
+        eq = 'x/(' + _num(a) + ') + y/(' + _num(b) + ') = 1';
         a1 = [x0, 0]; a2 = [0, y0];
         a1Lbl = 'x-int (' + fmt(x0, 1) + ', 0)';
         a2Lbl = 'y-int (0, ' + fmt(y0, 1) + ')';
@@ -620,17 +630,17 @@
         m = -A / B;
         y0 = -C / B;
         x0 = -C / A;
-        eq = fmt(A, 1) + 'x' + sgnTerm(B) + 'y' + sgnTerm(C) + ' = 0';
+        eq = leadCoeff(A) + 'x' + midCoeffVar(B, 'y') + sgnTerm(C) + ' = 0';
         a1 = [x0, 0]; a2 = [0, y0];
         a1Lbl = 'Cover y: (' + fmt(x0, 1) + ', 0)';
         a2Lbl = 'Cover x: (0, ' + fmt(y0, 1) + ')';
         guide = 'Cover-Up: set y=0 → (' + fmt(x0, 2) + ', 0); set x=0 → (0, ' + fmt(y0, 2) + '); connect!';
       }
 
-      var eqYmxc = 'y = ' + fmt(m, 2) + 'x' + sgnTerm(y0);
-      var eqYmxb = isFinite(x0) ? ('y = ' + fmt(m, 2) + '(x ' + (x0 >= 0 ? '− ' + fmt(x0, 2) : '+ ' + fmt(-x0, 2)) + ')') : 'No x-intercept (m = 0)';
-      var eqXayb = (isFinite(x0) && Math.abs(x0) > 1e-4 && Math.abs(y0) > 1e-4) ? ('x/' + fmt(x0, 2) + ' + y/' + fmt(y0, 2) + ' = 1') : 'Undefined (passes through origin or horizontal)';
-      var eqGen  = fmt(-m, 2) + 'x + 1y' + sgnTerm(-y0) + ' = 0';
+      var eqYmxc = 'y = ' + leadCoeff(m) + 'x' + sgnTerm(y0);
+      var eqYmxb = isFinite(x0) ? ('y = ' + leadCoeff(m) + '(x ' + (x0 >= 0 ? '− ' + _num(x0) : '+ ' + _num(-x0)) + ')') : 'No x-intercept (m = 0)';
+      var eqXayb = (isFinite(x0) && Math.abs(x0) > 1e-4 && Math.abs(y0) > 1e-4) ? ('x/' + _num(x0) + ' + y/' + _num(y0) + ' = 1') : 'Undefined (passes through origin or horizontal)';
+      var eqGen  = leadCoeff(-m) + 'x + y' + sgnTerm(-y0) + ' = 0';
 
       return {
         m: m, y0: y0, x0: x0, eq: eq, guide: guide,
@@ -722,11 +732,22 @@
     var TEAL = '#0d9488', ROSE = '#e11d48';
 
     function sgnTerm(v){
-      return v >= 0 ? (' + ' + fmt(v, 2)) : (' − ' + fmt(Math.abs(v), 2));
+      return v >= 0 ? (' + ' + _num(v)) : (' − ' + _num(Math.abs(v)));
+    }
+    function leadCoeff(v){
+      if(Math.abs(v - 1) < 1e-6) return '';
+      if(Math.abs(v + 1) < 1e-6) return '−';
+      return _num(v);
+    }
+    function midCoeffVar(v, vr){
+      if(Math.abs(v) < 1e-6) return '';
+      if(Math.abs(v - 1) < 1e-6) return ' + ' + vr;
+      if(Math.abs(v + 1) < 1e-6) return ' − ' + vr;
+      return (v >= 0 ? ' + ' + _num(v) : ' − ' + _num(Math.abs(v))) + vr;
     }
     function factorStr(r){
       if(Math.abs(r) < 1e-6) return 'x';
-      return '(x ' + (r >= 0 ? '− ' + fmt(r, 1) : '+ ' + fmt(-r, 1)) + ')';
+      return '(x ' + (r >= 0 ? '− ' + _num(r) : '+ ' + _num(-r)) + ')';
     }
 
     function solveQuad(){
@@ -737,7 +758,7 @@
         B = p1; C = p2;
         h = -B / (2 * aa);
         k = aa * h * h + B * h + C;
-        eq = 'f(x) = ' + fmt(aa, 1) + 'x²' + sgnTerm(B) + 'x' + sgnTerm(C);
+        eq = 'f(x) = ' + leadCoeff(aa) + 'x²' + midCoeffVar(B, 'x') + sgnTerm(C);
         var symX = -B / aa;
         pts = [
           {x: 0, y: C, lbl: '(0, c)=(' + 0 + ',' + fmt(C, 1) + ')', col: AMBER2},
@@ -751,7 +772,7 @@
         C = aa * m * n;
         h = 0.5 * (m + n);
         k = aa * (h - m) * (h - n);
-        eq = 'f(x) = ' + fmt(aa, 1) + factorStr(m) + factorStr(n);
+        eq = 'f(x) = ' + leadCoeff(aa) + factorStr(m) + factorStr(n);
         pts = [
           {x: m, y: 0, lbl: 'Root (' + fmt(m, 1) + ', 0)', col: AMBER2},
           {x: n, y: 0, lbl: 'Root (' + fmt(n, 1) + ', 0)', col: AMBER2}
@@ -762,7 +783,7 @@
         h = p1; k = p2;
         B = -2 * aa * h;
         C = aa * h * h + k;
-        eq = 'f(x) = ' + fmt(aa, 1) + factorStr(h) + '²' + sgnTerm(k);
+        eq = 'f(x) = ' + leadCoeff(aa) + factorStr(h) + '²' + sgnTerm(k);
         pts = [
           {x: h - 1, y: k + aa, lbl: '(h−1, k+a)', col: TEAL},
           {x: h + 1, y: k + aa, lbl: '(h+1, k+a)', col: TEAL}
@@ -774,7 +795,7 @@
         C = aa * p * q + l;
         h = 0.5 * (p + q);
         k = aa * (h - p) * (h - q) + l;
-        eq = 'f(x) = ' + fmt(aa, 1) + factorStr(p) + factorStr(q) + sgnTerm(l);
+        eq = 'f(x) = ' + leadCoeff(aa) + factorStr(p) + factorStr(q) + sgnTerm(l);
         pts = [
           {x: p, y: l, lbl: '(p, l)=(' + fmt(p, 1) + ',' + fmt(l, 1) + ')', col: AMBER2},
           {x: q, y: l, lbl: '(q, l)=(' + fmt(q, 1) + ',' + fmt(l, 1) + ')', col: AMBER2}
@@ -791,8 +812,8 @@
         rootsTxt = '(' + fmt(r1, 2) + ', 0) & (' + fmt(r2, 2) + ', 0)';
       }
 
-      var eqStd = 'f(x) = ' + fmt(aa, 1) + 'x²' + sgnTerm(B) + 'x' + sgnTerm(C);
-      var eqVtx = 'f(x) = ' + fmt(aa, 1) + factorStr(h) + '²' + sgnTerm(k);
+      var eqStd = 'f(x) = ' + leadCoeff(aa) + 'x²' + midCoeffVar(B, 'x') + sgnTerm(C);
+      var eqVtx = 'f(x) = ' + leadCoeff(aa) + factorStr(h) + '²' + sgnTerm(k);
 
       return {
         a: aa, B: B, C: C, h: h, k: k, eq: eq,
@@ -846,7 +867,7 @@
       _set('satQuadFormsAnchorsOut', Q.anchorsTxt);
       _set('satQuadFormsRootsOut', Q.rootsTxt);
       _set('satQuadFormsYIntOut', '(0, ' + fmt(Q.C, 2) + ')');
-      _set('satQuadFormsEquivOut', Q.eqVtx + '  =  ' + Q.eqStd);
+      _set('satQuadFormsEquivOut', Q.eqVtx + '  =  ' + Q.eqStd.replace(/^f\(x\)\s*=\s*/, ''));
 
       if(dataDesc){
         dataDesc.textContent = Q.eq + ' — Vertex (' + fmt(Q.h, 2) + ', ' + fmt(Q.k, 2) + '), Axis x = ' + fmt(Q.h, 2) + ', Anchors: ' + Q.anchorsTxt + '.';

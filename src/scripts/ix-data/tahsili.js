@@ -419,14 +419,14 @@ D["tah-algebra"] = [
       "Ensure the equation is in standard form ax² + bx + c = 0",
       "Find factors of (2)(-3) = -6 that add up to the middle coefficient -5 (-6 and 1)",
       "Split the middle term: 2x² - 6x + x - 3 = 0",
-      "Factor by grouping: 2x(x - 3) + 1(x - 3) = (2x + 1)(x - 3) = 0",
+      "Factor by grouping: 2x(x - 3) + (x - 3) = (2x + 1)(x - 3) = 0",
       "Apply zero product property: x = -1/2 or x = 3"
     ],
     "items_ar": [
       "التأكد من كتابة المعادلة بالصورة القياسية ax² + bx + c = 0",
       "البحث عن عددين حاصل ضربهما (2)(-3) = -6 ومجموعهما -5 (وهما -6 و 1)",
       "تجزئة الحد الأوسط: 2x² - 6x + x - 3 = 0",
-      "التحليل بالتجميع: 2x(x - 3) + 1(x - 3) = (2x + 1)(x - 3) = 0",
+      "التحليل بالتجميع: 2x(x - 3) + (x - 3) = (2x + 1)(x - 3) = 0",
       "تطبيق خاصية الضرب الصفري لإيجاد الجذور: x = -1/2 أو x = 3"
     ],
     "sol": "Factoring by grouping cleanly solves non-monic quadratics.",
