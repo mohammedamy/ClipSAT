@@ -54,12 +54,12 @@
       }
       return a;
     };
-    var pickFromTier = function(bucket, count, figRatio){
-      if(count <= 0 || !bucket.length) return [];
+    var pickFromTier = function(bucket, targetCount, figRatio){
+      if(targetCount <= 0 || !bucket.length) return [];
       var shuf = shuffleArr(bucket);
       var withFig = shuf.filter(function(q){ return !!(q.figure || q.fig || q.table); });
       var noFig = shuf.filter(function(q){ return !(q.figure || q.fig || q.table); });
-      var targetFigs = Math.min(withFig.length, Math.round(count * figRatio));
+      var targetFigs = Math.min(withFig.length, Math.max(1, Math.ceil(targetCount * 0.30)));
       var chosen = [];
       for(var f = 0; f < withFig.length && chosen.length < targetFigs; f++){
         var qf = withFig[f];
@@ -70,7 +70,7 @@
         }
       }
       var rem = noFig.concat(withFig);
-      for(var r = 0; r < rem.length && chosen.length < count; r++){
+      for(var r = 0; r < rem.length && chosen.length < targetCount; r++){
         var qr = rem[r];
         var kr = (qr.id || qr.text || qr.q || '').trim();
         if(!seenKeys.has(kr) && (!tracker || tracker.add(qr))){

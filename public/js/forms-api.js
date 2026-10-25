@@ -194,13 +194,82 @@
   // batchUpdate for the entire form, not just that one question. An
   // earlier version of this tried \n for a cleaner visual split between
   // the Arabic/English halves; that's exactly what broke it.
+  function replaceKatexHtmlWithLatex(str) {
+    var s = String(str == null ? '' : str);
+    if (s.indexOf('katex') === -1) return s;
+    var out = '';
+    var idx = 0;
+    while (idx < s.length) {
+      var kIdx = s.indexOf('<span class="katex', idx);
+      if (kIdx === -1) {
+        out += s.slice(idx);
+        break;
+      }
+      out += s.slice(idx, kIdx);
+      var isDisplay = s.slice(kIdx, kIdx + 35).indexOf('katex-display') !== -1;
+      var depth = 0;
+      var tagRe = /<\/?span\b[^>]*>/gi;
+      tagRe.lastIndex = kIdx;
+      var m, endIdx = -1;
+      while ((m = tagRe.exec(s)) !== null) {
+        if (m[0].charAt(1) === '/') {
+          depth--;
+          if (depth === 0) {
+            endIdx = tagRe.lastIndex;
+            break;
+          }
+        } else {
+          depth++;
+        }
+      }
+      if (endIdx === -1) {
+        out += s.slice(kIdx);
+        break;
+      }
+      var block = s.slice(kIdx, endIdx);
+      var annMatch = block.match(/<annotation[^>]*encoding=["']application\/x-tex["'][^>]*>([\s\S]*?)<\/annotation>/i);
+      if (annMatch) {
+        var tex = annMatch[1]
+          .replace(/&amp;/g, '&')
+          .replace(/&lt;/g, '<')
+          .replace(/&gt;/g, '>')
+          .replace(/&quot;/g, '"')
+          .replace(/&#39;/g, "'");
+        out += isDisplay ? (' \\[' + tex + '\\] ') : (' \\(' + tex + '\\) ');
+      }
+      idx = endIdx;
+    }
+    return out;
+  }
+
   function stripKnownHtml(s) {
-    return s.replace(/<br\s*\/?>/gi, ' ').replace(/<\/?(em|strong|b|i|u)\s*>/gi, '');
+    s = replaceKatexHtmlWithLatex(s);
+    return s
+      .replace(/<svg[\s\S]*?<\/svg>/gi, ' ')
+      .replace(/<br\s*\/?>/gi, ' ')
+      .replace(/<\/(?:tr|div|p|li|h[1-6])\s*>/gi, ' | ')
+      .replace(/<\/(?:td|th)\s*>/gi, ' : ')
+      .replace(/<\/?(?:em|strong|b|i|u|span|div|p|ul|ol|li|table|thead|tbody|tr|td|th|caption|small|sub|sup)(?:\s+[^>]*)?>/gi, ' ')
+      .replace(/&nbsp;/gi, ' ')
+      .replace(/&amp;/gi, '&')
+      .replace(/&lt;/gi, '<')
+      .replace(/&gt;/gi, '>')
+      .replace(/&quot;/gi, '"')
+      .replace(/&#39;/gi, "'")
+      .replace(/&minus;/gi, '−')
+      .replace(/&times;/gi, '×')
+      .replace(/&divide;/gi, '÷')
+      .replace(/&le;/gi, '≤')
+      .replace(/&ge;/gi, '≥')
+      .replace(/&ne;/gi, '≠')
+      .replace(/&pi;/gi, 'π')
+      .replace(/&deg;/gi, '°');
   }
 
   function mathToPlainText(s) {
     s = String(s == null ? '' : s);
     s = stripKnownHtml(s);
+    s = s.replace(/\\\$/g, '\u0003');
     // Protect genuine literal \{ \} (set notation) from the later generic
     // grouping-brace strip by stashing them first and restoring at the end.
     s = s.replace(/\\\{/g, '').replace(/\\\}/g, '');
@@ -212,27 +281,20 @@
     s = s.replace(/\^\{?\\circ\}?/g, '°').replace(/\^\{?\\degree\}?/g, '°').replace(/\^°/g, '°');
     // Sizing commands (\left( \right] …) — drop the command, keep the delimiter.
     s = s.replace(/\\left/g, '').replace(/\\right/g, '');
+    s = s.replace(/\\(?:lvert|rvert)\b/g, '|').replace(/\\(?:lVert|rVert)\b/g, '‖');
     // Geometry symbols with optional trailing space: \triangle ABC -> △ABC, \angle C -> ∠C
     s = s.replace(/\\(triangle|bigtriangleup|vartriangle)\s*/g, '△');
     s = s.replace(/\\(angle|measuredangle)\s*/g, '∠');
-    // LaTeX itself adds visual spacing around commands like \frac and \oint
-    // even with no literal space in the source — plain text needs that
-    // spacing made explicit, or two converted tokens run together unreadably
-    // (e.g. "\frac{1}{2}\oint(...)" → "1/2∮(...)" with no gap at all).
-    // Ensure at least one space before a following backslash command — but
-    // ONLY when the preceding character genuinely ends a token (a letter,
-    // digit, or closing bracket). A blacklist approach here (space unless
-    // whitespace/open-bracket/^/_) also matched operators like "-", so
-    // "{-\infty}" got a space shoved inside it ("- \infty") and then failed
-    // the superscript converter's "every character maps" check. Operators,
-    // ^, _, and open brackets all mean "still building up one argument" —
-    // never insert a space there.
+    // Indexed roots: \sqrt[n]{x} -> root(n, x)
+    s = s.replace(/\\sqrt\s*\[\s*([^\]]+)\s*\]\s*\{\s*([^{}]+)\s*\}/g, 'root($1, $2)');
     s = s.replace(/([a-zA-Z0-9)}=])(\\[a-zA-Z])/g, '$1 $2');
-    // Fractions and roots — do a few passes so nested cases resolve.
+    // Fractions, binomials, and roots — do a few passes so nested cases resolve.
     for (var pass = 0; pass < 4; pass++) {
       s = replaceCmd(s, 'dfrac', 2, function (a) { return wrapFracPart(a[0]) + '/' + wrapFracPart(a[1]); });
       s = replaceCmd(s, 'frac', 2, function (a) { return wrapFracPart(a[0]) + '/' + wrapFracPart(a[1]); });
       s = replaceCmd(s, 'tfrac', 2, function (a) { return wrapFracPart(a[0]) + '/' + wrapFracPart(a[1]); });
+      s = replaceCmd(s, 'cfrac', 2, function (a) { return wrapFracPart(a[0]) + '/' + wrapFracPart(a[1]); });
+      s = replaceCmd(s, 'binom', 2, function (a) { return 'C(' + a[0] + ', ' + a[1] + ')'; });
       s = replaceCmd(s, 'sqrt', 1, function (a) { return '√(' + a[0] + ')'; });
     }
     // Text/formatting wrappers — just unwrap to their own content.
@@ -309,12 +371,9 @@
     s = s.replace(/[{}]/g, '');
     // Restore literal set-notation braces.
     s = s.replace(//g, '{').replace(//g, '}');
-    // Collapse ALL whitespace — including any literal newline, whether from
-    // stripKnownHtml's <br> handling or straight from the source data — down
-    // to a single space. The Forms API hard-rejects any \n anywhere in a
-    // displayed-text field, so this is a deliberate safety net, not just
-    // cosmetic tidying: a stray real newline slipping through here fails
-    // the entire form's creation, not just the one field that had it.
+    s = s.replace(/\u0003/g, '$');
+    s = s.replace(/(?:\s*\|\s*)+/g, ' | ').replace(/^\s*\|\s*|\s*\|\s*$/g, '');
+    s = s.replace(/(?:\s*:\s*)+/g, ' : ').replace(/\s*:\s*\|\s*/g, ' | ');
     return s.replace(/\s+([.,;:!?])/g, '$1').replace(/\s+/g, ' ').trim();
   }
 
@@ -402,16 +461,20 @@
     var autoMath = window.CSAutoMath || function (s) { return s; };
     var jobs = [];
     questions.forEach(function (q, qi) {
-      var fig = q.figure || q.fig || null;
+      var fig = q.figure || q.fig || q.table || null;
       var fHtml = q.figureHtml || null;
-      var qText = autoMath(q.text);
+      var rawStem = q.text || q.q || '';
+      if (Array.isArray(q.parts) && q.parts.length && rawStem.indexOf('(a)') === -1) {
+        rawStem = rawStem + '\n' + q.parts.join('\n');
+      }
+      var qText = autoMath(rawStem);
       if (mathImg && mathImg.needsImage(qText, fig, fHtml)) {
         jobs.push({ qi: qi, ci: null, text: qText, figure: fig, figureHtml: fHtml });
       }
-      if (q.type !== 'frq' && q.choices) {
+      if (q.choices && q.choices.length) {
         q.choices.forEach(function (c, ci) {
           var cFig = (typeof c === 'object' && c !== null) ? (c.figure || c.fig || (c.type ? c : null)) : ((q.choiceFigures && q.choiceFigures[ci]) || null);
-          var cHtml = (typeof c === 'string' && c.indexOf('<svg') !== -1) ? c : ((typeof c === 'object' && c && c.figureHtml) ? c.figureHtml : null);
+          var cHtml = (typeof c === 'string' && c.indexOf('<svg') !== -1) ? c : ((typeof c === 'object' && c && (c.figureHtml || c.svg)) ? (c.figureHtml || c.svg) : null);
           var cRaw = (typeof c === 'object' && c !== null) ? (c.text || c.label || '') : String(c != null ? c : '');
           var cText = autoMath(cRaw);
           var needsC = (cFig || cHtml) ? true : (mathImg ? (typeof mathImg.needsChoiceImage === 'function' ? mathImg.needsChoiceImage(cText) : mathImg.needsImage(cText)) : false);
@@ -461,12 +524,18 @@
         });
 
         questions.forEach(function (q, i) {
-          var qText = mathToPlainText(q.text);
+          var rawStem = q.text || q.q || '';
+          if (Array.isArray(q.parts) && q.parts.length && rawStem.indexOf('(a)') === -1) {
+            rawStem = rawStem + ' | ' + q.parts.join(' | ');
+          }
+          var qText = mathToPlainText(rawStem) || ('Question ' + (i + 1));
+          var pts = Math.max(1, Math.round(Number(q.points || q.marks) || 1));
           var question;
-          if (q.type !== 'frq' && q.choices && q.choices.length) {
-            var options = q.choices.map(function (c) {
+          if (q.type !== 'frq' && q.type !== 'spr' && q.choices && q.choices.length) {
+            var options = q.choices.map(function (c, ci) {
               var val = (typeof c === 'object' && c !== null) ? (c.text || c.label || '') : String(c != null ? c : '');
-              return { value: mathToPlainText(val) };
+              var plainOpt = mathToPlainText(val);
+              return { value: plainOpt || ('Option ' + String.fromCharCode(65 + ci)) };
             });
             dedupeOptionValues(options);
             var qChoiceImages = imgs.choiceImages[i] || {};
@@ -479,12 +548,45 @@
             };
             if (q.correctIndex != null && q.correctIndex >= 0 && q.correctIndex < options.length) {
               question.grading = {
-                pointValue: q.points || 1,
+                pointValue: pts,
                 correctAnswers: { answers: [{ value: options[q.correctIndex].value }] }
               };
             }
           } else {
-            question = { required: false, textQuestion: { paragraph: true } };
+            var rawAns = q.ans != null ? String(q.ans) : (q.sprAnswer != null ? String(q.sprAnswer) : (q.answer != null && typeof q.answer !== 'number' ? String(q.answer) : ''));
+            if (Array.isArray(q.answers) && q.answers.length && !rawAns) {
+              rawAns = q.answers.join(' | ');
+            }
+            var plainAns = mathToPlainText(rawAns);
+            var plainSol = mathToPlainText(q.sol || q.explanation || '');
+            var isShortGradable = (q.type === 'spr') || (plainAns && plainAns.length <= 40 && !/See Markscheme|FRQ|SPR/i.test(plainAns) && (!Array.isArray(q.parts) || !q.parts.length));
+            if (isShortGradable && plainAns && !/See Markscheme|FRQ|SPR/i.test(plainAns)) {
+              question = {
+                required: false,
+                textQuestion: { paragraph: false },
+                grading: {
+                  pointValue: pts,
+                  correctAnswers: { answers: [{ value: plainAns }] }
+                }
+              };
+            } else {
+              question = {
+                required: false,
+                textQuestion: { paragraph: true }
+              };
+              var fbParts = [];
+              if (plainAns && !/See Markscheme|FRQ|SPR/i.test(plainAns)) fbParts.push('Answer: ' + plainAns);
+              if (plainSol && plainSol !== plainAns) fbParts.push('Solution: ' + plainSol);
+              var fbText = fbParts.join(' | ').slice(0, 1800);
+              if (fbText) {
+                question.grading = {
+                  pointValue: pts,
+                  generalFeedback: { text: fbText }
+                };
+              } else {
+                question.grading = { pointValue: pts };
+              }
+            }
           }
           var item = { title: qText, questionItem: { question: question } };
           if (imgs.stemImages[i]) item.questionItem.image = imageObj(imgs.stemImages[i], qText);

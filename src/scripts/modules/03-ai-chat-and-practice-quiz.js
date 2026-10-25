@@ -771,7 +771,8 @@ window.launchPracticeQuiz=function(mistake){
         }
       }
       /* Google Forms/Classroom capture — see public/js/quiz-capture-ui.js */
-      _csCaptureQ.push({text:q.text||q.q||'',choices:(q.choices||[]).slice(),correctIndex:ans,type:'mcq',points:1,figure:_f||null,figureHtml:_fHtml||null});
+      var _isCqMcq = Array.isArray(q.choices) && q.choices.length > 0 && q.type !== 'frq' && q.type !== 'spr';
+      _csCaptureQ.push({text:q.text||q.q||'',choices:_isCqMcq?(q.choices||[]).slice():[],correctIndex:_isCqMcq?ans:null,type:_isCqMcq?'mcq':(q.type==='spr'?'spr':'frq'),points:Number(q.marks)||1,ans:!_isCqMcq?(q.ans!=null?String(q.ans):(q.sprAnswer!=null?String(q.sprAnswer):(q.answer!=null?String(q.answer):''))):'',sol:q.sol||q.explanation||'',figure:_f||null,figureHtml:_fHtml||null});
       var _qDom=(q.domain||q.topic||'').replace(/"/g,'&quot;');
       var _qId=(q.id||(viewId||'tr')+'-cq-'+(i+1)).replace(/"/g,'&quot;');
       var _choicesJson='';

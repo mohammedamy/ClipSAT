@@ -1706,7 +1706,8 @@
           var isMCQ=(q.type==='mcq'||q.type==='data');
           ak.push({n:qNum,type:q.type,domain:q.domain,answer:isMCQ?globalLetters[q.answer]:(q.answer!=null?String(q.answer):'FRQ'),sol:q.sol||''});
           var _fHtml=renderQFig(q);
-          _csCaptureQ.push({text:q.text||q.q||'',choices:isMCQ?(q.choices||[]).slice():[],correctIndex:isMCQ?q.answer:null,type:isMCQ?'mcq':'frq',points:1,figure:q.figure||q.fig||null,figureHtml:_fHtml||null});
+          var _ansDisp0=isMCQ?globalLetters[q.answer]:(q.ans!=null?String(q.ans):(q.sprAnswer!=null?String(q.sprAnswer):(q.answer!=null?String(q.answer):'')));
+          _csCaptureQ.push({text:q.text||q.q||'',choices:isMCQ?(q.choices||[]).slice():[],correctIndex:isMCQ?q.answer:null,type:isMCQ?'mcq':(q.type==='spr'?'spr':'frq'),points:Number(q.marks)||1,ans:_ansDisp0,sol:q.sol||q.exp||'',figure:q.figure||q.fig||null,figureHtml:_fHtml||null});
           h+='<div class="fep-item '+(q.type==='frq'?'fep-frq':'fep-mcq')+'">';
           h+='<div class="fep-item-head"><span class="fep-inum">'+qNum+'</span><span class="fep-domain-tag">'+esc(q.domain)+'</span></div>';
           if(_fHtml)h+='<div class="fep-figure">'+_fHtml+'</div>';
@@ -1919,7 +1920,7 @@
           answerKey.push({n:qNum,type:(isFree?(q.type==='spr'?'spr':'frq'):'mcq'),domain:q.domain,
             marks:qMarks,answer:ansDisplay,sol:q.sol||q.exp||''});
           var _fHtml=renderQFig(q);
-          _csCaptureQ.push({text:q.text||q.q||'',choices:isMCQ?(q.choices||[]).slice():[],correctIndex:isMCQ?q.answer:null,type:isFree?(q.type==='spr'?'spr':'frq'):'mcq',points:qMarks,figure:q.figure||q.fig||null,figureHtml:_fHtml||null});
+          _csCaptureQ.push({text:q.text||q.q||'',choices:isMCQ?(q.choices||[]).slice():[],correctIndex:isMCQ?q.answer:null,type:isFree?(q.type==='spr'?'spr':'frq'):'mcq',points:qMarks,ans:ansDisplay,sol:q.sol||q.exp||'',figure:q.figure||q.fig||null,figureHtml:_fHtml||null});
 
           h+='<div class="fep-item '+(isFree?'fep-frq fep-frq-full':'fep-mcq')+(isIBExam?' ib-question-card':'')+'">';
           h+='<div class="fep-item-head"><span class="fep-inum">'+qNum+'.</span>';

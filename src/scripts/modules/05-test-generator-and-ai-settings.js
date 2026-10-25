@@ -312,12 +312,15 @@ function _genTestOriginal(btn, optTrackId){
 
           out.insertAdjacentHTML('beforeend', probHtml);
 
+          var _tgAns = !isMCQ ? (q.ans != null ? String(q.ans) : (q.sprAnswer != null ? String(q.sprAnswer) : (q.answer != null ? String(q.answer) : ''))) : '';
           _csCaptureQ.push({
             text: qText,
             choices: isMCQ && q.choices ? q.choices.slice() : [],
             correctIndex: isMCQ && q.answer!=null ? q.answer : null,
-            type: isMCQ ? 'mcq' : 'frq',
+            type: isMCQ ? 'mcq' : (q.type === 'spr' ? 'spr' : 'frq'),
             points: qMarks,
+            ans: _tgAns,
+            sol: q.sol || q.exp || '',
             figure: q.figure || q.fig || null,
             figureHtml: _fHtml || null
           });
@@ -411,9 +414,10 @@ function _genTestLegacy(btn){
     if(st){var tw=st.querySelector('.tw');if(tw) tw.textContent='▸';if(st.childNodes[1]) st.childNodes[1].textContent=' Show solution';}
     out.appendChild(c);
     var pq=c.querySelector('.pq');
+    var solEl=c.querySelector('.sol');
     var figEl=c.querySelector('.mfig, .cq-figure, .fep-figure, .figure-container, svg');
     var _fHtml=figEl?(figEl.tagName.toLowerCase()==='svg'?figEl.outerHTML:figEl.innerHTML):null;
-    _csCaptureQ.push({text:pq?pq.textContent:'',choices:[],correctIndex:null,type:'frq',points:1,figure:null,figureHtml:_fHtml});
+    _csCaptureQ.push({text:pq?pq.innerHTML:'',choices:[],correctIndex:null,type:'frq',points:1,ans:'',sol:solEl?solEl.innerHTML:'',figure:null,figureHtml:_fHtml});
   });
   var ans=box.querySelector('.tg-ans');if(ans){ans.setAttribute('data-state','hidden');ans.textContent='Show all answers';}
   if(window.MathJax&&MathJax.typesetPromise) MathJax.typesetPromise([out]);

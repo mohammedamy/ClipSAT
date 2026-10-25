@@ -586,34 +586,185 @@
   }
   window._solvePointLabels = _solvePointLabels;
 
+  function _normalizeFigSpec(rawFig){
+    if(!rawFig || typeof rawFig !== 'object') return rawFig;
+    var fig = {};
+    for(var k in rawFig){
+      if(Object.prototype.hasOwnProperty.call(rawFig, k)) fig[k] = rawFig[k];
+    }
+    var t = fig.type;
+    if(t === 'solid' || t === '3d_solid'){
+      fig.type = 'geometry_3d';
+      fig.solid = fig.shape || fig.solid || 'cylinder';
+      var lbs = {};
+      if(fig.labels && typeof fig.labels === 'object'){
+        for(var lk in fig.labels){
+          if(Object.prototype.hasOwnProperty.call(fig.labels, lk)) lbs[lk] = fig.labels[lk];
+        }
+      }
+      if(lbs.length != null && lbs.l == null) lbs.l = lbs.length;
+      if(lbs.width != null && lbs.w == null) lbs.w = lbs.width;
+      if(lbs.height != null && lbs.h == null) lbs.h = lbs.height;
+      if(fig.r != null && !lbs.r) lbs.r = 'r = ' + fig.r;
+      if(fig.h != null && !lbs.h) lbs.h = 'h = ' + fig.h;
+      if(fig.l != null && !lbs.l) lbs.l = 'l = ' + fig.l;
+      if(fig.w != null && !lbs.w) lbs.w = 'w = ' + fig.w;
+      fig.labels = lbs;
+      fig.radius = fig.r != null ? fig.r : fig.radius;
+      fig.height = fig.h != null ? fig.h : fig.height;
+      fig.dims = fig.dims || [fig.l || (fig.r ? fig.r*2 : 4), fig.w || (fig.r ? fig.r*2 : 3), fig.h || 4];
+    } else if(t === 'area_between'){
+      fig.type = 'fn';
+      fig.fns = fig.fns || [fig.fn1 || 'x', fig.fn2 || 'x^2'];
+      var abDomain = fig.domain || fig.shade_x || [-2, 2];
+      fig.xrange = fig.xrange || [abDomain[0] - 1, abDomain[1] + 1];
+      fig.shade = [{ fn: fig.fns[0], fn2: fig.fns[1], x1: abDomain[0], x2: abDomain[1] }];
+    } else if(t === 'triangle'){
+      if(!fig.sides && Array.isArray(fig.side_labels)) fig.sides = fig.side_labels.slice();
+      if(fig.right === undefined && fig.right_angle_at != null) fig.right = fig.right_angle_at;
+      if(!fig.angles && Array.isArray(fig.angle_marks) && fig.angle_marks.length){
+        var angArr = ['', '', ''];
+        fig.angle_marks.forEach(function(am){
+          if(am && typeof am === 'object' && am.vertex != null && am.label != null){
+            angArr[am.vertex] = String(am.label);
+          }
+        });
+        fig.angles = angArr;
+      }
+    } else if(t === 'circle'){
+      if(Array.isArray(fig.center)){
+        fig.cx = fig.center[0];
+        fig.cy = fig.center[1];
+        fig.center = fig.center_label != null ? String(fig.center_label) : '';
+      } else if(fig.center == null && fig.center_label != null){
+        fig.center = String(fig.center_label);
+      }
+      if(!fig.labelR && fig.radius_label != null) fig.labelR = String(fig.radius_label);
+    } else if(t === 'venn'){
+      if(fig.labelA == null && fig.label_a != null) fig.labelA = fig.label_a;
+      if(fig.labelB == null && fig.label_b != null) fig.labelB = fig.label_b;
+      if(fig.onlyA == null && fig.only_a != null) fig.onlyA = fig.only_a;
+      if(fig.onlyB == null && fig.only_b != null) fig.onlyB = fig.only_b;
+      if(fig.uLabel == null && fig.u_label != null) fig.uLabel = fig.u_label;
+    } else if(t === 'bars' || t === 'bar' || t === 'bar_chart' || t === 'barChart' || t === 'barchart'){
+      if(!fig.labels && Array.isArray(fig.categories)) fig.labels = fig.categories.slice();
+      if(!fig.bars && !fig.data && Array.isArray(fig.labels) && Array.isArray(fig.values)){
+        fig.bars = fig.labels.map(function(lbl, idx){
+          return { label: lbl, val: fig.values[idx], value: fig.values[idx] };
+        });
+      }
+    } else if(t === 'numberline' || t === 'number_line' || t === 'numberLine'){
+      if(Array.isArray(fig.shade) && fig.shade.length >= 2 && typeof fig.shade[0] === 'number'){
+        var shA = +fig.shade[0], shB = +fig.shade[1];
+        fig.shade = [[shA, shB]];
+        if(!fig.regions){
+          fig.regions = [{ from: shA, to: shB, closed_left: true, closed_right: true }];
+        }
+      }
+      if(Array.isArray(fig.marks) && fig.marks.length){
+        var normMarks = fig.marks.map(function(mv, mi){
+          if(mv && typeof mv === 'object'){
+            return {
+              x: mv.x != null ? +mv.x : (mv.val != null ? +mv.val : 0),
+              open: !!mv.open,
+              label: mv.label != null ? String(mv.label) : ''
+            };
+          }
+          return {
+            x: +mv,
+            open: fig.closed === false,
+            label: (fig.labels && fig.labels[mi]) ? String(fig.labels[mi]) : String(mv)
+          };
+        });
+        if(!fig.points || !fig.points.length) fig.points = normMarks;
+        fig.marks = normMarks;
+      }
+    } else if(t === 'polygon' || t === 'rect'){
+      if(!fig.sides && Array.isArray(fig.side_labels)) fig.sides = fig.side_labels.slice();
+    } else if(t === 'boxplot' || t === 'box_plot' || t === 'boxPlot' || t === 'box'){
+      if(Array.isArray(fig.groups) && fig.groups.length && Array.isArray(fig.groups[0].stats) && !fig.fiveNum){
+        fig.fiveNum = fig.groups[0].stats.slice();
+      }
+    } else if(t === 'plot' || t === 'function_graph' || t === 'functionGraph' || t === 'fn_graph' || t === 'fn' || t === 'axes' || t === 'graph'){
+      var mergedPts = [];
+      var addPt = function(rawP){
+        if(!rawP) return;
+        var px, py, plbl = '', popen = false, pcol, pr, pdx, pdy, panchor;
+        if(Array.isArray(rawP)){
+          px = +rawP[0];
+          py = +rawP[1];
+          plbl = rawP[2] != null ? String(rawP[2]) : '';
+        } else if(typeof rawP === 'object'){
+          px = rawP.x != null ? +rawP.x : NaN;
+          py = rawP.y != null ? +rawP.y : NaN;
+          plbl = rawP.label != null ? String(rawP.label) : '';
+          popen = !!rawP.open;
+          pcol = rawP.color;
+          pr = rawP.r;
+          pdx = rawP.dx;
+          pdy = rawP.dy;
+          panchor = rawP.anchor;
+        }
+        if(!isFinite(px)) return;
+        for(var mi = 0; mi < mergedPts.length; mi++){
+          if(Math.abs(mergedPts[mi].x - px) < 1e-6 && (isNaN(py) || Math.abs(mergedPts[mi].y - py) < 1e-6)){
+            if(plbl && !mergedPts[mi].label) mergedPts[mi].label = plbl;
+            if(pdx !== undefined) mergedPts[mi].dx = pdx;
+            if(pdy !== undefined) mergedPts[mi].dy = pdy;
+            return;
+          }
+        }
+        mergedPts.push({ x: px, y: py, label: plbl, open: popen, color: pcol, r: pr, dx: pdx, dy: pdy, anchor: panchor });
+      };
+      if(Array.isArray(fig.points)) fig.points.forEach(addPt);
+      if(Array.isArray(fig.point_labels)) fig.point_labels.forEach(addPt);
+      if(Array.isArray(fig.scatter_pts)) fig.scatter_pts.forEach(addPt);
+      if(mergedPts.length) fig.points = mergedPts;
+
+      if(fig.asymptotes && typeof fig.asymptotes === 'object'){
+        var vl = Array.isArray(fig.vlines) ? fig.vlines.slice() : [];
+        var hl = Array.isArray(fig.hlines) ? fig.hlines.slice() : [];
+        if(Array.isArray(fig.asymptotes.x)){
+          fig.asymptotes.x.forEach(function(ax){
+            if(isFinite(+ax)) vl.push({ x: +ax, color: FIG_AMBER, dash: '4,3' });
+          });
+        }
+        if(Array.isArray(fig.asymptotes.y)){
+          fig.asymptotes.y.forEach(function(ay){
+            if(isFinite(+ay)) hl.push({ y: +ay, color: FIG_AMBER, dash: '4,3' });
+          });
+        }
+        fig.vlines = vl;
+        fig.hlines = hl;
+      }
+
+      if(fig.shade && !Array.isArray(fig.shade) && typeof fig.shade === 'object'){
+        var sh = fig.shade;
+        var rawFnsS = Array.isArray(fig.fns) ? fig.fns : [];
+        var f0 = (rawFnsS[0] && (typeof rawFnsS[0] === 'string' ? rawFnsS[0] : rawFnsS[0].fn)) || fig.fn || 'x';
+        var f1 = (rawFnsS[1] && (typeof rawFnsS[1] === 'string' ? rawFnsS[1] : rawFnsS[1].fn)) || fig.fn2 || null;
+        var rx1 = sh.x0 != null ? +sh.x0 : (sh.a != null ? +sh.a : (typeof sh.from === 'number' ? sh.from : +sh.x1));
+        var rx2 = sh.x2 != null ? +sh.x2 : (sh.x0 != null && sh.x1 != null ? +sh.x1 : (sh.b != null ? +sh.b : (typeof sh.to === 'number' ? sh.to : undefined)));
+        var shFn1 = sh.fn1 || (sh.from === 'fn1' && f1 ? f1 : (sh.fn || f0));
+        var shFn2 = (sh.fn2 != null && String(sh.fn2) !== '0') ? String(sh.fn2) : (sh.to === 'fn1' && f1 ? f1 : undefined);
+        fig.shade = [{
+          x1: rx1,
+          x2: rx2,
+          fn: shFn1,
+          fn2: shFn2,
+          color: sh.color || FIG_INDIGO_FILL2
+        }];
+      }
+    }
+    return fig;
+  }
+  window._normalizeFigSpec = _normalizeFigSpec;
+
   window._renderFig=function(fig){
     try{
     if(!fig) return '';
     if(typeof fig==='string') return fig;
-    if(fig.type==='3d_solid'){
-      var sCopy = {};
-      for(var k3 in fig){ if(Object.prototype.hasOwnProperty.call(fig, k3)) sCopy[k3] = fig[k3]; }
-      sCopy.type = 'geometry_3d';
-      sCopy.solid = fig.shape || fig.solid || 'cylinder';
-      sCopy.labels = sCopy.labels || {};
-      if(fig.r != null && !sCopy.labels.r) sCopy.labels.r = 'r = ' + fig.r;
-      if(fig.h != null && !sCopy.labels.h) sCopy.labels.h = 'h = ' + fig.h;
-      if(fig.l != null && !sCopy.labels.l) sCopy.labels.l = 'l = ' + fig.l;
-      if(fig.w != null && !sCopy.labels.w) sCopy.labels.w = 'w = ' + fig.w;
-      sCopy.radius = fig.r != null ? fig.r : fig.radius;
-      sCopy.height = fig.h != null ? fig.h : fig.height;
-      sCopy.dims = fig.dims || [fig.l || (fig.r ? fig.r*2 : 4), fig.w || (fig.r ? fig.r*2 : 3), fig.h || 4];
-      fig = sCopy;
-    } else if(fig.type==='area_between'){
-      var aCopy = {};
-      for(var ka in fig){ if(Object.prototype.hasOwnProperty.call(fig, ka)) aCopy[ka] = fig[ka]; }
-      aCopy.type = 'fn';
-      aCopy.fns = aCopy.fns || [fig.fn1 || 'x', fig.fn2 || 'x^2'];
-      var abDomain = fig.domain || fig.shade_x || [-2, 2];
-      aCopy.xrange = fig.xrange || [abDomain[0] - 1, abDomain[1] + 1];
-      aCopy.shade = [{ fn: aCopy.fns[0], fn2: aCopy.fns[1], x1: abDomain[0], x2: abDomain[1] }];
-      fig = aCopy;
-    }
+    fig = _normalizeFigSpec(fig);
     /* one shared entry point: figures authored in the richer renderMathFigure schema
        (function_graph / geometry_2d / geometry_3d / bar_chart / pie / number_line / table /
         box_plot / histogram / dot_plot / unit_circle / sinusoid / normal_curve / slope_field / two_way_table)
@@ -2239,6 +2390,7 @@ function renderMathFigure(spec){
   if(!spec) return '';
   if(typeof spec==='string') return spec;
   if(spec.svg) return spec.svg;
+  if(typeof window._normalizeFigSpec === 'function') spec = window._normalizeFigSpec(spec);
   if(!spec.type) return '';
   switch(spec.type){
     case 'function_graph':
@@ -2945,8 +3097,70 @@ function renderNumberLine(s){
 
 /* ── Box Plot (Box & Whisker) ─────────────────────────── */
 function renderBoxPlot(s){
-  var W=(+s.w>60?+s.w:(+s.width>60?+s.width:320)), H=(+s.h>40?+s.h:(+s.height>40?+s.height:165));
-  var five = Array.isArray(s.fiveNum) && s.fiveNum.length >= 5 ? s.fiveNum : (Array.isArray(s.data) && s.data.length >= 5 ? s.data : null);
+  var hasGroups = Array.isArray(s.groups) && s.groups.length > 0 && Array.isArray(s.groups[0].stats);
+  var W=(+s.w>60?+s.w:(+s.width>60?+s.width:(hasGroups && s.groups.length > 1 ? 350 : 320)));
+  var H=(+s.h>40?+s.h:(+s.height>40?+s.height:(hasGroups && s.groups.length > 1 ? Math.max(175, 64 + s.groups.length * 52) : 165)));
+
+  if(hasGroups && s.groups.length > 1){
+    var gAllVals = [];
+    s.groups.forEach(function(g){
+      (g.stats||[]).forEach(function(v){ if(isFinite(+v)) gAllVals.push(+v); });
+    });
+    if(isFinite(+s.min)) gAllVals.push(+s.min);
+    if(isFinite(+s.max)) gAllVals.push(+s.max);
+    var gAxMin = (s.axis && isFinite(+s.axis.min)) ? +s.axis.min : (isFinite(+s.xmin) ? +s.xmin : (gAllVals.length ? Math.min.apply(null, gAllVals) : 0));
+    var gAxMax = (s.axis && isFinite(+s.axis.max)) ? +s.axis.max : (isFinite(+s.xmax) ? +s.xmax : (gAllVals.length ? Math.max.apply(null, gAllVals) : 100));
+    var gSpan = (gAxMax - gAxMin) || 1;
+    gAxMin -= gSpan * 0.06; gAxMax += gSpan * 0.06; gSpan = gAxMax - gAxMin;
+
+    var gMl = 68, gMr = 22, gMt = s.title ? 32 : 18, gMb = 36;
+    var gPw = W - gMl - gMr;
+    var gSx = function(v){ return gMl + ((v - gAxMin) / gSpan) * gPw; };
+    var a11yG = _figA11yLabel(s);
+    var svgG = '<svg role="img" aria-label="'+esc(a11yG)+'" viewBox="0 0 '+W+' '+H+'" class="mfig-svg" xmlns="http://www.w3.org/2000/svg" style="display:block;max-width:100%;font-family:sans-serif;background:'+FIG_BG+';border-radius:6px;border:1px solid '+FIG_BORDER+'">';
+    svgG += '<title>'+esc(a11yG)+'</title>';
+    if(s.title) svgG += _svgTitle(s.title, W, 16, 10.5, FIG_INK);
+
+    var rowSpan = (H - gMt - gMb) / s.groups.length;
+    var bHG = Math.min(26, Math.max(16, rowSpan * 0.48));
+    s.groups.forEach(function(g, gi){
+      var st = g.stats || [0, 25, 50, 75, 100];
+      var gmin = +st[0], gq1 = +st[1], gmed = +st[2], gq3 = +st[3], gmax = +st[4];
+      var gcy = gMt + (gi + 0.5) * rowSpan;
+      var gbTop = gcy - bHG / 2;
+      var gCol = gi % 2 === 0 ? FIG_INDIGO2 : FIG_TEAL;
+      var gFill = gi % 2 === 0 ? FIG_INDIGO_FILL : FIG_AMBER_FILL;
+      if(g.label){
+        svgG += '<text x="'+(gMl - 8)+'" y="'+(gcy + 3.5).toFixed(1)+'" font-size="9.5" font-weight="600" fill="'+FIG_INK+'" text-anchor="end">'+esc(g.label)+'</text>';
+      }
+      svgG += '<line x1="'+gSx(gmin).toFixed(1)+'" y1="'+gcy.toFixed(1)+'" x2="'+gSx(gq1).toFixed(1)+'" y2="'+gcy.toFixed(1)+'" stroke="'+gCol+'" stroke-width="1.8" stroke-dasharray="3,2"/>';
+      svgG += '<line x1="'+gSx(gmin).toFixed(1)+'" y1="'+(gcy-8).toFixed(1)+'" x2="'+gSx(gmin).toFixed(1)+'" y2="'+(gcy+8).toFixed(1)+'" stroke="'+gCol+'" stroke-width="2"/>';
+      svgG += '<line x1="'+gSx(gq3).toFixed(1)+'" y1="'+gcy.toFixed(1)+'" x2="'+gSx(gmax).toFixed(1)+'" y2="'+gcy.toFixed(1)+'" stroke="'+gCol+'" stroke-width="1.8" stroke-dasharray="3,2"/>';
+      svgG += '<line x1="'+gSx(gmax).toFixed(1)+'" y1="'+(gcy-8).toFixed(1)+'" x2="'+gSx(gmax).toFixed(1)+'" y2="'+(gcy+8).toFixed(1)+'" stroke="'+gCol+'" stroke-width="2"/>';
+      var gBoxW = Math.max(2, gSx(gq3) - gSx(gq1));
+      svgG += '<rect x="'+gSx(gq1).toFixed(1)+'" y="'+gbTop.toFixed(1)+'" width="'+gBoxW.toFixed(1)+'" height="'+bHG.toFixed(1)+'" fill="'+gFill+'" stroke="'+gCol+'" stroke-width="2" rx="3"/>';
+      svgG += '<line x1="'+gSx(gmed).toFixed(1)+'" y1="'+gbTop.toFixed(1)+'" x2="'+gSx(gmed).toFixed(1)+'" y2="'+(gbTop+bHG).toFixed(1)+'" stroke="'+FIG_AMBER+'" stroke-width="2.4"/>';
+      [gmin, gq1, gmed, gq3, gmax].forEach(function(vv, vi){
+        svgG += '<text x="'+gSx(vv).toFixed(1)+'" y="'+(gbTop - 4).toFixed(1)+'" font-size="8" font-weight="'+(vi===2?'bold':'600')+'" fill="'+(vi===2?FIG_AMBER_TEXT:FIG_INK)+'" text-anchor="middle">'+esc(String(vv))+'</text>';
+      });
+    });
+    var gay = H - 20;
+    svgG += '<line x1="'+gMl+'" y1="'+gay+'" x2="'+(W-gMr)+'" y2="'+gay+'" stroke="'+FIG_INK+'" stroke-width="1.5"/>';
+    var gStep = ([1,2,5,10,20,25,50,100,200,500].find(function(n){ return n >= gSpan / 6; }) || Math.ceil(gSpan / 6));
+    if(gSpan / gStep > 8) gStep *= 2;
+    var gStart = Math.ceil(gAxMin / gStep) * gStep;
+    for(var gv = gStart; gv <= gAxMax; gv += gStep){
+      var gvx = gSx(gv);
+      if(gvx >= gMl - 2 && gvx <= W - gMr + 2){
+        svgG += '<line x1="'+gvx.toFixed(1)+'" y1="'+gay+'" x2="'+gvx.toFixed(1)+'" y2="'+(gay+4)+'" stroke="'+FIG_INK+'" stroke-width="1"/>';
+        svgG += '<text x="'+gvx.toFixed(1)+'" y="'+(gay+14)+'" font-size="8.5" fill="'+FIG_MUTED+'" text-anchor="middle">'+Math.round(gv*100)/100+'</text>';
+      }
+    }
+    svgG += '</svg>';
+    return svgG;
+  }
+
+  var five = Array.isArray(s.fiveNum) && s.fiveNum.length >= 5 ? s.fiveNum : (Array.isArray(s.data) && s.data.length >= 5 ? s.data : (hasGroups ? s.groups[0].stats : null));
   var rawMin = s.min!=null ? s.min : (s.whisker_low!=null ? s.whisker_low : (five ? five[0] : 0));
   var rawMax = s.max!=null ? s.max : (s.whisker_high!=null ? s.whisker_high : (five ? five[4] : 100));
   var rawQ1  = s.q1!=null ? s.q1 : (five ? five[1] : 25);
@@ -3443,6 +3657,23 @@ function renderSlopeField(s){
   if(Array.isArray(s.curvePts) && s.curvePts.length > 1){
     var cPts = s.curvePts.map(function(pt){ return sx(pt[0]).toFixed(1)+','+sy(pt[1]).toFixed(1); });
     svg+='<polyline points="'+cPts.join(' ')+'" fill="none" stroke="'+FIG_AMBER+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>';
+  } else if(s.sol_fn && typeof s.sol_fn === 'string'){
+    var sfPts = [], sfSteps = 80;
+    for(var sfi = 0; sfi <= sfSteps; sfi++){
+      var sfx = xr[0] + (xr[1] - xr[0]) * (sfi / sfSteps);
+      var sfy = evalFn(s.sol_fn, sfx);
+      if(isFinite(sfy) && sfy >= yr[0] - 0.5 && sfy <= yr[1] + 0.5){
+        sfPts.push(sx(sfx).toFixed(1) + ',' + sy(Math.max(yr[0], Math.min(yr[1], sfy))).toFixed(1));
+      } else if(sfPts.length > 1){
+        svg += '<polyline points="'+sfPts.join(' ')+'" fill="none" stroke="'+FIG_AMBER+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>';
+        sfPts = [];
+      } else {
+        sfPts = [];
+      }
+    }
+    if(sfPts.length > 1){
+      svg += '<polyline points="'+sfPts.join(' ')+'" fill="none" stroke="'+FIG_AMBER+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>';
+    }
   }
   // Optional integral solution curve (backward + forward Euler approximation)
   if(s.solution && s.solution.x0!=null && s.solution.y0!=null){

@@ -59,10 +59,10 @@
   // ══════════════════════════ Toolbar injection ══════════════════════════
 
   function toolbarHtmlFor(quizId, source, questions) {
-    var mcqCount = questions.filter(function (q) { return q.type !== 'frq'; }).length;
+    var frqCount = questions.filter(function (q) { return q.type === 'frq' || q.type === 'spr'; }).length;
     var note = '';
-    if (source === 'genTest-legacy' || mcqCount === 0) {
-      note = '<span class="cs-gform-note">These questions have no multiple-choice answers — the Form will use short-answer questions with no auto-grading.</span>';
+    if (frqCount > 0) {
+      note = '<span class="cs-gform-note">Includes ' + frqCount + ' free-response / short-answer question' + (frqCount === 1 ? '' : 's') + ' with full math diagrams &amp; answer key feedback.</span>';
     }
     return '<div class="cs-gform-toolbar" data-quiz-id="' + quizId + '">'
       + '<button type="button" class="btn cs-gform-btn" onclick="window.ClipSATQuizUI.openCreateForm(this)">📝 Create Google Form</button>'
@@ -155,11 +155,11 @@
   }
 
   function renderCreatedView(entry) {
-    var mcq = (entry.quizData.questions || []).some(function (q) { return q.type !== 'frq'; });
+    var hasQuestions = (entry.quizData.questions || []).length > 0;
     var html = '<h3>✅ Form created</h3>'
       + '<p><strong>' + esc(entry.title) + '</strong></p>'
       + imageFailureNoteHtml(entry.failedImages, entry.totalImages)
-      + (mcq ? mathNoteHtml() : '')
+      + (hasQuestions ? mathNoteHtml() : '')
       + '<label class="cs-gform-linklabel">Shareable link — works with any LMS (Canvas, Moodle, Schoology, etc.)</label>'
       + '<div class="cs-gform-linkrow"><input type="text" readonly value="' + esc(entry.responderUri) + '" id="cs-gform-link-input" onclick="this.select()">'
       + '<button type="button" class="btn ghost" onclick="window.ClipSATQuizUI.copyLink()">Copy</button></div>'
@@ -186,13 +186,13 @@
       var mi = window.ClipSATMathImage;
       var mathCount = 0;
       (quizData.questions || []).forEach(function (q) {
-        var fig = q.figure || q.fig || null;
+        var fig = q.figure || q.fig || q.table || null;
         var fHtml = q.figureHtml || null;
         if (mi && mi.needsImage(q.text, fig, fHtml)) mathCount++;
-        if (q.type !== 'frq' && q.choices) {
+        if (q.choices && q.choices.length) {
           q.choices.forEach(function (c, ci) {
             var cFig = (typeof c === 'object' && c !== null) ? (c.figure || c.fig || (c.type ? c : null)) : ((q.choiceFigures && q.choiceFigures[ci]) || null);
-            var cHtml = (typeof c === 'string' && c.indexOf('<svg') !== -1) ? c : ((typeof c === 'object' && c && c.figureHtml) ? c.figureHtml : null);
+            var cHtml = (typeof c === 'string' && c.indexOf('<svg') !== -1) ? c : ((typeof c === 'object' && c && (c.figureHtml || c.svg)) ? (c.figureHtml || c.svg) : null);
             var cRaw = (typeof c === 'object' && c !== null) ? (c.text || c.label || '') : String(c != null ? c : '');
             if (cFig || cHtml) mathCount++;
             else if (mi && (mi.needsChoiceImage ? mi.needsChoiceImage(cRaw) : mi.needsImage(cRaw))) mathCount++;
@@ -297,8 +297,82 @@
   // filters to questions that actually carry an MCQ choices/correct pair —
   // most worksheets are free-response only, and this deliberately does NOT
   // fabricate MCQs for those; it tells the teacher plainly instead.
-  window.ClipSATWorksheetForm = function (trackId, num, lang, title) {
+  window.ClipSATWorksheetForm = function (trackId, num, lang, title, worksheetFile) {
     if (!configured()) return;
+    var isFullExam = (worksheetFile && /-exam(?:-ar)?\.html$/i.test(worksheetFile)) || /^EX\.\d+/i.test(String(num || ''));
+    if (isFullExam) {
+      openPanel('<h3>Loading full practice exam…</h3>');
+      var examIdx = parseInt(String(num || '1').replace(/^EX\./i, ''), 10) || 1;
+      var padIdx = String(examIdx).padStart(2, '0');
+      var examFile = worksheetFile || (trackId + '-full-exam-' + padIdx + (lang === 'ar' ? '-ar' : '') + '-exam.html');
+      var examUrl = '/downloads/' + encodeURIComponent(trackId) + '/' + encodeURIComponent(examFile);
+      fetch(examUrl).then(function (r) {
+        if (!r.ok) throw new Error('Full exam file not found (HTTP ' + r.status + ').');
+        return r.text();
+      }).then(function (htmlText) {
+        var doc = new DOMParser().parseFromString(htmlText, 'text/html');
+        var payloadEl = doc.getElementById('clipsat-cbt-payload');
+        var payload = payloadEl ? JSON.parse(payloadEl.textContent) : null;
+        var questions = [];
+        if (payload && Array.isArray(payload.questions)) {
+          payload.questions.forEach(function (meta) {
+            var qEl = doc.getElementById('fep-q-' + meta.n);
+            var solEl = doc.getElementById('fep-sol-' + meta.n);
+            var figEl = qEl ? qEl.querySelector('.fep-figure') : null;
+            var qBodyEl = qEl ? qEl.querySelector('.fep-qbody') : null;
+            var choiceEls = qEl ? qEl.querySelectorAll('.fep-choice .fep-ctext') : [];
+            var solBodyEl = solEl ? solEl.querySelector('.fep-sol-body') : null;
+            var isMcq = meta.type === 'mcq' && choiceEls.length > 0;
+            var choices = isMcq ? Array.prototype.slice.call(choiceEls).map(function (el) { return el.innerHTML; }) : [];
+            var correctIdx = isMcq
+              ? (typeof meta.correctIndex === 'number' && meta.correctIndex >= 0
+                  ? meta.correctIndex
+                  : ['A', 'B', 'C', 'D', 'E'].indexOf(String(meta.ans || '').trim().toUpperCase()))
+              : null;
+            questions.push({
+              text: qBodyEl ? qBodyEl.innerHTML : '',
+              choices: choices,
+              correctIndex: correctIdx,
+              type: isMcq ? 'mcq' : (meta.type === 'spr' ? 'spr' : 'frq'),
+              points: Number(meta.marks) || 1,
+              ans: !isMcq ? String(meta.ans || '') : '',
+              sol: solBodyEl ? solBodyEl.innerHTML : '',
+              figure: null,
+              figureHtml: figEl ? figEl.innerHTML : null
+            });
+          });
+        } else {
+          var items = doc.querySelectorAll('.fep-item');
+          Array.prototype.slice.call(items).forEach(function (qEl, idx) {
+            var figEl = qEl.querySelector('.fep-figure');
+            var qBodyEl = qEl.querySelector('.fep-qbody');
+            var choiceEls = qEl.querySelectorAll('.fep-choice .fep-ctext');
+            var isMcq = choiceEls.length > 0;
+            questions.push({
+              text: qBodyEl ? qBodyEl.innerHTML : ('Question ' + (idx + 1)),
+              choices: isMcq ? Array.prototype.slice.call(choiceEls).map(function (el) { return el.innerHTML; }) : [],
+              correctIndex: isMcq ? 0 : null,
+              type: isMcq ? 'mcq' : 'frq',
+              points: 1,
+              ans: '',
+              sol: '',
+              figure: null,
+              figureHtml: figEl ? figEl.innerHTML : null
+            });
+          });
+        }
+        if (!questions.length) {
+          openPanel('<h3>No questions found</h3><p class="cs-gform-note">Could not extract questions from this exam paper.</p><button type="button" class="btn ghost" onclick="window.closeGformPanel()">Close</button>');
+          return;
+        }
+        window.closeGformPanel();
+        beginCreateFlow({ title: title || (payload && payload.examTitle) || ('Full Exam ' + num), trackId: trackId, source: 'full-exam', questions: questions });
+      }).catch(function (err) {
+        openPanel('<h3>Couldn’t load exam</h3><p class="cs-gform-note" style="color:#dc2626">' + esc(err.message) + '</p><button type="button" class="btn ghost" onclick="window.closeGformPanel()">Close</button>');
+      });
+      return;
+    }
+
     openPanel('<h3>Checking worksheet…</h3>');
     var file = '/worksheet-data/' + trackId + '/' + num + (lang === 'ar' ? '-ar' : '') + '.json';
     fetch(file).then(function (r) {
@@ -308,13 +382,42 @@
       var questions = [];
       (data.sections || []).forEach(function (sec) {
         (sec.questions || []).forEach(function (q) {
-          if (q.choices && q.choices.length && typeof q.correct === 'number') {
-            questions.push({ text: q.q || '', choices: q.choices, correctIndex: q.correct, type: 'mcq', points: 1, figure: q.figure || q.fig || null, figureHtml: q.figureHtml || null });
+          var isMcq = Array.isArray(q.choices) && q.choices.length > 0 && typeof q.correct === 'number' && q.qtype !== 'FRQ' && q.question_type !== 'FRQ';
+          if (isMcq) {
+            questions.push({
+              text: q.q || q.text || '',
+              choices: q.choices.slice(),
+              correctIndex: q.correct,
+              type: 'mcq',
+              points: Number(q.marks || q.points) || 1,
+              sol: q.explanation || q.answer || '',
+              figure: q.figure || q.fig || null,
+              figureHtml: q.figureHtml || null
+            });
+          } else {
+            var stem = String(q.q || q.text || '');
+            if (Array.isArray(q.parts) && q.parts.length && stem.indexOf('(a)') === -1) {
+              stem += '\n' + q.parts.join('\n');
+            }
+            var rawAns = q.answer != null ? String(q.answer) : (Array.isArray(q.answers) && q.answers.length ? q.answers.join(' | ') : '');
+            var rawSol = q.explanation != null ? String(q.explanation) : rawAns;
+            questions.push({
+              text: stem,
+              parts: q.parts || null,
+              choices: [],
+              correctIndex: null,
+              type: 'frq',
+              points: Number(q.marks || q.points) || 1,
+              ans: rawAns,
+              sol: rawSol,
+              figure: q.figure || q.fig || null,
+              figureHtml: q.figureHtml || null
+            });
           }
         });
       });
       if (!questions.length) {
-        openPanel('<h3>No multiple-choice questions</h3><p class="cs-gform-note">This worksheet doesn’t have multiple-choice questions available for Google Forms yet.</p><button type="button" class="btn ghost" onclick="window.closeGformPanel()">Close</button>');
+        openPanel('<h3>No questions found</h3><p class="cs-gform-note">This worksheet has no questions available for Google Forms.</p><button type="button" class="btn ghost" onclick="window.closeGformPanel()">Close</button>');
         return;
       }
       window.closeGformPanel();

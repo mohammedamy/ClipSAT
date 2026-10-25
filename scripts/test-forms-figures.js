@@ -103,6 +103,14 @@ assert(genTestCode.includes('figure: q.figure || q.fig || null,') && genTestCode
 const quizCaptureUiCode = fs.readFileSync('public/js/quiz-capture-ui.js', 'utf8');
 assert(quizCaptureUiCode.includes('mi.needsImage(q.text, fig, fHtml)'),
   'quiz-capture-ui.js must pass fig and fHtml to needsImage for progress estimation');
+assert(quizCaptureUiCode.includes('clipsat-cbt-payload') && quizCaptureUiCode.includes('isFullExam'),
+  'quiz-capture-ui.js must support downloadable Full Practice Exams as well as topic worksheets');
 
-console.log('  ✓ All quiz modules properly capture figures in _csCaptureQ');
+const ptKatexHtml = formsApi.mathToPlainText('Evaluate <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\\frac{x^2}{3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true">x2/3</span></span> now.');
+assert.strictEqual(ptKatexHtml, 'Evaluate x²/3 now.', 'mathToPlainText must extract original LaTeX from pre-rendered KaTeX HTML without duplicating MathML/HTML text');
+
+const ptBinom = formsApi.mathToPlainText('Find \\(\\binom{n}{2}\\) and \\(\\$50\\).');
+assert.strictEqual(ptBinom, 'Find C(n, 2) and $50.', 'mathToPlainText must convert \\binom and preserve escaped \\$');
+
+console.log('  ✓ All quiz modules properly capture figures, FRQs, and full exams in Google Forms');
 console.log('✅ All Google Forms figure export tests passed successfully!');

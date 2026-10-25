@@ -84,8 +84,70 @@
   // NEVER be considered for an image, no matter how complex the math
   // actually was — this also looks for an actual LaTeX command (\foo) or a
   // braced script (^{...}/_{...}), which catches undelimited math too.
+  function extractLatexFromKatexHtml(str) {
+    var s = String(str == null ? '' : str);
+    if (s.indexOf('katex') === -1 && s.indexOf('<annotation') === -1) return s;
+    var out = '';
+    var idx = 0;
+    while (idx < s.length) {
+      var kIdx = s.indexOf('<span class="katex', idx);
+      if (kIdx === -1) {
+        out += s.slice(idx);
+        break;
+      }
+      out += s.slice(idx, kIdx);
+      var isDisplay = s.slice(kIdx, kIdx + 35).indexOf('katex-display') !== -1;
+      var depth = 0;
+      var tagRe = /<\/?span\b[^>]*>/gi;
+      tagRe.lastIndex = kIdx;
+      var m, endIdx = -1;
+      while ((m = tagRe.exec(s)) !== null) {
+        if (m[0].charAt(1) === '/') {
+          depth--;
+          if (depth === 0) {
+            endIdx = tagRe.lastIndex;
+            break;
+          }
+        } else {
+          depth++;
+        }
+      }
+      if (endIdx === -1) {
+        out += s.slice(kIdx);
+        break;
+      }
+      var block = s.slice(kIdx, endIdx);
+      var annMatch = block.match(/<annotation[^>]*encoding=["']application\/x-tex["'][^>]*>([\s\S]*?)<\/annotation>/i);
+      if (annMatch) {
+        var tex = annMatch[1]
+          .replace(/&amp;/g, '&')
+          .replace(/&lt;/g, '<')
+          .replace(/&gt;/g, '>')
+          .replace(/&quot;/g, '"')
+          .replace(/&#39;/g, "'");
+        out += isDisplay ? ('\\[' + tex + '\\]') : ('\\(' + tex + '\\)');
+      }
+      idx = endIdx;
+    }
+    if (!/<table\b/i.test(out)) {
+      out = out
+        .replace(/<br\s*\/?>/gi, '\n')
+        .replace(/<\/(?:div|p|li)\s*>/gi, '\n')
+        .replace(/<\/?(?:span|div|p|em|strong|b|i|u|ul|ol|li|small)(?:\s+[^>]*)?>/gi, '')
+        .replace(/&nbsp;/gi, ' ')
+        .replace(/&amp;/gi, '&')
+        .replace(/&lt;/gi, '<')
+        .replace(/&gt;/gi, '>')
+        .replace(/&quot;/gi, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/\n{3,}/g, '\n\n')
+        .trim();
+    }
+    return out;
+  }
+
   function hasMath(text) {
-    var s = String(text || '');
+    var s = extractLatexFromKatexHtml(String(text || ''));
     if (!s) return false;
     if (/\\\(|\\\[|\$\$|\$(?!\s*\d+(?:\.\d+)?(?:\s|$))/.test(s)) return true;
     if (/\\[a-zA-Z]|[\^_]\{?[\w+-]+/.test(s)) return true;
@@ -94,28 +156,21 @@
     return false;
   }
 
-  // "Contains math delimiters" is NOT the same question as "actually needs
-  // a rendered image" — most bank-data questions wrap even a bare single
-  // variable in \( \), and mathToPlainText() already turns that into
-  // perfectly readable plain text (x, 2x+3, π, x², √16, …). Firing a full
-  // render→Drive-upload round trip for those is both slow and pointless —
-  // worse, it visually clutters a simple question with an unnecessary
-  // boxed image sitting under already-fine text. Only trigger the image
-  // pipeline for constructs that plain text genuinely can't represent well:
-  // fractions, radicals, sums/integrals/limits, matrices/cases, vectors, or
-  // a superscript/subscript complex enough that "^"/"_" notation gets
-  // ambiguous (e.g. x^{2x+1}, not just x^2).
   var HARD_COMMANDS = /\\(d?frac|tfrac|cfrac|sqrt|int|iint|iiint|oint|sum|prod|lim|binom|vec|hat|bar|overline|underline|overrightarrow|overleftarrow|begin)(?![a-zA-Z])/;
-  var COMPLEX_SCRIPT = /[\^_]\{[^{}]{2,}\}/; // e.g. x^{2x+1} or a_{n+1} — bare x^2/a_n don't match
+  var COMPLEX_SCRIPT = /[\^_]\{[^{}]{2,}\}/;
 
   function needsImage(text, figure, figureHtml) {
     if (figure || figureHtml) return true;
-    text = String(text || '');
-    return hasMath(text);
+    var s = String(text || '');
+    if (/<(?:svg|table)\b/i.test(s)) return true;
+    return hasMath(s);
   }
 
   function needsChoiceImage(text) {
-    var s = String(text || '').trim();
+    var raw = String(text || '').trim();
+    if (!raw) return false;
+    if (/<(?:svg|table)\b/i.test(raw)) return true;
+    var s = extractLatexFromKatexHtml(raw).trim();
     if (!s) return false;
     if ((s.startsWith('\\(') && s.endsWith('\\)')) || (s.startsWith('\\[') && s.endsWith('\\]'))) {
       s = s.slice(2, -2).trim();
@@ -226,11 +281,13 @@
   }
 
   function getSvgDimensions(svgStr) {
-    var wMatch = svgStr.match(/\bwidth=["']?(\d+(?:\.\d+)?)/i);
-    var hMatch = svgStr.match(/\bheight=["']?(\d+(?:\.\d+)?)/i);
-    var vbMatch = svgStr.match(/\bviewBox=["']?[-\d.]+[,\s]+[-\d.]+[,\s]+(\d+(?:\.\d+)?)[,\s]+(\d+(?:\.\d+)?)/i);
-    var w = wMatch ? Math.round(parseFloat(wMatch[1])) : (vbMatch ? Math.round(parseFloat(vbMatch[1])) : 320);
-    var h = hMatch ? Math.round(parseFloat(hMatch[1])) : (vbMatch ? Math.round(parseFloat(vbMatch[2])) : 220);
+    var openTag = (String(svgStr || '').match(/<svg\b[^>]*>/i) || [''])[0];
+    var vbMatch = openTag.match(/\bviewBox=["']?[-\d.]+[,\s]+[-\d.]+[,\s]+(\d+(?:\.\d+)?)[,\s]+(\d+(?:\.\d+)?)/i)
+      || String(svgStr || '').match(/\bviewBox=["']?[-\d.]+[,\s]+[-\d.]+[,\s]+(\d+(?:\.\d+)?)[,\s]+(\d+(?:\.\d+)?)/i);
+    var wMatch = openTag.match(/\bwidth=["']?(\d+(?:\.\d+)?)(?!\s*%)/i);
+    var hMatch = openTag.match(/\bheight=["']?(\d+(?:\.\d+)?)(?!\s*%)/i);
+    var w = vbMatch ? Math.round(parseFloat(vbMatch[1])) : (wMatch ? Math.round(parseFloat(wMatch[1])) : 320);
+    var h = vbMatch ? Math.round(parseFloat(vbMatch[2])) : (hMatch ? Math.round(parseFloat(hMatch[1])) : 220);
     return { w: Math.max(40, w), h: Math.max(40, h) };
   }
 
@@ -246,6 +303,7 @@
     s = s.replace(/<svg\b([^>]*)>/i, function (match, attrs) {
       attrs = attrs.replace(/\bwidth=["'][^"']*["']/i, '');
       attrs = attrs.replace(/\bheight=["'][^"']*["']/i, '');
+      attrs = attrs.replace(/max-width\s*:\s*[^;"']+;?/gi, '');
       return '<svg width="' + dims.w + '" height="' + dims.h + '"' + attrs + '>';
     });
     // Ensure opaque white background so transparent fills don't display black in canvas/Forms
@@ -324,7 +382,7 @@
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
             tryExtractBlob(canvas).then(function (pngBlob) {
               if (!pngBlob) { resolve(null); return; }
-              resolve({ blob: pngBlob, width: w });
+              resolve({ blob: pngBlob, width: w, canvas: canvas });
             }).catch(function () { resolve(null); });
           } catch (e) {
             if (blobUrl) { try { URL.revokeObjectURL(blobUrl); } catch (e) {} }
@@ -393,18 +451,54 @@
         }
       }
 
-      var extractedSvg = extractSvg(figHtml);
+      var extractedSvg = extractSvg(figHtml) || extractSvg(text);
+      var stemText = text;
+      if (extractedSvg && text && extractSvg(text)) {
+        stemText = String(text).replace(/<svg[\s\S]*?<\/svg>/gi, '').trim();
+      }
 
-      // When an SVG diagram is present, prioritize direct native SVG canvas rasterization.
-      // Produces 100% crisp, publication-grade PNG diagrams without html2canvas distortions.
+      // When an SVG diagram is present, rasterize it natively for 100% vector crispness.
+      // If the question/choice ALSO has math or a table in its stem text, composite the
+      // KaTeX-rendered stem above the native SVG diagram into a single high-DPI PNG!
       if (extractedSvg) {
-        return renderSvgDirect(extractedSvg, SCALE).then(function (res) {
-          if (res) return res;
-          return renderWithHtml2Canvas(text, figHtml);
+        return renderSvgDirect(extractedSvg, SCALE).then(function (svgRes) {
+          if (!svgRes) return renderWithHtml2Canvas(stemText, figHtml);
+          if (!stemText || (!hasMath(stemText) && !/<table\b/i.test(stemText)) || typeof window === 'undefined' || !window.html2canvas) {
+            return svgRes;
+          }
+          return renderWithHtml2Canvas(stemText, '').then(function (txtRes) {
+            if (!txtRes || !txtRes.canvas || !svgRes.canvas) return svgRes;
+            try {
+              var gap = Math.round(14 * SCALE);
+              var pad = Math.round(12 * SCALE);
+              var compW = Math.max(txtRes.canvas.width, svgRes.canvas.width + pad * 2);
+              var compH = txtRes.canvas.height + gap + svgRes.canvas.height + pad;
+              var compCanvas = document.createElement('canvas');
+              compCanvas.width = compW;
+              compCanvas.height = compH;
+              var ctx = compCanvas.getContext('2d');
+              ctx.fillStyle = '#ffffff';
+              ctx.fillRect(0, 0, compW, compH);
+              ctx.drawImage(txtRes.canvas, 0, 0);
+              var svgX = Math.max(0, Math.round((compW - svgRes.canvas.width) / 2));
+              ctx.drawImage(svgRes.canvas, svgX, txtRes.canvas.height + gap);
+              return new Promise(function (done) {
+                if (compCanvas.toBlob) {
+                  compCanvas.toBlob(function (b) {
+                    done(b ? { blob: b, width: Math.round(compW / SCALE), canvas: compCanvas } : svgRes);
+                  }, 'image/png');
+                } else {
+                  done(svgRes);
+                }
+              });
+            } catch (e) {
+              return svgRes;
+            }
+          }).catch(function () { return svgRes; });
         });
       }
 
-      return renderWithHtml2Canvas(text, figHtml);
+      return renderWithHtml2Canvas(stemText, figHtml);
     });
   }
 
@@ -431,21 +525,23 @@
         container.style.setProperty('--fig-bg', '#ffffff');
         container.style.setProperty('--paper', '#ffffff');
 
-        var isArabic = /[\u0600-\u06FF]/.test(String(text || ''));
+        var cleanText = extractLatexFromKatexHtml(text);
+        var isArabic = /[\u0600-\u06FF]/.test(String(cleanText || ''));
 
         var styles = '<style>'
-          + '.exam-table { border-collapse: collapse; margin: 8px auto; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px; border: 1px solid #999; }'
-          + '.exam-table th, .exam-table td { border: 1px solid #999; padding: 6px 12px; text-align: center; }'
-          + '.exam-table th { background: #e8edf8; color: #1a1a2e; font-weight: bold; }'
+          + '.exam-table, .qiyas-qc-box { border-collapse: collapse; margin: 8px auto; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 16px; border: 1px solid #999; }'
+          + '.exam-table th, .exam-table td, .qiyas-qc-box th, .qiyas-qc-box td { border: 1px solid #999; padding: 6px 12px; text-align: center; }'
+          + '.exam-table th, .qiyas-qc-box th { background: #e8edf8; color: #1a1a2e; font-weight: bold; }'
           + '.clipsat-fig-wrap { display: block; margin: 10px auto 0; text-align: center; width: 100%; }'
           + '.clipsat-fig-wrap img, .clipsat-fig-wrap svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }'
           + '</style>';
 
         var inner = '';
-        if (text) {
+        if (cleanText) {
+          var hasTableInText = /<table\b/i.test(cleanText);
           var autoMath = window.CSAutoMath || function (s) { return s; };
-          var processedText = autoMath(text);
-          var wrapped = hasMath(processedText) && !/\\\(|\\\[|\$/.test(processedText) ? '\\(' + processedText + '\\)' : processedText;
+          var processedText = hasTableInText ? cleanText : autoMath(cleanText);
+          var wrapped = (!hasTableInText && hasMath(processedText) && !/\\\(|\\\[|\$/.test(processedText)) ? '\\(' + processedText + '\\)' : processedText;
           wrapped = wrapped.replace(/\$\$([\s\S]+?)\$\$/g, '\\[$1\\]');
           wrapped = wrapped.replace(/\$(?!\s)([^$\n]+?)(?<!\s)\$/g, function(m, innerM){
             if(/^\d{1,3}(?:,\d{3})*(?:\.\d+)?$/.test(innerM)) return m;
@@ -453,7 +549,8 @@
           });
           var textStyle = 'margin-bottom:' + (figHtml ? '14px;' : '0;')
             + (isArabic ? 'direction:rtl;text-align:right;font-family:"Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;' : 'text-align:left;');
-          inner += '<div class="clipsat-math-stem" style="' + textStyle + '">' + escHtml(wrapped) + '</div>';
+          var safeStemHtml = hasTableInText ? wrapped : escHtml(wrapped).replace(/\n/g, '<br>');
+          inner += '<div class="clipsat-math-stem" style="' + textStyle + '">' + safeStemHtml + '</div>';
         }
 
         if (figHtml) {
@@ -494,7 +591,7 @@
             canvas.toBlob(function (blob) {
               cleanup();
               if (!blob) { warn('canvas.toBlob produced no image (possibly a tainted/zero-size canvas)', text); resolve(null); return; }
-              resolve({ blob: blob, width: Math.round(canvas.width / SCALE) });
+              resolve({ blob: blob, width: Math.round(canvas.width / SCALE), canvas: canvas });
             }, 'image/png');
           }).catch(function (err) { warn('html2canvas failed: ' + (err && err.message), text); cleanup(); resolve(null); });
         };

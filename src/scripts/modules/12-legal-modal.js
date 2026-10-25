@@ -58,7 +58,7 @@
           var cbtBtn = isExam
             ? '<button type="button" class="wl-link cbt" onclick="window.openDownloadExamCBT&amp;&amp;window.openDownloadExamCBT(\'' + trackId + '\',\'' + _esc(d.worksheet) + '\',\'' + _esc(d.title).replace(/'/g,"\\'") + '\',\'' + (d.lang||'en') + '\')">' + _esc(t.cbt) + '</button>'
             : '';
-          var gformBtn = '<button type="button" class="wl-link gform" onclick="window.ClipSATWorksheetForm&amp;&amp;window.ClipSATWorksheetForm(\'' + trackId + '\',\'' + _esc(d.num) + '\',\'' + (d.lang||'en') + '\',\'' + _esc(d.title).replace(/'/g,"\\'") + '\')" style="' + (window.ClipSATGoogle&&window.ClipSATGoogle.configured?'':'display:none') + '">📝 Form</button>';
+          var gformBtn = '<button type="button" class="wl-link gform" onclick="window.ClipSATWorksheetForm&amp;&amp;window.ClipSATWorksheetForm(\'' + trackId + '\',\'' + _esc(d.num) + '\',\'' + (d.lang||'en') + '\',\'' + _esc(d.title).replace(/'/g,"\\'") + '\',\'' + _esc(d.worksheet || '') + '\')" style="' + (window.ClipSATGoogle&&window.ClipSATGoogle.configured?'':'display:none') + '">📝 Form</button>';
           html += '<div class="wl-row' + (isExam ? ' wl-row-exam' : '') + '"><span class="wl-num">' + _esc(d.num) + '</span><span class="wl-title">' + _esc(d.title) + '</span>'
             + '<span class="wl-links">' + cbtBtn + '<a class="wl-link ws" href="' + base + d.worksheet + '" target="_blank" rel="noopener">' + _esc(wsLabel) + '</a>'
             + '<a class="wl-link ak" href="' + base + d.answerkey + '" target="_blank" rel="noopener">' + _esc(akLabel) + '</a>'

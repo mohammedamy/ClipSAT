@@ -829,7 +829,8 @@ function aiGenTest(btn){
         else if(window.renderMathFigure) _fHtml = window.renderMathFigure(_aiFig);
         else if(window._renderFig) _fHtml = window._renderFig(_aiFig);
       }
-      _csCaptureQ.push({text:q.text||q.q||q.question||'',choices:(q.type!=='frq'&&q.choices)?q.choices.slice():[],correctIndex:q.type!=='frq'?q.answer:null,type:q.type==='frq'?'frq':'mcq',points:1,figure:_aiFig||null,figureHtml:_fHtml||null});
+      var _aiAns = (q.type==='frq'||q.isSPR) ? (q.numericAnswer!=null?String(q.numericAnswer):(q.answerExpr!=null?String(q.answerExpr):(q.ans!=null?String(q.ans):(q.answer!=null?String(q.answer):'')))) : '';
+      _csCaptureQ.push({text:q.text||q.q||q.question||'',choices:(q.type!=='frq'&&q.choices)?q.choices.slice():[],correctIndex:q.type!=='frq'?q.answer:null,type:q.type==='frq'?(q.isSPR?'spr':'frq'):'mcq',points:Number(q.marks||q.mark)||1,ans:_aiAns,sol:q.sol||q.exp||'',figure:_aiFig||null,figureHtml:_fHtml||null});
     });
     // Sync show/hide answers button
     var ans=box.querySelector('.tg-ans');
@@ -968,7 +969,8 @@ function aiGenFullExam(btn,examName,viewId,sectionTitles,qPerSection){
         else if(window.renderMathFigure) _fHtml = window.renderMathFigure(_aiFig);
         else if(window._renderFig) _fHtml = window._renderFig(_aiFig);
       }
-      return {text:q.text||q.q||q.question||'',choices:(q.type!=='frq'&&q.choices)?q.choices.slice():[],correctIndex:q.type!=='frq'?q.answer:null,type:q.type==='frq'?'frq':'mcq',points:1,figure:_aiFig||null,figureHtml:_fHtml||null};
+      var _aiAns2 = (q.type==='frq'||q.isSPR) ? (q.numericAnswer!=null?String(q.numericAnswer):(q.answerExpr!=null?String(q.answerExpr):(q.ans!=null?String(q.ans):(q.answer!=null?String(q.answer):'')))) : '';
+      return {text:q.text||q.q||q.question||'',choices:(q.type!=='frq'&&q.choices)?q.choices.slice():[],correctIndex:q.type!=='frq'?q.answer:null,type:q.type==='frq'?(q.isSPR?'spr':'frq'):'mcq',points:Number(q.marks||q.mark)||1,ans:_aiAns2,sol:q.sol||q.exp||'',figure:_aiFig||null,figureHtml:_fHtml||null};
     });
 
     var totalMCQ=0, totalFRQ=0;
