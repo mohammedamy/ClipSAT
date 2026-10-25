@@ -937,7 +937,187 @@ function pickFromBucketWithDiagrams(bucket, count, figRatio, usedInThisExam, use
   return picked;
 }
 
+function drawDigitalSatPaper(pool, spec, trackId, paperSlug, examIndex, langMode, globalCrossExamTracker) {
+  const rng = createRng(`${trackId}::${paperSlug}::${langMode}::exam-${examIndex}`);
+  const usedInExam = new Set();
+  const entries = [];
+
+  function categorizeDomain(d) {
+    if (/linear/i.test(d)) return 'Algebra';
+    if (/quadratic|equivalent|exponential|radical|polynomial|rational|nonlinear|desmos/i.test(d)) return 'AdvancedMath';
+    if (/ratio|rate|proportion|percent|scatter|statistic|distribution|margin of error|probability|table/i.test(d)) return 'PSDA';
+    if (/area|volume|triangle|circle|trigonometry/i.test(d)) return 'GeoTrig';
+    return 'Algebra';
+  }
+
+  function getFigCategory(q) {
+    const f = q.figure || q.fig;
+    if (!f) return null;
+    const t = f.type || '';
+    if (t === 'fn' || t === 'graph') return 'fn';
+    if (['triangle', 'circle', 'circle_sector', 'transversal', 'rect', 'geometry_3d'].includes(t)) return 'geom';
+    if (t === 'scatter' || t === 'bar') return 'data_plot';
+    if (t === 'two_way_table' || t === 'table') return 'table';
+    return 'other';
+  }
+
+  const domainPools = {
+    Algebra: { mcq: [], spr: [] },
+    AdvancedMath: { mcq: [], spr: [] },
+    PSDA: { mcq: [], spr: [] },
+    GeoTrig: { mcq: [], spr: [] }
+  };
+
+  pool.forEach(q => {
+    const cat = categorizeDomain(q.domain);
+    const type = q.type === 'spr' ? 'spr' : 'mcq';
+    domainPools[cat][type].push(q);
+  });
+
+  function pickDomainItems(domainCat, type, count, targetDiffs, moduleFigState) {
+    const rawList = domainPools[domainCat][type];
+    const shuffled = seededShuffle(rawList, rng);
+    const fresh = shuffled.filter(q => !globalCrossExamTracker.has(q.id || q.text));
+    const reused = shuffled.filter(q => globalCrossExamTracker.has(q.id || q.text));
+    const candidates = fresh.concat(reused);
+
+    const picked = [];
+    for (const targetDiff of targetDiffs) {
+      if (picked.length >= count) break;
+      const matching = candidates.filter(q => {
+        if (usedInExam.has(q.id || q.text)) return false;
+        if (picked.includes(q)) return false;
+        const diff = (q.difficulty || 'medium').toLowerCase();
+        return diff === targetDiff;
+      });
+
+      let chosen = null;
+      for (const cand of matching) {
+        const figCat = getFigCategory(cand);
+        if (!figCat) {
+          chosen = cand;
+          break;
+        } else {
+          if (moduleFigState.totalFigs < 4 && !moduleFigState.usedCategories.has(figCat)) {
+            chosen = cand;
+            moduleFigState.totalFigs++;
+            moduleFigState.usedCategories.add(figCat);
+            break;
+          }
+        }
+      }
+
+      if (!chosen) {
+        for (const cand of candidates) {
+          if (usedInExam.has(cand.id || cand.text) || picked.includes(cand)) continue;
+          const figCat = getFigCategory(cand);
+          if (!figCat || (moduleFigState.totalFigs < 4 && !moduleFigState.usedCategories.has(figCat))) {
+            chosen = cand;
+            if (figCat) {
+              moduleFigState.totalFigs++;
+              moduleFigState.usedCategories.add(figCat);
+            }
+            break;
+          }
+        }
+      }
+
+      if (chosen) {
+        picked.push(chosen);
+        usedInExam.add(chosen.id || chosen.text);
+      }
+    }
+    return picked;
+  }
+
+  // MODULE 1
+  const m1Figs = { totalFigs: 0, usedCategories: new Set() };
+  const m1AlgMcq = pickDomainItems('Algebra', 'mcq', 6, ['easy', 'easy', 'easy', 'medium', 'medium', 'medium'], m1Figs);
+  const m1AdvMcq = pickDomainItems('AdvancedMath', 'mcq', 6, ['easy', 'easy', 'medium', 'medium', 'medium', 'hard'], m1Figs);
+  const m1PsdaMcq = pickDomainItems('PSDA', 'mcq', 3, ['easy', 'medium', 'medium'], m1Figs);
+  const m1GeoMcq = pickDomainItems('GeoTrig', 'mcq', 2, ['easy', 'medium'], m1Figs);
+  const m1Mcq = [...m1AlgMcq, ...m1AdvMcq, ...m1PsdaMcq, ...m1GeoMcq];
+
+  const diffRank = { easy: 1, medium: 2, hard: 3 };
+  m1Mcq.sort((a, b) => {
+    const dr = (diffRank[a.difficulty] || 2) - (diffRank[b.difficulty] || 2);
+    if (dr !== 0) return dr;
+    return computeComplexityScore(a) - computeComplexityScore(b);
+  });
+
+  const m1AlgSpr = pickDomainItems('Algebra', 'spr', 2, ['medium', 'hard'], m1Figs);
+  const m1AdvSpr = pickDomainItems('AdvancedMath', 'spr', 1, ['hard'], m1Figs);
+  const m1PsdaSpr = pickDomainItems('PSDA', 'spr', 1, ['medium'], m1Figs);
+  const m1GeoSpr = pickDomainItems('GeoTrig', 'spr', 1, ['hard'], m1Figs);
+  const m1Spr = [...m1AlgSpr, ...m1AdvSpr, ...m1PsdaSpr, ...m1GeoSpr];
+  m1Spr.sort((a, b) => {
+    const dr = (diffRank[a.difficulty] || 2) - (diffRank[b.difficulty] || 2);
+    if (dr !== 0) return dr;
+    return computeComplexityScore(a) - computeComplexityScore(b);
+  });
+
+  // MODULE 2 (Adaptive Challenge)
+  const m2Figs = { totalFigs: 0, usedCategories: new Set() };
+  const m2AlgMcq = pickDomainItems('Algebra', 'mcq', 5, ['medium', 'medium', 'hard', 'hard', 'hard'], m2Figs);
+  const m2AdvMcq = pickDomainItems('AdvancedMath', 'mcq', 6, ['medium', 'medium', 'hard', 'hard', 'hard', 'hard'], m2Figs);
+  const m2PsdaMcq = pickDomainItems('PSDA', 'mcq', 3, ['medium', 'hard', 'hard'], m2Figs);
+  const m2GeoMcq = pickDomainItems('GeoTrig', 'mcq', 3, ['medium', 'hard', 'hard'], m2Figs);
+  const m2Mcq = [...m2AlgMcq, ...m2AdvMcq, ...m2PsdaMcq, ...m2GeoMcq];
+  m2Mcq.sort((a, b) => {
+    const dr = (diffRank[a.difficulty] || 2) - (diffRank[b.difficulty] || 2);
+    if (dr !== 0) return dr;
+    return computeComplexityScore(a) - computeComplexityScore(b);
+  });
+
+  const m2AlgSpr = pickDomainItems('Algebra', 'spr', 2, ['hard', 'hard'], m2Figs);
+  const m2AdvSpr = pickDomainItems('AdvancedMath', 'spr', 2, ['hard', 'hard'], m2Figs);
+  const m2PsdaSpr = pickDomainItems('PSDA', 'spr', 1, ['hard'], m2Figs);
+  const m2Spr = [...m2AlgSpr, ...m2AdvSpr, ...m2PsdaSpr];
+  m2Spr.sort((a, b) => {
+    const dr = (diffRank[a.difficulty] || 2) - (diffRank[b.difficulty] || 2);
+    if (dr !== 0) return dr;
+    return computeComplexityScore(a) - computeComplexityScore(b);
+  });
+
+  const secM1 = spec.sections[0];
+  const partM1Mcq = secM1.parts[0];
+  const partM1Spr = secM1.parts[1];
+
+  const secM2 = spec.sections[1];
+  const partM2Mcq = secM2.parts[0];
+  const partM2Spr = secM2.parts[1];
+
+  m1Mcq.forEach(rawQ => {
+    globalCrossExamTracker.add(rawQ.id || rawQ.text);
+    const qItem = shuffleChoicesDeterministic(rawQ, rng);
+    entries.push({ secIdx: 0, partIdx: 0, sec: secM1, part: partM1Mcq, q: qItem });
+  });
+
+  m1Spr.forEach((rawQ, idx) => {
+    globalCrossExamTracker.add(rawQ.id || rawQ.text);
+    const qItem = normalizeWrittenItem(rawQ, partM1Spr, trackId, spec, idx, m1Spr.length, rng);
+    entries.push({ secIdx: 0, partIdx: 1, sec: secM1, part: partM1Spr, q: qItem });
+  });
+
+  m2Mcq.forEach(rawQ => {
+    globalCrossExamTracker.add(rawQ.id || rawQ.text);
+    const qItem = shuffleChoicesDeterministic(rawQ, rng);
+    entries.push({ secIdx: 1, partIdx: 0, sec: secM2, part: partM2Mcq, q: qItem });
+  });
+
+  m2Spr.forEach((rawQ, idx) => {
+    globalCrossExamTracker.add(rawQ.id || rawQ.text);
+    const qItem = normalizeWrittenItem(rawQ, partM2Spr, trackId, spec, idx, m2Spr.length, rng);
+    entries.push({ secIdx: 1, partIdx: 1, sec: secM2, part: partM2Spr, q: qItem });
+  });
+
+  return entries;
+}
+
 function drawQuestionsForPaper(pool, spec, trackId, paperSlug, examIndex, langMode, globalCrossExamTracker) {
+  if (trackId === 'sat') {
+    return drawDigitalSatPaper(pool, spec, trackId, paperSlug, examIndex, langMode, globalCrossExamTracker);
+  }
   const rng = createRng(`${trackId}::${paperSlug}::${langMode}::exam-${examIndex}`);
   const isIB = Boolean(spec.isIB || trackId === 'ibsl' || trackId === 'ibhl');
   const usedInThisExam = new Set();
