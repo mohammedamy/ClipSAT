@@ -2,8 +2,8 @@
   var _esc = (typeof escHtml === 'function') ? escHtml : function(s){ return s ? String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') : ''; };
 
   var WL_I18N = {
-    en: {searchPh:'Search worksheets & full exams…', of:' of ', topics:' items', unit:'Unit ', ws:'Worksheet', ak:'Answer Key', exam:'Full Exam', examAk:'Answer Key & Solutions', none:'No worksheets or exams match "'},
-    ar: {searchPh:'ابحث في أوراق العمل والاختبارات الكاملة…', of:' من ', topics:' عنصرًا', unit:'الوحدة ', ws:'ورقة العمل', ak:'مفتاح الإجابة', exam:'الاختبار الكامل', examAk:'مفتاح الإجابة والحلول', none:'لا توجد أوراق عمل أو اختبارات مطابقة لـ "'}
+    en: {searchPh:'Search worksheets & full exams…', of:' of ', topics:' items', unit:'Unit ', ws:'Worksheet', ak:'Answer Key', exam:'Full Exam', examAk:'Answer Key & Solutions', cbt:'💻 Solve in CBT', none:'No worksheets or exams match "'},
+    ar: {searchPh:'ابحث في أوراق العمل والاختبارات الكاملة…', of:' من ', topics:' عنصرًا', unit:'الوحدة ', ws:'ورقة العمل', ak:'مفتاح الإجابة', exam:'الاختبار الكامل', examAk:'مفتاح الإجابة والحلول', cbt:'💻 حل في المحاكي (CBT)', none:'لا توجد أوراق عمل أو اختبارات مطابقة لـ "'}
   };
 
   function renderLibrary(el, trackId, data){
@@ -55,9 +55,12 @@
           var isExam = Boolean(d.isFullExam);
           var wsLabel = d.wsLabel || (isExam ? t.exam : t.ws);
           var akLabel = d.akLabel || (isExam ? t.examAk : t.ak);
+          var cbtBtn = isExam
+            ? '<button type="button" class="wl-link cbt" onclick="window.openDownloadExamCBT&amp;&amp;window.openDownloadExamCBT(\'' + trackId + '\',\'' + _esc(d.worksheet) + '\',\'' + _esc(d.title).replace(/'/g,"\\'") + '\',\'' + (d.lang||'en') + '\')">' + _esc(t.cbt) + '</button>'
+            : '';
           var gformBtn = '<button type="button" class="wl-link gform" onclick="window.ClipSATWorksheetForm&amp;&amp;window.ClipSATWorksheetForm(\'' + trackId + '\',\'' + _esc(d.num) + '\',\'' + (d.lang||'en') + '\',\'' + _esc(d.title).replace(/'/g,"\\'") + '\')" style="' + (window.ClipSATGoogle&&window.ClipSATGoogle.configured?'':'display:none') + '">📝 Form</button>';
           html += '<div class="wl-row' + (isExam ? ' wl-row-exam' : '') + '"><span class="wl-num">' + _esc(d.num) + '</span><span class="wl-title">' + _esc(d.title) + '</span>'
-            + '<span class="wl-links"><a class="wl-link ws" href="' + base + d.worksheet + '" target="_blank" rel="noopener">' + _esc(wsLabel) + '</a>'
+            + '<span class="wl-links">' + cbtBtn + '<a class="wl-link ws" href="' + base + d.worksheet + '" target="_blank" rel="noopener">' + _esc(wsLabel) + '</a>'
             + '<a class="wl-link ak" href="' + base + d.answerkey + '" target="_blank" rel="noopener">' + _esc(akLabel) + '</a>'
             + gformBtn + '</span></div>';
         });

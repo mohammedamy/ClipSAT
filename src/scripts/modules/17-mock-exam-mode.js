@@ -19,6 +19,106 @@
   var _flags = {}; // qIndex -> bool
   var _viewMode = 'cbt'; // 'cbt' (single question) or 'all' (stacked review)
   var _isSubmitted = false;
+  var _lastDownloadArgs = null;
+
+  function _complexityScore(q){
+    if(!q) return 0;
+    var text = String(q.text || q.q || '');
+    var sol = String(q.sol || q.solution || q.exp || q.expl || '');
+    var score = Math.min(text.length, 600) * 0.12 + Math.min(sol.length, 900) * 0.15;
+    var latexMatches = (text + ' ' + sol).match(/\\(?:frac|sqrt|int|sum|lim|sin|cos|tan|log|ln|binom|vec|matrix|begin)/g);
+    if(latexMatches) score += latexMatches.length * 6;
+    if(/\([b-d]\)|\([ii]+\)/i.test(text)) score += 25;
+    if(q.figure || q.fig || q.table) score += 10;
+    return score;
+  }
+
+  function _pickBalancedWithProgression(pool, allPool, targetCount, tracker){
+    var seenKeys = new Set();
+    var filterUnique = function(arr){
+      var out = [];
+      for(var i = 0; i < arr.length; i++){
+        var q = arr[i];
+        var k = (q.id || q.text || q.q || '').trim();
+        if(k && !seenKeys.has(k)){
+          out.push(q);
+        }
+      }
+      return out;
+    };
+    var shuffleArr = function(arr){
+      var a = arr.slice();
+      for(var i = a.length - 1; i > 0; i--){
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = a[i]; a[i] = a[j]; a[j] = t;
+      }
+      return a;
+    };
+    var pickFromTier = function(bucket, count, figRatio){
+      if(count <= 0 || !bucket.length) return [];
+      var shuf = shuffleArr(bucket);
+      var withFig = shuf.filter(function(q){ return !!(q.figure || q.fig || q.table); });
+      var noFig = shuf.filter(function(q){ return !(q.figure || q.fig || q.table); });
+      var targetFigs = Math.min(withFig.length, Math.round(count * figRatio));
+      var chosen = [];
+      for(var f = 0; f < withFig.length && chosen.length < targetFigs; f++){
+        var qf = withFig[f];
+        var kf = (qf.id || qf.text || qf.q || '').trim();
+        if(!seenKeys.has(kf) && (!tracker || tracker.add(qf))){
+          seenKeys.add(kf);
+          chosen.push(qf);
+        }
+      }
+      var rem = noFig.concat(withFig);
+      for(var r = 0; r < rem.length && chosen.length < count; r++){
+        var qr = rem[r];
+        var kr = (qr.id || qr.text || qr.q || '').trim();
+        if(!seenKeys.has(kr) && (!tracker || tracker.add(qr))){
+          seenKeys.add(kr);
+          chosen.push(qr);
+        }
+      }
+      chosen.sort(function(a, b){ return _complexityScore(a) - _complexityScore(b); });
+      return chosen;
+    };
+
+    var easyQ = Math.max(1, Math.round(targetCount * 0.30));
+    var hardQ = Math.max(1, Math.round(targetCount * 0.25));
+    var medQ = Math.max(0, targetCount - easyQ - hardQ);
+
+    var easyBucket = pool.filter(function(q){ return (q.difficulty || 'medium').toLowerCase() === 'easy'; });
+    var medBucket = pool.filter(function(q){ return (q.difficulty || 'medium').toLowerCase() === 'medium'; });
+    var hardBucket = pool.filter(function(q){ return (q.difficulty || 'medium').toLowerCase() === 'hard'; });
+
+    var pEasy = pickFromTier(easyBucket, easyQ, 0.35).map(function(q){ return Object.assign({}, q, { difficulty: 'easy' }); });
+    var pMed = pickFromTier(medBucket, medQ, 0.35).map(function(q){ return Object.assign({}, q, { difficulty: 'medium' }); });
+    var pHard = pickFromTier(hardBucket, hardQ, 0.35).map(function(q){ return Object.assign({}, q, { difficulty: 'hard' }); });
+
+    var picked = pEasy.concat(pMed).concat(pHard);
+
+    // Backfill if needed from pool or allPool while preserving difficulty progression
+    var backfillSources = [pool, allPool || []];
+    for(var sIdx = 0; sIdx < backfillSources.length && picked.length < targetCount; sIdx++){
+      var src = shuffleArr(filterUnique(backfillSources[sIdx]));
+      for(var b = 0; b < src.length && picked.length < targetCount; b++){
+        var qb = src[b];
+        var kb = (qb.id || qb.text || qb.q || '').trim();
+        if(!seenKeys.has(kb)){
+          seenKeys.add(kb);
+          picked.push(qb);
+        }
+      }
+    }
+
+    var diffRank = { easy: 1, medium: 2, hard: 3 };
+    picked.sort(function(a, b){
+      var da = diffRank[(a.difficulty || 'medium').toLowerCase()] || 2;
+      var db = diffRank[(b.difficulty || 'medium').toLowerCase()] || 2;
+      if(da !== db) return da - db;
+      return _complexityScore(a) - _complexityScore(b);
+    });
+    return picked;
+  }
 
   var PAPERS = {
     qudrat: [
@@ -240,6 +340,19 @@
       flagBtn.innerHTML = isFlagged ? '🚩 Flagged' : '🏳️ Flag for Review';
       flagBtn.style.display = _isSubmitted ? 'none' : 'inline-flex';
     }
+    var curQ = _pool[_curIdx];
+    if(curQ && typeof curQ.calc === 'boolean' && !_isSubmitted){
+      if(typeof window.setFloatingCalcLocked === 'function'){
+        window.setFloatingCalcLocked(curQ.calc === false, (_paper && _paper.name) || '');
+      }
+      var titleEl = document.getElementById('mock-exam-title');
+      if(titleEl && _paper){
+        var calcBadge = curQ.calc
+          ? '<span style="background:rgba(255,255,255,.18);padding:3px 8px;border-radius:6px;font-size:.76rem;margin-left:8px;font-weight:600">🖩 Calculator Allowed</span>'
+          : '<span style="background:#b91c1c;padding:3px 8px;border-radius:6px;font-size:.76rem;margin-left:8px;font-weight:700">🚫 No Calculator</span>';
+        titleEl.innerHTML = '<span>' + _paper.name + '</span> ' + calcBadge;
+      }
+    }
   }
 
   function _updateFooterNav(){
@@ -432,26 +545,56 @@
     if(!body) return;
 
     var h = '';
-    var letters = ['A', 'B', 'C', 'D', 'E'];
+    var isArPaper = (_paper && _paper.lang === 'ar');
+    var letters = (_paper && Array.isArray(_paper.letters) && _paper.letters.length)
+      ? _paper.letters
+      : (isArPaper ? ['أ', 'ب', 'ج', 'د'] : ['A', 'B', 'C', 'D', 'E']);
     var _fmtBi = window.CSFormatBilingual || function(s){ return s; };
 
     _pool.forEach(function(q, i){
-      var isComp = _isQuantComp(q);
-      var figHtml = _renderQFig(q);
+      var isPre = Boolean(q.preRendered);
+      var isComp = !isPre && _isQuantComp(q);
+      var figHtml = isPre ? (q.figure || '') : _renderQFig(q);
       var qText = (q.text || q.q || '').trim();
       var isFlagged = !!_flags[i];
+      var diffKey = ['easy', 'medium', 'hard'].indexOf((q.difficulty || '').toLowerCase()) !== -1
+        ? q.difficulty.toLowerCase()
+        : 'medium';
+      var diffLabel = isArPaper
+        ? (diffKey === 'easy' ? 'أساسي' : (diffKey === 'hard' ? 'متقدم / تحدي' : 'قياسي'))
+        : (diffKey === 'easy' ? 'Foundational' : (diffKey === 'hard' ? 'Challenging' : 'Standard'));
+      var diffStyle = diffKey === 'easy'
+        ? 'background:#dcfce7;color:#166534;border:1px solid #bbf7d0'
+        : (diffKey === 'hard'
+          ? 'background:#fee2e2;color:#991b1b;border:1px solid #fecaca'
+          : 'background:#fef3c7;color:#92400e;border:1px solid #fde68a');
+      var secBanner = '';
+      if(q.sectionTitle){
+        secBanner = '<div style="font-size:.75rem;font-weight:700;color:var(--indigo,#1e3e70);background:var(--paper-2,#f1f5f9);padding:5px 10px;border-radius:6px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px">'
+          + '<span>' + q.sectionTitle + (q.partLabel ? ' · ' + q.partLabel : '') + '</span>'
+          + (typeof q.calc === 'boolean'
+            ? '<span style="font-size:.7rem;padding:2px 7px;border-radius:4px;color:#fff;background:' + (q.calc ? '#15803d' : '#dc2626') + '">' + (q.calc ? (isArPaper ? '🖩 مسموح بالآلة الحاسبة' : '🖩 Calculator Permitted') : (isArPaper ? '🚫 بدون آلة حاسبة' : '🚫 No Calculator')) + '</span>'
+            : '')
+          + '</div>';
+      }
+      var marksBadge = q.marks
+        ? '<span style="font-size:.74rem;font-weight:700;background:#e2e8f0;color:#1e293b;padding:2px 8px;border-radius:4px;margin-left:6px">[' + q.marks + ' ' + (q.marks === 1 ? (isArPaper ? 'درجة' : 'mark') : (isArPaper ? 'درجات' : 'marks')) + ']</span>'
+        : '';
 
-      h += '<div class="mock-q' + (i === _curIdx ? '' : ' cbt-hidden') + '" id="mock-q-' + i + '">'
-        + '<div class="mq-num" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">'
-        + '  <div>'
-        + '    <span style="font-weight:800;font-size:.9rem;color:var(--indigo,#1e3e70)">Question ' + (i + 1) + ' of ' + _pool.length + '</span>'
-        + '    <span style="font-size:.76rem;background:var(--paper-2,#f1f5f9);padding:2px 8px;border-radius:4px;color:var(--muted,#64748b);margin-left:8px">' + (q.domain || 'Math') + '</span>'
+      h += '<div class="mock-q' + (i === _curIdx ? '' : ' cbt-hidden') + '" id="mock-q-' + i + '" dir="' + (isArPaper ? 'rtl' : 'ltr') + '">'
+        + secBanner
+        + '<div class="mq-num" style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px">'
+        + '  <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px">'
+        + '    <span style="font-weight:800;font-size:.9rem;color:var(--indigo,#1e3e70)">' + (isArPaper ? 'السؤال ' + (i + 1) + ' من ' + _pool.length : 'Question ' + (i + 1) + ' of ' + _pool.length) + '</span>'
+        + '    <span style="font-size:.74rem;background:var(--paper-2,#f1f5f9);padding:2px 8px;border-radius:4px;color:var(--muted,#64748b)">' + (q.domain || 'Math') + '</span>'
+        + '    <span style="font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:4px;text-transform:uppercase;' + diffStyle + '">' + diffLabel + '</span>'
+        +      marksBadge
         + '  </div>'
         + '  <button type="button" class="cbt-flag-btn' + (isFlagged ? ' flagged' : '') + '" onclick="window.cbtToggleFlagCurrent(' + i + ')">' + (isFlagged ? '🚩 Flagged' : '🏳️ Flag') + '</button>'
         + '</div>';
 
       if(figHtml){
-        h += '<div class="mock-q-figure" style="margin-bottom:14px">' + figHtml + '</div>';
+        h += '<div class="mock-q-figure" style="margin-bottom:14px;text-align:center">' + figHtml + '</div>';
       }
 
       if(isComp){
@@ -471,32 +614,41 @@
           + '</div>'
           + '</div>';
       } else {
-        h += '<div class="mq-text" style="font-size:1.02rem;line-height:1.65;margin-bottom:16px">' + _fmtBi(qText) + '</div>';
+        h += '<div class="mq-text" style="font-size:1.02rem;line-height:1.65;margin-bottom:16px">' + (isPre ? qText : _fmtBi(qText)) + '</div>';
       }
 
       var isSPR = (q.type === 'spr' || q.isSPR);
+      var isFRQ = (q.type === 'frq');
       var currentAns = _answers[i];
 
-      if(isSPR){
+      if(isFRQ){
+        h += '<div style="margin:12px 0">'
+          + '<label style="display:block;font-size:.82rem;color:var(--muted,#64748b);margin-bottom:5px;font-weight:700">✏️ Structured Mathematical Working Space (Optional Scratchpad):</label>'
+          + '<textarea class="mock-frq-area" placeholder="Write your step-by-step derivation, equations, and working here..." style="width:100%;min-height:85px;padding:10px 14px;border:1.5px solid var(--border,#cbd5e1);border-radius:8px;font-family:var(--sans);font-size:.9rem;margin-bottom:10px"></textarea>'
+          + '</div>';
+      }
+
+      if(isSPR || (isFRQ && (!q.choices || !q.choices.length))){
         h += '<div class="mock-spr-wrap" style="margin:14px 0">'
-          + '<label style="display:block;font-size:.84rem;color:var(--muted,#64748b);margin-bottom:6px;font-weight:600">Student-Produced Response (Grid-in):</label>'
-          + '<input type="text" class="mock-spr-input" name="mq' + i + '" value="' + (currentAns != null ? String(currentAns).replace(/"/g, '&quot;') : '') + '" placeholder="e.g. 7/4 or 1.75" oninput="window.cbtRecordAnswer(' + i + ', this.value)" style="width:180px;padding:10px 14px;border:1.5px solid var(--border,#cbd5e1);border-radius:8px;font-family:var(--mono,monospace);font-size:1.05rem">'
+          + '<label style="display:block;font-size:.84rem;color:var(--muted,#64748b);margin-bottom:6px;font-weight:600">' + (isFRQ ? 'Final Verified Numerical / Algebraic Answer:' : 'Student-Produced Response (Grid-in):') + '</label>'
+          + '<input type="text" class="mock-spr-input" name="mq' + i + '" value="' + (currentAns != null ? String(currentAns).replace(/"/g, '&quot;') : '') + '" placeholder="e.g. 7/4 or 1.75" oninput="window.cbtRecordAnswer(' + i + ', this.value)" style="width:220px;padding:10px 14px;border:1.5px solid var(--border,#cbd5e1);border-radius:8px;font-family:var(--mono,monospace);font-size:1.05rem">'
           + '</div>';
       } else if(q.choices && q.choices.length){
+        if(isFRQ){
+          h += '<div style="font-size:.83rem;font-weight:700;color:var(--indigo,#1e3e70);margin-bottom:8px">Select your verified final analytical result for CBT auto-grading:</div>';
+        }
         h += '<div class="mock-choices-list" style="display:flex;flex-direction:column;gap:8px">';
         q.choices.forEach(function(c, ci){
           var letLabel = letters[ci] || String.fromCharCode(65 + ci);
-          var chText = (typeof window.CSAutoMath === 'function' ? window.CSAutoMath(c) : String(c || ''));
+          var chText = isPre ? String(c || '') : (typeof window.CSAutoMath === 'function' ? window.CSAutoMath(c) : String(c || ''));
           var isChecked = (currentAns === ci);
           h += '<label class="mock-choice-row" style="display:flex;align-items:flex-start;gap:10px;padding:11px 14px;border:1.5px solid ' + (isChecked ? '#3b82f6' : 'var(--border,#e2e8f0)') + ';border-radius:8px;cursor:pointer;background:' + (isChecked ? '#eff6ff' : 'var(--paper,#fff)') + ';transition:all .15s ease">'
             + '<input type="radio" name="mq' + i + '" value="' + ci + '" ' + (isChecked ? 'checked' : '') + ' onchange="window.cbtRecordAnswer(' + i + ', ' + ci + ')" style="margin-top:4px">'
             + '<span style="font-weight:800;color:var(--indigo,#1e3e70)">' + letLabel + '.</span>'
-            + '<span style="flex:1">' + _fmtBi(chText) + '</span>'
+            + '<span style="flex:1">' + (isPre ? chText : _fmtBi(chText)) + '</span>'
             + '</label>';
         });
         h += '</div>';
-      } else {
-        h += '<div style="margin:14px 0"><textarea class="mock-frq-area" name="mq' + i + '" oninput="window.cbtRecordAnswer(' + i + ', this.value)" placeholder="Type your algebraic derivation, proof, or numerical answer here..." style="width:100%;min-height:100px;padding:10px 14px;border:1.5px solid var(--border,#cbd5e1);border-radius:8px;font-family:var(--sans);font-size:.92rem">' + (currentAns || '') + '</textarea></div>';
       }
 
       h += '</div>';
@@ -507,7 +659,9 @@
       return {
         answer: q.answer,
         ans: q.ans || q.answer,
-        type: q.type || 'mcq',
+        sprAnswer: q.sprAnswer || q.ans || '',
+        type: (q.type === 'frq' && (!q.choices || !q.choices.length)) ? 'spr' : (q.type || 'mcq'),
+        marks: q.marks || 1,
         domain: q.domain || 'Math',
         sol: q.sol || q.expl || ''
       };
@@ -646,76 +800,10 @@
       }
 
       var targetCount = Math.min(paper.qCount || 20, pool.length);
-
-      // Guarantee healthy presence of diagrams and graphs
-      var withFig = pool.filter(function(q){ return !!(q.figure || q.fig || q.table); });
-      var noFig = pool.filter(function(q){ return !(q.figure || q.fig || q.table); });
-
-      // Shuffle withFig and noFig
-      for(var wf = withFig.length - 1; wf > 0; wf--){
-        var rwf = Math.floor(Math.random() * (wf + 1));
-        var twf = withFig[wf]; withFig[wf] = withFig[rwf]; withFig[rwf] = twf;
-      }
-      for(var nf = noFig.length - 1; nf > 0; nf--){
-        var rnf = Math.floor(Math.random() * (nf + 1));
-        var tnf = noFig[nf]; noFig[nf] = noFig[rnf]; noFig[rnf] = tnf;
-      }
-
-      var targetFigs = Math.min(withFig.length, Math.max(1, Math.ceil(targetCount * 0.30)));
-      var picked = [];
       var tracker = window.ClipSATRedundancy ? window.ClipSATRedundancy.tracker() : null;
-      var seenKeys = new Set();
+      var picked = _pickBalancedWithProgression(pool, allPool, targetCount, tracker);
 
-      // Pick diagrams first
-      for(var f = 0; f < withFig.length && picked.length < targetFigs; f++){
-        var qf = withFig[f];
-        var kf = (qf.text || qf.q || '').trim();
-        if(!seenKeys.has(kf) && (!tracker || tracker.add(qf))){
-          seenKeys.add(kf);
-          picked.push(qf);
-        }
-      }
-
-      // Fill remainder
-      var remainder = noFig.concat(withFig.filter(function(x){ return picked.indexOf(x) === -1; }));
-      for(var r = 0; r < remainder.length && picked.length < targetCount; r++){
-        var qr = remainder[r];
-        var kr = (qr.text || qr.q || '').trim();
-        if(!seenKeys.has(kr) && (!tracker || tracker.add(qr))){
-          seenKeys.add(kr);
-          picked.push(qr);
-        }
-      }
-
-      if(picked.length < targetCount && allPool.length > picked.length){
-        for(var a = 0; a < allPool.length && picked.length < targetCount; a++){
-          var qA = allPool[a];
-          var kA = (qA.text || qA.q || '').trim();
-          if(!seenKeys.has(kA) && (!tracker || tracker.add(qA))){
-            seenKeys.add(kA);
-            picked.push(qA);
-          }
-        }
-      }
-
-      // If still under targetCount due to strict idea template filtering, backfill from non-duplicate items
-      if(picked.length < targetCount && pool.length > picked.length){
-        for(var b = 0; b < pool.length && picked.length < targetCount; b++){
-          var qB = pool[b];
-          var kB = (qB.text || qB.q || '').trim();
-          if(!seenKeys.has(kB)){
-            seenKeys.add(kB);
-            picked.push(qB);
-          }
-        }
-      }
-
-      // Distribute diagram questions naturally across the exam
-      for(var s = picked.length - 1; s > 0; s--){
-        var js = Math.floor(Math.random() * (s + 1));
-        var ts = picked[s]; picked[s] = picked[js]; picked[js] = ts;
-      }
-
+      _lastDownloadArgs = null;
       _pool = picked.map(function(q){ return window._shuffleQ ? window._shuffleQ(q) : q; });
       if(!_pool.length){
         if(body){
@@ -805,6 +893,168 @@
           + '</div></div>';
       }
     });
+  };
+
+  window.openDownloadExamCBT = function(trackId, examFilename, examTitle, lang){
+    trackId = String(trackId || 'sat').toLowerCase().trim();
+    _trackId = trackId;
+    _pidx = 0;
+    _curIdx = 0;
+    _answers = {};
+    _flags = {};
+    _viewMode = 'cbt';
+    _isSubmitted = false;
+    _lastDownloadArgs = [trackId, examFilename, examTitle, lang];
+
+    var examUrl = '/downloads/' + trackId + '/' + examFilename;
+    var overlay = document.getElementById('mock-exam-overlay');
+    if(!overlay){
+      window.open(examUrl + '?cbt=1', '_blank');
+      return;
+    }
+
+    var body = document.getElementById('mock-exam-body');
+    if(body){
+      body.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--muted)">'
+        + '<div class="ai-spinner" style="margin:0 auto 16px"></div>'
+        + '<p style="font-size:1.05rem;font-weight:600;margin-bottom:6px">Loading Official Practice Exam into CBT Simulator…</p>'
+        + '<p style="font-size:.85rem;color:var(--muted,#64748b)">' + (examTitle || examFilename) + '</p>'
+        + '</div>';
+    }
+    overlay.classList.add('show');
+    document.body.classList.add('cbt-open');
+
+    fetch(examUrl)
+      .then(function(r){
+        if(!r.ok) throw new Error('HTTP ' + r.status);
+        return r.text();
+      })
+      .then(function(htmlText){
+        var doc = new DOMParser().parseFromString(htmlText, 'text/html');
+        var payloadEl = doc.getElementById('clipsat-cbt-payload');
+        if(!payloadEl) throw new Error('CBT payload missing in exam document.');
+        var payload = JSON.parse(payloadEl.textContent);
+
+        var loadedPool = (payload.questions || []).map(function(qm){
+          var qNode = doc.getElementById('fep-q-' + qm.qNum);
+          var figNode = qNode ? qNode.querySelector('.fep-figure') : null;
+          var bodyNode = qNode ? qNode.querySelector('.fep-qbody') : null;
+          var solNode = doc.querySelector('#fep-sol-' + qm.qNum + ' .fep-sol-body');
+
+          var choicesHtml = [];
+          if(qm.type === 'mcq' && qNode){
+            var chNodes = qNode.querySelectorAll('.fep-choice .fep-ctext');
+            chNodes.forEach(function(cn){ choicesHtml.push(cn.innerHTML); });
+          } else if(qm.type === 'frq' && Array.isArray(qm.cbtChoicesHtml) && qm.cbtChoicesHtml.length){
+            choicesHtml = qm.cbtChoicesHtml.slice();
+          }
+
+          return {
+            preRendered: true,
+            qNum: qm.qNum,
+            sectionTitle: qm.sectionTitle || '',
+            partLabel: qm.partLabel || '',
+            calc: Boolean(qm.calc),
+            type: qm.type || 'mcq',
+            difficulty: qm.difficulty || 'medium',
+            marks: Number(qm.marks) || 1,
+            domain: qm.domain || 'Mathematics',
+            text: bodyNode ? bodyNode.innerHTML : '',
+            figure: figNode ? figNode.innerHTML : '',
+            choices: choicesHtml,
+            answer: typeof qm.answer === 'number' ? qm.answer : 0,
+            ans: qm.finalAnswerText || String(qm.answer || 0),
+            sprAnswer: qm.finalAnswerText || '',
+            sol: solNode ? solNode.innerHTML : ''
+          };
+        });
+
+        if(!loadedPool.length){
+          throw new Error('No questions found in exam payload.');
+        }
+
+        _pool = loadedPool;
+        var hasAnyCalc = _pool.some(function(q){ return q.calc !== false; });
+        var firstCalc = _pool[0] ? (_pool[0].calc !== false) : hasAnyCalc;
+
+        _paper = {
+          name: examTitle || (payload.paperTitle + ' — Exam #' + payload.examNumber),
+          minutes: Number(payload.durationMinutes) || 60,
+          qCount: _pool.length,
+          calc: firstCalc,
+          lang: payload.lang || lang || 'en',
+          letters: payload.letters || ['A', 'B', 'C', 'D'],
+          isDownloadExam: true,
+          examFilename: examFilename,
+          akFilename: payload.akFilename || ''
+        };
+
+        var titleEl = document.getElementById('mock-exam-title');
+        if(titleEl){
+          var calcBadge = firstCalc
+            ? '<span style="background:rgba(255,255,255,.18);padding:3px 8px;border-radius:6px;font-size:.76rem;margin-left:8px;font-weight:600">🖩 Calculator Allowed</span>'
+            : '<span style="background:#b91c1c;padding:3px 8px;border-radius:6px;font-size:.76rem;margin-left:8px;font-weight:700">🚫 No Calculator</span>';
+          titleEl.innerHTML = '<span>' + _paper.name + '</span> ' + calcBadge;
+        }
+
+        if(typeof window.setFloatingCalcLocked === 'function'){
+          window.setFloatingCalcLocked(!firstCalc, _paper.name);
+        }
+
+        var hdr = document.getElementById('mock-exam-header');
+        if(hdr){
+          var toolsDiv = hdr.querySelector('.mock-tools-wrap');
+          if(!toolsDiv){
+            toolsDiv = document.createElement('div');
+            toolsDiv.className = 'mock-tools-wrap';
+            toolsDiv.style.cssText = 'display:flex;align-items:center;gap:8px;margin-left:auto;margin-right:12px';
+            var timerEl = document.getElementById('mock-exam-timer');
+            if(timerEl) hdr.insertBefore(toolsDiv, timerEl);
+          }
+
+          var calcBtnHtml = hasAnyCalc
+            ? '<button type="button" class="hdr-btn" onclick="window.toggleFloatingCalc&&window.toggleFloatingCalc()" title="Open Desmos Graphing Calculator (Alt+C)">🧮 Calculator</button>'
+            : '';
+
+          var printLinkHtml = '<a class="hdr-btn" href="/downloads/' + trackId + '/' + examFilename + '" target="_blank" rel="noopener" style="text-decoration:none" title="Open Printable Exam Paper">🖨️ Paper</a>';
+
+          toolsDiv.innerHTML = printLinkHtml + calcBtnHtml
+            + '<button type="button" class="hdr-btn" onclick="window.openFormulaModal&&window.openFormulaModal()" title="Reference Formulas">📐 Formulas</button>'
+            + '<button type="button" class="hdr-btn" id="cbt-scratchpad-btn" onclick="window.toggleWhiteboard&&window.toggleWhiteboard()" title="Open Scratchpad (Alt+S)">✏️ Scratchpad</button>'
+            + '<button type="button" class="cbt-flag-btn" id="cbt-flag-btn" onclick="window.cbtToggleFlagCurrent(' + _curIdx + ')">🏳️ Flag for Review</button>'
+            + '<button type="button" class="hdr-btn" onclick="window.cbtToggleFullscreen()" title="Toggle Fullscreen">⛶</button>';
+        }
+
+        _secs = (_paper.minutes || 60) * 60;
+        _totalSecs = _secs;
+
+        _renderQuestionsDOM();
+        _goToQuestion(0);
+
+        if(_tmr) clearInterval(_tmr);
+        _renderTimer();
+        _tmr = setInterval(function(){
+          _secs--;
+          _renderTimer();
+          if(_secs <= 0){
+            clearInterval(_tmr);
+            _tmr = null;
+            submitMockExam();
+          }
+        }, 1000);
+      })
+      .catch(function(err){
+        console.error('CBT Download Exam load error:', err);
+        window.open(examUrl + '?cbt=1', '_blank');
+      });
+  };
+
+  window.retakeCurrentCBTExam = function(){
+    if(_lastDownloadArgs && _lastDownloadArgs.length >= 2){
+      window.openDownloadExamCBT(_lastDownloadArgs[0], _lastDownloadArgs[1], _lastDownloadArgs[2], _lastDownloadArgs[3]);
+    } else {
+      window.openMockExam(_trackId, _pidx);
+    }
   };
 
   window.cbtToggleFullscreen = function(){
@@ -1012,7 +1262,7 @@
           '</div>',
           '<div style="display:flex;gap:8px">',
             '<button type="button" class="cbt-nav-btn" onclick="window.print()">📄 Save PDF</button>',
-            '<button type="button" class="cbt-nav-btn" onclick="window.openMockExam(\'' + _trackId + '\',' + _pidx + ')">🔄 Retake</button>',
+            '<button type="button" class="cbt-nav-btn" onclick="window.retakeCurrentCBTExam()">🔄 Retake</button>',
           '</div>',
         '</div>',
       '</div>'
@@ -1024,7 +1274,7 @@
     if(footer){
       footer.innerHTML = '<div style="display:flex;justify-content:space-between;width:100%">'
         + '<button class="mock-exit-btn" onclick="exitMockExam()" style="background:var(--indigo,#132746);color:#fff;border:none;padding:10px 24px;font-weight:700">Close CBT Simulator</button>'
-        + '<button class="cbt-nav-btn cbt-nav-primary" onclick="window.openMockExam(\'' + _trackId + '\',' + _pidx + ')">🔄 Practice Again</button>'
+        + '<button class="cbt-nav-btn cbt-nav-primary" onclick="window.retakeCurrentCBTExam()">🔄 Practice Again</button>'
         + '</div>';
     }
 

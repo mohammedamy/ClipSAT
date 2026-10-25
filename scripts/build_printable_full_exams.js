@@ -724,19 +724,68 @@ function renderQiyasComparisonCard(q, langMode) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 7. UPGRADE WRITTEN / FRQ ITEMS FOR CAIE, EDEXCEL, IB & AP
+// 7. UPGRADE WRITTEN / FRQ ITEMS FOR CAIE, EDEXCEL, IB & AP + GRADUATED MARKS
 // ─────────────────────────────────────────────────────────────────────────────
-function normalizeWrittenItem(q, partMeta, trackId, spec) {
+function computeComplexityScore(q) {
+  const solLen = String(q.sol || q.solution || q.exp || '').length;
+  const stemLen = String(q.text || q.q || '').length;
+  const marks = Number(q.marks) || 1;
+  const mathCount = ((String(q.sol || '') + String(q.text || '')).match(/\\frac|\\int|\\sum|\\sqrt|\\lim|\\sin|\\cos|\\matrix|\\begin/g) || []).length;
+  return marks * 15 + Math.min(120, Math.floor(solLen / 18)) + Math.min(60, Math.floor(stemLen / 25)) + mathCount * 6;
+}
+
+function getGraduatedWrittenMarks(trackId, secType, isHL, diff, posRatio) {
+  if (trackId === 'sat') return 1;
+  if (secType === 'Paper 3') return posRatio >= 0.5 ? 28 : 27;
+  if (secType === 'Section B') {
+    if (diff === 'easy') return isHL ? 14 : 12;
+    if (diff === 'medium') return isHL ? 16 : 14;
+    return isHL ? 18 : 16;
+  }
+  if (trackId === 'ibsl' || trackId === 'ibhl') {
+    if (diff === 'easy') return isHL ? 6 : 5;
+    if (diff === 'medium') return isHL ? 7 : 6;
+    return isHL ? 9 : 8;
+  }
+  if (trackId === 'igcse') {
+    if (diff === 'easy') return posRatio < 0.15 ? 3 : 4;
+    if (diff === 'medium') return 5;
+    return posRatio >= 0.9 ? 7 : 6;
+  }
+  if (trackId === 'addmath') {
+    if (diff === 'easy') return 5;
+    if (diff === 'medium') return 7;
+    return posRatio >= 0.85 ? 10 : 9;
+  }
+  if (trackId === 'aslevel' || trackId === 'a2level') {
+    if (diff === 'easy') return 5;
+    if (diff === 'medium') return 7;
+    return posRatio >= 0.85 ? 10 : 9;
+  }
+  if (trackId === 'apstats') return posRatio >= 0.75 ? 12 : 10;
+  return 9; // AP Calculus / Precalculus FRQ standard 9 points
+}
+
+function normalizeWrittenItem(q, partMeta, trackId, spec, posIdx, totalInPart, rng) {
   const isIB = Boolean(spec.isIB || trackId === 'ibsl' || trackId === 'ibhl');
   const isHL = trackId === 'ibhl' || /HL/i.test(spec.title || '');
   const isSAT = trackId === 'sat';
-  const item = Object.assign({}, q);
+  const shuffledCopy = (!isSAT && Array.isArray(q.choices) && q.choices.length >= 2)
+    ? shuffleChoicesDeterministic(q, rng)
+    : Object.assign({}, q);
+  const item = Object.assign({}, shuffledCopy);
   item.type = isSAT ? 'spr' : 'frq';
 
+  // Preserve shuffled choices for CBT mode so written/FRQ exams can also be auto-graded in CBT
+  if (Array.isArray(shuffledCopy.choices) && shuffledCopy.choices.length >= 2) {
+    item.cbtChoices = shuffledCopy.choices.slice();
+    item.cbtAnswer = typeof shuffledCopy.answer === 'number' ? shuffledCopy.answer : 0;
+  }
+
   const secType = (partMeta && partMeta.ibSection) || item.ibSection || (isIB ? 'Section A' : (isSAT ? 'Student-Produced Response' : 'Structured Written'));
-  const defaultMarks = isSAT ? 1 : (Number(item.marks) || (partMeta && partMeta.defaultMarks) ||
-    (isIB ? (secType === 'Paper 3' ? 27 : (secType === 'Section B' ? 14 : (isHL ? 8 : 6))) :
-     (trackId === 'igcse' ? 5 : (trackId === 'addmath' ? 8 : (trackId === 'aslevel' || trackId === 'a2level' ? 7 : 9)))));
+  const diff = (item.difficulty || 'medium').toLowerCase();
+  const posRatio = totalInPart > 1 ? posIdx / (totalInPart - 1) : 1;
+  const defaultMarks = isSAT ? 1 : getGraduatedWrittenMarks(trackId, secType, isHL, diff, posRatio);
   item.marks = defaultMarks;
   item.ibSection = secType;
 
@@ -748,12 +797,16 @@ function normalizeWrittenItem(q, partMeta, trackId, spec) {
     .replace(/Which of the following is the/gi, 'Find the')
     .replace(/Which of the following/gi, 'Determine the value or expression that')
     .replace(/Select the correct[^.]*\./gi, '');
+  // Strip any existing trailing [N marks] or [N] before appending graduated marks
+  stem = stem.replace(/\s*\[\d+\s*(?:marks?|m)?\]\s*$/i, '');
 
   const ansVal = item.sprAnswer != null
     ? String(item.sprAnswer)
-    : ((typeof item.answer === 'number' && Array.isArray(item.choices) && item.choices[item.answer] != null)
-      ? String(item.choices[item.answer])
-      : (item.ans != null && typeof item.ans !== 'number' ? String(item.ans) : ''));
+    : ((typeof q.answer === 'number' && Array.isArray(q.choices) && q.choices[q.answer] != null)
+      ? String(q.choices[q.answer])
+      : ((typeof q.answer === 'string' || (typeof q.answer === 'number' && (!Array.isArray(q.choices) || q.choices.length === 0)))
+        ? String(q.answer)
+        : (item.ans != null && typeof item.ans !== 'number' ? String(item.ans) : '')));
   if (ansVal) item.finalAnswerText = ansVal;
 
   if (isIB) {
@@ -787,7 +840,7 @@ function normalizeWrittenItem(q, partMeta, trackId, spec) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 8. DRAW QUESTIONS FOR AN EXAM INSTANCE (1..10) WITH HIGH DIVERSITY
+// 8. DRAW QUESTIONS FOR AN EXAM INSTANCE WITH PAST-PAPER DIFFICULTY PROGRESSION
 // ─────────────────────────────────────────────────────────────────────────────
 function loadTrackPool(bankId, langFilter) {
   const raw = JSON.parse(fs.readFileSync(path.join(BANK_DIR, `${bankId}.json`), 'utf8'));
@@ -795,6 +848,7 @@ function loadTrackPool(bankId, langFilter) {
   if (Array.isArray(raw.pool)) {
     pool = raw.pool.map(q => Object.assign({}, q, {
       type: q.type || 'mcq',
+      difficulty: (q.difficulty || 'medium').toLowerCase(),
       text: q.text || q.q || '',
       sol: q.sol || q.solution || q.exp || q.expl || '',
       figure: q.figure || q.fig || null
@@ -802,7 +856,7 @@ function loadTrackPool(bankId, langFilter) {
   } else if (raw.easy || raw.medium || raw.hard) {
     const cvt = (arr, diff) => (arr || []).map(q => Object.assign({}, q, {
       type: q.type || 'mcq',
-      difficulty: q.difficulty || diff,
+      difficulty: (q.difficulty || diff).toLowerCase(),
       domain: q.domain || q.topic || 'Mathematics',
       text: q.text || q.q || '',
       choices: q.choices || [],
@@ -832,6 +886,55 @@ function loadTrackPool(bankId, langFilter) {
     if (enPool.length >= 100) pool = enPool;
   }
   return pool;
+}
+
+function getPastPaperDifficultyQuotas(n, isLaterOrAdaptiveSection) {
+  if (n <= 1) return { easy: 0, medium: 0, hard: Math.max(1, n) };
+  if (n === 2) return { easy: 0, medium: 1, hard: 1 };
+  if (n === 3) return { easy: 1, medium: 1, hard: 1 };
+  if (n === 4) return { easy: 1, medium: 2, hard: 1 };
+  if (n === 5) return { easy: 1, medium: 2, hard: 2 };
+  const easyRatio = isLaterOrAdaptiveSection ? 0.25 : 0.30;
+  const hardRatio = isLaterOrAdaptiveSection ? 0.32 : 0.25;
+  const easy = Math.max(1, Math.round(n * easyRatio));
+  const hard = Math.max(2, Math.round(n * hardRatio));
+  const medium = Math.max(1, n - easy - hard);
+  return { easy, medium, hard: n - easy - medium };
+}
+
+function pickFromBucketWithDiagrams(bucket, count, figRatio, usedInThisExam, usedFigInThisExam) {
+  if (count <= 0 || !bucket.length) return [];
+  const avail = bucket.filter(q => !usedInThisExam.has(q.id || q.text));
+  const withFig = avail.filter(q => Boolean(q.figure || q.fig || q.table));
+  const noFig = avail.filter(q => !(q.figure || q.fig || q.table));
+  const targetFigs = Math.min(withFig.length, Math.ceil(count * figRatio));
+
+  const pickedFigs = [];
+  for (const q of withFig) {
+    if (pickedFigs.length >= targetFigs) break;
+    const qKey = q.id || q.text;
+    const fKey = JSON.stringify(q.figure || q.fig || '').slice(0, 140);
+    if (usedInThisExam.has(qKey) || (fKey && usedFigInThisExam.has(fKey))) continue;
+    pickedFigs.push(q);
+    usedInThisExam.add(qKey);
+    if (fKey) usedFigInThisExam.add(fKey);
+  }
+
+  const picked = pickedFigs.slice();
+  for (const q of noFig.concat(withFig)) {
+    if (picked.length >= count) break;
+    const qKey = q.id || q.text;
+    if (usedInThisExam.has(qKey)) continue;
+    const fKey = JSON.stringify(q.figure || q.fig || '').slice(0, 140);
+    if (fKey && usedFigInThisExam.has(fKey) && picked.length + 3 < avail.length) continue;
+    picked.push(q);
+    usedInThisExam.add(qKey);
+    if (fKey) usedFigInThisExam.add(fKey);
+  }
+
+  // Sort by ascending complexity so even within the same tier, questions ramp up smoothly
+  picked.sort((a, b) => computeComplexityScore(a) - computeComplexityScore(b));
+  return picked;
 }
 
 function drawQuestionsForPaper(pool, spec, trackId, paperSlug, examIndex, langMode, globalCrossExamTracker) {
@@ -874,52 +977,44 @@ function drawQuestionsForPaper(pool, spec, trackId, paperSlug, examIndex, langMo
       const reusedItems = shuffled.filter(q => globalCrossExamTracker.has(q.id || q.text));
       const ordered = freshItems.concat(reusedItems);
 
-      // Partition into diagram and non-diagram questions (~35%-45% diagrams per part)
-      const withFig = ordered.filter(q => Boolean(q.figure || q.fig || q.table));
-      const noFig = ordered.filter(q => !(q.figure || q.fig || q.table));
-      const targetFigs = Math.min(withFig.length, Math.max(1, Math.ceil(part.q * 0.4)));
+      // Partition into difficulty tiers: easy -> medium -> hard (past-paper balanced configuration)
+      const easyBucket = ordered.filter(q => (q.difficulty || 'medium') === 'easy');
+      const mediumBucket = ordered.filter(q => (q.difficulty || 'medium') === 'medium');
+      const hardBucket = ordered.filter(q => (q.difficulty || 'medium') === 'hard');
 
-      const picked = [];
-      for (const q of withFig) {
-        if (picked.length >= targetFigs) break;
-        const qKey = q.id || q.text;
-        const fKey = JSON.stringify(q.figure || q.fig || '').slice(0, 140);
-        if (usedInThisExam.has(qKey) || (fKey && usedFigInThisExam.has(fKey))) continue;
-        picked.push(q);
-        usedInThisExam.add(qKey);
-        if (fKey) usedFigInThisExam.add(fKey);
-      }
+      const isLaterSection = (si > 0 && spec.sections.length > 1) || part.ibSection === 'Section B' || part.ibSection === 'Paper 3';
+      const quotas = getPastPaperDifficultyQuotas(part.q, isLaterSection);
+      const figRatio = 0.40;
 
-      for (const q of noFig.concat(withFig)) {
-        if (picked.length >= part.q) break;
-        const qKey = q.id || q.text;
-        if (usedInThisExam.has(qKey)) continue;
-        const fKey = JSON.stringify(q.figure || q.fig || '').slice(0, 140);
-        if (fKey && usedFigInThisExam.has(fKey) && picked.length + 5 < ordered.length) continue;
-        picked.push(q);
-        usedInThisExam.add(qKey);
-        if (fKey) usedFigInThisExam.add(fKey);
-      }
+      const pickedEasy = pickFromBucketWithDiagrams(easyBucket, quotas.easy, figRatio, usedInThisExam, usedFigInThisExam)
+        .map(q => Object.assign({}, q, { difficulty: 'easy' }));
+      const pickedMedium = pickFromBucketWithDiagrams(mediumBucket, quotas.medium, figRatio, usedInThisExam, usedFigInThisExam)
+        .map(q => Object.assign({}, q, { difficulty: 'medium' }));
+      const pickedHard = pickFromBucketWithDiagrams(hardBucket, quotas.hard, figRatio, usedInThisExam, usedFigInThisExam)
+        .map(q => Object.assign({}, q, { difficulty: 'hard' }));
 
-      // Fallback if pool is small (e.g. addmath)
+      let picked = pickedEasy.concat(pickedMedium).concat(pickedHard);
+
+      // Backfill if any bucket was smaller than quota (e.g. small pool) while preserving ascending difficulty order
       if (picked.length < part.q) {
-        for (const q of ordered) {
-          if (picked.length >= part.q) break;
-          const qKey = q.id || q.text;
-          if (!usedInThisExam.has(qKey)) {
-            picked.push(q);
-            usedInThisExam.add(qKey);
-          }
-        }
+        const remainingNeeded = part.q - picked.length;
+        const extra = pickFromBucketWithDiagrams(ordered, remainingNeeded, figRatio, usedInThisExam, usedFigInThisExam);
+        picked = picked.concat(extra);
+        const diffRank = { easy: 1, medium: 2, hard: 3 };
+        picked.sort((a, b) => {
+          const dr = (diffRank[a.difficulty] || 2) - (diffRank[b.difficulty] || 2);
+          if (dr !== 0) return dr;
+          return computeComplexityScore(a) - computeComplexityScore(b);
+        });
       }
 
-      for (const rawQ of picked) {
+      picked.forEach((rawQ, idxInPart) => {
         globalCrossExamTracker.add(rawQ.id || rawQ.text);
         let qItem = isFreePart
-          ? normalizeWrittenItem(rawQ, part, trackId, spec)
+          ? normalizeWrittenItem(rawQ, part, trackId, spec, idxInPart, picked.length, rng)
           : shuffleChoicesDeterministic(rawQ, rng);
         entries.push({ secIdx: si, partIdx: pi, sec, part, q: qItem });
-      }
+      });
     }
   }
   return entries;
@@ -928,6 +1023,21 @@ function drawQuestionsForPaper(pool, spec, trackId, paperSlug, examIndex, langMo
 // ─────────────────────────────────────────────────────────────────────────────
 // 9. SHARED PRINTABLE EXAM & ANSWER KEY STYLESHEET
 // ─────────────────────────────────────────────────────────────────────────────
+function parseDurationMinutes(str) {
+  if (!str) return 60;
+  const s = String(str).toLowerCase();
+  let mins = 0;
+  const hrMatch = s.match(/(\d+(?:\.\d+)?)\s*(?:hours?|hrs?)/);
+  const minMatch = s.match(/(\d+)\s*(?:minutes?|mins?)/);
+  if (hrMatch) mins += Math.round(parseFloat(hrMatch[1]) * 60);
+  if (minMatch) mins += parseInt(minMatch[1], 10);
+  if (!hrMatch && !minMatch) {
+    const num = parseInt(s, 10);
+    if (!isNaN(num) && num > 0) mins = num;
+  }
+  return mins || 60;
+}
+
 const PRINT_EXAM_CSS = `
 @page { margin: 18mm 16mm 20mm 16mm; }
 @page :first { margin-top: 15mm; }
@@ -975,7 +1085,7 @@ body[dir="rtl"] {
 }
 .print-toolbar .pt-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
 .print-toolbar .pt-brand img { height: 26px; width: auto; border-radius: 4px; background: #fff; padding: 2px; }
-.print-toolbar .pt-actions { display: flex; align-items: center; gap: 10px; }
+.print-toolbar .pt-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .pt-btn {
   display: inline-flex; align-items: center; gap: 6px;
   padding: 7px 14px; border-radius: 5px; font-weight: 700; font-size: 12.5px;
@@ -984,6 +1094,8 @@ body[dir="rtl"] {
 .pt-btn:hover { opacity: 0.92; }
 .pt-btn-primary { background: #f59e0b; color: #0f172a; }
 .pt-btn-secondary { background: #334155; color: #fff; border: 1px solid #475569; }
+.pt-btn-cbt { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #fff; border: 1px solid #3b82f6; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35); }
+.pt-btn-cbt.active { background: linear-gradient(135deg, #16a34a, #15803d); border-color: #22c55e; }
 
 /* Running Brand Header */
 #print-brand {
@@ -1127,7 +1239,7 @@ body[dir="rtl"] .fep-sec-note { border-left: none; border-right: 3pt solid #B880
   page-break-inside: avoid; break-inside: avoid;
 }
 .fep-item:last-child { border-bottom: none; }
-.fep-item-head { display: flex; align-items: center; gap: 7pt; margin-bottom: 6pt; }
+.fep-item-head { display: flex; align-items: center; gap: 7pt; margin-bottom: 6pt; flex-wrap: wrap; }
 .fep-inum {
   min-width: 22pt; height: 22pt; padding: 0 5pt; border-radius: 11pt;
   background: #1a1a2e !important; color: #fff !important;
@@ -1140,6 +1252,14 @@ body[dir="rtl"] .fep-sec-note { border-left: none; border-right: 3pt solid #B880
   border: 1pt solid #e2e8f0; padding: 1.5pt 6pt; border-radius: 2pt;
   text-transform: uppercase; letter-spacing: 0.04em;
 }
+.fep-diff-tag {
+  font-family: sans-serif; font-size: 6.5pt; font-weight: 700;
+  padding: 1.5pt 6pt; border-radius: 2pt; text-transform: uppercase; letter-spacing: 0.04em;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.fep-diff-easy { background: #dcfce7; color: #166534; border: 1pt solid #bbf7d0; }
+.fep-diff-medium { background: #fef3c7; color: #92400e; border: 1pt solid #fde68a; }
+.fep-diff-hard { background: #fee2e2; color: #991b1b; border: 1pt solid #fecaca; }
 .fep-marks-tag {
   margin-left: auto; font-family: sans-serif; font-weight: 700; font-size: 7.8pt;
   color: #1e293b; background: #e2e8f0; padding: 1.5pt 7pt; border-radius: 2pt;
@@ -1159,8 +1279,9 @@ body[dir="rtl"] .fep-figure { margin: 8pt 26pt 10pt 0; }
 body[dir="rtl"] .fep-qbody { margin-left: 0; margin-right: 26pt; }
 .fep-choices { margin-left: 26pt; display: grid; grid-template-columns: 1fr 1fr; gap: 5pt 14pt; }
 body[dir="rtl"] .fep-choices { margin-left: 0; margin-right: 26pt; }
-.fep-choice { display: flex; align-items: baseline; gap: 6pt; font-size: 9.5pt; padding: 3.5pt 7pt; border: 1pt solid #e2e8f0; border-radius: 3pt; background: #fafcff; }
+.fep-choice { display: flex; align-items: baseline; gap: 6pt; font-size: 9.5pt; padding: 3.5pt 7pt; border: 1pt solid #e2e8f0; border-radius: 3pt; background: #fafcff; transition: all 0.15s; }
 .fep-choice-correct { border: 1.5pt solid #15803d !important; background: #f0fdf4 !important; font-weight: 700; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.fep-choice-wrong { border: 1.5pt solid #dc2626 !important; background: #fef2f2 !important; }
 .fep-cletter { font-weight: 700; font-family: sans-serif; min-width: 15pt; flex-shrink: 0; color: #1a1a2e; }
 .fep-ctext { flex: 1; }
 
@@ -1217,6 +1338,66 @@ table.exam-table th { background: #e2e8f0 !important; font-weight: 700; -webkit-
   margin-top: 24pt; padding-top: 8pt; border-top: 1pt solid #cbd5e1;
   display: flex; justify-content: space-between; align-items: center;
   font-family: sans-serif; font-size: 7.5pt; color: #64748b;
+}
+
+/* Interactive In-Page CBT Simulator Bar & Controls */
+#cbt-live-dock {
+  display: none; position: sticky; top: 48px; z-index: 990;
+  background: #1e293b; color: #fff; padding: 10px 20px;
+  font-family: system-ui, -apple-system, sans-serif; font-size: 13px;
+  border-bottom: 2px solid #3b82f6; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.25);
+}
+body.cbt-interactive-active #cbt-live-dock { display: block; }
+body.cbt-interactive-active .fep-cover-page,
+body.cbt-interactive-active .fep-anssheet { display: none; }
+body.cbt-interactive-active .fep-choice {
+  cursor: pointer; border-width: 1.5pt; padding: 6pt 10pt;
+}
+body.cbt-interactive-active .fep-choice:hover {
+  border-color: #3b82f6; background: #eff6ff;
+}
+body.cbt-interactive-active .fep-choice.cbt-selected {
+  border-color: #2563eb !important; background: #dbeafe !important; font-weight: 700;
+}
+.cbt-dock-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.cbt-timer-pill {
+  background: #0f172a; border: 1px solid #475569; padding: 5px 12px;
+  border-radius: 6px; font-family: ui-monospace, SFMono-Regular, monospace;
+  font-weight: 800; font-size: 14px; color: #38bdf8;
+}
+.cbt-nav-strip {
+  display: flex; gap: 5px; flex-wrap: wrap; margin-top: 8px; padding-top: 8px;
+  border-top: 1px solid #334155; max-height: 76px; overflow-y: auto;
+}
+.cbt-qpill {
+  min-width: 28px; height: 26px; padding: 0 6px; border-radius: 5px;
+  background: #334155; color: #e2e8f0; border: 1px solid #475569;
+  font-size: 11.5px; font-weight: 700; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.cbt-qpill.answered { background: #2563eb; border-color: #60a5fa; color: #fff; }
+.cbt-qpill.graded-ok { background: #16a34a; border-color: #4ade80; color: #fff; }
+.cbt-qpill.graded-bad { background: #dc2626; border-color: #f87171; color: #fff; }
+.cbt-inline-input-wrap {
+  display: none; margin: 8pt 0 0 26pt; padding: 10pt 12pt;
+  background: #eff6ff; border: 1.5pt solid #93c5fd; border-radius: 4pt;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+body[dir="rtl"] .cbt-inline-input-wrap { margin: 8pt 26pt 0 0; }
+body.cbt-interactive-active .cbt-inline-input-wrap { display: block; }
+body.cbt-interactive-active .fep-work-space { display: none; }
+.cbt-spr-input {
+  padding: 7px 12px; font-size: 14px; font-weight: 700; border: 2px solid #2563eb;
+  border-radius: 5px; width: 220px; font-family: ui-monospace, monospace;
+}
+.cbt-work-textarea {
+  width: 100%; min-height: 70px; padding: 8px 10px; border: 1px solid #cbd5e1;
+  border-radius: 5px; font-family: system-ui, sans-serif; font-size: 13px; margin-bottom: 8px;
+}
+.cbt-score-banner {
+  display: none; margin: 12px 0; padding: 14px 18px; border-radius: 6px;
+  background: linear-gradient(135deg, #0f172a, #1e3a8a); color: #fff;
+  font-family: system-ui, sans-serif;
 }
 `;
 
@@ -1280,10 +1461,27 @@ function renderPrintableDocument({
       <span>ClipSAT Official Printable Exam Suite &middot; ${escHtml(paperTitle)} (Exam #${examNumber})</span>
     </div>
     <div class="pt-actions">
+      ${!isAnswerKey ? `<button type="button" id="pt-cbt-toggle-btn" class="pt-btn pt-btn-cbt" onclick="window.toggleExamInteractiveCBT()">💻 ${isAr ? 'حل تفاعلياً (CBT)' : 'Solve in CBT'}</button>` : `<a class="pt-btn pt-btn-cbt" href="${escHtml(examFilename)}?cbt=1">💻 ${isAr ? 'حل هذا الاختبار في المحاكي (CBT)' : 'Solve This Exam in CBT'}</a>`}
       <a class="pt-btn pt-btn-secondary" href="${escHtml(companionHref)}">${companionLabel}</a>
       <button type="button" class="pt-btn pt-btn-primary" onclick="window.print()">🖨️ ${isAr ? 'طباعة / حفظ كملف PDF' : 'Print / Save as PDF'}</button>
     </div>
   </div>
+  ${!isAnswerKey ? `<div id="cbt-live-dock" class="no-print" dir="ltr">
+    <div class="cbt-dock-top">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <span style="font-weight:800;color:#60a5fa">💻 CBT Interactive Mode</span>
+        <span id="cbt-live-timer" class="cbt-timer-pill">⏱ ${String(parseDurationMinutes(spec.totalTime)).padStart(2, '0')}:00</span>
+        <span id="cbt-live-progress" style="font-weight:700;color:#cbd5e1">Answered: 0 / ${totalQ}</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <button type="button" class="pt-btn pt-btn-primary" id="cbt-live-submit-btn" onclick="window.submitInteractiveCBT()">✓ ${isAr ? 'تسليم وتصحيح الاختبار' : 'Submit & Auto-Grade Exam'}</button>
+        <button type="button" class="pt-btn pt-btn-secondary" onclick="window.resetInteractiveCBT()">↺ ${isAr ? 'إعادة ضبط' : 'Reset'}</button>
+        <button type="button" class="pt-btn pt-btn-secondary" onclick="window.toggleExamInteractiveCBT()">✕ ${isAr ? 'وضع الورقة للطباعة' : 'Exit CBT (Print View)'}</button>
+      </div>
+    </div>
+    <div id="cbt-score-banner" class="cbt-score-banner"></div>
+    <div id="cbt-nav-strip" class="cbt-nav-strip"></div>
+  </div>` : ''}
   <div class="page-shell">
     <div id="print-brand">
       <span class="pb-left">
@@ -1428,6 +1626,7 @@ function renderPrintableDocument({
   // RENDER SECTIONS, PARTS, AND QUESTIONS
   let qNum = 1;
   let cursor = 0;
+  const cbtQuestionsMeta = [];
   spec.sections.forEach((sec, si) => {
     h += `<div class="fep-section" style="page-break-before:${si === 0 && isAnswerKey ? 'auto' : 'always'}">
       <div class="fep-section-head">
@@ -1437,7 +1636,7 @@ function renderPrintableDocument({
       </div>`;
     if (sec.note) h += `<div class="fep-sec-note">${escHtml(sec.note)}</div>`;
 
-    sec.parts.forEach(part => {
+    sec.parts.forEach((part, partIdx) => {
       const isFreePart = part.type === 'frq' || part.type === 'spr';
       if (part.label) {
         const calcBadge = isAr
@@ -1455,17 +1654,49 @@ function renderPrintableDocument({
         const entry = entries[cursor++];
         const q = entry.q;
         const isFree = isFreePart || q.type === 'frq' || q.type === 'spr';
+        const qType = isFree ? (isSAT ? 'spr' : 'frq') : 'mcq';
         const qMarks = Number(q.marks) || part.defaultMarks || (isIB ? 7 : (isFree ? 6 : 1));
+        const diffKey = ['easy', 'medium', 'hard'].includes((q.difficulty || '').toLowerCase())
+          ? q.difficulty.toLowerCase()
+          : 'medium';
+        const diffLabel = isAr
+          ? (diffKey === 'easy' ? 'أساسي' : (diffKey === 'hard' ? 'متقدم / تحدي' : 'قياسي'))
+          : (diffKey === 'easy' ? 'Foundational' : (diffKey === 'hard' ? 'Challenging' : 'Standard'));
+
         const figHtml = renderQuestionFigure(q, langMode);
         const qcCardHtml = (trackId === 'qudrat' || q.topic_id === 'qud-compare' || /Quantitative Comparison|المقارنات الكمية/i.test(q.domain || ''))
           ? renderQiyasComparisonCard(q, langMode)
           : '';
         const stemHtml = formatMarkdownAndMath(q.text || q.q || '', langMode);
 
-        h += `<div class="fep-item ${isFree ? 'fep-frq' : 'fep-mcq'}">
+        const cbtChoicesRendered = (isFree && !isSAT && Array.isArray(q.cbtChoices) && q.cbtChoices.length >= 2)
+          ? q.cbtChoices.map(ch => formatMarkdownAndMath(autoWrapChoiceMath(ch), langMode))
+          : [];
+        const ansIdx = typeof q.answer === 'number'
+          ? q.answer
+          : (typeof q.cbtAnswer === 'number' ? q.cbtAnswer : 0);
+
+        cbtQuestionsMeta.push({
+          qNum,
+          secIdx: si,
+          partIdx,
+          sectionTitle: sec.title || `Section ${si + 1}`,
+          partLabel: part.label || '',
+          calc: Boolean(part.calc),
+          type: qType,
+          difficulty: diffKey,
+          marks: qMarks,
+          domain: q.domain || 'Mathematics',
+          answer: ansIdx,
+          finalAnswerText: q.finalAnswerText || '',
+          cbtChoicesHtml: cbtChoicesRendered
+        });
+
+        h += `<div id="fep-q-${qNum}" data-qnum="${qNum}" data-qtype="${qType}" data-marks="${qMarks}" data-diff="${diffKey}" class="fep-item ${isFree ? 'fep-frq' : 'fep-mcq'}">
           <div class="fep-item-head">
             <span class="fep-inum">${qNum}</span>
             <span class="fep-domain-tag">${escHtml(q.domain || 'Mathematics')}</span>
+            <span class="fep-diff-tag fep-diff-${diffKey}">${diffLabel}</span>
             <span class="fep-marks-tag">[${qMarks} ${qMarks === 1 ? (isAr ? 'درجة' : 'mark') : (isAr ? 'درجات' : 'marks')}]</span>
           </div>`;
         if (figHtml) {
@@ -1474,13 +1705,12 @@ function renderPrintableDocument({
         h += `<div class="fep-qbody">${stemHtml}${qcCardHtml}</div>`;
 
         if (!isFree && Array.isArray(q.choices) && q.choices.length > 0) {
-          const ansIdx = typeof q.answer === 'number' ? q.answer : 0;
           h += `<div class="fep-choices">`;
           q.choices.forEach((ch, ci) => {
             const wrapped = autoWrapChoiceMath(ch);
             const chHtml = formatMarkdownAndMath(wrapped, langMode);
             const isCorrect = isAnswerKey && ci === ansIdx;
-            h += `<div class="fep-choice ${isCorrect ? 'fep-choice-correct' : ''}">
+            h += `<div class="fep-choice ${isCorrect ? 'fep-choice-correct' : ''}" data-qnum="${qNum}" data-choice-idx="${ci}" onclick="window.selectCBTChoice && window.selectCBTChoice(${qNum}, ${ci})">
               <span class="fep-cletter">${letters[ci] || String.fromCharCode(65 + ci)}.</span>
               <span class="fep-ctext">${chHtml}${isCorrect ? ' ✓' : ''}</span>
             </div>`;
@@ -1489,6 +1719,32 @@ function renderPrintableDocument({
         }
 
         if (!isAnswerKey && isFree) {
+          // Interactive CBT Response Input for SPR or Written FRQ
+          if (isSAT) {
+            h += `<div class="cbt-inline-input-wrap no-print">
+              <div style="font-weight:700;font-size:12.5px;color:#1e3a8a;margin-bottom:6px">💻 CBT Student-Produced Response (Enter integer, decimal, or fraction):</div>
+              <input type="text" class="cbt-spr-input" id="cbt-spr-input-${qNum}" data-qnum="${qNum}" placeholder="e.g. 15, -3.5, or 3/4" oninput="window.recordCBTSpr && window.recordCBTSpr(${qNum}, this.value)">
+            </div>`;
+          } else {
+            h += `<div class="cbt-inline-input-wrap no-print">
+              <div style="font-weight:700;font-size:12.5px;color:#1e3a8a;margin-bottom:6px">💻 CBT Structured Working & Final Answer Verification [${qMarks} marks]:</div>
+              <textarea class="cbt-work-textarea" id="cbt-work-${qNum}" placeholder="Show your mathematical steps and working here..."></textarea>`;
+            if (cbtChoicesRendered.length > 0) {
+              h += `<div style="font-weight:700;font-size:12px;color:#334155;margin-bottom:5px">Select your verified final analytical result for auto-grading:</div>
+              <div class="fep-choices" style="margin-left:0">`;
+              cbtChoicesRendered.forEach((chHtml, ci) => {
+                h += `<div class="fep-choice" data-qnum="${qNum}" data-choice-idx="${ci}" onclick="window.selectCBTChoice && window.selectCBTChoice(${qNum}, ${ci})">
+                  <span class="fep-cletter">${letters[ci] || String.fromCharCode(65 + ci)}.</span>
+                  <span class="fep-ctext">${chHtml}</span>
+                </div>`;
+              });
+              h += `</div>`;
+            } else {
+              h += `<input type="text" class="cbt-spr-input" id="cbt-spr-input-${qNum}" data-qnum="${qNum}" placeholder="Enter final answer..." oninput="window.recordCBTSpr && window.recordCBTSpr(${qNum}, this.value)">`;
+            }
+            h += `</div>`;
+          }
+
           if (isSAT) {
             // Official Digital SAT Student-Produced Response (SPR / Grid-In) Box
             h += `<div class="fep-work-space">
@@ -1532,25 +1788,22 @@ function renderPrintableDocument({
           }
         }
 
-        if (isAnswerKey) {
-          const ansIdx = typeof q.answer === 'number' ? q.answer : 0;
-          const correctLetter = !isFree ? (letters[ansIdx] || 'A') : '';
-          const correctChoiceText = (!isFree && Array.isArray(q.choices) && q.choices[ansIdx] != null)
-            ? formatMarkdownAndMath(autoWrapChoiceMath(q.choices[ansIdx]), langMode)
-            : (q.finalAnswerText ? formatMarkdownAndMath(autoWrapChoiceMath(q.finalAnswerText), langMode) : '');
-          const solHtml = formatMarkdownAndMath(q.sol || q.solution || q.exp || '', langMode);
+        const correctLetter = !isFree ? (letters[ansIdx] || 'A') : '';
+        const correctChoiceText = (!isFree && Array.isArray(q.choices) && q.choices[ansIdx] != null)
+          ? formatMarkdownAndMath(autoWrapChoiceMath(q.choices[ansIdx]), langMode)
+          : (q.finalAnswerText ? formatMarkdownAndMath(autoWrapChoiceMath(q.finalAnswerText), langMode) : '');
+        const solHtml = formatMarkdownAndMath(q.sol || q.solution || q.exp || '', langMode);
 
-          h += `<div class="fep-sol-box">
-            <div class="fep-sol-hdr">${isAr
-              ? `الإجابة الصحيحة: (${correctLetter}) ${correctChoiceText ? `— ${correctChoiceText}` : ''}`
-              : (isFree
-                ? (isSAT
-                  ? `Official SPR Answer [1 point]${correctChoiceText ? ` — Verified Grid-In Value: ${correctChoiceText}` : ''}`
-                  : `Official Examiner Mark Scheme [${qMarks} marks]${correctChoiceText ? ` — Final Answer: ${correctChoiceText}` : ''}`)
-                : `Correct Answer: (${correctLetter})${correctChoiceText ? ` — ${correctChoiceText}` : ''}`)}</div>
-            <div class="fep-sol-body">${solHtml}</div>
-          </div>`;
-        }
+        h += `<div id="fep-sol-${qNum}" class="fep-sol-box ${!isAnswerKey ? 'no-print' : ''}" style="${!isAnswerKey ? 'display:none' : ''}">
+          <div class="fep-sol-hdr">${isAr
+            ? `الإجابة الصحيحة: (${correctLetter}) ${correctChoiceText ? `— ${correctChoiceText}` : ''}`
+            : (isFree
+              ? (isSAT
+                ? `Official SPR Answer [1 point]${correctChoiceText ? ` — Verified Grid-In Value: ${correctChoiceText}` : ''}`
+                : `Official Examiner Mark Scheme [${qMarks} marks]${correctChoiceText ? ` — Final Answer: ${correctChoiceText}` : ''}`)
+              : `Correct Answer: (${correctLetter})${correctChoiceText ? ` — ${correctChoiceText}` : ''}`)}</div>
+          <div class="fep-sol-body">${solHtml}</div>
+        </div>`;
 
         h += `</div>`;
         qNum++;
@@ -1560,11 +1813,218 @@ function renderPrintableDocument({
     h += `</div>`;
   });
 
+  const cbtPayloadObj = {
+    trackId,
+    paperTitle,
+    examNumber,
+    totalExams: maxExams,
+    lang: htmlLang,
+    dir,
+    org: spec.org || 'Official Curriculum Examination',
+    totalTime: spec.totalTime,
+    durationMinutes: parseDurationMinutes(spec.totalTime),
+    totalMarks: displayMarks,
+    letters,
+    examFilename,
+    akFilename,
+    questions: cbtQuestionsMeta
+  };
+  const safeJsonPayload = JSON.stringify(cbtPayloadObj)
+    .replace(/<\/script/gi, '<\\/script')
+    .replace(/<!--/g, '<\\!--');
+
+  const interactiveCbtScript = !isAnswerKey ? `<script>
+(function(){
+  var payloadEl = document.getElementById('clipsat-cbt-payload');
+  if (!payloadEl) return;
+  var meta = JSON.parse(payloadEl.textContent);
+  var userAnswers = {};
+  var userSpr = {};
+  var graded = false;
+  var timerSec = (meta.durationMinutes || 60) * 60;
+  var timerInterval = null;
+
+  function parseMathVal(str) {
+    if (str == null) return NaN;
+    var s = String(str).replace(/\\$/g, '').replace(/\\\\frac\\{([+-]?\\d+(?:\\.\\d+)?)\\}\\{([+-]?\\d+(?:\\.\\d+)?)\\}/g, '$1/$2').replace(/[^0-9./+-]/g, '').trim();
+    if (!s) return NaN;
+    if (s.indexOf('/') !== -1) {
+      var p = s.split('/');
+      var n = parseFloat(p[0]), d = parseFloat(p[1]);
+      return (d && !isNaN(n) && !isNaN(d)) ? (n / d) : NaN;
+    }
+    return parseFloat(s);
+  }
+
+  function isSprCorrect(userVal, targetVal) {
+    if (!userVal || !String(userVal).trim()) return false;
+    var uClean = String(userVal).trim().toLowerCase();
+    var tClean = String(targetVal || '').replace(/\\$/g, '').trim().toLowerCase();
+    if (uClean === tClean) return true;
+    var uNum = parseMathVal(uClean);
+    var tNum = parseMathVal(tClean);
+    if (!isNaN(uNum) && !isNaN(tNum) && Math.abs(uNum - tNum) <= 1e-3) return true;
+    return false;
+  }
+
+  function formatClock(sec) {
+    var m = Math.floor(sec / 60);
+    var s = sec % 60;
+    return '⏱ ' + (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  function renderNavPills() {
+    var strip = document.getElementById('cbt-nav-strip');
+    if (!strip) return;
+    var html = '';
+    meta.questions.forEach(function(q) {
+      var hasAns = (userAnswers[q.qNum] !== undefined) || (userSpr[q.qNum] && String(userSpr[q.qNum]).trim() !== '');
+      var cls = 'cbt-qpill';
+      if (graded) {
+        cls += isQuestionCorrect(q) ? ' graded-ok' : ' graded-bad';
+      } else if (hasAns) {
+        cls += ' answered';
+      }
+      html += '<button type="button" class="' + cls + '" onclick="document.getElementById(\\'fep-q-' + q.qNum + '\\').scrollIntoView({behavior:\\'smooth\\',block:\\'center\\'})">' + q.qNum + '</button>';
+    });
+    strip.innerHTML = html;
+    var ansCount = meta.questions.filter(function(q) {
+      return (userAnswers[q.qNum] !== undefined) || (userSpr[q.qNum] && String(userSpr[q.qNum]).trim() !== '');
+    }).length;
+    var prog = document.getElementById('cbt-live-progress');
+    if (prog) prog.textContent = (meta.lang === 'ar' ? 'تمت الإجابة: ' : 'Answered: ') + ansCount + ' / ' + meta.questions.length;
+  }
+
+  function isQuestionCorrect(q) {
+    if (q.type === 'spr' || (q.type === 'frq' && (!q.cbtChoicesHtml || !q.cbtChoicesHtml.length))) {
+      return isSprCorrect(userSpr[q.qNum], q.finalAnswerText);
+    }
+    return userAnswers[q.qNum] === q.answer;
+  }
+
+  window.toggleExamInteractiveCBT = function(forceOn) {
+    var active = (typeof forceOn === 'boolean') ? forceOn : !document.body.classList.contains('cbt-interactive-active');
+    document.body.classList.toggle('cbt-interactive-active', active);
+    var btn = document.getElementById('pt-cbt-toggle-btn');
+    if (btn) {
+      btn.classList.toggle('active', active);
+      btn.innerHTML = active
+        ? (meta.lang === 'ar' ? '📄 العودة لوضع الطباعة' : '📄 Exit CBT (Print View)')
+        : (meta.lang === 'ar' ? '💻 حل تفاعلياً (CBT)' : '💻 Solve in CBT');
+    }
+    if (active) {
+      renderNavPills();
+      if (!timerInterval && !graded) {
+        timerInterval = setInterval(function() {
+          if (timerSec > 0) timerSec--;
+          var el = document.getElementById('cbt-live-timer');
+          if (el) el.textContent = formatClock(timerSec);
+          if (timerSec <= 0) window.submitInteractiveCBT();
+        }, 1000);
+      }
+    } else if (timerInterval) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+  };
+
+  window.selectCBTChoice = function(qNum, choiceIdx) {
+    if (!document.body.classList.contains('cbt-interactive-active') || graded) return;
+    userAnswers[qNum] = choiceIdx;
+    var qEl = document.getElementById('fep-q-' + qNum);
+    if (qEl) {
+      var choices = qEl.querySelectorAll('.fep-choice[data-qnum="' + qNum + '"]');
+      choices.forEach(function(c) {
+        var idx = parseInt(c.getAttribute('data-choice-idx'), 10);
+        c.classList.toggle('cbt-selected', idx === choiceIdx);
+      });
+    }
+    renderNavPills();
+  };
+
+  window.recordCBTSpr = function(qNum, val) {
+    if (graded) return;
+    userSpr[qNum] = val;
+    renderNavPills();
+  };
+
+  window.submitInteractiveCBT = function() {
+    if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+    graded = true;
+    var earnedMarks = 0;
+    var totalMarks = 0;
+    var correctCount = 0;
+
+    meta.questions.forEach(function(q) {
+      var m = Number(q.marks) || 1;
+      totalMarks += m;
+      var ok = isQuestionCorrect(q);
+      if (ok) { earnedMarks += m; correctCount++; }
+
+      var qEl = document.getElementById('fep-q-' + q.qNum);
+      if (qEl) {
+        var choices = qEl.querySelectorAll('.fep-choice[data-qnum="' + q.qNum + '"]');
+        choices.forEach(function(c) {
+          var idx = parseInt(c.getAttribute('data-choice-idx'), 10);
+          c.classList.remove('cbt-selected');
+          if (idx === q.answer) c.classList.add('fep-choice-correct');
+          else if (userAnswers[q.qNum] === idx) c.classList.add('fep-choice-wrong');
+        });
+      }
+      var solEl = document.getElementById('fep-sol-' + q.qNum);
+      if (solEl) solEl.style.display = 'block';
+    });
+
+    var pct = totalMarks > 0 ? Math.round((earnedMarks / totalMarks) * 100) : 0;
+    var banner = document.getElementById('cbt-score-banner');
+    if (banner) {
+      banner.style.display = 'block';
+      banner.innerHTML = '<div style="font-size:16px;font-weight:800;margin-bottom:4px">' +
+        (meta.lang === 'ar' ? '🎉 نتيجة الاختبار التفاعلي (CBT): ' : '🎉 CBT Exam Results: ') +
+        earnedMarks + ' / ' + totalMarks + ' (' + pct + '%) — ' +
+        correctCount + ' / ' + meta.questions.length + (meta.lang === 'ar' ? ' إجابة صحيحة' : ' Questions Correct') +
+        '</div><div style="font-size:12.5px;color:#cbd5e1">' +
+        (meta.lang === 'ar' ? 'تم إظهار جميع الحلول النموذجية ومفاتيح التصحيح أسفل كل سؤال.' : 'Step-by-step Examiner Mark Schemes & Worked Solutions are now unlocked below every question.') +
+        '</div>';
+    }
+    renderNavPills();
+  };
+
+  window.resetInteractiveCBT = function() {
+    userAnswers = {};
+    userSpr = {};
+    graded = false;
+    timerSec = (meta.durationMinutes || 60) * 60;
+    var el = document.getElementById('cbt-live-timer');
+    if (el) el.textContent = formatClock(timerSec);
+    var banner = document.getElementById('cbt-score-banner');
+    if (banner) banner.style.display = 'none';
+    document.querySelectorAll('.fep-choice').forEach(function(c) {
+      c.classList.remove('cbt-selected', 'fep-choice-correct', 'fep-choice-wrong');
+    });
+    document.querySelectorAll('.cbt-spr-input, .cbt-work-textarea').forEach(function(inp) {
+      inp.value = '';
+    });
+    meta.questions.forEach(function(q) {
+      var solEl = document.getElementById('fep-sol-' + q.qNum);
+      if (solEl) solEl.style.display = 'none';
+    });
+    renderNavPills();
+  };
+
+  if (window.location.search.indexOf('cbt=1') !== -1) {
+    window.toggleExamInteractiveCBT(true);
+  }
+})();
+</script>` : '';
+
   h += `<div class="fep-footer">
       <span>&copy; ClipSAT &middot; Official Printable Examination Series (${escHtml(paperTitle)} — #${examNumber})</span>
       <span>clipsat.com</span>
     </div>
   </div>
+  <script id="clipsat-cbt-payload" type="application/json">${safeJsonPayload}</script>
+  ${interactiveCbtScript}
 </body>
 </html>`;
 

@@ -1432,6 +1432,25 @@
 
     /* …and no two questions in the paper repeat a question or idea (05e-redundancy-check.js). */
     var _ideas=window.ClipSATRedundancy?window.ClipSATRedundancy.tracker():null;
+    function _qComplexity(q){
+      var txt = String((q && (q.text || q.q)) || '');
+      var sol = String((q && (q.sol || q.solution || q.exp || q.expl)) || '');
+      var sc = Math.min(txt.length, 600) * 0.12 + Math.min(sol.length, 900) * 0.15;
+      var ltx = (txt + ' ' + sol).match(/\\(?:frac|sqrt|int|sum|lim|sin|cos|tan|log|ln|binom|vec|matrix|begin)/g);
+      if(ltx) sc += ltx.length * 6;
+      if(/\([b-d]\)|\([ii]+\)/i.test(txt)) sc += 25;
+      if(q && (q.figure || q.fig || q.table)) sc += 10;
+      return sc;
+    }
+    function _sortByDiffProgression(arr){
+      var rank = { easy: 1, medium: 2, hard: 3 };
+      return arr.slice().sort(function(a, b){
+        var da = rank[(a && a.difficulty || 'medium').toLowerCase()] || 2;
+        var db = rank[(b && b.difficulty || 'medium').toLowerCase()] || 2;
+        if(da !== db) return da - db;
+        return _qComplexity(a) - _qComplexity(b);
+      });
+    }
     function drawQ(pool,n){
       var avail=shuffle(pool.filter(function(q){
         if(_usedQFullExam.has(q)) return false;
@@ -1440,38 +1459,55 @@
         return true;
       })), picked=[], skipped=[];
 
-      /* Partition to guarantee healthy presence of diagrams without repeating */
-      var withFig = avail.filter(function(q){ return !!(q.figure || q.fig || q.table); });
-      var noFig = avail.filter(function(q){ return !(q.figure || q.fig || q.table); });
-      var targetFigs = Math.min(withFig.length, Math.max(1, Math.ceil(n * 0.35)));
+      function drawFromTier(tierPool, count){
+        if(count <= 0 || !tierPool.length) return [];
+        var out = [];
+        var withFig = tierPool.filter(function(q){ return !!(q.figure || q.fig || q.table); });
+        var noFig = tierPool.filter(function(q){ return !(q.figure || q.fig || q.table); });
+        var targetFigs = Math.min(withFig.length, Math.round(count * 0.35));
 
-      /* Pass 1a: draw diagrams up to target quota */
-      for(var f=0; f<withFig.length && picked.length<targetFigs; f++){
-        var qf = withFig[f], fs_f = _figSig(qf);
-        if(fs_f && _usedFigSigs.has(fs_f)) continue;
-        if(!_ideas || _ideas.add(qf)){
-          picked.push(qf);
-          _usedQFullExam.add(qf);
-          if(fs_f) _usedFigSigs.add(fs_f);
-        } else {
-          skipped.push(qf);
+        for(var f=0; f<withFig.length && out.length<targetFigs; f++){
+          var qf = withFig[f], fs_f = _figSig(qf);
+          if(_usedQFullExam.has(qf) || (fs_f && _usedFigSigs.has(fs_f))) continue;
+          if(!_ideas || _ideas.add(qf)){
+            out.push(qf);
+            _usedQFullExam.add(qf);
+            if(fs_f) _usedFigSigs.add(fs_f);
+          } else {
+            skipped.push(qf);
+          }
         }
+        var rem = noFig.concat(withFig.filter(function(x){ return out.indexOf(x)===-1; }));
+        for(var i=0; i<rem.length && out.length<count; i++){
+          var qi = rem[i], fs_i = _figSig(qi);
+          if(out.indexOf(qi)!==-1 || _usedQFullExam.has(qi) || (fs_i && _usedFigSigs.has(fs_i))) continue;
+          if(!_ideas || _ideas.add(qi)){
+            out.push(qi);
+            _usedQFullExam.add(qi);
+            if(fs_i) _usedFigSigs.add(fs_i);
+          } else {
+            skipped.push(qi);
+          }
+        }
+        return out;
       }
 
-      /* Pass 1b: fill remainder from non-diagram and other available items */
-      var remaining = noFig.concat(withFig.filter(function(x){ return picked.indexOf(x)===-1; }));
-      for(var i=0;i<remaining.length&&picked.length<n;i++){
-        var qi = remaining[i], fs_i = _figSig(qi);
-        if(picked.indexOf(qi)!==-1) continue;
-        if(fs_i && _usedFigSigs.has(fs_i)) continue;
-        if(!_ideas||_ideas.add(qi)){
-          picked.push(qi);
-          _usedQFullExam.add(qi);
-          if(fs_i) _usedFigSigs.add(fs_i);
-        } else {
-          skipped.push(qi);
-        }
+      var easyQ = n >= 3 ? Math.max(1, Math.round(n * 0.30)) : (n === 2 ? 1 : 0);
+      var hardQ = n >= 3 ? Math.max(1, Math.round(n * 0.28)) : (n >= 1 ? 1 : 0);
+      var medQ = Math.max(0, n - easyQ - hardQ);
+
+      var easyPool = avail.filter(function(q){ return (q.difficulty || 'medium').toLowerCase() === 'easy'; });
+      var medPool = avail.filter(function(q){ return (q.difficulty || 'medium').toLowerCase() === 'medium'; });
+      var hardPool = avail.filter(function(q){ return (q.difficulty || 'medium').toLowerCase() === 'hard'; });
+
+      picked = drawFromTier(easyPool, easyQ)
+        .concat(drawFromTier(medPool, medQ))
+        .concat(drawFromTier(hardPool, hardQ));
+
+      if(picked.length < n){
+        picked = picked.concat(drawFromTier(avail, n - picked.length));
       }
+
       /* If under n due to idea template filtering, fill remaining from available non-duplicate items */
       if(picked.length<n && skipped.length){
         for(var j=0;j<skipped.length&&picked.length<n;j++){
@@ -1495,6 +1531,7 @@
           }
         }
       }
+      picked = _sortByDiffProgression(picked);
       return picked.map(function(q){
         var isFixed = q.fixedChoices || q.topic_id === 'qud-compare' || /Quantitative Comparison/i.test(q.domain||'') || /قارن بين|القيمة الأولى/.test(q.text||q.q||'');
         return (!isFixed && window._shuffleQ) ? window._shuffleQ(q) : q;

@@ -801,11 +801,14 @@
   .wl-row:hover{background:var(--surface-2,rgba(0,0,0,.03))}
   .wl-num{font-family:var(--mono); font-size:.74rem; color:var(--faint); min-width:42px}
   .wl-title{flex:1; min-width:160px; color:var(--ink)}
-  .wl-links{display:flex; gap:6px; flex-shrink:0}
+  .wl-links{display:flex; gap:6px; flex-shrink:0; flex-wrap:wrap}
   .wl-link{font-size:.72rem; font-weight:700; padding:4px 10px; border-radius:14px; text-decoration:none; white-space:nowrap}
   .wl-link.ws{background:var(--indigo-soft,#e0e7ff); color:var(--indigo)}
   .wl-link.ak{background:#fef3c7; color:#92400e}
   body.dark .wl-link.ak{background:rgba(217,119,6,.2); color:var(--amber-text)}
+  button.wl-link.cbt{border:1px solid #2563eb; background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; font-family:inherit; cursor:pointer; box-shadow:0 1px 4px rgba(37,99,235,.25); transition:transform .12s,box-shadow .12s}
+  button.wl-link.cbt:hover{transform:translateY(-1px); box-shadow:0 3px 8px rgba(37,99,235,.35)}
+  body.dark button.wl-link.cbt{background:linear-gradient(135deg,#3b82f6,#2563eb); border-color:#60a5fa; color:#fff}
   /* .gform is a <button> (Lighthouse SEO: a JS-only action has no real
      destination, so it shouldn't be a fake <a href="javascript:void(0)">
      link) — reset the browser's default button chrome so it still renders
