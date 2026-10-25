@@ -185,7 +185,10 @@ function convertFigToWorksheetFigure(fig) {
     const legB = parseFloat(rawSides[2]) || 3;
     const verts = fig.vertices || [[0, legB], [legA, 0], [0, 0]];
     // Edges in _draw_triangle: 0->1 (AB hypotenuse), 1->2 (BC legA), 2->0 (CA legB)
-    const sideLabels = [
+    const wrap = (s) => `$${String(s).replace(/^\$|\$$/g, '')}$`;
+    // Bank figures with explicit vertices already list sides in edge order 0->1, 1->2, 2->0.
+    const direct = Array.isArray(fig.vertices) && Array.isArray(fig.sides) && fig.sides.length === 3;
+    const sideLabels = direct ? fig.sides.map(s => (s ? wrap(s) : null)) : [
       rawSides[1] ? `$${String(rawSides[1]).replace(/^\$|\$$/g, '')}$` : '$?$',
       rawSides[0] ? `$${String(rawSides[0]).replace(/^\$|\$$/g, '')}$` : null,
       rawSides[2] ? `$${String(rawSides[2]).replace(/^\$|\$$/g, '')}$` : null
@@ -261,6 +264,9 @@ function convertFigToWorksheetFigure(fig) {
     };
   }
   if (fig.type === 'transversal') {
+    // Bank transversals label angle slots by position ({2: ..., 7: ...}); the worksheet renderer
+    // cannot place those, so such items are skipped rather than printed with a wrong diagram.
+    if (fig.labels && !Array.isArray(fig.labels)) return null;
     const labs = fig.labels || [`${fig.angle || 60}^\\circ`, 'x^\\circ'];
     const a1 = String(labs[0] || '').replace(/°/g, '^\\circ');
     const a2 = String(labs[1] || '').replace(/°/g, '^\\circ');
@@ -278,7 +284,8 @@ function convertFigToWorksheetFigure(fig) {
 function buildWorksheetQuestion(q, qtype, diffLabel, targetLabel) {
   const stem = toDollarMath(q.text || q.q || '');
   const sol = toDollarMath(q.sol || '');
-  const figSpec = q.fig ? convertFigToWorksheetFigure(q.fig) : null;
+  const rawFig = q.figure || q.fig || null;
+  const figSpec = rawFig ? convertFigToWorksheetFigure(rawFig) : null;
 
   if (qtype === 'SPR') {
     const rawAns = String(q.sprAnswer != null ? q.sprAnswer : (q.ans != null ? q.ans : (q.choices ? q.choices[q.answer || 0] : '')));
@@ -324,19 +331,27 @@ function main() {
   fs.mkdirSync(PUBLIC_WS_DIR, { recursive: true });
 
   for (const spec of WORKSHEET_SPECS) {
-    const topicQuestions = bank.filter(q => q.topic_id === spec.topic_id);
+    const topicQuestions = bank.filter(q => q.topic_id === spec.topic_id)
+      .filter(q => !(q.figure || q.fig) || convertFigToWorksheetFigure(q.figure || q.fig));
+    const sprEligible = (q) => {
+      const a = String(q.sprAnswer != null ? q.sprAnswer : (q.choices || [])[q.answer] || '').trim();
+      const numeric = /^-?\d+(\.\d+)?$/.test(a) || /^-?\d+\/\d+$/.test(a);
+      return numeric && a.length <= (a.startsWith('-') ? 6 : 5) &&
+        !/which of the following|which statement|which equation|which expression|which function|choices/i.test(q.text || '');
+    };
 
     function pickTier(diff, sprNeed, mcqNeed) {
       const tierAll = topicQuestions.filter(q => q.difficulty === diff);
-      const nativeSpr = tierAll.filter(q => q.type === 'spr');
+      const nativeSpr = tierAll.filter(q => q.type === 'spr' && sprEligible(q));
       const nativeMcq = tierAll.filter(q => q.type === 'mcq');
 
       const sprPicked = nativeSpr.slice(0, sprNeed);
-      let mcqStartIdx = 0;
-      while (sprPicked.length < sprNeed && mcqStartIdx < nativeMcq.length) {
-        sprPicked.push(nativeMcq[mcqStartIdx++]);
+      const promoted = new Set();
+      for (const q of nativeMcq) {
+        if (sprPicked.length >= sprNeed) break;
+        if (sprEligible(q)) { sprPicked.push(q); promoted.add(q); }
       }
-      const mcqPicked = nativeMcq.slice(mcqStartIdx, mcqStartIdx + mcqNeed);
+      const mcqPicked = nativeMcq.filter(q => !promoted.has(q)).slice(0, mcqNeed);
       if (sprPicked.length < sprNeed || mcqPicked.length < mcqNeed) {
         throw new Error(`Insufficient questions for ${spec.topic_id} (${diff}): spr=${sprPicked.length}/${sprNeed}, mcq=${mcqPicked.length}/${mcqNeed}`);
       }

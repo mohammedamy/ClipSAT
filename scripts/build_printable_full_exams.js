@@ -829,6 +829,13 @@ function normalizeWrittenItem(q, partMeta, trackId, spec, posIdx, totalInPart, r
   item.q = stem;
 
   let sol = String(item.sol || item.solution || item.exp || item.expl || '').trim();
+  if (isSAT) {
+    if (item.finalAnswerText && !sol.includes(item.finalAnswerText)) {
+      sol += `<br><strong>Correct answer:</strong> ${autoWrapChoiceMath(item.finalAnswerText)}`;
+    }
+    item.sol = sol;
+    return item;
+  }
   if (!/\[M1\]|\[A1\]|\[B1\]/i.test(sol)) {
     sol = `<strong>Method & Working:</strong> ${sol || 'Apply the syllabus theorem/formula and substitute the given parameters.'} <strong>[M1][A1]</strong>`;
   }
@@ -937,17 +944,39 @@ function pickFromBucketWithDiagrams(bucket, count, figRatio, usedInThisExam, use
   return picked;
 }
 
+/* Map ClipSAT's 10 study chapters onto the 4 official College Board Digital SAT
+   Math content domains, which are the only domain labels printed on SAT papers. */
+function officialSatDomain(q) {
+  const d = String((q && q.domain) || '');
+  const t = String((q && q.text) || '');
+  if (/desmos/i.test(d)) {
+    if (/circle|radius/i.test(t)) return 'Geometry and Trigonometry';
+    if (/x\^2|\^\{?2|parabola|quadratic|exponential/i.test(t)) return 'Advanced Math';
+    return 'Algebra';
+  }
+  if (/linear/i.test(d)) return 'Algebra';
+  if (/quadratic|equivalent|exponential|radical|polynomial|rational|nonlinear/i.test(d)) return 'Advanced Math';
+  if (/ratio|rate|proportion|percent|scatter|statistic|distribution|margin of error|probability|table/i.test(d)) return 'Problem-Solving and Data Analysis';
+  if (/area|volume|triangle|circle|trigonometry/i.test(d)) return 'Geometry and Trigonometry';
+  return 'Algebra';
+}
+
+function satSkeleton(q) {
+  return String((q && q.text) || '').replace(/-?\d+(\.\d+)?/g, 'N').replace(/\s+/g, ' ').slice(0, 90);
+}
+
 function drawDigitalSatPaper(pool, spec, trackId, paperSlug, examIndex, langMode, globalCrossExamTracker) {
   const rng = createRng(`${trackId}::${paperSlug}::${langMode}::exam-${examIndex}`);
   const usedInExam = new Set();
+  const usedSkeletons = new Set();
   const entries = [];
 
-  function categorizeDomain(d) {
-    if (/linear/i.test(d)) return 'Algebra';
-    if (/quadratic|equivalent|exponential|radical|polynomial|rational|nonlinear|desmos/i.test(d)) return 'AdvancedMath';
-    if (/ratio|rate|proportion|percent|scatter|statistic|distribution|margin of error|probability|table/i.test(d)) return 'PSDA';
-    if (/area|volume|triangle|circle|trigonometry/i.test(d)) return 'GeoTrig';
-    return 'Algebra';
+  function categorizeDomain(d, q) {
+    const off = officialSatDomain(Object.assign({}, q || {}, { domain: d }));
+    if (off === 'Algebra') return 'Algebra';
+    if (off === 'Advanced Math') return 'AdvancedMath';
+    if (off === 'Problem-Solving and Data Analysis') return 'PSDA';
+    return 'GeoTrig';
   }
 
   function getFigCategory(q) {
@@ -969,7 +998,7 @@ function drawDigitalSatPaper(pool, spec, trackId, paperSlug, examIndex, langMode
   };
 
   pool.forEach(q => {
-    const cat = categorizeDomain(q.domain);
+    const cat = categorizeDomain(q.domain, q);
     const type = q.type === 'spr' ? 'spr' : 'mcq';
     domainPools[cat][type].push(q);
   });
@@ -986,52 +1015,54 @@ function drawDigitalSatPaper(pool, spec, trackId, paperSlug, examIndex, langMode
       if (picked.length >= count) break;
       const matching = candidates.filter(q => {
         if (usedInExam.has(q.id || q.text)) return false;
+        if (usedSkeletons.has(satSkeleton(q))) return false;
         if (picked.includes(q)) return false;
         const diff = (q.difficulty || 'medium').toLowerCase();
         return diff === targetDiff;
       });
 
-      let chosen = null;
-      for (const cand of matching) {
+      /* Real Digital SAT modules carry a handful of tables, graphs, and geometry
+         figures (roughly 3-5 per module), never the same kind of figure over and over. */
+      const FIG_MAX = 5, FIG_MIN = 3, PER_CAT = 2;
+      const figOk = (figCat) => moduleFigState.totalFigs < FIG_MAX && (moduleFigState.catCount[figCat] || 0) < PER_CAT;
+      const take = (cand) => {
         const figCat = getFigCategory(cand);
-        if (!figCat) {
-          chosen = cand;
-          break;
-        } else {
-          if (moduleFigState.totalFigs < 4 && !moduleFigState.usedCategories.has(figCat)) {
-            chosen = cand;
-            moduleFigState.totalFigs++;
-            moduleFigState.usedCategories.add(figCat);
-            break;
-          }
+        if (figCat) {
+          moduleFigState.totalFigs++;
+          moduleFigState.catCount[figCat] = (moduleFigState.catCount[figCat] || 0) + 1;
         }
+        return cand;
+      };
+      let chosen = null;
+      if (moduleFigState.totalFigs < FIG_MIN) {
+        const figCand = matching.find(c => { const fc = getFigCategory(c); return fc && figOk(fc); });
+        if (figCand) chosen = take(figCand);
+      }
+      if (!chosen) {
+        const cand = matching.find(c => { const fc = getFigCategory(c); return !fc || figOk(fc); });
+        if (cand) chosen = take(cand);
       }
 
       if (!chosen) {
-        for (const cand of candidates) {
-          if (usedInExam.has(cand.id || cand.text) || picked.includes(cand)) continue;
-          const figCat = getFigCategory(cand);
-          if (!figCat || (moduleFigState.totalFigs < 4 && !moduleFigState.usedCategories.has(figCat))) {
-            chosen = cand;
-            if (figCat) {
-              moduleFigState.totalFigs++;
-              moduleFigState.usedCategories.add(figCat);
-            }
-            break;
-          }
-        }
+        const cand = candidates.find(c => {
+          if (usedInExam.has(c.id || c.text) || picked.includes(c) || usedSkeletons.has(satSkeleton(c))) return false;
+          const fc = getFigCategory(c);
+          return !fc || figOk(fc);
+        });
+        if (cand) chosen = take(cand);
       }
 
       if (chosen) {
         picked.push(chosen);
         usedInExam.add(chosen.id || chosen.text);
+        usedSkeletons.add(satSkeleton(chosen));
       }
     }
     return picked;
   }
 
   // MODULE 1
-  const m1Figs = { totalFigs: 0, usedCategories: new Set() };
+  const m1Figs = { totalFigs: 0, catCount: {} };
   const m1AlgMcq = pickDomainItems('Algebra', 'mcq', 6, ['easy', 'easy', 'easy', 'medium', 'medium', 'medium'], m1Figs);
   const m1AdvMcq = pickDomainItems('AdvancedMath', 'mcq', 6, ['easy', 'easy', 'medium', 'medium', 'medium', 'hard'], m1Figs);
   const m1PsdaMcq = pickDomainItems('PSDA', 'mcq', 3, ['easy', 'medium', 'medium'], m1Figs);
@@ -1057,7 +1088,7 @@ function drawDigitalSatPaper(pool, spec, trackId, paperSlug, examIndex, langMode
   });
 
   // MODULE 2 (Adaptive Challenge)
-  const m2Figs = { totalFigs: 0, usedCategories: new Set() };
+  const m2Figs = { totalFigs: 0, catCount: {} };
   const m2AlgMcq = pickDomainItems('Algebra', 'mcq', 5, ['medium', 'medium', 'hard', 'hard', 'hard'], m2Figs);
   const m2AdvMcq = pickDomainItems('AdvancedMath', 'mcq', 6, ['medium', 'medium', 'hard', 'hard', 'hard', 'hard'], m2Figs);
   const m2PsdaMcq = pickDomainItems('PSDA', 'mcq', 3, ['medium', 'hard', 'hard'], m2Figs);
@@ -1695,7 +1726,7 @@ function renderPrintableDocument({
           <div class="fep-total-item"><span class="fep-total-val">${totalQ}</span><span class="fep-total-lbl">${isAr ? 'عدد الأسئلة' : 'Total Questions'}</span></div>
           <div class="fep-total-item"><span class="fep-total-val">${escHtml(spec.totalTime)}</span><span class="fep-total-lbl">${isAr ? 'الزمن الكلي' : 'Total Time'}</span></div>
           <div class="fep-total-item"><span class="fep-total-val">${displayMarks}</span><span class="fep-total-lbl">${isAr ? 'الدرجة الكلية' : 'Maximum Marks'}</span></div>
-          <div class="fep-total-item"><span class="fep-total-val">${isSAT ? 'MCQ + SPR (Grid-In)' : (totalFRQ > 0 && totalMCQ === 0 ? (isAr ? 'مقالي' : 'Written Paper') : (totalMCQ > 0 && totalFRQ === 0 ? (isAr ? 'اختيار من متعدد' : 'Multiple Choice') : 'MCQ + FRQ'))}</span><span class="fep-total-lbl">${isAr ? 'نوع الورقة' : 'Paper Format'}</span></div>
+          <div class="fep-total-item"><span class="fep-total-val">${isSAT ? 'Multiple Choice + Student-Produced Response' : (totalFRQ > 0 && totalMCQ === 0 ? (isAr ? 'مقالي' : 'Written Paper') : (totalMCQ > 0 && totalFRQ === 0 ? (isAr ? 'اختيار من متعدد' : 'Multiple Choice') : 'MCQ + FRQ'))}</span><span class="fep-total-lbl">${isAr ? 'نوع الورقة' : 'Paper Format'}</span></div>
         </div>
         <div class="fep-meta-grid">
           <div class="fep-meta-cell"><span class="fep-mlabel">${isAr ? 'اسم الطالب / المرشح' : 'Candidate Name'}</span><span class="fep-mline"></span></div>
@@ -1866,7 +1897,7 @@ function renderPrintableDocument({
           type: qType,
           difficulty: diffKey,
           marks: qMarks,
-          domain: q.domain || 'Mathematics',
+          domain: isSAT ? officialSatDomain(q) : (q.domain || 'Mathematics'),
           answer: ansIdx,
           finalAnswerText: q.finalAnswerText || '',
           cbtChoicesHtml: cbtChoicesRendered
@@ -1875,7 +1906,7 @@ function renderPrintableDocument({
         h += `<div id="fep-q-${qNum}" data-qnum="${qNum}" data-qtype="${qType}" data-marks="${qMarks}" data-diff="${diffKey}" class="fep-item ${isFree ? 'fep-frq' : 'fep-mcq'}">
           <div class="fep-item-head">
             <span class="fep-inum">${qNum}</span>
-            <span class="fep-domain-tag">${escHtml(q.domain || 'Mathematics')}</span>
+            <span class="fep-domain-tag">${escHtml(isSAT ? officialSatDomain(q) : (q.domain || 'Mathematics'))}</span>
             <span class="fep-diff-tag fep-diff-${diffKey}">${diffLabel}</span>
             <span class="fep-marks-tag">[${qMarks} ${qMarks === 1 ? (isAr ? 'درجة' : 'mark') : (isAr ? 'درجات' : 'marks')}]</span>
           </div>`;
@@ -1926,7 +1957,7 @@ function renderPrintableDocument({
           }
 
           if (isSAT) {
-            // Official Digital SAT Student-Produced Response (SPR / Grid-In) Box
+            // Official Digital SAT Student-Produced Response answer space
             h += `<div class="fep-work-space">
               <div class="fep-ws-label">
                 <span>Student-Produced Response (SPR) — Enter integer, decimal, or reduced fraction (up to 5 chars positive, 6 negative):</span>
@@ -1936,7 +1967,7 @@ function renderPrintableDocument({
               <div class="fep-ws-line"></div>
               <div class="fep-ws-ans" style="justify-content:space-between;margin-top:8pt">
                 <span style="display:inline-flex;align-items:center;gap:4pt;font-size:8pt;color:#334155">
-                  <strong>SPR Grid Boxes:</strong>
+                  <strong>Answer:</strong>
                   <span style="display:inline-flex;gap:2pt">
                     <span style="width:18pt;height:20pt;border:1.3pt solid #0f172a;display:inline-block;background:#fff"></span>
                     <span style="width:18pt;height:20pt;border:1.3pt solid #0f172a;display:inline-block;background:#fff"></span>
@@ -1979,7 +2010,7 @@ function renderPrintableDocument({
             ? `الإجابة الصحيحة: (${correctLetter}) ${correctChoiceText ? `— ${correctChoiceText}` : ''}`
             : (isFree
               ? (isSAT
-                ? `Official SPR Answer [1 point]${correctChoiceText ? ` — Verified Grid-In Value: ${correctChoiceText}` : ''}`
+                ? `Official SPR Answer [1 point]${correctChoiceText ? ` — Correct answer: ${correctChoiceText}` : ''}`
                 : `Official Examiner Mark Scheme [${qMarks} marks]${correctChoiceText ? ` — Final Answer: ${correctChoiceText}` : ''}`)
               : `Correct Answer: (${correctLetter})${correctChoiceText ? ` — ${correctChoiceText}` : ''}`)}</div>
           <div class="fep-sol-body">${solHtml}</div>
