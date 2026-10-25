@@ -909,34 +909,94 @@ function getPastPaperDifficultyQuotas(n, isLaterOrAdaptiveSection) {
   return { easy, medium, hard: n - easy - medium };
 }
 
-function pickFromBucketWithDiagrams(bucket, count, figRatio, usedInThisExam, usedFigInThisExam) {
+function interleaveByDomain(items) {
+  const byDom = new Map();
+  for (const q of items) {
+    const d = q.domain || 'Mathematics';
+    if (!byDom.has(d)) byDom.set(d, []);
+    byDom.get(d).push(q);
+  }
+  const queues = [...byDom.values()];
+  const out = [];
+  let added = true;
+  while (added) {
+    added = false;
+    for (const qList of queues) {
+      if (qList.length > 0) {
+        out.push(qList.shift());
+        added = true;
+      }
+    }
+  }
+  return out;
+}
+
+function pickFromBucketWithDiagrams(bucket, count, figRatio, usedInThisExam, usedFigInThisExam, usedSkeletons, figTypeCounts) {
   if (count <= 0 || !bucket.length) return [];
-  const avail = bucket.filter(q => !usedInThisExam.has(q.id || q.text));
+  const skelSet = usedSkeletons || new Set();
+  const typeCounts = figTypeCounts || {};
+  const avail = interleaveByDomain(bucket.filter(q => !usedInThisExam.has(q.id || q.text)));
   const withFig = avail.filter(q => Boolean(q.figure || q.fig || q.table));
   const noFig = avail.filter(q => !(q.figure || q.fig || q.table));
-  const targetFigs = Math.min(withFig.length, Math.ceil(count * figRatio));
+  const targetFigs = Math.min(withFig.length, Math.max(1, Math.round(count * figRatio)));
 
-  const pickedFigs = [];
-  for (const q of withFig) {
-    if (pickedFigs.length >= targetFigs) break;
+  const canUseFig = q => {
+    const f = q.figure || q.fig || q.table;
+    if (!f) return true;
+    const fKey = JSON.stringify(f).slice(0, 160);
+    if (usedFigInThisExam.has(fKey)) return false;
+    const fType = f.type || 'other';
+    if ((typeCounts[fType] || 0) >= 2) return false;
+    return true;
+  };
+
+  const recordPick = (q, arr) => {
     const qKey = q.id || q.text;
-    const fKey = JSON.stringify(q.figure || q.fig || '').slice(0, 140);
-    if (usedInThisExam.has(qKey) || (fKey && usedFigInThisExam.has(fKey))) continue;
-    pickedFigs.push(q);
+    const sKey = satSkeleton(q);
+    const f = q.figure || q.fig || q.table;
+    arr.push(q);
     usedInThisExam.add(qKey);
-    if (fKey) usedFigInThisExam.add(fKey);
+    skelSet.add(sKey);
+    if (f) {
+      usedFigInThisExam.add(JSON.stringify(f).slice(0, 160));
+      const fType = f.type || 'other';
+      typeCounts[fType] = (typeCounts[fType] || 0) + 1;
+    }
+  };
+
+  const picked = [];
+  // First pass: pick up to targetFigs distinct, unique-skeleton diagram questions
+  for (const q of withFig) {
+    if (picked.length >= targetFigs) break;
+    const qKey = q.id || q.text;
+    const sKey = satSkeleton(q);
+    if (usedInThisExam.has(qKey) || skelSet.has(sKey) || !canUseFig(q)) continue;
+    recordPick(q, picked);
   }
 
-  const picked = pickedFigs.slice();
+  // Second pass: fill remaining slots with unique-skeleton non-figure (or valid-figure) questions
   for (const q of noFig.concat(withFig)) {
     if (picked.length >= count) break;
     const qKey = q.id || q.text;
-    if (usedInThisExam.has(qKey)) continue;
-    const fKey = JSON.stringify(q.figure || q.fig || '').slice(0, 140);
-    if (fKey && usedFigInThisExam.has(fKey) && picked.length + 3 < avail.length) continue;
-    picked.push(q);
-    usedInThisExam.add(qKey);
-    if (fKey) usedFigInThisExam.add(fKey);
+    const sKey = satSkeleton(q);
+    if (usedInThisExam.has(qKey) || skelSet.has(sKey)) continue;
+    const hasF = Boolean(q.figure || q.fig || q.table);
+    if (hasF && (picked.filter(x => Boolean(x.figure || x.fig || x.table)).length >= targetFigs + 1 || !canUseFig(q))) {
+      continue;
+    }
+    recordPick(q, picked);
+  }
+
+  // Fallback pass if pool has fewer unique skeletons than count: still avoid duplicate questions and duplicate figures
+  if (picked.length < count) {
+    for (const q of noFig.concat(withFig)) {
+      if (picked.length >= count) break;
+      const qKey = q.id || q.text;
+      if (usedInThisExam.has(qKey)) continue;
+      const hasF = Boolean(q.figure || q.fig || q.table);
+      if (hasF && !canUseFig(q)) continue;
+      recordPick(q, picked);
+    }
   }
 
   // Sort by ascending complexity so even within the same tier, questions ramp up smoothly
@@ -1153,10 +1213,12 @@ function drawQuestionsForPaper(pool, spec, trackId, paperSlug, examIndex, langMo
   const isIB = Boolean(spec.isIB || trackId === 'ibsl' || trackId === 'ibhl');
   const usedInThisExam = new Set();
   const usedFigInThisExam = new Set();
+  const usedSkeletons = new Set();
   const entries = [];
 
   for (let si = 0; si < spec.sections.length; si++) {
     const sec = spec.sections[si];
+    const figTypeCounts = {};
     for (let pi = 0; pi < sec.parts.length; pi++) {
       const part = sec.parts[pi];
       const partDomains = part.domains || sec.domains;
@@ -1195,13 +1257,13 @@ function drawQuestionsForPaper(pool, spec, trackId, paperSlug, examIndex, langMo
 
       const isLaterSection = (si > 0 && spec.sections.length > 1) || part.ibSection === 'Section B' || part.ibSection === 'Paper 3';
       const quotas = getPastPaperDifficultyQuotas(part.q, isLaterSection);
-      const figRatio = trackId === 'sat' ? 0.27 : 0.40;
+      const figRatio = 0.18;
 
-      const pickedEasy = pickFromBucketWithDiagrams(easyBucket, quotas.easy, figRatio, usedInThisExam, usedFigInThisExam)
+      const pickedEasy = pickFromBucketWithDiagrams(easyBucket, quotas.easy, figRatio, usedInThisExam, usedFigInThisExam, usedSkeletons, figTypeCounts)
         .map(q => Object.assign({}, q, { difficulty: 'easy' }));
-      const pickedMedium = pickFromBucketWithDiagrams(mediumBucket, quotas.medium, figRatio, usedInThisExam, usedFigInThisExam)
+      const pickedMedium = pickFromBucketWithDiagrams(mediumBucket, quotas.medium, figRatio, usedInThisExam, usedFigInThisExam, usedSkeletons, figTypeCounts)
         .map(q => Object.assign({}, q, { difficulty: 'medium' }));
-      const pickedHard = pickFromBucketWithDiagrams(hardBucket, quotas.hard, figRatio, usedInThisExam, usedFigInThisExam)
+      const pickedHard = pickFromBucketWithDiagrams(hardBucket, quotas.hard, figRatio, usedInThisExam, usedFigInThisExam, usedSkeletons, figTypeCounts)
         .map(q => Object.assign({}, q, { difficulty: 'hard' }));
 
       let picked = pickedEasy.concat(pickedMedium).concat(pickedHard);
@@ -1209,7 +1271,7 @@ function drawQuestionsForPaper(pool, spec, trackId, paperSlug, examIndex, langMo
       // Backfill if any bucket was smaller than quota (e.g. small pool) while preserving ascending difficulty order
       if (picked.length < part.q) {
         const remainingNeeded = part.q - picked.length;
-        const extra = pickFromBucketWithDiagrams(ordered, remainingNeeded, figRatio, usedInThisExam, usedFigInThisExam);
+        const extra = pickFromBucketWithDiagrams(ordered, remainingNeeded, figRatio, usedInThisExam, usedFigInThisExam, usedSkeletons, figTypeCounts);
         picked = picked.concat(extra);
         const diffRank = { easy: 1, medium: 2, hard: 3 };
         picked.sort((a, b) => {
