@@ -187,11 +187,11 @@ D["sat-about"] = [
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Digital SAT Format &amp; Adaptive Testing Strategy)",
-    "q": "Let \\(f(x) = x^2 - 10x + 30\\) for \\(x \\ge 5\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Completing the Square & Vertex Minimum (Digital SAT Format &amp; Adaptive Testing Strategy)",
+    "q": "Let \\(f(x) = x^2 - 10x + 30\\). (a) Express \\(f(x)\\) in completed-square vertex form \\(f(x) = (x - h)^2 + k\\) and state the minimum value of \\(f(x)\\). (b) State the coordinates of the vertex and the \\(y\\)-intercept of the graph of \\(y = f(x)\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Vertex Form & Minimum Value",
         "marks": 2,
         "rubric": [
           {
@@ -202,36 +202,31 @@ D["sat-about"] = [
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 5\\) (or \\([5, \\infty)\\))."
+            "text": "State the minimum value of \\(f(x)\\): \\(k = 5\\) (attained when \\(x = 5\\))."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Vertex Coordinates & Y-Intercept",
+        "marks": 2,
         "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Set \\(y = (x - 5)^2 + 5 \\implies (x - 5)^2 = y - 5\\)."
-          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 5\\)): \\(f^{-1}(x) = 5 + \\sqrt{x - 5}\\)."
+            "text": "Identify the vertex coordinates directly from vertex form: \\((5, 5)\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 5\\) (matching the range of \\(f\\))."
+            "text": "Evaluate \\(f(0) = 0^2 - 10(0) + 30 = 30\\), giving \\(y\\)-intercept \\((0, 30)\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 5}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 5\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Digital SAT Format &amp; Adaptive Testing Strategy)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 10x + 30\\) حيث \\(x \\ge 5\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(5 + \\sqrt{x - 5}\\) لأن \\(x \\ge 5\\)."
+    "examinerTip": "In vertex form \\(f(x) = a(x - h)^2 + k\\), remember to flip the sign inside the squared parentheses (\\(h = 5\\)) while keeping the sign of the outside constant (\\(k = 5\\)).",
+    "ti_ar": "وضع المصحح: إكمال المربع وإيجاد رأس القطع المكافئ (Digital SAT Format &amp; Adaptive Testing Strategy)",
+    "q_ar": "لتكن \\(f(x) = x^2 - 10x + 30\\). (أ) اكتب \\(f(x)\\) في صورة رأس القطع \\((x - h)^2 + k\\) وحدد القيمة الصغرى للدالة. (ب) حدد إحداثيات رأس القطع المكافئ والمقطع الصادي للمنحنى.",
+    "examinerTip_ar": "في صورة الرأس \\(f(x) = a(x - h)^2 + k\\)، اعكس الإشارة داخل القوس المربع للحصول على \\(h = 5\\) واحتفظ بإشارة الحد الثابت الخارجي \\(k = 5\\)."
   },
   {
     "t": "sb",
@@ -486,11 +481,11 @@ D["sat-linear"] = [
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Linear Equations in One Variable &amp; Systems of Equations)",
-    "q": "Let \\(f(x) = x^2 - 8x + 20\\) for \\(x \\ge 4\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Completing the Square & Vertex Minimum (Linear Equations in One Variable &amp; Systems of Equations)",
+    "q": "Let \\(f(x) = x^2 - 8x + 20\\). (a) Express \\(f(x)\\) in completed-square vertex form \\(f(x) = (x - h)^2 + k\\) and state the minimum value of \\(f(x)\\). (b) State the coordinates of the vertex and the \\(y\\)-intercept of the graph of \\(y = f(x)\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Vertex Form & Minimum Value",
         "marks": 2,
         "rubric": [
           {
@@ -501,36 +496,31 @@ D["sat-linear"] = [
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 4\\) (or \\([4, \\infty)\\))."
+            "text": "State the minimum value of \\(f(x)\\): \\(k = 4\\) (attained when \\(x = 4\\))."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Vertex Coordinates & Y-Intercept",
+        "marks": 2,
         "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Set \\(y = (x - 4)^2 + 4 \\implies (x - 4)^2 = y - 4\\)."
-          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 4\\)): \\(f^{-1}(x) = 4 + \\sqrt{x - 4}\\)."
+            "text": "Identify the vertex coordinates directly from vertex form: \\((4, 4)\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 4\\) (matching the range of \\(f\\))."
+            "text": "Evaluate \\(f(0) = 0^2 - 8(0) + 20 = 20\\), giving \\(y\\)-intercept \\((0, 20)\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 4}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 4\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Linear Equations in One Variable &amp; Systems of Equations)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 8x + 20\\) حيث \\(x \\ge 4\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(4 + \\sqrt{x - 4}\\) لأن \\(x \\ge 4\\)."
+    "examinerTip": "In vertex form \\(f(x) = a(x - h)^2 + k\\), remember to flip the sign inside the squared parentheses (\\(h = 4\\)) while keeping the sign of the outside constant (\\(k = 4\\)).",
+    "ti_ar": "وضع المصحح: إكمال المربع وإيجاد رأس القطع المكافئ (Linear Equations in One Variable &amp; Systems of Equations)",
+    "q_ar": "لتكن \\(f(x) = x^2 - 8x + 20\\). (أ) اكتب \\(f(x)\\) في صورة رأس القطع \\((x - h)^2 + k\\) وحدد القيمة الصغرى للدالة. (ب) حدد إحداثيات رأس القطع المكافئ والمقطع الصادي للمنحنى.",
+    "examinerTip_ar": "في صورة الرأس \\(f(x) = a(x - h)^2 + k\\)، اعكس الإشارة داخل القوس المربع للحصول على \\(h = 4\\) واحتفظ بإشارة الحد الثابت الخارجي \\(k = 4\\)."
   },
   {
     "t": "sb",
@@ -770,11 +760,11 @@ D["sat-linfun"] = [
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Linear Functions &amp; Linear Inequalities)",
-    "q": "Let \\(f(x) = x^2 - 10x + 25\\) for \\(x \\ge 5\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Completing the Square & Vertex Minimum (Linear Functions &amp; Linear Inequalities)",
+    "q": "Let \\(f(x) = x^2 - 10x + 25\\). (a) Express \\(f(x)\\) in completed-square vertex form \\(f(x) = (x - h)^2 + k\\) and state the minimum value of \\(f(x)\\). (b) State the coordinates of the vertex and the \\(y\\)-intercept of the graph of \\(y = f(x)\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Vertex Form & Minimum Value",
         "marks": 2,
         "rubric": [
           {
@@ -785,36 +775,31 @@ D["sat-linfun"] = [
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 0\\) (or \\([0, \\infty)\\))."
+            "text": "State the minimum value of \\(f(x)\\): \\(k = 0\\) (attained when \\(x = 5\\))."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Vertex Coordinates & Y-Intercept",
+        "marks": 2,
         "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Set \\(y = (x - 5)^2 + 0 \\implies (x - 5)^2 = y - 0\\)."
-          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 5\\)): \\(f^{-1}(x) = 5 + \\sqrt{x - 0}\\)."
+            "text": "Identify the vertex coordinates directly from vertex form: \\((5, 0)\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 0\\) (matching the range of \\(f\\))."
+            "text": "Evaluate \\(f(0) = 0^2 - 10(0) + 25 = 25\\), giving \\(y\\)-intercept \\((0, 25)\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 0}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 5\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Linear Functions &amp; Linear Inequalities)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 10x + 25\\) حيث \\(x \\ge 5\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(5 + \\sqrt{x - 0}\\) لأن \\(x \\ge 5\\)."
+    "examinerTip": "In vertex form \\(f(x) = a(x - h)^2 + k\\), remember to flip the sign inside the squared parentheses (\\(h = 5\\)) while keeping the sign of the outside constant (\\(k = 0\\)).",
+    "ti_ar": "وضع المصحح: إكمال المربع وإيجاد رأس القطع المكافئ (Linear Functions &amp; Linear Inequalities)",
+    "q_ar": "لتكن \\(f(x) = x^2 - 10x + 25\\). (أ) اكتب \\(f(x)\\) في صورة رأس القطع \\((x - h)^2 + k\\) وحدد القيمة الصغرى للدالة. (ب) حدد إحداثيات رأس القطع المكافئ والمقطع الصادي للمنحنى.",
+    "examinerTip_ar": "في صورة الرأس \\(f(x) = a(x - h)^2 + k\\)، اعكس الإشارة داخل القوس المربع للحصول على \\(h = 5\\) واحتفظ بإشارة الحد الثابت الخارجي \\(k = 0\\)."
   },
   {
     "t": "sb",
@@ -864,12 +849,12 @@ D["sat-linfun"] = [
         "r": "Line is tangent to the quadratic curve (1 repeated root)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "\\(x = -\\frac{b}{2a}\\)",
+        "r": "Axis of symmetry of \\(y = ax^2 + bx + c\\)"
       },
       {
         "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "r": "Horizontal shift by \\(h\\) and vertical shift by \\(k\\)"
       },
       {
         "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
@@ -883,12 +868,12 @@ D["sat-linfun"] = [
         "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "\\(x = -\\frac{b}{2a}\\)",
+        "r": "محور التماثل للقطع المكافئ \\(y = ax^2 + bx + c\\)"
       },
       {
         "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "r": "إزاحة أفقية بمقدار \\(h\\) وإزاحة رأسية بمقدار \\(k\\)"
       },
       {
         "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
@@ -1226,11 +1211,11 @@ D["sat-quad"] = [
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Equivalent Expressions &amp; Quadratic Equations)",
-    "q": "Let \\(f(x) = x^2 - 4x + 10\\) for \\(x \\ge 2\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Completing the Square & Vertex Minimum (Equivalent Expressions &amp; Quadratic Equations)",
+    "q": "Let \\(f(x) = x^2 - 4x + 10\\). (a) Express \\(f(x)\\) in completed-square vertex form \\(f(x) = (x - h)^2 + k\\) and state the minimum value of \\(f(x)\\). (b) State the coordinates of the vertex and the \\(y\\)-intercept of the graph of \\(y = f(x)\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Vertex Form & Minimum Value",
         "marks": 2,
         "rubric": [
           {
@@ -1241,36 +1226,31 @@ D["sat-quad"] = [
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 6\\) (or \\([6, \\infty)\\))."
+            "text": "State the minimum value of \\(f(x)\\): \\(k = 6\\) (attained when \\(x = 2\\))."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Vertex Coordinates & Y-Intercept",
+        "marks": 2,
         "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Set \\(y = (x - 2)^2 + 6 \\implies (x - 2)^2 = y - 6\\)."
-          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 2\\)): \\(f^{-1}(x) = 2 + \\sqrt{x - 6}\\)."
+            "text": "Identify the vertex coordinates directly from vertex form: \\((2, 6)\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 6\\) (matching the range of \\(f\\))."
+            "text": "Evaluate \\(f(0) = 0^2 - 4(0) + 10 = 10\\), giving \\(y\\)-intercept \\((0, 10)\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 6}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 2\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Equivalent Expressions &amp; Quadratic Equations)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 4x + 10\\) حيث \\(x \\ge 2\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(2 + \\sqrt{x - 6}\\) لأن \\(x \\ge 2\\)."
+    "examinerTip": "In vertex form \\(f(x) = a(x - h)^2 + k\\), remember to flip the sign inside the squared parentheses (\\(h = 2\\)) while keeping the sign of the outside constant (\\(k = 6\\)).",
+    "ti_ar": "وضع المصحح: إكمال المربع وإيجاد رأس القطع المكافئ (Equivalent Expressions &amp; Quadratic Equations)",
+    "q_ar": "لتكن \\(f(x) = x^2 - 4x + 10\\). (أ) اكتب \\(f(x)\\) في صورة رأس القطع \\((x - h)^2 + k\\) وحدد القيمة الصغرى للدالة. (ب) حدد إحداثيات رأس القطع المكافئ والمقطع الصادي للمنحنى.",
+    "examinerTip_ar": "في صورة الرأس \\(f(x) = a(x - h)^2 + k\\)، اعكس الإشارة داخل القوس المربع للحصول على \\(h = 2\\) واحتفظ بإشارة الحد الثابت الخارجي \\(k = 6\\)."
   }
 ];
 
@@ -1471,11 +1451,11 @@ D["sat-expoly"] = [
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Exponentials, Radicals, Polynomials &amp; Rational Expressions)",
-    "q": "Let \\(f(x) = x^2 - 4x + 11\\) for \\(x \\ge 2\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Completing the Square & Vertex Minimum (Exponentials, Radicals, Polynomials &amp; Rational Expressions)",
+    "q": "Let \\(f(x) = x^2 - 4x + 11\\). (a) Express \\(f(x)\\) in completed-square vertex form \\(f(x) = (x - h)^2 + k\\) and state the minimum value of \\(f(x)\\). (b) State the coordinates of the vertex and the \\(y\\)-intercept of the graph of \\(y = f(x)\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Vertex Form & Minimum Value",
         "marks": 2,
         "rubric": [
           {
@@ -1486,36 +1466,31 @@ D["sat-expoly"] = [
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 7\\) (or \\([7, \\infty)\\))."
+            "text": "State the minimum value of \\(f(x)\\): \\(k = 7\\) (attained when \\(x = 2\\))."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Vertex Coordinates & Y-Intercept",
+        "marks": 2,
         "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Set \\(y = (x - 2)^2 + 7 \\implies (x - 2)^2 = y - 7\\)."
-          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 2\\)): \\(f^{-1}(x) = 2 + \\sqrt{x - 7}\\)."
+            "text": "Identify the vertex coordinates directly from vertex form: \\((2, 7)\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 7\\) (matching the range of \\(f\\))."
+            "text": "Evaluate \\(f(0) = 0^2 - 4(0) + 11 = 11\\), giving \\(y\\)-intercept \\((0, 11)\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 7}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 2\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Exponentials, Radicals, Polynomials &amp; Rational Expressions)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 4x + 11\\) حيث \\(x \\ge 2\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(2 + \\sqrt{x - 7}\\) لأن \\(x \\ge 2\\)."
+    "examinerTip": "In vertex form \\(f(x) = a(x - h)^2 + k\\), remember to flip the sign inside the squared parentheses (\\(h = 2\\)) while keeping the sign of the outside constant (\\(k = 7\\)).",
+    "ti_ar": "وضع المصحح: إكمال المربع وإيجاد رأس القطع المكافئ (Exponentials, Radicals, Polynomials &amp; Rational Expressions)",
+    "q_ar": "لتكن \\(f(x) = x^2 - 4x + 11\\). (أ) اكتب \\(f(x)\\) في صورة رأس القطع \\((x - h)^2 + k\\) وحدد القيمة الصغرى للدالة. (ب) حدد إحداثيات رأس القطع المكافئ والمقطع الصادي للمنحنى.",
+    "examinerTip_ar": "في صورة الرأس \\(f(x) = a(x - h)^2 + k\\)، اعكس الإشارة داخل القوس المربع للحصول على \\(h = 2\\) واحتفظ بإشارة الحد الثابت الخارجي \\(k = 7\\)."
   },
   {
     "t": "sb",
@@ -1565,12 +1540,12 @@ D["sat-expoly"] = [
         "r": "Line is tangent to the quadratic curve (1 repeated root)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "\\(x = -\\frac{b}{2a}\\)",
+        "r": "Axis of symmetry of \\(y = ax^2 + bx + c\\)"
       },
       {
         "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "r": "Horizontal shift by \\(h\\) and vertical shift by \\(k\\)"
       },
       {
         "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
@@ -1584,12 +1559,12 @@ D["sat-expoly"] = [
         "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "\\(x = -\\frac{b}{2a}\\)",
+        "r": "محور التماثل للقطع المكافئ \\(y = ax^2 + bx + c\\)"
       },
       {
         "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "r": "إزاحة أفقية بمقدار \\(h\\) وإزاحة رأسية بمقدار \\(k\\)"
       },
       {
         "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
@@ -1759,30 +1734,30 @@ D["sat-data"] = [
   },
   {
     "t": "sb",
-    "ti": "Step Builder: Interquartile Range (IQR) for \\(Q_1 = 14\\) and \\(Q_3 = 26\\)",
-    "ti_ar": "باني الخطوات: المدى الربيعي (IQR) لـ \\(Q_1 = 14\\) و\\(Q_3 = 26\\)",
+    "ti": "Step Builder: Range & Mean of a Data Set",
+    "ti_ar": "باني الخطوات: المدى والمتوسط الحسابي لمجموعة بيانات",
     "steps": [
       {
-        "l": "IQR formula: \\(Q_3 - Q_1 = 26 - 14 =\\)",
-        "a": "12",
-        "h": "12"
+        "l": "For the data set \\(12, 15, 19, 24, 30\\), find the range (\\(\\text{Max} - \\text{Min} = 30 - 12\\)):",
+        "a": "18",
+        "h": "18"
       },
       {
-        "l": "Lower outlier boundary: \\(Q_1 - 1.5 \\times 12 = 14 - 18 =\\)",
-        "a": "-4",
-        "h": "-4"
+        "l": "Find the arithmetic mean \\(\\frac{12+15+19+24+30}{5} = \\frac{100}{5} =\\)",
+        "a": "20",
+        "h": "20"
       }
     ],
     "steps_ar": [
       {
-        "l": "صيغة IQR: \\(Q_3 - Q_1 = 26 - 14 =\\)",
-        "a": "12",
-        "h": "12"
+        "l": "لمجموعة البيانات \\(12, 15, 19, 24, 30\\)، أوجد المدى (\\(30 - 12\\)):",
+        "a": "18",
+        "h": "18"
       },
       {
-        "l": "الحد الأدنى للقيم المتطرفة: \\(Q_1 - 1.5 \\times 12 = 14 - 18 =\\)",
-        "a": "-4",
-        "h": "-4"
+        "l": "أوجد المتوسط الحسابي \\(\\frac{12+15+19+24+30}{5} = \\frac{100}{5} =\\)",
+        "a": "20",
+        "h": "20"
       }
     ]
   },
@@ -1823,11 +1798,11 @@ D["sat-data"] = [
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Ratios, Rates, Proportions, Percentages &amp; Scatterplots)",
-    "q": "Let \\(f(x) = x^2 - 6x + 14\\) for \\(x \\ge 3\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Completing the Square & Vertex Minimum (Ratios, Rates, Proportions, Percentages &amp; Scatterplots)",
+    "q": "Let \\(f(x) = x^2 - 6x + 14\\). (a) Express \\(f(x)\\) in completed-square vertex form \\(f(x) = (x - h)^2 + k\\) and state the minimum value of \\(f(x)\\). (b) State the coordinates of the vertex and the \\(y\\)-intercept of the graph of \\(y = f(x)\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Vertex Form & Minimum Value",
         "marks": 2,
         "rubric": [
           {
@@ -1838,36 +1813,31 @@ D["sat-data"] = [
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 5\\) (or \\([5, \\infty)\\))."
+            "text": "State the minimum value of \\(f(x)\\): \\(k = 5\\) (attained when \\(x = 3\\))."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Vertex Coordinates & Y-Intercept",
+        "marks": 2,
         "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Set \\(y = (x - 3)^2 + 5 \\implies (x - 3)^2 = y - 5\\)."
-          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 3\\)): \\(f^{-1}(x) = 3 + \\sqrt{x - 5}\\)."
+            "text": "Identify the vertex coordinates directly from vertex form: \\((3, 5)\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 5\\) (matching the range of \\(f\\))."
+            "text": "Evaluate \\(f(0) = 0^2 - 6(0) + 14 = 14\\), giving \\(y\\)-intercept \\((0, 14)\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 5}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 3\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Ratios, Rates, Proportions, Percentages &amp; Scatterplots)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 6x + 14\\) حيث \\(x \\ge 3\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(3 + \\sqrt{x - 5}\\) لأن \\(x \\ge 3\\)."
+    "examinerTip": "In vertex form \\(f(x) = a(x - h)^2 + k\\), remember to flip the sign inside the squared parentheses (\\(h = 3\\)) while keeping the sign of the outside constant (\\(k = 5\\)).",
+    "ti_ar": "وضع المصحح: إكمال المربع وإيجاد رأس القطع المكافئ (Ratios, Rates, Proportions, Percentages &amp; Scatterplots)",
+    "q_ar": "لتكن \\(f(x) = x^2 - 6x + 14\\). (أ) اكتب \\(f(x)\\) في صورة رأس القطع \\((x - h)^2 + k\\) وحدد القيمة الصغرى للدالة. (ب) حدد إحداثيات رأس القطع المكافئ والمقطع الصادي للمنحنى.",
+    "examinerTip_ar": "في صورة الرأس \\(f(x) = a(x - h)^2 + k\\)، اعكس الإشارة داخل القوس المربع للحصول على \\(h = 3\\) واحتفظ بإشارة الحد الثابت الخارجي \\(k = 5\\)."
   },
   {
     "t": "mt",
@@ -1878,12 +1848,12 @@ D["sat-data"] = [
         "r": "Line is tangent to the quadratic curve (1 repeated root)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "\\(x = -\\frac{b}{2a}\\)",
+        "r": "Axis of symmetry of \\(y = ax^2 + bx + c\\)"
       },
       {
         "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "r": "Horizontal shift by \\(h\\) and vertical shift by \\(k\\)"
       },
       {
         "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
@@ -1897,12 +1867,12 @@ D["sat-data"] = [
         "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "\\(x = -\\frac{b}{2a}\\)",
+        "r": "محور التماثل للقطع المكافئ \\(y = ax^2 + bx + c\\)"
       },
       {
         "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "r": "إزاحة أفقية بمقدار \\(h\\) وإزاحة رأسية بمقدار \\(k\\)"
       },
       {
         "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
@@ -2135,11 +2105,11 @@ D["sat-geo"] = [
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Area, Volume, Triangles, Circles &amp; Trigonometry)",
-    "q": "Let \\(f(x) = x^2 - 10x + 28\\) for \\(x \\ge 5\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Completing the Square & Vertex Minimum (Area, Volume, Triangles, Circles &amp; Trigonometry)",
+    "q": "Let \\(f(x) = x^2 - 10x + 28\\). (a) Express \\(f(x)\\) in completed-square vertex form \\(f(x) = (x - h)^2 + k\\) and state the minimum value of \\(f(x)\\). (b) State the coordinates of the vertex and the \\(y\\)-intercept of the graph of \\(y = f(x)\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Vertex Form & Minimum Value",
         "marks": 2,
         "rubric": [
           {
@@ -2150,36 +2120,31 @@ D["sat-geo"] = [
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 3\\) (or \\([3, \\infty)\\))."
+            "text": "State the minimum value of \\(f(x)\\): \\(k = 3\\) (attained when \\(x = 5\\))."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Vertex Coordinates & Y-Intercept",
+        "marks": 2,
         "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Set \\(y = (x - 5)^2 + 3 \\implies (x - 5)^2 = y - 3\\)."
-          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 5\\)): \\(f^{-1}(x) = 5 + \\sqrt{x - 3}\\)."
+            "text": "Identify the vertex coordinates directly from vertex form: \\((5, 3)\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 3\\) (matching the range of \\(f\\))."
+            "text": "Evaluate \\(f(0) = 0^2 - 10(0) + 28 = 28\\), giving \\(y\\)-intercept \\((0, 28)\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 3}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 5\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Area, Volume, Triangles, Circles &amp; Trigonometry)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 10x + 28\\) حيث \\(x \\ge 5\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(5 + \\sqrt{x - 3}\\) لأن \\(x \\ge 5\\)."
+    "examinerTip": "In vertex form \\(f(x) = a(x - h)^2 + k\\), remember to flip the sign inside the squared parentheses (\\(h = 5\\)) while keeping the sign of the outside constant (\\(k = 3\\)).",
+    "ti_ar": "وضع المصحح: إكمال المربع وإيجاد رأس القطع المكافئ (Area, Volume, Triangles, Circles &amp; Trigonometry)",
+    "q_ar": "لتكن \\(f(x) = x^2 - 10x + 28\\). (أ) اكتب \\(f(x)\\) في صورة رأس القطع \\((x - h)^2 + k\\) وحدد القيمة الصغرى للدالة. (ب) حدد إحداثيات رأس القطع المكافئ والمقطع الصادي للمنحنى.",
+    "examinerTip_ar": "في صورة الرأس \\(f(x) = a(x - h)^2 + k\\)، اعكس الإشارة داخل القوس المربع للحصول على \\(h = 5\\) واحتفظ بإشارة الحد الثابت الخارجي \\(k = 3\\)."
   }
 ];
 
@@ -2346,11 +2311,11 @@ D["sat-desmos"] = [
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Desmos Graphing Calculator Tactics)",
-    "q": "Let \\(f(x) = x^2 - 4x + 7\\) for \\(x \\ge 2\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Completing the Square & Vertex Minimum (Desmos Graphing Calculator Tactics)",
+    "q": "Let \\(f(x) = x^2 - 4x + 7\\). (a) Express \\(f(x)\\) in completed-square vertex form \\(f(x) = (x - h)^2 + k\\) and state the minimum value of \\(f(x)\\). (b) State the coordinates of the vertex and the \\(y\\)-intercept of the graph of \\(y = f(x)\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Vertex Form & Minimum Value",
         "marks": 2,
         "rubric": [
           {
@@ -2361,36 +2326,31 @@ D["sat-desmos"] = [
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 3\\) (or \\([3, \\infty)\\))."
+            "text": "State the minimum value of \\(f(x)\\): \\(k = 3\\) (attained when \\(x = 2\\))."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Vertex Coordinates & Y-Intercept",
+        "marks": 2,
         "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Set \\(y = (x - 2)^2 + 3 \\implies (x - 2)^2 = y - 3\\)."
-          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 2\\)): \\(f^{-1}(x) = 2 + \\sqrt{x - 3}\\)."
+            "text": "Identify the vertex coordinates directly from vertex form: \\((2, 3)\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 3\\) (matching the range of \\(f\\))."
+            "text": "Evaluate \\(f(0) = 0^2 - 4(0) + 7 = 7\\), giving \\(y\\)-intercept \\((0, 7)\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 3}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 2\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Desmos Graphing Calculator Tactics)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 4x + 7\\) حيث \\(x \\ge 2\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(2 + \\sqrt{x - 3}\\) لأن \\(x \\ge 2\\)."
+    "examinerTip": "In vertex form \\(f(x) = a(x - h)^2 + k\\), remember to flip the sign inside the squared parentheses (\\(h = 2\\)) while keeping the sign of the outside constant (\\(k = 3\\)).",
+    "ti_ar": "وضع المصحح: إكمال المربع وإيجاد رأس القطع المكافئ (Desmos Graphing Calculator Tactics)",
+    "q_ar": "لتكن \\(f(x) = x^2 - 4x + 7\\). (أ) اكتب \\(f(x)\\) في صورة رأس القطع \\((x - h)^2 + k\\) وحدد القيمة الصغرى للدالة. (ب) حدد إحداثيات رأس القطع المكافئ والمقطع الصادي للمنحنى.",
+    "examinerTip_ar": "في صورة الرأس \\(f(x) = a(x - h)^2 + k\\)، اعكس الإشارة داخل القوس المربع للحصول على \\(h = 2\\) واحتفظ بإشارة الحد الثابت الخارجي \\(k = 3\\)."
   },
   {
     "t": "sb",
@@ -2440,12 +2400,12 @@ D["sat-desmos"] = [
         "r": "Line is tangent to the quadratic curve (1 repeated root)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "\\(x = -\\frac{b}{2a}\\)",
+        "r": "Axis of symmetry of \\(y = ax^2 + bx + c\\)"
       },
       {
         "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "r": "Horizontal shift by \\(h\\) and vertical shift by \\(k\\)"
       },
       {
         "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
@@ -2459,12 +2419,12 @@ D["sat-desmos"] = [
         "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "\\(x = -\\frac{b}{2a}\\)",
+        "r": "محور التماثل للقطع المكافئ \\(y = ax^2 + bx + c\\)"
       },
       {
         "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "r": "إزاحة أفقية بمقدار \\(h\\) وإزاحة رأسية بمقدار \\(k\\)"
       },
       {
         "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
@@ -2679,11 +2639,11 @@ D["sat-functions"] = [
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Nonlinear Functions &amp; Function Notation)",
-    "q": "Let \\(f(x) = x^2 - 10x + 30\\) for \\(x \\ge 5\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Completing the Square & Vertex Minimum (Nonlinear Functions &amp; Function Notation)",
+    "q": "Let \\(f(x) = x^2 - 10x + 30\\). (a) Express \\(f(x)\\) in completed-square vertex form \\(f(x) = (x - h)^2 + k\\) and state the minimum value of \\(f(x)\\). (b) State the coordinates of the vertex and the \\(y\\)-intercept of the graph of \\(y = f(x)\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Vertex Form & Minimum Value",
         "marks": 2,
         "rubric": [
           {
@@ -2694,36 +2654,31 @@ D["sat-functions"] = [
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 5\\) (or \\([5, \\infty)\\))."
+            "text": "State the minimum value of \\(f(x)\\): \\(k = 5\\) (attained when \\(x = 5\\))."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Vertex Coordinates & Y-Intercept",
+        "marks": 2,
         "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Set \\(y = (x - 5)^2 + 5 \\implies (x - 5)^2 = y - 5\\)."
-          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 5\\)): \\(f^{-1}(x) = 5 + \\sqrt{x - 5}\\)."
+            "text": "Identify the vertex coordinates directly from vertex form: \\((5, 5)\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 5\\) (matching the range of \\(f\\))."
+            "text": "Evaluate \\(f(0) = 0^2 - 10(0) + 30 = 30\\), giving \\(y\\)-intercept \\((0, 30)\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 5}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 5\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Nonlinear Functions &amp; Function Notation)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 10x + 30\\) حيث \\(x \\ge 5\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(5 + \\sqrt{x - 5}\\) لأن \\(x \\ge 5\\)."
+    "examinerTip": "In vertex form \\(f(x) = a(x - h)^2 + k\\), remember to flip the sign inside the squared parentheses (\\(h = 5\\)) while keeping the sign of the outside constant (\\(k = 5\\)).",
+    "ti_ar": "وضع المصحح: إكمال المربع وإيجاد رأس القطع المكافئ (Nonlinear Functions &amp; Function Notation)",
+    "q_ar": "لتكن \\(f(x) = x^2 - 10x + 30\\). (أ) اكتب \\(f(x)\\) في صورة رأس القطع \\((x - h)^2 + k\\) وحدد القيمة الصغرى للدالة. (ب) حدد إحداثيات رأس القطع المكافئ والمقطع الصادي للمنحنى.",
+    "examinerTip_ar": "في صورة الرأس \\(f(x) = a(x - h)^2 + k\\)، اعكس الإشارة داخل القوس المربع للحصول على \\(h = 5\\) واحتفظ بإشارة الحد الثابت الخارجي \\(k = 5\\)."
   },
   {
     "t": "sb",
@@ -2773,12 +2728,12 @@ D["sat-functions"] = [
         "r": "Line is tangent to the quadratic curve (1 repeated root)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "\\(x = -\\frac{b}{2a}\\)",
+        "r": "Axis of symmetry of \\(y = ax^2 + bx + c\\)"
       },
       {
         "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "r": "Horizontal shift by \\(h\\) and vertical shift by \\(k\\)"
       },
       {
         "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
@@ -2792,12 +2747,12 @@ D["sat-functions"] = [
         "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "\\(x = -\\frac{b}{2a}\\)",
+        "r": "محور التماثل للقطع المكافئ \\(y = ax^2 + bx + c\\)"
       },
       {
         "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "r": "إزاحة أفقية بمقدار \\(h\\) وإزاحة رأسية بمقدار \\(k\\)"
       },
       {
         "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
@@ -2810,13 +2765,13 @@ D["sat-functions"] = [
 D["sat-stats"] = [
   {
     "t": "num",
-    "ti": "Numeric Entry: Interquartile Range (IQR)",
-    "ti_ar": "إدخال رقمي: المدى الربيعي (IQR)",
-    "q": "A dataset has first quartile \\(Q_1 = 28\\) and third quartile \\(Q_3 = 45\\). What is the interquartile range (IQR)?",
-    "q_ar": "مجموعة بيانات لها الربيع الأول \\(Q_1 = 28\\) والربيع الثالث \\(Q_3 = 45\\). ما قيمة المدى الربيعي (IQR)؟",
+    "ti": "Numeric Entry: Range of a Data Set",
+    "ti_ar": "إدخال رقمي: مدى مجموعة البيانات",
+    "q": "A dataset has a minimum value of \\(28\\), a median of \\(36\\), and a maximum value of \\(45\\). What is the range of the dataset?",
+    "q_ar": "مجموعة بيانات قيمتها الصغرى \\(28\\) ووسيطها \\(36\\) وقيمتها العظمى \\(45\\). ما مدى مجموعة البيانات؟",
     "a": 17,
-    "ex": "\\(\\text{IQR} = Q_3 - Q_1 = 45 - 28 = 17\\).",
-    "ex_ar": "\\(\\text{IQR} = Q_3 - Q_1 = 45 - 28 = 17\\)."
+    "ex": "\\(\\text{Range} = \\text{Maximum} - \\text{Minimum} = 45 - 28 = 17\\).",
+    "ex_ar": "\\(\\text{المدى} = \\text{القيمة العظمى} - \\text{القيمة الصغرى} = 45 - 28 = 17\\)."
   },
   {
     "t": "cat",
@@ -2844,7 +2799,7 @@ D["sat-stats"] = [
         "cat": 1
       },
       {
-        "s": "Interquartile Range (IQR)",
+        "s": "Variance (\\(\\sigma^2\\))",
         "cat": 1
       },
       {
@@ -2870,7 +2825,7 @@ D["sat-stats"] = [
         "cat": 1
       },
       {
-        "s": "المدى الربيعي (IQR)",
+        "s": "التباين (\\(\\sigma^2\\))",
         "cat": 1
       },
       {
@@ -2882,8 +2837,8 @@ D["sat-stats"] = [
         "cat": 0
       }
     ],
-    "ex": "Mean, median, and mode measure center/typical value; standard deviation, IQR, and range measure spread/variability.",
-    "ex_ar": "المتوسط والوسيط والمنوال تقيس المركز؛ بينما الانحراف المعياري والمدى الربيعي والمدى تقيس التشتت."
+    "ex": "Mean, median, and mode measure center/typical value; standard deviation, variance, and range measure spread/variability.",
+    "ex_ar": "المتوسط والوسيط والمنوال تقيس المركز؛ بينما الانحراف المعياري والتباين والمدى تقيس التشتت."
   },
   {
     "t": "ord",
@@ -3031,11 +2986,11 @@ D["sat-stats"] = [
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (One-Variable Statistics, Distributions &amp; Margin of Error)",
-    "q": "Let \\(f(x) = x^2 - 8x + 17\\) for \\(x \\ge 4\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Completing the Square & Vertex Minimum (One-Variable Statistics, Distributions &amp; Margin of Error)",
+    "q": "Let \\(f(x) = x^2 - 8x + 17\\). (a) Express \\(f(x)\\) in completed-square vertex form \\(f(x) = (x - h)^2 + k\\) and state the minimum value of \\(f(x)\\). (b) State the coordinates of the vertex and the \\(y\\)-intercept of the graph of \\(y = f(x)\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Vertex Form & Minimum Value",
         "marks": 2,
         "rubric": [
           {
@@ -3046,36 +3001,31 @@ D["sat-stats"] = [
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 1\\) (or \\([1, \\infty)\\))."
+            "text": "State the minimum value of \\(f(x)\\): \\(k = 1\\) (attained when \\(x = 4\\))."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Vertex Coordinates & Y-Intercept",
+        "marks": 2,
         "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Set \\(y = (x - 4)^2 + 1 \\implies (x - 4)^2 = y - 1\\)."
-          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 4\\)): \\(f^{-1}(x) = 4 + \\sqrt{x - 1}\\)."
+            "text": "Identify the vertex coordinates directly from vertex form: \\((4, 1)\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 1\\) (matching the range of \\(f\\))."
+            "text": "Evaluate \\(f(0) = 0^2 - 8(0) + 17 = 17\\), giving \\(y\\)-intercept \\((0, 17)\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 1}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 4\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (One-Variable Statistics, Distributions &amp; Margin of Error)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 8x + 17\\) حيث \\(x \\ge 4\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(4 + \\sqrt{x - 1}\\) لأن \\(x \\ge 4\\)."
+    "examinerTip": "In vertex form \\(f(x) = a(x - h)^2 + k\\), remember to flip the sign inside the squared parentheses (\\(h = 4\\)) while keeping the sign of the outside constant (\\(k = 1\\)).",
+    "ti_ar": "وضع المصحح: إكمال المربع وإيجاد رأس القطع المكافئ (One-Variable Statistics, Distributions &amp; Margin of Error)",
+    "q_ar": "لتكن \\(f(x) = x^2 - 8x + 17\\). (أ) اكتب \\(f(x)\\) في صورة رأس القطع \\((x - h)^2 + k\\) وحدد القيمة الصغرى للدالة. (ب) حدد إحداثيات رأس القطع المكافئ والمقطع الصادي للمنحنى.",
+    "examinerTip_ar": "في صورة الرأس \\(f(x) = a(x - h)^2 + k\\)، اعكس الإشارة داخل القوس المربع للحصول على \\(h = 4\\) واحتفظ بإشارة الحد الثابت الخارجي \\(k = 1\\)."
   },
   {
     "t": "sb",
@@ -3125,12 +3075,12 @@ D["sat-stats"] = [
         "r": "Line is tangent to the quadratic curve (1 repeated root)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "\\(x = -\\frac{b}{2a}\\)",
+        "r": "Axis of symmetry of \\(y = ax^2 + bx + c\\)"
       },
       {
         "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "r": "Horizontal shift by \\(h\\) and vertical shift by \\(k\\)"
       },
       {
         "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
@@ -3144,12 +3094,12 @@ D["sat-stats"] = [
         "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "\\(x = -\\frac{b}{2a}\\)",
+        "r": "محور التماثل للقطع المكافئ \\(y = ax^2 + bx + c\\)"
       },
       {
         "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "r": "إزاحة أفقية بمقدار \\(h\\) وإزاحة رأسية بمقدار \\(k\\)"
       },
       {
         "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
@@ -3375,11 +3325,11 @@ D["sat-condprob"] = [
   },
   {
     "t": "ms",
-    "ti": "Examiner Mode: Multi-Step Structured Problem (Probability, Conditional Probability &amp; Two-Way Tables)",
-    "q": "Let \\(f(x) = x^2 - 10x + 28\\) for \\(x \\ge 5\\). (a) Express \\(f(x)\\) in completed-square vertex form and state the range of \\(f\\). (b) Find an expression for the inverse function \\(f^{-1}(x)\\) and state its domain.",
+    "ti": "Examiner Mode: Completing the Square & Vertex Minimum (Probability, Conditional Probability &amp; Two-Way Tables)",
+    "q": "Let \\(f(x) = x^2 - 10x + 28\\). (a) Express \\(f(x)\\) in completed-square vertex form \\(f(x) = (x - h)^2 + k\\) and state the minimum value of \\(f(x)\\). (b) State the coordinates of the vertex and the \\(y\\)-intercept of the graph of \\(y = f(x)\\).",
     "parts": [
       {
-        "label": "Part (a) — Vertex Form & Range",
+        "label": "Part (a) — Vertex Form & Minimum Value",
         "marks": 2,
         "rubric": [
           {
@@ -3390,36 +3340,31 @@ D["sat-condprob"] = [
           {
             "code": "A1",
             "marks": 1,
-            "text": "State exact range: \\(f(x) \\ge 3\\) (or \\([3, \\infty)\\))."
+            "text": "State the minimum value of \\(f(x)\\): \\(k = 3\\) (attained when \\(x = 5\\))."
           }
         ]
       },
       {
-        "label": "Part (b) — Inverse Function & Domain",
-        "marks": 3,
+        "label": "Part (b) — Vertex Coordinates & Y-Intercept",
+        "marks": 2,
         "rubric": [
-          {
-            "code": "M1",
-            "marks": 1,
-            "text": "Set \\(y = (x - 5)^2 + 3 \\implies (x - 5)^2 = y - 3\\)."
-          },
           {
             "code": "A1",
             "marks": 1,
-            "text": "Select positive branch (since \\(x \\ge 5\\)): \\(f^{-1}(x) = 5 + \\sqrt{x - 3}\\)."
+            "text": "Identify the vertex coordinates directly from vertex form: \\((5, 3)\\)."
           },
           {
             "code": "B1",
             "marks": 1,
-            "text": "State domain of \\(f^{-1}\\): \\(x \\ge 3\\) (matching the range of \\(f\\))."
+            "text": "Evaluate \\(f(0) = 0^2 - 10(0) + 28 = 28\\), giving \\(y\\)-intercept \\((0, 28)\\)."
           }
         ]
       }
     ],
-    "examinerTip": "Writing \\(\\pm\\sqrt{x - 3}\\) for \\(f^{-1}(x)\\) loses the final A1 mark because a function must be single-valued; use the domain restriction \\(x \\ge 5\\) to choose the \\(+\\) sign.",
-    "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Probability, Conditional Probability &amp; Two-Way Tables)",
-    "q_ar": "لتكن \\(f(x) = x^2 - 10x + 28\\) حيث \\(x \\ge 5\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
-    "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(5 + \\sqrt{x - 3}\\) لأن \\(x \\ge 5\\)."
+    "examinerTip": "In vertex form \\(f(x) = a(x - h)^2 + k\\), remember to flip the sign inside the squared parentheses (\\(h = 5\\)) while keeping the sign of the outside constant (\\(k = 3\\)).",
+    "ti_ar": "وضع المصحح: إكمال المربع وإيجاد رأس القطع المكافئ (Probability, Conditional Probability &amp; Two-Way Tables)",
+    "q_ar": "لتكن \\(f(x) = x^2 - 10x + 28\\). (أ) اكتب \\(f(x)\\) في صورة رأس القطع \\((x - h)^2 + k\\) وحدد القيمة الصغرى للدالة. (ب) حدد إحداثيات رأس القطع المكافئ والمقطع الصادي للمنحنى.",
+    "examinerTip_ar": "في صورة الرأس \\(f(x) = a(x - h)^2 + k\\)، اعكس الإشارة داخل القوس المربع للحصول على \\(h = 5\\) واحتفظ بإشارة الحد الثابت الخارجي \\(k = 3\\)."
   },
   {
     "t": "mt",
@@ -3430,12 +3375,12 @@ D["sat-condprob"] = [
         "r": "Line is tangent to the quadratic curve (1 repeated root)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "Equals \\(\\text{ran}(f)\\) (Range of original function)"
+        "l": "\\(x = -\\frac{b}{2a}\\)",
+        "r": "Axis of symmetry of \\(y = ax^2 + bx + c\\)"
       },
       {
         "l": "\\(f(x - h) + k\\)",
-        "r": "Translation by vector \\(\\binom{h}{k}\\)"
+        "r": "Horizontal shift by \\(h\\) and vertical shift by \\(k\\)"
       },
       {
         "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",
@@ -3449,12 +3394,12 @@ D["sat-condprob"] = [
         "r": "المستقيم مماس للمنحنى التربيعي (جذر حقيقي مكرر)"
       },
       {
-        "l": "\\(\\text{dom}(f^{-1})\\)",
-        "r": "يساوي مدى الدالة الأصلية \\(\\text{ran}(f)\\)"
+        "l": "\\(x = -\\frac{b}{2a}\\)",
+        "r": "محور التماثل للقطع المكافئ \\(y = ax^2 + bx + c\\)"
       },
       {
         "l": "\\(f(x - h) + k\\)",
-        "r": "إزاحة هندسية بالمتجه \\(\\binom{h}{k}\\)"
+        "r": "إزاحة أفقية بمقدار \\(h\\) وإزاحة رأسية بمقدار \\(k\\)"
       },
       {
         "l": "\\(x_1 + x_2 = -b/a,\\; x_1 x_2 = c/a\\)",

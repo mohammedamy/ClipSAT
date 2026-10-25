@@ -984,7 +984,7 @@ function drawQuestionsForPaper(pool, spec, trackId, paperSlug, examIndex, langMo
 
       const isLaterSection = (si > 0 && spec.sections.length > 1) || part.ibSection === 'Section B' || part.ibSection === 'Paper 3';
       const quotas = getPastPaperDifficultyQuotas(part.q, isLaterSection);
-      const figRatio = 0.40;
+      const figRatio = trackId === 'sat' ? 0.27 : 0.40;
 
       const pickedEasy = pickFromBucketWithDiagrams(easyBucket, quotas.easy, figRatio, usedInThisExam, usedFigInThisExam)
         .map(q => Object.assign({}, q, { difficulty: 'easy' }));

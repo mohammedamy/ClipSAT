@@ -840,6 +840,101 @@ def _draw_venn(ax, spec):
     ax.axis("off")
 
 
+def _draw_table(ax, spec):
+    """Render a clean data table or two-way frequency table."""
+    ax.axis("off")
+    if spec.get("type") == "two_way_table" or spec.get("cells") is not None:
+        col_h = [str(c) for c in spec.get("col_headers", [])]
+        row_h = [str(r) for r in spec.get("row_headers", [])]
+        cells = spec.get("cells", [])
+        r_tot = spec.get("row_totals", [])
+        c_tot = spec.get("col_totals", [])
+        g_tot = spec.get("grand_total", "")
+        headers = [""] + col_h + (["Total"] if r_tot else [])
+        rows = []
+        for i, rh in enumerate(row_h):
+            row_vals = [str(x) for x in (cells[i] if i < len(cells) else [])]
+            if r_tot and i < len(r_tot):
+                row_vals.append(str(r_tot[i]))
+            rows.append([rh] + row_vals)
+        if c_tot:
+            tot_row = ["Total"] + [str(x) for x in c_tot]
+            if r_tot:
+                tot_row.append(str(g_tot))
+            rows.append(tot_row)
+    else:
+        headers = [str(h) for h in spec.get("headers", ["$x$", "$y$"])]
+        rows = [[str(c) for c in r] for r in spec.get("rows", [])]
+
+    if not rows:
+        return
+    if spec.get("title"):
+        ax.set_title(str(spec["title"]), fontsize=9, fontweight="bold", color=INK, pad=6)
+    tbl = ax.table(cellText=rows, colLabels=headers, loc="center", cellLoc="center")
+    tbl.auto_set_font_size(False)
+    tbl.set_fontsize(8.5)
+    tbl.scale(1.0, 1.32)
+    n_rows = len(rows)
+    n_cols = len(headers)
+    for (r, c), cell in tbl.get_celld().items():
+        cell.set_edgecolor(BORDER)
+        cell.set_linewidth(0.8)
+        if r == 0:
+            cell.set_facecolor("#eef2ff")
+            cell.get_text().set_color(INDIGO)
+            cell.get_text().set_weight("bold")
+        elif c == 0 and (spec.get("type") == "two_way_table" or spec.get("cells") is not None):
+            cell.set_facecolor("#f8fafc")
+            cell.get_text().set_color(INK)
+            cell.get_text().set_weight("bold")
+        elif (spec.get("type") == "two_way_table" or spec.get("cells") is not None) and (r == n_rows or c == n_cols - 1):
+            cell.set_facecolor("#f8fafc")
+            cell.get_text().set_color(INK)
+            cell.get_text().set_weight("bold")
+        else:
+            cell.set_facecolor("white")
+            cell.get_text().set_color(INK)
+
+
+def _draw_transversal(ax, spec):
+    """Render two parallel lines cut by a transversal with labeled angles."""
+    ax.plot([-2.4, 2.4], [0.85, 0.85], color=INDIGO, linewidth=1.8, zorder=3)
+    ax.plot([-2.4, 2.4], [-0.85, -0.85], color=INDIGO, linewidth=1.8, zorder=3)
+    # Parallel line markers
+    ax.annotate("", xy=(1.75, 0.85), xytext=(1.45, 0.85),
+                arrowprops=dict(arrowstyle="->", color=INDIGO, lw=1.4))
+    ax.annotate("", xy=(1.75, -0.85), xytext=(1.45, -0.85),
+                arrowprops=dict(arrowstyle="->", color=INDIGO, lw=1.4))
+    ax.text(-2.25, 0.98, "$\\ell_1$", fontsize=9.5, color=INDIGO, fontweight="bold")
+    ax.text(-2.25, -0.72, "$\\ell_2$", fontsize=9.5, color=INDIGO, fontweight="bold")
+    # Transversal line passing through (-0.45, -0.85) and (0.45, 0.85)
+    ax.plot([-0.85, 0.85], [-1.6, 1.6], color=INDIGO2, linewidth=1.7, zorder=4)
+    ax.text(0.92, 1.48, "$t$", fontsize=9.5, color=INDIGO2, fontweight="bold")
+    a1 = str(spec.get("angle1", ""))
+    a2 = str(spec.get("angle2", ""))
+    rel = spec.get("rel", "cointerior")
+    # Upper intersection at (0.45, 0.85), lower intersection at (-0.45, -0.85)
+    arc1 = mpatches.Arc((0.45, 0.85), 0.72, 0.72, angle=0, theta1=0, theta2=62, color=AMBER, linewidth=1.4, zorder=5)
+    ax.add_patch(arc1)
+    ax.text(1.08, 1.12, f"${a1}$" if a1 and "$" not in a1 else a1, fontsize=8.5, color=AMBER_TEXT, fontweight="bold", ha="left", va="center")
+    if rel == "corresponding":
+        arc2 = mpatches.Arc((-0.45, -0.85), 0.72, 0.72, angle=0, theta1=0, theta2=62, color=CURVE, linewidth=1.4, zorder=5)
+        ax.add_patch(arc2)
+        ax.text(0.22, -0.58, f"${a2}$" if a2 and "$" not in a2 else a2, fontsize=8.5, color=CURVE, fontweight="bold", ha="left", va="center")
+    elif rel == "alternate":
+        arc2 = mpatches.Arc((-0.45, -0.85), 0.72, 0.72, angle=0, theta1=180, theta2=242, color=CURVE, linewidth=1.4, zorder=5)
+        ax.add_patch(arc2)
+        ax.text(-1.08, -1.12, f"${a2}$" if a2 and "$" not in a2 else a2, fontsize=8.5, color=CURVE, fontweight="bold", ha="right", va="center")
+    else:
+        arc2 = mpatches.Arc((-0.45, -0.85), 0.72, 0.72, angle=0, theta1=0, theta2=62, color=CURVE, linewidth=1.4, zorder=5)
+        ax.add_patch(arc2)
+        ax.text(0.22, -0.58, f"${a2}$" if a2 and "$" not in a2 else a2, fontsize=8.5, color=CURVE, fontweight="bold", ha="left", va="center")
+    ax.set_xlim(-2.6, 2.6)
+    ax.set_ylim(-1.75, 1.75)
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+
 def render_figure(spec):
     """Render a figure spec to PNG; return (path, w_pt, h_pt)."""
     os.makedirs(CACHE_DIR, exist_ok=True)
@@ -925,6 +1020,14 @@ def render_figure(spec):
             elif ftype == "venn":
                 fig, ax = plt.subplots(figsize=(3.2, 2.1))
                 _draw_venn(ax, spec)
+            elif ftype in ("table", "two_way_table"):
+                n_r = len(spec.get("rows", spec.get("row_headers", [1, 2, 3]))) + (2 if spec.get("col_totals") else 1)
+                n_c = len(spec.get("headers", spec.get("col_headers", [1, 2]))) + (2 if spec.get("cells") is not None else 0)
+                fig, ax = plt.subplots(figsize=(max(2.6, min(4.6, 0.95 * n_c)), max(1.3, 0.34 * n_r + 0.35)))
+                _draw_table(ax, spec)
+            elif ftype == "transversal":
+                fig, ax = plt.subplots(figsize=(3.4, 2.15))
+                _draw_transversal(ax, spec)
             else:
                 fig, ax = _fig_axes(spec)
         except Exception:

@@ -215,7 +215,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Why Bayes' Theorem &amp; Principle of Inclusion-Exclusion Work:</strong> Any event \\(B\\) can be partitioned into disjoint intersections \\(B = (B \\cap A) \\cup (B \\cap A')\\). By additivity of mutually exclusive events and the multiplication rule \\(P(A \\cap B) = P(B \\mid A)P(A)\\):</p>\\[ P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{P(B \\mid A)P(A)}{P(B \\mid A)P(A) + P(B \\mid A')P(A')} \\]<p>Similarly, in counting \\(|A \\cup B|\\), summing \\(|A| + |B|\\) counts every element in \\(A \\cap B\\) twice; subtracting \\(|A \\cap B|\\) once restores exact cardinality: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\).</p>",
+          "en": "<p><strong>Why Conditional Probability Restricts the Sample Space to a Single Row or Column:</strong> In a two-way frequency table of \\(N\\) total individuals, let \\(n(B)\\) be the marginal total of individuals satisfying condition \\(B\\), and \\(n(A \\text{ and } B)\\) be the interior cell count satisfying both \\(A\\) and \\(B\\). Since \\(P(B) = \\frac{n(B)}{N}\\) and \\(P(A \\text{ and } B) = \\frac{n(A \\text{ and } B)}{N}\\), the grand total \\(N\\) cancels directly in the conditional ratio:</p>\\[ P(A \\mid B) = \\frac{P(A \\text{ and } B)}{P(B)} = \\frac{n(A \\text{ and } B) / N}{n(B) / N} = \\frac{n(A \\text{ and } B)}{n(B)} \\]<p>Thus, whenever a Digital SAT question states <em>\"If one of the [Group B] is selected at random, what is the probability that they are in [Group A]?\"</em>, you simply divide the interior intersection cell \\(n(A \\text{ and } B)\\) by the marginal total \\(n(B)\\) of that specific row or column.</p>",
           "ar": null
         }
       },
@@ -254,43 +254,43 @@
         "rows": [
           [
             {
-              "en": "Using \\(P(A \\cap B) = 0\\) when told \\(A\\) and \\(B\\) are independent",
+              "en": "Dividing by the grand total \\(N\\) when computing \\(P(A \\mid B)\\) from a two-way table",
               "ar": null
             },
             {
-              "en": "Confuses disjoint (mutually exclusive) events with statistically independent events.",
+              "en": "Computes the joint probability \\(P(A \\text{ and } B)\\) out of everyone instead of conditioning on subset \\(B\\).",
               "ar": null
             },
             {
-              "en": "For independent events, multiply probabilities: \\(P(A \\cap B) = P(A)\\cdot P(B)\\).",
+              "en": "Restrict the denominator strictly to the row or column total of the given condition \\(B\\).",
               "ar": null
             }
           ],
           [
             {
-              "en": "Dividing by the grand total \\(N\\) when computing \\(P(A \\mid B)\\) from a table",
+              "en": "Reversing the condition by dividing \\(n(A \\text{ and } B)\\) by the total of \\(A\\) instead of \\(B\\)",
               "ar": null
             },
             {
-              "en": "Computes the joint probability \\(P(A \\cap B)\\) instead of conditioning on subset \\(B\\).",
+              "en": "Computes \\(P(B \\mid A)\\) rather than \\(P(A \\mid B)\\); row and column totals are rarely equal.",
               "ar": null
             },
             {
-              "en": "Restrict the denominator strictly to the row/column total of the given condition \\(B\\).",
+              "en": "Identify the phrase after \"given that\" or \"if a [Group B] is selected\" — that group's total is always the denominator.",
               "ar": null
             }
           ],
           [
             {
-              "en": "Using permutations \\({}^nP_r\\) when selecting a committee with no distinct roles",
+              "en": "Adding \\(n(A) + n(B)\\) for \"A or B\" without subtracting the overlap cell \\(n(A \\text{ and } B)\\)",
               "ar": null
             },
             {
-              "en": "Overcounts every group of size \\(r\\) by \\(r!\\) internal orderings.",
+              "en": "Double-counts individuals who belong to both row \\(A\\) and column \\(B\\).",
               "ar": null
             },
             {
-              "en": "Divide by \\(r!\\) to use combinations: \\(\\binom{n}{r} = \\frac{n!}{r!(n-r)!}\\).",
+              "en": "Use \\(n(A \\text{ or } B) = n(A) + n(B) - n(A \\text{ and } B)\\) before dividing by the appropriate total.",
               "ar": null
             }
           ]

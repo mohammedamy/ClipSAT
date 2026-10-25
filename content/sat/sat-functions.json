@@ -87,7 +87,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Why Completing the Square &amp; Log-Linearization Work:</strong> Any quadratic \\(f(x) = ax^2 + bx + c\\) (\\(a \\ne 0\\)) can be rewritten by factoring \\(a\\) from the first two terms and adding/subtracting \\((b/2a)^2\\):</p>\\[ ax^2 + bx + c = a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\]<p>Because \\(\\left(x + \\frac{b}{2a}\\right)^2 \\ge 0\\) for all \\(x \\in \\mathbb{R}\\), the extreme value \\(k = c - \\frac{b^2}{4a}\\) is attained uniquely at the axis of symmetry \\(x = -\\frac{b}{2a}\\), restricting the range to \\([k, \\infty)\\) (if \\(a > 0\\)) and making \\(f\\) invertible on \\(x \\ge -\\frac{b}{2a}\\). Similarly, applying \\(\\ln\\) to power laws \\(y = ax^n\\) yields \\(\\ln y = n\\ln x + \\ln a\\), transforming a nonlinear curve into a straight line of gradient \\(n\\).</p>",
+          "en": "<p><strong>Why Horizontal Translations Shift in the Opposite Sign of \\(h\\):</strong> Suppose a function \\(y = f(x)\\) has a key feature (such as a vertex or intercept) at input \\(x_0\\), producing output \\(y_0 = f(x_0)\\). For the transformed function \\(g(x) = f(x - h) + k\\) to reach that same internal evaluation \\(f(x_0)\\), its input argument must equal \\(x_0\\):</p>\\[ x - h = x_0 \\implies x = x_0 + h \\]<p>At this new input \\(x = x_0 + h\\), the output becomes \\(g(x_0 + h) = f(x_0) + k = y_0 + k\\). Therefore, every point \\((x_0, y_0)\\) on the graph of \\(y = f(x)\\) maps directly to \\((x_0 + h, y_0 + k)\\) on the graph of \\(y = f(x - h) + k\\) — shifting right by \\(h\\) units when \\(h &gt; 0\\) and vertically by \\(k\\) units.</p>",
           "ar": null
         }
       },
@@ -126,43 +126,43 @@
         "rows": [
           [
             {
-              "en": "Expanding \\(\\ln(x + y)\\) as \\(\\ln x + \\ln y\\)",
+              "en": "Shifting the graph of \\(y = f(x - 4)\\) four units to the left",
               "ar": null
             },
             {
-              "en": "Confuses the product law \\(\\ln(xy) = \\ln x + \\ln y\\) with a non-existent sum rule.",
+              "en": "Misinterprets the subtraction sign inside \\(f(x - 4)\\); setting \\(x - 4 = 0\\) requires \\(x = +4\\).",
               "ar": null
             },
             {
-              "en": "Only factor products, quotients, and powers inside logarithms: \\(\\ln(xy) = \\ln x + \\ln y\\).",
+              "en": "Set the inside expression equal to zero (\\(x - h = 0 \\implies x = h\\)) to determine the horizontal shift direction.",
               "ar": null
             }
           ],
           [
             {
-              "en": "Keeping both roots of \\(\\sqrt{2x+4} = x - 3\\) without checking \\(x - 3 \\ge 0\\)",
+              "en": "Evaluating \\(f(g(2))\\) by multiplying \\(f(2) \\cdot g(2)\\)",
               "ar": null
             },
             {
-              "en": "Squaring both sides loses the sign of \\(x - {r}\\), introducing roots where \\(\\sqrt{\\cdot} = -\\text{number}\\).",
+              "en": "Confuses composite function evaluation \\(f(g(x))\\) with the product of two functions \\((f \\cdot g)(x)\\).",
               "ar": null
             },
             {
-              "en": "Enforce the range condition \\(x \\ge 3\\) before or after squaring.",
+              "en": "Work from the inside out: first compute the number \\(k = g(2)\\), then substitute that result into \\(f(k)\\).",
               "ar": null
             }
           ],
           [
             {
-              "en": "Restricting domain of \\(f(x) = (x-3)^2 + 1\\) to \\(x \\ge 0\\) for invertibility",
+              "en": "Reading \\(f(3)\\) from a graph by finding \\(3\\) on the vertical \\(y\\)-axis",
               "ar": null
             },
             {
-              "en": "The vertex is at \\(x = 3\\), so \\(f(2) = f(4) = 2\\) fails the horizontal line test on \\(x \\ge 0\\).",
+              "en": "Confuses the input \\(x = 3\\) with the output equation \\(f(x) = 3\\).",
               "ar": null
             },
             {
-              "en": "Restrict the domain at the vertex axis of symmetry: \\(x \\ge 3\\) (or \\(x \\le 3\\)).",
+              "en": "Locate \\(x = 3\\) on the horizontal axis and read the vertical \\(y\\)-coordinate on the curve.",
               "ar": null
             }
           ]
@@ -176,7 +176,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Fast Exam Check (College Board Digital SAT Math):</strong> To verify an inverse function \\(f^{-1}(x)\\) in 5 seconds, pick a simple input \\(x_0\\), compute \\(y_0 = f(x_0)\\), and check that \\(f^{-1}(y_0) = x_0\\). Also verify that the graph of \\(y = f^{-1}(x)\\) reflects \\(y = f(x)\\) across \\(y = x\\).</p>",
+          "en": "<p><strong>Fast Exam Check (College Board Digital SAT Math):</strong> In Desmos, you can type a function definition like <code>f(x) = 2x^2 - 3x + 5</code> on Line 1 and then type <code>f(-3)</code> or <code>g(x) = f(x - 2) + 4</code> on Line 2 — Desmos automatically evaluates function notation and plots shifted graphs!</p>",
           "ar": null
         }
       },

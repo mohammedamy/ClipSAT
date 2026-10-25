@@ -666,7 +666,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Why Completing the Square &amp; Log-Linearization Work:</strong> Any quadratic \\(f(x) = ax^2 + bx + c\\) (\\(a \\ne 0\\)) can be rewritten by factoring \\(a\\) from the first two terms and adding/subtracting \\((b/2a)^2\\):</p>\\[ ax^2 + bx + c = a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\]<p>Because \\(\\left(x + \\frac{b}{2a}\\right)^2 \\ge 0\\) for all \\(x \\in \\mathbb{R}\\), the extreme value \\(k = c - \\frac{b^2}{4a}\\) is attained uniquely at the axis of symmetry \\(x = -\\frac{b}{2a}\\), restricting the range to \\([k, \\infty)\\) (if \\(a > 0\\)) and making \\(f\\) invertible on \\(x \\ge -\\frac{b}{2a}\\). Similarly, applying \\(\\ln\\) to power laws \\(y = ax^n\\) yields \\(\\ln y = n\\ln x + \\ln a\\), transforming a nonlinear curve into a straight line of gradient \\(n\\).</p>",
+          "en": "<p><strong>Why Completing the Square &amp; Vieta's Root Relations Work:</strong> Any quadratic \\(f(x) = ax^2 + bx + c\\) (\\(a \\ne 0\\)) can be rewritten by factoring \\(a\\) from the first two terms and adding/subtracting \\((b/2a)^2\\):</p>\\[ ax^2 + bx + c = a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\]<p>Because \\(\\left(x + \\frac{b}{2a}\\right)^2 \\ge 0\\) for all real \\(x\\), the extreme value \\(k = c - \\frac{b^2}{4a}\\) is attained uniquely at the axis of symmetry \\(x = -\\frac{b}{2a}\\). Furthermore, matching \\(ax^2 + bx + c = a(x - r_1)(x - r_2) = ax^2 - a(r_1 + r_2)x + ar_1r_2\\) immediately proves that the sum of the solutions is \\(r_1 + r_2 = -\\frac{b}{a}\\) and the product of the solutions is \\(r_1 r_2 = \\frac{c}{a}\\).</p>",
           "ar": null
         }
       },
@@ -705,43 +705,43 @@
         "rows": [
           [
             {
-              "en": "Expanding \\(\\ln(x + y)\\) as \\(\\ln x + \\ln y\\)",
+              "en": "Expanding \\((x + y)^2\\) as \\(x^2 + y^2\\)",
               "ar": null
             },
             {
-              "en": "Confuses the product law \\(\\ln(xy) = \\ln x + \\ln y\\) with a non-existent sum rule.",
+              "en": "Drops the middle cross-product term \\(2xy\\) from \\((x + y)(x + y)\\).",
               "ar": null
             },
             {
-              "en": "Only factor products, quotients, and powers inside logarithms: \\(\\ln(xy) = \\ln x + \\ln y\\).",
+              "en": "Always include the middle term: \\((x \\pm y)^2 = x^2 \\pm 2xy + y^2\\).",
               "ar": null
             }
           ],
           [
             {
-              "en": "Keeping both roots of \\(\\sqrt{2x+4} = x - 3\\) without checking \\(x - 3 \\ge 0\\)",
+              "en": "Reading the vertex of \\(f(x) = a(x + 3)^2 - 5\\) as \\((3, -5)\\)",
               "ar": null
             },
             {
-              "en": "Squaring both sides loses the sign of \\(x - {r}\\), introducing roots where \\(\\sqrt{\\cdot} = -\\text{number}\\).",
+              "en": "Vertex form is \\(a(x - h)^2 + k\\), so \\((x + 3)^2 = (x - (-3))^2\\) has \\(h = -3\\).",
               "ar": null
             },
             {
-              "en": "Enforce the range condition \\(x \\ge 3\\) before or after squaring.",
+              "en": "Flip the sign inside the squared binomial (\\(h = -3\\)) and keep the outside constant sign (\\(k = -5\\)) to get \\((-3, -5)\\).",
               "ar": null
             }
           ],
           [
             {
-              "en": "Restricting domain of \\(f(x) = (x-3)^2 + 1\\) to \\(x \\ge 0\\) for invertibility",
+              "en": "Using \\(\\frac{b}{a}\\) instead of \\(-\\frac{b}{a}\\) for the sum of solutions to \\(ax^2 + bx + c = 0\\)",
               "ar": null
             },
             {
-              "en": "The vertex is at \\(x = 3\\), so \\(f(2) = f(4) = 2\\) fails the horizontal line test on \\(x \\ge 0\\).",
+              "en": "Forgets the negative sign generated when expanding \\(a(x - r_1)(x - r_2) = ax^2 - a(r_1 + r_2)x + ar_1r_2\\).",
               "ar": null
             },
             {
-              "en": "Restrict the domain at the vertex axis of symmetry: \\(x \\ge 3\\) (or \\(x \\le 3\\)).",
+              "en": "Use \\(\\text{Sum of solutions} = -\\frac{b}{a}\\) and \\(\\text{Product of solutions} = \\frac{c}{a}\\).",
               "ar": null
             }
           ]
@@ -755,7 +755,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Fast Exam Check (College Board Digital SAT Math):</strong> To verify an inverse function \\(f^{-1}(x)\\) in 5 seconds, pick a simple input \\(x_0\\), compute \\(y_0 = f(x_0)\\), and check that \\(f^{-1}(y_0) = x_0\\). Also verify that the graph of \\(y = f^{-1}(x)\\) reflects \\(y = f(x)\\) across \\(y = x\\).</p>",
+          "en": "<p><strong>Fast Exam Check (College Board Digital SAT Math):</strong> Whenever a question asks for the sum of the solutions to \\(ax^2 + bx + c = 0\\), never waste time with the quadratic formula — first check that \\(b^2 - 4ac \\ge 0\\), then compute \\(-\\frac{b}{a}\\) in 3 seconds!</p>",
           "ar": null
         }
       },

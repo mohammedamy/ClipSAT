@@ -24,7 +24,7 @@
         {
           title: 'Algebra & Coordinate Geometry',
           titleAr: 'الجبر والهندسة الإحداثية',
-          body: 'Slope: \\(m = \\frac{y_2 - y_1}{x_2 - x_1}\\) · Point-slope: \\(y - y_1 = m(x - x_1)\\)<br>Parabola vertex: \\(x = -\\frac{b}{2a}\\) · Vertex form: \\(y = a(x - h)^2 + k\\)<br>Quadratic formula: \\(x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}\\)<br>Discriminant: \\(\\Delta = b^2 - 4ac\\) (\\(>0\\): 2 real roots, \\(=0\\): 1 root, \\(<0\\): 2 complex roots)<br>Exponential growth / decay: \\(A(t) = P(1 \\pm r)^t\\)'
+          body: 'Slope: \\(m = \\frac{y_2 - y_1}{x_2 - x_1}\\) · Point-slope: \\(y - y_1 = m(x - x_1)\\)<br>Parabola vertex: \\(x = -\\frac{b}{2a}\\) · Vertex form: \\(y = a(x - h)^2 + k\\)<br>Quadratic formula: \\(x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}\\)<br>Discriminant: \\(\\Delta = b^2 - 4ac\\) (\\(>0\\): 2 real roots, \\(=0\\): 1 real root, \\(<0\\): 0 real roots)<br>Exponential growth / decay: \\(A(t) = P(1 \\pm r)^t\\)'
         },
         {
           title: 'Digital SAT SPR (Grid-In) Rules',

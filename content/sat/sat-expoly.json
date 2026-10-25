@@ -113,7 +113,7 @@
           ]
         },
         "caption": {
-          "en": "Exponential models \\( y = a \\cdot b^x \\) with \\( a = 1 \\). Base \\( b = 2 &gt; 1 \\) represents rapid exponential growth, while \\( 0 &lt; b = 0.5 &lt; 1 \\) represents asymptotic decay toward \\( y = 0 \\).",
+          "en": "Exponential models \\( y = a \\cdot b^x \\) with \\( a = 1 \\). Base \\( b = 2 &gt; 1 \\) represents rapid exponential growth, while \\( 0 &lt; b = 0.5 &lt; 1 \\) represents exponential decay approaching \\( y = 0 \\).",
           "ar": null
         }
       },
@@ -125,7 +125,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Why Completing the Square &amp; Log-Linearization Work:</strong> Any quadratic \\(f(x) = ax^2 + bx + c\\) (\\(a \\ne 0\\)) can be rewritten by factoring \\(a\\) from the first two terms and adding/subtracting \\((b/2a)^2\\):</p>\\[ ax^2 + bx + c = a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\]<p>Because \\(\\left(x + \\frac{b}{2a}\\right)^2 \\ge 0\\) for all \\(x \\in \\mathbb{R}\\), the extreme value \\(k = c - \\frac{b^2}{4a}\\) is attained uniquely at the axis of symmetry \\(x = -\\frac{b}{2a}\\), restricting the range to \\([k, \\infty)\\) (if \\(a > 0\\)) and making \\(f\\) invertible on \\(x \\ge -\\frac{b}{2a}\\). Similarly, applying \\(\\ln\\) to power laws \\(y = ax^n\\) yields \\(\\ln y = n\\ln x + \\ln a\\), transforming a nonlinear curve into a straight line of gradient \\(n\\).</p>",
+          "en": "<p><strong>Why Fractional Exponents &amp; Polynomial Remainder Theorem Work:</strong> By the power-of-a-power law \\((a^m)^n = a^{mn}\\), raising \\(x^{m/n}\\) to the \\(n\\)-th power yields \\((x^{m/n})^n = x^m\\). Taking the \\(n\\)-th root of both sides establishes the fundamental radical-exponent identity:</p>\\[ x^{m/n} = \\sqrt[n]{x^m} = \\left(\\sqrt[n]{x}\\right)^m \\]<p>For any polynomial \\(P(x)\\) divided by a linear factor \\((x - c)\\), the division algorithm states \\(P(x) = (x - c)Q(x) + R\\). Substituting \\(x = c\\) annihilates the quotient term \\((c - c)Q(c) = 0\\), proving that the remainder is \\(R = P(c)\\) — and \\((x - c)\\) is a factor of \\(P(x)\\) if and only if \\(P(c) = 0\\).</p>",
           "ar": null
         }
       },
@@ -164,15 +164,15 @@
         "rows": [
           [
             {
-              "en": "Expanding \\(\\ln(x + y)\\) as \\(\\ln x + \\ln y\\)",
+              "en": "Multiplying exponents when multiplying same-base powers: \\(x^a \\cdot x^b = x^{ab}\\)",
               "ar": null
             },
             {
-              "en": "Confuses the product law \\(\\ln(xy) = \\ln x + \\ln y\\) with a non-existent sum rule.",
+              "en": "Confuses the product rule \\(x^a \\cdot x^b = x^{a+b}\\) with the power-of-a-power rule \\((x^a)^b = x^{ab}\\).",
               "ar": null
             },
             {
-              "en": "Only factor products, quotients, and powers inside logarithms: \\(\\ln(xy) = \\ln x + \\ln y\\).",
+              "en": "Add exponents when multiplying like bases (\\(x^a \\cdot x^b = x^{a+b}\\)); multiply exponents only across parentheses \\((x^a)^b = x^{ab}\\).",
               "ar": null
             }
           ],
@@ -182,25 +182,25 @@
               "ar": null
             },
             {
-              "en": "Squaring both sides loses the sign of \\(x - {r}\\), introducing roots where \\(\\sqrt{\\cdot} = -\\text{number}\\).",
+              "en": "Squaring both sides loses the sign of \\(x - 1\\), introducing extraneous roots where \\(\\sqrt{\\cdot} = -\\text{number}\\).",
               "ar": null
             },
             {
-              "en": "Enforce the range condition \\(x \\ge 1\\) before or after squaring.",
+              "en": "Substitute candidate solutions back into the original radical equation and reject any value where \\(x - 1 &lt; 0\\).",
               "ar": null
             }
           ],
           [
             {
-              "en": "Restricting domain of \\(f(x) = (x-3)^2 + 1\\) to \\(x \\ge 0\\) for invertibility",
+              "en": "Using \\(b = 0.08\\) instead of \\(b = 1.08\\) or \\(0.92\\) in \\(f(t) = a(b)^t\\) for an \\(8\\%\\) change",
               "ar": null
             },
             {
-              "en": "The vertex is at \\(x = 3\\), so \\(f(2) = f(4) = 2\\) fails the horizontal line test on \\(x \\ge 0\\).",
+              "en": "Confuses the percent change rate \\(r = 0.08\\) with the growth/decay multiplier \\(b = 1 \\pm r\\).",
               "ar": null
             },
             {
-              "en": "Restrict the domain at the vertex axis of symmetry: \\(x \\ge 3\\) (or \\(x \\le 3\\)).",
+              "en": "Add \\(r\\) to \\(1\\) for growth (\\(b = 1 + r\\)) and subtract \\(r\\) from \\(1\\) for decay (\\(b = 1 - r\\)).",
               "ar": null
             }
           ]
@@ -214,7 +214,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Fast Exam Check (College Board Digital SAT Math):</strong> To verify an inverse function \\(f^{-1}(x)\\) in 5 seconds, pick a simple input \\(x_0\\), compute \\(y_0 = f(x_0)\\), and check that \\(f^{-1}(y_0) = x_0\\). Also verify that the graph of \\(y = f^{-1}(x)\\) reflects \\(y = f(x)\\) across \\(y = x\\).</p>",
+          "en": "<p><strong>Fast Exam Check (College Board Digital SAT Math):</strong> On equivalent polynomial or rational expression questions, either factor and cancel common binomials algebraically, or graph both the original expression and the answer choices in Desmos to see which curve overlaps identically across the domain.</p>",
           "ar": null
         }
       },
@@ -259,7 +259,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p>On the Digital SAT, exponential functions appear in four recurring algebraic forms. Each form encodes how the initial value, multiplier, time interval, or horizontal asymptote is presented:</p><table class=\"exam-table\" style=\"margin-top:8px\"><thead><tr><th>Exponential Form</th><th>What Constants Reveal Directly</th><th>Horizontal Asymptote</th><th>Anchor Point(s)</th><th>\\(y\\)-Intercept</th><th>How to Quickly Graph (Step-by-Step)</th></tr></thead><tbody><tr><td><strong>1. Standard Base–Multiplier Form</strong><br>\\(f(x) = a \\cdot b^x\\)</td><td><strong>Initial value \\(a\\)</strong> at \\(x = 0\\) and <strong>multiplier \\(b\\)</strong> per \\(+1\\) unit of \\(x\\) (\\(b > 1\\) growth, \\(0 < b < 1\\) decay).</td><td>\\(y = 0\\)</td><td>\\((0, a)\\) and \\((1, ab)\\)</td><td>\\((0, a)\\)</td><td><strong>Draw asymptote \\(y = 0\\)</strong>; plot \\((0, a)\\), \\((1, ab)\\), and \\((-1, a/b)\\); sketch the smooth curve approaching \\(y = 0\\).</td></tr><tr><td><strong>2. Percentage Rate Form</strong><br>\\(f(t) = a(1 \\pm r)^t\\)</td><td><strong>Initial value \\(a\\)</strong> and <strong>percentage change rate \\(r\\)</strong> per unit time (\\(+r\\) = \\(\\%\\) increase, \\(-r\\) = \\(\\%\\) decrease; base \\(b = 1 \\pm r\\)).</td><td>\\(y = 0\\)</td><td>\\((0, a)\\) and \\((1, a(1 \\pm r))\\)</td><td>\\((0, a)\\)</td><td><strong>Convert rate \\(r\\) to base \\(b = 1 \\pm r\\)</strong>; plot \\((0, a)\\) and step \\(+1\\) unit right to \\((1, a(1 \\pm r))\\).</td></tr><tr><td><strong>3. Period-Scaled (Interval) Form</strong><br>\\(f(t) = a \\cdot b^{t / k}\\)</td><td>Quantity starts at \\(a\\) and multiplies by factor \\(b\\) <strong>every \\(k\\) units of time</strong> (e.g., doubling time or half-life \\(k\\)).</td><td>\\(y = 0\\)</td><td>\\((0, a)\\), \\((k, ab)\\), \\((2k, ab^2)\\)</td><td>\\((0, a)\\)</td><td><strong>Plot \\((0, a)\\), then step horizontally by \\(k\\) units</strong> (not \\(1\\) unit!) to plot \\((k, ab)\\) and \\((2k, ab^2)\\)!</td></tr><tr><td><strong>4. Shifted / Asymptote Form</strong><br>\\(f(x) = a \\cdot b^{x - h} + d\\)</td><td><strong>Horizontal asymptote \\(y = d\\)</strong> and <strong>shifted anchor point \\((h, a + d)\\)</strong> where the exponent \\(x - h = 0\\).</td><td>\\(y = d\\)</td><td>\\((h, a + d)\\) and \\((h + 1, ab + d)\\)</td><td>\\((0, a b^{-h} + d)\\)</td><td><strong>1. Draw dashed horizontal line \\(y = d\\)</strong>; <strong>2. Plot \\((h, a+d)\\)</strong> (since \\(b^0 = 1\\)); <strong>3. Step \\(+1\\) right to \\((h+1, ab+d)\\)</strong>!</td></tr></tbody></table><p style=\"margin-top:8px\"><strong>Algebraic Equivalence Between Forms (Frequent SAT Question Type):</strong> Using exponent laws \\(b^{t/k} = (b^{1/k})^t\\) and \\(a \\cdot b^{x - h} = (a b^{-h}) \\cdot b^x\\), any Period-Scaled or Shifted form can be rewritten in Standard Form \\(A \\cdot B^x\\) by setting \\(A = a b^{-h}\\) and \\(B = b^{1/k}\\).</p>",
+          "en": "<p>On the Digital SAT, exponential functions appear in four recurring algebraic forms. Each form encodes how the initial value, multiplier, time interval, or vertical shift is presented:</p><table class=\"exam-table\" style=\"margin-top:8px\"><thead><tr><th>Exponential Form</th><th>What Constants Reveal Directly</th><th>Horizontal Baseline</th><th>Anchor Point(s)</th><th>\\(y\\)-Intercept</th><th>How to Quickly Graph (Step-by-Step)</th></tr></thead><tbody><tr><td><strong>1. Standard Base–Multiplier Form</strong><br>\\(f(x) = a \\cdot b^x\\)</td><td><strong>Initial value \\(a\\)</strong> at \\(x = 0\\) and <strong>multiplier \\(b\\)</strong> per \\(+1\\) unit of \\(x\\) (\\(b > 1\\) growth, \\(0 < b < 1\\) decay).</td><td>\\(y = 0\\)</td><td>\\((0, a)\\) and \\((1, ab)\\)</td><td>\\((0, a)\\)</td><td><strong>Draw baseline \\(y = 0\\)</strong>; plot \\((0, a)\\), \\((1, ab)\\), and \\((-1, a/b)\\); sketch the smooth curve approaching \\(y = 0\\).</td></tr><tr><td><strong>2. Percentage Rate Form</strong><br>\\(f(t) = a(1 \\pm r)^t\\)</td><td><strong>Initial value \\(a\\)</strong> and <strong>percentage change rate \\(r\\)</strong> per unit time (\\(+r\\) = \\(\\%\\) increase, \\(-r\\) = \\(\\%\\) decrease; base \\(b = 1 \\pm r\\)).</td><td>\\(y = 0\\)</td><td>\\((0, a)\\) and \\((1, a(1 \\pm r))\\)</td><td>\\((0, a)\\)</td><td><strong>Convert rate \\(r\\) to base \\(b = 1 \\pm r\\)</strong>; plot \\((0, a)\\) and step \\(+1\\) unit right to \\((1, a(1 \\pm r))\\).</td></tr><tr><td><strong>3. Period-Scaled (Interval) Form</strong><br>\\(f(t) = a \\cdot b^{t / k}\\)</td><td>Quantity starts at \\(a\\) and multiplies by factor \\(b\\) <strong>every \\(k\\) units of time</strong> (e.g., doubling time or half-life \\(k\\)).</td><td>\\(y = 0\\)</td><td>\\((0, a)\\), \\((k, ab)\\), \\((2k, ab^2)\\)</td><td>\\((0, a)\\)</td><td><strong>Plot \\((0, a)\\), then step horizontally by \\(k\\) units</strong> (not \\(1\\) unit!) to plot \\((k, ab)\\) and \\((2k, ab^2)\\)!</td></tr><tr><td><strong>4. Vertically Shifted Form</strong><br>\\(f(x) = a \\cdot b^{x - h} + d\\)</td><td><strong>Horizontal baseline \\(y = d\\)</strong> and <strong>shifted anchor point \\((h, a + d)\\)</strong> where the exponent \\(x - h = 0\\).</td><td>\\(y = d\\)</td><td>\\((h, a + d)\\) and \\((h + 1, ab + d)\\)</td><td>\\((0, a b^{-h} + d)\\)</td><td><strong>1. Draw dashed horizontal line \\(y = d\\)</strong>; <strong>2. Plot \\((h, a+d)\\)</strong> (since \\(b^0 = 1\\)); <strong>3. Step \\(+1\\) right to \\((h+1, ab+d)\\)</strong>!</td></tr></tbody></table><p style=\"margin-top:8px\"><strong>Algebraic Equivalence Between Forms (Frequent SAT Question Type):</strong> Using exponent laws \\(b^{t/k} = (b^{1/k})^t\\) and \\(a \\cdot b^{x - h} = (a b^{-h}) \\cdot b^x\\), any Period-Scaled or Shifted form can be rewritten in Standard Form \\(A \\cdot B^x\\) by setting \\(A = a b^{-h}\\) and \\(B = b^{1/k}\\).</p>",
           "ar": null
         }
       },
@@ -271,7 +271,7 @@
           "ar": null
         },
         "caption": {
-          "en": "Quick-Graphing Recipe for \\(f(x) = 2(1.5)^x\\): The horizontal asymptote is \\(y = 0\\). Plot the initial value \\((0, a) = (0, 2)\\); step \\(+1\\) right to multiply by \\(b = 1.5\\), giving \\((1, 3)\\) and \\((2, 4.5)\\).",
+          "en": "Quick-Graphing Recipe for \\(f(x) = 2(1.5)^x\\): The horizontal baseline is \\(y = 0\\). Plot the initial value \\((0, a) = (0, 2)\\); step \\(+1\\) right to multiply by \\(b = 1.5\\), giving \\((1, 3)\\) and \\((2, 4.5)\\).",
           "ar": null
         },
         "figure": {
@@ -419,11 +419,11 @@
         "kind": "figure",
         "id": "fig-sat-exp-form-4",
         "title": {
-          "en": "Form 4 · Translated / Asymptote Form: \\(f(x) = a \\cdot b^{x - h} + d\\) (Example: \\(f(x) = 2 \\cdot (1.5)^{x - 1} + 2\\))",
+          "en": "Form 4 · Translated / Vertically Shifted Form: \\(f(x) = a \\cdot b^{x - h} + d\\) (Example: \\(f(x) = 2 \\cdot (1.5)^{x - 1} + 2\\))",
           "ar": null
         },
         "caption": {
-          "en": "Quick-Graphing Recipe for \\(f(x) = 2(1.5)^{x-1} + 2\\): First draw the horizontal asymptote \\(y = d = 2\\). At \\(x = h = 1\\), \\((1.5)^0 = 1\\), giving the anchor point \\((h, a+d) = (1, 4)\\). Stepping \\(+1\\) right gives \\((h+1, ab+d) = (2, 5)\\).",
+          "en": "Quick-Graphing Recipe for \\(f(x) = 2(1.5)^{x-1} + 2\\): First draw the horizontal baseline \\(y = d = 2\\). At \\(x = h = 1\\), \\((1.5)^0 = 1\\), giving the anchor point \\((h, a+d) = (1, 4)\\). Stepping \\(+1\\) right gives \\((h+1, ab+d) = (2, 5)\\).",
           "ar": null
         },
         "figure": {
@@ -445,7 +445,7 @@
             {
               "fn": "2",
               "color": "var(--fig-rose)",
-              "label": "Asymptote y = d = 2"
+              "label": "Baseline y = d = 2"
             }
           ],
           "points": [
@@ -481,7 +481,7 @@
           "descId": "satExpFormsDataDesc",
           "rowsId": "satExpFormsDataRows",
           "caption": {
-            "en": "All 4 exponential forms, asymptote, and key anchor points",
+            "en": "All 4 exponential forms, horizontal baseline, and key anchor points",
             "ar": null
           },
           "columns": [
@@ -523,7 +523,7 @@
               },
               {
                 "value": "shift",
-                "label": "Form 4 · f(x) = a · b^(x − h) + d  (Shifted & Asymptote y = d)"
+                "label": "Form 4 · f(x) = a · b^(x − h) + d  (Shifted & Baseline y = d)"
               }
             ],
             "ariaLabel": {
@@ -585,7 +585,7 @@
           {
             "id": "satExpFormsD",
             "label": {
-              "en": "Asymptote <b>\\(d\\)</b> (Form 4):",
+              "en": "Vertical Shift <b>\\(d\\)</b> (Form 4):",
               "ar": null
             },
             "min": -3,
@@ -595,7 +595,7 @@
             "valueDisplayId": "satExpFormsDV",
             "valueDisplay": "1.0",
             "ariaLabel": {
-              "en": "Horizontal asymptote d",
+              "en": "Horizontal baseline d",
               "ar": null
             }
           }
@@ -613,7 +613,7 @@
           {
             "id": "satExpFormsAsymOut",
             "label": {
-              "en": "Horizontal Asymptote",
+              "en": "Horizontal Baseline",
               "ar": null
             },
             "colorClass": "amber",
@@ -655,7 +655,7 @@
           }
         ],
         "note": {
-          "en": "Switch among all 4 SAT exponential forms: Standard \\(f(x) = a \\cdot b^{x}\\), Percentage Rate \\(f(t) = a(1 \\pm r)^{t}\\), Period-Scaled \\(f(t) = a \\cdot b^{t/k}\\), and Translated \\(f(x) = a \\cdot b^{x - h} + d\\). The dashed rose line marks the horizontal asymptote, and amber dots highlight the exact anchor coordinates used to sketch the curve.",
+          "en": "Switch among all 4 SAT exponential forms: Standard \\(f(x) = a \\cdot b^{x}\\), Percentage Rate \\(f(t) = a(1 \\pm r)^{t}\\), Period-Scaled \\(f(t) = a \\cdot b^{t/k}\\), and Translated \\(f(x) = a \\cdot b^{x - h} + d\\). The dashed rose line marks the horizontal baseline, and amber dots highlight the exact anchor coordinates used to sketch the curve.",
           "ar": null
         }
       },

@@ -12,7 +12,7 @@
     "categoryPrefix": "Unit 3 ·",
     "category": "Problem-Solving &amp; Data Analysis",
     "topics": [
-      "Mean, median, mode, range &amp; IQR",
+      "Mean, median, mode &amp; range",
       "Standard deviation &amp; distribution shape",
       "Margin of error, sample size &amp; population inferences"
     ]
@@ -22,15 +22,15 @@
       {
         "kind": "text",
         "body": {
-          "en": "Analyze one-variable distributions: center (mean, median), spread (standard deviation, IQR, range), skewness, and survey margins of error.",
+          "en": "Analyze one-variable distributions: center (mean, median), spread (standard deviation, range), frequency tables and histograms, and survey margins of error.",
           "ar": null
         }
       },
       {
         "kind": "text",
-        "heading": "Level 1 · Foundations — Center, Spread & Box Plots",
+        "heading": "Level 1 · Foundations — Center, Range & Frequency Distributions",
         "body": {
-          "en": "Calculate mean, median, mode, and range, interpret five-number summary box plots, and evaluate outlier effects.",
+          "en": "Calculate mean, median, mode, and range from lists, dot plots, and frequency histograms, and evaluate outlier effects on center and spread.",
           "ar": null
         }
       },
@@ -59,17 +59,17 @@
           },
           {
             "label": {
-              "en": "IQR",
+              "en": "Range",
               "ar": null
             },
             "value": {
-              "en": "\\(Q_3-Q_1\\) — resistant to outliers",
+              "en": "\\(\\text{Max} - \\text{Min}\\) — total span of data",
               "ar": null
             }
           },
           {
             "label": {
-              "en": "Conf. interval",
+              "en": "Plausible interval",
               "ar": null
             },
             "value": {
@@ -82,19 +82,25 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "box_plot",
-          "title": "Five-Number Summary Box Plot",
-          "min": 10,
-          "q1": 25,
-          "med": 40,
-          "q3": 60,
-          "max": 85,
-          "outliers": [
-            95
+          "type": "bar",
+          "title": "Frequency Distribution of Quiz Scores",
+          "labels": [
+            "10",
+            "20",
+            "30",
+            "40",
+            "50"
+          ],
+          "data": [
+            2,
+            5,
+            8,
+            4,
+            1
           ]
         },
         "caption": {
-          "en": "Box plot displaying Min = 10, Q1 = 25, Median = 40, Q3 = 60, Max = 85 with an outlier at 95. The interquartile range is \\( \\text{IQR} = Q3 - Q1 = 35 \\).",
+          "en": "Frequency distribution showing 20 quiz scores across values 10 to 50. The total count is \\( 2+5+8+4+1 = 20 \\), the median lies at the average of the 10th and 11th ordered values (both equal to 30), and the range is \\( 50 - 10 = 40 \\).",
           "ar": null
         }
       },
@@ -106,7 +112,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Why Bayes' Theorem &amp; Principle of Inclusion-Exclusion Work:</strong> Any event \\(B\\) can be partitioned into disjoint intersections \\(B = (B \\cap A) \\cup (B \\cap A')\\). By additivity of mutually exclusive events and the multiplication rule \\(P(A \\cap B) = P(B \\mid A)P(A)\\):</p>\\[ P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)} = \\frac{P(B \\mid A)P(A)}{P(B \\mid A)P(A) + P(B \\mid A')P(A')} \\]<p>Similarly, in counting \\(|A \\cup B|\\), summing \\(|A| + |B|\\) counts every element in \\(A \\cap B\\) twice; subtracting \\(|A \\cap B|\\) once restores exact cardinality: \\(P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\).</p>",
+          "en": "<p><strong>Why Shifting Data Preserves Standard Deviation while Scaling Multiplies It:</strong> Suppose a dataset \\(x_1, x_2, \\dots, x_n\\) has mean \\(\\bar{x}\\) and standard deviation \\(s_x = \\sqrt{\\frac{1}{n-1}\\sum (x_i - \\bar{x})^2}\\). If every value is transformed linearly via \\(y_i = ax_i + b\\), the new mean is \\(\\bar{y} = a\\bar{x} + b\\). Each deviation from the new mean becomes:</p>\\[ y_i - \\bar{y} = (ax_i + b) - (a\\bar{x} + b) = a(x_i - \\bar{x}) \\]<p>Notice that the additive shift \\(+b\\) cancels out completely! Consequently, adding or subtracting a constant \\(b\\) to every data value leaves the standard deviation and range unchanged, whereas multiplying every value by \\(a\\) scales both the range and standard deviation by \\(|a|\\).</p>",
           "ar": null
         }
       },
@@ -145,43 +151,43 @@
         "rows": [
           [
             {
-              "en": "Using \\(P(A \\cap B) = 0\\) when told \\(A\\) and \\(B\\) are independent",
+              "en": "Finding the median of a frequency table by taking the middle row label",
               "ar": null
             },
             {
-              "en": "Confuses disjoint (mutually exclusive) events with statistically independent events.",
+              "en": "Ignores the frequency weights (counts) of how many times each value appears.",
               "ar": null
             },
             {
-              "en": "For independent events, multiply probabilities: \\(P(A \\cap B) = P(A)\\cdot P(B)\\).",
+              "en": "Sum all frequencies to find \\(N\\), then accumulate counts from the bottom row until reaching position \\(\\frac{N+1}{2}\\).",
               "ar": null
             }
           ],
           [
             {
-              "en": "Dividing by the grand total \\(N\\) when computing \\(P(A \\mid B)\\) from a table",
+              "en": "Assuming a larger range always guarantees a larger standard deviation",
               "ar": null
             },
             {
-              "en": "Computes the joint probability \\(P(A \\cap B)\\) instead of conditioning on subset \\(B\\).",
+              "en": "Range only depends on the two extreme endpoints, while standard deviation depends on how all points cluster around the mean.",
               "ar": null
             },
             {
-              "en": "Restrict the denominator strictly to the row/column total of the given condition \\(B\\).",
+              "en": "Compare how tightly the bulk of the data points cluster near the mean versus the tails.",
               "ar": null
             }
           ],
           [
             {
-              "en": "Using permutations \\({}^nP_r\\) when selecting a committee with no distinct roles",
+              "en": "Generalizing survey margin-of-error results to an entire city when only one subgroup was sampled",
               "ar": null
             },
             {
-              "en": "Overcounts every group of size \\(r\\) by \\(r!\\) internal orderings.",
+              "en": "Violates random sampling inference rules by extrapolating beyond the sampling frame.",
               "ar": null
             },
             {
-              "en": "Divide by \\(r!\\) to use combinations: \\(\\binom{n}{r} = \\frac{n!}{r!(n-r)!}\\).",
+              "en": "Restrict the conclusion strictly to the exact target population from which the random sample was selected.",
               "ar": null
             }
           ]
@@ -195,18 +201,18 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Exam Strategy (College Board Digital SAT Math):</strong> Whenever a probability problem involves \"at least one\" success across multiple trials, immediately use the Complement Rule: \\(P(\\text{at least one}) = 1 - P(\\text{none})\\). It turns a multi-case sum into a single calculation.</p>",
+          "en": "<p><strong>Exam Strategy (College Board Digital SAT Math):</strong> You never need to compute standard deviation by hand on the Digital SAT. Instead, compare distributions visually: whichever dot plot or histogram has more data points pushed far away from the center (and fewer stacked at the mean) has the larger standard deviation.</p>",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>A list of test scores is: 68, 72, 75, 78, 82, 85, 90, 94. What is the interquartile range (IQR) of this dataset?</p>",
+          "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>A list of 8 test scores is: 68, 72, 75, 78, 82, 85, 90, 94. What is the positive difference between the range and the median of this dataset?</p>",
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1:</strong> Find the median of the 8 scores (average of 4th and 5th): \\( (78 + 82)/2 = 80 \\).</p><p><strong>Step 2:</strong> Find \\( Q_1 \\) (median of lower half {68, 72, 75, 78}): \\( (72 + 75)/2 = 73.5 \\).</p><p><strong>Step 3:</strong> Find \\( Q_3 \\) (median of upper half {82, 85, 90, 94}): \\( (85 + 90)/2 = 87.5 \\).</p><p><strong>Step 4:</strong> Compute \\( \\text{IQR} = Q_3 - Q_1 = 87.5 - 73.5 = 14 \\).</p>",
+          "en": "<p><strong>Step 1:</strong> Find the median of the 8 sorted scores (average of the 4th and 5th values): \\( (78 + 82)/2 = 80 \\).</p><p><strong>Step 2:</strong> Find the range (maximum minus minimum): \\( 94 - 68 = 26 \\).</p><p><strong>Step 3:</strong> Compute the positive difference between the median and the range: \\( 80 - 26 = 54 \\).</p>",
           "ar": null
         },
         "hints": [
@@ -314,7 +320,7 @@
           "ar": null
         },
         "body": {
-          "en": "<ul><li><strong>Margin of Error Depends on Sample Size, NOT Population:</strong> Increasing the sample size (\\( n \\)) reduces the margin of error (proportional to \\( 1/\\sqrt{n} \\)). The total population size has negligible impact on margin of error.</li><li><strong>Generalization Boundaries:</strong> A random sample can only be generalized to the population from which the sample was drawn. A survey of visitors at an athletic store cannot generalize to all city residents.</li><li><strong>Outlier Pull:</strong> Extreme high outliers pull the <strong>mean</strong> upward without significantly shifting the <strong>median</strong> (\\( \\text{Mean} &gt; \\text{Median} \\) for right-skewed data). For skewed data, the median and IQR are preferred over the mean and standard deviation.</li><li><strong>Standard Deviation Definition:</strong> Standard deviation measures the spread or dispersion of values around the mean. Two datasets can have the same mean and range but very different standard deviations if values are clustered tightly vs. spread toward extremes.</li></ul>",
+          "en": "<ul><li><strong>Margin of Error Depends on Sample Size, NOT Population:</strong> Increasing the sample size (\\( n \\)) reduces the margin of error (proportional to \\( 1/\\sqrt{n} \\)). The total population size has negligible impact on margin of error.</li><li><strong>Generalization Boundaries:</strong> A random sample can only be generalized to the population from which the sample was drawn. A survey of visitors at an athletic store cannot generalize to all city residents.</li><li><strong>Outlier Pull:</strong> Extreme high outliers pull the <strong>mean</strong> upward without significantly shifting the <strong>median</strong> (\\( \\text{Mean} &gt; \\text{Median} \\) for right-skewed data). For skewed data with extreme outliers, the median is a more resistant measure of center than the mean.</li><li><strong>Standard Deviation Definition:</strong> Standard deviation measures the spread or dispersion of values around the mean. Two datasets can have the same mean and range but very different standard deviations if values are clustered tightly vs. spread toward extremes.</li></ul>",
           "ar": null
         }
       },
@@ -403,17 +409,25 @@
       {
         "kind": "figure",
         "figure": {
-          "type": "box_plot",
-          "title": "Comparing Two Distributions via Boxplots (Median & IQR)",
-          "min": 12,
-          "q1": 24,
-          "median": 32,
-          "q3": 44,
-          "max": 58,
-          "label": "Dataset A: Median = 32, IQR = 20, Range = 46"
+          "type": "bar",
+          "title": "Tightly Clustered vs. Widely Dispersed Distributions",
+          "labels": [
+            "40",
+            "45",
+            "50",
+            "55",
+            "60"
+          ],
+          "data": [
+            1,
+            3,
+            12,
+            3,
+            1
+          ]
         },
         "caption": {
-          "en": "In a boxplot, the vertical line inside the box marks the median (50th percentile), the box width is the interquartile range IQR = \\(Q_{3} - Q_{1}\\), and the whiskers span from minimum to maximum.",
+          "en": "Symmetric distribution centered at 50 where 12 of the 20 values equal the mean 50, yielding a small standard deviation despite a range of \\(60 - 40 = 20\\).",
           "ar": null
         }
       },
