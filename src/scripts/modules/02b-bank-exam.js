@@ -130,19 +130,61 @@
        calculator allowed, reference sheet provided; about half Algebra II and half precalculus. */
     act2:{
       title:'ACT International Subject Test — Mathematics 1',totalTime:'60 min',
+      bankId:'act2',
       logo:'ACT®',org:'ACT, Inc.',letters:['A','B','C','D'],
       instructions:['50 questions — 60 minutes.',
         'Choose the best answer for each question.',
         'Calculator permitted. A reference sheet of common formulas is provided.',
         'Assumed: figures not to scale unless stated.'],
       sections:[
-        {title:'Mathematics 1',time:'60 min',note:'50 Questions — 60 Minutes',
+        {title:'Mathematics 1 (Level 1)',time:'60 min',note:'50 Questions — 60 Minutes',
          parts:[{label:'',q:50,time:'60 min',calc:true,type:'mcq',note:'',letters:['A','B','C','D']}]}]},
+
+    'ACT International Subject Test — Mathematics 1':{
+      title:'ACT International Subject Test — Mathematics 1',totalTime:'60 min',
+      bankId:'act2',
+      logo:'ACT®',org:'ACT, Inc.',letters:['A','B','C','D'],
+      instructions:['50 questions — 60 minutes.',
+        'Choose the best answer for each question.',
+        'Calculator permitted. A reference sheet of common formulas is provided.',
+        'Assumed: figures not to scale unless stated.'],
+      sections:[
+        {title:'Mathematics 1 (Level 1)',time:'60 min',note:'50 Questions — 60 Minutes',
+         parts:[{label:'',q:50,time:'60 min',calc:true,type:'mcq',note:'',letters:['A','B','C','D']}]}]},
+
+    act2l2:{
+      title:'ACT International Subject Test — Mathematics 2',totalTime:'60 min',
+      bankId:'act2l2',
+      logo:'ACT® Math 2',org:'ACT, Inc.',letters:['A','B','C','D'],
+      instructions:['50 questions — 60 minutes.',
+        'Covers Advanced Functions, Complex Numbers, Matrices & Vectors, Sequences & Series, Polar & Trigonometric Precalculus, and Limits.',
+        'Choose the best answer for each question from the four options (A, B, C, D).',
+        'Graphing or scientific calculator permitted throughout. A reference sheet of common formulas is provided.',
+        'Assumed: figures are not drawn to scale unless stated otherwise.'],
+      sections:[
+        {title:'Mathematics 2 (Level 2 — Precalculus & Advanced Algebra)',time:'60 min',note:'50 Questions — 60 Minutes · Calculator Permitted',
+         domains:['Advanced Functions & Equations','Complex Numbers','Limits','Matrices & Vectors','Sequences & Series','Trigonometry & Polar Coordinates'],
+         parts:[{label:'',q:50,time:'60 min',calc:true,type:'mcq',note:'Calculator permitted.',letters:['A','B','C','D']}]}]},
+
+    'ACT International Subject Test — Mathematics 2':{
+      title:'ACT International Subject Test — Mathematics 2',totalTime:'60 min',
+      bankId:'act2l2',
+      logo:'ACT® Math 2',org:'ACT, Inc.',letters:['A','B','C','D'],
+      instructions:['50 questions — 60 minutes.',
+        'Covers Advanced Functions, Complex Numbers, Matrices & Vectors, Sequences & Series, Polar & Trigonometric Precalculus, and Limits.',
+        'Choose the best answer for each question from the four options (A, B, C, D).',
+        'Graphing or scientific calculator permitted throughout. A reference sheet of common formulas is provided.',
+        'Assumed: figures are not drawn to scale unless stated otherwise.'],
+      sections:[
+        {title:'Mathematics 2 (Level 2 — Precalculus & Advanced Algebra)',time:'60 min',note:'50 Questions — 60 Minutes · Calculator Permitted',
+         domains:['Advanced Functions & Equations','Complex Numbers','Limits','Matrices & Vectors','Sequences & Series','Trigonometry & Polar Coordinates'],
+         parts:[{label:'',q:50,time:'60 min',calc:true,type:'mcq',note:'Calculator permitted.',letters:['A','B','C','D']}]}]},
 
     est:{
       /* EST I papers from January, October and December 2024 (supplied by the maintainer) all have a
          20-question no-calculator section and a 38-question calculator section of four-option MCQs. */
       title:'EST I — Mathematics',totalTime:'1 hr 20 min',
+      bankId:'est',
       logo:'EST',org:'Academic Assessment Ltd.',letters:['A','B','C','D'],
       instructions:['The Mathematics test has two sections.',
         'No-calculator section: 20 questions, 25 minutes.',
@@ -161,7 +203,8 @@
        allowed, surface-area and volume formulas provided. */
     est2:{
       title:'EST II — Mathematics Level 1',totalTime:'60 min',
-      logo:'EST II',org:'Academic Assessment Ltd.',
+      bankId:'est2',
+      logo:'EST II',org:'Academic Assessment Ltd.',letters:['A','B','C','D'],
       instructions:['50 questions — 60 minutes.',
         'Choose the best answer for each question.',
         'A calculator is allowed; check whether it should be in degree or radian mode.',
@@ -171,6 +214,50 @@
         {title:'Mathematics Level 1',time:'60 min',
          note:'50 questions. A scientific or graphing calculator may be used.',
          parts:[{label:'',q:50,time:'60 min',calc:true,type:'mcq',note:''}]}]},
+
+    'EST II — Mathematics Level 1':{
+      title:'EST II — Mathematics Level 1',totalTime:'60 min',
+      bankId:'est2',
+      logo:'EST II',org:'Academic Assessment Ltd.',letters:['A','B','C','D'],
+      instructions:['50 questions — 60 minutes.',
+        'Choose the best answer for each question.',
+        'A calculator is allowed; check whether it should be in degree or radian mode.',
+        'Formulas for the surface area and volume of solids are provided.',
+        'No penalty for incorrect answers.'],
+      sections:[
+        {title:'Mathematics Level 1',time:'60 min',
+         note:'50 questions. A scientific or graphing calculator may be used.',
+         parts:[{label:'',q:50,time:'60 min',calc:true,type:'mcq',note:''}]}]},
+
+    est2l2:{
+      title:'EST II — Mathematics Level 2',totalTime:'60 min',
+      bankId:'est2l2',
+      logo:'EST II Math 2',org:'Academic Assessment Ltd.',letters:['A','B','C','D'],
+      instructions:['50 questions — 60 minutes.',
+        'Covers Advanced Functions & Graphs, Complex Numbers, Matrices & Vectors, Sequences & Series, Probability & Combinatorics, and Introductory Calculus.',
+        'Choose the best answer for each question from the four options (A, B, C, D).',
+        'A scientific or graphing calculator is permitted throughout the examination.',
+        'Reference formulas for solid mensuration and trigonometry are provided. No penalty for guessing.'],
+      sections:[
+        {title:'Mathematics Level 2',time:'60 min',
+         note:'50 questions · 60 minutes · Scientific or graphing calculator permitted.',
+         domains:['Complex Numbers','Functions & Graphs','Introductory Calculus','Matrices & Vectors','Probability','Sequences & Series'],
+         parts:[{label:'',q:50,time:'60 min',calc:true,type:'mcq',note:'Calculator permitted.',letters:['A','B','C','D']}]}]},
+
+    'EST II — Mathematics Level 2':{
+      title:'EST II — Mathematics Level 2',totalTime:'60 min',
+      bankId:'est2l2',
+      logo:'EST II Math 2',org:'Academic Assessment Ltd.',letters:['A','B','C','D'],
+      instructions:['50 questions — 60 minutes.',
+        'Covers Advanced Functions & Graphs, Complex Numbers, Matrices & Vectors, Sequences & Series, Probability & Combinatorics, and Introductory Calculus.',
+        'Choose the best answer for each question from the four options (A, B, C, D).',
+        'A scientific or graphing calculator is permitted throughout the examination.',
+        'Reference formulas for solid mensuration and trigonometry are provided. No penalty for guessing.'],
+      sections:[
+        {title:'Mathematics Level 2',time:'60 min',
+         note:'50 questions · 60 minutes · Scientific or graphing calculator permitted.',
+         domains:['Complex Numbers','Functions & Graphs','Introductory Calculus','Matrices & Vectors','Probability','Sequences & Series'],
+         parts:[{label:'',q:50,time:'60 min',calc:true,type:'mcq',note:'Calculator permitted.',letters:['A','B','C','D']}]}]},
 
     igcse:{
       /* 0580 syllabus 2025–2027 and 2028–2030, Extended tier: two balanced papers (2 h, 100 marks, 50% each),
@@ -1129,7 +1216,7 @@
       sections:[
         {title:'Paper 1 — Pure Mathematics & Calculus',time:'2 hr',
          note:'80 marks. 10–12 structured questions. Calculator permitted.',
-         domains:['Functions, Modulus & Quadratics','Polynomials & Binomial Theorem','Logarithmic & Exponential Functions','Differentiation & Rates of Change','Integration & Kinematics'],
+         domains:['Functions, Modulus & Quadratics','Functions, Modulus & Quadratic Theory','Polynomials & Binomial Theorem','Polynomials, Remainder Theorem & Binomial Theorem','Logarithmic & Exponential Functions','Logarithms, Exponentials & Straight-Line Reduction','Differentiation & Rates of Change','Differentiation, Rules & Rates of Change','Integration & Kinematics','Integration, Areas & Kinematics'],
          parts:[{label:'',q:11,time:'120 min',calc:true,type:'frq',note:'Show all working.'}]}]},
 
     'Cambridge IGCSE 0606 — Paper 1':{
@@ -1142,7 +1229,7 @@
       sections:[
         {title:'Paper 1 (0606/1)',time:'2 hr',
          note:'80 marks. Answer all questions. Calculator permitted.',
-         domains:['Functions, Modulus & Quadratics','Polynomials & Binomial Theorem','Logarithmic & Exponential Functions','Differentiation & Rates of Change','Integration & Kinematics'],
+         domains:['Functions, Modulus & Quadratics','Functions, Modulus & Quadratic Theory','Polynomials & Binomial Theorem','Polynomials, Remainder Theorem & Binomial Theorem','Logarithmic & Exponential Functions','Logarithms, Exponentials & Straight-Line Reduction','Differentiation & Rates of Change','Differentiation, Rules & Rates of Change','Integration & Kinematics','Integration, Areas & Kinematics'],
          parts:[{label:'',q:11,time:'120 min',calc:true,type:'frq',note:'Show all working.'}]}]},
 
     'Cambridge IGCSE 0606 — Paper 2':{
@@ -1155,7 +1242,7 @@
       sections:[
         {title:'Paper 2 (0606/2)',time:'2 hr',
          note:'80 marks. Answer all questions. Calculator permitted.',
-         domains:['Trigonometry & Circular Measure','Permutations & Combinations','Vectors in Two Dimensions','Integration & Kinematics','Differentiation & Rates of Change'],
+         domains:['Trigonometry & Circular Measure','Trigonometric Functions & Circular Measure','Permutations & Combinations','Vectors in Two Dimensions','Vectors in Two Dimensions & Relative Motion','Integration & Kinematics','Integration, Areas & Kinematics','Differentiation & Rates of Change','Differentiation, Rules & Rates of Change'],
          parts:[{label:'',q:11,time:'120 min',calc:true,type:'frq',note:'Show all working.'}]}]},
 
     'Edexcel Further Pure 4PM1 — Paper 1':{
@@ -1168,7 +1255,7 @@
       sections:[
         {title:'Paper 1 (4PM1/01)',time:'2 hr',
          note:'100 marks. Answer all questions. Calculator permitted.',
-         domains:['Functions, Modulus & Quadratics','Polynomials & Binomial Theorem','Logarithmic & Exponential Functions','Trigonometry & Circular Measure','Differentiation & Rates of Change'],
+         domains:['Functions, Modulus & Quadratics','Functions, Modulus & Quadratic Theory','Polynomials & Binomial Theorem','Polynomials, Remainder Theorem & Binomial Theorem','Logarithmic & Exponential Functions','Logarithms, Exponentials & Straight-Line Reduction','Trigonometry & Circular Measure','Trigonometric Functions & Circular Measure','Differentiation & Rates of Change','Differentiation, Rules & Rates of Change'],
          parts:[{label:'',q:10,time:'120 min',calc:true,type:'frq',note:'Show all working.'}]}]},
 
     'Edexcel Further Pure 4PM1 — Paper 2':{
@@ -1181,7 +1268,7 @@
       sections:[
         {title:'Paper 2 (4PM1/02)',time:'2 hr',
          note:'100 marks. Answer all questions. Calculator permitted.',
-         domains:['Permutations & Combinations','Vectors in Two Dimensions','Integration & Kinematics','Differentiation & Rates of Change','Functions, Modulus & Quadratics'],
+         domains:['Permutations & Combinations','Vectors in Two Dimensions','Vectors in Two Dimensions & Relative Motion','Integration & Kinematics','Integration, Areas & Kinematics','Differentiation & Rates of Change','Differentiation, Rules & Rates of Change','Functions, Modulus & Quadratics','Functions, Modulus & Quadratic Theory'],
          parts:[{label:'',q:10,time:'120 min',calc:true,type:'frq',note:'Show all working.'}]}]},
 
     mathai:{
@@ -1676,7 +1763,7 @@
     h+='<div class="fep-cover-page">';
     h+='<div class="fep-official-bar">'+esc(spec.org||'ClipSAT Practice')+'</div>';
     h+='<div class="fep-header">';
-    h+='<div class="fep-logo-wrap" style="text-align:center;padding:10px 0 4px">'+'<img src="'+(document.getElementById('site-logo-img')||{src:''}).src+'" class="fep-logo-img" alt="ClipSAT Logo"></div>';
+    h+='<div class="fep-logo-wrap" style="text-align:center;padding:10px 0 4px">'+'<img src="'+((document.getElementById('site-logo-img')||{}).src||'/clipsat-mark.png')+'" class="fep-logo-img" alt="ClipSAT Logo"></div>';
     h+='<div class="fep-top-bar"><span class="fep-exam-logo">'+esc(spec.logo||spec.title)+'</span><span class="fep-badge">'+(isIBExam?'IB DP Official Format Examination':'Practice Examination')+'</span></div>';
     h+='<h1 class="fep-title">'+esc(spec.title)+'</h1>';
     if(viewId === 'qudrat' || viewId === 'tahsili'){

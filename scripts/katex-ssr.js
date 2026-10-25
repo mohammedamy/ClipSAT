@@ -34,81 +34,60 @@
 'use strict';
 
 const katex = require('katex');
-const cheerio = require('cheerio');
 
-const SKIP_TAGS = new Set(['script', 'style', 'textarea', 'pre', 'code', 'noscript', 'annotation']);
+// Matches HTML comments, skipped container elements (<script>, <style>, <textarea>, <pre>,
+// <code>, <noscript>, <annotation>), or individual HTML tags (<...>).
+const TOKEN_RE = /(<!--[\s\S]*?-->|<(?:script|style|textarea|pre|code|noscript|annotation)\b[^>]*>[\s\S]*?<\/(?:script|style|textarea|pre|code|noscript|annotation)>|<[^>]+>)/gi;
 
 // Matches \( ... \) (inline, group 1) or \[ ... \] (display, group 2).
 // Non-greedy, single-pair matching only — same as KaTeX auto-render's
 // default delimiter behavior (no nested same-kind delimiters).
 const MATH_RE = /\\\((.+?)\\\)|\\\[(.+?)\\\]/gs;
 
-function escapeHtml(s) {
-  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const RENDER_CACHE = new Map();
+
+function decodeHtmlEntities(s) {
+  if (s.indexOf('&') === -1) return s;
+  return String(s)
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&amp;/g, '&');
 }
 
-/**
- * Renders every \(...\)/\[...\] pair found in `text` to KaTeX HTML, keeping
- * surrounding plain text intact (HTML-escaped, since the result is spliced
- * back in as raw HTML). Returns null if the text has no math in it, so the
- * caller can skip touching that text node at all.
- */
-function renderMathInText(text, warn) {
-  MATH_RE.lastIndex = 0;
-  let match = MATH_RE.exec(text);
-  if (!match) return null;
-
-  let result = '';
-  let lastIndex = 0;
-  do {
-    result += escapeHtml(text.slice(lastIndex, match.index));
-    const isDisplay = match[2] !== undefined;
-    const src = isDisplay ? match[2] : match[1];
-    const rawDelimited = match[0];
+function renderChunkMath(text, warn) {
+  if (!text || (text.indexOf('\\(') === -1 && text.indexOf('\\[') === -1)) return text;
+  return text.replace(MATH_RE, (rawDelimited, inlineSrc, displaySrc) => {
+    const isDisplay = displaySrc !== undefined;
+    const src = decodeHtmlEntities(isDisplay ? displaySrc : inlineSrc);
+    const cacheKey = (isDisplay ? 'D:' : 'I:') + src;
+    const cached = RENDER_CACHE.get(cacheKey);
+    if (cached !== undefined) return cached;
     try {
-      result += katex.renderToString(src, { displayMode: isDisplay, throwOnError: false });
+      const rendered = katex.renderToString(src, { displayMode: isDisplay, throwOnError: false });
+      RENDER_CACHE.set(cacheKey, rendered);
+      return rendered;
     } catch (err) {
       warn(rawDelimited, err.message);
-      result += escapeHtml(rawDelimited);
+      return rawDelimited;
     }
-    lastIndex = MATH_RE.lastIndex;
-    match = MATH_RE.exec(text);
-  } while (match);
-  result += escapeHtml(text.slice(lastIndex));
-  return result;
+  });
 }
 
 /**
- * Walks `root`'s descendants (cheerio node), rendering math in every text
- * node found outside SKIP_TAGS. Mutates `$` in place.
- */
-function walk($, root, warn) {
-  $(root)
-    .contents()
-    .each((_, node) => {
-      if (node.type === 'tag') {
-        if (SKIP_TAGS.has(node.name)) return;
-        if ($(node).hasClass('katex')) return;
-        walk($, node, warn);
-      } else if (node.type === 'text') {
-        const text = node.data;
-        if (!text || (text.indexOf('\\(') === -1 && text.indexOf('\\[') === -1)) return;
-        const rendered = renderMathInText(text, warn);
-        if (rendered !== null) $(node).replaceWith(rendered);
-      }
-    });
-}
-
-/**
- * Renders every math expression in <body> to KaTeX HTML in place. Returns the
- * mutated HTML string, or the original `html` untouched if no math delimiters
- * are present.
+ * Renders every math expression in <body> to KaTeX HTML in place without
+ * constructing a full DOM AST in memory. Returns the mutated HTML string,
+ * or the original `html` untouched if no math delimiters are present.
  */
 function renderChapterMath(html, pageLabel) {
   if (!html || (html.indexOf('\\(') === -1 && html.indexOf('\\[') === -1)) return html;
-  const $ = cheerio.load(html, { decodeEntities: false });
-  const body = $('body');
-  if (body.length === 0) return html;
+  const bodyOpen = /<body\b[^>]*>/i.exec(html);
+  if (!bodyOpen) return html;
+  const bodyStart = bodyOpen.index + bodyOpen[0].length;
+  const bodyCloseIdx = html.lastIndexOf('</body>');
+  const bodyEnd = bodyCloseIdx !== -1 ? bodyCloseIdx : html.length;
+  const bodyHtml = html.slice(bodyStart, bodyEnd);
 
   let warnCount = 0;
   const warn = (rawDelimited, message) => {
@@ -118,13 +97,27 @@ function renderChapterMath(html, pageLabel) {
     );
   };
 
-  body.each((_, el) => walk($, el, warn));
+  const parts = [html.slice(0, bodyStart)];
+  let lastIdx = 0;
+  TOKEN_RE.lastIndex = 0;
+  let m;
+  while ((m = TOKEN_RE.exec(bodyHtml)) !== null) {
+    if (m.index > lastIdx) {
+      parts.push(renderChunkMath(bodyHtml.slice(lastIdx, m.index), warn));
+    }
+    parts.push(m[0]);
+    lastIdx = TOKEN_RE.lastIndex;
+  }
+  if (lastIdx < bodyHtml.length) {
+    parts.push(renderChunkMath(bodyHtml.slice(lastIdx), warn));
+  }
+  parts.push(html.slice(bodyEnd));
 
   if (warnCount > 0) {
     console.warn(`[katex-ssr] ${pageLabel}: ${warnCount} expression(s) left as raw text — see warnings above.`);
   }
 
-  return $.html();
+  return parts.join('');
 }
 
 module.exports = { renderChapterMath };
