@@ -356,16 +356,27 @@
         if(isFinite(dMin) && (domMatch[2] === '(' ? xVal <= dMin : xVal < dMin)) return NaN;
         if(isFinite(dMax) && (domMatch[5] === ')' ? xVal >= dMax : xVal > dMax)) return NaN;
       }
-      var pyIf = e.match(/^(.*?)\s+if\s+(.*?)\s+else\s+(.*)$/i);
-      if(pyIf){
-        e = '((' + pyIf[2] + ') ? (' + pyIf[1] + ') : (' + pyIf[3] + '))';
+      for(var pyIter = 0; pyIter < 5; pyIter++){
+        var innerPy = e.match(/\(([^()]*?)\s+if\s+([^()]*?)\s+else\s+([^()]*?)\)/i);
+        if(innerPy){
+          e = e.replace(innerPy[0], '((' + innerPy[2] + ') ? (' + innerPy[1] + ') : (' + innerPy[3] + '))');
+          continue;
+        }
+        var pyIf = e.match(/^(.*?)\s+if\s+(.*?)\s+else\s+(.*)$/i);
+        if(pyIf){
+          e = '((' + pyIf[2] + ') ? (' + pyIf[1] + ') : (' + pyIf[3] + '))';
+        } else {
+          break;
+        }
       }
       e = e.replace(/\band\b/g, '&&').replace(/\bor\b/g, '||');
       e = e.replace(/\b(?:sp|np|math|Math)\.Integer\s*\(\s*([^)]+)\s*\)/g, '($1)');
       e = e.replace(/\b(?:sp|np|math|Math)\.Rational\s*\(\s*([^,]+)\s*,\s*([^)]+)\s*\)/g, '(($1)/($2))');
       e = e.replace(/\b(?:sp|np|math|Math)\.log\s*\(\s*([^,()]+)\s*,\s*([^,()]+)\s*\)/g, '(Math.log($1)/Math.log($2))');
       e = e.replace(/\b(?:sp|np|math|Math)\./g, '');
+      e = e.replace(/(^|[+\-*/^,(]\s*)\(\s*(-?\d+(?:\.\d+)?)\s*\)/g, '$1$2');
       e = e.replace(/-\s*-/g, '+ ');
+      e = e.replace(/\+\s*-/g, '- ');
       e = e.replace(/\*\*/g, '^');
       e = e.replace(/(^|[^a-zA-Z0-9_])(\d+(?:\.\d+)?)\s*([xtw]\b|\(|(?:sin|cos|tan|asin|acos|atan|sqrt|cbrt|abs|ln|log|log2|log10|exp|pi|PI)\b)/g, '$1$2*$3');
       e = e.replace(/\)\s*(\(|[xtw]\b|\d)/g, ')*$1');
@@ -375,9 +386,9 @@
       }
       e = e.replace(/(^|[^a-zA-Z0-9_\.])(?:pi|PI)([^a-zA-Z0-9_]|$)/g, '$1Math.PI$2');
       e = e.replace(/(^|[^a-zA-Z0-9_\.])e([^a-zA-Z0-9_]|$)/g, '$1Math.E$2');
-      for(var pi = 0; pi < 4; pi++){
+      for(var pi = 0; pi < 6; pi++){
         var prevE = e;
-        e = e.replace(/(\([^()]+\)|[a-zA-Z0-9_\.]+)\s*\^\s*(-?\s*\([^()]+\)|-?\s*[a-zA-Z0-9_\.]+)/g, 'Math.pow($1, $2)');
+        e = e.replace(/(\((?:[^()]|\([^()]*\))*\)|[a-zA-Z0-9_\.]+)\s*\^\s*(-?\s*\((?:[^()]|\([^()]*\))*\)|-?\s*[a-zA-Z0-9_\.]+)/g, 'Math.pow($1, $2)');
         if(e === prevE) break;
       }
       e = e.replace(/\^/g, '**');
@@ -1100,21 +1111,60 @@
         verts=[fig.A, fig.B, fig.C];
       }
       var hasNamedC90 = (fig.angleC === '90°' || fig.angleC === '90');
-      if(!Array.isArray(verts)||verts.length<3){
-        var tA=+fig.a||5, tB=+fig.b||12;
-        verts=[[0,0],[tB,0],(fig.rightAngle||fig.right!==undefined||hasNamedC90)?[0,tA]:[tB*0.35,tA*0.9]];
-      }
-      var triLabels = Array.isArray(fig.labels) ? fig.labels : ((fig.labels && typeof fig.labels==='object' && (fig.labels.A||fig.labels.B||fig.labels.C)) ? [fig.labels.A||'A', fig.labels.B||'B', fig.labels.C||'C'] : (hasNamedC90 ? ['C','A','B'] : ['B','C','A']));
-      var triSides = Array.isArray(fig.sides) ? fig.sides : ((fig.sides && typeof fig.sides==='object') ? [fig.sides.c||fig.sides.ab, fig.sides.a||fig.sides.bc, fig.sides.b||fig.sides.ac] : ((fig.labels && typeof fig.labels==='object' && !Array.isArray(fig.labels)) ? [fig.labels.bc||fig.b, fig.labels.ac||fig.c, fig.labels.ab||fig.a] : (fig.labelA||fig.labelB||fig.labelC||fig.a||fig.b||fig.c ? [fig.labelB||fig.b, fig.labelC||fig.c, fig.labelA||fig.a] : [])));
+      var triLabels = Array.isArray(fig.labels) ? fig.labels.slice() : ((fig.labels && typeof fig.labels==='object' && (fig.labels.A||fig.labels.B||fig.labels.C)) ? [fig.labels.A||'A', fig.labels.B||'B', fig.labels.C||'C'] : (hasNamedC90 ? ['C','A','B'] : ['B','C','A']));
+      var triSides = Array.isArray(fig.sides) ? fig.sides.slice() : ((fig.sides && typeof fig.sides==='object') ? [fig.sides.c||fig.sides.ab, fig.sides.a||fig.sides.bc, fig.sides.b||fig.sides.ac] : ((fig.labels && typeof fig.labels==='object' && !Array.isArray(fig.labels)) ? [fig.labels.bc||fig.b, fig.labels.ac||fig.c, fig.labels.ab||fig.a] : (fig.labelA||fig.labelB||fig.labelC||fig.a||fig.b||fig.c ? [fig.labelB||fig.b, fig.labelC||fig.c, fig.labelA||fig.a] : [])));
       var triRight = fig.right;
+      if(triRight === undefined && fig.rightAngle !== undefined && typeof fig.rightAngle === 'number') triRight = fig.rightAngle;
       if(triRight === undefined && hasNamedC90) triRight = 0;
       if(triRight === undefined && fig.rightAt !== undefined){
-        if(fig.rightAt === 'A') triRight = 0;
+        var rIdxByLbl = triLabels.indexOf(fig.rightAt);
+        if(rIdxByLbl >= 0) triRight = rIdxByLbl;
+        else if(fig.rightAt === 'A') triRight = 0;
         else if(fig.rightAt === 'B') triRight = 1;
         else if(fig.rightAt === 'C') triRight = 2;
-        else { var rIdx = triLabels.indexOf(fig.rightAt); if(rIdx >= 0) triRight = rIdx; }
       }
-      var triAngles = Array.isArray(fig.angles) ? fig.angles : ((fig.angleA||fig.angleB||fig.angleC) ? (hasNamedC90 ? ['', fig.angleA||'', fig.angleB||''] : [fig.angleB||'', fig.angleC||'', fig.angleA||'']) : []);
+      if(!Array.isArray(verts)||verts.length<3){
+        var sNum0 = parseFloat(String(triSides[0]||'').replace(/[^0-9.]/g,'')) || 0;
+        var sNum2 = parseFloat(String(triSides[2]||'').replace(/[^0-9.]/g,'')) || 0;
+        var tA = +fig.a || sNum2 || 5, tB = +fig.b || sNum0 || 12;
+        if(triRight === 2){
+          verts = [[0, tA], [tB, 0], [0, 0]];
+        } else if(triRight === 1){
+          verts = [[0, tA], [0, 0], [tB, 0]];
+        } else {
+          verts = [[0,0],[tB,0],(fig.rightAngle||triRight!==undefined||hasNamedC90)?[0,tA]:[tB*0.35,tA*0.9]];
+        }
+      }
+      var triAngles = Array.isArray(fig.angles) ? fig.angles.slice() : ((fig.angleA||fig.angleB||fig.angleC) ? (hasNamedC90 ? ['', fig.angleA||'', fig.angleB||''] : [fig.angleB||'', fig.angleC||'', fig.angleA||'']) : []);
+      var geomRightIdx = -1;
+      for(var gri=0; gri<3; gri++){
+        var gp0=verts[gri], gp1=verts[(gri+1)%3], gp2=verts[(gri+2)%3];
+        var gvx1=gp1[0]-gp0[0], gvy1=gp1[1]-gp0[1], gvx2=gp2[0]-gp0[0], gvy2=gp2[1]-gp0[1];
+        var gl1=Math.hypot(gvx1,gvy1)||1, gl2=Math.hypot(gvx2,gvy2)||1;
+        if(Math.abs(gvx1*gvx2 + gvy1*gvy2)/(gl1*gl2) < 0.04){ geomRightIdx = gri; break; }
+      }
+      var hasAny90 = triRight !== undefined || fig.rightAngle === true || triAngles.some(function(a){ return /^\s*90\s*(?:°|\^\\circ)?\s*$/.test(String(a||'')); });
+      if(hasAny90 && geomRightIdx >= 0){
+        triRight = geomRightIdx;
+      }
+      if(triAngles.length){
+        var displacedAcute = '';
+        for(var ai=0; ai<3; ai++){
+          var aStr = String(triAngles[ai] || '').trim();
+          if(/^\s*90\s*(?:°|\^\\circ)?\s*$/.test(aStr)){
+            triAngles[ai] = '';
+          } else if(ai === triRight && aStr){
+            displacedAcute = aStr;
+            triAngles[ai] = '';
+          }
+        }
+        if(displacedAcute){
+          for(var bi=1; bi<3; bi++){
+            var candIdx = (triRight + bi) % 3;
+            if(!triAngles[candIdx]){ triAngles[candIdx] = displacedAcute; break; }
+          }
+        }
+      }
       var pad3=32;
       /* if an exterior-angle construction is requested, its extension point(s)
          must be included in the bbox BEFORE scaling, or the auxiliary ray gets

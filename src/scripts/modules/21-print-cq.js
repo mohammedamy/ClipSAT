@@ -188,7 +188,7 @@ window.printCQ = function(btn) {
     qHTML +
     /* Footer */
     '<div class="pq-footer">' +
-      '<span>ClipSAT · clipsat.com · Mr. Mohamed Abdallah</span>' +
+      '<span>ClipSAT · clipsat.org · Mr. Mohamed Abdallah</span>' +
       '<span>' + courseLabel + ' · ' + today + '</span>' +
     '</div>' +
     '</body>' +

@@ -18,7 +18,7 @@ Setup
 
   Environment variables (create .env in same directory):
     ANTHROPIC_API_KEY=sk-ant-…
-    CLIPSAT_ALLOWED_ORIGIN=https://www.clipsat.com    # or http://localhost for dev
+    CLIPSAT_ALLOWED_ORIGIN=https://www.clipsat.org    # or http://localhost for dev
     FLASK_SECRET_KEY=<random 32-char string>
     FLASK_ENV=production                               # or development
 

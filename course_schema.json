@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://clipsat.com/schemas/course_schema.json",
+  "$id": "https://clipsat.org/schemas/course_schema.json",
   "title": "ClipSAT Course Schema (v2 — blocks model)",
   "description": "This top-level shape (a whole course: id + meta + chapters[]) is documentation/illustration ONLY — see the 'examples' block below for a full worked case. What's actually validated file-by-file (scripts/validate-content.js) is #/definitions/courseMeta against content/{track}/_meta.json, and #/definitions/chapter against each content/{track}/{chapter-slug}.json — one chapter per file, per docs/PHASE1-2_TARGET_ARCHITECTURE.md §2.2, so editing one chapter never requires touching or re-reading a file with every other chapter in it. NOT the format bank-data/*.json question banks use — those have their own ad hoc shape and are intentionally left alone. v2 replaces the original fixed definitions/theorems/keyFormulas/workedExamples split (v1, never adopted) with an ordered blocks[] model, after v1 was found not to match real chapter markup during the WP6 qudrat pilot — see docs/DECISIONS/0002-blocks-model-not-fixed-fields.md.",
   "type": "object",

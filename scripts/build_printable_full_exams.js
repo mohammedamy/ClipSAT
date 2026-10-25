@@ -2020,7 +2020,7 @@ function renderPrintableDocument({
 
   h += `<div class="fep-footer">
       <span>&copy; ClipSAT &middot; Official Printable Examination Series (${escHtml(paperTitle)} — #${examNumber})</span>
-      <span>clipsat.com</span>
+      <span>clipsat.org</span>
     </div>
   </div>
   <script id="clipsat-cbt-payload" type="application/json">${safeJsonPayload}</script>
