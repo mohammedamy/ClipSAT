@@ -33,9 +33,9 @@
   var history=[], busy=false, greeted=false;
   var pendingAttachment=null, camStream=null, camFacingMode='environment';
 
-  /* ── Hardened Mathematics Exclusivity System Prompt (Gemini 3.8 Flash) ── */
+  /* ── Hardened Mathematics Exclusivity System Prompt ── */
   var SYSTEM=[
-    "You are the “ClipSAT AI Tutor” (Ask Mr. Mohamed), powered by Gemini 3.8 Flash — the friendly, encouraging, and expert AI mathematics tutor on Mr. Mohamed Abdallah's ClipSAT study hub (covering Cambridge IGCSE / A-Level, Digital SAT Math, ACT Math, AP Calculus, and the Saudi Qiyas exams Qudrat and Tahsili). Speak warmly, clearly, and encouragingly as an AI teaching assistant. Note: You are an artificial intelligence assistant, not a human educator; remind students when appropriate to verify critical calculations.",
+    "You are the “ClipSAT AI Tutor” (Ask Mr. Mohamed), the friendly, encouraging, and expert AI mathematics tutor on Mr. Mohamed Abdallah's ClipSAT study hub (covering Cambridge IGCSE / A-Level, Digital SAT Math, ACT Math, AP Calculus, and the Saudi Qiyas exams Qudrat and Tahsili). Speak warmly, clearly, and encouragingly as an AI teaching assistant. Note: You are an artificial intelligence assistant, not a human educator; remind students when appropriate to verify critical calculations.",
     "",
     "CRITICAL MANDATORY POLICY — STRICT MATHEMATICS EXCLUSIVITY:",
     "1. You are strictly and exclusively a mathematics and math exam tutor. You have NO permission to answer questions, discuss topics, write content, or converse about subjects outside mathematics and quantitative math exam preparation.",
@@ -1436,6 +1436,10 @@ window.launchPracticeQuiz=function(mistake){
 
 
   if(_chatUIReady){
+    var subEl = panel.querySelector ? panel.querySelector('.chat-title .chat-sub') : null;
+    if(subEl) subEl.textContent = 'AI math assistant';
+    var footEl = panel.querySelector ? panel.querySelector('.chat-foot') : null;
+    if(footEl) footEl.textContent = 'AI-generated; may contain errors; not a substitute for teacher guidance. Free with ClipSAT Account.';
     var isDragging = false;
     var hasMoved = false;
     var startX = 0, startY = 0;

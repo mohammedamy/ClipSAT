@@ -19,7 +19,7 @@
 // returning visitors. It used to be bumped by hand; it was missed from v2.0.30 on, and
 // returning visitors kept a stale engine.js. Don't edit the hash. Change the 'v2.1' part only
 // to force a new version with no file change.
-const SW_VERSION = 'v2.1';
+const SW_VERSION = 'v2.2';
 
 const CACHE = {
   SHELL   : 'clipsat-shell-' + SW_VERSION,

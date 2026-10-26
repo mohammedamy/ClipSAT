@@ -255,7 +255,7 @@ it('public/js/engine.js contains the compiled guardrail logic', () => {
 
 // ── 8. Gemini 3.8 Flash Multimodal & Graph Rendering Verification ──
 it('Supports Gemini 3.8 Flash, single-question attachments (image/PDF/DOCX/camera/handwriting), and figure_json diagrams', () => {
-  assert.ok(SYSTEM.includes('Gemini 3.8 Flash'), 'SYSTEM prompt must reference Gemini 3.8 Flash');
+  assert.ok(!SYSTEM.includes('Gemini 3.8'), 'SYSTEM prompt must not expose model version name in persona');
   assert.ok(SYSTEM.includes('SINGLE-QUESTION IMAGE, CAMERA, 1-PAGE PDF, DOCX & HANDWRITING RULES'), 'SYSTEM prompt must include single-question & handwriting rules');
   assert.ok(SYSTEM.includes('figure_json'), 'SYSTEM prompt must instruct bot to emit figure_json diagrams when helpful');
   assert.ok(moduleSource.includes('processImageFile') && moduleSource.includes('processPdfFile') && moduleSource.includes('processDocxFile'), 'Module must include image, 1-page PDF, and 1-page DOCX processors');
