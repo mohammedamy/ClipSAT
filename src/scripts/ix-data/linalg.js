@@ -568,12 +568,12 @@ D["la-matrices"] = [
       {
         "l": "The inverse is \\(A^{-1} = \\dfrac{1}{\\det(A)}\\begin{pmatrix}d & -b \\\\ -c & a\\end{pmatrix}\\). Entry (1,1) of \\(A^{-1}\\) is:",
         "a": "2",
-        "h": "d = 2"
+        "h": "Read the bottom-right entry \\(d\\) from the original matrix."
       },
       {
         "l": "Entry (1,2) of \\(A^{-1}\\) is:",
         "a": "-5",
-        "h": "-b = -5"
+        "h": "Negate the top-right entry \\(b\\) of the matrix to obtain \\(-b\\)."
       }
     ],
     "steps_ar": [
@@ -585,12 +585,12 @@ D["la-matrices"] = [
       {
         "l": "المعكوس هو \\(A^{-1} = \\dfrac{1}{\\det(A)}\\begin{pmatrix}d & -b \\\\ -c & a\\end{pmatrix}\\). العنصر (1,1) في \\(A^{-1}\\) هو:",
         "a": "2",
-        "h": "d = 2"
+        "h": "اقرأ العنصر السفلي الأيمن \\(d\\) من المصفوفة الأصلية."
       },
       {
         "l": "العنصر (1,2) في \\(A^{-1}\\) هو:",
         "a": "-5",
-        "h": "-b = -5"
+        "h": "اعكس إشارة العنصر العلوي الأيمن \\(b\\) للحصول على \\(-b\\)."
       }
     ]
   },
@@ -1360,7 +1360,7 @@ D["la-vectorspaces"] = [
       {
         "l": "Evaluate \\(y\\) when \\(x = 6\\): \\(y =\\)",
         "a": "4",
-        "h": "Compute (2)^2 + 0."
+        "h": "Compute \\((2)^2 + 0\\)."
       }
     ],
     "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (Vector Spaces, Subspaces & The Four Fundamental Subspaces)",
@@ -1378,7 +1378,7 @@ D["la-vectorspaces"] = [
       {
         "l": "احسب قيمة \\(y\\) عندما \\(x = 6\\):",
         "a": "4",
-        "h": "احسب 4 + 0."
+        "h": "احسب \\(4 + 0\\)."
       }
     ]
   }
@@ -1973,7 +1973,7 @@ D["la-lintrans"] = [
       {
         "l": "Evaluate \\(y\\) when \\(x = 5\\): \\(y =\\)",
         "a": "8",
-        "h": "Compute (2)^2 + 4."
+        "h": "Compute \\((2)^2 + 4\\)."
       }
     ],
     "ti_ar": "بناء الخطوات: إكمال المربع وإيجاد القيمة الصغرى (Linear Transformations, Matrix Representations & Change of Basis)",
@@ -1991,7 +1991,7 @@ D["la-lintrans"] = [
       {
         "l": "احسب قيمة \\(y\\) عندما \\(x = 5\\):",
         "a": "8",
-        "h": "احسب 4 + 4."
+        "h": "احسب \\(4 + 4\\)."
       }
     ]
   }

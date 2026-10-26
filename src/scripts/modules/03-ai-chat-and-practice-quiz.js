@@ -671,7 +671,7 @@ window.launchPracticeQuiz=function(mistake){
         var mcq=bank.pool.filter(function(q){return q.type==='mcq'&&q.choices&&q.choices.length;});
         coursePool = mcq.length ? mcq : bank.pool.filter(function(q){return q.choices&&q.choices.length;});
       } else {
-        var _c=function(a,lbl){return (a||[]).map(function(q){return {text:q.q||q.text||'',choices:q.choices||[],answer:q.answer,sol:q.sol||'',domain:q.domain||'',tags:q.tags,level:lbl};});};
+        var _c=function(a,lbl){return (a||[]).map(function(q){return {text:q.q||q.text||'',choices:q.choices||[],answer:q.answer,sol:q.sol||'',hints:q.hints,domain:q.domain||'',tags:q.tags,level:lbl};});};
         coursePool=_c(bank.easy,'Easy').concat(_c(bank.medium,'Medium')).concat(_c(bank.hard,'Hard'));
       }
       if(!coursePool.length){out.innerHTML='<p class="cq-msg">No multiple-choice questions in the bank for this course.</p>';return;}

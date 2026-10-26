@@ -511,7 +511,7 @@
           "ar": null
         },
         "solution": {
-          "en": "<p>First check if \\( \\mathbf{F} \\) is conservative: \\[ P_y = e^y, \\; Q_x = e^y; \\quad P_z = 0, \\; R_x = 0; \\quad Q_z = e^z + (z+1)e^z = (z+2)e^z, \\; R_y = 0. \\] Notice \\( R_y = 0 \\) while \\( Q_z = (z+2)e^z \\neq 0 \\). Thus \\( \\mathbf{F} \\) is not conservative and the Fundamental Theorem cannot be used directly.</p><p>Evaluate directly: \\( \\mathbf{r}'(t) = \\langle 1, 2t, 3t^2 \\rangle \\). \\( x = t, y = t^2, z = t^3 \\). \\[ \\mathbf{F}(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t) = e^{t^2}(1) + \\left[ t e^{t^2} + (t^3+1)e^{t^3} \\right](2t) + (t^3+2)e^{t^3}(3t^2). \\] Regroup terms: \\[ \\left( e^{t^2} + 2t^2 e^{t^2} \\right) + \\left( 2t(t^3+1)e^{t^3} + 3t^2(t^3+2)e^{t^3} \\right) = \\frac{d}{dt}\\left( t e^{t^2} \\right) + \\frac{d}{dt}\\left( (t^3+1)e^{t^3} \\cdot t^2 \\dots \\right). \\] Alternatively, evaluate \\( \\int_0^1 (e^{t^2} + 2t^2 e^{t^2})\\,dt = \\Big[ t e^{t^2} \\Big]_0^1 = e \\). The remaining \\( z \\)-terms integrate to: \\[ \\int_0^1 \\left[ 2t^4 e^{t^3} + 2t e^{t^3} + 3t^5 e^{t^3} + 6t^2 e^{t^3} \\right] dt. \\] Substituting \\( u = t^3 \\), \\( du = 3t^2 dt \\): the integral yields \\( 2e - 1 \\). Combined work: \\( 3e - 1 \\).</p>",
+          "en": "<p>First check if \\( \\mathbf{F} \\) is conservative: \\[ P_y = e^y, \\; Q_x = e^y; \\quad P_z = 0, \\; R_x = 0; \\quad Q_z = e^z + (z+1)e^z = (z+2)e^z, \\; R_y = 0. \\] Notice \\( R_y = 0 \\) while \\( Q_z = (z+2)e^z\neq 0 \\). Thus \\( \\mathbf{F} \\) is not conservative and the Fundamental Theorem cannot be used directly.</p><p>Evaluate directly: \\( \\mathbf{r}'(t) = \\langle 1, 2t, 3t^2 \\rangle \\). \\( x = t, y = t^2, z = t^3 \\). \\[ \\mathbf{F}(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t) = e^{t^2}(1) + \\left[ t e^{t^2} + (t^3+1)e^{t^3} \\right](2t) + (t^3+2)e^{t^3}(3t^2). \\] Regroup terms: \\[ \\left( e^{t^2} + 2t^2 e^{t^2} \\right) + \\left( 2t(t^3+1)e^{t^3} + 3t^2(t^3+2)e^{t^3} \\right) = \\frac{d}{dt}\\left( t e^{t^2} \\right) + \\frac{d}{dt}\\left( (t^3+1)e^{t^3} \\cdot t^2 \\dots \\right). \\] Alternatively, evaluate \\( \\int_0^1 (e^{t^2} + 2t^2 e^{t^2})\\,dt = \\Big[ t e^{t^2} \\Big]_0^1 = e \\). The remaining \\( z \\)-terms integrate to: \\[ \\int_0^1 \\left[ 2t^4 e^{t^3} + 2t e^{t^3} + 3t^5 e^{t^3} + 6t^2 e^{t^3} \\right] dt. \\] Substituting \\( u = t^3 \\), \\( du = 3t^2 dt \\): the integral yields \\( 2e - 1 \\). Combined work: \\( 3e - 1 \\).</p>",
           "ar": null
         },
         "hints": [
@@ -520,7 +520,7 @@
             "ar": null
           },
           {
-            "en": "Notice \\( R_y = 0 \\) while \\( Q_z = (z+2)e^z \\neq 0 \\). Thus \\( \\mathbf{F} \\) is not conservative and the Fundamental Theorem cannot be used directly.",
+            "en": "Notice \\( R_y = 0 \\) while \\( Q_z = (z+2)e^z eq 0 \\). Thus \\( \\mathbf{F} \\) is not conservative and the Fundamental Theorem cannot be used directly. Evaluate directly: \\( \\mathbf{r}'(t) = \\langle 1, 2t, 3t^2 \\rangle \\). \\( x = t, y = t^2, z = t^3 \\).",
             "ar": null
           },
           {
@@ -545,7 +545,7 @@
             "ar": null
           },
           {
-            "en": "Initial point: \\( \\mathbf{r}(0) = \\langle \\cos 0, \\sin 0, 0 \\rangle = (1, 0, 0) \\).",
+            "en": "Initial point: \\( \\mathbf{r}(0) = \\langle \\cos 0, \\sin 0, 0 \\rangle = (1, 0, 0) \\). Terminal point: \\( \\mathbf{r}(2\\pi) = \\langle \\cos(2\\pi), \\sin(2\\pi), 2\\pi \\rangle = (1, 0, 2\\pi) \\).",
             "ar": null
           },
           {
@@ -566,11 +566,11 @@
             "ar": null
           },
           {
-            "en": "At the point (1, 1), we have: \\( x = 1 \\) and \\( y = 1 \\).",
+            "en": "At the point (1, 1), we have: \\( x = 1 \\) and \\( y = 1 \\). Substituting these values into \\( \\mathbf{F}(x, y) \\) gives: \\( \\mathbf{F}(1, 1) = \\langle 2(1), 3(1) \\rangle = \\langle 2, 3 \\rangle \\).",
             "ar": null
           },
           {
-            "en": "Option D is incorrect as it uses the x-component from (2,y) and the y-component from (x,2).",
+            "en": "Therefore, the vector field at the point (1, 1) is \\(\\langle 2, 3 \\rangle\\).",
             "ar": null
           }
         ],

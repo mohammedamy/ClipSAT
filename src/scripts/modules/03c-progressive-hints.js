@@ -48,13 +48,13 @@
 
     /* If explicit 3-tier hints array exists on the item (and is not legacy boilerplate), normalize and return it */
     if(Array.isArray(q.hints) && q.hints.length >= 3){
-      var firstH = typeof q.hints[0] === 'string' ? q.hints[0] : (q.hints[0] && (q.hints[0].en || q.hints[0].ar) || '');
-      if(!/Identify the (?:governing|mathematical|core) relationship|Tier 1 \(Conceptual Setup\)/i.test(firstH)){
-        return q.hints.slice(0, 3).map(function(h){
-          if(typeof h === 'string') return h;
-          if(h && typeof h === 'object') return h.en || h.ar || '';
-          return String(h || '');
-        });
+      var joinedH = q.hints.slice(0, 3).map(function(h){
+        if(typeof h === 'string') return h;
+        if(h && typeof h === 'object') return h.en || h.ar || '';
+        return String(h || '');
+      });
+      if(!/Identify the (?:governing|mathematical|core) relationship|Tier 1 \(Conceptual Setup\)|Focus on what the question asks|Combine the steps above to directly answer/i.test(joinedH.join(' '))){
+        return joinedH;
       }
     }
 

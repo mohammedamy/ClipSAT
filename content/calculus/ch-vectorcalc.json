@@ -202,7 +202,7 @@
           "ar": null
         },
         "solution": {
-          "en": "The field is conservative with potential function \\(f(x, y, z) = x^3 y + 2z\\).<br>By the Fundamental Theorem for Line Integrals:<br>\\[ \\int_C \\nabla f \\cdot d\\mathbf{r} = f(2, 1, 3) - f(0, 0, 1) \\]<br>Evaluate at endpoints:<br>\\(f(2, 1, 3) = 2^3(1) + 2(3) = 8 + 6 = 14\\)<br>\\(f(0, 0, 1) = 0^3(0) + 2(1) = 2\\)<br>Therefore:<br>\\[ \\int_C \\mathbf{F} \\cdot d\\mathbf{r} = 14 - 2 = 12 \\]",
+          "en": "The field is conservative with potential function \\(f(x, y, z) = x^3 y + 2z\\).<br>By the Fundamental Theorem for Line Integrals:<br>\\[ \\int_C\nabla f \\cdot d\\mathbf{r} = f(2, 1, 3) - f(0, 0, 1) \\]<br>Evaluate at endpoints:<br>\\(f(2, 1, 3) = 2^3(1) + 2(3) = 8 + 6 = 14\\)<br>\\(f(0, 0, 1) = 0^3(0) + 2(1) = 2\\)<br>Therefore:<br>\\[ \\int_C \\mathbf{F} \\cdot d\\mathbf{r} = 14 - 2 = 12 \\]",
           "ar": null
         },
         "hints": [
@@ -211,7 +211,7 @@
             "ar": null
           },
           {
-            "en": "By the Fundamental Theorem for Line Integrals: \\(\\int_C \\nabla f \\cdot d\\mathbf{r} = f(2, 1, 3) - f(0, 0, 1)\\) Evaluate at endpoints: \\(f(2, 1, 3) = 2^3(1) + 2(3) = 8 + 6 = 14\\) \\(f(0, 0, 1) = 0^3(0) + 2(1)\\).",
+            "en": "By the Fundamental Theorem for Line Integrals: \\(\\int_C abla f \\cdot d\\mathbf{r} = f(2, 1, 3) - f(0, 0, 1)\\) Evaluate at endpoints: \\(f(2, 1, 3) = 2^3(1) + 2(3) = 8 + 6 = 14\\) \\(f(0, 0, 1) = 0^3(0) + 2(1)\\).",
             "ar": null
           },
           {
@@ -416,7 +416,7 @@
             "ar": null
           },
           {
-            "en": "Compute partial derivatives: \\(\\frac{\\partial Q}{\\partial x} = 5\\) and \\(\\frac{\\partial P}{\\partial y} = 3\\).",
+            "en": "Apply Green's Theorem: \\(\\oint_C (3y\\,dx + 5x\\,dy) = \\iint_R \\left(\\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y}\\right)\\,dA = \\iint_R (5 - 3)\\,dA = 2 \\iint_R dA\\).",
             "ar": null
           },
           {
@@ -468,12 +468,12 @@
           "ar": null
         },
         "solution": {
-          "en": "Compute the divergence:<br>\\[ \\nabla \\cdot \\mathbf{F} = \\frac{\\partial}{\\partial x}(x^3) + \\frac{\\partial}{\\partial y}(y^3) + \\frac{\\partial}{\\partial z}(z^3) = 3x^2 + 3y^2 + 3z^2 = 3(x^2 + y^2 + z^2) \\]<br>Apply the Divergence Theorem:<br>\\[ \\iint_S \\mathbf{F} \\cdot d\\mathbf{S} = \\iiint_E 3(x^2 + y^2 + z^2)\\,dV \\]<br>Convert to spherical coordinates: \\(x^2 + y^2 + z^2 = \\rho^2\\), \\(dV = \\rho^2 \\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta\\):<br>\\[ = 3 \\int_0^{2\\pi} d\\theta \\int_0^{\\pi} \\sin\\phi\\,d\\phi \\int_0^1 \\rho^2 (\\rho^2\\,d\\rho) = 3(2\\pi)(2) \\int_0^1 \\rho^4\\,d\\rho = 12\\pi \\left[ \\frac{\\rho^5}{5} \\right]_0^1 = \\frac{12\\pi}{5} \\]",
+          "en": "Compute the divergence:<br>\\[\nabla \\cdot \\mathbf{F} = \\frac{\\partial}{\\partial x}(x^3) + \\frac{\\partial}{\\partial y}(y^3) + \\frac{\\partial}{\\partial z}(z^3) = 3x^2 + 3y^2 + 3z^2 = 3(x^2 + y^2 + z^2) \\]<br>Apply the Divergence Theorem:<br>\\[ \\iint_S \\mathbf{F} \\cdot d\\mathbf{S} = \\iiint_E 3(x^2 + y^2 + z^2)\\,dV \\]<br>Convert to spherical coordinates: \\(x^2 + y^2 + z^2 = \\rho^2\\), \\(dV = \\rho^2 \\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta\\):<br>\\[ = 3 \\int_0^{2\\pi} d\\theta \\int_0^{\\pi} \\sin\\phi\\,d\\phi \\int_0^1 \\rho^2 (\\rho^2\\,d\\rho) = 3(2\\pi)(2) \\int_0^1 \\rho^4\\,d\\rho = 12\\pi \\left[ \\frac{\\rho^5}{5} \\right]_0^1 = \\frac{12\\pi}{5} \\]",
           "ar": null
         },
         "hints": [
           {
-            "en": "Compute the divergence: \\(\\nabla \\cdot \\mathbf{F} = \\frac{\\partial}{\\partial x}(x^3) + \\frac{\\partial}{\\partial y}(y^3) + \\frac{\\partial}{\\partial z}(z^3) = 3x^2 + 3y^2 + 3z^2 = 3(x^2 + y^2 + z^2)\\).",
+            "en": "Compute the divergence: \\(abla \\cdot \\mathbf{F} = \\frac{\\partial}{\\partial x}(x^3) + \\frac{\\partial}{\\partial y}(y^3) + \\frac{\\partial}{\\partial z}(z^3) = 3x^2 + 3y^2 + 3z^2 = 3(x^2 + y^2 + z^2)\\).",
             "ar": null
           },
           {
@@ -481,7 +481,7 @@
             "ar": null
           },
           {
-            "en": "Convert to spherical coordinates: \\(x^2 + y^2 + z^2 = \\rho^2\\), \\(dV = \\rho^2 \\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta\\): \\(3 \\int_0^{2\\pi} d\\theta \\int_0^{\\pi} \\sin\\phi\\,d\\phi \\int_0^1 \\rho^2 (\\rho^2\\,d\\rho) = 3(2\\pi)(2) \\int_0^1 \\rho^4\\,d\\rho = 12\\pi \\left[ \\frac{\\rho^5}{5} \\right]_0^1\\).",
+            "en": "Convert to spherical coordinates: \\(x^2 + y^2 + z^2 = \\rho^2\\), \\(dV = \\rho^2 \\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta\\): \\(= 3 \\int_0^{2\\pi} d\\theta \\int_0^{\\pi} \\sin\\phi\\,d\\phi \\int_0^1 \\rho^2 (\\rho^2\\,d\\rho) = 3(2\\pi)(2) \\int_0^1 \\rho^4\\,d\\rho = 12\\pi \\left[ \\frac{\\rho^5}{5} \\right]_0^1\\).",
             "ar": null
           }
         ]
@@ -498,11 +498,11 @@
             "ar": null
           },
           {
-            "en": "So \\((f^{-1})'(4)=\\dfrac1{f'(1)}\\) \\(=\\) \\(\\frac{1}{6}\\) since \\(f' = 3 x^{2} + 3\\).",
+            "en": "So: \\((f^{-1})'(4)\\). Rewrite and substitute: \\((f^{-1})'(4) = \\dfrac1{f'(1)}\\).",
             "ar": null
           },
           {
-            "en": "Combine the steps above to directly answer: Find \\( (f^{-1})'(4) \\).",
+            "en": "Evaluate \\(\\dfrac1{f'(1)}\\) to obtain the final answer.",
             "ar": null
           }
         ],

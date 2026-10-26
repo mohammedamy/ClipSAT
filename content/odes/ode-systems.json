@@ -430,15 +430,15 @@
         },
         "hints": [
           {
-            "en": "<strong>Eigenvalues:</strong> \\(\\det\\begin{pmatrix} 3 - \\lambda & -2 2 & -2 - \\lambda \\end{pmatrix} = (3 - \\lambda)(-2 - \\lambda) + 4 = \\lambda^2 - \\lambda - 2 = (\\lambda - 2)(\\lambda + 1)\\).",
+            "en": "<strong>Eigenvalues:</strong> \\(\\det\\begin{pmatrix} 3 - \\lambda & -2 \\\\ 2 & -2 - \\lambda \\end{pmatrix} = (3 - \\lambda)(-2 - \\lambda) + 4 = \\lambda^2 - \\lambda - 2 = (\\lambda - 2)(\\lambda + 1)\\).",
             "ar": null
           },
           {
-            "en": "Rewrite and simplify to obtain: \\(\\lambda_1 = 2, \\qquad \\lambda_2\\).",
+            "en": "Rewrite and simplify to obtain: \\(\\lambda_1 = 2, \\qquad \\lambda_2 = -1\\) <strong>Eigenvectors:</strong> For \\( \\lambda_1 = 2 \\): \\(\\begin{pmatrix} 1 & -2 \\\\ 2 & -4 \\end{pmatrix}\\mathbf{v} = \\mathbf{0} \\implies v_1 - 2v_2 = 0 \\implies \\mathbf{v}_1\\).",
             "ar": null
           },
           {
-            "en": "<strong>Particular solution:</strong> \\(x(t) = \\frac{5}{3}e^{2t}\\begin{pmatrix} 2 1 \\end{pmatrix} - \\frac{7}{3}e^{-t}\\begin{pmatrix} 1 2 \\end{pmatrix}\\).",
+            "en": "<strong>Particular solution:</strong> \\(x(t) = \\frac{5}{3}e^{2t}\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} - \\frac{7}{3}e^{-t}\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}\\).",
             "ar": null
           }
         ]
@@ -455,15 +455,15 @@
         },
         "hints": [
           {
-            "en": "<strong>Eigenvalues:</strong> \\(\\det\\begin{pmatrix} 4 - \\lambda & 1 -1 & 2 - \\lambda \\end{pmatrix} = (4 - \\lambda)(2 - \\lambda) + 1 = \\lambda^2 - 6\\lambda + 9 = (\\lambda - 3)^2 = 0 \\implies \\lambda\\).",
+            "en": "<strong>Eigenvalues:</strong> \\(\\det\\begin{pmatrix} 4 - \\lambda & 1 \\\\ -1 & 2 - \\lambda \\end{pmatrix} = (4 - \\lambda)(2 - \\lambda) + 1 = \\lambda^2 - 6\\lambda + 9 = (\\lambda - 3)^2 = 0 \\implies \\lambda\\).",
             "ar": null
           },
           {
-            "en": "<strong>Eigenvector:</strong> \\((A - 3I)\\mathbf{v}_1 = \\begin{pmatrix} 1 & 1 -1 & -1 \\end{pmatrix}\\begin{pmatrix} v_{11} v_{12} \\end{pmatrix} = \\mathbf{0} \\implies v_{11} + v_{12} = 0 \\implies \\mathbf{v}_1 = \\begin{pmatrix} 1 -1 \\end{pmatrix}\\).",
+            "en": "<strong>Generalized eigenvector:</strong> Solve \\( (A - 3I)\\mathbf{v}_2 = \\mathbf{v}_1 \\): \\(\\begin{pmatrix} 1 & 1 \\\\ -1 & -1 \\end{pmatrix}\\begin{pmatrix} v_{21} \\\\ v_{22} \\end{pmatrix} = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} \\implies v_{21} + v_{22}\\).",
             "ar": null
           },
           {
-            "en": "<strong>General solution:</strong> \\(x(t) = C_1 e^{3t}\\begin{pmatrix} 1 -1 \\end{pmatrix} + C_2 e^{3t}\\left[\\begin{pmatrix} 1 0 \\end{pmatrix} + t\\begin{pmatrix} 1 -1 \\end{pmatrix}\\right]\\).",
+            "en": "<strong>General solution:</strong> \\(x(t) = C_1 e^{3t}\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} + C_2 e^{3t}\\left[\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} + t\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}\\right]\\).",
             "ar": null
           }
         ]
@@ -476,11 +476,11 @@
         },
         "hints": [
           {
-            "en": "The characteristic equation of a 2x2 system of linear differential equations \\(\\begin{aligned} \\frac{dx}{dt} &= ax + by \\frac{dy}{dt} &= cx + dy \\end{aligned}\\) is given by \\(\\lambda^2 - (a+d)\\lambda + (ad-bc) = 0\\).",
+            "en": "The characteristic equation of a 2x2 system of linear differential equations \\(\\frac{dx}{dt} = ax + by\\).",
             "ar": null
           },
           {
-            "en": "This can be written in terms of the trace (T = a+d) and determinant (D = ad-bc) of the coefficient matrix as \\(\\lambda^2 - T\\lambda + D = 0\\).",
+            "en": "Rewrite and simplify to obtain: \\(\\frac{dy}{dt} = cx + dy\\) is given by \\(\\lambda^2 - (a+d)\\lambda + (ad-bc) = 0\\). This can be written in terms of the trace (T = a+d) and determinant (D = ad-bc) of the coefficient matrix as \\(\\lambda^2 - T\\lambda + D = 0\\).",
             "ar": null
           },
           {
@@ -501,15 +501,15 @@
         },
         "hints": [
           {
-            "en": "The given system can be written in matrix form as \\(\\mathbf{x}'(t) = A \\mathbf{x}(t)\\), where \\(A = \\begin{pmatrix} 1 & 2 3 & 2 \\end{pmatrix}\\) and \\(\\mathbf{x}(t) = \\begin{pmatrix} x(t) y(t) \\end{pmatrix}\\). To find the eigenvalues \\(\\lambda\\), we solve the characteristic equation \\(\\det(A - \\lambda I) = 0\\), where \\(I\\) is the identity matrix.",
+            "en": "The given system can be written in matrix form as \\(\\mathbf{x}'(t) = A \\mathbf{x}(t)\\), where \\(A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 2 \\end{pmatrix}\\) and \\(\\mathbf{x}(t) = \\begin{pmatrix} x(t) \\\\ y(t) \\end{pmatrix}\\).",
             "ar": null
           },
           {
-            "en": "Rewrite and simplify to obtain: \\(\\det \\begin{pmatrix} 1-\\lambda & 2 3 & 2-\\lambda \\end{pmatrix} = 0\\) \\((1-\\lambda)(2-\\lambda) - (2)(3) = 0\\) \\(2 - \\lambda - 2\\lambda + \\lambda^2 - 6 = 0\\) \\(\\lambda^2 - 3\\lambda - 4 = 0\\) Factoring the quadratic equation: \\((\\lambda - 4)(\\lambda + 1) = 0\\).",
+            "en": "To find the eigenvalues \\(\\lambda\\), we solve the characteristic equation \\(\\det(A - \\lambda I) = 0\\), where \\(I\\) is the identity matrix. \\(\\det \\begin{pmatrix} 1-\\lambda & 2 \\\\ 3 & 2-\\lambda \\end{pmatrix} = 0\\).",
             "ar": null
           },
           {
-            "en": "The eigenvalues are \\(\\lambda_1 = 4\\) and \\(\\lambda_2 = \\text{?}\\). The larger eigenvalue is 4.",
+            "en": "The eigenvalues are \\(\\lambda_1 = 4\\) and \\(\\lambda_2\\). The larger eigenvalue is 4.",
             "ar": null
           }
         ],

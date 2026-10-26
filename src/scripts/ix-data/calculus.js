@@ -955,12 +955,12 @@ D["ch-integrals"] = [
       {
         "l": "At upper limit \\(x=2\\): \\(2^3=\\)",
         "a": "8",
-        "h": "\\(8\\)"
+        "h": "Evaluate the power \\(2^3\\) by multiplying \\(2\\) by itself \\(3\\) times."
       },
       {
         "l": "At lower limit \\(x=0\\): \\(0^3=\\)",
         "a": "0",
-        "h": "\\(0\\)"
+        "h": "Evaluate the power \\(0^3\\) by multiplying \\(0\\) by itself \\(3\\) times."
       },
       {
         "l": "Answer \\(F(2)-F(0)=\\)",
@@ -978,17 +978,17 @@ D["ch-integrals"] = [
       {
         "l": "عند الحد العلوي \\(x=2\\): \\(2^3=\\)",
         "a": "8",
-        "h": "8"
+        "h": "احسب القوة \\(2^3\\) بضرب \\(2\\) في نفسه \\(3\\) مرات."
       },
       {
         "l": "عند الحد السفلي \\(x=0\\): \\(0^3=\\)",
         "a": "0",
-        "h": "0"
+        "h": "احسب القوة \\(0^3\\) بضرب \\(0\\) في نفسه \\(3\\) مرات."
       },
       {
         "l": "الناتج \\(F(2)-F(0)=\\)",
         "a": "8",
-        "h": "8 - 0 = 8"
+        "h": "احسب قيمة المقدار \\(8 - 0\\)."
       }
     ]
   },
@@ -1462,7 +1462,7 @@ D["ch-ftc"] = [
       {
         "l": "Evaluate at the upper bound \\(F(0) =\\)",
         "a": "0",
-        "h": "Compute (0)^2 + 5(0)."
+        "h": "Compute \\((0)^2 + 5\\)(0)."
       },
       {
         "l": "Hence state \\(\\int_0^{0} (2x + 5)\\,dx =\\)",
@@ -2227,7 +2227,7 @@ D["ch-techniques"] = [
       {
         "l": "Evaluate at the upper bound \\(F(4) =\\)",
         "a": "24",
-        "h": "Compute (4)^2 + 2(4)."
+        "h": "Compute \\((4)^2 + 2\\)(4)."
       },
       {
         "l": "Hence state \\(\\int_0^{4} (2x + 2)\\,dx =\\)",
@@ -2529,7 +2529,7 @@ D["ch-appint"] = [
       {
         "l": "Evaluate at the upper bound \\(F(1) =\\)",
         "a": "3",
-        "h": "Compute (1)^2 + 2(1)."
+        "h": "Compute \\((1)^2 + 2\\)(1)."
       },
       {
         "l": "Hence state \\(\\int_0^{1} (2x + 2)\\,dx =\\)",
@@ -2829,7 +2829,7 @@ D["ch-diffeq"] = [
       {
         "l": "Evaluate at the upper bound \\(F(0) =\\)",
         "a": "0",
-        "h": "Compute (0)^2 + 5(0)."
+        "h": "Compute \\((0)^2 + 5\\)(0)."
       },
       {
         "l": "Hence state \\(\\int_0^{0} (2x + 5)\\,dx =\\)",

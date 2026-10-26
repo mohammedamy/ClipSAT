@@ -2098,7 +2098,7 @@ function _loadTrackData(){
   var m=/(?:^|\s)track-([\w-]+)/.exec(document.body.className||'');
   if(!m||IX_TRACKS.indexOf(m[1])<0)return;
   var sc=document.createElement('script');
-  sc.src='/js/ix/'+m[1]+'.js';
+  sc.src='/js/ix/'+m[1]+'.js?v=20261026b';
   sc.async=true;
   document.head.appendChild(sc);
 }

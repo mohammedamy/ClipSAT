@@ -232,7 +232,7 @@
             "ar": null
           },
           {
-            "en": "<strong>· Closed under addition:</strong> Let \\( A, B \\in W \\). Then \\( A^T = A \\) and \\( B^T = B \\). Using transpose properties: \\((A + B)^T = A^T + B^T = A + B \\implies A + B \\in W\\).",
+            "en": "<strong>· Closed under scalar multiplication:</strong> Let \\( A \\in W \\) and \\( c \\in \\mathbb{R} \\): \\((cA)^T = c A^T = c A \\implies cA \\in W\\).",
             "ar": null
           },
           {
@@ -451,16 +451,16 @@
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1 · Coordinate vectors:</strong> The standard basis for \\( \\mathcal{P}_2 \\) is \\( \\mathcal{E} = \\{ 1, x, x^2 \\} \\), so \\( \\dim(\\mathcal{P}_2) = 3 \\). The coordinate vectors are: \\[ [p_1]_\\mathcal{E} = \\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}, \\quad [p_2]_\\mathcal{E} = \\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}, \\quad [p_3]_\\mathcal{E} = \\begin{pmatrix} 1 \\\\ 0 \\\\ 1 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Test independence via determinant:</strong> \\[ \\det\\begin{pmatrix} 1 & 0 & 1 \\\\ 1 & 1 & 0 \\\\ 0 & 1 & 1 \\end{pmatrix} = 1(1 - 0) - 0 + 1(1 - 0) = 1 + 1 = 2 \\neq 0. \\] Since the determinant is non-zero, the three coordinate vectors are linearly independent. Because \\( \\dim(\\mathcal{P}_2) = 3 \\), any three linearly independent vectors form a basis. <strong>Yes, \\( \\{ p_1, p_2, p_3 \\} \\) is a basis for \\( \\mathcal{P}_2 \\)</strong>.</p>",
+          "en": "<p><strong>Step 1 · Coordinate vectors:</strong> The standard basis for \\( \\mathcal{P}_2 \\) is \\( \\mathcal{E} = \\{ 1, x, x^2 \\} \\), so \\( \\dim(\\mathcal{P}_2) = 3 \\). The coordinate vectors are: \\[ [p_1]_\\mathcal{E} = \\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}, \\quad [p_2]_\\mathcal{E} = \\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}, \\quad [p_3]_\\mathcal{E} = \\begin{pmatrix} 1 \\\\ 0 \\\\ 1 \\end{pmatrix}. \\]</p><p><strong>Step 2 · Test independence via determinant:</strong> \\[ \\det\\begin{pmatrix} 1 & 0 & 1 \\\\ 1 & 1 & 0 \\\\ 0 & 1 & 1 \\end{pmatrix} = 1(1 - 0) - 0 + 1(1 - 0) = 1 + 1 = 2\neq 0. \\] Since the determinant is non-zero, the three coordinate vectors are linearly independent. Because \\( \\dim(\\mathcal{P}_2) = 3 \\), any three linearly independent vectors form a basis. <strong>Yes, \\( \\{ p_1, p_2, p_3 \\} \\) is a basis for \\( \\mathcal{P}_2 \\)</strong>.</p>",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>· Coordinate vectors:</strong> The standard basis for \\( \\mathcal{P}_2 \\) is \\( \\mathcal{E} = \\{ 1, x, x^2 \\} \\), so \\( \\dim(\\mathcal{P}_2) = 3 \\). The coordinate vectors are: \\([p_1]_\\mathcal{E} = \\begin{pmatrix} 1 1 0 \\end{pmatrix}, \\quad [p_2]_\\mathcal{E} = \\begin{pmatrix} 0 1 1 \\end{pmatrix}, \\quad [p_3]_\\mathcal{E} = \\begin{pmatrix} 1 0 1 \\end{pmatrix}\\).",
+            "en": "<strong>· Coordinate vectors:</strong> The standard basis for \\( \\mathcal{P}_2 \\) is \\( \\mathcal{E} = \\{ 1, x, x^2 \\} \\), so \\( \\dim(\\mathcal{P}_2) = 3 \\). The coordinate vectors are: \\([p_1]_\\mathcal{E} = \\begin{pmatrix} 1 \\\\ 1 \\\\ 0 \\end{pmatrix}, \\quad [p_2]_\\mathcal{E} = \\begin{pmatrix} 0 \\\\ 1 \\\\ 1 \\end{pmatrix}, \\quad [p_3]_\\mathcal{E}\\).",
             "ar": null
           },
           {
-            "en": "<strong>· Test independence via determinant:</strong> \\(\\det\\begin{pmatrix} 1 & 0 & 1 1 & 1 & 0 0 & 1 & 1 \\end{pmatrix} = 1(1 - 0) - 0 + 1(1 - 0) = 1 + 1 = 2 \\neq 0\\).",
+            "en": "<strong>· Test independence via determinant:</strong> \\(\\det\\begin{pmatrix} 1 & 0 & 1 \\\\ 1 & 1 & 0 \\\\ 0 & 1 & 1 \\end{pmatrix} = 1(1 - 0) - 0 + 1(1 - 0) = 1 + 1 = 2 eq 0\\).",
             "ar": null
           },
           {
@@ -558,11 +558,11 @@
         },
         "hints": [
           {
-            "en": "The length of a vector \\( \\mathbf{v} = \\begin{pmatrix} x y \\end{pmatrix} \\) is given by its magnitude, \\( \\lVert\\mathbf{v}\\rVert = \\sqrt{x^2 + y^2} \\).",
+            "en": "The length of a vector \\( \\mathbf{v} = \\begin{pmatrix} x \\\\ y \\end{pmatrix} \\) is given by its magnitude, \\( \\lVert\\mathbf{v}\\rVert = \\sqrt{x^2 + y^2} \\).",
             "ar": null
           },
           {
-            "en": "Geometrically, this corresponds to the distance from the origin \\( (0,0) \\) to the point \\( (x,y) \\) on the Cartesian plane, as described by the Pythagorean theorem.",
+            "en": "For \\( \\mathbf{v} = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix} \\), the length is \\(\\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25}\\).",
             "ar": null
           },
           {

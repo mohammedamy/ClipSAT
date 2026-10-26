@@ -431,7 +431,7 @@
             "ar": null
           },
           {
-            "en": "Shift first sum \\( k = n - 2 \\): \\(\\sum_{k=0}^\\infty (k+2)(k+1)a_{k+2} x^k + \\sum_{k=1}^\\infty k a_k x^k + \\sum_{k=0}^\\infty 2a_k x^k = 0\\).",
+            "en": "Shift first sum \\( k = n - 2 \\): \\(\\sum_{k=0}^\\infty (k+2)(k+1)a_{k+2} x^k + \\sum_{k=1}^\\infty k a_k x^k + \\sum_{k=0}^\\infty 2a_k x^k = 0\\) <strong>Recurrence relation:</strong> For \\( k = 0 \\): \\( 2(1)a_2 + 2a_0 = 0 \\implies a_2 = -a_0 \\).",
             "ar": null
           },
           {
@@ -447,7 +447,7 @@
           "ar": null
         },
         "solution": {
-          "en": "<p><strong>Step 1: Check regular singularity at \\( x_0 = 0 \\):</strong> \\[ P(x) = -\\frac{1}{2x}, \\quad Q(x) = \\frac{x - 5}{2x^2}. \\] \\[ p_0 = \\lim_{x\\to 0} x P(x) = -\\frac{1}{2}, \\qquad q_0 = \\lim_{x\\to 0} x^2 Q(x) = -\\frac{5}{2}. \\] Both limits are finite, confirming \\( x = 0 \\) is a regular singular point.</p><p><strong>Step 2: Indicial equation:</strong> \\[ r(r - 1) + p_0 r + q_0 = r^2 - r - \\frac{1}{2}r - \\frac{5}{2} = 0 \\implies 2r^2 - 3r - 5 = 0. \\] Factoring: \\[ (2r - 5)(r + 1) = 0 \\implies r_1 = \\frac{5}{2}, \\quad r_2 = -1. \\]</p><p><strong>Step 3: Root difference:</strong> \\[ r_1 - r_2 = \\frac{5}{2} - (-1) = \\frac{7}{2} \\notin \\mathbb{Z}. \\] Because the roots do not differ by an integer, Case 1 of Frobenius' Theorem applies. Two linearly independent Frobenius series solutions exist without any logarithmic terms: \\[ y_1(x) = x^{5/2}\\sum_{n=0}^\\infty a_n x^n, \\qquad y_2(x) = x^{-1}\\sum_{n=0}^\\infty b_n x^n \\quad (a_0, b_0 \\neq 0). \\]</p>",
+          "en": "<p><strong>Step 1: Check regular singularity at \\( x_0 = 0 \\):</strong> \\[ P(x) = -\\frac{1}{2x}, \\quad Q(x) = \\frac{x - 5}{2x^2}. \\] \\[ p_0 = \\lim_{x\\to 0} x P(x) = -\\frac{1}{2}, \\qquad q_0 = \\lim_{x\\to 0} x^2 Q(x) = -\\frac{5}{2}. \\] Both limits are finite, confirming \\( x = 0 \\) is a regular singular point.</p><p><strong>Step 2: Indicial equation:</strong> \\[ r(r - 1) + p_0 r + q_0 = r^2 - r - \\frac{1}{2}r - \\frac{5}{2} = 0 \\implies 2r^2 - 3r - 5 = 0. \\] Factoring: \\[ (2r - 5)(r + 1) = 0 \\implies r_1 = \\frac{5}{2}, \\quad r_2 = -1. \\]</p><p><strong>Step 3: Root difference:</strong> \\[ r_1 - r_2 = \\frac{5}{2} - (-1) = \\frac{7}{2}\notin \\mathbb{Z}. \\] Because the roots do not differ by an integer, Case 1 of Frobenius' Theorem applies. Two linearly independent Frobenius series solutions exist without any logarithmic terms: \\[ y_1(x) = x^{5/2}\\sum_{n=0}^\\infty a_n x^n, \\qquad y_2(x) = x^{-1}\\sum_{n=0}^\\infty b_n x^n \\quad (a_0, b_0\neq 0). \\]</p>",
           "ar": null
         },
         "hints": [
@@ -456,7 +456,7 @@
             "ar": null
           },
           {
-            "en": "Rewrite and simplify to obtain: \\(p_0 = \\lim_{x\\to 0} x P(x) = -\\frac{1}{2}, \\qquad q_0 = \\lim_{x\\to 0} x^2 Q(x)\\).",
+            "en": "Rewrite and simplify to obtain: \\(p_0 = \\lim_{x\\to 0} x P(x) = -\\frac{1}{2}, \\qquad q_0 = \\lim_{x\\to 0} x^2 Q(x) = -\\frac{5}{2}\\) Both limits are finite, confirming \\( x = 0 \\) is a regular singular point.",
             "ar": null
           },
           {
@@ -473,15 +473,15 @@
         },
         "hints": [
           {
-            "en": "Focus on what the question asks you to determine: [Practice 3 · Medium] Find \\( \\mathcal L\\{u(t-2)\\sin(3(t-2))\\} \\).",
+            "en": "Second shifting theorem with \\( f(t)=\\sin(3t) \\).",
             "ar": null
           },
           {
-            "en": "Second shifting theorem with \\(f(t)=\\sin(3t)\\): \\(\\frac{3 e^{- 2 s}}{s^{2} + 9}\\).",
+            "en": "Rewrite and simplify to obtain: \\(\\frac{3 e^{- 2 s}}{s^{2} + 9}\\).",
             "ar": null
           },
           {
-            "en": "Complete the calculation from the relation above to obtain the final answer.",
+            "en": "Evaluate and simplify \\(\\frac{3 e^{- 2 s}}{s^{2} + 9}\\) carefully (checking signs and units) to obtain the final answer.",
             "ar": null
           }
         ],
@@ -498,15 +498,15 @@
         },
         "hints": [
           {
-            "en": "Focus on what the question asks you to determine: [Practice 4 · Hard] If \\( \\mathcal L\\{y\\}=Y(s) \\), \\( y(0)=-3 \\) and \\( y'(0)=-1 \\), find \\( \\mathcal L\\{y''\\} \\).",
+            "en": "Start with the expression: \\(\\mathcal L\\{y''\\}\\).",
             "ar": null
           },
           {
-            "en": "Rewrite and simplify to obtain: \\(\\mathcal L\\{y''\\}=s^2Y(s)-sy(0)-y'(0)\\) \\(=\\) \\(Y s^{2} + 3 s + 1\\).",
+            "en": "Rewrite and substitute: \\(\\mathcal L\\{y''\\} = s^2Y(s)-sy(0)-y'(0)\\).",
             "ar": null
           },
           {
-            "en": "Complete the calculation from the relation above to obtain the final answer.",
+            "en": "Evaluate \\(s^2Y(s)-sy(0)-y'(0)\\) to obtain the final answer.",
             "ar": null
           }
         ],

@@ -2387,7 +2387,7 @@ D["apab-u6"] = [
       {
         "l": "Evaluate at the upper bound \\(F(2) =\\)",
         "a": "12",
-        "h": "Compute (2)^2 + 4(2)."
+        "h": "Compute \\((2)^2 + 4\\)(2)."
       },
       {
         "l": "Hence state \\(\\int_0^{2} (2x + 4)\\,dx =\\)",
@@ -2695,7 +2695,7 @@ D["apab-u7"] = [
       {
         "l": "Evaluate at the upper bound \\(F(0) =\\)",
         "a": "0",
-        "h": "Compute (0)^2 + 5(0)."
+        "h": "Compute \\((0)^2 + 5\\)(0)."
       },
       {
         "l": "Hence state \\(\\int_0^{0} (2x + 5)\\,dx =\\)",
@@ -3001,7 +3001,7 @@ D["apab-u8"] = [
       {
         "l": "Evaluate at the upper bound \\(F(1) =\\)",
         "a": "4",
-        "h": "Compute (1)^2 + 3(1)."
+        "h": "Compute \\((1)^2 + 3\\)(1)."
       },
       {
         "l": "Hence state \\(\\int_0^{1} (2x + 3)\\,dx =\\)",

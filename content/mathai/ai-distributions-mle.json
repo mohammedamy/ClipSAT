@@ -423,12 +423,12 @@
             "ar": "The Bernoulli distribution has the probability mass function \\( P(X=k; p) = p^k (1-p)^{1-k} \\). The likelihood function for \\( n \\) independent observations is \\( L(p; x_1, \\dots, x_n) = \\prod_{i=1}^n p^{x_i} (1-p)^{1-x_i} \\). This can be rewritten as \\( L(p) = p^{\\sum x_i} (1-p)^{n - \\sum x_i} \\)."
           },
           {
-            "en": "The log-likelihood function is \\( \\ln L(p) = (\\sum x_i) \\ln p + (n - \\sum x_i) \\ln(1-p) \\). To find the maximum likelihood estimate (MLE) of \\( p \\), we take the derivative of the log-likelihood with respect to \\( p \\) and set it to zero: \\( \\frac{d}{dp} \\ln L(p) = \\frac{\\sum x_i}{p} - \\frac{n - \\sum x_i}{1-p} \\).",
-            "ar": "The log-likelihood function is \\( \\ln L(p) = (\\sum x_i) \\ln p + (n - \\sum x_i) \\ln(1-p) \\). To find the maximum likelihood estimate (MLE) of \\( p \\), we take the derivative of the log-likelihood with respect to \\( p \\) and set it to zero: \\( \\frac{d}{dp} \\ln L(p) = \\frac{\\sum x_i}{p} - \\frac{n - \\sum x_i}{1-p} \\)."
+            "en": "Rewrite and simplify to obtain: \\( \\sum x_i = np \\).",
+            "ar": "Rewrite and simplify to obtain: \\( \\sum x_i = np \\)."
           },
           {
-            "en": "Common algebraic traps: Students might incorrectly calculate the sample mean, or confuse the counts of 0s and 1s. The option \\(\\frac{2}{5}\\) would arise from incorrectly using \\(\\frac{20}{50}\\) which represents \\(1-p\\). The option \\(\\frac{1}{2}\\) might arise from assuming equal probabilities without considering the data. The option \\(\\frac{3}{2}\\) is not a valid probability.",
-            "ar": "Common algebraic traps: Students might incorrectly calculate the sample mean, or confuse the counts of 0s and 1s. The option \\(\\frac{2}{5}\\) would arise from incorrectly using \\(\\frac{20}{50}\\) which represents \\(1-p\\). The option \\(\\frac{1}{2}\\) might arise from assuming equal probabilities without considering the data. The option \\(\\frac{3}{2}\\) is not a valid probability."
+            "en": "Therefore, the MLE for \\(p\\) is: \\(\\hat{p}_{MLE} = \\frac{30}{50}\\).",
+            "ar": "Therefore, the MLE for \\(p\\) is: \\(\\hat{p}_{MLE} = \\frac{30}{50}\\)."
           }
         ],
         "solution": {
@@ -448,8 +448,8 @@
             "ar": "The random variable \\(X\\) follows a Binomial distribution: \\(X \\sim \\text{Binomial}(n, p)\\). The probability mass function (PMF) of the Binomial distribution is given by \\(P(X=k | n, p) = \\binom{n}{k} p^k (1-p)^{n-k}\\), where \\(k\\) is the number of successes."
           },
           {
-            "en": "We are given \\(n=5\\) and a dataset of \\(N=10\\) observations: \\(\\{x_1, x_2, \\dots, x_{10}\\} = \\{3, 4, 2, 5, 4, 3, 2, 4, 5, 3\\}\\).",
-            "ar": "We are given \\(n=5\\) and a dataset of \\(N=10\\) observations: \\(\\{x_1, x_2, \\dots, x_{10}\\} = \\{3, 4, 2, 5, 4, 3, 2, 4, 5, 3\\}\\)."
+            "en": "Rewrite and simplify to obtain: \\(\\frac{S}{p} = \\frac{T}{1-p}\\).",
+            "ar": "Rewrite and simplify to obtain: \\(\\frac{S}{p} = \\frac{T}{1-p}\\)."
           },
           {
             "en": "Let's check the second derivative to confirm it's a maximum: \\(\\frac{d^2\\ell}{dp^2} = -\\frac{S}{p^2} - \\frac{T}{(1-p)^2}\\). Since \\(S>0\\), \\(T>0\\), \\(p \\in (0,1)\\), the second derivative is negative, confirming a maximum.",
@@ -494,16 +494,16 @@
         },
         "hints": [
           {
-            "en": "Focus on what the question asks you to determine: What is the mean \\( \\mu \\) and variance \\( \\sigma^2 \\) of this feature?",
-            "ar": "Focus on what the question asks you to determine: What is the mean \\( \\mu \\) and variance \\( \\sigma^2 \\) of this feature?"
+            "en": "Start by examining the given mathematical expression in the problem: \\(X \\sim \\mathcal{N}(25, 36)\\).",
+            "ar": "Start by examining the given mathematical expression in the problem: \\(X \\sim \\mathcal{N}(25, 36)\\)."
           },
           {
-            "en": "The notation \\(\\mathcal{N}(\\mu, \\sigma^2)\\) directly specifies the mean \\(\\mu = 25\\) and variance \\(\\sigma^2 = 36\\) (with standard deviation \\(\\sigma = \\text{?}\\)).",
-            "ar": "The notation \\(\\mathcal{N}(\\mu, \\sigma^2)\\) directly specifies the mean \\(\\mu = 25\\) and variance \\(\\sigma^2 = 36\\) (with standard deviation \\(\\sigma = \\text{?}\\))."
+            "en": "The notation \\(\\mathcal{N}(\\mu, \\sigma^2)\\) directly specifies the mean \\(\\mu = 25\\) and variance \\(\\sigma^2 = 36\\) (with standard deviation \\(\\sigma\\)).",
+            "ar": "The notation \\(\\mathcal{N}(\\mu, \\sigma^2)\\) directly specifies the mean \\(\\mu = 25\\) and variance \\(\\sigma^2 = 36\\) (with standard deviation \\(\\sigma\\))."
           },
           {
-            "en": "Complete the calculation from the relation above to obtain the final answer.",
-            "ar": "Complete the calculation from the relation above to obtain the final answer."
+            "en": "Apply this step to \\(\\sigma\\) and simplify to determine the final result.",
+            "ar": "Apply this step to \\(\\sigma\\) and simplify to determine the final result."
           }
         ],
         "solution": {
@@ -523,12 +523,12 @@
             "ar": "The log-likelihood function for \\( n=3 \\) observations is \\( \\ell(\\lambda) = (x_1 \\log(\\lambda) - \\log(x_1!) - \\lambda) + (x_2 \\log(\\lambda) - \\log(x_2!) - \\lambda) + (x_3 \\log(\\lambda) - \\log(x_3!) - \\lambda) \\)."
           },
           {
-            "en": "Part 1: The derivative of the log-likelihood function with respect to \\( \\lambda \\) is: \\( \\frac{d\\ell}{d\\lambda} = \\sum_{i=1}^{3} \\left( \\frac{x_i}{\\lambda} - 1 \\right) = \\left( \\frac{x_1}{\\lambda} - 1 \\right) + \\left( \\frac{x_2}{\\lambda} - 1 \\right) + \\left( \\frac{x_3}{\\lambda} - 1 \\right) \\).",
-            "ar": "Part 1: The derivative of the log-likelihood function with respect to \\( \\lambda \\) is: \\( \\frac{d\\ell}{d\\lambda} = \\sum_{i=1}^{3} \\left( \\frac{x_i}{\\lambda} - 1 \\right) = \\left( \\frac{x_1}{\\lambda} - 1 \\right) + \\left( \\frac{x_2}{\\lambda} - 1 \\right) + \\left( \\frac{x_3}{\\lambda} - 1 \\right) \\)."
+            "en": "Rewrite and simplify to obtain: \\( \\frac{x_1 + x_2 + x_3}{\\lambda} - 3 = 0 \\).",
+            "ar": "Rewrite and simplify to obtain: \\( \\frac{x_1 + x_2 + x_3}{\\lambda} - 3 = 0 \\)."
           },
           {
-            "en": "Common algebraic traps include incorrectly differentiating the log-likelihood or making errors in solving for \\(\\lambda\\). For example, forgetting the \\(-1\\) term from the derivative of \\(-\\lambda\\) leads to an incorrect denominator. Choice B is incorrect as it includes \\(e\\) which is not part of the Poisson MLE derivation. Choice C is an incomplete and incorrect expression. Choice D is only correct if the sum of observations was 12, but the formula for \\(\\hat{\\lambda}\\) is the sample mean. Therefore, the MLE is \\(\\hat{\\lambda} = \\text{?}\\).",
-            "ar": "Common algebraic traps include incorrectly differentiating the log-likelihood or making errors in solving for \\(\\lambda\\). For example, forgetting the \\(-1\\) term from the derivative of \\(-\\lambda\\) leads to an incorrect denominator. Choice B is incorrect as it includes \\(e\\) which is not part of the Poisson MLE derivation. Choice C is an incomplete and incorrect expression. Choice D is only correct if the sum of observations was 12, but the formula for \\(\\hat{\\lambda}\\) is the sample mean. Therefore, the MLE is \\(\\hat{\\lambda} = \\text{?}\\)."
+            "en": "Substituting the observed values \\(x_1 = 3, x_2 = 5, x_3\\): \\(\\hat{\\lambda} = \\frac{3+5+4}{3}\\).",
+            "ar": "Substituting the observed values \\(x_1 = 3, x_2 = 5, x_3\\): \\(\\hat{\\lambda} = \\frac{3+5+4}{3}\\)."
           }
         ],
         "solution": {

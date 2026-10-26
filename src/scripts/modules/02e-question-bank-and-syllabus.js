@@ -13,7 +13,7 @@
   window.CS_loadTrackBank = function(trackId){
     if(!trackId||trackId==='home') return Promise.resolve(null);
     if(window.CS_BANK_LOADED[trackId]) return window.CS_BANK_LOADED[trackId];
-    var p = fetch('/bank-data/'+trackId+'.json?v=20261023a')
+    var p = fetch('/bank-data/'+trackId+'.json?v=20261026b')
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(data){
         if(data){
