@@ -253,6 +253,22 @@ it('public/js/engine.js contains the compiled guardrail logic', () => {
   }
 });
 
+// ── 8. Gemini 3.8 Flash Multimodal & Graph Rendering Verification ──
+it('Supports Gemini 3.8 Flash, single-question attachments (image/PDF/DOCX/camera/handwriting), and figure_json diagrams', () => {
+  assert.ok(SYSTEM.includes('Gemini 3.8 Flash'), 'SYSTEM prompt must reference Gemini 3.8 Flash');
+  assert.ok(SYSTEM.includes('SINGLE-QUESTION IMAGE, CAMERA, 1-PAGE PDF, DOCX & HANDWRITING RULES'), 'SYSTEM prompt must include single-question & handwriting rules');
+  assert.ok(SYSTEM.includes('figure_json'), 'SYSTEM prompt must instruct bot to emit figure_json diagrams when helpful');
+  assert.ok(moduleSource.includes('processImageFile') && moduleSource.includes('processPdfFile') && moduleSource.includes('processDocxFile'), 'Module must include image, 1-page PDF, and 1-page DOCX processors');
+  assert.ok(moduleSource.includes('openCamera') && moduleSource.includes('snapCameraFrame'), 'Module must include camera capture handlers');
+  assert.ok(moduleSource.includes('_renderChatFigures'), 'Module must render figure_json blocks inside bot answers');
+
+  const proxyPath = path.join(__dirname, '..', 'supabase', 'functions', 'ai-proxy', 'index.ts');
+  const proxySource = fs.readFileSync(proxyPath, 'utf8');
+  assert.ok(proxySource.includes('gemini-3.8-flash'), 'Supabase ai-proxy must target gemini-3.8-flash');
+  assert.ok(proxySource.includes('GEMINI_API_KEY'), 'Supabase ai-proxy must read GEMINI_API_KEY from server secrets');
+  assert.ok(proxySource.includes('interactions.create'), 'Supabase ai-proxy must use Gemini Interactions API');
+});
+
 console.log(`\nResults: ${passed} passed, ${failed} failed.`);
 if (failed > 0) {
   process.exit(1);
