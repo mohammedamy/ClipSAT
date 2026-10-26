@@ -448,8 +448,7 @@ const baseNjk = `<!DOCTYPE html>
       delimiters: [
         {left:'$$', right:'$$', display:true},
         {left:'\\\\[', right:'\\\\]', display:true},
-        {left:'\\\\(', right:'\\\\)', display:false},
-        {left:'$', right:'$', display:false}
+        {left:'\\\\(', right:'\\\\)', display:false}
       ],
       ignoredClasses: ['katex', 'katex-display', 'katex-html', 'katex-mathml'],
       throwOnError: false

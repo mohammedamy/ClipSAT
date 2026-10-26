@@ -36,7 +36,14 @@ function _tex(s){
   if(typeof s !== 'string') return s;
   var out = s;
   if(out.indexOf('$') !== -1){
-    out = out.replace(/\$([^\$\n]+)\$/g, '\\($1\\)');
+    out = out.replace(/\\\$/g, '\uE000');
+    out = out.replace(/\$(?!\s)([^\$\n]+?)(?<!\s)\$/g, function(m, inner){
+      if(/^\d[\d,]*(?:\.\d+)?(?:$|\s*[,.;:!?)%]|\s+[a-zA-Z\u0600-\u06FF]{2,})/.test(inner)) return m;
+      var stripped = inner.replace(/\\(?:text|textbf|textit|mathrm|mathbf|operatorname|mbox)\s*\{[^}]*\}/g, '').replace(/\\[a-zA-Z]+/g, '');
+      if(/[a-zA-Z]{3,}\s+[a-zA-Z]{2,}/.test(stripped) || /[\u0600-\u06FF]{2,}\s+[\u0600-\u06FF]{2,}/.test(stripped)) return m;
+      return '\\(' + inner + '\\)';
+    });
+    out = out.replace(/\uE000/g, '$');
   }
   if(typeof window.CSAutoMath === 'function') out = window.CSAutoMath(out);
   else if(typeof window.CSFormatExplorerMath === 'function' && out.indexOf('\\(') === -1 && out.indexOf('\\[') === -1 && out.indexOf('katex') === -1){

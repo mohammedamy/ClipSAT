@@ -477,12 +477,16 @@ window.launchPracticeQuiz=function(mistake){
   function _maths(s){
     if(!s && s !== 0) return '';
     s = String(s);
-    // Normalize $$ ... $$ and $ ... $ to \[ ... \] and \( ... \)
+    // Normalize $$ ... $$ and genuine $ ... $ to \[ ... \] and \( ... \) while protecting \$ and currency amounts
     s = s.replace(/\$\$([\s\S]+?)\$\$/g, '\\[$1\\]');
+    s = s.replace(/\\\$/g, '\uE000');
     s = s.replace(/\$(?!\s)([^$\n]+?)(?<!\s)\$/g, function(m, inner){
-      if(/^\d{1,3}(?:,\d{3})*(?:\.\d+)?$/.test(inner)) return m; // protect literal currency
+      if(/^\d[\d,]*(?:\.\d+)?(?:$|\s*[,.;:!?)%]|\s+[a-zA-Z\u0600-\u06FF]{2,})/.test(inner)) return m;
+      var stripped = inner.replace(/\\(?:text|textbf|textit|mathrm|mathbf|operatorname|mbox)\s*\{[^}]*\}/g, '').replace(/\\[a-zA-Z]+/g, '');
+      if(/[a-zA-Z]{3,}\s+[a-zA-Z]{2,}\s+[a-zA-Z]{2,}/.test(stripped) || /[\u0600-\u06FF]{2,}\s+[\u0600-\u06FF]{2,}/.test(stripped)) return m;
       return '\\(' + inner + '\\)';
     });
+    s = s.replace(/\uE000/g, '\\$');
     /* Smart math renderer:
        - Outside math  → HTML-escape &, <, >
        - Inside math, inside align/matrix/cases env → & is valid column sep, leave it

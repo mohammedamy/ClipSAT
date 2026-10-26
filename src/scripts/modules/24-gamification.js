@@ -703,8 +703,7 @@
       var fcDelims = [
         { left: "$$", right: "$$", display: true },
         { left: "\\[", right: "\\]", display: true },
-        { left: "\\(", right: "\\)", display: false },
-        { left: "$", right: "$", display: false }
+        { left: "\\(", right: "\\)", display: false }
       ];
       if (window.renderMathInElement && card) {
         try {
@@ -729,8 +728,7 @@
               delimiters: [
                 { left: "$$", right: "$$", display: true },
                 { left: "\\[", right: "\\]", display: true },
-                { left: "\\(", right: "\\)", display: false },
-                { left: "$", right: "$", display: false }
+                { left: "\\(", right: "\\)", display: false }
               ],
               throwOnError: false
             });

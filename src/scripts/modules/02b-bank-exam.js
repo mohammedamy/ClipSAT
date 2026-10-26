@@ -1339,10 +1339,14 @@
       if(!s && s !== 0) return '';
       s = String(s);
       s = s.replace(/\$\$([\s\S]+?)\$\$/g, '\\[$1\\]');
+      s = s.replace(/\\\$/g, '\uE000');
       s = s.replace(/\$(?!\s)([^$\n]+?)(?<!\s)\$/g, function(m, inner){
-        if(/^\d{1,3}(?:,\d{3})*(?:\.\d+)?$/.test(inner)) return m;
+        if(/^\d[\d,]*(?:\.\d+)?(?:$|\s*[,.;:!?)%]|\s+[a-zA-Z\u0600-\u06FF]{2,})/.test(inner)) return m;
+        var stripped = inner.replace(/\\(?:text|textbf|textit|mathrm|mathbf|operatorname|mbox)\s*\{[^}]*\}/g, '').replace(/\\[a-zA-Z]+/g, '');
+        if(/[a-zA-Z]{3,}\s+[a-zA-Z]{2,}\s+[a-zA-Z]{2,}/.test(stripped) || /[\u0600-\u06FF]{2,}\s+[\u0600-\u06FF]{2,}/.test(stripped)) return m;
         return '\\(' + inner + '\\)';
       });
+      s = s.replace(/\uE000/g, '\\$');
       var AENV=['align','aligned','matrix','pmatrix','bmatrix','vmatrix','array','cases','eqnarray','split','gather','gathered','smallmatrix'];
       var out='',inM=false,aD=0,i=0,L=s.length;
       while(i<L){
@@ -2229,35 +2233,35 @@
       + '</summary>'
       + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px;margin-top:12px;font-size:.81rem;line-height:1.55;color:#1e293b">'
       + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>Topic 1: Number &amp; Algebra</strong><br>'
-      + '• Arithmetic: $u_n = u_1 + (n-1)d$, $S_n = \\frac{n}{2}(2u_1 + (n-1)d)$<br>'
-      + '• Geometric: $u_n = u_1 r^{n-1}$, $S_n = \\frac{u_1(r^n - 1)}{r - 1}$, $S_\\infty = \\frac{u_1}{1-r}$ ($|r|<1$)<br>'
-      + '• Compound interest: $FV = PV\\left(1 + \\frac{r}{100k}\\right)^{kn}$<br>'
-      + '• Binomial: $(a+b)^n = \\sum_{r=0}^n \\binom{n}{r} a^{n-r}b^r$'
-      + (isHL ? '<br>• <strong>HL:</strong> $\\binom{p}{r} = \\frac{p(p-1)\\cdots(p-r+1)}{r!}$, De Moivre: $(r(\\cos\\theta + i\\sin\\theta))^n = r^n e^{in\\theta}$' : '')
+      + '• Arithmetic: \\(u_n = u_1 + (n-1)d\\), \\(S_n = \\frac{n}{2}(2u_1 + (n-1)d)\\)<br>'
+      + '• Geometric: \\(u_n = u_1 r^{n-1}\\), \\(S_n = \\frac{u_1(r^n - 1)}{r - 1}\\), \\(S_\\infty = \\frac{u_1}{1-r}\\) (\\(|r|<1\\))<br>'
+      + '• Compound interest: \\(FV = PV\\left(1 + \\frac{r}{100k}\\right)^{kn}\\)<br>'
+      + '• Binomial: \\((a+b)^n = \\sum_{r=0}^n \\binom{n}{r} a^{n-r}b^r\\)'
+      + (isHL ? '<br>• <strong>HL:</strong> \\(\\binom{p}{r} = \\frac{p(p-1)\\cdots(p-r+1)}{r!}\\), De Moivre: \\((r(\\cos\\theta + i\\sin\\theta))^n = r^n e^{in\\theta}\\)' : '')
       + '</div>'
       + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>Topic 2: Functions</strong><br>'
-      + '• Axis of symmetry: $x = -\\frac{b}{2a}$, Discriminant: $\\Delta = b^2 - 4ac$<br>'
-      + '• Solutions: $x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$<br>'
-      + '• Exp/Log: $a^x = e^{x\\ln a}$, $\\log_a b = \\frac{\\ln b}{\\ln a}$'
-      + (isHL ? '<br>• <strong>HL Vieta:</strong> $\\sum r_i = -a_{n-1}/a_n$, $\\prod r_i = (-1)^n a_0/a_n$' : '')
+      + '• Axis of symmetry: \\(x = -\\frac{b}{2a}\\), Discriminant: \\(\\Delta = b^2 - 4ac\\)<br>'
+      + '• Solutions: \\(x = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}\\)<br>'
+      + '• Exp/Log: \\(a^x = e^{x\\ln a}\\), \\(\\log_a b = \\frac{\\ln b}{\\ln a}\\)'
+      + (isHL ? '<br>• <strong>HL Vieta:</strong> \\(\\sum r_i = -a_{n-1}/a_n\\), \\(\\prod r_i = (-1)^n a_0/a_n\\)' : '')
       + '</div>'
       + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>Topic 3: Geometry &amp; Trigonometry</strong><br>'
-      + '• Sector (rad): $l = r\\theta$, $A = \\frac{1}{2}r^2\\theta$<br>'
-      + '• Sine/Cosine Rule: $\\frac{a}{\\sin A} = \\frac{b}{\\sin B}$, $c^2 = a^2+b^2-2ab\\cos C$<br>'
-      + '• Area: $A = \\frac{1}{2}ab\\sin C$, Double angle: $\\sin 2\\theta = 2\\sin\\theta\\cos\\theta$, $\\cos 2\\theta = \\cos^2\\theta - \\sin^2\\theta$'
-      + (isHL ? '<br>• <strong>HL Vectors:</strong> $\\mathbf{v}\\cdot\\mathbf{w} = |\\mathbf{v}||\\mathbf{w}|\\cos\\theta$, $|\\mathbf{v}\\times\\mathbf{w}| = |\\mathbf{v}||\\mathbf{w}|\\sin\\theta$, $\\mathbf{r} = \\mathbf{a} + \\lambda\\mathbf{b}$' : '')
+      + '• Sector (rad): \\(l = r\\theta\\), \\(A = \\frac{1}{2}r^2\\theta\\)<br>'
+      + '• Sine/Cosine Rule: \\(\\frac{a}{\\sin A} = \\frac{b}{\\sin B}\\), \\(c^2 = a^2+b^2-2ab\\cos C\\)<br>'
+      + '• Area: \\(A = \\frac{1}{2}ab\\sin C\\), Double angle: \\(\\sin 2\\theta = 2\\sin\\theta\\cos\\theta\\), \\(\\cos 2\\theta = \\cos^2\\theta - \\sin^2\\theta\\)'
+      + (isHL ? '<br>• <strong>HL Vectors:</strong> \\(\\mathbf{v}\\cdot\\mathbf{w} = |\\mathbf{v}||\\mathbf{w}|\\cos\\theta\\), \\(|\\mathbf{v}\\times\\mathbf{w}| = |\\mathbf{v}||\\mathbf{w}|\\sin\\theta\\), \\(\\mathbf{r} = \\mathbf{a} + \\lambda\\mathbf{b}\\)' : '')
       + '</div>'
       + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>Topic 4: Statistics &amp; Probability</strong><br>'
-      + '• $P(A\\cup B) = P(A)+P(B)-P(A\\cap B)$, $P(A\\mid B) = \\frac{P(A\\cap B)}{P(B)}$<br>'
-      + '• Binomial $X\\sim\\text{B}(n,p)$: $E(X)=np$, $\\text{Var}(X)=np(1-p)$<br>'
-      + '• Standardized normal: $z = \\frac{x-\\mu}{\\sigma}$'
-      + (isHL ? '<br>• <strong>HL Bayes &amp; Continuous RV:</strong> $E(X)=\\int x f(x)\\,dx$, $\\text{Var}(X)=E(X^2)-[E(X)]^2$' : '')
+      + '• \\(P(A\\cup B) = P(A)+P(B)-P(A\\cap B)\\), \\(P(A\\mid B) = \\frac{P(A\\cap B)}{P(B)}\\)<br>'
+      + '• Binomial \\(X\\sim\\text{B}(n,p)\\): \\(E(X)=np\\), \\(\\text{Var}(X)=np(1-p)\\)<br>'
+      + '• Standardized normal: \\(z = \\frac{x-\\mu}{\\sigma}\\)'
+      + (isHL ? '<br>• <strong>HL Bayes &amp; Continuous RV:</strong> \\(E(X)=\\int x f(x)\\,dx\\), \\(\\text{Var}(X)=E(X^2)-[E(X)]^2\\)' : '')
       + '</div>'
       + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>Topic 5: Calculus</strong><br>'
-      + '• Chain/Product/Quotient: $y=uv \\Rightarrow y\'=u\'v+uv\'$, $y=\\frac{u}{v} \\Rightarrow y\'=\\frac{vu\'-uv\'}{v^2}$<br>'
-      + '• Kinematics: $v = \\frac{ds}{dt}$, $a = \\frac{dv}{dt} = v\\frac{dv}{ds}$, Distance $= \\int_{t_1}^{t_2}|v(t)|\\,dt$<br>'
-      + '• Trapezoidal rule: $\\int_a^b y\\,dx \\approx \\frac{1}{2}h[(y_0+y_n) + 2(y_1+\\cdots+y_{n-1})]$'
-      + (isHL ? '<br>• <strong>HL Calculus:</strong> $\\int u\\frac{dv}{dx}dx = uv - \\int v\\frac{du}{dx}dx$, IF: $I(x)=e^{\\int P(x)dx}$, Euler: $y_{n+1}=y_n+hf(x_n,y_n)$, Maclaurin: $f(x)=\\sum \\frac{f^{(k)}(0)}{k!}x^k$' : '')
+      + '• Chain/Product/Quotient: \\(y=uv \\Rightarrow y\'=u\'v+uv\'\\), \\(y=\\frac{u}{v} \\Rightarrow y\'=\\frac{vu\'-uv\'}{v^2}\\)<br>'
+      + '• Kinematics: \\(v = \\frac{ds}{dt}\\), \\(a = \\frac{dv}{dt} = v\\frac{dv}{ds}\\), Distance \\(= \\int_{t_1}^{t_2}|v(t)|\\,dt\\)<br>'
+      + '• Trapezoidal rule: \\(\\int_a^b y\\,dx \\approx \\frac{1}{2}h[(y_0+y_n) + 2(y_1+\\cdots+y_{n-1})]\\)'
+      + (isHL ? '<br>• <strong>HL Calculus:</strong> \\(\\int u\\frac{dv}{dx}dx = uv - \\int v\\frac{du}{dx}dx\\), IF: \\(I(x)=e^{\\int P(x)dx}\\), Euler: \\(y_{n+1}=y_n+hf(x_n,y_n)\\), Maclaurin: \\(f(x)=\\sum \\frac{f^{(k)}(0)}{k!}x^k\\)' : '')
       + '</div>'
       + '</div></details>';
   };
@@ -2299,25 +2303,25 @@
         + '</summary>'
         + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px;margin-top:12px;font-size:.81rem;line-height:1.58;color:#1e293b">'
         + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>1. الحساب والأنماط (Arithmetic &amp; Shortcuts)</strong><br>'
-        + '• Gauss Sum: $1+2+\\cdots+n = \\frac{n(n+1)}{2}$<br>'
-        + '• Telescoping: $\\sum_{k=1}^{n}\\frac{1}{k(k+1)} = 1 - \\frac{1}{n+1} = \\frac{n}{n+1}$<br>'
-        + '• Cyclical Units Digits (Mod 4): $2^k \\to (2,4,8,6)$, $3^k \\to (3,9,7,1)$, $7^k \\to (7,9,3,1)$<br>'
-        + '• Page / Queue Count: $\\text{Count} = (B - A) + 1$'
+        + '• Gauss Sum: \\(1+2+\\cdots+n = \\frac{n(n+1)}{2}\\)<br>'
+        + '• Telescoping: \\(\\sum_{k=1}^{n}\\frac{1}{k(k+1)} = 1 - \\frac{1}{n+1} = \\frac{n}{n+1}\\)<br>'
+        + '• Cyclical Units Digits (Mod 4): \\(2^k \\to (2,4,8,6)\\), \\(3^k \\to (3,9,7,1)\\), \\(7^k \\to (7,9,3,1)\\)<br>'
+        + '• Page / Queue Count: \\(\\text{Count} = (B - A) + 1\\)'
         + '</div>'
         + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>2. المتطابقات والجبر (Algebraic Identities)</strong><br>'
-        + '• Difference of Squares: $a^2 - b^2 = (a-b)(a+b)$<br>'
-        + '• Square Sum Bridge: $(a+b)^2 = a^2 + b^2 + 2ab \\implies a^2+b^2 = (a+b)^2 - 2ab$<br>'
-        + '• Exponent Parity: $(-a)^{2n} = +a^{2n}$; if $x \\in (0,1)$, then $x^2 < x < \\sqrt{x} < \\frac{1}{x}$'
+        + '• Difference of Squares: \\(a^2 - b^2 = (a-b)(a+b)\\)<br>'
+        + '• Square Sum Bridge: \\((a+b)^2 = a^2 + b^2 + 2ab \\implies a^2+b^2 = (a+b)^2 - 2ab\\)<br>'
+        + '• Exponent Parity: \\((-a)^{2n} = +a^{2n}\\); if \\(x \\in (0,1)\\), then \\(x^2 < x < \\sqrt{x} < \\frac{1}{x}\\)'
         + '</div>'
         + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>3. الهندسة والمناطق المظللة (Shaded Geometry)</strong><br>'
-        + '• Circle in Square ($s=2r$): $A_{\\text{corners}} = r^2(4 - \\pi)$<br>'
-        + '• Square in Circle ($d=2r$): $A_{\\text{square}} = 2r^2$, $A_{\\text{segments}} = r^2(\\pi - 2)$<br>'
-        + '• Clock Hands Angle: $\\theta = |30H - 5.5M|^\\circ$, Polygon Sum: $(n-2)\\times 180^\\circ$'
+        + '• Circle in Square (\\(s=2r\\)): \\(A_{\\text{corners}} = r^2(4 - \\pi)\\)<br>'
+        + '• Square in Circle (\\(d=2r\\)): \\(A_{\\text{square}} = 2r^2\\), \\(A_{\\text{segments}} = r^2(\\pi - 2)\\)<br>'
+        + '• Clock Hands Angle: \\(\\theta = |30H - 5.5M|^\\circ\\), Polygon Sum: \\((n-2)\\times 180^\\circ\\)'
         + '</div>'
         + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>4. اللفظية والبيانات والمقارنات (Word, Data &amp; QC)</strong><br>'
-        + '• Harmonic Round-Trip Speed: $v_{\\text{avg}} = \\frac{2v_1 v_2}{v_1 + v_2}$<br>'
-        + '• Joint Work: $T_{\\text{both}} = \\frac{t_1 t_2}{t_1 + t_2}$; Compound Change: $a + b + \\frac{ab}{100}$<br>'
-        + '• Pie Sector ($360^\\circ$): $\\frac{\\theta}{360^\\circ} = \\frac{\\text{Part}}{\\text{Total}}$ (e.g., $90^\\circ=25\\%$, $72^\\circ=20\\%$, $36^\\circ=10\\%$)'
+        + '• Harmonic Round-Trip Speed: \\(v_{\\text{avg}} = \\frac{2v_1 v_2}{v_1 + v_2}\\)<br>'
+        + '• Joint Work: \\(T_{\\text{both}} = \\frac{t_1 t_2}{t_1 + t_2}\\); Compound Change: \\(a + b + \\frac{ab}{100}\\)<br>'
+        + '• Pie Sector (\\(360^\\circ\\)): \\(\\frac{\\theta}{360^\\circ} = \\frac{\\text{Part}}{\\text{Total}}\\) (e.g., \\(90^\\circ=25\\%\\), \\(72^\\circ=20\\%\\), \\(36^\\circ=10\\%\\))'
         + '</div>'
         + '</div></details>';
     }
@@ -2328,24 +2332,24 @@
       + '</summary>'
       + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px;margin-top:12px;font-size:.81rem;line-height:1.58;color:#1e293b">'
       + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>1. المنطق والمصفوفات والمتتابعات (Y1–Y2 Core)</strong><br>'
-      + '• Contrapositive: $(p \\to q) \\equiv (\\sim q \\to \\sim p)$<br>'
-      + '• Matrix Determinant: $|A| = ad - bc$; singular iff $ad - bc = 0$<br>'
-      + '• Infinite Geometric Series ($|r|<1$): $S_\\infty = \\frac{a_1}{1 - r}$'
+      + '• Contrapositive: \\((p \\to q) \\equiv (\\sim q \\to \\sim p)\\)<br>'
+      + '• Matrix Determinant: \\(|A| = ad - bc\\); singular iff \\(ad - bc = 0\\)<br>'
+      + '• Infinite Geometric Series (\\(|r|<1\\)): \\(S_\\infty = \\frac{a_1}{1 - r}\\)'
       + '</div>'
       + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>2. الدوال واللوغاريتمات والمثلثات (Y2–Y3 Functions)</strong><br>'
-      + '• Rational HA ($\\frac{ax^n+\\cdots}{bx^m+\\cdots}$): $n<m \\Rightarrow y=0$; $n=m \\Rightarrow y=\\frac{a}{b}$<br>'
-      + '• Log Bridge: $\\log_b(x)=y \\iff b^y=x$; $\\log_b(MN)=\\log_b M + \\log_b N$<br>'
-      + '• Trig &amp; Polar: $\\sin^2\\theta+\\cos^2\\theta=1$, $\\sin 2\\theta=2\\sin\\theta\\cos\\theta$, $z^n = r^n(\\cos n\\theta + i\\sin n\\theta)$'
+      + '• Rational HA (\\(\\frac{ax^n+\\cdots}{bx^m+\\cdots}\\)): \\(n<m \\Rightarrow y=0\\); \\(n=m \\Rightarrow y=\\frac{a}{b}\\)<br>'
+      + '• Log Bridge: \\(\\log_b(x)=y \\iff b^y=x\\); \\(\\log_b(MN)=\\log_b M + \\log_b N\\)<br>'
+      + '• Trig &amp; Polar: \\(\\sin^2\\theta+\\cos^2\\theta=1\\), \\(\\sin 2\\theta=2\\sin\\theta\\cos\\theta\\), \\(z^n = r^n(\\cos n\\theta + i\\sin n\\theta)\\)'
       + '</div>'
       + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>3. القطوع والمتجهات والاحتمالات (Y3 Conics, Vectors &amp; Stats)</strong><br>'
-      + '• Ellipse ($a>b$): $c^2 = a^2 - b^2$; Hyperbola: $c^2 = a^2 + b^2$; Eccentricity $e = c/a$<br>'
-      + '• Dot Product: $\\mathbf{u}\\cdot\\mathbf{v} = u_1 v_1 + u_2 v_2 = 0 \\iff \\mathbf{u} \\perp \\mathbf{v}$<br>'
-      + '• Conditional &amp; Normal: $P(A\\mid B) = \\frac{P(A\\cap B)}{P(B)}$; Empirical Rule $68\\%\\text{--}95\\%\\text{--}99.7\\%$'
+      + '• Ellipse (\\(a>b\\)): \\(c^2 = a^2 - b^2\\); Hyperbola: \\(c^2 = a^2 + b^2\\); Eccentricity \\(e = c/a\\)<br>'
+      + '• Dot Product: \\(\\mathbf{u}\\cdot\\mathbf{v} = u_1 v_1 + u_2 v_2 = 0 \\iff \\mathbf{u} \\perp \\mathbf{v}\\)<br>'
+      + '• Conditional &amp; Normal: \\(P(A\\mid B) = \\frac{P(A\\cap B)}{P(B)}\\); Empirical Rule \\(68\\%\\text{--}95\\%\\text{--}99.7\\%\\)'
       + '</div>'
       + '<div style="background:#fff;padding:10px 12px;border:1px solid #e2e8f0;border-radius:6px"><strong>4. النهايات والاشتقاق والتكامل (Y3 Calculus — High Weight)</strong><br>'
-      + '• Limits: $\\lim_{x\\to a}\\frac{x^2-a^2}{x-a}=2a$; $\\lim_{x\\to\\infty}\\frac{ax^n+\\cdots}{bx^n+\\cdots}=\\frac{a}{b}$<br>'
-      + '• Derivatives &amp; Kinematics: $\\frac{d}{dx}(x^n)=nx^{n-1}$, $v(t)=s\'(t)$, $a(t)=v\'(t)$<br>'
-      + '• FTC Definite Integral: $\\int_a^b f(x)\\,dx = F(b) - F(a)$'
+      + '• Limits: \\(\\lim_{x\\to a}\\frac{x^2-a^2}{x-a}=2a\\); \\(\\lim_{x\\to\\infty}\\frac{ax^n+\\cdots}{bx^n+\\cdots}=\\frac{a}{b}\\)<br>'
+      + '• Derivatives &amp; Kinematics: \\(\\frac{d}{dx}(x^n)=nx^{n-1}\\), \\(v(t)=s\'(t)\\), \\(a(t)=v\'(t)\\)<br>'
+      + '• FTC Definite Integral: \\(\\int_a^b f(x)\\,dx = F(b) - F(a)\\)'
       + '</div>'
       + '</div></details>';
   };

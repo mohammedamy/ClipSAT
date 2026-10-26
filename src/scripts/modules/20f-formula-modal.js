@@ -181,7 +181,7 @@
         {
           title: 'Vectors, Norms & Cosine Similarity',
           titleAr: 'المتجهات والمعايير والتشابه الجيبي',
-          body: 'Dot product: \\(\\vec{u} \\cdot \\vec{v} = \\sum_{i=1}^n u_i v_i = \\|\\vec{u}\\|\\|\\vec{v}\\|\\cos\\theta\\)<br>Euclidean ($L_2$) norm: \\(\\|\\vec{v}\\|_2 = \\sqrt{\\sum v_i^2}\\) · Manhattan ($L_1$) norm: \\(\\|\\vec{v}\\|_1 = \\sum |v_i|\\)<br>Cosine Similarity: \\(S_C(\\vec{u}, \\vec{v}) = \\frac{\\vec{u} \\cdot \\vec{v}}{\\|\\vec{u}\\|\\|\\vec{v}\\|} \\in [-1, 1]\\)<br>Word embeddings: Semantically similar concepts have cosine similarity close to 1.'
+          body: 'Dot product: \\(\\vec{u} \\cdot \\vec{v} = \\sum_{i=1}^n u_i v_i = \\|\\vec{u}\\|\\|\\vec{v}\\|\\cos\\theta\\)<br>Euclidean (\\(L_2\\)) norm: \\(\\|\\vec{v}\\|_2 = \\sqrt{\\sum v_i^2}\\) · Manhattan (\\(L_1\\)) norm: \\(\\|\\vec{v}\\|_1 = \\sum |v_i|\\)<br>Cosine Similarity: \\(S_C(\\vec{u}, \\vec{v}) = \\frac{\\vec{u} \\cdot \\vec{v}}{\\|\\vec{u}\\|\\|\\vec{v}\\|} \\in [-1, 1]\\)<br>Word embeddings: Semantically similar concepts have cosine similarity close to 1.'
         },
         {
           title: 'Matrices & Linear Neural Layers',
@@ -258,8 +258,7 @@
             delimiters: [
               {left: '$$', right: '$$', display: true},
               {left: '\\[', right: '\\]', display: true},
-              {left: '\\(', right: '\\)', display: false},
-              {left: '$', right: '$', display: false}
+              {left: '\\(', right: '\\)', display: false}
             ],
             throwOnError: false
           });

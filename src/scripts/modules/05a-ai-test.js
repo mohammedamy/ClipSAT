@@ -379,10 +379,14 @@ function renderAIQuestion(q,idx,totalLetters,viewId){
     if(!s && s !== 0) return '';
     s = String(s);
     s = s.replace(/\$\$([\s\S]+?)\$\$/g, '\\[$1\\]');
+    s = s.replace(/\\\$/g, '\uE000');
     s = s.replace(/\$(?!\s)([^$\n]+?)(?<!\s)\$/g, function(m, inner){
-      if(/^\d{1,3}(?:,\d{3})*(?:\.\d+)?$/.test(inner)) return m;
+      if(/^\d[\d,]*(?:\.\d+)?(?:$|\s*[,.;:!?)%]|\s+[a-zA-Z\u0600-\u06FF]{2,})/.test(inner)) return m;
+      var stripped = inner.replace(/\\(?:text|textbf|textit|mathrm|mathbf|operatorname|mbox)\s*\{[^}]*\}/g, '').replace(/\\[a-zA-Z]+/g, '');
+      if(/[a-zA-Z]{3,}\s+[a-zA-Z]{2,}\s+[a-zA-Z]{2,}/.test(stripped) || /[\u0600-\u06FF]{2,}\s+[\u0600-\u06FF]{2,}/.test(stripped)) return m;
       return '\\(' + inner + '\\)';
     });
+    s = s.replace(/\uE000/g, '\\$');
     var ALIGN_ENVS=['align','aligned','matrix','pmatrix','bmatrix','vmatrix','array','cases','eqnarray','split','gather','gathered','smallmatrix'];
     var o='',inM=false,aD=0,i=0,L=s.length;
     while(i<L){
@@ -857,10 +861,14 @@ function _maths(s){
   if(!s && s !== 0) return '';
   s = String(s);
   s = s.replace(/\$\$([\s\S]+?)\$\$/g, '\\[$1\\]');
+  s = s.replace(/\\\$/g, '\uE000');
   s = s.replace(/\$(?!\s)([^$\n]+?)(?<!\s)\$/g, function(m, inner){
-    if(/^\d{1,3}(?:,\d{3})*(?:\.\d+)?$/.test(inner)) return m;
+    if(/^\d[\d,]*(?:\.\d+)?(?:$|\s*[,.;:!?)%]|\s+[a-zA-Z\u0600-\u06FF]{2,})/.test(inner)) return m;
+    var stripped = inner.replace(/\\(?:text|textbf|textit|mathrm|mathbf|operatorname|mbox)\s*\{[^}]*\}/g, '').replace(/\\[a-zA-Z]+/g, '');
+    if(/[a-zA-Z]{3,}\s+[a-zA-Z]{2,}\s+[a-zA-Z]{2,}/.test(stripped) || /[\u0600-\u06FF]{2,}\s+[\u0600-\u06FF]{2,}/.test(stripped)) return m;
     return '\\(' + inner + '\\)';
   });
+  s = s.replace(/\uE000/g, '\\$');
   var ALIGN_ENVS=['align','aligned','matrix','pmatrix','bmatrix','vmatrix','array','cases','eqnarray','split','gather','gathered','smallmatrix'];
   var o='',inM=false,aD=0,i=0,L=s.length;
   while(i<L){

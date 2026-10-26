@@ -13,7 +13,7 @@
   window.CS_loadTrackBank = function(trackId){
     if(!trackId||trackId==='home') return Promise.resolve(null);
     if(window.CS_BANK_LOADED[trackId]) return window.CS_BANK_LOADED[trackId];
-    var p = fetch('/bank-data/'+trackId+'.json?v=20261026b')
+    var p = fetch('/bank-data/'+trackId+'.json?v=20261026d')
       .then(function(r){ return r.ok ? r.json() : null; })
       .then(function(data){
         if(data){
@@ -311,7 +311,7 @@
     if(_bankExamPromise) return _bankExamPromise;
     _bankExamPromise=new Promise(function(resolve,reject){
       var s=document.createElement('script');
-      s.src='/js/bank-exam.js?v=20261026c';
+      s.src='/js/bank-exam.js?v=20261026d';
       s.onload=function(){ window.CSBankExam?resolve():reject(new Error('bank-exam.js did not register')); };
       s.onerror=function(){ _bankExamPromise=null; reject(new Error('The exam generator could not load. Check your connection and try again.')); };
       document.head.appendChild(s);
