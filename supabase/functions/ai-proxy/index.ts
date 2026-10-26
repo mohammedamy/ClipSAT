@@ -1,28 +1,21 @@
 // ClipSAT AI proxy
 // ════════════════════════════════════════════════════════════════════════
 // Holds AI API keys server-side (GEMINI_API_KEY from Google AI Studio as
-// primary provider running gemini-3.8-flash via the Gemini Interactions API,
-// with fallback to GROQ_API_KEY or AI_API_KEY/OPENAI_API_KEY — set via
-// `supabase secrets set ...` and never in a browser bundle, client code,
-// localStorage, or git commit).
+// primary provider running gemini-3.8-flash via the Gemini Interactions API
+// [interactions.create / POST /v1beta/interactions], with automatic fallback
+// if a key/region requires gemini-flash-latest, and fallback to
+// GROQ_API_KEY or AI_API_KEY/OPENAI_API_KEY — set via `supabase secrets set`
+// and never in a browser bundle, client code, localStorage, or git commit).
 //
 // Supports multimodal single-question inputs:
 // - Inline images (image/png, image/jpeg, image/webp) — printed or handwritten
 // - 1-page PDF documents (application/pdf)
 // - 1-page DOCX documents (extracted text + optional embedded diagram image)
-//
-// Security & Abuse Protections:
-// 1. Session Gate: `auth: 'user'` verifies the caller's Supabase session JWT.
-//    Unauthenticated or anonymous requests are rejected with 401.
-// 2. Per-User Quota: Atomic daily call cap in Postgres (try_use_ai_quota).
-// 3. Per-IP Rate Limiting: Sliding window limit (25 req/min) per client IP.
-// 4. Input Length & Attachment Size Limits: Max 2,000 chars per user message,
-//    8,000 chars total text, and max ~4.5 MB base64 for 1-page image/PDF.
-// 5. Content Filtering: Blocks prompt injection attacks and malicious scripts.
 import "@supabase/functions-js/edge-runtime.d.ts";
 import { withSupabase } from "@supabase/server";
-import { GoogleGenAI } from "@google/genai";
 
+const GEMINI_INTERACTIONS_URL = "https://generativelanguage.googleapis.com/v1beta/interactions";
+const GEMINI_GENERATE_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
 
@@ -174,6 +167,18 @@ function extractGeminiInteractionText(interaction: unknown): string {
     }
     if (parts.length) return parts.join("\n");
   }
+  if (Array.isArray((obj as any).candidates)) {
+    const candParts = (obj as any).candidates?.[0]?.content?.parts;
+    if (Array.isArray(candParts)) {
+      const parts: string[] = [];
+      for (const p of candParts) {
+        if (p && typeof p.text === "string" && !p.thought) {
+          parts.push(p.text);
+        }
+      }
+      if (parts.length) return parts.join("\n");
+    }
+  }
   return "";
 }
 
@@ -263,7 +268,7 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
 
   // Server secret handling:
   // Priority 1: GEMINI_API_KEY (or GOOGLE_API_KEY, or AI_API_KEY if AI_PROVIDER=gemini or key starts with AIza) -> Gemini 3.8 Flash
-  // Priority 2: GROQ_API_KEY -> Groq fallback
+  // Priority 2: GROQ_API_KEY -> Groq fallback (with Llama 4 Scout vision support for image attachments)
   // Priority 3: AI_API_KEY / OPENAI_API_KEY -> OpenAI-compatible fallback
   const rawAiKey = Deno.env.get("AI_API_KEY") || "";
   const geminiKey =
@@ -272,7 +277,7 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
     ((Deno.env.get("AI_PROVIDER") === "gemini" || rawAiKey.startsWith("AIza")) ? rawAiKey : "");
 
   if (geminiKey) {
-    const geminiModel = Deno.env.get("GEMINI_MODEL") || "gemini-3.8-flash";
+    const preferredModel = Deno.env.get("GEMINI_MODEL") || "gemini-3.8-flash";
     const systemParts: string[] = [];
     const steps: Array<{ type: "user_input" | "model_output"; content: Array<Record<string, unknown>> }> = [];
 
@@ -296,7 +301,6 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
       systemParts.push("IMPORTANT: Return ONLY valid JSON with no markdown code fences or extra commentary.");
     }
 
-    // Ensure there is at least one user_input step
     if (!steps.length || steps[steps.length - 1].type !== "user_input") {
       steps.push({
         type: "user_input",
@@ -304,7 +308,6 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
       });
     }
 
-    // Attach multimodal payload (image, 1-page PDF, or 1-page DOCX) to the latest user_input step
     if (attachment) {
       const lastStep = steps[steps.length - 1];
       if (attachment.type === "image" && attachment.data) {
@@ -340,10 +343,17 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
       }
     }
 
-    try {
-      const ai = new GoogleGenAI({ apiKey: geminiKey });
+    // Try Gemini Interactions API with preferred model (gemini-3.8-flash), then fallback to gemini-flash-latest
+    const interactionModels = preferredModel === "gemini-flash-latest"
+      ? ["gemini-flash-latest"]
+      : [preferredModel, "gemini-flash-latest"];
+
+    let lastErrorMsg = "";
+    let lastStatus = 502;
+
+    for (const modelCandidate of interactionModels) {
       const reqParams: Record<string, unknown> = {
-        model: geminiModel,
+        model: modelCandidate,
         input: steps,
         store: false,
         generation_config: {
@@ -355,14 +365,91 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
         reqParams.system_instruction = systemParts.join("\n\n");
       }
 
-      const interaction = await ai.interactions.create(reqParams as any);
-      const content = extractGeminiInteractionText(interaction);
-      return Response.json({ content, model: geminiModel });
-    } catch (err) {
-      const errMsg = err instanceof Error ? err.message : String(err);
-      console.error("Gemini Interactions API error:", errMsg);
-      return jsonError(`Gemini API error: ${errMsg}`, 502);
+      try {
+        const gemRes = await fetch(GEMINI_INTERACTIONS_URL, {
+          method: "POST",
+          headers: {
+            "x-goog-api-key": geminiKey,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(reqParams),
+        });
+        if (gemRes.ok) {
+          const interaction = await gemRes.json();
+          const content = extractGeminiInteractionText(interaction);
+          if (content) {
+            return Response.json({ content, model: modelCandidate });
+          }
+        } else {
+          const errData = await gemRes.json().catch(() => ({}));
+          lastErrorMsg = (errData as any)?.error?.message || `Gemini HTTP ${gemRes.status}`;
+          lastStatus = gemRes.status;
+          // If unauthorized or quota exceeded on the key itself, don't retry unless model not found
+          if (gemRes.status === 401 || gemRes.status === 403 || gemRes.status === 429) {
+            break;
+          }
+        }
+      } catch (err) {
+        lastErrorMsg = err instanceof Error ? err.message : String(err);
+      }
     }
+
+    // Secondary Gemini endpoint fallback (:generateContent on gemini-flash-latest) in case /v1beta/interactions is restricted on the user's key
+    try {
+      const contents = steps.map((st) => ({
+        role: st.type === "model_output" ? "model" : "user",
+        parts: st.content.map((c) => {
+          if (c.type === "image" || c.type === "document") {
+            return {
+              inline_data: {
+                mime_type: c.mime_type,
+                data: c.data,
+              },
+            };
+          }
+          return { text: String(c.text || "") };
+        }),
+      }));
+      const gcBody: Record<string, unknown> = {
+        contents,
+        generationConfig: {
+          maxOutputTokens: maxTokens ?? 2500,
+          temperature: payload.temperature ?? 0.4,
+        },
+      };
+      if (systemParts.length > 0) {
+        gcBody.systemInstruction = {
+          parts: [{ text: systemParts.join("\n\n") }],
+        };
+      }
+      if (json) {
+        (gcBody.generationConfig as Record<string, unknown>).responseMimeType = "application/json";
+      }
+      const gcRes = await fetch(`${GEMINI_GENERATE_BASE}/gemini-flash-latest:generateContent`, {
+        method: "POST",
+        headers: {
+          "x-goog-api-key": geminiKey,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(gcBody),
+      });
+      if (gcRes.ok) {
+        const gcData = await gcRes.json();
+        const content = extractGeminiInteractionText(gcData);
+        if (content) {
+          return Response.json({ content, model: "gemini-flash-latest" });
+        }
+      } else {
+        const errData = await gcRes.json().catch(() => ({}));
+        lastErrorMsg = (errData as any)?.error?.message || lastErrorMsg || `Gemini HTTP ${gcRes.status}`;
+        lastStatus = gcRes.status;
+      }
+    } catch (err) {
+      if (!lastErrorMsg) lastErrorMsg = err instanceof Error ? err.message : String(err);
+    }
+
+    console.error("Gemini API error:", lastStatus, lastErrorMsg);
+    return jsonError(lastErrorMsg || "Gemini API request failed", lastStatus >= 500 ? 502 : lastStatus);
   }
 
   // Fallback to GROQ_API_KEY or AI_API_KEY / OPENAI_API_KEY if GEMINI_API_KEY is not set
@@ -373,25 +460,54 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
     return jsonError("AI is not configured on the server. Please set GEMINI_API_KEY in Supabase secrets.", 500);
   }
 
-  if (attachment && (attachment.type === "image" || attachment.type === "document")) {
+  if (attachment && attachment.type === "document") {
     return jsonError(
-      "Image/PDF question reading requires GEMINI_API_KEY (gemini-3.8-flash) to be configured in Supabase secrets.",
+      "Direct 1-page PDF reading requires GEMINI_API_KEY in Supabase secrets. Please set GEMINI_API_KEY or upload an image/screenshot of the question.",
       400,
     );
   }
 
   const isGroq = !!groqKey || Deno.env.get("AI_PROVIDER") === "groq";
   const targetUrl = isGroq ? GROQ_URL : OPENAI_URL;
+  const hasImageAttachment = !!(
+    attachment &&
+    ((attachment.type === "image" && attachment.data) ||
+      (attachment.type === "docx_text" && attachment.image_data))
+  );
   const targetModel = isGroq
-    ? (Deno.env.get("GROQ_MODEL") || "llama-3.3-70b-versatile")
-    : (Deno.env.get("OPENAI_MODEL") || "gpt-6-luna");
+    ? (hasImageAttachment
+      ? (Deno.env.get("GROQ_VISION_MODEL") || "meta-llama/llama-4-scout-17b-16e-instruct")
+      : (Deno.env.get("GROQ_MODEL") || "llama-3.3-70b-versatile"))
+    : (Deno.env.get("OPENAI_MODEL") || "gpt-4o-mini");
 
   const outboundMessages = messages.map((m, idx) => {
-    if (idx === messages.length - 1 && m.role === "user" && attachment?.type === "docx_text" && attachment.extracted_text) {
-      return {
-        role: m.role,
-        content: `${m.content}\n\n[Attached 1-Page DOCX Question]:\n${attachment.extracted_text}`,
-      };
+    if (idx === messages.length - 1 && m.role === "user" && attachment) {
+      if (attachment.type === "image" && attachment.data) {
+        const normMime = attachment.mime_type === "image/jpg" ? "image/jpeg" : (attachment.mime_type || "image/jpeg");
+        return {
+          role: "user",
+          content: [
+            { type: "text", text: m.content },
+            { type: "image_url", image_url: { url: `data:${normMime};base64,${attachment.data}` } },
+          ],
+        };
+      }
+      if (attachment.type === "docx_text") {
+        const textWithDocx = attachment.extracted_text
+          ? `${m.content}\n\n[Attached 1-Page DOCX Question]:\n${attachment.extracted_text}`
+          : m.content;
+        if (attachment.image_data) {
+          const normMime = attachment.image_mime_type === "image/jpg" ? "image/jpeg" : (attachment.image_mime_type || "image/png");
+          return {
+            role: "user",
+            content: [
+              { type: "text", text: textWithDocx },
+              { type: "image_url", image_url: { url: `data:${normMime};base64,${attachment.image_data}` } },
+            ],
+          };
+        }
+        return { role: "user", content: textWithDocx };
+      }
     }
     return m;
   });
@@ -399,12 +515,11 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
   const body: Record<string, unknown> = {
     model: targetModel,
     messages: outboundMessages,
-    reasoning_effort: "none",
   };
 
   if (isGroq) {
     body.max_tokens = maxTokens ?? 2048;
-    body.temperature = payload.temperature ?? 0.7;
+    body.temperature = payload.temperature ?? 0.5;
   } else {
     body.max_completion_tokens = maxTokens ?? 2048;
   }
@@ -432,7 +547,7 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
 
   const data = await upstream.json();
   const content = data?.choices?.[0]?.message?.content || "";
-  return Response.json({ content });
+  return Response.json({ content, model: targetModel });
 });
 
 export default {

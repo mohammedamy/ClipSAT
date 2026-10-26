@@ -281,9 +281,9 @@
   }
   function greet(){
     if(greeted) return; greeted=true;
-    addMsg('bot',"Hi, I'm the **ClipSAT AI Tutor** (powered by **Gemini 3.8 Flash**) \u2014 your interactive AI math assistant.\n\n\u2022 **Type** any math problem\n\u2022 **Attach (\uD83D\uDCCE)** a single question in an **Image**, **1-page PDF**, or **1-page DOCX** (printed or **handwritten**)\n\u2022 **Snap (\uD83D\uDCF7)** a photo of a question with your camera\n\nI'll solve it step by step and draw graphs or geometric diagrams whenever helpful!\n\n_Notice: AI-generated; may contain errors; not a substitute for teacher instruction._");
+    addMsg('bot',"Hi, I'm the **ClipSAT AI Tutor** \u2014 your interactive AI math assistant. Ask me about any problem, or attach/snap a photo, 1-page PDF, or 1-page DOCX question and I'll walk you through it step by step.\n\n_Notice: AI-generated; may contain errors; not a substitute for teacher instruction._");
     var chips=document.createElement('div'); chips.className='chat-chips';
-    ["Graph & solve x\u00B2 \u2212 5x + 6 = 0","Right triangle with legs 6 and 8","Explain the chain rule"].forEach(function(q){
+    ["Solve x\u00B2 \u2212 5x + 6 = 0","Explain the chain rule","How do I find a line of best fit?"].forEach(function(q){
       var c=document.createElement('button'); c.type='button'; c.className='chat-chip'; c.textContent=q;
       c.addEventListener('click',function(){ input.value=q; sendMsg(); });
       chips.appendChild(c);

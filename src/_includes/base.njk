@@ -932,7 +932,7 @@
       <div style="display:flex; align-items:center; justify-content:space-between">
         <div class="chat-title">
           <img src="/teacher-avatar.jpg" alt="" class="chat-head-avatar" width="34" height="34" aria-hidden="true">
-          <span>ClipSAT AI Tutor<span class="chat-sub">Gemini 3.8 Flash &bull; Photo / PDF / DOCX / Handwriting</span></span>
+          <span>ClipSAT AI Tutor<span class="chat-sub">AI math assistant</span></span>
         </div>
         <button id="chatClose" class="chat-close" aria-label="Close chat">&times;</button>
       </div>
@@ -941,7 +941,7 @@
     <div id="chatBody" class="chat-body"></div>
     <div id="chatCamOverlay" class="chat-cam-overlay" aria-hidden="true" style="display:none">
       <div class="chat-cam-head">
-        <span>📷 Point camera at 1 math question (printed or handwritten)</span>
+        <span>📷 Point camera at 1 math question</span>
         <button type="button" id="chatCamClose" class="chat-cam-close" aria-label="Close camera">&times;</button>
       </div>
       <div class="chat-cam-viewport">
@@ -955,25 +955,23 @@
     <div id="chatAttachBar" class="chat-attach-bar" style="display:none" aria-live="polite">
       <img id="chatAttachThumb" class="chat-attach-thumb" alt="Attached question preview" style="display:none">
       <span id="chatAttachIcon" class="chat-attach-icon" aria-hidden="true">📄</span>
-      <div class="chat-attach-meta">
-        <div id="chatAttachName" class="chat-attach-name"></div>
-        <div id="chatAttachSub" class="chat-attach-sub">Single question ready</div>
-      </div>
+      <div id="chatAttachName" class="chat-attach-name"></div>
+      <div class="chat-attach-meta" style="display:none"><div id="chatAttachSub" class="chat-attach-sub"></div></div>
       <button type="button" id="chatAttachRemove" class="chat-attach-remove" aria-label="Remove attachment" title="Remove attachment">&times;</button>
     </div>
     <div class="chat-input">
       <input type="file" id="chatFileInput" accept=".png,.jpg,.jpeg,.webp,.pdf,.docx,image/png,image/jpeg,image/webp,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="display:none" aria-hidden="true">
       <input type="file" id="chatCamFallbackInput" accept="image/*" capture="environment" style="display:none" aria-hidden="true">
-      <button type="button" id="chatAttachBtn" class="chat-tool-btn" aria-label="Upload image, 1-page PDF, or 1-page DOCX question" title="Upload 1 question (Image, 1-page PDF, or 1-page DOCX — printed or handwritten)">
+      <button type="button" id="chatAttachBtn" class="chat-tool-btn" aria-label="Upload image, 1-page PDF, or 1-page DOCX question" title="Attach image, 1-page PDF, or 1-page DOCX">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
       </button>
-      <button type="button" id="chatCamBtn" class="chat-tool-btn" aria-label="Take a photo of a math question with camera" title="Use camera to capture a printed or handwritten question">
+      <button type="button" id="chatCamBtn" class="chat-tool-btn" aria-label="Take a photo of a math question with camera" title="Take photo with camera">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
       </button>
-      <textarea id="chatInput" rows="1" placeholder="Ask a math question, or attach/snap 1 problem…" aria-label="Type your math question"></textarea>
+      <textarea id="chatInput" rows="1" placeholder="Ask about a math problem…" aria-label="Type your math question"></textarea>
       <button id="chatSend" class="chat-send" aria-label="Send message">&rarr;</button>
     </div>
-    <div class="chat-foot" style="line-height:1.4">Powered by Gemini 3.8 Flash &bull; Reads handwriting, images, 1-page PDF &amp; DOCX &bull; Free with ClipSAT Account.</div>
+    <div class="chat-foot" style="line-height:1.4">AI-generated; may contain errors; not a substitute for teacher guidance. Free with ClipSAT Account.</div>
   </div>
 
   <!-- Cloud sync (optional accounts on top of the existing localStorage progress
