@@ -267,6 +267,7 @@ it('Supports Gemini 3.8 Flash, single-question attachments (image/PDF/DOCX/camer
   assert.ok(proxySource.includes('gemini-3.8-flash'), 'Supabase ai-proxy must target gemini-3.8-flash');
   assert.ok(proxySource.includes('GEMINI_API_KEY'), 'Supabase ai-proxy must read GEMINI_API_KEY from server secrets');
   assert.ok(proxySource.includes('interactions.create'), 'Supabase ai-proxy must use Gemini Interactions API');
+  assert.ok(proxySource.includes('DAILY_CALL_CAP = 15') && proxySource.includes('WEEKLY_CALL_CAP = 50') && proxySource.includes('MONTHLY_CALL_CAP = 150'), 'Supabase ai-proxy must enforce 15/day, 50/week, and 150/month limits');
 });
 
 console.log(`\nResults: ${passed} passed, ${failed} failed.`);

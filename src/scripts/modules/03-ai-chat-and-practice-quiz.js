@@ -1410,7 +1410,7 @@ window.launchPracticeQuiz=function(mistake){
         var em=e&&e.message?e.message:'unknown';
         var hint;
         if(em.indexOf('429')>-1 || em.indexOf('limit reached')>-1){
-          hint=' — daily AI question limit reached. It resets tomorrow!';
+          hint=' — usage limit reached (15/day, 50/week, 150/month).';
         } else if(em==='Failed to fetch'||em.indexOf('abort')>-1){
           hint=' — request timed out or network error. Please check your connection and retry.';
         } else if(em.indexOf('401')>-1 || em.indexOf('NO_KEY')>-1){

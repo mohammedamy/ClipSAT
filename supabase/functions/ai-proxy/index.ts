@@ -19,7 +19,9 @@ const GEMINI_GENERATE_BASE = "https://generativelanguage.googleapis.com/v1beta/m
 const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 const OPENAI_URL = "https://api.openai.com/v1/chat/completions";
 
-const DAILY_CALL_CAP = 50;
+const DAILY_CALL_CAP = 15;
+const WEEKLY_CALL_CAP = 50;
+const MONTHLY_CALL_CAP = 150;
 const MAX_USER_MSG_CHARS = 2500;
 const MAX_TOTAL_PROMPT_CHARS = 12000;
 const MAX_ATTACHMENT_BASE64_CHARS = 6_000_000; // ~4.5 MB binary max
@@ -253,7 +255,48 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
     return jsonError(safetyViolation, 400);
   }
 
-  // Atomic per-user check-and-increment quota
+  // Check 30-day & 7-day rolling usage from public.ai_usage before atomic daily increment
+  const nowUtc = new Date();
+  const toIsoDate = (d: Date) => d.toISOString().slice(0, 10);
+  const todayIso = toIsoDate(nowUtc);
+  const sevenDaysAgo = new Date(Date.UTC(nowUtc.getUTCFullYear(), nowUtc.getUTCMonth(), nowUtc.getUTCDate() - 6));
+  const thirtyDaysAgo = new Date(Date.UTC(nowUtc.getUTCFullYear(), nowUtc.getUTCMonth(), nowUtc.getUTCDate() - 29));
+  const sevenDaysAgoIso = toIsoDate(sevenDaysAgo);
+  const thirtyDaysAgoIso = toIsoDate(thirtyDaysAgo);
+
+  const { data: usageRows, error: usageReadErr } = await ctx.supabaseAdmin
+    .from("ai_usage")
+    .select("day, calls")
+    .eq("user_id", ctx.userClaims.id)
+    .gte("day", thirtyDaysAgoIso);
+
+  if (usageReadErr) {
+    console.error("ai_usage window check failed:", usageReadErr);
+    return jsonError("Could not verify AI usage quota", 500);
+  }
+
+  let todayCalls = 0;
+  let weekCalls = 0;
+  let monthCalls = 0;
+  for (const row of usageRows || []) {
+    const c = Number((row as any).calls) || 0;
+    const dStr = String((row as any).day || "");
+    monthCalls += c;
+    if (dStr >= sevenDaysAgoIso) weekCalls += c;
+    if (dStr === todayIso) todayCalls += c;
+  }
+
+  if (todayCalls >= DAILY_CALL_CAP) {
+    return jsonError(`Daily AI limit reached (${DAILY_CALL_CAP} requests per day). Try again tomorrow.`, 429);
+  }
+  if (weekCalls >= WEEKLY_CALL_CAP) {
+    return jsonError(`Weekly AI limit reached (${WEEKLY_CALL_CAP} requests per week).`, 429);
+  }
+  if (monthCalls >= MONTHLY_CALL_CAP) {
+    return jsonError(`Monthly AI limit reached (${MONTHLY_CALL_CAP} requests per month).`, 429);
+  }
+
+  // Atomic per-user check-and-increment daily quota (15/day)
   const { data: allowed, error: quotaErr } = await ctx.supabaseAdmin.rpc("try_use_ai_quota", {
     p_user_id: ctx.userClaims.id,
     p_cap: DAILY_CALL_CAP,
@@ -263,7 +306,7 @@ const aiHandler = withSupabase({ auth: "user" }, async (req, ctx) => {
     return jsonError("Could not verify AI usage quota", 500);
   }
   if (!allowed) {
-    return jsonError(`Daily AI limit reached (${DAILY_CALL_CAP} requests). Try again tomorrow.`, 429);
+    return jsonError(`Daily AI limit reached (${DAILY_CALL_CAP} requests per day). Try again tomorrow.`, 429);
   }
 
   // Server secret handling:
