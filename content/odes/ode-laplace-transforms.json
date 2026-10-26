@@ -463,15 +463,15 @@
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory</em> and start from \\( y'' + 4y = \\delta(t - \\pi), \\qquad y(0) = 1, \\quad y'(0) = 0. \\).",
+            "en": "<strong>Transform equation:</strong> \\((s^2 + 4)Y(s) - s(1) - 0 = \\mathcal{L}\\{\\delta(t - \\pi)\\} = e^{-\\pi s} \\implies (s^2 + 4)Y(s) = s + e^{-\\pi s}\\).",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "en": "Rewrite and simplify to obtain: \\(Y(s) = \\frac{s}{s^2 + 4} + e^{-\\pi s} \\cdot \\frac{1}{s^2 + 4} = \\frac{s}{s^2 + 4} + \\frac{1}{2} e^{-\\pi s} \\cdot \\frac{2}{s^2 + 4}\\).",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Physical interpretation:</strong> For \\(0 \\le t < \\pi\\), the system oscillates as \\(\\cos(2t)\\). At \\(t = \\pi\\), the delta impulse imparts an instantaneous velocity jump of \\(\\Delta y' = 1\\), altering the amplitude and phase for \\(t \\ge \\pi\\).",
             "ar": null
           }
         ]
@@ -488,15 +488,15 @@
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory</em> and start from \\( y(t) = t + \\int_0^t \\sin(t - \\tau)y(\\tau)\\,d\\tau. \\).",
+            "en": "<strong>Identify convolution:</strong> The equation is \\( y(t) = t + \\sin(t) * y(t) \\).",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( y(t) = t + \\sin(t) * y(t) \\).",
+            "en": "<strong>Transform both sides:</strong> \\(Y(s) = \\frac{1}{s^2} + \\left(\\frac{1}{s^2 + 1}\\right)Y(s)\\).",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Inverse transform:</strong> \\(y(t) = \\mathcal{L}^{-1}\\left\\{\\frac{1}{s^2} + \\frac{1}{6} \\cdot \\frac{3!}{s^4}\\right\\}\\).",
             "ar": null
           }
         ]
@@ -509,15 +509,15 @@
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in The Laplace Transform, Discontinuous Forcing & Convolution Theory and write down the given values.",
+            "en": "Taking the Laplace transform of the differential equation, we have \\(s^2 Y(s) - sy(0) - y'(0) + 4Y(s) = \\mathcal{L}\\{\\delta(t-\\pi)\\}\\).",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
+            "en": "Given the initial conditions \\(y(0)=0\\) and \\(y'(0)=0\\), this simplifies to \\(s^2 Y(s) + 4Y(s) = e^{-\\pi s}\\). Factoring out \\(Y(s)\\), we get \\(Y(s)(s^2 + 4) = e^{-\\pi s}\\).",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
+            "en": "Therefore, the Laplace transform of the solution is \\(Y(s) = \\frac{e^{-\\pi s}}{s^2 + 4}\\).",
             "ar": null
           }
         ],
@@ -534,15 +534,15 @@
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Second-Order Linear Equations (Constant Coefficients) and write down the given values.",
+            "en": "Auxiliary equation \\( r^2-12r+35=0 \\) has roots \\( r=5,7 \\), so \\( y=C_1e^{5x}+C_2e^{7x} \\).",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
+            "en": "Solving \\( y(0)=C_1+C_2=-1 \\) and \\( y'(0)=5C_1+7C_2=-13 \\) gives \\( C_1=3 \\), \\( C_2=-4 \\).",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
+            "en": "So \\(y=3e^{5x}-4e^{7x}\\), and \\(y(2)\\) follows by substitution.",
             "ar": null
           }
         ],

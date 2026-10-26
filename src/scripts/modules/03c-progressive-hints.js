@@ -46,13 +46,16 @@
       'Substitute carefully, check signs and units, and compare with the answer choices.'
     ];
 
-    /* If explicit 3-tier hints array exists on the item, normalize and return it */
+    /* If explicit 3-tier hints array exists on the item (and is not legacy boilerplate), normalize and return it */
     if(Array.isArray(q.hints) && q.hints.length >= 3){
-      return q.hints.slice(0, 3).map(function(h){
-        if(typeof h === 'string') return h;
-        if(h && typeof h === 'object') return h.en || h.ar || '';
-        return String(h || '');
-      });
+      var firstH = typeof q.hints[0] === 'string' ? q.hints[0] : (q.hints[0] && (q.hints[0].en || q.hints[0].ar) || '');
+      if(!/Identify the (?:governing|mathematical|core) relationship|Tier 1 \(Conceptual Setup\)/i.test(firstH)){
+        return q.hints.slice(0, 3).map(function(h){
+          if(typeof h === 'string') return h;
+          if(h && typeof h === 'object') return h.en || h.ar || '';
+          return String(h || '');
+        });
+      }
     }
 
     var stem = String(q.text || q.q || '').trim();
@@ -223,6 +226,19 @@
       btn.style.cursor = 'default';
     }
 
+    if(targetTier && typeof window.renderMathInElement === 'function'){
+      try {
+        window.renderMathInElement(targetTier, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '\\[', right: '\\]', display: true},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false
+        });
+      } catch(e){}
+    }
     if(window.MathJax && typeof MathJax.typesetPromise === 'function' && targetTier){
       MathJax.typesetPromise([targetTier]).catch(function(){});
     }
