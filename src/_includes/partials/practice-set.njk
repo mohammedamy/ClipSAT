@@ -37,7 +37,10 @@
         <p class="qt">{{ bl.text(item.question) }}</p>
       </div>
       {% if item.fig %}<div class="lesson-figure-svg">{{ item.fig | renderFig | safe }}</div>{% endif %}
-      <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+      <div style="display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
+        <button type="button" class="cs-voice-btn no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakProblemSolution(this)" title="Listen to worked solution" aria-label="Listen to worked solution"><span>🔊</span><span>Listen</span></button>
+      </div>
       <div class="solution">{{ bl.text(item.solution, 'div') }}</div>
     </div>
     {% endfor %}
@@ -50,7 +53,10 @@
         <span class="lvl {{ LVL_CLASS[item.difficulty] }}">{{ item.levelLabel or item.difficulty }}</span>
       </div>
       {% if item.fig %}<div class="lesson-figure-svg">{{ item.fig | renderFig | safe }}</div>{% endif %}
-      <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+      <div style="display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
+        <button type="button" class="cs-voice-btn no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakProblemSolution(this)" title="Listen to worked solution" aria-label="Listen to worked solution"><span>🔊</span><span>Listen</span></button>
+      </div>
       <div class="solution">{{ bl.text(item.solution, 'div') }}</div>
     </div>
     {% endfor %}

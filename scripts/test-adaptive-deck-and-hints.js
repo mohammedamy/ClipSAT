@@ -159,6 +159,62 @@ it('10-mistakes-store.js and 13-mistakes-review.js expose interactive Adaptive M
   assert.ok(s13.includes('window.CSHintEngine.renderHintWidget'), '13-mistakes-review.js must integrate progressive 3-tier hints');
 });
 
+// 5. Test Zero-API Client-Side Voice Tutor (window.CSVoiceTutor) in English & Arabic
+it('window.CSVoiceTutor converts LaTeX math to natural speech in English & Arabic and wires 🔊 buttons across all 4 surfaces', () => {
+  const window = {};
+  const document = {
+    hidden: false,
+    addEventListener: () => {}
+  };
+  const voiceCode = fs.readFileSync(path.join(modulesDir, '03d-voice-tutor.js'), 'utf8');
+  const fn = new Function('window', 'document', voiceCode);
+  fn(window, document);
+
+  assert.ok(window.CSVoiceTutor, 'window.CSVoiceTutor must be exposed');
+  assert.strictEqual(typeof window.CSVoiceTutor.latexToSpeech, 'function');
+  assert.strictEqual(typeof window.CSVoiceTutor.extractSpeechText, 'function');
+  assert.strictEqual(typeof window.CSVoiceTutor.speakTier, 'function');
+  assert.strictEqual(typeof window.CSVoiceTutor.speakCurrentHint, 'function');
+  assert.strictEqual(typeof window.CSVoiceTutor.speakProblemSolution, 'function');
+  assert.strictEqual(typeof window.CSVoiceTutor.explainExplorer, 'function');
+  assert.strictEqual(typeof window.CSVoiceTutor.explainIxBox, 'function');
+
+  // English LaTeX-to-Speech checks
+  const enQuad = window.CSVoiceTutor.latexToSpeech(
+    'Use the quadratic formula \\(x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}\\) and check \\(\\int_0^{\\pi} \\sin(x)\\,dx = 2\\).',
+    'en'
+  );
+  assert.ok(enQuad.includes('plus or minus'), `Expected "plus or minus" in: ${enQuad}`);
+  assert.ok(enQuad.includes('square root of'), `Expected "square root of" in: ${enQuad}`);
+  assert.ok(enQuad.includes('b squared'), `Expected "b squared" in: ${enQuad}`);
+  assert.ok(enQuad.includes('over 2 a') || enQuad.includes('over 2a'), `Expected denominator in: ${enQuad}`);
+  assert.ok(enQuad.includes('integral from 0 to pi'), `Expected definite integral in: ${enQuad}`);
+  assert.ok(!enQuad.includes('\\frac') && !enQuad.includes('\\sqrt'), `Must not leave raw LaTeX commands in: ${enQuad}`);
+
+  // Arabic LaTeX-to-Speech checks
+  const arSpeech = window.CSVoiceTutor.latexToSpeech(
+    'عوّض في القانون \\(x = \\frac{1}{2} + \\sqrt{x^2 + 5}\\) عندما \\(\\theta = 90^\\circ\\).',
+    'ar'
+  );
+  assert.ok(arSpeech.includes('نصف'), `Expected "نصف" for 1/2 in Arabic: ${arSpeech}`);
+  assert.ok(arSpeech.includes('الجذر التربيعي'), `Expected "الجذر التربيعي" in Arabic: ${arSpeech}`);
+  assert.ok(arSpeech.includes('تربيع'), `Expected "تربيع" in Arabic: ${arSpeech}`);
+  assert.ok(arSpeech.includes('ثيتا'), `Expected "ثيتا" in Arabic: ${arSpeech}`);
+  assert.ok(arSpeech.includes('درجة'), `Expected "درجة" in Arabic: ${arSpeech}`);
+
+  // Verify 🔊 button wiring across templates & modules
+  const partialsDir = path.join(__dirname, '..', 'src', '_includes', 'partials');
+  const probNjk = fs.readFileSync(path.join(partialsDir, 'blocks', 'practice-problem.njk'), 'utf8');
+  const psetNjk = fs.readFileSync(path.join(partialsDir, 'practice-set.njk'), 'utf8');
+  const expNjk = fs.readFileSync(path.join(partialsDir, 'blocks', 'explorer.njk'), 'utf8');
+  const ixEngine = fs.readFileSync(path.join(modulesDir, '19-interactive-activities-engine-v1.js'), 'utf8');
+
+  assert.ok(probNjk.includes('CSVoiceTutor.speakTier') && probNjk.includes('CSVoiceTutor.speakProblemSolution'), 'practice-problem.njk must wire CSVoiceTutor on hints and solutions');
+  assert.ok(psetNjk.includes('CSVoiceTutor.speakProblemSolution'), 'practice-set.njk must wire CSVoiceTutor on solutions');
+  assert.ok(expNjk.includes('CSVoiceTutor.explainExplorer'), 'explorer.njk must wire CSVoiceTutor.explainExplorer');
+  assert.ok(ixEngine.includes('CSVoiceTutor.explainIxBox'), '19-interactive-activities-engine-v1.js must wire CSVoiceTutor.explainIxBox');
+});
+
 console.log(`\n── Summary: ${passed} passed, ${failed} failed ──`);
 if (failed > 0) process.exit(1);
 console.log('✅ All Modular Engine, Progressive Hints & Adaptive Mistake Deck unit tests passed!\n');

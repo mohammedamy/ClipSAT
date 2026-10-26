@@ -1723,7 +1723,7 @@
           if(window.CSHintEngine && typeof window.CSHintEngine.renderHintWidget === 'function'){
             h+='<div style="margin-left:28pt">' + window.CSHintEngine.renderHintWidget(q, 'fep-fb-' + qNum) + '</div>';
           }
-          h+='<div class="fep-sol-block" style="display:none"><strong>Answer'+(isMCQ?' ('+globalLetters[q.answer]+')':'')+': </strong>'+_fmtBi(_maths(q.sol||''))+'</div></div>';
+          h+='<div class="fep-sol-block" style="display:none"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><strong>Answer'+(isMCQ?' ('+globalLetters[q.answer]+')':'')+': </strong><button type="button" class="cs-voice-btn cs-voice-btn-sm no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakProblemSolution(this)" title="Listen to solution" aria-label="Listen to solution"><span>🔊</span></button></div><div>'+_fmtBi(_maths(q.sol||''))+'</div></div></div>';
           qNum++;
         });
         h+='</div>';
@@ -1971,7 +1971,7 @@
           if(window.CSHintEngine && typeof window.CSHintEngine.renderHintWidget === 'function'){
             h+='<div style="margin-left:28pt">' + window.CSHintEngine.renderHintWidget(q, 'fep-sp-' + qNum) + '</div>';
           }
-          h+='<div class="fep-sol-block" style="display:none"><strong>'+(isIBExam?'Official IB Markscheme ['+qMarks+' marks]':'Answer'+(isMCQ?' ('+pL[q.answer]+')':''))+(ansDisplay?' — '+_maths(ansDisplay):'')+': </strong><div style="margin-top:6px">'+_fmtBi(_maths(q.sol||q.exp||''))+'</div></div>';
+          h+='<div class="fep-sol-block" style="display:none"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><strong>'+(isIBExam?'Official IB Markscheme ['+qMarks+' marks]':'Answer'+(isMCQ?' ('+pL[q.answer]+')':''))+(ansDisplay?' — '+_maths(ansDisplay):'')+': </strong><button type="button" class="cs-voice-btn cs-voice-btn-sm no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakProblemSolution(this)" title="Listen to solution" aria-label="Listen to solution"><span>🔊</span></button></div><div style="margin-top:6px">'+_fmtBi(_maths(q.sol||q.exp||''))+'</div></div>';
           h+='</div>';
           qNum++;
         });

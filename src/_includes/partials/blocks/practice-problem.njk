@@ -13,14 +13,17 @@
   <div class="problem-hints" style="padding:0 16px 10px;display:flex;flex-direction:column;gap:6px">
     {% for h in block.hints %}
     <details class="hint-tier" style="background:var(--panel,#f8fafc);border:1px dashed var(--line,#cbd5e1);border-radius:6px;padding:6px 12px;font-size:.85rem">
-      <summary style="cursor:pointer;font-weight:600;color:var(--indigo,#4338ca)">💡 Hint {{ loop.index }} of {{ block.hints.length }}</summary>
-      <div style="margin-top:6px;color:var(--ink,#1e293b);line-height:1.5">{{ bl.text(h, 'div') }}</div>
+      <summary style="cursor:pointer;font-weight:600;color:var(--indigo,#4338ca);display:flex;align-items:center;justify-content:space-between;gap:8px"><span>💡 Hint {{ loop.index }} of {{ block.hints.length }}</span><button type="button" class="cs-voice-btn cs-voice-btn-sm no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakTier(this,event)" title="Listen to this hint" aria-label="Listen to Hint {{ loop.index }}"><span>🔊</span></button></summary>
+      <div class="cs-hint-body" style="margin-top:6px;color:var(--ink,#1e293b);line-height:1.5">{{ bl.text(h, 'div') }}</div>
     </details>
     {% endfor %}
   </div>
   {% endif %}
   <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px 8px;gap:8px;flex-wrap:wrap">
-    <button class="sol-btn" onclick="toggleSol(this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Show solution</button>
+    <div style="display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap">
+      <button class="sol-btn" onclick="toggleSol(this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg> Show solution</button>
+      <button type="button" class="cs-voice-btn no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakProblemSolution(this)" title="Listen to worked solution" aria-label="Listen to worked solution"><span>🔊</span><span>Listen</span></button>
+    </div>
     <button type="button" class="btn-intuition-ar" onclick="window.askArabicIntuition&&window.askArabicIntuition(this)" style="background:transparent;border:1px solid var(--border,#cbd5e1);border-radius:6px;padding:3px 8px;font-size:.78rem;font-weight:600;cursor:pointer;color:var(--indigo,#1e3e70);display:inline-flex;align-items:center;gap:4px;transition:all .15s ease" title="اشرح الفكرة والحدس الرياضي بالعربية">
       <span>💡 اشرح الفكرة بالعربية</span>
     </button>

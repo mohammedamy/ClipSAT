@@ -7393,3 +7393,62 @@ body.dark .cookie-consent-accept:hover {
     display: grid !important;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Zero-API Client-Side AI Voice Tutor Buttons (.cs-voice-btn)
+   ═══════════════════════════════════════════════════════════════════════════ */
+.cs-voice-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border, #cbd5e1);
+  background: var(--paper-2, #f8fafc);
+  color: var(--indigo, #1e3a6e);
+  font-family: var(--sans, system-ui, sans-serif);
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: all 0.16s ease;
+  user-select: none;
+  vertical-align: middle;
+}
+.cs-voice-btn:hover {
+  background: #eff6ff;
+  border-color: #60a5fa;
+  color: #1d4ed8;
+  transform: translateY(-1px);
+}
+.cs-voice-btn-sm {
+  padding: 3px 7px;
+  font-size: 0.74rem;
+  gap: 3px;
+}
+.cs-voice-btn.is-speaking {
+  background: #fef2f2;
+  border-color: #ef4444;
+  color: #b91c1c;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.16);
+  animation: cs-voice-pulse 1.3s infinite ease-in-out;
+}
+body.dark .cs-voice-btn {
+  background: #1e293b;
+  border-color: #475569;
+  color: #93c5fd;
+}
+body.dark .cs-voice-btn:hover {
+  background: #334155;
+  border-color: #60a5fa;
+  color: #bfdbfe;
+}
+body.dark .cs-voice-btn.is-speaking {
+  background: rgba(127, 29, 29, 0.45);
+  border-color: #f87171;
+  color: #fca5a5;
+}
+@keyframes cs-voice-pulse {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.18); }
+  50% { box-shadow: 0 0 0 5px rgba(239, 68, 68, 0.06); }
+}

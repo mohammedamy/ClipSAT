@@ -168,7 +168,10 @@
     var idAttr = uid ? (' data-hint-uid="' + String(uid).replace(/"/g, '&quot;') + '"') : '';
     var tiersHtml = hints.map(function(hText, idx){
       return '<div class="cs-hint-tier" data-tier="' + (idx + 1) + '" style="display:none;margin-top:8px;padding:9px 13px;border-radius:8px;background:var(--amber-bg,#fffbeb);border-left:3.5px solid #d97706;font-size:.86rem;line-height:1.55;color:var(--ink,#1e293b)">'
-        + '<div style="font-weight:700;font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;color:#b45309;margin-bottom:3px">' + labels[idx] + '</div>'
+        + '<div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:3px">'
+        + '<span style="font-weight:700;font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;color:#b45309">' + labels[idx] + '</span>'
+        + '<button type="button" class="cs-voice-btn cs-voice-btn-sm no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakTier(this,event)" title="' + (isAr ? 'استمع إلى التلميح' : 'Listen to this hint') + '" aria-label="' + (isAr ? 'استمع إلى التلميح' : 'Listen to this hint') + '"><span>🔊</span></button>'
+        + '</div>'
         + '<div class="cs-hint-body">' + fmtBi(fmtMath(hText)) + '</div>'
         + '</div>';
     }).join('');
@@ -179,6 +182,7 @@
       + 'style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;border:1.5px solid #f59e0b;background:var(--amber-bg,#fffbeb);color:#b45309;font-size:.79rem;font-weight:700;cursor:pointer;transition:all .15s">'
       + '<span>💡</span><span class="cs-hint-btn-lbl">' + (isAr ? 'تلميح تدريجي (١/٣)' : 'Get Hint (1/3)') + '</span>'
       + '</button>'
+      + '<button type="button" class="cs-voice-btn no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakCurrentHint(this)" title="' + (isAr ? 'استمع إلى التلميح صوتياً' : 'Listen to hint aloud') + '" aria-label="' + (isAr ? 'استمع إلى التلميح صوتياً' : 'Listen to hint aloud') + '"><span>🔊</span><span>' + (isAr ? 'استمع' : 'Listen') + '</span></button>'
       + '<span class="cs-hint-dots" style="display:inline-flex;gap:4px;align-items:center" aria-hidden="true">'
       + '<span class="cs-hdot" style="width:7px;height:7px;border-radius:50%;background:#cbd5e1;display:inline-block"></span>'
       + '<span class="cs-hdot" style="width:7px;height:7px;border-radius:50%;background:#cbd5e1;display:inline-block"></span>'

@@ -782,8 +782,15 @@ function _buildSR(cfg,box){
   function renderStep(idx){
     var d=document.createElement('div');d.className='ix-sr-step';
     var n=document.createElement('div');n.className='ix-sr-n';n.textContent=String(idx+1);
-    var body=document.createElement('div');body.className='ix-sr-body';body.innerHTML=stepsArr[idx];
-    d.appendChild(n);d.appendChild(body);steps.appendChild(d);
+    var body=document.createElement('div');body.className='ix-sr-body';body.style.flex='1';body.innerHTML=stepsArr[idx];
+    var vBtn=document.createElement('button');vBtn.type='button';vBtn.className='cs-voice-btn cs-voice-btn-sm no-print';
+    vBtn.title='Listen to Step '+(idx+1);vBtn.setAttribute('aria-label','Listen to Step '+(idx+1));
+    vBtn.innerHTML='<span>🔊</span>';
+    vBtn.addEventListener('click',function(e){
+      e.stopPropagation();
+      if(window.CSVoiceTutor) window.CSVoiceTutor.toggleSpeak(vBtn, body);
+    });
+    d.appendChild(n);d.appendChild(body);d.appendChild(vBtn);steps.appendChild(d);
     _mjax(d);
   }
 
@@ -2038,6 +2045,18 @@ function _inject(chId){
     else if(c.t==='gp')_buildGP(c,box);
     else if(c.t==='se')_buildSE(c,box);
     else if(c.t==='ms')_buildMS(c,box);
+    var badgeEl=box.querySelector('.ix-badge');
+    if(badgeEl){
+      var vBtn=document.createElement('button');
+      vBtn.type='button';
+      vBtn.className='cs-voice-btn no-print';
+      vBtn.style.marginLeft='8px';
+      vBtn.title=(loc==='ar'?'استمع إلى شرح النشاط التفاعلي':'Listen to interactive activity walkthrough');
+      vBtn.setAttribute('aria-label',vBtn.title);
+      vBtn.innerHTML='<span>🔊</span><span>'+(loc==='ar'?'اشرح صوتياً':'Explain')+'</span>';
+      vBtn.setAttribute('onclick','window.CSVoiceTutor&&window.CSVoiceTutor.explainIxBox(this)');
+      badgeEl.insertAdjacentElement('afterend',vBtn);
+    }
     wrap.appendChild(box);
   });
   var qWrap = sec.querySelector('.ch-quiz-wrap');

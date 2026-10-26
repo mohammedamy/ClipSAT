@@ -905,7 +905,7 @@ window.launchPracticeQuiz=function(mistake){
         h+=window.CSHintEngine.renderHintWidget(q, _qId);
       }
       var _solRaw=(q.sol||q.explanation||'').replace(/"/g,'&quot;').replace(/\n/g,' ');
-      if(q.sol||q.explanation) h+='<div class="cq-sol-box" data-raw="'+_solRaw+'"><strong>Solution:</strong> '+_maths(q.sol||q.explanation||'')+'</div>';
+      if(q.sol||q.explanation) h+='<div class="cq-sol-box" data-raw="'+_solRaw+'"><div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px"><strong>Solution:</strong><button type="button" class="cs-voice-btn cs-voice-btn-sm no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakProblemSolution(this)" title="Listen to solution" aria-label="Listen to solution"><span>🔊</span></button></div><div class="cq-sol-body">'+_maths(q.sol||q.explanation||'')+'</div></div>';
       h+='</div>';
     });
     h+='<div class="cq-score-bar">Answered: <strong class="cq-ans-v">0</strong> / '+pick.length+' &nbsp;|&nbsp; Score: <strong class="cq-sv">0</strong> / '+pick.length+'</div>';

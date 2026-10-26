@@ -43,7 +43,7 @@
 </div>
 {% endmacro %}
 <div class="explorer">
-  <div class="ex-top"><span class="et">{{ bl.text(block.title) }}</span><span class="badge">interactive</span></div>
+  <div class="ex-top"><span class="et">{{ bl.text(block.title) }}</span><div style="display:inline-flex;align-items:center;gap:6px"><button type="button" class="cs-voice-btn no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.explainExplorer(this)" title="Listen to an interactive voice walkthrough of this explorer" aria-label="Explain interactive explorer aloud"><span>🔊</span><span>Explain</span></button><span class="badge">interactive</span></div></div>
   <div class="ex-body"{% if block.bodyStyle %} style="{{ block.bodyStyle }}"{% endif %}>
     <div class="ex-canvas"{% if block.canvasStyle %} style="{{ block.canvasStyle }}"{% endif %}>
       {% if block.canvasId %}
