@@ -22,17 +22,7 @@
           "question_type": "FRQ",
           "target": "Solving by separation of variables",
           "answer": "Separate: $\\frac{dy}{y}=2x\\,dx$. Integrate: $\\ln|y|=x^2+C$. So $y=Ae^{x^2}$ for some constant $A$. Using $y=5,x=0$: $A=5$. Solution: $y=5e^{x^2}$.",
-          "explanation": "Separate: $\\frac{dy}{y}=2x\\,dx$. Integrate: $\\ln|y|=x^2+C$. So $y=Ae^{x^2}$ for some constant $A$. Using $y=5,x=0$: $A=5$. Solution: $y=5e^{x^2}$.",
-          "figure": {
-            "type": "slope_field",
-            "expr": "0.5*x - 0.45*y + 0.1*(1)",
-            "sol_fn": "1.11*x - 2.47 + 2*exp(-0.45*x)",
-            "xmin": -4,
-            "xmax": 4,
-            "ymin": -4,
-            "ymax": 4,
-            "width": 225
-          }
+          "explanation": "Separate: $\\frac{dy}{y}=2x\\,dx$. Integrate: $\\ln|y|=x^2+C$. So $y=Ae^{x^2}$ for some constant $A$. Using $y=5,x=0$: $A=5$. Solution: $y=5e^{x^2}$."
         },
         {
           "q": "A population $P$ grows at a rate proportional to its current size, modeled by $\\frac{dP}{dt}=kP$. If the population doubles every 5 years, find $k$, to three decimal places.",
@@ -64,17 +54,7 @@
           "question_type": "FRQ",
           "target": "Euler's method for numerical solutions",
           "answer": "Euler's method: $y_{n+1}=y_n+h\\cdot f(x_n,y_n)$. Step 1 ($x_0=0,y_0=1$): $y_1=1+0.5(0+1)=1.5$. Step 2 ($x_1=0.5,y_1=1.5$): $y_2=1.5+0.5(0.5+1.5)=1.5+1=2.5$. Estimate: $y(1)\\approx2.5$.",
-          "explanation": "Euler's method: $y_{n+1}=y_n+h\\cdot f(x_n,y_n)$. Step 1 ($x_0=0,y_0=1$): $y_1=1+0.5(0+1)=1.5$. Step 2 ($x_1=0.5,y_1=1.5$): $y_2=1.5+0.5(0.5+1.5)=1.5+1=2.5$. Estimate: $y(1)\\approx2.5$.",
-          "figure": {
-            "type": "slope_field",
-            "expr": "0.2*x - 0.45*y + 0.1*(-2)",
-            "sol_fn": "0.44*x - 0.99 + 2*exp(-0.45*x)",
-            "xmin": -4,
-            "xmax": 4,
-            "ymin": -4,
-            "ymax": 4,
-            "width": 225
-          }
+          "explanation": "Euler's method: $y_{n+1}=y_n+h\\cdot f(x_n,y_n)$. Step 1 ($x_0=0,y_0=1$): $y_1=1+0.5(0+1)=1.5$. Step 2 ($x_1=0.5,y_1=1.5$): $y_2=1.5+0.5(0.5+1.5)=1.5+1=2.5$. Estimate: $y(1)\\approx2.5$."
         },
         {
           "q": "The differential equation $\\frac{d^2x}{dt^2}=-\\omega^2x$ describes simple harmonic motion. Verify that $x(t)=A\\cos(\\omega t)$ is a solution.",
@@ -95,20 +75,7 @@
           "question_type": "FRQ",
           "target": "Family of solution curves and particular solutions",
           "answer": "Integrating directly: $y=x^3+C$. The constant $C$ represents a vertical shift — the general solution is a whole family of curves, all with the same shape (since they share the same derivative $3x^2$ at every $x$), just shifted up or down by different amounts.",
-          "explanation": "Integrating directly: $y=x^3+C$. The constant $C$ represents a vertical shift — the general solution is a whole family of curves, all with the same shape (since they share the same derivative $3x^2$ at every $x$), just shifted up or down by different amounts.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "x**3-2",
-              "x**3",
-              "x**3+2"
-            ],
-            "xmin": -2,
-            "xmax": 2,
-            "ymin": -10,
-            "ymax": 10,
-            "width": 210
-          }
+          "explanation": "Integrating directly: $y=x^3+C$. The constant $C$ represents a vertical shift — the general solution is a whole family of curves, all with the same shape (since they share the same derivative $3x^2$ at every $x$), just shifted up or down by different amounts."
         },
         {
           "q": "A tank drains such that $\\frac{dV}{dt}=-k\\sqrt{V}$ for some constant $k>0$, where $V$ is the volume of water. Solve this differential equation for $V(t)$, given $V(0)=V_0$.",
@@ -124,25 +91,7 @@
           "question_type": "FRQ",
           "target": "Verifying a solution to a second-order differential equation",
           "answer": "$\\frac{dy}{dx}=2e^{2x}$. $\\frac{d^2y}{dx^2}=4e^{2x}$. Substituting: $4e^{2x}-5(2e^{2x})+6e^{2x}=4e^{2x}-10e^{2x}+6e^{2x}=0e^{2x}=0$, confirming $y=e^{2x}$ is a solution.",
-          "explanation": "$\\frac{dy}{dx}=2e^{2x}$. $\\frac{d^2y}{dx^2}=4e^{2x}$. Substituting: $4e^{2x}-5(2e^{2x})+6e^{2x}=4e^{2x}-10e^{2x}+6e^{2x}=0e^{2x}=0$, confirming $y=e^{2x}$ is a solution.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "e**(2*x)"
-            ],
-            "xmin": -4.5,
-            "xmax": 4.5,
-            "ymin": -2.0,
-            "ymax": 20.0,
-            "width": 225,
-            "point_labels": [
-              {
-                "x": -1.0,
-                "y": 0.14,
-                "label": "$(-1, 0.14)$"
-              }
-            ]
-          }
+          "explanation": "$\\frac{dy}{dx}=2e^{2x}$. $\\frac{d^2y}{dx^2}=4e^{2x}$. Substituting: $4e^{2x}-5(2e^{2x})+6e^{2x}=4e^{2x}-10e^{2x}+6e^{2x}=0e^{2x}=0$, confirming $y=e^{2x}$ is a solution."
         },
         {
           "q": "A differential equation is given by $\\frac{dy}{dx}=x-y$. Find the gradient of the solution curve at the points $(0,0)$, $(1,0)$, and $(1,1)$, and explain what a slope field represents.",
@@ -188,20 +137,7 @@
           "target": "Using Euler's method with a smaller step size",
           "cross_lesson": "4.01 Unbiased Estimators & Confidence Intervals",
           "answer": "Separate: $\\frac{dy}{y}=\\frac{dx}{x}$. Integrate: $\\ln|y|=\\ln|x|+C$, so $y=Ax$ for some constant $A$. Using $y=6,x=2$: $6=2A$, so $A=3$. Solution: $y=3x$. This represents the family of straight lines through the origin; the particular solution satisfying the initial condition is the specific line with slope $3$.",
-          "explanation": "Separate: $\\frac{dy}{y}=\\frac{dx}{x}$. Integrate: $\\ln|y|=\\ln|x|+C$, so $y=Ax$ for some constant $A$. Using $y=6,x=2$: $6=2A$, so $A=3$. Solution: $y=3x$. This represents the family of straight lines through the origin; the particular solution satisfying the initial condition is the specific line with slope $3$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "3*x",
-              "x",
-              "-2*x"
-            ],
-            "xmin": -3,
-            "xmax": 3,
-            "ymin": -9,
-            "ymax": 9,
-            "width": 210
-          }
+          "explanation": "Separate: $\\frac{dy}{y}=\\frac{dx}{x}$. Integrate: $\\ln|y|=\\ln|x|+C$, so $y=Ax$ for some constant $A$. Using $y=6,x=2$: $6=2A$, so $A=3$. Solution: $y=3x$. This represents the family of straight lines through the origin; the particular solution satisfying the initial condition is the specific line with slope $3$."
         },
         {
           "q": "A cup of coffee at $90^\\circ$C is placed in a room at ambient temperature $20^\\circ$C. Using Newton's law of cooling, $T(t)=T_a+(T_0-T_a)e^{-kt}$, and given that after $10$ minutes the coffee has cooled to $60^\\circ$C, find the value of $k$ to three decimal places.",
@@ -210,17 +146,7 @@
           "target": "Using Euler's method with a smaller step size",
           "cross_lesson": "4.02 The Poisson Distribution",
           "answer": "Using $T_a=20$, $T_0=90$, and $T(10)=60$: $60=20+(90-20)e^{-10k}$, so $40=70e^{-10k}$, giving $e^{-10k}=\\frac{4}{7}$. Taking natural logs: $-10k=\\ln\\left(\\frac{4}{7}\\right)\\approx-0.5596$, so $k\\approx0.056$.",
-          "explanation": "Using $T_a=20$, $T_0=90$, and $T(10)=60$: $60=20+(90-20)e^{-10k}$, so $40=70e^{-10k}$, giving $e^{-10k}=\\frac{4}{7}$. Taking natural logs: $-10k=\\ln\\left(\\frac{4}{7}\\right)\\approx-0.5596$, so $k\\approx0.056$.",
-          "figure": {
-            "type": "slope_field",
-            "expr": "0.6*x - 0.45*y + 0.1*(2)",
-            "sol_fn": "1.33*x - 2.96 + 4*exp(-0.45*x)",
-            "xmin": -4,
-            "xmax": 4,
-            "ymin": -4,
-            "ymax": 4,
-            "width": 225
-          }
+          "explanation": "Using $T_a=20$, $T_0=90$, and $T(10)=60$: $60=20+(90-20)e^{-10k}$, so $40=70e^{-10k}$, giving $e^{-10k}=\\frac{4}{7}$. Taking natural logs: $-10k=\\ln\\left(\\frac{4}{7}\\right)\\approx-0.5596$, so $k\\approx0.056$."
         },
         {
           "q": "This question has three parts. A tank initially contains $200$ litres of pure water. Salt water containing $3$ grams of salt per litre flows in at a rate of $2$ litres per minute, and the well-mixed solution flows out at the same rate, so the volume stays constant at $200$ litres. Let $S(t)$ be the amount of salt (in grams) in the tank at time $t$ minutes. (a) Explain why $\\frac{dS}{dt}=6-\\frac{S}{100}$. (b) Solve this differential equation for $S(t)$, given $S(0)=0$. (c) Find the amount of salt in the tank after $50$ minutes, to the nearest gram.",
@@ -306,17 +232,7 @@
           ],
           "correct": 0,
           "answer": "To solve the differential equation, we use separation of variables: 1. **Separate the variables**: $e^y \\,\\mathrm{d}y = 2x \\,\\mathrm{d}x$ 2. **Integrate both sides**: $\\int e^y \\,\\mathrm{d}y = \\int 2x \\,\\mathrm{d}x$ $e^y = x^2 + C$ 3. **Apply the initial condition** $y = 0$ when $x = 0$: $e^0 = 0^2 + C \\Rightarrow 1 = C$ *(A frequent error is assuming $C = 0$ because the boundary values are zero, which leads to the incorrect solution $y = \\ln(x^2)$.)* 4. **Express $y$ explicitly in terms of $x$**: $e^y = x^2 + 1 \\Rightarrow y = \\ln(x^2 + 1)$ Thus, the correct choice is $y = \\ln(x^2 + 1)$.",
-          "explanation": "To solve the differential equation, we use separation of variables: 1. **Separate the variables**: $e^y \\,\\mathrm{d}y = 2x \\,\\mathrm{d}x$ 2. **Integrate both sides**: $\\int e^y \\,\\mathrm{d}y = \\int 2x \\,\\mathrm{d}x$ $e^y = x^2 + C$ 3. **Apply the initial condition** $y = 0$ when $x = 0$: $e^0 = 0^2 + C \\Rightarrow 1 = C$ *(A frequent error is assuming $C = 0$ because the boundary values are zero, which leads to the incorrect solution $y = \\ln(x^2)$.)* 4. **Express $y$ explicitly in terms of $x$**: $e^y = x^2 + 1 \\Rightarrow y = \\ln(x^2 + 1)$ Thus, the correct choice is $y = \\ln(x^2 + 1)$.",
-          "figure": {
-            "type": "slope_field",
-            "expr": "0.4*x - 0.15*y + 0.1*(0)",
-            "sol_fn": "2.67*x - 17.78 + 4*exp(-0.15*x)",
-            "xmin": -4,
-            "xmax": 4,
-            "ymin": -4,
-            "ymax": 4,
-            "width": 225
-          }
+          "explanation": "To solve the differential equation, we use separation of variables: 1. **Separate the variables**: $e^y \\,\\mathrm{d}y = 2x \\,\\mathrm{d}x$ 2. **Integrate both sides**: $\\int e^y \\,\\mathrm{d}y = \\int 2x \\,\\mathrm{d}x$ $e^y = x^2 + C$ 3. **Apply the initial condition** $y = 0$ when $x = 0$: $e^0 = 0^2 + C \\Rightarrow 1 = C$ *(A frequent error is assuming $C = 0$ because the boundary values are zero, which leads to the incorrect solution $y = \\ln(x^2)$.)* 4. **Express $y$ explicitly in terms of $x$**: $e^y = x^2 + 1 \\Rightarrow y = \\ln(x^2 + 1)$ Thus, the correct choice is $y = \\ln(x^2 + 1)$."
         },
         {
           "q": "Consider the differential equation $\\frac{dy}{dx} = 2x$. Which of the following is a particular solution passing through the point $(1, 3)$?",
@@ -391,17 +307,7 @@
           ],
           "correct": 2,
           "answer": "Applying Differential Equations principles, $r^2-1=0\\Rightarrow r=\\pm1$. Therefore, the verified correct option is $r^2-1=0$.",
-          "explanation": "Applying Differential Equations principles, $r^2-1=0\\Rightarrow r=\\pm1$. Therefore, the verified correct option is $r^2-1=0$.",
-          "figure": {
-            "type": "slope_field",
-            "expr": "0.2*x - 0.35*y + 0.1*(-2)",
-            "sol_fn": "0.57*x - 1.63 + 4*exp(-0.35*x)",
-            "xmin": -4,
-            "xmax": 4,
-            "ymin": -4,
-            "ymax": 4,
-            "width": 225
-          }
+          "explanation": "Applying Differential Equations principles, $r^2-1=0\\Rightarrow r=\\pm1$. Therefore, the verified correct option is $r^2-1=0$."
         }
       ]
     },
@@ -481,25 +387,7 @@
           ],
           "correct": 0,
           "answer": "$e^x$ is not a solution of the homogeneous equation; try $Ae^x$.",
-          "explanation": "$e^x$ is not a solution of the homogeneous equation; try $Ae^x$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "e**x"
-            ],
-            "xmin": -4.5,
-            "xmax": 4.5,
-            "ymin": -2.0,
-            "ymax": 20.0,
-            "width": 225,
-            "point_labels": [
-              {
-                "x": 0.0,
-                "y": 1.0,
-                "label": "$(0, 1)$"
-              }
-            ]
-          }
+          "explanation": "$e^x$ is not a solution of the homogeneous equation; try $Ae^x$."
         },
         {
           "q": "Second-order ODE with complex roots $r=\\alpha\\pm\\beta i$: general solution includes:",

@@ -460,7 +460,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Hard):</strong> A \\( 3 \\times 3 \\) symmetric matrix \\( U_{r} \\) has eigenvalues \\( \\lambda_1 = 12 \\), \\( \\lambda_2 = 8 \\), and \\( \\lambda_3 = 4 \\). Determine the exact value of the trace \\( \\text{tr}(U_{r}) \\).</p><p><strong>Step-by-Step Solution:</strong> The trace equals \\( \\lambda_1 + \\lambda_2 + \\lambda_3 = 24 \\).</p>",
+          "en": "<p><strong>Problem (Hard):</strong> Consider the matrix \\( A = \\begin{pmatrix} 1 & 1 & 0 \\\\ 1 & 0 & 1 \\\\ 0 & 1 & 1 \\end{pmatrix} \\). Let \\( \\mathbf{b} = \\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix} \\). We want to find the vector \\( \\hat{\\mathbf{x}} \\) that minimizes \\( \\lVert A\\mathbf{x} - \\mathbf{b} \\rVert \\). This is equivalent to finding the projection of \\( \\mathbf{b} \\) onto the column space of \\( A \\), denoted by \\( \\text{Col}(A) \\). The normal equations for this least squares problem are \\( A^T A \\mathbf{x} = A^T \\mathbf{b} \\). The unique solution \\( \\hat{\\mathbf{x}} \\) to the normal equations yields the best approximate solution. Calculate the value of \\( \\hat{\\mathbf{x}}_1 \\), the first component of \\( \\hat{\\mathbf{x}} \\).</p><p><strong>Step-by-Step Solution:</strong> The normal equations are given by \\( A^T A \\mathbf{x} = A^T \\mathbf{b} \\). First, we compute \\( A^T A \\) and \\( A^T \\mathbf{b} \\). \\\\ \\( A^T = \\begin{pmatrix} 1 & 1 & 0 \\\\ 1 & 0 & 1 \\\\ 0 & 1 & 1 \\end{pmatrix} \\) \\\\ \\( A^T A = \\begin{pmatrix} 1 & 1 & 0 \\\\ 1 & 0 & 1 \\\\ 0 & 1 & 1 \\end{pmatrix} \\begin{pmatrix} 1 & 1 & 0 \\\\ 1 & 0 & 1 \\\\ 0 & 1 & 1 \\end{pmatrix} = \\begin{pmatrix} 2 & 1 & 1 \\\\ 1 & 2 & 1 \\\\ 1 & 1 & 2 \\end{pmatrix} \\) \\\\ \\( A^T \\mathbf{b} = \\begin{pmatrix} 1 & 1 & 0 \\\\ 1 & 0 & 1 \\\\ 0 & 1 & 1 \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 2 \\\\ 2 \\\\ 2 \\end{pmatrix} \\) \\\\ So, we need to solve the system: \\( \\begin{pmatrix} 2 & 1 & 1 \\\\ 1 & 2 & 1 \\\\ 1 & 1 & 2 \\end{pmatrix} \\hat{\\mathbf{x}} = \\begin{pmatrix} 2 \\\\ 2 \\\\ 2 \\end{pmatrix} \\) \\\\ From the symmetry of the matrix \\( A^T A \\) and the vector \\( A^T \\mathbf{b} \\), it is clear that \\( \\hat{\\mathbf{x}} = \\begin{pmatrix} c \\\\ c \\\\ c \\end{pmatrix} \\) for some constant \\( c \\). Substituting this into the first row of the system: \\( 2c + 1c + 1c = 2 \\\\ 4c = 2 \\\\ c = \\frac{1}{2} \\) \\\\ Thus, \\( \\hat{\\mathbf{x}} = \\begin{pmatrix} 1/2 \\\\ 1/2 \\\\ 1/2 \\end{pmatrix} \\). The first component of \\( \\hat{\\mathbf{x}} \\) is \\( \\hat{\\mathbf{x}}_1 = 1/2 \\).</p>",
           "ar": null
         }
       },
@@ -569,75 +569,75 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 2 · Easy]</strong> Let \\( W \\) be spanned by \\( \\langle 0, -2, -2, 1 \\rangle \\), \\( \\langle -2, -2, 1, 1 \\rangle \\), \\( \\langle 2, 0, -3, 0 \\rangle \\), \\( \\langle -3, 2, -2, 2 \\rangle \\) in \\( \\mathbb R^4 \\). What is \\( \\dim W^\\perp \\)?",
+          "en": "<strong>[Practice 2 · Easy]</strong> Consider two vectors \\( \\mathbf{v}_1 = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix} \\) and \\( \\mathbf{v}_2 = \\begin{pmatrix} -4 \\\\ 3 \\end{pmatrix} \\). What is the dot product \\( \\mathbf{v}_1 \\cdot \\mathbf{v}_2 \\)?",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Orthogonality, Gram–Schmidt, QR Decomposition & Least Squares</em> and start from \\( W \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Orthogonality, Gram–Schmidt, QR Decomposition & Least Squares and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( W^\\perp \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "\\( W^\\perp \\) is the null space of the matrix with these rows. Its rank is 3, so \\( \\dim W^\\perp=4-3=1 \\). <strong>Answer:</strong> \\( 1 \\).",
+          "en": "\\( \\text{The dot product of two vectors } \\mathbf{v}_1 = \\begin{pmatrix} a \\\\ b \\end{pmatrix} \\text{ and } \\mathbf{v}_2 = \\begin{pmatrix} c \\\\ d \\end{pmatrix} \\text{ is given by } \\mathbf{v}_1 \\cdot \\mathbf{v}_2 = ac + bd. \\)\n\n\\( \\text{In this case, } \\mathbf{v}_1 = \\begin{pmatrix} 3 \\\\ 4 \\end{pmatrix} \\text{ and } \\mathbf{v}_2 = \\begin{pmatrix} -4 \\\\ 3 \\end{pmatrix}. \\)\n\n\\( \\text{Therefore, } \\mathbf{v}_1 \\cdot \\mathbf{v}_2 = (3)(-4) + (4)(3) = -12 + 12 = 0. \\)\n\n\\( \\text{A dot product of 0 indicates that the vectors are orthogonal.} \\)",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Medium]</strong> Apply Gram–Schmidt to \\( \\mathbf x_1=\\langle 3, 3 \\rangle \\), \\( \\mathbf x_2=\\langle -2, -1 \\rangle \\). Which vector is parallel to the resulting \\( \\mathbf v_2 \\)?",
+          "en": "<strong>[Practice 3 · Medium]</strong> Consider the matrix \\( A = \\begin{pmatrix} 1 & 2 \\\\ -2 & k \\end{pmatrix} \\). If the column vectors of \\( A \\) are orthogonal, find the value of \\( k \\).",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Orthogonality, Gram–Schmidt, QR Decomposition & Least Squares</em> and start from \\( \\mathbf x_1=\\langle 3, 3 \\rangle \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Orthogonality, Gram–Schmidt, QR Decomposition & Least Squares and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Isolate the primary variable or parameter systematically and simplify like terms before substituting numerical values.",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "\\( \\mathbf v_2=\\mathbf x_2-\\dfrac{\\mathbf x_2\\cdot\\mathbf x_1}{\\mathbf x_1\\cdot\\mathbf x_1}\\mathbf x_1=\\langle - \\frac{1}{2}, \\frac{1}{2} \\rangle \\), a multiple of \\( \\langle -1, 1 \\rangle \\).",
+          "en": "Let the column vectors of matrix \\( A \\) be \\( \\mathbf{v}_1 = \\begin{pmatrix} 1 \\\\ -2 \\end{pmatrix} \\) and \\( \\mathbf{v}_2 = \\begin{pmatrix} 2 \\\\ k \\end{pmatrix} \\). \\nFor the column vectors to be orthogonal, their dot product must be zero. \\n\\( \\mathbf{v}_1 \\cdot \\mathbf{v}_2 = 0 \\) \\n\\( (1)(2) + (-2)(k) = 0 \\) \\n\\( 2 - 2k = 0 \\) \\n\\( 2k = 2 \\) \\n\\( k = 1 \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Hard]</strong> Find the least-squares line for the points \\( \\left( -1, \\  4\\right) \\), \\( \\left( 1, \\  -2\\right) \\), \\( \\left( 2, \\  -1\\right) \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> Consider the matrix \\( A = \\begin{pmatrix} 1 & 1 \\\\ 1 & -1 \\end{pmatrix} \\). Let \\( \\mathbf{v} = \\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix} \\). Suppose we want to find the vector \\( \\mathbf{x} \\) of the form \\( c_1 \\mathbf{a}_1 + c_2 \\mathbf{a}_2 \\) where \\( \\{\\mathbf{a}_1, \\mathbf{a}_2\\} \\) is an orthogonal basis derived from the columns of \\( A \\), such that \\( \\| \\mathbf{v} - \\mathbf{x} \\| \\) is minimized. Find the value of \\( \\| \\mathbf{x} \\| \\).",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Orthogonality, Gram–Schmidt, QR Decomposition & Least Squares</em> and start from \\( \\left( -1, \\  4\\right) \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Orthogonality, Gram–Schmidt, QR Decomposition & Least Squares and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( A^TA\\hat{\\boldsymbol\\beta}=A^T\\mathbf y \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Solve the normal equations \\( A^TA\\hat{\\boldsymbol\\beta}=A^T\\mathbf y \\) with \\( A^TA=\\left[\\begin{matrix}3 & 2\\\\2 & 6\\end{matrix}\\right] \\), \\( A^T\\mathbf y=\\langle 1, -8 \\rangle \\): \\( \\hat\\beta_0=\\frac{11}{7},\\ \\hat\\beta_1=- \\frac{13}{7} \\). <strong>Answer:</strong> \\( y = \\frac{11}{7} - \\frac{13 x}{7} \\).",
+          "en": "The columns of matrix A are \\( \\mathbf{c}_1 = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\) and \\( \\mathbf{c}_2 = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} \\). This set of vectors is already orthogonal since \\( \\mathbf{c}_1 \\cdot \\mathbf{c}_2 = (1)(1) + (1)(-1) = 0 \\). Thus, \\( \\{\\mathbf{a}_1, \\mathbf{a}_2\\} = \\{\\mathbf{c}_1, \\mathbf{c}_2\\} \\) is an orthogonal basis. The problem asks to find the projection of \\( \\mathbf{v} \\) onto the subspace spanned by \\( \\mathbf{a}_1 \\) and \\( \\mathbf{a}_2 \\), which is the entire \\( \\mathbb{R}^2 \\) in this case, as \\( \\{\\mathbf{a}_1, \\mathbf{a}_2\\} \\) forms a basis for \\( \\mathbb{R}^2 \\). Therefore, the vector \\( \\mathbf{x} \\) that minimizes \\( \\| \\mathbf{v} - \\mathbf{x} \\| \\) is simply \\( \\mathbf{v} \\) itself, as \\( \\mathbf{v} \\) is already in the span of \\( \\mathbf{a}_1 \\) and \\( \\mathbf{a}_2 \\). So, \\( \\mathbf{x} = \\mathbf{v} = \\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix} \\). The norm of \\( \\mathbf{x} \\) is \\( \\| \\mathbf{x} \\| = \\| \\mathbf{v} \\| = \\sqrt{3^2 + 1^2} = \\sqrt{9 + 1} = \\sqrt{10} \\).",
           "ar": null
         }
       }

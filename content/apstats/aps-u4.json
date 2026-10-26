@@ -231,7 +231,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Medium):</strong> A two-way table of \\( N = 113 \\) observations on device preference records cell counts \\( M_1 = 32 \\) for (STEM, Tablet) and \\( N_2 = 33 \\) for (Arts, Laptop). Find the diagonal sum \\( z = M_1 + N_2 \\).</p><p><strong>Step-by-Step Solution:</strong> Summing the two frequencies gives \\( 32 + 33 = 65 \\).</p>",
+          "en": "<p><strong>Problem (Medium):</strong> A social scientist is investigating the relationship between the number of hours spent studying per week (X) and the final exam score (Y) for a group of \\( n=100 \\) students. The least-squares regression line is given by \\( \\hat{y} = 55.2 + 8.5x \\). The standard error of the slope is \\( SE_b = 1.2 \\). The researcher wants to construct a \\( 95\\% \\) confidence interval for the true slope of the regression line. What is the value of the t-score used for this confidence interval?</p><p><strong>Step-by-Step Solution:</strong> The problem asks for the t-score used to construct a \\( 95\\% \\) confidence interval for the true slope of a regression line. The degrees of freedom for a simple linear regression are \\( df = n - 2 \\), where \\( n \\) is the number of data points. In this case, \\( n = 100 \\), so \\( df = 100 - 2 = 98 \\). We need to find the t-score such that \\( 95\\% \\) of the area under the t-distribution curve with \\( 98 \\) degrees of freedom is between \\( -t \\) and \\( t \\). This means that \\( 2.5\\% \\) of the area is in each tail (\\( \\alpha/2 = 0.025 \\)). Looking up the t-table or using statistical software for \\( df = 98 \\) and \\( \\alpha/2 = 0.025 \\), we find the t-score to be approximately \\( 1.984 \\). The value \\( 1.645 \\) corresponds to the z-score for \\( 90\\% \\) confidence. The value \\( 1.960 \\) corresponds to the z-score for \\( 95\\% \\) confidence, which is often used as an approximation for large sample sizes, but the t-score is more accurate. The value \\( 2.576 \\) corresponds to the z-score for \\( 99\\% \\) confidence.</p>",
           "ar": null
         }
       },
@@ -490,25 +490,25 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Hard]</strong> A two-way table of \\( N = 117 \\) observations on commuting mode records cell counts \\( M_1 = 34 \\) for (Junior, Train) and \\( N_2 = 45 \\) for (Senior, Bus). Find the diagonal sum \\( z = M_1 + N_2 \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> A national polling organization is conducting a survey to estimate the proportion of registered voters in a large metropolitan area who support a particular ballot initiative. They plan to use a 95% confidence interval for the population proportion.  The organization wants to ensure that the margin of error for this estimate does not exceed 2.5 percentage points.  If they anticipate that the sample proportion will be close to 0.5 (the most conservative estimate for planning purposes), what is the minimum sample size, \\( n \\), they must obtain to achieve this margin of error?",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 4 · Statistical Inference: Proportions, Means & Slopes</em> and start from \\( N = 117 \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Unit 4 · Statistical Inference: Proportions, Means & Slopes and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 34 + 45 = 79 \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Summing the two frequencies gives \\( 34 + 45 = 79 \\).",
+          "en": "The formula for the margin of error (ME) of a confidence interval for a population proportion is given by \\( \\text{ME} = z^* \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}} \\), where \\( z^* \\) is the critical value for the desired confidence level, \\( \\hat{p} \\) is the sample proportion, and \\( n \\) is the sample size. \n\nFor a 95% confidence level, the critical value \\( z^* \\) is approximately 1.96. \n\nThe desired margin of error is 2.5 percentage points, which is 0.025 in decimal form. \n\nTo ensure the margin of error does not exceed 0.025, we set up the inequality: \n\\( 1.96 \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}} \\le 0.025 \\).\n\nTo find the minimum sample size, we use the most conservative estimate for \\( \\hat{p} \\), which is 0.5. Substituting this value:\n\\( 1.96 \\sqrt{\\frac{0.5(1-0.5)}{n}} \\le 0.025 \\)\n\\( 1.96 \\sqrt{\\frac{0.25}{n}} \\le 0.025 \\)\n\nNow, we solve for \\( n \\): \nSquare both sides:\n\\( (1.96)^2 \\left( \\frac{0.25}{n} \\right) \\le (0.025)^2 \\)\n\\( 3.8416 \\left( \\frac{0.25}{n} \\right) \\le 0.000625 \\)\n\\( \\frac{0.9604}{n} \\le 0.000625 \\)\n\nMultiply both sides by \\( n \\) and divide by 0.000625:\n\\( n \\ge \\frac{0.9604}{0.000625} \\)\n\\( n \\ge 1536.64 \\)\n\nSince the sample size must be a whole number, and we need to ensure the margin of error is *at most* 0.025, we must round up to the next integer. Therefore, the minimum sample size required is 1537.\n\nCommon errors include rounding down, using an incorrect z-score, or not using the most conservative estimate for \\( \\hat{p} \\). For example, if \\( \\hat{p} = 0.4 \\), then \\( n \\ge \\frac{(1.96)^2 \\times 0.4 \\times 0.6}{(0.025)^2} \\approx 1475 \\), which would not guarantee the margin of error for \\( \\hat{p} = 0.5 \\).",
           "ar": null
         }
       }

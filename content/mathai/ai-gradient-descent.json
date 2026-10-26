@@ -294,8 +294,8 @@
           "ar": "مثال محلول B — دوال الخسارة والانحدار التدريجي والتحسين الرياضي (تطبيق Medium)"
         },
         "body": {
-          "en": "<p><strong>Problem (Medium):</strong> Principal Component Analysis on covariance matrix \\( \\Sigma_{M} \\) yields eigenvalues \\( \\lambda_1 = 57 \\) and \\( \\lambda_2 = 43 \\). Determine the percentage of variance \\( R_{m} \\) explained by the first principal component.</p><p><strong>Step-by-Step Solution:</strong> The percentage explained is \\( \\frac{57}{57+43} \\times 100\\% = 57\\% \\).</p>",
-          "ar": "<p><strong>مسألة تطبيقية (Medium):</strong> Principal Component Analysis on covariance matrix \\( \\Sigma_{M} \\) yields eigenvalues \\( \\lambda_1 = 57 \\) and \\( \\lambda_2 = 43 \\). Determine the percentage of variance \\( R_{m} \\) explained by the first principal component.</p><p><strong>الحل خطوة بخطوة:</strong> The percentage explained is \\( \\frac{57}{57+43} \\times 100\\% = 57\\% \\).</p>"
+          "en": "<p><strong>Problem (Medium):</strong> Consider a univariate regression model where the predicted output \\( \\hat{y} \\) is given by \\( \\hat{y} = ax + b \\). The loss function is the Mean Squared Error (MSE), defined as \\( L = \\frac{1}{n} \\sum_{i=1}^{n} (y_i - \\hat{y}_i)^2 \\). \\(\n\\)For a single data point \\( (x_1, y_1) = (2, 5) \\), the loss is \\( L = (5 - (2a + b))^2 \\). \\(\n\\)The gradient of the loss function with respect to \\( a \\) is \\( \\frac{\\partial L}{\\partial a} = -2(5 - (2a + b)) \\cdot 2 \\). \\(\n\\)If during gradient descent, with a learning rate of \\( \\eta = 0.1 \\), the parameters \\( a \\) and \\( b \\) are updated from \\( a_{old} = 1 \\) and \\( b_{old} = 1 \\), to \\( a_{new} = 0.8 \\) and \\( b_{new} = 0.8 \\), what is the value of \\( b \\) that would have resulted in \\( \\frac{\\partial L}{\\partial b} = 0 \\) for this single data point, assuming \\( a=1 \\) and \\( b=1 \\) were the values *before* the gradient calculation that led to the update to \\( a_{new}=0.8, b_{new}=0.8 \\)?</p><p><strong>Step-by-Step Solution:</strong> The loss function for a single data point is \\( L = (y_1 - (ax_1 + b))^2 \\). \\(\n\\)Given \\( (x_1, y_1) = (2, 5) \\), so \\( L = (5 - (2a + b))^2 \\). \\(\n\\)The gradient of the loss with respect to \\( b \\) is \\( \\frac{\\partial L}{\\partial b} = 2(5 - (2a + b)) \\cdot (-1) = -2(5 - 2a - b) \\). \\(\n\\)We are asked to find the value of \\( b \\) for which \\( \\frac{\\partial L}{\\partial b} = 0 \\), assuming \\( a=1 \\) and \\( b=1 \\) were the parameters *before* the update step that led to \\( a_{new}=0.8, b_{new}=0.8 \\). This means we evaluate the gradient at \\( a=1 \\) and the *unknown* value of \\( b \\). \\(\n\\)Setting \\( \\frac{\\partial L}{\\partial b} = 0 \\): \\(\n\\)\\( -2(5 - 2(1) - b) = 0 \n\\)\\( 5 - 2 - b = 0 \n\\)\\( 3 - b = 0 \n\\)\\( b = 3 \\). \\(\n\\)The provided gradient update information \\( \\frac{\\partial L}{\\partial a} = -2(5 - (2a + b)) \\cdot 2 \\) and the learning rate \\( \\eta = 0.1 \\) are distractors. The question specifically asks for the value of \\( b \\) that makes \\( \\frac{\\partial L}{\\partial b} = 0 \\) *at the point where \\( a=1 \\)*. The update rule to \\( a_{new}=0.8, b_{new}=0.8 \\) implies that the gradient of \\( a \\) was \\( \\frac{a_{old} - a_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2 \\), and the gradient of \\( b \\) was \\( \\frac{b_{old} - b_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2 \\). \\(\n\\)Let's verify: If \\( a=1 \\) and \\( b=3 \\), then \\( \\frac{\\partial L}{\\partial b} = -2(5 - 2(1) - 3) = -2(5 - 2 - 3) = -2(0) = 0 \\). \\(\n\\)If \\( a=1 \\) and \\( b=3 \\), \\( \\frac{\\partial L}{\\partial a} = -2(5 - 2(1) - 3) \\cdot 2 = -2(0) \\cdot 2 = 0 \\). \\(\n\\)This scenario implies that the point \\( a=1, b=3 \\) is a minimum for the loss function, but the question is about finding the value of \\( b \\) that makes the gradient of \\( b \\) zero at \\( a=1 \\), which is \\( b=3 \\). The provided update \\( a_{new}=0.8, b_{new}=0.8 \\) from \\( a_{old}=1, b_{old}=1 \\) is a different step in the optimization process and is not directly used to find the value of \\( b \\) that makes the gradient of \\( b \\) zero at \\( a=1 \\).</p>",
+          "ar": "<p><strong>مسألة (Medium):</strong> Consider a univariate regression model where the predicted output \\( \\hat{y} \\) is given by \\( \\hat{y} = ax + b \\). The loss function is the Mean Squared Error (MSE), defined as \\( L = \\frac{1}{n} \\sum_{i=1}^{n} (y_i - \\hat{y}_i)^2 \\). \\(\n\\)For a single data point \\( (x_1, y_1) = (2, 5) \\), the loss is \\( L = (5 - (2a + b))^2 \\). \\(\n\\)The gradient of the loss function with respect to \\( a \\) is \\( \\frac{\\partial L}{\\partial a} = -2(5 - (2a + b)) \\cdot 2 \\). \\(\n\\)If during gradient descent, with a learning rate of \\( \\eta = 0.1 \\), the parameters \\( a \\) and \\( b \\) are updated from \\( a_{old} = 1 \\) and \\( b_{old} = 1 \\), to \\( a_{new} = 0.8 \\) and \\( b_{new} = 0.8 \\), what is the value of \\( b \\) that would have resulted in \\( \\frac{\\partial L}{\\partial b} = 0 \\) for this single data point, assuming \\( a=1 \\) and \\( b=1 \\) were the values *before* the gradient calculation that led to the update to \\( a_{new}=0.8, b_{new}=0.8 \\)?</p><p><strong>الحل خطوة بخطوة:</strong> The loss function for a single data point is \\( L = (y_1 - (ax_1 + b))^2 \\). \\(\n\\)Given \\( (x_1, y_1) = (2, 5) \\), so \\( L = (5 - (2a + b))^2 \\). \\(\n\\)The gradient of the loss with respect to \\( b \\) is \\( \\frac{\\partial L}{\\partial b} = 2(5 - (2a + b)) \\cdot (-1) = -2(5 - 2a - b) \\). \\(\n\\)We are asked to find the value of \\( b \\) for which \\( \\frac{\\partial L}{\\partial b} = 0 \\), assuming \\( a=1 \\) and \\( b=1 \\) were the parameters *before* the update step that led to \\( a_{new}=0.8, b_{new}=0.8 \\). This means we evaluate the gradient at \\( a=1 \\) and the *unknown* value of \\( b \\). \\(\n\\)Setting \\( \\frac{\\partial L}{\\partial b} = 0 \\): \\(\n\\)\\( -2(5 - 2(1) - b) = 0 \n\\)\\( 5 - 2 - b = 0 \n\\)\\( 3 - b = 0 \n\\)\\( b = 3 \\). \\(\n\\)The provided gradient update information \\( \\frac{\\partial L}{\\partial a} = -2(5 - (2a + b)) \\cdot 2 \\) and the learning rate \\( \\eta = 0.1 \\) are distractors. The question specifically asks for the value of \\( b \\) that makes \\( \\frac{\\partial L}{\\partial b} = 0 \\) *at the point where \\( a=1 \\)*. The update rule to \\( a_{new}=0.8, b_{new}=0.8 \\) implies that the gradient of \\( a \\) was \\( \\frac{a_{old} - a_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2 \\), and the gradient of \\( b \\) was \\( \\frac{b_{old} - b_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2 \\). \\(\n\\)Let's verify: If \\( a=1 \\) and \\( b=3 \\), then \\( \\frac{\\partial L}{\\partial b} = -2(5 - 2(1) - 3) = -2(5 - 2 - 3) = -2(0) = 0 \\). \\(\n\\)If \\( a=1 \\) and \\( b=3 \\), \\( \\frac{\\partial L}{\\partial a} = -2(5 - 2(1) - 3) \\cdot 2 = -2(0) \\cdot 2 = 0 \\). \\(\n\\)This scenario implies that the point \\( a=1, b=3 \\) is a minimum for the loss function, but the question is about finding the value of \\( b \\) that makes the gradient of \\( b \\) zero at \\( a=1 \\), which is \\( b=3 \\). The provided update \\( a_{new}=0.8, b_{new}=0.8 \\) from \\( a_{old}=1, b_{old}=1 \\) is a different step in the optimization process and is not directly used to find the value of \\( b \\) that makes the gradient of \\( b \\) zero at \\( a=1 \\).</p>"
         }
       },
       {
@@ -306,8 +306,8 @@
           "ar": "مثال محلول C — دوال الخسارة والانحدار التدريجي والتحسين الرياضي (تطبيق Hard)"
         },
         "body": {
-          "en": "<p><strong>Problem (Hard):</strong> A binary classifier \\( R(m) \\) produces the confusion matrix below with \\( \\text{TP} = 92 \\), \\( \\text{FP} = 14 \\), \\( \\text{FN} = 57 \\), and \\( \\text{TN} = 35 \\). Determine the total number of correct classifications \\( S = \\text{TP} + \\text{TN} \\).</p><p><strong>Step-by-Step Solution:</strong> Summing \\( \\text{TP} + \\text{TN} = 92 + 35 = 127 \\).</p>",
-          "ar": "<p><strong>مسألة تطبيقية (Hard):</strong> A binary classifier \\( R(m) \\) produces the confusion matrix below with \\( \\text{TP} = 92 \\), \\( \\text{FP} = 14 \\), \\( \\text{FN} = 57 \\), and \\( \\text{TN} = 35 \\). Determine the total number of correct classifications \\( S = \\text{TP} + \\text{TN} \\).</p><p><strong>الحل خطوة بخطوة:</strong> Summing \\( \\text{TP} + \\text{TN} = 92 + 35 = 127 \\).</p>"
+          "en": "<p><strong>Problem (Hard):</strong> Consider the following quadratic loss function for a regression problem: \\( L(y, \\hat{y}) = (y - \\hat{y})^2 \\). If the predicted value \\( \\hat{y} = 5 \\) and the true value \\( y = 3 \\), what is the value of the loss function?</p><p><strong>Step-by-Step Solution:</strong> The quadratic loss function is defined as \\( L(y, \\hat{y}) = (y - \\hat{y})^2 \\). Given the true value \\( y = 3 \\) and the predicted value \\( \\hat{y} = 5 \\), we substitute these values into the loss function:\n\n \\( L(3, 5) = (3 - 5)^2 \\)\n\n \\( L(3, 5) = (-2)^2 \\)\n\n \\( L(3, 5) = 4 \\)\n\nTherefore, the value of the loss function is 4.</p>",
+          "ar": "<p><strong>مسألة (Hard):</strong> Consider the following quadratic loss function for a regression problem: \\( L(y, \\hat{y}) = (y - \\hat{y})^2 \\). If the predicted value \\( \\hat{y} = 5 \\) and the true value \\( y = 3 \\), what is the value of the loss function?</p><p><strong>الحل خطوة بخطوة:</strong> The quadratic loss function is defined as \\( L(y, \\hat{y}) = (y - \\hat{y})^2 \\). Given the true value \\( y = 3 \\) and the predicted value \\( \\hat{y} = 5 \\), we substitute these values into the loss function:\n\n \\( L(3, 5) = (3 - 5)^2 \\)\n\n \\( L(3, 5) = (-2)^2 \\)\n\n \\( L(3, 5) = 4 \\)\n\nTherefore, the value of the loss function is 4.</p>"
         }
       },
       {
@@ -318,8 +318,8 @@
           "ar": "مثال محلول D — دوال الخسارة والانحدار التدريجي والتحسين الرياضي (تطبيق Easy)"
         },
         "body": {
-          "en": "<p><strong>Problem (Easy):</strong> A 2D loss surface is defined as \\( L(w_1, w_2) = 2w_1^2 + 3w_2^2 \\). Find the gradient vector \\( \\nabla L \\) at the point \\( (w_1, w_2) = (2, -1) \\).</p><p><strong>Step-by-Step Solution:</strong> Compute partial derivatives: \\( \\frac{\\partial L}{\\partial w_1} = 2(2)w_1 = 4(2) = 8 \\); \\( \\frac{\\partial L}{\\partial w_2} = 2(3)w_2 = 6(-1) = -6 \\). Therefore, \\( \\nabla L = [8, -6]^T \\).</p>",
-          "ar": "<p><strong>مسألة تطبيقية (Easy):</strong> A 2D loss surface is defined as \\( L(w_1, w_2) = 2w_1^2 + 3w_2^2 \\). Find the gradient vector \\( \\nabla L \\) at the point \\( (w_1, w_2) = (2, -1) \\).</p><p><strong>الحل خطوة بخطوة:</strong> Compute partial derivatives: \\( \\frac{\\partial L}{\\partial w_1} = 2(2)w_1 = 4(2) = 8 \\); \\( \\frac{\\partial L}{\\partial w_2} = 2(3)w_2 = 6(-1) = -6 \\). Therefore, \\( \\nabla L = [8, -6]^T \\).</p>"
+          "en": "<p><strong>Problem (Easy):</strong> Consider the quadratic loss function \\( L(w) = w^2 - 4w + 3 \\). Find the value of \\( w \\) where the function reaches its minimum.</p><p><strong>Step-by-Step Solution:</strong> The given loss function is a quadratic function \\( L(w) = w^2 - 4w + 3 \\). This represents a parabola opening upwards. The minimum value of a quadratic function of the form \\( aw^2 + bw + c \\) occurs at \\( w = -\\frac{b}{2a} \\). In this case, \\( a = 1 \\) and \\( b = -4 \\). Therefore, the minimum occurs at \\( w = -\\frac{-4}{2(1)} = \\frac{4}{2} = 2 \\). Alternatively, we can find the minimum by taking the derivative and setting it to zero: \\( L'(w) = 2w - 4 \\). Setting \\( L'(w) = 0 \\) gives \\( 2w - 4 = 0 \\), which implies \\( 2w = 4 \\), so \\( w = 2 \\).</p>",
+          "ar": "<p><strong>مسألة (Easy):</strong> Consider the quadratic loss function \\( L(w) = w^2 - 4w + 3 \\). Find the value of \\( w \\) where the function reaches its minimum.</p><p><strong>الحل خطوة بخطوة:</strong> The given loss function is a quadratic function \\( L(w) = w^2 - 4w + 3 \\). This represents a parabola opening upwards. The minimum value of a quadratic function of the form \\( aw^2 + bw + c \\) occurs at \\( w = -\\frac{b}{2a} \\). In this case, \\( a = 1 \\) and \\( b = -4 \\). Therefore, the minimum occurs at \\( w = -\\frac{-4}{2(1)} = \\frac{4}{2} = 2 \\). Alternatively, we can find the minimum by taking the derivative and setting it to zero: \\( L'(w) = 2w - 4 \\). Setting \\( L'(w) = 0 \\) gives \\( 2w - 4 = 0 \\), which implies \\( 2w = 4 \\), so \\( w = 2 \\).</p>"
         }
       },
       {
@@ -414,126 +414,126 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 1 · Medium]</strong> An Ordinary Least Squares linear model \\( \\hat{R}(m) = 7m + 21 \\) is evaluated at \\( m = 4 \\). Determine the predicted response \\( \\hat{R}(4) \\).",
-          "ar": "<strong>[تدريب 1 · Medium]</strong> An Ordinary Least Squares linear model \\( \\hat{R}(m) = 7m + 21 \\) is evaluated at \\( m = 4 \\). Determine the predicted response \\( \\hat{R}(4) \\)."
+          "en": "<strong>[Practice 1 · Medium]</strong> Consider the following quadratic loss function: \\( L(w) = 3w^2 - 12w + 10 \\).  What is the value of \\( w \\) that minimizes this loss function?",
+          "ar": "<strong>[تدريب 1 · Medium]</strong> Consider the following quadratic loss function: \\( L(w) = 3w^2 - 12w + 10 \\).  What is the value of \\( w \\) that minimizes this loss function?"
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Loss Functions, Gradients & Optimization</em> and start from \\( \\hat{R}(m) = 7m + 21 \\).",
-            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( \\hat{R}(m) = 7m + 21 \\)."
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Loss Functions, Gradients & Optimization and write down the given values.",
+            "ar": "Identify the mathematical relationship in Loss Functions, Gradients & Optimization and write down the given values."
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 7(4) + 21 = 49 \\).",
-            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( 7(4) + 21 = 49 \\)."
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
+            "ar": "Substitute the known quantities into the governing equation or formula and simplify step by step."
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
-            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
+            "ar": "Verify that your final result satisfies all conditions stated in the problem."
           }
         ],
         "solution": {
-          "en": "Evaluating \\( 7(4) + 21 = 49 \\).",
-          "ar": "Evaluating \\( 7(4) + 21 = 49 \\)."
+          "en": "To find the minimum of the quadratic loss function \\( L(w) = 3w^2 - 12w + 10 \\), we can find the derivative with respect to \\( w \\) and set it to zero. The derivative of \\( L(w) \\) with respect to \\( w \\) is: \\( \\frac{dL}{dw} = 6w - 12 \\). Setting the derivative to zero to find the critical point: \\( 6w - 12 = 0 \\) \\( 6w = 12 \\) \\( w = \\frac{12}{6} \\) \\( w = 2 \\).  The second derivative is \\( \\frac{d^2L}{dw^2} = 6 \\), which is positive, confirming that \\( w=2 \\) corresponds to a minimum.",
+          "ar": "To find the minimum of the quadratic loss function \\( L(w) = 3w^2 - 12w + 10 \\), we can find the derivative with respect to \\( w \\) and set it to zero. The derivative of \\( L(w) \\) with respect to \\( w \\) is: \\( \\frac{dL}{dw} = 6w - 12 \\). Setting the derivative to zero to find the critical point: \\( 6w - 12 = 0 \\) \\( 6w = 12 \\) \\( w = \\frac{12}{6} \\) \\( w = 2 \\).  The second derivative is \\( \\frac{d^2L}{dw^2} = 6 \\), which is positive, confirming that \\( w=2 \\) corresponds to a minimum."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 2 · Hard]</strong> In gradient descent on loss \\( A(n) \\), parameter \\( n_0 = 28 \\) is updated with learning rate \\( \\eta = 0.1 \\) and gradient \\( \\nabla A(n_0) = 90 \\). Determine the updated parameter \\( n_1 = n_0 - \\eta \\nabla A(n_0) \\).",
-          "ar": "<strong>[تدريب 2 · Hard]</strong> In gradient descent on loss \\( A(n) \\), parameter \\( n_0 = 28 \\) is updated with learning rate \\( \\eta = 0.1 \\) and gradient \\( \\nabla A(n_0) = 90 \\). Determine the updated parameter \\( n_1 = n_0 - \\eta \\nabla A(n_0) \\)."
+          "en": "<strong>[Practice 2 · Hard]</strong> Evaluate the output of the standard ReLU activation function \\( f(z) = \\max(0, z) \\) for inputs \\( z_1 = -4 \\) and \\( z_2 = 6 \\).",
+          "ar": "<strong>[تدريب 2 · Hard]</strong> Evaluate the output of the standard ReLU activation function \\( f(z) = \\max(0, z) \\) for inputs \\( z_1 = -4 \\) and \\( z_2 = 6 \\)."
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Loss Functions, Gradients & Optimization</em> and start from \\( A(n) \\).",
-            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( A(n) \\)."
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Neural Layer Matrices & Activations and write down the given values.",
+            "ar": "Identify the mathematical relationship in Neural Layer Matrices & Activations and write down the given values."
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( n_1 = 28 - 0.1(90) = 19 \\).",
-            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( n_1 = 28 - 0.1(90) = 19 \\)."
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
+            "ar": "Substitute the known quantities into the governing equation or formula and simplify step by step."
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
-            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
+            "ar": "Verify that your final result satisfies all conditions stated in the problem."
           }
         ],
         "solution": {
-          "en": "Computing \\( n_1 = 28 - 0.1(90) = 19 \\).",
-          "ar": "Computing \\( n_1 = 28 - 0.1(90) = 19 \\)."
+          "en": "By definition of the Rectified Linear Unit: \\( \\text{ReLU}(z) = z \\) if \\( z > 0 \\), and \\( 0 \\) if \\( z \\le 0 \\). Thus \\( f(-4) = 0 \\) and \\( f(6) = 6 \\).",
+          "ar": "By definition of the Rectified Linear Unit: \\( \\text{ReLU}(z) = z \\) if \\( z > 0 \\), and \\( 0 \\) if \\( z \\le 0 \\). Thus \\( f(-4) = 0 \\) and \\( f(6) = 6 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Easy]</strong> Principal Component Analysis on covariance matrix \\( \\Sigma_{R} \\) yields eigenvalues \\( \\lambda_1 = 73 \\) and \\( \\lambda_2 = 27 \\). Determine the percentage of variance \\( A_{n} \\) explained by the first principal component.",
-          "ar": "<strong>[تدريب 3 · Easy]</strong> Principal Component Analysis on covariance matrix \\( \\Sigma_{R} \\) yields eigenvalues \\( \\lambda_1 = 73 \\) and \\( \\lambda_2 = 27 \\). Determine the percentage of variance \\( A_{n} \\) explained by the first principal component."
+          "en": "<strong>[Practice 3 · Easy]</strong> In gradient descent, a weight currently has value \\( w = 60 \\). If the gradient of the loss is \\( \\frac{\\partial L}{\\partial w} = 24 \\) and the learning rate is \\( \\eta = 0.6 \\), find the updated weight \\( w' \\).",
+          "ar": "<strong>[تدريب 3 · Easy]</strong> In gradient descent, a weight currently has value \\( w = 60 \\). If the gradient of the loss is \\( \\frac{\\partial L}{\\partial w} = 24 \\) and the learning rate is \\( \\eta = 0.6 \\), find the updated weight \\( w' \\)."
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Loss Functions, Gradients & Optimization</em> and start from \\( \\Sigma_{R} \\).",
-            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( \\Sigma_{R} \\)."
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Gradient Descent & Optimization and write down the given values.",
+            "ar": "Identify the mathematical relationship in Gradient Descent & Optimization and write down the given values."
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\frac{73}{73+27} \\times 100\\% = 73\\% \\).",
-            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( \\frac{73}{73+27} \\times 100\\% = 73\\% \\)."
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
+            "ar": "Substitute the known quantities into the governing equation or formula and simplify step by step."
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
-            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
+            "ar": "Verify that your final result satisfies all conditions stated in the problem."
           }
         ],
         "solution": {
-          "en": "The percentage explained is \\( \\frac{73}{73+27} \\times 100\\% = 73\\% \\).",
-          "ar": "The percentage explained is \\( \\frac{73}{73+27} \\times 100\\% = 73\\% \\)."
+          "en": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 60 - (0.6)(24) = 60 - 14.40 = 45.60 \\).",
+          "ar": "Using the gradient descent update rule: \\( w' = w - \\eta \\frac{\\partial L}{\\partial w} = 60 - (0.6)(24) = 60 - 14.40 = 45.60 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Medium]</strong> A binary classifier \\( A(n) \\) produces the confusion matrix below with \\( \\text{TP} = 80 \\), \\( \\text{FP} = 18 \\), \\( \\text{FN} = 9 \\), and \\( \\text{TN} = 50 \\). Determine the total number of correct classifications \\( B = \\text{TP} + \\text{TN} \\).",
-          "ar": "<strong>[تدريب 4 · Medium]</strong> A binary classifier \\( A(n) \\) produces the confusion matrix below with \\( \\text{TP} = 80 \\), \\( \\text{FP} = 18 \\), \\( \\text{FN} = 9 \\), and \\( \\text{TN} = 50 \\). Determine the total number of correct classifications \\( B = \\text{TP} + \\text{TN} \\)."
+          "en": "<strong>[Practice 4 · Medium]</strong> Consider the scalar loss function \\( L(w) = 5w^2 - 8w + 5 \\). Find the analytical gradient \\( \\nabla L(w) \\) evaluated at \\( w = 8 \\).",
+          "ar": "<strong>[تدريب 4 · Medium]</strong> Consider the scalar loss function \\( L(w) = 5w^2 - 8w + 5 \\). Find the analytical gradient \\( \\nabla L(w) \\) evaluated at \\( w = 8 \\)."
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Loss Functions, Gradients & Optimization</em> and start from \\( A(n) \\).",
-            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( A(n) \\)."
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Gradient Descent & Optimization and write down the given values.",
+            "ar": "Identify the mathematical relationship in Gradient Descent & Optimization and write down the given values."
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\text{TP} + \\text{TN} = 80 + 50 = 130 \\).",
-            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( \\text{TP} + \\text{TN} = 80 + 50 = 130 \\)."
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
+            "ar": "Substitute the known quantities into the governing equation or formula and simplify step by step."
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
-            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
+            "ar": "Verify that your final result satisfies all conditions stated in the problem."
           }
         ],
         "solution": {
-          "en": "Summing \\( \\text{TP} + \\text{TN} = 80 + 50 = 130 \\).",
-          "ar": "Summing \\( \\text{TP} + \\text{TN} = 80 + 50 = 130 \\)."
+          "en": "Differentiate with respect to \\( w \\): \\( \\frac{dL}{dw} = 2(5)w - 8 = 10w - 8 \\). At \\( w = 8 \\): \\( \\nabla L = 10(8) - 8 = 80 - 8 = 72 \\).",
+          "ar": "Differentiate with respect to \\( w \\): \\( \\frac{dL}{dw} = 2(5)w - 8 = 10w - 8 \\). At \\( w = 8 \\): \\( \\nabla L = 10(8) - 8 = 80 - 8 = 72 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 5 · Hard]</strong> An Ordinary Least Squares linear model \\( \\hat{A}(n) = 4n + 22 \\) is evaluated at \\( n = 8 \\). Determine the predicted response \\( \\hat{A}(8) \\).",
-          "ar": "<strong>[تدريب 5 · Hard]</strong> An Ordinary Least Squares linear model \\( \\hat{A}(n) = 4n + 22 \\) is evaluated at \\( n = 8 \\). Determine the predicted response \\( \\hat{A}(8) \\)."
+          "en": "<strong>[Practice 5 · Hard]</strong> Two document embeddings \\( \\mathbf{a} = [6, 12]^T \\) and \\( \\mathbf{b} = [12, 6]^T \\) are compared. If \\( \\|\\mathbf{a}\\| = \\|\\mathbf{b}\\| = \\sqrt{180} \\), calculate their exact cosine similarity.",
+          "ar": "<strong>[تدريب 5 · Hard]</strong> Two document embeddings \\( \\mathbf{a} = [6, 12]^T \\) and \\( \\mathbf{b} = [12, 6]^T \\) are compared. If \\( \\|\\mathbf{a}\\| = \\|\\mathbf{b}\\| = \\sqrt{180} \\), calculate their exact cosine similarity."
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Loss Functions, Gradients & Optimization</em> and start from \\( \\hat{A}(n) = 4n + 22 \\).",
-            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( \\hat{A}(n) = 4n + 22 \\)."
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Vectors & Embeddings in AI and write down the given values.",
+            "ar": "Identify the mathematical relationship in Vectors & Embeddings in AI and write down the given values."
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 4(8) + 22 = 54 \\).",
-            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( 4(8) + 22 = 54 \\)."
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
+            "ar": "Substitute the known quantities into the governing equation or formula and simplify step by step."
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
-            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
+            "ar": "Verify that your final result satisfies all conditions stated in the problem."
           }
         ],
         "solution": {
-          "en": "Evaluating \\( 4(8) + 22 = 54 \\).",
-          "ar": "Evaluating \\( 4(8) + 22 = 54 \\)."
+          "en": "Dot product \\( \\mathbf{a} \\cdot \\mathbf{b} = (6)(12) + (12)(6) = 144 \\). Product of norms \\( \\|\\mathbf{a}\\| \\|\\mathbf{b}\\| = 180 \\). Cosine similarity = \\( \\frac{144}{180} = 0.800 \\).",
+          "ar": "Dot product \\( \\mathbf{a} \\cdot \\mathbf{b} = (6)(12) + (12)(6) = 144 \\). Product of norms \\( \\|\\mathbf{a}\\| \\|\\mathbf{b}\\| = 180 \\). Cosine similarity = \\( \\frac{144}{180} = 0.800 \\)."
         }
       }
     ]

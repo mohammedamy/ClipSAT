@@ -279,7 +279,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Medium):</strong> A piecewise function is defined by \\( p(t) = 4t + 2 \\) for \\( t < 10 \\) and \\( p(t) = t^2 + q \\) for \\( t \\ge 10 \\). Find the parameter \\( q \\) that makes \\( p(t) \\) continuous at \\( t = 10 \\).</p><p><strong>Step-by-Step Solution:</strong> Continuity at \\( t = 10 \\) requires \\( 4(10) + 2 = 10^2 + q \\implies q = -58 \\).</p>",
+          "en": "<p><strong>Problem (Medium):</strong> The function \\(f\\) is defined for \\(x \\in \\mathbb{R}\\) by\n\\[ f(x) = 3x + k, \\]\nwhere \\(k\\) is a constant. The function \\(g\\) is defined for \\(x \\in \\mathbb{R}\\) by\n\\[ g(x) = |x - 4|. \\]\nGiven that \\(f^{-1}(4) = 2\\), find the value of \\(k\\) and all real solutions to the equation \\(f^{-1}(x) = g(x)\\).</p><p><strong>Step-by-Step Solution:</strong> 1. **Find the parameter \\(k\\):**\nBy the definition of an inverse function, \\(f^{-1}(4) = 2 \\iff f(2) = 4\\).\nSubstituting \\(x = 2\\) into \\(f(x)\\):\n\\[ f(2) = 3(2) + k = 6 + k \\]\n\\[ 6 + k = 4 \\implies k = -2 \\]\n\n2. **Determine the inverse function \\(f^{-1}(x)\\):**\nWith \\(k = -2\\), \\(f(x) = 3x - 2\\).\nSetting \\(y = 3x - 2\\) and solving for \\(x\\):\n\\[ 3x = y + 2 \\implies x = \\frac{y + 2}{3} \\]\nThus, \\(f^{-1}(x) = \\dfrac{x + 2}{3}\\).\n\n3. **Solve the equation \\(f^{-1}(x) = g(x)\\):**\n\\[ \\frac{x + 2}{3} = |x - 4| \\iff x + 2 = 3|x - 4| \\]\nSince the right-hand side is non-negative, any solution must satisfy \\(x + 2 \\ge 0 \\implies x \\ge -2\\).\n\n- **Case 1 (\\(x \\ge 4\\)):**\n  Here, \\(|x - 4| = x - 4\\):\n  \\[ x + 2 = 3(x - 4) \\implies x + 2 = 3x - 12 \\implies 2x = 14 \\implies x = 7 \\]\n  Since \\(7 \\ge 4\\), \\(x = 7\\) is a valid solution.\n\n- **Case 2 (\\(x < 4\\)):**\n  Here, \\(|x - 4| = -(x - 4) = 4 - x\\):\n  \\[ x + 2 = 3(4 - x) \\implies x + 2 = 12 - 3x \\implies 4x = 10 \\implies x = \\frac{5}{2} \\]\n  Since \\(\\frac{5}{2} = 2.5 < 4\\) and \\(2.5 \\ge -2\\), \\(x = \\frac{5}{2}\\) is also a valid solution.\n\n**Common Traps:**\n- Choice B ignores the branch \\(x < 4\\), missing the second intersection point.\n- Choice C mistakenly computes \\(k\\) assuming \\(f^{-1}(x) = \\frac{x + k}{3} = 2 \\implies k = 2\\).\n- Choice D makes a sign error when expanding \\(3(4 - x)\\).</p>",
           "ar": null
         }
       },
@@ -291,7 +291,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Hard):</strong> Given \\( f(x)=-2x+4 \\), find \\( f^{-1}(-8) \\).</p><p><strong>Step-by-Step Solution:</strong> \\( f^{-1}(x)=\\dfrac{x-4}{-2} \\), so \\( f^{-1}(-8)=6 \\).</p>",
+          "en": "<p><strong>Problem (Hard):</strong> The function \\( f \\) is defined by\n\\[ f(x) = x^2 - 6x + 13 \\quad \\text{for } x \\ge 3. \\]\nDetermine the complete set of real values of the constant \\( k \\) for which the equation\n\\[ f^{-1}(x) = |2x - k| \\]\nhas exactly one real solution.</p><p><strong>Step-by-Step Solution:</strong> 1. **Find \\( f^{-1}(x) \\) and its domain:**\nCompleting the square gives\n\\[ f(x) = (x - 3)^2 + 4. \\]\nFor the domain \\( x \\ge 3 \\), \\( f(x) \\) is strictly increasing with range \\( [4, \\infty) \\).\nSetting \\( y = (x - 3)^2 + 4 \\) with \\( x \\ge 3 \\) yields \\( x - 3 = \\sqrt{y - 4} \\), so\n\\[ f^{-1}(x) = 3 + \\sqrt{x - 4}, \\quad \\text{with domain } x \\ge 4. \\]\n\n2. **Set up the equation \\( f^{-1}(x) = |2x - k| \\):**\nLet \\( u = \\sqrt{x - 4} \\ge 0 \\), which implies \\( x = u^2 + 4 \\ge 4 \\).\nThe equation becomes \\( 3 + u = |2(u^2 + 4) - k| = |2u^2 + 8 - k| \\).\n\n3. **Analyze Case A (Right branch: \\( 2u^2 + 8 - k \\ge 0 \\)):**\n\\[ 3 + u = 2u^2 + 8 - k \\implies 2u^2 - u + (5 - k) = 0. \\]\nNote that \\( k = 2u^2 - u + 5 \\), so the condition \\( 2u^2 + 8 - k \\ge 0 \\) becomes \\( 2u^2 + 8 - (2u^2 - u + 5) = u + 3 \\ge 0 \\), which holds for all \\( u \\ge 0 \\).\nThe discriminant of this quadratic is\n\\[ \\Delta_A = (-1)^2 - 4(2)(5 - k) = 8k - 39. \\]\n- If \\( k < \\frac{39}{8} \\), \\( \\Delta_A < 0 \\): no real roots.\n- If \\( k = \\frac{39}{8} \\), \\( \\Delta_A = 0 \\): one repeated root \\( u = \\frac{1}{4} > 0 \\), giving 1 solution.\n- If \\( k > \\frac{39}{8} \\), the roots are \\( u = \\frac{1 \\pm \\sqrt{8k - 39}}{4} \\).\n  The larger root \\( u_1 = \\frac{1 + \\sqrt{8k - 39}}{4} \\) is strictly positive for all \\( k > \\frac{39}{8} \\).\n  The smaller root \\( u_2 = \\frac{1 - \\sqrt{8k - 39}}{4} \\ge 0 \\iff \\sqrt{8k - 39} \\le 1 \\iff 8k - 39 \\le 1 \\iff k \\le 5 \\).\n  Thus, Case A yields:\n  - 2 distinct non-negative solutions when \\( \\frac{39}{8} < k \\le 5 \\).\n  - 1 non-negative solution when \\( k > 5 \\).\n\n4. **Analyze Case B (Left branch: \\( 2u^2 + 8 - k < 0 \\)):**\n\\[ 3 + u = -(2u^2 + 8 - k) = k - 2u^2 - 8 \\implies 2u^2 + u + (11 - k) = 0. \\]\nSimilarly, \\( k = 2u^2 + u + 11 \\), so \\( 2u^2 + 8 - k = -u - 3 < 0 \\) holds for all \\( u \\ge 0 \\).\nThe roots are \\( u = \\frac{-1 \\pm \\sqrt{8k - 87}}{4} \\).\nFor \\( u \\) to be non-negative, we require the larger root to satisfy\n\\[ \\frac{-1 + \\sqrt{8k - 87}}{4} \\ge 0 \\iff \\sqrt{8k - 87} \\ge 1 \\iff 8k - 87 \\ge 1 \\iff k \\ge 11. \\]\nThus, Case B yields:\n  - 0 non-negative solutions when \\( k < 11 \\).\n  - 1 non-negative solution when \\( k \\ge 11 \\).\n\n5. **Synthesize the total number of solutions:**\n- \\( k < \\frac{39}{8} \\): 0 solutions.\n- \\( k = \\frac{39}{8} \\): 1 solution (from Case A).\n- \\( \\frac{39}{8} < k \\le 5 \\): 2 solutions (both from Case A).\n- \\( 5 < k < 11 \\): 1 solution (from Case A).\n- \\( k \\ge 11 \\): 2 solutions (1 from Case A and 1 from Case B).\n\nTherefore, there is exactly one real solution if and only if \\( k = \\frac{39}{8} \\) or \\( 5 < k < 11 \\).</p>",
           "ar": null
         }
       },
@@ -483,75 +483,75 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Easy]</strong> Consider the quadratic function \\( p(t) = 11t^2 - 10 \\) over the closed interval \\( [11, 26] \\). Find the average rate of change \\( \\Delta p / \\Delta t \\) on \\( [11, 26] \\).",
+          "en": "<strong>[Practice 3 · Easy]</strong> What are the values of \\( x \\) that satisfy the equation\n\\[ |3x - 2| = 2|x + 1| \\,? \\]",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Functions: Modulus &amp; Inverse</em> and start from \\( p(t) = 11t^2 - 10 \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Functions: Modulus & Inverse and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\frac{p(26) - p(11)}{15} = 11((26) + 11) = 407 \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "The average rate of change is \\( \\frac{p(26) - p(11)}{15} = 11((26) + 11) = 407 \\).",
+          "en": "To solve the modulus equation \\( |3x - 2| = 2|x + 1| \\), we can either consider the linear cases or square both sides.\n\n**Method 1: Considering linear cases**\nThe equation \\( |A| = |B| \\) (where \\( B = 2(x+1) \\)) is equivalent to \\( A = B \\) or \\( A = -B \\):\n- Case 1:\n\\[ 3x - 2 = 2(x + 1) \\implies 3x - 2 = 2x + 2 \\implies x = 4 \\]\n- Case 2:\n\\[ 3x - 2 = -2(x + 1) \\implies 3x - 2 = -2x - 2 \\implies 5x = 0 \\implies x = 0 \\]\n\n**Method 2: Squaring both sides**\nSince both sides are non-negative, we can square both sides:\n\\[ (3x - 2)^2 = [2(x + 1)]^2 \\]\n\\[ 9x^2 - 12x + 4 = 4(x^2 + 2x + 1) \\]\n\\[ 9x^2 - 12x + 4 = 4x^2 + 8x + 4 \\]\nSubtracting \\( 4x^2 + 8x + 4 \\) from both sides gives:\n\\[ 5x^2 - 20x = 0 \\implies 5x(x - 4) = 0 \\]\nThus, \\( x = 0 \\) or \\( x = 4 \\).\n\n**Misconceptions:**\n- Choice B arises from a sign error when factoring \\( 5x^2 - 20x = 0 \\) as \\( 5x(x + 4) = 0 \\).\n- Choice C arises from distributing the negative sign incorrectly as \\( -(2x + 1) = -2x - 1 \\) instead of \\( -2(x + 1) = -2x - 2 \\).\n- Choice D arises from forgetting the factor of \\( 2 \\) on the right-hand side altogether.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Medium]</strong> Solve \\( |5x+11|<12 \\). What is the upper bound of the solution interval?",
+          "en": "<strong>[Practice 4 · Medium]</strong> Solve \\( |4x|<15 \\). What is the upper bound of the solution interval?",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Functions: Modulus &amp; Inverse</em> and start from \\( |5x+11|<12 \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Functions: Modulus & Inverse and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( -12<5x+11<12 \\Rightarrow -\\dfrac{23}{5}<x<\\dfrac{1}{5} \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "\\( -12<5x+11<12 \\Rightarrow -\\dfrac{23}{5}<x<\\dfrac{1}{5} \\). Upper bound: \\( x=\\dfrac{1}{5} \\). <strong>Answer:</strong> \\(\\dfrac{1}{5}\\).",
+          "en": "\\( -15<4x<15 \\Rightarrow -\\dfrac{15}{4}<x<\\dfrac{15}{4} \\). Upper bound: \\( x=\\dfrac{15}{4} \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 5 · Hard]</strong> A function \\( p \\) satisfies the identity \\( p(t - 24) = 18t + 2 \\) for all real \\( t \\). Find the value \\( p(19) \\).",
+          "en": "<strong>[Practice 5 · Hard]</strong> A population is modeled by \\( P(t)=P_0\\cdot 2^{t/5} \\) with \\( P_0=100 \\). Find \\( P(5) \\).",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Functions: Modulus &amp; Inverse</em> and start from \\( p \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Exponentials & Logarithms and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( t - 24 = 19 \\implies t = 43 \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Setting \\( t - 24 = 19 \\implies t = 43 \\) gives \\( p(19) = 18(43) + 2 = 776 \\).",
+          "en": "\\( P(5)=100\\cdot 2^{5/5}=100\\cdot 2^{1}=200 \\).",
           "ar": null
         }
       }

@@ -125,7 +125,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Hard):</strong> In gradient descent on loss \\( C(q) \\), parameter \\( q_0 = 38 \\) is updated with learning rate \\( \\eta = 0.1 \\) and gradient \\( \\nabla C(q_0) = 60 \\). Which of the following is the updated parameter \\( q_1 = q_0 - \\eta \\nabla C(q_0) \\)?</p><p><strong>Step-by-Step Solution:</strong> Computing \\( q_1 = 38 - 0.1(60) = 32 \\).</p>",
+          "en": "<p><strong>Problem (Hard):</strong> Consider the logistic differential equation \\( \\frac{dP}{dt} = kP(M-P) \\), where \\( P(t) \\) is the population at time \\( t \\), \\( k \\) is the growth rate constant, and \\( M \\) is the carrying capacity. If \\( \\frac{dP}{dt} = 0.05P(1000-P) \\), what is the carrying capacity of the population?</p><p><strong>Step-by-Step Solution:</strong> The logistic differential equation is given by \\( \\frac{dP}{dt} = kP(M-P) \\). In the given equation, \\( \\frac{dP}{dt} = 0.05P(1000-P) \\). By comparing the two forms, we can identify the carrying capacity \\( M \\). We see that \\( k = 0.05 \\) and \\( M = 1000 \\). Therefore, the carrying capacity of the population is 1000.</p>",
           "ar": null
         }
       },
@@ -478,25 +478,25 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Easy]</strong> Principal Component Analysis on covariance matrix \\( \\Sigma_{L} \\) yields eigenvalues \\( \\lambda_1 = 78 \\) and \\( \\lambda_2 = 22 \\). Which of the following is the percentage of variance \\( C_{q} \\) explained by the first principal component?",
+          "en": "<strong>[Practice 4 · Easy]</strong> A population of bacteria follows a logistic growth model where \\( P(t) \\) is the population at time \\( t \\) (in hours). The differential equation governing the population growth is \\( \\frac{dP}{dt} = 0.05P \\left( 1 - \\frac{P}{1000} \\right) \\). If the initial population is \\( P(0) = 200 \\), use Euler's method with a step size of \\( \\Delta t = 1 \\) hour to approximate the population after 1 hour, \\( P(1) \\).",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 7BC · Logistic Models & Euler's Method</em> and start from \\( \\Sigma_{L} \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Unit 7BC · Logistic Models & Euler's Method and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\frac{78}{78+22} \\times 100\\% = 78\\% \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "The percentage explained is \\( \\frac{78}{78+22} \\times 100\\% = 78\\% \\).",
+          "en": "Euler's method approximates the next value \\( P(t + \\Delta t) \\) using the formula \\( P(t + \\Delta t) \\approx P(t) + \\frac{dP}{dt} \\Big|_{t} \\cdot \\Delta t \\). We are given \\( P(0) = 200 \\) and \\( \\Delta t = 1 \\). First, we find the rate of change at \\( t=0 \\):\n\n\\( \\frac{dP}{dt} \\Big|_{t=0} = 0.05 \\cdot P(0) \\left( 1 - \\frac{P(0)}{1000} \\right) \\)\n\\( \\frac{dP}{dt} \\Big|_{t=0} = 0.05 \\cdot 200 \\left( 1 - \\frac{200}{1000} \\right) \\)\n\\( \\frac{dP}{dt} \\Big|_{t=0} = 10 \\left( 1 - 0.2 \\right) \\)\n\\( \\frac{dP}{dt} \\Big|_{t=0} = 10 \\cdot 0.8 \\)\n\\( \\frac{dP}{dt} \\Big|_{t=0} = 8 \\)\n\nNow, we use Euler's method to approximate \\( P(1) \\):\n\n\\( P(1) \\approx P(0) + \\frac{dP}{dt} \\Big|_{t=0} \\cdot \\Delta t \\)\n\\( P(1) \\approx 200 + 8 \\cdot 1 \\)\n\\( P(1) \\approx 208 \\)",
           "ar": null
         }
       }

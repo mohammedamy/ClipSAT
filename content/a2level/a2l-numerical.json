@@ -259,7 +259,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Hard):</strong> The linear inequality \\( 8y - 11 \\le 13 \\) restricts the positive integer \\( y \\) on the number line. Find the number of positive integers \\( y \\) in the solution set \\( H \\).</p><p><strong>Step-by-Step Solution:</strong> Adding \\( 11 \\) and dividing by \\( 8 \\) gives \\( y \\le 3 \\), which yields \\( 3 \\) positive integers.</p>",
+          "en": "<p><strong>Problem (Hard):</strong> The unique real root \\(\\alpha\\) of the equation\n\\[ x^3 + 2x - k = 0, \\]\nwhere \\(k\\) is a positive constant, is estimated using the iterative formula\n\\[ x_{n+1} = \\frac{k}{x_n^2 + 2}. \\]\nThe sequence of iterations converges locally to \\(\\alpha\\) (for an initial approximation \\(x_0\\) sufficiently close to \\(\\alpha\\)) if and only if \\(|g'(\\alpha)| < 1\\), where \\(g(x) = \\frac{k}{x^2 + 2}\\).\n\nDetermine the complete set of values of \\(k\\) for which this iteration converges locally to \\(\\alpha\\).</p><p><strong>Step-by-Step Solution:</strong> To determine the range of \\(k\\) for which the iteration converges locally, we follow these steps:\n\n1. **Root relation:**\nAt the fixed point \\(x = \\alpha\\), we have:\n\\[ \\alpha = g(\\alpha) = \\frac{k}{\\alpha^2 + 2} \\implies \\alpha^3 + 2\\alpha = k. \\]\nSince \\(k > 0\\) and the function \\(f(x) = x^3 + 2x - k\\) satisfies \\(f'(x) = 3x^2 + 2 > 0\\) for all real \\(x\\), there is a unique real root \\(\\alpha\\), and \\(\\alpha > 0\\).\n\n2. **Differentiating \\(g(x)\\):**\nUsing the chain rule on \\(g(x) = k(x^2 + 2)^{-1}\\):\n\\[ g'(x) = -k(x^2 + 2)^{-2} \\cdot (2x) = -\\frac{2kx}{(x^2 + 2)^2}. \\]\n\n3. **Evaluating \\(g'(\\alpha)\\):**\nFrom \\(\\alpha(\\alpha^2 + 2) = k\\), we have \\(\\alpha^2 + 2 = \\frac{k}{\\alpha}\\). Substituting this into the denominator gives:\n\\[ g'(\\alpha) = -\\frac{2k\\alpha}{\\left(\\frac{k}{\\alpha}\\right)^2} = -\\frac{2k\\alpha^3}{k^2} = -\\frac{2\\alpha^3}{k}. \\]\nNow, substitute \\(k = \\alpha^3 + 2\\alpha\\):\n\\[ g'(\\alpha) = -\\frac{2\\alpha^3}{\\alpha^3 + 2\\alpha} = -\\frac{2\\alpha^2}{\\alpha^2 + 2}. \\]\n\n4. **Applying the convergence criterion:**\nSince \\(\\alpha > 0\\), \\(g'(\\alpha) < 0\\). Local convergence requires:\n\\[ |g'(\\alpha)| < 1 \\iff \\frac{2\\alpha^2}{\\alpha^2 + 2} < 1. \\]\nMultiplying by \\(\\alpha^2 + 2 > 0\\):\n\\[ 2\\alpha^2 < \\alpha^2 + 2 \\iff \\alpha^2 < 2 \\iff 0 < \\alpha < \\sqrt{2}. \\]\n\n5. **Finding the range of \\(k\\):**\nBecause \\(k(\\alpha) = \\alpha^3 + 2\\alpha\\) is strictly increasing for \\(\\alpha > 0\\) (since \\(k'(\\alpha) = 3\\alpha^2 + 2 > 0\\)):\n- As \\(\\alpha \\to 0^+\\), \\(k \\to 0\\).\n- At \\(\\alpha = \\sqrt{2}\\):\n\\[ k = (\\sqrt{2})^3 + 2\\sqrt{2} = 2\\sqrt{2} + 2\\sqrt{2} = 4\\sqrt{2}. \\]\n\nThus, the iteration is guaranteed to converge locally if and only if \\(0 < k < 4\\sqrt{2}\\).\n\n**Common Misconceptions:**\n- Choice B (\\(0 < k < 2\\sqrt{2}\\)) results from incorrectly approximating \\(k \\approx 2\\alpha\\) rather than \\(\\alpha^3 + 2\\alpha\\).\n- Choice C (\\(0 < k < 3\\)) arises from assuming the threshold root is \\(\\alpha = 1\\) instead of \\(\\alpha = \\sqrt{2}\\).\n- Choice D (\\(0 < k < 12\\)) arises from solving \\(\\alpha < 2\\) instead of \\(\\alpha < \\sqrt{2}\\).</p>",
           "ar": null
         }
       },
@@ -271,7 +271,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Easy):</strong> The absolute value equation \\( |y - 7| = 17 \\) has two real roots \\( y_1 \\) and \\( y_2 \\). Find the sum of roots \\( H = y_1 + y_2 \\).</p><p><strong>Step-by-Step Solution:</strong> The two solutions are \\( y_1 = 24 \\) and \\( y_2 = -10 \\), whose sum is \\( 14 \\).</p>",
+          "en": "<p><strong>Problem (Easy):</strong> The continuous function \\( f \\) is defined for all \\( x \\in \\mathbb{R} \\) by\n\\[ f(x) = 2^x + 3x - 11. \\]\nBetween which pair of consecutive integers does a root of the equation \\( f(x) = 0 \\) lie?</p><p><strong>Step-by-Step Solution:</strong> To determine the interval containing a root of a continuous function \\( f(x) \\), we use the change-of-sign rule (Intermediate Value Theorem). If \\( f(a) \\) and \\( f(b) \\) have opposite signs, then at least one real root of \\( f(x) = 0 \\) lies in the interval \\( (a, b) \\).\n\nEvaluate \\( f(x) \\) at consecutive integers:\n- For \\( x = 0 \\):\n  \\[ f(0) = 2^0 + 3(0) - 11 = 1 + 0 - 11 = -10 < 0 \\]\n- For \\( x = 1 \\):\n  \\[ f(1) = 2^1 + 3(1) - 11 = 2 + 3 - 11 = -6 < 0 \\]\n- For \\( x = 2 \\):\n  \\[ f(2) = 2^2 + 3(2) - 11 = 4 + 6 - 11 = -1 < 0 \\]\n- For \\( x = 3 \\):\n  \\[ f(3) = 2^3 + 3(3) - 11 = 8 + 9 - 11 = 6 > 0 \\]\n- For \\( x = 4 \\):\n  \\[ f(4) = 2^4 + 3(4) - 11 = 16 + 12 - 11 = 17 > 0 \\]\n\nSince \\( f(2) = -1 < 0 \\) and \\( f(3) = 6 > 0 \\), there is a change of sign between \\( x = 2 \\) and \\( x = 3 \\). Because \\( f \\) is continuous, a root of \\( f(x) = 0 \\) lies between \\( 2 \\) and \\( 3 \\).\n\nCommon misconception:\nIn the interval \\( [1, 2] \\), \\( f(1) = -6 \\) and \\( f(2) = -1 \\). Although the value increases significantly, both values remain negative, so no root is guaranteed in \\( [1, 2] \\).</p>",
           "ar": null
         }
       },
@@ -453,75 +453,75 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Medium]</strong> The real number \\( y \\) satisfies \\( \\frac{18y + 2}{2} = 252 + \\frac{2}{2} \\). Find the linear expression \\( H = 18y - 2 \\).",
+          "en": "<strong>[Practice 3 · Medium]</strong> The function \\( f \\) is defined for all \\( x \\in \\mathbb{R} \\) by\n\\[ f(x) = x^3 - 2x^2 - kx + 12, \\]\nwhere \\( k \\) is a real constant.\n\nThe Newton-Raphson method is used to find an approximation to a root of the equation \\( f(x) = 0 \\).\n\nGiven that an initial approximation \\( x_0 = 2 \\) produces a first approximation \\( x_1 = 4 \\), find the value of the constant \\( k \\) and the exact value of the second approximation \\( x_2 \\).",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Numerical Methods</em> and start from \\( y \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Numerical Methods and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 18y = 504 \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Multiplying by 2 gives \\( 18y = 504 \\), so \\( 18y - 2 = 504 - 2 = 502 \\).",
+          "en": "We solve the problem in two steps:\n\n**Step 1: Find the value of \\( k \\)**\n\nThe Newton-Raphson iteration formula is:\n\\[ x_{n+1} = x_n - \\frac{f(x_n)}{f'(x_n)} \\]\n\nDifferentiating \\( f(x) = x^3 - 2x^2 - kx + 12 \\) with respect to \\( x \\):\n\\[ f'(x) = 3x^2 - 4x - k \\]\n\nEvaluating \\( f(x) \\) and \\( f'(x) \\) at \\( x_0 = 2 \\):\n\\[ f(2) = 2^3 - 2(2^2) - 2k + 12 = 8 - 8 - 2k + 12 = 12 - 2k \\]\n\\[ f'(2) = 3(2^2) - 4(2) - k = 12 - 8 - k = 4 - k \\]\n\nUsing the iteration formula for \\( x_1 \\):\n\\[ x_1 = x_0 - \\frac{f(x_0)}{f'(x_0)} \\implies 4 = 2 - \\frac{12 - 2k}{4 - k} \\]\n\nRearranging to solve for \\( k \\):\n\\[ 2 = -\\frac{12 - 2k}{4 - k} = \\frac{2k - 12}{4 - k} \\]\n\\[ 2(4 - k) = 2k - 12 \\]\n\\[ 8 - 2k = 2k - 12 \\implies 4k = 20 \\implies k = 5 \\]\n\n**Step 2: Find the second approximation \\( x_2 \\)**\n\nWith \\( k = 5 \\), the function and its derivative are:\n\\[ f(x) = x^3 - 2x^2 - 5x + 12 \\]\n\\[ f'(x) = 3x^2 - 4x - 5 \\]\n\nNow apply the iteration starting from \\( x_1 = 4 \\):\n\\[ f(4) = 4^3 - 2(4^2) - 5(4) + 12 = 64 - 32 - 20 + 12 = 24 \\]\n\\[ f'(4) = 3(4^2) - 4(4) - 5 = 48 - 16 - 5 = 27 \\]\n\nTherefore:\n\\[ x_2 = 4 - \\frac{f(4)}{f'(4)} = 4 - \\frac{24}{27} = 4 - \\frac{8}{9} = \\frac{28}{9} \\]\n\n**Common Traps:**\n- Choice B uses the incorrect addition \\( x_{n+1} = x_n + \\frac{f(x_n)}{f'(x_n)} \\), yielding \\( 4 + \\frac{8}{9} = \\frac{44}{9} \\).\n- Choice C omits subtracting from \\( x_0 \\), taking \\( x_1 = \\frac{f(x_0)}{f'(x_0)} \\), which incorrectly yields \\( k = 2 \\) and \\( x_2 = \\frac{14}{5} \\).\n- Choice D incorrectly differentiates \\(-2x^2\\) as \\(-2x\\) rather than \\(-4x\\), leading to \\( k = 7 \\) and \\( x_2 = \\frac{84}{25} \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Hard]</strong> A sequence is defined by \\( x_{n+1}=\\dfrac{3x-3}{6} \\) with \\( x_0=0 \\). Find \\( x_{1} \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> An arithmetic sequence has first term \\( a=-18 \\) and common difference \\( d=6 \\). Find the sum of the first 29 terms.",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Numerical Methods</em> and start from \\( x_{n+1}=\\dfrac{3x-3}{6} \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Sequences & Series and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( x_0=0 \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Applying the iteration 1 time(s) from \\( x_0=0 \\): \\( x_{1}=-\\dfrac{1}{2} \\). <strong>Answer:</strong> \\(-\\dfrac{1}{2}\\).",
+          "en": "\\( S_n=\\dfrac{n}{2}(2a+(n-1)d) \\Rightarrow S_{29}=\\dfrac{29}{2}(-36+168)=1914 \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 5 · Easy]</strong> A linear function \\( H(y) \\) satisfies \\( H(0) = 20 \\) and \\( H(16) = 52 \\). Find the input \\( y \\) for which \\( H(y) = 60 \\).",
+          "en": "<strong>[Practice 5 · Easy]</strong> The function \\( f \\) is defined for all real numbers by\n\\[ f(x) = x^3 + 3x - 5. \\]\nBetween which pair of consecutive integers does the unique real root of the equation \\( f(x) = 0 \\) lie?",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Numerical Methods</em> and start from \\( H(y) \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Numerical Methods and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( m = 2 \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "The slope is \\( m = 2 \\), so \\( H(y) = 2y + 20 \\). Setting \\( 2y + 20 = 60 \\) gives \\( y = 20 \\).",
+          "en": "To locate the root using the change of sign method, evaluate \\( f(x) \\) at consecutive integer values:\n\\[ f(0) = (0)^3 + 3(0) - 5 = -5 < 0 \\]\n\\[ f(1) = (1)^3 + 3(1) - 5 = 1 + 3 - 5 = -1 < 0 \\]\n\\[ f(2) = (2)^3 + 3(2) - 5 = 8 + 6 - 5 = 9 > 0 \\]\nSince \\( f(x) \\) is a continuous polynomial function and there is a sign change between \\( x = 1 \\) (where \\( f(1) < 0 \\)) and \\( x = 2 \\) (where \\( f(2) > 0 \\)), by the Intermediate Value Theorem, a root of \\( f(x) = 0 \\) lies between \\( 1 \\) and \\( 2 \\).\n\nChecking the other intervals:\n- On \\( [0, 1] \\), \\( f(0) = -5 \\) and \\( f(1) = -1 \\) (no sign change).\n- On \\( [2, 3] \\), \\( f(2) = 9 \\) and \\( f(3) = 31 \\) (no sign change).\n- On \\( [-1, 0] \\), \\( f(-1) = -9 \\) and \\( f(0) = -5 \\) (no sign change).",
           "ar": null
         }
       }

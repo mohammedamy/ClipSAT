@@ -319,7 +319,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Medium):</strong> For finite sets \\( P \\) and \\( Q \\), \\( |P| = 51 \\), \\( |Q| = 49 \\), and \\( |P \\cap Q| = 35 \\). What is the union cardinality \\( t = |P \\cup Q| \\)?</p><p><strong>Step-by-Step Solution:</strong> By Inclusion-Exclusion, \\( |P \\cup Q| = 51 + 49 - 35 = 65 \\).</p>",
+          "en": "<p><strong>Problem (Medium):</strong> A survey was conducted on a group of 100 students regarding their preferences for two subjects, Mathematics (M) and Science (S). The results are summarized in the two-way table below, where some values are unknown. If a student is chosen at random from this group, the probability that the student prefers Mathematics but not Science, \\( P(M \\cap \\neg S) \\), is equal to the probability that the student prefers Science but not Mathematics, \\( P(\\neg M \\cap S) \\). What is the value of \\( x \\)?</p><p><strong>Step-by-Step Solution:</strong> From the first row (Mathematics), the total number of students who prefer Mathematics is \\( 45 \\), so:\n\\[ 25 + x = 45 \\implies x = 20. \\]\nSince \\( P(M \\cap \\neg S) = P(\\neg M \\cap S) \\), we also have \\( y = x = 20 \\), which matches the first column total \\( 25 + 20 = 45 \\) and the second row total \\( 20 + 35 = 55 \\).</p>",
           "ar": null
         }
       },
@@ -428,75 +428,75 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 2 · Hard]</strong> A normal random variable \\( p \\sim \\mathcal{N}(\\mu = 46, \\sigma^2 = 4) \\) is observed at \\( t = 48 \\). What is the standardized score \\( z = (t - \\mu)/\\sigma \\)?",
+          "en": "<strong>[Practice 2 · Hard]</strong> A manufacturer produces light bulbs. The probability that a randomly selected light bulb is defective is \\( p \\). The production process is designed such that the probability of producing exactly \\( k \\) defective bulbs in a batch of \\( n=5 \\) bulbs follows the binomial probability formula: \\( P(X=k) = \\binom{n}{k} p^k (1-p)^{n-k} \\).  It is known that the probability of finding exactly 2 defective bulbs in a batch of 5 is \\( \\frac{10}{32} \\). Find the value of \\( p \\).",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Probability</em> and start from \\( p \\sim \\mathcal{N}(\\mu = 46, \\sigma^2 = 4) \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Probability and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( z \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "The \\( z \\)-score is \\( \\frac{48 - 46}{2} = 1 \\).",
+          "en": "Let \\( X \\) be the number of defective bulbs in a batch of \\( n=5 \\). We are given that \\( X \\) follows a binomial distribution with parameters \\( n=5 \\) and probability of success (a bulb being defective) \\( p \\). The probability of exactly \\( k \\) defective bulbs is \\( P(X=k) = \\binom{n}{k} p^k (1-p)^{n-k} \\).\n\nWe are given that the probability of finding exactly 2 defective bulbs in a batch of 5 is \\( \\frac{10}{32} \\). Therefore, \\( P(X=2) = \\binom{5}{2} p^2 (1-p)^{5-2} = \\frac{10}{32} \\).\n\nFirst, calculate the binomial coefficient: \\( \\binom{5}{2} = \\frac{5!}{2!(5-2)!} = \\frac{5!}{2!3!} = \\frac{5 \\times 4}{2 \\times 1} = 10 \\).\n\nSo, the equation becomes: \\( 10 p^2 (1-p)^3 = \\frac{10}{32} \\).\n\nDivide both sides by 10: \\( p^2 (1-p)^3 = \\frac{1}{32} \\).\n\nWe need to find a value of \\( p \\) that satisfies this equation. Let's test the given options:\n\nIf \\( p = 0.2 \\):\n\\( (0.2)^2 (1-0.2)^3 = (0.04) (0.8)^3 = 0.04 \\times 0.512 = 0.02048 \\). \\( \\frac{1}{32} = 0.03125 \\). This is not correct.\n\nIf \\( p = 0.5 \\):\n\\( (0.5)^2 (1-0.5)^3 = (0.25) (0.5)^3 = 0.25 \\times 0.125 = 0.03125 \\). \\( \\frac{1}{32} = 0.03125 \\). This is correct.\n\nIf \\( p = 0.8 \\):\n\\( (0.8)^2 (1-0.8)^3 = (0.64) (0.2)^3 = 0.64 \\times 0.008 = 0.00512 \\). This is not correct.\n\nIf \\( p = 0.75 \\):\n\\( (0.75)^2 (1-0.75)^3 = (0.5625) (0.25)^3 = 0.5625 \\times 0.015625 = 0.0087890625 \\). This is not correct.\n\nThus, the value of \\( p \\) is \\( 0.5 \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Easy]</strong> A cumulative frequency distribution \\( p(t) \\) has \\( Q_1 = 18 \\), median \\( 26 \\), and \\( Q_3 = 35 \\). What is the spread \\( \\text{IQR}(p) = Q_3 - Q_1 \\)?",
+          "en": "<strong>[Practice 3 · Easy]</strong> A bag contains 12 red marbles and 8 blue marbles. If one marble is drawn at random, what is the probability that the marble is red?",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Probability</em> and start from \\( p(t) \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Probability and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( Q_3 - Q_1 = 35 - 18 = 17 \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "From the cumulative frequency curve, \\( Q_3 - Q_1 = 35 - 18 = 17 \\).",
+          "en": "The total number of marbles in the bag is the sum of red and blue marbles: \\( 12 + 8 = 20 \\) marbles. The number of favorable outcomes (drawing a red marble) is 12. The probability of an event is calculated as the ratio of the number of favorable outcomes to the total number of possible outcomes. Therefore, the probability of drawing a red marble is \\( P(\\text{red}) = \\frac{\\text{Number of red marbles}}{\\text{Total number of marbles}} = \\frac{12}{20} \\). This fraction can be simplified by dividing both the numerator and the denominator by their greatest common divisor, which is 4: \\( \\frac{12 \\div 4}{20 \\div 4} = \\frac{3}{5} \\). Thus, the probability of drawing a red marble is \\( \\frac{3}{5} \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Medium]</strong> In a two-stage probability tree for events \\( P \\) and \\( Q \\), \\( P(P) = 0.5 \\) and \\( P(Q \\mid P) = 0.3 \\). What is the expected frequency \\( t = 100 \\cdot P(P \\cap Q) \\) in \\( 100 \\) independent trials?",
+          "en": "<strong>[Practice 4 · Medium]</strong> A factory produces two types of components, A and B. Components of type A have a defect rate of \\( 3\\% \\), and components of type B have a defect rate of \\( 5\\% \\). A batch of 100 components is produced, consisting of \\( N \\) components of type A and \\( 100-N \\) components of type B. Let \\( X \\) be the random variable representing the total number of defective components in the batch. If the expected number of defective components is \\( E[X] = 4.2 \\), find the probability that a randomly selected component from this batch is defective, given that it is of type A.",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Probability</em> and start from \\( P \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Probability and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( P(P \\cap Q) = 0.5 \\times 0.3 = 0.15 \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Since \\( P(P \\cap Q) = 0.5 \\times 0.3 = 0.15 \\), the expected count in 100 trials is \\( 15 \\).",
+          "en": "Let \\( X_A \\) be the number of defective components of type A, and \\( X_B \\) be the number of defective components of type B. The total number of defective components is \\( X = X_A + X_B \\).\n\nThe expected number of defective components of type A is \\( E[X_A] = N \\times 0.03 \\).\nThe expected number of defective components of type B is \\( E[X_B] = (100-N) \\times 0.05 \\).\nThe total expected number of defective components is \\( E[X] = E[X_A] + E[X_B] \\).\nWe are given \\( E[X] = 4.2 \\).\nSo, \\( N \\times 0.03 + (100-N) \\times 0.05 = 4.2 \\).\n\\( 0.03N + 5 - 0.05N = 4.2 \\).\n\\( 5 - 0.02N = 4.2 \\).\n\\( 0.02N = 5 - 4.2 \\).\n\\( 0.02N = 0.8 \\).\n\\( N = \\frac{0.8}{0.02} = 40 \\).\n\nTherefore, there are 40 components of type A and \\( 100 - 40 = 60 \\) components of type B.\n\nThe question asks for the probability that a randomly selected component from this batch is defective, given that it is of type A. This is simply the defect rate of type A components.\n\nProbability (Defective | Type A) = Defect rate of Type A = \\( 0.03 \\).",
           "ar": null
         }
       }

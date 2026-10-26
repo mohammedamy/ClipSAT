@@ -22,26 +22,7 @@
           "question_type": "FRQ",
           "target": "The ratio and comparison tests",
           "answer": "$\\frac{a_{n+1}}{a_n} = \\frac{n^n}{(n+1)^n} = \\left(\\frac{n}{n+1}\\right)^n \\rightarrow \\frac{1}{e} < 1$: converges.",
-          "explanation": "$\\frac{a_{n+1}}{a_n} = \\frac{n^n}{(n+1)^n} = \\left(\\frac{n}{n+1}\\right)^n \\rightarrow \\frac{1}{e} < 1$: converges.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.75*(x - (-1.0))**2 + (1.0)",
-              "-0.35*x + (2.2)"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -5,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": -1.0,
-                "y": 1.0,
-                "label": "$(-1,1)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "$\\frac{a_{n+1}}{a_n} = \\frac{n^n}{(n+1)^n} = \\left(\\frac{n}{n+1}\\right)^n \\rightarrow \\frac{1}{e} < 1$: converges."
         },
         {
           "q": "Use the comparison test to determine whether $\\sum_{n=1}^{\\infty} \\frac{1}{n^2+3}$ converges, by comparing to $\\sum \\frac{1}{n^2}$.",
@@ -82,32 +63,7 @@
           "question_type": "FRQ",
           "target": "The integral test",
           "answer": "Let $u=\\ln x$: $\\int\\frac{1}{x\\ln x}dx = \\ln|\\ln x|+C$. $\\int_2^\\infty\\frac{dx}{x\\ln x} = \\lim_{b\\rightarrow\\infty}\\left[\\ln(\\ln x)\\right]_2^b = \\infty$: the integral diverges, so by the integral test the series diverges.",
-          "explanation": "Let $u=\\ln x$: $\\int\\frac{1}{x\\ln x}dx = \\ln|\\ln x|+C$. $\\int_2^\\infty\\frac{dx}{x\\ln x} = \\lim_{b\\rightarrow\\infty}\\left[\\ln(\\ln x)\\right]_2^b = \\infty$: the integral diverges, so by the integral test the series diverges.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "-0.41*x**2 + 1.25*x + 2.1",
-              "0.2*x + 0.3"
-            ],
-            "xmin": -1,
-            "xmax": 5,
-            "ymin": -1,
-            "ymax": 5.5,
-            "shade": {
-              "fn1": "-0.41*x**2 + 1.25*x + 2.1",
-              "fn2": "0.2*x + 0.3",
-              "x0": 0.0,
-              "x1": 2.5
-            },
-            "point_labels": [
-              {
-                "x": 1.5,
-                "y": 3.05,
-                "label": "$y=f(x)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "Let $u=\\ln x$: $\\int\\frac{1}{x\\ln x}dx = \\ln|\\ln x|+C$. $\\int_2^\\infty\\frac{dx}{x\\ln x} = \\lim_{b\\rightarrow\\infty}\\left[\\ln(\\ln x)\\right]_2^b = \\infty$: the integral diverges, so by the integral test the series diverges."
         },
         {
           "q": "Use the integral test to confirm that $\\sum_{n=1}^{\\infty} \\frac{1}{n^2}$ converges, using $\\int_1^\\infty \\frac{1}{x^2}\\,dx$.",
@@ -115,18 +71,7 @@
           "question_type": "FRQ",
           "target": "The integral test",
           "answer": "$\\int_1^\\infty\\frac{1}{x^2}dx = \\lim_{b\\rightarrow\\infty}\\left[-\\frac{1}{x}\\right]_1^b = 1$, a finite value, so by the integral test the series converges.",
-          "explanation": "$\\int_1^\\infty\\frac{1}{x^2}dx = \\lim_{b\\rightarrow\\infty}\\left[-\\frac{1}{x}\\right]_1^b = 1$, a finite value, so by the integral test the series converges.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "1/x**2"
-            ],
-            "xmin": 0.4,
-            "xmax": 6,
-            "ymin": 0,
-            "ymax": 5,
-            "width": 220
-          }
+          "explanation": "$\\int_1^\\infty\\frac{1}{x^2}dx = \\lim_{b\\rightarrow\\infty}\\left[-\\frac{1}{x}\\right]_1^b = 1$, a finite value, so by the integral test the series converges."
         }
       ]
     },
@@ -166,33 +111,7 @@
           "question_type": "FRQ",
           "target": "The limit comparison test",
           "answer": "$\\lim_{n\\rightarrow\\infty}\\frac{(3n^2-1)/(n^4+2n)}{1/n^2} = \\lim_{n\\rightarrow\\infty}\\frac{3n^4-n^2}{n^4+2n} = 3$, finite and positive. Since $\\sum\\frac{1}{n^2}$ converges, so does the given series.",
-          "explanation": "$\\lim_{n\\rightarrow\\infty}\\frac{(3n^2-1)/(n^4+2n)}{1/n^2} = \\lim_{n\\rightarrow\\infty}\\frac{3n^4-n^2}{n^4+2n} = 3$, finite and positive. Since $\\sum\\frac{1}{n^2}$ converges, so does the given series.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0 + 2.5/(x - (1))"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -5,
-            "ymax": 6,
-            "asymptotes": {
-              "x": [
-                1.0
-              ],
-              "y": [
-                0.0
-              ]
-            },
-            "point_labels": [
-              {
-                "x": 2.0,
-                "y": 2.5,
-                "label": "$(2, 2.5)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "$\\lim_{n\\rightarrow\\infty}\\frac{(3n^2-1)/(n^4+2n)}{1/n^2} = \\lim_{n\\rightarrow\\infty}\\frac{3n^4-n^2}{n^4+2n} = 3$, finite and positive. Since $\\sum\\frac{1}{n^2}$ converges, so does the given series."
         },
         {
           "q": "Use the root test to determine whether $\\sum_{n=1}^{\\infty}\\left(\\frac{n}{2n+1}\\right)^n$ converges.",
@@ -247,32 +166,7 @@
           "target": "A combined convergence-test challenge",
           "cross_lesson": "7.02 Integration by Parts",
           "answer": "$\\int_2^\\infty\\frac{1}{x(\\ln x)^2}\\,dx$: with $u=\\ln x$, $du=\\frac{1}{x}dx$: $\\int\\frac{1}{u^2}\\,du=-\\frac{1}{u}+C$. Evaluating: $\\lim_{b\\rightarrow\\infty}\\left[-\\frac{1}{\\ln x}\\right]_2^b=0-\\left(-\\frac{1}{\\ln2}\\right)=\\frac{1}{\\ln2}$, a finite value: the integral converges, so by the integral test the series converges.",
-          "explanation": "$\\int_2^\\infty\\frac{1}{x(\\ln x)^2}\\,dx$: with $u=\\ln x$, $du=\\frac{1}{x}dx$: $\\int\\frac{1}{u^2}\\,du=-\\frac{1}{u}+C$. Evaluating: $\\lim_{b\\rightarrow\\infty}\\left[-\\frac{1}{\\ln x}\\right]_2^b=0-\\left(-\\frac{1}{\\ln2}\\right)=\\frac{1}{\\ln2}$, a finite value: the integral converges, so by the integral test the series converges.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "-0.2*x**2 + 1.25*x + 2.1",
-              "0.4*x + 0.3"
-            ],
-            "xmin": -1,
-            "xmax": 5,
-            "ymin": -1,
-            "ymax": 5.5,
-            "shade": {
-              "fn1": "-0.2*x**2 + 1.25*x + 2.1",
-              "fn2": "0.4*x + 0.3",
-              "x0": 0.0,
-              "x1": 3.3
-            },
-            "point_labels": [
-              {
-                "x": 1.5,
-                "y": 3.53,
-                "label": "$y=f(x)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "$\\int_2^\\infty\\frac{1}{x(\\ln x)^2}\\,dx$: with $u=\\ln x$, $du=\\frac{1}{x}dx$: $\\int\\frac{1}{u^2}\\,du=-\\frac{1}{u}+C$. Evaluating: $\\lim_{b\\rightarrow\\infty}\\left[-\\frac{1}{\\ln x}\\right]_2^b=0-\\left(-\\frac{1}{\\ln2}\\right)=\\frac{1}{\\ln2}$, a finite value: the integral converges, so by the integral test the series converges."
         },
         {
           "q": "A student claims that since $\\lim_{n\\rightarrow\\infty}\\frac{1}{n}=0$, the series $\\sum_{n=1}^{\\infty}\\frac{1}{n}$ must converge. Explain what is wrong with this reasoning, and state the correct necessary (but not sufficient) condition that the $n$th-term test actually provides, using the harmonic series as a counterexample.",
@@ -358,26 +252,7 @@
           ],
           "correct": 2,
           "answer": "$L=\\lim(n+1)^2/e^{n+1}\\cdot e^n/n^2=1/e<1\\Rightarrow$ converges.",
-          "explanation": "$L=\\lim(n+1)^2/e^{n+1}\\cdot e^n/n^2=1/e<1\\Rightarrow$ converges.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.6*(x - (-0.5))**2 + (-1.5)",
-              "0.4*x + (-0.3)"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -5,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": -0.5,
-                "y": -1.5,
-                "label": "$(-0.5,-1.5)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "$L=\\lim(n+1)^2/e^{n+1}\\cdot e^n/n^2=1/e<1\\Rightarrow$ converges."
         },
         {
           "q": "Series $\\sum_{n=1}^\\infty n\\cdot(1/2)^n$: ratio test gives $L=$",
@@ -452,26 +327,7 @@
           ],
           "correct": 2,
           "answer": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{2|x|}{n+1}\\rightarrow0$ for every $x$, so $R=\\infty$.",
-          "explanation": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{2|x|}{n+1}\\rightarrow0$ for every $x$, so $R=\\infty$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "-0.3*(x - (0.0))**2 + (1.5)",
-              "1.15*x + (0.3)"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -5,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 0.0,
-                "y": 1.5,
-                "label": "$(0,1.5)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "$\\left|\\frac{a_{n+1}}{a_n}\\right|=\\frac{2|x|}{n+1}\\rightarrow0$ for every $x$, so $R=\\infty$."
         }
       ]
     },
@@ -551,26 +407,7 @@
           ],
           "correct": 2,
           "answer": "Direct comparison with convergent series.",
-          "explanation": "Direct comparison with convergent series.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "-0.3*(x - (-0.5))**2 + (-0.5)",
-              "0.9*x + (-1.7)"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -5,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": -0.5,
-                "y": -0.5,
-                "label": "$(-0.5,-0.5)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "Direct comparison with convergent series."
         },
         {
           "q": "Bessel function $J_0(x)=\\sum_{m=0}^\\infty\\frac{(-1)^m}{(m!)^2}\\left(\\frac{x}{2}\\right)^{2m}$. Radius of convergence:",
@@ -615,15 +452,7 @@
           ],
           "correct": 0,
           "answer": "The radius of convergence $R$ of a power series $\\sum_{n=0}^{\\infty} c_n (x-a)^n$ indicates that the series converges absolutely for $|x-a| R$. The center of the series is $a$. In this problem, we are given $R=3$ and $a=2$. Thus, the series converges for $|x-2| < 3$. This inequality can be rewritten as $-3 < x-2 < 3$. Adding 2 to all parts of the inequality, we get $-3+2 < x < 3+2$, which simplifies to $-1 < x < 5$. This interval is written in open interval notation as $(-1, 5)$. The convergence at the endpoints $x=-1$ and $x=5$ is not determined by the radius of convergence alone and requires further testing (e.g., using the Alternating Series Test or p-series test). However, the question asks for the interval where the series converges, and the open interval derived from $|x-a| < R$ is the fundamental region of convergence for a power series. Therefore, the interval $(-1, 5)$ represents the values of $x$ for which the series converges.",
-          "explanation": "The radius of convergence $R$ of a power series $\\sum_{n=0}^{\\infty} c_n (x-a)^n$ indicates that the series converges absolutely for $|x-a| R$. The center of the series is $a$. In this problem, we are given $R=3$ and $a=2$. Thus, the series converges for $|x-2| < 3$. This inequality can be rewritten as $-3 < x-2 < 3$. Adding 2 to all parts of the inequality, we get $-3+2 < x < 3+2$, which simplifies to $-1 < x < 5$. This interval is written in open interval notation as $(-1, 5)$. The convergence at the endpoints $x=-1$ and $x=5$ is not determined by the radius of convergence alone and requires further testing (e.g., using the Alternating Series Test or p-series test). However, the question asks for the interval where the series converges, and the open interval derived from $|x-a| < R$ is the fundamental region of convergence for a power series. Therefore, the interval $(-1, 5)$ represents the values of $x$ for which the series converges.",
-          "figure": {
-            "type": "numberline",
-            "min": -5.0,
-            "max": 10.0,
-            "marks": [],
-            "shade": null,
-            "width": 250
-          }
+          "explanation": "The radius of convergence $R$ of a power series $\\sum_{n=0}^{\\infty} c_n (x-a)^n$ indicates that the series converges absolutely for $|x-a| R$. The center of the series is $a$. In this problem, we are given $R=3$ and $a=2$. Thus, the series converges for $|x-2| < 3$. This inequality can be rewritten as $-3 < x-2 < 3$. Adding 2 to all parts of the inequality, we get $-3+2 < x < 3+2$, which simplifies to $-1 < x < 5$. This interval is written in open interval notation as $(-1, 5)$. The convergence at the endpoints $x=-1$ and $x=5$ is not determined by the radius of convergence alone and requires further testing (e.g., using the Alternating Series Test or p-series test). However, the question asks for the interval where the series converges, and the open interval derived from $|x-a| < R$ is the fundamental region of convergence for a power series. Therefore, the interval $(-1, 5)$ represents the values of $x$ for which the series converges."
         },
         {
           "q": "Apply the ratio test to $\\sum_{n=1}^{\\infty} \\frac{6^{n}}{n!}$. What is $L=\\lim_{n\\rightarrow\\infty}\\left|\\frac{a_{n+1}}{a_n}\\right|$?",

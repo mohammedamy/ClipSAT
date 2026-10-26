@@ -322,7 +322,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Hard):</strong> The second-order linear homogeneous ODE \\( F''(w) - 35F'(w) + 124F(w) = 0 \\) has characteristic roots \\( \\lambda_1, \\lambda_2 \\). Compute the exact value of the trace sum \\( \\lambda_1 + \\lambda_2 \\).</p><p><strong>Step-by-Step Solution:</strong> From \\( \\lambda^2 - 35\\lambda + 124 = 0 \\), the sum of roots is \\( 35 \\).</p>",
+          "en": "<p><strong>Problem (Hard):</strong> Consider the second-order linear homogeneous differential equation: \\( x^2 y'' + x y' + (x^2 - \\nu^2) y = 0 \\), where \\(\\nu\\) is a constant. This is Bessel's equation of order \\(\\nu\\). Assume \\(\\nu = 1/2\\) and that \\(x > 0\\). \\(\\textbf{Part 1: Ordinary Point Analysis}\\\\. x=0\\) is a regular singular point. Determine the indicial equation for this differential equation and find its roots.</p><p><strong>Step-by-Step Solution:</strong> The given differential equation is \\(x^2 y'' + x y' + (x^2 - \\nu^2) y = 0\\). We can rewrite this in the standard form \\(y'' + P(x)y' + Q(x)y = 0\\) by dividing by \\(x^2\\): \\(y'' + \\frac{1}{x} y' + \\frac{x^2 - \\nu^2}{x^2} y = 0\\). Thus, \\(P(x) = \\frac{1}{x}\\) and \\(Q(x) = \\frac{x^2 - \\nu^2}{x^2} = 1 - \\frac{\\nu^2}{x^2}\\). \\(x=0\\) is a singular point. To determine if it's a regular singular point, we examine \\(x P(x)\\) and \\(x^2 Q(x)\\). \\(x P(x) = x \\cdot \\frac{1}{x} = 1\\), which is analytic at \\(x=0\\). \\(x^2 Q(x) = x^2 \\cdot \\frac{x^2 - \\nu^2}{x^2} = x^2 - \\nu^2\\), which is also analytic at \\(x=0\\). Therefore, \\(x=0\\) is a regular singular point. The method of Frobenius assumes a solution of the form \\(y(x) = \\sum_{n=0}^{\\infty} c_n x^{n+r}\\), where \\(c_0 \\neq 0\\). Substituting this into the differential equation, we get the indicial equation, which is a quadratic equation in \\(r\\). For Bessel's equation, the indicial equation is given by \\(r(r-1) + p_0 r + q_0 = 0\\), where \\(p_0 = \\lim_{x \\to 0} xP(x)\\) and \\(q_0 = \\lim_{x \\to 0} x^2 Q(x)\\). In our case, \\(p_0 = 1\\) and \\(q_0 = -\\nu^2\\). So the indicial equation is \\(r(r-1) + 1 \\cdot r - \\nu^2 = 0\\), which simplifies to \\(r^2 - r + r - \\nu^2 = 0\\), or \\(r^2 - \\nu^2 = 0\\). Given \\(\\nu = 1/2\\), the indicial equation becomes \\(r^2 - (1/2)^2 = 0\\), which is \\(r^2 - \\frac{1}{4} = 0\\). The roots of this equation are \\(r = \\pm \\sqrt{\\frac{1}{4}} = \\pm \\frac{1}{2}\\).</p>",
           "ar": null
         }
       },
@@ -334,7 +334,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Easy):</strong> The separable initial value problem \\( \\dfrac{dF}{dw} = 30w \\) satisfies \\( F(0) = 13 \\). Compute the exact value of the solution value \\( F(9) \\).</p><p><strong>Step-by-Step Solution:</strong> Integrating gives \\( F(w) = 15w^2 + 13 \\), so \\( F(9) = 1228 \\).</p>",
+          "en": "<p><strong>Problem (Easy):</strong> Consider the differential equation \\( y'' - xy = 0 \\). The point \\( x=0 \\) is an ordinary point. If we assume a power series solution of the form \\( y(x) = \\sum_{n=0}^{\\infty} c_n x^n \\), find the recurrence relation for the coefficients \\( c_n \\).</p><p><strong>Step-by-Step Solution:</strong> We are given the differential equation \\( y'' - xy = 0 \\) and assume a power series solution of the form \\( y(x) = \\sum_{n=0}^{\\infty} c_n x^n \\). \\newline Differentiating twice with respect to \\( x \\), we get: \\( y'(x) = \\sum_{n=1}^{\\infty} n c_n x^{n-1} \\) and \\( y''(x) = \\sum_{n=2}^{\\infty} n(n-1) c_n x^{n-2} \\). \\newline Substituting these into the differential equation: \\( \\sum_{n=2}^{\\infty} n(n-1) c_n x^{n-2} - x \\sum_{n=0}^{\\infty} c_n x^n = 0 \\). \\newline We can rewrite the second term as \\( \\sum_{n=0}^{\\infty} c_n x^{n+1} \\). To combine the series, we need the powers of \\( x \\) to be the same. Let \\( k = n-2 \\) in the first series, so \\( n = k+2 \\). When \\( n=2, k=0 \\). The first series becomes \\( \\sum_{k=0}^{\\infty} (k+2)(k+1) c_{k+2} x^k \\). \\newline Let \\( k = n+1 \\) in the second series, so \\( n = k-1 \\). When \\( n=0, k=1 \\). The second series becomes \\( \\sum_{k=1}^{\\infty} c_{k-1} x^k \\). \\newline So the equation is \\( \\sum_{k=0}^{\\infty} (k+2)(k+1) c_{k+2} x^k - \\sum_{k=1}^{\\infty} c_{k-1} x^k = 0 \\). \\newline We can separate the \\( k=0 \\) term from the first sum: \\( 2(1)c_2 + \\sum_{k=1}^{\\infty} (k+2)(k+1) c_{k+2} x^k - \\sum_{k=1}^{\\infty} c_{k-1} x^k = 0 \\). \\newline For this equation to hold for all \\( x \\), the coefficients of each power of \\( x \\) must be zero. \\newline For \\( k=0 \\): \\( 2c_2 = 0 \\) implies \\( c_2 = 0 \\). \\newline For \\( k \\geq 1 \\): \\( (k+2)(k+1) c_{k+2} - c_{k-1} = 0 \\). \\newline Thus, the recurrence relation is \\( c_{k+2} = \\frac{c_{k-1}}{(k+2)(k+1)} \\) for \\( k \\geq 1 \\). Replacing \\( k \\) with \\( n \\), we get \\( c_{n+2} = \\frac{c_{n-1}}{(n+2)(n+1)} \\) for \\( n \\geq 1 \\).</p>",
           "ar": null
         }
       },
@@ -468,50 +468,50 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Medium]</strong> Near \\( x_0=-1 \\), the power series solutions of \\( (x^{2} - 2 x - 8)y''+xy'+y=0 \\) are guaranteed to converge at least for \\( |x-x_0|<R \\) with \\( R= \\)",
+          "en": "<strong>[Practice 3 · Medium]</strong> Find \\( \\mathcal L\\{u(t-2)\\sin(3(t-2))\\} \\).",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Power Series Solutions, Ordinary Points &amp; the Method of Frobenius</em> and start from \\( x_0=-1 \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Laplace Transforms and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( x^{2} - 2 x - 8 \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "The singular points are the zeros of \\( x^{2} - 2 x - 8 \\): \\( -2, 4 \\) (complex ones count). The nearest is at distance \\( 1 \\) from \\( -1 \\).",
+          "en": "Second shifting theorem with \\( f(t)=\\sin(3t) \\): \\( \\frac{3 e^{- 2 s}}{s^{2} + 9} \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Hard]</strong> The Laplace transform of \\( F(w) = 266e^{20w} \\) is \\( G(s) = \\dfrac{266}{s - 20} \\) for \\( s > 20 \\). Compute the exact value of the evaluated transform \\( G(21) \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> If \\( \\mathcal L\\{y\\}=Y(s) \\), \\( y(0)=-3 \\) and \\( y'(0)=-1 \\), find \\( \\mathcal L\\{y''\\} \\).",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Power Series Solutions, Ordinary Points &amp; the Method of Frobenius</em> and start from \\( F(w) = 266e^{20w} \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Laplace Transforms and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( s = 21 \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Substituting \\( s = 21 \\) gives \\( \\frac{266}{21 - 20} = 266 \\).",
+          "en": "\\( \\mathcal L\\{y''\\}=s^2Y(s)-sy(0)-y'(0) \\) \\( = \\) \\( Y s^{2} + 3 s + 1 \\).",
           "ar": null
         }
       }

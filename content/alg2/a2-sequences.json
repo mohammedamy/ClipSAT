@@ -333,7 +333,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Medium):</strong> An arithmetic progression \\( (M_{z}) \\) has first term \\( M_1 = 11 \\) and common difference \\( d = 11 \\). Determine the term \\( M_{5} \\).</p><p><strong>Step-by-Step Solution:</strong> Using \\( M_n = M_1 + (n - 1)d \\), we have \\( M_{5} = 11 + (5 - 1)(11) = 55 \\).</p>",
+          "en": "<p><strong>Problem (Medium):</strong> Consider an infinite geometric series with first term \\(a\\) and common ratio \\(r\\), where \\(|r| < 1\\):\n\\[ a + ar + ar^2 + ar^3 + \\dots = 12 \\]\nIf each term in the series is squared, the sum of the resulting infinite geometric series is:\n\\[ a^2 + a^2r^2 + a^2r^4 + a^2r^6 + \\dots = 72 \\]\nWhat is the value of the common ratio, \\(r\\)?</p><p><strong>Step-by-Step Solution:</strong> Step 1: Use the sum formula for an infinite geometric series with \\(|r| < 1\\):\n\\[ S = \\frac{a}{1 - r} = 12 \\implies a = 12(1 - r) \\]\n\nStep 2: When each term is squared, the new series has first term \\(a^2\\) and common ratio \\(r^2\\). Since \\(|r| < 1\\), we also have \\(r^2 < 1\\). Its sum is:\n\\[ S_{\\text{squared}} = \\frac{a^2}{1 - r^2} = 72 \\]\n\nStep 3: Factor the denominator using the difference of squares, \\(1 - r^2 = (1 - r)(1 + r)\\):\n\\[ \\frac{a^2}{(1 - r)(1 + r)} = \\left(\\frac{a}{1 - r}\\right) \\left(\\frac{a}{1 + r}\\right) = 72 \\]\n\nSubstitute \\(\\frac{a}{1 - r} = 12\\):\n\\[ 12 \\cdot \\frac{a}{1 + r} = 72 \\implies \\frac{a}{1 + r} = 6 \\implies a = 6(1 + r) \\]\n\nStep 4: Equate the two expressions for \\(a\\):\n\\[ 12(1 - r) = 6(1 + r) \\]\nDivide both sides by \\(6\\):\n\\[ 2(1 - r) = 1 + r \\]\n\\[ 2 - 2r = 1 + r \\]\n\\[ 3r = 1 \\implies r = \\frac{1}{3} \\]\n\nCommon Misconceptions:\n- \\(\\frac{1}{2}\\): Forgetting that squaring the terms squares the common ratio to \\(r^2\\), mistakenly writing \\(\\frac{a^2}{1-r} = 72\\), which yields \\(144(1-r) = 72 \\implies r = \\frac{1}{2}\\); or making a sign/distribution error when solving \\(2(1-r) = 1+r\\).\n- \\(\\frac{2}{3}\\): Correctly finding \\(a = 8\\) and therefore \\(1 - r = \\frac{8}{12} = \\frac{2}{3}\\), but confusing \\(1 - r\\) with \\(r\\).\n- \\(\\frac{1}{4}\\): Assuming the ratio of the new series directly equals the ratio of sums without accounting for the altered denominator.</p>",
           "ar": null
         }
       },
@@ -345,7 +345,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Hard):</strong> An arithmetic series \\( \\sum_{k=1}^{y} H_k \\) has first term \\( H_1 = 14 \\) and common difference \\( d = 20 \\). Determine the partial sum \\( S_{8} \\) for \\( y = 8 \\).</p><p><strong>Step-by-Step Solution:</strong> Using \\( S_n = \\frac{n}{2}(2a_1 + (n - 1)d) \\), \\( S_{8} = \\frac{8}{2}(2(14) + 7(20)) = 672 \\).</p>",
+          "en": "<p><strong>Problem (Hard):</strong> A geometric progression \\( (E_{p}) \\) has initial term \\( E_1 = 6 \\) and common ratio \\( r = 2 \\). Determine the fifth term \\( E_5 \\).</p><p><strong>Step-by-Step Solution:</strong> Using \\( E_5 = E_1 r^4 \\), we get \\( 6 \\times 16 = 96 \\).</p>",
           "ar": null
         }
       },
@@ -479,75 +479,75 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Easy]</strong> Find \\(\\displaystyle\\sum_{n=1}^{\\infty}\\dfrac{1}{n^2+n}\\).",
+          "en": "<strong>[Practice 3 · Easy]</strong> An arithmetic sequence has a first term of \\(a_1 = 5\\) and a common difference of \\(d = 3\\). What is the value of the 6th term, \\(a_6\\)?",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences &amp; Series</em> and start from \\(\\displaystyle\\sum_{n=1}^{\\infty}\\dfrac{1}{n^2+n}\\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Sequences & Series and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\dfrac{1}{n(n+1)}=\\dfrac{1}{n}-\\dfrac{1}{n+1}\\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "\\(\\dfrac{1}{n(n+1)}=\\dfrac{1}{n}-\\dfrac{1}{n+1}\\). Telescopes to 1. <strong>Answer:</strong> \\(1\\).",
+          "en": "The general term of an arithmetic sequence is given by the formula:\n\\[\na_n = a_1 + (n - 1)d\n\\]\nSubstitute \\(a_1 = 5\\), \\(d = 3\\), and \\(n = 6\\):\n\\[\na_6 = 5 + (6 - 1) \\cdot 3 = 5 + 5 \\cdot 3 = 5 + 15 = 20\n\\]\n\nMisconception Analysis:\n- \\(23\\) comes from using \\(a_1 + n \\cdot d = 5 + 6(3) = 23\\), forgetting to subtract 1 from \\(n\\).\n- \\(17\\) is \\(a_5\\), resulting from an off-by-one counting error.\n- \\(18\\) comes from directly multiplying \\(n \\cdot d = 6 \\cdot 3 = 18\\), neglecting the initial term.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Medium]</strong> For a power series \\(\\displaystyle\\sum a_n x^n\\), the ratio test gives \\(R=\\lim_{n\\to\\infty}\\left|\\dfrac{a_n}{a_{n+1}}\\right|\\). Find \\(R\\) for \\(\\displaystyle\\sum\\dfrac{x^n}{2^n}\\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> Determine if \\(f(x)=\\dfrac{x^3}{x^2+1}\\) is even, odd, or neither.",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences &amp; Series</em> and start from \\(\\displaystyle\\sum a_n x^n\\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Functions & Their Graphs and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(|a_n/a_{n+1}|=2\\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Applying Sequences & Series principles, \\(|a_n/a_{n+1}|=2\\). Therefore, the verified correct option is \\(R=2\\).",
+          "en": "\\(f(-x)=\\dfrac{-x^3}{x^2+1}=-f(x)\\): odd.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 5 · Hard]</strong> Find \\(\\displaystyle\\sum_{n=0}^{\\infty}(-1)^n\\dfrac{x^{2n+1}}{(2n+1)!}\\) in closed form.",
+          "en": "<strong>[Practice 5 · Hard]</strong> A sequence is defined by the recursive formula \\(a_n = 2a_{n-1} + 1\\), with the first term \\(a_1 = 3\\). What is the value of the third term, \\(a_3\\)?",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences &amp; Series</em> and start from \\(\\displaystyle\\sum_{n=0}^{\\infty}(-1)^n\\dfrac{x^{2n+1}}{(2n+1)!}\\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Sequences & Series and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(\\sin x\\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Applying Sequences & Series principles, Taylor series for \\(\\sin x\\). Therefore, the verified correct option is \\(\\sin x\\).",
+          "en": "The recursive formula for the sequence is \\(a_n = 2a_{n-1} + 1\\), and the first term is \\(a_1 = 3\\). \nTo find the second term, \\(a_2\\), we substitute \\(n=2\\) into the formula:\n\\(a_2 = 2a_{2-1} + 1 = 2a_1 + 1\\)\nSince \\(a_1 = 3\\), we have:\n\\(a_2 = 2(3) + 1 = 6 + 1 = 7\\)\nTo find the third term, \\(a_3\\), we substitute \\(n=3\\) into the formula:\n\\(a_3 = 2a_{3-1} + 1 = 2a_2 + 1\\)\nSince \\(a_2 = 7\\), we have:\n\\(a_3 = 2(7) + 1 = 14 + 1 = 15\\)",
           "ar": null
         }
       }

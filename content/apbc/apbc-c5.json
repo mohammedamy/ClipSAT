@@ -239,7 +239,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Hard):</strong> An arithmetic series \\( \\sum_{k=1}^{p} E_k \\) has first term \\( E_1 = 24 \\) and common difference \\( d = 8 \\). What is the partial sum \\( S_{8} \\) for \\( p = 8 \\)?</p><p><strong>Step-by-Step Solution:</strong> Using \\( S_n = \\frac{n}{2}(2a_1 + (n - 1)d) \\), \\( S_{8} = \\frac{8}{2}(2(24) + 7(8)) = 416 \\).</p>",
+          "en": "<p><strong>Problem (Hard):</strong> Consider the sequence defined by \\(a_n = \\int_{0}^{1/n} \\frac{\\sin(x^2)}{x} dx\\). Which of the following statements about the convergence of the sequence \\( \\{a_n\\}_{n=1}^{\\infty} \\) is true?</p><p><strong>Step-by-Step Solution:</strong> We need to determine the limit of the sequence \\(a_n = \\int_{0}^{1/n} \\frac{\\sin(x^2)}{x} dx\\) as \\(n \\to \\infty\\). As \\(n \\to \\infty\\), the upper limit of integration \\(1/n \\to 0\\). We examine the behavior of the integrand \\(\\frac{\\sin(x^2)}{x}\\) near \\(x=0\\). Using the Taylor series expansion for \\(\\sin(u)\\) around \\(u=0\\), which is \\(\\sin(u) = u - \\frac{u^3}{3!} + O(u^5)\\), we substitute \\(u=x^2\\): \\(\\sin(x^2) = x^2 - \\frac{(x^2)^3}{3!} + O(x^{10}) = x^2 - \\frac{x^6}{6} + O(x^{10})\\).\n\nTherefore, for \\(x\\) close to 0, \\(\\frac{\\sin(x^2)}{x} = \\frac{x^2 - \\frac{x^6}{6} + O(x^{10})}{x} = x - \\frac{x^5}{6} + O(x^9)\\).\n\nThis shows that the integrand \\(\\frac{\\sin(x^2)}{x}\\) approaches 0 as \\(x \\to 0\\). In fact, for small \\(x\\), \\(\\frac{\\sin(x^2)}{x} \\approx x\\), which is continuous at \\(x=0\\) if we define it to be 0. More formally, by L'Hopital's Rule applied to \\(\\frac{\\sin(x^2)}{x^2}\\) and then multiplying by \\(x\\), we can see that \\(\\lim_{x\\to 0} \\frac{\\sin(x^2)}{x} = \\lim_{x\\to 0} x \\cdot \\lim_{x\\to 0} \\frac{\\sin(x^2)}{x^2} = 0 \\cdot 1 = 0\\).\n\nSince the integrand is continuous on the interval \\([0, 1/n]\\) for any \\(n \\ge 1\\) (if we define the integrand to be 0 at \\(x=0\\), or by noting the limit is 0), and the interval of integration shrinks to 0 as \\(n \\to \\infty\\), the value of the integral \\(a_n\\) must also approach 0.\n\nLet \\(f(x) = \\frac{\\sin(x^2)}{x}\\). For \\(x \\in (0, 1]\\), \\(f(x)\\) is well-defined. As \\(x \\to 0^+\\), \\(f(x) \\to 0\\). We can consider a continuous extension of \\(f(x)\\) on $[0, 1]$ by defining \\(f(0)=0\\). The function \\(f(x)\\) is continuous on $[0, 1]$.\n\nBy the Mean Value Theorem for Integrals, for \\(n \\ge 1\\), there exists a \\(c_n \\in [0, 1/n]\\) such that \\(a_n = f(c_n) \\cdot (1/n - 0) = f(c_n) \\cdot (1/n)\\).\n\nAs \\(n \\to \\infty\\), \\(c_n \\to 0\\). Since \\(f\\) is continuous at 0, \\(\\lim_{n \\to \\infty} f(c_n) = f(0) = 0\\).\n\nTherefore, \\(\\lim_{n \\to \\infty} a_n = \\lim_{n \\to \\infty} f(c_n) \\cdot \\frac{1}{n} = 0 \\cdot 0 = 0\\).\n\nThus, the sequence converges to 0.</p>",
           "ar": null
         }
       },
@@ -539,25 +539,25 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Easy]</strong> A geometric progression \\( (E_{p}) \\) has initial term \\( E_1 = 6 \\) and common ratio \\( r = 2 \\). What is the fifth term \\( E_5 \\)?",
+          "en": "<strong>[Practice 4 · Easy]</strong> Consider the infinite series \\( \\sum_{n=1}^{\\infty} \\frac{1}{n^p} \\). For what value(s) of \\( p \\) does this series converge?",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Unit 10 · Infinite Sequences & Series — Convergence Tests</em> and start from \\( (E_{p}) \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Unit 10 · Infinite Sequences & Series — Convergence Tests and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( E_5 = E_1 r^4 \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Using \\( E_5 = E_1 r^4 \\), we get \\( 6 \\times 16 = 96 \\).",
+          "en": "The given series is the p-series, \\( \\sum_{n=1}^{\\infty} \\frac{1}{n^p} \\). This series is a fundamental example in the study of convergence. The p-series test states that the p-series converges if and only if \\( p > 1 \\). Therefore, the series converges for \\( p > 1 \\).",
           "ar": null
         }
       }

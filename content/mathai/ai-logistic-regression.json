@@ -282,8 +282,8 @@
           "ar": "مثال محلول B — الانحدار اللوجستي والحدود الفاصلة للتصنيف (تطبيق Hard)"
         },
         "body": {
-          "en": "<p><strong>Problem (Hard):</strong> An Ordinary Least Squares linear model \\( \\hat{f}(x) = 21x + 26 \\) is evaluated at \\( x = 9 \\). Compute the predicted response \\( \\hat{f}(9) \\).</p><p><strong>Step-by-Step Solution:</strong> Evaluating \\( 21(9) + 26 = 215 \\).</p>",
-          "ar": "<p><strong>مسألة تطبيقية (Hard):</strong> An Ordinary Least Squares linear model \\( \\hat{f}(x) = 21x + 26 \\) is evaluated at \\( x = 9 \\). Compute the predicted response \\( \\hat{f}(9) \\).</p><p><strong>الحل خطوة بخطوة:</strong> Evaluating \\( 21(9) + 26 = 215 \\).</p>"
+          "en": "<p><strong>Problem (Hard):</strong> Consider a binary classification problem where the decision boundary is defined by the logistic function \\( p(x) = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}} \\), which represents the probability of a data point \\( \\mathbf{x} = (x_1, x_2) \\) belonging to class 1. The estimated model parameters are \\( \\beta_0 = -3 \\), \\( \\beta_1 = 1 \\), and \\( \\beta_2 = -2 \\). We are interested in the geometric shape of the classification boundary. The classification boundary occurs where \\( p(x) = 0.5 \\). Find the equation of this boundary in the \\( x_1x_2 \\)-plane.</p><p><strong>Step-by-Step Solution:</strong> The logistic regression model gives the probability of belonging to class 1 as \\( p(x) = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}} \\). The classification boundary is the set of points where \\( p(x) = 0.5 \\).\n\nSetting \\( p(x) = 0.5 \\), we have:\n\\( 0.5 = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}} \\)\n\nThis implies:\n\\( 1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)} = 2 \\)\n\nTherefore:\n\\( e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)} = 1 \\)\n\nTaking the natural logarithm of both sides:\n\\( -(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2) = \\ln(1) \\)\n\nSince \\( \\ln(1) = 0 \\), we get:\n\\( \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 = 0 \\)\n\nThis is the equation of the linear decision boundary.\n\nSubstitute the given parameter values: \\( \\beta_0 = -3 \\), \\( \\beta_1 = 1 \\), and \\( \\beta_2 = -2 \\).\n\n\\( -3 + x_1 + (-2) \\cdot x_2 = 0 \\)\n\n\\( -3 + x_1 - 2x_2 = 0 \\)\n\nWe need to express this in the form \\( x_2 = f(x_1) \\).\n\n\\( 2x_2 = x_1 - 3 \\)\n\n\\( x_2 = \\frac{1}{2} x_1 - \\frac{3}{2} \\)\n\nThis matches choice A.</p>",
+          "ar": "<p><strong>مسألة (Hard):</strong> Consider a binary classification problem where the decision boundary is defined by the logistic function \\( p(x) = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}} \\), which represents the probability of a data point \\( \\mathbf{x} = (x_1, x_2) \\) belonging to class 1. The estimated model parameters are \\( \\beta_0 = -3 \\), \\( \\beta_1 = 1 \\), and \\( \\beta_2 = -2 \\). We are interested in the geometric shape of the classification boundary. The classification boundary occurs where \\( p(x) = 0.5 \\). Find the equation of this boundary in the \\( x_1x_2 \\)-plane.</p><p><strong>الحل خطوة بخطوة:</strong> The logistic regression model gives the probability of belonging to class 1 as \\( p(x) = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}} \\). The classification boundary is the set of points where \\( p(x) = 0.5 \\).\n\nSetting \\( p(x) = 0.5 \\), we have:\n\\( 0.5 = \\frac{1}{1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)}} \\)\n\nThis implies:\n\\( 1 + e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)} = 2 \\)\n\nTherefore:\n\\( e^{-(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2)} = 1 \\)\n\nTaking the natural logarithm of both sides:\n\\( -(\\beta_0 + \\beta_1 x_1 + \\beta_2 x_2) = \\ln(1) \\)\n\nSince \\( \\ln(1) = 0 \\), we get:\n\\( \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 = 0 \\)\n\nThis is the equation of the linear decision boundary.\n\nSubstitute the given parameter values: \\( \\beta_0 = -3 \\), \\( \\beta_1 = 1 \\), and \\( \\beta_2 = -2 \\).\n\n\\( -3 + x_1 + (-2) \\cdot x_2 = 0 \\)\n\n\\( -3 + x_1 - 2x_2 = 0 \\)\n\nWe need to express this in the form \\( x_2 = f(x_1) \\).\n\n\\( 2x_2 = x_1 - 3 \\)\n\n\\( x_2 = \\frac{1}{2} x_1 - \\frac{3}{2} \\)\n\nThis matches choice A.</p>"
         }
       },
       {
@@ -294,8 +294,8 @@
           "ar": "مثال محلول C — الانحدار اللوجستي والحدود الفاصلة للتصنيف (تطبيق Easy)"
         },
         "body": {
-          "en": "<p><strong>Problem (Easy):</strong> In gradient descent on loss \\( p(t) \\), parameter \\( t_0 = 42 \\) is updated with learning rate \\( \\eta = 0.1 \\) and gradient \\( \\nabla p(t_0) = 240 \\). Compute the updated parameter \\( t_1 = t_0 - \\eta \\nabla p(t_0) \\).</p><p><strong>Step-by-Step Solution:</strong> Computing \\( t_1 = 42 - 0.1(240) = 18 \\).</p>",
-          "ar": "<p><strong>مسألة تطبيقية (Easy):</strong> In gradient descent on loss \\( p(t) \\), parameter \\( t_0 = 42 \\) is updated with learning rate \\( \\eta = 0.1 \\) and gradient \\( \\nabla p(t_0) = 240 \\). Compute the updated parameter \\( t_1 = t_0 - \\eta \\nabla p(t_0) \\).</p><p><strong>الحل خطوة بخطوة:</strong> Computing \\( t_1 = 42 - 0.1(240) = 18 \\).</p>"
+          "en": "<p><strong>Problem (Easy):</strong> Consider a simple logistic regression model where the decision boundary is defined by the linear equation \\(w_1x_1 + w_2x_2 + b = 0\\). If the weights are \\(w_1 = 2\\) and \\(w_2 = 3\\), and the bias is \\(b = -7\\), what is the equation of the decision boundary?</p><p><strong>Step-by-Step Solution:</strong> The decision boundary in a logistic regression model is defined by the equation where the log-odds are zero. This corresponds to a linear combination of the input features and weights, plus the bias, being equal to zero. Given the weights \\(w_1 = 2\\) and \\(w_2 = 3\\), and the bias \\(b = -7\\), the equation of the decision boundary is \\(w_1x_1 + w_2x_2 + b = 0\\). Substituting the given values, we get \\(2x_1 + 3x_2 + (-7) = 0\\), which simplifies to \\(2x_1 + 3x_2 - 7 = 0\\).</p>",
+          "ar": "<p><strong>مسألة (Easy):</strong> Consider a simple logistic regression model where the decision boundary is defined by the linear equation \\(w_1x_1 + w_2x_2 + b = 0\\). If the weights are \\(w_1 = 2\\) and \\(w_2 = 3\\), and the bias is \\(b = -7\\), what is the equation of the decision boundary?</p><p><strong>الحل خطوة بخطوة:</strong> The decision boundary in a logistic regression model is defined by the equation where the log-odds are zero. This corresponds to a linear combination of the input features and weights, plus the bias, being equal to zero. Given the weights \\(w_1 = 2\\) and \\(w_2 = 3\\), and the bias \\(b = -7\\), the equation of the decision boundary is \\(w_1x_1 + w_2x_2 + b = 0\\). Substituting the given values, we get \\(2x_1 + 3x_2 + (-7) = 0\\), which simplifies to \\(2x_1 + 3x_2 - 7 = 0\\).</p>"
         }
       },
       {
@@ -306,8 +306,8 @@
           "ar": "مثال محلول D — الانحدار اللوجستي والحدود الفاصلة للتصنيف (تطبيق Medium)"
         },
         "body": {
-          "en": "<p><strong>Problem (Medium):</strong> Principal Component Analysis on covariance matrix \\( \\Sigma_{P} \\) yields eigenvalues \\( \\lambda_1 = 53 \\) and \\( \\lambda_2 = 47 \\). Compute the percentage of variance \\( p_{t} \\) explained by the first principal component.</p><p><strong>Step-by-Step Solution:</strong> The percentage explained is \\( \\frac{53}{53+47} \\times 100\\% = 53\\% \\).</p>",
-          "ar": "<p><strong>مسألة تطبيقية (Medium):</strong> Principal Component Analysis on covariance matrix \\( \\Sigma_{P} \\) yields eigenvalues \\( \\lambda_1 = 53 \\) and \\( \\lambda_2 = 47 \\). Compute the percentage of variance \\( p_{t} \\) explained by the first principal component.</p><p><strong>الحل خطوة بخطوة:</strong> The percentage explained is \\( \\frac{53}{53+47} \\times 100\\% = 53\\% \\).</p>"
+          "en": "<p><strong>Problem (Medium):</strong> Consider a simple logistic regression model where the decision boundary is defined by the equation \\( -1.5x_1 + 2x_2 + 5 = 0 \\). For a data point \\( (x_1, x_2) \\), if \\( -1.5x_1 + 2x_2 + 5 < 0 \\), it is classified into Class 0. Otherwise, it is classified into Class 1. Which of the following points lies on the decision boundary?</p><p><strong>Step-by-Step Solution:</strong> The decision boundary is defined by the equation \\( -1.5x_1 + 2x_2 + 5 = 0 \\). To find which point lies on the boundary, we substitute the coordinates of each point into the equation. For point \\( (-1, 1) \\): \\( -1.5(-1) + 2(1) + 5 = 1.5 + 2 + 5 = 8.5 \\), which is not 0. For point \\( (2, -2) \\): \\( -1.5(2) + 2(-2) + 5 = -3 - 4 + 5 = -2 \\), which is not 0. For point \\( (0, -2.5) \\): \\( -1.5(0) + 2(-2.5) + 5 = 0 - 5 + 5 = 0 \\). This point lies on the boundary. For point \\( (3, 0.5) \\): \\( -1.5(3) + 2(0.5) + 5 = -4.5 + 1 + 5 = 1.5 \\), which is not 0. Therefore, the point \\( (0, -2.5) \\) lies on the decision boundary.</p>",
+          "ar": "<p><strong>مسألة (Medium):</strong> Consider a simple logistic regression model where the decision boundary is defined by the equation \\( -1.5x_1 + 2x_2 + 5 = 0 \\). For a data point \\( (x_1, x_2) \\), if \\( -1.5x_1 + 2x_2 + 5 < 0 \\), it is classified into Class 0. Otherwise, it is classified into Class 1. Which of the following points lies on the decision boundary?</p><p><strong>الحل خطوة بخطوة:</strong> The decision boundary is defined by the equation \\( -1.5x_1 + 2x_2 + 5 = 0 \\). To find which point lies on the boundary, we substitute the coordinates of each point into the equation. For point \\( (-1, 1) \\): \\( -1.5(-1) + 2(1) + 5 = 1.5 + 2 + 5 = 8.5 \\), which is not 0. For point \\( (2, -2) \\): \\( -1.5(2) + 2(-2) + 5 = -3 - 4 + 5 = -2 \\), which is not 0. For point \\( (0, -2.5) \\): \\( -1.5(0) + 2(-2.5) + 5 = 0 - 5 + 5 = 0 \\). This point lies on the boundary. For point \\( (3, 0.5) \\): \\( -1.5(3) + 2(0.5) + 5 = -4.5 + 1 + 5 = 1.5 \\), which is not 0. Therefore, the point \\( (0, -2.5) \\) lies on the decision boundary.</p>"
         }
       },
       {
@@ -402,126 +402,126 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 1 · Hard]</strong> A binary classifier \\( p(t) \\) produces the confusion matrix below with \\( \\text{TP} = 60 \\), \\( \\text{FP} = 32 \\), \\( \\text{FN} = 24 \\), and \\( \\text{TN} = 80 \\). Compute the total number of correct classifications \\( q = \\text{TP} + \\text{TN} \\).",
-          "ar": "<strong>[تدريب 1 · Hard]</strong> A binary classifier \\( p(t) \\) produces the confusion matrix below with \\( \\text{TP} = 60 \\), \\( \\text{FP} = 32 \\), \\( \\text{FN} = 24 \\), and \\( \\text{TN} = 80 \\). Compute the total number of correct classifications \\( q = \\text{TP} + \\text{TN} \\)."
+          "en": "<strong>[Practice 1 · Hard]</strong> The sigmoid activation function is \\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\). If \\( \\sigma(z_0) = 0.40 \\), what is the value of the derivative \\( \\sigma'(z_0) \\)?",
+          "ar": "<strong>[تدريب 1 · Hard]</strong> The sigmoid activation function is \\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\). If \\( \\sigma(z_0) = 0.40 \\), what is the value of the derivative \\( \\sigma'(z_0) \\)?"
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Logistic Regression & Classification Boundaries</em> and start from \\( p(t) \\).",
-            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( p(t) \\)."
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Neural Layer Matrices & Activations and write down the given values.",
+            "ar": "Identify the mathematical relationship in Neural Layer Matrices & Activations and write down the given values."
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\text{TP} + \\text{TN} = 60 + 80 = 140 \\).",
-            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( \\text{TP} + \\text{TN} = 60 + 80 = 140 \\)."
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
+            "ar": "Substitute the known quantities into the governing equation or formula and simplify step by step."
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
-            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
+            "ar": "Verify that your final result satisfies all conditions stated in the problem."
           }
         ],
         "solution": {
-          "en": "Summing \\( \\text{TP} + \\text{TN} = 60 + 80 = 140 \\).",
-          "ar": "Summing \\( \\text{TP} + \\text{TN} = 60 + 80 = 140 \\)."
+          "en": "The derivative of sigmoid satisfies \\( \\sigma'(z) = \\sigma(z)(1 - \\sigma(z)) \\). Substituting \\( \\sigma(z_0) = 0.40 \\): \\( \\sigma'(z_0) = (0.40)(1 - 0.40) = (0.40)(0.60) = 0.2400 \\).",
+          "ar": "The derivative of sigmoid satisfies \\( \\sigma'(z) = \\sigma(z)(1 - \\sigma(z)) \\). Substituting \\( \\sigma(z_0) = 0.40 \\): \\( \\sigma'(z_0) = (0.40)(1 - 0.40) = (0.40)(0.60) = 0.2400 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 2 · Easy]</strong> An Ordinary Least Squares linear model \\( \\hat{p}(t) = 19t + 2 \\) is evaluated at \\( t = 11 \\). Compute the predicted response \\( \\hat{p}(11) \\).",
-          "ar": "<strong>[تدريب 2 · Easy]</strong> An Ordinary Least Squares linear model \\( \\hat{p}(t) = 19t + 2 \\) is evaluated at \\( t = 11 \\). Compute the predicted response \\( \\hat{p}(11) \\)."
+          "en": "<strong>[Practice 2 · Easy]</strong> A fitted simple linear regression model is \\( \\hat{y} = 7x + 18 \\). What is the predicted target value \\( \\hat{y} \\) when the input feature is \\( x = 4 \\)?",
+          "ar": "<strong>[تدريب 2 · Easy]</strong> A fitted simple linear regression model is \\( \\hat{y} = 7x + 18 \\). What is the predicted target value \\( \\hat{y} \\) when the input feature is \\( x = 4 \\)?"
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Logistic Regression & Classification Boundaries</em> and start from \\( \\hat{p}(t) = 19t + 2 \\).",
-            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( \\hat{p}(t) = 19t + 2 \\)."
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Linear Regression & OLS and write down the given values.",
+            "ar": "Identify the mathematical relationship in Linear Regression & OLS and write down the given values."
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 19(11) + 2 = 211 \\).",
-            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( 19(11) + 2 = 211 \\)."
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
+            "ar": "Substitute the known quantities into the governing equation or formula and simplify step by step."
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
-            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
+            "ar": "Verify that your final result satisfies all conditions stated in the problem."
           }
         ],
         "solution": {
-          "en": "Evaluating \\( 19(11) + 2 = 211 \\).",
-          "ar": "Evaluating \\( 19(11) + 2 = 211 \\)."
+          "en": "Substitute \\( x = 4 \\) into the regression equation: \\( \\hat{y} = 7(4) + 18 = 28 + 18 = 46 \\).",
+          "ar": "Substitute \\( x = 4 \\) into the regression equation: \\( \\hat{y} = 7(4) + 18 = 28 + 18 = 46 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Medium]</strong> A logistic regression model produces a class probability \\( p = P(y=1|\\mathbf{x}) = 0.30 \\). Compute the corresponding log-odds (logit) \\( \\ln\\left(\\frac{p}{1-p}\\right) \\).",
-          "ar": "<strong>[تدريب 3 · Medium]</strong> A logistic regression model produces a class probability \\( p = P(y=1|\\mathbf{x}) = 0.30 \\). Compute the corresponding log-odds (logit) \\( \\ln\\left(\\frac{p}{1-p}\\right) \\)."
+          "en": "<strong>[Practice 3 · Medium]</strong> A binary classification model uses a logistic sigmoid function \\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\). The decision boundary is defined by \\( \\sigma(z) = 0.5 \\), where \\( z = w_1 x_1 + w_0 \\). For a dataset with two features \\( x_1 \\) and \\( x_2 \\), the model's linear component is \\( z = 2x_1 - x_2 + b \\). If the classification boundary passes through the point \\( (x_1, x_2) = (3, 1) \\), what is the value of the bias \\( b \\)?",
+          "ar": "<strong>[تدريب 3 · Medium]</strong> A binary classification model uses a logistic sigmoid function \\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\). The decision boundary is defined by \\( \\sigma(z) = 0.5 \\), where \\( z = w_1 x_1 + w_0 \\). For a dataset with two features \\( x_1 \\) and \\( x_2 \\), the model's linear component is \\( z = 2x_1 - x_2 + b \\). If the classification boundary passes through the point \\( (x_1, x_2) = (3, 1) \\), what is the value of the bias \\( b \\)?"
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Logistic Regression & Classification Boundaries</em> and start from \\( p = P(y=1|\\mathbf{x}) = 0.30 \\).",
-            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( p = P(y=1|\\mathbf{x}) = 0.30 \\)."
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Logistic Regression & Classification Boundaries and write down the given values.",
+            "ar": "Identify the mathematical relationship in Logistic Regression & Classification Boundaries and write down the given values."
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\frac{p}{1-p} = \\frac{0.30}{0.70} = 0.4286 \\).",
-            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( \\frac{p}{1-p} = \\frac{0.30}{0.70} = 0.4286 \\)."
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
+            "ar": "Substitute the known quantities into the governing equation or formula and simplify step by step."
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
-            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
+            "ar": "Verify that your final result satisfies all conditions stated in the problem."
           }
         ],
         "solution": {
-          "en": "Odds are \\( \\frac{p}{1-p} = \\frac{0.30}{0.70} = 0.4286 \\). Taking natural logarithm: \\( \\ln(0.4286) = -0.847 \\). <strong>Answer:</strong> \\( -0.847 \\).",
-          "ar": "Odds are \\( \\frac{p}{1-p} = \\frac{0.30}{0.70} = 0.4286 \\). Taking natural logarithm: \\( \\ln(0.4286) = -0.847 \\). <strong>الإجابة:</strong> \\( -0.847 \\)."
+          "en": "The logistic sigmoid function is \\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\). The decision boundary is where \\( \\sigma(z) = 0.5 \\). Setting \\( \\sigma(z) = 0.5 \\) gives \\( \\frac{1}{1 + e^{-z}} = 0.5 \\), which implies \\( 1 = 0.5(1 + e^{-z}) \\), so \\( 2 = 1 + e^{-z} \\), and \\( e^{-z} = 1 \\). This occurs when \\( -z = 0 \\), or \\( z = 0 \\). Therefore, the decision boundary is defined by \\( z = 0 \\).\n\nThe linear component of the model is given by \\( z = w_1 x_1 + w_2 x_2 + b \\). In this problem, \\( z = 2x_1 - x_2 + b \\).\n\nSince the decision boundary is \\( z = 0 \\), we have \\( 2x_1 - x_2 + b = 0 \\).\n\nThe classification boundary passes through the point \\( (x_1, x_2) = (3, 1) \\). Substituting these values into the equation for the decision boundary:\n\\( 2(3) - 1 + b = 0 \\)\n\\( 6 - 1 + b = 0 \\)\n\\( 5 + b = 0 \\)\n\\( b = -5 \\)",
+          "ar": "The logistic sigmoid function is \\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\). The decision boundary is where \\( \\sigma(z) = 0.5 \\). Setting \\( \\sigma(z) = 0.5 \\) gives \\( \\frac{1}{1 + e^{-z}} = 0.5 \\), which implies \\( 1 = 0.5(1 + e^{-z}) \\), so \\( 2 = 1 + e^{-z} \\), and \\( e^{-z} = 1 \\). This occurs when \\( -z = 0 \\), or \\( z = 0 \\). Therefore, the decision boundary is defined by \\( z = 0 \\).\n\nThe linear component of the model is given by \\( z = w_1 x_1 + w_2 x_2 + b \\). In this problem, \\( z = 2x_1 - x_2 + b \\).\n\nSince the decision boundary is \\( z = 0 \\), we have \\( 2x_1 - x_2 + b = 0 \\).\n\nThe classification boundary passes through the point \\( (x_1, x_2) = (3, 1) \\). Substituting these values into the equation for the decision boundary:\n\\( 2(3) - 1 + b = 0 \\)\n\\( 6 - 1 + b = 0 \\)\n\\( 5 + b = 0 \\)\n\\( b = -5 \\)"
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Hard]</strong> In gradient descent on loss \\( h(u) \\), parameter \\( u_0 = 37 \\) is updated with learning rate \\( \\eta = 0.1 \\) and gradient \\( \\nabla h(u_0) = 20 \\). Compute the updated parameter \\( u_1 = u_0 - \\eta \\nabla h(u_0) \\).",
-          "ar": "<strong>[تدريب 4 · Hard]</strong> In gradient descent on loss \\( h(u) \\), parameter \\( u_0 = 37 \\) is updated with learning rate \\( \\eta = 0.1 \\) and gradient \\( \\nabla h(u_0) = 20 \\). Compute the updated parameter \\( u_1 = u_0 - \\eta \\nabla h(u_0) \\)."
+          "en": "<strong>[Practice 4 · Hard]</strong> For a bivariate feature dataset, \\( \\text{Cov}(x, y) = 24 \\), \\( \\text{Var}(x) = 8 \\), \\( \\bar{x} = 5 \\), and \\( \\bar{y} = 30 \\). Compute the OLS regression slope \\( \\hat{\\beta}_1 \\) and intercept \\( \\hat{\\beta}_0 \\).",
+          "ar": "<strong>[تدريب 4 · Hard]</strong> For a bivariate feature dataset, \\( \\text{Cov}(x, y) = 24 \\), \\( \\text{Var}(x) = 8 \\), \\( \\bar{x} = 5 \\), and \\( \\bar{y} = 30 \\). Compute the OLS regression slope \\( \\hat{\\beta}_1 \\) and intercept \\( \\hat{\\beta}_0 \\)."
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Logistic Regression & Classification Boundaries</em> and start from \\( h(u) \\).",
-            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( h(u) \\)."
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Linear Regression & OLS and write down the given values.",
+            "ar": "Identify the mathematical relationship in Linear Regression & OLS and write down the given values."
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( u_1 = 37 - 0.1(20) = 35 \\).",
-            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( u_1 = 37 - 0.1(20) = 35 \\)."
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
+            "ar": "Substitute the known quantities into the governing equation or formula and simplify step by step."
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
-            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
+            "ar": "Verify that your final result satisfies all conditions stated in the problem."
           }
         ],
         "solution": {
-          "en": "Computing \\( u_1 = 37 - 0.1(20) = 35 \\).",
-          "ar": "Computing \\( u_1 = 37 - 0.1(20) = 35 \\)."
+          "en": "The OLS slope is \\( \\hat{\\beta}_1 = \\frac{\\text{Cov}(x, y)}{\\text{Var}(x)} = \\frac{24}{8} = 3 \\). The intercept is \\( \\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1\\bar{x} = 30 - (3)(5) = 30 - 15 = 15 \\).",
+          "ar": "The OLS slope is \\( \\hat{\\beta}_1 = \\frac{\\text{Cov}(x, y)}{\\text{Var}(x)} = \\frac{24}{8} = 3 \\). The intercept is \\( \\hat{\\beta}_0 = \\bar{y} - \\hat{\\beta}_1\\bar{x} = 30 - (3)(5) = 30 - 15 = 15 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 5 · Easy]</strong> Principal Component Analysis on covariance matrix \\( \\Sigma_{X} \\) yields eigenvalues \\( \\lambda_1 = 69 \\) and \\( \\lambda_2 = 31 \\). Compute the percentage of variance \\( h_{u} \\) explained by the first principal component.",
-          "ar": "<strong>[تدريب 5 · Easy]</strong> Principal Component Analysis on covariance matrix \\( \\Sigma_{X} \\) yields eigenvalues \\( \\lambda_1 = 69 \\) and \\( \\lambda_2 = 31 \\). Compute the percentage of variance \\( h_{u} \\) explained by the first principal component."
+          "en": "<strong>[Practice 5 · Easy]</strong> In evaluating a binary classifier, the confusion matrix shows \\( TP = 45 \\), \\( TN = 40 \\), \\( FP = 10 \\), and \\( FN = 10 \\). Compute the overall classification accuracy.",
+          "ar": "<strong>[تدريب 5 · Easy]</strong> In evaluating a binary classifier, the confusion matrix shows \\( TP = 45 \\), \\( TN = 40 \\), \\( FP = 10 \\), and \\( FN = 10 \\). Compute the overall classification accuracy."
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Logistic Regression & Classification Boundaries</em> and start from \\( \\Sigma_{X} \\).",
-            "ar": "<strong>تلميح 1 (الإعداد المفاهيمي):</strong> حدّد القانون الأساسي المرتبط بهذا السؤال وابدأ من المقدار \\( \\Sigma_{X} \\)."
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Logistic Regression & Classification and write down the given values.",
+            "ar": "Identify the mathematical relationship in Logistic Regression & Classification and write down the given values."
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\frac{69}{69+31} \\times 100\\% = 69\\% \\).",
-            "ar": "<strong>تلميح 2 (خطوة التحويل الأساسية):</strong> طبّق التحويل الجبري أو الهندسي للوصول إلى العلاقة \\( \\frac{69}{69+31} \\times 100\\% = 69\\% \\)."
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
+            "ar": "Substitute the known quantities into the governing equation or formula and simplify step by step."
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
-            "ar": "<strong>تلميح 3 (التحقق النهائي):</strong> راجع الإشارات وقيود المجال في الناتج النهائي قبل إظهار الحل الكامل أدناه."
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
+            "ar": "Verify that your final result satisfies all conditions stated in the problem."
           }
         ],
         "solution": {
-          "en": "The percentage explained is \\( \\frac{69}{69+31} \\times 100\\% = 69\\% \\).",
-          "ar": "The percentage explained is \\( \\frac{69}{69+31} \\times 100\\% = 69\\% \\)."
+          "en": "Accuracy is the ratio of correct predictions to total samples: \\( \\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{45 + 40}{105} = \\frac{85}{105} = 81.0\\% \\).",
+          "ar": "Accuracy is the ratio of correct predictions to total samples: \\( \\text{Accuracy} = \\frac{TP + TN}{TP + TN + FP + FN} = \\frac{45 + 40}{105} = \\frac{85}{105} = 81.0\\% \\)."
         }
       }
     ]

@@ -22,26 +22,7 @@
           "question_type": "FRQ",
           "target": "The Wronskian",
           "answer": "$y_1'=3e^{3x}$, $y_2'=e^{3x}+3xe^{3x}$. $W=e^{3x}(e^{3x}+3xe^{3x})-3e^{3x}(xe^{3x})=e^{6x}+3xe^{6x}-3xe^{6x}=e^{6x}$.",
-          "explanation": "$y_1'=3e^{3x}$, $y_2'=e^{3x}+3xe^{3x}$. $W=e^{3x}(e^{3x}+3xe^{3x})-3e^{3x}(xe^{3x})=e^{6x}+3xe^{6x}-3xe^{6x}=e^{6x}$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.75*(x - (0.5))**2 + (-1.0)",
-              "0.4*x + (0.2)"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -5,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 0.5,
-                "y": -1.0,
-                "label": "$(0.5,-1)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "$y_1'=3e^{3x}$, $y_2'=e^{3x}+3xe^{3x}$. $W=e^{3x}(e^{3x}+3xe^{3x})-3e^{3x}(xe^{3x})=e^{6x}+3xe^{6x}-3xe^{6x}=e^{6x}$."
         },
         {
           "q": "State the variation of parameters formula for a particular solution of $y'' + p(x)y' + q(x)y = g(x)$, given independent solutions $y_1,y_2$ of the homogeneous equation with Wronskian $W$.",
@@ -73,25 +54,7 @@
           "question_type": "FRQ",
           "target": "Comparing with undetermined coefficients",
           "answer": "$y_1=e^x$, $y_2=e^{-x}$, $W=-2$. With $g=e^{2x}$: $\\frac{y_2g}{W}=-\\frac{1}{2}e^x$, integral $-\\frac{1}{2}e^x$; $\\frac{y_1g}{W}=-\\frac{1}{2}e^{3x}$, integral $-\\frac{1}{6}e^{3x}$. So $y_p=-e^x(-\\frac{1}{2}e^x)+e^{-x}(-\\frac{1}{6}e^{3x})=\\frac{1}{2}e^{2x}-\\frac{1}{6}e^{2x}=\\frac{1}{3}e^{2x}$. Check by undetermined coefficients: try $Ae^{2x}$ (no resonance, since $2$ is not a root of $r^2-1=0$): $4A-A=1 \\Rightarrow A=\\frac{1}{3}$. Matches. General solution: $y = C_1e^x+C_2e^{-x}+\\frac{1}{3}e^{2x}$.",
-          "explanation": "$y_1=e^x$, $y_2=e^{-x}$, $W=-2$. With $g=e^{2x}$: $\\frac{y_2g}{W}=-\\frac{1}{2}e^x$, integral $-\\frac{1}{2}e^x$; $\\frac{y_1g}{W}=-\\frac{1}{2}e^{3x}$, integral $-\\frac{1}{6}e^{3x}$. So $y_p=-e^x(-\\frac{1}{2}e^x)+e^{-x}(-\\frac{1}{6}e^{3x})=\\frac{1}{2}e^{2x}-\\frac{1}{6}e^{2x}=\\frac{1}{3}e^{2x}$. Check by undetermined coefficients: try $Ae^{2x}$ (no resonance, since $2$ is not a root of $r^2-1=0$): $4A-A=1 \\Rightarrow A=\\frac{1}{3}$. Matches. General solution: $y = C_1e^x+C_2e^{-x}+\\frac{1}{3}e^{2x}$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "e**(2*x)"
-            ],
-            "xmin": -4.5,
-            "xmax": 4.5,
-            "ymin": -2.0,
-            "ymax": 20.0,
-            "width": 225,
-            "point_labels": [
-              {
-                "x": 0.5,
-                "y": 2.72,
-                "label": "$(0.5, 2.72)$"
-              }
-            ]
-          }
+          "explanation": "$y_1=e^x$, $y_2=e^{-x}$, $W=-2$. With $g=e^{2x}$: $\\frac{y_2g}{W}=-\\frac{1}{2}e^x$, integral $-\\frac{1}{2}e^x$; $\\frac{y_1g}{W}=-\\frac{1}{2}e^{3x}$, integral $-\\frac{1}{6}e^{3x}$. So $y_p=-e^x(-\\frac{1}{2}e^x)+e^{-x}(-\\frac{1}{6}e^{3x})=\\frac{1}{2}e^{2x}-\\frac{1}{6}e^{2x}=\\frac{1}{3}e^{2x}$. Check by undetermined coefficients: try $Ae^{2x}$ (no resonance, since $2$ is not a root of $r^2-1=0$): $4A-A=1 \\Rightarrow A=\\frac{1}{3}$. Matches. General solution: $y = C_1e^x+C_2e^{-x}+\\frac{1}{3}e^{2x}$."
         },
         {
           "q": "Solve $y''-y=4$ (a constant forcing) by variation of parameters, and check against the obvious undetermined-coefficients guess $y_p=A$.",
@@ -193,26 +156,7 @@
           "target": "A summary comparison",
           "cross_lesson": "4.01 Nonhomogeneous Equations & Undetermined Coefficients",
           "answer": "(1) It works for ANY continuous forcing term $g(x)$, not just polynomials/exponentials/sines-cosines and their products — it handles $\\tan x$, $\\sec x$, $1/x$, $\\ln x$, and more. (2) It gives a single unified formula/procedure, with no need to guess a trial form or check for resonance case-by-case.",
-          "explanation": "(1) It works for ANY continuous forcing term $g(x)$, not just polynomials/exponentials/sines-cosines and their products — it handles $\\tan x$, $\\sec x$, $1/x$, $\\ln x$, and more. (2) It gives a single unified formula/procedure, with no need to guess a trial form or check for resonance case-by-case.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.6*(x - (1.0))**2 + (1.5)",
-              "0.4*x + (2.7)"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -5,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 1.0,
-                "y": 1.5,
-                "label": "$(1,1.5)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "(1) It works for ANY continuous forcing term $g(x)$, not just polynomials/exponentials/sines-cosines and their products — it handles $\\tan x$, $\\sec x$, $1/x$, $\\ln x$, and more. (2) It gives a single unified formula/procedure, with no need to guess a trial form or check for resonance case-by-case."
         },
         {
           "q": "List one advantage of undetermined coefficients over variation of parameters, when it applies.",
@@ -298,17 +242,7 @@
           ],
           "correct": 2,
           "answer": "We assume a power series solution of the form $y(x) = \\sum_{n=0}^{\\infty} a_n x^n$. Then $y'(x) = \\sum_{n=1}^{\\infty} n a_n x^{n-1}$ and $y''(x) = \\sum_{n=2}^{\\infty} n(n-1) a_n x^{n-2}$. Substituting these into the differential equation $y'' - xy = 0$, we get: $\\sum_{n=2}^{\\infty} n(n-1) a_n x^{n-2} - x \\sum_{n=0}^{\\infty} a_n x^n = 0$ $\\sum_{n=2}^{\\infty} n(n-1) a_n x^{n-2} - \\sum_{n=0}^{\\infty} a_n x^{n+1} = 0$. To compare coefficients, we need the powers of $x$ to be the same. Let $k = n-2$ in the first sum, so $n = k+2$. When $n=2$, $k=0$. Let $k = n+1$ in the second sum, so $n = k-1$. When $n=0$, $k=1$. $\\sum_{k=0}^{\\infty} (k+2)(k+1) a_{k+2} x^k - \\sum_{k=1}^{\\infty} a_{k-1} x^k = 0$. We can split off the $k=0$ term from the first sum: $2(1)a_2 x^0 + \\sum_{k=1}^{\\infty} (k+2)(k+1) a_{k+2} x^k - \\sum_{k=1}^{\\infty} a_{k-1} x^k = 0$. $2a_2 + \\sum_{k=1}^{\\infty} [(k+2)(k+1) a_{k+2} - a_{k-1}] x^k = 0$. For this equation to hold for all $x$, the coefficients of each power of $x$ must be zero. For the constant term ($x^0$), we have $2a_2 = 0$, which implies $a_2 = 0$. For $k \\geq 1$, we have the recurrence relation $(k+2)(k+1) a_{k+2} - a_{k-1} = 0$, or $a_{k+2} = \\frac{a_{k-1}}{(k+2)(k+1)}$.",
-          "explanation": "We assume a power series solution of the form $y(x) = \\sum_{n=0}^{\\infty} a_n x^n$. Then $y'(x) = \\sum_{n=1}^{\\infty} n a_n x^{n-1}$ and $y''(x) = \\sum_{n=2}^{\\infty} n(n-1) a_n x^{n-2}$. Substituting these into the differential equation $y'' - xy = 0$, we get: $\\sum_{n=2}^{\\infty} n(n-1) a_n x^{n-2} - x \\sum_{n=0}^{\\infty} a_n x^n = 0$ $\\sum_{n=2}^{\\infty} n(n-1) a_n x^{n-2} - \\sum_{n=0}^{\\infty} a_n x^{n+1} = 0$. To compare coefficients, we need the powers of $x$ to be the same. Let $k = n-2$ in the first sum, so $n = k+2$. When $n=2$, $k=0$. Let $k = n+1$ in the second sum, so $n = k-1$. When $n=0$, $k=1$. $\\sum_{k=0}^{\\infty} (k+2)(k+1) a_{k+2} x^k - \\sum_{k=1}^{\\infty} a_{k-1} x^k = 0$. We can split off the $k=0$ term from the first sum: $2(1)a_2 x^0 + \\sum_{k=1}^{\\infty} (k+2)(k+1) a_{k+2} x^k - \\sum_{k=1}^{\\infty} a_{k-1} x^k = 0$. $2a_2 + \\sum_{k=1}^{\\infty} [(k+2)(k+1) a_{k+2} - a_{k-1}] x^k = 0$. For this equation to hold for all $x$, the coefficients of each power of $x$ must be zero. For the constant term ($x^0$), we have $2a_2 = 0$, which implies $a_2 = 0$. For $k \\geq 1$, we have the recurrence relation $(k+2)(k+1) a_{k+2} - a_{k-1} = 0$, or $a_{k+2} = \\frac{a_{k-1}}{(k+2)(k+1)}$.",
-          "figure": {
-            "type": "slope_field",
-            "expr": "0.4*x - 0.15*y + 0.1*(0)",
-            "sol_fn": "2.67*x - 17.78 + 4*exp(-0.15*x)",
-            "xmin": -4,
-            "xmax": 4,
-            "ymin": -4,
-            "ymax": 4,
-            "width": 225
-          }
+          "explanation": "We assume a power series solution of the form $y(x) = \\sum_{n=0}^{\\infty} a_n x^n$. Then $y'(x) = \\sum_{n=1}^{\\infty} n a_n x^{n-1}$ and $y''(x) = \\sum_{n=2}^{\\infty} n(n-1) a_n x^{n-2}$. Substituting these into the differential equation $y'' - xy = 0$, we get: $\\sum_{n=2}^{\\infty} n(n-1) a_n x^{n-2} - x \\sum_{n=0}^{\\infty} a_n x^n = 0$ $\\sum_{n=2}^{\\infty} n(n-1) a_n x^{n-2} - \\sum_{n=0}^{\\infty} a_n x^{n+1} = 0$. To compare coefficients, we need the powers of $x$ to be the same. Let $k = n-2$ in the first sum, so $n = k+2$. When $n=2$, $k=0$. Let $k = n+1$ in the second sum, so $n = k-1$. When $n=0$, $k=1$. $\\sum_{k=0}^{\\infty} (k+2)(k+1) a_{k+2} x^k - \\sum_{k=1}^{\\infty} a_{k-1} x^k = 0$. We can split off the $k=0$ term from the first sum: $2(1)a_2 x^0 + \\sum_{k=1}^{\\infty} (k+2)(k+1) a_{k+2} x^k - \\sum_{k=1}^{\\infty} a_{k-1} x^k = 0$. $2a_2 + \\sum_{k=1}^{\\infty} [(k+2)(k+1) a_{k+2} - a_{k-1}] x^k = 0$. For this equation to hold for all $x$, the coefficients of each power of $x$ must be zero. For the constant term ($x^0$), we have $2a_2 = 0$, which implies $a_2 = 0$. For $k \\geq 1$, we have the recurrence relation $(k+2)(k+1) a_{k+2} - a_{k-1} = 0$, or $a_{k+2} = \\frac{a_{k-1}}{(k+2)(k+1)}$."
         },
         {
           "q": "Find a particular solution of $y''+16y=-\\sec4x$ (on an interval where $\\sec4x$ is continuous) using variation of parameters.",
@@ -383,17 +317,7 @@
           ],
           "correct": 1,
           "answer": "The Euler method formula is given by $y_{n+1} = y_n + h \\cdot f(x_n, y_n)$, where $f(x, y) = \\frac{dy}{dx}$. We are given $f(x, y) = x + y$, $y(0) = 1$, and $h = 0.1$. We want to approximate $y(0.2)$. Step 1: Calculate $y_1$ at $x_1 = 0 + h = 0.1$. $x_0 = 0$, $y_0 = 1$. $y_1 = y_0 + h \\cdot f(x_0, y_0) = 1 + 0.1 \\cdot (0 + 1) = 1 + 0.1 \\cdot 1 = 1.1$. So, $y(0.1) \\approx 1.1$. Step 2: Calculate $y_2$ at $x_2 = 0.1 + h = 0.2$. $x_1 = 0.1$, $y_1 = 1.1$. $y_2 = y_1 + h \\cdot f(x_1, y_1) = 1.1 + 0.1 \\cdot (0.1 + 1.1) = 1.1 + 0.1 \\cdot 1.2 = 1.1 + 0.12 = 1.22$. Therefore, the approximate value of $y(0.2)$ using the Euler method with $h = 0.1$ is 1.22.",
-          "explanation": "The Euler method formula is given by $y_{n+1} = y_n + h \\cdot f(x_n, y_n)$, where $f(x, y) = \\frac{dy}{dx}$. We are given $f(x, y) = x + y$, $y(0) = 1$, and $h = 0.1$. We want to approximate $y(0.2)$. Step 1: Calculate $y_1$ at $x_1 = 0 + h = 0.1$. $x_0 = 0$, $y_0 = 1$. $y_1 = y_0 + h \\cdot f(x_0, y_0) = 1 + 0.1 \\cdot (0 + 1) = 1 + 0.1 \\cdot 1 = 1.1$. So, $y(0.1) \\approx 1.1$. Step 2: Calculate $y_2$ at $x_2 = 0.1 + h = 0.2$. $x_1 = 0.1$, $y_1 = 1.1$. $y_2 = y_1 + h \\cdot f(x_1, y_1) = 1.1 + 0.1 \\cdot (0.1 + 1.1) = 1.1 + 0.1 \\cdot 1.2 = 1.1 + 0.12 = 1.22$. Therefore, the approximate value of $y(0.2)$ using the Euler method with $h = 0.1$ is 1.22.",
-          "figure": {
-            "type": "slope_field",
-            "expr": "0.3*x - 0.15*y + 0.1*(-1)",
-            "sol_fn": "2.0*x - 13.33 + 4*exp(-0.15*x)",
-            "xmin": -4,
-            "xmax": 4,
-            "ymin": -4,
-            "ymax": 4,
-            "width": 225
-          }
+          "explanation": "The Euler method formula is given by $y_{n+1} = y_n + h \\cdot f(x_n, y_n)$, where $f(x, y) = \\frac{dy}{dx}$. We are given $f(x, y) = x + y$, $y(0) = 1$, and $h = 0.1$. We want to approximate $y(0.2)$. Step 1: Calculate $y_1$ at $x_1 = 0 + h = 0.1$. $x_0 = 0$, $y_0 = 1$. $y_1 = y_0 + h \\cdot f(x_0, y_0) = 1 + 0.1 \\cdot (0 + 1) = 1 + 0.1 \\cdot 1 = 1.1$. So, $y(0.1) \\approx 1.1$. Step 2: Calculate $y_2$ at $x_2 = 0.1 + h = 0.2$. $x_1 = 0.1$, $y_1 = 1.1$. $y_2 = y_1 + h \\cdot f(x_1, y_1) = 1.1 + 0.1 \\cdot (0.1 + 1.1) = 1.1 + 0.1 \\cdot 1.2 = 1.1 + 0.12 = 1.22$. Therefore, the approximate value of $y(0.2)$ using the Euler method with $h = 0.1$ is 1.22."
         }
       ]
     },
@@ -473,17 +397,7 @@
           ],
           "correct": 1,
           "answer": "$\\mu = e^{2t}$. Multiplying gives $(y e^{2t})' = 4t e^{2t}$. Integrating by parts yields $y e^{2t} = 2t e^{2t} - e^{2t} + C \\Rightarrow y(t) = 2t - 1 + C e^{-2t}$. For the exponential term to vanish, we must have $C = 0$. Setting $y(0) = y_0$ gives $y_0 = 2(0) - 1 + C = -1 + 0 = -1$.",
-          "explanation": "$\\mu = e^{2t}$. Multiplying gives $(y e^{2t})' = 4t e^{2t}$. Integrating by parts yields $y e^{2t} = 2t e^{2t} - e^{2t} + C \\Rightarrow y(t) = 2t - 1 + C e^{-2t}$. For the exponential term to vanish, we must have $C = 0$. Setting $y(0) = y_0$ gives $y_0 = 2(0) - 1 + C = -1 + 0 = -1$.",
-          "figure": {
-            "type": "slope_field",
-            "expr": "0.6*x - 0.15*y + 0.1*(2)",
-            "sol_fn": "4.0*x - 26.67 + 3*exp(-0.15*x)",
-            "xmin": -4,
-            "xmax": 4,
-            "ymin": -4,
-            "ymax": 4,
-            "width": 225
-          }
+          "explanation": "$\\mu = e^{2t}$. Multiplying gives $(y e^{2t})' = 4t e^{2t}$. Integrating by parts yields $y e^{2t} = 2t e^{2t} - e^{2t} + C \\Rightarrow y(t) = 2t - 1 + C e^{-2t}$. For the exponential term to vanish, we must have $C = 0$. Setting $y(0) = y_0$ gives $y_0 = 2(0) - 1 + C = -1 + 0 = -1$."
         },
         {
           "q": "Solve $\\frac{dy}{dx} = \\frac{x^2 + 2}{y^2 - 1}$ with $y(0) = 2$ for $y > 1$. What is the value of $\\frac{1}{3}y^3 - y$ when $x = 3$?",
@@ -580,17 +494,7 @@
           "correct": 3,
           "answer": "The error scales like $h^{2}$; reducing it by $4$ needs $h$ smaller by $2$, i.e. $h=\\frac{1}{20}$, which is 20 steps.",
           "explanation": "The error scales like $h^{2}$; reducing it by $4$ needs $h$ smaller by $2$, i.e. $h=\\frac{1}{20}$, which is 20 steps.",
-          "cross_lesson": "3.01 Second-Order Linear Homogeneous Equations",
-          "figure": {
-            "type": "slope_field",
-            "expr": "0.3*x - 0.35*y + 0.1*(-1)",
-            "sol_fn": "0.86*x - 2.45 + 3*exp(-0.35*x)",
-            "xmin": -4,
-            "xmax": 4,
-            "ymin": -4,
-            "ymax": 4,
-            "width": 225
-          }
+          "cross_lesson": "3.01 Second-Order Linear Homogeneous Equations"
         },
         {
           "q": "Use the classical RK4 method with $h=\\frac{1}{2}$ to approximate $y(\\frac{3}{2})$ for $y'=x-y$, $y(1)=2$.",
@@ -654,26 +558,7 @@
           "correct": 1,
           "answer": "The classical RK4 method is a method of order 4: its global error is $O(h^{4})$.",
           "explanation": "The classical RK4 method is a method of order 4: its global error is $O(h^{4})$.",
-          "cross_lesson": "3.01 Second-Order Linear Homogeneous Equations",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "-0.45*(x - (1.5))**2 + (1.0)",
-              "-0.6*x + (-0.2)"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -5,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 1.5,
-                "y": 1.0,
-                "label": "$(1.5,1)$"
-              }
-            ],
-            "width": 230
-          }
+          "cross_lesson": "3.01 Second-Order Linear Homogeneous Equations"
         },
         {
           "q": "Use Euler's method with $h=\\frac{1}{4}$ to approximate $y(\\frac{1}{4})$ for $y'=-y$, $y(0)=3$.",

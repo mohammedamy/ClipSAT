@@ -22,26 +22,7 @@
           "question_type": "FRQ",
           "target": "Proving a summation formula",
           "answer": "Base case ($n=1$): LHS $=1$. RHS $=1(2)/2=1$. True. Inductive hypothesis: assume $1+2+\\cdots+k=k(k+1)/2$. For $n=k+1$: $1+2+\\cdots+k+(k+1)=k(k+1)/2+(k+1)$. Factoring out $(k+1)$: this is $(k+1)(k/2+1)=(k+1)(k+2)/2$, which matches the formula with $n=k+1$. Since it holds for $n=1$ and $n=k\\Rightarrow n=k+1$, by induction it holds for all $n\\geq1$.",
-          "explanation": "Base case ($n=1$): LHS $=1$. RHS $=1(2)/2=1$. True. Inductive hypothesis: assume $1+2+\\cdots+k=k(k+1)/2$. For $n=k+1$: $1+2+\\cdots+k+(k+1)=k(k+1)/2+(k+1)$. Factoring out $(k+1)$: this is $(k+1)(k/2+1)=(k+1)(k+2)/2$, which matches the formula with $n=k+1$. Since it holds for $n=1$ and $n=k\\Rightarrow n=k+1$, by induction it holds for all $n\\geq1$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.3*(x - (0.0))**2 + (0.0)",
-              "1.4*x + (1.2)"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -5,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 0.0,
-                "y": 0.0,
-                "label": "$(0,0)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "Base case ($n=1$): LHS $=1$. RHS $=1(2)/2=1$. True. Inductive hypothesis: assume $1+2+\\cdots+k=k(k+1)/2$. For $n=k+1$: $1+2+\\cdots+k+(k+1)=k(k+1)/2+(k+1)$. Factoring out $(k+1)$: this is $(k+1)(k/2+1)=(k+1)(k+2)/2$, which matches the formula with $n=k+1$. Since it holds for $n=1$ and $n=k\\Rightarrow n=k+1$, by induction it holds for all $n\\geq1$."
         },
         {
           "q": "Prove by induction that $7^n-1$ is divisible by $6$ for all $n\\geq1$.",
@@ -73,26 +54,7 @@
           "question_type": "FRQ",
           "target": "Induction with a recursively defined sequence",
           "answer": "Base case ($n=1$): $u_1=3$ (given). Formula: $2^1+1=3$. True. Assume $u_k=2^k+1$. Then $u_{k+1}=2u_k-1=2(2^k+1)-1=2^{k+1}+2-1=2^{k+1}+1$, matching the formula at $n=k+1$. By induction, $u_n=2^n+1$ for all $n\\geq1$.",
-          "explanation": "Base case ($n=1$): $u_1=3$ (given). Formula: $2^1+1=3$. True. Assume $u_k=2^k+1$. Then $u_{k+1}=2u_k-1=2(2^k+1)-1=2^{k+1}+2-1=2^{k+1}+1$, matching the formula at $n=k+1$. By induction, $u_n=2^n+1$ for all $n\\geq1$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.75*(x - (0.5))**2 + (-1.0)",
-              "-0.1*x + (0.2)"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -5,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 0.5,
-                "y": -1.0,
-                "label": "$(0.5,-1)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "Base case ($n=1$): $u_1=3$ (given). Formula: $2^1+1=3$. True. Assume $u_k=2^k+1$. Then $u_{k+1}=2u_k-1=2(2^k+1)-1=2^{k+1}+2-1=2^{k+1}+1$, matching the formula at $n=k+1$. By induction, $u_n=2^n+1$ for all $n\\geq1$."
         },
         {
           "q": "Prove by induction that the sum $3^0+3^1+\\cdots+3^{n-1}$ equals $(3^n-1)/2$ for all $n\\geq1$.",
@@ -175,24 +137,7 @@
           "target": "Proving a sum-of-products formula by induction",
           "cross_lesson": "6.01 Matrices (AI HL)",
           "answer": "1. Modulus: $r = |z| = \\sqrt{(-1)^2 + (\\sqrt{3})^2} = \\sqrt{1 + 3} = 2$. Argument: since $z$ lies in Quadrant II, $\\theta = \\pi - \\arctan(\\sqrt{3}) = \\pi - \\frac{\\pi}{3} = \\frac{2\\pi}{3}$. Polar form: $z = 2\\left(\\cos\\frac{2\\pi}{3} + i\\sin\\frac{2\\pi}{3}\\right)$; Exponential form: $z = 2e^{i 2\\pi/3}$. 2. Compute $z^6$ via De Moivre's Theorem: $z^6 = 2^6 e^{i \\cdot 6(2\\pi/3)} = 64 e^{i 4\\pi} = 64(\\cos 4\\pi + i\\sin 4\\pi) = 64(1 + 0i) = 64.$ 3. Solve $w^3 = z = 2e^{i 2\\pi/3}$: $w_k = 2^{1/3} \\exp\\left( i \\frac{2\\pi/3 + 2\\pi k}{3} \\right) = \\sqrt[3]{2} e^{i(2\\pi/9 + 2\\pi k/3)} \\quad \\mathrm{for\\ } k = 0, 1, 2.$ For $k = 0$: $w_0 = \\sqrt[3]{2} e^{i 2\\pi/9}$. For $k = 1$: $w_1 = \\sqrt[3]{2} e^{i 8\\pi/9}$. For $k = 2$: $w_2 = \\sqrt[3]{2} e^{i 14\\pi/9} = \\sqrt[3]{2} e^{-i 4\\pi/9}$.",
-          "explanation": "1. Modulus: $r = |z| = \\sqrt{(-1)^2 + (\\sqrt{3})^2} = \\sqrt{1 + 3} = 2$. Argument: since $z$ lies in Quadrant II, $\\theta = \\pi - \\arctan(\\sqrt{3}) = \\pi - \\frac{\\pi}{3} = \\frac{2\\pi}{3}$. Polar form: $z = 2\\left(\\cos\\frac{2\\pi}{3} + i\\sin\\frac{2\\pi}{3}\\right)$; Exponential form: $z = 2e^{i 2\\pi/3}$. 2. Compute $z^6$ via De Moivre's Theorem: $z^6 = 2^6 e^{i \\cdot 6(2\\pi/3)} = 64 e^{i 4\\pi} = 64(\\cos 4\\pi + i\\sin 4\\pi) = 64(1 + 0i) = 64.$ 3. Solve $w^3 = z = 2e^{i 2\\pi/3}$: $w_k = 2^{1/3} \\exp\\left( i \\frac{2\\pi/3 + 2\\pi k}{3} \\right) = \\sqrt[3]{2} e^{i(2\\pi/9 + 2\\pi k/3)} \\quad \\mathrm{for\\ } k = 0, 1, 2.$ For $k = 0$: $w_0 = \\sqrt[3]{2} e^{i 2\\pi/9}$. For $k = 1$: $w_1 = \\sqrt[3]{2} e^{i 8\\pi/9}$. For $k = 2$: $w_2 = \\sqrt[3]{2} e^{i 14\\pi/9} = \\sqrt[3]{2} e^{-i 4\\pi/9}$.",
-          "figure": {
-            "type": "circle",
-            "center": [
-              0,
-              0
-            ],
-            "radius": 6.0,
-            "center_label": "$O$",
-            "radius_label": "$r = 6$",
-            "sector": {
-              "start_deg": 0,
-              "end_deg": 60,
-              "label": "$60^\\circ$"
-            },
-            "chord": null,
-            "width": 210
-          }
+          "explanation": "1. Modulus: $r = |z| = \\sqrt{(-1)^2 + (\\sqrt{3})^2} = \\sqrt{1 + 3} = 2$. Argument: since $z$ lies in Quadrant II, $\\theta = \\pi - \\arctan(\\sqrt{3}) = \\pi - \\frac{\\pi}{3} = \\frac{2\\pi}{3}$. Polar form: $z = 2\\left(\\cos\\frac{2\\pi}{3} + i\\sin\\frac{2\\pi}{3}\\right)$; Exponential form: $z = 2e^{i 2\\pi/3}$. 2. Compute $z^6$ via De Moivre's Theorem: $z^6 = 2^6 e^{i \\cdot 6(2\\pi/3)} = 64 e^{i 4\\pi} = 64(\\cos 4\\pi + i\\sin 4\\pi) = 64(1 + 0i) = 64.$ 3. Solve $w^3 = z = 2e^{i 2\\pi/3}$: $w_k = 2^{1/3} \\exp\\left( i \\frac{2\\pi/3 + 2\\pi k}{3} \\right) = \\sqrt[3]{2} e^{i(2\\pi/9 + 2\\pi k/3)} \\quad \\mathrm{for\\ } k = 0, 1, 2.$ For $k = 0$: $w_0 = \\sqrt[3]{2} e^{i 2\\pi/9}$. For $k = 1$: $w_1 = \\sqrt[3]{2} e^{i 8\\pi/9}$. For $k = 2$: $w_2 = \\sqrt[3]{2} e^{i 14\\pi/9} = \\sqrt[3]{2} e^{-i 4\\pi/9}$."
         },
         {
           "q": "Prove by mathematical induction that $5^n - 1$ is divisible by 4 for all positive integers $n \\in \\mathbb{Z}^+$.",
@@ -213,13 +158,13 @@
           "explanation": "Write $z^3 = -8 = 8e^{i\\pi}$. By De Moivre's Theorem, the three cube roots are: $z_k = 2\\exp\\left(i\\frac{\\pi + 2\\pi k}{3}\\right) \\quad \\mathrm{for\\ } k = 0, 1, 2.$ For $k = 0$: $z_0 = 2e^{i\\pi/3} = 2\\left(\\frac{1}{2} + i\\frac{\\sqrt{3}}{2}\\right) = 1 + i\\sqrt{3}$. For $k = 1$: $z_1 = 2e^{i\\pi} = 2(-1) = -2$. For $k = 2$: $z_2 = 2e^{i 5\\pi/3} = 2e^{-i\\pi/3} = 2\\left(\\frac{1}{2} - i\\frac{\\sqrt{3}}{2}\\right) = 1 - i\\sqrt{3}$. Notice that $1 \\pm i\\sqrt{3}$ are complex conjugates, as predicted by the Conjugate Root Theorem for $z^3 + 8 \\in \\mathbb{R}[z]$."
         },
         {
-          "q": "[Algebra, Proof & Complex Numbers · Practice 2] If the governing relation for this system is $g(t) = 4t + 4$, evaluate $g(6)$ and find the inverse input $t$ when $g(t) = 32$.",
+          "q": "Solve $z^2+2z+5=0$ over $\\mathbb{C}.$",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Proving a closed form for a recursive sequence",
           "cross_lesson": "1.02 Complex Numbers: Cartesian Form & Algebra",
-          "answer": "Substitute $t = 6$: $g(6) = 4(6) + 4 = \\mathbf{28}$. Setting $4t + 4 = 32$ gives $4t = 28 \\Rightarrow t = \\mathbf{7}$.",
-          "explanation": "Substitute $t = 6$: $g(6) = 4(6) + 4 = \\mathbf{28}$. Setting $4t + 4 = 32$ gives $4t = 28 \\Rightarrow t = \\mathbf{7}$."
+          "answer": "Final Answer: $-1\\pm 2i$. $z=\\frac{-2\\pm\\sqrt{4-20}}{2}=\\frac{-2\\pm 4i}{2}=-1\\pm 2i$ [M1] [A1]",
+          "explanation": "$z=\\frac{-2\\pm\\sqrt{4-20}}{2}=\\frac{-2\\pm 4i}{2}=-1\\pm 2i$ [M1] [A1]"
         },
         {
           "q": "An infinite geometric series has common ratio $r = -0.4$ and converges to an infinite sum of $S_\\infty = 25$. Find the first term $a_1$, and compute the exact value of the partial sum $S_4$.",
@@ -353,20 +298,20 @@
             "fns": [
               "x*x - 4*x + 3"
             ],
-            "xmin": -2.0,
-            "xmax": 6.0,
-            "ymin": -3.0,
-            "ymax": 6.0,
+            "xmin": -2,
+            "xmax": 6,
+            "ymin": -3,
+            "ymax": 6,
             "width": 230,
             "point_labels": [
               {
-                "x": 1.0,
-                "y": 0.0,
+                "x": 1,
+                "y": 0,
                 "label": "(1, 0)"
               },
               {
-                "x": 3.0,
-                "y": 0.0,
+                "x": 3,
+                "y": 0,
                 "label": "(3, 0)"
               }
             ]
@@ -501,20 +446,20 @@
             "fns": [
               "x*x - 8*x + 12"
             ],
-            "xmin": 0.0,
-            "xmax": 8.0,
-            "ymin": -5.0,
-            "ymax": 5.0,
+            "xmin": 0,
+            "xmax": 8,
+            "ymin": -5,
+            "ymax": 5,
             "width": 230,
             "point_labels": [
               {
-                "x": 2.0,
-                "y": 0.0,
+                "x": 2,
+                "y": 0,
                 "label": "(2, 0)"
               },
               {
-                "x": 6.0,
-                "y": 0.0,
+                "x": 6,
+                "y": 0,
                 "label": "(6, 0)"
               }
             ]
@@ -554,20 +499,20 @@
             "fns": [
               "x*x - 2*x - 3"
             ],
-            "xmin": -3.0,
-            "xmax": 5.0,
-            "ymin": -5.0,
-            "ymax": 10.0,
+            "xmin": -3,
+            "xmax": 5,
+            "ymin": -5,
+            "ymax": 10,
             "width": 230,
             "point_labels": [
               {
-                "x": 2.0,
-                "y": -3.0,
+                "x": 2,
+                "y": -3,
                 "label": "(2, -3)"
               },
               {
-                "x": 1.0,
-                "y": -4.0,
+                "x": 1,
+                "y": -4,
                 "label": "(1, -4)"
               }
             ]
@@ -598,15 +543,15 @@
             "fns": [
               "x*x - 6*x + 8"
             ],
-            "xmin": -1.0,
-            "xmax": 7.0,
-            "ymin": -5.0,
-            "ymax": 5.0,
+            "xmin": -1,
+            "xmax": 7,
+            "ymin": -5,
+            "ymax": 5,
             "width": 230,
             "point_labels": [
               {
-                "x": 2.0,
-                "y": 0.0,
+                "x": 2,
+                "y": 0,
                 "label": "P (2, 0)"
               }
             ]
@@ -633,10 +578,10 @@
               "x*x - 4*x + 3",
               "0"
             ],
-            "xmin": -2.0,
-            "xmax": 6.0,
-            "ymin": -3.0,
-            "ymax": 6.0,
+            "xmin": -2,
+            "xmax": 6,
+            "ymin": -3,
+            "ymax": 6,
             "width": 230
           }
         },
@@ -660,20 +605,20 @@
             "fns": [
               "x*x - 4*x + 3"
             ],
-            "xmin": -1.0,
-            "xmax": 5.0,
-            "ymin": -2.0,
-            "ymax": 4.0,
+            "xmin": -1,
+            "xmax": 5,
+            "ymin": -2,
+            "ymax": 4,
             "width": 230,
             "point_labels": [
               {
-                "x": 1.0,
-                "y": 0.0,
+                "x": 1,
+                "y": 0,
                 "label": "(1, 0)"
               },
               {
-                "x": 3.0,
-                "y": 0.0,
+                "x": 3,
+                "y": 0,
                 "label": "(3, 0)"
               }
             ]

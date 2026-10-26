@@ -298,7 +298,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Hard):</strong> In a championship playoff, two teams, Team A and Team B, play a best-of-five series, where the first team to win three games wins the series. The games are independent, cannot end in a tie, and in each individual game, the probability that Team A wins is \\(p\\), where \\(0 < p < 1\\) and \\(p \\neq \\frac{1}{2}\\).\n\nSuppose the probability that the series is decided in exactly 3 games is equal to the probability that the series requires a decisive 5th game. What is the value of the product \\(p(1-p)\\)?</p><p><strong>Step-by-Step Solution:</strong> Let \\(q = 1 - p\\) be the probability that Team B wins any individual game.\n\n1. **Probability that the series ends in exactly 3 games:**\nThis occurs if Team A sweeps \\(3-0\\) or Team B sweeps \\(3-0\\):\n\\[ P(\\text{3 games}) = p^3 + q^3 \\]\nUsing the algebraic sum of cubes identity:\n\\[ p^3 + q^3 = (p + q)(p^2 - pq + q^2) = (p + q)\\big((p + q)^2 - 3pq\\big) \\]\nSince \\(p + q = 1\\), setting \\(x = pq = p(1-p)\\) gives:\n\\[ P(\\text{3 games}) = 1 - 3pq = 1 - 3x \\]\n\n2. **Probability that the series requires a 5th game:**\nA 5th game is played if and only if neither team has won 3 games in the first 4 games. This occurs precisely when each team wins exactly 2 of the first 4 games (a 2-2 tie):\n\\[ P(\\text{5th game required}) = \\binom{4}{2} p^2 q^2 = 6(pq)^2 = 6x^2 \\]\n\n3. **Equating the two probabilities:**\n\\[ 1 - 3x = 6x^2 \\implies 6x^2 + 3x - 1 = 0 \\]\nApplying the quadratic formula:\n\\[ x = \\frac{-3 \\pm \\sqrt{3^2 - 4(6)(-1)}}{2(6)} = \\frac{-3 \\pm \\sqrt{33}}{12} \\]\n\nSince \\(0 < p < 1\\) and \\(p \\neq \\frac{1}{2}\\), the product \\(x = p(1-p)\\) must satisfy \\(0 < x < \\frac{1}{4}\\). Because \\(\\sqrt{33} \\approx 5.74\\):\n\\[ \\frac{-3 + \\sqrt{33}}{12} \\approx \\frac{2.74}{12} \\approx 0.229 \\in \\left(0, \\frac{1}{4}\\right) \\]\nWhile the negative root yields a negative probability product, which is impossible.\n\nThus, \\(p(1-p) = \\dfrac{\\sqrt{33} - 3}{12}\\). <strong>Final Answer:</strong> \\(\\dfrac{\\sqrt{33} - 3}{12}\\).</p>",
+          "en": "<p><strong>Problem (Hard):</strong> In a championship playoff, two teams, Team A and Team B, play a best-of-five series, where the first team to win three games wins the series. The games are independent, cannot end in a tie, and in each individual game, the probability that Team A wins is \\(p\\), where \\(0 < p < 1\\) and \\(p \\neq \\frac{1}{2}\\).\n\nSuppose the probability that the series is decided in exactly 3 games is equal to the probability that the series requires a decisive 5th game. What is the value of the product \\(p(1-p)\\)?</p><p><strong>Step-by-Step Solution:</strong> Let \\(q = 1 - p\\) be the probability that Team B wins any individual game.\n\n1. **Probability that the series ends in exactly 3 games:**\nThis occurs if Team A sweeps \\(3-0\\) or Team B sweeps \\(3-0\\):\n\\[ P(\\text{3 games}) = p^3 + q^3 \\]\nUsing the algebraic sum of cubes identity:\n\\[ p^3 + q^3 = (p + q)(p^2 - pq + q^2) = (p + q)\\big((p + q)^2 - 3pq\\big) \\]\nSince \\(p + q = 1\\), setting \\(x = pq = p(1-p)\\) gives:\n\\[ P(\\text{3 games}) = 1 - 3pq = 1 - 3x \\]\n\n2. **Probability that the series requires a 5th game:**\nA 5th game is played if and only if neither team has won 3 games in the first 4 games. This occurs precisely when each team wins exactly 2 of the first 4 games (a 2-2 tie):\n\\[ P(\\text{5th game required}) = \\binom{4}{2} p^2 q^2 = 6(pq)^2 = 6x^2 \\]\n\n3. **Equating the two probabilities:**\n\\[ 1 - 3x = 6x^2 \\implies 6x^2 + 3x - 1 = 0 \\]\nApplying the quadratic formula:\n\\[ x = \\frac{-3 \\pm \\sqrt{3^2 - 4(6)(-1)}}{2(6)} = \\frac{-3 \\pm \\sqrt{33}}{12} \\]\n\nSince \\(0 < p < 1\\) and \\(p \\neq \\frac{1}{2}\\), the product \\(x = p(1-p)\\) must satisfy \\(0 < x < \\frac{1}{4}\\). Because \\(\\sqrt{33} \\approx 5.74\\):\n\\[ \\frac{-3 + \\sqrt{33}}{12} \\approx \\frac{2.74}{12} \\approx 0.229 \\in \\left(0, \\frac{1}{4}\\right) \\]\nWhile the negative root yields a negative probability product, which is impossible.\n\nThus, \\(p(1-p) = \\dfrac{\\sqrt{33} - 3}{12}\\).</p>",
           "ar": null
         }
       },
@@ -432,25 +432,25 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Easy]</strong> A set of exam scores is normally distributed with a mean of \\(\\mu = 74\\) and a standard deviation of \\(\\sigma = 8\\). What is the \\(z\\)-score corresponding to an exam score of \\(58\\)?",
+          "en": "<strong>[Practice 3 · Easy]</strong> A set of test scores is normally distributed with a mean of \\(\\mu = 500\\) and a standard deviation of \\(\\sigma = 100\\). According to the empirical rule (the \\(68\\text{--}95\\text{--}99.7\\%\\) rule), approximately what percentage of scores fall between \\(400\\) and \\(700\\)?",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Probability &amp; Statistics</em> and start from \\(\\mu = 74\\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Probability & Statistics and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(z\\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "To find the \\(z\\)-score corresponding to a given data value, use the standard normal distribution formula:\n\\[\nz = \\frac{x - \\mu}{\\sigma}\n\\]\nwhere \\(x\\) is the individual score, \\(\\mu\\) is the population mean, and \\(\\sigma\\) is the standard deviation.\n\nSubstitute the given values into the formula:\n\\[\nz = \\frac{58 - 74}{8} = \\frac{-16}{8} = -2\n\\]\n\nA \\(z\\)-score of \\(-2\\) indicates that the score of \\(58\\) is located \\(2\\) standard deviations below the mean.\n\nCommon Misconceptions:\n- \\(2\\): Results from subtracting the score from the mean, \\(\\frac{74 - 58}{8}\\), or discarding the negative sign.\n- \\(-0.5\\): Results from incorrectly inverting the formula to \\(\\frac{\\sigma}{x - \\mu} = \\frac{8}{58 - 74} = -0.5\\).\n- \\(0.5\\): Results from both inverting the formula and discarding the negative sign.",
+          "en": "According to the empirical rule for a normal distribution:\n1. Approximately \\(68\\%\\) of the data lies within \\(1\\) standard deviation of the mean (\\(\\mu \\pm 1\\sigma\\)). Because the distribution is symmetric, \\(34\\%\\) lies between \\(\\mu - 1\\sigma\\) and \\(\\mu\\).\n2. Approximately \\(95\\%\\) of the data lies within \\(2\\) standard deviations of the mean (\\(\\mu \\pm 2\\sigma\\)). By symmetry, \\(47.5\\%\\) lies between \\(\\mu\\) and \\(\\mu + 2\\sigma\\).\n\nIdentify the given boundaries relative to \\(\\mu = 500\\) and \\(\\sigma = 100\\):\n- Lower bound: \\(400 = 500 - 100 = \\mu - 1\\sigma\\)\n- Upper bound: \\(700 = 500 + 2(100) = \\mu + 2\\sigma\\)\n\nAdding the percentages for each section:\n- Between \\(400\\) and \\(500\\): \\(34\\%\\)\n- Between \\(500\\) and \\(700\\): \\(47.5\\%\\)\n\n\\(34\\% + 47.5\\% = 81.5\\%\\).\n\nCommon misconceptions:\n- \\(68.0\\%\\) incorrectly assumes the interval is within \\(1\\) standard deviation on both sides (\\([400, 600]\\)).\n- \\(84.0\\%\\) represents the proportion of scores below \\(600\\) (\\(50\\% + 34\\%\\)).\n- \\(95.0\\%\\) corresponds to scores within \\(2\\) standard deviations on both sides (\\([300, 700]\\)).",
           "ar": null
         }
       },
@@ -462,15 +462,15 @@
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Probability &amp; Statistics</em> and start from \\(k\\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Probability & Statistics and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(k\\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
@@ -482,20 +482,20 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 5 · Hard]</strong> A factory produces two types of components, A and B, using two machines, M1 and M2. The time (in minutes) required to produce one unit of each component on each machine is given in the table below:\n\nThe factory has 480 minutes of M1 time and 240 minutes of M2 time available per day. Let \\(x\\) be the number of units of component A produced per day and \\(y\\) be the number of units of component B produced per day.\n\nSuppose the profit from selling one unit of component A is \\(\\text{\\textdollar}5\\) and the profit from selling one unit of component B is \\(\\text{\\textdollar}8\\). The factory wants to maximize its total daily profit. Formulate this problem as a linear programming problem, defining the objective function and the constraints.",
+          "en": "<strong>[Practice 5 · Hard]</strong> Let the quadratic function \\( f \\) be defined by \\( f(x) = 6x^2 - 4x + 26 \\). What is the value of \\( f(6) \\)?",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Probability &amp; Statistics</em> and start from \\(x\\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Substitute \\( x = 6 \\) into each term of \\( f(x) \\).",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\(x\\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Evaluate \\( 6(6)^2 = 216 \\) and \\( 4(6) = 24 \\).",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Combine terms: \\( 216 - 24 + 26 = 218 \\).",
             "ar": null
           }
         ],

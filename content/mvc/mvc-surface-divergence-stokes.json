@@ -388,7 +388,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Medium):</strong> Suppose consider the vector field \\( \\mathbf{R}(m, y, z) = \\langle 15m,\\, 12y,\\, 4z \\rangle \\) on \\( \\mathbb{R}^3 \\). Evaluate the scalar divergence \\( \\nabla \\cdot \\mathbf{R} \\).</p><p><strong>Step-by-Step Solution:</strong> The divergence is \\( 15 + 12 + 4 = 31 \\).</p>",
+          "en": "<p><strong>Problem (Medium):</strong> Consider the vector field \\( \\mathbf{F}(x, y, z) = \\langle x, y, z \\rangle \\). Let \\( S \\) be the closed surface of the unit cube defined by \\( 0 \\le x \\le 1, 0 \\le y \\le 1, 0 \\le z \\le 1 \\), oriented outwards. According to the Divergence Theorem, the flux of \\( \\mathbf{F} \\) through \\( S \\) is equal to the triple integral of the divergence of \\( \\mathbf{F} \\) over the volume \\( V \\) enclosed by \\( S \\). Calculate this flux by evaluating \\( \\iiint_V \\nabla \\cdot \\mathbf{F} \\, dV \\).</p><p><strong>Step-by-Step Solution:</strong> The vector field is \\( \\mathbf{F}(x, y, z) = \\langle x, y, z \\rangle \\). The divergence of \\( \\mathbf{F} \\) is \\( \\nabla \\cdot \\mathbf{F} = \\frac{\\partial}{\\partial x}(x) + \\frac{\\partial}{\\partial y}(y) + \\frac{\\partial}{\\partial z}(z) = 1 + 1 + 1 = 3 \\). The volume \\( V \\) enclosed by the unit cube is given by \\( 0 \\le x \\le 1, 0 \\le y \\le 1, 0 \\le z \\le 1 \\). The volume of this cube is \\( 1 \\times 1 \\times 1 = 1 \\). Therefore, the flux is given by the triple integral: \\( \\iiint_V \\nabla \\cdot \\mathbf{F} \\, dV = \\iiint_V 3 \\, dV \\). Since the integrand is a constant, this is equal to \\( 3 \\times \\text{Volume}(V) = 3 \\times 1 = 3 \\).</p>",
           "ar": null
         }
       },
@@ -400,7 +400,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Hard):</strong> Suppose let \\( M = [0, 8] \\times [0, 4] \\) be a rectangle in the \\( (m, y) \\)-plane. Evaluate the double integral \\( \\displaystyle\\iint_{M} 96my\\,dA \\).</p><p><strong>Step-by-Step Solution:</strong> Integrating gives \\( 24(8^2)(4^2) = 24576 \\).</p>",
+          "en": "<p><strong>Problem (Hard):</strong> Use the Divergence Theorem to find the outward flux of \\( \\mathbf F=\\langle x y, y z, x z \\rangle \\) across the closed cylinder \\( x^2+y^2\\le 9,\\ 0\\le z\\le 3 \\).</p><p><strong>Step-by-Step Solution:</strong> \\( \\nabla\\cdot\\mathbf F=x + y + z \\). The flux equals \\( \\iiint_E\\nabla\\cdot\\mathbf F\\,dV=\\frac{81 \\pi}{2} \\).</p>",
           "ar": null
         }
       },
@@ -412,7 +412,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Easy):</strong> Suppose let the linear scalar potential be \\( R(m, y) = 8m + 9y - 14 \\). Evaluate the squared gradient norm \\( \\|\\nabla R\\|^2 \\).</p><p><strong>Step-by-Step Solution:</strong> Since \\( \\nabla R = \\langle 8, 9 \\rangle \\), \\( \\|\\nabla R\\|^2 = 8^2 + 9^2 = 145 \\).</p>",
+          "en": "<p><strong>Problem (Easy):</strong> Consider the surface \\( S \\) which is the portion of the plane \\( z = 2x + 3y + 1 \\) lying above the rectangular region \\( R = [0, 1] \\times [0, 2] \\) in the \\( xy \\)-plane. Calculate the surface area of \\( S \\).</p><p><strong>Step-by-Step Solution:</strong> The surface area of a surface \\( z = g(x,y) \\) above a region \\( R \\) is given by the integral \\( \\iint_R \\sqrt{1 + (g_x)^2 + (g_y)^2} \\, dA \\). Here, \\( g(x,y) = 2x + 3y + 1 \\). The partial derivatives are \\( g_x = 2 \\) and \\( g_y = 3 \\). Therefore, \\( \\sqrt{1 + (g_x)^2 + (g_y)^2} = \\sqrt{1 + 2^2 + 3^2} = \\sqrt{1 + 4 + 9} = \\sqrt{14} \\). The integral becomes \\( \\iint_R \\sqrt{14} \\, dA \\), where \\( R = [0, 1] \\times [0, 2] \\). This evaluates to \\( \\sqrt{14} \\times \\text{Area}(R) \\). The area of the rectangle \\( R \\) is \\( (1-0) \\times (2-0) = 2 \\). So, the surface area is \\( 2 \\sqrt{14} \\).</p>",
           "ar": null
         }
       },
@@ -546,50 +546,50 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Medium]</strong> Suppose let the multivariable function \\( A \\) be defined by \\( A(n, y) = 7n^2 y + 3y^2 \\). Evaluate the partial derivative \\( \\dfrac{\\partial A}{\\partial n}(19, 3) \\).",
+          "en": "<strong>[Practice 3 · Medium]</strong> Use Stokes' theorem to find the circulation \\( \\oint_C\\mathbf F\\cdot d\\mathbf r \\) of \\( \\mathbf F=\\langle - y + z, x, x \\rangle \\) around the boundary of the square \\( [0,2]\\times[0,2] \\) in the plane \\( z=0 \\), oriented counterclockwise seen from above.",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Surface Integrals, the Divergence Theorem & Stokes' Theorem</em> and start from \\( A \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Surface Integrals, Divergence & Stokes and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( n \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Differentiating with respect to \\( n \\) gives \\( 14ny \\), which equals \\( 798 \\) at \\( (19, 3) \\).",
+          "en": "\\( \\nabla\\times\\mathbf F=\\langle 0, 0, 2 \\rangle \\). Taking the flat surface inside \\( C \\) with \\( \\mathbf n=\\mathbf k \\), \\( \\iint_S(\\nabla\\times\\mathbf F)\\cdot\\mathbf k\\,dS=8 \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Hard]</strong> Suppose consider the vector field \\( \\mathbf{A}(n, y, z) = \\langle 14n,\\, 13y,\\, 7z \\rangle \\) on \\( \\mathbb{R}^3 \\). Evaluate the scalar divergence \\( \\nabla \\cdot \\mathbf{A} \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> Find the flux \\( \\iint_S\\mathbf F\\cdot d\\mathbf S \\) of \\( \\mathbf F=\\langle y, x, 3 \\rangle \\) across the disk \\( x^2+y^2\\le 9,\\ z=0 \\), with upward normal.",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Surface Integrals, the Divergence Theorem & Stokes' Theorem</em> and start from \\( \\mathbf{A}(n, y, z) = \\langle 14n,\\, 13y,\\, 7z \\rangle \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Surface Integrals, Divergence & Stokes and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 14 + 13 + 7 = 34 \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "The divergence is \\( 14 + 13 + 7 = 34 \\).",
+          "en": "On the disk \\( \\mathbf n=\\mathbf k \\), so the flux is \\( \\iint_D F_3\\,dA=27 \\pi \\).",
           "ar": null
         }
       }

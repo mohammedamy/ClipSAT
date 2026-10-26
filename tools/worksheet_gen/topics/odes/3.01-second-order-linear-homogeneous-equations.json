@@ -22,17 +22,7 @@
           "question_type": "FRQ",
           "target": "The auxiliary equation",
           "answer": "$2r^2 + 4r - 6 = 0$, which simplifies to $r^2 + 2r - 3 = 0$.",
-          "explanation": "$2r^2 + 4r - 6 = 0$, which simplifies to $r^2 + 2r - 3 = 0$.",
-          "figure": {
-            "type": "slope_field",
-            "expr": "0.3*x - 0.35*y + 0.1*(-1)",
-            "sol_fn": "0.86*x - 2.45 + 2*exp(-0.35*x)",
-            "xmin": -4,
-            "xmax": 4,
-            "ymin": -4,
-            "ymax": 4,
-            "width": 225
-          }
+          "explanation": "$2r^2 + 4r - 6 = 0$, which simplifies to $r^2 + 2r - 3 = 0$."
         },
         {
           "q": "Explain why substituting $y=e^{rx}$ into $ay''+by'+cy=0$ produces the auxiliary equation $ar^2+br+c=0$.",
@@ -64,17 +54,7 @@
           "question_type": "FRQ",
           "target": "Classifying without fully solving",
           "answer": "Discriminant $=36-20=16>0$ and a perfect square, so the roots are real and distinct ($r=-1,-5$).",
-          "explanation": "Discriminant $=36-20=16>0$ and a perfect square, so the roots are real and distinct ($r=-1,-5$).",
-          "figure": {
-            "type": "slope_field",
-            "expr": "0.6*x - 0.15*y + 0.1*(2)",
-            "sol_fn": "4.0*x - 26.67 + 4*exp(-0.15*x)",
-            "xmin": -4,
-            "xmax": 4,
-            "ymin": -4,
-            "ymax": 4,
-            "width": 225
-          }
+          "explanation": "Discriminant $=36-20=16>0$ and a perfect square, so the roots are real and distinct ($r=-1,-5$)."
         },
         {
           "q": "Without solving, classify the roots of $y'' + 10y' + 25y = 0$.",
@@ -111,17 +91,7 @@
           "question_type": "FRQ",
           "target": "Application: a damped spring",
           "answer": "By the quadratic formula the roots are $r=\\frac{-c\\pm\\sqrt{c^2-4mk}}{2m}$: when the roots are real, $\\sqrt{c^2-4mk} < c$ (since $mk>0$), so both roots stay negative after adding $-c$ and dividing by $2m>0$; when complex, the real part is exactly $-\\frac{c}{2m}<0$ since $c,m>0$ — either way the exponential factor $e^{-(c/2m)x}$ (or the two negative real exponentials) forces every solution toward $0$ as $x\\rightarrow\\infty$.",
-          "explanation": "By the quadratic formula the roots are $r=\\frac{-c\\pm\\sqrt{c^2-4mk}}{2m}$: when the roots are real, $\\sqrt{c^2-4mk} < c$ (since $mk>0$), so both roots stay negative after adding $-c$ and dividing by $2m>0$; when complex, the real part is exactly $-\\frac{c}{2m}<0$ since $c,m>0$ — either way the exponential factor $e^{-(c/2m)x}$ (or the two negative real exponentials) forces every solution toward $0$ as $x\\rightarrow\\infty$.",
-          "figure": {
-            "type": "slope_field",
-            "expr": "0.3*x - 0.45*y + 0.1*(-1)",
-            "sol_fn": "0.67*x - 1.48 + 4*exp(-0.45*x)",
-            "xmin": -4,
-            "xmax": 4,
-            "ymin": -4,
-            "ymax": 4,
-            "width": 225
-          }
+          "explanation": "By the quadratic formula the roots are $r=\\frac{-c\\pm\\sqrt{c^2-4mk}}{2m}$: when the roots are real, $\\sqrt{c^2-4mk} < c$ (since $mk>0$), so both roots stay negative after adding $-c$ and dividing by $2m>0$; when complex, the real part is exactly $-\\frac{c}{2m}<0$ since $c,m>0$ — either way the exponential factor $e^{-(c/2m)x}$ (or the two negative real exponentials) forces every solution toward $0$ as $x\\rightarrow\\infty$."
         },
         {
           "q": "Verify by direct substitution that $y=C_1e^{2x}+C_2e^{3x}$ solves $y''-5y'+6y=0$ for any constants $C_1,C_2$.",
@@ -176,17 +146,7 @@
           "target": "Boundary value problems",
           "cross_lesson": "2.01 Linear First-Order Equations & the Integrating Factor",
           "answer": "Step 1: Check regular singularity at $x_0 = 0$: $P(x) = -\\frac{1}{2x}, \\quad Q(x) = \\frac{x - 5}{2x^2}.$ $p_0 = \\lim_{x\\rightarrow 0} x P(x) = -\\frac{1}{2}, \\qquad q_0 = \\lim_{x\\rightarrow 0} x^2 Q(x) = -\\frac{5}{2}.$ Both limits are finite, confirming $x = 0$ is a regular singular point. Step 2: Indicial equation: $r(r - 1) + p_0 r + q_0 = r^2 - r - \\frac{1}{2}r - \\frac{5}{2} = 0 \\Rightarrow 2r^2 - 3r - 5 = 0.$ Factoring: $(2r - 5)(r + 1) = 0 \\Rightarrow r_1 = \\frac{5}{2}, \\quad r_2 = -1.$ Step 3: Root difference: $r_1 - r_2 = \\frac{5}{2} - (-1) = \\frac{7}{2} otin \\mathbb{Z}.$ Because the roots do not differ by an integer, Case 1 of Frobenius' Theorem applies. Two linearly independent Frobenius series solutions exist without any logarithmic terms: $y_1(x) = x^{5/2}\\sum_{n=0}^\\infty a_n x^n, \\qquad y_2(x) = x^{-1}\\sum_{n=0}^\\infty b_n x^n \\quad (a_0, b_0 eq 0).$",
-          "explanation": "Step 1: Check regular singularity at $x_0 = 0$: $P(x) = -\\frac{1}{2x}, \\quad Q(x) = \\frac{x - 5}{2x^2}.$ $p_0 = \\lim_{x\\rightarrow 0} x P(x) = -\\frac{1}{2}, \\qquad q_0 = \\lim_{x\\rightarrow 0} x^2 Q(x) = -\\frac{5}{2}.$ Both limits are finite, confirming $x = 0$ is a regular singular point. Step 2: Indicial equation: $r(r - 1) + p_0 r + q_0 = r^2 - r - \\frac{1}{2}r - \\frac{5}{2} = 0 \\Rightarrow 2r^2 - 3r - 5 = 0.$ Factoring: $(2r - 5)(r + 1) = 0 \\Rightarrow r_1 = \\frac{5}{2}, \\quad r_2 = -1.$ Step 3: Root difference: $r_1 - r_2 = \\frac{5}{2} - (-1) = \\frac{7}{2} otin \\mathbb{Z}.$ Because the roots do not differ by an integer, Case 1 of Frobenius' Theorem applies. Two linearly independent Frobenius series solutions exist without any logarithmic terms: $y_1(x) = x^{5/2}\\sum_{n=0}^\\infty a_n x^n, \\qquad y_2(x) = x^{-1}\\sum_{n=0}^\\infty b_n x^n \\quad (a_0, b_0 eq 0).$",
-          "figure": {
-            "type": "slope_field",
-            "expr": "0.2*x - 0.25*y + 0.1*(-2)",
-            "sol_fn": "0.8*x - 3.2 + 4*exp(-0.25*x)",
-            "xmin": -4,
-            "xmax": 4,
-            "ymin": -4,
-            "ymax": 4,
-            "width": 225
-          }
+          "explanation": "Step 1: Check regular singularity at $x_0 = 0$: $P(x) = -\\frac{1}{2x}, \\quad Q(x) = \\frac{x - 5}{2x^2}.$ $p_0 = \\lim_{x\\rightarrow 0} x P(x) = -\\frac{1}{2}, \\qquad q_0 = \\lim_{x\\rightarrow 0} x^2 Q(x) = -\\frac{5}{2}.$ Both limits are finite, confirming $x = 0$ is a regular singular point. Step 2: Indicial equation: $r(r - 1) + p_0 r + q_0 = r^2 - r - \\frac{1}{2}r - \\frac{5}{2} = 0 \\Rightarrow 2r^2 - 3r - 5 = 0.$ Factoring: $(2r - 5)(r + 1) = 0 \\Rightarrow r_1 = \\frac{5}{2}, \\quad r_2 = -1.$ Step 3: Root difference: $r_1 - r_2 = \\frac{5}{2} - (-1) = \\frac{7}{2} otin \\mathbb{Z}.$ Because the roots do not differ by an integer, Case 1 of Frobenius' Theorem applies. Two linearly independent Frobenius series solutions exist without any logarithmic terms: $y_1(x) = x^{5/2}\\sum_{n=0}^\\infty a_n x^n, \\qquad y_2(x) = x^{-1}\\sum_{n=0}^\\infty b_n x^n \\quad (a_0, b_0 eq 0).$"
         },
         {
           "q": "Find the general solution of the differential equation $y'' + y = 4\\sin x + 2e^{-x}$.",
@@ -207,13 +167,13 @@
           "explanation": "Step 1: Characteristic polynomial: $\\det\\left(-2 - \\lambda, -5 ; 1, -\\lambda\\right) = \\lambda(\\lambda + 2) + 5 = \\lambda^2 + 2\\lambda + 5 = 0 \\Rightarrow \\lambda = -1 \\pm 2i.$ Since $\\alpha = -1 < 0$, the origin is an asymptotically stable spiral sink. Step 2: Eigenvector for $\\lambda = -1 + 2i$: $\\left(-1 - 2i, -5 ; 1, 1 - 2i\\right)\\left(v_1 ; v_2\\right) = \\mathbf{0} \\Rightarrow v_1 + (1 - 2i)v_2 = 0 \\Rightarrow \\mathbf{v} = \\left(-1 + 2i ; 1\\right) = \\left(-1 ; 1\\right) + i \\left(2 ; 0\\right).$ Step 3: Real and imaginary parts: $e^{(-1 + 2i)t}\\mathbf{v} = e^{-t}(\\cos 2t + i\\sin 2t)\\left[\\left(-1 ; 1\\right) + i \\left(2 ; 0\\right)\\right]$ $= e^{-t}\\left[\\cos 2t \\left(-1 ; 1\\right) - \\sin 2t \\left(2 ; 0\\right)\\right] + i e^{-t}\\left[\\sin 2t \\left(-1 ; 1\\right) + \\cos 2t \\left(2 ; 0\\right)\\right].$ Fundamental real solutions: $\\mathbf{x}_1(t) = e^{-t}\\left(-\\cos 2t - 2\\sin 2t ; \\cos 2t\\right), \\qquad \\mathbf{x}_2(t) = e^{-t}\\left(-\\sin 2t + 2\\cos 2t ; \\sin 2t\\right).$ $\\mathbf{x}(t) = C_1 \\mathbf{x}_1(t) + C_2 \\mathbf{x}_2(t).$ Step 4: Rotational sense: At $(1, 0)$: $\\mathbf{x}' = A(1, 0)^T = (-2, 1)^T$. Since $x_2' = +1 > 0$, rotation is counterclockwise."
         },
         {
-          "q": "[Systems of Linear Differential Equations, Phase Plane Topology & Matrix Exponentials · Practice 3] If the governing relation for this system is $g(t) = 5t + 5$, evaluate $g(8)$ and find the inverse input $t$ when $g(t) = 50$.",
+          "q": "The second-order linear homogeneous ODE $p''(t) - 41p'(t) + 210p(t) = 0$ has characteristic roots $\\lambda_1, \\lambda_2$. Determine the trace sum $\\lambda_1 + \\lambda_2$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Repeated roots",
           "cross_lesson": "1.01 Separable Equations",
-          "answer": "Substitute $t = 8$: $g(8) = 5(8) + 5 = \\mathbf{45}$. Setting $5t + 5 = 50$ gives $5t = 45 \\Rightarrow t = \\mathbf{9}$.",
-          "explanation": "Substitute $t = 8$: $g(8) = 5(8) + 5 = \\mathbf{45}$. Setting $5t + 5 = 50$ gives $5t = 45 \\Rightarrow t = \\mathbf{9}$."
+          "answer": "Final Answer: 41. From $\\lambda^2 - 41\\lambda + 210 = 0$, the sum of roots is $41$.",
+          "explanation": "From $\\lambda^2 - 41\\lambda + 210 = 0$, the sum of roots is $41$."
         },
         {
           "q": "Solve the double-resonance equation $y'' - 6y' + 9y = 4e^{3t}$ with $y(0) = 1$ and $y'(0) = 3$.",
@@ -222,24 +182,7 @@
           "target": "Complex roots",
           "cross_lesson": "2.01 Linear First-Order Equations & the Integrating Factor",
           "answer": "Step 1: Homogeneous: $r^2 - 6r + 9 = (r - 3)^2 = 0 \\Rightarrow y_c(t) = (C_1 + C_2 t)e^{3t}$. Step 2: Resonance multiplication: Both $e^{3t}$ and $t e^{3t}$ are in $y_c$ (multiplicity $s = 2$). Multiply trial by $t^2$: $y_p(t) = A t^2 e^{3t}.$ Using operator $(D - 3)^2[A t^2 e^{3t}] = e^{3t} D^2[A t^2] = e^{3t}(2A) = 4e^{3t} \\Rightarrow 2A = 4 \\Rightarrow A = 2$. Thus $y_p(t) = 2t^2 e^{3t}$. Step 3: Initial conditions: $y(t) = (C_1 + C_2 t + 2t^2)e^{3t}$. $y(0) = C_1 = 1$. $y'(t) = (C_2 + 4t)e^{3t} + 3(1 + C_2 t + 2t^2)e^{3t} \\Rightarrow y'(0) = C_2 + 3 = 3 \\Rightarrow C_2 = 0$. Particular solution: $y(t) = (1 + 2t^2)e^{3t}.$",
-          "explanation": "Step 1: Homogeneous: $r^2 - 6r + 9 = (r - 3)^2 = 0 \\Rightarrow y_c(t) = (C_1 + C_2 t)e^{3t}$. Step 2: Resonance multiplication: Both $e^{3t}$ and $t e^{3t}$ are in $y_c$ (multiplicity $s = 2$). Multiply trial by $t^2$: $y_p(t) = A t^2 e^{3t}.$ Using operator $(D - 3)^2[A t^2 e^{3t}] = e^{3t} D^2[A t^2] = e^{3t}(2A) = 4e^{3t} \\Rightarrow 2A = 4 \\Rightarrow A = 2$. Thus $y_p(t) = 2t^2 e^{3t}$. Step 3: Initial conditions: $y(t) = (C_1 + C_2 t + 2t^2)e^{3t}$. $y(0) = C_1 = 1$. $y'(t) = (C_2 + 4t)e^{3t} + 3(1 + C_2 t + 2t^2)e^{3t} \\Rightarrow y'(0) = C_2 + 3 = 3 \\Rightarrow C_2 = 0$. Particular solution: $y(t) = (1 + 2t^2)e^{3t}.$",
-          "figure": {
-            "type": "slope_field",
-            "title": "Linear First-Order Direction Field",
-            "fn": "-0.5*y + x",
-            "xrange": [
-              -3,
-              3
-            ],
-            "yrange": [
-              -3,
-              3
-            ],
-            "solution": {
-              "x0": -2,
-              "y0": 2
-            }
-          }
+          "explanation": "Step 1: Homogeneous: $r^2 - 6r + 9 = (r - 3)^2 = 0 \\Rightarrow y_c(t) = (C_1 + C_2 t)e^{3t}$. Step 2: Resonance multiplication: Both $e^{3t}$ and $t e^{3t}$ are in $y_c$ (multiplicity $s = 2$). Multiply trial by $t^2$: $y_p(t) = A t^2 e^{3t}.$ Using operator $(D - 3)^2[A t^2 e^{3t}] = e^{3t} D^2[A t^2] = e^{3t}(2A) = 4e^{3t} \\Rightarrow 2A = 4 \\Rightarrow A = 2$. Thus $y_p(t) = 2t^2 e^{3t}$. Step 3: Initial conditions: $y(t) = (C_1 + C_2 t + 2t^2)e^{3t}$. $y(0) = C_1 = 1$. $y'(t) = (C_2 + 4t)e^{3t} + 3(1 + C_2 t + 2t^2)e^{3t} \\Rightarrow y'(0) = C_2 + 3 = 3 \\Rightarrow C_2 = 0$. Particular solution: $y(t) = (1 + 2t^2)e^{3t}.$"
         }
       ]
     },
@@ -289,17 +232,7 @@
           ],
           "correct": 0,
           "answer": "The recurrence relation is $a_n = -\\frac{a_{n-2}}{n(n+2)}$ for $n \\geq 2$, with $a_0 = 1$. We need to find $a_3$. For $n=2$, $a_2 = -\\frac{a_0}{2(2+2)} = -\\frac{1}{2(4)} = -\\frac{1}{8}$. For $n=3$, $a_3 = -\\frac{a_{3-2}}{3(3+2)} = -\\frac{a_1}{3(5)} = -\\frac{a_1}{15}$. Since the recurrence relation only relates terms that are two indices apart, and we are given $a_0$, any odd-indexed coefficients will depend on $a_1$. However, the form of the solution for Bessel's equation of order $u$ is $y(x) = x^r \\sum_{n=0}^{\\infty} a_n x^n$. In this problem, $r=1$, so $y(x) = x \\sum_{n=0}^{\\infty} a_n x^n = x(a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \\dots) = a_0 x + a_1 x^2 + a_2 x^3 + a_3 x^4 + \\dots$. If we substitute this into Bessel's equation, it can be shown that for $u=1$, $a_1=0$. Therefore, $a_3 = -\\frac{a_1}{15} = -\\frac{0}{15} = 0$.",
-          "explanation": "The recurrence relation is $a_n = -\\frac{a_{n-2}}{n(n+2)}$ for $n \\geq 2$, with $a_0 = 1$. We need to find $a_3$. For $n=2$, $a_2 = -\\frac{a_0}{2(2+2)} = -\\frac{1}{2(4)} = -\\frac{1}{8}$. For $n=3$, $a_3 = -\\frac{a_{3-2}}{3(3+2)} = -\\frac{a_1}{3(5)} = -\\frac{a_1}{15}$. Since the recurrence relation only relates terms that are two indices apart, and we are given $a_0$, any odd-indexed coefficients will depend on $a_1$. However, the form of the solution for Bessel's equation of order $u$ is $y(x) = x^r \\sum_{n=0}^{\\infty} a_n x^n$. In this problem, $r=1$, so $y(x) = x \\sum_{n=0}^{\\infty} a_n x^n = x(a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \\dots) = a_0 x + a_1 x^2 + a_2 x^3 + a_3 x^4 + \\dots$. If we substitute this into Bessel's equation, it can be shown that for $u=1$, $a_1=0$. Therefore, $a_3 = -\\frac{a_1}{15} = -\\frac{0}{15} = 0$.",
-          "figure": {
-            "type": "slope_field",
-            "expr": "0.3*x - 0.45*y + 0.1*(-1)",
-            "sol_fn": "0.67*x - 1.48 + 3*exp(-0.45*x)",
-            "xmin": -4,
-            "xmax": 4,
-            "ymin": -4,
-            "ymax": 4,
-            "width": 225
-          }
+          "explanation": "The recurrence relation is $a_n = -\\frac{a_{n-2}}{n(n+2)}$ for $n \\geq 2$, with $a_0 = 1$. We need to find $a_3$. For $n=2$, $a_2 = -\\frac{a_0}{2(2+2)} = -\\frac{1}{2(4)} = -\\frac{1}{8}$. For $n=3$, $a_3 = -\\frac{a_{3-2}}{3(3+2)} = -\\frac{a_1}{3(5)} = -\\frac{a_1}{15}$. Since the recurrence relation only relates terms that are two indices apart, and we are given $a_0$, any odd-indexed coefficients will depend on $a_1$. However, the form of the solution for Bessel's equation of order $u$ is $y(x) = x^r \\sum_{n=0}^{\\infty} a_n x^n$. In this problem, $r=1$, so $y(x) = x \\sum_{n=0}^{\\infty} a_n x^n = x(a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \\dots) = a_0 x + a_1 x^2 + a_2 x^3 + a_3 x^4 + \\dots$. If we substitute this into Bessel's equation, it can be shown that for $u=1$, $a_1=0$. Therefore, $a_3 = -\\frac{a_1}{15} = -\\frac{0}{15} = 0$."
         },
         {
           "q": "Consider the second-order linear homogeneous differential equation $y'' - 5y' + 6y = 0$. If the auxiliary equation has roots $r_1$ and $r_2$, find the value of $r_1 + r_2$.",
@@ -374,17 +307,7 @@
           ],
           "correct": 0,
           "answer": "The given differential equation is $x^2 y'' + x y' + (x^2 - u^2) y = 0$. We can rewrite this in the standard form $y'' + P(x)y' + Q(x)y = 0$ by dividing by $x^2$: $y'' + \\frac{1}{x} y' + \\frac{x^2 - u^2}{x^2} y = 0$. Thus, $P(x) = \\frac{1}{x}$ and $Q(x) = \\frac{x^2 - u^2}{x^2} = 1 - \\frac{ u^2}{x^2}$. $x=0$ is a singular point. To determine if it's a regular singular point, we examine $x P(x)$ and $x^2 Q(x)$. $x P(x) = x \\cdot \\frac{1}{x} = 1$, which is analytic at $x=0$. $x^2 Q(x) = x^2 \\cdot \\frac{x^2 - u^2}{x^2} = x^2 - u^2$, which is also analytic at $x=0$. Therefore, $x=0$ is a regular singular point. The method of Frobenius assumes a solution of the form $y(x) = \\sum_{n=0}^{\\infty} c_n x^{n+r}$, where $c_0 eq 0$. Substituting this into the differential equation, we get the indicial equation, which is a quadratic equation in $r$. For Bessel's equation, the indicial equation is given by $r(r-1) + p_0 r + q_0 = 0$, where $p_0 = \\lim_{x \\rightarrow 0} xP(x)$ and $q_0 = \\lim_{x \\rightarrow 0} x^2 Q(x)$. In our case, $p_0 = 1$ and $q_0 = - u^2$. So the indicial equation is $r(r-1) + 1 \\cdot r - u^2 = 0$, which simplifies to $r^2 - r + r - u^2 = 0$, or $r^2 - u^2 = 0$. Given $u = 1/2$, the indicial equation becomes $r^2 - (1/2)^2 = 0$, which is $r^2 - \\frac{1}{4} = 0$. The roots of this equation are $r = \\pm \\sqrt{\\frac{1}{4}} = \\pm \\frac{1}{2}$.",
-          "explanation": "The given differential equation is $x^2 y'' + x y' + (x^2 - u^2) y = 0$. We can rewrite this in the standard form $y'' + P(x)y' + Q(x)y = 0$ by dividing by $x^2$: $y'' + \\frac{1}{x} y' + \\frac{x^2 - u^2}{x^2} y = 0$. Thus, $P(x) = \\frac{1}{x}$ and $Q(x) = \\frac{x^2 - u^2}{x^2} = 1 - \\frac{ u^2}{x^2}$. $x=0$ is a singular point. To determine if it's a regular singular point, we examine $x P(x)$ and $x^2 Q(x)$. $x P(x) = x \\cdot \\frac{1}{x} = 1$, which is analytic at $x=0$. $x^2 Q(x) = x^2 \\cdot \\frac{x^2 - u^2}{x^2} = x^2 - u^2$, which is also analytic at $x=0$. Therefore, $x=0$ is a regular singular point. The method of Frobenius assumes a solution of the form $y(x) = \\sum_{n=0}^{\\infty} c_n x^{n+r}$, where $c_0 eq 0$. Substituting this into the differential equation, we get the indicial equation, which is a quadratic equation in $r$. For Bessel's equation, the indicial equation is given by $r(r-1) + p_0 r + q_0 = 0$, where $p_0 = \\lim_{x \\rightarrow 0} xP(x)$ and $q_0 = \\lim_{x \\rightarrow 0} x^2 Q(x)$. In our case, $p_0 = 1$ and $q_0 = - u^2$. So the indicial equation is $r(r-1) + 1 \\cdot r - u^2 = 0$, which simplifies to $r^2 - r + r - u^2 = 0$, or $r^2 - u^2 = 0$. Given $u = 1/2$, the indicial equation becomes $r^2 - (1/2)^2 = 0$, which is $r^2 - \\frac{1}{4} = 0$. The roots of this equation are $r = \\pm \\sqrt{\\frac{1}{4}} = \\pm \\frac{1}{2}$.",
-          "figure": {
-            "type": "slope_field",
-            "expr": "0.5*x - 0.45*y + 0.1*(1)",
-            "sol_fn": "1.11*x - 2.47 + 3*exp(-0.45*x)",
-            "xmin": -4,
-            "xmax": 4,
-            "ymin": -4,
-            "ymax": 4,
-            "width": 225
-          }
+          "explanation": "The given differential equation is $x^2 y'' + x y' + (x^2 - u^2) y = 0$. We can rewrite this in the standard form $y'' + P(x)y' + Q(x)y = 0$ by dividing by $x^2$: $y'' + \\frac{1}{x} y' + \\frac{x^2 - u^2}{x^2} y = 0$. Thus, $P(x) = \\frac{1}{x}$ and $Q(x) = \\frac{x^2 - u^2}{x^2} = 1 - \\frac{ u^2}{x^2}$. $x=0$ is a singular point. To determine if it's a regular singular point, we examine $x P(x)$ and $x^2 Q(x)$. $x P(x) = x \\cdot \\frac{1}{x} = 1$, which is analytic at $x=0$. $x^2 Q(x) = x^2 \\cdot \\frac{x^2 - u^2}{x^2} = x^2 - u^2$, which is also analytic at $x=0$. Therefore, $x=0$ is a regular singular point. The method of Frobenius assumes a solution of the form $y(x) = \\sum_{n=0}^{\\infty} c_n x^{n+r}$, where $c_0 eq 0$. Substituting this into the differential equation, we get the indicial equation, which is a quadratic equation in $r$. For Bessel's equation, the indicial equation is given by $r(r-1) + p_0 r + q_0 = 0$, where $p_0 = \\lim_{x \\rightarrow 0} xP(x)$ and $q_0 = \\lim_{x \\rightarrow 0} x^2 Q(x)$. In our case, $p_0 = 1$ and $q_0 = - u^2$. So the indicial equation is $r(r-1) + 1 \\cdot r - u^2 = 0$, which simplifies to $r^2 - r + r - u^2 = 0$, or $r^2 - u^2 = 0$. Given $u = 1/2$, the indicial equation becomes $r^2 - (1/2)^2 = 0$, which is $r^2 - \\frac{1}{4} = 0$. The roots of this equation are $r = \\pm \\sqrt{\\frac{1}{4}} = \\pm \\frac{1}{2}$."
         }
       ]
     },
@@ -464,17 +387,7 @@
           ],
           "correct": 0,
           "answer": "The given differential equation is $y'' + 4y = 8$. This is a nonhomogeneous second-order linear differential equation. We use the method of undetermined coefficients to find a particular solution, $y_p(x)$. The nonhomogeneous term is a constant, 8. We guess a particular solution of the form $y_p(x) = A$, where A is a constant. Then, $y_p'(x) = 0$ and $y_p''(x) = 0$. Substituting these into the differential equation: $0 + 4(A) = 8$. Solving for A, we get $4A = 8$, which means $A = 2$. Therefore, the particular solution is $y_p(x) = 2$.",
-          "explanation": "The given differential equation is $y'' + 4y = 8$. This is a nonhomogeneous second-order linear differential equation. We use the method of undetermined coefficients to find a particular solution, $y_p(x)$. The nonhomogeneous term is a constant, 8. We guess a particular solution of the form $y_p(x) = A$, where A is a constant. Then, $y_p'(x) = 0$ and $y_p''(x) = 0$. Substituting these into the differential equation: $0 + 4(A) = 8$. Solving for A, we get $4A = 8$, which means $A = 2$. Therefore, the particular solution is $y_p(x) = 2$.",
-          "figure": {
-            "type": "slope_field",
-            "expr": "0.2*x - 0.25*y + 0.1*(-2)",
-            "sol_fn": "0.8*x - 3.2 + 3*exp(-0.25*x)",
-            "xmin": -4,
-            "xmax": 4,
-            "ymin": -4,
-            "ymax": 4,
-            "width": 225
-          }
+          "explanation": "The given differential equation is $y'' + 4y = 8$. This is a nonhomogeneous second-order linear differential equation. We use the method of undetermined coefficients to find a particular solution, $y_p(x)$. The nonhomogeneous term is a constant, 8. We guess a particular solution of the form $y_p(x) = A$, where A is a constant. Then, $y_p'(x) = 0$ and $y_p''(x) = 0$. Substituting these into the differential equation: $0 + 4(A) = 8$. Solving for A, we get $4A = 8$, which means $A = 2$. Therefore, the particular solution is $y_p(x) = 2$."
         },
         {
           "q": "Consider the nonhomogeneous linear second-order differential equation $y'' + y = 5$. If $y_p(x) = A$ is a particular solution, what is the value of $A$?",
@@ -571,26 +484,7 @@
           "correct": 3,
           "answer": "Euler: $e^{\\alpha x}$ envelope times sinusoids.",
           "explanation": "Euler: $e^{\\alpha x}$ envelope times sinusoids.",
-          "cross_lesson": "1.01 Separable Equations",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.45*(x - (0.0))**2 + (-0.5)",
-              "0.4*x + (0.7)"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -5,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 0.0,
-                "y": -0.5,
-                "label": "$(0,-0.5)$"
-              }
-            ],
-            "width": 230
-          }
+          "cross_lesson": "1.01 Separable Equations"
         },
         {
           "q": "Consider the differential equation $\\frac{dy}{dx} = \\frac{\\cos(x)}{y^2}$ for $y > 0$ and $x \\in [0, \\frac{\\pi}{2}]$. If $y(0) = 2$, find the value of $y(\\frac{\\pi}{2})$.",

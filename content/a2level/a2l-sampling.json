@@ -285,7 +285,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Easy):</strong> The box plot for dataset \\( H \\) has quartiles \\( Q_1 = 19 \\), median \\( M = 33 \\), and \\( Q_3 = 46 \\). Work out the interquartile range \\( y = Q_3 - Q_1 \\) of \\( H \\).</p><p><strong>Step-by-Step Solution:</strong> The interquartile range is \\( Q_3 - Q_1 = 46 - 19 = 27 \\).</p>",
+          "en": "<p><strong>Problem (Easy):</strong> A random sample of \\( n = 50 \\) observations is taken from a population. The sample values are summarised as follows:\n\\[ \\sum x = 450, \\quad \\sum x^2 = 4295. \\]\nFind an unbiased estimate of the population variance.</p><p><strong>Step-by-Step Solution:</strong> The unbiased estimate of the population variance, denoted \\( s^2 \\), is calculated using the formula:\n\\[ s^2 = \\frac{1}{n - 1} \\left( \\sum x^2 - \\frac{(\\sum x)^2}{n} \\right) \\]\n\nSubstitute the given values \\( n = 50 \\), \\( \\sum x = 450 \\), and \\( \\sum x^2 = 4295 \\):\n\\[ s^2 = \\frac{1}{50 - 1} \\left( 4295 - \\frac{450^2}{50} \\right) \\]\n\\[ s^2 = \\frac{1}{49} \\left( 4295 - \\frac{202500}{50} \\right) \\]\n\\[ s^2 = \\frac{1}{49} (4295 - 4050) = \\frac{245}{49} = 5.0 \\]\n\nWhy other choices fail:\n- \\( 4.9 \\) is the biased sample variance obtained by dividing by \\( n = 50 \\) instead of \\( n - 1 = 49 \\).\n- \\( 2.24 \\) is the unbiased estimate of the standard deviation, \\( \\sqrt{5.0} \\approx 2.24 \\).\n- \\( 9.0 \\) is the sample mean \\( \\bar{x} = \\frac{450}{50} \\).</p>",
           "ar": null
         }
       },
@@ -297,7 +297,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Medium):</strong> For finite sets \\( E \\) and \\( F \\), \\( |E| = 52 \\), \\( |F| = 58 \\), and \\( |E \\cap F| = 28 \\). Work out the union cardinality \\( y = |E \\cup F| \\).</p><p><strong>Step-by-Step Solution:</strong> By Inclusion-Exclusion, \\( |E \\cup F| = 52 + 58 - 28 = 82 \\).</p>",
+          "en": "<p><strong>Problem (Medium):</strong> A quality control process monitors the weight, \\(W\\) grams, of chocolate bars produced by a machine. A random sample of 50 chocolate bars was taken, and their weights were recorded. The sample mean weight was 102.5 grams, and the sample standard deviation was 3.5 grams. <br><br>A) Calculate the standard error of the mean.<br>B) Construct a 95% confidence interval for the mean weight of the chocolate bars. <br>C) The machine is calibrated to produce chocolate bars with a mean weight of \\(\\mu_0 = 100\\) grams. Based on your confidence interval, what conclusion can be drawn about the calibration of the machine?</p><p><strong>Step-by-Step Solution:</strong> A) The standard error of the mean (SE) is calculated using the formula: \\(SE = \\frac{s}{\\sqrt{n}}\\), where \\(s\\) is the sample standard deviation and \\(n\\) is the sample size.<br>Given \\(s = 3.5\\) grams and \\(n = 50\\).<br>\\(SE = \\frac{3.5}{\\sqrt{50}} \\approx \\frac{3.5}{7.071} \\approx 0.495\\) grams.<br><br>B) To construct a 95% confidence interval for the mean weight, we use the formula: \\(CI = \\bar{x} \\pm z^* \\times SE\\), where \\(\\bar{x}\\) is the sample mean and \\(z^*\\) is the critical z-value for a 95% confidence level. For a 95% confidence level, \\(z^* \\approx 1.96\\).<br>Given \\(\\bar{x} = 102.5\\) grams and \\(SE \\approx 0.495\\) grams.<br>\\(CI = 102.5 \\pm 1.96 \\times 0.495\\)<br>\\(CI = 102.5 \\pm 0.9702\\)<br>The 95% confidence interval is approximately $(101.53, 103.47)$ grams.<br><br>C) The machine is calibrated to produce chocolate bars with a mean weight of \\(\\mu_0 = 100\\) grams. Our calculated 95% confidence interval for the mean weight is $(101.53, 103.47)$ grams. Since the hypothesized mean weight of 100 grams lies outside this interval, we have statistically significant evidence to conclude that the machine is likely not calibrated correctly to produce chocolate bars with a mean weight of 100 grams.</p>",
           "ar": null
         }
       },
@@ -460,50 +460,50 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Hard]</strong> A sample of size 7 gives values: 1, 12, 27, 22, 29, 3, 21. Find the sample mean \\( \\bar{x} \\).",
+          "en": "<strong>[Practice 3 · Hard]</strong> Two independent random samples, each of size \\(n\\), are taken from a normal population with mean \\(\\mu\\) and known standard deviation \\(\\sigma\\). From each sample, a symmetric \\(90\\%\\) confidence interval for \\(\\mu\\) is constructed.\n\nGiven that \\(\\Phi(1.645) = 0.9500\\) and \\(\\Phi(2.326) = 0.9900\\), where \\(\\Phi\\) denotes the standard normal cumulative distribution function, find the probability that these two confidence intervals overlap.",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sampling &amp; Estimation</em> and start from \\( \\bar{x} \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Sampling & Estimation and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\bar{x}=\\dfrac{\\sum x}{n}=\\dfrac{115}{7}=\\dfrac{115}{7} \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "\\( \\bar{x}=\\dfrac{\\sum x}{n}=\\dfrac{115}{7}=\\dfrac{115}{7} \\). <strong>Answer:</strong> \\(\\dfrac{115}{7}\\).",
+          "en": "1. **Margin of error for each confidence interval:**\nFor a symmetric \\(90\\%\\) confidence interval with known \\(\\sigma\\), the critical value is \\(z = 1.645\\). Each interval has half-width:\n\\[\nE = 1.645\\frac{\\sigma}{\\sqrt{n}}\n\\]\nThe two intervals are \\(I_1 = [\\bar{X}_1 - E, \\bar{X}_1 + E]\\) and \\(I_2 = [\\bar{X}_2 - E, \\bar{X}_2 + E]\\).\n\n2. **Condition for interval overlap:**\nTwo intervals of identical half-width \\(E\\) overlap if and only if the distance between their centres does not exceed the sum of their half-widths:\n\\[\n|\\bar{X}_1 - \\bar{X}_2| \\le 2E = 2(1.645)\\frac{\\sigma}{\\sqrt{n}}\n\\]\n\n3. **Distribution of the difference between sample means:**\nSince \\(\\bar{X}_1 \\sim N\\left(\\mu, \\frac{\\sigma^2}{n}\\right)\\) and \\(\\bar{X}_2 \\sim N\\left(\\mu, \\frac{\\sigma^2}{n}\\right)\\) are independent:\n\\[\nD = \\bar{X}_1 - \\bar{X}_2 \\sim N\\left(0, \\frac{\\sigma^2}{n} + \\frac{\\sigma^2}{n}\\right) = N\\left(0, \\frac{2\\sigma^2}{n}\\right)\n\\]\nThe standard deviation of \\(D\\) is \\(\\sigma_D = \\sqrt{\\frac{2\\sigma^2}{n}} = \\frac{\\sigma\\sqrt{2}}{\\sqrt{n}}\\).\n\n4. **Standardization and probability calculation:**\n\\[\nP(|D| \\le 2E) = P\\left(|Z| \\le \\frac{2(1.645)\\frac{\\sigma}{\\sqrt{n}}}{\\sqrt{2}\\frac{\\sigma}{\\sqrt{n}}}\\right) = P(|Z| \\le 1.645\\sqrt{2})\n\\]\nEvaluating the boundary:\n\\[\n1.645\\sqrt{2} \\approx 1.645 \\times 1.41421 \\approx 2.326\n\\]\nUsing the symmetry of the standard normal distribution:\n\\[\nP(|Z| \\le 2.326) = 2\\Phi(2.326) - 1 = 2(0.9900) - 1 = 1.9800 - 1 = 0.980\n\\]\n\n**Common Misconceptions:**\n- **0.900:** Mistakenly assuming the probability of overlap equals the confidence level of a single interval.\n- **0.810:** Assuming the intervals overlap only when both contain \\(\\mu\\), giving \\(0.90 \\times 0.90 = 0.810\\). While both containing \\(\\mu\\) is sufficient, intervals can also overlap without containing \\(\\mu\\).\n- **0.990:** Computing the probability that at least one interval contains \\(\\mu\\) (\\(1 - 0.10^2 = 0.990\\)) or reading \\(\\Phi(2.326)\\) without subtracting the lower tail.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Easy]</strong> A normal random variable \\( H \\sim \\mathcal{N}(\\mu = 48, \\sigma^2 = 64) \\) is observed at \\( y = 72 \\). Work out the standardized score \\( z = (y - \\mu)/\\sigma \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> A random sample of 10 values of a variable \\( x \\) is taken. The results are summarised as follows:\n\\[ \\sum x = 50, \\quad \\sum x^2 = 322 \\]\nCalculate an unbiased estimate of the population variance.",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sampling &amp; Estimation</em> and start from \\( H \\sim \\mathcal{N}(\\mu = 48, \\sigma^2 = 64) \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Sampling & Estimation and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( z \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "The \\( z \\)-score is \\( \\frac{72 - 48}{8} = 3 \\).",
+          "en": "To find an unbiased estimate of the population variance \\( s^2 \\), we use the formula:\n\\[ s^2 = \\frac{1}{n - 1} \\left( \\sum x^2 - \\frac{(\\sum x)^2}{n} \\right) \\]\n\nGiven \\( n = 10 \\), \\( \\sum x = 50 \\), and \\( \\sum x^2 = 322 \\):\n\\[ \\frac{(\\sum x)^2}{n} = \\frac{50^2}{10} = \\frac{2500}{10} = 250 \\]\n\nSubstitute these values into the formula:\n\\[ s^2 = \\frac{1}{10 - 1} (322 - 250) = \\frac{1}{9} \\times 72 = 8 \\]\n\n- The distractor 7.2 results from dividing by \\( n = 10 \\) instead of \\( n - 1 = 9 \\), which gives the biased sample variance rather than the unbiased estimate of the population variance.\n- The distractor 2.83 is the unbiased estimate of the population standard deviation \\( \\sqrt{8} \\approx 2.83 \\).\n- The distractor 32.2 arises from incorrectly dividing \\( \\sum x^2 \\) by 10.",
           "ar": null
         }
       },

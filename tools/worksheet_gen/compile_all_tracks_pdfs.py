@@ -74,9 +74,9 @@ def compile_track(track, workers=8):
         print(f"No topic files for {track}")
         return 0
     track_dl = os.path.join(DOWNLOADS_DIR, track)
-    if os.path.exists(track_dl):
-        shutil.rmtree(track_dl)
     os.makedirs(track_dl, exist_ok=True)
+    for old_pdf in glob.glob(os.path.join(track_dl, "*.pdf")):
+        os.remove(old_pdf)
 
     with ProcessPoolExecutor(max_workers=workers) as ex:
         futs = {ex.submit(_compile_topic_worker, tf): tf for tf in topic_files}

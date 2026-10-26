@@ -259,7 +259,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Easy):</strong> The separable initial value problem \\( \\dfrac{df}{dx} = 34x \\) satisfies \\( f(0) = 15 \\). Calculate the solution value \\( f(3) \\).</p><p><strong>Step-by-Step Solution:</strong> Integrating gives \\( f(x) = 17x^2 + 15 \\), so \\( f(3) = 168 \\).</p>",
+          "en": "<p><strong>Problem (Easy):</strong> Find the particular solution of the differential equation\n\\[ \\frac{\\mathrm{d}y}{\\mathrm{d}x} = 2x e^{-y} \\]\ngiven that \\( y = 0 \\) when \\( x = 0 \\).</p><p><strong>Step-by-Step Solution:</strong> To solve the differential equation, we use separation of variables:\n\n1. **Separate the variables**:\n\\[ e^y \\,\\mathrm{d}y = 2x \\,\\mathrm{d}x \\]\n\n2. **Integrate both sides**:\n\\[ \\int e^y \\,\\mathrm{d}y = \\int 2x \\,\\mathrm{d}x \\]\n\\[ e^y = x^2 + C \\]\n\n3. **Apply the initial condition** \\( y = 0 \\) when \\( x = 0 \\):\n\\[ e^0 = 0^2 + C \\implies 1 = C \\]\n*(A frequent error is assuming \\( C = 0 \\) because the boundary values are zero, which leads to the incorrect solution \\( y = \\ln(x^2) \\).)*\n\n4. **Express \\( y \\) explicitly in terms of \\( x \\)**:\n\\[ e^y = x^2 + 1 \\implies y = \\ln(x^2 + 1) \\]\n\nThus, the correct choice is \\( y = \\ln(x^2 + 1) \\).</p>",
           "ar": null
         }
       },
@@ -271,7 +271,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Medium):</strong> The Laplace transform of \\( f(x) = 216e^{4x} \\) is \\( g(s) = \\dfrac{216}{s - 4} \\) for \\( s > 4 \\). Calculate the evaluated transform \\( g(5) \\).</p><p><strong>Step-by-Step Solution:</strong> Substituting \\( s = 5 \\) gives \\( \\frac{216}{5 - 4} = 216 \\).</p>",
+          "en": "<p><strong>Problem (Medium):</strong> A curve satisfies the differential equation\n\\[ \\frac{\\mathrm{d}y}{\\mathrm{d}x} = \\frac{k - y}{2x + 1} \\]\nfor \\( x > -\\frac{1}{2} \\), where \\( k \\) is a real constant. The curve passes through the points \\( (0, 8) \\) and \\( (4, 2) \\).\n\nFind the value of \\( k \\).</p><p><strong>Step-by-Step Solution:</strong> To find the constant \\( k \\), we solve the differential equation by separation of variables:\n\\[ \\int \\frac{1}{k - y} \\,\\mathrm{d}y = \\int \\frac{1}{2x + 1} \\,\\mathrm{d}x \\]\n\nIntegrating both sides (paying close attention to the chain rule):\n\\[ -\\ln |k - y| = \\frac{1}{2} \\ln (2x + 1) + C \\]\n\nMultiplying by \\(-1\\) and exponentiating:\n\\[ \\ln |k - y| = -\\frac{1}{2} \\ln (2x + 1) - C = \\ln\\left((2x + 1)^{-1/2}\\right) - C \\]\n\\[ |k - y| = \\frac{A}{\\sqrt{2x + 1}} \\quad \\text{where } A = \\mathrm{e}^{-C} > 0 \\]\n\nRemoving the absolute value gives the general form:\n\\[ k - y = \\frac{B}{\\sqrt{2x + 1}} \\implies y = k - \\frac{B}{\\sqrt{2x + 1}} \\]\nwhere \\( B \\) is an arbitrary non-zero constant.\n\nNow, apply the given boundary conditions:\n1. At \\( (0, 8) \\):\n\\[ 8 = k - \\frac{B}{\\sqrt{2(0) + 1}} = k - B \\implies B = k - 8 \\]\n\n2. At \\( (4, 2) \\):\n\\[ 2 = k - \\frac{B}{\\sqrt{2(4) + 1}} = k - \\frac{B}{\\sqrt{9}} = k - \\frac{B}{3} \\]\n\nSubstitute \\( B = k - 8 \\) into this equation:\n\\[ 2 = k - \\frac{k - 8}{3} \\]\n\\[ 6 = 3k - (k - 8) \\]\n\\[ 6 = 2k + 8 \\]\n\\[ 2k = -2 \\implies k = -1 \\]\n\nCommon Pitfalls:\n- Choice B (\\(11\\)) results from forgetting the negative sign when integrating \\(\\frac{1}{k - y}\\), giving \\(+\\ln|k - y|\\).\n- Choice C (\\(\\frac{5}{4}\\)) results from omitting the factor of \\(\\frac{1}{2}\\) when integrating \\(\\frac{1}{2x + 1}\\).\n- Choice D (\\(5\\)) results from a sign distribution error when expanding \\(-(k - 8)\\).</p>",
           "ar": null
         }
       },
@@ -441,75 +441,75 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Hard]</strong> Which differential equation correctly models the statement: \"The rate of increase of the volume V of a balloon is proportional to the square of its radius r.\"?",
+          "en": "<strong>[Practice 3 · Hard]</strong> A curve passes through the point \\(\\left(1, \\,\\frac{1}{2}\\right)\\) and satisfies the differential equation\n\\[ \\frac{\\mathrm{d}y}{\\mathrm{d}x} = \\frac{y^2(1 - \\ln x)}{x^2} \\quad \\text{for } x > 0. \\]\nDetermine the exact coordinates of the stationary point of the curve and its nature.",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differential Equations</em> and write down the target quantity and domain conditions.",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Differential Equations and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( \\dfrac{dV}{dt}=kr^2 \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "The correct model is \\( \\dfrac{dV}{dt}=kr^2 \\), where \\( k>0 \\) is a constant of proportionality. <strong>Answer:</strong> \\(\\dfrac{dV}{dt}=kr^2\\).",
+          "en": "1. **Separate the variables:**\n\\[ \\frac{1}{y^2} \\,\\mathrm{d}y = \\frac{1 - \\ln x}{x^2} \\,\\mathrm{d}x \\]\n\n2. **Integrate both sides:**\nThe left-hand side integrates to:\n\\[ \\int y^{-2}\\,\\mathrm{d}y = -\\frac{1}{y} \\]\nFor the right-hand side, split into two integrals:\n\\[ \\int \\frac{1 - \\ln x}{x^2}\\,\\mathrm{d}x = \\int x^{-2}\\,\\mathrm{d}x - \\int x^{-2}\\ln x\\,\\mathrm{d}x \\]\nWe have \\(\\int x^{-2}\\,\\mathrm{d}x = -\\frac{1}{x}\\). Using integration by parts for \\(\\int x^{-2}\\ln x\\,\\mathrm{d}x\\) with \\(u = \\ln x\\) and \\(v' = x^{-2}\\):\n\\[ \\int x^{-2}\\ln x\\,\\mathrm{d}x = -\\frac{\\ln x}{x} - \\int \\left(-\\frac{1}{x}\\right)\\left(\\frac{1}{x}\\right)\\mathrm{d}x = -\\frac{\\ln x}{x} - \\frac{1}{x} \\]\nThus:\n\\[ \\int \\frac{1 - \\ln x}{x^2}\\,\\mathrm{d}x = -\\frac{1}{x} - \\left(-\\frac{\\ln x}{x} - \\frac{1}{x}\\right) = \\frac{\\ln x}{x} + C \\]\n\n3. **Apply the initial condition:**\nAt \\(x = 1\\), \\(y = \\frac{1}{2}\\):\n\\[ -\\frac{1}{1/2} = \\frac{\\ln 1}{1} + C \\implies -2 = 0 + C \\implies C = -2 \\]\nHence:\n\\[ -\\frac{1}{y} = \\frac{\\ln x}{x} - 2 = \\frac{\\ln x - 2x}{x} \\implies y = \\frac{x}{2x - \\ln x} \\]\n\n4. **Find the stationary point:**\nSetting \\(\\frac{\\mathrm{d}y}{\\mathrm{d}x} = 0\\):\n\\[ \\frac{y^2(1 - \\ln x)}{x^2} = 0 \\implies 1 - \\ln x = 0 \\implies x = e \\]\nSubstitute \\(x = e\\) into the particular solution:\n\\[ y(e) = \\frac{e}{2e - \\ln e} = \\frac{e}{2e - 1} \\]\n\n5. **Determine the nature:**\nSince \\(\\frac{y^2}{x^2} > 0\\) for all \\(x > 0\\), the sign of \\(\\frac{\\mathrm{d}y}{\\mathrm{d}x}\\) is governed by \\(1 - \\ln x\\):\n- For \\(0 < x < e\\), \\(\\ln x < 1 \\implies \\frac{\\mathrm{d}y}{\\mathrm{d}x} > 0\\) (curve is increasing).\n- For \\(x > e\\), \\(\\ln x > 1 \\implies \\frac{\\mathrm{d}y}{\\mathrm{d}x} < 0\\) (curve is decreasing).\n\nTherefore, the point \\(\\left(e, \\,\\dfrac{e}{2e - 1}\\right)\\) is a **local maximum**.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Easy]</strong> Given \\( \\dfrac{dy}{dx}=4x+10 \\) and \\( y(-1)=9 \\), find \\( y(-4) \\).",
+          "en": "<strong>[Practice 4 · Easy]</strong> A population is modeled by \\( P(t)=P_0\\cdot 2^{t/2} \\) with \\( P_0=40 \\). Find \\( t \\) when \\( P(t)=320 \\).",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differential Equations</em> and start from \\( \\dfrac{dy}{dx}=4x+10 \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Exponentials & Logarithms and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( y=\\dfrac{4}{2}x^2+10x+C \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "\\( y=\\dfrac{4}{2}x^2+10x+C \\). Using \\( y(-1)=9 \\): \\( C=17 \\). Then \\( y(-4)=9 \\).",
+          "en": "\\( 2^{t/2}=320/40=8 \\Rightarrow t/2=3 \\Rightarrow t=6 \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 5 · Medium]</strong> The first-order differential equation \\( \\dfrac{dp}{dt} = 23t - 6p \\) has its slope field plotted below. Calculate the slope \\( \\dfrac{dp}{dt} \\) at the point \\( P(17, 26) \\).",
+          "en": "<strong>[Practice 5 · Medium]</strong> Referring to the coordinate curve shown in the diagram, a population is modeled by \\( P(t)=P_0\\cdot 2^{t/4} \\) with \\( P_0=90 \\). Find \\( t \\) when \\( P(t)=1440 \\).",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Differential Equations</em> and start from \\( \\dfrac{dp}{dt} = 23t - 6p \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Exponentials & Logarithms and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( (17, 26) \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Evaluating at \\( (17, 26) \\) gives \\( 23(17) - 6(26) = 235 \\).",
+          "en": "\\( 2^{t/4}=1440/90=16 \\Rightarrow t/4=4 \\Rightarrow t=16 \\).",
           "ar": null
         }
       }

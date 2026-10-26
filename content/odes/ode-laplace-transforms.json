@@ -358,7 +358,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Hard):</strong> Find \\( \\mathcal L\\{4 t - 2 \\cos{\\left(4 t \\right)}\\} \\).</p><p><strong>Step-by-Step Solution:</strong> Use the table (and linearity): \\( \\mathcal L\\{4 t - 2 \\cos{\\left(4 t \\right)}\\}=\\frac{2 \\left(- s^{3} + 2 s^{2} + 32\\right)}{s^{2} \\left(s^{2} + 16\\right)} \\). <strong>Final Answer:</strong> \\( \\frac{2 \\left(- s^{3} + 2 s^{2} + 32\\right)}{s^{2} \\left(s^{2} + 16\\right)} \\).</p>",
+          "en": "<p><strong>Problem (Hard):</strong> Consider the differential equation \\(y''(t) + 4y(t) = u(t-2)\\), where \\(u(t)\\) is the Heaviside step function, with initial conditions \\(y(0) = 0\\) and \\(y'(0) = 0\\). Apply the Laplace Transform to both sides of the equation. If \\(Y(s) = \\mathcal{L}\\{y(t)\\}\\) and \\(\\mathcal{L}\\{u(t-a)\\} = \\frac{e^{-as}}{s}\\), which of the following expressions represents \\(Y(s)\\)?</p><p><strong>Step-by-Step Solution:</strong> Applying the Laplace Transform to the given differential equation: \\(\\mathcal{L}\\{y''(t)\\} + 4\\mathcal{L}\\{y(t)\\} = \\mathcal{L}\\{u(t-2)\\}\\). Using the properties of the Laplace Transform and the given initial conditions \\(y(0) = 0\\) and \\(y'(0) = 0\\), we have \\(\\mathcal{L}\\{y''(t)\\} = s^2 Y(s) - sy(0) - y'(0) = s^2 Y(s)\\). The Laplace Transform of \\(y(t)\\) is \\(Y(s)\\). The Laplace Transform of the Heaviside step function \\(u(t-2)\\) is \\(\\frac{e^{-2s}}{s}\\). Substituting these into the transformed equation gives: \\(s^2 Y(s) + 4 Y(s) = \\frac{e^{-2s}}{s}\\). Factoring out \\(Y(s)\\), we get \\(Y(s)(s^2 + 4) = \\frac{e^{-2s}}{s}\\). Solving for \\(Y(s)\\), we obtain \\(Y(s) = \\frac{e^{-2s}}{s(s^2 + 4)}\\).</p>",
           "ar": null
         }
       },
@@ -370,7 +370,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Easy):</strong> The second-order linear homogeneous ODE \\( M''(z) - 39M'(z) + 248M(z) = 0 \\) has characteristic roots \\( \\lambda_1, \\lambda_2 \\). What is the trace sum \\( \\lambda_1 + \\lambda_2 \\)?</p><p><strong>Step-by-Step Solution:</strong> From \\( \\lambda^2 - 39\\lambda + 248 = 0 \\), the sum of roots is \\( 39 \\).</p>",
+          "en": "<p><strong>Problem (Easy):</strong> The second-order linear homogeneous ODE \\( f''(x) - 39f'(x) + 350f(x) = 0 \\) has characteristic roots \\( \\lambda_1, \\lambda_2 \\). Determine the trace sum \\( \\lambda_1 + \\lambda_2 \\).</p><p><strong>Step-by-Step Solution:</strong> From \\( \\lambda^2 - 39\\lambda + 350 = 0 \\), the sum of roots is \\( 39 \\).</p>",
           "ar": null
         }
       },
@@ -504,50 +504,50 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Medium]</strong> The separable initial value problem \\( \\dfrac{dM}{dz} = 30z \\) satisfies \\( M(0) = 13 \\). What is the solution value \\( M(12) \\)?",
+          "en": "<strong>[Practice 3 · Medium]</strong> Consider the initial value problem \\( y'' + 4y = \\delta(t- \\pi) \\) with \\( y(0) = 0 \\) and \\( y'(0) = 0 \\). Which of the following represents the Laplace Transform of the solution, \\(Y(s) = \\mathcal{L}\\{y(t)\\}\\)?",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory</em> and start from \\( \\dfrac{dM}{dz} = 30z \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in The Laplace Transform, Discontinuous Forcing & Convolution Theory and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( M(z) = 15z^2 + 13 \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Integrating gives \\( M(z) = 15z^2 + 13 \\), so \\( M(12) = 2173 \\).",
+          "en": "Taking the Laplace transform of the differential equation, we have \\(s^2 Y(s) - sy(0) - y'(0) + 4Y(s) = \\mathcal{L}\\{\\delta(t-\\pi)\\}\\). Given the initial conditions \\(y(0)=0\\) and \\(y'(0)=0\\), this simplifies to \\(s^2 Y(s) + 4Y(s) = e^{-\\pi s}\\). Factoring out \\(Y(s)\\), we get \\(Y(s)(s^2 + 4) = e^{-\\pi s}\\). Therefore, the Laplace transform of the solution is \\(Y(s) = \\frac{e^{-\\pi s}}{s^2 + 4}\\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Hard]</strong> The Laplace transform of \\( M(z) = 368e^{24z} \\) is \\( N(s) = \\dfrac{368}{s - 24} \\) for \\( s > 24 \\). What is the evaluated transform \\( N(25) \\)?",
+          "en": "<strong>[Practice 4 · Hard]</strong> Solve \\( y''-12y'+35y=0 \\), \\( y(0)=-1 \\), \\( y'(0)=-13 \\). Find \\( y(2) \\).",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory</em> and start from \\( M(z) = 368e^{24z} \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Second-Order Linear Equations (Constant Coefficients) and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( s = 25 \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Substituting \\( s = 25 \\) gives \\( \\frac{368}{25 - 24} = 368 \\).",
+          "en": "Auxiliary equation \\( r^2-12r+35=0 \\) has roots \\( r=5,7 \\), so \\( y=C_1e^{5x}+C_2e^{7x} \\). Solving \\( y(0)=C_1+C_2=-1 \\) and \\( y'(0)=5C_1+7C_2=-13 \\) gives \\( C_1=3 \\), \\( C_2=-4 \\). So \\( y=3e^{5x}-4e^{7x} \\), and \\( y(2) \\) follows by substitution.",
           "ar": null
         }
       }

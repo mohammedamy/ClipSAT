@@ -355,7 +355,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Hard):</strong> Let \\( R = [0, 20] \\times [0, 8] \\) be a rectangle in the \\( (n, y) \\)-plane. Compute the exact value of the double integral \\( \\displaystyle\\iint_{R} 8ny\\,dA \\).</p><p><strong>Step-by-Step Solution:</strong> Integrating gives \\( 2(20^2)(8^2) = 51200 \\).</p>",
+          "en": "<p><strong>Problem (Hard):</strong> Evaluate the double integral \\( \\iint_R x y \\, dA \\) where \\( R \\) is the region in the first quadrant bounded by the lines \\( y=x \\), \\( x=1 \\), and \\( y=0 \\).</p><p><strong>Step-by-Step Solution:</strong> The region of integration \\( R \\) is a triangle with vertices (0,0), (1,0), and (1,1). We can set up the double integral using Fubini's Theorem. Since \\( y=x \\) is the upper bound for \\( y \\) and \\( x=1 \\) is the upper bound for \\( x \\), we can integrate with respect to \\( y \\) first, then \\( x \\). The limits for \\( y \\) are from 0 to \\( x \\), and the limits for \\( x \\) are from 0 to 1.\n\n\\[ \\iint_R x y \\, dA = \\int_0^1 \\int_0^x x y \\, dy \\, dx \\] \n\nFirst, evaluate the inner integral with respect to \\( y \\):\n\n\\[ \\int_0^x x y \\, dy = x \\left[ \\frac{y^2}{2} \\right]_0^x = x \\left( \\frac{x^2}{2} - 0 \\right) = \\frac{x^3}{2} \\] \n\nNow, evaluate the outer integral with respect to \\( x \\):\n\n\\[ \\int_0^1 \\frac{x^3}{2} \\, dx = \\frac{1}{2} \\left[ \\frac{x^4}{4} \\right]_0^1 = \\frac{1}{2} \\left( \\frac{1^4}{4} - 0 \\right) = \\frac{1}{2} \\times \\frac{1}{4} = \\frac{1}{8} \\] \n\nAlternatively, we could integrate with respect to \\( x \\) first. The region is bounded by \\( x=y \\) and \\( x=1 \\) for \\( y \\) from 0 to 1. \n\n\\[ \\iint_R x y \\, dA = \\int_0^1 \\int_y^1 x y \\, dx \\, dy \\] \n\nInner integral with respect to \\( x \\):\n\n\\[ \\int_y^1 x y \\, dx = y \\left[ \\frac{x^2}{2} \\right]_y^1 = y \\left( \\frac{1^2}{2} - \\frac{y^2}{2} \\right) = \\frac{y}{2} - \\frac{y^3}{2} \\] \n\nOuter integral with respect to \\( y \\):\n\n\\[ \\int_0^1 \\left( \\frac{y}{2} - \\frac{y^3}{2} \\right) \\, dy = \\left[ \\frac{y^2}{4} - \\frac{y^4}{8} \\right]_0^1 = \\left( \\frac{1^2}{4} - \\frac{1^4}{8} \\right) - (0-0) = \\frac{1}{4} - \\frac{1}{8} = \\frac{2}{8} - \\frac{1}{8} = \\frac{1}{8} \\] \n\nBoth methods yield the same result.</p>",
           "ar": null
         }
       },
@@ -367,7 +367,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Easy):</strong> Let the linear scalar potential be \\( A(n, y) = 10n + 24y - 10 \\). Compute the exact value of the squared gradient norm \\( \\|\\nabla A\\|^2 \\).</p><p><strong>Step-by-Step Solution:</strong> Since \\( \\nabla A = \\langle 10, 24 \\rangle \\), \\( \\|\\nabla A\\|^2 = 10^2 + 24^2 = 676 \\).</p>",
+          "en": "<p><strong>Problem (Easy):</strong> Evaluate the double integral of the function \\( f(x,y) = 2xy \\) over the rectangular region \\( R = [0, 2] \\times [0, 3] \\) using Fubini's Theorem. Set up the iterated integral by integrating with respect to \\( y \\) first, then \\( x \\).</p><p><strong>Step-by-Step Solution:</strong> To evaluate the double integral \\( \\iint_R 2xy \\, dA \\) where \\( R = [0, 2] \\times [0, 3] \\), we can use Fubini's Theorem. We will set up the iterated integral by integrating with respect to \\( y \\) first, then \\( x \\):\n\n\\[ \\int_{0}^{2} \\int_{0}^{3} 2xy \\, dy \\, dx \\\\\n\\] \n\nFirst, integrate with respect to \\( y \\), treating \\( x \\) as a constant:\n\n\\[ \\int_{0}^{3} 2xy \\, dy = \\left[ xy^2 \\right]_{y=0}^{y=3} = x(3^2) - x(0^2) = 9x \\\\\n\\] \n\nNow, integrate the result with respect to \\( x \\):\n\n\\[ \\int_{0}^{2} 9x \\, dx = \\left[ \\frac{9x^2}{2} \\right]_{x=0}^{x=2} = \\frac{9(2^2)}{2} - \\frac{9(0^2)}{2} = \\frac{9(4)}{2} = \\frac{36}{2} = 18 \\\\\n\\] \n\nTherefore, the value of the double integral is 18.</p>",
           "ar": null
         }
       },
@@ -501,50 +501,50 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Medium]</strong> Let the multivariable function \\( P \\) be defined by \\( P(r, y) = 13r^2 y + 14y^2 \\). Compute the exact value of the partial derivative \\( \\dfrac{\\partial P}{\\partial r}(15, 8) \\).",
+          "en": "<strong>[Practice 3 · Medium]</strong> Consider the region \\( R \\) in the first quadrant bounded by the x-axis, the line \\( y = x \\), and the circle \\( x^2 + y^2 = 16 \\). The integral \\( \\iint_R f(x,y) \\, dA \\) can be evaluated more easily in polar coordinates. If \\( f(x,y) = \\frac{1}{\\sqrt{x^2 + y^2}} \\), and the integral in polar coordinates is given by \\( \\int_0^{\\pi/4} \\int_0^4 r \\cdot \\frac{1}{r} \\, dr \\, d\\theta = \\int_0^{\\pi/4} A \\, d\\theta \\), find the value of \\( A \\).",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Double Integrals, Fubini's Theorem, Polar Coordinates & The Change-of-Variables Jacobian</em> and start from \\( P \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Double Integrals, Fubini's Theorem, Polar Coordinates & The Change-of-Variables Jacobian and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( r \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Differentiating with respect to \\( r \\) gives \\( 26ry \\), which equals \\( 3120 \\) at \\( (15, 8) \\).",
+          "en": "The region R is described in the first quadrant, bounded by the x-axis (\\( \\theta = 0 \\)), the line \\( y = x \\) (\\( \\theta = \\pi/4 \\)), and the circle \\( x^2 + y^2 = 16 \\) (\\( r = 4 \\)).\n\nThe integrand is \\( f(x,y) = \\frac{1}{\\sqrt{x^2 + y^2}} \\). In polar coordinates, \\( x^2 + y^2 = r^2 \\), so \\( \\sqrt{x^2 + y^2} = r \\). Thus, \\( f(x,y) = \\frac{1}{r} \\).\n\nThe differential area element in polar coordinates is \\( dA = r \\, dr \\, d\\theta \\).\n\nThe double integral in polar coordinates is:\n\n\\( \\iint_R f(x,y) \\, dA = \\int_0^{\\pi/4} \\int_0^4 \\left( \\frac{1}{r} \\right) r \\, dr \\, d\\theta \\)\n\nThis simplifies to:\n\n\\( \\int_0^{\\pi/4} \\int_0^4 1 \\, dr \\, d\\theta \\)\n\nEvaluating the inner integral with respect to \\( r \\):\n\n\\( \\int_0^4 1 \\, dr = [r]_0^4 = 4 - 0 = 4 \\)\n\nSo the integral becomes:\n\n\\( \\int_0^{\\pi/4} 4 \\, d\\theta \\)\n\nThis is in the form \\( \\int_0^{\\pi/4} A \\, d\\theta \\), where \\( A = 4 \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Hard]</strong> Consider the vector field \\( \\mathbf{P}(r, y, z) = \\langle 16r,\\, 5y,\\, 3z \\rangle \\) on \\( \\mathbb{R}^3 \\). Compute the exact value of the scalar divergence \\( \\nabla \\cdot \\mathbf{P} \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> For \\( f(x,y)=24 x - 7 y \\), find the maximum possible value of the directional derivative \\( D_{\\mathbf{u}}f \\) at any point, over all unit vectors \\( \\mathbf{u} \\).",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Double Integrals, Fubini's Theorem, Polar Coordinates & The Change-of-Variables Jacobian</em> and start from \\( \\mathbf{P}(r, y, z) = \\langle 16r,\\, 5y,\\, 3z \\rangle \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Chain Rule & Gradients and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 16 + 5 + 3 = 24 \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "The divergence is \\( 16 + 5 + 3 = 24 \\).",
+          "en": "\\( \\nabla f=(24,-7) \\) everywhere. By Theorem 2.1, the maximum directional derivative equals \\( \\lVert\\nabla f\\rVert=\\sqrt{(24)^2+(-7)^2}=25 \\).",
           "ar": null
         }
       }

@@ -22,31 +22,7 @@
           "question_type": "FRQ",
           "target": "Properties of the normal distribution",
           "answer": "$\\mu$ (the mean) controls the location of the center of the distribution (where the peak is). $\\sigma$ (the standard deviation) controls the spread: a larger $\\sigma$ produces a wider, flatter curve, while a smaller $\\sigma$ produces a narrower, taller curve — but both remain symmetric and bell-shaped.",
-          "explanation": "$\\mu$ (the mean) controls the location of the center of the distribution (where the peak is). $\\sigma$ (the standard deviation) controls the spread: a larger $\\sigma$ produces a wider, flatter curve, while a smaller $\\sigma$ produces a narrower, taller curve — but both remain symmetric and bell-shaped.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "3.6*exp(-0.5*x**2)"
-            ],
-            "xmin": -3.5,
-            "xmax": 3.5,
-            "ymin": -0.3,
-            "ymax": 4.5,
-            "shade": {
-              "fn1": "3.6*exp(-0.5*x**2)",
-              "fn2": "0",
-              "x0": -1.28,
-              "x1": 1.28
-            },
-            "point_labels": [
-              {
-                "x": 1.28,
-                "y": 1.59,
-                "label": "$z=1.28$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "$\\mu$ (the mean) controls the location of the center of the distribution (where the peak is). $\\sigma$ (the standard deviation) controls the spread: a larger $\\sigma$ produces a wider, flatter curve, while a smaller $\\sigma$ produces a narrower, taller curve — but both remain symmetric and bell-shaped."
         },
         {
           "q": "Adult male heights are approximately normal with mean $70$ inches and standard deviation $3$ inches. Using the 68-95-99.7 rule, find the range of heights containing the middle 95% of adult men.",
@@ -54,18 +30,7 @@
           "question_type": "FRQ",
           "target": "The 68-95-99.7 rule",
           "answer": "The 95% range spans $\\mu\\pm2\\sigma=70\\pm2(3)=70\\pm6$, so from $64$ to $76$ inches.",
-          "explanation": "The 95% range spans $\\mu\\pm2\\sigma=70\\pm2(3)=70\\pm6$, so from $64$ to $76$ inches.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "3*exp(-((x-70)**2)/(2*3**2))"
-            ],
-            "xmin": 58,
-            "xmax": 82,
-            "ymin": -0.5,
-            "ymax": 4,
-            "width": 210
-          }
+          "explanation": "The 95% range spans $\\mu\\pm2\\sigma=70\\pm2(3)=70\\pm6$, so from $64$ to $76$ inches."
         },
         {
           "q": "Using the same distribution, find the approximate percentage of adult men taller than $76$ inches.",
@@ -89,31 +54,7 @@
           "question_type": "FRQ",
           "target": "Standardizing and using the normal distribution",
           "answer": "$z_{65}=\\frac{65-70}{3}\\approx-1.67$. $z_{75}=\\frac{75-70}{3}\\approx1.67$. $P(65<X<75)=P(Z<1.67)-P(Z<-1.67)\\approx0.9525-0.0475=0.905$, or about $90.5\\%$.",
-          "explanation": "$z_{65}=\\frac{65-70}{3}\\approx-1.67$. $z_{75}=\\frac{75-70}{3}\\approx1.67$. $P(65<X<75)=P(Z<1.67)-P(Z<-1.67)\\approx0.9525-0.0475=0.905$, or about $90.5\\%$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "3.8*exp(-0.5*x**2)"
-            ],
-            "xmin": -3.5,
-            "xmax": 3.5,
-            "ymin": -0.3,
-            "ymax": 4.5,
-            "shade": {
-              "fn1": "3.8*exp(-0.5*x**2)",
-              "fn2": "0",
-              "x0": -1.5,
-              "x1": 1.5
-            },
-            "point_labels": [
-              {
-                "x": 1.5,
-                "y": 1.23,
-                "label": "$z=1.5$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "$z_{65}=\\frac{65-70}{3}\\approx-1.67$. $z_{75}=\\frac{75-70}{3}\\approx1.67$. $P(65<X<75)=P(Z<1.67)-P(Z<-1.67)\\approx0.9525-0.0475=0.905$, or about $90.5\\%$."
         },
         {
           "q": "The graph shows the standard normal distribution ($\\mu=0$, $\\sigma=1$), with the area to the left of $z=1$ shaded (though shading itself is not shown, imagine it visually).",
@@ -144,7 +85,7 @@
             "shade": {
               "fn1": "-0.27*x**2 + 1.25*x + 1.8",
               "fn2": "0.4*x + 0.3",
-              "x0": 0.0,
+              "x0": 0,
               "x1": 3.3
             },
             "point_labels": [
@@ -168,18 +109,7 @@
           "question_type": "FRQ",
           "target": "Working backward: finding values from percentiles",
           "answer": "$x=\\mu+z\\sigma=1050+1.28(150)=1050+192=1242$.",
-          "explanation": "$x=\\mu+z\\sigma=1050+1.28(150)=1050+192=1242$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "150*exp(-((x-1050)**2)/(2*150**2))"
-            ],
-            "xmin": 600,
-            "xmax": 1500,
-            "ymin": -20,
-            "ymax": 170,
-            "width": 220
-          }
+          "explanation": "$x=\\mu+z\\sigma=1050+1.28(150)=1050+192=1242$."
         },
         {
           "q": "Using the same distribution, find the score that separates the bottom $10\\%$ of scores, given that $z\\approx-1.28$ corresponds to the 10th percentile.",
@@ -252,18 +182,7 @@
           "question_type": "FRQ",
           "target": "Applying the normal distribution to real data",
           "answer": "$z=\\frac{250-266}{16}=\\frac{-16}{16}=-1$.",
-          "explanation": "$z=\\frac{250-266}{16}=\\frac{-16}{16}=-1$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "16*exp(-((x-266)**2)/(2*16**2))"
-            ],
-            "xmin": 210,
-            "xmax": 322,
-            "ymin": -2,
-            "ymax": 18,
-            "width": 220
-          }
+          "explanation": "$z=\\frac{250-266}{16}=\\frac{-16}{16}=-1$."
         },
         {
           "q": "Using the same pregnancy-length distribution and the 68-95-99.7 rule, find the approximate percentage of pregnancies lasting between $234$ and $298$ days.",
@@ -310,19 +229,7 @@
           "target": "Combining two independent normal random variables",
           "cross_lesson": "1.03 Describing Distributions & Linear Regression",
           "answer": "Student X: $z=\\frac{78-70}{8}=\\frac{8}{8}=1$. Student Y: $z=\\frac{165-150}{12}=\\frac{15}{12}=1.25$. Since $1.25>1$, Student Y performed relatively better compared to their own test's distribution of test-takers, even though the raw score gap looks different for each test.",
-          "explanation": "Student X: $z=\\frac{78-70}{8}=\\frac{8}{8}=1$. Student Y: $z=\\frac{165-150}{12}=\\frac{15}{12}=1.25$. Since $1.25>1$, Student Y performed relatively better compared to their own test's distribution of test-takers, even though the raw score gap looks different for each test.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "8*exp(-((x-70)**2)/(2*8**2))",
-              "12*exp(-((x-150)**2)/(2*12**2))"
-            ],
-            "xmin": 40,
-            "xmax": 200,
-            "ymin": -2,
-            "ymax": 16,
-            "width": 220
-          }
+          "explanation": "Student X: $z=\\frac{78-70}{8}=\\frac{8}{8}=1$. Student Y: $z=\\frac{165-150}{12}=\\frac{15}{12}=1.25$. Since $1.25>1$, Student Y performed relatively better compared to their own test's distribution of test-takers, even though the raw score gap looks different for each test."
         },
         {
           "q": "The distribution of cholesterol levels in a population is approximately normal with $\\mu = 190\\mathrm{\\ mg/dL}$ and $\\sigma = 24\\mathrm{\\ mg/dL}$. (a) What proportion of individuals have cholesterol levels above 226 mg/dL? (b) What cholesterol level marks the 90th percentile?",
@@ -343,13 +250,13 @@
           "explanation": "(a) Binomial PMF: $X \\sim B(n = 12, p = 0.75)$, $k = 9$: $P(X = 9) = \\binom{12}{9} (0.75)^9 (0.25)^3 = 220 \\times 0.075085 \\times 0.015625 \\approx \\mathbf{0.2581}.$ (b) Mean & Standard Deviation: $\\mu = np = 12(0.75) = \\mathbf{9.0\\mathrm{\\ free\\ throws}}.$ $\\sigma = \\sqrt{np(1-p)} = \\sqrt{12(0.75)(0.25)} = \\sqrt{2.25} = \\mathbf{1.5\\mathrm{\\ free\\ throws}}.$"
         },
         {
-          "q": "[Unit 1 · Exploring One-Variable & Two-Variable Data · Practice 4] If the governing relation for this system is $g(t) = 6t + 6$, evaluate $g(10)$ and find the inverse input $t$ when $g(t) = 72$.",
+          "q": "Consider a discrete random variable $X$ that represents the number of heads obtained when a fair coin is tossed 3 times. The probability distribution of $X$ is given by: What is the probability that $X$ is less than 2, i.e., $P(X < 2)$? Show your complete algebraic work.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Standardizing and using the normal distribution",
           "cross_lesson": "3.01 Probability Rules & Conditional Probability",
-          "answer": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$.",
-          "explanation": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$."
+          "answer": "Final Answer: $\\frac{4}{8}$. The event $X < 2$ for the discrete random variable $X \\in \\{0, 1, 2, 3\\}$ consists of the outcomes $X = 0$ and $X = 1$. Adding their probabilities from the table gives: $P(X < 2) = P(X = 0) + P(X = 1) = \\frac{1}{8} + \\frac{3}{8} = \\frac{4}{8}.$",
+          "explanation": "The event $X < 2$ for the discrete random variable $X \\in \\{0, 1, 2, 3\\}$ consists of the outcomes $X = 0$ and $X = 1$. Adding their probabilities from the table gives: $P(X < 2) = P(X = 0) + P(X = 1) = \\frac{1}{8} + \\frac{3}{8} = \\frac{4}{8}.$"
         },
         {
           "q": "Two independent random variables are normally distributed as $X \\sim N(50, 16)$ and $Y \\sim N(45, 9)$. Find the probability that $X > Y$.",
@@ -408,31 +315,7 @@
           ],
           "correct": 3,
           "answer": "$z_1=\\frac{136-144}{16}=-0.50$. $z_2=\\frac{152-144}{16}=0.50$. $P(-0.50<Z<0.50)\\approx0.3829$, or about $38.29\\%$.",
-          "explanation": "$z_1=\\frac{136-144}{16}=-0.50$. $z_2=\\frac{152-144}{16}=0.50$. $P(-0.50<Z<0.50)\\approx0.3829$, or about $38.29\\%$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "4.0*exp(-0.5*x**2)"
-            ],
-            "xmin": -3.5,
-            "xmax": 3.5,
-            "ymin": -0.3,
-            "ymax": 4.5,
-            "shade": {
-              "fn1": "4.0*exp(-0.5*x**2)",
-              "fn2": "0",
-              "x0": -1.65,
-              "x1": 1.65
-            },
-            "point_labels": [
-              {
-                "x": 1.65,
-                "y": 1.03,
-                "label": "$z=1.65$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "$z_1=\\frac{136-144}{16}=-0.50$. $z_2=\\frac{152-144}{16}=0.50$. $P(-0.50<Z<0.50)\\approx0.3829$, or about $38.29\\%$."
         },
         {
           "q": "Scores on an exam are approximately normal with mean $\\mu=390$ and standard deviation $\\sigma=15$. A student scores at the $95$th percentile, corresponding to $z\\approx1.645$. Find that student's approximate score.",

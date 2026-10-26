@@ -47,7 +47,7 @@
             "shade": {
               "fn1": "-0.34*x**2 + 1.75*x + 2.7",
               "fn2": "0.3*x + 0.3",
-              "x0": 0.0,
+              "x0": 0,
               "x1": 2.9
             },
             "point_labels": [
@@ -74,18 +74,7 @@
           "question_type": "FRQ",
           "target": "Improper integrals",
           "answer": "$\\lim_{a\\rightarrow 0^+}\\left[2\\sqrt{x}\\right]_a^1 = 2 - 0 = 2$: converges to $2$.",
-          "explanation": "$\\lim_{a\\rightarrow 0^+}\\left[2\\sqrt{x}\\right]_a^1 = 2 - 0 = 2$: converges to $2$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "1/sqrt(x)"
-            ],
-            "xmin": 0.05,
-            "xmax": 1.2,
-            "ymin": -0.5,
-            "ymax": 6,
-            "width": 200
-          }
+          "explanation": "$\\lim_{a\\rightarrow 0^+}\\left[2\\sqrt{x}\\right]_a^1 = 2 - 0 = 2$: converges to $2$."
         },
         {
           "q": "Find the arc length of the line $y=3x+1$ from $x=0$ to $x=4$, and verify your answer using the distance formula.",
@@ -143,18 +132,7 @@
           "question_type": "FRQ",
           "target": "Improper integrals with infinite discontinuities inside the interval",
           "answer": "Split at $x=1$: $\\int_0^1\\frac{1}{(x-1)^2}dx + \\int_1^2\\frac{1}{(x-1)^2}dx$. Near $x=1$ from either side, $\\lim_{b\\rightarrow1}\\left[-\\frac{1}{x-1}\\right]$ blows up to $\\pm\\infty$: both pieces diverge, so the full integral diverges.",
-          "explanation": "Split at $x=1$: $\\int_0^1\\frac{1}{(x-1)^2}dx + \\int_1^2\\frac{1}{(x-1)^2}dx$. Near $x=1$ from either side, $\\lim_{b\\rightarrow1}\\left[-\\frac{1}{x-1}\\right]$ blows up to $\\pm\\infty$: both pieces diverge, so the full integral diverges.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "1/(x-1)**2"
-            ],
-            "xmin": 0,
-            "xmax": 2,
-            "ymin": -2,
-            "ymax": 20,
-            "width": 200
-          }
+          "explanation": "Split at $x=1$: $\\int_0^1\\frac{1}{(x-1)^2}dx + \\int_1^2\\frac{1}{(x-1)^2}dx$. Near $x=1$ from either side, $\\lim_{b\\rightarrow1}\\left[-\\frac{1}{x-1}\\right]$ blows up to $\\pm\\infty$: both pieces diverge, so the full integral diverges."
         },
         {
           "q": "Evaluate $\\int_{-1}^{1} \\frac{1}{x^{1/3}}\\,dx$ (an odd function with a discontinuity at $x=0$), splitting at $x=0$.",
@@ -208,19 +186,7 @@
           "question_type": "FRQ",
           "target": "Comparison test for improper integrals",
           "answer": "For $x\\geq1$, $\\frac{1}{x^2+1}<\\frac{1}{x^2}$. Since $\\int_1^\\infty\\frac{1}{x^2}\\,dx$ converges (to $1$), and the integrand of interest is smaller and positive everywhere on $[1,\\infty)$, the comparison test guarantees $\\int_1^\\infty\\frac{1}{x^2+1}\\,dx$ also converges.",
-          "explanation": "For $x\\geq1$, $\\frac{1}{x^2+1}<\\frac{1}{x^2}$. Since $\\int_1^\\infty\\frac{1}{x^2}\\,dx$ converges (to $1$), and the integrand of interest is smaller and positive everywhere on $[1,\\infty)$, the comparison test guarantees $\\int_1^\\infty\\frac{1}{x^2+1}\\,dx$ also converges.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "1/x**2",
-              "1/(x**2+1)"
-            ],
-            "xmin": 0.5,
-            "xmax": 10,
-            "ymin": -0.1,
-            "ymax": 1.2,
-            "width": 200
-          }
+          "explanation": "For $x\\geq1$, $\\frac{1}{x^2+1}<\\frac{1}{x^2}$. Since $\\int_1^\\infty\\frac{1}{x^2}\\,dx$ converges (to $1$), and the integrand of interest is smaller and positive everywhere on $[1,\\infty)$, the comparison test guarantees $\\int_1^\\infty\\frac{1}{x^2+1}\\,dx$ also converges."
         },
         {
           "q": "Use a comparison with $\\int_1^\\infty\\frac{1}{x}\\,dx$ (known to diverge) to argue that $\\int_1^\\infty\\frac{1}{\\sqrt{x}}\\,dx$ also diverges.",
@@ -228,19 +194,7 @@
           "question_type": "FRQ",
           "target": "Comparison test for improper integrals",
           "answer": "For $x\\geq1$, $\\frac{1}{\\sqrt{x}}\\geq\\frac{1}{x}$ (since $\\sqrt{x}\\leq x$). Since $\\int_1^\\infty\\frac{1}{x}\\,dx$ diverges and the integrand of interest is even larger, the comparison test guarantees $\\int_1^\\infty\\frac{1}{\\sqrt{x}}\\,dx$ also diverges.",
-          "explanation": "For $x\\geq1$, $\\frac{1}{\\sqrt{x}}\\geq\\frac{1}{x}$ (since $\\sqrt{x}\\leq x$). Since $\\int_1^\\infty\\frac{1}{x}\\,dx$ diverges and the integrand of interest is even larger, the comparison test guarantees $\\int_1^\\infty\\frac{1}{\\sqrt{x}}\\,dx$ also diverges.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "1/x",
-              "1/sqrt(x)"
-            ],
-            "xmin": 0.5,
-            "xmax": 10,
-            "ymin": -0.1,
-            "ymax": 1.5,
-            "width": 200
-          }
+          "explanation": "For $x\\geq1$, $\\frac{1}{\\sqrt{x}}\\geq\\frac{1}{x}$ (since $\\sqrt{x}\\leq x$). Since $\\int_1^\\infty\\frac{1}{x}\\,dx$ diverges and the integrand of interest is even larger, the comparison test guarantees $\\int_1^\\infty\\frac{1}{\\sqrt{x}}\\,dx$ also diverges."
         },
         {
           "q": "A cable hangs in the shape $y=\\frac{x^2}{8}$ between the towers at $x=-4$ and $x=4$. Set up the integral for the length of the cable (do not evaluate).",
@@ -248,18 +202,7 @@
           "question_type": "FRQ",
           "target": "A capstone arc-length application",
           "answer": "$y'=\\frac{x}{4}$: $L=\\int_{-4}^4\\sqrt{1+\\frac{x^2}{16}}\\,dx$.",
-          "explanation": "$y'=\\frac{x}{4}$: $L=\\int_{-4}^4\\sqrt{1+\\frac{x^2}{16}}\\,dx$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "x**2/8"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -0.5,
-            "ymax": 3,
-            "width": 200
-          }
+          "explanation": "$y'=\\frac{x}{4}$: $L=\\int_{-4}^4\\sqrt{1+\\frac{x^2}{16}}\\,dx$."
         }
       ]
     },
@@ -296,22 +239,22 @@
           "explanation": "Set up the ratio: $\\rho = \\lim_{n\\rightarrow\\infty} \\left| \\frac{a_{n+1}}{a_n} \\right| = \\lim_{n\\rightarrow\\infty} \\left| \\frac{4^{n+1}}{(n+1)!} \\cdot \\frac{n!}{4^n} \\right| = \\lim_{n\\rightarrow\\infty} \\left( \\frac{4^{n+1}}{4^n} \\cdot \\frac{n!}{(n+1)n!} \\right) = \\lim_{n\\rightarrow\\infty} \\frac{4}{n+1} = 0.$ Since \\(\\rho = 0 Ratio Test, the series converges absolutely."
         },
         {
-          "q": "[Unit 9 · Polar Coordinates & Polar Area · Practice 4] If the governing relation for this system is $g(t) = 6t + 6$, evaluate $g(10)$ and find the inverse input $t$ when $g(t) = 72$.",
+          "q": "If $F'(x)=f(x)$, then $\\int_a^b f(x)\\,dx =$",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Visualizing an improper integral as a limiting area",
           "cross_lesson": "5.01 The Fundamental Theorem of Calculus",
-          "answer": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$.",
-          "explanation": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$."
+          "answer": "Final Answer: $F(b)-F(a)$. Fundamental Theorem Part 2: $\\int_a^bf(x)dx=F(b)-F(a)$.",
+          "explanation": "Fundamental Theorem Part 2: $\\int_a^bf(x)dx=F(b)-F(a)$."
         },
         {
-          "q": "[Unit 10 · Infinite Sequences & Series — Convergence Tests · Practice 4] If the governing relation for this system is $g(t) = 6t + 6$, evaluate $g(10)$ and find the inverse input $t$ when $g(t) = 72$.",
+          "q": "Let the accumulation function $f(x)$ be defined by $f(x) = \\displaystyle\\int_0^{x} (20t^2 + 24)\\,dt$. Determine the derivative $f'(12)$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Arc length of a more involved curve",
           "cross_lesson": "6.01 Related Rates",
-          "answer": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$.",
-          "explanation": "Substitute $t = 10$: $g(10) = 6(10) + 6 = \\mathbf{66}$. Setting $6t + 6 = 72$ gives $6t = 66 \\Rightarrow t = \\mathbf{11}$."
+          "answer": "Final Answer: 2904. By the Fundamental Theorem of Calculus, $f'(x) = 20x^2 + 24$, giving $f'(12) = 2904$.",
+          "explanation": "By the Fundamental Theorem of Calculus, $f'(x) = 20x^2 + 24$, giving $f'(12) = 2904$."
         },
         {
           "q": "Level 1 · FoundationsFind all values of $c$ in the open interval $(-1, 2)$ that satisfy the Mean Value Theorem for $f(x) = x^3 - 2x^2 + 1$.",

@@ -261,7 +261,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Medium):</strong> The quadratic graph \\( f(x) = 4x^2 + gx + 400 \\) is tangent to the horizontal axis with \\( g > 0 \\). Find the positive coefficient \\( g \\).</p><p><strong>Step-by-Step Solution:</strong> Setting discriminant \\( \\Delta = g^2 - 4(4)(400) = 0 \\) gives \\( g = 80 \\).</p>",
+          "en": "<p><strong>Problem (Medium):</strong> Find the set of all real solutions to the equation\n\\[ \\log_2(x - 1) - \\log_4(x + 14) = 1 \\]</p><p><strong>Step-by-Step Solution:</strong> To solve the equation, we first express all logarithms in the same base using the change of base formula:\n\\[ \\log_4(x + 14) = \\frac{\\log_2(x + 14)}{\\log_2 4} = \\frac{\\log_2(x + 14)}{2} = \\frac{1}{2}\\log_2(x + 14) \\]\n\nSubstitute this back into the original equation:\n\\[ \\log_2(x - 1) - \\frac{1}{2}\\log_2(x + 14) = 1 \\]\n\nMultiply through by \\( 2 \\):\n\\[ 2\\log_2(x - 1) - \\log_2(x + 14) = 2 \\]\n\nApply the power law and the quotient law of logarithms:\n\\[ \\log_2\\left((x - 1)^2\\right) - \\log_2(x + 14) = 2 \\implies \\log_2\\left(\\frac{(x - 1)^2}{x + 14}\\right) = 2 \\]\n\nConvert from logarithmic form to exponential form:\n\\[ \\frac{(x - 1)^2}{x + 14} = 2^2 = 4 \\]\n\nClear the denominator and expand:\n\\[ (x - 1)^2 = 4(x + 14) \\]\n\\[ x^2 - 2x + 1 = 4x + 56 \\]\n\\[ x^2 - 6x - 55 = 0 \\]\n\nFactor the quadratic equation:\n\\[ (x - 11)(x + 5) = 0 \\implies x = 11 \\quad \\text{or} \\quad x = -5 \\]\n\nNow, we must consider the domain of the original logarithmic expressions:\n- For \\( \\log_2(x - 1) \\) to be defined, \\( x - 1 > 0 \\implies x > 1 \\).\n- For \\( \\log_4(x + 14) \\) to be defined, \\( x + 14 > 0 \\implies x > -14 \\).\n\nThus, the domain requires \\( x > 1 \\).\n- For \\( x = -5 \\), the term \\( \\log_2(-5 - 1) = \\log_2(-6) \\) is undefined in the real numbers. Hence, \\( x = -5 \\) is an extraneous solution introduced by squaring.\n- For \\( x = 11 \\), \\( \\log_2(10) - \\log_4(25) = \\log_2(10) - \\log_2(5) = \\log_2(2) = 1 \\), which is valid.\n\nTherefore, the only real solution is \\( x = 11 \\).\n\nMisconception Traps:\n- Choice B includes the extraneous root \\( x = -5 \\), failing to verify the domain requirement \\( x > 1 \\).\n- Choice C arises from an incorrect factorization of the quadratic (e.g., confusing signs as \\( (x + 11)(x - 5) = 0 \\)).\n- Choice D arises from failing to change the base of \\( \\log_4 \\) and solving \\( \\frac{x + 14}{x - 1} = 2 \\).</p>",
           "ar": null
         }
       },
@@ -273,7 +273,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Hard):</strong> A population is modeled by \\( P(t)=P_0\\cdot 2^{t/5} \\) with \\( P_0=100 \\). Find \\( P(5) \\).</p><p><strong>Step-by-Step Solution:</strong> \\( P(5)=100\\cdot 2^{5/5}=100\\cdot 2^{1}=200 \\).</p>",
+          "en": "<p><strong>Problem (Hard):</strong> Referring to the coordinate curve shown in the diagram, determine the complete set of real values of the constant \\(k\\) for which the equation\n\\[ e^x - kx^2 = 0 \\]\nhas exactly three distinct real roots.</p><p><strong>Step-by-Step Solution:</strong> First, note that \\(x = 0\\) is not a solution to \\(e^x - kx^2 = 0\\) since \\(e^0 = 1 \\neq 0\\). Therefore, we can rewrite the equation as:\n\\[ k = \\frac{e^x}{x^2} \\]\nLet \\(f(x) = \\dfrac{e^x}{x^2}\\) defined for all \\(x \\neq 0\\). The number of distinct real roots corresponds to the number of points of intersection between the curve \\(y = f(x)\\) and the horizontal line \\(y = k\\).\n\nDifferentiating \\(f(x)\\) using the quotient rule:\n\\[ f'(x) = \\frac{e^x \\cdot x^2 - e^x \\cdot 2x}{x^4} = \\frac{e^x x(x - 2)}{x^4} = \\frac{e^x(x - 2)}{x^3} \\]\nSetting \\(f'(x) = 0\\) yields the single stationary point at \\(x = 2\\), where:\n\\[ f(2) = \\frac{e^2}{2^2} = \\frac{e^2}{4} \\]\n\nNow consider the behavior of \\(f(x)\\) on each separate branch of its domain:\n1. On the interval \\((-\\infty, 0)\\):\n   Both \\((x - 2) < 0\\) and \\(x^3 < 0\\), which means \\(f'(x) = \\frac{e^x(x - 2)}{x^3} > 0\\). Thus, \\(f(x)\\) is strictly increasing.\n   As \\(x \\to -\\infty\\), \\(f(x) \\to 0^+\\), and as \\(x \\to 0^-\\), \\(f(x) \\to +\\infty\\).\n   By the Intermediate Value Theorem, for any \\(k > 0\\), the line \\(y = k\\) intersects this branch exactly once.\n\n2. On the interval \\((0, \\infty)\\):\n   For \\(0 < x < 2\\), \\(x - 2 < 0\\) and \\(x^3 > 0\\), so \\(f'(x) < 0\\) (strictly decreasing from \\(+\\infty\\) to \\(\\frac{e^2}{4}\\)).\n   For \\(x > 2\\), \\(x - 2 > 0\\) and \\(x^3 > 0\\), so \\(f'(x) > 0\\) (strictly increasing from \\(\\frac{e^2}{4}\\) to \\(+\\infty\\)).\n   Hence, \\(f(2) = \\frac{e^2}{4}\\) is a local (and global positive) minimum on \\((0, \\infty)\\).\n   - If \\(k < \\frac{e^2}{4}\\), there are no intersections on \\((0, \\infty)\\).\n   - If \\(k = \\frac{e^2}{4}\\), there is exactly one intersection at \\(x = 2\\).\n   - If \\(k > \\frac{e^2}{4}\\), there are exactly two distinct intersections on \\((0, \\infty)\\).\n\nCombining both intervals:\n- For \\(k \\le 0\\), there are 0 real roots since \\(f(x) > 0\\) everywhere.\n- For \\(0 < k < \\frac{e^2}{4}\\), there is 1 negative root and 0 positive roots (1 total).\n- For \\(k = \\frac{e^2}{4}\\), there is 1 negative root and 1 positive root (2 total).\n- For \\(k > \\frac{e^2}{4}\\), there is 1 negative root and 2 positive roots (3 distinct real roots in total).\n\nThus, the equation has exactly three distinct real roots if and only if \\(k > \\dfrac{e^2}{4}\\).</p>",
           "ar": null
         }
       },
@@ -454,50 +454,50 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Easy]</strong> Consider the cubic polynomial \\( f(x) = x^3 - 5x^2 + 16x - 160 \\). Find the remainder \\( f(10) \\) upon division by \\( (x - 10) \\).",
+          "en": "<strong>[Practice 3 · Easy]</strong> Find the exact real solution to the equation\n\\[ 2e^{2x} + 5e^x - 12 = 0. \\]",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Exponentials &amp; Logarithms</em> and start from \\( f(x) = x^3 - 5x^2 + 16x - 160 \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Exponentials & Logarithms and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( f(10) = 10^3 - 5(10^2) + 16(10) - 160 = 500 \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "By the Remainder Theorem, \\( f(10) = 10^3 - 5(10^2) + 16(10) - 160 = 500 \\).",
+          "en": "We recognize that the equation is quadratic in terms of \\( e^x \\):\n\\[ 2(e^x)^2 + 5(e^x) - 12 = 0. \\]\n\nLet \\( u = e^x \\). Then the equation becomes:\n\\[ 2u^2 + 5u - 12 = 0. \\]\n\nFactoring the quadratic expression:\n\\[ (2u - 3)(u + 4) = 0. \\]\n\nThis gives two possible values for \\( u \\):\n\\[ u = \\frac{3}{2} \\quad \\text{or} \\quad u = -4. \\]\n\nSince \\( u = e^x \\):\n1. For \\( e^x = \\frac{3}{2} \\), taking the natural logarithm of both sides yields:\n\\[ x = \\ln\\left(\\frac{3}{2}\\right). \\]\n\n2. For \\( e^x = -4 \\), since \\( e^x > 0 \\) for all real numbers \\( x \\), there are no real solutions.\n\nThus, the only real solution is \\( x = \\ln\\left(\\frac{3}{2}\\right) \\).\n\nCommon errors include:\n- Factoring with incorrect signs as \\( (2u + 3)(u - 4) = 0 \\), which leads to the incorrect root \\( x = \\ln 4 \\).\n- Forgetting to take the logarithm of \\( u \\), giving \\( x = \\frac{3}{2} \\).\n- Failing to discard the negative root \\( u = -4 \\) and falsely combining signs.",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Medium]</strong> The exponential equation \\( 6^{2x - 1} = 6^{5 + 15} \\) holds for real \\( x \\). Find the quantity \\( f = 2x \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> Solve \\( \\log_{2}(4x+3)=3 \\) for \\( x \\).",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Exponentials &amp; Logarithms</em> and start from \\( 6^{2x - 1} = 6^{5 + 15} \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Exponentials & Logarithms and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( 2x - 1 = 20 \\implies 2x = 21 \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Equating exponents gives \\( 2x - 1 = 20 \\implies 2x = 21 \\).",
+          "en": "\\( 4x+3=2^{3}=8 \\Rightarrow x=\\dfrac{5}{4} \\).",
           "ar": null
         }
       }

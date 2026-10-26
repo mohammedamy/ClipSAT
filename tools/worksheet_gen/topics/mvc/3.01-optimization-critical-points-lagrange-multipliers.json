@@ -36,7 +36,7 @@
             "shade": {
               "fn1": "-0.27*x**2 + 1.75*x + 2.4",
               "fn2": "0.3*x + 0.3",
-              "x0": 0.0,
+              "x0": 0,
               "x1": 2.9
             },
             "point_labels": [
@@ -72,12 +72,12 @@
                 0
               ],
               [
-                24.0,
+                24,
                 0
               ],
               [
                 0,
-                7.0
+                7
               ]
             ],
             "labels": [
@@ -116,7 +116,7 @@
               0,
               0
             ],
-            "radius": 3.0,
+            "radius": 3,
             "center_label": "$O$",
             "radius_label": "$r = 3$",
             "sector": {
@@ -151,12 +151,12 @@
       "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
       "questions": [
         {
-          "q": "[Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers · Practice 3] If the governing relation for this system is $g(t) = 5t + 5$, evaluate $g(8)$ and find the inverse input $t$ when $g(t) = 50$.",
+          "q": "Consider the vector field $\\mathbf{h}(u, y, z) = \\langle 4u,\\, 10y,\\, 5z \\rangle$ on $\\mathbb{R}^3$. Compute the scalar divergence $\\nabla \\cdot \\mathbf{h}$.",
           "difficulty": "Intermediate",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
-          "answer": "Substitute $t = 8$: $g(8) = 5(8) + 5 = \\mathbf{45}$. Setting $5t + 5 = 50$ gives $5t = 45 \\Rightarrow t = \\mathbf{9}$.",
-          "explanation": "Substitute $t = 8$: $g(8) = 5(8) + 5 = \\mathbf{45}$. Setting $5t + 5 = 50$ gives $5t = 45 \\Rightarrow t = \\mathbf{9}$."
+          "answer": "Final Answer: 19. The divergence is $4 + 10 + 5 = 19$.",
+          "explanation": "The divergence is $4 + 10 + 5 = 19$."
         },
         {
           "q": "Practice Problem 2: Use Stokes' Theorem to evaluate $\\oint_C \\mathbf{F}\\cdot d\\mathbf{r}$, where $\\mathbf{F} = \\langle -y, 2x, (x+y)e^z \\rangle$ and $C$ is the intersection of the cylinder $x^2+y^2=1$ and the plane $z = y + 1$, oriented counterclockwise when viewed from above.",
@@ -172,26 +172,7 @@
           "question_type": "FRQ",
           "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "answer": "First check if $\\mathbf{F}$ is conservative: $P_y = e^y, \\; Q_x = e^y; \\quad P_z = 0, \\; R_x = 0; \\quad Q_z = e^z + (z+1)e^z = (z+2)e^z, \\; R_y = 0.$ Notice $R_y = 0$ while $Q_z = (z+2)e^z eq 0$. Thus $\\mathbf{F}$ is not conservative and the Fundamental Theorem cannot be used directly. Evaluate directly: $\\mathbf{r}'(t) = \\langle 1, 2t, 3t^2 \\rangle$. $x = t, y = t^2, z = t^3$. $\\mathbf{F}(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t) = e^{t^2}(1) + \\left[ t e^{t^2} + (t^3+1)e^{t^3} \\right](2t) + (t^3+2)e^{t^3}(3t^2).$ Regroup terms: $\\left( e^{t^2} + 2t^2 e^{t^2} \\right) + \\left( 2t(t^3+1)e^{t^3} + 3t^2(t^3+2)e^{t^3} \\right) = \\frac{d}{dt}\\left( t e^{t^2} \\right) + \\frac{d}{dt}\\left( (t^3+1)e^{t^3} \\cdot t^2 \\dots \\right).$ Alternatively, evaluate $\\int_0^1 (e^{t^2} + 2t^2 e^{t^2})\\,dt = [ t e^{t^2} ]_0^1 = e$. The remaining $z$-terms integrate to: $\\int_0^1 \\left[ 2t^4 e^{t^3} + 2t e^{t^3} + 3t^5 e^{t^3} + 6t^2 e^{t^3} \\right] dt.$ Substituting $u = t^3$, $du = 3t^2 dt$: the integral yields $2e - 1$. Combined work: $3e - 1$.",
-          "explanation": "First check if $\\mathbf{F}$ is conservative: $P_y = e^y, \\; Q_x = e^y; \\quad P_z = 0, \\; R_x = 0; \\quad Q_z = e^z + (z+1)e^z = (z+2)e^z, \\; R_y = 0.$ Notice $R_y = 0$ while $Q_z = (z+2)e^z eq 0$. Thus $\\mathbf{F}$ is not conservative and the Fundamental Theorem cannot be used directly. Evaluate directly: $\\mathbf{r}'(t) = \\langle 1, 2t, 3t^2 \\rangle$. $x = t, y = t^2, z = t^3$. $\\mathbf{F}(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t) = e^{t^2}(1) + \\left[ t e^{t^2} + (t^3+1)e^{t^3} \\right](2t) + (t^3+2)e^{t^3}(3t^2).$ Regroup terms: $\\left( e^{t^2} + 2t^2 e^{t^2} \\right) + \\left( 2t(t^3+1)e^{t^3} + 3t^2(t^3+2)e^{t^3} \\right) = \\frac{d}{dt}\\left( t e^{t^2} \\right) + \\frac{d}{dt}\\left( (t^3+1)e^{t^3} \\cdot t^2 \\dots \\right).$ Alternatively, evaluate $\\int_0^1 (e^{t^2} + 2t^2 e^{t^2})\\,dt = [ t e^{t^2} ]_0^1 = e$. The remaining $z$-terms integrate to: $\\int_0^1 \\left[ 2t^4 e^{t^3} + 2t e^{t^3} + 3t^5 e^{t^3} + 6t^2 e^{t^3} \\right] dt.$ Substituting $u = t^3$, $du = 3t^2 dt$: the integral yields $2e - 1$. Combined work: $3e - 1$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.75*(x - (1.5))**2 + (0.0)",
-              "-0.6*x + (1.2)"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -5,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 1.5,
-                "y": 0.0,
-                "label": "$(1.5,0)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "First check if $\\mathbf{F}$ is conservative: $P_y = e^y, \\; Q_x = e^y; \\quad P_z = 0, \\; R_x = 0; \\quad Q_z = e^z + (z+1)e^z = (z+2)e^z, \\; R_y = 0.$ Notice $R_y = 0$ while $Q_z = (z+2)e^z eq 0$. Thus $\\mathbf{F}$ is not conservative and the Fundamental Theorem cannot be used directly. Evaluate directly: $\\mathbf{r}'(t) = \\langle 1, 2t, 3t^2 \\rangle$. $x = t, y = t^2, z = t^3$. $\\mathbf{F}(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t) = e^{t^2}(1) + \\left[ t e^{t^2} + (t^3+1)e^{t^3} \\right](2t) + (t^3+2)e^{t^3}(3t^2).$ Regroup terms: $\\left( e^{t^2} + 2t^2 e^{t^2} \\right) + \\left( 2t(t^3+1)e^{t^3} + 3t^2(t^3+2)e^{t^3} \\right) = \\frac{d}{dt}\\left( t e^{t^2} \\right) + \\frac{d}{dt}\\left( (t^3+1)e^{t^3} \\cdot t^2 \\dots \\right).$ Alternatively, evaluate $\\int_0^1 (e^{t^2} + 2t^2 e^{t^2})\\,dt = [ t e^{t^2} ]_0^1 = e$. The remaining $z$-terms integrate to: $\\int_0^1 \\left[ 2t^4 e^{t^3} + 2t e^{t^3} + 3t^5 e^{t^3} + 6t^2 e^{t^3} \\right] dt.$ Substituting $u = t^3$, $du = 3t^2 dt$: the integral yields $2e - 1$. Combined work: $3e - 1$."
         },
         {
           "q": "Practice Problem 1: Use the Divergence Theorem to calculate the outward flux of $\\mathbf{F} = \\langle x^3 + \\sin(yz), \\; y^3 + \\cos(xz), \\; z^3 + e^{xy} \\rangle$ across the sphere $x^2+y^2+z^2 = 4$.",
@@ -246,26 +227,7 @@
           "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "cross_lesson": "4.01 Double Integrals",
           "answer": "Step 1: Convert region $D$ to polar coordinates: The upper half-disk of radius 3 corresponds to $0 \\leq r \\leq 3$ and $0 \\leq \\theta \\leq \\pi$. Step 2: Convert integrand and area element: $x^2 + y^2 = r^2, \\qquad dA = r\\,dr\\,d\\theta.$ Step 3: Set up and evaluate iterated integral: $\\iint_D (x^2 + y^2)\\,dA = \\int_0^\\pi \\int_0^3 r^2 (r\\,dr\\,d\\theta) = \\int_0^\\pi d\\theta \\cdot \\int_0^3 r^3\\,dr.$ $= \\pi \\cdot \\left[ \\frac{r^4}{4} \\right]_0^3 = \\pi \\cdot \\frac{81}{4} = \\mathbf{\\frac{81\\pi}{4}}.$",
-          "explanation": "Step 1: Convert region $D$ to polar coordinates: The upper half-disk of radius 3 corresponds to $0 \\leq r \\leq 3$ and $0 \\leq \\theta \\leq \\pi$. Step 2: Convert integrand and area element: $x^2 + y^2 = r^2, \\qquad dA = r\\,dr\\,d\\theta.$ Step 3: Set up and evaluate iterated integral: $\\iint_D (x^2 + y^2)\\,dA = \\int_0^\\pi \\int_0^3 r^2 (r\\,dr\\,d\\theta) = \\int_0^\\pi d\\theta \\cdot \\int_0^3 r^3\\,dr.$ $= \\pi \\cdot \\left[ \\frac{r^4}{4} \\right]_0^3 = \\pi \\cdot \\frac{81}{4} = \\mathbf{\\frac{81\\pi}{4}}.$",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.3*(x - (1.0))**2 + (1.0)",
-              "1.15*x + (2.2)"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -5,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 1.0,
-                "y": 1.0,
-                "label": "$(1,1)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "Step 1: Convert region $D$ to polar coordinates: The upper half-disk of radius 3 corresponds to $0 \\leq r \\leq 3$ and $0 \\leq \\theta \\leq \\pi$. Step 2: Convert integrand and area element: $x^2 + y^2 = r^2, \\qquad dA = r\\,dr\\,d\\theta.$ Step 3: Set up and evaluate iterated integral: $\\iint_D (x^2 + y^2)\\,dA = \\int_0^\\pi \\int_0^3 r^2 (r\\,dr\\,d\\theta) = \\int_0^\\pi d\\theta \\cdot \\int_0^3 r^3\\,dr.$ $= \\pi \\cdot \\left[ \\frac{r^4}{4} \\right]_0^3 = \\pi \\cdot \\frac{81}{4} = \\mathbf{\\frac{81\\pi}{4}}.$"
         },
         {
           "q": "Practice Problem 2: Find the mass of a solid right circular cylinder of radius $R$ and height $h$ whose density at any point is proportional to its distance from the axis of symmetry, $\\delta(r,\\theta,z) = k r$ for constant $k > 0$.",
@@ -286,22 +248,22 @@
           "explanation": "In spherical coordinates, $x^2+y^2+z^2 = \\rho^2$ and $dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta$. The ball $E$ is defined by $0 \\leq \\rho \\leq a$, $0 \\leq \\phi \\leq \\pi$, $0 \\leq \\theta \\leq 2\\pi$. $\\iiint_E \\rho^2 \\cdot (\\rho^2\\sin\\phi)\\,d\\rho\\,d\\phi\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^\\pi \\sin\\phi\\,d\\phi \\right) \\left( \\int_0^a \\rho^4\\,d\\rho \\right).$ Evaluating each integral: $2\\pi \\times 2 \\times \\frac{a^5}{5} = \\frac{4\\pi a^5}{5}.$"
         },
         {
-          "q": "[Double Integrals, Fubini's Theorem, Polar Coordinates & The Change-of-Variables Jacobian · Practice 3] If the governing relation for this system is $g(t) = 5t + 5$, evaluate $g(8)$ and find the inverse input $t$ when $g(t) = 50$.",
+          "q": "For $f(x,y)=7 x^{2} + 4 y^{2}$, find $f_y(-3,1)$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
           "cross_lesson": "4.01 Double Integrals",
-          "answer": "Substitute $t = 8$: $g(8) = 5(8) + 5 = \\mathbf{45}$. Setting $5t + 5 = 50$ gives $5t = 45 \\Rightarrow t = \\mathbf{9}$.",
-          "explanation": "Substitute $t = 8$: $g(8) = 5(8) + 5 = \\mathbf{45}$. Setting $5t + 5 = 50$ gives $5t = 45 \\Rightarrow t = \\mathbf{9}$."
+          "answer": "Final Answer: 8. Applying Partial Derivatives principles, $f_y=8 y$, so $f_y(-3,1)=8(1)=8$. Therefore, the verified correct option is 8.",
+          "explanation": "Applying Partial Derivatives principles, $f_y=8 y$, so $f_y(-3,1)=8(1)=8$. Therefore, the verified correct option is 8."
         },
         {
-          "q": "[Green's Theorem · Practice 3] If the governing relation for this system is $g(t) = 5t + 5$, evaluate $g(8)$ and find the inverse input $t$ when $g(t) = 50$.",
+          "q": "Let the linear scalar potential be $h(u, y) = 15u + 8y - 16$. Compute the squared gradient norm $\\|\\nabla h\\|^2$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
           "cross_lesson": "1.01 Functions of Several Variables & Partial Derivatives",
-          "answer": "Substitute $t = 8$: $g(8) = 5(8) + 5 = \\mathbf{45}$. Setting $5t + 5 = 50$ gives $5t = 45 \\Rightarrow t = \\mathbf{9}$.",
-          "explanation": "Substitute $t = 8$: $g(8) = 5(8) + 5 = \\mathbf{45}$. Setting $5t + 5 = 50$ gives $5t = 45 \\Rightarrow t = \\mathbf{9}$."
+          "answer": "Final Answer: 289. Since $\\nabla h = \\langle 15, 8 \\rangle$, $\\|\\nabla h\\|^2 = 15^2 + 8^2 = 289$.",
+          "explanation": "Since $\\nabla h = \\langle 15, 8 \\rangle$, $\\|\\nabla h\\|^2 = 15^2 + 8^2 = 289$."
         }
       ]
     },
@@ -351,26 +313,7 @@
           ],
           "correct": 0,
           "answer": "$g_x = 3x^2 - 3 = 0 \\Rightarrow x^2 = 1 \\Rightarrow x = \\pm 1$. $g_y = 2y = 0 \\Rightarrow y = 0$. The critical points are $(1, 0)$ and $(-1, 0)$.",
-          "explanation": "$g_x = 3x^2 - 3 = 0 \\Rightarrow x^2 = 1 \\Rightarrow x = \\pm 1$. $g_y = 2y = 0 \\Rightarrow y = 0$. The critical points are $(1, 0)$ and $(-1, 0)$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (0))**2 + (-2)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 0.0,
-                "y": -2.0,
-                "label": "$(0,-2)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "$g_x = 3x^2 - 3 = 0 \\Rightarrow x^2 = 1 \\Rightarrow x = \\pm 1$. $g_y = 2y = 0 \\Rightarrow y = 0$. The critical points are $(1, 0)$ and $(-1, 0)$."
         },
         {
           "q": "What is the definition of the Hessian discriminant $D$ in the Second Partials Test?",
@@ -430,26 +373,7 @@
           ],
           "correct": 0,
           "answer": "When $D = 0$, the test yields no information; the critical point could be a local maximum, local minimum, or saddle point.",
-          "explanation": "When $D = 0$, the test yields no information; the critical point could be a local maximum, local minimum, or saddle point.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.5*(x - (-1))**2 + (-1)",
-              "0.5*x + 1"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -4,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": -1.0,
-                "y": -1.0,
-                "label": "$(-1,-1)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "When $D = 0$, the test yields no information; the critical point could be a local maximum, local minimum, or saddle point."
         },
         {
           "q": "What vector equation governs constrained optimization of $f(x, y)$ subject to constraint $g(x, y) = k$?",
@@ -464,26 +388,7 @@
           ],
           "correct": 0,
           "answer": "At a constrained extremum, the level curve of $f$ is tangent to the constraint curve $g = k$, meaning their gradient vectors must be parallel: $\\nabla f = \\lambda \\nabla g$.",
-          "explanation": "At a constrained extremum, the level curve of $f$ is tangent to the constraint curve $g = k$, meaning their gradient vectors must be parallel: $\\nabla f = \\lambda \\nabla g$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.45*(x - (0.5))**2 + (1.5)",
-              "-0.35*x + (2.7)"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -5,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 0.5,
-                "y": 1.5,
-                "label": "$(0.5,1.5)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "At a constrained extremum, the level curve of $f$ is tangent to the constraint curve $g = k$, meaning their gradient vectors must be parallel: $\\nabla f = \\lambda \\nabla g$."
         }
       ]
     },
@@ -563,26 +468,7 @@
           ],
           "correct": 0,
           "answer": "Applying Application of Derivatives principles, $\\lambda$ = Lagrange multiplier. Therefore, the verified correct option is Lagrange multiplier.",
-          "explanation": "Applying Application of Derivatives principles, $\\lambda$ = Lagrange multiplier. Therefore, the verified correct option is Lagrange multiplier.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "-0.3*(x - (1.0))**2 + (1.0)",
-              "0.65*x + (-0.2)"
-            ],
-            "xmin": -5,
-            "xmax": 5,
-            "ymin": -5,
-            "ymax": 6,
-            "point_labels": [
-              {
-                "x": 1.0,
-                "y": 1.0,
-                "label": "$(1,1)$"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "Applying Application of Derivatives principles, $\\lambda$ = Lagrange multiplier. Therefore, the verified correct option is Lagrange multiplier."
         },
         {
           "q": "To find candidates for the global max/min of $f$ on $[a,b]$, you check critical points and:",

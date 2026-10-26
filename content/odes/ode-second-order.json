@@ -351,7 +351,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Easy):</strong> The second-order linear homogeneous ODE \\( S''(b) - 32S'(b) + 220S(b) = 0 \\) has characteristic roots \\( \\lambda_1, \\lambda_2 \\). Evaluate the trace sum \\( \\lambda_1 + \\lambda_2 \\).</p><p><strong>Step-by-Step Solution:</strong> From \\( \\lambda^2 - 32\\lambda + 220 = 0 \\), the sum of roots is \\( 32 \\).</p>",
+          "en": "<p><strong>Problem (Easy):</strong> Consider the second-order linear homogeneous differential equation \\( y'' - 5y' + 6y = 0 \\). If the auxiliary equation has roots \\( r_1 \\) and \\( r_2 \\), find the value of \\( r_1 + r_2 \\).</p><p><strong>Step-by-Step Solution:</strong> The given differential equation is \\( y'' - 5y' + 6y = 0 \\). The auxiliary equation for a second-order linear homogeneous differential equation of the form \\( ay'' + by' + cy = 0 \\) is \\( ar^2 + br + c = 0 \\). In this case, \\( a=1 \\), \\( b=-5 \\), and \\( c=6 \\). So the auxiliary equation is \\( r^2 - 5r + 6 = 0 \\). Let the roots of this quadratic equation be \\( r_1 \\) and \\( r_2 \\). According to Vieta's formulas, for a quadratic equation \\( ar^2 + br + c = 0 \\), the sum of the roots \\( r_1 + r_2 \\) is equal to \\( -\\frac{b}{a} \\). In our auxiliary equation \\( r^2 - 5r + 6 = 0 \\), \\( a=1 \\) and \\( b=-5 \\). Therefore, the sum of the roots is \\( r_1 + r_2 = - \\frac{-5}{1} = 5 \\).</p>",
           "ar": null
         }
       },
@@ -485,50 +485,50 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Medium]</strong> The separable initial value problem \\( \\dfrac{dS}{db} = 34b \\) satisfies \\( S(0) = 25 \\). Evaluate the solution value \\( S(12) \\).",
+          "en": "<strong>[Practice 3 · Medium]</strong> Consider the second-order linear homogeneous differential equation \\( y'' - 2y' + y = 0 \\). \\\\\nIf one of the fundamental solutions is \\( y_1(x) = e^x \\), and the Wronskian of two linearly independent solutions \\( y_1(x) \\) and \\( y_2(x) \\) is given by \\( W(y_1, y_2)(x) = 5e^{2x} \\), find the unknown parameter \\( k \\) in \\( y_2(x) = kxe^x \\).",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory</em> and start from \\( \\dfrac{dS}{db} = 34b \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( S(b) = 17b^2 + 25 \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Integrating gives \\( S(b) = 17b^2 + 25 \\), so \\( S(12) = 2473 \\).",
+          "en": "The given differential equation is \\( y'' - 2y' + y = 0 \\). The characteristic equation is \\( r^2 - 2r + 1 = 0 \\), which factors as \\( (r-1)^2 = 0 \\). Thus, the roots are repeated: \\( r_1 = r_2 = 1 \\). \\\\\nOne fundamental solution is given as \\( y_1(x) = e^x \\). For a second-order linear homogeneous equation \\( y'' + p(x)y' + q(x)y = 0 \\) with a known solution \\( y_1(x) \\), the Wronskian is given by \\( W(y_1, y_2)(x) = y_1(x)y_2'(x) - y_1'(x)y_2(x) = C e^{-\\int p(x) dx} \\). \\\\\nIn our equation, \\( p(x) = -2 \\). So, \\( -\\int p(x) dx = -\\int (-2) dx = 2x \\). Therefore, \\( W(y_1, y_2)(x) = C e^{2x} \\). \\\\\nWe are given that \\( W(y_1, y_2)(x) = 5e^{2x} \\), which means \\( C = 5 \\). \\\\\nWe are also given \\( y_1(x) = e^x \\) and \\( y_2(x) = kxe^x \\). \\\\\nLet's compute the Wronskian using these forms: \\\\\n\\( y_1'(x) = e^x \\) \\\\\n\\( y_2'(x) = \\frac{d}{dx}(kxe^x) = k(1 \\cdot e^x + x \\cdot e^x) = ke^x(1+x) \\)\n\\\\\nNow, substitute into the Wronskian formula: \\\\\n\\( W(y_1, y_2)(x) = y_1(x)y_2'(x) - y_1'(x)y_2(x) \\)\n\\( W(y_1, y_2)(x) = e^x \\cdot [ke^x(1+x)] - e^x \\cdot [kxe^x] \\)\n\\( W(y_1, y_2)(x) = ke^{2x}(1+x) - kxe^{2x} \\)\n\\( W(y_1, y_2)(x) = ke^{2x} + kxe^{2x} - kxe^{2x} \\)\n\\( W(y_1, y_2)(x) = ke^{2x} \\)\n\\\\\nWe equate this to the given Wronskian: \\\\\n\\( ke^{2x} = 5e^{2x} \\)\n\\\\\nTherefore, \\( k = 5 \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Hard]</strong> The Laplace transform of \\( S(b) = 378e^{8b} \\) is \\( T(s) = \\dfrac{378}{s - 8} \\) for \\( s > 8 \\). Evaluate the evaluated transform \\( T(9) \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> Consider the second-order linear homogeneous differential equation \\[ y'' - 3y' + 2y = 0. \\] Find the general solution to this equation.",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory</em> and start from \\( S(b) = 378e^{8b} \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Second-Order Linear Homogeneous Equations, Auxiliary Roots & Wronskian Theory and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( s = 9 \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Substituting \\( s = 9 \\) gives \\( \\frac{378}{9 - 8} = 378 \\).",
+          "en": "The characteristic equation for the differential equation \\(y'' - 3y' + 2y = 0\\) is \\(r^2 - 3r + 2 = 0\\). Factoring this quadratic equation gives \\((r-1)(r-2) = 0\\). The roots are \\(r_1 = 1\\) and \\(r_2 = 2\\). Since the roots are real and distinct, the general solution is of the form \\(y(x) = c_1 e^{r_1 x} + c_2 e^{r_2 x}\\). Substituting the roots, we get \\(y(x) = c_1 e^x + c_2 e^{2x}\\).\n\nChoice B is incorrect because it uses negative roots.\nChoice C is incorrect because it corresponds to complex roots.\nChoice D is incorrect because it corresponds to a repeated root.",
           "ar": null
         }
       }

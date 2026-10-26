@@ -288,7 +288,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Medium):</strong> An arithmetic progression \\( (f_{x}) \\) has first term \\( f_1 = 9 \\) and common difference \\( d = 14 \\). Work out the term \\( f_{5} \\).</p><p><strong>Step-by-Step Solution:</strong> Using \\( f_n = f_1 + (n - 1)d \\), we have \\( f_{5} = 9 + (5 - 1)(14) = 65 \\).</p>",
+          "en": "<p><strong>Problem (Medium):</strong> The first three terms of a geometric progression are given by\n\\[ u_1 = 3k - 2, \\quad u_2 = k + 2, \\quad u_3 = k - 2, \\]\nwhere \\( k \\) is a real constant. Given that the infinite geometric series \\(\\sum_{n=1}^\\infty u_n\\) converges, find the sum to infinity, \\( S_\\infty \\).</p><p><strong>Step-by-Step Solution:</strong> Step 1: Set up the common ratio property of a geometric sequence.\nSince the terms form a geometric progression, the ratio between consecutive terms must be equal:\n\\[ \\frac{u_2}{u_1} = \\frac{u_3}{u_2} \\implies u_2^2 = u_1 u_3 \\]\n\nStep 2: Substitute the expressions in terms of \\( k \\):\n\\[ (k + 2)^2 = (3k - 2)(k - 2) \\]\n\\[ k^2 + 4k + 4 = 3k^2 - 8k + 4 \\]\n\nStep 3: Solve the quadratic equation for \\( k \\):\n\\[ 2k^2 - 12k = 0 \\implies 2k(k - 6) = 0 \\]\nThus, \\( k = 0 \\) or \\( k = 6 \\).\n\nStep 4: Apply the convergence criterion \\(|r| < 1\\):\n- If \\( k = 0 \\):\n  \\( u_1 = -2 \\), \\( u_2 = 2 \\), and \\( r = \\frac{2}{-2} = -1 \\).\n  Since \\(|r| = |-1| = 1 \\not< 1\\), the infinite series diverges.\n- If \\( k = 6 \\):\n  \\( u_1 = 3(6) - 2 = 16 \\), \\( u_2 = 6 + 2 = 8 \\), and \\( r = \\frac{8}{16} = \\frac{1}{2} \\).\n  Since \\(|r| = \\frac{1}{2} < 1\\), the series converges.\n\nStep 5: Calculate the sum to infinity \\( S_\\infty \\):\n\\[ S_\\infty = \\frac{a}{1 - r} = \\frac{16}{1 - \\frac{1}{2}} = \\frac{16}{\\frac{1}{2}} = 32 \\]\n\nCommon Misconceptions:\n- Choice B (\\(-1\\)) arises from incorrectly assuming the \\( k = 0 \\) case converges and evaluating \\(\\frac{-2}{1 - (-1)} = -1\\).\n- Choice C (\\(\\frac{32}{3}\\)) arises from using the incorrect formula \\( S_\\infty = \\frac{a}{1 + r} \\).\n- Choice D (\\(16\\)) confuses the sum to infinity with the first term \\( a \\).</p>",
           "ar": null
         }
       },
@@ -300,7 +300,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Hard):</strong> An arithmetic series \\( \\sum_{k=1}^{x} f_k \\) has first term \\( f_1 = 14 \\) and common difference \\( d = 4 \\). Work out the partial sum \\( S_{8} \\) for \\( x = 8 \\).</p><p><strong>Step-by-Step Solution:</strong> Using \\( S_n = \\frac{n}{2}(2a_1 + (n - 1)d) \\), \\( S_{8} = \\frac{8}{2}(2(14) + 7(4)) = 224 \\).</p>",
+          "en": "<p><strong>Problem (Hard):</strong> The first, fourth, and sixth terms of an arithmetic progression \\( (u_n) \\) are equal to the first, second, and third terms, respectively, of an infinite geometric progression \\( (v_n) \\) with common ratio \\( r \\ne 1 \\).\n\nGiven that the sum to infinity of the geometric progression is \\( 27 \\), determine the maximum value of \\( S_n = \\sum_{k=1}^n u_k \\), the sum of the first \\( n \\) terms of the arithmetic progression.</p><p><strong>Step-by-Step Solution:</strong> Let the arithmetic progression \\( (u_n) \\) have first term \\( a \\) and common difference \\( d \\). Then:\n\\[ u_1 = a, \\quad u_4 = a + 3d, \\quad u_6 = a + 5d. \\]\n\nLet the geometric progression \\( (v_n) \\) have first term \\( v_1 \\) and common ratio \\( r \\). Since \\( u_1 = v_1 \\), \\( u_4 = v_2 \\), and \\( u_6 = v_3 \\), we have:\n\\[ v_1 = a, \\quad v_2 = ar, \\quad v_3 = ar^2. \\]\n\nEquating terms:\n1) \\( a + 3d = ar \\implies 3d = a(r - 1) \\implies d = \\frac{a(r - 1)}{3} \\).\n2) \\( a + 5d = ar^2 \\).\n\nSubstitute \\( d \\) into the second equation:\n\\[ a + 5\\left(\\frac{a(r - 1)}{3}\\right) = ar^2. \\]\nSince the sum to infinity of \\( (v_n) \\) exists and is non-zero, \\( a \\ne 0 \\). Dividing both sides by \\( a \\):\n\\[ 1 + \\frac{5(r - 1)}{3} = r^2 \\implies 3 + 5r - 5 = 3r^2 \\implies 3r^2 - 5r + 2 = 0. \\]\nFactoring this quadratic gives:\n\\[ (3r - 2)(r - 1) = 0. \\]\nSince \\( r \\ne 1 \\), we have \\( r = \\frac{2}{3} \\). Note that \\( |r| < 1 \\), so the series converges as required.\n\nNow, use the sum to infinity of \\( (v_n) \\):\n\\[ S_\\infty = \\frac{a}{1 - r} = 27 \\implies \\frac{a}{1 - \\frac{2}{3}} = 27 \\implies 3a = 27 \\implies a = 9. \\]\n\nWe can now find the common difference \\( d \\):\n\\[ d = \\frac{9\\left(\\frac{2}{3} - 1\\right)}{3} = \\frac{9\\left(-\\frac{1}{3}\\right)}{3} = -1. \\]\n\nThe \\( n \\)-th term of the arithmetic progression is:\n\\[ u_n = a + (n - 1)d = 9 - (n - 1) = 10 - n. \\]\nThe terms are positive for \\( n \\le 9 \\), zero for \\( n = 10 \\), and negative for \\( n \\ge 11 \\).\n\nHence, the sum \\( S_n \\) increases as long as added terms are positive, reaching its maximum at \\( n = 9 \\) (or \\( n = 10 \\)):\n\\[ S_9 = S_{10} = \\frac{9}{2}(2(9) + 8(-1)) = \\frac{9}{2}(10) = 45. \\]\n\nA common misconception is stopping at \\( n = 8 \\) (yielding \\( 44 \\)) by misidentifying the index of the last positive term, or mistakenly maximizing \\( S_n \\) as a continuous variable without checking integer constraints.</p>",
           "ar": null
         }
       },
@@ -478,75 +478,75 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Easy]</strong> A geometric progression \\( (f_{x}) \\) has initial term \\( f_1 = 19 \\) and common ratio \\( r = 2 \\). Work out the fifth term \\( f_5 \\).",
+          "en": "<strong>[Practice 3 · Easy]</strong> The first three terms of a geometric progression are \\( 32 \\), \\( 24 \\), and \\( 18 \\). Find the sum to infinity, \\( S_\\infty \\), of the progression.",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences &amp; Series</em> and start from \\( (f_{x}) \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Sequences & Series and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( f_5 = f_1 r^4 \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Using \\( f_5 = f_1 r^4 \\), we get \\( 19 \\times 16 = 304 \\).",
+          "en": "The first term of the geometric progression is \\( a = 32 \\).\n\nThe common ratio \\( r \\) is found by dividing any term by the preceding term:\n\\[ r = \\frac{24}{32} = \\frac{3}{4} \\]\n\nSince \\( |r| = \\left|\\frac{3}{4}\\right| < 1 \\), the geometric progression converges and the sum to infinity exists.\n\nThe sum to infinity is given by:\n\\[ S_\\infty = \\frac{a}{1 - r} \\]\n\nSubstituting \\( a = 32 \\) and \\( r = \\frac{3}{4} \\):\n\\[ S_\\infty = \\frac{32}{1 - \\frac{3}{4}} = \\frac{32}{\\frac{1}{4}} = 32 \\times 4 = 128 \\]\n\nCommon misconceptions:\n- Choice B (\\( 96 \\)) arises from mistakenly using a ratio of \\( \\frac{2}{3} \\).\n- Choice C (\\( 74 \\)) is the finite sum of only the first three terms (\\( 32 + 24 + 18 \\)).\n- Choice D (\\( 64 \\)) incorrectly assumes a common ratio of \\( \\frac{1}{2} \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Medium]</strong> An arithmetic progression \\( (p_{t}) \\) has first term \\( p_1 = 20 \\) and common difference \\( d = 12 \\). Work out the term \\( p_{5} \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> Find the coefficient of \\( x^{4} \\) in the binomial expansion of \\( (1+x)^{2} \\).",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences &amp; Series</em> and start from \\( (p_{t}) \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Sequences & Series and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( p_n = p_1 + (n - 1)d \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Using \\( p_n = p_1 + (n - 1)d \\), we have \\( p_{5} = 20 + (5 - 1)(12) = 68 \\).",
+          "en": "Coefficient \\( =\\dbinom{2}{4}=\\dfrac{0}{4!}=0 \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 5 · Hard]</strong> An arithmetic series \\( \\sum_{k=1}^{t} p_k \\) has first term \\( p_1 = 2 \\) and common difference \\( d = 38 \\). Work out the partial sum \\( S_{8} \\) for \\( t = 8 \\).",
+          "en": "<strong>[Practice 5 · Hard]</strong> Given \\( \\log_b 7=A \\), \\( \\log_b 2=B \\) and \\( \\log_b 3=C \\), express \\( \\log_b 9 \\) in terms of A, B and C.",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Sequences &amp; Series</em> and start from \\( \\sum_{k=1}^{t} p_k \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Exponentials & Logarithms and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( S_n = \\frac{n}{2}(2a_1 + (n - 1)d) \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Using \\( S_n = \\frac{n}{2}(2a_1 + (n - 1)d) \\), \\( S_{8} = \\frac{8}{2}(2(2) + 7(38)) = 1080 \\).",
+          "en": "\\( 9=7^{0}\\cdot 2^{0}\\cdot 3^{2} \\Rightarrow \\log_b 9=2C \\).",
           "ar": null
         }
       }

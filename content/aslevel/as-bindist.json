@@ -334,7 +334,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Medium):</strong> An arithmetic series \\( \\sum_{k=1}^{b} S_k \\) has first term \\( S_1 = 11 \\) and common difference \\( d = 34 \\). Find the partial sum \\( S_{8} \\) for \\( b = 8 \\).</p><p><strong>Step-by-Step Solution:</strong> Using \\( S_n = \\frac{n}{2}(2a_1 + (n - 1)d) \\), \\( S_{8} = \\frac{8}{2}(2(11) + 7(34)) = 1040 \\).</p>",
+          "en": "<p><strong>Problem (Medium):</strong> A factory produces light bulbs. The probability that a randomly selected light bulb is defective is \\(p\\). The number of defective light bulbs in a random sample of \\(n\\) bulbs follows a binomial distribution \\(X \\sim B(n, p)\\). It is known that the mean number of defective bulbs in a sample of \\(n=25\\) is \\(2\\). \\\\\n(i) Calculate the value of \\(p\\). \\\\\n(ii) For a sample of \\(n=50\\) bulbs, calculate the probability of finding exactly \\(k\\) defective bulbs, where \\(k\\) is the smallest integer such that \\(P(X \\le k) > 0.9\\). \\\\\n(iii) If a sample of \\(n=50\\) bulbs is taken, find the smallest value of \\(n'\\) such that the probability of observing at least one defective bulb is greater than \\(0.999\\).</p><p><strong>Step-by-Step Solution:</strong> Part (i):\nFor a binomial distribution \\(X \\sim B(n, p)\\), the mean is given by \\(E(X) = np\\). \\\\\nWe are given \\(n=25\\) and \\(E(X)=2\\). \\\\\nSo, \\(25p = 2\\), which gives \\(p = \\frac{2}{25} = 0.08\\). \\\\\n\nPart (ii):\nNow, \\(n=50\\) and \\(p=0.08\\). The number of defective bulbs follows \\(X \\sim B(50, 0.08)\\). \\\\\nWe need to find the smallest integer \\(k\\) such that \\(P(X \\le k) > 0.9\\). \\\\\nWe can use a binomial cumulative distribution table or a calculator. \\\\\nLet's calculate a few values:\n\\(P(X \\le 3) = P(X=0) + P(X=1) + P(X=2) + P(X=3)\\)\nUsing a binomial CDF calculator or table for \\(B(50, 0.08)\\): \\\\\n\\(P(X \\le 3) \\approx 0.4503 \\)\n\\(P(X \\le 4) \\approx 0.6333 \\)\n\\(P(X \\le 5) \\approx 0.7918 \\)\n\\(P(X \\le 6) \\approx 0.8941 \\)\n\\(P(X \\le 7) \\approx 0.9575 \\)\n\nThe smallest integer \\(k\\) for which \\(P(X \\le k) > 0.9\\) is \\(k=7\\). \\\\\n\nPart (iii):\nWe have \\(n=50\\) and \\(p=0.08\\). We want to find the smallest value of \\(n'\\) such that the probability of observing at least one defective bulb is greater than \\(0.999\\). \\\\\nThe probability of observing at least one defective bulb is \\(P(X \\ge 1) = 1 - P(X=0)\\). \\\\\nFor a binomial distribution, \\(P(X=0) = \\binom{n'}{0} p^0 (1-p)^{n'} = (1-p)^{n'}\\). \\\\\nSo we need \\(1 - (1-p)^{n'} > 0.999\\). \\\\\nSubstituting \\(p=0.08\\), we get \\(1 - (0.92)^{n'} > 0.999\\). \\\\\nThis means \\((0.92)^{n'} < 1 - 0.999 = 0.001\\). \\\\\nTaking the natural logarithm of both sides: \\(n' \\ln(0.92) < \\ln(0.001)\\). \\\\\nSince \\(\\ln(0.92)\\) is negative, we must reverse the inequality sign when dividing: \\(n' > \\frac{\\ln(0.001)}{\\ln(0.92)}\\). \\\\\n\\(n' > \\frac{-6.907755...}{-0.083381...}\\)\n\\(n' > 82.847...\\)\n\nThe smallest integer value of \\(n'\\) is \\(83\\). \\\\\n\nThe question asks for the smallest value of \\(n'\\) for a sample of size \\(n=50\\). This part of the question seems to imply a re-sampling or a different scenario for \\(n'\\). Assuming \\(n'\\) refers to the sample size for a new calculation of the probability of at least one defective bulb.</p>",
           "ar": null
         }
       },
@@ -346,7 +346,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Hard):</strong> A geometric progression \\( (S_{b}) \\) has initial term \\( S_1 = 16 \\) and common ratio \\( r = 2 \\). Find the fifth term \\( S_5 \\).</p><p><strong>Step-by-Step Solution:</strong> Using \\( S_5 = S_1 r^4 \\), we get \\( 16 \\times 16 = 256 \\).</p>",
+          "en": "<p><strong>Problem (Hard):</strong> A fair coin is tossed 3 times. Let X be the number of heads obtained. What is the probability that X = 2?</p><p><strong>Step-by-Step Solution:</strong> This is a binomial distribution scenario. The number of trials is \\(n=3\\) (the number of coin tosses). The probability of success (getting a head) in a single trial is \\(p = \\frac{1}{2}\\), and the probability of failure (getting a tail) is \\(q = 1-p = \\frac{1}{2}\\). We want to find the probability of getting exactly \\(k=2\\) heads.\n\nThe binomial probability formula is \\(P(X=k) = \\binom{n}{k} p^k q^{n-k}\\).\n\nSubstituting the values:\n\\(P(X=2) = \\binom{3}{2} (\\frac{1}{2})^2 (\\frac{1}{2})^{3-2}\\)\n\\(P(X=2) = \\binom{3}{2} (\\frac{1}{2})^2 (\\frac{1}{2})^1\\)\n\nFirst, calculate the binomial coefficient \\(\\binom{3}{2}\\). This represents the number of ways to choose 2 heads from 3 tosses:\n\\(\\binom{3}{2} = \\frac{3!}{2!(3-2)!} = \\frac{3!}{2!1!} = \\frac{3 \\times 2 \\times 1}{(2 \\times 1) \\times 1} = 3\\).\n\nNow, substitute this back into the probability formula:\n\\(P(X=2) = 3 \\times (\\frac{1}{4}) \\times (\\frac{1}{2})\\)\n\\(P(X=2) = 3 \\times \\frac{1}{8}\\)\n\\(P(X=2) = \\frac{3}{8}\\).\n\nAlternatively, we can list all possible outcomes for 3 coin tosses (H for heads, T for tails):\nHHH, HHT, HTH, THH, HTT, THT, TTH, TTT.\nThere are \\(2^3 = 8\\) total possible outcomes.\n\nThe outcomes with exactly 2 heads are:\nHHT, HTH, THH.\nThere are 3 such outcomes.\n\nTherefore, the probability of getting exactly 2 heads is \\(\\frac{\\text{Number of favorable outcomes}}{\\text{Total number of outcomes}} = \\frac{3}{8}\\).</p>",
           "ar": null
         }
       },
@@ -480,50 +480,50 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Easy]</strong> An arithmetic progression \\( (f_{x}) \\) has first term \\( f_1 = 17 \\) and common difference \\( d = 8 \\). Calculate the term \\( f_{5} \\).",
+          "en": "<strong>[Practice 3 · Easy]</strong> Simplify \\( \\sqrt{99} \\), giving your answer in the form \\( a\\sqrt{b} \\) with \\(b\\) as small as possible.",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Binomial Distribution</em> and start from \\( (f_{x}) \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Indices, Surds & Quadratics and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( f_n = f_1 + (n - 1)d \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Using \\( f_n = f_1 + (n - 1)d \\), we have \\( f_{5} = 17 + (5 - 1)(8) = 49 \\).",
+          "en": "\\( 99=3^2\\times 11 \\), so \\( \\sqrt{99}=\\sqrt{3^2\\times11}=3\\sqrt{11} \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Medium]</strong> An arithmetic series \\( \\sum_{k=1}^{x} f_k \\) has first term \\( f_1 = 22 \\) and common difference \\( d = 30 \\). Calculate the partial sum \\( S_{8} \\) for \\( x = 8 \\).",
+          "en": "<strong>[Practice 4 · Medium]</strong> Express \\( x^2+10x-8 \\) in the form \\( (x+p)^2+q \\).",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Binomial Distribution</em> and start from \\( \\sum_{k=1}^{x} f_k \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Indices, Surds & Quadratics and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( S_n = \\frac{n}{2}(2a_1 + (n - 1)d) \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "Using \\( S_n = \\frac{n}{2}(2a_1 + (n - 1)d) \\), \\( S_{8} = \\frac{8}{2}(2(22) + 7(30)) = 1016 \\).",
+          "en": "Half of \\(10\\) is \\(5\\), so \\( x^2+10x-8=(x+5)^2-25-8=(x+5)^2-33 \\).",
           "ar": null
         }
       },

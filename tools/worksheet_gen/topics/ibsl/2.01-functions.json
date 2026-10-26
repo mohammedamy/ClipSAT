@@ -22,31 +22,7 @@
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
           "answer": "(a) $u_1 = S_1 = 4(1)^2 - 3(1) = 1$. $S_2 = 4(2)^2 - 3(2) = 16 - 6 = 10$. $u_2 = S_2 - S_1 = 10 - 1 = 9$. (b) Common difference: $d = u_2 - u_1 = 9 - 1 = 8$. (c) General term: $u_n = u_1 + (n - 1)d = 1 + (n - 1)(8) = 8n - 7$. Alternatively: $u_n = S_n - S_{n-1} = (4n^2 - 3n) - [4(n-1)^2 - 3(n-1)] = 8n - 7$. For $n = 25$: $u_{25} = 8(25) - 7 = 200 - 7 = 193.$",
-          "explanation": "(a) $u_1 = S_1 = 4(1)^2 - 3(1) = 1$. $S_2 = 4(2)^2 - 3(2) = 16 - 6 = 10$. $u_2 = S_2 - S_1 = 10 - 1 = 9$. (b) Common difference: $d = u_2 - u_1 = 9 - 1 = 8$. (c) General term: $u_n = u_1 + (n - 1)d = 1 + (n - 1)(8) = 8n - 7$. Alternatively: $u_n = S_n - S_{n-1} = (4n^2 - 3n) - [4(n-1)^2 - 3(n-1)] = 8n - 7$. For $n = 25$: $u_{25} = 8(25) - 7 = 200 - 7 = 193.$",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.25*x*x*x - 0.75*x*x + 2"
-            ],
-            "xmin": -6.0,
-            "xmax": 6.0,
-            "ymin": -6.0,
-            "ymax": 6.0,
-            "points": [],
-            "point_labels": [
-              {
-                "x": 0.0,
-                "y": 2.0,
-                "label": "A"
-              },
-              {
-                "x": 2.0,
-                "y": 1.0,
-                "label": "B"
-              }
-            ],
-            "width": 230
-          }
+          "explanation": "(a) $u_1 = S_1 = 4(1)^2 - 3(1) = 1$. $S_2 = 4(2)^2 - 3(2) = 16 - 6 = 10$. $u_2 = S_2 - S_1 = 10 - 1 = 9$. (b) Common difference: $d = u_2 - u_1 = 9 - 1 = 8$. (c) General term: $u_n = u_1 + (n - 1)d = 1 + (n - 1)(8) = 8n - 7$. Alternatively: $u_n = S_n - S_{n-1} = (4n^2 - 3n) - [4(n-1)^2 - 3(n-1)] = 8n - 7$. For $n = 25$: $u_{25} = 8(25) - 7 = 200 - 7 = 193.$"
         },
         {
           "q": "In triangle $ABC$, side $a = 7\\mathrm{\\ cm}$, side $b = 9\\mathrm{\\ cm}$, and angle $A = 42^\\circ$. (a) Show that two distinct triangles can be formed with these given measurements. (b) Calculate both possible values for angle $B$ and the corresponding values of side $c$.",
@@ -182,31 +158,31 @@
           "explanation": "(a) General term: $T_{r+1} = \\binom{9}{r} (x^2)^{9-r} \\left(-\\frac{2}{x}\\right)^r = \\binom{9}{r} (-2)^r x^{2(9-r)} x^{-r} = \\binom{9}{r} (-2)^r x^{18 - 3r}.$ (b) To find the coefficient of $x^3$, set the power of $x$ equal to 3: $18 - 3r = 3 \\Rightarrow 3r = 15 \\Rightarrow r = 5.$ Substitute $r = 5$: $T_6 = \\binom{9}{5} (-2)^5 x^3 = 126 \\times (-32) x^3 = -4032 x^3.$ The coefficient of $x^3$ is -4032. (c) The term independent of $x$ has power 0: $18 - 3r = 0 \\Rightarrow 3r = 18 \\Rightarrow r = 6.$ Substitute $r = 6$: $T_7 = \\binom{9}{6} (-2)^6 x^0 = 84 \\times 64 = 5376.$ The constant term is 5376."
         },
         {
-          "q": "Practice 4.1: A multiple-choice examination consists of 20 independent questions, each having 4 options of which only one is correct. A student guesses randomly on all questions. Let $X$ be the number of correct answers. (a) State the distribution of $X$ including its parameters. (b) Find the probability that the student passes by scoring at least 10 correct answers. (c) Calculate the mean and standard deviation of $X$.",
+          "q": "Let $f(x)=x^{2}+2x-9$. Find $f(3)$.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
           "cross_lesson": "5.01 Calculus",
-          "answer": "(a) $X \\sim B(n, p)$ with $n = 20$ and $p = 0.25$. (b) $P(X \\geq 10) = 1 - P(X \\leq 9)$. Using GDC `binomcdf(20, 0.25, 9)`: $P(X \\leq 9) \\approx 0.9861$. $P(X \\geq 10) = 1 - 0.9861 = 0.0139 \\quad (1.39\\%).$ (c) Mean: $\\mu = np = 20 \\times 0.25 = 5$. Standard deviation: $\\sigma = \\sqrt{np(1 - p)} = \\sqrt{20 \\times 0.25 \\times 0.75} = \\sqrt{3.75} \\approx 1.936 \\approx 1.94$.",
-          "explanation": "(a) $X \\sim B(n, p)$ with $n = 20$ and $p = 0.25$. (b) $P(X \\geq 10) = 1 - P(X \\leq 9)$. Using GDC `binomcdf(20, 0.25, 9)`: $P(X \\leq 9) \\approx 0.9861$. $P(X \\geq 10) = 1 - 0.9861 = 0.0139 \\quad (1.39\\%).$ (c) Mean: $\\mu = np = 20 \\times 0.25 = 5$. Standard deviation: $\\sigma = \\sqrt{np(1 - p)} = \\sqrt{20 \\times 0.25 \\times 0.75} = \\sqrt{3.75} \\approx 1.936 \\approx 1.94$."
+          "answer": "Final Answer: 6. Working through this functions step: $f(3)=(1)(3)^2+(2)(3)+(-9)=6$. [M1] [A1]",
+          "explanation": "Working through this functions step: $f(3)=(1)(3)^2+(2)(3)+(-9)=6$. [M1] [A1]"
         },
         {
-          "q": "Practice 2.1: The function $f(x) = 3 - \\ln(2x + 1)$ is defined for $x > -0.5$. Find an expression for $f^{-1}(x)$, state its domain and range, and write down the coordinates of the intercept of $y = f^{-1}(x)$ with the $y$-axis.",
+          "q": "If $P(A)=0.3$ and $P(B)=0.5$ and $A,B$ are independent, find $P(A\\cup B).$",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Foundational Fluency (1–7)",
           "cross_lesson": "6.01 AI SL — Specific Topics",
-          "answer": "1. Let $y = 3 - \\ln(2x + 1)$. 2. Rearrange: $\\ln(2x + 1) = 3 - y \\Rightarrow 2x + 1 = e^{3 - y} \\Rightarrow x = \\frac{e^{3 - y} - 1}{2}$. 3. Swap variables: $f^{-1}(x) = \\frac{e^{3 - x} - 1}{2}$. 4. Domain of $f^{-1}$ is the range of $f$, which is $\\mathbb{R}$ (all real numbers). Range of $f^{-1}$ is the domain of $f$, $(-0.5, \\infty)$. 5. The $y$-intercept occurs at $x = 0$: $f^{-1}(0) = \\frac{e^3 - 1}{2}$. Coordinates: $\\left(0, \\frac{e^3 - 1}{2}\\right)$.",
-          "explanation": "1. Let $y = 3 - \\ln(2x + 1)$. 2. Rearrange: $\\ln(2x + 1) = 3 - y \\Rightarrow 2x + 1 = e^{3 - y} \\Rightarrow x = \\frac{e^{3 - y} - 1}{2}$. 3. Swap variables: $f^{-1}(x) = \\frac{e^{3 - x} - 1}{2}$. 4. Domain of $f^{-1}$ is the range of $f$, which is $\\mathbb{R}$ (all real numbers). Range of $f^{-1}$ is the domain of $f$, $(-0.5, \\infty)$. 5. The $y$-intercept occurs at $x = 0$: $f^{-1}(0) = \\frac{e^3 - 1}{2}$. Coordinates: $\\left(0, \\frac{e^3 - 1}{2}\\right)$."
+          "answer": "Final Answer: 0.65. $P(A\\cup B)=0.3+0.5-0.3\\times0.5=0.65$ [M1] [A1]",
+          "explanation": "$P(A\\cup B)=0.3+0.5-0.3\\times0.5=0.65$ [M1] [A1]"
         },
         {
-          "q": "Practice 4.2: Bivariate data for study hours $x$ and exam mark $y$ across 10 students yield $\\bar{x} = 14.5$, $\\bar{y} = 72.0$, and Pearson's correlation coefficient $r = 0.88$. The regression line of $y$ on $x$ has equation $y = 2.4x + c$. (a) Find the value of $c$. (b) Interpret the slope $2.4$ in context. (c) Estimate the exam mark of a student who studies 18 hours.",
+          "q": "The following bar chart shows the number of students who achieved different grades in a mathematics test.\\nThe grades are A, B, C, and D. The data is as follows: Grade A: 14 students, Grade B: 22 students, Grade C: 18 students, Grade D: 26 students.\\nWhat is the total number of students who took the test? Show your complete algebraic work.",
           "difficulty": "Challenging",
           "question_type": "FRQ",
           "target": "Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
           "cross_lesson": "1.01 Number & Algebra",
-          "answer": "(a) The regression line must pass through the mean point $(\\bar{x}, \\bar{y}) = (14.5, 72.0)$: $72.0 = 2.4(14.5) + c \\Rightarrow 72.0 = 34.8 + c \\Rightarrow c = 72.0 - 34.8 = 37.2.$ Thus $y = 2.4x + 37.2$. (b) The slope $2.4$ indicates that for each additional hour of study, a student's predicted exam mark increases by 2.4 marks. (c) For $x = 18$: $\\hat{y} = 2.4(18) + 37.2 = 43.2 + 37.2 = 80.4\\mathrm{\\ marks}.$",
-          "explanation": "(a) The regression line must pass through the mean point $(\\bar{x}, \\bar{y}) = (14.5, 72.0)$: $72.0 = 2.4(14.5) + c \\Rightarrow 72.0 = 34.8 + c \\Rightarrow c = 72.0 - 34.8 = 37.2.$ Thus $y = 2.4x + 37.2$. (b) The slope $2.4$ indicates that for each additional hour of study, a student's predicted exam mark increases by 2.4 marks. (c) For $x = 18$: $\\hat{y} = 2.4(18) + 37.2 = 43.2 + 37.2 = 80.4\\mathrm{\\ marks}.$"
+          "answer": "Final Answer: 80. To find the total number of students who took the test, we need to sum the number of students who achieved each grade.\\nNumber of students with Grade A = 14\\nNumber of students with Grade B = 22\\nNumber of students with Grade C = 18\\nNumber of students with Grade D = 26\\nTotal number of students = 14 + 22 + 18 + 26 = 80.\\nTherefore, 80 students took the test. [M1] [A1]",
+          "explanation": "To find the total number of students who took the test, we need to sum the number of students who achieved each grade.\\nNumber of students with Grade A = 14\\nNumber of students with Grade B = 22\\nNumber of students with Grade C = 18\\nNumber of students with Grade D = 26\\nTotal number of students = 14 + 22 + 18 + 26 = 80.\\nTherefore, 80 students took the test. [M1] [A1]"
         }
       ]
     },
@@ -214,185 +190,124 @@
       "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
       "questions": [
         {
-          "q": "For the model $f(x) = 2x + 6$ in cubic functions, evaluate $f(2)$.",
+          "q": "In the diagram, triangle ABC is shown with coordinates A(1, 1), B(3, 1), and C(3, 5). What is the exact length of the side AC in simplest radical form?",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
-            "$10$",
-            "$12$",
-            "$4$",
-            "$14$"
+            "4",
+            "5",
+            "$2\\sqrt{5}$",
+            "$4\\sqrt{2}$"
           ],
-          "correct": 0,
-          "answer": "Substitute $x = 2$: $f(2) = 2(2) + 6 = 10$.",
-          "explanation": "Substitute $x = 2$: $f(2) = 2(2) + 6 = 10$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "2*x + 6"
-            ],
-            "xmin": -4.5,
-            "xmax": 4.5,
-            "ymin": -4.0,
-            "ymax": 16.0,
-            "width": 225,
-            "point_labels": [
-              {
-                "x": -0.5,
-                "y": 5.0,
-                "label": "$(-0.5, 5)$"
-              }
-            ]
-          }
+          "correct": 2,
+          "answer": "Using the distance formula between $A(1, 1)$ and $C(3, 5)$: $AC = \\sqrt{(3 - 1)^2 + (5 - 1)^2} = \\sqrt{2^2 + 4^2} = \\sqrt{4 + 16} = \\sqrt{20} = 2\\sqrt{5}.$ [M1] [A1]",
+          "explanation": "Using the distance formula between $A(1, 1)$ and $C(3, 5)$: $AC = \\sqrt{(3 - 1)^2 + (5 - 1)^2} = \\sqrt{2^2 + 4^2} = \\sqrt{4 + 16} = \\sqrt{20} = 2\\sqrt{5}.$ [M1] [A1]"
         },
         {
-          "q": "For the model $f(x) = 3x + 7$ in power functions, evaluate $f(2)$.",
+          "q": "A right triangle has one leg of length 12 and hypotenuse 20. Find the length of the other leg.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
-            "$13$",
-            "$16$",
-            "$6$",
-            "$17$"
+            "6",
+            "11",
+            "16",
+            "13"
           ],
-          "correct": 0,
-          "answer": "Substitute $x = 2$: $f(2) = 3(2) + 7 = 13$.",
-          "explanation": "Substitute $x = 2$: $f(2) = 3(2) + 7 = 13$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "0.25*x**3 - 0.75*x**2 + 2"
-            ],
-            "xmin": -2,
-            "xmax": 4,
-            "ymin": -2,
-            "ymax": 5,
-            "points": [
-              [
-                0,
-                2
-              ],
-              [
-                2,
-                1
-              ],
-              [
-                3,
-                2
-              ]
-            ],
-            "width": 145
-          }
+          "correct": 2,
+          "answer": "By Pythagoras: $12^2+16^2=20^2$, so the unknown side is 16. [M1] [A1]",
+          "explanation": "By Pythagoras: $12^2+16^2=20^2$, so the unknown side is 16. [M1] [A1]"
         },
         {
-          "q": "For the model $f(x) = 4x + 8$ in direct variation, evaluate $f(2)$.",
+          "q": "Find the mean of the data set: $20, 13, 12, 12, 8$.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
           "choices": [
-            "$16$",
-            "$20$",
-            "$8$",
-            "$20$"
+            "10",
+            "13",
+            "8",
+            "11"
           ],
-          "correct": 0,
-          "answer": "Substitute $x = 2$: $f(2) = 4(2) + 8 = 16$.",
-          "explanation": "Substitute $x = 2$: $f(2) = 4(2) + 8 = 16$.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "4*x + 8"
-            ],
-            "xmin": -4.5,
-            "xmax": 4.5,
-            "ymin": -10.0,
-            "ymax": 20.0,
-            "width": 225,
-            "point_labels": [
-              {
-                "x": 1.0,
-                "y": 12.0,
-                "label": "$(1, 12)$"
-              }
-            ]
-          }
+          "correct": 1,
+          "answer": "Working through this statistics step: Mean $=\\frac{20+13+12+12+8}{5}=13$. [M1] [A1]",
+          "explanation": "Working through this statistics step: Mean $=\\frac{20+13+12+12+8}{5}=13$. [M1] [A1]"
         },
         {
-          "q": "A data set recorded for cubic functions consists of the four values $\\{11, 15, 19, 25\\}$. What is the arithmetic mean?",
+          "q": "Find $\\displaystyle\\int x^{2}+4x^{3}\\,dx$.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "choices": [
-            "$15.5$",
-            "$16.5$",
-            "$17.5$",
-            "$19.5$"
+            "$\\frac{1}{3}x^{3}+x^{4}+C$",
+            "$\\frac{1}{4}x^{4}+\\frac{4}{5}x^{5}+C$",
+            "$3x^{3}+16x^{4}+C$",
+            "$x^{2}+4x^{3}+C$"
           ],
-          "correct": 2,
-          "answer": "The sum is $11 + 15 + 19 + 25 = 70$, and dividing by $4$ gives $17.5$.",
-          "explanation": "The sum is $11 + 15 + 19 + 25 = 70$, and dividing by $4$ gives $17.5$."
+          "correct": 0,
+          "answer": "Working through this calculus step: Using the power rule $\\int x^n\\,dx=\\frac{x^{n+1}}{n+1}+C$: $\\int x^{2}+4x^{3}\\,dx=\\frac{1}{3}x^{3}+x^{4}+C$. [M1] [A1]",
+          "explanation": "Working through this calculus step: Using the power rule $\\int x^n\\,dx=\\frac{x^{n+1}}{n+1}+C$: $\\int x^{2}+4x^{3}\\,dx=\\frac{1}{3}x^{3}+x^{4}+C$. [M1] [A1]"
         },
         {
-          "q": "A data set recorded for power functions consists of the four values $\\{12, 16, 20, 26\\}$. What is the arithmetic mean?",
+          "q": "Find $f'(x)$ given $f(x)=x^{4}+4x^{2}+2x$.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
           "choices": [
-            "$16.5$",
-            "$17.5$",
-            "$18.5$",
-            "$20.5$"
+            "$5x^{4}+12x^{2}+4x$",
+            "$x^{4}+4x^{2}+2x$",
+            "$4x^{3}+8x+2$",
+            "$x^{3}+4x+2$"
           ],
           "correct": 2,
-          "answer": "The sum is $12 + 16 + 20 + 26 = 74$, and dividing by $4$ gives $18.5$.",
-          "explanation": "The sum is $12 + 16 + 20 + 26 = 74$, and dividing by $4$ gives $18.5$."
+          "answer": "Working through this calculus step: Differentiate term by term using the power rule: $f'(x)=4x^{3}+8x+2$. [M1] [A1]",
+          "explanation": "Working through this calculus step: Differentiate term by term using the power rule: $f'(x)=4x^{3}+8x+2$. [M1] [A1]"
         },
         {
-          "q": "A data set recorded for hyperbolas and inverse variation consists of the four values $\\{14, 18, 22, 28\\}$. What is the arithmetic mean?",
+          "q": "USD $1200$ is invested at a simple interest rate of $8\\%$ per year for 5 years. Find the interest earned.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
           "choices": [
-            "$18.5$",
-            "$19.5$",
-            "$20.5$",
-            "$22.5$"
-          ],
-          "correct": 2,
-          "answer": "The sum is $14 + 18 + 22 + 28 = 82$, and dividing by $4$ gives $20.5$.",
-          "explanation": "The sum is $14 + 18 + 22 + 28 = 82$, and dividing by $4$ gives $20.5$."
-        },
-        {
-          "q": "For the model $f(x) = 5x + 9$ in hyperbolas and inverse variation, evaluate $f(4)$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
-          "choices": [
-            "$29$",
-            "$34$",
-            "$20$",
-            "$33$"
+            "480.00",
+            "470.00",
+            "490.00",
+            "500.00"
           ],
           "correct": 0,
-          "answer": "Substitute $x = 4$: $f(4) = 5(4) + 9 = 29$.",
-          "explanation": "Substitute $x = 4$: $f(4) = 5(4) + 9 = 29$."
+          "answer": "Working through this modelling step: $I=\\frac{Prt}{100}=\\frac{(1200)(8)(5)}{100}=480.00$. [M1] [A1]",
+          "explanation": "Working through this modelling step: $I=\\frac{Prt}{100}=\\frac{(1200)(8)(5)}{100}=480.00$. [M1] [A1]"
         },
         {
-          "q": "A data set recorded for transformations of hyperbolas consists of the four values $\\{15, 19, 23, 29\\}$. What is the arithmetic mean?",
+          "q": "Find the midpoint of $A(-1, -1)$ and $B(-7, 5)$.",
           "difficulty": "Foundational",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
           "choices": [
-            "$19.5$",
-            "$20.5$",
-            "$21.5$",
-            "$23.5$"
+            "$(-6, 6)$",
+            "$(-3, 2)$",
+            "$(-4, 3)$",
+            "$(-4, 2)$"
           ],
-          "correct": 2,
-          "answer": "The sum is $15 + 19 + 23 + 29 = 86$, and dividing by $4$ gives $21.5$.",
-          "explanation": "The sum is $15 + 19 + 23 + 29 = 86$, and dividing by $4$ gives $21.5$."
+          "correct": 3,
+          "answer": "Working through this modelling step: $M=(\\frac{x_1+x_2}{2},\\frac{y_1+y_2}{2})=(\\frac{-1-7}{2},\\frac{-1+5}{2})=(-4, 2)$. [M1] [A1]",
+          "explanation": "Working through this modelling step: $M=(\\frac{x_1+x_2}{2},\\frac{y_1+y_2}{2})=(\\frac{-1-7}{2},\\frac{-1+5}{2})=(-4, 2)$. [M1] [A1]"
+        },
+        {
+          "q": "Convert $90^\\circ$ to radians.",
+          "difficulty": "Foundational",
+          "question_type": "MCQ",
+          "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
+          "choices": [
+            "$\\pi/2$",
+            "$\\pi$",
+            "$\\pi/4$",
+            "$2\\pi$"
+          ],
+          "correct": 0,
+          "answer": "$90^\\circ\\times\\frac{\\pi}{180}=\\frac{\\pi}{2}.$ [M1] [A1]",
+          "explanation": "$90^\\circ\\times\\frac{\\pi}{180}=\\frac{\\pi}{2}.$ [M1] [A1]"
         }
       ]
     },
@@ -400,34 +315,34 @@
       "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
       "questions": [
         {
-          "q": "For the model $f(x) = 6x + 3$ in transformations of hyperbolas, evaluate $f(4)$.",
+          "q": "Three air-quality monitoring stations are positioned at $A(2, 2)$, $B(8, 4)$, and $C(4, 8)$, where coordinates are measured in kilometres. (a) Find the coordinates of the midpoint $M$ of segment $[AB]$ and the gradient of $[AB]$. [2] (b) Hence find the equation of the perpendicular bisector of $[AB]$ in the form $y = mx + c$. [3] (c) A new school is built at $P(4.5, 4.5)$. By calculating the distance from $P$ to each station, determine which station's Voronoi cell contains $P$. [2]",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
           "choices": [
-            "$27$",
-            "$33$",
-            "$24$",
-            "$31$"
+            "$1$",
+            "$2$",
+            "$3$",
+            "$4$"
           ],
           "correct": 0,
-          "answer": "Substitute $x = 4$: $f(4) = 6(4) + 3 = 27$.",
-          "explanation": "Substitute $x = 4$: $f(4) = 6(4) + 3 = 27$."
+          "answer": "IB Markscheme (7 marks — AI SL Paper 1): (a) Midpoint $M = (\\frac{2+8}{2}, \\frac{2+4}{2}) = (5, 3)$ [A1]; $m_{AB} = \\frac{4 - 2}{8 - 2} = 0.333$ [A1] (b) Perpendicular gradient $m_\\perp = -\\frac{1}{m_{AB}} = -3.00$ [M1] [A1] Equation: $y - 3 = -3.00(x - 5) \\implies y = -3.00x + 18.00$ [A1] (c) Distances: $PA = 3.54\\text{ km}, PB = 3.54\\text{ km}, PC = 3.54\\text{ km}$ [M1] $\\implies$ closest to Station $A$ [A1]",
+          "explanation": "IB Markscheme (7 marks — AI SL Paper 1): (a) Midpoint $M = (\\frac{2+8}{2}, \\frac{2+4}{2}) = (5, 3)$ [A1]; $m_{AB} = \\frac{4 - 2}{8 - 2} = 0.333$ [A1] (b) Perpendicular gradient $m_\\perp = -\\frac{1}{m_{AB}} = -3.00$ [M1] [A1] Equation: $y - 3 = -3.00(x - 5) \\implies y = -3.00x + 18.00$ [A1] (c) Distances: $PA = 3.54\\text{ km}, PB = 3.54\\text{ km}, PC = 3.54\\text{ km}$ [M1] $\\implies$ closest to Station $A$ [A1]"
         },
         {
-          "q": "For the model $f(x) = 2x + 4$ in graphing square root functions, evaluate $f(3)$.",
+          "q": "Three air-quality monitoring stations are positioned at $A(1, 3)$, $B(7, 1)$, and $C(5, 7)$, where coordinates are measured in kilometres. (a) Find the coordinates of the midpoint $M$ of segment $[AB]$ and the gradient of $[AB]$. [2] (b) Hence find the equation of the perpendicular bisector of $[AB]$ in the form $y = mx + c$. [3] (c) A new school is built at $P(4, 4)$. By calculating the distance from $P$ to each station, determine which station's Voronoi cell contains $P$. [2] (d) Explain what the Voronoi vertex $V$ represents in the context of air-quality monitoring and describe how the toxic waste dump problem uses $V$. [6]",
           "difficulty": "Intermediate",
           "question_type": "MCQ",
           "target": "Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
           "choices": [
-            "$10$",
-            "$12$",
-            "$6$",
-            "$14$"
+            "$1$",
+            "$2$",
+            "$3$",
+            "$4$"
           ],
           "correct": 0,
-          "answer": "Substitute $x = 3$: $f(3) = 2(3) + 4 = 10$.",
-          "explanation": "Substitute $x = 3$: $f(3) = 2(3) + 4 = 10$."
+          "answer": "IB Markscheme (13 marks — AI SL Paper 2): (a) Midpoint $M = (\\frac{1+7}{2}, \\frac{3+1}{2}) = (4, 2)$ [A1]; $m_{AB} = \\frac{1 - 3}{7 - 1} = -0.333$ [A1] (b) Perpendicular gradient $m_\\perp = -\\frac{1}{m_{AB}} = 3.00$ [M1] [A1] Equation: $y - 2 = 3.00(x - 4) \\implies y = 3.00x - 10.00$ [A1] (c) Distances: $PA = 3.16\\text{ km}, PB = 4.24\\text{ km}, PC = 3.16\\text{ km}$ [M1] $\\implies$ closest to Station $A$ [A1] (d) The Voronoi vertex $V$ is equidistant from all three stations $A, B, C$ [R1] [A1], forming the centre of the largest empty circle [R1] [A1]; in the toxic waste dump problem, $V$ maximizes the minimum distance to any existing station [R1] [A1].",
+          "explanation": "IB Markscheme (13 marks — AI SL Paper 2): (a) Midpoint $M = (\\frac{1+7}{2}, \\frac{3+1}{2}) = (4, 2)$ [A1]; $m_{AB} = \\frac{1 - 3}{7 - 1} = -0.333$ [A1] (b) Perpendicular gradient $m_\\perp = -\\frac{1}{m_{AB}} = 3.00$ [M1] [A1] Equation: $y - 2 = 3.00(x - 4) \\implies y = 3.00x - 10.00$ [A1] (c) Distances: $PA = 3.16\\text{ km}, PB = 4.24\\text{ km}, PC = 3.16\\text{ km}$ [M1] $\\implies$ closest to Station $A$ [A1] (d) The Voronoi vertex $V$ is equidistant from all three stations $A, B, C$ [R1] [A1], forming the centre of the largest empty circle [R1] [A1]; in the toxic waste dump problem, $V$ maximizes the minimum distance to any existing station [R1] [A1]."
         },
         {
           "q": "Consider the function $f(x) = \\frac{1}{x-1}$ and the function $g(x) = x^2$. Let $h(x) = f(g(x))$. The graph of $y = h(x)$ is shown below. Determine the equation of the vertical asymptote(s) of $y = h(x)$.",
@@ -448,10 +363,10 @@
             "fns": [
               "1/(x*x - 1)"
             ],
-            "xmin": -4.0,
-            "xmax": 4.0,
-            "ymin": -4.0,
-            "ymax": 4.0,
+            "xmin": -4,
+            "xmax": 4,
+            "ymin": -4,
+            "ymax": 4,
             "width": 230
           }
         },
@@ -468,26 +383,7 @@
           ],
           "correct": 2,
           "answer": "To find the intersection points of the two functions, we set $f(x) = g(x)$. $x^2 - 6x + 11 = 2x - 1$ Rearrange the equation to form a quadratic equation: $x^2 - 6x - 2x + 11 + 1 = 0$ $x^2 - 8x + 12 = 0$ We can factor this quadratic equation. We are looking for two numbers that multiply to 12 and add to -8. These numbers are -6 and -2. $(x - 2)(x - 6) = 0$ This gives us two possible solutions for x: $x = 2$ or $x = 6$. We are given that one intersection point has an x-coordinate of 2. Therefore, the x-coordinate of the other intersection point is 6.",
-          "explanation": "To find the intersection points of the two functions, we set $f(x) = g(x)$. $x^2 - 6x + 11 = 2x - 1$ Rearrange the equation to form a quadratic equation: $x^2 - 6x - 2x + 11 + 1 = 0$ $x^2 - 8x + 12 = 0$ We can factor this quadratic equation. We are looking for two numbers that multiply to 12 and add to -8. These numbers are -6 and -2. $(x - 2)(x - 6) = 0$ This gives us two possible solutions for x: $x = 2$ or $x = 6$. We are given that one intersection point has an x-coordinate of 2. Therefore, the x-coordinate of the other intersection point is 6.",
-          "figure": {
-            "type": "plot",
-            "fns": [
-              "x*x - 6*x + 11",
-              "2*x - 1"
-            ],
-            "xmin": -1.0,
-            "xmax": 7.0,
-            "ymin": -2.0,
-            "ymax": 10.0,
-            "width": 230,
-            "point_labels": [
-              {
-                "x": 2.0,
-                "y": 3.0,
-                "label": "(2, 3)"
-              }
-            ]
-          }
+          "explanation": "To find the intersection points of the two functions, we set $f(x) = g(x)$. $x^2 - 6x + 11 = 2x - 1$ Rearrange the equation to form a quadratic equation: $x^2 - 6x - 2x + 11 + 1 = 0$ $x^2 - 8x + 12 = 0$ We can factor this quadratic equation. We are looking for two numbers that multiply to 12 and add to -8. These numbers are -6 and -2. $(x - 2)(x - 6) = 0$ This gives us two possible solutions for x: $x = 2$ or $x = 6$. We are given that one intersection point has an x-coordinate of 2. Therefore, the x-coordinate of the other intersection point is 6."
         },
         {
           "q": "The graph of the quadratic function $f(x) = x^2 - 6x + k$ is shown below. The graph passes through the point $(2, -3)$. Determine the value of $k$.",
@@ -508,15 +404,15 @@
             "fns": [
               "x*x - 6*x + 5"
             ],
-            "xmin": -1.0,
-            "xmax": 7.0,
-            "ymin": -5.0,
-            "ymax": 5.0,
+            "xmin": -1,
+            "xmax": 7,
+            "ymin": -5,
+            "ymax": 5,
             "width": 230,
             "point_labels": [
               {
-                "x": 2.0,
-                "y": -3.0,
+                "x": 2,
+                "y": -3,
                 "label": "(2, -3)"
               }
             ]
@@ -541,25 +437,25 @@
             "fns": [
               "(-2)*(x-1)*(x-5)"
             ],
-            "xmin": -1.0,
-            "xmax": 6.0,
-            "ymin": -12.0,
-            "ymax": 4.0,
+            "xmin": -1,
+            "xmax": 6,
+            "ymin": -12,
+            "ymax": 4,
             "width": 230,
             "point_labels": [
               {
-                "x": 1.0,
-                "y": 0.0,
+                "x": 1,
+                "y": 0,
                 "label": "(1, 0)"
               },
               {
-                "x": 5.0,
-                "y": 0.0,
+                "x": 5,
+                "y": 0,
                 "label": "(5, 0)"
               },
               {
-                "x": 0.0,
-                "y": -10.0,
+                "x": 0,
+                "y": -10,
                 "label": "(0, -10)"
               }
             ]
@@ -586,8 +482,8 @@
             ],
             "xmin": -4.5,
             "xmax": 4.5,
-            "ymin": -3.0,
-            "ymax": 20.0,
+            "ymin": -3,
+            "ymax": 20,
             "width": 225,
             "point_labels": [
               {
@@ -617,15 +513,15 @@
             "fns": [
               "-2*x + 6"
             ],
-            "xmin": -2.0,
-            "xmax": 5.0,
-            "ymin": -6.0,
-            "ymax": 8.0,
+            "xmin": -2,
+            "xmax": 5,
+            "ymin": -6,
+            "ymax": 8,
             "width": 230,
             "point_labels": [
               {
-                "x": 0.0,
-                "y": 6.0,
+                "x": 0,
+                "y": 6,
                 "label": "$(0,6)$"
               }
             ]
@@ -651,15 +547,15 @@
               "-x*x + 4*x - 3",
               "x - 1"
             ],
-            "xmin": -2.0,
-            "xmax": 6.0,
-            "ymin": -3.0,
-            "ymax": 6.0,
+            "xmin": -2,
+            "xmax": 6,
+            "ymin": -3,
+            "ymax": 6,
             "width": 230,
             "point_labels": [
               {
-                "x": 1.0,
-                "y": 0.0,
+                "x": 1,
+                "y": 0,
                 "label": "(1, 0)"
               }
             ]

@@ -327,7 +327,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Medium):</strong> Given that the separable initial value problem \\( \\dfrac{dh}{du} = 36u \\) satisfies \\( h(0) = 21 \\), determine the solution value \\( h(8) \\).</p><p><strong>Step-by-Step Solution:</strong> Integrating gives \\( h(u) = 18u^2 + 21 \\), so \\( h(8) = 1173 \\).</p>",
+          "en": "<p><strong>Problem (Medium):</strong> Consider the differential equation \\( \\dfrac{dy}{dx} = x + y \\) with the initial condition \\( y(0) = 1 \\). You are asked to approximate \\( y(0.2) \\) using Euler's method. If the step size \\( h = 0.1 \\) is used, and it is known that the exact solution at \\( x=0.2 \\) is \\( y(0.2) = 1.24 \\), determine the value of \\( k \\) such that \\( y(0.2)_{\\text{Euler}} = 1.24 - k \\).</p><p><strong>Step-by-Step Solution:</strong> Euler's method for approximating the solution to \\( \\dfrac{dy}{dx} = f(x, y) \\) with initial condition \\( y(x_0) = y_0 \\) and step size \\( h \\) is given by \\( y_{n+1} = y_n + h f(x_n, y_n) \\).\n\nIn this problem, \\( f(x, y) = x + y \\), \\( x_0 = 0 \\), \\( y_0 = 1 \\), and \\( h = 0.1 \\).\n\nWe want to approximate \\( y(0.2) \\) with \\( h=0.1 \\). This requires two steps:\n\nStep 1: From \\( x_0 = 0 \\) to \\( x_1 = 0.1 \\).\n\\( y_1 = y_0 + h f(x_0, y_0) \\)\n\\( y_1 = 1 + 0.1 (0 + 1) \\)\n\\( y_1 = 1 + 0.1 (1) \\)\n\\( y_1 = 1 + 0.1 \\)\n\\( y_1 = 1.1 \\)\n\nStep 2: From \\( x_1 = 0.1 \\) to \\( x_2 = 0.2 \\).\n\\( y_2 = y_1 + h f(x_1, y_1) \\)\n\\( y_2 = 1.1 + 0.1 (0.1 + 1.1) \\)\n\\( y_2 = 1.1 + 0.1 (1.2) \\)\n\\( y_2 = 1.1 + 0.12 \\)\n\\( y_2 = 1.22 \\)\n\nSo, the approximation using Euler's method is \\( y(0.2)_{\\text{Euler}} = 1.22 \\).\n\nWe are given that the exact solution is \\( y(0.2) = 1.24 \\) and \\( y(0.2)_{\\text{Euler}} = 1.24 - k \\).\nSubstituting the value of \\( y(0.2)_{\\text{Euler}} \\), we get:\n\\( 1.22 = 1.24 - k \\)\n\\( k = 1.24 - 1.22 \\)\n\\( k = 0.02 \\)\n\nTherefore, the value of \\( k \\) is 0.02.</p>",
           "ar": null
         }
       },
@@ -339,7 +339,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Hard):</strong> Use Euler's method with \\( h=\\frac{1}{2} \\) to approximate \\( y(\\frac{3}{2}) \\) for \\( y'=xy \\), \\( y(0)=1 \\).</p><p><strong>Step-by-Step Solution:</strong> \\( y_{n+1}=y_n+hf(x_n,y_n) \\), applied 3 time(s) from \\( (0,1) \\), gives \\( \\frac{15}{8} \\).</p>",
+          "en": "<p><strong>Problem (Hard):</strong> Consider the differential equation \\(\\frac{dy}{dx} = x + y\\) with the initial condition \\(y(0) = 1\\). Use the Euler method with a step size \\(h = 0.1\\) to approximate the value of \\(y(0.2)\\).</p><p><strong>Step-by-Step Solution:</strong> The Euler method approximates the solution to an initial value problem \\(\\frac{dy}{dx} = f(x, y)\\), \\(y(x_0) = y_0\\) using the iterative formula \\(y_{n+1} = y_n + h f(x_n, y_n)\\), where \\(h\\) is the step size and \\(x_{n+1} = x_n + h\\).\n\nGiven \\(f(x, y) = x + y\\), \\(x_0 = 0\\), \\(y_0 = 1\\), and \\(h = 0.1\\).\n\nFor the first step (approximating y(0.1)):\n\\(x_1 = x_0 + h = 0 + 0.1 = 0.1\\)\n\\(y_1 = y_0 + h f(x_0, y_0) = 1 + 0.1 (0 + 1) = 1 + 0.1(1) = 1.1\\).\n\nFor the second step (approximating y(0.2)):\n\\(x_2 = x_1 + h = 0.1 + 0.1 = 0.2\\)\n\\(y_2 = y_1 + h f(x_1, y_1) = 1.1 + 0.1 (0.1 + 1.1) = 1.1 + 0.1 (1.2) = 1.1 + 0.12 = 1.22\\).\n\nTherefore, the approximate value of \\(y(0.2)\\) using the Euler method is 1.22.</p>",
           "ar": null
         }
       },
@@ -351,7 +351,7 @@
           "ar": null
         },
         "body": {
-          "en": "<p><strong>Problem (Easy):</strong> Use the improved Euler (Heun) method with \\( h=\\frac{1}{2} \\) to approximate \\( y(\\frac{1}{2}) \\) for \\( y'=y-x \\), \\( y(0)=2 \\).</p><p><strong>Step-by-Step Solution:</strong> \\( y_{n+1}=y_n+\\tfrac h2\\left[f(x_n,y_n)+f(x_n+h,\\,y_n+hf(x_n,y_n))\\right] \\), applied 1 time(s) from \\( (0,2) \\), gives \\( \\frac{25}{8} \\).</p>",
+          "en": "<p><strong>Problem (Easy):</strong> Consider the differential equation \\( \\dfrac{dy}{dx} = x + y \\) with the initial condition \\( y(0) = 1 \\). Use the Euler method with a step size of \\( h = 0.1 \\) to approximate \\( y(0.2) \\).</p><p><strong>Step-by-Step Solution:</strong> Using Euler's method \\( y_{n+1} = y_n + h(x_n + y_n) \\) with \\( x_0 = 0, y_0 = 1, h = 0.1 \\):\n1. \\( y_1 = 1 + 0.1(0 + 1) = 1.100 \\) at \\( x_1 = 0.1 \\).\n2. \\( y_2 = 1.1 + 0.1(0.1 + 1.1) = 1.1 + 0.12 = 1.220 \\) at \\( x_2 = 0.2 \\).</p>",
           "ar": null
         }
       },
@@ -485,50 +485,50 @@
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 3 · Medium]</strong> On \\( [0,1] \\), Euler's method with \\( h=0.1 \\) gives an error of about \\( \\frac{1}{50} \\). Roughly how many steps are needed for an error of \\( \\frac{1}{500} \\)?",
+          "en": "<strong>[Practice 3 · Medium]</strong> The first-order differential equation \\( \\dfrac{df}{dx} = 12x - 2f \\) has its slope field plotted below. Determine the slope \\( \\dfrac{df}{dx} \\) at the point \\( A(6, 23) \\).",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability</em> and start from \\( [0,1] \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Numerical Methods: Euler, Improved Euler (RK2), RK4 & Numerical Stability and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( h^{1} \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "The error scales like \\( h^{1} \\); reducing it by \\( 10 \\) needs \\( h \\) smaller by \\( 10 \\), i.e. \\( h=\\frac{1}{100} \\), which is 100 steps. <strong>Answer:</strong> \\( 100 \\).",
+          "en": "Evaluating at \\( (6, 23) \\) gives \\( 12(6) - 2(23) = 26 \\).",
           "ar": null
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
-          "en": "<strong>[Practice 4 · Hard]</strong> Use Euler's method with \\( h=\\frac{1}{2} \\) to approximate \\( y(1) \\) for \\( y'=2x+y \\), \\( y(0)=3 \\).",
+          "en": "<strong>[Practice 4 · Hard]</strong> Find a particular solution of \\( y''-y'-6y=e^{2x}+18 \\).",
           "ar": null
         },
         "hints": [
           {
-            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the governing relationship in <em>Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability</em> and start from \\( h=\\frac{1}{2} \\).",
+            "en": "<strong>Tier 1 (Conceptual Setup):</strong> Identify the mathematical relationship in Nonhomogeneous Equations (Undetermined Coefficients) and write down the given values.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 2 (Key Transformation):</strong> Apply the key algebraic/geometric step leading toward \\( y_{n+1}=y_n+hf(x_n,y_n) \\).",
+            "en": "<strong>Tier 2 (Key Transformation):</strong> Substitute the known quantities into the governing equation or formula and simplify step by step.",
             "ar": null
           },
           {
-            "en": "<strong>Tier 3 (Final Verification):</strong> Check signs, units, and domain restrictions on your result before opening the full solution below.",
+            "en": "<strong>Tier 3 (Final Verification):</strong> Verify that your final result satisfies all conditions stated in the problem.",
             "ar": null
           }
         ],
         "solution": {
-          "en": "\\( y_{n+1}=y_n+hf(x_n,y_n) \\), applied 2 time(s) from \\( (0,3) \\), gives \\( \\frac{29}{4} \\).",
+          "en": "Split the forcing (the superposition note): for \\( e^{2x} \\), \\( r=2 \\) isn't a root of \\( r^2-r-6=0 \\) (roots \\( 3,-2 \\)), so trial \\( Ae^{2x} \\) gives \\( (4-2-6)A=1\\Rightarrow-4A=1\\Rightarrow A=-\\tfrac14 \\). For the constant \\( 18 \\), trial \\( B \\) gives \\( -6B=18\\Rightarrow B=-3 \\). Adding the two pieces: \\( y_p=-\\tfrac14e^{2x}-3 \\).",
           "ar": null
         }
       }
