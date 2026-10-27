@@ -262,6 +262,28 @@ D["act2-about"] = [
         "h": "احسب \\(4 + 3\\)."
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Test format & strategy)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Test format & strategy)",
+    "q": "What is the minimum value of \\( f(x) = (x - 3)^2 + 5 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 3)^2 + 5 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 5 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 14 \\)"
+    ],
+    "o_ar": [
+      "\\( 5 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 14 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 3)^2 \\ge 0 \\), the minimum value is \\( 5 \\) achieved at \\( x = 3 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 5 \\) عند \\( x = 3 \\)."
   }
 ];
 
@@ -1090,6 +1112,28 @@ D["act2-functions"] = [
         "h": "احسب \\(4 + 1\\)."
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Advanced Functions)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Advanced Functions)",
+    "q": "What is the minimum value of \\( f(x) = (x - 6)^2 + 8 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 6)^2 + 8 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 8 \\)",
+      "\\( 6 \\)",
+      "\\( -6 \\)",
+      "\\( 44 \\)"
+    ],
+    "o_ar": [
+      "\\( 8 \\)",
+      "\\( 6 \\)",
+      "\\( -6 \\)",
+      "\\( 44 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 6)^2 \\ge 0 \\), the minimum value is \\( 8 \\) achieved at \\( x = 6 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 8 \\) عند \\( x = 6 \\)."
   }
 ];
 
@@ -2589,5 +2633,4 @@ D["act2-stats"] = [
     ]
   }
 ];
-
 });

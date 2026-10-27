@@ -78,11 +78,19 @@ bankFiles.forEach(file => {
   });
 });
 
-audit(`Total question bank volume exceeds 42,600 verified items (Total: ${totalQuestions.toLocaleString()})`, () => {
-  assert.ok(totalQuestions >= 42600, `Expected >= 42,600 questions, got ${totalQuestions}`);
+audit(`Total question bank volume exceeds 50,000 verified items and every bank has >= 1,200 questions (Total: ${totalQuestions.toLocaleString()})`, () => {
+  assert.ok(totalQuestions >= 50000, `Expected >= 50,000 questions, got ${totalQuestions}`);
+  bankFiles.forEach(file => {
+    const bankName = file.replace('.json', '');
+    const data = JSON.parse(fs.readFileSync(path.join(bankDir, file), 'utf8'));
+    const pool = Array.isArray(data.pool)
+      ? data.pool
+      : (data.easy || []).concat(data.medium || []).concat(data.hard || []);
+    assert.ok(pool.length >= 1200, `Bank ${bankName} must have >= 1,200 questions, found ${pool.length}`);
+  });
 });
 
-audit(`Zero fatal duplicates across all 28 question banks`, () => {
+audit(`Zero fatal duplicates across all 31 question banks`, () => {
   assert.strictEqual(totalDuplicates, 0, `Found ${totalDuplicates} duplicate questions`);
 });
 
@@ -164,9 +172,22 @@ ixFiles.forEach(f => {
   });
 });
 
-audit(`Total interactive activities exceeds 1,400 with 100% Arabic parity (${activitiesWithArabic}/${totalActivities})`, () => {
-  assert.ok(totalActivities >= 1400, `Expected >= 1,400 activities, got ${totalActivities}`);
+audit(`Total interactive activities exceeds 2,750 with >= 72 per track and 100% Arabic parity (${activitiesWithArabic}/${totalActivities})`, () => {
+  assert.ok(totalActivities >= 2750, `Expected >= 2,750 activities, got ${totalActivities}`);
   assert.strictEqual(activitiesWithArabic, totalActivities, `All activities must include Arabic translations`);
+  ixFiles.forEach(f => {
+    const src = fs.readFileSync(path.join(ixDir, f), 'utf8');
+    const win = {};
+    new Function('window', src)(win);
+    const D = {};
+    (win.__ixData || []).forEach(fn => fn(D));
+    let trackCount = 0;
+    Object.entries(D).forEach(([chId, acts]) => {
+      assert.ok(acts.length >= 9, `Chapter ${chId} in ${f} must have >= 9 activities, found ${acts.length}`);
+      trackCount += acts.length;
+    });
+    assert.ok(trackCount >= 72, `Track ${f} must have >= 72 activities, found ${trackCount}`);
+  });
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -224,12 +245,20 @@ console.log('\n── Pillar 5: Curriculum Coverage & Multi-Page SSG Structure �
 const contentDir = path.join(__dirname, '..', 'content');
 const contentTracks = fs.readdirSync(contentDir).filter(f => fs.statSync(path.join(contentDir, f)).isDirectory());
 
-audit(`Curriculum directory covers 31 complete tracks with _meta.json and chapter JSONs`, () => {
+audit(`Curriculum directory covers 31 complete tracks with _meta.json, >= 8 chapters per track (302 total chapters), and >= 8 PDF worksheet pairs per track`, () => {
   assert.strictEqual(contentTracks.length, 31, `Expected 31 content tracks, found ${contentTracks.length}`);
+  let totalChapters = 0;
   contentTracks.forEach(t => {
     const metaP = path.join(contentDir, t, '_meta.json');
     assert.ok(fs.existsSync(metaP), `_meta.json must exist in content/${t}/`);
+    const meta = JSON.parse(fs.readFileSync(metaP, 'utf8'));
+    assert.ok(Array.isArray(meta.chapterOrder) && meta.chapterOrder.length >= 8, `Track ${t} must have >= 8 chapters in chapterOrder, found ${(meta.chapterOrder || []).length}`);
+    totalChapters += meta.chapterOrder.length;
+    const dlDir = path.join(__dirname, '..', 'public', 'downloads', t);
+    const wsFiles = fs.existsSync(dlDir) ? fs.readdirSync(dlDir).filter(f => f.endsWith('-worksheet.pdf')) : [];
+    assert.ok(wsFiles.length >= 8, `Track ${t} must have >= 8 printable PDF worksheets in public/downloads/${t}/, found ${wsFiles.length}`);
   });
+  assert.ok(totalChapters >= 302, `Expected >= 302 chapters across 31 tracks, found ${totalChapters}`);
 });
 
 audit(`Every curriculum track has a 50-question _practice-set.json (1,550 total practice-set items)`, () => {

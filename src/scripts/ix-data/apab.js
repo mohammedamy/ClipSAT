@@ -265,6 +265,28 @@ D["apab-overview"] = [
         "h": "احسب 8(2) + 5."
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (AP Calculus AB Exam Format & Units Overview)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (AP Calculus AB Exam Format & Units Overview)",
+    "q": "What is the minimum value of \\( f(x) = (x - 3)^2 + 5 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 3)^2 + 5 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 5 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 14 \\)"
+    ],
+    "o_ar": [
+      "\\( 5 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 14 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 3)^2 \\ge 0 \\), the minimum value is \\( 5 \\) achieved at \\( x = 3 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 5 \\) عند \\( x = 3 \\)."
   }
 ];
 
@@ -1376,6 +1398,28 @@ D["apab-u2"] = [
         "h": "احسب 8(2) + 1."
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Unit 2 · Differentiation — Definition and Fundamental Properties)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Unit 2 · Differentiation — Definition and Fundamental Properties)",
+    "q": "What is the minimum value of \\( f(x) = (x - 5)^2 + 7 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 5)^2 + 7 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 7 \\)",
+      "\\( 5 \\)",
+      "\\( -5 \\)",
+      "\\( 32 \\)"
+    ],
+    "o_ar": [
+      "\\( 7 \\)",
+      "\\( 5 \\)",
+      "\\( -5 \\)",
+      "\\( 32 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 5)^2 \\ge 0 \\), the minimum value is \\( 7 \\) achieved at \\( x = 5 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 7 \\) عند \\( x = 5 \\)."
   }
 ];
 
@@ -1907,6 +1951,28 @@ D["apab-u4"] = [
         "r": "\\(f'(g(x))\\cdot g'(x)\\) (قاعدة السلسلة)"
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Unit 4 · Contextual Applications of Differentiation)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Unit 4 · Contextual Applications of Differentiation)",
+    "q": "What is the minimum value of \\( f(x) = (x - 7)^2 + 9 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 7)^2 + 9 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 9 \\)",
+      "\\( 7 \\)",
+      "\\( -7 \\)",
+      "\\( 58 \\)"
+    ],
+    "o_ar": [
+      "\\( 9 \\)",
+      "\\( 7 \\)",
+      "\\( -7 \\)",
+      "\\( 58 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 7)^2 \\ge 0 \\), the minimum value is \\( 9 \\) achieved at \\( x = 7 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 9 \\) عند \\( x = 7 \\)."
   }
 ];
 
@@ -3070,5 +3136,4 @@ D["apab-u8"] = [
     ]
   }
 ];
-
 });

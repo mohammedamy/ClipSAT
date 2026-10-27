@@ -1459,4 +1459,882 @@ D["aps-u4"] = [
   }
 ];
 
+D["aps-u5"] = [
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
+    "q": "What is the minimum value of \\( f(x) = (x - 8)^2 + 5 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 8)^2 + 5 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 5 \\)",
+      "\\( 8 \\)",
+      "\\( -8 \\)",
+      "\\( 69 \\)"
+    ],
+    "o_ar": [
+      "\\( 5 \\)",
+      "\\( 8 \\)",
+      "\\( -8 \\)",
+      "\\( 69 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 8)^2 \\ge 0 \\), the minimum value is \\( 5 \\) achieved at \\( x = 8 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 5 \\) عند \\( x = 8 \\)."
+  },
+  {
+    "t": "tf",
+    "ti": "True / False: Core Mathematical Properties (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
+    "ti_ar": "صح / خطأ: الخصائص الرياضية الأساسية (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
+    "items": [
+      {
+        "s": "The quadratic \\( (x - 8)^2 + 2 \\) attains its minimum value \\( 2 \\) at \\( x = 8 \\).",
+        "a": true
+      },
+      {
+        "s": "If the discriminant \\( b^2 - 4ac = 0 \\), the line is tangent to the parabola at a single repeated point.",
+        "a": true
+      },
+      {
+        "s": "The derivative of \\( x^3 - 24x \\) at \\( x = 8 \\) is zero.",
+        "a": false
+      }
+    ],
+    "items_ar": [
+      {
+        "s": "المقدار التربيعي \\( (x - 8)^2 + 2 \\) يبلغ قيمته الصغرى \\( 2 \\) عند \\( x = 8 \\).",
+        "a": true
+      },
+      {
+        "s": "إذا كان المميز \\( b^2 - 4ac = 0 \\)، فإن المستقيم يمس القطع المكافئ في نقطة واحدة مكررة.",
+        "a": true
+      },
+      {
+        "s": "مشتقة \\( x^3 - 24x \\) عند \\( x = 8 \\) تساوي صفراً.",
+        "a": false
+      }
+    ]
+  },
+  {
+    "t": "mt",
+    "ti": "Matching: Algebraic & Analytical Identities (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
+    "ti_ar": "مطابقة: المتطابقات والعلاقات التحليلية (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
+    "p": [
+      {
+        "l": "\\( (x - 8)^2 + 2 \\)",
+        "r": "Turning point at \\( (8, 2) \\)"
+      },
+      {
+        "l": "\\( b^2 - 4ac > 0 \\)",
+        "r": "Two distinct real roots / intersections"
+      },
+      {
+        "l": "\\( b^2 - 4ac = 0 \\)",
+        "r": "One repeated tangent root"
+      },
+      {
+        "l": "\\( b^2 - 4ac < 0 \\)",
+        "r": "No real roots (strictly separated)"
+      }
+    ],
+    "p_ar": [
+      {
+        "l": "\\( (x - 8)^2 + 2 \\)",
+        "r": "نقطة الرأس عند \\( (8, 2) \\)"
+      },
+      {
+        "l": "\\( b^2 - 4ac > 0 \\)",
+        "r": "جذران حقيقيان متمايزان"
+      },
+      {
+        "l": "\\( b^2 - 4ac = 0 \\)",
+        "r": "جذر حقيقي مكرر (حالة التماس)"
+      },
+      {
+        "l": "\\( b^2 - 4ac < 0 \\)",
+        "r": "لا توجد جذور حقيقية"
+      }
+    ]
+  },
+  {
+    "t": "num",
+    "ti": "Numeric Entry: Exact Evaluation (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
+    "ti_ar": "إدخال رقمي: الحساب الدقيق (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
+    "q": "Evaluate \\( f(11) \\) given \\( f(x) = (x - 8)^2 + 2 \\).",
+    "q_ar": "احسب قيمة \\( f(11) \\) إذا علمت أن \\( f(x) = (x - 8)^2 + 2 \\).",
+    "a": 11,
+    "h": "Substitute \\( x = 11 \\) so \\( x - 8 = 3 \\).",
+    "h_ar": "عوّض عن \\( x = 11 \\) بحيث يصبح \\( x - 8 = 3 \\).",
+    "sol": "\\( f(11) = 3^2 + 2 = 11 \\).",
+    "sol_ar": "\\( f(11) = 3^2 + 2 = 11 \\)."
+  },
+  {
+    "t": "ord",
+    "ti": "Order the Steps: Systematic Derivation (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
+    "ti_ar": "رتّب الخطوات: خطوات الاستنتاج المنظم (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
+    "prompt": "Arrange the steps in order to complete the square and find the minimum of \\( f(x) = x^2 - 16x + 66 \\):",
+    "prompt_ar": "رتب خطوات إكمال المربع وإيجاد القيمة الصغرى للدالة \\( f(x) = x^2 - 16x + 66 \\):",
+    "items": [
+      "Identify the coefficient of \\( x \\) as \\( -16 \\) and halve it to get \\( -8 \\).",
+      "Write the squared binomial \\( (x - 8)^2 = x^2 - 16x + 64 \\).",
+      "Adjust the constant term: \\( f(x) = (x - 8)^2 - 64 + 66 = (x - 8)^2 + 2 \\).",
+      "Conclude that the minimum value is \\( 2 \\), attained when \\( x = 8 \\)."
+    ],
+    "items_ar": [
+      "حدد معامل \\( x \\) وهو \\( -16 \\) واقسمه على 2 لتحصل على \\( -8 \\).",
+      "اكتب المربع الكامل \\( (x - 8)^2 = x^2 - 16x + 64 \\).",
+      "عدّل الحد الثابت: \\( f(x) = (x - 8)^2 + 2 \\).",
+      "استنتج أن القيمة الصغرى هي \\( 2 \\) وتتحقق عند \\( x = 8 \\)."
+    ],
+    "ex": "Halve the linear coefficient, form the square, subtract h², and read off the vertex.",
+    "ex_ar": "اقسم معامل x على 2، كوّن المربع الكامل، اطرح مربع النصف، ثم استنتج الرأس."
+  },
+  {
+    "t": "cat",
+    "ti": "Categorize: Discriminant Classification (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
+    "ti_ar": "تصنيف: تصنيف المعادلات حسب المميز (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
+    "categories": [
+      "Two Distinct Real Roots (Δ > 0)",
+      "One Repeated Tangent Root (Δ = 0)",
+      "No Real Roots (Δ < 0)"
+    ],
+    "categories_ar": [
+      "جذران حقيقيان متمايزان (Δ > 0)",
+      "جذر حقيقي مكرر / تماس (Δ = 0)",
+      "لا توجد جذور حقيقية (Δ < 0)"
+    ],
+    "items": [
+      {
+        "s": "\\( x^2 - 16x + 64 = 0 \\)",
+        "s_ar": "\\( x^2 - 16x + 64 = 0 \\)",
+        "cat": 1
+      },
+      {
+        "s": "\\( x^2 - 17x + 8 = 0 \\)",
+        "s_ar": "\\( x^2 - 17x + 8 = 0 \\)",
+        "cat": 0
+      },
+      {
+        "s": "\\( x^2 + 8x + 68 = 0 \\)",
+        "s_ar": "\\( x^2 + 8x + 68 = 0 \\)",
+        "cat": 2
+      },
+      {
+        "s": "\\( 4x^2 - 32x + 64 = 0 \\)",
+        "s_ar": "\\( 4x^2 - 32x + 64 = 0 \\)",
+        "cat": 1
+      }
+    ],
+    "ex": "Compute Δ = b² − 4ac for each quadratic equation.",
+    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لكل معادلة تربيعية."
+  },
+  {
+    "t": "se",
+    "ti": "Spot the Error: Extraneous Root Check (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
+    "ti_ar": "اكتشف الخطأ: التحقق من الجذور الدخيلة (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
+    "q": "A student solves \\( \\sqrt{2x + 128} = x - 8 \\). Which step introduces an invalid conclusion?",
+    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 128} = x - 8 \\). أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "steps": [
+      "Square both sides: \\( 2x + 128 = (x - 8)^2 \\).",
+      "Expand the right-hand side: \\( 2x + 128 = x^2 - 16x + 64 \\).",
+      "Rearrange into standard form: \\( x^2 - 18x - 64 = 0 \\).",
+      "Accept both algebraic roots without checking \\( x - 8 \\ge 0 \\)."
+    ],
+    "steps_ar": [
+      "تربيع الطرفين: \\( 2x + 128 = (x - 8)^2 \\).",
+      "فك التربيع: \\( 2x + 128 = x^2 - 16x + 64 \\).",
+      "إعادة الترتيب: \\( x^2 - 18x - 64 = 0 \\).",
+      "قبول الجذرين معاً دون التحقق من الشرط \\( x - 8 \\ge 0 \\)."
+    ],
+    "errorStep": 4,
+    "reasons": [
+      "Because \\( \\sqrt{\\cdot} \\ge 0 \\), any valid root must satisfy \\( x \\ge 8 \\); the negative root is extraneous.",
+      "Expanding \\( (x - 8)^2 \\) should omit the middle term.",
+      "Squaring both sides is never valid."
+    ],
+    "reasons_ar": [
+      "لأن الجذر التربيعي غير سالب، يجب أن يتحقق \\( x \\ge 8 \\) ويُرفض الجذر السالب الدخيل.",
+      "فك المربع الكامل غير صحيح.",
+      "لا يجوز تربيع الطرفين."
+    ],
+    "correctReason": 0,
+    "h": "Test whether \\( x - 8 \\ge 0 \\) holds for both roots.",
+    "h_ar": "تحقق من شرط \\( x - 8 \\ge 0 \\) لكلا الجذرين.",
+    "sol": "Only the root satisfying \\( x \\ge 8 \\) is a valid solution to the radical equation.",
+    "sol_ar": "يُقبل فقط الجذر الذي يحقق الشرط \\( x \\ge 8 \\)."
+  },
+  {
+    "t": "ms",
+    "ti": "Examiner Mode: Multi-Step Rubric Problem (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
+    "ti_ar": "وضع المصحح: مسألة متعددة الخطوات (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
+    "q": "Let \\( f(x) = x^2 - 16x + 66 \\) for \\( x \\ge 8 \\). (a) Write \\( f(x) \\) in vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and its domain.",
+    "q_ar": "لتكن \\( f(x) = x^2 - 16x + 66 \\) حيث \\( x \\ge 8 \\). (أ) اكتب \\( f(x) \\) في صيغة الرأس وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) ومجالها.",
+    "parts": [
+      {
+        "label": "Part (a) — Vertex Form & Range",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Complete the square: \\( f(x) = (x - 8)^2 + 2 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State range: \\( f(x) \\ge 2 \\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Function & Domain",
+        "marks": 3,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Set \\( y = (x - 8)^2 + 2 \\implies (x - 8)^2 = y - 2 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Choose positive root: \\( f^{-1}(x) = 8 + \\sqrt{x - 2} \\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 2 \\)."
+          }
+        ]
+      }
+    ],
+    "examinerTip": "Use the domain restriction \\( x \\ge 8 \\) to select the positive square root branch.",
+    "examinerTip_ar": "استخدم شرط المجال \\( x \\ge 8 \\) لاختيار الفرع الموجب للجذر التربيعي."
+  },
+  {
+    "t": "sb",
+    "ti": "Step Builder: Guided Calculation (Unit 5 · Sampling Distributions, Central Limit Theorem & Point Estimators)",
+    "ti_ar": "بناء الخطوات: حساب موجه (الوحدة 5 · توزيعات المعاينة ونظرية النهاية المركزية والمقدرات النقطية)",
+    "steps": [
+      {
+        "l": "In \\( y = x^2 - 16x + 66 \\), find \\( h \\) in \\( (x - h)^2 + k \\):",
+        "a": "8",
+        "h": "Divide 16 by 2."
+      },
+      {
+        "l": "Find the minimum value \\( k = 66 - 8^2 = \\)",
+        "a": "2",
+        "h": "Subtract 64 from 66."
+      },
+      {
+        "l": "Evaluate \\( y \\) at \\( x = 10 \\):",
+        "a": "6",
+        "h": "Compute \\( 2^2 + 2 \\)."
+      }
+    ],
+    "steps_ar": [
+      {
+        "l": "في الدالة \\( y = x^2 - 16x + 66 \\)، أوجد قيمة \\( h \\):",
+        "a": "8",
+        "h": "اقسم 16 على 2."
+      },
+      {
+        "l": "أوجد القيمة الصغرى \\( k = \\)",
+        "a": "2",
+        "h": "اطرح 64 من 66."
+      },
+      {
+        "l": "احسب قيمة \\( y \\) عند \\( x = 10 \\):",
+        "a": "6",
+        "h": "احسب \\( 2^2 + 2 \\)."
+      }
+    ]
+  }
+];
+
+D["aps-u6"] = [
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
+    "q": "What is the minimum value of \\( f(x) = (x - 9)^2 + 6 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 9)^2 + 6 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 6 \\)",
+      "\\( 9 \\)",
+      "\\( -9 \\)",
+      "\\( 87 \\)"
+    ],
+    "o_ar": [
+      "\\( 6 \\)",
+      "\\( 9 \\)",
+      "\\( -9 \\)",
+      "\\( 87 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 9)^2 \\ge 0 \\), the minimum value is \\( 6 \\) achieved at \\( x = 9 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 6 \\) عند \\( x = 9 \\)."
+  },
+  {
+    "t": "tf",
+    "ti": "True / False: Core Mathematical Properties (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
+    "ti_ar": "صح / خطأ: الخصائص الرياضية الأساسية (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
+    "items": [
+      {
+        "s": "The quadratic \\( (x - 9)^2 + 3 \\) attains its minimum value \\( 3 \\) at \\( x = 9 \\).",
+        "a": true
+      },
+      {
+        "s": "If the discriminant \\( b^2 - 4ac = 0 \\), the line is tangent to the parabola at a single repeated point.",
+        "a": true
+      },
+      {
+        "s": "The derivative of \\( x^3 - 27x \\) at \\( x = 9 \\) is zero.",
+        "a": false
+      }
+    ],
+    "items_ar": [
+      {
+        "s": "المقدار التربيعي \\( (x - 9)^2 + 3 \\) يبلغ قيمته الصغرى \\( 3 \\) عند \\( x = 9 \\).",
+        "a": true
+      },
+      {
+        "s": "إذا كان المميز \\( b^2 - 4ac = 0 \\)، فإن المستقيم يمس القطع المكافئ في نقطة واحدة مكررة.",
+        "a": true
+      },
+      {
+        "s": "مشتقة \\( x^3 - 27x \\) عند \\( x = 9 \\) تساوي صفراً.",
+        "a": false
+      }
+    ]
+  },
+  {
+    "t": "mt",
+    "ti": "Matching: Algebraic & Analytical Identities (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
+    "ti_ar": "مطابقة: المتطابقات والعلاقات التحليلية (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
+    "p": [
+      {
+        "l": "\\( (x - 9)^2 + 3 \\)",
+        "r": "Turning point at \\( (9, 3) \\)"
+      },
+      {
+        "l": "\\( b^2 - 4ac > 0 \\)",
+        "r": "Two distinct real roots / intersections"
+      },
+      {
+        "l": "\\( b^2 - 4ac = 0 \\)",
+        "r": "One repeated tangent root"
+      },
+      {
+        "l": "\\( b^2 - 4ac < 0 \\)",
+        "r": "No real roots (strictly separated)"
+      }
+    ],
+    "p_ar": [
+      {
+        "l": "\\( (x - 9)^2 + 3 \\)",
+        "r": "نقطة الرأس عند \\( (9, 3) \\)"
+      },
+      {
+        "l": "\\( b^2 - 4ac > 0 \\)",
+        "r": "جذران حقيقيان متمايزان"
+      },
+      {
+        "l": "\\( b^2 - 4ac = 0 \\)",
+        "r": "جذر حقيقي مكرر (حالة التماس)"
+      },
+      {
+        "l": "\\( b^2 - 4ac < 0 \\)",
+        "r": "لا توجد جذور حقيقية"
+      }
+    ]
+  },
+  {
+    "t": "num",
+    "ti": "Numeric Entry: Exact Evaluation (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
+    "ti_ar": "إدخال رقمي: الحساب الدقيق (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
+    "q": "Evaluate \\( f(12) \\) given \\( f(x) = (x - 9)^2 + 3 \\).",
+    "q_ar": "احسب قيمة \\( f(12) \\) إذا علمت أن \\( f(x) = (x - 9)^2 + 3 \\).",
+    "a": 12,
+    "h": "Substitute \\( x = 12 \\) so \\( x - 9 = 3 \\).",
+    "h_ar": "عوّض عن \\( x = 12 \\) بحيث يصبح \\( x - 9 = 3 \\).",
+    "sol": "\\( f(12) = 3^2 + 3 = 12 \\).",
+    "sol_ar": "\\( f(12) = 3^2 + 3 = 12 \\)."
+  },
+  {
+    "t": "ord",
+    "ti": "Order the Steps: Systematic Derivation (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
+    "ti_ar": "رتّب الخطوات: خطوات الاستنتاج المنظم (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
+    "prompt": "Arrange the steps in order to complete the square and find the minimum of \\( f(x) = x^2 - 18x + 84 \\):",
+    "prompt_ar": "رتب خطوات إكمال المربع وإيجاد القيمة الصغرى للدالة \\( f(x) = x^2 - 18x + 84 \\):",
+    "items": [
+      "Identify the coefficient of \\( x \\) as \\( -18 \\) and halve it to get \\( -9 \\).",
+      "Write the squared binomial \\( (x - 9)^2 = x^2 - 18x + 81 \\).",
+      "Adjust the constant term: \\( f(x) = (x - 9)^2 - 81 + 84 = (x - 9)^2 + 3 \\).",
+      "Conclude that the minimum value is \\( 3 \\), attained when \\( x = 9 \\)."
+    ],
+    "items_ar": [
+      "حدد معامل \\( x \\) وهو \\( -18 \\) واقسمه على 2 لتحصل على \\( -9 \\).",
+      "اكتب المربع الكامل \\( (x - 9)^2 = x^2 - 18x + 81 \\).",
+      "عدّل الحد الثابت: \\( f(x) = (x - 9)^2 + 3 \\).",
+      "استنتج أن القيمة الصغرى هي \\( 3 \\) وتتحقق عند \\( x = 9 \\)."
+    ],
+    "ex": "Halve the linear coefficient, form the square, subtract h², and read off the vertex.",
+    "ex_ar": "اقسم معامل x على 2، كوّن المربع الكامل، اطرح مربع النصف، ثم استنتج الرأس."
+  },
+  {
+    "t": "cat",
+    "ti": "Categorize: Discriminant Classification (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
+    "ti_ar": "تصنيف: تصنيف المعادلات حسب المميز (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
+    "categories": [
+      "Two Distinct Real Roots (Δ > 0)",
+      "One Repeated Tangent Root (Δ = 0)",
+      "No Real Roots (Δ < 0)"
+    ],
+    "categories_ar": [
+      "جذران حقيقيان متمايزان (Δ > 0)",
+      "جذر حقيقي مكرر / تماس (Δ = 0)",
+      "لا توجد جذور حقيقية (Δ < 0)"
+    ],
+    "items": [
+      {
+        "s": "\\( x^2 - 18x + 81 = 0 \\)",
+        "s_ar": "\\( x^2 - 18x + 81 = 0 \\)",
+        "cat": 1
+      },
+      {
+        "s": "\\( x^2 - 19x + 9 = 0 \\)",
+        "s_ar": "\\( x^2 - 19x + 9 = 0 \\)",
+        "cat": 0
+      },
+      {
+        "s": "\\( x^2 + 9x + 85 = 0 \\)",
+        "s_ar": "\\( x^2 + 9x + 85 = 0 \\)",
+        "cat": 2
+      },
+      {
+        "s": "\\( 4x^2 - 36x + 81 = 0 \\)",
+        "s_ar": "\\( 4x^2 - 36x + 81 = 0 \\)",
+        "cat": 1
+      }
+    ],
+    "ex": "Compute Δ = b² − 4ac for each quadratic equation.",
+    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لكل معادلة تربيعية."
+  },
+  {
+    "t": "se",
+    "ti": "Spot the Error: Extraneous Root Check (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
+    "ti_ar": "اكتشف الخطأ: التحقق من الجذور الدخيلة (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
+    "q": "A student solves \\( \\sqrt{2x + 162} = x - 9 \\). Which step introduces an invalid conclusion?",
+    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 162} = x - 9 \\). أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "steps": [
+      "Square both sides: \\( 2x + 162 = (x - 9)^2 \\).",
+      "Expand the right-hand side: \\( 2x + 162 = x^2 - 18x + 81 \\).",
+      "Rearrange into standard form: \\( x^2 - 20x - 81 = 0 \\).",
+      "Accept both algebraic roots without checking \\( x - 9 \\ge 0 \\)."
+    ],
+    "steps_ar": [
+      "تربيع الطرفين: \\( 2x + 162 = (x - 9)^2 \\).",
+      "فك التربيع: \\( 2x + 162 = x^2 - 18x + 81 \\).",
+      "إعادة الترتيب: \\( x^2 - 20x - 81 = 0 \\).",
+      "قبول الجذرين معاً دون التحقق من الشرط \\( x - 9 \\ge 0 \\)."
+    ],
+    "errorStep": 4,
+    "reasons": [
+      "Because \\( \\sqrt{\\cdot} \\ge 0 \\), any valid root must satisfy \\( x \\ge 9 \\); the negative root is extraneous.",
+      "Expanding \\( (x - 9)^2 \\) should omit the middle term.",
+      "Squaring both sides is never valid."
+    ],
+    "reasons_ar": [
+      "لأن الجذر التربيعي غير سالب، يجب أن يتحقق \\( x \\ge 9 \\) ويُرفض الجذر السالب الدخيل.",
+      "فك المربع الكامل غير صحيح.",
+      "لا يجوز تربيع الطرفين."
+    ],
+    "correctReason": 0,
+    "h": "Test whether \\( x - 9 \\ge 0 \\) holds for both roots.",
+    "h_ar": "تحقق من شرط \\( x - 9 \\ge 0 \\) لكلا الجذرين.",
+    "sol": "Only the root satisfying \\( x \\ge 9 \\) is a valid solution to the radical equation.",
+    "sol_ar": "يُقبل فقط الجذر الذي يحقق الشرط \\( x \\ge 9 \\)."
+  },
+  {
+    "t": "ms",
+    "ti": "Examiner Mode: Multi-Step Rubric Problem (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
+    "ti_ar": "وضع المصحح: مسألة متعددة الخطوات (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
+    "q": "Let \\( f(x) = x^2 - 18x + 84 \\) for \\( x \\ge 9 \\). (a) Write \\( f(x) \\) in vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and its domain.",
+    "q_ar": "لتكن \\( f(x) = x^2 - 18x + 84 \\) حيث \\( x \\ge 9 \\). (أ) اكتب \\( f(x) \\) في صيغة الرأس وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) ومجالها.",
+    "parts": [
+      {
+        "label": "Part (a) — Vertex Form & Range",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Complete the square: \\( f(x) = (x - 9)^2 + 3 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State range: \\( f(x) \\ge 3 \\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Function & Domain",
+        "marks": 3,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Set \\( y = (x - 9)^2 + 3 \\implies (x - 9)^2 = y - 3 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Choose positive root: \\( f^{-1}(x) = 9 + \\sqrt{x - 3} \\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 3 \\)."
+          }
+        ]
+      }
+    ],
+    "examinerTip": "Use the domain restriction \\( x \\ge 9 \\) to select the positive square root branch.",
+    "examinerTip_ar": "استخدم شرط المجال \\( x \\ge 9 \\) لاختيار الفرع الموجب للجذر التربيعي."
+  },
+  {
+    "t": "sb",
+    "ti": "Step Builder: Guided Calculation (Unit 6 · Inference for Categorical Data: Proportions & Chi-Square Tests)",
+    "ti_ar": "بناء الخطوات: حساب موجه (الوحدة 6 · الاستدلال للبيانات الفئوية: فترات الثقة واختبارات النسب ومربع كاي)",
+    "steps": [
+      {
+        "l": "In \\( y = x^2 - 18x + 84 \\), find \\( h \\) in \\( (x - h)^2 + k \\):",
+        "a": "9",
+        "h": "Divide 18 by 2."
+      },
+      {
+        "l": "Find the minimum value \\( k = 84 - 9^2 = \\)",
+        "a": "3",
+        "h": "Subtract 81 from 84."
+      },
+      {
+        "l": "Evaluate \\( y \\) at \\( x = 11 \\):",
+        "a": "7",
+        "h": "Compute \\( 2^2 + 3 \\)."
+      }
+    ],
+    "steps_ar": [
+      {
+        "l": "في الدالة \\( y = x^2 - 18x + 84 \\)، أوجد قيمة \\( h \\):",
+        "a": "9",
+        "h": "اقسم 18 على 2."
+      },
+      {
+        "l": "أوجد القيمة الصغرى \\( k = \\)",
+        "a": "3",
+        "h": "اطرح 81 من 84."
+      },
+      {
+        "l": "احسب قيمة \\( y \\) عند \\( x = 11 \\):",
+        "a": "7",
+        "h": "احسب \\( 2^2 + 3 \\)."
+      }
+    ]
+  }
+];
+
+D["aps-u7"] = [
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
+    "q": "What is the minimum value of \\( f(x) = (x - 3)^2 + 7 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 3)^2 + 7 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 7 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 16 \\)"
+    ],
+    "o_ar": [
+      "\\( 7 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 16 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 3)^2 \\ge 0 \\), the minimum value is \\( 7 \\) achieved at \\( x = 3 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 7 \\) عند \\( x = 3 \\)."
+  },
+  {
+    "t": "tf",
+    "ti": "True / False: Core Mathematical Properties (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
+    "ti_ar": "صح / خطأ: الخصائص الرياضية الأساسية (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
+    "items": [
+      {
+        "s": "The quadratic \\( (x - 3)^2 + 4 \\) attains its minimum value \\( 4 \\) at \\( x = 3 \\).",
+        "a": true
+      },
+      {
+        "s": "If the discriminant \\( b^2 - 4ac = 0 \\), the line is tangent to the parabola at a single repeated point.",
+        "a": true
+      },
+      {
+        "s": "The derivative of \\( x^3 - 9x \\) at \\( x = 3 \\) is zero.",
+        "a": false
+      }
+    ],
+    "items_ar": [
+      {
+        "s": "المقدار التربيعي \\( (x - 3)^2 + 4 \\) يبلغ قيمته الصغرى \\( 4 \\) عند \\( x = 3 \\).",
+        "a": true
+      },
+      {
+        "s": "إذا كان المميز \\( b^2 - 4ac = 0 \\)، فإن المستقيم يمس القطع المكافئ في نقطة واحدة مكررة.",
+        "a": true
+      },
+      {
+        "s": "مشتقة \\( x^3 - 9x \\) عند \\( x = 3 \\) تساوي صفراً.",
+        "a": false
+      }
+    ]
+  },
+  {
+    "t": "mt",
+    "ti": "Matching: Algebraic & Analytical Identities (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
+    "ti_ar": "مطابقة: المتطابقات والعلاقات التحليلية (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
+    "p": [
+      {
+        "l": "\\( (x - 3)^2 + 4 \\)",
+        "r": "Turning point at \\( (3, 4) \\)"
+      },
+      {
+        "l": "\\( b^2 - 4ac > 0 \\)",
+        "r": "Two distinct real roots / intersections"
+      },
+      {
+        "l": "\\( b^2 - 4ac = 0 \\)",
+        "r": "One repeated tangent root"
+      },
+      {
+        "l": "\\( b^2 - 4ac < 0 \\)",
+        "r": "No real roots (strictly separated)"
+      }
+    ],
+    "p_ar": [
+      {
+        "l": "\\( (x - 3)^2 + 4 \\)",
+        "r": "نقطة الرأس عند \\( (3, 4) \\)"
+      },
+      {
+        "l": "\\( b^2 - 4ac > 0 \\)",
+        "r": "جذران حقيقيان متمايزان"
+      },
+      {
+        "l": "\\( b^2 - 4ac = 0 \\)",
+        "r": "جذر حقيقي مكرر (حالة التماس)"
+      },
+      {
+        "l": "\\( b^2 - 4ac < 0 \\)",
+        "r": "لا توجد جذور حقيقية"
+      }
+    ]
+  },
+  {
+    "t": "num",
+    "ti": "Numeric Entry: Exact Evaluation (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
+    "ti_ar": "إدخال رقمي: الحساب الدقيق (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
+    "q": "Evaluate \\( f(6) \\) given \\( f(x) = (x - 3)^2 + 4 \\).",
+    "q_ar": "احسب قيمة \\( f(6) \\) إذا علمت أن \\( f(x) = (x - 3)^2 + 4 \\).",
+    "a": 13,
+    "h": "Substitute \\( x = 6 \\) so \\( x - 3 = 3 \\).",
+    "h_ar": "عوّض عن \\( x = 6 \\) بحيث يصبح \\( x - 3 = 3 \\).",
+    "sol": "\\( f(6) = 3^2 + 4 = 13 \\).",
+    "sol_ar": "\\( f(6) = 3^2 + 4 = 13 \\)."
+  },
+  {
+    "t": "ord",
+    "ti": "Order the Steps: Systematic Derivation (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
+    "ti_ar": "رتّب الخطوات: خطوات الاستنتاج المنظم (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
+    "prompt": "Arrange the steps in order to complete the square and find the minimum of \\( f(x) = x^2 - 6x + 13 \\):",
+    "prompt_ar": "رتب خطوات إكمال المربع وإيجاد القيمة الصغرى للدالة \\( f(x) = x^2 - 6x + 13 \\):",
+    "items": [
+      "Identify the coefficient of \\( x \\) as \\( -6 \\) and halve it to get \\( -3 \\).",
+      "Write the squared binomial \\( (x - 3)^2 = x^2 - 6x + 9 \\).",
+      "Adjust the constant term: \\( f(x) = (x - 3)^2 - 9 + 13 = (x - 3)^2 + 4 \\).",
+      "Conclude that the minimum value is \\( 4 \\), attained when \\( x = 3 \\)."
+    ],
+    "items_ar": [
+      "حدد معامل \\( x \\) وهو \\( -6 \\) واقسمه على 2 لتحصل على \\( -3 \\).",
+      "اكتب المربع الكامل \\( (x - 3)^2 = x^2 - 6x + 9 \\).",
+      "عدّل الحد الثابت: \\( f(x) = (x - 3)^2 + 4 \\).",
+      "استنتج أن القيمة الصغرى هي \\( 4 \\) وتتحقق عند \\( x = 3 \\)."
+    ],
+    "ex": "Halve the linear coefficient, form the square, subtract h², and read off the vertex.",
+    "ex_ar": "اقسم معامل x على 2، كوّن المربع الكامل، اطرح مربع النصف، ثم استنتج الرأس."
+  },
+  {
+    "t": "cat",
+    "ti": "Categorize: Discriminant Classification (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
+    "ti_ar": "تصنيف: تصنيف المعادلات حسب المميز (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
+    "categories": [
+      "Two Distinct Real Roots (Δ > 0)",
+      "One Repeated Tangent Root (Δ = 0)",
+      "No Real Roots (Δ < 0)"
+    ],
+    "categories_ar": [
+      "جذران حقيقيان متمايزان (Δ > 0)",
+      "جذر حقيقي مكرر / تماس (Δ = 0)",
+      "لا توجد جذور حقيقية (Δ < 0)"
+    ],
+    "items": [
+      {
+        "s": "\\( x^2 - 6x + 9 = 0 \\)",
+        "s_ar": "\\( x^2 - 6x + 9 = 0 \\)",
+        "cat": 1
+      },
+      {
+        "s": "\\( x^2 - 7x + 3 = 0 \\)",
+        "s_ar": "\\( x^2 - 7x + 3 = 0 \\)",
+        "cat": 0
+      },
+      {
+        "s": "\\( x^2 + 3x + 13 = 0 \\)",
+        "s_ar": "\\( x^2 + 3x + 13 = 0 \\)",
+        "cat": 2
+      },
+      {
+        "s": "\\( 4x^2 - 12x + 9 = 0 \\)",
+        "s_ar": "\\( 4x^2 - 12x + 9 = 0 \\)",
+        "cat": 1
+      }
+    ],
+    "ex": "Compute Δ = b² − 4ac for each quadratic equation.",
+    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لكل معادلة تربيعية."
+  },
+  {
+    "t": "se",
+    "ti": "Spot the Error: Extraneous Root Check (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
+    "ti_ar": "اكتشف الخطأ: التحقق من الجذور الدخيلة (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
+    "q": "A student solves \\( \\sqrt{2x + 18} = x - 3 \\). Which step introduces an invalid conclusion?",
+    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 18} = x - 3 \\). أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "steps": [
+      "Square both sides: \\( 2x + 18 = (x - 3)^2 \\).",
+      "Expand the right-hand side: \\( 2x + 18 = x^2 - 6x + 9 \\).",
+      "Rearrange into standard form: \\( x^2 - 8x - 9 = 0 \\).",
+      "Accept both algebraic roots without checking \\( x - 3 \\ge 0 \\)."
+    ],
+    "steps_ar": [
+      "تربيع الطرفين: \\( 2x + 18 = (x - 3)^2 \\).",
+      "فك التربيع: \\( 2x + 18 = x^2 - 6x + 9 \\).",
+      "إعادة الترتيب: \\( x^2 - 8x - 9 = 0 \\).",
+      "قبول الجذرين معاً دون التحقق من الشرط \\( x - 3 \\ge 0 \\)."
+    ],
+    "errorStep": 4,
+    "reasons": [
+      "Because \\( \\sqrt{\\cdot} \\ge 0 \\), any valid root must satisfy \\( x \\ge 3 \\); the negative root is extraneous.",
+      "Expanding \\( (x - 3)^2 \\) should omit the middle term.",
+      "Squaring both sides is never valid."
+    ],
+    "reasons_ar": [
+      "لأن الجذر التربيعي غير سالب، يجب أن يتحقق \\( x \\ge 3 \\) ويُرفض الجذر السالب الدخيل.",
+      "فك المربع الكامل غير صحيح.",
+      "لا يجوز تربيع الطرفين."
+    ],
+    "correctReason": 0,
+    "h": "Test whether \\( x - 3 \\ge 0 \\) holds for both roots.",
+    "h_ar": "تحقق من شرط \\( x - 3 \\ge 0 \\) لكلا الجذرين.",
+    "sol": "Only the root satisfying \\( x \\ge 3 \\) is a valid solution to the radical equation.",
+    "sol_ar": "يُقبل فقط الجذر الذي يحقق الشرط \\( x \\ge 3 \\)."
+  },
+  {
+    "t": "ms",
+    "ti": "Examiner Mode: Multi-Step Rubric Problem (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
+    "ti_ar": "وضع المصحح: مسألة متعددة الخطوات (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
+    "q": "Let \\( f(x) = x^2 - 6x + 13 \\) for \\( x \\ge 3 \\). (a) Write \\( f(x) \\) in vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and its domain.",
+    "q_ar": "لتكن \\( f(x) = x^2 - 6x + 13 \\) حيث \\( x \\ge 3 \\). (أ) اكتب \\( f(x) \\) في صيغة الرأس وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) ومجالها.",
+    "parts": [
+      {
+        "label": "Part (a) — Vertex Form & Range",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Complete the square: \\( f(x) = (x - 3)^2 + 4 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State range: \\( f(x) \\ge 4 \\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Function & Domain",
+        "marks": 3,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Set \\( y = (x - 3)^2 + 4 \\implies (x - 3)^2 = y - 4 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Choose positive root: \\( f^{-1}(x) = 3 + \\sqrt{x - 4} \\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 4 \\)."
+          }
+        ]
+      }
+    ],
+    "examinerTip": "Use the domain restriction \\( x \\ge 3 \\) to select the positive square root branch.",
+    "examinerTip_ar": "استخدم شرط المجال \\( x \\ge 3 \\) لاختيار الفرع الموجب للجذر التربيعي."
+  },
+  {
+    "t": "sb",
+    "ti": "Step Builder: Guided Calculation (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
+    "ti_ar": "بناء الخطوات: حساب موجه (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)",
+    "steps": [
+      {
+        "l": "In \\( y = x^2 - 6x + 13 \\), find \\( h \\) in \\( (x - h)^2 + k \\):",
+        "a": "3",
+        "h": "Divide 6 by 2."
+      },
+      {
+        "l": "Find the minimum value \\( k = 13 - 3^2 = \\)",
+        "a": "4",
+        "h": "Subtract 9 from 13."
+      },
+      {
+        "l": "Evaluate \\( y \\) at \\( x = 5 \\):",
+        "a": "8",
+        "h": "Compute \\( 2^2 + 4 \\)."
+      }
+    ],
+    "steps_ar": [
+      {
+        "l": "في الدالة \\( y = x^2 - 6x + 13 \\)، أوجد قيمة \\( h \\):",
+        "a": "3",
+        "h": "اقسم 6 على 2."
+      },
+      {
+        "l": "أوجد القيمة الصغرى \\( k = \\)",
+        "a": "4",
+        "h": "اطرح 9 من 13."
+      },
+      {
+        "l": "احسب قيمة \\( y \\) عند \\( x = 5 \\):",
+        "a": "8",
+        "h": "احسب \\( 2^2 + 4 \\)."
+      }
+    ]
+  }
+];
 });

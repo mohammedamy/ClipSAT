@@ -1,0 +1,101 @@
+{
+  "track": "linalg",
+  "num": "8.01",
+  "title": "Orthogonality, Gram-Schmidt, QR & Least Squares",
+  "sub": null,
+  "sections": [
+    {
+      "heading": "Orthogonality, Gram-Schmidt, QR & Least Squares Practice Exercises",
+      "questions": [
+        {
+          "q": "For which \\( k \\) are \\( \\langle 0, -2, -2 \\rangle \\) and \\( \\langle -1, 2, k \\rangle \\) orthogonal?",
+          "choices": [
+            "\\( 2 \\)",
+            "\\( -2 \\)",
+            "\\( -1 \\)",
+            "\\( 3 \\)"
+          ],
+          "correct": 1,
+          "answer": "Set the dot product to zero: \\( - 2 k - 4=0 \\), so \\( k = -2 \\)."
+        },
+        {
+          "q": "Which set is NOT orthonormal?",
+          "choices": [
+            "\\( \\{\\langle \\frac{5}{13}, \\frac{12}{13} \\rangle, \\langle \\frac{12}{13}, - \\frac{5}{13} \\rangle\\} \\)",
+            "\\( \\{\\langle \\frac{1}{2}, \\frac{1}{2} \\rangle, \\langle \\frac{1}{2}, - \\frac{1}{2} \\rangle\\} \\)",
+            "\\( \\{\\langle \\frac{1}{3}, \\frac{2}{3}, \\frac{2}{3} \\rangle, \\langle \\frac{2}{3}, \\frac{1}{3}, - \\frac{2}{3} \\rangle\\} \\)",
+            "\\( \\{\\langle \\frac{\\sqrt{2}}{2}, \\frac{\\sqrt{2}}{2} \\rangle, \\langle \\frac{\\sqrt{2}}{2}, - \\frac{\\sqrt{2}}{2} \\rangle\\} \\)"
+          ],
+          "correct": 1,
+          "answer": "\\( \\{\\langle \\frac{1}{2}, \\frac{1}{2} \\rangle, \\langle \\frac{1}{2}, - \\frac{1}{2} \\rangle\\} \\) fails: either the dot product is nonzero or a vector does not have length 1. The other sets pass both tests."
+        },
+        {
+          "q": "Which matrix is orthogonal (satisfies \\( Q^TQ=I \\))?",
+          "choices": [
+            "\\( \\left[\\begin{matrix}1 & 1\\\\0 & 1\\end{matrix}\\right] \\)",
+            "\\( \\left[\\begin{matrix}\\frac{1}{2} & \\frac{1}{2}\\\\\\frac{1}{2} & - \\frac{1}{2}\\end{matrix}\\right] \\)",
+            "\\( \\left[\\begin{matrix}0 & -1\\\\1 & 0\\end{matrix}\\right] \\)",
+            "\\( \\left[\\begin{matrix}1 & -1\\\\1 & 1\\end{matrix}\\right] \\)"
+          ],
+          "correct": 2,
+          "answer": "The columns of \\( \\left[\\begin{matrix}0 & -1\\\\1 & 0\\end{matrix}\\right] \\) are orthonormal, so \\( Q^TQ=I \\). Each other matrix has columns that are not orthogonal or not unit length."
+        },
+        {
+          "q": "Normalize \\( \\mathbf v=\\langle 6, 8 \\rangle \\).",
+          "choices": [
+            "\\( \\langle \\frac{3}{5}, \\frac{4}{5} \\rangle \\)",
+            "\\( \\langle \\frac{3}{50}, \\frac{2}{25} \\rangle \\)",
+            "\\( \\langle \\frac{3}{7}, \\frac{4}{7} \\rangle \\)",
+            "\\( \\langle - \\frac{3}{5}, - \\frac{4}{5} \\rangle \\)"
+          ],
+          "correct": 0,
+          "answer": "\\( \\|\\mathbf v\\|=10 \\), so \\( \\mathbf v/\\|\\mathbf v\\|=\\langle \\frac{3}{5}, \\frac{4}{5} \\rangle \\)."
+        },
+        {
+          "q": "Which set is orthonormal?",
+          "choices": [
+            "\\( \\{\\langle 1, 2, 2 \\rangle, \\langle 2, 1, -2 \\rangle\\} \\)",
+            "\\( \\{\\langle \\frac{1}{3}, \\frac{2}{3}, \\frac{2}{3} \\rangle, \\langle \\frac{2}{3}, \\frac{1}{3}, - \\frac{2}{3} \\rangle\\} \\)",
+            "\\( \\{\\langle \\frac{1}{2}, \\frac{1}{2} \\rangle, \\langle \\frac{1}{2}, - \\frac{1}{2} \\rangle\\} \\)",
+            "\\( \\{\\langle \\frac{3}{5}, \\frac{4}{5} \\rangle, \\langle \\frac{4}{5}, \\frac{3}{5} \\rangle\\} \\)"
+          ],
+          "correct": 1,
+          "answer": "\\( \\{\\langle \\frac{1}{3}, \\frac{2}{3}, \\frac{2}{3} \\rangle, \\langle \\frac{2}{3}, \\frac{1}{3}, - \\frac{2}{3} \\rangle\\} \\): the vectors are orthogonal and each has length 1. Each other set fails one of these tests."
+        },
+        {
+          "q": "For which \\( k \\) are \\( \\langle 3, 3, 2 \\rangle \\) and \\( \\langle 2, k, 1 \\rangle \\) orthogonal?",
+          "choices": [
+            "\\( \\frac{8}{3} \\)",
+            "\\( - \\frac{5}{3} \\)",
+            "\\( \\frac{11}{3} \\)",
+            "\\( - \\frac{8}{3} \\)"
+          ],
+          "correct": 3,
+          "answer": "Set the dot product to zero: \\( 3 k + 8=0 \\), so \\( k = - \\frac{8}{3} \\)."
+        },
+        {
+          "q": "Normalize \\( \\mathbf v=\\langle -2, 1, -2 \\rangle \\).",
+          "choices": [
+            "\\( \\langle - \\frac{2}{9}, \\frac{1}{9}, - \\frac{2}{9} \\rangle \\)",
+            "\\( \\langle - \\frac{2}{5}, \\frac{1}{5}, - \\frac{2}{5} \\rangle \\)",
+            "\\( \\langle \\frac{2}{3}, - \\frac{1}{3}, \\frac{2}{3} \\rangle \\)",
+            "\\( \\langle - \\frac{2}{3}, \\frac{1}{3}, - \\frac{2}{3} \\rangle \\)"
+          ],
+          "correct": 3,
+          "answer": "\\( \\|\\mathbf v\\|=3 \\), so \\( \\mathbf v/\\|\\mathbf v\\|=\\langle - \\frac{2}{3}, \\frac{1}{3}, - \\frac{2}{3} \\rangle \\)."
+        },
+        {
+          "q": "For which \\( k \\) are \\( \\langle 0, -3, 1 \\rangle \\) and \\( \\langle 1, k, -1 \\rangle \\) orthogonal?",
+          "choices": [
+            "\\( \\frac{1}{3} \\)",
+            "\\( \\frac{2}{3} \\)",
+            "\\( - \\frac{1}{3} \\)",
+            "\\( \\frac{4}{3} \\)"
+          ],
+          "correct": 2,
+          "answer": "Set the dot product to zero: \\( - 3 k - 1=0 \\), so \\( k = - \\frac{1}{3} \\)."
+        }
+      ]
+    }
+  ]
+}

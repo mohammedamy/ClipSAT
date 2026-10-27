@@ -557,6 +557,28 @@ D["est2l2-complex"] = [
         "r": "علاقات فييت بين الجذور والمعاملات"
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Complex Numbers)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Complex Numbers)",
+    "q": "What is the minimum value of \\( f(x) = (x - 4)^2 + 6 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 4)^2 + 6 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 6 \\)",
+      "\\( 4 \\)",
+      "\\( -4 \\)",
+      "\\( 22 \\)"
+    ],
+    "o_ar": [
+      "\\( 6 \\)",
+      "\\( 4 \\)",
+      "\\( -4 \\)",
+      "\\( 22 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 4)^2 \\ge 0 \\), the minimum value is \\( 6 \\) achieved at \\( x = 4 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 6 \\) عند \\( x = 4 \\)."
   }
 ];
 
@@ -832,6 +854,28 @@ D["est2l2-sequences-series"] = [
         "h": "احسب \\(4 + 2\\)."
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Sequences & Series)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Sequences & Series)",
+    "q": "What is the minimum value of \\( f(x) = (x - 5)^2 + 7 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 5)^2 + 7 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 7 \\)",
+      "\\( 5 \\)",
+      "\\( -5 \\)",
+      "\\( 32 \\)"
+    ],
+    "o_ar": [
+      "\\( 7 \\)",
+      "\\( 5 \\)",
+      "\\( -5 \\)",
+      "\\( 32 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 5)^2 \\ge 0 \\), the minimum value is \\( 7 \\) achieved at \\( x = 5 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 7 \\) عند \\( x = 5 \\)."
   }
 ];
 
@@ -1418,6 +1462,28 @@ D["est2l2-matrices-vectors"] = [
         "r": "علاقات فييت بين الجذور والمعاملات"
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Matrices & Vectors)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Matrices & Vectors)",
+    "q": "What is the minimum value of \\( f(x) = (x - 7)^2 + 9 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 7)^2 + 9 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 9 \\)",
+      "\\( 7 \\)",
+      "\\( -7 \\)",
+      "\\( 58 \\)"
+    ],
+    "o_ar": [
+      "\\( 9 \\)",
+      "\\( 7 \\)",
+      "\\( -7 \\)",
+      "\\( 58 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 7)^2 \\ge 0 \\), the minimum value is \\( 9 \\) achieved at \\( x = 7 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 9 \\) عند \\( x = 7 \\)."
   }
 ];
 
@@ -1682,6 +1748,28 @@ D["est2l2-intro-calculus"] = [
         "r": "\\(f'(g(x))\\cdot g'(x)\\) (قاعدة السلسلة)"
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Introductory Calculus)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Introductory Calculus)",
+    "q": "What is the minimum value of \\( f(x) = (x - 8)^2 + 5 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 8)^2 + 5 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 5 \\)",
+      "\\( 8 \\)",
+      "\\( -8 \\)",
+      "\\( 69 \\)"
+    ],
+    "o_ar": [
+      "\\( 5 \\)",
+      "\\( 8 \\)",
+      "\\( -8 \\)",
+      "\\( 69 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 8)^2 \\ge 0 \\), the minimum value is \\( 5 \\) achieved at \\( x = 8 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 5 \\) عند \\( x = 8 \\)."
   }
 ];
 
@@ -1931,7 +2019,321 @@ D["est2l2-probability"] = [
         "r": "علاقات فييت بين الجذور والمعاملات"
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Probability)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Probability)",
+    "q": "What is the minimum value of \\( f(x) = (x - 9)^2 + 6 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 9)^2 + 6 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 6 \\)",
+      "\\( 9 \\)",
+      "\\( -9 \\)",
+      "\\( 87 \\)"
+    ],
+    "o_ar": [
+      "\\( 6 \\)",
+      "\\( 9 \\)",
+      "\\( -9 \\)",
+      "\\( 87 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 9)^2 \\ge 0 \\), the minimum value is \\( 6 \\) achieved at \\( x = 9 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 6 \\) عند \\( x = 9 \\)."
   }
 ];
 
+D["est2l2-trig-polar-conics"] = [
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Trigonometry, Polar Coordinates, Conic Sections & 3D Geometry)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (حساب المثلثات والإحداثيات القطبية والقطوع المخروطية والهندسة الفراغية (EST II L2))",
+    "q": "What is the minimum value of \\( f(x) = (x - 3)^2 + 7 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 3)^2 + 7 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 7 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 16 \\)"
+    ],
+    "o_ar": [
+      "\\( 7 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 16 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 3)^2 \\ge 0 \\), the minimum value is \\( 7 \\) achieved at \\( x = 3 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 7 \\) عند \\( x = 3 \\)."
+  },
+  {
+    "t": "tf",
+    "ti": "True / False: Core Mathematical Properties (Trigonometry, Polar Coordinates, Conic Sections & 3D Geometry)",
+    "ti_ar": "صح / خطأ: الخصائص الرياضية الأساسية (حساب المثلثات والإحداثيات القطبية والقطوع المخروطية والهندسة الفراغية (EST II L2))",
+    "items": [
+      {
+        "s": "The quadratic \\( (x - 3)^2 + 4 \\) attains its minimum value \\( 4 \\) at \\( x = 3 \\).",
+        "a": true
+      },
+      {
+        "s": "If the discriminant \\( b^2 - 4ac = 0 \\), the line is tangent to the parabola at a single repeated point.",
+        "a": true
+      },
+      {
+        "s": "The derivative of \\( x^3 - 9x \\) at \\( x = 3 \\) is zero.",
+        "a": false
+      }
+    ],
+    "items_ar": [
+      {
+        "s": "المقدار التربيعي \\( (x - 3)^2 + 4 \\) يبلغ قيمته الصغرى \\( 4 \\) عند \\( x = 3 \\).",
+        "a": true
+      },
+      {
+        "s": "إذا كان المميز \\( b^2 - 4ac = 0 \\)، فإن المستقيم يمس القطع المكافئ في نقطة واحدة مكررة.",
+        "a": true
+      },
+      {
+        "s": "مشتقة \\( x^3 - 9x \\) عند \\( x = 3 \\) تساوي صفراً.",
+        "a": false
+      }
+    ]
+  },
+  {
+    "t": "mt",
+    "ti": "Matching: Algebraic & Analytical Identities (Trigonometry, Polar Coordinates, Conic Sections & 3D Geometry)",
+    "ti_ar": "مطابقة: المتطابقات والعلاقات التحليلية (حساب المثلثات والإحداثيات القطبية والقطوع المخروطية والهندسة الفراغية (EST II L2))",
+    "p": [
+      {
+        "l": "\\( (x - 3)^2 + 4 \\)",
+        "r": "Turning point at \\( (3, 4) \\)"
+      },
+      {
+        "l": "\\( b^2 - 4ac > 0 \\)",
+        "r": "Two distinct real roots / intersections"
+      },
+      {
+        "l": "\\( b^2 - 4ac = 0 \\)",
+        "r": "One repeated tangent root"
+      },
+      {
+        "l": "\\( b^2 - 4ac < 0 \\)",
+        "r": "No real roots (strictly separated)"
+      }
+    ],
+    "p_ar": [
+      {
+        "l": "\\( (x - 3)^2 + 4 \\)",
+        "r": "نقطة الرأس عند \\( (3, 4) \\)"
+      },
+      {
+        "l": "\\( b^2 - 4ac > 0 \\)",
+        "r": "جذران حقيقيان متمايزان"
+      },
+      {
+        "l": "\\( b^2 - 4ac = 0 \\)",
+        "r": "جذر حقيقي مكرر (حالة التماس)"
+      },
+      {
+        "l": "\\( b^2 - 4ac < 0 \\)",
+        "r": "لا توجد جذور حقيقية"
+      }
+    ]
+  },
+  {
+    "t": "num",
+    "ti": "Numeric Entry: Exact Evaluation (Trigonometry, Polar Coordinates, Conic Sections & 3D Geometry)",
+    "ti_ar": "إدخال رقمي: الحساب الدقيق (حساب المثلثات والإحداثيات القطبية والقطوع المخروطية والهندسة الفراغية (EST II L2))",
+    "q": "Evaluate \\( f(6) \\) given \\( f(x) = (x - 3)^2 + 4 \\).",
+    "q_ar": "احسب قيمة \\( f(6) \\) إذا علمت أن \\( f(x) = (x - 3)^2 + 4 \\).",
+    "a": 13,
+    "h": "Substitute \\( x = 6 \\) so \\( x - 3 = 3 \\).",
+    "h_ar": "عوّض عن \\( x = 6 \\) بحيث يصبح \\( x - 3 = 3 \\).",
+    "sol": "\\( f(6) = 3^2 + 4 = 13 \\).",
+    "sol_ar": "\\( f(6) = 3^2 + 4 = 13 \\)."
+  },
+  {
+    "t": "ord",
+    "ti": "Order the Steps: Systematic Derivation (Trigonometry, Polar Coordinates, Conic Sections & 3D Geometry)",
+    "ti_ar": "رتّب الخطوات: خطوات الاستنتاج المنظم (حساب المثلثات والإحداثيات القطبية والقطوع المخروطية والهندسة الفراغية (EST II L2))",
+    "prompt": "Arrange the steps in order to complete the square and find the minimum of \\( f(x) = x^2 - 6x + 13 \\):",
+    "prompt_ar": "رتب خطوات إكمال المربع وإيجاد القيمة الصغرى للدالة \\( f(x) = x^2 - 6x + 13 \\):",
+    "items": [
+      "Identify the coefficient of \\( x \\) as \\( -6 \\) and halve it to get \\( -3 \\).",
+      "Write the squared binomial \\( (x - 3)^2 = x^2 - 6x + 9 \\).",
+      "Adjust the constant term: \\( f(x) = (x - 3)^2 - 9 + 13 = (x - 3)^2 + 4 \\).",
+      "Conclude that the minimum value is \\( 4 \\), attained when \\( x = 3 \\)."
+    ],
+    "items_ar": [
+      "حدد معامل \\( x \\) وهو \\( -6 \\) واقسمه على 2 لتحصل على \\( -3 \\).",
+      "اكتب المربع الكامل \\( (x - 3)^2 = x^2 - 6x + 9 \\).",
+      "عدّل الحد الثابت: \\( f(x) = (x - 3)^2 + 4 \\).",
+      "استنتج أن القيمة الصغرى هي \\( 4 \\) وتتحقق عند \\( x = 3 \\)."
+    ],
+    "ex": "Halve the linear coefficient, form the square, subtract h², and read off the vertex.",
+    "ex_ar": "اقسم معامل x على 2، كوّن المربع الكامل، اطرح مربع النصف، ثم استنتج الرأس."
+  },
+  {
+    "t": "cat",
+    "ti": "Categorize: Discriminant Classification (Trigonometry, Polar Coordinates, Conic Sections & 3D Geometry)",
+    "ti_ar": "تصنيف: تصنيف المعادلات حسب المميز (حساب المثلثات والإحداثيات القطبية والقطوع المخروطية والهندسة الفراغية (EST II L2))",
+    "categories": [
+      "Two Distinct Real Roots (Δ > 0)",
+      "One Repeated Tangent Root (Δ = 0)",
+      "No Real Roots (Δ < 0)"
+    ],
+    "categories_ar": [
+      "جذران حقيقيان متمايزان (Δ > 0)",
+      "جذر حقيقي مكرر / تماس (Δ = 0)",
+      "لا توجد جذور حقيقية (Δ < 0)"
+    ],
+    "items": [
+      {
+        "s": "\\( x^2 - 6x + 9 = 0 \\)",
+        "s_ar": "\\( x^2 - 6x + 9 = 0 \\)",
+        "cat": 1
+      },
+      {
+        "s": "\\( x^2 - 7x + 3 = 0 \\)",
+        "s_ar": "\\( x^2 - 7x + 3 = 0 \\)",
+        "cat": 0
+      },
+      {
+        "s": "\\( x^2 + 3x + 13 = 0 \\)",
+        "s_ar": "\\( x^2 + 3x + 13 = 0 \\)",
+        "cat": 2
+      },
+      {
+        "s": "\\( 4x^2 - 12x + 9 = 0 \\)",
+        "s_ar": "\\( 4x^2 - 12x + 9 = 0 \\)",
+        "cat": 1
+      }
+    ],
+    "ex": "Compute Δ = b² − 4ac for each quadratic equation.",
+    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لكل معادلة تربيعية."
+  },
+  {
+    "t": "se",
+    "ti": "Spot the Error: Extraneous Root Check (Trigonometry, Polar Coordinates, Conic Sections & 3D Geometry)",
+    "ti_ar": "اكتشف الخطأ: التحقق من الجذور الدخيلة (حساب المثلثات والإحداثيات القطبية والقطوع المخروطية والهندسة الفراغية (EST II L2))",
+    "q": "A student solves \\( \\sqrt{2x + 18} = x - 3 \\). Which step introduces an invalid conclusion?",
+    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 18} = x - 3 \\). أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "steps": [
+      "Square both sides: \\( 2x + 18 = (x - 3)^2 \\).",
+      "Expand the right-hand side: \\( 2x + 18 = x^2 - 6x + 9 \\).",
+      "Rearrange into standard form: \\( x^2 - 8x - 9 = 0 \\).",
+      "Accept both algebraic roots without checking \\( x - 3 \\ge 0 \\)."
+    ],
+    "steps_ar": [
+      "تربيع الطرفين: \\( 2x + 18 = (x - 3)^2 \\).",
+      "فك التربيع: \\( 2x + 18 = x^2 - 6x + 9 \\).",
+      "إعادة الترتيب: \\( x^2 - 8x - 9 = 0 \\).",
+      "قبول الجذرين معاً دون التحقق من الشرط \\( x - 3 \\ge 0 \\)."
+    ],
+    "errorStep": 4,
+    "reasons": [
+      "Because \\( \\sqrt{\\cdot} \\ge 0 \\), any valid root must satisfy \\( x \\ge 3 \\); the negative root is extraneous.",
+      "Expanding \\( (x - 3)^2 \\) should omit the middle term.",
+      "Squaring both sides is never valid."
+    ],
+    "reasons_ar": [
+      "لأن الجذر التربيعي غير سالب، يجب أن يتحقق \\( x \\ge 3 \\) ويُرفض الجذر السالب الدخيل.",
+      "فك المربع الكامل غير صحيح.",
+      "لا يجوز تربيع الطرفين."
+    ],
+    "correctReason": 0,
+    "h": "Test whether \\( x - 3 \\ge 0 \\) holds for both roots.",
+    "h_ar": "تحقق من شرط \\( x - 3 \\ge 0 \\) لكلا الجذرين.",
+    "sol": "Only the root satisfying \\( x \\ge 3 \\) is a valid solution to the radical equation.",
+    "sol_ar": "يُقبل فقط الجذر الذي يحقق الشرط \\( x \\ge 3 \\)."
+  },
+  {
+    "t": "ms",
+    "ti": "Examiner Mode: Multi-Step Rubric Problem (Trigonometry, Polar Coordinates, Conic Sections & 3D Geometry)",
+    "ti_ar": "وضع المصحح: مسألة متعددة الخطوات (حساب المثلثات والإحداثيات القطبية والقطوع المخروطية والهندسة الفراغية (EST II L2))",
+    "q": "Let \\( f(x) = x^2 - 6x + 13 \\) for \\( x \\ge 3 \\). (a) Write \\( f(x) \\) in vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and its domain.",
+    "q_ar": "لتكن \\( f(x) = x^2 - 6x + 13 \\) حيث \\( x \\ge 3 \\). (أ) اكتب \\( f(x) \\) في صيغة الرأس وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) ومجالها.",
+    "parts": [
+      {
+        "label": "Part (a) — Vertex Form & Range",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Complete the square: \\( f(x) = (x - 3)^2 + 4 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State range: \\( f(x) \\ge 4 \\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Function & Domain",
+        "marks": 3,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Set \\( y = (x - 3)^2 + 4 \\implies (x - 3)^2 = y - 4 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Choose positive root: \\( f^{-1}(x) = 3 + \\sqrt{x - 4} \\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 4 \\)."
+          }
+        ]
+      }
+    ],
+    "examinerTip": "Use the domain restriction \\( x \\ge 3 \\) to select the positive square root branch.",
+    "examinerTip_ar": "استخدم شرط المجال \\( x \\ge 3 \\) لاختيار الفرع الموجب للجذر التربيعي."
+  },
+  {
+    "t": "sb",
+    "ti": "Step Builder: Guided Calculation (Trigonometry, Polar Coordinates, Conic Sections & 3D Geometry)",
+    "ti_ar": "بناء الخطوات: حساب موجه (حساب المثلثات والإحداثيات القطبية والقطوع المخروطية والهندسة الفراغية (EST II L2))",
+    "steps": [
+      {
+        "l": "In \\( y = x^2 - 6x + 13 \\), find \\( h \\) in \\( (x - h)^2 + k \\):",
+        "a": "3",
+        "h": "Divide 6 by 2."
+      },
+      {
+        "l": "Find the minimum value \\( k = 13 - 3^2 = \\)",
+        "a": "4",
+        "h": "Subtract 9 from 13."
+      },
+      {
+        "l": "Evaluate \\( y \\) at \\( x = 5 \\):",
+        "a": "8",
+        "h": "Compute \\( 2^2 + 4 \\)."
+      }
+    ],
+    "steps_ar": [
+      {
+        "l": "في الدالة \\( y = x^2 - 6x + 13 \\)، أوجد قيمة \\( h \\):",
+        "a": "3",
+        "h": "اقسم 6 على 2."
+      },
+      {
+        "l": "أوجد القيمة الصغرى \\( k = \\)",
+        "a": "4",
+        "h": "اطرح 9 من 13."
+      },
+      {
+        "l": "احسب قيمة \\( y \\) عند \\( x = 5 \\):",
+        "a": "8",
+        "h": "احسب \\( 2^2 + 4 \\)."
+      }
+    ]
+  }
+];
 });

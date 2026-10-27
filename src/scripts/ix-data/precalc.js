@@ -525,6 +525,28 @@ D["pc-circles"] = [
         "h": "احسب \\(4 + 0\\)."
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Unit Circle & Trigonometric Identities)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Unit Circle & Trigonometric Identities)",
+    "q": "What is the minimum value of \\( f(x) = (x - 4)^2 + 6 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 4)^2 + 6 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 6 \\)",
+      "\\( 4 \\)",
+      "\\( -4 \\)",
+      "\\( 22 \\)"
+    ],
+    "o_ar": [
+      "\\( 6 \\)",
+      "\\( 4 \\)",
+      "\\( -4 \\)",
+      "\\( 22 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 4)^2 \\ge 0 \\), the minimum value is \\( 6 \\) achieved at \\( x = 4 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 6 \\) عند \\( x = 4 \\)."
   }
 ];
 
@@ -1058,6 +1080,28 @@ D["pc-conics"] = [
         "r": "علاقات فييت بين الجذور والمعاملات"
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Conic Sections & Analytic Geometry)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Conic Sections & Analytic Geometry)",
+    "q": "What is the minimum value of \\( f(x) = (x - 5)^2 + 7 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 5)^2 + 7 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 7 \\)",
+      "\\( 5 \\)",
+      "\\( -5 \\)",
+      "\\( 32 \\)"
+    ],
+    "o_ar": [
+      "\\( 7 \\)",
+      "\\( 5 \\)",
+      "\\( -5 \\)",
+      "\\( 32 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 5)^2 \\ge 0 \\), the minimum value is \\( 7 \\) achieved at \\( x = 5 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 7 \\) عند \\( x = 5 \\)."
   }
 ];
 
@@ -1607,6 +1651,28 @@ D["pc-polar"] = [
         "r": "علاقات فييت بين الجذور والمعاملات"
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Polar Coordinates, Complex Numbers & De Moivre's Theorem)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Polar Coordinates, Complex Numbers & De Moivre's Theorem)",
+    "q": "What is the minimum value of \\( f(x) = (x - 7)^2 + 9 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 7)^2 + 9 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 9 \\)",
+      "\\( 7 \\)",
+      "\\( -7 \\)",
+      "\\( 58 \\)"
+    ],
+    "o_ar": [
+      "\\( 9 \\)",
+      "\\( 7 \\)",
+      "\\( -7 \\)",
+      "\\( 58 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 7)^2 \\ge 0 \\), the minimum value is \\( 9 \\) achieved at \\( x = 7 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 9 \\) عند \\( x = 7 \\)."
   }
 ];
 
@@ -2162,5 +2228,4 @@ D["pc-sequences"] = [
     ]
   }
 ];
-
 });

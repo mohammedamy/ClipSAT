@@ -269,6 +269,28 @@ D["ode-separable"] = [
         "r": "الضرب في عامل التكامل \\(\\mu(x) = e^{\\int P(x)\\,dx}\\)"
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (First-Order Differential Equations, Separable Equations &amp; Existence Theory)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (First-Order Differential Equations, Separable Equations &amp; Existence Theory)",
+    "q": "What is the minimum value of \\( f(x) = (x - 3)^2 + 5 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 3)^2 + 5 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 5 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 14 \\)"
+    ],
+    "o_ar": [
+      "\\( 5 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 14 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 3)^2 \\ge 0 \\), the minimum value is \\( 5 \\) achieved at \\( x = 3 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 5 \\) عند \\( x = 3 \\)."
   }
 ];
 
@@ -547,6 +569,28 @@ D["ode-linear"] = [
     "ti_ar": "وضع المصحح: التكامل المحدد والمساحة تحت المنحنى (Linear First-Order Equations, Integrating Factors &amp; Nonlinear Reductions)",
     "q_ar": "أوجد المساحة المحصورة بين المنحنى \\(y = 3x^2 + 6x\\) ومحور السينات والمستقيمين \\(x = 0\\) و \\(x = 2\\).",
     "examinerTip_ar": "يجب كتابة الدالة الأصلية صراحةً قبل تعويض حدود التكامل للحصول على درجات الطريقة كاملة."
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Linear First-Order Equations, Integrating Factors &amp; Nonlinear Reductions)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Linear First-Order Equations, Integrating Factors &amp; Nonlinear Reductions)",
+    "q": "What is the minimum value of \\( f(x) = (x - 4)^2 + 6 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 4)^2 + 6 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 6 \\)",
+      "\\( 4 \\)",
+      "\\( -4 \\)",
+      "\\( 22 \\)"
+    ],
+    "o_ar": [
+      "\\( 6 \\)",
+      "\\( 4 \\)",
+      "\\( -4 \\)",
+      "\\( 22 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 4)^2 \\ge 0 \\), the minimum value is \\( 6 \\) achieved at \\( x = 4 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 6 \\) عند \\( x = 4 \\)."
   }
 ];
 
@@ -817,6 +861,28 @@ D["ode-second-order"] = [
     "ti_ar": "وضع المصحح: التكامل المحدد والمساحة تحت المنحنى (Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory)",
     "q_ar": "أوجد المساحة المحصورة بين المنحنى \\(y = 3x^2 + 6x\\) ومحور السينات والمستقيمين \\(x = 0\\) و \\(x = 3\\).",
     "examinerTip_ar": "يجب كتابة الدالة الأصلية صراحةً قبل تعويض حدود التكامل للحصول على درجات الطريقة كاملة."
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Second-Order Linear Homogeneous Equations, Auxiliary Roots &amp; Wronskian Theory)",
+    "q": "What is the minimum value of \\( f(x) = (x - 5)^2 + 7 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 5)^2 + 7 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 7 \\)",
+      "\\( 5 \\)",
+      "\\( -5 \\)",
+      "\\( 32 \\)"
+    ],
+    "o_ar": [
+      "\\( 7 \\)",
+      "\\( 5 \\)",
+      "\\( -5 \\)",
+      "\\( 32 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 5)^2 \\ge 0 \\), the minimum value is \\( 7 \\) achieved at \\( x = 5 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 7 \\) عند \\( x = 5 \\)."
   }
 ];
 
@@ -1075,6 +1141,28 @@ D["ode-undetermined-coefficients"] = [
     "ti_ar": "وضع المصحح: التكامل المحدد والمساحة تحت المنحنى (Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance)",
     "q_ar": "أوجد المساحة المحصورة بين المنحنى \\(y = 3x^2 + 4x\\) ومحور السينات والمستقيمين \\(x = 0\\) و \\(x = 2\\).",
     "examinerTip_ar": "يجب كتابة الدالة الأصلية صراحةً قبل تعويض حدود التكامل للحصول على درجات الطريقة كاملة."
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Nonhomogeneous Equations, Undetermined Coefficients &amp; Resonance)",
+    "q": "What is the minimum value of \\( f(x) = (x - 6)^2 + 8 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 6)^2 + 8 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 8 \\)",
+      "\\( 6 \\)",
+      "\\( -6 \\)",
+      "\\( 44 \\)"
+    ],
+    "o_ar": [
+      "\\( 8 \\)",
+      "\\( 6 \\)",
+      "\\( -6 \\)",
+      "\\( 44 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 6)^2 \\ge 0 \\), the minimum value is \\( 8 \\) achieved at \\( x = 6 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 8 \\) عند \\( x = 6 \\)."
   }
 ];
 
@@ -1620,6 +1708,28 @@ D["ode-laplace-transforms"] = [
     "ti_ar": "وضع المصحح: التكامل المحدد والمساحة تحت المنحنى (The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory)",
     "q_ar": "أوجد المساحة المحصورة بين المنحنى \\(y = 3x^2 + 4x\\) ومحور السينات والمستقيمين \\(x = 0\\) و \\(x = 1\\).",
     "examinerTip_ar": "يجب كتابة الدالة الأصلية صراحةً قبل تعويض حدود التكامل للحصول على درجات الطريقة كاملة."
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (The Laplace Transform, Discontinuous Forcing &amp; Convolution Theory)",
+    "q": "What is the minimum value of \\( f(x) = (x - 8)^2 + 5 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 8)^2 + 5 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 5 \\)",
+      "\\( 8 \\)",
+      "\\( -8 \\)",
+      "\\( 69 \\)"
+    ],
+    "o_ar": [
+      "\\( 5 \\)",
+      "\\( 8 \\)",
+      "\\( -8 \\)",
+      "\\( 69 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 8)^2 \\ge 0 \\), the minimum value is \\( 5 \\) achieved at \\( x = 8 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 5 \\) عند \\( x = 8 \\)."
   }
 ];
 
@@ -1890,6 +2000,28 @@ D["ode-systems"] = [
     "ti_ar": "وضع المصحح: التكامل المحدد والمساحة تحت المنحنى (Systems of Linear Differential Equations, Phase Plane Topology &amp; Matrix Exponentials)",
     "q_ar": "أوجد المساحة المحصورة بين المنحنى \\(y = 3x^2 + 6x\\) ومحور السينات والمستقيمين \\(x = 0\\) و \\(x = 4\\).",
     "examinerTip_ar": "يجب كتابة الدالة الأصلية صراحةً قبل تعويض حدود التكامل للحصول على درجات الطريقة كاملة."
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Systems of Linear Differential Equations, Phase Plane Topology &amp; Matrix Exponentials)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Systems of Linear Differential Equations, Phase Plane Topology &amp; Matrix Exponentials)",
+    "q": "What is the minimum value of \\( f(x) = (x - 9)^2 + 6 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 9)^2 + 6 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 6 \\)",
+      "\\( 9 \\)",
+      "\\( -9 \\)",
+      "\\( 87 \\)"
+    ],
+    "o_ar": [
+      "\\( 6 \\)",
+      "\\( 9 \\)",
+      "\\( -9 \\)",
+      "\\( 87 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 9)^2 \\ge 0 \\), the minimum value is \\( 6 \\) achieved at \\( x = 9 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 6 \\) عند \\( x = 9 \\)."
   }
 ];
 
@@ -2150,6 +2282,28 @@ D["ode-series-solutions"] = [
     "ti_ar": "وضع المصحح: التكامل المحدد والمساحة تحت المنحنى (Power Series Solutions, Ordinary Points &amp; the Method of Frobenius)",
     "q_ar": "أوجد المساحة المحصورة بين المنحنى \\(y = 3x^2 + 4x\\) ومحور السينات والمستقيمين \\(x = 0\\) و \\(x = 1\\).",
     "examinerTip_ar": "يجب كتابة الدالة الأصلية صراحةً قبل تعويض حدود التكامل للحصول على درجات الطريقة كاملة."
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Power Series Solutions, Ordinary Points &amp; the Method of Frobenius)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Power Series Solutions, Ordinary Points &amp; the Method of Frobenius)",
+    "q": "What is the minimum value of \\( f(x) = (x - 3)^2 + 7 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 3)^2 + 7 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 7 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 16 \\)"
+    ],
+    "o_ar": [
+      "\\( 7 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 16 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 3)^2 \\ge 0 \\), the minimum value is \\( 7 \\) achieved at \\( x = 3 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 7 \\) عند \\( x = 3 \\)."
   }
 ];
 
@@ -2428,7 +2582,28 @@ D["ode-numerical-methods"] = [
     "ti_ar": "وضع المصحح: التكامل المحدد والمساحة تحت المنحنى (Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability)",
     "q_ar": "أوجد المساحة المحصورة بين المنحنى \\(y = 3x^2 + 10x\\) ومحور السينات والمستقيمين \\(x = 0\\) و \\(x = 1\\).",
     "examinerTip_ar": "يجب كتابة الدالة الأصلية صراحةً قبل تعويض حدود التكامل للحصول على درجات الطريقة كاملة."
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability)",
+    "q": "What is the minimum value of \\( f(x) = (x - 4)^2 + 8 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 4)^2 + 8 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 8 \\)",
+      "\\( 4 \\)",
+      "\\( -4 \\)",
+      "\\( 24 \\)"
+    ],
+    "o_ar": [
+      "\\( 8 \\)",
+      "\\( 4 \\)",
+      "\\( -4 \\)",
+      "\\( 24 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 4)^2 \\ge 0 \\), the minimum value is \\( 8 \\) achieved at \\( x = 4 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 8 \\) عند \\( x = 4 \\)."
   }
 ];
-
 });

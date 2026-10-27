@@ -548,6 +548,28 @@ D["a2-quadratics"] = [
         "h": "احسب 4 + -1."
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Quadratics &amp; Complex Numbers)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Quadratics &amp; Complex Numbers)",
+    "q": "What is the minimum value of \\( f(x) = (x - 4)^2 + 6 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 4)^2 + 6 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 6 \\)",
+      "\\( 4 \\)",
+      "\\( -4 \\)",
+      "\\( 22 \\)"
+    ],
+    "o_ar": [
+      "\\( 6 \\)",
+      "\\( 4 \\)",
+      "\\( -4 \\)",
+      "\\( 22 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 4)^2 \\ge 0 \\), the minimum value is \\( 6 \\) achieved at \\( x = 4 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 6 \\) عند \\( x = 4 \\)."
   }
 ];
 
@@ -797,6 +819,28 @@ D["a2-polynomials"] = [
         "r": "يتفكك على الصورة \\(\\dfrac{A}{x-a} + \\dfrac{Bx+C}{x^2+c}\\)"
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Polynomial Functions)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Polynomial Functions)",
+    "q": "What is the minimum value of \\( f(x) = (x - 5)^2 + 7 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 5)^2 + 7 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 7 \\)",
+      "\\( 5 \\)",
+      "\\( -5 \\)",
+      "\\( 32 \\)"
+    ],
+    "o_ar": [
+      "\\( 7 \\)",
+      "\\( 5 \\)",
+      "\\( -5 \\)",
+      "\\( 32 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 5)^2 \\ge 0 \\), the minimum value is \\( 7 \\) achieved at \\( x = 5 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 7 \\) عند \\( x = 5 \\)."
   }
 ];
 
@@ -1047,6 +1091,28 @@ D["a2-rational"] = [
         "r": "علاقات فييت بين الجذور والمعاملات"
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Rational Expressions)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Rational Expressions)",
+    "q": "What is the minimum value of \\( f(x) = (x - 6)^2 + 8 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 6)^2 + 8 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 8 \\)",
+      "\\( 6 \\)",
+      "\\( -6 \\)",
+      "\\( 44 \\)"
+    ],
+    "o_ar": [
+      "\\( 8 \\)",
+      "\\( 6 \\)",
+      "\\( -6 \\)",
+      "\\( 44 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 6)^2 \\ge 0 \\), the minimum value is \\( 8 \\) achieved at \\( x = 6 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 8 \\) عند \\( x = 6 \\)."
   }
 ];
 
@@ -1280,6 +1346,28 @@ D["a2-exponential"] = [
         "r": "علاقات فييت بين الجذور والمعاملات"
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Exponential &amp; Logarithmic Functions)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Exponential &amp; Logarithmic Functions)",
+    "q": "What is the minimum value of \\( f(x) = (x - 7)^2 + 9 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 7)^2 + 9 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 9 \\)",
+      "\\( 7 \\)",
+      "\\( -7 \\)",
+      "\\( 58 \\)"
+    ],
+    "o_ar": [
+      "\\( 9 \\)",
+      "\\( 7 \\)",
+      "\\( -7 \\)",
+      "\\( 58 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 7)^2 \\ge 0 \\), the minimum value is \\( 9 \\) achieved at \\( x = 7 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 9 \\) عند \\( x = 7 \\)."
   }
 ];
 
@@ -2118,6 +2206,28 @@ D["a2-conics"] = [
         "r": "علاقات فييت بين الجذور والمعاملات"
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Conic Sections)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Conic Sections)",
+    "q": "What is the minimum value of \\( f(x) = (x - 3)^2 + 7 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 3)^2 + 7 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 7 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 16 \\)"
+    ],
+    "o_ar": [
+      "\\( 7 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 16 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 3)^2 \\ge 0 \\), the minimum value is \\( 7 \\) achieved at \\( x = 3 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 7 \\) عند \\( x = 3 \\)."
   }
 ];
 
@@ -2637,6 +2747,28 @@ D["a2-matrices"] = [
         "r": "علاقات فييت بين الجذور والمعاملات"
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Matrices &amp; Systems)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Matrices &amp; Systems)",
+    "q": "What is the minimum value of \\( f(x) = (x - 5)^2 + 9 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 5)^2 + 9 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 9 \\)",
+      "\\( 5 \\)",
+      "\\( -5 \\)",
+      "\\( 34 \\)"
+    ],
+    "o_ar": [
+      "\\( 9 \\)",
+      "\\( 5 \\)",
+      "\\( -5 \\)",
+      "\\( 34 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 5)^2 \\ge 0 \\), the minimum value is \\( 9 \\) achieved at \\( x = 5 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 9 \\) عند \\( x = 5 \\)."
   }
 ];
 
@@ -2892,7 +3024,28 @@ D["a2-stats"] = [
         "r": "علاقات فييت بين الجذور والمعاملات"
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Probability &amp; Statistics)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Probability &amp; Statistics)",
+    "q": "What is the minimum value of \\( f(x) = (x - 6)^2 + 5 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 6)^2 + 5 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 5 \\)",
+      "\\( 6 \\)",
+      "\\( -6 \\)",
+      "\\( 41 \\)"
+    ],
+    "o_ar": [
+      "\\( 5 \\)",
+      "\\( 6 \\)",
+      "\\( -6 \\)",
+      "\\( 41 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 6)^2 \\ge 0 \\), the minimum value is \\( 5 \\) achieved at \\( x = 6 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 5 \\) عند \\( x = 6 \\)."
   }
 ];
-
 });

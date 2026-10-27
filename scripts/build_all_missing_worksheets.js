@@ -262,14 +262,26 @@ const MATHAI_TRACK = {
 function processTrack(trackDef) {
   const bankPath = path.join(ROOT, `bank-data/${trackDef.id}.json`);
   const bank = JSON.parse(fs.readFileSync(bankPath, 'utf8'));
-  const pool = bank.pool || [];
+  const pool = Array.isArray(bank.pool)
+    ? bank.pool
+    : (bank.easy || []).concat(bank.medium || []).concat(bank.hard || []);
 
   const outDir = path.join(DOWNLOADS_DIR, trackDef.id);
   const topicsTrackDir = path.join(TOPICS_DIR, trackDef.id);
   if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
   if (!fs.existsSync(topicsTrackDir)) fs.mkdirSync(topicsTrackDir, { recursive: true });
 
-  const manifest = [];
+  const manifestPath = path.join(outDir, 'manifest.json');
+  let fullExamEntries = [];
+  if (fs.existsSync(manifestPath)) {
+    try {
+      const existing = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+      if (Array.isArray(existing)) {
+        fullExamEntries = existing.filter(e => e && e.isFullExam);
+      }
+    } catch (_) {}
+  }
+  const manifest = [...fullExamEntries];
 
   trackDef.units.forEach(u => {
     // Select questions matching domain
@@ -277,7 +289,12 @@ function processTrack(trackDef) {
     if (!matched.length) {
       matched = pool.slice(0, 8);
     }
-    const qSubset = matched.slice(0, 8); // 8 questions per worksheet
+    const qSubset = matched.slice(0, 8).map(q => ({
+      text: q.text || q.q || '',
+      choices: q.choices || [],
+      answer: q.answer !== undefined ? q.answer : (q.correct !== undefined ? q.correct : 0),
+      sol: q.sol || ''
+    })); // 8 questions per worksheet
 
     const wsFilename = `${u.num}-${u.slug}-worksheet.pdf`;
     const akFilename = `${u.num}-${u.slug}-answerkey.pdf`;
@@ -321,9 +338,8 @@ function processTrack(trackDef) {
     });
   });
 
-  const manifestPath = path.join(outDir, 'manifest.json');
   fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2), 'utf8');
-  console.log(`Generated ${manifest.length} worksheet pairs and manifest.json for ${trackDef.id}!`);
+  console.log(`Generated ${trackDef.units.length} worksheet pairs and manifest.json (${manifest.length} total entries) for ${trackDef.id}!`);
 }
 
 const EDEXCEL_TRACK = {
@@ -371,9 +387,106 @@ const OLYMPIAD_TRACK = {
   ]
 };
 
+const LINALG_TRACK = {
+  id: 'linalg',
+  name: 'Linear Algebra (Vectors, Matrices, Eigenvalues & Least Squares)',
+  units: [
+    { unit: 1, num: '1.01', slug: 'vectors-and-inner-product-spaces', title: 'Vectors in R^n & Inner Product Spaces', domain: 'Vectors & Inner Product Spaces' },
+    { unit: 2, num: '2.01', slug: 'systems-of-linear-equations-and-rref', title: 'Systems of Linear Equations & Row Reduction', domain: 'Linear Systems & Row Reduction' },
+    { unit: 3, num: '3.01', slug: 'matrices-matrix-algebra-and-inverses', title: 'Matrices, Matrix Algebra & Inverses', domain: 'Matrix Operations & Inverses' },
+    { unit: 4, num: '4.01', slug: 'determinants-and-geometric-volume', title: 'Determinants & Geometric Volume', domain: 'Determinants & Volume' },
+    { unit: 5, num: '5.01', slug: 'vector-spaces-and-fundamental-subspaces', title: 'Vector Spaces & The Four Fundamental Subspaces', domain: 'Vector Spaces & Subspaces' },
+    { unit: 6, num: '6.01', slug: 'eigenvalues-eigenvectors-and-diagonalization', title: 'Eigenvalues, Eigenvectors & Diagonalization', domain: 'Eigenvalues & Diagonalization' },
+    { unit: 7, num: '7.01', slug: 'linear-transformations-and-change-of-basis', title: 'Linear Transformations & Change of Basis', domain: 'Linear Transformations' },
+    { unit: 8, num: '8.01', slug: 'orthogonality-gram-schmidt-and-least-squares', title: 'Orthogonality, Gram-Schmidt, QR & Least Squares', domain: 'Orthogonality & Least Squares' }
+  ]
+};
+
+const MVC_TRACK = {
+  id: 'mvc',
+  name: 'Multivariable Calculus (Partials, Multiple Integrals & Vector Calculus)',
+  units: [
+    { unit: 1, num: '1.01', slug: 'functions-of-several-variables-and-partials', title: 'Functions of Several Variables, Limits & Partial Derivatives', domain: 'Partial Derivatives & Differentiability' },
+    { unit: 2, num: '2.01', slug: 'multivariable-chain-rule-and-gradients', title: 'Multivariable Chain Rule, Directional Derivatives & Gradients', domain: 'Chain Rule & Gradients' },
+    { unit: 3, num: '3.01', slug: 'multivariable-optimization-and-lagrange', title: 'Multivariable Optimization, Hessians & Lagrange Multipliers', domain: 'Optimization & Lagrange Multipliers' },
+    { unit: 4, num: '4.01', slug: 'double-integrals-polar-and-jacobians', title: 'Double Integrals, Polar Coordinates & Jacobians', domain: 'Double Integrals' },
+    { unit: 5, num: '5.01', slug: 'triple-integrals-cylindrical-and-spherical', title: 'Triple Integrals, Cylindrical & Spherical Coordinates', domain: 'Triple Integrals' },
+    { unit: 6, num: '6.01', slug: 'vector-fields-and-line-integrals', title: 'Vector Fields, Conservative Fields & Line Integrals', domain: 'Vector Fields & Line Integrals' },
+    { unit: 7, num: '7.01', slug: 'greens-theorem-and-circulation', title: 'Greens Theorem, Circulation & Planar Flux', domain: 'Greens Theorem' },
+    { unit: 8, num: '8.01', slug: 'surface-integrals-divergence-and-stokes', title: 'Surface Integrals, Divergence Theorem & Stokes Theorem', domain: 'Surface Integrals, Divergence & Stokes' }
+  ]
+};
+
+const ODES_TRACK = {
+  id: 'odes',
+  name: 'Differential Equations (First/Second Order, Laplace, Systems & Series)',
+  units: [
+    { unit: 1, num: '1.01', slug: 'first-order-separable-and-existence', title: 'First-Order Separable Equations & Existence Theory', domain: 'First-Order Separable ODEs' },
+    { unit: 2, num: '2.01', slug: 'linear-first-order-and-integrating-factors', title: 'Linear First-Order Equations & Integrating Factors', domain: 'Linear First-Order ODEs' },
+    { unit: 3, num: '3.01', slug: 'second-order-homogeneous-and-wronskian', title: 'Second-Order Linear Homogeneous ODEs & Wronskian', domain: 'Second-Order Homogeneous ODEs' },
+    { unit: 4, num: '4.01', slug: 'undetermined-coefficients-and-resonance', title: 'Nonhomogeneous Equations, Undetermined Coefficients & Resonance', domain: 'Undetermined Coefficients & Resonance' },
+    { unit: 5, num: '5.01', slug: 'variation-of-parameters-and-greens-kernel', title: 'Variation of Parameters & Greens Kernel', domain: 'Variation of Parameters' },
+    { unit: 6, num: '6.01', slug: 'laplace-transforms-and-convolution', title: 'The Laplace Transform, Step Forcing & Convolution', domain: 'Laplace Transforms' },
+    { unit: 7, num: '7.01', slug: 'systems-of-linear-odes-and-phase-planes', title: 'Systems of Linear ODEs & Phase Plane Topology', domain: 'Systems of Linear ODEs' },
+    { unit: 8, num: '8.01', slug: 'power-series-solutions-and-frobenius', title: 'Power Series Solutions & Method of Frobenius', domain: 'Power Series Solutions' },
+    { unit: 9, num: '9.01', slug: 'numerical-methods-euler-and-runge-kutta', title: 'Numerical Methods: Euler, RK2, RK4 & Stability', domain: 'Numerical Methods for ODEs' }
+  ]
+};
+
+const ACT2L2_TRACK = {
+  id: 'act2l2',
+  name: 'ACT International Subject Test: Mathematics 2 (Level 2)',
+  units: [
+    { unit: 1, num: '1.01', slug: 'complex-numbers', title: 'Complex Numbers & De Moivre Theorem', domain: 'Complex Numbers' },
+    { unit: 2, num: '2.01', slug: 'matrices-vectors', title: 'Matrices, Determinants & Vectors', domain: 'Matrices & Vectors' },
+    { unit: 3, num: '3.01', slug: 'sequences-series', title: 'Sequences, Series & Binomial Theorem', domain: 'Sequences & Series' },
+    { unit: 4, num: '4.01', slug: 'advanced-functions-equations', title: 'Advanced Functions, Polynomials & Logarithms', domain: 'Advanced Functions & Equations' },
+    { unit: 5, num: '5.01', slug: 'trigonometry-polar-coordinates', title: 'Trigonometry, Identities & Polar Coordinates', domain: 'Trigonometry & Polar Coordinates' },
+    { unit: 6, num: '6.01', slug: 'limits', title: 'Limits, Asymptotes & Instantaneous Rates', domain: 'Limits & Introductory Calculus' },
+    { unit: 7, num: '7.01', slug: 'probability-combinatorics-regression', title: 'Combinatorics, Binomial Probability & Regression', domain: 'Probability & Combinatorics' },
+    { unit: 8, num: '8.01', slug: 'conic-sections-3d-geometry-statistics', title: 'Conic Sections, 3D Coordinate Geometry & Statistics', domain: 'Coordinate & 3D Geometry' }
+  ]
+};
+
+const EST2L2_TRACK = {
+  id: 'est2l2',
+  name: 'Egyptian Scholastic Test: EST II Mathematics Level 2',
+  units: [
+    { unit: 1, num: '1.01', slug: 'complex-numbers', title: 'Complex Numbers, Modulus & Polar Form', domain: 'Complex Numbers' },
+    { unit: 2, num: '2.01', slug: 'sequences-series', title: 'Sequences, Series & Sigma Notation', domain: 'Sequences & Series' },
+    { unit: 3, num: '3.01', slug: 'functions-graphs', title: 'Polynomial, Rational, Exponential & Logarithmic Functions', domain: 'Functions & Graphs' },
+    { unit: 4, num: '4.01', slug: 'matrices-vectors', title: 'Matrices, Determinants & 2D/3D Vectors', domain: 'Matrices & Vectors' },
+    { unit: 5, num: '5.01', slug: 'introductory-calculus', title: 'Limits, Continuity & Introductory Derivatives', domain: 'Limits & Introductory Calculus' },
+    { unit: 6, num: '6.01', slug: 'probability', title: 'Permutations, Combinations & Conditional Probability', domain: 'Probability & Statistics' },
+    { unit: 7, num: '7.01', slug: 'statistics-normal-distribution-regression', title: 'Descriptive Statistics, Normal Distribution & Regression', domain: 'Statistics & Data Analysis' },
+    { unit: 8, num: '8.01', slug: 'trigonometry-polar-conic-sections', title: 'Trigonometric Laws, Polar Coordinates & Conic Sections', domain: 'Trigonometry & Conic Sections' }
+  ]
+};
+
+const IBSL_TRACK = {
+  id: 'ibsl',
+  name: 'IB Diploma Mathematics: Analysis & Approaches / Applications & Interpretation SL',
+  units: [
+    { unit: 1, num: '1.01', slug: 'number-algebra', title: 'Topic 1: Number & Algebra (Sequences, Logs & Binomial)', domain: 'Number & Algebra' },
+    { unit: 2, num: '2.01', slug: 'functions', title: 'Topic 2: Functions, Transformations & Modeling', domain: 'Functions' },
+    { unit: 3, num: '3.01', slug: 'geometry-trigonometry', title: 'Topic 3: Geometry, Trigonometry & Voronoi Diagrams', domain: 'Geometry & Trigonometry' },
+    { unit: 4, num: '4.01', slug: 'statistics-probability', title: 'Topic 4: Statistics, Regression & Probability Distributions', domain: 'Statistics & Probability' },
+    { unit: 5, num: '5.01', slug: 'calculus', title: 'Topic 5: Differential & Integral Calculus', domain: 'Calculus' },
+    { unit: 6, num: '6.01', slug: 'ai-sl-specific-topics', title: 'Topic 6: AI SL Modeling, Financial Math & Chi-Squared Tests', domain: 'Statistics & Probability' },
+    { unit: 7, num: '7.01', slug: 'aa-sl-analytical-proofs-and-binomial', title: 'Topic 7: AA SL Analytical Proofs, Exact Trig & Kinematics', domain: 'Calculus' },
+    { unit: 8, num: '8.01', slug: 'paper-2-extended-response-synthesis', title: 'Topic 8: IB SL Paper 1 & Paper 2 Extended-Response Synthesis', domain: 'Functions' }
+  ]
+};
+
 processTrack(ADDMATH_TRACK);
 processTrack(MATHAI_TRACK);
 processTrack(EDEXCEL_TRACK);
 processTrack(GATEN_TRACK);
 processTrack(OLYMPIAD_TRACK);
+processTrack(LINALG_TRACK);
+processTrack(MVC_TRACK);
+processTrack(ODES_TRACK);
+processTrack(ACT2L2_TRACK);
+processTrack(EST2L2_TRACK);
+processTrack(IBSL_TRACK);
 console.log('All missing worksheets successfully built and validated!');

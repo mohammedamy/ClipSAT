@@ -284,6 +284,28 @@ D["mvc-partials"] = [
         "r": "\\(f'(g(x))\\cdot g'(x)\\) (قاعدة السلسلة)"
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Functions of Several Variables, Limits, Partial Derivatives & Differentiability)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Functions of Several Variables, Limits, Partial Derivatives & Differentiability)",
+    "q": "What is the minimum value of \\( f(x) = (x - 3)^2 + 5 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 3)^2 + 5 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 5 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 14 \\)"
+    ],
+    "o_ar": [
+      "\\( 5 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 14 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 3)^2 \\ge 0 \\), the minimum value is \\( 5 \\) achieved at \\( x = 3 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 5 \\) عند \\( x = 3 \\)."
   }
 ];
 
@@ -878,6 +900,28 @@ D["mvc-optimization"] = [
     "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers)",
     "q_ar": "لتكن \\(f(x) = x^2 - 10x + 30\\) حيث \\(x \\ge 5\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
     "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(5 + \\sqrt{x - 5}\\) لأن \\(x \\ge 5\\)."
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Multivariable Optimization: Critical Points, Hessians & Lagrange Multipliers)",
+    "q": "What is the minimum value of \\( f(x) = (x - 5)^2 + 7 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 5)^2 + 7 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 7 \\)",
+      "\\( 5 \\)",
+      "\\( -5 \\)",
+      "\\( 32 \\)"
+    ],
+    "o_ar": [
+      "\\( 7 \\)",
+      "\\( 5 \\)",
+      "\\( -5 \\)",
+      "\\( 32 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 5)^2 \\ge 0 \\), the minimum value is \\( 7 \\) achieved at \\( x = 5 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 7 \\) عند \\( x = 5 \\)."
   }
 ];
 
@@ -1151,6 +1195,28 @@ D["mvc-double-integrals"] = [
     "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Double Integrals, Fubini's Theorem, Polar Coordinates & The Change-of-Variables Jacobian)",
     "q_ar": "لتكن \\(f(x) = x^2 - 4x + 4\\) حيث \\(x \\ge 2\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
     "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(2 + \\sqrt{x - 0}\\) لأن \\(x \\ge 2\\)."
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Double Integrals, Fubini's Theorem, Polar Coordinates & The Change-of-Variables Jacobian)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Double Integrals, Fubini's Theorem, Polar Coordinates & The Change-of-Variables Jacobian)",
+    "q": "What is the minimum value of \\( f(x) = (x - 6)^2 + 8 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 6)^2 + 8 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 8 \\)",
+      "\\( 6 \\)",
+      "\\( -6 \\)",
+      "\\( 44 \\)"
+    ],
+    "o_ar": [
+      "\\( 8 \\)",
+      "\\( 6 \\)",
+      "\\( -6 \\)",
+      "\\( 44 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 6)^2 \\ge 0 \\), the minimum value is \\( 8 \\) achieved at \\( x = 6 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 8 \\) عند \\( x = 6 \\)."
   }
 ];
 
@@ -1434,6 +1500,28 @@ D["mvc-triple-integrals"] = [
     "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Triple Integrals & Cylindrical/Spherical Coordinates)",
     "q_ar": "لتكن \\(f(x) = x^2 - 6x + 14\\) حيث \\(x \\ge 3\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
     "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(3 + \\sqrt{x - 5}\\) لأن \\(x \\ge 3\\)."
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Triple Integrals & Cylindrical/Spherical Coordinates)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Triple Integrals & Cylindrical/Spherical Coordinates)",
+    "q": "What is the minimum value of \\( f(x) = (x - 7)^2 + 9 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 7)^2 + 9 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 9 \\)",
+      "\\( 7 \\)",
+      "\\( -7 \\)",
+      "\\( 58 \\)"
+    ],
+    "o_ar": [
+      "\\( 9 \\)",
+      "\\( 7 \\)",
+      "\\( -7 \\)",
+      "\\( 58 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 7)^2 \\ge 0 \\), the minimum value is \\( 9 \\) achieved at \\( x = 7 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 9 \\) عند \\( x = 7 \\)."
   }
 ];
 
@@ -1717,6 +1805,28 @@ D["mvc-vector-fields"] = [
     "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Vector Fields & Line Integrals)",
     "q_ar": "لتكن \\(f(x) = x^2 - 8x + 20\\) حيث \\(x \\ge 4\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
     "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(4 + \\sqrt{x - 4}\\) لأن \\(x \\ge 4\\)."
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Vector Fields & Line Integrals)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Vector Fields & Line Integrals)",
+    "q": "What is the minimum value of \\( f(x) = (x - 8)^2 + 5 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 8)^2 + 5 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 5 \\)",
+      "\\( 8 \\)",
+      "\\( -8 \\)",
+      "\\( 69 \\)"
+    ],
+    "o_ar": [
+      "\\( 5 \\)",
+      "\\( 8 \\)",
+      "\\( -8 \\)",
+      "\\( 69 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 8)^2 \\ge 0 \\), the minimum value is \\( 5 \\) achieved at \\( x = 8 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 5 \\) عند \\( x = 8 \\)."
   }
 ];
 
@@ -2310,7 +2420,28 @@ D["mvc-surface-divergence-stokes"] = [
     "ti_ar": "وضع المصحح: إكمال المربع والدالة العكسية (Surface Integrals, the Divergence Theorem & Stokes' Theorem)",
     "q_ar": "لتكن \\(f(x) = x^2 - 10x + 28\\) حيث \\(x \\ge 5\\). (أ) اكتب \\(f(x)\\) في صورة المربع الكامل وحدد مداها. (ب) أوجد قاعدة الدالة العكسية \\(f^{-1}(x)\\) ومجالها.",
     "examinerTip_ar": "الدالة العكسية يجب أن تكون وحيدة القيمة، لذا نختار الإشارة الموجبة للجذر \\(5 + \\sqrt{x - 3}\\) لأن \\(x \\ge 5\\)."
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Surface Integrals, the Divergence Theorem & Stokes' Theorem)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Surface Integrals, the Divergence Theorem & Stokes' Theorem)",
+    "q": "What is the minimum value of \\( f(x) = (x - 3)^2 + 7 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 3)^2 + 7 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 7 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 16 \\)"
+    ],
+    "o_ar": [
+      "\\( 7 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 16 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 3)^2 \\ge 0 \\), the minimum value is \\( 7 \\) achieved at \\( x = 3 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 7 \\) عند \\( x = 3 \\)."
   }
 ];
-
 });

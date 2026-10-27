@@ -272,6 +272,28 @@ D["apbc-overview"] = [
         "h": "احسب 10(0) + 1."
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (AP Calculus BC Exam Format & Units Overview)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (AP Calculus BC Exam Format & Units Overview)",
+    "q": "What is the minimum value of \\( f(x) = (x - 3)^2 + 5 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 3)^2 + 5 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 5 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 14 \\)"
+    ],
+    "o_ar": [
+      "\\( 5 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 14 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 3)^2 \\ge 0 \\), the minimum value is \\( 5 \\) achieved at \\( x = 3 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 5 \\) عند \\( x = 3 \\)."
   }
 ];
 
@@ -1106,6 +1128,28 @@ D["apbc-c2"] = [
         "h": "اطرح F(0) - F(0)."
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Unit 7BC · Logistic Models & Euler's Method)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Unit 7BC · Logistic Models & Euler's Method)",
+    "q": "What is the minimum value of \\( f(x) = (x - 6)^2 + 8 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 6)^2 + 8 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 8 \\)",
+      "\\( 6 \\)",
+      "\\( -6 \\)",
+      "\\( 44 \\)"
+    ],
+    "o_ar": [
+      "\\( 8 \\)",
+      "\\( 6 \\)",
+      "\\( -6 \\)",
+      "\\( 44 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 6)^2 \\ge 0 \\), the minimum value is \\( 8 \\) achieved at \\( x = 6 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 8 \\) عند \\( x = 6 \\)."
   }
 ];
 
@@ -1668,6 +1712,28 @@ D["apbc-c4"] = [
         "r": "علاقات فييت بين الجذور والمعاملات"
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Unit 9 · Polar Coordinates & Polar Area)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Unit 9 · Polar Coordinates & Polar Area)",
+    "q": "What is the minimum value of \\( f(x) = (x - 8)^2 + 5 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 8)^2 + 5 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 5 \\)",
+      "\\( 8 \\)",
+      "\\( -8 \\)",
+      "\\( 69 \\)"
+    ],
+    "o_ar": [
+      "\\( 5 \\)",
+      "\\( 8 \\)",
+      "\\( -8 \\)",
+      "\\( 69 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 8)^2 \\ge 0 \\), the minimum value is \\( 5 \\) achieved at \\( x = 8 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 5 \\) عند \\( x = 8 \\)."
   }
 ];
 
@@ -2535,5 +2601,4 @@ D["apbc-frq"] = [
     ]
   }
 ];
-
 });

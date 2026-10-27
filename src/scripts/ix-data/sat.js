@@ -266,6 +266,28 @@ D["sat-about"] = [
         "h": "احسب \\(4 + 5\\)."
       }
     ]
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Digital SAT Format &amp; Adaptive Testing Strategy)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Digital SAT Format &amp; Adaptive Testing Strategy)",
+    "q": "What is the minimum value of \\( f(x) = (x - 3)^2 + 5 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 3)^2 + 5 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 5 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 14 \\)"
+    ],
+    "o_ar": [
+      "\\( 5 \\)",
+      "\\( 3 \\)",
+      "\\( -3 \\)",
+      "\\( 14 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 3)^2 \\ge 0 \\), the minimum value is \\( 5 \\) achieved at \\( x = 3 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 5 \\) عند \\( x = 3 \\)."
   }
 ];
 
@@ -2145,6 +2167,28 @@ D["sat-geo"] = [
     "ti_ar": "وضع المصحح: إكمال المربع وإيجاد رأس القطع المكافئ (Area, Volume, Triangles, Circles &amp; Trigonometry)",
     "q_ar": "لتكن \\(f(x) = x^2 - 10x + 28\\). (أ) اكتب \\(f(x)\\) في صورة رأس القطع \\((x - h)^2 + k\\) وحدد القيمة الصغرى للدالة. (ب) حدد إحداثيات رأس القطع المكافئ والمقطع الصادي للمنحنى.",
     "examinerTip_ar": "في صورة الرأس \\(f(x) = a(x - h)^2 + k\\)، اعكس الإشارة داخل القوس المربع للحصول على \\(h = 5\\) واحتفظ بإشارة الحد الثابت الخارجي \\(k = 3\\)."
+  },
+  {
+    "t": "qc",
+    "ti": "Quick Check: Vertex & Minimum Analysis (Area, Volume, Triangles, Circles &amp; Trigonometry)",
+    "ti_ar": "فحص سريع: تحليل نقطة الرأس والقيمة الصغرى (Area, Volume, Triangles, Circles &amp; Trigonometry)",
+    "q": "What is the minimum value of \\( f(x) = (x - 5)^2 + 9 \\) over all real \\( x \\)?",
+    "q_ar": "ما هي القيمة الصغرى للدالة \\( f(x) = (x - 5)^2 + 9 \\) لكل \\( x \\in \\mathbb{R} \\)؟",
+    "o": [
+      "\\( 9 \\)",
+      "\\( 5 \\)",
+      "\\( -5 \\)",
+      "\\( 34 \\)"
+    ],
+    "o_ar": [
+      "\\( 9 \\)",
+      "\\( 5 \\)",
+      "\\( -5 \\)",
+      "\\( 34 \\)"
+    ],
+    "a": 0,
+    "ex": "Since \\( (x - 5)^2 \\ge 0 \\), the minimum value is \\( 9 \\) achieved at \\( x = 5 \\).",
+    "ex_ar": "بما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 9 \\) عند \\( x = 5 \\)."
   }
 ];
 
@@ -3408,5 +3452,4 @@ D["sat-condprob"] = [
     ]
   }
 ];
-
 });

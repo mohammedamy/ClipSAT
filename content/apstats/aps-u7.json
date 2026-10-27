@@ -1,0 +1,542 @@
+{
+  "id": "aps-u7",
+  "chapterNumber": "7",
+  "title": {
+    "en": "Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope",
+    "ar": "الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار"
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "igcse-tag",
+    "emoji": "📐",
+    "category": "AP Statistics Unit 7 — Student's t-Procedures & Slope Inference",
+    "badges": [
+      {
+        "text": "Core Mastery",
+        "className": "tier-e"
+      }
+    ],
+    "topics": [
+      "One-sample t-interval & t-test for μ (SE = s/√n, df = n - 1)",
+      "Matched-pairs t-test on mean difference μ_d vs. two-sample t-test",
+      "Two-sample t-statistic with SE = √(s₁²/n₁ + s₂²/n₂)",
+      "Confidence interval & t-test for regression slope β (df = n - 2)",
+      "Reading computer regression output (b₁, SE_{b₁}, s, R²)"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Comprehensive mastery of <strong>Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope</strong> (Inference for Quantitative Data: Means & Slopes), featuring interactive geometric visualization, first-principles derivations, graded worked examples, and progressive hints.",
+          "ar": "دراسة شاملة ومتكاملة لـ <strong>الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار</strong> مع مختبر تفاعلي وأمثلة محلولة وتدريبات متدرجة."
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 7.1 — Student's t-Inference for Means & Linear Regression Slope β",
+          "ar": "● تعريف 7.1 — الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار"
+        },
+        "body": {
+          "en": "<p>When the population standard deviation \\( \\sigma \\) is unknown, inference for a population mean uses Student's \\( t \\)-distribution with \\( t = \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}} \\) and \\( \\text{df} = n - 1 \\). For linear regression \\( \\mu_{y|x} = \\alpha + \\beta x \\) under the <strong>LINE conditions</strong> (Linear, Independent, Normal, Equal variance), the test statistic for \\( H_0: \\beta = 0 \\) is \\( t = \\frac{b_1}{\\text{SE}_{b_1}} \\) with \\( \\text{df} = n - 2 \\).</p>",
+          "ar": "<p>When the population standard deviation \\( \\sigma \\) is unknown, inference for a population mean uses Student's \\( t \\)-distribution with \\( t = \\frac{\\bar{x} - \\mu_0}{s/\\sqrt{n}} \\) and \\( \\text{df} = n - 1 \\). For linear regression \\( \\mu_{y|x} = \\alpha + \\beta x \\) under the <strong>LINE conditions</strong> (Linear, Independent, Normal, Equal variance), the test statistic for \\( H_0: \\beta = 0 \\) is \\( t = \\frac{b_1}{\\text{SE}_{b_1}} \\) with \\( \\text{df} = n - 2 \\).</p>"
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope — Coordinate Curve & Structural Analysis",
+          "xrange": [
+            -4,
+            6
+          ],
+          "yrange": [
+            -4,
+            8
+          ],
+          "fns": [
+            {
+              "fn": "(x - 2)*(x - 2) - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = (x - 2)² - 2"
+            },
+            {
+              "fn": "x + 2",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "g(x) = x + 2"
+            }
+          ],
+          "points": [
+            {
+              "x": 2,
+              "y": -2,
+              "label": "Vertex (2, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate representation of \\(f(x) = (x - 2)^2 - 2\\) and secant line \\(g(x) = x + 2\\) illustrating Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope.",
+          "ar": "تمثيل بياني يوضح المنحنى والمقاطع الأساسية في درس الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار."
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Interactive Explorer · Student's t-Distribution & Linear Regression Slope Inference Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر توزيع t والاستدلال الإحصائي لميل خط الانحدار"
+        },
+        "canvasId": "apsu7Canvas",
+        "ariaLabel": {
+          "en": "Student's t-Distribution & Linear Regression Slope Inference Lab interactive mathematical canvas",
+          "ar": "مختبر توزيع t والاستدلال الإحصائي لميل خط الانحدار لوحة رياضية تفاعلية"
+        },
+        "dataPanel": {
+          "btnId": "apsu7Canvas_dataBtn",
+          "panelId": "apsu7Canvas_dataPanel",
+          "descId": "apsu7Canvas_dataDesc",
+          "rowsId": "apsu7Canvas_dataRows",
+          "caption": {
+            "en": "Live numerical table for Student's t-Distribution & Linear Regression Slope Inference Lab",
+            "ar": "جدول القيم العددية لـ مختبر توزيع t والاستدلال الإحصائي لميل خط الانحدار"
+          },
+          "columns": [
+            {
+              "en": "Parameter / Metric",
+              "ar": "المتغير / المعيار"
+            },
+            {
+              "en": "Value",
+              "ar": "القيمة"
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "apsu7S0",
+            "label": {
+              "en": "Sample Slope <b>\\(b_1 =\\)</b>",
+              "ar": "Sample Slope <b>\\(b_1 =\\)</b>"
+            },
+            "min": 0.5,
+            "max": 3,
+            "value": 1.5,
+            "step": 0.25,
+            "valueDisplayId": "apsu7S0Val",
+            "ariaLabel": {
+              "en": "Sample Slope \\(b_1 =\\)",
+              "ar": "Sample Slope \\(b_1 =\\)"
+            }
+          },
+          {
+            "id": "apsu7S1",
+            "label": {
+              "en": "Intercept <b>\\(b_0 =\\)</b>",
+              "ar": "Intercept <b>\\(b_0 =\\)</b>"
+            },
+            "min": -2,
+            "max": 3,
+            "value": 0.5,
+            "step": 0.5,
+            "valueDisplayId": "apsu7S1Val",
+            "ariaLabel": {
+              "en": "Intercept \\(b_0 =\\)",
+              "ar": "Intercept \\(b_0 =\\)"
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "apsu7R0",
+            "label": {
+              "en": "Test Statistic \\(t = b_1 / SE_{b_1}\\)",
+              "ar": "Test Statistic \\(t = b_1 / SE_{b_1}\\)"
+            },
+            "colorClass": "indigo",
+            "value": "\\(t = 3.75\\)"
+          },
+          {
+            "id": "apsu7R1",
+            "label": {
+              "en": "Degrees of Freedom \\(n - 2\\)",
+              "ar": "Degrees of Freedom \\(n - 2\\)"
+            },
+            "colorClass": "amber",
+            "value": "\\(\\text{df} = 18\\)"
+          },
+          {
+            "id": "apsu7R2",
+            "label": {
+              "en": "Decision at \\(\\alpha = 0.05\\)",
+              "ar": "Decision at \\(\\alpha = 0.05\\)"
+            },
+            "colorClass": "teal",
+            "value": "Reject H₀ (β ≠ 0)"
+          }
+        ],
+        "note": {
+          "en": "Drag the sliders or directly manipulate the canvas to explore how changes in the parameters govern Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope.",
+          "ar": "حرّك المنزلقات أو تفاعل مباشرة مع اللوحة لاستكشاف العلاقات الرياضية في درس الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار."
+        },
+        "canvas3d": {
+          "btnId": "apsu7Canvas_3dBtn",
+          "wrapId": "apsu7Canvas_3dWrap",
+          "hintId": "apsu7Canvas_3dHint",
+          "btnLabel": "🧊 View Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope in 3D",
+          "ariaLabel": {
+            "en": "Interactive 3D visualization for Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope. Drag to rotate.",
+            "ar": "عرض ثلاثي الأبعاد تفاعلي لدرس الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار. اسحب للتدوير."
+          }
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "triangle",
+          "A": [
+            0,
+            0
+          ],
+          "B": [
+            12,
+            0
+          ],
+          "C": [
+            12,
+            5
+          ],
+          "labels": {
+            "A": "A",
+            "B": "C",
+            "C": "B"
+          },
+          "sides": {
+            "c": "21",
+            "a": "28",
+            "b": "35"
+          },
+          "rightAt": "B"
+        },
+        "caption": {
+          "en": "Orthogonal vector decomposition \\((21)^2 + (28)^2 = (35)^2\\) for Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope.",
+          "ar": "التحليل المتعامد \\((21)^2 + (28)^2 = (35)^2\\) في الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار."
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Key Principle 7.1",
+              "ar": "المبدأ الأساسي 7.1"
+            },
+            "value": {
+              "en": "One-sample t-interval & t-test for μ (SE = s/√n, df = n - 1)",
+              "ar": "One-sample t-interval & t-test for μ (SE = s/√n, df = n - 1)"
+            }
+          },
+          {
+            "label": {
+              "en": "Key Principle 7.2",
+              "ar": "المبدأ الأساسي 7.2"
+            },
+            "value": {
+              "en": "Matched-pairs t-test on mean difference μ_d vs. two-sample t-test",
+              "ar": "Matched-pairs t-test on mean difference μ_d vs. two-sample t-test"
+            }
+          },
+          {
+            "label": {
+              "en": "Key Principle 7.3",
+              "ar": "المبدأ الأساسي 7.3"
+            },
+            "value": {
+              "en": "Two-sample t-statistic with SE = √(s₁²/n₁ + s₂²/n₂)",
+              "ar": "Two-sample t-statistic with SE = √(s₁²/n₁ + s₂²/n₂)"
+            }
+          },
+          {
+            "label": {
+              "en": "Key Principle 7.4",
+              "ar": "المبدأ الأساسي 7.4"
+            },
+            "value": {
+              "en": "Confidence interval & t-test for regression slope β (df = n - 2)",
+              "ar": "Confidence interval & t-test for regression slope β (df = n - 2)"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
+          "ar": "◆ البرهان والاشتقاق الرياضي (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)"
+        },
+        "body": {
+          "en": "<p><strong>First-Principles Justification:</strong> Completing the square on \\( ax^2 + bx + c \\) gives \\( a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\), which simultaneously establishes the vertex coordinates, discriminant condition \\( \\Delta = b^2 - 4ac \\), and quadratic root formula.</p>",
+          "ar": "<p><strong>البرهان الجبري:</strong> بإكمال المربع للمقدار \\(ax^2 + bx + c\\) نحصل على صيغة الرأس والمميز \\(\\Delta = b^2 - 4ac\\) بدقة تامة.</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 7.A — Foundational Formulation",
+          "ar": "مثال محلول 7.A — تطبيق أساسي"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Express \\( f(x) = x^2 - 16x + 71 \\) in completed-square vertex form and find its minimum value.</p><p><strong>Solution:</strong> Halving \\( -16 \\) gives \\( -8 \\), so \\( f(x) = (x - 8)^2 - 64 + 71 = (x - 8)^2 + 7 \\). Minimum value is \\( 7 \\) at \\( x = 8 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد صيغة إكمال المربع للدالة \\( f(x) = x^2 - 16x + 71 \\).</p><p><strong>الحل:</strong> \\( f(x) = (x - 8)^2 + 7 \\) والقيمة الصغرى هي \\( 7 \\) عند \\( x = 8 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 7.B — Multi-Step Tangency & Discriminant",
+          "ar": "مثال محلول 7.B — شرط التماس والمميز"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Find the value of \\( k \\) for which \\( y = 2x + k \\) is tangent to \\( y = x^2 - 16x + 69 \\).</p><p><strong>Solution:</strong> Equating gives \\( x^2 - 18x + (69 - k) = 0 \\). Setting \\( \\Delta = (-18)^2 - 4(69 - k) = 0 \\) yields \\( k = -12 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد قيمة \\( k \\) التي تجعل المستقيم \\( y = 2x + k \\) مماساً للمنحنى \\( y = x^2 - 16x + 69 \\).</p><p><strong>الحل:</strong> بوضع المميز \\( \\Delta = 0 \\) نجد \\( k = -12 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 7.C — Rate of Change & Tangent Slope",
+          "ar": "مثال محلول 7.C — معدل التغير وميل المماس"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Find the instantaneous rate of change of \\( g(x) = x^3 - 24x^2 + 192x + 7 \\) at \\( x = 10 \\).</p><p><strong>Solution:</strong> \\( g'(x) = 3(x - 8)^2 \\), so \\( g'(10) = 3(2)^2 = 12 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد معدل التغير اللحظي للدالة \\( g(x) = x^3 - 24x^2 + 192x + 7 \\) عند \\( x = 10 \\).</p><p><strong>الحل:</strong> \\( g'(10) = 3(2)^2 = 12 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 7.D — Synthesis & Definite Accumulation",
+          "ar": "مثال محلول 7.D — مسألة شاملة"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Evaluate \\( \\int_0^2 (3x^2 + 16x + 7)\\,\\mathrm{d}x \\).</p><p><strong>Solution:</strong> \\( \\left[x^3 + 8x^2 + 7x\\right]_0^2 = 8 + 32 + 14 = 54 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> احسب \\( \\int_0^2 (3x^2 + 16x + 7)\\,\\mathrm{d}x \\).</p><p><strong>الحل:</strong> الناتج هو \\( 8 + 32 + 14 = 54 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Common Trap — Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope",
+          "ar": "خطأ شائع — الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار"
+        },
+        "body": {
+          "en": "<p>Always verify domain restrictions, non-zero denominators, and large-sample conditions before applying closed-form formulas.</p>",
+          "ar": "<p>تحقق دائماً من قيود المجال وشروط تطبيق القوانين قبل التعويض المباشر.</p>"
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope)",
+          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار)"
+        },
+        "columns": [
+          {
+            "en": "Error Pattern",
+            "ar": "الخطأ الشائع"
+          },
+          {
+            "en": "Incorrect Working",
+            "ar": "الخطوة الخاطئة"
+          },
+          {
+            "en": "Correct Method",
+            "ar": "الطريقة الصحيحة"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Term-by-term cancellation",
+              "ar": "اختصار حدود مجموعه"
+            },
+            {
+              "en": "\\( \\frac{x^2 - 9}{x - 3} \\to x - 3 \\)",
+              "ar": "\\( \\frac{x^2 - 9}{x - 3} \\to x - 3 \\)"
+            },
+            {
+              "en": "Factor first: \\( \\frac{(x-3)(x+3)}{x-3} = x + 3 \\) (\\( x \\neq 3 \\))",
+              "ar": "حلل أولاً ثم اختصر العوامل المشتركة"
+            }
+          ],
+          [
+            {
+              "en": "Sign error in completing square",
+              "ar": "خطأ إشارة عند إكمال المربع"
+            },
+            {
+              "en": "\\( (x - h)^2 + h^2 + c \\)",
+              "ar": "\\( (x - h)^2 + h^2 + c \\)"
+            },
+            {
+              "en": "Subtract \\( h^2 \\): \\( (x - h)^2 - h^2 + c \\)",
+              "ar": "اطرح \\( h^2 \\): \\( (x - h)^2 - h^2 + c \\)"
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "Examiner's Secret — Unit 7 · Inference for Quantitative Data: Means, Paired t & Regression Slope",
+          "ar": "سر المصحح — الوحدة 7 · الاستدلال للبيانات الكمية: اختبارات t للمتوسطات وميل خط الانحدار"
+        },
+        "body": {
+          "en": "<p>Write explicit method steps (M1) before substituting numerical values so partial credit is secured even if an arithmetic slip occurs.</p>",
+          "ar": "<p>اكتب خطوات القانون (M1) بوضوح قبل التعويض العددي لضمان درجات الخطوات كاملة.</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 1]</strong> Given \\( f(x) = (x - 9)^2 + 8 \\), evaluate \\( f(18) \\).",
+          "ar": "<strong>[تدريب 1]</strong> إذا كانت \\( f(x) = (x - 9)^2 + 8 \\)، فاحسب قيمة \\( f(18) \\)."
+        },
+        "hints": [
+          {
+            "en": "Substitute \\( x = 18 \\) into \\( (x - 9)^2 + 8 \\).",
+            "ar": "عوّض عن \\( x = 18 \\) في القاعدة."
+          },
+          {
+            "en": "Simplify the squared term: \\( (18 - 9)^2 = 9^2 = 81 \\).",
+            "ar": "بسّط التربيع: \\( 9^2 = 81 \\)."
+          },
+          {
+            "en": "Add \\( 81 + 8 \\) to obtain the final answer.",
+            "ar": "اجمع \\( 81 + 8 \\) للحصول على الناتج."
+          }
+        ],
+        "solution": {
+          "en": "Substituting \\( x = 18 \\) gives \\( f(18) = (9)^2 + 8 = 81 + 8 = 89 \\).",
+          "ar": "بالتعويض عن \\( x = 18 \\) نحصل على \\( (9)^2 + 8 = 89 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 2]</strong> Given \\( f(x) = (x - 10)^2 + 9 \\), evaluate \\( f(20) \\).",
+          "ar": "<strong>[تدريب 2]</strong> إذا كانت \\( f(x) = (x - 10)^2 + 9 \\)، فاحسب قيمة \\( f(20) \\)."
+        },
+        "hints": [
+          {
+            "en": "Substitute \\( x = 20 \\) into \\( (x - 10)^2 + 9 \\).",
+            "ar": "عوّض عن \\( x = 20 \\) في القاعدة."
+          },
+          {
+            "en": "Simplify the squared term: \\( (20 - 10)^2 = 10^2 = 100 \\).",
+            "ar": "بسّط التربيع: \\( 10^2 = 100 \\)."
+          },
+          {
+            "en": "Add \\( 100 + 9 \\) to obtain the final answer.",
+            "ar": "اجمع \\( 100 + 9 \\) للحصول على الناتج."
+          }
+        ],
+        "solution": {
+          "en": "Substituting \\( x = 20 \\) gives \\( f(20) = (10)^2 + 9 = 100 + 9 = 109 \\).",
+          "ar": "بالتعويض عن \\( x = 20 \\) نحصل على \\( (10)^2 + 9 = 109 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3]</strong> Given \\( f(x) = (x - 11)^2 + 10 \\), evaluate \\( f(22) \\).",
+          "ar": "<strong>[تدريب 3]</strong> إذا كانت \\( f(x) = (x - 11)^2 + 10 \\)، فاحسب قيمة \\( f(22) \\)."
+        },
+        "hints": [
+          {
+            "en": "Substitute \\( x = 22 \\) into \\( (x - 11)^2 + 10 \\).",
+            "ar": "عوّض عن \\( x = 22 \\) في القاعدة."
+          },
+          {
+            "en": "Simplify the squared term: \\( (22 - 11)^2 = 11^2 = 121 \\).",
+            "ar": "بسّط التربيع: \\( 11^2 = 121 \\)."
+          },
+          {
+            "en": "Add \\( 121 + 10 \\) to obtain the final answer.",
+            "ar": "اجمع \\( 121 + 10 \\) للحصول على الناتج."
+          }
+        ],
+        "solution": {
+          "en": "Substituting \\( x = 22 \\) gives \\( f(22) = (11)^2 + 10 = 121 + 10 = 131 \\).",
+          "ar": "بالتعويض عن \\( x = 22 \\) نحصل على \\( (11)^2 + 10 = 131 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 4]</strong> Given \\( f(x) = (x - 12)^2 + 11 \\), evaluate \\( f(24) \\).",
+          "ar": "<strong>[تدريب 4]</strong> إذا كانت \\( f(x) = (x - 12)^2 + 11 \\)، فاحسب قيمة \\( f(24) \\)."
+        },
+        "hints": [
+          {
+            "en": "Substitute \\( x = 24 \\) into \\( (x - 12)^2 + 11 \\).",
+            "ar": "عوّض عن \\( x = 24 \\) في القاعدة."
+          },
+          {
+            "en": "Simplify the squared term: \\( (24 - 12)^2 = 12^2 = 144 \\).",
+            "ar": "بسّط التربيع: \\( 12^2 = 144 \\)."
+          },
+          {
+            "en": "Add \\( 144 + 11 \\) to obtain the final answer.",
+            "ar": "اجمع \\( 144 + 11 \\) للحصول على الناتج."
+          }
+        ],
+        "solution": {
+          "en": "Substituting \\( x = 24 \\) gives \\( f(24) = (12)^2 + 11 = 144 + 11 = 155 \\).",
+          "ar": "بالتعويض عن \\( x = 24 \\) نحصل على \\( (12)^2 + 11 = 155 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 5]</strong> Given \\( f(x) = (x - 13)^2 + 12 \\), evaluate \\( f(26) \\).",
+          "ar": "<strong>[تدريب 5]</strong> إذا كانت \\( f(x) = (x - 13)^2 + 12 \\)، فاحسب قيمة \\( f(26) \\)."
+        },
+        "hints": [
+          {
+            "en": "Substitute \\( x = 26 \\) into \\( (x - 13)^2 + 12 \\).",
+            "ar": "عوّض عن \\( x = 26 \\) في القاعدة."
+          },
+          {
+            "en": "Simplify the squared term: \\( (26 - 13)^2 = 13^2 = 169 \\).",
+            "ar": "بسّط التربيع: \\( 13^2 = 169 \\)."
+          },
+          {
+            "en": "Add \\( 169 + 12 \\) to obtain the final answer.",
+            "ar": "اجمع \\( 169 + 12 \\) للحصول على الناتج."
+          }
+        ],
+        "solution": {
+          "en": "Substituting \\( x = 26 \\) gives \\( f(26) = (13)^2 + 12 = 169 + 12 = 181 \\).",
+          "ar": "بالتعويض عن \\( x = 26 \\) نحصل على \\( (13)^2 + 12 = 181 \\)."
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true,
+    "domains": [
+      "Inference for Quantitative Data: Means & Slopes"
+    ]
+  }
+}

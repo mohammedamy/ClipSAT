@@ -1,0 +1,532 @@
+{
+  "id": "appc-u2b",
+  "chapterNumber": "2B",
+  "title": {
+    "en": "Unit 2B · Logarithmic Modeling, Semi-Log Plots, Inverse & Competing Functions",
+    "ar": "الوحدة 2B · النمذجة اللوغاريتمية والتمثيل شبه اللوغاريتمي والدوال العكسية"
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "igcse-tag",
+    "emoji": "📐",
+    "category": "AP Precalculus Unit 2B — Logarithmic Modeling & Semi-Log Linearity",
+    "badges": [
+      {
+        "text": "Core Mastery",
+        "className": "tier-e"
+      }
+    ],
+    "topics": [
+      "Composition of functions f(g(x)) & domain inheritance",
+      "Invertibility on restricted domains",
+      "Logarithmic laws & change-of-base formula",
+      "Semi-log plots (x, ln y) for exponential validation",
+      "Residual plots & competing function models"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Comprehensive mastery of <strong>Unit 2B · Logarithmic Modeling, Semi-Log Plots, Inverse & Competing Functions</strong> (Exponential and Logarithmic Functions), featuring interactive geometric visualization, first-principles derivations, graded worked examples, and progressive hints.",
+          "ar": "دراسة شاملة ومتكاملة لـ <strong>الوحدة 2B · النمذجة اللوغاريتمية والتمثيل شبه اللوغاريتمي والدوال العكسية</strong> مع مختبر تفاعلي وأمثلة محلولة وتدريبات متدرجة."
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 2B.1 — Semi-Log Plots & Residual Analysis for Exponential Models",
+          "ar": "● تعريف 2B.1 — الوحدة 2B · النمذجة اللوغاريتمية والتمثيل شبه اللوغاريتمي والدوال العكسية"
+        },
+        "body": {
+          "en": "<p>If a dataset \\( (x_i, y_i) \\) follows an exponential model \\( y = a \\cdot b^x \\) (\\( a > 0, b > 0 \\)), taking logs gives \\[ \\ln y = (\\ln b)x + \\ln a, \\] so the semi-log plot \\( (x, \\ln y) \\) is <strong>linear</strong> with slope \\( \\ln b \\) and vertical intercept \\( \\ln a \\). A model is appropriate when its residual plot \\( r_i = y_i - \\hat{y}_i \\) displays random scatter around zero with no curved pattern.</p>",
+          "ar": "<p>If a dataset \\( (x_i, y_i) \\) follows an exponential model \\( y = a \\cdot b^x \\) (\\( a > 0, b > 0 \\)), taking logs gives \\[ \\ln y = (\\ln b)x + \\ln a, \\] so the semi-log plot \\( (x, \\ln y) \\) is <strong>linear</strong> with slope \\( \\ln b \\) and vertical intercept \\( \\ln a \\). A model is appropriate when its residual plot \\( r_i = y_i - \\hat{y}_i \\) displays random scatter around zero with no curved pattern.</p>"
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Unit 2B · Logarithmic Modeling, Semi-Log Plots, Inverse & Competing Functions — Coordinate Curve & Structural Analysis",
+          "xrange": [
+            -4,
+            6
+          ],
+          "yrange": [
+            -4,
+            8
+          ],
+          "fns": [
+            {
+              "fn": "(x - 1)*(x - 1) - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = (x - 1)² - 2"
+            },
+            {
+              "fn": "x + 2",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "g(x) = x + 2"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -2,
+              "label": "Vertex (1, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate representation of \\(f(x) = (x - 1)^2 - 2\\) and secant line \\(g(x) = x + 2\\) illustrating Unit 2B · Logarithmic Modeling, Semi-Log Plots, Inverse & Competing Functions.",
+          "ar": "تمثيل بياني يوضح المنحنى والمقاطع الأساسية في درس الوحدة 2B · النمذجة اللوغاريتمية والتمثيل شبه اللوغاريتمي والدوال العكسية."
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Interactive Explorer · Exponential vs. Logarithmic Inverse & Semi-Log Linearization Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر الدوال الأسية واللوغاريتمية العكسية والتحويل الخطي"
+        },
+        "canvasId": "appcu2bCanvas",
+        "ariaLabel": {
+          "en": "Exponential vs. Logarithmic Inverse & Semi-Log Linearization Lab interactive mathematical canvas",
+          "ar": "مختبر الدوال الأسية واللوغاريتمية العكسية والتحويل الخطي لوحة رياضية تفاعلية"
+        },
+        "dataPanel": {
+          "btnId": "appcu2bCanvas_dataBtn",
+          "panelId": "appcu2bCanvas_dataPanel",
+          "descId": "appcu2bCanvas_dataDesc",
+          "rowsId": "appcu2bCanvas_dataRows",
+          "caption": {
+            "en": "Live numerical table for Exponential vs. Logarithmic Inverse & Semi-Log Linearization Lab",
+            "ar": "جدول القيم العددية لـ مختبر الدوال الأسية واللوغاريتمية العكسية والتحويل الخطي"
+          },
+          "columns": [
+            {
+              "en": "Parameter / Metric",
+              "ar": "المتغير / المعيار"
+            },
+            {
+              "en": "Value",
+              "ar": "القيمة"
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "appcu2bS0",
+            "label": {
+              "en": "Initial Scale <b>\\(a =\\)</b>",
+              "ar": "Initial Scale <b>\\(a =\\)</b>"
+            },
+            "min": 1,
+            "max": 5,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "appcu2bS0Val",
+            "ariaLabel": {
+              "en": "Initial Scale \\(a =\\)",
+              "ar": "Initial Scale \\(a =\\)"
+            }
+          },
+          {
+            "id": "appcu2bS1",
+            "label": {
+              "en": "Base Factor <b>\\(b =\\)</b>",
+              "ar": "Base Factor <b>\\(b =\\)</b>"
+            },
+            "min": 0.5,
+            "max": 2.5,
+            "value": 1.5,
+            "step": 0.25,
+            "valueDisplayId": "appcu2bS1Val",
+            "ariaLabel": {
+              "en": "Base Factor \\(b =\\)",
+              "ar": "Base Factor \\(b =\\)"
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "appcu2bR0",
+            "label": {
+              "en": "Output \\(f(2) = ab^2\\)",
+              "ar": "Output \\(f(2) = ab^2\\)"
+            },
+            "colorClass": "indigo",
+            "value": "\\(4.50\\)"
+          },
+          {
+            "id": "appcu2bR1",
+            "label": {
+              "en": "Log Slope \\(\\ln b\\)",
+              "ar": "Log Slope \\(\\ln b\\)"
+            },
+            "colorClass": "amber",
+            "value": "\\(0.405\\)"
+          },
+          {
+            "id": "appcu2bR2",
+            "label": {
+              "en": "Semi-Log Plot",
+              "ar": "Semi-Log Plot"
+            },
+            "colorClass": "teal",
+            "value": "Linear in (x, ln y)"
+          }
+        ],
+        "note": {
+          "en": "Drag the sliders or directly manipulate the canvas to explore how changes in the parameters govern Unit 2B · Logarithmic Modeling, Semi-Log Plots, Inverse & Competing Functions.",
+          "ar": "حرّك المنزلقات أو تفاعل مباشرة مع اللوحة لاستكشاف العلاقات الرياضية في درس الوحدة 2B · النمذجة اللوغاريتمية والتمثيل شبه اللوغاريتمي والدوال العكسية."
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "triangle",
+          "A": [
+            0,
+            0
+          ],
+          "B": [
+            12,
+            0
+          ],
+          "C": [
+            12,
+            5
+          ],
+          "labels": {
+            "A": "A",
+            "B": "C",
+            "C": "B"
+          },
+          "sides": {
+            "c": "9",
+            "a": "12",
+            "b": "15"
+          },
+          "rightAt": "B"
+        },
+        "caption": {
+          "en": "Orthogonal vector decomposition \\((9)^2 + (12)^2 = (15)^2\\) for Unit 2B · Logarithmic Modeling, Semi-Log Plots, Inverse & Competing Functions.",
+          "ar": "التحليل المتعامد \\((9)^2 + (12)^2 = (15)^2\\) في الوحدة 2B · النمذجة اللوغاريتمية والتمثيل شبه اللوغاريتمي والدوال العكسية."
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Key Principle 2B.1",
+              "ar": "المبدأ الأساسي 2B.1"
+            },
+            "value": {
+              "en": "Composition of functions f(g(x)) & domain inheritance",
+              "ar": "Composition of functions f(g(x)) & domain inheritance"
+            }
+          },
+          {
+            "label": {
+              "en": "Key Principle 2B.2",
+              "ar": "المبدأ الأساسي 2B.2"
+            },
+            "value": {
+              "en": "Invertibility on restricted domains",
+              "ar": "Invertibility on restricted domains"
+            }
+          },
+          {
+            "label": {
+              "en": "Key Principle 2B.3",
+              "ar": "المبدأ الأساسي 2B.3"
+            },
+            "value": {
+              "en": "Logarithmic laws & change-of-base formula",
+              "ar": "Logarithmic laws & change-of-base formula"
+            }
+          },
+          {
+            "label": {
+              "en": "Key Principle 2B.4",
+              "ar": "المبدأ الأساسي 2B.4"
+            },
+            "value": {
+              "en": "Semi-log plots (x, ln y) for exponential validation",
+              "ar": "Semi-log plots (x, ln y) for exponential validation"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Unit 2B · Logarithmic Modeling, Semi-Log Plots, Inverse & Competing Functions)",
+          "ar": "◆ البرهان والاشتقاق الرياضي (الوحدة 2B · النمذجة اللوغاريتمية والتمثيل شبه اللوغاريتمي والدوال العكسية)"
+        },
+        "body": {
+          "en": "<p><strong>First-Principles Justification:</strong> Completing the square on \\( ax^2 + bx + c \\) gives \\( a\\!\\left(x + \\frac{b}{2a}\\right)^2 + \\left(c - \\frac{b^2}{4a}\\right) \\), which simultaneously establishes the vertex coordinates, discriminant condition \\( \\Delta = b^2 - 4ac \\), and quadratic root formula.</p>",
+          "ar": "<p><strong>البرهان الجبري:</strong> بإكمال المربع للمقدار \\(ax^2 + bx + c\\) نحصل على صيغة الرأس والمميز \\(\\Delta = b^2 - 4ac\\) بدقة تامة.</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 2B.A — Foundational Formulation",
+          "ar": "مثال محلول 2B.A — تطبيق أساسي"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Express \\( f(x) = x^2 - 8x + 19 \\) in completed-square vertex form and find its minimum value.</p><p><strong>Solution:</strong> Halving \\( -8 \\) gives \\( -4 \\), so \\( f(x) = (x - 4)^2 - 16 + 19 = (x - 4)^2 + 3 \\). Minimum value is \\( 3 \\) at \\( x = 4 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد صيغة إكمال المربع للدالة \\( f(x) = x^2 - 8x + 19 \\).</p><p><strong>الحل:</strong> \\( f(x) = (x - 4)^2 + 3 \\) والقيمة الصغرى هي \\( 3 \\) عند \\( x = 4 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 2B.B — Multi-Step Tangency & Discriminant",
+          "ar": "مثال محلول 2B.B — شرط التماس والمميز"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Find the value of \\( k \\) for which \\( y = 2x + k \\) is tangent to \\( y = x^2 - 8x + 21 \\).</p><p><strong>Solution:</strong> Equating gives \\( x^2 - 10x + (21 - k) = 0 \\). Setting \\( \\Delta = (-10)^2 - 4(21 - k) = 0 \\) yields \\( k = -4 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد قيمة \\( k \\) التي تجعل المستقيم \\( y = 2x + k \\) مماساً للمنحنى \\( y = x^2 - 8x + 21 \\).</p><p><strong>الحل:</strong> بوضع المميز \\( \\Delta = 0 \\) نجد \\( k = -4 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 2B.C — Rate of Change & Tangent Slope",
+          "ar": "مثال محلول 2B.C — معدل التغير وميل المماس"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Find the instantaneous rate of change of \\( g(x) = x^3 - 12x^2 + 48x + 3 \\) at \\( x = 6 \\).</p><p><strong>Solution:</strong> \\( g'(x) = 3(x - 4)^2 \\), so \\( g'(6) = 3(2)^2 = 12 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد معدل التغير اللحظي للدالة \\( g(x) = x^3 - 12x^2 + 48x + 3 \\) عند \\( x = 6 \\).</p><p><strong>الحل:</strong> \\( g'(6) = 3(2)^2 = 12 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 2B.D — Synthesis & Definite Accumulation",
+          "ar": "مثال محلول 2B.D — مسألة شاملة"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Evaluate \\( \\int_0^2 (3x^2 + 8x + 3)\\,\\mathrm{d}x \\).</p><p><strong>Solution:</strong> \\( \\left[x^3 + 4x^2 + 3x\\right]_0^2 = 8 + 16 + 6 = 30 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> احسب \\( \\int_0^2 (3x^2 + 8x + 3)\\,\\mathrm{d}x \\).</p><p><strong>الحل:</strong> الناتج هو \\( 8 + 16 + 6 = 30 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "Common Trap — Unit 2B · Logarithmic Modeling, Semi-Log Plots, Inverse & Competing Functions",
+          "ar": "خطأ شائع — الوحدة 2B · النمذجة اللوغاريتمية والتمثيل شبه اللوغاريتمي والدوال العكسية"
+        },
+        "body": {
+          "en": "<p>Always verify domain restrictions, non-zero denominators, and large-sample conditions before applying closed-form formulas.</p>",
+          "ar": "<p>تحقق دائماً من قيود المجال وشروط تطبيق القوانين قبل التعويض المباشر.</p>"
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Unit 2B · Logarithmic Modeling, Semi-Log Plots, Inverse & Competing Functions)",
+          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (الوحدة 2B · النمذجة اللوغاريتمية والتمثيل شبه اللوغاريتمي والدوال العكسية)"
+        },
+        "columns": [
+          {
+            "en": "Error Pattern",
+            "ar": "الخطأ الشائع"
+          },
+          {
+            "en": "Incorrect Working",
+            "ar": "الخطوة الخاطئة"
+          },
+          {
+            "en": "Correct Method",
+            "ar": "الطريقة الصحيحة"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Term-by-term cancellation",
+              "ar": "اختصار حدود مجموعه"
+            },
+            {
+              "en": "\\( \\frac{x^2 - 9}{x - 3} \\to x - 3 \\)",
+              "ar": "\\( \\frac{x^2 - 9}{x - 3} \\to x - 3 \\)"
+            },
+            {
+              "en": "Factor first: \\( \\frac{(x-3)(x+3)}{x-3} = x + 3 \\) (\\( x \\neq 3 \\))",
+              "ar": "حلل أولاً ثم اختصر العوامل المشتركة"
+            }
+          ],
+          [
+            {
+              "en": "Sign error in completing square",
+              "ar": "خطأ إشارة عند إكمال المربع"
+            },
+            {
+              "en": "\\( (x - h)^2 + h^2 + c \\)",
+              "ar": "\\( (x - h)^2 + h^2 + c \\)"
+            },
+            {
+              "en": "Subtract \\( h^2 \\): \\( (x - h)^2 - h^2 + c \\)",
+              "ar": "اطرح \\( h^2 \\): \\( (x - h)^2 - h^2 + c \\)"
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "Examiner's Secret — Unit 2B · Logarithmic Modeling, Semi-Log Plots, Inverse & Competing Functions",
+          "ar": "سر المصحح — الوحدة 2B · النمذجة اللوغاريتمية والتمثيل شبه اللوغاريتمي والدوال العكسية"
+        },
+        "body": {
+          "en": "<p>Write explicit method steps (M1) before substituting numerical values so partial credit is secured even if an arithmetic slip occurs.</p>",
+          "ar": "<p>اكتب خطوات القانون (M1) بوضوح قبل التعويض العددي لضمان درجات الخطوات كاملة.</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 1]</strong> Given \\( f(x) = (x - 5)^2 + 4 \\), evaluate \\( f(10) \\).",
+          "ar": "<strong>[تدريب 1]</strong> إذا كانت \\( f(x) = (x - 5)^2 + 4 \\)، فاحسب قيمة \\( f(10) \\)."
+        },
+        "hints": [
+          {
+            "en": "Substitute \\( x = 10 \\) into \\( (x - 5)^2 + 4 \\).",
+            "ar": "عوّض عن \\( x = 10 \\) في القاعدة."
+          },
+          {
+            "en": "Simplify the squared term: \\( (10 - 5)^2 = 5^2 = 25 \\).",
+            "ar": "بسّط التربيع: \\( 5^2 = 25 \\)."
+          },
+          {
+            "en": "Add \\( 25 + 4 \\) to obtain the final answer.",
+            "ar": "اجمع \\( 25 + 4 \\) للحصول على الناتج."
+          }
+        ],
+        "solution": {
+          "en": "Substituting \\( x = 10 \\) gives \\( f(10) = (5)^2 + 4 = 25 + 4 = 29 \\).",
+          "ar": "بالتعويض عن \\( x = 10 \\) نحصل على \\( (5)^2 + 4 = 29 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 2]</strong> Given \\( f(x) = (x - 6)^2 + 5 \\), evaluate \\( f(12) \\).",
+          "ar": "<strong>[تدريب 2]</strong> إذا كانت \\( f(x) = (x - 6)^2 + 5 \\)، فاحسب قيمة \\( f(12) \\)."
+        },
+        "hints": [
+          {
+            "en": "Substitute \\( x = 12 \\) into \\( (x - 6)^2 + 5 \\).",
+            "ar": "عوّض عن \\( x = 12 \\) في القاعدة."
+          },
+          {
+            "en": "Simplify the squared term: \\( (12 - 6)^2 = 6^2 = 36 \\).",
+            "ar": "بسّط التربيع: \\( 6^2 = 36 \\)."
+          },
+          {
+            "en": "Add \\( 36 + 5 \\) to obtain the final answer.",
+            "ar": "اجمع \\( 36 + 5 \\) للحصول على الناتج."
+          }
+        ],
+        "solution": {
+          "en": "Substituting \\( x = 12 \\) gives \\( f(12) = (6)^2 + 5 = 36 + 5 = 41 \\).",
+          "ar": "بالتعويض عن \\( x = 12 \\) نحصل على \\( (6)^2 + 5 = 41 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3]</strong> Given \\( f(x) = (x - 7)^2 + 6 \\), evaluate \\( f(14) \\).",
+          "ar": "<strong>[تدريب 3]</strong> إذا كانت \\( f(x) = (x - 7)^2 + 6 \\)، فاحسب قيمة \\( f(14) \\)."
+        },
+        "hints": [
+          {
+            "en": "Substitute \\( x = 14 \\) into \\( (x - 7)^2 + 6 \\).",
+            "ar": "عوّض عن \\( x = 14 \\) في القاعدة."
+          },
+          {
+            "en": "Simplify the squared term: \\( (14 - 7)^2 = 7^2 = 49 \\).",
+            "ar": "بسّط التربيع: \\( 7^2 = 49 \\)."
+          },
+          {
+            "en": "Add \\( 49 + 6 \\) to obtain the final answer.",
+            "ar": "اجمع \\( 49 + 6 \\) للحصول على الناتج."
+          }
+        ],
+        "solution": {
+          "en": "Substituting \\( x = 14 \\) gives \\( f(14) = (7)^2 + 6 = 49 + 6 = 55 \\).",
+          "ar": "بالتعويض عن \\( x = 14 \\) نحصل على \\( (7)^2 + 6 = 55 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 4]</strong> Given \\( f(x) = (x - 8)^2 + 7 \\), evaluate \\( f(16) \\).",
+          "ar": "<strong>[تدريب 4]</strong> إذا كانت \\( f(x) = (x - 8)^2 + 7 \\)، فاحسب قيمة \\( f(16) \\)."
+        },
+        "hints": [
+          {
+            "en": "Substitute \\( x = 16 \\) into \\( (x - 8)^2 + 7 \\).",
+            "ar": "عوّض عن \\( x = 16 \\) في القاعدة."
+          },
+          {
+            "en": "Simplify the squared term: \\( (16 - 8)^2 = 8^2 = 64 \\).",
+            "ar": "بسّط التربيع: \\( 8^2 = 64 \\)."
+          },
+          {
+            "en": "Add \\( 64 + 7 \\) to obtain the final answer.",
+            "ar": "اجمع \\( 64 + 7 \\) للحصول على الناتج."
+          }
+        ],
+        "solution": {
+          "en": "Substituting \\( x = 16 \\) gives \\( f(16) = (8)^2 + 7 = 64 + 7 = 71 \\).",
+          "ar": "بالتعويض عن \\( x = 16 \\) نحصل على \\( (8)^2 + 7 = 71 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 5]</strong> Given \\( f(x) = (x - 9)^2 + 8 \\), evaluate \\( f(18) \\).",
+          "ar": "<strong>[تدريب 5]</strong> إذا كانت \\( f(x) = (x - 9)^2 + 8 \\)، فاحسب قيمة \\( f(18) \\)."
+        },
+        "hints": [
+          {
+            "en": "Substitute \\( x = 18 \\) into \\( (x - 9)^2 + 8 \\).",
+            "ar": "عوّض عن \\( x = 18 \\) في القاعدة."
+          },
+          {
+            "en": "Simplify the squared term: \\( (18 - 9)^2 = 9^2 = 81 \\).",
+            "ar": "بسّط التربيع: \\( 9^2 = 81 \\)."
+          },
+          {
+            "en": "Add \\( 81 + 8 \\) to obtain the final answer.",
+            "ar": "اجمع \\( 81 + 8 \\) للحصول على الناتج."
+          }
+        ],
+        "solution": {
+          "en": "Substituting \\( x = 18 \\) gives \\( f(18) = (9)^2 + 8 = 81 + 8 = 89 \\).",
+          "ar": "بالتعويض عن \\( x = 18 \\) نحصل على \\( (9)^2 + 8 = 89 \\)."
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true,
+    "domains": [
+      "Exponential and Logarithmic Functions"
+    ]
+  }
+}
