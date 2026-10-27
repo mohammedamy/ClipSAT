@@ -253,9 +253,30 @@
 
     R({viewId:'mathai', name:'Math for AI & Data Science', topics:[
       {id:'ai-vectors', label:'Vectors & Embeddings', tags:['vector','norm','embedding','cosine'], examWeight:25, chapterId:'ai-vectors-embeddings'},
-      {id:'ai-matrices', label:'Matrices & Neural Layers', tags:['matrix','activation','relu','dense'], examWeight:25, chapterId:'ai-matrices-linear-layers'},
-      {id:'ai-optimization', label:'Gradient Descent & Loss', tags:['gradient','loss','optimization','descent'], examWeight:25, chapterId:'ai-gradient-descent'},
+      {id:'ai-matrices', label:'Matrices & Neural Layers', tags:['matrix','activation','relu','dense'], examWeight:25, chapterId:'ai-matrices-layers'},
+      {id:'ai-optimization', label:'Gradient Descent & Loss', tags:['gradient','loss','optimization','descent'], examWeight:25, chapterId:'ai-calculus-gradients'},
       {id:'ai-probability', label:'Probability, Bayes & PCA', tags:['bayes','mle','regression','pca'], examWeight:25, chapterId:'ai-probability-bayes'}
+    ]});
+
+    R({viewId:'edexcel', name:'Pearson Edexcel IGCSE (4MA1)', topics:[
+      {id:'edx-number', label:'Number, Surds, Bounds & Set Theory', tags:['surds','bounds','sets','venn'], examWeight:15, chapterId:'edx-number-surds-sets'},
+      {id:'edx-algebra', label:'Algebraic Fractions, Quadratics & Series', tags:['algebra','quadratic','functions','sequences'], examWeight:35, chapterId:'edx-algebra-quadratics'},
+      {id:'edx-geometry', label:'Circle Theorems, 3D Trig & Vectors', tags:['circle','trigonometry','vectors','mensuration'], examWeight:30, chapterId:'edx-geometry-circles'},
+      {id:'edx-calc-stats', label:'Differentiation, Kinematics & Histograms', tags:['differentiation','kinematics','histogram','probability'], examWeight:20, chapterId:'edx-calculus-kinematics'}
+    ]});
+
+    R({viewId:'gaten', name:'English GAT & SAAT (Qiyas)', topics:[
+      {id:'ge-gat-quant', label:'GAT Arithmetic Shortcuts, Ratios & Motion', tags:['arithmetic','ratios','work','motion'], examWeight:30, chapterId:'ge-arithmetic-shortcuts'},
+      {id:'ge-gat-qc', label:'GAT Quantitative Comparisons & Data', tags:['comparison','geometry','statistics','counting'], examWeight:20, chapterId:'ge-quant-comparisons'},
+      {id:'ge-saat-alg', label:'SAAT Logic, Matrices, Functions & Logs', tags:['matrices','complex','rational','logarithms'], examWeight:25, chapterId:'ge-saat-algebra-matrices'},
+      {id:'ge-saat-calc', label:'SAAT Conics, Vectors & Calculus', tags:['conics','vectors','limits','derivatives','integrals'], examWeight:25, chapterId:'ge-saat-calculus'}
+    ]});
+
+    R({viewId:'olympiad', name:'Contest Math & Olympiad', topics:[
+      {id:'ol-alg-nt', label:'Olympiad Algebra, Vieta & Number Theory', tags:['vieta','inequalities','modular','diophantine'], examWeight:30, chapterId:'ol-algebraic-techniques'},
+      {id:'ol-combo', label:'Bijective Counting, Recurrences & Probability', tags:['combinatorics','pigeonhole','recurrence','probability'], examWeight:25, chapterId:'ol-combinatorics-counting'},
+      {id:'ol-geom', label:'Olympiad Circle Geometry, Ceva & Stewart', tags:['circles','power-of-point','ceva','stewart'], examWeight:25, chapterId:'ol-euclidean-circles'},
+      {id:'ol-inv', label:'Invariants, Monovariants & Combinatorial Games', tags:['invariants','coloring','extremal','games'], examWeight:20, chapterId:'ol-invariants-extremal'}
     ]});
   }());
 

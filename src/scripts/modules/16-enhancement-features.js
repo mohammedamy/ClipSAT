@@ -116,7 +116,7 @@ window.Mastery = (function(){
 
   function quizArea(domain){
     /* Navigate to the chapter that covers this domain using SM */
-    var allViews=['sat','est','act','igcse','aslevel','a2level','ibsl','ibhl','appc','apstats','precalc','qudrat','tahsili','calculus','algebra','linalg','mvc','odes','addmath','mathai'];
+    var allViews=['sat','est','act','igcse','aslevel','a2level','ibsl','ibhl','appc','apstats','precalc','qudrat','tahsili','calculus','algebra','linalg','mvc','odes','addmath','mathai','edexcel','gaten','olympiad'];
     for(var i=0;i<allViews.length;i++){
       var map=window.SM&&window.SM.get(allViews[i]); if(!map) continue;
       for(var j=0;j<map.topics.length;j++){

@@ -494,7 +494,43 @@
         T('Probability & Bayes\' Theorem',25,'conditional probability, Bayes\' rule, prior, likelihood, posterior, Naive Bayes classifier',['Probability & Bayes\' Theorem']),
         T('Distributions & Maximum Likelihood',25,'Gaussian, Bernoulli, Binomial distributions, likelihood functions, MLE parameter estimation',['Distributions & Maximum Likelihood']),
         T('Linear & Logistic Regression',25,'least squares regression, sigmoid activation, log-odds, binary cross-entropy loss',['Linear & Logistic Regression']),
-        T('Principal Component Analysis (PCA)',25,'covariance matrix, eigenvalues, eigenvectors, dimensionality reduction, variance retention',['Principal Component Analysis (PCA)'])]}
+        T('Principal Component Analysis (PCA)',25,'covariance matrix, eigenvalues, eigenvectors, dimensionality reduction, variance retention',['Principal Component Analysis (PCA)'])]},
+
+    'edexcel':{source:'Pearson Edexcel International GCSE Mathematics A (4MA1 Higher Tier) — Paper 1H & Paper 2H Specification.',
+      difficulty:MIX, order:'ascending',
+      topics:[
+        T('Number, Surds, Bounds & Set Theory',15,'fractional indices, rationalizing surd denominators, upper/lower bounds, Venn diagrams',['Number, Surds, Bounds & Set Theory']),
+        T('Algebraic Fractions, Quadratics & Simultaneous Systems',20,'algebraic fractions, completing the square, quadratic inequalities, linear-quadratic systems',['Algebraic Fractions, Quadratics & Simultaneous Systems']),
+        T('Functions, Transformations & Arithmetic Series',15,'composite and inverse functions, graph transformations, arithmetic series sum Sn',['Functions, Transformations & Arithmetic Series']),
+        T('Coordinate Geometry & Linear Programming',10,'perpendicular bisectors, equations of lines, graphical linear programming regions',['Coordinate Geometry & Linear Programming']),
+        T('Circle Theorems, Similar Solids & Mensuration',15,'alternate segment theorem, intersecting chords/secants, frustums, area/volume scale factors',['Circle Theorems, Similar Solids & Mensuration']),
+        T('Sine/Cosine Rules, 3D Trigonometry & Vectors',10,'sine and cosine rules, 3D space diagonals, vector collinearity proofs',['Sine/Cosine Rules, 3D Trigonometry & Vectors']),
+        T('Differentiation, Stationary Points & Kinematics',8,'power rule differentiation, turning points, displacement-velocity-acceleration kinematics',['Differentiation, Stationary Points & Kinematics']),
+        T('Histograms, Cumulative Frequency & Conditional Probability',7,'frequency density histograms, cumulative frequency quartiles, tree diagrams without replacement',['Histograms, Cumulative Frequency & Conditional Probability'])]},
+
+    'gaten':{source:'ETEC / Qiyas English-Medium General Aptitude Test (GAT Quantitative) & Standardized Achievement Admission Test (SAAT Mathematics).',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('GAT Arithmetic Shortcuts, Surds & Number Sense',15,'difference of squares, cyclicity of units digits, telescoping fractions, surds',['GAT Arithmetic Shortcuts, Surds & Number Sense']),
+        T('GAT Ratios, Percentages, Work & Motion Problems',15,'successive percentages, combined work rates, harmonic average speed',['GAT Ratios, Percentages, Work & Motion Problems']),
+        T('GAT Quantitative Comparisons & Fast Geometry',15,'Choices A/B/C/D comparisons, shaded circle/square areas, clock angles',['GAT Quantitative Comparisons & Fast Geometry']),
+        T('GAT Data Interpretation, Averages & Counting',10,'pie chart angles, consecutive integer averages, handshakes and circular permutations',['GAT Data Interpretation, Averages & Counting']),
+        T('SAAT Logic, Polynomials, Matrices & Complex Numbers',12,'contrapositive logic, 2x2 determinants, complex conjugates, powers of i',['SAAT Logic, Polynomials, Matrices & Complex Numbers']),
+        T('SAAT Functions, Sequences & Logarithms',11,'rational asymptotes, convergent infinite geometric series, logarithm laws',['SAAT Functions, Sequences & Logarithms']),
+        T('SAAT Trigonometry, Conics & Vectors',11,'double-angle identities, ellipse/hyperbola eccentricity, 3D dot product orthogonality',['SAAT Trigonometry, Conics & Vectors']),
+        T('SAAT Differential & Integral Calculus',11,'algebraic limits, tangent slopes, Fundamental Theorem of Calculus, area under curves',['SAAT Differential & Integral Calculus'])]},
+
+    'olympiad':{source:'MAA AMC 10/12, AIME, Kangaroo Math Arabia & Mawhiba Mathematical Olympiad.',
+      difficulty:MIX, order:'ascending',
+      topics:[
+        T('Olympiad Algebra, Vieta & Inequalities',15,'Vieta symmetric sums, AM-GM and Cauchy-Schwarz inequalities, telescoping series',['Olympiad Algebra, Vieta & Inequalities']),
+        T('Modular Arithmetic, Primes & Divisibility',15,'Fermat Little Theorem, Euler totient function, Chinese Remainder Theorem, divisor counts',['Modular Arithmetic, Primes & Divisibility']),
+        T('Diophantine Equations, SFFT & Floor Functions',12.5,'Simon Favorite Factoring Trick, Frobenius coin theorem, Legendre factorial formula',['Diophantine Equations, SFFT & Floor Functions']),
+        T('Bijective Counting, Inclusion-Exclusion & Pigeonhole',12.5,'Stars and Bars, Principle of Inclusion-Exclusion, derangements, Pigeonhole principle',['Bijective Counting, Inclusion-Exclusion & Pigeonhole']),
+        T('Recurrence Relations & Geometric Probability',10,'Fibonacci and Catalan recurrences, coupled Markov states, continuous geometric probability',['Recurrence Relations & Geometric Probability']),
+        T('Circle Geometry, Power of a Point & Radical Axes',12.5,'Power of a Point, radical axis, Ptolemy and Brahmagupta theorems for cyclic quadrilaterals',['Circle Geometry, Power of a Point & Radical Axes']),
+        T('Triangle Centers, Ceva, Menelaus & Stewart',12.5,'Euler line, Ceva and Menelaus theorems, Stewart theorem, inradius/circumradius formulas',['Triangle Centers, Ceva, Menelaus & Stewart']),
+        T('Invariants, Monovariants, Coloring & Games',10,'parity and coloring invariants, Pick lattice theorem, Nim XOR game strategy',['Invariants, Monovariants, Coloring & Games'])]}
   };
 
   // Modular Cambridge IGCSE 0580 and IB AA / AI Paper 1 / Paper 2 / Paper 3 mappings

@@ -45,8 +45,8 @@ console.log('── Pillar 1: Question Banks, Mathematical Validity & Skeletons 
 const bankDir = path.join(__dirname, '..', 'bank-data');
 const bankFiles = fs.readdirSync(bankDir).filter(f => f.endsWith('.json'));
 
-audit(`Catalog contains exactly 28 verified question banks`, () => {
-  assert.strictEqual(bankFiles.length, 28, `Expected 28 banks, found ${bankFiles.length}`);
+audit(`Catalog contains all 31 verified question banks`, () => {
+  assert.strictEqual(bankFiles.length, 31, `Expected 31 banks, found ${bankFiles.length}`);
 });
 
 let totalQuestions = 0;
@@ -124,10 +124,13 @@ audit(`SVG Figure engine supports 20+ specialized diagram types with KaTeX label
 const exDir = path.join(__dirname, '..', 'src', 'scripts', 'explorers');
 const exFiles = fs.readdirSync(exDir).filter(f => f.endsWith('.js'));
 
-audit(`HTML5 Canvas Explorers exist for 29 explorer tracks (including addmath & mathai)`, () => {
-  assert.ok(exFiles.length >= 28, `Expected >= 28 explorer files, found ${exFiles.length}`);
+audit(`HTML5 Canvas Explorers exist for all 32 explorer tracks (including addmath, mathai, edexcel, gaten & olympiad)`, () => {
+  assert.ok(exFiles.length >= 31, `Expected >= 31 explorer files, found ${exFiles.length}`);
   assert.ok(fs.existsSync(path.join(exDir, 'addmath.js')), 'addmath.js explorer must exist');
   assert.ok(fs.existsSync(path.join(exDir, 'mathai.js')), 'mathai.js explorer must exist');
+  assert.ok(fs.existsSync(path.join(exDir, 'edexcel.js')), 'edexcel.js explorer must exist');
+  assert.ok(fs.existsSync(path.join(exDir, 'gaten.js')), 'gaten.js explorer must exist');
+  assert.ok(fs.existsSync(path.join(exDir, 'olympiad.js')), 'olympiad.js explorer must exist');
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -138,8 +141,8 @@ console.log('\n── Pillar 3: Interactive Practice & 100% Bilingual Arabic Par
 const ixDir = path.join(__dirname, '..', 'src', 'scripts', 'ix-data');
 const ixFiles = fs.readdirSync(ixDir).filter(f => f.endsWith('.js'));
 
-audit(`Interactive practice data files exist for all 28 curriculum tracks`, () => {
-  assert.strictEqual(ixFiles.length, 28, `Expected 28 ix-data files, found ${ixFiles.length}`);
+audit(`Interactive practice data files exist for all 31 curriculum tracks`, () => {
+  assert.strictEqual(ixFiles.length, 31, `Expected 31 ix-data files, found ${ixFiles.length}`);
 });
 
 let totalActivities = 0;
@@ -221,15 +224,15 @@ console.log('\n── Pillar 5: Curriculum Coverage & Multi-Page SSG Structure �
 const contentDir = path.join(__dirname, '..', 'content');
 const contentTracks = fs.readdirSync(contentDir).filter(f => fs.statSync(path.join(contentDir, f)).isDirectory());
 
-audit(`Curriculum directory covers 28 complete tracks with _meta.json and chapter JSONs`, () => {
-  assert.strictEqual(contentTracks.length, 28, `Expected 28 content tracks, found ${contentTracks.length}`);
+audit(`Curriculum directory covers 31 complete tracks with _meta.json and chapter JSONs`, () => {
+  assert.strictEqual(contentTracks.length, 31, `Expected 31 content tracks, found ${contentTracks.length}`);
   contentTracks.forEach(t => {
     const metaP = path.join(contentDir, t, '_meta.json');
     assert.ok(fs.existsSync(metaP), `_meta.json must exist in content/${t}/`);
   });
 });
 
-audit(`Every curriculum track has a 50-question _practice-set.json (1,400 total practice-set items)`, () => {
+audit(`Every curriculum track has a 50-question _practice-set.json (1,550 total practice-set items)`, () => {
   let totalPracticeItems = 0;
   let totalPracticeFigs = 0;
   contentTracks.forEach(t => {
@@ -250,13 +253,13 @@ audit(`Every curriculum track has a 50-question _practice-set.json (1,400 total 
     assert.ok(trackFigs >= 12, `Expected >= 12 diagrams in content/${t}/_practice-set.json, found ${trackFigs}`);
     totalPracticeItems += ps.items.length;
   });
-  assert.strictEqual(totalPracticeItems, 1400, `Expected 1,400 total practice-set items, found ${totalPracticeItems}`);
-  assert.ok(totalPracticeFigs >= 450, `Expected >= 450 practice-set diagrams across 28 tracks, found ${totalPracticeFigs}`);
+  assert.strictEqual(totalPracticeItems, 1550, `Expected 1,550 total practice-set items, found ${totalPracticeItems}`);
+  assert.ok(totalPracticeFigs >= 500, `Expected >= 500 practice-set diagrams across 31 tracks, found ${totalPracticeFigs}`);
 });
 
 const siteDir = path.join(__dirname, '..', '_site');
 if (fs.existsSync(siteDir)) {
-  audit(`Compiled _site contains entrypoints for all 28 tracks and index.html`, () => {
+  audit(`Compiled _site contains entrypoints for all 31 tracks and index.html`, () => {
     assert.ok(fs.existsSync(path.join(siteDir, 'index.html')), 'index.html must exist in _site');
     contentTracks.forEach(t => {
       const pageP = path.join(siteDir, t, 'index.html');

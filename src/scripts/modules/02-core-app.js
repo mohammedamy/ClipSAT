@@ -320,7 +320,7 @@
   /* ---------- init ---------- */
   function init(){
     var _rawHash=(location.hash||'').replace(/^#/,'');
-    var _VIEWS=['home','calculus','algebra','alg2','apab','apbc','igcse','geo','qudrat','tahsili','sat','act','aslevel','a2level','est','est2','act2','act2l2','est2l2','appc','apstats','precalc','linalg','mvc','odes','ibsl','ibhl','addmath','mathai','ibslaa','ibhlaa','ibslai','ibhlai'];
+    var _VIEWS=['home','calculus','algebra','alg2','apab','apbc','igcse','geo','qudrat','tahsili','sat','act','aslevel','a2level','est','est2','act2','act2l2','est2l2','appc','apstats','precalc','linalg','mvc','odes','ibsl','ibhl','addmath','mathai','edexcel','gaten','olympiad','ibslaa','ibhlaa','ibslai','ibhlai'];
     (function(){
       var parts=_rawHash.split('/');
       var viewId=(window.CLIPSAT_TRACK&&window.CLIPSAT_TRACK!=='home')?window.CLIPSAT_TRACK:'home', chapId='';

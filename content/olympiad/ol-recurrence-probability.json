@@ -1,0 +1,558 @@
+{
+  "id": "ol-recurrence-probability",
+  "chapterNumber": "5",
+  "title": {
+    "en": "Recurrence Relations, States & Contest Probability",
+    "ar": "العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات"
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "igcse-tag",
+    "emoji": "🏆",
+    "category": "Olympiad Module 5 — Combinatorics II & Probability",
+    "badges": [
+      {
+        "text": "Core Mastery",
+        "className": "tier-e"
+      }
+    ],
+    "topics": [
+      "Fibonacci & tiling recurrences a_n = a_{n-1} + a_{n-2}",
+      "State-transition Markov equations",
+      "Linearity of expectation E[X + Y] = E[X] + E[Y]",
+      "Geometric probability (area/length regions)",
+      "Conditional symmetry & Bayes in contests"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Mastering the essential concepts, analytical methods, and exam-grade problem-solving techniques for <strong>Recurrence Relations, States & Contest Probability</strong> (Olympiad Module 5 — Combinatorics II & Probability).",
+          "ar": "إتقان المفاهيم الأساسية والطرق التحليلية واستراتيجيات حل المسائل المتقدمة في <strong>العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات</strong>."
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 5.1 — Combinatorial Recurrences, State Equations & Linearity of Expectation",
+          "ar": "● تعريف 5.1 — العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات"
+        },
+        "body": {
+          "en": "<p>Many AMC/AIME counting and probability problems reduce to setting up a recurrence relation \\( a_n = c_1 a_{n-1} + c_2 a_{n-2} \\) by conditioning on the first step (e.g., tiling a \\( 2 \\times n \\) board with dominoes yields the Fibonacci numbers \\( F_{n+1} \\)). For random variables \\( X_1, \\dots, X_n \\), <strong>Linearity of Expectation</strong> \\[ E[X_1 + X_2 + \\dots + X_n] = E[X_1] + E[X_2] + \\dots + E[X_n] \\] holds <em>even when the variables are dependent</em>, making indicator variables the most powerful tool for expected-value problems.</p>",
+          "ar": "<p>Many AMC/AIME counting and probability problems reduce to setting up a recurrence relation \\( a_n = c_1 a_{n-1} + c_2 a_{n-2} \\) by conditioning on the first step (e.g., tiling a \\( 2 \\times n \\) board with dominoes yields the Fibonacci numbers \\( F_{n+1} \\)). For random variables \\( X_1, \\dots, X_n \\), <strong>Linearity of Expectation</strong> \\[ E[X_1 + X_2 + \\dots + X_n] = E[X_1] + E[X_2] + \\dots + E[X_n] \\] holds <em>even when the variables are dependent</em>, making indicator variables the most powerful tool for expected-value problems.</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Recurrence Relations, States & Contest Probability",
+          "ar": "● الفهم المفاهيمي العميق — العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات"
+        },
+        "body": {
+          "en": "<p><strong>Structural Invariants &amp; Analytical Rigor:</strong> Every problem in <em>Recurrence Relations, States & Contest Probability</em> reduces to identifying the underlying algebraic or geometric structure before computing. Whether isolating parameters, verifying domain constraints, or exploiting symmetry, writing down the governing identity first eliminates arithmetic traps and guarantees full method marks.</p>",
+          "ar": "<p><strong>البنية الرياضية والدقة التحليلية:</strong> يعتمد الحل المتقن في <em>العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات</em> على تحديد العلاقة الرياضية الحاكمة والتحقق من شروط المجال والتناظر قبل إجراء الحسابات العددية.</p>"
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Recurrence Relations, States & Contest Probability — Coordinate Curve & Structural Analysis",
+          "xrange": [
+            -4,
+            6
+          ],
+          "yrange": [
+            -4,
+            8
+          ],
+          "fns": [
+            {
+              "fn": "(x - 1)*(x - 1) - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = (x - 1)² - 2"
+            },
+            {
+              "fn": "x + 1",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "g(x) = x + 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -2,
+              "label": "Vertex (1, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate representation of \\(f(x) = (x - 1)^2 - 2\\) and secant line \\(g(x) = x + 1\\) illustrating Recurrence Relations, States & Contest Probability.",
+          "ar": "تمثيل بياني يوضح المنحنى والمقاطع الأساسية في درس العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات."
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Recurrence Dynamics, Fixed Points & State Convergence Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر العلاقات التكرارية ونقاط الاتزان وتقارب الحالات"
+        },
+        "canvasId": "olrecurrenceprobabilityExCanvas",
+        "ariaLabel": {
+          "en": "Recurrence Dynamics, Fixed Points & State Convergence Lab interactive mathematical canvas",
+          "ar": "مختبر العلاقات التكرارية ونقاط الاتزان وتقارب الحالات لوحة رياضية تفاعلية"
+        },
+        "dataPanel": {
+          "btnId": "olrecurrenceprobabilityExCanvas_dataBtn",
+          "panelId": "olrecurrenceprobabilityExCanvas_dataPanel",
+          "descId": "olrecurrenceprobabilityExCanvas_dataDesc",
+          "rowsId": "olrecurrenceprobabilityExCanvas_dataRows",
+          "caption": {
+            "en": "Live numerical table for Recurrence Dynamics, Fixed Points & State Convergence Lab",
+            "ar": "جدول القيم العددية لـ مختبر العلاقات التكرارية ونقاط الاتزان وتقارب الحالات"
+          },
+          "columns": [
+            {
+              "en": "Parameter / Metric",
+              "ar": "المتغير / المعيار"
+            },
+            {
+              "en": "Value",
+              "ar": "القيمة"
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "olrecurrenceprobabilityExCanvas_s0",
+            "label": {
+              "en": "Growth Parameter <b>\\(r =\\)</b>",
+              "ar": "Growth Parameter <b>\\(r =\\)</b>"
+            },
+            "min": 1,
+            "max": 3.5,
+            "value": 2.4,
+            "step": 0.2,
+            "valueDisplayId": "olrecurrenceprobabilityExCanvas_v0",
+            "ariaLabel": {
+              "en": "Growth Parameter \\(r =\\)",
+              "ar": "Growth Parameter \\(r =\\)"
+            }
+          },
+          {
+            "id": "olrecurrenceprobabilityExCanvas_s1",
+            "label": {
+              "en": "Initial State <b>\\(x_0 =\\)</b>",
+              "ar": "Initial State <b>\\(x_0 =\\)</b>"
+            },
+            "min": 0.2,
+            "max": 2,
+            "value": 0.8,
+            "step": 0.2,
+            "valueDisplayId": "olrecurrenceprobabilityExCanvas_v1",
+            "ariaLabel": {
+              "en": "Initial State \\(x_0 =\\)",
+              "ar": "Initial State \\(x_0 =\\)"
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "olrecurrenceprobabilityExCanvas_r0",
+            "label": {
+              "en": "Equilibrium State \\(x^*\\)",
+              "ar": "Equilibrium State \\(x^*\\)"
+            },
+            "colorClass": "indigo",
+            "value": "\\(2.33\\)"
+          },
+          {
+            "id": "olrecurrenceprobabilityExCanvas_r1",
+            "label": {
+              "en": "Next State \\(x_1\\)",
+              "ar": "Next State \\(x_1\\)"
+            },
+            "colorClass": "amber",
+            "value": "\\(1.54\\)"
+          },
+          {
+            "id": "olrecurrenceprobabilityExCanvas_r2",
+            "label": {
+              "en": "Stability",
+              "ar": "Stability"
+            },
+            "colorClass": "teal",
+            "value": "Convergent Attractor"
+          }
+        ],
+        "note": {
+          "en": "Drag the sliders or directly manipulate the canvas to explore how changes in the parameters govern Recurrence Relations, States & Contest Probability.",
+          "ar": "حرّك المنزلقات أو تفاعل مباشرة مع اللوحة لاستكشاف العلاقات الرياضية في درس العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات."
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "triangle",
+          "A": [
+            0,
+            0
+          ],
+          "B": [
+            12,
+            0
+          ],
+          "C": [
+            12,
+            5
+          ],
+          "labels": {
+            "A": "A",
+            "B": "C",
+            "C": "B"
+          },
+          "sides": {
+            "c": "18",
+            "a": "24",
+            "b": "30"
+          },
+          "rightAt": "B"
+        },
+        "caption": {
+          "en": "Orthogonal components and Euclidean distance relationship \\((18)^2 + (24)^2 = (30)^2\\) for Recurrence Relations, States & Contest Probability.",
+          "ar": "العلاقة الهندسية المتعامدة \\((18)^2 + (24)^2 = (30)^2\\) في درس العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات."
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Key Principle 5.1",
+              "ar": "القاعدة الأساسية 5.1"
+            },
+            "value": {
+              "en": "Fibonacci & tiling recurrences a_n = a_{n-1} + a_{n-2}",
+              "ar": "Fibonacci & tiling recurrences a_n = a_{n-1} + a_{n-2}"
+            }
+          },
+          {
+            "label": {
+              "en": "Key Principle 5.2",
+              "ar": "القاعدة الأساسية 5.2"
+            },
+            "value": {
+              "en": "State-transition Markov equations",
+              "ar": "State-transition Markov equations"
+            }
+          },
+          {
+            "label": {
+              "en": "Key Principle 5.3",
+              "ar": "القاعدة الأساسية 5.3"
+            },
+            "value": {
+              "en": "Linearity of expectation E[X + Y] = E[X] + E[Y]",
+              "ar": "Linearity of expectation E[X + Y] = E[X] + E[Y]"
+            }
+          },
+          {
+            "label": {
+              "en": "Key Principle 5.4",
+              "ar": "القاعدة الأساسية 5.4"
+            },
+            "value": {
+              "en": "Geometric probability (area/length regions)",
+              "ar": "Geometric probability (area/length regions)"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Recurrence Relations, States & Contest Probability)",
+          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات)"
+        },
+        "body": {
+          "en": "<p><strong>First-Principles Justification:</strong> Any quadratic or bilinear relation \\( ax^2 + bx + c = 0 \\) can be transformed by completing the square:</p>\\[ a\\!\\left(x + \\frac{b}{2a}\\right)^2 = \\frac{b^2 - 4ac}{4a}. \\]<p>This single identity simultaneously proves the quadratic formula, determines the exact turning-point coordinates \\( \\left(-\\frac{b}{2a}, c - \\frac{b^2}{4a}\\right) \\), and establishes the discriminant criterion \\( \\Delta = b^2 - 4ac \\) for tangency and root existence.</p>",
+          "ar": "<p><strong>البرهان من المبادئ الأولية:</strong> بإكمال المربع للمقدار \\(ax^2 + bx + c\\) نحصل على \\(a(x + \\frac{b}{2a})^2 + (c - \\frac{b^2}{4a})\\)، وهو ما يفسر قانون المميز وإحداثيات نقطة الرأس بدقة.</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 5.A — Foundational Formulation (Recurrence Relations, States & Contest Probability)",
+          "ar": "مثال محلول 5.A — تطبيق أساسي (العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات)"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Given the quadratic function \\( f(x) = x^2 - 12x + 43 \\), express \\( f(x) \\) in the completed-square form \\( (x - h)^2 + k \\) and state its minimum value and the value of \\( x \\) at which it occurs.</p><p><strong>Step-by-Step Solution:</strong><br>1. Halve the coefficient of \\( x \\): \\( -\\frac{12}{2} = -6 \\).<br>2. Write \\( (x - 6)^2 = x^2 - 12x + 36 \\).<br>3. Adjust the constant term: \\( f(x) = (x - 6)^2 - 36 + 43 = (x - 6)^2 + 7 \\).<br>4. Since \\( (x - 6)^2 \\ge 0 \\) for all real \\( x \\), the minimum value is \\( k = 7 \\), achieved at \\( x = 6 \\).</p><p><strong>Final Answer:</strong> \\( f(x) = (x - 6)^2 + 7 \\); minimum value \\( 7 \\) at \\( x = 6 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد صيغة إكمال المربع للدالة \\( f(x) = x^2 - 12x + 43 \\) وحدد قيمتها الصغرى.</p><p><strong>الحل خطوة بخطوة:</strong> بإكمال المربع: \\( f(x) = (x - 6)^2 + 7 \\)، وبما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 7 \\) وتتحقق عند \\( x = 6 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 5.B — Intermediate Multi-Step Synthesis (Recurrence Relations, States & Contest Probability)",
+          "ar": "مثال محلول 5.B — تطبيق متوسط متعدد الخطوات (العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات)"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> The line \\( y = 2x + k \\) intersects the curve \\( y = x^2 - 12x + 41 \\) at two distinct points. Find the range of possible values for the constant \\( k \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. Equate the line and curve equations:<br>\\[ x^2 - 12x + 41 = 2x + k \\implies x^2 - 14x + (41 - k) = 0 \\]<br>2. For two distinct real intersections, the discriminant must satisfy \\( \\Delta = b^2 - 4ac > 0 \\):<br>\\[ (-14)^2 - 4(1)(41 - k) > 0 \\]<br>\\[ 196 - 164 + 4k > 0 \\implies 4k > -32 \\implies k > -8 \\]</p><p><strong>Final Answer:</strong> \\( k > -8 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> المستقيم \\( y = 2x + k \\) يقطع المنحنى \\( y = x^2 - 12x + 41 \\) في نقطتين متمايزتين. أوجد مدى قيم \\( k \\).</p><p><strong>الحل:</strong> بمساواة المعادلتين ووضع المميز \\( \\Delta > 0 \\) نجد أن \\( k > -8 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 5.C — Advanced Rate & Vector Application (Recurrence Relations, States & Contest Probability)",
+          "ar": "مثال محلول 5.C — تطبيق متقدم (العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات)"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Consider the cubic function \\( g(x) = x^3 - 18x^2 + 108x + 7 \\). Find the coordinates of the stationary point of inflection and the gradient of the curve at \\( x = 8 \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. Differentiate term by term:<br>\\[ g'(x) = 3x^2 - 36x + 108 = 3(x - 6)^2 \\]<br>2. Setting \\( g'(x) = 0 \\) yields \\( x = 6 \\), with \\( g(6) = 7 \\). Thus \\( (6, 7) \\) is the stationary point.<br>3. At \\( x = 8 \\), the gradient is \\( g'(8) = 3(2)^2 = 12 \\).</p><p><strong>Final Answer:</strong> Stationary point \\( (6, 7) \\); gradient at \\( x = 8 \\) is \\( 12 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> للدالة \\( g(x) = x^3 - 18x^2 + 108x + 7 \\)، أوجد النقطة الحرجة وميل المماس عند \\( x = 8 \\).</p><p><strong>الحل:</strong> المشتقة \\( g'(x) = 3(x - 6)^2 \\)، تنعدم عند \\( (6, 7) \\)، وعند \\( x = 8 \\) يكون الميل \\( 3(4) = 12 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 5.D — Exam-Grade Challenge Synthesis (Recurrence Relations, States & Contest Probability)",
+          "ar": "مثال محلول 5.D — مسألة تحدي بمستوى الاختبار (العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات)"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Let \\( S_n \\) denote the sum of the first \\( n \\) terms of an arithmetic progression where \\( S_n = 6n^2 + 7n \\). Find an expression for the \\( n \\)-th term \\( u_n \\), determine the common difference \\( d \\), and evaluate \\( u_{10} \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. For \\( n = 1 \\), \\( u_1 = S_1 = 6(1)^2 + 7(1) = 13 \\).<br>2. For \\( n \\ge 2 \\), use the fundamental identity \\( u_n = S_n - S_{n-1} \\):<br>\\[ u_n = \\left[6n^2 + 7n\\right] - \\left[6(n-1)^2 + 7(n-1)\\right] = 12n + (1) \\]<br>3. The coefficient of \\( n \\) gives the common difference \\( d = 12 \\).<br>4. Substituting \\( n = 10 \\) yields \\( u_{10} = 121 \\).</p><p><strong>Final Answer:</strong> \\( u_n = 12n + 1 \\), \\( d = 12 \\), and \\( u_{10} = 121 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> إذا كان مجموع أول \\( n \\) حداً من متتابعة حسابية هو \\( S_n = 6n^2 + 7n \\)، فأوجد الحد النوني \\( u_n \\) والأساس \\( d \\) والحد العاشر \\( u_{10} \\).</p><p><strong>الحل:</strong> من العلاقة \\( u_n = S_n - S_{n-1} \\) نجد \\( u_n = 12n + 1 \\)، والأساس \\( d = 12 \\)، والحد العاشر \\( u_{10} = 121 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Exam Traps — Recurrence Relations, States & Contest Probability",
+          "ar": "⚠️ أخطاء شائعة في الاختبار — العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات"
+        },
+        "body": {
+          "en": "<p><strong>1. Sign &amp; Domain Omissions:</strong> Always verify whether negative roots or boundary values violate denominator, square-root, or logarithmic domain restrictions before writing your final answer.</p><p><strong>2. Premature Rounding:</strong> Keep exact fractions, surds, or \\(\\pi\\) expressions throughout intermediate steps and round only at the final line if requested.</p>",
+          "ar": "<p><strong>1. إغفال قيود المجال والإشارات:</strong> تحقق دائماً من استبعاد القيم التي تجعل المقام صفراً أو ما تحت الجذر التربيعي سالباً.</p><p><strong>2. التقريب المبكر:</strong> احتفظ بالقيم الدقيقة (الكسور والجذور) في خطوات الحل الوسطى ولا تقرب إلا في الناتج النهائي.</p>"
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Recurrence Relations, States & Contest Probability)",
+          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات)"
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع للطالب"
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": "السبب الرياضي للخطأ"
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Canceling terms across a sum in \\( \\frac{x^2 + a}{x + a} \\)",
+              "ar": "اختصار حدود مجموعة في بسط ومقام الكسر الجبري"
+            },
+            {
+              "en": "Division only cancels common multiplicative factors of the entire numerator and denominator.",
+              "ar": "الاختصار يصح فقط للعوامل المضروبة في كامل البسط والمقام."
+            },
+            {
+              "en": "Factorize numerator and denominator completely before canceling common binomial factors.",
+              "ar": "حلل البسط والمقام إلى عوامل أولية مضروبة قبل الاختصار."
+            }
+          ],
+          [
+            {
+              "en": "Writing \\( (a + b)^2 = a^2 + b^2 \\) when squaring binomials",
+              "ar": "فك المربع الكامل \\( (a + b)^2 \\) بدون الحد الأوسط \\( 2ab \\)"
+            },
+            {
+              "en": "Omits the cross-product term \\( 2ab \\) required by the distributive law.",
+              "ar": "يهمل حد الضرب التبادلي الأوسط \\( 2ab \\)."
+            },
+            {
+              "en": "Always expand as \\( (a \\pm b)^2 = a^2 \\pm 2ab + b^2 \\).",
+              "ar": "طبق المتطابقة الكاملة \\( (a \\pm b)^2 = a^2 \\pm 2ab + b^2 \\)."
+            }
+          ],
+          [
+            {
+              "en": "Solving quadratic inequalities by treating \\( < \\) like \\( = \\) without a sign chart",
+              "ar": "حل المتباينة التربيعية كمعادلة دون اختبار إشارة الفترات"
+            },
+            {
+              "en": "A parabola changes sign at its distinct real roots, so the solution is an interval or union of rays.",
+              "ar": "القطع المكافئ يغير إشارته حول الجذور، لذا الحل فترة متصلة أو اتحاد فترتين."
+            },
+            {
+              "en": "Find the critical roots first, then sketch the parabola or test a point in each interval.",
+              "ar": "أوجد الجذور الحرجة أولاً ثم ارسم القطع المكافئ لتحديد الفترة الصحيحة."
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Recurrence Relations, States & Contest Probability",
+          "ar": "▲ استراتيجية الحل السريع والتحقق — العلاقات التكرارية وسلاسل الحالات واحتمالات المسابقات"
+        },
+        "body": {
+          "en": "<p><strong>10-Second Sanity Check:</strong> Substitute a simple test value (such as \\( x = 0, 1, \\) or \\( 2 \\)) into both your simplified expression and the original problem statement. If the numerical outputs match, your algebraic manipulation is guaranteed to be error-free.</p>",
+          "ar": "<p><strong>فحص التحقق السريع:</strong> عوّض بقيمة عددية بسيطة (مثل \\( x = 1 \\) أو \\( x = 2 \\)) في الناتج النهائي وفي المسألة الأصلية للتأكد من تطابق القيمتين فوراً.</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 1 · Easy]</strong> Evaluate \\( f(7) \\) for the quadratic function \\( f(x) = 6x^2 - 6x + 10 \\).",
+          "ar": "<strong>[تدريب 1 · Easy]</strong> احسب قيمة \\( f(7) \\) للدالة التربيعية \\( f(x) = 6x^2 - 6x + 10 \\)."
+        },
+        "hints": [
+          {
+            "en": "Substitute \\( x = 7 \\) directly into \\( f(x) = 6x^2 - 6x + 10 \\).",
+            "ar": "عوّض عن \\( x = 7 \\) مباشرة في قاعدة الدالة \\( f(x) \\)."
+          },
+          {
+            "en": "Factor out \\( 6x(x - 1) + 10 = 6(7)(6) + 10 \\).",
+            "ar": "أخرج عاملاً مشتركاً لتسهيل الحساب: \\( 6(7)(6) + 10 \\)."
+          },
+          {
+            "en": "Compute \\( 252 + 10 \\) to obtain the final answer.",
+            "ar": "اجمع \\( 252 + 10 \\) للحصول على النتيجة النهائية."
+          }
+        ],
+        "solution": {
+          "en": "Substituting \\( x = 7 \\) gives \\( f(7) = 6(7)^2 - 6(7) + 10 = 294 - 42 + 10 = 262 \\).",
+          "ar": "بالتعويض عن \\( x = 7 \\) نجد \\( f(7) = 6(7)^2 - 6(7) + 10 = 262 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 2 · Easy]</strong> Find the positive root of the equation \\( x^2 - 13x + 42 = 0 \\) that is greater than \\( 6 \\).",
+          "ar": "<strong>[تدريب 2 · Easy]</strong> أوجد الجذر الموجب الأكبر من \\( 6 \\) للمعادلة \\( x^2 - 13x + 42 = 0 \\)."
+        },
+        "hints": [
+          {
+            "en": "Look for two integers whose sum is \\( 13 \\) and whose product is \\( 42 \\).",
+            "ar": "ابحث عن عددين مجموعهما \\( 13 \\) وحاصل ضربهما \\( 42 \\)."
+          },
+          {
+            "en": "Factor the quadratic as \\( (x - 6)(x - 7) = 0 \\).",
+            "ar": "حلل المعادلة إلى \\( (x - 6)(x - 7) = 0 \\)."
+          },
+          {
+            "en": "Compare the two roots \\( x = 6 \\) and \\( x = 7 \\) and select the larger root.",
+            "ar": "قارن بين الجذرين \\( x = 6 \\) و \\( x = 7 \\) واختر الأكبر."
+          }
+        ],
+        "solution": {
+          "en": "Factoring gives \\( (x - 6)(x - 7) = 0 \\), so the roots are \\( x = 6 \\) and \\( x = 7 \\). The root greater than \\( 6 \\) is \\( x = 7 \\).",
+          "ar": "بالتحليل نحصل على \\( (x - 6)(x - 7) = 0 \\)، وبذلك يكون الجذر الأكبر من \\( 6 \\) هو \\( x = 7 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Medium]</strong> If the quadratic equation \\( x^2 - 2kx + 54 = 0 \\) has equal (repeated) real roots and \\( k > 0 \\), find the exact value of \\( k^2 \\).",
+          "ar": "<strong>[تدريب 3 · Medium]</strong> إذا كان للمعادلة التربيعية \\( x^2 - 2kx + 54 = 0 \\) جذران حقيقيان متساويان وكان \\( k > 0 \\)، فأوجد قيمة \\( k^2 \\)."
+        },
+        "hints": [
+          {
+            "en": "For equal real roots, the discriminant \\( \\Delta = b^2 - 4ac \\) must equal zero.",
+            "ar": "لوجود جذرين متساويين يجب أن يكون المميز \\( \\Delta = b^2 - 4ac = 0 \\)."
+          },
+          {
+            "en": "Substitute \\( a = 1, b = -2k, c = 54 \\) into \\( (-2k)^2 - 4(1)(54) = 0 \\).",
+            "ar": "عوّض بالمعاملات في المميز: \\( (-2k)^2 - 4(1)(54) = 0 \\)."
+          },
+          {
+            "en": "Simplify \\( 4k^2 = 216 \\) and divide both sides by 4.",
+            "ar": "بسّط المعادلة \\( 4k^2 = 216 \\) واقسم الطرفين على 4."
+          }
+        ],
+        "solution": {
+          "en": "Setting the discriminant to zero: \\( \\Delta = (-2k)^2 - 4(1)(54) = 4k^2 - 216 = 0 \\implies k^2 = 54 \\).",
+          "ar": "بوضع المميز مساوياً للصفر: \\( 4k^2 - 216 = 0 \\implies k^2 = 54 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 4 · Hard]</strong> An arithmetic progression has first term \\( a = 6 \\) and common difference \\( d = 14 \\). Find the sum of the first \\( 10 \\) terms, \\( S_{10} \\).",
+          "ar": "<strong>[تدريب 4 · Hard]</strong> متتابعة حسابية حدها الأول \\( a = 6 \\) وأساسها \\( d = 14 \\). أوجد مجموع الحدود العشرة الأولى \\( S_{10} \\)."
+        },
+        "hints": [
+          {
+            "en": "Recall the arithmetic series sum formula \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\).",
+            "ar": "استخدم قانون مجموع المتسلسلة الحسابية \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\)."
+          },
+          {
+            "en": "Substitute \\( n = 10, a = 6, d = 14 \\): \\( S_{10} = 5[2(6) + 9(14)] \\).",
+            "ar": "عوّض بالقيم المعطاة: \\( S_{10} = 5[2(6) + 9(14)] \\)."
+          },
+          {
+            "en": "Evaluate \\( 5(12 + 126) = 690 \\).",
+            "ar": "احسب الناتج \\( 5(12 + 126) = 690 \\)."
+          }
+        ],
+        "solution": {
+          "en": "Using \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\), we have \\( S_{10} = \\frac{10}{2}[2(6) + 9(14)] = 5(138) = 690 \\).",
+          "ar": "بتطبيق قانون المجموع: \\( S_{10} = 5(12 + 126) = 690 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 5 · Hard]</strong> Find the instantaneous rate of change \\( \\frac{dy}{dx} \\) of the curve \\( y = x^3 + 6x^2 - 7x + 7 \\) at \\( x = 3 \\).",
+          "ar": "<strong>[تدريب 5 · Hard]</strong> أوجد معدل التغير اللحظي \\( \\frac{dy}{dx} \\) للمنحنى \\( y = x^3 + 6x^2 - 7x + 7 \\) عند \\( x = 3 \\)."
+        },
+        "hints": [
+          {
+            "en": "Differentiate \\( y = x^3 + 6x^2 - 7x + 7 \\) term by term with respect to \\( x \\).",
+            "ar": "اشتق معادلة المنحنى حداً بحداّ بالنسبة إلى \\( x \\)."
+          },
+          {
+            "en": "The derivative is \\( \\frac{dy}{dx} = 3x^2 + 12x - 7 \\).",
+            "ar": "المشتقة الأولى هي \\( \\frac{dy}{dx} = 3x^2 + 12x - 7 \\)."
+          },
+          {
+            "en": "Substitute \\( x = 3 \\): \\( 3(3)^2 + 12(3) - 7 = 56 \\).",
+            "ar": "عوّض عن \\( x = 3 \\) لحساب الميل: \\( 27 + 36 - 7 = 56 \\)."
+          }
+        ],
+        "solution": {
+          "en": "Differentiating gives \\( \\frac{dy}{dx} = 3x^2 + 12x - 7 \\). At \\( x = 3 \\), \\( \\frac{dy}{dx} = 3(9) + 36 - 7 = 56 \\).",
+          "ar": "المشتقة هي \\( \\frac{dy}{dx} = 3x^2 + 12x - 7 \\)، وعند \\( x = 3 \\) يكون الميل \\( 27 + 36 - 7 = 56 \\)."
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true,
+    "domains": [
+      "Recurrence Relations & Contest Probability"
+    ]
+  }
+}

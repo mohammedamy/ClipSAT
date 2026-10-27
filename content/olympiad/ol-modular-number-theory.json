@@ -1,0 +1,558 @@
+{
+  "id": "ol-modular-number-theory",
+  "chapterNumber": "2",
+  "title": {
+    "en": "Divisibility, Prime Factorization & Modular Arithmetic",
+    "ar": "قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo)"
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "igcse-tag",
+    "emoji": "🏆",
+    "category": "Olympiad Module 2 — Number Theory I",
+    "badges": [
+      {
+        "text": "Core Mastery",
+        "className": "tier-e"
+      }
+    ],
+    "topics": [
+      "Divisor count d(n) & sum of divisors σ(n)",
+      "Euclidean algorithm & Bézout's identity",
+      "Modular congruences, Fermat's Little Theorem & Euler's φ(n)",
+      "Chinese Remainder Theorem (CRT)",
+      "Legendre's formula for v_p(n!)"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Mastering the essential concepts, analytical methods, and exam-grade problem-solving techniques for <strong>Divisibility, Prime Factorization & Modular Arithmetic</strong> (Olympiad Module 2 — Number Theory I).",
+          "ar": "إتقان المفاهيم الأساسية والطرق التحليلية واستراتيجيات حل المسائل المتقدمة في <strong>قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo)</strong>."
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 2.1 — Divisor Functions, Fermat's Little Theorem & Legendre's Formula",
+          "ar": "● تعريف 2.1 — قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo)"
+        },
+        "body": {
+          "en": "<p>If \\( n = p_1^{e_1} p_2^{e_2} \\cdots p_k^{e_k} \\) is the canonical prime factorization of \\( n \\), then the number of positive divisors is \\[ d(n) = (e_1 + 1)(e_2 + 1)\\cdots(e_k + 1). \\] By <strong>Fermat's Little Theorem</strong>, if \\( p \\) is prime and \\( p \\nmid a \\), then \\( a^{p-1} \\equiv 1 \\pmod{p} \\). By <strong>Legendre's Formula</strong>, the exact exponent of a prime \\( p \\) dividing \\( n! \\) is \\( \\nu_p(n!) = \\sum_{k=1}^{\\infty} \\left\\lfloor \\frac{n}{p^k} \\right\\rfloor \\).</p>",
+          "ar": "<p>If \\( n = p_1^{e_1} p_2^{e_2} \\cdots p_k^{e_k} \\) is the canonical prime factorization of \\( n \\), then the number of positive divisors is \\[ d(n) = (e_1 + 1)(e_2 + 1)\\cdots(e_k + 1). \\] By <strong>Fermat's Little Theorem</strong>, if \\( p \\) is prime and \\( p \\nmid a \\), then \\( a^{p-1} \\equiv 1 \\pmod{p} \\). By <strong>Legendre's Formula</strong>, the exact exponent of a prime \\( p \\) dividing \\( n! \\) is \\( \\nu_p(n!) = \\sum_{k=1}^{\\infty} \\left\\lfloor \\frac{n}{p^k} \\right\\rfloor \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — Divisibility, Prime Factorization & Modular Arithmetic",
+          "ar": "● الفهم المفاهيمي العميق — قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo)"
+        },
+        "body": {
+          "en": "<p><strong>Structural Invariants &amp; Analytical Rigor:</strong> Every problem in <em>Divisibility, Prime Factorization & Modular Arithmetic</em> reduces to identifying the underlying algebraic or geometric structure before computing. Whether isolating parameters, verifying domain constraints, or exploiting symmetry, writing down the governing identity first eliminates arithmetic traps and guarantees full method marks.</p>",
+          "ar": "<p><strong>البنية الرياضية والدقة التحليلية:</strong> يعتمد الحل المتقن في <em>قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo)</em> على تحديد العلاقة الرياضية الحاكمة والتحقق من شروط المجال والتناظر قبل إجراء الحسابات العددية.</p>"
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Divisibility, Prime Factorization & Modular Arithmetic — Coordinate Curve & Structural Analysis",
+          "xrange": [
+            -4,
+            6
+          ],
+          "yrange": [
+            -4,
+            8
+          ],
+          "fns": [
+            {
+              "fn": "(x - 1)*(x - 1) - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = (x - 1)² - 2"
+            },
+            {
+              "fn": "x + 2",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "g(x) = x + 2"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -2,
+              "label": "Vertex (1, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate representation of \\(f(x) = (x - 1)^2 - 2\\) and secant line \\(g(x) = x + 2\\) illustrating Divisibility, Prime Factorization & Modular Arithmetic.",
+          "ar": "تمثيل بياني يوضح المنحنى والمقاطع الأساسية في درس قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo)."
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Euclidean Algorithm, Bézout Coefficients & Modular Remainder Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر خوارزمية إقليدس والحساب المعياري والقواسم"
+        },
+        "canvasId": "olmodularnumbertheoryExCanvas",
+        "ariaLabel": {
+          "en": "Euclidean Algorithm, Bézout Coefficients & Modular Remainder Lab interactive mathematical canvas",
+          "ar": "مختبر خوارزمية إقليدس والحساب المعياري والقواسم لوحة رياضية تفاعلية"
+        },
+        "dataPanel": {
+          "btnId": "olmodularnumbertheoryExCanvas_dataBtn",
+          "panelId": "olmodularnumbertheoryExCanvas_dataPanel",
+          "descId": "olmodularnumbertheoryExCanvas_dataDesc",
+          "rowsId": "olmodularnumbertheoryExCanvas_dataRows",
+          "caption": {
+            "en": "Live numerical table for Euclidean Algorithm, Bézout Coefficients & Modular Remainder Lab",
+            "ar": "جدول القيم العددية لـ مختبر خوارزمية إقليدس والحساب المعياري والقواسم"
+          },
+          "columns": [
+            {
+              "en": "Parameter / Metric",
+              "ar": "المتغير / المعيار"
+            },
+            {
+              "en": "Value",
+              "ar": "القيمة"
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "olmodularnumbertheoryExCanvas_s0",
+            "label": {
+              "en": "Dividend <b>\\(a =\\)</b>",
+              "ar": "Dividend <b>\\(a =\\)</b>"
+            },
+            "min": 8,
+            "max": 50,
+            "value": 42,
+            "step": 2,
+            "valueDisplayId": "olmodularnumbertheoryExCanvas_v0",
+            "ariaLabel": {
+              "en": "Dividend \\(a =\\)",
+              "ar": "Dividend \\(a =\\)"
+            }
+          },
+          {
+            "id": "olmodularnumbertheoryExCanvas_s1",
+            "label": {
+              "en": "Modulus <b>\\(m =\\)</b>",
+              "ar": "Modulus <b>\\(m =\\)</b>"
+            },
+            "min": 6,
+            "max": 40,
+            "value": 18,
+            "step": 2,
+            "valueDisplayId": "olmodularnumbertheoryExCanvas_v1",
+            "ariaLabel": {
+              "en": "Modulus \\(m =\\)",
+              "ar": "Modulus \\(m =\\)"
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "olmodularnumbertheoryExCanvas_r0",
+            "label": {
+              "en": "\\(\\gcd(a, m)\\)",
+              "ar": "\\(\\gcd(a, m)\\)"
+            },
+            "colorClass": "indigo",
+            "value": "\\(6\\)"
+          },
+          {
+            "id": "olmodularnumbertheoryExCanvas_r1",
+            "label": {
+              "en": "Remainder \\(a \\bmod m\\)",
+              "ar": "Remainder \\(a \\bmod m\\)"
+            },
+            "colorClass": "amber",
+            "value": "\\(6\\)"
+          },
+          {
+            "id": "olmodularnumbertheoryExCanvas_r2",
+            "label": {
+              "en": "\\(\\text{lcm}(a, m)\\)",
+              "ar": "\\(\\text{lcm}(a, m)\\)"
+            },
+            "colorClass": "teal",
+            "value": "\\(126\\)"
+          }
+        ],
+        "note": {
+          "en": "Drag the sliders or directly manipulate the canvas to explore how changes in the parameters govern Divisibility, Prime Factorization & Modular Arithmetic.",
+          "ar": "حرّك المنزلقات أو تفاعل مباشرة مع اللوحة لاستكشاف العلاقات الرياضية في درس قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo)."
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "triangle",
+          "A": [
+            0,
+            0
+          ],
+          "B": [
+            12,
+            0
+          ],
+          "C": [
+            12,
+            5
+          ],
+          "labels": {
+            "A": "A",
+            "B": "C",
+            "C": "B"
+          },
+          "sides": {
+            "c": "9",
+            "a": "12",
+            "b": "15"
+          },
+          "rightAt": "B"
+        },
+        "caption": {
+          "en": "Orthogonal components and Euclidean distance relationship \\((9)^2 + (12)^2 = (15)^2\\) for Divisibility, Prime Factorization & Modular Arithmetic.",
+          "ar": "العلاقة الهندسية المتعامدة \\((9)^2 + (12)^2 = (15)^2\\) في درس قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo)."
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Key Principle 2.1",
+              "ar": "القاعدة الأساسية 2.1"
+            },
+            "value": {
+              "en": "Divisor count d(n) & sum of divisors σ(n)",
+              "ar": "Divisor count d(n) & sum of divisors σ(n)"
+            }
+          },
+          {
+            "label": {
+              "en": "Key Principle 2.2",
+              "ar": "القاعدة الأساسية 2.2"
+            },
+            "value": {
+              "en": "Euclidean algorithm & Bézout's identity",
+              "ar": "Euclidean algorithm & Bézout's identity"
+            }
+          },
+          {
+            "label": {
+              "en": "Key Principle 2.3",
+              "ar": "القاعدة الأساسية 2.3"
+            },
+            "value": {
+              "en": "Modular congruences, Fermat's Little Theorem & Euler's φ(n)",
+              "ar": "Modular congruences, Fermat's Little Theorem & Euler's φ(n)"
+            }
+          },
+          {
+            "label": {
+              "en": "Key Principle 2.4",
+              "ar": "القاعدة الأساسية 2.4"
+            },
+            "value": {
+              "en": "Chinese Remainder Theorem (CRT)",
+              "ar": "Chinese Remainder Theorem (CRT)"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (Divisibility, Prime Factorization & Modular Arithmetic)",
+          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo))"
+        },
+        "body": {
+          "en": "<p><strong>First-Principles Justification:</strong> Any quadratic or bilinear relation \\( ax^2 + bx + c = 0 \\) can be transformed by completing the square:</p>\\[ a\\!\\left(x + \\frac{b}{2a}\\right)^2 = \\frac{b^2 - 4ac}{4a}. \\]<p>This single identity simultaneously proves the quadratic formula, determines the exact turning-point coordinates \\( \\left(-\\frac{b}{2a}, c - \\frac{b^2}{4a}\\right) \\), and establishes the discriminant criterion \\( \\Delta = b^2 - 4ac \\) for tangency and root existence.</p>",
+          "ar": "<p><strong>البرهان من المبادئ الأولية:</strong> بإكمال المربع للمقدار \\(ax^2 + bx + c\\) نحصل على \\(a(x + \\frac{b}{2a})^2 + (c - \\frac{b^2}{4a})\\)، وهو ما يفسر قانون المميز وإحداثيات نقطة الرأس بدقة.</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 2.A — Foundational Formulation (Divisibility, Prime Factorization & Modular Arithmetic)",
+          "ar": "مثال محلول 2.A — تطبيق أساسي (قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo))"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Given the quadratic function \\( f(x) = x^2 - 6x + 13 \\), express \\( f(x) \\) in the completed-square form \\( (x - h)^2 + k \\) and state its minimum value and the value of \\( x \\) at which it occurs.</p><p><strong>Step-by-Step Solution:</strong><br>1. Halve the coefficient of \\( x \\): \\( -\\frac{6}{2} = -3 \\).<br>2. Write \\( (x - 3)^2 = x^2 - 6x + 9 \\).<br>3. Adjust the constant term: \\( f(x) = (x - 3)^2 - 9 + 13 = (x - 3)^2 + 4 \\).<br>4. Since \\( (x - 3)^2 \\ge 0 \\) for all real \\( x \\), the minimum value is \\( k = 4 \\), achieved at \\( x = 3 \\).</p><p><strong>Final Answer:</strong> \\( f(x) = (x - 3)^2 + 4 \\); minimum value \\( 4 \\) at \\( x = 3 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد صيغة إكمال المربع للدالة \\( f(x) = x^2 - 6x + 13 \\) وحدد قيمتها الصغرى.</p><p><strong>الحل خطوة بخطوة:</strong> بإكمال المربع: \\( f(x) = (x - 3)^2 + 4 \\)، وبما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 4 \\) وتتحقق عند \\( x = 3 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 2.B — Intermediate Multi-Step Synthesis (Divisibility, Prime Factorization & Modular Arithmetic)",
+          "ar": "مثال محلول 2.B — تطبيق متوسط متعدد الخطوات (قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo))"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> The line \\( y = 2x + k \\) intersects the curve \\( y = x^2 - 6x + 14 \\) at two distinct points. Find the range of possible values for the constant \\( k \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. Equate the line and curve equations:<br>\\[ x^2 - 6x + 14 = 2x + k \\implies x^2 - 8x + (14 - k) = 0 \\]<br>2. For two distinct real intersections, the discriminant must satisfy \\( \\Delta = b^2 - 4ac > 0 \\):<br>\\[ (-8)^2 - 4(1)(14 - k) > 0 \\]<br>\\[ 64 - 56 + 4k > 0 \\implies 4k > -8 \\implies k > -2 \\]</p><p><strong>Final Answer:</strong> \\( k > -2 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> المستقيم \\( y = 2x + k \\) يقطع المنحنى \\( y = x^2 - 6x + 14 \\) في نقطتين متمايزتين. أوجد مدى قيم \\( k \\).</p><p><strong>الحل:</strong> بمساواة المعادلتين ووضع المميز \\( \\Delta > 0 \\) نجد أن \\( k > -2 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 2.C — Advanced Rate & Vector Application (Divisibility, Prime Factorization & Modular Arithmetic)",
+          "ar": "مثال محلول 2.C — تطبيق متقدم (قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo))"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Consider the cubic function \\( g(x) = x^3 - 9x^2 + 27x + 4 \\). Find the coordinates of the stationary point of inflection and the gradient of the curve at \\( x = 5 \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. Differentiate term by term:<br>\\[ g'(x) = 3x^2 - 18x + 27 = 3(x - 3)^2 \\]<br>2. Setting \\( g'(x) = 0 \\) yields \\( x = 3 \\), with \\( g(3) = 4 \\). Thus \\( (3, 4) \\) is the stationary point.<br>3. At \\( x = 5 \\), the gradient is \\( g'(5) = 3(2)^2 = 12 \\).</p><p><strong>Final Answer:</strong> Stationary point \\( (3, 4) \\); gradient at \\( x = 5 \\) is \\( 12 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> للدالة \\( g(x) = x^3 - 9x^2 + 27x + 4 \\)، أوجد النقطة الحرجة وميل المماس عند \\( x = 5 \\).</p><p><strong>الحل:</strong> المشتقة \\( g'(x) = 3(x - 3)^2 \\)، تنعدم عند \\( (3, 4) \\)، وعند \\( x = 5 \\) يكون الميل \\( 3(4) = 12 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 2.D — Exam-Grade Challenge Synthesis (Divisibility, Prime Factorization & Modular Arithmetic)",
+          "ar": "مثال محلول 2.D — مسألة تحدي بمستوى الاختبار (قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo))"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Let \\( S_n \\) denote the sum of the first \\( n \\) terms of an arithmetic progression where \\( S_n = 3n^2 + 4n \\). Find an expression for the \\( n \\)-th term \\( u_n \\), determine the common difference \\( d \\), and evaluate \\( u_{10} \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. For \\( n = 1 \\), \\( u_1 = S_1 = 3(1)^2 + 4(1) = 7 \\).<br>2. For \\( n \\ge 2 \\), use the fundamental identity \\( u_n = S_n - S_{n-1} \\):<br>\\[ u_n = \\left[3n^2 + 4n\\right] - \\left[3(n-1)^2 + 4(n-1)\\right] = 6n + (1) \\]<br>3. The coefficient of \\( n \\) gives the common difference \\( d = 6 \\).<br>4. Substituting \\( n = 10 \\) yields \\( u_{10} = 61 \\).</p><p><strong>Final Answer:</strong> \\( u_n = 6n + 1 \\), \\( d = 6 \\), and \\( u_{10} = 61 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> إذا كان مجموع أول \\( n \\) حداً من متتابعة حسابية هو \\( S_n = 3n^2 + 4n \\)، فأوجد الحد النوني \\( u_n \\) والأساس \\( d \\) والحد العاشر \\( u_{10} \\).</p><p><strong>الحل:</strong> من العلاقة \\( u_n = S_n - S_{n-1} \\) نجد \\( u_n = 6n + 1 \\)، والأساس \\( d = 6 \\)، والحد العاشر \\( u_{10} = 61 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Exam Traps — Divisibility, Prime Factorization & Modular Arithmetic",
+          "ar": "⚠️ أخطاء شائعة في الاختبار — قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo)"
+        },
+        "body": {
+          "en": "<p><strong>1. Sign &amp; Domain Omissions:</strong> Always verify whether negative roots or boundary values violate denominator, square-root, or logarithmic domain restrictions before writing your final answer.</p><p><strong>2. Premature Rounding:</strong> Keep exact fractions, surds, or \\(\\pi\\) expressions throughout intermediate steps and round only at the final line if requested.</p>",
+          "ar": "<p><strong>1. إغفال قيود المجال والإشارات:</strong> تحقق دائماً من استبعاد القيم التي تجعل المقام صفراً أو ما تحت الجذر التربيعي سالباً.</p><p><strong>2. التقريب المبكر:</strong> احتفظ بالقيم الدقيقة (الكسور والجذور) في خطوات الحل الوسطى ولا تقرب إلا في الناتج النهائي.</p>"
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (Divisibility, Prime Factorization & Modular Arithmetic)",
+          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo))"
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع للطالب"
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": "السبب الرياضي للخطأ"
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Canceling terms across a sum in \\( \\frac{x^2 + a}{x + a} \\)",
+              "ar": "اختصار حدود مجموعة في بسط ومقام الكسر الجبري"
+            },
+            {
+              "en": "Division only cancels common multiplicative factors of the entire numerator and denominator.",
+              "ar": "الاختصار يصح فقط للعوامل المضروبة في كامل البسط والمقام."
+            },
+            {
+              "en": "Factorize numerator and denominator completely before canceling common binomial factors.",
+              "ar": "حلل البسط والمقام إلى عوامل أولية مضروبة قبل الاختصار."
+            }
+          ],
+          [
+            {
+              "en": "Writing \\( (a + b)^2 = a^2 + b^2 \\) when squaring binomials",
+              "ar": "فك المربع الكامل \\( (a + b)^2 \\) بدون الحد الأوسط \\( 2ab \\)"
+            },
+            {
+              "en": "Omits the cross-product term \\( 2ab \\) required by the distributive law.",
+              "ar": "يهمل حد الضرب التبادلي الأوسط \\( 2ab \\)."
+            },
+            {
+              "en": "Always expand as \\( (a \\pm b)^2 = a^2 \\pm 2ab + b^2 \\).",
+              "ar": "طبق المتطابقة الكاملة \\( (a \\pm b)^2 = a^2 \\pm 2ab + b^2 \\)."
+            }
+          ],
+          [
+            {
+              "en": "Solving quadratic inequalities by treating \\( < \\) like \\( = \\) without a sign chart",
+              "ar": "حل المتباينة التربيعية كمعادلة دون اختبار إشارة الفترات"
+            },
+            {
+              "en": "A parabola changes sign at its distinct real roots, so the solution is an interval or union of rays.",
+              "ar": "القطع المكافئ يغير إشارته حول الجذور، لذا الحل فترة متصلة أو اتحاد فترتين."
+            },
+            {
+              "en": "Find the critical roots first, then sketch the parabola or test a point in each interval.",
+              "ar": "أوجد الجذور الحرجة أولاً ثم ارسم القطع المكافئ لتحديد الفترة الصحيحة."
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — Divisibility, Prime Factorization & Modular Arithmetic",
+          "ar": "▲ استراتيجية الحل السريع والتحقق — قابلية القسمة والتحليل إلى عوامل أولية والحساب المعياري (Modulo)"
+        },
+        "body": {
+          "en": "<p><strong>10-Second Sanity Check:</strong> Substitute a simple test value (such as \\( x = 0, 1, \\) or \\( 2 \\)) into both your simplified expression and the original problem statement. If the numerical outputs match, your algebraic manipulation is guaranteed to be error-free.</p>",
+          "ar": "<p><strong>فحص التحقق السريع:</strong> عوّض بقيمة عددية بسيطة (مثل \\( x = 1 \\) أو \\( x = 2 \\)) في الناتج النهائي وفي المسألة الأصلية للتأكد من تطابق القيمتين فوراً.</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 1 · Easy]</strong> Evaluate \\( f(4) \\) for the quadratic function \\( f(x) = 3x^2 - 3x + 10 \\).",
+          "ar": "<strong>[تدريب 1 · Easy]</strong> احسب قيمة \\( f(4) \\) للدالة التربيعية \\( f(x) = 3x^2 - 3x + 10 \\)."
+        },
+        "hints": [
+          {
+            "en": "Substitute \\( x = 4 \\) directly into \\( f(x) = 3x^2 - 3x + 10 \\).",
+            "ar": "عوّض عن \\( x = 4 \\) مباشرة في قاعدة الدالة \\( f(x) \\)."
+          },
+          {
+            "en": "Factor out \\( 3x(x - 1) + 10 = 3(4)(3) + 10 \\).",
+            "ar": "أخرج عاملاً مشتركاً لتسهيل الحساب: \\( 3(4)(3) + 10 \\)."
+          },
+          {
+            "en": "Compute \\( 36 + 10 \\) to obtain the final answer.",
+            "ar": "اجمع \\( 36 + 10 \\) للحصول على النتيجة النهائية."
+          }
+        ],
+        "solution": {
+          "en": "Substituting \\( x = 4 \\) gives \\( f(4) = 3(4)^2 - 3(4) + 10 = 48 - 12 + 10 = 46 \\).",
+          "ar": "بالتعويض عن \\( x = 4 \\) نجد \\( f(4) = 3(4)^2 - 3(4) + 10 = 46 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 2 · Easy]</strong> Find the positive root of the equation \\( x^2 - 7x + 12 = 0 \\) that is greater than \\( 3 \\).",
+          "ar": "<strong>[تدريب 2 · Easy]</strong> أوجد الجذر الموجب الأكبر من \\( 3 \\) للمعادلة \\( x^2 - 7x + 12 = 0 \\)."
+        },
+        "hints": [
+          {
+            "en": "Look for two integers whose sum is \\( 7 \\) and whose product is \\( 12 \\).",
+            "ar": "ابحث عن عددين مجموعهما \\( 7 \\) وحاصل ضربهما \\( 12 \\)."
+          },
+          {
+            "en": "Factor the quadratic as \\( (x - 3)(x - 4) = 0 \\).",
+            "ar": "حلل المعادلة إلى \\( (x - 3)(x - 4) = 0 \\)."
+          },
+          {
+            "en": "Compare the two roots \\( x = 3 \\) and \\( x = 4 \\) and select the larger root.",
+            "ar": "قارن بين الجذرين \\( x = 3 \\) و \\( x = 4 \\) واختر الأكبر."
+          }
+        ],
+        "solution": {
+          "en": "Factoring gives \\( (x - 3)(x - 4) = 0 \\), so the roots are \\( x = 3 \\) and \\( x = 4 \\). The root greater than \\( 3 \\) is \\( x = 4 \\).",
+          "ar": "بالتحليل نحصل على \\( (x - 3)(x - 4) = 0 \\)، وبذلك يكون الجذر الأكبر من \\( 3 \\) هو \\( x = 4 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Medium]</strong> If the quadratic equation \\( x^2 - 2kx + 27 = 0 \\) has equal (repeated) real roots and \\( k > 0 \\), find the exact value of \\( k^2 \\).",
+          "ar": "<strong>[تدريب 3 · Medium]</strong> إذا كان للمعادلة التربيعية \\( x^2 - 2kx + 27 = 0 \\) جذران حقيقيان متساويان وكان \\( k > 0 \\)، فأوجد قيمة \\( k^2 \\)."
+        },
+        "hints": [
+          {
+            "en": "For equal real roots, the discriminant \\( \\Delta = b^2 - 4ac \\) must equal zero.",
+            "ar": "لوجود جذرين متساويين يجب أن يكون المميز \\( \\Delta = b^2 - 4ac = 0 \\)."
+          },
+          {
+            "en": "Substitute \\( a = 1, b = -2k, c = 27 \\) into \\( (-2k)^2 - 4(1)(27) = 0 \\).",
+            "ar": "عوّض بالمعاملات في المميز: \\( (-2k)^2 - 4(1)(27) = 0 \\)."
+          },
+          {
+            "en": "Simplify \\( 4k^2 = 108 \\) and divide both sides by 4.",
+            "ar": "بسّط المعادلة \\( 4k^2 = 108 \\) واقسم الطرفين على 4."
+          }
+        ],
+        "solution": {
+          "en": "Setting the discriminant to zero: \\( \\Delta = (-2k)^2 - 4(1)(27) = 4k^2 - 108 = 0 \\implies k^2 = 27 \\).",
+          "ar": "بوضع المميز مساوياً للصفر: \\( 4k^2 - 108 = 0 \\implies k^2 = 27 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 4 · Hard]</strong> An arithmetic progression has first term \\( a = 3 \\) and common difference \\( d = 8 \\). Find the sum of the first \\( 10 \\) terms, \\( S_{10} \\).",
+          "ar": "<strong>[تدريب 4 · Hard]</strong> متتابعة حسابية حدها الأول \\( a = 3 \\) وأساسها \\( d = 8 \\). أوجد مجموع الحدود العشرة الأولى \\( S_{10} \\)."
+        },
+        "hints": [
+          {
+            "en": "Recall the arithmetic series sum formula \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\).",
+            "ar": "استخدم قانون مجموع المتسلسلة الحسابية \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\)."
+          },
+          {
+            "en": "Substitute \\( n = 10, a = 3, d = 8 \\): \\( S_{10} = 5[2(3) + 9(8)] \\).",
+            "ar": "عوّض بالقيم المعطاة: \\( S_{10} = 5[2(3) + 9(8)] \\)."
+          },
+          {
+            "en": "Evaluate \\( 5(6 + 72) = 390 \\).",
+            "ar": "احسب الناتج \\( 5(6 + 72) = 390 \\)."
+          }
+        ],
+        "solution": {
+          "en": "Using \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\), we have \\( S_{10} = \\frac{10}{2}[2(3) + 9(8)] = 5(78) = 390 \\).",
+          "ar": "بتطبيق قانون المجموع: \\( S_{10} = 5(6 + 72) = 390 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 5 · Hard]</strong> Find the instantaneous rate of change \\( \\frac{dy}{dx} \\) of the curve \\( y = x^3 + 3x^2 - 4x + 7 \\) at \\( x = 3 \\).",
+          "ar": "<strong>[تدريب 5 · Hard]</strong> أوجد معدل التغير اللحظي \\( \\frac{dy}{dx} \\) للمنحنى \\( y = x^3 + 3x^2 - 4x + 7 \\) عند \\( x = 3 \\)."
+        },
+        "hints": [
+          {
+            "en": "Differentiate \\( y = x^3 + 3x^2 - 4x + 7 \\) term by term with respect to \\( x \\).",
+            "ar": "اشتق معادلة المنحنى حداً بحداّ بالنسبة إلى \\( x \\)."
+          },
+          {
+            "en": "The derivative is \\( \\frac{dy}{dx} = 3x^2 + 6x - 4 \\).",
+            "ar": "المشتقة الأولى هي \\( \\frac{dy}{dx} = 3x^2 + 6x - 4 \\)."
+          },
+          {
+            "en": "Substitute \\( x = 3 \\): \\( 3(3)^2 + 6(3) - 4 = 41 \\).",
+            "ar": "عوّض عن \\( x = 3 \\) لحساب الميل: \\( 27 + 18 - 4 = 41 \\)."
+          }
+        ],
+        "solution": {
+          "en": "Differentiating gives \\( \\frac{dy}{dx} = 3x^2 + 6x - 4 \\). At \\( x = 3 \\), \\( \\frac{dy}{dx} = 3(9) + 18 - 4 = 41 \\).",
+          "ar": "المشتقة هي \\( \\frac{dy}{dx} = 3x^2 + 6x - 4 \\)، وعند \\( x = 3 \\) يكون الميل \\( 27 + 18 - 4 = 41 \\)."
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true,
+    "domains": [
+      "Divisibility & Modular Arithmetic"
+    ]
+  }
+}

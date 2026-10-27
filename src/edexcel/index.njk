@@ -1,0 +1,38 @@
+---
+layout: base.njk
+trackId: edexcel
+title: "Pearson Edexcel IGCSE Mathematics A (4MA1 Higher) · ClipSAT"
+description: "Pearson Edexcel International GCSE Mathematics A (4MA1 Higher Tier) — Surds, Algebraic Fractions, Differentiation, 3D Trigonometry, Circle Theorems & Histograms"
+isRtl: false
+---
+{% set edexcel = migratedContent.edexcel %}
+{% set pageHeader = edexcel.meta.meta.pageHeader %}
+<main id="view-edexcel" class="view active">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = edexcel.chapters %}
+    {% set practiceSetId = 'edx-practice' %}
+    {% set testGeneratorId = 'edx-testgen' %}
+    {% set downloadsId = 'edx-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in edexcel.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'edx-practice' %}
+      {% set practiceSet = edexcel.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'edx-testgen' %}
+      {% set testGenerator = edexcel.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'edx-downloads' %}
+      {% set courseMeta = edexcel.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

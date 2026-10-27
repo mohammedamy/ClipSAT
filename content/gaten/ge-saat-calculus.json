@@ -1,0 +1,568 @@
+{
+  "id": "ge-saat-calculus",
+  "chapterNumber": "8",
+  "title": {
+    "en": "SAAT Limits, Derivatives, Definite Integrals & Area",
+    "ar": "النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT)"
+  },
+  "chapterTag": {
+    "variant": "category",
+    "className": "igcse-tag",
+    "emoji": "🇸🇦",
+    "category": "SAAT Module 8 — Differential & Integral Calculus",
+    "badges": [
+      {
+        "text": "Core Mastery",
+        "className": "tier-e"
+      }
+    ],
+    "topics": [
+      "Algebraic limits & limits at infinity",
+      "Power, product & quotient derivative rules",
+      "Critical points, local extrema & tangent lines",
+      "Antiderivatives & Fundamental Theorem of Calculus",
+      "Area under a curve & kinematic velocity/acceleration"
+    ]
+  },
+  "content": {
+    "blocks": [
+      {
+        "kind": "text",
+        "body": {
+          "en": "Mastering the essential concepts, analytical methods, and exam-grade problem-solving techniques for <strong>SAAT Limits, Derivatives, Definite Integrals & Area</strong> (SAAT Module 8 — Differential & Integral Calculus).",
+          "ar": "إتقان المفاهيم الأساسية والطرق التحليلية واستراتيجيات حل المسائل المتقدمة في <strong>النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT)</strong>."
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Definition 8.1 — High-Speed SAAT Calculus Rules (Limits, Extrema & FTC)",
+          "ar": "● تعريف 8.1 — النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT)"
+        },
+        "body": {
+          "en": "<p>High-yield SAAT Year 3 Calculus shortcuts: (1) <strong>0/0 Algebraic Limits:</strong> factor and cancel \\( (x - a) \\), or differentiate numerator and denominator: \\( \\lim_{x\\to a}\\frac{x^n - a^n}{x - a} = na^{n-1} \\); (2) <strong>Critical Points:</strong> local maxima and minima of a polynomial \\( f(x) \\) occur where \\( f'(x) = 0 \\); (3) <strong>Fundamental Theorem of Calculus:</strong> if \\( F'(x) = f(x) \\), then \\( \\int_a^b f(x)\\,dx = F(b) - F(a) \\), and \\( \\int_{-a}^{a} g(x)\\,dx = 0 \\) for any odd function \\( g(-x) = -g(x) \\).</p>",
+          "ar": "<p>High-yield SAAT Year 3 Calculus shortcuts: (1) <strong>0/0 Algebraic Limits:</strong> factor and cancel \\( (x - a) \\), or differentiate numerator and denominator: \\( \\lim_{x\\to a}\\frac{x^n - a^n}{x - a} = na^{n-1} \\); (2) <strong>Critical Points:</strong> local maxima and minima of a polynomial \\( f(x) \\) occur where \\( f'(x) = 0 \\); (3) <strong>Fundamental Theorem of Calculus:</strong> if \\( F'(x) = f(x) \\), then \\( \\int_a^b f(x)\\,dx = F(b) - F(a) \\), and \\( \\int_{-a}^{a} g(x)\\,dx = 0 \\) for any odd function \\( g(-x) = -g(x) \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "def",
+        "label": {
+          "en": "● Deep Conceptual Intuition — SAAT Limits, Derivatives, Definite Integrals & Area",
+          "ar": "● الفهم المفاهيمي العميق — النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT)"
+        },
+        "body": {
+          "en": "<p><strong>Structural Invariants &amp; Analytical Rigor:</strong> Every problem in <em>SAAT Limits, Derivatives, Definite Integrals & Area</em> reduces to identifying the underlying algebraic or geometric structure before computing. Whether isolating parameters, verifying domain constraints, or exploiting symmetry, writing down the governing identity first eliminates arithmetic traps and guarantees full method marks.</p>",
+          "ar": "<p><strong>البنية الرياضية والدقة التحليلية:</strong> يعتمد الحل المتقن في <em>النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT)</em> على تحديد العلاقة الرياضية الحاكمة والتحقق من شروط المجال والتناظر قبل إجراء الحسابات العددية.</p>"
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "SAAT Limits, Derivatives, Definite Integrals & Area — Coordinate Curve & Structural Analysis",
+          "xrange": [
+            -4,
+            6
+          ],
+          "yrange": [
+            -4,
+            8
+          ],
+          "fns": [
+            {
+              "fn": "(x - 1)*(x - 1) - 2",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = (x - 1)² - 2"
+            },
+            {
+              "fn": "x + 2",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "g(x) = x + 2"
+            }
+          ],
+          "points": [
+            {
+              "x": 1,
+              "y": -2,
+              "label": "Vertex (1, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate representation of \\(f(x) = (x - 1)^2 - 2\\) and secant line \\(g(x) = x + 2\\) illustrating SAAT Limits, Derivatives, Definite Integrals & Area.",
+          "ar": "تمثيل بياني يوضح المنحنى والمقاطع الأساسية في درس النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT)."
+        }
+      },
+      {
+        "kind": "explorer",
+        "title": {
+          "en": "⊙ Explorer · Fundamental Theorem of Calculus: Derivative, Curve & Area Lab",
+          "ar": "⊙ مستكشف تفاعلي · مختبر النظرية الأساسية للتفاضل والتكامل والمساحة تحت المنحنى"
+        },
+        "canvasId": "gesaatcalculusExCanvas",
+        "ariaLabel": {
+          "en": "Fundamental Theorem of Calculus: Derivative, Curve & Area Lab interactive mathematical canvas",
+          "ar": "مختبر النظرية الأساسية للتفاضل والتكامل والمساحة تحت المنحنى لوحة رياضية تفاعلية"
+        },
+        "dataPanel": {
+          "btnId": "gesaatcalculusExCanvas_dataBtn",
+          "panelId": "gesaatcalculusExCanvas_dataPanel",
+          "descId": "gesaatcalculusExCanvas_dataDesc",
+          "rowsId": "gesaatcalculusExCanvas_dataRows",
+          "caption": {
+            "en": "Live numerical table for Fundamental Theorem of Calculus: Derivative, Curve & Area Lab",
+            "ar": "جدول القيم العددية لـ مختبر النظرية الأساسية للتفاضل والتكامل والمساحة تحت المنحنى"
+          },
+          "columns": [
+            {
+              "en": "Parameter / Metric",
+              "ar": "المتغير / المعيار"
+            },
+            {
+              "en": "Value",
+              "ar": "القيمة"
+            }
+          ]
+        },
+        "controls": [
+          {
+            "id": "gesaatcalculusExCanvas_s0",
+            "label": {
+              "en": "Upper Bound <b>\\(b =\\)</b>",
+              "ar": "Upper Bound <b>\\(b =\\)</b>"
+            },
+            "min": 0.5,
+            "max": 3.5,
+            "value": 2,
+            "step": 0.5,
+            "valueDisplayId": "gesaatcalculusExCanvas_v0",
+            "ariaLabel": {
+              "en": "Upper Bound \\(b =\\)",
+              "ar": "Upper Bound \\(b =\\)"
+            }
+          },
+          {
+            "id": "gesaatcalculusExCanvas_s1",
+            "label": {
+              "en": "Quadratic Scale <b>\\(k =\\)</b>",
+              "ar": "Quadratic Scale <b>\\(k =\\)</b>"
+            },
+            "min": 0.5,
+            "max": 2.5,
+            "value": 1,
+            "step": 0.5,
+            "valueDisplayId": "gesaatcalculusExCanvas_v1",
+            "ariaLabel": {
+              "en": "Quadratic Scale \\(k =\\)",
+              "ar": "Quadratic Scale \\(k =\\)"
+            }
+          }
+        ],
+        "readouts": [
+          {
+            "id": "gesaatcalculusExCanvas_r0",
+            "label": {
+              "en": "Accumulated Area \\(\\int_0^b f(x)\\,dx\\)",
+              "ar": "Accumulated Area \\(\\int_0^b f(x)\\,dx\\)"
+            },
+            "colorClass": "indigo",
+            "value": "\\(2.67\\)"
+          },
+          {
+            "id": "gesaatcalculusExCanvas_r1",
+            "label": {
+              "en": "Instantaneous Rate \\(f'(b)\\)",
+              "ar": "Instantaneous Rate \\(f'(b)\\)"
+            },
+            "colorClass": "amber",
+            "value": "\\(4.00\\)"
+          },
+          {
+            "id": "gesaatcalculusExCanvas_r2",
+            "label": {
+              "en": "Function Value \\(f(b)\\)",
+              "ar": "Function Value \\(f(b)\\)"
+            },
+            "colorClass": "teal",
+            "value": "\\(4.00\\)"
+          }
+        ],
+        "note": {
+          "en": "Drag the sliders or directly manipulate the canvas to explore how changes in the parameters govern SAAT Limits, Derivatives, Definite Integrals & Area.",
+          "ar": "حرّك المنزلقات أو تفاعل مباشرة مع اللوحة لاستكشاف العلاقات الرياضية في درس النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT)."
+        },
+        "canvas3d": {
+          "btnId": "gesaatcalculusExCanvas_3dBtn",
+          "wrapId": "gesaatcalculusExCanvas_3dWrap",
+          "hintId": "gesaatcalculusExCanvas_3dHint",
+          "btnLabel": "🧊 View SAAT Limits, Derivatives, Definite Integrals & Area in 3D",
+          "ariaLabel": {
+            "en": "Interactive 3D visualization for SAAT Limits, Derivatives, Definite Integrals & Area. Drag to rotate.",
+            "ar": "عرض ثلاثي الأبعاد تفاعلي لدرس النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT). اسحب للتدوير."
+          }
+        }
+      },
+      {
+        "kind": "figure",
+        "figure": {
+          "type": "triangle",
+          "A": [
+            0,
+            0
+          ],
+          "B": [
+            12,
+            0
+          ],
+          "C": [
+            12,
+            5
+          ],
+          "labels": {
+            "A": "A",
+            "B": "C",
+            "C": "B"
+          },
+          "sides": {
+            "c": "27",
+            "a": "36",
+            "b": "45"
+          },
+          "rightAt": "B"
+        },
+        "caption": {
+          "en": "Orthogonal components and Euclidean distance relationship \\((27)^2 + (36)^2 = (45)^2\\) for SAAT Limits, Derivatives, Definite Integrals & Area.",
+          "ar": "العلاقة الهندسية المتعامدة \\((27)^2 + (36)^2 = (45)^2\\) في درس النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT)."
+        }
+      },
+      {
+        "kind": "cards",
+        "items": [
+          {
+            "label": {
+              "en": "Key Principle 8.1",
+              "ar": "القاعدة الأساسية 8.1"
+            },
+            "value": {
+              "en": "Algebraic limits & limits at infinity",
+              "ar": "Algebraic limits & limits at infinity"
+            }
+          },
+          {
+            "label": {
+              "en": "Key Principle 8.2",
+              "ar": "القاعدة الأساسية 8.2"
+            },
+            "value": {
+              "en": "Power, product & quotient derivative rules",
+              "ar": "Power, product & quotient derivative rules"
+            }
+          },
+          {
+            "label": {
+              "en": "Key Principle 8.3",
+              "ar": "القاعدة الأساسية 8.3"
+            },
+            "value": {
+              "en": "Critical points, local extrema & tangent lines",
+              "ar": "Critical points, local extrema & tangent lines"
+            }
+          },
+          {
+            "label": {
+              "en": "Key Principle 8.4",
+              "ar": "القاعدة الأساسية 8.4"
+            },
+            "value": {
+              "en": "Antiderivatives & Fundamental Theorem of Calculus",
+              "ar": "Antiderivatives & Fundamental Theorem of Calculus"
+            }
+          }
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "pf",
+        "label": {
+          "en": "◆ Why It Works — First-Principles Derivation (SAAT Limits, Derivatives, Definite Integrals & Area)",
+          "ar": "◆ لماذا تعمل هذه القاعدة — الاشتقاق الرياضي (النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT))"
+        },
+        "body": {
+          "en": "<p><strong>First-Principles Justification:</strong> Any quadratic or bilinear relation \\( ax^2 + bx + c = 0 \\) can be transformed by completing the square:</p>\\[ a\\!\\left(x + \\frac{b}{2a}\\right)^2 = \\frac{b^2 - 4ac}{4a}. \\]<p>This single identity simultaneously proves the quadratic formula, determines the exact turning-point coordinates \\( \\left(-\\frac{b}{2a}, c - \\frac{b^2}{4a}\\right) \\), and establishes the discriminant criterion \\( \\Delta = b^2 - 4ac \\) for tangency and root existence.</p>",
+          "ar": "<p><strong>البرهان من المبادئ الأولية:</strong> بإكمال المربع للمقدار \\(ax^2 + bx + c\\) نحصل على \\(a(x + \\frac{b}{2a})^2 + (c - \\frac{b^2}{4a})\\)، وهو ما يفسر قانون المميز وإحداثيات نقطة الرأس بدقة.</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 8.A — Foundational Formulation (SAAT Limits, Derivatives, Definite Integrals & Area)",
+          "ar": "مثال محلول 8.A — تطبيق أساسي (النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT))"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Given the quadratic function \\( f(x) = x^2 - 18x + 91 \\), express \\( f(x) \\) in the completed-square form \\( (x - h)^2 + k \\) and state its minimum value and the value of \\( x \\) at which it occurs.</p><p><strong>Step-by-Step Solution:</strong><br>1. Halve the coefficient of \\( x \\): \\( -\\frac{18}{2} = -9 \\).<br>2. Write \\( (x - 9)^2 = x^2 - 18x + 81 \\).<br>3. Adjust the constant term: \\( f(x) = (x - 9)^2 - 81 + 91 = (x - 9)^2 + 10 \\).<br>4. Since \\( (x - 9)^2 \\ge 0 \\) for all real \\( x \\), the minimum value is \\( k = 10 \\), achieved at \\( x = 9 \\).</p><p><strong>Final Answer:</strong> \\( f(x) = (x - 9)^2 + 10 \\); minimum value \\( 10 \\) at \\( x = 9 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> أوجد صيغة إكمال المربع للدالة \\( f(x) = x^2 - 18x + 91 \\) وحدد قيمتها الصغرى.</p><p><strong>الحل خطوة بخطوة:</strong> بإكمال المربع: \\( f(x) = (x - 9)^2 + 10 \\)، وبما أن المربع الكامل غير سالب، فإن القيمة الصغرى هي \\( 10 \\) وتتحقق عند \\( x = 9 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 8.B — Intermediate Multi-Step Synthesis (SAAT Limits, Derivatives, Definite Integrals & Area)",
+          "ar": "مثال محلول 8.B — تطبيق متوسط متعدد الخطوات (النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT))"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> The line \\( y = 2x + k \\) intersects the curve \\( y = x^2 - 18x + 86 \\) at two distinct points. Find the range of possible values for the constant \\( k \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. Equate the line and curve equations:<br>\\[ x^2 - 18x + 86 = 2x + k \\implies x^2 - 20x + (86 - k) = 0 \\]<br>2. For two distinct real intersections, the discriminant must satisfy \\( \\Delta = b^2 - 4ac > 0 \\):<br>\\[ (-20)^2 - 4(1)(86 - k) > 0 \\]<br>\\[ 400 - 344 + 4k > 0 \\implies 4k > -56 \\implies k > -14 \\]</p><p><strong>Final Answer:</strong> \\( k > -14 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> المستقيم \\( y = 2x + k \\) يقطع المنحنى \\( y = x^2 - 18x + 86 \\) في نقطتين متمايزتين. أوجد مدى قيم \\( k \\).</p><p><strong>الحل:</strong> بمساواة المعادلتين ووضع المميز \\( \\Delta > 0 \\) نجد أن \\( k > -14 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 8.C — Advanced Rate & Vector Application (SAAT Limits, Derivatives, Definite Integrals & Area)",
+          "ar": "مثال محلول 8.C — تطبيق متقدم (النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT))"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Consider the cubic function \\( g(x) = x^3 - 27x^2 + 243x + 10 \\). Find the coordinates of the stationary point of inflection and the gradient of the curve at \\( x = 11 \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. Differentiate term by term:<br>\\[ g'(x) = 3x^2 - 54x + 243 = 3(x - 9)^2 \\]<br>2. Setting \\( g'(x) = 0 \\) yields \\( x = 9 \\), with \\( g(9) = 10 \\). Thus \\( (9, 10) \\) is the stationary point.<br>3. At \\( x = 11 \\), the gradient is \\( g'(11) = 3(2)^2 = 12 \\).</p><p><strong>Final Answer:</strong> Stationary point \\( (9, 10) \\); gradient at \\( x = 11 \\) is \\( 12 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> للدالة \\( g(x) = x^3 - 27x^2 + 243x + 10 \\)، أوجد النقطة الحرجة وميل المماس عند \\( x = 11 \\).</p><p><strong>الحل:</strong> المشتقة \\( g'(x) = 3(x - 9)^2 \\)، تنعدم عند \\( (9, 10) \\)، وعند \\( x = 11 \\) يكون الميل \\( 3(4) = 12 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "example",
+        "label": {
+          "en": "Worked Example 8.D — Exam-Grade Challenge Synthesis (SAAT Limits, Derivatives, Definite Integrals & Area)",
+          "ar": "مثال محلول 8.D — مسألة تحدي بمستوى الاختبار (النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT))"
+        },
+        "body": {
+          "en": "<p><strong>Problem:</strong> Let \\( S_n \\) denote the sum of the first \\( n \\) terms of an arithmetic progression where \\( S_n = 9n^2 + 10n \\). Find an expression for the \\( n \\)-th term \\( u_n \\), determine the common difference \\( d \\), and evaluate \\( u_{10} \\).</p><p><strong>Step-by-Step Solution:</strong><br>1. For \\( n = 1 \\), \\( u_1 = S_1 = 9(1)^2 + 10(1) = 19 \\).<br>2. For \\( n \\ge 2 \\), use the fundamental identity \\( u_n = S_n - S_{n-1} \\):<br>\\[ u_n = \\left[9n^2 + 10n\\right] - \\left[9(n-1)^2 + 10(n-1)\\right] = 18n + (1) \\]<br>3. The coefficient of \\( n \\) gives the common difference \\( d = 18 \\).<br>4. Substituting \\( n = 10 \\) yields \\( u_{10} = 181 \\).</p><p><strong>Final Answer:</strong> \\( u_n = 18n + 1 \\), \\( d = 18 \\), and \\( u_{10} = 181 \\).</p>",
+          "ar": "<p><strong>المسألة:</strong> إذا كان مجموع أول \\( n \\) حداً من متتابعة حسابية هو \\( S_n = 9n^2 + 10n \\)، فأوجد الحد النوني \\( u_n \\) والأساس \\( d \\) والحد العاشر \\( u_{10} \\).</p><p><strong>الحل:</strong> من العلاقة \\( u_n = S_n - S_{n-1} \\) نجد \\( u_n = 18n + 1 \\)، والأساس \\( d = 18 \\)، والحد العاشر \\( u_{10} = 181 \\).</p>"
+        }
+      },
+      {
+        "kind": "callout",
+        "style": "warn",
+        "label": {
+          "en": "⚠️ Common Exam Traps — SAAT Limits, Derivatives, Definite Integrals & Area",
+          "ar": "⚠️ أخطاء شائعة في الاختبار — النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT)"
+        },
+        "body": {
+          "en": "<p><strong>1. Sign &amp; Domain Omissions:</strong> Always verify whether negative roots or boundary values violate denominator, square-root, or logarithmic domain restrictions before writing your final answer.</p><p><strong>2. Premature Rounding:</strong> Keep exact fractions, surds, or \\(\\pi\\) expressions throughout intermediate steps and round only at the final line if requested.</p>",
+          "ar": "<p><strong>1. إغفال قيود المجال والإشارات:</strong> تحقق دائماً من استبعاد القيم التي تجعل المقام صفراً أو ما تحت الجذر التربيعي سالباً.</p><p><strong>2. التقريب المبكر:</strong> احتفظ بالقيم الدقيقة (الكسور والجذور) في خطوات الحل الوسطى ولا تقرب إلا في الناتج النهائي.</p>"
+        }
+      },
+      {
+        "kind": "table",
+        "caption": {
+          "en": "Error Diagnosis — Common Student Traps vs. Exam-Board Method (SAAT Limits, Derivatives, Definite Integrals & Area)",
+          "ar": "تشخيص الأخطاء — مقارنة الخطأ الشائع بالطريقة الصحيحة (النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT))"
+        },
+        "columns": [
+          {
+            "en": "Common Student Trap",
+            "ar": "الخطأ الشائع للطالب"
+          },
+          {
+            "en": "Why It Fails Mathematically",
+            "ar": "السبب الرياضي للخطأ"
+          },
+          {
+            "en": "Correct Exam-Board Method",
+            "ar": "الطريقة الصحيحة المعتمدة"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Canceling terms across a sum in \\( \\frac{x^2 + a}{x + a} \\)",
+              "ar": "اختصار حدود مجموعة في بسط ومقام الكسر الجبري"
+            },
+            {
+              "en": "Division only cancels common multiplicative factors of the entire numerator and denominator.",
+              "ar": "الاختصار يصح فقط للعوامل المضروبة في كامل البسط والمقام."
+            },
+            {
+              "en": "Factorize numerator and denominator completely before canceling common binomial factors.",
+              "ar": "حلل البسط والمقام إلى عوامل أولية مضروبة قبل الاختصار."
+            }
+          ],
+          [
+            {
+              "en": "Writing \\( (a + b)^2 = a^2 + b^2 \\) when squaring binomials",
+              "ar": "فك المربع الكامل \\( (a + b)^2 \\) بدون الحد الأوسط \\( 2ab \\)"
+            },
+            {
+              "en": "Omits the cross-product term \\( 2ab \\) required by the distributive law.",
+              "ar": "يهمل حد الضرب التبادلي الأوسط \\( 2ab \\)."
+            },
+            {
+              "en": "Always expand as \\( (a \\pm b)^2 = a^2 \\pm 2ab + b^2 \\).",
+              "ar": "طبق المتطابقة الكاملة \\( (a \\pm b)^2 = a^2 \\pm 2ab + b^2 \\)."
+            }
+          ],
+          [
+            {
+              "en": "Solving quadratic inequalities by treating \\( < \\) like \\( = \\) without a sign chart",
+              "ar": "حل المتباينة التربيعية كمعادلة دون اختبار إشارة الفترات"
+            },
+            {
+              "en": "A parabola changes sign at its distinct real roots, so the solution is an interval or union of rays.",
+              "ar": "القطع المكافئ يغير إشارته حول الجذور، لذا الحل فترة متصلة أو اتحاد فترتين."
+            },
+            {
+              "en": "Find the critical roots first, then sketch the parabola or test a point in each interval.",
+              "ar": "أوجد الجذور الحرجة أولاً ثم ارسم القطع المكافئ لتحديد الفترة الصحيحة."
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "callout",
+        "style": "tip",
+        "label": {
+          "en": "▲ Exam Pacing & Verification Strategy — SAAT Limits, Derivatives, Definite Integrals & Area",
+          "ar": "▲ استراتيجية الحل السريع والتحقق — النهايات والاشتقاق والتكامل المحدود والمساحات (SAAT)"
+        },
+        "body": {
+          "en": "<p><strong>10-Second Sanity Check:</strong> Substitute a simple test value (such as \\( x = 0, 1, \\) or \\( 2 \\)) into both your simplified expression and the original problem statement. If the numerical outputs match, your algebraic manipulation is guaranteed to be error-free.</p>",
+          "ar": "<p><strong>فحص التحقق السريع:</strong> عوّض بقيمة عددية بسيطة (مثل \\( x = 1 \\) أو \\( x = 2 \\)) في الناتج النهائي وفي المسألة الأصلية للتأكد من تطابق القيمتين فوراً.</p>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 1 · Easy]</strong> Evaluate \\( f(10) \\) for the quadratic function \\( f(x) = 9x^2 - 9x + 10 \\).",
+          "ar": "<strong>[تدريب 1 · Easy]</strong> احسب قيمة \\( f(10) \\) للدالة التربيعية \\( f(x) = 9x^2 - 9x + 10 \\)."
+        },
+        "hints": [
+          {
+            "en": "Substitute \\( x = 10 \\) directly into \\( f(x) = 9x^2 - 9x + 10 \\).",
+            "ar": "عوّض عن \\( x = 10 \\) مباشرة في قاعدة الدالة \\( f(x) \\)."
+          },
+          {
+            "en": "Factor out \\( 9x(x - 1) + 10 = 9(10)(9) + 10 \\).",
+            "ar": "أخرج عاملاً مشتركاً لتسهيل الحساب: \\( 9(10)(9) + 10 \\)."
+          },
+          {
+            "en": "Compute \\( 810 + 10 \\) to obtain the final answer.",
+            "ar": "اجمع \\( 810 + 10 \\) للحصول على النتيجة النهائية."
+          }
+        ],
+        "solution": {
+          "en": "Substituting \\( x = 10 \\) gives \\( f(10) = 9(10)^2 - 9(10) + 10 = 900 - 90 + 10 = 820 \\).",
+          "ar": "بالتعويض عن \\( x = 10 \\) نجد \\( f(10) = 9(10)^2 - 9(10) + 10 = 820 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 2 · Easy]</strong> Find the positive root of the equation \\( x^2 - 19x + 90 = 0 \\) that is greater than \\( 9 \\).",
+          "ar": "<strong>[تدريب 2 · Easy]</strong> أوجد الجذر الموجب الأكبر من \\( 9 \\) للمعادلة \\( x^2 - 19x + 90 = 0 \\)."
+        },
+        "hints": [
+          {
+            "en": "Look for two integers whose sum is \\( 19 \\) and whose product is \\( 90 \\).",
+            "ar": "ابحث عن عددين مجموعهما \\( 19 \\) وحاصل ضربهما \\( 90 \\)."
+          },
+          {
+            "en": "Factor the quadratic as \\( (x - 9)(x - 10) = 0 \\).",
+            "ar": "حلل المعادلة إلى \\( (x - 9)(x - 10) = 0 \\)."
+          },
+          {
+            "en": "Compare the two roots \\( x = 9 \\) and \\( x = 10 \\) and select the larger root.",
+            "ar": "قارن بين الجذرين \\( x = 9 \\) و \\( x = 10 \\) واختر الأكبر."
+          }
+        ],
+        "solution": {
+          "en": "Factoring gives \\( (x - 9)(x - 10) = 0 \\), so the roots are \\( x = 9 \\) and \\( x = 10 \\). The root greater than \\( 9 \\) is \\( x = 10 \\).",
+          "ar": "بالتحليل نحصل على \\( (x - 9)(x - 10) = 0 \\)، وبذلك يكون الجذر الأكبر من \\( 9 \\) هو \\( x = 10 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 3 · Medium]</strong> If the quadratic equation \\( x^2 - 2kx + 81 = 0 \\) has equal (repeated) real roots and \\( k > 0 \\), find the exact value of \\( k^2 \\).",
+          "ar": "<strong>[تدريب 3 · Medium]</strong> إذا كان للمعادلة التربيعية \\( x^2 - 2kx + 81 = 0 \\) جذران حقيقيان متساويان وكان \\( k > 0 \\)، فأوجد قيمة \\( k^2 \\)."
+        },
+        "hints": [
+          {
+            "en": "For equal real roots, the discriminant \\( \\Delta = b^2 - 4ac \\) must equal zero.",
+            "ar": "لوجود جذرين متساويين يجب أن يكون المميز \\( \\Delta = b^2 - 4ac = 0 \\)."
+          },
+          {
+            "en": "Substitute \\( a = 1, b = -2k, c = 81 \\) into \\( (-2k)^2 - 4(1)(81) = 0 \\).",
+            "ar": "عوّض بالمعاملات في المميز: \\( (-2k)^2 - 4(1)(81) = 0 \\)."
+          },
+          {
+            "en": "Simplify \\( 4k^2 = 324 \\) and divide both sides by 4.",
+            "ar": "بسّط المعادلة \\( 4k^2 = 324 \\) واقسم الطرفين على 4."
+          }
+        ],
+        "solution": {
+          "en": "Setting the discriminant to zero: \\( \\Delta = (-2k)^2 - 4(1)(81) = 4k^2 - 324 = 0 \\implies k^2 = 81 \\).",
+          "ar": "بوضع المميز مساوياً للصفر: \\( 4k^2 - 324 = 0 \\implies k^2 = 81 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 4 · Hard]</strong> An arithmetic progression has first term \\( a = 9 \\) and common difference \\( d = 20 \\). Find the sum of the first \\( 10 \\) terms, \\( S_{10} \\).",
+          "ar": "<strong>[تدريب 4 · Hard]</strong> متتابعة حسابية حدها الأول \\( a = 9 \\) وأساسها \\( d = 20 \\). أوجد مجموع الحدود العشرة الأولى \\( S_{10} \\)."
+        },
+        "hints": [
+          {
+            "en": "Recall the arithmetic series sum formula \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\).",
+            "ar": "استخدم قانون مجموع المتسلسلة الحسابية \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\)."
+          },
+          {
+            "en": "Substitute \\( n = 10, a = 9, d = 20 \\): \\( S_{10} = 5[2(9) + 9(20)] \\).",
+            "ar": "عوّض بالقيم المعطاة: \\( S_{10} = 5[2(9) + 9(20)] \\)."
+          },
+          {
+            "en": "Evaluate \\( 5(18 + 180) = 990 \\).",
+            "ar": "احسب الناتج \\( 5(18 + 180) = 990 \\)."
+          }
+        ],
+        "solution": {
+          "en": "Using \\( S_n = \\frac{n}{2}[2a + (n - 1)d] \\), we have \\( S_{10} = \\frac{10}{2}[2(9) + 9(20)] = 5(198) = 990 \\).",
+          "ar": "بتطبيق قانون المجموع: \\( S_{10} = 5(18 + 180) = 990 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "<strong>[Practice 5 · Hard]</strong> Find the instantaneous rate of change \\( \\frac{dy}{dx} \\) of the curve \\( y = x^3 + 9x^2 - 10x + 7 \\) at \\( x = 3 \\).",
+          "ar": "<strong>[تدريب 5 · Hard]</strong> أوجد معدل التغير اللحظي \\( \\frac{dy}{dx} \\) للمنحنى \\( y = x^3 + 9x^2 - 10x + 7 \\) عند \\( x = 3 \\)."
+        },
+        "hints": [
+          {
+            "en": "Differentiate \\( y = x^3 + 9x^2 - 10x + 7 \\) term by term with respect to \\( x \\).",
+            "ar": "اشتق معادلة المنحنى حداً بحداّ بالنسبة إلى \\( x \\)."
+          },
+          {
+            "en": "The derivative is \\( \\frac{dy}{dx} = 3x^2 + 18x - 10 \\).",
+            "ar": "المشتقة الأولى هي \\( \\frac{dy}{dx} = 3x^2 + 18x - 10 \\)."
+          },
+          {
+            "en": "Substitute \\( x = 3 \\): \\( 3(3)^2 + 18(3) - 10 = 71 \\).",
+            "ar": "عوّض عن \\( x = 3 \\) لحساب الميل: \\( 27 + 54 - 10 = 71 \\)."
+          }
+        ],
+        "solution": {
+          "en": "Differentiating gives \\( \\frac{dy}{dx} = 3x^2 + 18x - 10 \\). At \\( x = 3 \\), \\( \\frac{dy}{dx} = 3(9) + 54 - 10 = 71 \\).",
+          "ar": "المشتقة هي \\( \\frac{dy}{dx} = 3x^2 + 18x - 10 \\)، وعند \\( x = 3 \\) يكون الميل \\( 27 + 54 - 10 = 71 \\)."
+        }
+      }
+    ]
+  },
+  "quizWidget": {
+    "enabled": true,
+    "domains": [
+      "SAAT Differential & Integral Calculus"
+    ]
+  }
+}

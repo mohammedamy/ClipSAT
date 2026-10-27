@@ -1,0 +1,2350 @@
+/* Interactive Practice data for /olympiad/ - one entry per chapter section id.
+   Shipped as public/js/ix/olympiad.js and loaded only on that track's page by the
+   engine in src/scripts/modules/19-interactive-activities-engine-v1.js
+   (Plan 5 Phase 5.015, ADR 0033). Entry shapes (qc/mt/tf/sb/sr/fn/num/ord/cat/gp/se/ms) are
+   documented there. */
+(window.__ixData = window.__ixData || []).push(function (D) {
+D["ol-algebraic-techniques"] = [
+  {
+    "t": "qc",
+    "ti": "Quick Check: Olympiad Algebraic Manipulation, Vieta's Formulas & Inequalities",
+    "ti_ar": "فحص سريع: المهارات الجبرية الأولمبية وعلاقات فييت والمتباينات",
+    "q": "If \\( \\alpha \\) and \\( \\beta \\) are the roots of \\( x^2 - 6x + 4 = 0 \\), what is the exact value of \\( \\alpha^2 + \\beta^2 \\) without solving for the roots?",
+    "q_ar": "إذا كان \\( \\alpha, \\beta \\) جذري المعادلة \\( x^2 - 6x + 4 = 0 \\)، فما قيمة \\( \\alpha^2 + \\beta^2 \\) دون إيجاد الجذرين؟",
+    "o": [
+      "\\( 28 \\)",
+      "\\( 36 \\)",
+      "\\( 32 \\)",
+      "\\( 44 \\)"
+    ],
+    "o_ar": [
+      "\\( 28 \\)",
+      "\\( 36 \\)",
+      "\\( 32 \\)",
+      "\\( 44 \\)"
+    ],
+    "a": 0,
+    "ex": "By Vieta's formulas, \\( \\alpha + \\beta = 6 \\) and \\( \\alpha\\beta = 4 \\), so \\( \\alpha^2 + \\beta^2 = (\\alpha + \\beta)^2 - 2\\alpha\\beta = 36 - 8 = 28 \\).",
+    "ex_ar": "من علاقات فييت: \\( \\alpha + \\beta = 6 \\) و \\( \\alpha\\beta = 4 \\)، إذن \\( \\alpha^2 + \\beta^2 = 6^2 - 2(4) = 28 \\)."
+  },
+  {
+    "t": "tf",
+    "ti": "True / False: Core Theorems (Olympiad Algebraic Manipulation, Vieta's Formulas & Inequalities)",
+    "ti_ar": "صح / خطأ: النظريات الأساسية (المهارات الجبرية الأولمبية وعلاقات فييت والمتباينات)",
+    "items": [
+      {
+        "s": "By the AM-GM inequality, for any positive real number \\( x > 0 \\), \\( x + \\frac{9}{x} \\ge 2\\sqrt{x \\cdot \\frac{9}{x}} = 6 \\).",
+        "a": true
+      },
+      {
+        "s": "For a cubic \\( ax^3 + bx^2 + cx + d = 0 \\) with roots \\( r_1, r_2, r_3 \\), the sum of roots is \\( -\\frac{b}{a} \\) and the product is \\( -\\frac{d}{a} \\).",
+        "a": true
+      },
+      {
+        "s": "Equality in \\( \\frac{a + b}{2} \\ge \\sqrt{ab} \\) holds for any positive \\( a \\neq b \\).",
+        "a": false
+      }
+    ],
+    "items_ar": [
+      {
+        "s": "حسب متباينة الوسط الحسابي والهندسي (AM-GM)، لكل \\( x > 0 \\) يتحقق \\( x + \\frac{9}{x} \\ge 6 \\).",
+        "a": true
+      },
+      {
+        "s": "في المعادلة التكعيبية \\( ax^3 + bx^2 + cx + d = 0 \\)، مجموع الجذور \\( -\\frac{b}{a} \\) وحاصل ضربها \\( -\\frac{d}{a} \\).",
+        "a": true
+      },
+      {
+        "s": "تتحقق المساواة في متباينة AM-GM لأي عددين موجبين مختلفين \\( a \\neq b \\).",
+        "a": false
+      }
+    ]
+  },
+  {
+    "t": "mt",
+    "ti": "Matching: Identities & Principles (Olympiad Algebraic Manipulation, Vieta's Formulas & Inequalities)",
+    "ti_ar": "مطابقة: القوانين والمفاهيم (المهارات الجبرية الأولمبية وعلاقات فييت والمتباينات)",
+    "p": [
+      {
+        "l": "\\( \\alpha^2 + \\beta^2 \\)",
+        "r": "\\( (\\alpha + \\beta)^2 - 2\\alpha\\beta \\) (Symmetric power sum)"
+      },
+      {
+        "l": "\\( \\frac{a_1 + \\dots + a_n}{n} \\ge (a_1\\cdots a_n)^{1/n} \\)",
+        "r": "AM-GM Inequality for non-negative reals"
+      },
+      {
+        "l": "\\( (\\sum a_i^2)(\\sum b_i^2) \\ge (\\sum a_i b_i)^2 \\)",
+        "r": "Cauchy-Schwarz Inequality"
+      },
+      {
+        "l": "\\( \\frac{1}{k(k+1)} = \\frac{1}{k} - \\frac{1}{k+1} \\)",
+        "r": "Telescoping partial-fraction decomposition"
+      }
+    ],
+    "p_ar": [
+      {
+        "l": "\\( \\alpha^2 + \\beta^2 \\)",
+        "r": "\\( (\\alpha + \\beta)^2 - 2\\alpha\\beta \\) (مجموع القوى المتماثل)"
+      },
+      {
+        "l": "\\( \\frac{a_1 + \\dots + a_n}{n} \\ge (a_1\\cdots a_n)^{1/n} \\)",
+        "r": "متباينة الوسط الحسابي والهندسي (AM-GM)"
+      },
+      {
+        "l": "\\( (\\sum a_i^2)(\\sum b_i^2) \\ge (\\sum a_i b_i)^2 \\)",
+        "r": "متباينة كوشي-شوارتز"
+      },
+      {
+        "l": "\\( \\frac{1}{k(k+1)} = \\frac{1}{k} - \\frac{1}{k+1} \\)",
+        "r": "التفكيك التلسكوبي للكسور الجزئية"
+      }
+    ]
+  },
+  {
+    "t": "se",
+    "ti": "Spot the Error: Algebraic & Domain Verification (Olympiad Algebraic Manipulation, Vieta's Formulas & Inequalities)",
+    "ti_ar": "اكتشف الخطأ: التحقق الجبري والمنطقي (المهارات الجبرية الأولمبية وعلاقات فييت والمتباينات)",
+    "q": "A student solves \\( \\sqrt{2x + 8} = x - 2 \\) step by step. Which step introduces an invalid conclusion?",
+    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 8} = x - 2 \\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "steps": [
+      "Square both sides: \\( 2x + 8 = (x - 2)^2 \\).",
+      "Expand the right-hand side: \\( 2x + 8 = x^2 - 4x + 4 \\).",
+      "Rearrange and factor: \\( x^2 - 6x - 4 = 0 \\).",
+      "Accept both roots without checking the non-negativity condition \\( x - 2 \\ge 0 \\)."
+    ],
+    "steps_ar": [
+      "تربيع الطرفين: \\( 2x + 8 = (x - 2)^2 \\).",
+      "فك المربع الكامل: \\( 2x + 8 = x^2 - 4x + 4 \\).",
+      "إعادة الترتيب في الصورة القياسية: \\( x^2 - 6x - 4 = 0 \\).",
+      "قبول الجذرين معاً دون التحقق من شرط عدم السالبية \\( x - 2 \\ge 0 \\)."
+    ],
+    "errorStep": 4,
+    "reasons": [
+      "The principal square root \\( \\sqrt{\\cdot} \\) is always non-negative, so any solution must satisfy \\( x - 2 \\ge 0 \\iff x \\ge 2 \\); the negative root is extraneous.",
+      "Expanding \\( (x - 2)^2 \\) should not have a middle term.",
+      "Squaring both sides is never allowed for radical equations."
+    ],
+    "reasons_ar": [
+      "الجذر التربيعي الأساسي غير سالب دائماً، لذا يجب تحقق الشرط \\( x \\ge 2 \\) واستبعاد الجذر الدخيل السالب.",
+      "فك المربع الكامل غير صحيح.",
+      "لا يجوز تربيع الطرفين مطلقاً."
+    ],
+    "correctReason": 0,
+    "h": "Check the sign of the right-hand side \\( x - 2 \\) for the negative root.",
+    "h_ar": "تحقق من إشارة الطرف الأيمن \\( x - 2 \\) عند التعويض بالجذر السالب.",
+    "sol": "Squaring introduces an extraneous root whenever \\( x - 2 < 0 \\). Only the root satisfying \\( x \\ge 2 \\) is valid.",
+    "sol_ar": "التربيع يدخل جذراً دخيلاً يجعل الطرف الأيمن سالباً؛ يُقبل فقط الجذر الذي يحقق \\( x \\ge 2 \\)."
+  },
+  {
+    "t": "ms",
+    "ti": "Examiner Mode: Multi-Step Structured Problem (Olympiad Algebraic Manipulation, Vieta's Formulas & Inequalities)",
+    "ti_ar": "وضع المصحح: مسألة هيكلية متعددة الخطوات (المهارات الجبرية الأولمبية وعلاقات فييت والمتباينات)",
+    "q": "Consider \\( f(x) = x^2 - 4x + 8 \\) for \\( x \\ge 2 \\). (a) Express \\( f(x) \\) in completed-square vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and state its domain.",
+    "q_ar": "لتكن \\( f(x) = x^2 - 4x + 8 \\) حيث \\( x \\ge 2 \\). (أ) اكتب \\( f(x) \\) في صورة المربع الكامل وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) وحدد مجالها.",
+    "parts": [
+      {
+        "label": "Part (a) — Completed Square & Range",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Complete the square: \\( f(x) = (x - 2)^2 + 4 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State exact range: \\( f(x) \\ge 4 \\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Function & Domain",
+        "marks": 3,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Write \\( y = (x - 2)^2 + 4 \\implies (x - 2)^2 = y - 4 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Select positive root (since \\( x \\ge 2 \\)): \\( f^{-1}(x) = 2 + \\sqrt{x - 4} \\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 4 \\)."
+          }
+        ]
+      }
+    ],
+    "examinerTip": "Always match the domain of \\( f^{-1} \\) to the range of \\( f \\), and use \\( x \\ge 2 \\) to select the positive branch of the square root.",
+    "examinerTip_ar": "مجال الدالة العكسية \\( f^{-1} \\) هو مدى الدالة الأصلية \\( f \\)، ويُختار الجذر الموجب لأن \\( x \\ge 2 \\)."
+  },
+  {
+    "t": "sb",
+    "ti": "Step Builder: Guided Calculation (Olympiad Algebraic Manipulation, Vieta's Formulas & Inequalities)",
+    "ti_ar": "بناء الخطوات: حساب موجه خطوة بخطوة (المهارات الجبرية الأولمبية وعلاقات فييت والمتباينات)",
+    "steps": [
+      {
+        "l": "In \\( y = x^2 - 4x + 9 \\), halve the \\( x \\)-coefficient to write \\( (x - h)^2 \\) where \\( h = \\)",
+        "a": "2",
+        "h": "Divide 4 by 2."
+      },
+      {
+        "l": "Find the minimum value \\( k = 9 - 2^2 = \\)",
+        "a": "5",
+        "h": "Subtract 4 from 9."
+      },
+      {
+        "l": "Evaluate \\( y \\) when \\( x = 5 \\): \\( y = \\)",
+        "a": "14",
+        "h": "Calculate \\( 3^2 + 5 \\)."
+      }
+    ],
+    "steps_ar": [
+      {
+        "l": "في الدالة \\( y = x^2 - 4x + 9 \\)، قيمة \\( h \\) في \\( (x - h)^2 \\) تساوي:",
+        "a": "2",
+        "h": "اقسم 4 على 2."
+      },
+      {
+        "l": "أوجد القيمة الصغرى \\( k = 9 - 2^2 = \\)",
+        "a": "5",
+        "h": "اطرح 4 من 9."
+      },
+      {
+        "l": "احسب قيمة \\( y \\) عندما \\( x = 5 \\):",
+        "a": "14",
+        "h": "احسب \\( 3^2 + 5 \\)."
+      }
+    ]
+  },
+  {
+    "t": "num",
+    "ti": "Numeric Entry: Olympiad Algebraic Manipulation, Vieta's Formulas & Inequalities",
+    "ti_ar": "إدخال رقمي: المهارات الجبرية الأولمبية وعلاقات فييت والمتباينات",
+    "q": "Find the minimum value of \\( f(x) = 4x + \\frac{25}{x} \\) for \\( x > 0 \\).",
+    "q_ar": "أوجد القيمة الصغرى للدالة \\( f(x) = 4x + \\frac{25}{x} \\) حيث \\( x > 0 \\).",
+    "a": 20,
+    "h": "Apply AM-GM: \\( 4x + \\frac{25}{x} \\ge 2\\sqrt{4x \\cdot \\frac{25}{x}} \\).",
+    "h_ar": "طبق متباينة AM-GM: \\( 4x + \\frac{25}{x} \\ge 2\\sqrt{4x \\cdot \\frac{25}{x}} \\).",
+    "sol": "By AM-GM, \\( 4x + \\frac{25}{x} \\ge 2\\sqrt{100} = 20 \\), achieved when \\( 4x = \\frac{25}{x} \\implies x = 2.5 \\).",
+    "sol_ar": "By AM-GM, \\( 4x + \\frac{25}{x} \\ge 2\\sqrt{100} = 20 \\), achieved when \\( 4x = \\frac{25}{x} \\implies x = 2.5 \\)."
+  },
+  {
+    "t": "ord",
+    "ti": "Order the Steps: Systematic Solution (Olympiad Algebraic Manipulation, Vieta's Formulas & Inequalities)",
+    "ti_ar": "رتّب الخطوات: خطوات الحل المنظم (المهارات الجبرية الأولمبية وعلاقات فييت والمتباينات)",
+    "prompt": "Arrange the logical steps in order to solve the intersection and tangency problem for \\( y = x^2 - 4x + 8 \\) and \\( y = 2x + k \\):",
+    "prompt_ar": "رتب الخطوات المنطقية لحل مسألة التماس بين المنحنى \\( y = x^2 - 4x + 8 \\) والمستقيم \\( y = 2x + k \\):",
+    "items": [
+      "Equate the curve and line equations: \\( x^2 - 4x + 8 = 2x + k \\).",
+      "Rearrange into standard quadratic form: \\( x^2 - 6x + (8 - k) = 0 \\).",
+      "Set the discriminant \\( \\Delta = b^2 - 4ac = (-6)^2 - 4(1)(8 - k) = 0 \\) for tangency.",
+      "Solve the resulting linear equation for the exact value of the parameter \\( k \\)."
+    ],
+    "items_ar": [
+      "ساوِ معادلة المنحنى بمعادلة المستقيم: \\( x^2 - 4x + 8 = 2x + k \\).",
+      "أعد الترتيب في الصورة القياسية: \\( x^2 - 6x + (8 - k) = 0 \\).",
+      "ضع المميز مساوياً للصفر لشرط التماس: \\( \\Delta = (-6)^2 - 4(8 - k) = 0 \\).",
+      "حل المعادلة الخطية الناتجة لإيجاد القيمة الدقيقة للثابت \\( k \\)."
+    ],
+    "ex": "Equate the two equations first, collect terms into ax² + bx + c = 0, then apply Δ = 0.",
+    "ex_ar": "ساوِ المعادلتين أولاً، ثم رتب الحدود في الصورة القياسية، ثم طبق شرط التماس Δ = 0."
+  },
+  {
+    "t": "cat",
+    "ti": "Categorize: Mathematical Classification (Olympiad Algebraic Manipulation, Vieta's Formulas & Inequalities)",
+    "ti_ar": "تصنيف: التصنيف الرياضي (المهارات الجبرية الأولمبية وعلاقات فييت والمتباينات)",
+    "categories": [
+      "Two Distinct Real Roots (Δ > 0)",
+      "One Repeated Tangent Root (Δ = 0)",
+      "No Real Roots (Δ < 0)"
+    ],
+    "categories_ar": [
+      "جذران حقيقيان متمايزان (Δ > 0)",
+      "جذر حقيقي مكرر / تماس (Δ = 0)",
+      "لا توجد جذور حقيقية (Δ < 0)"
+    ],
+    "items": [
+      {
+        "s": "\\( x^2 - 4x + 4 = 0 \\)",
+        "s_ar": "\\( x^2 - 4x + 4 = 0 \\)",
+        "cat": 1
+      },
+      {
+        "s": "\\( x^2 - 5x + 2 = 0 \\)",
+        "s_ar": "\\( x^2 - 5x + 2 = 0 \\)",
+        "cat": 0
+      },
+      {
+        "s": "\\( x^2 + 2x + 7 = 0 \\)",
+        "s_ar": "\\( x^2 + 2x + 7 = 0 \\)",
+        "cat": 2
+      },
+      {
+        "s": "\\( 4x^2 - 8x + 4 = 0 \\)",
+        "s_ar": "\\( 4x^2 - 8x + 4 = 0 \\)",
+        "cat": 1
+      }
+    ],
+    "ex": "Compute Δ = b² − 4ac to classify each quadratic equation.",
+    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لتصنيف كل معادلة تربيعية."
+  }
+];
+
+D["ol-modular-number-theory"] = [
+  {
+    "t": "qc",
+    "ti": "Quick Check: Modular Arithmetic, Divisibility, Primes & Euler's Totient",
+    "ti_ar": "فحص سريع: الحساب المعياري وقابلية القسمة والأعداد الأولية ودالة أويلر",
+    "q": "If a positive integer has prime factorization \\( N = 2^3 \\cdot 3^2 \\cdot 5^1 = 360 \\), how many positive divisors \\( \\tau(N) \\) does \\( N \\) have?",
+    "q_ar": "إذا كان التحليل الأولي للعدد \\( N = 360 \\) هو \\( 2^3 \\cdot 3^2 \\cdot 5^1 \\)، فكم عدد قواسمه الموجبة \\( \\tau(N) \\)؟",
+    "o": [
+      "\\( 24 \\)",
+      "\\( 18 \\)",
+      "\\( 12 \\)",
+      "\\( 30 \\)"
+    ],
+    "o_ar": [
+      "\\( 24 \\)",
+      "\\( 18 \\)",
+      "\\( 12 \\)",
+      "\\( 30 \\)"
+    ],
+    "a": 0,
+    "ex": "Add 1 to each prime exponent and multiply: \\( \\tau(360) = (3 + 1)(2 + 1)(1 + 1) = 4 \\times 3 \\times 2 = 24 \\).",
+    "ex_ar": "أضف 1 لكل أس في التحليل الأولي واضرب: \\( (3 + 1)(2 + 1)(1 + 1) = 24 \\)."
+  },
+  {
+    "t": "tf",
+    "ti": "True / False: Core Theorems (Modular Arithmetic, Divisibility, Primes & Euler's Totient)",
+    "ti_ar": "صح / خطأ: النظريات الأساسية (الحساب المعياري وقابلية القسمة والأعداد الأولية ودالة أويلر)",
+    "items": [
+      {
+        "s": "By Fermat's Little Theorem, if \\( p \\) is prime and \\( p \\nmid a \\), then \\( a^{p-1} \\equiv 1 \\pmod{p} \\).",
+        "a": true
+      },
+      {
+        "s": "A positive integer \\( N \\) has an odd number of positive divisors if and only if \\( N \\) is a perfect square.",
+        "a": true
+      },
+      {
+        "s": "By Wilson's Theorem, for any prime \\( p \\), \\( (p - 1)! \\equiv 1 \\pmod{p} \\).",
+        "a": false
+      }
+    ],
+    "items_ar": [
+      {
+        "s": "حسب مبرهنة فيرما الصغرى، إذا كان \\( p \\) أولياً ولا يقسم \\( a \\)، فإن \\( a^{p-1} \\equiv 1 \\pmod{p} \\).",
+        "a": true
+      },
+      {
+        "s": "يكون للعدد الصحيح الموجب \\( N \\) عدد فردي من القواسم الموجبة إذا وفقط إذا كان \\( N \\) مربعاً كاملاً.",
+        "a": true
+      },
+      {
+        "s": "حسب مبرهنة ويلسون، لأي عدد أولي \\( p \\) يتحقق \\( (p - 1)! \\equiv 1 \\pmod{p} \\).",
+        "a": false
+      }
+    ]
+  },
+  {
+    "t": "mt",
+    "ti": "Matching: Identities & Principles (Modular Arithmetic, Divisibility, Primes & Euler's Totient)",
+    "ti_ar": "مطابقة: القوانين والمفاهيم (الحساب المعياري وقابلية القسمة والأعداد الأولية ودالة أويلر)",
+    "p": [
+      {
+        "l": "\\( a^{p-1} \\equiv 1 \\pmod p \\)",
+        "r": "Fermat's Little Theorem (\\( p \\) prime, \\( p \\nmid a \\))"
+      },
+      {
+        "l": "\\( a^{\\varphi(m)} \\equiv 1 \\pmod m \\)",
+        "r": "Euler's Totient Theorem (\\( \\gcd(a, m) = 1 \\))"
+      },
+      {
+        "l": "\\( (p - 1)! \\equiv -1 \\pmod p \\)",
+        "r": "Wilson's Theorem for prime \\( p \\)"
+      },
+      {
+        "l": "\\( \\prod (e_i + 1) \\)",
+        "r": "Total number of positive divisors \\( \\tau(N) \\)"
+      }
+    ],
+    "p_ar": [
+      {
+        "l": "\\( a^{p-1} \\equiv 1 \\pmod p \\)",
+        "r": "مبرهنة فيرما الصغرى"
+      },
+      {
+        "l": "\\( a^{\\varphi(m)} \\equiv 1 \\pmod m \\)",
+        "r": "مبرهنة أويلر للأعداد الأولية نسبياً"
+      },
+      {
+        "l": "\\( (p - 1)! \\equiv -1 \\pmod p \\)",
+        "r": "مبرهنة ويلسون للأعداد الأولية"
+      },
+      {
+        "l": "\\( \\prod (e_i + 1) \\)",
+        "r": "عدد القواسم الموجبة \\( \\tau(N) \\)"
+      }
+    ]
+  },
+  {
+    "t": "se",
+    "ti": "Spot the Error: Algebraic & Domain Verification (Modular Arithmetic, Divisibility, Primes & Euler's Totient)",
+    "ti_ar": "اكتشف الخطأ: التحقق الجبري والمنطقي (الحساب المعياري وقابلية القسمة والأعداد الأولية ودالة أويلر)",
+    "q": "A student solves \\( \\sqrt{2x + 18} = x - 3 \\) step by step. Which step introduces an invalid conclusion?",
+    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 18} = x - 3 \\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "steps": [
+      "Square both sides: \\( 2x + 18 = (x - 3)^2 \\).",
+      "Expand the right-hand side: \\( 2x + 18 = x^2 - 6x + 9 \\).",
+      "Rearrange and factor: \\( x^2 - 8x - 9 = 0 \\).",
+      "Accept both roots without checking the non-negativity condition \\( x - 3 \\ge 0 \\)."
+    ],
+    "steps_ar": [
+      "تربيع الطرفين: \\( 2x + 18 = (x - 3)^2 \\).",
+      "فك المربع الكامل: \\( 2x + 18 = x^2 - 6x + 9 \\).",
+      "إعادة الترتيب في الصورة القياسية: \\( x^2 - 8x - 9 = 0 \\).",
+      "قبول الجذرين معاً دون التحقق من شرط عدم السالبية \\( x - 3 \\ge 0 \\)."
+    ],
+    "errorStep": 4,
+    "reasons": [
+      "The principal square root \\( \\sqrt{\\cdot} \\) is always non-negative, so any solution must satisfy \\( x - 3 \\ge 0 \\iff x \\ge 3 \\); the negative root is extraneous.",
+      "Expanding \\( (x - 3)^2 \\) should not have a middle term.",
+      "Squaring both sides is never allowed for radical equations."
+    ],
+    "reasons_ar": [
+      "الجذر التربيعي الأساسي غير سالب دائماً، لذا يجب تحقق الشرط \\( x \\ge 3 \\) واستبعاد الجذر الدخيل السالب.",
+      "فك المربع الكامل غير صحيح.",
+      "لا يجوز تربيع الطرفين مطلقاً."
+    ],
+    "correctReason": 0,
+    "h": "Check the sign of the right-hand side \\( x - 3 \\) for the negative root.",
+    "h_ar": "تحقق من إشارة الطرف الأيمن \\( x - 3 \\) عند التعويض بالجذر السالب.",
+    "sol": "Squaring introduces an extraneous root whenever \\( x - 3 < 0 \\). Only the root satisfying \\( x \\ge 3 \\) is valid.",
+    "sol_ar": "التربيع يدخل جذراً دخيلاً يجعل الطرف الأيمن سالباً؛ يُقبل فقط الجذر الذي يحقق \\( x \\ge 3 \\)."
+  },
+  {
+    "t": "ms",
+    "ti": "Examiner Mode: Multi-Step Structured Problem (Modular Arithmetic, Divisibility, Primes & Euler's Totient)",
+    "ti_ar": "وضع المصحح: مسألة هيكلية متعددة الخطوات (الحساب المعياري وقابلية القسمة والأعداد الأولية ودالة أويلر)",
+    "q": "Consider \\( f(x) = x^2 - 6x + 13 \\) for \\( x \\ge 3 \\). (a) Express \\( f(x) \\) in completed-square vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and state its domain.",
+    "q_ar": "لتكن \\( f(x) = x^2 - 6x + 13 \\) حيث \\( x \\ge 3 \\). (أ) اكتب \\( f(x) \\) في صورة المربع الكامل وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) وحدد مجالها.",
+    "parts": [
+      {
+        "label": "Part (a) — Completed Square & Range",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Complete the square: \\( f(x) = (x - 3)^2 + 4 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State exact range: \\( f(x) \\ge 4 \\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Function & Domain",
+        "marks": 3,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Write \\( y = (x - 3)^2 + 4 \\implies (x - 3)^2 = y - 4 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Select positive root (since \\( x \\ge 3 \\)): \\( f^{-1}(x) = 3 + \\sqrt{x - 4} \\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 4 \\)."
+          }
+        ]
+      }
+    ],
+    "examinerTip": "Always match the domain of \\( f^{-1} \\) to the range of \\( f \\), and use \\( x \\ge 3 \\) to select the positive branch of the square root.",
+    "examinerTip_ar": "مجال الدالة العكسية \\( f^{-1} \\) هو مدى الدالة الأصلية \\( f \\)، ويُختار الجذر الموجب لأن \\( x \\ge 3 \\)."
+  },
+  {
+    "t": "sb",
+    "ti": "Step Builder: Guided Calculation (Modular Arithmetic, Divisibility, Primes & Euler's Totient)",
+    "ti_ar": "بناء الخطوات: حساب موجه خطوة بخطوة (الحساب المعياري وقابلية القسمة والأعداد الأولية ودالة أويلر)",
+    "steps": [
+      {
+        "l": "In \\( y = x^2 - 6x + 14 \\), halve the \\( x \\)-coefficient to write \\( (x - h)^2 \\) where \\( h = \\)",
+        "a": "3",
+        "h": "Divide 6 by 2."
+      },
+      {
+        "l": "Find the minimum value \\( k = 14 - 3^2 = \\)",
+        "a": "5",
+        "h": "Subtract 9 from 14."
+      },
+      {
+        "l": "Evaluate \\( y \\) when \\( x = 6 \\): \\( y = \\)",
+        "a": "14",
+        "h": "Calculate \\( 3^2 + 5 \\)."
+      }
+    ],
+    "steps_ar": [
+      {
+        "l": "في الدالة \\( y = x^2 - 6x + 14 \\)، قيمة \\( h \\) في \\( (x - h)^2 \\) تساوي:",
+        "a": "3",
+        "h": "اقسم 6 على 2."
+      },
+      {
+        "l": "أوجد القيمة الصغرى \\( k = 14 - 3^2 = \\)",
+        "a": "5",
+        "h": "اطرح 9 من 14."
+      },
+      {
+        "l": "احسب قيمة \\( y \\) عندما \\( x = 6 \\):",
+        "a": "14",
+        "h": "احسب \\( 3^2 + 5 \\)."
+      }
+    ]
+  },
+  {
+    "t": "num",
+    "ti": "Numeric Entry: Modular Arithmetic, Divisibility, Primes & Euler's Totient",
+    "ti_ar": "إدخال رقمي: الحساب المعياري وقابلية القسمة والأعداد الأولية ودالة أويلر",
+    "q": "Evaluate Euler's totient function \\( \\varphi(72) \\), the count of integers in \\( \\{1, 2, \\dots, 72\\} \\) coprime to \\( 72 \\).",
+    "q_ar": "احسب قيمة دالة أويلر \\( \\varphi(72) \\)، وهي عدد الأعداد الصحيحة في \\( \\{1, \\dots, 72\\} \\) الأولية نسبياً مع \\( 72 \\).",
+    "a": 24,
+    "h": "Since \\( 72 = 2^3 \\cdot 3^2 \\), compute \\( 72\\left(1 - \\frac{1}{2}\\right)\\left(1 - \\frac{1}{3}\\right) \\).",
+    "h_ar": "بما أن \\( 72 = 2^3 \\cdot 3^2 \\)، احسب \\( 72\\left(1 - \\frac{1}{2}\\right)\\left(1 - \\frac{1}{3}\\right) \\).",
+    "sol": "\\( \\varphi(72) = 72 \\times \\frac{1}{2} \\times \\frac{2}{3} = 24 \\).",
+    "sol_ar": "\\( \\varphi(72) = 72 \\times \\frac{1}{2} \\times \\frac{2}{3} = 24 \\)."
+  },
+  {
+    "t": "ord",
+    "ti": "Order the Steps: Systematic Solution (Modular Arithmetic, Divisibility, Primes & Euler's Totient)",
+    "ti_ar": "رتّب الخطوات: خطوات الحل المنظم (الحساب المعياري وقابلية القسمة والأعداد الأولية ودالة أويلر)",
+    "prompt": "Arrange the logical steps in order to solve the intersection and tangency problem for \\( y = x^2 - 6x + 13 \\) and \\( y = 2x + k \\):",
+    "prompt_ar": "رتب الخطوات المنطقية لحل مسألة التماس بين المنحنى \\( y = x^2 - 6x + 13 \\) والمستقيم \\( y = 2x + k \\):",
+    "items": [
+      "Equate the curve and line equations: \\( x^2 - 6x + 13 = 2x + k \\).",
+      "Rearrange into standard quadratic form: \\( x^2 - 8x + (13 - k) = 0 \\).",
+      "Set the discriminant \\( \\Delta = b^2 - 4ac = (-8)^2 - 4(1)(13 - k) = 0 \\) for tangency.",
+      "Solve the resulting linear equation for the exact value of the parameter \\( k \\)."
+    ],
+    "items_ar": [
+      "ساوِ معادلة المنحنى بمعادلة المستقيم: \\( x^2 - 6x + 13 = 2x + k \\).",
+      "أعد الترتيب في الصورة القياسية: \\( x^2 - 8x + (13 - k) = 0 \\).",
+      "ضع المميز مساوياً للصفر لشرط التماس: \\( \\Delta = (-8)^2 - 4(13 - k) = 0 \\).",
+      "حل المعادلة الخطية الناتجة لإيجاد القيمة الدقيقة للثابت \\( k \\)."
+    ],
+    "ex": "Equate the two equations first, collect terms into ax² + bx + c = 0, then apply Δ = 0.",
+    "ex_ar": "ساوِ المعادلتين أولاً، ثم رتب الحدود في الصورة القياسية، ثم طبق شرط التماس Δ = 0."
+  },
+  {
+    "t": "cat",
+    "ti": "Categorize: Mathematical Classification (Modular Arithmetic, Divisibility, Primes & Euler's Totient)",
+    "ti_ar": "تصنيف: التصنيف الرياضي (الحساب المعياري وقابلية القسمة والأعداد الأولية ودالة أويلر)",
+    "categories": [
+      "Two Distinct Real Roots (Δ > 0)",
+      "One Repeated Tangent Root (Δ = 0)",
+      "No Real Roots (Δ < 0)"
+    ],
+    "categories_ar": [
+      "جذران حقيقيان متمايزان (Δ > 0)",
+      "جذر حقيقي مكرر / تماس (Δ = 0)",
+      "لا توجد جذور حقيقية (Δ < 0)"
+    ],
+    "items": [
+      {
+        "s": "\\( x^2 - 6x + 9 = 0 \\)",
+        "s_ar": "\\( x^2 - 6x + 9 = 0 \\)",
+        "cat": 1
+      },
+      {
+        "s": "\\( x^2 - 7x + 3 = 0 \\)",
+        "s_ar": "\\( x^2 - 7x + 3 = 0 \\)",
+        "cat": 0
+      },
+      {
+        "s": "\\( x^2 + 3x + 12 = 0 \\)",
+        "s_ar": "\\( x^2 + 3x + 12 = 0 \\)",
+        "cat": 2
+      },
+      {
+        "s": "\\( 4x^2 - 12x + 9 = 0 \\)",
+        "s_ar": "\\( 4x^2 - 12x + 9 = 0 \\)",
+        "cat": 1
+      }
+    ],
+    "ex": "Compute Δ = b² − 4ac to classify each quadratic equation.",
+    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لتصنيف كل معادلة تربيعية."
+  }
+];
+
+D["ol-diophantine-equations"] = [
+  {
+    "t": "qc",
+    "ti": "Quick Check: Diophantine Equations, SFFT, Bezout's Identity & Floor Functions",
+    "ti_ar": "فحص سريع: المعادلات الديوفانتية وتحليل SFFT وهوية بيزو ودالة الصحيح",
+    "q": "Using Simon's Favorite Factoring Trick (SFFT), rewrite \\( xy + 3x + 5y = 20 \\) into factored form.",
+    "q_ar": "باستخدام حيلة التحليل المفضلة لسيمون (SFFT)، أعد كتابة المعادلة \\( xy + 3x + 5y = 20 \\) في صورة حاصل ضرب عاملين.",
+    "o": [
+      "\\( (x + 5)(y + 3) = 35 \\)",
+      "\\( (x + 3)(y + 5) = 35 \\)",
+      "\\( (x + 5)(y + 3) = 20 \\)",
+      "\\( (x - 5)(y - 3) = 35 \\)"
+    ],
+    "o_ar": [
+      "\\( (x + 5)(y + 3) = 35 \\)",
+      "\\( (x + 3)(y + 5) = 35 \\)",
+      "\\( (x + 5)(y + 3) = 20 \\)",
+      "\\( (x - 5)(y - 3) = 35 \\)"
+    ],
+    "a": 0,
+    "ex": "Add \\( 3 \\times 5 = 15 \\) to both sides: \\( xy + 3x + 5y + 15 = 35 \\implies (x + 5)(y + 3) = 35 \\).",
+    "ex_ar": "أضف \\( 3 \\times 5 = 15 \\) للطرفين: \\( (x + 5)(y + 3) = 20 + 15 = 35 \\)."
+  },
+  {
+    "t": "tf",
+    "ti": "True / False: Core Theorems (Diophantine Equations, SFFT, Bezout's Identity & Floor Functions)",
+    "ti_ar": "صح / خطأ: النظريات الأساسية (المعادلات الديوفانتية وتحليل SFFT وهوية بيزو ودالة الصحيح)",
+    "items": [
+      {
+        "s": "A linear Diophantine equation \\( ax + by = c \\) has integer solutions if and only if \\( \\gcd(a, b) \\) divides \\( c \\).",
+        "a": true
+      },
+      {
+        "s": "By the Chicken McNugget Theorem, for coprime \\( m, n > 1 \\), the largest integer not expressible as \\( am + bn \\) (\\( a, b \\ge 0 \\)) is \\( mn - m - n \\).",
+        "a": true
+      },
+      {
+        "s": "By Legendre's formula, the exponent of \\( 5 \\) in \\( 25! \\) is \\( \\lfloor 25/5 \\rfloor = 5 \\).",
+        "a": false
+      }
+    ],
+    "items_ar": [
+      {
+        "s": "يكون للمعادلة الديوفانتية الخطية \\( ax + by = c \\) حلول صحيحة إذا وفقط إذا كان \\( \\gcd(a, b) \\) يقسم \\( c \\).",
+        "a": true
+      },
+      {
+        "s": "لعددين أوليين نسبياً \\( m, n > 1 \\)، أكبر عدد لا يمكن تمثيله بالصورة \\( am + bn \\) هو \\( mn - m - n \\).",
+        "a": true
+      },
+      {
+        "s": "أس العدد الأولي \\( 5 \\) في تحليل \\( 25! \\) يساوي \\( 5 \\) فقط.",
+        "a": false
+      }
+    ]
+  },
+  {
+    "t": "mt",
+    "ti": "Matching: Identities & Principles (Diophantine Equations, SFFT, Bezout's Identity & Floor Functions)",
+    "ti_ar": "مطابقة: القوانين والمفاهيم (المعادلات الديوفانتية وتحليل SFFT وهوية بيزو ودالة الصحيح)",
+    "p": [
+      {
+        "l": "\\( xy + ax + by + ab \\)",
+        "r": "\\( (x + b)(y + a) \\) (Simon's Favorite Factoring Trick)"
+      },
+      {
+        "l": "\\( mn - m - n \\)",
+        "r": "Frobenius coin number for coprime \\( m, n \\)"
+      },
+      {
+        "l": "\\( \\sum_{k \\ge 1} \\lfloor n/p^k \\rfloor \\)",
+        "r": "Legendre's formula for \\( v_p(n!) \\)"
+      },
+      {
+        "l": "\\( \\gcd(a, b) \\mid c \\)",
+        "r": "Solvability criterion for \\( ax + by = c \\) in \\( \\mathbb{Z} \\)"
+      }
+    ],
+    "p_ar": [
+      {
+        "l": "\\( xy + ax + by + ab \\)",
+        "r": "\\( (x + b)(y + a) \\) (تحليل سيمون SFFT)"
+      },
+      {
+        "l": "\\( mn - m - n \\)",
+        "r": "أكبر عدد غير قابل للتمثيل (مبرهنة فروبينيوس)"
+      },
+      {
+        "l": "\\( \\sum_{k \\ge 1} \\lfloor n/p^k \\rfloor \\)",
+        "r": "صيغة ليجاندر لأس العامل الأولي في \\( n! \\)"
+      },
+      {
+        "l": "\\( \\gcd(a, b) \\mid c \\)",
+        "r": "شرط وجود حلول صحيحة للمعادلة \\( ax + by = c \\)"
+      }
+    ]
+  },
+  {
+    "t": "se",
+    "ti": "Spot the Error: Algebraic & Domain Verification (Diophantine Equations, SFFT, Bezout's Identity & Floor Functions)",
+    "ti_ar": "اكتشف الخطأ: التحقق الجبري والمنطقي (المعادلات الديوفانتية وتحليل SFFT وهوية بيزو ودالة الصحيح)",
+    "q": "A student solves \\( \\sqrt{2x + 32} = x - 4 \\) step by step. Which step introduces an invalid conclusion?",
+    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 32} = x - 4 \\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "steps": [
+      "Square both sides: \\( 2x + 32 = (x - 4)^2 \\).",
+      "Expand the right-hand side: \\( 2x + 32 = x^2 - 8x + 16 \\).",
+      "Rearrange and factor: \\( x^2 - 10x - 16 = 0 \\).",
+      "Accept both roots without checking the non-negativity condition \\( x - 4 \\ge 0 \\)."
+    ],
+    "steps_ar": [
+      "تربيع الطرفين: \\( 2x + 32 = (x - 4)^2 \\).",
+      "فك المربع الكامل: \\( 2x + 32 = x^2 - 8x + 16 \\).",
+      "إعادة الترتيب في الصورة القياسية: \\( x^2 - 10x - 16 = 0 \\).",
+      "قبول الجذرين معاً دون التحقق من شرط عدم السالبية \\( x - 4 \\ge 0 \\)."
+    ],
+    "errorStep": 4,
+    "reasons": [
+      "The principal square root \\( \\sqrt{\\cdot} \\) is always non-negative, so any solution must satisfy \\( x - 4 \\ge 0 \\iff x \\ge 4 \\); the negative root is extraneous.",
+      "Expanding \\( (x - 4)^2 \\) should not have a middle term.",
+      "Squaring both sides is never allowed for radical equations."
+    ],
+    "reasons_ar": [
+      "الجذر التربيعي الأساسي غير سالب دائماً، لذا يجب تحقق الشرط \\( x \\ge 4 \\) واستبعاد الجذر الدخيل السالب.",
+      "فك المربع الكامل غير صحيح.",
+      "لا يجوز تربيع الطرفين مطلقاً."
+    ],
+    "correctReason": 0,
+    "h": "Check the sign of the right-hand side \\( x - 4 \\) for the negative root.",
+    "h_ar": "تحقق من إشارة الطرف الأيمن \\( x - 4 \\) عند التعويض بالجذر السالب.",
+    "sol": "Squaring introduces an extraneous root whenever \\( x - 4 < 0 \\). Only the root satisfying \\( x \\ge 4 \\) is valid.",
+    "sol_ar": "التربيع يدخل جذراً دخيلاً يجعل الطرف الأيمن سالباً؛ يُقبل فقط الجذر الذي يحقق \\( x \\ge 4 \\)."
+  },
+  {
+    "t": "ms",
+    "ti": "Examiner Mode: Multi-Step Structured Problem (Diophantine Equations, SFFT, Bezout's Identity & Floor Functions)",
+    "ti_ar": "وضع المصحح: مسألة هيكلية متعددة الخطوات (المعادلات الديوفانتية وتحليل SFFT وهوية بيزو ودالة الصحيح)",
+    "q": "Consider \\( f(x) = x^2 - 8x + 20 \\) for \\( x \\ge 4 \\). (a) Express \\( f(x) \\) in completed-square vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and state its domain.",
+    "q_ar": "لتكن \\( f(x) = x^2 - 8x + 20 \\) حيث \\( x \\ge 4 \\). (أ) اكتب \\( f(x) \\) في صورة المربع الكامل وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) وحدد مجالها.",
+    "parts": [
+      {
+        "label": "Part (a) — Completed Square & Range",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Complete the square: \\( f(x) = (x - 4)^2 + 4 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State exact range: \\( f(x) \\ge 4 \\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Function & Domain",
+        "marks": 3,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Write \\( y = (x - 4)^2 + 4 \\implies (x - 4)^2 = y - 4 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Select positive root (since \\( x \\ge 4 \\)): \\( f^{-1}(x) = 4 + \\sqrt{x - 4} \\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 4 \\)."
+          }
+        ]
+      }
+    ],
+    "examinerTip": "Always match the domain of \\( f^{-1} \\) to the range of \\( f \\), and use \\( x \\ge 4 \\) to select the positive branch of the square root.",
+    "examinerTip_ar": "مجال الدالة العكسية \\( f^{-1} \\) هو مدى الدالة الأصلية \\( f \\)، ويُختار الجذر الموجب لأن \\( x \\ge 4 \\)."
+  },
+  {
+    "t": "sb",
+    "ti": "Step Builder: Guided Calculation (Diophantine Equations, SFFT, Bezout's Identity & Floor Functions)",
+    "ti_ar": "بناء الخطوات: حساب موجه خطوة بخطوة (المعادلات الديوفانتية وتحليل SFFT وهوية بيزو ودالة الصحيح)",
+    "steps": [
+      {
+        "l": "In \\( y = x^2 - 8x + 21 \\), halve the \\( x \\)-coefficient to write \\( (x - h)^2 \\) where \\( h = \\)",
+        "a": "4",
+        "h": "Divide 8 by 2."
+      },
+      {
+        "l": "Find the minimum value \\( k = 21 - 4^2 = \\)",
+        "a": "5",
+        "h": "Subtract 16 from 21."
+      },
+      {
+        "l": "Evaluate \\( y \\) when \\( x = 7 \\): \\( y = \\)",
+        "a": "14",
+        "h": "Calculate \\( 3^2 + 5 \\)."
+      }
+    ],
+    "steps_ar": [
+      {
+        "l": "في الدالة \\( y = x^2 - 8x + 21 \\)، قيمة \\( h \\) في \\( (x - h)^2 \\) تساوي:",
+        "a": "4",
+        "h": "اقسم 8 على 2."
+      },
+      {
+        "l": "أوجد القيمة الصغرى \\( k = 21 - 4^2 = \\)",
+        "a": "5",
+        "h": "اطرح 16 من 21."
+      },
+      {
+        "l": "احسب قيمة \\( y \\) عندما \\( x = 7 \\):",
+        "a": "14",
+        "h": "احسب \\( 3^2 + 5 \\)."
+      }
+    ]
+  },
+  {
+    "t": "num",
+    "ti": "Numeric Entry: Diophantine Equations, SFFT, Bezout's Identity & Floor Functions",
+    "ti_ar": "إدخال رقمي: المعادلات الديوفانتية وتحليل SFFT وهوية بيزو ودالة الصحيح",
+    "q": "How many trailing zeros does \\( 100! \\) have in base 10?",
+    "q_ar": "كم عدد الأصفار في يمين العدد \\( 100! \\) عند كتابته في النظام العشري؟",
+    "a": 24,
+    "h": "Apply Legendre's formula for \\( p = 5 \\): \\( \\lfloor 100/5 \\rfloor + \\lfloor 100/25 \\rfloor \\).",
+    "h_ar": "طبق صيغة ليجاندر للعدد \\( p = 5 \\): \\( \\lfloor 100/5 \\rfloor + \\lfloor 100/25 \\rfloor \\).",
+    "sol": "\\( v_5(100!) = \\lfloor 100/5 \\rfloor + \\lfloor 100/25 \\rfloor = 20 + 4 = 24 \\).",
+    "sol_ar": "\\( v_5(100!) = \\lfloor 100/5 \\rfloor + \\lfloor 100/25 \\rfloor = 20 + 4 = 24 \\)."
+  },
+  {
+    "t": "ord",
+    "ti": "Order the Steps: Systematic Solution (Diophantine Equations, SFFT, Bezout's Identity & Floor Functions)",
+    "ti_ar": "رتّب الخطوات: خطوات الحل المنظم (المعادلات الديوفانتية وتحليل SFFT وهوية بيزو ودالة الصحيح)",
+    "prompt": "Arrange the logical steps in order to solve the intersection and tangency problem for \\( y = x^2 - 8x + 20 \\) and \\( y = 2x + k \\):",
+    "prompt_ar": "رتب الخطوات المنطقية لحل مسألة التماس بين المنحنى \\( y = x^2 - 8x + 20 \\) والمستقيم \\( y = 2x + k \\):",
+    "items": [
+      "Equate the curve and line equations: \\( x^2 - 8x + 20 = 2x + k \\).",
+      "Rearrange into standard quadratic form: \\( x^2 - 10x + (20 - k) = 0 \\).",
+      "Set the discriminant \\( \\Delta = b^2 - 4ac = (-10)^2 - 4(1)(20 - k) = 0 \\) for tangency.",
+      "Solve the resulting linear equation for the exact value of the parameter \\( k \\)."
+    ],
+    "items_ar": [
+      "ساوِ معادلة المنحنى بمعادلة المستقيم: \\( x^2 - 8x + 20 = 2x + k \\).",
+      "أعد الترتيب في الصورة القياسية: \\( x^2 - 10x + (20 - k) = 0 \\).",
+      "ضع المميز مساوياً للصفر لشرط التماس: \\( \\Delta = (-10)^2 - 4(20 - k) = 0 \\).",
+      "حل المعادلة الخطية الناتجة لإيجاد القيمة الدقيقة للثابت \\( k \\)."
+    ],
+    "ex": "Equate the two equations first, collect terms into ax² + bx + c = 0, then apply Δ = 0.",
+    "ex_ar": "ساوِ المعادلتين أولاً، ثم رتب الحدود في الصورة القياسية، ثم طبق شرط التماس Δ = 0."
+  },
+  {
+    "t": "cat",
+    "ti": "Categorize: Mathematical Classification (Diophantine Equations, SFFT, Bezout's Identity & Floor Functions)",
+    "ti_ar": "تصنيف: التصنيف الرياضي (المعادلات الديوفانتية وتحليل SFFT وهوية بيزو ودالة الصحيح)",
+    "categories": [
+      "Two Distinct Real Roots (Δ > 0)",
+      "One Repeated Tangent Root (Δ = 0)",
+      "No Real Roots (Δ < 0)"
+    ],
+    "categories_ar": [
+      "جذران حقيقيان متمايزان (Δ > 0)",
+      "جذر حقيقي مكرر / تماس (Δ = 0)",
+      "لا توجد جذور حقيقية (Δ < 0)"
+    ],
+    "items": [
+      {
+        "s": "\\( x^2 - 8x + 16 = 0 \\)",
+        "s_ar": "\\( x^2 - 8x + 16 = 0 \\)",
+        "cat": 1
+      },
+      {
+        "s": "\\( x^2 - 9x + 4 = 0 \\)",
+        "s_ar": "\\( x^2 - 9x + 4 = 0 \\)",
+        "cat": 0
+      },
+      {
+        "s": "\\( x^2 + 4x + 19 = 0 \\)",
+        "s_ar": "\\( x^2 + 4x + 19 = 0 \\)",
+        "cat": 2
+      },
+      {
+        "s": "\\( 4x^2 - 16x + 16 = 0 \\)",
+        "s_ar": "\\( 4x^2 - 16x + 16 = 0 \\)",
+        "cat": 1
+      }
+    ],
+    "ex": "Compute Δ = b² − 4ac to classify each quadratic equation.",
+    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لتصنيف كل معادلة تربيعية."
+  }
+];
+
+D["ol-combinatorics-counting"] = [
+  {
+    "t": "qc",
+    "ti": "Quick Check: Bijective Counting, Stars & Bars, Inclusion-Exclusion & Pigeonhole",
+    "ti_ar": "فحص سريع: العد التقابلي وطريقة النجوم والفواصل والشمول والإقصاء ومبدأ برج الحمام",
+    "q": "How many non-negative integer solutions \\( (x_1, x_2, x_3, x_4) \\) with \\( x_i \\ge 0 \\) satisfy \\( x_1 + x_2 + x_3 + x_4 = 9 \\)?",
+    "q_ar": "كم عدد الحلول الصحيحة غير السالبة \\( (x_1, x_2, x_3, x_4) \\) حيث \\( x_i \\ge 0 \\) للمعادلة \\( x_1 + x_2 + x_3 + x_4 = 9 \\)؟",
+    "o": [
+      "\\( 220 \\)",
+      "\\( 165 \\)",
+      "\\( 84 \\)",
+      "\\( 120 \\)"
+    ],
+    "o_ar": [
+      "\\( 220 \\)",
+      "\\( 165 \\)",
+      "\\( 84 \\)",
+      "\\( 120 \\)"
+    ],
+    "a": 0,
+    "ex": "By Stars and Bars, \\( \\binom{n + k - 1}{k - 1} = \\binom{9 + 4 - 1}{4 - 1} = \\binom{12}{3} = \\frac{12 \\times 11 \\times 10}{6} = 220 \\).",
+    "ex_ar": "بطريقة النجوم والفواصل: \\( \\binom{9 + 4 - 1}{4 - 1} = \\binom{12}{3} = 220 \\)."
+  },
+  {
+    "t": "tf",
+    "ti": "True / False: Core Theorems (Bijective Counting, Stars & Bars, Inclusion-Exclusion & Pigeonhole)",
+    "ti_ar": "صح / خطأ: النظريات الأساسية (العد التقابلي وطريقة النجوم والفواصل والشمول والإقصاء ومبدأ برج الحمام)",
+    "items": [
+      {
+        "s": "The number of positive integer solutions (\\( x_i \\ge 1 \\)) to \\( x_1 + \\dots + x_k = n \\) is \\( \\binom{n - 1}{k - 1} \\).",
+        "a": true
+      },
+      {
+        "s": "For \\( n = 4 \\), the number of derangements (permutations with no fixed points) is \\( D_4 = 9 \\).",
+        "a": true
+      },
+      {
+        "s": "If \\( 25 \\) objects are placed into \\( 6 \\) boxes, the Pigeonhole Principle guarantees only that some box has at least \\( 4 \\) objects.",
+        "a": false
+      }
+    ],
+    "items_ar": [
+      {
+        "s": "عدد الحلول الصحيحة الموجبة (\\( x_i \\ge 1 \\)) للمعادلة \\( x_1 + \\dots + x_k = n \\) هو \\( \\binom{n - 1}{k - 1} \\).",
+        "a": true
+      },
+      {
+        "s": "للمجموعة ذات \\( 4 \\) عناصر، عدد التباديل الخالية من النقاط الثابتة (Derangements) هو \\( D_4 = 9 \\).",
+        "a": true
+      },
+      {
+        "s": "عند توزيع 25 عنصراً على 6 صناديق، يضمن مبدأ برج الحمام وجود صندوق به 4 عناصر فقط على الأقل.",
+        "a": false
+      }
+    ]
+  },
+  {
+    "t": "mt",
+    "ti": "Matching: Identities & Principles (Bijective Counting, Stars & Bars, Inclusion-Exclusion & Pigeonhole)",
+    "ti_ar": "مطابقة: القوانين والمفاهيم (العد التقابلي وطريقة النجوم والفواصل والشمول والإقصاء ومبدأ برج الحمام)",
+    "p": [
+      {
+        "l": "\\( \\binom{n + k - 1}{k - 1} \\)",
+        "r": "Stars & Bars for non-negative integers \\( x_i \\ge 0 \\)"
+      },
+      {
+        "l": "\\( \\binom{n - 1}{k - 1} \\)",
+        "r": "Stars & Bars for strictly positive integers \\( x_i \\ge 1 \\)"
+      },
+      {
+        "l": "\\( \\lceil N / k \\rceil \\)",
+        "r": "Generalized Pigeonhole minimum in at least one box"
+      },
+      {
+        "l": "\\( \\binom{m + n}{m} \\)",
+        "r": "Monotonic lattice paths from \\( (0,0) \\) to \\( (m,n) \\)"
+      }
+    ],
+    "p_ar": [
+      {
+        "l": "\\( \\binom{n + k - 1}{k - 1} \\)",
+        "r": "النجوم والفواصل للأعداد غير السالبة \\( x_i \\ge 0 \\)"
+      },
+      {
+        "l": "\\( \\binom{n - 1}{k - 1} \\)",
+        "r": "النجوم والفواصل للأعداد الموجبة \\( x_i \\ge 1 \\)"
+      },
+      {
+        "l": "\\( \\lceil N / k \\rceil \\)",
+        "r": "الحد الأدنى المضمون بمبدأ برج الحمام المعمم"
+      },
+      {
+        "l": "\\( \\binom{m + n}{m} \\)",
+        "r": "عدد مسارات الشبكة من \\( (0,0) \\) إلى \\( (m,n) \\)"
+      }
+    ]
+  },
+  {
+    "t": "se",
+    "ti": "Spot the Error: Algebraic & Domain Verification (Bijective Counting, Stars & Bars, Inclusion-Exclusion & Pigeonhole)",
+    "ti_ar": "اكتشف الخطأ: التحقق الجبري والمنطقي (العد التقابلي وطريقة النجوم والفواصل والشمول والإقصاء ومبدأ برج الحمام)",
+    "q": "A student solves \\( \\sqrt{2x + 50} = x - 5 \\) step by step. Which step introduces an invalid conclusion?",
+    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 50} = x - 5 \\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "steps": [
+      "Square both sides: \\( 2x + 50 = (x - 5)^2 \\).",
+      "Expand the right-hand side: \\( 2x + 50 = x^2 - 10x + 25 \\).",
+      "Rearrange and factor: \\( x^2 - 12x - 25 = 0 \\).",
+      "Accept both roots without checking the non-negativity condition \\( x - 5 \\ge 0 \\)."
+    ],
+    "steps_ar": [
+      "تربيع الطرفين: \\( 2x + 50 = (x - 5)^2 \\).",
+      "فك المربع الكامل: \\( 2x + 50 = x^2 - 10x + 25 \\).",
+      "إعادة الترتيب في الصورة القياسية: \\( x^2 - 12x - 25 = 0 \\).",
+      "قبول الجذرين معاً دون التحقق من شرط عدم السالبية \\( x - 5 \\ge 0 \\)."
+    ],
+    "errorStep": 4,
+    "reasons": [
+      "The principal square root \\( \\sqrt{\\cdot} \\) is always non-negative, so any solution must satisfy \\( x - 5 \\ge 0 \\iff x \\ge 5 \\); the negative root is extraneous.",
+      "Expanding \\( (x - 5)^2 \\) should not have a middle term.",
+      "Squaring both sides is never allowed for radical equations."
+    ],
+    "reasons_ar": [
+      "الجذر التربيعي الأساسي غير سالب دائماً، لذا يجب تحقق الشرط \\( x \\ge 5 \\) واستبعاد الجذر الدخيل السالب.",
+      "فك المربع الكامل غير صحيح.",
+      "لا يجوز تربيع الطرفين مطلقاً."
+    ],
+    "correctReason": 0,
+    "h": "Check the sign of the right-hand side \\( x - 5 \\) for the negative root.",
+    "h_ar": "تحقق من إشارة الطرف الأيمن \\( x - 5 \\) عند التعويض بالجذر السالب.",
+    "sol": "Squaring introduces an extraneous root whenever \\( x - 5 < 0 \\). Only the root satisfying \\( x \\ge 5 \\) is valid.",
+    "sol_ar": "التربيع يدخل جذراً دخيلاً يجعل الطرف الأيمن سالباً؛ يُقبل فقط الجذر الذي يحقق \\( x \\ge 5 \\)."
+  },
+  {
+    "t": "ms",
+    "ti": "Examiner Mode: Multi-Step Structured Problem (Bijective Counting, Stars & Bars, Inclusion-Exclusion & Pigeonhole)",
+    "ti_ar": "وضع المصحح: مسألة هيكلية متعددة الخطوات (العد التقابلي وطريقة النجوم والفواصل والشمول والإقصاء ومبدأ برج الحمام)",
+    "q": "Consider \\( f(x) = x^2 - 10x + 29 \\) for \\( x \\ge 5 \\). (a) Express \\( f(x) \\) in completed-square vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and state its domain.",
+    "q_ar": "لتكن \\( f(x) = x^2 - 10x + 29 \\) حيث \\( x \\ge 5 \\). (أ) اكتب \\( f(x) \\) في صورة المربع الكامل وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) وحدد مجالها.",
+    "parts": [
+      {
+        "label": "Part (a) — Completed Square & Range",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Complete the square: \\( f(x) = (x - 5)^2 + 4 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State exact range: \\( f(x) \\ge 4 \\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Function & Domain",
+        "marks": 3,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Write \\( y = (x - 5)^2 + 4 \\implies (x - 5)^2 = y - 4 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Select positive root (since \\( x \\ge 5 \\)): \\( f^{-1}(x) = 5 + \\sqrt{x - 4} \\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 4 \\)."
+          }
+        ]
+      }
+    ],
+    "examinerTip": "Always match the domain of \\( f^{-1} \\) to the range of \\( f \\), and use \\( x \\ge 5 \\) to select the positive branch of the square root.",
+    "examinerTip_ar": "مجال الدالة العكسية \\( f^{-1} \\) هو مدى الدالة الأصلية \\( f \\)، ويُختار الجذر الموجب لأن \\( x \\ge 5 \\)."
+  },
+  {
+    "t": "sb",
+    "ti": "Step Builder: Guided Calculation (Bijective Counting, Stars & Bars, Inclusion-Exclusion & Pigeonhole)",
+    "ti_ar": "بناء الخطوات: حساب موجه خطوة بخطوة (العد التقابلي وطريقة النجوم والفواصل والشمول والإقصاء ومبدأ برج الحمام)",
+    "steps": [
+      {
+        "l": "In \\( y = x^2 - 10x + 30 \\), halve the \\( x \\)-coefficient to write \\( (x - h)^2 \\) where \\( h = \\)",
+        "a": "5",
+        "h": "Divide 10 by 2."
+      },
+      {
+        "l": "Find the minimum value \\( k = 30 - 5^2 = \\)",
+        "a": "5",
+        "h": "Subtract 25 from 30."
+      },
+      {
+        "l": "Evaluate \\( y \\) when \\( x = 8 \\): \\( y = \\)",
+        "a": "14",
+        "h": "Calculate \\( 3^2 + 5 \\)."
+      }
+    ],
+    "steps_ar": [
+      {
+        "l": "في الدالة \\( y = x^2 - 10x + 30 \\)، قيمة \\( h \\) في \\( (x - h)^2 \\) تساوي:",
+        "a": "5",
+        "h": "اقسم 10 على 2."
+      },
+      {
+        "l": "أوجد القيمة الصغرى \\( k = 30 - 5^2 = \\)",
+        "a": "5",
+        "h": "اطرح 25 من 30."
+      },
+      {
+        "l": "احسب قيمة \\( y \\) عندما \\( x = 8 \\):",
+        "a": "14",
+        "h": "احسب \\( 3^2 + 5 \\)."
+      }
+    ]
+  },
+  {
+    "t": "num",
+    "ti": "Numeric Entry: Bijective Counting, Stars & Bars, Inclusion-Exclusion & Pigeonhole",
+    "ti_ar": "إدخال رقمي: العد التقابلي وطريقة النجوم والفواصل والشمول والإقصاء ومبدأ برج الحمام",
+    "q": "Find the number of monotonic lattice paths from \\( (0, 0) \\) to \\( (4, 3) \\) moving only Right and Up.",
+    "q_ar": "أوجد عدد مسارات الشبكة من \\( (0, 0) \\) إلى \\( (4, 3) \\) بالتحرك يميناً وأعلى فقط.",
+    "a": 35,
+    "h": "Compute \\( \\binom{4 + 3}{3} = \\binom{7}{3} \\).",
+    "h_ar": "احسب \\( \\binom{4 + 3}{3} = \\binom{7}{3} \\).",
+    "sol": "\\( \\binom{7}{3} = \\frac{7 \\times 6 \\times 5}{3 \\times 2 \\times 1} = 35 \\).",
+    "sol_ar": "\\( \\binom{7}{3} = \\frac{7 \\times 6 \\times 5}{3 \\times 2 \\times 1} = 35 \\)."
+  },
+  {
+    "t": "ord",
+    "ti": "Order the Steps: Systematic Solution (Bijective Counting, Stars & Bars, Inclusion-Exclusion & Pigeonhole)",
+    "ti_ar": "رتّب الخطوات: خطوات الحل المنظم (العد التقابلي وطريقة النجوم والفواصل والشمول والإقصاء ومبدأ برج الحمام)",
+    "prompt": "Arrange the logical steps in order to solve the intersection and tangency problem for \\( y = x^2 - 10x + 29 \\) and \\( y = 2x + k \\):",
+    "prompt_ar": "رتب الخطوات المنطقية لحل مسألة التماس بين المنحنى \\( y = x^2 - 10x + 29 \\) والمستقيم \\( y = 2x + k \\):",
+    "items": [
+      "Equate the curve and line equations: \\( x^2 - 10x + 29 = 2x + k \\).",
+      "Rearrange into standard quadratic form: \\( x^2 - 12x + (29 - k) = 0 \\).",
+      "Set the discriminant \\( \\Delta = b^2 - 4ac = (-12)^2 - 4(1)(29 - k) = 0 \\) for tangency.",
+      "Solve the resulting linear equation for the exact value of the parameter \\( k \\)."
+    ],
+    "items_ar": [
+      "ساوِ معادلة المنحنى بمعادلة المستقيم: \\( x^2 - 10x + 29 = 2x + k \\).",
+      "أعد الترتيب في الصورة القياسية: \\( x^2 - 12x + (29 - k) = 0 \\).",
+      "ضع المميز مساوياً للصفر لشرط التماس: \\( \\Delta = (-12)^2 - 4(29 - k) = 0 \\).",
+      "حل المعادلة الخطية الناتجة لإيجاد القيمة الدقيقة للثابت \\( k \\)."
+    ],
+    "ex": "Equate the two equations first, collect terms into ax² + bx + c = 0, then apply Δ = 0.",
+    "ex_ar": "ساوِ المعادلتين أولاً، ثم رتب الحدود في الصورة القياسية، ثم طبق شرط التماس Δ = 0."
+  },
+  {
+    "t": "cat",
+    "ti": "Categorize: Mathematical Classification (Bijective Counting, Stars & Bars, Inclusion-Exclusion & Pigeonhole)",
+    "ti_ar": "تصنيف: التصنيف الرياضي (العد التقابلي وطريقة النجوم والفواصل والشمول والإقصاء ومبدأ برج الحمام)",
+    "categories": [
+      "Two Distinct Real Roots (Δ > 0)",
+      "One Repeated Tangent Root (Δ = 0)",
+      "No Real Roots (Δ < 0)"
+    ],
+    "categories_ar": [
+      "جذران حقيقيان متمايزان (Δ > 0)",
+      "جذر حقيقي مكرر / تماس (Δ = 0)",
+      "لا توجد جذور حقيقية (Δ < 0)"
+    ],
+    "items": [
+      {
+        "s": "\\( x^2 - 10x + 25 = 0 \\)",
+        "s_ar": "\\( x^2 - 10x + 25 = 0 \\)",
+        "cat": 1
+      },
+      {
+        "s": "\\( x^2 - 11x + 5 = 0 \\)",
+        "s_ar": "\\( x^2 - 11x + 5 = 0 \\)",
+        "cat": 0
+      },
+      {
+        "s": "\\( x^2 + 5x + 28 = 0 \\)",
+        "s_ar": "\\( x^2 + 5x + 28 = 0 \\)",
+        "cat": 2
+      },
+      {
+        "s": "\\( 4x^2 - 20x + 25 = 0 \\)",
+        "s_ar": "\\( 4x^2 - 20x + 25 = 0 \\)",
+        "cat": 1
+      }
+    ],
+    "ex": "Compute Δ = b² − 4ac to classify each quadratic equation.",
+    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لتصنيف كل معادلة تربيعية."
+  }
+];
+
+D["ol-recurrence-probability"] = [
+  {
+    "t": "qc",
+    "ti": "Quick Check: Recurrence Relations, State Markov Chains & Geometric Probability",
+    "ti_ar": "فحص سريع: العلاقات التكرارية وسلاسل الحالات والاحتمال الهندسي",
+    "q": "Two numbers \\( X, Y \\) are chosen independently and uniformly at random from \\( [0, 1] \\). What is the geometric probability that \\( |X - Y| \\le \\frac{1}{2} \\)?",
+    "q_ar": "اختير عددان \\( X, Y \\) عشوائياً وبانتظام من الفترة \\( [0, 1] \\). ما هو الاحتمال الهندسي لتحقق \\( |X - Y| \\le \\frac{1}{2} \\)؟",
+    "o": [
+      "\\( \\frac{3}{4} \\)",
+      "\\( \\frac{1}{2} \\)",
+      "\\( \\frac{2}{3} \\)",
+      "\\( \\frac{7}{8} \\)"
+    ],
+    "o_ar": [
+      "\\( \\frac{3}{4} \\)",
+      "\\( \\frac{1}{2} \\)",
+      "\\( \\frac{2}{3} \\)",
+      "\\( \\frac{7}{8} \\)"
+    ],
+    "a": 0,
+    "ex": "The two excluded corner triangles each have leg \\( \\frac{1}{2} \\), so their combined area is \\( 2 \\times \\frac{1}{2}\\left(\\frac{1}{2}\\right)^2 = \\frac{1}{4} \\), leaving \\( 1 - \\frac{1}{4} = \\frac{3}{4} \\).",
+    "ex_ar": "مساحة المثلثين المستبعدين في ركني المربع هي \\( 2 \\times \\frac{1}{2}\\left(\\frac{1}{2}\\right)^2 = \\frac{1}{4} \\)، فيكون الاحتمال \\( 1 - \\frac{1}{4} = \\frac{3}{4} \\)."
+  },
+  {
+    "t": "tf",
+    "ti": "True / False: Core Theorems (Recurrence Relations, State Markov Chains & Geometric Probability)",
+    "ti_ar": "صح / خطأ: النظريات الأساسية (العلاقات التكرارية وسلاسل الحالات والاحتمال الهندسي)",
+    "items": [
+      {
+        "s": "Linearity of expectation \\( E[X + Y] = E[X] + E[Y] \\) holds even when random variables \\( X \\) and \\( Y \\) are dependent.",
+        "a": true
+      },
+      {
+        "s": "The number of ways to tile a \\( 2 \\times n \\) board with \\( 1 \\times 2 \\) dominoes satisfies the Fibonacci recurrence \\( T_n = T_{n-1} + T_{n-2} \\).",
+        "a": true
+      },
+      {
+        "s": "If a fair coin has probability \\( p = \\frac{1}{2} \\) of Heads, the expected number of flips to get two consecutive Heads (HH) is \\( 4 \\).",
+        "a": false
+      }
+    ],
+    "items_ar": [
+      {
+        "s": "خاصية خطية التوقع \\( E[X + Y] = E[X] + E[Y] \\) تظل صحيحة حتى لو كان المتغيران \\( X, Y \\) غير مستقلين.",
+        "a": true
+      },
+      {
+        "s": "عدد طرق تبليط لوحة \\( 2 \\times n \\) بقطع دومينو \\( 1 \\times 2 \\) يحقق علاقة فيبوناتشي \\( T_n = T_{n-1} + T_{n-2} \\).",
+        "a": true
+      },
+      {
+        "s": "العدد المتوقع لرميات عملة متزنة للحصول على صورتين متتاليتين (HH) هو \\( 4 \\).",
+        "a": false
+      }
+    ]
+  },
+  {
+    "t": "mt",
+    "ti": "Matching: Identities & Principles (Recurrence Relations, State Markov Chains & Geometric Probability)",
+    "ti_ar": "مطابقة: القوانين والمفاهيم (العلاقات التكرارية وسلاسل الحالات والاحتمال الهندسي)",
+    "p": [
+      {
+        "l": "\\( E[\\sum X_i] = \\sum E[X_i] \\)",
+        "r": "Linearity of Expectation (no independence required)"
+      },
+      {
+        "l": "\\( T_n = T_{n-1} + T_{n-2} \\)",
+        "r": "Fibonacci recurrence for \\( 2 \\times n \\) domino tilings"
+      },
+      {
+        "l": "\\( C_n = \\frac{1}{n+1}\\binom{2n}{n} \\)",
+        "r": "Catalan number (dyck paths & triangulations)"
+      },
+      {
+        "l": "\\( 1 - (1 - \\tau)^2 \\)",
+        "r": "Geometric probability of meeting within wait time \\( \\tau \\)"
+      }
+    ],
+    "p_ar": [
+      {
+        "l": "\\( E[\\sum X_i] = \\sum E[X_i] \\)",
+        "r": "خطية التوقع الرياضي (لا تشترط الاستقلال)"
+      },
+      {
+        "l": "\\( T_n = T_{n-1} + T_{n-2} \\)",
+        "r": "علاقة فيبوناتشي لتبليط الدومينو"
+      },
+      {
+        "l": "\\( C_n = \\frac{1}{n+1}\\binom{2n}{n} \\)",
+        "r": "عدد كاتالان (المسارات القطرية وتثليث المضلعات)"
+      },
+      {
+        "l": "\\( 1 - (1 - \\tau)^2 \\)",
+        "r": "الاحتمال الهندسي للالتقاء خلال زمن انتظار \\( \\tau \\)"
+      }
+    ]
+  },
+  {
+    "t": "se",
+    "ti": "Spot the Error: Algebraic & Domain Verification (Recurrence Relations, State Markov Chains & Geometric Probability)",
+    "ti_ar": "اكتشف الخطأ: التحقق الجبري والمنطقي (العلاقات التكرارية وسلاسل الحالات والاحتمال الهندسي)",
+    "q": "A student solves \\( \\sqrt{2x + 72} = x - 6 \\) step by step. Which step introduces an invalid conclusion?",
+    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 72} = x - 6 \\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "steps": [
+      "Square both sides: \\( 2x + 72 = (x - 6)^2 \\).",
+      "Expand the right-hand side: \\( 2x + 72 = x^2 - 12x + 36 \\).",
+      "Rearrange and factor: \\( x^2 - 14x - 36 = 0 \\).",
+      "Accept both roots without checking the non-negativity condition \\( x - 6 \\ge 0 \\)."
+    ],
+    "steps_ar": [
+      "تربيع الطرفين: \\( 2x + 72 = (x - 6)^2 \\).",
+      "فك المربع الكامل: \\( 2x + 72 = x^2 - 12x + 36 \\).",
+      "إعادة الترتيب في الصورة القياسية: \\( x^2 - 14x - 36 = 0 \\).",
+      "قبول الجذرين معاً دون التحقق من شرط عدم السالبية \\( x - 6 \\ge 0 \\)."
+    ],
+    "errorStep": 4,
+    "reasons": [
+      "The principal square root \\( \\sqrt{\\cdot} \\) is always non-negative, so any solution must satisfy \\( x - 6 \\ge 0 \\iff x \\ge 6 \\); the negative root is extraneous.",
+      "Expanding \\( (x - 6)^2 \\) should not have a middle term.",
+      "Squaring both sides is never allowed for radical equations."
+    ],
+    "reasons_ar": [
+      "الجذر التربيعي الأساسي غير سالب دائماً، لذا يجب تحقق الشرط \\( x \\ge 6 \\) واستبعاد الجذر الدخيل السالب.",
+      "فك المربع الكامل غير صحيح.",
+      "لا يجوز تربيع الطرفين مطلقاً."
+    ],
+    "correctReason": 0,
+    "h": "Check the sign of the right-hand side \\( x - 6 \\) for the negative root.",
+    "h_ar": "تحقق من إشارة الطرف الأيمن \\( x - 6 \\) عند التعويض بالجذر السالب.",
+    "sol": "Squaring introduces an extraneous root whenever \\( x - 6 < 0 \\). Only the root satisfying \\( x \\ge 6 \\) is valid.",
+    "sol_ar": "التربيع يدخل جذراً دخيلاً يجعل الطرف الأيمن سالباً؛ يُقبل فقط الجذر الذي يحقق \\( x \\ge 6 \\)."
+  },
+  {
+    "t": "ms",
+    "ti": "Examiner Mode: Multi-Step Structured Problem (Recurrence Relations, State Markov Chains & Geometric Probability)",
+    "ti_ar": "وضع المصحح: مسألة هيكلية متعددة الخطوات (العلاقات التكرارية وسلاسل الحالات والاحتمال الهندسي)",
+    "q": "Consider \\( f(x) = x^2 - 12x + 40 \\) for \\( x \\ge 6 \\). (a) Express \\( f(x) \\) in completed-square vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and state its domain.",
+    "q_ar": "لتكن \\( f(x) = x^2 - 12x + 40 \\) حيث \\( x \\ge 6 \\). (أ) اكتب \\( f(x) \\) في صورة المربع الكامل وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) وحدد مجالها.",
+    "parts": [
+      {
+        "label": "Part (a) — Completed Square & Range",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Complete the square: \\( f(x) = (x - 6)^2 + 4 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State exact range: \\( f(x) \\ge 4 \\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Function & Domain",
+        "marks": 3,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Write \\( y = (x - 6)^2 + 4 \\implies (x - 6)^2 = y - 4 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Select positive root (since \\( x \\ge 6 \\)): \\( f^{-1}(x) = 6 + \\sqrt{x - 4} \\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 4 \\)."
+          }
+        ]
+      }
+    ],
+    "examinerTip": "Always match the domain of \\( f^{-1} \\) to the range of \\( f \\), and use \\( x \\ge 6 \\) to select the positive branch of the square root.",
+    "examinerTip_ar": "مجال الدالة العكسية \\( f^{-1} \\) هو مدى الدالة الأصلية \\( f \\)، ويُختار الجذر الموجب لأن \\( x \\ge 6 \\)."
+  },
+  {
+    "t": "sb",
+    "ti": "Step Builder: Guided Calculation (Recurrence Relations, State Markov Chains & Geometric Probability)",
+    "ti_ar": "بناء الخطوات: حساب موجه خطوة بخطوة (العلاقات التكرارية وسلاسل الحالات والاحتمال الهندسي)",
+    "steps": [
+      {
+        "l": "In \\( y = x^2 - 12x + 41 \\), halve the \\( x \\)-coefficient to write \\( (x - h)^2 \\) where \\( h = \\)",
+        "a": "6",
+        "h": "Divide 12 by 2."
+      },
+      {
+        "l": "Find the minimum value \\( k = 41 - 6^2 = \\)",
+        "a": "5",
+        "h": "Subtract 36 from 41."
+      },
+      {
+        "l": "Evaluate \\( y \\) when \\( x = 9 \\): \\( y = \\)",
+        "a": "14",
+        "h": "Calculate \\( 3^2 + 5 \\)."
+      }
+    ],
+    "steps_ar": [
+      {
+        "l": "في الدالة \\( y = x^2 - 12x + 41 \\)، قيمة \\( h \\) في \\( (x - h)^2 \\) تساوي:",
+        "a": "6",
+        "h": "اقسم 12 على 2."
+      },
+      {
+        "l": "أوجد القيمة الصغرى \\( k = 41 - 6^2 = \\)",
+        "a": "5",
+        "h": "اطرح 36 من 41."
+      },
+      {
+        "l": "احسب قيمة \\( y \\) عندما \\( x = 9 \\):",
+        "a": "14",
+        "h": "احسب \\( 3^2 + 5 \\)."
+      }
+    ]
+  },
+  {
+    "t": "num",
+    "ti": "Numeric Entry: Recurrence Relations, State Markov Chains & Geometric Probability",
+    "ti_ar": "إدخال رقمي: العلاقات التكرارية وسلاسل الحالات والاحتمال الهندسي",
+    "q": "In how many ways can a \\( 2 \\times 6 \\) rectangle be tiled completely by \\( 1 \\times 2 \\) dominoes?",
+    "q_ar": "بكم طريقة يمكن تبليط مستطيل أبعاده \\( 2 \\times 6 \\) بالكامل باستخدام قطع دومينو \\( 1 \\times 2 \\)؟",
+    "a": 13,
+    "h": "Use \\( T_1 = 1, T_2 = 2, T_n = T_{n-1} + T_{n-2} \\) up to \\( n = 6 \\).",
+    "h_ar": "استخدم المتتابعة \\( T_1 = 1, T_2 = 2, T_n = T_{n-1} + T_{n-2} \\) حتى \\( n = 6 \\).",
+    "sol": "The sequence is \\( T_1=1, T_2=2, T_3=3, T_4=5, T_5=8, T_6=13 \\).",
+    "sol_ar": "The sequence is \\( T_1=1, T_2=2, T_3=3, T_4=5, T_5=8, T_6=13 \\)."
+  },
+  {
+    "t": "ord",
+    "ti": "Order the Steps: Systematic Solution (Recurrence Relations, State Markov Chains & Geometric Probability)",
+    "ti_ar": "رتّب الخطوات: خطوات الحل المنظم (العلاقات التكرارية وسلاسل الحالات والاحتمال الهندسي)",
+    "prompt": "Arrange the logical steps in order to solve the intersection and tangency problem for \\( y = x^2 - 12x + 40 \\) and \\( y = 2x + k \\):",
+    "prompt_ar": "رتب الخطوات المنطقية لحل مسألة التماس بين المنحنى \\( y = x^2 - 12x + 40 \\) والمستقيم \\( y = 2x + k \\):",
+    "items": [
+      "Equate the curve and line equations: \\( x^2 - 12x + 40 = 2x + k \\).",
+      "Rearrange into standard quadratic form: \\( x^2 - 14x + (40 - k) = 0 \\).",
+      "Set the discriminant \\( \\Delta = b^2 - 4ac = (-14)^2 - 4(1)(40 - k) = 0 \\) for tangency.",
+      "Solve the resulting linear equation for the exact value of the parameter \\( k \\)."
+    ],
+    "items_ar": [
+      "ساوِ معادلة المنحنى بمعادلة المستقيم: \\( x^2 - 12x + 40 = 2x + k \\).",
+      "أعد الترتيب في الصورة القياسية: \\( x^2 - 14x + (40 - k) = 0 \\).",
+      "ضع المميز مساوياً للصفر لشرط التماس: \\( \\Delta = (-14)^2 - 4(40 - k) = 0 \\).",
+      "حل المعادلة الخطية الناتجة لإيجاد القيمة الدقيقة للثابت \\( k \\)."
+    ],
+    "ex": "Equate the two equations first, collect terms into ax² + bx + c = 0, then apply Δ = 0.",
+    "ex_ar": "ساوِ المعادلتين أولاً، ثم رتب الحدود في الصورة القياسية، ثم طبق شرط التماس Δ = 0."
+  },
+  {
+    "t": "cat",
+    "ti": "Categorize: Mathematical Classification (Recurrence Relations, State Markov Chains & Geometric Probability)",
+    "ti_ar": "تصنيف: التصنيف الرياضي (العلاقات التكرارية وسلاسل الحالات والاحتمال الهندسي)",
+    "categories": [
+      "Two Distinct Real Roots (Δ > 0)",
+      "One Repeated Tangent Root (Δ = 0)",
+      "No Real Roots (Δ < 0)"
+    ],
+    "categories_ar": [
+      "جذران حقيقيان متمايزان (Δ > 0)",
+      "جذر حقيقي مكرر / تماس (Δ = 0)",
+      "لا توجد جذور حقيقية (Δ < 0)"
+    ],
+    "items": [
+      {
+        "s": "\\( x^2 - 12x + 36 = 0 \\)",
+        "s_ar": "\\( x^2 - 12x + 36 = 0 \\)",
+        "cat": 1
+      },
+      {
+        "s": "\\( x^2 - 13x + 6 = 0 \\)",
+        "s_ar": "\\( x^2 - 13x + 6 = 0 \\)",
+        "cat": 0
+      },
+      {
+        "s": "\\( x^2 + 6x + 39 = 0 \\)",
+        "s_ar": "\\( x^2 + 6x + 39 = 0 \\)",
+        "cat": 2
+      },
+      {
+        "s": "\\( 4x^2 - 24x + 36 = 0 \\)",
+        "s_ar": "\\( 4x^2 - 24x + 36 = 0 \\)",
+        "cat": 1
+      }
+    ],
+    "ex": "Compute Δ = b² − 4ac to classify each quadratic equation.",
+    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لتصنيف كل معادلة تربيعية."
+  }
+];
+
+D["ol-euclidean-circles"] = [
+  {
+    "t": "qc",
+    "ti": "Quick Check: Olympiad Circle Geometry, Power of a Point & Radical Axes",
+    "ti_ar": "فحص سريع: هندسة الدوائر الأولمبية وقوة النقطة والمحور الأساسي والرباعي الدائري",
+    "q": "In cyclic quadrilateral \\( ABCD \\), diagonals \\( AC = 10 \\) and \\( BD = 12 \\), while opposite sides satisfy \\( AB = 6, CD = 8 \\), and \\( BC = 6 \\). By Ptolemy's Theorem, find \\( AD \\).",
+    "q_ar": "في الرباعي الدائري \\( ABCD \\)، طولا القطرين \\( AC = 10 \\) و \\( BD = 12 \\)، وأضلاعه \\( AB = 6, CD = 8, BC = 6 \\). باستخدام مبرهنة بطليموس، أوجد \\( AD \\).",
+    "o": [
+      "\\( 12 \\)",
+      "\\( 10 \\)",
+      "\\( 8 \\)",
+      "\\( 14 \\)"
+    ],
+    "o_ar": [
+      "\\( 12 \\)",
+      "\\( 10 \\)",
+      "\\( 8 \\)",
+      "\\( 14 \\)"
+    ],
+    "a": 0,
+    "ex": "By Ptolemy's Theorem, \\( AC \\cdot BD = AB \\cdot CD + BC \\cdot AD \\implies 10(12) = 6(8) + 6 \\cdot AD \\implies 120 = 48 + 6\\,AD \\implies AD = 12 \\).",
+    "ex_ar": "من مبرهنة بطليموس: \\( 10(12) = 6(8) + 6 \\cdot AD \\implies 120 - 48 = 6\\,AD \\implies AD = 12 \\)."
+  },
+  {
+    "t": "tf",
+    "ti": "True / False: Core Theorems (Olympiad Circle Geometry, Power of a Point & Radical Axes)",
+    "ti_ar": "صح / خطأ: النظريات الأساسية (هندسة الدوائر الأولمبية وقوة النقطة والمحور الأساسي والرباعي الدائري)",
+    "items": [
+      {
+        "s": "By Ptolemy's Theorem, a quadrilateral \\( ABCD \\) is cyclic if and only if \\( AC \\cdot BD = AB \\cdot CD + BC \\cdot AD \\).",
+        "a": true
+      },
+      {
+        "s": "The radical axis of two circles is the locus of points having equal power with respect to both circles, and is perpendicular to their line of centers.",
+        "a": true
+      },
+      {
+        "s": "For an external point \\( P \\) at distance \\( d \\) from the center of a circle of radius \\( R \\), the power of \\( P \\) is \\( R^2 + d^2 \\).",
+        "a": false
+      }
+    ],
+    "items_ar": [
+      {
+        "s": "حسب مبرهنة بطليموس، يكون الرباعي \\( ABCD \\) دائرياً إذا وفقط إذا كان \\( AC \\cdot BD = AB \\cdot CD + BC \\cdot AD \\).",
+        "a": true
+      },
+      {
+        "s": "المحور الأساسي لدائرتين هو المحل الهندسي للنقاط المتساوية القوة بالنسبة للدائرتين ويكون عمودياً على خط المركزين.",
+        "a": true
+      },
+      {
+        "s": "قوة النقطة الخارجية \\( P \\) التي تبعد \\( d \\) عن مركز دائرة نصف قطرها \\( R \\) تساوي \\( R^2 + d^2 \\).",
+        "a": false
+      }
+    ]
+  },
+  {
+    "t": "mt",
+    "ti": "Matching: Identities & Principles (Olympiad Circle Geometry, Power of a Point & Radical Axes)",
+    "ti_ar": "مطابقة: القوانين والمفاهيم (هندسة الدوائر الأولمبية وقوة النقطة والمحور الأساسي والرباعي الدائري)",
+    "p": [
+      {
+        "l": "\\( AC \\cdot BD = AB \\cdot CD + BC \\cdot AD \\)",
+        "r": "Ptolemy's Theorem for cyclic quadrilaterals"
+      },
+      {
+        "l": "\\( \\text{Pow}(P) = d^2 - R^2 = PT^2 \\)",
+        "r": "Power of an external point \\( P \\) to a circle"
+      },
+      {
+        "l": "\\( \\sqrt{(s-a)(s-b)(s-c)(s-d)} \\)",
+        "r": "Brahmagupta's area formula for cyclic quadrilaterals"
+      },
+      {
+        "l": "Radical Center of 3 Circles",
+        "r": "Concurrency point of the three pairwise radical axes"
+      }
+    ],
+    "p_ar": [
+      {
+        "l": "\\( AC \\cdot BD = AB \\cdot CD + BC \\cdot AD \\)",
+        "r": "مبرهنة بطليموس للرباعي الدائري"
+      },
+      {
+        "l": "\\( \\text{Pow}(P) = d^2 - R^2 = PT^2 \\)",
+        "r": "قوة نقطة خارجية \\( P \\) بالنسبة لدائرة"
+      },
+      {
+        "l": "\\( \\sqrt{(s-a)(s-b)(s-c)(s-d)} \\)",
+        "r": "صيغة براهماغوبتا لمساحة الرباعي الدائري"
+      },
+      {
+        "l": "Radical Center of 3 Circles",
+        "r": "نقطة تلاقي المحاور الأساسية الثلاثة"
+      }
+    ]
+  },
+  {
+    "t": "se",
+    "ti": "Spot the Error: Algebraic & Domain Verification (Olympiad Circle Geometry, Power of a Point & Radical Axes)",
+    "ti_ar": "اكتشف الخطأ: التحقق الجبري والمنطقي (هندسة الدوائر الأولمبية وقوة النقطة والمحور الأساسي والرباعي الدائري)",
+    "q": "A student solves \\( \\sqrt{2x + 98} = x - 7 \\) step by step. Which step introduces an invalid conclusion?",
+    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 98} = x - 7 \\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "steps": [
+      "Square both sides: \\( 2x + 98 = (x - 7)^2 \\).",
+      "Expand the right-hand side: \\( 2x + 98 = x^2 - 14x + 49 \\).",
+      "Rearrange and factor: \\( x^2 - 16x - 49 = 0 \\).",
+      "Accept both roots without checking the non-negativity condition \\( x - 7 \\ge 0 \\)."
+    ],
+    "steps_ar": [
+      "تربيع الطرفين: \\( 2x + 98 = (x - 7)^2 \\).",
+      "فك المربع الكامل: \\( 2x + 98 = x^2 - 14x + 49 \\).",
+      "إعادة الترتيب في الصورة القياسية: \\( x^2 - 16x - 49 = 0 \\).",
+      "قبول الجذرين معاً دون التحقق من شرط عدم السالبية \\( x - 7 \\ge 0 \\)."
+    ],
+    "errorStep": 4,
+    "reasons": [
+      "The principal square root \\( \\sqrt{\\cdot} \\) is always non-negative, so any solution must satisfy \\( x - 7 \\ge 0 \\iff x \\ge 7 \\); the negative root is extraneous.",
+      "Expanding \\( (x - 7)^2 \\) should not have a middle term.",
+      "Squaring both sides is never allowed for radical equations."
+    ],
+    "reasons_ar": [
+      "الجذر التربيعي الأساسي غير سالب دائماً، لذا يجب تحقق الشرط \\( x \\ge 7 \\) واستبعاد الجذر الدخيل السالب.",
+      "فك المربع الكامل غير صحيح.",
+      "لا يجوز تربيع الطرفين مطلقاً."
+    ],
+    "correctReason": 0,
+    "h": "Check the sign of the right-hand side \\( x - 7 \\) for the negative root.",
+    "h_ar": "تحقق من إشارة الطرف الأيمن \\( x - 7 \\) عند التعويض بالجذر السالب.",
+    "sol": "Squaring introduces an extraneous root whenever \\( x - 7 < 0 \\). Only the root satisfying \\( x \\ge 7 \\) is valid.",
+    "sol_ar": "التربيع يدخل جذراً دخيلاً يجعل الطرف الأيمن سالباً؛ يُقبل فقط الجذر الذي يحقق \\( x \\ge 7 \\)."
+  },
+  {
+    "t": "ms",
+    "ti": "Examiner Mode: Multi-Step Structured Problem (Olympiad Circle Geometry, Power of a Point & Radical Axes)",
+    "ti_ar": "وضع المصحح: مسألة هيكلية متعددة الخطوات (هندسة الدوائر الأولمبية وقوة النقطة والمحور الأساسي والرباعي الدائري)",
+    "q": "Consider \\( f(x) = x^2 - 14x + 53 \\) for \\( x \\ge 7 \\). (a) Express \\( f(x) \\) in completed-square vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and state its domain.",
+    "q_ar": "لتكن \\( f(x) = x^2 - 14x + 53 \\) حيث \\( x \\ge 7 \\). (أ) اكتب \\( f(x) \\) في صورة المربع الكامل وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) وحدد مجالها.",
+    "parts": [
+      {
+        "label": "Part (a) — Completed Square & Range",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Complete the square: \\( f(x) = (x - 7)^2 + 4 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State exact range: \\( f(x) \\ge 4 \\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Function & Domain",
+        "marks": 3,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Write \\( y = (x - 7)^2 + 4 \\implies (x - 7)^2 = y - 4 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Select positive root (since \\( x \\ge 7 \\)): \\( f^{-1}(x) = 7 + \\sqrt{x - 4} \\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 4 \\)."
+          }
+        ]
+      }
+    ],
+    "examinerTip": "Always match the domain of \\( f^{-1} \\) to the range of \\( f \\), and use \\( x \\ge 7 \\) to select the positive branch of the square root.",
+    "examinerTip_ar": "مجال الدالة العكسية \\( f^{-1} \\) هو مدى الدالة الأصلية \\( f \\)، ويُختار الجذر الموجب لأن \\( x \\ge 7 \\)."
+  },
+  {
+    "t": "sb",
+    "ti": "Step Builder: Guided Calculation (Olympiad Circle Geometry, Power of a Point & Radical Axes)",
+    "ti_ar": "بناء الخطوات: حساب موجه خطوة بخطوة (هندسة الدوائر الأولمبية وقوة النقطة والمحور الأساسي والرباعي الدائري)",
+    "steps": [
+      {
+        "l": "In \\( y = x^2 - 14x + 54 \\), halve the \\( x \\)-coefficient to write \\( (x - h)^2 \\) where \\( h = \\)",
+        "a": "7",
+        "h": "Divide 14 by 2."
+      },
+      {
+        "l": "Find the minimum value \\( k = 54 - 7^2 = \\)",
+        "a": "5",
+        "h": "Subtract 49 from 54."
+      },
+      {
+        "l": "Evaluate \\( y \\) when \\( x = 10 \\): \\( y = \\)",
+        "a": "14",
+        "h": "Calculate \\( 3^2 + 5 \\)."
+      }
+    ],
+    "steps_ar": [
+      {
+        "l": "في الدالة \\( y = x^2 - 14x + 54 \\)، قيمة \\( h \\) في \\( (x - h)^2 \\) تساوي:",
+        "a": "7",
+        "h": "اقسم 14 على 2."
+      },
+      {
+        "l": "أوجد القيمة الصغرى \\( k = 54 - 7^2 = \\)",
+        "a": "5",
+        "h": "اطرح 49 من 54."
+      },
+      {
+        "l": "احسب قيمة \\( y \\) عندما \\( x = 10 \\):",
+        "a": "14",
+        "h": "احسب \\( 3^2 + 5 \\)."
+      }
+    ]
+  },
+  {
+    "t": "num",
+    "ti": "Numeric Entry: Olympiad Circle Geometry, Power of a Point & Radical Axes",
+    "ti_ar": "إدخال رقمي: هندسة الدوائر الأولمبية وقوة النقطة والمحور الأساسي والرباعي الدائري",
+    "q": "Point \\( P \\) lies outside a circle of radius \\( R = 5 \\) at distance \\( d = 13 \\) from its center. What is the length of the tangent segment \\( PT \\) from \\( P \\) to the circle?",
+    "q_ar": "تقع النقطة \\( P \\) خارج دائرة نصف قطرها \\( R = 5 \\) على بُعد \\( d = 13 \\) من مركزها. ما طول القطعة المماسة \\( PT \\)؟",
+    "a": 12,
+    "h": "Use Power of a Point: \\( PT^2 = d^2 - R^2 = 13^2 - 5^2 \\).",
+    "h_ar": "استخدم قوة النقطة: \\( PT^2 = d^2 - R^2 = 13^2 - 5^2 \\).",
+    "sol": "\\( PT = \\sqrt{169 - 25} = \\sqrt{144} = 12 \\).",
+    "sol_ar": "\\( PT = \\sqrt{169 - 25} = \\sqrt{144} = 12 \\)."
+  },
+  {
+    "t": "ord",
+    "ti": "Order the Steps: Systematic Solution (Olympiad Circle Geometry, Power of a Point & Radical Axes)",
+    "ti_ar": "رتّب الخطوات: خطوات الحل المنظم (هندسة الدوائر الأولمبية وقوة النقطة والمحور الأساسي والرباعي الدائري)",
+    "prompt": "Arrange the logical steps in order to solve the intersection and tangency problem for \\( y = x^2 - 14x + 53 \\) and \\( y = 2x + k \\):",
+    "prompt_ar": "رتب الخطوات المنطقية لحل مسألة التماس بين المنحنى \\( y = x^2 - 14x + 53 \\) والمستقيم \\( y = 2x + k \\):",
+    "items": [
+      "Equate the curve and line equations: \\( x^2 - 14x + 53 = 2x + k \\).",
+      "Rearrange into standard quadratic form: \\( x^2 - 16x + (53 - k) = 0 \\).",
+      "Set the discriminant \\( \\Delta = b^2 - 4ac = (-16)^2 - 4(1)(53 - k) = 0 \\) for tangency.",
+      "Solve the resulting linear equation for the exact value of the parameter \\( k \\)."
+    ],
+    "items_ar": [
+      "ساوِ معادلة المنحنى بمعادلة المستقيم: \\( x^2 - 14x + 53 = 2x + k \\).",
+      "أعد الترتيب في الصورة القياسية: \\( x^2 - 16x + (53 - k) = 0 \\).",
+      "ضع المميز مساوياً للصفر لشرط التماس: \\( \\Delta = (-16)^2 - 4(53 - k) = 0 \\).",
+      "حل المعادلة الخطية الناتجة لإيجاد القيمة الدقيقة للثابت \\( k \\)."
+    ],
+    "ex": "Equate the two equations first, collect terms into ax² + bx + c = 0, then apply Δ = 0.",
+    "ex_ar": "ساوِ المعادلتين أولاً، ثم رتب الحدود في الصورة القياسية، ثم طبق شرط التماس Δ = 0."
+  },
+  {
+    "t": "cat",
+    "ti": "Categorize: Mathematical Classification (Olympiad Circle Geometry, Power of a Point & Radical Axes)",
+    "ti_ar": "تصنيف: التصنيف الرياضي (هندسة الدوائر الأولمبية وقوة النقطة والمحور الأساسي والرباعي الدائري)",
+    "categories": [
+      "Two Distinct Real Roots (Δ > 0)",
+      "One Repeated Tangent Root (Δ = 0)",
+      "No Real Roots (Δ < 0)"
+    ],
+    "categories_ar": [
+      "جذران حقيقيان متمايزان (Δ > 0)",
+      "جذر حقيقي مكرر / تماس (Δ = 0)",
+      "لا توجد جذور حقيقية (Δ < 0)"
+    ],
+    "items": [
+      {
+        "s": "\\( x^2 - 14x + 49 = 0 \\)",
+        "s_ar": "\\( x^2 - 14x + 49 = 0 \\)",
+        "cat": 1
+      },
+      {
+        "s": "\\( x^2 - 15x + 7 = 0 \\)",
+        "s_ar": "\\( x^2 - 15x + 7 = 0 \\)",
+        "cat": 0
+      },
+      {
+        "s": "\\( x^2 + 7x + 52 = 0 \\)",
+        "s_ar": "\\( x^2 + 7x + 52 = 0 \\)",
+        "cat": 2
+      },
+      {
+        "s": "\\( 4x^2 - 28x + 49 = 0 \\)",
+        "s_ar": "\\( 4x^2 - 28x + 49 = 0 \\)",
+        "cat": 1
+      }
+    ],
+    "ex": "Compute Δ = b² − 4ac to classify each quadratic equation.",
+    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لتصنيف كل معادلة تربيعية."
+  }
+];
+
+D["ol-triangle-centers-trig"] = [
+  {
+    "t": "qc",
+    "ti": "Quick Check: Triangle Centers, Ceva, Menelaus, Stewart's Theorem & Area Lemmas",
+    "ti_ar": "فحص سريع: مراكز المثلث ومبرهنات سيفا ومينيلاوس وستيوارت وعلاقات المساحة",
+    "q": "What is the inradius \\( r \\) of a triangle with side lengths \\( 13, 14, 15 \\)?",
+    "q_ar": "ما هو طول نصف قطر الدائرة الداخلية \\( r \\) للمثلث الذي أطوال أضلاعه \\( 13, 14, 15 \\)؟",
+    "o": [
+      "\\( 4 \\)",
+      "\\( 3.5 \\)",
+      "\\( 5 \\)",
+      "\\( 4.5 \\)"
+    ],
+    "o_ar": [
+      "\\( 4 \\)",
+      "\\( 3.5 \\)",
+      "\\( 5 \\)",
+      "\\( 4.5 \\)"
+    ],
+    "a": 0,
+    "ex": "Semiperimeter \\( s = \\frac{13 + 14 + 15}{2} = 21 \\); by Heron's formula \\( [ABC] = \\sqrt{21 \\cdot 8 \\cdot 7 \\cdot 6} = 84 \\), so \\( r = \\frac{[ABC]}{s} = \\frac{84}{21} = 4 \\).",
+    "ex_ar": "نصف المحيط \\( s = 21 \\) والمساحة بصيغة هيرون \\( [ABC] = 84 \\)، إذن \\( r = \\frac{84}{21} = 4 \\)."
+  },
+  {
+    "t": "tf",
+    "ti": "True / False: Core Theorems (Triangle Centers, Ceva, Menelaus, Stewart's Theorem & Area Lemmas)",
+    "ti_ar": "صح / خطأ: النظريات الأساسية (مراكز المثلث ومبرهنات سيفا ومينيلاوس وستيوارت وعلاقات المساحة)",
+    "items": [
+      {
+        "s": "Stewart's Theorem states that for a cevian of length \\( d \\) dividing side \\( a \\) into \\( m \\) and \\( n \\), \\( b^2 m + c^2 n = a(d^2 + mn) \\).",
+        "a": true
+      },
+      {
+        "s": "On the Euler line of any triangle, the centroid \\( G \\) divides the segment from orthocenter \\( H \\) to circumcenter \\( O \\) in the ratio \\( HG : GO = 2 : 1 \\).",
+        "a": true
+      },
+      {
+        "s": "Ceva's Theorem tests collinearity of three points, whereas Menelaus's Theorem tests concurrency of three cevians.",
+        "a": false
+      }
+    ],
+    "items_ar": [
+      {
+        "s": "تنص مبرهنة ستيوارت على أنه لقطعة سيفا بطول \\( d \\) تقسم الضلع \\( a \\) إلى \\( m, n \\) يتحقق \\( b^2 m + c^2 n = a(d^2 + mn) \\).",
+        "a": true
+      },
+      {
+        "s": "على خط أويلر لأي مثلث، يقسم مركز الثقل \\( G \\) المسافة بين ملتقى الارتفاعات \\( H \\) ومركز الدائرة المحيطة \\( O \\) بنسبة \\( 2 : 1 \\).",
+        "a": true
+      },
+      {
+        "s": "تختبر مبرهنة سيفا وقوع ثلاث نقاط على استقامة واحدة بينما تختبر مينيلاوس تلاقي ثلاث قطع.",
+        "a": false
+      }
+    ]
+  },
+  {
+    "t": "mt",
+    "ti": "Matching: Identities & Principles (Triangle Centers, Ceva, Menelaus, Stewart's Theorem & Area Lemmas)",
+    "ti_ar": "مطابقة: القوانين والمفاهيم (مراكز المثلث ومبرهنات سيفا ومينيلاوس وستيوارت وعلاقات المساحة)",
+    "p": [
+      {
+        "l": "\\( b^2 m + c^2 n = a(d^2 + mn) \\)",
+        "r": "Stewart's Theorem for any cevian length \\( d \\)"
+      },
+      {
+        "l": "\\( [ABC] = r \\cdot s = \\frac{abc}{4R} \\)",
+        "r": "Inradius \\( r \\) and circumradius \\( R \\) area formulas"
+      },
+      {
+        "l": "\\( \\frac{BD}{DC}\\cdot\\frac{CE}{EA}\\cdot\\frac{AF}{FB} = 1 \\)",
+        "r": "Ceva's Theorem for concurrent cevians"
+      },
+      {
+        "l": "\\( \\frac{BD}{DC} = \\frac{AB}{AC} \\)",
+        "r": "Internal Angle Bisector Theorem"
+      }
+    ],
+    "p_ar": [
+      {
+        "l": "\\( b^2 m + c^2 n = a(d^2 + mn) \\)",
+        "r": "مبرهنة ستيوارت لطول أي قطعة سيفا \\( d \\)"
+      },
+      {
+        "l": "\\( [ABC] = r \\cdot s = \\frac{abc}{4R} \\)",
+        "r": "علاقتا المساحة بنصفي قطري الدائرتين الداخلية والمحيطة"
+      },
+      {
+        "l": "\\( \\frac{BD}{DC}\\cdot\\frac{CE}{EA}\\cdot\\frac{AF}{FB} = 1 \\)",
+        "r": "مبرهنة سيفا لتلاقي القطع في نقطة واحدة"
+      },
+      {
+        "l": "\\( \\frac{BD}{DC} = \\frac{AB}{AC} \\)",
+        "r": "مبرهنة منصف الزاوية الداخلي"
+      }
+    ]
+  },
+  {
+    "t": "se",
+    "ti": "Spot the Error: Algebraic & Domain Verification (Triangle Centers, Ceva, Menelaus, Stewart's Theorem & Area Lemmas)",
+    "ti_ar": "اكتشف الخطأ: التحقق الجبري والمنطقي (مراكز المثلث ومبرهنات سيفا ومينيلاوس وستيوارت وعلاقات المساحة)",
+    "q": "A student solves \\( \\sqrt{2x + 128} = x - 8 \\) step by step. Which step introduces an invalid conclusion?",
+    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 128} = x - 8 \\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "steps": [
+      "Square both sides: \\( 2x + 128 = (x - 8)^2 \\).",
+      "Expand the right-hand side: \\( 2x + 128 = x^2 - 16x + 64 \\).",
+      "Rearrange and factor: \\( x^2 - 18x - 64 = 0 \\).",
+      "Accept both roots without checking the non-negativity condition \\( x - 8 \\ge 0 \\)."
+    ],
+    "steps_ar": [
+      "تربيع الطرفين: \\( 2x + 128 = (x - 8)^2 \\).",
+      "فك المربع الكامل: \\( 2x + 128 = x^2 - 16x + 64 \\).",
+      "إعادة الترتيب في الصورة القياسية: \\( x^2 - 18x - 64 = 0 \\).",
+      "قبول الجذرين معاً دون التحقق من شرط عدم السالبية \\( x - 8 \\ge 0 \\)."
+    ],
+    "errorStep": 4,
+    "reasons": [
+      "The principal square root \\( \\sqrt{\\cdot} \\) is always non-negative, so any solution must satisfy \\( x - 8 \\ge 0 \\iff x \\ge 8 \\); the negative root is extraneous.",
+      "Expanding \\( (x - 8)^2 \\) should not have a middle term.",
+      "Squaring both sides is never allowed for radical equations."
+    ],
+    "reasons_ar": [
+      "الجذر التربيعي الأساسي غير سالب دائماً، لذا يجب تحقق الشرط \\( x \\ge 8 \\) واستبعاد الجذر الدخيل السالب.",
+      "فك المربع الكامل غير صحيح.",
+      "لا يجوز تربيع الطرفين مطلقاً."
+    ],
+    "correctReason": 0,
+    "h": "Check the sign of the right-hand side \\( x - 8 \\) for the negative root.",
+    "h_ar": "تحقق من إشارة الطرف الأيمن \\( x - 8 \\) عند التعويض بالجذر السالب.",
+    "sol": "Squaring introduces an extraneous root whenever \\( x - 8 < 0 \\). Only the root satisfying \\( x \\ge 8 \\) is valid.",
+    "sol_ar": "التربيع يدخل جذراً دخيلاً يجعل الطرف الأيمن سالباً؛ يُقبل فقط الجذر الذي يحقق \\( x \\ge 8 \\)."
+  },
+  {
+    "t": "ms",
+    "ti": "Examiner Mode: Multi-Step Structured Problem (Triangle Centers, Ceva, Menelaus, Stewart's Theorem & Area Lemmas)",
+    "ti_ar": "وضع المصحح: مسألة هيكلية متعددة الخطوات (مراكز المثلث ومبرهنات سيفا ومينيلاوس وستيوارت وعلاقات المساحة)",
+    "q": "Consider \\( f(x) = x^2 - 16x + 68 \\) for \\( x \\ge 8 \\). (a) Express \\( f(x) \\) in completed-square vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and state its domain.",
+    "q_ar": "لتكن \\( f(x) = x^2 - 16x + 68 \\) حيث \\( x \\ge 8 \\). (أ) اكتب \\( f(x) \\) في صورة المربع الكامل وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) وحدد مجالها.",
+    "parts": [
+      {
+        "label": "Part (a) — Completed Square & Range",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Complete the square: \\( f(x) = (x - 8)^2 + 4 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State exact range: \\( f(x) \\ge 4 \\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Function & Domain",
+        "marks": 3,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Write \\( y = (x - 8)^2 + 4 \\implies (x - 8)^2 = y - 4 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Select positive root (since \\( x \\ge 8 \\)): \\( f^{-1}(x) = 8 + \\sqrt{x - 4} \\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 4 \\)."
+          }
+        ]
+      }
+    ],
+    "examinerTip": "Always match the domain of \\( f^{-1} \\) to the range of \\( f \\), and use \\( x \\ge 8 \\) to select the positive branch of the square root.",
+    "examinerTip_ar": "مجال الدالة العكسية \\( f^{-1} \\) هو مدى الدالة الأصلية \\( f \\)، ويُختار الجذر الموجب لأن \\( x \\ge 8 \\)."
+  },
+  {
+    "t": "sb",
+    "ti": "Step Builder: Guided Calculation (Triangle Centers, Ceva, Menelaus, Stewart's Theorem & Area Lemmas)",
+    "ti_ar": "بناء الخطوات: حساب موجه خطوة بخطوة (مراكز المثلث ومبرهنات سيفا ومينيلاوس وستيوارت وعلاقات المساحة)",
+    "steps": [
+      {
+        "l": "In \\( y = x^2 - 16x + 69 \\), halve the \\( x \\)-coefficient to write \\( (x - h)^2 \\) where \\( h = \\)",
+        "a": "8",
+        "h": "Divide 16 by 2."
+      },
+      {
+        "l": "Find the minimum value \\( k = 69 - 8^2 = \\)",
+        "a": "5",
+        "h": "Subtract 64 from 69."
+      },
+      {
+        "l": "Evaluate \\( y \\) when \\( x = 11 \\): \\( y = \\)",
+        "a": "14",
+        "h": "Calculate \\( 3^2 + 5 \\)."
+      }
+    ],
+    "steps_ar": [
+      {
+        "l": "في الدالة \\( y = x^2 - 16x + 69 \\)، قيمة \\( h \\) في \\( (x - h)^2 \\) تساوي:",
+        "a": "8",
+        "h": "اقسم 16 على 2."
+      },
+      {
+        "l": "أوجد القيمة الصغرى \\( k = 69 - 8^2 = \\)",
+        "a": "5",
+        "h": "اطرح 64 من 69."
+      },
+      {
+        "l": "احسب قيمة \\( y \\) عندما \\( x = 11 \\):",
+        "a": "14",
+        "h": "احسب \\( 3^2 + 5 \\)."
+      }
+    ]
+  },
+  {
+    "t": "num",
+    "ti": "Numeric Entry: Triangle Centers, Ceva, Menelaus, Stewart's Theorem & Area Lemmas",
+    "ti_ar": "إدخال رقمي: مراكز المثلث ومبرهنات سيفا ومينيلاوس وستيوارت وعلاقات المساحة",
+    "q": "In \\( \\triangle ABC \\), angle bisector \\( AD \\) meets \\( BC \\) at \\( D \\). Given \\( AB = 10 \\), \\( AC = 15 \\), and \\( BD = 6 \\), find \\( DC \\).",
+    "q_ar": "في المثلث \\( ABC \\)، منصف الزاوية \\( AD \\) يقطع \\( BC \\) في \\( D \\). إذا كان \\( AB = 10, AC = 15, BD = 6 \\)، فأوجد طول \\( DC \\).",
+    "a": 9,
+    "h": "By the Angle Bisector Theorem, \\( \\frac{BD}{DC} = \\frac{AB}{AC} \\).",
+    "h_ar": "طبق مبرهنة منصف الزاوية: \\( \\frac{BD}{DC} = \\frac{AB}{AC} \\).",
+    "sol": "\\( \\frac{6}{DC} = \\frac{10}{15} = \\frac{2}{3} \\implies DC = 9 \\).",
+    "sol_ar": "\\( \\frac{6}{DC} = \\frac{10}{15} = \\frac{2}{3} \\implies DC = 9 \\)."
+  },
+  {
+    "t": "ord",
+    "ti": "Order the Steps: Systematic Solution (Triangle Centers, Ceva, Menelaus, Stewart's Theorem & Area Lemmas)",
+    "ti_ar": "رتّب الخطوات: خطوات الحل المنظم (مراكز المثلث ومبرهنات سيفا ومينيلاوس وستيوارت وعلاقات المساحة)",
+    "prompt": "Arrange the logical steps in order to solve the intersection and tangency problem for \\( y = x^2 - 16x + 68 \\) and \\( y = 2x + k \\):",
+    "prompt_ar": "رتب الخطوات المنطقية لحل مسألة التماس بين المنحنى \\( y = x^2 - 16x + 68 \\) والمستقيم \\( y = 2x + k \\):",
+    "items": [
+      "Equate the curve and line equations: \\( x^2 - 16x + 68 = 2x + k \\).",
+      "Rearrange into standard quadratic form: \\( x^2 - 18x + (68 - k) = 0 \\).",
+      "Set the discriminant \\( \\Delta = b^2 - 4ac = (-18)^2 - 4(1)(68 - k) = 0 \\) for tangency.",
+      "Solve the resulting linear equation for the exact value of the parameter \\( k \\)."
+    ],
+    "items_ar": [
+      "ساوِ معادلة المنحنى بمعادلة المستقيم: \\( x^2 - 16x + 68 = 2x + k \\).",
+      "أعد الترتيب في الصورة القياسية: \\( x^2 - 18x + (68 - k) = 0 \\).",
+      "ضع المميز مساوياً للصفر لشرط التماس: \\( \\Delta = (-18)^2 - 4(68 - k) = 0 \\).",
+      "حل المعادلة الخطية الناتجة لإيجاد القيمة الدقيقة للثابت \\( k \\)."
+    ],
+    "ex": "Equate the two equations first, collect terms into ax² + bx + c = 0, then apply Δ = 0.",
+    "ex_ar": "ساوِ المعادلتين أولاً، ثم رتب الحدود في الصورة القياسية، ثم طبق شرط التماس Δ = 0."
+  },
+  {
+    "t": "cat",
+    "ti": "Categorize: Mathematical Classification (Triangle Centers, Ceva, Menelaus, Stewart's Theorem & Area Lemmas)",
+    "ti_ar": "تصنيف: التصنيف الرياضي (مراكز المثلث ومبرهنات سيفا ومينيلاوس وستيوارت وعلاقات المساحة)",
+    "categories": [
+      "Two Distinct Real Roots (Δ > 0)",
+      "One Repeated Tangent Root (Δ = 0)",
+      "No Real Roots (Δ < 0)"
+    ],
+    "categories_ar": [
+      "جذران حقيقيان متمايزان (Δ > 0)",
+      "جذر حقيقي مكرر / تماس (Δ = 0)",
+      "لا توجد جذور حقيقية (Δ < 0)"
+    ],
+    "items": [
+      {
+        "s": "\\( x^2 - 16x + 64 = 0 \\)",
+        "s_ar": "\\( x^2 - 16x + 64 = 0 \\)",
+        "cat": 1
+      },
+      {
+        "s": "\\( x^2 - 17x + 8 = 0 \\)",
+        "s_ar": "\\( x^2 - 17x + 8 = 0 \\)",
+        "cat": 0
+      },
+      {
+        "s": "\\( x^2 + 8x + 67 = 0 \\)",
+        "s_ar": "\\( x^2 + 8x + 67 = 0 \\)",
+        "cat": 2
+      },
+      {
+        "s": "\\( 4x^2 - 32x + 64 = 0 \\)",
+        "s_ar": "\\( 4x^2 - 32x + 64 = 0 \\)",
+        "cat": 1
+      }
+    ],
+    "ex": "Compute Δ = b² − 4ac to classify each quadratic equation.",
+    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لتصنيف كل معادلة تربيعية."
+  }
+];
+
+D["ol-invariants-extremal"] = [
+  {
+    "t": "qc",
+    "ti": "Quick Check: Invariants, Monovariants, Coloring Proofs & Extremal Combinatorial Games",
+    "ti_ar": "فحص سريع: الثوابت وشبه الثوابت وبراهين التلوين والمبدأ المتطرف والألعاب الرياضية",
+    "q": "An \\( 8 \\times 8 \\) chessboard has two opposite corner squares removed, leaving \\( 62 \\) squares. Why can it NEVER be tiled by \\( 31 \\) dominoes of size \\( 1 \\times 2 \\)?",
+    "q_ar": "لوحة شطرنج \\( 8 \\times 8 \\) حُذف منها مربعان متقابلان قطرياً في الركنين فبقي \\( 62 \\) مربعاً. لماذا يستحيل تبليطها بـ \\( 31 \\) قطعة دومينو \\( 1 \\times 2 \\)؟",
+    "o": [
+      "Each domino covers 1 black and 1 white square, but opposite corners have the same color, leaving 32 of one color and 30 of the other",
+      "Because 62 is not divisible by 4",
+      "Because the perimeter of the remaining board is odd",
+      "Because 31 is a prime number"
+    ],
+    "o_ar": [
+      "Each domino covers 1 black and 1 white square, but opposite corners have the same color, leaving 32 of one color and 30 of the other",
+      "Because 62 is not divisible by 4",
+      "Because the perimeter of the remaining board is odd",
+      "Because 31 is a prime number"
+    ],
+    "a": 0,
+    "ex": "Under standard checkerboard coloring, opposite corners share the same color, so the mutilated board has 32 squares of one color and 30 of the other, violating the 1-black-1-white domino invariant.",
+    "ex_ar": "في تلوين الشطرنج القياسي، الركنان المتقابلان قطرياً لهما نفس اللون، فيتبقى 32 مربعاً من لون و30 من اللون الآخر، بينما كل دومينو يغطي مربعين مختلفين في اللون."
+  },
+  {
+    "t": "tf",
+    "ti": "True / False: Core Theorems (Invariants, Monovariants, Coloring Proofs & Extremal Combinatorial Games)",
+    "ti_ar": "صح / خطأ: النظريات الأساسية (الثوابت وشبه الثوابت وبراهين التلوين والمبدأ المتطرف والألعاب الرياضية)",
+    "items": [
+      {
+        "s": "By Pick's Theorem, the area of a lattice polygon with \\( I \\) interior points and \\( B \\) boundary lattice points is \\( A = I + \\frac{B}{2} - 1 \\).",
+        "a": true
+      },
+      {
+        "s": "In standard 2-pile Nim, a position \\( (a, b) \\) is a second-player winning position (P-position) if and only if \\( a = b \\) (so \\( a \\oplus b = 0 \\)).",
+        "a": true
+      },
+      {
+        "s": "When two numbers \\( a, b \\) on a board are replaced by \\( a + b - 1 \\), the sum of all numbers on the board is invariant.",
+        "a": false
+      }
+    ],
+    "items_ar": [
+      {
+        "s": "حسب مبرهنة بيك، مساحة مضلع شبكي بداخله \\( I \\) نقطة وعلى حدوده \\( B \\) نقطة هي \\( A = I + \\frac{B}{2} - 1 \\).",
+        "a": true
+      },
+      {
+        "s": "في لعبة نيم ذات الكومتين، تكون الوضعية \\( (a, b) \\) رابحة للاعب الثاني إذا وفقط إذا كان \\( a = b \\).",
+        "a": true
+      },
+      {
+        "s": "عند استبدال العددين \\( a, b \\) بالعدد \\( a + b - 1 \\)، يبقى مجموع الأعداد ثابتاً لا يتغير.",
+        "a": false
+      }
+    ]
+  },
+  {
+    "t": "mt",
+    "ti": "Matching: Identities & Principles (Invariants, Monovariants, Coloring Proofs & Extremal Combinatorial Games)",
+    "ti_ar": "مطابقة: القوانين والمفاهيم (الثوابت وشبه الثوابت وبراهين التلوين والمبدأ المتطرف والألعاب الرياضية)",
+    "p": [
+      {
+        "l": "\\( A = I + \\frac{B}{2} - 1 \\)",
+        "r": "Pick's Theorem for lattice polygon area"
+      },
+      {
+        "l": "\\( n_1 \\oplus n_2 \\oplus \\dots \\oplus n_k = 0 \\)",
+        "r": "Bouton's Theorem P-position in Nim"
+      },
+      {
+        "l": "Replace \\( (a, b) \\to ab + a + b \\)",
+        "r": "Invariant quantity \\( \\prod (x_i + 1) \\)"
+      },
+      {
+        "l": "Strictly decreasing integer monovariant",
+        "r": "Guarantees process must terminate in finitely many steps"
+      }
+    ],
+    "p_ar": [
+      {
+        "l": "\\( A = I + \\frac{B}{2} - 1 \\)",
+        "r": "مبرهنة بيك لمساحة المضلعات الشبكية"
+      },
+      {
+        "l": "\\( n_1 \\oplus n_2 \\oplus \\dots \\oplus n_k = 0 \\)",
+        "r": "شرط الوضعية الصفرية في لعبة نيم (XOR = 0)"
+      },
+      {
+        "l": "Replace \\( (a, b) \\to ab + a + b \\)",
+        "r": "الثابت الجبري \\( \\prod (x_i + 1) \\)"
+      },
+      {
+        "l": "Strictly decreasing integer monovariant",
+        "r": "يضمن انتهاء العملية في عدد منتهٍ من الخطوات"
+      }
+    ]
+  },
+  {
+    "t": "se",
+    "ti": "Spot the Error: Algebraic & Domain Verification (Invariants, Monovariants, Coloring Proofs & Extremal Combinatorial Games)",
+    "ti_ar": "اكتشف الخطأ: التحقق الجبري والمنطقي (الثوابت وشبه الثوابت وبراهين التلوين والمبدأ المتطرف والألعاب الرياضية)",
+    "q": "A student solves \\( \\sqrt{2x + 162} = x - 9 \\) step by step. Which step introduces an invalid conclusion?",
+    "q_ar": "يحل طالب المعادلة \\( \\sqrt{2x + 162} = x - 9 \\) خطوة بخطوة. أي خطوة تتضمن استنتاجاً خاطئاً؟",
+    "steps": [
+      "Square both sides: \\( 2x + 162 = (x - 9)^2 \\).",
+      "Expand the right-hand side: \\( 2x + 162 = x^2 - 18x + 81 \\).",
+      "Rearrange and factor: \\( x^2 - 20x - 81 = 0 \\).",
+      "Accept both roots without checking the non-negativity condition \\( x - 9 \\ge 0 \\)."
+    ],
+    "steps_ar": [
+      "تربيع الطرفين: \\( 2x + 162 = (x - 9)^2 \\).",
+      "فك المربع الكامل: \\( 2x + 162 = x^2 - 18x + 81 \\).",
+      "إعادة الترتيب في الصورة القياسية: \\( x^2 - 20x - 81 = 0 \\).",
+      "قبول الجذرين معاً دون التحقق من شرط عدم السالبية \\( x - 9 \\ge 0 \\)."
+    ],
+    "errorStep": 4,
+    "reasons": [
+      "The principal square root \\( \\sqrt{\\cdot} \\) is always non-negative, so any solution must satisfy \\( x - 9 \\ge 0 \\iff x \\ge 9 \\); the negative root is extraneous.",
+      "Expanding \\( (x - 9)^2 \\) should not have a middle term.",
+      "Squaring both sides is never allowed for radical equations."
+    ],
+    "reasons_ar": [
+      "الجذر التربيعي الأساسي غير سالب دائماً، لذا يجب تحقق الشرط \\( x \\ge 9 \\) واستبعاد الجذر الدخيل السالب.",
+      "فك المربع الكامل غير صحيح.",
+      "لا يجوز تربيع الطرفين مطلقاً."
+    ],
+    "correctReason": 0,
+    "h": "Check the sign of the right-hand side \\( x - 9 \\) for the negative root.",
+    "h_ar": "تحقق من إشارة الطرف الأيمن \\( x - 9 \\) عند التعويض بالجذر السالب.",
+    "sol": "Squaring introduces an extraneous root whenever \\( x - 9 < 0 \\). Only the root satisfying \\( x \\ge 9 \\) is valid.",
+    "sol_ar": "التربيع يدخل جذراً دخيلاً يجعل الطرف الأيمن سالباً؛ يُقبل فقط الجذر الذي يحقق \\( x \\ge 9 \\)."
+  },
+  {
+    "t": "ms",
+    "ti": "Examiner Mode: Multi-Step Structured Problem (Invariants, Monovariants, Coloring Proofs & Extremal Combinatorial Games)",
+    "ti_ar": "وضع المصحح: مسألة هيكلية متعددة الخطوات (الثوابت وشبه الثوابت وبراهين التلوين والمبدأ المتطرف والألعاب الرياضية)",
+    "q": "Consider \\( f(x) = x^2 - 18x + 85 \\) for \\( x \\ge 9 \\). (a) Express \\( f(x) \\) in completed-square vertex form and state its range. (b) Find \\( f^{-1}(x) \\) and state its domain.",
+    "q_ar": "لتكن \\( f(x) = x^2 - 18x + 85 \\) حيث \\( x \\ge 9 \\). (أ) اكتب \\( f(x) \\) في صورة المربع الكامل وحدد مداها. (ب) أوجد \\( f^{-1}(x) \\) وحدد مجالها.",
+    "parts": [
+      {
+        "label": "Part (a) — Completed Square & Range",
+        "marks": 2,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Complete the square: \\( f(x) = (x - 9)^2 + 4 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "State exact range: \\( f(x) \\ge 4 \\)."
+          }
+        ]
+      },
+      {
+        "label": "Part (b) — Inverse Function & Domain",
+        "marks": 3,
+        "rubric": [
+          {
+            "code": "M1",
+            "marks": 1,
+            "text": "Write \\( y = (x - 9)^2 + 4 \\implies (x - 9)^2 = y - 4 \\)."
+          },
+          {
+            "code": "A1",
+            "marks": 1,
+            "text": "Select positive root (since \\( x \\ge 9 \\)): \\( f^{-1}(x) = 9 + \\sqrt{x - 4} \\)."
+          },
+          {
+            "code": "B1",
+            "marks": 1,
+            "text": "State domain of \\( f^{-1} \\): \\( x \\ge 4 \\)."
+          }
+        ]
+      }
+    ],
+    "examinerTip": "Always match the domain of \\( f^{-1} \\) to the range of \\( f \\), and use \\( x \\ge 9 \\) to select the positive branch of the square root.",
+    "examinerTip_ar": "مجال الدالة العكسية \\( f^{-1} \\) هو مدى الدالة الأصلية \\( f \\)، ويُختار الجذر الموجب لأن \\( x \\ge 9 \\)."
+  },
+  {
+    "t": "sb",
+    "ti": "Step Builder: Guided Calculation (Invariants, Monovariants, Coloring Proofs & Extremal Combinatorial Games)",
+    "ti_ar": "بناء الخطوات: حساب موجه خطوة بخطوة (الثوابت وشبه الثوابت وبراهين التلوين والمبدأ المتطرف والألعاب الرياضية)",
+    "steps": [
+      {
+        "l": "In \\( y = x^2 - 18x + 86 \\), halve the \\( x \\)-coefficient to write \\( (x - h)^2 \\) where \\( h = \\)",
+        "a": "9",
+        "h": "Divide 18 by 2."
+      },
+      {
+        "l": "Find the minimum value \\( k = 86 - 9^2 = \\)",
+        "a": "5",
+        "h": "Subtract 81 from 86."
+      },
+      {
+        "l": "Evaluate \\( y \\) when \\( x = 12 \\): \\( y = \\)",
+        "a": "14",
+        "h": "Calculate \\( 3^2 + 5 \\)."
+      }
+    ],
+    "steps_ar": [
+      {
+        "l": "في الدالة \\( y = x^2 - 18x + 86 \\)، قيمة \\( h \\) في \\( (x - h)^2 \\) تساوي:",
+        "a": "9",
+        "h": "اقسم 18 على 2."
+      },
+      {
+        "l": "أوجد القيمة الصغرى \\( k = 86 - 9^2 = \\)",
+        "a": "5",
+        "h": "اطرح 81 من 86."
+      },
+      {
+        "l": "احسب قيمة \\( y \\) عندما \\( x = 12 \\):",
+        "a": "14",
+        "h": "احسب \\( 3^2 + 5 \\)."
+      }
+    ]
+  },
+  {
+    "t": "num",
+    "ti": "Numeric Entry: Invariants, Monovariants, Coloring Proofs & Extremal Combinatorial Games",
+    "ti_ar": "إدخال رقمي: الثوابت وشبه الثوابت وبراهين التلوين والمبدأ المتطرف والألعاب الرياضية",
+    "q": "A lattice polygon has \\( I = 14 \\) interior lattice points and \\( B = 10 \\) boundary lattice points. Find its exact area by Pick's Theorem.",
+    "q_ar": "مضلع شبكي يحتوي بداخله على \\( I = 14 \\) نقطة شبكية وعلى حدوده \\( B = 10 \\) نقاط شبكية. أوجد مساحته الدقيقة باستخدام مبرهنة بيك.",
+    "a": 18,
+    "h": "Use \\( A = I + \\frac{B}{2} - 1 \\).",
+    "h_ar": "طبق قانون بيك: \\( A = I + \\frac{B}{2} - 1 \\).",
+    "sol": "\\( A = 14 + \\frac{10}{2} - 1 = 14 + 5 - 1 = 18 \\).",
+    "sol_ar": "\\( A = 14 + \\frac{10}{2} - 1 = 14 + 5 - 1 = 18 \\)."
+  },
+  {
+    "t": "ord",
+    "ti": "Order the Steps: Systematic Solution (Invariants, Monovariants, Coloring Proofs & Extremal Combinatorial Games)",
+    "ti_ar": "رتّب الخطوات: خطوات الحل المنظم (الثوابت وشبه الثوابت وبراهين التلوين والمبدأ المتطرف والألعاب الرياضية)",
+    "prompt": "Arrange the logical steps in order to solve the intersection and tangency problem for \\( y = x^2 - 18x + 85 \\) and \\( y = 2x + k \\):",
+    "prompt_ar": "رتب الخطوات المنطقية لحل مسألة التماس بين المنحنى \\( y = x^2 - 18x + 85 \\) والمستقيم \\( y = 2x + k \\):",
+    "items": [
+      "Equate the curve and line equations: \\( x^2 - 18x + 85 = 2x + k \\).",
+      "Rearrange into standard quadratic form: \\( x^2 - 20x + (85 - k) = 0 \\).",
+      "Set the discriminant \\( \\Delta = b^2 - 4ac = (-20)^2 - 4(1)(85 - k) = 0 \\) for tangency.",
+      "Solve the resulting linear equation for the exact value of the parameter \\( k \\)."
+    ],
+    "items_ar": [
+      "ساوِ معادلة المنحنى بمعادلة المستقيم: \\( x^2 - 18x + 85 = 2x + k \\).",
+      "أعد الترتيب في الصورة القياسية: \\( x^2 - 20x + (85 - k) = 0 \\).",
+      "ضع المميز مساوياً للصفر لشرط التماس: \\( \\Delta = (-20)^2 - 4(85 - k) = 0 \\).",
+      "حل المعادلة الخطية الناتجة لإيجاد القيمة الدقيقة للثابت \\( k \\)."
+    ],
+    "ex": "Equate the two equations first, collect terms into ax² + bx + c = 0, then apply Δ = 0.",
+    "ex_ar": "ساوِ المعادلتين أولاً، ثم رتب الحدود في الصورة القياسية، ثم طبق شرط التماس Δ = 0."
+  },
+  {
+    "t": "cat",
+    "ti": "Categorize: Mathematical Classification (Invariants, Monovariants, Coloring Proofs & Extremal Combinatorial Games)",
+    "ti_ar": "تصنيف: التصنيف الرياضي (الثوابت وشبه الثوابت وبراهين التلوين والمبدأ المتطرف والألعاب الرياضية)",
+    "categories": [
+      "Two Distinct Real Roots (Δ > 0)",
+      "One Repeated Tangent Root (Δ = 0)",
+      "No Real Roots (Δ < 0)"
+    ],
+    "categories_ar": [
+      "جذران حقيقيان متمايزان (Δ > 0)",
+      "جذر حقيقي مكرر / تماس (Δ = 0)",
+      "لا توجد جذور حقيقية (Δ < 0)"
+    ],
+    "items": [
+      {
+        "s": "\\( x^2 - 18x + 81 = 0 \\)",
+        "s_ar": "\\( x^2 - 18x + 81 = 0 \\)",
+        "cat": 1
+      },
+      {
+        "s": "\\( x^2 - 19x + 9 = 0 \\)",
+        "s_ar": "\\( x^2 - 19x + 9 = 0 \\)",
+        "cat": 0
+      },
+      {
+        "s": "\\( x^2 + 9x + 84 = 0 \\)",
+        "s_ar": "\\( x^2 + 9x + 84 = 0 \\)",
+        "cat": 2
+      },
+      {
+        "s": "\\( 4x^2 - 36x + 81 = 0 \\)",
+        "s_ar": "\\( 4x^2 - 36x + 81 = 0 \\)",
+        "cat": 1
+      }
+    ],
+    "ex": "Compute Δ = b² − 4ac to classify each quadratic equation.",
+    "ex_ar": "احسب قيمة المميز Δ = b² − 4ac لتصنيف كل معادلة تربيعية."
+  }
+];
+});

@@ -1,586 +1,99 @@
 {
   "track": "mathai",
   "num": "2.01",
-  "slug": "neural-layer-matrices-and-activations",
-  "title": "Neural Layer Matrices and Activations",
-  "subtitle": "ClipSAT Printable Practice Suite (clipsat.org) • Topic 2.01 • 20 FRQs + 25 MCQs • Difficulty Progression • Cross-Lesson Synthesis",
+  "title": "Neural Layer Matrices & Activations",
+  "sub": null,
   "sections": [
     {
-      "heading": "Part I — Free-Response Questions (FRQs): Foundational Fluency (1–7)",
+      "heading": "Neural Layer Matrices & Activations Practice Exercises",
       "questions": [
         {
-          "q": "Consider a discrete random variable $X$ with the following probability mass function (PMF): $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. What is the value of $P(X \\le 2)$? Show your complete algebraic work.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "answer": "Final Answer: $\\frac{3}{10}$. The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\le 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\le 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\le 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$.",
-          "explanation": "The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\le 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\le 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\le 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$."
-        },
-        {
-          "q": "Let $A$ and $B$ be invertible $n \\times n$ matrices. Prove algebraically that: (a) $(AB)^T = B^T A^T$, and (b) $(AB)^{-1} = B^{-1} A^{-1}$.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "answer": "(a) Transpose Proof: The $(i, j)$-entry of $(AB)^T$ is the $(j, i)$-entry of $AB$: $[(AB)^T]_{ij} = [AB]_{ji} = \\sum_{k=1}^n A_{jk} B_{ki} = \\sum_{k=1}^n B_{ki} A_{jk}.$ Using the definition of matrix transpose, $B_{ki} = [B^T]_{ik}$ and $A_{jk} = [A^T]_{kj}$: $[(AB)^T]_{ij} = \\sum_{k=1}^n [B^T]_{ik} [A^T]_{kj} = [B^T A^T]_{ij}.$ Since entries match for all $i, j$, $(AB)^T = B^T A^T$. $\\blacksquare$ (b) Inverse Proof: A matrix $C$ is the inverse of $AB$ if and only if $(AB)C = I_n$ and $C(AB) = I_n$. Test $C = B^{-1} A^{-1}$: $(AB)(B^{-1} A^{-1}) = A (B B^{-1}) A^{-1} = A I_n A^{-1} = A A^{-1} = I_n.$ Check reverse order: $(B^{-1} A^{-1})(AB) = B^{-1} (A^{-1} A) B = B^{-1} I_n B = B^{-1} B = I_n.$ By uniqueness of matrix inverses, $(AB)^{-1} = B^{-1} A^{-1}$. $\\blacksquare$",
-          "explanation": "(a) Transpose Proof: The $(i, j)$-entry of $(AB)^T$ is the $(j, i)$-entry of $AB$: $[(AB)^T]_{ij} = [AB]_{ji} = \\sum_{k=1}^n A_{jk} B_{ki} = \\sum_{k=1}^n B_{ki} A_{jk}.$ Using the definition of matrix transpose, $B_{ki} = [B^T]_{ik}$ and $A_{jk} = [A^T]_{kj}$: $[(AB)^T]_{ij} = \\sum_{k=1}^n [B^T]_{ik} [A^T]_{kj} = [B^T A^T]_{ij}.$ Since entries match for all $i, j$, $(AB)^T = B^T A^T$. $\\blacksquare$ (b) Inverse Proof: A matrix $C$ is the inverse of $AB$ if and only if $(AB)C = I_n$ and $C(AB) = I_n$. Test $C = B^{-1} A^{-1}$: $(AB)(B^{-1} A^{-1}) = A (B B^{-1}) A^{-1} = A I_n A^{-1} = A A^{-1} = I_n.$ Check reverse order: $(B^{-1} A^{-1})(AB) = B^{-1} (A^{-1} A) B = B^{-1} I_n B = B^{-1} B = I_n.$ By uniqueness of matrix inverses, $(AB)^{-1} = B^{-1} A^{-1}$. $\\blacksquare$"
-        },
-        {
-          "q": "Let $M_2(\\mathbb{R})$ be the vector space of $2 \\times 2$ real matrices. Determine, with formal verification via the Subspace Test, whether $W = \\{ A \\in M_2(\\mathbb{R}) : A^T = -A \\}$ (the set of skew-symmetric matrices) is a subspace of $M_2(\\mathbb{R})$. Find a basis and $\\dim(W)$.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "answer": "Subspace Test Verification:Non-emptiness: The zero matrix $O$ satisfies $O^T = O = -O$, so $O \\in W$.Additivity: Let $A, B \\in W$. Then $(A + B)^T = A^T + B^T = (-A) + (-B) = -(A + B)$. Thus $A + B \\in W$.Scalar Closure: Let $A \\in W$ and $c \\in \\mathbb{R}$. Then $(cA)^T = c(A^T) = c(-A) = -(cA)$. Thus $cA \\in W$.Since all 3 axioms hold, $W$ is a vector subspace of $M_2(\\mathbb{R})$. General form and basis: A matrix $A = \\left(a, b ; c, d\\right)$ satisfies $A^T = -A \\Leftrightarrow \\left(a, c ; b, d\\right) = \\left(-a, -b ; -c, -d\\right)$. This requires $a = -a \\Rightarrow a = 0$, $d = -d \\Rightarrow d = 0$, and $c = -b$. Thus: $A = \\left(0, b ; -b, 0\\right) = b \\left(0, 1 ; -1, 0\\right).$ A basis for $W$ is $\\left\\{ \\left(0, 1 ; -1, 0\\right) \\right\\}$, and $\\dim(W) = 1$.",
-          "explanation": "Subspace Test Verification:Non-emptiness: The zero matrix $O$ satisfies $O^T = O = -O$, so $O \\in W$.Additivity: Let $A, B \\in W$. Then $(A + B)^T = A^T + B^T = (-A) + (-B) = -(A + B)$. Thus $A + B \\in W$.Scalar Closure: Let $A \\in W$ and $c \\in \\mathbb{R}$. Then $(cA)^T = c(A^T) = c(-A) = -(cA)$. Thus $cA \\in W$.Since all 3 axioms hold, $W$ is a vector subspace of $M_2(\\mathbb{R})$. General form and basis: A matrix $A = \\left(a, b ; c, d\\right)$ satisfies $A^T = -A \\Leftrightarrow \\left(a, c ; b, d\\right) = \\left(-a, -b ; -c, -d\\right)$. This requires $a = -a \\Rightarrow a = 0$, $d = -d \\Rightarrow d = 0$, and $c = -b$. Thus: $A = \\left(0, b ; -b, 0\\right) = b \\left(0, 1 ; -1, 0\\right).$ A basis for $W$ is $\\left\\{ \\left(0, 1 ; -1, 0\\right) \\right\\}$, and $\\dim(W) = 1$."
-        },
-        {
-          "q": "Express the invertible matrix $A = \\left(1, 2 ; 3, 4\\right)$ as a product of elementary matrices.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "answer": "Step 1: Reduce $A$ to $I_2$ via row operations: 1. $R_2 \\rightarrow R_2 - 3R_1$: Elementary matrix $E_1 = \\left(1, 0 ; -3, 1\\right)$. Result: $\\left(1, 2 ; 0, -2\\right)$. 2. $R_2 \\rightarrow -\\frac{1}{2} R_2$: Elementary matrix $E_2 = \\left(1, 0 ; 0, -1/2\\right)$. Result: $\\left(1, 2 ; 0, 1\\right)$. 3. $R_1 \\rightarrow R_1 - 2R_2$: Elementary matrix $E_3 = \\left(1, -2 ; 0, 1\\right)$. Result: $I_2$. Step 2: Invert elementary matrices: We have $E_3 E_2 E_1 A = I_2 \\Rightarrow A = E_1^{-1} E_2^{-1} E_3^{-1}$. Computing inverses of elementary row operations: $E_1^{-1} = \\left(1, 0 ; 3, 1\\right), \\quad E_2^{-1} = \\left(1, 0 ; 0, -2\\right), \\quad E_3^{-1} = \\left(1, 2 ; 0, 1\\right).$ Therefore: $A = \\left(1, 0 ; 3, 1\\right) \\left(1, 0 ; 0, -2\\right) \\left(1, 2 ; 0, 1\\right).$",
-          "explanation": "Step 1: Reduce $A$ to $I_2$ via row operations: 1. $R_2 \\rightarrow R_2 - 3R_1$: Elementary matrix $E_1 = \\left(1, 0 ; -3, 1\\right)$. Result: $\\left(1, 2 ; 0, -2\\right)$. 2. $R_2 \\rightarrow -\\frac{1}{2} R_2$: Elementary matrix $E_2 = \\left(1, 0 ; 0, -1/2\\right)$. Result: $\\left(1, 2 ; 0, 1\\right)$. 3. $R_1 \\rightarrow R_1 - 2R_2$: Elementary matrix $E_3 = \\left(1, -2 ; 0, 1\\right)$. Result: $I_2$. Step 2: Invert elementary matrices: We have $E_3 E_2 E_1 A = I_2 \\Rightarrow A = E_1^{-1} E_2^{-1} E_3^{-1}$. Computing inverses of elementary row operations: $E_1^{-1} = \\left(1, 0 ; 3, 1\\right), \\quad E_2^{-1} = \\left(1, 0 ; 0, -2\\right), \\quad E_3^{-1} = \\left(1, 2 ; 0, 1\\right).$ Therefore: $A = \\left(1, 0 ; 3, 1\\right) \\left(1, 0 ; 0, -2\\right) \\left(1, 2 ; 0, 1\\right).$"
-        },
-        {
-          "q": "Practice Problem 2: Evaluate $\\int_C \\mathbf{F}\\cdot d\\mathbf{r}$ where $\\mathbf{F} = abla(x^3 y^2 + \\sin(xz))$ and $C$ is the helix $\\mathbf{r}(t) = \\langle \\cos t, \\sin t, t \\rangle$ for $0 \\leq t \\leq 2\\pi$.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "answer": "Since $\\mathbf{F}$ is explicitly given as the gradient of the potential function $f(x,y,z) = x^3 y^2 + \\sin(xz)$, by the Fundamental Theorem of Line Integrals: $\\int_C \\mathbf{F}\\cdot d\\mathbf{r} = f(\\mathbf{r}(2\\pi)) - f(\\mathbf{r}(0)).$ Initial point: $\\mathbf{r}(0) = \\langle \\cos 0, \\sin 0, 0 \\rangle = (1, 0, 0)$. Terminal point: $\\mathbf{r}(2\\pi) = \\langle \\cos(2\\pi), \\sin(2\\pi), 2\\pi \\rangle = (1, 0, 2\\pi)$. Evaluating $f$ at endpoints: $f(1, 0, 0) = 1^3(0)^2 + \\sin(0) = 0.$ $f(1, 0, 2\\pi) = 1^3(0)^2 + \\sin(1 \\times 2\\pi) = 0 + \\sin(2\\pi) = 0.$ Thus, $\\int_C \\mathbf{F}\\cdot d\\mathbf{r} = 0 - 0 = 0$.",
-          "explanation": "Since $\\mathbf{F}$ is explicitly given as the gradient of the potential function $f(x,y,z) = x^3 y^2 + \\sin(xz)$, by the Fundamental Theorem of Line Integrals: $\\int_C \\mathbf{F}\\cdot d\\mathbf{r} = f(\\mathbf{r}(2\\pi)) - f(\\mathbf{r}(0)).$ Initial point: $\\mathbf{r}(0) = \\langle \\cos 0, \\sin 0, 0 \\rangle = (1, 0, 0)$. Terminal point: $\\mathbf{r}(2\\pi) = \\langle \\cos(2\\pi), \\sin(2\\pi), 2\\pi \\rangle = (1, 0, 2\\pi)$. Evaluating $f$ at endpoints: $f(1, 0, 0) = 1^3(0)^2 + \\sin(0) = 0.$ $f(1, 0, 2\\pi) = 1^3(0)^2 + \\sin(1 \\times 2\\pi) = 0 + \\sin(2\\pi) = 0.$ Thus, $\\int_C \\mathbf{F}\\cdot d\\mathbf{r} = 0 - 0 = 0$."
-        },
-        {
-          "q": "Level 3 · Advanced / University RigorSuppose an $n \\times n$ matrix $A$ satisfies the polynomial equation $A^3 - 4A^2 + 2A - 5I = 0$. Prove that $A$ is invertible, and express $A^{-1}$ as an explicit polynomial in $A$.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "answer": "Step 1 · Isolate the Identity Matrix: $A^3 - 4A^2 + 2A = 5I.$ Divide both sides by 5: $\\frac{1}{5}\\left( A^3 - 4A^2 + 2A \\right) = I.$ Step 2 · Factor out $A$: $A \\left[ \\frac{1}{5}\\left( A^2 - 4A + 2I \\right) \\right] = I.$ Similarly, since polynomials in $A$ commute: $\\left[ \\frac{1}{5}\\left( A^2 - 4A + 2I \\right) \\right] A = I.$ Conclusion: By the definition of matrix inverse, $A$ is invertible, and its inverse is: $\\mathbf{A^{-1} = \\frac{1}{5}A^2 - \\frac{4}{5}A + \\frac{2}{5}I}.$",
-          "explanation": "Step 1 · Isolate the Identity Matrix: $A^3 - 4A^2 + 2A = 5I.$ Divide both sides by 5: $\\frac{1}{5}\\left( A^3 - 4A^2 + 2A \\right) = I.$ Step 2 · Factor out $A$: $A \\left[ \\frac{1}{5}\\left( A^2 - 4A + 2I \\right) \\right] = I.$ Similarly, since polynomials in $A$ commute: $\\left[ \\frac{1}{5}\\left( A^2 - 4A + 2I \\right) \\right] A = I.$ Conclusion: By the definition of matrix inverse, $A$ is invertible, and its inverse is: $\\mathbf{A^{-1} = \\frac{1}{5}A^2 - \\frac{4}{5}A + \\frac{2}{5}I}.$"
-        },
-        {
-          "q": "Practice Problem 2: Find the mass of a solid right circular cylinder of radius $R$ and height $h$ whose density at any point is proportional to its distance from the axis of symmetry, $\\delta(r,\\theta,z) = k r$ for constant $k > 0$.",
-          "difficulty": "Foundational",
-          "question_type": "FRQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "answer": "Using cylindrical coordinates, the cylinder $E$ is bounded by $0 \\leq r \\leq R$, $0 \\leq \\theta \\leq 2\\pi$, $0 \\leq z \\leq h$. The differential volume is $dV = r\\,dz\\,dr\\,d\\theta$. The total mass is: $M = \\iiint_E \\delta\\,dV = \\int_0^{2\\pi} \\!\\! \\int_0^R \\!\\! \\int_0^h (k r) \\cdot r\\,dz\\,dr\\,d\\theta = k \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^h dz \\right) \\left( \\int_0^R r^2\\,dr \\right).$ $M = k (2\\pi)(h)\\left( \\frac{R^3}{3} \\right) = \\frac{2\\pi k h R^3}{3}.$",
-          "explanation": "Using cylindrical coordinates, the cylinder $E$ is bounded by $0 \\leq r \\leq R$, $0 \\leq \\theta \\leq 2\\pi$, $0 \\leq z \\leq h$. The differential volume is $dV = r\\,dz\\,dr\\,d\\theta$. The total mass is: $M = \\iiint_E \\delta\\,dV = \\int_0^{2\\pi} \\!\\! \\int_0^R \\!\\! \\int_0^h (k r) \\cdot r\\,dz\\,dr\\,d\\theta = k \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^h dz \\right) \\left( \\int_0^R r^2\\,dr \\right).$ $M = k (2\\pi)(h)\\left( \\frac{R^3}{3} \\right) = \\frac{2\\pi k h R^3}{3}.$"
-        }
-      ]
-    },
-    {
-      "heading": "Part II — Free-Response Questions (FRQs): Intermediate Multi-Step Application (8–14)",
-      "questions": [
-        {
-          "q": "Practice Problem 1: Evaluate $\\iiint_E (x^2+y^2+z^2)\\,dV$, where $E$ is the solid ball $x^2+y^2+z^2 \\leq a^2$.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "answer": "In spherical coordinates, $x^2+y^2+z^2 = \\rho^2$ and $dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta$. The ball $E$ is defined by $0 \\leq \\rho \\leq a$, $0 \\leq \\phi \\leq \\pi$, $0 \\leq \\theta \\leq 2\\pi$. $\\iiint_E \\rho^2 \\cdot (\\rho^2\\sin\\phi)\\,d\\rho\\,d\\phi\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^\\pi \\sin\\phi\\,d\\phi \\right) \\left( \\int_0^a \\rho^4\\,d\\rho \\right).$ Evaluating each integral: $2\\pi \\times 2 \\times \\frac{a^5}{5} = \\frac{4\\pi a^5}{5}.$",
-          "explanation": "In spherical coordinates, $x^2+y^2+z^2 = \\rho^2$ and $dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta$. The ball $E$ is defined by $0 \\leq \\rho \\leq a$, $0 \\leq \\phi \\leq \\pi$, $0 \\leq \\theta \\leq 2\\pi$. $\\iiint_E \\rho^2 \\cdot (\\rho^2\\sin\\phi)\\,d\\rho\\,d\\phi\\,d\\theta = \\left( \\int_0^{2\\pi} d\\theta \\right) \\left( \\int_0^\\pi \\sin\\phi\\,d\\phi \\right) \\left( \\int_0^a \\rho^4\\,d\\rho \\right).$ Evaluating each integral: $2\\pi \\times 2 \\times \\frac{a^5}{5} = \\frac{4\\pi a^5}{5}.$"
-        },
-        {
-          "q": "Level 1 · FoundationsLet $M_{2 \\times 2}$ be the vector space of all $2 \\times 2$ real matrices. Show that the set of all symmetric matrices $W = \\{ A \\in M_{2 \\times 2} : A^T = A \\}$ is a subspace of $M_{2 \\times 2}$.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "answer": "Step 1 · Zero vector: The $2 \\times 2$ zero matrix satisfies $0^T = 0$, so $0 \\in W$. Step 2 · Closed under addition: Let $A, B \\in W$. Then $A^T = A$ and $B^T = B$. Using transpose properties: $(A + B)^T = A^T + B^T = A + B \\Rightarrow A + B \\in W.$ Step 3 · Closed under scalar multiplication: Let $A \\in W$ and $c \\in \\mathbb{R}$: $(cA)^T = c A^T = c A \\Rightarrow cA \\in W.$ All three conditions hold, so $W$ is a subspace of $M_{2 \\times 2}$.",
-          "explanation": "Step 1 · Zero vector: The $2 \\times 2$ zero matrix satisfies $0^T = 0$, so $0 \\in W$. Step 2 · Closed under addition: Let $A, B \\in W$. Then $A^T = A$ and $B^T = B$. Using transpose properties: $(A + B)^T = A^T + B^T = A + B \\Rightarrow A + B \\in W.$ Step 3 · Closed under scalar multiplication: Let $A \\in W$ and $c \\in \\mathbb{R}$: $(cA)^T = c A^T = c A \\Rightarrow cA \\in W.$ All three conditions hold, so $W$ is a subspace of $M_{2 \\times 2}$."
-        },
-        {
-          "q": "Level 2 · MediumLet $A$ and $B$ be $3 \\times 3$ matrices with $\\det(A) = 3$ and $\\det(B) = -2$. Compute the exact numerical value of: $\\det\\left( 2 A^2 B^{-1} A^T \\right).$",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "answer": "Apply determinant algebraic properties for $3 \\times 3$ matrices: $\\det(2 M) = 2^3 \\det(M) = 8 \\det(M).$ Using the multiplicative, power, transpose, and inverse properties: $\\det(A^2 B^{-1} A^T) = [\\det(A)]^2 \\cdot \\frac{1}{\\det(B)} \\cdot \\det(A) = \\frac{[\\det(A)]^3}{\\det(B)}.$ Substitute $\\det(A) = 3$ and $\\det(B) = -2$: $\\det\\left( 2 A^2 B^{-1} A^T \\right) = 8 \\cdot \\frac{3^3}{-2} = 8 \\cdot \\frac{27}{-2} = 8(-13.5) = \\mathbf{-108}.$",
-          "explanation": "Apply determinant algebraic properties for $3 \\times 3$ matrices: $\\det(2 M) = 2^3 \\det(M) = 8 \\det(M).$ Using the multiplicative, power, transpose, and inverse properties: $\\det(A^2 B^{-1} A^T) = [\\det(A)]^2 \\cdot \\frac{1}{\\det(B)} \\cdot \\det(A) = \\frac{[\\det(A)]^3}{\\det(B)}.$ Substitute $\\det(A) = 3$ and $\\det(B) = -2$: $\\det\\left( 2 A^2 B^{-1} A^T \\right) = 8 \\cdot \\frac{3^3}{-2} = 8 \\cdot \\frac{27}{-2} = 8(-13.5) = \\mathbf{-108}.$"
-        },
-        {
-          "q": "Level 2 · MediumLet $A = \\left(3, 5 ; 1, 2\\right)$ and $\\mathbf{b} = \\left(4 ; 1\\right)$. Compute $A^{-1}$ and use it to solve the linear system $A\\mathbf{x} = \\mathbf{b}$.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "answer": "Step 1 · Invert $A$: $\\det(A) = (3)(2) - (5)(1) = 6 - 5 = 1.$ $A^{-1} = \\frac{1}{1}\\left(2, -5 ; -1, 3\\right) = \\left(2, -5 ; -1, 3\\right).$ Step 2 · Multiply $\\mathbf{x} = A^{-1}\\mathbf{b}$: $\\mathbf{x} = \\left(2, -5 ; -1, 3\\right) \\left(4 ; 1\\right) = \\left(2(4) - 5(1) ; -1(4) + 3(1)\\right) = \\mathbf{\\left(3 ; -1\\right)}.$",
-          "explanation": "Step 1 · Invert $A$: $\\det(A) = (3)(2) - (5)(1) = 6 - 5 = 1.$ $A^{-1} = \\frac{1}{1}\\left(2, -5 ; -1, 3\\right) = \\left(2, -5 ; -1, 3\\right).$ Step 2 · Multiply $\\mathbf{x} = A^{-1}\\mathbf{b}$: $\\mathbf{x} = \\left(2, -5 ; -1, 3\\right) \\left(4 ; 1\\right) = \\left(2(4) - 5(1) ; -1(4) + 3(1)\\right) = \\mathbf{\\left(3 ; -1\\right)}.$"
-        },
-        {
-          "q": "Level 1 · FoundationsLet $A = \\left(2, -1, 3 ; 4, 0, -2\\right)$ and $\\mathbf{x} = \\left(3 ; -2 ; 1\\right)$. Compute $A\\mathbf{x}$ explicitly using the linear combination of columns definition.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "answer": "Using the column combination perspective: $A\\mathbf{x} = 3\\left(2 ; 4\\right) + (-2)\\left(-1 ; 0\\right) + 1\\left(3 ; -2\\right) = \\left(6 ; 12\\right) + \\left(2 ; 0\\right) + \\left(3 ; -2\\right) = \\mathbf{\\left(11 ; 10\\right)}.$",
-          "explanation": "Using the column combination perspective: $A\\mathbf{x} = 3\\left(2 ; 4\\right) + (-2)\\left(-1 ; 0\\right) + 1\\left(3 ; -2\\right) = \\left(6 ; 12\\right) + \\left(2 ; 0\\right) + \\left(3 ; -2\\right) = \\mathbf{\\left(11 ; 10\\right)}.$"
-        },
-        {
-          "q": "Consider a discrete random variable $X$ with the following probability mass function (PMF): $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. What is the value of $P(X \\le 2)$? Show your complete algebraic work.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "answer": "Final Answer: $\\frac{3}{10}$. The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\le 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\le 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\le 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$.",
-          "explanation": "The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\le 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\le 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\le 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$."
-        },
-        {
-          "q": "Consider a discrete random variable $X$ with the following probability mass function (PMF): $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. What is the value of $P(X \\le 2)$? Show your complete algebraic work.",
-          "difficulty": "Intermediate",
-          "question_type": "FRQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "answer": "Final Answer: $\\frac{3}{10}$. The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\le 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\le 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\le 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$.",
-          "explanation": "The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\le 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\le 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\le 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$."
-        }
-      ]
-    },
-    {
-      "heading": "Part III — Free-Response Questions (FRQs): Challenging & Cross-Lesson Synthesis (15–20)",
-      "questions": [
-        {
-          "q": "Consider a discrete random variable $X$ with the following probability mass function (PMF): $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. What is the value of $P(X \\le 2)$? Show your complete algebraic work.",
-          "difficulty": "Challenging",
-          "question_type": "FRQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "cross_lesson": "3.01 Gradient Descent and Optimization",
-          "answer": "Final Answer: $\\frac{3}{10}$. The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\le 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\le 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\le 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$.",
-          "explanation": "The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\le 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\le 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\le 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$."
-        },
-        {
-          "q": "Consider a discrete random variable $X$ with the following probability mass function (PMF): $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. What is the value of $P(X \\le 2)$? Show your complete algebraic work.",
-          "difficulty": "Challenging",
-          "question_type": "FRQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "cross_lesson": "4.01 Conditional Probability and Bayes Rule",
-          "answer": "Final Answer: $\\frac{3}{10}$. The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\le 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\le 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\le 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$.",
-          "explanation": "The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\le 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\le 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\le 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$."
-        },
-        {
-          "q": "Consider a discrete random variable $X$ with the following probability mass function (PMF): $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. What is the value of $P(X \\le 2)$? Show your complete algebraic work.",
-          "difficulty": "Challenging",
-          "question_type": "FRQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "cross_lesson": "5.01 Distributions and Maximum Likelihood",
-          "answer": "Final Answer: $\\frac{3}{10}$. The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\le 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\le 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\le 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$.",
-          "explanation": "The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\le 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\le 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\le 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$."
-        },
-        {
-          "q": "Consider a discrete random variable $X$ with the following probability mass function (PMF): $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. What is the value of $P(X \\le 2)$? Show your complete algebraic work.",
-          "difficulty": "Challenging",
-          "question_type": "FRQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "cross_lesson": "6.01 Linear Regression and OLS",
-          "answer": "Final Answer: $\\frac{3}{10}$. The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\le 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\le 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\le 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$.",
-          "explanation": "The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\le 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\le 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\le 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$."
-        },
-        {
-          "q": "Consider a discrete random variable $X$ with the following probability mass function (PMF): $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. What is the value of $P(X \\le 2)$? Show your complete algebraic work.",
-          "difficulty": "Challenging",
-          "question_type": "FRQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "cross_lesson": "7.01 Logistic Regression and Classification",
-          "answer": "Final Answer: $\\frac{3}{10}$. The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\le 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\le 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\le 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$.",
-          "explanation": "The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\le 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\le 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\le 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$."
-        },
-        {
-          "q": "Consider a discrete random variable $X$ with the following probability mass function (PMF): $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. What is the value of $P(X \\le 2)$? Show your complete algebraic work.",
-          "difficulty": "Challenging",
-          "question_type": "FRQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "cross_lesson": "8.01 PCA and Dimensionality Reduction",
-          "answer": "Final Answer: $\\frac{3}{10}$. The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\le 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\le 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\le 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$.",
-          "explanation": "The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\le 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\le 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\le 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$."
-        }
-      ]
-    },
-    {
-      "heading": "Part IV — Multiple-Choice Questions (MCQs): Foundational Concept Mastery (21–28)",
-      "questions": [
-        {
-          "q": "A fully-connected dense layer maps an input \\( \\mathbf{x} \\in \\mathbb{R}^{10} \\) to \\( \\mathbf{y} \\in \\mathbb{R}^{5} \\) using \\( \\mathbf{y} = \\mathbf{W}\\mathbf{x} + \\mathbf{b} \\). How many total learnable parameters are in this layer?",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
+          "q": "A fully-connected dense layer maps an input \\( \\mathbf{x} \\in \\mathbb{R}^{50} \\) to \\( \\mathbf{y} \\in \\mathbb{R}^{25} \\) using \\( \\mathbf{y} = \\mathbf{W}\\mathbf{x} + \\mathbf{b} \\). How many total learnable parameters are in this layer?",
           "choices": [
-            "\\( 55 \\)",
-            "\\( 50 \\)",
-            "\\( 15 \\)",
-            "\\( 65 \\)"
+            "\\( 1275 \\)",
+            "\\( 1250 \\)",
+            "\\( 75 \\)",
+            "\\( 1325 \\)"
           ],
           "correct": 0,
-          "answer": "The weight matrix \\( \\mathbf{W} \\) has shape \\( 5 \\times 10 \\), giving \\( 50 \\) weights. The bias vector \\( \\mathbf{b} \\) has \\( 5 \\) parameters. Total = \\( 50 + 5 = 55 \\).",
-          "explanation": "The weight matrix \\( \\mathbf{W} \\) has shape \\( 5 \\times 10 \\), giving \\( 50 \\) weights. The bias vector \\( \\mathbf{b} \\) has \\( 5 \\) parameters. Total = \\( 50 + 5 = 55 \\)."
+          "answer": "The weight matrix \\( \\mathbf{W} \\) has shape \\( 25 \\times 50 \\), giving \\( 1250 \\) weights. The bias vector \\( \\mathbf{b} \\) has \\( 25 \\) parameters. Total = \\( 1250 + 25 = 1275 \\)."
         },
         {
-          "q": "Evaluate the output of the standard ReLU activation function \\( f(z) = \\max(0, z) \\) for inputs \\( z_1 = -2 \\) and \\( z_2 = 3 \\).",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
+          "q": "A fully-connected dense layer maps an input \\( \\mathbf{x} \\in \\mathbb{R}^{60} \\) to \\( \\mathbf{y} \\in \\mathbb{R}^{30} \\) using \\( \\mathbf{y} = \\mathbf{W}\\mathbf{x} + \\mathbf{b} \\). How many total learnable parameters are in this layer?",
           "choices": [
-            "\\( f(z_1) = 2, \\; f(z_2) = 3 \\)",
-            "\\( f(z_1) = -2, \\; f(z_2) = 3 \\)",
+            "\\( 1830 \\)",
+            "\\( 1800 \\)",
+            "\\( 90 \\)",
+            "\\( 1890 \\)"
+          ],
+          "correct": 0,
+          "answer": "The weight matrix \\( \\mathbf{W} \\) has shape \\( 30 \\times 60 \\), giving \\( 1800 \\) weights. The bias vector \\( \\mathbf{b} \\) has \\( 30 \\) parameters. Total = \\( 1800 + 30 = 1830 \\)."
+        },
+        {
+          "q": "Evaluate the output of the standard ReLU activation function \\( f(z) = \\max(0, z) \\) for inputs \\( z_1 = -4 \\) and \\( z_2 = 6 \\).",
+          "choices": [
+            "\\( f(z_1) = 4, \\; f(z_2) = 6 \\)",
+            "\\( f(z_1) = -4, \\; f(z_2) = 6 \\)",
             "\\( f(z_1) = 0, \\; f(z_2) = 0 \\)",
-            "\\( f(z_1) = 0, \\; f(z_2) = 3 \\)"
+            "\\( f(z_1) = 0, \\; f(z_2) = 6 \\)"
           ],
           "correct": 3,
-          "answer": "By definition of the Rectified Linear Unit: \\( \\text{ReLU}(z) = z \\) if \\( z > 0 \\), and \\( 0 \\) if \\( z \\le 0 \\). Thus \\( f(-2) = 0 \\) and \\( f(3) = 3 \\).",
-          "explanation": "By definition of the Rectified Linear Unit: \\( \\text{ReLU}(z) = z \\) if \\( z > 0 \\), and \\( 0 \\) if \\( z \\le 0 \\). Thus \\( f(-2) = 0 \\) and \\( f(3) = 3 \\)."
+          "answer": "By definition of the Rectified Linear Unit: \\( \\text{ReLU}(z) = z \\) if \\( z > 0 \\), and \\( 0 \\) if \\( z \\le 0 \\). Thus \\( f(-4) = 0 \\) and \\( f(6) = 6 \\)."
         },
         {
-          "q": "Consider a linear layer with a weight matrix $W$ and an input vector $\\mathbf{x}$. If $W = \\left(1, 2 ; 3, 4\\right)$ and $\\mathbf{x} = \\left(5 ; 6\\right)$, compute the output vector $\\mathbf{y} = W\\mathbf{x}$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
+          "q": "Evaluate the output of the standard ReLU activation function \\( f(z) = \\max(0, z) \\) for inputs \\( z_1 = -6 \\) and \\( z_2 = 9 \\).",
           "choices": [
-            "$\\left(17 ; 39\\right)$",
-            "$\\left(11 ; 19\\right)$",
-            "$\\left(17 ; 19\\right)$",
-            "$\\left(11 ; 39\\right)$"
+            "\\( f(z_1) = 6, \\; f(z_2) = 9 \\)",
+            "\\( f(z_1) = -6, \\; f(z_2) = 9 \\)",
+            "\\( f(z_1) = 0, \\; f(z_2) = 0 \\)",
+            "\\( f(z_1) = 0, \\; f(z_2) = 9 \\)"
           ],
-          "correct": 0,
-          "answer": "The output vector $\\mathbf{y}$ is computed by multiplying the weight matrix $W$ by the input vector $\\mathbf{x}$. This is a standard matrix-vector multiplication. \\\\ \\\\ $\\mathbf{y} = W\\mathbf{x} = \\left(1, 2 ; 3, 4\\right) \\left(5 ; 6\\right)$\\\\\\ \\\\ To compute the first element of $\\mathbf{y}$, we take the dot product of the first row of $W$ with $\\mathbf{x}$: $(1)(5) + (2)(6) = 5 + 12 = 17$.\\\\ \\\\ To compute the second element of $\\mathbf{y}$, we take the dot product of the second row of $W$ with $\\mathbf{x}$: $(3)(5) + (4)(6) = 15 + 24 = 39$.\\\\ \\\\ Therefore, the output vector is $\\mathbf{y} = \\left(17 ; 39\\right)$.",
-          "explanation": "The output vector $\\mathbf{y}$ is computed by multiplying the weight matrix $W$ by the input vector $\\mathbf{x}$. This is a standard matrix-vector multiplication. \\\\ \\\\ $\\mathbf{y} = W\\mathbf{x} = \\left(1, 2 ; 3, 4\\right) \\left(5 ; 6\\right)$\\\\\\ \\\\ To compute the first element of $\\mathbf{y}$, we take the dot product of the first row of $W$ with $\\mathbf{x}$: $(1)(5) + (2)(6) = 5 + 12 = 17$.\\\\ \\\\ To compute the second element of $\\mathbf{y}$, we take the dot product of the second row of $W$ with $\\mathbf{x}$: $(3)(5) + (4)(6) = 15 + 24 = 39$.\\\\ \\\\ Therefore, the output vector is $\\mathbf{y} = \\left(17 ; 39\\right)$."
+          "correct": 3,
+          "answer": "By definition of the Rectified Linear Unit: \\( \\text{ReLU}(z) = z \\) if \\( z > 0 \\), and \\( 0 \\) if \\( z \\le 0 \\). Thus \\( f(-6) = 0 \\) and \\( f(9) = 9 \\)."
         },
         {
-          "q": "Consider a linear transformation represented by the matrix $M = \\left[2, k ; 1, 3\\right]$. A vector $\\mathbf{v} = \\left[1 ; 2\\right]$ is transformed by $M$ into $\\mathbf{v'} = M\\mathbf{v} = \\left[8 ; 7\\right]$. Determine the value of the unknown parameter $k$.",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
+          "q": "Evaluate the output of the standard ReLU activation function \\( f(z) = \\max(0, z) \\) for inputs \\( z_1 = -10 \\) and \\( z_2 = 15 \\).",
           "choices": [
-            "1",
-            "2",
-            "3",
-            "4"
-          ],
-          "correct": 1,
-          "answer": "The problem involves a matrix-vector multiplication. We are given the matrix $M = \\left[2, k ; 1, 3\\right]$ and the vectors $\\mathbf{v} = \\left[1 ; 2\\right]$ and $\\mathbf{v'} = \\left[8 ; 7\\right]$. The transformation is defined by $\\mathbf{v'} = M\\mathbf{v}$. Let's perform the matrix-vector multiplication: $\\left[8 ; 7\\right] = \\left[2, k ; 1, 3\\right] \\left[1 ; 2\\right]$ This expands to two equations: 1. $8 = (2)(1) + (k)(2)$ 2. $7 = (1)(1) + (3)(2)$ Let's solve the first equation for $k$: $8 = 2 + 2k$ Subtract 2 from both sides: $6 = 2k$ Divide by 2: $k = 3$ Now, let's verify this with the second equation. The second equation is $7 = 1 + 6$, which simplifies to $7 = 7$. This confirms our value of $k = 3$ is consistent. Therefore, the unknown parameter $k$ is 3.",
-          "explanation": "The problem involves a matrix-vector multiplication. We are given the matrix $M = \\left[2, k ; 1, 3\\right]$ and the vectors $\\mathbf{v} = \\left[1 ; 2\\right]$ and $\\mathbf{v'} = \\left[8 ; 7\\right]$. The transformation is defined by $\\mathbf{v'} = M\\mathbf{v}$. Let's perform the matrix-vector multiplication: $\\left[8 ; 7\\right] = \\left[2, k ; 1, 3\\right] \\left[1 ; 2\\right]$ This expands to two equations: 1. $8 = (2)(1) + (k)(2)$ 2. $7 = (1)(1) + (3)(2)$ Let's solve the first equation for $k$: $8 = 2 + 2k$ Subtract 2 from both sides: $6 = 2k$ Divide by 2: $k = 3$ Now, let's verify this with the second equation. The second equation is $7 = 1 + 6$, which simplifies to $7 = 7$. This confirms our value of $k = 3$ is consistent. Therefore, the unknown parameter $k$ is 3."
-        },
-        {
-          "q": "A linear transformation is defined by the matrix $M = \\left(2, 1 ; 3, 4\\right)$. If an input vector is $v = \\left(x ; 1\\right)$, and the output vector after the transformation is $w = \\left(5 ; 7\\right)$, what is the value of $x$?",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "choices": [
-            "1",
-            "2",
-            "3",
-            "4"
-          ],
-          "correct": 0,
-          "answer": "The linear transformation is given by $w = Mv$. Substituting the given matrices and vectors, we have: $\\left(3 ; 7\\right) = \\left(2, 1 ; 3, 4\\right) \\left(x ; 1\\right)$ Performing the matrix multiplication on the right side gives: $\\left(3 ; 7\\right) = \\left(2x + 1(1) ; 3x + 4(1)\\right) = \\left(2x + 1 ; 3x + 4\\right)$ Equating the corresponding components of the vectors, we get two equations: 1. $3 = 2x + 1$ 2. $7 = 3x + 4$ Solving the first equation for $x$: $3 - 1 = 2x$ $2 = 2x$ $x = \\frac{2}{2}$ $x = 1$ Solving the second equation for $x$: $7 - 4 = 3x$ $3 = 3x$ $x = \\frac{3}{3}$ $x = 1$ Both equations yield $x=1$. Therefore, the value of $x$ is 1.",
-          "explanation": "The linear transformation is given by $w = Mv$. Substituting the given matrices and vectors, we have: $\\left(3 ; 7\\right) = \\left(2, 1 ; 3, 4\\right) \\left(x ; 1\\right)$ Performing the matrix multiplication on the right side gives: $\\left(3 ; 7\\right) = \\left(2x + 1(1) ; 3x + 4(1)\\right) = \\left(2x + 1 ; 3x + 4\\right)$ Equating the corresponding components of the vectors, we get two equations: 1. $3 = 2x + 1$ 2. $7 = 3x + 4$ Solving the first equation for $x$: $3 - 1 = 2x$ $2 = 2x$ $x = \\frac{2}{2}$ $x = 1$ Solving the second equation for $x$: $7 - 4 = 3x$ $3 = 3x$ $x = \\frac{3}{3}$ $x = 1$ Both equations yield $x=1$. Therefore, the value of $x$ is 1."
-        },
-        {
-          "q": "Consider a 2D dataset represented by the points $A = (1, 2)$, $B = (4, 2)$, and $C = (2, 5)$. If this dataset undergoes a linear transformation represented by the matrix $M = \\left(2, 0 ; 0, 1\\right)$, what are the coordinates of the transformed points $A'$, $B'$, and $C'$?",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "choices": [
-            "$A' = (2, 2), B' = (8, 2), C' = (4, 5)$",
-            "$A' = (1, 4), B' = (4, 4), C' = (2, 10)$",
-            "$A' = (2, 4), B' = (8, 4), C' = (4, 10)$",
-            "$A' = (3, 2), B' = (6, 2), C' = (4, 7)$"
-          ],
-          "correct": 0,
-          "answer": "The transformation of a point $\\mathbf{x}$ by a matrix $M$ is given by $M \\mathbf{x}$. We apply the matrix $M = \\left(2, 0 ; 0, 1\\right)$ to each point: For point $A = (1, 2)$, the transformed point $A'$ is: $\\left(2, 0 ; 0, 1\\right) \\left(1 ; 2\\right) = \\left(2 \\times 1 + 0 \\times 2 ; 0 \\times 1 + 1 \\times 2\\right) = \\left(2 ; 2\\right)$ So, $A' = (2, 2)$. For point $B = (4, 2)$, the transformed point $B'$ is: $\\left(2, 0 ; 0, 1\\right) \\left(4 ; 2\\right) = \\left(2 ; 2\\right)$ So, $B' = (8, 2)$. For point $C = (2, 5)$, the transformed point $C'$ is: $\\left(2, 0 ; 0, 1\\right) \\left(2 ; 5\\right) = \\left(2 \\times 2 + 0 \\times 5 ; 0 \\times 2 + 1 \\times 5\\right) = \\left(4 ; 5\\right)$ So, $C' = (4, 5)$. Therefore, the transformed points are $A' = (2, 2)$, $B' = (8, 2)$, and $C' = (4, 5)$.",
-          "explanation": "The transformation of a point $\\mathbf{x}$ by a matrix $M$ is given by $M \\mathbf{x}$. We apply the matrix $M = \\left(2, 0 ; 0, 1\\right)$ to each point: For point $A = (1, 2)$, the transformed point $A'$ is: $\\left(2, 0 ; 0, 1\\right) \\left(1 ; 2\\right) = \\left(2 \\times 1 + 0 \\times 2 ; 0 \\times 1 + 1 \\times 2\\right) = \\left(2 ; 2\\right)$ So, $A' = (2, 2)$. For point $B = (4, 2)$, the transformed point $B'$ is: $\\left(2, 0 ; 0, 1\\right) \\left(4 ; 2\\right) = \\left(2 ; 2\\right)$ So, $B' = (8, 2)$. For point $C = (2, 5)$, the transformed point $C'$ is: $\\left(2, 0 ; 0, 1\\right) \\left(2 ; 5\\right) = \\left(2 \\times 2 + 0 \\times 5 ; 0 \\times 2 + 1 \\times 5\\right) = \\left(4 ; 5\\right)$ So, $C' = (4, 5)$. Therefore, the transformed points are $A' = (2, 2)$, $B' = (8, 2)$, and $C' = (4, 5)$."
-        },
-        {
-          "q": "Consider a dataset with $n$ data points $\\{ \\mathbf{x}_1, \\mathbf{x}_2, \\dots, \\mathbf{x}_n \\}$, where each $\\mathbf{x}_i \\in \\mathbb{R}^p$. The sample covariance matrix is given by $\\mathbf{S} = \\frac{1}{n-1} \\sum_{i=1}^n (\\mathbf{x}_i - \\bar{\\mathbf{x}})(\\mathbf{x}_i - \\bar{\\mathbf{x}})^T$, where $\\bar{\\mathbf{x}} = \\frac{1}{n} \\sum_{i=1}^n \\mathbf{x}_i$ is the sample mean. Suppose PCA is performed on this dataset, resulting in principal components defined by the eigenvectors of $\\mathbf{S}$ and corresponding variances given by the eigenvalues. Let $\\mathbf{v}_1, \\mathbf{v}_2, \\dots, \\mathbf{v}_p$ be the orthonormal eigenvectors of $\\mathbf{S}$ with associated eigenvalues $\\lambda_1 \\geq \\lambda_2 \\geq \\dots \\geq \\lambda_p$. The first principal component captures the direction of maximum variance, $\\lambda_1$, and the second principal component captures the next largest variance, $\\lambda_2$, orthogonal to the first. If we decide to reduce the dimensionality from $p$ to $k$ by keeping only the first $k$ principal components, the proportion of the total variance retained is given by $\\frac{\\sum_{i=1}^k \\lambda_i}{\\sum_{i=1}^p \\lambda_i}$. Suppose for a particular dataset, the eigenvalues of the covariance matrix are $\\{10.5, 5.2, 2.1, 0.8, 0.4 \\}$. If we aim to retain at least 90% of the total variance, what is the minimum number of principal components required?",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "choices": [
-            "3",
-            "2",
-            "4",
-            "5"
-          ],
-          "correct": 0,
-          "answer": "The total variance in the dataset is the sum of all eigenvalues: $\\sum_{i=1}^p \\lambda_i = 10.5 + 5.2 + 2.1 + 0.8 + 0.4 = 19.0$. We need to find the minimum $k$ such that $\\frac{\\sum_{i=1}^k \\lambda_i}{\\sum_{i=1}^p \\lambda_i} \\geq 0.90$. Let's check for different values of $k$: For $k=1$: The variance retained is $\\frac{10.5}{19.0} \\approx 0.553$, which is less than 0.90. For $k=2$: The variance retained is $\\frac{10.5 + 5.2}{19.0} = \\frac{15.7}{19.0} \\approx 0.826$, which is less than 0.90. For $k=3$: The variance retained is $\\frac{10.5 + 5.2 + 2.1}{19.0} = \\frac{17.8}{19.0} \\approx 0.937$, which is greater than or equal to 0.90. Therefore, a minimum of 3 principal components are required to retain at least 90% of the total variance.",
-          "explanation": "The total variance in the dataset is the sum of all eigenvalues: $\\sum_{i=1}^p \\lambda_i = 10.5 + 5.2 + 2.1 + 0.8 + 0.4 = 19.0$. We need to find the minimum $k$ such that $\\frac{\\sum_{i=1}^k \\lambda_i}{\\sum_{i=1}^p \\lambda_i} \\geq 0.90$. Let's check for different values of $k$: For $k=1$: The variance retained is $\\frac{10.5}{19.0} \\approx 0.553$, which is less than 0.90. For $k=2$: The variance retained is $\\frac{10.5 + 5.2}{19.0} = \\frac{15.7}{19.0} \\approx 0.826$, which is less than 0.90. For $k=3$: The variance retained is $\\frac{10.5 + 5.2 + 2.1}{19.0} = \\frac{17.8}{19.0} \\approx 0.937$, which is greater than or equal to 0.90. Therefore, a minimum of 3 principal components are required to retain at least 90% of the total variance."
-        },
-        {
-          "q": "A binary classification model uses a logistic sigmoid function $\\sigma(z) = \\frac{1}{1 + e^{-z}}$. The decision boundary is defined by $\\sigma(z) = 0.5$, where $z = w_1 x_1 + w_0$. For a dataset with two features $x_1$ and $x_2$, the model's linear component is $z = 2x_1 - x_2 + b$. If the classification boundary passes through the point $(x_1, x_2) = (3, 1)$, what is the value of the bias $b$?",
-          "difficulty": "Foundational",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "choices": [
-            "$b = -5$",
-            "$b = -7$",
-            "$b = 5$",
-            "$b = 7$"
-          ],
-          "correct": 1,
-          "answer": "The logistic sigmoid function is $\\sigma(z) = \\frac{1}{1 + e^{-z}}$. The decision boundary is where $\\sigma(z) = 0.5$. Setting $\\sigma(z) = 0.5$ gives $\\frac{1}{1 + e^{-z}} = 0.5$, which implies $1 = 0.5(1 + e^{-z})$, so $2 = 1 + e^{-z}$, and $e^{-z} = 1$. This occurs when $-z = 0$, or $z = 0$. Therefore, the decision boundary is defined by $z = 0$. The linear component of the model is given by $z = w_1 x_1 + w_2 x_2 + b$. In this problem, $z = 2x_1 - x_2 + b$. Since the decision boundary is $z = 0$, we have $2x_1 - x_2 + b = 0$. The classification boundary passes through the point $(x_1, x_2) = (3, 1)$. Substituting these values into the equation for the decision boundary: $2(3) - 1 + b = 0$ $6 - 1 + b = 0$ $5 + b = 0$ $b = -5$",
-          "explanation": "The logistic sigmoid function is $\\sigma(z) = \\frac{1}{1 + e^{-z}}$. The decision boundary is where $\\sigma(z) = 0.5$. Setting $\\sigma(z) = 0.5$ gives $\\frac{1}{1 + e^{-z}} = 0.5$, which implies $1 = 0.5(1 + e^{-z})$, so $2 = 1 + e^{-z}$, and $e^{-z} = 1$. This occurs when $-z = 0$, or $z = 0$. Therefore, the decision boundary is defined by $z = 0$. The linear component of the model is given by $z = w_1 x_1 + w_2 x_2 + b$. In this problem, $z = 2x_1 - x_2 + b$. Since the decision boundary is $z = 0$, we have $2x_1 - x_2 + b = 0$. The classification boundary passes through the point $(x_1, x_2) = (3, 1)$. Substituting these values into the equation for the decision boundary: $2(3) - 1 + b = 0$ $6 - 1 + b = 0$ $5 + b = 0$ $b = -5$"
-        }
-      ]
-    },
-    {
-      "heading": "Part V — Multiple-Choice Questions (MCQs): Intermediate Exam Application (29–37)",
-      "questions": [
-        {
-          "q": "Consider a dataset of observations $\\{x_i\\}_{i=1}^n$ where each $x_i$ is a 2-dimensional vector. The sample covariance matrix for this dataset is given by: $S = \\left(4, -2 ; -2, 1\\right)$ Principal Component Analysis (PCA) is applied to this dataset. The first principal component corresponds to the direction with the largest variance. Let the direction vector of the first principal component be $\\mathbf{v}_1 = \\left(a ; b\\right)$. The variance explained by this principal component is given by the corresponding eigenvalue $\\lambda_1$. If $\\mathbf{v}_1$ is a unit vector, what is the value of $a^2+b^2$?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "choices": [
-            "1",
-            "2",
-            "4",
-            "5"
-          ],
-          "correct": 0,
-          "answer": "The first principal component direction vector $\\mathbf{v}_1$ is an eigenvector of the covariance matrix $S$. The variance explained by this component is the corresponding eigenvalue $\\lambda_1$. The problem states that $\\mathbf{v}_1 = \\left(a ; b\\right)$ is a unit vector. By definition, a unit vector has a magnitude of 1. The squared magnitude of a vector $\\left(a ; b\\right)$ is $a^2 + b^2$. Therefore, if $\\mathbf{v}_1$ is a unit vector, its squared magnitude must be 1, which means $a^2 + b^2 = 1$. The specific values of $a$ and $b$ and the eigenvalues of $S$ are not needed to answer this question, as it directly asks for the property of a unit vector.",
-          "explanation": "The first principal component direction vector $\\mathbf{v}_1$ is an eigenvector of the covariance matrix $S$. The variance explained by this component is the corresponding eigenvalue $\\lambda_1$. The problem states that $\\mathbf{v}_1 = \\left(a ; b\\right)$ is a unit vector. By definition, a unit vector has a magnitude of 1. The squared magnitude of a vector $\\left(a ; b\\right)$ is $a^2 + b^2$. Therefore, if $\\mathbf{v}_1$ is a unit vector, its squared magnitude must be 1, which means $a^2 + b^2 = 1$. The specific values of $a$ and $b$ and the eigenvalues of $S$ are not needed to answer this question, as it directly asks for the property of a unit vector."
-        },
-        {
-          "q": "Consider a dataset with two features, $X_1$ and $X_2$. The covariance matrix for this dataset is given by: $\\Sigma = \\left(10, 5 ; 5, 20\\right)$ What is the variance of the first feature, $X_1$?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "choices": [
-            "10",
-            "5",
-            "20",
-            "25"
-          ],
-          "correct": 0,
-          "answer": "The covariance matrix $\\Sigma$ for a dataset with two features $X_1$ and $X_2$ is structured as follows: $\\Sigma = \\left(Cov(X_1, X_1), Cov(X_1, X_2) ; Cov(X_2, X_1), Cov(X_2, X_2)\\right)$ By definition, the variance of a random variable is the covariance of the variable with itself. Therefore, $Var(X_1) = Cov(X_1, X_1)$ and $Var(X_2) = Cov(X_2, X_2)$. In the given covariance matrix: $\\Sigma = \\left(10, 5 ; 5, 20\\right)$ The element in the first row and first column represents $Cov(X_1, X_1)$, which is the variance of $X_1$. Thus, the variance of $X_1$ is 10. The covariance between $X_1$ and $X_2$ is 5, and the variance of $X_2$ is 20.",
-          "explanation": "The covariance matrix $\\Sigma$ for a dataset with two features $X_1$ and $X_2$ is structured as follows: $\\Sigma = \\left(Cov(X_1, X_1), Cov(X_1, X_2) ; Cov(X_2, X_1), Cov(X_2, X_2)\\right)$ By definition, the variance of a random variable is the covariance of the variable with itself. Therefore, $Var(X_1) = Cov(X_1, X_1)$ and $Var(X_2) = Cov(X_2, X_2)$. In the given covariance matrix: $\\Sigma = \\left(10, 5 ; 5, 20\\right)$ The element in the first row and first column represents $Cov(X_1, X_1)$, which is the variance of $X_1$. Thus, the variance of $X_1$ is 10. The covariance between $X_1$ and $X_2$ is 5, and the variance of $X_2$ is 20."
-        },
-        {
-          "q": "Consider a simple logistic regression model where the decision boundary is defined by the equation $-1.5x_1 + 2x_2 + 5 = 0$. For a data point $(x_1, x_2)$, if $-1.5x_1 + 2x_2 + 5 < 0$, it is classified into Class 0. Otherwise, it is classified into Class 1. Which of the following points lies on the decision boundary?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "choices": [
-            "$(-1, 1)$",
-            "$(2, -2)$",
-            "$(0, -2.5)$",
-            "$(3, 0.5)$"
+            "\\( f(z_1) = 0, \\; f(z_2) = 0 \\)",
+            "\\( f(z_1) = -10, \\; f(z_2) = 15 \\)",
+            "\\( f(z_1) = 0, \\; f(z_2) = 15 \\)",
+            "\\( f(z_1) = 10, \\; f(z_2) = 15 \\)"
           ],
           "correct": 2,
-          "answer": "The decision boundary is defined by the equation $-1.5x_1 + 2x_2 + 5 = 0$. To find which point lies on the boundary, we substitute the coordinates of each point into the equation. For point $(-1, 1)$: $-1.5(-1) + 2(1) + 5 = 1.5 + 2 + 5 = 8.5$, which is not 0. For point $(2, -2)$: $-1.5(2) + 2(-2) + 5 = -3 - 4 + 5 = -2$, which is not 0. For point $(0, -2.5)$: $-1.5(0) + 2(-2.5) + 5 = 0 - 5 + 5 = 0$. This point lies on the boundary. For point $(3, 0.5)$: $-1.5(3) + 2(0.5) + 5 = -4.5 + 1 + 5 = 1.5$, which is not 0. Therefore, the point $(0, -2.5)$ lies on the decision boundary.",
-          "explanation": "The decision boundary is defined by the equation $-1.5x_1 + 2x_2 + 5 = 0$. To find which point lies on the boundary, we substitute the coordinates of each point into the equation. For point $(-1, 1)$: $-1.5(-1) + 2(1) + 5 = 1.5 + 2 + 5 = 8.5$, which is not 0. For point $(2, -2)$: $-1.5(2) + 2(-2) + 5 = -3 - 4 + 5 = -2$, which is not 0. For point $(0, -2.5)$: $-1.5(0) + 2(-2.5) + 5 = 0 - 5 + 5 = 0$. This point lies on the boundary. For point $(3, 0.5)$: $-1.5(3) + 2(0.5) + 5 = -4.5 + 1 + 5 = 1.5$, which is not 0. Therefore, the point $(0, -2.5)$ lies on the decision boundary."
+          "answer": "By definition of the Rectified Linear Unit: \\( \\text{ReLU}(z) = z \\) if \\( z > 0 \\), and \\( 0 \\) if \\( z \\le 0 \\). Thus \\( f(-10) = 0 \\) and \\( f(15) = 15 \\)."
         },
         {
-          "q": "Consider a simple linear regression model where the predicted value $\\hat{y}$ is given by $\\hat{y} = b_0 + b_1 x$. If we have two data points $(x_1, y_1) = (2, 5)$ and $(x_2, y_2) = (4, 9)$, and the Ordinary Least Squares (OLS) method yields the regression line $\\hat{y} = 1 + 2x$, what is the predicted value $\\hat{y}$ for $x = 3$?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
+          "q": "Evaluate the output of the standard ReLU activation function \\( f(z) = \\max(0, z) \\) for inputs \\( z_1 = -12 \\) and \\( z_2 = 18 \\).",
           "choices": [
-            "$5$",
-            "$6$",
-            "$7$",
-            "$8$"
+            "\\( f(z_1) = 0, \\; f(z_2) = 0 \\)",
+            "\\( f(z_1) = -12, \\; f(z_2) = 18 \\)",
+            "\\( f(z_1) = 0, \\; f(z_2) = 18 \\)",
+            "\\( f(z_1) = 12, \\; f(z_2) = 18 \\)"
           ],
           "correct": 2,
-          "answer": "The problem provides a simple linear regression equation $\\hat{y} = b_0 + b_1 x$ and specific values for the intercept $b_0 = 1$ and the slope $b_1 = 2$. We are asked to find the predicted value $\\hat{y}$ for a given value of $x$. We substitute $x = 3$ into the regression equation: $\\hat{y} = 1 + 2(3)$ $\\hat{y} = 1 + 6$ $\\hat{y} = 7$ Therefore, the predicted value $\\hat{y}$ for $x = 3$ is 7. The data points $(2, 5)$ and $(4, 9)$ are consistent with this regression line: for $x=2$, $\\hat{y} = 1 + 2(2) = 5$, and for $x=4$, $\\hat{y} = 1 + 2(4) = 9$.",
-          "explanation": "The problem provides a simple linear regression equation $\\hat{y} = b_0 + b_1 x$ and specific values for the intercept $b_0 = 1$ and the slope $b_1 = 2$. We are asked to find the predicted value $\\hat{y}$ for a given value of $x$. We substitute $x = 3$ into the regression equation: $\\hat{y} = 1 + 2(3)$ $\\hat{y} = 1 + 6$ $\\hat{y} = 7$ Therefore, the predicted value $\\hat{y}$ for $x = 3$ is 7. The data points $(2, 5)$ and $(4, 9)$ are consistent with this regression line: for $x=2$, $\\hat{y} = 1 + 2(2) = 5$, and for $x=4$, $\\hat{y} = 1 + 2(4) = 9$."
+          "answer": "By definition of the Rectified Linear Unit: \\( \\text{ReLU}(z) = z \\) if \\( z > 0 \\), and \\( 0 \\) if \\( z \\le 0 \\). Thus \\( f(-12) = 0 \\) and \\( f(18) = 18 \\)."
         },
         {
-          "q": "Consider the quadratic loss function $L(w) = w^2 - 4w + 3$. Find the value of $w$ where the function reaches its minimum.",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
+          "q": "The sigmoid activation function is \\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\). If \\( \\sigma(z_0) = 0.20 \\), what is the value of the derivative \\( \\sigma'(z_0) \\)?",
           "choices": [
-            "$w = 1$",
-            "$w = 2$",
-            "$w = 3$",
-            "$w = 4$"
-          ],
-          "correct": 1,
-          "answer": "The given loss function is a quadratic function $L(w) = w^2 - 4w + 3$. This represents a parabola opening upwards. The minimum value of a quadratic function of the form $aw^2 + bw + c$ occurs at $w = -\\frac{b}{2a}$. In this case, $a = 1$ and $b = -4$. Therefore, the minimum occurs at $w = -\\frac{-4}{2(1)} = \\frac{4}{2} = 2$. Alternatively, we can find the minimum by taking the derivative and setting it to zero: $L'(w) = 2w - 4$. Setting $L'(w) = 0$ gives $2w - 4 = 0$, which implies $2w = 4$, so $w = 2$.",
-          "explanation": "The given loss function is a quadratic function $L(w) = w^2 - 4w + 3$. This represents a parabola opening upwards. The minimum value of a quadratic function of the form $aw^2 + bw + c$ occurs at $w = -\\frac{b}{2a}$. In this case, $a = 1$ and $b = -4$. Therefore, the minimum occurs at $w = -\\frac{-4}{2(1)} = \\frac{4}{2} = 2$. Alternatively, we can find the minimum by taking the derivative and setting it to zero: $L'(w) = 2w - 4$. Setting $L'(w) = 0$ gives $2w - 4 = 0$, which implies $2w = 4$, so $w = 2$."
-        },
-        {
-          "q": "Consider a simple logistic regression model where the decision boundary is defined by the linear equation $w_1x_1 + w_2x_2 + b = 0$. If the weights are $w_1 = 2$ and $w_2 = 3$, and the bias is $b = -7$, what is the equation of the decision boundary?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "choices": [
-            "$2x_1 + 3x_2 - 7 = 0$",
-            "$3x_1 + 2x_2 + 7 = 0$",
-            "$2x_1 + 3x_2 + 7 = 0$",
-            "$-2x_1 - 3x_2 + 7 = 0$"
+            "\\( 0.1600 \\)",
+            "\\( 0.4000 \\)",
+            "\\( 0.8000 \\)",
+            "\\( 0.0400 \\)"
           ],
           "correct": 0,
-          "answer": "The decision boundary in a logistic regression model is defined by the equation where the log-odds are zero. This corresponds to a linear combination of the input features and weights, plus the bias, being equal to zero. Given the weights $w_1 = 2$ and $w_2 = 3$, and the bias $b = -7$, the equation of the decision boundary is $w_1x_1 + w_2x_2 + b = 0$. Substituting the given values, we get $2x_1 + 3x_2 + (-7) = 0$, which simplifies to $2x_1 + 3x_2 - 7 = 0$.",
-          "explanation": "The decision boundary in a logistic regression model is defined by the equation where the log-odds are zero. This corresponds to a linear combination of the input features and weights, plus the bias, being equal to zero. Given the weights $w_1 = 2$ and $w_2 = 3$, and the bias $b = -7$, the equation of the decision boundary is $w_1x_1 + w_2x_2 + b = 0$. Substituting the given values, we get $2x_1 + 3x_2 + (-7) = 0$, which simplifies to $2x_1 + 3x_2 - 7 = 0$."
+          "answer": "The derivative of sigmoid satisfies \\( \\sigma'(z) = \\sigma(z)(1 - \\sigma(z)) \\). Substituting \\( \\sigma(z_0) = 0.20 \\): \\( \\sigma'(z_0) = (0.20)(1 - 0.20) = (0.20)(0.80) = 0.1600 \\)."
         },
         {
-          "q": "Consider the following quadratic loss function: $L(w) = 3w^2 - 12w + 10$. What is the value of $w$ that minimizes this loss function?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
+          "q": "The sigmoid activation function is \\( \\sigma(z) = \\frac{1}{1 + e^{-z}} \\). If \\( \\sigma(z_0) = 0.40 \\), what is the value of the derivative \\( \\sigma'(z_0) \\)?",
           "choices": [
-            "2",
-            "1",
-            "4",
-            "12"
+            "\\( 0.2400 \\)",
+            "\\( 0.8000 \\)",
+            "\\( 0.6000 \\)",
+            "\\( 0.1600 \\)"
           ],
           "correct": 0,
-          "answer": "To find the minimum of the quadratic loss function $L(w) = 3w^2 - 12w + 10$, we can find the derivative with respect to $w$ and set it to zero. The derivative of $L(w)$ with respect to $w$ is: $\\frac{dL}{dw} = 6w - 12$. Setting the derivative to zero to find the critical point: $6w - 12 = 0$ $6w = 12$ $w = \\frac{12}{6}$ $w = 2$. The second derivative is $\\frac{d^2L}{dw^2} = 6$, which is positive, confirming that $w=2$ corresponds to a minimum.",
-          "explanation": "To find the minimum of the quadratic loss function $L(w) = 3w^2 - 12w + 10$, we can find the derivative with respect to $w$ and set it to zero. The derivative of $L(w)$ with respect to $w$ is: $\\frac{dL}{dw} = 6w - 12$. Setting the derivative to zero to find the critical point: $6w - 12 = 0$ $6w = 12$ $w = \\frac{12}{6}$ $w = 2$. The second derivative is $\\frac{d^2L}{dw^2} = 6$, which is positive, confirming that $w=2$ corresponds to a minimum."
-        },
-        {
-          "q": "Consider a simple linear regression model where a dependent variable $y$ is predicted from an independent variable $x$. The model is given by the equation $y = \\beta_0 + \\beta_1 x + \\epsilon$, where $\\epsilon$ is the error term. Suppose we have estimated the regression line to be $\\hat{y} = 3 + 2x$. If we observe an independent variable value of $x=4$, what is the predicted value $\\hat{y}$ for the dependent variable?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "choices": [
-            "11",
-            "14",
-            "10",
-            "7"
-          ],
-          "correct": 0,
-          "answer": "The problem asks for the predicted value $\\hat{y}$ given an independent variable value $x=4$ and a linear regression equation $\\hat{y} = 3 + 2x$. We substitute the value of $x$ into the equation: $\\hat{y} = 3 + 2(4)$ $\\hat{y} = 3 + 8$ $\\hat{y} = 11$ Therefore, the predicted value for the dependent variable is 11. Common errors might involve incorrectly multiplying 2 by 4 or incorrectly adding 3 to 8.",
-          "explanation": "The problem asks for the predicted value $\\hat{y}$ given an independent variable value $x=4$ and a linear regression equation $\\hat{y} = 3 + 2x$. We substitute the value of $x$ into the equation: $\\hat{y} = 3 + 2(4)$ $\\hat{y} = 3 + 8$ $\\hat{y} = 11$ Therefore, the predicted value for the dependent variable is 11. Common errors might involve incorrectly multiplying 2 by 4 or incorrectly adding 3 to 8."
-        },
-        {
-          "q": "Consider a simple quadratic loss function $L(w) = (w^2 - 4w + 5)$. We want to find the minimum of this loss function using gradient descent. The gradient of the loss function with respect to $w$ is given by $\\frac{dL}{dw} = 2w - 4$. If we start at an initial weight $w_0 = 5$ and use a learning rate $\\alpha = 0.5$, what will be the value of the weight $w_1$ after the first update step, i.e., $w_1 = w_0 - \\alpha \\frac{dL}{dw}(w_0)$?",
-          "difficulty": "Intermediate",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "choices": [
-            "$4$",
-            "$3$",
-            "$4.5$",
-            "$5$"
-          ],
-          "correct": 0,
-          "answer": "The loss function is $L(w) = w^2 - 4w + 5$. The gradient is $\\frac{dL}{dw} = 2w - 4$. We are given an initial weight $w_0 = 5$ and a learning rate $\\alpha = 0.5$. The gradient at $w_0$ is $\\frac{dL}{dw}(w_0) = 2(5) - 4 = 10 - 4 = 6$. The update rule for gradient descent is $w_1 = w_0 - \\alpha \\frac{dL}{dw}(w_0)$. Substituting the values, we get $w_1 = 5 - 0.5 \\times 6 = 5 - 3 = 2$.",
-          "explanation": "The loss function is $L(w) = w^2 - 4w + 5$. The gradient is $\\frac{dL}{dw} = 2w - 4$. We are given an initial weight $w_0 = 5$ and a learning rate $\\alpha = 0.5$. The gradient at $w_0$ is $\\frac{dL}{dw}(w_0) = 2(5) - 4 = 10 - 4 = 6$. The update rule for gradient descent is $w_1 = w_0 - \\alpha \\frac{dL}{dw}(w_0)$. Substituting the values, we get $w_1 = 5 - 0.5 \\times 6 = 5 - 3 = 2$."
-        }
-      ]
-    },
-    {
-      "heading": "Part VI — Multiple-Choice Questions (MCQs): Challenging & Cross-Lesson Synthesis (38–45)",
-      "questions": [
-        {
-          "q": "Consider a simple linear regression model where the predicted value $\\hat{y}$ is related to the independent variable $x$ by the equation $\\hat{y} = mx + c$. If the line of best fit passes through the points $(1, 5)$ and $(3, 11)$, what is the slope $m$ of this line?",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "choices": [
-            "3",
-            "2",
-            "5",
-            "6"
-          ],
-          "correct": 0,
-          "answer": "The slope $m$ of a line passing through two points $(x_1, y_1)$ and $(x_2, y_2)$ is given by the formula $m = \\frac{y_2 - y_1}{x_2 - x_1}$. Given the points $(1, 5)$ and $(3, 11)$, we have $x_1 = 1$, $y_1 = 5$, $x_2 = 3$, and $y_2 = 11$. Plugging these values into the formula, we get $m = \\frac{11 - 5}{3 - 1} = \\frac{6}{2} = 3$. Therefore, the slope of the line of best fit is 3.",
-          "explanation": "The slope $m$ of a line passing through two points $(x_1, y_1)$ and $(x_2, y_2)$ is given by the formula $m = \\frac{y_2 - y_1}{x_2 - x_1}$. Given the points $(1, 5)$ and $(3, 11)$, we have $x_1 = 1$, $y_1 = 5$, $x_2 = 3$, and $y_2 = 11$. Plugging these values into the formula, we get $m = \\frac{11 - 5}{3 - 1} = \\frac{6}{2} = 3$. Therefore, the slope of the line of best fit is 3.",
-          "cross_lesson": "6.01 Linear Regression and OLS"
-        },
-        {
-          "q": "Consider a discrete random variable $X$ with the following probability mass function (PMF): $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. What is the value of $P(X \\leq 2)$?",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "choices": [
-            "$\\frac{3}{10}$",
-            "$\\frac{1}{10}$",
-            "$\\frac{6}{10}$",
-            "$\\frac{4}{10}$"
-          ],
-          "correct": 0,
-          "answer": "The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\leq 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\leq 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\leq 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$.",
-          "explanation": "The probability mass function is given by $P(X=x) = \\frac{x}{10}$ for $x \\in \\{1, 2, 3, 4\\}$. We need to find $P(X \\leq 2)$. This is the sum of probabilities for $X=1$ and $X=2$. $P(X \\leq 2) = P(X=1) + P(X=2)$. $P(X=1) = \\frac{1}{10}$ and $P(X=2) = \\frac{2}{10}$. Therefore, $P(X \\leq 2) = \\frac{1}{10} + \\frac{2}{10} = \\frac{3}{10}$.",
-          "cross_lesson": "7.01 Logistic Regression and Classification"
-        },
-        {
-          "q": "Consider a dataset where the number of defective items produced by a machine per hour, $Y$, follows a Poisson distribution with a rate parameter $\\lambda = 3$. The probability mass function (PMF) for a Poisson distribution is given by $P(Y=k) = \\frac{\\lambda^k e^{-\\lambda}}{k!}$ for $k = 0, 1, 2, \\dots$. What is the value of $\\lambda$ in this scenario?",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "choices": [
-            "$\\lambda = 0$",
-            "$\\lambda = 1$",
-            "$\\lambda = 3$",
-            "$\\lambda = e^{-3}$"
-          ],
-          "correct": 2,
-          "answer": "The problem statement explicitly defines that the number of defective items, $Y$, follows a Poisson distribution with a rate parameter $\\lambda = 3$. The rate parameter $\\lambda$ is a direct characteristic of the Poisson distribution that determines its mean and variance. Therefore, the value of $\\lambda$ is directly given as 3.",
-          "explanation": "The problem statement explicitly defines that the number of defective items, $Y$, follows a Poisson distribution with a rate parameter $\\lambda = 3$. The rate parameter $\\lambda$ is a direct characteristic of the Poisson distribution that determines its mean and variance. Therefore, the value of $\\lambda$ is directly given as 3.",
-          "cross_lesson": "8.01 PCA and Dimensionality Reduction"
-        },
-        {
-          "q": "Consider the following quadratic loss function for a regression problem: $L(y, \\hat{y}) = (y - \\hat{y})^2$. If the predicted value $\\hat{y} = 5$ and the true value $y = 3$, what is the value of the loss function?",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "choices": [
-            "$4$",
-            "$-2$",
-            "$9$",
-            "$2$"
-          ],
-          "correct": 0,
-          "answer": "The quadratic loss function is defined as $L(y, \\hat{y}) = (y - \\hat{y})^2$. Given the true value $y = 3$ and the predicted value $\\hat{y} = 5$, we substitute these values into the loss function: $L(3, 5) = (3 - 5)^2$ $L(3, 5) = (-2)^2$ $L(3, 5) = 4$ Therefore, the value of the loss function is 4.",
-          "explanation": "The quadratic loss function is defined as $L(y, \\hat{y}) = (y - \\hat{y})^2$. Given the true value $y = 3$ and the predicted value $\\hat{y} = 5$, we substitute these values into the loss function: $L(3, 5) = (3 - 5)^2$ $L(3, 5) = (-2)^2$ $L(3, 5) = 4$ Therefore, the value of the loss function is 4.",
-          "cross_lesson": "1.01 Vectors and Embeddings in AI"
-        },
-        {
-          "q": "Consider two events, A and B, with the following probabilities: $P(A) = 0.4$, $P(B) = 0.5$, and $P(A \\cap B) = 0.2$. What is the conditional probability of A given B, denoted as $P(A|B)$?",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "choices": [
-            "0.2",
-            "0.4",
-            "0.5",
-            "0.8"
-          ],
-          "correct": 1,
-          "answer": "The formula for conditional probability is $P(A|B) = \\frac{P(A \\cap B)}{P(B)}$. Given $P(A \\cap B) = 0.2$ and $P(B) = 0.5$, we can substitute these values into the formula: $P(A|B) = \\frac{0.2}{0.5} = 0.4$. Therefore, the conditional probability of A given B is 0.4.",
-          "explanation": "The formula for conditional probability is $P(A|B) = \\frac{P(A \\cap B)}{P(B)}$. Given $P(A \\cap B) = 0.2$ and $P(B) = 0.5$, we can substitute these values into the formula: $P(A|B) = \\frac{0.2}{0.5} = 0.4$. Therefore, the conditional probability of A given B is 0.4.",
-          "cross_lesson": "3.01 Gradient Descent and Optimization"
-        },
-        {
-          "q": "A centered feature matrix $\\mathbf{X}$ has shape $N \\times 14$. What is the size and symmetry property of the sample covariance matrix $\\mathbf{\\Sigma} = \\frac{1}{N-1}\\mathbf{X}^T\\mathbf{X}$?",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "choices": [
-            "$14 \\times 14$ symmetric matrix",
-            "$N \\times N$ symmetric matrix",
-            "$14 \\times 14$ skew-symmetric matrix",
-            "$N \\times 14$ rectangular matrix"
-          ],
-          "correct": 0,
-          "answer": "Since $\\mathbf{X}$ has $14$ columns, $\\mathbf{X}^T$ is $14 \\times N$ and $\\mathbf{X}^T\\mathbf{X}$ is $14 \\times 14$. Furthermore, $(\\mathbf{X}^T\\mathbf{X})^T = \\mathbf{X}^T(\\mathbf{X}^T)^T = \\mathbf{X}^T\\mathbf{X}$, proving it is always symmetric.",
-          "explanation": "Since $\\mathbf{X}$ has $14$ columns, $\\mathbf{X}^T$ is $14 \\times N$ and $\\mathbf{X}^T\\mathbf{X}$ is $14 \\times 14$. Furthermore, $(\\mathbf{X}^T\\mathbf{X})^T = \\mathbf{X}^T(\\mathbf{X}^T)^T = \\mathbf{X}^T\\mathbf{X}$, proving it is always symmetric.",
-          "cross_lesson": "4.01 Conditional Probability and Bayes Rule"
-        },
-        {
-          "q": "Consider a 2D data point $\\mathbf{v} = \\left[3 ; -4\\right]$. What is the squared Euclidean norm (or squared magnitude) of this vector?",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "choices": [
-            "7",
-            "25",
-            "9",
-            "16"
-          ],
-          "correct": 1,
-          "answer": "The squared Euclidean norm of a vector $\\mathbf{v} = \\left[v_1 ; v_2\\right]$ is given by $||\\mathbf{v}||^2 = v_1^2 + v_2^2$. For the given vector $\\mathbf{v} = \\left[3 ; -4\\right]$, the squared Euclidean norm is $(3)^2 + (-4)^2 = 9 + 16 = 25$.",
-          "explanation": "The squared Euclidean norm of a vector $\\mathbf{v} = \\left[v_1 ; v_2\\right]$ is given by $||\\mathbf{v}||^2 = v_1^2 + v_2^2$. For the given vector $\\mathbf{v} = \\left[3 ; -4\\right]$, the squared Euclidean norm is $(3)^2 + (-4)^2 = 9 + 16 = 25$.",
-          "cross_lesson": "5.01 Distributions and Maximum Likelihood"
-        },
-        {
-          "q": "Given $n = 4$ independent observations from a normal distribution with sum $\\sum_{i=1}^{4} x_i = 12$, what is the Maximum Likelihood Estimate (MLE) $\\hat{\\mu}_{\\mathrm{MLE}}$?",
-          "difficulty": "Challenging",
-          "question_type": "MCQ",
-          "target": "Neural Layer Matrices & Activations Practice Exercises",
-          "choices": [
-            "$\\hat{\\mu}_{\\mathrm{MLE}} = 3$",
-            "$\\hat{\\mu}_{\\mathrm{MLE}} = 6$",
-            "$\\hat{\\mu}_{\\mathrm{MLE}} = 12$",
-            "$\\hat{\\mu}_{\\mathrm{MLE}} = 1.5$"
-          ],
-          "correct": 0,
-          "answer": "The log-likelihood $\\ln L(\\mu) = -\\frac{n}{2}\\ln(2\\pi\\sigma^2) - \\frac{1}{2\\sigma^2}\\sum (x_i - \\mu)^2$. Setting $\\frac{\\partial \\ln L}{\\partial \\mu} = 0$ yields the sample mean $\\hat{\\mu} = \\frac{1}{n}\\sum x_i = \\frac{12}{4} = 3$.",
-          "explanation": "The log-likelihood $\\ln L(\\mu) = -\\frac{n}{2}\\ln(2\\pi\\sigma^2) - \\frac{1}{2\\sigma^2}\\sum (x_i - \\mu)^2$. Setting $\\frac{\\partial \\ln L}{\\partial \\mu} = 0$ yields the sample mean $\\hat{\\mu} = \\frac{1}{n}\\sum x_i = \\frac{12}{4} = 3$.",
-          "cross_lesson": "6.01 Linear Regression and OLS"
+          "answer": "The derivative of sigmoid satisfies \\( \\sigma'(z) = \\sigma(z)(1 - \\sigma(z)) \\). Substituting \\( \\sigma(z_0) = 0.40 \\): \\( \\sigma'(z_0) = (0.40)(1 - 0.40) = (0.40)(0.60) = 0.2400 \\)."
         }
       ]
     }

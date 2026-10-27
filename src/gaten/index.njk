@@ -1,0 +1,38 @@
+---
+layout: base.njk
+trackId: gaten
+title: "English GAT & SAAT (Qiyas Quantitative & Tahsili) · ClipSAT"
+description: "English-Medium Qiyas General Aptitude Test (GAT Quantitative) & Standardized Achievement Admission Test (SAAT Mathematics) for International School STEM Students"
+isRtl: false
+---
+{% set gaten = migratedContent.gaten %}
+{% set pageHeader = gaten.meta.meta.pageHeader %}
+<main id="view-gaten" class="view active">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = gaten.chapters %}
+    {% set practiceSetId = 'ge-practice' %}
+    {% set testGeneratorId = 'ge-testgen' %}
+    {% set downloadsId = 'ge-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in gaten.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'ge-practice' %}
+      {% set practiceSet = gaten.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'ge-testgen' %}
+      {% set testGenerator = gaten.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'ge-downloads' %}
+      {% set courseMeta = gaten.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

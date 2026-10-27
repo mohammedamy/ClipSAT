@@ -637,15 +637,16 @@ const baseNjk = `<!DOCTYPE html>
           <option value="appc">AP Precalculus</option>
           <option value="apstats">AP Statistics</option>
         </optgroup>
-        <optgroup label="Cambridge &amp; IB">
+        <optgroup label="Cambridge, Edexcel &amp; IB">
           <option value="igcse">IGCSE 0580</option>
+          <option value="edexcel">Pearson Edexcel IGCSE (4MA1)</option>
           <option value="addmath">Additional Maths (0606/4PM1)</option>
           <option value="aslevel">Cambridge AS Level</option>
           <option value="a2level">Cambridge A2 Level</option>
           <option value="ibsl">IB Math SL (AA/AI)</option>
           <option value="ibhl">IB Math HL (AA/AI)</option>
         </optgroup>
-        <optgroup label="Standardized Admissions">
+        <optgroup label="Standardized &amp; Contest Prep">
           <option value="sat">Digital SAT</option>
           <option value="act">ACT Math</option>
           <option value="act2">ACT 2 Math Level 1</option>
@@ -653,10 +654,12 @@ const baseNjk = `<!DOCTYPE html>
           <option value="est">EST</option>
           <option value="est2">EST 2 Math Level 1</option>
           <option value="est2l2">EST 2 Math Level 2</option>
+          <option value="olympiad">Contest Math &amp; Olympiad</option>
         </optgroup>
         <optgroup label="National &amp; Bilingual">
           <option value="qudrat">GAT Qudrat</option>
           <option value="tahsili">SAAT Tahsili</option>
+          <option value="gaten">English GAT &amp; SAAT (Qiyas)</option>
         </optgroup>
       </select>
       <div class="spacer"></div>
@@ -1363,7 +1366,7 @@ const baseNjk = `<!DOCTYPE html>
       sat:'sat',act:'act',aslevel:'aslevel',a2level:'a2level',
       est:'est',est2:'est2',est2l2:'est2l2',act2:'act2',act2l2:'act2l2',precalc:'precalc',
       appc:'appc',apstats:'apstats',ibsl:'ibsl',ibhl:'ibhl',linalg:'linalg',mvc:'mvc',odes:'odes',
-      addmath:'addmath',mathai:'mathai',home:''
+      addmath:'addmath',mathai:'mathai',edexcel:'edexcel',gaten:'gaten',olympiad:'olympiad',home:''
     };
     var CURRENT = window.CLIPSAT_TRACK || 'home';
 

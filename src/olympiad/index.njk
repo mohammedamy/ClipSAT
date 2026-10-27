@@ -1,0 +1,38 @@
+---
+layout: base.njk
+trackId: olympiad
+title: "Contest Math & Olympiad (AMC 10/12, Kangaroo & Mawhiba) · ClipSAT"
+description: "Competition Mathematics & Olympiad Problem Solving — Modular Arithmetic, Diophantine Equations, Combinatorics, Euclidean Circle Geometry & Invariants for AMC 10/12, AIME, Kangaroo Math & Mawhiba"
+isRtl: false
+---
+{% set olympiad = migratedContent.olympiad %}
+{% set pageHeader = olympiad.meta.meta.pageHeader %}
+<main id="view-olympiad" class="view active">
+  {% include "partials/subject-head.njk" %}
+
+  <div class="wrap calc-body">
+    {% set chapters = olympiad.chapters %}
+    {% set practiceSetId = 'ol-practice' %}
+    {% set testGeneratorId = 'ol-testgen' %}
+    {% set downloadsId = 'ol-downloads' %}
+    {% include "partials/rail.njk" %}
+
+    <div class="content">
+      {% for chapter in olympiad.chapters %}
+        {% include "partials/chapter.njk" %}
+      {% endfor %}
+
+      {% set sectionId = 'ol-practice' %}
+      {% set practiceSet = olympiad.practiceSet %}
+      {% include "partials/practice-set.njk" %}
+
+      {% set sectionId = 'ol-testgen' %}
+      {% set testGenerator = olympiad.meta.meta.testGenerator %}
+      {% include "partials/test-generator.njk" %}
+
+      {% set sectionId = 'ol-downloads' %}
+      {% set courseMeta = olympiad.meta.meta %}
+      {% include "partials/downloads-block.njk" %}
+    </div>
+  </div>
+</main>

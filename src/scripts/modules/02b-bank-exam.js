@@ -1304,7 +1304,55 @@
         {title:'Part B: Calculus, Probability, Regression & PCA',time:'75 min',
          note:'14 questions · Gradient Descent, Bayes Rule, MLE, Regression & Logistic Loss',
          domains:['Gradient Descent & Optimization','Conditional Probability & Bayes\' Rule','Distributions & Maximum Likelihood','Linear Regression & OLS','Logistic Regression & Classification','PCA & Dimensionality Reduction'],
-         parts:[{label:'',q:14,time:'75 min',calc:true,type:'mcq'}]}]}
+         parts:[{label:'',q:14,time:'75 min',calc:true,type:'mcq'}]}]},
+
+    edexcel:{
+      title:'Pearson Edexcel International GCSE Mathematics A (4MA1 Higher Tier)',totalTime:'2 hr',
+      bankId:'edexcel',
+      logo:'Edexcel IGCSE 4MA1',org:'Pearson Edexcel International Examinations',
+      instructions:['Answer ALL questions.','Write your answers in the spaces provided and show all stages in your working.',
+        'Calculators may be used.',
+        'Give non-exact numerical answers correct to 3 significant figures unless stated otherwise.'],
+      sections:[
+        {title:'Paper 1H — Higher Tier (4MA1/1H)',time:'2 hr',
+         note:'100 marks · 20 structured questions · Scientific calculator permitted',
+         domains:['Number, Surds, Bounds & Set Theory','Algebraic Fractions, Quadratics & Simultaneous Systems','Functions, Transformations & Arithmetic Series','Coordinate Geometry & Linear Programming','Circle Theorems, Similar Solids & Mensuration','Sine/Cosine Rules, 3D Trigonometry & Vectors','Differentiation, Stationary Points & Kinematics','Histograms, Cumulative Frequency & Conditional Probability'],
+         parts:[{label:'',q:20,time:'120 min',calc:true,type:'mcq',note:'Show all working.'}]}]},
+
+    gaten:{
+      title:'Qiyas English GAT (Quantitative) & SAAT (Mathematics)',totalTime:'1 hr 40 min',
+      bankId:'gaten',
+      defaultLang:'en',
+      logo:'Qiyas GAT & SAAT',org:'Education & Training Evaluation Commission (ETEC / Qiyas)',
+      instructions:['Answer ALL multiple-choice questions from choices A, B, C, D.',
+        'Calculators are strictly PROHIBITED.',
+        'Part I covers GAT Quantitative Reasoning & Comparisons; Part II covers SAAT Secondary Mathematics.'],
+      sections:[
+        {title:'Part I — GAT Quantitative Reasoning (English Medium)',time:'50 min',
+         note:'25 questions · Arithmetic Shortcuts, Ratios, Motion, Quantitative Comparisons & Data · No calculator',
+         domains:['GAT Arithmetic Shortcuts, Surds & Number Sense','GAT Ratios, Percentages, Work & Motion Problems','GAT Quantitative Comparisons & Fast Geometry','GAT Data Interpretation, Averages & Counting'],
+         parts:[{label:'GAT Quantitative',q:25,time:'50 min',calc:false,type:'mcq',note:'No calculator allowed.'}]},
+        {title:'Part II — SAAT Mathematics Achievement (English Medium)',time:'50 min',
+         note:'25 questions · Logic, Matrices, Complex Numbers, Functions, Logs, Conics, Vectors & Calculus · No calculator',
+         domains:['SAAT Logic, Polynomials, Matrices & Complex Numbers','SAAT Functions, Sequences & Logarithms','SAAT Trigonometry, Conics & Vectors','SAAT Differential & Integral Calculus'],
+         parts:[{label:'SAAT Mathematics',q:25,time:'50 min',calc:false,type:'mcq',note:'No calculator allowed.'}]}]},
+
+    olympiad:{
+      title:'Contest Math & Olympiad (AMC 10/12 · Kangaroo · Mawhiba)',totalTime:'75 min',
+      bankId:'olympiad',
+      logo:'Olympiad Math',org:'MAA AMC 10/12 · Kangaroo Math Arabia · Mawhiba',
+      instructions:['25 multiple-choice questions — 75 minutes.',
+        'Calculators are NOT permitted.',
+        'Covers Olympiad Algebra, Number Theory, Diophantine Equations, Combinatorics, Circle & Triangle Geometry, and Invariants.'],
+      sections:[
+        {title:'Section A — 3-Point & 4-Point Contest Problems',time:'45 min',
+         note:'15 questions · Algebraic Identities, Modular Arithmetic, Stars & Bars, Circle Power',
+         domains:['Olympiad Algebra, Vieta & Inequalities','Modular Arithmetic, Primes & Divisibility','Bijective Counting, Inclusion-Exclusion & Pigeonhole','Circle Geometry, Power of a Point & Radical Axes'],
+         parts:[{label:'Problems 1–15',q:15,time:'45 min',calc:false,type:'mcq'}]},
+        {title:'Section B — 5-Point Olympiad & AIME-Qualifier Problems',time:'30 min',
+         note:'10 questions · Diophantine SFFT, Recurrences, Ceva/Stewart & Invariants',
+         domains:['Diophantine Equations, SFFT & Floor Functions','Recurrence Relations & Geometric Probability','Triangle Centers, Ceva, Menelaus & Stewart','Invariants, Monovariants, Coloring & Games'],
+         parts:[{label:'Problems 16–25',q:10,time:'30 min',calc:false,type:'mcq'}]}]}
   };
 
 

@@ -326,6 +326,54 @@ function processTrack(trackDef) {
   console.log(`Generated ${manifest.length} worksheet pairs and manifest.json for ${trackDef.id}!`);
 }
 
+const EDEXCEL_TRACK = {
+  id: 'edexcel',
+  name: 'Pearson Edexcel IGCSE Mathematics A (4MA1 Higher Tier)',
+  units: [
+    { unit: 1, num: '1.01', slug: 'number-surds-bounds-and-sets', title: 'Number, Surds, Bounds & Set Notation', domain: 'Number, Surds, Bounds & Set Theory' },
+    { unit: 2, num: '2.01', slug: 'algebraic-fractions-and-quadratics', title: 'Algebraic Fractions, Quadratics & Simultaneous Systems', domain: 'Algebraic Fractions, Quadratics & Simultaneous Systems' },
+    { unit: 3, num: '3.01', slug: 'functions-transformations-and-series', title: 'Functions, Transformations & Arithmetic Series', domain: 'Functions, Transformations & Arithmetic Series' },
+    { unit: 4, num: '4.01', slug: 'coordinate-geometry-and-linear-programming', title: 'Coordinate Geometry & Linear Programming', domain: 'Coordinate Geometry & Linear Programming' },
+    { unit: 5, num: '5.01', slug: 'circle-theorems-and-mensuration', title: 'Circle Theorems, Intersecting Chords & Mensuration', domain: 'Circle Theorems, Similar Solids & Mensuration' },
+    { unit: 6, num: '6.01', slug: 'sine-cosine-rules-3d-trig-and-vectors', title: 'Sine & Cosine Rules, 3D Trigonometry & Vector Proofs', domain: 'Sine/Cosine Rules, 3D Trigonometry & Vectors' },
+    { unit: 7, num: '7.01', slug: 'differentiation-and-kinematics', title: 'Differentiation, Stationary Points & Kinematics', domain: 'Differentiation, Stationary Points & Kinematics' },
+    { unit: 8, num: '8.01', slug: 'histograms-and-conditional-probability', title: 'Histograms, Cumulative Frequency & Conditional Probability', domain: 'Histograms, Cumulative Frequency & Conditional Probability' }
+  ]
+};
+
+const GATEN_TRACK = {
+  id: 'gaten',
+  name: 'Qiyas English GAT (Quantitative) & SAAT (Mathematics)',
+  units: [
+    { unit: 1, num: '1.01', slug: 'gat-mental-arithmetic-and-surds', title: 'GAT Mental Arithmetic, Divisibility & Surds', domain: 'GAT Arithmetic Shortcuts, Surds & Number Sense' },
+    { unit: 2, num: '2.01', slug: 'gat-ratios-percentages-work-and-motion', title: 'GAT Ratios, Percentages, Work & Motion Problems', domain: 'GAT Ratios, Percentages, Work & Motion Problems' },
+    { unit: 3, num: '3.01', slug: 'gat-quantitative-comparisons-and-geometry', title: 'GAT Quantitative Comparisons & Fast Geometry', domain: 'GAT Quantitative Comparisons & Fast Geometry' },
+    { unit: 4, num: '4.01', slug: 'gat-data-interpretation-and-counting', title: 'GAT Data Interpretation, Averages & Counting', domain: 'GAT Data Interpretation, Averages & Counting' },
+    { unit: 5, num: '5.01', slug: 'saat-logic-matrices-and-complex-numbers', title: 'SAAT Mathematical Logic, Matrices & Complex Numbers', domain: 'SAAT Logic, Polynomials, Matrices & Complex Numbers' },
+    { unit: 6, num: '6.01', slug: 'saat-rational-functions-series-and-logs', title: 'SAAT Rational Functions, Sequences, Series & Logarithms', domain: 'SAAT Functions, Sequences & Logarithms' },
+    { unit: 7, num: '7.01', slug: 'saat-trigonometry-conics-and-3d-vectors', title: 'SAAT Trigonometry, Conic Sections & 3D Vectors', domain: 'SAAT Trigonometry, Conics & Vectors' },
+    { unit: 8, num: '8.01', slug: 'saat-limits-derivatives-and-integrals', title: 'SAAT Limits, Derivatives, Definite Integrals & Area', domain: 'SAAT Differential & Integral Calculus' }
+  ]
+};
+
+const OLYMPIAD_TRACK = {
+  id: 'olympiad',
+  name: 'Contest Math & Olympiad (AMC 10/12, Kangaroo & Mawhiba)',
+  units: [
+    { unit: 1, num: '1.01', slug: 'olympiad-algebra-vieta-and-inequalities', title: 'Olympiad Algebraic Manipulation, Vieta & Inequalities', domain: 'Olympiad Algebra, Vieta & Inequalities' },
+    { unit: 2, num: '2.01', slug: 'modular-arithmetic-primes-and-totient', title: 'Modular Arithmetic, Divisibility, Primes & Euler Totient', domain: 'Modular Arithmetic, Primes & Divisibility' },
+    { unit: 3, num: '3.01', slug: 'diophantine-equations-and-sfft', title: 'Diophantine Equations, SFFT, Bezout & Floor Functions', domain: 'Diophantine Equations, SFFT & Floor Functions' },
+    { unit: 4, num: '4.01', slug: 'bijective-counting-and-pigeonhole', title: 'Bijective Counting, Stars & Bars, PIE & Pigeonhole', domain: 'Bijective Counting, Inclusion-Exclusion & Pigeonhole' },
+    { unit: 5, num: '5.01', slug: 'recurrence-relations-and-geometric-probability', title: 'Recurrence Relations, Markov Chains & Geometric Probability', domain: 'Recurrence Relations & Geometric Probability' },
+    { unit: 6, num: '6.01', slug: 'circle-geometry-and-power-of-a-point', title: 'Olympiad Circle Geometry, Power of a Point & Radical Axes', domain: 'Circle Geometry, Power of a Point & Radical Axes' },
+    { unit: 7, num: '7.01', slug: 'triangle-centers-ceva-menelaus-and-stewart', title: 'Triangle Centers, Ceva, Menelaus & Stewart Theorem', domain: 'Triangle Centers, Ceva, Menelaus & Stewart' },
+    { unit: 8, num: '8.01', slug: 'invariants-monovariants-and-combinatorial-games', title: 'Invariants, Monovariants, Coloring & Combinatorial Games', domain: 'Invariants, Monovariants, Coloring & Games' }
+  ]
+};
+
 processTrack(ADDMATH_TRACK);
 processTrack(MATHAI_TRACK);
+processTrack(EDEXCEL_TRACK);
+processTrack(GATEN_TRACK);
+processTrack(OLYMPIAD_TRACK);
 console.log('All missing worksheets successfully built and validated!');

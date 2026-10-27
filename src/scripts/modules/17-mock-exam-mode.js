@@ -1087,9 +1087,17 @@
       var actScore = Math.max(1, Math.min(36, Math.round(p * 36)));
       return { label: 'Projected ACT Math Score', value: actScore + ' / 36', badge: actScore >= 30 ? 'Elite' : 'Standard' };
     }
-    if(trackId === 'igcse' || trackId === 'aslevel' || trackId === 'a2level' || trackId === 'addmath'){
+    if(trackId === 'igcse' || trackId === 'edexcel' || trackId === 'aslevel' || trackId === 'a2level' || trackId === 'addmath'){
       var g = p >= 0.85 ? 'Grade 9 (A*)' : p >= 0.72 ? 'Grade 8 (A)' : p >= 0.60 ? 'Grade 7 (A)' : p >= 0.50 ? 'Grade 6 (B)' : 'Grade 5 (C)';
-      return { label: (trackId === 'addmath' ? 'Projected Cambridge Grade (0606 / 4PM1)' : 'Projected Cambridge Grade'), value: g, badge: p >= 0.72 ? 'Distinction' : 'Passing' };
+      return { label: (trackId === 'addmath' ? 'Projected Cambridge Grade (0606 / 4PM1)' : trackId === 'edexcel' ? 'Projected Edexcel 4MA1 Grade' : 'Projected Cambridge Grade'), value: g, badge: p >= 0.72 ? 'Distinction' : 'Passing' };
+    }
+    if(trackId === 'gaten'){
+      var gScore = Math.round(55 + p * 44);
+      return { label: 'Projected Qiyas GAT/SAAT Score', value: gScore + ' / 100', badge: gScore >= 85 ? 'Top 5% STEM' : 'Standard' };
+    }
+    if(trackId === 'olympiad'){
+      var oScore = Math.round(p * 150);
+      return { label: 'Projected AMC / Olympiad Score', value: oScore + ' / 150', badge: oScore >= 100 ? 'AIME Qualifier' : 'Contest Ready' };
     }
     if(trackId === 'mathai'){
       var aiPct = Math.round(p * 100);

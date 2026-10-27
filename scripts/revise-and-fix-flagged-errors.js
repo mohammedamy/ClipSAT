@@ -388,25 +388,25 @@ async function main() {
   // Keep resolvedFlags history bounded to 200 entries and clear openFlags
   flagsData.resolvedFlags = flagsData.resolvedFlags.slice(0, 200);
   flagsData.openFlags = [];
-  flagsData.lastRevisedAt = nowIso;
-  if (newlyResolvedIds.length > 0 || stats.filesUpdated > 0) {
+  const hadChanges = newlyResolvedIds.length > 0 || stats.filesUpdated > 0 || !fs.existsSync(FLAGS_FILE) || !fs.existsSync(RESOLVED_PUBLIC_FILE);
+  if (hadChanges) {
+    flagsData.lastRevisedAt = nowIso;
     flagsData.buildVersion = buildVersion;
+    fs.writeFileSync(FLAGS_FILE, JSON.stringify(flagsData, null, 2) + '\n', 'utf8');
+
+    // Write public/data/resolved-flags.json for client-side automatic flag removal
+    const allResolvedFlagIds = [...new Set(flagsData.resolvedFlags.map((r) => r.flagId).filter(Boolean))];
+    const allResolvedItemIds = [...new Set(flagsData.resolvedFlags.map((r) => r.itemId).filter(Boolean))];
+    const resolvedManifest = {
+      version: 1,
+      buildVersion: flagsData.buildVersion,
+      lastRevisedAt: flagsData.lastRevisedAt,
+      resolvedFlagIds: allResolvedFlagIds,
+      resolvedItemIds: allResolvedItemIds
+    };
+    fs.mkdirSync(path.dirname(RESOLVED_PUBLIC_FILE), { recursive: true });
+    fs.writeFileSync(RESOLVED_PUBLIC_FILE, JSON.stringify(resolvedManifest, null, 2) + '\n', 'utf8');
   }
-
-  fs.writeFileSync(FLAGS_FILE, JSON.stringify(flagsData, null, 2) + '\n', 'utf8');
-
-  // Write public/data/resolved-flags.json for client-side automatic flag removal
-  const allResolvedFlagIds = [...new Set(flagsData.resolvedFlags.map((r) => r.flagId).filter(Boolean))];
-  const allResolvedItemIds = [...new Set(flagsData.resolvedFlags.map((r) => r.itemId).filter(Boolean))];
-  const resolvedManifest = {
-    version: 1,
-    buildVersion: flagsData.buildVersion,
-    lastRevisedAt: flagsData.lastRevisedAt,
-    resolvedFlagIds: allResolvedFlagIds,
-    resolvedItemIds: allResolvedItemIds
-  };
-  fs.mkdirSync(path.dirname(RESOLVED_PUBLIC_FILE), { recursive: true });
-  fs.writeFileSync(RESOLVED_PUBLIC_FILE, JSON.stringify(resolvedManifest, null, 2) + '\n', 'utf8');
 
   if (newlyResolvedIds.length > 0) {
     await markRemoteFlagsResolved(newlyResolvedIds, flagsData.buildVersion);

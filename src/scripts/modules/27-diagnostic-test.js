@@ -374,16 +374,20 @@
       var high = Math.min(800, s + 30);
       return low + '–' + high + ' (SAT Math)';
     }
-    if (trackId === 'qudrat' || trackId === 'tahsili') {
+    if (trackId === 'qudrat' || trackId === 'tahsili' || trackId === 'gaten') {
       var qScore = Math.round(55 + (pct / 100) * 44);
       return qScore + '%+ (Percentile)';
     }
-    if (trackId === 'igcse' || trackId === 'aslevel' || trackId === 'a2level' || trackId === 'addmath') {
-      if (pct >= 85) return 'A* (Distinction)';
-      if (pct >= 72) return 'A (Merit)';
-      if (pct >= 58) return 'B (Proficient)';
-      if (pct >= 45) return 'C (Passing)';
-      return 'D / Developing';
+    if (trackId === 'igcse' || trackId === 'edexcel' || trackId === 'aslevel' || trackId === 'a2level' || trackId === 'addmath') {
+      if (pct >= 85) return '9 / A* (Distinction)';
+      if (pct >= 72) return '8 / A (Merit)';
+      if (pct >= 58) return '6–7 / B (Proficient)';
+      if (pct >= 45) return '4–5 / C (Passing)';
+      return 'Developing';
+    }
+    if (trackId === 'olympiad') {
+      var amc = Math.round((pct / 100) * 150);
+      return amc + '/150 (' + (amc >= 100 ? 'AIME Qualifier' : 'Contest Level') + ')';
     }
     if (trackId === 'mathai') {
       if (pct >= 80) return 'Mastery (Level 4)';
