@@ -438,6 +438,7 @@ function renderAIQuestion(q,idx,totalLetters,viewId){
   if(q.marks||q.mark) html+='<span class="fep-mark-badge">['+(q.marks||q.mark)+' '+((q.marks||q.mark)===1?'mark':'marks')+']</span>';
   if(q.isSPR||(viewId==='sat'&&q.type==='frq')) html+='<span class="fep-spr-badge">Student-Produced Response</span>';
   if(window.ClipSATVerifyAI&&(('_verified' in q)||q._fromBank)) html+=window.ClipSATVerifyAI.badgeHTML(q);
+  html+='<button type="button" class="cs-flag-btn no-print" style="margin-left:auto" onclick="window.CSErrorFlagManager&&window.CSErrorFlagManager.openReportPopover(this,event)" title="Report an error in this question" aria-label="Report Error"><span>🚩</span><span class="cs-flag-lbl">'+(isAr?'إبلاغ عن خطأ':'Report Error')+'</span></button>';
   html+='</div>';
 
   html+='<div class="aiq-text">'+_maths(q.text)+'</div>';

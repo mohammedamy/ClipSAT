@@ -176,6 +176,10 @@
         + '</div>';
     }).join('');
 
+    var flagBtnHtml = (window.CSErrorFlagManager && typeof window.CSErrorFlagManager.renderFlagButton === 'function')
+      ? window.CSErrorFlagManager.renderFlagButton(uid || (q && q.id) || '')
+      : '<button type="button" class="cs-flag-btn no-print" onclick="window.CSErrorFlagManager&&window.CSErrorFlagManager.openReportPopover(this,event)" title="' + (isAr ? 'الإبلاغ عن خطأ في هذا السؤال' : 'Report an error in this question') + '" aria-label="' + (isAr ? 'إبلاغ عن خطأ' : 'Report Error') + '"><span>🚩</span><span class="cs-flag-lbl">' + (isAr ? 'إبلاغ عن خطأ' : 'Report Error') + '</span></button>';
+
     return '<div class="cs-hint-wrap no-print"' + idAttr + ' data-hint-step="0" style="margin:10px 0 8px">'
       + '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">'
       + '<button type="button" class="cs-hint-btn" onclick="window.CSHintEngine.revealNext(this)" '
@@ -183,6 +187,7 @@
       + '<span>💡</span><span class="cs-hint-btn-lbl">' + (isAr ? 'تلميح تدريجي (١/٣)' : 'Get Hint (1/3)') + '</span>'
       + '</button>'
       + '<button type="button" class="cs-voice-btn no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakCurrentHint(this)" title="' + (isAr ? 'استمع إلى التلميح صوتياً' : 'Listen to hint aloud') + '" aria-label="' + (isAr ? 'استمع إلى التلميح صوتياً' : 'Listen to hint aloud') + '"><span>🔊</span><span>' + (isAr ? 'استمع' : 'Listen') + '</span></button>'
+      + flagBtnHtml
       + '<span class="cs-hint-dots" style="display:inline-flex;gap:4px;align-items:center" aria-hidden="true">'
       + '<span class="cs-hdot" style="width:7px;height:7px;border-radius:50%;background:#cbd5e1;display:inline-block"></span>'
       + '<span class="cs-hdot" style="width:7px;height:7px;border-radius:50%;background:#cbd5e1;display:inline-block"></span>'

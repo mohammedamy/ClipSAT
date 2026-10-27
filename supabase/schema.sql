@@ -486,3 +486,96 @@ begin
   );
 end;
 $$ language plpgsql security definer set search_path = public;
+
+-- ── question_error_flags: user/teacher error reports on examples, quizzes & exams ──
+-- Stores structured error flags reported via the 🚩 Report Error button across
+-- lesson examples, practice problems, interactive activities, chapter quizzes,
+-- mock exams, diagnostic tests, AI exams, and full bank exams.
+-- Automatically pulled, revised/fixed, and marked resolved by
+-- scripts/revise-and-fix-flagged-errors.js on every build/push/deploy.
+create table if not exists public.question_error_flags (
+  flag_id           text primary key,
+  track             text not null,
+  topic_id          text,
+  source_type       text not null,
+  item_id           text not null,
+  category          text not null default 'other',
+  note              text,
+  question_snapshot jsonb not null default '{}'::jsonb,
+  content_signature text,
+  status            text not null default 'open',
+  report_count      integer not null default 1,
+  created_at        timestamptz not null default now(),
+  updated_at        timestamptz not null default now(),
+  resolved_at       timestamptz,
+  resolved_in_build text
+);
+
+alter table public.question_error_flags enable row level security;
+
+drop policy if exists "anyone reads question error flags" on public.question_error_flags;
+create policy "anyone reads question error flags" on public.question_error_flags
+  for select using (true);
+
+create or replace function public.report_question_error(
+  p_flag_id           text,
+  p_track             text,
+  p_topic_id          text default null,
+  p_source_type       text default 'question',
+  p_item_id           text default '',
+  p_category          text default 'other',
+  p_note              text default null,
+  p_question_snapshot jsonb default '{}'::jsonb,
+  p_content_signature text default null
+)
+returns void as $$
+begin
+  if p_flag_id is null or length(trim(p_flag_id)) = 0 then
+    return;
+  end if;
+  insert into public.question_error_flags (
+    flag_id, track, topic_id, source_type, item_id, category, note,
+    question_snapshot, content_signature, status, report_count, created_at, updated_at
+  )
+  values (
+    left(p_flag_id, 200),
+    left(coalesce(p_track, 'home'), 40),
+    left(p_topic_id, 80),
+    left(coalesce(p_source_type, 'question'), 60),
+    left(coalesce(p_item_id, ''), 120),
+    left(coalesce(p_category, 'other'), 40),
+    left(p_note, 1000),
+    coalesce(p_question_snapshot, '{}'::jsonb),
+    left(p_content_signature, 64),
+    'open',
+    1,
+    now(),
+    now()
+  )
+  on conflict (flag_id) do update set
+    category          = excluded.category,
+    note              = coalesce(nullif(excluded.note, ''), public.question_error_flags.note),
+    question_snapshot = excluded.question_snapshot,
+    content_signature = excluded.content_signature,
+    status            = 'open',
+    report_count      = public.question_error_flags.report_count + 1,
+    updated_at        = now(),
+    resolved_at       = null;
+end;
+$$ language plpgsql security definer set search_path = public;
+
+create or replace function public.resolve_question_error(
+  p_flag_id       text,
+  p_build_version text default null
+)
+returns void as $$
+begin
+  update public.question_error_flags
+     set status = 'resolved',
+         resolved_at = now(),
+         resolved_in_build = left(p_build_version, 64),
+         updated_at = now()
+   where flag_id = p_flag_id or item_id = p_flag_id;
+end;
+$$ language plpgsql security definer set search_path = public;
+

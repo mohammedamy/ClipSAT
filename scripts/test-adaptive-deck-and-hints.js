@@ -215,6 +215,62 @@ it('window.CSVoiceTutor converts LaTeX math to natural speech in English & Arabi
   assert.ok(ixEngine.includes('CSVoiceTutor.explainIxBox'), '19-interactive-activities-engine-v1.js must wire CSVoiceTutor.explainIxBox');
 });
 
+// 6. Test Universal Error Flag, Auto-Revision & Deploy Sync Manager (window.CSErrorFlagManager)
+it('window.CSErrorFlagManager wires 🚩 Report Error across examples/quizzes/exams, submits flags, and auto-clears after fix', () => {
+  const store = {};
+  const localStorage = {
+    getItem: (k) => (k in store ? store[k] : null),
+    setItem: (k, v) => { store[k] = String(v); },
+    removeItem: (k) => { delete store[k]; }
+  };
+  const window = { CLIPSAT_TRACK: 'sat', localStorage };
+  const document = {
+    readyState: 'loading',
+    addEventListener: () => {},
+    getElementById: () => null,
+    head: { appendChild: () => {} },
+    body: { querySelectorAll: () => [], appendChild: () => {} },
+    createElement: () => ({ style: {}, setAttribute: () => {}, appendChild: () => {} })
+  };
+  const flagCode = fs.readFileSync(path.join(modulesDir, '03e-error-flag-manager.js'), 'utf8');
+  const fn = new Function('window', 'document', 'localStorage', flagCode);
+  fn(window, document, localStorage);
+
+  assert.ok(window.CSErrorFlagManager, 'window.CSErrorFlagManager must be exposed');
+  const btnHtml = window.CSErrorFlagManager.renderFlagButton('sat-test-q1');
+  assert.ok(btnHtml.includes('cs-flag-btn') && btnHtml.includes('Report Error'), 'renderFlagButton must produce a .cs-flag-btn');
+
+  // Submit a flag and verify it is stored in openFlags
+  const rec = window.CSErrorFlagManager.submitFlag({
+    card: null,
+    flagId: 'sat:bank-exam:sat-test-q1',
+    track: 'sat',
+    topicId: 'sat-linear',
+    sourceType: 'bank-exam',
+    itemId: 'sat-test-q1',
+    prompt: 'Solve 2x + 4 = 10.',
+    choices: ['2', '3', '4', '5'],
+    solution: '2x = 6 so x = 3.',
+    hints: ['Subtract 4', 'Divide by 2', 'x = 3'],
+    contentSignature: 'abcd1234'
+  }, 'math_font', 'Test flag note');
+
+  assert.ok(rec && rec.flagId === 'sat:bank-exam:sat-test-q1', 'submitFlag must return flag record');
+  assert.strictEqual(window.CSErrorFlagManager.getOpenFlags().length, 1, 'Open flags count must be 1 after flagging');
+
+  // Remove flag after fix and verify openFlags is 0
+  window.CSErrorFlagManager.removeFlag('sat:bank-exam:sat-test-q1');
+  assert.strictEqual(window.CSErrorFlagManager.getOpenFlags().length, 0, 'Open flags count must be 0 after removal');
+
+  // Verify 🚩 Report Error wiring across hint widget, AI exam, interactive activities, and Nunjucks partials
+  const hintCode = fs.readFileSync(path.join(modulesDir, '03c-progressive-hints.js'), 'utf8');
+  const aiExamCode = fs.readFileSync(path.join(modulesDir, '05a-ai-test.js'), 'utf8');
+  const ixEngine = fs.readFileSync(path.join(modulesDir, '19-interactive-activities-engine-v1.js'), 'utf8');
+  assert.ok(hintCode.includes('CSErrorFlagManager.openReportPopover'), '03c-progressive-hints.js must wire 🚩 Report Error');
+  assert.ok(aiExamCode.includes('CSErrorFlagManager.openReportPopover'), '05a-ai-test.js must wire 🚩 Report Error');
+  assert.ok(ixEngine.includes('CSErrorFlagManager.openReportPopover'), '19-interactive-activities-engine-v1.js must wire 🚩 Report Error');
+});
+
 console.log(`\n── Summary: ${passed} passed, ${failed} failed ──`);
 if (failed > 0) process.exit(1);
 console.log('✅ All Modular Engine, Progressive Hints & Adaptive Mistake Deck unit tests passed!\n');

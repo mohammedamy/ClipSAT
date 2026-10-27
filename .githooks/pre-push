@@ -1,0 +1,7 @@
+#!/bin/sh
+# ClipSAT Pre-Push Hook: Automatically revise & fix any flagged errors and clear resolved flags
+NODE_BIN=$(command -v node || echo "/usr/local/bin/node")
+if [ -x "$NODE_BIN" ] && [ -f "scripts/revise-and-fix-flagged-errors.js" ]; then
+  "$NODE_BIN" scripts/revise-and-fix-flagged-errors.js
+fi
+exit 0

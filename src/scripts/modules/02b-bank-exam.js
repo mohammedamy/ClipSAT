@@ -1712,7 +1712,7 @@
           var _fHtml=renderQFig(q);
           var _ansDisp0=isMCQ?globalLetters[q.answer]:(q.ans!=null?String(q.ans):(q.sprAnswer!=null?String(q.sprAnswer):(q.answer!=null?String(q.answer):'')));
           _csCaptureQ.push({text:q.text||q.q||'',choices:isMCQ?(q.choices||[]).slice():[],correctIndex:isMCQ?q.answer:null,type:isMCQ?'mcq':(q.type==='spr'?'spr':'frq'),points:Number(q.marks)||1,ans:_ansDisp0,sol:q.sol||q.exp||'',figure:q.figure||q.fig||null,figureHtml:_fHtml||null});
-          h+='<div class="fep-item '+(q.type==='frq'?'fep-frq':'fep-mcq')+'">';
+          h+='<div class="fep-item '+(q.type==='frq'?'fep-frq':'fep-mcq')+'" data-q-id="'+esc(q.id||'')+'" data-topic-id="'+esc(q.topic_id||'')+'" data-track="'+esc(viewId)+'">';
           h+='<div class="fep-item-head"><span class="fep-inum">'+qNum+'</span><span class="fep-domain-tag">'+esc(q.domain)+'</span></div>';
           if(_fHtml)h+='<div class="fep-figure">'+_fHtml+'</div>';
           var _qCardHtml = (window.CSRenderQiyasComparisonCard && (viewId === 'qudrat' || q.topic_id === 'qud-compare' || /Quantitative Comparison|المقارنات الكمية/i.test(q.domain||'')))
@@ -1926,7 +1926,7 @@
           var _fHtml=renderQFig(q);
           _csCaptureQ.push({text:q.text||q.q||'',choices:isMCQ?(q.choices||[]).slice():[],correctIndex:isMCQ?q.answer:null,type:isFree?(q.type==='spr'?'spr':'frq'):'mcq',points:qMarks,ans:ansDisplay,sol:q.sol||q.exp||'',figure:q.figure||q.fig||null,figureHtml:_fHtml||null});
 
-          h+='<div class="fep-item '+(isFree?'fep-frq fep-frq-full':'fep-mcq')+(isIBExam?' ib-question-card':'')+'">';
+          h+='<div class="fep-item '+(isFree?'fep-frq fep-frq-full':'fep-mcq')+(isIBExam?' ib-question-card':'')+'" data-q-id="'+esc(q.id||'')+'" data-topic-id="'+esc(q.topic_id||'')+'" data-track="'+esc(viewId)+'">';
           h+='<div class="fep-item-head"><span class="fep-inum">'+qNum+'.</span>';
           if(isIBExam){
             h+='<span class="fep-ib-maxmark" style="font-weight:700;color:#1e293b;font-size:.86rem;margin-right:auto">[Maximum mark: '+qMarks+']</span>';

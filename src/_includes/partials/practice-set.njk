@@ -40,6 +40,7 @@
       <div style="display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap">
         <button class="sol-toggle" onclick="this.closest('.problem').classList.toggle('open')"><span class="tw">▸</span> Show solution</button>
         <button type="button" class="cs-voice-btn no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakProblemSolution(this)" title="Listen to worked solution" aria-label="Listen to worked solution"><span>🔊</span><span>Listen</span></button>
+        <button type="button" class="cs-flag-btn no-print" onclick="window.CSErrorFlagManager&&window.CSErrorFlagManager.openReportPopover(this,event)" title="Report an error in this question" aria-label="Report Error"><span>🚩</span><span class="cs-flag-lbl">Report Error</span></button>
       </div>
       <div class="solution">{{ bl.text(item.solution, 'div') }}</div>
     </div>
@@ -56,6 +57,7 @@
       <div style="display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap">
         <button class="sol-toggle" onclick="toggleSol(this)"><span class="tw">▸</span> Show solution</button>
         <button type="button" class="cs-voice-btn no-print" onclick="window.CSVoiceTutor&&window.CSVoiceTutor.speakProblemSolution(this)" title="Listen to worked solution" aria-label="Listen to worked solution"><span>🔊</span><span>Listen</span></button>
+        <button type="button" class="cs-flag-btn no-print" onclick="window.CSErrorFlagManager&&window.CSErrorFlagManager.openReportPopover(this,event)" title="Report an error in this question" aria-label="Report Error"><span>🚩</span><span class="cs-flag-lbl">Report Error</span></button>
       </div>
       <div class="solution">{{ bl.text(item.solution, 'div') }}</div>
     </div>

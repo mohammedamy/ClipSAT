@@ -2063,6 +2063,15 @@ function _inject(chId){
       vBtn.innerHTML='<span>🔊</span><span>'+(loc==='ar'?'اشرح صوتياً':'Explain')+'</span>';
       vBtn.setAttribute('onclick','window.CSVoiceTutor&&window.CSVoiceTutor.explainIxBox(this)');
       badgeEl.insertAdjacentElement('afterend',vBtn);
+      var fBtn=document.createElement('button');
+      fBtn.type='button';
+      fBtn.className='cs-flag-btn no-print';
+      fBtn.style.marginLeft='6px';
+      fBtn.title=(loc==='ar'?'الإبلاغ عن خطأ في هذا النشاط':'Report an error in this activity');
+      fBtn.setAttribute('aria-label',fBtn.title);
+      fBtn.innerHTML='<span>🚩</span><span class="cs-flag-lbl">'+(loc==='ar'?'إبلاغ عن خطأ':'Report Error')+'</span>';
+      fBtn.setAttribute('onclick','window.CSErrorFlagManager&&window.CSErrorFlagManager.openReportPopover(this,event)');
+      vBtn.insertAdjacentElement('afterend',fBtn);
     }
     wrap.appendChild(box);
   });
