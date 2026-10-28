@@ -179,6 +179,59 @@
     ibhl: [
       { name: 'IB Math HL — Paper 1 (Non-Calculator)', minutes: 120, qCount: 14, calc: false, domains: ['algebra', 'functions', 'trigonometry', 'vectors', 'calculus'] },
       { name: 'IB Math HL — Paper 2 (GDC Required)', minutes: 120, qCount: 14, calc: true, domains: ['functions', 'complex', 'vectors', 'calculus', 'statistics'] }
+    ],
+    act2: [
+      { name: 'ACT® International Subject Test — Mathematics 1 (CBT)', minutes: 60, qCount: 50, calc: true, domains: ['algebra', 'functions', 'geometry', 'trigonometry', 'statistics'] }
+    ],
+    act2l2: [
+      { name: 'ACT® International Subject Test — Mathematics 2 (Advanced CBT)', minutes: 60, qCount: 50, calc: true, domains: ['complex', 'matrices', 'vectors', 'functions', 'trigonometry', 'limits'] }
+    ],
+    addmath: [
+      { name: 'Cambridge IGCSE® 0606 / Edexcel 4PM1 — Paper 1 (Non-Calculator)', minutes: 120, qCount: 14, calc: false, domains: ['functions', 'quadratic', 'polynomial', 'logarithm', 'trigonometry', 'permutation', 'differentiation', 'integration'] },
+      { name: 'Cambridge IGCSE® 0606 / Edexcel 4PM1 — Paper 2 (Calculator Allowed)', minutes: 120, qCount: 14, calc: true, domains: ['functions', 'binomial', 'Circular', 'differentiation', 'integration', 'kinematics', 'vector'] }
+    ],
+    edexcel: [
+      { name: 'Pearson Edexcel IGCSE® 4MA1 — Paper 1H (Higher Tier)', minutes: 120, qCount: 22, calc: true, domains: ['number', 'algebra', 'functions', 'geometry', 'trigonometry', 'differentiation', 'probability'] },
+      { name: 'Pearson Edexcel IGCSE® 4MA1 — Paper 2H (Higher Tier)', minutes: 120, qCount: 22, calc: true, domains: ['surds', 'quadratic', 'series', 'circle', 'vector', 'kinematics', 'statistics'] }
+    ],
+    gaten: [
+      { name: 'ETEC / Qiyas English GAT — Quantitative Aptitude CBT', minutes: 25, qCount: 24, calc: false, domains: ['GAT Arithmetic', 'GAT Ratios', 'GAT Quantitative', 'GAT Data'] },
+      { name: 'ETEC / Qiyas English SAAT — Mathematics Achievement CBT', minutes: 25, qCount: 24, calc: false, domains: ['SAAT Logic', 'SAAT Functions', 'SAAT Trigonometry', 'SAAT Differential'] }
+    ],
+    olympiad: [
+      { name: 'MAA AMC 10/12 & Kangaroo Math — Competition Simulation', minutes: 75, qCount: 25, calc: false, domains: ['Olympiad Algebra', 'Modular Arithmetic', 'Diophantine', 'Bijective Counting', 'Recurrence', 'Circle Geometry', 'Triangle Centers', 'Invariants'] }
+    ],
+    mathai: [
+      { name: 'Math for AI & Data Science — Foundations Assessment (Part A: Linear Algebra & Optimization)', minutes: 60, qCount: 20, calc: true, domains: ['Vectors', 'Matrices', 'Gradient Descent'] },
+      { name: 'Math for AI & Data Science — Statistical Modeling & PCA (Part B)', minutes: 60, qCount: 20, calc: true, domains: ['Probability', 'Distributions', 'Regression', 'Principal Component'] }
+    ],
+    algebra: [
+      { name: 'Algebra I — Comprehensive End-of-Course Exam (Part 1: Non-Calculator)', minutes: 45, qCount: 20, calc: false, domains: ['linear', 'inequalities', 'systems', 'exponents', 'polynomials'] },
+      { name: 'Algebra I — Comprehensive End-of-Course Exam (Part 2: Calculator)', minutes: 45, qCount: 20, calc: true, domains: ['functions', 'quadratics', 'exponential', 'radicals', 'data'] }
+    ],
+    geo: [
+      { name: 'Euclidean & Analytic Geometry — Comprehensive Exam', minutes: 60, qCount: 30, calc: true, domains: ['angles', 'triangles', 'congruence', 'similarity', 'trigonometry', 'circles', 'volume'] }
+    ],
+    alg2: [
+      { name: 'Algebra II — Comprehensive End-of-Course Assessment', minutes: 60, qCount: 30, calc: true, domains: ['functions', 'complex', 'polynomials', 'rational', 'exponential', 'logarithmic', 'sequences', 'conics'] }
+    ],
+    precalc: [
+      { name: 'Pre-Calculus — Comprehensive Examination', minutes: 60, qCount: 30, calc: true, domains: ['functions', 'trigonometry', 'identities', 'vectors', 'polar', 'conics', 'matrices', 'limits'] }
+    ],
+    calculus: [
+      { name: 'Differential & Integral Calculus — Part A (Non-Calculator)', minutes: 50, qCount: 22, calc: false, domains: ['limits', 'derivatives', 'applications', 'integrals'] },
+      { name: 'Differential & Integral Calculus — Part B (Graphing Calculator)', minutes: 40, qCount: 16, calc: true, domains: ['derivatives', 'integrals', 'differential-equations', 'series'] }
+    ],
+    linalg: [
+      { name: 'University Linear Algebra — Midterm Examination (Systems, Matrices & Spaces)', minutes: 75, qCount: 20, calc: false, domains: ['vectors', 'systems', 'matrices', 'determinants', 'subspaces'] },
+      { name: 'University Linear Algebra — Final Examination (Eigenvalues, Orthogonality & SVD)', minutes: 90, qCount: 25, calc: false, domains: ['transformations', 'eigenvalues', 'orthogonality', 'symmetric'] }
+    ],
+    mvc: [
+      { name: 'Multivariable Calculus — Midterm Exam (3D Vectors, Partial Derivatives & Gradients)', minutes: 75, qCount: 20, calc: false, domains: ['vectors', 'curves', 'partial', 'gradient', 'optimization'] },
+      { name: 'Multivariable Calculus — Final Exam (Multiple Integrals & Vector Calculus)', minutes: 90, qCount: 25, calc: false, domains: ['double', 'triple', 'line-integrals', 'green', 'stokes', 'divergence'] }
+    ],
+    odes: [
+      { name: 'Ordinary Differential Equations — Comprehensive University Exam', minutes: 90, qCount: 25, calc: false, domains: ['first-order', 'separable', 'second-order', 'laplace', 'systems', 'series', 'boundary'] }
     ]
   };
 

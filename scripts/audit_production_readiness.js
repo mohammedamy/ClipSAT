@@ -240,6 +240,30 @@ audit(`Floating calculator implements Desmos API, regression modeling, and exam 
   assert.ok(calcCode.includes('openFloatingCalc'), 'Must support openFloatingCalc');
 });
 
+audit(`All 31 tracks are wired into CBT Mock Exam Simulator (17-mock-exam-mode.js), CAT Diagnostic (27-diagnostic-test.js), Teacher Assignments & Search (22-assignments-reports-search.js), AI Test Prompts (05a-ai-test.js), Blueprints (05c-exam-blueprints.js), Homepage Catalog (home.html), and Bilingual i18n (20c-i18n.js / 20e-i18n-ar.js)`, () => {
+  const all31 = fs.readdirSync(path.join(__dirname, '..', 'content')).filter(f => fs.statSync(path.join(__dirname, '..', 'content', f)).isDirectory());
+  const mockCode = fs.readFileSync(path.join(__dirname, '..', 'src', 'scripts', 'modules', '17-mock-exam-mode.js'), 'utf8');
+  const diagCode = fs.readFileSync(path.join(__dirname, '..', 'src', 'scripts', 'modules', '27-diagnostic-test.js'), 'utf8');
+  const assignCode = fs.readFileSync(path.join(__dirname, '..', 'src', 'scripts', 'modules', '22-assignments-reports-search.js'), 'utf8');
+  const aiCode = fs.readFileSync(path.join(__dirname, '..', 'src', 'scripts', 'modules', '05a-ai-test.js'), 'utf8');
+  const bpCode = fs.readFileSync(path.join(__dirname, '..', 'src', 'scripts', 'modules', '05c-exam-blueprints.js'), 'utf8');
+  const homeHtml = fs.readFileSync(path.join(__dirname, '..', 'src', '_includes', 'tracks', 'home.html'), 'utf8');
+  const i18nEn = fs.readFileSync(path.join(__dirname, '..', 'src', 'scripts', 'modules', '20c-i18n.js'), 'utf8');
+  const i18nAr = fs.readFileSync(path.join(__dirname, '..', 'src', 'scripts', 'modules', '20e-i18n-ar.js'), 'utf8');
+
+  all31.forEach(t => {
+    assert.ok(new RegExp(`\\b${t}\\s*:\\s*\\[`).test(mockCode), `17-mock-exam-mode.js PAPERS must define ${t}`);
+    assert.ok(new RegExp(`\\b${t}\\s*:`).test(diagCode), `27-diagnostic-test.js TRACK_NAMES must define ${t}`);
+    assert.ok(new RegExp(`\\b${t}\\s*:\\s*\\[`).test(diagCode), `27-diagnostic-test.js TRACK_CHAPTER_MAP must define ${t}`);
+    assert.ok(new RegExp(`\\b${t}\\s*:\\s*\\{\\s*label`).test(assignCode), `22-assignments-reports-search.js VIEW_META must define ${t}`);
+    assert.ok(new RegExp(`(?:'${t}'|\\b${t})\\s*:\\s*\\{\\s*name`).test(aiCode), `05a-ai-test.js examSystemPrompt must define ${t}`);
+    assert.ok(new RegExp(`(?:'${t}'|\\b${t})\\s*:\\s*\\{\\s*source`).test(bpCode), `05c-exam-blueprints.js must define explicit blueprint for ${t}`);
+    assert.ok(homeHtml.includes(`showView('${t}')`), `home.html must include catalog card for ${t}`);
+    assert.ok(i18nEn.includes(`'home.cat.${t}.h3':`), `20c-i18n.js must include home.cat.${t}.h3`);
+    assert.ok(i18nAr.includes(`'home.cat.${t}.h3':`), `20e-i18n-ar.js must include home.cat.${t}.h3`);
+  });
+});
+
 // ─────────────────────────────────────────────────────────────────────────────
 // 5. PILLAR 5: CURRICULUM CONTENT & ELEVENTY STATIC RENDERING
 // ─────────────────────────────────────────────────────────────────────────────

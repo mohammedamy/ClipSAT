@@ -143,7 +143,13 @@ function examSystemPrompt(examId){
     'Mawhiba & Kangaroo Math Arabia (Senior)':{name:'Mawhiba & Kangaroo Math Arabia Competition',letters:'A B C D',desc:'Kangaroo Math / Mawhiba competition: clever logic puzzles, spatial geometry, number theory, algebraic patterns. 3-point, 4-point, and 5-point tiers.'},
     'AMC 10/12 Mathematics Competition':{name:'AMC 10/12 Mathematics Competition',letters:'A B C D',desc:'American Mathematics Competitions 10/12: challenging problem solving in algebra, geometry, number theory, and combinatorics. 5 options (A, B, C, D, E).'},
     linalg:{name:'Linear Algebra',letters:'A B C D',desc:'University Linear Algebra: systems of linear equations, matrices, determinants, vector spaces, subspaces, eigenvalues and eigenvectors, orthogonality, diagonalization.'},
-    mvc:{name:'Multivariable Calculus',letters:'A B C D',desc:'University Multivariable Calculus: 3D coordinate systems, vectors and dot/cross product, vector functions and space curves, partial derivatives, directional derivatives, gradient vector, multiple integrals, vector calculus (Green, Stokes, Divergence).'}
+    mvc:{name:'Multivariable Calculus',letters:'A B C D',desc:'University Multivariable Calculus: 3D coordinate systems, vectors and dot/cross product, vector functions and space curves, partial derivatives, directional derivatives, gradient vector, multiple integrals, vector calculus (Green, Stokes, Divergence).'},
+    odes:{name:'Ordinary Differential Equations',letters:'A B C D',desc:'University Ordinary Differential Equations: first-order separable, linear and exact ODEs, second-order constant-coefficient ODEs, undetermined coefficients, variation of parameters, Laplace transforms, linear systems and phase portraits, power series and Fourier boundary value problems.'},
+    addmath:{name:'Cambridge IGCSE Additional Mathematics (0606) & Edexcel Further Pure (4PM1)',letters:'A B C D',desc:'Cambridge IGCSE Additional Mathematics 0606 and Pearson Edexcel Further Pure Mathematics 4PM1: functions, quadratic theory, polynomials, remainder and factor theorems, binomial expansions, exponential and logarithmic functions, circular measure in radians, trigonometry, permutations and combinations, differentiation, connected rates of change, integration, kinematics, and 2D vectors.'},
+    edexcel:{name:'Pearson Edexcel International GCSE Mathematics A (4MA1) Higher Tier',letters:'A B C D',desc:'Pearson Edexcel International GCSE Mathematics A (4MA1) Higher Tier Paper 1H and Paper 2H: numbers, surds, bounds, set theory, algebraic fractions, quadratics, simultaneous linear-quadratic systems, functions, arithmetic series, coordinate geometry, linear programming, circle theorems, similar solids, 3D trigonometry, vectors, power-rule differentiation, kinematics, histograms, and conditional probability.'},
+    gaten:{name:'ETEC / Qiyas English-Medium GAT (Quantitative) & SAAT (Mathematics)',letters:'A B C D',desc:'Saudi ETEC / Qiyas English-medium General Aptitude Test (GAT Quantitative: arithmetic shortcuts, ratios, percentages, motion/work rates, quantitative comparisons, shaded geometry, data analysis) and Standardized Achievement Admission Test (SAAT Mathematics: mathematical logic, polynomials, matrices, complex numbers, functions, sequences, logarithms, trigonometry, conics, 3D vectors, limits, derivatives, and integrals). No calculator allowed.'},
+    olympiad:{name:'MAA AMC 10/12, AIME, Kangaroo Math & Mawhiba Olympiad',letters:'A B C D',desc:'Competition Mathematics and Olympiad problem solving (AMC 10/12, AIME, Kangaroo Math Arabia, Mawhiba): Vieta formulas, algebraic inequalities (AM-GM, Cauchy-Schwarz), modular arithmetic, Fermat/Euler theorems, Diophantine equations (SFFT), bijective combinatorics, Inclusion-Exclusion, Pigeonhole Principle, recurrence relations, geometric probability, Power of a Point, cyclic quadrilaterals, Ceva/Menelaus/Stewart theorems, and invariants.'},
+    mathai:{name:'Mathematics for AI, Machine Learning & Data Science',letters:'A B C D',desc:'Mathematics for Artificial Intelligence, Machine Learning, and Data Science: high-dimensional vectors, L1/L2 norms, cosine similarity, matrix transformations, neural network linear layers, multivariable calculus, gradient descent optimization, backpropagation chain rule, Bayesian probability, Gaussian/Bernoulli/Binomial distributions, maximum likelihood estimation (MLE), linear/logistic regression, cross-entropy loss, covariance matrices, eigenvalues, and Principal Component Analysis (PCA).'}
   };
   var target=(window.ClipSATBlueprints&&window.ClipSATBlueprints.resolveKey)?window.ClipSATBlueprints.resolveKey(examId):examId;
   var sp=specs[target]||specs[examId]||{name:'Mathematics',letters:'A B C D',desc:'High school mathematics.'};
@@ -240,11 +246,11 @@ function examSystemPrompt(examId){
 /* ── Official Formula & Reference Sheets ─────────────── */
 function examRefSheet(viewId){
   var id=String(viewId||'').toLowerCase();
-  var isSatEst=/^(sat|est|est2|act|act2|geo|algebra|alg2)/.test(id);
-  var isCambridge=/^(igcse|aslevel|a2level)/.test(id);
-  var isArabic=/^(qudrat|tahsili)/.test(id);
+  var isSatEst=/^(sat|est|est2|est2l2|act|act2|act2l2|geo|algebra|alg2|olympiad)/.test(id);
+  var isCambridge=/^(igcse|edexcel|addmath|aslevel|a2level)/.test(id);
+  var isArabic=/^(qudrat|tahsili|gaten)/.test(id);
   var isIB=/^(ibsl|ibhl|ib)/.test(id);
-  var isAP=/^(apab|apbc|calculus|apstats|appc|precalc|mvc|linalg)/.test(id);
+  var isAP=/^(apab|apbc|calculus|apstats|appc|precalc|mvc|linalg|odes|mathai)/.test(id);
 
   if(!isSatEst&&!isCambridge&&!isArabic&&!isIB&&!isAP) return '';
 

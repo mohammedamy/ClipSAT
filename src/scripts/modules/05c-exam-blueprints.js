@@ -530,7 +530,79 @@
         T('Recurrence Relations & Geometric Probability',10,'Fibonacci and Catalan recurrences, coupled Markov states, continuous geometric probability',['Recurrence Relations & Geometric Probability']),
         T('Circle Geometry, Power of a Point & Radical Axes',12.5,'Power of a Point, radical axis, Ptolemy and Brahmagupta theorems for cyclic quadrilaterals',['Circle Geometry, Power of a Point & Radical Axes']),
         T('Triangle Centers, Ceva, Menelaus & Stewart',12.5,'Euler line, Ceva and Menelaus theorems, Stewart theorem, inradius/circumradius formulas',['Triangle Centers, Ceva, Menelaus & Stewart']),
-        T('Invariants, Monovariants, Coloring & Games',10,'parity and coloring invariants, Pick lattice theorem, Nim XOR game strategy',['Invariants, Monovariants, Coloring & Games'])]}
+        T('Invariants, Monovariants, Coloring & Games',10,'parity and coloring invariants, Pick lattice theorem, Nim XOR game strategy',['Invariants, Monovariants, Coloring & Games'])]},
+
+    'algebra':{source:'Core Mathematics Curriculum — Algebra I End-of-Course Specification.',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Linear Equations & Inequalities',25,'solving multi-step linear equations, absolute value equations, compound inequalities',['Linear Equations & Inequalities','Linear Equations']),
+        T('Linear Functions & Systems',25,'slope, rate of change, linear graphing, systems of linear equations and inequalities',['Functions & Linear Models','Systems of Equations & Inequalities']),
+        T('Exponents, Radicals & Polynomials',20,'laws of exponents, scientific notation, radical simplification, polynomial operations and factoring',['Exponents & Radicals','Polynomials & Factoring']),
+        T('Quadratic Functions & Equations',20,'graphing parabolas, vertex form, factoring, completing the square, quadratic formula, discriminant',['Quadratic Functions & Equations']),
+        T('Exponential Models & Data Analysis',10,'exponential growth and decay, geometric sequences, two-way tables, scatterplots',['Exponential Functions','Statistics & Data'])],},
+
+    'geo':{source:'Core Mathematics Curriculum — Euclidean & Coordinate Geometry Specification.',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Logical Reasoning, Lines & Angles',15,'deductive proof, parallel lines and transversals, angle relationships, polygon angle sums',['Foundations & Logical Reasoning','Parallel & Perpendicular Lines','Polygons & Quadrilaterals']),
+        T('Triangles, Congruence & Similarity',25,'SSS/SAS/ASA/AAS/HL congruence, triangle inequalities, proportional segments, similar triangles',['Congruence & Triangles','Similarity & Proportions']),
+        T('Right Triangles & Trigonometry',20,'Pythagorean theorem, special right triangles (30-60-90, 45-45-90), SOHCAHTOA, Law of Sines and Cosines',['Right Triangles & Trigonometry']),
+        T('Circles, Arcs & Chords',20,'central and inscribed angles, tangents, secants, chord segments, equation of a circle, sector area',['Circles']),
+        T('Coordinate Geometry, Transformations & 3D Solids',20,'distance, midpoint, rigid motions, dilations, surface area and volume of prisms, cylinders, cones, spheres',['Coordinate Geometry & Transformations','Area, Surface Area & Volume'])],},
+
+    'alg2':{source:'Core Mathematics Curriculum — Algebra II Advanced Course Specification.',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Functions, Quadratics & Complex Numbers',25,'function transformations, inverses, complex numbers a+bi, quadratic systems',['Functions & Transformations','Quadratics & Complex Numbers','Systems & Matrices']),
+        T('Polynomial & Radical Functions',25,'Remainder and Factor theorems, polynomial division, end behavior, rational exponents, radical equations',['Polynomials & Factoring','Radical Functions & Rational Exponents']),
+        T('Rational Expressions & Equations',15,'simplifying rational expressions, vertical/horizontal asymptotes, solving rational equations',['Rational Expressions & Functions']),
+        T('Exponential & Logarithmic Functions',20,'Euler number e, logarithm laws, change of base, exponential and logarithmic equations',['Exponential & Logarithmic Functions']),
+        T('Sequences, Series, Conics & Probability',15,'arithmetic and geometric series, binomial expansion, parabolas/ellipses/hyperbolas, probability',['Sequences & Series','Conic Sections','Probability & Statistics','Trigonometric Functions'])],},
+
+    'precalc':{source:'High School & University Bridge — Pre-Calculus Comprehensive Specification.',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Functions, Polynomials & Rational Analysis',20,'domain, composition, inverse functions, polynomial zeros, rational asymptotes',['Functions & Graphs','Polynomial & Rational Functions']),
+        T('Exponential & Logarithmic Modeling',15,'logarithmic laws, continuous growth/decay, logistic models, nonlinear equations',['Exponential & Logarithmic Functions']),
+        T('Trigonometric Functions & Analytic Identities',25,'unit circle, radian measure, sinusoidal graphs, inverse trig, sum/difference/double-angle identities, Laws of Sines and Cosines',['Trigonometric Functions','Analytic Trigonometry','Applications of Trigonometry']),
+        T('Vectors, Polar Coordinates & Parametric Curves',20,'2D vectors, dot product, polar equations and graphs, De Moivre theorem, parametric motion',['Vectors, Parametric & Polar','Complex Numbers & Polar Form']),
+        T('Matrices, Conic Sections, Series & Limits',20,'matrix inverses, determinants, ellipses/hyperbolas/parabolas, infinite series, mathematical induction, limits',['Systems & Matrices','Conic Sections','Sequences, Series & Induction','Introduction to Limits'])],},
+
+    'calculus':{source:'Differential & Integral Single-Variable Calculus Specification.',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Limits & Continuity',15,'one-sided limits, algebraic limit laws, squeeze theorem, limits at infinity, continuity, IVT',['Foundations','Limits & Continuity']),
+        T('Derivatives & Differentiation Rules',25,'limit definition, power/product/quotient/chain rules, implicit, inverse, and logarithmic differentiation',['Derivatives']),
+        T('Applications of Differentiation',20,'tangent lines, related rates, MVT, extreme values, concavity, optimization, L\'Hôpital\'s rule',['Applications of Derivatives']),
+        T('Definite Integrals & Fundamental Theorem',20,'Riemann sums, properties of definite integrals, Fundamental Theorem of Calculus Parts 1 & 2, u-substitution',['Integrals']),
+        T('Integration Techniques, DEs & Applications',20,'area between curves, volumes of revolution, integration by parts, separable differential equations, infinite series',['Applications of Integration','Differential Equations','Infinite Series'])],},
+
+    'linalg':{source:'University Mathematics — Linear Algebra & Matrix Theory Specification.',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('Linear Systems, Vectors & Row Reduction',20,'Gaussian elimination, echelon forms, vector equations, span, linear independence',['Vectors & Spaces','Linear Systems & Gaussian Elimination']),
+        T('Matrix Algebra, Inverses & Determinants',20,'matrix multiplication, LU factorization, invertible matrix theorem, determinant properties, cofactor expansion, Cramer\'s rule',['Matrix Algebra','Determinants']),
+        T('Vector Spaces, Subspaces, Basis & Dimension',20,'column space, null space, rank-nullity theorem, basis, coordinates, change of basis',['Subspaces, Basis & Dimension','Linear Transformations']),
+        T('Eigenvalues, Eigenvectors & Diagonalization',20,'characteristic polynomial, eigenspaces, similarity, diagonalization, powers of matrices, dynamical systems',['Eigenvalues & Eigenvectors']),
+        T('Orthogonality, Least Squares & Spectral Theorem',20,'inner products, orthogonal projections, Gram-Schmidt process, QR factorization, least squares, symmetric matrices, SVD',['Orthogonality & Least Squares','Symmetric Matrices & SVD'])],},
+
+    'mvc':{source:'University Mathematics — Multivariable & Vector Calculus Specification.',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('3D Vectors, Lines, Planes & Quadric Surfaces',15,'dot and cross products, equations of lines and planes in R^3, cylinders and quadric surfaces',['Vectors & 3D Space']),
+        T('Vector-Valued Functions & Space Curves',15,'derivatives and integrals of vector functions, arc length, curvature, TNB frame, planetary motion',['Vector Functions & Space Curves']),
+        T('Partial Derivatives, Gradients & Optimization',25,'multivariable limits, partial derivatives, chain rule, directional derivatives, gradient vector, tangent planes, Lagrange multipliers',['Partial Derivatives & Gradients','Multivariable Optimization']),
+        T('Double & Triple Integrals',25,'iterated integrals, polar/cylindrical/spherical coordinates, Jacobian change of variables, center of mass',['Double Integrals','Triple Integrals & Coordinate Systems']),
+        T('Line Integrals, Surface Integrals & Vector Theorems',20,'conservative vector fields, Green\'s theorem, curl and divergence, parametric surfaces, Stokes\' and Divergence theorems',['Line Integrals & Green\'s Theorem','Surface Integrals, Stokes\' & Divergence'])],},
+
+    'odes':{source:'University Mathematics — Ordinary Differential Equations Specification.',
+      difficulty:MIX, order:'mixed',
+      topics:[
+        T('First-Order Differential Equations',25,'direction fields, separable ODEs, linear integrating factors, exact equations, Bernoulli and autonomous models',['First-Order ODEs','Separable & Linear Equations','Exact Equations & Substitutions']),
+        T('Second-Order & Higher-Order Linear ODEs',25,'characteristic equation, real/complex/repeated roots, Wronskian, undetermined coefficients, variation of parameters, harmonic oscillators',['Second-Order Linear ODEs','Nonhomogeneous Equations & Resonance']),
+        T('Laplace Transforms & Step/Impulse Forcing',20,'Laplace and inverse Laplace transforms, Heaviside step functions, Dirac delta impulse, convolution theorem',['Laplace Transforms']),
+        T('Systems of Linear ODEs & Phase Portraits',15,'eigenvalue-eigenvector method for x\' = Ax, nodes, saddles, spirals, stability, matrix exponential',['Systems of ODEs & Phase Plane']),
+        T('Series Solutions, Numerical Methods & BVPs',15,'power series around ordinary points, Euler and Runge-Kutta (RK4) methods, Sturm-Liouville eigenvalues, Fourier series',['Series Solutions & Special Functions','Boundary Value Problems & Fourier'])]}
   };
 
   // Modular Cambridge IGCSE 0580 and IB AA / AI Paper 1 / Paper 2 / Paper 3 mappings

@@ -9,6 +9,10 @@ var VIEW_META = {
   alg2:{label:'Algebra II',board:'Core Course'},
   geo:{label:'Geometry',board:'Core Course'},
   precalc:{label:'Pre-Calculus',board:'Core Course'},
+  linalg:{label:'Linear Algebra',board:'University'},
+  mvc:{label:'Multivariable Calculus',board:'University'},
+  odes:{label:'Differential Equations',board:'University'},
+  mathai:{label:'Math for AI & Data Science',board:'STEM & AI'},
   sat:{label:'Digital SAT Math',board:'College Board'},
   act:{label:'ACT Math',board:'ACT'},
   act2:{label:'ACT 2 Math Level 1',board:'ACT'},
@@ -18,7 +22,10 @@ var VIEW_META = {
   est2l2:{label:'EST 2 Math Level 2',board:'EST'},
   qudrat:{label:'Qudrat (قدرات)',board:'Qiyas'},
   tahsili:{label:'Tahsili (تحصيلي)',board:'Qiyas'},
+  gaten:{label:'English GAT & SAAT (Qiyas)',board:'Qiyas'},
   igcse:{label:'IGCSE 0580',board:'Cambridge'},
+  edexcel:{label:'Edexcel IGCSE 4MA1',board:'Edexcel'},
+  addmath:{label:'Additional Mathematics (0606 / 4PM1)',board:'Cambridge / Edexcel'},
   aslevel:{label:'AS Level Math',board:'Cambridge'},
   a2level:{label:'A2 Level Math',board:'Cambridge'},
   ibsl:{label:'IB Math SL (AA/AI)',board:'IB'},
@@ -27,6 +34,7 @@ var VIEW_META = {
   apbc:{label:'AP Calculus BC',board:'College Board'},
   appc:{label:'AP Pre-Calculus',board:'College Board'},
   apstats:{label:'AP Statistics',board:'College Board'},
+  olympiad:{label:'Contest Math & Olympiad',board:'Olympiad'}
 };
 
 var CHAPTER_META = {

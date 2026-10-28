@@ -23,64 +23,184 @@
   var _diagState = null;
 
   var TRACK_NAMES = {
-    a2level: 'A2 Level Mathematics', act: 'ACT Math', act2: 'ACT Math 2',
+    a2level: 'A2 Level Mathematics', act: 'ACT Math', act2: 'ACT Math Level 1',
+    act2l2: 'ACT Math Level 2', addmath: 'IGCSE Add Math (0606 / 4PM1)',
     alg2: 'Algebra 2', algebra: 'Algebra 1', apab: 'AP Calculus AB',
     apbc: 'AP Calculus BC', appc: 'AP Precalculus', apstats: 'AP Statistics',
-    aslevel: 'AS Level Mathematics', calculus: 'Calculus', est: 'EST I Math',
-    est2: 'EST II Math', geo: 'Geometry', ibhl: 'IB Math HL (AA/AI)',
-    ibsl: 'IB Math SL (AA/AI)', igcse: 'IGCSE 0580 & 4MA1', linalg: 'Linear Algebra',
-    mvc: 'Multivariable Calculus', odes: 'Differential Equations',
+    aslevel: 'AS Level Mathematics', calculus: 'Calculus',
+    edexcel: 'Edexcel IGCSE Math A (4MA1)', est: 'EST I Math',
+    est2: 'EST II Math Level 1', est2l2: 'EST II Math Level 2',
+    gaten: 'English GAT & SAAT (Qiyas)', geo: 'Geometry',
+    ibhl: 'IB Math HL (AA/AI)', ibsl: 'IB Math SL (AA/AI)',
+    igcse: 'IGCSE 0580 & 4MA1', linalg: 'Linear Algebra',
+    mathai: 'Math for AI & Data Science', mvc: 'Multivariable Calculus',
+    odes: 'Differential Equations', olympiad: 'Contest Math & Olympiad',
     precalc: 'Pre-Calculus', qudrat: 'GAT Qudrat (قدرات)', sat: 'Digital SAT Math',
     tahsili: 'SAAT Tahsili (تحصيلي)'
   };
 
   var TRACK_NAMES_AR = {
-    a2level: 'الرياضيات المستوى المتقدم A2', act: 'رياضيات ACT', act2: 'رياضيات ACT المستوى الثاني',
+    a2level: 'الرياضيات المستوى المتقدم A2', act: 'رياضيات ACT', act2: 'رياضيات ACT المستوى الأول',
+    act2l2: 'رياضيات ACT المستوى الثاني', addmath: 'الرياضيات الإضافية (0606 / 4PM1)',
     alg2: 'الجبر 2 (المستوى المتقدم)', algebra: 'الجبر 1 (التأسيسي)', apab: 'تفاضل وتكامل AP Calculus AB',
     apbc: 'تفاضل وتكامل AP Calculus BC', appc: 'الرياضيات التمهيدية AP Precalculus', apstats: 'الإحصاء AP Statistics',
-    aslevel: 'الرياضيات المستوى المتقدم التكميلي AS', calculus: 'حساب التفاضل والتكامل', est: 'رياضيات EST I (مصر)',
-    est2: 'رياضيات EST II (مصر)', geo: 'الهندسة الإقليدية', ibhl: 'رياضيات البكالوريا الدولية المستوى العالي IB HL',
-    ibsl: 'رياضيات البكالوريا الدولية المستوى القياسي IB SL', igcse: 'كامبريدج وإدكسل IGCSE', linalg: 'الجبر الخطي والمصفوفات',
+    aslevel: 'الرياضيات المستوى المتقدم التكميلي AS', calculus: 'حساب التفاضل والتكامل',
+    edexcel: 'رياضيات إدكسل الدولية IGCSE 4MA1', est: 'رياضيات EST I (مصر)',
+    est2: 'رياضيات EST II المستوى الأول', est2l2: 'رياضيات EST II المستوى الثاني',
+    gaten: 'القدرات والتحصيلي باللغة الإنجليزية (GAT & SAAT)', geo: 'الهندسة الإقليدية',
+    ibhl: 'رياضيات البكالوريا الدولية المستوى العالي IB HL',
+    ibsl: 'رياضيات البكالوريا الدولية المستوى القياسي IB SL', igcse: 'كامبريدج IGCSE 0580',
+    linalg: 'الجبر الخطي والمصفوفات', mathai: 'رياضيات الذكاء الاصطناعي وعلوم البيانات',
     mvc: 'حساب التفاضل والتكامل متعدد المتغيرات', odes: 'المعادلات التفاضلية',
+    olympiad: 'رياضيات المسابقات والأولمبياد (AMC / موهبة)',
     precalc: 'الرياضيات التمهيدية والتحليلية', qudrat: 'اختبار القدرات العامة (قياس)', sat: 'السات الرقمي Digital SAT Math',
     tahsili: 'اختبار التحصيلي (قياس)'
   };
 
   var TRACK_CHAPTER_MAP = {
     sat: [
-      { domain: /advanced|quad|poly|function|nonlinear/i, title: 'Quadratics & Nonlinear Functions', titleAr: 'الدوال غير الخطية والتربيعية', url: '/sat/sat-quad/', ix: 'Parabola Explorer' },
-      { domain: /\blinear\b|algebra/i, title: 'Linear Equations & Systems', titleAr: 'المعادلات الخطية وأنظمة المعادلات', url: '/sat/sat-linear/', ix: 'Interactive Line Explorer' },
-      { domain: /data|problem|stat|prob/i, title: 'Problem Solving & Statistics', titleAr: 'حل المشكلات والإحصاء والاحتمالات', url: '/sat/sat-data/', ix: 'Data & Probability Tools' },
-      { domain: /geo|trig/i, title: 'Geometry & Trigonometry', titleAr: 'الهندسة وحساب المثلثات', url: '/sat/sat-geo/', ix: 'Unit Circle Explorer' }
+      { domain: /advanced|quad|poly|function|nonlinear/i, title: 'Quadratics & Nonlinear Functions', titleAr: 'الدوال غير الخطية والتربيعية', url: '/sat/?ch=sat-quad', ix: 'Parabola Explorer' },
+      { domain: /\blinear\b|algebra/i, title: 'Linear Equations & Systems', titleAr: 'المعادلات الخطية وأنظمة المعادلات', url: '/sat/?ch=sat-linear', ix: 'Interactive Line Explorer' },
+      { domain: /data|problem|stat|prob/i, title: 'Problem Solving & Statistics', titleAr: 'حل المشكلات والإحصاء والاحتمالات', url: '/sat/?ch=sat-data', ix: 'Data & Probability Tools' },
+      { domain: /geo|trig/i, title: 'Geometry & Trigonometry', titleAr: 'الهندسة وحساب المثلثات', url: '/sat/?ch=sat-geo', ix: 'Unit Circle Explorer' }
     ],
     qudrat: [
-      { domain: /جبر|algebra|arith/i, title: 'الجبر والعمليات الحسابية والأسس', titleAr: 'الجبر والعمليات الحسابية والأسس', url: '/qudrat/ch1/', ix: 'مستكشف الأسس والجذور' },
-      { domain: /هندسة|geo/i, title: 'الهندسة والزوايا والأشكال الرباعية', titleAr: 'الهندسة والزوايا والأشكال الرباعية', url: '/qudrat/ch2/', ix: 'مستكشف الدائرة والمثلث' },
-      { domain: /نسب|كسور|percent/i, title: 'النسب المئوية والتناسب والكسور', titleAr: 'النسب المئوية والتناسب والكسور', url: '/qudrat/ch3/', ix: 'حساب النسب السريع' },
-      { domain: /إحصاء|احتمال|مقارن|stat/i, title: 'الإحصاء والاحتمالات والمقارنات', titleAr: 'الإحصاء والاحتمالات والمقارنات', url: '/qudrat/ch4/', ix: 'استراتيجيات المقارنة السريعة' }
+      { domain: /جبر|algebra|arith|حساب/i, title: 'الجبر والعمليات الحسابية والأسس', titleAr: 'الجبر والعمليات الحسابية والأسس', url: '/qudrat/?ch=qud-arith', ix: 'مستكشف الأسس والجذور' },
+      { domain: /هندسة|geo/i, title: 'الهندسة والزوايا والأشكال الرباعية', titleAr: 'الهندسة والزوايا والأشكال الرباعية', url: '/qudrat/?ch=qud-geo', ix: 'مستكشف الدائرة والمثلث' },
+      { domain: /نسب|كسور|percent|ratio/i, title: 'النسب المئوية والتناسب والكسور', titleAr: 'النسب المئوية والتناسب والكسور', url: '/qudrat/?ch=qud-ratios', ix: 'حساب النسب السريع' },
+      { domain: /إحصاء|احتمال|مقارن|stat|comp/i, title: 'الإحصاء والاحتمالات والمقارنات', titleAr: 'الإحصاء والاحتمالات والمقارنات', url: '/qudrat/?ch=qud-comp', ix: 'استراتيجيات المقارنة السريعة' }
     ],
     tahsili: [
-      { domain: /جبر|دوال|مصفوف|alg/i, title: 'الجبر والدوال والمصفوفات', titleAr: 'الجبر والدوال والمصفوفات', url: '/tahsili/ch1/', ix: 'محددات ونظير المصفوفات' },
-      { domain: /هندسة|مثلث|geo|trig/i, title: 'الهندسة وحساب المثلثات', titleAr: 'الهندسة وحساب المثلثات', url: '/tahsili/ch2/', ix: 'دائرة الوحدة والمتطابقات' },
-      { domain: /متجه|قطوع|vector|conic/i, title: 'المتجهات والقطوع المخروطية', titleAr: 'المتجهات والقطوع المخروطية', url: '/tahsili/ch3/', ix: 'القطع المكافئ والناقص' },
-      { domain: /تفاضل|تكامل|احتمال|calc/i, title: 'التفاضل والتكامل والاحتمالات', titleAr: 'التفاضل والتكامل والاحتمالات', url: '/tahsili/ch4/', ix: 'قواعد الاشتقاق والتكامل' }
+      { domain: /جبر|دوال|مصفوف|alg|func/i, title: 'الجبر والدوال والمصفوفات', titleAr: 'الجبر والدوال والمصفوفات', url: '/tahsili/?ch=tah-alg', ix: 'محددات ونظير المصفوفات' },
+      { domain: /هندسة|مثلث|geo|trig/i, title: 'الهندسة وحساب المثلثات', titleAr: 'الهندسة وحساب المثلثات', url: '/tahsili/?ch=tah-trig', ix: 'دائرة الوحدة والمتطابقات' },
+      { domain: /متجه|قطوع|vector|conic/i, title: 'المتجهات والقطوع المخروطية', titleAr: 'المتجهات والقطوع المخروطية', url: '/tahsili/?ch=tah-vectors', ix: 'القطع المكافئ والناقص' },
+      { domain: /تفاضل|تكامل|احتمال|calc|stat/i, title: 'التفاضل والتكامل والاحتمالات', titleAr: 'التفاضل والتكامل والاحتمالات', url: '/tahsili/?ch=tah-calc', ix: 'قواعد الاشتقاق والتكامل' }
     ],
     igcse: [
-      { domain: /number/i, title: 'Number & Estimation', titleAr: 'الأعداد والحسابات', url: '/igcse/ch1/', ix: 'Fractions & Bounds' },
-      { domain: /algebra|graph/i, title: 'Algebra & Graphs', titleAr: 'الجبر والتمثيل البياني', url: '/igcse/ch2/', ix: 'Linear & Quadratic Graphs' },
-      { domain: /coordinate|trig/i, title: 'Coordinate Geometry & Trigonometry', titleAr: 'الهندسة الإحداثية والمثلثات', url: '/igcse/ch3/', ix: 'Sine/Cosine Rules' },
-      { domain: /geometry|mensuration/i, title: 'Geometry & Mensuration', titleAr: 'الهندسة والقياس والحجوم', url: '/igcse/ch4/', ix: 'Circle Theorems' },
-      { domain: /prob|stat/i, title: 'Probability & Statistics', titleAr: 'الاحتمالات والإحصاء', url: '/igcse/ch5/', ix: 'Ogives & Boxplots' }
+      { domain: /number/i, title: 'Number & Estimation', titleAr: 'الأعداد والحسابات', url: '/igcse/?ch=igcse-number', ix: 'Fractions & Bounds' },
+      { domain: /algebra|graph/i, title: 'Algebra & Graphs', titleAr: 'الجبر والتمثيل البياني', url: '/igcse/?ch=igcse-algebra', ix: 'Linear & Quadratic Graphs' },
+      { domain: /coordinate|trig/i, title: 'Coordinate Geometry & Trigonometry', titleAr: 'الهندسة الإحداثية والمثلثات', url: '/igcse/?ch=igcse-trig', ix: 'Sine/Cosine Rules' },
+      { domain: /geometry|mensuration/i, title: 'Geometry & Mensuration', titleAr: 'الهندسة والقياس والحجوم', url: '/igcse/?ch=igcse-geometry', ix: 'Circle Theorems' },
+      { domain: /prob|stat/i, title: 'Probability & Statistics', titleAr: 'الاحتمالات والإحصاء', url: '/igcse/?ch=igcse-stats', ix: 'Ogives & Boxplots' }
     ],
     aslevel: [
-      { domain: /pure|algebra|quad|diff|integ|trig/i, title: 'Pure Mathematics (P1/P2)', titleAr: 'الرياضيات البحتة', url: '/aslevel/', ix: 'Calculus & Functions' },
-      { domain: /mech|force|kinemat/i, title: 'Mechanics (Paper 4 / M1)', titleAr: 'الميكانيكا وحركة الأجسام', url: '/aslevel/', ix: 'Forces & Newton Laws' },
-      { domain: /prob|stat/i, title: 'Probability & Statistics (Paper 5 / S1)', titleAr: 'الإحصاء والاحتمالات', url: '/aslevel/', ix: 'Normal Distribution' }
+      { domain: /pure|algebra|quad|diff|integ|trig/i, title: 'Pure Mathematics (P1/P2)', titleAr: 'الرياضيات البحتة', url: '/aslevel/?ch=as-quad', ix: 'Calculus & Functions' },
+      { domain: /mech|force|kinemat/i, title: 'Mechanics (Paper 4 / M1)', titleAr: 'الميكانيكا وحركة الأجسام', url: '/aslevel/?ch=as-kinematics', ix: 'Forces & Newton Laws' },
+      { domain: /prob|stat/i, title: 'Probability & Statistics (Paper 5 / S1)', titleAr: 'الإحصاء والاحتمالات', url: '/aslevel/?ch=as-stats', ix: 'Normal Distribution' }
+    ],
+    a2level: [
+      { domain: /alg|func|log|exp|trig/i, title: 'Algebra, Logs & Advanced Trig', titleAr: 'الجبر واللوغاريتمات والمثلثات', url: '/a2level/?ch=a2-alg', ix: 'Modulus & Trig Explorer' },
+      { domain: /diff|integ|calc|de/i, title: 'Differentiation, Integration & DEs', titleAr: 'التفاضل والتكامل والمعادلات التفاضلية', url: '/a2level/?ch=a2-integ', ix: 'Calculus Explorer' },
+      { domain: /vec|complex|stat|poisson/i, title: 'Vectors, Complex Numbers & S2', titleAr: 'المتجهات والأعداد المركبة والإحصاء', url: '/a2level/?ch=a2-complex', ix: 'Argand Diagram Explorer' }
     ],
     calculus: [
-      { domain: /limit|cont/i, title: 'Limits & Continuity', titleAr: 'النهايات والاتصال', url: '/calculus/ch1/', ix: 'Limits & Tangent Visualizer' },
-      { domain: /deriv|diff/i, title: 'Derivatives & Applications', titleAr: 'الاشتقاق وتطبيقاته', url: '/calculus/ch2/', ix: 'Slope & Tangent Line' },
-      { domain: /integ/i, title: 'Integrals & Fundamental Theorem', titleAr: 'التكامل والنظرية الأساسية', url: '/calculus/ch4/', ix: 'Riemann Sums & Area' }
+      { domain: /limit|cont/i, title: 'Limits & Continuity', titleAr: 'النهايات والاتصال', url: '/calculus/?ch=ch-limits', ix: 'Limits & Tangent Visualizer' },
+      { domain: /deriv|diff|app/i, title: 'Derivatives & Applications', titleAr: 'الاشتقاق وتطبيقاته', url: '/calculus/?ch=ch-derivatives', ix: 'Slope & Tangent Line' },
+      { domain: /integ|ftc|series/i, title: 'Integrals & Fundamental Theorem', titleAr: 'التكامل والنظرية الأساسية', url: '/calculus/?ch=ch-integrals', ix: 'Riemann Sums & Area' }
+    ],
+    edexcel: [
+      { domain: /number|surd|bound|set/i, title: 'Number, Surds, Bounds & Set Theory', titleAr: 'الأعداد والجذور والحدود والمجموعات', url: '/edexcel/?ch=edx-number', ix: 'Bounds & Venn Explorer' },
+      { domain: /algebra|quad|function|series/i, title: 'Algebra, Functions & Series', titleAr: 'الجبر والدوال والمتسلسلات', url: '/edexcel/?ch=edx-algebra', ix: 'Quadratic & Function Explorer' },
+      { domain: /circle|trig|vector|coord/i, title: 'Geometry, Circle Theorems & Vectors', titleAr: 'الهندسة ونظريات الدائرة والمتجهات', url: '/edexcel/?ch=edx-geometry', ix: 'Circle & 3D Trig Explorer' },
+      { domain: /diff|kinemat|stat|prob|hist/i, title: 'Calculus, Kinematics & Statistics', titleAr: 'التفاضل والحركة والإحصاء', url: '/edexcel/?ch=edx-calculus', ix: 'Kinematics & Histogram Explorer' }
+    ],
+    gaten: [
+      { domain: /arithmetic|ratio|percent|work|motion/i, title: 'GAT Arithmetic, Ratios & Speed Shortcuts', titleAr: 'الحساب والنسب والسرعة (GAT)', url: '/gaten/?ch=gaten-arith', ix: 'Speed & Ratio Explorer' },
+      { domain: /comparison|geometry|data|average/i, title: 'GAT Comparisons, Geometry & Data', titleAr: 'المقارنات الكمية والهندسة والبيانات', url: '/gaten/?ch=gaten-qc-geo', ix: 'QC & Shaded Area Explorer' },
+      { domain: /logic|matrix|complex|function|seq|log/i, title: 'SAAT Algebra, Matrices & Functions', titleAr: 'الجبر والمصفوفات والدوال (SAAT)', url: '/gaten/?ch=gaten-saat-alg', ix: 'Matrix & Function Explorer' },
+      { domain: /trig|conic|vector|calc|limit|deriv|integ/i, title: 'SAAT Trig, Conics & Calculus', titleAr: 'المثلثات والقطوع والتفاضل والتكامل (SAAT)', url: '/gaten/?ch=gaten-saat-calc', ix: 'Conics & Calculus Explorer' }
+    ],
+    olympiad: [
+      { domain: /algebra|vieta|inequal|diophant|modular|prime/i, title: 'Olympiad Algebra & Number Theory', titleAr: 'جبر الأولمبياد ونظرية الأعداد', url: '/olympiad/?ch=oly-alg', ix: 'Modular & Vieta Explorer' },
+      { domain: /count|pigeon|recurrence|prob|invariant|game/i, title: 'Combinatorics, Recurrences & Invariants', titleAr: 'التوافيق والعلاقات التكرارية والثوابت', url: '/olympiad/?ch=oly-combo', ix: 'Combinatorics Explorer' },
+      { domain: /circle|power|triangle|ceva|menelaus/i, title: 'Olympiad Circle & Triangle Geometry', titleAr: 'هندسة الدوائر والمثلثات الأولمبية', url: '/olympiad/?ch=oly-geo-circles', ix: 'Power of a Point Explorer' }
+    ],
+    addmath: [
+      { domain: /func|quad|poly|binomial|log|exp/i, title: 'Functions, Quadratics, Polynomials & Logs', titleAr: 'الدوال والتربيعيات واللوغاريتمات', url: '/addmath/?ch=addmath-functions', ix: 'Composite & Log Explorer' },
+      { domain: /trig|circular|perm|comb|vector/i, title: 'Circular Measure, Trig, Combinatorics & Vectors', titleAr: 'القياس الدائري والمثلثات والمتجهات', url: '/addmath/?ch=addmath-trig', ix: 'Radian & Vector Explorer' },
+      { domain: /diff|integ|kinemat|rate/i, title: 'Calculus & Kinematics (0606 / 4PM1)', titleAr: 'التفاضل والتكامل والديناميكا', url: '/addmath/?ch=addmath-diff', ix: 'Kinematics Explorer' }
+    ],
+    mathai: [
+      { domain: /vector|norm|embed|matrix|transform/i, title: 'Vectors, Embeddings & Matrix Transformations', titleAr: 'المتجهات والتضمينات والمصفوفات', url: '/mathai/?ch=mathai-vectors', ix: 'Cosine Similarity Explorer' },
+      { domain: /gradient|optim|loss|regress/i, title: 'Gradient Descent & Regression Models', titleAr: 'الانحدار التدريجي ونماذج الانحدار', url: '/mathai/?ch=mathai-grad', ix: 'Loss Landscape Explorer' },
+      { domain: /prob|bayes|dist|mle|pca|eigen/i, title: 'Bayesian Probability, Distributions & PCA', titleAr: 'احتمالات بايز والتوزيعات وتحليل المكونات', url: '/mathai/?ch=mathai-pca', ix: 'PCA Projection Explorer' }
+    ],
+    act: [
+      { domain: /pre|elem|inter|algebra|function/i, title: 'ACT Algebra & Functions', titleAr: 'الجبر والدوال في اختبار ACT', url: '/act/?ch=act-alg', ix: 'Algebra Explorer' },
+      { domain: /coord|plane|geo|trig/i, title: 'ACT Geometry & Trigonometry', titleAr: 'الهندسة والمثلثات في اختبار ACT', url: '/act/?ch=act-geo', ix: 'Geometry Explorer' },
+      { domain: /stat|prob|num|matrix|complex/i, title: 'ACT Statistics, Matrices & Number', titleAr: 'الإحصاء والمصفوفات والأعداد', url: '/act/?ch=act-stats', ix: 'Probability Explorer' }
+    ],
+    act2: [
+      { domain: /alg|func|poly|rat|exp|log/i, title: 'ACT Subject Test 1 — Algebra & Functions', titleAr: 'الجبر والدوال (ACT 2 L1)', url: '/act2/', ix: 'Function Explorer' },
+      { domain: /geo|trig|conic|seq|lim|stat/i, title: 'ACT Subject Test 1 — Geometry, Trig & Precalc', titleAr: 'الهندسة والمثلثات (ACT 2 L1)', url: '/act2/', ix: 'Trig & Conic Explorer' }
+    ],
+    act2l2: [
+      { domain: /complex|matrix|vector|seq/i, title: 'ACT Subject Test 2 — Complex, Matrices & Vectors', titleAr: 'الأعداد المركبة والمصفوفات والمتجهات', url: '/act2l2/', ix: 'Matrix & Vector Explorer' },
+      { domain: /func|trig|polar|conic|limit/i, title: 'ACT Subject Test 2 — Advanced Functions, Polar & Limits', titleAr: 'الدوال المتقدمة والإحداثيات القطبية والنهايات', url: '/act2l2/', ix: 'Polar & Limit Explorer' }
+    ],
+    est: [
+      { domain: /linear|algebra|system|ineq/i, title: 'EST I — Heart of Algebra & Linear Systems', titleAr: 'الجبر والمعادلات الخطية (EST I)', url: '/est/', ix: 'Linear Explorer' },
+      { domain: /quad|poly|func|exp|data|geo|trig/i, title: 'EST I — Advanced Math, Data & Geometry', titleAr: 'الرياضيات المتقدمة والبيانات والهندسة (EST I)', url: '/est/', ix: 'Parabola & Data Explorer' }
+    ],
+    est2: [
+      { domain: /alg|func|coord|seq/i, title: 'EST II Level 1 — Algebra, Functions & Coordinate Geometry', titleAr: 'الجبر والدوال والهندسة الإحداثية (EST 2 L1)', url: '/est2/', ix: 'Coordinate Explorer' },
+      { domain: /geo|trig|stat|prob/i, title: 'EST II Level 1 — Geometry, Trig & Statistics', titleAr: 'الهندسة والمثلثات والإحصاء (EST 2 L1)', url: '/est2/', ix: 'Trig Explorer' }
+    ],
+    est2l2: [
+      { domain: /complex|matrix|vector|seq|alg|func/i, title: 'EST II Level 2 — Complex Numbers, Vectors & Functions', titleAr: 'الأعداد المركبة والمتجهات والدوال (EST 2 L2)', url: '/est2l2/', ix: 'Vector Explorer' },
+      { domain: /trig|conic|calc|deriv|integ|stat/i, title: 'EST II Level 2 — Trig, Conics, Calculus & Probability', titleAr: 'المثلثات والقطوع والتفاضل والاحتمالات (EST 2 L2)', url: '/est2l2/', ix: 'Calculus Explorer' }
+    ],
+    apab: [
+      { domain: /limit|deriv|diff|rate|opt/i, title: 'AP Calculus AB — Limits & Differential Calculus', titleAr: 'النهايات وحساب التفاضل (AP AB)', url: '/apab/', ix: 'Derivative Explorer' },
+      { domain: /integ|ftc|de|area|vol/i, title: 'AP Calculus AB — Integrals, DEs & Volumes', titleAr: 'التكامل والمعادلات التفاضلية والحجوم (AP AB)', url: '/apab/', ix: 'Riemann & Volume Explorer' }
+    ],
+    apbc: [
+      { domain: /limit|deriv|integ|de/i, title: 'AP Calculus BC — Core AB & Advanced Integration', titleAr: 'التفاضل والتكامل المتقدم (AP BC)', url: '/apbc/', ix: 'Integration Explorer' },
+      { domain: /param|polar|vector|series|taylor/i, title: 'AP Calculus BC — Parametric, Polar & Infinite Series', titleAr: 'المنحنيات القطبية ومتسلسلات تايلور (AP BC)', url: '/apbc/', ix: 'Taylor & Polar Explorer' }
+    ],
+    appc: [
+      { domain: /poly|rat|exp|log/i, title: 'AP Precalculus — Polynomial, Rational, Exp & Log', titleAr: 'كثيرات الحدود والدوال الأسية واللوغاريتمية', url: '/appc/', ix: 'Function Explorer' },
+      { domain: /trig|sin|polar|param|vector|matrix/i, title: 'AP Precalculus — Trig, Polar, Vectors & Matrices', titleAr: 'الدوال المثلثية والقطبية والمصفوفات', url: '/appc/', ix: 'Sinusoidal & Polar Explorer' }
+    ],
+    apstats: [
+      { domain: /explor|data|sampl|exper|prob|dist/i, title: 'AP Statistics — Exploring Data, Sampling & Probability', titleAr: 'استكشاف البيانات والمعاينة والاحتمالات', url: '/apstats/', ix: 'Distribution Explorer' },
+      { domain: /infer|conf|hypoth|chi|regress/i, title: 'AP Statistics — Statistical Inference & Regression', titleAr: 'الاستدلال الإحصائي واختبارات الفرضيات', url: '/apstats/', ix: 'Inference Explorer' }
+    ],
+    ibsl: [
+      { domain: /number|alg|func|trig/i, title: 'IB Math SL — Number, Functions & Trigonometry', titleAr: 'الأعداد والدوال وحساب المثلثات (IB SL)', url: '/ibsl/', ix: 'Functions & Trig Explorer' },
+      { domain: /stat|prob|calc|deriv|integ/i, title: 'IB Math SL — Statistics, Probability & Calculus', titleAr: 'الإحصاء والاحتمالات والتفاضل والتكامل (IB SL)', url: '/ibsl/', ix: 'Calculus & Normal Explorer' }
+    ],
+    ibhl: [
+      { domain: /alg|complex|proof|func|trig|vector/i, title: 'IB Math HL — Complex Numbers, Proof & 3D Vectors', titleAr: 'الأعداد المركبة والبرهان والمتجهات (IB HL)', url: '/ibhl/', ix: '3D Vector & Complex Explorer' },
+      { domain: /stat|prob|bayes|calc|de|maclaurin/i, title: 'IB Math HL — Advanced Calculus, DEs & Distributions', titleAr: 'التفاضل والتكامل المتقدم ومتسلسلات ماكلورين (IB HL)', url: '/ibhl/', ix: 'Maclaurin & DE Explorer' }
+    ],
+    algebra: [
+      { domain: /linear|ineq|system|func/i, title: 'Algebra 1 — Linear Equations, Systems & Functions', titleAr: 'المعادلات الخطية والأنظمة والدوال', url: '/algebra/', ix: 'Linear Explorer' },
+      { domain: /exp|poly|quad|radical|data/i, title: 'Algebra 1 — Exponents, Polynomials & Quadratics', titleAr: 'الأسس وكثيرات الحدود والمعادلات التربيعية', url: '/algebra/', ix: 'Parabola Explorer' }
+    ],
+    geo: [
+      { domain: /angle|parallel|triang|congru|simil/i, title: 'Geometry — Proof, Triangles, Congruence & Similarity', titleAr: 'البرهان والمثلثات والتطابق والتشابه', url: '/geo/', ix: 'Triangle Explorer' },
+      { domain: /trig|circle|coord|area|vol/i, title: 'Geometry — Right-Triangle Trig, Circles & 3D Solids', titleAr: 'حساب المثلثات والدوائر والمجسمات', url: '/geo/', ix: 'Circle & Volume Explorer' }
+    ],
+    alg2: [
+      { domain: /func|quad|complex|poly|rat/i, title: 'Algebra 2 — Quadratics, Complex, Polynomials & Rationals', titleAr: 'التربيعيات والأعداد المركبة وكثيرات الحدود', url: '/alg2/', ix: 'Polynomial Explorer' },
+      { domain: /exp|log|radical|seq|conic|trig/i, title: 'Algebra 2 — Exponentials, Logs, Series & Conics', titleAr: 'الدوال الأسية واللوغاريتمية والقطوع', url: '/alg2/', ix: 'Conics & Log Explorer' }
+    ],
+    precalc: [
+      { domain: /func|trig|ident|analytic/i, title: 'Pre-Calculus — Functions & Analytical Trigonometry', titleAr: 'الدوال وحساب المثلثات التحليلي', url: '/precalc/', ix: 'Unit Circle Explorer' },
+      { domain: /vector|polar|param|conic|matrix|seq|limit/i, title: 'Pre-Calculus — Vectors, Polar, Conics & Limits', titleAr: 'المتجهات والإحداثيات القطبية والقطوع والنهايات', url: '/precalc/', ix: 'Polar & Conics Explorer' }
+    ],
+    linalg: [
+      { domain: /vector|system|matrix|det|subspace/i, title: 'Linear Algebra — Systems, Matrices, Determinants & Subspaces', titleAr: 'الأنظمة الخطية والمصفوفات والفضاءات المتجهة', url: '/linalg/', ix: 'Matrix Transformation Explorer' },
+      { domain: /transform|eigen|orthog|svd|symm/i, title: 'Linear Algebra — Eigenvalues, Orthogonality & SVD', titleAr: 'القيم الذاتية والتعامد وتحليل القيم المفردة', url: '/linalg/', ix: 'Eigenvector Explorer' }
+    ],
+    mvc: [
+      { domain: /vector|curve|partial|grad|opt/i, title: 'Multivariable Calculus — 3D Vectors, Partial Derivatives & Gradients', titleAr: 'المتجهات ثلاثية الأبعاد والمشتقات الجزئية والتدرج', url: '/mvc/', ix: 'Gradient Explorer' },
+      { domain: /double|triple|integ|line|green|stokes|div/i, title: 'Multivariable Calculus — Multiple Integrals & Vector Fields', titleAr: 'التكاملات المتعددة وحساب المتجهات', url: '/mvc/', ix: 'Vector Field Explorer' }
+    ],
+    odes: [
+      { domain: /first|separ|linear|exact|second/i, title: 'Differential Equations — First & Second Order ODEs', titleAr: 'المعادلات التفاضلية من الرتبة الأولى والثانية', url: '/odes/', ix: 'Slope Field Explorer' },
+      { domain: /laplace|system|phase|series|bvp|fourier/i, title: 'Differential Equations — Laplace, Systems & Series', titleAr: 'تحويل لابلاس والأنظمة الخطية ومتسلسلات فورييه', url: '/odes/', ix: 'Phase Portrait Explorer' }
     ]
   };
 
@@ -368,11 +488,15 @@
   }
 
   function getProjectedScore(trackId, pct) {
-    if (trackId === 'sat') {
+    if (trackId === 'sat' || trackId === 'est' || trackId === 'est2' || trackId === 'est2l2') {
       var s = 420 + Math.round((pct / 100) * 380);
       var low = Math.max(400, s - 30);
       var high = Math.min(800, s + 30);
-      return low + '–' + high + ' (SAT Math)';
+      return low + '–' + high + (trackId === 'sat' ? ' (SAT Math)' : ' (EST Math)');
+    }
+    if (trackId === 'act' || trackId === 'act2' || trackId === 'act2l2') {
+      var actScore = Math.min(36, Math.max(14, Math.round(14 + (pct / 100) * 22)));
+      return actScore + ' / 36 (ACT Scale)';
     }
     if (trackId === 'qudrat' || trackId === 'tahsili' || trackId === 'gaten') {
       var qScore = Math.round(55 + (pct / 100) * 44);
