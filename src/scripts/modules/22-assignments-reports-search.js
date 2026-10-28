@@ -36,6 +36,7 @@ var VIEW_META = {
   apstats:{label:'AP Statistics',board:'College Board'},
   olympiad:{label:'Contest Math & Olympiad',board:'Olympiad'}
 };
+window.CSViewMeta = window.VIEW_META = VIEW_META;
 
 var CHAPTER_META = {
   'sat/sat-about':    {domain:'Strategy & Tools', topic:'Digital SAT Format & Adaptive Testing Strategy', diff:'All'},
@@ -257,9 +258,10 @@ function _renderChapterTeacherMeta(chId, viewId) {
   var chEl = document.getElementById(chId); if (!chEl) return;
   var meta = CHAPTER_META[key];
   if (!meta) {
-    var kEl = chEl.querySelector('.chead .k, .chead .tag');
+    var kEl = chEl.querySelector('.chead .k, .chead .tag, [class*="-domain-tag"] strong, [class*="-tag"] strong');
+    var qw  = chEl.querySelector('.ch-quiz-wrap[data-quiz-domains]');
     var hEl = chEl.querySelector('.chead h2, .chead h1');
-    var domTxt = kEl ? kEl.textContent.replace(/[·•].*$/, '').trim() : 'Core Curriculum';
+    var domTxt = kEl ? kEl.textContent.replace(/[·•].*$/, '').trim() : (qw ? (qw.getAttribute('data-quiz-domains') || '').split('|')[0].trim() : 'Core Curriculum');
     var topTxt = hEl ? hEl.textContent.replace(/^[^a-zA-Z\u0600-\u06FF]+/, '').trim() : chId;
     meta = { domain: domTxt || 'Core Curriculum', topic: topTxt || chId, diff: 'All' };
   }

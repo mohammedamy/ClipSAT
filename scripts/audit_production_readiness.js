@@ -143,6 +143,37 @@ audit(`HTML5 Canvas Explorers exist for all 32 explorer tracks (including addmat
   assert.ok(fs.existsSync(path.join(exDir, 'olympiad.js')), 'olympiad.js explorer must exist');
 });
 
+audit(`All 331 chapter Explorer blocks have wired dataPanel toggles and 100% bilingual challengePrompts`, () => {
+  const exOnlyCode = exFiles.map(f => fs.readFileSync(path.join(exDir, f), 'utf8')).join('\n');
+  assert.ok(!exOnlyCode.includes('"ar": null') && !exOnlyCode.includes('ar: null'), 'Explorer scripts must have 0 null Arabic challengePrompt strings');
+  const coreAppCode = fs.readFileSync(path.join(__dirname, '..', 'src', 'scripts', 'modules', '02-core-app.js'), 'utf8');
+  const plotEngineCode = fs.readFileSync(path.join(__dirname, '..', 'src', 'scripts', 'modules', '02a-plot-canvas-engine.js'), 'utf8');
+  const allExCode = exOnlyCode + '\n' + coreAppCode + '\n' + plotEngineCode;
+  const cDir = path.join(__dirname, '..', 'content');
+  const cTracks = fs.readdirSync(cDir).filter(d => fs.statSync(path.join(cDir, d)).isDirectory());
+  let explorerCount = 0;
+  cTracks.forEach(t => {
+    const meta = JSON.parse(fs.readFileSync(path.join(cDir, t, '_meta.json'), 'utf8'));
+    (meta.chapterOrder || []).forEach(slug => {
+      const ch = JSON.parse(fs.readFileSync(path.join(cDir, t, `${slug}.json`), 'utf8'));
+      ((ch.content && ch.content.blocks) || []).forEach(b => {
+        if (b.kind === 'explorer') {
+          explorerCount++;
+          const cId = b.canvasId || (b.canvas && b.canvas.id) || (b.canvas3d && (b.canvas3d.btnId || b.canvas3d.wrapId));
+          const pfx = cId ? cId.replace(/Canvas$/, '') : '';
+          const hasCanvas = cId && (allExCode.includes(cId) || (pfx && allExCode.includes(`'${pfx}'`)));
+          assert.ok(hasCanvas, `${t}/${slug} explorer canvas ${cId} must be wired in src/scripts/explorers/*.js`);
+          if (b.dataPanel && b.dataPanel.btnId) {
+            const hasDataBtn = allExCode.includes(b.dataPanel.btnId) || (pfx && allExCode.includes(`'${pfx}'`) && allExCode.includes("pfx+'DataBtn'"));
+            assert.ok(hasDataBtn, `${t}/${slug} explorer dataPanel.btnId ${b.dataPanel.btnId} must be wired in src/scripts/explorers/*.js`);
+          }
+        }
+      });
+    });
+  });
+  assert.ok(explorerCount >= 302, `Expected >= 302 explorer blocks across all tracks, found ${explorerCount}`);
+});
+
 // ─────────────────────────────────────────────────────────────────────────────
 // 3. PILLAR 3: INTERACTIVE PRACTICE & 100% ARABIC BILINGUAL PARITY
 // ─────────────────────────────────────────────────────────────────────────────

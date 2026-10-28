@@ -99,6 +99,9 @@
     var canvas=document.getElementById('actAboutCanvas'); if(!canvas) return;
     var q=30, sq=document.getElementById('actAboutQ');
     var view={xmin:0,xmax:60,ymin:0,ymax:65};
+    var dataBtn=document.getElementById('actAboutDataBtn'), dataPanel=document.getElementById('actAboutDataPanel'),
+        dataDesc=document.getElementById('actAboutDataDesc'), dataRows=document.getElementById('actAboutDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     function cumMin(x){
       if(x<=20) return 0.75*x;
       if(x<=40) return 15 + 1.0*(x-20);
@@ -114,6 +117,8 @@
       _set('actAboutTier', tier);
       _set('actAboutTime', t.toFixed(1)+' min elapsed');
       _set('actAboutRem', (60-t).toFixed(1)+' min left');
+      if(dataDesc) dataDesc.textContent='20-20-20 ACT pacing target at Q'+q+': '+t.toFixed(1)+' min elapsed, '+(60-t).toFixed(1)+' min remaining ('+tier+').';
+      if(dataRows) renderDataRows(dataRows,[['Q'+q,tier],[t.toFixed(1)+' min',(60-t).toFixed(1)+' min']]);
     }
     register(canvas,draw);
     if(sq) sq.addEventListener('input',function(){ q=parseFloat(sq.value); _set('actAboutQV','Q'+q); redrawAll(); });
@@ -124,6 +129,9 @@
     var canvas=document.getElementById('actNumbersCanvas'); if(!canvas) return;
     var p1=20, p2=-20, s1=document.getElementById('actNumP1'), s2=document.getElementById('actNumP2');
     var view={xmin:0,xmax:3,ymin:0,ymax:160};
+    var dataBtn=document.getElementById('actNumDataBtn'), dataPanel=document.getElementById('actNumDataPanel'),
+        dataDesc=document.getElementById('actNumDataDesc'), dataRows=document.getElementById('actNumDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     function draw(ctx,w,ht){
       var P=new Plot(ctx,w,ht,view,{l:32,r:14,t:12,b:22}); P.clear(); P.grid();
       var v0=100, v1=100*(1+p1/100), v2=v1*(1+p2/100);
@@ -137,6 +145,8 @@
       _set('actNumStep1', v1.toFixed(1));
       _set('actNumFinal', v2.toFixed(1));
       _set('actNumNet', (net>=0?'+':'')+net+'%');
+      if(dataDesc) dataDesc.textContent='Successive multipliers: 100 × '+(1+p1/100).toFixed(2)+' × '+(1+p2/100).toFixed(2)+' = '+v2.toFixed(1)+' (net '+(net>=0?'+':'')+net+'%).';
+      if(dataRows) renderDataRows(dataRows,[['Start','100.0'],['After Step 1',v1.toFixed(1)],['Final Value',v2.toFixed(1)],['Net Change',(net>=0?'+':'')+net+'%']]);
     }
     function upd(){ p1=parseFloat(s1.value); p2=parseFloat(s2.value); _set('actNumP1V',(p1>=0?'+':'')+p1+'%'); _set('actNumP2V',(p2>=0?'+':'')+p2+'%'); redrawAll(); }
     register(canvas,draw);
@@ -149,6 +159,9 @@
     var canvas=document.getElementById('actAlgCanvas'); if(!canvas) return;
     var m=1, c=2, sm=document.getElementById('actAlgM'), sc=document.getElementById('actAlgC');
     var view={xmin:-5,xmax:5,ymin:-5,ymax:7,square:true,step:1};
+    var dataBtn=document.getElementById('actAlgDataBtn'), dataPanel=document.getElementById('actAlgDataPanel'),
+        dataDesc=document.getElementById('actAlgDataDesc'), dataRows=document.getElementById('actAlgDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     function draw(ctx,w,ht){
       var P=new Plot(ctx,w,ht,view,{l:26,r:12,t:12,b:20}); P.clear(); P.grid();
       P.curve(function(x){return x*x-3;}, INDIGO, 2.5);
@@ -163,6 +176,8 @@
       }
       _set('actAlgDisc', disc.toFixed(1));
       _set('actAlgSolCount', count+' real intersection'+(count===1?'':'s'));
+      if(dataDesc) dataDesc.textContent='System y = x² − 3 and y = '+m+'x + '+c+': discriminant Δ = '+disc.toFixed(1)+' ('+count+' real solutions).';
+      if(dataRows) renderDataRows(dataRows,[['Slope m',fmt(m,1)],['Intercept c',fmt(c,1)],['Discriminant Δ',disc.toFixed(1)],['Real Intersections',String(count)]]);
     }
     function upd(){ m=parseFloat(sm.value); c=parseFloat(sc.value); _set('actAlgMV',m); _set('actAlgCV',c); redrawAll(); }
     register(canvas,draw);
@@ -175,6 +190,9 @@
     var canvas=document.getElementById('actGeoCanvas'); if(!canvas) return;
     var r=4, deg=90, h=5, sr=document.getElementById('actGeoR'), sd=document.getElementById('actGeoDeg'), sh=document.getElementById('actGeoH');
     var view={xmin:-6,xmax:6,ymin:-6,ymax:6,square:true,step:1};
+    var dataBtn=document.getElementById('actGeoDataBtn'), dataPanel=document.getElementById('actGeoDataPanel'),
+        dataDesc=document.getElementById('actGeoDataDesc'), dataRows=document.getElementById('actGeoDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     function draw(ctx,w,ht){
       var P=new Plot(ctx,w,ht,view,{l:26,r:12,t:12,b:20}); P.clear(); P.grid();
       var rad=deg*Math.PI/180;
@@ -190,6 +208,8 @@
       _set('actGeoArc', arc.toFixed(2));
       _set('actGeoArea', area.toFixed(2));
       _set('actGeoChord', chord.toFixed(2)+' | V: '+vCyl.toFixed(0)+'/'+vCone.toFixed(0));
+      if(dataDesc) dataDesc.textContent='Circle sector r = '+r+', θ = '+deg+'°, h = '+h+': arc = '+arc.toFixed(2)+', area = '+area.toFixed(2)+', chord = '+chord.toFixed(2)+'.';
+      if(dataRows) renderDataRows(dataRows,[['Arc Length',arc.toFixed(2)],['Sector Area',area.toFixed(2)],['Chord Length',chord.toFixed(2)],['Cylinder / Cone Vol',vCyl.toFixed(1)+' / '+vCone.toFixed(1)]]);
     }
     function upd(){
       if(sr){ r=parseFloat(sr.value); _set('actGeoRV',r); }
@@ -260,6 +280,9 @@
     var canvas=document.getElementById('actStatsCanvas'); if(!canvas) return;
     var out=18, so=document.getElementById('actStatsOut');
     var view={xmin:0,xmax:8,ymin:0,ymax:35};
+    var dataBtn=document.getElementById('actStatsDataBtn'), dataPanel=document.getElementById('actStatsDataPanel'),
+        dataDesc=document.getElementById('actStatsDataDesc'), dataRows=document.getElementById('actStatsDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     function draw(ctx,w,ht){
       var P=new Plot(ctx,w,ht,view,{l:32,r:14,t:12,b:22}); P.clear(); P.grid();
       var vals=[8, 10, 12, 12, 14, 16, out].sort(function(a,b){return a-b;});
@@ -274,6 +297,8 @@
       _set('actStatsMean', mean.toFixed(2));
       _set('actStatsMed', med.toFixed(1));
       _set('actStatsRange', (vals[6]-vals[0]).toFixed(0));
+      if(dataDesc) dataDesc.textContent='7-value dataset with outlier x₇ = '+out+': Mean = '+mean.toFixed(2)+', Median = '+med.toFixed(1)+', Range = '+(vals[6]-vals[0]).toFixed(0)+'.';
+      if(dataRows) renderDataRows(dataRows,[['Mean',mean.toFixed(2)],['Median',med.toFixed(1)],['Range',(vals[6]-vals[0]).toFixed(0)]]);
     }
     register(canvas,draw);
     if(so) so.addEventListener('input',function(){ out=parseFloat(so.value); _set('actStatsOutV',out); redrawAll(); });
@@ -284,6 +309,9 @@
     var canvas=document.getElementById('actAdvCanvas'); if(!canvas) return;
     var a=3, b=2, sa=document.getElementById('actAdvA'), sb=document.getElementById('actAdvB');
     var view={xmin:-6,xmax:6,ymin:-6,ymax:6,square:true,step:1};
+    var dataBtn=document.getElementById('actAdvDataBtn'), dataPanel=document.getElementById('actAdvDataPanel'),
+        dataDesc=document.getElementById('actAdvDataDesc'), dataRows=document.getElementById('actAdvDataRows');
+    wireDataToggle(dataBtn,dataPanel);
     function draw(ctx,w,ht){
       var P=new Plot(ctx,w,ht,view,{l:26,r:12,t:12,b:20}); P.clear(); P.grid();
       // z = a + bi and i*z = -b + ai
@@ -297,6 +325,8 @@
       _set('actAdvMod', mod.toFixed(2));
       _set('actAdvConj', a+(b>=0?' − '+b:' + '+(-b))+'i');
       _set('actAdvRot', (-b)+(a>=0?' + '+a:' − '+(-a))+'i');
+      if(dataDesc) dataDesc.textContent='Complex vector z = '+a+' + '+b+'i: |z| = '+mod.toFixed(2)+', i·z = '+(-b)+' + '+a+'i.';
+      if(dataRows) renderDataRows(dataRows,[['z = a + bi',a+' + '+b+'i'],['Modulus |z|',mod.toFixed(2)],['90° Rotated i·z',(-b)+' + '+a+'i']]);
     }
     function upd(){ a=parseFloat(sa.value); b=parseFloat(sb.value); _set('actAdvAV',a); _set('actAdvBV',b); redrawAll(); }
     register(canvas,draw);

@@ -17,8 +17,11 @@ function _getCourseLabel() {
   }
   var active = document.querySelector('.view.active');
   if (active) {
-    var id = active.id || '';
-    return id.replace('view-','').replace(/-/g,' ').toUpperCase();
+    var id = (active.id || '').replace(/^view-/,'');
+    if (window.VIEW_META && window.VIEW_META[id] && window.VIEW_META[id].label) {
+      return window.VIEW_META[id].label;
+    }
+    return id.replace(/-/g,' ').toUpperCase();
   }
   return 'ClipSAT';
 }
