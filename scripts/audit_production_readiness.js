@@ -225,11 +225,12 @@ audit(`All exam specifications define or link to an existing bank on disk`, () =
 });
 
 const formulaCode = fs.readFileSync(path.join(__dirname, '..', 'src', 'scripts', 'modules', '20f-formula-modal.js'), 'utf8');
-audit(`Formula Sheets modal includes 7 authorized curriculum cheat-sheet tabs`, () => {
-  const tabs = ['sat', 'cambridge', 'addmath', 'alevel', 'qudrat', 'ap', 'mathai'];
+audit(`Formula Sheets modal includes 9 authorized curriculum cheat-sheet tabs and auto-routing for all 31 tracks`, () => {
+  const tabs = ['sat', 'cambridge', 'addmath', 'alevel', 'qudrat', 'ap', 'mathai', 'olympiad', 'univ'];
   tabs.forEach(t => {
     assert.ok(formulaCode.includes(`'${t}':`), `Formula modal must include tab for "${t}"`);
   });
+  assert.ok(formulaCode.includes('TRACK_TO_FORMULA_TAB'), 'Formula modal must define TRACK_TO_FORMULA_TAB');
 });
 
 const calcCode = fs.readFileSync(path.join(__dirname, '..', 'src', 'scripts', 'modules', '20g-floating-calc.js'), 'utf8');
@@ -268,6 +269,42 @@ audit(`Curriculum directory covers 31 complete tracks with _meta.json, >= 8 chap
     assert.ok(manifestFullExams >= 10, `Track ${t} manifest.json must have >= 10 isFullExam entries, found ${manifestFullExams}`);
   });
   assert.ok(totalChapters >= 302, `Expected >= 302 chapters across 31 tracks, found ${totalChapters}`);
+});
+
+audit(`Every chapter across all 302 chapters meets Gold-Standard Block Parity (>=4 worked examples, >=5 bilingual practiceProblems, >=2 figures, >=1 trap/proof/table/explorer, and Chapter 1 syllabusMap)`, () => {
+  contentTracks.forEach(t => {
+    const meta = JSON.parse(fs.readFileSync(path.join(contentDir, t, '_meta.json'), 'utf8'));
+    const chIds = meta.chapterOrder || [];
+    chIds.forEach((cid, idx) => {
+      const ch = JSON.parse(fs.readFileSync(path.join(contentDir, t, `${cid}.json`), 'utf8'));
+      const blocks = (ch.content && ch.content.blocks) || [];
+      if (idx === 0) {
+        assert.ok(blocks.some(b => b.kind === 'syllabusMap'), `First chapter ${cid} of track ${t} must contain a syllabusMap block`);
+      }
+      let ex = 0, prac = 0, fig = 0, trap = 0, pf = 0, tbl = 0, exp = 0;
+      blocks.forEach(b => {
+        if ((b.kind === 'callout' && (b.style === 'example' || b.style === 'example-card' || b.style === 'example-grid')) || b.kind === 'workedExample' || b.kind === 'workedExampleCard') ex++;
+        if (b.kind === 'callout' && b.style === 'warn') trap++;
+        if (b.kind === 'callout' && b.style === 'pf') pf++;
+        if (b.kind === 'table') tbl++;
+        if (b.kind === 'practiceProblem') {
+          prac++;
+          assert.ok(b.question && b.question.en && b.question.ar, `${t}/${cid} practiceProblem must have bilingual question`);
+          assert.ok(b.solution && b.solution.en && b.solution.ar, `${t}/${cid} practiceProblem must have bilingual solution`);
+          assert.ok(Array.isArray(b.hints) && b.hints.length >= 3 && b.hints.every(h => h.en && h.ar), `${t}/${cid} practiceProblem must have >=3 bilingual hints`);
+        }
+        if (b.kind === 'figure') fig++;
+        if (b.kind === 'explorer') exp++;
+      });
+      assert.ok(ex >= 4, `${t}/${cid} must have >= 4 worked examples, found ${ex}`);
+      assert.ok(prac >= 5, `${t}/${cid} must have >= 5 practiceProblems, found ${prac}`);
+      assert.ok(fig >= 2, `${t}/${cid} must have >= 2 figures, found ${fig}`);
+      assert.ok(trap >= 1, `${t}/${cid} must have >= 1 warn trap, found ${trap}`);
+      assert.ok(pf >= 1, `${t}/${cid} must have >= 1 pf derivation, found ${pf}`);
+      assert.ok(tbl >= 1, `${t}/${cid} must have >= 1 table, found ${tbl}`);
+      assert.ok(exp >= 1, `${t}/${cid} must have >= 1 explorer, found ${exp}`);
+    });
+  });
 });
 
 audit(`Every curriculum track has a 50-question _practice-set.json (1,550 total practice-set items)`, () => {

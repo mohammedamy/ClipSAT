@@ -508,24 +508,24 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>Practice Problem 1:</strong> Evaluate \\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\) for \\( \\mathbf{F} = \\langle e^y, x e^y + (z+1)e^z, (z+2)e^z \\rangle \\) along the curve \\( \\mathbf{r}(t) = \\langle t, t^2, t^3 \\rangle \\) for \\( 0 \\le t \\le 1 \\).",
-          "ar": null
+          "ar": "<strong>Practice Problem 1:</strong> احسب قيمة \\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\) for \\( \\mathbf{F} = \\langle e^y, x e^y + (z+1)e^z, (z+2)e^z \\rangle \\) along the curve \\( \\mathbf{r}(t) = \\langle t, t^2, t^3 \\rangle \\) for \\( 0 \\le t \\le 1 \\)."
         },
         "solution": {
           "en": "<p>First check if \\( \\mathbf{F} \\) is conservative: \\[ P_y = e^y, \\; Q_x = e^y; \\quad P_z = 0, \\; R_x = 0; \\quad Q_z = e^z + (z+1)e^z = (z+2)e^z, \\; R_y = 0. \\] Notice \\( R_y = 0 \\) while \\( Q_z = (z+2)e^z\neq 0 \\). Thus \\( \\mathbf{F} \\) is not conservative and the Fundamental Theorem cannot be used directly.</p><p>Evaluate directly: \\( \\mathbf{r}'(t) = \\langle 1, 2t, 3t^2 \\rangle \\). \\( x = t, y = t^2, z = t^3 \\). \\[ \\mathbf{F}(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t) = e^{t^2}(1) + \\left[ t e^{t^2} + (t^3+1)e^{t^3} \\right](2t) + (t^3+2)e^{t^3}(3t^2). \\] Regroup terms: \\[ \\left( e^{t^2} + 2t^2 e^{t^2} \\right) + \\left( 2t(t^3+1)e^{t^3} + 3t^2(t^3+2)e^{t^3} \\right) = \\frac{d}{dt}\\left( t e^{t^2} \\right) + \\frac{d}{dt}\\left( (t^3+1)e^{t^3} \\cdot t^2 \\dots \\right). \\] Alternatively, evaluate \\( \\int_0^1 (e^{t^2} + 2t^2 e^{t^2})\\,dt = \\Big[ t e^{t^2} \\Big]_0^1 = e \\). The remaining \\( z \\)-terms integrate to: \\[ \\int_0^1 \\left[ 2t^4 e^{t^3} + 2t e^{t^3} + 3t^5 e^{t^3} + 6t^2 e^{t^3} \\right] dt. \\] Substituting \\( u = t^3 \\), \\( du = 3t^2 dt \\): the integral yields \\( 2e - 1 \\). Combined work: \\( 3e - 1 \\).</p>",
-          "ar": null
+          "ar": "<p>First check إذا كان \\( \\mathbf{F} \\) is conservative: \\[ P_y = e^y, \\; Q_x = e^y; \\quad P_z = 0, \\; R_x = 0; \\quad Q_z = e^z + (z+1)e^z = (z+2)e^z, \\; R_y = 0. \\] Notice \\( R_y = 0 \\) while \\( Q_z = (z+2)e^z\neq 0 \\). Thus \\( \\mathbf{F} \\) is not conservative and the Fundamental Theorem cannot be used directly.</p><p>احسب قيمة directly: \\( \\mathbf{r}'(t) = \\langle 1, 2t, 3t^2 \\rangle \\). \\( x = t, y = t^2, z = t^3 \\). \\[ \\mathbf{F}(\\mathbf{r}(t)) \\cdot \\mathbf{r}'(t) = e^{t^2}(1) + \\left[ t e^{t^2} + (t^3+1)e^{t^3} \\right](2t) + (t^3+2)e^{t^3}(3t^2). \\] Regroup terms: \\[ \\left( e^{t^2} + 2t^2 e^{t^2} \\right) + \\left( 2t(t^3+1)e^{t^3} + 3t^2(t^3+2)e^{t^3} \\right) = \\frac{d}{dt}\\left( t e^{t^2} \\right) + \\frac{d}{dt}\\left( (t^3+1)e^{t^3} \\cdot t^2 \\dots \\right). \\] Alternatively, احسب قيمة \\( \\int_0^1 (e^{t^2} + 2t^2 e^{t^2})\\,dt = \\Big[ t e^{t^2} \\Big]_0^1 = e \\). The remaining \\( z \\)-terms integrate to: \\[ \\int_0^1 \\left[ 2t^4 e^{t^3} + 2t e^{t^3} + 3t^5 e^{t^3} + 6t^2 e^{t^3} \\right] dt. \\] Substituting \\( u = t^3 \\), \\( du = 3t^2 dt \\): the integral yields \\( 2e - 1 \\). Combined work: \\( 3e - 1 \\).</p>"
         },
         "hints": [
           {
             "en": "First check if \\( \\mathbf{F} \\) is conservative: \\(P_y = e^y, \\; Q_x = e^y; \\quad P_z = 0, \\; R_x = 0; \\quad Q_z = e^z + (z+1)e^z = (z+2)e^z, \\; R_y\\).",
-            "ar": null
+            "ar": "First check إذا كان \\( \\mathbf{F} \\) is conservative: \\(P_y = e^y, \\; Q_x = e^y; \\quad P_z = 0, \\; R_x = 0; \\quad Q_z = e^z + (z+1)e^z = (z+2)e^z, \\; R_y\\)."
           },
           {
             "en": "Notice \\( R_y = 0 \\) while \\( Q_z = (z+2)e^z eq 0 \\). Thus \\( \\mathbf{F} \\) is not conservative and the Fundamental Theorem cannot be used directly. Evaluate directly: \\( \\mathbf{r}'(t) = \\langle 1, 2t, 3t^2 \\rangle \\). \\( x = t, y = t^2, z = t^3 \\).",
-            "ar": null
+            "ar": "Notice \\( R_y = 0 \\) while \\( Q_z = (z+2)e^z eq 0 \\). Thus \\( \\mathbf{F} \\) is not conservative and the Fundamental Theorem cannot be used directly. احسب قيمة directly: \\( \\mathbf{r}'(t) = \\langle 1, 2t, 3t^2 \\rangle \\). \\( x = t, y = t^2, z = t^3 \\)."
           },
           {
             "en": "Substituting \\(u = t^3\\), \\(du = 3t^2 dt\\): the integral yields \\(2e - 1\\). Combined work: \\(3e - 1\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(u = t^3\\) ، \\(du = 3t^2 dt\\) ، \\(2e - 1\\) ، \\(3e - 1\\) لتبسيط الخطوة."
           }
         ]
       },
@@ -533,24 +533,24 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>Practice Problem 2:</strong> Evaluate \\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\) where \\( \\mathbf{F} = \\nabla(x^3 y^2 + \\sin(xz)) \\) and \\( C \\) is the helix \\( \\mathbf{r}(t) = \\langle \\cos t, \\sin t, t \\rangle \\) for \\( 0 \\le t \\le 2\\pi \\).",
-          "ar": null
+          "ar": "<strong>Practice Problem 2:</strong> احسب قيمة \\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} \\) حيث \\( \\mathbf{F} = \\nabla(x^3 y^2 + \\sin(xz)) \\) and \\( C \\) is the helix \\( \\mathbf{r}(t) = \\langle \\cos t, \\sin t, t \\rangle \\) for \\( 0 \\le t \\le 2\\pi \\)."
         },
         "solution": {
           "en": "<p>Since \\( \\mathbf{F} \\) is explicitly given as the gradient of the potential function \\( f(x,y,z) = x^3 y^2 + \\sin(xz) \\), by the Fundamental Theorem of Line Integrals: \\[ \\int_C \\mathbf{F}\\cdot d\\mathbf{r} = f(\\mathbf{r}(2\\pi)) - f(\\mathbf{r}(0)). \\] Initial point: \\( \\mathbf{r}(0) = \\langle \\cos 0, \\sin 0, 0 \\rangle = (1, 0, 0) \\).<br>Terminal point: \\( \\mathbf{r}(2\\pi) = \\langle \\cos(2\\pi), \\sin(2\\pi), 2\\pi \\rangle = (1, 0, 2\\pi) \\).</p><p>Evaluating \\( f \\) at endpoints: \\[ f(1, 0, 0) = 1^3(0)^2 + \\sin(0) = 0. \\] \\[ f(1, 0, 2\\pi) = 1^3(0)^2 + \\sin(1 \\times 2\\pi) = 0 + \\sin(2\\pi) = 0. \\] Thus, \\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} = 0 - 0 = 0 \\).</p>",
-          "ar": null
+          "ar": "<p>Since \\( \\mathbf{F} \\) is explicitly given as the gradient of the potential function \\( f(x,y,z) = x^3 y^2 + \\sin(xz) \\), بتطبيق Fundamental Theorem of Line Integrals: \\[ \\int_C \\mathbf{F}\\cdot d\\mathbf{r} = f(\\mathbf{r}(2\\pi)) - f(\\mathbf{r}(0)). \\] Initial point: \\( \\mathbf{r}(0) = \\langle \\cos 0, \\sin 0, 0 \\rangle = (1, 0, 0) \\).<br>Terminal point: \\( \\mathbf{r}(2\\pi) = \\langle \\cos(2\\pi), \\sin(2\\pi), 2\\pi \\rangle = (1, 0, 2\\pi) \\).</p><p>Evaluating \\( f \\) at endpoints: \\[ f(1, 0, 0) = 1^3(0)^2 + \\sin(0) = 0. \\] \\[ f(1, 0, 2\\pi) = 1^3(0)^2 + \\sin(1 \\times 2\\pi) = 0 + \\sin(2\\pi) = 0. \\] وعليه، \\( \\int_C \\mathbf{F}\\cdot d\\mathbf{r} = 0 - 0 = 0 \\).</p>"
         },
         "hints": [
           {
             "en": "Since \\( \\mathbf{F} \\) is explicitly given as the gradient of the potential function \\( f(x,y,z) = x^3 y^2 + \\sin(xz) \\), by the Fundamental Theorem of Line Integrals: \\(\\int_C \\mathbf{F}\\cdot d\\mathbf{r} = f(\\mathbf{r}(2\\pi)) - f(\\mathbf{r}(0))\\).",
-            "ar": null
+            "ar": "Since \\( \\mathbf{F} \\) is explicitly given as the gradient of the potential function \\( f(x,y,z) = x^3 y^2 + \\sin(xz) \\), بتطبيق Fundamental Theorem of Line Integrals: \\(\\int_C \\mathbf{F}\\cdot d\\mathbf{r} = f(\\mathbf{r}(2\\pi)) - f(\\mathbf{r}(0))\\)."
           },
           {
             "en": "Initial point: \\( \\mathbf{r}(0) = \\langle \\cos 0, \\sin 0, 0 \\rangle = (1, 0, 0) \\). Terminal point: \\( \\mathbf{r}(2\\pi) = \\langle \\cos(2\\pi), \\sin(2\\pi), 2\\pi \\rangle = (1, 0, 2\\pi) \\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\( \\mathbf{r}(0) = \\langle \\cos 0, \\sin 0, 0 \\rangle = (1, 0, 0) \\) ، \\( \\mathbf{r}(2\\pi) = \\langle \\cos(2\\pi), \\sin(2\\pi), 2\\pi \\rangle = (1, 0, 2\\pi) \\) لتبسيط الخطوة."
           },
           {
             "en": "Thus, \\(\\int_C F\\cdot dr = 0 - 0\\).",
-            "ar": null
+            "ar": "وعليه، \\(\\int_C F\\cdot dr = 0 - 0\\)."
           }
         ]
       },
@@ -558,50 +558,75 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 3 · Medium]</strong> Consider the vector field \\( \\mathbf{F}(x, y) = \\langle 2x, 3y \\rangle \\). Which of the following options best represents the vector field at the point (1, 1)?",
-          "ar": null
+          "ar": "<strong>[Practice 3 · Medium]</strong> Consider the vector field \\( \\mathbf{F}(x, y) = \\langle 2x, 3y \\rangle \\). Which of the following options best represents the vector field عند النقطة (1, 1)?"
         },
         "hints": [
           {
             "en": "To find the representation of the vector field \\( \\mathbf{F}(x, y) = \\langle 2x, 3y \\rangle \\) at a specific point, we substitute the coordinates of the point into the components of the vector field.",
-            "ar": null
+            "ar": "To أوجد representation of the vector field \\( \\mathbf{F}(x, y) = \\langle 2x, 3y \\rangle \\) at a specإذا كانic point, we عوّض the coordinates of the point into the components of the vector field."
           },
           {
             "en": "At the point (1, 1), we have: \\( x = 1 \\) and \\( y = 1 \\). Substituting these values into \\( \\mathbf{F}(x, y) \\) gives: \\( \\mathbf{F}(1, 1) = \\langle 2(1), 3(1) \\rangle = \\langle 2, 3 \\rangle \\).",
-            "ar": null
+            "ar": "عند النقطة (1, 1), we have: \\( x = 1 \\) and \\( y = 1 \\). Substituting these values into \\( \\mathbf{F}(x, y) \\) gives: \\( \\mathbf{F}(1, 1) = \\langle 2(1), 3(1) \\rangle = \\langle 2, 3 \\rangle \\)."
           },
           {
             "en": "Therefore, the vector field at the point (1, 1) is \\(\\langle 2, 3 \\rangle\\).",
-            "ar": null
+            "ar": "وبالتالي، the vector field عند النقطة (1, 1) is \\(\\langle 2, 3 \\rangle\\)."
           }
         ],
         "solution": {
           "en": "To find the representation of the vector field \\( \\mathbf{F}(x, y) = \\langle 2x, 3y \\rangle \\) at a specific point, we substitute the coordinates of the point into the components of the vector field. At the point (1, 1), we have: \\( x = 1 \\) and \\( y = 1 \\). Substituting these values into \\( \\mathbf{F}(x, y) \\) gives: \\( \\mathbf{F}(1, 1) = \\langle 2(1), 3(1) \\rangle = \\langle 2, 3 \\rangle \\). Therefore, the vector field at the point (1, 1) is \\( \\langle 2, 3 \\rangle \\). Option B is incorrect as it represents the position vector at (1,1). Option C is incorrect as it represents the vector field at (2,2). Option D is incorrect as it uses the x-component from (2,y) and the y-component from (x,2).",
-          "ar": null
+          "ar": "To أوجد representation of the vector field \\( \\mathbf{F}(x, y) = \\langle 2x, 3y \\rangle \\) at a specإذا كانic point, we عوّض the coordinates of the point into the components of the vector field. عند النقطة (1, 1), we have: \\( x = 1 \\) and \\( y = 1 \\). Substituting these values into \\( \\mathbf{F}(x, y) \\) gives: \\( \\mathbf{F}(1, 1) = \\langle 2(1), 3(1) \\rangle = \\langle 2, 3 \\rangle \\). وبالتالي، the vector field عند النقطة (1, 1) is \\( \\langle 2, 3 \\rangle \\). Option B is incorrect as it represents the position vector at (1,1). Option C is incorrect as it represents the vector field at (2,2). Option D is incorrect as it uses the x-component from (2,y) and the y-component from (x,2)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4 · Hard]</strong> Consider the vector field \\( \\mathbf{F}(x,y) = \\langle 2x+y, x-3y \\rangle \\). What is the value of the vector field at the point \\( (3, -1) \\)?",
-          "ar": null
+          "ar": "<strong>[Practice 4 · Hard]</strong> Consider the vector field \\( \\mathbf{F}(x,y) = \\langle 2x+y, x-3y \\rangle \\). ما قيمة the vector field عند النقطة \\( (3, -1) \\)?"
         },
         "hints": [
           {
             "en": "To find the value of the vector field \\( \\mathbf{F}(x,y) = \\langle 2x+y, x-3y \\rangle \\) at the point \\( (3, -1) \\), we substitute \\( x=3 \\) and \\( y=-1 \\) into the components of the vector field.",
-            "ar": null
+            "ar": "To أوجد قيمة the vector field \\( \\mathbf{F}(x,y) = \\langle 2x+y, x-3y \\rangle \\) عند النقطة \\( (3, -1) \\), we عوّض \\( x=3 \\) and \\( y=-1 \\) into the components of the vector field."
           },
           {
             "en": "The first component is \\( 2x+y = 2(3) + (-1) = 6 - 1 = 5 \\). The second component is \\(x-3y = 3 - 3(-1) = 3 + 3\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\( 2x+y = 2(3) + (-1) = 6 - 1 = 5 \\) ، \\(x-3y = 3 - 3(-1) = 3 + 3\\) لتبسيط الخطوة."
           },
           {
             "en": "Therefore, the vector field at \\((3, -1)\\) is \\(\\langle 5, 6 \\rangle\\).",
-            "ar": null
+            "ar": "وبالتالي، the vector field at \\((3, -1)\\) is \\(\\langle 5, 6 \\rangle\\)."
           }
         ],
         "solution": {
           "en": "To find the value of the vector field \\( \\mathbf{F}(x,y) = \\langle 2x+y, x-3y \\rangle \\) at the point \\( (3, -1) \\), we substitute \\( x=3 \\) and \\( y=-1 \\) into the components of the vector field.\n\nThe first component is \\( 2x+y = 2(3) + (-1) = 6 - 1 = 5 \\).\n\nThe second component is \\( x-3y = 3 - 3(-1) = 3 + 3 = 6 \\).\n\nTherefore, the vector field at \\( (3, -1) \\) is \\( \\langle 5, 6 \\rangle \\).",
-          "ar": null
+          "ar": "To أوجد قيمة the vector field \\( \\mathbf{F}(x,y) = \\langle 2x+y, x-3y \\rangle \\) عند النقطة \\( (3, -1) \\), we عوّض \\( x=3 \\) and \\( y=-1 \\) into the components of the vector field.\n\nThe first component is \\( 2x+y = 2(3) + (-1) = 6 - 1 = 5 \\).\n\nThe second component is \\( x-3y = 3 - 3(-1) = 3 + 3 = 6 \\).\n\nوبالتالي، the vector field at \\( (3, -1) \\) is \\( \\langle 5, 6 \\rangle \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Consider the vector field \\( \\mathbf{F}(x,y) = \\langle 3x, 2y \\rangle \\). Evaluate the vector field at the point \\( (2, 4) \\).",
+          "ar": "Consider the vector field \\( \\mathbf{F}(x,y) = \\langle 3x, 2y \\rangle \\). احسب قيمة the vector field عند النقطة \\( (2, 4) \\)."
+        },
+        "hints": [
+          {
+            "en": "The vector field is given by \\( \\mathbf{F}(x,y) = \\langle 3x, 2y \\rangle \\). To evaluate the vector field at the point \\( (2, 4) \\), we substitute \\( x=2 \\) and \\( y=4 \\) into the components of the vector field.",
+            "ar": "The vector field is given by \\( \\mathbf{F}(x,y) = \\langle 3x, 2y \\rangle \\). To احسب قيمة the vector field عند النقطة \\( (2, 4) \\), we عوّض \\( x=2 \\) and \\( y=4 \\) into the components of the vector field."
+          },
+          {
+            "en": "First component: \\( 3x = 3(2) = 6 \\). Second component: \\(2y = 2(4)\\).",
+            "ar": "تلميح للحل: استخدم العلاقة \\( 3x = 3(2) = 6 \\) ، \\(2y = 2(4)\\) لتبسيط الخطوة."
+          },
+          {
+            "en": "Therefore, \\(F(2,4)\\).",
+            "ar": "وبالتالي، \\(F(2,4)\\)."
+          }
+        ],
+        "solution": {
+          "en": "The vector field is given by \\( \\mathbf{F}(x,y) = \\langle 3x, 2y \\rangle \\). To evaluate the vector field at the point \\( (2, 4) \\), we substitute \\( x=2 \\) and \\( y=4 \\) into the components of the vector field.\n\nFirst component: \\( 3x = 3(2) = 6 \\).\nSecond component: \\( 2y = 2(4) = 8 \\).\n\nTherefore, \\( \\mathbf{F}(2,4) = \\langle 6, 8 \\rangle \\).",
+          "ar": "The vector field is given by \\( \\mathbf{F}(x,y) = \\langle 3x, 2y \\rangle \\). To احسب قيمة the vector field عند النقطة \\( (2, 4) \\), we عوّض \\( x=2 \\) and \\( y=4 \\) into the components of the vector field.\n\nFirst component: \\( 3x = 3(2) = 6 \\).\nSecond component: \\( 2y = 2(4) = 8 \\).\n\nوبالتالي، \\( \\mathbf{F}(2,4) = \\langle 6, 8 \\rangle \\)."
         }
       }
     ]

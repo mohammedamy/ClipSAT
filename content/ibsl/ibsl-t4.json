@@ -346,6 +346,45 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "Statistics & Probability — Analytical Curve & Secant Rate Comparison",
+          "xrange": [
+            -4,
+            6
+          ],
+          "yrange": [
+            -4,
+            8
+          ],
+          "fns": [
+            {
+              "fn": "(x - 3)*(x - 3) + (-2)",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = (x - 3)² -2"
+            },
+            {
+              "fn": "2*x + 1",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "g(x) = 2x + 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 3,
+              "y": -2,
+              "label": "V(3, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of \\(f(x) = (x - 3)^2 -2\\) and linear comparison \\(g(x) = 2x + 1\\) with vertex \\(V(3, -2)\\) illustrating Statistics & Probability.",
+          "ar": "تمثيل بياني للدالة \\(f(x) = (x - 3)^2 -2\\) والمستقيم المقارن \\(g(x) = 2x + 1\\) عند الرأس \\(V(3, -2)\\) لتوضيح مفاهيم Statistics & Probability."
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
@@ -462,24 +501,24 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>Practice 4.1:</strong> A multiple-choice examination consists of 20 independent questions, each having 4 options of which only one is correct. A student guesses randomly on all questions. Let \\(X\\) be the number of correct answers.<br>(a) State the distribution of \\(X\\) including its parameters.<br>(b) Find the probability that the student passes by scoring at least 10 correct answers.<br>(c) Calculate the mean and standard deviation of \\(X\\).",
-          "ar": null
+          "ar": "<strong>Practice 4.1:</strong> A multiple-choice examination consists of 20 independent questions, each having 4 options of which only one is correct. A student guesses randomly on all questions. ليكن \\(X\\) be the number of correct answers.<br>(a) State the distribution of \\(X\\) including its parameters.<br>(b) أوجد احتمال أن the student passes by scoring at least 10 correct answers.<br>(c) احسب mean and standard deviation of \\(X\\)."
         },
         "solution": {
           "en": "(a) \\(X \\sim B(n, p)\\) with \\(n = 20\\) and \\(p = 0.25\\).<br>(b) \\(P(X \\ge 10) = 1 - P(X \\le 9)\\).<br>Using GDC `binomcdf(20, 0.25, 9)`: \\(P(X \\le 9) \\approx 0.9861\\).<br>\\[ P(X \\ge 10) = 1 - 0.9861 = 0.0139 \\quad (1.39\\%). \\]<br>(c) Mean: \\(\\mu = np = 20 \\times 0.25 = 5\\).<br>Standard deviation: \\(\\sigma = \\sqrt{np(1 - p)} = \\sqrt{20 \\times 0.25 \\times 0.75} = \\sqrt{3.75} \\approx 1.936 \\approx 1.94\\).",
-          "ar": null
+          "ar": "خطوات الحل التفصيلية: (a) \\(X \\sim B(n, p)\\) with \\(n = 20\\) and \\(p = 0.25\\).<br>(b) \\(P(X \\ge 10) = 1 - P(X \\le 9)\\).<br>Using GDC `binomcdf(20, 0.25, 9)`: \\(P(X \\le 9) \\approx 0.9861\\).<br>\\[ P(X \\ge 10) = 1 - 0.9861 = 0.0139 \\quad (1.39\\%). \\]<br>(c) Mean: \\(\\mu = np = 20 \\times 0.25 = 5\\).<br>Standard deviation: \\(\\sigma = \\sqrt{np(1 - p)} = \\sqrt{20 \\times 0.25 \\times 0.75} = \\sqrt{3.75} \\approx 1.936 \\approx 1.94\\)."
         },
         "hints": [
           {
             "en": "(a) \\(X \\sim B(n, p)\\) with \\(n = 20\\) and \\(p = 0.25\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(X \\sim B(n, p)\\) ، \\(n = 20\\) ، \\(p = 0.25\\) لتبسيط الخطوة."
           },
           {
             "en": "(b) \\(P(X \\ge 10) = 1 - P(X \\le 9)\\). Using GDC `binomcdf(20, 0.25, 9)`: \\(P(X \\le 9) \\approx 0.9861\\). \\(P(X \\ge 10) = 1 - 0.9861 = 0.0139 \\quad (1.39\\%)\\) (c) Mean: \\(\\mu = np = 20 \\times 0.25\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(P(X \\ge 10) = 1 - P(X \\le 9)\\) ، \\(P(X \\le 9) \\approx 0.9861\\) ، \\(P(X \\ge 10) = 1 - 0.9861 = 0.0139 \\quad (1.39\\%)\\) ، \\(\\mu = np = 20 \\times 0.25\\) لتبسيط الخطوة."
           },
           {
             "en": "Standard deviation: \\(\\sigma = \\sqrt{np(1 - p)} = \\sqrt{20 \\times 0.25 \\times 0.75} = \\sqrt{3.75}\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(\\sigma = \\sqrt{np(1 - p)} = \\sqrt{20 \\times 0.25 \\times 0.75} = \\sqrt{3.75}\\) لتبسيط الخطوة."
           }
         ]
       },
@@ -487,24 +526,24 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>Practice 4.2:</strong> Bivariate data for study hours \\(x\\) and exam mark \\(y\\) across 10 students yield \\(\\bar{x} = 14.5\\), \\(\\bar{y} = 72.0\\), and Pearson's correlation coefficient \\(r = 0.88\\). The regression line of \\(y\\) on \\(x\\) has equation \\(y = 2.4x + c\\).<br>(a) Find the value of \\(c\\).<br>(b) Interpret the slope \\(2.4\\) in context.<br>(c) Estimate the exam mark of a student who studies 18 hours.",
-          "ar": null
+          "ar": "<strong>Practice 4.2:</strong> Bivariate data for study hours \\(x\\) and exam mark \\(y\\) across 10 students yield \\(\\bar{x} = 14.5\\), \\(\\bar{y} = 72.0\\), and Pearson's correlation coefficient \\(r = 0.88\\). The regression line of \\(y\\) on \\(x\\) has equation \\(y = 2.4x + c\\).<br>(a) أوجد قيمة \\(c\\).<br>(b) Interpret the slope \\(2.4\\) in context.<br>(c) Estimate the exam mark of a student who studies 18 hours."
         },
         "solution": {
           "en": "(a) The regression line must pass through the mean point \\((\\bar{x}, \\bar{y}) = (14.5, 72.0)\\):<br>\\[ 72.0 = 2.4(14.5) + c \\implies 72.0 = 34.8 + c \\implies c = 72.0 - 34.8 = 37.2. \\]<br>Thus \\(y = 2.4x + 37.2\\).<br><br>(b) The slope \\(2.4\\) indicates that for each additional hour of study, a student's predicted exam mark increases by 2.4 marks.<br><br>(c) For \\(x = 18\\):<br>\\[ \\hat{y} = 2.4(18) + 37.2 = 43.2 + 37.2 = 80.4\\text{ marks}. \\]",
-          "ar": null
+          "ar": "خطوات الحل التفصيلية: (a) The regression line must pass through the mean point \\((\\bar{x}, \\bar{y}) = (14.5, 72.0)\\):<br>\\[ 72.0 = 2.4(14.5) + c \\implies 72.0 = 34.8 + c \\implies c = 72.0 - 34.8 = 37.2. \\]<br>Thus \\(y = 2.4x + 37.2\\).<br><br>(b) The slope \\(2.4\\) indicates that for each additional hour of study, a student's predicted exam mark increases by 2.4 marks.<br><br>(c) For \\(x = 18\\):<br>\\[ \\hat{y} = 2.4(18) + 37.2 = 43.2 + 37.2 = 80.4\\text{ marks}. \\]"
         },
         "hints": [
           {
             "en": "(a) The regression line must pass through the mean point \\((\\bar{x}, \\bar{y}) = (14.5, 72.0)\\): \\(72.0 = 2.4(14.5) + c \\implies 72.0 = 34.8 + c \\implies c = 72.0 - 34.8\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\((\\bar{x}, \\bar{y}) = (14.5, 72.0)\\) ، \\(72.0 = 2.4(14.5) + c \\implies 72.0 = 34.8 + c \\implies c = 72.0 - 34.8\\) لتبسيط الخطوة."
           },
           {
             "en": "Thus \\(y = 2.4x + 37.2\\). (b) The slope \\(2.4\\) indicates that for each additional hour of study, a student's predicted exam mark increases by 2.4 marks.",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(y = 2.4x + 37.2\\) ، \\(2.4\\) لتبسيط الخطوة."
           },
           {
             "en": "(c) For \\(x = 18\\): \\(\\hat{y} = 2.4(18) + 37.2 = 43.2 + 37.2\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(x = 18\\) ، \\(\\hat{y} = 2.4(18) + 37.2 = 43.2 + 37.2\\) لتبسيط الخطوة."
           }
         ]
       },
@@ -512,50 +551,75 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 3 · Medium]</strong> The box plot below shows the distribution of scores for a class of 30 students on a recent test. The interquartile range (IQR) is 22 marks. The median score is 75 marks. The minimum score is 30 marks, and the maximum score is 98 marks.\n\nLet the first quartile be denoted by \\( Q_1 \\) and the third quartile be denoted by \\( Q_3 \\).\n\nIf the upper whisker extends to 98 marks, and the third quartile \\( Q_3 \\) is 86 marks, find the value of \\( Q_1 \\).",
-          "ar": null
+          "ar": "<strong>[Practice 3 · Medium]</strong> The box plot below shows the distribution of scores for a class of 30 students on a recent test. The interquartile range (IQR) is 22 marks. The median score is 75 marks. The minimum score is 30 marks, and the maximum score is 98 marks.\n\nليكن the first quartile be denoted by \\( Q_1 \\) and the third quartile be denoted by \\( Q_3 \\).\n\nإذا كان the upper whisker extends to 98 marks, and the third quartile \\( Q_3 \\) is 86 marks, أوجد قيمة \\( Q_1 \\)."
         },
         "hints": [
           {
             "en": "The interquartile range (IQR) is defined as the difference between the third quartile (\\( Q_3 \\)) and the first quartile (\\( Q_1 \\)), i.e., \\( \\text{IQR} = Q_3 - Q_1 \\).",
-            "ar": null
+            "ar": "The interquartile range (IQR) is defined as the dإذا كانference between the third quartile (\\( Q_3 \\)) and the first quartile (\\( Q_1 \\)), i.e., \\( \\text{IQR} = Q_3 - Q_1 \\)."
           },
           {
             "en": "We are given that the IQR is 22 marks. We are also given that the third quartile \\( Q_3 = 86 \\) marks. Substituting these values into the formula, we get: \\( 22 = 86 - Q_1 \\) To find \\( Q_1 \\), we rearrange the equation: \\( Q_1 = 86 - 22 \\) \\( Q_1 = 64 \\).",
-            "ar": null
+            "ar": "We are إذا علمت أن the IQR is 22 marks. We are also إذا علمت أن the third quartile \\( Q_3 = 86 \\) marks. Substituting these values into the formula, we get: \\( 22 = 86 - Q_1 \\) To أوجد \\( Q_1 \\), we rearrange the equation: \\( Q_1 = 86 - 22 \\) \\( Q_1 = 64 \\)."
           },
           {
             "en": "Therefore, the first quartile is 64 marks.",
-            "ar": null
+            "ar": "وبالتالي، the first quartile is 64 marks."
           }
         ],
         "solution": {
           "en": "The interquartile range (IQR) is defined as the difference between the third quartile (\\( Q_3 \\)) and the first quartile (\\( Q_1 \\)), i.e., \\( \\text{IQR} = Q_3 - Q_1 \\).\nWe are given that the IQR is 22 marks.\nWe are also given that the third quartile \\( Q_3 = 86 \\) marks.\nSubstituting these values into the formula, we get:\n\\( 22 = 86 - Q_1 \\)\nTo find \\( Q_1 \\), we rearrange the equation:\n\\( Q_1 = 86 - 22 \\)\n\\( Q_1 = 64 \\)\nTherefore, the first quartile is 64 marks.\n\nCommon errors might include misinterpreting the median as \\( Q_1 \\) or \\( Q_3 \\), or incorrectly using the minimum or maximum values in the IQR calculation. <strong></strong>",
-          "ar": null
+          "ar": "The interquartile range (IQR) is defined as the dإذا كانference between the third quartile (\\( Q_3 \\)) and the first quartile (\\( Q_1 \\)), i.e., \\( \\text{IQR} = Q_3 - Q_1 \\).\nWe are إذا علمت أن the IQR is 22 marks.\nWe are also إذا علمت أن the third quartile \\( Q_3 = 86 \\) marks.\nSubstituting these values into the formula, we get:\n\\( 22 = 86 - Q_1 \\)\nTo أوجد \\( Q_1 \\), we rearrange the equation:\n\\( Q_1 = 86 - 22 \\)\n\\( Q_1 = 64 \\)\nوبالتالي، the first quartile is 64 marks.\n\nCommon errors might include misinterpreting the median as \\( Q_1 \\) or \\( Q_3 \\), or incorrectly باستخدام minimum or maximum values in the IQR calculation. <strong></strong>"
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4 · Medium]</strong> An arithmetic sequence has first term \\( u_1=4 \\) and common difference \\( d=-4 \\). Find \\( S_{12} \\), the sum of the first 12 terms.",
-          "ar": null
+          "ar": "<strong>[Practice 4 · Medium]</strong> An arithmetic sequence has first term \\( u_1=4 \\) and common dإذا كانference \\( d=-4 \\). أوجد \\( S_{12} \\), the sum of the first 12 terms."
         },
         "hints": [
           {
             "en": "Start from the relation: \\(S_n=\\dfrac{n}{2}(2u_1+(n-1)d)\\).",
-            "ar": null
+            "ar": "انطلق من العلاقة الرياضية: \\(S_n=\\dfrac{n}{2}(2u_1+(n-1)d)\\)."
           },
           {
             "en": "Substitute and simplify: \\(S_{12} = \\dfrac{12}{2}(2(4)+(12-1)(-4))\\).",
-            "ar": null
+            "ar": "عوّض بالقيم وبسّط العبارة: \\(S_{12} = \\dfrac{12}{2}(2(4)+(12-1)(-4))\\)."
           },
           {
             "en": "Evaluate the simplified expression: \\(S_{12} = \\dfrac{12}{2}(2(4)+(12-1)(-4))\\).",
-            "ar": null
+            "ar": "احسب قيمة the simplإذا كانied expression: \\(S_{12} = \\dfrac{12}{2}(2(4)+(12-1)(-4))\\)."
           }
         ],
         "solution": {
           "en": "\\( S_n=\\dfrac{n}{2}(2u_1+(n-1)d) \\Rightarrow S_{12}=\\dfrac{12}{2}(2(4)+(12-1)(-4))=-216 \\). <strong></strong>",
-          "ar": null
+          "ar": "خطوات الحل التفصيلية: \\( S_n=\\dfrac{n}{2}(2u_1+(n-1)d) \\Rightarrow S_{12}=\\dfrac{12}{2}(2(4)+(12-1)(-4))=-216 \\). <strong></strong>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "The following bar chart shows the number of students who achieved different grades in a mathematics test.\\nThe grades are A, B, C, and D. The data is as follows: Grade A: 14 students, Grade B: 22 students, Grade C: 18 students, Grade D: 26 students.\\nWhat is the total number of students who took the test?",
+          "ar": "The following bar chart shows the number of students who achieved dإذا كانferent grades in a mathematics test.\\nThe grades are A, B, C, and D. The data is as follows: Grade A: 14 students, Grade B: 22 students, Grade C: 18 students, Grade D: 26 students.\\nWhat is the total number of students who took the test?"
+        },
+        "hints": [
+          {
+            "en": "To find the total number of students who took the test, we need to sum the number of students who achieved each grade.",
+            "ar": "To أوجد total number of students who took the test, we need to sum the number of students who achieved each grade."
+          },
+          {
+            "en": "Number of students with Grade A = 14 Number of students with Grade B = 22 Number of students with Grade C = 18 Number of students with Grade D = 26 Total number of students = 14 + 22 + 18 + 26 = 80.",
+            "ar": "تلميح للحل: استخدم العلاقة Number of students with Grade A = 14 Number of students with Grade B = 22 Number of students with Grade C = 18 Number of students with Grade D = 26 Total number of students = 14 + 22 + 18 + 26 = 80. لتبسيط الخطوة."
+          },
+          {
+            "en": "Therefore, 80 students took the test.",
+            "ar": "وبالتالي، 80 students took the test."
+          }
+        ],
+        "solution": {
+          "en": "To find the total number of students who took the test, we need to sum the number of students who achieved each grade.\\nNumber of students with Grade A = 14\\nNumber of students with Grade B = 22\\nNumber of students with Grade C = 18\\nNumber of students with Grade D = 26\\nTotal number of students = 14 + 22 + 18 + 26 = 80.\\nTherefore, 80 students took the test. <strong>[M1] [A1]</strong>",
+          "ar": "To أوجد total number of students who took the test, we need to sum the number of students who achieved each grade.\\nNumber of students with Grade A = 14\\nNumber of students with Grade B = 22\\nNumber of students with Grade C = 18\\nNumber of students with Grade D = 26\\nTotal number of students = 14 + 22 + 18 + 26 = 80.\\nوبالتالي، 80 students took the test. <strong>[M1] [A1]</strong>"
         }
       }
     ]

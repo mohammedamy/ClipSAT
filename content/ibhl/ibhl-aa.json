@@ -308,6 +308,45 @@
         ]
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "AA HL — Additional Topics — Analytical Curve & Secant Rate Comparison",
+          "xrange": [
+            -4,
+            6
+          ],
+          "yrange": [
+            -4,
+            8
+          ],
+          "fns": [
+            {
+              "fn": "(x - 2)*(x - 2) + (-2)",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = (x - 2)² -2"
+            },
+            {
+              "fn": "2*x + 1",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "g(x) = 2x + 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 2,
+              "y": -2,
+              "label": "V(2, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of \\(f(x) = (x - 2)^2 -2\\) and linear comparison \\(g(x) = 2x + 1\\) with vertex \\(V(2, -2)\\) illustrating AA HL — Additional Topics.",
+          "ar": "تمثيل بياني للدالة \\(f(x) = (x - 2)^2 -2\\) والمستقيم المقارن \\(g(x) = 2x + 1\\) عند الرأس \\(V(2, -2)\\) لتوضيح مفاهيم AA HL — Additional Topics."
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
@@ -424,24 +463,24 @@
         "kind": "practiceProblem",
         "question": {
           "en": "Use the substitution \\(x = 2\\sin\\theta\\) to evaluate the exact definite integral \\(\\displaystyle\\int_0^1 \\sqrt{4 - x^2}\\,dx\\).",
-          "ar": null
+          "ar": "Use the substitution \\(x = 2\\sin\\theta\\) to احسب قيمة the exact definite integral \\(\\displaystyle\\int_0^1 \\sqrt{4 - x^2}\\,dx\\)."
         },
         "solution": {
           "en": "1. Substitute \\(x = 2\\sin\\theta \\implies dx = 2\\cos\\theta\\,d\\theta\\).<br>When \\(x = 0\\), \\(\\theta = 0\\). When \\(x = 1\\), \\(2\\sin\\theta = 1 \\implies \\sin\\theta = \\frac{1}{2} \\implies \\theta = \\frac{\\pi}{6}\\).<br>2. Rewrite integrand: \\[ \\sqrt{4 - x^2} = \\sqrt{4 - 4\\sin^2\\theta} = 2\\sqrt{\\cos^2\\theta} = 2\\cos\\theta \\quad (\\text{since } \\cos\\theta > 0 \\text{ on } [0, \\pi/6]). \\] 3. Substitute into the integral: \\[ \\int_0^1 \\sqrt{4 - x^2}\\,dx = \\int_0^{\\pi/6} (2\\cos\\theta)(2\\cos\\theta\\,d\\theta) = 4 \\int_0^{\\pi/6} \\cos^2\\theta\\,d\\theta. \\] 4. Use double-angle identity \\(\\cos^2\\theta = \\frac{1 + \\cos 2\\theta}{2}\\): \\[ = 4 \\int_0^{\\pi/6} \\frac{1 + \\cos 2\\theta}{2}\\,d\\theta = 2 \\left[ \\theta + \\frac{\\sin 2\\theta}{2} \\right]_0^{\\pi/6} = 2\\left( \\frac{\\pi}{6} + \\frac{\\sin(\\pi/3)}{2} \\right) = 2\\left( \\frac{\\pi}{6} + \\frac{\\sqrt{3}}{4} \\right) = \\frac{\\pi}{3} + \\frac{\\sqrt{3}}{2}. \\]",
-          "ar": null
+          "ar": "1. عوّض \\(x = 2\\sin\\theta \\implies dx = 2\\cos\\theta\\,d\\theta\\).<br>عندما \\(x = 0\\), \\(\\theta = 0\\). عندما \\(x = 1\\), \\(2\\sin\\theta = 1 \\implies \\sin\\theta = \\frac{1}{2} \\implies \\theta = \\frac{\\pi}{6}\\).<br>2. Rewrite integrand: \\[ \\sqrt{4 - x^2} = \\sqrt{4 - 4\\sin^2\\theta} = 2\\sqrt{\\cos^2\\theta} = 2\\cos\\theta \\quad (\\text{since } \\cos\\theta > 0 \\text{ on } [0, \\pi/6]). \\] 3. عوّض into the integral: \\[ \\int_0^1 \\sqrt{4 - x^2}\\,dx = \\int_0^{\\pi/6} (2\\cos\\theta)(2\\cos\\theta\\,d\\theta) = 4 \\int_0^{\\pi/6} \\cos^2\\theta\\,d\\theta. \\] 4. Use double-angle identity \\(\\cos^2\\theta = \\frac{1 + \\cos 2\\theta}{2}\\): \\[ = 4 \\int_0^{\\pi/6} \\frac{1 + \\cos 2\\theta}{2}\\,d\\theta = 2 \\left[ \\theta + \\frac{\\sin 2\\theta}{2} \\right]_0^{\\pi/6} = 2\\left( \\frac{\\pi}{6} + \\frac{\\sin(\\pi/3)}{2} \\right) = 2\\left( \\frac{\\pi}{6} + \\frac{\\sqrt{3}}{4} \\right) = \\frac{\\pi}{3} + \\frac{\\sqrt{3}}{2}. \\]"
         },
         "hints": [
           {
             "en": "Substitute \\(x = 2\\sin\\theta \\implies dx = 2\\cos\\theta\\,d\\theta\\).",
-            "ar": null
+            "ar": "عوّض \\(x = 2\\sin\\theta \\implies dx = 2\\cos\\theta\\,d\\theta\\)."
           },
           {
             "en": "Rewrite integrand: \\(\\sqrt{4 - x^2} = \\sqrt{4 - 4\\sin^2\\theta} = 2\\sqrt{\\cos^2\\theta} = 2\\cos\\theta \\quad (\\text{since } \\cos\\theta > 0 \\text{ on } [0, \\pi/6])\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(\\sqrt{4 - x^2} = \\sqrt{4 - 4\\sin^2\\theta} = 2\\sqrt{\\cos^2\\theta} = 2\\cos\\theta \\quad (\\text{since } \\cos\\theta > 0 \\text{ on } [0, \\pi/6])\\) لتبسيط الخطوة."
           },
           {
             "en": "Use double-angle identity \\(\\cos^2\\theta = \\frac{1 + \\cos 2\\theta}{2}\\): \\(= 4 \\int_0^{\\pi/6} \\frac{1 + \\cos 2\\theta}{2}\\,d\\theta = 2 \\left[ \\theta + \\frac{\\sin 2\\theta}{2} \\right]_0^{\\pi/6} = 2\\left( \\frac{\\pi}{6} + \\frac{\\sin(\\pi/3)}{2} \\right) = 2\\left( \\frac{\\pi}{6} + \\frac{\\sqrt{3}}{4} \\right)\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(\\cos^2\\theta = \\frac{1 + \\cos 2\\theta}{2}\\) ، \\(= 4 \\int_0^{\\pi/6} \\frac{1 + \\cos 2\\theta}{2}\\,d\\theta = 2 \\left[ \\theta + \\frac{\\sin 2\\theta}{2} \\right]_0^{\\pi/6} = 2\\left( \\frac{\\pi}{6} + \\frac{\\sin(\\pi/3)}{2} \\right) = 2\\left( \\frac{\\pi}{6} + \\frac{\\sqrt{3}}{4} \\right)\\) لتبسيط الخطوة."
           }
         ]
       },
@@ -449,24 +488,24 @@
         "kind": "practiceProblem",
         "question": {
           "en": "Find the Maclaurin series for \\(\\ln(1+2x)\\) up to the \\(x^3\\) term, and state its interval of convergence.",
-          "ar": null
+          "ar": "أوجد Maclaurin series for \\(\\ln(1+2x)\\) up to the \\(x^3\\) term, and state its interval of convergence."
         },
         "solution": {
           "en": "Use \\(\\ln(1+u)=u-\\frac{u^2}{2}+\\frac{u^3}{3}-\\dots\\) with \\(u=2x\\): \\(\\ln(1+2x)=2x-2x^2+\\frac{8}{3}x^3-\\dots\\). Convergence requires \\(-1 < 2x \\le 1 \\implies -\\frac{1}{2} < x \\le \\frac{1}{2}\\).",
-          "ar": null
+          "ar": "خطوات الحل التفصيلية: Use \\(\\ln(1+u)=u-\\frac{u^2}{2}+\\frac{u^3}{3}-\\dots\\) with \\(u=2x\\): \\(\\ln(1+2x)=2x-2x^2+\\frac{8}{3}x^3-\\dots\\). Convergence requires \\(-1 < 2x \\le 1 \\implies -\\frac{1}{2} < x \\le \\frac{1}{2}\\)."
         },
         "hints": [
           {
             "en": "Use \\(\\ln(1+u)=u-\\frac{u^2}{2}+\\frac{u^3}{3}-\\dots\\) with \\(u=2x\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(\\ln(1+u)=u-\\frac{u^2}{2}+\\frac{u^3}{3}-\\dots\\) ، \\(u=2x\\) لتبسيط الخطوة."
           },
           {
             "en": "Rewrite and simplify to obtain: \\(\\ln(1+2x)=2x-2x^2+\\frac{8}{3}x^3-\\dots\\).",
-            "ar": null
+            "ar": "أعد كتابة العلاقة وبسّطها للحصول على: \\(\\ln(1+2x)=2x-2x^2+\\frac{8}{3}x^3-\\dots\\)."
           },
           {
             "en": "Convergence requires \\(-1 < 2x \\le 1\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(-1 < 2x \\le 1\\) لتبسيط الخطوة."
           }
         ]
       },
@@ -474,50 +513,75 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 3 · Medium]</strong> Consider the function \\(f(x) = \\frac{x^2 - 9}{x - k}\\). The graph of \\(y = f(x)\\) has a removable discontinuity at \\(x = 3\\). Find the value of \\(k\\). The graph of \\(y=f(x)\\) is shown below.",
-          "ar": null
+          "ar": "<strong>[Practice 3 · Medium]</strong> Consider the function \\(f(x) = \\frac{x^2 - 9}{x - k}\\). The graph of \\(y = f(x)\\) has a removable discontinuity at \\(x = 3\\). أوجد قيمة \\(k\\). The graph of \\(y=f(x)\\) is shown below."
         },
         "hints": [
           {
             "en": "For the function \\(f(x) = \\frac{x^2 - 9}{x - k}\\) to have a removable discontinuity at \\(x = 3\\), the numerator and the denominator must both be zero at \\(x = 3\\). This means that \\((x-3)\\) must be a factor of both the numerator and the denominator.",
-            "ar": null
+            "ar": "For the function \\(f(x) = \\frac{x^2 - 9}{x - k}\\) to have a removable discontinuity at \\(x = 3\\), the numerator and the denominator must both be zero at \\(x = 3\\). This means that \\((x-3)\\) must be a حلّل of both the numerator and the denominator."
           },
           {
             "en": "The numerator is \\(x^2 - 9\\), which factors as \\((x-3)(x+3)\\). For the denominator to have a factor of \\((x-3)\\), we must have \\(x - k = 0\\) when \\(x = 3\\). Thus, \\(3 - k = 0\\), which implies \\(k = 3\\).",
-            "ar": null
+            "ar": "The numerator is \\(x^2 - 9\\), which حلّلs as \\((x-3)(x+3)\\). For the denominator to have a حلّل of \\((x-3)\\), we must have \\(x - k = 0\\) عندما \\(x = 3\\). وعليه، \\(3 - k = 0\\), which implies \\(k = 3\\)."
           },
           {
             "en": "When \\(k=3\\), \\(f(x) = \\frac{(x-3)(x+3)}{x-3}\\). For \\(x eq 3\\), \\(f(x) = x+3\\). The discontinuity at \\(x=3\\) is removable because the limit of \\(f(x)\\) as \\(x \\to 3\\) exists (it is \\(3+3=6\\)), but \\(f(3)\\) is undefined.",
-            "ar": null
+            "ar": "عندما \\(k=3\\), \\(f(x) = \\frac{(x-3)(x+3)}{x-3}\\). For \\(x eq 3\\), \\(f(x) = x+3\\). The discontinuity at \\(x=3\\) is removable because the limit of \\(f(x)\\) as \\(x \\to 3\\) exists (it is \\(3+3=6\\)), but \\(f(3)\\) is undefined."
           }
         ],
         "solution": {
           "en": "For the function \\(f(x) = \\frac{x^2 - 9}{x - k}\\) to have a removable discontinuity at \\(x = 3\\), the numerator and the denominator must both be zero at \\(x = 3\\). This means that \\((x-3)\\) must be a factor of both the numerator and the denominator.\n\nThe numerator is \\(x^2 - 9\\), which factors as \\((x-3)(x+3)\\).\n\nFor the denominator to have a factor of \\((x-3)\\), we must have \\(x - k = 0\\) when \\(x = 3\\). Thus, \\(3 - k = 0\\), which implies \\(k = 3\\).\n\nWhen \\(k=3\\), \\(f(x) = \\frac{(x-3)(x+3)}{x-3}\\). For \\(x\neq 3\\), \\(f(x) = x+3\\). The discontinuity at \\(x=3\\) is removable because the limit of \\(f(x)\\) as \\(x \\to 3\\) exists (it is \\(3+3=6\\)), but \\(f(3)\\) is undefined.\n\nCommon mistake: If one incorrectly assumes that the discontinuity is vertical, they might try to find a vertical asymptote. However, a removable discontinuity occurs when a factor cancels out from the numerator and denominator. <strong></strong>",
-          "ar": null
+          "ar": "For the function \\(f(x) = \\frac{x^2 - 9}{x - k}\\) to have a removable discontinuity at \\(x = 3\\), the numerator and the denominator must both be zero at \\(x = 3\\). This means that \\((x-3)\\) must be a حلّل of both the numerator and the denominator.\n\nThe numerator is \\(x^2 - 9\\), which حلّلs as \\((x-3)(x+3)\\).\n\nFor the denominator to have a حلّل of \\((x-3)\\), we must have \\(x - k = 0\\) عندما \\(x = 3\\). وعليه، \\(3 - k = 0\\), which implies \\(k = 3\\).\n\nعندما \\(k=3\\), \\(f(x) = \\frac{(x-3)(x+3)}{x-3}\\). For \\(x\neq 3\\), \\(f(x) = x+3\\). The discontinuity at \\(x=3\\) is removable because the limit of \\(f(x)\\) as \\(x \\to 3\\) exists (it is \\(3+3=6\\)), but \\(f(3)\\) is undefined.\n\nCommon mistake: إذا كان one incorrectly assumes that the discontinuity is vertical, they might try to أوجد a vertical asymptote. However, a removable discontinuity occurs عندما a حلّل cancels out from the numerator and denominator. <strong></strong>"
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4 · Medium]</strong> Consider the function \\(f(x) = \\frac{a x^2 + b x + c}{x-d}\\), where \\(a\\), \\(b\\), \\(c\\), and \\(d\\) are constants. The graph of \\(f(x)\\) has a vertical asymptote at \\(x=3\\) and an oblique asymptote \\(y = 2x+1\\). Given that \\(f(1) = 0\\) and \\(f(2) = -1\\), find the value of \\(a\\).",
-          "ar": null
+          "ar": "<strong>[Practice 4 · Medium]</strong> Consider the function \\(f(x) = \\frac{a x^2 + b x + c}{x-d}\\), حيث \\(a\\), \\(b\\), \\(c\\), and \\(d\\) are constants. The graph of \\(f(x)\\) has a vertical asymptote at \\(x=3\\) and an oblique asymptote \\(y = 2x+1\\). إذا علمت أن \\(f(1) = 0\\) and \\(f(2) = -1\\), أوجد قيمة \\(a\\)."
         },
         "hints": [
           {
             "en": "Since the vertical asymptote is at \\( x = 3 \\), we have \\( d = 3 \\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\( x = 3 \\) ، \\( d = 3 \\) لتبسيط الخطوة."
           },
           {
             "en": "Performing polynomial division for \\( f(x) = \\frac{ax^2 + bx + c}{x - 3} \\), the oblique asymptote \\( y = 2x + 1 \\) means: \\(f(x) = 2x + 1 + \\frac{R}{x - 3} = \\frac{(2x + 1)(x - 3) + R}{x - 3} = \\frac{2x^2 - 5x + (R - 3)}{x - 3}\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\( f(x) = \\frac{ax^2 + bx + c}{x - 3} \\) ، \\( y = 2x + 1 \\) ، \\(f(x) = 2x + 1 + \\frac{R}{x - 3} = \\frac{(2x + 1)(x - 3) + R}{x - 3} = \\frac{2x^2 - 5x + (R - 3)}{x - 3}\\) لتبسيط الخطوة."
           },
           {
             "en": "Comparing the leading coefficient of the numerator gives \\(a = 2\\) (with \\(R = 6\\) satisfying \\(f(1) = 0\\) and \\(f(2)\\)).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(a = 2\\) ، \\(R = 6\\) ، \\(f(1) = 0\\) ، \\(f(2)\\) لتبسيط الخطوة."
           }
         ],
         "solution": {
           "en": "Since the vertical asymptote is at \\( x = 3 \\), we have \\( d = 3 \\). Performing polynomial division for \\( f(x) = \\frac{ax^2 + bx + c}{x - 3} \\), the oblique asymptote \\( y = 2x + 1 \\) means:\n\\[ f(x) = 2x + 1 + \\frac{R}{x - 3} = \\frac{(2x + 1)(x - 3) + R}{x - 3} = \\frac{2x^2 - 5x + (R - 3)}{x - 3}. \\]\nComparing the leading coefficient of the numerator gives \\( a = 2 \\) (with \\( R = 6 \\) satisfying \\( f(1) = 0 \\) and \\( f(2) = -1 \\)). <strong></strong>",
-          "ar": null
+          "ar": "خطوات الحل التفصيلية: Since the vertical asymptote is at \\( x = 3 \\), we have \\( d = 3 \\). Performing polynomial division for \\( f(x) = \\frac{ax^2 + bx + c}{x - 3} \\), the oblique asymptote \\( y = 2x + 1 \\) means:\n\\[ f(x) = 2x + 1 + \\frac{R}{x - 3} = \\frac{(2x + 1)(x - 3) + R}{x - 3} = \\frac{2x^2 - 5x + (R - 3)}{x - 3}. \\]\nComparing the leading coefficient of the numerator gives \\( a = 2 \\) (with \\( R = 6 \\) satisfying \\( f(1) = 0 \\) and \\( f(2) = -1 \\)). <strong></strong>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Consider the function \\( f(x) = x^2 - 6x + 8 \\). The graph of \\( y = f(x) \\) intersects the x-axis at points A and B, and the y-axis at point C. Find the length of the line segment AB.",
+          "ar": "Consider the function \\( f(x) = x^2 - 6x + 8 \\). The graph of \\( y = f(x) \\) intersects the x-axis at points A and B, and the y-axis at point C. أوجد length of the line segment AB."
+        },
+        "hints": [
+          {
+            "en": "To find the points where the graph intersects the x-axis, we set \\( f(x) = 0 \\).",
+            "ar": "To أوجد points حيث the graph intersects the x-axis, we set \\( f(x) = 0 \\)."
+          },
+          {
+            "en": "Rewrite and simplify to obtain: \\( x^2 - 6x + 8 = 0 \\). Factoring the quadratic equation, we get \\( (x-2)(x-4) = 0 \\).",
+            "ar": "أعد كتابة العلاقة وبسّطها للحصول على: \\( x^2 - 6x + 8 = 0 \\). حلّلing the quadratic equation, we get \\( (x-2)(x-4) = 0 \\)."
+          },
+          {
+            "en": "The question asks for the length of the line segment AB, which is the distance between the x-intercepts.",
+            "ar": "تلميح للحل: استخدم العلاقة The question asks for the length of the line segment AB, which is the distance between the x-intercepts. لتبسيط الخطوة."
+          }
+        ],
+        "solution": {
+          "en": "To find the points where the graph intersects the x-axis, we set \\( f(x) = 0 \\). \\( x^2 - 6x + 8 = 0 \\). Factoring the quadratic equation, we get \\( (x-2)(x-4) = 0 \\). Thus, the x-intercepts are \\( x=2 \\) and \\( x=4 \\). Let these points be A and B. The distance between A and B is \\( |4-2| = 2 \\) units. To find the y-intercept, we set \\( x=0 \\). \\( f(0) = 0^2 - 6(0) + 8 = 8 \\). So, point C is (0, 8). The question asks for the length of the line segment AB, which is the distance between the x-intercepts. <strong>[M1] [A1]</strong>",
+          "ar": "To أوجد points حيث the graph intersects the x-axis, we set \\( f(x) = 0 \\). \\( x^2 - 6x + 8 = 0 \\). حلّلing the quadratic equation, we get \\( (x-2)(x-4) = 0 \\). وعليه، the x-intercepts are \\( x=2 \\) and \\( x=4 \\). ليكن these points be A and B. The distance between A and B is \\( |4-2| = 2 \\) units. To أوجد y-intercept, we set \\( x=0 \\). \\( f(0) = 0^2 - 6(0) + 8 = 8 \\). So, point C is (0, 8). The question asks for the length of the line segment AB, which is the distance between the x-intercepts. <strong>[M1] [A1]</strong>"
         }
       }
     ]

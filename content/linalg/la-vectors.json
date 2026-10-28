@@ -28,6 +28,49 @@
         }
       },
       {
+        "kind": "syllabusMap",
+        "title": "📊 Linear Algebra — Exam Blueprint & Domain Weighting",
+        "rows": [
+          {
+            "topic": "Vectors, Linear Systems, RREF & Matrices",
+            "barPercent": 35,
+            "pctText": "~35%",
+            "tags": [
+              {
+                "text": "LINALG",
+                "className": "sat-tag",
+                "style": "font-size:11px"
+              }
+            ]
+          },
+          {
+            "topic": "Vector Spaces, Subspaces & Linear Transformations",
+            "barPercent": 30,
+            "pctText": "~30%",
+            "tags": [
+              {
+                "text": "LINALG",
+                "className": "sat-tag",
+                "style": "font-size:11px"
+              }
+            ]
+          },
+          {
+            "topic": "Eigenvalues, Diagonalization, Orthogonality & SVD",
+            "barPercent": 35,
+            "pctText": "~35%",
+            "tags": [
+              {
+                "text": "LINALG",
+                "className": "sat-tag",
+                "style": "font-size:11px"
+              }
+            ]
+          }
+        ],
+        "note": "Official curriculum weighting and examination domain distribution for Linear Algebra."
+      },
+      {
         "kind": "text",
         "heading": "Level 1 · Foundations — Vector Space Axioms of \\( \\mathbb{R}^n \\), Norms & Normalization",
         "body": {
@@ -254,24 +297,24 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>Let \\( \\mathbf{a} = \\begin{pmatrix} 1 \\\\ 2 \\\\ -2 \\end{pmatrix} \\) and \\( \\mathbf{b} = \\begin{pmatrix} k \\\\ 4 \\\\ 1 \\end{pmatrix} \\) in \\( \\mathbb{R}^3 \\). Determine the unique scalar value of \\( k \\) such that \\( \\mathbf{a} \\) and \\( \\mathbf{b} \\) are orthogonal (perpendicular).</p>",
-          "ar": null
+          "ar": "<span class=\"lvl b\" style=\"display:inline-block;margin-bottom:8px\">Level 1 · Foundations</span><p>ليكن \\( \\mathbf{a} = \\begin{pmatrix} 1 \\\\ 2 \\\\ -2 \\end{pmatrix} \\) and \\( \\mathbf{b} = \\begin{pmatrix} k \\\\ 4 \\\\ 1 \\end{pmatrix} \\) in \\( \\mathbb{R}^3 \\). حدّد unique scalar value of \\( k \\) such that \\( \\mathbf{a} \\) and \\( \\mathbf{b} \\) are orthogonal (perpendicular).</p>"
         },
         "solution": {
           "en": "<p>Two non-zero vectors are orthogonal if and only if their inner product is zero: \\[ \\mathbf{a} \\cdot \\mathbf{b} = 0. \\] Compute the dot product: \\[ (1)(k) + (2)(4) + (-2)(1) = 0 \\implies k + 8 - 2 = 0 \\implies k + 6 = 0 \\implies \\mathbf{k = -6}. \\]</p>",
-          "ar": null
+          "ar": "<p>Two non-zero vectors are orthogonal إذا كان and only إذا كان their inner product is zero: \\[ \\mathbf{a} \\cdot \\mathbf{b} = 0. \\] Compute the dot product: \\[ (1)(k) + (2)(4) + (-2)(1) = 0 \\implies k + 8 - 2 = 0 \\implies k + 6 = 0 \\implies \\mathbf{k = -6}. \\]</p>"
         },
         "hints": [
           {
             "en": "Two non-zero vectors are orthogonal if and only if their inner product is zero: \\(\\mathbf{a} \\cdot \\mathbf{b} = 0\\).",
-            "ar": null
+            "ar": "Two non-zero vectors are orthogonal إذا كان and only إذا كان their inner product is zero: \\(\\mathbf{a} \\cdot \\mathbf{b} = 0\\)."
           },
           {
             "en": "Compute the dot product: \\((1)(k) + (2)(4) + (-2)(1) = 0\\). Simplify the relation to: \\(k + 8 - 2 = 0\\).",
-            "ar": null
+            "ar": "Compute the dot product: \\((1)(k) + (2)(4) + (-2)(1) = 0\\). بسّط العبارة the relation to: \\(k + 8 - 2 = 0\\)."
           },
           {
             "en": "Solve \\(k + 6 = 0\\) to determine \\(k\\).",
-            "ar": null
+            "ar": "حل \\(k + 6 = 0\\) to حدّد \\(k\\)."
           }
         ]
       },
@@ -459,24 +502,24 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>Find the distance from the point \\( P(3, -1, 4) \\) in \\( \\mathbb{R}^3 \\) to the line passing through the origin along the direction vector \\( \\mathbf{d} = \\begin{pmatrix} 2 \\\\ 1 \\\\ -2 \\end{pmatrix} \\).</p>",
-          "ar": null
+          "ar": "<span class=\"lvl i\" style=\"display:inline-block;margin-bottom:8px\">Level 2 · Medium</span><p>أوجد distance from the point \\( P(3, -1, 4) \\) in \\( \\mathbb{R}^3 \\) to the line passing through the origin along the direction vector \\( \\mathbf{d} = \\begin{pmatrix} 2 \\\\ 1 \\\\ -2 \\end{pmatrix} \\).</p>"
         },
         "solution": {
           "en": "<p>Let \\( \\mathbf{p} = \\begin{pmatrix} 3 \\\\ -1 \\\\ 4 \\end{pmatrix} \\). The orthogonal distance from \\( P \\) to the line \\( \\text{span}(\\mathbf{d}) \\) is \\( \\|\\mathbf{p}_\\perp\\| = \\|\\mathbf{p} - \\text{proj}_\\mathbf{d}(\\mathbf{p})\\| \\).</p><p><strong>Step 1:</strong> Compute projection of \\( \\mathbf{p} \\) onto \\( \\mathbf{d} \\): \\[ \\mathbf{p} \\cdot \\mathbf{d} = 3(2) + (-1)(1) + 4(-2) = 6 - 1 - 8 = -3. \\] \\[ \\|\\mathbf{d}\\|^2 = 2^2 + 1^2 + (-2)^2 = 4 + 1 + 4 = 9. \\] \\[ \\text{proj}_\\mathbf{d}(\\mathbf{p}) = \\frac{-3}{9}\\mathbf{d} = -\\frac{1}{3}\\begin{pmatrix} 2 \\\\ 1 \\\\ -2 \\end{pmatrix} = \\begin{pmatrix} -2/3 \\\\ -1/3 \\\\ 2/3 \\end{pmatrix}. \\]</p><p><strong>Step 2:</strong> Compute orthogonal error vector: \\[ \\mathbf{p}_\\perp = \\begin{pmatrix} 3 - (-2/3) \\\\ -1 - (-1/3) \\\\ 4 - 2/3 \\end{pmatrix} = \\begin{pmatrix} 11/3 \\\\ -2/3 \\\\ 10/3 \\end{pmatrix} = \\frac{1}{3}\\begin{pmatrix} 11 \\\\ -2 \\\\ 10 \\end{pmatrix}. \\]</p><p><strong>Step 3:</strong> Compute distance: \\[ \\text{Distance} = \\|\\mathbf{p}_\\perp\\| = \\frac{1}{3}\\sqrt{11^2 + (-2)^2 + 10^2} = \\frac{1}{3}\\sqrt{121 + 4 + 100} = \\frac{\\sqrt{225}}{3} = \\frac{15}{3} = \\mathbf{5}. \\]</p>",
-          "ar": null
+          "ar": "<p>ليكن \\( \\mathbf{p} = \\begin{pmatrix} 3 \\\\ -1 \\\\ 4 \\end{pmatrix} \\). The orthogonal distance from \\( P \\) to the line \\( \\text{span}(\\mathbf{d}) \\) is \\( \\|\\mathbf{p}_\\perp\\| = \\|\\mathbf{p} - \\text{proj}_\\mathbf{d}(\\mathbf{p})\\| \\).</p><p><strong>Step 1:</strong> Compute projection of \\( \\mathbf{p} \\) onto \\( \\mathbf{d} \\): \\[ \\mathbf{p} \\cdot \\mathbf{d} = 3(2) + (-1)(1) + 4(-2) = 6 - 1 - 8 = -3. \\] \\[ \\|\\mathbf{d}\\|^2 = 2^2 + 1^2 + (-2)^2 = 4 + 1 + 4 = 9. \\] \\[ \\text{proj}_\\mathbf{d}(\\mathbf{p}) = \\frac{-3}{9}\\mathbf{d} = -\\frac{1}{3}\\begin{pmatrix} 2 \\\\ 1 \\\\ -2 \\end{pmatrix} = \\begin{pmatrix} -2/3 \\\\ -1/3 \\\\ 2/3 \\end{pmatrix}. \\]</p><p><strong>Step 2:</strong> Compute orthogonal error vector: \\[ \\mathbf{p}_\\perp = \\begin{pmatrix} 3 - (-2/3) \\\\ -1 - (-1/3) \\\\ 4 - 2/3 \\end{pmatrix} = \\begin{pmatrix} 11/3 \\\\ -2/3 \\\\ 10/3 \\end{pmatrix} = \\frac{1}{3}\\begin{pmatrix} 11 \\\\ -2 \\\\ 10 \\end{pmatrix}. \\]</p><p><strong>Step 3:</strong> Compute distance: \\[ \\text{Distance} = \\|\\mathbf{p}_\\perp\\| = \\frac{1}{3}\\sqrt{11^2 + (-2)^2 + 10^2} = \\frac{1}{3}\\sqrt{121 + 4 + 100} = \\frac{\\sqrt{225}}{3} = \\frac{15}{3} = \\mathbf{5}. \\]</p>"
         },
         "hints": [
           {
             "en": "Let \\( \\mathbf{p} = \\begin{pmatrix} 3 \\\\ -1 \\\\ 4 \\end{pmatrix} \\). The orthogonal distance from \\( P \\) to the line \\( \\text{span}(\\mathbf{d}) \\) is \\( \\|\\mathbf{p}_\\perp\\| = \\|\\mathbf{p} - \\text{proj}_\\mathbf{d}(\\mathbf{p})\\| \\).",
-            "ar": null
+            "ar": "ليكن \\( \\mathbf{p} = \\begin{pmatrix} 3 \\\\ -1 \\\\ 4 \\end{pmatrix} \\). The orthogonal distance from \\( P \\) to the line \\( \\text{span}(\\mathbf{d}) \\) is \\( \\|\\mathbf{p}_\\perp\\| = \\|\\mathbf{p} - \\text{proj}_\\mathbf{d}(\\mathbf{p})\\| \\)."
           },
           {
             "en": "Compute projection of \\( \\mathbf{p} \\) onto \\( \\mathbf{d} \\): \\(\\mathbf{p} \\cdot \\mathbf{d} = 3(2) + (-1)(1) + 4(-2) = 6 - 1 - 8 = -3\\) \\(\\|\\mathbf{d}\\|^2 = 2^2 + 1^2 + (-2)^2 = 4 + 1 + 4\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\( \\mathbf{p} \\) ، \\( \\mathbf{d} \\) ، \\(\\mathbf{p} \\cdot \\mathbf{d} = 3(2) + (-1)(1) + 4(-2) = 6 - 1 - 8 = -3\\) ، \\(\\|\\mathbf{d}\\|^2 = 2^2 + 1^2 + (-2)^2 = 4 + 1 + 4\\) لتبسيط الخطوة."
           },
           {
             "en": "Compute distance: \\(\\text{Distance} = \\|p_\\perp\\| = \\frac{1}{3}\\sqrt{11^2 + (-2)^2 + 10^2} = \\frac{1}{3}\\sqrt{121 + 4 + 100} = \\frac{\\sqrt{225}}{3}\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(\\text{Distance} = \\|p_\\perp\\| = \\frac{1}{3}\\sqrt{11^2 + (-2)^2 + 10^2} = \\frac{1}{3}\\sqrt{121 + 4 + 100} = \\frac{\\sqrt{225}}{3}\\) لتبسيط الخطوة."
           }
         ]
       },
@@ -528,24 +571,24 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced / University Rigor</span><p>Let \\( \\mathbf{u}, \\mathbf{v} \\in \\mathbb{R}^n \\) satisfy \\( \\|\\mathbf{u}\\| = 4 \\), \\( \\|\\mathbf{v}\\| = 5 \\), and \\( \\|\\mathbf{u} + \\mathbf{v}\\| = 7 \\). Using the Parallelogram Law, find the exact length of the difference vector \\( \\|\\mathbf{u} - \\mathbf{v}\\| \\), and determine the angle \\( \\theta \\) between \\( \\mathbf{u} \\) and \\( \\mathbf{v} \\).</p>",
-          "ar": null
+          "ar": "<span class=\"lvl a\" style=\"display:inline-block;margin-bottom:8px\">Level 3 · Advanced / University Rigor</span><p>ليكن \\( \\mathbf{u}, \\mathbf{v} \\in \\mathbb{R}^n \\) satisfy \\( \\|\\mathbf{u}\\| = 4 \\), \\( \\|\\mathbf{v}\\| = 5 \\), and \\( \\|\\mathbf{u} + \\mathbf{v}\\| = 7 \\). باستخدام Parallelogram Law, أوجد exact length of the dإذا كانference vector \\( \\|\\mathbf{u} - \\mathbf{v}\\| \\), and حدّد angle \\( \\theta \\) between \\( \\mathbf{u} \\) and \\( \\mathbf{v} \\).</p>"
         },
         "solution": {
           "en": "<p><strong>Step 1 · Apply the Parallelogram Law:</strong> \\[ \\|\\mathbf{u} + \\mathbf{v}\\|^2 + \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 2\\|\\mathbf{u}\\|^2 + 2\\|\\mathbf{v}\\|^2. \\] Substitute known values: \\[ 7^2 + \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 2(4^2) + 2(5^2) \\implies 49 + \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 2(16) + 2(25) = 32 + 50 = 82. \\] \\[ \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 82 - 49 = 33 \\implies \\mathbf{\\|\\mathbf{u} - \\mathbf{v}\\| = \\sqrt{33}}. \\]</p><p><strong>Step 2 · Determine the angle \\( \\theta \\):</strong><br>Using the Polarization Identity: \\[ \\mathbf{u} \\cdot \\mathbf{v} = \\frac{1}{4}\\left( \\|\\mathbf{u} + \\mathbf{v}\\|^2 - \\|\\mathbf{u} - \\mathbf{v}\\|^2 \\right) = \\frac{1}{4}(49 - 33) = \\frac{16}{4} = 4. \\] Now compute \\( \\cos\\theta \\): \\[ \\cos\\theta = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|} = \\frac{4}{(4)(5)} = \\frac{1}{5} = 0.2 \\implies \\mathbf{\\theta = \\arccos(0.2) \\approx 78.46^\\circ}. \\]</p>",
-          "ar": null
+          "ar": "<p><strong>Step 1 · Apply the Parallelogram Law:</strong> \\[ \\|\\mathbf{u} + \\mathbf{v}\\|^2 + \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 2\\|\\mathbf{u}\\|^2 + 2\\|\\mathbf{v}\\|^2. \\] عوّض known values: \\[ 7^2 + \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 2(4^2) + 2(5^2) \\implies 49 + \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 2(16) + 2(25) = 32 + 50 = 82. \\] \\[ \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 82 - 49 = 33 \\implies \\mathbf{\\|\\mathbf{u} - \\mathbf{v}\\| = \\sqrt{33}}. \\]</p><p><strong>Step 2 · حدّد angle \\( \\theta \\):</strong><br>باستخدام Polarization Identity: \\[ \\mathbf{u} \\cdot \\mathbf{v} = \\frac{1}{4}\\left( \\|\\mathbf{u} + \\mathbf{v}\\|^2 - \\|\\mathbf{u} - \\mathbf{v}\\|^2 \\right) = \\frac{1}{4}(49 - 33) = \\frac{16}{4} = 4. \\] Now compute \\( \\cos\\theta \\): \\[ \\cos\\theta = \\frac{\\mathbf{u} \\cdot \\mathbf{v}}{\\|\\mathbf{u}\\|\\|\\mathbf{v}\\|} = \\frac{4}{(4)(5)} = \\frac{1}{5} = 0.2 \\implies \\mathbf{\\theta = \\arccos(0.2) \\approx 78.46^\\circ}. \\]</p>"
         },
         "hints": [
           {
             "en": "<strong>· Apply the Parallelogram Law:</strong> \\(\\|\\mathbf{u} + \\mathbf{v}\\|^2 + \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 2\\|\\mathbf{u}\\|^2 + 2\\|\\mathbf{v}\\|^2\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(\\|\\mathbf{u} + \\mathbf{v}\\|^2 + \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 2\\|\\mathbf{u}\\|^2 + 2\\|\\mathbf{v}\\|^2\\) لتبسيط الخطوة."
           },
           {
             "en": "Substitute known values: \\(7^2 + \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 2(4^2) + 2(5^2) \\implies 49 + \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 2(16) + 2(25) = 32 + 50 = 82\\) \\(\\|\\mathbf{u} - \\mathbf{v}\\|^2 = 82 - 49 = 33 \\implies \\mathbf{\\|\\mathbf{u} - \\mathbf{v}\\| = \\sqrt{33}}\\).",
-            "ar": null
+            "ar": "عوّض known values: \\(7^2 + \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 2(4^2) + 2(5^2) \\implies 49 + \\|\\mathbf{u} - \\mathbf{v}\\|^2 = 2(16) + 2(25) = 32 + 50 = 82\\) \\(\\|\\mathbf{u} - \\mathbf{v}\\|^2 = 82 - 49 = 33 \\implies \\mathbf{\\|\\mathbf{u} - \\mathbf{v}\\| = \\sqrt{33}}\\)."
           },
           {
             "en": "Now compute \\(\\cos\\theta\\): \\(\\cos\\theta = \\frac{u \\cdot v}{\\|u\\|\\|v\\|} = \\frac{4}{(4)(5)} = \\frac{1}{5} = 0.2 \\implies \\theta = \\arccos(0.2)\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(\\cos\\theta\\) ، \\(\\cos\\theta = \\frac{u \\cdot v}{\\|u\\|\\|v\\|} = \\frac{4}{(4)(5)} = \\frac{1}{5} = 0.2 \\implies \\theta = \\arccos(0.2)\\) لتبسيط الخطوة."
           }
         ]
       },
@@ -553,25 +596,50 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4 · Medium]</strong> For \\( A=\\left[\\begin{matrix}-1 & -1\\\\-3 & -1\\end{matrix}\\right] \\), \\( B=\\left[\\begin{matrix}3 & 4\\\\2 & -1\\end{matrix}\\right] \\), find row 2 of \\( AB \\).",
-          "ar": null
+          "ar": "<strong>[Practice 4 · Medium]</strong> For \\( A=\\left[\\begin{matrix}-1 & -1\\\\-3 & -1\\end{matrix}\\right] \\), \\( B=\\left[\\begin{matrix}3 & 4\\\\2 & -1\\end{matrix}\\right] \\), أوجد row 2 of \\( AB \\)."
         },
         "hints": [
           {
             "en": "Set up the initial relation: \\( (AB)_{21}=-3(3)+(-1)(2)=-11 \\),: \\((AB)_{22}\\).",
-            "ar": null
+            "ar": "ابدأ بكتابة العلاقة الأساسية: \\( (AB)_{21}=-3(3)+(-1)(2)=-11 \\),: \\((AB)_{22}\\)."
           },
           {
             "en": "Rewrite and substitute: \\((AB)_{22} = -3(4)+(-1)(-1)\\).",
-            "ar": null
+            "ar": "Rewrite and عوّض: \\((AB)_{22} = -3(4)+(-1)(-1)\\)."
           },
           {
             "en": "Evaluate \\(-3(4)+(-1)(-1)\\) to obtain the final answer.",
-            "ar": null
+            "ar": "احسب قيمة \\(-3(4)+(-1)(-1)\\) to obtain the final answer."
           }
         ],
         "solution": {
           "en": "\\( (AB)_{21}=-3(3)+(-1)(2)=-11 \\), \\( (AB)_{22}=-3(4)+(-1)(-1)=-11 \\).",
-          "ar": null
+          "ar": "خطوات الحل التفصيلية: \\( (AB)_{21}=-3(3)+(-1)(2)=-11 \\), \\( (AB)_{22}=-3(4)+(-1)(-1)=-11 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Consider the vector \\( \\mathbf{v} = \\begin{pmatrix} 5 \\\\ -12 \\end{pmatrix} \\). Calculate the magnitude of \\( \\mathbf{v} \\), denoted as \\( \\lVert\\mathbf{v}\\rVert \\).",
+          "ar": "Consider the vector \\( \\mathbf{v} = \\begin{pmatrix} 5 \\\\ -12 \\end{pmatrix} \\). احسب magnitude of \\( \\mathbf{v} \\), denoted as \\( \\lVert\\mathbf{v}\\rVert \\)."
+        },
+        "hints": [
+          {
+            "en": "The magnitude of a vector \\( \\mathbf{v} = \\begin{pmatrix} x \\\\ y \\end{pmatrix} \\) in \\( \\mathbb{R}^2 \\) is given by the formula \\( \\lVert\\mathbf{v}\\rVert = \\sqrt{x^2 + y^2} \\).",
+            "ar": "The magnitude of a vector \\( \\mathbf{v} = \\begin{pmatrix} x \\\\ y \\end{pmatrix} \\) in \\( \\mathbb{R}^2 \\) is given بتطبيق formula \\( \\lVert\\mathbf{v}\\rVert = \\sqrt{x^2 + y^2} \\)."
+          },
+          {
+            "en": "For the given vector \\( \\mathbf{v} = \\begin{pmatrix} 5 \\\\ -12 \\end{pmatrix} \\), we have \\( x=5 \\) and \\( y=-12 \\).",
+            "ar": "تلميح للحل: استخدم العلاقة \\( \\mathbf{v} = \\begin{pmatrix} 5 \\\\ -12 \\end{pmatrix} \\) ، \\( x=5 \\) ، \\( y=-12 \\) لتبسيط الخطوة."
+          },
+          {
+            "en": "Therefore, \\(\\lVertv\\rVert = \\sqrt{(5)^2 + (-12)^2} = \\sqrt{25 + 144}\\).",
+            "ar": "وبالتالي، \\(\\lVertv\\rVert = \\sqrt{(5)^2 + (-12)^2} = \\sqrt{25 + 144}\\)."
+          }
+        ],
+        "solution": {
+          "en": "The magnitude of a vector \\( \\mathbf{v} = \\begin{pmatrix} x \\\\ y \\end{pmatrix} \\) in \\( \\mathbb{R}^2 \\) is given by the formula \\( \\lVert\\mathbf{v}\\rVert = \\sqrt{x^2 + y^2} \\). For the given vector \\( \\mathbf{v} = \\begin{pmatrix} 5 \\\\ -12 \\end{pmatrix} \\), we have \\( x=5 \\) and \\( y=-12 \\). Therefore, \\( \\lVert\\mathbf{v}\\rVert = \\sqrt{(5)^2 + (-12)^2} = \\sqrt{25 + 144} = \\sqrt{169} = 13 \\).",
+          "ar": "The magnitude of a vector \\( \\mathbf{v} = \\begin{pmatrix} x \\\\ y \\end{pmatrix} \\) in \\( \\mathbb{R}^2 \\) is given بتطبيق formula \\( \\lVert\\mathbf{v}\\rVert = \\sqrt{x^2 + y^2} \\). For the given vector \\( \\mathbf{v} = \\begin{pmatrix} 5 \\\\ -12 \\end{pmatrix} \\), we have \\( x=5 \\) and \\( y=-12 \\). وبالتالي، \\( \\lVert\\mathbf{v}\\rVert = \\sqrt{(5)^2 + (-12)^2} = \\sqrt{25 + 144} = \\sqrt{169} = 13 \\)."
         }
       }
     ]

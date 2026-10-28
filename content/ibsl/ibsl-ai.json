@@ -259,6 +259,45 @@
         }
       },
       {
+        "kind": "figure",
+        "figure": {
+          "type": "fn",
+          "title": "AI SL — Specific Topics — Analytical Curve & Secant Rate Comparison",
+          "xrange": [
+            -4,
+            6
+          ],
+          "yrange": [
+            -4,
+            8
+          ],
+          "fns": [
+            {
+              "fn": "(x - 2)*(x - 2) + (-2)",
+              "color": "var(--fig-indigo)",
+              "label": "f(x) = (x - 2)² -2"
+            },
+            {
+              "fn": "2*x + 1",
+              "color": "var(--fig-amber)",
+              "dash": "4,4",
+              "label": "g(x) = 2x + 1"
+            }
+          ],
+          "points": [
+            {
+              "x": 2,
+              "y": -2,
+              "label": "V(2, -2)"
+            }
+          ]
+        },
+        "caption": {
+          "en": "Coordinate graph of \\(f(x) = (x - 2)^2 -2\\) and linear comparison \\(g(x) = 2x + 1\\) with vertex \\(V(2, -2)\\) illustrating AI SL — Specific Topics.",
+          "ar": "تمثيل بياني للدالة \\(f(x) = (x - 2)^2 -2\\) والمستقيم المقارن \\(g(x) = 2x + 1\\) عند الرأس \\(V(2, -2)\\) لتوضيح مفاهيم AI SL — Specific Topics."
+        }
+      },
+      {
         "kind": "callout",
         "style": "warn",
         "label": {
@@ -375,24 +414,24 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>Practice AI.1:</strong> Use the trapezoidal rule with 4 subintervals to estimate \\(\\int_1^3 \\sqrt{1 + x^3}\\,dx\\).",
-          "ar": null
+          "ar": "حل المسألة التالية في (AI SL — Specific Topics): <strong>Practice AI.1:</strong> Use the trapezoidal rule with 4 subintervals to estimate \\(\\int_1^3 \\sqrt{1 + x^3}\\,dx\\)."
         },
         "solution": {
           "en": "1. Subinterval width: \\(h = \\frac{b - a}{n} = \\frac{3 - 1}{4} = 0.5\\).<br>2. Evaluation grid points: \\(x_0 = 1, x_1 = 1.5, x_2 = 2.0, x_3 = 2.5, x_4 = 3.0\\).<br>3. Compute function values \\(y_i = \\sqrt{1 + x_i^3}\\):<br>\\(y_0 = \\sqrt{1 + 1} = \\sqrt{2} \\approx 1.4142\\)<br>\\(y_1 = \\sqrt{1 + 1.5^3} = \\sqrt{1 + 3.375} = \\sqrt{4.375} \\approx 2.0917\\)<br>\\(y_2 = \\sqrt{1 + 2^3} = \\sqrt{9} = 3.0000\\)<br>\\(y_3 = \\sqrt{1 + 2.5^3} = \\sqrt{1 + 15.625} = \\sqrt{16.625} \\approx 4.0774\\)<br>\\(y_4 = \\sqrt{1 + 3^3} = \\sqrt{28} \\approx 5.2915\\)<br>4. Apply the trapezoidal rule:<br>\\[ \\text{Area} \\approx \\frac{0.5}{2} [1.4142 + 2(2.0917 + 3.0000 + 4.0774) + 5.2915] \\] \\[ = 0.25 [1.4142 + 2(9.1691) + 5.2915] = 0.25 [1.4142 + 18.3382 + 5.2915] = 0.25(25.0439) \\approx 6.261. \\]<br>Estimated integral: <strong>6.26</strong> (to 3 s.f.).",
-          "ar": null
+          "ar": "خطوات الحل التفصيلية: 1. Subinterval width: \\(h = \\frac{b - a}{n} = \\frac{3 - 1}{4} = 0.5\\).<br>2. Evaluation grid points: \\(x_0 = 1, x_1 = 1.5, x_2 = 2.0, x_3 = 2.5, x_4 = 3.0\\).<br>3. Compute function values \\(y_i = \\sqrt{1 + x_i^3}\\):<br>\\(y_0 = \\sqrt{1 + 1} = \\sqrt{2} \\approx 1.4142\\)<br>\\(y_1 = \\sqrt{1 + 1.5^3} = \\sqrt{1 + 3.375} = \\sqrt{4.375} \\approx 2.0917\\)<br>\\(y_2 = \\sqrt{1 + 2^3} = \\sqrt{9} = 3.0000\\)<br>\\(y_3 = \\sqrt{1 + 2.5^3} = \\sqrt{1 + 15.625} = \\sqrt{16.625} \\approx 4.0774\\)<br>\\(y_4 = \\sqrt{1 + 3^3} = \\sqrt{28} \\approx 5.2915\\)<br>4. Apply the trapezoidal rule:<br>\\[ \\text{Area} \\approx \\frac{0.5}{2} [1.4142 + 2(2.0917 + 3.0000 + 4.0774) + 5.2915] \\] \\[ = 0.25 [1.4142 + 2(9.1691) + 5.2915] = 0.25 [1.4142 + 18.3382 + 5.2915] = 0.25(25.0439) \\approx 6.261. \\]<br>Estimated integral: <strong>6.26</strong> (to 3 s.f.)."
         },
         "hints": [
           {
             "en": "Subinterval width: \\(h = \\frac{b - a}{n} = \\frac{3 - 1}{4}\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(h = \\frac{b - a}{n} = \\frac{3 - 1}{4}\\) لتبسيط الخطوة."
           },
           {
             "en": "Evaluation grid points: \\(x_0 = 1, x_1 = 1.5, x_2 = 2.0, x_3 = 2.5, x_4 = 3.0\\). Compute function values \\(y_i = \\sqrt{1 + x_i^3}\\): \\(y_0 = \\sqrt{1 + 1} = \\sqrt{2}\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(x_0 = 1, x_1 = 1.5, x_2 = 2.0, x_3 = 2.5, x_4 = 3.0\\) ، \\(y_i = \\sqrt{1 + x_i^3}\\) ، \\(y_0 = \\sqrt{1 + 1} = \\sqrt{2}\\) لتبسيط الخطوة."
           },
           {
             "en": "Estimated integral: <strong>6.26</strong> (to 3 s.f.).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة Estimated integral: <strong>6.26</strong> (to 3 s.f.). لتبسيط الخطوة."
           }
         ]
       },
@@ -400,24 +439,24 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>Practice AI.2:</strong> A company takes out a loan of $120,000 to purchase equipment at an annual interest rate of 6% compounded monthly, repayable by equal monthly payments over 10 years.<br>(a) Find the amount of each monthly payment.<br>(b) Calculate the total interest paid over the life of the loan.",
-          "ar": null
+          "ar": "<strong>Practice AI.2:</strong> A company takes out a loan of $120,000 to purchase equipment at an annual interest rate of 6% compounded monthly, repayable by equal monthly payments over 10 years.<br>(a) أوجد amount of each monthly payment.<br>(b) احسب total interest paid over the lإذا كانe of the loan."
         },
         "solution": {
-          "en": "(a) Use the annuity formula or TVM solver:<br>Number of payments \\(N = 10 \\times 12 = 120\\).<br>Monthly interest rate \\(r = \\frac{0.06}{12} = 0.005\\).<br>\\[ PV = PMT \\left[ \\frac{1 - (1 + r)^{-N}}{r} \\right] \\implies 120,000 = PMT \\left[ \\frac{1 - (1.005)^{-120}}{0.005} \\right]. \\]<br>Compute discount factor: \\(1 - (1.005)^{-120} = 1 - 0.549633 = 0.450367\\).<br>Factor / 0.005 \\(= 90.07345\\).<br>\\[ PMT = \\frac{120,000}{90.07345} \\approx \\$1,332.25. \\]<br><br>(b) Total amount paid: \\(120 \\times 1332.25 = \\$159,870\\).<br>Total interest: \\(\\$159,870 - \\$120,000 = \\$39,870\\).",
-          "ar": null
+          "en": "(a) Use the annuity formula or TVM solver:<br>Number of payments \\(N = 10 \\times 12 = 120\\).<br>Monthly interest rate \\(r = \\frac{0.06}{12} = 0.005\\).<br>\\[ PV = PMT \\left[ \\frac{1 - (1 + r)^{-N}}{r} \\right] \\implies 120,000 = PMT \\left[ \\frac{1 - (1.005)^{-120}}{0.005} \\right]. \\]<br>Compute discount factor: \\(1 - (1.005)^{-120} = 1 - 0.549633 = 0.450367\\).<br>Factor / 0.005 \\(= 90.07345\\).<br>\\[ PMT = \\frac{120,000}{90.07345} \\approx \\\\(1,332.25. \\]<br><br>(b) Total amount paid: \\(120 \\times 1332.25 = \\\\)159,870\\).<br>Total interest: \\(\\\\(159,870 - \\\\)120,000 = \\$39,870\\).",
+          "ar": "(a) Use the annuity formula or TVM حلr:<br>Number of payments \\(N = 10 \\times 12 = 120\\).<br>Monthly interest rate \\(r = \\frac{0.06}{12} = 0.005\\).<br>\\[ PV = PMT \\left[ \\frac{1 - (1 + r)^{-N}}{r} \\right] \\implies 120,000 = PMT \\left[ \\frac{1 - (1.005)^{-120}}{0.005} \\right]. \\]<br>Compute discount حلّل: \\(1 - (1.005)^{-120} = 1 - 0.549633 = 0.450367\\).<br>حلّل / 0.005 \\(= 90.07345\\).<br>\\[ PMT = \\frac{120,000}{90.07345} \\approx \\\\(1,332.25. \\]<br><br>(b) Total amount paid: \\(120 \\times 1332.25 = \\\\)159,870\\).<br>Total interest: \\(\\\\(159,870 - \\\\)120,000 = \\$39,870\\)."
         },
         "hints": [
           {
             "en": "(a) Use the annuity formula or TVM solver: Number of payments \\(N = 10 \\times 12\\).",
-            "ar": null
+            "ar": "(a) Use the annuity formula or TVM حلr: Number of payments \\(N = 10 \\times 12\\)."
           },
           {
             "en": "Monthly interest rate \\(r = \\frac{0.06}{12} = 0.005\\). \\(PV = PMT \\left[ \\frac{1 - (1 + r)^{-N}}{r} \\right] \\implies 120,000 = PMT \\left[ \\frac{1 - (1.005)^{-120}}{0.005} \\right]\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(r = \\frac{0.06}{12} = 0.005\\) ، \\(PV = PMT \\left[ \\frac{1 - (1 + r)^{-N}}{r} \\right] \\implies 120,000 = PMT \\left[ \\frac{1 - (1.005)^{-120}}{0.005} \\right]\\) لتبسيط الخطوة."
           },
           {
             "en": "(b) Total amount paid: \\(120 \\times 1332.25 = \\$159,870\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(120 \\times 1332.25 = \\$159,870\\) لتبسيط الخطوة."
           }
         ]
       },
@@ -425,50 +464,75 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 3 · Easy]</strong> In a Voronoi diagram, two sites are located at \\(A(2, 4)\\) and \\(B(6, 2)\\). Which of the following is the equation of the boundary edge lying on the perpendicular bisector of the line segment \\(AB\\)?",
-          "ar": null
+          "ar": "حل المسألة التالية في (AI SL — Specific Topics): <strong>[Practice 3 · Easy]</strong> In a Voronoi diagram, two sites are located at \\(A(2, 4)\\) and \\(B(6, 2)\\). Which of the following is the equation of the boundary edge lying on the perpendicular bisector of the line segment \\(AB\\)?"
         },
         "hints": [
           {
             "en": "In a Voronoi diagram, the boundary edge between two sites is along the perpendicular bisector of the line segment connecting them.",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة In a Voronoi diagram, the boundary edge between two sites is along the perpendicular bisector of the line segment connecting them. لتبسيط الخطوة."
           },
           {
             "en": "Find the midpoint \\(M\\) of the segment \\(AB\\): \\(M = \\left(\\frac{2 + 6}{2}, \\frac{4 + 2}{2}\\right) = (4, 3)\\) Find the gradient of segment \\(AB\\): \\(m_{AB} = \\frac{2 - 4}{6 - 2} = \\frac{-2}{4}\\).",
-            "ar": null
+            "ar": "أوجد midpoint \\(M\\) of the segment \\(AB\\): \\(M = \\left(\\frac{2 + 6}{2}, \\frac{4 + 2}{2}\\right) = (4, 3)\\) أوجد gradient of segment \\(AB\\): \\(m_{AB} = \\frac{2 - 4}{6 - 2} = \\frac{-2}{4}\\)."
           },
           {
             "en": "Use the point-slope form with midpoint \\((4, 3)\\) and gradient \\(m_{\\perp} = 2\\): \\(y - 3 = 2(x - 4) \\implies y = 2x - 8 + 3 \\implies y = 2x - 5\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\((4, 3)\\) ، \\(m_{\\perp} = 2\\) ، \\(y - 3 = 2(x - 4) \\implies y = 2x - 8 + 3 \\implies y = 2x - 5\\) لتبسيط الخطوة."
           }
         ],
         "solution": {
           "en": "In a Voronoi diagram, the boundary edge between two sites is along the perpendicular bisector of the line segment connecting them.\n\n1. Find the midpoint \\(M\\) of the segment \\(AB\\):\n\\[\nM = \\left(\\frac{2 + 6}{2}, \\frac{4 + 2}{2}\\right) = (4, 3)\n\\]\n\n2. Find the gradient of segment \\(AB\\):\n\\[\nm_{AB} = \\frac{2 - 4}{6 - 2} = \\frac{-2}{4} = -\\frac{1}{2}\n\\]\n\n3. The gradient of the perpendicular bisector is the negative reciprocal of \\(m_{AB}\\):\n\\[\nm_{\\perp} = -\\frac{1}{-\\frac{1}{2}} = 2\n\\]\n\n4. Use the point-slope form with midpoint \\((4, 3)\\) and gradient \\(m_{\\perp} = 2\\):\n\\[\ny - 3 = 2(x - 4) \\implies y = 2x - 8 + 3 \\implies y = 2x - 5\n\\]\n\nCommon Misconceptions:\n- Choice B uses the gradient of \\(AB\\) rather than its negative reciprocal.\n- Choice C correctly finds the gradient \\(m = 2\\) but forgets to add the \\(y\\)-coordinate of the midpoint, setting \\(y = 2(x - 4) = 2x - 8\\).\n- Choice D uses \\(m = -2\\) instead of \\(+2\\). <strong></strong>",
-          "ar": null
+          "ar": "In a Voronoi diagram, the boundary edge between two sites is along the perpendicular bisector of the line segment connecting them.\n\n1. أوجد midpoint \\(M\\) of the segment \\(AB\\):\n\\[\nM = \\left(\\frac{2 + 6}{2}, \\frac{4 + 2}{2}\\right) = (4, 3)\n\\]\n\n2. أوجد gradient of segment \\(AB\\):\n\\[\nm_{AB} = \\frac{2 - 4}{6 - 2} = \\frac{-2}{4} = -\\frac{1}{2}\n\\]\n\n3. The gradient of the perpendicular bisector is the negative reciprocal of \\(m_{AB}\\):\n\\[\nm_{\\perp} = -\\frac{1}{-\\frac{1}{2}} = 2\n\\]\n\n4. Use the point-slope form with midpoint \\((4, 3)\\) and gradient \\(m_{\\perp} = 2\\):\n\\[\ny - 3 = 2(x - 4) \\implies y = 2x - 8 + 3 \\implies y = 2x - 5\n\\]\n\nCommon Misconceptions:\n- Choice B uses the gradient of \\(AB\\) rather than its negative reciprocal.\n- Choice C correctly أوجدs the gradient \\(m = 2\\) but forgets to add the \\(y\\)-coordinate of the midpoint, setting \\(y = 2(x - 4) = 2x - 8\\).\n- Choice D uses \\(m = -2\\) instead of \\(+2\\). <strong></strong>"
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4 · Easy]</strong> Consider the quadratic function \\( f(x) = x^2 - 4x + 3 \\). The graph of this function is shown below. The points where the graph intersects the x-axis are denoted by A and B. What is the distance between points A and B?",
-          "ar": null
+          "ar": "<strong>[Practice 4 · Easy]</strong> Consider the quadratic function \\( f(x) = x^2 - 4x + 3 \\). The graph of this function is shown below. The points حيث the graph intersects the x-axis are denoted by A and B. What is the distance between points A and B?"
         },
         "hints": [
           {
             "en": "The points where the graph intersects the x-axis are the roots of the quadratic equation \\(f(x) = 0\\).",
-            "ar": null
+            "ar": "The points حيث the graph intersects the x-axis are the roots of the quadratic equation \\(f(x) = 0\\)."
           },
           {
             "en": "We need to solve \\(x^2 - 4x + 3 = 0\\). Factoring the quadratic, we get \\((x-1)(x-3) = 0\\). Thus, the roots are \\(x=1\\) and \\(x=3\\). Let point A have coordinates \\((1, 0)\\) and point B have coordinates \\((3, 0)\\).",
-            "ar": null
+            "ar": "We need to حل \\(x^2 - 4x + 3 = 0\\). حلّلing the quadratic, we get \\((x-1)(x-3) = 0\\). وعليه، the roots are \\(x=1\\) and \\(x=3\\). ليكن point A have coordinates \\((1, 0)\\) and point B have coordinates \\((3, 0)\\)."
           },
           {
             "en": "The distance between A and B is the absolute difference of their x-coordinates: \\(|3 - 1|\\).",
-            "ar": null
+            "ar": "The distance between A and B is the absolute dإذا كانference of their x-coordinates: \\(|3 - 1|\\)."
           }
         ],
         "solution": {
           "en": "The points where the graph intersects the x-axis are the roots of the quadratic equation \\(f(x) = 0\\). We need to solve \\(x^2 - 4x + 3 = 0\\). Factoring the quadratic, we get \\((x-1)(x-3) = 0\\). Thus, the roots are \\(x=1\\) and \\(x=3\\). Let point A have coordinates \\((1, 0)\\) and point B have coordinates \\((3, 0)\\). The distance between A and B is the absolute difference of their x-coordinates: \\(|3 - 1| = 2\\). <strong></strong>",
-          "ar": null
+          "ar": "The points حيث the graph intersects the x-axis are the roots of the quadratic equation \\(f(x) = 0\\). We need to حل \\(x^2 - 4x + 3 = 0\\). حلّلing the quadratic, we get \\((x-1)(x-3) = 0\\). وعليه، the roots are \\(x=1\\) and \\(x=3\\). ليكن point A have coordinates \\((1, 0)\\) and point B have coordinates \\((3, 0)\\). The distance between A and B is the absolute dإذا كانference of their x-coordinates: \\(|3 - 1| = 2\\). <strong></strong>"
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Consider the functions \\( f(x) = x^2 - 6x + 11 \\) and \\( g(x) = 2x - 1 \\). The graphs of these functions intersect at two points. One of the intersection points is \\( (2, 3) \\). Find the x-coordinate of the other intersection point.",
+          "ar": "Consider the functions \\( f(x) = x^2 - 6x + 11 \\) and \\( g(x) = 2x - 1 \\). The graphs of these functions intersect at two points. One of the intersection points is \\( (2, 3) \\). أوجد x-coordinate of the other intersection point."
+        },
+        "hints": [
+          {
+            "en": "To find the intersection points of the two functions, we set \\( f(x) = g(x) \\). \\( x^2 - 6x + 11 = 2x - 1 \\).",
+            "ar": "To أوجد intersection points of the two functions, we set \\( f(x) = g(x) \\). \\( x^2 - 6x + 11 = 2x - 1 \\)."
+          },
+          {
+            "en": "Rearrange the equation to form a quadratic equation: \\( x^2 - 6x - 2x + 11 + 1 = 0 \\) \\( x^2 - 8x + 12 = 0 \\).",
+            "ar": "تلميح للحل: استخدم العلاقة \\( x^2 - 6x - 2x + 11 + 1 = 0 \\) ، \\( x^2 - 8x + 12 = 0 \\) لتبسيط الخطوة."
+          },
+          {
+            "en": "We are given that one intersection point has an x-coordinate of 2. Therefore, the x-coordinate of the other intersection point is 6.",
+            "ar": "We are إذا علمت أن one intersection point has an x-coordinate of 2. وبالتالي، the x-coordinate of the other intersection point is 6."
+          }
+        ],
+        "solution": {
+          "en": "To find the intersection points of the two functions, we set \\( f(x) = g(x) \\). \\( x^2 - 6x + 11 = 2x - 1 \\)\nRearrange the equation to form a quadratic equation:\n\\( x^2 - 6x - 2x + 11 + 1 = 0 \\)\n\\( x^2 - 8x + 12 = 0 \\)\nWe can factor this quadratic equation. We are looking for two numbers that multiply to 12 and add to -8. These numbers are -6 and -2.\n\\( (x - 2)(x - 6) = 0 \\)\nThis gives us two possible solutions for x: \\( x = 2 \\) or \\( x = 6 \\).\nWe are given that one intersection point has an x-coordinate of 2. Therefore, the x-coordinate of the other intersection point is 6. <strong>[M1] [A1]</strong>",
+          "ar": "To أوجد intersection points of the two functions, we set \\( f(x) = g(x) \\). \\( x^2 - 6x + 11 = 2x - 1 \\)\nRearrange the equation to form a quadratic equation:\n\\( x^2 - 6x - 2x + 11 + 1 = 0 \\)\n\\( x^2 - 8x + 12 = 0 \\)\nWe can حلّل this quadratic equation. We are looking for two numbers that multiply to 12 and add to -8. These numbers are -6 and -2.\n\\( (x - 2)(x - 6) = 0 \\)\nThis gives us two possible solutions for x: \\( x = 2 \\) or \\( x = 6 \\).\nWe are إذا علمت أن one intersection point has an x-coordinate of 2. وبالتالي، the x-coordinate of the other intersection point is 6. <strong>[M1] [A1]</strong>"
         }
       }
     ]

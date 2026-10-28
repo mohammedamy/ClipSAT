@@ -199,7 +199,75 @@
           body: 'Bayes\' Theorem: \\(P(A|B) = \\frac{P(B|A)P(A)}{P(B)} = \\frac{P(B|A)P(A)}{\\sum_k P(B|A_k)P(A_k)}\\)<br>Softmax: \\(\\operatorname{softmax}(z)_i = \\frac{e^{z_i}}{\\sum_{j=1}^K e^{z_j}}\\)<br>Covariance matrix: \\(\\Sigma = \\frac{1}{n-1} X^T X\\) (for centered data \\(X\\))<br>PCA Dimensionality Reduction: Project onto top \\(k\\) eigenvectors of \\(\\Sigma\\) maximizing variance: \\(Z = X V_k\\).'
         }
       ]
+    },
+    'olympiad': {
+      title: 'Olympiad & Competition Mathematics Reference (AMC / AIME / BMO / IMO)',
+      titleAr: 'مرجع قوانين ونظريات أولمبياد الرياضيات والمسابقات العالمية',
+      desc: 'Core identities and theorems in Number Theory, Algebraic Inequalities, Combinatorics, and Classical Euclidean Geometry.',
+      cards: [
+        {
+          title: 'Number Theory & Modular Arithmetic',
+          titleAr: 'نظرية الأعداد والحساب المعياري',
+          body: 'Euler\'s Totient Theorem: \\(a^{\\phi(n)} \\equiv 1 \\pmod n\\) for \\(\\gcd(a,n)=1\\)<br>Fermat\'s Little Theorem: \\(a^{p-1} \\equiv 1 \\pmod p\\) for prime \\(p \\nmid a\\)<br>Wilson\'s Theorem: \\((p-1)! \\equiv -1 \\pmod p\\)<br>Number of divisors of \\(n = \\prod p_i^{e_i}\\): \\(\\tau(n) = \\prod (e_i + 1)\\), sum \\(\\sigma(n) = \\prod \\frac{p_i^{e_i+1}-1}{p_i-1}\\)'
+        },
+        {
+          title: 'Algebraic Inequalities & Symmetric Sums',
+          titleAr: 'المتباينات الجبرية والمجاميع المتماثلة',
+          body: 'AM-GM-HM: \\(\\frac{x_1 + \\dots + x_n}{n} \\ge \\sqrt[n]{x_1 \\cdots x_n} \\ge \\frac{n}{\\sum 1/x_i}\\) (for \\(x_i > 0\\))<br>Cauchy-Schwarz: \\(\\left(\\sum a_i^2\\right)\\left(\\sum b_i^2\\right) \\ge \\left(\\sum a_i b_i\\right)^2\\)<br>Titu\'s Lemma: \\(\\sum \\frac{a_i^2}{x_i} \\ge \\frac{(\\sum a_i)^2}{\\sum x_i}\\) (for \\(x_i > 0\\))<br>Vieta\'s Formulas for \\(\\sum_{k=0}^n a_k x^k = 0\\): \\(\\sum r_i = -\\frac{a_{n-1}}{a_n}\\), \\(\\prod r_i = (-1)^n \\frac{a_0}{a_n}\\)'
+        },
+        {
+          title: 'Combinatorics, Stars & Bars & PIE',
+          titleAr: 'التوافيق ومبدأ الشمول والإقصاء',
+          body: 'Stars and Bars: \\(\\binom{n+k-1}{k-1}\\) non-negative integer solutions to \\(x_1 + \\dots + x_k = n\\)<br>Derangements: \\(D_n = n! \\sum_{k=0}^n \\frac{(-1)^k}{k!}\\)<br>Catalan numbers: \\(C_n = \\frac{1}{n+1}\\binom{2n}{n}\\)'
+        },
+        {
+          title: 'Olympiad Triangle & Circle Geometry',
+          titleAr: 'هندسة المثلث والدائرة في الأولمبياد',
+          body: 'Area formulas: \\([ABC] = rs = \\frac{abc}{4R} = \\sqrt{s(s-a)(s-b)(s-c)}\\)<br>Stewart\'s Theorem: \\(man + dad = bmb + cnc\\)<br>Ceva\'s Theorem: \\(\\frac{AF}{FB} \\cdot \\frac{BD}{DC} \\cdot \\frac{CE}{EA} = 1\\) · Menelaus: product \\(= 1\\)<br>Ptolemy\'s Theorem (cyclic quad): \\(AC \\cdot BD = AB \\cdot CD + BC \\cdot AD\\)'
+        }
+      ]
+    },
+    'univ': {
+      title: 'University Mathematics & Engineering Reference (Linear Algebra, MVC & ODEs)',
+      titleAr: 'مرجع الرياضيات الجامعية والهندسية (الجبر الخطي، التفاضل المتعدد، والمعادلات التفاضلية)',
+      desc: 'Fundamental theorems and formulas for Linear Algebra, Multivariable Vector Calculus, and Ordinary Differential Equations.',
+      cards: [
+        {
+          title: 'Linear Algebra, Eigenvalues & SVD',
+          titleAr: 'الجبر الخطي والقيم الذاتية وتفكيك القيمة المنفردة',
+          body: 'Rank-Nullity Theorem: \\(\\operatorname{rank}(A) + \\operatorname{nullity}(A) = n\\)<br>Characteristic equation: \\(\\det(A - \\lambda I) = 0\\), \\(\\operatorname{tr}(A) = \\sum \\lambda_i\\), \\(\\det(A) = \\prod \\lambda_i\\)<br>Orthogonal projection onto \\(\\vec{u}\\): \\(\\operatorname{proj}_{\\vec{u}}(\\vec{v}) = \\frac{\\vec{v}\\cdot\\vec{u}}{\\vec{u}\\cdot\\vec{u}}\\vec{u}\\)<br>Spectral / SVD: \\(A = U \\Sigma V^T\\) where \\(\\sigma_i = \\sqrt{\\lambda_i(A^T A)}\\)'
+        },
+        {
+          title: 'Partial Derivatives, Gradients & Lagrange',
+          titleAr: 'المشتقات الجزئية والتدرج ومضاعفات لاغرانج',
+          body: 'Gradient & Directional Derivative: \\(D_{\\vec{u}}f = \\nabla f \\cdot \\vec{u}\\) (for unit vector \\(\\vec{u}\\))<br>Second Partials Test: \\(D = f_{xx}f_{yy} - (f_{xy})^2\\)<br>Lagrange Multipliers: \\(\\nabla f = \\lambda \\nabla g\\) subject to \\(g(x,y,z) = c\\)<br>Jacobian in Polar/Spherical: \\(dA = r\\,dr\\,d\\theta\\), \\(dV = \\rho^2\\sin\\phi\\,d\\rho\\,d\\phi\\,d\\theta\\)'
+        },
+        {
+          title: 'Vector Calculus Theorems (Green, Stokes & Gauss)',
+          titleAr: 'نظريات التفاضل والتكامل المتجهي (غرين، ستوكس، وغاوس)',
+          body: 'Green\'s Theorem: \\(\\oint_C (P\\,dx + Q\\,dy) = \\iint_D \\left(\\frac{\\partial Q}{\\partial x} - \\frac{\\partial P}{\\partial y}\\right) dA\\)<br>Stokes\' Theorem: \\(\\oint_C \\mathbf{F}\\cdot d\\mathbf{r} = \\iint_S (\\nabla \\times \\mathbf{F})\\cdot d\\mathbf{S}\\)<br>Divergence (Gauss) Theorem: \\(\\oiint_S \\mathbf{F}\\cdot d\\mathbf{S} = \\iiint_E (\\nabla \\cdot \\mathbf{F})\\,dV\\)'
+        },
+        {
+          title: 'Differential Equations & Laplace Transforms',
+          titleAr: 'المعادلات التفاضلية وتحويلات لابلاس',
+          body: '1st-Order Linear Integrating Factor: \\(y\' + P(x)y = Q(x) \\implies \\mu(x) = e^{\\int P(x)dx}\\)<br>2nd-Order Characteristic Eq: \\(ay\'\' + by\' + cy = 0 \\implies ar^2 + br + c = 0\\)<br>Laplace Transforms: \\(\\mathcal{L}\\{y\'\\} = sY(s) - y(0)\\), \\(\\mathcal{L}\\{e^{at}\\} = \\frac{1}{s-a}\\), \\(\\mathcal{L}\\{\\sin(\\omega t)\\} = \\frac{\\omega}{s^2+\\omega^2}\\)'
+        }
+      ]
     }
+  };
+
+  var TRACK_TO_FORMULA_TAB = {
+    sat: 'sat', act: 'sat', act2: 'sat', act2l2: 'sat',
+    est: 'sat', est2: 'sat', est2l2: 'sat',
+    algebra: 'sat', geo: 'sat', alg2: 'sat', precalc: 'sat',
+    igcse: 'cambridge', edexcel: 'cambridge',
+    addmath: 'addmath',
+    aslevel: 'alevel', a2level: 'alevel', ibsl: 'alevel', ibhl: 'alevel',
+    qudrat: 'qudrat', tahsili: 'qudrat', gaten: 'qudrat',
+    apab: 'ap', apbc: 'ap', appc: 'ap', apstats: 'ap', calculus: 'ap',
+    mathai: 'mathai',
+    olympiad: 'olympiad',
+    linalg: 'univ', mvc: 'univ', odes: 'univ'
   };
 
   var CSFormula = {
@@ -209,6 +277,10 @@
       if(!overlay) return;
       overlay.classList.add('open');
       overlay.setAttribute('aria-hidden', 'false');
+      if(!tab){
+        var bodyTrack = document.body && document.body.getAttribute('data-track');
+        if(bodyTrack && TRACK_TO_FORMULA_TAB[bodyTrack]) tab = TRACK_TO_FORMULA_TAB[bodyTrack];
+      }
       CSFormula.setTab(tab || CSFormula.activeTab || 'sat');
     },
     close: function(){

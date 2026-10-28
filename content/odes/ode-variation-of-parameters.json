@@ -424,24 +424,24 @@
         "kind": "practiceProblem",
         "question": {
           "en": "Find the general solution of \\( y'' + y = \\tan x \\) for \\( x \\in (-\\pi/2, \\pi/2) \\).",
-          "ar": null
+          "ar": "أوجد الحل العام لـ \\( y'' + y = \\tan x \\) for \\( x \\in (-\\pi/2, \\pi/2) \\)."
         },
         "solution": {
           "en": "<p><strong>Step 1: Complementary basis & Wronskian:</strong> \\( y_1 = \\cos x, y_2 = \\sin x \\). \\[ W(x) = \\cos x(\\cos x) - (-\\sin x)(\\sin x) = 1. \\]</p><p><strong>Step 2: Parameter integrals:</strong> \\[ u_1'(x) = -\\frac{\\sin x \\tan x}{1} = -\\frac{\\sin^2 x}{\\cos x} = -\\frac{1 - \\cos^2 x}{\\cos x} = \\cos x - \\sec x. \\] \\[ u_1(x) = \\int (\\cos x - \\sec x)\\,dx = \\sin x - \\ln|\\sec x + \\tan x|. \\] \\[ u_2'(x) = \\frac{\\cos x \\tan x}{1} = \\sin x \\implies u_2(x) = -\\cos x. \\]</p><p><strong>Step 3: Particular solution:</strong> \\[ y_p(x) = u_1 y_1 + u_2 y_2 = \\big(\\sin x - \\ln|\\sec x + \\tan x|\\big)\\cos x + (-\\cos x)\\sin x = -\\cos x \\ln|\\sec x + \\tan x|. \\]</p><p><strong>Step 4: General solution:</strong> \\[ y(x) = C_1 \\cos x + C_2 \\sin x - \\cos x \\ln|\\sec x + \\tan x|. \\]</p>",
-          "ar": null
+          "ar": "خطوات الحل التفصيلية: <p><strong>Step 1: Complementary basis & Wronskian:</strong> \\( y_1 = \\cos x, y_2 = \\sin x \\). \\[ W(x) = \\cos x(\\cos x) - (-\\sin x)(\\sin x) = 1. \\]</p><p><strong>Step 2: Parameter integrals:</strong> \\[ u_1'(x) = -\\frac{\\sin x \\tan x}{1} = -\\frac{\\sin^2 x}{\\cos x} = -\\frac{1 - \\cos^2 x}{\\cos x} = \\cos x - \\sec x. \\] \\[ u_1(x) = \\int (\\cos x - \\sec x)\\,dx = \\sin x - \\ln|\\sec x + \\tan x|. \\] \\[ u_2'(x) = \\frac{\\cos x \\tan x}{1} = \\sin x \\implies u_2(x) = -\\cos x. \\]</p><p><strong>Step 3: Particular solution:</strong> \\[ y_p(x) = u_1 y_1 + u_2 y_2 = \\big(\\sin x - \\ln|\\sec x + \\tan x|\\big)\\cos x + (-\\cos x)\\sin x = -\\cos x \\ln|\\sec x + \\tan x|. \\]</p><p><strong>Step 4: General solution:</strong> \\[ y(x) = C_1 \\cos x + C_2 \\sin x - \\cos x \\ln|\\sec x + \\tan x|. \\]</p>"
         },
         "hints": [
           {
             "en": "<strong>Complementary basis & Wronskian:</strong> \\( y_1 = \\cos x, y_2 = \\sin x \\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\( y_1 = \\cos x, y_2 = \\sin x \\) لتبسيط الخطوة."
           },
           {
             "en": "Rewrite and simplify to obtain: \\(W(x) = \\cos x(\\cos x) - (-\\sin x)(\\sin x) = 1\\) <strong>Parameter integrals:</strong> \\(u_1'(x) = -\\frac{\\sin x \\tan x}{1} = -\\frac{\\sin^2 x}{\\cos x} = -\\frac{1 - \\cos^2 x}{\\cos x} = \\cos x - \\sec x\\).",
-            "ar": null
+            "ar": "أعد كتابة العلاقة وبسّطها للحصول على: \\(W(x) = \\cos x(\\cos x) - (-\\sin x)(\\sin x) = 1\\) <strong>Parameter integrals:</strong> \\(u_1'(x) = -\\frac{\\sin x \\tan x}{1} = -\\frac{\\sin^2 x}{\\cos x} = -\\frac{1 - \\cos^2 x}{\\cos x} = \\cos x - \\sec x\\)."
           },
           {
             "en": "<strong>General solution:</strong> \\(y(x) = C_1 \\cos x + C_2 \\sin x - \\cos x \\ln|\\sec x + \\tan x|\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(y(x) = C_1 \\cos x + C_2 \\sin x - \\cos x \\ln|\\sec x + \\tan x|\\) لتبسيط الخطوة."
           }
         ]
       },
@@ -449,24 +449,24 @@
         "kind": "practiceProblem",
         "question": {
           "en": "Use the Green's function representation to solve the initial value problem \\( y'' - 2y' + y = \\frac{e^x}{x^2 + 1} \\) with \\( y(0) = 0 \\) and \\( y'(0) = 0 \\).",
-          "ar": null
+          "ar": "Use the Green's function representation to حل the initial value problem \\( y'' - 2y' + y = \\frac{e^x}{x^2 + 1} \\) with \\( y(0) = 0 \\) and \\( y'(0) = 0 \\)."
         },
         "solution": {
           "en": "<p><strong>Step 1: Fundamental basis:</strong> \\( r^2 - 2r + 1 = 0 \\implies y_1(x) = e^x, y_2(x) = x e^x \\).<br>Wronskian: \\( W(t) = e^t(e^t + t e^t) - e^t(t e^t) = e^{2t} \\).</p><p><strong>Step 2: Construct Green's function:</strong> \\[ G(x, t) = \\frac{y_1(t)y_2(x) - y_1(x)y_2(t)}{W(t)} = \\frac{e^t (x e^x) - e^x (t e^t)}{e^{2t}} = \\frac{e^{x+t}(x - t)}{e^{2t}} = (x - t)e^{x - t}. \\]</p><p><strong>Step 3: Evaluate integral with zero initial conditions:</strong> \\[ y(x) = \\int_0^x G(x, t) g(t)\\,dt = \\int_0^x (x - t)e^{x - t} \\left(\\frac{e^t}{t^2 + 1}\\right)dt = e^x \\int_0^x \\frac{x - t}{t^2 + 1}\\,dt \\] \\[ = e^x \\left(x \\int_0^x \\frac{1}{t^2 + 1}\\,dt - \\int_0^x \\frac{t}{t^2 + 1}\\,dt\\right) = e^x \\left(x \\arctan x - \\frac{1}{2}\\ln(x^2 + 1)\\right). \\]</p><p>Thus: \\[ y(x) = e^x\\left(x \\arctan x - \\frac{1}{2}\\ln(x^2 + 1)\\right). \\]</p>",
-          "ar": null
+          "ar": "<p><strong>Step 1: Fundamental basis:</strong> \\( r^2 - 2r + 1 = 0 \\implies y_1(x) = e^x, y_2(x) = x e^x \\).<br>Wronskian: \\( W(t) = e^t(e^t + t e^t) - e^t(t e^t) = e^{2t} \\).</p><p><strong>Step 2: Construct Green's function:</strong> \\[ G(x, t) = \\frac{y_1(t)y_2(x) - y_1(x)y_2(t)}{W(t)} = \\frac{e^t (x e^x) - e^x (t e^t)}{e^{2t}} = \\frac{e^{x+t}(x - t)}{e^{2t}} = (x - t)e^{x - t}. \\]</p><p><strong>Step 3: احسب قيمة integral with zero initial conditions:</strong> \\[ y(x) = \\int_0^x G(x, t) g(t)\\,dt = \\int_0^x (x - t)e^{x - t} \\left(\\frac{e^t}{t^2 + 1}\\right)dt = e^x \\int_0^x \\frac{x - t}{t^2 + 1}\\,dt \\] \\[ = e^x \\left(x \\int_0^x \\frac{1}{t^2 + 1}\\,dt - \\int_0^x \\frac{t}{t^2 + 1}\\,dt\\right) = e^x \\left(x \\arctan x - \\frac{1}{2}\\ln(x^2 + 1)\\right). \\]</p><p>Thus: \\[ y(x) = e^x\\left(x \\arctan x - \\frac{1}{2}\\ln(x^2 + 1)\\right). \\]</p>"
         },
         "hints": [
           {
             "en": "<strong>Fundamental basis:</strong> \\( r^2 - 2r + 1 = 0 \\implies y_1(x) = e^x, y_2(x) = x e^x \\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\( r^2 - 2r + 1 = 0 \\implies y_1(x) = e^x, y_2(x) = x e^x \\) لتبسيط الخطوة."
           },
           {
             "en": "Wronskian: \\( W(t) = e^t(e^t + t e^t) - e^t(t e^t) = e^{2t} \\). <strong>Construct Green's function:</strong> \\(G(x, t) = \\frac{y_1(t)y_2(x) - y_1(x)y_2(t)}{W(t)} = \\frac{e^t (x e^x) - e^x (t e^t)}{e^{2t}} = \\frac{e^{x+t}(x - t)}{e^{2t}} = (x - t)e^{x - t}\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\( W(t) = e^t(e^t + t e^t) - e^t(t e^t) = e^{2t} \\) ، \\(G(x, t) = \\frac{y_1(t)y_2(x) - y_1(x)y_2(t)}{W(t)} = \\frac{e^t (x e^x) - e^x (t e^t)}{e^{2t}} = \\frac{e^{x+t}(x - t)}{e^{2t}} = (x - t)e^{x - t}\\) لتبسيط الخطوة."
           },
           {
             "en": "Thus: \\(y(x) = e^x\\left(x \\arctan x - \\frac{1}{2}\\ln(x^2 + 1)\\right)\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(y(x) = e^x\\left(x \\arctan x - \\frac{1}{2}\\ln(x^2 + 1)\\right)\\) لتبسيط الخطوة."
           }
         ]
       },
@@ -474,50 +474,75 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 3 · Hard]</strong> Consider the second-order linear non-homogeneous differential equation: \\(\\frac{d^2y}{dx^2} + 4y = \\sec(2x)\\). Suppose a particular solution is found using the method of variation of parameters. Let the fundamental set of solutions for the associated homogeneous equation be \\(y_1(x) = \\cos(2x)\\) and \\(y_2(x) = \\sin(2x)\\). If the particular solution is expressed in the form \\(y_p(x) = u_1(x)y_1(x) + u_2(x)y_2(x)\\), determine the value of \\(u_2'(x)\\).",
-          "ar": null
+          "ar": "<strong>[Practice 3 · Hard]</strong> Consider the second-order linear non-homogeneous dإذا كانferential equation: \\(\\frac{d^2y}{dx^2} + 4y = \\sec(2x)\\). Suppose a particular solution is found باستخدام method of variation of parameters. ليكن the fundamental set of solutions for the associated homogeneous equation be \\(y_1(x) = \\cos(2x)\\) and \\(y_2(x) = \\sin(2x)\\). إذا كان the particular solution is expressed in the form \\(y_p(x) = u_1(x)y_1(x) + u_2(x)y_2(x)\\), حدّد value of \\(u_2'(x)\\)."
         },
         "hints": [
           {
             "en": "The given differential equation is \\(\\frac{d^2y}{dx^2} + 4y = \\sec(2x)\\). The associated homogeneous equation is \\(\\frac{d^2y}{dx^2} + 4y = 0\\). The characteristic equation is \\(r^2 + 4 = 0\\), which has roots \\(r = \\pm 2i\\). Thus, the fundamental set of solutions for the homogeneous equation is \\(y_1(x) = \\cos(2x)\\) and \\(y_2(x) = \\sin(2x)\\).",
-            "ar": null
+            "ar": "The given dإذا كانferential equation is \\(\\frac{d^2y}{dx^2} + 4y = \\sec(2x)\\). The associated homogeneous equation is \\(\\frac{d^2y}{dx^2} + 4y = 0\\). The characteristic equation is \\(r^2 + 4 = 0\\), which has roots \\(r = \\pm 2i\\). وعليه، the fundamental set of solutions for the homogeneous equation is \\(y_1(x) = \\cos(2x)\\) and \\(y_2(x) = \\sin(2x)\\)."
           },
           {
             "en": "We use the method of variation of parameters to find a particular solution of the form \\(y_p(x) = u_1(x)y_1(x) + u_2(x)y_2(x)\\). The Wronskian of \\(y_1\\) and \\(y_2\\) is: \\(W(y_1, y_2)(x) = y_1y_2' - y_1'y_2 = \\cos(2x)(2\\cos(2x)) - (-\\sin(2x))(2\\sin(2x))\\).",
-            "ar": null
+            "ar": "We use the method of variation of parameters to أوجد a particular solution of the form \\(y_p(x) = u_1(x)y_1(x) + u_2(x)y_2(x)\\). The Wronskian of \\(y_1\\) and \\(y_2\\) is: \\(W(y_1, y_2)(x) = y_1y_2' - y_1'y_2 = \\cos(2x)(2\\cos(2x)) - (-\\sin(2x))(2\\sin(2x))\\)."
           },
           {
             "en": "The value of \\(u_2'(x)\\) is \\(\\frac{1}{2}\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(u_2'(x)\\) ، \\(\\frac{1}{2}\\) لتبسيط الخطوة."
           }
         ],
         "solution": {
           "en": "The given differential equation is \\(\\frac{d^2y}{dx^2} + 4y = \\sec(2x)\\). The associated homogeneous equation is \\(\\frac{d^2y}{dx^2} + 4y = 0\\). The characteristic equation is \\(r^2 + 4 = 0\\), which has roots \\(r = \\pm 2i\\). Thus, the fundamental set of solutions for the homogeneous equation is \\(y_1(x) = \\cos(2x)\\) and \\(y_2(x) = \\sin(2x)\\).\n\nWe use the method of variation of parameters to find a particular solution of the form \\(y_p(x) = u_1(x)y_1(x) + u_2(x)y_2(x)\\).\n\nThe Wronskian of \\(y_1\\) and \\(y_2\\) is:\n\\(W(y_1, y_2)(x) = y_1y_2' - y_1'y_2 = \\cos(2x)(2\\cos(2x)) - (-\\sin(2x))(2\\sin(2x))\\)\n\\(W(y_1, y_2)(x) = 2\\cos^2(2x) + 2\\sin^2(2x) = 2(\\cos^2(2x) + \\sin^2(2x)) = 2\\).\n\nThe non-homogeneous term is \\(g(x) = \\sec(2x)\\).\n\nThe formulas for \\(u_1'(x)\\) and \\(u_2'(x)\\) are:\n\\(u_1'(x) = -\\frac{y_2(x)g(x)}{W(x)}\\)\n\\(u_2'(x) = \\frac{y_1(x)g(x)}{W(x)}\\)\n\nSubstituting the given functions:\n\\(u_2'(x) = \\frac{\\cos(2x) \\cdot \\sec(2x)}{2}\\)\n\\(u_2'(x) = \\frac{\\cos(2x)}{2\\cos(2x)}\\)\n\\(u_2'(x) = \\frac{1}{2}\\).\n\nThe value of \\(u_2'(x)\\) is \\(\\frac{1}{2}\\).",
-          "ar": null
+          "ar": "The given dإذا كانferential equation is \\(\\frac{d^2y}{dx^2} + 4y = \\sec(2x)\\). The associated homogeneous equation is \\(\\frac{d^2y}{dx^2} + 4y = 0\\). The characteristic equation is \\(r^2 + 4 = 0\\), which has roots \\(r = \\pm 2i\\). وعليه، the fundamental set of solutions for the homogeneous equation is \\(y_1(x) = \\cos(2x)\\) and \\(y_2(x) = \\sin(2x)\\).\n\nWe use the method of variation of parameters to أوجد a particular solution of the form \\(y_p(x) = u_1(x)y_1(x) + u_2(x)y_2(x)\\).\n\nThe Wronskian of \\(y_1\\) and \\(y_2\\) is:\n\\(W(y_1, y_2)(x) = y_1y_2' - y_1'y_2 = \\cos(2x)(2\\cos(2x)) - (-\\sin(2x))(2\\sin(2x))\\)\n\\(W(y_1, y_2)(x) = 2\\cos^2(2x) + 2\\sin^2(2x) = 2(\\cos^2(2x) + \\sin^2(2x)) = 2\\).\n\nThe non-homogeneous term is \\(g(x) = \\sec(2x)\\).\n\nThe formulas for \\(u_1'(x)\\) and \\(u_2'(x)\\) are:\n\\(u_1'(x) = -\\frac{y_2(x)g(x)}{W(x)}\\)\n\\(u_2'(x) = \\frac{y_1(x)g(x)}{W(x)}\\)\n\nSubstituting the given functions:\n\\(u_2'(x) = \\frac{\\cos(2x) \\cdot \\sec(2x)}{2}\\)\n\\(u_2'(x) = \\frac{\\cos(2x)}{2\\cos(2x)}\\)\n\\(u_2'(x) = \\frac{1}{2}\\).\n\nThe value of \\(u_2'(x)\\) is \\(\\frac{1}{2}\\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4 · Easy]</strong> Find a particular solution of \\( y''-y=2 \\) using variation of parameters.",
-          "ar": null
+          "ar": "<strong>[Practice 4 · Easy]</strong> أوجد a particular solution of \\( y''-y=2 \\) using variation of parameters."
         },
         "hints": [
           {
             "en": "Set up the initial relation: \\( y_1=e^{x} \\), \\( y_2=e^{-x} \\), \\( W=-2 \\).",
-            "ar": null
+            "ar": "ابدأ بكتابة العلاقة الأساسية: \\( y_1=e^{x} \\), \\( y_2=e^{-x} \\), \\( W=-2 \\)."
           },
           {
             "en": "Rewrite and simplify to obtain: \\( u_1'=-\\dfrac{y_2(2)}{W}=e^{-x}\\Rightarrow u_1=-e^{-x} \\).",
-            "ar": null
+            "ar": "أعد كتابة العلاقة وبسّطها للحصول على: \\( u_1'=-\\dfrac{y_2(2)}{W}=e^{-x}\\Rightarrow u_1=-e^{-x} \\)."
           },
           {
             "en": "Use the resulting form to finish: \\(u_2'=\\dfrac{y_1(2)}{W}=-e^{x} \\implies u_2=-e^{x}\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(u_2'=\\dfrac{y_1(2)}{W}=-e^{x} \\implies u_2=-e^{x}\\) لتبسيط الخطوة."
           }
         ],
         "solution": {
           "en": "\\( y_1=e^{x} \\), \\( y_2=e^{-x} \\), \\( W=-2 \\). \\( u_1'=-\\dfrac{y_2(2)}{W}=e^{-x}\\Rightarrow u_1=-e^{-x} \\); \\( u_2'=\\dfrac{y_1(2)}{W}=-e^{x}\\Rightarrow u_2=-e^{x} \\). So \\( y_p=u_1y_1+u_2y_2=-e^{-x}e^{x}-e^{x}e^{-x}=-2 \\).",
-          "ar": null
+          "ar": "خطوات الحل التفصيلية: \\( y_1=e^{x} \\), \\( y_2=e^{-x} \\), \\( W=-2 \\). \\( u_1'=-\\dfrac{y_2(2)}{W}=e^{-x}\\Rightarrow u_1=-e^{-x} \\); \\( u_2'=\\dfrac{y_1(2)}{W}=-e^{x}\\Rightarrow u_2=-e^{x} \\). So \\( y_p=u_1y_1+u_2y_2=-e^{-x}e^{x}-e^{x}e^{-x}=-2 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "The second-order linear homogeneous ODE \\( F''(w) - 50F'(w) + 621F(w) = 0 \\) has characteristic roots \\( \\lambda_1, \\lambda_2 \\). Determine the trace sum \\( \\lambda_1 + \\lambda_2 \\).",
+          "ar": "The second-order linear homogeneous ODE \\( F''(w) - 50F'(w) + 621F(w) = 0 \\) has characteristic roots \\( \\lambda_1, \\lambda_2 \\). حدّد trace sum \\( \\lambda_1 + \\lambda_2 \\)."
+        },
+        "hints": [
+          {
+            "en": "Start by examining the given mathematical expression in the problem: \\(F''(w) - 50F'(w) + 621F(w) = 0\\).",
+            "ar": "تلميح للحل: استخدم العلاقة \\(F''(w) - 50F'(w) + 621F(w) = 0\\) لتبسيط الخطوة."
+          },
+          {
+            "en": "From \\(\\lambda^2 - 50\\lambda + 621 = 0\\), the sum of roots is \\(50\\).",
+            "ar": "تلميح للحل: استخدم العلاقة \\(\\lambda^2 - 50\\lambda + 621 = 0\\) ، \\(50\\) لتبسيط الخطوة."
+          },
+          {
+            "en": "Apply this step to \\(50\\) and simplify to determine the final result.",
+            "ar": "Apply this step to \\(50\\) and بسّط العبارة to حدّد final result."
+          }
+        ],
+        "solution": {
+          "en": "From \\( \\lambda^2 - 50\\lambda + 621 = 0 \\), the sum of roots is \\( 50 \\).",
+          "ar": "خطوات الحل التفصيلية: From \\( \\lambda^2 - 50\\lambda + 621 = 0 \\), the sum of roots is \\( 50 \\)."
         }
       }
     ]

@@ -436,24 +436,24 @@
         "kind": "practiceProblem",
         "question": {
           "en": "Apply two steps of Heun's method (Improved Euler) with step size \\( h = 0.1 \\) to approximate \\( y(0.2) \\) for the IVP \\[ \\frac{dy}{dt} = 2t y, \\qquad y(0) = 1. \\] Compare your approximation with the exact analytical value \\( y(0.2) = e^{(0.2)^2} = e^{0.04} \\approx 1.04081077 \\).",
-          "ar": null
+          "ar": "حل المسألة التالية في (Numerical Methods: Euler, Improved Euler (RK2), RK4 &amp; Numerical Stability): Apply two steps of Heun's method (Improved Euler) with step size \\( h = 0.1 \\) to approximate \\( y(0.2) \\) for the IVP \\[ \\frac{dy}{dt} = 2t y, \\qquad y(0) = 1. \\] Compare your approximation with the exact analytical value \\( y(0.2) = e^{(0.2)^2} = e^{0.04} \\approx 1.04081077 \\)."
         },
         "solution": {
           "en": "<p><strong>Step 1: First interval \\( [0, 0.1] \\):</strong><br>Initial point: \\( t_0 = 0, y_0 = 1 \\).<br>Slope at start: \\( k_1 = f(0, 1) = 2(0)(1) = 0 \\).<br>Predictor: \\( \\tilde{y}_1 = y_0 + h k_1 = 1 + 0.1(0) = 1 \\).<br>Slope at endpoint: \\( k_2 = f(0.1, 1) = 2(0.1)(1) = 0.2 \\).<br>Corrector: \\[ y_1 = y_0 + \\frac{h}{2}(k_1 + k_2) = 1 + \\frac{0.1}{2}(0 + 0.2) = 1 + 0.01 = 1.0100. \\]</p><p><strong>Step 2: Second interval \\( [0.1, 0.2] \\):</strong><br>Point: \\( t_1 = 0.1, y_1 = 1.01 \\).<br>Slope at start: \\( k_1 = f(0.1, 1.01) = 2(0.1)(1.01) = 0.2020 \\).<br>Predictor: \\( \\tilde{y}_2 = y_1 + h k_1 = 1.01 + 0.1(0.202) = 1.01 + 0.0202 = 1.0302 \\).<br>Slope at endpoint: \\( k_2 = f(0.2, 1.0302) = 2(0.2)(1.0302) = 0.41208 \\).<br>Corrector: \\[ y_2 = 1.01 + \\frac{0.1}{2}(0.2020 + 0.41208) = 1.01 + 0.05(0.61408) = 1.01 + 0.030704 = 1.040704. \\]</p><p><strong>Step 3: Error evaluation:</strong><br>Exact value: \\( y(0.2) = e^{0.04} \\approx 1.04081077 \\).<br>Absolute error: \\( |1.04081077 - 1.040704| = 0.000107 \\), demonstrating second-order accuracy.</p>",
-          "ar": null
+          "ar": "خطوات الحل التفصيلية: <p><strong>Step 1: First interval \\( [0, 0.1] \\):</strong><br>Initial point: \\( t_0 = 0, y_0 = 1 \\).<br>Slope at start: \\( k_1 = f(0, 1) = 2(0)(1) = 0 \\).<br>Predictor: \\( \\tilde{y}_1 = y_0 + h k_1 = 1 + 0.1(0) = 1 \\).<br>Slope at endpoint: \\( k_2 = f(0.1, 1) = 2(0.1)(1) = 0.2 \\).<br>Corrector: \\[ y_1 = y_0 + \\frac{h}{2}(k_1 + k_2) = 1 + \\frac{0.1}{2}(0 + 0.2) = 1 + 0.01 = 1.0100. \\]</p><p><strong>Step 2: Second interval \\( [0.1, 0.2] \\):</strong><br>Point: \\( t_1 = 0.1, y_1 = 1.01 \\).<br>Slope at start: \\( k_1 = f(0.1, 1.01) = 2(0.1)(1.01) = 0.2020 \\).<br>Predictor: \\( \\tilde{y}_2 = y_1 + h k_1 = 1.01 + 0.1(0.202) = 1.01 + 0.0202 = 1.0302 \\).<br>Slope at endpoint: \\( k_2 = f(0.2, 1.0302) = 2(0.2)(1.0302) = 0.41208 \\).<br>Corrector: \\[ y_2 = 1.01 + \\frac{0.1}{2}(0.2020 + 0.41208) = 1.01 + 0.05(0.61408) = 1.01 + 0.030704 = 1.040704. \\]</p><p><strong>Step 3: Error evaluation:</strong><br>Exact value: \\( y(0.2) = e^{0.04} \\approx 1.04081077 \\).<br>Absolute error: \\( |1.04081077 - 1.040704| = 0.000107 \\), demonstrating second-order accuracy.</p>"
         },
         "hints": [
           {
             "en": "<strong>First interval \\( [0, 0.1] \\):</strong> Initial point: \\(t_0 = 0, y_0\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\( [0, 0.1] \\) ، \\(t_0 = 0, y_0\\) لتبسيط الخطوة."
           },
           {
             "en": "Slope at start: \\( k_1 = f(0, 1) = 2(0)(1) = 0 \\). Predictor: \\(\\tilde{y}_1 = y_0 + h k_1 = 1 + 0.1(0)\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\( k_1 = f(0, 1) = 2(0)(1) = 0 \\) ، \\(\\tilde{y}_1 = y_0 + h k_1 = 1 + 0.1(0)\\) لتبسيط الخطوة."
           },
           {
             "en": "Absolute error: \\(|1.04081077 - 1.040704|\\), demonstrating second-order accuracy.",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(|1.04081077 - 1.040704|\\) لتبسيط الخطوة."
           }
         ]
       },
@@ -461,24 +461,24 @@
         "kind": "practiceProblem",
         "question": {
           "en": "Consider the stiff chemical decay differential equation \\[ \\frac{dy}{dt} = -80y, \\qquad y(0) = 1. \\] (a) Determine the critical maximum step size \\( h_{\\text{crit}} \\) for Forward Euler to remain stable. (b) Calculate the numerical solution after 2 steps with \\( h = 0.03 \\) versus \\( h = 0.02 \\).",
-          "ar": null
+          "ar": "Consider the stإذا كانf chemical decay dإذا كانferential equation \\[ \\frac{dy}{dt} = -80y, \\qquad y(0) = 1. \\] (a) حدّد critical maximum step size \\( h_{\\text{crit}} \\) for Forward Euler to remain stable. (b) احسب numerical solution after 2 steps with \\( h = 0.03 \\) versus \\( h = 0.02 \\)."
         },
         "solution": {
           "en": "<p><strong>(a) Critical step size:</strong> For \\( y' = \\lambda y \\) with \\( \\lambda = -80 \\), Forward Euler amplification factor is \\( 1 + h\\lambda = 1 - 80h \\).<br>Absolute stability requires \\( |1 - 80h| < 1 \\implies -1 < 1 - 80h < 1 \\implies 0 < 80h < 2 \\implies h < \\frac{2}{80} = 0.025 \\).<br>Thus \\( h_{\\text{crit}} = 0.025 \\).</p><p><strong>(b) Numerical comparison:</strong><br>With \\( h = 0.03 > h_{\\text{crit}} \\): \\( 1 - 80(0.03) = 1 - 2.4 = -1.4 \\).<br>\\( y_1 = -1.4(1) = -1.4 \\), \\( y_2 = (-1.4)^2 = 1.96 \\), \\( y_{10} = (-1.4)^{10} \\approx 28.9 \\) (explosive oscillation to \\( \\pm \\infty \\)).<br>With \\( h = 0.02 < h_{\\text{crit}} \\): \\( 1 - 80(0.02) = 1 - 1.6 = -0.6 \\).<br>\\( y_1 = -0.6 \\), \\( y_2 = (-0.6)^2 = 0.36 \\), \\( y_{10} = (-0.6)^{10} \\approx 0.0060 \\to 0 \\) (stable decay to equilibrium zero).</p>",
-          "ar": null
+          "ar": "<p><strong>(a) Critical step size:</strong> For \\( y' = \\lambda y \\) with \\( \\lambda = -80 \\), Forward Euler amplإذا كانication حلّل is \\( 1 + h\\lambda = 1 - 80h \\).<br>Absolute stability requires \\( |1 - 80h| < 1 \\implies -1 < 1 - 80h < 1 \\implies 0 < 80h < 2 \\implies h < \\frac{2}{80} = 0.025 \\).<br>Thus \\( h_{\\text{crit}} = 0.025 \\).</p><p><strong>(b) Numerical comparison:</strong><br>With \\( h = 0.03 > h_{\\text{crit}} \\): \\( 1 - 80(0.03) = 1 - 2.4 = -1.4 \\).<br>\\( y_1 = -1.4(1) = -1.4 \\), \\( y_2 = (-1.4)^2 = 1.96 \\), \\( y_{10} = (-1.4)^{10} \\approx 28.9 \\) (explosive oscillation to \\( \\pm \\infty \\)).<br>With \\( h = 0.02 < h_{\\text{crit}} \\): \\( 1 - 80(0.02) = 1 - 1.6 = -0.6 \\).<br>\\( y_1 = -0.6 \\), \\( y_2 = (-0.6)^2 = 0.36 \\), \\( y_{10} = (-0.6)^{10} \\approx 0.0060 \\to 0 \\) (stable decay to equilibrium zero).</p>"
         },
         "hints": [
           {
             "en": "<strong>(a) Critical step size:</strong> For \\( y' = \\lambda y \\) with \\( \\lambda = -80 \\), Forward Euler amplification factor is \\( 1 + h\\lambda = 1 - 80h \\).",
-            "ar": null
+            "ar": "<strong>(a) Critical step size:</strong> For \\( y' = \\lambda y \\) with \\( \\lambda = -80 \\), Forward Euler amplإذا كانication حلّل is \\( 1 + h\\lambda = 1 - 80h \\)."
           },
           {
             "en": "Absolute stability requires \\( |1 - 80h| < 1 \\implies -1 < 1 - 80h < 1 \\implies 0 < 80h < 2 \\implies h < \\frac{2}{80} = 0.025 \\). Thus \\( h_{\\text{crit}} = 0.025 \\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\( |1 - 80h| < 1 \\implies -1 < 1 - 80h < 1 \\implies 0 < 80h < 2 \\implies h < \\frac{2}{80} = 0.025 \\) ، \\( h_{\\text{crit}} = 0.025 \\) لتبسيط الخطوة."
           },
           {
             "en": "Use the resulting form to finish: \\(y_1 = -0.6\\), \\(y_2 = (-0.6)^2\\), \\(y_{10} = (-0.6)^{10}\\) (stable decay to equilibrium zero).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(y_1 = -0.6\\) ، \\(y_2 = (-0.6)^2\\) ، \\(y_{10} = (-0.6)^{10}\\) لتبسيط الخطوة."
           }
         ]
       },
@@ -486,50 +486,75 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 3 · Medium]</strong> The first-order differential equation \\( \\dfrac{df}{dx} = 12x - 2f \\) has its slope field plotted below. Determine the slope \\( \\dfrac{df}{dx} \\) at the point \\( A(6, 23) \\).",
-          "ar": null
+          "ar": "<strong>[Practice 3 · Medium]</strong> The first-order dإذا كانferential equation \\( \\dfrac{df}{dx} = 12x - 2f \\) has its slope field plotted below. حدّد slope \\( \\dfrac{df}{dx} \\) عند النقطة \\( A(6, 23) \\)."
         },
         "hints": [
           {
             "en": "Evaluating at \\( (6, 23) \\) gives.",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\( (6, 23) \\) لتبسيط الخطوة."
           },
           {
             "en": "Set up the numerical expression: \\(12(6) - 2(23)\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(12(6) - 2(23)\\) لتبسيط الخطوة."
           },
           {
             "en": "Evaluate \\(12(6) - 2(23)\\) step by step to obtain the final answer.",
-            "ar": null
+            "ar": "احسب قيمة \\(12(6) - 2(23)\\) step by step to obtain the final answer."
           }
         ],
         "solution": {
           "en": "Evaluating at \\( (6, 23) \\) gives \\( 12(6) - 2(23) = 26 \\).",
-          "ar": null
+          "ar": "خطوات الحل التفصيلية: Evaluating at \\( (6, 23) \\) gives \\( 12(6) - 2(23) = 26 \\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4 · Hard]</strong> Find a particular solution of \\( y''-y'-6y=e^{2x}+18 \\).",
-          "ar": null
+          "ar": "<strong>[Practice 4 · Hard]</strong> أوجد a particular solution of \\( y''-y'-6y=e^{2x}+18 \\)."
         },
         "hints": [
           {
             "en": "Split the forcing (the superposition note): for \\( e^{2x} \\), \\( r=2 \\) isn't a root of \\( r^2-r-6=0 \\) (roots \\( 3,-2 \\)), so trial \\( Ae^{2x} \\) gives \\( (4-2-6)A=1\\Rightarrow-4A=1\\Rightarrow A=-\\tfrac14 \\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\( e^{2x} \\) ، \\( r=2 \\) ، \\( r^2-r-6=0 \\) ، \\( 3,-2 \\) ، \\( Ae^{2x} \\) ، \\( (4-2-6)A=1\\Rightarrow-4A=1\\Rightarrow A=-\\tfrac14 \\) لتبسيط الخطوة."
           },
           {
             "en": "For the constant \\( 18 \\), trial \\( B \\) gives \\(-6B = 18\\Rightarrow B\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\( 18 \\) ، \\( B \\) ، \\(-6B = 18\\Rightarrow B\\) لتبسيط الخطوة."
           },
           {
             "en": "Adding the two pieces: \\(y_p=-\\tfrac14e^{2x}-3\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(y_p=-\\tfrac14e^{2x}-3\\) لتبسيط الخطوة."
           }
         ],
         "solution": {
           "en": "Split the forcing (the superposition note): for \\( e^{2x} \\), \\( r=2 \\) isn't a root of \\( r^2-r-6=0 \\) (roots \\( 3,-2 \\)), so trial \\( Ae^{2x} \\) gives \\( (4-2-6)A=1\\Rightarrow-4A=1\\Rightarrow A=-\\tfrac14 \\). For the constant \\( 18 \\), trial \\( B \\) gives \\( -6B=18\\Rightarrow B=-3 \\). Adding the two pieces: \\( y_p=-\\tfrac14e^{2x}-3 \\).",
-          "ar": null
+          "ar": "خطوات الحل التفصيلية: Split the forcing (the superposition note): for \\( e^{2x} \\), \\( r=2 \\) isn't a root of \\( r^2-r-6=0 \\) (roots \\( 3,-2 \\)), so trial \\( Ae^{2x} \\) gives \\( (4-2-6)A=1\\Rightarrow-4A=1\\Rightarrow A=-\\tfrac14 \\). For the constant \\( 18 \\), trial \\( B \\) gives \\( -6B=18\\Rightarrow B=-3 \\). Adding the two pieces: \\( y_p=-\\tfrac14e^{2x}-3 \\)."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "Consider the differential equation \\( \\dfrac{dy}{dx} = x + y \\) with the initial condition \\( y(0) = 1 \\). Use the Euler method with a step size of \\( h = 0.1 \\) to approximate \\( y(0.2) \\).",
+          "ar": "Consider the dإذا كانferential equation \\( \\dfrac{dy}{dx} = x + y \\) with the initial condition \\( y(0) = 1 \\). Use the Euler method with a step size of \\( h = 0.1 \\) to approximate \\( y(0.2) \\)."
+        },
+        "hints": [
+          {
+            "en": "Using Euler's method \\( y_{n+1} = y_n + h(x_n + y_n) \\) with \\(x_0 = 0, y_0 = 1, h\\): 1.",
+            "ar": "تلميح للحل: استخدم العلاقة \\( y_{n+1} = y_n + h(x_n + y_n) \\) ، \\(x_0 = 0, y_0 = 1, h\\) لتبسيط الخطوة."
+          },
+          {
+            "en": "Rewrite and simplify to obtain: \\( y_1 = 1 + 0.1(0 + 1) = 1.100 \\) at \\( x_1 = 0.1 \\).",
+            "ar": "أعد كتابة العلاقة وبسّطها للحصول على: \\( y_1 = 1 + 0.1(0 + 1) = 1.100 \\) at \\( x_1 = 0.1 \\)."
+          },
+          {
+            "en": "Use the resulting form to finish: \\(y_2 = 1.1 + 0.1(0.1 + 1.1) = 1.1 + 0.12\\) at \\(x_2\\).",
+            "ar": "تلميح للحل: استخدم العلاقة \\(y_2 = 1.1 + 0.1(0.1 + 1.1) = 1.1 + 0.12\\) ، \\(x_2\\) لتبسيط الخطوة."
+          }
+        ],
+        "solution": {
+          "en": "Using Euler's method \\( y_{n+1} = y_n + h(x_n + y_n) \\) with \\( x_0 = 0, y_0 = 1, h = 0.1 \\):\n1. \\( y_1 = 1 + 0.1(0 + 1) = 1.100 \\) at \\( x_1 = 0.1 \\).\n2. \\( y_2 = 1.1 + 0.1(0.1 + 1.1) = 1.1 + 0.12 = 1.220 \\) at \\( x_2 = 0.2 \\).",
+          "ar": "خطوات الحل التفصيلية: Using Euler's method \\( y_{n+1} = y_n + h(x_n + y_n) \\) with \\( x_0 = 0, y_0 = 1, h = 0.1 \\):\n1. \\( y_1 = 1 + 0.1(0 + 1) = 1.100 \\) at \\( x_1 = 0.1 \\).\n2. \\( y_2 = 1.1 + 0.1(0.1 + 1.1) = 1.1 + 0.12 = 1.220 \\) at \\( x_2 = 0.2 \\)."
         }
       }
     ]

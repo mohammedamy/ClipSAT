@@ -422,24 +422,24 @@
         "kind": "practiceProblem",
         "question": {
           "en": "Solve the initial value problem \\[ \\mathbf{x}' = \\begin{pmatrix} 3 & -2 \\\\ 2 & -2 \\end{pmatrix}\\mathbf{x}, \\qquad \\mathbf{x}(0) = \\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix}. \\]",
-          "ar": null
+          "ar": "حل the initial value problem \\[ \\mathbf{x}' = \\begin{pmatrix} 3 & -2 \\\\ 2 & -2 \\end{pmatrix}\\mathbf{x}, \\qquad \\mathbf{x}(0) = \\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix}. \\]"
         },
         "solution": {
           "en": "<p><strong>Step 1: Eigenvalues:</strong> \\[ \\det\\begin{pmatrix} 3 - \\lambda & -2 \\\\ 2 & -2 - \\lambda \\end{pmatrix} = (3 - \\lambda)(-2 - \\lambda) + 4 = \\lambda^2 - \\lambda - 2 = (\\lambda - 2)(\\lambda + 1) = 0. \\] \\[ \\lambda_1 = 2, \\qquad \\lambda_2 = -1. \\]</p><p><strong>Step 2: Eigenvectors:</strong><br>For \\( \\lambda_1 = 2 \\): \\( \\begin{pmatrix} 1 & -2 \\\\ 2 & -4 \\end{pmatrix}\\mathbf{v} = \\mathbf{0} \\implies v_1 - 2v_2 = 0 \\implies \\mathbf{v}_1 = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\).<br>For \\( \\lambda_2 = -1 \\): \\( \\begin{pmatrix} 4 & -2 \\\\ 2 & -1 \\end{pmatrix}\\mathbf{v} = \\mathbf{0} \\implies 2v_1 - v_2 = 0 \\implies \\mathbf{v}_2 = \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} \\).</p><p><strong>Step 3: Apply initial condition \\( \\mathbf{x}(0) = (3, 1)^T \\):</strong> \\[ C_1 \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} + C_2 \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix} \\implies \\begin{cases} 2C_1 + C_2 = 3 \\\\ C_1 + 2C_2 = 1 \\end{cases} \\] Multiplying second equation by 2 and subtracting: \\( 3C_1 = 5 \\implies C_1 = 5/3 \\), \\( C_2 = 1 - 2(5/3) = -7/3 \\).</p><p><strong>Step 4: Particular solution:</strong> \\[ \\mathbf{x}(t) = \\frac{5}{3}e^{2t}\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} - \\frac{7}{3}e^{-t}\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} = \\begin{pmatrix} \\frac{10}{3}e^{2t} - \\frac{7}{3}e^{-t} \\\\ \\frac{5}{3}e^{2t} - \\frac{14}{3}e^{-t} \\end{pmatrix}. \\]</p>",
-          "ar": null
+          "ar": "خطوات الحل التفصيلية: <p><strong>Step 1: Eigenvalues:</strong> \\[ \\det\\begin{pmatrix} 3 - \\lambda & -2 \\\\ 2 & -2 - \\lambda \\end{pmatrix} = (3 - \\lambda)(-2 - \\lambda) + 4 = \\lambda^2 - \\lambda - 2 = (\\lambda - 2)(\\lambda + 1) = 0. \\] \\[ \\lambda_1 = 2, \\qquad \\lambda_2 = -1. \\]</p><p><strong>Step 2: Eigenvectors:</strong><br>For \\( \\lambda_1 = 2 \\): \\( \\begin{pmatrix} 1 & -2 \\\\ 2 & -4 \\end{pmatrix}\\mathbf{v} = \\mathbf{0} \\implies v_1 - 2v_2 = 0 \\implies \\mathbf{v}_1 = \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\).<br>For \\( \\lambda_2 = -1 \\): \\( \\begin{pmatrix} 4 & -2 \\\\ 2 & -1 \\end{pmatrix}\\mathbf{v} = \\mathbf{0} \\implies 2v_1 - v_2 = 0 \\implies \\mathbf{v}_2 = \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} \\).</p><p><strong>Step 3: Apply initial condition \\( \\mathbf{x}(0) = (3, 1)^T \\):</strong> \\[ C_1 \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} + C_2 \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix} \\implies \\begin{cases} 2C_1 + C_2 = 3 \\\\ C_1 + 2C_2 = 1 \\end{cases} \\] Multiplying second equation by 2 and subtracting: \\( 3C_1 = 5 \\implies C_1 = 5/3 \\), \\( C_2 = 1 - 2(5/3) = -7/3 \\).</p><p><strong>Step 4: Particular solution:</strong> \\[ \\mathbf{x}(t) = \\frac{5}{3}e^{2t}\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} - \\frac{7}{3}e^{-t}\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix} = \\begin{pmatrix} \\frac{10}{3}e^{2t} - \\frac{7}{3}e^{-t} \\\\ \\frac{5}{3}e^{2t} - \\frac{14}{3}e^{-t} \\end{pmatrix}. \\]</p>"
         },
         "hints": [
           {
             "en": "<strong>Eigenvalues:</strong> \\(\\det\\begin{pmatrix} 3 - \\lambda & -2 \\\\ 2 & -2 - \\lambda \\end{pmatrix} = (3 - \\lambda)(-2 - \\lambda) + 4 = \\lambda^2 - \\lambda - 2 = (\\lambda - 2)(\\lambda + 1)\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(\\det\\begin{pmatrix} 3 - \\lambda & -2 \\\\ 2 & -2 - \\lambda \\end{pmatrix} = (3 - \\lambda)(-2 - \\lambda) + 4 = \\lambda^2 - \\lambda - 2 = (\\lambda - 2)(\\lambda + 1)\\) لتبسيط الخطوة."
           },
           {
             "en": "Rewrite and simplify to obtain: \\(\\lambda_1 = 2, \\qquad \\lambda_2 = -1\\) <strong>Eigenvectors:</strong> For \\( \\lambda_1 = 2 \\): \\(\\begin{pmatrix} 1 & -2 \\\\ 2 & -4 \\end{pmatrix}\\mathbf{v} = \\mathbf{0} \\implies v_1 - 2v_2 = 0 \\implies \\mathbf{v}_1\\).",
-            "ar": null
+            "ar": "أعد كتابة العلاقة وبسّطها للحصول على: \\(\\lambda_1 = 2, \\qquad \\lambda_2 = -1\\) <strong>Eigenvectors:</strong> For \\( \\lambda_1 = 2 \\): \\(\\begin{pmatrix} 1 & -2 \\\\ 2 & -4 \\end{pmatrix}\\mathbf{v} = \\mathbf{0} \\implies v_1 - 2v_2 = 0 \\implies \\mathbf{v}_1\\)."
           },
           {
             "en": "<strong>Particular solution:</strong> \\(x(t) = \\frac{5}{3}e^{2t}\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} - \\frac{7}{3}e^{-t}\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(x(t) = \\frac{5}{3}e^{2t}\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} - \\frac{7}{3}e^{-t}\\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}\\) لتبسيط الخطوة."
           }
         ]
       },
@@ -447,24 +447,24 @@
         "kind": "practiceProblem",
         "question": {
           "en": "Solve the defective linear system \\[ \\mathbf{x}' = \\begin{pmatrix} 4 & 1 \\\\ -1 & 2 \\end{pmatrix}\\mathbf{x}. \\]",
-          "ar": null
+          "ar": "حل the defective linear system \\[ \\mathbf{x}' = \\begin{pmatrix} 4 & 1 \\\\ -1 & 2 \\end{pmatrix}\\mathbf{x}. \\]"
         },
         "solution": {
           "en": "<p><strong>Step 1: Eigenvalues:</strong> \\[ \\det\\begin{pmatrix} 4 - \\lambda & 1 \\\\ -1 & 2 - \\lambda \\end{pmatrix} = (4 - \\lambda)(2 - \\lambda) + 1 = \\lambda^2 - 6\\lambda + 9 = (\\lambda - 3)^2 = 0 \\implies \\lambda = 3 \\quad \\text{(multiplicity 2)}. \\]</p><p><strong>Step 2: Eigenvector:</strong> \\[ (A - 3I)\\mathbf{v}_1 = \\begin{pmatrix} 1 & 1 \\\\ -1 & -1 \\end{pmatrix}\\begin{pmatrix} v_{11} \\\\ v_{12} \\end{pmatrix} = \\mathbf{0} \\implies v_{11} + v_{12} = 0 \\implies \\mathbf{v}_1 = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}. \\] Only one independent eigenvector exists (geometric multiplicity 1).</p><p><strong>Step 3: Generalized eigenvector:</strong> Solve \\( (A - 3I)\\mathbf{v}_2 = \\mathbf{v}_1 \\): \\[ \\begin{pmatrix} 1 & 1 \\\\ -1 & -1 \\end{pmatrix}\\begin{pmatrix} v_{21} \\\\ v_{22} \\end{pmatrix} = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} \\implies v_{21} + v_{22} = 1. \\] Choosing \\( v_{22} = 0 \\implies v_{21} = 1 \\), so \\( \\mathbf{v}_2 = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} \\).</p><p><strong>Step 4: General solution:</strong> \\[ \\mathbf{x}(t) = C_1 e^{3t}\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} + C_2 e^{3t}\\left[\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} + t\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}\\right] = e^{3t}\\begin{pmatrix} C_1 + C_2(1 + t) \\\\ -C_1 - C_2 t \\end{pmatrix}. \\]</p>",
-          "ar": null
+          "ar": "<p><strong>Step 1: Eigenvalues:</strong> \\[ \\det\\begin{pmatrix} 4 - \\lambda & 1 \\\\ -1 & 2 - \\lambda \\end{pmatrix} = (4 - \\lambda)(2 - \\lambda) + 1 = \\lambda^2 - 6\\lambda + 9 = (\\lambda - 3)^2 = 0 \\implies \\lambda = 3 \\quad \\text{(multiplicity 2)}. \\]</p><p><strong>Step 2: Eigenvector:</strong> \\[ (A - 3I)\\mathbf{v}_1 = \\begin{pmatrix} 1 & 1 \\\\ -1 & -1 \\end{pmatrix}\\begin{pmatrix} v_{11} \\\\ v_{12} \\end{pmatrix} = \\mathbf{0} \\implies v_{11} + v_{12} = 0 \\implies \\mathbf{v}_1 = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}. \\] Only one independent eigenvector exists (geometric multiplicity 1).</p><p><strong>Step 3: Generalized eigenvector:</strong> حل \\( (A - 3I)\\mathbf{v}_2 = \\mathbf{v}_1 \\): \\[ \\begin{pmatrix} 1 & 1 \\\\ -1 & -1 \\end{pmatrix}\\begin{pmatrix} v_{21} \\\\ v_{22} \\end{pmatrix} = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} \\implies v_{21} + v_{22} = 1. \\] Choosing \\( v_{22} = 0 \\implies v_{21} = 1 \\), so \\( \\mathbf{v}_2 = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} \\).</p><p><strong>Step 4: General solution:</strong> \\[ \\mathbf{x}(t) = C_1 e^{3t}\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} + C_2 e^{3t}\\left[\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} + t\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}\\right] = e^{3t}\\begin{pmatrix} C_1 + C_2(1 + t) \\\\ -C_1 - C_2 t \\end{pmatrix}. \\]</p>"
         },
         "hints": [
           {
             "en": "<strong>Eigenvalues:</strong> \\(\\det\\begin{pmatrix} 4 - \\lambda & 1 \\\\ -1 & 2 - \\lambda \\end{pmatrix} = (4 - \\lambda)(2 - \\lambda) + 1 = \\lambda^2 - 6\\lambda + 9 = (\\lambda - 3)^2 = 0 \\implies \\lambda\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(\\det\\begin{pmatrix} 4 - \\lambda & 1 \\\\ -1 & 2 - \\lambda \\end{pmatrix} = (4 - \\lambda)(2 - \\lambda) + 1 = \\lambda^2 - 6\\lambda + 9 = (\\lambda - 3)^2 = 0 \\implies \\lambda\\) لتبسيط الخطوة."
           },
           {
             "en": "<strong>Generalized eigenvector:</strong> Solve \\( (A - 3I)\\mathbf{v}_2 = \\mathbf{v}_1 \\): \\(\\begin{pmatrix} 1 & 1 \\\\ -1 & -1 \\end{pmatrix}\\begin{pmatrix} v_{21} \\\\ v_{22} \\end{pmatrix} = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} \\implies v_{21} + v_{22}\\).",
-            "ar": null
+            "ar": "<strong>Generalized eigenvector:</strong> حل \\( (A - 3I)\\mathbf{v}_2 = \\mathbf{v}_1 \\): \\(\\begin{pmatrix} 1 & 1 \\\\ -1 & -1 \\end{pmatrix}\\begin{pmatrix} v_{21} \\\\ v_{22} \\end{pmatrix} = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} \\implies v_{21} + v_{22}\\)."
           },
           {
             "en": "<strong>General solution:</strong> \\(x(t) = C_1 e^{3t}\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} + C_2 e^{3t}\\left[\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} + t\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}\\right]\\).",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(x(t) = C_1 e^{3t}\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} + C_2 e^{3t}\\left[\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} + t\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}\\right]\\) لتبسيط الخطوة."
           }
         ]
       },
@@ -472,50 +472,75 @@
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 3 · Easy]</strong> Consider the system of linear differential equations: \\(\\begin{aligned} \\frac{dx}{dt} &= ax + by \\\\ \\frac{dy}{dt} &= cx + dy \\end{aligned}\\) where \\(a, b, c, d\\) are constants. The characteristic equation for the system is \\(\\lambda^2 - (a+d)\\lambda + (ad-bc) = 0\\). We are given that the eigenvalues of the system are \\(\\lambda_1 = 2\\) and \\(\\lambda_2 = -1\\). The trace of the coefficient matrix, \\(T = a+d\\), is \\(1\\). Determine the value of the determinant of the coefficient matrix, \\(D = ad-bc\\).",
-          "ar": null
+          "ar": "<strong>[Practice 3 · Easy]</strong> Consider the system of linear dإذا كانferential equations: \\(\\begin{aligned} \\frac{dx}{dt} &= ax + by \\\\ \\frac{dy}{dt} &= cx + dy \\end{aligned}\\) حيث \\(a, b, c, d\\) are constants. The characteristic equation for the system is \\(\\lambda^2 - (a+d)\\lambda + (ad-bc) = 0\\). We are إذا علمت أن the eigenvalues of the system are \\(\\lambda_1 = 2\\) and \\(\\lambda_2 = -1\\). The trace of the coefficient matrix, \\(T = a+d\\), is \\(1\\). حدّد value of the determinant of the coefficient matrix, \\(D = ad-bc\\)."
         },
         "hints": [
           {
             "en": "The characteristic equation of a 2x2 system of linear differential equations \\(\\frac{dx}{dt} = ax + by\\).",
-            "ar": null
+            "ar": "The characteristic equation of a 2x2 system of linear dإذا كانferential equations \\(\\frac{dx}{dt} = ax + by\\)."
           },
           {
             "en": "Rewrite and simplify to obtain: \\(\\frac{dy}{dt} = cx + dy\\) is given by \\(\\lambda^2 - (a+d)\\lambda + (ad-bc) = 0\\). This can be written in terms of the trace (T = a+d) and determinant (D = ad-bc) of the coefficient matrix as \\(\\lambda^2 - T\\lambda + D = 0\\).",
-            "ar": null
+            "ar": "أعد كتابة العلاقة وبسّطها للحصول على: \\(\\frac{dy}{dt} = cx + dy\\) is given by \\(\\lambda^2 - (a+d)\\lambda + (ad-bc) = 0\\). This can be written in حدود من trace (T = a+d) and determinant (D = ad-bc) of the coefficient matrix as \\(\\lambda^2 - T\\lambda + D = 0\\)."
           },
           {
             "en": "Using the product of the eigenvalues: \\(D = \\lambda_1 \\lambda_2 = (2)(-1)\\).",
-            "ar": null
+            "ar": "باستخدام product of the eigenvalues: \\(D = \\lambda_1 \\lambda_2 = (2)(-1)\\)."
           }
         ],
         "solution": {
           "en": "The characteristic equation of a 2x2 system of linear differential equations \\(\\begin{aligned} \\frac{dx}{dt} &= ax + by \\\\ \\frac{dy}{dt} &= cx + dy \\end{aligned}\\) is given by \\(\\lambda^2 - (a+d)\\lambda + (ad-bc) = 0\\). This can be written in terms of the trace (T = a+d) and determinant (D = ad-bc) of the coefficient matrix as \\(\\lambda^2 - T\\lambda + D = 0\\). We are given that the eigenvalues are \\(\\lambda_1 = 2\\) and \\(\\lambda_2 = -1\\). The sum of the roots of a quadratic equation \\(p\\lambda^2 + q\\lambda + r = 0\\) is \\(-q/p\\), and the product of the roots is \\(r/p\\). For the characteristic equation \\(\\lambda^2 - T\\lambda + D = 0\\), the sum of the eigenvalues is \\(\\lambda_1 + \\lambda_2 = -(-T)/1 = T\\), and the product of the eigenvalues is \\(\\lambda_1 \\lambda_2 = D/1 = D\\). We are given that the trace \\(T = a+d = 1\\). Let's verify this with the given eigenvalues: \\(\\lambda_1 + \\lambda_2 = 2 + (-1) = 1\\), which matches the given trace. We need to find the determinant \\(D = ad-bc\\). Using the product of the eigenvalues: \\(D = \\lambda_1 \\lambda_2 = (2)(-1) = -2\\).",
-          "ar": null
+          "ar": "The characteristic equation of a 2x2 system of linear dإذا كانferential equations \\(\\begin{aligned} \\frac{dx}{dt} &= ax + by \\\\ \\frac{dy}{dt} &= cx + dy \\end{aligned}\\) is given by \\(\\lambda^2 - (a+d)\\lambda + (ad-bc) = 0\\). This can be written in حدود من trace (T = a+d) and determinant (D = ad-bc) of the coefficient matrix as \\(\\lambda^2 - T\\lambda + D = 0\\). We are إذا علمت أن the eigenvalues are \\(\\lambda_1 = 2\\) and \\(\\lambda_2 = -1\\). The sum of the roots of a quadratic equation \\(p\\lambda^2 + q\\lambda + r = 0\\) is \\(-q/p\\), and the product of the roots is \\(r/p\\). For the characteristic equation \\(\\lambda^2 - T\\lambda + D = 0\\), the sum of the eigenvalues is \\(\\lambda_1 + \\lambda_2 = -(-T)/1 = T\\), and the product of the eigenvalues is \\(\\lambda_1 \\lambda_2 = D/1 = D\\). We are إذا علمت أن the trace \\(T = a+d = 1\\). ليكن's verإذا كانy this with the given eigenvalues: \\(\\lambda_1 + \\lambda_2 = 2 + (-1) = 1\\), which matches the given trace. We need to أوجد determinant \\(D = ad-bc\\). باستخدام product of the eigenvalues: \\(D = \\lambda_1 \\lambda_2 = (2)(-1) = -2\\)."
         }
       },
       {
         "kind": "practiceProblem",
         "question": {
           "en": "<strong>[Practice 4 · Medium]</strong> Consider the system of linear differential equations given by:\n\\[\n\\begin{aligned}\n\\frac{dx}{dt} &= x + 2y \\\\\n\\frac{dy}{dt} &= 3x + 2y\n\\end{aligned}\n\\]\nIf the solution to this system is of the form \\(x(t) = c_1 e^{\\lambda_1 t} + c_2 e^{\\lambda_2 t}\\) and \\(y(t) = k_1 c_1 e^{\\lambda_1 t} + k_2 c_2 e^{\\lambda_2 t}\\), what is the value of the larger eigenvalue \\(\\lambda\\)?",
-          "ar": null
+          "ar": "<strong>[Practice 4 · Medium]</strong> Consider the system of linear dإذا كانferential equations given by:\n\\[\n\\begin{aligned}\n\\frac{dx}{dt} &= x + 2y \\\\\n\\frac{dy}{dt} &= 3x + 2y\n\\end{aligned}\n\\]\nإذا كان the solution to this system is of the form \\(x(t) = c_1 e^{\\lambda_1 t} + c_2 e^{\\lambda_2 t}\\) and \\(y(t) = k_1 c_1 e^{\\lambda_1 t} + k_2 c_2 e^{\\lambda_2 t}\\), ما قيمة the larger eigenvalue \\(\\lambda\\)?"
         },
         "hints": [
           {
             "en": "The given system can be written in matrix form as \\(\\mathbf{x}'(t) = A \\mathbf{x}(t)\\), where \\(A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 2 \\end{pmatrix}\\) and \\(\\mathbf{x}(t) = \\begin{pmatrix} x(t) \\\\ y(t) \\end{pmatrix}\\).",
-            "ar": null
+            "ar": "The given system can be written in matrix form as \\(\\mathbf{x}'(t) = A \\mathbf{x}(t)\\), حيث \\(A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 2 \\end{pmatrix}\\) and \\(\\mathbf{x}(t) = \\begin{pmatrix} x(t) \\\\ y(t) \\end{pmatrix}\\)."
           },
           {
             "en": "To find the eigenvalues \\(\\lambda\\), we solve the characteristic equation \\(\\det(A - \\lambda I) = 0\\), where \\(I\\) is the identity matrix. \\(\\det \\begin{pmatrix} 1-\\lambda & 2 \\\\ 3 & 2-\\lambda \\end{pmatrix} = 0\\).",
-            "ar": null
+            "ar": "To أوجد eigenvalues \\(\\lambda\\), we حل the characteristic equation \\(\\det(A - \\lambda I) = 0\\), حيث \\(I\\) is the identity matrix. \\(\\det \\begin{pmatrix} 1-\\lambda & 2 \\\\ 3 & 2-\\lambda \\end{pmatrix} = 0\\)."
           },
           {
             "en": "The eigenvalues are \\(\\lambda_1 = 4\\) and \\(\\lambda_2\\). The larger eigenvalue is 4.",
-            "ar": null
+            "ar": "تلميح للحل: استخدم العلاقة \\(\\lambda_1 = 4\\) ، \\(\\lambda_2\\) لتبسيط الخطوة."
           }
         ],
         "solution": {
           "en": "The given system can be written in matrix form as \\(\\mathbf{x}'(t) = A \\mathbf{x}(t)\\), where \\(A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 2 \\end{pmatrix}\\) and \\(\\mathbf{x}(t) = \\begin{pmatrix} x(t) \\\\ y(t) \\end{pmatrix}\\).\nTo find the eigenvalues \\(\\lambda\\), we solve the characteristic equation \\(\\det(A - \\lambda I) = 0\\), where \\(I\\) is the identity matrix.\n\n\\(\\det \\begin{pmatrix} 1-\\lambda & 2 \\\\ 3 & 2-\\lambda \\end{pmatrix} = 0\\)\n\n\\((1-\\lambda)(2-\\lambda) - (2)(3) = 0\\)\n\n\\(2 - \\lambda - 2\\lambda + \\lambda^2 - 6 = 0\\)\n\n\\(\\lambda^2 - 3\\lambda - 4 = 0\\)\n\nFactoring the quadratic equation:\n\n\\((\\lambda - 4)(\\lambda + 1) = 0\\)\n\nThe eigenvalues are \\(\\lambda_1 = 4\\) and \\(\\lambda_2 = -1\\). The larger eigenvalue is 4.",
-          "ar": null
+          "ar": "The given system can be written in matrix form as \\(\\mathbf{x}'(t) = A \\mathbf{x}(t)\\), حيث \\(A = \\begin{pmatrix} 1 & 2 \\\\ 3 & 2 \\end{pmatrix}\\) and \\(\\mathbf{x}(t) = \\begin{pmatrix} x(t) \\\\ y(t) \\end{pmatrix}\\).\nTo أوجد eigenvalues \\(\\lambda\\), we حل the characteristic equation \\(\\det(A - \\lambda I) = 0\\), حيث \\(I\\) is the identity matrix.\n\n\\(\\det \\begin{pmatrix} 1-\\lambda & 2 \\\\ 3 & 2-\\lambda \\end{pmatrix} = 0\\)\n\n\\((1-\\lambda)(2-\\lambda) - (2)(3) = 0\\)\n\n\\(2 - \\lambda - 2\\lambda + \\lambda^2 - 6 = 0\\)\n\n\\(\\lambda^2 - 3\\lambda - 4 = 0\\)\n\nحلّلing the quadratic equation:\n\n\\((\\lambda - 4)(\\lambda + 1) = 0\\)\n\nThe eigenvalues are \\(\\lambda_1 = 4\\) and \\(\\lambda_2 = -1\\). The larger eigenvalue is 4."
+        }
+      },
+      {
+        "kind": "practiceProblem",
+        "question": {
+          "en": "The second-order linear homogeneous ODE \\( u''(s) - 40u'(s) + 144u(s) = 0 \\) has characteristic roots \\( \\lambda_1, \\lambda_2 \\). Determine the trace sum \\( \\lambda_1 + \\lambda_2 \\).",
+          "ar": "The second-order linear homogeneous ODE \\( u''(s) - 40u'(s) + 144u(s) = 0 \\) has characteristic roots \\( \\lambda_1, \\lambda_2 \\). حدّد trace sum \\( \\lambda_1 + \\lambda_2 \\)."
+        },
+        "hints": [
+          {
+            "en": "Start by examining the given mathematical expression in the problem: \\(u''(s) - 40u'(s) + 144u(s) = 0\\).",
+            "ar": "تلميح للحل: استخدم العلاقة \\(u''(s) - 40u'(s) + 144u(s) = 0\\) لتبسيط الخطوة."
+          },
+          {
+            "en": "From \\(\\lambda^2 - 40\\lambda + 144 = 0\\), the sum of roots is \\(40\\).",
+            "ar": "تلميح للحل: استخدم العلاقة \\(\\lambda^2 - 40\\lambda + 144 = 0\\) ، \\(40\\) لتبسيط الخطوة."
+          },
+          {
+            "en": "Apply this step to \\(40\\) and simplify to determine the final result.",
+            "ar": "Apply this step to \\(40\\) and بسّط العبارة to حدّد final result."
+          }
+        ],
+        "solution": {
+          "en": "From \\( \\lambda^2 - 40\\lambda + 144 = 0 \\), the sum of roots is \\( 40 \\).",
+          "ar": "خطوات الحل التفصيلية: From \\( \\lambda^2 - 40\\lambda + 144 = 0 \\), the sum of roots is \\( 40 \\)."
         }
       }
     ]
