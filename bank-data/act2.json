@@ -2048,12 +2048,12 @@
       ],
       "answer": 1,
       "correct": 1,
-      "sol": "The number of positive factors (divisors) of a number with prime factorization \\(p_1^{e_1} p_2^{e_2} \\cdots p_k^{e_k}\\) is given by \\((e_1 + 1)(e_2 + 1)\\cdots(e_k + 1)\\).\n\n1. For \\(N = 2^a \\cdot 3^b \\cdot 5^c\\), the number of factors is:\n\\[ (a + 1)(b + 1)(c + 1) = 60 \\]\n\n2. Multiplying \\(N\\) by 2 gives \\(2N = 2^{a+1} \\cdot 3^b \\cdot 5^c\\). The number of factors is:\n\\[ (a + 2)(b + 1)(c + 1) = 72 \\]\n\nDividing the second equation by the first equation:\n\\[ \\frac{(a + 2)(b + 1)(c + 1)}{(a + 1)(b + 1)(c + 1)} = \\frac{72}{60} \\implies \\frac{a + 2}{a + 1} = \\frac{6}{5} \\]\nCross-multiplying gives \\(5(a + 2) = 6(a + 1) \\implies 5a + 10 = 6a + 6 \\implies a = 4\\).\n\n3. Multiplying \\(N\\) by 3 gives \\(3N = 2^a \\cdot 3^{b+1} \\cdot 5^c\\). The number of factors is:\n\\[ (a + 1)(b + 2)(c + 1) = 80 \\]\n\nDividing this equation by the first equation:\n\\[ \\frac{(a + 1)(b + 2)(c + 1)}{(a + 1)(b + 1)(c + 1)} = \\frac{80}{60} \\implies \\frac{b + 2}{b + 1} = \\frac{4}{3} \\]\nCross-multiplying gives \\(3(b + 2) = 4(b + 1) \\implies 3b + 6 = 4b + 4 \\implies b = 2\\).\n\n4. Substitute \\(a = 4\\) and \\(b = 2\\) back into the formula for the factors of \\(N\\):\n\\[ (4 + 1)(2 + 1)(c + 1) = 60 \\implies 5 \\cdot 3 \\cdot (c + 1) = 60 \\implies 15(c + 1) = 60 \\]\n\\[ c + 1 = 4 \\implies c = 3 \\]\n\nA common algebraic trap is to conclude that \\(c = 4\\) by solving for \\(c + 1\\) but failing to subtract 1.",
-      "solution": "The number of positive factors (divisors) of a number with prime factorization \\(p_1^{e_1} p_2^{e_2} \\cdots p_k^{e_k}\\) is given by \\((e_1 + 1)(e_2 + 1)\\cdots(e_k + 1)\\).\n\n1. For \\(N = 2^a \\cdot 3^b \\cdot 5^c\\), the number of factors is:\n\\[ (a + 1)(b + 1)(c + 1) = 60 \\]\n\n2. Multiplying \\(N\\) by 2 gives \\(2N = 2^{a+1} \\cdot 3^b \\cdot 5^c\\). The number of factors is:\n\\[ (a + 2)(b + 1)(c + 1) = 72 \\]\n\nDividing the second equation by the first equation:\n\\[ \\frac{(a + 2)(b + 1)(c + 1)}{(a + 1)(b + 1)(c + 1)} = \\frac{72}{60} \\implies \\frac{a + 2}{a + 1} = \\frac{6}{5} \\]\nCross-multiplying gives \\(5(a + 2) = 6(a + 1) \\implies 5a + 10 = 6a + 6 \\implies a = 4\\).\n\n3. Multiplying \\(N\\) by 3 gives \\(3N = 2^a \\cdot 3^{b+1} \\cdot 5^c\\). The number of factors is:\n\\[ (a + 1)(b + 2)(c + 1) = 80 \\]\n\nDividing this equation by the first equation:\n\\[ \\frac{(a + 1)(b + 2)(c + 1)}{(a + 1)(b + 1)(c + 1)} = \\frac{80}{60} \\implies \\frac{b + 2}{b + 1} = \\frac{4}{3} \\]\nCross-multiplying gives \\(3(b + 2) = 4(b + 1) \\implies 3b + 6 = 4b + 4 \\implies b = 2\\).\n\n4. Substitute \\(a = 4\\) and \\(b = 2\\) back into the formula for the factors of \\(N\\):\n\\[ (4 + 1)(2 + 1)(c + 1) = 60 \\implies 5 \\cdot 3 \\cdot (c + 1) = 60 \\implies 15(c + 1) = 60 \\]\n\\[ c + 1 = 4 \\implies c = 3 \\]\n\nA common algebraic trap is to conclude that \\(c = 4\\) by solving for \\(c + 1\\) but failing to subtract 1.",
+      "sol": "The number of positive factors (divisors) of a number with prime factorization \\(p_1^{e_1} p_2^{e_2} \\cdot s p_k^{e_k}\\) is given by \\((e_1 + 1)(e_2 + 1)\\cdot s(e_k + 1)\\).\n\n1. For \\(N = 2^a \\cdot 3^b \\cdot 5^c\\), the number of factors is:\n\\[ (a + 1)(b + 1)(c + 1) = 60 \\]\n\n2. Multiplying \\(N\\) by 2 gives \\(2N = 2^{a+1} \\cdot 3^b \\cdot 5^c\\). The number of factors is:\n\\[ (a + 2)(b + 1)(c + 1) = 72 \\]\n\nDividing the second equation by the first equation:\n\\[ \\frac{(a + 2)(b + 1)(c + 1)}{(a + 1)(b + 1)(c + 1)} = \\frac{72}{60} \\implies \\frac{a + 2}{a + 1} = \\frac{6}{5} \\]\nCross-multiplying gives \\(5(a + 2) = 6(a + 1) \\implies 5a + 10 = 6a + 6 \\implies a = 4\\).\n\n3. Multiplying \\(N\\) by 3 gives \\(3N = 2^a \\cdot 3^{b+1} \\cdot 5^c\\). The number of factors is:\n\\[ (a + 1)(b + 2)(c + 1) = 80 \\]\n\nDividing this equation by the first equation:\n\\[ \\frac{(a + 1)(b + 2)(c + 1)}{(a + 1)(b + 1)(c + 1)} = \\frac{80}{60} \\implies \\frac{b + 2}{b + 1} = \\frac{4}{3} \\]\nCross-multiplying gives \\(3(b + 2) = 4(b + 1) \\implies 3b + 6 = 4b + 4 \\implies b = 2\\).\n\n4. Substitute \\(a = 4\\) and \\(b = 2\\) back into the formula for the factors of \\(N\\):\n\\[ (4 + 1)(2 + 1)(c + 1) = 60 \\implies 5 \\cdot 3 \\cdot (c + 1) = 60 \\implies 15(c + 1) = 60 \\]\n\\[ c + 1 = 4 \\implies c = 3 \\]\n\nA common algebraic trap is to conclude that \\(c = 4\\) by solving for \\(c + 1\\) but failing to subtract 1.",
+      "solution": "The number of positive factors (divisors) of a number with prime factorization \\(p_1^{e_1} p_2^{e_2} \\cdot s p_k^{e_k}\\) is given by \\((e_1 + 1)(e_2 + 1)\\cdot s(e_k + 1)\\).\n\n1. For \\(N = 2^a \\cdot 3^b \\cdot 5^c\\), the number of factors is:\n\\[ (a + 1)(b + 1)(c + 1) = 60 \\]\n\n2. Multiplying \\(N\\) by 2 gives \\(2N = 2^{a+1} \\cdot 3^b \\cdot 5^c\\). The number of factors is:\n\\[ (a + 2)(b + 1)(c + 1) = 72 \\]\n\nDividing the second equation by the first equation:\n\\[ \\frac{(a + 2)(b + 1)(c + 1)}{(a + 1)(b + 1)(c + 1)} = \\frac{72}{60} \\implies \\frac{a + 2}{a + 1} = \\frac{6}{5} \\]\nCross-multiplying gives \\(5(a + 2) = 6(a + 1) \\implies 5a + 10 = 6a + 6 \\implies a = 4\\).\n\n3. Multiplying \\(N\\) by 3 gives \\(3N = 2^a \\cdot 3^{b+1} \\cdot 5^c\\). The number of factors is:\n\\[ (a + 1)(b + 2)(c + 1) = 80 \\]\n\nDividing this equation by the first equation:\n\\[ \\frac{(a + 1)(b + 2)(c + 1)}{(a + 1)(b + 1)(c + 1)} = \\frac{80}{60} \\implies \\frac{b + 2}{b + 1} = \\frac{4}{3} \\]\nCross-multiplying gives \\(3(b + 2) = 4(b + 1) \\implies 3b + 6 = 4b + 4 \\implies b = 2\\).\n\n4. Substitute \\(a = 4\\) and \\(b = 2\\) back into the formula for the factors of \\(N\\):\n\\[ (4 + 1)(2 + 1)(c + 1) = 60 \\implies 5 \\cdot 3 \\cdot (c + 1) = 60 \\implies 15(c + 1) = 60 \\]\n\\[ c + 1 = 4 \\implies c = 3 \\]\n\nA common algebraic trap is to conclude that \\(c = 4\\) by solving for \\(c + 1\\) but failing to subtract 1.",
       "sympy_verified": true,
       "ans": 1,
       "hints": [
-        "The number of positive factors (divisors) of a number with prime factorization \\(p_1^{e_1} p_2^{e_2} \\cdots p_k^{e_k}\\) is given by \\((e_1 + 1)(e_2 + 1)\\cdots(e_k + 1)\\).",
+        "The number of positive factors (divisors) of a number with prime factorization \\(p_1^{e_1} p_2^{e_2} \\cdot s p_k^{e_k}\\) is given by \\((e_1 + 1)(e_2 + 1)\\cdot s(e_k + 1)\\).",
         "For \\(N = 2^a \\cdot 3^b \\cdot 5^c\\), the number of factors is: \\((a + 1)(b + 1)(c + 1) = 60\\) Multiplying \\(N\\) by 2 gives \\(2N = 2^{a+1} \\cdot 3^b \\cdot 5^c\\). The number of factors is: \\((a + 2)(b + 1)(c + 1) = 72\\).",
         "Use the resulting form to finish: \\(c + 1 = 4\\)."
       ]
@@ -53915,8 +53915,8 @@
       "ans": 0,
       "hints": [
         "Start with the expression: \\(\\text{proj}_{v}u\\).",
-        "Rewrite and substitute: \\(\\text{proj}_{v}u = \\frac{u\\cdotv}{\\|v\\|^2}v\\).",
-        "Evaluate \\(\\frac{u\\cdotv}{\\|v\\|^2}v\\) to obtain the final answer."
+        "Rewrite and substitute: \\(\\text{proj}_{v}u = \\frac{u\\cdot v}{\\|v\\|^2}v\\).",
+        "Evaluate \\(\\frac{u\\cdot v}{\\|v\\|^2}v\\) to obtain the final answer."
       ]
     },
     {
@@ -53943,8 +53943,8 @@
       "ans": 1,
       "hints": [
         "Start with the expression: \\(\\text{proj}_{v}u\\).",
-        "Rewrite and substitute: \\(\\text{proj}_{v}u = \\frac{u\\cdotv}{\\|v\\|^2}v\\).",
-        "Evaluate \\(\\frac{u\\cdotv}{\\|v\\|^2}v\\) to obtain the final answer."
+        "Rewrite and substitute: \\(\\text{proj}_{v}u = \\frac{u\\cdot v}{\\|v\\|^2}v\\).",
+        "Evaluate \\(\\frac{u\\cdot v}{\\|v\\|^2}v\\) to obtain the final answer."
       ]
     },
     {
@@ -53971,8 +53971,8 @@
       "ans": 2,
       "hints": [
         "Start with the expression: \\(\\text{proj}_{v}u\\).",
-        "Rewrite and substitute: \\(\\text{proj}_{v}u = \\frac{u\\cdotv}{\\|v\\|^2}v\\).",
-        "Evaluate \\(\\frac{u\\cdotv}{\\|v\\|^2}v\\) to obtain the final answer."
+        "Rewrite and substitute: \\(\\text{proj}_{v}u = \\frac{u\\cdot v}{\\|v\\|^2}v\\).",
+        "Evaluate \\(\\frac{u\\cdot v}{\\|v\\|^2}v\\) to obtain the final answer."
       ]
     },
     {
@@ -53999,8 +53999,8 @@
       "ans": 0,
       "hints": [
         "Start with the expression: \\(\\text{proj}_{v}u\\).",
-        "Rewrite and substitute: \\(\\text{proj}_{v}u = \\frac{u\\cdotv}{\\|v\\|^2}v\\).",
-        "Evaluate \\(\\frac{u\\cdotv}{\\|v\\|^2}v\\) to obtain the final answer."
+        "Rewrite and substitute: \\(\\text{proj}_{v}u = \\frac{u\\cdot v}{\\|v\\|^2}v\\).",
+        "Evaluate \\(\\frac{u\\cdot v}{\\|v\\|^2}v\\) to obtain the final answer."
       ]
     },
     {
@@ -54027,8 +54027,8 @@
       "ans": 3,
       "hints": [
         "Start with the expression: \\(\\text{proj}_{v}u\\).",
-        "Rewrite and substitute: \\(\\text{proj}_{v}u = \\frac{u\\cdotv}{\\|v\\|^2}v\\).",
-        "Evaluate \\(\\frac{u\\cdotv}{\\|v\\|^2}v\\) to obtain the final answer."
+        "Rewrite and substitute: \\(\\text{proj}_{v}u = \\frac{u\\cdot v}{\\|v\\|^2}v\\).",
+        "Evaluate \\(\\frac{u\\cdot v}{\\|v\\|^2}v\\) to obtain the final answer."
       ]
     },
     {
@@ -54055,8 +54055,8 @@
       "ans": 0,
       "hints": [
         "Start with the expression: \\(\\text{proj}_{v}u\\).",
-        "Rewrite and substitute: \\(\\text{proj}_{v}u = \\frac{u\\cdotv}{\\|v\\|^2}v\\).",
-        "Evaluate \\(\\frac{u\\cdotv}{\\|v\\|^2}v\\) to obtain the final answer."
+        "Rewrite and substitute: \\(\\text{proj}_{v}u = \\frac{u\\cdot v}{\\|v\\|^2}v\\).",
+        "Evaluate \\(\\frac{u\\cdot v}{\\|v\\|^2}v\\) to obtain the final answer."
       ]
     },
     {
@@ -54083,8 +54083,8 @@
       "ans": 0,
       "hints": [
         "Start with the expression: \\(\\text{proj}_{v}u\\).",
-        "Rewrite and substitute: \\(\\text{proj}_{v}u = \\frac{u\\cdotv}{\\|v\\|^2}v\\).",
-        "Evaluate \\(\\frac{u\\cdotv}{\\|v\\|^2}v\\) to obtain the final answer."
+        "Rewrite and substitute: \\(\\text{proj}_{v}u = \\frac{u\\cdot v}{\\|v\\|^2}v\\).",
+        "Evaluate \\(\\frac{u\\cdot v}{\\|v\\|^2}v\\) to obtain the final answer."
       ]
     },
     {
@@ -54111,8 +54111,8 @@
       "ans": 1,
       "hints": [
         "Start with the expression: \\(\\text{proj}_{v}u\\).",
-        "Rewrite and substitute: \\(\\text{proj}_{v}u = \\frac{u\\cdotv}{\\|v\\|^2}v\\).",
-        "Evaluate \\(\\frac{u\\cdotv}{\\|v\\|^2}v\\) to obtain the final answer."
+        "Rewrite and substitute: \\(\\text{proj}_{v}u = \\frac{u\\cdot v}{\\|v\\|^2}v\\).",
+        "Evaluate \\(\\frac{u\\cdot v}{\\|v\\|^2}v\\) to obtain the final answer."
       ]
     },
     {
@@ -54139,8 +54139,8 @@
       "ans": 2,
       "hints": [
         "Start with the expression: \\(\\text{proj}_{v}u\\).",
-        "Rewrite and substitute: \\(\\text{proj}_{v}u = \\frac{u\\cdotv}{\\|v\\|^2}v\\).",
-        "Evaluate \\(\\frac{u\\cdotv}{\\|v\\|^2}v\\) to obtain the final answer."
+        "Rewrite and substitute: \\(\\text{proj}_{v}u = \\frac{u\\cdot v}{\\|v\\|^2}v\\).",
+        "Evaluate \\(\\frac{u\\cdot v}{\\|v\\|^2}v\\) to obtain the final answer."
       ]
     },
     {
@@ -54167,8 +54167,8 @@
       "ans": 2,
       "hints": [
         "Start with the expression: \\(\\text{proj}_{v}u\\).",
-        "Rewrite and substitute: \\(\\text{proj}_{v}u = \\frac{u\\cdotv}{\\|v\\|^2}v\\).",
-        "Evaluate \\(\\frac{u\\cdotv}{\\|v\\|^2}v\\) to obtain the final answer."
+        "Rewrite and substitute: \\(\\text{proj}_{v}u = \\frac{u\\cdot v}{\\|v\\|^2}v\\).",
+        "Evaluate \\(\\frac{u\\cdot v}{\\|v\\|^2}v\\) to obtain the final answer."
       ]
     }
   ]

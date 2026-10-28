@@ -2045,6 +2045,25 @@ body.rtl .ix-section {
    .ix-section rule, just scoped by track (body.track-qudrat/-tahsili)
    instead of applied everywhere, since the other 19 tracks still have
    untranslated English chapter prose that a blanket flip would break. */
+/* Ensure text inside KaTeX \text{...} uses the clean site font (especially for Arabic words inside equations) */
+.katex .text,
+.katex .mord.text {
+  font-family: var(--sans), KaTeX_Main, sans-serif;
+}
+/* Ensure bilingual Arabic spans always align right in RTL mode across all 31 tracks */
+.i18n-ar {
+  direction: rtl;
+  text-align: right;
+}
+body.rtl .calc-body > .content,
+body.rtl .explorer {
+  direction: rtl;
+  text-align: right;
+}
+body.rtl .i18n-en {
+  direction: ltr;
+  text-align: left;
+}
 body.track-qudrat.rtl .calc-body > .content,
 body.track-tahsili.rtl .calc-body > .content,
 body.track-qudrat.rtl .explorer,

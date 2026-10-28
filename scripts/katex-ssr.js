@@ -65,7 +65,17 @@ function renderChunkMath(text, warn) {
     const cached = RENDER_CACHE.get(cacheKey);
     if (cached !== undefined) return cached;
     try {
-      const rendered = katex.renderToString(src, { displayMode: isDisplay, throwOnError: false });
+      const origWarn = console.warn;
+      console.warn = (msg, ...rest) => {
+        if (typeof msg === 'string' && msg.startsWith('No character metrics for ')) return;
+        origWarn.call(console, msg, ...rest);
+      };
+      let rendered;
+      try {
+        rendered = katex.renderToString(src, { displayMode: isDisplay, throwOnError: false, strict: false });
+      } finally {
+        console.warn = origWarn;
+      }
       RENDER_CACHE.set(cacheKey, rendered);
       return rendered;
     } catch (err) {

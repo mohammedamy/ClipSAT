@@ -269,7 +269,7 @@
       "educational_aim": "Apply properties and theorems of Loss Functions, Gradients & Optimization in multi-step exam problems, including finding unknown parameters, interpreting exact diagrams/graphs, and avoiding common algebraic traps.",
       "exam_archetype": "Loss Functions, Gradients & Optimization — Multi-Step Application & Parameter Solve",
       "difficulty": "medium",
-      "text": "Consider a univariate regression model where the predicted output \\( \\hat{y} \\) is given by \\( \\hat{y} = ax + b \\). The loss function is the Mean Squared Error (MSE), defined as \\( L = \\frac{1}{n} \\sum_{i=1}^{n} (y_i - \\hat{y}_i)^2 \\). \\(\n\\)For a single data point \\( (x_1, y_1) = (2, 5) \\), the loss is \\( L = (5 - (2a + b))^2 \\). \\(\n\\)The gradient of the loss function with respect to \\( a \\) is \\( \\frac{\\partial L}{\\partial a} = -2(5 - (2a + b)) \\cdot 2 \\). \\(\n\\)If during gradient descent, with a learning rate of \\( \\eta = 0.1 \\), the parameters \\( a \\) and \\( b \\) are updated from \\( a_{old} = 1 \\) and \\( b_{old} = 1 \\), to \\( a_{new} = 0.8 \\) and \\( b_{new} = 0.8 \\), what is the value of \\( b \\) that would have resulted in \\( \\frac{\\partial L}{\\partial b} = 0 \\) for this single data point, assuming \\( a=1 \\) and \\( b=1 \\) were the values *before* the gradient calculation that led to the update to \\( a_{new}=0.8, b_{new}=0.8 \\)?",
+      "text": "Consider a univariate regression model where the predicted output \\( \\hat{y} \\) is given by \\( \\hat{y} = ax + b \\). The loss function is the Mean Squared Error (MSE), defined as \\( L = \\frac{1}{n} \\sum_{i=1}^{n} (y_i - \\hat{y}_i)^2 \\). For a single data point \\( (x_1, y_1) = (2, 5) \\), the loss is \\( L = (5 - (2a + b))^2 \\). The gradient of the loss function with respect to \\( a \\) is \\( \\frac{\\partial L}{\\partial a} = -2(5 - (2a + b)) \\cdot 2 \\). If during gradient descent, with a learning rate of \\( \\eta = 0.1 \\), the parameters \\( a \\) and \\( b \\) are updated from \\( a_{old} = 1 \\) and \\( b_{old} = 1 \\), to \\( a_{new} = 0.8 \\) and \\( b_{new} = 0.8 \\), what is the value of \\( b \\) that would have resulted in \\( \\frac{\\partial L}{\\partial b} = 0 \\) for this single data point, assuming \\( a=1 \\) and \\( b=1 \\) were the values *before* the gradient calculation that led to the update to \\( a_{new}=0.8, b_{new}=0.8 \\)?",
       "choices": [
         "\\( 3 \\)",
         "\\( 4 \\)",
@@ -278,8 +278,8 @@
       ],
       "answer": 2,
       "correct": 2,
-      "sol": "The loss function for a single data point is \\( L = (y_1 - (ax_1 + b))^2 \\). \\(\n\\)Given \\( (x_1, y_1) = (2, 5) \\), so \\( L = (5 - (2a + b))^2 \\). \\(\n\\)The gradient of the loss with respect to \\( b \\) is \\( \\frac{\\partial L}{\\partial b} = 2(5 - (2a + b)) \\cdot (-1) = -2(5 - 2a - b) \\). \\(\n\\)We are asked to find the value of \\( b \\) for which \\( \\frac{\\partial L}{\\partial b} = 0 \\), assuming \\( a=1 \\) and \\( b=1 \\) were the parameters *before* the update step that led to \\( a_{new}=0.8, b_{new}=0.8 \\). This means we evaluate the gradient at \\( a=1 \\) and the *unknown* value of \\( b \\). \\(\n\\)Setting \\( \\frac{\\partial L}{\\partial b} = 0 \\): \\(\n\\)\\( -2(5 - 2(1) - b) = 0 \n\\)\\( 5 - 2 - b = 0 \n\\)\\( 3 - b = 0 \n\\)\\( b = 3 \\). \\(\n\\)The provided gradient update information \\( \\frac{\\partial L}{\\partial a} = -2(5 - (2a + b)) \\cdot 2 \\) and the learning rate \\( \\eta = 0.1 \\) are distractors. The question specifically asks for the value of \\( b \\) that makes \\( \\frac{\\partial L}{\\partial b} = 0 \\) *at the point where \\( a=1 \\)*. The update rule to \\( a_{new}=0.8, b_{new}=0.8 \\) implies that the gradient of \\( a \\) was \\( \\frac{a_{old} - a_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2 \\), and the gradient of \\( b \\) was \\( \\frac{b_{old} - b_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2 \\). \\(\n\\)Let's verify: If \\( a=1 \\) and \\( b=3 \\), then \\( \\frac{\\partial L}{\\partial b} = -2(5 - 2(1) - 3) = -2(5 - 2 - 3) = -2(0) = 0 \\). \\(\n\\)If \\( a=1 \\) and \\( b=3 \\), \\( \\frac{\\partial L}{\\partial a} = -2(5 - 2(1) - 3) \\cdot 2 = -2(0) \\cdot 2 = 0 \\). \\(\n\\)This scenario implies that the point \\( a=1, b=3 \\) is a minimum for the loss function, but the question is about finding the value of \\( b \\) that makes the gradient of \\( b \\) zero at \\( a=1 \\), which is \\( b=3 \\). The provided update \\( a_{new}=0.8, b_{new}=0.8 \\) from \\( a_{old}=1, b_{old}=1 \\) is a different step in the optimization process and is not directly used to find the value of \\( b \\) that makes the gradient of \\( b \\) zero at \\( a=1 \\).",
-      "solution": "The loss function for a single data point is \\( L = (y_1 - (ax_1 + b))^2 \\). \\(\n\\)Given \\( (x_1, y_1) = (2, 5) \\), so \\( L = (5 - (2a + b))^2 \\). \\(\n\\)The gradient of the loss with respect to \\( b \\) is \\( \\frac{\\partial L}{\\partial b} = 2(5 - (2a + b)) \\cdot (-1) = -2(5 - 2a - b) \\). \\(\n\\)We are asked to find the value of \\( b \\) for which \\( \\frac{\\partial L}{\\partial b} = 0 \\), assuming \\( a=1 \\) and \\( b=1 \\) were the parameters *before* the update step that led to \\( a_{new}=0.8, b_{new}=0.8 \\). This means we evaluate the gradient at \\( a=1 \\) and the *unknown* value of \\( b \\). \\(\n\\)Setting \\( \\frac{\\partial L}{\\partial b} = 0 \\): \\(\n\\)\\( -2(5 - 2(1) - b) = 0 \n\\)\\( 5 - 2 - b = 0 \n\\)\\( 3 - b = 0 \n\\)\\( b = 3 \\). \\(\n\\)The provided gradient update information \\( \\frac{\\partial L}{\\partial a} = -2(5 - (2a + b)) \\cdot 2 \\) and the learning rate \\( \\eta = 0.1 \\) are distractors. The question specifically asks for the value of \\( b \\) that makes \\( \\frac{\\partial L}{\\partial b} = 0 \\) *at the point where \\( a=1 \\)*. The update rule to \\( a_{new}=0.8, b_{new}=0.8 \\) implies that the gradient of \\( a \\) was \\( \\frac{a_{old} - a_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2 \\), and the gradient of \\( b \\) was \\( \\frac{b_{old} - b_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2 \\). \\(\n\\)Let's verify: If \\( a=1 \\) and \\( b=3 \\), then \\( \\frac{\\partial L}{\\partial b} = -2(5 - 2(1) - 3) = -2(5 - 2 - 3) = -2(0) = 0 \\). \\(\n\\)If \\( a=1 \\) and \\( b=3 \\), \\( \\frac{\\partial L}{\\partial a} = -2(5 - 2(1) - 3) \\cdot 2 = -2(0) \\cdot 2 = 0 \\). \\(\n\\)This scenario implies that the point \\( a=1, b=3 \\) is a minimum for the loss function, but the question is about finding the value of \\( b \\) that makes the gradient of \\( b \\) zero at \\( a=1 \\), which is \\( b=3 \\). The provided update \\( a_{new}=0.8, b_{new}=0.8 \\) from \\( a_{old}=1, b_{old}=1 \\) is a different step in the optimization process and is not directly used to find the value of \\( b \\) that makes the gradient of \\( b \\) zero at \\( a=1 \\).",
+      "sol": "The loss function for a single data point is \\( L = (y_1 - (ax_1 + b))^2 \\). Given \\( (x_1, y_1) = (2, 5) \\), so \\( L = (5 - (2a + b))^2 \\). The gradient of the loss with respect to \\( b \\) is \\( \\frac{\\partial L}{\\partial b} = 2(5 - (2a + b)) \\cdot (-1) = -2(5 - 2a - b) \\). We are asked to find the value of \\( b \\) for which \\( \\frac{\\partial L}{\\partial b} = 0 \\), assuming \\( a=1 \\) and \\( b=1 \\) were the parameters *before* the update step that led to \\( a_{new}=0.8, b_{new}=0.8 \\). This means we evaluate the gradient at \\( a=1 \\) and the *unknown* value of \\( b \\). Setting \\( \\frac{\\partial L}{\\partial b} = 0 \\): \\( -2(5 - 2(1) - b) = 0 \n\\)\\( 5 - 2 - b = 0 \n\\)\\( 3 - b = 0 \n\\)\\( b = 3 \\). The provided gradient update information \\( \\frac{\\partial L}{\\partial a} = -2(5 - (2a + b)) \\cdot 2 \\) and the learning rate \\( \\eta = 0.1 \\) are distractors. The question specifically asks for the value of \\( b \\) that makes \\( \\frac{\\partial L}{\\partial b} = 0 \\) *at the point where \\( a=1 \\)*. The update rule to \\( a_{new}=0.8, b_{new}=0.8 \\) implies that the gradient of \\( a \\) was \\( \\frac{a_{old} - a_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2 \\), and the gradient of \\( b \\) was \\( \\frac{b_{old} - b_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2 \\). Let's verify: If \\( a=1 \\) and \\( b=3 \\), then \\( \\frac{\\partial L}{\\partial b} = -2(5 - 2(1) - 3) = -2(5 - 2 - 3) = -2(0) = 0 \\). If \\( a=1 \\) and \\( b=3 \\), \\( \\frac{\\partial L}{\\partial a} = -2(5 - 2(1) - 3) \\cdot 2 = -2(0) \\cdot 2 = 0 \\). This scenario implies that the point \\( a=1, b=3 \\) is a minimum for the loss function, but the question is about finding the value of \\( b \\) that makes the gradient of \\( b \\) zero at \\( a=1 \\), which is \\( b=3 \\). The provided update \\( a_{new}=0.8, b_{new}=0.8 \\) from \\( a_{old}=1, b_{old}=1 \\) is a different step in the optimization process and is not directly used to find the value of \\( b \\) that makes the gradient of \\( b \\) zero at \\( a=1 \\).",
+      "solution": "The loss function for a single data point is \\( L = (y_1 - (ax_1 + b))^2 \\). Given \\( (x_1, y_1) = (2, 5) \\), so \\( L = (5 - (2a + b))^2 \\). The gradient of the loss with respect to \\( b \\) is \\( \\frac{\\partial L}{\\partial b} = 2(5 - (2a + b)) \\cdot (-1) = -2(5 - 2a - b) \\). We are asked to find the value of \\( b \\) for which \\( \\frac{\\partial L}{\\partial b} = 0 \\), assuming \\( a=1 \\) and \\( b=1 \\) were the parameters *before* the update step that led to \\( a_{new}=0.8, b_{new}=0.8 \\). This means we evaluate the gradient at \\( a=1 \\) and the *unknown* value of \\( b \\). Setting \\( \\frac{\\partial L}{\\partial b} = 0 \\): \\( -2(5 - 2(1) - b) = 0 \n\\)\\( 5 - 2 - b = 0 \n\\)\\( 3 - b = 0 \n\\)\\( b = 3 \\). The provided gradient update information \\( \\frac{\\partial L}{\\partial a} = -2(5 - (2a + b)) \\cdot 2 \\) and the learning rate \\( \\eta = 0.1 \\) are distractors. The question specifically asks for the value of \\( b \\) that makes \\( \\frac{\\partial L}{\\partial b} = 0 \\) *at the point where \\( a=1 \\)*. The update rule to \\( a_{new}=0.8, b_{new}=0.8 \\) implies that the gradient of \\( a \\) was \\( \\frac{a_{old} - a_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2 \\), and the gradient of \\( b \\) was \\( \\frac{b_{old} - b_{new}}{\\eta} = \\frac{1 - 0.8}{0.1} = 2 \\). Let's verify: If \\( a=1 \\) and \\( b=3 \\), then \\( \\frac{\\partial L}{\\partial b} = -2(5 - 2(1) - 3) = -2(5 - 2 - 3) = -2(0) = 0 \\). If \\( a=1 \\) and \\( b=3 \\), \\( \\frac{\\partial L}{\\partial a} = -2(5 - 2(1) - 3) \\cdot 2 = -2(0) \\cdot 2 = 0 \\). This scenario implies that the point \\( a=1, b=3 \\) is a minimum for the loss function, but the question is about finding the value of \\( b \\) that makes the gradient of \\( b \\) zero at \\( a=1 \\), which is \\( b=3 \\). The provided update \\( a_{new}=0.8, b_{new}=0.8 \\) from \\( a_{old}=1, b_{old}=1 \\) is a different step in the optimization process and is not directly used to find the value of \\( b \\) that makes the gradient of \\( b \\) zero at \\( a=1 \\).",
       "sympy_verified": true,
       "ans": 2,
       "hints": [
@@ -1882,7 +1882,7 @@
       "ans": 2,
       "hints": [
         "Differentiate with respect to \\( w \\): \\( \\frac{dL}{dw} = 2(2)w - 8 = 4w - 8 \\).",
-        "At \\( w = 2 \\): \\(abla L = 4(2) - 8\\). Substitute and simplify: \\(abla L = 8 - 8\\).",
+        "At \\( w = 2 \\): \\(\\nabla L = 4(2) - 8\\). Substitute and simplify: \\(\\nabla L = 8 - 8\\).",
         "Compute the final value from: \\(8 - 8\\)."
       ]
     },
@@ -1910,7 +1910,7 @@
       "ans": 0,
       "hints": [
         "Differentiate with respect to \\( w \\): \\( \\frac{dL}{dw} = 2(3)w - 8 = 6w - 8 \\).",
-        "At \\( w = 4 \\): \\(abla L = 6(4) - 8\\). Substitute and simplify: \\(abla L = 24 - 8\\).",
+        "At \\( w = 4 \\): \\(\\nabla L = 6(4) - 8\\). Substitute and simplify: \\(\\nabla L = 24 - 8\\).",
         "Compute the final value from: \\(24 - 8\\)."
       ]
     },
@@ -1938,7 +1938,7 @@
       "ans": 0,
       "hints": [
         "Differentiate with respect to \\( w \\): \\( \\frac{dL}{dw} = 2(4)w - 8 = 8w - 8 \\).",
-        "At \\( w = 6 \\): \\(abla L = 8(6) - 8\\). Substitute and simplify: \\(abla L = 48 - 8\\).",
+        "At \\( w = 6 \\): \\(\\nabla L = 8(6) - 8\\). Substitute and simplify: \\(\\nabla L = 48 - 8\\).",
         "Compute the final value from: \\(48 - 8\\)."
       ]
     },
@@ -1966,7 +1966,7 @@
       "ans": 0,
       "hints": [
         "Differentiate with respect to \\( w \\): \\( \\frac{dL}{dw} = 2(5)w - 8 = 10w - 8 \\).",
-        "At \\( w = 8 \\): \\(abla L = 10(8) - 8\\). Substitute and simplify: \\(abla L = 80 - 8\\).",
+        "At \\( w = 8 \\): \\(\\nabla L = 10(8) - 8\\). Substitute and simplify: \\(\\nabla L = 80 - 8\\).",
         "Compute the final value from: \\(80 - 8\\)."
       ]
     },
@@ -1994,7 +1994,7 @@
       "ans": 0,
       "hints": [
         "Differentiate with respect to \\( w \\): \\( \\frac{dL}{dw} = 2(6)w - 8 = 12w - 8 \\).",
-        "At \\( w = 10 \\): \\(abla L = 12(10) - 8\\). Substitute and simplify: \\(abla L = 120 - 8\\).",
+        "At \\( w = 10 \\): \\(\\nabla L = 12(10) - 8\\). Substitute and simplify: \\(\\nabla L = 120 - 8\\).",
         "Compute the final value from: \\(120 - 8\\)."
       ]
     },
@@ -2022,7 +2022,7 @@
       "ans": 0,
       "hints": [
         "Differentiate with respect to \\( w \\): \\( \\frac{dL}{dw} = 2(7)w - 8 = 14w - 8 \\).",
-        "At \\( w = 12 \\): \\(abla L = 14(12) - 8\\). Substitute and simplify: \\(abla L = 168 - 8\\).",
+        "At \\( w = 12 \\): \\(\\nabla L = 14(12) - 8\\). Substitute and simplify: \\(\\nabla L = 168 - 8\\).",
         "Compute the final value from: \\(168 - 8\\)."
       ]
     },
@@ -3283,7 +3283,7 @@
       "hints": [
         "Compute partial derivatives: \\(\\frac{\\partial L}{\\partial w_1} = 2(2)w_1 = 4(2)\\).",
         "Rewrite and simplify to obtain: \\(\\frac{\\partial L}{\\partial w_2} = 2(3)w_2 = 6(-1)\\).",
-        "Therefore, \\(abla L = [8, -6]^T\\)."
+        "Therefore, \\(\\nabla L = [8, -6]^T\\)."
       ]
     },
     {
@@ -3311,7 +3311,7 @@
       "hints": [
         "Compute partial derivatives: \\(\\frac{\\partial L}{\\partial w_1} = 2(3)w_1 = 6(2)\\).",
         "Rewrite and simplify to obtain: \\(\\frac{\\partial L}{\\partial w_2} = 2(5)w_2 = 10(-1)\\).",
-        "Therefore, \\(abla L = [12, -10]^T\\)."
+        "Therefore, \\(\\nabla L = [12, -10]^T\\)."
       ]
     },
     {
@@ -3339,7 +3339,7 @@
       "hints": [
         "Compute partial derivatives: \\(\\frac{\\partial L}{\\partial w_1} = 2(4)w_1 = 8(2)\\).",
         "Rewrite and simplify to obtain: \\(\\frac{\\partial L}{\\partial w_2} = 2(7)w_2 = 14(-1)\\).",
-        "Therefore, \\(abla L = [16, -14]^T\\)."
+        "Therefore, \\(\\nabla L = [16, -14]^T\\)."
       ]
     },
     {
@@ -3367,7 +3367,7 @@
       "hints": [
         "Compute partial derivatives: \\(\\frac{\\partial L}{\\partial w_1} = 2(5)w_1 = 10(2)\\).",
         "Rewrite and simplify to obtain: \\(\\frac{\\partial L}{\\partial w_2} = 2(9)w_2 = 18(-1)\\).",
-        "Therefore, \\(abla L = [20, -18]^T\\)."
+        "Therefore, \\(\\nabla L = [20, -18]^T\\)."
       ]
     },
     {
@@ -3395,7 +3395,7 @@
       "hints": [
         "Compute partial derivatives: \\(\\frac{\\partial L}{\\partial w_1} = 2(6)w_1 = 12(2)\\).",
         "Rewrite and simplify to obtain: \\(\\frac{\\partial L}{\\partial w_2} = 2(11)w_2 = 22(-1)\\).",
-        "Therefore, \\(abla L = [24, -22]^T\\)."
+        "Therefore, \\(\\nabla L = [24, -22]^T\\)."
       ]
     },
     {
@@ -3423,7 +3423,7 @@
       "hints": [
         "Compute partial derivatives: \\(\\frac{\\partial L}{\\partial w_1} = 2(7)w_1 = 14(2)\\).",
         "Rewrite and simplify to obtain: \\(\\frac{\\partial L}{\\partial w_2} = 2(13)w_2 = 26(-1)\\).",
-        "Therefore, \\(abla L = [28, -26]^T\\)."
+        "Therefore, \\(\\nabla L = [28, -26]^T\\)."
       ]
     },
     {
