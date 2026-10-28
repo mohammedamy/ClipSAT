@@ -301,6 +301,15 @@ audit(`Curriculum directory covers 31 complete tracks with _meta.json, >= 8 chap
     const manifestWs = manifest.filter(m => m && !m.isFullExam && String(m.worksheet || '').endsWith('.pdf')).length;
     assert.ok(manifestFullExams >= 10, `Track ${t} manifest.json must have >= 10 isFullExam entries, found ${manifestFullExams}`);
     assert.strictEqual(manifestWs, wsFiles.length, `Track ${t} manifest.json must list all ${wsFiles.length} PDF worksheets, found ${manifestWs}`);
+    manifest.filter(m => m && !m.isFullExam && m.num).forEach(m => {
+      const wdPath = path.join(__dirname, '..', 'public', 'worksheet-data', t, `${m.num}.json`);
+      assert.ok(fs.existsSync(wdPath), `Track ${t} worksheet ${m.num} must have matching public/worksheet-data/${t}/${m.num}.json`);
+    });
+    assert.ok(meta.meta && meta.meta.title && meta.meta.title.en && meta.meta.title.ar, `Track ${t} _meta.json must have bilingual title`);
+    assert.ok(meta.meta && meta.meta.subtitle && meta.meta.subtitle.en && meta.meta.subtitle.ar, `Track ${t} _meta.json must have bilingual subtitle`);
+    assert.ok(meta.meta && meta.meta.examBoard, `Track ${t} _meta.json must define examBoard`);
+    assert.ok(Array.isArray(meta.meta.officialLinks) && meta.meta.officialLinks.length >= 1, `Track ${t} _meta.json must define >= 1 officialLinks`);
+    assert.ok(meta.meta.testGenerator && meta.meta.testGenerator.hasFullExam !== false && meta.meta.testGenerator.examTitle, `Track ${t} _meta.json must enable full exam generation`);
   });
   assert.ok(totalChapters >= 302, `Expected >= 302 chapters across 31 tracks, found ${totalChapters}`);
 });
@@ -311,6 +320,7 @@ audit(`Every chapter across all 302 chapters meets Gold-Standard Block Parity (>
     const chIds = meta.chapterOrder || [];
     chIds.forEach((cid, idx) => {
       const ch = JSON.parse(fs.readFileSync(path.join(contentDir, t, `${cid}.json`), 'utf8'));
+      assert.ok(ch.title && ch.title.en && ch.title.ar, `${t}/${cid} must have bilingual chapter title`);
       const blocks = (ch.content && ch.content.blocks) || [];
       if (idx === 0) {
         assert.ok(blocks.some(b => b.kind === 'syllabusMap'), `First chapter ${cid} of track ${t} must contain a syllabusMap block`);
